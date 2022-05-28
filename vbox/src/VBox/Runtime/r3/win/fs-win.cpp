@@ -1,4 +1,4 @@
-/* $Id: fs-win.cpp 5702 2007-11-12 11:29:04Z vboxsync $ */
+/* $Id: fs-win.cpp 5705 2007-11-12 13:58:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File System, Win32.
  */
@@ -332,6 +332,12 @@ RTR3DECL(int) RTFsQuerySerial(const char *pszFsPath, uint32_t *pu32Serial)
         Log(("RTFsQuerySizes(%s,): GetDiskFreeSpaceEx failed with lasterr %d (%Vrc)\n",
              pszFsPath, Err, rc));
     }
+
+#ifndef RT_DONT_CONVERT_FILENAMES
+    RTStrUcs2Free(puszFsRoot);
+#else
+    RTStrUcs2Free(pszFsRoot);
+#endif
     return rc;
 }
 
@@ -394,7 +400,6 @@ RTR3DECL(int) RTFsQueryProperties(const char *pszFsPath, PRTFSPROPERTIES pProper
 #else
     RTStrUcs2Free(pszFsRoot);
 #endif
-
     return rc;
 }
 
