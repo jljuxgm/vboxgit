@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 3620 2007-07-15 19:26:52Z vboxsync $
 ## @file
 # Makefile for liblzf.
 #
@@ -24,6 +24,7 @@ LIBRARIES = VBox-liblzf
 
 VBox-liblzf_TEMPLATE = VBOXR3
 VBox-liblzf_DEFS = ULTRA_FAST #HLOG=14
+VBox-liblzf_DEFS.win.amd64 = USE_UINTPTR_T=1
 VBox-liblzf_SOURCES= \
 	lzf_c.c \
 	lzf_d.c
