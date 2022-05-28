@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5076 2007-09-27 13:55:15Z vboxsync $
+# $Id: Makefile.kmk 5245 2007-10-11 16:42:31Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -124,6 +124,11 @@ ifdef VBOX_WITH_DOCS
   # but for building .deb/.rpm packages we use precompiled binaries.
   LINUXNOSTRIP += \
 	VirtualBox.chm
+ endif
+ ifneq ($(wildcard $(PATH_BIN)/VirtualBoxAPI.chm),)
+ # same applies to VirtualBoxAPI.chm
+ LINUXNOSTRIP += \
+	VirtualBoxAPI.chm
  endif
 endif
 ifdef VBOX_WITH_VRDP
