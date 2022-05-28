@@ -1,4 +1,4 @@
-/* $Id: alloc-posix.cpp 1  vboxsync $ */
+/* $Id: alloc-posix.cpp 341 2007-01-26 00:49:23Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Memory Allocation, POSIX.
  */
@@ -46,10 +46,19 @@
  */
 RTDECL(void *) RTMemExecAlloc(size_t cb)
 {
+    AssertMsg(cb, ("Allocating ZERO bytes is really not a good idea! Good luck with the next assertion!\n"));
+
+#if defined(__AMD64__) && defined(__LINUX__)
+    /*
+     * Use mmap to get low memory.
+     */
+    void *pv = mmap(NULL, RT_ALIGN_Z(cb, PAGE_SIZE), PROT_READ | PROT_WRITE | PROT_EXEC, MAP_PRIVATE | MAP_ANONYMOUS | MAP_32BIT, -1, 0);
+    AssertMsgReturn(pv != MAP_FAILED, ("errno=%d cb=%#zx\n", errno, cb), NULL);
+
+#else
     /*
      * Allocate first.
      */
-    AssertMsg(cb, ("Allocating ZERO bytes is really not a good idea! Good luck with the next assertion!\n"));
     cb = RT_ALIGN_Z(cb, 32);
     void *pv = NULL;
     int rc = posix_memalign(&pv, 32, cb);
@@ -74,6 +83,7 @@ RTDECL(void *) RTMemExecAlloc(size_t cb)
             pv = NULL;
         }
     }
+#endif
     return pv;
 }
 
@@ -86,7 +96,14 @@ RTDECL(void *) RTMemExecAlloc(size_t cb)
 RTDECL(void)    RTMemExecFree(void *pv)
 {
     if (pv)
+    {
+#if defined(__AMD64__) && defined(__LINUX__)
+        int rc = munmap(pv, 0);/** @todo fix me! */
+        AssertMsg(!rc, ("munmap -> %d errno=%d\n", rc, errno));
+#else
         free(pv);
+#endif 
+    }
 }
 
 
