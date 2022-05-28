@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 4932 2007-09-20 14:12:41Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 5073 2007-09-27 11:06:28Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -862,6 +862,7 @@ HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx)
     RTGCUINTPTR intInfo = 0; /* shut up buggy gcc 4 */
     RTGCUINTPTR errCode, instrInfo, uInterruptState;
     bool        fGuestStateSynced = false;
+    unsigned    cResume = 0;
 
     Log2(("\nE"));
 
@@ -945,6 +946,13 @@ HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx)
     /* We can jump to this point to resume execution after determining that a VM-exit is innocent.
      */
 ResumeExecution:
+    /* Safety precaution; looping for too long here can have a very bad effect on the host */
+    if (++cResume > HWACCM_MAX_RESUME_LOOPS)
+    {
+        STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitMaxResume);
+        rc = VINF_EM_RAW_INTERRUPT;
+        goto end;
+    }
 
     /* Check for irq inhibition due to instruction fusing (sti, mov ss). */
     if (VM_FF_ISSET(pVM, VM_FF_INHIBIT_INTERRUPTS))

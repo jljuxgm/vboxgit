@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: HWACCMInternal.h 5073 2007-09-27 11:06:28Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -105,6 +105,9 @@ __BEGIN_DECLS
 #endif
 /** @} */
 
+
+/** @name Maxium resume loops allowed in ring 0 (safety precaution) */
+#define HWACCM_MAX_RESUME_LOOPS             1024
 
 /** @name HWACCM SSM version
  */
@@ -289,6 +292,7 @@ typedef struct HWACCM
     STAMCOUNTER             StatExitIOStringWrite;
     STAMCOUNTER             StatExitIOStringRead;
     STAMCOUNTER             StatExitIrqWindow;
+    STAMCOUNTER             StatExitMaxResume;
     STAMCOUNTER             StatIntReinject;
     STAMCOUNTER             StatPendingHostIrq;
 
