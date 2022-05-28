@@ -1,4 +1,4 @@
-/* $Id: VBoxDDUDeps.cpp 5578 2007-10-31 13:22:30Z vboxsync $ */
+/* $Id: VBoxDDUDeps.cpp 5651 2007-11-09 14:59:08Z vboxsync $ */
 /** @file
  * VBoxDDU - For dragging in library objects.
  */
@@ -22,6 +22,10 @@
 #include <VBox/types.h>
 #ifdef VBOX_WITH_USB
 # include <VBox/usbfilter.h>
+# ifdef RT_OS_OS2
+#  include <os2.h>
+#  include <usbcalls.h>
+# endif
 #endif
 
 /** Just a dummy global structure containing a bunch of
@@ -31,6 +35,9 @@ PFNRT g_apfnVBoxDDUDeps[] =
 {
 #ifdef VBOX_WITH_USB
     (PFNRT)USBFilterInit,
+# ifdef RT_OS_OS2
+    (PFNRT)UsbOpen,
+# endif 
 #endif
     NULL
 };
