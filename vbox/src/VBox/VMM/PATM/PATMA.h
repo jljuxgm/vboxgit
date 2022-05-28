@@ -1,4 +1,4 @@
-/* $Id: PATMA.h 1438 2007-03-13 10:48:29Z vboxsync $ */
+/* $Id: PATMA.h 2043 2007-04-12 13:04:07Z vboxsync $ */
 /** @file
  * PATM macros & definitions (identical to PATMA.mac!!)
  */
@@ -182,6 +182,8 @@ extern PATCHASMRECORD PATMClearPIFRecord;
 extern PATCHASMRECORD PATMSetInhibitIRQRecord;
 extern PATCHASMRECORD PATMClearInhibitIRQFaultIF0Record;
 extern PATCHASMRECORD PATMClearInhibitIRQContIF0Record;
+
+extern PATCHASMRECORD PATMMovFromSSRecord;
 
 extern uint32_t       PATMInterruptFlag;
 #ifdef __cplusplus

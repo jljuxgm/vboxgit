@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 1914 2007-04-04 08:27:14Z vboxsync $
+; $Id: PATMA.asm 2043 2007-04-12 13:04:07Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -2531,6 +2531,38 @@ GLOBALNAME PATMJumpToGuest_IF1Record
     DD      PATM_INTERRUPTFLAG
     DD      0
     DD      0ffffffffh
+
+
+; push ss, check and correct RPL
+BEGINPROC PATMMovFromSS
+PATMMovFromSS_Start:
+    push    ss
+    push    eax
+    pushfd
+    mov     ax, ss
+    and     ax, 3
+    cmp     ax, 1
+    jne     near PATMMovFromSS_Continue
+
+    and     dword [esp+8], ~3     ; clear RPL 1
+PATMMovFromSS_Continue:
+    popfd
+    pop     eax
+    add     esp, 2          ; ss popped off as 16 bits value
+PATMMovFromSS_Start_End:
+ENDPROC PATMMovFromSS
+
+GLOBALNAME PATMMovFromSSRecord
+    RTCCPTR_DEF PATMMovFromSS_Start
+    DD      0
+    DD      0
+    DD      PATMMovFromSS_Start_End - PATMMovFromSS_Start
+    DD      0
+    DD      0
+    DD      0ffffffffh
+
+
+
 
 ; For assertion during init (to make absolutely sure the flags are in sync in vm.mac & vm.h)
 GLOBALNAME PATMInterruptFlag

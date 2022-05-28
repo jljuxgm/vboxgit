@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 2030 2007-04-11 13:33:28Z vboxsync $ */
+/* $Id: PATMPatch.cpp 2043 2007-04-12 13:04:07Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -1275,6 +1275,38 @@ int patmPatchGenMovControl(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu)
 
     PATCHGEN_EPILOG(pPatch, 2 + sizeof(RTGCPTR));
     return rc;
+}
+
+/*
+ * mov GPR, SS
+ */
+int patmPatchGenMovFromSS(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu)
+{
+    uint32_t size, offset;
+
+    PATCHGEN_PROLOG(pVM, pPatch);
+    size = patmPatchGenCode(pVM, pPatch, pPB, &PATMSetPIFRecord, 0, false);
+    PATCHGEN_EPILOG(pPatch, size);
+
+    /* pushes ss, checks and corrects RPL */
+    PATCHGEN_PROLOG_NODEF(pVM, pPatch);
+    size = patmPatchGenCode(pVM, pPatch, pPB, &PATMMovFromSSRecord, 0, false);
+    PATCHGEN_EPILOG(pPatch, size);
+
+    /* pop general purpose register */
+    PATCHGEN_PROLOG_NODEF(pVM, pPatch);
+    offset = 0;
+    if (pPatch->flags & PATMFL_CODE32)
+        pPB[offset++] = 0x66; /* size override -> 16 bits pop */
+    pPB[offset++] = 0x50 + pCpu->param1.base.reg_gen32;
+    PATCHGEN_EPILOG(pPatch, offset);
+
+
+    PATCHGEN_PROLOG_NODEF(pVM, pPatch);
+    size = patmPatchGenCode(pVM, pPatch, pPB, &PATMClearPIFRecord, 0, false);
+    PATCHGEN_EPILOG(pPatch, size);
+
+    return VINF_SUCCESS;
 }
 
 

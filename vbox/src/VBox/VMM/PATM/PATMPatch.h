@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.h 2030 2007-04-11 13:33:28Z vboxsync $ */
+/* $Id: PATMPatch.h 2043 2007-04-12 13:04:07Z vboxsync $ */
 /** @file
  * PATMPatch - Internal header file.
  */
@@ -29,6 +29,7 @@ int patmPatchGenSxDT(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu, RTGCPTR pCur
 int patmPatchGenSldtStr(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu, RTGCPTR pCurInstrGC);
 int patmPatchGenMovControl(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu);
 int patmPatchGenMovDebug(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu);
+int patmPatchGenMovFromSS(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu);
 int patmPatchGenRelJump(PVM pVM, PPATCHINFO pPatch, GCPTRTYPE(uint8_t *)pTargetGC, uint32_t opcode, bool fSizeOverride);
 int patmPatchGenLoop(PVM pVM, PPATCHINFO pPatch, GCPTRTYPE(uint8_t *)pTargetGC, uint32_t opcode, bool fSizeOverride);
 int patmPatchGenPushf(PVM pVM, PPATCHINFO pPatch, bool fSizeOverride);
