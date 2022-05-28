@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 2121 2007-04-17 09:42:38Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 2128 2007-04-17 12:42:00Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -46,12 +46,10 @@
 
 #ifndef IN_RING3
 
-#ifndef IN_RING0
 /** @def IOMGC_MOVS_SUPPORT
- * Define IOMGC_MOVS_SUPPORT for movsb/w/d support in GC.
+ * Define IOMGC_MOVS_SUPPORT for movsb/w/d support in GC and R0.
  */
 #define IOMGC_MOVS_SUPPORT
-#endif
 
 /*******************************************************************************
 *   Internal Functions                                                         *
