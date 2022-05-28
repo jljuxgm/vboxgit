@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 102 2007-01-17 14:28:45Z vboxsync $ */
+/* $Id: PATM.cpp 103 2007-01-17 14:45:01Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -3200,7 +3200,7 @@ failure:
 static int patmCreateTrampoline(PVM pVM, RTGCPTR pInstrGC, PPATMPATCHREC pPatchRec)
 {
     PPATCHINFO  pPatch = &pPatchRec->patch;
-    RTGCPTR     pPage, pPatchTargetGC;
+    RTGCPTR     pPage, pPatchTargetGC = 0;
     uint32_t    orgOffsetPatchMem = ~0;
     int         rc = VERR_PATCHING_REFUSED;
 
@@ -3233,7 +3233,7 @@ static int patmCreateTrampoline(PVM pVM, RTGCPTR pInstrGC, PPATMPATCHREC pPatchR
             }
         }
     }
-    AssertReturn(pPatchTargetGC, VERR_PATCHING_REFUSED);
+    AssertReturn(pPatchPage && pPatchTargetGC, VERR_PATCHING_REFUSED);
 
     pPatch->nrPatch2GuestRecs = 0;
     pPatch->pPatchBlockOffset = pVM->patm.s.offPatchMem;
