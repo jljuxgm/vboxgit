@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 452 2007-01-30 23:35:27Z vboxsync $ */
+/* $Id: CSAM.cpp 455 2007-01-31 00:05:52Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2161,7 +2161,7 @@ CSAMR3DECL(int) CSAMR3CheckGates(PVM pVM, uint32_t iGate, uint32_t cGates)
     if (EMIsRawRing0Enabled(pVM) == false)
     {
         /* Enabling interrupt gates only works when raw ring 0 is enabled. */
-        AssertFailed();
+        //AssertFailed();
         return VINF_SUCCESS;
     }
 
