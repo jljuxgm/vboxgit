@@ -1,4 +1,4 @@
-; $Id: VMMGCA.asm 19 2007-01-15 13:07:05Z vboxsync $
+; $Id: VMMGCA.asm 988 2007-02-19 18:19:14Z vboxsync $
 ;; @file
 ; VMMGC - Guest Context Virtual Machine Monitor assembly routines.
 ;
@@ -208,6 +208,11 @@ EXPORTEDNAME vmmGCTestTrap0e_FaultEIP
 
     RestoreAll
     mov     eax, 0ffffffffh
+    ret
+
+EXPORTEDNAME vmmGCTestTrap0e_ResumeEIP
+    RestoreAll
+    xor     eax, eax
     ret
 ENDPROC vmmGCTestTrap0e
 

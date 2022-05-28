@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 914 2007-02-14 23:23:08Z vboxsync $ */
+/* $Id: VMMInternal.h 988 2007-02-19 18:19:14Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -450,7 +450,7 @@ VMMGCDECL(void) vmmGCRelLoggerWrapper(const char *pszFormat, ...);
  */
 VMMGCDECL(int) vmmGCLoggerFlush(PRTLOGGERGC pLogger);
 
-/** @name Trap testcases
+/** @name Trap testcases and related labels.
  * @{ */
 DECLASM(void) vmmGCEnableWP(void);
 DECLASM(void) vmmGCDisableWP(void);
@@ -458,6 +458,8 @@ DECLASM(int) vmmGCTestTrap3(void);
 DECLASM(int) vmmGCTestTrap8(void);
 DECLASM(int) vmmGCTestTrap0d(void);
 DECLASM(int) vmmGCTestTrap0e(void);
+DECLASM(int) vmmGCTestTrap0e_FaultEIP(void); /**< a label */
+DECLASM(int) vmmGCTestTrap0e_ResumeEIP(void); /**< a label */
 /** @} */
 
 #endif /* IN_GC */
