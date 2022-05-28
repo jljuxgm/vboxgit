@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4474 2007-08-31 19:23:49Z vboxsync $
+# $Id: Makefile.kmk 4547 2007-09-05 22:03:59Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -22,7 +22,7 @@ include	$(PATH_KBUILD)/subheader.kmk
 # Targets
 #
 LIBRARIES += SUPR3
-ifneq ($(filter-out darwin solaris,$(BUILD_TARGET)),)
+ifeq ($(filter-out pe lx,$(VBOX_LDR_FMT)),)
 LIBRARIES += SUPR0
 endif
 ifdef VBOX_WITH_VBOXDRV
