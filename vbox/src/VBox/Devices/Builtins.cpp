@@ -1,4 +1,4 @@
-/** $Id: Builtins.cpp 3670 2007-07-17 09:19:36Z vboxsync $ */
+/** $Id: Builtins.cpp 3853 2007-07-25 19:24:30Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -236,3 +236,21 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     return VINF_SUCCESS;
 }
 
+
+#ifdef VBOX_WITH_USB
+/**
+ * Register builtin USB device.
+ *
+ * @returns VBox status code.
+ * @param   pCallbacks      Pointer to the callback table.
+ * @param   u32Version      VBox version number.
+ */
+extern "C" DECLEXPORT(int) VBoxUSBRegister(PCPDMUSBREGCB pCallbacks, uint32_t u32Version)
+{
+    int rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbDevProxy);
+    if (VBOX_FAILURE(rc))
+        return rc;
+
+    return VINF_SUCCESS;
+}
+#endif

@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 3648 2007-07-16 15:40:44Z vboxsync $ */
+/* $Id: Builtins.h 3853 2007-07-25 19:24:30Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -76,6 +76,10 @@ extern const PDMDRVREG g_DrvVUSBRootHub;
 extern const PDMDRVREG g_DrvChar;
 extern const PDMDRVREG g_DrvNamedPipe;
 extern const PDMDRVREG g_DrvHostParallel;
+
+#ifdef VBOX_WITH_USB
+extern const PDMUSBREG g_UsbDevProxy;
+#endif
 
 __END_DECLS
 
