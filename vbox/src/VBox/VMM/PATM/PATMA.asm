@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 1114 2007-02-28 15:44:06Z vboxsync $
+; $Id: PATMA.asm 1119 2007-02-28 17:09:21Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -1169,6 +1169,7 @@ iret_notring0:
 	; This section must *always* be executed (!!)
 	; Extract the IOPL from the return flags, save them to our virtual flags and
 	; put them back to zero
+    ; @note we assume iretd doesn't fault!!!
 	push	eax
 	mov     eax, dword [esp+16]
 	and     eax, X86_EFL_IOPL
