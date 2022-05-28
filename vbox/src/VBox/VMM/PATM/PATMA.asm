@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 111 2007-01-17 16:02:33Z vboxsync $
+; $Id: PATMA.asm 114 2007-01-17 16:11:15Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -40,9 +40,9 @@
 
 BEGINCODE
 
-ifdef __AMD64__ 
+%ifdef __AMD64__ 
  BITS 32 ; switch to 32-bit mode (x86).
-endif
+%endif
 
 %ifdef VBOX_WITH_STATISTICS
 ;
