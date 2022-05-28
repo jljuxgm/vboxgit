@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4583 2007-09-06 15:51:38Z vboxsync $
+# $Id: Config.kmk 4587 2007-09-06 17:58:13Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -359,11 +359,9 @@ ifdef VBOX_OSE
  ifeq ($(BUILD_TARGET),darwin)
   # Qt/Mac v3.3.x requires patching to work for us.
   VBOX_WITH_QTGUI=
-  # The installer is not public
-  VBOX_WITH_INSTALLER=
  endif
- ifeq ($(BUILD_TARGET),win)
-  # The installer is not public
+ ifneq ($(BUILD_TARGET),linux)
+  # Only the Linux installer is public
   VBOX_WITH_INSTALLER=
  endif
 endif
@@ -2538,7 +2536,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4583 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4587 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
