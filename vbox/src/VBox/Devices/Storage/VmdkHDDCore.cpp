@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 2564 2007-05-09 16:13:07Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 2582 2007-05-10 16:33:20Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -1681,7 +1681,7 @@ static int vmdkFlushImage(PVMDKIMAGE pImage)
             case VMDKETYPE_ESX_SPARSE:
 #endif /* VBOX_WITH_VMDK_ESX */
             case VMDKETYPE_FLAT:
-                if (pExtent->File != NIL_RTFILE)
+                if (pExtent->File != NIL_RTFILE && !(pImage->uOpenFlags & VD_OPEN_FLAGS_READONLY))
                     rc = RTFileFlush(pExtent->File);
                 break;
             case VMDKETYPE_ZERO:
