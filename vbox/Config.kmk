@@ -1,4 +1,4 @@
-# $Id: Config.kmk 1844 2007-03-31 15:59:05Z vboxsync $
+# $Id: Config.kmk 1873 2007-04-03 10:18:16Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -160,6 +160,8 @@ VBOX_WITH_WIN32_ADDITIONS_SHAREDFOLDERS = 1
 VBOX_WITH_INSTALLER = 1
 # enable VRDP server
 VBOX_WITH_VRDP = 1
+# enable new multiconnection code
+VBOX_WITH_VRDP_MC = 1
 # build VRDP authentication modules
 VBOX_WITH_VRDP_AUTHMOD = 1
 # build enhanced version of rdesktop
