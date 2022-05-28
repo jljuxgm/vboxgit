@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 58 2007-01-16 12:39:56Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3046,10 +3046,7 @@ static void pgmPoolFlushAllInt(PPGMPOOL pPool)
     {
         unsigned iPage = pRam->cb >> PAGE_SHIFT;
         while (iPage-- > 0)
-        {
-            Assert(pRam->aHCPhys[iPage] & X86_PTE_PAE_PG_MASK);
             pRam->aHCPhys[iPage] &= MM_RAM_FLAGS_NO_REFS_MASK;
-        }
     }
 
     pPool->iPhysExtFreeHead = 0;
