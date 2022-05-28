@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 4871 2007-09-17 20:08:17Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 4873 2007-09-17 20:24:48Z vboxsync $ */
 /** @file
  *
  * VBox host drivers - Ring-0 support drivers - Solaris host:
@@ -83,7 +83,7 @@ int suplibOsInit(size_t cbReserve)
     if (fcntl(g_hDevice, F_SETFD, FD_CLOEXEC) != 0)
     {
         int rc = errno;
-        LogRel(("suplibOSInit: setting FD_CLOEXEC failed, errno=%d\n", errno));
+        LogRel(("suplibOSInit: setting FD_CLOEXEC failed, errno=%d\n", rc));
         close(g_hDevice);
         g_hDevice = -1;
         return RTErrConvertFromErrno(rc);
