@@ -1,4 +1,4 @@
-# $Id: Config.kmk 3249 2007-06-24 01:46:12Z vboxsync $
+# $Id: Config.kmk 3264 2007-06-25 08:42:41Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -145,6 +145,9 @@ endif
 ifeq ($(BUILD_TARGET),l4)
  VBOX_WITH_LINUX_ADDITIONS = 1
  VBOX_WITH_WIN32_ADDITIONS = 1
+endif
+ifeq ($(BUILD_TARGET),os2)
+ VBOX_WITH_OS2_ADDITIONS = 1
 endif
 ifeq ($(BUILD_TARGET),win)
  VBOX_WITH_WIN32_ADDITIONS = 1
