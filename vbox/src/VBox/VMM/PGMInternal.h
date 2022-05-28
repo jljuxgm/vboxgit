@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 454 2007-01-31 00:02:36Z vboxsync $ */
+/* $Id: PGMInternal.h 457 2007-01-31 01:18:59Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -876,6 +876,8 @@ typedef struct PGMPOOL
     /** The number of uncacheable allocations. */
     STAMCOUNTER     StatCacheUncacheable;
 # endif
+#elif HC_ARCH_BITS == 64 && GC_ARCH_BITS == 32
+    uint32_t        Alignment1;         /**< Align the next member on a 64-bit boundrary. */
 #endif
     /** The AVL tree for looking up a page by its HC physical address. */
     AVLOHCPHYSTREE  HCPhysTree;
