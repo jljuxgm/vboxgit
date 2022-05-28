@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 1365 2007-03-09 12:04:48Z vboxsync $ */
+/* $Id: EM.cpp 1366 2007-03-09 12:09:07Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -1731,6 +1731,7 @@ int emR3PatchTrap(PVM pVM, PCPUMCTX pCtx, int gcret)
     {
 #ifdef LOG_ENABLED
         DBGFR3InfoLog(pVM, "cpumguest", "Trap in patch code");
+        DBGFR3DisasInstrCurrentLog(pVM, "Patch code"); 
 
         DISCPUSTATE Cpu;
         int         rc;
