@@ -1,4 +1,4 @@
-; $Id: CPUMAllA.asm 4071 2007-08-07 17:07:59Z vboxsync $
+; $Id: CPUMAllA.asm 5389 2007-10-19 16:45:07Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -44,7 +44,7 @@ BEGINCODE
 
 
 ;;
-; Handles lazy FPU saveing and restoring.
+; Handles lazy FPU saving and restoring.
 ;
 ; This handler will implement lazy fpu (sse/mmx/stuff) saving.
 ; Two actions may be taken in this handler since the Guest OS may
@@ -66,7 +66,7 @@ BEGINPROC   CPUMHandleLazyFPUAsm
     ;   1. Save host fpu and restore guest fpu.
     ;   2. Generate guest trap.
     ;
-    ; When entering the hypvervisor we'll always enable MP (for proper wait
+    ; When entering the hypervisor we'll always enable MP (for proper wait
     ; trapping) and TS (for intercepting all fpu/mmx/sse stuff). The EM flag
     ; is taken from the guest OS in order to get proper SSE handling.
     ;
