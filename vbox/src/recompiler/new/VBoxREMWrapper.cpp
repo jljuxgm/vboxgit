@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 372 2007-01-26 18:28:13Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 843 2007-02-12 12:29:40Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -610,6 +610,7 @@ static const REMPARMDESC g_aArgsPGMPhysGCPhys2HCPtr[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM) },
     { REMPARMDESC_FLAGS_GCPHYS,     sizeof(RTGCPHYS) },
+    { REMPARMDESC_FLAGS_INT,        sizeof(RTUINT) },
     { REMPARMDESC_FLAGS_INT,        sizeof(PRTHCPTR) }
 };
 static const REMPARMDESC g_aArgsPGMPhysGCPtr2HCPtrByGstCR3[] =
