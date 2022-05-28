@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 48 2007-01-15 18:29:24Z vboxsync $ */
+/* $Id: PDMLdr.cpp 914 2007-02-14 23:23:08Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -19,7 +19,7 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#if defined(__DARWIN__) ||defined(__OS2__)
+#if defined(__OS2__)
 # define PDMLDR_FAKE_MODE
 #endif
 

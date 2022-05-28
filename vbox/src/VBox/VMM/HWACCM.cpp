@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 771 2007-02-08 10:41:53Z vboxsync $ */
+/* $Id: HWACCM.cpp 914 2007-02-14 23:23:08Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -291,7 +291,7 @@ HWACCMR3DECL(void) HWACCMR3Relocate(PVM pVM)
             /* Only try once. */
             pVM->hwaccm.s.fInitialized = true;
 
-            int rc = SUPCallVMMR0(pVM, VMMR0_DO_HWACC_SETUP_VM, NULL);
+            int rc = SUPCallVMMR0(pVM->pVMR0, VMMR0_DO_HWACC_SETUP_VM, NULL);
             AssertRC(rc);
             if (rc == VINF_SUCCESS)
             {
@@ -323,7 +323,7 @@ HWACCMR3DECL(void) HWACCMR3Relocate(PVM pVM)
             /* Only try once. */
             pVM->hwaccm.s.fInitialized = true;
 
-            int rc = SUPCallVMMR0(pVM, VMMR0_DO_HWACC_SETUP_VM, NULL);
+            int rc = SUPCallVMMR0(pVM->pVMR0, VMMR0_DO_HWACC_SETUP_VM, NULL);
             AssertRC(rc);
             if (rc == VINF_SUCCESS)
             {
