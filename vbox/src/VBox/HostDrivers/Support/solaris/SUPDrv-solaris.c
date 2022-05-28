@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 5678 2007-11-11 08:59:58Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 5697 2007-11-12 04:49:50Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Solaris Driver Code.
  */
@@ -35,6 +35,7 @@
 #undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
 
 #include "SUPDRV.h"
+#include <iprt/semaphore.h>
 #include <iprt/spinlock.h>
 #include <iprt/process.h>
 #include <iprt/thread.h>
@@ -295,8 +296,11 @@ static int VBoxDrvSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t enmCmd)
 
         case DDI_RESUME:
         {
-            int rc = RTTimerStart(g_DevExt.pGipTimer, 0);
-            AssertRC(rc);
+            RTSemFastMutexRequest(g_DevExt.mtxGip);
+            if (g_DevExt.pGipTimer)
+                RTTimerStart(g_DevExt.pGipTimer, 0);
+
+            RTSemFastMutexRelease(g_DevExt.mtxGip);
             return DDI_SUCCESS;
         }
 
@@ -350,8 +354,11 @@ static int VBoxDrvSolarisDetach(dev_info_t *pDip, ddi_detach_cmd_t enmCmd)
 
         case DDI_SUSPEND:
         {
-            int rc = RTTimerStop(g_DevExt.pGipTimer);
-            AssertRC(rc);
+            RTSemFastMutexRequest(g_DevExt.mtxGip);
+            if (g_DevExt.pGipTimer && g_DevExt.cGipUsers > 0)
+                RTTimerStop(g_DevExt.pGipTimer);
+
+            RTSemFastMutexRelease(g_DevExt.mtxGip);
             return DDI_SUCCESS;
         }
         
