@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 3724 2007-07-19 18:57:24Z vboxsync $ */
+/* $Id: HWACCM.cpp 4000 2007-08-02 11:27:42Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -479,7 +479,7 @@ HWACCMR3DECL(void) HWACCMR3Relocate(PVM pVM)
     else
     if (pVM->hwaccm.s.fHWACCMR0Init)
     {
-        LogRel(("HWACCM: No VMX or SVM CPU extension found. Reason %Vrc\n", pVM->hwaccm.s.ulLastError));
+        LogRel(("HWACCM: No VMX or SVM CPU extension found. Reason %Vrc\n", pVM->hwaccm.s.lLastError));
         LogRel(("HWACCM: VMX MSR_IA32_FEATURE_CONTROL=%VX64\n", pVM->hwaccm.s.vmx.msr.feature_ctrl));
     }
 

@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 3299 2007-06-26 14:49:19Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 4000 2007-08-02 11:27:42Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -60,7 +60,7 @@ static void VMXR0CheckError(PVM pVM, int rc)
     {
         Log(("VMXR0CheckError failed with %Vrc\n", rc));
     }
-    pVM->hwaccm.s.ulLastError = rc;
+    pVM->hwaccm.s.lLastError = rc;
 }
 
 /**

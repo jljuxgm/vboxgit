@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
+/* $Id: HWACCMInternal.h 4000 2007-08-02 11:27:42Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -254,7 +254,7 @@ typedef struct HWACCM
     } Event;
 
     /** Saved error from detection */
-    uint32_t                ulLastError;
+    int32_t                 lLastError;
 
     /** HWACCMR0Init was run */
     bool                    fHWACCMR0Init;
