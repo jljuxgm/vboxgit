@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4406 2007-08-28 18:10:01Z vboxsync $
+# $Id: Makefile.kmk 4491 2007-09-03 12:00:22Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -108,8 +108,10 @@ ifeq ($(BUILD_TARGET),l4)
  VBoxDD_LIBS           += \
 	$(L4_LIBDIR)/libl4sys.p.a
 endif
-VBoxDD_LIBS.darwin     = \
+ifdef VBOX_WTIH_USB
+VBoxDD_LIBS.darwin     += \
 	$(PATH_LIB)/USBLib$(VBOX_SUFF_LIB)
+endif
 VBoxDD_LIBS.darwin     += \
 	$(LIB_REM)
 VBoxDD_LDFLAGS.darwin   = -install_name @executable_path/VBoxDD.dylib \
