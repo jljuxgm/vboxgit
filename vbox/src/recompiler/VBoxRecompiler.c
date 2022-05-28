@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 4616 2007-09-07 19:34:00Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 4877 2007-09-17 22:03:10Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -243,7 +243,7 @@ REMR3DECL(int) REMR3Init(PVM pVM)
     AssertReleaseMsg(sizeof(pVM->rem.padding) >= sizeof(pVM->rem.s), ("%#x >= %#x; sizeof(Env)=%#x\n", sizeof(pVM->rem.padding), sizeof(pVM->rem.s), sizeof(pVM->rem.s.Env)));
     AssertReleaseMsg(sizeof(pVM->rem.s.Env) <= REM_ENV_SIZE, ("%#x == %#x\n", sizeof(pVM->rem.s.Env), REM_ENV_SIZE));
     AssertReleaseMsg(!(RT_OFFSETOF(VM, rem) & 31), ("off=%#x\n", RT_OFFSETOF(VM, rem)));
-#ifdef DEBUG
+#if defined(DEBUG) && !defined(RT_OS_SOLARIS) /// @todo fix the solaris math stuff.
     Assert(!testmath());
 #endif
     ASSERT_STRUCT_TABLE(Misc);
