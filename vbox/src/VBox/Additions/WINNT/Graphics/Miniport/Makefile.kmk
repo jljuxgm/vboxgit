@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3551 2007-07-11 13:25:38Z vboxsync $
+# $Id: Makefile.kmk 3555 2007-07-11 14:15:05Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxVideo.
 #
@@ -33,7 +33,7 @@ endif
 VBoxVideo_SDKS        = W2K3DDKX86 WINPSDKINCS
 VBoxVideo_DEFS        = LOG_TO_BACKDOOR
 #VBoxVideo_DEFS        += LOG_ENABLED
-VBoxVideo_INCS        = ..\..\include
+VBoxVideo_INCS        = ../../include
 VBoxVideo_LDFLAGS     = /Entry:DriverEntry@8
 VBoxVideo_SOURCES     = \
 	VBoxVideo.cpp \
