@@ -1,4 +1,4 @@
-# $Id: Config.kmk 373 2007-01-26 18:33:29Z vboxsync $
+# $Id: Config.kmk 376 2007-01-27 03:36:43Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1128,9 +1128,9 @@ TEMPLATE_VBOXR0DRV_CFLAGS              = \
 TEMPLATE_VBOXR0DRV_CFLAGS.release      = $(TEMPLATE_VBOXR0DRV_CXXFLAGS.release)
 TEMPLATE_VBOXR0DRV_CFLAGS.profile      = $(TEMPLATE_VBOXR0DRV_CXXFLAGS.profile)
 TEMPLATE_VBOXR0DRV_CFLAGS.kprofile     = $(TEMPLATE_VBOXR0DRV_CXXFLAGS.kprofile)
-TEMPLATE_VBOXR0DRV_LDFLAGS             = \
-	-static -nostdlib -r -lkmodc++ -lkmod -lcc_kext -lcpp_kext -Wl,-Y,1455 \
+TEMPLATE_VBOXR0DRV_LDFLAGS             = -static -nostdlib -r -Wl,-Y,1455 \
 	-mmacosx-version-min=10.4 -isysroot /Developer/SDKs/MacOSX10.4u.sdk
+TEMPLATE_VBOXR0DRV_LIBS                = kmodc++ kmod cc_kext cpp_kext $(VBOX_GCC_LIBGCC)
 endif
 
 ifdef VBOX_WITH_VBOXDRV
