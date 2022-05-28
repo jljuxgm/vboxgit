@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 1211 2007-03-05 12:42:11Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 1214 2007-03-05 13:31:41Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -586,6 +586,11 @@ ResumeExecution:
 
     /* All done! Let's start VM execution. */
     STAM_PROFILE_ADV_START(&pVM->hwaccm.s.StatInGC, x);
+
+    /** Erratum #170 -> must force a TLB flush */
+    /** @todo supposed to be fixed in future by AMD */
+    fForceTLBFlush = true;
+
     if (    pVM->hwaccm.s.svm.fResumeVM == false
         ||  fForceTLBFlush)
     {
