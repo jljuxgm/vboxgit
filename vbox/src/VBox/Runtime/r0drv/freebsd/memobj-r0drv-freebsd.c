@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-freebsd.c 4155 2007-08-15 19:41:26Z vboxsync $ */
+/* $Id: memobj-r0drv-freebsd.c 4989 2007-09-24 03:48:15Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, FreeBSD.
  */
@@ -310,7 +310,7 @@ int rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS Ph
 int rtR0MemObjNativeAllocPhysNC(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest)
 {
     /** @todo rtR0MemObjNativeAllocPhys / freebsd */
-    return rtR0MemObjNativeAllocPhys(ppMem, cb, PhysHighest);
+    return VERR_NOT_SUPPORTED;
 }
 
 
