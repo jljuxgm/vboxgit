@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 5073 2007-09-27 11:06:28Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 5447 2007-10-23 16:01:08Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -369,10 +369,10 @@ static int VMXR0CheckPendingInterrupt(PVM pVM, CPUMCTX *pCtx)
             }
             else
             {
-                /* can't happen... */
-                AssertFailed();
+                /* Can only happen in rare cases where a pending interrupt is cleared behind our back */
+                Assert(!VM_FF_ISPENDING(pVM, (VM_FF_INTERRUPT_APIC|VM_FF_INTERRUPT_PIC)));
                 STAM_COUNTER_INC(&pVM->hwaccm.s.StatSwitchGuestIrq);
-                return VINF_EM_RAW_INTERRUPT_PENDING;
+                /* Just continue */
             }
         }
         else
