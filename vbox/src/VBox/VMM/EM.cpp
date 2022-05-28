@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 4295 2007-08-22 20:17:19Z vboxsync $ */
+/* $Id: EM.cpp 4551 2007-09-05 23:26:06Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -483,6 +483,7 @@ EMR3DECL(const char *) EMR3GetStateName(EMSTATE enmState)
 {
     switch (enmState)
     {
+        case EMSTATE_NONE:              return "EMSTATE_NONE";
         case EMSTATE_RAW:               return "EMSTATE_RAW";
         case EMSTATE_HWACC:             return "EMSTATE_HWACC";
         case EMSTATE_REM:               return "EMSTATE_REM";
