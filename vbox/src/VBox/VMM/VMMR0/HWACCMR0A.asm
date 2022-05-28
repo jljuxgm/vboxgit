@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 2731 2007-05-21 13:13:42Z vboxsync $
+; $Id: HWACCMR0A.asm 2732 2007-05-21 13:58:34Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -570,9 +570,9 @@ BEGINPROC VMXActivateVMCS
  %else
     push    rcx
  %endif
-    vmclear [rsp]
+    vmptrld [rsp]
 %else
-    vmclear [esp + 4]
+    vmptrld [esp + 4]
 %endif
     jnc     .the_end
     mov     eax, VERR_VMX_INVALID_VMCS_PTR
