@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 838 2007-02-12 12:05:52Z vboxsync $ */
+/* $Id: PGMInternal.h 1594 2007-03-21 04:12:50Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -478,9 +478,9 @@ typedef struct PGMRAMRANGE
     uint32_t                            fFlags;
 
     /** HC virtual lookup ranges for chunks. Currently only used with MM_RAM_FLAGS_DYNAMIC_ALLOC ranges. */
-    GCPTRTYPE(void **)                  pavHCChunkGC;
+    GCPTRTYPE(PRTHCPTR)                 pavHCChunkGC;
     /** HC virtual lookup ranges for chunks. Currently only used with MM_RAM_FLAGS_DYNAMIC_ALLOC ranges. */
-    HCPTRTYPE(void **)                  pavHCChunkHC;
+    HCPTRTYPE(PRTHCPTR)                 pavHCChunkHC;
 
     /** Start of the HC mapping of the range.
      * For pure MMIO and dynamically allocated ranges this is NULL, while for all ranges this is a valid pointer. */
