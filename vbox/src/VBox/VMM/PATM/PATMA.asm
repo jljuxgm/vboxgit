@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 302 2007-01-25 14:48:55Z vboxsync $
+; $Id: PATMA.asm 354 2007-01-26 13:22:06Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -1080,7 +1080,7 @@ PATMIretStart:
 %endif
 
     test    dword [esp], X86_EFL_NT
-    jnz near iret_fault1
+    jnz     iret_fault1
 
     test    dword [esp+12], X86_EFL_VM
     jnz     iret_fault
