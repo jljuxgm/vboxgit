@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 2376 2007-04-27 00:59:06Z vboxsync $ */
+/* $Id: VM.cpp 2508 2007-05-04 18:24:52Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1196,10 +1196,6 @@ VMR3DECL(int)   VMR3PowerOff(PVM pVM)
 static DECLCALLBACK(int) vmR3PowerOff(PVM pVM)
 {
     LogFlow(("vmR3PowerOff: pVM=%p\n", pVM));
-
-    /** @todo there is still a problem here so we have to ignore the second poweroff */
-    if (pVM->enmVMState == VMSTATE_OFF)
-        return VINF_EM_OFF;
 
     /*
      * Validate input.
