@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 4665 2007-09-10 13:41:18Z vboxsync $ */
+/* $Id: PGMAllBth.h 4788 2007-09-14 10:59:39Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2456,7 +2456,7 @@ PGM_BTH_DECL(int, VerifyAccessSyncPage)(PVM pVM, RTGCUINTPTR GCPtrPage, unsigned
         if (VBOX_SUCCESS(rc))
         {
             /* Page was successfully synced */
-            Log(("PGMVerifyAccess: success (sync)\n"));
+            Log2(("PGMVerifyAccess: success (sync)\n"));
             rc = VINF_SUCCESS;
         }
         else
