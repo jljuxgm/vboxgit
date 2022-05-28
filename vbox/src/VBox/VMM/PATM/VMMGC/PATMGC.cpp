@@ -1,4 +1,4 @@
-/* $Id: PATMGC.cpp 4787 2007-09-14 09:08:56Z vboxsync $ */
+/* $Id: PATMGC.cpp 5261 2007-10-12 14:14:27Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -82,8 +82,8 @@ PATMGCDECL(int) PATMGCHandleWriteToPatchPage(PVM pVM, PCPUMCTXCORE pRegFrame, RT
     PPATMPATCHPAGE       pPatchPage;
 
     /* Quick boundary check */
-    if (    GCPtr < pVM->patm.s.pPatchedInstrGCLowest
-        ||  GCPtr > pVM->patm.s.pPatchedInstrGCHighest
+    if (    PAGE_ADDRESS(GCPtr) < PAGE_ADDRESS(pVM->patm.s.pPatchedInstrGCLowest)
+        ||  PAGE_ADDRESS(GCPtr) > PAGE_ADDRESS(pVM->patm.s.pPatchedInstrGCHighest)
        )
        return VERR_PATCH_NOT_FOUND;
 
