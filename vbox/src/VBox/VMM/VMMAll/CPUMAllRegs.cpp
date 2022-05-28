@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 4207 2007-08-17 20:11:37Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 4208 2007-08-17 22:11:20Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1514,7 +1514,7 @@ CPUMDECL(uint32_t) CPUMGetGuestCPL(PVM pVM, PCPUMCTXCORE pCtxCore)
  * @returns The CPU mode.
  * @param   pVM         The VM handle.
  */
-CPUMDECL(uint32_t) CPUMGetGuestMode(PVM pVM)
+CPUMDECL(CPUMMODE) CPUMGetGuestMode(PVM pVM)
 {
     CPUMMODE enmMode;
     if (!(pVM->cpum.s.Guest.cr0 & X86_CR0_PE))
