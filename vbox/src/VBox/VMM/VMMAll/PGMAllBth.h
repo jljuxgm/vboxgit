@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 5662 2007-11-10 14:10:41Z vboxsync $ */
+/* $Id: PGMAllBth.h 5663 2007-11-10 14:15:01Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1683,7 +1683,7 @@ PGM_BTH_DECL(int, CheckPageFault)(PVM pVM, uint32_t uErr, PSHWPDE pPdeDst, PGSTP
     if (    (uErr & X86_TRAP_PF_RSVD)
         ||  !pPdeSrc->n.u1Present
 #if PGM_GST_TYPE == PGM_TYPE_PAE
-        ||  ((uErr & X86_TRAP_PF_ID) && !pPdeSrc->n.u1NoExecute)
+        ||  ((uErr & X86_TRAP_PF_ID) &&  pPdeSrc->n.u1NoExecute)
 #endif
         ||  ((uErr & X86_TRAP_PF_RW) && !pPdeSrc->n.u1Write)
         ||  ((uErr & X86_TRAP_PF_US) && !pPdeSrc->n.u1User) )
