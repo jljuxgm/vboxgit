@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 2555 2007-05-09 12:58:47Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 2556 2007-05-09 13:02:52Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -746,6 +746,7 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     AssertRC(rc);
 
     /** TSC offset. */
+    /** @todo use host tsc if safe, other intercept rdtsc */
     uint64_t u64TSCOffset = TMCpuTickGetOffset(pVM);
 
 #if HC_ARCH_BITS == 64
