@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 40 2007-01-15 17:44:46Z vboxsync $ */
+/* $Id: PGM.cpp 108 2007-01-17 15:45:40Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -194,7 +194,7 @@ static const DBGCCMD    g_aCmds[] =
 
 
 
-#ifndef __AMD64__
+#if 1/// @todo ndef __AMD64__
 /*
  * Shadow - 32-bit mode
  */
@@ -1439,7 +1439,7 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
     }
 
     /*
-     * Call the reset function to be on the safe side...
+     * Call the reset function to make sure all the memory is cleared.
      */
     PGMR3Reset(pVM);
 
@@ -1617,7 +1617,6 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
                         if (VBOX_FAILURE(rc))
                             return rc;
                     }
-
                     Assert(pRam->pavHCChunkHC[iChunk]);
 
                     SSMR3GetMem(pSSM, pRam->pavHCChunkHC[iChunk], PGM_DYNAMIC_CHUNK_SIZE);
