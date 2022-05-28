@@ -1,4 +1,4 @@
-# $Id: Config.kmk 116 2007-01-17 16:23:47Z vboxsync $
+# $Id: Config.kmk 122 2007-01-17 16:58:09Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1307,7 +1307,9 @@ else
  TEMPLATE_VBOXNOCRTGCC_ASFLAGS          = $(VBOX_ASFLAGS)
  TEMPLATE_VBOXNOCRTGCC_LDFLAGS          = -nostdlib
  ifneq ($(filter-out os2 darwin,$(BUILD_TARGET)),)
-  TEMPLATE_VBOXNOCRTGCC_LDFLAGS        += -Wl,--no-undefined #-Wl,--exclude-libs,ALL - too new :-/
+  ifneq ($(BUILD_TARGET_ARCH),amd64)
+   TEMPLATE_VBOXNOCRTGCC_LDFLAGS        += -Wl,--no-undefined
+  endif
  endif
  TEMPLATE_VBOXNOCRTGCC_LIBS             = $(VBOX_GCC_LIBGCC)
 endif
