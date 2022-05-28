@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3899 2007-07-27 07:54:21Z vboxsync $
+# $Id: Makefile.kmk 3900 2007-07-27 07:54:57Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -114,7 +114,6 @@ ifdef VBOX_WITH_DOCS
  endif
  LINUXSTRIPBIN += \
 	$(if $(VBOX_WITH_QTGUI),kchmviewer,)
- endif
 endif
 ifdef VBOX_WITH_VRDP
  LINUXSTRIPBIN += \
