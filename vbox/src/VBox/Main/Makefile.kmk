@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4103 2007-08-09 17:33:43Z vboxsync $
+# $Id: Makefile.kmk 4338 2007-08-24 10:18:16Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -373,8 +373,7 @@ VBoxXML_INCS       = \
 	include \
 	$(PATH_TARGET)
 VBoxXML_SOURCES    = \
-	xml/cfgldr.cpp \
-	xml/cfgldrhlp.cpp
+	xml/cfgldr.cpp
 VBoxXML_LDFLAGS.darwin = -install_name @executable_path/VBoxXML.dylib -Wl,-x # no debug info please.
 
 ## @todo (dmik): temporarily embed SettingsConverter.xsl into VBoxXML,
