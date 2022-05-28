@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 1332 2007-03-08 14:04:24Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -1317,7 +1317,7 @@ IOMDECL(int) IOMMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame
           GCPhysFault, uErrorCode, pvFault, pRegFrame->eip));
 
     /** @todo V86 mode; SELM functions don't handle this */
-    if (CPUMGetGuestEFlags(pVM) & X86_EFL_VM)
+    if (pRegFrame->eflags.Bits.u1VM)
         return (uErrorCode & X86_TRAP_PF_RW) ? VINF_IOM_HC_MMIO_WRITE : VINF_IOM_HC_MMIO_READ;
 
     /*
