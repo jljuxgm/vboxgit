@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 110 2007-01-17 15:53:30Z vboxsync $ */
+/* $Id: PATMAll.cpp 111 2007-01-17 16:02:33Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -682,7 +682,7 @@ PATMDECL(int) PATMHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                 AssertFailed();
                 return VINF_EM_RAW_EMULATE_INSTR;
             }
-            rc = DISCoreOne(&cpu, (RTGCUINTPTR)&pRec->patch.aPrivInstr[0], &cbOp);
+            rc = DISCoreOne(&cpu, (RTUINTPTR)&pRec->patch.aPrivInstr[0], &cbOp);
             if (VBOX_FAILURE(rc))
             {
                 Log(("DISCoreOne failed with %Vrc\n", rc));
