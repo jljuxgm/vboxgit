@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 4801 2007-09-14 15:16:30Z vboxsync $ */
+/* $Id: strformat.cpp 5413 2007-10-21 20:47:00Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - String Formatter.
  */

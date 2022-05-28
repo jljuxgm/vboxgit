@@ -1,4 +1,4 @@
-/* $Id: strspace.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: strspace.cpp 5413 2007-10-21 20:47:00Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Unique String Spaces.
  */
@@ -54,10 +54,10 @@
 #define SSToDS(ptr) ptr
 #define KMAX RT_MAX
 #define kASSERT Assert
-#include "table/avl_Base.cpp.h"
-#include "table/avl_Get.cpp.h"
-#include "table/avl_DoWithAll.cpp.h"
-#include "table/avl_Destroy.cpp.h"
+#include "../../table/avl_Base.cpp.h"
+#include "../../table/avl_Get.cpp.h"
+#include "../../table/avl_DoWithAll.cpp.h"
+#include "../../table/avl_Destroy.cpp.h"
 
 
 

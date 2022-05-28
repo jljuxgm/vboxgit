@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: utf-8.cpp 5413 2007-10-21 20:47:00Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - UTF-8 Decoding.
  */

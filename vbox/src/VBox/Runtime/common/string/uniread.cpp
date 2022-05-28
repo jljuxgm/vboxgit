@@ -1,4 +1,4 @@
-/* $Id: uniread.cpp 4715 2007-09-11 19:44:45Z vboxsync $ */
+/* $Id: uniread.cpp 5413 2007-10-21 20:47:00Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Unicode Specification Reader.
  */

@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 4908 2007-09-20 07:23:11Z vboxsync $ */
+/* $Id: strformatrt.cpp 5413 2007-10-21 20:47:00Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - IPRT String Formatter Extensions.
  */
