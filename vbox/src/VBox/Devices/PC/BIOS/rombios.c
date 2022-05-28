@@ -946,7 +946,7 @@ Bit16u cdrom_boot();
 
 #endif // BX_ELTORITO_BOOT
 
-static char bios_cvs_version_string[] = "$Revision: 31 $ $Date: 2007-01-16 01:07:24 +0800 (Tue, 16 Jan 2007) $";
+static char bios_cvs_version_string[] = "$Revision: 89 $ $Date: 2007-01-17 20:25:55 +0800 (Wed, 17 Jan 2007) $";
 
 #define BIOS_COPYRIGHT_STRING "InnoTek VirtualBox BIOS"
 
@@ -4359,7 +4359,7 @@ ASM_END
                         }
 
                         set_e820_range(ES, regs.u.r16.di,
-                                       0x00100000L, extended_memory_size, 1);
+                                       0x00100000L, extended_memory_size - 0x00010000, 1);
                         regs.u.r32.ebx = 4;
                         regs.u.r32.eax = 0x534D4150;
                         regs.u.r32.ecx = 0x14;
