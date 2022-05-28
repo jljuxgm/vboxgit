@@ -1,4 +1,4 @@
-/* $Id: GMMR0Internal.h 5086 2007-09-27 22:12:53Z vboxsync $ */
+/* $Id: GMMR0Internal.h 5135 2007-10-02 09:17:01Z vboxsync $ */
 /** @file
  * GMM - The Global Memory Manager, Internal Header.
  */
@@ -62,8 +62,14 @@ typedef struct GMMPERVM
     uint64_t        cBalloonedPages;
     /** The max number of pages that can be ballooned. */
     uint64_t        cMaxBalloonedPages;
-    /** The number of pages we've currently requested the guest to give us. */
+    /** The number of pages we've currently requested the guest to give us.
+     * This is 0 if no pages currently requested. */
     uint64_t        cReqBalloonedPages;
+    /** The number of pages the guest has given us in response to the request.
+     * This is not reset on request completed and may be used in later decisions. */
+    uint64_t        cReqActuallyBalloonedPages;
+    /** The number of pages we've currently requested the guest to take back. */
+    uint64_t        cReqDeflatePages;
     /** Whether ballooning is enabled or not. */
     bool            fBallooningEnabled;
 
