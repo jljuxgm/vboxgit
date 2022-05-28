@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 2061 2007-04-13 08:05:27Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 2069 2007-04-13 10:02:12Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -33,6 +33,7 @@
 #include <VBox/err.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
+#include <iprt/log.h>
 
 
 /**
