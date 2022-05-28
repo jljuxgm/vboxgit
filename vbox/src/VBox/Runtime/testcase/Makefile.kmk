@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4475 2007-09-01 01:21:19Z vboxsync $
+# $Id: Makefile.kmk 4546 2007-09-05 22:03:43Z vboxsync $
 ## @file
 # Makefile for the IPRT testcases.
 #
@@ -148,9 +148,7 @@ tstLdrObj_LIBS    += \
 	$(PATH_LIB)/VMMGCBuiltin$(VBOX_SUFF_LIB)
 endif # PE
 ifeq ($(VBOX_LDR_FMT32),elf)
-  tstLdrObj_LDFLAGS = -e Entrypoint
-tstLdrObj_LIBS    += \
-	$(PATH_LIB)/VMMGCBuiltin$(VBOX_SUFF_LIB)
+tstLdrObj_LDFLAGS = -e Entrypoint
 endif
 ifeq ($(VBOX_LDR_FMT32),lx)
 tstLdrObj_LIBS    += \
