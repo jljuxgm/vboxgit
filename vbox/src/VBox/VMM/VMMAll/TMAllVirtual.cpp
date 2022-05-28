@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 2075 2007-04-13 12:59:25Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 2082 2007-04-13 16:16:13Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -104,6 +104,7 @@ TMDECL(uint64_t) TMVirtualGet(PVM pVM)
     return TMVirtualGetEx(pVM, true /* check timers */);
 }
 
+
 /**
  * Gets the current TMCLOCK_VIRTUAL time
  *
@@ -147,6 +148,7 @@ TMDECL(uint64_t) TMVirtualGetEx(PVM pVM, bool fCheckTimers)
         u64 = pVM->tm.s.u64Virtual;
     return u64;
 }
+
 
 /**
  * Gets the current TMCLOCK_VIRTUAL_SYNC time.
