@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 2270 2007-04-20 12:58:15Z vboxsync $ */
+/* $Id: PGMInternal.h 2288 2007-04-20 23:00:04Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -305,9 +305,9 @@ typedef struct PGMMAPPING
     /** Pointer to next entry. */
     R3PTRTYPE(struct PGMMAPPING *)  pNextR3;
     /** Pointer to next entry. */
-    GCPTRTYPE(struct PGMMAPPING *)  pNextGC;
-    /** Pointer to next entry. */
     R0PTRTYPE(struct PGMMAPPING *)  pNextR0;
+    /** Pointer to next entry. */
+    GCPTRTYPE(struct PGMMAPPING *)  pNextGC;
     /** Start Virtual address. */
     RTGCUINTPTR                     GCPtr;
     /** Last Virtual address (inclusive). */
