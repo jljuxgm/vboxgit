@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 1057 2007-02-23 20:38:37Z vboxsync $ */
+/* $Id: TMAll.cpp 2248 2007-04-19 21:43:29Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -450,7 +450,7 @@ TMDECL(int) TMTimerSetMillies(PTMTIMER pTimer, uint32_t cMilliesToNext)
         case TMCLOCK_VIRTUAL:
             return TMTimerSet(pTimer, cMilliesToNext * (uint64_t)TMCLOCK_FREQ_VIRTUAL / 1000 + TMVirtualGet(pVM));
         case TMCLOCK_VIRTUAL_SYNC:
-            return TMTimerSet(pTimer, cMilliesToNext * (uint64_t)TMCLOCK_FREQ_VIRTUAL / 1000 + TMVirtualGetSync(pVM));
+            return TMTimerSet(pTimer, cMilliesToNext * (uint64_t)TMCLOCK_FREQ_VIRTUAL / 1000 + TMVirtualSyncGet(pVM));
         case TMCLOCK_REAL:
             AssertCompile(TMCLOCK_FREQ_REAL == 1000);
             return TMTimerSet(pTimer, cMilliesToNext + TMRealGet(pVM));
@@ -571,7 +571,7 @@ TMDECL(uint64_t) TMTimerGet(PTMTIMER pTimer)
             u64 = TMVirtualGet(pVM);
             break;
         case TMCLOCK_VIRTUAL_SYNC:
-            u64 = TMVirtualGetSync(pVM);
+            u64 = TMVirtualSyncGet(pVM);
             break;
         case TMCLOCK_REAL:
             u64 = TMRealGet(pVM);
