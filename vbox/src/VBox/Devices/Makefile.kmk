@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5738 2007-11-14 09:16:16Z vboxsync $
+# $Id: Makefile.kmk 5754 2007-11-15 06:18:16Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -521,6 +521,7 @@ Drivers_SOURCES      := $(filter-out \
 	Storage/DrvHost% \
 	, $(Drivers_SOURCES))
 Drivers_SOURCES.solaris = \
+    Audio/solaudio.c \
 	Network/DrvTAP.cpp \
 	Storage/DrvHostBase.cpp \
 	Storage/DrvHostDVD.cpp
