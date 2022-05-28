@@ -1,4 +1,4 @@
-; $Id: TRPMR0A.asm 397 2007-01-28 02:34:06Z vboxsync $
+; $Id: TRPMR0A.asm 399 2007-01-28 03:09:35Z vboxsync $
 ;; @file
 ; TRPM - Host Context Ring-0
 ;
@@ -47,15 +47,15 @@ BEGINPROC trpmR0DispatchHostInterrupt
     and     rsp, 15h                    ; align the stack. (do it unconditionally saves some jump mess)
 
     ; switch stack?
-% ifdef ASM_CALL64_MSC
+ %ifdef ASM_CALL64_MSC
     cmp     r8, 0ffffffffffffffffh
     je      .no_stack_switch
     mov     rsp, r8
-% else
+ %else
     cmp     rdx, 0ffffffffffffffffh
     je      .no_stack_switch
     mov     rsp, rdx
-% endif
+ %endif
 .no_stack_switch:
 
     ; create the iret frame
@@ -68,15 +68,15 @@ BEGINPROC trpmR0DispatchHostInterrupt
     push    rax
 
     ; create the retf frame
-% ifdef ASM_CALL64_MSC
+ %ifdef ASM_CALL64_MSC
     movzx   rdx, dx
     push    rdx
     push    rcx
-% else
+ %else
     movzx   rdi, di
     push    rdi
     push    rsi
-% endif
+ %endif
 
     ; dispatch it!
     db 048h
