@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4914 2007-09-20 08:40:48Z vboxsync $
+# $Id: Makefile.kmk 4949 2007-09-21 11:04:08Z vboxsync $
 ## @file
 # Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -80,6 +80,9 @@ endif
 VBoxBFE_INCS = \
 	$(PATH_VBoxBFE) \
 	$(PATH_BIN)/sdk/include
+VBoxBFE_INCS.freebsd = \
+	/usr/include \
+	/usr/local/include
 VBoxBFE_INCS.linux = \
 	$(PATH_BIN)/sdk/include \
 	$(VBOX_XPCOM_INCS)

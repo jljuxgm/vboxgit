@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4888 2007-09-19 07:59:52Z vboxsync $
+# $Id: Makefile.kmk 4949 2007-09-21 11:04:08Z vboxsync $
 ## @file
 # Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -69,6 +69,10 @@ VBoxSDL_LIBS += \
 endif
 VBoxSDL_LIBPATH = \
 	$(VBOX_LIBPATH_X11)
+VBoxSDL_INCS.freebsd = \
+	/usr/include \
+	/usr/local/include \
+	/usr/X11R6/include ## @todo figure this out.
 endif
 VBoxSDL_LIBS.solaris = \
 	$(LIB_X11)
@@ -111,6 +115,10 @@ endif
 ifeq ($(filter-out freebsd linux netbsd openbsd solaris,$(BUILD_TARGET)),) # X11
 tstSDL_LIBPATH = \
 	$(VBOX_LIBPATH_X11)
+tstSDL_INCS.freebsd = \
+	/usr/include \
+	/usr/local/include \
+	/usr/X11R6/include ## @todo figure this out.
 endif
 
 tstSDL_LDFLAGS.darwin = \
