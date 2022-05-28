@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5145 2007-10-02 20:06:01Z vboxsync $
+# $Id: Config.kmk 5173 2007-10-06 01:28:47Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -97,7 +97,7 @@ VBOX_PATH_TESTSUITE   = $(patsubst %/,%,$(PATH_INS)/$(INST_TESTSUITE))
 .DELETE_ON_ERROR:
 
 # Notify about important kBuild updates.
-ifneq ($(call int-ge,$(KMK_REVISION),1065),1)
+ifneq ($(call int-ge,$(KMK_REVISION),1191),1)
  $(error You must update kBuild!)
 endif
 
@@ -2556,7 +2556,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5145 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5173 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(USERNAME),bird) # Wastes nearly half a second on windows, very annoying. TODO: $(which ).
   ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
