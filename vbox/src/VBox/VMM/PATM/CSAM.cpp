@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 1864 2007-04-02 15:31:14Z vboxsync $ */
+/* $Id: CSAM.cpp 1974 2007-04-06 16:14:48Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2225,12 +2225,12 @@ CSAMR3DECL(int) CSAMR3CheckGates(PVM pVM, uint32_t iGate, uint32_t cGates)
         &&  cGates != 1)
         return VINF_SUCCESS;    /* ignored */
 
-    if (cGates != 1)
-        pVM->csam.s.fGatesChecked = true;
-
-    Assert(GCPtrIDT && cGates <= 256);
+    Assert(cGates <= 256);
     if (!GCPtrIDT || cGates > 256)
         return VERR_INVALID_PARAMETER;
+
+    if (cGates != 1)
+        pVM->csam.s.fGatesChecked = true;
 
     /* Determine valid upper boundary. */
     maxGates   = (cbIDT+1) / sizeof(VBOXIDTE);
