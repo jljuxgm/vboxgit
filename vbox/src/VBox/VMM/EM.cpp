@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 2882 2007-05-25 16:14:10Z vboxsync $ */
+/* $Id: EM.cpp 2888 2007-05-28 08:45:00Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -1318,7 +1318,7 @@ int emR3RawExecuteIOInstruction(PVM pVM)
 
         /* 
          * Handled the I/O return codes.
-         * (The unhandled cases ends up with rc == VINF_EM_RESCHEDULE_REM.)
+         * (The unhandled cases end up with rc == VINF_EM_RESCHEDULE_REM.)
          */
         if (rc == VINF_EM_RESCHEDULE_REM)
         {
