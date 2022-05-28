@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 247 2007-01-23 17:10:04Z vboxsync $ */
+/* $Id: VMMInternal.h 271 2007-01-24 13:42:58Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -284,6 +284,7 @@ typedef struct VMM
     STAMCOUNTER                 StatGCRetPatchInt3;
     STAMCOUNTER                 StatGCRetPatchPF;
     STAMCOUNTER                 StatGCRetPatchGP;
+    STAMCOUNTER                 StatGCRetPatchIretIRQ;
     STAMCOUNTER                 StatGCRetPageOverflow;
     STAMCOUNTER                 StatGCRetRescheduleREM;
     STAMCOUNTER                 StatGCRetToR3;
