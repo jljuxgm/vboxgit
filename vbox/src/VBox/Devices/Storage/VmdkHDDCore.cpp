@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 2360 2007-04-26 17:09:34Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 2361 2007-04-26 17:45:23Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -542,7 +542,7 @@ static int vmdkDescSetStr(PVMDKIMAGE pImage, PVMDKDESCRIPTOR pDescriptor,
 {
     char *pszTmp;
     size_t cbKey = strlen(pszKey);
-    unsigned uLast = NULL;
+    unsigned uLast = 0;
 
     while (uStart != 0)
     {
