@@ -1,11 +1,11 @@
-# $Id: Makefile.kmk 4236 2007-08-20 08:56:32Z vboxsync $
+# $Id: Makefile.kmk 4392 2007-08-27 17:22:49Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
 
 #
 #  Copyright (C) 2006-2007 innotek GmbH
-# 
+#
 #  This file is part of VirtualBox Open Source Edition (OSE), as
 #  available from http://www.virtualbox.org. This file is free software;
 #  you can redistribute it and/or modify it under the terms of the GNU
@@ -24,8 +24,13 @@ include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 include $(PATH_SUB_CURRENT)/Storage/testcase/Makefile.kmk
 
 # Subdirs with complex makefiles.
+ifdef VBOX_WITH_INTEL_PXE
+SUBDIRS_LIBRARIES = PC/PXE
+SUBDIRS_CLEAN     = PC/PXE
+else
 SUBDIRS_LIBRARIES = PC/Etherboot-src
 SUBDIRS_CLEAN     = PC/Etherboot-src
+endif
 
 #
 # Main targets.

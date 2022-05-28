@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4216 2007-08-18 22:18:36Z vboxsync $
+# $Id: Config.kmk 4392 2007-08-27 17:22:49Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -225,6 +225,8 @@ VBOX_WITH_OGL = 1
 VBOX_WITH_SHARED_FOLDERS = 1
 # Enable shared clipboard
 VBOX_WITH_SHARED_CLIPBOARD = 1
+# Enable the Intel PXE ROM (replaces Etherboot).
+#VBOX_WITH_INTEL_PXE = 1
 
 
 #
@@ -2512,7 +2514,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4216 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4392 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
