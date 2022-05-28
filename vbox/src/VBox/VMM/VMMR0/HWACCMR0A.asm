@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 2756 2007-05-22 08:25:23Z vboxsync $
+; $Id: HWACCMR0A.asm 2757 2007-05-22 08:30:52Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -267,7 +267,7 @@ ALIGNCODE(16)
 
 .vmxstart_success:
     push    xDI
-    mov     xDI, [xSP + xS * 2]          ;/* pCtx */
+    mov     xDI, [xSP + xS * 6]          ;/* pCtx */
 
     mov     [ss:xDI + CPUMCTX.eax], eax
     mov     [ss:xDI + CPUMCTX.ebx], ebx
@@ -441,7 +441,7 @@ vmresume_good:
 
 vmresume_success:
     push    xDI
-    mov     xDI, [xSP + xS * 2]         ; pCtx 
+    mov     xDI, [xSP + xS * 6]         ; pCtx 
 
     mov     [ss:xDI + CPUMCTX.eax], eax
     mov     [ss:xDI + CPUMCTX.ebx], ebx
