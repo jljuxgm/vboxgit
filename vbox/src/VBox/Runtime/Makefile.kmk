@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5653 2007-11-09 15:03:53Z vboxsync $
+# $Id: Makefile.kmk 5760 2007-11-15 17:10:33Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -150,6 +150,7 @@ RuntimeR3_SOURCES       = \
 	common/log/logformat.cpp \
 	common/misc/assert.cpp \
 	common/misc/rand.cpp \
+	common/misc/getopt.cpp \
 	common/misc/req.cpp \
 	common/misc/sanity-c.c \
 	common/misc/sanity-cpp.cpp \
