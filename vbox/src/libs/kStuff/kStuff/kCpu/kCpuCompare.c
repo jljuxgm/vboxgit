@@ -1,4 +1,4 @@
-/* $Id: kCpuCompare.c 3605 2007-10-29 00:48:14Z bird $ */
+/* $Id: kCpuCompare.c 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kCpu - kCpuCompare.
  */

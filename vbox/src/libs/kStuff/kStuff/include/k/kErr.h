@@ -1,4 +1,4 @@
-/* $Id: kErr.h 3580 2007-09-02 21:41:44Z bird $ */
+/* $Id: kErr.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kErr - Status Code API.
  */

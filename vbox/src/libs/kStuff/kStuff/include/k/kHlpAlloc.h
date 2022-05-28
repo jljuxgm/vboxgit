@@ -1,4 +1,4 @@
-/* $Id: kHlpAlloc.h 3573 2007-08-31 04:09:23Z bird $ */
+/* $Id: kHlpAlloc.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kHlpAlloc - Memory Allocation.
  */

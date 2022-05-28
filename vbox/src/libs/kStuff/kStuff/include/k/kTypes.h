@@ -1,4 +1,4 @@
-/* $Id: kTypes.h 3610 2007-10-29 03:33:14Z bird $ */
+/* $Id: kTypes.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  *
  * kTypes - Typedefs And Related Constants And Macros.

@@ -1,4 +1,4 @@
-/* $Id: mz.h 3569 2007-08-31 02:16:27Z bird $ */
+/* $Id: mz.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * MZ structures, types and defines.
  */

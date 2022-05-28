@@ -1,4 +1,4 @@
-/* $Id: kDefs.h 3598 2007-10-04 18:46:12Z bird $ */
+/* $Id: kDefs.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  *
  * kTypes - Defines and Macros.

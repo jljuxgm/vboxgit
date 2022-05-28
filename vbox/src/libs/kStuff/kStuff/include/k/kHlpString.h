@@ -1,4 +1,4 @@
-/* $Id: kHlpString.h 3574 2007-09-02 19:30:58Z bird $ */
+/* $Id: kHlpString.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kHlpString - String And Memory Routines.
  */

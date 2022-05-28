@@ -1,4 +1,4 @@
-/* $Id: kRdrFile.cpp 3611 2007-10-29 03:37:27Z bird $ */
+/* $Id: kRdrFile.cpp 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kRdrFile - The Native File Provider
  */

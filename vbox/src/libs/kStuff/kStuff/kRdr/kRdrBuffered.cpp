@@ -1,4 +1,4 @@
-/* $Id: kRdrBuffered.cpp 3612 2007-10-30 16:42:54Z bird $ */
+/* $Id: kRdrBuffered.cpp 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kRdrBuffered - Buffered File Provider.
  */

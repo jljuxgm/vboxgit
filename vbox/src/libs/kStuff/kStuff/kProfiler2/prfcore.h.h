@@ -1,4 +1,4 @@
-/* $Id: prfcore.h.h 3609 2007-10-29 01:11:39Z bird $ */
+/* $Id: prfcore.h.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kProfiler Mark 2 - Core Header Template.
  */

@@ -1,4 +1,4 @@
-/* $Id: kDbgInternal.h 3603 2007-10-29 00:38:02Z bird $ */
+/* $Id: kDbgInternal.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kDbg - The Debug Info Reader, Internal Header.
  */

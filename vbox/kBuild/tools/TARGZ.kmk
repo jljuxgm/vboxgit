@@ -1,0 +1,64 @@
+# $Id: TARGZ.kmk 819 2007-02-01 02:28:30Z bird $
+## @file
+#
+# kBuild Tool Config - tar.gz unpacker.
+#
+# Copyright (c) 2006-2007 knut st. osmundsen <bird-kBuild-spam@anduin.net>
+#
+#
+# This file is part of kBuild.
+#
+# kBuild is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# kBuild is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with kBuild; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+#
+
+TOOL_TARGZ := tar.gz unpacker.
+
+# Tool Specific Properties
+ifndef TOOL_TARGZ_TAR
+ TOOL_TARGZ_TAR := $(wildcard $(PATH_DEVTOOLS_BLD)/tar/v*/tar$(HOSTSUFF_EXE))
+ ifeq ($(TOOL_TARGZ_TAR),)
+  TOOL_TARGZ_TAR := $(wildcard $(PATH_DEVTOOLS_BLD)/bin/tar$(HOSTSUFF_EXE))
+ endif
+ ifeq ($(TOOL_TARGZ_TAR),)
+  TOOL_TARGZ_TAR := $(TOOL_TAR_TAR)
+ endif
+ ifeq ($(TOOL_TARGZ_TAR),)
+  TOOL_TARGZ_TAR := $(lastword $(sort $(TOOL_TARGZ_TAR)))
+ else
+  TOOL_TARGZ_TAR := tar$(HOSTSUFF_EXE)
+ endif
+else
+ TOOL_TARGZ_TAR := $(TOOL_TARGZ_TAR)
+endif
+TOOL_TARGZ_UNPACK ?= $(TOOL_TARGZ_TAR)
+
+# General Properties used by kBuild
+TOOL_TARGZ_UNPACKFLAGS ?= -z
+
+## UNPACK one file.
+# @param    $(target)   Normalized main target name.
+# @param    $(archive)  The file to unpack.
+# @param    $(flags)    Flags.
+# @param	$(inst)		Where to unpack it.
+# @param	$(out)		Where to write the file list.
+TOOL_TARGZ_UNPACK_OUTPUT =
+TOOL_TARGZ_UNPACK_DEPEND =
+TOOL_TARGZ_UNPACK_DEPORD =
+define TOOL_TARGZ_UNPACK_CMDS
+	$(QUIET)$(TOOL_TARGZ_UNPACK) -x $(flags) -C $(inst) -f $(archive)
+	$(QUIET)$(TOOL_TARGZ_UNPACK) -t $(flags) -f $(archive) > $(out)
+endef
+

@@ -1,4 +1,4 @@
-/* $Id: kHlpDefs.h 3543 2007-08-25 06:10:29Z bird $ */
+/* $Id: kHlpDefs.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kHlpDefs - Helper Definitions.
  */

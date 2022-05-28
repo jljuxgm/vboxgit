@@ -1,4 +1,4 @@
-/* $Id: kAvlDoWithAll.h 3589 2007-09-11 06:50:47Z bird $ */
+/* $Id: kAvlDoWithAll.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kAvlTmpl - Templated AVL Trees, The Callback Iterator.
  */

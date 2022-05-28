@@ -1,4 +1,4 @@
-/* $Id: kAvloU32.h 3562 2007-08-26 22:31:38Z bird $ */
+/* $Id: kAvloU32.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kAvl - AVL Tree Implementation, KU32 keys, Offset Based.
  */

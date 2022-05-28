@@ -1,4 +1,4 @@
-/* $Id: kHlpSys.h 3602 2007-10-29 00:24:04Z bird $ */
+/* $Id: kHlpSys.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kHlpSys - System Call Prototypes.
  */

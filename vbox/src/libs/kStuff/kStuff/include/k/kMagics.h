@@ -1,4 +1,4 @@
-/* $Id: kMagics.h 3550 2007-08-26 01:13:35Z bird $ */
+/* $Id: kMagics.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kMagics - Various Magic Constants.
  */

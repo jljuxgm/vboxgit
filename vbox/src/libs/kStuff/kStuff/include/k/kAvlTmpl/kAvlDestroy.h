@@ -1,4 +1,4 @@
-/* $Id: kAvlDestroy.h 3590 2007-09-11 06:54:28Z bird $ */
+/* $Id: kAvlDestroy.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kAvlTmpl - Templated AVL Trees, Destroy the tree.
  */

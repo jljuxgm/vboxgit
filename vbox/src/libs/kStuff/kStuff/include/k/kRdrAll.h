@@ -1,4 +1,4 @@
-/* $Id: kRdrAll.h 3571 2007-08-31 02:39:26Z bird $ */
+/* $Id: kRdrAll.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kRdr - The File Provider, All Details and Dependencies Included.
  */

@@ -1,4 +1,4 @@
-/* $Id: kLdrInternal.h 3601 2007-10-29 00:21:13Z bird $ */
+/* $Id: kLdrInternal.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kLdr - The Dynamic Loader, internal header.
  */

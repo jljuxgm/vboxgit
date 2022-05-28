@@ -1,4 +1,4 @@
-/* $Id: kHlpStrNPComp.c 3608 2007-10-29 00:49:05Z bird $ */
+/* $Id: kHlpStrNPComp.c 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kHlpString - kHlpStrNPComp.
  */

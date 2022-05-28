@@ -1,4 +1,4 @@
-/* $Id: kAvlEnum.h 3564 2007-08-27 03:43:09Z bird $ */
+/* $Id: kAvlEnum.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kAvlTmpl - Templated AVL Trees, Node Enumeration.
  */

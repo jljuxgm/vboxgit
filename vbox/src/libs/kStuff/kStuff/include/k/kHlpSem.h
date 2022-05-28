@@ -1,4 +1,4 @@
-/* $Id: kHlpSem.h 3576 2007-09-02 20:23:54Z bird $ */
+/* $Id: kHlpSem.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kHlpSem - Semaphores.
  */

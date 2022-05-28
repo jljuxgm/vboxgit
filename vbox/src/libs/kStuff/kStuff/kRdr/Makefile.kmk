@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3581 2007-09-02 22:02:55Z bird $
+# $Id: Makefile.kmk 2 2007-11-16 16:07:14Z bird $
 ## @file
 # kRdr - The File Provider, sub-makefile.
 #

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3604 2007-10-29 00:38:48Z bird $
+# $Id: Makefile.kmk 2 2007-11-16 16:07:14Z bird $
 ## @file
 # kErr - The Status Code API, sub-makefile.
 #

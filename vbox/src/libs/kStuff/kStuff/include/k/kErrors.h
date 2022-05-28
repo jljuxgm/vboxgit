@@ -1,4 +1,4 @@
-/* $Id: kErrors.h 3585 2007-09-03 01:18:26Z bird $ */
+/* $Id: kErrors.h 2 2007-11-16 16:07:14Z bird $ */
 /** @file
  * kErrors - Status Codes.
  */
