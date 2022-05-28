@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2443 2007-04-30 18:42:26Z vboxsync $
+# $Id: Makefile.kmk 2444 2007-04-30 19:36:38Z vboxsync $
 ## @file
 # The Recompiler Makefile.
 #
@@ -289,6 +289,7 @@ $(PATH_TARGET)/VBoxREMImp.c: VBoxREM.def InnoTek/deftoimp.sed | $(call DIRDEP,$(
 	$(APPEND) $@.tmp '#else'
 	$(APPEND) $@.tmp '# define EXPORT'
 	$(APPEND) $@.tmp '#endif'
+	$(APPEND) $@.tmp '#error halt'
 	$(APPEND) $@.tmp ''
 	$(SED) -f InnoTek/deftoimp.sed VBoxREM.def >> $@.tmp
 	$(MV) -f $@.tmp $@
