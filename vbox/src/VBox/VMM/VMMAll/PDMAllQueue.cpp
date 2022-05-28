@@ -1,5 +1,5 @@
-/* $Id: PDMAllQueue.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
 

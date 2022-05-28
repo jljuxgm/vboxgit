@@ -1,7 +1,6 @@
-; $Id: VMMGCA.asm 19 2007-01-15 13:07:05Z vboxsync $
 ;; @file
-; VMMGC - Guest Context Virtual Machine Monitor assembly routines.
 ;
+; VMMGC - Guest Context Virtual Machine Monitor assembly routines.
 
 ; Copyright (C) 2006 InnoTek Systemberatung GmbH
 ;
@@ -20,7 +19,7 @@
 ;*******************************************************************************
 ;* Header Files                                                                *
 ;*******************************************************************************
-%include "VBox/asmdefs.mac"
+%include "VBox/nasm.mac"
 %include "VBox/x86.mac"
 
 

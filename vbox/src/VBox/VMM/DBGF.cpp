@@ -1,5 +1,5 @@
-/* $Id: DBGF.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * VMM DBGF - Debugger Facility.
  */
 
@@ -88,6 +88,8 @@
 #include <iprt/assert.h>
 #include <iprt/stream.h>
 
+#include <stdio.h>
+
 
 /*******************************************************************************
 *   Internal Functions                                                         *
@@ -105,22 +107,22 @@ static int dbgfr3VMMCmd(PVM pVM, DBGFCMD enmCmd, PDBGFCMDDATA pCmdData, bool *pf
  */
 DECLINLINE(DBGFCMD) dbgfr3SetCmd(PVM pVM, DBGFCMD enmCmd)
 {
-    DBGFCMD rc;
     if (enmCmd == DBGFCMD_NO_COMMAND)
     {
         Log2(("DBGF: Setting command to %d (DBGFCMD_NO_COMMAND)\n", enmCmd));
-        rc = (DBGFCMD)ASMAtomicXchgU32((uint32_t volatile *)(void *)&pVM->dbgf.s.enmVMMCmd, enmCmd);
+        DBGFCMD rc = (DBGFCMD)ASMAtomicXchgU32((uint32_t volatile *)(void *)&pVM->dbgf.s.enmVMMCmd, enmCmd);
         VM_FF_CLEAR(pVM, VM_FF_DBGF);
+        return rc;
     }
     else
     {
         Log2(("DBGF: Setting command to %d\n", enmCmd));
         AssertMsg(pVM->dbgf.s.enmVMMCmd == DBGFCMD_NO_COMMAND, ("enmCmd=%d enmVMMCmd=%d\n", enmCmd, pVM->dbgf.s.enmVMMCmd));
-        rc = (DBGFCMD)ASMAtomicXchgU32((uint32_t volatile *)(void *)&pVM->dbgf.s.enmVMMCmd, enmCmd);
+        DBGFCMD rc = (DBGFCMD)ASMAtomicXchgU32((uint32_t volatile *)(void *)&pVM->dbgf.s.enmVMMCmd, enmCmd);
         VM_FF_SET(pVM, VM_FF_DBGF);
         VMR3NotifyFF(pVM, false /* didn't notify REM */);
+        return rc;
     }
-    return rc;
 }
 
 
@@ -232,8 +234,8 @@ bool dbgfR3WaitForAttach(PVM pVM, DBGFEVENTTYPE enmEvent)
     /*
      * First a message.
      */
-    RTStrmPrintf(g_pStdErr, "DBGF: No debugger attached, waiting 15 seconds for one to attach (event=%d)\n", enmEvent);
-    RTStrmFlush(g_pStdErr);
+    fprintf(stderr, "DBGF: No debugger attached, waiting 15 seconds for one to attach (event=%d)\n", enmEvent);
+    fflush(stderr);
 #ifdef DEBUG_sandervl
     int cWait = 10;
 #else
@@ -244,22 +246,22 @@ bool dbgfR3WaitForAttach(PVM pVM, DBGFEVENTTYPE enmEvent)
         RTThreadSleep(100);
         if (pVM->dbgf.s.fAttached)
         {
-            RTStrmPrintf(g_pStdErr, "Attached!\n");
-            RTStrmFlush(g_pStdErr);
+            fprintf(stderr, "Attached!\n");
+            fflush(stderr);
             return true;
         }
 
         /* next */
         if (!(cWait % 10))
         {
-            RTStrmPrintf(g_pStdErr, "%d.", cWait / 10);
-            RTStrmFlush(g_pStdErr);
+            fprintf(stderr, "%d.", cWait / 10);
+            fflush(stderr);
         }
         cWait--;
     }
 
-    RTStrmPrintf(g_pStdErr, "Stopping the VM!\n");
-    RTStrmFlush(g_pStdErr);
+    fprintf(stderr, "Stopping the VM!\n");
+    fflush(stderr);
     return false;
 }
 
@@ -1064,4 +1066,5 @@ DBGFR3DECL(int) DBGFR3PrgStep(PVM pVM)
     pVM->dbgf.s.fSingleSteppingRaw = true;
     return VINF_EM_DBG_STEP;
 }
+
 

@@ -1,5 +1,5 @@
-/* $Id: tstSSM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * Saved State Manager Testcase.
  */
 
@@ -35,6 +35,8 @@
 #include <iprt/stream.h>
 #include <iprt/string.h>
 #include <iprt/time.h>
+
+#include <string.h>
 
 
 const uint8_t gabPage[PAGE_SIZE] = {0};

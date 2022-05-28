@@ -1,6 +1,6 @@
 /** @file
  *
- * This file contains the documentation of the raw-mode execution.
+ *
  */
 
 /*
@@ -17,22 +17,4 @@
  * If you received this file as part of a commercial VirtualBox
  * distribution, then only the terms of your commercial VirtualBox
  * license agreement apply instead of the previous paragraph.
- */
-
-
-
-/** @page pg_raw                Raw-mode Code Execution
- *
- * This chapter describes the virtualization technique which we call raw-mode
- * and how VirtualBox makes use of it and implementes it.
- *
- * @todo Write raw-mode chapter!
- *
- *
- * @section sec_rawr3           Raw-Ring3
- *
- *
- * @section sec_rawr0           Raw-Ring0
- *
- *
  */

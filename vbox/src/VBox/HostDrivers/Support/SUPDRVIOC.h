@@ -75,14 +75,9 @@
 #  define SUP_CTL_CODE_FAST(Function) \
     ( (3U << 30) | ((0x22) << 8) | ((Function) | SUP_IOCTL_FLAG) | (0 << 16) )
 # else
-#  include <linux/ioctl.h>
-#  if 1 /* figure out when this changed. */
-#   define SUP_CTL_CODE(Function)         _IOWR('V', (Function) | SUP_IOCTL_FLAG, SUPDRVIOCTLDATA)
-#   define SUP_CTL_CODE_FAST(Function)    _IO(  'V', (Function) | SUP_IOCTL_FLAG)
-#  else /* now: _IO_BAD and _IOWR_BAD */
-#   define SUP_CTL_CODE(Function)         _IOWR('V', (Function) | SUP_IOCTL_FLAG, sizeof(SUPDRVIOCTLDATA))
-#   define SUP_CTL_CODE_FAST(Function)    _IO(  'V', (Function) | SUP_IOCTL_FLAG)
-#  endif
+#  include <sys/ioctl.h>
+#  define SUP_CTL_CODE(Function)         _IOWR('V', (Function) | SUP_IOCTL_FLAG, sizeof(SUPDRVIOCTLDATA))
+#  define SUP_CTL_CODE_FAST(Function)    _IO(  'V', (Function) | SUP_IOCTL_FLAG)
 # endif
 
 #else /* BSD */

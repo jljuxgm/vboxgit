@@ -805,10 +805,11 @@ int cpu_inl(CPUState *env, int addr);
 #endif
 
 /* memory API */
-extern uint32_t phys_ram_size;
-#ifndef VBOX
+#if !defined(VBOX)
 extern int phys_ram_fd;
+#endif /* !VBOX */
 extern int phys_ram_size;
+#ifndef VBOX
 extern uint8_t *phys_ram_base;
 #endif
 extern uint8_t *phys_ram_dirty;

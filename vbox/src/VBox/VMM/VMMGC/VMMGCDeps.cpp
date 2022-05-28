@@ -1,5 +1,5 @@
-/* $Id: VMMGCDeps.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * VMMGC Runtime Dependencies.
  */
 

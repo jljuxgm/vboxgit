@@ -1,12 +1,8 @@
-; $Id: tstAsmStructsAsm.asm 19 2007-01-15 13:07:05Z vboxsync $
 ;; @file
-; Assembly / C structure layout testcase.
 ;
-; Make yasm/nasm create absolute symbols for the structure definition
+; Make nasm create absolute symbols for the structure definition
 ; which we can parse and make code from using objdump and sed.
-;
 
-;
 ; Copyright (C) 2006 InnoTek Systemberatung GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
@@ -20,7 +16,6 @@
 ; If you received this file as part of a commercial VirtualBox
 ; distribution, then only the terms of your commercial VirtualBox
 ; license agreement apply instead of the previous paragraph.
-;
 
 %ifdef __AMD64__
 BITS 64

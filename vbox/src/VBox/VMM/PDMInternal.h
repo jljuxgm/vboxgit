@@ -1,5 +1,5 @@
-/* $Id: PDMInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * PDM - Internal header file.
  */
 
@@ -661,7 +661,7 @@ typedef struct PDM
     /** Pointer to the queue which should be manually flushed - GCPtr. */
     GCPTRTYPE(struct PDMQUEUE *)    pQueueFlushGC;
 
-    /** TEMPORARY HACKS FOR NETWORK POLLING.
+    /** TEMPORARY HACKS FOR NETWORK POLLING. 
      * @todo fix NAT and kill this!
      * @{ */
     RTUINT                          cPollers;

@@ -1,5 +1,5 @@
-/* $Id: MM.cpp 54 2007-01-16 09:57:14Z vboxsync $ */
 /** @file
+ *
  * MM - Memory Monitor(/Manager).
  */
 
@@ -193,16 +193,9 @@ MMR3DECL(int) MMR3InitPaging(PVM pVM)
 {
     LogFlow(("MMR3InitPaging:\n"));
     uint64_t    cbRam;
-    bool        fPreAlloc = false;
-
     int rc = CFGMR3QueryU64(CFGMR3GetRoot(pVM), "RamSize", &cbRam);
     if (rc == VERR_CFGM_VALUE_NOT_FOUND)
         cbRam = 0;
-
-    rc = CFGMR3QueryBool(CFGMR3GetRoot(pVM), "RamPreAlloc", &fPreAlloc);
-    if (rc == VERR_CFGM_VALUE_NOT_FOUND)
-        fPreAlloc = false;
-
     if (VBOX_SUCCESS(rc) || rc == VERR_CFGM_VALUE_NOT_FOUND)
     {
         if (cbRam < PAGE_SIZE)
@@ -217,24 +210,10 @@ MMR3DECL(int) MMR3InitPaging(PVM pVM)
         rc = MMR3PhysRegister(pVM, pVM->mm.s.pvRamBaseHC, 0, pVM->mm.s.cbRamBase, MM_RAM_FLAGS_DYNAMIC_ALLOC, "Main Memory");
         if (VBOX_SUCCESS(rc))
         {
-            /* Allocate the first chunk, as we'll map ROM ranges there. */
+            /* Allocate the first 4 MB chunk, as we'll map ROM ranges there. */
             rc = PGM3PhysGrowRange(pVM, (RTGCPHYS)0);
             if (VBOX_SUCCESS(rc))
-            {
-                /* Should we preallocate the entire guest RAM? */
-                if (fPreAlloc)
-                {
-                    RTGCPHYS GCPhys = PGM_DYNAMIC_CHUNK_SIZE;
-
-                    for (;GCPhys < cbRam ; GCPhys+=PGM_DYNAMIC_CHUNK_SIZE)
-                    {
-                        rc = PGM3PhysGrowRange(pVM, GCPhys);
-                        if (VBOX_FAILURE(rc))
-                            return rc;
-                    }
-                }
                 return rc;
-            }
         }
 #else
         unsigned    cPages = cbRam >> PAGE_SHIFT;

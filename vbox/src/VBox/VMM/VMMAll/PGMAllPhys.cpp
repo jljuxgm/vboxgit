@@ -1,5 +1,5 @@
-/* $Id: PGMAllPhys.cpp 28 2007-01-15 16:48:27Z vboxsync $ */
 /** @file
+ *
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
 
@@ -196,7 +196,7 @@ PGMDECL(int) PGMPhysGCPhys2HCPtr(PVM pVM, RTGCPHYS GCPhys, PRTHCPTR pHCPtr)
                         return rc;
                 }
                 unsigned idx = (off >> PGM_DYNAMIC_CHUNK_SHIFT);
-                *pHCPtr = (RTHCPTR)((RTHCUINTPTR)CTXSUFF(pRam->pavHCChunk)[idx] + (off & PGM_DYNAMIC_CHUNK_OFFSET_MASK));
+                *pHCPtr = (RTHCPTR)((RTHCUINTPTR)CTXSUFF(pRam->pvHCChunk)[idx] + (off & PGM_DYNAMIC_CHUNK_OFFSET_MASK));
                 return VINF_SUCCESS;
             }
             if (pRam->pvHC)
@@ -235,9 +235,9 @@ PGMDECL(bool) PGMPhysIsHCPtrValid(PVM pVM, RTHCPTR HCPtr)
             /** @note this is quite slow */
             for (unsigned iChunk = 0; iChunk < (pRam->cb >> PGM_DYNAMIC_CHUNK_SHIFT); iChunk++)
             {
-                if (CTXSUFF(pRam->pavHCChunk)[iChunk])
+                if (CTXSUFF(pRam->pvHCChunk)[iChunk])
                 {
-                    RTHCUINTPTR off = (RTHCUINTPTR)HCPtr - (RTHCUINTPTR)CTXSUFF(pRam->pavHCChunk)[iChunk];
+                    RTHCUINTPTR off = (RTHCUINTPTR)HCPtr - (RTHCUINTPTR)CTXSUFF(pRam->pvHCChunk)[iChunk];
                     if (off < PGM_DYNAMIC_CHUNK_SIZE)
                         return true;
                 }
@@ -276,9 +276,9 @@ PGMDECL(int) PGMPhysHCPtr2GCPhys(PVM pVM, RTHCPTR HCPtr, PRTGCPHYS pGCPhys)
             /** @note this is quite slow */
             for (unsigned iChunk = 0; iChunk < (pRam->cb >> PGM_DYNAMIC_CHUNK_SHIFT); iChunk++)
             {
-                if (CTXSUFF(pRam->pavHCChunk)[iChunk])
+                if (CTXSUFF(pRam->pvHCChunk)[iChunk])
                 {
-                    RTHCUINTPTR off = (RTHCUINTPTR)HCPtr - (RTHCUINTPTR)CTXSUFF(pRam->pavHCChunk)[iChunk];
+                    RTHCUINTPTR off = (RTHCUINTPTR)HCPtr - (RTHCUINTPTR)CTXSUFF(pRam->pvHCChunk)[iChunk];
                     if (off < PGM_DYNAMIC_CHUNK_SIZE)
                     {
                         *pGCPhys = pRam->GCPhys + iChunk*PGM_DYNAMIC_CHUNK_SIZE + off;
@@ -324,9 +324,9 @@ PGMDECL(int) PGMPhysHCPtr2HCPhys(PVM pVM, RTHCPTR HCPtr, PRTHCPHYS pHCPhys)
             /** @note this is quite slow */
             for (unsigned iChunk = 0; iChunk < (pRam->cb >> PGM_DYNAMIC_CHUNK_SHIFT); iChunk++)
             {
-                if (CTXSUFF(pRam->pavHCChunk)[iChunk])
+                if (CTXSUFF(pRam->pvHCChunk)[iChunk])
                 {
-                    RTHCUINTPTR off = (RTHCUINTPTR)HCPtr - (RTHCUINTPTR)CTXSUFF(pRam->pavHCChunk)[iChunk];
+                    RTHCUINTPTR off = (RTHCUINTPTR)HCPtr - (RTHCUINTPTR)CTXSUFF(pRam->pvHCChunk)[iChunk];
                     if (off < PGM_DYNAMIC_CHUNK_SIZE)
                     {
                         RTHCPHYS HCPhys = pRam->aHCPhys[off >> PAGE_SHIFT];
@@ -458,7 +458,7 @@ PGMDECL(int) PGMPhysHCPhys2HCPtr(PVM pVM, RTHCPHYS HCPhys, PRTHCPTR pHCPtr)
                     {
                         unsigned idx = (iPage >> (PGM_DYNAMIC_CHUNK_SHIFT - PAGE_SHIFT));
 
-                        *pHCPtr = (RTHCPTR)((RTHCUINTPTR)CTXSUFF(pRam->pavHCChunk)[idx] + ((iPage << PAGE_SHIFT) & PGM_DYNAMIC_CHUNK_OFFSET_MASK) + off);
+                        *pHCPtr = (RTHCPTR)((RTHCUINTPTR)CTXSUFF(pRam->pvHCChunk)[idx] + ((iPage << PAGE_SHIFT) & PGM_DYNAMIC_CHUNK_OFFSET_MASK) + off);
                     }
                     else
                         *pHCPtr = (RTHCPTR)((RTHCUINTPTR)pRam->pvHC + (iPage << PAGE_SHIFT) + off);
@@ -710,19 +710,21 @@ PGMDECL(void) PGMPhysRead(PVM pVM, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead)
                 /* Physical chunk in dynamically allocated range not present? */
                 if (RT_UNLIKELY(!(pCur->aHCPhys[iPage] & X86_PTE_PAE_PG_MASK)))
                 {
-                    int rc;
 #ifdef IN_RING3
-                    if (fGrabbedLock)
-                    {
+                    int rc;
+
+                    if (fGrabbedLock) 
+                    {   
                         pgmUnlock(pVM);
                         rc = pgmr3PhysGrowRange(pVM, GCPhys);
                         if (rc == VINF_SUCCESS)
                             PGMPhysRead(pVM, GCPhys, pvBuf, cbRead); /* try again; can't assume pCur is still valid (paranoia) */
                         return;
                     }
-                    rc = pgmr3PhysGrowRange(pVM, GCPhys);
+                    else
+                        rc = pgmr3PhysGrowRange(pVM, GCPhys);
 #else
-                    rc = CTXALLMID(VMM, CallHost)(pVM, VMMCALLHOST_PGM_RAM_GROW_RANGE, GCPhys);
+                    int rc = CTXALLMID(VMM, CallHost)(pVM, VMMCALLHOST_PGM_RAM_GROW_RANGE, GCPhys);
 #endif
                     if (rc != VINF_SUCCESS)
                         goto end;
@@ -977,19 +979,21 @@ PGMDECL(void) PGMPhysWrite(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t c
                 /* Physical chunk in dynamically allocated range not present? */
                 if (RT_UNLIKELY(!(pCur->aHCPhys[iPage] & X86_PTE_PAE_PG_MASK)))
                 {
-                    int rc;
 #ifdef IN_RING3
-                    if (fGrabbedLock)
-                    {
+                    int rc;
+
+                    if (fGrabbedLock) 
+                    {   
                         pgmUnlock(pVM);
                         rc = pgmr3PhysGrowRange(pVM, GCPhys);
                         if (rc == VINF_SUCCESS)
                             PGMPhysWrite(pVM, GCPhys, pvBuf, cbWrite); /* try again; can't assume pCur is still valid (paranoia) */
                         return;
                     }
-                    rc = pgmr3PhysGrowRange(pVM, GCPhys);
+                    else
+                        rc = pgmr3PhysGrowRange(pVM, GCPhys);
 #else
-                    rc = CTXALLMID(VMM, CallHost)(pVM, VMMCALLHOST_PGM_RAM_GROW_RANGE, GCPhys);
+                    int rc = CTXALLMID(VMM, CallHost)(pVM, VMMCALLHOST_PGM_RAM_GROW_RANGE, GCPhys);
 #endif
                     if (rc != VINF_SUCCESS)
                         goto end;

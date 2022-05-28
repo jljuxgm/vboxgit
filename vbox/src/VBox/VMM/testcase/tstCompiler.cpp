@@ -1,5 +1,5 @@
-/* $Id: tstCompiler.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * Testing how the compiler deals with various things.
  *
  * This is testcase requires manual inspection and might not be very useful

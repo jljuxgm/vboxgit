@@ -1,5 +1,5 @@
-/* $Id: MMPagePool.cpp 50 2007-01-15 18:29:52Z vboxsync $ */
 /** @file
+ *
  * MM - Memory Monitor(/Manager) - Page Pool.
  */
 
@@ -37,8 +37,8 @@
 #ifdef USE_INLINE_ASM_BIT_OPS
 # include <iprt/asm.h>
 #endif
-#include <iprt/string.h>
 
+#include <string.h>
 
 
 /*******************************************************************************
@@ -284,7 +284,7 @@ DECLINLINE(void *) mmr3PagePoolAlloc(PMMPAGEPOOL pPool)
         {
             AssertMsg(paPhysPages[i].Phys && !(paPhysPages[i].Phys & PAGE_OFFSET_MASK),
                       ("i=%d Phys=%d\n", i, paPhysPages[i].Phys));
-            paPhysPages[i].uReserved = (RTHCUINTPTR)pSub;
+            paPhysPages[i].uReserved = (unsigned)pSub;
         }
 
         /*

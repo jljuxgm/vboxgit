@@ -674,12 +674,6 @@ void VBoxVMSettingsDlg::hdaMediaChanged()
 {
     uuidHDA = grbHDA->isChecked() ? cbHDA->getId() : QUuid();
     txHDA->setText (getHdInfo (grbHDA, uuidHDA));
-    /* tool-tip composing */
-    if (!uuidHDA.isNull())
-    {
-        CHardDisk hd = vboxGlobal().virtualBox().GetHardDisk (uuidHDA);
-        QToolTip::add (cbHDA, VBoxDiskImageManagerDlg::composeHdToolTip (hd));
-    }
     /* revailidate */
     wvalHDD->revalidate();
 }
@@ -689,12 +683,6 @@ void VBoxVMSettingsDlg::hdbMediaChanged()
 {
     uuidHDB = grbHDB->isChecked() ? cbHDB->getId() : QUuid();
     txHDB->setText (getHdInfo (grbHDB, uuidHDB));
-    /* tool-tip composing */
-    if (!uuidHDB.isNull())
-    {
-        CHardDisk hd = vboxGlobal().virtualBox().GetHardDisk (uuidHDB);
-        QToolTip::add (cbHDB, VBoxDiskImageManagerDlg::composeHdToolTip (hd));
-    }
     /* revailidate */
     wvalHDD->revalidate();
 }
@@ -704,12 +692,6 @@ void VBoxVMSettingsDlg::hddMediaChanged()
 {
     uuidHDD = grbHDD->isChecked() ? cbHDD->getId() : QUuid();
     txHDD->setText (getHdInfo (grbHDD, uuidHDD));
-    /* tool-tip composing */
-    if (!uuidHDD.isNull())
-    {
-        CHardDisk hd = vboxGlobal().virtualBox().GetHardDisk (uuidHDD);
-        QToolTip::add (cbHDD, VBoxDiskImageManagerDlg::composeHdToolTip (hd));
-    }
     /* revailidate */
     wvalHDD->revalidate();
 }
@@ -718,12 +700,6 @@ void VBoxVMSettingsDlg::hddMediaChanged()
 void VBoxVMSettingsDlg::cdMediaChanged()
 {
     uuidISODVD = bgDVD->isChecked() ? cbISODVD->getId() : QUuid();
-    /* tool-tip composing */
-    if (!uuidISODVD.isNull())
-    {
-        CDVDImage cd = vboxGlobal().virtualBox().GetDVDImage (uuidISODVD);
-        QToolTip::add (cbISODVD, VBoxDiskImageManagerDlg::composeCdToolTip (cd));
-    }
     /* revailidate */
     wvalDVD->revalidate();
 }
@@ -732,12 +708,6 @@ void VBoxVMSettingsDlg::cdMediaChanged()
 void VBoxVMSettingsDlg::fdMediaChanged()
 {
     uuidISOFloppy = bgFloppy->isChecked() ? cbISOFloppy->getId() : QUuid();
-    /* tool-tip composing */
-    if (!uuidISOFloppy.isNull())
-    {
-        CFloppyImage fd = vboxGlobal().virtualBox().GetFloppyImage (uuidISOFloppy);
-        QToolTip::add (cbISOFloppy, VBoxDiskImageManagerDlg::composeFdToolTip (fd));
-    }
     /* revailidate */
     wvalFloppy->revalidate();
 }
@@ -1230,38 +1200,26 @@ void VBoxVMSettingsDlg::getFromMachine (const CMachine &machine)
         }
     }
 
-    /* USB */
+    /* usb */
     {
         CUSBController ctl = machine.GetUSBController();
 
-        if (ctl.isNull())
-        {
-            /* disable the USB controller category if the USB controller is
-             * not available (i.e. in VirtualBox OSE) */
+        QListViewItem *usbListItem = listView->findItem ("USB", 0, Qt::Contains);
+        if (usbListItem && ctl.isNull())
+            usbListItem->setVisible (false);
 
-            QListViewItem *usbItem = listView->findItem ("#usb", listView_Link);
-            Assert (usbItem);
-            if (usbItem)
-                usbItem->setVisible (false);
+        cbEnableUSBController->setChecked (ctl.GetEnabled());
 
-            /* if machine has something to say, show the message */
-            vboxProblem().cannotLoadMachineSettings (machine, false /* strict */);
-        }
-        else
-        {
-            cbEnableUSBController->setChecked (ctl.GetEnabled());
+        CUSBDeviceFilterEnumerator en = ctl.GetDeviceFilters().Enumerate();
+        while (en.HasMore())
+            addUSBFilter (en.GetNext(), false /* isNew */);
 
-            CUSBDeviceFilterEnumerator en = ctl.GetDeviceFilters().Enumerate();
-            while (en.HasMore())
-                addUSBFilter (en.GetNext(), false /* isNew */);
-
-            lvUSBFilters->setCurrentItem (lvUSBFilters->firstChild());
-            /*
-             *  silly, silly Qt -- doesn't emit currentChanged after adding the
-             *  first item to an empty list
-             */
-            lvUSBFilters_currentChanged (lvUSBFilters->firstChild());
-        }
+        lvUSBFilters->setCurrentItem (lvUSBFilters->firstChild());
+        /*
+         *  silly, silly Qt -- doesn't emit currentChanged after adding the
+         *  first item to an empty list
+         */
+        lvUSBFilters_currentChanged (lvUSBFilters->firstChild());
     }
 
     /* request for media shortcuts update */
@@ -1440,40 +1398,35 @@ COMResult VBoxVMSettingsDlg::putBackToMachine()
     {
         CUSBController ctl = cmachine.GetUSBController();
 
-        if (!ctl.isNull())
+        ctl.SetEnabled (cbEnableUSBController->isChecked());
+
+        /*
+         *  first, remove all old filters (only if the list is changed,
+         *  not only individual properties of filters)
+         */
+        if (mUSBFilterListModified)
+            for (ulong count = ctl.GetDeviceFilters().GetCount(); count; -- count)
+                ctl.RemoveDeviceFilter (0);
+
+        /* then add all new filters */
+        for (QListViewItem *item = lvUSBFilters->firstChild(); item;
+             item = item->nextSibling())
         {
-            /* the USB controller may be unavailable (i.e. in VirtualBox OSE) */
+            USBListItem *uli = static_cast <USBListItem *> (item);
+            VBoxUSBFilterSettings *settings =
+                static_cast <VBoxUSBFilterSettings *>
+                    (wstUSBFilters->widget (uli->mId));
+            Assert (settings);
 
-            ctl.SetEnabled (cbEnableUSBController->isChecked());
+            COMResult res = settings->putBackToFilter();
+            if (!res.isOk())
+                return res;
 
-            /*
-             *  first, remove all old filters (only if the list is changed,
-             *  not only individual properties of filters)
-             */
+            CUSBDeviceFilter filter = settings->filter();
+            filter.SetActive (uli->isOn());
+
             if (mUSBFilterListModified)
-                for (ulong count = ctl.GetDeviceFilters().GetCount(); count; -- count)
-                    ctl.RemoveDeviceFilter (0);
-
-            /* then add all new filters */
-            for (QListViewItem *item = lvUSBFilters->firstChild(); item;
-                 item = item->nextSibling())
-            {
-                USBListItem *uli = static_cast <USBListItem *> (item);
-                VBoxUSBFilterSettings *settings =
-                    static_cast <VBoxUSBFilterSettings *>
-                        (wstUSBFilters->widget (uli->mId));
-                Assert (settings);
-
-                COMResult res = settings->putBackToFilter();
-                if (!res.isOk())
-                    return res;
-
-                CUSBDeviceFilter filter = settings->filter();
-                filter.SetActive (uli->isOn());
-
-                if (mUSBFilterListModified)
-                    ctl.InsertDeviceFilter (~0, filter);
-            }
+                ctl.InsertDeviceFilter (~0, filter);
         }
 
         mUSBFilterListModified = false;

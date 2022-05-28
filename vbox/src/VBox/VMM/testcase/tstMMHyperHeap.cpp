@@ -1,5 +1,5 @@
-/* $Id: tstMMHyperHeap.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * MM Hypervisor Heap testcase.
  */
 
@@ -33,7 +33,8 @@
 #include <iprt/runtime.h>
 #include <iprt/assert.h>
 #include <iprt/stream.h>
-#include <iprt/string.h>
+
+#include <string.h>
 
 
 int main(int argc, char *argv[])

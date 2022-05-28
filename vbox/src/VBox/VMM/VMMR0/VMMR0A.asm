@@ -1,9 +1,7 @@
-; $Id: VMMR0A.asm 19 2007-01-15 13:07:05Z vboxsync $
 ;; @file
+;
 ; VMM - R0 assembly routines.
-;
 
-;
 ; Copyright (C) 2006 InnoTek Systemberatung GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
@@ -17,12 +15,11 @@
 ; If you received this file as part of a commercial VirtualBox
 ; distribution, then only the terms of your commercial VirtualBox
 ; license agreement apply instead of the previous paragraph.
-;
 
 ;*******************************************************************************
 ;* Header Files                                                                *
 ;*******************************************************************************
-%include "VBox/asmdefs.mac"
+%include "VBox/nasm.mac"
 %include "VMMInternal.mac"
 %include "iprt/err.mac"
 

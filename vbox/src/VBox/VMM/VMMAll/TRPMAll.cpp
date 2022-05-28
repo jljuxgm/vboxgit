@@ -1,5 +1,5 @@
-/* $Id: TRPMAll.cpp 78 2007-01-16 17:32:03Z vboxsync $ */
 /** @file
+ *
  * TRPM - Trap Monitor - Any Context.
  */
 
@@ -498,7 +498,7 @@ TRPMDECL(int) TRPMForwardTrap(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t iGate, u
                 if (!gdtr.pGdt)
                     goto failure;
 
-                pGdtEntry = (RTGCPTR)(uintptr_t)&((VBOXDESC *)gdtr.pGdt)[GuestIdte.Gen.u16SegSel >> X86_SEL_SHIFT]; /// @todo fix this
+                pGdtEntry = (RTGCPTR)&((VBOXDESC *)gdtr.pGdt)[GuestIdte.Gen.u16SegSel >> X86_SEL_SHIFT];
 #ifdef IN_GC
                 rc = MMGCRamRead(pVM, &Desc, pGdtEntry, sizeof(Desc));
 #else

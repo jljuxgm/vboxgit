@@ -1,5 +1,5 @@
-/* $Id: tstMicro.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * Micro Testcase, profiling special CPU operations.
  */
 
@@ -38,6 +38,8 @@
 #include <iprt/stream.h>
 #include <iprt/string.h>
 #include <iprt/semaphore.h>
+
+#include <stdio.h>
 
 #include "tstMicro.h"
 
@@ -365,13 +367,13 @@ int main(int argc, char **argv)
         rc = VMR3Destroy(pVM);
         if (!VBOX_SUCCESS(rc))
         {
-            RTPrintf(TESTCASE ": error: failed to destroy vm! rc=%d\n", rc);
+            printf(TESTCASE ": error: failed to destroy vm! rc=%d\n", rc);
             rcRet++;
         }
     }
     else
     {
-        RTPrintf(TESTCASE ": fatal error: failed to create vm! rc=%d\n", rc);
+        printf(TESTCASE ": fatal error: failed to create vm! rc=%d\n", rc);
         rcRet++;
     }
 

@@ -1,5 +1,5 @@
-/* $Id: SELMGC.cpp 62 2007-01-16 13:29:12Z vboxsync $ */
 /** @file
+ *
  * SELM - The Selector manager, Guest Context.
  */
 
@@ -132,14 +132,14 @@ static int selmGCSyncGDTEntry(PVM pVM, PCPUMCTXCORE pRegFrame, unsigned iGDTEntr
     *pShadowDescr = Desc;
 
     /* Check if we change the LDT selector */
-    if (Sel == CPUMGetGuestLDTR(pVM))
+    if (iGDTEntry == CPUMGetGuestLDTR(pVM))
     {
         VM_FF_SET(pVM, VM_FF_SELM_SYNC_LDT);
         return VINF_EM_RAW_EMULATE_INSTR_LDT_FAULT;
     }
 
     /* Or the TR selector */
-    if (Sel == CPUMGetGuestTR(pVM))
+    if (iGDTEntry == CPUMGetGuestTR(pVM))
     {
         VM_FF_SET(pVM, VM_FF_SELM_SYNC_TSS);
         return VINF_EM_RAW_EMULATE_INSTR_TSS_FAULT;

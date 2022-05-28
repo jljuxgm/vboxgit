@@ -1,5 +1,5 @@
-/* $Id: EMInternal.h 49 2007-01-15 18:29:41Z vboxsync $ */
 /** @file
+ *
  * EM - Internal header file.
  */
 
@@ -43,7 +43,7 @@ __BEGIN_DECLS
 /** The saved state version. */
 #define EM_SAVED_STATE_VERSION  2
 
-/** Enable for tracing in raw mode.
+/** Enable for tracing in raw mode. 
  * @remark SvL: debugging help primarily for myself. */
 #define DEBUG_TRACING_ENABLED
 
@@ -299,7 +299,7 @@ typedef struct EM
     /** More statistics (GC). */
     GCPTRTYPE(PEMSTATS)     pStatsGC;
 #if HC_ARCH_BITS != GC_ARCH_BITS && GC_ARCH_BITS == 32
-    RTGCPTR                 padding0;
+    GCPTR                   padding0
 #endif
 
     /** Tree for keeping track of cli occurances (debug only). */

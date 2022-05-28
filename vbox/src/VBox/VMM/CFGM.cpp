@@ -1,6 +1,8 @@
-/* $Id: CFGM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
- * CFGM - Configuration Manager.
+ *
+ * \ref pg_vmm "VMM (Virtual Machine Monitor) ->
+ * \ref pg_cfgm "CFGM (Configuration Manager)":
+ * Main file
  *
  * This is the main file of the \ref pg_cfgm "CFGM (Configuration Manager)".
  */
@@ -70,6 +72,8 @@
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
+
+#include <string.h>
 
 
 /*******************************************************************************
@@ -1479,7 +1483,7 @@ CFGMR3DECL(int) CFGMR3InsertBytes(PCFGMNODE pNode, const char *pszName, void *pv
             if (pvCopy || !cbBytes)
             {
                 memcpy(pvCopy, pvBytes, cbBytes);
-
+    
                 /*
                  * Create value leaf and set it to string type.
                  */

@@ -1,5 +1,5 @@
-/* $Id: PGM.cpp 40 2007-01-15 17:44:46Z vboxsync $ */
 /** @file
+ *
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
 
@@ -630,7 +630,7 @@ static int pgmR3InitPaging(PVM pVM)
     pVM->pgm.s.pInterPaePDPTR   = (PX86PDPTR)MMR3PageAllocLow(pVM);
 #if 1
     pVM->pgm.s.pInterPaePDPTR64 = (PX86PDPTR)MMR3PageAllocLow(pVM);
-#endif
+#endif 
     pVM->pgm.s.pInterPaePML4    = (PX86PML4)MMR3PageAllocLow(pVM);
     if (    !pVM->pgm.s.pInterPD
         ||  !pVM->pgm.s.apInterPTs[0]
@@ -710,7 +710,7 @@ static int pgmR3InitPaging(PVM pVM)
     ASMMemZero32(pVM->pgm.s.pInterPaePML4, PAGE_SIZE);
     pVM->pgm.s.pInterPaePML4->a[0].u = X86_PML4E_P | X86_PML4E_RW | X86_PML4E_US | X86_PML4E_A
                                      | pVM->pgm.s.HCPhysInterPaePDPTR;
-#endif
+#endif 
 
 
     /*
@@ -1163,8 +1163,8 @@ PGMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
         for (PPGMRAMRANGE pCur = pVM->pgm.s.pRamRangesHC; pCur->pNextHC; pCur = pCur->pNextHC)
         {
             pCur->pNextGC = MMHyperHC2GC(pVM, pCur->pNextHC);
-            if (pCur->pavHCChunkGC)
-                pCur->pavHCChunkGC = MMHyperHC2GC(pVM, pCur->pavHCChunkHC);
+            if (pCur->pvHCChunkGC)
+                pCur->pvHCChunkGC = MMHyperHC2GC(pVM, pCur->pvHCChunkHC);
         }
     }
 
@@ -1301,8 +1301,8 @@ PGMR3DECL(void) PGMR3Reset(PVM pVM)
             if (pRam->fFlags & MM_RAM_FLAGS_DYNAMIC_ALLOC)
             {
                 unsigned iChunk = iPage >> (PGM_DYNAMIC_CHUNK_SHIFT - PAGE_SHIFT);
-                if (pRam->pavHCChunkHC[iChunk])
-                    ASMMemZero32((char *)pRam->pavHCChunkHC[iChunk] + ((iPage << PAGE_SHIFT) & PGM_DYNAMIC_CHUNK_OFFSET_MASK), PAGE_SIZE);
+                if (pRam->pvHCChunkHC[iChunk])
+                    ASMMemZero32((char *)pRam->pvHCChunkHC[iChunk] + ((iPage << PAGE_SHIFT) & PGM_DYNAMIC_CHUNK_OFFSET_MASK), PAGE_SIZE);
             }
             else
                 ASMMemZero32((char *)pRam->pvHC + (iPage << PAGE_SHIFT), PAGE_SIZE);
@@ -1348,7 +1348,7 @@ static DECLCALLBACK(int) pgmR3Save(PVM pVM, PSSMHANDLE pSSM)
     SSMR3PutBool(pSSM, pPGM->fMappingsFixed);
 #else
     SSMR3PutUInt(pSSM, pPGM->fMappingsFixed);
-#endif
+#endif 
     SSMR3PutGCPtr(pSSM, pPGM->GCPtrMappingFixed);
     SSMR3PutU32(pSSM, pPGM->cbMappingFixed);
     SSMR3PutUInt(pSSM, pPGM->cbRamSize);
@@ -1396,10 +1396,10 @@ static DECLCALLBACK(int) pgmR3Save(PVM pVM, PSSMHANDLE pSSM)
         {
             for (unsigned iChunk = 0; iChunk < (pRam->cb >> PGM_DYNAMIC_CHUNK_SHIFT); iChunk++)
             {
-                if (pRam->pavHCChunkHC[iChunk])
+                if (pRam->pvHCChunkHC[iChunk])
                 {
                     SSMR3PutU8(pSSM, 1);    /* chunk present */
-                    SSMR3PutMem(pSSM, pRam->pavHCChunkHC[iChunk], PGM_DYNAMIC_CHUNK_SIZE);
+                    SSMR3PutMem(pSSM, pRam->pvHCChunkHC[iChunk], PGM_DYNAMIC_CHUNK_SIZE);
                 }
                 else
                     SSMR3PutU8(pSSM, 0);    /* no chunk present */
@@ -1453,7 +1453,7 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
     uint32_t u;
     SSMR3GetU32(pSSM,       &u);
     pPGM->fMappingsFixed = u;
-#endif
+#endif 
     SSMR3GetGCPtr(pSSM,     &pPGM->GCPtrMappingFixed);
     SSMR3GetU32(pSSM,       &pPGM->cbMappingFixed);
 
@@ -1611,16 +1611,13 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
 
                 if (fValidChunk)
                 {
-                    if (!pRam->pavHCChunkHC[iChunk])
-                    {
-                        rc = pgmr3PhysGrowRange(pVM, pRam->GCPhys + iChunk * PGM_DYNAMIC_CHUNK_SIZE);
-                        if (VBOX_FAILURE(rc))
-                            return rc;
-                    }
+                    rc = pgmr3PhysGrowRange(pVM, pRam->GCPhys + iChunk * PGM_DYNAMIC_CHUNK_SIZE);
+                    if (VBOX_FAILURE(rc))
+                        return rc;
 
-                    Assert(pRam->pavHCChunkHC[iChunk]);
+                    Assert(pRam->pvHCChunkHC[iChunk]);
 
-                    SSMR3GetMem(pSSM, pRam->pavHCChunkHC[iChunk], PGM_DYNAMIC_CHUNK_SIZE);
+                    SSMR3GetMem(pSSM, pRam->pvHCChunkHC[iChunk], PGM_DYNAMIC_CHUNK_SIZE);
                 }
                 /* else nothing to do */
             }

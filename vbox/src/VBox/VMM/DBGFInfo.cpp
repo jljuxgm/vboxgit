@@ -1,5 +1,5 @@
-/* $Id: DBGFInfo.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * VMM DBGF - Debugger Facility, Info.
  */
 
@@ -33,9 +33,10 @@
 #include <iprt/semaphore.h>
 #include <iprt/thread.h>
 #include <iprt/assert.h>
-#include <iprt/string.h>
-#include <iprt/ctype.h>
 #include <VBox/err.h>
+
+#include <string.h>
+#include <ctype.h>
 
 
 /*******************************************************************************

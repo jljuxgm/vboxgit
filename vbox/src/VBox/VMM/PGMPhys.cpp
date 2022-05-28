@@ -1,5 +1,5 @@
-/* $Id: PGMPhys.cpp 29 2007-01-15 17:01:03Z vboxsync $ */
 /** @file
+ *
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
 
@@ -43,7 +43,8 @@
 #include <iprt/asm.h>
 #include <VBox/log.h>
 #include <iprt/thread.h>
-#include <iprt/string.h>
+
+#include <string.h>
 
 
 
@@ -157,8 +158,8 @@ PGMR3DECL(int) PGMR3PhysRegister(PVM pVM, void *pvRam, RTGCPHYS GCPhys, size_t c
         pNew->GCPhysLast    = GCPhysLast;
         pNew->cb            = cb;
         pNew->fFlags        = fFlags;
-        pNew->pavHCChunkHC  = NULL;
-        pNew->pavHCChunkGC  = 0;
+        pNew->pvHCChunkHC   = NULL;
+        pNew->pvHCChunkGC   = 0;
 
         unsigned iPage = cb >> PAGE_SHIFT;
         if (paPages)
@@ -168,12 +169,12 @@ PGMR3DECL(int) PGMR3PhysRegister(PVM pVM, void *pvRam, RTGCPHYS GCPhys, size_t c
         }
         else if (fFlags & MM_RAM_FLAGS_DYNAMIC_ALLOC)
         {
-            /* Allocate memory for chunk to HC ptr lookup array. */
-            rc = MMHyperAlloc(pVM, (cb >> PGM_DYNAMIC_CHUNK_SHIFT) * sizeof(void *), 16, MM_TAG_PGM, (void **)&pNew->pavHCChunkHC);
+            /* Allocate memory for 4 MB chunk to HC ptr lookup array. */
+            rc = MMHyperAlloc(pVM, (cb >> PGM_DYNAMIC_CHUNK_SHIFT) * sizeof(void *), 16, MM_TAG_PGM, (void **)&pNew->pvHCChunkHC);
             AssertMsgReturn(rc == VINF_SUCCESS, ("MMHyperAlloc(,%#x,,,) -> %Vrc\n", cbRam, cb), rc);
 
-            pNew->pavHCChunkGC = MMHyperHC2GC(pVM, pNew->pavHCChunkHC);
-            Assert(pNew->pavHCChunkGC);
+            pNew->pvHCChunkGC = MMHyperHC2GC(pVM, pNew->pvHCChunkHC);
+            Assert(pNew->pvHCChunkGC);
 
             /* Physical memory will be allocated on demand. */
             while (iPage-- > 0)
@@ -277,7 +278,7 @@ PGMR3DECL(int) PGMR3PhysRegisterChunk(PVM pVM, void *pvRam, RTGCPHYS GCPhys, siz
             pRam->aHCPhys[off + iPage] = (paPages[iPage].Phys & X86_PTE_PAE_PG_MASK) | fFlags;
     }
     off >>= (PGM_DYNAMIC_CHUNK_SHIFT - PAGE_SHIFT);
-    pRam->pavHCChunkHC[off] = pvRam;
+    pRam->pvHCChunkHC[off] = pvRam;
 
     /* Notify the recompiler. */
     REMR3NotifyPhysRamChunkRegister(pVM, GCPhys, PGM_DYNAMIC_CHUNK_SIZE, (RTHCUINTPTR)pvRam, fFlags);
@@ -333,7 +334,7 @@ int pgmr3PhysGrowRange(PVM pVM, RTGCPHYS GCPhys)
 {
     void *pvRam;
     int   rc;
-
+  
     /* We must execute this function in the EMT thread, otherwise we'll run into problems. */
     if (!VM_IS_EMT(pVM))
     {
@@ -354,7 +355,7 @@ int pgmr3PhysGrowRange(PVM pVM, RTGCPHYS GCPhys)
     GCPhys = GCPhys & PGM_DYNAMIC_CHUNK_BASE_MASK;
 
     STAM_COUNTER_INC(&pVM->pgm.s.StatDynRamGrow);
-    STAM_COUNTER_ADD(&pVM->pgm.s.StatDynRamTotal, PGM_DYNAMIC_CHUNK_SIZE/(1024*1024));
+    STAM_COUNTER_ADD(&pVM->pgm.s.StatDynRamTotal, 4);
 
     Log(("pgmr3PhysGrowRange: allocate chunk of size 0x%X at %VGp\n", PGM_DYNAMIC_CHUNK_SIZE, GCPhys));
 

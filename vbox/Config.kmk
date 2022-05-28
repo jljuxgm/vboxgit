@@ -1,4 +1,4 @@
-# $Id: Config.kmk 46 2007-01-15 18:11:30Z vboxsync $
+# $Id: Config.kmk 1 2007-01-15 18:11:30Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -98,10 +98,8 @@ VBOX_VERSION_BUILD = 3
 
 # Build linux / win32 additions.
 ifeq ($(BUILD_TARGET),linux)
- ifeq ($(BUILD_TARGET_ARCH),x86) # later on amd64 too.
-  VBOX_WITH_LINUX_ADDITIONS = 1
-  VBOX_WITH_WIN32_ADDITIONS = 1
- endif
+ VBOX_WITH_LINUX_ADDITIONS = 1
+ VBOX_WITH_WIN32_ADDITIONS = 1
 endif
 ifeq ($(BUILD_TARGET),l4)
  VBOX_WITH_LINUX_ADDITIONS = 1
@@ -360,8 +358,8 @@ ifndef DONT_USE_YASM
  VBOX_ASFLAGS64 = $(VBOX_ASFLAGS_FMT64) -D__YASM__ -w+orphan-labels $(VBOX_LDR_FMT_2_YASM_DBGINFO.$(VBOX_LDR_FMT64))
 else
  VBOX_ASTOOL    = NASM
- VBOX_ASFLAGS   = $(subst elf32,elf,$(VBOX_ASFLAGS_FMT))   -D__NASM__ -w+orphan-labels -g
- VBOX_ASFLAGS32 = $(subst elf32,elf,$(VBOX_ASFLAGS_FMT32)) -D__NASM__ -w+orphan-labels -g
+ VBOX_ASFLAGS   = $(VBOX_ASFLAGS_FMT)   -D__NASM__ -w+orphan-labels -g
+ VBOX_ASFLAGS32 = $(VBOX_ASFLAGS_FMT32) -D__NASM__ -w+orphan-labels -g
  VBOX_ASFLAGS64 = $(VBOX_ASFLAGS_FMT64) -D__NASM__ -w+orphan-labels -g
 endif
 
@@ -814,13 +812,6 @@ else
 endif
 
 #
-# Special SDK for the problematic NTDLL.LIB.
-#
-SDK_VBOX_NTDLL = Requires W2K3DDK
-SDK_VBOX_NTDLL_LIBS ?= $(PATH_SDK_W2K3DDK_LIB)/ntdll.lib
-
-
-#
 # Qt build tools, for Linux we require it to be present on the system
 #
 ## @todo convert this into SDK and integrate the Qt stuff into kBuild.
@@ -874,7 +865,6 @@ TEMPLATE_VBOXGC_ASTOOL              = $(VBOX_ASTOOL)
 TEMPLATE_VBOXGC_ASFLAGS             = $(VBOX_ASFLAGS32)
 TEMPLATE_VBOXGC_DEFS                = IN_GC
 TEMPLATE_VBOXGC_SYSSUFF             = .gc
-TEMPLATE_VBOXGC_BLD_TRG_ARCH        = x86
 
 ifeq ($(VBOX_LDR_FMT32),pe)
 ifdef VBOX_USE_VCC80
@@ -1063,7 +1053,7 @@ TEMPLATE_VBOXR0DRV_INCS.amd64          = \
 	$(VBOX_LINUX_SRC)/include
 TEMPLATE_VBOXR0DRV_CFLAGS              = -nostdinc -iwithprefix include \
 	-Wall -Wstrict-prototypes -Wno-trigraphs $(VBOX_GCC_Wno-pointer-sign) \
-	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_OPT) $(VBOX_GCC_FP) -fno-strict-aliasing -fno-common -msoft-float
+	$(VBOX_GCC_OPT) $(VBOX_GCC_FP) -fno-strict-aliasing -fno-common -msoft-float
 TEMPLATE_VBOXR0DRV_CFLAGS.x86          = -mpreferred-stack-boundary=2
 TEMPLATE_VBOXR0DRV_CFLAGS.amd64        = -mno-red-zone -mcmodel=kernel -fno-reorder-blocks \
 	-fno-asynchronous-unwind-tables -funit-at-a-time -mno-sse -mno-mmx -mno-sse2 -mno-3dnow \
@@ -1072,8 +1062,7 @@ TEMPLATE_VBOXR0DRV_CXXFLAGS            = $(filter-out -Wstrict-prototypes -Wno-p
   ifndef VBOX_LINUX_VERSION_2_4
 # 2.6
 TEMPLATE_VBOXR0DRV_SYSSUFF             = .ko
-TEMPLATE_VBOXR0DRV_LDFLAGS.x86         = -m elf_i386 -r
-TEMPLATE_VBOXR0DRV_LDFLAGS.amd64       = -m elf_x86_64 -r
+TEMPLATE_VBOXR0DRV_LDFLAGS             = -m elf_i386 -r
   else
 # 2.4
 TEMPLATE_VBOXR0DRV_SYSSUFF             = .o
@@ -1221,14 +1210,6 @@ TEMPLATE_VBOXR3  = VBox Ring 3 SO/DLLs
 TEMPLATE_VBOXR3_EXTENDS = VBOXR3EXE
 TEMPLATE_VBOXR3_LDFLAGS.l4 = $(L4_LIBDIR)/../crt0.s.o -T$(L4_LIBDIR)/../main_rel.ld -nostdlib
 TEMPLATE_VBOXR3_DEFS.darwin = $(TEMPLATE_VBOXR3EXE_DEFS.darwin) PIC
-ifeq ($(BUILD_TARGET_ARCH),amd64)
- ifneq ($(BUILD_TARGET),win)
-  TEMPLATE_VBOXR3_DEFS = $(TEMPLATE_VBOXR3EXE_DEFS) PIC
-  TEMPLATE_VBOXR3_CFLAGS = $(TEMPLATE_VBOXR3EXE_CFLAGS) -fPIC
-  TEMPLATE_VBOXR3_CXXFLAGS = $(TEMPLATE_VBOXR3EXE_CXXFLAGS) -fPIC
-  TEMPLATE_VBOXR3_LDFLAGS = $(TEMPLATE_VBOXR3EXE_LDFLAGS) -fPIC
- endif
-endif
 
 #
 # Ring-3 testcase.
@@ -1407,13 +1388,10 @@ endif # !win
 #
 TEMPLATE_VBOXMAIN  = VBox MAIN
 TEMPLATE_VBOXMAIN_EXTENDS = VBOXMAINEXE
-ifeq ($(BUILD_TARGET_ARCH),amd64)
- ifneq ($(BUILD_TARGET),win)
-  TEMPLATE_VBOXMAIN_DEFS     = PIC $(TEMPLATE_VBOXMAINEXE_DEFS)
-  TEMPLATE_VBOXMAIN_CFLAGS   = -fPIC $(TEMPLATE_VBOXMAINEXE_CFLAGS)
-  TEMPLATE_VBOXMAIN_CXXFLAGS = -fPIC $(TEMPLATE_VBOXMAINEXE_CXXFLAGS)
-  TEMPLATE_VBOXMAIN_LDFLAGS  = -fPIC $(TEMPLATE_VBOXMAINEXE_LDFLAGS)
- endif
+ifneq ($(BUILD_TARGET),win)
+ TEMPLATE_VBOXMAIN_DEFS.amd64     = PIC $(TEMPLATE_VBOXMAINEXE_DEFS.amd64)
+ TEMPLATE_VBOXMAIN_CFLAGS.amd64   = -fPIC $(TEMPLATE_VBOXMAINEXE_CFLAGS.amd64)
+ TEMPLATE_VBOXMAIN_CXXFLAGS.amd64 = -fPIC $(TEMPLATE_VBOXMAINEXE_CXXFLAGS.amd64)
 endif
 
 #

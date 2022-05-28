@@ -1,5 +1,5 @@
-/* $Id: DBGFBp.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * VMM DBGF - Debugger Facility, Breakpoint Management.
  */
 
@@ -33,7 +33,8 @@
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
-#include <iprt/string.h>
+
+#include <string.h>
 
 
 /*******************************************************************************

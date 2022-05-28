@@ -1,5 +1,5 @@
-/* $Id: PGMAll.cpp 78 2007-01-16 17:32:03Z vboxsync $ */
 /** @file
+ *
  * PGM - Page Manager and Monitor - All context code.
  */
 
@@ -82,7 +82,7 @@ static void pgmDumpPDEBig(const char *pszPrefix, int iPD, VBOXPDE Pde)
 
 
 
-#if 1///@todo ndef __AMD64__
+#ifndef __AMD64__
 /*
  * Shadow - 32-bit mode
  */

@@ -1,5 +1,5 @@
-/* $Id: PDMDriver.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
 
@@ -41,6 +41,8 @@
 #include <iprt/asm.h>
 #include <iprt/alloc.h>
 #include <iprt/path.h>
+
+#include <string.h>
 
 
 /*******************************************************************************

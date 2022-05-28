@@ -1,5 +1,5 @@
-/* $Id: IOM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
+ *
  * IOM - Input / Output Monitor.
  */
 
@@ -65,6 +65,8 @@
 #include <iprt/string.h>
 #include <VBox/log.h>
 #include <VBox/err.h>
+
+#include <string.h>
 
 
 /*******************************************************************************
