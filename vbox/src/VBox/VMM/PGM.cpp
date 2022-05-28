@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 4537 2007-09-05 15:09:26Z vboxsync $ */
+/* $Id: PGM.cpp 4591 2007-09-07 01:26:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -364,7 +364,6 @@
     uint32_t u2State : 2;       The page state { zero, shared, normal, write monitored }.
     uint32_t fWrittenTo : 1;    Whether a write monitored page was written to.
     uint32_t u20Reserved : 20;  Reserved for later, mostly sharing stats.
-    uint32_t u32Reserved : ;       Reserved for later, mostly sharing stats.
     uint32_t u32Tracking;       The shadow PT tracking stuff, roughly.
  @endverbatim
  * 
