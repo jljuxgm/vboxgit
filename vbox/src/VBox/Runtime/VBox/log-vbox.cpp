@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 4555 2007-09-06 00:24:20Z vboxsync $ */
+/* $Id: log-vbox.cpp 4858 2007-09-17 15:22:23Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Logging configuration.
  */
@@ -125,6 +125,7 @@
 #  include <unistd.h>
 # elif defined(RT_OS_SOLARIS)
 #  define _STRUCTURED_PROC 1
+#  undef _FILE_OFFSET_BITS /* procfs doesn't like this */
 #  include <sys/procfs.h>
 #  include <unistd.h>
 # elif defined(RT_OS_L4)
