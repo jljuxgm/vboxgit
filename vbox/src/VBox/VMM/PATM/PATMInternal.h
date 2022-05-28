@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 93 2007-01-17 12:57:07Z vboxsync $ */
+/* $Id: PATMInternal.h 102 2007-01-17 14:28:45Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -186,10 +186,10 @@ typedef struct RECPATCHTOGUEST
 typedef struct RECGUESTTOPATCH
 {
     /** The key is a GC virtual address. */
-    AVLPVNODECORE   Core;
+    AVLGCPTRNODECORE    Core;
 
     /** Patch offset (relative to PATM::pPatchMemGC / PATM::pPatchMemHC). */
-    uint32_t        PatchOffset;
+    uint32_t            PatchOffset;
 } RECGUESTTOPATCH, *PRECGUESTTOPATCH;
 
 /**
@@ -258,7 +258,7 @@ typedef struct _PATCHINFO
      * instruction in the patch block.
      */
     HCPTRTYPE(PAVLU32NODECORE) Patch2GuestAddrTree;
-    HCPTRTYPE(PAVLPVNODECORE) Guest2PatchAddrTree;
+    HCPTRTYPE(PAVLGCPTRNODECORE) Guest2PatchAddrTree;
     uint32_t                  nrPatch2GuestRecs;
 
     // Cache record for PATMGCVirtToHCVirt
