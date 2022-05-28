@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 2506 2007-05-04 18:21:26Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 2555 2007-05-09 12:58:47Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1052,6 +1052,23 @@ ResumeExecution:
             goto ResumeExecution;
         }
         AssertMsgFailed(("EMU: cpuid failed with %Vrc\n", rc));
+        rc = VINF_EM_RAW_EMULATE_INSTR;
+        break;
+    }
+
+    case SVM_EXIT_RDTSC:                /* Guest software attempted to execute RDTSC. */
+    {
+        Log2(("SVM: Rdtsc\n"));
+        STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitRdtsc);
+        rc = EMInterpretRdtsc(pVM, CPUMCTX2CORE(pCtx));
+        if (rc == VINF_SUCCESS)
+        {
+            /* Update EIP and continue execution. */
+            pCtx->eip += 2;             /** @note hardcoded opcode size! */
+            STAM_PROFILE_ADV_STOP(&pVM->hwaccm.s.StatExit, x);
+            goto ResumeExecution;
+        }
+        AssertMsgFailed(("EMU: rdtsc failed with %Vrc\n", rc));
         rc = VINF_EM_RAW_EMULATE_INSTR;
         break;
     }
