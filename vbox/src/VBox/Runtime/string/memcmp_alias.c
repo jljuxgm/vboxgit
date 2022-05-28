@@ -1,4 +1,4 @@
-/* $Id: memcmp.cpp 17216 2007-01-10 16:40:30Z bird $ */
+/* $Id: memcmp_alias.c 1176 2007-03-04 00:04:10Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - No-CRT memcmp() alias for gcc.
  */

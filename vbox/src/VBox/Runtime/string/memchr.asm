@@ -1,4 +1,4 @@
-; $Id: memchr.asm 1173 2007-03-03 23:38:42Z vboxsync $
+; $Id: memchr.asm 1176 2007-03-04 00:04:10Z vboxsync $
 ;; @file
 ; InnoTek Portable Runtime - No-CRT memchr - AMD64 & X86.
 ;

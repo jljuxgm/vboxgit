@@ -1,4 +1,4 @@
-/* $Id: $ */
+/* $Id: memset_alias.c 1176 2007-03-04 00:04:10Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - No-CRT memset() alias for gcc.
  */

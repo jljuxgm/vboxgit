@@ -1,4 +1,4 @@
-; $Id: strchr.asm 1174 2007-03-03 23:49:53Z vboxsync $
+; $Id: strchr.asm 1176 2007-03-04 00:04:10Z vboxsync $
 ;; @file
 ; InnoTek Portable Runtime - No-CRT strchr - AMD64 & X86.
 ;

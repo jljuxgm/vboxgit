@@ -1,4 +1,4 @@
-; $Id: mempcpy.asm 1172 2007-03-03 23:38:13Z vboxsync $
+; $Id: mempcpy.asm 1176 2007-03-04 00:04:10Z vboxsync $
 ;; @file
 ; InnoTek Portable Runtime - No-CRT mempcpy - AMD64 & X86.
 ;

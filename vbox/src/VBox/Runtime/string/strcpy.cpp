@@ -1,4 +1,4 @@
-/* $Id: strcpy.cpp 1  vboxsync $ */
+/* $Id: strcpy.cpp 1176 2007-03-04 00:04:10Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - CRT Strings, strcpy().
  */

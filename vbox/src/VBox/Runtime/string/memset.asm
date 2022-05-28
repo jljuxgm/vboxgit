@@ -1,4 +1,4 @@
-; $Id: memset.asm 1171 2007-03-03 23:37:03Z vboxsync $
+; $Id: memset.asm 1176 2007-03-04 00:04:10Z vboxsync $
 ;; @file
 ; InnoTek Portable Runtime - No-CRT memset - AMD64 & X86.
 ;

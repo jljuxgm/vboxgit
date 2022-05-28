@@ -1,4 +1,4 @@
-/* $Id: memcpy.cpp 17216 2007-01-10 16:40:30Z bird $ */
+/* $Id: memcpy_alias.c 1176 2007-03-04 00:04:10Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - No-CRT memcpy() alias for gcc.
  */
