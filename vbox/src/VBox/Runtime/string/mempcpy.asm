@@ -1,4 +1,4 @@
-; $Id: mempcpy.asm 3 2007-01-15 08:17:06Z vboxsync $
+; $Id: mempcpy.asm 1172 2007-03-03 23:38:13Z vboxsync $
 ;; @file
 ; InnoTek Portable Runtime - No-CRT mempcpy - AMD64 & X86.
 ;
@@ -20,6 +20,8 @@
 ;
 
 %include "iprt/asmdefs.mac"
+
+BEGINCODE
 
 ;;
 ; @param    pvDst   gcc: rdi  msc: rcx  x86:[esp+4]
@@ -50,7 +52,7 @@ BEGINPROC RT_NOCRT(mempcpy)
         mov     edi, [esp + 04h + 4]
         mov     esi, [esp + 08h + 4]
         mov     edx, ecx
-        shl     ecx, 2
+        shr     ecx, 2
         rep movsd
 %endif
 
