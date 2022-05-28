@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-nt.cpp 1  vboxsync $ */
+/* $Id: alloc-r0drv-nt.cpp 2652 2007-05-15 23:48:17Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Memory Allocation, Ring-0 Driver, NT.
  */
@@ -36,7 +36,7 @@
 PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
 {
     Assert(cb != sizeof(void *)); /* 99% of pointer sized allocations are wrong. */
-    PRTMEMHDR pHdr = (PRTMEMHDR)ExAllocatePoolWithTag(NonPagedPool, cb + sizeof(*pHdr), 'iprt');
+    PRTMEMHDR pHdr = (PRTMEMHDR)ExAllocatePoolWithTag(NonPagedPool, cb + sizeof(*pHdr), IPRT_NT_POOL_TAG);
     if (pHdr)
     {
         pHdr->u32Magic  = RTMEMHDR_MAGIC;

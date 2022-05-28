@@ -1,4 +1,4 @@
-/* $Id: the-nt-kernel.h 1  vboxsync $ */
+/* $Id: the-nt-kernel.h 2652 2007-05-15 23:48:17Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Include all necessary headers for the NT kernel.
  */
@@ -69,6 +69,13 @@ __END_DECLS
 # undef ExFreePool
   NTKERNELAPI VOID NTAPI ExFreePool(IN PVOID P);
 #endif /* IPRT_TARGET_NT4 */
+
+/** @def IPRT_NT_POOL_TAG
+ * Tag to use with the NT Pool APIs.
+ * In memory and in the various windbg tool it appears in the reverse order of
+ * what it is given as here, so it'll read "IPRT".
+ */
+#define IPRT_NT_POOL_TAG    'TRPI'
 
 #endif
 
