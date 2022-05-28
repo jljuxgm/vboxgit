@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2484 2007-05-04 02:19:33Z vboxsync $
+# $Id: Makefile.kmk 2486 2007-05-04 02:42:46Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -133,9 +133,8 @@ VBoxSVC_DEFS.win.amd64 += _WIN32_WINNT=0x0510
 VBoxSVC_INCS = \
 	include \
 	$(PATH_VBoxSVC) \
-	$(PATH_VBoxCOM)
-VBoxSVC_INCS.win := \
-	$(PATH_SUB_CURRENT)
+	$(PATH_VBoxCOM) \
+	$(PATH_CURRENT)
 ifdef VBOX_WITH_XPCOM
  VBoxSVC_LIBS += \
 	$(PATH_BIN)/VBoxDDU$(VBOX_SUFF_DLL) \
