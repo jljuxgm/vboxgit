@@ -1,6 +1,8 @@
-/* $Id: DrvHostParallel.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 4088 2007-08-08 09:12:59Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
+ *
+ * Contributed by: Alexander Eichner
  */
 
 /*

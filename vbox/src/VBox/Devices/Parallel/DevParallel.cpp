@@ -1,6 +1,8 @@
-/* $Id: DevParallel.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: DevParallel.cpp 4088 2007-08-08 09:12:59Z vboxsync $ */
 /** @file
  * VirtualBox Parallel Device Emulation.
+ *
+ * Contributed by: Alexander Eichner
  */
 
 /*

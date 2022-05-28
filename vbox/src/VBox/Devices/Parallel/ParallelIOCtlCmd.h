@@ -1,6 +1,8 @@
-/* $Id: ParallelIOCtlCmd.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: ParallelIOCtlCmd.h 4088 2007-08-08 09:12:59Z vboxsync $ */
 /** @file
  * VBox parallel device, Private Driver IOCtls.
+ *
+ * Contributed by: Alexander Eichner
  */
 
 /*
