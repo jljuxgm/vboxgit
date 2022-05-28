@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 4920 2007-09-20 11:51:14Z vboxsync $ */
+/* $Id: VMMR0.cpp 4921 2007-09-20 11:51:47Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -870,7 +870,6 @@ VMMR0DECL(int) VMMR0EntryEx(PVM pVM, VMMR0OPERATION enmOperation, PSUPVMMR0REQHD
  */
 VMMR0DECL(void) vmmR0LoggerFlush(PRTLOGGER pLogger)
 {
-_asm int 3;
     /*
      * Convert the pLogger into a VM handle and 'call' back to Ring-3.
      * (This is a bit paranoid code.)
