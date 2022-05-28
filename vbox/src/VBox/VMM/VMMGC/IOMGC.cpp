@@ -1,4 +1,4 @@
-/* $Id: IOMGC.cpp 1936 2007-04-04 15:06:13Z vboxsync $ */
+/* $Id: IOMGC.cpp 2116 2007-04-17 08:32:29Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -472,7 +472,7 @@ IOMDECL(int) IOMInterpretINS(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu)
 
         /* Convert destination address es:edi. */
         RTGCPTR GCPtrDst;
-        rc = SELMToFlatEx(pVM, pRegFrame->eflags, pRegFrame->es, (RTGCPTR)pRegFrame->edi,
+        rc = SELMToFlatEx(pVM, pRegFrame->eflags, pRegFrame->es, (RTGCPTR)pRegFrame->edi, &pRegFrame->esHid, 
                           SELMTOFLAT_FLAGS_HYPER | SELMTOFLAT_FLAGS_NO_PL,
                           &GCPtrDst, NULL);
         if (VBOX_FAILURE(rc))
@@ -578,7 +578,7 @@ IOMDECL(int) IOMInterpretOUTS(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu
 
         /* Convert source address ds:esi. */
         RTGCPTR GCPtrSrc;
-        rc = SELMToFlatEx(pVM, pRegFrame->eflags, pRegFrame->ds, (RTGCPTR)pRegFrame->esi,
+        rc = SELMToFlatEx(pVM, pRegFrame->eflags, pRegFrame->ds, (RTGCPTR)pRegFrame->esi, &pRegFrame->dsHid,
                           SELMTOFLAT_FLAGS_HYPER | SELMTOFLAT_FLAGS_NO_PL,
                           &GCPtrSrc, NULL);
         if (VBOX_FAILURE(rc))
