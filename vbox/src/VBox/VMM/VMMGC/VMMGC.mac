@@ -1,4 +1,4 @@
-; $Id: VMMGC.mac 1405 2007-03-12 04:17:51Z vboxsync $
+; $Id: VMMGC.mac 1609 2007-03-21 19:33:14Z vboxsync $
 ;; @file
 ; VMMGC - Guest Context Assembly Macros.
 ;
@@ -50,6 +50,7 @@
   [section %1 segname VMMR0 align=1 ]
   %endmacro
  %else
+  %macro VMMR0_SEG 1
   [section VMMR0.%1 rdata align=1 ]
   %endmacro
  %endif
