@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 5007 2007-09-24 14:28:23Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 5008 2007-09-24 14:32:33Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -646,7 +646,7 @@ static DECLCALLBACK(int) drvHostSerialWakeupReceiveThread(PPDMDRVINS pDrvIns, PP
     PDRVHOSTSERIAL pData = PDMINS2DATA(pDrvIns, PDRVHOSTSERIAL);
 #ifdef RT_OS_LINUX
     return RTFileWrite(pData->WakeupPipeW, "", 1, NULL);
-#elif RT_OS_WINDOWS
+#elif defined(RT_OS_WINDOWS)
     if (!SetEvent(pData->hHaltEventSem))
         return RTErrConvertFromWin32(GetLastError());
     return VINF_SUCCESS;
