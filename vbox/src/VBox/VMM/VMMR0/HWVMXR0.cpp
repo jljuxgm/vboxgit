@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 138 2007-01-18 14:59:18Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 1773 2007-03-28 14:26:46Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -480,8 +480,8 @@ HWACCMR0DECL(int) VMXR0SaveHostState(PVM pVM)
         rc  = VMXWriteVMCS(VMX_VMCS_HOST_FS_BASE,           0);
         rc |= VMXWriteVMCS(VMX_VMCS_HOST_GS_BASE,           0);
 #else
-        rc  = VMXWriteVMCS64(VMX_VMCS_HOST_FS_BASE,           ASMRdMsr(MSR_K8_FS_BASE));
-        rc |= VMXWriteVMCS64(VMX_VMCS_HOST_GS_BASE,           ASMRdMsr(MSR_K8_GS_BASE));
+        rc  = VMXWriteVMCS64(VMX_VMCS_HOST_FS_BASE,         ASMRdMsr(MSR_K8_FS_BASE));
+        rc |= VMXWriteVMCS64(VMX_VMCS_HOST_GS_BASE,         ASMRdMsr(MSR_K8_GS_BASE));
 #endif
         AssertRC(rc);
 
