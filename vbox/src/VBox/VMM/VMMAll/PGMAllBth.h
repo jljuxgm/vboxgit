@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 4999 2007-09-24 09:45:26Z vboxsync $ */
+/* $Id: PGMAllBth.h 5006 2007-09-24 14:21:12Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1265,10 +1265,10 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorker)(PVM pVM, PSHWPTE pPteDst, VBOXPDE 
     }
     else
     {
-        LogFlow(("SyncPageWorker: page not present in Pte\n"));
         /*
          * Page not-present.
          */
+        LogFlow(("SyncPageWorker: page not present in Pte\n"));
 #ifdef PGMPOOL_WITH_USER_TRACKING
         /* Keep user track up to date. */
         if (pPteDst->n.u1Present)
