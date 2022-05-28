@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4586 2007-09-06 16:46:50Z vboxsync $
+# $Id: Makefile.kmk 4966 2007-09-21 16:22:15Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -93,7 +93,10 @@ LINUXNOSTRIP = \
 	VBox.png \
 	VBoxAddIF.sh \
 	$(if $(VBOX_WITH_QTGUI),VirtualBox.desktop,) \
-	$(if $(VBOX_WITH_QTGUI),nls,) \
+	$(if $(VBOX_WITH_QTGUI),$(foreach f,\
+	  $(shell $(CAT_EXT) \
+	    $(PATH_ROOT)/src/VBox/Frontends/VirtualBox/nls/ApprovedLanguages.txt),\
+	  nls/VirtualBox_$(f).qm nls/qt_$(f).qm),) \
 	src \
 	sdk
 
