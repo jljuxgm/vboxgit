@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 1881 2007-04-03 13:08:14Z vboxsync $ */
+/* $Id: PGMAllBth.h 1908 2007-04-04 07:49:50Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -902,6 +902,7 @@ PGM_BTH_DECL(int, InvalidatePage)(PVM pVM, RTGCUINTPTR GCPtrPage)
 #  endif
             if (pShwPage->GCPhys == GCPhys)
             {
+#if 0 /* likely cause of a major performance regression; must be SyncPageWorkerTrackDeref then */
                 const unsigned iPTEDst = (GCPtrPage >> SHW_PT_SHIFT) & SHW_PT_MASK;
                 PSHWPT pPT = (PSHWPT)PGMPOOL_PAGE_2_PTR(pVM, pShwPage);
                 if (pPT->a[iPTEDst].n.u1Present)
@@ -912,6 +913,11 @@ PGM_BTH_DECL(int, InvalidatePage)(PVM pVM, RTGCUINTPTR GCPtrPage)
 #  endif
                     pPT->a[iPTEDst].u = 0;
                 }
+#else /* Syncing it here isn't 100% safe and it's probably not worth spending time syncing it. */ 
+                rc = PGM_BTH_NAME(SyncPage)(pVM, PdeSrc, GCPtrPage, 1, 0); 
+                if (VBOX_SUCCESS(rc)) 
+                    rc = VINF_SUCCESS; 
+#endif       
                 STAM_COUNTER_INC(&pVM->pgm.s.CTXMID(Stat,InvalidatePage4KBPages));
                 PGM_INVL_PG(GCPtrPage);
             }
