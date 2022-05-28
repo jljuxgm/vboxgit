@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 1090 2007-02-28 08:44:17Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 1157 2007-03-02 14:22:34Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1291,15 +1291,18 @@ CPUMDECL(int) CPUMRawLeave(PVM pVM, PCPUMCTXCORE pCtxCore, int rc)
          * PATM is taking care of the IOPL and IF flags for us.
          */
         PATMRawLeave(pVM, pCtxCore, rc);
-        /** @todo See what happens if we remove this. */
-        if ((pCtxCore->ds & X86_SEL_RPL) == 1)
-            pCtxCore->ds &= ~X86_SEL_RPL;
-        if ((pCtxCore->es & X86_SEL_RPL) == 1)
-            pCtxCore->es &= ~X86_SEL_RPL;
-        if ((pCtxCore->fs & X86_SEL_RPL) == 1)
-            pCtxCore->fs &= ~X86_SEL_RPL;
-        if ((pCtxCore->gs & X86_SEL_RPL) == 1)
-            pCtxCore->gs &= ~X86_SEL_RPL;
+        if (!pCtxCore->eflags.Bits.u1VM)
+        {
+            /** @todo See what happens if we remove this. */
+            if ((pCtxCore->ds & X86_SEL_RPL) == 1)
+                pCtxCore->ds &= ~X86_SEL_RPL;
+            if ((pCtxCore->es & X86_SEL_RPL) == 1)
+                pCtxCore->es &= ~X86_SEL_RPL;
+            if ((pCtxCore->fs & X86_SEL_RPL) == 1)
+                pCtxCore->fs &= ~X86_SEL_RPL;
+            if ((pCtxCore->gs & X86_SEL_RPL) == 1)
+                pCtxCore->gs &= ~X86_SEL_RPL;
+        }
     }
 
     return rc;
