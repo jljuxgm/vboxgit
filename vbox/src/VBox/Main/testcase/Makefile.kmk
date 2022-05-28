@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3480 2007-07-05 15:48:41Z vboxsync $
+# $Id: Makefile.kmk 3910 2007-07-27 18:11:38Z vboxsync $
 ## @file
 # Makefile for the VBox API testcases.
 #
@@ -26,7 +26,7 @@ ifdef VBOX_WITH_TESTCASES
  PROGRAMS       = tstAPI
  PROGRAMS.linux = tstVBoxAPILinux
  PROGRAMS.win   = tstVBoxAPIWin
-else ifeq ($(USER),dmik)
+else ifeq ($(USERNAME),dmik)
  PROGRAMS       = tstAPI
 endif # VBOX_WITH_TESTCASES
 
