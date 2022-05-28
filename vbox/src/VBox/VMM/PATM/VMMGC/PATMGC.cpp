@@ -1,4 +1,4 @@
-/* $Id: PATMGC.cpp 367 2007-01-26 17:06:04Z vboxsync $ */
+/* $Id: PATMGC.cpp 730 2007-02-06 22:21:32Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -78,7 +78,6 @@ PATMGCDECL(int) PATMGCMonitorPage(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRe
  */
 PATMGCDECL(int) PATMGCHandleWriteToPatchPage(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPTR GCPtr, uint32_t cbWrite)
 {
-    bool                 ret = false;
     RTGCUINTPTR          pWritePageStart, pWritePageEnd;
     PPATMPATCHPAGE       pPatchPage;
 
