@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 2776 2007-05-22 17:32:44Z vboxsync $ */
+/* $Id: EM.cpp 2852 2007-05-24 18:26:21Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -307,7 +307,7 @@ EMR3DECL(int) EMR3Init(PVM pVM)
 
 /* these should be considered for release statistics. */
     STAM_REG(pVM, &pVM->em.s.StatForcedActions,         STAMTYPE_PROFILE, "/PROF/EM/ForcedActions",     STAMUNIT_TICKS_PER_CALL, "Profiling forced action execution.");
-    STAM_REL_REG(pVM, &pVM->em.s.StatHalted,                STAMTYPE_PROFILE, "/PROF/EM/Halted",            STAMUNIT_TICKS_PER_CALL, "Profiling halted state (VMR3WaitHalted).");
+    STAM_REL_REG(pVM, &pVM->em.s.StatHalted,            STAMTYPE_PROFILE, "/PROF/EM/Halted",            STAMUNIT_TICKS_PER_CALL, "Profiling halted state (VMR3WaitHalted).");
     STAM_REG(pVM, &pVM->em.s.StatHwAccEntry,            STAMTYPE_PROFILE, "/PROF/EM/HwAccEnter",        STAMUNIT_TICKS_PER_CALL, "Profiling Hardware Accelerated Mode entry overhead.");
     STAM_REG(pVM, &pVM->em.s.StatHwAccExec,             STAMTYPE_PROFILE, "/PROF/EM/HwAccExec",         STAMUNIT_TICKS_PER_CALL, "Profiling Hardware Accelerated Mode execution.");
     STAM_REG(pVM, &pVM->em.s.StatIOEmu,                 STAMTYPE_PROFILE, "/PROF/EM/Emulation/IO",      STAMUNIT_TICKS_PER_CALL, "Profiling of emR3RawExecuteIOInstruction.");

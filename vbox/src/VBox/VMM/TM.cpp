@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 2828 2007-05-23 16:20:24Z vboxsync $ */
+/* $Id: TM.cpp 2852 2007-05-24 18:26:21Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -285,7 +285,7 @@ TMR3DECL(int) TMR3Init(PVM pVM)
                           pVM->tm.s.cTSCTicksPerSecond);
     else
     {
-        pVM->tm.s.fTSCUseRealTSC = pVM->tm.s.fMaybeUseOffsettedHostTSC =  false;
+        pVM->tm.s.fTSCUseRealTSC = pVM->tm.s.fMaybeUseOffsettedHostTSC = false;
         pVM->tm.s.fTSCVirtualized = true;
     }
 
