@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 102 2007-01-17 14:28:45Z vboxsync $ */
+/* $Id: PATMInternal.h 188 2007-01-19 17:11:18Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -36,7 +36,7 @@
 #endif
 
 
-#define PATM_SSM_VERSION                    47
+#define PATM_SSM_VERSION                    48
 
 /* Enable for call patching. */
 #define PATM_ENABLE_CALL
