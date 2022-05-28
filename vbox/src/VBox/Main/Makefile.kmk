@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3191 2007-06-20 22:26:49Z vboxsync $
+# $Id: Makefile.kmk 3278 2007-06-25 15:27:23Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -21,10 +21,6 @@
 
 DEPTH = ../../..
 include $(PATH_KBUILD)/header.kmk
-
-ifdef VBOX_WITH_VRDP_MC
-DEFS       += VRDP_MC
-endif
 
 SUBDIRS_AFTER    = testcase 
 
