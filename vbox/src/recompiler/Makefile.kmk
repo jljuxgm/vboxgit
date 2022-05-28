@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2986 2007-06-01 16:29:34Z vboxsync $
+# $Id: Makefile.kmk 3315 2007-06-27 11:54:17Z vboxsync $
 ## @file
 # The Recompiler Makefile.
 #
@@ -156,6 +156,10 @@ ifdef REM_USE_NOCRT
 	$(PATH_LIB)/RuntimeR3NoCRTGCC$(VBOX_SUFF_LIB) \
  	$(LIB_VMM) \
  	$(LIB_RUNTIME)
+  ifeq ($(BUILD_TARGET),l4)
+   $(REM_MOD)_LIBS          += \
+        $(L4_LIBDIR)/libuc.0.s.so
+  endif
   $(REM_MOD)_LIBS.darwin    = \
   	$(TARGET_VBoxREMImp)
 #  	$(PATH_BIN)/VBoxREMImp.dylib
