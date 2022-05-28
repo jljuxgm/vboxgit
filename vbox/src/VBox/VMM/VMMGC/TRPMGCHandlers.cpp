@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 2065 2007-04-13 08:46:06Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 2066 2007-04-13 09:05:03Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -545,7 +545,6 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTAT
             Assert(!(PATMIsPatchGCAddr(pVM, PC)));
             if (pCpu->param1.parval == 3)
             {
-                /* Obsolete!! */
                 /* Int 3 replacement patch? */
                 if (PATMHandleInt3PatchTrap(pVM, pRegFrame) == VINF_SUCCESS)
                 {
