@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 1590 2007-03-21 02:58:53Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 1591 2007-03-21 03:07:01Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -3073,7 +3073,7 @@ target_ulong remR3PhysGetPhysicalAddressCode(CPUState *env, target_ulong addr, C
 
 /** Validate the physical address passed to the read functions.
  * Useful for finding non-guest-ram reads/writes.  */
-#if 1
+#if 1 /* disable if it becomes bothersome... */
 # define VBOX_CHECK_ADDR(GCPhys) AssertMsg(PGMPhysIsGCPhysValid(cpu_single_env->pVM, (GCPhys)), ("%VGp\n", (GCPhys)))
 #else
 # define VBOX_CHECK_ADDR(GCPhys) do { } while (0)
