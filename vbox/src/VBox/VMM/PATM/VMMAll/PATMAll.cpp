@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 1105 2007-02-28 13:06:13Z vboxsync $ */
+/* $Id: PATMAll.cpp 1106 2007-02-28 13:06:39Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -628,7 +628,7 @@ PATMDECL(int) PATMHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                 if (rc == VINF_SUCCESS)
                 {
                     if (    (uEFlags & X86_EFL_VM)
-                        ||  (selCS & X86_SEL_RPL) == 3))
+                        ||  (selCS & X86_SEL_RPL) == 3)
                     {
                         uint32_t selSS, esp;
 
