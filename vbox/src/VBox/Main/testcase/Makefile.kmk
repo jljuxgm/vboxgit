@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4246 2007-08-20 18:57:44Z vboxsync $
+# $Id: Makefile.kmk 5501 2007-10-25 10:37:58Z vboxsync $
 ## @file
 # Makefile for the VBox API testcases.
 #
@@ -62,9 +62,7 @@ tstVBoxAPILinux_INCS     = \
 	$(VBOX_XPCOM_INCS) \
 	$(PATH_BIN)/sdk/include
 tstVBoxAPILinux_LIBPATH  = $(LIBPATH_XPCOM)
-tstVBoxAPILinux_LIBS     = \
-	$(PATH_BIN)/VBoxXPCOM.so \
-	$(PATH_LIB)/VBoxXPCOMGlue$(VBOX_SUFF_LIB)
+tstVBoxAPILinux_LIBS     = $(LIB_XPCOM)
 
 #
 # tstVBoxAPIWin
