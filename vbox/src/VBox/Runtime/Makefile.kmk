@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3545 2007-07-11 11:05:58Z vboxsync $
+# $Id: Makefile.kmk 3622 2007-07-16 02:24:59Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -378,7 +378,7 @@ RuntimeR3_SOURCES.freebsd = \
 	r3/posix/dir-posix.cpp \
 	r3/posix/env-posix.cpp \
 	r3/posix/fileio-posix.cpp \
-	r3/posix/filelocks-posix.cpp \
+	r3/posix/filelock-posix.cpp \
 	r3/posix/fs-posix.cpp \
 	r3/posix/ldrNative-posix.cpp \
 	r3/posix/path-posix.cpp \
