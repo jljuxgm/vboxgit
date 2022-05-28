@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5725 2007-11-13 19:48:22Z vboxsync $
+# $Id: Makefile.kmk 5727 2007-11-13 20:30:54Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -204,14 +204,18 @@ DevicesR3_SOURCES       = \
 	PC/DevPcArch.c \
 	VMMDev/VBoxDev.cpp \
 	VMMDev/VMMDevHGCM.cpp \
-	Network/DevE1000.cpp \
-	Network/DevEEPROM.cpp \
 	Network/DevPCNet.cpp \
 	Audio/DevIchAc97.cpp \
 	PC/DevDMA.cpp \
 	Storage/fdc.c \
 	Serial/DevSerial.cpp \
 	Parallel/DevParallel.cpp
+
+ifndef VBOX_OSE
+DevicesR3Sources +=
+	Network/DevE1000.cpp \
+	Network/DevEEPROM.cpp
+endif
 
 ifdef VBOX_WITH_AHCI
 DevicesR3_DEFS	       += VBOX_WITH_AHCI IN_AHCI_R3
