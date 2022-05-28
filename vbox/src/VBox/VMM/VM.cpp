@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 4754 2007-09-13 07:59:39Z vboxsync $ */
+/* $Id: VM.cpp 4759 2007-09-13 08:43:31Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1257,7 +1257,7 @@ static DECLCALLBACK(int) vmR3PowerOff(PVM pVM)
             RTLogRelPrintf("***\n"
                            "ss:sp=0000:%04x ", esp);
             uint32_t Start = esp & ~(uint32_t)63;
-            int rc = PGMPhysReadGCPhys(pVM, abBuf, Start, Start + 0x100);
+            int rc = PGMPhysReadGCPhys(pVM, abBuf, Start, 0x100);
             if (VBOX_SUCCESS(rc))
                 RTLogRelPrintf("0000:%04x TO 0000:%04x:\n"
                                "%.*Rhxd\n",
