@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 1468 2007-03-14 12:26:51Z vboxsync $ */
+/* $Id: MMPagePool.cpp 1480 2007-03-14 18:27:47Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Page Pool.
  */
@@ -251,7 +251,7 @@ DECLINLINE(void *) mmr3PagePoolAlloc(PMMPAGEPOOL pPool)
         }
     }
     else
-        rc = SUPLowAlloc(cPages, &pSub->pvPages, paPhysPages);
+        rc = SUPLowAlloc(cPages, &pSub->pvPages, NULL, paPhysPages);
     if (VBOX_SUCCESS(rc))
     {
         /*
