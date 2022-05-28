@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5786 2007-11-19 08:20:25Z vboxsync $
+# $Id: Config.kmk 5787 2007-11-19 09:06:51Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1266,8 +1266,8 @@ ifneq ($(filter linux,$(BUILD_TARGET)),)
    kernelpath := $(VBOX_LINUX_SRC)
   endif
   ifeq ($(BUILD_TARGET_ARCH),x86)
-    VBOX_LINUX_INCS                += $(kernelpath)/include/asm/mach-default \
-                                      $(kernelpath)/include2/asm/mach-default
+    VBOX_LINUX_INCS                += $(kernelpath)/include/asm-i386/mach-default \
+                                      $(kernelpath)/include/asm-x86/mach-default
   endif
  endif
 endif
@@ -2653,7 +2653,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5786 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5787 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(USERNAME),bird) # Wastes nearly half a second on windows, very annoying. TODO: $(which ).
   ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
