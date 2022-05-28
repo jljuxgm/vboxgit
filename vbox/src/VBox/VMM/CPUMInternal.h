@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 4787 2007-09-14 09:08:56Z vboxsync $ */
+/* $Id: CPUMInternal.h 4958 2007-09-21 14:54:04Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -283,8 +283,10 @@ typedef struct CPUM
     CPUMCTX         Guest;
 
 
-    /** Pointer to the current hypervisor core context - HCPtr. */
-    R3R0PTRTYPE(PCPUMCTXCORE) pHyperCoreHC;
+    /** Pointer to the current hypervisor core context - R3Ptr. */
+    R3PTRTYPE(PCPUMCTXCORE) pHyperCoreR3;
+    /** Pointer to the current hypervisor core context - R3Ptr. */
+    R0PTRTYPE(PCPUMCTXCORE) pHyperCoreR0;
     /** Pointer to the current hypervisor core context - GCPtr. */
     GCPTRTYPE(PCPUMCTXCORE) pHyperCoreGC;
 
@@ -323,7 +325,7 @@ typedef struct CPUM
 
     /** Have we entered rawmode? */
     bool                    fRawEntered;
-    uint8_t                 abPadding[3 + (HC_ARCH_BITS == 32) * 4];
+    uint8_t                 abPadding[3 + (HC_ARCH_BITS == 64) * 4];
 
     /** The standard set of CpuId leafs. */
     CPUMCPUID               aGuestCpuIdStd[5];

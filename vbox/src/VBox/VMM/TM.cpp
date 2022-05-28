@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 4787 2007-09-14 09:08:56Z vboxsync $ */
+/* $Id: TM.cpp 4958 2007-09-21 14:54:04Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -671,7 +671,7 @@ TMR3DECL(void) TMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     for (PTMTIMER pTimer = pVM->tm.s.pCreated; pTimer; pTimer = pTimer->pBigNext)
     {
         pTimer->pVMGC = pVM->pVMGC;
-        pTimer->pVMR0 = (PVMR0)pVM->pVMHC; /// @todo pTimer->pVMR0 = pVM->pVMR0;
+        pTimer->pVMR0 = pVM->pVMR0;
     }
 }
 

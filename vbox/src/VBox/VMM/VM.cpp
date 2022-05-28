@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 4900 2007-09-19 12:53:13Z vboxsync $ */
+/* $Id: VM.cpp 4958 2007-09-21 14:54:04Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -197,7 +197,6 @@ VMR3DECL(int)   VMR3Create(PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCON
              * Do basic init of the VM structure.
              */
             memset(pVM, 0, sizeof(*pVM));
-            pVM->pVMHC = pVM;
             pVM->pVMR0 = pVMR0;
             pVM->pVMR3 = pVM;
             pVM->paVMPagesR3 = paPages;
