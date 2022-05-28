@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 2166 2007-04-18 12:42:08Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 2169 2007-04-18 13:03:15Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -477,6 +477,14 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
      * - SFMASK
      * - KernelGSBase
      */
+
+#ifdef DEBUG
+    /* Intercept X86_TRAP_DB if stepping is enabled */
+    if (DBGFIsStepping(pVM))
+        pVMCB->ctrl.u32InterceptException |=  BIT(1);
+    else
+        pVMCB->ctrl.u32InterceptException &= ~BIT(1);
+#endif
 
     /* Done. */
     pVM->hwaccm.s.fContextUseFlags &= ~HWACCM_CHANGED_ALL_GUEST;
