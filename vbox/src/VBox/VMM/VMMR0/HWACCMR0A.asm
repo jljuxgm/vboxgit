@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 2738 2007-05-21 14:49:30Z vboxsync $
+; $Id: HWACCMR0A.asm 2739 2007-05-21 14:53:06Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -468,7 +468,7 @@ ENDPROC VMXWriteVMCS64
 ;DECLASM(int) VMXReadVMCS64(uint32_t idxField, uint64_t *pData);
 BEGINPROC VMXReadVMCS64
     xor         rax, rax
-%ifd%ifdef ASM_CALL64_GCC
+%ifdef ASM_CALL64_GCC
     and         rdi, 0ffffffffh
     vmread      [rsi], rdi
 %else
