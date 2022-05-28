@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 275 2007-01-24 14:03:58Z vboxsync $ */
+/* $Id: PATMAll.cpp 276 2007-01-24 14:05:18Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -579,6 +579,10 @@ PATMDECL(int) PATMHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                 pRegFrame->ecx = pVM->patm.s.CTXSUFF(pGCState)->Restore.uECX;
                 pRegFrame->edi = pVM->patm.s.CTXSUFF(pGCState)->Restore.uEDI;
                 pVM->patm.s.CTXSUFF(pGCState)->Restore.uFlags = 0;
+
+                /* We are no longer executing PATM code; set PIF again. */
+                pVM->patm.s.CTXSUFF(pGCState)->fPIF = 1;
+
                 return VINF_PATM_PENDING_IRQ_AFTER_IRET;
 
 #ifdef DEBUG
