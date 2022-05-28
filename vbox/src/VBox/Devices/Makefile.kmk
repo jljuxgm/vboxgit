@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5717 2007-11-13 07:52:08Z vboxsync $
+# $Id: Makefile.kmk 5718 2007-11-13 08:34:54Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -632,11 +632,11 @@ endif
 #
 ifdef VBOX_WITH_CPPUNIT_TESTCASES
  PROGRAMS += tstDevEEPROM
- tstDevEEPROM_TEMPLATE    = VBOXR3TSTEXE
+ tstDevEEPROM_TEMPLATE    = VBOXCPPUNITEXE
  tstDevEEPROM_SOURCES     = \
 	Network/testcase/tstDevEEPROM.cpp
  tstDevEEPROM_LIBS        = \
-	$(PATH_LIB)/DevicesR3.a cppunit
+	$(TARGET_DevicesR3)
 endif
 
 include $(PATH_KBUILD)/subfooter.kmk
