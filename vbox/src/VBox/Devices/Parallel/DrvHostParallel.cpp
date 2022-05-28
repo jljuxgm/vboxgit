@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 3649 2007-07-16 15:41:16Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 3666 2007-07-17 06:33:02Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  */
@@ -32,7 +32,7 @@
 #include <iprt/stream.h>
 #include <iprt/semaphore.h>
 
-#ifdef __LINUX__
+#ifdef RT_OS_LINUX
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
