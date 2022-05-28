@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 5244 2007-10-11 16:33:17Z vboxsync $ */
+/* $Id: GVMMR0.cpp 5288 2007-10-15 10:00:39Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1151,7 +1151,7 @@ static int gvmmR0ByVMAndEMT(PVM pVM, PGVM *ppGVM, PGVMM *ppGVMM)
      */
     PGVMHANDLE pHandle = &pGVMM->aHandles[hGVM];
     RTNATIVETHREAD hAllegedEMT = RTThreadNativeSelf();
-    AssertReturn(pHandle->hEMT == hAllegedEMT, VERR_NOT_OWNER);
+    AssertMsgReturn(pHandle->hEMT == hAllegedEMT, ("hEMT %x hAllegedEMT %x\n", pHandle->hEMT, hAllegedEMT), VERR_NOT_OWNER);
     AssertReturn(pHandle->pVM == pVM, VERR_NOT_OWNER);
     AssertPtrReturn(pHandle->pvObj, VERR_INTERNAL_ERROR);
 
