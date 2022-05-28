@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 2934 2007-05-30 15:46:43Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 2954 2007-05-31 08:20:39Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -802,7 +802,7 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
 
     if (TMCpuTickCanUseRealTSC(pVM, &u64TSCOffset))
     {
-        /** @todo does VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_RDTSC_EXIT take precedence over TSC_OFFSET? */
+        /* Note: VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_RDTSC_EXIT takes precedence over TSC_OFFSET */
 #if HC_ARCH_BITS == 64
         rc  = VMXWriteVMCS(VMX_VMCS_CTRL_TSC_OFFSET_FULL, u64TSCOffset);
 #else
