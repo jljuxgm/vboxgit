@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 2811 2007-05-23 14:48:38Z vboxsync $ */
+/* $Id: HWACCMInternal.h 2896 2007-05-28 13:35:58Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -112,7 +112,7 @@ __BEGIN_DECLS
 
 /** @name HWACCM SSM version
  */
-#define HWACCM_SSM_VERSION                  2
+#define HWACCM_SSM_VERSION                  3
 
 /**
  * HWACCM VM Instance data.
@@ -158,6 +158,11 @@ typedef struct HWACCM
         RTHCPHYS                    pVMXONPhys;
         /** Virtual address of the VMXON page. */
         void                       *pVMXON;
+
+        /** Physical address of the TSS page used for real mode emulation. */
+        RTHCPHYS                    pRealModeTSSPhys;
+        /** Virtual address of the TSS page used for real mode emulation. */
+        PVBOXTSS                    pRealModeTSS;
 
         /** Host CR4 value (set by ring-0 VMX init) */
         uint32_t                    hostCR4;
