@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3741 2007-07-20 15:00:00Z vboxsync $
+# $Id: Makefile.kmk 3836 2007-07-25 14:28:06Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -77,7 +77,7 @@ endif
 # The packing target rule, but only if we're on the local build box.
 ifndef VBOX_ADDITIONS_XYZ_ONLY
  ifneq ($(VBOX_WITH_WIN32_ADDITIONS)$(VBOX_WITH_LINUX_ADDITIONS),)
-  PACKING += $(PATH_BIN)/additions/VBoxGuestAdditions.iso
+  PACKING += $(if $(VBOX_OSE),,$(PATH_BIN)/additions/VBoxGuestAdditions.iso)
  endif
 endif
 
