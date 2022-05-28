@@ -1,4 +1,4 @@
-/* $Id: avl_Base.cpp.h 402 2007-01-28 08:44:20Z vboxsync $ */
+/* $Id: avl_Base.cpp.h 404 2007-01-28 09:06:18Z vboxsync $ */
 /** @file
  * kAVLBase - basic routines for all AVL trees.
  */
@@ -146,7 +146,7 @@ typedef struct _kAvlStack2
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-inline void KAVL_FN(Rebalance)(PKAVLSTACK pStack);
+DECLINLINE(void) KAVL_FN(Rebalance)(PKAVLSTACK pStack);
 
 
 
@@ -380,7 +380,7 @@ RTDECL(PKAVLNODECORE) KAVL_FN(Remove)(PPKAVLNODECORE ppTree, KAVLKEY Key)
  *                    ELSE correct height.
  *            END
  */
-inline void KAVL_FN(Rebalance)(PKAVLSTACK pStack)
+DECLINLINE(void) KAVL_FN(Rebalance)(PKAVLSTACK pStack)
 {
     while (pStack->cEntries > 0)
     {
