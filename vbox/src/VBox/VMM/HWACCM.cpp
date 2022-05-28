@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 1890 2007-04-03 16:04:19Z vboxsync $ */
+/* $Id: HWACCM.cpp 2124 2007-04-17 12:25:17Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -451,6 +451,15 @@ HWACCMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
     uint32_t mask;
 
     Assert(pVM->fHWACCMEnabled);
+
+#if 0
+    /* AMD SVM supports real & protected mode with or without paging. */
+    if (pVM->hwaccm.s.svm.fEnabled)
+    {
+        pVM->hwaccm.s.fActive = true;
+        return true;
+    }
+#endif
 
     /* @todo we can support real-mode by using v86 and protected mode without paging with identity mapped pages.
      * (but do we really care?)
