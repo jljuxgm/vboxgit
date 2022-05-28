@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 1284 2007-03-07 02:21:14Z vboxsync $
+; $Id: CPUMInternal.mac 1814 2007-03-29 18:15:31Z vboxsync $
 ;; @file
 ; CPUM - Internal header file.
 ;
@@ -34,7 +34,7 @@
 %define CPUM_HANDLER_GS                 4
 %define CPUM_HANDLER_IRET               5
 %define CPUM_HANDLER_TYPEMASK           0ffh
-%define CPUM_HANDLER_CORECTX_IN_EBP     BIT(31)
+%define CPUM_HANDLER_CTXCORE_IN_EBP     BIT(31)
 
 %define VMMGCRET_USED_FPU       040000000h
 
