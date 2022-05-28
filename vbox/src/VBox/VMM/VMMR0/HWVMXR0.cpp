@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 2790 2007-05-23 09:21:52Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 2800 2007-05-23 12:03:32Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1029,8 +1029,14 @@ ResumeExecution:
 
             VMXReadVMCS(VMX_VMCS_GUEST_RIP, &val);
             Log(("Old eip %VGv new %VGv\n", pCtx->eip, (RTGCPTR)val));
+            VMXReadVMCS(VMX_VMCS_CTRL_PIN_EXEC_CONTROLS, &val);
+            Log(("VMX_VMCS_CTRL_PIN_EXEC_CONTROLS   %08x\n", val));
+            VMXReadVMCS(VMX_VMCS_CTRL_PROC_EXEC_CONTROLS, &val);
+            Log(("VMX_VMCS_CTRL_PROC_EXEC_CONTROLS  %08x\n", val));
+            VMXReadVMCS(VMX_VMCS_CTRL_ENTRY_CONTROLS, &val);
+            Log(("VMX_VMCS_CTRL_ENTRY_CONTROLS      %08x\n", val));
             VMXReadVMCS(VMX_VMCS_CTRL_EXIT_CONTROLS, &val);
-            Log(("VMX_VMCS_CTRL_EXIT_CONTROLS %08x\n", val));
+            Log(("VMX_VMCS_CTRL_EXIT_CONTROLS       %08x\n", val));
 
             VMXReadVMCS(VMX_VMCS_HOST_CR0, &val);
             Log(("VMX_VMCS_HOST_CR0 %08x\n", val));
