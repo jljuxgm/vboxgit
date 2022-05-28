@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 1145 2007-03-02 09:20:44Z vboxsync $ */
+/* $Id: TRPMAll.cpp 1304 2007-03-07 16:28:35Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -364,7 +364,7 @@ TRPMDECL(int) TRPMForwardTrap(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t iGate, u
 
     STAM_PROFILE_ADV_START(CTXSUFF(&pVM->trpm.s.StatForwardProf), a);
 
-    Log(("TRPMForwardTrap: eip=%VGv iGate=%d\n", pRegFrame->eip, iGate));
+    Log(("TRPMForwardTrap: eip=%04X:%VGv iGate=%d\n", pRegFrame->cs, pRegFrame->eip, iGate));
 
 #ifdef DEBUG
     switch (iGate) {
