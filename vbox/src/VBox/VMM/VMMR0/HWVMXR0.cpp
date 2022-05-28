@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 2774 2007-05-22 16:57:16Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 2789 2007-05-23 08:30:17Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -122,6 +122,10 @@ HWACCMR0DECL(int) VMXR0Setup(PVM pVM)
          val |=   VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR8_LOAD_EXIT
                 | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR8_STORE_EXIT;
      */
+#if HC_ARCH_BITS == 64
+     val |=   VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR8_LOAD_EXIT
+            | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR8_STORE_EXIT;
+#endif
     /* Mask away the bits that the CPU doesn't support */
     /** @todo make sure they don't conflict with the above requirements. */
     val &= (pVM->hwaccm.s.vmx.msr.vmx_proc_ctls >> 32ULL);
