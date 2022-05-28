@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 2062 2007-04-13 08:33:44Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 2070 2007-04-13 10:12:06Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -484,7 +484,7 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     pVMCB->ctrl.TLBCtrl.n.u32ASID = 1;
 
     /** TSC offset. */
-    pVMCB->ctrl.u64TSCOffset = TMCpuTickGetOffset(pVM);
+    pVMCB->ctrl.u64TSCOffset = TMCpuTickGet(pVM) - ASMReadTSC();
 
     /** @todo 64 bits stuff (?):
      * - STAR
