@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3756 2007-07-21 07:00:53Z vboxsync $
+# $Id: Makefile.kmk 3758 2007-07-21 20:55:37Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -221,7 +221,7 @@ endif
 ## Alternative USB filtering.
 #ifeq ($(filter-out darwin,$(BUILD_TARGET)),)
 #VBoxSVC_DEFS += VBOX_WITH_USBFILTER
-#VBoxSVC_LIBS += $(PATH_LIB)/USBFilter$(VBOX_SUFF_LIB)
+#VBoxSVC_LIBS += $(PATH_LIB)/USBLib$(VBOX_SUFF_LIB)
 #endif
 
 
