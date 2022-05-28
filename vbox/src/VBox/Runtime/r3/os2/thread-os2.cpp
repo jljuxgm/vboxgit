@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 1  vboxsync $ */
+/* $Id: thread-os2.cpp 244 2007-01-23 16:49:40Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Threads, OS/2.
  */
@@ -205,3 +205,8 @@ RTDECL(int) RTThreadSetAffinity(uint64_t u64Mask)
     return RTErrConvertFromOS2(rc);
 }
 
+
+RTR3DECL(void) RTThreadExit(void)
+{
+    DosExit(EXIT_THREAD, 0);
+}
