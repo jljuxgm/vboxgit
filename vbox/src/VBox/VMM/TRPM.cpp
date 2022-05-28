@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 1976 2007-04-06 16:55:59Z vboxsync $ */
+/* $Id: TRPM.cpp 1998 2007-04-09 14:03:08Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor
  */
@@ -905,6 +905,18 @@ TRPMR3DECL(int) TRPMR3SyncIDT(PVM pVM)
         /* limit is including */
         rc = PGMR3HandlerVirtualRegister(pVM, PGMVIRTHANDLERTYPE_WRITE, IDTR.pIdt, IDTR.pIdt + IDTR.cbIdt /* already inclusive */,
                                          0, trpmGuestIDTWriteHandler, "trpmgcGuestIDTWriteHandler", 0, "Guest IDT write access handler");
+
+        if (rc == VERR_PGM_HANDLER_VIRTUAL_CONFLICT)
+        {
+            /* Could be a conflict with CSAM */
+            CSAMR3RemovePage(pVM, IDTR.pIdt);
+            if (PAGE_ADDRESS(IDTR.pIdt) != PAGE_ADDRESS(IDTR.pIdt + IDTR.cbIdt))
+                CSAMR3RemovePage(pVM, IDTR.pIdt + IDTR.cbIdt);
+
+            rc = PGMR3HandlerVirtualRegister(pVM, PGMVIRTHANDLERTYPE_WRITE, IDTR.pIdt, IDTR.pIdt + IDTR.cbIdt /* already inclusive */,
+                                             0, trpmGuestIDTWriteHandler, "trpmgcGuestIDTWriteHandler", 0, "Guest IDT write access handler");
+        }
+
         AssertRCReturn(rc, rc);
 
         /* Update saved Guest IDTR. */
