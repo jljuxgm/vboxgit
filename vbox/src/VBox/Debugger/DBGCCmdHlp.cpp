@@ -1,4 +1,4 @@
-/** $Id: DBGCCmdHlp.cpp 5686 2007-11-11 12:22:14Z vboxsync $ */
+/** $Id: DBGCCmdHlp.cpp 5731 2007-11-13 22:42:00Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -269,8 +269,10 @@ static DECLCALLBACK(int) dbgcHlpVBoxErrorV(PDBGCCMDHLP pCmdHlp, int rc, const ch
 
         default:
             rc = pCmdHlp->pfnPrintf(pCmdHlp, NULL, "error: %Vrc: %s", rc, pszFormat ? " " : "\n");
-            if (VBOX_SUCCESS(rc) && pszFormat)
+            if (RT_SUCCESS(rc) && pszFormat)
                 rc = pCmdHlp->pfnPrintfV(pCmdHlp, NULL, pszFormat, args);
+            if (RT_SUCCESS(rc))
+                rc = VERR_DBGC_COMMAND_FAILED;
             break;
     }
     return rc;

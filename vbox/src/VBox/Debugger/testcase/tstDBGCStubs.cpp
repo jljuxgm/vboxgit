@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 5685 2007-11-11 11:11:40Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 5731 2007-11-13 22:42:00Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -274,4 +274,10 @@ DBGFR3DECL(int) DBGFR3SymbolByName(PVM pVM, const char *pszSymbol, PDBGFSYMBOL p
 {
     return VERR_INTERNAL_ERROR;
 }
-
+DBGFR3DECL(int) DBGFR3MemScan(PVM pVM, PCDBGFADDRESS pAddress, RTGCUINTPTR cbRange, const uint8_t *pabNeedle, size_t cbNeedle, PDBGFADDRESS pHitAddress)
+{
+    return VERR_INTERNAL_ERROR;
+}
+DBGFR3DECL(void) DBGFR3AddrFromPhys(PVM pVM, PDBGFADDRESS pAddress, RTGCPHYS PhysAddr)
+{
+}
