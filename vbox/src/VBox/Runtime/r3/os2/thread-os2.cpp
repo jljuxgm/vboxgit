@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 1190 2007-03-04 20:42:13Z vboxsync $ */
+/* $Id: thread-os2.cpp 1201 2007-03-04 23:33:15Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Threads, OS/2.
  */
@@ -134,7 +134,11 @@ int rtThreadNativeCreate(PRTTHREADINT pThread, PRTNATIVETHREAD pNativeThread)
     int iThreadId = _beginthread(rtThreadNativeMain, NULL, pThread->cbStack, pThread);
     if (iThreadId > 0)
     {
+#ifdef fibGetTidPid
+        *pNativeThread = iThreadId | (fibGetPid() << 16);
+#else
         *pNativeThread = iThreadId;
+#endif
         return VINF_SUCCESS;
     }
     return RTErrConvertFromErrno(errno);
