@@ -1,4 +1,4 @@
-/** $Id: DrvTAP.cpp 5183 2007-10-08 13:09:28Z vboxsync $ */
+/** $Id: DrvTAP.cpp 5298 2007-10-15 17:22:37Z vboxsync $ */
 /** @file
  * Universial TAP network transport driver.
  */
@@ -302,14 +302,24 @@ static DECLCALLBACK(int) drvTAPAsyncIoThread(RTTHREAD ThreadSelf, void *pvUser)
 
                 /*
                  * Wait for the device to have space for this frame.
+                 * Most guests use frame-sized receive buffers, hence non-zero cbMax
+                 * automatically means there is enough room for entire frame. Some
+                 * guests (eg. Solaris) use large chains of small receive buffers
+                 * (each 128 or so bytes large). We will still start receiving as soon
+                 * as cbMax is non-zero because:
+                 *  - it would be quite expensive for pfnCanReceive to accurately
+                 *    determine free receive buffer space
+                 *  - if we were waiting for enough free buffers, there is a risk
+                 *    of deadlocking because the guest could be waiting for a receive
+                 *    overflow error to allocate more receive buffers
                  */
                 size_t cbMax = pData->pPort->pfnCanReceive(pData->pPort);
-                if (cbMax < cbRead)
+                if (cbMax == 0)
                 {
                     /** @todo receive overflow handling needs serious improving! */
                     STAM_PROFILE_ADV_STOP(&pData->StatReceive, a);
                     STAM_PROFILE_START(&pData->StatRecvOverflows, b);
-                    while (   cbMax < cbRead
+                    while (   cbMax == 0
                            && pData->enmState != ASYNCSTATE_TERMINATE)
                     {
                         LogFlow(("drvTAPAsyncIoThread: cbMax=%d cbRead=%d waiting...\n", cbMax, cbRead));
