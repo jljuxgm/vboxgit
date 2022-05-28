@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 3198 2007-06-21 09:08:44Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxService.
 #
@@ -32,6 +32,7 @@ VBoxService_DEFS     = VBOX_HGCM
 VBoxService_SOURCES  = \
 	VBoxService.cpp \
 	VBoxClipboard.cpp \
+	helpers.cpp \
 	VBoxService.rc
 VBoxService_LIBS     = \
 	$(PATH_LIB)/additions/RuntimeW32GuestR3.lib
