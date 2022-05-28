@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 3991 2007-08-02 01:41:44Z vboxsync $
 ## @file
 # Makefile for the IPRT testcases.
 #
@@ -66,9 +66,11 @@ PROGRAMS.linux = \
 	tstInlineAsmPIC3
 PROGRAMS.l4 = \
 	tstIoCtl
+ifneq ($(BUILD_TARGET),solaris)
 SYSMODS = \
 	tstLdrObj \
 	tstLdrObjR0
+endif
 ifeq ($(filter-out lx pe,$(VBOX_LDR_FMT)), )
 LIBRARIES += \
 	tstLdr-4Imp
