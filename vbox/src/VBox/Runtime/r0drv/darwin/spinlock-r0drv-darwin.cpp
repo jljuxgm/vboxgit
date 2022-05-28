@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-darwin.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: spinlock-r0drv-darwin.cpp 4781 2007-09-13 19:07:42Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Spinlocks, Ring-0 Driver, Darwin.
  */

@@ -1,4 +1,4 @@
-/* $Revision: 4755 $ */
+/* $Revision: 4781 $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, Common Code.
  */
