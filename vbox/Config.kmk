@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5434 2007-10-22 01:10:05Z vboxsync $
+# $Id: Config.kmk 5486 2007-10-24 17:00:40Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1906,12 +1906,10 @@ TEMPLATE_VBOXMAINEXE_TOOL                = $(VBOX_GCC_TOOL)
 TEMPLATE_VBOXMAINEXE_CXXFLAGS            = -g -Wall -Wno-long-long -Wno-trigraphs -pipe  -Wno-non-virtual-dtor -fshort-wchar -fpermissive $(VBOX_GCC_OPT) $(VBOX_GCC_FP) -fno-strict-aliasing $(VBOX_GCC_fvisibility-inlines-hidden) $(VBOX_GCC_fvisibility-hidden)
 TEMPLATE_VBOXMAINEXE_CXXFLAGS.x86        = -m32
 TEMPLATE_VBOXMAINEXE_CXXFLAGS.amd64      = -m64
-TEMPLATE_VBOXMAINEXE_CXXFLAGS.debug      = -fno-inline
 TEMPLATE_VBOXMAINEXE_CXXFLAGS.kprofile   = -finstrument-functions
 TEMPLATE_VBOXMAINEXE_CFLAGS              = -g -Wall -Wno-long-long -Wno-trigraphs -pipe  -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations $(VBOX_GCC_OPT) $(VBOX_GCC_FP) -fno-strict-aliasing $(VBOX_GCC_fvisibility-hidden)
 TEMPLATE_VBOXMAINEXE_CFLAGS.x86          = -m32
 TEMPLATE_VBOXMAINEXE_CFLAGS.amd64        = -m64
-TEMPLATE_VBOXMAINEXE_CFLAGS.debug        = -fno-inline
 TEMPLATE_VBOXMAINEXE_CFLAGS.kprofile     = $(TEMPLATE_VBOXMAINEXE_CXXFLAGS.kprofile)
 TEMPLATE_VBOXMAINEXE_LDFLAGS.x86         = -m32
 TEMPLATE_VBOXMAINEXE_LDFLAGS.amd64       = -m64
@@ -2229,14 +2227,12 @@ TEMPLATE_VBOXBLDPROG_TOOL                = GXX3
 TEMPLATE_VBOXBLDPROG_CFLAGS              = -g -Wall -pedantic -Wno-long-long -Wno-trigraphs $(VBOX_GCC_Wno-variadic-macros) -pipe  -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations
 TEMPLATE_VBOXBLDPROG_CFLAGS.x86          = -m32
 TEMPLATE_VBOXBLDPROG_CFLAGS.amd64        = -m64
-TEMPLATE_VBOXBLDPROG_CFLAGS.debug        = -fno-inline
 TEMPLATE_VBOXBLDPROG_CFLAGS.release      = -O2 -fno-omit-frame-pointer -fno-strict-aliasing
 TEMPLATE_VBOXBLDPROG_CFLAGS.profile      = $(TEMPLATE_VBOXBLDPROG_CXXFLAGS.profile)
 TEMPLATE_VBOXBLDPROG_CFLAGS.kprofile     = $(TEMPLATE_VBOXBLDPROG_CXXFLAGS.kprofile)
 TEMPLATE_VBOXBLDPROG_CXXFLAGS            = -g -Wall -pedantic -Wno-long-long -Wno-trigraphs -pipe
 TEMPLATE_VBOXBLDPROG_CXXFLAGS.x86        = -m32
 TEMPLATE_VBOXBLDPROG_CXXFLAGS.amd64      = -m64
-TEMPLATE_VBOXBLDPROG_CXXFLAGS.debug      = -fno-inline
 TEMPLATE_VBOXBLDPROG_CXXFLAGS.release    = -O2 -fno-omit-frame-pointer -fno-strict-aliasing
 TEMPLATE_VBOXBLDPROG_CXXFLAGS.profile    = $(TEMPLATE_VBOXBLDPROG_CXXFLAGS.release)
 TEMPLATE_VBOXBLDPROG_CXXFLAGS.kprofile   = $(TEMPLATE_VBOXBLDPROG_CXXFLAGS.release)
@@ -2448,7 +2444,6 @@ TEMPLATE_VBOXLNX32GUESTR3EXE_ASTOOL            = YASM
 TEMPLATE_VBOXLNX32GUESTR3EXE_ASFLAGS           = -f elf32 -DASM_FORMAT_ELF -D__YASM__ -w+orphan-labels
 TEMPLATE_VBOXLNX32GUESTR3EXE_DEFS              = IN_GUEST IN_GUEST_R3 IN_RING3 HC_ARCH_BITS=32 GC_ARCH_BITS=32
 TEMPLATE_VBOXLNX32GUESTR3EXE_CXXFLAGS          = -g -Wall -pedantic -Wno-long-long -Wno-trigraphs -pipe $(VBOX_GCC_fno-stack-protector)
-TEMPLATE_VBOXLNX32GUESTR3EXE_CXXFLAGS.debug    = -fno-inline
 TEMPLATE_VBOXLNX32GUESTR3EXE_CXXFLAGS.release  = -O2 -fno-omit-frame-pointer -fno-strict-aliasing
 TEMPLATE_VBOXLNX32GUESTR3EXE_CXXFLAGS.profile  = $(TEMPLATE_VBOXLNX32GUESTR3EXE_CXXFLAGS.release)
 TEMPLATE_VBOXLNX32GUESTR3EXE_CXXFLAGS.kprofile = $(TEMPLATE_VBOXLNX32GUESTR3EXE_CXXFLAGS.release)
@@ -2626,7 +2621,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5434 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5486 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(USERNAME),bird) # Wastes nearly half a second on windows, very annoying. TODO: $(which ).
   ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
