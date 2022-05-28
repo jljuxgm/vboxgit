@@ -1,4 +1,4 @@
-; $Id: VBoxREMWrapperA.asm 1818 2007-03-30 05:43:05Z vboxsync $
+; $Id: VBoxREMWrapperA.asm 1836 2007-03-30 18:03:49Z vboxsync $
 ;; @file
 ;
 ; VBoxREM Wrapper, Assembly routines and wrapper Templates.
@@ -25,7 +25,8 @@
 
 BEGINCODE
 
-%ifdef __WIN64__
+%ifdef __WIN__
+ %ifdef __AMD64__
 
 
 BEGINPROC WrapGCC2MSC0Int
@@ -607,4 +608,6 @@ BEGINPROC WrapMSC2GCC9Int
     ret
 ENDPROC WrapMSC2GCC9Int
 
-%endif ; __WIN64__
+ %endif ; __AMD64__
+%endif ; __WIN__
+
