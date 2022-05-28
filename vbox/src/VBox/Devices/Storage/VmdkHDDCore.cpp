@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 2361 2007-04-26 17:45:23Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 2375 2007-04-27 00:32:46Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -1419,7 +1419,7 @@ static int vmdkOpenImage(PVMDKIMAGE pImage, const char *pszFilename, unsigned uO
             goto out;
         }
 
-        size_t cbRead;
+        /*size_t*/unsigned cbRead;
         rc = RTFileReadAt(pImage->File, 0, pImage->pDescData,
                           pImage->cbDescAlloc, &cbRead);
         if (VBOX_FAILURE(rc))
