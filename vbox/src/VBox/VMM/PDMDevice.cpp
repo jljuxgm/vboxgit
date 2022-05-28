@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 4566 2007-09-06 11:14:48Z vboxsync $ */
+/* $Id: PDMDevice.cpp 4568 2007-09-06 11:20:27Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -3287,7 +3287,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_PhysGCPtr2HCPtr(PPDMDEVINS pDevIns, RTGCPTR
     LogFlow(("pdmR3DevHlp_PhysGCPtr2HCPtr: caller='%s'/%d: GCPtr=%VGv pHCPtr=%p\n",
              pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, GCPtr, pHCPtr));
 
-    if (!VM_IS_EMT(pVMs))
+    if (!VM_IS_EMT(pVM))
         return VERR_ACCESS_DENIED;
 
     int rc = PGMPhysGCPtr2HCPtr(pVM, GCPtr, pHCPtr);
