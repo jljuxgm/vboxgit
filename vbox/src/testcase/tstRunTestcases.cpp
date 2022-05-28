@@ -1,4 +1,4 @@
-/* $Id: tstRunTestcases.cpp 732 2007-02-07 00:31:37Z vboxsync $ */
+/* $Id: tstRunTestcases.cpp 1202 2007-03-04 23:41:53Z vboxsync $ */
 /** @file
  * tstRunTescases - Driver program for running VBox testcase (tst* testcase/tst*).
  */
@@ -58,6 +58,7 @@ static const char  *g_apszExclude[] =
     "testcase/tstLdr",
     "testcase/tstLdrLoad",
     "testcase/tstLdrObj",
+    "testcase/tstLdrObjR0",
     "testcase/tstMove",
     "testcase/tstRunTestcases",
     "testcase/tstSDL",
