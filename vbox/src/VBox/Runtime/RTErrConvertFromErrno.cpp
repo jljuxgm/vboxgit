@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 1  vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 1532 2007-03-16 14:54:40Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Convert errno to iprt status codes.
  */
@@ -129,7 +129,7 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
         case ETXTBSY:           return VERR_SHARING_VIOLATION;
 #endif
 #ifdef EFBIG
-        //case EFBIG:
+        case EFBIG:             return VERR_FILE_TOO_BIG;
 #endif
 #ifdef ENOSPC
         case ENOSPC:            return VERR_DISK_FULL;
