@@ -1,4 +1,4 @@
-# $Id: Makefile 657 2007-02-06 01:26:08Z vboxsync $
+# $Id: Makefile 683 2007-02-06 04:45:46Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -85,6 +85,8 @@ RuntimeWin64ASM_SOURCES = \
 	win64/ASMGetFS.asm \
 	win64/ASMGetGS.asm \
 	win64/ASMGetIDTR.asm \
+	win64/ASMGetGDTR.asm \
+	win64/ASMGetTR.asm \
 	win64/ASMGetSS.asm \
 	win64/ASMProbeReadByte.asm \
 	win64/ASMSetFlags.asm \
