@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 4372 2007-08-24 21:21:51Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 4522 2007-09-05 07:43:09Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -3479,6 +3479,8 @@ static int vmdkSetParentUuid(void *pBackendData, PCRTUUID pUuid)
 
 VBOXHDDBACKEND g_VmdkBackend =
 {
+    /* cbSize */
+    sizeof(VBOXHDDBACKEND),
     /* pfnOpen */
     vmdkOpen,
     /* pfnCreate */
