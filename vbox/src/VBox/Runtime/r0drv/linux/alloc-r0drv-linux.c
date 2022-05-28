@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 289 2007-01-25 05:41:27Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 290 2007-01-25 05:43:58Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -41,6 +41,7 @@
 #ifdef RTMEMALLOC_EXEC_HEAP
 # include <iprt/heap.h>
 # include <iprt/spinlock.h>
+# include <iprt/err.h>
 #endif
 
 
@@ -60,8 +61,8 @@ static RTSPINLOCK   g_HeapExecSpinlock = NIL_RTHEAPSIMPLE;
  */
 RTDECL(void) RTMemExecCleanup(void)
 {
-    RTSpinlockDestroy(g_HeapSpinlock);
-    g_HeapSpinlock = NIL_RTSPINLOCK;
+    RTSpinlockDestroy(g_HeapExecSpinlock);
+    g_HeapExecSpinlock = NIL_RTSPINLOCK;
 }
 
 
