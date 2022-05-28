@@ -1,4 +1,4 @@
-/* $Id: avl_Enum.cpp.h 402 2007-01-28 08:44:20Z vboxsync $ */
+/* $Id: avl_Enum.cpp.h 1300 2007-03-07 14:16:35Z vboxsync $ */
 /** @file
  * Enumeration routines for AVL trees.
  */

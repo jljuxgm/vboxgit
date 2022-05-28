@@ -1,4 +1,4 @@
-/* $Id: sanity.h 888 2007-02-14 08:52:46Z vboxsync $ */
+/* $Id: sanity.h 1300 2007-03-07 14:16:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Setup Sanity Checks, C and C++.
  */

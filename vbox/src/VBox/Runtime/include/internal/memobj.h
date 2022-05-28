@@ -1,4 +1,4 @@
-/* $Id: memobj.h 1190 2007-03-04 20:42:13Z vboxsync $ */
+/* $Id: memobj.h 1300 2007-03-07 14:16:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Ring-0 Memory Objects.
  */

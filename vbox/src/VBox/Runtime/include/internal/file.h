@@ -1,4 +1,4 @@
-/* $Id: file.h 1  vboxsync $ */
+/* $Id: file.h 1300 2007-03-07 14:16:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Internal RTFile header.
  */
