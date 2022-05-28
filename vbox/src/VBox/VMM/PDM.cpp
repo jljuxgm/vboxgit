@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 525 2007-02-02 00:42:38Z vboxsync $ */
+/* $Id: PDM.cpp 1774 2007-03-28 14:27:16Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -332,7 +332,18 @@ PDMR3DECL(int) PDMR3Term(PVM pVM)
     for (PPDMDEVINS pDevIns = pVM->pdm.s.pDevInstances; pDevIns; pDevIns = pDevIns->Internal.s.pNextHC)
     {
         for (PPDMLUN pLun = pDevIns->Internal.s.pLunsHC; pLun; pLun = pLun->pNext)
-            for (PPDMDRVINS pDrvIns = pLun->pTop; pDrvIns; pDrvIns = pDrvIns->Internal.s.pDown)
+        {
+            PPDMDRVINS pDrvIns;
+
+            /* Find the bottom driver */
+            for (pDrvIns = pLun->pTop; pDrvIns && pDrvIns->Internal.s.pDown; pDrvIns = pDrvIns->Internal.s.pDown)
+                ;
+
+            /* And destroy them one at a time from the bottom up */
+            while (pDrvIns)
+            {
+                PPDMDRVINS pDrvNext = pDrvIns->Internal.s.pUp;
+
                 if (pDrvIns->pDrvReg->pfnDestruct)
                 {
                     LogFlow(("pdmR3DevTerm: Destroying - driver '%s'/%d on LUN#%d of device '%s'/%d\n",
@@ -340,6 +351,9 @@ PDMR3DECL(int) PDMR3Term(PVM pVM)
                     pDrvIns->pDrvReg->pfnDestruct(pDrvIns);
                     TMR3TimerDestroyDriver(pVM, pDrvIns);
                 }
+                pDrvIns = pDrvNext;
+            }
+        }
 
         if (pDevIns->pDevReg->pfnDestruct)
         {
