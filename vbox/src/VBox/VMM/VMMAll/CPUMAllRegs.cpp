@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 2151 2007-04-18 08:50:18Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 2299 2007-04-21 00:01:00Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1489,11 +1489,8 @@ CPUMDECL(uint32_t) CPUMGetGuestCPL(PVM pVM, PCPUMCTXCORE pCtxCore)
     uint32_t cpl;
 
     if (CPUMAreHiddenSelRegsValid(pVM))
-    {
         cpl = pCtxCore->ssHid.Attr.n.u2Dpl;
-    }
-    else
-    if (RT_LIKELY(pVM->cpum.s.Guest.cr0 & X86_CR0_PE))
+    else if (RT_LIKELY(pVM->cpum.s.Guest.cr0 & X86_CR0_PE))
     {
         if (RT_LIKELY(!pCtxCore->eflags.Bits.u1VM))
         {
