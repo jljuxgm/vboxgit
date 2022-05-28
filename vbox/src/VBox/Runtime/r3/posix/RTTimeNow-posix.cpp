@@ -1,4 +1,4 @@
-/* $Id: RTTimeNow-posix.cpp 1204 2007-03-05 00:01:10Z vboxsync $ */
+/* $Id: RTTimeNow-posix.cpp 2612 2007-05-14 07:19:07Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - RTTimeNow, POSIX.
  */
@@ -37,7 +37,7 @@
  * @returns pTime.
  * @param   pTime   Where to store the time.
  */
-RTR3DECL(PRTTIMESPEC) RTTimeNow(PRTTIMESPEC pTime)
+RTDECL(PRTTIMESPEC) RTTimeNow(PRTTIMESPEC pTime)
 {
     struct timeval tv;
     gettimeofday(&tv, NULL);
