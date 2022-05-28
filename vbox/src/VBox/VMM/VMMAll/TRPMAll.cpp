@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 1326 2007-03-08 12:08:35Z vboxsync $ */
+/* $Id: TRPMAll.cpp 1328 2007-03-08 13:02:08Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -819,4 +819,35 @@ TRPMDECL(int) TRPMRaiseXcptErrCR2(PVM pVM, PCPUMCTXCORE pCtxCore, X86XCPT enmXcp
     pVM->trpm.s.uActiveCR2               = uCR2;
     return VINF_EM_RAW_GUEST_TRAP;
 }
+
+
+/**
+ * Clear guest trap/interrupt gate handler
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ * @param   iTrap       Interrupt/trap number.
+ */
+TRPMDECL(int) trpmClearGuestTrapHandler(PVM pVM, unsigned iTrap)
+{
+    /*
+     * Validate.
+     */
+    if (iTrap >= ELEMENTS(pVM->trpm.s.aIdt))
+    {
+        AssertMsg(iTrap < TRPM_HANDLER_INT_BASE, ("Illegal gate number %d!\n", iTrap));
+        return VERR_INVALID_PARAMETER;
+    }
+
+    if (ASMBitTest(&pVM->trpm.s.au32IdtPatched[0], iTrap))
+#ifdef IN_RING3
+        trpmR3ClearPassThroughHandler(pVM, iTrap);
+#else
+        AssertFailed();
+#endif
+
+    pVM->trpm.s.aGuestTrapHandler[iTrap] = TRPM_INVALID_HANDLER;
+    return VINF_SUCCESS;
+}
+
 

@@ -1,4 +1,4 @@
-; $Id: TRPMInternal.mac 716 2007-02-06 15:56:35Z vboxsync $
+; $Id: TRPMInternal.mac 1328 2007-03-08 13:02:08Z vboxsync $
 ;; @file
 ; TRPM - Internal header file.
 ;
@@ -54,7 +54,8 @@ struc TRPM
 
     .aGuestTrapHandler  resd 256
 
-    .StatGCWriteGuestIDT  resb STAMCOUNTER_size
+    .StatGCWriteGuestIDTFault  resb STAMCOUNTER_size
+    .StatGCWriteGuestIDTHandled  resb STAMCOUNTER_size
     .StatSyncIDT        resb STAMPROFILE_size
     .aStatGCTraps       resb STAMPROFILEADV_size * 0x14
 
