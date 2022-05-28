@@ -1,4 +1,4 @@
-/* $Id: ldrkLdr.cpp 4235 2007-08-19 22:48:24Z vboxsync $ */
+/* $Id: ldrkLdr.cpp 4750 2007-09-13 07:05:03Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Binary Image Loader, kLdr Interface.
  */

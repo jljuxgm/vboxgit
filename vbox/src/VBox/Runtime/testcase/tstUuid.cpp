@@ -1,4 +1,4 @@
-/* $Id: tstUuid.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: tstUuid.cpp 4750 2007-09-13 07:05:03Z vboxsync $ */
 /** @file
  * innotek Portable Runtime Testcase - UUID.
  */
