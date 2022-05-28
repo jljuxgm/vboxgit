@@ -1,4 +1,4 @@
-/* $Id: logbackdoor.cpp 4695 2007-09-11 10:15:39Z vboxsync $ */
+/* $Id: logbackdoor.cpp 4802 2007-09-14 15:19:14Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Guest Backdoor Logging.
  */
@@ -75,14 +75,19 @@ RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
      * @endcode
      */
 }
+
+
 #if defined(RT_OS_LINUX) && defined(IN_MODULE)
-/* When we build this in the Linux kernel module, we need to make the
-   symbols available to other modules as well. */
-#include <linux/module.h>
+/*
+ * When we build this in the Linux kernel module, we wish to make the
+ * symbols available to other modules as well.
+ */
+# include <linux/module.h>
 # ifdef DEBUG
 /* We only export the full logging infrastructure to the guest kernel
    modules in debug builds. */
 EXPORT_SYMBOL(RTLogBackdoorPrintf);
 # endif
 EXPORT_SYMBOL(RTLogWriteUser);
-#endif /* RT_OS_LINUX and IN_MODULE defined */
+#endif /* RT_OS_LINUX && IN_MODULE */
+
