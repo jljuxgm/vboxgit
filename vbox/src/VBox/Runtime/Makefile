@@ -1,4 +1,4 @@
-# $Id: Makefile 405 2007-01-28 09:31:03Z vboxsync $
+# $Id: Makefile 449 2007-01-30 23:03:57Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -127,6 +127,7 @@ RuntimeR3_SOURCES       = \
 	table/avlohcphys.cpp \
 	table/avloioport.cpp \
 	table/avlpv.cpp \
+	table/avlrgcptr.cpp \
 	table/avlrogcphys.cpp \
 	table/avlrogcptr.cpp \
 	table/avlroogcptr.cpp \
