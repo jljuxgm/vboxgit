@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 5285 2007-10-13 23:55:58Z vboxsync $
+; $Id: PATMA.asm 5286 2007-10-14 11:12:34Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -1578,18 +1578,22 @@ GLOBALNAME PATMCpuidRecord
     DD      0
     DD      0
     DD      PATMCpuidEnd- PATMCpuidStart
-    DD      7
+    DD      9
     DD      PATM_INTERRUPTFLAG
     DD      0
     DD      PATM_CPUID_STD_MAX
     DD      0
     DD      PATM_CPUID_EXT_MAX
     DD      0
+    DD      PATM_CPUID_CENTAUR_MAX
+    DD      0
     DD      PATM_CPUID_DEF_PTR
     DD      0
     DD      PATM_CPUID_STD_PTR
     DD      0
     DD      PATM_CPUID_EXT_PTR
+    DD      0
+    DD      PATM_CPUID_CENTAUR_PTR
     DD      0
     DD      PATM_INTERRUPTFLAG
     DD      0
