@@ -1,4 +1,4 @@
-# $Id: Config.kmk 228 2007-01-22 19:45:31Z vboxsync $
+# $Id: Config.kmk 256 2007-01-24 02:10:50Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1865,6 +1865,7 @@ $(VBOX_VERSION_HEADER): $(VBOX_VERSION_STAMP)
 	$(APPEND) $@.tmp "#define VBOX_VERSION_MAJOR $(VBOX_VERSION_MAJOR)"
 	$(APPEND) $@.tmp "#define VBOX_VERSION_MINOR $(VBOX_VERSION_MINOR)"
 	$(APPEND) $@.tmp "#define VBOX_VERSION_BUILD $(VBOX_VERSION_BUILD)"
+	$(APPEND) $@.tmp '#define VBOX_VERSION_STRING "$(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD)"'
 	$(APPEND) $@.tmp ""
 	$(APPEND) $@.tmp "#endif"
 	$(MV) -f $@.tmp $@
