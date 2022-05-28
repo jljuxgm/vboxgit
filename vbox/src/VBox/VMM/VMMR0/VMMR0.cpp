@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 5632 2007-11-06 12:58:24Z vboxsync $ */
+/* $Id: VMMR0.cpp 5640 2007-11-07 16:34:44Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1051,8 +1051,11 @@ DECLEXPORT(bool) RTCALL RTAssertDoBreakpoint(void)
             return RT_FAILURE_NP(rc);
         }
     }
-    /* Never ever trigger breakpoints in ring 0 */
+#ifdef RT_OS_LINUX
+    return true;
+#else
     return false;
+#endif
 }
 
 
