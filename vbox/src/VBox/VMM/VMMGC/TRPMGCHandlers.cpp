@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 1977 2007-04-06 18:19:08Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 1978 2007-04-06 18:20:42Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -676,7 +676,7 @@ static int trpmGCTrap0dHandlerRing3(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTAT
             return trpmGCExitTrap(pVM, VINF_EM_RAW_RING_SWITCH, pRegFrame);
 
         /*
-         * Read TSC
+         * Handle virtualized TSC reads.
          */
         case OP_RDTSC:
         {
