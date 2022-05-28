@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: SELM.cpp 60 2007-01-16 12:58:08Z vboxsync $ */
 /** @file
  * SELM - The Selector manager.
  */
@@ -1662,8 +1662,8 @@ SELMR3DECL(bool) SELMR3CheckTSS(PVM pVM)
             if (    GCPtrTss != pVM->selm.s.GCPtrGuestTss
                 ||  cbTss    != pVM->selm.s.cbMonitoredGuestTss)
             {
-                AssertMsgFailed(("Guest's TSS is changed from %RGv:%04x to %RGv:%04x\n",
-                                 pVM->selm.s.GCPtrGuestTss, pVM->selm.s.cbMonitoredGuestTss,
+                AssertMsgFailed(("Guest's TSS (Sel 0x%X) is changed from %RGv:%04x to %RGv:%04x\n",
+                                 SelTss, pVM->selm.s.GCPtrGuestTss, pVM->selm.s.cbMonitoredGuestTss,
                                  GCPtrTss, cbTss));
             }
         }
