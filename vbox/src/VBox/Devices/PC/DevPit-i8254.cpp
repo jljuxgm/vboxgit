@@ -1,4 +1,4 @@
-/** $Id: DevPit-i8254.cpp 2848 2007-05-24 17:35:48Z vboxsync $ */
+/** $Id: DevPit-i8254.cpp 2849 2007-05-24 17:37:13Z vboxsync $ */
 /** @file
  * Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -830,8 +830,6 @@ static DECLCALLBACK(void) pitReset(PPDMDEVINS pDevIns)
         s->gate = (i != 2);
         pit_load_count(s, 0);
     }
-/** @todo remove when #1589 is resolved. */
-pitInfo(pDevIns, DBGFR3InfoLogRelHlp(), NULL);
 }
 
 
