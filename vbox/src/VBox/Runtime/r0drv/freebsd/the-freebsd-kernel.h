@@ -1,4 +1,4 @@
-/* $Id: the-freebsd-kernel.h 3977 2007-08-02 00:37:43Z vboxsync $ */
+/* $Id: the-freebsd-kernel.h 4049 2007-08-07 01:45:14Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Driver, The FreeBSD Kernel Headers.
  */
@@ -52,8 +52,12 @@
 #include <sys/mutex.h>
 #include <sys/sched.h>
 #include <sys/callout.h>
-#include <vm/vm.h>              /* for vtophys */
+#include <vm/vm.h>
 #include <vm/pmap.h>            /* for vtophys */
+#include <vm/vm_map.h>
+#include <vm/vm_object.h>
+#include <vm/vm_kern.h>
+#include <vm/vm_param.h>        /* KERN_SUCCESS ++ */
 
 /*#ifdef __cplusplus
 # error "This header doesn't work for C++ code. Sorry, typical kernel crap."
