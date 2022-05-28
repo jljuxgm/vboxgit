@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: SUPLibInternal.h 4800 2007-09-14 14:59:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -43,9 +43,9 @@ int     suplibOsInstall(void);
 int     suplibOsUninstall(void);
 int     suplibOsInit(size_t cbReserve);
 int     suplibOsTerm(void);
-int     suplibOsIOCtl(unsigned uFunction, void *pvIn, size_t cbIn, void *pvOut, size_t cbOut);
+int     suplibOsIOCtl(uintptr_t uFunction, void *pvReq, size_t cbReq);
 #ifdef VBOX_WITHOUT_IDT_PATCHING
-int     suplibOSIOCtlFast(unsigned uFunction);
+int     suplibOSIOCtlFast(uintptr_t uFunction);
 #endif
 int     suplibOsPageAlloc(size_t cPages, void **ppvPages);
 int     suplibOsPageFree(void *pvPages, size_t cPages);
