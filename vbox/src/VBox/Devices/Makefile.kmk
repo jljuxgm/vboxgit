@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4144 2007-08-14 08:59:40Z vboxsync $
+# $Id: Makefile.kmk 4236 2007-08-20 08:56:32Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -441,7 +441,8 @@ endif
 
 Drivers_SOURCES.win   = \
 	Network/DrvTAPWin32.cpp \
-	Audio/dsoundaudio.c
+	Audio/dsoundaudio.c \
+	Serial/DrvHostSerial.cpp
 
 
 # -- features --
