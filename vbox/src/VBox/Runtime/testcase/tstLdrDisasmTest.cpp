@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: tstLdrDisasmTest.cpp 4957 2007-09-21 14:21:59Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - RTLdr test object.
  *
@@ -70,7 +70,7 @@ static const uint8_t g_ab32BitCode[] =
 };
 
 
-DECLCALLBACK(int32_t) DisasmTest1ReadCode(RTUINTPTR SrcAddr, uint8_t *pbDst, uint32_t cb, RTUINTPTR uUser)
+DECLCALLBACK(int) DisasmTest1ReadCode(RTUINTPTR SrcAddr, uint8_t *pbDst, uint32_t cb, void *pvUser)
 {
     while (cb > 0)
     {
