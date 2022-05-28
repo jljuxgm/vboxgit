@@ -1,4 +1,4 @@
-# $Id: Config.kmk 1 2007-01-15 18:11:30Z vboxsync $
+# $Id: Config.kmk 21 2007-01-15 13:32:27Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -358,8 +358,8 @@ ifndef DONT_USE_YASM
  VBOX_ASFLAGS64 = $(VBOX_ASFLAGS_FMT64) -D__YASM__ -w+orphan-labels $(VBOX_LDR_FMT_2_YASM_DBGINFO.$(VBOX_LDR_FMT64))
 else
  VBOX_ASTOOL    = NASM
- VBOX_ASFLAGS   = $(VBOX_ASFLAGS_FMT)   -D__NASM__ -w+orphan-labels -g
- VBOX_ASFLAGS32 = $(VBOX_ASFLAGS_FMT32) -D__NASM__ -w+orphan-labels -g
+ VBOX_ASFLAGS   = $(subst elf32,elf,$(VBOX_ASFLAGS_FMT))   -D__NASM__ -w+orphan-labels -g
+ VBOX_ASFLAGS32 = $(subst elf32,elf,$(VBOX_ASFLAGS_FMT32)) -D__NASM__ -w+orphan-labels -g
  VBOX_ASFLAGS64 = $(VBOX_ASFLAGS_FMT64) -D__NASM__ -w+orphan-labels -g
 endif
 
