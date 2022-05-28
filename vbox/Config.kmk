@@ -1,4 +1,4 @@
-# $Id: Config.kmk 3751 2007-07-20 16:54:00Z vboxsync $
+# $Id: Config.kmk 3754 2007-07-20 20:10:10Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -2298,7 +2298,7 @@ endif
 # Tools and templates for building 32-bit linux guest additions.
 #
 TOOL_VBOXLNX32NOCPPLD = Linker tool replacing the VBOX_GCC32_TOOL linker (g++).
-TOOL_VBOXLNX32NOCPPLD_LINK_PROGRAM_OUTPUT = $(outbase).map
+TOOL_VBOXLNX32NOCPPLD_LINK_PROGRAM_OUTPUT =
 TOOL_VBOXLNX32NOCPPLD_LINK_PROGRAM_DEPEND = $(foreach lib,$(libs),$(if $(findstring $(lib),$(subst /,x,$(lib))),, $(lib)))
 TOOL_VBOXLNX32NOCPPLD_LINK_PROGRAM_DEPORD =
 define TOOL_VBOXLNX32NOCPPLD_LINK_PROGRAM_CMDS
@@ -2307,7 +2307,7 @@ define TOOL_VBOXLNX32NOCPPLD_LINK_PROGRAM_CMDS
 		$(foreach lib,$(libs), $(if $(findstring $(lib),$(subst /,x,$(lib))), -l$(patsubst lib%,%,$(basename $(lib))), $(lib)))\
 		$(call TOOL_$(VBOX_GCC32_TOOL)_LD_MAP,$(outbase).map)
 endef
-TOOL_VBOXLNX32NOCPPLD_LINK_DLL_OUTPUT = $(outbase).map
+TOOL_VBOXLNX32NOCPPLD_LINK_DLL_OUTPUT =
 TOOL_VBOXLNX32NOCPPLD_LINK_DLL_DEPEND = $(foreach lib,$(libs),$(if $(findstring $(lib),$(subst /,x,$(lib))),, $(lib)))
 TOOL_VBOXLNX32NOCPPLD_LINK_DLL_DEPORD =
 # (no SONAME for now)
@@ -2504,7 +2504,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 3751 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 3754 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
