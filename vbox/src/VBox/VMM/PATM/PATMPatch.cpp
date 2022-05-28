@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 1462 2007-03-14 09:45:03Z vboxsync $ */
+/* $Id: PATMPatch.cpp 1465 2007-03-14 10:06:39Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -690,6 +690,9 @@ int patmPatchGenCall(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu, RTGCPTR pCur
          * a page fault. The assembly code restores the stack afterwards.
          */
         offset = 0;
+        /* include prefix byte to make sure we don't use the incorrect selector register. */
+        if (pCpu->prefix & PREFIX_SEG)
+            pPB[offset++] = DISQuerySegPrefixByte(pCpu);
         pPB[offset++] = 0xFF;              // push r/m32
         pPB[offset++] = MAKE_MODRM(MODRM_MOD(pCpu->ModRM), 6 /* group 5 */, MODRM_RM(pCpu->ModRM));
         i = 2;  /* standard offset of modrm bytes */
@@ -783,6 +786,10 @@ int patmPatchGenJump(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu, RTGCPTR pCur
      * a page fault. The assembly code restores the stack afterwards.
      */
     offset = 0;
+    /* include prefix byte to make sure we don't use the incorrect selector register. */
+    if (pCpu->prefix & PREFIX_SEG)
+        pPB[offset++] = DISQuerySegPrefixByte(pCpu);
+
     pPB[offset++] = 0xFF;              // push r/m32
     pPB[offset++] = MAKE_MODRM(MODRM_MOD(pCpu->ModRM), 6 /* group 5 */, MODRM_RM(pCpu->ModRM));
     i = 2;  /* standard offset of modrm bytes */
@@ -1330,8 +1337,7 @@ int patmPatchGenSldtStr(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu, RTGCPTR p
 
         if (pCpu->prefix == PREFIX_SEG)
         {
-            /** @todo untested */
-            pPB[offset++] = pCpu->prefix_seg;
+            pPB[offset++] = DISQuerySegPrefixByte(pCpu);
         }
         pPB[offset++] = 0x8D;              // lea       edx, dword ptr [dest]
         // duplicate and modify modrm byte and additional bytes if present (e.g. direct address)
@@ -1426,8 +1432,7 @@ int patmPatchGenSxDT(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu, RTGCPTR pCur
 
     if (pCpu->prefix == PREFIX_SEG)
     {
-        /* @todo untested */
-        pPB[offset++] = pCpu->prefix_seg;
+        pPB[offset++] = DISQuerySegPrefixByte(pCpu);
     }
     pPB[offset++] = 0x8D;              // lea       edx, dword ptr [dest]
     // duplicate and modify modrm byte and additional bytes if present (e.g. direct address)
