@@ -1,4 +1,4 @@
-/* $Id: log.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: log.cpp 4699 2007-09-11 11:27:25Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -193,6 +193,8 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, RTUINT fFlags, const char *pszGr
     }
     *ppLogger = NULL;
 
+    if (pszErrorMsg)
+        RTStrPrintf(pszErrorMsg, cchErrorMsg, "unknown error");
 
     /*
      * Allocate a logger instance.
@@ -420,7 +422,16 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, RTUINT fFlags, const char *pszGr
             RTMemExecFree(*(void **)&pLogger->pfnLogger);
         }
         else
+        {
+#ifdef RT_OS_LINUX
+            /*
+             * RTMemAlloc() succeeded but RTMemExecAlloc() failed -- most probably an SELinux problem.
+             */
+            if (pszErrorMsg)
+                RTStrPrintf(pszErrorMsg, cchErrorMsg, "mmap(PROT_WRITE | PROT_EXEC) failed -- SELinux?");
+#endif /* RT_OS_LINUX */
             rc = VERR_NO_MEMORY;
+        }
         RTMemFree(pLogger);
     }
     else
