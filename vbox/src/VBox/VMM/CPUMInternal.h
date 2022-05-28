@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 140 2007-01-18 15:28:16Z vboxsync $ */
+/* $Id: CPUMInternal.h 464 2007-01-31 14:58:15Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -316,8 +316,8 @@ typedef struct CPUM
     /** CR4 mask */
     struct
     {
-        uint32_t Mask;
-        uint32_t OSFSXR;
+        uint32_t AndMask;
+        uint32_t OrMask;
     } CR4;
 
     /** Have we entered rawmode? */
