@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4707 2007-09-11 12:35:12Z vboxsync $
+# $Id: Makefile.kmk 4729 2007-09-12 11:45:18Z vboxsync $
 ## @file
 # Makefile for the vboxvfs (linux shared folders module).
 #
@@ -43,9 +43,15 @@ vboxvfs-sh_SOURCES      = $(subst ",,$(FILES_VBOXVFS_BIN))
 # The module (for syntax checking).
 #
 vboxvfs_TEMPLATE        = VBOXLNX32GUESTR0
-vboxvfs_DEFS           := KBUILD_MODNAME=KBUILD_STR\(vboxadd\) KBUILD_BASENAME=KBUILD_STR\(vboxadd\) MODULE IN_RING0 IN_RT_R0 VBOXGUEST VBOX_HGCM
+vboxvfs_DEFS           := KBUILD_MODNAME=KBUILD_STR\(vboxadd\) \
+                          KBUILD_BASENAME=KBUILD_STR\(vboxadd\) \
+                          MODULE IN_RING0 IN_RT_R0 VBOXGUEST VBOX_HGCM
 vboxvfs_LIBS            = $(PATH_LIB)/VBoxGuestLibLinux.a $(PATH_LIB)/RuntimeLnx32GuestR0.a
-vboxvfs_SOURCES         = vfsmod.c
+vboxvfs_SOURCES         = \
+	vfsmod.c \
+	utils.c \
+	dirops.c \
+	regops.c
 vboxvfs_NOINST          = 1
 vboxvfs_CFLAGS         += -fshort-wchar
 vboxvfs_INCS           += \
