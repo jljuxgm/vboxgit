@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 3337 2007-07-02 07:50:45Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows guest graphics driver.
 #
@@ -26,6 +26,7 @@ include	$(PATH_KBUILD)/subheader.kmk
 # Include sub-makefiles.
 include $(PATH_SUB_CURRENT)/Miniport/Makefile.kmk
 include $(PATH_SUB_CURRENT)/Display/Makefile.kmk
+include $(PATH_SUB_CURRENT)/OpenGL/Makefile.kmk
 
 #
 # Install the inf & cat.
