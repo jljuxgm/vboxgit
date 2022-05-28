@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 2184 2007-04-18 14:41:53Z vboxsync $ */
+/* $Id: SELMAll.cpp 2189 2007-04-18 16:39:40Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -163,6 +163,9 @@ SELMDECL(int) SELMToFlatEx(PVM pVM, X86EFLAGS eflags, RTSEL Sel, RTGCPTR Addr, C
         u1Granularity = pHiddenSel->Attr.n.u1Granularity;
         u1DescType    = pHiddenSel->Attr.n.u1DescType;
         u4Type        = pHiddenSel->Attr.n.u4Type;
+
+        u32Limit      = pHiddenSel->u32Limit;
+        pvFlat        = (RTGCPTR)(pHiddenSel->u32Base + (RTGCUINTPTR)Addr);
     }
     else
     {
