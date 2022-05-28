@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 4800 2007-09-14 14:59:15Z vboxsync $ */
+/* $Id: PDMDriver.cpp 5283 2007-10-12 23:21:09Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -990,14 +990,7 @@ static DECLCALLBACK(int) pdmR3DrvHlp_SUPCallVMMR0Ex(PPDMDRVINS pDrvIns, unsigned
     int rc;
     if (    uOperation >= VMMR0_DO_SRV_START
         &&  uOperation <  VMMR0_DO_SRV_END)
-#if 0 /** @todo fix internal networking */
-        rc = SUPCallVMMR0Ex(pDrvIns->Internal.s.pVM->pVMR0, uOperation, pvArg, cbArg);
-#else
-{
-LogRel(("Sorry, internal networking is currently broken in the devlopment tree. Will be fixed in a bit, no time right now.\n"));
-rc = VERR_NOT_IMPLEMENTED;
-}
-#endif
+        rc = SUPCallVMMR0Ex(pDrvIns->Internal.s.pVM->pVMR0, uOperation, 0, (PSUPVMMR0REQHDR)pvArg);
     else
     {
         AssertMsgFailed(("Invalid uOperation=%u\n", uOperation));
