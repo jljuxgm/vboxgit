@@ -1,4 +1,4 @@
-/* $Id: SUPLib-os2.cpp 4882 2007-09-18 07:37:44Z vboxsync $ */
+/* $Id: SUPLib-os2.cpp 4925 2007-09-20 12:07:28Z vboxsync $ */
 /** @file
  * SUPLib - Support Library, OS/2 backend.
  */
@@ -91,7 +91,17 @@ int     suplibOsInit(size_t cbReserve)
                         OPEN_FLAGS_NOINHERIT | OPEN_SHARE_DENYNONE | OPEN_ACCESS_READWRITE,
                         NULL);
     if (rc)
-        return RTErrConvertFromOS2(rc);
+    {
+        int vrc;
+        switch (rc)
+        {
+            case ERROR_FILE_NOT_FOUND:
+            case ERROR_PATH_NOT_FOUND:  vrc = VERR_VM_DRIVER_NOT_INSTALLED; break;
+            default:                    vrc = VERR_VM_DRIVER_OPEN_ERROR; break;
+        }
+        LogRel(("Failed to open \"%s\", rc=%d, vrc=%Vrc\n", DEVICE_NAME, rc, vrc));
+        return vrc;
+    }
     g_hDevice = hDevice;
 
     NOREF(cbReserve);

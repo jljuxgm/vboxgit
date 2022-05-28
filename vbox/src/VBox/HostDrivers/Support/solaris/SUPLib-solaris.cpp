@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 4882 2007-09-18 07:37:44Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 4925 2007-09-20 12:07:28Z vboxsync $ */
 /** @file
  *
  * VBox host drivers - Ring-0 support drivers - Solaris host:
@@ -72,9 +72,17 @@ int suplibOsInit(size_t cbReserve)
     g_hDevice = open(DEVICE_NAME, O_RDWR, 0);
     if (g_hDevice < 0)
     {
-        int rc = errno;
-        LogRel(("Failed to open \"%s\", errno=%d\n", rc));
-        return RTErrConvertFromErrno(rc);
+        int rc;
+        switch (errno)
+        {
+            case ENODEV:    rc = VERR_VM_DRIVER_LOAD_ERROR; break;
+            case EPERM:
+            case EACCES:    rc = VERR_VM_DRIVER_NOT_ACCESSIBLE; break;
+            case ENOENT:    rc = VERR_VM_DRIVER_NOT_INSTALLED; break;
+            default:        rc = VERR_VM_DRIVER_OPEN_ERROR; break;
+        }
+        LogRel(("Failed to open \"%s\", errno=%d, rc=%Vrc\n", DEVICE_NAME, errno, rc));
+        return rc;
     }
 
     /*
