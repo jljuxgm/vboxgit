@@ -1,4 +1,4 @@
-/** $Id: Builtins.cpp 229 2007-01-22 19:51:37Z vboxsync $ */
+/** $Id: Builtins.cpp 240 2007-01-23 14:40:56Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -152,6 +152,9 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (VBOX_FAILURE(rc))
         return rc;
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvVBoxHDD);
+    if (VBOX_FAILURE(rc))
+        return rc;
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvVmdkHDD);
     if (VBOX_FAILURE(rc))
         return rc;
 #if !defined(__L4ENV__) && !defined(__DARWIN__) && !defined(__OS2__)
