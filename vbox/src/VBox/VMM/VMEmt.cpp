@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 247 2007-01-23 17:10:04Z vboxsync $ */
+/* $Id: VMEmt.cpp 864 2007-02-13 13:10:48Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -72,7 +72,7 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
             break;
 
         /*
-         * Pending requests which needs servicing?
+         * Pending requests which need servicing?
          *
          * We check for state changes in addition to status codes when
          * servicing requests. (Look after the ifs.)
@@ -179,7 +179,7 @@ VMR3DECL(int) VMR3WaitForResume(PVM pVM)
     {
 
         /*
-         * Pending requests which needs servicing?
+         * Pending requests which need servicing?
          *
          * We check for state changes in addition to status codes when
          * servicing requests. (Look after the ifs.)
