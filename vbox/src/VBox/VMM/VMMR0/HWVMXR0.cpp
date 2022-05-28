@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 1792 2007-03-29 11:47:32Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 1793 2007-03-29 11:50:26Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1323,8 +1323,8 @@ ResumeExecution:
             }
 
 #ifdef VBOX_STRICT
-            case X86_XCPT_UD:   /* Unknown opcode exception. */
             case X86_XCPT_GP:   /* General protection failure exception.*/
+            case X86_XCPT_UD:   /* Unknown opcode exception. */
             case X86_XCPT_DE:   /* Debug exception. */
             case X86_XCPT_SS:   /* Stack segment exception. */
             case X86_XCPT_NP:   /* Segment not present exception. */
@@ -1348,7 +1348,7 @@ ResumeExecution:
                     break;
                 }
 
-                Log(("Trap %x at %04x:%VGv\n", vector, pCtx->cs, pCtx->eip));
+                Log(("Trap %x at %VGv\n", vector, pCtx->eip));
                 rc = VMXR0InjectEvent(pVM, pCtx, VMX_VMCS_CTRL_ENTRY_IRQ_INFO_FROM_EXIT_INT_INFO(intInfo), cbInstr, errCode);
                 AssertRC(rc);
 

@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 1792 2007-03-29 11:47:32Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 1793 2007-03-29 11:50:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -254,7 +254,6 @@ static int pgmHandlerPhysicalSetRamFlagsAndFlushShadowPTs(PVM pVM, PPGMPHYSHANDL
             int rc2 = pgmr3PhysGrowRange(pVM, GCPhys);
 #else
             int rc2 = CTXALLMID(VMM, CallHost)(pVM, VMMCALLHOST_PGM_RAM_GROW_RANGE, GCPhys);
-AssertRC(rc2);
 #endif
             if (rc2 != VINF_SUCCESS)
                 return rc2;

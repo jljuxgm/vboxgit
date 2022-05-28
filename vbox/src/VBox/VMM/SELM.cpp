@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 1792 2007-03-29 11:47:32Z vboxsync $ */
+/* $Id: SELM.cpp 1793 2007-03-29 11:50:26Z vboxsync $ */
 /** @file
  * SELM - The Selector manager.
  */
@@ -1519,12 +1519,12 @@ SELMR3DECL(int) SELMR3SyncTSS(PVM pVM)
                     uint32_t offRedirBitmap = tss.offIoBitmap - sizeof(tss.IntRedirBitmap);
                     
                     /** @todo not sure how the partial case is handled; probably not allowed */
-                    if (offRedirBitmap + sizeof(tss.IntRedirBitmap) <= pVM->selm.s.cbGuestTss)
+                    if (offRedirBitmap + sizeof(tss.IntRedirBitmap) <= cbTss)
                     {
                         rc = PGMPhysReadGCPtr(pVM, &pVM->selm.s.Tss.IntRedirBitmap, GCPtrTss + offRedirBitmap, sizeof(tss.IntRedirBitmap));
                         AssertRC(rc);
-                        Log(("Redirection bitmap:\n"));
-                        Log(("%.*Vhxd\n", sizeof(tss.IntRedirBitmap), &pVM->selm.s.Tss.IntRedirBitmap));
+                        Log2(("Redirection bitmap:\n"));
+                        Log2(("%.*Vhxd\n", sizeof(tss.IntRedirBitmap), &pVM->selm.s.Tss.IntRedirBitmap));
                     }
                 }
             }
