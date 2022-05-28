@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 3197 2007-06-21 08:19:41Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 3216 2007-06-21 15:47:31Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1302,11 +1302,6 @@ ResumeExecution:
             }
             Log2(("EM status from IO at %VGv %x size %d: %Vrc\n", pCtx->eip, IoExitInfo.n.u16Port, uIOSize, rc));
             break;
-        }
-        if (rc == VINF_EM_RAW_EMULATE_INSTR)
-        {
-            /* First attempt to emulate directly before falling back to the recompiler */
-            rc = (IoExitInfo.n.u1Type == 0) ? VINF_IOM_HC_IOPORT_WRITE : VINF_IOM_HC_IOPORT_READ;
         }
 
 #ifdef VBOX_STRICT
