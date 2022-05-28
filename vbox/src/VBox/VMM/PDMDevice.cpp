@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PDMDevice.cpp 479 2007-01-31 22:34:28Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -538,7 +538,7 @@ int pdmR3DevInit(PVM pVM)
     int rc = PDMR3GetSymbolGC(pVM, NULL, "g_pdmGCDevHlp", &pDevHlpGC);
     AssertReleaseRCReturn(rc, rc);
 
-    HCPTRTYPE(PCPDMDEVHLPR0) pDevHlpR0;
+    R0PTRTYPE(PCPDMDEVHLPR0) pDevHlpR0;
     rc = PDMR3GetSymbolR0(pVM, NULL, "g_pdmR0DevHlp", (void **)&pDevHlpR0);
     AssertReleaseRCReturn(rc, rc);
 
