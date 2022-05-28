@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 4953 2007-09-21 14:08:19Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 5625 2007-11-03 09:24:46Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -1205,12 +1205,12 @@ DECLCALLBACK(int) iomReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, unsigned size, 
     return rc;
 }
 
-inline int iomDisCoreOne(PVM pVM, DISCPUSTATE *pCpu, RTGCUINTPTR InstrGC, uint32_t *pOpsize)
+inline bool iomDisCoreOne(PVM pVM, DISCPUSTATE *pCpu, RTGCUINTPTR InstrGC, uint32_t *pOpsize)
 {
     return VBOX_SUCCESS(DISCoreOneEx(InstrGC, pCpu->mode, iomReadBytes, pVM, pCpu, pOpsize));
 }
 #else
-inline int iomDisCoreOne(PVM pVM, DISCPUSTATE *pCpu, RTGCUINTPTR InstrGC, uint32_t *pOpsize)
+inline bool iomDisCoreOne(PVM pVM, DISCPUSTATE *pCpu, RTGCUINTPTR InstrGC, uint32_t *pOpsize)
 {
     return VBOX_SUCCESS(DISCoreOne(pCpu, InstrGC, pOpsize));
 }
