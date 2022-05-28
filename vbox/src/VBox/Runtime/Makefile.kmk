@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5226 2007-10-10 15:35:11Z vboxsync $
+# $Id: Makefile.kmk 5230 2007-10-10 16:20:26Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -784,8 +784,9 @@ RuntimeR0Drv_SOURCES.win = \
 	r0drv/nt/process-r0drv-nt.cpp \
 	r0drv/nt/RTLogWriteDebugger-r0drv-nt.cpp \
 	r0drv/nt/semevent-r0drv-nt.cpp \
-	r0drv/nt/semmutex-r0drv-nt.cpp \
+	r0drv/nt/semeventmulti-r0drv-nt.cpp \
 	r0drv/nt/semfastmutex-r0drv-nt.cpp \
+	r0drv/nt/semmutex-r0drv-nt.cpp \
 	r0drv/nt/spinlock-r0drv-nt.cpp \
 	r0drv/nt/thread-r0drv-nt.cpp \
 	r0drv/nt/thread2-r0drv-nt.cpp \
