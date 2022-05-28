@@ -1,4 +1,4 @@
-/** $Id: DevPCNet.cpp 5059 2007-09-26 17:12:27Z vboxsync $ */
+/** $Id: DevPCNet.cpp 5067 2007-09-26 20:31:38Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -236,7 +236,7 @@ struct PCNetState_st
     bool                                fGCEnabled;
     bool                                fR0Enabled;
     bool                                fAm79C973;
-    bool                                afAlignment[5];
+    bool                                afAlignment[1];
     uint32_t                            u32LinkSpeed;
 
 #ifdef VBOX_WITH_STATISTICS
