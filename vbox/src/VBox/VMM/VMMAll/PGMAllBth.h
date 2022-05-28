@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 2149 2007-04-18 08:37:43Z vboxsync $ */
+/* $Id: PGMAllBth.h 2203 2007-04-19 09:02:14Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -90,10 +90,10 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
     PX86PDPAE       pPDDst = pVM->pgm.s.CTXMID(ap,PaePDs)[0]; /* We treat this as a PD with 2048 entries. */
 # endif
 
+# if PGM_WITH_PAGING(PGM_GST_TYPE)
     /* Determine current privilege level */
     uint32_t cpl = CPUMGetGuestCPL(pVM, pRegFrame);
 
-# if PGM_WITH_PAGING(PGM_GST_TYPE)
 #  ifdef PGM_SYNC_DIRTY_BIT
     /*
      * If we successfully correct the write protection fault due to dirty bit
