@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 4380 2007-08-27 09:58:08Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 4381 2007-08-27 10:02:17Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1342,7 +1342,7 @@ void remR3FlushPage(CPUState *env, RTGCPTR GCPtr)
     if (pVM->rem.s.fIgnoreInvlPg || pVM->rem.s.fIgnoreAll)
         return;
     Log(("remR3FlushPage: GCPtr=%VGv\n", GCPtr));
-    Assert(pVM->rem.s.fInREM);
+    Assert(pVM->rem.s.fInREM || pVM->rem.s.fInStateSync);
 
     //RAWEx_ProfileStop(env, STATS_QEMU_TOTAL);
 
