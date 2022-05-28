@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 1703 2007-03-26 12:44:40Z vboxsync $ */
+/* $Id: utf-8.cpp 1716 2007-03-27 10:51:11Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - UTF-8 Decoding.
  */
@@ -973,7 +973,7 @@ RTDECL(char *) RTStrPrevCp(const char *pszStart, const char *psz)
 RTDECL(int) RTStrICmp(const char *psz1, const char *psz2)
 {
     /** @todo implement proper UTF-8 case-insensitive string comparison. */
-#ifdef __WIN32__
+#ifdef __WIN__
     return stricmp(psz1, psz2);
 #else /* !__WIN32__ */
     return strcasecmp(psz1, psz2);
