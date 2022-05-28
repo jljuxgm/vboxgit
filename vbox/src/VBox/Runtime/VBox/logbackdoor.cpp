@@ -1,4 +1,4 @@
-/* $Id: logbackdoor.cpp 2146 2007-04-17 20:48:35Z vboxsync $ */
+/* $Id: logbackdoor.cpp 2147 2007-04-17 20:49:46Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Guest Backdoor Logging.
  */
@@ -65,7 +65,7 @@ static DECLCALLBACK(size_t) rtLogBackdoorOutput(void *pv, const char *pachChars,
 RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
 {
     for (const uint8_t *pu8 = (const uint8_t *)pch; cb-- > 0; pu8++)
-        ASMOut8(RTLOG_DEBUG_PORT, *pu8);
+        ASMOutU8(RTLOG_DEBUG_PORT, *pu8);
     /** @todo a rep outs could be more efficient, I don't know...
      * @code
      * __asm {

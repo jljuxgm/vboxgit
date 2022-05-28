@@ -1,4 +1,4 @@
-/* $Id: logcom.cpp 2146 2007-04-17 20:48:35Z vboxsync $ */
+/* $Id: logcom.cpp 2147 2007-04-17 20:49:46Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Logging to Serial Port.
  */
@@ -106,12 +106,12 @@ RTDECL(void) RTLogWriteCom(const char *pach, size_t cb)
         register uint8_t    u8;
         do
         {
-            u8 = ASMIn8(UART_BASE + 5);
+            u8 = ASMInU8(UART_BASE + 5);
             cMaxWait--;
         } while (!(u8 & 0x20) && u8 != 0xff && cMaxWait);
 
         /* write */
-        ASMOut8(UART_BASE, *pu8);
+        ASMOutU8(UART_BASE, *pu8);
     }
 }
 
