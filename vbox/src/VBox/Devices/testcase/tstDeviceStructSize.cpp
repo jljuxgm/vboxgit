@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 1931 2007-04-04 14:04:15Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 2246 2007-04-19 21:34:32Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and GC uses the same
@@ -33,7 +33,7 @@
 #undef LOG_GROUP
 #include "Graphics/DevVGA.cpp"
 #undef LOG_GROUP
-#include "Input/pckbd.c"
+#include "Input/DevPS2.cpp"
 #undef LOG_GROUP
 #include "Network/DevPCNet.cpp"
 //#undef LOG_GROUP

@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 2106 2007-04-16 15:25:48Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 2246 2007-04-19 21:34:32Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -43,7 +43,7 @@
 #undef LOG_GROUP
 #include "Graphics/DevVGA.cpp"
 #undef LOG_GROUP
-#include "Input/pckbd.c"
+#include "Input/DevPS2.cpp"
 #undef LOG_GROUP
 #include "Network/DevPCNet.cpp"
 //#undef LOG_GROUP
