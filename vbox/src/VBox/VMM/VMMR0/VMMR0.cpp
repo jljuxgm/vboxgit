@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 4979 2007-09-22 00:04:09Z vboxsync $ */
+/* $Id: VMMR0.cpp 4984 2007-09-22 12:41:38Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -932,7 +932,7 @@ VMMR0DECL(void) vmmR0LoggerFlush(PRTLOGGER pLogger)
  * @returns true if the breakpoint should be hit, false if it should be ignored.
  * @remark  The RTDECL() makes this a bit difficult to override on windows. Sorry.
  */
-DECLEXPORT(bool) RTCALL RTAssertDoBreakpoint()
+DECLEXPORT(bool) RTCALL RTAssertDoBreakpoint(void)
 {
     PVM pVM = GVMR0ByEMT(NIL_RTNATIVETHREAD);
     if (pVM)
