@@ -1,10 +1,10 @@
-/* $Id: kRdrFile-iprt.cpp 5600 2007-11-01 01:28:25Z vboxsync $ */
+/* $Id: kRdrFile-iprt.cpp 5775 2007-11-16 15:47:20Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - kRdr Backend.
  */
 
 /*
- * Copyright (C) 2006-2007 innotek GmbH
+ * Copyright (C) 2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -13,6 +13,7 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
+ *
  */
 
 /*******************************************************************************

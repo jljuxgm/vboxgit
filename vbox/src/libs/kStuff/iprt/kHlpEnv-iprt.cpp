@@ -1,10 +1,10 @@
-/* $Id: kHlpEnv-iprt.cpp 5568 2007-10-30 18:38:37Z vboxsync $ */
+/* $Id: kHlpEnv-iprt.cpp 5775 2007-11-16 15:47:20Z vboxsync $ */
 /** @file
  * kHlpEnv - Environment Manipulation, IPRT based implementation.
  */
 
 /*
- * Copyright (c) 2007 knut st. osmundsen <bird-kStuff-spam@anduin.net>
+ * Copyright (C) 2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
