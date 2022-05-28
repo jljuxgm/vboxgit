@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 4475 2007-09-01 01:21:19Z vboxsync $ */
+/* $Id: env-generic.cpp 4476 2007-09-01 01:30:34Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Environment, Generic.
  */
@@ -30,6 +30,9 @@
 #include <stdlib.h>
 #if !defined(RT_OS_WINDOWS)
 # include <unistd.h>
+#endif
+#ifdef RT_OS_DARWIN
+# include <crt_externs.h>
 #endif
 #if defined(RT_OS_SOLARIS)
 __BEGIN_DECLS
@@ -289,7 +292,7 @@ RTDECL(int) RTEnvPutEx(RTENV Env, const char *pszVarEqualValue)
 RTDECL(int) RTEnvSetEx(RTENV Env, const char *pszVar, const char *pszValue)
 {
     AssertPtrReturn(pszVar, VERR_INVALID_POINTER);
-    AssertPtrReturn(*pszVar, VERR_INVALID_PARAMETER);
+    AssertReturn(*pszVar, VERR_INVALID_PARAMETER);
     AssertPtrReturn(pszValue, VERR_INVALID_POINTER);
 
     int rc;
@@ -394,7 +397,7 @@ RTDECL(int) RTEnvSetEx(RTENV Env, const char *pszVar, const char *pszValue)
 RTDECL(int) RTEnvUnsetEx(RTENV Env, const char *pszVar)
 {
     AssertPtrReturn(pszVar, VERR_INVALID_POINTER);
-    AssertPtrReturn(*pszVar, VERR_INVALID_PARAMETER);
+    AssertReturn(*pszVar, VERR_INVALID_PARAMETER);
 
     int rc;
     if (Env == RTENV_DEFAULT)
