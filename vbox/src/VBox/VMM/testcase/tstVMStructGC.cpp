@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 686 2007-02-06 05:04:10Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 1278 2007-03-06 20:12:58Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -71,8 +71,8 @@
 /* we don't use iprt here because we're pretending to be in GC! */
 #include <stdio.h>
 
-#define GEN_CHECK_SIZE(s)   printf("    CHECK_SIZE(%s, %d);\n", #s, sizeof(s))
-#define GEN_CHECK_OFF(s, m) printf("    CHECK_OFF(%s, %d, %s);\n", #s, RT_OFFSETOF(s, m), #m)
+#define GEN_CHECK_SIZE(s)   printf("    CHECK_SIZE(%s, %u);\n", #s, (unsigned)sizeof(s))
+#define GEN_CHECK_OFF(s, m) printf("    CHECK_OFF(%s, %u, %s);\n", #s, (unsigned)RT_OFFSETOF(s, m), #m)
 
 int main()
 {
