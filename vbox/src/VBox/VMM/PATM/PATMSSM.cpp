@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: PATMSSM.cpp 4190 2007-08-16 22:48:51Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -293,6 +293,8 @@ DECLCALLBACK(int) patmr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
         ||  pVM->patm.s.pCPUMCtxGC != patmInfo.pCPUMCtxGC
         ||  pVM->patm.s.pStatsGC   != patmInfo.pStatsGC)
     {
+        if (SSMR3HandleGetAfter(pSSM) == SSMAFTER_DEBUG_IT) /* hack for x86 / amd64 mix. */
+            return VINF_SUCCESS;
         AssertMsgFailed(("GC state, stat or cpum ptrs don't match!!!\n"));
         return VERR_SSM_INVALID_STATE;
     }
