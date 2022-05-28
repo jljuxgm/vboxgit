@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 3852 2007-07-25 19:09:09Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -15,10 +15,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 /*******************************************************************************

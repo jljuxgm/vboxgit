@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 3225 2007-06-22 04:37:40Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, Common Code.
  */
@@ -13,10 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 

@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 3510 2007-07-09 14:37:57Z vboxsync $ */
+/* $Id: EMAll.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -13,10 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 

@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
+/* $Id: IOMInternal.h 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -13,10 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 #ifndef ___IOMInternal_h

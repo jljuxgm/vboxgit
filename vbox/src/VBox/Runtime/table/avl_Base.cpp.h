@@ -1,4 +1,4 @@
-/* $Id: avl_Base.cpp.h 407 2007-01-28 09:47:29Z vboxsync $ */
+/* $Id: avl_Base.cpp.h 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * kAVLBase - basic routines for all AVL trees.
  */
@@ -13,10 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 #ifndef _kAVLBase_h_

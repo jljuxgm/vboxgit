@@ -1,4 +1,4 @@
-/* $Id: avl_Enum.cpp.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: avl_Enum.cpp.h 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * Enumeration routines for AVL trees.
  */
@@ -13,10 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 #ifndef _kAVLEnum_h_

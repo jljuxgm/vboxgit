@@ -1,4 +1,4 @@
-/* $Id: bin2c.c 3407 2007-07-04 08:00:45Z vboxsync $ */
+/* $Id: bin2c.c 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * PC-BIOS - Binary 2 C Structure Converter.
  */
@@ -13,11 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
- *
  */
 
 /*******************************************************************************

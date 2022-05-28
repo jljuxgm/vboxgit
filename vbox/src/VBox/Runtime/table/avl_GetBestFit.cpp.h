@@ -1,4 +1,4 @@
-/* $Id: avl_GetBestFit.cpp.h 402 2007-01-28 08:44:20Z vboxsync $ */
+/* $Id: avl_GetBestFit.cpp.h 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * kAVLGetBestFit - Get Best Fit routine for AVL trees.
  *                  Intended specially on heaps. The tree should allow duplicate keys.
@@ -15,10 +15,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 #ifndef _kAVLGetBestFit_h_

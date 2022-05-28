@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 4012 2007-08-02 23:48:45Z vboxsync $ */
+/* $Id: PDM.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -13,10 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 

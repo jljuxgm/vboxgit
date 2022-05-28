@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-darwin.cpp 3760 2007-07-22 10:18:54Z vboxsync $ */
+/* $Id: assert-r0drv-darwin.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * innotek Portable Runtime -  Assertion Workers, Ring-0 Drivers, Darwin.
  */
@@ -13,10 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 

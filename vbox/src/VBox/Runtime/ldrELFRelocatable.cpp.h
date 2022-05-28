@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 3022 2007-06-04 12:32:29Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -13,10 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 /*******************************************************************************

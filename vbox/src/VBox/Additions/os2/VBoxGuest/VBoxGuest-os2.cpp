@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest-os2.cpp 3657 2007-07-16 18:55:02Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
 
 /*
- * Copyright (C) 2007 innotek GmbH
+ * Copyright (C) 2007 knut st. osmundsen <bird-src-spam@anduin.net>
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -13,11 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
- *
  * --------------------------------------------------------------------
  *
  * This code is based on:

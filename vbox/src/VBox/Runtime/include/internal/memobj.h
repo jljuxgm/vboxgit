@@ -1,4 +1,4 @@
-/* $Id: memobj.h 3977 2007-08-02 00:37:43Z vboxsync $ */
+/* $Id: memobj.h 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects.
  */
@@ -13,10 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 #ifndef ___internal_memobj_h

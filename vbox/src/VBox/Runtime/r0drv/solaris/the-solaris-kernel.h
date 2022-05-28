@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 3989 2007-08-02 01:38:19Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 4071 2007-08-07 17:07:59Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the Solaris kernel.
  */
@@ -13,10 +13,6 @@
  * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * If you received this file as part of a commercial VirtualBox
- * distribution, then only the terms of your commercial VirtualBox
- * license agreement apply instead of the previous paragraph.
  */
 
 #ifndef ___the_solaris_kernel_h
