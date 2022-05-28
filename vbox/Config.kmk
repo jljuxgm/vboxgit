@@ -1,4 +1,4 @@
-# $Id: Config.kmk 256 2007-01-24 02:10:50Z vboxsync $
+# $Id: Config.kmk 287 2007-01-25 03:18:13Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -63,7 +63,7 @@ INST_SDK_SAMPLES     = $(INST_SDK)/samples
 .DELETE_ON_ERROR:
 
 # Notify about important kBuild updates.
-ifneq ($(filter 695 700 705 709 731,$(KMK_REVISION)),)
+ifneq ($(call int-ge,$(KMK_REVISION),788),1)
  $(error You must update kBuild!)
 endif
 
