@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4392 2007-08-27 17:22:49Z vboxsync $
+# $Id: Makefile.kmk 4406 2007-08-28 18:10:01Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -528,4 +528,3 @@ endif
 
 
 include $(PATH_KBUILD)/subfooter.kmk
-
