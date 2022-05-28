@@ -1,4 +1,4 @@
-/** $Id: SUPLib-win.cpp 4882 2007-09-18 07:37:44Z vboxsync $ */
+/** $Id: SUPLib-win.cpp 5021 2007-09-25 13:32:14Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -143,6 +143,7 @@ int     suplibOsInit(size_t cbReserve)
      */
     /** @todo implement driver version checking. */
 
+#if 0 /* obsolete code and restricts our virtual address space for the new allocation method */
     /*
      * Reserve memory.
      */
@@ -227,6 +228,7 @@ int     suplibOsInit(size_t cbReserve)
         }
         /* ignore errors */
     }
+#endif /* end of obsolete memory reservation hack */
 
     /*
      * We're done.
