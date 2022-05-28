@@ -1,4 +1,4 @@
-/* $Id: tstMMHyperHeap.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: tstMMHyperHeap.cpp 5606 2007-11-01 19:43:40Z vboxsync $ */
 /** @file
  * MM Hypervisor Heap testcase.
  */
@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
             return 1;
         }
         memset(aOps[i].pvAlloc, szFill[i], aOps[i].cb);
-        if (ALIGNP(aOps[i].pvAlloc, (aOps[i].uAlignment ? aOps[i].uAlignment : 8)) != aOps[i].pvAlloc)
+        if (RT_ALIGN_P(aOps[i].pvAlloc, (aOps[i].uAlignment ? aOps[i].uAlignment : 8)) != aOps[i].pvAlloc)
         {
             RTPrintf("Failure: MMHyperAlloc(, %#x, %#x,) -> %p, invalid alignment!\n", aOps[i].cb, aOps[i].uAlignment, aOps[i].pvAlloc);
             return 1;

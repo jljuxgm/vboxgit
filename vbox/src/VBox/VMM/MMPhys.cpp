@@ -1,4 +1,4 @@
-/* $Id: MMPhys.cpp 4388 2007-08-27 14:26:05Z vboxsync $ */
+/* $Id: MMPhys.cpp 5606 2007-11-01 19:43:40Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Physical Memory.
  */
@@ -82,7 +82,7 @@ MMR3DECL(int) MMR3PhysRegisterEx(PVM pVM, void *pvRam, RTGCPHYS GCPhys, unsigned
      */
     AssertMsg(pVM, ("Invalid VM pointer\n"));
     if (pvRam)
-        AssertReturn(ALIGNP(pvRam, PAGE_SIZE) == pvRam, VERR_INVALID_PARAMETER);
+        AssertReturn(RT_ALIGN_P(pvRam, PAGE_SIZE) == pvRam, VERR_INVALID_PARAMETER);
     else
         AssertReturn(fFlags & MM_RAM_FLAGS_DYNAMIC_ALLOC, VERR_INVALID_PARAMETER);
     AssertReturn(RT_ALIGN_T(GCPhys, PAGE_SIZE, RTGCPHYS) == GCPhys, VERR_INVALID_PARAMETER);
