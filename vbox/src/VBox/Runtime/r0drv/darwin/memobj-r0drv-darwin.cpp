@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 4136 2007-08-14 01:59:36Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 4155 2007-08-15 19:41:26Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, Darwin.
  */
@@ -483,9 +483,9 @@ static int rtR0MemObjNativeLock(PPRTR0MEMOBJINTERNAL ppMem, void *pv, size_t cb,
 }
 
 
-int rtR0MemObjNativeLockUser(PPRTR0MEMOBJINTERNAL ppMem, void *pv, size_t cb, RTR0PROCESS R0Process)
+int rtR0MemObjNativeLockUser(PPRTR0MEMOBJINTERNAL ppMem, RTR3PTR R3Ptr, size_t cb, RTR0PROCESS R0Process)
 {
-    return rtR0MemObjNativeLock(ppMem, pv, cb, (task_t)R0Process);
+    return rtR0MemObjNativeLock(ppMem, (void *)R3Ptr, cb, (task_t)R0Process);
 }
 
 

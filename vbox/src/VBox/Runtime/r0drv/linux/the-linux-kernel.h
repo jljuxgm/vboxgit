@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: the-linux-kernel.h 4155 2007-08-15 19:41:26Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the Linux kernel.
  */
@@ -145,12 +145,14 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
 
 
 /*
- * This sucks soooo badly! Why don't they export __PAGE_KERNEL_EXEC so PAGE_KERNEL_EXEC would be usable?
+ * This sucks soooo badly on x86! Why don't they export __PAGE_KERNEL_EXEC so PAGE_KERNEL_EXEC would be usable?
  */
-#if defined(PAGE_KERNEL_EXEC) && defined(CONFIG_X86_PAE)
-# define MY_PAGE_KERNEL_EXEC __pgprot(cpu_has_pge ? _PAGE_KERNEL_EXEC | _PAGE_GLOBAL : _PAGE_KERNEL_EXEC)
+#if defined(RT_ARCH_AMD64)
+# define MY_PAGE_KERNEL_EXEC    PAGE_KERNEL_EXEC
+#elif defined(PAGE_KERNEL_EXEC) && defined(CONFIG_X86_PAE)
+# define MY_PAGE_KERNEL_EXEC    __pgprot(cpu_has_pge ? _PAGE_KERNEL_EXEC | _PAGE_GLOBAL : _PAGE_KERNEL_EXEC)
 #else
-# define MY_PAGE_KERNEL_EXEC PAGE_KERNEL
+# define MY_PAGE_KERNEL_EXEC    PAGE_KERNEL
 #endif
 
 
