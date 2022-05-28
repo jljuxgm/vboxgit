@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 397 2007-01-28 02:34:06Z vboxsync $ */
+/* $Id: TRPMInternal.h 415 2007-01-29 18:04:13Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -181,8 +181,6 @@ TRPMGCDECL(int) trpmgcShadowIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMC
 
 /**
  * Calls the interrupt gate as if we received an interrupt while in Ring-0.
- *
- * Returns with interrupts enabled.
  *
  * @param   uIP     The interrupt gate IP.
  * @param   SelCS   The interrupt gate CS.
