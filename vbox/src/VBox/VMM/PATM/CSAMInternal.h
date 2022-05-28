@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 5198 2007-10-09 12:32:03Z vboxsync $ */
+/* $Id: CSAMInternal.h 5199 2007-10-09 12:32:32Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -177,7 +177,7 @@ typedef struct CSAM
     RTGCPTR             pvPossibleCodePage[CSAM_MAX_CODE_PAGES_FLUSH];
 
     /* call addresses reported by the recompiler */
-    RTGCPTR             pvCallInstruction[128];
+    RTGCPTR             pvCallInstruction[16];
     RTUINT              iCallInstruction;
 
     /* Set when scanning has started. */
