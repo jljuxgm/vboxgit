@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 4295 2007-08-22 20:17:19Z vboxsync $ */
+/* $Id: VMEmt.cpp 5031 2007-09-25 22:27:37Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -85,7 +85,7 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
             rc = VINF_EM_TERMINATE;
             break;
         }
-        else if (pVM->vm.s.pReqs)
+        if (pVM->vm.s.pReqs)
         {
             /*
              * Service execute in EMT request.

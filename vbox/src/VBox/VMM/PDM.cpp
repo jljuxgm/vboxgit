@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 4188 2007-08-16 22:47:14Z vboxsync $ */
+/* $Id: PDM.cpp 5031 2007-09-25 22:27:37Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -148,6 +148,7 @@ static DECLCALLBACK(void) pdmR3PollerTimer(PVM pVM, PTMTIMER pTimer, void *pvUse
 PDMR3DECL(int) PDMR3Init(PVM pVM)
 {
     LogFlow(("PDMR3Init\n"));
+
     /*
      * Assert alignment and sizes.
      */
