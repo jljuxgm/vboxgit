@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4071 2007-08-07 17:07:59Z vboxsync $
+# $Id: Makefile.kmk 4178 2007-08-16 15:07:51Z vboxsync $
 ## @file
 # Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -79,6 +79,9 @@ VBoxBFE_SOURCES.l4    = \
 VBoxBFE_SOURCES.darwin = \
 	SDLConsole.cpp \
 	SDLFramebuffer.cpp
+VBoxBFE_SOURCES.solaris = \
+    SDLConsole.cpp \
+    SDLFramebuffer.cpp
 
 VBoxBFE_INCS = \
 	$(PATH_VBoxBFE) \

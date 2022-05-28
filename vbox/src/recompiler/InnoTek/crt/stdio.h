@@ -1,4 +1,4 @@
-/* $Id: stdio.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: stdio.h 4178 2007-08-16 15:07:51Z vboxsync $ */
 /** @file
  * Our minimal stdio
  */
@@ -38,7 +38,7 @@ __BEGIN_DECLS
 typedef struct FILE FILE;
 
 #if defined(RT_OS_SOLARIS)
-/** @todo check solaris' floatingpoint.h as to why we do this */
+/** @todo Check solaris' floatingpoint.h as to why we do this */
 # define _FILEDEFED
 #endif
 

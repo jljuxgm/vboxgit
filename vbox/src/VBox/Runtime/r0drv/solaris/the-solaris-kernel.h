@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 4178 2007-08-16 15:07:51Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the Solaris kernel.
  */
@@ -28,12 +28,11 @@
 #include <sys/condvar.h>
 #include <sys/sdt.h>
 #include <sys/schedctl.h>
+#include <sys/time.h>
 
-/* commented for now
+/* commented for now 
 #include <iprt/cdefs.h>
-
 __BEGIN_DECLS
-extern int nanosleep(const struct timespec *, struct timespec *);
 
 __END_DECLS
 */

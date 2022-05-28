@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: alloc-r0drv-solaris.c 4178 2007-08-16 15:07:51Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -36,9 +36,9 @@ PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
     Assert(cb != sizeof(void *));
     PRTMEMHDR pHdr;
     if (fFlags & RTMEMHDR_FLAG_ZEROED)
-        pHdr = (PRTMEMHDR)kmem_zalloc(cb + sizeof(*pHdr), KM_NOSLEEP);
+        pHdr = (PRTMEMHDR)kmem_zalloc(cb + sizeof(*pHdr), KM_SLEEP);
     else
-        pHdr = (PRTMEMHDR)kmem_alloc(cb + sizeof(*pHdr), KM_NOSLEEP);
+        pHdr = (PRTMEMHDR)kmem_alloc(cb + sizeof(*pHdr), KM_SLEEP);
     if (pHdr)
     {
         pHdr->u32Magic  = RTMEMHDR_MAGIC;
@@ -73,15 +73,13 @@ void rtMemFree(PRTMEMHDR pHdr)
  */
 RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
 {
-    /* Solaris currently supports allocating contiguous memory
-     * only for DMA drivers which requires passing the driver's
-     * device ID, and upper/lower DMA memory limits
-     * Currently thus disabled since RTMemContAlloc isn't really used
-     * anywhere significant yet (only in GuestAdditions which is not
-     * there for Solaris)
-     * ddi_umem_alloc doesn't allocate contiguous memory!
-     */
-    /**@todo Implement RTMemContAlloc on Solaris - there is no way around this. */
+    /** @todo: implement RTMemContAlloc in Solaris */
+    /* ddi_umem_alloc without PAGEABLE flag might produce contiguous physical memory, but
+        the documentation doesn't talk about contiguous at all :( 
+       If we can use ddi_umem_alloc we need to keep track of the ddi_umem_cookie
+       which kernel allocates, but the ContFree() function only passes us back
+       the address. Maybe we could for each ContAlloc build a linked list of
+       structures that have the cookie and corresponding virtual address. */
     return NULL;
 }
 

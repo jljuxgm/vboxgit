@@ -1,4 +1,4 @@
-/* $Id: semfastmutex-r0drv-solaris.c 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: semfastmutex-r0drv-solaris.c 4178 2007-08-16 15:07:51Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Fast Mutex Semaphores, Ring-0 Driver, Solaris.
  */
@@ -41,7 +41,7 @@ typedef struct RTSEMFASTMUTEXINTERNAL
     /** Magic value (RTSEMFASTMUTEX_MAGIC). */
     uint32_t            u32Magic;
     /** The Solaris mutex. */
-    struct mutex        Mtx;
+    kmutex_t            Mtx;
 } RTSEMFASTMUTEXINTERNAL, *PRTSEMFASTMUTEXINTERNAL;
 
 
