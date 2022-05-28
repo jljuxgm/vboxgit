@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 1480 2007-03-14 18:27:47Z vboxsync $ */
+/* $Id: MMAll.cpp 2270 2007-04-20 12:58:15Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Any Context.
  */
@@ -335,6 +335,7 @@ MMDECL(RTR0PTR) MMHyperR3ToR0(PVM pVM, RTR3PTR R3Ptr)
     PMMLOOKUPHYPER pLookup = mmHyperLookupR3(pVM, R3Ptr, &off);
     if (pLookup)
         return mmHyperLookupCalcR0(pLookup, off);
+    AssertMsgFailed(("R3Ptr=%p is not inside the hypervisor memory area!\n", R3Ptr));
     return NIL_RTR0PTR;
 }
 
@@ -354,6 +355,7 @@ MMDECL(RTGCPTR) MMHyperR3ToGC(PVM pVM, RTR3PTR R3Ptr)
     PMMLOOKUPHYPER pLookup = mmHyperLookupR3(pVM, R3Ptr, &off);
     if (pLookup)
         return mmHyperLookupCalcGC(pVM, pLookup, off);
+    AssertMsgFailed(("R3Ptr=%p is not inside the hypervisor memory area!\n", R3Ptr));
     return NIL_RTGCPTR;
 }
 
@@ -629,5 +631,5 @@ MMDECL(RTGCPTR) MMHyper2GC(PVM pVM, uintptr_t Ptr)
 {
     return MMHyperHC2GC(pVM, (RTHCPTR)Ptr);
 }
-#endif /* !IN_GC */
 
+#endif /* !IN_GC */

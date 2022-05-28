@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 2270 2007-04-20 12:58:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -47,7 +47,7 @@
 #ifdef VBOX_STRICT
 # define PDMDEV_ASSERT_DEVINS(pDevIns)   do { Assert(VALID_PTR(pDevIns)); \
                                               Assert(pDevIns->u32Version == PDM_DEVINS_VERSION); \
-                                              Assert(pDevIns->pvInstanceDataHC == (void *)&pDevIns->achInstanceData[0]); \
+                                              Assert(pDevIns->pvInstanceDataR0 == (void *)&pDevIns->achInstanceData[0]); \
                                          } while (0)
 #else
 # define PDMDEV_ASSERT_DEVINS(pDevIns)   do { } while (0)
