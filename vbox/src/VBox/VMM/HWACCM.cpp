@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: HWACCM.cpp 4789 2007-09-14 11:10:35Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -422,7 +422,7 @@ HWACCMR3DECL(void) HWACCMR3Relocate(PVM pVM)
             /* Bit set to 0 means redirection enabled. */
             memset(pVM->hwaccm.s.vmx.pRealModeTSS->IntRedirBitmap, 0x0, sizeof(pVM->hwaccm.s.vmx.pRealModeTSS->IntRedirBitmap));
 
-            int rc = SUPCallVMMR0(pVM->pVMR0, VMMR0_DO_HWACC_SETUP_VM, NULL);
+            int rc = SUPCallVMMR0Ex(pVM->pVMR0, VMMR0_DO_HWACC_SETUP_VM, NULL, 0);
             AssertRC(rc);
             if (rc == VINF_SUCCESS)
             {
@@ -456,7 +456,7 @@ HWACCMR3DECL(void) HWACCMR3Relocate(PVM pVM)
             /* Only try once. */
             pVM->hwaccm.s.fInitialized = true;
 
-            int rc = SUPCallVMMR0(pVM->pVMR0, VMMR0_DO_HWACC_SETUP_VM, NULL);
+            int rc = SUPCallVMMR0Ex(pVM->pVMR0, VMMR0_DO_HWACC_SETUP_VM, NULL, 0);
             AssertRC(rc);
             if (rc == VINF_SUCCESS)
             {
