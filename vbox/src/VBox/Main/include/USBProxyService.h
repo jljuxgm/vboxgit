@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: USBProxyService.h 5523 2007-10-26 17:28:37Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -197,6 +197,14 @@ protected:
 
 
 public:
+    /**
+     * Free all the members of a USB interface returned by getDevice().
+     *
+     * @param   pIf         Pointer to the interface.
+     * @param   cIfs        Number of consecutive interfaces pIf points to
+     */
+    static void freeInterfaceMembers (PUSBINTERFACE pIf, unsigned cIfs);
+
     /**
      * Free all the members of a USB device returned by getDevice().
      *
