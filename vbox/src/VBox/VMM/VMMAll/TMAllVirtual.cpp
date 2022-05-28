@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 2611 2007-05-14 04:58:51Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 2744 2007-05-21 15:21:25Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -183,6 +183,7 @@ TMDECL(uint64_t) TMVirtualSyncGetEx(PVM pVM, bool fCheckTimers)
          */
         Assert(pVM->tm.s.fVirtualTicking);
         u64 = tmVirtualGetRaw(pVM);
+const uint64_t u64VirtualNow = u64;
         if (    fCheckTimers
             &&  !VM_FF_ISSET(pVM, VM_FF_TIMER)
             &&  pVM->tm.s.CTXALLSUFF(paTimerQueues)[TMCLOCK_VIRTUAL].u64Expire <= u64)
@@ -263,6 +264,7 @@ TMDECL(uint64_t) TMVirtualSyncGetEx(PVM pVM, bool fCheckTimers)
             u64 = u64Expire;
             ASMAtomicXchgU64(&pVM->tm.s.u64VirtualSync, u64);
             ASMAtomicXchgBool(&pVM->tm.s.fVirtualSyncTicking, false);
+pVM->tm.s.u64VirtualSyncStoppedTS = u64VirtualNow;
             if (    fCheckTimers
                 &&  !VM_FF_ISSET(pVM, VM_FF_TIMER))
             {
