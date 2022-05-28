@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 624 2007-02-05 10:03:11Z vboxsync $ */
+/* $Id: TRPMAll.cpp 1090 2007-02-28 08:44:17Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -576,6 +576,7 @@ TRPMDECL(int) TRPMForwardTrap(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t iGate, u
                 /*
                  * Build trap stack frame on guest handler's stack
                  */
+                /** @todo if eflags.Bits.u1VM check for 4 more dwords */
 #ifdef IN_GC
                 Assert((pRegFrame->ss & X86_SEL_RPL) != 0);
                 rc = PGMVerifyAccess(pVM, (RTGCUINTPTR)pTrapStackGC - 6*sizeof(uint32_t), 6 * sizeof(uint32_t), X86_PTE_RW);
@@ -593,6 +594,7 @@ TRPMDECL(int) TRPMForwardTrap(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t iGate, u
                 {
                     Log(("TRAP%02X: Handler %04X:%08X Stack %04X:%08X RPL=%d CR2=%08X\n", iGate, GuestIdte.Gen.u16SegSel, pHandler, ss_r0, esp_r0, (pRegFrame->ss & X86_SEL_RPL), pVM->trpm.s.uActiveCR2));
 
+                    /** @todo if eflags.Bits.u1VM push gs, fs, ds, es */
                     if (fConforming == false && dpl < cpl)
                     {
                         if ((pRegFrame->ss & X86_SEL_RPL) == 1)
