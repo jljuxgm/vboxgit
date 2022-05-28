@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 1108 2007-02-28 13:32:08Z vboxsync $
+; $Id: PATMA.asm 1114 2007-02-28 15:44:06Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -1128,7 +1128,9 @@ PATMIretStart:
     jnz     iret_fault1
 
     test    dword [esp+12], X86_EFL_VM
-    jnz     iret_notring0
+    jnz     iret_fault1
+;; enable when V86 works in raw mode
+;;    jnz     iret_notring0
 
     ;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     ;;@todo: not correct for iret back to ring 2!!!!!
