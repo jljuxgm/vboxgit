@@ -1,4 +1,4 @@
-# $Id: Config.kmk 1689 2007-03-24 01:26:28Z vboxsync $
+# $Id: Config.kmk 1693 2007-03-26 07:58:21Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -64,7 +64,7 @@ ifeq ($(BUILD_TARGET),darwin)
  INST_DLL             = $(INST_BIN)
  INST_SYS             = $(INST_BIN)
  INST_TESTCASE        = $(INST_BIN)testcase/
- INST_ADDITIONS       = $(INST_BIN)MacOS/additions/
+ INST_ADDITIONS       = $(INST_BIN)additions/
 
  # other paths
  INST_LIB             = lib/
