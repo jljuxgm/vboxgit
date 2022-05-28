@@ -1,4 +1,4 @@
-/* $Id: config-host.h 536 2007-02-02 05:11:35Z vboxsync $ */
+/* $Id: config-host.h 1847 2007-04-01 04:03:22Z vboxsync $ */
 /** @file
  * Innotek Host Config - Maintained by hand
  */
@@ -35,7 +35,7 @@
 # elif defined(__FREEBSD__) || defined(__NETBSD__) || defined(__OPENBSD__)
 /*#  define CONFIG_BSD*/
 # elif defined(__SOLARIS__)
-#  error "configure me (decide if you HAVE_BYTESWAP_H or not, and check what HOST_SOLARIS does to the code)"
+/*#  define CONFIG_SUN*/
 # elif !defined(IPRT_NO_CRT)
 #  define HAVE_BYTESWAP_H 1
 # endif
