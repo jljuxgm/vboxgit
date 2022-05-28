@@ -1,4 +1,4 @@
-/** $Id: timer-r0drv-solaris.c 4474 2007-08-31 19:23:49Z vboxsync $ */
+/** $Id: timer-r0drv-solaris.c 5349 2007-10-17 11:56:26Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Timer, Ring-0 Driver, Solaris.
  */
@@ -156,8 +156,10 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
     timerSpec.cyt_when = u64First;
     timerSpec.cyt_interval = pTimer->u64NanoInterval == 0 ? u64First : pTimer->u64NanoInterval;
     
-    rtTimerSolarisStop(pTimer); /** @todo r=bird: can't happen. */
+    mutex_enter(&cpu_lock);
     pTimer->CyclicID = cyclic_add(&pTimer->CyclicInfo, &timerSpec);
+    mutex_exit(&cpu_lock);
+
     return VINF_SUCCESS;
 }
 
@@ -202,7 +204,9 @@ static void rtTimerSolarisStop(PRTTIMER pTimer)
     /* Important we check for invalid cyclic object */
     if (pTimer->CyclicID != CYCLIC_NONE)
     {
+        mutex_enter(&cpu_lock);
         cyclic_remove(pTimer->CyclicID);
+        mutex_exit(&cpu_lock);
         pTimer->CyclicID = CYCLIC_NONE;
     }
 }
