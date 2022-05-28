@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 598 2007-02-04 15:20:48Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 634 2007-02-05 13:06:04Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -307,6 +307,7 @@ PDMR3DECL(void) PDMR3CritSectFF(PVM pVM)
     VM_FF_CLEAR(pVM, VM_FF_PDM_CRITSECT);
 }
 
+
 /**
  * Try enter a critical section.
  *
@@ -320,3 +321,4 @@ PDMR3DECL(int) PDMR3CritSectTryEnter(PPDMCRITSECT pCritSect)
 {
     return RTCritSectTryEnter(&pCritSect->s.Core);
 }
+
