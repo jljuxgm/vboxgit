@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 2955 2007-05-31 08:22:16Z vboxsync $
+# $Id: Makefile.kmk 2992 2007-06-01 19:27:24Z vboxsync $
 ## @file
 # Top level makefile.
 #
 
 #
-# Copyright (C) 2006 InnoTek Systemberatung GmbH
+# Copyright (C) 2006-2007 innotek GmbH
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
