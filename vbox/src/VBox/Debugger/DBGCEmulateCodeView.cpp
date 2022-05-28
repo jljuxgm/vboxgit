@@ -1,4 +1,4 @@
-/** $Id: DBGCEmulateCodeView.cpp 5733 2007-11-13 23:16:51Z vboxsync $ */
+/** $Id: DBGCEmulateCodeView.cpp 5735 2007-11-13 23:35:00Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3185,7 +3185,7 @@ static DECLCALLBACK(int) dbgcCmdSearchMemType(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHl
     if (    cArgs < 2
         ||  !DBGCVAR_ISGCPOINTER(paArgs[0].enmType))
         return pCmdHlp->pfnPrintf(pCmdHlp, NULL, "parser error\n");
-    return dbgcCmdWorkerSearchMem(pCmdHlp, pVM, &paArgs[0], pResult ? 1 : 80, pCmd->pszCmd[1], paArgs + 1, cArgs - 1, pResult);
+    return dbgcCmdWorkerSearchMem(pCmdHlp, pVM, &paArgs[0], pResult ? 1 : 25, pCmd->pszCmd[1], paArgs + 1, cArgs - 1, pResult);
 }
 
 
