@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 1515 2007-03-15 15:01:47Z vboxsync $ */
+/* $Id: SELM.cpp 1552 2007-03-19 09:36:34Z vboxsync $ */
 /** @file
  * SELM - The Selector manager.
  */
@@ -1429,6 +1429,10 @@ SELMR3DECL(int) SELMR3SyncTSS(PVM pVM)
         pVM->selm.s.fGuestTss32Bit = pDesc->Gen.u4Type == X86_SEL_TYPE_SYS_386_TSS_AVAIL
                                   || pDesc->Gen.u4Type == X86_SEL_TYPE_SYS_386_TSS_BUSY;
 
+        /** @note we should monitor the whole TSS to catch accesses to the virtual interrupt redirection bitmap, but
+         *        that causes some problems and with Windows guests some overhead as the entire TSS is rather big (3 pages).
+         *        We'll assume for now that the bitmap is static.
+         */
 #if 1
         /* Don't bother with anything but the core structure. (Actually all we care for is the r0 ss.) */ 
         if (cbTss > sizeof(VBOXTSS)) 
