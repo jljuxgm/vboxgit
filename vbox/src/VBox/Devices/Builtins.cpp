@@ -1,4 +1,4 @@
-/** $Id: Builtins.cpp 1345 2007-03-08 21:21:41Z vboxsync $ */
+/** $Id: Builtins.cpp 1346 2007-03-08 21:22:54Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -30,7 +30,6 @@
 #include <VBox/usb.h>
 
 #include <VBox/log.h>
-#include <VBox/config.h>
 #include <iprt/assert.h>
 
 #include "Builtins.h"
