@@ -1,4 +1,4 @@
-/* $Id: SSMInternal.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: SSMInternal.h 4776 2007-09-13 15:29:33Z vboxsync $ */
 /** @file
  * SSM - Internal header file.
  */
@@ -174,7 +174,7 @@ typedef struct SSM
     RTUINT                  offVM;
 
     /** FIFO of data entity descriptors. */
-    HCPTRTYPE(PSSMUNIT)     pHead;
+    R3PTRTYPE(PSSMUNIT)     pHead;
 
 } SSM;
 /** Pointer to SSM VM instance data. */

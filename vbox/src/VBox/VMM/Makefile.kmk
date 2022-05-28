@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4738 2007-09-12 16:00:54Z vboxsync $
+# $Id: Makefile.kmk 4776 2007-09-13 15:29:33Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -353,8 +353,7 @@ VMMR0_SOURCES   = \
 	VMMAll/TMAllCpu.cpp \
 	VMMAll/TMAllReal.cpp \
 	VMMAll/TMAllVirtual.cpp \
-	VMMAll/VMAll.cpp \
-	PATM/VMMAll/PATMAll.cpp
+	VMMAll/VMAll.cpp
 
 ifeq ($(VBOX_LDR_FMT),pe)
 VMMR0_SOURCES += VMMR0/VMMR0.def

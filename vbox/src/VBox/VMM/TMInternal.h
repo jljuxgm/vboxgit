@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: TMInternal.h 4776 2007-09-13 15:29:33Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -171,7 +171,7 @@ typedef struct TMTIMER
     /** Pointer to the previous timer in the list of all created timers. (TM::pTimers) */
     PTMTIMERR3              pBigPrev;
     /** Pointer to the timer description. */
-    HCPTRTYPE(const char *) pszDesc;
+    R3PTRTYPE(const char *) pszDesc;
     /** Pointer to the VM the timer belongs to - R3 Ptr. */
     PVMR3                   pVMR3;
     /** Pointer to the VM the timer belongs to - R0 Ptr. */

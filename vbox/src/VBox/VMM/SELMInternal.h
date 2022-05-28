@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: SELMInternal.h 4776 2007-09-13 15:29:33Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -84,7 +84,7 @@ typedef struct SELM
 
     /** Pointer to the GCs - HC Ptr.
      * This size is governed by SELM_GDT_ELEMENTS. */
-    HCPTRTYPE(PVBOXDESC)    paGdtHC;
+    R3R0PTRTYPE(PVBOXDESC)  paGdtHC;
     /** Pointer to the GCs - GC Ptr.
      * This is not initialized until the first relocation because it's used to
      * check if the shadow GDT virtual handler requires deregistration. */
@@ -95,7 +95,7 @@ typedef struct SELM
     RTUINT                  cbEffGuestGdtLimit;
 
     /** HC Pointer to the LDT shadow area placed in Hypervisor memory arena. */
-    HCPTRTYPE(void *)       HCPtrLdt;
+    R3PTRTYPE(void *)       HCPtrLdt;
     /** GC Pointer to the LDT shadow area placed in Hypervisor memory arena. */
     GCPTRTYPE(void *)       GCPtrLdt;
     /** GC Pointer to the current Guest's LDT. */
