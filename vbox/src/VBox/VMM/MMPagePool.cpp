@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 4761 2007-09-13 08:55:22Z vboxsync $ */
+/* $Id: MMPagePool.cpp 4762 2007-09-13 08:55:53Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Page Pool.
  */
@@ -120,7 +120,7 @@ void mmr3PagePoolTerm(PVM pVM)
             pSubPool = pSubPool->pNext;
         }
 
-        SUPPageFree(pVM->mm.s.pPagePool, RT_ALIGN_32(sizeof(*pVM->mm.s.pPagePool), PAGE_SIZE));
+        SUPPageFree(pVM->mm.s.pPagePool, RT_ALIGN_32(sizeof(*pVM->mm.s.pPagePool), PAGE_SIZE)/PAGE_SIZE);
         pVM->mm.s.pPagePool = NULL;
     }
 
@@ -141,7 +141,7 @@ void mmr3PagePoolTerm(PVM pVM)
             pSubPool = pSubPool->pNext;
         }
 
-        SUPPageFree(pVM->mm.s.pPagePoolLow, RT_ALIGN_32(sizeof(*pVM->mm.s.pPagePoolLow), PAGE_SIZE));
+        SUPPageFree(pVM->mm.s.pPagePoolLow, RT_ALIGN_32(sizeof(*pVM->mm.s.pPagePoolLow), PAGE_SIZE)/PAGE_SIZE);
         pVM->mm.s.pPagePoolLow = NULL;
     }
 }
