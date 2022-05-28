@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 2004 2007-04-10 10:11:46Z vboxsync $ */
+/* $Id: EMAll.cpp 2005 2007-04-10 11:06:54Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -484,7 +484,7 @@ static int emInterpretXchg(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, R
  * INC and DEC emulation.
  */
 static int emInterpretIncDec(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, uint32_t *pcbSize,
-                             PFN_EMULATE_PARAM2_UINT32 pfnEmulate)
+                             PFN_EMULATE_PARAM2 pfnEmulate)
 {
     OP_PARAMVAL param1;
 
@@ -861,7 +861,7 @@ static int emInterpretAdc(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, RT
  * BTR/C/S Emulation.
  */
 static int emInterpretBitTest(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, uint32_t *pcbSize,
-                              PFN_EMULATE_PARAM2 pfnEmulate)
+                              PFN_EMULATE_PARAM2_UINT32 pfnEmulate)
 {
     OP_PARAMVAL param1, param2;
     int rc = DISQueryParamVal(pRegFrame, pCpu, &pCpu->param1, &param1, PARAM_DEST);
