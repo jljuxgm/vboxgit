@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 741 2007-02-07 10:16:47Z vboxsync $ */
+/* $Id: PATMAll.cpp 744 2007-02-07 11:17:44Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -636,12 +636,12 @@ PATMDECL(int) PATMHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
             }
 
             case PATM_ACTION_LOG_RET:
-                Log(("PATMGC: RET to %VGv iopl=%d\n", pRegFrame->edx, X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags)));
+                Log(("PATMGC: RET to %VGv ESP=%VGv iopl=%d\n", pRegFrame->edx, pRegFrame->ebx, X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags)));
                 pRegFrame->eip += PATM_ILLEGAL_INSTR_SIZE;
                 return VINF_SUCCESS;
 
             case PATM_ACTION_LOG_CALL:
-                Log(("PATMGC: CALL to %VGv return addr %VGv iopl=%d\n", pVM->patm.s.CTXSUFF(pGCState)->GCCallPatchTargetAddr, pVM->patm.s.CTXSUFF(pGCState)->GCCallReturnAddr, X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags)));
+                Log(("PATMGC: CALL to %VGv return addr %VGv ESP=%VGv iopl=%d\n", pVM->patm.s.CTXSUFF(pGCState)->GCCallPatchTargetAddr, pVM->patm.s.CTXSUFF(pGCState)->GCCallReturnAddr, pRegFrame->edx, X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags)));
                 pRegFrame->eip += PATM_ILLEGAL_INSTR_SIZE;
                 return VINF_SUCCESS;
 #endif
