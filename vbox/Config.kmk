@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5068 2007-09-26 22:47:43Z vboxsync $
+# $Id: Config.kmk 5110 2007-09-30 05:02:23Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1157,8 +1157,15 @@ else ifeq ($(BUILD_TARGET),darwin)
  endif
 else
  ifndef QTDIR
-  # This is a pretty safe shot.
-  export QTDIR := $(wildcard /usr/share/qt3)
+  ifdef VBOX_WITH_QTGUI
+   QTDIR := $(wildcard /usr/share/qt3)
+   ifeq ($(QTDIR),)
+    QTDIR := $(patsubst %/bin/moc,%,$(firstword $(wildcard /usr/bin/moc /usr/local/bin/moc /usr/X11R6/bin/moc)))
+   endif
+   ifneq ($(QTDIR),)
+    export QTDIR
+   endif
+  endif
  endif
 endif
 ifndef VBOX_PATH_QT
@@ -2539,7 +2546,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5068 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5110 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
   VBOX_SVN_DEP         :=
