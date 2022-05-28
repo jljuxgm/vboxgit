@@ -1,4 +1,4 @@
-/* $Id: memobj.h 3699 2007-07-18 17:37:46Z vboxsync $ */
+/* $Id: memobj.h 3977 2007-08-02 00:37:43Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects.
  */
@@ -26,6 +26,7 @@
 #include <iprt/assert.h>
 #include "internal/magics.h"
 
+__BEGIN_DECLS
 
 /** @defgroup grp_rt_memobj_int Internals.
  * @ingroup grp_rt_memobj
@@ -360,6 +361,8 @@ PRTR0MEMOBJINTERNAL rtR0MemObjNew(size_t cbSelf, RTR0MEMOBJTYPE enmType, void *p
 void rtR0MemObjDelete(PRTR0MEMOBJINTERNAL pMem);
 
 /** @} */
+
+__END_DECLS
 
 #endif
 
