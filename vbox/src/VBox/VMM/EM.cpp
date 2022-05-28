@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 1559 2007-03-19 14:07:23Z vboxsync $ */
+/* $Id: EM.cpp 1583 2007-03-20 21:00:25Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -2186,7 +2186,7 @@ DECLINLINE(int) emR3RawHandleRC(PVM pVM, PCPUMCTX pCtx, int rc)
                 rc = TRPMQueryTrapAll(pVM, &u8Interrupt, NULL, &uErrorCode, NULL);
                 AssertRC(rc);
 
-                if (uErrorCode != ~0)
+                if (uErrorCode != (uint32_t)~0)
                     enmError = TRPM_TRAP_HAS_ERRORCODE;
 
                 /* If the guest gate is marked unpatched, then we will check again if we can patch it. */

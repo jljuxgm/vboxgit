@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 1359 2007-03-09 10:40:44Z vboxsync $ */
+/* $Id: CSAM.cpp 1583 2007-03-20 21:00:25Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2280,7 +2280,7 @@ CSAMR3DECL(int) CSAMR3CheckGates(PVM pVM, uint32_t iGate, uint32_t cGates)
                 rc = CPUMQueryGuestCtxPtr(pVM, &pCtx);
                 AssertRC(rc);   /* can't fail */
 
-                for (int i=0;i<ELEMENTS(aOpenBsdPushCSOffset);i++)
+                for (unsigned i=0;i<ELEMENTS(aOpenBsdPushCSOffset);i++)
                 {
                     rc = CPUMR3DisasmInstrCPU(pVM, pCtx, pHandler - aOpenBsdPushCSOffset[i], &cpu, NULL);
                     if (    rc == VINF_SUCCESS
