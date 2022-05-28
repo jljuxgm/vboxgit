@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: thread-os2.cpp 3360 2007-07-02 20:54:17Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Threads, OS/2.
  */
@@ -151,7 +151,6 @@ RTDECL(RTTHREAD) RTThreadSelf(void)
     if (pThread)
         return (RTTHREAD)pThread;
     /** @todo import alien threads? */
-    AssertMsgFailed(("Thread not found\n"));
     return NULL;
 }
 
