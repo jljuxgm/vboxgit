@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 1480 2007-03-14 18:27:47Z vboxsync $ */
+/* $Id: SELM.cpp 1485 2007-03-14 18:50:17Z vboxsync $ */
 /** @file
  * SELM - The Selector manager.
  */
@@ -101,7 +101,7 @@ SELMR3DECL(int) SELMR3Init(PVM pVM)
      */
     AssertCompile(sizeof(pVM->selm.s) <= sizeof(pVM->selm.padding));    AssertRelease(sizeof(pVM->selm.s) <= sizeof(pVM->selm.padding));
     AssertCompileMemberAlignment(VM, selm.s, 32);                       AssertRelease(!(RT_OFFSETOF(VM, selm.s) & 31));
-#ifndef __AMD64__ /* gcc 4.1.1 doesn't deal correctly with this :/ */
+#if 0 /* doesn't work */
     AssertCompile((RT_OFFSETOF(VM, selm.s.Tss)       & PAGE_OFFSET_MASK) <= PAGE_SIZE - sizeof(pVM->selm.s.Tss));       
     AssertCompile((RT_OFFSETOF(VM, selm.s.TssTrap08) & PAGE_OFFSET_MASK) <= PAGE_SIZE - sizeof(pVM->selm.s.TssTrap08)); 
 #endif
