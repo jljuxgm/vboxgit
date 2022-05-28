@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 302 2007-01-25 14:48:55Z vboxsync $ */
+/* $Id: PATMPatch.cpp 513 2007-02-01 16:25:19Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -123,7 +123,7 @@ int patmPatchAddJump(PVM pVM, PPATCHINFO pPatch, uint8_t *pJumpHC, uint32_t offs
 
 
 #define PATCHGEN_EPILOG(pPatch, size) \
-    Assert(size <= 512);              \
+    Assert(size <= 640);              \
     pPatch->uCurPatchOffset += size;
 
 
