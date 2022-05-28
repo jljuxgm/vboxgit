@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 4402 2007-08-28 14:22:20Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1558,7 +1558,7 @@ ResumeExecution:
             STAM_PROFILE_ADV_STOP(&pVM->hwaccm.s.StatExit, x);
             goto ResumeExecution;
         }
-        AssertMsgFailed(("EMU: invlpg %VGv failed with %Vrc\n", exitQualification, rc));
+        AssertMsg(rc == VERR_EM_INTERPRETER, ("EMU: invlpg %VGv failed with %Vrc\n", exitQualification, rc));
         rc = VINF_EM_RAW_EMULATE_INSTR;
         break;
     }
