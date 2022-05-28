@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4398 2007-08-28 09:44:44Z vboxsync $
+# $Id: Makefile.kmk 4432 2007-08-30 08:28:11Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -137,7 +137,8 @@ VirtualBox_SOURCES = \
 	src/VBoxConsoleWnd.cpp \
 	src/VBoxDownloaderWgt.cpp \
 	src/VBoxVMListBox.cpp \
-	src/VBoxFrameBuffer.cpp
+	src/VBoxFrameBuffer.cpp \
+	src/HappyHttp.cpp
 
 VirtualBox_SOURCES.win += \
 	src/win32/VirtualBox.rc
@@ -153,6 +154,9 @@ VirtualBox_SOURCES.darwin = \
 	src/darwin/DarwinCursor.cpp \
 	src/darwin/VBoxAquaStyle.cpp \
 	src/darwin/VBoxUtils-darwin.cpp
+
+src/HappyHttp.cpp_CXXFLAGS += -fexceptions
+src/VBoxDownloaderWgt.cpp_CXXFLAGS += -fexceptions
 
 ## @todo how to detect what tool is used?
 ## @todo GCC3 seems to lack -Wno-missing-base-class-initializer, so we use
