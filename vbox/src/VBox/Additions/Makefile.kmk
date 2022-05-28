@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4071 2007-08-07 17:07:59Z vboxsync $
+# $Id: Makefile.kmk 4075 2007-08-07 17:16:20Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -131,7 +131,7 @@ GUESTADDITIONS_LINUX_DEPS = $(LINUXINSTALLER)
 GUESTADDITIONS_LINUX_FILESPEC = VBoxLinuxAdditions.run=$(LINUXINSTALLER)
 endif
 
-ifdef VBOX_WITH_OS2_ADDITIONS
+ifdef VBOX_WITH_OS2_ADDITIONS_BIN
 GUESTADDITIONS_OS2_FILESPEC = \
 	os2/VBoxGuest.sys=./os2/Bin/VBoxGuest.sys \
 	os2/VBoxService.exe=./os2/Bin/VBoxService.exe \
