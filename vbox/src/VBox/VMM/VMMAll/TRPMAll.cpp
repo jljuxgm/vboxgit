@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 3313 2007-06-27 11:42:44Z vboxsync $ */
+/* $Id: TRPMAll.cpp 3498 2007-07-09 08:52:18Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -393,8 +393,9 @@ TRPMDECL(int) TRPMForwardTrap(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t iGate, u
     case 12:
     case 13:
     case 17:
-        Assert(enmError == TRPM_TRAP_HAS_ERRORCODE);
+        Assert(enmError == TRPM_TRAP_HAS_ERRORCODE || enmType == TRPM_SOFTWARE_INT);
         break;
+
     default:
         Assert(enmError == TRPM_TRAP_NO_ERRORCODE);
         break;
