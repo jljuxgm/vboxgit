@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 1576 2007-03-20 11:51:40Z vboxsync $ */
+/* $Id: PGMMap.cpp 1578 2007-03-20 20:02:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -100,7 +100,8 @@ PGMR3DECL(int) PGMR3MapPT(PVM pVM, RTGCPTR GCPtr, size_t cb, PFNPGMRELOCATE pfnR
         {
             AssertMsgFailed(("Address is already in use by %s. req %#x-%#x take %#x-%#x\n",
                              pCur->pszDesc, GCPtr, GCPtrLast, pCur->GCPtr, pCur->GCPtrLast));
-            LogRel(("VERR_PGM_MAPPING_CONFLICT: Address is already in use by %s. req %#x-%#x take %#x-%#x\n",pCur->pszDesc, GCPtr, GCPtrLast, pCur->GCPtr, pCur->GCPtrLast));
+            LogRel(("VERR_PGM_MAPPING_CONFLICT: Address is already in use by %s. req %#x-%#x take %#x-%#x\n", 
+                    pCur->pszDesc, GCPtr, GCPtrLast, pCur->GCPtr, pCur->GCPtrLast));
             return VERR_PGM_MAPPING_CONFLICT;
         }
         if (pCur->GCPtr > GCPtr)
@@ -463,9 +464,6 @@ PGMR3DECL(int) PGMR3MappingsUnfix(PVM pVM)
  */
 PGMR3DECL(int) PGMR3MapIntermediate(PVM pVM, RTUINTPTR Addr, RTHCPHYS HCPhys, unsigned cbPages)
 {
-    size_t  cbHyper;
-    RTGCPTR pvHyperGC;
-
     LogFlow(("PGMR3MapIntermediate: Addr=%RTptr HCPhys=%VHp cbPages=%#x\n", Addr, HCPhys, cbPages));
 
     /*
@@ -502,14 +500,15 @@ PGMR3DECL(int) PGMR3MapIntermediate(PVM pVM, RTUINTPTR Addr, RTHCPHYS HCPhys, un
     }
 
     /* The intermediate mapping must not conflict with our default hypervisor address. */
-    pvHyperGC = MMHyperGetArea(pVM, &cbHyper);
-    if (   uAddress < pvHyperGC
-           ? uAddress + cbPages > pvHyperGC
-           : pvHyperGC + cbHyper > uAddress
+    size_t  cbHyper;
+    RTGCPTR pvHyperGC = MMHyperGetArea(pVM, &cbHyper);
+    if (uAddress < pvHyperGC
+        ? uAddress + cbPages > pvHyperGC
+        : pvHyperGC + cbHyper > uAddress
        )
     {
-        AssertMsgFailed(("Addr=%RTptr HyperGC=%VGv cbPages=%d\n", Addr, pvHyperGC, cbPages));
-        LogRel(("Addr=%RTptr HyperGC=%VGv cbPages=%d\n", Addr, pvHyperGC, cbPages));
+        AssertMsgFailed(("Addr=%RTptr HyperGC=%VGv cbPages=%zu\n", Addr, pvHyperGC, cbPages));
+        LogRel(("Addr=%RTptr HyperGC=%VGv cbPages=%zu\n", Addr, pvHyperGC, cbPages));
         return VERR_PGM_MAPPINGS_FIX_CONFLICT; /** @todo new error code */
     }
 
