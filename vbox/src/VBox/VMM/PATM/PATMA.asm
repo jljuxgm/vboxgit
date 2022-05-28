@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 159 2007-01-18 18:09:17Z vboxsync $
+; $Id: PATMA.asm 160 2007-01-18 18:11:17Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -1045,7 +1045,7 @@ PATMIretStart:
     push    eax
     push    ecx
     push    edx
-    lea     edx, dword [ss:esp+4]        ;+ pushed flags -> iret eip
+    lea     edx, dword [ss:esp+12+4]        ;3 dwords + pushed flags -> iret eip
     mov     eax, PATM_ACTION_LOG_IRET
     lock    or dword [ss:PATM_PENDINGACTION], eax
     mov     ecx, PATM_ACTION_MAGIC
