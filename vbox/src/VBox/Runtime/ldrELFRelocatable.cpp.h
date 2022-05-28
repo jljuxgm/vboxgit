@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 1  vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 190 2007-01-19 18:12:40Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -347,7 +347,7 @@ static int RTLDRELF_NAME(RelocateSection)(PRTLDRMODELF pModElf, Elf_Addr BaseAdd
             }
 
             /*
-             * Trunacated 32-bit value (sign-extendedable to the 64-bit value).
+             * Truncated 32-bit value (sign-extendedable to the 64-bit value).
              */
             case R_X86_64_32S:
             {
