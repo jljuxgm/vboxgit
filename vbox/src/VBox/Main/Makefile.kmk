@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2917 2007-05-29 14:17:19Z vboxsync $
+# $Id: Makefile.kmk 2926 2007-05-30 07:48:19Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -155,6 +155,8 @@ endif
 ifdef VBOX_WITH_LIBHAL
 VBoxSVC_CXXFLAGS += \
 	$(LIB_HAL_CFLAGS)
+VBoxSVC_LIBPATH += \
+	$(LIB_HAL_LIBPATH)
 VBoxSVC_LIBS += \
 	$(LIB_HAL_LIBS)
 VBoxSVC_DEFS += \
