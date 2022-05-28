@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5210 2007-10-09 18:11:50Z vboxsync $
+# $Id: Makefile.kmk 5212 2007-10-09 18:43:56Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -144,7 +144,7 @@ VBoxSVC_LIBS.darwin = \
 	$(LIB_VMM) \
 	$(LIB_REM)
 VBoxSVC_LIBS.solaris = \
-        adm.so
+	adm.so
 
 VBoxSVC_SOURCES = \
 	Logging.cpp \

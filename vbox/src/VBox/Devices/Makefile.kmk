@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5184 2007-10-08 13:23:33Z vboxsync $
+# $Id: Makefile.kmk 5212 2007-10-09 18:43:56Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -112,6 +112,9 @@ endif
 ifeq ($(BUILD_TARGET),l4)
  VBoxDD_LIBS           += \
 	$(L4_LIBDIR)/libl4sys.p.a
+endif
+ifeq ($(BUILD_TARGET),solaris)
+ VBoxDD_LIBS           += adm
 endif
 ifdef VBOX_WTIH_USB
 VBoxDD_LIBS.darwin     += \
