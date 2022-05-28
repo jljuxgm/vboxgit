@@ -1,4 +1,4 @@
-/* $Id: alloc-posix.cpp 533 2007-02-02 02:02:14Z vboxsync $ */
+/* $Id: alloc-posix.cpp 635 2007-02-05 13:11:47Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Memory Allocation, POSIX.
  */
@@ -138,7 +138,7 @@ RTDECL(void)    RTMemExecFree(void *pv)
         AssertMsgReturnVoid(RT_ALIGN_P(pHdr, PAGE_SIZE) == pHdr, ("pHdr=%p pv=%p\n", pHdr, pv));
         AssertMsgReturnVoid(pHdr->uMagic == RTMEMEXECHDR_MAGIC, ("pHdr=%p(uMagic=%#zx) pv=%p\n", pHdr, pHdr->uMagic, pv));
         int rc = munmap(pHdr, pHdr->cb);
-        AssertMsg(!rc, ("munmap -> %d errno=%d\n", rc, errno));
+        AssertMsg(!rc, ("munmap -> %d errno=%d\n", rc, errno)); NOREF(rc);
 #else
         free(pv);
 #endif 
