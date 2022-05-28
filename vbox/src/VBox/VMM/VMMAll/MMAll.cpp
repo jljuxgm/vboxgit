@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 1233 2007-03-05 17:53:29Z vboxsync $ */
+/* $Id: MMAll.cpp 1235 2007-03-05 17:58:39Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Any Context.
  */
@@ -106,7 +106,7 @@ DECLINLINE(PMMLOOKUPHYPER) mmHyperLookupR0(PVM pVM, RTR0PTR R0Ptr, uint32_t *pof
     AssertCompile(sizeof(RTR0PTR) == sizeof(RTR3PTR));
 
     /** @todo fix this properly; the ring 0 pVM address differs from the R3 one. */
-    if (pVM->pVMR0 >= R0Ptr && R0Ptr < pVM->pVMR0 + sizeof(*pVM))
+    if (R0Ptr >= pVM->pVMR0 && R0Ptr < pVM->pVMR0 + sizeof(*pVM))
         R3Ptr = (RTR3PTR)((RTR0UINTREG)R0Ptr - (RTR0UINTREG)pVM + (RTR0UINTREG)pVM->pVMR3);
     else
         R3Ptr = (RTR3PTR)R0Ptr;
