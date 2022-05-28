@@ -1,4 +1,4 @@
-/* $Id: PATMGC.cpp 1134 2007-03-01 13:40:02Z vboxsync $ */
+/* $Id: PATMGC.cpp 1163 2007-03-02 14:43:58Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -160,7 +160,7 @@ PATMDECL(int) PATMGCHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
     int rc;
 
     /* Very important check -> otherwise we have a security leak. */
-    AssertReturn((pRegFrame->ss & X86_SEL_RPL) == 1, VERR_ACCESS_DENIED);
+    AssertReturn(!pRegFrame->eflags.Bits.u1VM && (pRegFrame->ss & X86_SEL_RPL) == 1, VERR_ACCESS_DENIED);
     Assert(PATMIsPatchGCAddr(pVM, (RTGCPTR)pRegFrame->eip));
 
     /* OP_ILLUD2 in PATM generated code? */
@@ -412,7 +412,7 @@ PATMDECL(int) PATMHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
     PPATMPATCHREC pRec;
     int rc;
 
-    Assert((pRegFrame->ss & X86_SEL_RPL) == 1);
+    AssertReturn(!pRegFrame->eflags.Bits.u1VM && (pRegFrame->ss & X86_SEL_RPL) == 1, VERR_ACCESS_DENIED);
 
     /* Int 3 in PATM generated code? (most common case) */
     if (PATMIsPatchGCAddr(pVM, (RTGCPTR)pRegFrame->eip))
