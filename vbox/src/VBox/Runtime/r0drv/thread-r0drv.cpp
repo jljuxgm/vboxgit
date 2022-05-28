@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv.cpp 1  vboxsync $ */
+/* $Id: thread-r0drv.cpp 197 2007-01-20 01:22:45Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Threads, Ring-0 Driver, Common Bits.
  */
@@ -23,7 +23,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_THREAD
-#include "r0drv/thread-r0drv.h"
+#include "internal/thread.h"
 #include <iprt/thread.h>
 #include <iprt/alloc.h>
 #include <iprt/assert.h>

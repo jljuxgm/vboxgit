@@ -1,4 +1,4 @@
-/* $Id: timer-posix.cpp 1  vboxsync $ */
+/* $Id: timer-posix.cpp 197 2007-01-20 01:22:45Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Timer, POSIX.
  */
@@ -318,11 +318,15 @@ RTR3DECL(int)     RTTimerDestroy(PRTTIMER pTimer)
 {
     LogFlow(("RTTimerDestroy: pTimer=%p\n", pTimer));
 
+    /* NULL is ok. */
+    if (!pTimer)
+        return VINF_SUCCESS;
+
     /*
      * Validate input.
      */
     int rc = VINF_SUCCESS;
-    if (pTimer)
+    if (VALID_PTR(pTimer))
     {
         /*
          * Modify the magic and kick it.
@@ -353,8 +357,8 @@ RTR3DECL(int)     RTTimerDestroy(PRTTIMER pTimer)
     }
     else
     {
-        AssertMsgFailed(("An attempt was made to destroy a NULL timer!\n"));
-        rc = VERR_INVALID_POINTER;
+        AssertMsgFailed(("Bad pTimer pointer %p!\n", pTimer));
+        rc = VERR_INVALID_HANDLE;
     }
     return rc;
 }
