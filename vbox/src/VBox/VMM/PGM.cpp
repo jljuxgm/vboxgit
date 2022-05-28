@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 5017 2007-09-24 21:38:20Z vboxsync $ */
+/* $Id: PGM.cpp 5086 2007-09-27 22:12:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -330,6 +330,11 @@
  *      1GB guest ram, 256K pages:  4MB +  3MB(+) =   7MB
  *      4GB guest ram, 1M pages:   16MB + 12MB(+) =  28MB
  *     32GB guest ram, 8M pages:  128MB + 96MB(+) = 224MB
+ *
+ * UPDATE - 2007-09-27:
+ * Will need a ballooned flag/state too because we cannot
+ * trust the guest 100% and reporting the same page as ballooned more
+ * than once will put the GMM off balance.
  *
  *
  * @subsection subsec_pgmPhys_Serializing       Serializing Access
