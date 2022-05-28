@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 5215 2007-10-10 11:46:02Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 5703 2007-11-12 13:01:48Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -947,14 +947,19 @@ static int drvHostBaseOpen(PDRVHOSTBASE pThis, PRTFILE pFileDevice, bool fReadOn
  */
 static int drvHostBaseOpen(PDRVHOSTBASE pThis, PRTFILE pFileBlockDevice, PRTFILE pFileRawDevice, bool fReadOnly)
 {
-    unsigned fFlags = (pThis->fReadOnlyConfig ? RTFILE_O_READ : RTFILE_O_READWRITE) | RTFILE_O_NON_BLOCK;
+    unsigned fFlags = (fReadOnly ? RTFILE_O_READ : RTFILE_O_READWRITE) | RTFILE_O_NON_BLOCK;
     int rc = RTFileOpen(pFileBlockDevice, pThis->pszDeviceOpen, fFlags);
     if (RT_SUCCESS(rc))
     {
         rc = RTFileOpen(pFileRawDevice, pThis->pszRawDeviceOpen, fFlags);
         if (RT_FAILURE(rc))
+        {
+            LogRel(("DVD: failed to open device %s\n", pThis->pszRawDeviceOpen));
             RTFileClose(*pFileBlockDevice);
+        }
     }
+    else
+        LogRel(("DVD: failed to open device %s\n", pThis->pszRawDeviceOpen));
     return rc;
 }
 #endif  /* RT_OS_SOLARIS */

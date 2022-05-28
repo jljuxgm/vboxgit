@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5698 2007-11-12 06:31:09Z vboxsync $
+# $Id: Makefile.kmk 5703 2007-11-12 13:01:48Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -138,6 +138,9 @@ ifeq ($(BUILD_TARGET),solaris)
  VBoxDD_LIBS           += adm
  ifdef VBOX_WITH_CROSSBOW
   VBoxDD_LIBS          += dladm # or maybe try libdladm.so.1 ?
+ endif
+ ifdef VBOX_WITH_SUID_WRAPPER
+  VBoxDD_LIBS          += secdb
  endif
 endif
 VBoxDD_LIBS.darwin     += \
@@ -525,6 +528,9 @@ Drivers_SOURCES.solaris = \
   Drivers_DEFS += VBOX_WITH_CROSSBOW
   Drivers_INCS += \
 	Network/solaris
+ endif
+ ifdef VBOX_WITH_SUID_WRAPPER
+  Drivers_DEFS += VBOX_WITH_SUID_WRAPPER
  endif
 endif
 
