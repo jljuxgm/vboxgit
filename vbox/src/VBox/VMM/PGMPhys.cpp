@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 247 2007-01-23 17:10:04Z vboxsync $ */
+/* $Id: PGMPhys.cpp 323 2007-01-25 17:25:01Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -390,7 +390,6 @@ int pgmr3PhysGrowRange(PVM pVM, RTGCPHYS GCPhys)
         /* Retry */
         LogRel(("pgmr3PhysGrowRange: VM execution resumed -> retry.\n"));
         return pgmr3PhysGrowRange(pVM, GCPhys);
-        
     }
     return rc;
 }

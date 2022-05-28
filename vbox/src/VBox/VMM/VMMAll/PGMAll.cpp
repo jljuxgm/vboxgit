@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 78 2007-01-16 17:32:03Z vboxsync $ */
+/* $Id: PGMAll.cpp 323 2007-01-25 17:25:01Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1676,7 +1676,7 @@ PGMDECL(unsigned) PGMAssertNoMappingConflicts(PVM pVM)
 PGMDECL(unsigned) PGMAssertCR3(PVM pVM, uint32_t cr3, uint32_t cr4)
 {
     STAM_PROFILE_START(&pVM->pgm.s.CTXMID(Stat,SyncCR3), a);
-    unsigned cErrors = PGM_BTH_PFN(AssertCR3, pVM)(pVM, cr3, cr4, 0, ~(RTUINTPTR)0);
+    unsigned cErrors = PGM_BTH_PFN(AssertCR3, pVM)(pVM, cr3, cr4, 0, ~(RTGCUINTPTR)0);
     STAM_PROFILE_STOP(&pVM->pgm.s.CTXMID(Stat,SyncCR3), a);
     return cErrors;
 }
