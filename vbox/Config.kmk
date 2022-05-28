@@ -1,4 +1,4 @@
-# $Id: Config.kmk 1440 2007-03-13 12:43:39Z vboxsync $
+# $Id: Config.kmk 1492 2007-03-14 20:35:45Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -256,7 +256,6 @@ ifeq ($(BUILD_TARGET),darwin)
  endif
  # Later:
  VBOX_WITH_USB=
- VBOX_WITH_INSTALLER=
  VBOX_WITH_DOCS=
  VBOX_WITH_VRDP_AUTHMOD=
  VBOX_WITH_VRDP_RDESKTOP=
