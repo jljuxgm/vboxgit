@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5495 2007-10-25 03:40:12Z vboxsync $
+# $Id: Makefile.kmk 5520 2007-10-26 16:29:13Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -109,6 +109,9 @@ VBoxSVC_DEFS += VBOX_MAIN_RELEASE_LOG LOG_ENABLED
 endif
 ifdef VBOX_WITH_USB
 VBoxSVC_DEFS += VBOX_WITH_USB
+ifdef VBOX_WITH_PDMUSB
+VBoxSVC_DEFS += VBOX_WITH_PDMUSB
+endif
 endif
 ifdef VBOX_WITH_ALSA
 VBoxSVC_DEFS += VBOX_WITH_ALSA
@@ -279,6 +282,9 @@ VBoxC_DEFS += VBOX_MAIN_RELEASE_LOG LOG_ENABLED
 endif
 ifdef VBOX_WITH_USB
 VBoxC_DEFS += VBOX_WITH_USB
+ifdef VBOX_WITH_PDMUSB
+VBoxC_DEFS += VBOX_WITH_PDMUSB
+endif
 endif
 ifdef VBOX_WITH_ALSA
 VBoxC_DEFS += VBOX_WITH_ALSA
