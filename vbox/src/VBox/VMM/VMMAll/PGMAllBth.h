@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 1908 2007-04-04 07:49:50Z vboxsync $ */
+/* $Id: PGMAllBth.h 2078 2007-04-13 14:37:31Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -56,10 +56,6 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
 #if PGM_GST_TYPE == PGM_TYPE_32BIT
 # if PGM_SHW_TYPE != PGM_TYPE_32BIT && PGM_SHW_TYPE != PGM_TYPE_PAE
 #  error "32-bit guest mode is only implemented for 32-bit and PAE shadow modes."
-# endif
-
-# ifdef PGM_CACHE_VERY_STRICT
-    pgmCacheCheckPD(pVM, CPUMGetGuestCR0(pVM), CPUMGetGuestCR3(pVM), CPUMGetGuestCR4(pVM));
 # endif
 
 # if PGM_SHW_TYPE == PGM_TYPE_PAE
