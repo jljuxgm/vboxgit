@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4073 2007-08-07 17:15:28Z vboxsync $
+# $Id: Config.kmk 4082 2007-08-07 17:38:06Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -17,11 +17,6 @@
 # in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
 # distribution. VirtualBox OSE is distributed in the hope that it will
 # be useful, but WITHOUT ANY WARRANTY of any kind.
-#
-# If you received this file as part of a commercial VirtualBox
-# distribution, then only the terms of your commercial VirtualBox
-# license agreement apply instead of the previous paragraph.
-#
 
 
 #
@@ -2509,7 +2504,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4073 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4082 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
