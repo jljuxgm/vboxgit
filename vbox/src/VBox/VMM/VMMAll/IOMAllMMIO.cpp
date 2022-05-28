@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 3145 2007-06-18 15:31:09Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 3178 2007-06-20 11:07:38Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -532,6 +532,10 @@ static int iomGCInterpretMOVS(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFra
     if (pCpu->prefix & PREFIX_REP)
     {
         cTransfers = pRegFrame->ecx;
+        if (    CPUMIsGuestInRealMode(pVM)
+            ||  pRegFrame->eflags.Bits.u1VM)
+            cTransfers &= 0xffff;
+
         if (!cTransfers)
             return VINF_SUCCESS;
     }
@@ -772,6 +776,10 @@ static int iomGCInterpretSTOS(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFa
     if (pCpu->prefix & PREFIX_REP)
     {
         cTransfers = pRegFrame->ecx;
+        if (    CPUMIsGuestInRealMode(pVM)
+            ||  pRegFrame->eflags.Bits.u1VM)
+            cTransfers &= 0xffff;
+
         if (!cTransfers)
             return VINF_SUCCESS;
     }
