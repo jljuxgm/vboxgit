@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PGMHandler.cpp 1997 2007-04-09 14:01:18Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -353,6 +353,8 @@ PGMDECL(int) PGMHandlerVirtualRegisterEx(PVM pVM, PGMVIRTHANDLERTYPE enmType, RT
     if (pVM->pgm.s.pTreesHC->VirtHandlers != 0)
     {
         PPGMVIRTHANDLER pCur = (PPGMVIRTHANDLER)RTAvlroGCPtrGetBestFit(&pVM->pgm.s.CTXSUFF(pTrees)->VirtHandlers, pNew->Core.Key, true);
+        if (!pCur || GCPtr > pCur->GCPtrLast || GCPtrLast < pCur->GCPtr)
+            pCur = (PPGMVIRTHANDLER)RTAvlroGCPtrGetBestFit(&pVM->pgm.s.CTXSUFF(pTrees)->VirtHandlers, pNew->Core.Key, false);
         if (pCur && GCPtr <= pCur->GCPtrLast && GCPtrLast >= pCur->GCPtr)
         {
             /*
