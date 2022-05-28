@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 850 2007-02-12 17:30:30Z vboxsync $ */
+/* $Id: PGMAllBth.h 851 2007-02-12 17:37:30Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1966,6 +1966,8 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PVBOXPD pPDSrc, RTGCUINTPTR 
 #endif
                                 if (rc != VINF_SUCCESS)
                                     return rc;
+
+                                HCPhys = pRam->aHCPhys[iHCPage];
                             }
                         }
 
