@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 1408 2007-03-12 09:51:47Z vboxsync $ */
+/* $Id: TRPM.cpp 1446 2007-03-13 15:52:21Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor
  */
@@ -867,7 +867,7 @@ TRPMR3DECL(int) TRPMR3SyncIDT(PVM pVM)
         /* Clear all handlers */
         Log(("TRPMR3SyncIDT: Clear all trap handlers.\n"));
         /** @todo inefficient, but simple */
-        for (unsigned iGate=0;iGate<256;iGate++)
+        for (unsigned iGate = 0; iGate < 256; iGate++)
             trpmClearGuestTrapHandler(pVM, iGate);
 
         /* Scan them all (only the first time) */
