@@ -1,4 +1,4 @@
-/* $Id: logformat.cpp 1  vboxsync $ */
+/* $Id: logformat.cpp 628 2007-02-05 11:59:58Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Log Formatter.
  */
@@ -50,7 +50,7 @@ static DECLCALLBACK(int) rtlogFormatStr(void *pvArg, PFNRTSTROUTPUT pfnOutput,
  * @returns number of bytes formatted.
  * @param   pfnOutput   Output worker.
  *                      Called in two ways. Normally with a string an it's length.
- *                      For termiation, it's called with NULL for string, 0 for length.
+ *                      For termination, it's called with NULL for string, 0 for length.
  * @param   pvArg       Argument to output worker.
  * @param   pszFormat   Format string.
  * @param   args        Argument list.
