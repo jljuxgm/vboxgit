@@ -1,4 +1,4 @@
-# $Id: Config.kmk 2102 2007-04-16 14:34:24Z vboxsync $
+# $Id: Config.kmk 2122 2007-04-17 09:55:07Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1388,6 +1388,7 @@ TEMPLATE_VBOXR3EXE_LDFLAGS.l4          = \
 	-T$(L4_LIBDIR)/../main_dyn.ld -nostdlib \
 	-Wl,--export-dynamic,--dynamic-linker=libld-l4.s.so \
 	-Wl,--rpath-link,$(L4_LIBDIR)
+TEMPLATE_VBOXR3EXE_LDFLAGS.linux       = -Wl,-z,noexecstack
  ifeq ($(BUILD_TARGET),linux)
 TEMPLATE_VBOXR3EXE_LIBS                = pthread m rt dl
  else ifeq ($(BUILD_TARGET),l4)
