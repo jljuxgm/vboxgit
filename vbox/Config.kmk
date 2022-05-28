@@ -1,4 +1,4 @@
-# $Id: Config.kmk 3659 2007-07-16 21:33:57Z vboxsync $
+# $Id: Config.kmk 3660 2007-07-16 21:57:33Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -2492,9 +2492,9 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 # root of the treeto determin this it if .svn/entries is found,
 # otherwise fall back on the Config.kmk revision.
 #
+VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_KMK       = $(PATH_OUT)/revision.kmk
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 3659 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 3660 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
