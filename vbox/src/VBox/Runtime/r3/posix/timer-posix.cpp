@@ -1,4 +1,4 @@
-/* $Id: timer-posix.cpp 537 2007-02-02 06:08:57Z vboxsync $ */
+/* $Id: timer-posix.cpp 1470 2007-03-14 14:58:04Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Timer, POSIX.
  */
@@ -315,6 +315,13 @@ RTR3DECL(int)     RTTimerCreate(PRTTIMER *ppTimer, unsigned uMilliesInterval, PF
 }
 
 
+RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, unsigned fFlags, PFNRTTIMER pfnTimer, void *pvUser)
+{
+    /// @todo implement
+    return VERR_NOT_IMPLEMENTED;
+}
+
+
 /**
  * Stops and destroys a running timer.
  *
@@ -368,4 +375,18 @@ RTR3DECL(int)     RTTimerDestroy(PRTTIMER pTimer)
         rc = VERR_INVALID_HANDLE;
     }
     return rc;
+}
+
+
+RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
+{
+    /// @todo implement
+    return VERR_NOT_IMPLEMENTED;
+}
+
+
+RTDECL(int) RTTimerStop(PRTTIMER pTimer)
+{
+    /// @todo implement
+    return VERR_NOT_IMPLEMENTED;
 }
