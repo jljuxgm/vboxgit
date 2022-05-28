@@ -1,4 +1,4 @@
-; $Id: VBoxREM.def 1  vboxsync $
+; $Id: VBoxREM.def 1001 2007-02-20 14:14:49Z vboxsync $
 ;; @file
 ;
 ; VBoxREM Definition File.
@@ -37,6 +37,7 @@ EXPORTS
     REMR3ReplayInvalidatedPages
     REMR3ReplayHandlerNotifications
     REMR3NotifyPhysRamRegister
+    REMR3NotifyPhysRamChunkRegister
     REMR3NotifyPhysReserve
     REMR3NotifyPhysRomRegister
     REMR3NotifyHandlerPhysicalModify
