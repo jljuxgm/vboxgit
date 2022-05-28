@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 1956 2007-04-05 15:26:03Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 2061 2007-04-13 08:05:27Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -90,6 +90,17 @@ TMDECL(int) TMCpuTickPause(PVM pVM)
     return VERR_INTERNAL_ERROR;
 }
 
+
+/**
+ * Returns the TSC offset
+ *
+ * @returns TSC ofset
+ * @param   pVM         The VM to operate on.
+ */
+TMDECL(uint64_t) TMCpuTickGetOffset(PVM pVM)
+{
+    return pVM->tm.s.u64TSCOffset;
+}
 
 
 /**
