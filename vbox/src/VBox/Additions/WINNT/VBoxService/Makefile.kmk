@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3198 2007-06-21 09:08:44Z vboxsync $
+# $Id: Makefile.kmk 3587 2007-07-12 15:14:27Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxService.
 #
@@ -29,8 +29,10 @@ ifdef VBOX_SIGN_ADDITIONS
  VBoxService_NOINST  = true
 endif
 VBoxService_DEFS     = VBOX_HGCM
+VBoxService_INCS     = ../include
 VBoxService_SOURCES  = \
 	VBoxService.cpp \
+	VBoxSeamless.cpp \
 	VBoxClipboard.cpp \
 	helpers.cpp \
 	VBoxService.rc
