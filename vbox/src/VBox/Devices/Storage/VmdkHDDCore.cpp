@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 2583 2007-05-10 16:38:18Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 2589 2007-05-11 12:07:03Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -2119,6 +2119,8 @@ static int vmdkWrite(void *pBackendData, uint64_t uOffset, const void *pvBuf, si
                      * Allocate GT and find out where to store the grain. */
                     rc = vmdkAllocGrain(pImage->pGTCache, pExtent,
                                         uSectorExtentRel, pvBuf, cbWrite);
+                    *pcbPreRead = 0;
+                    *pcbPostRead = 0;
                 }
                 else
                 {
