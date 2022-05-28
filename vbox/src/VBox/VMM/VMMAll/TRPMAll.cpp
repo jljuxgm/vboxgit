@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 78 2007-01-16 17:32:03Z vboxsync $ */
+/* $Id: TRPMAll.cpp 98 2007-01-17 13:47:34Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -537,7 +537,10 @@ TRPMDECL(int) TRPMForwardTrap(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t iGate, u
 
                 if (!fConforming && dpl < cpl)  /* to inner privilege level */
                 {
-                    SELMGetRing1Stack(pVM, &ss_r0, &esp_r0);
+                    rc = SELMGetRing1Stack(pVM, &ss_r0, &esp_r0);
+                    if (VBOX_FAILURE(rc))
+                        goto failure;
+
                     Assert((ss_r0 & X86_SEL_RPL) == 1);
 
                     if (   !esp_r0
