@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5307 2007-10-15 22:19:03Z vboxsync $
+# $Id: Config.kmk 5316 2007-10-15 23:50:00Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -485,13 +485,7 @@ endif
 
 ifndef DONT_USE_YASM
  VBOX_ASTOOL    = YASM
- ifeq ($(BUILD_PLATFORM),solaris)
-   # solaris yasm bug: crashes with dwarf2 debug info.
-   # yasm 0.6.0, 0.6.99.HEAD, compiled with both suncc as well as gcc
-   VBOX_LDR_FMT_2_YASM_DBGINFO.elf   =
- else
-   VBOX_LDR_FMT_2_YASM_DBGINFO.elf   = -g dwarf2
- endif
+ VBOX_LDR_FMT_2_YASM_DBGINFO.elf   = -g dwarf2
  VBOX_LDR_FMT_2_YASM_DBGINFO.lx    = -g stabs
  VBOX_LDR_FMT_2_YASM_DBGINFO.macho =
  VBOX_LDR_FMT_2_YASM_DBGINFO.pe    =
@@ -2595,7 +2589,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5307 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5316 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(USERNAME),bird) # Wastes nearly half a second on windows, very annoying. TODO: $(which ).
   ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
