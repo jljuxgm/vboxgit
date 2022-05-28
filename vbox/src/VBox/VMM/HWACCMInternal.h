@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 5073 2007-09-27 11:06:28Z vboxsync $ */
+/* $Id: HWACCMInternal.h 5081 2007-09-27 16:38:36Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -106,10 +106,10 @@ __BEGIN_DECLS
 /** @} */
 
 
-/** @name Maxium resume loops allowed in ring 0 (safety precaution) */
+/** Maxium resume loops allowed in ring 0 (safety precaution) */
 #define HWACCM_MAX_RESUME_LOOPS             1024
 
-/** @name HWACCM SSM version
+/** HWACCM SSM version
  */
 #define HWACCM_SSM_VERSION                  3
 
