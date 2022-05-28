@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2864 2007-05-25 11:06:20Z vboxsync $
+# $Id: Makefile.kmk 2973 2007-06-01 11:45:49Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -91,9 +91,6 @@ endif
 VirtualBox_QT_MOCUIHDRS = \
 	ui/VBoxVMSettingsDlg.ui.h \
 	ui/VBoxSharedFoldersSettings.ui.h
-ifeq ($(BUILD_TARGET),win)
-VirtualBox_QT_MOCUIHDRS += ui/VBoxVMNetworkSettings.ui.h
-endif
 
 
 # All generated sources. Note: this list MUST be in sync with Qt source
