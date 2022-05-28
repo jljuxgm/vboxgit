@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 1223 2007-03-05 15:28:59Z vboxsync $
+; $Id: HWACCMR0A.asm 2731 2007-05-21 13:13:42Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -437,15 +437,15 @@ ENDPROC VMXResumeVM
 ; *
 ; * @returns VBox status code
 ; * @param   idxField   x86: [ebp + 08h]  msc: rcx  gcc: edi   VMCS index
-; * @param   pData      x86: [ebp + 0ch]  msc: rdx  gcc: rsi   Ptr to store VM field value
+; * @param   pData      x86: [ebp + 0ch]  msc: rdx  gcc: rsi   VM field value
 ; */
 BEGINPROC VMXWriteVMCS64
 %ifdef ASM_CALL64_GCC
     and         edi, 0ffffffffh; serious paranoia
-    vmwrite     rdi, [rsi]
+    vmwrite     rdi, rsi
 %else
     and         ecx, 0ffffffffh; serious paranoia
-    vmwrite     rcx, [rdx]
+    vmwrite     rcx, rdx
 %endif
     jnc         .valid_vmcs
     mov         eax, VERR_VMX_INVALID_VMCS_PTR
