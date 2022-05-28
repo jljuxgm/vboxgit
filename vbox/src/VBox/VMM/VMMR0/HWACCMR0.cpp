@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 4598 2007-09-07 09:23:11Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 5442 2007-10-23 14:20:11Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -151,6 +151,8 @@ HWACCMR0DECL(int) HWACCMR0Init(PVM pVM)
                         VMXDisable();
 #endif
                     }
+                    /* Restore CR4 again; don't leave the X86_CR4_VMXE flag set if it wasn't so before (some software could incorrectly think it's in VMX mode) */
+                    ASMSetCR4(pVM->hwaccm.s.vmx.hostCR4);
                 }
                 else
                     pVM->hwaccm.s.lLastError = VERR_VMX_ILLEGAL_FEATURE_CONTROL_MSR;
