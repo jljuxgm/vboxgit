@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 5119 2007-10-01 12:04:39Z vboxsync $ */
+/* $Id: VM.cpp 5509 2007-10-26 11:20:37Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -585,6 +585,8 @@ static int vmR3InitRing3(PVM pVM)
                                                                     rc = PGMR3InitFinalize(pVM);
                                                                 if (VBOX_SUCCESS(rc))
                                                                     rc = SELMR3InitFinalize(pVM);
+                                                                if (VBOX_SUCCESS(rc))
+                                                                    rc = TMR3InitFinalize(pVM);
                                                                 if (VBOX_SUCCESS(rc))
                                                                     rc = VMMR3InitFinalize(pVM);
                                                                 if (VBOX_SUCCESS(rc))
