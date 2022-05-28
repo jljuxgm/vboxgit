@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4178 2007-08-16 15:07:51Z vboxsync $
+# $Id: Config.kmk 4216 2007-08-18 22:18:36Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -916,7 +916,7 @@ $(PATH_OUT)/GCCConfig.kmk: $(PATH_ROOT)/Config.kmk $(LOCALCFG) $(AUTOCFG)
 	$(QUIET)$(RM) -f "$@"
 	$(QUIET)$(MKDIR) -p $(@D)
 
-	@# HC compiler switch detction.
+	@# HC compiler switch detection.
 	$(APPEND) "$@" "VBOX_GCC_VERSION_CC            ?= $(call VBOX_GCC_VERSION,$(TOOL_$(VBOX_GCC_TOOL)_CC))"
 	$(APPEND) "$@" "VBOX_GCC_VERSION_CXX           ?= $(call VBOX_GCC_VERSION,$(TOOL_$(VBOX_GCC_TOOL)_CXX))"
 	$(APPEND) "$@" "VBOX_GCC_LIBGCC                ?= $(shell $(TOOL_$(VBOX_GCC_TOOL)_CC) -print-libgcc-file-name)"
@@ -2512,7 +2512,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4178 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4216 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
