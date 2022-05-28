@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-solaris.c 4178 2007-08-16 15:07:51Z vboxsync $ */
+/* $Id: spinlock-r0drv-solaris.c 4474 2007-08-31 19:23:49Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Spinlocks, Ring-0 Driver, Solaris.
  */
@@ -58,7 +58,7 @@ RTDECL(int)  RTSpinlockCreate(PRTSPINLOCK pSpinlock)
      * Initialize & return.
      */
     pSpinlockInt->u32Magic = RTSPINLOCK_MAGIC;
-    mutex_init(&pSpinlockInt->Mtx, "IPRT Spinlock", MUTEX_SPIN, NULL);
+    mutex_init(&pSpinlockInt->Mtx, "IPRT Spinlock", MUTEX_DRIVER, NULL);
     *pSpinlock = pSpinlockInt;
     return VINF_SUCCESS;
 }

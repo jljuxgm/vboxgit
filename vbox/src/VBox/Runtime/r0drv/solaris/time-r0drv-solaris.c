@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-solaris.c 4287 2007-08-22 14:49:19Z vboxsync $ */
+/* $Id: time-r0drv-solaris.c 4474 2007-08-31 19:23:49Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Time, Ring-0 Driver, Solaris.
  */
@@ -27,7 +27,7 @@
 
 RTDECL(uint64_t) RTTimeNanoTS(void)
 {
-    return gethrtime();
+    return (uint64_t)gethrtime();
 }
 
 

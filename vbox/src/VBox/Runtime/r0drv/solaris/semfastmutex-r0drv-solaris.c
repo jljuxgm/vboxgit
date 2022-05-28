@@ -1,4 +1,4 @@
-/* $Id: semfastmutex-r0drv-solaris.c 4287 2007-08-22 14:49:19Z vboxsync $ */
+/* $Id: semfastmutex-r0drv-solaris.c 4474 2007-08-31 19:23:49Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Fast Mutex Semaphores, Ring-0 Driver, Solaris.
  */
@@ -54,7 +54,7 @@ RTDECL(int)  RTSemFastMutexCreate(PRTSEMFASTMUTEX pMutexSem)
     if (pFastInt)
     {
         pFastInt->u32Magic = RTSEMFASTMUTEX_MAGIC;
-        mutex_init (&pFastInt->Mtx, "IPRT Fast Mutex Semaphore", MUTEX_DEFAULT, NULL);
+        mutex_init (&pFastInt->Mtx, "IPRT Fast Mutex Semaphore", MUTEX_DRIVER, NULL);
         *pMutexSem = pFastInt;
         return VINF_SUCCESS;
     }
