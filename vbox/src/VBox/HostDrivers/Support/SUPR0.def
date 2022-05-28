@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 5168 2007-10-05 13:46:57Z vboxsync $
+; $Id: SUPR0.def 5231 2007-10-10 16:25:56Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Built-in exports.
 ;
@@ -53,15 +53,21 @@ EXPORTS
     ; broken - RTSemMutexRequest
     ; broken - RTSemMutexRelease
     ; broken - RTSemMutexDestroy
-    RTSemFastMutexCreate
-    RTSemFastMutexDestroy
-    RTSemFastMutexRequest
-    RTSemFastMutexRelease
     RTSemEventCreate
     RTSemEventSignal
     RTSemEventWait
     RTSemEventWaitNoResume
     RTSemEventDestroy
+    RTSemEventMultiCreate
+    RTSemEventMultiSignal
+    RTSemEventMultiReset
+    RTSemEventMultiWait
+    RTSemEventMultiWaitNoResume
+    RTSemEventMultiDestroy
+    RTSemFastMutexCreate
+    RTSemFastMutexDestroy
+    RTSemFastMutexRequest
+    RTSemFastMutexRelease
     RTSpinlockCreate
     RTSpinlockDestroy
     RTSpinlockAcquire
