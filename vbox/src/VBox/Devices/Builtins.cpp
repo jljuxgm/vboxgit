@@ -1,4 +1,4 @@
-/** $Id: Builtins.cpp 5184 2007-10-08 13:23:33Z vboxsync $ */
+/** $Id: Builtins.cpp 5380 2007-10-19 10:10:45Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -119,6 +119,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceParallelPort);
     if (VBOX_FAILURE(rc))
         return rc;
+#ifdef VBOX_WITH_AHCI
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceAHCI);
+    if (VBOX_FAILURE(rc))
+        return rc;
+#endif
 
     return VINF_SUCCESS;
 }
