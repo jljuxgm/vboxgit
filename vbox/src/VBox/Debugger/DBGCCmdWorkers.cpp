@@ -1,4 +1,4 @@
-/** $Id: DBGCCmdWorkers.cpp 5677 2007-11-11 05:54:53Z vboxsync $ */
+/** $Id: DBGCCmdWorkers.cpp 5686 2007-11-11 12:22:14Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Worker Routines.
  */
@@ -345,7 +345,7 @@ int dbgcBpExec(PDBGC pDbgc, RTUINT iBp)
 
     /* Execute the command. */
     pDbgc->pszScratch = pDbgc->pszScratch + pBp->cchCmd + 1;
-    int rc = dbgcProcessCommand(pDbgc, pszScratch, pBp->cchCmd);
+    int rc = dbgcProcessCommand(pDbgc, pszScratch, pBp->cchCmd, false /* fNoExecute */);
 
     /* Restore the scratch state. */
     pDbgc->iArg         = iArg;

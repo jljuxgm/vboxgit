@@ -1,4 +1,4 @@
-/** $Id: DBGCCmdHlp.cpp 5676 2007-11-11 05:50:06Z vboxsync $ */
+/** $Id: DBGCCmdHlp.cpp 5686 2007-11-11 12:22:14Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -558,7 +558,7 @@ static DECLCALLBACK(int) dbgcHlpExec(PDBGCCMDHLP pCmdHlp, const char *pszExpr, .
      * We save and restore the arg index and scratch buffer pointer.
      */
     pDbgc->pszScratch = pDbgc->pszScratch + cb + 1;
-    int rc = dbgcProcessCommand(pDbgc, pszScratch, cb);
+    int rc = dbgcProcessCommand(pDbgc, pszScratch, cb, false /* fNoExecute */);
 
     /* Restore the scratch state. */
     pDbgc->iArg         = iArg;
