@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 864 2007-02-13 13:10:48Z vboxsync $ */
+/* $Id: VM.cpp 865 2007-02-13 13:12:33Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -890,7 +890,8 @@ static DECLCALLBACK(int) vmR3Resume(PVM pVM)
     /*
      * Validate input.
      */
-    if (pVM->enmVMState != VMSTATE_SUSPENDED)
+    if (    pVM->enmVMState != VMSTATE_SUSPENDED
+        &&  pVM->enmVMState != VMSTATE_SUSPENDED_NOSAVE)
     {
         AssertMsgFailed(("Invalid VM state %d\n", pVM->enmVMState));
         return VERR_VM_INVALID_VM_STATE;
