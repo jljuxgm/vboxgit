@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5721 2007-11-13 12:15:51Z vboxsync $
+# $Id: Makefile.kmk 5755 2007-11-15 13:03:25Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -21,6 +21,7 @@ SUBDIRS_AFTER    = testcase
 
 ifndef VBOX_OSE
 SUBDIRS_AFTER += webservice
+DEFS	      += VBOX_WITH_E1000
 endif
 
 LIBRARIES        = VBoxCOM

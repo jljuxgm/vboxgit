@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5754 2007-11-15 06:18:16Z vboxsync $
+# $Id: Makefile.kmk 5755 2007-11-15 13:03:25Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -111,6 +111,9 @@ endif
 ifdef VBOX_WITH_ISCSI
  VBoxDD_DEFS           += VBOX_WITH_ISCSI
 endif
+ifndef VBOX_OSE
+ VBoxDD_DEFS           +=VBOX_WITH_E1000
+endif
 VBoxDD_LIBS             = \
 	$(PATH_LIB)/DevicesR3$(VBOX_SUFF_LIB) \
 	$(PATH_LIB)/Drivers$(VBOX_SUFF_LIB) \
@@ -212,9 +215,10 @@ DevicesR3_SOURCES       = \
 	Parallel/DevParallel.cpp
 
 ifndef VBOX_OSE
-DevicesR3_SOURCES += \
+DevicesR3_SOURCES      += \
 	Network/DevE1000.cpp \
 	Network/DevEEPROM.cpp
+DevicesR3_DEFS	       += VBOX_WITH_E1000
 endif
 
 ifdef VBOX_WITH_AHCI
