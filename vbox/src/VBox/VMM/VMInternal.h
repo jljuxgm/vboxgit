@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: VMInternal.h 4296 2007-08-22 20:23:31Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -411,6 +411,7 @@ void vmSetErrorCopy(PVM pVM, int rc, RT_SRC_POS_DECL, const char *pszFormat, va_
 DECLCALLBACK(void) vmR3SetRuntimeErrorV(PVM pVM, bool fFatal, const char *pszErrorID, const char *pszFormat, va_list *args);
 void vmSetRuntimeErrorCopy(PVM pVM, bool fFatal, const char *pszErrorID, const char *pszFormat, va_list args);
 void vmR3DestroyFinalBit(PVM pVM);
+void vmR3SetState(PVM pVM, VMSTATE enmStateNew);
 
 
 /** @} */
