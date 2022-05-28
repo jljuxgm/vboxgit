@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 2174 2007-04-18 13:22:49Z vboxsync $ */
+/* $Id: EM.cpp 2177 2007-04-18 13:46:52Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -991,7 +991,7 @@ static int emR3HwAccStep(PVM pVM)
     /*
      * Set flags for single stepping.
      */
-    CPUMSetGuestEFlags(pVM, CPUMGetGuestEFlags(pVM) | X86_EFL_TF);
+    CPUMSetGuestEFlags(pVM, CPUMGetGuestEFlags(pVM) | X86_EFL_TF | X86_EFL_RF);
 
     /*
      * Single step.
