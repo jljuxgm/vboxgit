@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-os2.cpp 3334 2007-06-30 12:23:25Z vboxsync $ */
+/* $Id: semevent-r0drv-os2.cpp 3676 2007-07-18 04:26:04Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Single Release Event Semaphores, Ring-0 Driver, OS/2.
  */
@@ -221,12 +221,12 @@ static int rtSemEventWait(RTSEMEVENT EventSem, unsigned cMillies, bool fInterrup
 
 RTDECL(int)  RTSemEventWait(RTSEMEVENT EventSem, unsigned cMillies)
 {
-    return rtSemEventWait(EventSem, cMillies, false /* not interruptable */);
+    return rtSemEventWait(EventSem, cMillies, false /* not interruptible */);
 }
 
 
 RTDECL(int)  RTSemEventWaitNoResume(RTSEMEVENT EventSem, unsigned cMillies)
 {
-    return rtSemEventWait(EventSem, cMillies, true /* interruptable */);
+    return rtSemEventWait(EventSem, cMillies, true /* interruptible */);
 }
 

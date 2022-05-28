@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-os2.cpp 3334 2007-06-30 12:23:25Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-os2.cpp 3676 2007-07-18 04:26:04Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Multiple Release Event Semaphores, Ring-0 Driver, OS/2.
  */
@@ -224,12 +224,12 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
 
 RTDECL(int)  RTSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies)
 {
-    return rtSemEventMultiWait(EventMultiSem, cMillies, false /* not interruptable */);
+    return rtSemEventMultiWait(EventMultiSem, cMillies, false /* not interruptible */);
 }
 
 
 RTDECL(int)  RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies)
 {
-    return rtSemEventMultiWait(EventMultiSem, cMillies, true /* interruptable */);
+    return rtSemEventMultiWait(EventMultiSem, cMillies, true /* interruptible */);
 }
 
