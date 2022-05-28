@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 4413 2007-08-29 08:50:19Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 4415 2007-08-29 08:58:24Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1560,6 +1560,7 @@ PGMDECL(int) PGMPhysWriteGCPtr(PVM pVM, RTGCPTR GCPtrDst, const void *pvSrc, siz
  * @param   GCPtrSrc    The source address (GC pointer).
  * @param   cb          The number of bytes to read.
  */
+/** @todo use the PGMPhysReadGCPtr name and rename the unsafe one to something appropriate */
 PGMDECL(int) PGMPhysReadGCPtrSafe(PVM pVM, void *pvDst, RTGCPTR GCPtrSrc, size_t cb)
 {
     /*
@@ -1621,6 +1622,7 @@ PGMDECL(int) PGMPhysReadGCPtrSafe(PVM pVM, void *pvDst, RTGCPTR GCPtrSrc, size_t
  * @param   pvSrc       The source address.
  * @param   cb          The number of bytes to write.
  */
+/** @todo use the PGMPhysWriteGCPtr name and rename the unsafe one to something appropriate */
 PGMDECL(int) PGMPhysWriteGCPtrSafe(PVM pVM, RTGCPTR GCPtrDst, const void *pvSrc, size_t cb)
 {
     /*
