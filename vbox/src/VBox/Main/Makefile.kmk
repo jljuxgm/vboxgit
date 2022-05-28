@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3758 2007-07-21 20:55:37Z vboxsync $
+# $Id: Makefile.kmk 3764 2007-07-22 13:19:02Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -218,11 +218,11 @@ ifeq ($(BUILD_TYPE),debug)
 VBoxSVC_LDFLAGS.linux += -rdynamic # for backtrace_symbols()
 endif
 
-## Alternative USB filtering.
-#ifeq ($(filter-out darwin,$(BUILD_TARGET)),)
-#VBoxSVC_DEFS += VBOX_WITH_USBFILTER
-#VBoxSVC_LIBS += $(PATH_LIB)/USBLib$(VBOX_SUFF_LIB)
-#endif
+# Alternative USB filtering.
+ifeq ($(filter-out darwin,$(BUILD_TARGET)),)
+VBoxSVC_DEFS += VBOX_WITH_USBFILTER
+VBoxSVC_LIBS += $(PATH_LIB)/USBLib$(VBOX_SUFF_LIB)
+endif
 
 
 #

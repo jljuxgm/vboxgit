@@ -1,4 +1,4 @@
-/* $Id: iokit.h 3662 2007-07-17 01:22:40Z vboxsync $ */
+/* $Id: iokit.h 3764 2007-07-22 13:19:02Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  */
@@ -50,6 +50,7 @@ void *      DarwinSubscribeUSBNotifications(void);
 void        DarwinUnsubscribeUSBNotifications(void *pvOpaque);
 PUSBDEVICE  DarwinGetUSBDevices(void);
 void        DarwinFreeUSBDeviceFromIOKit(PUSBDEVICE pCur);
+int         DarwinReEnumerateUSBDevice(PCUSBDEVICE pCur);
 #endif
 __END_DECLS
 

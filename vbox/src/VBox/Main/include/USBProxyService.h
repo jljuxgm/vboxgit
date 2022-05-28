@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 3758 2007-07-21 20:55:37Z vboxsync $ */
+/* $Id: USBProxyService.h 3764 2007-07-22 13:19:02Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -61,14 +61,6 @@ public:
      * @param   aDevice     The device in question.
      */
     virtual int captureDevice (HostUSBDevice *aDevice);
-
-    /**
-     * The device is to be held so that the host OS will not start using it.
-     *
-     * @returns VBox status code.
-     * @param   aDevice     The device in question.
-     */
-    virtual int holdDevice (HostUSBDevice *aDevice);
 
     /**
      * The device is going to be detached from a VM.
@@ -136,6 +128,16 @@ public:
      * @param   aSerial     The serial string.
      */
     static uint64_t calcSerialHash (const char *aSerial);
+
+#ifdef VBOX_WITH_USBFILTER
+    /**
+     * Initializes a filter with the data from the specified device.
+     *
+     * @param   aFilter     The filter to fill.
+     * @param   aDevice     The device to fill it with.
+     */
+    static void initFilterFromDevice (PUSBFILTER aFilter, HostUSBDevice *aDevice);
+#endif
 
 protected:
 
@@ -269,7 +271,6 @@ public:
 #endif
 
     virtual int captureDevice (HostUSBDevice *aDevice);
-    virtual int holdDevice (HostUSBDevice *aDevice);
     virtual void detachingDevice (HostUSBDevice *aDevice);
     virtual int releaseDevice (HostUSBDevice *aDevice);
     virtual bool updateDeviceState (HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice);
@@ -290,8 +291,10 @@ private:
     /** A hack to work around the problem with the usb device enumeration
      * not including newly attached devices. */
     bool mWaitABitNextTime;
+#ifndef VBOX_WITH_USBFILTER
     /** Whether we've got a fake async event and should return without entering the runloop. */
     bool volatile mFakeAsync;
+#endif
     /** Whether we've successfully initialized the USBLib and should call USBLibTerm in the destructor. */
     bool mUSBLibInitialized;
 };
@@ -311,7 +314,6 @@ public:
     ~USBProxyServiceLinux();
 
     virtual int captureDevice (HostUSBDevice *aDevice);
-    virtual int holdDevice (HostUSBDevice *aDevice);
     virtual int releaseDevice (HostUSBDevice *aDevice);
     virtual bool updateDeviceState (HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice);
     virtual void deviceAdded (HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice);
@@ -353,7 +355,6 @@ public:
     virtual void removeFilter (void *aID);
 
     virtual int captureDevice (HostUSBDevice *aDevice);
-    virtual int holdDevice (HostUSBDevice *aDevice);
     virtual int releaseDevice (HostUSBDevice *aDevice);
     virtual bool updateDeviceState (HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice);
 
