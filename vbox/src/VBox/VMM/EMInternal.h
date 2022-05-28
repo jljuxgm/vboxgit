@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: EMInternal.h 3510 2007-07-09 14:37:57Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -134,6 +134,8 @@ typedef struct EMSTATS
     STAMCOUNTER             StatHCBtc;
     STAMCOUNTER             StatGCCmpXchg;
     STAMCOUNTER             StatHCCmpXchg;
+    STAMCOUNTER             StatGCClts;
+    STAMCOUNTER             StatHCClts;
 
     STAMCOUNTER             StatGCInterpretFailed;
     STAMCOUNTER             StatHCInterpretFailed;
@@ -201,6 +203,8 @@ typedef struct EMSTATS
     STAMCOUNTER             StatHCFailedWbInvd;
     STAMCOUNTER             StatGCFailedRdtsc;
     STAMCOUNTER             StatHCFailedRdtsc;
+    STAMCOUNTER             StatGCFailedClts;
+    STAMCOUNTER             StatHCFailedClts;
 
     STAMCOUNTER             StatGCFailedUserMode;
     STAMCOUNTER             StatHCFailedUserMode;
