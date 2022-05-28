@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 1974 2007-04-06 16:14:48Z vboxsync $ */
+/* $Id: CSAM.cpp 1994 2007-04-09 13:33:03Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1511,6 +1511,21 @@ static int csamFlushPage(PVM pVM, RTGCPTR addr, bool fRemovePage)
 CSAMR3DECL(int) CSAMR3FlushPage(PVM pVM, RTGCPTR addr)
 {
     return csamFlushPage(pVM, addr, true /* remove page record */);
+}
+
+/**
+ * Remove a CSAM monitored page. Use with care!
+ *
+ * @returns VBox status code
+ * @param   pVM         The VM to operate on.
+ * @param   addr        GC address of the page to flush
+ */
+CSAMR3DECL(int) CSAMR3RemovePage(PVM pVM, RTGCPTR addr)
+{
+    int rc = csamRemovePageRecord(pVM, addr);
+    if (VBOX_SUCCESS(rc))
+        PATMR3FlushPage(pVM, addr);
+    return VINF_SUCCESS;
 }
 
 /**
