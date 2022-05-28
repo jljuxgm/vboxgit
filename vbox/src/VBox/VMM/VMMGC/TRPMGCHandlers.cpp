@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 269 2007-01-24 13:35:26Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 465 2007-01-31 15:05:57Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -570,6 +570,22 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTAT
             else if (rc == VERR_EM_INTERPRETER)
                 rc = VINF_EM_RAW_EXCEPTION_PRIVILEGED;
             return trpmGCExitTrap(pVM, rc, pRegFrame);
+        }
+
+        case OP_RDTSC:
+        {
+            unsigned uCR4 = CPUMGetGuestCR4(pVM);
+
+            if (uCR4 & X86_CR4_TSD)
+                break; /* genuine #GP */
+
+            uint64_t uTicks = TMCpuTickGet(pVM);
+
+            pRegFrame->eax = uTicks;
+            pRegFrame->edx = (uTicks >> 32ULL);
+
+            pRegFrame->eip += pCpu->opsize;
+            return trpmGCExitTrap(pVM, VINF_SUCCESS, pRegFrame);
         }
     }
 

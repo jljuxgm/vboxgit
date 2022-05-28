@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 464 2007-01-31 14:58:15Z vboxsync $ */
+/* $Id: CPUM.cpp 465 2007-01-31 15:05:57Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -132,6 +132,10 @@ CPUMR3DECL(int) CPUMR3Init(PVM pVM)
         pVM->cpum.s.CR4.AndMask = X86_CR4_OSXMMEEXCPT | X86_CR4_PVI | X86_CR4_VME;
         pVM->cpum.s.CR4.OrMask  = X86_CR4_OSFSXR;
     }
+
+#ifdef CPUM_TRAP_RDTSC
+    pVM->cpum.s.CR4.OrMask |= X86_CR4_TSD;
+#endif
 
     if (!pVM->cpum.s.CPUFeatures.edx.u1MMX)
     {
