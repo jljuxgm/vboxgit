@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 1442 2007-03-13 15:00:01Z vboxsync $ */
+/* $Id: PDMLdr.cpp 1890 2007-04-03 16:04:19Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -481,7 +481,7 @@ PDMR3DECL(int) PDMR3LoadGC(PVM pVM, const char *pszFilename, const char *pszName
             else
             {
                 AssertRC(rc);
-                SUPPageFree(pModule->pvBits);
+                SUPPageFree(pModule->pvBits, cb >> PAGE_SHIFT);
             }
         }
         else

@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 1099 2007-02-28 11:09:28Z vboxsync $ */
+/* $Id: PGMPhys.cpp 1890 2007-04-03 16:04:19Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -133,7 +133,7 @@ PGMR3DECL(int) PGMR3PhysRegister(PVM pVM, void *pvRam, RTGCPHYS GCPhys, size_t c
             else
             {
                 AssertMsgFailed(("MMR3HyperMapHCRam(,,%#x,,,) -> %Vrc\n", cbRam, rc));
-                SUPPageFree(pNew);
+                SUPPageFree(pNew, cbRam >> PAGE_SHIFT);
             }
         }
         else
@@ -386,7 +386,7 @@ int pgmr3PhysGrowRange(PVM pVM, RTGCPHYS GCPhys)
             return rc;
         }
 
-        SUPPageFree(pvRam);
+        SUPPageFree(pvRam, cPages);
 
         LogRel(("pgmr3PhysGrowRange: out of memory. pause until the user resumes execution.\n"));
 

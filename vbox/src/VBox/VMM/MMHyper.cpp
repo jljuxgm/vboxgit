@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 1480 2007-03-14 18:27:47Z vboxsync $ */
+/* $Id: MMHyper.cpp 1890 2007-04-03 16:04:19Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Hypervisor Memory Area.
  */
@@ -801,7 +801,7 @@ MMDECL(int) MMR3HyperAllocOnceNoRel(PVM pVM, size_t cb, unsigned uAlignment, MMT
                   cb, uAlignment, *ppv));
             return rc;
         }
-        SUPPageFree(pvPages);
+        SUPPageFree(pvPages, cb >> PAGE_SHIFT);
     }
     if (rc == VERR_NO_MEMORY)
         rc = VERR_MM_HYPER_NO_MEMORY;

@@ -1,4 +1,4 @@
-/* $Id: MMPhys.cpp 323 2007-01-25 17:25:01Z vboxsync $ */
+/* $Id: MMPhys.cpp 1890 2007-04-03 16:04:19Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Physical Memory.
  */
@@ -411,7 +411,7 @@ MMR3DECL(int) MMR3PhysReserve(PVM pVM, RTGCPHYS GCPhys, RTUINT cbRange, const ch
         {
             rc = MMR3PhysRegister(pVM, pvPages, GCPhys, cbRange, MM_RAM_FLAGS_RESERVED, pszDesc);
             if (VBOX_FAILURE(rc))
-                SUPPageFree(pvPages);
+                SUPPageFree(pvPages, cbRange >> PAGE_SHIFT);
         }
         return rc;
     }
