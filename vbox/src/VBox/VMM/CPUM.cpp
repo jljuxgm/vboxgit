@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 767 2007-02-08 10:06:49Z vboxsync $ */
+/* $Id: CPUM.cpp 768 2007-02-08 10:31:13Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -222,7 +222,9 @@ static int cpumR3CpuIdInit(PVM pVM)
                                        | X86_CPUID_FEATURE_EDX_MCE
                                        | X86_CPUID_FEATURE_EDX_CX8
                                        //| X86_CPUID_FEATURE_EDX_APIC  - set by the APIC device if present.
-                                       | X86_CPUID_FEATURE_EDX_SEP
+                                       /** @note we don't report sysenter/sysexit support due to our inability to keep the IOPL part of eflags in sync while in ring 1 (see #1757) */
+                                       /** @todo this doesn't apply to hwaccm -> we find out much later whether it's enabled or not */
+                                       //| X86_CPUID_FEATURE_EDX_SEP
                                        //| X86_CPUID_FEATURE_EDX_MTRR  - no MTRRs.
                                        | X86_CPUID_FEATURE_EDX_PGE
                                        //| X86_CPUID_FEATURE_EDX_MCA   - not virtualized.
