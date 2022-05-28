@@ -1,10 +1,10 @@
-; $Id: AMD64ToPAE.asm 1645 2007-03-22 18:13:16Z vboxsync $
+; $Id: AMD64ToPAE.asm 2988 2007-06-01 17:36:09Z vboxsync $
 ;; @file
 ; VMM - World Switchers, AMD64 to PAE.
 ;
 
 ;
-; Copyright (C) 2006 InnoTek Systemberatung GmbH
+; Copyright (C) 2006-2007 innotek GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

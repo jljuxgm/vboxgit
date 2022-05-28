@@ -1,10 +1,10 @@
-; $Id: strcmp.asm 1176 2007-03-04 00:04:10Z vboxsync $
+; $Id: strcmp.asm 2988 2007-06-01 17:36:09Z vboxsync $
 ;; @file
-; InnoTek Portable Runtime - No-CRT strcmp - AMD64 & X86.
+; innotek Portable Runtime - No-CRT strcmp - AMD64 & X86.
 ;
 
 ;
-; Copyright (C) 2006 InnoTek Systemberatung GmbH
+; Copyright (C) 2006-2007 innotek GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

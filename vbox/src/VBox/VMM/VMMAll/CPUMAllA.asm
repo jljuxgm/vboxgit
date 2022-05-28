@@ -1,10 +1,10 @@
-; $Id: CPUMAllA.asm 112 2007-01-17 16:04:27Z vboxsync $
+; $Id: CPUMAllA.asm 2988 2007-06-01 17:36:09Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
 
 ;
-; Copyright (C) 2006 InnoTek Systemberatung GmbH
+; Copyright (C) 2006-2007 innotek GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

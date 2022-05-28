@@ -1,6 +1,6 @@
-; $Id: RTR0Os2DHVMGlobalToProcess.asm 1191 2007-03-04 20:46:04Z vboxsync $
+; $Id: RTR0Os2DHVMGlobalToProcess.asm 2988 2007-06-01 17:36:09Z vboxsync $
 ;; @file
-; InnoTek Portable Runtime - DevHelp_VMGlobalToProcess, Ring-0 Driver, OS/2.
+; innotek Portable Runtime - DevHelp_VMGlobalToProcess, Ring-0 Driver, OS/2.
 ;
 
 ;

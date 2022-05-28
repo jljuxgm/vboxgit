@@ -1,10 +1,10 @@
-; $Id: HWACCMR0A.asm 2803 2007-05-23 12:59:09Z vboxsync $
+; $Id: HWACCMR0A.asm 2988 2007-06-01 17:36:09Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
 
 ;
-; Copyright (C) 2006 InnoTek Systemberatung GmbH
+; Copyright (C) 2006-2007 innotek GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

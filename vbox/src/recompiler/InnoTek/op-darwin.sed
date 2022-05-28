@@ -1,4 +1,4 @@
-# $Id: op-darwin.sed 2429 2007-04-30 13:09:10Z vboxsync $
+# $Id: op-darwin.sed 2988 2007-06-01 17:36:09Z vboxsync $
 ## @file
 #
 # SED script for transforming op.S (i386 ELF from GNU/linux) into
@@ -6,7 +6,7 @@
 #
 
 #
-# Copyright (C) 2006 InnoTek Systemberatung GmbH
+# Copyright (C) 2006-2007 innotek GmbH
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

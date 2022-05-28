@@ -1,11 +1,11 @@
-; $Id: VBoxREMWrapperA.asm 2422 2007-04-30 12:03:47Z vboxsync $
+; $Id: VBoxREMWrapperA.asm 2988 2007-06-01 17:36:09Z vboxsync $
 ;; @file
 ;
 ; VBoxREM Wrapper, Assembly routines and wrapper Templates.
 ;
-; InnoTek Systemberatung GmbH confidential
+; innotek GmbH confidential
 ;
-; Copyright (c) 2006 InnoTek Systemberatung GmbH
+; Copyright (C) 2006-2007 innotek GmbH
 ;
 ; Author: knut st. osmundsen <bird@innotek.de>
 ;

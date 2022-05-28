@@ -1,9 +1,9 @@
-# $Id: errmsg.sed 1  vboxsync $
+# $Id: errmsg.sed 2988 2007-06-01 17:36:09Z vboxsync $
 ## @file
-# InnoTek Portable Runtime - SED script for converting */err.h.
+# innotek Portable Runtime - SED script for converting */err.h.
 #
 
-# Copyright (C) 2006 InnoTek Systemberatung GmbH
+# Copyright (C) 2006-2007 innotek GmbH
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-; $Id: 32BitTo32Bit.asm 19 2007-01-15 13:07:05Z vboxsync $
+; $Id: 32BitTo32Bit.asm 2988 2007-06-01 17:36:09Z vboxsync $
 ;; @file
 ; VMM - World Switchers, 32-Bit to 32-Bit.
 ;
 
 ;
-; Copyright (C) 2006 InnoTek Systemberatung GmbH
+; Copyright (C) 2006-2007 innotek GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

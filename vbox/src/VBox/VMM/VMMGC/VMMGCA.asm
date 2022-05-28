@@ -1,9 +1,9 @@
-; $Id: VMMGCA.asm 988 2007-02-19 18:19:14Z vboxsync $
+; $Id: VMMGCA.asm 2988 2007-06-01 17:36:09Z vboxsync $
 ;; @file
 ; VMMGC - Guest Context Virtual Machine Monitor assembly routines.
 ;
 
-; Copyright (C) 2006 InnoTek Systemberatung GmbH
+; Copyright (C) 2006-2007 innotek GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

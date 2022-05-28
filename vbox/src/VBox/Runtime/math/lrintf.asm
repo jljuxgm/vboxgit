@@ -1,10 +1,10 @@
-; $Id: lrintf.asm 1  vboxsync $
+; $Id: lrintf.asm 2988 2007-06-01 17:36:09Z vboxsync $
 ;; @file
-; InnoTek Portable Runtime - No-CRT lrintf - AMD64 & X86.
+; innotek Portable Runtime - No-CRT lrintf - AMD64 & X86.
 ;
 
 ;
-; Copyright (C) 2006 InnoTek Systemberatung GmbH
+; Copyright (C) 2006-2007 innotek GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

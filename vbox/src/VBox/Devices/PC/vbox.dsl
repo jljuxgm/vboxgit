@@ -1,9 +1,9 @@
-// $Id: vbox.dsl 2781 2007-05-22 22:56:27Z vboxsync $
+// $Id: vbox.dsl 2988 2007-06-01 17:36:09Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
 //
-// Copyright (C) 2006 InnoTek Systemberatung GmbH
+// Copyright (C) 2006-2007 innotek GmbH
 //
 // This file is part of VirtualBox Open Source Edition (OSE), as
 // available from http://www.virtualbox.org. This file is free software;
@@ -484,7 +484,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                     "1",        // Model number
                     "0",        // Serial number
                     "VBOX",     // Battery type
-                    "InnoTek"   // OEM Information
+                    "innotek"   // OEM Information
                 })
 
                 Name (PBST, Package () {

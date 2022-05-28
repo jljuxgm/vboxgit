@@ -1,10 +1,10 @@
-; $Id: PAEand32Bit.mac 956 2007-02-16 19:40:23Z vboxsync $
+; $Id: PAEand32Bit.mac 2988 2007-06-01 17:36:09Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for PAE and 32-Bit.
 ;
 
 ;
-; Copyright (C) 2006 InnoTek Systemberatung GmbH
+; Copyright (C) 2006-2007 innotek GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
