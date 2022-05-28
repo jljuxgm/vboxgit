@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 347 2007-01-26 09:36:22Z vboxsync $ */
+/* $Id: EM.cpp 448 2007-01-30 22:36:08Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -3218,15 +3218,6 @@ EMR3DECL(int) EMR3ExecuteVM(PVM pVM)
             }
             else if (fFFDone)
                 fFFDone = false;
-
-#if defined(__AMD64__)
- Assert(!pVM->fPATMEnabled);
- Assert(!pVM->fCSAMEnabled);
- #ifndef __WIN__
-  Assert(!pVM->fRawR0Enabled);
-  Assert(!pVM->fRawR3Enabled);
- #endif
-#endif
 
             /*
              * Now what to do?
