@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 4287 2007-08-22 14:49:19Z vboxsync $ */
+/* $Id: alloc-r0drv-solaris.c 4543 2007-09-05 21:45:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -86,9 +86,11 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
     return virtAddr;
 }
 
+
 RTR0DECL(void) RTMemContFree(void *pv, size_t cb)
 {
     NOREF(cb);
     if (pv)
         i_ddi_mem_free(pv, NULL);
 }
+
