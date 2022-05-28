@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 1348 2007-03-08 21:37:48Z vboxsync $ */
+/* $Id: VMMR0.cpp 1599 2007-03-21 15:25:35Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -613,7 +613,7 @@ VMMR0DECL(int) VMMR0Entry(PVM pVM, unsigned /* make me an enum */ uOperation, vo
                 case VMMR0_DO_INTNET_OPEN:
                 {
                     PINTNETOPENARGS pArgs = (PINTNETOPENARGS)pvArg;
-                    return INTNETR0Open(g_pIntNet, pVM->pSession, &pArgs->szNetwork[0], pArgs->cbSend, pArgs->cbRecv, &pArgs->hIf);
+                    return INTNETR0Open(g_pIntNet, pVM->pSession, &pArgs->szNetwork[0], pArgs->cbSend, pArgs->cbRecv, pArgs->fRestrictAccess, &pArgs->hIf);
                 }
 
                 case VMMR0_DO_INTNET_IF_CLOSE:
