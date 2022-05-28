@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 4867 2007-09-17 19:27:10Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 4869 2007-09-17 19:41:33Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, Solaris.
  */
@@ -83,7 +83,7 @@ static uint64_t rtR0MemObjSolarisVirtToPhys(struct hat* hatSpace, caddr_t virtAd
 #if 0
     uint64_t physAddr = PAGE_SIZE * pfn;
 #else
-    uint64_t physAddr = ((uint64_t)pfn << MMU_PAGESHIFT) | ((uint64_t)virtAddr & MMU_PAGEOFFSET);
+    uint64_t physAddr = ((uint64_t)pfn << MMU_PAGESHIFT) | ((uintptr_t)virtAddr & MMU_PAGEOFFSET);
 #endif
     return physAddr;
 }
