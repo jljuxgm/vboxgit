@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2694 2007-05-17 06:35:49Z vboxsync $
+# $Id: Makefile.kmk 2705 2007-05-18 12:31:56Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxGuest (Windows Guest Additions Driver).
 #
@@ -28,9 +28,9 @@ include	$(PATH_KBUILD)/subheader.kmk
 #
 SYSMODS += VBoxGuest
 VBoxGuest_TEMPLATE    = VBOXW32GUESTR0
-#ifdef VBOX_SIGNING_MODE
-# VBoxGuest_NOINST     = true
-#endif
+ifdef VBOX_SIGN_ADDITIONS
+ VBoxGuest_NOINST     = true
+endif
 VBoxGuest_SDKS        = W2K3DDKX86 WINPSDKINCS
 VBoxGuest_DEFS        = LOG_TO_BACKDOOR VBGL_VBOXGUEST VBOX_HGCM VBOX_REBOOT_ON_UNINSTALL
 #VBoxGuest_DEFS       += LOG_ENABLED

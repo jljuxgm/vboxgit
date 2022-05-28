@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2487 2007-05-04 03:19:31Z vboxsync $
+# $Id: Makefile.kmk 2705 2007-05-18 12:31:56Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxVideo.
 #
@@ -27,6 +27,9 @@ include	$(PATH_KBUILD)/subheader.kmk
 # This has to run on NT4!
 SYSMODS += VBoxVideo
 VBoxVideo_TEMPLATE    = VBOXW32GUESTR0
+ifdef VBOX_SIGN_ADDITIONS
+ VBoxVideo_NOINST     = true
+endif
 VBoxVideo_SDKS        = W2K3DDKX86 WINPSDKINCS
 VBoxVideo_DEFS        = LOG_TO_BACKDOOR
 #VBoxVideo_DEFS        += LOG_ENABLED
