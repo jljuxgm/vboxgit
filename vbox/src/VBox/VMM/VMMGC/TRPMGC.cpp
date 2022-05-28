@@ -1,4 +1,4 @@
-/* $Id: TRPMGC.cpp 1353 2007-03-09 09:36:00Z vboxsync $ */
+/* $Id: TRPMGC.cpp 1378 2007-03-09 15:22:40Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -113,7 +113,8 @@ TRPMGCDECL(int) trpmgcGuestIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCT
     uint32_t    iTrap       = ((RTGCUINTPTR)pvFault - (RTGCUINTPTR)GCPtrIDT)/sizeof(VBOXIDTE);
 
     Assert(pvFault >= GCPtrIDT && pvFault < GCPtrIDTEnd);
-    Log(("trpmgcGuestIDTWriteHandler: write to gate %x\n", iTrap));
+    Assert(pvRange == GCPtrIDT);
+    Log(("trpmgcGuestIDTWriteHandler: write to gate %x offset %x\n", iTrap, (RTGCUINTPTR)pvFault - (RTGCUINTPTR)GCPtrIDT));
 
 #if 0
     /* Check if we can handle the write here. */    
