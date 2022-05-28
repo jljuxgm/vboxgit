@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: EMInternal.h 49 2007-01-15 18:29:41Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -299,7 +299,7 @@ typedef struct EM
     /** More statistics (GC). */
     GCPTRTYPE(PEMSTATS)     pStatsGC;
 #if HC_ARCH_BITS != GC_ARCH_BITS && GC_ARCH_BITS == 32
-    GCPTR                   padding0
+    RTGCPTR                 padding0;
 #endif
 
     /** Tree for keeping track of cli occurances (debug only). */
