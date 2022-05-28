@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
+/* $Id: VMMInternal.h 3724 2007-07-19 18:57:24Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -23,7 +23,6 @@
 #define ___VMMInternal_h
 
 #include <VBox/cdefs.h>
-#include <x86context.h>
 #include <VBox/stam.h>
 #include <VBox/log.h>
 #include <iprt/critsect.h>
