@@ -1,4 +1,4 @@
-/* $Id: time.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: time.h 3123 2007-06-15 14:46:16Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Internal RTTime header
  */
@@ -26,9 +26,10 @@
 
 __BEGIN_DECLS
 
-#ifdef IN_RING3
+#if defined(IN_RING3) || defined(IN_GC)
 
 extern uint64_t g_u64ProgramStartNanoTS;
+extern uint64_t g_u64ProgramStartMicroTS;
 extern uint64_t g_u64ProgramStartMilliTS;
 
 #endif

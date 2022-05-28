@@ -1,4 +1,4 @@
-/* $Id: init.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: init.cpp 3123 2007-06-15 14:46:16Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Init Ring-3.
  */
@@ -65,6 +65,11 @@ char        g_szrtProgramPath[RTPATH_MAX];
  * Program start nanosecond TS.
  */
 uint64_t    g_u64ProgramStartNanoTS;
+
+/**
+ * Program start microsecond TS.
+ */
+uint64_t    g_u64ProgramStartMicroTS;
 
 /**
  * Program start millisecond TS.
@@ -145,7 +150,8 @@ RTR3DECL(int) RTR3Init(bool fInitSUPLib, size_t cbReserve)
      * Init the program start TSes.
      */
     g_u64ProgramStartNanoTS = RTTimeNanoTS();
-    g_u64ProgramStartMilliTS = RTTimeMilliTS();
+    g_u64ProgramStartMicroTS = g_u64ProgramStartNanoTS / 1000;
+    g_u64ProgramStartMilliTS = g_u64ProgramStartNanoTS / 1000000;
 
 #ifndef IN_GUEST
     /*

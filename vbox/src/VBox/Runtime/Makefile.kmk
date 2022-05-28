@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3054 2007-06-05 14:52:45Z vboxsync $
+# $Id: Makefile.kmk 3123 2007-06-15 14:46:16Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -833,6 +833,7 @@ RuntimeLnx32GuestR0_SOURCES       = \
 RuntimeGC_TEMPLATE      = VBOXGC
 RuntimeGC_DEFS          = IN_RT_GC RT_WITH_VBOX
 RuntimeGC_SOURCES       = \
+        gc/initterm-gc.cpp \
 	misc/sanity-cpp.cpp \
 	misc/sanity-c.c \
 	table/avlogcphys.cpp \
@@ -855,6 +856,7 @@ RuntimeGC_SOURCES       = \
 	strprintf.cpp \
 	VBox/strformat-vbox.cpp \
 	timesup.cpp \
+	timeprog.cpp \
 	string/memchr.cpp \
 	string/memcmp.cpp \
 	string/memcpy.cpp \
