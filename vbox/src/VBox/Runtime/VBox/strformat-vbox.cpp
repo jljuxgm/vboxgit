@@ -1,4 +1,4 @@
-/* $Id: strformat-vbox.cpp 1  vboxsync $ */
+/* $Id: strformat-vbox.cpp 129 2007-01-18 00:07:02Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - VBox String Formatter extensions.
  */
@@ -415,7 +415,7 @@ size_t rtstrFormatVBox(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char *
                         return RTStrFormat(pfnOutput, pvArgOutput, NULL, 0,
                                            "%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x",
                                            pUuid->Gen.u32TimeLow,
-                                           pUuid->Gen.u16TimeMin,
+                                           pUuid->Gen.u16TimeMid,
                                            pUuid->Gen.u16TimeHiAndVersion,
                                            pUuid->Gen.u16ClockSeq & 0xff,
                                            pUuid->Gen.u16ClockSeq >> 8,
