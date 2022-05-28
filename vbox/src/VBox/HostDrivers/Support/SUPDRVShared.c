@@ -1,4 +1,4 @@
-/* $Revision: 4942 $ */
+/* $Revision: 4962 $ */
 /** @file
  * VirtualBox Support Driver - Shared code.
  */
@@ -548,14 +548,8 @@ void VBOXCALL supdrvCleanupSession(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSessio
 int VBOXCALL supdrvIOCtlFast(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession)
 {
     /*
-     * Disable interrupts before invoking VMMR0Entry() because it ASSUMES
-     * that interrupts are disabled. (We check the two prereqs after doing
-     * this only to allow the compiler to optimize things better.)
+     * We check the two prereqs after doing this only to allow the compiler to optimize things better.
      */
-    int         rc;
-    RTCCUINTREG uFlags = ASMGetFlags();
-    ASMIntDisable();
-
     if (RT_LIKELY(pSession->pVM && pDevExt->pfnVMMR0EntryFast))
     {
         switch (uIOCtl)
@@ -577,7 +571,6 @@ int VBOXCALL supdrvIOCtlFast(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, PSUPDRVSES
     else
         rc = VERR_INTERNAL_ERROR;
 
-    ASMSetFlags(uFlags);
     return rc;
 }
 
