@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5586 2007-10-31 18:24:35Z vboxsync $
+# $Id: Config.kmk 5598 2007-11-01 01:18:09Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1164,7 +1164,7 @@ ifeq ($(BUILD_TARGET),win)
 else ifeq ($(BUILD_TARGET),os2)
  QTDIR ?= $(PATH_DEVTOOLS_TRG)/qt/v3.3.1
  VBOX_PATH_QT ?= $(QTDIR)
- LIB_QT ?= $(lastword $(sort $(wildcard $(VBOX_PATH_QT)/lib/qt331*.lib)))
+ LIB_QT ?= $(lastword $(sort $(wildcard $(VBOX_PATH_QT)/lib/*qt*.lib)))
  QTDIR := $(VBOX_PATH_QT)
 else ifeq ($(BUILD_TARGET),darwin)
  ifndef VBOX_PATH_QT
@@ -2621,7 +2621,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5586 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5598 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(USERNAME),bird) # Wastes nearly half a second on windows, very annoying. TODO: $(which ).
   ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
