@@ -1,4 +1,4 @@
-/* $Id: sems-linux.cpp 823 2007-02-10 08:00:14Z vboxsync $ */
+/* $Id: sems-linux.cpp 849 2007-02-12 16:35:51Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Semaphores, Linux (AMD64 only ATM).
  */
@@ -34,7 +34,12 @@
 #include <unistd.h>
 #include <sys/time.h>
 #include <sys/syscall.h>
-#include <linux/futex.h>
+#if 0 /* With 2.6.17 futex.h has become C++ unfriendly. */
+# include <linux/futex.h>
+#else
+# define FUTEX_WAIT 0
+# define FUTEX_WAKE 1
+#endif 
 
 
 /*******************************************************************************
