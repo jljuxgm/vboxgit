@@ -1,4 +1,4 @@
-/* $Id: uniread.cpp 3322 2007-06-27 20:27:57Z vboxsync $ */
+/* $Id: uniread.cpp 3350 2007-07-02 14:01:36Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Unicode Specification Reader.
  */
@@ -217,7 +217,7 @@ struct CPINFO
     RTUNICP     SimpleUpperCaseMapping;
     RTUNICP     SimpleLowerCaseMapping;
     RTUNICP     SimpleTitleCaseMapping;
-    const char  *pszName;
+    const char *pszName;
     /** Set if this is an unused entry */
     unsigned    fNullEntry : 1;
 
