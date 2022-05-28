@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 4955 2007-09-21 14:14:47Z vboxsync $ */
+/* $Id: CSAM.cpp 4959 2007-09-21 14:56:52Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -597,7 +597,7 @@ static DECLCALLBACK(int) CSAMR3ReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, unsig
     DISCPUSTATE  *pCpu     = (DISCPUSTATE *)pvUserdata;
     PVM           pVM      = (PVM)pCpu->apvUserData[0];
     RTHCUINTPTR   pInstrHC = (RTHCUINTPTR)pCpu->apvUserData[1];
-    RTGCUINTPTR   pInstrGC = (RTGCUINTPTR)pCpu->apvUserData[2];
+    RTGCUINTPTR   pInstrGC = (uintptr_t)pCpu->apvUserData[2];
     int           orgsize  = size;
 
     /* We are not interested in patched instructions, so read the original opcode bytes. */
