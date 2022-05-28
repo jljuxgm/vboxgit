@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 2455 2007-05-02 17:10:41Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 2469 2007-05-03 16:44:10Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -41,11 +41,7 @@
  */
 DECLINLINE(uint64_t) tmCpuTickGetRawVirtual(PVM pVM, bool fCheckTimers)
 {
-#ifdef VBOX_WITH_VIRTUAL_SYNC_TIMERS
     uint64_t u64 = TMVirtualSyncGet(pVM/** @todo fCheckTimers */);
-#else
-    uint64_t u64 = TMVirtualGetEx(pVM, fCheckTimers);
-#endif 
     if (u64 != TMCLOCK_FREQ_VIRTUAL)
         u64 = ASMMultU64ByU32DivByU32(u64, pVM->tm.s.cTSCTicksPerSecond, TMCLOCK_FREQ_VIRTUAL);
     return u64;
