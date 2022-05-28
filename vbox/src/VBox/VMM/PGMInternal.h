@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: PGMInternal.h 4451 2007-08-30 18:24:09Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1068,8 +1068,8 @@ typedef struct PGMMODEDATA
     DECLR3CALLBACKMEMBER(int,  pfnR3GstUnmonitorCR3,(PVM pVM));
     DECLR3CALLBACKMEMBER(int,  pfnR3GstMapCR3,(PVM pVM, RTGCPHYS GCPhysCR3));
     DECLR3CALLBACKMEMBER(int,  pfnR3GstUnmapCR3,(PVM pVM));
-    HCPTRTYPE(PFNPGMR3PHYSHANDLER)  pfnHCGstWriteHandlerCR3;
-    HCPTRTYPE(const char *)         pszHCGstWriteHandlerCR3;
+    R3PTRTYPE(PFNPGMR3PHYSHANDLER)  pfnHCGstWriteHandlerCR3;
+    R3PTRTYPE(const char *)         pszHCGstWriteHandlerCR3;
 
     DECLGCCALLBACKMEMBER(int,  pfnGCGstGetPage,(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTGCPHYS pGCPhys));
     DECLGCCALLBACKMEMBER(int,  pfnGCGstModifyPage,(PVM pVM, RTGCUINTPTR GCPtr, size_t cbPages, uint64_t fFlags, uint64_t fMask));
@@ -1290,8 +1290,8 @@ typedef struct PGM
     DECLR3CALLBACKMEMBER(int,  pfnR3GstUnmonitorCR3,(PVM pVM));
     DECLR3CALLBACKMEMBER(int,  pfnR3GstMapCR3,(PVM pVM, RTGCPHYS GCPhysCR3));
     DECLR3CALLBACKMEMBER(int,  pfnR3GstUnmapCR3,(PVM pVM));
-    HCPTRTYPE(PFNPGMR3PHYSHANDLER)  pfnHCGstWriteHandlerCR3;
-    HCPTRTYPE(const char *)         pszHCGstWriteHandlerCR3;
+    R3PTRTYPE(PFNPGMR3PHYSHANDLER)  pfnHCGstWriteHandlerCR3;
+    R3PTRTYPE(const char *)         pszHCGstWriteHandlerCR3;
 
     DECLGCCALLBACKMEMBER(int,  pfnGCGstGetPage,(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTGCPHYS pGCPhys));
     DECLGCCALLBACKMEMBER(int,  pfnGCGstModifyPage,(PVM pVM, RTGCUINTPTR GCPtr, size_t cbPages, uint64_t fFlags, uint64_t fMask));
