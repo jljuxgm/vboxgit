@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5382 2007-10-19 13:55:49Z vboxsync $
+# $Id: Makefile.kmk 5467 2007-10-24 03:44:02Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -503,7 +503,7 @@ ifdef VBOX_WITH_USB
  endif
 
  Drivers_DEFS.darwin  += VUSB_HAVE_USBPROXY_DEVICE
- Drivers_DEFS.darwin  += VBOX_WITH_USBFILTER
+ #Drivers_DEFS.darwin  += VBOX_WITH_USBFILTER
  Drivers_SOURCES.darwin += \
 	USB/USBProxyDevice.cpp \
 	USB/darwin/USBProxyDevice-darwin.cpp
