@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 537 2007-02-02 06:08:57Z vboxsync $ */
+/* $Id: path-posix.cpp 937 2007-02-15 20:59:20Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Path Manipulation, POSIX.
  */
@@ -761,5 +761,31 @@ RTR3DECL(int) RTPathRename(const char *pszSrc, const char *pszDst, unsigned fRen
 
     Log(("RTPathRename(%p:{%s}, %p:{%s}, %#x): returns %Rrc\n", pszSrc, pszSrc, pszDst, pszDst, fRename, rc));
     return rc;
+}
+
+
+RTDECL(bool) RTPathExists(const char *pszPath)
+{
+    /*
+     * Validate input.
+     */
+    AssertPtrReturn(pszPath, false);
+    AssertReturn(*pszPath, false);
+
+    /*
+     * Convert the path and check if it exists using stat().
+     */
+    char *pszNativePath;
+    int rc = rtPathToNative(&pszNativePath, pszPath);
+    if (RT_SUCCESS(rc))
+    {
+        struct stat Stat;
+        if (!stat(pszNativePath, &Stat))
+            rc = VINF_SUCCESS;
+        else
+            rc = VERR_GENERAL_FAILURE;
+        RTStrFree(pszNativePath);
+    }
+    return RT_SUCCESS(rc);
 }
 
