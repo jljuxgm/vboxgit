@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 4388 2007-08-27 14:26:05Z vboxsync $ */
+/* $Id: MM.cpp 4768 2007-09-13 11:36:09Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager).
  */
@@ -283,6 +283,11 @@ MMR3DECL(int) MMR3Term(PVM pVM)
 static int mmR3Term(PVM pVM, bool fKeepTheHeap)
 {
     /*
+     * Destroy the page pool. (first as it used the hyper heap)
+     */
+    mmr3PagePoolTerm(pVM);
+
+    /*
      * Release locked memory.
      * (Associated record are released by the heap.)
      */
@@ -306,11 +311,6 @@ static int mmR3Term(PVM pVM, bool fKeepTheHeap)
         /* next */
         pLockedMem = pLockedMem->pNext;
     }
-
-    /*
-     * Destroy the page pool.
-     */
-    mmr3PagePoolTerm(pVM);
 
     /*
      * Destroy the heap if requested.
