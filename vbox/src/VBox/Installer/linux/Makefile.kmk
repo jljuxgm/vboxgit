@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5573 2007-10-31 11:25:45Z vboxsync $
+# $Id: Makefile.kmk 5593 2007-10-31 22:17:46Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -40,7 +40,7 @@ VBoxTunctl_SOURCES  = tunctl.c
 linux-bin_INST = bin/
 linux-bin_MODE = a+rx,u+w
 linux-bin_SOURCES = \
-        $(if $(VBOX_OSE),,VBoxSysInfo.sh) \
+        VBoxSysInfo.sh \
 	VBox.sh=>VBox.sh
 
 linux-doc_INST = bin/
@@ -90,7 +90,7 @@ LINUXNOSTRIP = \
 	$(if $(VBOX_OSE),,License-$(VBOX_LICENSE_VER).html) \
 	components/VBoxXPCOMBase.xpt \
 	components/VirtualBox_XPCOM.xpt \
-        $(if $(VBOX_OSE),,VBoxSysInfo.sh) \
+        VBoxSysInfo.sh \
 	VBox.sh \
 	VBox.png \
 	VBoxAddIF.sh \
