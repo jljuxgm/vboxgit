@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 3112 2007-06-14 18:23:38Z vboxsync $ */
+/* $Id: PDMDriver.cpp 3520 2007-07-10 11:37:32Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -498,8 +498,11 @@ int pdmR3DrvDetach(PPDMDRVINS pDrvIns)
         /* Timers. */
         rc = TMR3TimerDestroyDriver(pCur->Internal.s.pVM, pCur);
         AssertRC(rc);
-        /* SSM data units */
+        /* SSM data units. */
         rc = SSMR3DeregisterDriver(pCur->Internal.s.pVM, pCur, NULL, 0);
+        AssertRC(rc);
+        /* PDM threads. */
+        ///@todo rc = pdmR3DestroyDriver(pCur->Internal.s.pVM, pCur);
         AssertRC(rc);
         /* Finally, the driver it self. */
         ASMMemFill32(pCur, RT_OFFSETOF(PDMDRVINS, achInstanceData[pCur->pDrvReg->cbInstance]), 0xdeadd0d0);
