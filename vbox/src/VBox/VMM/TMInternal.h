@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 2283 2007-04-20 22:27:52Z vboxsync $ */
+/* $Id: TMInternal.h 2581 2007-05-10 15:13:29Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -285,6 +285,9 @@ typedef struct TM
      * See TM2VM(). */
     RTUINT                      offVM;
 
+    /** Flag indicating that the host TSC is suitable for use in AMD-V and VT-x mode.
+     * Config variable: MaybeUseOffsettedHostTSC (boolean) */
+    bool                        fMaybeUseOffsettedHostTSC;
     /** CPU timestamp ticking enabled indicator (bool). (RDTSC) */
     bool                        fTSCTicking;
     /** Set if we fully virtualize the TSC, i.e. intercept all rdtsc instructions. 
