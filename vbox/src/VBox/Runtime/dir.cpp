@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: dir.cpp 3364 2007-07-02 23:56:02Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Directory Manipulation.
  */
@@ -63,7 +63,7 @@ RTDECL(int) RTDirCreateFullPath(const char *pszPath, RTFMODE fMode)
         return rc;
 
     /*
-     * Iterate the path components making sure each of the exist.
+     * Iterate the path components making sure each of them exists.
      */
     /* skip volume name */
     char *psz = &szAbsPath[rtPathVolumeSpecLen(szAbsPath)];
