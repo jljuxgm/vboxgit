@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 2747 2007-05-21 15:42:33Z vboxsync $
+; $Id: HWACCMR0A.asm 2750 2007-05-21 16:35:46Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -142,6 +142,7 @@ BEGINCODE
 ; * @param   pCtx        Guest context
 ; */
 BEGINPROC VMXStartVM
+int3
     push    xBP
     mov     xBP, xSP
 
@@ -215,6 +216,7 @@ BEGINPROC VMXStartVM
 
 ALIGNCODE(16)
 .vmlaunch_done:
+int3
     jnc     .vmxstart_good
 
     pop     xAX         ; saved LDTR
@@ -440,12 +442,15 @@ ENDPROC VMXResumeVM
 ; * @param   pData      x86: [ebp + 0ch]  msc: rdx  gcc: rsi   VM field value
 ; */
 BEGINPROC VMXWriteVMCS64
-    xor         rax, rax
 %ifdef ASM_CALL64_GCC
-    and         rdi, 0ffffffffh
+    mov         eax, 0ffffffffh
+    and         rdi, rax
+    xor         rax, rax
     vmwrite     rdi, rsi
 %else
-    and         rcx, 0ffffffffh
+    mov         eax, 0ffffffffh
+    and         rcx, rax
+    xor         rax, rax
     vmwrite     rcx, rdx
 %endif
     jnc         .valid_vmcs
@@ -467,12 +472,15 @@ ENDPROC VMXWriteVMCS64
 ; */
 ;DECLASM(int) VMXReadVMCS64(uint32_t idxField, uint64_t *pData);
 BEGINPROC VMXReadVMCS64
-    xor         rax, rax
 %ifdef ASM_CALL64_GCC
-    and         rdi, 0ffffffffh
+    mov         eax, 0ffffffffh
+    and         rdi, rax
+    xor         rax, rax
     vmread      [rsi], rdi
 %else
-    and         rcx, 0ffffffffh
+    mov         eax, 0ffffffffh
+    and         rcx, rax
+    xor         rax, rax
     vmread      [rdx], rcx
 %endif
     jnc         .valid_vmcs
