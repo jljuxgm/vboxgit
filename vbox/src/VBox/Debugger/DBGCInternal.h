@@ -1,4 +1,4 @@
-/** $Id: DBGCInternal.h 5673 2007-11-11 05:28:37Z vboxsync $ */
+/** $Id: DBGCInternal.h 5675 2007-11-11 05:42:00Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -340,9 +340,10 @@ void    dbgcVarSetNoRange(PDBGCVAR pVar);
 void    dbgcVarSetByteRange(PDBGCVAR pVar, uint64_t cb);
 int     dbgcVarToDbgfAddr(PDBGC pDbgc, PCDBGCVAR pVar, PDBGFADDRESS pAddress);
 
-int     dbgcSymbolGet(PDBGC pDbgc, const char *pszSymbol, DBGCVARTYPE enmType, PDBGCVAR pResult);
+int         dbgcSymbolGet(PDBGC pDbgc, const char *pszSymbol, DBGCVARTYPE enmType, PDBGCVAR pResult);
 PCDBGCSYM   dbgcLookupRegisterSymbol(PDBGC pDbgc, const char *pszSymbol);
 PCDBGCOP    dbgcOperatorLookup(PDBGC pDbgc, const char *pszExpr, bool fPreferBinary, char chPrev);
+PCDBGCCMD   dbgcRoutineLookup(PDBGC pDbgc, const char *pachName, size_t cchName, bool fExternal);
 
 DECLCALLBACK(int) dbgcOpAddrFlat(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
 DECLCALLBACK(int) dbgcOpAddrHost(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
@@ -353,6 +354,8 @@ DECLCALLBACK(int) dbgcOpAddrHostPhys(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResu
 /*******************************************************************************
 *   Global Variables                                                           *
 *******************************************************************************/
+extern const DBGCCMD    g_aCmds[];
+extern const unsigned   g_cCmds;
 extern const DBGCCMD    g_aCmdsCodeView[];
 extern const unsigned   g_cCmdsCodeView;
 extern const DBGCOP     g_aOps[];
