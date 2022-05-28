@@ -1,4 +1,4 @@
-/** $Id: DBGCEmulateCodeView.cpp 5731 2007-11-13 22:42:00Z vboxsync $ */
+/** $Id: DBGCEmulateCodeView.cpp 5733 2007-11-13 23:16:51Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -2111,7 +2111,7 @@ static DECLCALLBACK(int) dbgcCmdDumpMem(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM
                 for (i = 0; i < cb; i += cbElement)
                 {
                     uint8_t u8 = *(uint8_t *)&achBuffer[i];
-                    if (isprint(u8) && u8 < 127)
+                    if (isprint(u8) && u8 < 127 && u8 >= 32)
                         pCmdHlp->pfnPrintf(pCmdHlp, NULL, "%c", u8);
                     else
                         pCmdHlp->pfnPrintf(pCmdHlp, NULL, ".");
@@ -2134,7 +2134,7 @@ static DECLCALLBACK(int) dbgcCmdDumpMem(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM
                 u8Prev = u8;
                 u8 = *(uint8_t *)&achBuffer[i];
                 if (    u8 < 127
-                    && (    isprint(u8)
+                    && (    (isprint(u8) && u8 >= 32)
                         ||  u8 == '\t'
                         ||  u8 == '\n'))
                     pCmdHlp->pfnPrintf(pCmdHlp, NULL, "%c", u8);
