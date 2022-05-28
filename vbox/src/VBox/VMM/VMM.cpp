@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 1269 2007-03-06 12:48:07Z vboxsync $ */
+/* $Id: VMM.cpp 1270 2007-03-06 12:48:19Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -3026,17 +3026,6 @@ VMMR3DECL(int) VMMDoHwAccmTest(PVM pVM)
             }
             if (TickThisElapsed < TickMin)
                 TickMin = TickThisElapsed;
-/* temporary */
-#ifdef LOG_ENABLED
-            /*
-             * Flush the log
-             */
-            PVMMR0LOGGER pR0Logger = pVM->vmm.s.pR0Logger;
-            if (    pR0Logger
-                &&  pR0Logger->Logger.offScratch > 0)
-                RTLogFlushToLogger(&pR0Logger->Logger, NULL);
-#endif /* !LOG_ENABLED */
-
         }
         uint64_t TickEnd = ASMReadTSC();
         uint64_t tsEnd = RTTimeNanoTS();
