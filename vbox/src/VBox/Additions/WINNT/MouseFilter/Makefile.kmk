@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2684 2007-05-17 02:17:10Z vboxsync $
+# $Id: Makefile.kmk 2706 2007-05-18 12:44:12Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Windows Guest mouse filter driver.
 #
@@ -43,7 +43,7 @@ VBoxMouse_LIBS        = \
 
 # Inf2Cat refuses to sign this one complaining that it isn't an installation INF
 INSTALLS += VBoxMouse-inf
-VBoxMouse-inf_INST = bin/
+VBoxMouse-inf_INST = $(INST_ADDITIONS)
 VBoxMouse-inf_MODE = a+r,u+w
 VBoxMouse-inf_SOURCES = VBoxMouse.inf
 
