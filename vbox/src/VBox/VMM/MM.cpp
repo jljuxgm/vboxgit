@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 33 2007-01-15 17:18:01Z vboxsync $ */
+/* $Id: MM.cpp 34 2007-01-15 17:19:30Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager).
  */
@@ -229,7 +229,7 @@ MMR3DECL(int) MMR3InitPaging(PVM pVM)
                     for (;GCPhys < cbRam ; GCPhys+=PGM_DYNAMIC_CHUNK_SIZE)
                     {
                         rc = PGM3PhysGrowRange(pVM, GCPhys);
-                        if (VBOX_SUCCESS(rc))
+                        if (VBOX_FAILURE(rc))
                             return rc;
                     }
                 }
