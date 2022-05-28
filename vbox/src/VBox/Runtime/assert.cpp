@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: assert.cpp 4856 2007-09-17 14:55:39Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Assertion Workers.
  */
@@ -122,7 +122,10 @@ RTDECL(void)    AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszF
             "\n!!Assertion Failed!!\n"
             "Expression: %s\n"
             "Location  : %s(%d) %s\n",
-            pszExpr, pszFile, uLine, pszFunction);
+            VALID_PTR(pszExpr) ? pszExpr : "<none>",
+            VALID_PTR(pszFile) ? pszFile : "<none>",
+            uLine,
+            VALID_PTR(pszFunction) ? pszFunction : "");
     fflush(stderr);
 #endif
 
