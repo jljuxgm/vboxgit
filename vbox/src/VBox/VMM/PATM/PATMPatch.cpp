@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 513 2007-02-01 16:25:19Z vboxsync $ */
+/* $Id: PATMPatch.cpp 742 2007-02-07 10:17:01Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -286,6 +286,12 @@ static uint32_t patmPatchGenCode(PVM pVM, PPATCHINFO pPatch, uint8_t *pPB, PPATC
                     break;
                 case PATM_TEMP_RESTORE_FLAGS:
                     dest = pVM->patm.s.pGCStateGC + RT_OFFSETOF(PATMGCSTATE, Restore.uFlags);
+                    break;
+                case PATM_CALL_PATCH_TARGET_ADDR:
+                    dest = pVM->patm.s.pGCStateGC + RT_OFFSETOF(PATMGCSTATE, GCCallPatchTargetAddr);
+                    break;
+                case PATM_CALL_RETURN_ADDR:
+                    dest = pVM->patm.s.pGCStateGC + RT_OFFSETOF(PATMGCSTATE, GCCallReturnAddr);
                     break;
 
                 /* Relative address of global patm lookup and call function. */
