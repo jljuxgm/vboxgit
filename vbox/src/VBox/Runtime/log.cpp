@@ -1,4 +1,4 @@
-/* $Id: log.cpp 628 2007-02-05 11:59:58Z vboxsync $ */
+/* $Id: log.cpp 631 2007-02-05 12:42:18Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -1567,7 +1567,7 @@ static void rtlogLogger(PRTLOGGER pLogger, unsigned fFlags, unsigned iGroup, con
     /*
      * Format the message and perhaps flush it.
      */
-    if (pLogger->fFlags & RTLOGFLAGS_PREFIX_MASK)
+    if (pLogger->fFlags & (RTLOGFLAGS_PREFIX_MASK | RTLOGFLAGS_USECRLF))
     {
         RTLOGOUTPUTPREFIXEDARGS OutputArgs;
         OutputArgs.pLogger = pLogger;
@@ -2072,7 +2072,7 @@ static DECLCALLBACK(size_t) rtLogOutputPrefixed(void *pv, const char *pachChars,
             cbChars -= cb;
 
             if (    pszNewLine
-                &&  pLogger->fFlags & RTLOGFLAGS_USECRLF
+                &&  (pLogger->fFlags & RTLOGFLAGS_USECRLF)
                 &&  pLogger->offScratch + 2 < sizeof(pLogger->achScratch))
             {
                 memcpy(&pLogger->achScratch[pLogger->offScratch], "\r\n", 2);
