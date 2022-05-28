@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 4388 2007-08-27 14:26:05Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 4389 2007-08-27 15:31:49Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -409,7 +409,7 @@ static const REMPARMDESC g_aArgsNotifyPhysRomRegister[] =
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
     { REMPARMDESC_FLAGS_GCPHYS,     sizeof(RTGCPHYS), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(RTUINT), NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(void *), NULL }
+    { REMPARMDESC_FLAGS_INT,        sizeof(void *), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(bool), NULL }
 };
 static const REMPARMDESC g_aArgsNotifyHandlerPhysicalModify[] =
