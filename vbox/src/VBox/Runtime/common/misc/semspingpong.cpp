@@ -1,4 +1,4 @@
-/* $Id: semspingpong.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: semspingpong.cpp 5417 2007-10-21 20:54:16Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Thread Ping-Pong Construct.
  */
