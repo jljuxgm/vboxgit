@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 2759 2007-05-22 08:43:03Z vboxsync $
+; $Id: HWACCMR0A.asm 2760 2007-05-22 11:39:44Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -92,8 +92,6 @@
  %endif
     ;; @todo check ds,es saving/restoring on AMD64
  %macro MYPUSHSEGS 2
-    push    gs
-    push    fs 
     mov     %2, es
     push    %1
     mov     %2, ds
@@ -104,8 +102,6 @@
     mov     ds, %2
     pop     %1
     mov     es, %2
-    pop     fs
-    pop     gs
  %endmacro
 
 %else ; __X86__
