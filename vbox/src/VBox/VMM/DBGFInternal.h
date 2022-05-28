@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: DBGFInternal.h 450 2007-01-30 23:06:24Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -221,15 +221,16 @@ typedef struct DBGF
     /** Critical section protecting the above list. */
     RTCRITSECT              InfoCritSect;
 
-
+    /** Range tree containing the loaded symbols of the a VM.
+     * This tree will never have blind spots. */
+    HCPTRTYPE(AVLRGCPTRTREE) SymbolTree;
+    /** Symbol name space. */
+    HCPTRTYPE(PRTSTRSPACE)  pSymbolSpace;
     /** Indicates whether DBGFSym.cpp is initialized or not.
      * This part is initialized in a lazy manner for performance reasons. */
     bool                    fSymInited;
-    /** Range tree containing the loaded symbols of the a VM.
-     * This tree will never have blind spots. */
-    AVLROGCPTRTREE          SymbolTree;
-    /** Symbol name space. */
-    HCPTRTYPE(PRTSTRSPACE)  pSymbolSpace;
+    /** Alignment padding. */
+    RTUINT                  uAlignment0;
 
     /** The number of hardware breakpoints. */
     RTUINT                  cHwBreakpoints;
