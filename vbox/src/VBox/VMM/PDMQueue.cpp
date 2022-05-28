@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PDMQueue.cpp 509 2007-02-01 14:25:08Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -635,7 +635,7 @@ PDMR3DECL(void) PDMR3QueueFlushAll(PVM pVM)
 static bool pdmR3QueueFlush(PPDMQUEUE pQueue)
 {
     PPDMQUEUEITEMCORE pItems = (PPDMQUEUEITEMCORE)ASMAtomicXchgPtr((void * volatile *)&pQueue->pPendingHC, NULL);
-    AssertMsg(pItems || pQueue->pPendingGC, ("WTF? can't be NULL now!\n"));
+    AssertMsg(pItems || pQueue->pPendingGC, ("ERROR: can't be NULL now!\n"));
 
     /*
      * Reverse the list (it's inserted in LIFO order to avoid semaphores, remember).
