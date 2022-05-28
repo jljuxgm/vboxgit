@@ -1,4 +1,4 @@
-; $Id: tstAsmStructsAsm.asm 2988 2007-06-01 17:36:09Z vboxsync $
+; $Id: tstAsmStructsAsm.asm 3696 2007-07-18 17:00:33Z vboxsync $
 ;; @file
 ; Assembly / C structure layout testcase.
 ;
@@ -22,7 +22,7 @@
 ; license agreement apply instead of the previous paragraph.
 ;
 
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
 BITS 64
 %endif
 

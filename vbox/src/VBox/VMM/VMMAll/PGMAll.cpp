@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: PGMAll.cpp 3696 2007-07-18 17:00:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -83,7 +83,7 @@ static void pgmDumpPDEBig(const char *pszPrefix, int iPD, VBOXPDE Pde)
 
 
 
-#if 1///@todo ndef __AMD64__
+#if 1///@todo ndef RT_ARCH_AMD64
 /*
  * Shadow - 32-bit mode
  */
@@ -131,7 +131,7 @@ static void pgmDumpPDEBig(const char *pszPrefix, int iPD, VBOXPDE Pde)
 
 #undef PGM_SHW_TYPE
 #undef PGM_SHW_NAME
-#endif /* !__AMD64__ */
+#endif /* !RT_ARCH_AMD64 */
 
 
 /*

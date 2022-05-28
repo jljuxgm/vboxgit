@@ -1,4 +1,4 @@
-/* $Id: DBGFSym.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: DBGFSym.cpp 3696 2007-07-18 17:00:33Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Symbol Management.
  */
@@ -24,7 +24,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DBGF
-#if defined(__WIN__) && defined(DEBUG_bird) // enabled this is you want to debug win32 guests or the hypervisor.
+#if defined(RT_OS_WINDOWS) && defined(DEBUG_bird) // enabled this is you want to debug win32 guests or the hypervisor.
 # include <Windows.h>
 # define _IMAGEHLP64
 # include <DbgHelp.h>

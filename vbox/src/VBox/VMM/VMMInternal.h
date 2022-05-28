@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: VMMInternal.h 3696 2007-07-18 17:00:33Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -112,7 +112,7 @@ typedef struct VMMR0JMPBUF
 #endif
 #if HC_ARCH_BITS == 64
     uint64_t    rbx;
-# ifdef __WIN__
+# ifdef RT_OS_WINDOWS
     uint64_t    rsi;
     uint64_t    rdi;
 # endif

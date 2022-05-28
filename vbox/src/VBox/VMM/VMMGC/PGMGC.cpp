@@ -1,4 +1,4 @@
-/* $Id: PGMGC.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: PGMGC.cpp 3696 2007-07-18 17:00:33Z vboxsync $ */
 /** @file
  * PGM - Page Monitor, Guest Context.
  */
@@ -51,7 +51,7 @@
 
 
 
-#ifndef __AMD64__
+#ifndef RT_ARCH_AMD64
 /*
  * Shadow - 32-bit mode
  */
@@ -91,7 +91,7 @@
 
 #undef PGM_SHW_TYPE
 #undef PGM_SHW_NAME
-#endif /* !__AMD64__ */
+#endif /* !RT_ARCH_AMD64 */
 
 
 /*
