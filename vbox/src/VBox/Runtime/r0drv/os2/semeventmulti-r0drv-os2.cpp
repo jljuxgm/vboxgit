@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-os2.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-os2.cpp 3334 2007-06-30 12:23:25Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Multiple Release Event Semaphores, Ring-0 Driver, OS/2.
  */
@@ -176,7 +176,7 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
         ULONG ulData = (ULONG)VERR_INTERNAL_ERROR;
         rc = KernBlock((ULONG)pEventMultiInt,
                        cMillies == RT_INDEFINITE_WAIT ? SEM_INDEFINITE_WAIT : cMillies,
-                       BLOCK_SPINLOCK | (fInterruptible ? BLOCK_UNINTERRUPTABLE : 0),
+                       BLOCK_SPINLOCK | (!fInterruptible ? BLOCK_UNINTERRUPTABLE : 0),
                        &pEventMultiInt->Spinlock,
                        &ulData);
         switch (rc)
