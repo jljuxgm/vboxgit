@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 3292 2007-06-26 14:15:29Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 3299 2007-06-26 14:49:19Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -97,7 +97,7 @@ HWACCMR0DECL(int) VMXR0Setup(PVM pVM)
     if (VBOX_FAILURE(rc))
     {
         VMXR0CheckError(pVM, rc);
-        return rc;
+        return VERR_VMX_VMXON_FAILED;
     }
 
     /* Clear VM Control Structure. */
