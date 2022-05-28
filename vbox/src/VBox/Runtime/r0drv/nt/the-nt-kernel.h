@@ -1,4 +1,4 @@
-/* $Id: the-nt-kernel.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: the-nt-kernel.h 4219 2007-08-18 23:42:23Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the NT kernel.
  */
@@ -44,6 +44,7 @@ __END_DECLS
 # error "RT_OS_WINDOWS must be defined!"
 #endif
 
+#include <iprt/param.h>
 #ifndef PAGE_OFFSET_MASK
 # define PAGE_OFFSET_MASK (PAGE_SIZE - 1)
 #endif
