@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 4592 2007-09-07 04:35:17Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -193,7 +193,7 @@ static uint64_t tmVirtualGetRawNanoTS(PVM pVM)
      * we raced somebody while the GIP was updated, since these are events
      * that might occure at any point in the return path as well.
      */
-    for (int cTries = 100;;)
+    for (int cTries = 50;;)
     {
         u64PrevNanoTS = ASMAtomicReadU64(&pVM->tm.s.u64VirtualRawPrev);
         if (u64PrevNanoTS >= u64NanoTS)
@@ -201,6 +201,8 @@ static uint64_t tmVirtualGetRawNanoTS(PVM pVM)
         if (ASMAtomicCmpXchgU64(&pVM->tm.s.u64VirtualRawPrev, u64NanoTS, u64PrevNanoTS))
             break;
         AssertBreak(--cTries <= 0, );
+        if (cTries < 25 && !VM_IS_EMT(pVM)) /* give up early */
+            break;
     }
 
     return u64NanoTS;
