@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 4697 2007-09-11 11:13:15Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -74,7 +74,7 @@ typedef struct TRPMGCHYPER
      * @param   pRegFrame       The register frame.
      * @param   uUser           The user argument.
      */
-    DECLCALLBACKMEMBER(int, pfnHandler)(PVM pVM, PCPUMCTXCORE pRegFrame, uintptr_t uUser);
+    DECLGCCALLBACKMEMBER(int, pfnHandler, (PVM pVM, PCPUMCTXCORE pRegFrame, uintptr_t uUser));
     /** Whatever the handler desires to put here. */
     uintptr_t uUser;
 } TRPMGCHYPER;
