@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 3169 2007-06-20 08:58:50Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 3171 2007-06-20 09:13:12Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1303,6 +1303,10 @@ ResumeExecution:
             Log2(("EM status from IO at %VGv %x size %d: %Vrc\n", pCtx->eip, IoExitInfo.n.u16Port, uIOSize, rc));
             break;
         }
+        /* Force instruction emulation and not a reschedule to the recompiler as that will come right back to us */
+        if (rc == VINF_EM_RESCHEDULE_REM)
+            rc = VINF_IOM_HC_IOPORT_READWRITE;
+
 #ifdef VBOX_STRICT
         if (rc == VINF_IOM_HC_IOPORT_READ)
             Assert(IoExitInfo.n.u1Type != 0);
