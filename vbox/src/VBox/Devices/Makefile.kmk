@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5651 2007-11-09 14:59:08Z vboxsync $
+# $Id: Makefile.kmk 5698 2007-11-12 06:31:09Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -524,8 +524,7 @@ Drivers_SOURCES.solaris = \
  ifdef VBOX_WITH_CROSSBOW
   Drivers_DEFS += VBOX_WITH_CROSSBOW
   Drivers_INCS += \
-	Network/solaris \
-	Network/solaris/sys #why sys?
+	Network/solaris
  endif
 endif
 

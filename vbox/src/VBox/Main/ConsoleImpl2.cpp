@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 5637 2007-11-07 15:36:22Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 5698 2007-11-12 06:31:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1025,8 +1025,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
 #  ifdef VBOX_WITH_CROSSBOW
                         /* Crossbow: needs the MAC address for setting up TAP. */
-                        /** @todo r=bird: pass it as bytes like we do above for the NIC and drop the messy double conversion. */
-                        //rc = CFGMR3InsertBytes(pCfg, "MAC", &Mac, sizeof(Mac)); RC_CHECK();
+                        rc = CFGMR3InsertBytes(pCfg, "MAC", &Mac, sizeof(Mac)); RC_CHECK();
 #  endif
 # else
                         rc = CFGMR3InsertInteger(pCfg, "FileHandle", pConsole->maTapFD[ulInstance]); RC_CHECK();
