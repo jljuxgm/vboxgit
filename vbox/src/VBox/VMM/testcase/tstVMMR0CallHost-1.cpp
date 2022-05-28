@@ -1,4 +1,4 @@
-/* $Id: tstVMMR0CallHost-1.cpp 161 2007-01-18 18:25:45Z vboxsync $ */
+/* $Id: tstVMMR0CallHost-1.cpp 726 2007-02-06 19:21:48Z vboxsync $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
@@ -61,6 +61,11 @@ int foo(int i, int iZero, int iMinusOne)
 
 DECLCALLBACK(int) tst2(intptr_t i)
 {
+    if (i < 0 || i > 8192)
+    {
+        RTPrintf("tstVMMR0CallHost-1: FAILURE - i=%d is out of range [0..8192]\n", i);
+        return 1;
+    }
     int iExpect = (i % 7) == 0 ? i + 10000 : i;
     int rc = foo(i, 0, -1);
     if (rc != iExpect)
