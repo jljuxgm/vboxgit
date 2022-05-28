@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 4502 2007-09-04 05:51:32Z vboxsync $ */
+/* $Id: CFGM.cpp 4503 2007-09-04 05:57:53Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  *
@@ -1543,7 +1543,7 @@ CFGMR3DECL(int) CFGMR3InsertString(PCFGMNODE pNode, const char *pszName, const c
  * @param   pvBytes         The value.
  * @param   cbBytes         The value size.
  */
-CFGMR3DECL(int) CFGMR3InsertBytes(PCFGMNODE pNode, const char *pszName, void *pvBytes, size_t cbBytes)
+CFGMR3DECL(int) CFGMR3InsertBytes(PCFGMNODE pNode, const char *pszName, const void *pvBytes, size_t cbBytes)
 {
     int rc;
     if (pNode)
