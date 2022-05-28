@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 2541 2007-05-08 16:15:28Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 2545 2007-05-08 16:50:08Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -909,8 +909,8 @@ CPUMDECL(void) CPUMSetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
                        && pVM->cpum.s.aGuestCpuIdStd[0].ecx == 0x6c65746e /* ineI */
                        && pVM->cpum.s.aGuestCpuIdStd[0].edx == 0x49656e69 /* ntel */)
                    || (   pVM->cpum.s.aGuestCpuIdStd[0].ebx == 0x68747541 /* Auth */
-                       && pVM->cpum.s.aGuestCpuIdStd[0].ebx == 0x69746e65 /* enti */
-                       && pVM->cpum.s.aGuestCpuIdStd[0].ebx == 0x444d4163 /* cAMD */))
+                       && pVM->cpum.s.aGuestCpuIdStd[0].ecx == 0x69746e65 /* enti */
+                       && pVM->cpum.s.aGuestCpuIdStd[0].edx == 0x444d4163 /* cAMD */))
                 && pVM->cpum.s.aGuestCpuIdStd[0].eax >= 1)
                 pVM->cpum.s.aGuestCpuIdStd[1].edx |= X86_CPUID_FEATURE_EDX_APIC;
             if (    pVM->cpum.s.aGuestCpuIdExt[0].eax >= 0x80000001
