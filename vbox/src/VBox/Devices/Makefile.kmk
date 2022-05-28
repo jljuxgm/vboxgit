@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3888 2007-07-26 16:26:39Z vboxsync $
+# $Id: Makefile.kmk 3953 2007-08-01 08:20:33Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -180,11 +180,6 @@ DevicesR3_SOURCES       = \
 	Storage/fdc.c \
 	Serial/DevSerial.cpp \
 	Parallel/DevParallel.cpp
-
-ifeq (0,1)
-DevicesR3_SOURCES += \
-	Network/ne2000.c
-endif
 
 ifdef VBOX_WITH_USB
 DevicesR3_DEFS         += VBOX_WITH_USB IN_USB_R3
