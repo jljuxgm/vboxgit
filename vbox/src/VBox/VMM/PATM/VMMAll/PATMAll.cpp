@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 1106 2007-02-28 13:06:39Z vboxsync $ */
+/* $Id: PATMAll.cpp 1110 2007-02-28 14:47:39Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -635,7 +635,6 @@ PATMDECL(int) PATMHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                         rc |= MMGCRamRead(pVM, &esp,     pIretFrame + 12, 4);
                         rc |= MMGCRamRead(pVM, &selSS,   pIretFrame + 16, 4);
 
-                        Log(("PATMGC: IRET stack frame: return address %04X:%VGv eflags=%08x ss:esp=%04X:%VGv\n", selCS, eip, uEFlags, selSS, esp));
                         if (uEFlags & X86_EFL_VM)
                         {
                             uint32_t selDS, selES, selFS, selGS;
@@ -644,8 +643,13 @@ PATMDECL(int) PATMHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                             rc |= MMGCRamRead(pVM, &selFS,   pIretFrame + 28, 4);
                             rc |= MMGCRamRead(pVM, &selGS,   pIretFrame + 32, 4);
                             if (rc == VINF_SUCCESS)
-                                Log(("PATMGC: IRET stack frame: DS=%04X ES=%04X FS=%04X GS=%04X\n", selDS, selES, selFS, selGS));
+                            {
+                                Log(("PATMGC: IRET->VM stack frame: return address %04X:%VGv eflags=%08x ss:esp=%04X:%VGv\n", selCS, eip, uEFlags, selSS, esp));
+                                Log(("PATMGC: IRET->VM stack frame: DS=%04X ES=%04X FS=%04X GS=%04X\n", selDS, selES, selFS, selGS));
+                            }
                         }
+                        else
+                            Log(("PATMGC: IRET stack frame: return address %04X:%VGv eflags=%08x ss:esp=%04X:%VGv\n", selCS, eip, uEFlags, selSS, esp));
                     }
                     else
                         Log(("PATMGC: IRET stack frame: return address %04X:%VGv eflags=%08x\n", selCS, eip, uEFlags));
