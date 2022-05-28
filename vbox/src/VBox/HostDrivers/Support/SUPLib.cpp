@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 4755 2007-09-13 08:05:08Z vboxsync $ */
+/* $Id: SUPLib.cpp 4765 2007-09-13 10:09:04Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -783,6 +783,52 @@ SUPR3DECL(int) SUPPageFree(void *pvPages, size_t cPages)
      */
     return suplibOsPageFree(pvPages, cPages);
 #endif
+}
+
+SUPR3DECL(int) SUPPageAllocLocked(size_t cPages, void **ppvPages)
+{
+    /*
+     * Validate.
+     */
+    if (cPages == 0)
+    {
+        AssertMsgFailed(("Invalid param cPages=0, must be > 0\n"));
+        return VERR_INVALID_PARAMETER;
+    }
+    AssertPtr(ppvPages);
+    if (!ppvPages)
+        return VERR_INVALID_PARAMETER;
+    *ppvPages = NULL;
+
+    SUPALLOCPAGE_IN  In;
+    SUPALLOCPAGE_OUT Out;
+
+    In.u32Cookie        = g_u32Cookie;
+    In.u32SessionCookie = g_u32SessionCookie;
+    In.cPages           = cPages;
+    Out.u32Cookie       = g_u32Cookie;
+    int rc = suplibOsIOCtl(SUP_IOCTL_PAGE_ALLOC, &In, sizeof(In), &Out, sizeof(Out));
+    if (VBOX_SUCCESS(rc))
+        *ppvPages = Out.pvR3;
+
+    return rc;
+}
+
+SUPR3DECL(int) SUPPageFreeLocked(void *pvPages, size_t cPages)
+{
+    /*
+     * Validate.
+     */
+    AssertPtr(pvPages);
+    if (!pvPages)
+        return VINF_SUCCESS;
+
+    SUPFREEPAGE_IN  In;
+
+    In.u32Cookie        = g_u32Cookie;
+    In.u32SessionCookie = g_u32SessionCookie;
+    In.pvR3             = pvPages;
+    return suplibOsIOCtl(SUP_IOCTL_PAGE_FREE, &In, sizeof(In), NULL, 0);
 }
 
 
