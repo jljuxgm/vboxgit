@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: CPUMInternal.h 140 2007-01-18 15:28:16Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -152,7 +152,7 @@ typedef struct CPUMHOSTCTX
     /* padding to get 32byte aligned size */
     uint8_t         auPadding[24];
 
-#else  /* 64-bit */
+#elif HC_ARCH_BITS == 64
     /** General purpose register ++
      * { */
     //uint64_t        rax; - scratch
@@ -233,7 +233,9 @@ typedef struct CPUMHOSTCTX
 
     /* padding to get 32byte aligned size */
     uint8_t         auPadding[8];
-#endif /* 64-bit */
+#else
+# error HC_ARCH_BITS not defined
+#endif 
 } CPUMHOSTCTX, *PCPUMHOSTCTX;
 
 
