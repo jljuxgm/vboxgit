@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 4079 2007-08-07 17:23:40Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 4083 2007-08-07 17:41:09Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -138,7 +138,7 @@ HWACCMR0DECL(int) HWACCMR0Init(PVM pVM)
                         int rc = VMXEnable(pVM->hwaccm.s.vmx.pVMXONPhys);
                         if (VBOX_FAILURE(rc))
                         {
-                            /* KVM leaves the CPU in VMX operation. Not only is this not allowed, it will crash the host when we enter raw mode, because
+                            /* KVM leaves the CPU in VMX root mode. Not only is this not allowed, it will crash the host when we enter raw mode, because
                              * (a) clearing X86_CR4_VMXE in CR4 causes a #GP
                              * (b) turning off paging causes a #GP
                              *
