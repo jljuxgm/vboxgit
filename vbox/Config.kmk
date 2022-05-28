@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4392 2007-08-27 17:22:49Z vboxsync $
+# $Id: Config.kmk 4398 2007-08-28 09:44:44Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1124,11 +1124,12 @@ ifeq ($(BUILD_TARGET),win)
  ifeq ($(BUILD_TARGET_ARCH),x86)
   VBOX_PATH_QT ?= $(PATH_DEVTOOLS_TRG)/qt/v3.3.3
   LIB_QT ?= $(VBOX_PATH_QT)/lib/dynamic/qt-mt333.lib
- else
-  VBOX_PATH_QT ?= $(PATH_DEVTOOLS_TRG)/qt/v3.3.6
-  LIB_QT ?= $(VBOX_PATH_QT)/lib/dynamic/qt-mt336.lib
- endif
   LIB_QTMAIN ?= $(VBOX_PATH_QT)/lib/dynamic/qtmain.lib
+ else
+  VBOX_PATH_QT ?= $(PATH_DEVTOOLS_TRG)/qt/v3.3.8
+  LIB_QT ?= $(VBOX_PATH_QT)/lib/qt-mt338.lib
+  LIB_QTMAIN ?= $(VBOX_PATH_QT)/lib/qtmain.lib
+ endif
  ifndef QTDIR
   QTDIR := $(sort $(wildcard $(PATH_DEVTOOLS_BLD)/v*))
   QTDIR := $(call lastword,$(QTDIR))
@@ -2514,7 +2515,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4392 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4398 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
