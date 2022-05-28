@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 2160 2007-04-18 12:25:41Z vboxsync $ */
+/* $Id: EM.cpp 2161 2007-04-18 12:26:49Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -1005,10 +1005,7 @@ static int emR3HwAccStep(PVM pVM)
      */
     do
     {
-        if (pVM->em.s.enmState == EMSTATE_DEBUG_HYPER)
-            rc = VMMR3ResumeHyper(pVM);
-        else
-            rc = VMMR3RawRunGC(pVM);
+        rc = VMMR3HwAccRunGC(pVM);
     } while (   rc == VINF_SUCCESS
              || rc == VINF_EM_RAW_INTERRUPT);
     VM_FF_CLEAR(pVM, VM_FF_RESUME_GUEST_MASK);
