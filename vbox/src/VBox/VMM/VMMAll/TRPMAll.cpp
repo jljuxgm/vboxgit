@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 1930 2007-04-04 13:18:48Z vboxsync $ */
+/* $Id: TRPMAll.cpp 1976 2007-04-06 16:55:59Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -432,6 +432,7 @@ TRPMDECL(int) TRPMForwardTrap(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t iGate, u
         int         rc;
 
         Assert(PATMAreInterruptsEnabledByCtxCore(pVM, pRegFrame));
+        Assert(!VM_FF_ISPENDING(pVM, VM_FF_SELM_SYNC_GDT | VM_FF_SELM_SYNC_LDT | VM_FF_TRPM_SYNC_IDT | VM_FF_SELM_SYNC_TSS));
 
         /* Get the current privilege level. */
         cpl = CPUMGetGuestCPL(pVM, pRegFrame);
