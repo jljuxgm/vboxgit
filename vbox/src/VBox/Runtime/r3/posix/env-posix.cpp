@@ -1,4 +1,4 @@
-/* $Id: env-posix.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: env-posix.cpp 4475 2007-09-01 01:21:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Environment, Posix.
  */
@@ -22,6 +22,7 @@
 #include <iprt/env.h>
 #include <iprt/string.h>
 #include <iprt/alloca.h>
+#include <iprt/assert.h>
 
 #include <stdlib.h>
 #include <errno.h>
@@ -73,5 +74,20 @@ RTDECL(int) RTEnvSet(const char *pszVar, const char *pszValue)
         return VINF_SUCCESS;
     return RTErrConvertFromErrno(errno);
 #endif 
+}
+
+
+RTDECL(int) RTEnvUnset(const char *pszVar)
+{
+    AssertReturn(!strchr(pszVar, '='), VERR_INVALID_PARAMETER);
+
+    /* Check that it exists first.  */
+    if (!RTEnvExist(pszVar))
+        return VINF_ENV_VAR_NOT_FOUND;
+
+    /* Ok, try remove it. */
+    if (!putenv((char *)pszVar))
+        return VINF_SUCCESS;
+    return RTErrConvertFromErrno(errno);
 }
 

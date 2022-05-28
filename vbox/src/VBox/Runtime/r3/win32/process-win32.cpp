@@ -1,4 +1,4 @@
-/* $Id: process-win32.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: process-win32.cpp 4475 2007-09-01 01:21:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Process, Win32.
  */
@@ -28,6 +28,7 @@
 #include <iprt/process.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
+#include <iprt/env.h>
 
 
 /*
@@ -68,23 +69,19 @@ NtQueryInformationProcess (
 
 /** @todo r=michael This function currently does not work correctly if the arguments
                     contain spaces. */
-RTR3DECL(int)   RTProcCreate(const char *pszExec, const char * const *papszArgs, const char * const *papszEnv, unsigned fFlags, PRTPROCESS pProcess)
+RTR3DECL(int)   RTProcCreate(const char *pszExec, const char * const *papszArgs, RTENV Env, unsigned fFlags, PRTPROCESS pProcess)
 {
     /*
      * Validate input.
      */
-    if (!pszExec || !*pszExec)
-    {
-        AssertMsgFailed(("no exec\n"));
-        return VERR_INVALID_PARAMETER;
-    }
-    if (fFlags)
-    {
-        AssertMsgFailed(("invalid flags!\n"));
-        return VERR_INVALID_PARAMETER;
-    }
+    AssertPtrReturn(pszExec, VERR_INVALID_POINTER);
+    AssertReturn(*pszExec, VERR_INVALID_PARAMETER);
+    AssertReturn(!fFlags, VERR_INVALID_PARAMETER);
+    AssertReturn(Env != NIL_RTENV, VERR_INVALID_PARAMETER);
+    const char * const *papszEnv = RTEnvGetExecEnvP(Env);
+    AssertPtrReturn(papszEnv, VERR_INVALID_HANDLE);
     /* later: path searching. */
-
+    
     /*
      * Spawn the child.
      */

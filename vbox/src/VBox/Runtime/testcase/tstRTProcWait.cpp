@@ -1,4 +1,4 @@
-/* $Id: tstRTProcWait.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: tstRTProcWait.cpp 4475 2007-09-01 01:21:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime Testcase - RTProcWait.
  */
@@ -24,6 +24,7 @@
 #include <iprt/thread.h>
 #include <iprt/stream.h>
 #include <iprt/semaphore.h>
+#include <iprt/env.h>
 #include <iprt/err.h>
 #include <iprt/string.h>
 
@@ -42,7 +43,7 @@ DECLCALLBACK(int) SpawnerThread(RTTHREAD Thread, void *pvUser)
     PSPAWNERARGS pArgs = (PSPAWNERARGS)pvUser;
     pArgs->Process = NIL_RTPROCESS;
     const char *apszArgs[3] = { pArgs->pszExe, "child", NULL };
-    return RTProcCreate(apszArgs[0], apszArgs, NULL, 0, &pArgs->Process);
+    return RTProcCreate(apszArgs[0], apszArgs, RTENV_DEFAULT, 0, &pArgs->Process);
 }
 
 

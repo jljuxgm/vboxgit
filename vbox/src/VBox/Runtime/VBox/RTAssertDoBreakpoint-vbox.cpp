@@ -1,4 +1,4 @@
-/* $Id: RTAssertDoBreakpoint-vbox.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: RTAssertDoBreakpoint-vbox.cpp 4475 2007-09-01 01:21:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Assertions, generic RTAssertDoBreakpoint.
  */
@@ -86,7 +86,7 @@ RTDECL(bool)    RTAssertDoBreakpoint(void)
             NULL
         };
         RTPROCESS Process;
-        int rc = RTProcCreate(apszArgs[0], &apszArgs[0], NULL, 0, &Process);
+        int rc = RTProcCreate(apszArgs[0], &apszArgs[0], RTENV_DEFAULT, 0, &Process);
         if (RT_FAILURE(rc))
             return false;
 
