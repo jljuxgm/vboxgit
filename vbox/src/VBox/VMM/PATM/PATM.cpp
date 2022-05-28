@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 3696 2007-07-18 17:00:33Z vboxsync $ */
+/* $Id: PATM.cpp 4057 2007-08-07 10:05:48Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -1756,6 +1756,7 @@ static int patmRecompileCallback(PVM pVM, DISCPUSTATE *pCpu, GCPTRTYPE(uint8_t *
         bool fGenerateJmpBack = (pCurInstrGC + pCpu->opsize - pInstrGC >= SIZEOF_NEARJUMP32);
 
         /* Not an exit point for IDT handler or function replacement patches */
+        /* Note: keep IOPL in mind when changing any of this!! (see comments in PATMA.asm, PATMPopf32Replacement) */
         if (pPatch->flags & (PATMFL_IDTHANDLER|PATMFL_DUPLICATE_FUNCTION))
             fGenerateJmpBack = false;
 

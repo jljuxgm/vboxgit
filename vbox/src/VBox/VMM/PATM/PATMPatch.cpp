@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 3020 2007-06-04 12:01:53Z vboxsync $ */
+/* $Id: PATMPatch.cpp 4057 2007-08-07 10:05:48Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -474,7 +474,7 @@ int patmPatchGenPopf(PVM pVM, PPATCHINFO pPatch, GCPTRTYPE(uint8_t *) pReturnAdd
 
     Log(("patmPatchGenPopf at %VGv\n", pReturnAddrGC));
 
-    /** @todo check if we mess up IOPL here (theoretical possibility afaik) */
+    /* Note: keep IOPL in mind when changing any of this!! (see comments in PATMA.asm, PATMPopf32Replacement) */
     if (fSizeOverride == true)
     {
         Log(("operand size override!!\n"));
