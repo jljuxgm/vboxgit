@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 2153 2007-04-18 09:24:15Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 2228 2007-04-19 13:52:53Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2677,7 +2677,7 @@ static void pgmPoolTracDerefGCPhysHint(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTHCP
         unsigned iPage = pRam->cb >> PAGE_SHIFT;
         while (iPage-- > 0)
         {
-            Assert(pRam->aHCPhys[iPage] & X86_PTE_PAE_PG_MASK);
+            AssertMsg(pRam->aHCPhys[iPage] & X86_PTE_PAE_PG_MASK, ("GCPhysHint=%VGp\n", GCPhysHint));
             if ((pRam->aHCPhys[iPage] & X86_PTE_PAE_PG_MASK) == HCPhys)
             {
                 Log4(("pgmPoolTracDerefGCPhysHint: Linear HCPhys=%VHp GCPhysHint=%VGp GCPhysReal=%VGp\n",

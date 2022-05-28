@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 2213 2007-04-19 11:25:58Z vboxsync $ */
+/* $Id: HWACCM.cpp 2228 2007-04-19 13:52:53Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -456,7 +456,7 @@ HWACCMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
 
     Assert(pVM->fHWACCMEnabled);
 
-#if 0
+#if 1
     /* AMD SVM supports real & protected mode with or without paging. */
     if (pVM->hwaccm.s.svm.fEnabled)
     {

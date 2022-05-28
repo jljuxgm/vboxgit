@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 2108 2007-04-16 16:26:17Z vboxsync $ */
+/* $Id: VMMR0.cpp 2228 2007-04-19 13:52:53Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -726,6 +726,9 @@ void R0LogFlush()
 }
 
 #ifdef DEBUG_NO_RING0_ASSERTIONS
+#undef LOG_GROUP
+#define LOG_GROUP LOG_GROUP_EM
+
 /**
  * Check if we really want to hit a breakpoint.
  * Can jump back to ring-3 when the longjmp is armed.
@@ -746,8 +749,6 @@ DECLEXPORT(bool) RTCALL  RTAssertDoBreakpoint()
 }
 
 
-#undef LOG_GROUP
-#define LOG_GROUP LOG_GROUP_EM
 
 /** Runtime assert implementation for Native Win32 Ring-0. */
 DECLEXPORT(void) RTCALL AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
