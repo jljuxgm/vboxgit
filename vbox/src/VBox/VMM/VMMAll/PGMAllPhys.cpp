@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 2873 2007-05-25 14:35:59Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 2874 2007-05-25 14:37:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1224,7 +1224,7 @@ PGMDECL(void) PGMPhysWrite(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t c
                                                 GCPhys, cbWrite,
                                                 (HCPhys & (MM_RAM_FLAGS_RESERVED | MM_RAM_FLAGS_MMIO | MM_RAM_FLAGS_MMIO2 | MM_RAM_FLAGS_VIRTUAL_ALL | MM_RAM_FLAGS_VIRTUAL_WRITE | MM_RAM_FLAGS_PHYSICAL_ALL | MM_RAM_FLAGS_PHYSICAL_WRITE))));
                         /* skip the write */
-                        cb = cb;
+                        cb = cbWrite;
                         break;
                 }
 
