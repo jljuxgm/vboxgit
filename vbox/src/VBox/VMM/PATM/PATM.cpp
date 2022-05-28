@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 4396 2007-08-28 07:21:28Z vboxsync $ */
+/* $Id: PATM.cpp 4772 2007-09-13 13:35:19Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -63,7 +63,7 @@ static int          patmDisableUnusablePatch(PVM pVM, RTGCPTR pInstrGC, RTGCPTR 
 static int          patmActivateInt3Patch(PVM pVM, PPATCHINFO pPatch);
 static int          patmDeactivateInt3Patch(PVM pVM, PPATCHINFO pPatch);
 
-#ifdef DEBUG // keep gcc quiet
+#ifdef LOG_ENABLED // keep gcc quiet
 static bool         patmIsCommonIDTHandlerPatch(PVM pVM, RTGCPTR pInstrGC);
 #endif
 #ifdef VBOX_WITH_STATISTICS
