@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 4901 2007-09-19 13:29:27Z vboxsync $ */
+/* $Id: MM.cpp 5646 2007-11-09 09:45:56Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager).
  */
@@ -189,7 +189,11 @@ MMR3DECL(int) MMR3InitPaging(PVM pVM)
     bool        fPreAlloc;
     int rc = CFGMR3QueryBool(CFGMR3GetRoot(pVM), "RamPreAlloc", &fPreAlloc);
     if (rc == VERR_CFGM_VALUE_NOT_FOUND)
+#ifdef VBOX_WITH_PREALLOC_RAM_BY_DEFAULT
+        fPreAlloc = true;
+#else
         fPreAlloc = false;
+#endif
     else
         AssertMsgRCReturn(rc, ("Configuration error: Failed to query integer \"RamPreAlloc\", rc=%Vrc.\n", rc), rc);
 
