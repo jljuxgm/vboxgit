@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 2295 2007-04-20 23:41:19Z vboxsync $ */
+/* $Id: PGMInternal.h 2663 2007-05-16 12:36:50Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1464,6 +1464,12 @@ typedef struct PGM
     PGMPHYSCACHE                    pgmphysreadcache;
     /** PGMPhysWrite cache */
     PGMPHYSCACHE                    pgmphyswritecache;
+
+#ifdef VBOX_STRICT
+    /** Physical memory was already saved, no more writes which wouldn't be part of the
+     *  saved state! */
+    bool                            fNoMorePhysWrites;
+#endif
 
     /** @name Release Statistics
      * @{ */

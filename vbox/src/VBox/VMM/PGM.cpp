@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 2559 2007-05-09 14:00:38Z vboxsync $ */
+/* $Id: PGM.cpp 2663 2007-05-16 12:36:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -445,6 +445,18 @@ static const DBGCCMD    g_aCmds[] =
 #undef PGM_SHW_NAME_R0_STR
 
 
+/**
+ * The only purpose of this function is to clear the fNoMorePhysWrites flag
+ * which prevents writing to physical memory once pgmR3Save() is called.
+ */
+#ifdef VBOX_STRICT
+DECLCALLBACK(void)
+PGMR3ResetNoMorePhysWritesFlag(PVM pVM, VMSTATE aState, VMSTATE aOldState, void *aUser)
+{
+    if (aState == VMSTATE_RUNNING)
+        pVM->pgm.s.fNoMorePhysWrites = false;
+}
+#endif
 
 
 /**
@@ -480,6 +492,10 @@ PGMR3DECL(int) PGMR3Init(PVM pVM)
         pVM->pgm.s.apGstPaePDsGC[i]     = 0;
         pVM->pgm.s.aGCPhysGstPaePDs[i]  = NIL_RTGCPHYS;
     }
+
+#ifdef VBOX_STRICT
+    VMR3AtStateRegister (pVM, PGMR3ResetNoMorePhysWritesFlag, NULL);
+#endif
 
     /*
      * Get the configured RAM size - to estimate saved state size.
@@ -1327,6 +1343,11 @@ PGMR3DECL(int) PGMR3Term(PVM pVM)
 static DECLCALLBACK(int) pgmR3Save(PVM pVM, PSSMHANDLE pSSM)
 {
     PPGM pPGM = &pVM->pgm.s;
+
+#ifdef VBOX_STRICT
+    /* No more writes to physical memory after this point! */
+    pVM->pgm.s.fNoMorePhysWrites = true;
+#endif
 
     /*
      * Save basic data (required / unaffected by relocation).

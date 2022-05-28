@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 2095 2007-04-16 12:00:54Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 2663 2007-05-16 12:36:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -945,7 +945,15 @@ PGMDECL(void) PGMPhysWrite(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t c
     if (cbWrite == 0)
         return;
 
+#ifdef VBOX_STRICT
+    /*
+     * pgmR3Save() was already called, any bytes we write now will not be part of the
+     * saved state!
+     */
+    AssertMsg(pVM->pgm.s.fNoMorePhysWrites == false, ("Calling PGMPhysWrite after pgmR3Save()!\n"));
+
     LogFlow(("PGMPhysWrite: %VGp %d\n", GCPhys, cbWrite));
+#endif
 
 #ifdef IN_RING3
     if (!VM_IS_EMT(pVM))
