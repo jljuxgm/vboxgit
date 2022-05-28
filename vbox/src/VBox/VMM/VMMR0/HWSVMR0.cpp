@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 1292 2007-03-07 09:17:27Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 1296 2007-03-07 12:24:37Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -963,31 +963,8 @@ ResumeExecution:
             goto ResumeExecution;
         }
 
-        case X86_XCPT_GP:   /* General protection failure exception.*/
-        {
-            if (pCtx->eflags.Bits.u1VM == 1)
-            {
-                Log(("#GP in V86 mode -> fall back\n"));
-                /** @note workaround for #GP loop; looks like an SVM bug */
-                rc = VINF_EM_RAW_EMULATE_INSTR;
-                break;
-            }
-            STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitGuestGP);
-
-            Event.au64[0]           = 0;
-            Event.n.u3Type          = SVM_EVENT_EXCEPTION;
-            Event.n.u1Valid         = 1;
-            Event.n.u8Vector        = X86_XCPT_GP;
-            Event.n.u1ErrorCodeValid= 1;
-            Event.n.u32ErrorCode    = pVMCB->ctrl.u64ExitInfo1; /* EXITINFO1 = error code */
-            Log(("Trap %x at %VGv\n", vector, pCtx->eip));
-            SVMR0InjectEvent(pVM, pVMCB, pCtx, &Event);
-
-            STAM_PROFILE_ADV_STOP(&pVM->hwaccm.s.StatExit, x);
-            goto ResumeExecution;
-        }
-
 #ifdef VBOX_STRICT
+        case X86_XCPT_GP:   /* General protection failure exception.*/
         case X86_XCPT_UD:   /* Unknown opcode exception. */
         case X86_XCPT_DE:   /* Debug exception. */
         case X86_XCPT_SS:   /* Stack segment exception. */
@@ -1000,6 +977,11 @@ ResumeExecution:
 
             switch(vector)
             {
+            case X86_XCPT_GP:
+                STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitGuestGP);
+                Event.n.u1ErrorCodeValid    = 1;
+                Event.n.u32ErrorCode        = pVMCB->ctrl.u64ExitInfo1; /* EXITINFO1 = error code */
+                break;
             case X86_XCPT_DE:
                 STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitGuestDE);
                 break;
