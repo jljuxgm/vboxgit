@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 3216 2007-06-21 15:47:31Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 3279 2007-06-25 15:28:24Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -78,6 +78,17 @@ HWACCMR0DECL(int) VMXR0Setup(PVM pVM)
     rc = VMXEnable(pVM->hwaccm.s.vmx.pVMXONPhys);
     if (VBOX_FAILURE(rc))
     {
+#ifdef DEBUG
+        if (rc == VERR_VMX_GENERIC)
+        {
+            RTCCUINTREG instrError;
+
+            VMXReadVMCS(VMX_VMCS_RO_VM_INSTR_ERROR, &instrError);
+            Log(("VMXEnable -> generic error %x\n", instrError));
+        }
+        else
+            Log(("VMXEnable failed with %Vrc\n", rc));
+#endif
         return rc;
     }
 
