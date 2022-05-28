@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 918 2007-02-15 03:30:26Z vboxsync $ */
+/* $Id: tstLdrDisasmTest.cpp 919 2007-02-15 04:48:55Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - RTLdr test object.
  *
@@ -46,7 +46,7 @@ extern "C" DECLIMPORT(int) MyPrintf(const char *pszFormat, ...);
 *******************************************************************************/
 
 /* 32-bit code */
-static uint8_t g_ab32BitCode[] =
+static const uint8_t g_ab32BitCode[] =
 {
     0x55,               // 1000ab50 55              push    ebp
     0x8b,0xec,          // 1000ab51 8bec            mov     ebp,esp
