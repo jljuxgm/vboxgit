@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 5610 2007-11-02 11:10:07Z vboxsync $ */
+/* $Id: PATM.cpp 5612 2007-11-02 11:59:34Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -4726,8 +4726,23 @@ loop_start:
                         }
 
                         /* Find the closest instruction from below; the above quick check ensured that we are indeed in patched code */
-                        pPatchInstrGC = patmGuestGCPtrToClosestPatchGCPtr(pVM, pPatch, pGuestPtrGC);
-                        Assert(pPatchInstrGC);
+                        pPatchInstrGC = patmGuestGCPtrToPatchGCPtr(pVM, pPatch, pGuestPtrGC);
+                        if (!pPatchInstrGC)
+                        {
+                            RTGCPTR  pClosestInstrGC;
+                            uint32_t size;
+
+                            pPatchInstrGC   = patmGuestGCPtrToClosestPatchGCPtr(pVM, pPatch, pGuestPtrGC);
+                            if (pPatchInstrGC)
+                            {
+                                pClosestInstrGC = patmPatchGCPtr2GuestGCPtr(pVM, pPatch, pPatchInstrGC);
+                                Assert(pClosestInstrGC <= pGuestPtrGC);
+                                size            = patmGetInstrSize(pVM, pPatch, pClosestInstrGC);
+                                /* Check if this is not a write into a gap between two patches */
+                                if (pClosestInstrGC + size - 1 < pGuestPtrGC)
+                                    pPatchInstrGC = 0;
+                            }
+                        }
                         if (pPatchInstrGC)
                         {
                             uint32_t PatchOffset = pPatchInstrGC - pVM->patm.s.pPatchMemGC;  /* Offset in memory reserved for PATM. */
