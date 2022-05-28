@@ -1,4 +1,4 @@
-# $Id: Config.kmk 2712 2007-05-18 13:15:41Z vboxsync $
+# $Id: Config.kmk 2724 2007-05-21 09:12:31Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1545,7 +1545,7 @@ TEMPLATE_VBOXR3NP_LDFLAGS.l4 = \
 	$(L4_LIBDIR)/../crt0.s.o \
 	-T$(L4_LIBDIR)/../main_rel.ld \
 	-nostdlib
-TEMPLATE_VBOXR3NP_DEFS.l4 = __PIC__
+TEMPLATE_VBOXR3NP_DEFS.l4 = $(TEMPLATE_VBOXR3NPEXE_DEFS.l4) __PIC__
 ifeq ($(BUILD_TARGET_ARCH),amd64)
  ifneq ($(BUILD_TARGET),win)
   TEMPLATE_VBOXR3NP_DEFS = $(TEMPLATE_VBOXR3NPEXE_DEFS) PIC
