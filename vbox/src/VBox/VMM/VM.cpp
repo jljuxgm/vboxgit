@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 1868 2007-04-02 19:31:04Z vboxsync $ */
+/* $Id: VM.cpp 1871 2007-04-03 01:00:17Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1280,7 +1280,7 @@ static DECLCALLBACK(int) vmR3PowerOff(PVM pVM)
             SUPGLOBALINFOPAGE GipCopy = *g_pSUPGlobalInfoPage;
             for (unsigned i = 0; i < RT_ELEMENTS(GipCopy.aCPUs); i++)
                 if (GipCopy.aCPUs[i].u64CpuHz != 0 && GipCopy.aCPUs[i].u64CpuHz < _1T)
-                    RTLogRelPrintf("%#d: u64CpuHz=%RU64Hz u32TransactionId=%#x u64TSC=%RX64 u64NanoTS=%RX64n", 
+                    RTLogRelPrintf("%#d: u64CpuHz=%RU64Hz u32TransactionId=%#x u64TSC=%RX64 u64NanoTS=%RX64\n", 
                                    i, 
                                    GipCopy.aCPUs[i].u64CpuHz,
                                    GipCopy.aCPUs[i].u32TransactionId,
