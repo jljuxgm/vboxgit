@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 519 2007-02-01 20:21:36Z vboxsync $ */
+/* $Id: CSAM.cpp 593 2007-02-04 14:44:27Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1866,7 +1866,7 @@ static int csamRemovePageRecord(PVM pVM, RTGCPTR GCPtr)
  * @param   GCPtr           The virtual address the guest is writing to. (not correct if it's an alias!)
  * @param   cbBuf           How much it's reading/writing.
  */
-static void CSAMDelayedWriteHandler(PVM pVM, RTGCPTR GCPtr, size_t cbBuf)
+static DECLCALLBACK(void) CSAMDelayedWriteHandler(PVM pVM, RTGCPTR GCPtr, size_t cbBuf)
 {
     int rc = PATMR3PatchWrite(pVM, GCPtr, cbBuf);
     AssertRC(rc);
