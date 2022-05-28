@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4071 2007-08-07 17:07:59Z vboxsync $
+# $Id: Makefile.kmk 4177 2007-08-16 15:02:36Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -315,7 +315,7 @@ ifeq ($(VBOX_LDR_FMT),pe)
 VMMR0_LDFLAGS   = -Entry:VMMR0Entry
 endif
 ifeq ($(VBOX_LDR_FMT),elf)
-VMMR0_LDFLAGS   = -entry=VMMR0Entry
+ VMMR0_LDFLAGS   = -e VMMR0Entry
 endif
 VMMR0_SYSSUFF   = .r0
 VMMR0_SOURCES   = \
