@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 593 2007-02-04 14:44:27Z vboxsync $ */
+/* $Id: CSAM.cpp 758 2007-02-07 17:45:10Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1395,8 +1395,13 @@ uint64_t csamR3CalcPageHash(PVM pVM, RTGCPTR pInstr)
  */
 int csamR3FlushPageRecord(PVM pVM, PCSAMPAGE pPage)
 {
+    RTGCPHYS oldPhys = pPage->GCPhys;
     Log(("csamR3FlushPageRecord: page %VGv has changed -> FLUSH\n", pPage->pPageGC));
 
+    int rc = PGMGstGetPage(pVM, pPage->pPageGC, &pPage->fFlags, &pPage->GCPhys);
+    AssertMsg(VBOX_SUCCESS(rc) || rc == VERR_PAGE_NOT_PRESENT || rc == VERR_PAGE_TABLE_NOT_PRESENT, ("rc = %Vrc\n", rc));
+
+    Log(("Old GCPhys %VGp new %VGp\n", oldPhys, pPage->GCPhys));
     if (pPage->pBitmap == NULL)
     {
         pPage->pBitmap = (uint8_t *)MMR3HeapAllocZ(pVM, MM_TAG_CSAM_PATCH, CSAM_PAGE_BITMAP_SIZE);
