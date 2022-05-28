@@ -1,4 +1,4 @@
-# $Id: Config.kmk 3822 2007-07-25 10:25:24Z vboxsync $
+# $Id: Config.kmk 3826 2007-07-25 11:24:39Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -164,7 +164,7 @@ VBOX_WITH_WIN32_ADDITIONS_SHAREDFOLDERS = 1
 VBOX_WITH_INSTALLER = 1
 # enable VRDP server
 VBOX_WITH_VRDP = 1
-# enable new multiconnection code
+# enable the new VRDP server interface which does not use COM
 VBOX_WITH_VRDP_NO_COM = 1
 # build VRDP authentication modules
 VBOX_WITH_VRDP_AUTHMOD = 1
@@ -2474,7 +2474,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 3822 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 3826 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
