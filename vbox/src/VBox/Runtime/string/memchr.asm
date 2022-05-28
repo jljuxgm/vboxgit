@@ -1,4 +1,4 @@
-; $Id: memchr.asm 194 2007-01-19 21:56:57Z vboxsync $
+; $Id: memchr.asm 1173 2007-03-03 23:38:42Z vboxsync $
 ;; @file
 ; InnoTek Portable Runtime - No-CRT memchr - AMD64 & X86.
 ;
@@ -20,6 +20,8 @@
 ;
 
 %include "iprt/asmdefs.mac"
+
+BEGINCODE
 
 ;;
 ; @param    pv      gcc: rdi  msc: ecx  x86:[esp+4]
