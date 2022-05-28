@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 870 2007-02-13 13:31:48Z vboxsync $ */
+/* $Id: VM.cpp 872 2007-02-13 13:35:21Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -818,7 +818,7 @@ VMR3DECL(int) VMR3Suspend(PVM pVM)
 VMR3DECL(int) VMR3SuspendNoSave(PVM pVM)
 {
     pVM->vm.s.fPreventSaveState = true;
-    return VMR3Suspend(PVM pVM);
+    return VMR3Suspend(pVM);
 }
 
 /**
