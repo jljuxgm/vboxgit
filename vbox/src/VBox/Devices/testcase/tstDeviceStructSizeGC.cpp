@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 1723 2007-03-27 11:49:09Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 1931 2007-04-04 14:04:15Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -57,7 +57,7 @@
 #undef LOG_GROUP
 #include "PC/DevRTC.cpp"
 #undef LOG_GROUP
-#include "PC/apic.c"
+#include "PC/DevAPIC.cpp"
 #undef LOG_GROUP
 #include "Storage/DevATA.cpp"
 #ifdef VBOX_WITH_USB
