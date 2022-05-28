@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 1951 2007-04-05 12:31:37Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 1952 2007-04-05 12:33:18Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -4126,9 +4126,6 @@ bool remR3DisasInstr(CPUState *env, int f32BitCode, char *pszPrefix)
         else
             Log(("%s", szOutput));
     }
-    remR3StateUpdate(pVM);
-    DBGFR3InfoLog(pVM, "cpumguest", pszPrefix);
-
     return true;
 
 #else /* !USE_OLD_DUMP_AND_DISASSEMBLY */
