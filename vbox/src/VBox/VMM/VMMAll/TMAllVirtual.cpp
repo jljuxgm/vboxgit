@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 1057 2007-02-23 20:38:37Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 2075 2007-04-13 12:59:25Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -101,6 +101,23 @@ DECLINLINE(uint64_t) tmVirtualGetRaw(PVM pVM)
  */
 TMDECL(uint64_t) TMVirtualGet(PVM pVM)
 {
+    return TMVirtualGetEx(pVM, true /* check timers */);
+}
+
+/**
+ * Gets the current TMCLOCK_VIRTUAL time
+ *
+ * @returns The timestamp.
+ * @param   pVM             VM handle.
+ * @param   fCheckTimers    Check timers or not
+ *
+ * @remark  While the flow of time will never go backwards, the speed of the
+ *          progress varies due to inaccurate RTTimeNanoTS and TSC. The latter can be
+ *          influenced by power saving (SpeedStep, PowerNow!), while the former
+ *          makes use of TSC and kernel timers.
+ */
+TMDECL(uint64_t) TMVirtualGetEx(PVM pVM, bool fCheckTimers)
+{
     uint64_t u64;
     if (pVM->tm.s.fVirtualTicking)
     {
@@ -110,7 +127,8 @@ TMDECL(uint64_t) TMVirtualGet(PVM pVM)
         /*
          * Use the chance to check for expired timers.
          */
-        if (    !VM_FF_ISSET(pVM, VM_FF_TIMER)
+        if (    fCheckTimers
+            &&  !VM_FF_ISSET(pVM, VM_FF_TIMER)
             &&  (   pVM->tm.s.CTXALLSUFF(paTimerQueues)[TMCLOCK_VIRTUAL].u64Expire <= u64
                  || (   pVM->tm.s.fVirtualSyncTicking
                      && pVM->tm.s.CTXALLSUFF(paTimerQueues)[TMCLOCK_VIRTUAL_SYNC].u64Expire <= u64 - pVM->tm.s.u64VirtualSyncOffset
@@ -129,7 +147,6 @@ TMDECL(uint64_t) TMVirtualGet(PVM pVM)
         u64 = pVM->tm.s.u64Virtual;
     return u64;
 }
-
 
 /**
  * Gets the current TMCLOCK_VIRTUAL_SYNC time.
