@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 2739 2007-05-21 14:53:06Z vboxsync $
+; $Id: HWACCMR0A.asm 2740 2007-05-21 14:55:35Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -442,10 +442,10 @@ ENDPROC VMXResumeVM
 BEGINPROC VMXWriteVMCS64
     xor         rax, rax
 %ifdef ASM_CALL64_GCC
-    and         rdi, 0ffffffffh
+    movzx       rdi, edi
     vmwrite     rdi, rsi
 %else
-    and         rcx, 0ffffffffh
+    movzx       rcx, ecx
     vmwrite     rcx, rdx
 %endif
     jnc         .valid_vmcs
@@ -469,10 +469,10 @@ ENDPROC VMXWriteVMCS64
 BEGINPROC VMXReadVMCS64
     xor         rax, rax
 %ifdef ASM_CALL64_GCC
-    and         rdi, 0ffffffffh
+    movzx       rdi, edi
     vmread      [rsi], rdi
 %else
-    and         rcx, 0ffffffffh
+    movzx       rcx, ecx
     vmread      [rdx], rcx
 %endif
     jnc         .valid_vmcs
