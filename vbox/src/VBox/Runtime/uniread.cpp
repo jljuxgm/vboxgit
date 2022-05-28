@@ -1,4 +1,4 @@
-/* $Id: uniread.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: uniread.cpp 4076 2007-08-07 17:16:51Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Unicode Specification Reader.
  */
@@ -614,10 +614,6 @@ int PrintHeader(const char *argv0)
            " * distribution. VirtualBox OSE is distributed in the hope that it will\n"
            " * be useful, but WITHOUT ANY WARRANTY of any kind.\n"
            " *\n"
-           " * If you received this file as part of a commercial VirtualBox\n"
-           " * distribution, then only the terms of your commercial VirtualBox\n"
-           " * license agreement apply instead of the previous paragraph.\n"
-           " */\n"
            "\n"
            "#include <iprt/uni.h>\n"
            "\n",
