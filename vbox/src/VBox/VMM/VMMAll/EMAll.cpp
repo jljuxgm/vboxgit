@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 4419 2007-08-29 09:18:13Z vboxsync $ */
+/* $Id: EMAll.cpp 4679 2007-09-10 16:04:46Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -289,14 +289,10 @@ DECLINLINE(int) emRamRead(PVM pVM, void *pDest, RTGCPTR GCSrc, uint32_t cb)
      * flushed one of the shadow mappings used by the trapping 
      * instruction and it either flushed the TLB or the CPU reused it.
      */
-    RTGCPHYS    GCPhys;
-    RTGCUINTPTR offset;
-
-    offset = (RTGCUINTPTR)GCSrc & PAGE_OFFSET_MASK;
-
+    RTGCPHYS GCPhys;
     rc = PGMPhysGCPtr2GCPhys(pVM, GCSrc, &GCPhys);
     AssertRCReturn(rc, rc);
-    PGMPhysRead(pVM, GCPhys + offset, pDest, cb);
+    PGMPhysRead(pVM, GCPhys, pDest, cb);
     return VINF_SUCCESS;
 #else
     return PGMPhysReadGCPtrSafe(pVM, pDest, GCSrc, cb);
