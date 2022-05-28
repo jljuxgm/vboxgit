@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 1998 2007-04-09 14:03:08Z vboxsync $ */
+/* $Id: EMAll.cpp 1999 2007-04-09 18:51:16Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1264,6 +1264,7 @@ static int emInterpretBitTest(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame
                 break;
             default:
                 AssertFailed();
+                eflags = 0;
                 break;
             }
             Log2(("emInterpretBtx: val=%x CF=%d\n", valpar1, !!(eflags & X86_EFL_CF)));
