@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5360 2007-10-17 15:24:14Z vboxsync $
+# $Id: Makefile.kmk 5376 2007-10-18 14:17:48Z vboxsync $
 ## @file
 # Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -100,7 +100,8 @@ VBoxBFE_LIBS += \
 endif
 ifneq ($(filter-out win os2 l4 darwin,$(BUILD_TARGET)),) # X11
 VBoxBFE_LIBS += \
-	$(VBOX_XCURSOR_LIBS)
+	$(VBOX_XCURSOR_LIBS) \
+	$(LIB_X11)
 VBoxBFE_LIBPATH += \
 	$(VBOX_LIBPATH_X11)
 endif
