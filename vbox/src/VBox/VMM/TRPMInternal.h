@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 347 2007-01-26 09:36:22Z vboxsync $ */
+/* $Id: TRPMInternal.h 397 2007-01-28 02:34:06Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -178,11 +178,26 @@ TRPMGCDECL(int) trpmgcShadowIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMC
 
 
 #ifdef IN_RING0
+
+/**
+ * Calls the interrupt gate as if we received an interrupt while in Ring-0.
+ *
+ * Returns with interrupts enabled.
+ *
+ * @param   uIP     The interrupt gate IP.
+ * @param   SelCS   The interrupt gate CS.
+ * @param   RSP     The interrupt gate RSP. ~0 if no stack switch should take place. (only AMD64)
+ */
+DECLASM(void) trpmR0DispatchHostInterrupt(RTR0UINTPTR uIP, RTSEL SelCS, RTR0UINTPTR RSP);
+
+# ifndef VBOX_WITHOUT_IDT_PATCHING
 /**
  * Code used for the dispatching of interrupts in HC.
  * @internal
  */
 DECLASM(int) trpmR0InterruptDispatcher(void);
+# endif /* !VBOX_WITHOUT_IDT_PATCHING */
+
 #endif
 
 /** @} */
