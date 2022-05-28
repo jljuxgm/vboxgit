@@ -1,4 +1,4 @@
-/* $Id: DBGFGC.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: DBGFGC.cpp 5605 2007-11-01 16:09:26Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, GC part.
  */
@@ -53,7 +53,7 @@ DBGFGCDECL(int) DBGFGCTrap01Handler(PVM pVM, PCPUMCTXCORE pRegFrame, RTUINTREG u
         Assert(X86_DR6_B0 == 1 && X86_DR6_B1 == 2 && X86_DR6_B2 == 4 && X86_DR6_B3 == 8);
         for (unsigned iBp = 0; iBp < ELEMENTS(pVM->dbgf.s.aHwBreakpoints); iBp++)
         {
-            if (    (uDr6 & BIT(iBp))
+            if (    (uDr6 & RT_BIT(iBp))
                 &&  pVM->dbgf.s.aHwBreakpoints[iBp].enmType == DBGFBPTYPE_REG)
             {
                 pVM->dbgf.s.iActiveBp = pVM->dbgf.s.aHwBreakpoints[iBp].iBp;

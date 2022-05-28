@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 5072 2007-09-27 09:20:23Z vboxsync $
+; $Id: HWACCMR0A.asm 5605 2007-11-01 16:09:26Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -180,7 +180,7 @@ BEGINPROC VMXStartVM
     ; * - LDTR (reset to 0)
     ; * - DRx (presumably not changed at all)
     ; * - DR7 (reset to 0x400)
-    ; * - EFLAGS (reset to BIT(1); not relevant)
+    ; * - EFLAGS (reset to RT_BIT(1); not relevant)
     ; *
     ; */
 
@@ -359,7 +359,7 @@ BEGINPROC VMXResumeVM
     ; * - LDTR (reset to 0)
     ; * - DRx (presumably not changed at all)
     ; * - DR7 (reset to 0x400)
-    ; * - EFLAGS (reset to BIT(1); not relevant)
+    ; * - EFLAGS (reset to RT_BIT(1); not relevant)
     ; *
     ; */
 

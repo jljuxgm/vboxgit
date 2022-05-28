@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 5221 2007-10-10 14:50:39Z vboxsync $ */
+/* $Id: CSAMInternal.h 5605 2007-11-01 16:09:26Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -35,7 +35,7 @@
 #ifndef PGM_PTFLAGS_CSAM_VALIDATED
 /** Scanned and approved by CSAM (tm). */
 /** NOTE: Must be identical to the one defined in PGMInternal.h!! */
-#define PGM_PTFLAGS_CSAM_VALIDATED              BIT64(11)
+#define PGM_PTFLAGS_CSAM_VALIDATED              RT_BIT_64(11)
 #endif
 
 /** @} */

@@ -1,4 +1,4 @@
-/* $Id: heapsimple.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: heapsimple.cpp 5605 2007-11-01 16:09:26Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - A Simple Heap.
  */
@@ -60,11 +60,11 @@ typedef struct RTHEAPSIMPLEBLOCK
 AssertCompileSizeAlignment(RTHEAPSIMPLEBLOCK, 16);
 
 /** The block is free if this flag is set. When cleared it's allocated. */
-#define RTHEAPSIMPLEBLOCK_FLAGS_FREE        ((uintptr_t)BIT(0))
+#define RTHEAPSIMPLEBLOCK_FLAGS_FREE        ((uintptr_t)RT_BIT(0))
 /** The magic value. */
 #define RTHEAPSIMPLEBLOCK_FLAGS_MAGIC       ((uintptr_t)0xabcdef00)
 /** The mask that needs to be applied to RTHEAPSIMPLEBLOCK::fFalgs to obtain the magic value. */
-#define RTHEAPSIMPLEBLOCK_FLAGS_MAGIC_MASK  (~(uintptr_t)BIT(0))
+#define RTHEAPSIMPLEBLOCK_FLAGS_MAGIC_MASK  (~(uintptr_t)RT_BIT(0))
 
 /**
  * Checks if the specified block is valid or not.

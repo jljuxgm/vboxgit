@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 5006 2007-09-24 14:21:12Z vboxsync $ */
+/* $Id: PGMAllBth.h 5605 2007-11-01 16:09:26Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1964,7 +1964,7 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PVBOXPD pPDSrc, RTGCUINTPTR 
         {
             GCPhys = PdeSrc.u & GST_PDE4M_PG_MASK;
 # if PGM_SHW_TYPE == PGM_TYPE_PAE && PGM_GST_TYPE == PGM_TYPE_32BIT
-            GCPhys |= GCPtrPage & BIT(X86_PAGE_2M_SHIFT);
+            GCPhys |= GCPtrPage & RT_BIT(X86_PAGE_2M_SHIFT);
 # endif
             rc = pgmPoolAlloc(pVM, GCPhys, BTH_PGMPOOLKIND_PT_FOR_BIG, SHW_POOL_ROOT_IDX, iPDDst, &pShwPage);
         }
@@ -3020,7 +3020,7 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVM pVM, uint32_t cr3, uint32_t cr4, RTGCUINTP
                 }
                 GCPhysGst = PdeSrc.u & GST_PDE4M_PG_MASK;
 # if PGM_SHW_TYPE == PGM_TYPE_PAE && PGM_GST_TYPE == PGM_TYPE_32BIT
-                GCPhysGst |= GCPtr & BIT(X86_PAGE_2M_SHIFT);
+                GCPhysGst |= GCPtr & RT_BIT(X86_PAGE_2M_SHIFT);
 # endif
             }
 

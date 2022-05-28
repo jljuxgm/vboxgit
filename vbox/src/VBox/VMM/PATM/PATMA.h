@@ -1,4 +1,4 @@
-/* $Id: PATMA.h 5285 2007-10-13 23:55:58Z vboxsync $ */
+/* $Id: PATMA.h 5605 2007-11-01 16:09:26Z vboxsync $ */
 /** @file
  * PATM macros & definitions (identical to PATMA.mac!!)
  */
@@ -97,9 +97,9 @@
 #define PATM_ACTION_MAGIC                       0xABCD4321
 
 /** PATM_TEMP_RESTORE_FLAGS */
-#define PATM_RESTORE_EAX                        BIT(0)
-#define PATM_RESTORE_ECX                        BIT(1)
-#define PATM_RESTORE_EDI                        BIT(2)
+#define PATM_RESTORE_EAX                        RT_BIT(0)
+#define PATM_RESTORE_ECX                        RT_BIT(1)
+#define PATM_RESTORE_EDI                        RT_BIT(2)
 
 typedef struct
 {

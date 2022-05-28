@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 5396 2007-10-21 03:57:23Z vboxsync $ */
+/* $Id: TRPMInternal.h 5605 2007-11-01 16:09:26Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -59,9 +59,9 @@ __BEGIN_DECLS
 /** Traps on IRET. */
 #define TRPM_TRAP_IN_IRET       5
 /** Set if this is a V86 resume. */
-#define TRPM_TRAP_IN_V86        BIT(30)
+#define TRPM_TRAP_IN_V86        RT_BIT(30)
 /** If set this is a hypervisor register set. If cleared it's a guest set. */
-#define TRPM_TRAP_IN_HYPER      BIT(31)
+#define TRPM_TRAP_IN_HYPER      RT_BIT(31)
 /** @} */
 
 

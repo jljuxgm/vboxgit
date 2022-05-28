@@ -1,4 +1,4 @@
-/** $Id: VDICore.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/** $Id: VDICore.h 5605 2007-11-01 16:09:26Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -421,9 +421,9 @@ DECLINLINE(PRTUUID) getImageParentModificationUUID(PVDIHEADER ph)
 /**
  * fModified bit flags.
  */
-#define VDI_IMAGE_MODIFIED_FLAG                 BIT(0)
-#define VDI_IMAGE_MODIFIED_FIRST                BIT(1)
-#define VDI_IMAGE_MODIFIED_DISABLE_UUID_UPDATE  BIT(2)
+#define VDI_IMAGE_MODIFIED_FLAG                 RT_BIT(0)
+#define VDI_IMAGE_MODIFIED_FIRST                RT_BIT(1)
+#define VDI_IMAGE_MODIFIED_DISABLE_UUID_UPDATE  RT_BIT(2)
 
 /**
  * Image structure

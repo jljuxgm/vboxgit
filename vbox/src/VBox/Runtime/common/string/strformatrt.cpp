@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 5413 2007-10-21 20:47:00Z vboxsync $ */
+/* $Id: strformatrt.cpp 5605 2007-11-01 16:09:26Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - IPRT String Formatter Extensions.
  */
@@ -647,7 +647,7 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
                     RTST_TIMESPEC
                 } RTST;
 /** Set if it's a pointer */
-#define RTST_FLAGS_POINTER  BIT(0)
+#define RTST_FLAGS_POINTER  RT_BIT(0)
                 static const struct
                 {
                     uint8_t     cch;        /**< the length of the string. */
