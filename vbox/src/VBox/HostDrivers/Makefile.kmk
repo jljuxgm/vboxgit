@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5564 2007-10-30 18:17:48Z vboxsync $
+# $Id: Makefile.kmk 5565 2007-10-30 18:18:14Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -13,6 +13,7 @@
 #  in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
 #  distribution. VirtualBox OSE is distributed in the hope that it will
 #  be useful, but WITHOUT ANY WARRANTY of any kind.
+#
 
 DEPTH = ../../..
 include $(PATH_KBUILD)/subheader.kmk
