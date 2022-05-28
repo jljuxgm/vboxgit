@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 882 2007-02-13 17:26:15Z vboxsync $ */
+/* $Id: PATM.cpp 885 2007-02-13 17:47:16Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -5892,8 +5892,8 @@ PATMR3DECL(int) PATMR3HandleTrap(PVM pVM, PCPUMCTX pCtx, RTGCPTR pEip, RTGCPTR *
     }
 #endif
 
-    /* Return value. */
-    *ppNewEip = pNewEip;
+    /* Return original address, correct by subtracting the CS base address. */
+    *ppNewEip = pNewEip - SELMToFlat(pVM, pCtx->cs, &pCtx->csHid, 0);
 
     /* Reset the PATM stack. */
     CTXSUFF(pVM->patm.s.pGCState)->Psp = PATM_STACK_SIZE;
