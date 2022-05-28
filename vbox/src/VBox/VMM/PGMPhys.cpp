@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 871 2007-02-13 13:34:23Z vboxsync $ */
+/* $Id: PGMPhys.cpp 877 2007-02-13 15:31:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -389,7 +389,7 @@ int pgmr3PhysGrowRange(PVM pVM, RTGCPHYS GCPhys)
         SUPPageFree(pvRam);
 
         LogRel(("pgmr3PhysGrowRange: out of memory. pause until the user resumes execution.\n"));
-        VMSetRuntimeError(pVM, false, "HostMemoryLow", "Unable to allocate and lock memory. The virtual machine will be paused. Please close applications to free up memory or save and close the VM.");
+        VMSetRuntimeError(pVM, false, "HostMemoryLow", "Unable to allocate and lock memory. The virtual machine will be paused. Please close applications to free up memory or close the VM.");
  
         rc = VMR3SuspendNoSave(pVM);
         AssertRC(rc);
