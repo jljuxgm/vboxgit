@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 34 2007-01-15 17:19:30Z vboxsync $ */
+/* $Id: MM.cpp 53 2007-01-16 09:56:51Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager).
  */
@@ -199,7 +199,7 @@ MMR3DECL(int) MMR3InitPaging(PVM pVM)
     if (rc == VERR_CFGM_VALUE_NOT_FOUND)
         cbRam = 0;
 
-    rc = CFGMR3QueryBool(CFGMR3GetRoot(pVM), "PreAlloc", &fPreAlloc);
+    rc = CFGMR3QueryBool(CFGMR3GetRoot(pVM), "PreAllocRam", &fPreAlloc);
     if (rc == VERR_CFGM_VALUE_NOT_FOUND)
         fPreAlloc = false;
 
