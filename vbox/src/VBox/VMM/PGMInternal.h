@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 5662 2007-11-10 14:10:41Z vboxsync $ */
+/* $Id: PGMInternal.h 5664 2007-11-10 14:40:58Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1679,9 +1679,6 @@ typedef struct PGM
     DECLGCCALLBACKMEMBER(int,       pfnGCBthPrefetchPage,(PVM pVM, RTGCUINTPTR GCPtrPage));
     DECLGCCALLBACKMEMBER(int,       pfnGCBthVerifyAccessSyncPage,(PVM pVM, RTGCUINTPTR GCPtrPage, unsigned fFlags, unsigned uError));
     DECLGCCALLBACKMEMBER(unsigned,  pfnGCBthAssertCR3,(PVM pVM, uint32_t cr3, uint32_t cr4, RTGCUINTPTR GCPtr, RTGCUINTPTR cb));
-#if GC_ARCH_BITS == 32 && HC_ARCH_BITS == 64
-    RTGCPTR                         alignment2; /**< structure size alignment. */
-#endif
     /** @} */
 
     /** Pointer to SHW+GST mode data (function pointers).
