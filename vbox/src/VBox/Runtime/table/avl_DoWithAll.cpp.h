@@ -1,4 +1,4 @@
-/* $Id: avl_DoWithAll.cpp.h 1  vboxsync $ */
+/* $Id: avl_DoWithAll.cpp.h 402 2007-01-28 08:44:20Z vboxsync $ */
 /** @file
  * kAVLDoWithAll - Do with all nodes routine for AVL trees.
  */
@@ -32,7 +32,7 @@
  * @param     pfnCallBack  Pointer to callback function.
  * @param     pvParam      Userparameter passed on to the callback function.
  */
-int KAVL_FN(DoWithAll)(PPKAVLNODECORE ppTree, int fFromLeft, PKAVLCALLBACK pfnCallBack, void * pvParam)
+RTDECL(int) KAVL_FN(DoWithAll)(PPKAVLNODECORE ppTree, int fFromLeft, PKAVLCALLBACK pfnCallBack, void * pvParam)
 {
     KAVLSTACK2      AVLStack;
     PKAVLNODECORE   pNode;
