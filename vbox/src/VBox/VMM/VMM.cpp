@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 419 2007-01-29 18:15:31Z vboxsync $ */
+/* $Id: VMM.cpp 421 2007-01-29 18:40:07Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2806,7 +2806,7 @@ VMMR3DECL(int) VMMDoTest(PVM pVM)
             if (!(i % 32))
                 Log(("VMM: iteration %d, esi=%08x edi=%08x ebx=%08x\n",
                        i, CPUMGetHyperESI(pVM), CPUMGetHyperEDI(pVM), CPUMGetHyperEBX(pVM)));
-        } while (rc == VINF_EM_RAW_INTERRUPT_HYPER && i < 1000000 /*hack!*/);
+        } while (rc == VINF_EM_RAW_INTERRUPT_HYPER);
         uint64_t    TickEnd = ASMReadTSC();
         uint64_t    tsEnd = RTTimeNanoTS();
 

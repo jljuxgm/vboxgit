@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: VMMGC.cpp 421 2007-01-29 18:40:07Z vboxsync $ */
 /** @file
  * VMM - Guest Context.
  */
@@ -77,9 +77,9 @@ VMMGCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg)
          */
         case VMMGC_DO_TESTCASE_HYPER_INTERRUPT:
         {
+            uint32_t volatile i = 0;
             ASMIntEnable();
-            int i = 0;
-            while (i + 1 > i)
+            while (i < _2G32)
                 i++;
             ASMIntDisable();
             return 0;
