@@ -1,4 +1,4 @@
-# $Id: Config.kmk 2204 2007-04-19 09:02:37Z vboxsync $
+# $Id: Config.kmk 2317 2007-04-23 11:27:20Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -791,6 +791,9 @@ ifeq ($(BUILD_TARGET_ARCH),amd64)
 else
  VBOX_LIBPATH_X11 ?= /usr/X11R6/lib
 endif
+
+# 32bit X11 LIBPATH for building 32bit guest additions
+VBOX_LIBPATH32_X11 ?= /usr/X11R6/lib32 /usr/X11R6/lib
 
 #
 # Mac OS X SDK paths.
