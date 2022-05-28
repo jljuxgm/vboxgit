@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: SUPLib.cpp 4191 2007-08-16 22:49:13Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -413,7 +413,11 @@ SUPR3DECL(SUPPAGINGMODE) SUPGetPagingMode(void)
             Out.enmMode = SUPPAGINGMODE_INVALID;
     }
     else
+#ifdef RT_ARCH_AMD64
+        Out.enmMode = SUPPAGINGMODE_AMD64_GLOBAL_NX;
+#else
         Out.enmMode = SUPPAGINGMODE_32_BIT_GLOBAL;
+#endif 
 
     return Out.enmMode;
 }
