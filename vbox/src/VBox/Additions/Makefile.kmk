@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2547 2007-05-09 07:08:34Z vboxsync $
+# $Id: Makefile.kmk 2573 2007-05-10 08:36:05Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -100,7 +100,7 @@ $(PATH_BIN)/additions/VBoxGuestAdditions.iso: \
 		$(GUESTADDITIONS_WIN32_DEPS) $(GUESTADDITIONS_LINUX_DEPS) \
 		Makefile.kmk
 	$(call MSG_TOOL,mkisofs,,,$@)
-	$(QUIET)$(VBOX_MKISOFS) -iso-level 4 -volid "VBOXADDITIONS" -l -graft-points -o $@ \
+	$(QUIET)$(VBOX_MKISOFS) -rational-rock -joliet -iso-level 4 -volid "VBOXADDITIONS" -l -graft-points -o $@ \
 		$(GUESTADDITIONS_WIN32_FILESPEC) $(GUESTADDITIONS_LINUX_FILESPEC)
 
 # build the Linux installer on a remote machine
