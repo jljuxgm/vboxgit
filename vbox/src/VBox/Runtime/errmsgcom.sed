@@ -1,4 +1,4 @@
-# $Id: errmsgcom.sed 4071 2007-08-07 17:07:59Z vboxsync $
+# $Id: errmsgcom.sed 4774 2007-09-13 14:28:34Z vboxsync $
 ## @file
 # innotek Portable Runtime - SED script for converting COM errors
 #
