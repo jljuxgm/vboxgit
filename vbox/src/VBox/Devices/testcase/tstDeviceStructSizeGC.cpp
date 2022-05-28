@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 1931 2007-04-04 14:04:15Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 2106 2007-04-16 15:25:48Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -234,8 +234,7 @@ int main()
     GEN_CHECK_OFF(VGASTATE, pDrv);
     GEN_CHECK_OFF(VGASTATE, RefreshTimer);
     GEN_CHECK_OFF(VGASTATE, cMilliesRefreshInterval);
-    GEN_CHECK_OFF(VGASTATE, pvExtVRAMHC);
-    GEN_CHECK_OFF(VGASTATE, cbExtVRAM);
+    GEN_CHECK_OFF(VGASTATE, fRenderVRAM);
     GEN_CHECK_OFF(VGASTATE, Dev);
     GEN_CHECK_OFF(VGASTATE, StatGCMemoryRead);
     GEN_CHECK_OFF(VGASTATE, StatGCMemoryWrite);
