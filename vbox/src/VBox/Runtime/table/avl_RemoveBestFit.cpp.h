@@ -1,4 +1,4 @@
-/* $Id: avl_RemoveBestFit.cpp.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: avl_RemoveBestFit.cpp.h 4687 2007-09-11 09:13:32Z vboxsync $ */
 /** @file
  * kAVLRemoveBestFit - Remove Best Fit routine for AVL trees.
  *                     Intended specially on heaps. The tree should allow duplicate keys.
@@ -44,14 +44,14 @@ RTDECL(PKAVLNODECORE) KAVL_FN(RemoveBestFit)(PPKAVLNODECORE ppTree, KAVLKEY Key,
     PKAVLNODECORE   pNode = KAVL_FN(GetBestFit)(ppTree, Key, fAbove);
     if (pNode != NULL)
     {
-        #ifdef KAVL_EQUAL_ALLOWED
+#ifdef KAVL_EQUAL_ALLOWED
         if (pNode->pList != KAVL_NULL)
         {
-            PKAVLANODECORE pRet = KAVL_GET_POINTER(&pNode->pList);
+            PKAVLNODECORE pRet = KAVL_GET_POINTER(&pNode->pList);
             KAVL_SET_POINTER_NULL(&pNode->pList, &pRet->pList);
             return pRet;
         }
-        #endif
+#endif
         pNode = KAVL_FN(Remove)(ppTree, pNode->Key);
     }
     return pNode;
