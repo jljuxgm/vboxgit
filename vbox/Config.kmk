@@ -1,4 +1,4 @@
-# $Id: Config.kmk 859 2007-02-13 10:41:23Z vboxsync $
+# $Id: Config.kmk 897 2007-02-14 12:14:23Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -669,6 +669,11 @@ endif
 
 # bin2c (convert binary files into C arrays)
 VBOX_BIN2C     ?= $(PATH_OBJ)/src/bldprogs/bin2c/bin2c$(HOSTSUFF_EXE)
+
+# libIDL-config (for xpcom18a4)
+ifeq ($(origin VBOX_LIBIDL_CONFIG),undefined)
+  export VBOX_LIBIDL_CONFIG := $(firstword $(shell which libIDL-config-2 libIDL-config 2> /dev/null))
+endif
 
 # mkisofs
 ifeq ($(BUILD_PLATFORM),win)
