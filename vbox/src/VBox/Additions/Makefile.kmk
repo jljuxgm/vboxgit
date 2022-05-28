@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2606 2007-05-13 06:17:45Z vboxsync $
+# $Id: Makefile.kmk 2707 2007-05-18 12:53:00Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -99,7 +99,7 @@ endif
 $(PATH_BIN)/additions/VBoxGuestAdditions.iso: \
 		$(GUESTADDITIONS_WIN32_DEPS) $(GUESTADDITIONS_LINUX_DEPS) \
 		Makefile.kmk
-	$(call MSG_TOOL,mkisofs,,,$@)
+	$(call MSG_TOOL,mkisofs,,$@)
 	$(QUIET)$(VBOX_MKISOFS) -rational-rock -joliet -iso-level 4 -volid "VBOXADDITIONS" -l -graft-points -o $@ \
 		$(GUESTADDITIONS_WIN32_FILESPEC) $(GUESTADDITIONS_LINUX_FILESPEC)
 
