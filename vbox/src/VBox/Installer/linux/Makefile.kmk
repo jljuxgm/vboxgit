@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4152 2007-08-14 14:30:26Z vboxsync $
+# $Id: Makefile.kmk 4153 2007-08-14 14:30:50Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -62,7 +62,7 @@ LINUXSTRIPBIN = \
 	VBoxXML.so \
 	VBoxXPCOM.so \
 	VBoxXPCOMIPCD \
-	$(if $(VBOX_WITH_QTGUI),VBoxKeyboard.so) \
+	$(if $(VBOX_WITH_QTGUI),VBoxKeyboard.so,) \
 	$(if $(VBOX_WITH_QTGUI),VirtualBox,) \
 	tstVMM \
 	VBoxTunctl \
