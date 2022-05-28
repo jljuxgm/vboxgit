@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.h 289 2007-01-25 05:41:27Z vboxsync $ */
+/* $Id: alloc-r0drv.h 1816 2007-03-29 18:59:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Memory Allocation, Ring-0 Driver.
  */
@@ -24,6 +24,7 @@
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>
+#include "internal/magics.h"
 
 __BEGIN_DECLS
 
@@ -42,8 +43,6 @@ typedef struct RTMEMHDR
     uint32_t    u32Padding;
 } RTMEMHDR, *PRTMEMHDR;
 
-/** Magic number for heap blocks. (Edgar Allan Poe) */
-#define RTMEMHDR_MAGIC      0x18090119
 
 /** @name RTMEMHDR::fFlags.
  * @{ */

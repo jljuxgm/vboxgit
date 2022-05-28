@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-os2.cpp 1191 2007-03-04 20:46:04Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-os2.cpp 1816 2007-03-29 18:59:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Multiple Release Event Semaphores, Ring-0 Driver, OS/2.
  */
@@ -39,6 +39,7 @@
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
+#include "internal/magics.h"
 
 
 /*******************************************************************************
@@ -60,9 +61,6 @@ typedef struct RTSEMEVENTMULTIINTERNAL
     /** The OS/2 spinlock protecting this structure. */
     SpinLock_t          Spinlock;
 } RTSEMEVENTMULTIINTERNAL, *PRTSEMEVENTMULTIINTERNAL;
-
-/** Magic for the OS/2 multiple release event semaphore structure. (Isaac Asimov) */
-#define RTSEMEVENTMULTI_MAGIC 0x19200102
 
 
 RTDECL(int)  RTSemEventMultiCreate(PRTSEMEVENTMULTI pEventMultiSem)

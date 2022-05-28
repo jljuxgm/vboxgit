@@ -1,4 +1,4 @@
-/* $Id: semsrw-generic.cpp 403 2007-01-28 08:45:05Z vboxsync $ */
+/* $Id: semsrw-generic.cpp 1816 2007-03-29 18:59:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Read-Write Semaphore, Generic.
  *
@@ -72,9 +72,6 @@ struct RTSEMRWINTERNAL
 
 #endif
 };
-
-/** RTSEMRWINTERNAL::u32Magic value. (Kosuke Fujishima) */
-#define RTSEMRW_MAGIC   0x19640707
 
 
 /**

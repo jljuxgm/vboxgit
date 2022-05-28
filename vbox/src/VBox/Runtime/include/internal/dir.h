@@ -1,4 +1,4 @@
-/* $Id: dir.h 1  vboxsync $ */
+/* $Id: dir.h 1816 2007-03-29 18:59:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Internal Header for RTDir.
  */
@@ -25,6 +25,7 @@
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>
+#include "internal/magics.h"
 
 
 /**
@@ -96,11 +97,6 @@ typedef struct RTDIR
     struct dirent       Data;
 #endif
 } RTDIR;
-
-/** The value of RTDIR::u32Magic. (Michael Ende) */
-#define RTDIR_MAGIC                 0x19291112
- /** The value of RTDIR::u32Magic after RTDirClose().  */
-#define RTDIR_MAGIC_DEAD            0x19950829
 
 
 /**

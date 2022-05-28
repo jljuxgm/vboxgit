@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-os2.cpp 1191 2007-03-04 20:46:04Z vboxsync $ */
+/* $Id: timer-r0drv-os2.cpp 1816 2007-03-29 18:59:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -42,6 +42,8 @@
 #include <iprt/assert.h>
 #include <iprt/alloc.h>
 
+#include "internal/magics.h"
+
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
@@ -77,9 +79,6 @@ typedef struct RTTIMER
     /** The current tick number (since u64StartTS). */
     uint64_t volatile       iTick;
 } RTTIMER;
-
-/** Magic number for timer handles. (Jared Mason Diamond) */
-#define RTTIMER_MAGIC       0x19370910
 
 
 /*******************************************************************************

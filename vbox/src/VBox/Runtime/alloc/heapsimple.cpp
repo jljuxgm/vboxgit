@@ -1,4 +1,4 @@
-/* $Id: heapsimple.cpp 331 2007-01-25 20:47:51Z vboxsync $ */
+/* $Id: heapsimple.cpp 1816 2007-03-29 18:59:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - A Simple Heap.
  */
@@ -31,6 +31,8 @@
 #include <iprt/err.h>
 #include <iprt/log.h>
 #include <iprt/param.h>
+
+#include "internal/magics.h"
 
 
 /*******************************************************************************
@@ -144,9 +146,6 @@ typedef struct RTHEAPSIMPLEINTERNAL
     size_t                  auAlignment[2];
 } RTHEAPSIMPLEINTERNAL;
 AssertCompileSizeAlignment(RTHEAPSIMPLEINTERNAL, 32);
-
-/** Magic number for RTHEAPSIMPLEINTERNAL::u32Magic. (Kyoichi Katayama) */
-#define RTHEAPSIMPLE_MAGIC  0x19590105
 
 
 /** The minimum allocation size. */

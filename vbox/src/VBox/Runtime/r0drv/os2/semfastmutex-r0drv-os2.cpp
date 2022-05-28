@@ -1,4 +1,4 @@
-/* $Id: semfastmutex-r0drv-os2.cpp 1191 2007-03-04 20:46:04Z vboxsync $ */
+/* $Id: semfastmutex-r0drv-os2.cpp 1816 2007-03-29 18:59:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Fast Mutex Semaphores, Ring-0 Driver, OS/2.
  */
@@ -39,6 +39,8 @@
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 
+#include "internal/magics.h"
+
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
@@ -53,11 +55,6 @@ typedef struct RTSEMFASTMUTEXINTERNAL
     /** The KEE mutex. */
     MutexLock_t         Mtx;
 } RTSEMFASTMUTEXINTERNAL, *PRTSEMFASTMUTEXINTERNAL;
-
-/** Magic value for RTSEMFASTMUTEXINTERNAL::u32Magic (John Ronald Reuel Tolkien). */
-#define RTSEMFASTMUTEX_MAGIC        0x18920102
-/** Dead magic value. */
-#define RTSEMFASTMUTEX_MAGIC_DEAD   0x0000000 /// @todo
 
 
 RTDECL(int)  RTSemFastMutexCreate(PRTSEMFASTMUTEX pMutexSem)

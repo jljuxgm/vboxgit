@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-os2.cpp 1191 2007-03-04 20:46:04Z vboxsync $ */
+/* $Id: semevent-r0drv-os2.cpp 1816 2007-03-29 18:59:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Single Release Event Semaphores, Ring-0 Driver, OS/2.
  */
@@ -40,6 +40,8 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 
+#include "internal/magics.h"
+
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
@@ -60,9 +62,6 @@ typedef struct RTSEMEVENTINTERNAL
     /** The OS/2 spinlock protecting this structure. */
     SpinLock_t          Spinlock;
 } RTSEMEVENTINTERNAL, *PRTSEMEVENTINTERNAL;
-
-/** Magic for the OS/2 event semaphore structure. (Neil Gaiman) */
-#define RTSEMEVENT_MAGIC 0x19601110
 
 
 RTDECL(int)  RTSemEventCreate(PRTSEMEVENT pEventSem)

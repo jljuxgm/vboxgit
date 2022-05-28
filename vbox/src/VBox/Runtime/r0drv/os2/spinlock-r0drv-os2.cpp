@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-os2.cpp 1191 2007-03-04 20:46:04Z vboxsync $ */
+/* $Id: spinlock-r0drv-os2.cpp 1816 2007-03-29 18:59:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Spinlocks, Ring-0 Driver, OS/2.
  */
@@ -39,6 +39,8 @@
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 
+#include "internal/magics.h"
+
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
@@ -53,10 +55,6 @@ typedef struct RTSPINLOCKINTERNAL
     /** The OS/2 spinlock structure. */
     SpinLock_t          Spinlock;
 } RTSPINLOCKINTERNAL, *PRTSPINLOCKINTERNAL;
-
-/** Magic value for RTSPINLOCKINTERNAL::u32Magic. (Terry Pratchett) */
-#define RTSPINLOCK_MAGIC    0x19480428
-
 
 
 RTDECL(int)  RTSpinlockCreate(PRTSPINLOCK pSpinlock)

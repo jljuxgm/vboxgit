@@ -1,4 +1,4 @@
-/* $Id: alloc-posix.cpp 845 2007-02-12 12:50:22Z vboxsync $ */
+/* $Id: alloc-posix.cpp 1816 2007-03-29 18:59:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Memory Allocation, POSIX.
  */
@@ -56,7 +56,7 @@ typedef struct RTMEMEXECHDR
 # endif 
 } RTMEMEXECHDR, *PRTMEMEXECHDR;
 
-/** MAgic for RTMEMEXECHDR. */
+/** Magic for RTMEMEXECHDR. */
 #define RTMEMEXECHDR_MAGIC (~(size_t)0xfeedbabe)
 
 #endif  /* RT_USE_MMAP */
