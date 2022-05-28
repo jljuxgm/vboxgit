@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2487 2007-05-04 03:19:31Z vboxsync $
+# $Id: Makefile.kmk 2694 2007-05-17 06:35:49Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxControl.
 #
@@ -26,6 +26,9 @@ include	$(PATH_KBUILD)/subheader.kmk
 
 PROGRAMS += VBoxControl
 VBoxControl_TEMPLATE = VBOXW32GUESTR3
+#ifdef VBOX_SIGNING_MODE
+# VBoxControl_NOINST  = true
+#endif
 VBoxControl_SOURCES  = \
 	VBoxControl.cpp \
 	VBoxControl.rc
