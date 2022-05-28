@@ -1,4 +1,4 @@
-/* $Id: gvm.h 5064 2007-09-26 18:37:49Z vboxsync $ */
+/* $Id: gvm.h 5167 2007-10-05 13:33:36Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -54,7 +54,7 @@ typedef struct GVM
 #ifdef ___GVMMR0Internal_h
         struct GVMMPERVM    s;
 #endif
-        uint8_t             padding[64];
+        uint8_t             padding[128];
     } gvmm;
 
     /** The GMM per vm data. */
