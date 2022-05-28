@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3340 2007-07-02 09:29:37Z vboxsync $
+# $Id: Makefile.kmk 3342 2007-07-02 09:45:39Z vboxsync $
 ## @file 
 # Top-level makefile for src/VBox.
 #
@@ -27,10 +27,10 @@ SUBDIRS_BLDPROGS = Devices
 SUBDIRS = \
 	Runtime \
 	HostDrivers \
-        HostServices \
 	VMM \
 	Devices \
 	Disassembler \
+        HostServices \
 	Debugger 
 
 ifdef VBOX_WITH_MAIN
