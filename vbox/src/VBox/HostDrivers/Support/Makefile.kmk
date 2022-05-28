@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2709 2007-05-18 13:06:40Z vboxsync $
+# $Id: Makefile.kmk 2710 2007-05-18 13:07:56Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -138,7 +138,7 @@ VBoxDrv-inf_SOURCES += \
 	$(PATH_TARGET)/VBoxDrvCat.dir/VBoxDrv.sys \
 	$(PATH_TARGET)/VBoxDrvCat.dir/VBoxDrv.cat
 
-$(PATH_TARGET)/VBoxDrvCat.dir/VBoxDrv.sys: $$(TARGET_VBoxDrv)
+$(PATH_TARGET)/VBoxDrvCat.dir/VBoxDrv.sys: $$(TARGET_VBoxDrv) | $$(call DIRDEP,$$(@D))
 	$(INSTALL) -m 644 $< $(@D)
 
 $(PATH_TARGET)/VBoxDrvCat.dir/VBoxDrv.cat: \
