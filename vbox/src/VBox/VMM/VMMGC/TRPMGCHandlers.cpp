@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 1359 2007-03-09 10:40:44Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 1363 2007-03-09 11:43:05Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -767,6 +767,8 @@ static int trpmGCTrap0dHandler(PVM pVM, PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
      */
     if (!pRegFrame->eflags.Bits.u1VM)
         return trpmGCTrap0dHandlerRing3(pVM, pRegFrame, &Cpu);
+    else
+        return trpmGCExitTrap(pVM, VINF_EM_RAW_EMULATE_INSTR, pRegFrame);
 
     return trpmGCExitTrap(pVM, VINF_EM_RAW_GUEST_TRAP, pRegFrame);
 }
