@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 4207 2007-08-17 20:11:37Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1504,3 +1504,26 @@ CPUMDECL(uint32_t) CPUMGetGuestCPL(PVM pVM, PCPUMCTXCORE pCtxCore)
 
     return cpl;
 }
+
+
+/**
+ * Gets the current guest CPU mode.
+ *
+ * If paging mode is what you need, check out PGMGetGuestMode().
+ *
+ * @returns The CPU mode.
+ * @param   pVM         The VM handle.
+ */
+CPUMDECL(uint32_t) CPUMGetGuestMode(PVM pVM)
+{
+    CPUMMODE enmMode;
+    if (!(pVM->cpum.s.Guest.cr0 & X86_CR0_PE))
+        enmMode = CPUMMODE_REAL;
+    else //GUEST64 if (!(pVM->cpum.s.Guest.efer & MSR_K6_EFER_LMA)
+        enmMode = CPUMMODE_PROTECTED;
+//GUEST64     else
+//GUEST64         enmMode = CPUMMODE_LONG;
+
+    return enmMode;
+}
+

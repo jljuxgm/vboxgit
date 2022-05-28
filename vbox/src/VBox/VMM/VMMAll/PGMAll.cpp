@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: PGMAll.cpp 4207 2007-08-17 20:11:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1314,6 +1314,8 @@ PGMDECL(int) PGMChangeMode(PVM pVM, uint32_t cr0, uint32_t cr4, uint64_t efer)
 
 /**
  * Gets the current guest paging mode.
+ *
+ * If you just need the CPU mode (real/protected/long), use CPUMGetGuestMode().
  *
  * @returns The current paging mode.
  * @param   pVM             The VM handle.
