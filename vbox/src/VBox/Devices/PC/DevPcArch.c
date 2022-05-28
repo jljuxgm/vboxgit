@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.c 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: DevPcArch.c 4014 2007-08-03 00:44:13Z vboxsync $ */
 /** @file
  * PC Architechture Device.
  */
@@ -23,7 +23,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_PC_ARCH
-#include <VBox/pdm.h>
+#include <VBox/pdmdev.h>
 #include <VBox/mm.h>
 
 #include <VBox/log.h>

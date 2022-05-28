@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 3932 2007-07-31 08:13:24Z vboxsync $ */
+/* $Id: DevPcBios.cpp 4014 2007-08-03 00:44:13Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -23,7 +23,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_PC_BIOS
-#include <VBox/pdm.h>
+#include <VBox/pdmdev.h>
 #include <VBox/mm.h>
 
 #include <VBox/log.h>

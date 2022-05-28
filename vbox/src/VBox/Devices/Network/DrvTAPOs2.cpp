@@ -1,4 +1,4 @@
-/** $Id: DrvTAPOs2.cpp 3521 2007-07-10 11:40:06Z vboxsync $ */
+/** $Id: DrvTAPOs2.cpp 4014 2007-08-03 00:44:13Z vboxsync $ */
 /** @file
  * VBox network devices: OS/2 TAP network transport driver.
  */
@@ -25,11 +25,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_TUN
-#include <VBox/cfgm.h>
-#include <VBox/err.h>
-#include <VBox/log.h>
-#include <VBox/mm.h>
-#include <VBox/pdm.h>
+#include <VBox/pdmdrv.h>
 
 #include <iprt/assert.h>
 #include <iprt/file.h>

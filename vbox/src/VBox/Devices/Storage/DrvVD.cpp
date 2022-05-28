@@ -1,4 +1,4 @@
-/** $Id: DrvVD.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/** $Id: DrvVD.cpp 4014 2007-08-03 00:44:13Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -27,11 +27,7 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_VD
 #include <VBox/VBoxHDD-new.h>
-#include <VBox/pdm.h>
-#include <VBox/mm.h>
-#include <VBox/err.h>
-
-#include <VBox/log.h>
+#include <VBox/pdmdrv.h>
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/uuid.h>

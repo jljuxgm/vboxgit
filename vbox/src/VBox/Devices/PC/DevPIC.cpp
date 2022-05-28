@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 3489 2007-07-06 11:15:52Z vboxsync $ */
+/* $Id: DevPIC.cpp 4014 2007-08-03 00:44:13Z vboxsync $ */
 /** @file
  * Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -23,7 +23,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_PIC
-#include <VBox/pdm.h>
+#include <VBox/pdmdev.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
 

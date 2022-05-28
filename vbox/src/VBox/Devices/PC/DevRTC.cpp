@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 3666 2007-07-17 06:33:02Z vboxsync $ */
+/* $Id: DevRTC.cpp 4014 2007-08-03 00:44:13Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -49,7 +49,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_RTC
-#include <VBox/pdm.h>
+#include <VBox/pdmdev.h>
 #include <VBox/log.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>

@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 3666 2007-07-17 06:33:02Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 4014 2007-08-03 00:44:13Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  */
@@ -23,33 +23,29 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_HOST_PARALLEL
-#include <VBox/pdm.h>
-#include <VBox/err.h>
-
-#include <VBox/log.h>
+#include <VBox/pdmdrv.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/stream.h>
 #include <iprt/semaphore.h>
 
 #ifdef RT_OS_LINUX
-#include <sys/ioctl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <linux/ppdev.h>
-#include <linux/parport.h>
+# include <sys/ioctl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <linux/ppdev.h>
+# include <linux/parport.h>
 #endif
-
 
 #include "Builtins.h"
 #include "ParallelIOCtlCmd.h"
 
+
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
 *******************************************************************************/
-
 /**
  * Host parallel port driver instance data.
  */

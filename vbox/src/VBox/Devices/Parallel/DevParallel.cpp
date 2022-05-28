@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 3649 2007-07-16 15:41:16Z vboxsync $ */
+/* $Id: DevParallel.cpp 4014 2007-08-03 00:44:13Z vboxsync $ */
 /** @file
  * VirtualBox Parallel Device Emulation.
  */
@@ -25,10 +25,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_PARALLEL
-#include <VBox/pdm.h>
-#include <VBox/err.h>
-
-#include <VBox/log.h>
+#include <VBox/pdmdev.h>
 #include <iprt/assert.h>
 #include <iprt/uuid.h>
 #include <iprt/string.h>

@@ -1,4 +1,4 @@
-/** $Id: DevPit-i8254.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/** $Id: DevPit-i8254.cpp 4014 2007-08-03 00:44:13Z vboxsync $ */
 /** @file
  * Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -50,7 +50,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_PIT
-#include <VBox/pdm.h>
+#include <VBox/pdmdev.h>
 #include <VBox/log.h>
 #include <VBox/stam.h>
 #include <iprt/assert.h>

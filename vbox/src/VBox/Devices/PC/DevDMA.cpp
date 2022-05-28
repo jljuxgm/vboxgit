@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: DevDMA.cpp 4014 2007-08-03 00:44:13Z vboxsync $ */
 /** @file
  * DMA Controller Device.
  */
@@ -50,7 +50,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <VBox/pdm.h>
+#include <VBox/pdmdev.h>
 #include <VBox/err.h>
 
 #define LOG_GROUP LOG_GROUP_DEFAULT ///@todo LOG_GROUP_DEV_DMA

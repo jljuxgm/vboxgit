@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 3645 2007-07-16 15:31:38Z vboxsync $ */
+/* $Id: DevACPI.cpp 4014 2007-08-03 00:44:13Z vboxsync $ */
 /** @file
  * Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -21,7 +21,7 @@
 
 #define LOG_GROUP LOG_GROUP_DEV_ACPI
 
-#include <VBox/pdm.h>
+#include <VBox/pdmdev.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
