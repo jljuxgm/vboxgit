@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5124 2007-10-01 14:09:27Z vboxsync $
+# $Id: Makefile.kmk 5240 2007-10-11 15:57:00Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -21,7 +21,7 @@ include	$(PATH_KBUILD)/subheader.kmk
 #
 # Target lists.
 #
-PROGRAMS   += tstVMStructSize tstVMStructGC tstAsmStructs tstAsmStructsGC tstVMM tstVMM-HwAccm
+PROGRAMS   += tstVMStructSize tstVMStructGC tstAsmStructs tstAsmStructsGC tstVMM tstVMM-HwAccm tstGlobalConfig
 ifneq ($(BUILD_TARGET),win)
 PROGRAMS   += tstVMMFork
 endif
@@ -102,6 +102,10 @@ tstAsmStructsGC_SOURCES = tstAsmStructs.cpp
 
 tstAsmStructs.cpp_DEPS  = $(PATH_TARGET)/tstAsmStructsHC.h $(PATH_TARGET)/tstAsmStructsGC.h
 
+
+tstGlobalConfig_TEMPLATE= VBOXR3TSTEXE
+tstGlobalConfig_SOURCES = tstGlobalConfig.cpp
+tstGlobalConfig_LIBS    = $(LIB_RUNTIME)
 
 tstMMHyperHeap_TEMPLATE = VBOXR3TSTEXE
 tstMMHyperHeap_SOURCES  = tstMMHyperHeap.cpp
