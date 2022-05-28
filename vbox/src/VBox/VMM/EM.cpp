@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 2888 2007-05-28 08:45:00Z vboxsync $ */
+/* $Id: EM.cpp 2893 2007-05-28 12:59:36Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -2661,7 +2661,7 @@ static int emR3HwAccExecute(PVM pVM, bool *pfFFDone)
         if (pCtx->eflags.Bits.u1VM)
             Log(("HWV86: %08X IF=%d\n", pCtx->eip, pCtx->eflags.Bits.u1IF));
         else if ((pCtx->ss & X86_SEL_RPL) == 0)
-            Log(("HWR0: %08X ESP=%08X IF=%d CPL=%d\n", pCtx->eip, pCtx->esp, pCtx->eflags.Bits.u1IF, (pCtx->ss & X86_SEL_RPL)));
+            Log(("HWR0: %08X ESP=%08X IF=%d CPL=%d CR0=%x\n", pCtx->eip, pCtx->esp, pCtx->eflags.Bits.u1IF, CPUMGetGuestCPL(pVM, CPUMCTX2CORE(pCtx)), pCtx->cr0));
         else if ((pCtx->ss & X86_SEL_RPL) == 3)
             Log(("HWR3: %08X ESP=%08X IF=%d\n", pCtx->eip, pCtx->esp, pCtx->eflags.Bits.u1IF));
 #endif
