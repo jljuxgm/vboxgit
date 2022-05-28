@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 1  vboxsync $ */
+/* $Id: process-posix.cpp 537 2007-02-02 06:08:57Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Process, POSIX.
  */
@@ -30,6 +30,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <signal.h>
 #if defined(__LINUX__) || defined(__OS2__)
 # define HAVE_POSIX_SPAWN 1
 #endif
@@ -234,9 +235,13 @@ RTR3DECL(char *) RTProcGetExecutableName(char *pszExecName, size_t cchExecName)
      * I don't think there is a posix API for this, but
      * because I'm lazy I'm not creating OS specific code
      * files and code for this.
-    */
-#ifdef __LINUX__
+     */
+#if defined(__LINUX__) || defined(__FREEBSD__)
+# ifdef __LINUX__
     int cchLink = readlink("/proc/self/exe", pszExecName, cchExecName - 1);
+# else    
+    int cchLink = readlink("/proc/curproc/file", pszExecName, cchExecName - 1);
+# endif    
     if (cchLink > 0 && (size_t)cchLink <= cchExecName - 1)
     {
         pszExecName[cchLink] = '\0';

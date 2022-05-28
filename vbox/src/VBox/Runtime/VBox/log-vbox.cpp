@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 1  vboxsync $ */
+/* $Id: log-vbox.cpp 537 2007-02-02 06:08:57Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Logging configuration.
  */
@@ -299,8 +299,12 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
 # if defined(__WIN__)
         RTLogLoggerEx(pLogger, 0, ~0U, "Commandline: %ls\n", GetCommandLineW());
 
-# elif defined(__LINUX__)
+# elif defined(__LINUX__) || defined(__FREEBSD__)
+#  ifdef __LINUX__
         FILE *pFile = fopen("/proc/self/cmdline", "r");
+#  else        
+        FILE *pFile = fopen("/proc/curproc/cmdline", "r");
+#  endif        
         if (pFile)
         {
             /* braindead */

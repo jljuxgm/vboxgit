@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 248 2007-01-23 17:11:08Z vboxsync $ */
+/* $Id: thread-posix.cpp 537 2007-02-02 06:08:57Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Threads, POSIX.
  */
@@ -199,8 +199,11 @@ RTDECL(int) RTThreadSleep(unsigned cMillies)
     LogFlow(("RTThreadSleep: cMillies=%d\n", cMillies));
     if (!cMillies)
     {
+        /* pthread_yield() isn't part of SuS, thus this fun. */
 #ifdef __DARWIN__
         pthread_yield_np();
+#elif defined(__FREEBSD__) /* void pthread_yield */
+        pthread_yield();
 #else
         if (!pthread_yield())
 #endif

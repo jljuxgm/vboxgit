@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 1  vboxsync $ */
+/* $Id: path-posix.cpp 537 2007-02-02 06:08:57Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Path Manipulation, POSIX.
  */
@@ -331,8 +331,12 @@ RTDECL(int) RTPathProgram(char *pszPath, unsigned cchPath)
          * OS/2 have an api for getting the program file name.
          */
 /** @todo use RTProcGetExecutableName() */
-#ifdef __LINUX__
+#if defined(__LINUX__) || defined(__FREEBSD__)
+# ifdef __LINUX__
         int cchLink = readlink("/proc/self/exe", &g_szrtProgramPath[0], sizeof(g_szrtProgramPath) - 1);
+# else
+        int cchLink = readlink("/proc/curproc/file", &g_szrtProgramPath[0], sizeof(g_szrtProgramPath) - 1);
+# endif         
         if (cchLink < 0 || cchLink == sizeof(g_szrtProgramPath) - 1)
         {
             int rc = RTErrConvertFromErrno(errno);
