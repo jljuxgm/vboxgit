@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3764 2007-07-22 13:19:02Z vboxsync $
+# $Id: Makefile.kmk 3769 2007-07-23 07:40:48Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -441,7 +441,7 @@ endif
 
 # brute force way to ensure the prereqs are generated before anything is compiled.
 define def_src_deps
-$(src)_DEPS = $(PREREQS)
+$(src)_DEPS += $(PREREQS)
 endef
 $(foreach src,\
 	$(VBoxC_SOURCES)   $(VBoxC_SOURCES.$(BUILD_TARGET)) \
