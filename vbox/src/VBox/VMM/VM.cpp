@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: VM.cpp 2984 2007-06-01 16:18:07Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -468,6 +468,9 @@ static int vmR3InitRing3(PVM pVM)
     /*
      * Init all R3 components, the order here might be important.
      */
+    rc = vmR3SetHaltMethod(pVM, VMHALTMETHOD_DEFAULT);
+    AssertRCReturn(rc, rc);
+
     rc = MMR3Init(pVM);
     if (VBOX_SUCCESS(rc))
     {
