@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 5240 2007-10-11 15:57:00Z vboxsync $ */
+/* $Id: VMMR0.cpp 5274 2007-10-12 18:26:03Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -716,7 +716,7 @@ static int vmmR0EntryExWorker(PVM pVM, VMMR0OPERATION enmOperation, PSUPVMMR0REQ
         case VMMR0_DO_GVMM_RESET_STATISTICS:
             if (u64Arg)
                 return VERR_INVALID_PARAMETER;
-            return GVMMR0QueryStatisticsReq(pVM, (PGVMMQUERYSTATISTICSSREQ)pReqHdr);
+            return GVMMR0ResetStatisticsReq(pVM, (PGVMMRESETSTATISTICSSREQ)pReqHdr);
 
         /*
          * Initialize the R0 part of a VM instance.
