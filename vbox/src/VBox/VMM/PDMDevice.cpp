@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 4388 2007-08-27 14:26:05Z vboxsync $ */
+/* $Id: PDMDevice.cpp 4521 2007-09-05 07:39:34Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -2209,8 +2209,13 @@ static DECLCALLBACK(bool) pdmR3DevHlp_AssertOther(PPDMDEVINS pDevIns, const char
 static DECLCALLBACK(int) pdmR3DevHlp_DBGFStopV(PPDMDEVINS pDevIns, const char *pszFile, unsigned iLine, const char *pszFunction, const char *pszFormat, va_list args)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
+#ifdef LOG_ENABLED
+    va_list va2;
+    va_copy(va2, args);
     LogFlow(("pdmR3DevHlp_DBGFStopV: caller='%s'/%d: pszFile=%p:{%s} iLine=%d pszFunction=%p:{%s} pszFormat=%p:{%s} (%N)\n",
-             pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, pszFile, pszFile, iLine, pszFunction, pszFunction, pszFormat, pszFormat, pszFormat, &args));
+             pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, pszFile, pszFile, iLine, pszFunction, pszFunction, pszFormat, pszFormat, pszFormat, &va2));
+    va_end(va2);
+#endif
 
     PVM pVM = pDevIns->Internal.s.pVMHC;
     VM_ASSERT_EMT(pVM);
