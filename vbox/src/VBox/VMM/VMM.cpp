@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 1248 2007-03-06 08:57:17Z vboxsync $ */
+/* $Id: VMM.cpp 1249 2007-03-06 08:59:26Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2975,6 +2975,7 @@ VMMR3DECL(int) VMMDoHwAccmTest(PVM pVM)
         SYNC_SEL(pHyperCtx, fs);
         SYNC_SEL(pHyperCtx, gs);
         SYNC_SEL(pHyperCtx, ss);
+        SYNC_SEL(pHyperCtx, tr);
 
         /*
          * Profile switching.
