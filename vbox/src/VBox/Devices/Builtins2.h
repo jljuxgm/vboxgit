@@ -1,4 +1,4 @@
-/* $Id: Builtins2.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: Builtins2.h 5747 2007-11-14 16:38:49Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 2) header.
  */
@@ -15,8 +15,8 @@
  * be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __Builtins2_h__
-#define __Builtins2_h__
+#ifndef ___Builtins2_h
+#define ___Builtins2_h
 
 #include <VBox/pdm.h>
 
