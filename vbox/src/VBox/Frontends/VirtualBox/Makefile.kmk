@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4572 2007-09-06 13:47:22Z vboxsync $
+# $Id: Makefile.kmk 4584 2007-09-06 15:52:15Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -51,6 +51,10 @@ VirtualBox_SDKS.os2 = LIBSDL
 ifeq ($(BUILD_TARGET),darwin)
 # For the launch trick we need different inode numbers.
 VirtualBox_INST = $(INST_BIN)VirtualBox $(INST_BIN)VirtualBoxVM
+endif
+
+ifeq ($(BUILD_TARGET),linux)
+$(PATH_BIN)/VirtualBox: $(VBOX_LICENSE_BIN)
 endif
 
 # Each nls/VirtualBox_xx_YY.ts file must have a qt_xx_YY.ts counterpart
