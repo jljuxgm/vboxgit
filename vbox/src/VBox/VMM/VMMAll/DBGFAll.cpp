@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: DBGFAll.cpp 2168 2007-04-18 12:59:54Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -116,3 +116,14 @@ DBGFDECL(RTGCUINTREG) DBGFBpGetDR3(PVM pVM)
     return pBp->GCPtr;
 }
 
+
+/**
+ * Returns single stepping state
+ *
+ * @returns stepping or not
+ * @param   pVM         The VM handle.
+ */
+DBGFDECL(bool) DBGFIsStepping(PVM pVM)
+{
+    return pVM->dbgf.s.fSingleSteppingRaw;
+}
