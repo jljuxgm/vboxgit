@@ -1,4 +1,4 @@
-/* $Id: crc64.cpp 4781 2007-09-13 19:07:42Z vboxsync $ */
+/* $Id: crc64.cpp 5412 2007-10-21 20:40:10Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - CRC64.
  *
