@@ -1,4 +1,4 @@
-/** $Id: Builtins.cpp 2390 2007-04-27 11:03:46Z vboxsync $ */
+/** $Id: Builtins.cpp 2608 2007-05-13 12:36:02Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -101,7 +101,7 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceAudioSniffer);
     if (VBOX_FAILURE(rc))
         return rc;
-#if defined(VBOX_WITH_USB) && (defined(__L4ENV__) || defined(__LINUX__) || defined(__WIN__))
+#ifdef VBOX_WITH_USB
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceOHCI);
     if (VBOX_FAILURE(rc))
         return rc;
@@ -209,7 +209,7 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (VBOX_FAILURE(rc))
         return rc;
 
-#if defined(VBOX_WITH_USB) && (defined(__L4ENV__) || defined(__LINUX__) || defined(__WIN__))
+#ifdef VBOX_WITH_USB
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvVUSBRootHub);
     if (VBOX_FAILURE(rc))
         return rc;
