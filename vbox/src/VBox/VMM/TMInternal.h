@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 2611 2007-05-14 04:58:51Z vboxsync $ */
+/* $Id: TMInternal.h 2623 2007-05-14 13:47:13Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -362,12 +362,12 @@ typedef struct TM
         uint32_t                u32Alignment;   /**< Structure alignment */
     }                           aVirtualSyncCatchUpPeriods[TM_MAX_CATCHUP_PERIODS];
 
-    /** The UCT offset in ns.
+    /** The UTC offset in ns.
      * This is *NOT* for converting UTC to local time. It is for converting real
-     * world UCT time to VM UCT time. This feature is indented for doing date
+     * world UTC time to VM UTC time. This feature is indented for doing date
      * testing of software and similar.
-     * @todo Implement warpdrive on UCT. */
-    int64_t                     offUCT;
+     * @todo Implement warpdrive on UTC. */
+    int64_t                     offUTC;
 
     /** Timer queues for the different clock types - R3 Ptr */
     R3PTRTYPE(PTMTIMERQUEUE)    paTimerQueuesR3;
