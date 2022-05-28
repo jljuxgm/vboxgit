@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 2269 2007-04-20 12:58:05Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 2285 2007-04-20 22:35:30Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -446,7 +446,9 @@ int main()
     GEN_CHECK_OFF(PITChannelState, pTimerGC);
     GEN_CHECK_OFF(PITChannelState, u64ReloadTS);
     GEN_CHECK_OFF(PITChannelState, u64NextTS);
+#ifndef VBOX_WITH_VIRTUAL_SYNC_TIMERS
     GEN_CHECK_OFF(PITChannelState, i64MaxCatchupTS);
+#endif
     GEN_CHECK_OFF(PITChannelState, count_load_time);
     GEN_CHECK_OFF(PITChannelState, next_transition_time);
     GEN_CHECK_OFF(PITChannelState, irq);
@@ -471,8 +473,10 @@ int main()
     GEN_CHECK_OFF(PITState, pDevIns);
     GEN_CHECK_OFF(PITState, StatPITIrq);
     GEN_CHECK_OFF(PITState, StatPITHandler);
+#ifndef VBOX_WITH_VIRTUAL_SYNC_TIMERS
     GEN_CHECK_OFF(PITState, StatPITCatchup);
     GEN_CHECK_OFF(PITState, StatPITGiveup);
+#endif
 
     /* PC/DevRTC.cpp */
     GEN_CHECK_SIZE(RTCState);
