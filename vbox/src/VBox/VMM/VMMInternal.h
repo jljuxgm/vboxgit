@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 271 2007-01-24 13:42:58Z vboxsync $ */
+/* $Id: VMMInternal.h 847 2007-02-12 13:46:39Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -357,6 +357,8 @@ typedef enum VMMGCOPERATION
     VMMGC_DO_TESTCASE_HYPER_INTERRUPT,
     /** Switching testing and profiling stub. */
     VMMGC_DO_TESTCASE_NOP,
+    /** Testcase for checking interrupt masking.. */
+    VMMGC_DO_TESTCASE_INTERRUPT_MASKING,
 
     /** The usual 32-bit hack. */
     VMMGC_DO_32_BIT_HACK = 0x7fffffff
