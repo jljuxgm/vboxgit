@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 1101 2007-02-28 12:05:14Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 1107 2007-02-28 13:08:52Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -327,6 +327,7 @@ static DECLCALLBACKPTR(void, pfnREMR3A20Set)(PVM, bool);
 static DECLCALLBACKPTR(void, pfnREMR3ReplayInvalidatedPages)(PVM);
 static DECLCALLBACKPTR(void, pfnREMR3ReplayHandlerNotifications)(PVM pVM);
 static DECLCALLBACKPTR(void, pfnREMR3NotifyPhysRamRegister)(PVM, RTGCPHYS, RTUINT, void *, unsigned);
+static DECLCALLBACKPTR(void, pfnREMR3NotifyPhysRamChunkRegister)(PVM, RTGCPHYS, RTUINT, RTHCUINTPTR, unsigned);
 static DECLCALLBACKPTR(void, pfnREMR3NotifyPhysReserve)(PVM, RTGCPHYS, RTUINT);
 static DECLCALLBACKPTR(void, pfnREMR3NotifyPhysRomRegister)(PVM, RTGCPHYS, RTUINT, void *);
 static DECLCALLBACKPTR(void, pfnREMR3NotifyHandlerPhysicalModify)(PVM, PGMPHYSHANDLERTYPE, RTGCPHYS, RTGCPHYS, RTGCPHYS, bool, void *);
@@ -386,7 +387,7 @@ static const REMPARMDESC g_aArgsNotifyPhysRamChunkRegister[] =
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM) },
     { REMPARMDESC_FLAGS_GCPHYS,     sizeof(RTGCPHYS) },
     { REMPARMDESC_FLAGS_INT,        sizeof(RTUINT) },
-    { REMPARMDESC_FLAGS_INT,        sizeof(void *) },
+    { REMPARMDESC_FLAGS_INT,        sizeof(RTHCUINTPTR) },
     { REMPARMDESC_FLAGS_INT,        sizeof(unsigned) }
 };
 static const REMPARMDESC g_aArgsNotifyPhysReserve[] =
