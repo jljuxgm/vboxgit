@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 5055 2007-09-26 16:04:18Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 5624 2007-11-03 09:18:42Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Disassembler.
  */
@@ -124,7 +124,6 @@ static int dbgfR3DisasInstrFirst(PVM pVM, PSELMSELINFO pSelInfo, PGMMODE enmMode
  */
 static int dbgfR3DisasInstrNext(PDBGFDISASSTATE pState)
 {
-    pState->rc              = VINF_SUCCESS;
     uint32_t cbInstr;
     int rc = DISInstr(&pState->Cpu, (void *)pState->GCPtrNext, 0, &cbInstr, NULL);
     if (VBOX_SUCCESS(rc))
