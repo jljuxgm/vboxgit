@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 2582 2007-05-10 16:33:20Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 2583 2007-05-10 16:38:18Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -1072,7 +1072,8 @@ static int vmdkWriteDescriptor(PVMDKIMAGE pImage)
     else
     {
         rc = RTFileSetSize(DescFile, uOffset);
-        return vmdkError(pImage, rc, RT_SRC_POS, N_("VMDK: error truncating descriptor file '%s'"), pImage->pszFilename);
+        if (VBOX_FAILURE(rc))
+            return vmdkError(pImage, rc, RT_SRC_POS, N_("VMDK: error truncating descriptor file '%s'"), pImage->pszFilename);
     }
     pImage->Descriptor.fDirty = false;
     return rc;
