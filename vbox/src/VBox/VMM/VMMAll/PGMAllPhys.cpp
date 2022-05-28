@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 840 2007-02-12 12:19:50Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 1159 2007-03-02 14:33:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1768,16 +1768,18 @@ AssertMsgFailed(("cb=%d cb1=%d cb2=%d GCPtrSrc=%VGv\n", cb, cb1, cb2, GCPtrSrc))
      * Raise a #PF.
      */
     uint32_t uErr;
+    uint32_t cpl;
+
+    cpl = (pCtxCore->eflags.Bits.u1VM) ? 3 : (pCtxCore->ss & X86_SEL_RPL);
     switch (rc)
     {
         case VINF_SUCCESS:
-            uErr = (pCtxCore->ss & X86_SEL_RPL) >= 2
-                ? X86_TRAP_PF_RSVD | X86_TRAP_PF_US : X86_TRAP_PF_RSVD;
+            uErr = (cpl >= 2) ? X86_TRAP_PF_RSVD | X86_TRAP_PF_US : X86_TRAP_PF_RSVD;
             break;
 
         case VERR_PAGE_NOT_PRESENT:
         case VERR_PAGE_TABLE_NOT_PRESENT:
-            uErr = (pCtxCore->ss & X86_SEL_RPL) >= 2 ? X86_TRAP_PF_US : 0;
+            uErr = (cpl >= 2) ? X86_TRAP_PF_US : 0;
             break;
 
         default:
