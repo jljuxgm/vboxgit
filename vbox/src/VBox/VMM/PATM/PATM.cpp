@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 2046 2007-04-12 13:23:27Z vboxsync $ */
+/* $Id: PATM.cpp 2049 2007-04-12 14:43:48Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -1661,6 +1661,7 @@ static int patmRecompileCallback(PVM pVM, DISCPUSTATE *pCpu, GCPTRTYPE(uint8_t *
                 pPatch->flags |= PATMFL_RECOMPILE_NEXT;
                 /** @todo this could cause a fault (ring 0 selector being loaded in ring 1) */
             }
+#if 0 /* necessary for Haiku */
             else
             if (    (pCpu->param2.flags & USE_REG_SEG)
                 &&  (pCpu->param2.base.reg_seg == USE_REG_SS)
@@ -1672,6 +1673,7 @@ static int patmRecompileCallback(PVM pVM, DISCPUSTATE *pCpu, GCPTRTYPE(uint8_t *
                     rc = VWRN_CONTINUE_RECOMPILE;
                 break;
             }
+#endif
         }
         goto duplicate_instr;
 
