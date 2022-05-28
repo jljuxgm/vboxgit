@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 4917 2007-09-20 10:06:48Z vboxsync $ */
+/* $Id: VMM.cpp 4932 2007-09-20 14:12:41Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1956,12 +1956,7 @@ VMMR3DECL(int) VMMR3HwAccRunGC(PVM pVM)
 #ifdef NO_SUPCALLR0VMM
             rc = VERR_GENERAL_FAILURE;
 #else
-            //rc = SUPCallVMMR0Ex(pVM->pVMR0, VMMR0_DO_HWACC_RUN, NULL, 0);
-# if !defined(RT_OS_LINUX) /* Alternative for debugging - currently untested on linux. */
             rc = SUPCallVMMR0Fast(pVM->pVMR0, VMMR0_DO_HWACC_RUN);
-# else
-            rc = SUPCallVMMR0(pVM->pVMR0, VMMR0_DO_HWACC_RUN, NULL);
-# endif
 #endif
         } while (rc == VINF_EM_RAW_INTERRUPT_HYPER);
 
