@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 101 2007-01-17 14:28:38Z vboxsync $ */
+/* $Id: PATMSSM.cpp 302 2007-01-25 14:48:55Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -298,6 +298,16 @@ DECLCALLBACK(int) patmr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
         ||  pVM->patm.s.pStatsGC   != patmInfo.pStatsGC)
     {
         AssertMsgFailed(("GC state, stat or cpum ptrs don't match!!!\n"));
+        return VERR_SSM_INVALID_STATE;
+    }
+
+    /* Relative calls are made to the helper functions. Therefor their location must not change! */
+    if (    pVM->patm.s.pfnHelperCallGC != patmInfo.pfnHelperCallGC
+        ||  pVM->patm.s.pfnHelperRetGC  != patmInfo.pfnHelperRetGC
+        ||  pVM->patm.s.pfnHelperJumpGC != patmInfo.pfnHelperJumpGC
+        ||  pVM->patm.s.pfnHelperIretGC != patmInfo.pfnHelperIretGC)
+    {
+        AssertMsgFailed(("Helper function ptrs don't match!!!\n"));
         return VERR_SSM_INVALID_STATE;
     }
 

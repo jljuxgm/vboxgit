@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 208 2007-01-21 14:23:25Z vboxsync $ */
+/* $Id: PATM.cpp 302 2007-01-25 14:48:55Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -426,6 +426,7 @@ PATMR3DECL(void) PATMR3Relocate(PVM pVM)
         /* Deal with the global patch functions. */
         pVM->patm.s.pfnHelperCallGC += delta;
         pVM->patm.s.pfnHelperRetGC  += delta;
+        pVM->patm.s.pfnHelperIretGC += delta;
         pVM->patm.s.pfnHelperJumpGC += delta;
 
         RelocatePatches(&pVM->patm.s.pGlobalPatchRec->Core, (void *)pVM);
