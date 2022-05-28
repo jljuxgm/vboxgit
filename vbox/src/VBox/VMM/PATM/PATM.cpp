@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: PATM.cpp 4396 2007-08-28 07:21:28Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -4772,7 +4772,7 @@ invalid_write_loop_start:
                             /** @note possibly dangerous assumption that all future writes will be harmless. */
                             if (pPatch->flags & PATMFL_IDTHANDLER)
                             {
-                                LogRel(("PATM: Stop monitoring IDT handler pages at %VGv - invalid write %VGv-%VGv \n", pPatch->pPrivInstrGC, GCPtr, GCPtr+cbWrite));
+                                LogRel(("PATM: Stop monitoring IDT handler pages at %VGv - invalid write %VGv-%VGv (this is not a fatal error)\n", pPatch->pPrivInstrGC, GCPtr, GCPtr+cbWrite));
 
                                 Assert(pPatch->flags & PATMFL_CODE_MONITORED);
                                 int rc = patmRemovePatchPages(pVM, pPatch);
