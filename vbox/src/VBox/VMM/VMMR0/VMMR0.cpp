@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 2730 2007-05-21 12:57:46Z vboxsync $ */
+/* $Id: VMMR0.cpp 2824 2007-05-23 15:58:08Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -57,13 +57,11 @@ VMMR0DECL(void) ModuleTerm(void);
 __END_DECLS
 
 
-#ifndef __AMD64__  /* causes crashes in Vista here; disabling for now */
 #ifdef DEBUG
 #define DEBUG_NO_RING0_ASSERTIONS
 #ifdef DEBUG_NO_RING0_ASSERTIONS
 static PVM g_pVMAssert = 0;
 #endif
-#endif 
 #endif
 
 /*******************************************************************************
