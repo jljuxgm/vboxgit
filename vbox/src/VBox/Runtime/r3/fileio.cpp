@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 5356 2007-10-17 13:47:17Z vboxsync $ */
+/* $Id: fileio.cpp 5405 2007-10-21 20:31:05Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O.
  */

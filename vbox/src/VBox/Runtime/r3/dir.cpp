@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: dir.cpp 5405 2007-10-21 20:31:05Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Directory Manipulation.
  */
