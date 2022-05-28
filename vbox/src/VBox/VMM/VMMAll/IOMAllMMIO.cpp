@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 2560 2007-05-09 14:22:52Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 2878 2007-05-25 15:26:24Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -1626,6 +1626,11 @@ IOMDECL(int) IOMInterpretINSEx(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t uPort, 
     if (uPrefix & PREFIX_REP)
     {
         cTransfers = pRegFrame->ecx;
+
+        if (    CPUMIsGuestInRealMode(pVM)
+            ||  eflags.Bits.u1VM)
+            cTransfers &= 0xffff;
+
         if (!cTransfers)
             return VINF_SUCCESS;
     }
@@ -1775,6 +1780,10 @@ IOMDECL(int) IOMInterpretOUTSEx(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t uPort,
     if (uPrefix & PREFIX_REP)
     {
         cTransfers = pRegFrame->ecx;
+        if (    CPUMIsGuestInRealMode(pVM)
+            ||  eflags.Bits.u1VM)
+            cTransfers &= 0xffff;
+
         if (!cTransfers)
             return VINF_SUCCESS;
     }
