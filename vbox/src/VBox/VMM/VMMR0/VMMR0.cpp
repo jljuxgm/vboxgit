@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 4248 2007-08-20 19:59:52Z vboxsync $ */
+/* $Id: VMMR0.cpp 4250 2007-08-20 20:45:31Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -59,7 +59,7 @@ __END_DECLS
  * feature enabled by default of course, but it's not currently
  * safe when more than one VM is running or when using internal
  * networking. */
-#if defined(DEBUG_sandervl)
+#if defined(DEBUG_sandervl) /*|| defined(DEBUG_bird)*/
 #define DEBUG_NO_RING0_ASSERTIONS
 #endif
 #ifdef DEBUG_NO_RING0_ASSERTIONS
@@ -173,6 +173,10 @@ static int VMMR0Init(PVM pVM, unsigned uVersion)
 
         RTLogLoggerEx(&pR0Logger->Logger, 0, ~0U, "hello ring-0 logger (RTLogLoggerEx)\n");
         LogCom(("VMMR0Init: RTLogLoggerEx returned fine offScratch=%d\n", pR0Logger->Logger.offScratch));
+
+        RTLogSetDefaultInstanceThread(&pR0Logger->Logger, (uintptr_t)pVM->pSession);
+        RTLogPrintf("hello ring-0 logger (RTLogPrintf)\n");
+        LogCom(("VMMR0Init: RTLogPrintf returned fine offScratch=%d\n", pR0Logger->Logger.offScratch));
 #endif
         RTLogSetDefaultInstanceThread(&pR0Logger->Logger, (uintptr_t)pVM->pSession);
     }
@@ -183,7 +187,10 @@ static int VMMR0Init(PVM pVM, unsigned uVersion)
      */
     int rc = HWACCMR0Init(pVM);
     if (VBOX_FAILURE(rc))
+    {
+        RTLogSetDefaultInstanceThread(NULL, 0);
         return rc;
+    }
 
     /*
      * Init CPUM.
