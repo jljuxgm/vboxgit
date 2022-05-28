@@ -1,4 +1,4 @@
-/** $Id: DBGConsole.cpp 4620 2007-09-08 00:39:30Z vboxsync $ */
+/** $Id: DBGConsole.cpp 4665 2007-09-10 13:41:18Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -5212,7 +5212,7 @@ static DECLCALLBACK(int) dbgcOpAddrPhys(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pR
         case DBGCVAR_TYPE_HC_FLAT:
             Assert(pDbgc->pVM);
             pResult->enmType = DBGCVAR_TYPE_GC_PHYS;
-            rc = PGMPhysHCPtr2GCPhysDbg(pDbgc->pVM, pArg->u.pvHCFlat, &pResult->u.GCPhys);
+            rc = PGMR3DbgHCPtr2GCPhys(pDbgc->pVM, pArg->u.pvHCFlat, &pResult->u.GCPhys);
             if (VBOX_SUCCESS(rc))
                 return 0;
             /** @todo more memory types! */
@@ -5294,7 +5294,7 @@ static DECLCALLBACK(int) dbgcOpAddrHostPhys(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVA
         case DBGCVAR_TYPE_HC_FLAT:
             Assert(pDbgc->pVM);
             pResult->enmType = DBGCVAR_TYPE_HC_PHYS;
-            rc = PGMPhysHCPtr2HCPhysDbg(pDbgc->pVM, pArg->u.pvHCFlat, &pResult->u.HCPhys);
+            rc = PGMR3DbgHCPtr2HCPhys(pDbgc->pVM, pArg->u.pvHCFlat, &pResult->u.HCPhys);
             if (VBOX_SUCCESS(rc))
                 return 0;
             /** @todo more memory types! */
