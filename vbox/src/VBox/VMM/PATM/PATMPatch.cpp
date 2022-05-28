@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 742 2007-02-07 10:17:01Z vboxsync $ */
+/* $Id: PATMPatch.cpp 1461 2007-03-14 09:39:09Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -690,6 +690,9 @@ int patmPatchGenCall(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu, RTGCPTR pCur
          * a page fault. The assembly code restores the stack afterwards.
          */
         offset = 0;
+        /* include prefix byte to make sure we don't use the incorrect selector register. */
+        if (pCpu->prefix & PREFIX_SEG)
+            pPB[offset++] = pCpu->prefix_seg;
         pPB[offset++] = 0xFF;              // push r/m32
         pPB[offset++] = MAKE_MODRM(MODRM_MOD(pCpu->ModRM), 6 /* group 5 */, MODRM_RM(pCpu->ModRM));
         i = 2;  /* standard offset of modrm bytes */
@@ -783,6 +786,10 @@ int patmPatchGenJump(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu, RTGCPTR pCur
      * a page fault. The assembly code restores the stack afterwards.
      */
     offset = 0;
+    /* include prefix byte to make sure we don't use the incorrect selector register. */
+    if (pCpu->prefix & PREFIX_SEG)
+        pPB[offset++] = pCpu->prefix_seg;
+
     pPB[offset++] = 0xFF;              // push r/m32
     pPB[offset++] = MAKE_MODRM(MODRM_MOD(pCpu->ModRM), 6 /* group 5 */, MODRM_RM(pCpu->ModRM));
     i = 2;  /* standard offset of modrm bytes */
