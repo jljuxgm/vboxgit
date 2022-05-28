@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 4080 2007-08-07 17:25:42Z vboxsync $ */
+/* $Id: VM.cpp 4081 2007-08-07 17:26:29Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -257,7 +257,7 @@ VMR3DECL(int)   VMR3Create(PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCON
                     case VERR_VMX_IN_VMX_ROOT_MODE:
 #ifdef __LINUX
                         pszError = N_("VirtualBox can't operate in VMX root mode. "
-        		              "Please disable the KVM kernel extension, recompile "
+        		                      "Please disable the KVM kernel extension, recompile "
                                       "your kernel and reboot. ");
 #else
                         pszError = N_("VirtualBox can't operate in VMX root mode.");
