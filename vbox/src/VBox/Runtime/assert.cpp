@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 1  vboxsync $ */
+/* $Id: assert.cpp 938 2007-02-15 21:00:36Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Assertion Workers.
  */
@@ -236,12 +236,3 @@ RTDECL(void)    AssertMsg2(const char *pszFormat, ...)
 
 #endif /* !IN_RING0 */
 
-
-/**
- * Check if we really want to hit a breakpoint.
- * Can jump back to ring-3 when the longjmp is armed.
- */
-RTDECL(bool) RTAssertDoBreakpoint(void)
-{
-    return true;
-}
