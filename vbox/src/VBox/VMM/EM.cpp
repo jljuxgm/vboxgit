@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 2505 2007-05-04 18:20:07Z vboxsync $ */
+/* $Id: EM.cpp 2716 2007-05-18 14:33:00Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -2036,6 +2036,9 @@ DECLINLINE(int) emR3RawHandleRC(PVM pVM, PCPUMCTX pCtx, int rc)
                     /** If it was successful, then we could go back to raw mode. */
                     if (TRPMR3GetGuestTrapHandler(pVM, u8Interrupt) != TRPM_INVALID_HANDLER)
                     {
+                        /* Must check pending forced actions as our IDT or GDT might be out of sync */
+                        EMR3CheckRawForcedActions(pVM);
+
                         rc = TRPMForwardTrap(pVM, CPUMCTX2CORE(pCtx), u8Interrupt, uErrorCode, enmError, TRPM_TRAP);
                         if (rc == VINF_SUCCESS /* Don't use VBOX_SUCCESS */)
                         {
