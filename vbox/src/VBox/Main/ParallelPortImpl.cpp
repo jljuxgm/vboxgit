@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.cpp 4339 2007-08-24 10:19:27Z vboxsync $ */
+/* $Id: ParallelPortImpl.cpp 5659 2007-11-09 19:26:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -481,8 +481,12 @@ STDMETHODIMP ParallelPort::COMGETTER(Path) (BSTR *aPath)
 
 STDMETHODIMP ParallelPort::COMSETTER(Path) (INPTR BSTR aPath)
 {
-    if (!aPath || *aPath == 0)
-        return E_INVALIDARG;
+    if (!aPath)
+        return E_POINTER;
+
+    if (!*aPath)
+        return setError (E_INVALIDARG,
+            tr ("Parallel port path cannot be empty"));
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
