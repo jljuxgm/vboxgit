@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5676 2007-11-11 05:50:06Z vboxsync $
+# $Id: Makefile.kmk 5677 2007-11-11 05:54:53Z vboxsync $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -37,6 +37,7 @@ Debugger_SOURCES   = \
 	DBGConsole.cpp \
 	DBGCBuiltInSymbols.cpp \
 	DBGCCmdHlp.cpp \
+	DBGCCmdWorkers.cpp \
 	DBGCCommands.cpp \
 	DBGCEmulateCodeView.cpp \
 	DBGCOps.cpp \
@@ -103,6 +104,7 @@ VBoxDbg_SOURCES    = \
 	DBGConsole.cpp \
 	DBGCBuiltInSymbols.cpp \
 	DBGCCmdHlp.cpp \
+	DBGCCmdWorkers.cpp \
 	DBGCCommands.cpp \
 	DBGCEmulateCodeView.cpp \
 	DBGCOps.cpp
