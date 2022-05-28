@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 161 2007-01-18 18:25:45Z vboxsync $ */
+/* $Id: MMInternal.h 247 2007-01-23 17:10:04Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -655,7 +655,7 @@ void mmr3HeapDestroy(PMMHEAP pHeap);
 int  mmr3HyperInit(PVM pVM);
 int  mmR3HyperInitPaging(PVM pVM);
 
-int  mmr3LockMem(PVM pVM, void *pv, size_t cb, MMLOCKEDTYPE eType, PMMLOCKEDMEM *ppLockedMem);
+int  mmr3LockMem(PVM pVM, void *pv, size_t cb, MMLOCKEDTYPE eType, PMMLOCKEDMEM *ppLockedMem, bool fSilentFailure = false);
 int  mmr3MapLocked(PVM pVM, PMMLOCKEDMEM pLockedMem, RTGCPTR Addr, unsigned iPage, size_t cPages, unsigned fFlags);
 
 const char *mmR3GetTagName(MMTAG enmTag);
