@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 870 2007-02-13 13:31:48Z vboxsync $ */
+/* $Id: VMInternal.h 2776 2007-05-22 17:32:44Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -274,10 +274,10 @@ typedef struct VMINT
     STAMCOUNTER                     StatReqFreeOverflow;
 
     /** Profiling the halted state; yielding vs blocking. */
-    STAMPROFILEADV                  StatHaltYield;
-    STAMPROFILEADV                  StatHaltBlock;
-    STAMPROFILEADV                  StatHaltTimers;
-    STAMPROFILEADV                  StatHaltPoll;
+    STAMPROFILE                     StatHaltYield;
+    STAMPROFILE                     StatHaltBlock;
+    STAMPROFILE                     StatHaltTimers;
+    STAMPROFILE                     StatHaltPoll;
 } VMINT, *PVMINT;
 
 
