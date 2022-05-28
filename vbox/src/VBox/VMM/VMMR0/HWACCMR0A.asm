@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 4071 2007-08-07 17:07:59Z vboxsync $
+; $Id: HWACCMR0A.asm 5072 2007-09-27 09:20:23Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -157,6 +157,9 @@ BEGINPROC VMXStartVM
     push    xBP
     mov     xBP, xSP
 
+    pushf
+    cli
+
     ;/* First we have to save some final CPU context registers. */
 %ifdef RT_ARCH_AMD64
     mov     rax, qword .vmlaunch_done
@@ -273,6 +276,7 @@ ALIGNCODE(16)
     mov     eax, VINF_SUCCESS
 
 .vmstart_end:
+    popf
     pop     xBP
     ret
 
@@ -331,6 +335,9 @@ ENDPROC VMXStartVM
 BEGINPROC VMXResumeVM
     push    xBP
     mov     xBP, xSP
+
+    pushf
+    cli
 
     ;/* First we have to save some final CPU context registers. */
 %ifdef RT_ARCH_AMD64
@@ -448,6 +455,7 @@ ALIGNCODE(16)
     mov     eax, VINF_SUCCESS
 
 .vmresume_end:
+    popf
     pop     xBP
     ret
 
