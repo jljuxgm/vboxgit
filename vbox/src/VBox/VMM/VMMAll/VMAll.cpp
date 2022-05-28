@@ -1,4 +1,4 @@
-/* $Id: VMAll.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: VMAll.cpp 4520 2007-09-05 07:17:14Z vboxsync $ */
 /** @file
  * VM - Virtual Machine All Contexts.
  */
@@ -249,10 +249,13 @@ VMDECL(int) VMSetRuntimeErrorV(PVM pVM, bool fFatal, const char *pszErrorID,
     /*
      * Switch to EMT.
      */
+    va_list WorkaroundVA;
+    va_copy(WorkaroundVA, args); /* Have to make a copy here or GCC will break. */
     PVMREQ pReq;
     VMR3ReqCall(pVM, &pReq, RT_INDEFINITE_WAIT, (PFNRT)vmR3SetRuntimeErrorV, 5,
-                pVM, fFatal, pszErrorID, pszFormat, &args);
+                pVM, fFatal, pszErrorID, pszFormat, &WorkaroundVA);
     VMR3ReqFree(pReq);
+    va_end(WorkaroundVA);
 
 #else
     /*
