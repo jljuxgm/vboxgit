@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 1251 2007-03-06 09:11:39Z vboxsync $ */
+/* $Id: PGMAll.cpp 1310 2007-03-07 20:06:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1317,6 +1317,7 @@ PGMDECL(PGMMODE) PGMGetGuestMode(PVM pVM)
     return pVM->pgm.s.enmGuestMode;
 }
 
+
 /**
  * Gets the current shadow paging mode.
  *
@@ -1327,6 +1328,7 @@ PGMDECL(PGMMODE) PGMGetShadowMode(PVM pVM)
 {
     return pVM->pgm.s.enmShadowMode;
 }
+
 
 /**
  * Get mode name.
