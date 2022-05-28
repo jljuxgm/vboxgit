@@ -1,4 +1,4 @@
-/** $Id: VBoxServiceClipboard-os2.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/** $Id: VBoxServiceClipboard-os2.cpp 4377 2007-08-27 08:45:40Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Clipboard Service, OS/2.
  */
@@ -167,10 +167,10 @@ static DECLCALLBACK(int) VBoxServiceClipboardOS2Init(void)
         /*
          * Create the 'nothing-changed' format.
          */
-        g_atomNothingChanged = WinAddAtom(WinQuerySystemAtomTable(), (PCSZ)"VirtualBox.org Clipboard Service");
+        g_atomNothingChanged = WinAddAtom(WinQuerySystemAtomTable(), (PCSZ)"VirtualBox Clipboard Service");
         LONG lLastError = WinGetLastError(g_habCtrl);
         if (g_atomNothingChanged == 0)
-            g_atomNothingChanged = WinFindAtom(WinQuerySystemAtomTable(), (PCSZ)"VirtualBox.org Clipboard Service");
+            g_atomNothingChanged = WinFindAtom(WinQuerySystemAtomTable(), (PCSZ)"VirtualBox Clipboard Service");
         if (g_atomNothingChanged)
         {
             /*
@@ -903,7 +903,7 @@ static DECLCALLBACK(int) VBoxServiceClipboardOS2Worker(bool volatile *pfShutdown
             {
                 g_hwndWorker = WinCreateWindow(HWND_OBJECT,                             /* hwndParent */
                                                (PCSZ)"VBoxServiceClipboardClass",       /* pszClass */
-                                               (PCSZ)"VirtualBox.org Clipboard Service",/* pszName */
+                                               (PCSZ)"VirtualBox Clipboard Service",    /* pszName */
                                                0,                                       /* flStyle */
                                                0, 0, 0, 0,                              /* x, y, cx, cy */
                                                NULLHANDLE,                              /* hwndOwner */
