@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 1800 2007-03-29 13:55:47Z vboxsync $
+; $Id: PATMA.asm 1801 2007-03-29 13:55:56Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -40,7 +40,7 @@
 %ifdef DEBUG
 ; Noisy, but useful for debugging certain problems
 ;;;%define PATM_LOG_PATCHINSTR
-%define PATM_LOG_PATCHIRET
+;;%define PATM_LOG_PATCHIRET
 %endif
 
 BEGINCODE
