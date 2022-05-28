@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3908 2007-07-27 16:48:00Z vboxsync $
+# $Id: Makefile.kmk 3925 2007-07-30 16:44:12Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -79,7 +79,8 @@ VirtualBox_QT_MOCHDRS = \
 	include/VBoxProblemReporter.h
 
 # Sources containing local definitions of classes that use the Q_OBJECT macro
-VirtualBox_QT_MOCSRCS = src/VBoxSelectorWnd.cpp
+VirtualBox_QT_MOCSRCS = src/VBoxSelectorWnd.cpp \
+						src/VBoxConsoleWnd.cpp
 ifdef VBOX_WITH_XPCOM
 VirtualBox_QT_MOCSRCS += src/COMDefs.cpp
 endif
