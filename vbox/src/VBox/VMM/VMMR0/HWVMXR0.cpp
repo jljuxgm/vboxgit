@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 3168 2007-06-20 08:45:50Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1727,8 +1727,11 @@ ResumeExecution:
                 }
             }
         }
-        if (    rc == VINF_SUCCESS
-            ||  (rc >= VINF_EM_FIRST && rc <= VINF_EM_LAST))
+        /* 
+         * Handled the I/O return codes.
+         * (The unhandled cases end up with rc == VINF_EM_RESCHEDULE_REM.)
+         */
+        if (IOM_SUCCESS(rc))
         {
             /* Update EIP and continue execution. */
             pCtx->eip += cbInstr;
