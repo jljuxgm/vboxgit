@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 5000 2007-09-24 11:17:56Z vboxsync $ */
+/* $Id: PGMPhys.cpp 5001 2007-09-24 11:18:29Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -445,7 +445,7 @@ int pgmr3PhysGrowRange(PVM pVM, RTGCPHYS GCPhys)
         LogRel(("pgmr3PhysGrowRange: VM execution resumed -> retry.\n"));
         return pgmr3PhysGrowRange(pVM, GCPhys);
     }
-    LogRel(("SUPPageAlloc %x pages failed with %Vrc\n", cPages, rc));
+    LogRel(("pgmr3PhysGrowRange %VGp SUPPageAlloc %x pages failed with %Vrc\n", GCPhys, cPages, rc));
     return rc;
 }
 
