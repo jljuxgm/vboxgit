@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 4372 2007-08-24 21:21:51Z vboxsync $ */
+/* $Id: fileio.cpp 5258 2007-10-12 09:57:23Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O.
  */
@@ -127,7 +127,7 @@ int rtFileRecalcAndValidateFlags(unsigned *pfOpen)
      */
     if (    (fOpen & (~RTFILE_O_VALID_MASK | RTFILE_O_NON_BLOCK))
         ||  !(fOpen & RTFILE_O_ACCESS_MASK)
-        ||  (fOpen & (RTFILE_O_TRUNCATE | RTFILE_O_DENY_WRITE)) == RTFILE_O_TRUNCATE
+        ||  (fOpen & (RTFILE_O_TRUNCATE | RTFILE_O_WRITE)) == RTFILE_O_TRUNCATE
        )
     {
         AssertMsgFailed(("Invalid parameters! fOpen=%#x\n", fOpen));
