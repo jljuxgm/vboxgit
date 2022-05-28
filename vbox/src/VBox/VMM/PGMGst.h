@@ -1,4 +1,4 @@
-/* $Id: PGMGst.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: PGMGst.h 3185 2007-06-20 13:43:13Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
@@ -391,7 +391,7 @@ static DECLCALLBACK(int) pgmR3GstPAEWriteHandlerPD(PVM pVM, RTGCPHYS GCPhys, voi
             if (pVM->pgm.s.pGstPaePDPTRHC->a[i].u == (GCPhys & X86_PTE_PAE_PG_MASK))
             {
                 PX86PDPAE           pPDSrc = pgmGstGetPaePD(&pVM->pgm.s, i << X86_PDPTR_SHIFT);
-                const RTGCUINTPTR offPD = GCPhys & PAGE_OFFSET_MASK;
+                const RTGCUINTPTR   offPD = GCPhys & PAGE_OFFSET_MASK;
                 const unsigned      iPD1 = offPD / sizeof(X86PDEPAE);
                 const unsigned      iPD2 = (offPD + cbBuf - 1) / sizeof(X86PDEPAE);
                 Assert(iPD1 - iPD2 <= 1);

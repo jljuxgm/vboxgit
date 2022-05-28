@@ -1,8 +1,6 @@
-/* $Id: PGMBth.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: PGMBth.h 3185 2007-06-20 13:43:13Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
- *
- * This file is a big challenge!
  */
 
 /*

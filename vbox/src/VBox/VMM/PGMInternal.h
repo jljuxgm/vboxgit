@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: PGMInternal.h 3185 2007-06-20 13:43:13Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2352,12 +2352,12 @@ DECLINLINE(PX86PDEPAE) pgmGstGetPaePDEPtr(PPGM pPGM, RTGCUINTPTR GCPtr)
         if ((CTXSUFF(pPGM->pGstPaePDPTR)->a[iPdPtr].u & X86_PDPE_PG_MASK) == pPGM->aGCPhysGstPaePDs[iPdPtr])
             return &CTXSUFF(pPGM->apGstPaePDs)[iPdPtr]->a[iPD];
 
-        /* cache is out-of-sync. */
+        /* The cache is out-of-sync. */
         PX86PDPAE pPD;
         int rc = PGM_GCPHYS_2_PTR(PGM2VM(pPGM), CTXSUFF(pPGM->pGstPaePDPTR)->a[iPdPtr].u & X86_PDPE_PG_MASK, &pPD);
         if (VBOX_SUCCESS(rc))
             return &pPD->a[iPD];
-        AssertMsgFailed(("Impossible! rc=%d PDPE=%#llx\n", rc, CTXSUFF(pPGM->pGstPaePDPTR)->a[iPdPtr].u));
+        AssertMsgFailed(("Impossible! rc=%Vrc PDPE=%RX64\n", rc, CTXSUFF(pPGM->pGstPaePDPTR)->a[iPdPtr].u));
         /* returning NIL_RTGCPHYS is ok if we assume it's just an invalid page or something which we'll emulate as all 0s. */
     }
     return NULL;
