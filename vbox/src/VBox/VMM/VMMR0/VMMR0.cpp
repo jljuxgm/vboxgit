@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 4923 2007-09-20 11:58:47Z vboxsync $ */
+/* $Id: VMMR0.cpp 4929 2007-09-20 13:25:15Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -910,12 +910,6 @@ VMMR0DECL(void) vmmR0LoggerFlush(PRTLOGGER pLogger)
 }
 
 
-void R0LogFlush(void)
-{
-    vmmR0LoggerFlush(RTLogDefaultInstance());
-}
-
-
 #ifdef DEBUG_NO_RING0_ASSERTIONS
 /**
  * Check if we really want to hit a breakpoint.
@@ -980,6 +974,5 @@ DECLEXPORT(void) RTCALL AssertMsg2(const char *pszFormat, ...)
         va_start(args, pszFormat);
         RTLogFormatV(rtLogOutput, pLog, pszFormat, args);
         va_end(args);
-        R0LogFlush();
     }
 }
