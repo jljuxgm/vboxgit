@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 1387 2007-03-09 20:15:26Z vboxsync $ */
+/* $Id: fileio-posix.cpp 2933 2007-05-30 14:56:43Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - File I/O, POSIX.
  */
@@ -424,7 +424,7 @@ RTR3DECL(int) RTFileQueryInfo(RTFILE File, PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD
     /*
      * Setup the returned data.
      */
-    rtFsConvertStatToObjInfo(pObjInfo, &Stat);
+    rtFsConvertStatToObjInfo(pObjInfo, &Stat, NULL, 0);
 
     /*
      * Requested attributes (we cannot provide anything actually).
