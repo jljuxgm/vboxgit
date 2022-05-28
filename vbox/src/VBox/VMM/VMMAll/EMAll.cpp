@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 1136 2007-03-01 17:17:09Z vboxsync $ */
+/* $Id: EMAll.cpp 1137 2007-03-01 17:21:49Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1315,7 +1315,7 @@ EMDECL(int) EMInterpretIret(PVM pVM, PCPUMCTXCORE pRegFrame)
 #endif
     Assert((pRegFrame->eflags.u32 & (X86_EFL_IF|X86_EFL_IOPL)) == X86_EFL_IF);
 
-    pRegFrame->esp = ss;
+    pRegFrame->esp = esp;
     pRegFrame->ss  = ss;
     pRegFrame->ds  = ds;
     pRegFrame->es  = es;
