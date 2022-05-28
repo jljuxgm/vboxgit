@@ -1,4 +1,4 @@
-/* $Id: logcom.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: logcom.cpp 5415 2007-10-21 20:50:07Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Logging to Serial Port.
  */
