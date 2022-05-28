@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2482 2007-05-04 02:02:17Z vboxsync $
+# $Id: Makefile.kmk 2609 2007-05-13 12:36:47Z vboxsync $
 ## @file
 # Makefile for the devices, drivers and services.
 #
@@ -470,6 +470,11 @@ ifdef VBOX_WITH_USB
   Drivers_SOURCES     += \
 	USB/vrdp/USBProxyDevice-vrdp.cpp
  endif
+
+ Drivers_DEFS.darwin  += VUSB_HAVE_USBPROXY_DEVICE
+ Drivers_SOURCES.darwin += \
+	USB/USBProxyDevice.cpp \
+	USB/darwin/USBProxyDevice-darwin.cpp
 
  Drivers_DEFS.linux   += VUSB_HAVE_USBPROXY_DEVICE
  ifdef VBOX_WITHOUT_LINUX_COMPILER_H
