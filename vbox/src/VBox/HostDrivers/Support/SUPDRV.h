@@ -1,4 +1,4 @@
-/* $Revision: 4704 $ */
+/* $Revision: 4755 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -356,6 +356,8 @@ typedef enum
     MEMREF_TYPE_LOW,
     /** Memory block (r3 and r0 mapping). */
     MEMREF_TYPE_MEM,
+    /** Locked memory (r3 mapping only) allocated by the support driver. */
+    MEMREF_TYPE_LOCKED_SUP,
     /** Blow the type up to 32-bit and mark the end. */
     MEMREG_TYPE_32BIT_HACK = 0x7fffffff
 } SUPDRVMEMREFTYPE, *PSUPDRVMEMREFTYPE;

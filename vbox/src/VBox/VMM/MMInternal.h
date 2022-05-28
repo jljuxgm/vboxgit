@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 4388 2007-08-27 14:26:05Z vboxsync $ */
+/* $Id: MMInternal.h 4755 2007-09-13 08:05:08Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -647,9 +647,9 @@ typedef struct MM
     HCPTRTYPE(PMMLOCKEDMEM)     pLockedMem;
 
     /** Page pool. (HC only) */
-    HCPTRTYPE(PMMPAGEPOOL)      pPagePool;
+    R3R0PTRTYPE(PMMPAGEPOOL)    pPagePool;
     /** Page pool pages in low memory. (HC only) */
-    HCPTRTYPE(PMMPAGEPOOL)      pPagePoolLow;
+    R3R0PTRTYPE(PMMPAGEPOOL)    pPagePoolLow;
 
     /** Pointer to the dummy page.
      * The dummy page is a paranoia thingy used for instance for pure MMIO RAM ranges
