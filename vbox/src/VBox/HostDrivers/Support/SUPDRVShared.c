@@ -1,4 +1,4 @@
-/* $Revision: 4962 $ */
+/* $Revision: 4963 $ */
 /** @file
  * VirtualBox Support Driver - Shared code.
  */
@@ -547,6 +547,8 @@ void VBOXCALL supdrvCleanupSession(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSessio
  */
 int VBOXCALL supdrvIOCtlFast(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession)
 {
+    int rc;
+
     /*
      * We check the two prereqs after doing this only to allow the compiler to optimize things better.
      */
