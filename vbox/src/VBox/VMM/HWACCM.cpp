@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 2555 2007-05-09 12:58:47Z vboxsync $ */
+/* $Id: HWACCM.cpp 2699 2007-05-17 15:18:06Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -218,6 +218,8 @@ HWACCMR3DECL(int) HWACCMR3Init(PVM pVM)
             AssertRC(rc);
         }
     }
+    pVM->hwaccm.s.pStatExitReasonR0 = MMHyperR3ToR0(pVM, pVM->hwaccm.s.pStatExitReason);
+    Assert(pVM->hwaccm.s.pStatExitReasonR0);
 #endif
 
     /* Disabled by default. */
