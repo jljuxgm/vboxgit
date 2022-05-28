@@ -1,4 +1,4 @@
-/* $Id: timesup.cpp 1  vboxsync $ */
+/* $Id: timesup.cpp 656 2007-02-06 01:23:16Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Time using SUPLib.
  */
@@ -105,7 +105,7 @@ DECLINLINE(uint64_t) rtTimeNanoTSInternal(void)
          */
         u64Delta = u32UpdateIntervalTSC;
     }
-#if !defined(_MSC_VER) || defined(__amd64__) /* GCC makes very pretty code from these two inline calls, while MSC cannot. */
+#if !defined(_MSC_VER) || defined(__AMD64__) /* GCC makes very pretty code from these two inline calls, while MSC cannot. */
     u64Delta = ASMMult2xU32RetU64((uint32_t)u64Delta, u32NanoTSFactor0);
     u64Delta = ASMDivU64ByU32RetU32(u64Delta, u32UpdateIntervalTSC);
 #else
