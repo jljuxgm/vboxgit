@@ -1,4 +1,4 @@
-/** $Id: DevPCNet.cpp 5067 2007-09-26 20:31:38Z vboxsync $ */
+/** $Id: DevPCNet.cpp 5569 2007-10-30 19:35:37Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -3860,6 +3860,24 @@ static DECLCALLBACK(int) pcnetSaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle
 
 
 /**
+ * Cleanup after saving.
+ *
+ * @returns VBox status code.
+ * @param   pDevIns     The device instance.
+ * @param   pSSMHandle  The handle to save the state to.
+ */
+static DECLCALLBACK(int) pcnetSaveDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle)
+{
+    PCNetState *pData = PDMINS2DATA(pDevIns, PCNetState *);
+
+    PDMCritSectEnter(&pData->CritSect, VERR_PERMISSION_DENIED);
+    pData->fSaving = false;
+    PDMCritSectLeave(&pData->CritSect);
+    return VINF_SUCCESS;
+}
+
+
+/**
  * Loads a saved PC-Net II device state.
  *
  * @returns VBox status code.
@@ -4362,7 +4380,7 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
 /** @todo r=bird: we're not locking down pcnet properly during saving and loading! */
     rc = PDMDevHlpSSMRegister(pDevIns, pDevIns->pDevReg->szDeviceName, iInstance,
                               PCNET_SAVEDSTATE_VERSION, sizeof(*pData),
-                              pcnetSavePrep, pcnetSaveExec, NULL,
+                              pcnetSavePrep, pcnetSaveExec, pcnetSaveDone,
                               NULL, pcnetLoadExec, NULL);
     if (VBOX_FAILURE(rc))
         return rc;
