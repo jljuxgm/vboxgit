@@ -1,11 +1,11 @@
-; $Id: AMD64ToPAE.asm 4071 2007-08-07 17:07:59Z vboxsync $
+; $Id: AMD64ToPAE.asm 5693 2007-11-11 17:47:35Z vboxsync $
 ;; @file
 ; VMM - World Switchers, AMD64 to PAE.
 ;
 
 ;
 ;  Copyright (C) 2006-2007 innotek GmbH
-; 
+;
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
 ;  you can redistribute it and/or modify it under the terms of the GNU
@@ -151,7 +151,7 @@ BEGINPROC vmmR0HostToGuest
     FIXUP FIX_HC_64BIT_CS, 1
     push    0ffffh
     FIXUP FIX_HC_32BIT, 1, NAME(vmmR0HostToGuestAsm) - NAME(Start)
-    push    NAME(vmmR0HostToGuestAsm)
+    push    0ffffffffh
     retf
 .vmmR0HostToGuestReturn:
 
