@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 2131 2007-04-17 12:56:53Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 2133 2007-04-17 13:29:50Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -563,8 +563,6 @@ ResumeExecution:
         STAM_PROFILE_ADV_STOP(&pVM->hwaccm.s.StatEntry, x);
         goto end;
     }
-
-    /** @todo check timers?? */
 
     /* Load the guest state */
     rc = SVMR0LoadGuestState(pVM, pCtx);
