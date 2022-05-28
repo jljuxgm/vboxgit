@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5359 2007-10-17 15:19:01Z vboxsync $
+# $Id: Makefile.kmk 5360 2007-10-17 15:24:14Z vboxsync $
 ## @file
 # Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -47,7 +47,6 @@ endif
 VBoxSDL_DEFS.freebsd = VBOXSDL_WITH_X11
 VBoxSDL_DEFS.linux = _GNU_SOURCE VBOXSDL_WITH_X11
 VBoxSDL_DEFS.solaris = VBOXSDL_WITH_X11
-VBoxSDL_DEFS.solaris += VBOX_WITHOUT_XCURSOR ## @todo build xcursor or something.
 ifdef VBOX_OPENGL
  #VBoxSDL_DEFS.linux += VBOX_OPENGL
 endif
