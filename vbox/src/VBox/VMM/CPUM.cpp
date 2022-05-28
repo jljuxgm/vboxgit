@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: CPUM.cpp 172 2007-01-18 22:24:35Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -42,6 +42,7 @@
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #include <iprt/string.h>
+#include <iprt/system.h>
 #include "x86context.h"
 
 /*******************************************************************************
@@ -370,6 +371,8 @@ static int cpumR3CpuIdInit(PVM pVM)
     /*
      * Log the cpuid and we're good.
      */
+    LogRel(("Logical host processors: %d, processor active mask: %08x\n",
+            RTSystemProcessorGetCount(), RTSystemProcessorGetActiveMask()));
     LogRel(("************************* CPUID dump ************************\n"));
     DBGFR3Info(pVM, "cpuid", "verbose", DBGFR3InfoLogRelHlp());
     LogRel(("\n"));
