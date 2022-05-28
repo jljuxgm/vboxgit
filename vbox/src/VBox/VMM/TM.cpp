@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 2283 2007-04-20 22:27:52Z vboxsync $ */
+/* $Id: TM.cpp 2464 2007-05-03 15:09:01Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -1610,6 +1610,21 @@ TMR3DECL(int) TMR3TimerLoad(PTMTIMERHC pTimer, PSSMHANDLE pSSM)
     if (VBOX_FAILURE(rc))
         rc = SSMR3HandleSetStatus(pSSM, rc);
     return rc;
+}
+
+
+/**
+ * Get the real world UCT time adjusted for VM lag.
+ *
+ * @returns pTime.
+ * @param   pVM             The VM instance.
+ * @param   pTime           Where to store the time.
+ */
+TMR3DECL(PRTTIMESPEC) TMR3UCTNow(PVM pVM, PRTTIMESPEC pTime)
+{
+    RTTimeNow(pTime);
+    RTTimeSpecSubNano(pTime, pVM->tm.s.offVirtualSync - pVM->tm.s.offVirtualSyncGivenUp);
+    return pTime;
 }
 
 
