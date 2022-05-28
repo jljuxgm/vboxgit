@@ -1,4 +1,4 @@
-/* $Id: SELMGC.cpp 1408 2007-03-12 09:51:47Z vboxsync $ */
+/* $Id: SELMGC.cpp 1412 2007-03-12 11:02:24Z vboxsync $ */
 /** @file
  * SELM - The Selector manager, Guest Context.
  */
@@ -92,6 +92,10 @@ static int selmGCSyncGDTEntry(PVM pVM, PCPUMCTXCORE pRegFrame, unsigned iGDTEntr
             return VINF_SELM_SYNC_GDT;
         }
         Log(("selmGCSyncGDTEntry: Sel=%d Desc=%.8Vhxs: potential conflict (still not present)!\n", Sel, &Desc));
+
+        /** @note we can't continue below or else we'll change the shadow descriptor!! */
+        /** When the guest makes the selector present, then we'll do a GDT sync. */
+        return VINF_SUCCESS;
     }
 
     /*
