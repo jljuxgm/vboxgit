@@ -1,4 +1,4 @@
-/** $Id: Builtins.cpp 3666 2007-07-17 06:33:02Z vboxsync $ */
+/** $Id: Builtins.cpp 3670 2007-07-17 09:19:36Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -155,7 +155,7 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvVD);
     if (VBOX_FAILURE(rc))
         return rc;
-#ifndef __L4ENV__
+#ifndef RT_OS_L4
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvVmdkHDD);
     if (VBOX_FAILURE(rc))
         return rc;
@@ -189,12 +189,12 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (VBOX_FAILURE(rc))
         return rc;
 #endif
-#ifndef __L4ENV__
+#ifndef RT_OS_L4
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvNAT);
     if (VBOX_FAILURE(rc))
         return rc;
 #endif
-#if defined(__L4ENV__) || defined(RT_OS_LINUX) || defined(RT_OS_WINDOWS)
+#if defined(RT_OS_L4) || defined(RT_OS_LINUX) || defined(RT_OS_WINDOWS)
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostInterface);
     if (VBOX_FAILURE(rc))
         return rc;
@@ -218,7 +218,7 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
         return rc;
 #endif
 
-#if !defined(__L4ENV__)
+#if !defined(RT_OS_L4)
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvNamedPipe);
     if (VBOX_FAILURE(rc))
         return rc;
