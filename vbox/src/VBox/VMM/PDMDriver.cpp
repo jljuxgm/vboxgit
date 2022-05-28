@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 3853 2007-07-25 19:24:30Z vboxsync $ */
+/* $Id: PDMDriver.cpp 3857 2007-07-25 22:02:21Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -48,6 +48,7 @@
 *******************************************************************************/
 /**
  * Internal callback structure pointer.
+ *
  * The main purpose is to define the extra data we associate
  * with PDMDRVREGCB so we can find the VM instance and so on.
  */

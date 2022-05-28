@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 3112 2007-06-14 18:23:38Z vboxsync $ */
+/* $Id: PDMDevice.cpp 3857 2007-07-25 22:02:21Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -687,6 +687,13 @@ int pdmR3DevInit(PVM pVM)
             return rc;
     }
 
+#ifdef VBOX_WITH_USB
+    /* ditto for USB Devices. */
+    rc = pdmR3UsbLoadModules(pVM);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+
 
     /*
      *
@@ -905,6 +912,13 @@ int pdmR3DevInit(PVM pVM)
         }
     } /* for device instances */
 
+#ifdef VBOX_WITH_USB
+    /* ditto for USB Devices. */
+    rc = pdmR3UsbInstantiateDevices(pVM);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+
 
     /*
      *
@@ -936,6 +950,13 @@ int pdmR3DevInit(PVM pVM)
             }
         }
     }
+
+#ifdef VBOX_WITH_USB
+    /* ditto for USB Devices. */
+    rc = pdmR3UsbInitComplete(pVM);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
 
     LogFlow(("pdmR3DevInit: returns %Vrc\n", VINF_SUCCESS));
     return VINF_SUCCESS;

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3548 2007-07-11 11:39:50Z vboxsync $
+# $Id: Makefile.kmk 3857 2007-07-25 22:02:21Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -136,6 +136,11 @@ VMMR3_SOURCES.amd64 = \
 	VMMSwitcher/AMD64ToPAE.asm
 VMMR3_SOURCES.darwin.x86 += \
 	VMMSwitcher/AMD64ToPAE.asm
+
+ifdef VBOX_WITH_USB
+VMMR3_DEFS += VBOX_WITH_USB
+VMMR3_SOURCES += PDMUsb.cpp
+endif
 
 
 #
