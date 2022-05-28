@@ -1,4 +1,4 @@
-/* $Id: TRPMGC.cpp 1421 2007-03-12 12:34:42Z vboxsync $ */
+/* $Id: TRPMGC.cpp 1422 2007-03-12 12:37:28Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -112,7 +112,7 @@ TRPMGCDECL(int) trpmgcGuestIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCT
 #endif
     uint32_t    iGate       = ((RTGCUINTPTR)pvFault - (RTGCUINTPTR)GCPtrIDT)/sizeof(VBOXIDTE);
 
-    AssertMsg(offRange < cbIDT+1, ("pvFault=%VGv GCPtrIDT=%VGv-%VGv pvRange=%VGv\n", pvFault, GCPtrIDT, GCPtrIDTEnd, pvRange));
+    AssertMsg(offRange < (uint32_t)cbIDT+1, ("pvFault=%VGv GCPtrIDT=%VGv-%VGv pvRange=%VGv\n", pvFault, GCPtrIDT, GCPtrIDTEnd, pvRange));
     Assert(pvRange == GCPtrIDT);
 
 #if 0
