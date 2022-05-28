@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: REMAll.cpp 4268 2007-08-21 17:10:47Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -49,6 +49,7 @@ REMDECL(int) REMNotifyInvalidatePage(PVM pVM, RTGCPTR GCPtrPage)
         pVM->rem.s.aGCPtrInvalidatedPages[pVM->rem.s.cInvalidatedPages++] = GCPtrPage;
         return VINF_SUCCESS;
     }
+    /* Note: another option is to signal a TLB flush for the recompiler */
     return VERR_REM_FLUSHED_PAGES_OVERFLOW;
 }
 
