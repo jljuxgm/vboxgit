@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 3132 2007-06-17 19:45:26Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Guest Addition X11 Client.
 #
@@ -30,10 +30,15 @@ endif
 
 vboxadd-xclient_TEMPLATE = VBOXLNX32GUESTR3EXE
 vboxadd-xclient_SOURCES  = clipboard.cpp
-vboxadd-xclient_LIBPATH  = $(VBOX_LIBPATH32_X11)
+vboxadd-xclient_LIBPATH  = $(PATH_TARGET)/vboxadd-xclient $(VBOX_LIBPATH32_X11)
 vboxadd-xclient_LIBS     = \
     $(PATH_LIB)/RuntimeLnx32GuestR3.a pthread rt Xt X11
 vboxadd-xclient_DEFS     = _GNU_SOURCE VBOX_HGCM
 
-include	$(PATH_KBUILD)/footer.kmk
+# link agaginst libstdc++.a (http://www.trilithium.com/johan/2005/06/static-libstdc/)
+$(PATH_TARGET)/vboxadd-xclient/vboxadd-xclient: $(PATH_TARGET)/vboxadd-xclient/libstdc++.a
 
+$(PATH_TARGET)/vboxadd-xclient/libstdc++.a:
+	ln -s `$(TOOL_$(VBOX_GCC32_TOOL)_CXX) -print-file-name=libstdc++.a` $@
+
+include	$(PATH_KBUILD)/footer.kmk
