@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 2679 2007-05-16 19:11:24Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 2873 2007-05-25 14:35:59Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1223,7 +1223,8 @@ PGMDECL(void) PGMPhysWrite(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t c
                         AssertReleaseMsgFailed(("Unknown write at %VGp size %d implement the complex physical writing case %x\n",
                                                 GCPhys, cbWrite,
                                                 (HCPhys & (MM_RAM_FLAGS_RESERVED | MM_RAM_FLAGS_MMIO | MM_RAM_FLAGS_MMIO2 | MM_RAM_FLAGS_VIRTUAL_ALL | MM_RAM_FLAGS_VIRTUAL_WRITE | MM_RAM_FLAGS_PHYSICAL_ALL | MM_RAM_FLAGS_PHYSICAL_WRITE))));
-                        cb = PAGE_SIZE - (off & PAGE_OFFSET_MASK);
+                        /* skip the write */
+                        cb = cb;
                         break;
                 }
 
