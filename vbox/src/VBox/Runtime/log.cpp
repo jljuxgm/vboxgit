@@ -1,4 +1,4 @@
-/* $Id: log.cpp 3123 2007-06-15 14:46:16Z vboxsync $ */
+/* $Id: log.cpp 3148 2007-06-18 21:57:56Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -320,7 +320,7 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, RTUINT fFlags, const char *pszGr
                                 /* check for value. */
                                 while (isspace(*pszVar) || *pszVar == '\n' || *pszVar == '\r')
                                     pszVar++;
-                                if (*pszVar == '=')
+                                if (*pszVar == '=' || *pszVar == ':')
                                 {
                                     pszVar++;
                                     const char *pszEnd = strchr(pszVar, ';');
