@@ -1,4 +1,4 @@
-# $Id: Config.kmk 45 2007-01-15 18:11:16Z vboxsync $
+# $Id: Config.kmk 46 2007-01-15 18:11:30Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1407,7 +1407,7 @@ endif # !win
 #
 TEMPLATE_VBOXMAIN  = VBox MAIN
 TEMPLATE_VBOXMAIN_EXTENDS = VBOXMAINEXE
-ifneq ($(BUILD_TARGET_ARCH),amd64)
+ifeq ($(BUILD_TARGET_ARCH),amd64)
  ifneq ($(BUILD_TARGET),win)
   TEMPLATE_VBOXMAIN_DEFS     = PIC $(TEMPLATE_VBOXMAINEXE_DEFS)
   TEMPLATE_VBOXMAIN_CFLAGS   = -fPIC $(TEMPLATE_VBOXMAINEXE_CFLAGS)
