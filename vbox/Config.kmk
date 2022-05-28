@@ -1,4 +1,4 @@
-# $Id: Config.kmk 995 2007-02-19 19:05:14Z vboxsync $
+# $Id: Config.kmk 1075 2007-02-27 11:58:57Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -196,8 +196,10 @@ VBOX_WITH_HGCM = 1
 VBOX_WITH_USB = 1
 # Enable the ISCSI feature.
 VBOX_WITH_ISCSI = 1
-# Disable ALSA support for Linux (currently broken).
+# Enable ALSA support for Linux
 VBOX_WITH_ALSA = 1
+# Disable WINMM support for Windows (not implemented)
+VBOX_WITH_WINMM =
 # Enable the kchmviewer
 VBOX_WITH_KCHMVIEWER = 1
 # Build the testsuite.
