@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 2270 2007-04-20 12:58:15Z vboxsync $ */
+/* $Id: PGMAll.cpp 2279 2007-04-20 14:31:17Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -503,7 +503,27 @@ PGMDECL(int) PGMVerifyAccess(PVM pVM, RTGCUINTPTR Addr, uint32_t cbSize, uint32_
     if (    VBOX_SUCCESS(rc)
         &&  (   PAGE_ADDRESS(Addr) != PAGE_ADDRESS(Addr + cbSize - 1)
              || Addr + cbSize < Addr))
-        return PGMVerifyAccess(pVM, Addr + PAGE_SIZE, cbSize > PAGE_SIZE ? cbSize - PAGE_SIZE : 1, fAccess);
+    {
+        Addr += PAGE_SIZE;
+        if (cbSize > PAGE_SIZE)
+            cbSize =- PAGE_SIZE;
+        else
+            cbSize = 0;
+
+        /* Don't recursively call PGMVerifyAccess as we might run out of stack. */
+        for(;;)
+        {
+            rc = PGMVerifyAccess(pVM, Addr, 1, fAccess);
+            if (rc != VINF_SUCCESS)
+                break;
+
+            Addr += PAGE_SIZE;
+            if (cbSize > PAGE_SIZE)
+                cbSize =- PAGE_SIZE;
+            else
+                break;
+        }
+    }
     return rc;
 }
 
