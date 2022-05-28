@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: CSAM.cpp 27 2007-01-15 15:36:01Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1767,7 +1767,7 @@ CSAMR3DECL(int) CSAMR3MonitorPage(PVM pVM, RTGCPTR pPageAddrGC, CSAMTAG enmTag)
         Assert(rc == VINF_SUCCESS || rc == VERR_PAGE_NOT_PRESENT || rc == VERR_PAGE_TABLE_NOT_PRESENT);
     }
 
-#ifdef VBOX_STRICT
+#if 0 /* def VBOX_STRICT -> very annoying) */
     if (pPageRec->page.fMonitorActive)
     {
         uint64_t fPageShw;
