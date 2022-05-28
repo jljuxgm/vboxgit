@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 3616 2007-07-14 21:09:52Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -73,8 +73,8 @@
 /* we don't use iprt here because we're pretending to be in GC! */
 #include <stdio.h>
 
-#define GEN_CHECK_SIZE(s)   printf("    CHECK_SIZE(%s, %d);\n", #s, sizeof(s))
-#define GEN_CHECK_OFF(s, m) printf("    CHECK_OFF(%s, %d, %s);\n", #s, RT_OFFSETOF(s, m), #m)
+#define GEN_CHECK_SIZE(s)   printf("    CHECK_SIZE(%s, %d);\n", #s, (int)sizeof(s))
+#define GEN_CHECK_OFF(s, m) printf("    CHECK_OFF(%s, %d, %s);\n", #s, (int)RT_OFFSETOF(s, m), #m)
 #define GEN_CHECK_PADDING(s, m) printf("    CHECK_PADDING(%s, %s);\n", #s, #m)
 
 int main()
