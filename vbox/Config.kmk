@@ -1,4 +1,4 @@
-# $Id: Config.kmk 606 2007-02-04 19:19:30Z vboxsync $
+# $Id: Config.kmk 615 2007-02-05 01:08:28Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -209,6 +209,7 @@ ifneq ($(filter darwin os2 freebsd,$(BUILD_TARGET)),)
  VBOX_WITH_VBOXSDL=
  VBOX_WITH_DEBUGGER_GUI=
  VBOX_WITH_INSTALLER=
+ VBOX_WITH_SECURELABEL=
  VBOX_WITH_VRDP=
  VBOX_WITH_VRDP_AUTHMOD=
  VBOX_WITH_VRDP_RDESKTOP=
