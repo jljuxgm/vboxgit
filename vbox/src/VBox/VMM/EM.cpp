@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: EM.cpp 4295 2007-08-22 20:17:19Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -3439,7 +3439,6 @@ EMR3DECL(int) EMR3ExecuteVM(PVM pVM)
                     if (rc2 == VERR_DBGF_NOT_ATTACHED)
                     {
                         VMMR3Unlock(pVM);
-                        /** @todo change the VM state! */
                         STAM_REL_PROFILE_ADV_STOP(&pVM->em.s.StatTotal, x);
                         return rc;
                     }

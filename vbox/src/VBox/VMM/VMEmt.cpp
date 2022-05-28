@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: VMEmt.cpp 4295 2007-08-22 20:17:19Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -138,6 +138,8 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
         {
             rc = EMR3ExecuteVM(pVM);
             Log(("vmR3EmulationThread: EMR3ExecuteVM() -> rc=%Vrc, enmVMState=%d\n", rc, pVM->enmVMState));
+            if (EMGetState(pVM) == EMSTATE_GURU_MEDITATION)
+                vmR3SetState(pVM, VMSTATE_GURU_MEDITATION);
         }
 
     } /* forever */
