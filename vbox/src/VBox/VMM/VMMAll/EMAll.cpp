@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 1159 2007-03-02 14:33:03Z vboxsync $ */
+/* $Id: EMAll.cpp 1184 2007-03-04 19:49:18Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1269,10 +1269,6 @@ static int emInterpretMov(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, RT
     return VERR_EM_INTERPRETER;
 }
 
-
-/**
- * IRET Emulation.
- */
 
 /**
  * Interpret IRET (currently only to V86 code)
