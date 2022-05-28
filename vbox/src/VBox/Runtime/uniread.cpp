@@ -1,4 +1,4 @@
-/* $Id: uniread.cpp 4076 2007-08-07 17:16:51Z vboxsync $ */
+/* $Id: uniread.cpp 4715 2007-09-11 19:44:45Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Unicode Specification Reader.
  */
@@ -194,7 +194,7 @@ static RTUNICP ToRange(const char *psz, PRTUNICP pLast)
 static char *DupStr(const char *pszStr)
 {
     if (!*pszStr)
-        return "";
+        return (char*)"";
     char *psz = strdup(pszStr);
     if (psz)
         return psz;
