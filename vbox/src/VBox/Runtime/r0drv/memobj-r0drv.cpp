@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 393 2007-01-28 00:01:57Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 1190 2007-03-04 20:42:13Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Ring-0 Memory Objects, Common Code.
  */
@@ -69,6 +69,24 @@ PRTR0MEMOBJINTERNAL rtR0MemObjNew(size_t cbSelf, RTR0MEMOBJTYPE enmType, void *p
 
 
 /**
+ * Deletes an incomplete memory object.
+ *
+ * This is for cleaning up after failures during object creation.
+ *
+ * @param   pMem    The incomplete memory object to delete.
+ */
+void rtR0MemObjDelete(PRTR0MEMOBJINTERNAL pMem)
+{
+    if (pMem)
+    {
+        pMem->u32Magic++;
+        pMem->enmType = RTR0MEMOBJTYPE_END;
+        RTMemFree(pMem);
+    }
+}
+
+
+/**
  * Links a mapping object to a primary object.
  *
  * @returns IPRT status code.
@@ -116,8 +134,8 @@ RTR0DECL(bool) RTR0MemObjIsMapping(RTR0MEMOBJ MemObj)
     /* Validate the object handle. */
     AssertPtrReturn(MemObj, false);
     PRTR0MEMOBJINTERNAL pMem = (PRTR0MEMOBJINTERNAL)MemObj;
-    AssertReturn(pMem->u32Magic == RTR0MEMOBJ_MAGIC, false);
-    AssertReturn(pMem->enmType > RTR0MEMOBJTYPE_INVALID && pMem->enmType < RTR0MEMOBJTYPE_END, false);
+    AssertMsgReturn(pMem->u32Magic == RTR0MEMOBJ_MAGIC, ("%p: %#x\n", pMem, pMem->u32Magic), false);
+    AssertMsgReturn(pMem->enmType > RTR0MEMOBJTYPE_INVALID && pMem->enmType < RTR0MEMOBJTYPE_END, ("%p: %d\n", pMem, pMem->enmType), false);
 
     /* hand it on to the inlined worker. */
     return rtR0MemObjIsMapping(pMem);
@@ -136,8 +154,8 @@ RTR0DECL(void *) RTR0MemObjAddress(RTR0MEMOBJ MemObj)
     /* Validate the object handle. */
     AssertPtrReturn(MemObj, 0);
     PRTR0MEMOBJINTERNAL pMem = (PRTR0MEMOBJINTERNAL)MemObj;
-    AssertReturn(pMem->u32Magic == RTR0MEMOBJ_MAGIC, 0);
-    AssertReturn(pMem->enmType > RTR0MEMOBJTYPE_INVALID && pMem->enmType < RTR0MEMOBJTYPE_END, 0);
+    AssertMsgReturn(pMem->u32Magic == RTR0MEMOBJ_MAGIC, ("%p: %#x\n", pMem, pMem->u32Magic), 0);
+    AssertMsgReturn(pMem->enmType > RTR0MEMOBJTYPE_INVALID && pMem->enmType < RTR0MEMOBJTYPE_END, ("%p: %d\n", pMem, pMem->enmType), 0);
 
     /* return the mapping address. */
     return pMem->pv;
@@ -156,8 +174,8 @@ RTR0DECL(size_t) RTR0MemObjSize(RTR0MEMOBJ MemObj)
     /* Validate the object handle. */
     AssertPtrReturn(MemObj, 0);
     PRTR0MEMOBJINTERNAL pMem = (PRTR0MEMOBJINTERNAL)MemObj;
-    AssertReturn(pMem->u32Magic == RTR0MEMOBJ_MAGIC, 0);
-    AssertReturn(pMem->enmType > RTR0MEMOBJTYPE_INVALID && pMem->enmType < RTR0MEMOBJTYPE_END, 0);
+    AssertMsgReturn(pMem->u32Magic == RTR0MEMOBJ_MAGIC, ("%p: %#x\n", pMem, pMem->u32Magic), 0);
+    AssertMsgReturn(pMem->enmType > RTR0MEMOBJTYPE_INVALID && pMem->enmType < RTR0MEMOBJTYPE_END, ("%p: %d\n", pMem, pMem->enmType), 0);
 
     /* return the size. */
     return pMem->cb;
@@ -181,6 +199,8 @@ RTR0DECL(RTHCPHYS) RTR0MemObjGetPagePhysAddr(RTR0MEMOBJ MemObj, unsigned iPage)
     PRTR0MEMOBJINTERNAL pMem = (PRTR0MEMOBJINTERNAL)MemObj;
     AssertReturn(pMem->u32Magic == RTR0MEMOBJ_MAGIC, NIL_RTHCPHYS);
     AssertReturn(pMem->enmType > RTR0MEMOBJTYPE_INVALID && pMem->enmType < RTR0MEMOBJTYPE_END, NIL_RTHCPHYS);
+    AssertMsgReturn(pMem->u32Magic == RTR0MEMOBJ_MAGIC, ("%p: %#x\n", pMem, pMem->u32Magic), NIL_RTHCPHYS);
+    AssertMsgReturn(pMem->enmType > RTR0MEMOBJTYPE_INVALID && pMem->enmType < RTR0MEMOBJTYPE_END, ("%p: %d\n", pMem, pMem->enmType), NIL_RTHCPHYS);
     const unsigned cPages = (pMem->cb >> PAGE_SHIFT);
     if (iPage >= cPages)
     {

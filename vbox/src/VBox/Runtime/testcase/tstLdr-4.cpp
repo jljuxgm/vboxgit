@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 917 2007-02-15 01:55:55Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 1190 2007-03-04 20:42:13Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -157,7 +157,7 @@ static int testLdrOne(const char *pszFilename)
                 rc = RTLdrGetSymbolEx(aLoads[i].hLdrMod, aLoads[i].pvBits, (uintptr_t)aLoads[i].pvBits, "_DisasmTest1", &Value);
             if (RT_FAILURE(rc))
             {
-                RTPrintf("tstLdr-4: Failed to get symbol \"Test1\" from load #%d: %Rrc\n", i, rc);
+                RTPrintf("tstLdr-4: Failed to get symbol \"DisasmTest1\" from load #%d: %Rrc\n", i, rc);
                 cErrors++;
                 break;
             }

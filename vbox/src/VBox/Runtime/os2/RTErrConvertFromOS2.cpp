@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromOS2.cpp 1  vboxsync $ */
+/* $Id: RTErrConvertFromOS2.cpp 1190 2007-03-04 20:42:13Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Convert OS/2 error codes to iprt status codes.
  */
@@ -159,6 +159,8 @@ RTDECL(int)  RTErrConvertFromOS2(unsigned uNativeCode)
         case ERROR_TOO_MANY_POSTS:          return VERR_TOO_MANY_POSTS;
 
         case ERROR_INTERRUPT:               return VERR_INTERRUPTED;
+
+        case ERROR_BUSY:                    return VERR_MEMORY_BUSY;
         //case ERROR_NO_UNICODE_TRANSLATION:  return VERR_NO_TRANSLATION;
     }
 
