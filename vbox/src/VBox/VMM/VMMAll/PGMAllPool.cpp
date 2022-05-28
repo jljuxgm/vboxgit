@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 4456 2007-08-30 22:49:48Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -510,7 +510,7 @@ static int pgmPoolAccessHandlerFlush(PVM pVM, PPGMPOOL pPool, PPGMPOOLPAGE pPage
 #ifdef IN_GC
         if (PATMIsPatchGCAddr(pVM, (RTGCPTR)pRegFrame->eip))
         {
-            LogFlow(("pgmPoolAccessHandlerPTWorker: Interpretation failed for patch code %04:%RGv, ignoring.\n",
+            LogFlow(("pgmPoolAccessHandlerPTWorker: Interpretation failed for patch code %04x:%RGv, ignoring.\n",
                      pRegFrame->cs, (RTGCPTR)pRegFrame->eip));
             rc = VINF_SUCCESS;
             STAM_COUNTER_INC(&pPool->StatMonitorGCIntrFailPatch2);
