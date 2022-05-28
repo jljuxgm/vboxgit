@@ -1,4 +1,4 @@
-/* $Id: timesupref.h 5461 2007-10-24 02:18:28Z vboxsync $ */
+/* $Id: timesupref.h 5468 2007-10-24 03:58:47Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Time using SUPLib, the C Code Template.
  */
@@ -141,7 +141,7 @@ RTDECL(uint64_t) rtTimeNanoTSInternalRef(PRTTIMENANOTSDATA pData)
         pData->pfnBad(pData, u64NanoTS, u64DeltaPrev, u64PrevNanoTS);
     }
 
-    if (RT_LIKELY(ASMAtomicCmpXchgU64(pData->pu64Prev, u64NanoTS, u64PrevNanoTS)))
+    if (RT_UNLIKELY(!ASMAtomicCmpXchgU64(pData->pu64Prev, u64NanoTS, u64PrevNanoTS)))
     {
         /*
          * Attempt updating the previous value, provided we're still ahead of it.
