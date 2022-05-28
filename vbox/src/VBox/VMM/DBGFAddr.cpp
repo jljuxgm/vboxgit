@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 4212 2007-08-18 01:35:13Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 5667 2007-11-11 04:28:47Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -116,6 +116,22 @@ DBGFR3DECL(void) DBGFR3AddrFromFlat(PVM pVM, PDBGFADDRESS pAddress, RTGCUINTPTR 
     pAddress->fFlags  = DBGFADDRESS_FLAGS_FLAT | DBGFADDRESS_FLAGS_VALID;
     if (dbgfR3IsHMA(pVM, pAddress->FlatPtr))
         pAddress->fFlags |= DBGFADDRESS_FLAGS_HMA;
+}
+
+
+/**
+ * Creates a mixed address from a guest physical address.
+ *
+ * @param   pVM         The VM handle.
+ * @param   pAddress    Where to store the mixed address.
+ * @param   PhysAddr    The guest physical address.
+ */
+DBGFR3DECL(void) DBGFR3AddrFromPhys(PVM pVM, PDBGFADDRESS pAddress, RTGCPHYS PhysAddr)
+{
+    pAddress->Sel     = DBGF_SEL_FLAT;
+    pAddress->off     = PhysAddr;
+    pAddress->FlatPtr = PhysAddr;
+    pAddress->fFlags  = DBGFADDRESS_FLAGS_PHYS | DBGFADDRESS_FLAGS_VALID;
 }
 
 

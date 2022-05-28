@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 5605 2007-11-01 16:09:26Z vboxsync $ */
+/* $Id: CPUM.cpp 5667 2007-11-11 04:28:47Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -1635,7 +1635,7 @@ typedef struct CPUMDISASSTATE
     /** The size of the segment minus 1. */
     RTGCUINTPTR     cbSegLimit;
     /** Pointer to the current page - HC Ptr. */
-    void           *pvPageHC;
+    void const     *pvPageHC;
     /** Pointer to the current page - GC Ptr. */
     RTGCPTR         pvPageGC;
     /** The lock information that PGMPhysReleasePageMappingLock needs. */

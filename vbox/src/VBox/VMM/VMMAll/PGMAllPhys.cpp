@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 5323 2007-10-16 10:48:47Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 5667 2007-11-11 04:28:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -624,7 +624,7 @@ PGMDECL(int) PGMPhysGCPhys2CCPtr(PVM pVM, RTGCPHYS GCPhys, void **ppv, PPGMPAGEM
  *          the PGM one) because of the deadlock risk.
  * @thread  Any thread.
  */
-PGMDECL(int) PGMPhysGCPhys2CCPtrReadOnly(PVM pVM, RTGCPHYS GCPhys, void * const *ppv, PPGMPAGEMAPLOCK pLock)
+PGMDECL(int) PGMPhysGCPhys2CCPtrReadOnly(PVM pVM, RTGCPHYS GCPhys, void const **ppv, PPGMPAGEMAPLOCK pLock)
 {
     /** @todo implement this */
     return PGMPhysGCPhys2CCPtr(pVM, GCPhys, (void **)ppv, pLock);
@@ -691,7 +691,7 @@ PGMDECL(int) PGMPhysGCPtr2CCPtr(PVM pVM, RTGCPTR GCPtr, void **ppv, PPGMPAGEMAPL
  *          the PGM one) because of the deadlock risk.
  * @thread  EMT
  */
-PGMDECL(int) PGMPhysGCPtr2CCPtrReadOnly(PVM pVM, RTGCPTR GCPtr, void * const *ppv, PPGMPAGEMAPLOCK pLock)
+PGMDECL(int) PGMPhysGCPtr2CCPtrReadOnly(PVM pVM, RTGCPTR GCPtr, void const **ppv, PPGMPAGEMAPLOCK pLock)
 {
     RTGCPHYS GCPhys;
     int rc = PGMPhysGCPtr2GCPhys(pVM, GCPtr, &GCPhys);
