@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 2129 2007-04-17 12:43:59Z vboxsync $ */
+/* $Id: HWACCM.cpp 2132 2007-04-17 13:25:31Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -437,6 +437,8 @@ HWACCMR3DECL(void) HWACCMR3Reset(PVM pVM)
 
     pVM->hwaccm.s.vmx.cr0_mask = 0;
     pVM->hwaccm.s.vmx.cr4_mask = 0;
+
+    pVM->hwaccm.s.Event.fPending = false;
 }
 
 /**
