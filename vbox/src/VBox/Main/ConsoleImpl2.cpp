@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 4505 2007-09-04 06:00:36Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 5060 2007-09-26 17:14:35Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -850,6 +850,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         BOOL fCableConnected;
         hrc = networkAdapter->COMGETTER(CableConnected)(&fCableConnected);          H();
         rc = CFGMR3InsertInteger(pCfg, "CableConnected", fCableConnected ? 1 : 0);  RC_CHECK();
+
+        /*
+         * Line speed to report from custom drivers
+         */
+        ULONG ulLineSpeed;
+        hrc = networkAdapter->COMGETTER(LineSpeed)(&ulLineSpeed);                   H();
+        rc = CFGMR3InsertInteger(pCfg, "LineSpeed", ulLineSpeed);                   RC_CHECK();
 
         /*
          * Attach the status driver.
