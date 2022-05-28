@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 5099 2007-09-28 15:43:25Z vboxsync $ */
+/* $Id: VM.cpp 5119 2007-10-01 12:04:39Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1175,7 +1175,7 @@ static DECLCALLBACK(int) vmR3Load(PVM pVM, const char *pszFilename, PFNVMPROGRES
     else
     {
         vmR3SetState(pVM, VMSTATE_LOAD_FAILURE);
-        rc = VMSetError(pVM, rc, RT_SRC_POS, N_("Failed to restore VM state from '%s' (%Vrc)"), pszFilename, rc);
+        rc = VMSetError(pVM, rc, RT_SRC_POS, N_("Unable to restore the virtual machine's saved state from '%s'.  It may be damaged or from an older version of VirtualBox.  Please discard the saved state before starting the virtual machine.  (Error: %Vrc)"), pszFilename, rc);
     }
 
     return rc;
