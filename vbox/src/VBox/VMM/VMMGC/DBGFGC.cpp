@@ -1,4 +1,4 @@
-/* $Id: DBGFGC.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: DBGFGC.cpp 3776 2007-07-23 09:16:56Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, GC part.
  */
@@ -25,6 +25,7 @@
 *******************************************************************************/
 #include <VBox/dbgf.h>
 #include <VBox/selm.h>
+#include <VBox/log.h>
 #include "DBGFInternal.h"
 #include <VBox/vm.h>
 #include <VBox/err.h>
