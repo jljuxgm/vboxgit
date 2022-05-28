@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 1187 2007-03-04 20:23:31Z vboxsync $ */
+/* $Id: VM.cpp 1417 2007-03-12 12:08:37Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1127,7 +1127,8 @@ static DECLCALLBACK(int) vmR3Load(PVM pVM, const char *pszFilename, PFNVMPROGRES
     int rc = SSMR3Load(pVM, pszFilename, SSMAFTER_RESUME, pfnProgress,  pvUser);
     if (VBOX_SUCCESS(rc))
     {
-        VMR3Relocate(pVM, 0); /* paranoia */
+        /* Not paranoia anymore; the saved guest might use different hypervisor selectors. We must call VMR3Relocate. */
+        VMR3Relocate(pVM, 0);
         vmR3SetState(pVM, VMSTATE_SUSPENDED);
     }
     else
