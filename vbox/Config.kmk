@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5363 2007-10-17 17:19:27Z vboxsync $
+# $Id: Config.kmk 5434 2007-10-22 01:10:05Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -2282,7 +2282,7 @@ TEMPLATE_VBOXW32GUESTR3_RCDEFS              = \
 	VBOX_VERSION_MINOR_NR=$(VBOX_VERSION_MINOR) \
 	VBOX_VERSION_BUILD_NR=$(VBOX_VERSION_BUILD)
 TEMPLATE_VBOXW32GUESTR3_ASTOOL              = YASM
-TEMPLATE_VBOXW32GUESTR3_ASFLAGS             = -f win -DASM_FORMAT_PE -D__YASM__ -w+orphan-labels
+TEMPLATE_VBOXW32GUESTR3_ASFLAGS             = -f win32 -DASM_FORMAT_PE -D__YASM__ -w+orphan-labels
 TEMPLATE_VBOXW32GUESTR3_DLLSUFF             = .dll
 TEMPLATE_VBOXW32GUESTR3_EXESUFF             = .exe
 TEMPLATE_VBOXW32GUESTR3_LIBSUFF             = .lib
@@ -2626,7 +2626,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5363 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5434 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(USERNAME),bird) # Wastes nearly half a second on windows, very annoying. TODO: $(which ).
   ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
