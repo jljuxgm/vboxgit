@@ -1,4 +1,4 @@
-# $Id: Config.kmk 2631 2007-05-14 18:59:42Z vboxsync $
+# $Id: Config.kmk 2632 2007-05-14 19:05:39Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -906,7 +906,7 @@ ifdef VBOX_SIGNING_MODE
   # There are two signing modes; 'self' and 'release'.
   ifeq ($(VBOX_SIGNING_MODE),self)
    ## @todo
-  else ifeq ($(strip $(VBOX_SIGNING_MODE),release))
+  else ifeq ($(strip $(VBOX_SIGNING_MODE)),release)
    VBOX_CROSS_CERTIFICATE_FILE ?= $(VBOX_PATH_SELFSIGN)/MSCV-GlobalSign.cer
    VBOX_CERTIFICATE_STORE ?= my
    VBOX_CERTIFICATE_SUBJECT_NAME ?= InnoTek Systemberatung GmbH
