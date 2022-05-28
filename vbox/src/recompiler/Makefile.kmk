@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 2986 2007-06-01 16:29:34Z vboxsync $
 ## @file
 # The Recompiler Makefile.
 #
@@ -132,6 +132,9 @@ else # The remaining targets can be using gcc-4 and needs checking.
 endif
 #$(REM_MOD)_SOURCES.os2      = $(PATH_TARGET)/$(REM_MOD).def
 $(REM_MOD)_SOURCES.win.x86  = $(REM_MOD).def
+ifneq ($(REM_MOD),VBoxREM2)
+ $(REM_MOD)_POST_CMDS       = $(VBOX_SIGN_IMAGE_CMDS)
+endif
 
 
 ifdef REM_USE_NOCRT
