@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 47 2007-01-15 18:29:09Z vboxsync $ */
+/* $Id: VM.cpp 170 2007-01-18 21:31:14Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1145,6 +1145,14 @@ VMR3DECL(int)   VMR3PowerOff(PVM pVM)
 static DECLCALLBACK(int) vmR3PowerOff(PVM pVM)
 {
     LogFlow(("vmR3PowerOff: pVM=%p\n", pVM));
+
+    /*
+     * The Windows guest additions might have performed a VMMDevPowerState_PowerOff()
+     * request which was not completed yet. Later, the Windows guest shuts down via
+     * ACPI and we find the VMSTATE_OFF. Just ignore the second power-off request.
+     */
+    if (pVM->enmVMState == VMSTATE_OFF)
+        return VINF_EM_OFF;
 
     /*
      * Validate input.
