@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 2297 2007-04-20 23:51:13Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 2363 2007-04-26 18:11:40Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -513,6 +513,7 @@ inline int iomRamWrite(PVM pVM, RTGCPTR GCDest, void *pSrc, uint32_t cb)
  * @param   pCpu        Disassembler CPU state.
  * @param   pRange      Pointer MMIO range.
  */
+#ifdef IOMGC_MOVS_SUPPORT
 static int iomGCInterpretMOVS(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFault, PDISCPUSTATE pCpu, CTXALLSUFF(PIOMMMIORANGE) pRange)
 {
     STAM_PROFILE_START(&pVM->iom.s.StatGCInstMovs, a);
@@ -734,6 +735,7 @@ static int iomGCInterpretMOVS(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFra
     }
     return rc;
 }
+#endif
 
 
 
