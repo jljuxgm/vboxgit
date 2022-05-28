@@ -1,4 +1,4 @@
-/* $Id: MMHeap.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: MMHeap.cpp 4688 2007-09-11 09:14:12Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Heap.
  */
@@ -600,6 +600,7 @@ const char *mmR3GetTagName(MMTAG enmTag)
         TAG2STR(PDM_THREAD);
 
         TAG2STR(PGM);
+        TAG2STR(PGM_CHUNK_MAPPING);
         TAG2STR(PGM_HANDLERS);
         TAG2STR(PGM_POOL);
 
