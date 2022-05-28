@@ -1,4 +1,4 @@
-/* $Id: thread.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: thread.h 4229 2007-08-19 16:24:51Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Internal RTThread header.
  */
@@ -84,7 +84,7 @@ typedef struct RTTHREADINT
     /** The current thread state. */
     RTTHREADSTATE volatile  enmState;
 #if defined(RT_OS_WINDOWS) && defined(IN_RING3)
-    /** The thread handle.
+    /** The thread handle
      * This is not valid until the create function has returned! */
     uintptr_t               hThread;
 #endif

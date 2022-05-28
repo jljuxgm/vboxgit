@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4219 2007-08-18 23:42:23Z vboxsync $
+# $Id: Makefile.kmk 4229 2007-08-19 16:24:51Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -776,6 +776,7 @@ RuntimeR0Drv_SOURCES.win = \
 	r0drv/nt/semaphore-r0drv-nt.cpp \
 	r0drv/nt/spinlock-r0drv-nt.cpp \
 	r0drv/nt/thread-r0drv-nt.cpp \
+	r0drv/nt/thread2-r0drv-nt.cpp \
 	string/strncmp.cpp
 
 RuntimeR0Drv_SOURCES.win.amd64 = \
