@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 3294 2007-06-26 14:25:06Z vboxsync $ */
+/* $Id: HWACCMInternal.h 3295 2007-06-26 14:26:18Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -257,7 +257,7 @@ typedef struct HWACCM
     uint32_t                ulLastError;
 
     /** HWACCMR0Init was run */
-    bool                    fInitialized;
+    bool                    fHWACCMR0Init;
 
     /** Currenty shadow paging mode. */
     PGMMODE                 enmShadowMode;
