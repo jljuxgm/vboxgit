@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 5045 2007-09-26 11:41:28Z vboxsync $ */
+/* $Id: PDMLdr.cpp 5056 2007-09-26 16:08:23Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -607,9 +607,7 @@ static int pdmR3LoadR0(PVM pVM, const char *pszFilename, const char *pszName)
         /* next */
         pCur = pCur->pNext;
     }
-#if 0 /* breaks VT-x */
-    AssertReturn(!strcmp(pszName, VMMR0_MAIN_MODULE_NAME), VERR_INTERNAL_ERROR);
-#endif
+    AssertReturn(strcmp(pszName, VMMR0_MAIN_MODULE_NAME), VERR_INTERNAL_ERROR);
 
     /*
      * Find the file if not specified.
