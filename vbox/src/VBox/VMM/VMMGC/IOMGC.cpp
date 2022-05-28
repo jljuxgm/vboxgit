@@ -1,4 +1,4 @@
-/* $Id: IOMGC.cpp 1359 2007-03-09 10:40:44Z vboxsync $ */
+/* $Id: IOMGC.cpp 1828 2007-03-30 12:52:55Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -563,7 +563,8 @@ IOMDECL(int) IOMInterpretINS(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu)
         }
 
         /* Access verification first; we can't recover from traps inside this instruction, as the port read cannot be repeated. */
-        uint32_t cpl = (pRegFrame->eflags.Bits.u1VM) ? 3 : (pRegFrame->ss & X86_SEL_RPL);
+        uint32_t cpl = CPUMGetGuestCPL(pVM, pRegFrame);
+
         rc = PGMVerifyAccess(pVM, (RTGCUINTPTR)GCPtrDst, cTransfers * cbSize,
                              X86_PTE_RW | ((cpl == 3) ? X86_PTE_US : 0));
         if (rc != VINF_SUCCESS)
@@ -668,7 +669,7 @@ IOMDECL(int) IOMInterpretOUTS(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu
         }
 
         /* Access verification first; we currently can't recover properly from traps inside this instruction */
-        uint32_t cpl = (pRegFrame->eflags.Bits.u1VM) ? 3 : (pRegFrame->ss & X86_SEL_RPL);
+        uint32_t cpl = CPUMGetGuestCPL(pVM, pRegFrame);
         rc = PGMVerifyAccess(pVM, (RTGCUINTPTR)GCPtrSrc, cTransfers * cbSize,
                              (cpl == 3) ? X86_PTE_US : 0);
         if (rc != VINF_SUCCESS)

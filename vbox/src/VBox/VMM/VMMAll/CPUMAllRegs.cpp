@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 1157 2007-03-02 14:22:34Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 1828 2007-03-30 12:52:55Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1475,4 +1475,29 @@ CPUMDECL(bool) CPUMAreHiddenSelRegsValid(PVM pVM)
 CPUMDECL(void) CPUMSetHiddenSelRegsValid(PVM pVM, bool fValid)
 {
     pVM->cpum.s.fValidHiddenSelRegs = fValid;
+}
+
+/**
+ * Get the current privilege level of the guest.
+ *
+ * @returns cpl
+ * @param   pVM         VM Handle.
+ * @param   pRegFrame   Trap register frame.
+ */
+CPUMDECL(uint32_t) CPUMGetGuestCPL(PVM pVM, PCPUMCTXCORE pCtxCore)
+{
+    uint32_t cpl;
+
+    if (!pCtxCore->eflags.Bits.u1VM)
+    {
+        cpl = (pCtxCore->ss & X86_SEL_RPL);
+#ifndef IN_RING0
+        if (cpl == 1)
+            cpl = 0;
+#endif
+    }
+    else
+        cpl = 3;
+
+    return cpl;
 }

@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 1797 2007-03-29 13:39:22Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 1828 2007-03-30 12:52:55Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -613,6 +613,8 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTAT
 static int trpmGCTrap0dHandlerRing3(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu)
 {
     int rc;
+
+    Assert(!pRegFrame->eflags.Bits.u1VM);
 
     switch (pCpu->pCurInstr->opcode)
     {

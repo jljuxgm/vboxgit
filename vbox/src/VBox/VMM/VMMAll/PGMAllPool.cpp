@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 58 2007-01-16 12:39:56Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 1828 2007-03-30 12:52:55Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -716,12 +716,16 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
              return rc;
         }
 
+        /* Get the current privilege level. */
+        uint32_t cpl = CPUMGetGuestCPL(pVM, pRegFrame);
+
         /*
          * Windows is frequently doing small memset() operations (netio test 4k+).
          * We have to deal with these or we'll kill the cache and performance.
          */
+
         if (    Cpu.pCurInstr->opcode == OP_STOSWD
-            &&  (pRegFrame->cs & X86_SEL_RPL) <= 1
+            &&  cpl == 0
             &&  pRegFrame->ecx <= 0x20
             &&  pRegFrame->ecx * 4 <= PAGE_SIZE - ((uintptr_t)pvFault & PAGE_OFFSET_MASK)
             &&  !((uintptr_t)pvFault & 3)
