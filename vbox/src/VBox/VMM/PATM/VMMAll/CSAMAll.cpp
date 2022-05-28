@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: CSAMAll.cpp 1830 2007-03-30 14:16:35Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -174,7 +174,7 @@ CSAMDECL(int) CSAMMarkPage(PVM pVM, RTGCPTR pPage, bool fScanned)
  *          CSAM want need to scan it.
  * @returns false if the page was already scanned.
  * @param   pVM         The VM to operate on.
- * @param   GCPtr       GC pointer of page table entry
+ * @param   GCPtr       GC pointer of page
  */
 CSAMDECL(bool) CSAMDoesPageNeedScanning(PVM pVM, RTGCPTR GCPtr)
 {
@@ -187,6 +187,24 @@ CSAMDECL(bool) CSAMDoesPageNeedScanning(PVM pVM, RTGCPTR GCPtr)
     STAM_COUNTER_ADD(&CTXSUFF(pVM->csam.s.StatNrPageNP), 1);
     return true;
 }
+
+
+/**
+ * Remember a possible code page for later inspection
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ * @param   GCPtr       GC pointer of page
+ */
+CSAMDECL(void) CSAMMarkPossibleCodePage(PVM pVM, RTGCPTR GCPtr)
+{
+    if (pVM->csam.s.cPossibleCodePages < RT_ELEMENTS(pVM->csam.s.pvPossibleCodePage))
+    {
+        pVM->csam.s.pvPossibleCodePage[pVM->csam.s.cPossibleCodePages++] = GCPtr;
+    }
+    return;
+}
+
 
 /**
  * Turn on code scanning
