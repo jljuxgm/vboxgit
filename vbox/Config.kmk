@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4832 2007-09-16 20:43:27Z vboxsync $
+# $Id: Config.kmk 4838 2007-09-17 05:32:51Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -282,9 +282,20 @@ ifeq ($(BUILD_TARGET),os2)
  VBOX_WITH_DOCS=
 endif
 
-# Most stuff doesn't build yet on the new targets.
-ifeq ($(filter-out freebsd solaris,$(BUILD_TARGET)),)
- #VBOX_WITH_VBOXBFE=
+ifeq ($(BUILD_TARGET),solaris)
+ VBOX_WITH_QTGUI=
+ VBOX_WITH_DEBUGGER_GUI=
+ VBOX_WITH_INSTALLER=
+ VBOX_WITH_SECURELABEL=
+ VBOX_WITH_VRDP=
+ VBOX_WITH_VRDP_AUTHMOD=
+ VBOX_WITH_VRDP_RDESKTOP=
+ VBOX_WITH_TESTSUITE=
+ VBOX_WITH_USB=
+ VBOX_WITH_DOCS=
+endif
+
+ifeq ($(BUILD_TARGET),freebsd)
  VBOX_WITH_MAIN=
  VBOX_WITH_VBOXSDL=
  VBOX_WITH_QTGUI=
@@ -2530,7 +2541,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4832 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4838 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
   VBOX_SVN_DEP         :=
