@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 3023 2007-06-04 12:42:50Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 3026 2007-06-04 13:41:17Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1595,7 +1595,8 @@ int remR3NotifyTrap(CPUState *env, uint32_t uTrap, uint32_t uErrorCode, uint32_t
 #endif
     Log(("remR3NotifyTrap: uTrap=%x error=%x next_eip=%VGv eip=%VGv cr2=%08x\n", uTrap, uErrorCode, pvNextEIP, env->eip, env->cr[2]));
     if(   uTrap < 0x20
-       && (env->cr[0] & X86_CR0_PE))
+       && (env->cr[0] & X86_CR0_PE)
+       && !(env->eflags & X86_EFL_VM))
     {
 #ifdef DEBUG
         remR3DisasInstr(env, 1, "remR3NotifyTrap: ");
