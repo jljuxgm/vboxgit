@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 4371 2007-08-24 20:56:59Z vboxsync $ */
+/* $Id: strformat.cpp 4694 2007-09-11 10:14:54Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - String Formatter.
  */
@@ -300,10 +300,11 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
 {
     /* make a copy so we can reference it (AMD64 / gcc). */
     va_list args;
-    va_copy(args, InArgs);
-
     KSIZE       cch = 0;
     const char *pszStartOutput = pszFormat;
+
+    va_copy(args, InArgs);
+
     while (*pszFormat != '\0')
     {
         if (*pszFormat == '%')

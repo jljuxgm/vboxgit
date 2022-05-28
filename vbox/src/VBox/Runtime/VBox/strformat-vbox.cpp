@@ -1,4 +1,4 @@
-/* $Id: strformat-vbox.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: strformat-vbox.cpp 4694 2007-09-11 10:14:54Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - VBox String Formatter extensions.
  */
@@ -175,7 +175,7 @@ size_t rtstrFormatVBox(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char *
 
                                         cch += pfnOutput(pvArgOutput, " ", 1);
 
-                                        for (int i = 0; i < cchPrecision && off + i < cchWidth; i++)
+                                        for (i = 0; i < cchPrecision && off + i < cchWidth; i++)
                                         {
                                             uint8_t u8 = pu8[i];
                                             cch += pfnOutput(pvArgOutput, u8 < 127 && u8 >= 32 ? (const char *)&u8 : ".", 1);
