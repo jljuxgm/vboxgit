@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 1100 2007-02-28 11:41:56Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 1101 2007-02-28 12:05:14Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1746,6 +1746,14 @@ REMR3DECL(void) REMR3NotifyPhysRamRegister(PVM pVM, RTGCPHYS GCPhys, RTUINT cb, 
 #ifndef USE_REM_STUBS
     Assert(VALID_PTR(pfnREMR3NotifyPhysRamRegister));
     pfnREMR3NotifyPhysRamRegister(pVM, GCPhys, cb, pvRam, fFlags);
+#endif
+}
+
+REMR3DECL(void) REMR3NotifyPhysRamChunkRegister(PVM pVM, RTGCPHYS GCPhys, RTUINT cb, RTHCUINTPTR pvRam, unsigned fFlags)
+{
+#ifndef USE_REM_STUBS
+    Assert(VALID_PTR(pfnREMR3NotifyPhysRamChunkRegister));
+    pfnREMR3NotifyPhysRamChunkRegister(pVM, GCPhys, cb, pvRam, fFlags);
 #endif
 }
 
