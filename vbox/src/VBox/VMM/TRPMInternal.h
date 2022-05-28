@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 5394 2007-10-21 01:49:38Z vboxsync $ */
+/* $Id: TRPMInternal.h 5395 2007-10-21 02:19:37Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -174,6 +174,8 @@ typedef struct TRPM
     STAMPROFILEADV  StatForwardProfGC;
     STAMPROFILEADV  StatForwardProfHC;
     STAMPROFILEADV  StatTrap0dDisasm;
+    STAMCOUNTER     StatTrap0dRing0RdTsc;   /**< Number of RDTSC #GPs from guest ring-0. */
+    STAMCOUNTER     StatTrap0dRing3RdTsc;   /**< Number of RDTSC #GPs from guest ring-3. */
 
     /* R3: Statistics for interrupt handlers (allocated on the hypervisor heap). */
     R3PTRTYPE(PSTAMCOUNTER) paStatForwardedIRQR3;
