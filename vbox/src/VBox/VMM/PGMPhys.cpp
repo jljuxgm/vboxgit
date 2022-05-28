@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: PGMPhys.cpp 4387 2007-08-27 14:24:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -44,8 +44,8 @@
 
 
 /**
- * Interface MMR3RamRegister(), MMR3RomRegister() and MMIO handler
- * registration calls.
+ * Interface that the MMR3RamRegister(), MMR3RomRegister() and MMIO handler
+ * registration APIs calls to inform PGM about memory registrations.
  *
  * It registers the physical memory range with PGM. MM is responsible
  * for the toplevel things - allocation and locking - while PGM is taking
