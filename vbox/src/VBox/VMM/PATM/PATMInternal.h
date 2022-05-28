@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 367 2007-01-26 17:06:04Z vboxsync $ */
+/* $Id: PATMInternal.h 369 2007-01-26 17:38:59Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -91,7 +91,7 @@
 /* Maximum nr of writes before a patch is marked dirty. (disabled) */
 #define PATM_MAX_CODE_WRITES               16
 /* Maximum nr of invalid writes before a patch is disabled. */
-#define PATM_MAX_INVALID_WRITES            65536
+#define PATM_MAX_INVALID_WRITES            16384
 
 #define FIXUP_ABSOLUTE                     0
 #define FIXUP_REL_JMPTOPATCH               1
