@@ -1,7 +1,9 @@
+; $Id: 32BitTo32Bit.asm 19 2007-01-15 13:07:05Z vboxsync $
 ;; @file
-;
 ; VMM - World Switchers, 32-Bit to 32-Bit.
+;
 
+;
 ; Copyright (C) 2006 InnoTek Systemberatung GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
@@ -15,6 +17,7 @@
 ; If you received this file as part of a commercial VirtualBox
 ; distribution, then only the terms of your commercial VirtualBox
 ; license agreement apply instead of the previous paragraph.
+;
 
 ;*******************************************************************************
 ;*   Defined Constants And Macros                                              *
@@ -29,6 +32,6 @@
 ;*******************************************************************************
 ;* Header Files                                                                *
 ;*******************************************************************************
-%include "VBox/nasm.mac"
+%include "VBox/asmdefs.mac"
 %include "VMMSwitcher/PAEand32Bit.mac"
 

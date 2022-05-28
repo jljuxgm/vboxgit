@@ -1,6 +1,7 @@
+; $Id: VMMGC99.asm 19 2007-01-15 13:07:05Z vboxsync $
 ;; @file
-;
 ; VMMGC0 - The first object module in the link.
+;
 
 ; Copyright (C) 2006 InnoTek Systemberatung GmbH
 ;

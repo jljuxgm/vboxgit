@@ -1,8 +1,9 @@
+; $Id: tstHelpA.asm 19 2007-01-15 13:07:05Z vboxsync $
 ;; @file
-;
 ; testcase helpers.
 ;
 
+;
 ; Copyright (C) 2006 InnoTek Systemberatung GmbH
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
@@ -16,8 +17,9 @@
 ; If you received this file as part of a commercial VirtualBox
 ; distribution, then only the terms of your commercial VirtualBox
 ; license agreement apply instead of the previous paragraph.
+;
 
-%include "VBox/nasm.mac"
+%include "VBox/asmdefs.mac"
 %include "VBox/cpum.mac"
 
 BEGINCODE
