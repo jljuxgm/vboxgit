@@ -1,4 +1,6 @@
 /////////////////////////////////////////////////////////////////////////
+// $Id: rombios.c,v 1.176 2006/12/30 17:13:17 vruppert Exp $
+/////////////////////////////////////////////////////////////////////////
 //
 //  Copyright (C) 2002  MandrakeSoft S.A.
 //
@@ -951,9 +953,13 @@ Bit16u cdrom_boot();
 
 #endif // BX_ELTORITO_BOOT
 
-static char bios_cvs_version_string[] = "$Revision: 95 $ $Date: 2007-01-17 21:17:32 +0800 (Wed, 17 Jan 2007) $";
+static char bios_cvs_version_string[] = "$Revision: 1.176 $ $Date: 2006/12/30 17:13:17 $";
 
+#ifdef VBOX
 #define BIOS_COPYRIGHT_STRING "InnoTek VirtualBox BIOS"
+#else
+#define BIOS_COPYRIGHT_STRING "(c) 2002 MandrakeSoft S.A. Written by Kevin Lawton & the Bochs team."
+#endif
 
 #define BIOS_PRINTF_HALT     1
 #define BIOS_PRINTF_SCREEN   2
