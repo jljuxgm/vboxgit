@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 4084 2007-08-07 18:55:32Z vboxsync $ */
+/* $Id: STAM.cpp 4116 2007-08-10 13:58:12Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -178,6 +178,7 @@ STAMR3DECL(int) STAMR3Term(PVM pVM)
         pCur = pCur->pNext;
         RTMemFree(pvFree);
     }
+    pVM->stam.s.pHead = NULL;
 
     /* careful here as we might be called twice in on some failure paths (?) */
     if (pVM->stam.s.RWSem != NIL_RTSEMRW)
