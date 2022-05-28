@@ -1,11 +1,11 @@
-/* $Id: avlroioport.cpp 1  vboxsync $ */
+/* $Id: avlroioport.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - AVL tree, RTIOPORT, range, unique keys, offset pointers.
+ * innotek Portable Runtime - AVL tree, RTIOPORT, range, unique keys, offset pointers.
  */
 
 /*
  * Copyright (C) 2001-2004 knut st. osmundsen (bird-src-spam@anduin.net)
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

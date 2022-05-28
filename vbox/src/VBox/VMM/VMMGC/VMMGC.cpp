@@ -1,10 +1,10 @@
-/* $Id: VMMGC.cpp 1210 2007-03-05 12:36:53Z vboxsync $ */
+/* $Id: VMMGC.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * VMM - Guest Context.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

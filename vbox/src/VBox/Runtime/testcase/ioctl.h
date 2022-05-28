@@ -1,10 +1,10 @@
-/* $Id: ioctl.h 1  vboxsync $ */
+/* $Id: ioctl.h 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * VBox L4/OSS audio - header for Linux IoCtls.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstTime.cpp 1206 2007-03-05 00:58:31Z vboxsync $ */
+/* $Id: tstTime.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime Testcase - Simple RTTime tests.
+ * innotek Portable Runtime Testcase - Simple RTTime tests.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

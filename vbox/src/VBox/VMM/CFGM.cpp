@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 1009 2007-02-21 11:11:58Z vboxsync $ */
+/* $Id: CFGM.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

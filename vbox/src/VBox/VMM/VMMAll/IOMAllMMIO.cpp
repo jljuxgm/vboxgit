@@ -1,10 +1,10 @@
-/* $Id: IOMAllMMIO.cpp 2879 2007-05-25 15:27:16Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

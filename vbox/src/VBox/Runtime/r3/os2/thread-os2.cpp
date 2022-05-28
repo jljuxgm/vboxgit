@@ -1,10 +1,10 @@
-/* $Id: thread-os2.cpp 1768 2007-03-28 13:08:35Z vboxsync $ */
+/* $Id: thread-os2.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Threads, OS/2.
+ * innotek Portable Runtime - Threads, OS/2.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

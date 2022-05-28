@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 302 2007-01-25 14:48:55Z vboxsync $ */
+/* $Id: PATMSSM.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

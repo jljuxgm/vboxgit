@@ -1,10 +1,10 @@
-/* $Id: sched-win32.cpp 403 2007-01-28 08:45:05Z vboxsync $ */
+/* $Id: sched-win32.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Scheduling, Win32.
+ * innotek Portable Runtime - Scheduling, Win32.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

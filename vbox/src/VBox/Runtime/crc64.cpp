@@ -1,6 +1,6 @@
-/* $Id: crc64.cpp 2 2007-01-15 08:09:35Z vboxsync $ */
+/* $Id: crc64.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - CRC64.
+ * innotek Portable Runtime - CRC64.
  *
  * The method to compute the CRC64 is referred to as CRC-64-ISO:
  *     http://en.wikipedia.org/wiki/Cyclic_redundancy_check
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

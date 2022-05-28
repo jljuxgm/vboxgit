@@ -1,10 +1,10 @@
-/** $Id: RTTimerCreate-generic.cpp 1781 2007-03-28 16:46:12Z vboxsync $ */
+/** $Id: RTTimerCreate-generic.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Timers, Generic RTTimerCreate() Implementation.
+ * innotek Portable Runtime - Timers, Generic RTTimerCreate() Implementation.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

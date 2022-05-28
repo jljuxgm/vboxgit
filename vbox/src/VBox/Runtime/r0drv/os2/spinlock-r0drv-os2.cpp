@@ -1,6 +1,6 @@
-/* $Id: spinlock-r0drv-os2.cpp 1816 2007-03-29 18:59:35Z vboxsync $ */
+/* $Id: spinlock-r0drv-os2.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Spinlocks, Ring-0 Driver, OS/2.
+ * innotek Portable Runtime - Spinlocks, Ring-0 Driver, OS/2.
  */
 
 /*

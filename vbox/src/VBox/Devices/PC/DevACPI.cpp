@@ -1,10 +1,10 @@
-/* $Id: DevACPI.cpp 2781 2007-05-22 22:56:27Z vboxsync $ */
+/* $Id: DevACPI.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * Advanced Configuration and Power Interface (ACPI) Device.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstPath.cpp 1  vboxsync $ */
+/* $Id: tstPath.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime Testcase - Test various path functions.
+ * innotek Portable Runtime Testcase - Test various path functions.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

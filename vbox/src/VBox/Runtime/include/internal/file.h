@@ -1,10 +1,10 @@
-/* $Id: file.h 1300 2007-03-07 14:16:35Z vboxsync $ */
+/* $Id: file.h 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Internal RTFile header.
+ * innotek Portable Runtime - Internal RTFile header.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

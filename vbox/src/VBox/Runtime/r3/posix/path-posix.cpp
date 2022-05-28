@@ -1,10 +1,10 @@
-/* $Id: path-posix.cpp 2933 2007-05-30 14:56:43Z vboxsync $ */
+/* $Id: path-posix.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Path Manipulation, POSIX.
+ * innotek Portable Runtime - Path Manipulation, POSIX.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -100,7 +100,7 @@ RTDECL(int) RTPathReal(const char *pszPath, char *pszRealPath, unsigned cchRealP
  *
  * @returns Number of bytes in the clean path.
  * @param   pszPath     The path to cleanup.
- * @remark  Borrowed from InnoTek libc.
+ * @remark  Borrowed from innotek libc.
  */
 static int fsCleanPath(char *pszPath)
 {

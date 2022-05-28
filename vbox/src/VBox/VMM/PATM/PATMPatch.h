@@ -1,10 +1,10 @@
-/* $Id: PATMPatch.h 2046 2007-04-12 13:23:27Z vboxsync $ */
+/* $Id: PATMPatch.h 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * PATMPatch - Internal header file.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

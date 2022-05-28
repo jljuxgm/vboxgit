@@ -1,10 +1,10 @@
-/* $Id: PATMGC.cpp 1793 2007-03-29 11:50:26Z vboxsync $ */
+/* $Id: PATMGC.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

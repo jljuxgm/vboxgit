@@ -1,10 +1,10 @@
-/* $Id: MMAllHyper.cpp 320 2007-01-25 16:57:39Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Hypervisor Memory Area, All Contexts.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

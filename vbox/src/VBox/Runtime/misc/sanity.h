@@ -1,10 +1,10 @@
-/* $Id: sanity.h 1300 2007-03-07 14:16:35Z vboxsync $ */
+/* $Id: sanity.h 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Setup Sanity Checks, C and C++.
+ * innotek Portable Runtime - Setup Sanity Checks, C and C++.
  */
 
 /*
- * Copyright (c) 2007 InnoTek Systemberatung GmbH
+ * Copyright (c) 2007 innotek GmbH
  *
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as

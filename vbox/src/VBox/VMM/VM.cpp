@@ -1,10 +1,10 @@
-/* $Id: VM.cpp 2870 2007-05-25 13:28:11Z vboxsync $ */
+/* $Id: VM.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

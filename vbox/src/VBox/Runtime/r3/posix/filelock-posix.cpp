@@ -1,10 +1,10 @@
-/* $Id: filelock-posix.cpp 1389 2007-03-09 20:34:56Z vboxsync $ */
+/* $Id: filelock-posix.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - File Locking, POSIX.
+ * innotek Portable Runtime - File Locking, POSIX.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

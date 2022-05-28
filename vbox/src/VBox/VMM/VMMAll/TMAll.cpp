@@ -1,10 +1,10 @@
-/* $Id: TMAll.cpp 2744 2007-05-21 15:21:25Z vboxsync $ */
+/* $Id: TMAll.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

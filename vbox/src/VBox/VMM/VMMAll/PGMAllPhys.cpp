@@ -1,10 +1,10 @@
-/* $Id: PGMAllPhys.cpp 2874 2007-05-25 14:37:52Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

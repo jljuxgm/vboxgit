@@ -1,10 +1,10 @@
-/* $Id: DBGFSym.cpp 670 2007-02-06 04:22:57Z vboxsync $ */
+/* $Id: DBGFSym.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Symbol Management.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

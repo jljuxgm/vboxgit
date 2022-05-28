@@ -1,10 +1,10 @@
-/* $Id: CSAM.cpp 1996 2007-04-09 13:36:57Z vboxsync $ */
+/* $Id: CSAM.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: CPUMAllRegs.cpp 2633 2007-05-14 19:09:51Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

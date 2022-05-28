@@ -1,10 +1,10 @@
-/* $Id: RTAssertDoBreakpoint-vbox.cpp 938 2007-02-15 21:00:36Z vboxsync $ */
+/* $Id: RTAssertDoBreakpoint-vbox.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Assertions, generic RTAssertDoBreakpoint.
+ * innotek Portable Runtime - Assertions, generic RTAssertDoBreakpoint.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

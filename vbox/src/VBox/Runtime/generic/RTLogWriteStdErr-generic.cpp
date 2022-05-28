@@ -1,10 +1,10 @@
-/* $Id: RTLogWriteStdErr-generic.cpp 1  vboxsync $ */
+/* $Id: RTLogWriteStdErr-generic.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Log To StdErr, Generic.
+ * innotek Portable Runtime - Log To StdErr, Generic.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

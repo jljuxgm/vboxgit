@@ -1,10 +1,10 @@
-/* $Id: tstSSM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: tstSSM.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

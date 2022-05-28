@@ -1,4 +1,4 @@
-/** $Id: DrvVD.cpp 2358 2007-04-26 16:53:00Z vboxsync $ */
+/** $Id: DrvVD.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

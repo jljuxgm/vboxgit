@@ -1,10 +1,10 @@
-/* $Id: sanity-cpp.cpp 662 2007-02-06 02:14:38Z vboxsync $ */
+/* $Id: sanity-cpp.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Setup Sanity Checks, C++.
+ * innotek Portable Runtime - Setup Sanity Checks, C++.
  */
 
 /*
- * Copyright (c) 2007 InnoTek Systemberatung GmbH
+ * Copyright (c) 2007 innotek GmbH
  *
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as

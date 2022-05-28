@@ -1,6 +1,6 @@
-/* $Id: avlpv.cpp 1  vboxsync $ */
+/* $Id: avlpv.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - AVL tree, void *, unique keys.
+ * innotek Portable Runtime - AVL tree, void *, unique keys.
  */
 
 /*

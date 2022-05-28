@@ -1,10 +1,10 @@
-/* $Id: DBGFGC.cpp 2171 2007-04-18 13:11:53Z vboxsync $ */
+/* $Id: DBGFGC.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, GC part.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

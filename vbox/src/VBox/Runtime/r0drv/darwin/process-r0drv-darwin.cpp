@@ -1,10 +1,10 @@
-/* $Id: process-r0drv-darwin.cpp 384 2007-01-27 19:25:25Z vboxsync $ */
+/* $Id: process-r0drv-darwin.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Process, Ring-0 Driver, Darwin.
+ * innotek Portable Runtime - Process, Ring-0 Driver, Darwin.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

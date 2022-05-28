@@ -1,10 +1,10 @@
-/* $Id: RTErrConvertFromErrno.cpp 1532 2007-03-16 14:54:40Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Convert errno to iprt status codes.
+ * innotek Portable Runtime - Convert errno to iprt status codes.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

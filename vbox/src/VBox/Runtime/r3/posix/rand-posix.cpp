@@ -1,10 +1,10 @@
-/* $Id: rand-posix.cpp 891 2007-02-14 09:35:20Z vboxsync $ */
+/* $Id: rand-posix.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Random Numbers and Byte Streams, POSIX.
+ * innotek Portable Runtime - Random Numbers and Byte Streams, POSIX.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

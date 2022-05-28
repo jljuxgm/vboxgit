@@ -1,10 +1,10 @@
-/* $Id: rand.h 890 2007-02-14 09:35:02Z vboxsync $ */
+/* $Id: rand.h 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Internal RTRand header
+ * innotek Portable Runtime - Internal RTRand header
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

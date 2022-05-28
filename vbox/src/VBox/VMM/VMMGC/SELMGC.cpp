@@ -1,10 +1,10 @@
-/* $Id: SELMGC.cpp 1972 2007-04-06 10:20:37Z vboxsync $ */
+/* $Id: SELMGC.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager, Guest Context.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

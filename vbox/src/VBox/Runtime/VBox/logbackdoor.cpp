@@ -1,10 +1,10 @@
-/* $Id: logbackdoor.cpp 2147 2007-04-17 20:49:46Z vboxsync $ */
+/* $Id: logbackdoor.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Guest Backdoor Logging.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 2787 2007-05-23 01:30:44Z vboxsync $
+# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
 ## @file
 # VBox Etherboot Network boot ROM makefile.
 #
 
 #
-# Copyright (C) 2006 InnoTek Systemberatung GmbH
+# Copyright (C) 2006-2007 innotek GmbH
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

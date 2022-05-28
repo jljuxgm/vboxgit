@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 2614 2007-05-14 09:16:46Z vboxsync $
+# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
 
 #
-# Copyright (C) 2006 InnoTek Systemberatung GmbH
+# Copyright (C) 2006-2007 innotek GmbH
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: strcmp_alias.c 1176 2007-03-04 00:04:10Z vboxsync $ */
+/* $Id: strcmp_alias.c 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - No-CRT strcmp() alias for gcc.
+ * innotek Portable Runtime - No-CRT strcmp() alias for gcc.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

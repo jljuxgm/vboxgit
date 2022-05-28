@@ -1,10 +1,10 @@
-/* $Id: system-os2.cpp 1  vboxsync $ */
+/* $Id: system-os2.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - System, OS/2.
+ * innotek Portable Runtime - System, OS/2.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

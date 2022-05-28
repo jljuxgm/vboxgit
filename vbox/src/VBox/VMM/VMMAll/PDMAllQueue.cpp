@@ -1,10 +1,10 @@
-/* $Id: PDMAllQueue.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

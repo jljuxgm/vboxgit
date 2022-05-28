@@ -1,10 +1,10 @@
-/* $Id: rand.cpp 890 2007-02-14 09:35:02Z vboxsync $ */
+/* $Id: rand.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Random Number
+ * innotek Portable Runtime - Random Number
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

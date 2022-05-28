@@ -1,10 +1,10 @@
-/* $Id: semaphore-r0drv-nt.cpp 1816 2007-03-29 18:59:35Z vboxsync $ */
+/* $Id: semaphore-r0drv-nt.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Semaphores, Ring-0 Driver, NT.
+ * innotek Portable Runtime - Semaphores, Ring-0 Driver, NT.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

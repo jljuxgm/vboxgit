@@ -1,10 +1,10 @@
-/* $Id: PATMA.h 2043 2007-04-12 13:04:07Z vboxsync $ */
+/* $Id: PATMA.h 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * PATM macros & definitions (identical to PATMA.mac!!)
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

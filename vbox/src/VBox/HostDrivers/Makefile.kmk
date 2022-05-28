@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 2516 2007-05-05 02:28:24Z vboxsync $
+# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
 
 #
-# Copyright (C) 2006 InnoTek Systemberatung GmbH
+# Copyright (C) 2006-2007 innotek GmbH
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

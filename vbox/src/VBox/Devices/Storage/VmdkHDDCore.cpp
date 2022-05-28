@@ -1,10 +1,10 @@
-/** $Id: VmdkHDDCore.cpp 2829 2007-05-23 16:21:01Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

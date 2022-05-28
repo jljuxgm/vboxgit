@@ -1,10 +1,10 @@
-/* $Id: init.cpp 1728 2007-03-27 12:09:49Z vboxsync $ */
+/* $Id: init.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Init Ring-3.
+ * innotek Portable Runtime - Init Ring-3.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

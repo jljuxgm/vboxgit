@@ -1,10 +1,10 @@
-/* $Id: thread.cpp 1766 2007-03-28 12:51:24Z vboxsync $ */
+/* $Id: thread.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Threads, common routines.
+ * innotek Portable Runtime - Threads, common routines.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

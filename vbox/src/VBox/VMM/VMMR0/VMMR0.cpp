@@ -1,10 +1,10 @@
-/* $Id: VMMR0.cpp 2824 2007-05-23 15:58:08Z vboxsync $ */
+/* $Id: VMMR0.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

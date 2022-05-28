@@ -1,10 +1,10 @@
-/* $Id: HWACCM.cpp 2896 2007-05-28 13:35:58Z vboxsync $ */
+/* $Id: HWACCM.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

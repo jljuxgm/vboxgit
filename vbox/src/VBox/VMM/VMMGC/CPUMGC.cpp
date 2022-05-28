@@ -1,10 +1,10 @@
-/* $Id: CPUMGC.cpp 1820 2007-03-30 08:25:09Z vboxsync $ */
+/* $Id: CPUMGC.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * CPUM - Guest Context Code.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

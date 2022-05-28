@@ -1,4 +1,4 @@
-/** $Id: vl_vbox.h 2782 2007-05-22 23:12:28Z vboxsync $ */
+/** $Id: vl_vbox.h 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * VBox vl.h Replacement.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

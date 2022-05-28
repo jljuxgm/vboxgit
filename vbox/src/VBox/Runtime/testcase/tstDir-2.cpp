@@ -1,10 +1,10 @@
-/* $Id: tstDir-2.cpp 1  vboxsync $ */
+/* $Id: tstDir-2.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime Testcase - Directory listing & filtering .
+ * innotek Portable Runtime Testcase - Directory listing & filtering .
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

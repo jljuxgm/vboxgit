@@ -1,10 +1,10 @@
-/* $Id: VMMTests.cpp 2770 2007-05-22 14:13:23Z vboxsync $ */
+/* $Id: VMMTests.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

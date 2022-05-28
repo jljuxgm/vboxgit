@@ -1,10 +1,10 @@
-/* $Id: VMEmt.cpp 2965 2007-05-31 17:22:32Z vboxsync $ */
+/* $Id: VMEmt.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

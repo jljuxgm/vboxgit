@@ -1,10 +1,10 @@
-/* $Id: PGMAll.cpp 2552 2007-05-09 12:28:36Z vboxsync $ */
+/* $Id: PGMAll.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

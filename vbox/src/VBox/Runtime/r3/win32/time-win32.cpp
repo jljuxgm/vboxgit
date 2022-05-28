@@ -1,10 +1,10 @@
-/* $Id: time-win32.cpp 2629 2007-05-14 14:26:50Z vboxsync $ */
+/* $Id: time-win32.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Time, win32.
+ * innotek Portable Runtime - Time, win32.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

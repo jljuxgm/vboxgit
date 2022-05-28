@@ -1,10 +1,10 @@
-/* $Id: tstTimer.cpp 1537 2007-03-16 17:02:13Z vboxsync $ */
+/* $Id: tstTimer.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime Testcase - Timers.
+ * innotek Portable Runtime Testcase - Timers.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

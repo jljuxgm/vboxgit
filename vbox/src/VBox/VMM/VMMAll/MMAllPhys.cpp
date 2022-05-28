@@ -1,10 +1,10 @@
-/* $Id: MMAllPhys.cpp 838 2007-02-12 12:05:52Z vboxsync $ */
+/* $Id: MMAllPhys.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Physical Memory.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

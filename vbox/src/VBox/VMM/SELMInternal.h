@@ -1,10 +1,10 @@
-/* $Id: SELMInternal.h 1502 2007-03-15 10:00:42Z vboxsync $ */
+/* $Id: SELMInternal.h 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

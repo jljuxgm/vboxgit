@@ -1,10 +1,10 @@
-/* $Id: path-win32.cpp 937 2007-02-15 20:59:20Z vboxsync $ */
+/* $Id: path-win32.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Path manipulation.
+ * innotek Portable Runtime - Path manipulation.
  */
 
 /*
- * Copyright (C) 2006 InnoTek Systemberatung GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
