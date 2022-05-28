@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 4279 2007-08-22 12:45:11Z vboxsync $ */
+/* $Id: DevACPI.cpp 4382 2007-08-27 11:28:55Z vboxsync $ */
 /** @file
  * Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1560,7 +1560,7 @@ static DECLCALLBACK(int) acpiConstruct (PPDMDEVINS pDevIns, int iInstance, PCFGM
     if (VBOX_FAILURE (rc))
         return rc;
 
-    rc = PDMDevHlpROMRegister (pDevIns, rsdp_addr, 0x1000, s->au8RSDPPage, "ACPI RSDP");
+    rc = PDMDevHlpROMRegister (pDevIns, rsdp_addr, 0x1000, s->au8RSDPPage, false /* fShadow */, "ACPI RSDP");
     if (VBOX_FAILURE (rc))
         return rc;
 
