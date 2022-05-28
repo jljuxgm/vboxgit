@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: HWACCMInternal.h 1272 2007-03-06 13:32:13Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -48,8 +48,8 @@ __BEGIN_DECLS
 #define HWACCM2VM(pHWACCM)  ( (PVM)((char*)pHWACCM - pHWACCM->offVM) )
 
 /** Maximum number of exit reason statistics counters. */
-#define MAX_EXITREASON_STAT        0x40
-#define MASK_EXITREASON_STAT       0x3f
+#define MAX_EXITREASON_STAT        0x100
+#define MASK_EXITREASON_STAT       0xff
 
 /** @name Changed flags
  * These flags are used to keep track of which important registers that
