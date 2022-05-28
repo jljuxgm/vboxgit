@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 3888 2007-07-26 16:26:39Z vboxsync $ */
+/* $Id: fileio-posix.cpp 3916 2007-07-29 22:25:12Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O, POSIX.
  */
@@ -49,7 +49,6 @@ extern int futimes(int __fd, __const struct timeval __tvp[2]) __THROW;
 
 #ifdef RT_OS_SOLARIS
 # define futimes(filedes, timeval)   futimesat(filedes, NULL, timeval)
-# define RTTIME_INCL_TIMEVAL /** @todo remove me after fixing iprt/time.h */
 #endif
 
 #include <iprt/file.h>

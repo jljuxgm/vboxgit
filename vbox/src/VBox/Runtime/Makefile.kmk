@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3888 2007-07-26 16:26:39Z vboxsync $
+# $Id: Makefile.kmk 3916 2007-07-29 22:25:12Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -131,6 +131,10 @@ RuntimeR3_INCS.l4       = \
 # for iconv.h
 RuntimeR3_INCS.freebsd  = \
 	/usr/local/include
+
+
+# RuntimeR3_INCS.solaris  = \
+#    /usr/include
 
 RuntimeR3_SOURCES       = \
 	misc/sanity-cpp.cpp \
@@ -400,6 +404,7 @@ RuntimeR3_SOURCES.solaris = \
 	generic/RTDirSetTimes-generic.cpp \
 	generic/RTFileMove-generic.cpp \
 	generic/RTLogWriteDebugger-generic.cpp \
+	generic/RTTimeLocalNow-generic.cpp \
 	generic/RTTimerCreate-generic.cpp \
 	generic/pathhost-generic.cpp \
 	generic/sched-generic.cpp \

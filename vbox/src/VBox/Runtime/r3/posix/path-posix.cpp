@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 3888 2007-07-26 16:26:39Z vboxsync $ */
+/* $Id: path-posix.cpp 3916 2007-07-29 22:25:12Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Path Manipulation, POSIX.
  */
@@ -33,9 +33,6 @@
 #include <stdio.h>
 #ifdef RT_OS_DARWIN
 # include <mach-o/dyld.h>
-#endif
-#ifdef RT_OS_SOLARIS
-# define RTTIME_INCL_TIMEVAL /** @todo remove me after fixing iprt/time.h */
 #endif
 
 #include <iprt/path.h>
