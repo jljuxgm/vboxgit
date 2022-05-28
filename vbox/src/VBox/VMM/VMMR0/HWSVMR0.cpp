@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 1406 2007-03-12 09:06:41Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 1585 2007-03-20 21:03:10Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -513,7 +513,7 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
 HWACCMR0DECL(int) SVMR0RunGuestCode(PVM pVM, CPUMCTX *pCtx)
 {
     int         rc = VINF_SUCCESS;
-    uint64_t    exitCode = SVM_EXIT_INVALID;
+    uint64_t    exitCode = (uint64_t)SVM_EXIT_INVALID;
     SVM_VMCB   *pVMCB;
     bool        fForceTLBFlush = false;
 
@@ -651,7 +651,7 @@ ResumeExecution:
     /* Reason for the VM exit */
     exitCode = pVMCB->ctrl.u64ExitCode;
 
-    if (exitCode == SVM_EXIT_INVALID)          /* Invalid guest state. */
+    if (exitCode == (uint64_t)SVM_EXIT_INVALID)          /* Invalid guest state. */
     {
         HWACCMDumpRegs(pCtx);
 #ifdef DEBUG
