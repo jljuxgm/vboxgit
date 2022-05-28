@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 1311 2007-03-07 20:08:17Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 1312 2007-03-07 20:21:39Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -1022,7 +1022,6 @@ DECLCALLBACK(int) trpmGCTrapInGeneric(PVM pVM, PCPUMCTXCORE pRegFrame, uintptr_t
          * We'll deal with the actual stale or troublesome selector value in 
          * the outermost trap frame.
          */
-        PCPUMCTXCORE pCoreCtx = (PCPUMCTXCORE)pRegFrame->esp;
         switch (uUser & TRPM_TRAP_IN_OP_MASK)
         {
             case TRPM_TRAP_IN_MOV_GS:
