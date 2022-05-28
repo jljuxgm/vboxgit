@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: PATMAll.cpp 3020 2007-06-04 12:01:53Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -529,7 +529,7 @@ PATMDECL(int) PATMAddBranchToLookupCache(PVM pVM, RTGCPTR pJumpTableGC, RTGCPTR 
  * @param   opcode      DIS instruction opcode
  * @param   fPatchFlags Patch flags
  */
-PATMDECL(const char *)patmGetInstructionString(uint32_t opcode, uint32_t fPatchFlags)
+PATMDECL(const char *) patmGetInstructionString(uint32_t opcode, uint32_t fPatchFlags)
 {
     const char *pszInstr = NULL;
 

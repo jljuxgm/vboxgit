@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: CSAM.cpp 3020 2007-06-04 12:01:53Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -551,10 +551,10 @@ static DECLCALLBACK(int) csamr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Versio
  * @returns             Host context pointer or NULL in case of an error
  *
  */
-static HCPTRTYPE(void *) CSAMGCVirtToHCVirt(PVM pVM, PCSAMP2GLOOKUPREC pCacheRec, GCPTRTYPE(uint8_t *)pGCPtr)
+static HCPTRTYPE(void *) CSAMGCVirtToHCVirt(PVM pVM, PCSAMP2GLOOKUPREC pCacheRec, GCPTRTYPE(uint8_t *) pGCPtr)
 {
     int rc;
-    HCPTRTYPE(void *)pHCPtr;
+    HCPTRTYPE(void *) pHCPtr;
 
     STAM_PROFILE_START(&pVM->csam.s.StatTimeAddrConv, a);
 
@@ -1075,7 +1075,7 @@ static int csamAnalyseCodeStream(PVM pVM, GCPTRTYPE(uint8_t *) pInstrGC, GCPTRTY
     PCSAMPAGE pPage = (PCSAMPAGE)pUserData;
     int rc = VWRN_CONTINUE_ANALYSIS;
     uint32_t opsize;
-    HCPTRTYPE(uint8_t *)pCurInstrHC = 0;
+    HCPTRTYPE(uint8_t *) pCurInstrHC = 0;
     bool disret;
 
 #ifdef DEBUG
