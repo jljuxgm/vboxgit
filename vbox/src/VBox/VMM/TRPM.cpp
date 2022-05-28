@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 347 2007-01-26 09:36:22Z vboxsync $ */
+/* $Id: TRPM.cpp 348 2007-01-26 09:38:22Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor
  */
@@ -413,7 +413,7 @@ static VBOXIDTE_GENERIC     g_aIdt[256] =
 /** @} */
 
 /** TRPM saved state version. */
-#define TRPM_SAVED_STATE_VERSION    6
+#define TRPM_SAVED_STATE_VERSION    7
 
 
 /*******************************************************************************
