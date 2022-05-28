@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 4953 2007-09-21 14:08:19Z vboxsync $ */
+/* $Id: CSAM.cpp 4955 2007-09-21 14:14:47Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1132,7 +1132,7 @@ static int csamAnalyseCodeStream(PVM pVM, GCPTRTYPE(uint8_t *) pInstrGC, GCPTRTY
         rc2 = CSAMR3DISInstr(pVM, &cpu, pCurInstrGC, pCurInstrHC, &opsize, szOutput);
         if (VBOX_SUCCESS(rc2)) Log(("CSAM Analysis: %s", szOutput));
 #else
-        disret = CSAMR3DISInstr(pVM, &cpu, pCurInstrGC, pCurInstrHC, &opsize, NULL);
+        rc2 = CSAMR3DISInstr(pVM, &cpu, pCurInstrGC, pCurInstrHC, &opsize, NULL);
 #endif
         STAM_PROFILE_STOP(&pVM->csam.s.StatTimeDisasm, a);
         if (VBOX_FAILURE(rc2))
