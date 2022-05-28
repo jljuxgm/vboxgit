@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 1834 2007-03-30 14:39:26Z vboxsync $ */
+/* $Id: CSAMAll.cpp 1853 2007-04-02 11:09:35Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -178,6 +178,9 @@ CSAMDECL(int) CSAMMarkPage(PVM pVM, RTGCPTR pPage, bool fScanned)
  */
 CSAMDECL(bool) CSAMDoesPageNeedScanning(PVM pVM, RTGCPTR GCPtr)
 {
+    if(!CSAMIsEnabled(pVM))
+        return false;
+
     if(CSAMIsPageScanned(pVM, GCPtr))
     {
         /* Already checked! */
