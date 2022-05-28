@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 2120 2007-04-17 08:40:33Z vboxsync $ */
+/* $Id: PGMAllBth.h 2137 2007-04-17 15:52:23Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -706,7 +706,8 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
                     }
                 }
 
-#  ifdef VBOX_STRICT
+#  if PGM_WITH_PAGING(PGM_GST_TYPE)
+#   ifdef VBOX_STRICT
                 /*
                  * Check for VMM page flags vs. Guest page flags consistency.
                  * Currently only for debug purposes.
@@ -733,7 +734,8 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
                 }
                 else
                     AssertMsgFailed(("PGMGCGetPage rc=%Vrc\n", rc));
-#  endif /* VBOX_STRICT */
+#   endif /* VBOX_STRICT */
+#  endif /* PGM_WITH_PAGING(PGM_GST_TYPE) */
             }
             STAM_PROFILE_STOP(&pVM->pgm.s.StatOutOfSync, c);
 # endif /* PGM_OUT_OF_SYNC_IN_GC */
