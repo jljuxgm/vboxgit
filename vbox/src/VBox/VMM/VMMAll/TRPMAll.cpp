@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 1579 2007-03-20 20:06:56Z vboxsync $ */
+/* $Id: TRPMAll.cpp 1791 2007-03-29 11:38:47Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -622,7 +622,7 @@ TRPMDECL(int) TRPMForwardTrap(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t iGate, u
                     else
                         Log(("TRAP%02X: Handler %04X:%08X Stack %04X:%08X RPL=%d CR2=%08X\n", iGate, GuestIdte.Gen.u16SegSel, pHandler, ss_r0, esp_r0, (pRegFrame->ss & X86_SEL_RPL), pVM->trpm.s.uActiveCR2));
 
-                    if (fConforming == false && dpl < cpl)
+                    if (!fConforming && dpl < cpl)
                     {
                         if ((pRegFrame->ss & X86_SEL_RPL) == 1 && !eflags.Bits.u1VM)
                             CTXSUFF(pTrapStack)[--idx] = pRegFrame->ss & ~1;    /* Mask away traces of raw ring execution (ring 1). */
