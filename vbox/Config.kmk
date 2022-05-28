@@ -1,4 +1,4 @@
-# $Id: Config.kmk 2329 2007-04-24 16:07:39Z vboxsync $
+# $Id: Config.kmk 2383 2007-04-27 08:20:50Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1564,7 +1564,7 @@ endif
 TEMPLATE_VBOXMAINEXE         = VBox Main Executables
 TEMPLATE_VBOXMAINEXE_ASTOOL              = $(VBOX_ASTOOL)
 TEMPLATE_VBOXMAINEXE_ASFLAGS             = $(VBOX_ASFLAGS)
-TEMPLATE_VBOXMAINEXE_DEFS                = IN_RING3 UNICODE
+TEMPLATE_VBOXMAINEXE_DEFS                = IN_RING3 UNICODE NDEBUG=1
 TEMPLATE_VBOXMAINEXE_LIBS.kprofile       = $(LIB_KPROFILE)
 TEMPLATE_VBOXMAINEXE_INCS                = \
 	$(VBOX_PATH_SDK)/include
