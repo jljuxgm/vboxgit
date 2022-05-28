@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 1  vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 403 2007-01-28 08:45:05Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Threads, Ring-0 Driver, NT.
  */
@@ -32,9 +32,9 @@ NTSTATUS NTAPI ZwYieldExecution(void);
 __END_DECLS
 
 
-RTDECL(RTTHREAD) RTThreadSelf(void)
+RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 {
-    return (RTTHREAD)PsGetCurrentThread();
+    return (RTNATIVETHREAD)PsGetCurrentThread();
 }
 
 
@@ -60,4 +60,5 @@ RTDECL(bool) RTThreadYield(void)
 {
     return ZwYieldExecution() != STATUS_NO_YIELD_PERFORMED;
 }
+
 

@@ -1,4 +1,4 @@
-/* $Id: sched-generic.cpp 1  vboxsync $ */
+/* $Id: sched-generic.cpp 403 2007-01-28 08:45:05Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Scheduling, generic stubs.
  */
@@ -40,7 +40,7 @@
  */
 int rtSchedNativeCalcDefaultPriority(RTTHREADTYPE enmType)
 {
-    Assert(enmType > RTTHREADTYPE_INVALID && enmType < RTTHREADTYPE_LAST);
+    Assert(enmType > RTTHREADTYPE_INVALID && enmType < RTTHREADTYPE_END);
     return VINF_SUCCESS;
 }
 
@@ -75,7 +75,7 @@ int rtProcNativeSetPriority(RTPROCPRIORITY enmPriority)
  */
 int rtThreadNativeSetPriority(PRTTHREADINT pThread, RTTHREADTYPE enmType)
 {
-    Assert(enmType > RTTHREADTYPE_INVALID && enmType < RTTHREADTYPE_LAST);
+    Assert(enmType > RTTHREADTYPE_INVALID && enmType < RTTHREADTYPE_END);
     return VINF_SUCCESS;
 }
 

@@ -1,6 +1,6 @@
-/* $Id: thread-r0drv-linux.c 403 2007-01-28 08:45:05Z vboxsync $ */
+/* $Id: thread2-r0drv-linux.c 403 2007-01-28 08:45:05Z vboxsync $ */
 /** @file
- * InnoTek Portable Runtime - Threads, Ring-0 Driver, Linux.
+ * InnoTek Portable Runtime - Threads (Part 2), Ring-0 Driver, Linux.
  */
 
 /*
@@ -26,34 +26,11 @@
 
 #include <iprt/thread.h>
 #include <iprt/err.h>
+#include "internal/thread.h"
 
 
-RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
+RTDECL(RTTHREAD) RTThreadSelf(void)
 {
-    return (RTNATIVETHREAD)current;
-}
-
-
-RTDECL(int)   RTThreadSleep(unsigned cMillies)
-{
-    long cJiffies = msecs_to_jiffies(cMillies);
-    set_current_state(TASK_INTERRUPTIBLE);
-    cJiffies = schedule_timeout(cJiffies);
-    if (!cJiffies)
-        return VINF_SUCCESS;
-    return VERR_INTERRUPTED;
-}
-
-
-RTDECL(bool) RTThreadYield(void)
-{
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 4, 20)
-    yield();
-#else
-    set_current_state(TASK_RUNNING);
-    sys_sched_yield();
-    schedule();
-#endif
-    return true;
+    return rtThreadGetByNative(((RTNATIVETHREAD)current);
 }
 
