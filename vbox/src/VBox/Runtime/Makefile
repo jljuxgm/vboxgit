@@ -1,4 +1,4 @@
-# $Id: Makefile 1807 2007-03-29 17:24:21Z vboxsync $
+# $Id: Makefile 1888 2007-04-03 14:48:08Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -100,6 +100,7 @@ RuntimeWin64ASM_SOURCES = \
 	win64/ASMGetDR3.asm \
 	win64/ASMGetDR6.asm \
 	win64/ASMGetDR7.asm \
+	win64/ASMMultU64ByU32DivByU32.asm \
 
 #
 # RuntimeR3 - Static Runtime for Ring-3 executables.
