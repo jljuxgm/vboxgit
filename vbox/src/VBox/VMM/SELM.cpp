@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 1794 2007-03-29 11:51:32Z vboxsync $ */
+/* $Id: SELM.cpp 2720 2007-05-18 15:48:06Z vboxsync $ */
 /** @file
  * SELM - The Selector manager.
  */
@@ -1540,6 +1540,8 @@ SELMR3DECL(int) SELMR3SyncTSS(PVM pVM)
             VM_FF_CLEAR(pVM, VM_FF_SELM_SYNC_TSS);
         }
     }
+    else /* Null TR means there's no TSS, has to be reloaded first, so clear the forced action. */
+        VM_FF_CLEAR(pVM, VM_FF_SELM_SYNC_TSS);
 
     STAM_PROFILE_STOP(&pVM->selm.s.StatTSSSync, a);
     return VINF_SUCCESS;
