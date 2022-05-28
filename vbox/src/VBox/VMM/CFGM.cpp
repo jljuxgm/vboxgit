@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: CFGM.cpp 1009 2007-02-21 11:11:58Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  *
@@ -1054,7 +1054,7 @@ CFGMR3DECL(int) CFGMR3InsertNode(PCFGMNODE pNode, const char *pszName, PCFGMNODE
                     }
 
                     /* does it exist? */
-                    PCFGMNODE pChild = CFGMR3GetChild(pNode, pszName);
+                    PCFGMNODE pChild = CFGMR3GetChild(pNode, psz);
                     if (!pChild)
                     {
                         /* no, insert it */
