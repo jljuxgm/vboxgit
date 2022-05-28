@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 2008 2007-04-10 14:17:54Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 2186 2007-04-18 15:36:53Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -779,13 +779,13 @@ static const REMPARMDESC g_aArgsTRPMAssertTrap[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM) },
     { REMPARMDESC_FLAGS_INT,        sizeof(uint8_t) },
-    { REMPARMDESC_FLAGS_INT,        sizeof(bool) }
+    { REMPARMDESC_FLAGS_INT,        sizeof(TRPMEVENT) }
 };
 static const REMPARMDESC g_aArgsTRPMQueryTrap[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM) },
     { REMPARMDESC_FLAGS_INT,        sizeof(uint8_t *) },
-    { REMPARMDESC_FLAGS_INT,        sizeof(bool *) }
+    { REMPARMDESC_FLAGS_INT,        sizeof(TRPMEVENT *) }
 };
 static const REMPARMDESC g_aArgsTRPMSetErrorCode[] =
 {
