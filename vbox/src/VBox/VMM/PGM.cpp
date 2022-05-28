@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 5629 2007-11-05 21:48:30Z vboxsync $ */
+/* $Id: PGM.cpp 5630 2007-11-05 22:08:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1376,7 +1376,7 @@ static void pgmR3InitStats(PVM pVM)
     STAM_REG(pVM, &pPGM->StatTrackDeref,                    STAMTYPE_PROFILE, "/PGM/Track/Deref",                   STAMUNIT_OCCURENCES,     "Profiling of SyncPageWorkerTrackDeref (expensive).");
 #endif
 
-    for (unsigned i = 0; i < PAGE_ENTRIES; i++)
+    for (unsigned i = 0; i < X86_PG_ENTRIES; i++)
     {
         /** @todo r=bird: We need a STAMR3RegisterF()! */
         char szName[32];
