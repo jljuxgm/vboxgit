@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 2030 2007-04-11 13:33:28Z vboxsync $ */
+/* $Id: PATMInternal.h 2333 2007-04-24 16:41:01Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -655,7 +655,7 @@ void patmEmptyTreeU32(PVM pVM, PPAVLU32NODECORE ppTree);
  * @param   opcode      DIS instruction opcode
  * @param   fPatchFlags Patch flags
  */
-PATMDECL(char *)patmGetInstructionString(uint32_t opcode, uint32_t fPatchFlags);
+PATMDECL(const char *)patmGetInstructionString(uint32_t opcode, uint32_t fPatchFlags);
 
 
 /**

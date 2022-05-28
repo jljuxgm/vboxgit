@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 628 2007-02-05 11:59:58Z vboxsync $ */
+/* $Id: strformat.cpp 2333 2007-04-24 16:41:01Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - String Formatter.
  */
@@ -145,7 +145,7 @@ RTDECL(int) RTStrFormatNumber(char *psz, uint64_t u64Value, unsigned int uiBase,
  */
 static int rtStrFormatNumber(char *psz, KSIZE64 ullValue, unsigned int uiBase, signed int cchWidth, signed int cchPrecision, unsigned int fFlags)
 {
-    char *          pachDigits = "0123456789abcdef";
+    const char *    pachDigits = "0123456789abcdef";
     char *          pszStart = psz;
     int             cchValue;
     unsigned long   ul;
@@ -497,7 +497,7 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
                         else
                         {
                             int   cchStr;
-                            char *pszStr = va_arg(args, char*);
+                            const char *pszStr = va_arg(args, char*);
 
                             if (!VALID_PTR(pszStr))
                                 pszStr = "<NULL>";
@@ -568,7 +568,7 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
                         else
                         {
                             int   cchStr;
-                            char *pszStr = va_arg(args, char*);
+                            const char *pszStr = va_arg(args, char*);
 
                             if (!VALID_PTR(pszStr))
                                 pszStr = "<NULL>";

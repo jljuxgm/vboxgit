@@ -1,4 +1,4 @@
-/* $Id: tstLdr.cpp 1  vboxsync $ */
+/* $Id: tstLdr.cpp 2333 2007-04-24 16:41:01Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Testcase for parts of RTLdr*.
  */
@@ -77,7 +77,7 @@ static int testLdrOne(const char *pszFilename)
         RTLDRMOD    hLdrMod;
         void       *pvBits;
         RTUINTPTR   Addr;
-        char       *pszName;
+        const char *pszName;
     }   aLoads[6] =
     {
         { NULL, NULL, 0xefefef00, "foo" },
