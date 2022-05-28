@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-os2.cpp 3225 2007-06-22 04:37:40Z vboxsync $ */
+/* $Id: memobj-r0drv-os2.cpp 3236 2007-06-22 20:15:08Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, OS/2.
  */
@@ -320,7 +320,7 @@ int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, 
                 AssertMsgReturn(fProt & RTMEM_PROT_WRITE, ("%#x\n", fProt), VERR_NOT_SUPPORTED);
                 Assert(!pMemToMapOs2->Core.u.Phys.fAllocated);
                 ULONG ulPhys = pMemToMapOs2->Core.u.Phys.PhysBase;
-                rc = KernVMAlloc(pMemToMapOs2->Core.cb, VMDHA_PHYS/* | VMDHA_SHARED?*/, &pvR0, (PPVOID)&ulPhys, NULL);
+                rc = KernVMAlloc(pMemToMapOs2->Core.cb, VMDHA_PHYS, &pvR0, (PPVOID)&ulPhys, NULL);
                 if (rc)
                     return RTErrConvertFromOS2(rc);
                 pMemToMapOs2->Core.pv = pvR0;
