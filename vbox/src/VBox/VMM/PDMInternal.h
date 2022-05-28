@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 3548 2007-07-11 11:39:50Z vboxsync $ */
+/* $Id: PDMInternal.h 3635 2007-07-16 12:45:28Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -208,7 +208,7 @@ typedef struct PDMTHREADINT
 #define PDMDRVINSINT_DECLARED
 #define PDMCRITSECTINT_DECLARED
 #define PDMTHREADINT_DECLARED
-#ifdef __VBox_pdm_h__
+#ifdef ___VBox_pdm_h
 # error "Invalid header PDM order. Include PDMInternal.h before VBox/pdm.h!"
 #endif
 #include <VBox/pdm.h>
