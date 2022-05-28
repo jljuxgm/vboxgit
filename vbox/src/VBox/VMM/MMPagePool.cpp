@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 50 2007-01-15 18:29:52Z vboxsync $ */
+/* $Id: MMPagePool.cpp 878 2007-02-13 15:36:07Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Page Pool.
  */
@@ -22,7 +22,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define LOG_GROUP LOG_GROUP_MM_PAGE
+#define LOG_GROUP LOG_GROUP_MM_POOL
 #include <VBox/mm.h>
 #include <VBox/pgm.h>
 #include <VBox/stam.h>
