@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 2732 2007-05-21 13:58:34Z vboxsync $
+; $Id: HWACCMR0A.asm 2733 2007-05-21 14:10:05Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -537,6 +537,7 @@ ENDPROC VMXDisable
 ;DECLASM(int) VMXClearVMCS(RTHCPHYS HCPhysVMCS);
 BEGINPROC VMXClearVMCS
 %ifdef __AMD64__
+    xor     rax, rax
  %ifdef ASM_CALL64_GCC
     push    rdi
  %else
@@ -544,6 +545,7 @@ BEGINPROC VMXClearVMCS
  %endif
     vmclear [rsp]
 %else
+    xor     eax, eax
     vmclear [esp + 4]
 %endif
     jnc     .the_end
@@ -565,6 +567,7 @@ ENDPROC VMXClearVMCS
 ;DECLASM(int) VMXActivateVMCS(RTHCPHYS HCPhysVMCS);
 BEGINPROC VMXActivateVMCS
 %ifdef __AMD64__
+    xor     rax, rax
  %ifdef ASM_CALL64_GCC
     push    rdi
  %else
@@ -572,6 +575,7 @@ BEGINPROC VMXActivateVMCS
  %endif
     vmptrld [rsp]
 %else
+    xor     eax, eax
     vmptrld [esp + 4]
 %endif
     jnc     .the_end
