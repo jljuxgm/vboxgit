@@ -1,4 +1,4 @@
-/* $Id: RTDirQueryInfo-generic.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: RTDirQueryInfo-generic.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - RTDirQueryInfo, generic implementation.
  */
@@ -25,7 +25,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_DIR
-#ifdef __WIN__ /* dir.h has host specific stuff */
+#ifdef RT_OS_WINDOWS /* dir.h has host specific stuff */
 # include <Windows.h>
 #else
 # include <dirent.h>

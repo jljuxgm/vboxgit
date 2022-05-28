@@ -1,4 +1,4 @@
-; $Id: strcmp.asm 2988 2007-06-01 17:36:09Z vboxsync $
+; $Id: strcmp.asm 3672 2007-07-17 12:39:30Z vboxsync $
 ;; @file
 ; innotek Portable Runtime - No-CRT strcmp - AMD64 & X86.
 ;
@@ -28,7 +28,7 @@ BEGINCODE
 ; @param    psz2   gcc: rsi  msc: rdx  x86:[esp+8]
 BEGINPROC RT_NOCRT(strcmp)
         ; input
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
   %define psz1 rcx
   %define psz2 rdx

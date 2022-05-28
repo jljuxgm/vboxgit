@@ -1,4 +1,4 @@
-/* $Id: dir.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: dir.h 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Internal Header for RTDir.
  */
@@ -78,7 +78,7 @@ typedef struct RTDIR
     unsigned            cchName;
 #endif
 
-#ifdef __WIN__
+#ifdef RT_OS_WINDOWS
     /** Handle to the opened directory search. */
     HANDLE              hDir;
     /** Find data buffer.

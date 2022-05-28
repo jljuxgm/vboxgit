@@ -1,4 +1,4 @@
-/* $Id: alloc-posix.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: alloc-posix.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, POSIX.
  */
@@ -34,7 +34,7 @@
 #include <errno.h>
 #include <sys/mman.h>
 
-#if !defined(RT_USE_MMAP) && (defined(__LINUX__))
+#if !defined(RT_USE_MMAP) && (defined(RT_OS_LINUX))
 # define RT_USE_MMAP
 #endif 
 
@@ -82,7 +82,7 @@ RTDECL(void *) RTMemExecAlloc(size_t cb)
      */
     size_t cbAlloc = RT_ALIGN_Z(cb + sizeof(RTMEMEXECHDR), PAGE_SIZE);
     void *pv = mmap(NULL, cbAlloc, PROT_READ | PROT_WRITE | PROT_EXEC, MAP_PRIVATE | MAP_ANONYMOUS 
-#if defined(__AMD64__) && defined(MAP_32BIT)
+#if defined(RT_ARCH_AMD64) && defined(MAP_32BIT)
                     | MAP_32BIT
 #endif
                     , -1, 0);

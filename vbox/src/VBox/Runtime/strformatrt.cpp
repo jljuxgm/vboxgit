@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 3256 2007-06-24 06:06:21Z vboxsync $ */
+/* $Id: strformatrt.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - IPRT String Formatter Extensions.
  */
@@ -609,12 +609,12 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
             {
                 long rc = va_arg(*pArgs, long);
                 char ch = *(*ppszFormat)++;
-#if defined(__WIN__)
+#if defined(RT_OS_WINDOWS)
                 PCRTWINERRMSG pMsg = RTErrWinGet(rc);
 #endif
                 switch (ch)
                 {
-#if defined(__WIN__)
+#if defined(RT_OS_WINDOWS)
                     case 'c':
                         return pfnOutput(pvArgOutput, pMsg->pszDefine, strlen(pMsg->pszDefine));
                     case 'f':

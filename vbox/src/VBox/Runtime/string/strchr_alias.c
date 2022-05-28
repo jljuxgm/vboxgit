@@ -1,4 +1,4 @@
-/* $Id: strchr_alias.c 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: strchr_alias.c 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - No-CRT strchr() alias for gcc.
  */
@@ -26,7 +26,7 @@
 #include <iprt/nocrt/string.h>
 #undef strchr
 
-#if defined(__DARWIN__) || defined(__WIN__)
+#if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
 # ifndef __MINGW32__
 #  pragma weak strchr
 # endif

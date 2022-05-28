@@ -1,4 +1,4 @@
-/* $Id: tstPath.cpp 3365 2007-07-03 00:01:44Z vboxsync $ */
+/* $Id: tstPath.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime Testcase - Test various path functions.
  */
@@ -71,7 +71,7 @@ int main()
         NULL,                           "\\",
         "relative_base/dir\\",          "\\from_root",
         "relative_base/dir/",           "relative_also",
-#if defined (__OS2__) || defined (__WIN__)
+#if defined (RT_OS_OS2) || defined (RT_OS_WINDOWS)
         NULL,                           "C:\\",
         "C:\\",                         "..",
         "C:\\temp",                     "..",

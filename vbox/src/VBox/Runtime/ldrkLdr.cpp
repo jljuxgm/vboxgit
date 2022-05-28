@@ -1,4 +1,4 @@
-/* $Id: ldrkLdr.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: ldrkLdr.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Binary Image Loader, kLdr Interface.
  */
@@ -556,7 +556,7 @@ static int rtkldrEnumSymbolsWrapper(PKLDRMOD pMod, uint32_t iSymbol,
         pszSymbol = psz;
     }
 
-#if defined(__OS2__) || (defined(__DARWIN__) && defined(__X86__))
+#if defined(RT_OS_OS2) || (defined(RT_OS_DARWIN) && defined(RT_ARCH_X86))
     /* skip the underscore prefix. */
     if (*pszSymbol == '_')
         pszSymbol++;
@@ -623,7 +623,7 @@ static int rtkldrGetImportWrapper(PKLDRMOD pMod, uint32_t iImport, uint32_t iSym
         pszSymbol = psz;
     }
 
-#if defined(__OS2__) || (defined(__DARWIN__) && defined(__X86__))
+#if defined(RT_OS_OS2) || (defined(RT_OS_DARWIN) && defined(RT_ARCH_X86))
     /* skip the underscore prefix. */
     if (*pszSymbol == '_')
         pszSymbol++;
@@ -660,7 +660,7 @@ static DECLCALLBACK(int) rtkldrGetSymbolEx(PRTLDRMODINTERNAL pMod, const void *p
     PKLDRMOD pModkLdr = ((PRTLDRMODKLDR)pMod)->pMod;
     KLDRADDR uValue;
 
-#if defined(__OS2__) || (defined(__DARWIN__) && defined(__X86__))
+#if defined(RT_OS_OS2) || (defined(RT_OS_DARWIN) && defined(RT_ARCH_X86))
     /*
      * Add underscore prefix.
      */

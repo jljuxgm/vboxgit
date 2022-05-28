@@ -1,4 +1,4 @@
-; $Id: memset.asm 2988 2007-06-01 17:36:09Z vboxsync $
+; $Id: memset.asm 3672 2007-07-17 12:39:30Z vboxsync $
 ;; @file
 ; innotek Portable Runtime - No-CRT memset - AMD64 & X86.
 ;
@@ -29,7 +29,7 @@ BEGINCODE
 ; @param    cb      gcc: rdx  msc: r8   x86:[esp+0ch]
 BEGINPROC RT_NOCRT(memset)
         cld
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
         int3
   %error "Port me"

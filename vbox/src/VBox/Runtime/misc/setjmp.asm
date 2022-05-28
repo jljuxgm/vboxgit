@@ -1,4 +1,4 @@
-; $Id: setjmp.asm 2988 2007-06-01 17:36:09Z vboxsync $
+; $Id: setjmp.asm 3672 2007-07-17 12:39:30Z vboxsync $
 ;; @file
 ; innotek Portable Runtime - No-CRT setjmp & longjmp - AMD64 & X86.
 ;
@@ -26,7 +26,7 @@ BEGINCODE
 
 
 BEGINPROC RT_NOCRT(setjmp)
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
         mov     rax, [rsp]
         mov     [rdi + 00h], rax        ; rip
         lea     rcx, [rsp + 8]
@@ -54,7 +54,7 @@ ENDPROC RT_NOCRT(setjmp)
 
 
 BEGINPROC RT_NOCRT(longjmp)
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
         mov     rbx, [rdi + 38h]
         mov     r12, [rdi + 30h]
         mov     r13, [rdi + 28h]

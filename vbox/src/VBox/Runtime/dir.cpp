@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 3364 2007-07-02 23:56:02Z vboxsync $ */
+/* $Id: dir.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Directory Manipulation.
  */
@@ -24,7 +24,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_DIR
-#ifdef __WIN__
+#ifdef RT_OS_WINDOWS
 # include <Windows.h>
 #else
 # include <dirent.h>
@@ -70,7 +70,7 @@ RTDECL(int) RTDirCreateFullPath(const char *pszPath, RTFMODE fMode)
 
     /* skip the root slash if any */
     if (    psz[0] == '/'
-#if defined(__WIN__) || defined(__OS2__)
+#if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
         ||  psz[0] == '\\'
 #endif
         )
@@ -82,7 +82,7 @@ RTDECL(int) RTDirCreateFullPath(const char *pszPath, RTFMODE fMode)
         /* the next component is NULL, stop iterating */
         if (!*psz)
             break;
-#if defined(__WIN__) || defined(__OS2__)
+#if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
         psz = strpbrk(psz, "\\/");
 #else
         psz = strchr(psz, '/');

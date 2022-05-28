@@ -1,4 +1,4 @@
-; $Id: ldexpl.asm 2988 2007-06-01 17:36:09Z vboxsync $
+; $Id: ldexpl.asm 3672 2007-07-17 12:39:30Z vboxsync $
 ;; @file
 ; innotek Portable Runtime - No-CRT ldexpl - AMD64 & X86.
 ;
@@ -23,7 +23,7 @@
 
 BEGINCODE
 
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
  %define _SP rsp
  %define _BP rbp
  %define _S  8
@@ -44,7 +44,7 @@ BEGINPROC RT_NOCRT(ldexpl)
     sub     _SP, 10h
 
     ; load exp
-%ifdef __AMD64__ ; ASSUMES ONLY GCC HERE!
+%ifdef RT_ARCH_AMD64 ; ASSUMES ONLY GCC HERE!
     mov     [rsp], edi
     fild    dword [rsp]
 %else

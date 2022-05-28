@@ -1,4 +1,4 @@
-/* $Id: utf8-posix.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: utf8-posix.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - UTF-8 helpers, POSIX.
  */
@@ -95,7 +95,7 @@ static int rtstrConvert(const void *pvInput, size_t cbInput, const char *pszInpu
             size_t      cbOutLeft = cbOutput2;
             const void *pvInputLeft = pvInput;
             void       *pvOutputLeft = pvOutput;
-#ifdef __LINUX__ /* glibc has an incorrect declaration of the api. */
+#ifdef RT_OS_LINUX /* glibc has an incorrect declaration of the api. */
             if (iconv(icHandle, (char **)&pvInputLeft, &cbInLeft, (char **)&pvOutputLeft, &cbOutLeft) != (size_t)-1)
 #else
             if (iconv(icHandle, (const char **)&pvInputLeft, &cbInLeft, (char **)&pvOutputLeft, &cbOutLeft) != (size_t)-1)

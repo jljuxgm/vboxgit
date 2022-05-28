@@ -1,4 +1,4 @@
-/* $Id: strncmp.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: strncmp.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - CRT Strings, strncmp().
  */
@@ -27,7 +27,7 @@ _CRTIMP int __cdecl strncmp
 int strncmp
 #endif
     (const char *pszStr1, const char *pszStr2, size_t cb)
-#if defined(__THROW) && !defined(__WIN__) && !defined(__OS2__)
+#if defined(__THROW) && !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2)
     __THROW
 #endif
 {

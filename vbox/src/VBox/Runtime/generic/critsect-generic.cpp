@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: critsect-generic.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Critical Section, Generic.
  */
@@ -37,7 +37,7 @@
  *          in order to get the RT thread structure there and this tree is
  *          protected by a critsect atm.
  */
-#if !defined(RTCRITSECT_STRICT) && defined(RT_STRICT) && !defined(__L4ENV__)
+#if !defined(RTCRITSECT_STRICT) && defined(RT_STRICT) && !defined(RT_OS_L4)
 # define RTCRITSECT_STRICT
 #endif
 

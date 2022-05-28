@@ -1,4 +1,4 @@
-/* $Id: RTAssertDoBreakpoint-vbox.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: RTAssertDoBreakpoint-vbox.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Assertions, generic RTAssertDoBreakpoint.
  */
@@ -32,7 +32,7 @@
  */
 #if !defined(VBOX_RTASSERT_WITH_GDB) \
     && !defined(IN_GUEST) \
-    && ((!defined(__OS2__) && !defined(__WIN__)) || defined(__DOXGYEN__))
+    && ((!defined(RT_OS_OS2) && !defined(RT_OS_WINDOWS)) || defined(__DOXGYEN__))
 # define VBOX_ASSERT_WITH_GDB
 #endif 
 

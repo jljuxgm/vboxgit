@@ -1,4 +1,4 @@
-; $Id: llrint.asm 2988 2007-06-01 17:36:09Z vboxsync $
+; $Id: llrint.asm 3672 2007-07-17 12:39:30Z vboxsync $
 ;; @file
 ; innotek Portable Runtime - No-CRT llrint - AMD64 & X86.
 ;
@@ -28,7 +28,7 @@ BEGINCODE
 ; @returns 32-bit: edx:eax  64-bit: rax
 ; @param    rd     32-bit: [esp + 4h]  64-bit: xmm0
 BEGINPROC RT_NOCRT(llrint)
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
     cvtsd2si rax, xmm0
 %else
     push    ebp

@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 3537 2007-07-11 08:08:42Z vboxsync $ */
+/* $Id: SUPLib.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -806,7 +806,7 @@ static int suplibGenerateCallVMMR0(uint8_t u8Interrupt)
     /*
      * Generate the code.
      */
-#ifdef __AMD64__
+#ifdef RT_ARCH_AMD64
     /*
      * reg params:
      *      <GCC>   <MSC>   <argument>

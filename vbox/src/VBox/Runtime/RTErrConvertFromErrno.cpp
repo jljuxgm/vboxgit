@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Convert errno to iprt status codes.
  */
@@ -27,7 +27,7 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 
-#if defined(__DARWIN__) && defined(KERNEL)
+#if defined(RT_OS_DARWIN) && defined(KERNEL)
 # include <sys/errno.h>
 #else
 # include <errno.h>

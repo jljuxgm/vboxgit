@@ -1,4 +1,4 @@
-/* $Id: init.cpp 3123 2007-06-15 14:46:16Z vboxsync $ */
+/* $Id: init.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Init Ring-3.
  */
@@ -25,7 +25,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_DEFAULT
-#ifdef __WIN__
+#ifdef RT_OS_WINDOWS
 # include <process.h>
 #else
 # include <unistd.h>

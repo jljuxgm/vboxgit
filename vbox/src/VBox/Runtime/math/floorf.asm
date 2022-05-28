@@ -1,4 +1,4 @@
-; $Id: floorf.asm 2988 2007-06-01 17:36:09Z vboxsync $
+; $Id: floorf.asm 3672 2007-07-17 12:39:30Z vboxsync $
 ;; @file
 ; innotek Portable Runtime - No-CRT floorf - AMD64 & X86.
 ;
@@ -23,7 +23,7 @@
 
 BEGINCODE
 
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
  %define _SP rsp
  %define _BP rbp
  %define _S  8
@@ -42,7 +42,7 @@ BEGINPROC RT_NOCRT(floorf)
     mov     _BP, _SP
     sub     _SP, 10h
 
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
     movss   [_SP], xmm0
     fld     dword [_SP]
 %else
@@ -63,7 +63,7 @@ BEGINPROC RT_NOCRT(floorf)
     ; Restore the fpu control word.
     fldcw   [_BP - 10h]
 
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
     fstp    dword [_SP]
     movss   xmm0, [_SP]
 %endif

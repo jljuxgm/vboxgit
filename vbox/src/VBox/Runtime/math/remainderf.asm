@@ -1,4 +1,4 @@
-; $Id: remainderf.asm 2988 2007-06-01 17:36:09Z vboxsync $
+; $Id: remainderf.asm 3672 2007-07-17 12:39:30Z vboxsync $
 ;; @file
 ; innotek Portable Runtime - No-CRT remainderf - AMD64 & X86.
 ;
@@ -23,7 +23,7 @@
 
 BEGINCODE
 
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
  %define _SP rsp
  %define _BP rbp
 %else
@@ -41,7 +41,7 @@ BEGINPROC RT_NOCRT(remainderf)
     mov     _BP, _SP
     sub     _SP, 20h
 
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
     movss   [rsp], xmm1
     movss   [rsp + 10h], xmm0
     fld     dword [rsp]
@@ -58,7 +58,7 @@ BEGINPROC RT_NOCRT(remainderf)
     fstp    st1
 
 .done:
-%ifdef __AMD64__
+%ifdef RT_ARCH_AMD64
     fstp    dword [rsp]
     movss   xmm0, [rsp]
 %endif

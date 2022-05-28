@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: alloc-ef.h 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, electric fence.
  */
@@ -71,7 +71,7 @@
  * decommitted.
  * Requires RTALLOC_EFENCE_TRACE.
  */
-#if defined(__LINUX__)
+#if defined(RT_OS_LINUX)
 # define RTALLOC_EFENCE_FREE_FILL       'f'
 #endif
 
@@ -93,7 +93,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#ifdef __WIN__
+#ifdef RT_OS_WINDOWS
 # include <Windows.h>
 #else
 # include <sys/mman.h>

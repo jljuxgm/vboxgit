@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: tstLdrDisasmTest.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - RTLdr test object.
  *
@@ -33,7 +33,7 @@
 #include <VBox/disopcode.h>
 #include <iprt/string.h>
 
-#if defined(IN_RING0) && !defined(__WIN__) /* Too lazy to make import libs. */
+#if defined(IN_RING0) && !defined(RT_OS_WINDOWS) /* Too lazy to make import libs. */
 extern "C" DECLIMPORT(int) MyPrintf(const char *pszFormat, ...);
 # define MY_PRINTF(a) MyPrintf a
 #else

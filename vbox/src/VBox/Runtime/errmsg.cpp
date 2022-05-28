@@ -1,4 +1,4 @@
-/* $Id: errmsg.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: errmsg.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Status code messages.
  */
@@ -90,7 +90,7 @@ RTDECL(PCRTSTATUSMSG) RTErrGet(int rc)
      * Need to use the temporary stuff.
      */
     int iMsg = ASMAtomicXchgU32(&g_iUnknownMsgs, (g_iUnknownMsgs + 1) % ELEMENTS(g_aUnknownMsgs));
-    RTStrPrintf(&g_aszUnknownStr[iMsg][0], sizeof(g_aszUnknownStr[iMsg]), "Unknown Status %d\n", rc);
+    RTStrPrintf(&g_aszUnknownStr[iMsg][0], sizeof(g_aszUnknownStr[iMsg]), "Unknown Status 0x%X\n", rc);
     return &g_aUnknownMsgs[iMsg];
 }
 

@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: stream.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - I/O Stream.
  */
@@ -37,7 +37,7 @@
 #include <stdio.h>
 #include <errno.h>
 
-#if defined(__LINUX__) /* PORTME: check for the _unlocked functions in stdio.h */
+#if defined(RT_OS_LINUX) /* PORTME: check for the _unlocked functions in stdio.h */
 #define HAVE_FWRITE_UNLOCKED
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-linux.c 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: initterm-r0drv-linux.c 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Initialization & Termination, R0 Driver, Linux.
  */
@@ -32,7 +32,7 @@
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-#ifdef __AMD64__
+#ifdef RT_ARCH_AMD64
 /* in alloc-r0drv0-linux.c */
 extern void rtR0MemExecCleanup(void);
 #endif 
@@ -46,7 +46,7 @@ int rtR0InitNative(void)
 
 void rtR0TermNative(void)
 {
-#ifdef __AMD64__
+#ifdef RT_ARCH_AMD64
     rtR0MemExecCleanup();
 #endif 
 }

@@ -1,4 +1,4 @@
-/* $Id: strpbrk.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: strpbrk.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - strpbrk().
  */
@@ -39,7 +39,7 @@ _CRTIMP char * __cdecl strpbrk(const char *pszStr, const char *pszChars)
 # endif
 #else
 char *strpbrk(const char *pszStr, const char *pszChars)
-# if defined(__THROW) && !defined(__WIN__) && !defined(__OS2__)
+# if defined(__THROW) && !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2)
     __THROW
 # endif
 #endif

@@ -1,4 +1,4 @@
-/* $Id: the-nt-kernel.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: the-nt-kernel.h 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the NT kernel.
  */
@@ -47,8 +47,8 @@ __END_DECLS
 #if !defined(__WIN32__) && !defined(__WIN64__)
 # error "__WIN32__ or __WIN64__ must be defined!"
 #endif
-#if !defined(__WIN__)
-# error "__WIN__ must be defined!"
+#if !defined(RT_OS_WINDOWS)
+# error "RT_OS_WINDOWS must be defined!"
 #endif
 
 #ifndef PAGE_OFFSET_MASK

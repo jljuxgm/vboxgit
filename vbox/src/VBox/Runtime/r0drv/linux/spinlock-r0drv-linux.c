@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-linux.c 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: spinlock-r0drv-linux.c 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Spinlocks, Ring-0 Driver, Linux.
  */
@@ -47,7 +47,7 @@ typedef struct RTSPINLOCKINTERNAL
     uint32_t volatile   u32Magic;
     /** The linux spinlock structure. */
     spinlock_t          Spinlock;
-#if !defined(CONFIG_SMP) || defined(__AMD64__)
+#if !defined(CONFIG_SMP) || defined(RT_ARCH_AMD64)
     /** A placeholder on Uni systems so we won't piss off RTMemAlloc(). */
     void                *pvUniDummy;
 #endif

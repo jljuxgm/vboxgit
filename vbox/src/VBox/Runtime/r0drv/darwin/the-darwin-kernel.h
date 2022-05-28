@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the Darwing kernel.
  */
@@ -40,8 +40,8 @@
 
 
 /* After including cdefs, we can check that this really is Darwin. */
-#ifndef __DARWIN__
-# error "__DARWIN__ must be defined!"
+#ifndef RT_OS_DARWIN
+# error "RT_OS_DARWIN must be defined!"
 #endif
 
 /* now we're ready for including the rest of the Darwin headers. */

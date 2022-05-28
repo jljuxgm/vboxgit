@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: initterm-r0drv.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Initialization & Termination, R0 Driver, Common.
  */
@@ -44,7 +44,7 @@ RTR0DECL(int) RTR0Init(unsigned fReserved)
     rc = rtR0InitNative();
     if (RT_SUCCESS(rc))
     {
-#if !defined(__LINUX__) && !defined(__WIN__)
+#if !defined(RT_OS_LINUX) && !defined(RT_OS_WINDOWS)
         rc = rtThreadInit();
 #endif
         if (RT_SUCCESS(rc))
@@ -61,7 +61,7 @@ RTR0DECL(int) RTR0Init(unsigned fReserved)
  */
 RTR0DECL(void) RTR0Term(void)
 {
-#if !defined(__LINUX__) && !defined(__WIN__)
+#if !defined(RT_OS_LINUX) && !defined(RT_OS_WINDOWS)
     rtThreadTerm();
 #endif
     rtR0TermNative();
