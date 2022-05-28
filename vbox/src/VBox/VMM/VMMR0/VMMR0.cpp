@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 420 2007-01-29 18:17:06Z vboxsync $ */
+/* $Id: VMMR0.cpp 672 2007-02-06 04:24:06Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -42,6 +42,10 @@
 #include <VBox/version.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
+
+#if defined(_MSC_VER) && defined(__AMD64__) /** @todo check this with with VC7! */
+#  pragma intrinsic(_AddressOfReturnAddress)
+#endif
 
 
 /*******************************************************************************
@@ -458,8 +462,7 @@ VMMR0DECL(int) VMMR0Entry(PVM pVM, unsigned /* make me an enum */ uOperation, vo
 # if defined(__GNUC__)
                     void *pvRet = (uint8_t *)__builtin_frame_address(0) + sizeof(void *);
 # elif defined(_MSC_VER) && defined(__AMD64__) /** @todo check this with with VC7! */
-#  pragma intrinsic(_AddressOfReturnAddress)
-                    void *pvRet = (uint8_t *)_AddressOfReturnAddress;
+                    void *pvRet = (uint8_t *)_AddressOfReturnAddress();
 # elif defined(__X86__)
                     void *pvRet = (uint8_t *)&pVM - sizeof(pVM);
 # else
