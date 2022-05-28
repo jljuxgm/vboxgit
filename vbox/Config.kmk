@@ -1,4 +1,4 @@
-# $Id: Config.kmk 2702 2007-05-17 18:39:50Z vboxsync $
+# $Id: Config.kmk 2712 2007-05-18 13:15:41Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -957,6 +957,10 @@ ifdef VBOX_SIGNING_MODE
    else
     VBOX_MAKE_CAT_FN    = $(call VBOX_MAKE_CAT64_FN,$(1),$(2))
    endif
+
+  # Enable signing of the additions.
+  VBOX_SIGN_ADDITIONS   = 1
+
   else
    $(error Unknown VBOX_SIGNING_MODE: $(VBOX_SIGNING_MODE))
   endif
