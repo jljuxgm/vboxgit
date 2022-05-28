@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 1057 2007-02-23 20:38:37Z vboxsync $ */
+/* $Id: VMMR0.cpp 1221 2007-03-05 15:26:12Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -737,6 +737,18 @@ DECLEXPORT(void) RTCALL AssertMsg1(const char *pszExpr, unsigned uLine, const ch
          "Expression: %s\n"
          "Location  : %s(%d) %s\n",
          pszExpr, pszFile, uLine, pszFunction));
+}
+
+DECLEXPORT(void) RTCALL AssertMsg2(const char *pszFormat, ...)
+{
+    PRTLOGGER pLog = RTLogRelDefaultInstance();
+    if (pLog)
+    {
+        va_start(args, pszFormat);
+        RTLogRelPrintfV(pszFormat, args);
+        va_end(args);
+        RTLogFlush(pLog);
+    }
 }
 
 #endif
