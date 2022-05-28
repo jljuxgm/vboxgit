@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 4389 2007-08-27 15:31:49Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 4407 2007-08-28 19:19:10Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1776,6 +1776,7 @@ static int remLoadLinuxObj(void)
         RTLdrClose(g_ModREM2);
         g_ModREM2 = NIL_RTLDRMOD;
     }
+    LogRel(("REM: failed loading '%s', rc=%VRc\n", szPath, rc));
     return rc;
 }
 
