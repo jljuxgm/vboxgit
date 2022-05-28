@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-nt.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: alloc-r0drv-nt.cpp 4671 2007-09-10 15:17:44Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, NT.
  */
@@ -56,7 +56,7 @@ void rtMemFree(PRTMEMHDR pHdr)
 
 /**
  * Allocates physical contiguous memory (below 4GB).
- * The allocation is page aligned and the content is undefined.
+ * The allocation is page aligned and its contents is undefined.
  *
  * @returns Pointer to the memory block. This is page aligned.
  * @param   pPhys   Where to store the physical address.

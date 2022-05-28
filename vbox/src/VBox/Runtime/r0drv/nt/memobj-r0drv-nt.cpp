@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 4223 2007-08-19 01:02:11Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 4671 2007-09-10 15:17:44Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, NT.
  */
@@ -85,6 +85,7 @@ int rtR0MemObjNativeFree(RTR0MEMOBJ pMem)
                 pMemNt->Core.pv = NULL;
 
                 MmFreePagesFromMdl(pMemNt->apMdls[0]);
+                ExFreePool(pMemNt->apMdls[0]);
                 pMemNt->apMdls[0] = NULL;
                 pMemNt->cMdls = 0;
                 break;
@@ -121,6 +122,7 @@ int rtR0MemObjNativeFree(RTR0MEMOBJ pMem)
             if (pMemNt->fAllocatedPagesForMdl)
             {
                 MmFreePagesFromMdl(pMemNt->apMdls[0]);
+                ExFreePool(pMemNt->apMdls[0]);
                 pMemNt->apMdls[0] = NULL;
                 pMemNt->cMdls = 0;
                 break;
@@ -286,6 +288,7 @@ int rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecut
             }
         }
         MmFreePagesFromMdl(pMdl);
+        ExFreePool(pMdl);
     }
 #endif /* !IPRT_TARGET_NT4 */
 
@@ -400,6 +403,7 @@ int rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS Ph
                 }
             }
             MmFreePagesFromMdl(pMdl);
+            ExFreePool(pMdl);
         }
     }
 #endif /* !IPRT_TARGET_NT4 */
@@ -431,6 +435,7 @@ int rtR0MemObjNativeAllocPhysNC(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS 
             }
         }
         MmFreePagesFromMdl(pMdl);
+        ExFreePool(pMdl);
     }
     return VERR_NO_MEMORY;
 #else   /* IPRT_TARGET_NT4 */
