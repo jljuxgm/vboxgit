@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 4714 2007-09-11 16:30:42Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 4738 2007-09-12 16:00:54Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -424,6 +424,17 @@ int main()
     GEN_CHECK_OFF(PGM, pvZeroPgR3);
     GEN_CHECK_OFF(PGM, pvZeroPgR0);
     GEN_CHECK_OFF(PGM, pvZeroPgGC);
+    GEN_CHECK_OFF(PGM, cHandyPages);
+    GEN_CHECK_OFF(PGM, aHandyPages);
+    GEN_CHECK_OFF(PGM, aHandyPages[1]);
+    GEN_CHECK_OFF(PGM, aHandyPages[1].HCPhysGCPhys);
+    GEN_CHECK_OFF(PGM, aHandyPages[1].idPage);
+    GEN_CHECK_OFF(PGM, aHandyPages[1].idSharedPage);
+    GEN_CHECK_OFF(PGM, cAllPages);
+    GEN_CHECK_OFF(PGM, cPrivatePages);
+    GEN_CHECK_OFF(PGM, cSharedPages);
+    GEN_CHECK_OFF(PGM, cZeroPages);
+    GEN_CHECK_OFF(PGM, cGuestModeChanges);
 
     GEN_CHECK_SIZE(PGMMAPPING);
     GEN_CHECK_OFF(PGMMAPPING, pNextR3);

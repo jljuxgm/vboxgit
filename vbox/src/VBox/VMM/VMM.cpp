@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 4689 2007-09-11 09:18:54Z vboxsync $ */
+/* $Id: VMM.cpp 4738 2007-09-12 16:00:54Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2172,6 +2172,16 @@ static int vmmR3ServiceCallHostRequest(PVM pVM)
             pVM->vmm.s.rcCallHost = PGMR3PhysChunkMap(pVM, pVM->vmm.s.u64CallHostArg);
             break;
         }
+
+        /*
+         * Allocates more handy pages.
+         */
+        case VMMCALLHOST_PGM_ALLOCATE_HANDY_PAGES:
+        {
+            pVM->vmm.s.rcCallHost = PGMR3PhysAllocateHandyPages(pVM);
+            break;
+        }
+
 #ifndef NEW_PHYS_CODE
 
         case VMMCALLHOST_PGM_RAM_GROW_RANGE:

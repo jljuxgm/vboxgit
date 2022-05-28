@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 4250 2007-08-20 20:45:31Z vboxsync $ */
+/* $Id: VMMR0.cpp 4738 2007-09-12 16:00:54Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -580,6 +580,28 @@ VMMR0DECL(int) VMMR0Entry(PVM pVM, unsigned /* make me an enum */ uOperation, vo
             ASMSetFlags(fFlags);
             return rc;
         }
+
+        /*
+         * PGM wrappers.
+         */
+        case VMMR0_DO_PGM_ALLOCATE_HANDY_PAGES:
+            return PGMR0PhysAllocateHandyPages(pVM);
+
+#if 0
+        /*
+         * GMM wrappers
+         */
+        case VMMR0_DO_GMM_ALLOCATE_PAGES:
+            return GMMR0AllocatePages(pVM, ...);
+        case VMMR0_DO_GMM_FREE_PAGES:
+            return GMMR0FreePages(pVM, ...);
+        case VMMR0_DO_GMM_MAP_UNMAP_CHUNK:
+            return GMMR0FreeMapUnmapChunk(pVM, ...);
+        case VMMR0_DO_GMM_SEED_CHUNK:
+            return GMMR0SeedChunk(pVM, (RTR3PTR)pvArg);
+#endif 
+
+
 
 #ifdef VBOX_WITH_INTERNAL_NETWORKING
         /*
