@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 3190 2007-06-20 20:53:55Z vboxsync $
 ## @file
 # VBox Etherboot Network boot ROM makefile.
 #
@@ -132,7 +132,8 @@ EB_CFLAGS+=     -DVERSION_MAJOR=$(VERSION_MAJOR) \
                 -DVERSION_MINOR=$(VERSION_MINOR) \
                 -DVERSION=\"$(VERSION)\" $(OLDGAS) \
                 -I include -I arch/$(ARCH)/include \
-                -DARCH=$(ARCH)
+                -DARCH=$(ARCH) \
+		$(VBOX_GCC_Wno-pointer-sign) -Wno-unused
 
 IDENT=          '$(@F) $(VERSION) (GPL) etherboot.org'
 
