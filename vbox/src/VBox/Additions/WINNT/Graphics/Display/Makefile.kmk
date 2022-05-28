@@ -1,6 +1,6 @@
-# $Id: Makefile.kmk 2478 2007-05-04 00:46:16Z vboxsync $
+# $Id: Makefile.kmk 2487 2007-05-04 03:19:31Z vboxsync $
 ## @file
-# Makefile for VBoxDisp.dll.
+# Sub-Makefile for VBoxDisp.dll.
 #
 
 #
@@ -19,11 +19,11 @@
 # license agreement apply instead of the previous paragraph.
 #
 
-DEPTH = ../../../../../..
-include	$(PATH_KBUILD)/header.kmk
+DEPTH ?= ../../../../../..
+SUB_DEPTH = ../../..
+include	$(PATH_KBUILD)/subheader.kmk
 
-SYSMODS = VBoxDisp
-
+SYSMODS += VBoxDisp
 VBoxDisp_TEMPLATE    = VBOXW32GUESTR0
 VBoxDisp_SDKS        = W2K3DDKX86 WINPSDKINCS
 VBoxDisp_SYSSUFF     = .dll
@@ -55,5 +55,5 @@ VBoxDisp_LIBS       += \
 endif
 
 
-include	$(PATH_KBUILD)/footer.kmk
+include	$(PATH_KBUILD)/subfooter.kmk
 

@@ -1,6 +1,6 @@
-# $Id: Makefile.kmk 2478 2007-05-04 00:46:16Z vboxsync $
+# $Id: Makefile.kmk 2487 2007-05-04 03:19:31Z vboxsync $
 ## @file
-# Base makefile for the Windows guest graphics driver.
+# Sub-Makefile for the Windows guest graphics driver.
 #
 
 #
@@ -19,7 +19,13 @@
 # license agreement apply instead of the previous paragraph.
 #
 
-DEPTH = ../../../../..
-SUBDIRS = Miniport Display
-include	$(PATH_KBUILD)/rules.kmk
+DEPTH ?= ../../../../..
+SUB_DEPTH = ../..
+include	$(PATH_KBUILD)/subheader.kmk
+
+# Include sub-makefiles.
+include $(PATH_SUB_CURRENT)/Miniport/Makefile.kmk
+include $(PATH_SUB_CURRENT)/Display/Makefile.kmk
+
+include	$(PATH_KBUILD)/subfooter.kmk
 

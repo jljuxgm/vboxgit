@@ -1,6 +1,6 @@
-# $Id: Makefile.kmk 2478 2007-05-04 00:46:16Z vboxsync $
+# $Id: Makefile.kmk 2487 2007-05-04 03:19:31Z vboxsync $
 ## @file
-# Makefile for VBoxService.
+# Sub-Makefile for VBoxService.
 #
 
 #
@@ -19,11 +19,11 @@
 # license agreement apply instead of the previous paragraph.
 #
 
-DEPTH = ../../../../..
-include	$(PATH_KBUILD)/header.kmk
+DEPTH ?= ../../../../..
+SUB_DEPTH = ../..
+include	$(PATH_KBUILD)/subheader.kmk
 
-PROGRAMS = VBoxService
-
+PROGRAMS += VBoxService
 VBoxService_TEMPLATE = VBOXW32GUESTR3
 VBoxService_DEFS     = VBOX_HGCM
 VBoxService_SOURCES  = \
@@ -33,5 +33,5 @@ VBoxService_SOURCES  = \
 VBoxService_LIBS     = \
 	$(PATH_LIB)/additions/RuntimeW32GuestR3.lib
 
-include	$(PATH_KBUILD)/footer.kmk
+include	$(PATH_KBUILD)/subfooter.kmk
 
