@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 1272 2007-03-06 13:32:13Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 1273 2007-03-06 13:41:17Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -824,6 +824,7 @@ ResumeExecution:
     if (cResume > 32 /* low limit, but anything higher risks a hanging host due to interrupts left pending for too long */)
     {
         exitCode = SVM_EXIT_INTR;
+        STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitForced);
     }
 
     STAM_COUNTER_INC(&pVM->hwaccm.s.pStatExitReason[exitCode & MASK_EXITREASON_STAT]);

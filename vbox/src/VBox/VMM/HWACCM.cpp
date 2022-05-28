@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 1210 2007-03-05 12:36:53Z vboxsync $ */
+/* $Id: HWACCM.cpp 1273 2007-03-06 13:41:17Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -192,6 +192,8 @@ HWACCMR3DECL(int) HWACCMR3Init(PVM pVM)
     STAM_REG(pVM, &pVM->hwaccm.s.StatExitIOWrite,   STAMTYPE_COUNTER, "/HWACCM/Exit/IO/Write",          STAMUNIT_OCCURENCES,    "Nr of occurances");
     STAM_REG(pVM, &pVM->hwaccm.s.StatExitIORead,    STAMTYPE_COUNTER, "/HWACCM/Exit/IO/Read",           STAMUNIT_OCCURENCES,    "Nr of occurances");
     STAM_REG(pVM, &pVM->hwaccm.s.StatExitIrqWindow, STAMTYPE_COUNTER, "/HWACCM/Exit/GuestIrq/Pending",  STAMUNIT_OCCURENCES,    "Nr of occurances");
+
+    STAM_REG(pVM, &pVM->hwaccm.s.StatExitForced,    STAMTYPE_COUNTER, "/HWACCM/Exit/SVM/Forced",        STAMUNIT_OCCURENCES,    "Nr of forced exits");
 
     STAM_REG(pVM, &pVM->hwaccm.s.StatSwitchGuestIrq,STAMTYPE_COUNTER, "/HWACCM/Switch/IrqPending",      STAMUNIT_OCCURENCES,    "Nr of occurances");
     STAM_REG(pVM, &pVM->hwaccm.s.StatSwitchToR3,    STAMTYPE_COUNTER, "/HWACCM/Switch/ToR3",            STAMUNIT_OCCURENCES,    "Nr of occurances");
