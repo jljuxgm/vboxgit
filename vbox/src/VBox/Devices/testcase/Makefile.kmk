@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2784 2007-05-23 00:10:23Z vboxsync $
+# $Id: Makefile.kmk 2788 2007-05-23 02:16:03Z vboxsync $
 ## @file
 # Sub-Makefile for the Devices testcases.
 #
@@ -83,12 +83,12 @@ tstDeviceStructSize.cpp_DEPS = $(PATH_TARGET)/tstDeviceStructSizeGC.h
 ## future
 
 # 1&2. Manually dump selected structures and members.
-$(PATH_TARGET)/tstDeviceStructSizeGC.h: $(INSTARGET_tstDeviceStructSizeGC)
+$(PATH_TARGET)/tstDeviceStructSizeGC.h: $$(INSTARGET_tstDeviceStructSizeGC)
 	$(call MSG_GENERATE,,$@)
 	$(QUIET)$(INSTARGET_tstDeviceStructSizeGC) > $@
 
 # 3. run it.
-$(PATH_TARGET)/tstDeviceStructSize.run: $(INSTARGET_tstDeviceStructSize)
+$(PATH_TARGET)/tstDeviceStructSize.run: $$(INSTARGET_tstDeviceStructSize)
 	$(QUIET)$(RM) -f $@
 	$^
 	$(QUIET)$(APPEND) "$@" "done"
