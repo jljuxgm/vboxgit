@@ -1,7 +1,6 @@
+/* $Id: DevPcArch.c 2781 2007-05-22 22:56:27Z vboxsync $ */
 /** @file
- *
- * VBox basic PC devices:
- * PC architechture device
+ * PC Architechture Device.
  */
 
 /*

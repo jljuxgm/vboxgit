@@ -1,7 +1,6 @@
+/** $Id: DrvACPI.cpp 2781 2007-05-22 22:56:27Z vboxsync $ */
 /** @file
- *
- * VBox basic PC devices:
- * ACPI host interface driver
+ * ACPI Host Driver.
  */
 
 /*
@@ -528,3 +527,4 @@ const PDMDRVREG g_DrvACPI =
     /* pfnPowerOff */
     NULL
 };
+

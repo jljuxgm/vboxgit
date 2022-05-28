@@ -1,8 +1,8 @@
 #ifdef VBOX
+/* $Id: DevAPIC.cpp 2781 2007-05-22 22:56:27Z vboxsync $ */
 /** @file
- *
- * VBox basic PC devices:
- * Advanced Programmable Interrupt Controller (APIC) device
+ * Advanced Programmable Interrupt Controller (APIC) Device and
+ * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
 
 /*
@@ -1787,7 +1787,7 @@ const PDMDEVREG g_DeviceAPIC =
     /* szR0Mod */
     "VBoxDD2R0.r0",
     /* pszDescription */
-    "Advanced Programmable Interrupt Controller",
+    "Advanced Programmable Interrupt Controller (APIC) Device",
     /* fFlags */
     PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_32_64 | PDM_DEVREG_FLAGS_PAE36 | PDM_DEVREG_FLAGS_GC | PDM_DEVREG_FLAGS_R0,
     /* fClass */
@@ -2053,7 +2053,7 @@ const PDMDEVREG g_DeviceIOAPIC =
     /* szR0Mod */
     "VBoxDD2R0.r0",
     /* pszDescription */
-    "I/O Advanced Programmable Interrupt Controller",
+    "I/O Advanced Programmable Interrupt Controller (IO-APIC) Device",
     /* fFlags */
     PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_32_64 | PDM_DEVREG_FLAGS_PAE36 | PDM_DEVREG_FLAGS_GC | PDM_DEVREG_FLAGS_R0,
     /* fClass */

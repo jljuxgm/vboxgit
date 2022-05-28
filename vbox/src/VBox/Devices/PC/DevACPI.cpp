@@ -1,7 +1,6 @@
+/* $Id: DevACPI.cpp 2781 2007-05-22 22:56:27Z vboxsync $ */
 /** @file
- *
- * VBox basic PC devices:
- * Advanced Configuration and Power Interface (ACPI) device
+ * Advanced Configuration and Power Interface (ACPI) Device.
  */
 
 /*
