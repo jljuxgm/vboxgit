@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 5031 2007-09-25 22:27:37Z vboxsync $ */
+/* $Id: VM.cpp 5032 2007-09-26 03:21:50Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -184,7 +184,7 @@ VMR3DECL(int)   VMR3Create(PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCON
         /** @todo This is isn't very nice, it would be preferrable to move the loader bits
          * out of the VM structure and into a ring-3 only thing. There's a big deal of the
          * error path that we now won't unload the VMMR0.r0 module in. This isn't such a
-         * big deal right now, but I'll have to get back to this later. (bird) */
+         * big deal right now, but I'll have to get back to this later. UVM (bird) */
         void *pvVMMR0Opaque;
         rc = PDMR3LdrLoadVMMR0(&pvVMMR0Opaque);
         if (RT_SUCCESS(rc))
