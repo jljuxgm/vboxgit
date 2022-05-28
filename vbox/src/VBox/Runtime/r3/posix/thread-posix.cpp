@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 244 2007-01-23 16:49:40Z vboxsync $ */
+/* $Id: thread-posix.cpp 248 2007-01-23 17:11:08Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Threads, POSIX.
  */
@@ -257,8 +257,3 @@ RTR3DECL(int) RTThreadSetAffinity(uint64_t u64Mask)
     return VINF_SUCCESS;
 }
 
-
-RTR3DECL(void) RTThreadExit(void)
-{
-    AssertMsgFailed(("Unimplemented\n"));
-}

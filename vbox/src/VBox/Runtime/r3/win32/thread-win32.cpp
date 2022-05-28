@@ -1,4 +1,4 @@
-/* $Id: thread-win32.cpp 244 2007-01-23 16:49:40Z vboxsync $ */
+/* $Id: thread-win32.cpp 248 2007-01-23 17:11:08Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Threads, Win32.
  */
@@ -217,7 +217,3 @@ RTR3DECL(uint64_t) RTThreadGetAffinity(void)
     return RTErrConvertFromWin32(iLastError);
 }
 
-RTR3DECL(void) RTThreadExit(void)
-{
-    ExitThread(0);
-}
