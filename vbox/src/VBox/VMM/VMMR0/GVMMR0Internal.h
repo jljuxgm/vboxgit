@@ -1,4 +1,4 @@
-/* $Id: GVMMR0Internal.h 5220 2007-10-10 14:21:27Z vboxsync $ */
+/* $Id: GVMMR0Internal.h 5232 2007-10-10 16:27:11Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager, Internal header.
  */
@@ -39,7 +39,7 @@ typedef struct GVMMPERVM
      * 0 if the EMT thread is blocked here. */
     uint64_t volatile   u64HaltExpire;
     /** The event semaphore the EMT thread is blocking on. */
-    RTSEMEVENT          HaltEvent;
+    RTSEMEVENTMULTI     HaltEventMulti;
     /** The APIC ID of the CPU that EMT was scheduled on the last time we checked. */
     uint8_t             iCpuEmt;
 
