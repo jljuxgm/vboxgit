@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: VM.cpp 4074 2007-08-07 17:15:58Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -438,7 +438,7 @@ static int vmR3Create(PVM pVM, PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFG
                         }
                         //..
                     }
-                    //..
+                    vmR3Destroy(pVM);
                 }
                 //..
             }
