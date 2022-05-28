@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 1945 2007-04-05 09:02:32Z vboxsync $ */
+/* $Id: REMInternal.h 2007 2007-04-10 12:39:03Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -43,7 +43,7 @@
  */
 
 /** The saved state version number. */
-#define REM_SAVED_STATE_VERSION     5
+#define REM_SAVED_STATE_VERSION     6
 
 
 /** @def REM_MONITOR_CODE_PAGES
