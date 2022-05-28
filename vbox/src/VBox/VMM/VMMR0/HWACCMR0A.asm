@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 2733 2007-05-21 14:10:05Z vboxsync $
+; $Id: HWACCMR0A.asm 2735 2007-05-21 14:16:22Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -441,10 +441,8 @@ ENDPROC VMXResumeVM
 ; */
 BEGINPROC VMXWriteVMCS64
 %ifdef ASM_CALL64_GCC
-    and         edi, 0ffffffffh; serious paranoia
     vmwrite     rdi, rsi
 %else
-    and         ecx, 0ffffffffh; serious paranoia
     vmwrite     rcx, rdx
 %endif
     jnc         .valid_vmcs
@@ -467,10 +465,8 @@ ENDPROC VMXWriteVMCS64
 ;DECLASM(int) VMXReadVMCS64(uint32_t idxField, uint64_t *pData);
 BEGINPROC VMXReadVMCS64
 %ifdef ASM_CALL64_GCC
-    and         edi, 0ffffffffh; serious paranoia
     vmread      [rsi], rdi
 %else
-    and         ecx, 0ffffffffh; serious paranoia
     vmread      [rdx], rcx
 %endif
     jnc         .valid_vmcs
