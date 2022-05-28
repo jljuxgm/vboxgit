@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3980 2007-08-02 01:29:24Z vboxsync $
+# $Id: Makefile.kmk 4063 2007-08-07 14:13:20Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -172,6 +172,7 @@ RuntimeR3_SOURCES       = \
 	generic/RTLogWriteUser-generic.cpp \
 	generic/semfastmutex-generic.cpp \
 	generic/spinlock-generic.cpp \
+	generic/env-generic.cpp \
 	ldr.cpp \
 	ldrFile.cpp \
 	ldrNative.cpp \
