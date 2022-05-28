@@ -1,4 +1,4 @@
-/* $Id: tstPath.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: tstPath.cpp 3365 2007-07-03 00:01:44Z vboxsync $ */
 /** @file
  * innotek Portable Runtime Testcase - Test various path functions.
  */
@@ -68,20 +68,28 @@ int main()
         NULL,                           "/absolute//../path",
         NULL,                           "/absolute/../../path",
         NULL,                           "relative/../dir\\.\\.\\.\\file.txt",
+        NULL,                           "\\",
         "relative_base/dir\\",          "\\from_root",
         "relative_base/dir/",           "relative_also",
 #if defined (__OS2__) || defined (__WIN__)
+        NULL,                           "C:\\",
+        "C:\\",                         "..",
         "C:\\temp",                     "..",
         "C:\\VirtualBox/Machines",      "..\\VirtualBox.xml",
         "C:\\MustDie",                  "\\from_root/dir/..",
         "C:\\temp",                     "D:\\data",
-        NULL,                           "\\\\server\\../share", // -- GetFullPathName doesn't remove .. here
+        NULL,                           "\\\\server\\../share", // -- on Win32, GetFullPathName doesn't remove .. here
+        /* the three below use cases should fail with VERR_INVALID_NAME */
+        //NULL,                           "\\\\server",
+        //NULL,                           "\\\\",
+        //NULL,                           "\\\\\\something",
         "\\\\server\\share_as_base",    "/from_root",
         "\\\\just_server",              "/from_root",
         "\\\\server\\share_as_base",    "relative\\data",
         "base",                         "\\\\?\\UNC\\relative/edwef/..",
-        // this is not (and I guess should not be) supported
-        ///@todo "\\\\?\\UNC\\base",             "/from_root", - r=bird: negative tests shouldn't fail the testcase!
+        "base",                         "\\\\?\\UNC\\relative/edwef/..",
+        /* this is not (and I guess should not be) supported, should fail */
+        ///@todo "\\\\?\\UNC\\base",             "/from_root",
 #else
         "\\temp",                       "..",
         "\\VirtualBox/Machines",        "..\\VirtualBox.xml",
