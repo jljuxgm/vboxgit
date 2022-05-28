@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 1278 2007-03-06 20:12:58Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 1408 2007-03-12 09:51:47Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -548,11 +548,11 @@ int main()
 
     GEN_CHECK_SIZE(SELM);
     GEN_CHECK_OFF(SELM, offVM);
-    GEN_CHECK_OFF(SELM, SelCS);
-    GEN_CHECK_OFF(SELM, SelDS);
-    GEN_CHECK_OFF(SELM, SelCS64);
-    GEN_CHECK_OFF(SELM, SelTSS);
-    GEN_CHECK_OFF(SELM, SelTSSTrap08);
+    GEN_CHECK_OFF(SELM, aHyperSel[SELM_HYPER_SEL_CS]);
+    GEN_CHECK_OFF(SELM, aHyperSel[SELM_HYPER_SEL_DS]);
+    GEN_CHECK_OFF(SELM, aHyperSel[SELM_HYPER_SEL_CS64]);
+    GEN_CHECK_OFF(SELM, aHyperSel[SELM_HYPER_SEL_TSS]);
+    GEN_CHECK_OFF(SELM, aHyperSel[SELM_HYPER_SEL_TSS_TRAP08]);
     GEN_CHECK_OFF(SELM, paGdtHC);
     GEN_CHECK_OFF(SELM, paGdtGC);
     GEN_CHECK_OFF(SELM, GuestGdtr);

@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 1328 2007-03-08 13:02:08Z vboxsync $ */
+/* $Id: TRPM.cpp 1408 2007-03-12 09:51:47Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor
  */
@@ -620,7 +620,7 @@ TRPMR3DECL(void) TRPMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     /* Relocate IDT handlers for forwarding guest traps/interrupts. */
     for (uint32_t iTrap = 0; iTrap < ELEMENTS(pVM->trpm.s.aGuestTrapHandler); iTrap++)
     {
-        if (pVM->trpm.s.aGuestTrapHandler[iTrap])
+        if (pVM->trpm.s.aGuestTrapHandler[iTrap] != TRPM_INVALID_HANDLER)
         {
             Log(("TRPMR3Relocate: iGate=%2X Handler %VGv -> %VGv\n", iTrap, pVM->trpm.s.aGuestTrapHandler[iTrap], pVM->trpm.s.aGuestTrapHandler[iTrap] + offDelta));
             pVM->trpm.s.aGuestTrapHandler[iTrap] += offDelta;
