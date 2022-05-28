@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 5396 2007-10-21 03:57:23Z vboxsync $ */
+/* $Id: TRPM.cpp 5543 2007-10-27 16:24:28Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor
  */
@@ -1403,7 +1403,7 @@ TRPMR3DECL(int) TRPMR3InjectEvent(PVM pVM, TRPMEVENT enmEvent)
             Log(("TRPMR3InjectEvent: u8Interrupt=%d (%#x) rc=%Vrc\n", u8Interrupt, u8Interrupt, rc));
             if (VBOX_SUCCESS(rc))
             {
-                rc = TRPMAssertTrap(pVM, u8Interrupt, false);
+                rc = TRPMAssertTrap(pVM, u8Interrupt, TRPM_HARDWARE_INT);
                 AssertRC(rc);
                 STAM_COUNTER_INC(&pVM->trpm.s.paStatForwardedIRQR3[u8Interrupt]);
                 return VINF_EM_RESCHEDULE_HWACC;
