@@ -1,4 +1,4 @@
-/* $Rev: 5009 $ */
+/* $Rev: 5042 $ */
 /** @file
  * innotek Portable Runtime - Convert iprt status codes to errno.
  */
@@ -431,3 +431,6 @@ RTDECL(int) RTErrConvertToErrno(int iErr)
     }
 }
 
+#if defined(RT_OS_LINUX) && defined(IN_MODULE)
+EXPORT_SYMBOL(RTErrConvertToErrno);
+#endif
