@@ -1,4 +1,4 @@
-# $Id: Config.kmk 3439 2007-07-05 09:20:45Z vboxsync $
+# $Id: Config.kmk 3452 2007-07-05 11:51:45Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -223,7 +223,11 @@ VBOX_WITH_INTERNAL_NETWORKING = 1
 # Enables the ffmpeg module for recording test runs.
 #VBOX_WITH_FFMPEG = 1
 # Enable OpenGL service
-VBOX_WITH_OGL=1
+VBOX_WITH_OGL = 1
+# Enable shared folders
+VBOX_WITH_SHARED_FOLDERS = 1
+# Enable shared clipboard
+VBOX_WITH_SHARED_CLIPBOARD = 1
 
 
 #
