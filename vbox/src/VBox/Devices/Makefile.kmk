@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4522 2007-09-05 07:43:09Z vboxsync $
+# $Id: Makefile.kmk 4523 2007-09-05 07:54:10Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -32,7 +32,9 @@ SUBDIRS_LIBRARIES = PC/Etherboot-src
 SUBDIRS_CLEAN     = PC/Etherboot-src
 endif
 
+ifndef VBOX_OSE
 SUBDIRS_LIBRARIES += Storage/VBoxHDDFormats
+endif
 
 #
 # Main targets.
