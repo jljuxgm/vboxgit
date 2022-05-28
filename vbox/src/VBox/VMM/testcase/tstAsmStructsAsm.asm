@@ -1,4 +1,4 @@
-; $Id: tstAsmStructsAsm.asm 4071 2007-08-07 17:07:59Z vboxsync $
+; $Id: tstAsmStructsAsm.asm 5458 2007-10-24 01:09:35Z vboxsync $
 ;; @file
 ; Assembly / C structure layout testcase.
 ;
@@ -8,7 +8,7 @@
 
 ;
 ;  Copyright (C) 2006-2007 innotek GmbH
-; 
+;
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
 ;  you can redistribute it and/or modify it under the terms of the GNU
@@ -26,6 +26,7 @@ BITS 64
 %include "../VMMInternal.mac"
 %include "VBox/cpum.mac"
 %include "VBox/vm.mac"
+%include "VBox/sup.mac"
 %include "../VMMSwitcher/VMMSwitcher.mac"
 %ifdef DO_GLOBALS
  %include "tstAsmStructsAsm.mac"
