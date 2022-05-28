@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: DevPIC.cpp 3308 2007-06-27 08:53:31Z vboxsync $ */
 /** @file
  * Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -156,7 +156,7 @@ typedef struct DEVPIC
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
 #ifdef LOG_ENABLED
-static inline void DumpPICState(PicState *s, char *szFn)
+static inline void DumpPICState(PicState *s, const char *szFn)
 {
     PDEVPIC pData = PDMINS2DATA(CTXSUFF(s->pDevIns), PDEVPIC);
 
