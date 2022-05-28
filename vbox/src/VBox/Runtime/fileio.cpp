@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 5258 2007-10-12 09:57:23Z vboxsync $ */
+/* $Id: fileio.cpp 5356 2007-10-17 13:47:17Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O.
  */
@@ -125,8 +125,12 @@ int rtFileRecalcAndValidateFlags(unsigned *pfOpen)
     /*
      * Validate                                                                                                                                       .
      */
-    if (    (fOpen & (~RTFILE_O_VALID_MASK | RTFILE_O_NON_BLOCK))
-        ||  !(fOpen & RTFILE_O_ACCESS_MASK)
+    if (    !(fOpen & RTFILE_O_ACCESS_MASK)
+#if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
+        ||  (fOpen & (~RTFILE_O_VALID_MASK | RTFILE_O_NON_BLOCK))
+#else
+        ||  (fOpen & ~RTFILE_O_VALID_MASK)
+#endif
         ||  (fOpen & (RTFILE_O_TRUNCATE | RTFILE_O_WRITE)) == RTFILE_O_TRUNCATE
        )
     {
