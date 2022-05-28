@@ -1,4 +1,4 @@
-/* $Id: errmsg.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: errmsg.cpp 5419 2007-10-21 20:58:59Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Status code messages.
  */

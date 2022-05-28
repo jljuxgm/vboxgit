@@ -1,10 +1,10 @@
-/* $Id: RTErrConvertFromErrno.cpp 5347 2007-10-17 10:10:16Z vboxsync $ */
+/* $Rev: 5419 $ */
 /** @file
- * innotek Portable Runtime - Convert errno to iprt status codes.
+ * innotek Portable Runtime - Convert iprt status codes to errno.
  */
 
 /*
- * Copyright (C) 2006-2007 innotek GmbH
+ * Copyright (C) 2007 innotek GmbH
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -25,146 +25,150 @@
 
 #if defined(RT_OS_DARWIN) && defined(KERNEL)
 # include <sys/errno.h>
+#elif defined(RT_OS_LINUX) && defined(__KERNEL__)
+# include <linux/errno.h>
 #else
 # include <errno.h>
 #endif
 
 
-RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
+RTDECL(int) RTErrConvertToErrno(int iErr)
 {
     /* very fast check for no error. */
-    if (uNativeCode == 0)
-        return VINF_SUCCESS;
+    if (RT_SUCCESS(iErr))
+        return 0;
 
     /*
      * Process error codes.
      *
-     * (Use a switch and not a table since the numbers vary among compilers
-     * and OSes. So we let the compiler switch optimizer handle speed issues.)
+     * Try to reverse the behaviour of RTErrConvertFromErrno as far
+     * as possible.
      *
-     * This switch is arranged like the Linux i386 errno.h!
+     * @note I am very impressed by the length of some of these
+     *       error codes - we have obviously learnt something from
+     *       Unix's failings :)
      */
-    switch (uNativeCode)
-    {                                                                           /* Linux number */
+    switch (iErr)
+    {
 #ifdef EPERM
-        case EPERM:             return VERR_ACCESS_DENIED;                      /*   1 */
+        case VERR_ACCESS_DENIED:                    return EPERM;
 #endif
 #ifdef ENOENT
-        case ENOENT:            return VERR_FILE_NOT_FOUND;
+        case VERR_FILE_NOT_FOUND:                   return ENOENT;
 #endif
 #ifdef ESRCH
-        case ESRCH:             return VERR_PROCESS_NOT_FOUND;
+        case VERR_PROCESS_NOT_FOUND:                return ESRCH;
 #endif
 #ifdef EINTR
-        case EINTR:             return VERR_INTERRUPTED;
+        case VERR_INTERRUPTED:                      return EINTR;
 #endif
 #ifdef EIO
-        case EIO:               return VERR_DEV_IO_ERROR;
+        case VERR_DEV_IO_ERROR:                     return EIO;
 #endif
 #ifdef ENXIO
-        case ENXIO:             return VERR_DEV_IO_ERROR;
+        //case VERR_DEV_IO_ERROR:                     return ENXIO;
 #endif
 #ifdef E2BIG
-        case E2BIG:             return VERR_TOO_MUCH_DATA;
+        case VERR_TOO_MUCH_DATA:                    return E2BIG;
 #endif
 #ifdef ENOEXEC
-        case ENOEXEC:           return VERR_BAD_EXE_FORMAT;
+        case VERR_BAD_EXE_FORMAT:                   return ENOEXEC;
 #endif
 #ifdef EBADF
-        case EBADF:             return VERR_INVALID_HANDLE;
+        case VERR_INVALID_HANDLE:                   return EBADF;
 #endif
 #ifdef ECHILD
-        case ECHILD:            return VERR_PROCESS_NOT_FOUND; //...            /*  10 */
+        //case VERR_PROCESS_NOT_FOUND:                return ECHILD;
 #endif
 #ifdef EAGAIN
-        case EAGAIN:            return VERR_TRY_AGAIN;
+        case VERR_TRY_AGAIN:                        return EAGAIN;
 #endif
 #ifdef ENOMEM
-        case ENOMEM:            return VERR_NO_MEMORY;
+        case VERR_NO_MEMORY:                        return ENOMEM;
 #endif
 #ifdef EACCES
-        case EACCES:            return VERR_ACCESS_DENIED;
+        //case VERR_ACCESS_DENIED:                    return EACCES;
 #endif
 #ifdef EFAULT
-        case EFAULT:            return VERR_INVALID_POINTER;
+        case VERR_INVALID_POINTER:                  return EFAULT;
 #endif
 #ifdef ENOTBLK
         //case ENOTBLK:           return VERR_;
 #endif
 #ifdef EBUSY
-        case EBUSY:             return VERR_DEV_IO_ERROR;
+        //case VERR_DEV_IO_ERROR:                     return EBUSY;
 #endif
 #ifdef EEXIST
-        case EEXIST:            return VERR_ALREADY_EXISTS;
+        case VERR_ALREADY_EXISTS:                   return EEXIST;
 #endif
 #ifdef EXDEV
-        case EXDEV:             return VERR_NOT_SAME_DEVICE;
+        case VERR_NOT_SAME_DEVICE:                  return EXDEV;
 #endif
 #ifdef ENODEV
-        case ENODEV:            return VERR_NOT_SUPPORTED;
+        //case VERR_NOT_SUPPORTED:                    return ENODEV;
 #endif
 #ifdef ENOTDIR
-        case ENOTDIR:           return VERR_PATH_NOT_FOUND;                     /*  20 */
+        case VERR_PATH_NOT_FOUND:                   return ENOENT;
 #endif
 #ifdef EISDIR
-        case EISDIR:            return VERR_IS_A_DIRECTORY;
+        case VERR_IS_A_DIRECTORY:                   return EISDIR;
 #endif
 #ifdef EINVAL
-        case EINVAL:            return VERR_INVALID_PARAMETER;
+        case VERR_INVALID_PARAMETER:                return EINVAL;
 #endif
 #ifdef ENFILE
-        case ENFILE:            return VERR_TOO_MANY_OPEN_FILES;
+        case VERR_TOO_MANY_OPEN_FILES:              return ENFILE;
 #endif
 #ifdef EMFILE
-        case EMFILE:            return VERR_TOO_MANY_OPEN_FILES;
+        //case VERR_TOO_MANY_OPEN_FILES:              return EMFILE;
 #endif
 #ifdef ENOTTY
-        case ENOTTY:            return VERR_INVALID_FUNCTION;
+        case VERR_INVALID_FUNCTION:                 return ENOTTY;
 #endif
 #ifdef ETXTBSY
-        case ETXTBSY:           return VERR_SHARING_VIOLATION;
+        case VERR_SHARING_VIOLATION:                return ETXTBSY;
 #endif
 #ifdef EFBIG
-        case EFBIG:             return VERR_FILE_TOO_BIG;
+        case VERR_FILE_TOO_BIG:                     return EFBIG;
 #endif
 #ifdef ENOSPC
-        case ENOSPC:            return VERR_DISK_FULL;
+        case VERR_DISK_FULL:                        return ENOSPC;
 #endif
 #ifdef ESPIPE
-        case ESPIPE:            return VERR_SEEK_ON_DEVICE;
+        case VERR_SEEK_ON_DEVICE:                   return ESPIPE;
 #endif
 #ifdef EROFS
-        case EROFS:             return VERR_WRITE_PROTECT;                      /*  30 */
+        case VERR_WRITE_PROTECT:                    return EROFS;
 #endif
 #ifdef EMLINK
         //case EMLINK:
 #endif
 #ifdef EPIPE
-        case EPIPE:             return VERR_BROKEN_PIPE;
+        case VERR_BROKEN_PIPE:                      return EPIPE;
 #endif
 #ifdef EDOM
-        case EDOM:              return VERR_INVALID_PARAMETER;
+        //case VERR_INVALID_PARAMETER:    return EDOM;
 #endif
 #ifdef ERANGE
-        case ERANGE:            return VERR_INVALID_PARAMETER;
+        //case VERR_INVALID_PARAMETER:    return ERANGE;
 #endif
 #ifdef EDEADLK
-        case EDEADLK:           return VERR_DEADLOCK;
+        case VERR_DEADLOCK:                         return EDEADLK;
 #endif
 #ifdef ENAMETOOLONG
-        case ENAMETOOLONG:      return VERR_FILENAME_TOO_LONG;
+        case VERR_FILENAME_TOO_LONG:                return ENAMETOOLONG;
 #endif
 #ifdef ENOLCK
-        case ENOLCK:            return VERR_FILE_LOCK_FAILED;
+        case VERR_FILE_LOCK_FAILED:                 return ENOLCK;
 #endif
-#ifdef ENOSYS /** @todo map this differently on solaris. */
-        case ENOSYS:            return VERR_NOT_SUPPORTED;
+#ifdef ENOSYS
+        case VERR_NOT_SUPPORTED:                    return ENOSYS;
 #endif
 #ifdef ENOTEMPTY
-        case ENOTEMPTY:         return VERR_DIR_NOT_EMPTY;
+        case VERR_DIR_NOT_EMPTY:                    return ENOTEMPTY;
 #endif
 #ifdef ELOOP
-        case ELOOP:             return VERR_TOO_MANY_SYMLINKS;                  /*  40 */
+        case VERR_TOO_MANY_SYMLINKS:                return ELOOP;
 #endif
         //41??
 #ifdef ENOMSG
@@ -223,7 +227,7 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
         //case ENOSTR		60	/* Device not a stream */
 #endif
 #ifdef ENODATA
-        case ENODATA:           return  VERR_NO_DATA;
+        case VERR_NO_DATA:                          return ENODATA;
 #endif
 #ifdef ETIME
         //case ETIME		62	/* Timer expired */
@@ -232,7 +236,7 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
         //case ENOSR		63	/* Out of streams resources */
 #endif
 #ifdef ENONET
-        case ENONET:            return VERR_NET_NO_NETWORK;
+        case VERR_NET_NO_NETWORK:                   return ENONET;
 #endif
 #ifdef ENOPKG
         //case ENOPKG		65	/* Package not installed */
@@ -265,13 +269,13 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
         //case EBADMSG		74	/* Not a data message */
 #endif
 #ifdef EOVERFLOW
-        case EOVERFLOW:         return VERR_TOO_MUCH_DATA;
+        //case VERR_TOO_MUCH_DATA:                    return EOVERFLOW;
 #endif
 #ifdef ENOTUNIQ
-        case ENOTUNIQ:          return VERR_NET_NOT_UNIQUE_NAME;
+        case VERR_NET_NOT_UNIQUE_NAME:              return ENOTUNIQ;
 #endif
 #ifdef EBADFD
-        case EBADFD:            return VERR_INVALID_HANDLE;
+        //case VERR_INVALID_HANDLE:                   return EBADFD;
 #endif
 #ifdef EREMCHG
         //case EREMCHG		78	/* Remote address changed */
@@ -292,10 +296,10 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
         //case ELIBEXEC	83	/* Cannot exec a shared library directly */
 #endif
 #ifdef EILSEQ
-        case EILSEQ:            return VERR_NO_TRANSLATION;
+        case VERR_NO_TRANSLATION:                   return EILSEQ;
 #endif
 #ifdef ERESTART
-        case ERESTART:          return VERR_INTERRUPTED;
+        //case VERR_INTERRUPTED:                      return ERESTART;
 #endif
 #ifdef ESTRPIPE
         //case ESTRPIPE	86	/* Streams pipe error */
@@ -304,88 +308,88 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
         //case EUSERS		87	/* Too many users */
 #endif
 #ifdef ENOTSOCK
-        case ENOTSOCK:          return VERR_NET_NOT_SOCKET;
+        case VERR_NET_NOT_SOCKET:                   return ENOTSOCK;
 #endif
 #ifdef EDESTADDRREQ
-        case EDESTADDRREQ:      return VERR_NET_DEST_ADDRESS_REQUIRED;
+        case VERR_NET_DEST_ADDRESS_REQUIRED:        return EDESTADDRREQ;
 #endif
 #ifdef EMSGSIZE
-        case EMSGSIZE:          return VERR_NET_MSG_SIZE;
+        case VERR_NET_MSG_SIZE:                     return EMSGSIZE;
 #endif
 #ifdef EPROTOTYPE
-        case EPROTOTYPE:        return VERR_NET_PROTOCOL_TYPE;
+        case VERR_NET_PROTOCOL_TYPE:                return EPROTOTYPE;
 #endif
 #ifdef ENOPROTOOPT
-        case ENOPROTOOPT:       return VERR_NET_PROTOCOL_NOT_AVAILABLE;
+        case VERR_NET_PROTOCOL_NOT_AVAILABLE:       return ENOPROTOOPT;
 #endif
 #ifdef EPROTONOSUPPORT
-        case EPROTONOSUPPORT:   return VERR_NET_PROTOCOL_NOT_SUPPORTED;
+        case VERR_NET_PROTOCOL_NOT_SUPPORTED:       return EPROTONOSUPPORT;
 #endif
 #ifdef ESOCKTNOSUPPORT
-        case ESOCKTNOSUPPORT:   return VERR_NET_SOCKET_TYPE_NOT_SUPPORTED;
+        case VERR_NET_SOCKET_TYPE_NOT_SUPPORTED:    return ESOCKTNOSUPPORT;
 #endif
-#ifdef EOPNOTSUPP /** @todo map this differently on solaris. */
-        case EOPNOTSUPP:        return VERR_NET_OPERATION_NOT_SUPPORTED;
+#ifdef EOPNOTSUPP
+        case VERR_NET_OPERATION_NOT_SUPPORTED:      return EOPNOTSUPP;
 #endif
 #ifdef EPFNOSUPPORT
-        case EPFNOSUPPORT:      return VERR_NET_PROTOCOL_FAMILY_NOT_SUPPORTED;
+        case VERR_NET_PROTOCOL_FAMILY_NOT_SUPPORTED: return EPFNOSUPPORT;
 #endif
 #ifdef EAFNOSUPPORT
-        case EAFNOSUPPORT:      return VERR_NET_ADDRESS_FAMILY_NOT_SUPPORTED;
+        case VERR_NET_ADDRESS_FAMILY_NOT_SUPPORTED: return EAFNOSUPPORT;
 #endif
 #ifdef EADDRINUSE
-        case EADDRINUSE:        return VERR_NET_ADDRESS_IN_USE;
+        case VERR_NET_ADDRESS_IN_USE:               return EADDRINUSE;
 #endif
 #ifdef EADDRNOTAVAIL
-        case EADDRNOTAVAIL:     return VERR_NET_ADDRESS_NOT_AVAILABLE;
+        case VERR_NET_ADDRESS_NOT_AVAILABLE:        return EADDRNOTAVAIL;
 #endif
 #ifdef ENETDOWN
-        case ENETDOWN:          return VERR_NET_DOWN;
+        case VERR_NET_DOWN:                         return ENETDOWN;
 #endif
 #ifdef ENETUNREACH
-        case ENETUNREACH:       return VERR_NET_UNREACHABLE;
+        case VERR_NET_UNREACHABLE:                  return ENETUNREACH;
 #endif
 #ifdef ENETRESET
-        case ENETRESET:         return VERR_NET_CONNECTION_RESET;
+        case VERR_NET_CONNECTION_RESET:             return ENETRESET;
 #endif
 #ifdef ECONNABORTED
-        case ECONNABORTED:      return VERR_NET_CONNECTION_ABORTED;
+        case VERR_NET_CONNECTION_ABORTED:           return ECONNABORTED;
 #endif
 #ifdef ECONNRESET
-        case ECONNRESET:        return VERR_NET_CONNECTION_RESET_BY_PEER;
+        case VERR_NET_CONNECTION_RESET_BY_PEER:     return ECONNRESET;
 #endif
 #ifdef ENOBUFS
-        case ENOBUFS:           return VERR_NET_NO_BUFFER_SPACE;
+        case VERR_NET_NO_BUFFER_SPACE:              return ENOBUFS;
 #endif
 #ifdef EISCONN
-        case EISCONN:           return VERR_NET_ALREADY_CONNECTED;
+        case VERR_NET_ALREADY_CONNECTED:            return EISCONN;
 #endif
 #ifdef ENOTCONN
-        case ENOTCONN:          return VERR_NET_NOT_CONNECTED;
+        case VERR_NET_NOT_CONNECTED:                return ENOTCONN;
 #endif
 #ifdef ESHUTDOWN
-        case ESHUTDOWN:         return VERR_NET_SHUTDOWN;
+        case VERR_NET_SHUTDOWN:                     return ESHUTDOWN;
 #endif
 #ifdef ETOOMANYREFS
-        case ETOOMANYREFS:      return VERR_NET_TOO_MANY_REFERENCES;
+        case VERR_NET_TOO_MANY_REFERENCES:          return ETOOMANYREFS;
 #endif
 #ifdef ETIMEDOUT
-        case ETIMEDOUT:         return VERR_TIMEOUT;
+        case VERR_TIMEOUT:                          return ETIMEDOUT;
 #endif
 #ifdef ECONNREFUSED
-        case ECONNREFUSED:      return VERR_NET_CONNECTION_REFUSED;
+        case VERR_NET_CONNECTION_REFUSED:           return ECONNREFUSED;
 #endif
 #ifdef EHOSTDOWN
-        case EHOSTDOWN:         return VERR_NET_HOST_DOWN;
+        case VERR_NET_HOST_DOWN:                    return EHOSTDOWN;
 #endif
 #ifdef EHOSTUNREACH
-        case EHOSTUNREACH:      return VERR_NET_HOST_UNREACHABLE;
+        case VERR_NET_HOST_UNREACHABLE:             return EHOSTUNREACH;
 #endif
 #ifdef EALREADY
-        case EALREADY:          return VERR_NET_ALREADY_IN_PROGRESS;
+        case VERR_NET_ALREADY_IN_PROGRESS:          return EALREADY;
 #endif
 #ifdef EINPROGRESS
-        case EINPROGRESS:       return VERR_NET_IN_PROGRESS;
+        case VERR_NET_IN_PROGRESS:                  return EINPROGRESS;
 #endif
 #ifdef ESTALE
         //case ESTALE		116	/* Stale NFS file handle */
@@ -406,24 +410,32 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
         //case EREMOTEIO	121	/* Remote I/O error */
 #endif
 #ifdef EDQUOT
-        case EDQUOT:            return VERR_DISK_FULL;
+        //case VERR_DISK_FULL:                        return EDQUOT;
 #endif
 #ifdef ENOMEDIUM
-        case ENOMEDIUM:         return VERR_MEDIA_NOT_PRESENT;
+        case VERR_MEDIA_NOT_PRESENT:                return ENOMEDIUM;
 #endif
 #ifdef EMEDIUMTYPE
-        case EMEDIUMTYPE:       return VERR_MEDIA_NOT_RECOGNIZED;
+        case VERR_MEDIA_NOT_RECOGNIZED:             return EMEDIUMTYPE;
 #endif
 
         /* Non-linux */
 
 #ifdef EPROCLIM
-        case EPROCLIM:          return VERR_MAX_PROCS_REACHED;
+        case VERR_MAX_PROCS_REACHED:                return EPROCLIM;
 #endif
 
         default:
-            AssertMsgFailed(("Unhandled error code %d\n", uNativeCode));
-            return VERR_UNRESOLVED_ERROR;
+            AssertMsgFailed(("Unhandled error code %Rrc\n", iErr));
+            return EPROTO;
     }
 }
 
+#if defined(RT_OS_LINUX) && defined(IN_MODULE)
+/*
+ * When we build this in the Linux kernel module, we wish to make the
+ * symbols available to other modules as well.
+ */
+# include "the-linux-kernel.h"
+EXPORT_SYMBOL(RTErrConvertToErrno);
+#endif
