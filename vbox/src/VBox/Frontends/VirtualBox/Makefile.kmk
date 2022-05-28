@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5359 2007-10-17 15:19:01Z vboxsync $
+# $Id: Makefile.kmk 5507 2007-10-26 10:18:10Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -62,7 +62,7 @@ INSTALLS = VirtualBox.nls
 #
 VBoxKeyboard_TEMPLATE = VBOXR3
 VBoxKeyboard_SOURCES  = \
-	src/linux/keyboard.c
+	src/linux/keyboard-new.c
 
 
 #
@@ -182,7 +182,7 @@ VirtualBox_SOURCES = \
 
 ifeq ($(filter-out freebsd linux netbsd openbsd solaris,$(BUILD_TARGET)),) # X11
 VirtualBox_SOURCES += \
-	src/linux/XKeyboard.cpp
+	src/linux/XKeyboard-new.cpp
 endif
 
 VirtualBox_SOURCES.win += \
