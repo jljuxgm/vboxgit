@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 4620 2007-09-08 00:39:30Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 4714 2007-09-11 16:30:42Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -406,6 +406,25 @@ int main()
 #endif
     GEN_CHECK_OFF(PGM, pgmphysreadcache);
     GEN_CHECK_OFF(PGM, pgmphyswritecache);
+    GEN_CHECK_OFF(PGM, ChunkR3Map);
+    GEN_CHECK_OFF(PGM, ChunkR3Map.pTree);
+    GEN_CHECK_OFF(PGM, ChunkR3Map.Tlb);
+    GEN_CHECK_OFF(PGM, ChunkR3Map.c);
+    GEN_CHECK_OFF(PGM, ChunkR3Map.cMax);
+    GEN_CHECK_OFF(PGM, ChunkR3Map.iNow);
+    GEN_CHECK_OFF(PGM, ChunkR3Map.AgeingCountdown);
+    GEN_CHECK_OFF(PGM, PhysTlbHC);
+    GEN_CHECK_OFF(PGM, PhysTlbHC.aEntries[0]);
+    GEN_CHECK_OFF(PGM, PhysTlbHC.aEntries[1]);
+    GEN_CHECK_OFF(PGM, PhysTlbHC.aEntries[1].GCPhys);
+    GEN_CHECK_OFF(PGM, PhysTlbHC.aEntries[1].pMap);
+    GEN_CHECK_OFF(PGM, PhysTlbHC.aEntries[1].pPage);
+    GEN_CHECK_OFF(PGM, PhysTlbHC.aEntries[1].pv);
+    GEN_CHECK_OFF(PGM, HCPhysZeroPg);
+    GEN_CHECK_OFF(PGM, pvZeroPgR3);
+    GEN_CHECK_OFF(PGM, pvZeroPgR0);
+    GEN_CHECK_OFF(PGM, pvZeroPgGC);
+
     GEN_CHECK_SIZE(PGMMAPPING);
     GEN_CHECK_OFF(PGMMAPPING, pNextR3);
     GEN_CHECK_OFF(PGMMAPPING, pNextGC);

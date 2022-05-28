@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 4713 2007-09-11 16:04:02Z vboxsync $ */
+/* $Id: PGMInternal.h 4714 2007-09-11 16:30:42Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1833,6 +1833,21 @@ typedef struct PGM
      * The page mapping TLB for ring-3 and (for the time being) ring-0.
      */
     PGMPAGER3MAPTLB                 PhysTlbHC;
+
+    /** @name   The zero page.
+     * @{ */
+    /** The host physical address of the zero page. */
+    RTHCPHYS                        HCPhysZeroPg;
+    /** The ring-3 mapping of the zero page. */ 
+    RTR3PTR                         pvZeroPgR3;
+    /** The ring-0 mapping of the zero page. */ 
+    RTR0PTR                         pvZeroPgR0;
+    /** The GC mapping of the zero page. */ 
+    RTGCPTR                         pvZeroPgGC;
+#if GC_ARCH_BITS == 32
+    uint32_t                        u32ZeroAlignment; /**< Alignment padding. */
+#endif
+    /** @}*/
 
     /** @name Release Statistics
      * @{ */
