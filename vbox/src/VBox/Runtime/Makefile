@@ -1,4 +1,4 @@
-# $Id: Makefile 762 2007-02-07 23:15:42Z vboxsync $
+# $Id: Makefile 822 2007-02-10 04:30:51Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -264,14 +264,19 @@ RuntimeR3_SOURCES.linux = \
 	r3/posix/ldrNative-posix.cpp \
 	r3/posix/path-posix.cpp \
 	r3/posix/process-posix.cpp \
-	r3/posix/sems-posix.cpp \
 	r3/posix/system-posix.cpp \
 	r3/posix/thread-posix.cpp \
 	r3/posix/time-posix.cpp \
 	r3/posix/timer-posix.cpp \
 	generic/utf16locale-generic.cpp \
 	r3/posix/utf8-posix.cpp \
-	timesup.cpp \
+	timesup.cpp
+ifeq ($(BUILD_TARGET_ARCH),amd64)
+ RuntimeR3_SOURCES.linux += r3/linux/sems-linux.cpp
+else
+ RuntimeR3_SOURCES.linux += r3/posix/sems-posix.cpp
+endif
+
 
 RuntimeR3_SOURCES.os2   = \
 	generic/RTDirQueryInfo-generic.cpp \
