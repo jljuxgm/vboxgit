@@ -1,4 +1,4 @@
-/* $Id: ldrELF.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: ldrELF.cpp 5421 2007-10-21 21:02:00Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Binary Image Loader, Executable and Linker Format (ELF).
  */
