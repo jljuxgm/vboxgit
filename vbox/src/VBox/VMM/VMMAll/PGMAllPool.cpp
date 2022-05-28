@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 2228 2007-04-19 13:52:53Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 2234 2007-04-19 15:06:52Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2727,7 +2727,11 @@ DECLINLINE(void) pgmPoolTrackDerefPTPae32Bit(PPGMPOOL pPool, PPGMPOOLPAGE pPage,
 {
     for (unsigned i = 0; i < ELEMENTS(pShwPT->a); i++)
         if (pShwPT->a[i].n.u1Present)
+        {
+            Log4(("pgmPoolTrackDerefPTPae32Bit: i=%d pte=%RX32 hint=%RX32\n",
+                  i, pShwPT->a[i].u & X86_PTE_PAE_PG_MASK, pGstPT->a[i].u & X86_PTE_PG_MASK));
             pgmPoolTracDerefGCPhysHint(pPool, pPage, pShwPT->a[i].u & X86_PTE_PAE_PG_MASK, pGstPT->a[i].u & X86_PTE_PG_MASK);
+        }
 }
 
 
@@ -2743,7 +2747,11 @@ DECLINLINE(void) pgmPoolTrackDerefPTPaePae(PPGMPOOL pPool, PPGMPOOLPAGE pPage, P
 {
     for (unsigned i = 0; i < ELEMENTS(pShwPT->a); i++)
         if (pShwPT->a[i].n.u1Present)
+        {
+            Log4(("pgmPoolTrackDerefPTPaePae: i=%d pte=%RX32 hint=%RX32\n",
+                  i, pShwPT->a[i].u & X86_PTE_PAE_PG_MASK, pGstPT->a[i].u & X86_PTE_PAE_PG_MASK));
             pgmPoolTracDerefGCPhysHint(pPool, pPage, pShwPT->a[i].u & X86_PTE_PAE_PG_MASK, pGstPT->a[i].u & X86_PTE_PAE_PG_MASK);
+        }
 }
 
 
@@ -2779,7 +2787,11 @@ DECLINLINE(void) pgmPoolTrackDerefPTPaeBig(PPGMPOOL pPool, PPGMPOOLPAGE pPage, P
     RTGCPHYS GCPhys = pPage->GCPhys;
     for (unsigned i = 0; i < ELEMENTS(pShwPT->a); i++, GCPhys += PAGE_SIZE)
         if (pShwPT->a[i].n.u1Present)
+        {
+            Log4(("pgmPoolTrackDerefPTPae32Bit: i=%d pte=%RX32 hint=%RX32\n",
+                  i, pShwPT->a[i].u & X86_PTE_PAE_PG_MASK, GCPhys));
             pgmPoolTracDerefGCPhys(pPool, pPage, pShwPT->a[i].u & X86_PTE_PAE_PG_MASK, GCPhys);
+        }
 }
 #endif /* PGMPOOL_WITH_GCPHYS_TRACKING */
 
