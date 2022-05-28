@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 2128 2007-04-17 12:42:00Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 2180 2007-04-18 14:17:27Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -1302,7 +1302,7 @@ IOMDECL(int) IOMMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame
     int rc = SELMValidateAndConvertCSAddr(pVM, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid, (RTGCPTR)(cpu.mode == CPUMODE_32BIT ? pRegFrame->eip : pRegFrame->eip & 0xffff), &pvCode);
     if (VBOX_FAILURE(rc))
     {
-        AssertMsgFailed(("Internal error! cs:eip=%04x:%08x\n", pRegFrame->cs, pRegFrame->eip));
+        AssertMsgFailed(("Internal error! cs:eip=%04x:%08x rc=%Vrc\n", pRegFrame->cs, pRegFrame->eip, rc));
         return VERR_IOM_MMIO_HANDLER_BOGUS_CALL;
     }
 
