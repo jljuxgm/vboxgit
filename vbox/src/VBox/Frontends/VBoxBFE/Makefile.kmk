@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4949 2007-09-21 11:04:08Z vboxsync $
+# $Id: Makefile.kmk 5359 2007-10-17 15:19:01Z vboxsync $
 ## @file
 # Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -80,6 +80,10 @@ endif
 VBoxBFE_INCS = \
 	$(PATH_VBoxBFE) \
 	$(PATH_BIN)/sdk/include
+ifneq ($(filter-out win os2 l4 darwin,$(BUILD_TARGET)),) # X11
+VBoxBFE_INCS += \
+	$(VBOX_XCURSOR_INCS)
+endif
 VBoxBFE_INCS.freebsd = \
 	/usr/include \
 	/usr/local/include
@@ -94,10 +98,9 @@ ifneq ($(filter-out win os2 l4,$(BUILD_TARGET)),)
 VBoxBFE_LIBS += \
 	$(LIB_REM)
 endif
-#ifneq ($(filter-out win os2 l4 darwin,$(BUILD_TARGET)),) # X11
-ifneq ($(filter-out win os2 l4 darwin solaris,$(BUILD_TARGET)),) # X11 - todo fix solaris Xcursor
+ifneq ($(filter-out win os2 l4 darwin,$(BUILD_TARGET)),) # X11
 VBoxBFE_LIBS += \
-	$(LIB_XCURSOR)
+	$(VBOX_XCURSOR_LIBS)
 VBoxBFE_LIBPATH += \
 	$(VBOX_LIBPATH_X11)
 endif

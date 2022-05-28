@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5294 2007-10-15 12:49:07Z vboxsync $
+# $Id: Makefile.kmk 5359 2007-10-17 15:19:01Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -219,7 +219,7 @@ VirtualBox_DEFS.linux     = VBOX_GUI_USE_SDL
 VirtualBox_DEFS.netbsd    = VBOX_GUI_USE_QIMAGE VBOX_GUI_USE_SDL
 VirtualBox_DEFS.openbsd   = VBOX_GUI_USE_QIMAGE VBOX_GUI_USE_SDL
 VirtualBox_DEFS.os2       = VBOX_GUI_USE_QIMAGE VBOX_GUI_USE_SDL QT_DLL
-VirtualBox_DEFS.solaris   = VBOX_GUI_USE_QIMAGE VBOX_WITHOUT_XCURSOR #VBOX_GUI_USE_SDL
+VirtualBox_DEFS.solaris   = VBOX_GUI_USE_QIMAGE #VBOX_GUI_USE_SDL
 VirtualBox_DEFS.win       = VBOX_GUI_USE_QIMAGE UNICODE QT_DLL
 VirtualBox_DEFS.win.amd64 = VBOX_WITHOUT_QHTTP
 #ifndef VBOX_OSE
