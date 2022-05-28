@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 4372 2007-08-24 21:21:51Z vboxsync $ */
+/* $Id: fileio-posix.cpp 5581 2007-10-31 17:50:02Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O, POSIX.
  */
@@ -121,9 +121,9 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
     if (!(fOpen & RTFILE_O_INHERIT))
         fOpenMode |= O_NOINHERIT;
 #endif
-#ifndef O_NONBLOCK
+#ifdef O_NONBLOCK
     if (fOpen & RTFILE_O_NON_BLOCK)
-        fOpenMode |= O_NONBLOCK
+        fOpenMode |= O_NONBLOCK;
 #endif
 #ifdef O_SYNC
     if (fOpen & RTFILE_O_WRITE_THROUGH)
