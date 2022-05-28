@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 161 2007-01-18 18:25:45Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 165 2007-01-18 18:39:22Z vboxsync $ */
 /** @file
  * VMM - Context switcher macros & definitions
  */
@@ -190,6 +190,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, GCPhys, sizeof(RTGCPHYS));
 
     /* misc */
+    CHECK_MEMBER_ALIGNMENT(REM, aGCPtrInvalidatedPages, 8);
     CHECK_PADDING3(EM, u.FatalLongJump, u.achPaddingFatalLongJump);
     CHECK_PADDING3(REMHANDLERNOTIFICATION, u.PhysicalRegister, u.padding);
     CHECK_PADDING3(REMHANDLERNOTIFICATION, u.PhysicalDeregister, u.padding);
