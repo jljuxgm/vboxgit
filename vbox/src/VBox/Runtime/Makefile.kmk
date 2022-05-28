@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5551 2007-10-29 23:24:52Z vboxsync $
+# $Id: Makefile.kmk 5552 2007-10-30 00:59:37Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -59,10 +59,12 @@ endif
 # global (for now at least)
 INCS += include
 
-ifneq ($(wildcard ./kLdr/kLdrModMachO.c),)
- ifeq ($(filter-out darwin win os2,$(BUILD_TARGET)),)
+ifndef IPRT_WITH_KSTUFF
+ ifneq ($(wildcard ./kLdr/kLdrModMachO.c),)
+  ifeq ($(filter-out darwin win os2,$(BUILD_TARGET)),)
    IPRT_WITH_KLDR=1
    IPRT_PATH_KLDR=./kLdr
+  endif
  endif
 endif
 
