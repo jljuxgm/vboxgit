@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 5332 2007-10-16 17:00:04Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 5361 2007-10-17 17:11:26Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -171,6 +171,25 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
     BOOL fPXEDebug;
     hrc = biosSettings->COMGETTER(PXEDebugEnabled)(&fPXEDebug);                      H();
+
+    /*
+     * Virtual IDE controller type.
+     */
+    IDEControllerType_T controllerType;
+    BOOL fPIIX4;
+    hrc = biosSettings->COMGETTER(IDEControllerType)(&controllerType);               H();
+    switch (controllerType)
+    {
+        case IDEControllerType_IDEControllerPIIX3:
+            fPIIX4 = FALSE;
+            break;
+        case IDEControllerType_IDEControllerPIIX4:
+            fPIIX4 = TRUE;
+            break;
+        default:
+            AssertMsgFailed(("Invalid IDE controller type '%d'", controllerType));
+            return VERR_INVALID_PARAMETER;
+    }
 
     /*
      * PDM config.
@@ -552,6 +571,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     rc = CFGMR3InsertInteger(pInst, "PCIDeviceNo",          1);                     RC_CHECK();
     rc = CFGMR3InsertInteger(pInst, "PCIFunctionNo",        1);                     RC_CHECK();
     rc = CFGMR3InsertNode(pInst,    "Config", &pCfg);                               RC_CHECK();
+    rc = CFGMR3InsertInteger(pCfg,  "PIIX4", fPIIX4);               /* boolean */   RC_CHECK();
 
     /* Attach the status driver */
     rc = CFGMR3InsertNode(pInst,    "LUN#999", &pLunL0);                            RC_CHECK();
