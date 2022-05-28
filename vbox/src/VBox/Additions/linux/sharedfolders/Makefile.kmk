@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2639 2007-05-14 20:33:35Z vboxsync $
+# $Id: Makefile.kmk 2717 2007-05-18 14:59:04Z vboxsync $
 ## @file
 # Makefile for the vboxvfs (linux shared folders module).
 #
@@ -36,11 +36,11 @@ include files_vboxvfs
 #
 # Install the source.
 #
-vboxvfs-bin_INST        = bin/additions/src/vboxvfs
+vboxvfs-bin_INST        = $(INST_ADDITIONS)/src/vboxvfs
 vboxvfs-bin_MODE        = a+r,u+w
 vboxvfs-bin_SOURCES     = $(subst ",,$(FILES_VBOXVFS_NOBIN))
 
-vboxvfs-sh_INST         = bin/additions/src/vboxvfs
+vboxvfs-sh_INST         = $(INST_ADDITIONS)/src/vboxvfs
 vboxvfs-sh_MODE         = a+rx,u+w
 vboxvfs-sh_SOURCES      = $(subst ",,$(FILES_VBOXVFS_BIN))
 
