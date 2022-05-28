@@ -1,4 +1,4 @@
-/* $Id: DBGFGC.cpp 1161 2007-03-02 14:40:01Z vboxsync $ */
+/* $Id: DBGFGC.cpp 1359 2007-03-09 10:40:44Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, GC part.
  */
@@ -111,8 +111,8 @@ DBGFGCDECL(int) DBGFGCTrap03Handler(PVM pVM, PCPUMCTXCORE pRegFrame)
     if (pVM->dbgf.s.cBreakpoints > 0)
     {
         RTGCPTR pPc;
-        int rc = SELMValidateAndConvertCSAddr(pVM, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid,
-                                              (RTGCPTR)((RTGCUINTPTR)pRegFrame->eip - 1),
+        int rc = SELMValidateAndConvertCSAddr(pVM, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid,
+                                              (RTGCPTR)((RTGCUINTPTR)pRegFrame->eip - 1),                                              
                                               &pPc);
         AssertRCReturn(rc, rc);
 

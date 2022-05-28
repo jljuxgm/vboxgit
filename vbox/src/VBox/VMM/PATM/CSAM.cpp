@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 1086 2007-02-28 08:36:20Z vboxsync $ */
+/* $Id: CSAM.cpp 1359 2007-03-09 10:40:44Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2047,12 +2047,17 @@ CSAMR3DECL(int) CSAMR3CheckCodeEx(PVM pVM, RTSEL Sel, CPUMSELREGHID *pHiddenSel,
 
     if (CSAMIsEnabled(pVM))
     {
-        bool fCode32 = SELMIsSelector32Bit(pVM, Sel, pHiddenSel);
+        X86EFLAGS fakeflags;
+
+        /* we're not in v86 mode here */
+        fakeflags.u32 = 0;
+
+        bool fCode32 = SELMIsSelector32Bit(pVM, fakeflags, Sel, pHiddenSel);
 
         //assuming 32 bits code for now
         Assert(fCode32);
 
-        pInstrGC = SELMToFlat(pVM, Sel, pHiddenSel, pInstrGC);
+        pInstrGC = SELMToFlat(pVM, fakeflags, Sel, pHiddenSel, pInstrGC);
 
         return CSAMR3CheckCode(pVM, pInstrGC);
     }
@@ -2238,9 +2243,13 @@ CSAMR3DECL(int) CSAMR3CheckGates(PVM pVM, uint32_t iGate, uint32_t cGates)
             RTGCPTR pHandler;
             CSAMP2GLOOKUPREC cacheRec = {0};            /* Cache record for PATMGCVirtToHCVirt. */
             PCSAMPAGE pPage = NULL;
+            X86EFLAGS fakeflags;
+
+            /* we're not in v86 mode here */
+            fakeflags.u32 = 0;
 
             pHandler = (pGuestIdte->Gen.u16OffsetHigh << 16) | pGuestIdte->Gen.u16OffsetLow;
-            pHandler = SELMToFlat(pVM, pGuestIdte->Gen.u16SegSel, 0, pHandler);
+            pHandler = SELMToFlat(pVM, fakeflags, pGuestIdte->Gen.u16SegSel, 0, pHandler);
 
             if (pGuestIdte->Gen.u5Type2 == VBOX_IDTE_TYPE2_TRAP_32)
             {

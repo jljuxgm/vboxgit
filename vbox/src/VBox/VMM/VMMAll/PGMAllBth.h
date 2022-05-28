@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 1158 2007-03-02 14:27:34Z vboxsync $ */
+/* $Id: PGMAllBth.h 1359 2007-03-09 10:40:44Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -200,10 +200,11 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
                 /*
                  * Check if the EIP is in a virtual page access handler range.
                  */
-                if ((pRegFrame->ss & X86_SEL_RPL) == 1)
+                if (    (pRegFrame->ss & X86_SEL_RPL) == 1
+                    &&  !pRegFrame->eflags.Bits.u1VM)
                 {
                     RTGCPTR pvEIP;
-                    rc = SELMValidateAndConvertCSAddr(pVM, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid, (RTGCPTR)pRegFrame->eip, &pvEIP);
+                    rc = SELMValidateAndConvertCSAddr(pVM, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid, (RTGCPTR)pRegFrame->eip, &pvEIP);
                     if (VBOX_SUCCESS(rc))
                     {
                         PPGMVIRTHANDLER pCur = (PPGMVIRTHANDLER)RTAvlroGCPtrRangeGet(&CTXSUFF(pVM->pgm.s.pTrees)->VirtHandlers, pvEIP);
@@ -699,10 +700,11 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
      */
     /** @todo this stuff is completely broken by the out-of-sync stuff. since we don't use this stuff, that's not really a problem yet. */
     STAM_PROFILE_START(&pVM->pgm.s.StatEIPHandlers, d);
-    if ((pRegFrame->ss & X86_SEL_RPL) == 1)
+    if (    (pRegFrame->ss & X86_SEL_RPL) == 1
+        &&  !pRegFrame->eflags.Bits.u1VM)
     {
         RTGCPTR pvEIP;
-        rc = SELMValidateAndConvertCSAddr(pVM, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid, (RTGCPTR)pRegFrame->eip, &pvEIP);
+        rc = SELMValidateAndConvertCSAddr(pVM, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid, (RTGCPTR)pRegFrame->eip, &pvEIP);
         if (    VBOX_SUCCESS(rc)
             &&  pvEIP == (RTGCPTR)pRegFrame->eip)
         {
