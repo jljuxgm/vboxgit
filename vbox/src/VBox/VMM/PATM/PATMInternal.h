@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 1125 2007-03-01 12:30:38Z vboxsync $ */
+/* $Id: PATMInternal.h 1875 2007-04-03 11:14:29Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -670,6 +670,7 @@ int32_t patmReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, uint32_t size, RTHCUINTP
 
 #define PATMREAD_RAWCODE        1  /* read code as-is */
 #define PATMREAD_ORGCODE        2  /* read original guest opcode bytes; not the patched bytes */
+#define PATMREAD_NOCHECK        4  /* don't check for patch conflicts */
 
 /*
  * Private structure used during disassembly
