@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4617 2007-09-07 20:03:39Z vboxsync $
+# $Id: Config.kmk 4618 2007-09-07 20:05:48Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1256,7 +1256,7 @@ else
  TEMPLATE_VBOXGC_LDFLAGS            += $(if $(VBOX_DO_STRIP_MODULES),-S,)
  TEMPLATE_VBOXGC_LDFLAGS.release     = $(if $(VBOX_DO_STRIP_MODULES),-S,)
 endif
-ifneq ($(BUILD_TARGET),solaris)
+ifneq ($(filter solaris freebsd,$(BUILD_TARGET)),)
 TEMPLATE_VBOXGC_LIBS                = \
 	$(VBOX_GCC32_LIBGCC) # instricts
 endif
@@ -1360,7 +1360,7 @@ else
  TEMPLATE_VBOXR0_LDFLAGS.release     = $(if $(VBOX_DO_STRIP_MODULES),-S,)
 endif
 
-ifneq ($(BUILD_TARGET),solaris)
+ifneq ($(filter solaris freebsd,$(BUILD_TARGET)),)
  TEMPLATE_VBOXR0_LIBS                = \
 	$(VBOX_GCC_LIBGCC) # instricts
 endif
@@ -2536,7 +2536,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4617 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4618 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
