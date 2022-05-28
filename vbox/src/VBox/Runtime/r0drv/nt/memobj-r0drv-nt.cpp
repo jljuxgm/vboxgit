@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 4221 2007-08-19 00:31:31Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 4222 2007-08-19 00:32:35Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, NT.
  */
@@ -444,7 +444,7 @@ int rtR0MemObjNativeEnterPhys(PPRTR0MEMOBJINTERNAL ppMem, RTHCPHYS Phys, size_t 
     /*
      * Validate the address range and create a descriptor for it.
      */
-    PFN_NUMBER Pfn = Phys >> PAGE_SHIFT;
+    PFN_NUMBER Pfn = (PFN_NUMBER)(Phys >> PAGE_SHIFT);
     if (((RTHCPHYS)Pfn << PAGE_SHIFT) != Phys)
         return VERR_ADDRESS_TOO_BIG;
 
