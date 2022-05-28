@@ -1,4 +1,4 @@
-# $Id: Config.kmk 3660 2007-07-16 21:57:33Z vboxsync $
+# $Id: Config.kmk 3687 2007-07-18 14:37:17Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -331,6 +331,15 @@ ifeq ($(LOCALCFG),)
 endif
 ifneq ($(LOCALCFG),)
  include $(LOCALCFG)
+endif
+
+
+#
+# Check the build type.
+#
+VBOX_BUILD_TYPES ?= release profile debug kprofile #todo: checked
+ifneq ($(filter-out $(VBOX_BUILD_TYPES),$(BUILD_TYPE)),)
+ $(error Invalid BUILD_TYPE value '$(BUILD_TYPE)'. Choose one these: $(VBOX_BUILD_TYPES))
 endif
 
 
@@ -2494,7 +2503,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 #
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 3660 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 3687 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
