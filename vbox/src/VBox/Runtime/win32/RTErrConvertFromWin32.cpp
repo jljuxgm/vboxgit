@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 3613 2007-07-13 13:12:00Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Convert win32 error codes to iprt status codes.
  */
@@ -390,7 +390,9 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
     }
 
     /* unknown error. */
+#ifndef DEBUG_dmik
     AssertMsgFailed(("Unhandled error %u\n", uNativeCode));
+#endif
     return VERR_UNRESOLVED_ERROR;
 }
 
