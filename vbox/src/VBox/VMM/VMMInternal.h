@@ -1,5 +1,5 @@
+/* $Id: VMMInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
- *
  * VMM - Internal header file.
  */
 
@@ -173,7 +173,7 @@ typedef struct VMM
     RTINT                       iLastGCRc;
 #if HC_ARCH_BITS == 64 && GC_ARCH_BITS == 32
     uint32_t                    u32Padding0; /**< Alignment padding. */
-#endif 
+#endif
 
     /** VMM stack, pointer to the top of the stack in HC.
      * Stack is allocated from the hypervisor heap and is page aligned

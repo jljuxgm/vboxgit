@@ -1,5 +1,5 @@
+/* $Id: STAMInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
- *
  * STAM Internal Header.
  */
 

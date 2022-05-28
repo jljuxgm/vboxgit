@@ -1,5 +1,5 @@
+/* $Id: PATMPatch.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
- *
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
  * NOTE: CSAM assumes patch memory is never reused!!
@@ -46,10 +46,10 @@
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
+#include <iprt/string.h>
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
 
-#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "PATMA.h"

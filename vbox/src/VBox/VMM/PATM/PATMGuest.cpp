@@ -1,5 +1,5 @@
+/* $Id: PATMGuest.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
- *
  * PATMGuest - Guest OS Patching Manager (non-generic)
  */
 
@@ -43,9 +43,9 @@
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
+#include <iprt/string.h>
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
-#include <string.h>
 
 /*
  * ntdll!KiFastSystemCall:

@@ -1,5 +1,5 @@
+/* $Id: tstProg-1.c 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
- *
  * VMM - Test program.
  *
  * This program will loop for ever constantly checking its state.
