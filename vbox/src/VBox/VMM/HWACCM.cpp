@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 914 2007-02-14 23:23:08Z vboxsync $ */
+/* $Id: HWACCM.cpp 1210 2007-03-05 12:36:53Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -250,7 +250,10 @@ static void hwaccmr3DisableRawMode(PVM pVM)
     VMMR3DisableSwitcher(pVM);
 
     /* Disable mapping of the hypervisor into the shadow page table. */
-    PGMR3RemoveMappingsFromShwPD(pVM);
+    PGMR3ChangeShwPDMappings(pVM, false);
+
+    /* Disable the switcher */
+    VMMR3DisableSwitcher(pVM);
 }
 
 /**

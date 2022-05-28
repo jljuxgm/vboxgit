@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 1027 2007-02-22 20:29:35Z vboxsync $ */
+/* $Id: VMMGC.cpp 1210 2007-03-05 12:36:53Z vboxsync $ */
 /** @file
  * VMM - Guest Context.
  */
@@ -94,6 +94,13 @@ VMMGCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg)
          * profiling of the switcher.
          */
         case VMMGC_DO_TESTCASE_NOP:
+            return 0;
+
+        /*
+         * Testcase executes a privileged instruction to force a world switch. (in both SVM & VMX)
+         */
+        case VMMGC_DO_TESTCASE_HWACCM_NOP:
+            ASMRdMsr_Low(MSR_IA32_SYSENTER_CS);
             return 0;
 
         /*

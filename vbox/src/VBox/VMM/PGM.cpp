@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 873 2007-02-13 14:09:53Z vboxsync $ */
+/* $Id: PGM.cpp 1210 2007-03-05 12:36:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3383,15 +3383,15 @@ PDMR3DECL(int) PGMR3CheckIntegrity(PVM pVM)
 
 
 /**
- * Inform PGM we don't wish any mapping to be put into the shadow page table. (necessary for e.g. VMX)
+ * Inform PGM if we want all mappings to be put into the shadow page table. (necessary for e.g. VMX)
  *
  * @returns VBox status code.
  * @param   pVM         VM handle.
+ * @param   fEnable     Enable or disable shadow mappings
  */
-PGMR3DECL(int) PGMR3RemoveMappingsFromShwPD(PVM pVM)
+PGMR3DECL(int) PGMR3ChangeShwPDMappings(PVM pVM, bool fEnable)
 {
-
-    pVM->pgm.s.fDisableMappings = true;
+    pVM->pgm.s.fDisableMappings = fEnable;
 
     size_t cb;
     int rc = PGMR3MappingsSize(pVM, &cb);
@@ -3401,6 +3401,5 @@ PGMR3DECL(int) PGMR3RemoveMappingsFromShwPD(PVM pVM)
     rc = PGMR3MappingsFix(pVM, MM_HYPER_AREA_ADDRESS, cb);
     AssertRCReturn(rc, rc);
 
-    VMMR3DisableSwitcher(pVM);
     return VINF_SUCCESS;
 }
