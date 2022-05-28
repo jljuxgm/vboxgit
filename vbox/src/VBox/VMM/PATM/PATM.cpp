@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 804 2007-02-09 10:14:03Z vboxsync $ */
+/* $Id: PATM.cpp 838 2007-02-12 12:05:52Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -4061,7 +4061,7 @@ PATMR3DECL(int) PATMR3InstallPatch(PVM pVM, RTGCPTR pInstrGC, uint64_t flags)
         return VERR_PATCHING_REFUSED;
     }
     GCPhys = GCPhys + (pInstrGC & PAGE_OFFSET_MASK);
-    rc = PGMPhysGCPhys2HCPtr(pVM, GCPhys, (void **)&pInstrHC);
+    rc = PGMPhysGCPhys2HCPtr(pVM, GCPhys, MAX_INSTR_SIZE, (void **)&pInstrHC);
     AssertRCReturn(rc, rc);
 
     pPatchRec->patch.pPrivInstrHC = pInstrHC;

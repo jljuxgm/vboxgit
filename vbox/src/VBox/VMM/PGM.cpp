@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 463 2007-01-31 12:28:42Z vboxsync $ */
+/* $Id: PGM.cpp 838 2007-02-12 12:05:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1756,7 +1756,7 @@ static DECLCALLBACK(void) pgmR3InfoCr3(PVM pVM, PCDBGFINFOHLP pHlp, const char *
      */
     PVBOXPD     pPDSrc = pVM->pgm.s.pGuestPDHC;
     Assert(pPDSrc);
-    Assert(MMPhysGCPhys2HCVirt(pVM, (RTGCPHYS)(CPUMGetGuestCR3(pVM) & X86_CR3_PAGE_MASK)) == pPDSrc);
+    Assert(MMPhysGCPhys2HCVirt(pVM, (RTGCPHYS)(CPUMGetGuestCR3(pVM) & X86_CR3_PAGE_MASK), sizeof(*pPDSrc)) == pPDSrc);
 
     /*
      * Iterate the page directory.

@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 692 2007-02-06 05:37:22Z vboxsync $ */
+/* $Id: PGMInternal.h 838 2007-02-12 12:05:52Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -237,7 +237,7 @@
 #ifdef IN_GC
 # define PGM_GCPHYS_2_PTR(pVM, GCPhys, ppv) PGMGCDynMapGCPage(pVM, GCPhys, (void **)(ppv))
 #else
-# define PGM_GCPHYS_2_PTR(pVM, GCPhys, ppv) PGMPhysGCPhys2HCPtr(pVM, GCPhys, (void **)(ppv)) /** @todo this isn't asserting, use PGMRamGCPhys2HCPtr! */
+# define PGM_GCPHYS_2_PTR(pVM, GCPhys, ppv) PGMPhysGCPhys2HCPtr(pVM, GCPhys, 1 /* one page only */, (void **)(ppv)) /** @todo this isn't asserting, use PGMRamGCPhys2HCPtr! */
 #endif
 
 /** @def PGM_GCPHYS_2_PTR_EX
@@ -255,7 +255,7 @@
 #ifdef IN_GC
 # define PGM_GCPHYS_2_PTR_EX(pVM, GCPhys, ppv) PGMGCDynMapGCPageEx(pVM, GCPhys, (void **)(ppv))
 #else
-# define PGM_GCPHYS_2_PTR_EX(pVM, GCPhys, ppv) PGMPhysGCPhys2HCPtr(pVM, GCPhys, (void **)(ppv)) /** @todo this isn't asserting, use PGMRamGCPhys2HCPtr! */
+# define PGM_GCPHYS_2_PTR_EX(pVM, GCPhys, ppv) PGMPhysGCPhys2HCPtr(pVM, GCPhys, 1 /* one page only */, (void **)(ppv)) /** @todo this isn't asserting, use PGMRamGCPhys2HCPtr! */
 #endif
 
 /** @def PGM_INVL_PG

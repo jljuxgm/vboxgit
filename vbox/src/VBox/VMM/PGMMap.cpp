@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PGMMap.cpp 838 2007-02-12 12:05:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -937,7 +937,7 @@ PGMR3DECL(bool) PGMR3MapHasConflicts(PVM pVM, uint32_t cr3, bool fRawR0) /** @to
      */
     PVBOXPD pPD = pVM->pgm.s.pGuestPDHC; /** @todo Fix PAE! */
     Assert(pPD);
-    Assert(pPD == (PVBOXPD)MMPhysGCPhys2HCVirt(pVM, cr3 & X86_CR3_PAGE_MASK));
+    Assert(pPD == (PVBOXPD)MMPhysGCPhys2HCVirt(pVM, cr3 & X86_CR3_PAGE_MASK, sizeof(*pPD)));
 
     /*
      * Iterate mappings.

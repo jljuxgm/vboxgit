@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 838 2007-02-12 12:05:52Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Disassembler.
  */
@@ -170,7 +170,7 @@ static DECLCALLBACK(int32_t) dbgfR3DisasInstrRead(RTHCUINTPTR PtrSrc, uint8_t *p
                     pState->rc = VERR_INVALID_POINTER;
             }
             else if (pState->enmMode <= PGMMODE_PROTECTED)
-                pState->rc = PGMPhysGCPhys2HCPtr(pState->pVM, pState->pvPageGC, &pState->pvPageHC);
+                pState->rc = PGMPhysGCPhys2HCPtr(pState->pVM, pState->pvPageGC, cbRead, &pState->pvPageHC);
             else
                 pState->rc = PGMPhysGCPtr2HCPtr(pState->pVM, pState->pvPageGC, &pState->pvPageHC);
             if (VBOX_FAILURE(pState->rc))
