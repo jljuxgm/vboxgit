@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 914 2007-02-14 23:23:08Z vboxsync $ */
+/* $Id: PDMDriver.cpp 1354 2007-03-09 09:39:20Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -203,7 +203,7 @@ int pdmR3DrvInit(PVM pVM)
     if (fLoadBuiltin)
     {
         /* make filename */
-        char *pszFilename = pdmR3FileR3("VBoxDD");
+        char *pszFilename = pdmR3FileR3("VBoxDD", /*fShared=*/true);
         if (!pszFilename)
             return VERR_NO_TMP_MEMORY;
         rc = pdmR3DrvLoad(pVM, &RegCB, pszFilename, "VBoxDD");
