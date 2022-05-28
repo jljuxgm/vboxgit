@@ -1,4 +1,4 @@
-/* $Id: timesupref.h 5468 2007-10-24 03:58:47Z vboxsync $ */
+/* $Id: timesupref.h 5510 2007-10-26 11:42:51Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Time using SUPLib, the C Code Template.
  */
@@ -158,7 +158,6 @@ RTDECL(uint64_t) rtTimeNanoTSInternalRef(PRTTIMENANOTSDATA pData)
                 break;
             if (ASMAtomicCmpXchgU64(pData->pu64Prev, u64NanoTS, u64PrevNanoTS))
                 break;
-            AssertBreak(--cTries <= 0, );
         }
     }
     return u64NanoTS;
