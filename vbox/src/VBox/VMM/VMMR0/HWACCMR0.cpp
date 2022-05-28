@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 4083 2007-08-07 17:41:09Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 4487 2007-09-03 08:55:48Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -93,6 +93,7 @@ HWACCMR0DECL(int) HWACCMR0Init(PVM pVM)
                  * Both the LOCK and VMXON bit must be set; otherwise VMXON will generate a #GP.
                  * Once the lock bit is set, this MSR can no longer be modified.
                  */
+                /** @todo need to check this for each cpu/core in the system!!!) */
                 if (!(pVM->hwaccm.s.vmx.msr.feature_ctrl & (MSR_IA32_FEATURE_CONTROL_VMXON|MSR_IA32_FEATURE_CONTROL_LOCK)))
                 {
                     /* MSR is not yet locked; we can change it ourselves here */
