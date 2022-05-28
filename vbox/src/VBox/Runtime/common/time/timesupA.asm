@@ -1,4 +1,4 @@
-; $Id: timesupA.asm 5456 2007-10-24 01:04:51Z vboxsync $%ifndef IN_GUEST
+; $Id: timesupA.asm 5457 2007-10-24 01:05:05Z vboxsync $%ifndef IN_GUEST
 ;; @file
 ; innotek Portable Runtime - Time using SUPLib, the Assembly Implementation.
 ;
@@ -68,9 +68,9 @@ BEGINCODE
 %include "timesupA.mac"
 
 %define ASYNC_GIP
-;%ifdef IN_GC
+%ifdef IN_GC
  %undef NEED_TRANSACTION_ID
-;%endif
+%endif
 %define rtTimeNanoTSInternalAsm    RTTimeNanoTSLFenceAsync
 %include "timesupA.mac"
 
