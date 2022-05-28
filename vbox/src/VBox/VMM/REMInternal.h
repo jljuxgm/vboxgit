@@ -1,3 +1,4 @@
+/* $Id: REMInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -108,7 +109,7 @@ typedef struct REMHANDLERNOTIFICATION
 /**
  * Dynamically allocated guest RAM chunk information
  * HC virt to GC Phys
- * 
+ *
  * A RAM chunk can spawn two chunk regions as we don't align them on chunk boundaries.
  */
 typedef struct REMCHUNKINFO

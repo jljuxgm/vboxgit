@@ -1,5 +1,5 @@
+/* $Id: HWACCMR0.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
- *
  * HWACCM - Host Context Ring 0.
  */
 
@@ -302,7 +302,6 @@ HWACCMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM)
 
 
 #ifdef VBOX_STRICT
-#include <string.h>
 #include <iprt/string.h>
 /**
  * Dumps a descriptor.

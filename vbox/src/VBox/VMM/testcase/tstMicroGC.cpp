@@ -1,5 +1,5 @@
+/* $Id: tstMicroGC.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
- *
  * Micro Testcase, profiling special CPU operations - GC Code (hacks).
  */
 
@@ -31,7 +31,7 @@
 #include <iprt/asm.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
-#include <string.h>
+#include <iprt/string.h>
 
 
 /*******************************************************************************

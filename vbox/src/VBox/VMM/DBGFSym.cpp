@@ -1,5 +1,5 @@
+/* $Id: DBGFSym.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
- *
  * VMM DBGF - Debugger Facility, Symbol Management.
  */
 
@@ -43,11 +43,10 @@
 #ifndef HAVE_DBGHELP
 # include <iprt/avl.h>
 # include <iprt/string.h>
-# include <string.h>
+# include <iprt/ctype.h>
 #endif
 
-#include <ctype.h>
-#include <stdio.h>
+#include <stdio.h> /* for fopen(). */ /** @todo use iprt/stream.h! */
 #include <stdlib.h>
 
 

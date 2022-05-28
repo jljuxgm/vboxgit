@@ -1,5 +1,5 @@
+/* $Id: tstCFGM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
 /** @file
- *
  * Testcase for CFGM.
  */
 
@@ -33,8 +33,7 @@
 #include <VBox/param.h>
 #include <iprt/runtime.h>
 #include <iprt/stream.h>
-
-#include <string.h>
+#include <iprt/string.h>
 
 
 int main()
