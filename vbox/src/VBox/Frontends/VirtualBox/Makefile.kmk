@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5131 2007-10-01 21:26:07Z vboxsync $
+# $Id: Makefile.kmk 5151 2007-10-04 07:48:12Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -55,13 +55,6 @@ ifeq ($(filter-out freebsd linux openbsd netbsd solaris,$(BUILD_TARGET)),) # X11
 DLLS = VBoxKeyboard
 endif
 INSTALLS = VirtualBox.nls
-
-ifeq ($(BUILD_TARGET),os2)
- INSTALLS += qt.dll
- qt.dll_INST = $(INST_BIN)
- qt.dll_SOURCES += \
-	$(VBOX_DLL_QT)=>$(not-dir $(VBOX_DLL_QT))
-endif
 
 
 #
