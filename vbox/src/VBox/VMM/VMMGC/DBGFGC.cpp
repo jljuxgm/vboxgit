@@ -1,4 +1,4 @@
-/* $Id: DBGFGC.cpp 1445 2007-03-13 15:22:09Z vboxsync $ */
+/* $Id: DBGFGC.cpp 2171 2007-04-18 13:11:53Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, GC part.
  */
@@ -47,6 +47,7 @@ DBGFGCDECL(int) DBGFGCTrap01Handler(PVM pVM, PCPUMCTXCORE pRegFrame, RTUINTREG u
 {
     const bool fInHyper = !(pRegFrame->ss & X86_SEL_RPL) && !pRegFrame->eflags.Bits.u1VM;
 
+    /** @todo Intel docs say that X86_DR6_BS has the highest priority... */
     /*
      * A breakpoint?
      */
