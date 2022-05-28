@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 392 2007-01-27 22:28:29Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 393 2007-01-28 00:01:57Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Ring-0 Memory Objects, Common Code.
  */
@@ -55,7 +55,7 @@ PRTR0MEMOBJINTERNAL rtR0MemObjNew(size_t cbSelf, RTR0MEMOBJTYPE enmType, void *p
     /*
      * Allocate and initialize the object.
      */
-    pNew = (PRTR0MEMOBJINTERNAL)RTMemAllocZ(cb);
+    pNew = (PRTR0MEMOBJINTERNAL)RTMemAllocZ(cbSelf);
     if (pNew)
     {
         pNew->u32Magic  = RTR0MEMOBJ_MAGIC;
