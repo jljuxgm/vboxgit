@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 4749 2007-09-13 06:49:58Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 4928 2007-09-20 13:09:14Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -452,6 +452,17 @@ static DECLCALLBACK(int) drvHostSerialReceiveLoop(RTTHREAD ThreadSelf, void *pvU
             rc = poll(&pfd, 1, -1);
             if (rc < 0)
                 break;
+#elif defined(RT_OS_WINDOWS)
+            BOOL retval;
+            DWORD dwEventMask = EV_RXCHAR;
+
+            retval = WaitCommEvent((HANDLE)pData->DeviceFile, &dwEventMask, NULL);
+
+            if (!retval)
+            {
+                LogRel(("Host Serial Driver: WaitCommEvent failed, terminating the worker thread.\n"));
+                break;
+            }
 #endif
 
             rc = RTFileRead(pData->DeviceFile, abBuffer, sizeof(abBuffer), &cbRead);
@@ -573,7 +584,7 @@ static DECLCALLBACK(int) drvHostSerialConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
 
     comTimeout.ReadIntervalTimeout         = MAXDWORD;
     comTimeout.ReadTotalTimeoutMultiplier  = 0;
-    comTimeout.ReadTotalTimeoutConstant    = 10;
+    comTimeout.ReadTotalTimeoutConstant    = 0;
     comTimeout.WriteTotalTimeoutMultiplier = 0;
     comTimeout.WriteTotalTimeoutConstant   = 0;
 
