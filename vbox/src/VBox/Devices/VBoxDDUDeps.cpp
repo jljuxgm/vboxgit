@@ -1,4 +1,4 @@
-/* $Id: VBoxDDUDeps.cpp 5574 2007-10-31 12:01:01Z vboxsync $ */
+/* $Id: VBoxDDUDeps.cpp 5578 2007-10-31 13:22:30Z vboxsync $ */
 /** @file
  * VBoxDDU - For dragging in library objects.
  */
@@ -27,7 +27,7 @@
 /** Just a dummy global structure containing a bunch of
  * function pointers to code which is wanted in the link.
  */
-PFNRT g_apfnDeps[] =
+PFNRT g_apfnVBoxDDUDeps[] =
 {
 #ifdef VBOX_WITH_USB
     (PFNRT)USBFilterInit,
