@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 5428 2007-10-21 21:27:47Z vboxsync $ */
+/* $Id: path-win.cpp 5702 2007-11-12 11:29:04Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Path manipulation.
  */
@@ -223,6 +223,7 @@ RTR3DECL(int) RTPathQueryInfo(const char *pszPath, PRTFSOBJINFO pObjInfo, RTFSOB
         RTStrUcs2Free(puszPath);
         return rc;
     }
+    RTStrUcs2Free(puszPath);
 #else
     if (!GetFileAttributesExA(pszPath, GetFileExInfoStandard, &Data))
         return RTErrConvertFromWin32(GetLastError());

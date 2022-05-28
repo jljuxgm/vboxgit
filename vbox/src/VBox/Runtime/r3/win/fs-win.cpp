@@ -1,4 +1,4 @@
-/* $Id: fs-win.cpp 5428 2007-10-21 21:27:47Z vboxsync $ */
+/* $Id: fs-win.cpp 5702 2007-11-12 11:29:04Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File System, Win32.
  */
@@ -388,6 +388,13 @@ RTR3DECL(int) RTFsQueryProperties(const char *pszFsPath, PRTFSPROPERTIES pProper
         Log(("RTFsQuerySizes(%s,): GetVolumeInformation failed with lasterr %d (%Vrc)\n",
              pszFsPath, Err, rc));
     }
+
+#ifndef RT_DONT_CONVERT_FILENAMES
+    RTStrUcs2Free(puszFsRoot);
+#else
+    RTStrUcs2Free(pszFsRoot);
+#endif
+
     return rc;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 4636 2007-09-09 06:16:45Z vboxsync $ */
+/* $Id: path-posix.cpp 5702 2007-11-12 11:29:04Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Path Manipulation, POSIX.
  */
@@ -661,6 +661,7 @@ RTR3DECL(int) RTPathQueryInfo(const char *pszPath, PRTFSOBJINFO pObjInfo, RTFSOB
         }
         else
             rc = RTErrConvertFromErrno(errno);
+        rtPathFreeNative(pszNativePath);
     }
 
     LogFlow(("RTPathQueryInfo(%p:{%s}, pObjInfo=%p, %d): returns %Rrc\n",
@@ -738,6 +739,7 @@ RTR3DECL(int) RTPathSetTimes(const char *pszPath, PCRTTIMESPEC pAccessTime, PCRT
                 }
             }
         }
+        rtPathFreeNative(pszNativePath);
     }
 
     LogFlow(("RTPathSetTimes(%p:{%s}, %p:{%RDtimespec}, %p:{%RDtimespec}, %p:{%RDtimespec}, %p:{%RDtimespec}): return %Rrc\n",
