@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 1978 2007-04-06 18:20:42Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 1981 2007-04-06 21:20:43Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -677,15 +677,21 @@ static int trpmGCTrap0dHandlerRing3(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTAT
 
         /*
          * Handle virtualized TSC reads.
+         * (EMInterpretInstructionCPU isn't usable here because it rejects cpl != 0.)
          */
         case OP_RDTSC:
         {
-            uint32_t cbIgnored;
-            rc = EMInterpretInstructionCPU(pVM, pCpu, pRegFrame, PC, &cbIgnored);
-            if (VBOX_SUCCESS(rc))
+            /** @todo statistics */
+            if (CPUMGetGuestCR4(pVM) & X86_CR4_TSD)
+                rc = VINF_EM_RAW_EMULATE_INSTR;
+            else
+            {
+                uint64_t Tsc = TMCpuTickGet(pVM);
+                pRegFrame->eax = Tsc;
+                pRegFrame->edx = Tsc >> 32;
                 pRegFrame->eip += pCpu->opsize;
-            else if (rc != VERR_EM_INTERPRETER)
-                AssertReleaseMsgFailed(("rc=%Vrc\n", rc));    /* Can't happen with RDTSC. */
+                rc = VINF_SUCCESS;
+            }
             return trpmGCExitTrap(pVM, rc, pRegFrame);
         }
     }
