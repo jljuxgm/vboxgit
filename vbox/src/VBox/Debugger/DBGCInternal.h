@@ -1,4 +1,4 @@
-/** $Id: DBGCInternal.h 5670 2007-11-11 05:05:35Z vboxsync $ */
+/** $Id: DBGCInternal.h 5671 2007-11-11 05:10:09Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -23,15 +23,6 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <VBox/dbg.h>
-#include <VBox/dbgf.h>
-#include <VBox/vm.h>
-#include <VBox/vmm.h>
-#include <VBox/mm.h>
-#include <VBox/pgm.h>
-#include <VBox/selm.h>
-#include <VBox/dis.h>
-#include <VBox/param.h>
-#include <VBox/err.h>
 
 
 /*******************************************************************************
