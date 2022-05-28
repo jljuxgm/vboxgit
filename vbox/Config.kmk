@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5680 2007-11-11 09:40:50Z vboxsync $
+# $Id: Config.kmk 5689 2007-11-11 17:33:36Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1809,7 +1809,11 @@ TEMPLATE_VBOXNOCRTGCC_CFLAGS.amd64      = -m64 -mcmodel=medium -fno-common
 TEMPLATE_VBOXNOCRTGCC_CFLAGS.release    = -O2 -fno-strict-aliasing
 TEMPLATE_VBOXNOCRTGCC_CFLAGS.profile    = $(TEMPLATE_VBOXNOCRTGCC_CFLAGS.release)
 TEMPLATE_VBOXNOCRTGCC_CFLAGS.kprofile   = $(TEMPLATE_VBOXNOCRTGCC_CFLAGS.release)
-TEMPLATE_VBOXNOCRTGCC_CFLAGS.darwin     = -mdynamic-no-pic
+ifdef VBOX_TARGET_MAC_OS_X_VERSION_10_5 ## @todo this probably works for 10.4 too, check.
+ TEMPLATE_VBOXNOCRTGCC_CFLAGS.darwin     = -static
+else
+ TEMPLATE_VBOXNOCRTGCC_CFLAGS.darwin     = -mdynamic-no-pic
+endif
 TEMPLATE_VBOXNOCRTGCC_CXXFLAGS          = $(TEMPLATE_VBOXNOCRTGCC_CFLAGS)
 TEMPLATE_VBOXNOCRTGCC_CXXFLAGS.$(BUILD_TARGET) = $(TEMPLATE_VBOXNOCRTGCC_CFLAGS.$(BUILD_TARGET))
 TEMPLATE_VBOXNOCRTGCC_CXXFLAGS.$(BUILD_TARGET_ARCH) = $(TEMPLATE_VBOXNOCRTGCC_CFLAGS.$(BUILD_TARGET_ARCH))
@@ -2634,7 +2638,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5680 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5689 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(USERNAME),bird) # Wastes nearly half a second on windows, very annoying. TODO: $(which ).
   ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
