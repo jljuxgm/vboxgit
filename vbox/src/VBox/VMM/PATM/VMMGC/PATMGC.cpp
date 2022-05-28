@@ -1,4 +1,4 @@
-/* $Id: PATMGC.cpp 5261 2007-10-12 14:14:27Z vboxsync $ */
+/* $Id: PATMGC.cpp 5609 2007-11-02 09:46:07Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -102,7 +102,7 @@ PATMGCDECL(int) PATMGCHandleWriteToPatchPage(PVM pVM, PCPUMCTXCORE pRegFrame, RT
 
 #ifdef LOG_ENABLED
     if (pPatchPage)
-        Log(("PATMIsWriteToPatchPage: Found page %VGv for write to %VGv %d bytes\n", pPatchPage->Core.Key, GCPtr, cbWrite));
+        Log(("PATMIsWriteToPatchPage: Found page %VGv for write to %VGv %d bytes (page low:high %VGv:%VGv\n", pPatchPage->Core.Key, GCPtr, cbWrite, pPatchPage->pLowestAddrGC, pPatchPage->pHighestAddrGC));
 #endif
 
     if (pPatchPage)
