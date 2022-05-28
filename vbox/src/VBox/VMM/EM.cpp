@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 1831 2007-03-30 14:16:58Z vboxsync $ */
+/* $Id: EM.cpp 1894 2007-04-03 16:30:33Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -1067,13 +1067,11 @@ static int emR3RawExecuteInstructionWorker(PVM pVM, int rcGC)
                     Log(("PATCH: IF=1 -> emulate last instruction as it can't be interrupted!!\n"));
                     return emR3RawExecuteInstruction(pVM, "PATCHIR");
                 }
-#if 0 /** @note no noticable change; revisit later when we can emulate iret ourselves. */
                 else if (rcGC == VINF_PATM_PENDING_IRQ_AFTER_IRET)
                 {
                     /* special case: iret, that sets IF,  detected a pending irq/event */
                     return emR3RawExecuteInstruction(pVM, "PATCHIRET");
                 }
-#endif
                 return VINF_EM_RESCHEDULE_REM;
 
             /*
