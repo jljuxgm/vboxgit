@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 1417 2007-03-12 12:08:37Z vboxsync $ */
+/* $Id: VM.cpp 1468 2007-03-14 12:26:51Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -270,8 +270,11 @@ VMR3DECL(int)   VMR3Create(PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCON
         }
         else
         {
-            AssertMsgFailed(("Failed to allocate %d bytes of contiguous memory\n", RT_ALIGN(sizeof(*pVM), PAGE_SIZE)));
             rc = VERR_NO_MEMORY;
+            vmR3CallVMAtError(pfnVMAtError, pvUserVM, rc, RT_SRC_POS, 
+                              N_("Failed to allocate %d bytes of contiguous memory for the VM structure!\n"), 
+                              RT_ALIGN(sizeof(*pVM), PAGE_SIZE));
+            AssertMsgFailed(("Failed to allocate %d bytes of contiguous memory for the VM structure!\n", RT_ALIGN(sizeof(*pVM), PAGE_SIZE)));
         }
 
         /* terminate SUPLib */
