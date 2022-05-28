@@ -1,7 +1,6 @@
+/* $Revision: 3537 $ */
 /** @file
- *
- * VBox host drivers - Ring-0 support drivers - Shared code:
- * IOCtl definitions
+ * VirtualBox Support Driver - IOCtl definitions.
  */
 
 /*

@@ -1,7 +1,8 @@
+; $Id: SUPR0.def 3537 2007-07-11 08:08:42Z vboxsync $
+;; @file
+; VirtualBox Support Driver - Built-in exports.
 ;
-; VBox host drivers - Ring-0 support drivers - Shared code
-;
-; Export definitions
+
 ;
 ; Copyright (C) 2006-2007 innotek GmbH
 ;

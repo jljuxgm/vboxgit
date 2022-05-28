@@ -1,7 +1,6 @@
+/* $Id: SUPLibInternal.h 3537 2007-07-11 08:08:42Z vboxsync $ */
 /** @file
- *
- * VBox host drivers - Ring-0 support drivers - Shared code:
- * Internal header for support library
+ * VirtualBox Support Library - Internal header.
  */
 
 /*
