@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PATMPatch.h 2030 2007-04-11 13:33:28Z vboxsync $ */
 /** @file
  * PATMPatch - Internal header file.
  */
@@ -45,7 +45,7 @@ int patmPatchGenStats(PVM pVM, PPATCHINFO pPatch, RTGCPTR pInstrGC);
 int patmPatchGenCall(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu, RTGCPTR pInstrGC, RTGCPTR pTargetGC, bool fIndirect);
 int patmPatchGenRet(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu, GCPTRTYPE(uint8_t *) pCurInstrGC);
 
-int patmPatchGenPatchJump(PVM pVM, PPATCHINFO pPatch, RTGCPTR pCurInstrGC, GCPTRTYPE(uint8_t *)pPatchAddrGC);
+int patmPatchGenPatchJump(PVM pVM, PPATCHINFO pPatch, RTGCPTR pCurInstrGC, GCPTRTYPE(uint8_t *)pPatchAddrGC, bool fAddLookupRecord = true);
 
 /**
  * Generate indirect jump to unknown destination
