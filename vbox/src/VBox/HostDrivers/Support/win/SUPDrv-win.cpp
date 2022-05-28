@@ -1,7 +1,6 @@
+/* $Id: SUPDrv-win.cpp 3542 2007-07-11 08:41:57Z vboxsync $ */
 /** @file
- *
- * VBox host drivers - Ring-0 support drivers - Win32 host:
- * Win32 host driver code
+ * VirtualBox Support Driver - Windows NT specific parts.
  */
 
 /*
