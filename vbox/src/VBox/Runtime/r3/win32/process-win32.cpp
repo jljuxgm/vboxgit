@@ -1,4 +1,4 @@
-/* $Id: process-win32.cpp 1  vboxsync $ */
+/* $Id: process-win32.cpp 1441 2007-03-13 14:20:32Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Process, Win32.
  */
@@ -70,6 +70,8 @@ NtQueryInformationProcess (
     OUT PULONG ReturnLength OPTIONAL
     );
 
+/** @todo r=michael This function currently does not work correctly if the arguments
+                    contain spaces. */
 RTR3DECL(int)   RTProcCreate(const char *pszExec, const char * const *papszArgs, const char * const *papszEnv, unsigned fFlags, PRTPROCESS pProcess)
 {
     /*
