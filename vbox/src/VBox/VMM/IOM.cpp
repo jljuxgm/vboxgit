@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 2270 2007-04-20 12:58:15Z vboxsync $ */
+/* $Id: IOM.cpp 2301 2007-04-21 00:21:08Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1190,7 +1190,7 @@ IOMR3DECL(int)  IOMR3MMIORegisterR3(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
         int rc = PGMR3HandlerPhysicalRegister(pVM, PGMPHYSHANDLERTYPE_MMIO, GCPhysStart, GCPhysStart + (cbRange - 1),
                                               /*IOMR3MMIOHandler*/ NULL, pRange,
                                               NULL, "IOMMMIOHandler", MMHyperR3ToR0(pVM, pRange),
-                                              NULL, "IOMMMIOHandler", MMHyperHC2GC(pVM, pRange), pszDesc);
+                                              NULL, "IOMMMIOHandler", MMHyperR3ToGC(pVM, pRange), pszDesc);
         if (VBOX_SUCCESS(rc))
         {
             if (RTAvlroGCPhysInsert(&pVM->iom.s.pTreesHC->MMIOTreeR3, &pRange->Core))
