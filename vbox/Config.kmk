@@ -1,4 +1,4 @@
-# $Id: Config.kmk 534 2007-02-02 05:03:03Z vboxsync $
+# $Id: Config.kmk 543 2007-02-02 06:56:33Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1234,7 +1234,7 @@ TEMPLATE_VBOXR3EXE_LIBS                =
 TEMPLATE_VBOXR3EXE_LDFLAGS             = -read_only_relocs suppress
  else ifeq ($(filter-out freebsd netbsd openbsd,$(BUILD_TARGET)),)
 TEMPLATE_VBOXR3EXE_TOOL                = GCC3
-TEMPLATE_VBOXR3EXE_LIBS                = 
+TEMPLATE_VBOXR3EXE_LIBS                = pthread 
  else ifeq ($(BUILD_TARGET),solaris)
 $(warning Warning: VBOX Build: Target $(BUILD_TARGET) is not officially supported!)
 TEMPLATE_VBOXR3EXE_TOOL                = GCC3PLAIN
