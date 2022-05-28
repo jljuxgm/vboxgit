@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 163 2007-01-18 18:32:56Z vboxsync $ */
+/* $Id: PATMAll.cpp 180 2007-01-19 15:07:45Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -565,27 +565,27 @@ PATMDECL(int) PATMHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                 return VINF_SUCCESS;
 #ifdef DEBUG
             case PATM_ACTION_LOG_CLI:
-                Log(("PATMGC: CLI at %VGv (current IF=%d)\n", pRegFrame->eip, !!(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags & X86_EFL_IF) ));
+                Log(("PATMGC: CLI at %VGv (current IF=%d iopl=%d)\n", pRegFrame->eip, !!(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags & X86_EFL_IF), X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags) ));
                 pRegFrame->eip += PATM_ILLEGAL_INSTR_SIZE;
                 return VINF_SUCCESS;
 
             case PATM_ACTION_LOG_STI:
-                Log(("PATMGC: STI at %VGv (current IF=%d)\n", pRegFrame->eip, !!(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags & X86_EFL_IF) ));
+                Log(("PATMGC: STI at %VGv (current IF=%d iopl=%d)\n", pRegFrame->eip, !!(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags & X86_EFL_IF), X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags) ));
                 pRegFrame->eip += PATM_ILLEGAL_INSTR_SIZE;
                 return VINF_SUCCESS;
 
             case PATM_ACTION_LOG_POPF_IF1:
-                Log(("PATMGC: POPF setting IF at %VGv (current IF=%d)\n", pRegFrame->eip, !!(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags & X86_EFL_IF) ));
+                Log(("PATMGC: POPF setting IF at %VGv (current IF=%d iopl=%d)\n", pRegFrame->eip, !!(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags & X86_EFL_IF), X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags)));
                 pRegFrame->eip += PATM_ILLEGAL_INSTR_SIZE;
                 return VINF_SUCCESS;
 
             case PATM_ACTION_LOG_POPF_IF0:
-                Log(("PATMGC: POPF at %VGv (current IF=%d)\n", pRegFrame->eip, !!(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags & X86_EFL_IF) ));
+                Log(("PATMGC: POPF at %VGv (current IF=%d iopl=%d)\n", pRegFrame->eip, !!(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags & X86_EFL_IF), X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags)));
                 pRegFrame->eip += PATM_ILLEGAL_INSTR_SIZE;
                 return VINF_SUCCESS;
 
             case PATM_ACTION_LOG_PUSHF:
-                Log(("PATMGC: PUSHF at %VGv (current IF=%d)\n", pRegFrame->eip, !!(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags & X86_EFL_IF) ));
+                Log(("PATMGC: PUSHF at %VGv (current IF=%d iopl=%d)\n", pRegFrame->eip, !!(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags & X86_EFL_IF), X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags) ));
                 pRegFrame->eip += PATM_ILLEGAL_INSTR_SIZE;
                 return VINF_SUCCESS;
 
@@ -614,7 +614,7 @@ PATMDECL(int) PATMHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
             }
 
             case PATM_ACTION_LOG_RET:
-                Log(("PATMGC: RET to %VGv\n", pRegFrame->edx));
+                Log(("PATMGC: RET to %VGv iopl=%d\n", pRegFrame->edx, X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags)));
                 pRegFrame->eip += PATM_ILLEGAL_INSTR_SIZE;
                 return VINF_SUCCESS;
 #endif
