@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 1940 2007-04-04 16:03:07Z vboxsync $ */
+/* $Id: EMAll.cpp 1943 2007-04-05 08:01:47Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -322,12 +322,15 @@ inline int emRamWrite(PVM pVM, RTGCPTR GCDest, void *pSrc, uint32_t cb)
 static RTGCPTR emConvertToFlatAddr(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu, POP_PARAMETER pParam, RTGCPTR pvAddr)
 {
 #ifdef EM_ALLOW_SEG_PREFIX
-    int   prefix_seg;
-    RTSEL sel = 0;
+    int   prefix_seg, rc;
+    RTSEL sel;
     CPUMSELREGHID *pSelHidReg;
     
     prefix_seg = DISDetectSegReg(pCpu, pParam);
-    DISFetchRegSegEx(pRegFrame, prefix_seg, &sel, &pSelHidReg);
+    rc = DISFetchRegSegEx(pRegFrame, prefix_seg, &sel, &pSelHidReg);
+    if (RT_UNLIKELY(VBOX_FAILURE(rc)))
+        return pvAddr;
+
     return SELMToFlat(pVM, pRegFrame->eflags, sel, pSelHidReg, pvAddr);
 #else
     return pvAddr;
