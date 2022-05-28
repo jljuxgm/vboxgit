@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3278 2007-06-25 15:27:23Z vboxsync $
+# $Id: Makefile.kmk 3480 2007-07-05 15:48:41Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -36,7 +36,9 @@ ifneq ($(BUILD_TARGET),win)
   $(error "VBox: VBOX_WITH_XPCOM isn't defined")
  endif
  DLLS           += VBoxSVCM
- DEFS           += VBOX_WITH_SYS_V_IPC_SESSION_WATCHER
+ ifneq ($(BUILD_TARGET),os2)
+  DEFS          += VBOX_WITH_SYS_V_IPC_SESSION_WATCHER
+ endif
  DEFS           += VBOX_WITH_UNIXY_TAP_NETWORKING
 endif
 
