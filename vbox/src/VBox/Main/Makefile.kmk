@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3769 2007-07-23 07:40:48Z vboxsync $
+# $Id: Makefile.kmk 3822 2007-07-25 10:25:24Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -269,7 +269,7 @@ VBoxC_DEFS += VBOX_COM_INPROC
 
 ifdef VBOX_WITH_VRDP
 VBoxC_DEFS += VBOX_VRDP IN_VRDP_R3
-ifdef VRDP_NO_COM
+ifdef VBOX_WITH_VRDP_NO_COM
 VBoxC_DEFS += VRDP_NO_COM
 endif
 endif
