@@ -1,4 +1,5 @@
-#
+# $Id: Makefile.kmk 2478 2007-05-04 00:46:16Z vboxsync $
+## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
 #
