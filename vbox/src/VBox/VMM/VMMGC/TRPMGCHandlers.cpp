@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 1602 2007-03-21 17:08:28Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 1603 2007-03-21 17:10:35Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -374,8 +374,11 @@ DECLASM(int) TRPMGCTrap06Handler(PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
         int rc = TRPMForwardTrap(pVM, pRegFrame, 0x6, 0, TRPM_TRAP_NO_ERRORCODE, TRPM_TRAP);
         Assert(rc == VINF_EM_RAW_GUEST_TRAP);
     }
-    /* Never generate a raw trap here; it might be a monitor instruction, that requires emulation. */
-    return trpmGCExitTrap(pVM, VINF_EM_RAW_EMULATE_INSTR, pRegFrame);
+    else 
+        /* Never generate a raw trap here; it might be a monitor instruction, that requires emulation. */
+        rc = VINF_EM_RAW_EMULATE_INSTR;
+
+    return trpmGCExitTrap(pVM, rc, pRegFrame);
 }
 
 
