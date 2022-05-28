@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 915 2007-02-15 01:14:36Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 917 2007-02-15 01:55:55Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -48,13 +48,13 @@ extern "C" DECLEXPORT(int) DisasmTest1(void);
  */
 static DECLCALLBACK(int) testGetImport(RTLDRMOD hLdrMod, const char *pszModule, const char *pszSymbol, unsigned uSymbol, RTUINTPTR *pValue, void *pvUser)
 {
-    if (!strcmp(pszSymbol, "AssertMsg1"))
+    if (     !strcmp(pszSymbol, "AssertMsg1")           || !strcmp(pszSymbol, "_AssertMsg1"))
         *pValue = (uintptr_t)AssertMsg1;
-    else if (!strcmp(pszSymbol, "AssertMsg2"))
+    else if (!strcmp(pszSymbol, "AssertMsg2")           || !strcmp(pszSymbol, "_AssertMsg2"))
         *pValue = (uintptr_t)AssertMsg2;
-    else if (!strcmp(pszSymbol, "RTLogDefaultInstance"))
+    else if (!strcmp(pszSymbol, "RTLogDefaultInstance") || !strcmp(pszSymbol, "_RTLogDefaultInstance"))
         *pValue = (uintptr_t)RTLogDefaultInstance;
-    else if (!strcmp(pszSymbol, "MyPrintf"))
+    else if (!strcmp(pszSymbol, "MyPrintf")             || !strcmp(pszSymbol, "_MyPrintf"))
         *pValue = (uintptr_t)RTPrintf;
     else
     {
@@ -153,6 +153,8 @@ static int testLdrOne(const char *pszFilename)
             /* get the pointer. */
             RTUINTPTR Value;
             rc = RTLdrGetSymbolEx(aLoads[i].hLdrMod, aLoads[i].pvBits, (uintptr_t)aLoads[i].pvBits, "DisasmTest1", &Value);
+            if (rc == VERR_SYMBOL_NOT_FOUND)
+                rc = RTLdrGetSymbolEx(aLoads[i].hLdrMod, aLoads[i].pvBits, (uintptr_t)aLoads[i].pvBits, "_DisasmTest1", &Value);
             if (RT_FAILURE(rc))
             {
                 RTPrintf("tstLdr-4: Failed to get symbol \"Test1\" from load #%d: %Rrc\n", i, rc);
