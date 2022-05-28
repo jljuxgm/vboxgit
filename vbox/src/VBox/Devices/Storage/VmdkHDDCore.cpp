@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 2375 2007-04-27 00:32:46Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 2381 2007-04-27 06:38:19Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -497,7 +497,7 @@ static int vmdkStringUnquote(PVMDKIMAGE pImage, const char *pszStr, char **ppszU
     if (*pszStr++ != '"')
         return vmdkError(pImage, VERR_VDI_INVALID_HEADER, RT_SRC_POS, N_("VMDK: incorrectly quoted value in descriptor"));
 
-    pszQ = strchr(pszStr, '"');
+    pszQ = (char*)strchr(pszStr, '"');
     if (pszQ == NULL)
         return vmdkError(pImage, VERR_VDI_INVALID_HEADER, RT_SRC_POS, N_("VMDK: incorrectly quoted value in descriptor"));
     pszUnquoted = (char *)RTMemTmpAlloc(pszQ - pszStr + 1);
