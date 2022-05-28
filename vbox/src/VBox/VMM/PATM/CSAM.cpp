@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 208 2007-01-21 14:23:25Z vboxsync $ */
+/* $Id: CSAM.cpp 209 2007-01-21 15:10:33Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2273,14 +2273,7 @@ CSAMR3DECL(int) CSAMR3CheckGates(PVM pVM, uint32_t iGate, uint32_t cGates)
                         /* OpenBSD guest specific patch test (3.9 & 4.0) */
                         rc = PATMR3InstallPatch(pVM, pHandler - 0x2B, PATMFL_CODE32 | PATMFL_GUEST_SPECIFIC);
                     if (VBOX_SUCCESS(rc))
-                    {
                         Log(("Installed OpenBSD interrupt handler prefix instruction (push cs) patch\n"));
-                        if (pGuestIdte->Gen.u5Type2 == VBOX_IDTE_TYPE2_TRAP_32)
-                        {
-                           /* This is actually fatal!!!! */
-                            Log(("Warning: patch jump overwrites trap handler entrypoint!!!!!!!!!!!!!\n"));
-                        }
-                    }
                 }
 
                 /* Trap gates and certain interrupt gates. */
