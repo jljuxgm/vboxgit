@@ -1,4 +1,4 @@
-/** $Id: DBGConsole.cpp 4251 2007-08-20 23:53:15Z vboxsync $ */
+/** $Id: DBGConsole.cpp 4252 2007-08-20 23:54:30Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -8318,15 +8318,19 @@ static int dbgcProcessArguments(PDBGC pDbgc, PCDBGCCMD pCmd, char *pszArgs, PDBG
                     if (pOp)
                     {
                         if (pOp->fBinary != fBinary)
+                        {
+                            pszEnd = psz;
+                            /** @todo this is a parsing error really. */
                             break;              /* the end. */
+                        }
                         psz += pOp->cchName;
                         while (isblank(*psz))   /* skip blanks so we don't get here again */
                             psz++;
                         fBinary = false;
                         continue;
                     }
-                    fBinary = true;
                 }
+                fBinary = true;
             }
 
             /* next char */
