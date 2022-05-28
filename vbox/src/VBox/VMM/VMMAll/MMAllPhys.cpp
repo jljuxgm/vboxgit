@@ -1,4 +1,4 @@
-/* $Id: MMAllPhys.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: MMAllPhys.cpp 4668 2007-09-10 13:53:29Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Physical Memory.
  */
@@ -32,6 +32,7 @@
 #include <VBox/param.h>
 #include <VBox/err.h>
 
+
 /**
  * Convert GC physical address to HC virtual address.
  *
@@ -51,23 +52,3 @@ MMDECL(void *) MMPhysGCPhys2HCVirt(PVM pVM, RTGCPHYS GCPhys, RTUINT cbRange)
     return NULL;
 }
 
-
-/**
- * Convert GC virtual address to HC virtual address.
- *
- * This uses the current PD of the guest.
- *
- * @returns HC virtual address.
- * @param   pVM         VM Handle
- * @param   GCPtr       Guest context virtual address.
- * @deprecated
- */
-MMDECL(void *) MMPhysGCVirt2HCVirt(PVM pVM, RTGCPTR GCPtr)
-{
-    void *pv;
-    int rc = PGMPhysGCPtr2HCPtr(pVM, GCPtr, &pv);
-    if (VBOX_SUCCESS(rc))
-        return pv;
-    AssertMsgFailed(("%VGv, %Vrc\n", GCPtr, rc));
-    return NULL;
-}
