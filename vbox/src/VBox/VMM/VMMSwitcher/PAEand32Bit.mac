@@ -1,4 +1,4 @@
-; $Id: PAEand32Bit.mac 464 2007-01-31 14:58:15Z vboxsync $
+; $Id: PAEand32Bit.mac 956 2007-02-16 19:40:23Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for PAE and 32-Bit.
 ;
@@ -444,10 +444,6 @@ BEGINPROC vmmGCCallTrampoline
     COM_S_CHAR 't'
     COM_S_CHAR '!'
 %endif
-    ; Clear fs and gs.
-    xor     eax, eax
-    mov     gs, eax
-    mov     fs, eax
 
     ; call routine
     pop     eax                         ; call address
