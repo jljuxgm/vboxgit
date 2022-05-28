@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 1608 2007-03-21 19:31:00Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 1797 2007-03-29 13:39:22Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -1006,7 +1006,9 @@ DECLASM(int) TRPMGCHyperTrap0eHandler(PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
  */
 DECLCALLBACK(int) trpmGCTrapInGeneric(PVM pVM, PCPUMCTXCORE pRegFrame, uintptr_t uUser)
 {
+    Log(("********************************************************\n"));
     Log(("trpmGCTrapInGeneric: eip=%RX32 uUser=%#x\n", pRegFrame->eip, uUser));
+    Log(("********************************************************\n"));
 
     if (uUser & TRPM_TRAP_IN_HYPER)
     {
