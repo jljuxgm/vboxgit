@@ -1,4 +1,4 @@
-/* $Id: MMRamGC.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: MMRamGC.cpp 5342 2007-10-17 07:30:36Z vboxsync $ */
 /** @file
  * MMRamGC - Guest Context Ram access Routines, pair for MMRamGCA.asm.
  */
@@ -23,6 +23,7 @@
 #include <VBox/mm.h>
 #include <VBox/cpum.h>
 #include <VBox/trpm.h>
+#include <VBox/em.h>
 #include "MMInternal.h"
 #include <VBox/vm.h>
 #include <VBox/pgm.h>
@@ -39,7 +40,10 @@ static DECLCALLBACK(int) mmgcramTrap0eHandler(PVM pVM, PCPUMCTXCORE pRegFrame);
 
 DECLASM(void) MMGCRamReadNoTrapHandler_EndProc(void);
 DECLASM(void) MMGCRamWriteNoTrapHandler_EndProc(void);
-
+DECLASM(void) EMGCEmulateCmpXchg_EndProc(void);
+DECLASM(void) EMGCEmulateLockCmpXchg_EndProc(void);
+DECLASM(void) EMGCEmulateCmpXchg_Error(void);
+DECLASM(void) EMGCEmulateLockCmpXchg_Error(void);
 DECLASM(void) MMGCRamRead_Error(void);
 DECLASM(void) MMGCRamWrite_Error(void);
 
@@ -163,6 +167,28 @@ DECLCALLBACK(int) mmgcramTrap0eHandler(PVM pVM, PCPUMCTXCORE pRegFrame)
 
         /* Return execution to func at error label. */
         pRegFrame->eip = (uintptr_t)&MMGCRamWrite_Error;
+        return VINF_SUCCESS;
+    }
+    else if (    (uintptr_t)&EMGCEmulateLockCmpXchg < (uintptr_t)pRegFrame->eip
+             &&  (uintptr_t)pRegFrame->eip < (uintptr_t)&EMGCEmulateLockCmpXchg_EndProc)
+    {
+        /*
+         * Page fault inside EMGCEmulateLockCmpXchg() func.
+         */
+
+        /* Return execution to func at error label. */
+        pRegFrame->eip = (uintptr_t)&EMGCEmulateLockCmpXchg_Error;
+        return VINF_SUCCESS;
+    }
+    else if (    (uintptr_t)&EMGCEmulateCmpXchg < (uintptr_t)pRegFrame->eip
+             &&  (uintptr_t)pRegFrame->eip < (uintptr_t)&EMGCEmulateCmpXchg_EndProc)
+    {
+        /*
+         * Page fault inside EMGCEmulateCmpXchg() func.
+         */
+
+        /* Return execution to func at error label. */
+        pRegFrame->eip = (uintptr_t)&EMGCEmulateCmpXchg_Error;
         return VINF_SUCCESS;
     }
 
