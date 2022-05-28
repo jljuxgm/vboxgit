@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4465 2007-08-31 10:02:25Z vboxsync $
+# $Id: Makefile.kmk 4469 2007-08-31 11:08:41Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -30,7 +30,6 @@ OTHER_CLEAN    = $(addprefix $(PATH_TARGET)/install/,\
 	         VirtualBox.tar.bz2 LICENSE) \
 	         $(wildcard $(PATH_TARGET)/VirtualBox-*)
 INSTALLS       = linux-bin linux-doc
-VBOX_DO_STRIP ?= $(if $(filter release profile,$(BUILD_TYPE)),1,)
 
 VBoxTunctl_TEMPLATE = VBOXR3EXE
 VBoxTunctl_SOURCES  = tunctl.c

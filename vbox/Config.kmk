@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4433 2007-08-30 08:33:37Z vboxsync $
+# $Id: Config.kmk 4469 2007-08-31 11:08:41Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -227,7 +227,10 @@ VBOX_WITH_SHARED_FOLDERS = 1
 VBOX_WITH_SHARED_CLIPBOARD = 1
 # Enable the Intel PXE ROM (replaces Etherboot).
 VBOX_WITH_INTEL_PXE = 1
-
+# Strip binaries of release and profile builds
+VBOX_DO_STRIP = $(if $(filter release profile,$(BUILD_TYPE)),1,)
+# Strip R0/GC modules (current requirement for our loader)
+VBOX_DO_STRIP_MODULES = 1
 
 #
 # Skip stuff.
@@ -1246,8 +1249,8 @@ ifeq ($(BUILD_TARGET),solaris)
 else
  TEMPLATE_VBOXGC_LDFLAGS             = -nostdlib -Bsymbolic
  # temporarily, must fix the loader.
- TEMPLATE_VBOXGC_LDFLAGS            += -S
- TEMPLATE_VBOXGC_LDFLAGS.release     = -S
+ TEMPLATE_VBOXGC_LDFLAGS            += $(if $(VBOX_DO_STRIP_MODULES),-S,)
+ TEMPLATE_VBOXGC_LDFLAGS.release     = $(if $(VBOX_DO_STRIP_MODULES),-S,)
 endif
 TEMPLATE_VBOXGC_LIBS                = \
 	$(VBOX_GCC32_LIBGCC) # instricts
@@ -1347,8 +1350,8 @@ ifeq ($(BUILD_TARGET),solaris)
 else
  TEMPLATE_VBOXR0_LDFLAGS             = -nostdlib -Bsymbolic
  # temporarily, must fix the loader.
- TEMPLATE_VBOXR0_LDFLAGS            += -S
- TEMPLATE_VBOXR0_LDFLAGS.release     = -S
+ TEMPLATE_VBOXR0_LDFLAGS            += $(if $(VBOX_DO_STRIP_MODULES),-S,)
+ TEMPLATE_VBOXR0_LDFLAGS.release     = $(if $(VBOX_DO_STRIP_MODULES),-S,)
 endif
 
 TEMPLATE_VBOXR0_LIBS                = \
@@ -2516,7 +2519,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4433 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4469 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
