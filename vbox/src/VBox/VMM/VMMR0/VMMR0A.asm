@@ -1,4 +1,4 @@
-; $Id: VMMR0A.asm 2819 2007-05-23 15:42:56Z vboxsync $
+; $Id: VMMR0A.asm 2820 2007-05-23 15:43:25Z vboxsync $
 ;; @file
 ; VMM - R0 assembly routines.
 ;
@@ -330,7 +330,7 @@ BEGINPROC vmmR0CallHostLongJmp
     ; Normalize the parameters.
     ;
  %ifdef ASM_CALL64_MSC
-    mov     eax, rdx                    ; rc
+    mov     eax, edx                    ; rc
     mov     rdx, rcx                    ; pJmpBuf
  %else
     mov     rdx, rdi                    ; pJmpBuf
