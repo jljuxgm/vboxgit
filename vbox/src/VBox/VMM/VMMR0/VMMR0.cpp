@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 1226 2007-03-05 16:00:13Z vboxsync $ */
+/* $Id: VMMR0.cpp 1227 2007-03-05 16:00:29Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -60,7 +60,7 @@ VMMR0DECL(void) ModuleTerm(void);
 __END_DECLS
 
 
-#define DEBUG_NO_RING0_ASSERTIONS
+//#define DEBUG_NO_RING0_ASSERTIONS
 #ifdef DEBUG_NO_RING0_ASSERTIONS
 static PVM g_pVMAssert = 0;
 #endif
