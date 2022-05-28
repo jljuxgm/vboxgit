@@ -1,11 +1,10 @@
-/* $Id: magics.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: magics.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Internal Header Defining The Magic Numbers.
  */
 
 /*
  * Copyright (c) 2007 innotek GmbH
- *
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -21,10 +20,10 @@
  *
  */
 
-#ifndef ___internal_magics_h___
-#define ___internal_magics_h___
+#ifndef ___internal_magics_h
+#define ___internal_magics_h
 
-/** @name Magic Numbers. 
+/** @name Magic Numbers.
  * @{ */
 
 /** The value of RTDIR::u32Magic. (Michael Ende) */

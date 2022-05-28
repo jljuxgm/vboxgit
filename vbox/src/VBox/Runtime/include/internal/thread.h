@@ -1,4 +1,4 @@
-/* $Id: thread.h 3672 2007-07-17 12:39:30Z vboxsync $ */
+/* $Id: thread.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Internal RTThread header.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __thread_h__
-#define __thread_h__
+#ifndef ___thread_h
+#define ___thread_h
 
 #include <iprt/types.h>
 #include <iprt/thread.h>

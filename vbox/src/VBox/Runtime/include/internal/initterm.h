@@ -1,4 +1,4 @@
-/* $Id: initterm.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: initterm.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Initialization & Termination.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __internal_initterm_h_
-#define __internal_initterm_h_
+#ifndef ___internal_initterm_h
+#define ___internal_initterm_h
 
 #include <iprt/cdefs.h>
 

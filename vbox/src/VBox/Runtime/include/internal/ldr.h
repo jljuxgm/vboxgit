@@ -1,4 +1,4 @@
-/* $Id: ldr.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: ldr.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Loader Internals.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __ldr_h__
-#define __ldr_h__
+#ifndef ___internal_ldr_h
+#define ___internal_ldr_h
 
 #include <iprt/types.h>
 #include "internal/magics.h"

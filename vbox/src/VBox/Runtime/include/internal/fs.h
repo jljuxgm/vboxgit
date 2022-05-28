@@ -1,4 +1,4 @@
-/* $Id: fs.h 3672 2007-07-17 12:39:30Z vboxsync $ */
+/* $Id: fs.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Internal RTFs header.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __fs_h__
-#define __fs_h__
+#ifndef ___internal_fs_h
+#define ___internal_fs_h
 
 #include <iprt/types.h>
 #ifndef RT_OS_WINDOWS

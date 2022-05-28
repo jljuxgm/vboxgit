@@ -1,4 +1,4 @@
-/* $Id: the-nt-kernel.h 3672 2007-07-17 12:39:30Z vboxsync $ */
+/* $Id: the-nt-kernel.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the NT kernel.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __the_nt_kernel_h__
-#define __the_nt_kernel_h__
+#ifndef ___the_nt_kernel_h
+#define ___the_nt_kernel_h
 
 #include <iprt/cdefs.h>
 
@@ -44,9 +44,6 @@ __END_DECLS
 #endif
 
 #include <memory.h>
-#if !defined(__WIN32__) && !defined(__WIN64__)
-# error "__WIN32__ or __WIN64__ must be defined!"
-#endif
 #if !defined(RT_OS_WINDOWS)
 # error "RT_OS_WINDOWS must be defined!"
 #endif

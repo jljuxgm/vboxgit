@@ -1,4 +1,4 @@
-/* $Id: path.h 3672 2007-07-17 12:39:30Z vboxsync $ */
+/* $Id: path.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - RTPath Internal header.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __path_h__
-#define __path_h__
+#ifndef ___internal_path_h
+#define ___internal_path_h
 
 #include <iprt/cdefs.h>
 #include <iprt/param.h>

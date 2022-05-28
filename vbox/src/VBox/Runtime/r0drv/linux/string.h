@@ -1,4 +1,4 @@
-/* $Id: string.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: string.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - wrapper for the linux kernel asm/string.h.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __string_h__
-#define __string_h__
+#ifndef ___string_h
+#define ___string_h
 
 #include <iprt/cdefs.h>
 

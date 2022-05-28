@@ -1,4 +1,4 @@
-/* $Id: ldrMZ.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: ldrMZ.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime, MZ header.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __ldrMZ_h__
-#define __ldrMZ_h__
+#ifndef ___internal_ldrMZ_h
+#define ___internal_ldrMZ_h
 
 #pragma pack(1) /* not required */
 

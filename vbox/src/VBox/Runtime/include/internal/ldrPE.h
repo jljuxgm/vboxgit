@@ -1,4 +1,4 @@
-/* $Id: ldrPE.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: ldrPE.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Windows NT PE Structures and Constants.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __ldrPE_h__
-#define __ldrPE_h__
+#ifndef ___internal_ldrPE_h
+#define ___internal_ldrPE_h
 
 #include <iprt/types.h>
 

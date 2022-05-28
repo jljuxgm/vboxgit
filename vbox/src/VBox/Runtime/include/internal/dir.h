@@ -1,4 +1,4 @@
-/* $Id: dir.h 3672 2007-07-17 12:39:30Z vboxsync $ */
+/* $Id: dir.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Internal Header for RTDir.
  */
@@ -19,9 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-
-#ifndef __internal_dir_h__
-#define __internal_dir_h__
+#ifndef ___internal_dir_h
+#define ___internal_dir_h
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>

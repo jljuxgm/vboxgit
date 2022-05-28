@@ -1,4 +1,4 @@
-/* $Id: file.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: file.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Internal RTFile header.
  */
@@ -19,9 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-
-#ifndef __internal_file_h__
-#define __internal_file_h__
+#ifndef ___internal_file_h
+#define ___internal_file_h
 
 #include <iprt/file.h>
 

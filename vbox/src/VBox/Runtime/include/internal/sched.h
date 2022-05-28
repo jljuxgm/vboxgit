@@ -1,4 +1,4 @@
-/* $Id: sched.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: sched.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Internal RTSched header.
  */
@@ -19,9 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-
-#ifndef __internal_sched_h__
-#define __internal_sched_h__
+#ifndef ___internal_sched_h
+#define ___internal_sched_h
 
 #include <iprt/thread.h>
 #include "internal/process.h"

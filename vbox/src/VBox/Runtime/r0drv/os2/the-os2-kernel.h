@@ -1,4 +1,4 @@
-/* $Id: the-os2-kernel.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: the-os2-kernel.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Driver, The OS/2 Kernel Headers.
  */
@@ -29,8 +29,8 @@
  */
 
 
-#ifndef __the_os2_kernel_h__
-#define __the_os2_kernel_h__
+#ifndef ___the_os2_kernel_h
+#define ___the_os2_kernel_h
 
 #include <iprt/types.h>
 

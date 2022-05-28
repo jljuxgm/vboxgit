@@ -1,4 +1,4 @@
-/* $Id: ioctl.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: ioctl.h 3699 2007-07-18 17:37:46Z vboxsync $ */
 /** @file
  * VBox L4/OSS audio - header for Linux IoCtls.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __VBOX_L4_OSS_IOCTL
-#define __VBOX_L4_OSS_IOCTL
+#ifndef ___VBOX_L4_OSS_IOCTL
+#define ___VBOX_L4_OSS_IOCTL
 
 #define IOCPARM_MASK   0x3fff          /* parameters must be < 16383 bytes */
 #define IOC_VOID       0U << 30      /* no parameters */
@@ -39,5 +39,5 @@
 #define _IOC_READ      IOC_OUT
 #define _IOC_WRITE     IOC_IN
 
-#endif /* __VBOX_L4_OSS_IOCTL */
+#endif /* !___VBOX_L4_OSS_IOCTL */
 
