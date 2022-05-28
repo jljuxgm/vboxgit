@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
+/* $Id: utf-8.cpp 3757 2007-07-21 11:41:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - UTF-8 Decoding.
  */
@@ -33,7 +33,7 @@
 
 
 /**
- * Get get length in code points of a UTF-8 endcoded string.
+ * Get get length in code points of a UTF-8 encoded string.
  * The string is validated while doing this.
  *
  * @returns IPRT status code.
