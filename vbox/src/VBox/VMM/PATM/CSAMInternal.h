@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: CSAMInternal.h 3025 2007-06-04 12:49:31Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -251,7 +251,7 @@ typedef int (VBOXCALL *PFN_CSAMR3ANALYSE)(PVM pVM, DISCPUSTATE *pCpu, GCPTRTYPE(
  * @returns             true if patched
  *
  */
-bool csamCheckGuestSpecificPatch(PVM pVM, RTGCPTR pInstrGC, HCPTRTYPE(uint8_t *)pInstrHC, uint32_t opcode);
+bool csamCheckGuestSpecificPatch(PVM pVM, RTGCPTR pInstrGC, HCPTRTYPE(uint8_t *) pInstrHC, uint32_t opcode);
 
 /**
  * Calculate the branch destination
