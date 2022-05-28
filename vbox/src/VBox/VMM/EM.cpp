@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 747 2007-02-07 14:04:52Z vboxsync $ */
+/* $Id: EM.cpp 748 2007-02-07 14:09:17Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -951,12 +951,16 @@ void emR3SingleStepExec(PVM pVM, uint32_t cIterations)
 {
     EMSTATE enmOldState = pVM->em.s.enmState;
     pVM->em.s.enmState = EMSTATE_DEBUG_GUEST_RAW;
+
+    Log(("Single step BEGIN:\n"));
     for(uint32_t i=0;i<cIterations;i++)
     {
         DBGFR3PrgStep(pVM);
         emR3RawStep(pVM);
         DBGFR3DisasInstrCurrentLog(pVM, "RSS: ");
     }
+    Log(("Single step END:\n"));
+    CPUMSetGuestEFlags(pVM, CPUMGetGuestEFlags(pVM) & ~X86_EFL_TF);
     pVM->em.s.enmState = enmOldState;
 }
 #endif
