@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 323 2007-01-25 17:25:01Z vboxsync $ */
+/* $Id: PGMPhys.cpp 853 2007-02-13 09:58:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -372,9 +372,19 @@ int pgmr3PhysGrowRange(PVM pVM, RTGCPHYS GCPhys)
     rc = SUPPageAlloc(cPages, &pvRam);
     if (VBOX_SUCCESS(rc))
     {
+        VMSTATE enmVMState = VMR3GetState(pVM);
+
         rc = MMR3PhysRegisterEx(pVM, pvRam, GCPhys, PGM_DYNAMIC_CHUNK_SIZE, 0, MM_PHYS_TYPE_DYNALLOC_CHUNK, "Main Memory");
-        if (VBOX_SUCCESS(rc))
+        if (    VBOX_SUCCESS(rc)
+            ||  enmVMState != VMSTATE_RUNNING)
+        {
+            if (VBOX_FAILURE(rc))
+            {
+                AssertMsgFailed(("Out of memory while trying to allocate a guest RAM chunk at %VGp!\n", GCPhys));
+                LogRel(("PGM: Out of memory while trying to allocate a guest RAM chunk at %VGp (VMstate=%s)!\n", GCPhys, VMR3GetStateName(enmVMState)));
+            }
             return rc;
+        }
 
         SUPPageFree(pvRam);
 
