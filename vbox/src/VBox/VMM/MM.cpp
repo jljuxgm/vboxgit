@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 4768 2007-09-13 11:36:09Z vboxsync $ */
+/* $Id: MM.cpp 4901 2007-09-19 13:29:27Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager).
  */
@@ -167,13 +167,11 @@ MMR3DECL(int) MMR3Init(PVM pVM)
                                        NULL, mmR3Load, NULL);
             if (VBOX_SUCCESS(rc))
                 return rc;
-        }
 
-        /* .... failure .... */
-        mmR3Term(pVM, true /* keep the heap */);
+            /* .... failure .... */
+        }
     }
-    else
-        mmr3HeapDestroy(pVM->mm.s.pHeap);
+    mmR3Term(pVM, true /* keep the heap */);
     return rc;
 }
 
