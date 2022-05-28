@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 1087 2007-02-28 08:36:40Z vboxsync $
+; $Id: PATMA.asm 1108 2007-02-28 13:32:08Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -1092,6 +1092,18 @@ GLOBALNAME PATMPushCSRecord
 ;; else
 ;;     int 3
 ;;****************************************************
+;;
+; Stack:
+;
+; esp + 32 - GS         (V86 only)
+; esp + 28 - FS         (V86 only)
+; esp + 24 - DS         (V86 only)
+; esp + 20 - ES         (V86 only)
+; esp + 16 - SS         (if transfer to outer ring)
+; esp + 12 - ESP        (if transfer to outer ring)
+; esp + 8  - EFLAGS
+; esp + 4  - CS
+; esp      - EIP
 ;;
 BEGINPROC   PATMIretReplacement
 PATMIretStart:
