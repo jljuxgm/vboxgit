@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.h 1  vboxsync $ */
+/* $Id: alloc-r0drv.h 289 2007-01-25 05:41:27Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Memory Allocation, Ring-0 Driver.
  */
@@ -50,6 +50,7 @@ typedef struct RTMEMHDR
 #define RTMEMHDR_FLAG_ZEROED    BIT(0)
 #define RTMEMHDR_FLAG_EXEC      BIT(1)
 #ifdef __LINUX__
+#define RTMEMHDR_FLAG_EXEC_HEAP BIT(30)
 #define RTMEMHDR_FLAG_KMALLOC   BIT(31)
 #endif
 /** @} */
