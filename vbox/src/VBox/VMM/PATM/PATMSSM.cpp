@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PATMSSM.cpp 93 2007-01-17 12:57:07Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -179,11 +179,11 @@ static DECLCALLBACK(int) patmSavePatchState(PAVLOGCPTRNODECORE pNode, void *pVM1
 
 #ifdef VBOX_STRICT
     int nrLookupRecords = 0;
-    RTAvlPVDoWithAll(&pPatch->patch.Patch2GuestAddrTree, true, patmCountLeaf, &nrLookupRecords);
+    RTAvlU32DoWithAll(&pPatch->patch.Patch2GuestAddrTree, true, patmCountLeaf, &nrLookupRecords);
     Assert(nrLookupRecords == pPatch->patch.nrPatch2GuestRecs);
 #endif
 
-    RTAvlPVDoWithAll(&pPatch->patch.Patch2GuestAddrTree, true, patmSaveP2GLookupRecords, pVM);
+    RTAvlU32DoWithAll(&pPatch->patch.Patch2GuestAddrTree, true, patmSaveP2GLookupRecords, pVM);
     return VINF_SUCCESS;
 }
 
