@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 188 2007-01-19 17:11:18Z vboxsync $ */
+/* $Id: PATMInternal.h 208 2007-01-21 14:23:25Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -727,6 +727,21 @@ PPATCHINFO PATMFindActivePatchByEntrypoint(PVM pVM, RTGCPTR pInstrGC, bool fIncl
 PATMR3DECL(int) PATMR3PatchBlock(PVM pVM, RTGCPTR pInstrGC, HCPTRTYPE(uint8_t *) pInstrHC,
                                  uint32_t uOpcode, uint32_t uOpSize, PPATMPATCHREC pPatchRec);
 
+
+/**
+ * Replace an instruction with a breakpoint (0xCC), that is handled dynamically in the guest context.
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ * @param   pInstrGC    Guest context point to privileged instruction
+ * @param   pInstrHC    Host context point to privileged instruction
+ * @param   pCpu        Disassembly CPU structure ptr
+ * @param   pPatch      Patch record
+ *
+ * @note    returns failure if patching is not allowed or possible
+ *
+ */
+PATMR3DECL(int) PATMR3PatchInstrInt3(PVM pVM, RTGCPTR pInstrGC, HCPTRTYPE(uint8_t *) pInstrHC, DISCPUSTATE *pCpu, PPATCHINFO pPatch);
 
 /**
  * Mark patch as dirty

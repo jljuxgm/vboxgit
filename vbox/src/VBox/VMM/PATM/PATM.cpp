@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 103 2007-01-17 14:45:01Z vboxsync $ */
+/* $Id: PATM.cpp 208 2007-01-21 14:23:25Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -4172,7 +4172,7 @@ PATMR3DECL(int) PATMR3InstallPatch(PVM pVM, RTGCPTR pInstrGC, uint64_t flags)
         switch (cpu.pCurInstr->opcode)
         {
         case OP_SYSENTER:
-        case OP_PUSHF:
+        case OP_PUSH:
             rc = PATMInstallGuestSpecificPatch(pVM, &cpu, pInstrGC, pInstrHC, pPatchRec);
             if (rc == VINF_SUCCESS)
             {
