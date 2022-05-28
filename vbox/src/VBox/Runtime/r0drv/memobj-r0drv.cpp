@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 3225 2007-06-22 04:37:40Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, Common Code.
  */
@@ -579,7 +579,7 @@ RTR0DECL(int) RTR0MemObjReserveUser(PRTR0MEMOBJ pMemObj, void *pvFixed, size_t c
  *                          Supported values are 0 (alias for PAGE_SIZE), PAGE_SIZE, _2M and _4M.
  * @param   fProt           Combination of RTMEM_PROT_* flags (except RTMEM_PROT_NONE).
  */
-RTR0DECL(int) RTR0MemObjMapKernel(PRTR0MEMOBJ pMemObj, PRTR0MEMOBJ MemObjToMap, void *pvFixed, size_t uAlignment, unsigned fProt)
+RTR0DECL(int) RTR0MemObjMapKernel(PRTR0MEMOBJ pMemObj, RTR0MEMOBJ MemObjToMap, void *pvFixed, size_t uAlignment, unsigned fProt)
 {
     /* sanity checks. */
     AssertPtrReturn(pMemObj, VERR_INVALID_POINTER);
