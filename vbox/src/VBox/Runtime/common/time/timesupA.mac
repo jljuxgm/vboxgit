@@ -1,4 +1,4 @@
-; $Id: timesupA.mac 5489 2007-10-25 01:43:43Z vboxsync $
+; $Id: timesupA.mac 5531 2007-10-27 01:03:07Z vboxsync $
 ;; @file
 ; innotek Portable Runtime - Time using SUPLib, the Assembly Code Template.
 ;
@@ -66,8 +66,12 @@ BEGINPROC rtTimeNanoTSInternalAsm
     ; Load pGip and calc pGipCPU, setting u32ApicIdPlus if necessary.
     ;
 %ifdef IMPORTED_SUPLIB
+ %ifdef IN_RING0
+    mov     esi, IMP(g_SUPGlobalInfoPage)
+ %else
     mov     esi, IMP(g_pSUPGlobalInfoPage)
     mov     esi, [esi]
+ %endif
 %else
     mov     esi, [NAME(g_pSUPGlobalInfoPage)]
 %endif
