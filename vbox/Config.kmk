@@ -1,4 +1,4 @@
-# $Id: Config.kmk 2443 2007-04-30 18:42:26Z vboxsync $
+# $Id: Config.kmk 2457 2007-05-03 01:00:19Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -99,7 +99,7 @@ VBOX_PATH_DIST        = $(patsubst %/,%,$(PATH_INS)/$(INST_DIST))
 .DELETE_ON_ERROR:
 
 # Notify about important kBuild updates.
-ifneq ($(call int-ge,$(KMK_REVISION),830),1)
+ifneq ($(call int-ge,$(KMK_REVISION),890),1)
  $(error You must update kBuild!)
 endif
 
