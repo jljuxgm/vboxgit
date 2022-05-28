@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-freebsd.c 3680 2007-07-18 04:31:28Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-freebsd.c 5334 2007-10-16 17:56:58Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Multiple Release Event Semaphores, Ring-0 Driver, FreeBSD.
  */
@@ -200,7 +200,7 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
         switch (rc)
         {
             case 0:
-                if (pEventMultiInt->u32Magic == RTSEMEVENT_MAGIC)
+                if (pEventMultiInt->u32Magic == RTSEMEVENTMULTI_MAGIC)
                 {
                     ASMAtomicDecU32(&pEventMultiInt->cWaking);
                     rc = VINF_SUCCESS;
