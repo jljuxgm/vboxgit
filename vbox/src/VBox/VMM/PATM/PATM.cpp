@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 1359 2007-03-09 10:40:44Z vboxsync $ */
+/* $Id: PATM.cpp 1373 2007-03-09 13:40:13Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -3955,7 +3955,7 @@ PATMR3DECL(int) PATMR3InstallPatch(PVM pVM, RTGCPTR pInstrGC, uint64_t flags)
         &&  (pCtx->ss & X86_SEL_RPL) == 0)
     {
         RTGCPTR pInstrGCFlat = SELMToFlat(pVM, pCtx->eflags, pCtx->cs, &pCtx->csHid, pInstrGC);
-        Assert(pInstrGCFlat == pInstrGC);
+        AssertMsg(pInstrGCFlat == pInstrGC, ("%04x:%VGv != %VGx eflags=%08x\n", pCtx->cs, pInstrGCFlat, pInstrGC));
     }
 #endif
 
