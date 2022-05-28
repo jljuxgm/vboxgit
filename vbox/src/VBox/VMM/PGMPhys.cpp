@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 5001 2007-09-24 11:18:29Z vboxsync $ */
+/* $Id: PGMPhys.cpp 5106 2007-09-28 18:31:29Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -779,22 +779,6 @@ static int32_t pgmR3PhysChunkFindUnmapCandidate(PVM pVM)
         return Args.pChunk->Core.Key;
     return INT32_MAX;
 }
-
-
-/**
- * Argument package for the VMMR0_DO_GMM_MAP_UNMAP_CHUNK request.
- */
-typedef struct GMMMAPUNMAPCHUNKREQ
-{
-    /** The header. */
-    SUPVMMR0REQHDR  Hdr;
-    /** The chunk to map, UINT32_MAX if unmap only. (IN) */
-    uint32_t        idChunkMap;
-    /** The chunk to unmap, UINT32_MAX if map only. (IN) */
-    uint32_t        idChunkUnmap;
-    /** Where the mapping address is returned. (OUT) */
-    RTR3PTR         pvR3;
-} GMMMAPUNMAPCHUNKREQ;
 
 
 /**
