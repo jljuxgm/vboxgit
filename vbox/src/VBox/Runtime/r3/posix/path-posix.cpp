@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 4556 2007-09-06 00:24:45Z vboxsync $ */
+/* $Id: path-posix.cpp 4636 2007-09-09 06:16:45Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Path Manipulation, POSIX.
  */
@@ -551,7 +551,7 @@ static int rtPathUserHomeByEnv(char *pszPath, size_t cchPath)
      */
     int rc = VERR_PATH_NOT_FOUND;
     const char *pszHome = getenv("HOME");
-    if (!pszHome)
+    if (pszHome)
 
     {
         struct stat st;
