@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 443 2007-01-30 21:53:52Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 1057 2007-02-23 20:38:37Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -371,6 +371,8 @@ static DECLCALLBACK(int) tmVirtualSetWarpDrive(PVM pVM, uint32_t u32Percent)
     {
         int rc = TMVirtualPause(pVM);
         AssertRCReturn(rc, rc);
+        rc = TMCpuTickPause(pVM);
+        AssertRCReturn(rc, rc);
     }
 
     pVM->tm.s.u32VirtualWarpDrivePercentage = u32Percent;
@@ -381,6 +383,8 @@ static DECLCALLBACK(int) tmVirtualSetWarpDrive(PVM pVM, uint32_t u32Percent)
     if (fPaused)
     {
         int rc = TMVirtualResume(pVM);
+        AssertRCReturn(rc, rc);
+        rc = TMCpuTickResume(pVM);
         AssertRCReturn(rc, rc);
     }
 

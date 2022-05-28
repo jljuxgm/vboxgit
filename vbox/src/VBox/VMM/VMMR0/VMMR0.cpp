@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 1006 2007-02-20 17:19:59Z vboxsync $ */
+/* $Id: VMMR0.cpp 1057 2007-02-23 20:38:37Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -428,9 +428,7 @@ VMMR0DECL(int) VMMR0Entry(PVM pVM, unsigned /* make me an enum */ uOperation, vo
 
             STAM_COUNTER_INC(&pVM->vmm.s.StatRunGC);
             register int rc;
-            TMCpuTickResume(pVM);
             pVM->vmm.s.iLastGCRc = rc = pVM->vmm.s.pfnR0HostToGuest(pVM);
-            TMCpuTickPause(pVM);
 
 #ifdef VBOX_WITH_STATISTICS
             vmmR0RecordRC(pVM, rc);
@@ -510,7 +508,6 @@ VMMR0DECL(int) VMMR0Entry(PVM pVM, unsigned /* make me an enum */ uOperation, vo
             int rc;
 
             STAM_COUNTER_INC(&pVM->vmm.s.StatRunGC);
-            TMCpuTickResume(pVM);
             rc = HWACCMR0Enable(pVM);
             if (VBOX_SUCCESS(rc))
             {
@@ -524,7 +521,6 @@ VMMR0DECL(int) VMMR0Entry(PVM pVM, unsigned /* make me an enum */ uOperation, vo
                 int rc2 = HWACCMR0Disable(pVM);
                 AssertRC(rc2);
             }
-            TMCpuTickPause(pVM);
             pVM->vmm.s.iLastGCRc = rc;
 
 #ifdef VBOX_WITH_STATISTICS

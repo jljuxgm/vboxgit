@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 866 2007-02-13 13:20:10Z vboxsync $ */
+/* $Id: VMEmt.cpp 1057 2007-02-23 20:38:37Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -304,7 +304,7 @@ VMR3DECL(int) VMR3WaitHalted(PVM pVM, bool fIgnoreInterrupts)
      * The CPU TSC is running while halted,
      * and the yielder is suspended.
      */
-    TMCpuTickResume(pVM);
+//    TMCpuTickResume(pVM);
     VMMR3YieldSuspend(pVM);
 
     /*
@@ -415,7 +415,7 @@ VMR3DECL(int) VMR3WaitHalted(PVM pVM, bool fIgnoreInterrupts)
      * Pause the TSC, it's restarted when we start executing,
      * and resume the yielder.
      */
-    TMCpuTickPause(pVM);
+//    TMCpuTickPause(pVM);
     VMMR3YieldResume(pVM);
 
 
