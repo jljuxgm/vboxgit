@@ -1,4 +1,4 @@
-# $Id: Config.kmk 3914 2007-07-29 22:19:06Z vboxsync $
+# $Id: Config.kmk 3979 2007-08-02 01:24:38Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1460,13 +1460,13 @@ VBOX_SOLARIS_SYS_INCS ?= /usr/include
 
 TEMPLATE_VBOXR0DRV_TOOL                = $(VBOX_GCC_TOOL)
 TEMPLATE_VBOXR0DRV_DEFS                = _KERNEL _STRICT_STDC IN_RING0 IN_RT_R0
-TEMPLATE_VBOXR0DRV_INCS                = \
-	$(VBOX_SOLARIS_SYS_INCS)
+#TEMPLATE_VBOXR0DRV_INCS                = \
+#	$(VBOX_SOLARIS_SYS_INCS)
 TEMPLATE_VBOXR0DRV_SYSSUFF             = .o
 TEMPLATE_VBOXR0DRV_LDFLAGS             = -r
 # exclude -Wall because of solaris headers' pragma ident warnings that gcc refuses to supress!!
 TEMPLATE_VBOXR0DRV_CFLAGS              = -Wno-trigraphs -Wpointer-arith -Winline $(VBOX_GCC_Wno-pointer-sign) \
-	-Wmissing-prototypes -Wstrict-prototypes -Wnested-externs\
+	-Wmissing-prototypes -Wstrict-prototypes \
 	-O2 -ffreestanding -nodefaultlibs -fno-strict-aliasing -fno-common -std=c99
 ## *************************** SOLARISTODO  ******************
 endif	# solaris
@@ -2506,7 +2506,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 3914 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 3979 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
