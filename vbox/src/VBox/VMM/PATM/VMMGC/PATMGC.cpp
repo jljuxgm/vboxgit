@@ -1,4 +1,4 @@
-/* $Id: PATMGC.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PATMGC.cpp 367 2007-01-26 17:06:04Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -124,6 +124,16 @@ PATMGCDECL(int) PATMGCHandleWriteToPatchPage(PVM pVM, PCPUMCTXCORE pRegFrame, RT
             }
             STAM_COUNTER_INC(&pVM->patm.s.StatPatchWriteInterpretedFailed);
         }
+        HCPTRTYPE(PPATCHINFO) *paPatch = (HCPTRTYPE(PPATCHINFO) *)MMHyperHC2GC(pVM, pPatchPage->aPatch);
+
+        /* Increase the invalid write counter for each patch that's registered for that page. */
+        for (uint32_t i=0;i<pPatchPage->cCount;i++)
+        {
+            PPATCHINFO pPatch = (PPATCHINFO)MMHyperHC2GC(pVM, paPatch[i]);
+
+            pPatch->cInvalidWrites++;
+        }
+
         STAM_PROFILE_ADV_STOP(&pVM->patm.s.StatPatchWriteDetect, a);
         return VINF_EM_RAW_EMULATE_INSTR;
     }
