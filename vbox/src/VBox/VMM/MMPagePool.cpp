@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: MMPagePool.cpp 50 2007-01-15 18:29:52Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Page Pool.
  */
@@ -284,7 +284,7 @@ DECLINLINE(void *) mmr3PagePoolAlloc(PMMPAGEPOOL pPool)
         {
             AssertMsg(paPhysPages[i].Phys && !(paPhysPages[i].Phys & PAGE_OFFSET_MASK),
                       ("i=%d Phys=%d\n", i, paPhysPages[i].Phys));
-            paPhysPages[i].uReserved = (unsigned)pSub;
+            paPhysPages[i].uReserved = (RTHCUINTPTR)pSub;
         }
 
         /*
