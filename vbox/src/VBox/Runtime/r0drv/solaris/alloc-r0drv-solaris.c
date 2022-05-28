@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 4543 2007-09-05 21:45:30Z vboxsync $ */
+/* $Id: alloc-r0drv-solaris.c 5325 2007-10-16 11:53:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -35,6 +35,11 @@ PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
 {
     Assert(cb != sizeof(void *));
     PRTMEMHDR pHdr;
+#ifdef RT_ARCH_AMD64
+    if (fFlags & RTMEMHDR_FLAG_EXEC)
+        pHdr = (PRTMEMHDR)segkmem_alloc(heaptext_arena, cb + sizeof(*pHdr), KM_SLEEP);
+    else
+#endif
     if (fFlags & RTMEMHDR_FLAG_ZEROED)
         pHdr = (PRTMEMHDR)kmem_zalloc(cb + sizeof(*pHdr), KM_SLEEP);
     else
@@ -58,7 +63,12 @@ PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
 void rtMemFree(PRTMEMHDR pHdr)
 {
     pHdr->u32Magic += 1;
-    kmem_free(pHdr, pHdr->cb + sizeof(*pHdr));
+#ifdef RT_ARCH_AMD64
+    if (pHdr->fFlags & RTMEMHDR_FLAG_EXEC)
+        segkmem_free(heaptext_arena, pHdr, pHdr->cb + sizeof(*pHdr));
+    else
+#endif
+        kmem_free(pHdr, pHdr->cb + sizeof(*pHdr));
 }
 
 
