@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 2980 2007-06-01 15:56:12Z vboxsync $ */
+/* $Id: DevPcBios.cpp 3646 2007-07-16 15:32:04Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -33,7 +33,6 @@
 #include <iprt/string.h>
 #include <VBox/err.h>
 
-#include "vl_vbox.h"
 #include "Builtins.h"
 #include "Builtins2.h"
 #include "DevPcBios.h"
