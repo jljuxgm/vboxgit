@@ -1,4 +1,4 @@
-/* $Id: VBoxDDUDeps.cpp 5564 2007-10-30 18:17:48Z vboxsync $ */
+/* $Id: VBoxDDUDeps.cpp 5574 2007-10-31 12:01:01Z vboxsync $ */
 /** @file
  * VBoxDDU - For dragging in library objects.
  */
@@ -19,6 +19,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#include <VBox/types.h>
 #ifdef VBOX_WITH_USB
 # include <VBox/usbfilter.h>
 #endif
