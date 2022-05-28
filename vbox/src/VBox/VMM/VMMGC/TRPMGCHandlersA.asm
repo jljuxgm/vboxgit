@@ -1,4 +1,4 @@
-; $Id: TRPMGCHandlersA.asm 4071 2007-08-07 17:07:59Z vboxsync $
+; $Id: TRPMGCHandlersA.asm 4394 2007-08-27 19:41:25Z vboxsync $
 ;; @file
 ; TRPM - Guest Context Trap Handlers
 ;
@@ -171,13 +171,13 @@ BEGINPROC_EXPORTED TRPMGCHandlerGeneric
     TRPMGenericEntry GenericTrapErrCode ; e
     TRPMGenericEntry GenericTrap        ; f  (reserved)
     TRPMGenericEntry GenericTrap        ; 10
-    TRPMGenericEntry GenericTrapErrCode ; 12
+    TRPMGenericEntry GenericTrapErrCode ; 11
+    TRPMGenericEntry GenericTrap        ; 12
     TRPMGenericEntry GenericTrap        ; 13
     TRPMGenericEntry GenericTrap        ; 14 (reserved)
     TRPMGenericEntry GenericTrap        ; 15 (reserved)
     TRPMGenericEntry GenericTrap        ; 16 (reserved)
     TRPMGenericEntry GenericTrap        ; 17 (reserved)
-    TRPMGenericEntry GenericTrap        ; 18 (reserved)
 %undef i
 %undef TRPMGenericEntry
 
