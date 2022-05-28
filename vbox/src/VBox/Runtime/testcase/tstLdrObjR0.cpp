@@ -1,4 +1,4 @@
-/* $Id: tstLdrObjR0.cpp 915 2007-02-15 01:14:36Z vboxsync $ */
+/* $Id: tstLdrObjR0.cpp 941 2007-02-15 21:05:32Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - RTLdr test object.
  *
@@ -85,7 +85,7 @@ extern "C" DECLEXPORT(void *) SomeExportFunction4(void)
 {
     static unsigned cb;
     DISCPUSTATE Cpu = {0};
-    DISCoreOne(&Cpu, (RTGCUINTPTR)SomeExportFunction3, &cb);
+    DISCoreOne(&Cpu, (uintptr_t)SomeExportFunction3, &cb);
     return (void *)(uintptr_t)&SomeExportFunction1;
 }
 
