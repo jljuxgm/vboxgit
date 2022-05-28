@@ -1,4 +1,4 @@
-# $Id: Makefile 683 2007-02-06 04:45:46Z vboxsync $
+# $Id: Makefile 691 2007-02-06 05:29:03Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -462,6 +462,7 @@ VBoxRT_LIBS.l4                 = \
 # This is used together with VBoxRT.
 #
 RuntimeR3NoCRTGCC_TEMPLATE = VBOXNOCRTGCC
+RuntimeR3NoCRTGCC_LIBSUFF = $(VBOX_SUFF_LIB)
 RuntimeR3NoCRTGCC_SOURCES  = \
 	misc/sanity-cpp.cpp \
 	misc/sanity-c.c \
