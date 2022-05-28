@@ -1,4 +1,4 @@
-# $Id: Config.kmk 2317 2007-04-23 11:27:20Z vboxsync $
+# $Id: Config.kmk 2329 2007-04-24 16:07:39Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1012,6 +1012,11 @@ else ifeq ($(BUILD_TARGET),darwin)
  ifndef QTDIR
   QTDIR := $(sort $(wildcard $(PATH_DEVTOOLS_BLD)/v*))
   QTDIR := $(call lastword,$(QTDIR))
+ endif
+else
+ ifndef QTDIR
+  # This is a pretty safe shot.
+  export QTDIR := $(wildcard /usr/share/qt3)
  endif
 endif
 ifndef VBOX_PATH_QT
