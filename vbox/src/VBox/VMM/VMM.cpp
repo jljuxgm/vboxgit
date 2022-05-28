@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 4811 2007-09-14 17:53:56Z vboxsync $ */
+/* $Id: VMM.cpp 4917 2007-09-20 10:06:48Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2231,6 +2231,12 @@ static int vmmR3ServiceCallHostRequest(PVM pVM)
         case VMMCALLHOST_VM_SET_RUNTIME_ERROR:
             VMR3SetRuntimeErrorWorker(pVM);
             break;
+
+        /*
+         * Signal a ring 0 hypervisor assertion.
+         */
+        case VMMCALLHOST_VM_R0_HYPER_ASSERTION:
+            return VINF_EM_DBG_HYPER_ASSERTION;
 
         default:
             AssertMsgFailed(("enmCallHostOperation=%d\n", pVM->vmm.s.enmCallHostOperation));
