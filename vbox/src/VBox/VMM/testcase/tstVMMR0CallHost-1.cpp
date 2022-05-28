@@ -1,4 +1,4 @@
-/* $Id: tstVMMR0CallHost-1.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: tstVMMR0CallHost-1.cpp 161 2007-01-18 18:25:45Z vboxsync $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
@@ -93,7 +93,7 @@ int main()
      */
     RTR3Init(false);
     RTPrintf("tstVMMR0CallHost-1: Testing...\n");
-    g_Jmp.pvSavedStack = &g_Stack[0];
+    g_Jmp.pvSavedStack = (RTR0PTR)&g_Stack[0];
 
     /*
      * Try about 1000 long jumps with increasing stack size..

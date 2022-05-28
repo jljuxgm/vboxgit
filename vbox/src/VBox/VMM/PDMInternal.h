@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PDMInternal.h 161 2007-01-18 18:25:45Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -253,6 +253,9 @@ typedef struct PDMPIC
     DECLGCCALLBACKMEMBER(void, pfnSetIrqGC,(PPDMDEVINS pDevIns, int iIrq, int iLevel));
     /** @copydoc PDMPICREG::pfnGetInterruptHC */
     DECLGCCALLBACKMEMBER(int, pfnGetInterruptGC,(PPDMDEVINS pDevIns));
+#if GC_ARCH_BITS == 32
+    RTGCPTR                         GCPtrPadding; /**< Alignment padding. */
+#endif
 } PDMPIC;
 
 

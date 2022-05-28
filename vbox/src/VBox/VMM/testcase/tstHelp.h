@@ -1,4 +1,4 @@
-/* $Id: tstHelp.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: tstHelp.h 161 2007-01-18 18:25:45Z vboxsync $ */
 /** @file
  * VMM testcase - Helper stuff.
  */
@@ -118,5 +118,21 @@ __END_DECLS
             rc++; \
         } \
     } while (0)
+
+/**
+ * Checks that a internal struct padding is big enough.
+ */
+#define CHECK_PADDING3(strct, member, pad_member) \
+    do \
+    { \
+        strct *p; \
+        if (sizeof(p->member) > sizeof(p->pad_member)) \
+        { \
+            printf("padding of %s::%s is too small, padding=%d struct=%d\n", #strct, #member, \
+                   (int)sizeof(p->pad_member), (int)sizeof(p->member)); \
+            rc++; \
+        } \
+    } while (0)
+
 
 #endif

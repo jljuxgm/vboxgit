@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: VMM.cpp 161 2007-01-18 18:25:45Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -387,7 +387,7 @@ VMMR3DECL(int) VMMR3Init(PVM pVM)
         if (VBOX_SUCCESS(rc))
         {
             /* Set HC and GC stack pointers to top of stack. */
-            pVM->vmm.s.CallHostR0JmpBuf.pvSavedStack = pVM->vmm.s.pbHCStack;
+            pVM->vmm.s.CallHostR0JmpBuf.pvSavedStack = (RTR0PTR)pVM->vmm.s.pbHCStack;
             pVM->vmm.s.pbGCStack = MMHyperHC2GC(pVM, pVM->vmm.s.pbHCStack);
             pVM->vmm.s.pbGCStackBottom = pVM->vmm.s.pbGCStack + VMM_STACK_SIZE;
             AssertRelease(pVM->vmm.s.pbGCStack);

@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: MMInternal.h 161 2007-01-18 18:25:45Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -588,7 +588,7 @@ typedef struct MM
 
     /** Set if PGM has been initialized and we can safely call PGMR3Map(). */
     bool                        fPGMInitialized;
-#if GC_ARCH_BITS == 64
+#if GC_ARCH_BITS == 64 || HC_ARCH_BITS == 64
     uint32_t                    u32Padding1; /**< alignment padding. */
 #endif
 
