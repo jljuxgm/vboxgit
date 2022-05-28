@@ -1,4 +1,4 @@
-/* $Id: CFGMInternal.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: CFGMInternal.h 4763 2007-09-13 09:36:50Z vboxsync $ */
 /** @file
  * CFGM - Internal header file.
  */
@@ -137,7 +137,7 @@ typedef struct CFGM
     RTUINT                  uPadding0;
 
     /** Pointer to root node. */
-    HCPTRTYPE(PCFGMNODE)    pRoot;
+    R3PTRTYPE(PCFGMNODE)    pRoot;
 } CFGM;
 
 /** @} */
