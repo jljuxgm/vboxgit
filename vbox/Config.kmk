@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4399 2007-08-28 11:41:11Z vboxsync $
+# $Id: Config.kmk 4400 2007-08-28 11:46:57Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -91,9 +91,6 @@ PATH_DOC              = $(PATH_OUT)/doc
 VBOX_PATH_SDK         = $(patsubst %/,%,$(PATH_INS)/$(INST_SDK))
 VBOX_PATH_DIST        = $(patsubst %/,%,$(PATH_INS)/$(INST_DIST))
 VBOX_PATH_TESTSUITE   = $(patsubst %/,%,$(PATH_INS)/$(INST_TESTSUITE))
-
-VBOX_SIGNING_MODE=release
-VBOX_PATH_SELFSIGN := $(PATH_DEVTOOLS)/win.x86/selfsign
 
 
 # Delete targets on failure.
@@ -2523,7 +2520,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4399 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4400 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
