@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 4767 2007-09-13 11:30:25Z vboxsync $ */
+/* $Id: MMInternal.h 4787 2007-09-14 09:08:56Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -224,9 +224,9 @@ typedef struct MMHYPERHEAP
     /** The heap size. (This structure is not included!) */
     uint32_t                cbHeap;
     /** The HC Ring-3 address of the VM. */
-    HCPTRTYPE(PVM)          pVMHC;
+    R3PTRTYPE(PVM)          pVMHC;
     /** The HC Ring-3 address of the heap. */
-    HCPTRTYPE(uint8_t *)    pbHeapHC;
+    R3R0PTRTYPE(uint8_t *)  pbHeapHC;
     /** The GC address of the heap. */
     GCPTRTYPE(uint8_t *)    pbHeapGC;
     /** The GC address of the VM. */
@@ -594,7 +594,7 @@ typedef struct MMLOOKUPHYPER
         } GCPhys;
     } u;
     /** Description. */
-    HCPTRTYPE(const char *) pszDesc;
+    R3PTRTYPE(const char *) pszDesc;
 } MMLOOKUPHYPER;
 /** Pointer to a hypervisor memory lookup record. */
 typedef MMLOOKUPHYPER *PMMLOOKUPHYPER;

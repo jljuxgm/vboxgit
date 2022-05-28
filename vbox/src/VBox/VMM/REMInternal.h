@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 4616 2007-09-07 19:34:00Z vboxsync $ */
+/* $Id: REMInternal.h 4787 2007-09-14 09:08:56Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -148,7 +148,7 @@ typedef struct REM
     RTUINT                  uPadding0;
 
     /** Cached guest cpu context pointer. */
-    HCPTRTYPE(PCPUMCTX)     pCtx;
+    R3PTRTYPE(PCPUMCTX)     pCtx;
 
     /** In REM mode.
      * I.e. the correct CPU state and some other bits are with REM. */
@@ -191,9 +191,9 @@ typedef struct REM
     REMHANDLERNOTIFICATION  aHandlerNotifications[32];
 
     /** Pointer to an array of hc virt to gc phys records. */
-    HCPTRTYPE(PREMCHUNKINFO) paHCVirtToGCPhys;
+    R3PTRTYPE(PREMCHUNKINFO) paHCVirtToGCPhys;
     /** Pointer to a GC Phys to HC Virt lookup table. */
-    HCPTRTYPE(PRTHCUINTPTR) paGCPhysToHCVirt;
+    R3PTRTYPE(PRTHCUINTPTR) paGCPhysToHCVirt;
 
     /** Array of external RAM and ROM registrations (excluding guest RAM). */
     REMPHYSREGISTRATION     aPhysReg[REM_MAX_PHYS_REGISTRATIONS];

@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: IOMAll.cpp 4787 2007-09-14 09:08:56Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -232,6 +232,7 @@ inline void iomGCMMIOStatLength(PVM pVM, unsigned cb)
 #endif
 }
 
+#ifndef IN_RING0
 /**
  * Registers a Port IO GC handler.
  *
@@ -451,7 +452,7 @@ IOMDECL(int)  IOMMMIORegisterGC(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhysStar
 
     return rc;
 }
-
+#endif
 
 /**
  * Registers a Port IO R0 handler.

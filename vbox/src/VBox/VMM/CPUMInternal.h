@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: CPUMInternal.h 4787 2007-09-14 09:08:56Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -259,7 +259,7 @@ typedef struct CPUM
     /** Pointer to CPU structure in GC. */
     GCPTRTYPE(struct CPUM *) pCPUMGC;
     /** Pointer to CPU structure in HC. */
-    HCPTRTYPE(struct CPUM *) pCPUMHC;
+    R3R0PTRTYPE(struct CPUM *) pCPUMHC;
 
     /** Force 32byte alignment of the next member. */
     uint32_t        padding[4 + (HC_ARCH_BITS == 32)];
@@ -284,7 +284,7 @@ typedef struct CPUM
 
 
     /** Pointer to the current hypervisor core context - HCPtr. */
-    HCPTRTYPE(PCPUMCTXCORE) pHyperCoreHC;
+    R3R0PTRTYPE(PCPUMCTXCORE) pHyperCoreHC;
     /** Pointer to the current hypervisor core context - GCPtr. */
     GCPTRTYPE(PCPUMCTXCORE) pHyperCoreGC;
 

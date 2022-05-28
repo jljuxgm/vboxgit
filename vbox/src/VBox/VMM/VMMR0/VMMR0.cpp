@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 4755 2007-09-13 08:05:08Z vboxsync $ */
+/* $Id: VMMR0.cpp 4787 2007-09-14 09:08:56Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -727,7 +727,7 @@ VMMR0DECL(void) vmmR0LoggerFlush(PRTLOGGER pLogger)
 
     PVM pVM = pR0Logger->pVM;
     if (    !VALID_PTR(pVM)
-        ||  pVM->pVMHC != pVM)
+        ||  pVM->pVMR0 != pVM)
     {
         LogCom(("vmmR0LoggerFlush: pVM=%p! pLogger=%p\n", pVM, pLogger));
         return;

@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: DevPIC.cpp 4787 2007-09-14 09:08:56Z vboxsync $ */
 /** @file
  * Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -112,11 +112,11 @@ typedef struct PicState {
     uint8_t elcr; /* PIIX edge/trigger selection*/
     uint8_t elcr_mask;
     /** Pointer to the device instance, HCPtr. */
-    HCPTRTYPE(PPDMDEVINS) pDevInsHC;
+    R3R0PTRTYPE(PPDMDEVINS) pDevInsHC;
     /** Pointer to the device instance, GCPtr. */
-    GCPTRTYPE(PPDMDEVINS) pDevInsGC;
+    GCPTRTYPE(PPDMDEVINS)   pDevInsGC;
 #if HC_ARCH_BITS == 64 && GC_ARCH_BITS != 64
-    RTGCPTR               Alignment0;
+    RTGCPTR                 Alignment0;
 #endif
 } PicState;
 
@@ -136,7 +136,7 @@ typedef struct DEVPIC
     /** Pointer to the device instance - GC Ptr. */
     GCPTRTYPE(PPDMDEVINS)   pDevInsGC;
     /** Pointer to the device instance - GC Ptr. */
-    HCPTRTYPE(PPDMDEVINS)   pDevInsHC;
+    R3R0PTRTYPE(PPDMDEVINS) pDevInsHC;
 #if HC_ARCH_BITS == 32
     uint32_t                Alignmnet0;
 #endif
@@ -437,7 +437,7 @@ PDMBOTHCBDECL(int) picGetInterrupt(PPDMDEVINS pDevIns)
 
 static void pic_reset(PicState *s)
 {
-    HCPTRTYPE(PPDMDEVINS) pDevInsHC = s->pDevInsHC;
+    R3R0PTRTYPE(PPDMDEVINS) pDevInsHC = s->pDevInsHC;
     GCPTRTYPE(PPDMDEVINS) pDevInsGC = s->pDevInsGC;
     int tmp, tmp2;
 

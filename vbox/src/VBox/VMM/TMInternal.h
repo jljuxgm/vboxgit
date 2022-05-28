@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 4776 2007-09-13 15:29:33Z vboxsync $ */
+/* $Id: TMInternal.h 4787 2007-09-14 09:08:56Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -399,7 +399,7 @@ typedef struct TM
      * This timer will do freqent check on pending queue schedulations and
      * raise VM_FF_TIMER to pull EMTs attention to them.
      */
-    HCPTRTYPE(PRTTIMER)         pTimer;
+    R3PTRTYPE(PRTTIMER)         pTimer;
     /** Interval in milliseconds of the pTimer timer. */
     uint32_t                    u32TimerMillies;
 
