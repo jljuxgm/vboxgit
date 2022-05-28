@@ -1,4 +1,4 @@
-/** $Id: DevPit-i8254.cpp 4429 2007-08-30 03:41:19Z vboxsync $ */
+/** $Id: DevPit-i8254.cpp 4431 2007-08-30 06:15:56Z vboxsync $ */
 /** @file
  * Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -124,6 +124,8 @@ typedef struct PITState
 #ifdef FAKE_REFRESH_CLOCK
     /** Speaker dummy. */
     int32_t                 dummy_refresh_clock;
+#else
+    uint32_t                Alignment1;
 #endif
     /** Pointer to the device instance. */
     HCPTRTYPE(PPDMDEVINS)   pDevIns;
