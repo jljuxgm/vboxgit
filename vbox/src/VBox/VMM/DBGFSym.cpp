@@ -1,4 +1,4 @@
-/* $Id: DBGFSym.cpp 450 2007-01-30 23:06:24Z vboxsync $ */
+/* $Id: DBGFSym.cpp 670 2007-02-06 04:22:57Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Symbol Management.
  */
@@ -24,7 +24,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DBGF
-#if defined(__WIN32__) && defined(DEBUG_bird) // enabled this is you want to debug win32 guests or the hypervisor.
+#if defined(__WIN__) && defined(DEBUG_bird) // enabled this is you want to debug win32 guests or the hypervisor.
 # include <Windows.h>
 # define _IMAGEHLP64
 # include <DbgHelp.h>
@@ -55,7 +55,7 @@
 *   Internal Functions                                                         *
 *******************************************************************************/
 #ifdef HAVE_DBGHELP
-static DECLCALLBACK(int) dbgfR3EnumModules(PVM pVM, const char *pszFilename, const char *pszName, RTUINTPTR ImageBase, unsigned cbImage, bool fGC);
+static DECLCALLBACK(int) dbgfR3EnumModules(PVM pVM, const char *pszFilename, const char *pszName, RTUINTPTR ImageBase, size_t cbImage, bool fGC);
 static int win32Error(PVM pVM);
 #endif
 
@@ -378,7 +378,7 @@ int dbgfR3SymLazyInit(PVM pVM)
  * @param   fGC             Set if guest context, clear if host context.
  * @param   pvArg           User argument.
  */
-static DECLCALLBACK(int) dbgfR3EnumModules(PVM pVM, const char *pszFilename, const char *pszName, RTUINTPTR ImageBase, unsigned cbImage, bool fGC)
+static DECLCALLBACK(int) dbgfR3EnumModules(PVM pVM, const char *pszFilename, const char *pszName, RTUINTPTR ImageBase, size_t cbImage, bool fGC)
 {
     if (fGC)
     {
