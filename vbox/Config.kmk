@@ -1,4 +1,4 @@
-# $Id: Config.kmk 3060 2007-06-06 08:48:56Z vboxsync $
+# $Id: Config.kmk 3100 2007-06-12 18:28:18Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -337,6 +337,13 @@ ifndef VBOX_WITH_MAIN
  VBOX_WITH_VBOXSDL=
  VBOX_WITH_QTGUI=
  VBOX_WITH_DEBUGGER_GUI=
+endif
+
+#
+# Mark OSE builds clearly, helps figuring out limitations more easily.
+#
+ifdef VBOX_OSE
+VBOX_VERSION_STRING = $(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD)_OSE
 endif
 
 
