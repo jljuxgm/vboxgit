@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 247 2007-01-23 17:10:04Z vboxsync $ */
+/* $Id: VMInternal.h 319 2007-01-25 16:56:35Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -255,7 +255,8 @@ typedef struct VMINT
      * If clear the VMR3Destroy() caller does so. */
     bool                            fEMTDoesTheCleanup;
 
-    /** vmR3EmulationThread longjmp buffer */
+    /** vmR3EmulationThread longjmp buffer 
+     * @todo r=bird: requires union with padding. See EMInternal.h. */
     jmp_buf                         emtJumpEnv;
 
     /** Number of VMR3ReqAlloc returning a new packet. */
