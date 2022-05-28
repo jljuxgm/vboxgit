@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 2050 2007-04-12 15:16:19Z vboxsync $ */
+/* $Id: VMMR0.cpp 2108 2007-04-16 16:26:17Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -742,7 +742,7 @@ DECLEXPORT(bool) RTCALL  RTAssertDoBreakpoint()
             rc = g_pVMAssert->vmm.s.rcCallHost;
     }
 
-    return true;
+    return false;
 }
 
 
