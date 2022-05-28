@@ -1,4 +1,4 @@
-/** $Id: DBGCInternal.h 5669 2007-11-11 05:05:02Z vboxsync $ */
+/** $Id: DBGCInternal.h 5670 2007-11-11 05:05:35Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -355,7 +355,6 @@ PCDBGCSYM dbgcLookupRegisterSymbol(PDBGC pDbgc, const char *pszSymbol);
 /*******************************************************************************
 *   Global Variables                                                           *
 *******************************************************************************/
-extern const DBGCCMD    g_aCmds[];
 extern const DBGCCMD    g_aCmdsCodeView[];
 extern const unsigned   g_cCmdsCodeView;
 
