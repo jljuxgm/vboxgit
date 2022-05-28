@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: MM.cpp 28 2007-01-15 16:48:27Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager).
  */
@@ -210,7 +210,7 @@ MMR3DECL(int) MMR3InitPaging(PVM pVM)
         rc = MMR3PhysRegister(pVM, pVM->mm.s.pvRamBaseHC, 0, pVM->mm.s.cbRamBase, MM_RAM_FLAGS_DYNAMIC_ALLOC, "Main Memory");
         if (VBOX_SUCCESS(rc))
         {
-            /* Allocate the first 4 MB chunk, as we'll map ROM ranges there. */
+            /* Allocate the first chunk, as we'll map ROM ranges there. */
             rc = PGM3PhysGrowRange(pVM, (RTGCPHYS)0);
             if (VBOX_SUCCESS(rc))
                 return rc;
