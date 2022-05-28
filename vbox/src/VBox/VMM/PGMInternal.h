@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 457 2007-01-31 01:18:59Z vboxsync $ */
+/* $Id: PGMInternal.h 686 2007-02-06 05:04:10Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -642,7 +642,7 @@ typedef struct PGMPOOLPAGE
 {
     /** AVL node code with the (HC) physical address of this page. */
     AVLOHCPHYSNODECORE  Core;
-#if HC_ARCH_BITS == 64 && GC_ARCH_BITS == 32 && defined(IN_GC)
+#if HC_ARCH_BITS == 64 && GC_ARCH_BITS == 32 && defined(IN_GC) && !defined(_MSC_VER) /** @todo figure out this one. */
     uint32_t            Alignment0; /**< Alignment. */
 #endif 
     /** Pointer to the HC mapping of the page. */
