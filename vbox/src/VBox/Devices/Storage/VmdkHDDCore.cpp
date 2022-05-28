@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 2742 2007-05-21 15:14:37Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 2758 2007-05-22 08:32:50Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -2589,7 +2589,8 @@ static int vmdkFlushImage(PVMDKIMAGE pImage)
             case VMDKETYPE_ESX_SPARSE:
 #endif /* VBOX_WITH_VMDK_ESX */
             case VMDKETYPE_FLAT:
-                if (pExtent->File != NIL_RTFILE && !(pImage->uOpenFlags & VD_OPEN_FLAGS_READONLY))
+                /** @todo implement proper path absolute check. */
+                if (pExtent->File != NIL_RTFILE && !(pImage->uOpenFlags & VD_OPEN_FLAGS_READONLY) && !(pExtent->pszBasename[0] == RTPATH_SLASH))
                     rc = RTFileFlush(pExtent->File);
                 break;
             case VMDKETYPE_ZERO:
