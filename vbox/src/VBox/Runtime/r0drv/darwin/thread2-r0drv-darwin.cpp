@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-darwin.cpp 403 2007-01-28 08:45:05Z vboxsync $ */
+/* $Id: thread2-r0drv-darwin.cpp 1870 2007-04-03 00:23:51Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Threads (Part 2), Ring-0 Driver, Darwin.
  */
@@ -135,8 +135,9 @@ int rtThreadNativeAdopt(PRTTHREADINT pThread)
 static void rtThreadNativeMain(void *pvArg, wait_result_t Ignored)
 {
     const thread_t Self = current_thread();
+    PRTTHREADINT pThread = (PRTTHREADINT)pvArg;
 
-    rtThreadMain((PRTTHREADINT)pvArg, (RTNATIVETHREAD)Self);
+    rtThreadMain(pThread, (RTNATIVETHREAD)Self, &pThread->szName[0]);
 
     kern_return_t kr = thread_terminate(Self);
     AssertFatalMsgFailed(("kr=%d\n", kr));
