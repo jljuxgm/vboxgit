@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 1920 2007-04-04 10:06:38Z vboxsync $ */
+/* $Id: PATM.cpp 1921 2007-04-04 10:11:40Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -3952,7 +3952,11 @@ PATMR3DECL(int) PATMR3InstallPatch(PVM pVM, RTGCPTR pInstrGC, uint64_t flags)
     CPUMQueryGuestCtxPtr(pVM, &pCtx);
     Assert(CPUMGetGuestCPL(pVM, CPUMCTX2CORE(pCtx)) == 0);
     RTGCPTR pInstrGCFlat = SELMToFlat(pVM, pCtx->eflags, pCtx->cs, &pCtx->csHid, pInstrGC);
-    AssertMsgReturn(pInstrGCFlat == pInstrGC, ("%04x:%VGv != %VGv eflags=%08x\n", pCtx->cs, pInstrGCFlat, pInstrGC, pCtx->eflags.u32), VERR_PATCHING_REFUSED);
+    if (pInstrGCFlat != pInstrGC)
+    {
+        Log(("PATMR3InstallPatch: code selector not wide open: %04x:%VGv != %VGv eflags=%08x\n", pCtx->cs, pInstrGCFlat, pInstrGC, pCtx->eflags.u32));
+        return VERR_PATCHING_REFUSED;
+    }
 
     /** @note the OpenBSD specific check will break if we allow additional patches to be installed (int 3)) */
     if (!(flags & PATMFL_GUEST_SPECIFIC))
