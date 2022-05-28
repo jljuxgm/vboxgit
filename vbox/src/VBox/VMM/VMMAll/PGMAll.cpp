@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 2298 2007-04-20 23:55:51Z vboxsync $ */
+/* $Id: PGMAll.cpp 2318 2007-04-23 11:36:57Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -506,7 +506,7 @@ PGMDECL(int) PGMVerifyAccess(PVM pVM, RTGCUINTPTR Addr, uint32_t cbSize, uint32_
     {
         Addr += PAGE_SIZE;
         if (cbSize > PAGE_SIZE)
-            cbSize =- PAGE_SIZE;
+            cbSize -= PAGE_SIZE;
         else
             cbSize = 0;
 
@@ -519,7 +519,7 @@ PGMDECL(int) PGMVerifyAccess(PVM pVM, RTGCUINTPTR Addr, uint32_t cbSize, uint32_
 
             if (cbSize <= PAGE_SIZE)
                 break;
-            cbSize =- PAGE_SIZE;
+            cbSize -= PAGE_SIZE;
             Addr += PAGE_SIZE;
         }
     }
