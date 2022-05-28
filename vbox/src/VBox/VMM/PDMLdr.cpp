@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 1354 2007-03-09 09:39:20Z vboxsync $ */
+/* $Id: PDMLdr.cpp 1356 2007-03-09 09:53:16Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -898,7 +898,7 @@ static char * pdmR3FileConstruct(const char *pszDir, const char *pszFile, const 
     unsigned cchPath = cchDir + 1 + cchFile + cchDefaultExt + 1;
     if (cchPath > RTPATH_MAX)
     {
-        AssertMsgFailed("Path too long!\n");
+        AssertMsgFailed(("Path too long!\n"));
         return NULL;
     }
 
