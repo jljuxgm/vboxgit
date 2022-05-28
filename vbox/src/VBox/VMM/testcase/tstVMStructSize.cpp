@@ -1,8 +1,8 @@
-/* $Id: tstVMStructSize.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 3852 2007-07-25 19:09:09Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
- *                   representation of the structures.                
+ *                   representation of the structures.
  */
 
 /*
@@ -201,11 +201,13 @@ int main()
         printf("error: CPUMHOSTCTX lss has been split up!\n");
         rc++;
     }
-#endif 
+#endif
 
     /* pdm */
     CHECK_MEMBER_ALIGNMENT(PDMDEVINS, achInstanceData, 16);
     CHECK_PADDING(PDMDEVINS, Internal);
+    CHECK_MEMBER_ALIGNMENT(PDMUSBINS, achInstanceData, 16);
+    CHECK_PADDING(PDMUSBINS, Internal);
     CHECK_MEMBER_ALIGNMENT(PDMDRVINS, achInstanceData, 16);
     CHECK_PADDING(PDMDRVINS, Internal);
     CHECK_PADDING2(PDMCRITSECT);
