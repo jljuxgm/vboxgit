@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: TRPMInternal.h 347 2007-01-26 09:36:22Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -128,9 +128,6 @@ typedef struct TRPM
 
     /** Bitmap for IDTEs that contain PATM handlers. (needed for relocation) */
     uint32_t        au32IdtPatched[8];
-
-    /** Bitmap for IDTEs that were changed. */
-    uint32_t        au32IdtDirty[8];
 
     /** Temporary Hypervisor trap handlers.
      * NULL means default action. */

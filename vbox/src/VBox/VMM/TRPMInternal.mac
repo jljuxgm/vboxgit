@@ -1,4 +1,4 @@
-; $Id: TRPMInternal.mac 19 2007-01-15 13:07:05Z vboxsync $
+; $Id: TRPMInternal.mac 347 2007-01-26 09:36:22Z vboxsync $
 ;; @file
 ; TRPM - Internal header file.
 ;
@@ -46,7 +46,6 @@ struc TRPM
     .achPadding1        resb 4
     .aIdt               resd 512
     .au32IdtPatched     resd 8
-    .au32IdtDirty       resd 8
     .aTmpTrapHandlers   resd 256
 
     .GCPtrIdt           resd 1

@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: CSAMInternal.h 347 2007-01-26 09:36:22Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -44,7 +44,7 @@
 
 /** @} */
 
-#define CSAM_SSM_VERSION                       12
+#define CSAM_SSM_VERSION                       13
 
 #define CSAM_PGDIRBMP_CHUNKS                   1024
 
@@ -157,9 +157,6 @@ typedef struct CSAM
     GCPTRTYPE(RTHCPTR *)  pPDHCBitmapGC;
     HCPTRTYPE(uint8_t **) pPDBitmapHC;
     HCPTRTYPE(RTGCPTR  *) pPDGCBitmapHC;
-
-    /* Saved IDT entries. */
-    VBOXIDTE            aIDT[256];
 
     /* Temporary storage during load/save state */
     struct
