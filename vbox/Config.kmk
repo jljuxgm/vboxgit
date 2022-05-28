@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4838 2007-09-17 05:32:51Z vboxsync $
+# $Id: Config.kmk 4839 2007-09-17 05:41:43Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1721,7 +1721,7 @@ TEMPLATE_VBOXR3NP_LDFLAGS.l4 = \
 	-T$(L4_LIBDIR)/../main_rel.ld \
 	-nostdlib
 TEMPLATE_VBOXR3NP_DEFS.l4 = $(TEMPLATE_VBOXR3NPEXE_DEFS.l4) __PIC__
-ifeq ($(BUILD_TARGET_ARCH),amd64)
+ifeq ($(filter-out solaris.x86 %.amd64,$(BUILD_TARGET).$(BUILD_TARGET_ARCH)),)
  ifneq ($(BUILD_TARGET),win)
   TEMPLATE_VBOXR3NP_DEFS = $(TEMPLATE_VBOXR3NPEXE_DEFS) PIC
   TEMPLATE_VBOXR3NP_CFLAGS = $(TEMPLATE_VBOXR3NPEXE_CFLAGS) -fPIC
@@ -1903,7 +1903,7 @@ endif
 
 TEMPLATE_VBOXMAINDLL  = VBox Main Component (shared library)
 TEMPLATE_VBOXMAINDLL_EXTENDS = VBOXMAINEXE
-ifeq ($(BUILD_TARGET_ARCH),amd64)
+ifeq ($(filter-out solaris.x86 %.amd64,$(BUILD_TARGET).$(BUILD_TARGET_ARCH)),)
  ifneq ($(BUILD_TARGET),win)
   TEMPLATE_VBOXMAINDLL_DEFS     = PIC $(TEMPLATE_VBOXMAINEXE_DEFS)
   TEMPLATE_VBOXMAINDLL_CFLAGS   = -fPIC $(TEMPLATE_VBOXMAINEXE_CFLAGS)
@@ -1966,7 +1966,7 @@ endif
 
 TEMPLATE_VBOXMAINCLIENTDLL              = VBox MAIN Client (shared library)
 TEMPLATE_VBOXMAINCLIENTDLL_EXTENDS      = VBOXMAINCLIENTEXE
-ifeq ($(BUILD_TARGET_ARCH),amd64)
+ifeq ($(filter-out solaris.x86 %.amd64,$(BUILD_TARGET).$(BUILD_TARGET_ARCH)),)
  ifneq ($(BUILD_TARGET),win)
   TEMPLATE_VBOXMAINCLIENTDLL_DEFS       = PIC $(TEMPLATE_VBOXMAINCLIENTEXE_DEFS)
   TEMPLATE_VBOXMAINCLIENTDLL_CFLAGS     = -fPIC $(TEMPLATE_VBOXMAINCLIENTEXE_CFLAGS)
@@ -2088,7 +2088,7 @@ TEMPLATE_VBOXQTGUI_LIBS = $(filter-out $(QTMAIN) $(PATH_BIN)/VBoxXML$(VBOX_SUFF_
 ifeq ($(BUILD_TARGET),darwin)
  TEMPLATE_VBOXQTGUI_LDFLAGS = $(filter-out -framework Carbon -framework QuickTime -bind_at_load,$(TEMPLATE_VBOXQTGUIEXE_LDFLAGS))
 endif
-ifeq ($(BUILD_TARGET_ARCH),amd64)
+ifeq ($(filter-out solaris.x86 %.amd64,$(BUILD_TARGET).$(BUILD_TARGET_ARCH)),)
  ifneq ($(BUILD_TARGET),win)
   TEMPLATE_VBOXQTGUI_DEFS     = PIC $(TEMPLATE_VBOXQTGUIEXE_DEFS)
   TEMPLATE_VBOXQTGUI_CFLAGS   = -fPIC $(TEMPLATE_VBOXQTGUIEXE_CFLAGS)
@@ -2541,7 +2541,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4838 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4839 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
   VBOX_SVN_DEP         :=
