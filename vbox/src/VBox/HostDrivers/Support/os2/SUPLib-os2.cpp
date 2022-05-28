@@ -1,7 +1,6 @@
+/* $Id: SUPLib-os2.cpp 4826 2007-09-15 14:06:39Z vboxsync $ */
 /** @file
- *
- * VBox host drivers - Ring-0 support drivers - OS/2 host:
- * OS/2 implementations for support library
+ * SUPLib - Support Library, OS/2 backend.
  */
 
 /*
@@ -136,7 +135,7 @@ int suplibOsIOCtl(uintptr_t uFunction, void *pvReq, size_t cbReq)
 
     ULONG cbReturned = sizeof(SUPREQHDR);
     int rc = DosDevIOCtl(g_hDevice, SUP_CTL_CATEGORY, uFunction,
-                         &cbIn, cbReturned, &cbReturned,
+                         &cbReq, cbReturned, &cbReturned,
                          NULL, 0, NULL);
     if (RT_LIKELY(rc == NO_ERROR))
         return VINF_SUCCESS;
