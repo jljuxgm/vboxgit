@@ -1,4 +1,4 @@
-/* $Id: ldrkLdr.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: ldrkLdr.cpp 4235 2007-08-19 22:48:24Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Binary Image Loader, kLdr Interface.
  */
@@ -30,6 +30,7 @@
 #include <iprt/param.h>
 #include <iprt/err.h>
 #include "internal/ldr.h"
+#define KLDR_ALREADY_INCLUDE_STD_TYPES
 #define KLDR_NO_KLDR_H_INCLUDES
 #include <kLdr.h>
 #include "kLdrHlp.h"
