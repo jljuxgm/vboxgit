@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 4382 2007-08-27 11:28:55Z vboxsync $ */
+/* $Id: DevPcBios.cpp 4391 2007-08-27 17:12:05Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1399,7 +1399,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
      */
     if (pu8LanBoot)
         rc = PDMDevHlpROMRegister(pDevIns, VBOX_LANBOOT_SEG << 4, cbFileLanBoot, pu8LanBoot, 
-                                  false /* fShadow */, "Net Boot ROM");
+                                  true /* fShadow */, "Net Boot ROM");
 
     rc = CFGMR3QueryU8(pCfgHandle, "DelayBoot", &pData->uBootDelay);
     if (rc == VERR_CFGM_VALUE_NOT_FOUND)

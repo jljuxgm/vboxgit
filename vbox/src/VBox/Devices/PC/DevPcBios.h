@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.h 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: DevPcBios.h 4391 2007-08-27 17:12:05Z vboxsync $ */
 /** @file
  * PC BIOS Device Header.
  */
@@ -25,7 +25,7 @@
 
 #define VBOX_MPS_TABLE_BASE          0xe1100
 
-#define VBOX_LANBOOT_SEG             0xca00
+#define VBOX_LANBOOT_SEG             0xe200
 
 #endif
 
