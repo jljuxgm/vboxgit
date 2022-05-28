@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 672 2007-02-06 04:24:06Z vboxsync $ */
+/* $Id: VMMR0.cpp 848 2007-02-12 16:01:52Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -442,7 +442,13 @@ VMMR0DECL(int) VMMR0Entry(PVM pVM, unsigned /* make me an enum */ uOperation, vo
                  * Default - no action, just return.
                  */
                 default:
+#if HC_ARCH_BITS == 64 /* AMD64 debugging - to be removed */
+                    if ((unsigned)rc - 0xc0caff00U > 0xff)
+                        return rc;
+                    /* fall thru */
+#else
                     return rc;
+#endif 
 
                 /*
                  * We'll let TRPM change the stack frame so our return is different.
