@@ -1,4 +1,4 @@
-/* $Id: log.cpp 2909 2007-05-29 11:36:21Z vboxsync $ */
+/* $Id: log.cpp 2963 2007-05-31 13:26:14Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -137,7 +137,7 @@ static struct RTLOGGERPERTHREAD
  */
 DECLINLINE(int) rtlogLock(PRTLOGGER pLogger)
 {
-#ifndef IN_GC
+#ifdef IN_RING3
     if (pLogger->MutexSem != NIL_RTSEMFASTMUTEX)
     {
         int rc = RTSemFastMutexRequest(pLogger->MutexSem);
@@ -154,7 +154,7 @@ DECLINLINE(int) rtlogLock(PRTLOGGER pLogger)
  */
 DECLINLINE(void) rtlogUnlock(PRTLOGGER pLogger)
 {
-#ifndef IN_GC
+#ifdef IN_RING3
     if (pLogger->MutexSem != NIL_RTSEMFASTMUTEX)
         RTSemFastMutexRelease(pLogger->MutexSem);
 #endif
