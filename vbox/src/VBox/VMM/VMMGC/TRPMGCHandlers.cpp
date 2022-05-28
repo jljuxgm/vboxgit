@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 269 2007-01-24 13:35:26Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -354,7 +354,7 @@ DECLASM(int) TRPMGCTrap06Handler(PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
         if (Cpu.pCurInstr->opcode == OP_ILLUD2)
         {
             int rc = PATMHandleIllegalInstrTrap(pVM, pRegFrame);
-            if (rc == VINF_SUCCESS || rc == VINF_EM_RAW_EMULATE_INSTR || rc == VINF_PATM_DUPLICATE_FUNCTION)
+            if (rc == VINF_SUCCESS || rc == VINF_EM_RAW_EMULATE_INSTR || rc == VINF_PATM_DUPLICATE_FUNCTION || rc == VINF_PATM_PENDING_IRQ_AFTER_IRET)
                 return trpmGCExitTrap(pVM, rc, pRegFrame);
         }
     }
