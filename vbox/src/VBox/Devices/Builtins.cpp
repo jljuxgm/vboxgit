@@ -1,4 +1,4 @@
-/** $Id: Builtins.cpp 1695 2007-03-26 08:42:07Z vboxsync $ */
+/** $Id: Builtins.cpp 1696 2007-03-26 08:57:50Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -166,9 +166,11 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvRawImage);
     if (VBOX_FAILURE(rc))
         return rc;
+#ifndef __L4ENV__
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostHDD);
     if (VBOX_FAILURE(rc))
         return rc;
+#endif
 #ifdef VBOX_WITH_ISCSI
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvISCSI);
     if (VBOX_FAILURE(rc))
