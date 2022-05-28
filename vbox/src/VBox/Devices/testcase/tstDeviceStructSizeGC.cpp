@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 4625 2007-09-08 07:00:57Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 4752 2007-09-13 07:11:02Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
