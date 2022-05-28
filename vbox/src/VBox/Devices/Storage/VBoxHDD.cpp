@@ -1,3 +1,4 @@
+/** $Id: VBoxHDD.cpp 2358 2007-04-26 16:53:00Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -35,7 +36,6 @@
 #include <iprt/uuid.h>
 #include <iprt/file.h>
 #include <iprt/string.h>
-#include <iprt/asm.h>
 
 #include "VDICore.h"
 #include "Builtins.h"

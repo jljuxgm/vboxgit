@@ -1,4 +1,4 @@
-/** $Id: VDICore.h 1566 2007-03-20 03:29:09Z vboxsync $ */
+/** $Id: VDICore.h 2358 2007-04-26 16:53:00Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -42,6 +42,12 @@
 /*******************************************************************************
 *   Constants And Macros, Structures and Typedefs                              *
 *******************************************************************************/
+
+/** Image info, not handled anyhow.
+ *  Must be less than 64 bytes in length, including the trailing 0.
+ */
+#define VDI_IMAGE_FILE_INFO   "<<< InnoTek VirtualBox Disk Image >>>\n"
+
 /** The Sector size.
  * Currently we support only 512 bytes sectors.
  */
@@ -526,4 +532,4 @@ VBOXDDU_DECL(int)  vdiChangeImageMode(PVDIIMAGEDESC pImage, bool fReadOnly);
 
 __END_DECLS
 
-#endif 
+#endif
