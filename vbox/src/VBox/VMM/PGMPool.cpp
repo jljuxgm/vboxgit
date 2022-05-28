@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PGMPool.cpp 2291 2007-04-20 23:26:42Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -376,7 +376,7 @@ void pgmR3PoolRelocate(PVM pVM)
     /* init order hack. */
     if (!pVM->pgm.s.pPoolHC->pfnAccessHandlerR0)
     {
-        rc = PDMR3GetSymbolR0(pVM, NULL, "pgmPoolAccessHandler", (void **)&pVM->pgm.s.pPoolHC->pfnAccessHandlerR0);
+        rc = PDMR3GetSymbolR0(pVM, NULL, "pgmPoolAccessHandler", &pVM->pgm.s.pPoolHC->pfnAccessHandlerR0);
         AssertReleaseRC(rc);
     }
 #endif
