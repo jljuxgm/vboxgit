@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: STAM.cpp 4072 2007-08-07 17:15:07Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -179,7 +179,9 @@ STAMR3DECL(int) STAMR3Term(PVM pVM)
         RTMemFree(pvFree);
     }
 
-    RTSemRWDestroy(pVM->stam.s.RWSem);
+    if (pVM->stam.s.RWSem)
+        RTSemRWDestroy(pVM->stam.s.RWSem);
+    pVM->stam.s.RWSem = 0;
     return VINF_SUCCESS;
 }
 
