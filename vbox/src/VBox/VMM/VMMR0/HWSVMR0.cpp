@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 1359 2007-03-09 10:40:44Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 1406 2007-03-12 09:06:41Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -513,7 +513,7 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
 HWACCMR0DECL(int) SVMR0RunGuestCode(PVM pVM, CPUMCTX *pCtx)
 {
     int         rc = VINF_SUCCESS;
-    uint64_t    exitCode;
+    uint64_t    exitCode = SVM_EXIT_INVALID;
     SVM_VMCB   *pVMCB;
     bool        fForceTLBFlush = false;
 
