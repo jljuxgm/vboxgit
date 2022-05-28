@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 1221 2007-03-05 15:26:12Z vboxsync $ */
+/* $Id: VMMR0.cpp 1222 2007-03-05 15:28:09Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -42,6 +42,7 @@
 #include <VBox/version.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
+#include <iprt/stdarg.h>
 
 #if defined(_MSC_VER) && defined(__AMD64__) /** @todo check this with with VC7! */
 #  pragma intrinsic(_AddressOfReturnAddress)
