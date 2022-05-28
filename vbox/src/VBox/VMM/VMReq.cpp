@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: VMReq.cpp 4943 2007-09-21 07:53:12Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -620,7 +620,8 @@ VMR3DECL(int) VMR3ReqWait(PVMREQ pReq, unsigned cMillies)
         {
             rc = RTSemEventWait(pReq->EventSem, RT_INDEFINITE_WAIT);
             Assert(rc != VERR_TIMEOUT);
-        } while (pReq->enmState != VMREQSTATE_COMPLETED);
+        } while (   pReq->enmState != VMREQSTATE_COMPLETED
+                 && pReq->enmState != VMREQSTATE_INVALID);
     }
     if (VBOX_SUCCESS(rc))
         ASMAtomicXchgSize(&pReq->fEventSemClear, true);
