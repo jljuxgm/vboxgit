@@ -1,4 +1,4 @@
-# $Id: op-darwin.sed 1  vboxsync $
+# $Id: op-darwin.sed 2207 2007-04-19 09:39:49Z vboxsync $
 ## @file
 #
 # SED script for transforming op.S (i386 ELF from GNU/linux) into
