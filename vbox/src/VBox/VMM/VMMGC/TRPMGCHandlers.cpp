@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 1828 2007-03-30 12:52:55Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 1886 2007-04-03 14:15:41Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -123,6 +123,7 @@ __END_DECLS
 static int trpmGCExitTrap(PVM pVM, int rc, PCPUMCTXCORE pRegFrame)
 {
     uint32_t uOldActiveVector = pVM->trpm.s.uActiveVector;
+    NOREF(uOldActiveVector);
 
     /* Reset trap? */
     if (    rc != VINF_EM_RAW_GUEST_TRAP
