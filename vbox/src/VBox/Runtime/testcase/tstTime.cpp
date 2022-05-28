@@ -1,4 +1,4 @@
-/* $Id: tstTime.cpp 1  vboxsync $ */
+/* $Id: tstTime.cpp 1206 2007-03-05 00:58:31Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime Testcase - Simple RTTime tests.
  */
@@ -120,9 +120,7 @@ SUPInit();
         RTPrintf("tstTime: total time difference: u64OSElapsedTS=%#llx u64RTElapsedTS=%#llx delta=%lld\n",
                  u64OSElapsedTS, u64RTElapsedTS, u64OSElapsedTS - u64RTElapsedTS);
 
-#if defined __WIN__ || defined __LINUX__
-    RTPrintf("RTTime1nsSteps -> %u\n", RTTime1nsSteps());
-#endif
+    RTPrintf("RTTime1nsSteps -> %u (%d ppt)\n", RTTime1nsSteps(), (RTTime1nsSteps() * 1000) / i);
     if (!cErrors)
         RTPrintf("tstTime: SUCCESS\n");
     else

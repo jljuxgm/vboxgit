@@ -1,4 +1,4 @@
-# $Id: Makefile 1205 2007-03-05 00:14:39Z vboxsync $
+# $Id: Makefile 1206 2007-03-05 00:58:31Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -313,7 +313,7 @@ RuntimeR3_SOURCES.os2   = \
 	generic/semsrw-generic.cpp \
 	generic/semnoint-generic.cpp \
 	generic/sched-generic.cpp \
-	r3/posix/time-posix.cpp \
+	r3/os2/time-os2.cpp \
 	r3/posix/timer-posix.cpp \
 	r3/posix/RTTimeNow-posix.cpp \
 	generic/utf16locale-generic.cpp \
