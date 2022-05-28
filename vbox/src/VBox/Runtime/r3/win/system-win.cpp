@@ -1,6 +1,6 @@
-/* $Id: utf16locale-win32.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: system-win.cpp 5428 2007-10-21 21:27:47Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - UTF-16 Locale Specific Manipulation, Win32.
+ * innotek Portable Runtime - System, Win32.
  */
 
 /*
@@ -19,21 +19,31 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define LOG_GROUP RTLOGGROUP_UTF16
+#define LOG_GROUP RTLOGGROUP_SYSTEM
 #include <Windows.h>
+#include <iprt/system.h>
+#include <iprt/assert.h>
 
-#include <iprt/string.h>
 
 
-RTDECL(int) RTUtf16LocaleICmp(PCRTUTF16 pusz1, PCRTUTF16 pusz2)
+RTDECL(unsigned) RTSystemProcessorGetCount(void)
 {
-    if (pusz1 == pusz2)
-        return 0;
-    if (pusz1 == NULL)
-        return -1;
-    if (pusz2 == NULL)
-        return 1;
+    SYSTEM_INFO SysInfo;
 
-    return CompareStringW(LOCALE_USER_DEFAULT, NORM_IGNORECASE, pusz1, -1, pusz2, -1) - 2;
+    GetSystemInfo(&SysInfo);
+
+    unsigned cCpus = (unsigned)SysInfo.dwNumberOfProcessors;
+    Assert((DWORD)cCpus == SysInfo.dwNumberOfProcessors);
+    return cCpus;
+}
+
+
+RTDECL(uint64_t) RTSystemProcessorGetActiveMask(void)
+{
+    SYSTEM_INFO SysInfo;
+
+    GetSystemInfo(&SysInfo);
+
+    return SysInfo.dwActiveProcessorMask;
 }
 

@@ -1,6 +1,6 @@
-/* $Id: system-win32.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: RTLogWriteDebugger-win.cpp 5428 2007-10-21 21:27:47Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - System, Win32.
+ * innotek Portable Runtime - Log To Debugger, Win32.
  */
 
 /*
@@ -19,31 +19,17 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define LOG_GROUP RTLOGGROUP_SYSTEM
 #include <Windows.h>
-#include <iprt/system.h>
+
+#include <iprt/log.h>
 #include <iprt/assert.h>
 
 
-
-RTDECL(unsigned) RTSystemProcessorGetCount(void)
+RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
 {
-    SYSTEM_INFO SysInfo;
-
-    GetSystemInfo(&SysInfo);
-
-    unsigned cCpus = (unsigned)SysInfo.dwNumberOfProcessors;
-    Assert((DWORD)cCpus == SysInfo.dwNumberOfProcessors);
-    return cCpus;
-}
-
-
-RTDECL(uint64_t) RTSystemProcessorGetActiveMask(void)
-{
-    SYSTEM_INFO SysInfo;
-
-    GetSystemInfo(&SysInfo);
-
-    return SysInfo.dwActiveProcessorMask;
+    if (pch[cb] != '\0')
+        AssertBreakpoint();
+    OutputDebugStringA(pch);
+    return;
 }
 

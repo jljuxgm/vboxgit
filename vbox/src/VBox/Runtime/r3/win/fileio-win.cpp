@@ -1,4 +1,4 @@
-/* $Id: fileio-win32.cpp 4372 2007-08-24 21:21:51Z vboxsync $ */
+/* $Id: fileio-win.cpp 5428 2007-10-21 21:27:47Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O, native implementation for the Windows host platform.
  */
