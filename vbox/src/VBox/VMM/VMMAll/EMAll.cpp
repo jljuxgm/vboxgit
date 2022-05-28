@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 2136 2007-04-17 15:50:07Z vboxsync $ */
+/* $Id: EMAll.cpp 2505 2007-05-04 18:20:07Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -46,6 +46,7 @@
 #include <iprt/asm.h>
 #include <iprt/string.h>
 
+
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
 *******************************************************************************/
@@ -53,11 +54,12 @@ typedef EMDECL(uint32_t) PFN_EMULATE_PARAM2_UINT32(uint32_t *pu32Param1, uint32_
 typedef EMDECL(uint32_t) PFN_EMULATE_PARAM2(uint32_t *pu32Param1, size_t val2);
 typedef EMDECL(uint32_t) PFN_EMULATE_PARAM3(uint32_t *pu32Param1, uint32_t val2, size_t val3);
 
-/*******************************************************************************
- *   Internal Functions                                                        *
- *******************************************************************************/
 
+/*******************************************************************************
+*   Internal Functions                                                         *
+*******************************************************************************/
 DECLINLINE(int) emInterpretInstructionCPU(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, uint32_t *pcbSize);
+
 
 /**
  * Get the current execution manager status.
@@ -270,7 +272,8 @@ EMDECL(int) EMInterpretPortIO(PVM pVM, PCPUMCTXCORE pCtxCore, PDISCPUSTATE pCpu,
      */
 #ifdef IN_GC
     int rc = IOMGCIOPortHandler(pVM, pCtxCore, pCpu);
-    if (rc == VINF_SUCCESS)
+    if (    rc == VINF_SUCCESS
+        ||  (rc >= VINF_EM_FIRST && rc <= VINF_EM_LAST))
         pCtxCore->eip += cbOp;
     return rc;
 #else
