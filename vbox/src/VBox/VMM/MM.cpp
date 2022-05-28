@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: MM.cpp 4388 2007-08-27 14:26:05Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager).
  */
@@ -331,6 +331,20 @@ static int mmR3Term(PVM pVM, bool fKeepTheHeap)
     pVM->mm.s.offVM          = 0;       /* init assertion on this */
 
     return 0;
+}
+
+
+/**
+ * Reset notification.
+ * 
+ * MM will reload shadow ROMs into RAM at this point and make 
+ * the ROM writable.
+ * 
+ * @param   pVM             The VM handle.
+ */
+MMR3DECL(void) MMR3Reset(PVM pVM)
+{
+    mmR3PhysRomReset(pVM);
 }
 
 

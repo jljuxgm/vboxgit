@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 4296 2007-08-22 20:23:31Z vboxsync $ */
+/* $Id: VM.cpp 4388 2007-08-27 14:26:05Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1743,6 +1743,7 @@ static DECLCALLBACK(int) vmR3Reset(PVM pVM)
     CSAMR3Reset(pVM);
     PGMR3Reset(pVM);                    /* We clear VM RAM in PGMR3Reset. It's vital PDMR3Reset is executed
                                          * _afterwards_. E.g. ACPI sets up RAM tables during init/reset. */
+    MMR3Reset(pVM);
     PDMR3Reset(pVM);
     SELMR3Reset(pVM);
     TRPMR3Reset(pVM);
