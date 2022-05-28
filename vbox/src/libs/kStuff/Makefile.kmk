@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5599 2007-11-01 01:26:46Z vboxsync $
+# $Id: Makefile.kmk 5778 2007-11-16 17:31:31Z vboxsync $
 ## @file
 # Makefile for kStuff, for statically linking into VBoxRT.
 #
@@ -65,3 +65,4 @@ VBox-kStuff_SOURCES = \
 #	kStuff/kErr/kErrName.c
 
 include $(PATH_KBUILD)/footer.kmk
+
