@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 1148 2007-03-02 09:52:17Z vboxsync $ */
+/* $Id: EM.cpp 1156 2007-03-02 13:47:46Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -966,8 +966,8 @@ void emR3SingleStepExecRaw(PVM pVM, uint32_t cIterations)
     for(uint32_t i=0;i<cIterations;i++)
     {
         DBGFR3PrgStep(pVM);
-        emR3RawStep(pVM);
         DBGFR3DisasInstrCurrentLog(pVM, "RSS: ");
+        emR3RawStep(pVM);
     }
     Log(("Single step END:\n"));
     CPUMSetGuestEFlags(pVM, CPUMGetGuestEFlags(pVM) & ~X86_EFL_TF);
@@ -985,8 +985,8 @@ void emR3SingleStepExecRem(PVM pVM, uint32_t cIterations)
     for(uint32_t i=0;i<cIterations;i++)
     {
         DBGFR3PrgStep(pVM);
-        emR3RemStep(pVM);
         DBGFR3DisasInstrCurrentLog(pVM, "RSS: ");
+        emR3RemStep(pVM);
     }
     Log(("Single step END:\n"));
     CPUMSetGuestEFlags(pVM, CPUMGetGuestEFlags(pVM) & ~X86_EFL_TF);
