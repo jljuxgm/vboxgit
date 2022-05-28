@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 2070 2007-04-13 10:12:06Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 2076 2007-04-13 12:59:52Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -746,7 +746,7 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     AssertRC(rc);
 
     /** TSC offset. */
-    uint64_t u64TSCOffset = TMCpuTickGet(pVM) - ASMReadTSC();
+    uint64_t u64TSCOffset = TMCpuTickGetOffset(pVM);
 
 #if HC_ARCH_BITS == 64
     rc  = VMXWriteVMCS(VMX_VMCS_CTRL_TSC_OFFSET_FULL, u64TSCOffset);
