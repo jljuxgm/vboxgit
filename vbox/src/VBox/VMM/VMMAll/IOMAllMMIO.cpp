@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 2256 2007-04-20 07:57:38Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 2258 2007-04-20 08:39:16Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -1845,7 +1845,6 @@ IOMDECL(int) IOMInterpretOUTS(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu
         cbSize = (pCpu->opmode == CPUMODE_32BIT) ? 4 : 2;
 
     int rc = IOMInterpretCheckPortIOAccess(pVM, pRegFrame, uPort, cbSize);
-    Log(("IOMInterpretCheckPortIOAccess -> %Vrc\n", rc));
     if (RT_UNLIKELY(rc != VINF_SUCCESS))
         return rc;
 
