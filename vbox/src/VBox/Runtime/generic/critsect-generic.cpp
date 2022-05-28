@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 1  vboxsync $ */
+/* $Id: critsect-generic.cpp 751 2007-02-07 15:34:35Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Critical Section, Generic.
  */
@@ -286,6 +286,10 @@ RTDECL(int) RTCritSectEnterDebug(PRTCRITSECT pCritSect, const char *pszFile, uns
     if (ThreadSelf == NIL_RTTHREAD)
         RTThreadAdopt(RTTHREADTYPE_DEFAULT, 0, NULL, &ThreadSelf);
 #endif
+
+    /** If the critical section has already been destroyed, then inform the caller. */
+    if (pCritSect->u32Magic != RTCRITSECT_MAGIC)
+        return VERR_SEM_DESTROYED;
 
     /*
      * Increment the waiter counter.
