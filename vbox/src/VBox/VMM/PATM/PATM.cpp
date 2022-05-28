@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 1625 2007-03-22 14:39:08Z vboxsync $ */
+/* $Id: PATM.cpp 1792 2007-03-29 11:47:32Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -4479,7 +4479,7 @@ int patmAddPatchToPage(PVM pVM, RTGCUINTPTR pPage, PPATCHINFO pPatch)
             pPatchPage->pHighestAddrGC = (RTGCPTR)pGuestToPatchRec->Core.Key;
             /* Increase by instruction size. */
             uint32_t size = patmGetInstrSize(pVM, pPatch, pPatchPage->pHighestAddrGC);
-            Assert(size);
+////            Assert(size);
             pPatchPage->pHighestAddrGC += size;
         }
     }
