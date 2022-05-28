@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3480 2007-07-05 15:48:41Z vboxsync $
+# $Id: Makefile.kmk 3494 2007-07-06 21:09:32Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -180,6 +180,7 @@ VBoxSVC_SOURCES = \
 	HostUSBDeviceImpl.cpp \
 	GuestOSTypeImpl.cpp \
 	NetworkAdapterImpl.cpp \
+	SerialPortImpl.cpp \
 	USBControllerImpl.cpp \
 	AudioAdapterImpl.cpp \
 	SharedFolderImpl.cpp \
