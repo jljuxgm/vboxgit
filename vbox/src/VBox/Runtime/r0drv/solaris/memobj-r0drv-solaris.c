@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 4981 2007-09-22 00:10:41Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 5125 2007-10-01 14:10:26Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, Solaris.
  */
@@ -135,7 +135,7 @@ int rtR0MemObjNativeFree(RTR0MEMOBJ pMem)
 
             rw_enter(&addrSpace->a_lock, RW_READER);
             hat_unload(hatSpace, pMemSolaris->Core.pv, pMemSolaris->Core.cb, HAT_UNLOAD_UNLOCK);
-            rw_exit(&addrSpace->a_lock, RW_READER);
+            rw_exit(&addrSpace->a_lock);
             as_unmap(addrSpace, pMemSolaris->Core.pv, pMemSolaris->Core.cb);
             break;
         }
@@ -396,7 +396,7 @@ int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, 
         pageAddr += ptob(1);
         kernAddr += ptob(1);
     }
-    rw_exit(&kas.a_lock, RW_READER);
+    rw_exit(&kas.a_lock);
 
     pMemSolaris->Core.u.Mapping.R0Process = NIL_RTR0PROCESS; /* means kernel */
     pMemSolaris->Core.pv = addr;
@@ -506,7 +506,7 @@ int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, PRTR0MEMOBJINTERNAL pMem
         pageAddr += ptob(1);
         kernAddr += ptob(1);
     }
-    rw_exit(&useras->a_lock, RW_READER);
+    rw_exit(&useras->a_lock);
 #endif
 
     pMemSolaris->Core.u.Mapping.R0Process = (RTR0PROCESS)userproc;
