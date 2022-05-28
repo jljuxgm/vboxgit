@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 1799 2007-03-29 13:53:50Z vboxsync $ */
+/* $Id: CSAM.cpp 1800 2007-03-29 13:55:47Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2257,7 +2257,7 @@ CSAMR3DECL(int) CSAMR3CheckGates(PVM pVM, uint32_t iGate, uint32_t cGates)
                )
             {
                 /* Refuse to patch a handler whose idt cs selector isn't wide open. */
-                Log(("CSAMCheckGates: check gate %d failed due to rc %Vrc GCPtrBase=%VGv limit=%x\n", rc, selInfo.GCPtrBase, selInfo.cbLimit));
+                Log(("CSAMCheckGates: check gate %d failed due to rc %Vrc GCPtrBase=%VGv limit=%x\n", iGate, rc, selInfo.GCPtrBase, selInfo.cbLimit));
                 continue;
             }
             
