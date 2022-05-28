@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 171 2007-01-18 22:01:23Z vboxsync $ */
+/* $Id: VM.cpp 226 2007-01-22 16:37:36Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1154,6 +1154,8 @@ static DECLCALLBACK(int) vmR3PowerOff(PVM pVM)
      * request which was not completed yet. Later, the Windows guest shuts down via
      * ACPI and we find the VMSTATE_OFF. Just ignore the second power-off request.
      */
+    /** @todo r=bird: We should find a proper solution to this problem. This is just a workaround. 
+     * Guest code should really run after we've entered VMSTATE_OFF really... */
     if (pVM->enmVMState == VMSTATE_OFF)
         return VINF_EM_OFF;
 
