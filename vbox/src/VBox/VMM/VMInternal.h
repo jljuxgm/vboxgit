@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 319 2007-01-25 16:56:35Z vboxsync $ */
+/* $Id: VMInternal.h 870 2007-02-13 13:31:48Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -254,6 +254,9 @@ typedef struct VMINT
     /** If set the EMT does the final VM cleanup when it exits.
      * If clear the VMR3Destroy() caller does so. */
     bool                            fEMTDoesTheCleanup;
+
+    /** Set by VMR3SuspendNoSave; cleared by VMR3Resume; signals the VM is in an inconsistent state and saving is not allowed. */
+    bool                            fPreventSaveState;
 
     /** vmR3EmulationThread longjmp buffer 
      * @todo r=bird: requires union with padding. See EMInternal.h. */
