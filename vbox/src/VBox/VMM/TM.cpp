@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 4958 2007-09-21 14:54:04Z vboxsync $ */
+/* $Id: TM.cpp 5398 2007-10-21 04:37:46Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -245,7 +245,7 @@ TMR3DECL(int) TMR3Init(PVM pVM)
                           N_("Configuration error: Failed to querying bool value \"UseRealTSC\". (%Vrc)"), rc);
 
     /* source */
-    rc = CFGMR3QueryBool(pCfgHandle, "UseRealTSC", &pVM->tm.s.fTSCTicking);
+    rc = CFGMR3QueryBool(pCfgHandle, "UseRealTSC", &pVM->tm.s.fTSCUseRealTSC);
     if (rc == VERR_CFGM_VALUE_NOT_FOUND)
         pVM->tm.s.fTSCUseRealTSC = false; /* use virtual time */
     else if (VBOX_FAILURE(rc))
