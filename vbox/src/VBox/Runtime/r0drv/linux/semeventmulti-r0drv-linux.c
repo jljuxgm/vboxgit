@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-linux.c 5228 2007-10-10 16:18:40Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-linux.c 5229 2007-10-10 16:19:32Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Multiple Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -132,7 +132,7 @@ RTDECL(int) RTSemEventMultiReset(RTSEMEVENTMULTI EventMultiSem)
  * @param   cMillies            The number of milliseconds to wait.
  * @param   fInterruptible      Whether it's an interruptible wait or not.
  */
-static int rtSemEventWait(PRTSEMEVENTMULTIINTERNAL pThis, unsigned cMillies, bool fInterruptible)
+static int rtSemEventMultiWait(PRTSEMEVENTMULTIINTERNAL pThis, unsigned cMillies, bool fInterruptible)
 {
     /*
      * Ok wait for it.
@@ -189,7 +189,7 @@ RTDECL(int) RTSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies
 
     if (pThis->fState)
         return VINF_SUCCESS;
-    return rtSemEventWait(pThis, cMillies, false /* fInterruptible */);
+    return rtSemEventMultiWait(pThis, cMillies, false /* fInterruptible */);
 }
 
 
@@ -203,6 +203,6 @@ RTDECL(int) RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI EventMultiSem, unsigned 
 
     if (pThis->fState)
         return VINF_SUCCESS;
-    return rtSemEventWait(pThis, cMillies, true /* fInterruptible */);
+    return rtSemEventMultiWait(pThis, cMillies, true /* fInterruptible */);
 }
 
