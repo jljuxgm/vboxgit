@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 1443 2007-03-13 15:09:02Z vboxsync $ */
+/* $Id: SELMAll.cpp 2009 2007-04-10 14:19:40Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -236,15 +236,16 @@ SELMDECL(int) SELMToFlatEx(PVM pVM, X86EFLAGS eflags, RTSEL Sel, RTGCPTR Addr, u
                     /** @todo fix this mess */
                 }
                 /* check limit. */
-                /** @todo check the manual on this!!! */
-                if ((RTGCUINTPTR)(Desc.Gen.u1Granularity ? 0xffffffff : 0xfffff) - (RTGCUINTPTR)Addr > u32Limit)
+                if (!Desc.Gen.u1Granularity && (RTGCUINTPTR)Addr > (RTGCUINTPTR)0xffff)
+                    return VERR_OUT_OF_SELECTOR_BOUNDS;
+                if ((RTGCUINTPTR)Addr <= u32Limit)
                     return VERR_OUT_OF_SELECTOR_BOUNDS;
 
                 /* ok */
                 if (ppvGC)
                     *ppvGC = pvFlat;
                 if (pcb)
-                    *pcb = (Desc.Gen.u1Granularity ? 0xffffffff : 0xfffff) - (RTGCUINTPTR)Addr + 1;
+                    *pcb = (Desc.Gen.u1Granularity ? 0xffffffff : 0xffff) - (RTGCUINTPTR)Addr + 1;
                 return VINF_SUCCESS;
 
             case BOTH(0,X86_SEL_TYPE_SYS_286_TSS_AVAIL):
