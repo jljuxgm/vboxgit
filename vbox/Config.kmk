@@ -1,4 +1,4 @@
-# $Id: Config.kmk 2474 2007-05-03 22:44:57Z vboxsync $
+# $Id: Config.kmk 2482 2007-05-04 02:02:17Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -563,7 +563,7 @@ endif
 # Setup the global defines and includes.
 #
 ## @todo PATH_CURRENT has to go, fix the places where we rely on it.
-INCS += $(PATH_ROOT)/include $(PATH_CURRENT) $(PATH_OUT)
+INCS += $(PATH_ROOT)/include $(PATH_OUT)
 DEFS += VBOX
 DEFS.debug := DEBUG DEBUG_$(subst $(subst _, ,_),_,$(USERNAME)) DEBUG_USERNAME=$(subst $(subst _, ,_),_,$(USERNAME))
 DEFS.profile = VBOX_WITH_STATISTICS
