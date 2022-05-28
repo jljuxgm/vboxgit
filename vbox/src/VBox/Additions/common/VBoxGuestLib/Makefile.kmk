@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3252 2007-06-24 02:33:14Z vboxsync $
+# $Id: Makefile.kmk 3333 2007-06-30 12:21:41Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -130,8 +130,8 @@ VBoxGuestR0LibBaseOS2_DEFS     = VBOX_HGCM VBGL_VBOXGUEST
 # VBoxGuestR3LibBaseOS2
 #
 VBoxGuestR3LibOS2_TEMPLATE = VBOXOS2GUESTR3LIB
-VBoxGuestR3LibOS2_SOURCES  = VBoxGuestR3Lib.cpp
-#VBoxGuestR3LibOS2_DEFS     = VBOX_HGCM
+VBoxGuestR3LibOS2_SOURCES  = VBoxGuestR3Lib.cpp VBoxGuestR3LibClipboard.cpp
+VBoxGuestR3LibOS2_DEFS     = VBOX_HGCM
 
 
 include	$(PATH_KBUILD)/subfooter.kmk
