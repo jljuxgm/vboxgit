@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: HWACCM.cpp 3292 2007-06-26 14:15:29Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -441,6 +441,7 @@ HWACCMR3DECL(void) HWACCMR3Relocate(PVM pVM)
             else
             {
                 LogRel(("HWACCM: VMX setup failed with rc=%Vrc!\n", rc));
+                LogRel(("HWACCM: Last instruction error %x\n", pVM->hwaccm.s.vmx.ulLastInstrError));
                 pVM->fHWACCMEnabled = false;
             }
         }
@@ -475,6 +476,10 @@ HWACCMR3DECL(void) HWACCMR3Relocate(PVM pVM)
                 pVM->fHWACCMEnabled = false;
             }
         }
+    }
+    else
+    {
+        LogRel(("HWACCM: No VMX or SVM CPU extension found. Reason %Vrc\n", pVM->hwaccm.s.ulLastError));
     }
 
 }
