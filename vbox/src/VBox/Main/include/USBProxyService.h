@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 5523 2007-10-26 17:28:37Z vboxsync $ */
+/* $Id: USBProxyService.h 5652 2007-11-09 15:03:25Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -341,6 +341,47 @@ private:
     Utf8Str mUsbfsRoot;
     /** Number of 500ms polls left to do. See usbDeterminState for details. */
     unsigned mUdevPolls;
+};
+# endif /* RT_OS_LINUX */
+
+
+# ifdef RT_OS_OS2
+#  include <usbcalls.h>
+
+/**
+ * The Linux hosted USB Proxy Service.
+ */
+class USBProxyServiceOs2 : public USBProxyService
+{
+public:
+    USBProxyServiceOs2 (Host *aHost);
+    ~USBProxyServiceOs2();
+
+    virtual int captureDevice (HostUSBDevice *aDevice);
+    virtual int releaseDevice (HostUSBDevice *aDevice);
+    virtual bool updateDeviceState (HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice);
+
+protected:
+    virtual int wait (unsigned aMillies);
+    virtual int interruptWait (void);
+    virtual PUSBDEVICE getDevices (void);
+    int addDeviceToChain (PUSBDEVICE pDev, PUSBDEVICE *ppFirst, PUSBDEVICE **pppNext, int rc);
+
+private:
+    /** The notification event semaphore */
+    HEV mhev;
+    /** The notification id. */
+    USBNOTIFY mNotifyId;
+    /** The usbcalls.dll handle. */
+    HMODULE mhmod;
+    /** UsbRegisterChangeNotification */
+    APIRET (APIENTRY *mpfnUsbRegisterChangeNotification)(PUSBNOTIFY, HEV, HEV);
+    /** UsbDeregisterNotification */
+    APIRET (APIENTRY *mpfnUsbDeregisterNotification)(USBNOTIFY);
+    /** UsbQueryNumberDevices */
+    APIRET (APIENTRY *mpfnUsbQueryNumberDevices)(PULONG);
+    /** UsbQueryDeviceReport */
+    APIRET (APIENTRY *mpfnUsbQueryDeviceReport)(ULONG, PULONG, PVOID);
 };
 # endif /* RT_OS_LINUX */
 
