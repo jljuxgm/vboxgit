@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4975 2007-09-21 23:57:40Z vboxsync $
+# $Id: Makefile.kmk 5026 2007-09-25 15:49:09Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -326,7 +326,7 @@ VMMR0_SYSSUFF   = .r0
 VMMR0_SOURCES   = \
 	VMMR0/CPUMR0.cpp \
 	VMMR0/DBGFR0.cpp \
-	VMMR0/GVMR0.cpp \
+	VMMR0/GVMMR0.cpp \
 	VMMR0/HWACCMR0.cpp \
 	VMMR0/HWACCMR0A.asm \
 	VMMR0/HWSVMR0.cpp \
