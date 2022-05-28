@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 4420 2007-08-29 11:05:39Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 4756 2007-09-13 08:27:24Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1062,6 +1062,8 @@ ResumeExecution:
 
         /* Truly a pita. Why can't SVM give the same information as VMX? */
         rc = SVMR0InterpretInvpg(pVM, CPUMCTX2CORE(pCtx), pVMCB->ctrl.TLBCtrl.n.u32ASID);
+        if (rc == VINF_SUCCESS)
+            goto ResumeExecution;   /* eip already updated */
         break;
     }
 
@@ -1111,8 +1113,6 @@ ResumeExecution:
             goto ResumeExecution;
         }
         Assert(rc == VERR_EM_INTERPRETER || rc == VINF_PGM_CHANGE_MODE || rc == VINF_PGM_SYNC_CR3);
-        if (rc == VERR_EM_INTERPRETER)
-            rc = VINF_EM_RAW_EMULATE_INSTR;
         break;
     }
 
@@ -1135,8 +1135,6 @@ ResumeExecution:
             goto ResumeExecution;
         }
         Assert(rc == VERR_EM_INTERPRETER || rc == VINF_PGM_CHANGE_MODE || rc == VINF_PGM_SYNC_CR3);
-        if (rc == VERR_EM_INTERPRETER)
-            rc = VINF_EM_RAW_EMULATE_INSTR;
         break;
     }
 
@@ -1159,8 +1157,6 @@ ResumeExecution:
             goto ResumeExecution;
         }
         Assert(rc == VERR_EM_INTERPRETER || rc == VINF_PGM_CHANGE_MODE || rc == VINF_PGM_SYNC_CR3);
-        if (rc == VERR_EM_INTERPRETER)
-            rc = VINF_EM_RAW_EMULATE_INSTR;
         break;
     }
 
@@ -1183,8 +1179,6 @@ ResumeExecution:
             goto ResumeExecution;
         }
         Assert(rc == VERR_EM_INTERPRETER || rc == VINF_PGM_CHANGE_MODE || rc == VINF_PGM_SYNC_CR3);
-        if (rc == VERR_EM_INTERPRETER)
-            rc = VINF_EM_RAW_EMULATE_INSTR;
         break;
     }
 
@@ -1406,6 +1400,10 @@ end:
         /** @todo we can do better than this */
         pVM->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_ALL;
     }
+
+    /* translate into a less severe return code */
+    if (rc == VERR_EM_INTERPRETER)
+        rc = VINF_EM_RAW_EMULATE_INSTR;
 
     STAM_PROFILE_ADV_STOP(&pVM->hwaccm.s.StatExit, x);
     return rc;
