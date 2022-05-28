@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 1057 2007-02-23 20:38:37Z vboxsync $ */
+/* $Id: VMEmt.cpp 1633 2007-03-22 17:14:53Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -69,7 +69,10 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
     {
         /* Requested to exit the EMT thread out of sync? (currently only VMR3WaitForResume) */
         if (setjmp(pVM->vm.s.emtJumpEnv) != 0)
+        {
+            rc = VINF_SUCCESS;
             break;
+        }
 
         /*
          * Pending requests which needs servicing?
