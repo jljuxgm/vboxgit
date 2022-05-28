@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 4995 2007-09-24 09:29:27Z vboxsync $ */
+/* $Id: assert.cpp 5070 2007-09-27 08:33:22Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Assertion Workers.
  */
@@ -66,6 +66,11 @@ RTDECL(void) AssertMsg2(const char *pszFormat, ...)
 }
 
 #if defined(RT_OS_LINUX) && defined(IN_MODULE)
+/*
+ * When we build this in the Linux kernel module, we wish to make the
+ * symbols available to other modules as well.
+ */
+# include "the-linux-kernel.h"
 EXPORT_SYMBOL(AssertMsg1);
 EXPORT_SYMBOL(AssertMsg2);
 #endif
