@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteDebugger-r0drv-linux.c 1  vboxsync $ */
+/* $Id: RTLogWriteDebugger-r0drv-linux.c 36 2007-01-15 17:23:31Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Log To Debugger, Ring-0 Driver, Linux.
  */
@@ -25,6 +25,6 @@
 
 RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
 {
-    printk("%.*s", cb, pch);
+    printk("%.*s", (int)cb, pch);
 }
 
