@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 4829 2007-09-15 21:55:14Z vboxsync $ */
+/* $Id: SUPLib.cpp 4830 2007-09-15 23:05:20Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -551,7 +551,7 @@ SUPR3DECL(int) SUPCallVMMR0Ex(PVMR0 pVMR0, unsigned uOperation, uint64_t u64Arg,
 
 SUPR3DECL(int) SUPCallVMMR0(PVMR0 pVMR0, unsigned uOperation, void *pvArg)
 {
-#if defined(VBOX_WITH_IDT_PATCHING) && !defined(RT_OS_OS2)
+#if defined(VBOX_WITH_IDT_PATCHING)
     return g_pfnCallVMMR0(pVMR0, uOperation, pvArg);
 
 #else
