@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 914 2007-02-14 23:23:08Z vboxsync $ */
+/* $Id: VMMR0.cpp 1006 2007-02-20 17:19:59Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -584,7 +584,7 @@ VMMR0DECL(int) VMMR0Entry(PVM pVM, unsigned /* make me an enum */ uOperation, vo
                 return VERR_INVALID_POINTER;
             if (!VALID_PTR(pVM))
                 return VERR_INVALID_POINTER;
-            if (pVM->pVMHC != pVM)
+            if (pVM->pVMR0 != pVM)
                 return VERR_INVALID_POINTER;
             if (!VALID_PTR(pVM->pSession))
                 return VERR_INVALID_POINTER;
