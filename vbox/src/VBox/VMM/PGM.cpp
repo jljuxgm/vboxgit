@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 2290 2007-04-20 23:11:11Z vboxsync $ */
+/* $Id: PGM.cpp 2559 2007-05-09 14:00:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1204,12 +1204,13 @@ static DECLCALLBACK(int) pgmR3RelocatePhysHandler(PAVLROGCPHYSNODECORE pNode, vo
 {
     PPGMPHYSHANDLER pHandler = (PPGMPHYSHANDLER)pNode;
     RTGCINTPTR      offDelta = *(PRTGCINTPTR)pvUser;
-    Assert(pHandler->pfnHandlerGC);
-    pHandler->pfnHandlerGC  += offDelta;
-    if (pHandler->pvUserGC)
-        pHandler->pvUserGC  += offDelta;
+    if (pHandler->pfnHandlerGC)
+        pHandler->pfnHandlerGC += offDelta;
+    if ((RTGCUINTPTR)pHandler->pvUserGC >= 0x10000)
+        pHandler->pvUserGC += offDelta;
     return 0;
 }
+
 
 /**
  * Callback function for relocating a virtual access handler.

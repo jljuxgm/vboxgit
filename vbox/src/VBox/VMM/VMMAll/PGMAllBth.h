@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 2276 2007-04-20 14:07:09Z vboxsync $ */
+/* $Id: PGMAllBth.h 2559 2007-05-09 14:00:38Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -350,12 +350,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
                                       || (pCur->enmType == PGMPHYSHANDLERTYPE_PHYSICAL_WRITE && (uErr & X86_TRAP_PF_RW)),
                                       ("Unexpected trap for physical handler: %08X (phys=%08x) HCPhys=%X uErr=%X, enum=%d\n", pvFault, GCPhys, HCPhys, uErr, pCur->enmType));
 
-#ifdef IN_GC
-                            Assert(CTXSUFF(pCur->pfnHandler));
-                            STAM_PROFILE_START(&pCur->Stat, h);
-                            rc = pCur->CTXSUFF(pfnHandler)(pVM, uErr, pRegFrame, pvFault, GCPhysFault, CTXSUFF(pCur->pvUser));
-                            STAM_PROFILE_STOP(&pCur->Stat, h);
-#elif IN_RING0
+#if defined(IN_GC) || defined(ING_RING0)
                             if (CTXALLSUFF(pCur->pfnHandler))
                             {
                                 STAM_PROFILE_START(&pCur->Stat, h);
@@ -363,10 +358,8 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
                                 STAM_PROFILE_STOP(&pCur->Stat, h);
                             }
                             else
-                                rc = VINF_EM_RAW_EMULATE_INSTR;
-#else
-                            rc = VINF_EM_RAW_EMULATE_INSTR;
 #endif
+                                rc = VINF_EM_RAW_EMULATE_INSTR;
                             STAM_COUNTER_INC(&pVM->pgm.s.StatHandlersPhysical);
                             STAM_PROFILE_STOP(&pVM->pgm.s.StatHandlers, b);
                             STAM_STATS({ pVM->pgm.s.CTXSUFF(pStatTrap0eAttribution) = &pVM->pgm.s.StatTrap0eHndPhys; });
