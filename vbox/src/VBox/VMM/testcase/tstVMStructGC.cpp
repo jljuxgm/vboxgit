@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 4752 2007-09-13 07:11:02Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 5221 2007-10-10 14:50:39Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -756,6 +756,8 @@ int main()
     GEN_CHECK_OFF(CSAM, pvDirtyFaultPage);
     GEN_CHECK_OFF(CSAM, pvDirtyFaultPage[1]);
     GEN_CHECK_OFF(CSAM, pvDirtyFaultPage[CSAM_MAX_DIRTY_PAGES - 1]);
+    GEN_CHECK_OFF(CSAM, pvCallInstruction);
+    GEN_CHECK_OFF(CSAM, iCallInstruction);
     GEN_CHECK_OFF(CSAM, fScanningStarted);
     GEN_CHECK_OFF(CSAM, fGatesChecked);
     GEN_CHECK_OFF(CSAM, StatNrTraps);
