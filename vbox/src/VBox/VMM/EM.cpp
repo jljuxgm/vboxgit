@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 2033 2007-04-11 15:21:21Z vboxsync $ */
+/* $Id: EM.cpp 2063 2007-04-13 08:44:43Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -182,7 +182,7 @@ EMR3DECL(int) EMR3Init(PVM pVM)
     STAM_REG_USED(pVM, &pStats->StatGCPop,                  STAMTYPE_COUNTER, "/EM/GC/Interpret/Success/Pop",       STAMUNIT_OCCURENCES,    "The number of times POP was successfully interpreted.");
     STAM_REG_USED(pVM, &pStats->StatHCPop,                  STAMTYPE_COUNTER, "/EM/HC/Interpret/Success/Pop",       STAMUNIT_OCCURENCES,    "The number of times POP was successfully interpreted.");
     STAM_REG_USED(pVM, &pStats->StatGCRdtsc,                STAMTYPE_COUNTER, "/EM/GC/Interpret/Success/Rdtsc",     STAMUNIT_OCCURENCES,    "The number of times RDTSC was successfully interpreted.");
-    //STAM_REG_USED(pVM, &pStats->StatHCRdtsc,                STAMTYPE_COUNTER, "/EM/HC/Interpret/Success/Rdtsc",     STAMUNIT_OCCURENCES,    "The number of times RDTSC was successfully interpreted.");
+    STAM_REG_USED(pVM, &pStats->StatHCRdtsc,                STAMTYPE_COUNTER, "/EM/HC/Interpret/Success/Rdtsc",     STAMUNIT_OCCURENCES,    "The number of times RDTSC was successfully interpreted.");
     STAM_REG_USED(pVM, &pStats->StatGCSti,                  STAMTYPE_COUNTER, "/EM/GC/Interpret/Success/Sti",       STAMUNIT_OCCURENCES,    "The number of times STI was successfully interpreted.");
     STAM_REG_USED(pVM, &pStats->StatHCSti,                  STAMTYPE_COUNTER, "/EM/HC/Interpret/Success/Sti",       STAMUNIT_OCCURENCES,    "The number of times STI was successfully interpreted.");
     STAM_REG_USED(pVM, &pStats->StatGCXchg,                 STAMTYPE_COUNTER, "/EM/GC/Interpret/Success/Xchg",      STAMUNIT_OCCURENCES,    "The number of times XCHG was successfully interpreted.");
@@ -242,7 +242,7 @@ EMR3DECL(int) EMR3Init(PVM pVM)
     STAM_REG_USED(pVM, &pStats->StatGCFailedMWait,          STAMTYPE_COUNTER, "/EM/GC/Interpret/Failed/MWait",      STAMUNIT_OCCURENCES,    "The number of times MONITOR was not interpreted.");
     STAM_REG_USED(pVM, &pStats->StatHCFailedMWait,          STAMTYPE_COUNTER, "/EM/HC/Interpret/Failed/MWait",      STAMUNIT_OCCURENCES,    "The number of times MONITOR was not interpreted.");
     STAM_REG_USED(pVM, &pStats->StatGCFailedRdtsc,          STAMTYPE_COUNTER, "/EM/GC/Interpret/Failed/Rdtsc",      STAMUNIT_OCCURENCES,    "The number of times RDTSC was not interpreted.");
-    //STAM_REG_USED(pVM, &pStats->StatHCFailedRdtsc,          STAMTYPE_COUNTER, "/EM/HC/Interpret/Failed/Rdtsc",      STAMUNIT_OCCURENCES,    "The number of times RDTSC was not interpreted.");
+    STAM_REG_USED(pVM, &pStats->StatHCFailedRdtsc,          STAMTYPE_COUNTER, "/EM/HC/Interpret/Failed/Rdtsc",      STAMUNIT_OCCURENCES,    "The number of times RDTSC was not interpreted.");
 
     STAM_REG_USED(pVM, &pStats->StatGCFailedMisc,           STAMTYPE_COUNTER, "/EM/GC/Interpret/Failed/Misc",       STAMUNIT_OCCURENCES,    "The number of times some misc instruction was encountered.");
     STAM_REG_USED(pVM, &pStats->StatHCFailedMisc,           STAMTYPE_COUNTER, "/EM/HC/Interpret/Failed/Misc",       STAMUNIT_OCCURENCES,    "The number of times some misc instruction was encountered.");
