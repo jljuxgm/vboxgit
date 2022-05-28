@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4281 2007-08-22 14:12:20Z vboxsync $
+# $Id: Makefile.kmk 4516 2007-09-04 13:01:19Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxService.
 #
@@ -31,6 +31,7 @@ VBoxService_SOURCES  = \
 	VBoxClipboard.cpp \
 	VBoxDisplay.cpp \
         VBoxRestore.cpp \
+        VBoxGuest.cpp \
 	helpers.cpp \
 	VBoxService.rc
 VBoxService_LIBS     = \
