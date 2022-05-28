@@ -1,4 +1,4 @@
-# $Id: op-validate.sed 1  vboxsync $
+# $Id: op-validate.sed 121 2007-01-17 16:57:56Z vboxsync $
 ## @file
 #
 # Just some quit sed hacks for validating an op.S assembly file.
@@ -54,13 +54,14 @@ b end
 #
 # Verify that all ret statements are at the end of a function by
 # inspecting what's on the following line. It must either be a
-# .size statement, a .LfeXXXX label or #NO_APP comment.
+# .size statement, a .LfeXXXX label, a .LfeXXXX label or #NO_APP comment.
 #
 # @todo figure out how to discard the first line in a simpler fashion.
 :return
 N
 s/^[[:blank:]]*ret[[:blank:]]*\n*[[:blank:]]*//
 /\.Lfe[0-9][0-9]*:/d
+/\.LFE[0-9][0-9]*:/d
 /size[[:space:]]/d
 /^[/#]NO_APP[[:space:]]*$/d
 /^$/!b bad
