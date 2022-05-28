@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 742 2007-02-07 10:17:01Z vboxsync $ */
+/* $Id: PATMInternal.h 1125 2007-03-01 12:30:38Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -36,7 +36,7 @@
 #endif
 
 
-#define PATM_SSM_VERSION                    51
+#define PATM_SSM_VERSION                    52
 
 /* Enable for call patching. */
 #define PATM_ENABLE_CALL
@@ -474,6 +474,8 @@ typedef struct PATM
 
     STAMCOUNTER             StatSysEnter;
     STAMCOUNTER             StatSysExit;
+    STAMCOUNTER             StatEmulIret;
+    STAMCOUNTER             StatEmulIretFailed;
 
     STAMCOUNTER             StatInstrDirty;
     STAMCOUNTER             StatInstrDirtyGood;

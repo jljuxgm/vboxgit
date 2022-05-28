@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 1110 2007-02-28 14:47:39Z vboxsync $ */
+/* $Id: PATMAll.cpp 1125 2007-03-01 12:30:38Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -584,6 +584,26 @@ PATMDECL(int) PATMHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                 pVM->patm.s.CTXSUFF(pGCState)->fPIF = 1;
 
                 return VINF_PATM_PENDING_IRQ_AFTER_IRET;
+
+            case PATM_ACTION_DO_V86_IRET:
+            {
+                Log(("PATMGC: Do iret to V86 code; eip=%VGv\n", pRegFrame->eip));
+                Assert(pVM->patm.s.CTXSUFF(pGCState)->Restore.uFlags == (PATM_RESTORE_EAX|PATM_RESTORE_ECX));
+                Assert(pVM->patm.s.CTXSUFF(pGCState)->fPIF == 0);
+
+                pRegFrame->eax = pVM->patm.s.CTXSUFF(pGCState)->Restore.uEAX;
+                pRegFrame->ecx = pVM->patm.s.CTXSUFF(pGCState)->Restore.uECX;
+                pVM->patm.s.CTXSUFF(pGCState)->Restore.uFlags = 0;
+
+                /* We are no longer executing PATM code; set PIF again. */
+                pVM->patm.s.CTXSUFF(pGCState)->fPIF = 1;
+                rc = EMInterpretIret(pVM, pRegFrame);
+                if (VBOX_SUCCESS(rc))
+                    STAM_COUNTER_INC(&pVM->patm.s.StatEmulIret); 
+                else 
+                    STAM_COUNTER_INC(&pVM->patm.s.StatEmulIretFailed); 
+                return rc;
+            }
 
 #ifdef DEBUG
             case PATM_ACTION_LOG_CLI:

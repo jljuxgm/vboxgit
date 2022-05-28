@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 1086 2007-02-28 08:36:20Z vboxsync $ */
+/* $Id: PATM.cpp 1125 2007-03-01 12:30:38Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -242,6 +242,8 @@ PATMR3DECL(int) PATMR3Init(PVM pVM)
 
     STAM_REG(pVM, &pVM->patm.s.StatSysEnter,          STAMTYPE_COUNTER, "/PATM/Emul/SysEnter",         STAMUNIT_OCCURENCES,     "Number of times sysenter was emulated.");
     STAM_REG(pVM, &pVM->patm.s.StatSysExit,           STAMTYPE_COUNTER, "/PATM/Emul/SysExit" ,         STAMUNIT_OCCURENCES,     "Number of times sysexit was emulated.");
+    STAM_REG(pVM, &pVM->patm.s.StatEmulIret,          STAMTYPE_COUNTER, "/PATM/Emul/Iret/Success",     STAMUNIT_OCCURENCES,     "Number of times iret was emulated.");
+    STAM_REG(pVM, &pVM->patm.s.StatEmulIretFailed,    STAMTYPE_COUNTER, "/PATM/Emul/Iret/Failed",      STAMUNIT_OCCURENCES,     "Number of times iret was emulated.");
 
     STAM_REG(pVM, &pVM->patm.s.StatGenRet,            STAMTYPE_COUNTER, "/PATM/Gen/Ret" ,         STAMUNIT_OCCURENCES,     "Number of generated ret instructions.");
     STAM_REG(pVM, &pVM->patm.s.StatGenRetReused,      STAMTYPE_COUNTER, "/PATM/Gen/RetReused" ,   STAMUNIT_OCCURENCES,     "Number of reused ret instructions.");
