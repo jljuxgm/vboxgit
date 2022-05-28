@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4515 2007-09-04 12:43:52Z vboxsync $
+# $Id: Config.kmk 4548 2007-09-05 22:24:25Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1654,6 +1654,7 @@ TEMPLATE_VBOXR3EXE_TOOL                = GXX3
 TEMPLATE_VBOXR3EXE_LIBS                = pthread
  else ifeq ($(BUILD_TARGET),solaris)
 TEMPLATE_VBOXR3EXE_TOOL                = GXX3PLAIN
+TEMPLATE_VBOXR3EXE_DEFS               += LIBICONV_PLUG # Avoid the GNU libiconv, for now at least.
 TEMPLATE_VBOXR3EXE_LIBS                = rt socket
  else
 $(warning Warning: VBOX Build: Target $(BUILD_TARGET) is not officially supported!)
@@ -2529,7 +2530,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4515 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4548 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
