@@ -1,4 +1,4 @@
-/* $Id: TRPMGC.cpp 1422 2007-03-12 12:37:28Z vboxsync $ */
+/* $Id: TRPMGC.cpp 1638 2007-03-22 17:34:11Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -138,6 +138,8 @@ TRPMGCDECL(int) trpmgcGuestIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCT
             return VINF_SUCCESS;
         }
     }
+#else
+    NOREF(iGate);
 #endif
 
     Log(("trpmgcGuestIDTWriteHandler: eip=%VGv write to gate %x offset %x\n", pRegFrame->eip, iGate, offRange));
