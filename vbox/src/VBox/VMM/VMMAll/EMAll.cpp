@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 4390 2007-08-27 15:51:04Z vboxsync $ */
+/* $Id: EMAll.cpp 4401 2007-08-28 14:21:11Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1259,6 +1259,9 @@ EMDECL(int) EMInterpretInvlpg(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPTR pAddrGC)
 #endif
     if (VBOX_SUCCESS(rc))
         return VINF_SUCCESS;
+    Log(("PGMInvalidatePage %VGv returned %VGv (%d)\n", pAddrGC, rc, rc));
+    Assert(rc == VERR_REM_FLUSHED_PAGES_OVERFLOW);
+
     /** @todo r=bird: we shouldn't ignore returns codes like this... I'm 99% sure the error is fatal. */
     return VERR_EM_INTERPRETER;
 }
