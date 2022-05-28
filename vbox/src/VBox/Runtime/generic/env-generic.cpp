@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 4063 2007-08-07 14:13:20Z vboxsync $ */
+/* $Id: env-generic.cpp 4066 2007-08-07 14:42:33Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Environment, Generic.
  */
@@ -29,7 +29,13 @@
 #include <iprt/string.h>
 #include <iprt/err.h>
 
-#include <stdlib.h>
+#if defined(RT_OS_WINDOWS)
+# include <stdlib.h>
+#else
+# include <unistd.h>
+#endif
+
+#include <string.h>
 
 struct RTENVINTERNAL
 {
