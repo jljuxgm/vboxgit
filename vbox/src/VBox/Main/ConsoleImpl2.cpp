@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 5613 2007-11-02 12:56:49Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 5628 2007-11-05 13:42:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1536,7 +1536,10 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         {
             /* if it's a valid number, we'll insert it as such, otherwise string */
             uint64_t u64Value;
-            if (RTStrToUInt64Ex(pszCFGMValue, NULL, 0, &u64Value) == VINF_SUCCESS)
+            char *pszNext = NULL;
+            if (   RTStrToUInt64Ex(pszCFGMValue, &pszNext, 0, &u64Value) == VINF_SUCCESS
+                && (!pszNext || *pszNext == '\0') /* check if the _whole_ string is a valid number */
+                )
             {
                 rc = CFGMR3InsertInteger(pNode, pszCFGMValueName, u64Value);
             }
