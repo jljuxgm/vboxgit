@@ -1,4 +1,4 @@
-; $Id: TRPMR0A.asm 399 2007-01-28 03:09:35Z vboxsync $
+; $Id: TRPMR0A.asm 400 2007-01-28 03:21:49Z vboxsync $
 ;; @file
 ; TRPM - Host Context Ring-0
 ;
@@ -63,7 +63,8 @@ BEGINPROC trpmR0DispatchHostInterrupt
     push    rax                         ; RSP
     pushfd                              ; RFLAGS
     and     dword [rsp], ~X86_EFL_IF
-    push    cs                          ; CS
+    mov     ax, cs
+    push    rax                         ; CS
     mov     rax, .return                ; RIP
     push    rax
 
