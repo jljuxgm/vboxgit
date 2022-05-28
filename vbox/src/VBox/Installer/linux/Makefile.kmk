@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5050 2007-09-26 14:55:04Z vboxsync $
+# $Id: Makefile.kmk 5076 2007-09-27 13:55:15Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -50,7 +50,6 @@ linux-doc_SOURCES = \
 
 # Strip these binaries
 LINUXSTRIPBIN = \
-	$(if $(VBOX_WITH_ALSA),VBoxAlsa.so,) \
 	VBoxDD.so \
 	VBoxDD2.so \
 	VBoxManage \
