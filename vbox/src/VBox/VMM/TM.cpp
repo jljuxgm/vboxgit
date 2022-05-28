@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: TM.cpp 3083 2007-06-08 12:51:21Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -735,7 +735,7 @@ TMR3DECL(void) TMR3Reset(PVM pVM)
             ASMAtomicXchgU64((uint64_t volatile *)&pVM->tm.s.offVirtualSyncGivenUp, offNew);
             ASMAtomicXchgU64((uint64_t volatile *)&pVM->tm.s.offVirtualSync, offNew);
             ASMAtomicXchgBool(&pVM->tm.s.fVirtualSyncCatchUp, false);
-            LogRel(("TM: Aborting catch-up attempt on reset with a %RU64 ns lag on reset; new total: %RU64 ns\n", offOld - offNew, offNew));
+            LogRel(("TM: Aborting catch-up attempt on reset with a %RU64 ns lag on reset; new total: %RU64 ns\n", offNew - offOld, offNew));
         }
     }
 
