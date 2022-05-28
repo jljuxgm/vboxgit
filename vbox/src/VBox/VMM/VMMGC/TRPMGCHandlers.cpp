@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 3207 2007-06-21 13:18:21Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 3210 2007-06-21 13:43:17Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -764,7 +764,7 @@ static int trpmGCTrap0dHandler(PVM pVM, PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
         if (rc == VINF_EM_RAW_EMULATE_INSTR)
         {
             /* First attempt to emulate directly before falling back to the recompiler */
-            rc = (pCpu->pCurInstr->optype & OPTYPE_PORTIO_WRITE) ? VINF_IOM_HC_IOPORT_WRITE : VINF_IOM_HC_IOPORT_READ;
+            rc = (Cpu.pCurInstr->optype & OPTYPE_PORTIO_WRITE) ? VINF_IOM_HC_IOPORT_WRITE : VINF_IOM_HC_IOPORT_READ;
         }
 
         return trpmGCExitTrap(pVM, rc, pRegFrame);
