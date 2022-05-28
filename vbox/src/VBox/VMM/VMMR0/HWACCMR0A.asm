@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 2750 2007-05-21 16:35:46Z vboxsync $
+; $Id: HWACCMR0A.asm 2751 2007-05-21 16:36:42Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -142,7 +142,6 @@ BEGINCODE
 ; * @param   pCtx        Guest context
 ; */
 BEGINPROC VMXStartVM
-int3
     push    xBP
     mov     xBP, xSP
 
@@ -216,7 +215,6 @@ int3
 
 ALIGNCODE(16)
 .vmlaunch_done:
-int3
     jnc     .vmxstart_good
 
     pop     xAX         ; saved LDTR
