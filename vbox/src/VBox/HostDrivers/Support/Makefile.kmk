@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3888 2007-07-26 16:26:39Z vboxsync $
+# $Id: Makefile.kmk 4016 2007-08-03 00:54:43Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -240,8 +240,8 @@ vboxdrv_DEFS          = IN_RT_R0 IN_SUP_R0 USE_NEW_OS_INTERFACE
 vboxdrv_INCS         := $(PATH_SUB_CURRENT)
 vboxdrv_LIBS          = $(PATH_LIB)/RuntimeR0Drv$(VBOX_SUFF_LIB)
 vboxdrv_SOURCES       = \
-	$(BUILD_TARGET)/SUPDrv-$(BUILD_TARGET).c
-#	SUPDRVShared.c
+	$(BUILD_TARGET)/SUPDrv-$(BUILD_TARGET).c \
+	SUPDRVShared.c
 endif # freebsd
 
 
