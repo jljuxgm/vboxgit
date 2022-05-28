@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 738 2007-02-07 09:44:50Z vboxsync $ */
+/* $Id: PATMAll.cpp 741 2007-02-07 10:16:47Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -641,7 +641,7 @@ PATMDECL(int) PATMHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                 return VINF_SUCCESS;
 
             case PATM_ACTION_LOG_CALL:
-                Log(("PATMGC: CALL to %VGv return addr %VGv iopl=%d\n", pRegFrame->edx, pRegFrame->ebx, X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags)));
+                Log(("PATMGC: CALL to %VGv return addr %VGv iopl=%d\n", pVM->patm.s.CTXSUFF(pGCState)->GCCallPatchTargetAddr, pVM->patm.s.CTXSUFF(pGCState)->GCCallReturnAddr, X86_EFL_GET_IOPL(pVM->patm.s.CTXSUFF(pGCState)->uVMFlags)));
                 pRegFrame->eip += PATM_ILLEGAL_INSTR_SIZE;
                 return VINF_SUCCESS;
 #endif
