@@ -1,3 +1,4 @@
+/* $Id: USBProxyService.h 3662 2007-07-17 01:22:40Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -67,7 +68,7 @@ public:
 
     /**
      * The device is going to be detached from a VM.
-     * 
+     *
      * @param   aDevice     The device in question.
      */
     virtual void detachingDevice (HostUSBDevice *aDevice);
