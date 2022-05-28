@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 5347 2007-10-17 10:10:16Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Convert errno to iprt status codes.
  */
@@ -157,7 +157,7 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
 #ifdef ENOLCK
         case ENOLCK:            return VERR_FILE_LOCK_FAILED;
 #endif
-#ifdef ENOSYS
+#ifdef ENOSYS /** @todo map this differently on solaris. */
         case ENOSYS:            return VERR_NOT_SUPPORTED;
 #endif
 #ifdef ENOTEMPTY
@@ -324,7 +324,7 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
 #ifdef ESOCKTNOSUPPORT
         case ESOCKTNOSUPPORT:   return VERR_NET_SOCKET_TYPE_NOT_SUPPORTED;
 #endif
-#ifdef EOPNOTSUPP
+#ifdef EOPNOTSUPP /** @todo map this differently on solaris. */
         case EOPNOTSUPP:        return VERR_NET_OPERATION_NOT_SUPPORTED;
 #endif
 #ifdef EPFNOSUPPORT
