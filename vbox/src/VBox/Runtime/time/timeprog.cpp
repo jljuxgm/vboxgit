@@ -1,4 +1,4 @@
-/* $Id: timeprog.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: timeprog.cpp 5404 2007-10-21 20:26:23Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Time Relative to Program Start.
  */
