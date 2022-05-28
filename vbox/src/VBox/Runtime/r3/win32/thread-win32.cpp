@@ -1,4 +1,4 @@
-/* $Id: thread-win32.cpp 248 2007-01-23 17:11:08Z vboxsync $ */
+/* $Id: thread-win32.cpp 1766 2007-03-28 12:51:24Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Threads, Win32.
  */
@@ -94,7 +94,7 @@ static unsigned __stdcall rtThreadNativeMain(void *pvArgs)
     if (!TlsSetValue(g_dwSelfTLS, pThread))
         AssertReleaseMsgFailed(("failed to set self TLS. lasterr=%d thread '%s'\n", GetLastError(), pThread->szName));
 
-    int rc = rtThreadMain(pThread, dwThreadId);
+    int rc = rtThreadMain(pThread, dwThreadId, &pThread->szName[0]);
 
     TlsSetValue(g_dwSelfTLS, NULL);
     _endthreadex(rc);

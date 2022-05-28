@@ -1,4 +1,4 @@
-/* $Id: thread.h 403 2007-01-28 08:45:05Z vboxsync $ */
+/* $Id: thread.h 1766 2007-03-28 12:51:24Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Internal RTThread header.
  */
@@ -205,7 +205,7 @@ void rtThreadNativeDetach(void);
 
 
 /* thread.cpp */
-int rtThreadMain(PRTTHREADINT pThread, RTNATIVETHREAD NativeThread);
+int rtThreadMain(PRTTHREADINT pThread, RTNATIVETHREAD NativeThread, const char *pszThreadName);
 void rtThreadBlocking(PRTTHREADINT pThread, RTTHREADSTATE enmState, uint64_t u64Block,
                       const char *pszFile, unsigned uLine, RTUINTPTR uId);
 void rtThreadUnblocked(PRTTHREADINT pThread, RTTHREADSTATE enmCurState);

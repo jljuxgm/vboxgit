@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 537 2007-02-02 06:08:57Z vboxsync $ */
+/* $Id: thread-posix.cpp 1766 2007-03-28 12:51:24Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Threads, POSIX.
  */
@@ -133,7 +133,7 @@ static void *rtThreadNativeMain(void *pvArgs)
      */
     pthread_t Self = pthread_self();
     Assert((uintptr_t)Self == (RTNATIVETHREAD)Self && (uintptr_t)Self != NIL_RTNATIVETHREAD);
-    rc = rtThreadMain(pThread, (uintptr_t)Self);
+    rc = rtThreadMain(pThread, (uintptr_t)Self, &pThread->szName[0]);
 
     pthread_setspecific(g_SelfKey, NULL);
     pthread_exit((void *)rc);
