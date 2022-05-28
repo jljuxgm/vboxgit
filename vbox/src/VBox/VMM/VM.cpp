@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 170 2007-01-18 21:31:14Z vboxsync $ */
+/* $Id: VM.cpp 171 2007-01-18 22:01:23Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -284,6 +284,9 @@ VMR3DECL(int)   VMR3Create(PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCON
         {
             case VERR_VM_DRIVER_LOAD_ERROR:
                 pszError = N_("VirtualBox kernel driver not loaded");
+                break;
+            case VERR_VM_DRIVER_OPEN_ERROR:
+                pszError = N_("VirtualBox kernel driver cannot be opened");
                 break;
             case VERR_VM_DRIVER_NOT_ACCESSIBLE:
                 pszError = N_("VirtualBox kernel driver not accessible, permission problem");
