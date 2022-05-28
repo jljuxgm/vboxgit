@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 1210 2007-03-05 12:36:53Z vboxsync $ */
+/* $Id: VMM.cpp 1239 2007-03-05 18:12:03Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2920,7 +2920,7 @@ VMMR3DECL(int) VMMDoHwAccmTest(PVM pVM)
 
     if (!HWACCMR3IsAllowed(pVM))
     {
-        RTPrintf("VMM: Hardware accelerated test now available!\n");
+        RTPrintf("VMM: Hardware accelerated test not available!\n");
         return VERR_ACCESS_DENIED;
     }
 
