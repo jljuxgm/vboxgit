@@ -1,4 +1,4 @@
-/* $Id: tstInlineAsm.cpp 2254 2007-04-20 07:43:35Z vboxsync $ */
+/* $Id: tstInlineAsm.cpp 2303 2007-04-21 00:34:18Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime Testcase - inline assembly.
  */
@@ -836,6 +836,13 @@ void tstASMMath(void)
        *  (0x77d7daf441412840 >> 32) + 1 = 0x77d7daf5
        *
        * which is definitely greater than  0x3b9aca00.
+       */
+      /* 
+       * bird: No, the C version does *not* crash. So, the question is whether there any
+       * code depending on it not crashing.
+       *
+       * Of course the assembly versions of the code crash right now for the reasons you've
+       * given, but the the 32-bit MSC version does not crash.
        */
     u64 = ASMMultU64ByU32DivByU32(UINT64_C(0xfffffff8c65d6731), UINT32_C(0x77d7daf8), UINT32_C(0x3b9aca00));
     CHECKVAL(u64, UINT64_C(0x02b8f9a2aa74e3dc), "%#018RX64");
