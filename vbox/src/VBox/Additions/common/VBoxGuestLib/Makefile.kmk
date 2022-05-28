@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2487 2007-05-04 03:19:31Z vboxsync $
+# $Id: Makefile.kmk 2947 2007-05-30 21:29:51Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -33,10 +33,12 @@ ifdef VBOX_WITH_WIN32_ADDITIONS
 	VBoxGuestLibBase
  endif
 endif
-ifdef VBOX_WITH_LINUX_ADDITIONS_32BIT_R0
- LIBRARIES += \
-	VBoxGuestLibLinux \
-	VBoxGuestLibBaseLinux
+ifdef VBOX_WITH_LINUX_ADDITIONS
+ ifdef VBOX_WITH_LINUX_ADDITIONS_32BIT_R0
+  LIBRARIES += \
+ 	VBoxGuestLibLinux \
+ 	VBoxGuestLibBaseLinux
+ endif
 endif
 
 SOURCES_GUESTLIBBASE = \
