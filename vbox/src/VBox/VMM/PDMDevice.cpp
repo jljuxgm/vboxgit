@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 2633 2007-05-14 19:09:51Z vboxsync $ */
+/* $Id: PDMDevice.cpp 2638 2007-05-14 20:10:18Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -3512,8 +3512,8 @@ static DECLCALLBACK(void) pdmR3DevHlp_QueryCPUId(PPDMDEVINS pDevIns, uint32_t iL
                                                  uint32_t *pEax, uint32_t *pEbx, uint32_t *pEcx, uint32_t *pEdx)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-    LogFlow(("pdmR3GetCPUApicHlp_ClearInterruptFF: caller='%s'/%d: fEnabled=%RTbool\n",
-             pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, fEnabled));
+    LogFlow(("pdmR3DevHlp_QueryCPUId: caller='%s'/%d: iLeaf=%d\n",
+             pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, iLeaf));
     CPUMGetGuestCpuId(pDevIns->Internal.s.pVMHC, iLeaf, pEax, pEbx, pEcx, pEdx);
 }
 
