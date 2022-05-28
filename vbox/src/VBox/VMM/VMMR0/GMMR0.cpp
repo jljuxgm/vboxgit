@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 5033 2007-09-26 04:48:51Z vboxsync $ */
+/* $Id: GMMR0.cpp 5034 2007-09-26 06:34:27Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -217,6 +217,9 @@ typedef union GMMPAGE
     } Free;
 
 #else /* 32-bit */
+    /** Unsigned integer view. */
+    uint32_t u;
+
     /** The common view. */
     struct GMMPAGECOMMON
     {
