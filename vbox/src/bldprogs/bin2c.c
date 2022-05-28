@@ -1,4 +1,4 @@
-/* $Id: bin2c.c 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: bin2c.c 3407 2007-07-04 08:00:45Z vboxsync $ */
 /** @file
  * PC-BIOS - Binary 2 C Structure Converter.
  */
@@ -175,7 +175,9 @@ syntax_error:
         {
             fprintf(pFileOut, " /* 0x%08lx: ", (long)off);
             for (i = 0; i < cbRead; i++)
-                fprintf(pFileOut, "%c", isprint(abLine[i]) ? abLine[i] : '.');
+                /* be careful with '/' prefixed/followed by a '*'! */
+                fprintf(pFileOut, "%c", 
+                        isprint(abLine[i]) && abLine[i] != '/' ? abLine[i] : '.');
             for (; i < sizeof(abLine); i++)
                 fprintf(pFileOut, " ");
             fprintf(pFileOut, " */");
