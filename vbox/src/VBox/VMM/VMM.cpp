@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 988 2007-02-19 18:19:14Z vboxsync $ */
+/* $Id: VMM.cpp 1027 2007-02-22 20:29:35Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2803,8 +2803,8 @@ VMMR3DECL(int) VMMDoTest(PVM pVM)
                 return rc;
             }
             uint64_t Ticks = ASMReadTSC() - StartTick;
-            if (Ticks < (g_pSUPGlobalInfoPage->u64CpuHz / 10000))
-                RTPrintf("Warning: Ticks=%RU64 (< %RU64)\n", Ticks, g_pSUPGlobalInfoPage->u64CpuHz / 10000);
+            if (Ticks < (SUPGetCpuHzFromGIP(g_pSUPGlobalInfoPage) / 10000))
+                RTPrintf("Warning: Ticks=%RU64 (< %RU64)\n", Ticks, SUPGetCpuHzFromGIP(g_pSUPGlobalInfoPage) / 10000);
         }
 
         /*

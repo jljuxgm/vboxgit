@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: TMAll.cpp 1027 2007-02-22 20:29:35Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -611,7 +611,7 @@ TMDECL(uint64_t) TMTimerGetFreq(PTMTIMER pTimer)
         {
             PCSUPGLOBALINFOPAGE pGip = g_pSUPGlobalInfoPage;
             if (pGip)
-                return pGip->u64CpuHz;
+                return SUPGetCpuHzFromGIP(pGip) ;
             return pTimer->CTXALLSUFF(pVM)->tm.s.cTSCTicksPerSecond;
         }
 

@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 988 2007-02-19 18:19:14Z vboxsync $ */
+/* $Id: VMMGC.cpp 1027 2007-02-22 20:29:35Z vboxsync $ */
 /** @file
  * VMM - Guest Context.
  */
@@ -101,7 +101,10 @@ VMMGCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg)
          */
         case VMMGC_DO_TESTCASE_INTERRUPT_MASKING:
         {
-            uint64_t u64MaxTicks = (g_pSUPGlobalInfoPage ? g_pSUPGlobalInfoPage->u64CpuHz : _2G) / 10000;
+            uint64_t u64MaxTicks = (SUPGetCpuHzFromGIP(g_pSUPGlobalInfoPage) != ~(uint64_t)0 
+                                    ? SUPGetCpuHzFromGIP(g_pSUPGlobalInfoPage) 
+                                    : _2G) 
+                                   / 10000;
             uint64_t u64StartTSC = ASMReadTSC();
             uint64_t u64TicksNow;
             uint32_t volatile i = 0;
