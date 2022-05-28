@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: PDM.cpp 4188 2007-08-16 22:47:14Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -538,10 +538,7 @@ static DECLCALLBACK(int) pdmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
         if (u32Sep == (uint32_t)~0)
             break;
         if (u32Sep != i)
-        {
-            AssertMsgFailed(("Out of seqence. u32Sep=%#x i=%#x\n", u32Sep, i));
-            return VERR_SSM_DATA_UNIT_FORMAT_CHANGED;
-        }
+            AssertMsgFailedReturn(("Out of seqence. u32Sep=%#x i=%#x\n", u32Sep, i), VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
 
         /* get the name and instance number. */
         char szDeviceName[sizeof(pDevIns->pDevReg->szDeviceName)];
@@ -557,17 +554,17 @@ static DECLCALLBACK(int) pdmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
         if (!pDevIns)
         {
             LogRel(("Device '%s'/%d not found in current config\n", szDeviceName, iInstance));
-            AssertFailed();
-            return VERR_SSM_LOAD_CONFIG_MISMATCH;
+            if (SSMR3HandleGetAfter(pSSM) != SSMAFTER_DEBUG_IT)
+                AssertFailedReturn(VERR_SSM_LOAD_CONFIG_MISMATCH);
+            break;
         }
         if (    strcmp(szDeviceName, pDevIns->pDevReg->szDeviceName)
-            ||  pDevIns->iInstance != iInstance
-            )
+            ||  pDevIns->iInstance != iInstance)
         {
             LogRel(("u32Sep=%d loaded '%s'/%d  configured '%s'/%d\n",
                     u32Sep, szDeviceName, iInstance, pDevIns->pDevReg->szDeviceName, pDevIns->iInstance));
-            AssertFailed();
-            return VERR_SSM_LOAD_CONFIG_MISMATCH;
+            if (SSMR3HandleGetAfter(pSSM) != SSMAFTER_DEBUG_IT)
+                AssertFailedReturn(VERR_SSM_LOAD_CONFIG_MISMATCH);
         }
     }
 
@@ -577,8 +574,8 @@ static DECLCALLBACK(int) pdmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
     if (pDevIns)
     {
         LogRel(("Device '%s'/%d not found in saved state\n", pDevIns->pDevReg->szDeviceName, pDevIns->iInstance));
-        AssertFailed();
-        return VERR_SSM_LOAD_CONFIG_MISMATCH;
+        if (SSMR3HandleGetAfter(pSSM) != SSMAFTER_DEBUG_IT)
+            AssertFailedReturn(VERR_SSM_LOAD_CONFIG_MISMATCH);
     }
 
     return VINF_SUCCESS;
