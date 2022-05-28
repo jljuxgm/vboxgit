@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 1283 2007-03-07 00:02:11Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -57,6 +57,8 @@ HWACCMR0DECL(int) HWACCMR0Init(PVM pVM)
 
     pVM->hwaccm.s.vmx.fSupported = false;;
     pVM->hwaccm.s.svm.fSupported = false;;
+
+#ifndef VBOX_WITH_HYBIRD_32BIT_KERNEL /* paranoia */
 
     /*
      * Check for VMX capabilities
@@ -159,6 +161,8 @@ HWACCMR0DECL(int) HWACCMR0Init(PVM pVM)
             }
         }
     }
+#endif /* !VBOX_WITH_HYBIRD_32BIT_KERNEL */
+
     return VINF_SUCCESS;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 716 2007-02-06 15:56:35Z vboxsync $ */
+/* $Id: TRPMInternal.h 1283 2007-03-07 00:02:11Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -191,6 +191,13 @@ TRPMGCDECL(int) trpmgcShadowIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMC
  * @param   RSP     The interrupt gate RSP. ~0 if no stack switch should take place. (only AMD64)
  */
 DECLASM(void) trpmR0DispatchHostInterrupt(RTR0UINTPTR uIP, RTSEL SelCS, RTR0UINTPTR RSP);
+
+/**
+ * Issues a software interrupt to the specified interrupt vector.
+ * 
+ * @param   uActiveVector   The vector number.
+ */
+DECLASM(void) trpmR0DispatchHostInterruptSimple(RTUINT uActiveVector);
 
 # ifndef VBOX_WITHOUT_IDT_PATCHING
 /**
