@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 4220 2007-08-19 00:04:30Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 4221 2007-08-19 00:31:31Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, NT.
  */
@@ -183,7 +183,7 @@ int rtR0MemObjNativeFree(RTR0MEMOBJ pMem)
 
 int rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable)
 {
-    AssertMsgReturn(cb > _1G, ("%#x\n", cb), VERR_OUT_OF_RANGE); /* for safe size_t -> ULONG */
+    AssertMsgReturn(cb <= _1G, ("%#x\n", cb), VERR_OUT_OF_RANGE); /* for safe size_t -> ULONG */
 
     /*
      * Try allocate the memory and create an MDL for them so
