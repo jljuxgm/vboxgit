@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 1861 2007-04-02 14:11:37Z vboxsync $ */
+/* $Id: CSAM.cpp 1864 2007-04-02 15:31:14Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2170,10 +2170,6 @@ static int csamR3FlushCodePages(PVM pVM)
         PGMShwSetPage(pVM, GCPtr, 1, 0);
         /* Resync the page to make sure instruction fetch will fault */
         CSAMMarkPage(pVM, GCPtr, false);
-//        PGMInvalidatePage(pVM, GCPtr);
-/////        PGMPrefetchPage(pVM, GCPtr);
-
-/////        CSAMMarkPage(pVM, GCPtr, true);
     }
     pVM->csam.s.cPossibleCodePages = 0;
     return VINF_SUCCESS;
