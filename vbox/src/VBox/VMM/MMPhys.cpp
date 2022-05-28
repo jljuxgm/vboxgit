@@ -1,4 +1,4 @@
-/* $Id: MMPhys.cpp 247 2007-01-23 17:10:04Z vboxsync $ */
+/* $Id: MMPhys.cpp 250 2007-01-23 17:12:21Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Physical Memory.
  */
@@ -147,7 +147,7 @@ MMR3DECL(int) MMR3PhysRegisterEx(PVM pVM, void *pvRam, RTGCPHYS GCPhys, unsigned
          * Lock the memory. (fully allocated by caller)
          */
         PMMLOCKEDMEM    pLockedMem;
-        rc = mmr3LockMem(pVM, pvRam, cb, MM_LOCKED_TYPE_PHYS, &pLockedMem, (enmType == MM_PHYS_TYPE_DYNALLOC_CHUNK) ? false : true /* fSilentFailure */);
+        rc = mmr3LockMem(pVM, pvRam, cb, MM_LOCKED_TYPE_PHYS, &pLockedMem, (enmType == MM_PHYS_TYPE_DYNALLOC_CHUNK) ? true : false /* fSilentFailure */);
         if (VBOX_SUCCESS(rc))
         {
             pLockedMem->u.phys.GCPhys = GCPhys;
