@@ -1,4 +1,4 @@
-/* $Revision: 4829 $ */
+/* $Revision: 4833 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -187,7 +187,7 @@ __END_DECLS
  * Solaris
  */
 #elif defined(RT_OS_SOLARIS)
-# define OSDBGPRINT(a) uprintf a
+# define OSDBGPRINT(a) SUPR0Printf a
 
 
 #else
