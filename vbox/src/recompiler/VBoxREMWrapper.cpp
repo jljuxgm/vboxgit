@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 2422 2007-04-30 12:03:47Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 2890 2007-05-28 11:49:44Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -453,6 +453,12 @@ static const REMPARMDESC g_aArgsIsPageAccessHandled[] =
 
 
 /* VMM args */
+static const REMPARMDESC g_aArgsCPUMGetGuestCpl[] =
+{
+    { REMPARMDESC_FLAGS_INT,        sizeof(PVM) },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PCPUMCTXORE) },
+};
+
 static const REMPARMDESC g_aArgsCPUMGetGuestCpuId[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM) },
@@ -937,6 +943,7 @@ static REMFNDESC g_aVMMImports[] =
 {
     { "CPUMAreHiddenSelRegsValid",              (void *)(uintptr_t)&CPUMAreHiddenSelRegsValid,      &g_aArgsVM[0],                              ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_INT,    sizeof(bool),       NULL },
     { "CPUMGetAndClearChangedFlagsREM",         (void *)(uintptr_t)&CPUMGetAndClearChangedFlagsREM, &g_aArgsVM[0],                              ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_INT,    sizeof(unsigned),   NULL },
+    { "CPUMGetGuestCPL",                        (void *)(uintptr_t)&CPUMGetGuestCPL,                &g_aArgsCPUMGetGuestCpl[0],                 ELEMENTS(g_aArgsCPUMGetGuestCpl),                   REMFNDESC_FLAGS_RET_INT,    sizeof(unsigned),   NULL },
     { "CPUMGetGuestCpuId",                      (void *)(uintptr_t)&CPUMGetGuestCpuId,              &g_aArgsCPUMGetGuestCpuId[0],               ELEMENTS(g_aArgsCPUMGetGuestCpuId),                 REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
     { "CPUMGetGuestEAX",                        (void *)(uintptr_t)&CPUMGetGuestEAX,                &g_aArgsVM[0],                              ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_INT,    sizeof(uint32_t),   NULL },
     { "CPUMGetGuestEBP",                        (void *)(uintptr_t)&CPUMGetGuestEBP,                &g_aArgsVM[0],                              ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_INT,    sizeof(uint32_t),   NULL },
