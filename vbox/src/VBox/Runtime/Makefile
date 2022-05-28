@@ -1,4 +1,4 @@
-# $Id: Makefile 542 2007-02-02 06:50:20Z vboxsync $
+# $Id: Makefile 591 2007-02-04 14:11:01Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -162,6 +162,7 @@ RuntimeR3_SOURCES       = \
 	logformat.cpp \
 	md5.cpp \
 	path.cpp \
+        req.cpp \
 	r3/alloc-ef.cpp \
 	r3/alloc.cpp \
 	r3/init.cpp \
