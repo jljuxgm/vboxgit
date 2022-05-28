@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 2740 2007-05-21 14:55:35Z vboxsync $
+; $Id: HWACCMR0A.asm 2743 2007-05-21 15:18:27Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -81,8 +81,8 @@
     push    rdi
   %endmacro
   %macro MYPOPAD 0
-    pop     rsi
     pop     rdi
+    pop     rsi
     pop     rbx
     pop     r12
     pop     r13
