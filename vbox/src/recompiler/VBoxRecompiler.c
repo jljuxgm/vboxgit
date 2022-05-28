@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 4986 2007-09-24 02:32:58Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 5197 2007-10-09 12:31:32Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -426,6 +426,9 @@ REMR3DECL(void) REMR3Reset(PVM pVM)
     cpu_reset(&pVM->rem.s.Env);
     pVM->rem.s.cInvalidatedPages = 0;
     pVM->rem.s.fIgnoreAll = false;
+
+    /* Clear raw ring 0 init state */
+    pVM->rem.s.Env.state &= ~CPU_RAW_RING0;
 }
 
 
@@ -1545,6 +1548,15 @@ void remR3TrapClear(PVM pVM)
     pVM->rem.s.uPendingExcptCR2   = 0;
 }
 
+/*
+ * Record previous call instruction addresses
+ *
+ * @param   env             Pointer to the CPU environment.
+ */
+void remR3RecordCall(CPUState *env)
+{
+    CSAMR3RecordCallAddress((PVM)env->pVM, env->eip);
+}
 
 /**
  * Syncs the internal REM state with the VM.
