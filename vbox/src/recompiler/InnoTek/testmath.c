@@ -1,4 +1,4 @@
-/* $Id: testmath.c 3727 2007-07-19 19:14:09Z vboxsync $ */
+/* $Id: testmath.c 3752 2007-07-20 16:55:31Z vboxsync $ */
 /** @file
  * Testcase for the no-crt math stuff.
  */
@@ -242,7 +242,7 @@ extern int testmath(void)
     CHECKL(lrintl(make_lrd_cw(0x8000000000000000ULL,0x400e,0x0a7f)), 32768L);
     CHECKL(lrintl(make_lrd_cw(0x8000000000000000ULL,0x400e,0x0e7f)), 32768L);
     CHECKL(lrintl(make_lrd_cw(0x8000000000000000ULL,0x400e,0x0e7f)), 32768L);
-#if !defined(RT_ARHC_AMD64)
+#if !defined(RT_ARCH_AMD64)
     CHECKL(lrintl(make_lrd_cw(0xad78ebc5ac620000ULL,0xc041,0x027f)), (long)-2147483648L);
     CHECKL(lrintl(make_lrd_cw(0xad78ebc5ac620000ULL,0xc041,0x027f)), (long)-2147483648L);
     CHECKL(lrintl(make_lrd_cw(0xad78ebc5ac620000ULL,0xc041,0x067f)), (long)-2147483648L);
