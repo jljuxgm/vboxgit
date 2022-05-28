@@ -1,4 +1,4 @@
-# $Id: Makefile 129 2007-01-18 00:07:02Z vboxsync $
+# $Id: Makefile 131 2007-01-18 00:35:11Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -391,8 +391,6 @@ VBoxRT_LIBS                    = \
 	$(PATH_LIB)/VBox-liblzf$(VBOX_SUFF_LIB)
 VBoxRT_LIBS.darwin             = \
 	iconv
-VBoxRT_LIBS.os2                = \
-	$(PATH_LIB)/VBox-uuid$(VBOX_SUFF_LIB)
 ifdef VBOX_USE_VCC80
 VBoxRT_LDFLAGS.win             = /MANIFEST
 endif
