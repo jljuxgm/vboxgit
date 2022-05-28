@@ -1,4 +1,4 @@
-# $Id: Config.kmk 22 2007-01-15 13:47:07Z vboxsync $
+# $Id: Config.kmk 25 2007-01-15 15:19:26Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -810,6 +810,13 @@ else
  SDK_VBOX_FFMPEG_INCS ?=
  SDK_VBOX_FFMPEG_LIBS ?= avutil avcodec avformat
 endif
+
+#
+# Special SDK for the problematic NTDLL.LIB.
+#
+SDK_VBOX_NTDLL = Requires W2K3DDK
+SDK_VBOX_NTDLL_LIBS ?= $(PATH_SDK_W2K3DDK_LIB)/ntdll.lib
+
 
 #
 # Qt build tools, for Linux we require it to be present on the system
