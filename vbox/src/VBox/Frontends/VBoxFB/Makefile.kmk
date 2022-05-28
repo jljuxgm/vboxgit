@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 3188 2007-06-20 17:24:15Z vboxsync $
 ## @file
 # Makefile for VBoxFB.
 #
@@ -34,7 +34,7 @@ VBoxFB_INCS       = \
 	$(PATH_BIN)/sdk/include \
 	$(VBOX_XPCOM_INCS)
 VBoxFB_LIBS       = \
-	$(PATH_LIB)/VBoxXPCOM$(VBOX_SUFF_LIB) \
+	$(PATH_LIB)/VBoxCOM$(VBOX_SUFF_LIB) \
 	$(LIB_RUNTIME) \
 	xpcomglue \
 	nspr4 \
