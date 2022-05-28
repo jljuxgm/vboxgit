@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5714 2007-11-12 17:07:52Z vboxsync $
+# $Id: Makefile.kmk 5717 2007-11-13 07:52:08Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -599,7 +599,7 @@ ifdef VBOX_WITH_USB
  Drivers_SOURCES.os2 += \
 	USB/USBProxyDevice.cpp \
 	USB/os2/USBProxyDevice-os2.cpp
-								   
+
  Drivers_DEFS.win     += VUSB_HAVE_USBPROXY_DEVICE
  Drivers_SOURCES.win  += \
 	USB/USBProxyDevice.cpp \
@@ -625,8 +625,6 @@ ifdef VBOX_WITH_TESTCASES
  tstIntNetR0_DEFS        = IN_INTNET_R0
  tstIntNetR0_SOURCES     = \
 	Network/testcase/tstIntNetR0.cpp
- tstIntNetR0_LIBS        = \
-	$(LIB_RUNTIME)
 endif
 
 #
