@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.h 1  vboxsync $ */
+/* $Id: memobj.h 207 2007-01-21 10:42:48Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Ring-0 Memory Objects.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __r0drv_memobj_r0drv_h__
-#define __r0drv_memobj_r0drv_h__
+#ifndef __internal_memobj_h__
+#define __internal_memobj_h__
 
 #include <iprt/memobj.h>
 #include <iprt/assert.h>
@@ -28,6 +28,7 @@
 
 /** @defgroup grp_rt_memobj_int Internals.
  * @ingroup grp_rt_memobj
+ * @internal
  * @{
  */
 

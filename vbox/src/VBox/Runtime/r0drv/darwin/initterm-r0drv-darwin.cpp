@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-darwin.cpp 1  vboxsync $ */
+/* $Id: initterm-r0drv-darwin.cpp 207 2007-01-21 10:42:48Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Initialization & Termination, R0 Driver, Darwin.
  */
@@ -24,9 +24,9 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-darwin-kernel.h"
-#include "r0drv/initterm-r0drv.h"
 #include <iprt/err.h>
 #include <iprt/assert.h>
+#include "internal/initterm.h"
 
 
 /*******************************************************************************

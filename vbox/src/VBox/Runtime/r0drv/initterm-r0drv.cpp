@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv.cpp 1  vboxsync $ */
+/* $Id: initterm-r0drv.cpp 207 2007-01-21 10:42:48Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Initialization & Termination, R0 Driver, Common.
  */
@@ -23,9 +23,9 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/assert.h>
-#include "r0drv/initterm-r0drv.h"
+#include "internal/initterm.h"
 
 
 /**

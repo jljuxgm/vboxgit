@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 1  vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 207 2007-01-21 10:42:48Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Ring-0 Memory Objects, Darwin.
  */
@@ -31,7 +31,7 @@
 #include <iprt/log.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
-#include "r0drv/memobj-r0drv.h"
+#include "internal/memobj.h"
 
 
 
