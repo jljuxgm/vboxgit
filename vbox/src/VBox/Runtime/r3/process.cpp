@@ -1,4 +1,4 @@
-/* $Id: process.cpp 1  vboxsync $ */
+/* $Id: process.cpp 385 2007-01-27 20:05:44Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Process, Common.
  */
@@ -42,7 +42,7 @@
  *
  * @returns Process identifier.
  */
-RTR3DECL(RTPROCESS) RTProcSelf(void)
+RTDECL(RTPROCESS) RTProcSelf(void)
 {
     RTPROCESS Self = g_ProcessSelf;
     if (Self != NIL_RTPROCESS)
