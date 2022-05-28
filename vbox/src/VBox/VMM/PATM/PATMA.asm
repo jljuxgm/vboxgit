@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 2047 2007-04-12 13:41:53Z vboxsync $
+; $Id: PATMA.asm 2088 2007-04-14 12:46:42Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -1227,7 +1227,7 @@ PATMIretStart:
     jnz     iret_notring0
 
     test    dword [esp+12], X86_EFL_IF
-    jz      iret_clearIF
+    jz near iret_clearIF
 
     ; force ring 1 CS RPL
     or      dword [esp+8], 1
