@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 4427 2007-08-29 23:18:56Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 4485 2007-09-03 08:50:34Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -214,6 +214,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     rc = CFGMR3InsertString(pCfg,   "HardDiskDevice",       "piix3ide");            RC_CHECK();
     rc = CFGMR3InsertString(pCfg,   "FloppyDevice",         "i82078");              RC_CHECK();
     rc = CFGMR3InsertInteger(pCfg,  "IOAPIC",               fIOAPIC);               RC_CHECK();
+
+    /*
+     * Machine UUID.
+     */
+    Guid uuid;
+    hrc = pMachine->COMGETTER (Id)(uuid.asOutParam());                              H();
+    rc = CFGMR3InsertBytes(pCfg,  "UUID", (void *)uuid.raw(), sizeof(RTUUID));      RC_CHECK();
 
     DeviceType_T bootDevice;
     if (SchemaDefs::MaxBootPosition > 9)
