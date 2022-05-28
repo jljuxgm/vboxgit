@@ -1,4 +1,4 @@
-/* $Id: tstHelp.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: tstHelp.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * VMM testcase - Helper stuff.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __tstHelp_h__
-#define __tstHelp_h__
+#ifndef ___tstHelp_h
+#define ___tstHelp_h
 
 #include <VBox/cdefs.h>
 #include <VBox/cpum.h>

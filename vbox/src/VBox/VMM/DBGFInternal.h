@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: DBGFInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __DBGFInternal_h__
-#define __DBGFInternal_h__
+#ifndef ___DBGFInternal_h
+#define ___DBGFInternal_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

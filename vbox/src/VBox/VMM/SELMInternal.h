@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: SELMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __SELMInternal_h__
-#define __SELMInternal_h__
+#ifndef ___SELMInternal_h
+#define ___SELMInternal_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

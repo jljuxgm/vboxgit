@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: HWVMXR0.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * HWACCM SVM - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __HWVMXR0_h__
-#define __HWVMXR0_h__
+#ifndef ___HWVMXR0_h
+#define ___HWVMXR0_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

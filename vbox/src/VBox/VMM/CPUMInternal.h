@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: CPUMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __CPUMInternal_h__
-#define __CPUMInternal_h__
+#ifndef ___CPUMInternal_h
+#define ___CPUMInternal_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

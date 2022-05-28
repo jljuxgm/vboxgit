@@ -1,4 +1,4 @@
-/* $Id: CFGMInternal.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: CFGMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * CFGM - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __CFGMInternal_h__
-#define __CFGMInternal_h__
+#ifndef ___CFGMInternal_h
+#define ___CFGMInternal_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

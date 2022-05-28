@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 3635 2007-07-16 12:45:28Z vboxsync $ */
+/* $Id: PDMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __PDMInternal_h__
-#define __PDMInternal_h__
+#ifndef ___PDMInternal_h
+#define ___PDMInternal_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

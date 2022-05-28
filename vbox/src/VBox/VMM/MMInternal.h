@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: MMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __MMInternal_h__
-#define __MMInternal_h__
+#ifndef ___MMInternal_h
+#define ___MMInternal_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

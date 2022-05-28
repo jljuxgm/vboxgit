@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 3696 2007-07-18 17:00:33Z vboxsync $ */
+/* $Id: VMMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __VMMInternal_h__
-#define __VMMInternal_h__
+#ifndef ___VMMInternal_h
+#define ___VMMInternal_h
 
 #include <VBox/cdefs.h>
 #include <x86context.h>

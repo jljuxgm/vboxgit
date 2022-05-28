@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 3510 2007-07-09 14:37:57Z vboxsync $ */
+/* $Id: EMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __EMInternal_h__
-#define __EMInternal_h__
+#ifndef ___EMInternal_h
+#define ___EMInternal_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

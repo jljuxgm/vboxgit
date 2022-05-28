@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 3295 2007-06-26 14:26:18Z vboxsync $ */
+/* $Id: HWACCMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __HWACCMInternal_h__
-#define __HWACCMInternal_h__
+#ifndef ___HWACCMInternal_h
+#define ___HWACCMInternal_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

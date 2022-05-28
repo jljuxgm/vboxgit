@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: VMMSwitcher.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * VMM - World Switchers.
  */
@@ -19,9 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-
-#ifndef __VMMSwitcher_h__
-#define __VMMSwitcher_h__
+#ifndef ___VMMSwitcher_h
+#define ___VMMSwitcher_h
 
 #include <VBox/vmm.h>
 

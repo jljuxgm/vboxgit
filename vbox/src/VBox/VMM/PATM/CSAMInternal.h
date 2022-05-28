@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 3025 2007-06-04 12:49:31Z vboxsync $ */
+/* $Id: CSAMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __CSAMInternal_h__
-#define __CSAMInternal_h__
+#ifndef ___CSAMInternal_h
+#define ___CSAMInternal_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

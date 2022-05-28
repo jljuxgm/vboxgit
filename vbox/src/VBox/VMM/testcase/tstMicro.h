@@ -1,4 +1,4 @@
-/* $Id: tstMicro.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: tstMicro.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __tstMicro_h__
-#define __tstMicro_h__
+#ifndef ___tstMicro_h
+#define ___tstMicro_h
 
 /**
  * The testcase identifier.

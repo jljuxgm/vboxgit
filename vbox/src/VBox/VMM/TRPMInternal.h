@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: TRPMInternal.h 3723 2007-07-19 18:46:00Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -19,8 +19,8 @@
  * license agreement apply instead of the previous paragraph.
  */
 
-#ifndef __TRPMInternal_h__
-#define __TRPMInternal_h__
+#ifndef ___TRPMInternal_h
+#define ___TRPMInternal_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
@@ -217,7 +217,7 @@ DECLASM(void) trpmR0DispatchHostInterrupt(RTR0UINTPTR uIP, RTSEL SelCS, RTR0UINT
 
 /**
  * Issues a software interrupt to the specified interrupt vector.
- * 
+ *
  * @param   uActiveVector   The vector number.
  */
 DECLASM(void) trpmR0DispatchHostInterruptSimple(RTUINT uActiveVector);
