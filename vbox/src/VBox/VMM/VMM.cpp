@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 3753 2007-07-20 17:40:59Z vboxsync $ */
+/* $Id: VMM.cpp 4013 2007-08-03 00:11:38Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -125,7 +125,8 @@
 #include <VBox/vmapi.h>
 #include <VBox/pgm.h>
 #include <VBox/cfgm.h>
-#include <VBox/pdm.h>
+#include <VBox/pdmqueue.h>
+#include <VBox/pdmapi.h>
 #include <VBox/cpum.h>
 #include <VBox/mm.h>
 #include <VBox/iom.h>

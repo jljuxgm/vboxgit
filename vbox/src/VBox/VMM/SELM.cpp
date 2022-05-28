@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 3724 2007-07-19 18:57:24Z vboxsync $ */
+/* $Id: SELM.cpp 4013 2007-08-03 00:11:38Z vboxsync $ */
 /** @file
  * SELM - The Selector manager.
  */
@@ -27,7 +27,7 @@
 #include <VBox/cpum.h>
 #include <VBox/stam.h>
 #include <VBox/mm.h>
-#include <VBox/pdm.h>
+#include <VBox/ssm.h>
 #include <VBox/pgm.h>
 #include <VBox/trpm.h>
 #include <VBox/dbgf.h>

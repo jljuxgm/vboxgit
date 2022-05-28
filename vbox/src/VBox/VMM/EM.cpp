@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 3184 2007-06-20 13:40:16Z vboxsync $ */
+/* $Id: EM.cpp 4013 2007-08-03 00:11:38Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -45,7 +45,10 @@
 #include <VBox/rem.h>
 #include <VBox/tm.h>
 #include <VBox/mm.h>
-#include <VBox/pdm.h>
+#include <VBox/ssm.h>
+#include <VBox/pdmapi.h>
+#include <VBox/pdmcritsect.h>
+#include <VBox/pdmqueue.h>
 #include <VBox/hwaccm.h>
 #include <VBox/patm.h>
 #include "EMInternal.h"

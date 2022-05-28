@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 3273 2007-06-25 11:45:29Z vboxsync $ */
+/* $Id: VMEmt.cpp 4013 2007-08-03 00:11:38Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -27,7 +27,7 @@
 #include <VBox/tm.h>
 #include <VBox/dbgf.h>
 #include <VBox/em.h>
-#include <VBox/pdm.h>
+#include <VBox/pdmapi.h>
 #include <VBox/rem.h>
 #include "VMInternal.h"
 #include <VBox/vm.h>
