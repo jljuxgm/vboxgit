@@ -1,4 +1,4 @@
-/* $Id: SELMGC.cpp 1444 2007-03-13 15:15:35Z vboxsync $ */
+/* $Id: SELMGC.cpp 1502 2007-03-15 10:00:42Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager, Guest Context.
  */
@@ -282,6 +282,23 @@ SELMGCDECL(int) selmgcGuestTSSWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCT
             pVM->selm.s.Tss.esp1 = pGuestTSS->esp0;
             pVM->selm.s.Tss.ss1 = pGuestTSS->ss0 | 1;
             STAM_COUNTER_INC(&pVM->selm.s.StatGCWriteGuestTSSHandledChanged);
+        }
+        if (CPUMGetGuestCR4(pVM) & X86_CR4_VME)
+        {
+            uint32_t offRedirBitmap = pGuestTSS->offIoBitmap - sizeof(pVM->selm.s.Tss.redirBitmap);
+
+            /** @todo not sure how the partial case is handled; probably not allowed */
+            if (offRedirBitmap + sizeof(pVM->selm.s.Tss.redirBitmap) <= pVM->selm.s.cbGuestTss)
+            {
+                /** @todo check if fault was in this range and, if so, only update the changed part. */
+                for (uint32_t i=0;i<sizeof(pVM->selm.s.Tss.redirBitmap)/8;i++)
+                {
+                    rc = MMGCRamRead(pVM, &pVM->selm.s.Tss.redirBitmap[i*8], (uint8_t *)pGuestTSS + offRedirBitmap + i*8, 8);
+                    AssertRC(rc);
+                }
+                STAM_COUNTER_INC(&pVM->selm.s.StatGCWriteGuestTSSRedir);
+            }
+
         }
         STAM_COUNTER_INC(&pVM->selm.s.StatGCWriteGuestTSSHandled);
     }

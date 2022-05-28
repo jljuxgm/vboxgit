@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 1480 2007-03-14 18:27:47Z vboxsync $ */
+/* $Id: SELMInternal.h 1502 2007-03-15 10:00:42Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -149,17 +149,19 @@ typedef struct SELM
     /** SELMR3SyncTSS() profiling. */
     STAMPROFILE             StatTSSSync;
 
-    /** GC: The number of handled write to the Guest's GDT. */
+    /** GC: The number of handled writes to the Guest's GDT. */
     STAMCOUNTER             StatGCWriteGuestGDTHandled;
     /** GC: The number of unhandled write to the Guest's GDT. */
     STAMCOUNTER             StatGCWriteGuestGDTUnhandled;
-    /** GC: The number of times write to Guest's LDT was detected. */
+    /** GC: The number of times writes to Guest's LDT was detected. */
     STAMCOUNTER             StatGCWriteGuestLDT;
-    /** GC: The number of handled write to the Guest's TSS. */
+    /** GC: The number of handled writes to the Guest's TSS. */
     STAMCOUNTER             StatGCWriteGuestTSSHandled;
-    /** GC: The number of handled write to the Guest's TSS where we detected a change. */
+    /** GC: The number of handled writes to the Guest's TSS where we detected a change. */
     STAMCOUNTER             StatGCWriteGuestTSSHandledChanged;
-    /** GC: The number of unhandled write to the Guest's TSS. */
+    /** GC: The number of handled redir writes to the Guest's TSS where we detected a change. */
+    STAMCOUNTER             StatGCWriteGuestTSSRedir;
+    /** GC: The number of unhandled writes to the Guest's TSS. */
     STAMCOUNTER             StatGCWriteGuestTSSUnhandled;
     /** The number of times we had to relocate our hypervisor selectors. */
     STAMCOUNTER             StatHyperSelsChanged;
