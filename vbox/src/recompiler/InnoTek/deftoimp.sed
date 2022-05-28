@@ -1,6 +1,6 @@
-# $Id: deftoimp.sed 17147 2007-01-09 09:05:45Z bird $
+# $Id: deftoimp.sed 2466 2007-05-03 16:10:50Z vboxsync $
 ## @file
-# VBox Runtime - SED script for windows .def file stubs file.
+# SED script for generating a dummy .so from a windows .def file.
 #
 
 #
