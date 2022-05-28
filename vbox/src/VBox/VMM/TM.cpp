@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 1058 2007-02-23 20:56:18Z vboxsync $ */
+/* $Id: TM.cpp 1876 2007-04-03 11:59:17Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -78,6 +78,8 @@
 #include <iprt/timer.h>
 #include <iprt/semaphore.h>
 #include <iprt/string.h>
+#include <iprt/env.h>
+
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
@@ -203,6 +205,10 @@ TMR3DECL(int) TMR3Init(PVM pVM)
     else if (VBOX_FAILURE(rc))
         return VMSetError(pVM, rc, RT_SRC_POS, 
                           N_("Configuration error: Failed to querying bool value \"UseRealTSC\". (%Vrc)"), rc); 
+#if 1 /* temporary hack */
+    if (RTEnvExist("VBOX_TM_VIRTUALIZED_TSC"))
+        pVM->tm.s.fTSCUseRealTSC = false;
+#endif 
     if (!pVM->tm.s.fTSCUseRealTSC)
         pVM->tm.s.fTSCVirtualized = true;
 
