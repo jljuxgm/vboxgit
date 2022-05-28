@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 392 2007-01-27 22:28:29Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 394 2007-01-28 00:02:50Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Ring-0 Memory Objects, Darwin.
  */
@@ -34,7 +34,7 @@
 #include <iprt/process.h>
 #include "internal/memobj.h"
 
-/*#define USE_VM_MAP_WIRE*/
+#define USE_VM_MAP_WIRE
 
 
 /*******************************************************************************
@@ -381,6 +381,7 @@ static int rtR0MemObjNativeLock(PPRTR0MEMOBJINTERNAL ppMem, void *pv, size_t cb,
             *ppMem = &pMemDarwin->Core;
             return VINF_SUCCESS;
         }
+
         kr = vm_map_unwire(get_task_map(Task), (vm_map_offset_t)pv, (vm_map_offset_t)pv + cb, 0 /* not user */);
         Assert(kr == KERN_SUCCESS);
         rc = VERR_NO_MEMORY;
