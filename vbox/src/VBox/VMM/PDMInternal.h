@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 1354 2007-03-09 09:39:20Z vboxsync $ */
+/* $Id: PDMInternal.h 1447 2007-03-13 15:52:59Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -723,7 +723,7 @@ PPDMDRV     pdmR3DrvLookup(PVM pVM, const char *pszName);
 
 int         pdmR3LdrInit(PVM pVM);
 void        pdmR3LdrTerm(PVM pVM);
-char *      pdmR3FileR3(const char *pszFile, bool fShared=false);
+char *      pdmR3FileR3(const char *pszFile, bool fShared = false);
 int         pdmR3LoadR3(PVM pVM, const char *pszFilename, const char *pszName);
 
 void        pdmR3QueueRelocate(PVM pVM, RTGCINTPTR offDelta);
