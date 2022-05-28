@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 3186 2007-06-20 15:32:16Z vboxsync $
 ## @file
 # Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -36,7 +36,7 @@ ifneq ($(filter win linux,$(BUILD_TARGET)),)	## @todo Convert these two to the o
 	-DNDEBUG -DTRIMMED -DVBOX_WITH_XPCOM -O -Wall -fno-rtti -fno-exceptions \
 	-Wno-non-virtual-dtor -Wno-long-long -fshort-wchar -pthread -pipe
 else
- VBoxSDL_TEMPLATE  = VBOXMAINCLIENT
+ VBoxSDL_TEMPLATE  = VBOXMAINCLIENTEXE
 endif
 VBoxSDL_SDKS       = LIBSDL
 VBoxSDL_SOURCES    = \

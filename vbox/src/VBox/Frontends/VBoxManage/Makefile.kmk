@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 3186 2007-06-20 15:32:16Z vboxsync $
 ## @file
 # Makefile for VBoxManage (the cli frontend).
 #
@@ -25,7 +25,7 @@ include $(PATH_KBUILD)/header.kmk
 
 PROGRAMS = VBoxManage
 
-VBoxManage_TEMPLATE   = VBOXMAINCLIENT
+VBoxManage_TEMPLATE   = VBOXMAINCLIENTEXE
 VBoxManage_SOURCES    = \
 	VBoxManage.cpp \
 	VBoxInternalManage.cpp

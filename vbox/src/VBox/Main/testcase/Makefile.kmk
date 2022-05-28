@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 3186 2007-06-20 15:32:16Z vboxsync $
 ## @file
 # Makefile for the VBox API testcases.
 #
@@ -47,7 +47,7 @@ endif
 #
 # tstAPI
 #
-tstAPI_TEMPLATE = VBOXMAINCLIENT
+tstAPI_TEMPLATE = VBOXMAINCLIENTEXE
 tstAPI_SOURCES  = tstAPI.cpp
 
 #
@@ -70,7 +70,7 @@ tstVBoxAPILinux_LIBS     = \
 #
 # tstVBoxAPIWin
 #
-tstVBoxAPIWin_TEMPLATE = VBOXMAINCLIENT
+tstVBoxAPIWin_TEMPLATE = VBOXMAINCLIENTEXE
 tstVBoxAPIWin_SOURCES  = \
 	tstVBoxAPIWin.cpp \
 	$(PATH_BIN)/sdk/lib/VirtualBox_i.c
