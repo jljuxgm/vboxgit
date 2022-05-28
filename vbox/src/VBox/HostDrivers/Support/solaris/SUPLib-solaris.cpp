@@ -1,8 +1,6 @@
-/* $Id: SUPLib-solaris.cpp 5331 2007-10-16 14:58:57Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 5584 2007-10-31 18:20:33Z vboxsync $ */
 /** @file
- *
- * VBox host drivers - Ring-0 support drivers - Solaris host:
- * Solaris implementations for support library
+ * Support Library - Solaris Specific Back-End.
  */
 
 /*
@@ -49,7 +47,8 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-#define DEVICE_NAME     "/devices/pseudo/vboxdrv@0:0"
+/** Suffix must match the one in ddi_create_minor_node() (SUPDrv-solaris.c) */
+#define DEVICE_NAME     "/devices/pseudo/vboxdrv@0:vboxdrv"
 
 
 /*******************************************************************************
@@ -154,7 +153,7 @@ int suplibOsIOCtlFast(uintptr_t uFunction)
 
 int suplibOsPageAlloc(size_t cPages, void **ppvPages)
 {
-    *ppvPages = mmap(NULL, cPages * PAGE_SIZE, PROT_EXEC | PROT_READ | PROT_WRITE, 
+    *ppvPages = mmap(NULL, cPages * PAGE_SIZE, PROT_EXEC | PROT_READ | PROT_WRITE,
                      MAP_PRIVATE | MAP_ANON, -1, 0);
     if (*ppvPages != (void *)-1)
         return VINF_SUCCESS;
