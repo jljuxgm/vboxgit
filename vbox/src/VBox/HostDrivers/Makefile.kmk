@@ -1,11 +1,11 @@
-# $Id: Makefile.kmk 4489 2007-09-03 11:38:21Z vboxsync $
+# $Id: Makefile.kmk 5564 2007-10-30 18:17:48Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
 
 #
 #  Copyright (C) 2006-2007 innotek GmbH
-# 
+#
 #  This file is part of VirtualBox Open Source Edition (OSE), as
 #  available from http://www.virtualbox.org. This file is free software;
 #  you can redistribute it and/or modify it under the terms of the GNU
@@ -21,14 +21,9 @@ include $(PATH_KBUILD)/subheader.kmk
 include $(PATH_SUB_CURRENT)/Support/Makefile.kmk
 ifeq ($(BUILD_TARGET),win)
  include $(PATH_SUB_CURRENT)/VBoxTAP/Makefile.kmk
- ifdef VBOX_WITH_USB
-  include $(PATH_SUB_CURRENT)/VBoxUSB/Makefile.kmk
- endif
 endif
-ifeq ($(BUILD_TARGET),darwin)
- ifdef VBOX_WITH_USB
-  include $(PATH_SUB_CURRENT)/VBoxUSB/darwin/Makefile.kmk
- endif
+ifdef VBOX_WITH_USB
+ include $(PATH_SUB_CURRENT)/VBoxUSB/Makefile.kmk
 endif
 
 # Let kBuild generate the rules.
