@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 5212 2007-10-09 18:43:56Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 5333 2007-10-16 17:56:15Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Semaphores, Ring-0 Driver, Solaris.
  */
@@ -90,7 +90,7 @@ RTDECL(int)  RTSemEventDestroy(RTSEMEVENT EventSem)
     {
         /* abort waiting thread, last man cleans up. */
         ASMAtomicXchgU32(&pEventInt->cWaking, pEventInt->cWaking + pEventInt->cWaiters);
-        cv_signal(&pEventInt->Cnd);
+        cv_broadcast(&pEventInt->Cnd);
         mutex_exit(&pEventInt->Mtx);
     }
     else if (pEventInt->cWaking)
