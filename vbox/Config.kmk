@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4857 2007-09-17 15:06:38Z vboxsync $
+# $Id: Config.kmk 4874 2007-09-17 21:13:51Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -283,9 +283,6 @@ ifeq ($(BUILD_TARGET),os2)
 endif
 
 ifeq ($(BUILD_TARGET),solaris)
- VBOX_WITH_VBOXSDL=
- VBOX_WITH_QTGUI=
- VBOX_WITH_DEBUGGER_GUI=
  VBOX_WITH_INSTALLER=
  VBOX_WITH_SECURELABEL=
  VBOX_WITH_VRDP=
@@ -2065,6 +2062,10 @@ else # the gcc guys:
 	$(LIB_PTHREAD)
   TEMPLATE_VBOXQTGUIEXE_LIBPATH += \
 	$(VBOX_LIBPATH_X11)
+  ifeq ($(BUILD_TARGET),solaris)
+   TEMPLATE_VBOXQTGUIEXE_LIBS += \
+     	rt socket
+  endif
  endif
 
 endif
@@ -2544,7 +2545,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4857 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4874 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
   VBOX_SVN_DEP         :=
