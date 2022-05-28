@@ -1,4 +1,4 @@
-; $Id: VMMR0A.asm 2820 2007-05-23 15:43:25Z vboxsync $
+; $Id: VMMR0A.asm 2822 2007-05-23 15:45:24Z vboxsync $
 ;; @file
 ; VMM - R0 assembly routines.
 ;
@@ -378,7 +378,7 @@ BEGINPROC vmmR0CallHostLongJmp
     rep movsq
 
     ; store the last pieces of info.
-    mov     rcx, [edx + VMMR0JMPBUF.rsp]
+    mov     rcx, [rdx + VMMR0JMPBUF.rsp]
     mov     [rdx + VMMR0JMPBUF.SpCheck], rcx
     mov     byte [rdx + VMMR0JMPBUF.fInRing3Call], 1
 
