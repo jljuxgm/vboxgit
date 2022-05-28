@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 2181 2007-04-18 14:27:49Z vboxsync $ */
+/* $Id: SELMAll.cpp 2183 2007-04-18 14:39:39Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -138,7 +138,7 @@ SELMDECL(int) SELMToFlatEx(PVM pVM, X86EFLAGS eflags, RTSEL Sel, RTGCPTR Addr, C
             if (    pHiddenSel
                 &&  CPUMAreHiddenSelRegsValid(pVM))
             {
-                *ppvGC = (RTGCPTR)pHiddenSel->u32Base;
+                *ppvGC = (RTGCPTR)(pHiddenSel->u32Base + Addr);
             }
             else
             {
@@ -421,7 +421,7 @@ SELMDECL(int) SELMValidateAndConvertCSAddr(PVM pVM, X86EFLAGS eflags, RTSEL SelC
             if (!CPUMAreHiddenSelRegsValid(pVM))
                 uFlat = ((RTGCUINTPTR)Addr & 0xffff) + ((RTGCUINTPTR)SelCS << 4);
             else
-                uFlat = pHiddenCSSel->u32Base;
+                uFlat = pHiddenCSSel->u32Base + Addr;
 
             *ppvFlat = (RTGCPTR)uFlat;
         }
