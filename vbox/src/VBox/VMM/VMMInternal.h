@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 1210 2007-03-05 12:36:53Z vboxsync $ */
+/* $Id: VMMInternal.h 2283 2007-04-20 22:27:52Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -237,6 +237,8 @@ typedef struct VMM
 #if HC_ARCH_BITS == 32
     uint32_t                    u32Padding0; /**< Alignment padding. */
 #endif
+    /** The timestamp of the previous yield. (nano) */
+    uint64_t                    u64LastYield;
 
     /** @name CallHost
      * @{ */
