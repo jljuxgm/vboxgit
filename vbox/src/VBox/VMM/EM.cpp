@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 1165 2007-03-02 14:52:49Z vboxsync $ */
+/* $Id: EM.cpp 1336 2007-03-08 16:58:22Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -2900,13 +2900,8 @@ inline EMSTATE emR3Reschedule(PVM pVM, PCPUMCTX pCtx)
 
         if (!(EFlags.u32 & X86_EFL_IF))
         {
-#ifdef VBOX_RAW_V86
-            if(!(EFlags.u32 & X86_EFL_VM))
-                return EMSTATE_REM;
-#else
             Log2(("raw mode refused: IF (RawR3)\n"));
             return EMSTATE_REM;
-#endif
         }
 
         if (!(u32CR0 & X86_CR0_WP) && EMIsRawRing0Enabled(pVM))
