@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 1252 2007-03-06 09:13:53Z vboxsync $ */
+/* $Id: VMM.cpp 1253 2007-03-06 09:16:35Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2979,27 +2979,6 @@ VMMR3DECL(int) VMMDoHwAccmTest(PVM pVM)
 
         pHyperCtx->cr0 = X86_CR0_PE | X86_CR0_WP | X86_CR0_PG | X86_CR0_TS | X86_CR0_ET | X86_CR0_NE | X86_CR0_MP;
         pHyperCtx->cr4 = X86_CR4_PGE | X86_CR4_OSFSXR | X86_CR4_OSXMMEEXCPT;
-
-        PGMMODE enmShadowMode = PGMGetShadowMode(pVM);
-        switch(enmShadowMode)
-        {
-        case PGMMODE_REAL:
-        case PGMMODE_PROTECTED:     /* Protected mode, no paging. */
-        case PGMMODE_AMD64:         /* 64-bit AMD paging (long mode). */
-        case PGMMODE_AMD64_NX:      /* 64-bit AMD paging (long mode) with NX enabled. */
-        default:                   /* shut up gcc */
-            AssertFailed();
-            return VERR_PGM_UNSUPPORTED_HOST_PAGING_MODE;
-
-        case PGMMODE_32_BIT:        /* 32-bit paging. */
-            break;
-
-        case PGMMODE_PAE:           /* PAE paging. */
-        case PGMMODE_PAE_NX:        /* PAE paging with NX enabled. */
-            pHyperCtx->cr4 |= X86_CR4_PAE;
-            break;
-        }
-
 
         /*
          * Profile switching.
