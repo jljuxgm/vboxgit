@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 4873 2007-09-17 20:24:48Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 4882 2007-09-18 07:37:44Z vboxsync $ */
 /** @file
  *
  * VBox host drivers - Ring-0 support drivers - Solaris host:
@@ -134,7 +134,7 @@ int suplibOsIOCtl(uintptr_t uFunction, void *pvReq, size_t cbReq)
 }
 
 
-int suplibOSIOCtlFast(uintptr_t uFunction)
+int suplibOsIOCtlFast(uintptr_t uFunction)
 {
     int rc = ioctl(g_hDevice, uFunction, NULL);
     if (rc == -1)

@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 4830 2007-09-15 23:05:20Z vboxsync $ */
+/* $Id: SUPLib.cpp 4882 2007-09-18 07:37:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -468,11 +468,11 @@ static int supCallVMMR0ExFake(PVMR0 pVMR0, unsigned uOperation, uint64_t u64Arg,
 SUPR3DECL(int) SUPCallVMMR0Fast(PVMR0 pVMR0, unsigned uOperation)
 {
     if (RT_LIKELY(uOperation == SUP_VMMR0_DO_RAW_RUN))
-        return suplibOSIOCtlFast(SUP_IOCTL_FAST_DO_RAW_RUN);
+        return suplibOsIOCtlFast(SUP_IOCTL_FAST_DO_RAW_RUN);
     if (RT_LIKELY(uOperation == SUP_VMMR0_DO_HWACC_RUN))
-        return suplibOSIOCtlFast(SUP_IOCTL_FAST_DO_HWACC_RUN);
+        return suplibOsIOCtlFast(SUP_IOCTL_FAST_DO_HWACC_RUN);
     if (RT_LIKELY(uOperation == SUP_VMMR0_DO_NOP))
-        return suplibOSIOCtlFast(SUP_IOCTL_FAST_DO_NOP);
+        return suplibOsIOCtlFast(SUP_IOCTL_FAST_DO_NOP);
 
     AssertMsgFailed(("%#x\n", uOperation));
     return VERR_INTERNAL_ERROR;
@@ -558,17 +558,17 @@ SUPR3DECL(int) SUPCallVMMR0(PVMR0 pVMR0, unsigned uOperation, void *pvArg)
     if (RT_LIKELY(uOperation == SUP_VMMR0_DO_RAW_RUN))
     {
         Assert(!pvArg);
-        return suplibOSIOCtlFast(SUP_IOCTL_FAST_DO_RAW_RUN);
+        return suplibOsIOCtlFast(SUP_IOCTL_FAST_DO_RAW_RUN);
     }
     if (RT_LIKELY(uOperation == SUP_VMMR0_DO_HWACC_RUN))
     {
         Assert(!pvArg);
-        return suplibOSIOCtlFast(SUP_IOCTL_FAST_DO_HWACC_RUN);
+        return suplibOsIOCtlFast(SUP_IOCTL_FAST_DO_HWACC_RUN);
     }
     if (RT_LIKELY(uOperation == SUP_VMMR0_DO_NOP))
     {
         Assert(!pvArg);
-        return suplibOSIOCtlFast(SUP_IOCTL_FAST_DO_NOP);
+        return suplibOsIOCtlFast(SUP_IOCTL_FAST_DO_NOP);
     }
     return SUPCallVMMR0Ex(pVMR0, uOperation, (uintptr_t)pvArg, NULL);
 #endif

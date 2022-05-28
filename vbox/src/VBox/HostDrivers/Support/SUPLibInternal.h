@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 4811 2007-09-14 17:53:56Z vboxsync $ */
+/* $Id: SUPLibInternal.h 4882 2007-09-18 07:37:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -15,8 +15,8 @@
  * be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __SupInternal_h__
-#define __SupInternal_h__
+#ifndef ___SupInternal_h___
+#define ___SupInternal_h___
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
@@ -44,7 +44,7 @@ int     suplibOsUninstall(void);
 int     suplibOsInit(size_t cbReserve);
 int     suplibOsTerm(void);
 int     suplibOsIOCtl(uintptr_t uFunction, void *pvReq, size_t cbReq);
-int     suplibOSIOCtlFast(uintptr_t uFunction);
+int     suplibOsIOCtlFast(uintptr_t uFunction);
 int     suplibOsPageAlloc(size_t cPages, void **ppvPages);
 int     suplibOsPageFree(void *pvPages, size_t cPages);
 __END_DECLS

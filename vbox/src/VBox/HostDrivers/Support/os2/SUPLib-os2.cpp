@@ -1,4 +1,4 @@
-/* $Id: SUPLib-os2.cpp 4828 2007-09-15 21:11:33Z vboxsync $ */
+/* $Id: SUPLib-os2.cpp 4882 2007-09-18 07:37:44Z vboxsync $ */
 /** @file
  * SUPLib - Support Library, OS/2 backend.
  */
@@ -143,7 +143,7 @@ int suplibOsIOCtl(uintptr_t uFunction, void *pvReq, size_t cbReq)
 }
 
 
-int suplibOSIOCtlFast(uintptr_t uFunction)
+int suplibOsIOCtlFast(uintptr_t uFunction)
 {
     int32_t rcRet = VERR_INTERNAL_ERROR;
     ULONG cbRet = sizeof(rcRet);
