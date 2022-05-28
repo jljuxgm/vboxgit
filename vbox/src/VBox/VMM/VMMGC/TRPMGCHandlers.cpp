@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 465 2007-01-31 15:05:57Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 466 2007-01-31 15:13:54Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -529,13 +529,11 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTAT
             return trpmGCExitTrap(pVM, VINF_EM_RAW_RING_SWITCH_INT, pRegFrame);
         }
 
+#ifdef PATM_EMULATE_SYSENTER
         case OP_SYSEXIT:
         case OP_SYSRET:
-#ifdef PATM_EMULATE_SYSENTER
             rc = PATMSysCall(pVM, pRegFrame, pCpu);
-            if (rc == VINF_SUCCESS)
-                return trpmGCExitTrap(pVM, VINF_SUCCESS, pRegFrame);
-            /* else no break; */
+            return trpmGCExitTrap(pVM, rc, pRegFrame);
 #endif
 
         case OP_HLT:
