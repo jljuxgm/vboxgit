@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 4917 2007-09-20 10:06:48Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 4953 2007-09-21 14:08:19Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1005,13 +1005,13 @@ DECLCALLBACK(int) pgmHandlerVirtualResetOne(PAVLROGCPTRNODECORE pNode, void *pvU
  * @param   pSrc        GC source pointer
  * @param   pDest       HC destination pointer
  * @param   size        Number of bytes to read
- * @param   dwUserdata  Callback specific user data (pCpu)
+ * @param   pvUserdata  Callback specific user data (pCpu)
  *
  */
-DECLCALLBACK(int32_t) pgmReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, uint32_t size, RTHCUINTPTR dwUserdata)
+DECLCALLBACK(int) pgmReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, unsigned size, void *pvUserdata)
 {
-    DISCPUSTATE  *pCpu     = (DISCPUSTATE *)dwUserdata;
-    PVM           pVM      = (PVM)pCpu->dwUserData[0];
+    DISCPUSTATE  *pCpu     = (DISCPUSTATE *)pvUserdata;
+    PVM           pVM      = (PVM)pCpu->apvUserData[0];
 
     int rc = PGMPhysReadGCPtr(pVM, pDest, pSrc, size);
     AssertRC(rc);

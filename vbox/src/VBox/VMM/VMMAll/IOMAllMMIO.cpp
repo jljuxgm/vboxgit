@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 4789 2007-09-14 11:10:35Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 4953 2007-09-21 14:08:19Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -1192,27 +1192,27 @@ end:
  * @param   pSrc        GC source pointer
  * @param   pDest       HC destination pointer
  * @param   size        Number of bytes to read
- * @param   dwUserdata  Callback specific user data (pCpu)
+ * @param   pvUserdata  Callback specific user data (pCpu)
  *
  */
-DECLCALLBACK(int32_t) iomReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, uint32_t size, RTHCUINTPTR dwUserdata)
+DECLCALLBACK(int) iomReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, unsigned size, void *pvUserdata)
 {
-    DISCPUSTATE  *pCpu     = (DISCPUSTATE *)dwUserdata;
-    PVM           pVM      = (PVM)pCpu->dwUserData[0];
+    DISCPUSTATE  *pCpu     = (DISCPUSTATE *)pvUserdata;
+    PVM           pVM      = (PVM)pCpu->apvUserData[0];
 
     int rc = PGMPhysReadGCPtr(pVM, pDest, pSrc, size);
     AssertRC(rc);
     return rc;
 }
 
-inline bool iomDisCoreOne(PVM pVM, DISCPUSTATE *pCpu, RTGCUINTPTR InstrGC, uint32_t *pOpsize)
+inline int iomDisCoreOne(PVM pVM, DISCPUSTATE *pCpu, RTGCUINTPTR InstrGC, uint32_t *pOpsize)
 {
     return VBOX_SUCCESS(DISCoreOneEx(InstrGC, pCpu->mode, iomReadBytes, pVM, pCpu, pOpsize));
 }
 #else
-inline bool iomDisCoreOne(PVM pVM, DISCPUSTATE *pCpu, RTGCUINTPTR InstrGC, uint32_t *pOpsize)
+inline int iomDisCoreOne(PVM pVM, DISCPUSTATE *pCpu, RTGCUINTPTR InstrGC, uint32_t *pOpsize)
 {
-    return DISCoreOne(pCpu, InstrGC, pOpsize);
+    return VBOX_SUCCESS(DISCoreOne(pCpu, InstrGC, pOpsize));
 }
 
 #endif

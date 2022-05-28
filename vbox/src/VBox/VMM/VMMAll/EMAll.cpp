@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 4773 2007-09-13 13:38:01Z vboxsync $ */
+/* $Id: EMAll.cpp 4953 2007-09-21 14:08:19Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -79,10 +79,10 @@ EMDECL(EMSTATE) EMGetState(PVM pVM)
  * @param   dwUserdata  Callback specific user data (pCpu)
  *
  */
-DECLCALLBACK(int32_t) EMReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, uint32_t size, RTHCUINTPTR dwUserdata)
+DECLCALLBACK(int) EMReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, unsigned size, void *pvUserdata)
 {
-    DISCPUSTATE  *pCpu     = (DISCPUSTATE *)dwUserdata;
-    PVM           pVM      = (PVM)pCpu->dwUserData[0];
+    DISCPUSTATE  *pCpu     = (DISCPUSTATE *)pvUserdata;
+    PVM           pVM      = (PVM)pCpu->apvUserData[0];
 #ifdef IN_RING0
     int rc = PGMPhysReadGCPtr(pVM, pDest, pSrc, size);
     AssertRC(rc);
