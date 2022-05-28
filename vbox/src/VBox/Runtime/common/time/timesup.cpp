@@ -1,4 +1,4 @@
-/* $Id: timesup.cpp 5456 2007-10-24 01:04:51Z vboxsync $ */
+/* $Id: timesup.cpp 5461 2007-10-24 02:18:28Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Time using SUPLib.
  */
@@ -46,16 +46,19 @@ static DECLCALLBACK(uint64_t) rtTimeNanoTSInternalRediscover(PRTTIMENANOTSDATA p
 *   Global Variables                                                           *
 *******************************************************************************/
 #ifndef IN_GUEST
+/** The previous timestamp value returned by RTTimeNanoTS. */
+static uint64_t         g_TimeNanoTSPrev = 0;
+
 /** The RTTimeNanoTS data structure that's passed down to the worker functions.  */
 static RTTIMENANOTSDATA g_TimeNanoTSData =
 {
-    /* .u64Prev       = */ 0,
+    /* .pu64Prev      = */ &g_TimeNanoTSPrev,
+    /* .pfnBad        = */ rtTimeNanoTSInternalBitch,
+    /* .pfnRediscover = */ rtTimeNanoTSInternalRediscover,
     /* .c1nsSteps     = */ 0,
     /* .cExpired      = */ 0,
     /* .cBadPrev      = */ 0,
-    /* .cUpdateRaces  = */ 0,
-    /* .pfnBad        = */ rtTimeNanoTSInternalBitch,
-    /* .pfnRediscover = */ rtTimeNanoTSInternalRediscover
+    /* .cUpdateRaces  = */ 0
 };
 
 /** The index into g_apfnWorkers for the function to use.
