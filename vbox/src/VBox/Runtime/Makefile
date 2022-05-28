@@ -1,4 +1,4 @@
-# $Id: Makefile 1388 2007-03-09 20:18:02Z vboxsync $
+# $Id: Makefile 1456 2007-03-13 23:34:47Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -59,11 +59,9 @@ endif # only linux guest additions
 # global (for now at least)
 INCS += include
 
-ifeq ($(USERNAME),bird)
- ifneq ($(wildcard ./kLdr/kLdrModMachO.c),)
+ifneq ($(wildcard ./kLdr/kLdrModMachO.c),)
    IPRT_WITH_KLDR=1
    IPRT_PATH_KLDR=./kLdr
- endif
 endif
 
 #
