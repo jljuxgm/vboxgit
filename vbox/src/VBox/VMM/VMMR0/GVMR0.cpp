@@ -1,4 +1,4 @@
-/* $Id: GVMR0.cpp 4971 2007-09-21 22:19:12Z vboxsync $ */
+/* $Id: GVMR0.cpp 4980 2007-09-22 00:07:17Z vboxsync $ */
 /** @file
  * GVM - Global VM Manager.
  */
@@ -198,6 +198,7 @@ GVMR0DECL(void) GVMR0Term(void)
 }
 
 
+#if 0 /* not currently used */
 /**
  * Allocates the VM structure and registers it with GVM.
  *
@@ -314,6 +315,7 @@ GVMR0DECL(int) GVMR0CreateVM(PSUPDRVSESSION pSession, PVM *ppVM)
     RTSemFastMutexRelease(pGVM->Lock);
     return rc;
 }
+#endif /* not used yet. */
 
 
 /**
