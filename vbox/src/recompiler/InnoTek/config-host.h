@@ -1,4 +1,4 @@
-/* $Id: config-host.h 3726 2007-07-19 19:07:48Z vboxsync $ */
+/* $Id: config-host.h 3888 2007-07-26 16:26:39Z vboxsync $ */
 /** @file
  * Innotek Host Config - Maintained by hand
  */
@@ -35,7 +35,7 @@
 # elif defined(RT_OS_FREEBSD) || defined(RT_OS_NETBSD) || defined(RT_OS_OPENBSD)
 /*#  define CONFIG_BSD*/
 # elif defined(RT_OS_SOLARIS)
-/*#  define CONFIG_SUN*/
+#  define CONFIG_SOLARIS
 # elif !defined(IPRT_NO_CRT)
 #  define HAVE_BYTESWAP_H 1
 # endif

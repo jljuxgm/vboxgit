@@ -1,4 +1,4 @@
-/* $Id: sems-posix.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
+/* $Id: sems-posix.cpp 3888 2007-07-26 16:26:39Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Semaphores, POSIX.
  */
@@ -35,6 +35,11 @@
 
 #ifdef RT_OS_DARWIN
 # define pthread_yield() pthread_yield_np()
+#endif
+
+#ifdef RT_OS_SOLARIS
+# include <sched.h>
+# define pthread_yield() sched_yield()
 #endif
 
 

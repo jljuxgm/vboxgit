@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3765 2007-07-22 13:19:20Z vboxsync $
+# $Id: Makefile.kmk 3888 2007-07-26 16:26:39Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -435,6 +435,13 @@ Drivers_SOURCES.linux = \
 	Parallel/DrvHostParallel.cpp
 
 ifeq ($(BUILD_TARGET),os2)
+Drivers_SOURCES      := $(filter-out \
+	Storage/DrvHost% \
+	, $(Drivers_SOURCES))
+Drivers_SOURCES.os2   =
+endif
+
+ifeq ($(BUILD_TARGET),solaris)
 Drivers_SOURCES      := $(filter-out \
 	Storage/DrvHost% \
 	, $(Drivers_SOURCES))

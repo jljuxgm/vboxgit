@@ -1,4 +1,4 @@
-/* $Id: system-posix.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: system-posix.cpp 3888 2007-07-26 16:26:39Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - System, POSIX.
  */
@@ -27,7 +27,9 @@
 #include <iprt/assert.h>
 
 #include <unistd.h>
-#include <sys/sysctl.h>
+#if !defined(RT_OS_SOLARIS)
+# include <sys/sysctl.h>
+#endif
 
 
 /**
@@ -38,7 +40,7 @@
 RTR3DECL(unsigned) RTSystemProcessorGetCount(void)
 {
     int cCpus; NOREF(cCpus);
-    
+
     /*
      * The sysconf way (linux and others).
      */

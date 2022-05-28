@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
+/* $Id: process-posix.cpp 3888 2007-07-26 16:26:39Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Process, POSIX.
  */
@@ -236,12 +236,16 @@ RTR3DECL(char *) RTProcGetExecutableName(char *pszExecName, size_t cchExecName)
      * because I'm lazy I'm not creating OS specific code
      * files and code for this.
      */
-#if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
+#if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD) || defined(RT_OS_SOLARIS)
 # ifdef RT_OS_LINUX
     int cchLink = readlink("/proc/self/exe", pszExecName, cchExecName - 1);
-# else    
+# elif defined(RT_OS_SOLARIS)
+    char szFileBuf[80];
+    RTStrPrintf(szFileBuf, sizeof(szFileBuf), "/proc/%ld/path/a.out", (long)getpid());
+    int cchLink = readlink(szFileBuf, pszExecName, cchExecName - 1);
+# else
     int cchLink = readlink("/proc/curproc/file", pszExecName, cchExecName - 1);
-# endif    
+# endif
     if (cchLink > 0 && (size_t)cchLink <= cchExecName - 1)
     {
         pszExecName[cchLink] = '\0';

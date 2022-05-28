@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3857 2007-07-25 22:02:21Z vboxsync $
+# $Id: Makefile.kmk 3888 2007-07-26 16:26:39Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -163,6 +163,7 @@ VBoxVMM_LIBS.win = $(PATH_TOOL_$(VBOX_VCC_TOOL)_LIB)/delayimp.lib
 VBoxVMM_LDFLAGS.win = /DELAYLOAD:dbghelp.dll
 VBoxVMM_LDFLAGS.linux = -Wl,--no-undefined
 VBoxVMM_LDFLAGS.darwin = -install_name @executable_path/VBoxVMM.dylib
+VBoxVMM_LDFLAGS.solaris = -mimpure-text
 
 
 #

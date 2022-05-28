@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
+/* $Id: fileio-posix.cpp 3888 2007-07-26 16:26:39Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O, POSIX.
  */
@@ -44,7 +44,12 @@
 #ifdef RT_OS_L4
 /* This is currently ifdef'ed out in the relevant L4 header file */
 /* Same as `utimes', but takes an open file descriptor instead of a name.  */
-extern int futimes (int __fd, __const struct timeval __tvp[2]) __THROW;
+extern int futimes(int __fd, __const struct timeval __tvp[2]) __THROW;
+#endif
+
+#ifdef RT_OS_SOLARIS
+# define futimes(filedes, timeval)   futimesat(filedes, NULL, timeval)
+# define RTTIME_INCL_TIMEVAL /** @todo remove me after fixing iprt/time.h */
 #endif
 
 #include <iprt/file.h>
