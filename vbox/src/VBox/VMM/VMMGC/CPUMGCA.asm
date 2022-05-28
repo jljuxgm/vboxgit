@@ -1,4 +1,4 @@
-; $Id: CPUMGCA.asm 1134 2007-03-01 13:40:02Z vboxsync $
+; $Id: CPUMGCA.asm 1185 2007-03-04 19:56:46Z vboxsync $
 ;; @file
 ;
 ; CPUM - Guest Context Assembly Routines.
@@ -188,14 +188,14 @@ BEGINPROC_EXPORTED CPUMGCCallGuestTrapHandler
 
 ENDPROC CPUMGCCallGuestTrapHandler
 
-;/**
-; * Performs an iret to V86 code
-; * Assumes a trap stack frame has already been setup on the guest's stack!
-; *
-; * @param   pRegFrame   Original trap/interrupt context
-; *
-; * This function does not return!
-; */
+;;
+; Performs an iret to V86 code
+; Assumes a trap stack frame has already been setup on the guest's stack!
+;
+; @param   pRegFrame   Original trap/interrupt context
+; 
+; This function does not return!
+; 
 ;CPUMGCDECL(void) CPUMGCCallV86Code(PCPUMCTXCORE pRegFrame);
 align 16
 BEGINPROC CPUMGCCallV86Code
