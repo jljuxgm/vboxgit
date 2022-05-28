@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.cpp 1  vboxsync $ */
+/* $Id: alloc-r0drv.cpp 217 2007-01-21 21:41:29Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Memory Allocation, Ring-0 Driver.
  */
@@ -156,7 +156,10 @@ RTDECL(void *) RTMemRealloc(void *pvOld, size_t cbNew)
  */
 RTDECL(void) RTMemFree(void *pv)
 {
-    PRTMEMHDR pHdr = (PRTMEMHDR)pv - 1;
+    PRTMEMHDR pHdr;
+    if (!pv)
+        return;
+    pHdr = (PRTMEMHDR)pv - 1;
     if (pHdr->u32Magic == RTMEMHDR_MAGIC)
     {
         Assert(!(pHdr->fFlags & RTMEMHDR_FLAG_EXEC));

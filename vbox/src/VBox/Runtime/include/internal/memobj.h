@@ -1,4 +1,4 @@
-/* $Id: memobj.h 207 2007-01-21 10:42:48Z vboxsync $ */
+/* $Id: memobj.h 217 2007-01-21 21:41:29Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Ring-0 Memory Objects.
  */
@@ -184,7 +184,6 @@ typedef struct RTR0MEMOBJINTERNAL
             RTPROCESS   Process;
         } Mapping;
     } u;
-
 
 } RTR0MEMOBJINTERNAL;
 
