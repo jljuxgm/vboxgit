@@ -1,4 +1,4 @@
-/* $Id: MMHeap.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: MMHeap.cpp 714 2007-02-06 14:56:17Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Heap.
  */
@@ -540,7 +540,7 @@ MMR3DECL(void) MMR3HeapFree(void *pv)
     if (pHdr->pNext)
         pHdr->pNext->pPrev = pHdr->pPrev;
     else
-        pHeap->pTail = pHdr->pNext;
+        pHeap->pTail = pHdr->pPrev;
 
     RTCritSectLeave(&pHeap->Lock);
 
