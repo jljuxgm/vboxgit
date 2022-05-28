@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 4917 2007-09-20 10:06:48Z vboxsync $ */
+/* $Id: PGMHandler.cpp 4977 2007-09-22 00:01:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -179,7 +179,7 @@ static DECLCALLBACK(int) pgmR3HandlerPhysicalOneClear(PAVLROGCPHYSNODECORE pNode
 static DECLCALLBACK(int) pgmR3HandlerPhysicalOneSet(PAVLROGCPHYSNODECORE pNode, void *pvUser)
 {
     PPGMPHYSHANDLER pCur = (PPGMPHYSHANDLER)pNode;
-    unsigned        fFlags = pgmHandlerPhysicalCalcFlags((PVM)pvUser, pCur);
+    unsigned        fFlags = pgmHandlerPhysicalCalcFlags(pCur);
     PPGMRAMRANGE    pRamHint = NULL;
     RTGCPHYS        GCPhys = pCur->Core.Key;
     RTUINT          cPages = pCur->cPages;
@@ -433,7 +433,7 @@ PGMDECL(int) PGMHandlerVirtualDeregister(PVM pVM, RTGCPTR GCPtr)
         PPGM pPGM = &pVM->pgm.s;
         for (unsigned iPage = 0; iPage < pCur->cPages; iPage++)
             if (pCur->aPhysToVirt[iPage].offNextAlias & PGMPHYS2VIRTHANDLER_IN_TREE)
-                pgmHandlerVirtualClearPage(pVM, pPGM, pCur, iPage);
+                pgmHandlerVirtualClearPage(pPGM, pCur, iPage);
 
         /*
          * Schedule CR3 sync (if required) and the memory.
