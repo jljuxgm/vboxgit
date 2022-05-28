@@ -1,4 +1,4 @@
-/* $Id: tstRunTestcases.cpp 1202 2007-03-04 23:41:53Z vboxsync $ */
+/* $Id: tstRunTestcases.cpp 1966 2007-04-06 06:15:20Z vboxsync $ */
 /** @file
  * tstRunTescases - Driver program for running VBox testcase (tst* testcase/tst*).
  */
@@ -247,8 +247,48 @@ static void Process(const char *pszFilter, const char *pszDir)
 int main(int argc, char **argv)
 {
     RTR3Init(false, 0);
-    Process("testcase/tst*", "testcase");
-    Process("tst*", ".");
+
+    if (argc == 1)
+    {
+        Process("testcase/tst*", "testcase");
+        Process("tst*", ".");
+    }
+    else
+    {
+        char szDir[RTPATH_MAX];
+        for (int i = 1; i < argc; i++)
+        {
+            if (argv[i][0] == '-')
+            {
+                switch (argv[i][1])
+                {
+                    /* case '':... */
+
+                    default:
+                        RTPrintf("syntax error: Option '%s' is not recognized\n", argv[i]);
+                        return 1;
+                }
+            }
+            else
+            {
+                size_t cch = strlen(argv[i]);
+                if (cch >= sizeof(szDir))
+                {
+                    RTPrintf("syntax error: '%s' is too long!\n", argv[i]);
+                    return 1;
+                }
+                memcpy(szDir, argv[i], cch + 1);
+                char *pszFilename = RTPathFilename(szDir);
+                if (!pszFilename)
+                {
+                    RTPrintf("syntax error: '%s' does not include a file name or file name mask!\n", argv[i]);
+                    return 1;
+                }
+                RTPathStripFilename(szDir);
+                Process(argv[i], szDir);
+            }
+        }
+    }
 
     RTPrintf("\n"
              "********************\n"
