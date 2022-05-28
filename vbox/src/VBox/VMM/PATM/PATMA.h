@@ -1,4 +1,4 @@
-/* $Id: PATMA.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PATMA.h 110 2007-01-17 15:53:30Z vboxsync $ */
 /** @file
  * PATM macros & definitions (identical to PATMA.mac!!)
  */
@@ -86,6 +86,7 @@
 #define PATM_ACTION_LOG_POPF_IF0                7
 #define PATM_ACTION_LOG_PUSHF                   8
 #define PATM_ACTION_LOG_IRET                    9
+#define PATM_ACTION_LOG_RET                     10
 
 /* Magic dword found in ecx for patm pending actions. */
 #define PATM_ACTION_MAGIC                       0xABCD4321

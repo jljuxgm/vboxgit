@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 90 2007-01-17 12:35:27Z vboxsync $ */
+/* $Id: PATMAll.cpp 110 2007-01-17 15:53:30Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -586,6 +586,11 @@ PATMDECL(int) PATMHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
 
             case PATM_ACTION_LOG_IRET:
                 Log(("PATMHandleIllegalInstrTrap: IRET from %VGv (IF->1) to %VGv\n", pRegFrame->eip, pRegFrame->edx));
+                pRegFrame->eip += PATM_ILLEGAL_INSTR_SIZE;
+                return VINF_SUCCESS;
+
+            case PATM_ACTION_LOG_RET:
+                Log(("PATMHandleIllegalInstrTrap: RET to %VGv\n", pRegFrame->edx));
                 pRegFrame->eip += PATM_ILLEGAL_INSTR_SIZE;
                 return VINF_SUCCESS;
 #endif
