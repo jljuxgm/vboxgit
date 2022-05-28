@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 1095 2007-02-28 10:33:02Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 1096 2007-02-28 10:33:18Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -53,8 +53,6 @@
 #include <iprt/assert.h>
 #include <iprt/thread.h>
 #include <iprt/string.h>
-
-////#define VBOX_RAW_V86
 
 /* Don't wanna include everything. */
 extern void cpu_x86_update_cr3(CPUX86State *env, target_ulong new_cr3);
