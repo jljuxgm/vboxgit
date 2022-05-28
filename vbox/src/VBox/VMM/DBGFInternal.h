@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 450 2007-01-30 23:06:24Z vboxsync $ */
+/* $Id: DBGFInternal.h 2251 2007-04-20 00:21:15Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -114,6 +114,8 @@ typedef struct DBGFINFO *PDBGFINFO;
  */
 typedef struct DBGFINFO
 {
+    /** The flags. */
+    uint32_t        fFlags;
     /** Owner type. */
     DBGFINFOTYPE    enmType;
     /** Per type data. */
