@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 3178 2007-06-20 11:07:38Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 3179 2007-06-20 11:12:03Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -532,8 +532,7 @@ static int iomGCInterpretMOVS(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFra
     if (pCpu->prefix & PREFIX_REP)
     {
         cTransfers = pRegFrame->ecx;
-        if (    CPUMIsGuestInRealMode(pVM)
-            ||  pRegFrame->eflags.Bits.u1VM)
+        if (SELMIsSelector32Bit(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid))
             cTransfers &= 0xffff;
 
         if (!cTransfers)
@@ -776,8 +775,7 @@ static int iomGCInterpretSTOS(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFa
     if (pCpu->prefix & PREFIX_REP)
     {
         cTransfers = pRegFrame->ecx;
-        if (    CPUMIsGuestInRealMode(pVM)
-            ||  pRegFrame->eflags.Bits.u1VM)
+        if (SELMIsSelector32Bit(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid))
             cTransfers &= 0xffff;
 
         if (!cTransfers)
@@ -1636,8 +1634,7 @@ IOMDECL(int) IOMInterpretINSEx(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t uPort, 
     {
         cTransfers = pRegFrame->ecx;
 
-        if (    CPUMIsGuestInRealMode(pVM)
-            ||  pRegFrame->eflags.Bits.u1VM)
+        if (SELMIsSelector32Bit(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid))
             cTransfers &= 0xffff;
 
         if (!cTransfers)
@@ -1791,8 +1788,7 @@ IOMDECL(int) IOMInterpretOUTSEx(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t uPort,
     if (uPrefix & PREFIX_REP)
     {
         cTransfers = pRegFrame->ecx;
-        if (    CPUMIsGuestInRealMode(pVM)
-            ||  pRegFrame->eflags.Bits.u1VM)
+        if (SELMIsSelector32Bit(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid))
             cTransfers &= 0xffff;
 
         if (!cTransfers)
