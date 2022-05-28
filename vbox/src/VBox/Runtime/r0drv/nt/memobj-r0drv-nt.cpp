@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 4135 2007-08-14 01:29:43Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 4136 2007-08-14 01:59:36Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, NT.
  */
@@ -345,6 +345,13 @@ int rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS Ph
 }
 
 
+int rtR0MemObjNativeAllocPhysNC(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest)
+{
+    /** @todo rtR0MemObjNativeAllocPhys / darwin. */
+    return rtR0MemObjNativeAllocPhys(ppMem, cb, PhysHighest);
+}
+
+
 int rtR0MemObjNativeEnterPhys(PPRTR0MEMOBJINTERNAL ppMem, RTHCPHYS Phys, size_t cb)
 {
     /*
@@ -479,7 +486,7 @@ int rtR0MemObjNativeReserveKernel(PPRTR0MEMOBJINTERNAL ppMem, void *pvFixed, siz
 }
 
 
-int rtR0MemObjNativeReserveUser(PPRTR0MEMOBJINTERNAL ppMem, void *pvFixed, size_t cb, size_t uAlignment, RTR0PROCESS R0Process)
+int rtR0MemObjNativeReserveUser(PPRTR0MEMOBJINTERNAL ppMem, RTR3PTR R3PtrFixed, size_t cb, size_t uAlignment, RTR0PROCESS R0Process)
 {
     return VERR_NOT_IMPLEMENTED;
 }
@@ -528,7 +535,7 @@ int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, 
 }
 
 
-int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, void *pvFixed, size_t uAlignment, unsigned fProt, RTR0PROCESS R0Process)
+int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, RTR3PTR R3PtrFixed, size_t uAlignment, unsigned fProt, RTR0PROCESS R0Process)
 {
     /*
      * Must have a memory descriptor.
