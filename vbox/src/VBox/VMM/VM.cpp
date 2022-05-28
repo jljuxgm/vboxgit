@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 2368 2007-04-26 19:37:32Z vboxsync $ */
+/* $Id: VM.cpp 2376 2007-04-27 00:59:06Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1290,6 +1290,7 @@ static DECLCALLBACK(int) vmR3PowerOff(PVM pVM)
                                    GipCopy.aCPUs[i].au32TSCHistory[6],
                                    GipCopy.aCPUs[i].au32TSCHistory[7],
                                    GipCopy.aCPUs[i].iTSCHistoryHead);
+            RTLogRelPrintf("1ns steps: %RU32\n", RTTime1nsSteps());
         }
 #endif 
         RTLogRelPrintf("************** End of Guest state at power off ***************\n");
