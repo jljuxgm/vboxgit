@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 136 2007-01-18 14:42:26Z vboxsync $ */
+/* $Id: the-linux-kernel.h 260 2007-01-24 10:14:22Z vboxsync $ */
 /** @file
  * InnoTek Portable Runtime - Include all necessary headers for the Linux kernel.
  */
@@ -32,6 +32,15 @@
 
 #include <linux/autoconf.h>
 #include <linux/version.h>
+
+/* We only support 2.4 and 2.6 series kernels */
+#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 4, 0)
+# error We only support 2.4 and 2.6 series kernels
+#endif
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 0) && LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 0)
+# error We only support 2.4 and 2.6 series kernels
+#endif
+
 #if defined(CONFIG_MODVERSIONS) && !defined(MODVERSIONS)
 # define MODVERSIONS
 # if LINUX_VERSION_CODE < KERNEL_VERSION(2, 5, 71)
