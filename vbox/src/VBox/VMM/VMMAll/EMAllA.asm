@@ -1,11 +1,11 @@
-; $Id: EMAllA.asm 4071 2007-08-07 17:07:59Z vboxsync $
+; $Id: EMAllA.asm 4284 2007-08-22 14:18:05Z vboxsync $
 ;; @file
 ; EM Assembly Routines.
 ;
 
 ;
 ;  Copyright (C) 2006-2007 innotek GmbH
-; 
+;
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
 ;  you can redistribute it and/or modify it under the terms of the GNU
