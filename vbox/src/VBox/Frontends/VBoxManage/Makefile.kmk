@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3186 2007-06-20 15:32:16Z vboxsync $
+# $Id: Makefile.kmk 3730 2007-07-20 12:12:22Z vboxsync $
 ## @file
 # Makefile for VBoxManage (the cli frontend).
 #
@@ -48,6 +48,9 @@ else
 	$(PATH_BIN)/VBoxDDU$(VBOX_SUFF_DLL) \
 	$(PATH_BIN)/VBoxXML$(VBOX_SUFF_DLL)
 endif
+# VBoxManage.cpp uses VBOX_SVN_REV.
+VBoxManage.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
+VBoxManage.cpp_DEPS = $(VBOX_SVN_REV_KMK)
 
 
 include $(PATH_KBUILD)/footer.kmk
