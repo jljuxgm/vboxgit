@@ -1,4 +1,4 @@
-# $Id: Config.kmk 336 2007-01-25 23:19:02Z vboxsync $
+# $Id: Config.kmk 343 2007-01-26 03:06:51Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -260,6 +260,16 @@ ifdef VBOX_OSE
  VBOX_WITH_DOCS=
  VBOX_WITH_TESTSUITE=
  PASSES := $(filter-out PACKING,$(PASSES))
+endif
+
+#
+# HACK ALERT!
+# OVerride anyone attempting to build Linux/GNU additions when targeting AMD64.
+#
+ifdef VBOX_WITH_LINUX_ADDITIONS
+ ifeq ($(BUILD_TARGET_ARCH),amd64)
+  VBOX_WITH_LINUX_ADDITIONS :=
+ endif
 endif
 
 #
@@ -998,7 +1008,7 @@ ifeq ($(VBOX_LDR_FMT),elf)
 TEMPLATE_VBOXR0_TOOL                = $(VBOX_GCC_TOOL)
 TEMPLATE_VBOXR0_CFLAGS              = -g -Wall -pedantic -Wno-long-long -Wno-trigraphs $(VBOX_GCC_Wno-variadic-macros) -pipe -Wmissing-prototypes -Wstrict-prototypes $(VBOX_GCC_OPT) $(VBOX_GCC_FP) -fno-strict-aliasing $(VBOX_GCC_fno-stack-protector)
 TEMPLATE_VBOXR0_CXXFLAGS            = -g -Wall -pedantic -Wno-long-long -Wno-trigraphs $(VBOX_GCC_Wno-variadic-macros) -pipe -fno-rtti -fno-exceptions $(VBOX_GCC_OPT) $(VBOX_GCC_FP) -fno-strict-aliasing $(VBOX_GCC_fno-stack-protector)
-TEMPLATE_VBOXR0_CFLAGS.amd64        = -m64 -mno-red-zone -mcmodel=kernel -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -fno-asynchronous-unwind-tables -ffreestanding 
+TEMPLATE_VBOXR0_CFLAGS.amd64        = -m64 -mno-red-zone -mcmodel=kernel -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -fno-asynchronous-unwind-tables -ffreestanding
 TEMPLATE_VBOXR0_CXXFLAGS.amd64      = -m64 -mno-red-zone -mcmodel=kernel -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -fno-asynchronous-unwind-tables
 TEMPLATE_VBOXR0_LDFLAGS             = -nostdlib -Bsymbolic
 # temporarily, must fix the loader.
