@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-freebsd.c 3680 2007-07-18 04:31:28Z vboxsync $ */
+/* $Id: assert-r0drv-freebsd.c 3705 2007-07-19 00:24:50Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Assertion Workers, Ring-0 Drivers, FreeBSD.
  */
@@ -67,9 +67,9 @@ RTDECL(void) AssertMsg2(const char *pszFormat, ...)
 #endif
 
     va_start(va, pszFormat);
-    RTStrPrintf(szMsg, sizeof(szMsg) - 1, pszFormat, va);
+    RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, va);
     szMsg[sizeof(szMsg) - 1] = '\0';
-    printf("%s", szMsg);
     va_end(va);
+    printf("%s", szMsg);
 }
 
