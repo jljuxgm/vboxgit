@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 234 2007-01-23 13:04:38Z vboxsync $ */
+/* $Id: VMMR0.cpp 272 2007-01-24 13:43:05Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -322,6 +322,9 @@ static void vmmR0RecordRC(PVM pVM, int rc)
             break;
         case VINF_PATM_PATCH_TRAP_GP:
             STAM_COUNTER_INC(&pVM->vmm.s.StatGCRetPatchGP);
+            break;
+        case VINF_PATM_PENDING_IRQ_AFTER_IRET:
+            STAM_COUNTER_INC(&pVM->vmm.s.StatGCRetPatchIretIRQ);
             break;
         case VERR_REM_FLUSHED_PAGES_OVERFLOW:
             STAM_COUNTER_INC(&pVM->vmm.s.StatGCRetPageOverflow);
