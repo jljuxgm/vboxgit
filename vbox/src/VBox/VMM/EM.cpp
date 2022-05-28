@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 748 2007-02-07 14:09:17Z vboxsync $ */
+/* $Id: EM.cpp 880 2007-02-13 16:57:25Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -1514,8 +1514,12 @@ static int emR3RawGuestTrap(PVM pVM)
     if (    (pCtx->ss & X86_SEL_RPL) <= 1
         &&  pCtx->eflags.Bits.u1VM == 0)
     {
+        RTGCPTR pInstrGC;
         Assert(!PATMIsPatchGCAddr(pVM, pCtx->eip));
-        CSAMR3CheckEIP(pVM, pCtx->eip, SELMIsSelector32Bit(pVM, pCtx->cs, &pCtx->csHid));
+
+        pInstrGC = SELMToFlat(pVM, pCtx->cs, &pCtx->csHid, (RTGCPTR)pCtx->eip);
+
+        CSAMR3CheckEIP(pVM, pInstrGC, SELMIsSelector32Bit(pVM, pCtx->cs, &pCtx->csHid));
     }
 
     if (u8TrapNo == 6) /* (#UD) Invalid opcode. */
