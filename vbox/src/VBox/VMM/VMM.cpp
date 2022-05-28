@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: VMM.cpp 4186 2007-08-16 22:45:09Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1638,6 +1638,8 @@ static DECLCALLBACK(int) vmmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
 
     LogRel(("The stack is not in the same place and it's not empty! GCPtrStackBottom=%VGv pbGCStackBottom=%VGv ESP=%VGv\n",
             GCPtrStackBottom, pVM->vmm.s.pbGCStackBottom, GCPtrESP));
+    if (SSMR3HandleGetAfter(pSSM) == SSMAFTER_DEBUG_IT)
+        return VINF_SUCCESS; /* ignore this */
     AssertFailed();
     return VERR_SSM_LOAD_CONFIG_MISMATCH;
 }
