@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2981 2007-06-01 16:01:28Z vboxsync $
+# $Id: Makefile.kmk 3090 2007-06-11 13:16:07Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -43,6 +43,7 @@ endif
 
 SOURCES_GUESTLIBBASE = \
 	GenericRequest.cpp \
+	SysHlp.cpp \
 	PhysHeap.cpp \
 	Init.cpp \
 	VMMDev.cpp \
