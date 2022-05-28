@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5098 2007-09-28 14:23:26Z vboxsync $
+# $Id: Makefile.kmk 5111 2007-09-30 05:38:54Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -63,8 +63,6 @@ INSTALLS = VirtualBox.nls
 VBoxKeyboard_TEMPLATE = VBOXR3
 VBoxKeyboard_SOURCES  = \
 	src/linux/keyboard.c
-VBoxKeyboard_INCS.freebsd = \
-	/usr/local/include ## @todo should probably be in the VBOXR3 template...
 
 
 #
