@@ -1,13 +1,18 @@
-/* $Id: env-generic.cpp 4104 2007-08-10 07:05:20Z vboxsync $ */
+/* $Id: env-generic.cpp 4130 2007-08-13 12:05:07Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Environment, Generic.
  */
 
 /*
- * Copyright (C) 2007 innotek GmbH
+ * Copyright (C) 2006-2007 innotek GmbH
  *
- * innotek GmbH confidential
- * All rights reserved
+ * This file is part of VirtualBox Open Source Edition (OSE), as
+ * available from http://www.virtualbox.org. This file is free software;
+ * you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License as published by the Free Software Foundation,
+ * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
+ * distribution. VirtualBox OSE is distributed in the hope that it will
+ * be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
 
