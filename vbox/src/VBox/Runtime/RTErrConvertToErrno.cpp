@@ -1,4 +1,4 @@
-/* $Rev: 4822 $ */
+/* $Rev: 4994 $ */
 /** @file
  * innotek Portable Runtime - Convert iprt status codes to errno.
  */
@@ -426,7 +426,7 @@ RTDECL(int) RTErrConvertToErrno(int iErr)
 #endif
 
         default:
-            AssertMsgFailed(("Unhandled error code %Rrc\n", iErr));
+            AssertMsgFailed(("Unhandled error code %Vrc\n", iErr));
             return EPROTO;
     }
 }
