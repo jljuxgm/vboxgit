@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-solaris.c 5355 2007-10-17 13:41:31Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-solaris.c 5358 2007-10-17 13:51:50Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -161,7 +161,7 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
         rc = VINF_SUCCESS;
     else
     {
-        ASMAtomicIncU32(&pEventMultiInt->cWaiters);
+        ASMAtomicIncU32(&pThis->cWaiters);
 
         /*
          * Translate milliseconds into ticks and go to sleep.
@@ -172,17 +172,17 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
             clock_t timeout = ddi_get_lbolt();
             timeout += cTicks;
             if (fInterruptible)
-                rc = cv_timedwait_sig(&pEventMultiInt->Cnd, &pEventMultiInt->Mtx, timeout);
+                rc = cv_timedwait_sig(&pThis->Cnd, &pThis->Mtx, timeout);
             else
-                rc = cv_timedwait(&pEventMultiInt->Cnd, &pEventMultiInt->Mtx, timeout);
+                rc = cv_timedwait(&pThis->Cnd, &pThis->Mtx, timeout);
         }
         else
         {
             if (fInterruptible)
-                rc = cv_wait_sig(&pEventMultiInt->Cnd, &pEventMultiInt->Mtx);
+                rc = cv_wait_sig(&pThis->Cnd, &pThis->Mtx);
             else
             {
-                cv_wait(&pEventMultiInt->Cnd, &pEventMultiInt->Mtx);
+                cv_wait(&pThis->Cnd, &pThis->Mtx);
                 rc = 1;
             }
         }
