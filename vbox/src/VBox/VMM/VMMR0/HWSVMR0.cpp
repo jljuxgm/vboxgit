@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 4411 2007-08-29 08:06:27Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1223,6 +1223,10 @@ ResumeExecution:
 
         if (IoExitInfo.n.u1STR)
         {
+#if 1
+            rc = (IoExitInfo.n.u1Type == 0) ? VINF_IOM_HC_IOPORT_WRITE : VINF_IOM_HC_IOPORT_READ;
+            break;
+#else /** @todo broken code path (hangs/crashes host) */
             /* ins/outs */
             uint32_t prefix = 0;
             if (IoExitInfo.n.u1REP)
@@ -1240,6 +1244,7 @@ ResumeExecution:
                 STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitIOStringRead);
                 rc = IOMInterpretINSEx(pVM, CPUMCTX2CORE(pCtx), IoExitInfo.n.u16Port, prefix, uIOSize);
             }
+#endif
         }
         else
         {

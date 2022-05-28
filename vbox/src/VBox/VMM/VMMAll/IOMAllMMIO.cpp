@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 4411 2007-08-29 08:06:27Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -1586,6 +1586,7 @@ IOMDECL(int) IOMMMIOWrite(PVM pVM, RTGCPHYS GCPhys, uint32_t u32Value, size_t cb
 }
 
 
+#ifndef IN_RING0 /** @todo broken in ring 0 */
 /**
  * [REP*] INSB/INSW/INSD
  * ES:EDI,DX[,ECX]
@@ -1902,3 +1903,4 @@ IOMDECL(int) IOMInterpretOUTS(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu
     return IOMInterpretOUTSEx(pVM, pRegFrame, uPort, pCpu->prefix, cbSize);
 }
 
+#endif /* IN_RING0 */
