@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 2859 2007-05-24 21:15:01Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 2860 2007-05-25 01:12:54Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -272,11 +272,8 @@ pVM->tm.s.fVirtualSyncStoppedInGC = true;
 pVM->tm.s.fVirtualSyncStoppedInGC = false;
 #endif
 pVM->tm.s.u8VirtualSyncStoppedApicId = ASMGetApicId();
-#ifdef IN_RING0
-PCSUPGLOBALINFOPAGE pGip = &g_SUPGlobalInfoPage;
-#else
+#ifndef IN_RING0
 PCSUPGLOBALINFOPAGE pGip = g_pSUPGlobalInfoPage;
-#endif
 if (pGip)
 {
     PCSUPGIPCPU pCpu = &pGip->aCPUs[0];
@@ -284,6 +281,7 @@ if (pGip)
         pCpu = &pGip->aCPUs[pVM->tm.s.u8VirtualSyncStoppedApicId];
     pVM->tm.s.u32VirtualSyncStoppedCpuHz = (uint32_t)pCpu->u64CpuHz;
 }
+#endif
 //debugging - remove this later - end
             if (    fCheckTimers
                 &&  !VM_FF_ISSET(pVM, VM_FF_TIMER))
