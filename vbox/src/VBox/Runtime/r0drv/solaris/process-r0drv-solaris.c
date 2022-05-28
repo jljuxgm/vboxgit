@@ -1,4 +1,4 @@
-/* $Id: process-r0drv-solaris.c 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: process-r0drv-solaris.c 4287 2007-08-22 14:49:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Process Management, Ring-0 Driver, Solaris.
  */
@@ -25,9 +25,7 @@
 
 RTDECL(RTPROCESS) RTProcSelf(void)
 {
-    struct proc *pCurProc = curproc;
-    struct pid *pPidInfo = pCurProc->p_pidp;
-    
+    struct pid *pPidInfo = curproc->p_pidp;
     return pPidInfo->pid_id;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 4178 2007-08-16 15:07:51Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 4287 2007-08-22 14:49:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Semaphores, Ring-0 Driver, Solaris.
  */
@@ -14,8 +14,6 @@
  * distribution. VirtualBox OSE is distributed in the hope that it will
  * be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-
 
 /*******************************************************************************
 *   Header Files                                                               *
@@ -154,13 +152,11 @@ RTDECL(int)  RTSemEventWait(RTSEMEVENT EventSem, unsigned cMillies)
     }
     else
     {
-        unsigned long timeout;
-        drv_getparm(LBOLT, &timeout);
-        
         /*
          * Translate milliseconds into ticks and go to sleep.
          */
         int cTicks;
+        unsigned long timeout;
         if (cMillies != RT_INDEFINITE_WAIT)
             cTicks = drv_usectohz((clock_t)(cMillies * 1000L));
         else

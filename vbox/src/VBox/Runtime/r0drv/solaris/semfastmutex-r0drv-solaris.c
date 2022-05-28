@@ -1,4 +1,4 @@
-/* $Id: semfastmutex-r0drv-solaris.c 4178 2007-08-16 15:07:51Z vboxsync $ */
+/* $Id: semfastmutex-r0drv-solaris.c 4287 2007-08-22 14:49:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Fast Mutex Semaphores, Ring-0 Driver, Solaris.
  */
@@ -34,7 +34,7 @@
 *   Structures and Typedefs                                                    *
 *******************************************************************************/
 /**
- * Wrapper for the FreeBSD (sleep) mutex.
+ * Wrapper for the Solaris mutex.
  */
 typedef struct RTSEMFASTMUTEXINTERNAL
 {

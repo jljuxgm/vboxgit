@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 4130 2007-08-13 12:05:07Z vboxsync $ */
+/* $Id: env-generic.cpp 4287 2007-08-22 14:49:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Environment, Generic.
  */
@@ -32,6 +32,13 @@
 #endif
 
 #include <string.h>
+
+#if defined(RT_OS_SOLARIS)
+/* It's an implementation detail in Solaris, see 
+ * http://cvs.opensolaris.org/source/xref/onnv/onnv-gate/usr/src/lib/libc/port/gen/getenv.c line 50.
+ */
+extern const char		**environ;
+#endif
 
 struct RTENVINTERNAL
 {
