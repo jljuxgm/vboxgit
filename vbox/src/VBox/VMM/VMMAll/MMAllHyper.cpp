@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 320 2007-01-25 16:57:39Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Hypervisor Memory Area, All Contexts.
  */
@@ -891,7 +891,7 @@ static int mmHyperFree(PMMHYPERHEAP pHeap, PMMHYPERCHUNK pChunk)
             }
         }
         if (!pRight)
-            pRight = (PMMHYPERCHUNKFREE)((char *)CTXSUFF(pHeap->pbHeap) + pHeap->offFreeTail);
+            pRight = (PMMHYPERCHUNKFREE)((char *)CTXSUFF(pHeap->pbHeap) + pHeap->offFreeTail); /** @todo this can't be correct! 'pLeft = .. ; else' I think */
         if (pRight)
         {
             ASSERT_CHUNK_FREE(pHeap, pRight);
