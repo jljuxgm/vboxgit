@@ -1,4 +1,4 @@
-/** $Id: DrvTAPOs2.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/** $Id: DrvTAPOs2.cpp 4372 2007-08-24 21:21:51Z vboxsync $ */
 /** @file
  * VBox network devices: OS/2 TAP network transport driver.
  */
@@ -280,7 +280,7 @@ static DECLCALLBACK(int) drvTAPOs2AsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD p
         }
         else
         {
-            LogFlow(("drvTAPOs2AsyncIoThread: RTFileRead -> %Vrc\n", rc));
+            LogFlow(("drvTAPOs2AsyncIoThread: DoDevIOCtl -> %Vrc\n", rc));
             if (rc == VERR_INVALID_HANDLE)
                 break;
             RTThreadYield();

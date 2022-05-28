@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: fileio.cpp 4372 2007-08-24 21:21:51Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O.
  */
@@ -153,7 +153,7 @@ int rtFileRecalcAndValidateFlags(unsigned *pfOpen)
  * @param   *pcbRead    How much we actually read.
  *                      If NULL an error will be returned for a partial read.
  */
-RTR3DECL(int)  RTFileReadAt(RTFILE File, RTFOFF off, void *pvBuf, unsigned cbToRead, unsigned *pcbRead)
+RTR3DECL(int)  RTFileReadAt(RTFILE File, RTFOFF off, void *pvBuf, size_t cbToRead, size_t *pcbRead)
 {
     int rc = RTFileSeek(File, off, RTFILE_SEEK_BEGIN, NULL);
     if (RT_SUCCESS(rc))
@@ -174,7 +174,7 @@ RTR3DECL(int)  RTFileReadAt(RTFILE File, RTFOFF off, void *pvBuf, unsigned cbToR
  * @param   *pcbWritten How much we actually wrote.
  *                      If NULL an error will be returned for a partial write.
  */
-RTR3DECL(int)  RTFileWriteAt(RTFILE File, RTFOFF off, const void *pvBuf, unsigned cbToWrite, unsigned *pcbWritten)
+RTR3DECL(int)  RTFileWriteAt(RTFILE File, RTFOFF off, const void *pvBuf, size_t cbToWrite, size_t *pcbWritten)
 {
     int rc = RTFileSeek(File, off, RTFILE_SEEK_BEGIN, NULL);
     if (RT_SUCCESS(rc))

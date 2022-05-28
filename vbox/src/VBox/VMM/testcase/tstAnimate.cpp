@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 4206 2007-08-17 20:11:02Z vboxsync $ */
+/* $Id: tstAnimate.cpp 4372 2007-08-24 21:21:51Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -283,7 +283,7 @@ static DECLCALLBACK(int) loadMem(PVM pVM, RTFILE File, uint64_t *poff)
                 RTPrintf("info: %VGp...\n", GCPhys);
 
             /* read a page from the file */
-            unsigned cbRead = 0;
+            size_t cbRead = 0;
             uint8_t au8Page[PAGE_SIZE * 16];
             rc = RTFileRead(File, &au8Page, sizeof(au8Page), &cbRead);
             if (VBOX_SUCCESS(rc) && !cbRead)
