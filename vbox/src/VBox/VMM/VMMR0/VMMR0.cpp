@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 140 2007-01-18 15:28:16Z vboxsync $ */
+/* $Id: VMMR0.cpp 234 2007-01-23 13:04:38Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -364,6 +364,9 @@ static void vmmR0RecordRC(PVM pVM, int rc)
                     break;
                 case VMMCALLHOST_VM_SET_ERROR:
                     STAM_COUNTER_INC(&pVM->vmm.s.StatGCRetVMSetError);
+                    break;
+                case VMMCALLHOST_VM_SET_RUNTIME_ERROR:
+                    STAM_COUNTER_INC(&pVM->vmm.s.StatGCRetVMSetRuntimeError);
                     break;
                 default:
                     STAM_COUNTER_INC(&pVM->vmm.s.StatGCRetCallHost);
