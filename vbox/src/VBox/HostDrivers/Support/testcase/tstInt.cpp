@@ -1,4 +1,4 @@
-/** $Id: tstInt.cpp 4811 2007-09-14 17:53:56Z vboxsync $ */
+/** $Id: tstInt.cpp 4829 2007-09-15 21:55:14Z vboxsync $ */
 /** @file
  * Testcase: Test the interrupt gate feature of the support library.
  */
@@ -147,7 +147,7 @@ int main(int argc, char **argv)
                         RTPrintf("tstInt: SUPCallVMMR0     - %d iterations in %llu ns / %llu ticks. %llu ns / %#llu ticks per iteration. Min %llu ticks.\n",
                                  i, NanoSecs, Ticks, NanoSecs / i, Ticks / i, MinTicks);
 
-#ifndef VBOX_WITHOUT_IDT_PATCHING
+#ifdef VBOX_WITH_IDT_PATCHING
                         /*
                          * The fast path.
                          */
@@ -175,7 +175,7 @@ int main(int argc, char **argv)
 
                         RTPrintf("tstInt: SUPCallVMMR0Fast - %d iterations in %llu ns / %llu ticks. %llu ns / %#llu ticks per iteration. Min %llu ticks.\n",
                                  i, NanoSecs, Ticks, NanoSecs / i, Ticks / i, MinTicks);
-#endif /* !VBOX_WITHOUT_IDT_PATCHING */
+#endif /* VBOX_WITH_IDT_PATCHING */
 
                         /*
                          * The ordinary path.

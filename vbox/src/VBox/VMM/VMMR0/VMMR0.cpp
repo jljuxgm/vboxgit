@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 4811 2007-09-14 17:53:56Z vboxsync $ */
+/* $Id: VMMR0.cpp 4829 2007-09-15 21:55:14Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -425,7 +425,7 @@ VMMR0DECL(int) VMMR0EntryInt(PVM pVM, VMMR0OPERATION enmOperation, void *pvArg)
 {
     switch (enmOperation)
     {
-#ifndef VBOX_WITHOUT_IDT_PATCHING
+#ifdef VBOX_WITH_IDT_PATCHING
         /*
          * Switch to GC.
          * These calls return whatever the GC returns.
@@ -569,7 +569,7 @@ VMMR0DECL(int) VMMR0EntryInt(PVM pVM, VMMR0OPERATION enmOperation, void *pvArg)
          */
         case VMMR0_DO_NOP:
             return VINF_SUCCESS;
-#endif /* !VBOX_WITHOUT_IDT_PATCHING */
+#endif /* VBOX_WITH_IDT_PATCHING */
 
         default:
             /*

@@ -1,4 +1,4 @@
-/* $Id: TRPMR0.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: TRPMR0.cpp 4829 2007-09-15 21:55:14Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor - HC Ring 0
  */
@@ -97,9 +97,9 @@ TRPMR0DECL(void) TRPMR0DispatchHostInterrupt(PVM pVM)
 }
 
 
-#ifndef VBOX_WITHOUT_IDT_PATCHING
+#ifdef VBOX_WITH_IDT_PATCHING
 # ifdef VBOX_WITH_HYBIRD_32BIT_KERNEL
-#  error "VBOX_WITH_HYBIRD_32BIT_KERNEL without VBOX_WITHOUT_IDT_PATCHING isn't supported"
+#  error "VBOX_WITH_HYBIRD_32BIT_KERNEL with VBOX_WITH_IDT_PATCHING isn't supported"
 # endif
 
 /**
@@ -204,4 +204,4 @@ TRPMR0DECL(void) TRPMR0SetupInterruptDispatcherFrame(PVM pVM, void *pvRet)
 #endif
 }
 
-#endif /* !VBOX_WITHOUT_IDT_PATCHING */
+#endif /* VBOX_WITH_IDT_PATCHING */
