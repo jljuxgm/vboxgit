@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 4186 2007-08-16 22:45:09Z vboxsync $ */
+/* $Id: VMM.cpp 4689 2007-09-11 09:18:54Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2165,6 +2165,23 @@ static int vmmR3ServiceCallHostRequest(PVM pVM)
         }
 
         /*
+         * Maps an page allocation chunk into ring-3 so ring-0 can use it.
+         */
+        case VMMCALLHOST_PGM_MAP_CHUNK:
+        {
+            pVM->vmm.s.rcCallHost = PGMR3PhysChunkMap(pVM, pVM->vmm.s.u64CallHostArg);
+            break;
+        }
+#ifndef NEW_PHYS_CODE
+
+        case VMMCALLHOST_PGM_RAM_GROW_RANGE:
+        {
+            pVM->vmm.s.rcCallHost = PGM3PhysGrowRange(pVM, pVM->vmm.s.u64CallHostArg);
+            break;
+        }
+#endif 
+
+        /*
          * Acquire the PGM lock.
          */
         case VMMCALLHOST_PGM_LOCK:
@@ -2179,12 +2196,6 @@ static int vmmR3ServiceCallHostRequest(PVM pVM)
         case VMMCALLHOST_REM_REPLAY_HANDLER_NOTIFICATIONS:
         {
             REMR3ReplayHandlerNotifications(pVM);
-            break;
-        }
-
-        case VMMCALLHOST_PGM_RAM_GROW_RANGE:
-        {
-            pVM->vmm.s.rcCallHost = PGM3PhysGrowRange(pVM, pVM->vmm.s.u64CallHostArg);
             break;
         }
 
