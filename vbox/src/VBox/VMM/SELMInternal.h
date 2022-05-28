@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 1416 2007-03-12 12:00:27Z vboxsync $ */
+/* $Id: SELMInternal.h 1423 2007-03-12 12:53:29Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -165,6 +165,8 @@ typedef struct SELM
     STAMCOUNTER             StatGCWriteGuestTSSUnhandled;
     /** The number of times we had to relocate our hypervisor selectors. */
     STAMCOUNTER             StatHyperSelsChanged;
+    /** The number of times we had find free hypervisor selectors. */
+    STAMCOUNTER             StatScanForHyperSels;
 } SELM, *PSELM;
 
 __BEGIN_DECLS
