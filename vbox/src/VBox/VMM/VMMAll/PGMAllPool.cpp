@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 2090 2007-04-14 15:24:02Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 2091 2007-04-14 15:24:38Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -255,7 +255,7 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
 
         switch (pPage->enmKind)
         {
-             case PGMPOOLKIND_32BIT_PT_FOR_32BIT_PT:
+            case PGMPOOLKIND_32BIT_PT_FOR_32BIT_PT:
             {
                 const unsigned iShw = off / sizeof(X86PTE);
                 if (uShw.pPT->a[iShw].n.u1Present)
