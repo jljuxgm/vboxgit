@@ -1,4 +1,4 @@
-# $Id: deftoimp.sed 4071 2007-08-07 17:07:59Z vboxsync $
+# $Id: deftoimp.sed 4541 2007-09-05 19:32:48Z vboxsync $
 ## @file
 # SED script for generating a dummy .so from a windows .def file.
 #
