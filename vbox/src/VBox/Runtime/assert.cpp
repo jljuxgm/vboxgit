@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 4856 2007-09-17 14:55:39Z vboxsync $ */
+/* $Id: assert.cpp 4995 2007-09-24 09:29:27Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Assertion Workers.
  */
@@ -65,6 +65,10 @@ RTDECL(void) AssertMsg2(const char *pszFormat, ...)
     va_end(args);
 }
 
+#if defined(RT_OS_LINUX) && defined(IN_MODULE)
+EXPORT_SYMBOL(AssertMsg1);
+EXPORT_SYMBOL(AssertMsg2);
+#endif
 
 #elif defined(IN_RING0)
 
