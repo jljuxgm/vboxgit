@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 4738 2007-09-12 16:00:54Z vboxsync $ */
+/* $Id: EM.cpp 5249 2007-10-11 20:27:12Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -3443,7 +3443,7 @@ EMR3DECL(int) EMR3ExecuteVM(PVM pVM)
                     TMCpuTickPause(pVM);
                     VMMR3FatalDump(pVM, rc);
                     int rc2 = emR3Debug(pVM, rc);
-                    if (rc2 == VERR_DBGF_NOT_ATTACHED)
+                    if (rc2 == VERR_DBGF_NOT_ATTACHED || rc2 == VINF_EM_OFF)
                     {
                         VMMR3Unlock(pVM);
                         STAM_REL_PROFILE_ADV_STOP(&pVM->em.s.StatTotal, x);
