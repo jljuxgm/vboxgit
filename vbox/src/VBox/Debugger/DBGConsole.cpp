@@ -1,4 +1,4 @@
-/** $Id: DBGConsole.cpp 5669 2007-11-11 05:05:02Z vboxsync $ */
+/** $Id: DBGConsole.cpp 5672 2007-11-11 05:11:35Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -3911,7 +3911,7 @@ void dbgcVarSetNoRange(PDBGCVAR pVar)
  * @param   pVar        The variable.
  * @param   pAddress    Where to store the address.
  */
-static int dbgcVarToDbgfAddr(PDBGC pDbgc, PCDBGCVAR pVar, PDBGFADDRESS pAddress)
+int dbgcVarToDbgfAddr(PDBGC pDbgc, PCDBGCVAR pVar, PDBGFADDRESS pAddress)
 {
     AssertReturn(pVar, VERR_INVALID_PARAMETER);
     switch (pVar->enmType)
