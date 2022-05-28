@@ -1,4 +1,4 @@
-/* $Id: semaphore-r0drv-linux.c 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: semaphore-r0drv-linux.c 4020 2007-08-03 11:43:11Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Semaphores, Ring-0 Driver, Linux.
  */
@@ -193,7 +193,7 @@ RTDECL(int)  RTSemEventWait(RTSEMEVENT EventSem, unsigned cMillies)
             /* wait */
             lTimeout = schedule_timeout(lTimeout);
 
-            /* Check if someone destroyed the semaphore while we was waiting. */
+            /* Check if someone destroyed the semaphore while we were waiting. */
             if (pEventInt->u32Magic != RTSEMEVENT_MAGIC)
             {
                 rc = VERR_SEM_DESTROYED;
