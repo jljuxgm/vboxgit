@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 4759 2007-09-13 08:43:31Z vboxsync $ */
+/* $Id: VM.cpp 4900 2007-09-19 12:53:13Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -347,6 +347,7 @@ VMR3DECL(int)   VMR3Create(PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCON
                 pszError = N_("VirtualBox support library out of memory");
                 break;
             case VERR_VERSION_MISMATCH:
+            case VERR_VM_DRIVER_VERSION_MISMATCH:
                 pszError = N_("The VirtualBox support driver which is running is from a different "
                               "version of VirtualBox.  You can correct this by stopping all "
                               "running instances of VirtualBox and reinstalling the software.");
