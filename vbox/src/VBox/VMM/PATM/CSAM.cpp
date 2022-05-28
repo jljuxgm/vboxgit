@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 455 2007-01-31 00:05:52Z vboxsync $ */
+/* $Id: CSAM.cpp 519 2007-02-01 20:21:36Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -572,7 +572,7 @@ static HCPTRTYPE(void *) CSAMGCVirtToHCVirt(PVM pVM, PCSAMP2GLOOKUPREC pCacheRec
         STAM_PROFILE_STOP(&pVM->csam.s.StatTimeAddrConv, a);
         return NULL;
     }
-    Assert(sizeof(HCPTRTYPE(uint8_t*)) == sizeof(uint32_t));
+////invalid?    Assert(sizeof(HCPTRTYPE(uint8_t*)) == sizeof(uint32_t));
 
     pCacheRec->pPageLocStartHC = (HCPTRTYPE(uint8_t*))((RTHCUINTPTR)pHCPtr & PAGE_BASE_HC_MASK);
     pCacheRec->pGuestLoc      = pGCPtr & PAGE_BASE_GC_MASK;
