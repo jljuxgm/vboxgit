@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 4088 2007-08-08 09:12:59Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 4332 2007-08-24 07:38:40Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -146,6 +146,9 @@ static DECLCALLBACK(int) drvHostParallelIOCtl(PPDMIHOSTDEVICECONNECTOR pInterfac
         case LPT_IOCTL_COMMAND_GET_CONTROL:
             ioctlCommand = PPRCONTROL;
             break;
+        default:
+            AssertMsgFailed(("uCommand = %d?\n"));
+            return VERR_INVALID_PARAMETER;
     }
 
     ioctl(pData->FileDevice, ioctlCommand, pvData);
