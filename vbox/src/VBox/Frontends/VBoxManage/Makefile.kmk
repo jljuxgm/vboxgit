@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2478 2007-05-04 00:46:16Z vboxsync $
+# $Id: Makefile.kmk 2675 2007-05-16 16:59:38Z vboxsync $
 ## @file
 # Makefile for VBoxManage (the cli frontend).
 #
@@ -29,6 +29,10 @@ VBoxManage_TEMPLATE   = VBOXMAINCLIENT
 VBoxManage_SOURCES    = \
 	VBoxManage.cpp \
 	VBoxInternalManage.cpp
+ifndef VBOX_OSE
+VBoxManage_SOURCES   += \
+	VBoxInternalManageVmdk.cpp
+endif
 ifdef VBOX_WITH_VRDP
  VBoxManage_DEFS     += VBOX_VRDP
 endif
