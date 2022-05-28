@@ -1,6 +1,8 @@
-/* $Id: tstVMStructSize.cpp 165 2007-01-18 18:39:22Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 474 2007-01-31 22:18:04Z vboxsync $ */
 /** @file
- * VMM - Context switcher macros & definitions
+ * tstVMStructSize - testcase for check structure sizes/alignment
+ *                   and to verify that HC and GC uses the same
+ *                   representation of the structures.                
  */
 
 /*
