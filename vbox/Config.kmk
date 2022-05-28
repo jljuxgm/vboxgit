@@ -1,4 +1,4 @@
-# $Id: Config.kmk 4596 2007-09-07 09:01:38Z vboxsync $
+# $Id: Config.kmk 4613 2007-09-07 19:02:43Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1773,14 +1773,10 @@ else
  TEMPLATE_VBOXNOCRTGCC_LDFLAGS          = -nostdlib
  ifneq ($(filter-out os2 darwin solaris,$(BUILD_TARGET)),)
   ifneq ($(BUILD_TARGET_ARCH),amd64)
-   TEMPLATE_VBOXNOCRTGCC_LDFLAGS        += -Wl,--no-undefined
+   TEMPLATE_VBOXNOCRTGCC_LDFLAGS       += -Wl,--no-undefined
   endif
  endif
- ifneq ($(filter-out freebsd,$(BUILD_TARGET)),)
-  TEMPLATE_VBOXNOCRTGCC_LIBS            = # FIXME - has unwind mess.
- else
-  TEMPLATE_VBOXNOCRTGCC_LIBS            = $(VBOX_GCC_LIBGCC)
- endif
+ TEMPLATE_VBOXNOCRTGCC_LIBS             = $(VBOX_GCC_LIBGCC)
 endif
 
 
@@ -2540,7 +2536,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4596 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 4613 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 
 # Rule for generating a timestamp and updating the real thing on change.
