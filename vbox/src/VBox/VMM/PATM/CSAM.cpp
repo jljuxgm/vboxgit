@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 1859 2007-04-02 14:08:55Z vboxsync $ */
+/* $Id: CSAM.cpp 1861 2007-04-02 14:11:37Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2091,9 +2091,6 @@ CSAMR3DECL(int) CSAMR3CheckCode(PVM pVM, RTGCPTR pInstrGC)
     {
         // Cache record for PATMGCVirtToHCVirt
         CSAMP2GLOOKUPREC cacheRec = {0};
-
-if ((pInstrGC >> 24) == 0xf8
-    && (pInstrGC & 0xfff) == 0) _asm int 3;
 
         STAM_PROFILE_START(&pVM->csam.s.StatTime, a);
         rc = csamAnalyseCallCodeStream(pVM, pInstrGC, pInstrGC, true /* 32 bits code */, CSAMR3AnalyseCallback, pPage, &cacheRec);
