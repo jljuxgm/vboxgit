@@ -1,4 +1,4 @@
-# $Id: Makefile 893 2007-02-14 09:36:39Z vboxsync $
+# $Id: Makefile 894 2007-02-14 09:50:17Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -59,6 +59,12 @@ endif # only linux guest additions
 # global (for now at least)
 INCS += include
 
+ifeq ($(USERNAME),bird)
+ ifneq ($(wildcard ./kLdr/kLdrModMachO.c),)
+   IPRT_WITH_KLDR=1
+   IPRT_PATH_KLDR=./kLdr
+ endif
+endif
 
 #
 # Unicode Specification reader used to regenerate unidata.cpp.
@@ -202,6 +208,7 @@ ifdef IPRT_WITH_KLDR
 	$(IPRT_PATH_KLDR)/kLdrMod.c \
 	$(IPRT_PATH_KLDR)/kLdrModLX.c \
 	$(IPRT_PATH_KLDR)/kLdrModPE.c \
+	$(IPRT_PATH_KLDR)/kLdrModMachO.c \
 	$(IPRT_PATH_KLDR)/kLdrModNative.c \
 	$(IPRT_PATH_KLDR)/kLdrMisc.c \
 	$(IPRT_PATH_KLDR)/kLdrRdr.c \
