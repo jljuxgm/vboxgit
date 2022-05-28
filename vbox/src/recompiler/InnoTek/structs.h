@@ -1,4 +1,4 @@
-/* $Id: structs.h 1  vboxsync $ */
+/* $Id: structs.h 2422 2007-04-30 12:03:47Z vboxsync $ */
 /** @file
  * VBox Recompiler - structure offset tables.
  *
