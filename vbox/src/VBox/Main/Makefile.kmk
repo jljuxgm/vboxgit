@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5520 2007-10-26 16:29:13Z vboxsync $
+# $Id: Makefile.kmk 5586 2007-10-31 18:24:35Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -291,6 +291,9 @@ VBoxC_DEFS += VBOX_WITH_ALSA
 endif
 ifdef VBOX_WITH_WINMM
 VBoxC_DEFS += VBOX_WITH_WINMM
+endif
+ifdef VBOX_WITH_CROSSBOW
+VBoxC_DEFS += VBOX_WITH_CROSSBOW
 endif
 
 VBoxC_DEFS.win.x86 += _WIN32_WINNT=0x0500

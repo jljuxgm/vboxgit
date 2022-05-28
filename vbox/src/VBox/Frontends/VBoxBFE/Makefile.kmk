@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5576 2007-10-31 12:16:29Z vboxsync $
+# $Id: Makefile.kmk 5586 2007-10-31 18:24:35Z vboxsync $
 ## @file
 # Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -39,6 +39,9 @@ VBoxBFE_DEFS.freebsd = VBOXBFE_WITH_X11
 VBoxBFE_DEFS.l4 = _GNU_SOURCE
 VBoxBFE_DEFS.linux = _GNU_SOURCE VBOXBFE_WITH_X11
 VBoxBFE_DEFS.solaris = VBOXBFE_WITH_X11
+ifdef VBOX_WITH_CROSSBOW
+ VBoxBFE_DEFS.solaris += VBOX_WITH_CROSSBOW
+endif
 VBoxBFE_DEFS.win.x86 = _WIN32_WINNT=0x0500
 
 VBoxBFE_SOURCES = \
