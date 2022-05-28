@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 1859 2007-04-02 14:08:55Z vboxsync $ */
+/* $Id: CSAMInternal.h 1860 2007-04-02 14:09:10Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -185,8 +185,7 @@ typedef struct CSAM
 
     /* Set when the IDT gates have been checked for the first time. */
     bool                fGatesChecked;
-    bool                Alignment1[2];
-//    bool                Alignment1[HC_ARCH_BITS == 32 ? 4 : 6]; /**< Align the stats on an 8-byte boundrary. */
+    bool                Alignment1[HC_ARCH_BITS == 32 ? 4 : 6]; /**< Align the stats on an 8-byte boundrary. */
 
     STAMCOUNTER         StatNrTraps;
     STAMCOUNTER         StatNrPages;
