@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-darwin.cpp 3706 2007-07-19 00:32:07Z vboxsync $ */
+/* $Id: assert-r0drv-darwin.cpp 3760 2007-07-22 10:18:54Z vboxsync $ */
 /** @file
  * innotek Portable Runtime -  Assertion Workers, Ring-0 Drivers, Darwin.
  */
@@ -30,6 +30,14 @@
 #include <iprt/string.h>
 #include <iprt/stdarg.h>
 
+/*******************************************************************************
+*   Global Variables                                                           *
+*******************************************************************************/
+/** The last assert message, 1st part. */
+RTDATADECL(char) g_szRTAssertMsg1[1024];
+/** The last assert message, 2nd part. */
+RTDATADECL(char) g_szRTAssertMsg2[2048];
+
 
 RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
 {
@@ -44,6 +52,12 @@ RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile
            "Expression: %s\r\n"
            "Location  : %s(%d) %s\r\n",
            pszExpr, pszFile, uLine, pszFunction);
+
+    RTStrPrintf(g_szRTAssertMsg1, sizeof(g_szRTAssertMsg1),
+                "\n!!Assertion Failed!!\n"
+                "Expression: %s\n"
+                "Location  : %s(%d) %s\n",
+                pszExpr, pszFile, uLine, pszFunction);
 }
 
 
@@ -63,5 +77,11 @@ RTDECL(void) AssertMsg2(const char *pszFormat, ...)
     szMsg[sizeof(szMsg) - 1] = '\0';
     va_end(va);
     printf("%s", szMsg);
+
+    va_start(va, pszFormat);
+    RTStrPrintfV(g_szRTAssertMsg2, sizeof(g_szRTAssertMsg2), pszFormat, va);
+    va_end(va);
+
+    panic("%s%s", g_szRTAssertMsg1, g_szRTAssertMsg2);
 }
 
