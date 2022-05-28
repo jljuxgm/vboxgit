@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 4615 2007-09-07 19:25:16Z vboxsync $ */
+/* $Id: REMAll.cpp 4616 2007-09-07 19:34:00Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -103,9 +103,9 @@ REMDECL(void) REMNotifyHandlerPhysicalRegister(PVM pVM, PGMPHYSHANDLERTYPE enmTy
  * @param   GCPhys          Handler range address.
  * @param   cb              Size of the handler range.
  * @param   fHasHCHandler   Set if the handler have a HC callback function.
- * @param   pvHCPtr         The HC virtual address corresponding to GCPhys if available.
+ * @param   fRestoreAsRAM   Whether the to restore it as normal RAM or as unassigned memory.
  */
-REMDECL(void) REMNotifyHandlerPhysicalDeregister(PVM pVM, PGMPHYSHANDLERTYPE enmType, RTGCPHYS GCPhys, RTGCPHYS cb, bool fHasHCHandler, RTHCPTR pvHCPtr)
+REMDECL(void) REMNotifyHandlerPhysicalDeregister(PVM pVM, PGMPHYSHANDLERTYPE enmType, RTGCPHYS GCPhys, RTGCPHYS cb, bool fHasHCHandler, bool fRestoreAsRAM)
 {
     if (pVM->rem.s.cHandlerNotifications >= ELEMENTS(pVM->rem.s.aHandlerNotifications))
         remFlushHandlerNotifications(pVM);
@@ -115,7 +115,7 @@ REMDECL(void) REMNotifyHandlerPhysicalDeregister(PVM pVM, PGMPHYSHANDLERTYPE enm
     pRec->u.PhysicalDeregister.GCPhys = GCPhys;
     pRec->u.PhysicalDeregister.cb = cb;
     pRec->u.PhysicalDeregister.fHasHCHandler = fHasHCHandler;
-    pRec->u.PhysicalDeregister.pvHCPtr = pvHCPtr;
+    pRec->u.PhysicalDeregister.fRestoreAsRAM = fRestoreAsRAM;
 }
 
 
