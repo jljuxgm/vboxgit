@@ -1,4 +1,4 @@
-; $Id: TRPMInternal.mac 1524 2007-03-15 20:45:00Z vboxsync $
+; $Id: TRPMInternal.mac 1580 2007-03-20 20:08:01Z vboxsync $
 ;; @file
 ; TRPM - Internal header file.
 ;
@@ -112,6 +112,6 @@ struc VBOXTSS
     .padding_ldt        resw 1
     .fDebugTrap         resw 1
     .offIoBitmap        resw 1
-    .redirBitmap        resb 32
+    .IntRedirBitmap     resb 32
 endstruc
 
