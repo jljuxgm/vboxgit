@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 1585 2007-03-20 21:03:10Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 2062 2007-04-13 08:33:44Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -483,8 +483,8 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     /** @note We can do more complex things with tagged TLBs. */
     pVMCB->ctrl.TLBCtrl.n.u32ASID = 1;
 
-    /** @todo TSC offset. */
-    pVMCB->ctrl.u64TSCOffset = 0;
+    /** TSC offset. */
+    pVMCB->ctrl.u64TSCOffset = TMCpuTickGetOffset(pVM);
 
     /** @todo 64 bits stuff (?):
      * - STAR
