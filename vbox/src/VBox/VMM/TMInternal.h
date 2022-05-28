@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 2859 2007-05-24 21:15:01Z vboxsync $ */
+/* $Id: TMInternal.h 2861 2007-05-25 03:03:24Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -341,10 +341,6 @@ typedef struct TM
      * Thus the current lag is offVirtualSync - offVirtualSyncGivenUp. */
     uint64_t                    offVirtualSyncGivenUp;
 uint64_t volatile           u64VirtualSyncStoppedTS;/**< for debugging - remove later */
-bool volatile               fVirtualSyncStoppedInGC;/**< for debugging - remove later */
-uint8_t volatile            u8VirtualSyncStoppedApicId;/**< for debugging - remove later */
-uint8_t au8PaddingDbg[2];/**< for debugging - remove later */
-uint32_t u32VirtualSyncStoppedCpuHz;/**< for debugging - remove later */
     /** The TMCLOCK_VIRTUAL at the previous TMVirtualGetSync call when catch-up is active. */
     uint64_t volatile           u64VirtualSyncCatchUpPrev;
     /** The current catch-up percentage. */
