@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2489 2007-05-04 07:50:39Z vboxsync $
+# $Id: Makefile.kmk 2490 2007-05-04 07:56:22Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -914,11 +914,11 @@ $(PATH_TARGET)/errmsgdata.h: errmsg.sed $(DEPTH)/include/iprt/err.h $(DEPTH)/inc
 	$(QUIET)$(SED) -f $< $(filter %.h,$^) > $@
 ## @todo r=bird: rename this to indicate that it's not only COM errors, but all win32/64 errors.
 $(PATH_TARGET)/errmsgcomdata.h: errmsgcom.sed $(PATH_SDK_WINPSDK_INC)/WinError.h
-	$(call MSG_L1,Generating $@)
+	$(call MSG_GENERATE,,$@)
 	$(QUIET)$(MKDIR) -p $(PATH_TARGET)
 	$(QUIET)$(SED) -f $< $(filter %.h,$^) > $@
 $(PATH_TARGET)/errmsgxpcomdata.h: errmsgxpcom.sed $(DEPTH)/src/libs/xpcom18a4/xpcom/base/nsError.h
-	$(call MSG_L1,Generating $@)
+	$(call MSG_GENERATE,,$@)
 	$(QUIET)$(MKDIR) -p $(PATH_TARGET)
 	$(QUIET)$(SED) -f $< $(filter %.h,$^) > $@
 
