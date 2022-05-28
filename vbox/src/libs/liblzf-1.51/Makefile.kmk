@@ -1,3 +1,8 @@
+# $Id: Makefile.kmk 2476 2007-05-03 23:51:43Z vboxsync $
+## @file
+# Makefile for liblzf.
+#
+
 #
 # Copyright (C) 2006 InnoTek Systemberatung GmbH
 #
