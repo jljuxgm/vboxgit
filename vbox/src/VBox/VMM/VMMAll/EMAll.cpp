@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 1987 2007-04-09 11:16:47Z vboxsync $ */
+/* $Id: EMAll.cpp 1988 2007-04-09 11:23:58Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1237,8 +1237,7 @@ static int emInterpretBtr(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, RT
             pParam1 = (RTGCPTR)((RTGCUINTPTR)pParam1 + valpar2/8);
 #ifdef IN_GC
             /* Safety check. */
-            /** @todo cpu may access two or four bytes */
-            AssertMsgReturn(pParam1 == pvFault, ("pParam1=%VGv pvFault=%VGv\n", pParam1, pvFault), VERR_EM_INTERPRETER);
+            AssertMsgReturn((RTGCPTR)((RTGCUINTPTR)pParam1 & ~3) == pvFault, ("pParam1=%VGv pvFault=%VGv\n", pParam1, pvFault), VERR_EM_INTERPRETER);
 #endif
             rc = emRamRead(pVM, &valpar1, pParam1, 1);
             if (VBOX_FAILURE(rc))
