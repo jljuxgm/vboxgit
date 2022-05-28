@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: PGMAllGst.h 2227 2007-04-19 13:51:54Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -290,9 +290,8 @@ PGM_GST_DECL(int, ModifyPage)(PVM pVM, RTGCUINTPTR GCPtr, size_t cb, uint64_t fF
     }
 
 #else
-    /* real / protected mode. */
-    AssertFailed();
-    return VERR_NOT_SUPPORTED;
+    /* real / protected mode: ignore. */
+    return VINF_SUCCESS;
 #endif
 }
 
