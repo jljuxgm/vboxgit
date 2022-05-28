@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3372 2007-07-03 01:05:50Z vboxsync $
+# $Id: Makefile.kmk 3381 2007-07-03 09:36:24Z vboxsync $
 ## @file
 # Makefile for XPCOM.
 #
@@ -1131,7 +1131,7 @@ VBoxXPCOMIPCC_SOURCES.darwin = \
 	ipc/ipcd/client/src/ipcConnectionUnix.cpp
 VBoxXPCOMIPCC_SOURCES.l4 = \
 	ipc/ipcd/client/src/ipcConnectionUnix.cpp
-VBoxXPCOMIPCC_SOURCES.linix = \
+VBoxXPCOMIPCC_SOURCES.linux = \
 	ipc/ipcd/client/src/ipcConnectionUnix.cpp
 VBoxXPCOMIPCC_SOURCES.os2 = \
 	ipc/ipcd/client/src/ipcConnectionUnix.cpp
