@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 4506 2007-09-04 06:14:32Z vboxsync $ */
+/* $Id: CFGM.cpp 4507 2007-09-04 06:15:08Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  *
@@ -771,7 +771,7 @@ static int cfgmR3CreateDefault(PVM pVM)
     RTUUID Uuid;
     RTUuidClear(&Uuid);
     rc = CFGMR3InsertBytes(pCfg,    "UUID", &Uuid, sizeof(Uuid));                   
-    UPDATE_RC();
+    UPDATERC();
     /* Bios logo. */
     rc = CFGMR3InsertInteger(pCfg,  "FadeIn",               1);
     UPDATERC();
