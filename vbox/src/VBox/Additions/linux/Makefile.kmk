@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3244 2007-06-23 17:09:50Z vboxsync $
+# $Id: Makefile.kmk 3838 2007-07-25 14:44:48Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -34,8 +34,10 @@ SUBDIRS += \
 	xclient
 endif
 
+ifndef VBOX_OSE
 PACKING      = $(PATH_BIN)/additions/VBoxLinuxAdditions.run
 OTHER_CLEAN  = $(PACKING)
+endif
 
 
 include	$(PATH_KBUILD)/footer.kmk
