@@ -1,4 +1,4 @@
-/** $Id: DBGCEmulateCodeView.cpp 5736 2007-11-13 23:57:05Z vboxsync $ */
+/** $Id: DBGCEmulateCodeView.cpp 5751 2007-11-14 20:33:23Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -2898,7 +2898,6 @@ int dbgcVarsToBytes(PDBGCCMDHLP pCmdHlp, void *pvBuf, uint32_t *pcbBuf, size_t c
             case DBGCVAR_TYPE_STRING:
             case DBGCVAR_TYPE_SYMBOL:
             {
-                bool fOverflow = false;
                 const char *psz = paVars[i].u.pszString;
                 size_t cbString = strlen(psz);
                 if (cbUnit & RT_BIT_32(31))
