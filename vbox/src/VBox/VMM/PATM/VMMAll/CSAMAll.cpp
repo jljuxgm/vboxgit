@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 1830 2007-03-30 14:16:35Z vboxsync $ */
+/* $Id: CSAMAll.cpp 1834 2007-03-30 14:39:26Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -201,6 +201,7 @@ CSAMDECL(void) CSAMMarkPossibleCodePage(PVM pVM, RTGCPTR GCPtr)
     if (pVM->csam.s.cPossibleCodePages < RT_ELEMENTS(pVM->csam.s.pvPossibleCodePage))
     {
         pVM->csam.s.pvPossibleCodePage[pVM->csam.s.cPossibleCodePages++] = GCPtr;
+        VM_FF_SET(pVM, VM_FF_CSAM_PENDING_ACTION);
     }
     return;
 }
