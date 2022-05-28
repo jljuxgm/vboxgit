@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 3168 2007-06-20 08:45:50Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 3169 2007-06-20 08:58:50Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1719,8 +1719,7 @@ ResumeExecution:
 
                 STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitIORead);
                 rc = IOMIOPortRead(pVM, uPort, &u32Val, cbSize);
-                if (    rc == VINF_SUCCESS
-                    ||  (rc >= VINF_EM_FIRST && rc <= VINF_EM_LAST))
+                if (IOM_SUCCESS(rc))
                 {
                     /* Write back to the EAX register. */
                     pCtx->eax = (pCtx->eax & ~uAndVal) | (u32Val & uAndVal);
