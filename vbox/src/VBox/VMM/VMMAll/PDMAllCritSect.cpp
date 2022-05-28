@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 4403 2007-08-28 15:45:07Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -188,5 +188,18 @@ PDMDECL(bool) PDMCritSectIsOwner(PCPDMCRITSECT pCritSect)
     Assert(pVM);
     return pCritSect->s.Core.NativeThreadOwner == pVM->NativeThreadEMT;
 #endif
+}
+
+
+/**
+ * Checks if a critical section is initialized or not.
+ *
+ * @returns true if initialized.
+ * @returns false if not initialized.
+ * @param   pCritSect   The critical section.
+ */
+PDMDECL(bool) PDMCritSectIsInitialized(PCPDMCRITSECT pCritSect)
+{
+    return pCritSect->s.Core.u32Magic == RTCRITSECT_MAGIC;
 }
 
