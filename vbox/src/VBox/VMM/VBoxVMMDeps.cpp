@@ -1,4 +1,4 @@
-/* $Id: VBoxVMMDeps.cpp 4665 2007-09-10 13:41:18Z vboxsync $ */
+/* $Id: VBoxVMMDeps.cpp 5680 2007-11-11 09:40:50Z vboxsync $ */
 /** @file
  * VBoxVMM link dependencies - drag all we want into the link!
  */
@@ -25,6 +25,7 @@
 #include <VBox/em.h>
 #include <VBox/iom.h>
 #include <VBox/dbgf.h>
+#include <VBox/dbg.h>
 
 VMMR3DECL(int) VMMDoTest(PVM pVM);
 
@@ -45,5 +46,8 @@ PFNRT g_apfnDeps[] =
     (PFNRT)PGMR3DbgHCPtr2GCPhys,
     (PFNRT)VMR3Create,
     (PFNRT)VMMDoTest,
+#ifdef VBOX_WITH_DEBUGGER
+    (PFNRT)DBGCCreate,
+#endif
     NULL
 };
