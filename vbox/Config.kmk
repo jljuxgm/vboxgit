@@ -1,4 +1,4 @@
-# $Id: Config.kmk 2695 2007-05-17 07:34:31Z vboxsync $
+# $Id: Config.kmk 2696 2007-05-17 08:05:53Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -972,7 +972,7 @@ endif
 ## Edit an inf file an x86 target.
 # @param    1   The inf file to edit.
 # @param    2   The output file.
-VBOX_EDIT_INF32_FN = $(SED) $(if $(VBOX_SIGNING_MODE),-e 's/^;cat  *//', -e '/^;cat /d') -e 's/^;amd64  *//' -e '/^;x86 /d' $(1) > $(2)
+VBOX_EDIT_INF32_FN = $(SED) $(if $(VBOX_SIGNING_MODE),-e 's/^;cat  *//', -e '/^;cat /d') -e 's/^;x86  *//' -e '/^;amd64 /d' $(1) > $(2)
 ## Edit an inf file an x86 target.
 # @param    1   The inf file to edit.
 # @param    2   The output file.
