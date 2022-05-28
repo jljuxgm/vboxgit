@@ -1,4 +1,4 @@
-# $Id: Makefile 691 2007-02-06 05:29:03Z vboxsync $
+# $Id: Makefile 762 2007-02-07 23:15:42Z vboxsync $
 ## @file
 # Makefile for the InnoTek Portable Runtime (IPRT).
 #
@@ -35,7 +35,7 @@ ifndef VBOX_ADDITIONS_LINUX_ONLY
  endif
  ifdef VBOX_WITH_LINUX_ADDITIONS
   LIBRARIES += RuntimeLnx32GuestR3
-  ifeq ($(BUILD_PLATFORM_ARCH),x86) # (AMD64: can't build it and doesn't need it, so skip it.)
+  ifdef VBOX_WITH_LINUX_ADDITIONS_32BIT_R0
    LIBRARIES += RuntimeLnx32GuestR0
   endif
  endif
