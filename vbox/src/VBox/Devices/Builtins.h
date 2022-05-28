@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 5380 2007-10-19 10:10:45Z vboxsync $ */
+/* $Id: Builtins.h 5623 2007-11-02 13:49:25Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -43,6 +43,7 @@ extern const PDMDEVREG g_DeviceNE2000;
 extern const PDMDEVREG g_DeviceICHAC97;
 extern const PDMDEVREG g_DeviceAudioSniffer;
 extern const PDMDEVREG g_DeviceOHCI;
+extern const PDMDEVREG g_DeviceEHCI;
 extern const PDMDEVREG g_DeviceACPI;
 extern const PDMDEVREG g_DeviceDMA;
 extern const PDMDEVREG g_DeviceFloppyController;
