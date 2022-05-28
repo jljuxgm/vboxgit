@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 5040 2007-09-26 09:03:00Z vboxsync $ */
+/* $Id: PDMDevice.cpp 5440 2007-10-23 11:15:06Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -1018,7 +1018,7 @@ static int pdmR3DevLoad(PVM pVM, PPDMDEVREGCBINT pRegCB, const char *pszFilename
         }
     }
     else
-        AssertMsgFailed(("Failed to load VBoxDD!\n"));
+        AssertMsgFailed(("Failed to load %s %s!\n", pszFilename, pszName));
     return rc;
 }
 
