@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 1300 2007-03-07 14:16:35Z vboxsync $ */
+/* $Id: HWSVMR0.h 2127 2007-04-17 12:38:42Z vboxsync $ */
 /** @file
  * HWACCM SVM - Internal header file.
  */
@@ -96,7 +96,8 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx);
         pVMCB->guest.REG.u16Sel   = pCtx->reg;                          \
         pVMCB->guest.REG.u32Limit = pCtx->reg##Hid.u32Limit;            \
         pVMCB->guest.REG.u64Base  = pCtx->reg##Hid.u32Base;             \
-        if (pCtx->reg)                                                      \
+        if (    pCtx->reg                                               \
+            ||  !(pCtx->cr0 & X86_CR0_PE))                              \
             pVMCB->guest.REG.u16Attr = SVM_HIDSEGATTR_VMX2SVM(pCtx->reg##Hid.Attr.u);           \
         else                                                                                    \
             pVMCB->guest.REG.u16Attr = 0;
