@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2754 2007-05-22 02:19:37Z vboxsync $
+# $Id: Makefile.kmk 2917 2007-05-29 14:17:19Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -152,6 +152,15 @@ else
 	$(PATH_LIB)/VBoxXML$(VBOX_SUFF_LIB) \
 	$(PATH_LIB)/VBoxCOM$(VBOX_SUFF_LIB)
 endif
+ifdef VBOX_WITH_LIBHAL
+VBoxSVC_CXXFLAGS += \
+	$(LIB_HAL_CFLAGS)
+VBoxSVC_LIBS += \
+	$(LIB_HAL_LIBS)
+VBoxSVC_DEFS += \
+	VBOX_USE_LIBHAL
+endif
+
 VBoxSVC_SOURCES = \
 	Logging.cpp \
 	Matching.cpp \
