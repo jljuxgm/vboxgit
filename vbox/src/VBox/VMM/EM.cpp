@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 2228 2007-04-19 13:52:53Z vboxsync $ */
+/* $Id: EM.cpp 2229 2007-04-19 13:54:51Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -1018,7 +1018,7 @@ static int emR3HwAccStep(PVM pVM)
     return rc;
 }
 
-#if 1 //def DEBUG_sandervl
+#ifdef DEBUG
 void emR3SingleStepExecRaw(PVM pVM, uint32_t cIterations)
 {
     EMSTATE  enmOldState = pVM->em.s.enmState;
