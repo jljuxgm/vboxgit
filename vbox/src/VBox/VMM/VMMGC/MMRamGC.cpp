@@ -1,4 +1,4 @@
-/* $Id: MMRamGC.cpp 23 2007-01-15 14:08:28Z vboxsync $ */
+/* $Id: MMRamGC.cpp 2610 2007-05-13 19:14:57Z vboxsync $ */
 /** @file
  * MMRamGC - Guest Context Ram access Routines, pair for MMRamGCA.asm.
  */
@@ -51,7 +51,7 @@ DECLASM(void) MMGCRamWrite_Error(void);
 /**
  * Install MMGCRam Hypervisor page fault handler for normal working
  * of MMGCRamRead and MMGCRamWrite calls.
- * This handler will be authomatically removed at page fault.
+ * This handler will be automatically removed at page fault.
  * In other case it must be removed by MMGCRamDeregisterTrapHandler call.
  *
  * @param   pVM         VM handle.
