@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 98 2007-01-17 13:47:34Z vboxsync $ */
+/* $Id: SELM.cpp 106 2007-01-17 15:32:14Z vboxsync $ */
 /** @file
  * SELM - The Selector manager.
  */
@@ -1466,9 +1466,7 @@ SELMR3DECL(int) SELMR3SyncTSS(PVM pVM)
  	            ssr0 &= ~1;
 
  	            if (ssr0 != tss.ss0 || espr0 != tss.esp0)
- 	            {
  	                Log(("SELMR3SyncTSS: Updating TSS ring 0 stack to %04X:%08X\n", tss.ss0, tss.esp0));
- 	            }
                 Log(("offIoBitmap=%#x\n", tss.offIoBitmap));
             #endif
                 /* Update our TSS structure for the guest's ring 1 stack */
