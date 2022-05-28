@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 3292 2007-06-26 14:15:29Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 3294 2007-06-26 14:25:06Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -60,7 +60,8 @@ HWACCMR0DECL(int) HWACCMR0Init(PVM pVM)
 
 #ifndef VBOX_WITH_HYBIRD_32BIT_KERNEL /* paranoia */
 
-    pVM->hwaccm.s.ulLastError = VINF_SUCCESS;
+    pVM->hwaccm.s.fInitialized = true;
+    pVM->hwaccm.s.ulLastError  = VINF_SUCCESS;
 
     /*
      * Check for VMX capabilities
