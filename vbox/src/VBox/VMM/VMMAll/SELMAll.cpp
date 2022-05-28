@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 2009 2007-04-10 14:19:40Z vboxsync $ */
+/* $Id: SELMAll.cpp 2098 2007-04-16 12:56:42Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -89,19 +89,20 @@ static RTGCPTR selmToFlat(PVM pVM, RTSEL Sel, RTGCPTR Addr)
  */
 SELMDECL(RTGCPTR) SELMToFlat(PVM pVM, X86EFLAGS eflags, RTSEL Sel, CPUMSELREGHID *pHiddenSel, RTGCPTR Addr)
 {
-    /*
-     * Deal with real & v86 mode first.
-     */
-    if (    CPUMIsGuestInRealMode(pVM)
-        ||  eflags.Bits.u1VM)
-    {
-        RTGCUINTPTR uFlat = ((RTGCUINTPTR)Addr & 0xffff) + ((RTGCUINTPTR)Sel << 4);
-        return (RTGCPTR)uFlat;
-    }
-
     if (!CPUMAreHiddenSelRegsValid(pVM))
-        return selmToFlat(pVM, Sel, Addr);
+    {
+        /*
+        * Deal with real & v86 mode first.
+        */
+        if (    CPUMIsGuestInRealMode(pVM)
+            ||  eflags.Bits.u1VM)
+        {
+            RTGCUINTPTR uFlat = ((RTGCUINTPTR)Addr & 0xffff) + ((RTGCUINTPTR)Sel << 4);
+            return (RTGCPTR)uFlat;
+        }
 
+        return selmToFlat(pVM, Sel, Addr);
+    }
     return (RTGCPTR)(pHiddenSel->u32Base + (RTGCUINTPTR)Addr);
 }
 
