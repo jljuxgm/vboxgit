@@ -1,4 +1,4 @@
-/* $Id: tstPath.cpp 3672 2007-07-17 12:39:30Z vboxsync $ */
+/* $Id: tstPath.cpp 4029 2007-08-03 22:00:58Z vboxsync $ */
 /** @file
  * innotek Portable Runtime Testcase - Test various path functions.
  */
@@ -51,11 +51,16 @@ int main()
         return 1;
 
     /*
-     * RTPathProgram
+     * RTPathProgram, RTPathUserHome
      */
     char szPath[RTPATH_MAX];
     CHECK_RC(RTPathProgram(szPath, sizeof(szPath)));
-
+    if (RT_SUCCESS(rc))
+        RTPrintf("Program={%s}\n", szPath);
+    CHECK_RC(RTPathUserHome(szPath, sizeof(szPath)));
+    if (RT_SUCCESS(rc))
+        RTPrintf("UserHome={%s}\n", szPath);
+    
     /*
      * RTPathAbsEx
      */
