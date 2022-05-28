@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 1507 2007-03-15 11:48:16Z vboxsync $ */
+/* $Id: SELM.cpp 1508 2007-03-15 12:00:18Z vboxsync $ */
 /** @file
  * SELM - The Selector manager.
  */
@@ -1429,10 +1429,8 @@ SELMR3DECL(int) SELMR3SyncTSS(PVM pVM)
         pVM->selm.s.fGuestTss32Bit = pDesc->Gen.u4Type == X86_SEL_TYPE_SYS_386_TSS_AVAIL
                                   || pDesc->Gen.u4Type == X86_SEL_TYPE_SYS_386_TSS_BUSY;
 
-        /* Don't bother with anything but the core structure. (Actually all we care for is the r0 ss.) */
-        if (cbTss > sizeof(VBOXTSS))
-            cbTss = sizeof(VBOXTSS);
-        AssertMsg((GCPtrTss >> PAGE_SHIFT) == ((GCPtrTss + cbTss - 1) >> PAGE_SHIFT),
+        /* The guest's TSS can span multiple pages now. We will monitor the whole thing. */
+        AssertMsg((GCPtrTss >> PAGE_SHIFT) == ((GCPtrTss + sizeof(VBOXTSS) - 1) >> PAGE_SHIFT),
                   ("GCPtrTss=%VGv cbTss=%#x - We assume everything is inside one page!\n", GCPtrTss, cbTss));
 
         // All system GDTs are marked not present above. That explains why this check fails.
