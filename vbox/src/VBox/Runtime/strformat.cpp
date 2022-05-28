@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 4336 2007-08-24 09:51:03Z vboxsync $ */
+/* $Id: strformat.cpp 4371 2007-08-24 20:56:59Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - String Formatter.
  */
@@ -156,6 +156,7 @@ static int rtStrFormatNumber(char *psz, KSIZE64 ullValue, unsigned int uiBase, s
     /*
      * Validate and addjust input...
      */
+/** @todo r=bird: Dmitry, who is calling this code with uiBase == 0? */
     if (uiBase == 0)
         uiBase = 10;
     kASSERT((uiBase >= 2 || uiBase <= 16));
