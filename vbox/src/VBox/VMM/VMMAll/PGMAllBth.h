@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 1090 2007-02-28 08:44:17Z vboxsync $ */
+/* $Id: PGMAllBth.h 1158 2007-03-02 14:27:34Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -550,7 +550,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
 #  endif /* LOG_ENABLED */
 
 #  ifdef IN_RING0
-                Assert((pRegFrame->ss & X86_SEL_RPL) == 0 || (pRegFrame->ss & X86_SEL_RPL) == 3);
+                Assert((pRegFrame->ss & X86_SEL_RPL) == 0 || (pRegFrame->ss & X86_SEL_RPL) == 3 || pRegFrame->eflags.Bits.u1VM);
 #  else
                 Assert((pRegFrame->ss & X86_SEL_RPL) == 1 || (pRegFrame->ss & X86_SEL_RPL) == 3 || pRegFrame->eflags.Bits.u1VM);
                 if (CSAMIsEnabled(pVM) && (pRegFrame->ss & X86_SEL_RPL) == 1)
