@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2483 2007-05-04 02:09:39Z vboxsync $
+# $Id: Makefile.kmk 2969 2007-06-01 07:33:53Z vboxsync $
 ## @file
 # Makefile for XPCOM.
 #
@@ -1203,7 +1203,8 @@ OTHER_CLEAN += \
 	$(PATH_VBox-xpcom-string)/idl_ts \
 	$(addprefix $(VBOX_PATH_SDK)/include/,$(notdir $(subst .idl,.h,$(IDLFILES)))) \
 	$(addprefix $(VBOX_PATH_SDK)/include/,$(notdir $(subst .idl,.xpt,$(IDLFILES)))) \
-	$(addprefix $(VBOX_PATH_SDK)/idl/,$(notdir $(IDLFILES)))
+	$(addprefix $(VBOX_PATH_SDK)/idl/,$(notdir $(IDLFILES))) \
+	$(addprefix $(PATH_TARGET)/,$(notdir $(subst .idl,.xpt,$(IDLFILES))))
 
 
 # generate rules

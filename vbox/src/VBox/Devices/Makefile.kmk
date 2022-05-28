@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2960 2007-05-31 11:26:17Z vboxsync $
+# $Id: Makefile.kmk 2969 2007-06-01 07:33:53Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -30,6 +30,7 @@ include $(PATH_SUB_CURRENT)/Storage/testcase/Makefile.kmk
 
 # Subdirs with complex makefiles.
 SUBDIRS_LIBRARIES = PC/Etherboot-src
+SUBDIRS_CLEAN     = PC/Etherboot-src
 
 #
 # Main targets.
