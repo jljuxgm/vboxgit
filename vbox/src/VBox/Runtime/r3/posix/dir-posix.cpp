@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: dir-posix.cpp 5346 2007-10-17 10:09:18Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Directory manipulation, POSIX.
  */
@@ -74,7 +74,14 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode)
         if (RT_SUCCESS(rc))
         {
             if (mkdir(pszNativePath, fMode & RTFS_UNIX_MASK))
-                rc = RTErrConvertFromErrno(errno);
+            {
+#ifdef RT_OS_SOLARIS
+                if (errno == ENOSYS) /* ENOSYS has a slight different meaning (mkdir on nfs mount point). */
+                    rc = VERR_ALREADY_EXISTS;
+                else
+#endif
+                    rc = RTErrConvertFromErrno(errno);
+            }
         }
 
         rtPathFreeNative(pszNativePath);
