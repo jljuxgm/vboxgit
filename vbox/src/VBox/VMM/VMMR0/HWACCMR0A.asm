@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 2743 2007-05-21 15:18:27Z vboxsync $
+; $Id: HWACCMR0A.asm 2745 2007-05-21 15:21:43Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -266,7 +266,7 @@ ALIGNCODE(16)
     pop     xAX         ; saved LDTR
     lldt    ax
 
-    add     xSP, 4      ; pCtx
+    add     xSP, xS      ; pCtx
 
     ; Restore segment registers
     MYPOPSEGS xAX, ax
