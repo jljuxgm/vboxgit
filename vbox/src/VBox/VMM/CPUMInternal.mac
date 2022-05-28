@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 5285 2007-10-13 23:55:58Z vboxsync $
+; $Id: CPUMInternal.mac 5287 2007-10-14 17:30:14Z vboxsync $
 ;; @file
 ; CPUM - Internal header file.
 ;
@@ -381,7 +381,7 @@ struc CPUM
     ; CPUID leafs
     .aGuestCpuIdStd       resb    16*5
     .aGuestCpuIdExt       resb    16*10
-    .aGuestCpuIdCentaur   resb    16*2
+    .aGuestCpuIdCentaur   resb    16*4
     .GuestCpuIdDef        resb    16
 
     ; debug stuff...
