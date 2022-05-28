@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 4085 2007-08-07 18:58:29Z vboxsync $ */
+/* $Id: VM.cpp 4086 2007-08-08 07:12:22Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -312,7 +312,7 @@ VMR3DECL(int)   VMR3Create(PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCON
         switch (rc)
         {
             case VERR_VM_DRIVER_LOAD_ERROR:
-#ifdef __LINUX
+#ifdef RT_OS_LINUX
                 pszError = N_("VirtualBox kernel driver not loaded. The vboxdrv kernel module "
 		              "was either not loaded or /dev/vboxdrv is not set up properly. "
 			      "Re-setup the kernel module by executing "
