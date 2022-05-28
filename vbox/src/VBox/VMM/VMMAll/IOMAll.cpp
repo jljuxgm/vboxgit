@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 1361 2007-03-09 10:48:31Z vboxsync $ */
+/* $Id: IOMAll.cpp 1634 2007-03-22 17:17:03Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -661,11 +661,13 @@ IOMDECL(int) IOMIOPortRead(PVM pVM, RTIOPORT Port, uint32_t *pu32Value, size_t c
  *   */
 IOMDECL(int) IOMIOPortReadString(PVM pVM, RTIOPORT Port, PRTGCPTR pGCPtrDst, PRTGCUINTREG pcTransfers, unsigned cb)
 {
+#ifdef LOG_ENABLED
+    const RTGCUINTREG cTransfers = *pcTransfers;
+#endif 
 #ifdef VBOX_WITH_STATISTICS
     /*
      * Get the statistics record.
      */
-    RTGCUINTREG     cTransfers = *pcTransfers;
     PIOMIOPORTSTATS pStats = CTXALLSUFF(pVM->iom.s.pStatsLastRead);
     if (!pStats || pStats->Core.Key != Port)
     {
@@ -896,11 +898,13 @@ IOMDECL(int) IOMIOPortWrite(PVM pVM, RTIOPORT Port, uint32_t u32Value, size_t cb
  *   */
 IOMDECL(int) IOMIOPortWriteString(PVM pVM, RTIOPORT Port, PRTGCPTR pGCPtrSrc, PRTGCUINTREG pcTransfers, unsigned cb)
 {
+#ifdef LOG_ENABLED
+    const RTGCUINTREG cTransfers = *pcTransfers;
+#endif 
 #ifdef VBOX_WITH_STATISTICS
     /*
      * Get the statistics record.
      */
-    const RTGCUINTREG   cTransfers = *pcTransfers;
     PIOMIOPORTSTATS     pStats = CTXALLSUFF(pVM->iom.s.pStatsLastWrite);
     if (!pStats || pStats->Core.Key != Port)
     {
