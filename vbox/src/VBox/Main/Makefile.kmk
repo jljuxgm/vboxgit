@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 2486 2007-05-04 02:42:46Z vboxsync $
+# $Id: Makefile.kmk 2587 2007-05-11 03:12:27Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -201,6 +201,7 @@ VBoxSVC_SOURCES += \
 endif
 
 ifdef VBOX_WITH_USB
+VBoxSVC_SOURCES.darwin += darwin/USBProxyServiceDarwin.cpp
 VBoxSVC_SOURCES.linux += linux/USBProxyServiceLinux.cpp
 VBoxSVC_SOURCES.win   += win32/USBProxyServiceWin32.cpp
 endif
