@@ -1,4 +1,4 @@
-/** $Id: VBoxService-os2.cpp 3655 2007-07-16 18:47:26Z vboxsync $ */
+/** $Id: VBoxService-os2.cpp 3725 2007-07-19 19:01:52Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -22,11 +22,11 @@
 /*******************************************************************************
 *   Global Variables                                                           *
 *******************************************************************************/
-#ifdef __OS2__
+#ifdef RT_OS_OS2
 # define INCL_BASE
 # define INCL_ERRORS
 # include <os2.h>
-#endif 
+#endif
 #include <errno.h>
 
 #include <iprt/string.h>
