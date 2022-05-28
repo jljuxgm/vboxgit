@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 5149 2007-10-03 18:56:39Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 5152 2007-10-04 07:58:24Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -89,7 +89,7 @@ typedef struct DRVHOSTSERIAL
     RTFILE                      WakeupPipeR;
     /** The write end of the control pipe */
     RTFILE                      WakeupPipeW;
-#elif RT_OS_WINDOWS
+#elif defined(RT_OS_WINDOWS)
     /** the device handle */
     HANDLE                      hDeviceFile;
     /** The event semaphore for waking up the receive thread */
