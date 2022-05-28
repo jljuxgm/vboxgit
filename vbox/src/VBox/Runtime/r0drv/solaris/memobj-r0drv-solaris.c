@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 5125 2007-10-01 14:10:26Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 5305 2007-10-15 21:12:39Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, Solaris.
  */
@@ -516,7 +516,7 @@ int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, PRTR0MEMOBJINTERNAL pMem
 }
 
 
-RTHCPHYS rtR0MemObjNativeGetPagePhysAddr(PRTR0MEMOBJINTERNAL pMem, unsigned iPage)
+RTHCPHYS rtR0MemObjNativeGetPagePhysAddr(PRTR0MEMOBJINTERNAL pMem, size_t iPage)
 {
     PRTR0MEMOBJSOLARIS pMemSolaris = (PRTR0MEMOBJSOLARIS)pMem;
 
