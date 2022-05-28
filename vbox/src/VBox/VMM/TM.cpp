@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 3272 2007-06-25 11:42:00Z vboxsync $ */
+/* $Id: TM.cpp 3393 2007-07-03 15:36:47Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -568,7 +568,7 @@ static uint64_t tmR3CalibrateTSC(void)
      * Use GIP when available present.
      */
     uint64_t    u64Hz;
-    PCSUPGLOBALINFOPAGE pGip = g_pSUPGlobalInfoPage;
+    PSUPGLOBALINFOPAGE pGip = g_pSUPGlobalInfoPage;
     if (    pGip
         &&  pGip->u32Magic == SUPGLOBALINFOPAGE_MAGIC)
     {

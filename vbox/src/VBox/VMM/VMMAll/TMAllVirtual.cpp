@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 3393 2007-07-03 15:36:47Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -68,7 +68,7 @@ static uint64_t tmVirtualGetRawNanoTS(PVM pVM)
     for (;;)
     {
         uint32_t u32TransactionId;
-        PCSUPGLOBALINFOPAGE pGip = g_pSUPGlobalInfoPage;
+        PSUPGLOBALINFOPAGE pGip = g_pSUPGlobalInfoPage;
 #ifdef IN_RING3
         if (RT_UNLIKELY(!pGip || pGip->u32Magic != SUPGLOBALINFOPAGE_MAGIC))
             return RTTimeSystemNanoTS();
@@ -93,7 +93,7 @@ static uint64_t tmVirtualGetRawNanoTS(PVM pVM)
         else
         {
             /* SUPGIPMODE_ASYNC_TSC */
-            PCSUPGIPCPU pGipCpu;
+            PSUPGIPCPU pGipCpu;
 
             uint8_t u8ApicId = ASMGetApicId();
             if (RT_LIKELY(u8ApicId < RT_ELEMENTS(pGip->aCPUs)))
