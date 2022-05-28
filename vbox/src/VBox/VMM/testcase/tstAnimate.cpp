@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 4372 2007-08-24 21:21:51Z vboxsync $ */
+/* $Id: tstAnimate.cpp 4502 2007-09-04 05:51:32Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -417,7 +417,9 @@ static DECLCALLBACK(int) cfgmR3CreateDefault(PVM pVM, void *pvUser)
     UPDATERC();
     rc = CFGMR3InsertString(pCfg,   "FloppyDevice",         "i82078");
     rc = CFGMR3InsertInteger(pCfg,  "IOAPIC", fIOAPIC);                         UPDATERC();
-    UPDATERC();
+    RTUUID Uuid;
+    RTUuidClear(&Uuid);
+    rc = CFGMR3InsertBytes(pCfg,    "UUID", &Uuid, sizeof(Uuid));               UPDATE_RC();
     /* Bios logo. */
     rc = CFGMR3InsertInteger(pCfg,  "FadeIn",               0);
     UPDATERC();
