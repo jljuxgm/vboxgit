@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 4789 2007-09-14 11:10:35Z vboxsync $ */
+/* $Id: VMM.cpp 4799 2007-09-14 14:53:37Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2181,7 +2181,6 @@ static int vmmR3ServiceCallHostRequest(PVM pVM)
             pVM->vmm.s.rcCallHost = PGMR3PhysAllocateHandyPages(pVM);
             break;
         }
-
 #ifndef NEW_PHYS_CODE
 
         case VMMCALLHOST_PGM_RAM_GROW_RANGE:
