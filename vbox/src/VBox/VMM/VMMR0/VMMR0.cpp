@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: VMMR0.cpp 4079 2007-08-07 17:23:40Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -173,12 +173,14 @@ static int VMMR0Init(PVM pVM, unsigned uVersion)
     /*
      * Init VMXM.
      */
-    HWACCMR0Init(pVM);
+    int rc = HWACCMR0Init(pVM);
+    if (VBOX_FAILURE(rc))
+        return rc;
 
     /*
      * Init CPUM.
      */
-    int rc = CPUMR0Init(pVM);
+    rc = CPUMR0Init(pVM);
 
     if (RT_FAILURE(rc))
         RTLogSetDefaultInstanceThread(NULL, 0);
