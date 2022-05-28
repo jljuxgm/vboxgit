@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 3172 2007-06-20 09:14:10Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 3184 2007-06-20 13:40:16Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1726,7 +1726,7 @@ ResumeExecution:
                 }
             }
         }
-        /* 
+        /*
          * Handled the I/O return codes.
          * (The unhandled cases end up with rc == VINF_EM_RESCHEDULE_REM.)
          */
@@ -1747,11 +1747,8 @@ ResumeExecution:
         else if (rc == VINF_IOM_HC_IOPORT_WRITE)
             Assert(fIOWrite);
         else
-            AssertMsg(VBOX_FAILURE(rc) || rc == VINF_EM_RAW_GUEST_TRAP || rc == VINF_TRPM_XCPT_DISPATCHED || rc == VINF_EM_RESCHEDULE_REM, ("%Vrc\n", rc));
+            AssertMsg(VBOX_FAILURE(rc) || rc == VINF_EM_RAW_EMULATE_INSTR || rc == VINF_EM_RAW_GUEST_TRAP || rc == VINF_TRPM_XCPT_DISPATCHED || rc == VINF_EM_RESCHEDULE_REM, ("%Vrc\n", rc));
 #endif
-        /* Force instruction emulation and not a reschedule to the recompiler as that will come right back to us */
-        if (rc == VINF_EM_RESCHEDULE_REM)
-            rc = VINF_IOM_HC_IOPORT_WRITE;
         break;
     }
 
