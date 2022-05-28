@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 1580 2007-03-20 20:08:01Z vboxsync $ */
+/* $Id: SELM.cpp 1645 2007-03-22 18:13:16Z vboxsync $ */
 /** @file
  * SELM - The Selector manager.
  */
@@ -219,7 +219,7 @@ SELMR3DECL(int) SELMR3InitFinalize(PVM pVM)
      */
     bool f;
     int rc = CFGMR3QueryBool(CFGMR3GetRoot(pVM), "DoubleFault", &f);
-#if !defined(DEBUG_bird) && !defined(__AMD64__) /** @todo Remember to remove __AMD64__ here! */
+#if !defined(DEBUG_bird)
     if (VBOX_SUCCESS(rc) && f)
 #endif
     {

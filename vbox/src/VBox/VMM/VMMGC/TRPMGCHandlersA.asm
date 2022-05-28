@@ -1,4 +1,4 @@
-; $Id: TRPMGCHandlersA.asm 1132 2007-03-01 13:18:43Z vboxsync $
+; $Id: TRPMGCHandlersA.asm 1645 2007-03-22 18:13:16Z vboxsync $
 ;; @file
 ; TRPM - Guest Context Trap Handlers
 ;
@@ -884,13 +884,6 @@ gi_HyperVisor:
     mov     ecx, esp
     mov     edx, IMP(g_VM)
     mov     eax, VINF_EM_RAW_INTERRUPT_HYPER
-%if HC_ARCH_BITS == 64 ; bird debugging tripple-fault/reboot on AMD64, should be removed later!
-    test    dword [esp + CPUMCTXCORE.eflags], X86_EFL_IF
-    jnz     .if_set
-    mov     eax, 0c0caff00h
-    mov     al, [esp + 0h + ESPOFF]
-.if_set:
-%endif
     call    [edx + VM.pfnVMMGCGuestToHostAsm]
 %ifdef DEBUG_STUFF_INT
     COM_CHAR '!'
