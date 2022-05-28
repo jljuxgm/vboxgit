@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 1929 2007-04-04 13:17:07Z vboxsync $ */
+/* $Id: PGMAllShw.h 1930 2007-04-04 13:18:48Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -307,7 +307,7 @@ PGM_SHW_DECL(int, ModifyPage)(PVM pVM, RTGCUINTPTR GCPtr, size_t cb, uint64_t fF
             if (pPT->a[iPTE].n.u1Present)
             {
                 pPT->a[iPTE].u = (pPT->a[iPTE].u & (fMask | SHW_PTE_PG_MASK)) | (fFlags & ~SHW_PTE_PG_MASK);
-////                Assert(pPT->a[iPTE].n.u1Present);
+                Assert(pPT->a[iPTE].n.u1Present);
                 PGM_INVL_PG(GCPtr);
             }
 
