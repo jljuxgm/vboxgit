@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5462 2007-10-24 02:20:48Z vboxsync $
+# $Id: Makefile.kmk 5464 2007-10-24 03:21:06Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -208,11 +208,11 @@ RuntimeR3_SOURCES       = \
 	r3/stream.cpp \
 	r3/tcp.cpp
 
-if1of ($(BUILD_TARGET_ARCH),amd64 x86)
- RuntimeR3_SOURCES += common/time/timesupA.asm
-else
+#if1of ($(BUILD_TARGET_ARCH),amd64 x86)
+# RuntimeR3_SOURCES += common/time/timesupA.asm
+#else
  RuntimeR3_SOURCES += common/time/timesupref.cpp
-endif
+#endif
 
 ifdef IPRT_WITH_KLDR
  RuntimeR3_SOURCES += \
