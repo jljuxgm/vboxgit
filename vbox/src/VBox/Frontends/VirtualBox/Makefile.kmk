@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 3945 2007-07-31 17:41:28Z vboxsync $
+# $Id: Makefile.kmk 3946 2007-07-31 17:51:07Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -47,7 +47,6 @@ INSTALLS = VirtualBox.nls
 VBoxKeyboard_TEMPLATE = VBOXR3
 VBoxKeyboard_SOURCES  = \
 	src/linux/keyboard.c
-VBoxKeyboard_CFLAGS   = -fPIC
 
 VirtualBox_TEMPLATE = VBOXQTGUIEXE
 VirtualBox_SDKS.win = WINPSDK DXSDK
