@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 4937 2007-09-21 07:23:47Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 4939 2007-09-21 07:24:57Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Windows NT specific parts.
  */
@@ -608,7 +608,7 @@ static void _stdcall VBoxDrvNtGipTimer(IN PKDPC pDpc, IN PVOID pvUser, IN PVOID 
              * affinity mask and the process despite the warnings in the docs.
              * If someone knows a better way to get this done, please let bird know.
              */
-            /** @todo our IRQL is too high for at KeQueryActiveProcessors!! */
+            /** @todo our IRQL is too high for KeQueryActiveProcessors!! */
             unsigned iSelf = KeGetCurrentProcessorNumber();
             KAFFINITY Mask = KeQueryActiveProcessors();
 
