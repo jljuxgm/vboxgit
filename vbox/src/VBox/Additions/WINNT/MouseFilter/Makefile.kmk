@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11635 2008-08-25 20:48:35Z vboxsync $
+# $Id: Makefile.kmk 11678 2008-08-26 17:12:58Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Windows Guest mouse filter driver.
 #
@@ -38,7 +38,6 @@ VBoxMouse_LDFLAGS.amd64 = -Entry:DriverEntry
 VBoxMouse_SOURCES     = VBoxMouse.cpp \
                         VBoxMouse.rc
 VBoxMouse_LIBS        = \
-	$(PATH_SDK_W2K3DDK_LIB)/win32k.lib \
 	$(PATH_SDK_W2K3DDK_LIB)/ntoskrnl.lib \
 	$(PATH_SDK_W2K3DDK_LIB)/hal.lib \
 	$(VBOX_LIB_IPRT_GUEST_R0) \
