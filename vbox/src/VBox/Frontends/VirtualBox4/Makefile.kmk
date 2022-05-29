@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10580 2008-07-14 00:51:54Z vboxsync $
+# $Id: Makefile.kmk 10582 2008-07-14 01:03:51Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -689,7 +689,7 @@ endif
 ifdef USE_KBUILD_QT_UNIT
  ## @todo Move to the appropriate places.
 
-ifndef USE_KBUILD_QT_UNIT_PART_2
+ifdef USE_KBUILD_QT_UNIT_PART_2
  # The Qt modules we're using.
  # (The include directory and lib/framework for each module will be added by the Qt4 unit.)
  VirtualBox4_QT_MODULES = Core Gui
