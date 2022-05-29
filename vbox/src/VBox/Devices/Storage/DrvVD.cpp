@@ -1,4 +1,4 @@
-/** $Id: DrvVD.cpp 10715 2008-07-16 22:38:23Z vboxsync $ */
+/** $Id: DrvVD.cpp 10743 2008-07-18 11:32:04Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -756,8 +756,12 @@ static DECLCALLBACK(void) drvvdDestruct(PPDMDRVINS pDrvIns)
     int rc;
     PVBOXDISK pData = PDMINS2DATA(pDrvIns, PVBOXDISK);
     LogFlow(("%s:\n", __FUNCTION__));
-    rc = RTCacheDestroy(pData->pCache);
-    AssertRC(rc);
+
+    if (pData->pCache)
+    {
+        rc = RTCacheDestroy(pData->pCache);
+        AssertRC(rc);
+    }
 }
 
 
