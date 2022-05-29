@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 8876 2008-05-16 09:59:07Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 8878 2008-05-16 10:59:52Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -704,6 +704,7 @@ HWACCMR0DECL(int) HWACCMR0Enter(PVM pVM)
 {
     CPUMCTX *pCtx;
     int      rc;
+    RTCPUID  idCpu = RTMpCpuId();
 
     rc = CPUMQueryGuestCtxPtr(pVM, &pCtx);
     if (VBOX_FAILURE(rc))
@@ -729,7 +730,7 @@ HWACCMR0DECL(int) HWACCMR0Enter(PVM pVM)
     else
     {
         Assert(pVM->hwaccm.s.svm.fSupported);
-        rc  = SVMR0Enter(pVM);
+        rc  = SVMR0Enter(pVM, &HWACCMR0Globals.aCpuInfo[idCpu]);
         AssertRC(rc);
         rc |= SVMR0LoadGuestState(pVM, pCtx);
         AssertRC(rc);

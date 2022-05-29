@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 8876 2008-05-16 09:59:07Z vboxsync $ */
+/* $Id: HWSVMR0.h 8878 2008-05-16 10:59:52Z vboxsync $ */
 /** @file
  * HWACCM AMD-V - Internal header file.
  */
@@ -46,8 +46,9 @@ __BEGIN_DECLS
  *
  * @returns VBox status code.
  * @param   pVM         The VM to operate on.
+ * @param   pCpu        CPU info struct
  */
-HWACCMR0DECL(int) SVMR0Enter(PVM pVM);
+HWACCMR0DECL(int) SVMR0Enter(PVM pVM, PHWACCM_CPUINFO pCpu);
 
 /**
  * Leaves the AMD-V session
