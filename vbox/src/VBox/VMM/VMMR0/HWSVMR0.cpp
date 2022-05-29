@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10014 2008-06-30 12:02:49Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10015 2008-06-30 12:10:59Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1067,6 +1067,8 @@ ResumeExecution:
     pCtx->eflags.u32 = pVMCB->guest.u64RFlags;
     /* eax is saved/restore across the vmrun instruction */
     pCtx->rax        = pVMCB->guest.u64RAX;
+
+    pCtx->msrKERNELGSBASE = pVMCB->guest.u64KernelGSBase;    /* swapgs exchange value */
 
     /* Guest CPU context: ES, CS, SS, DS, FS, GS. */
     SVM_READ_SELREG(SS, ss);
