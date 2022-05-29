@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 7964 2008-04-14 17:56:52Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 7968 2008-04-15 07:49:01Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -653,7 +653,7 @@ HRESULT USBController::saveSettings (settings::Key &aMachineNode)
     controller = aMachineNode.createKey ("USBController");
 #else
     /* don't zap it. */
-    if (!controller.isNull())
+    if (controller.isNull())
         controller = aMachineNode.createKey ("USBController");
 #endif
 
