@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 10087 2008-07-02 09:27:32Z vboxsync $ */
+/* $Id: SELMAll.cpp 10171 2008-07-03 19:29:37Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -284,7 +284,9 @@ SELMDECL(int) SELMToFlatEx(PVM pVM, DIS_SELREG SelReg, PCCPUMCTXCORE pCtxCore, R
             }
         }
     }
+# ifndef IN_RING0
     else
+# endif
 #endif /* !IN_GC */
 #ifndef IN_RING0
     {
