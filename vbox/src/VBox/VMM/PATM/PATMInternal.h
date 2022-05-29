@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 10141 2008-07-03 08:58:33Z vboxsync $ */
+/* $Id: PATMInternal.h 11068 2008-08-01 16:59:35Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -726,7 +726,7 @@ __BEGIN_DECLS
  * @param   offRange    The offset of the access into this range.
  *                      (If it's a EIP range this's the EIP, if not it's pvFault.)
  */
-PATMGCDECL(int) PATMGCMonitorPage(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, void *pvFault, void *pvRange, uintptr_t offRange);
+PATMGCDECL(int) PATMGCMonitorPage(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange)
 
 /**
  * Find patch for privileged instruction at specified location
