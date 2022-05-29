@@ -1,4 +1,4 @@
-/* $Id: Builtins2.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: Builtins2.h 9693 2008-06-13 16:30:46Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 2) header.
  */
@@ -33,6 +33,8 @@ extern DECLEXPORT(const unsigned char)  g_abVgaBiosBinary[];
 extern DECLEXPORT(const unsigned)       g_cbVgaBiosBinary;
 extern DECLEXPORT(const unsigned char)  g_abNetBiosBinary[];
 extern DECLEXPORT(const unsigned)       g_cbNetBiosBinary;
+extern DECLEXPORT(const unsigned char)  g_abVmiBiosBinary[];
+extern DECLEXPORT(const unsigned)       g_cbVmiBiosBinary;
 #else
 extern DECLIMPORT(const unsigned char)  g_abPcBiosBinary[];
 extern DECLIMPORT(const unsigned)       g_cbPcBiosBinary;
@@ -40,6 +42,8 @@ extern DECLIMPORT(const unsigned char)  g_abVgaBiosBinary[];
 extern DECLIMPORT(const unsigned)       g_cbVgaBiosBinary;
 extern DECLIMPORT(const unsigned char)  g_abNetBiosBinary[];
 extern DECLIMPORT(const unsigned)       g_cbNetBiosBinary;
+extern DECLIMPORT(const unsigned char)  g_abVmiBiosBinary[];
+extern DECLIMPORT(const unsigned)       g_cbVmiBiosBinary;
 #endif
 extern const PDMDEVREG g_DeviceAPIC;
 extern const PDMDEVREG g_DeviceIOAPIC;
