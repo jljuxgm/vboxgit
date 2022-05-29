@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10046 2008-07-01 00:23:31Z vboxsync $
+# $Id: Makefile.kmk 10200 2008-07-04 04:44:31Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -25,15 +25,6 @@ else
 DEPTH     = ../../..
 endif
 include	$(KBUILD_PATH)/subheader.kmk
-
-## @todo get rid of these.
-# Enable the PDM lock.
-ifdef VBOX_WITH_PDM_LOCK
-DEFS += VBOX_WITH_PDM_LOCK
-endif
-ifdef VBOX_WITH_INTERNAL_NETWORKING
-DEFS += VBOX_WITH_INTERNAL_NETWORKING
-endif
 
 # Include sub-makefiles.
 include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
