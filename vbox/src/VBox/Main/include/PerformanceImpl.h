@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 10959 2008-07-29 21:13:02Z vboxsync $ */
+/* $Id: PerformanceImpl.h 11321 2008-08-11 10:12:28Z vboxsync $ */
 
 /** @file
  *
@@ -29,7 +29,6 @@
 #include <VBox/com/com.h>
 #include <VBox/com/array.h>
 //#ifdef VBOX_WITH_RESOURCE_USAGE_API
-//#include <iprt/system.h>
 #include <iprt/timer.h>
 //#endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
