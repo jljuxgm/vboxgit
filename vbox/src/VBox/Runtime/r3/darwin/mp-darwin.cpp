@@ -1,4 +1,4 @@
-/* $Id: mp-darwin.cpp 10616 2008-07-14 21:29:36Z vboxsync $ */
+/* $Id: mp-darwin.cpp 11708 2008-08-27 15:01:37Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Darwin.
  */
@@ -170,7 +170,7 @@ RTDECL(uint32_t) RTMpGetMaxFrequency(RTCPUID idCpu)
     size_t cb = sizeof(CpuFrequencyMax);
     int rc = sysctlbyname("hw.cpufrequency_max", &CpuFrequencyMax, &cb, NULL, 0);
     if (!rc)
-        return CpuFrequencyMax + 999999 / 1000000;
+        return (CpuFrequencyMax + 999999) / 1000000;
 
     /*
      * Use the depricated one.
