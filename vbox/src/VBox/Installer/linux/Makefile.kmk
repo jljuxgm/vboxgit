@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6512 2008-01-25 11:34:26Z vboxsync $
+# $Id: Makefile.kmk 6637 2008-01-30 22:03:50Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -143,7 +143,9 @@ ifdef VBOX_WITH_VRDP
 	VBoxVRDP
 
  LINUXNOSTRIP += \
-	rdesktop-vrdp.tar.gz
+	rdesktop-vrdp.tar.gz \
+	rdesktop-vrdp-keymaps \
+	rdesktop-vrdp
 endif
 ifdef VBOX_WITH_HEADLESS
  LINUXSTRIPBIN += \
