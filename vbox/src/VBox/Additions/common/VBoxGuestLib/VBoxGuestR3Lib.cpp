@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3Lib.cpp 6235 2008-01-03 17:41:38Z vboxsync $ */
+/** $Id: VBoxGuestR3Lib.cpp 6236 2008-01-03 18:48:16Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions.
  */
@@ -251,7 +251,7 @@ VBGLR3DECL(int) VbglR3WriteLog(const char *pch, size_t cb)
     for (size_t off = 0; off < cb && RT_SUCCESS(rc); off += STEP)
     {
         size_t cbStep = RT_MIN(cb - off, STEP);
-        rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_LOG(cbStep), pch + off, cbStep);
+        rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_LOG(cbStep), (char *)pch + off, cbStep);
     }
 #undef STEP
     return rc;
