@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 10843 2008-07-23 21:49:52Z vboxsync $ */
+/* $Id: VMMR0.cpp 10844 2008-07-23 21:51:07Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1037,6 +1037,7 @@ VMMR0DECL(int) VMMR0EntryEx(PVM pVM, VMMR0OPERATION enmOperation, PSUPVMMR0REQHD
                 Args.enmOperation = enmOperation;
                 Args.pReq = pReq;
                 Args.u64Arg = u64Arg;
+                Args.pSession = pSession;
                 return vmmR0CallHostSetJmpEx(&pVM->vmm.s.CallHostR0JmpBuf, vmmR0EntryExWrapper, &Args);
             }
 
