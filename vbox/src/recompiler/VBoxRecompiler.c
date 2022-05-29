@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 7635 2008-03-28 17:15:38Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 7649 2008-03-31 11:31:25Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -3262,6 +3262,8 @@ bool remR3DisasBlock(CPUState *env, int f32BitCode, int nrInstructions, char *ps
     void      *pvPC;
     if (f32BitCode && (env->cr[0] & (X86_CR0_PE | X86_CR0_PG)) == (X86_CR0_PE | X86_CR0_PG))
     {
+        Assert(PGMGetGuestMode(env->pVM) < PGMMODE_AMD64);
+
         /* convert eip to physical address. */
         int rc = PGMPhysGCPtr2HCPtrByGstCR3(env->pVM,
                                             GCPtrPC,
