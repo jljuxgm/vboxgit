@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 9690 2008-06-13 15:51:14Z vboxsync $ */
+/* $Id: PGMAll.cpp 9752 2008-06-17 10:14:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -778,7 +778,8 @@ PGMDECL(int) PGMShwSyncLongModePDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PX86PML4E pGs
         AssertRCReturn(rc, rc);
 
         Assert(!(pPdpe->u & X86_PDPE_PG_MASK));
-        rc = pgmPoolAlloc(pVM, pPdptGst->a[iPdPt].u & X86_PDPE_PG_MASK, PGMPOOLKIND_64BIT_PD_FOR_64BIT_PD, PGMPOOL_IDX_PDPT, iPml4e * X86_PG_PAE_ENTRIES + iPdPt, &pShwPage);
+        /* Create a reference back to the PML4E by using the index in its shadow page. */
+        rc = pgmPoolAlloc(pVM, pPdptGst->a[iPdPt].u & X86_PDPE_PG_MASK, PGMPOOLKIND_64BIT_PD_FOR_64BIT_PD, pShwPage->idx, iPdPt, &pShwPage);
         if (rc == VERR_PGM_POOL_FLUSHED)
             return VINF_PGM_SYNC_CR3;
 
@@ -824,7 +825,7 @@ PGMDECL(int) PGMShwGetLongModePDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PX86PDPT *ppPd
     AssertReturn(pShwPage, VERR_INTERNAL_ERROR);
 
     const unsigned iPdPt = (GCPtr >> X86_PDPT_SHIFT) & X86_PDPT_MASK_AMD64;
-    PX86PDPT  pPdpt = (PX86PDPT)PGMPOOL_PAGE_2_PTR(pVM, pShwPage);    
+    PX86PDPT  pPdpt = (PX86PDPT)PGMPOOL_PAGE_2_PTR(pVM, pShwPage);
     PX86PDPE  pPdpe = &pPdpt->a[iPdPt];
 
     *ppPdpt = pPdpt;
