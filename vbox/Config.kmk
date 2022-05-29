@@ -1,4 +1,4 @@
-# $Id: Config.kmk 8059 2008-04-16 18:41:45Z vboxsync $
+# $Id: Config.kmk 8175 2008-04-18 19:27:57Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -8,7 +8,7 @@
 #
 
 #
-# Copyright (C) 2006-2007 innotek GmbH
+# Copyright (C) 2006-2007 Sun Microsystems, Inc.
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -2914,7 +2914,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 8059 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 8175 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
