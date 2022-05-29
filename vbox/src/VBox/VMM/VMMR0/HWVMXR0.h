@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 9457 2008-06-06 09:46:39Z vboxsync $ */
+/* $Id: HWVMXR0.h 9535 2008-06-09 11:49:52Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -159,6 +159,16 @@ HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx, PHWACCM_CPUINFO pCpu
         pCtx->reg##Hid.u64Base     = val;                            \
         VMXReadVMCS(VMX_VMCS_GUEST_##REG##_ACCESS_RIGHTS, &val);     \
         pCtx->reg##Hid.Attr.u    = val;
+
+#define VMX_LOG_SELREG(REG, szSelReg) \
+        VMXReadVMCS(VMX_VMCS_GUEST_FIELD_##REG,           &val);     \
+        Log(("%s Selector     %x\n", szSelReg, val));                \
+        VMXReadVMCS(VMX_VMCS_GUEST_##REG##_LIMIT,         &val);     \
+        Log(("%s Limit        %x\n", szSelReg, val));                \
+        VMXReadVMCS(VMX_VMCS_GUEST_##REG##_BASE,          &val);     \
+        Log(("%s Base         %RX64\n", szSelReg, val));             \
+        VMXReadVMCS(VMX_VMCS_GUEST_##REG##_ACCESS_RIGHTS, &val);     \
+        Log(("%s Attributes   %x\n", szSelReg, val));
 
 
 
