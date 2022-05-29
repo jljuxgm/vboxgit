@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 9236 2008-05-29 21:41:45Z vboxsync $ */
+/* $Id: the-linux-kernel.h 9238 2008-05-29 22:08:47Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -82,6 +82,7 @@
 #endif
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 16)
 # include <linux/ktime.h>
+# include <linux/hrtimer.h>
 #endif
 #include <linux/wait.h>
 /* For the basic additions module */
