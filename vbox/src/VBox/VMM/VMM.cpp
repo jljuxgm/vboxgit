@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: VMM.cpp 6300 2008-01-09 16:41:22Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -323,7 +323,7 @@ static int vmmR3InitCoreCode(PVM pVM)
     }
     else
         VMSetError(pVM, rc, RT_SRC_POS,
-                   N_("Failed to allocate %d bytes of contiguous memory for the world switcher code."),
+                   N_("Failed to allocate %d bytes of contiguous memory for the world switcher code"),
                    cbCoreCode);
 
     pVM->vmm.s.pvHCCoreCodeR3 = NULL;

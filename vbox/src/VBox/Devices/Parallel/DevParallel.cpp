@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 6227 2007-12-31 11:48:35Z vboxsync $ */
+/* $Id: DevParallel.cpp 6300 2008-01-09 16:41:22Z vboxsync $ */
 /** @file
  * VirtualBox Parallel Device Emulation.
  *
@@ -813,7 +813,7 @@ static DECLCALLBACK(int) parallelConstruct(PPDMDEVINS pDevIns,
     {
         AssertMsgFailed(("Parallel%d: Failed to attach to host driver. rc=%Vrc\n", iInstance, rc));
         return PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS,
-                                   N_("Parallel device %d cannot attach to host driver\n"), iInstance);
+                                   N_("Parallel device %d cannot attach to host driver"), iInstance);
     }
 
     /* Set compatibility mode */
