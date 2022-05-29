@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10534 2008-07-11 15:21:53Z vboxsync $
+# $Id: Makefile.kmk 10544 2008-07-11 18:39:28Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -258,6 +258,12 @@ VBoxSVC_SOURCES.linux   +=   linux/USBProxyServiceLinux.cpp
 VBoxSVC_SOURCES.os2     +=     os2/USBProxyServiceOs2.cpp
 VBoxSVC_SOURCES.solaris += solaris/USBProxyServiceSolaris.cpp
 VBoxSVC_SOURCES.win     +=     win/USBProxyServiceWindows.cpp
+endif
+
+ifdef VBOX_WITH_RESOURCE_USAGE_API
+VBoxSVC_SOURCES  += \
+	PerformanceImpl.cpp \
+	Performance.cpp
 endif
 
 VBoxSVC_LDFLAGS.darwin  = -framework IOKit
