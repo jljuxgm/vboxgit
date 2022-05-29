@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: Makefile.kmk 8757 2008-05-11 18:19:50Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Addition Services.
 #
@@ -23,7 +23,7 @@ DEPTH ?= ../../../../..
 SUB_DEPTH = ../..
 include	$(PATH_KBUILD)/subheader.kmk
 
-ifeq ($(BUILD_PLATFORM),os2)
+ifeq ($(KBUILD_HOST),os2)
  ifdef VBOX_WITH_OS2_ADDITIONS
   PROGRAMS += VBoxService
  endif

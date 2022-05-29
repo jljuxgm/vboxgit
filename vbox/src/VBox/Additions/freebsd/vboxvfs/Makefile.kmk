@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: Makefile.kmk 8757 2008-05-11 18:19:50Z vboxsync $
 ## @file
 # Sub-Makefile for the FreeBSD Shared folder kernel module.
 #
@@ -23,7 +23,7 @@ DEPTH ?= ../../../../..
 SUB_DEPTH = ../..
 include	$(PATH_KBUILD)/subheader.kmk
 
-ifneq ($(BUILD_PLATFORM),freebsd)
+ifneq ($(KBUILD_HOST),freebsd)
 $(error "The FreeBSD guest additions can only be built on FreeBSD!")
 endif
 

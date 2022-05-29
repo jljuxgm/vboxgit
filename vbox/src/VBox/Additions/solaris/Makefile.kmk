@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8407 2008-04-28 07:00:59Z vboxsync $
+# $Id: Makefile.kmk 8757 2008-05-11 18:19:50Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -23,11 +23,11 @@ DEPTH ?= ../../../..
 SUB_DEPTH = ..
 include	$(PATH_KBUILD)/subheader.kmk
 
-ifneq ($(BUILD_PLATFORM),solaris)
+ifneq ($(KBUILD_HOST),solaris)
 $(error "The Solaris guest additions installer can only be built on Solaris!")
 endif
 
-ifeq ($(BUILD_PLATFORM),solaris)
+ifeq ($(KBUILD_HOST),solaris)
  include $(PATH_SUB_CURRENT)/SharedFolders/Makefile.kmk
 endif
 
