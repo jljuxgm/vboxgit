@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7309 2008-03-05 17:47:51Z vboxsync $
+# $Id: Makefile.kmk 7442 2008-03-13 14:33:18Z vboxsync $
 
 ## @file
 # Makefile for the VBox Main module.
@@ -137,6 +137,9 @@ endif
 ifdef VBOX_WITH_E1000
 VBoxSVC_DEFS += VBOX_WITH_E1000
 endif
+ifdef VBOX_WITH_AHCI
+VBoxSVC_DEFS += VBOX_WITH_AHCI
+endif
 ifdef VBOX_WITHOUT_LINUX_COMPILER_H
 VBoxSVC_DEFS += VBOX_WITHOUT_LINUX_COMPILER_H
 endif
@@ -194,6 +197,7 @@ VBoxSVC_SOURCES = \
 	SerialPortImpl.cpp \
 	ParallelPortImpl.cpp \
 	USBControllerImpl.cpp \
+	SATAControllerImpl.cpp \
 	AudioAdapterImpl.cpp \
 	SharedFolderImpl.cpp \
 	SystemPropertiesImpl.cpp \
