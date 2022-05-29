@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 6652 2008-01-31 11:49:09Z vboxsync $ */
+/* $Id: DevPCNet.cpp 6833 2008-02-06 19:09:47Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -3771,7 +3771,7 @@ static DECLCALLBACK(void) pcnetInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, cons
     {
         const unsigned  cb = 1 << pData->iLog2DescSize;
         RTGCPHYS        GCPhys = pData->GCTDRA;
-        unsigned        i = CSR_RCVRL(pData);
+        unsigned        i = CSR_XMTRL(pData);
         while (i-- > 0)
         {
             TMD tmd;
