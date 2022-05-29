@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 11218 2008-08-07 18:01:18Z vboxsync $ */
+/* $Id: DevRTC.cpp 11244 2008-08-08 13:20:26Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -54,7 +54,7 @@
 #include <iprt/assert.h>
 #include <iprt/string.h>
 
-#include "Builtins.h"
+#include "../Builtins.h"
 
 struct RTCState;
 typedef struct RTCState RTCState;
