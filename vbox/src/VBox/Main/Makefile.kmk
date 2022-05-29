@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6752 2008-02-02 07:21:42Z vboxsync $
+# $Id: Makefile.kmk 6772 2008-02-03 22:01:11Z vboxsync $
 
 ## @file
 # Makefile for the VBox Main module.
@@ -83,14 +83,6 @@ else
     $(IDLHEADER) \
     $(IDLTYPELIB)
 
-endif
-
-# Include sub-makefile(s) last if we're not doing parallel building.
-ifeq ($(KMK_OPTS_JOBS),1)
- ifndef VBOX_OSE
-  include $(PATH_SUB_CURRENT)/webservice/Makefile.kmk
- endif
- include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 endif
 
 
@@ -533,7 +525,23 @@ xpcom-components_SYMLINKS = \
 	VBoxXPCOMIPCC$(SUFF_DLL)=>../VBoxXPCOMIPCC$(SUFF_DLL)
 endif
 
-# generate
+
+#
+# Include sub-makefile(s) last if we're not doing parallel building.
+#
+# We do this here so that the webservices ends up last in the target 
+# lists. For 100% correctness we must do this after all the main 
+# targets has been fully fleshed out as subheader/footer.kmk will
+# process new targets.
+#
+ifeq ($(KMK_OPTS_JOBS),1)
+ ifndef VBOX_OSE
+  include $(PATH_SUB_CURRENT)/webservice/Makefile.kmk
+ endif
+ include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
+endif
+
+# generate rules
 include $(PATH_KBUILD)/subfooter.kmk
 
 
