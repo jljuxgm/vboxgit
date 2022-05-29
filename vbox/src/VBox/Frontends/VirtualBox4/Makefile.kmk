@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9991 2008-06-27 11:58:47Z vboxsync $
+# $Id: Makefile.kmk 10022 2008-06-30 15:18:18Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -101,11 +101,7 @@ else
 	$(addprefix $(VBOX_PATH_QT4_INCLUDE)/, $(VBOX_MODULE_QT4) Qt) \
 	$(VBOX_PATH_QT4_INCLUDE)
  ifeq ($(KBUILD_TARGET),win)
-  ifeq ($(KBUILD_TARGET_ARCH),amd64)
-   $(error Port me!)
-  else
    VBOX_INCS_QT4    += $(VBOX_PATH_QT4_SHARE)/mkspecs/win32-msvc.net
-  endif
  else ifeq ($(KBUILD_TARGET),linux)
   VBOX_INCS_QT4     += $(VBOX_PATH_QT4_SHARE)/mkspecs/linux-g++
  endif
