@@ -1,4 +1,4 @@
-/* $Id: SATAControllerImpl.cpp 8605 2008-05-05 15:53:09Z vboxsync $ */
+/* $Id: SATAControllerImpl.cpp 8606 2008-05-05 16:02:31Z vboxsync $ */
 
 /** @file
  *
@@ -301,7 +301,7 @@ STDMETHODIMP SATAController::SetIDEEmulationPort(LONG DevicePosition, LONG aPort
     if ((aPortNumber < 0) || (aPortNumber >= 30))
         return setError (E_INVALIDARG,
             tr ("Invalid port number: %l (must be in range [%lu, %lu])"),
-                aPortCount, 0, 29);
+                aPortNumber, 0, 29);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
