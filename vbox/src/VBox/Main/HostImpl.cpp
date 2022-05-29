@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 8401 2008-04-26 03:48:59Z vboxsync $ */
+/* $Id: HostImpl.cpp 8431 2008-04-28 16:08:19Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -2217,7 +2217,7 @@ void Host::onUSBDeviceDetached (HostUSBDevice *aDevice)
 
     /* Detach the device from any machine currently using it,
        reset all data and uninitialize the device object. */
-    device->onDetachedPhys();
+    device->onPhysicalDetached();
 }
 
 /**
