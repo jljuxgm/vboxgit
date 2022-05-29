@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-posix.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: semeventmulti-posix.cpp 8706 2008-05-08 13:25:41Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, POSIX.
  */
@@ -367,6 +367,13 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
         /*
          * Get current time and calc end of wait time.
          */
+        /** @todo Something is braindead here. we're getting occational timeouts after no time has
+         * elapsed on linux 2.6.23. (ata code typically)
+         *
+         * The general problem here is that we're using the realtime clock, i.e. the wall clock
+         * that is subject to ntp updates and user alteration, so we will have to compenstate
+         * for this by using RTTimeMilliTS together with the clock_gettime()/gettimeofday() call.
+         * Joy, oh joy. */
         struct timespec     ts = {0,0};
 #ifdef RT_OS_DARWIN
         struct timeval      tv = {0,0};
