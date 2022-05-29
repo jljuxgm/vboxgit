@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 9570 2008-06-10 13:30:03Z vboxsync $ */
+/* $Id: PGMInternal.h 9596 2008-06-11 10:03:56Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1368,8 +1368,6 @@ typedef enum PGMPOOLKIND
 
     /** Shw: 64-bit page directory pointer table;   Gst: 64-bit page directory pointer table. */
     PGMPOOLKIND_64BIT_PDPT_FOR_64BIT_PDPT,
-    /** Shw: 64-bit page directory table;   Gst: 64-bit page directory table. */
-    PGMPOOLKIND_64BIT_PD_FOR_64BIT_PD,
 
     /** Shw: Root 32-bit page directory. */
     PGMPOOLKIND_ROOT_32BIT_PD,

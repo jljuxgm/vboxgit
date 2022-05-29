@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 9589 2008-06-11 08:43:25Z vboxsync $ */
+/* $Id: PGMAll.cpp 9596 2008-06-11 10:03:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -776,7 +776,7 @@ PGMDECL(int) PGMShwGetAllocLongModePDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PX86PDPAE
         AssertRCReturn(rc, rc);
 
         Assert(!(pPdpe->u & X86_PDPE_PG_MASK));
-        rc = pgmPoolAlloc(pVM, pPdptGst->a[iPdPt].u & X86_PDPE_PG_MASK, PGMPOOLKIND_64BIT_PD_FOR_64BIT_PD, PGMPOOL_IDX_PDPT, iPdPt, &pShwPage);
+        rc = pgmPoolAlloc(pVM, pPdptGst->a[iPdPt].u & X86_PDPE_PG_MASK, PGMPOOLKIND_PAE_PD_FOR_PAE_PD, PGMPOOL_IDX_PDPT, iPdPt, &pShwPage);
         if (rc == VERR_PGM_POOL_FLUSHED)
             return VINF_PGM_SYNC_CR3;
 
