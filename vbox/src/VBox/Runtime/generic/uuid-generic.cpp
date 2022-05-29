@@ -1,4 +1,4 @@
-/* $Id: uuid-generic.cpp 9741 2008-06-16 22:46:46Z vboxsync $ */
+/* $Id: uuid-generic.cpp 9743 2008-06-16 22:53:02Z vboxsync $ */
 /** @file
  * IPRT - UUID, Generic.
  */
@@ -62,15 +62,14 @@ RTDECL(int)  RTUuidCompare(PCRTUUID pUuid1, PCRTUUID pUuid2)
     /*
      * Special cases.
      */
-    /** @todo This differs in the windows implementation... check out which behavior we really want. */
     if (pUuid1 == pUuid2)
         return 0;
     if (!pUuid1)
         return RTUuidIsNull(pUuid2) ? 0 : -1;
     if (!pUuid2)
         return RTUuidIsNull(pUuid1) ? 0 : 1;
-    AssertPtr(pUuid1);
-    AssertPtr(pUuid2);
+    AssertPtrReturn(pUuid1, -1);
+    AssertPtrReturn(pUuid2, 1);
 
     /*
      * Standard cases.
