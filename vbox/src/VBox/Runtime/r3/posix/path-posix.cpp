@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 8256 2008-04-21 20:53:28Z vboxsync $ */
+/* $Id: path-posix.cpp 10911 2008-07-28 12:58:44Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX.
  */
@@ -979,5 +979,28 @@ RTDECL(bool) RTPathExists(const char *pszPath)
         RTStrFree(pszNativePath);
     }
     return RT_SUCCESS(rc);
+}
+
+
+RTDECL(int) RTPathSetCurrent(const char *pszPath)
+{
+    /*
+     * Validate input.
+     */
+    AssertPtrReturn(pszPath, VERR_INVALID_POINTER);
+    AssertReturn(*pszPath, VERR_INVALID_PARAMETER);
+
+    /*
+     * Change the directory.
+     */
+    char *pszNativePath;
+    int rc = rtPathToNative(&pszNativePath, pszPath);
+    if (RT_SUCCESS(rc))
+    {
+        if (chdir(pszNativePath))
+            rc = RTErrConvertFromErrno(errno);
+        RTStrFree(pszNativePath);
+    }
+    return rc;
 }
 
