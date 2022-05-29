@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9645 2008-06-12 09:04:45Z vboxsync $
+# $Id: Makefile.kmk 9650 2008-06-12 09:52:59Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1039,7 +1039,7 @@ OTHER_CLEAN += $(qmfile)
 
 $(qmfile): $(tsfile) | $$(call DIRDEP,$(dir $(qmfile)))
 	$$(call MSG_TOOLS,lrelease,$(target),$(tsfile),$$@)
-	$$(QUIET)$$(VBOX_LRELEASE4) -nocompress $(tsfile) -qm $$@
+	$$(QUIET)$$(VBOX_LRELEASE4) -nocompress -silent $(tsfile) -qm $$@
 
 endef
 
