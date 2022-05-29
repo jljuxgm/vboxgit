@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: SELMAll.cpp 7687 2008-04-01 15:32:52Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -457,12 +457,10 @@ DECLINLINE(int) selmValidateAndConvertCSAddrHidden(PVM pVM, RTSEL SelCPL, RTSEL 
                     )
             {
                 /*
-                 * Limit check.
+                 * Limit check. Note that the limit in the hidden register is the 
+                 * final value. The granularity bit was included in its calculation.
                  */
                 uint32_t    u32Limit = pHidCS->u32Limit;
-                /** @todo correct with hidden limit value?? */
-                if (pHidCS->Attr.n.u1Granularity)
-                    u32Limit = (u32Limit << PAGE_SHIFT) | PAGE_OFFSET_MASK;
                 if ((RTGCUINTPTR)Addr <= u32Limit)
                 {
                     *ppvFlat = (RTGCPTR)(  (RTGCUINTPTR)Addr + pHidCS->u32Base );
