@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 9585 2008-06-11 00:23:38Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 9609 2008-06-11 13:05:24Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -254,6 +254,8 @@ static int rtMpCall(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2, RT_NT
     KeLowerIrql(oldIrql);
 
     /* Flush all DPCs and wait for completion. (can take long!) */
+    /** @todo Consider changing this to an active wait using some atomic inc/dec
+     *  stuff (and check for the current cpu above in the specific case). */
     g_pfnrtNtKeFlushQueuedDpcs();
 
     ExFreePool(pArgs);
