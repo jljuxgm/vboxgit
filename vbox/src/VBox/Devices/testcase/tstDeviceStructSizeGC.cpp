@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 8120 2008-04-17 20:27:30Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 8151 2008-04-18 14:24:15Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -1011,7 +1011,7 @@ int main()
     GEN_CHECK_OFF(E1KSTATE, fDelayInts);
     GEN_CHECK_OFF(E1KSTATE, fIntMaskUsed);
     GEN_CHECK_OFF(E1KSTATE, fMaybeOutOfSpace);
-    GEN_CHECK_OFF(E1KSTATE, hEventOutOfRxSpace);
+    GEN_CHECK_OFF(E1KSTATE, hEventMoreRxDescAvail);
     GEN_CHECK_OFF(E1KSTATE, contextTSE);
     GEN_CHECK_OFF(E1KSTATE, contextNormal);
     GEN_CHECK_OFF(E1KSTATE, aTxPacket[E1K_MAX_TX_PKT_SIZE]);
