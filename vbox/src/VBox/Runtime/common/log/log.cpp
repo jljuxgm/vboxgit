@@ -1,4 +1,4 @@
-/* $Id: log.cpp 11391 2008-08-13 14:48:53Z vboxsync $ */
+/* $Id: log.cpp 11521 2008-08-20 14:46:29Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -586,8 +586,9 @@ RTDECL(int) RTLogDestroy(PRTLOGGER pLogger)
     pLogger->MutexSem = NIL_RTSEMFASTMUTEX;
     if (MutexSem != NIL_RTSEMFASTMUTEX)
     {
+        int rc2;
         RTSemFastMutexRelease(MutexSem);
-        int rc2 = RTSemFastMutexDestroy(MutexSem);
+        rc2 = RTSemFastMutexDestroy(MutexSem);
         AssertRC(rc2);
         if (RT_FAILURE(rc2) && RT_SUCCESS(rc))
             rc = rc2;
