@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: PATM.cpp 6107 2007-12-17 15:38:53Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -3068,7 +3068,7 @@ failure:
 }
 
 
-#ifdef DEBUG
+#ifdef LOG_ENABLED
 /**
  * Check if the instruction is patched as a common idt handler
  *
