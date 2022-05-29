@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 6504 2008-01-25 10:11:25Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 6559 2008-01-29 10:44:34Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -797,6 +797,7 @@ static int VBoxAddSolarisIOCtl(dev_t Dev, int Cmd, intptr_t pArg, int Mode, cred
     rc = VBoxGuestCommonIOCtl(Cmd, &g_DevExt, pSession, pvBuf, ReqWrap.cbData, &cbDataReturned);
     if (RT_SUCCESS(rc))
     {
+        rc = 0;
         if (RT_UNLIKELY(cbDataReturned > ReqWrap.cbData))
         {
             Log((DEVICE_NAME ":VBoxAddSolarisIOCtl: too much output data %d expected %d\n", cbDataReturned, ReqWrap.cbData));
