@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: SSM.cpp 10070 2008-07-01 12:26:33Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -1183,7 +1183,7 @@ static int ssmr3Validate(RTFILE File, PSSMFILEHDR pHdr, size_t *pcbFileHdr)
     }
     if (cbFile != pHdr->cbFile)
     {
-        Log(("SSM: File size mistmatch. hdr.cbFile=%lld actual %lld\n", pHdr->cbFile, cbFile));
+        Log(("SSM: File size mismatch. hdr.cbFile=%lld actual %lld\n", pHdr->cbFile, cbFile));
         return VERR_SSM_INTEGRITY_SIZE;
     }
 
