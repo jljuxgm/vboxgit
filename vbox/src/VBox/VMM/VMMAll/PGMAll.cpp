@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 10073 2008-07-01 13:11:03Z vboxsync $ */
+/* $Id: PGMAll.cpp 10299 2008-07-07 09:09:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1464,6 +1464,10 @@ PGMDECL(int) PGMChangeMode(PVM pVM, uint64_t cr0, uint64_t cr4, uint64_t efer)
      */
     if (pVM->pgm.s.enmGuestMode == enmGuestMode)
         return VINF_SUCCESS;
+
+    /* Flush the TLB */
+    PGM_INVL_GUEST_TLBS();
+
 #ifdef IN_RING3
     return PGMR3ChangeMode(pVM, enmGuestMode);
 #else
