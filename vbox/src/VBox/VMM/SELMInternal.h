@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 9441 2008-06-05 16:53:48Z vboxsync $ */
+/* $Id: SELMInternal.h 9443 2008-06-05 17:21:39Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -113,7 +113,7 @@ typedef struct SELM
     RTUINT                  cbLdtLimit;
     /** Current LDT offset relative to pvLdt*. */
     RTUINT                  offLdtHyper;
-#if HC_ARCH_BITS == 32
+#if HC_ARCH_BITS == 32 && GC_ARCH_BITS == 64
     uint32_t                padding2[2];
 #endif
     /** TSS. (This is 16 byte aligned!)
