@@ -1,4 +1,4 @@
-/* $Id: tstCompiler.cpp 5854 2007-11-27 21:12:50Z vboxsync $ */
+/* $Id: tstCompiler.cpp 5857 2007-11-27 21:27:15Z vboxsync $ */
 /** @file
  * Testing how the compiler deals with various things.
  *
@@ -25,6 +25,7 @@
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
 #include <iprt/stream.h>
+#include <iprt/err.h>
 #include <VBox/x86.h>
 
 #if 1
