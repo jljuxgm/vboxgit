@@ -1,9 +1,13 @@
-; $Id: tstAsmLock-2.asm 8979 2008-05-20 19:48:26Z vboxsync $
+; $Id: tstAsmLock-2.asm 8980 2008-05-20 19:50:06Z vboxsync $
 ;; @file
 ; Disassembly testcase - Invalid invariants.
 ;
 ; The intention is to check in a binary using the --all-invalid mode
 ; of tstDisasm-2.
+;
+; There are some regX, reg/memX variations that aren't tested as
+; they would require db'ing out the instructions (12 /r and 13 /r
+; for instance).
 ;
 
 ;
