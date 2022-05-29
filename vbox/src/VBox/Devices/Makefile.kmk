@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8251 2008-04-21 19:05:24Z vboxsync $
+# $Id: Makefile.kmk 8571 2008-05-05 12:43:53Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -174,9 +174,6 @@ ifeq ($(BUILD_TARGET),l4)
 endif
 ifeq ($(BUILD_TARGET),solaris)
  VBoxDD_LIBS           += adm
- ifdef VBOX_WITH_CROSSBOW
-  VBoxDD_LIBS          += dlpi
- endif
  ifdef VBOX_WITH_SUID_WRAPPER
   VBoxDD_LIBS          += secdb
  endif
@@ -618,6 +615,7 @@ Drivers_SOURCES.solaris = \
 	Storage/DrvHostBase.cpp \
 	Storage/DrvHostDVD.cpp
  ifdef VBOX_WITH_CROSSBOW
+  Drivers_SOURCES += Network/solaris/vbox-libdlpi.cpp
   Drivers_DEFS += VBOX_WITH_CROSSBOW
  endif
  ifdef VBOX_WITH_SUID_WRAPPER
