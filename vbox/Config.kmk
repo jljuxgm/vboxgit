@@ -1,4 +1,4 @@
-# $Id: Config.kmk 7448 2008-03-14 06:04:46Z vboxsync $
+# $Id: Config.kmk 7570 2008-03-26 12:19:56Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -214,6 +214,8 @@ VBOX_WITH_VBOXSDL = 1
 VBOX_WITH_VBOXBFE = 1
 # The Qt GUI.
 VBOX_WITH_QTGUI = 1
+# The Qt 4 GUI (experimental).
+#VBOX_WITH_QT4GUI
 # The headless frontend.
 VBOX_WITH_HEADLESS = 1
 ## the Direct Framebuffer GUI
@@ -2897,7 +2899,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 7448 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 7570 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
