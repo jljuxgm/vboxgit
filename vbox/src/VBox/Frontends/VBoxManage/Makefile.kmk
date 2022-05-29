@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: Makefile.kmk 8230 2008-04-21 14:13:27Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -35,10 +35,6 @@ VBoxManage_SOURCES     = \
 	VBoxManage.cpp \
 	VBoxInternalManage.cpp \
 	VBoxManageSVN.cpp
-ifndef VBOX_OSE
- VBoxManage_SOURCES   += \
-	VBoxInternalManageVmdk.cpp
-endif
 VBoxManage_LIBS       += $(LIB_DDU)
 
 # VBoxManageSVN.cpp uses VBOX_SVN_REV.
