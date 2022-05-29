@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 11349 2008-08-12 10:46:05Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -890,7 +890,7 @@ DECLINLINE(int) pgmPoolAccessHandlerSimple(PVM pVM, PPGMPOOL pPool, PPGMPOOLPAGE
         pRegFrame->rip += pCpu->opsize;
     else if (rc == VERR_EM_INTERPRETER)
     {
-        LogFlow(("pgmPoolAccessHandlerPTWorker: Interpretation failed for patch code %04x:%RGv - opcode=%d\n",
+        LogFlow(("pgmPoolAccessHandlerPTWorker: Interpretation failed for %04x:%RGv - opcode=%d\n",
                   pRegFrame->cs, (RTGCPTR)pRegFrame->rip, pCpu->pCurInstr->opcode));
         rc = VINF_EM_RAW_EMULATE_INSTR;
         STAM_COUNTER_INC(&pPool->CTXMID(StatMonitor,EmulateInstr));
