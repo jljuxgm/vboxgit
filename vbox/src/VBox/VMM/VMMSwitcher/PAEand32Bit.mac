@@ -1,4 +1,4 @@
-; $Id: PAEand32Bit.mac 5999 2007-12-07 15:05:06Z vboxsync $
+; $Id: PAEand32Bit.mac 7095 2008-02-22 12:41:56Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for PAE and 32-Bit.
 ;
@@ -531,7 +531,6 @@ BEGINPROC VMMGCGuestToHostAsmGuestCtx
     ; general purpose registers (layout is pushad)
     push    eax
 
-    ; @todo do a rep movsd instead
     mov     eax, [esp + 4 + CPUMCTXCORE.eax]
     mov     [edx + CPUM.Guest.eax], eax
     mov     eax, [esp + 4 + CPUMCTXCORE.ecx]

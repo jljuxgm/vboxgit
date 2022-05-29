@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 6178 2007-12-23 12:42:37Z vboxsync $ */
+/* $Id: CPUM.cpp 7095 2008-02-22 12:41:56Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -45,7 +45,7 @@
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
 /** The saved state version. */
-#define CPUM_SAVED_STATE_VERSION    5
+#define CPUM_SAVED_STATE_VERSION    6
 
 
 /*******************************************************************************
