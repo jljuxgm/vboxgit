@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 7156 2008-02-26 17:59:24Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 7157 2008-02-26 18:01:40Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -569,7 +569,7 @@ static int vmdkCreateGrainDirectory(PVMDKEXTENT pExtent, uint64_t uStartSector,
     if (fPreAlloc)
     {
         uint32_t uGTSectorLE;
-        uint32_t uOffsetSectors;
+        uint64_t uOffsetSectors;
 
         uOffsetSectors = pExtent->uSectorRGD + VMDK_BYTE2SECTOR(cbGDRounded);
         for (i = 0; i < pExtent->cGDEntries; i++)
