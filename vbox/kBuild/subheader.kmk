@@ -1,4 +1,4 @@
-# $Id: subheader.kmk 1663 2008-06-30 20:57:31Z bird $
+# $Id: subheader.kmk 1669 2008-07-04 04:04:42Z bird $
 ## @file
 # kBuild - File included at top of a makefile or sub-makefile.
 #
@@ -34,7 +34,7 @@
 # Sanity check.
 #
 ifdef __footer_kmk__
-$(error kBuild: footer.kmk has already been included. Fix your sub-makefiles!)
+$(error kBuild: footer.kmk has already been included. Fix your sub-makefiles! $(MAKEFILE_CURRENT))
 endif
 
 ifndef _SUB_MAKEFILE_NOT_FIRST
