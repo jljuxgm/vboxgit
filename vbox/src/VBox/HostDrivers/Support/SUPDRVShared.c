@@ -1,4 +1,4 @@
-/* $Revision: 5999 $ */
+/* $Revision: 6176 $ */
 /** @file
  * VirtualBox Support Driver - Shared code.
  */
@@ -4042,7 +4042,7 @@ void VBOXCALL supdrvGipUpdatePerCpu(PSUPGLOBALINFOPAGE pGip, uint64_t u64NanoTS,
 {
     PSUPGIPCPU  pGipCpu;
 
-    if (RT_LIKELY(iCpu <= RT_ELEMENTS(pGip->aCPUs)))
+    if (RT_LIKELY(iCpu < RT_ELEMENTS(pGip->aCPUs)))
     {
         pGipCpu = &pGip->aCPUs[iCpu];
 
