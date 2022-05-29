@@ -1,4 +1,4 @@
-# $Id: Config.kmk 10059 2008-07-01 02:07:04Z vboxsync $
+# $Id: Config.kmk 10077 2008-07-01 16:11:59Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1705,7 +1705,9 @@ ifeq ($(KBUILD_TARGET),win)
   TEMPLATE_VBOXR0DRV_CXXFLAGS          = -Zi -Zl -GR- -GX- -GF- -Gz -W3 $(VBOX_VCC_OPT) $(VBOX_VCC_FP)
  endif
  TEMPLATE_VBOXR0DRV_CFLAGS             = $(TEMPLATE_VBOXR0DRV_CXXFLAGS)
- TEMPLATE_VBOXR0DRV_LDFLAGS            = -Driver -Subsystem:NATIVE -Incremental:NO -Align:32 -MapInfo:Exports -NoD -Debug
+ TEMPLATE_VBOXR0DRV_LDFLAGS            = -Driver -Subsystem:NATIVE -Incremental:NO -MapInfo:Exports -NoD -Debug
+ TEMPLATE_VBOXR0DRV_LDFLAGS.x86        = -Align:32
+ TEMPLATE_VBOXR0DRV_LDFLAGS.amd64      = -Align:64
  TEMPLATE_VBOXR0DRV_POST_CMDS          = $(VBOX_SIGN_DRIVER_CMDS)
 endif
 
@@ -2875,7 +2877,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10059 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10077 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
