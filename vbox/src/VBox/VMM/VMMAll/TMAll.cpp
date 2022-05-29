@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 6409 2008-01-21 14:09:22Z vboxsync $ */
+/* $Id: TMAll.cpp 7109 2008-02-25 14:38:50Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -576,7 +576,7 @@ TMDECL(int) TMTimerSet(PTMTIMER pTimer, uint64_t u64Expire)
 
 
 /**
- * Arm a timer with a (new) expire time relative to current clock.
+ * Arm a timer with a (new) expire time relative to current time.
  *
  * @returns VBox status.
  * @param   pTimer          Timer handle as returned by one of the create functions.
@@ -596,6 +596,74 @@ TMDECL(int) TMTimerSetMillies(PTMTIMER pTimer, uint32_t cMilliesToNext)
             return TMTimerSet(pTimer, cMilliesToNext + TMRealGet(pVM));
         case TMCLOCK_TSC:
             return TMTimerSet(pTimer, cMilliesToNext * pVM->tm.s.cTSCTicksPerSecond / 1000 + TMCpuTickGet(pVM));
+
+        default:
+            AssertMsgFailed(("Invalid enmClock=%d\n", pTimer->enmClock));
+            return VERR_INTERNAL_ERROR;
+    }
+}
+
+
+/**
+ * Arm a timer with a (new) expire time relative to current time.
+ *
+ * @returns VBox status.
+ * @param   pTimer          Timer handle as returned by one of the create functions.
+ * @param   cMicrosToNext   Number of microseconds to the next tick.
+ */
+TMDECL(int) TMTimerSetMicro(PTMTIMER pTimer, uint64_t cMicrosToNext)
+{
+    PVM pVM = pTimer->CTXALLSUFF(pVM);
+    switch (pTimer->enmClock)
+    {
+        case TMCLOCK_VIRTUAL:
+            AssertCompile(TMCLOCK_FREQ_VIRTUAL == 1000000000);
+            return TMTimerSet(pTimer, cMicrosToNext * 1000 + TMVirtualGet(pVM));
+
+        case TMCLOCK_VIRTUAL_SYNC:
+            AssertCompile(TMCLOCK_FREQ_VIRTUAL == 1000000000);
+            return TMTimerSet(pTimer, cMicrosToNext * 1000 + TMVirtualSyncGet(pVM));
+
+        case TMCLOCK_REAL:
+            AssertCompile(TMCLOCK_FREQ_REAL == 1000);
+            return TMTimerSet(pTimer, cMicrosToNext / 1000 + TMRealGet(pVM));
+
+        case TMCLOCK_TSC:
+            return TMTimerSet(pTimer, TMTimerFromMicro(pTimer, cMicrosToNext) + TMCpuTickGet(pVM));
+
+        default:
+            AssertMsgFailed(("Invalid enmClock=%d\n", pTimer->enmClock));
+            return VERR_INTERNAL_ERROR;
+    }
+}
+
+
+/**
+ * Arm a timer with a (new) expire time relative to current time.
+ *
+ * @returns VBox status.
+ * @param   pTimer          Timer handle as returned by one of the create functions.
+ * @param   cNanosToNext    Number of nanoseconds to the next tick.
+ */
+TMDECL(int) TMTimerSetNano(PTMTIMER pTimer, uint64_t cNanosToNext)
+{
+    PVM pVM = pTimer->CTXALLSUFF(pVM);
+    switch (pTimer->enmClock)
+    {
+        case TMCLOCK_VIRTUAL:
+            AssertCompile(TMCLOCK_FREQ_VIRTUAL == 1000000000);
+            return TMTimerSet(pTimer, cNanosToNext + TMVirtualGet(pVM));
+
+        case TMCLOCK_VIRTUAL_SYNC:
+            AssertCompile(TMCLOCK_FREQ_VIRTUAL == 1000000000);
+            return TMTimerSet(pTimer, cNanosToNext + TMVirtualSyncGet(pVM));
+
+        case TMCLOCK_REAL:
+            AssertCompile(TMCLOCK_FREQ_REAL == 1000);
+            return TMTimerSet(pTimer, cNanosToNext / 1000000 + TMRealGet(pVM));
+
+        case TMCLOCK_TSC:
+            return TMTimerSet(pTimer, TMTimerFromNano(pTimer, cNanosToNext) + TMCpuTickGet(pVM));
 
         default:
             AssertMsgFailed(("Invalid enmClock=%d\n", pTimer->enmClock));
