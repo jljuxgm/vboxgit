@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 9442 2008-06-05 17:15:42Z vboxsync $ */
+/* $Id: the-linux-kernel.h 10935 2008-07-29 14:42:18Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -65,7 +65,11 @@
 #include <linux/string.h>
 #include <linux/spinlock.h>
 #include <linux/slab.h>
-#include <asm/semaphore.h>
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27)
+# include <linux/semaphore.h>
+#else /* older kernels */
+# include <asm/semaphore.h>
+#endif /* older kernels */
 #include <linux/module.h>
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0)
 # include <linux/moduleparam.h>
