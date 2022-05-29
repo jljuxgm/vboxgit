@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.cpp 7244 2008-03-03 16:21:39Z vboxsync $ */
+/* $Id: alloc-r0drv.cpp 7245 2008-03-03 16:24:21Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver.
  */
@@ -250,6 +250,7 @@ RTDECL(void *)    RTMemExecAlloc(size_t cb)
     if (pHdr)
     {
 #ifdef RTR0MEM_STRICT
+        pHdr->cbReq = cb;
         memcpy((uint8_t *)(pHdr + 1) + cb, &g_abFence[0], RTR0MEM_FENCE_EXTRA);
 #endif
         return pHdr + 1;
