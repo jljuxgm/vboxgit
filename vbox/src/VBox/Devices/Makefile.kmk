@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10663 2008-07-15 14:38:39Z vboxsync $
+# $Id: Makefile.kmk 10756 2008-07-18 19:58:48Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -793,7 +793,8 @@ ifdef VBOX_WITH_TESTCASES
  PROGRAMS += tstIntNet-1
  tstIntNet-1_TEMPLATE    = VBOXR3TSTEXE
  tstIntNet-1_SOURCES     = \
-	Network/testcase/tstIntNet-1.cpp
+	Network/testcase/tstIntNet-1.cpp \
+	Network/Pcap.cpp
 endif
 
 
