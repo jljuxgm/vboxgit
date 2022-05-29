@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6555 2008-01-29 02:38:47Z vboxsync $
+# $Id: Makefile.kmk 6558 2008-01-29 07:58:28Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -113,7 +113,7 @@ VBoxGuestR3Lib_SOURCES     = \
 # the X server runtime instead of IPRT, for use with old servers where the
 # C library is not available.
 #
-ifeq ($(BUILD_TARGET),linux))
+ifeq ($(BUILD_TARGET),linux)
 VBoxGuestR3LibXFree86_TEMPLATE = VBOXLNX32GUESTR3LIB
 VBoxGuestR3LibXFree86_INST     = $(INST_ADDITIONS_LIB)
 else
