@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 10770 2008-07-21 09:02:08Z vboxsync $ */
+/* $Id: PerformanceImpl.h 10779 2008-07-21 14:29:29Z vboxsync $ */
 
 /** @file
  *
@@ -49,19 +49,6 @@ class ATL_NO_VTABLE PerformanceMetric :
     public VirtualBoxSupportTranslation <PerformanceMetric>,
     public IPerformanceMetric
 {
-private:
-
-    struct Data
-    {
-        /* Constructor. */
-        Data() { }
-
-        bool operator== (const Data &that) const
-        {
-            return this == &that;
-        }
-    };
-
 public:
 
     DECLARE_NOT_AGGREGATABLE (PerformanceMetric)
@@ -101,7 +88,21 @@ public:
 
 private:
 
-    pm::Metric *mMetric;
+    struct Data
+    {
+        /* Constructor. */
+        Data() : period(0), count(0), min(0), max(0) { }
+
+        Bstr             name;
+        ComPtr<IUnknown> object;
+        ULONG            period;
+        ULONG            count;
+        Bstr             unit;
+        LONG             min;
+        LONG             max;
+    };
+
+    Data m;
 };
 
 
