@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 10745 2008-07-18 12:18:55Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 10748 2008-07-18 13:53:03Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1674,6 +1674,8 @@ static int intnetR0NetworkCreateIf(PINTNETNETWORK pNetwork, PSUPDRVSESSION pSess
         rc = SUPR0MemAlloc(pIf->pSession, cbBuf, (PRTR0PTR)&pIf->pIntBufDefault, (PRTR3PTR)&pIf->pIntBufDefaultR3);
         if (RT_SUCCESS(rc))
         {
+            ASMMemZero32(pIf->pIntBufDefault, cbBuf); /** @todo I thought I specified these buggers as clearing the memory... */
+
             pIf->pIntBuf = pIf->pIntBufDefault;
             pIf->pIntBufR3 = pIf->pIntBufDefaultR3;
             pIf->pIntBuf->cbBuf = cbBuf;
