@@ -1,6 +1,6 @@
-/* $Id: SUPDrv-solaris.c 10455 2008-07-10 07:02:01Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 10662 2008-07-15 14:36:00Z vboxsync $ */
 /** @file
- * VirtualBox Support Driver - Solaris Driver Code.
+ * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
 
 /*
@@ -28,10 +28,10 @@
  * additional information or have any questions.
  */
 
-
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define LOG_GROUP LOG_GROUP_SUP_DRV
 #include <sys/types.h>
 #include <sys/param.h>
 #include <sys/errno.h>
