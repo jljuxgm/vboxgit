@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 6311 2008-01-09 18:46:06Z vboxsync $ */
+/* $Id: GMMR0.cpp 6333 2008-01-11 07:23:53Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -1401,6 +1401,7 @@ static int gmmR0RegisterChunk(PGMM pGMM, PGMMCHUNKFREESET pSet, RTR0MEMOBJ MemOb
             pChunk->aPages[iPage].Free.iNext = iPage + 1;
         }
         pChunk->aPages[RT_ELEMENTS(pChunk->aPages) - 1].Free.u2State = GMM_PAGE_STATE_FREE;
+        /* XXX sizeof(iNext) < 32, please fix this!! */
         pChunk->aPages[RT_ELEMENTS(pChunk->aPages) - 1].Free.iNext = UINT32_MAX;
 
         /*
