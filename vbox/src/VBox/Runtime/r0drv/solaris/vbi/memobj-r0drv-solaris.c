@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 9149 2008-05-27 09:27:29Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 9176 2008-05-27 15:22:00Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -77,7 +77,7 @@ int rtR0MemObjNativeFree(RTR0MEMOBJ pMem)
             break;
 
         case RTR0MEMOBJTYPE_LOCK:
-	    vbi_unlock_va(pMemSolaris->Core.pv, pMemSolaris->Core.cb, pMemSolaris->handle);
+            vbi_unlock_va(pMemSolaris->Core.pv, pMemSolaris->Core.cb, pMemSolaris->handle);
             break;
 
         case RTR0MEMOBJTYPE_MAPPING:
@@ -287,7 +287,7 @@ int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, PRTR0MEMOBJINTERNAL pMem
         {
             cmn_err(CE_NOTE, "rtR0MemObjNativeMapUser: no page to map.\n");
             rc = VERR_MAP_FAILED;
-	    goto done;
+            goto done;
         }
         pv = (void *)((uintptr_t)pv + PAGE_SIZE);
     }
@@ -296,7 +296,7 @@ int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, PRTR0MEMOBJINTERNAL pMem
     if (rc != 0)
     {
         cmn_err(CE_NOTE, "rtR0MemObjNativeMapUser: vbi failure.\n");
-	rc = VERR_MAP_FAILED;
+        rc = VERR_MAP_FAILED;
         rtR0MemObjDelete(&pMemSolaris->Core);
         goto done;
     }
