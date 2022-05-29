@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: PATM.cpp 8276 2008-04-22 11:48:15Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -5385,12 +5385,11 @@ int patmR3RefreshPatch(PVM pVM, PPATMPATCHREC pPatchRec)
 
     pPatch = &pPatchRec->patch;
     AssertReturn(pPatch->flags & (PATMFL_DUPLICATE_FUNCTION|PATMFL_IDTHANDLER|PATMFL_TRAPHANDLER), VERR_PATCHING_REFUSED);
-#ifndef DEBUG_michael  /* This has been triggering for months now */
-    AssertReturn(!(pPatch->flags & PATMFL_EXTERNAL_JUMP_INSIDE), VERR_PATCHING_REFUSED);
-#else
     if (pPatch->flags & PATMFL_EXTERNAL_JUMP_INSIDE)
+    {
+        Log(("patmR3RefreshPatch: refused because external jumps to this patch exist\n"));
         return VERR_PATCHING_REFUSED;
-#endif
+    }
 
     /** Note: quite ugly to enable/disable/remove/insert old and new patches, but there's no easy way around it. */
 
