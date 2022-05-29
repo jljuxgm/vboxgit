@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 9033 2008-05-21 16:09:35Z vboxsync $ */
+/* $Id: HWACCM.cpp 9062 2008-05-23 07:39:08Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -46,8 +46,8 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 
-
-#define VBOX_WITH_NESTED_PAGING
+/* Uncomment to enable experimental nested paging. */
+//#define VBOX_WITH_NESTED_PAGING
 
 /*******************************************************************************
 *   Internal Functions                                                         *
