@@ -1,4 +1,4 @@
-/* $Id: server.cpp 10528 2008-07-11 14:27:01Z vboxsync $ */
+/* $Id: server.cpp 10534 2008-07-11 15:21:53Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -188,12 +188,6 @@ NS_DECL_CLASSINFO(AudioAdapter)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(AudioAdapter, IAudioAdapter)
 NS_DECL_CLASSINFO(SystemProperties)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(SystemProperties, ISystemProperties)
-#ifdef VBOX_WITH_RESOURCE_USAGE_API
-NS_DECL_CLASSINFO(PerformanceCollector)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(PerformanceCollector, IPerformanceCollector)
-NS_DECL_CLASSINFO(PerformanceMetric)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(PerformanceMetric, IPerformanceMetric)
-#endif /* VBOX_WITH_RESOURCE_USAGE_API */
 NS_DECL_CLASSINFO(BIOSSettings)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(BIOSSettings, IBIOSSettings)
 

@@ -1,4 +1,4 @@
-/* $Id: system-win.cpp 10528 2008-07-11 14:27:01Z vboxsync $ */
+/* $Id: system-win.cpp 10534 2008-07-11 15:21:53Z vboxsync $ */
 /** @file
  * IPRT - System, Win32.
  */
@@ -59,5 +59,17 @@ RTDECL(uint64_t) RTSystemProcessorGetActiveMask(void)
     GetSystemInfo(&SysInfo);
 
     return SysInfo.dwActiveProcessorMask;
+}
+
+RTDECL(int) RTSystemProcessorGetUsageStats(PRTCPUUSAGESTATS pStats)
+{
+    /* @todo Implement! */
+    return VERR_NOT_IMPLEMENTED;
+}
+
+RTDECL(int) RTProcessGetProcessorUsageStats(RTPROCESS pid, PRTPROCCPUUSAGESTATS pStats)
+{
+    /* @todo Implement! */
+    return VERR_NOT_IMPLEMENTED;
 }
 
