@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 7011 2008-02-19 10:58:16Z vboxsync $ */
 /** @file
  * Support Library - Solaris Specific Back-End.
  */
@@ -56,8 +56,8 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-/** Suffix must match the one in ddi_create_minor_node() (SUPDrv-solaris.c) */
-#define DEVICE_NAME     "/devices/pseudo/vboxdrv@0:vboxdrv"
+/** Solaris device link. */
+#define DEVICE_NAME     "/dev/vboxdrv"
 
 
 /*******************************************************************************
