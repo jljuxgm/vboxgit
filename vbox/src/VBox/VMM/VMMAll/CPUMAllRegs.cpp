@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 9354 2008-06-03 13:45:14Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 9430 2008-06-05 15:28:07Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -109,7 +109,6 @@ CPUMDECL(void) CPUMSetHyperGDTR(PVM pVM, uint32_t addr, uint16_t limit)
     pVM->cpum.s.Hyper.gdtr.cbGdt = limit;
     pVM->cpum.s.Hyper.gdtr.pGdt  = addr;
     pVM->cpum.s.Hyper.gdtrPadding = 0;
-    pVM->cpum.s.Hyper.gdtrPadding64 = 0;
 }
 
 CPUMDECL(void) CPUMSetHyperIDTR(PVM pVM, uint32_t addr, uint16_t limit)
@@ -117,7 +116,6 @@ CPUMDECL(void) CPUMSetHyperIDTR(PVM pVM, uint32_t addr, uint16_t limit)
     pVM->cpum.s.Hyper.idtr.cbIdt = limit;
     pVM->cpum.s.Hyper.idtr.pIdt = addr;
     pVM->cpum.s.Hyper.idtrPadding = 0;
-    pVM->cpum.s.Hyper.idtrPadding64 = 0;
 }
 
 CPUMDECL(void) CPUMSetHyperCR3(PVM pVM, uint32_t cr3)
