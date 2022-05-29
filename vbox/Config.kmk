@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6614 2008-01-30 16:29:52Z vboxsync $
+# $Id: Config.kmk 6615 2008-01-30 16:32:03Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -2773,7 +2773,7 @@ TEMPLATE_VBOXGUESTR0LIB_INST    = $(INST_ADDITIONS_LIB)
 TEMPLATE_VBOXGUESTR3CPPEXE         = VBox Guest Program with C++ library dependencies
 TEMPLATE_VBOXGUESTR3CPPEXE_EXTENDS = VBOXGUESTR3EXE
 ifndef TEMPLATE_VBOXGUESTR3CPPEXE_TOOL
- TEMPLATE_VBOXGUESTR3CPPEXE_TOOL  := $(subst GXX,GCC,$(VBOX_GCC32_TOOL))
+ TEMPLATE_VBOXGUESTR3CPPEXE_TOOL  := $(subst GCC,GXX,$(VBOX_GCC32_TOOL))
  TEMPLATE_VBOXGUESTR3CPPEXE_CXXFLAGS = $(filter-out -fno-exceptions,$(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS))
 endif
 
@@ -2869,7 +2869,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6614 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6615 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
