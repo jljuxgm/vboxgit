@@ -1,4 +1,4 @@
-/** $Id: DevPCNet.cpp 5605 2007-11-01 16:09:26Z vboxsync $ */
+/** $Id: DevPCNet.cpp 5913 2007-12-02 21:35:04Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -2300,7 +2300,7 @@ static void pcnetPollRxTx(PCNetState *pData)
         if (HOST_IS_OWNER(CSR_CRST(pData)))     /* Only poll RDTEs if none available */
             pcnetRdtePoll(pData);
 
-    if (CSR_TDMD(pData) || CSR_TXON(pData) && !CSR_DPOLL(pData))
+    if (CSR_TDMD(pData) || (CSR_TXON(pData) && !CSR_DPOLL(pData)))
         pcnetTransmit(pData);
 }
 
