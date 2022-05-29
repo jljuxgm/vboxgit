@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9708 2008-06-16 10:01:38Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9718 2008-06-16 12:35:09Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1712,12 +1712,16 @@ ResumeExecution:
     }
 
     /* Emulate in ring 3. */
+    case SVM_EXIT_MSR:
+        /* Note: If we decide to emulate them here, then we must sync the MSRs that could have been changed (sysenter, fs/gs base)!!! */
+        rc = VERR_EM_INTERPRETER;
+        break;
+
     case SVM_EXIT_MONITOR:
     case SVM_EXIT_RDPMC:
     case SVM_EXIT_PAUSE:
     case SVM_EXIT_MWAIT_UNCOND:
     case SVM_EXIT_MWAIT_ARMED:
-    case SVM_EXIT_MSR:
     case SVM_EXIT_TASK_SWITCH:          /* can change CR3; emulate */
         rc = VINF_EM_RAW_EXCEPTION_PRIVILEGED;
         break;
