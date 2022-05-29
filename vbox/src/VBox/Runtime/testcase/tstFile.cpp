@@ -1,4 +1,4 @@
-/* $Id: tstFile.cpp 6429 2008-01-21 22:22:11Z vboxsync $ */
+/* $Id: tstFile.cpp 6430 2008-01-21 22:23:10Z vboxsync $ */
 /** @file
  * innotek Portable Runtime Testcase - File I/O.
  */
@@ -68,8 +68,6 @@ int main()
     }
     else
         RTPrintf("Maximum file size is %RTfoff bytes.\n", cbMax);
-
-return 0;
 
     /* grow file beyond 2G */
     rc = RTFileSetSize(File, _2G + _1M);
