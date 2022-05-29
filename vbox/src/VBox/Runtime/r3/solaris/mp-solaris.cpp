@@ -1,4 +1,4 @@
-/* $Id: mp-solaris.cpp 11272 2008-08-08 17:03:34Z vboxsync $ */
+/* $Id: mp-solaris.cpp 11273 2008-08-08 17:16:32Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */
@@ -194,7 +194,7 @@ RTDECL(RTCPUID) RTMpGetCount(void)
     /*
      * Solaris has sysconf.
      */
-    int cCpus = sysconf(_SC_NPROCESSORS_MAX)
+    int cCpus = sysconf(_SC_NPROCESSORS_MAX);
     if (cCpus < 0)
         cCpus = sysconf(_SC_NPROCESSORS_CONF);
     return cCpus;
