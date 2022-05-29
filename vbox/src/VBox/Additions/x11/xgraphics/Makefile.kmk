@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6555 2008-01-29 02:38:47Z vboxsync $
+# $Id: Makefile.kmk 6565 2008-01-29 12:53:19Z vboxsync $
 ## @file
 # Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -194,7 +194,7 @@ vboxvideo_drv_SOURCES  = \
 	vboxutils-new.c
 vboxvideo_drv_LIBS = \
 	$(VBOX_LIB_VBGL_R3) \
-	$(VBOX_LIB_IPRT_GUEST_R3) \
+	$(VBOX_LIB_IPRT_GUEST_R3_MINI) \
 	$(VBOX_LIB_VBGL_R3)
 ## @todo Use VBOX_LIB_IPRT_GUEST_R3_MINI instead of VBOX_LIB_IPRT_GUEST_R3?
 endif
