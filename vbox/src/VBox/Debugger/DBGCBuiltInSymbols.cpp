@@ -1,4 +1,4 @@
-/** $Id: DBGCBuiltInSymbols.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/** $Id: DBGCBuiltInSymbols.cpp 9270 2008-05-31 14:53:45Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Built-In Symbols.
  */
@@ -18,7 +18,6 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
-
 
 /*******************************************************************************
 *   Header Files                                                               *
