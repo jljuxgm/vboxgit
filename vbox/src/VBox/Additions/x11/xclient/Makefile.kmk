@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7269 2008-03-04 10:56:56Z vboxsync $
+# $Id: Makefile.kmk 7363 2008-03-07 13:43:50Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -23,9 +23,6 @@ include	$(PATH_KBUILD)/subheader.kmk
 # VBoxClient - clipboard and seamless.
 #
 PROGRAMS += VBoxClient
-
-# Enable Seamless mode
-VBOX_X11_SEAMLESS_GUEST := 1
 
 VBoxClient_TEMPLATE = VBOXGUESTR3CPPEXE
 VBoxClient_DEFS += VBOX_X11_CLIPBOARD VBOX_HGCM
