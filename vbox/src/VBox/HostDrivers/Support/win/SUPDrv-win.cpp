@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 8789 2008-05-13 15:43:59Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 8792 2008-05-13 15:54:29Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Windows NT specific parts.
  */
@@ -127,13 +127,13 @@ ULONG _stdcall DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
             PSUPDRVDEVEXT pDevExt = (PSUPDRVDEVEXT)pDevObj->DeviceExtension;
             memset(pDevExt, 0, sizeof(*pDevExt));
 
-            /* Make sure the tsc is consistent across cpus/cores. */
-            pDevExt->fForceAsyncTsc = supdrvDetermineAsyncTsc(&u64DiffCores);
-            dprintf(("supdrvDetermineAsyncTsc: fAsync=%d u64DiffCores=%u.\n", pDevExt->fForceAsyncTsc, (uint32_t)u64DiffCores));
-
             int vrc = supdrvInitDevExt(pDevExt);
             if (!vrc)
             {
+                /* Make sure the tsc is consistent across cpus/cores. */
+                pDevExt->fForceAsyncTsc = supdrvDetermineAsyncTsc(&u64DiffCores);
+                dprintf(("supdrvDetermineAsyncTsc: fAsync=%d u64DiffCores=%u.\n", pDevExt->fForceAsyncTsc, (uint32_t)u64DiffCores));
+
                 /*
                  * Inititalize the GIP.
                  */
