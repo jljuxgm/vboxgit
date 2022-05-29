@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: TRPM.cpp 8985 2008-05-20 21:03:33Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor
  */
@@ -1384,7 +1384,7 @@ TRPMR3DECL(int) TRPMR3InjectEvent(PVM pVM, TRPMEVENT enmEvent)
                 EMR3CheckRawForcedActions(pVM);
 
                 /* There's a handler -> let's execute it in raw mode */
-                rc = TRPMForwardTrap(pVM, CPUMCTX2CORE(pCtx), u8Interrupt, 0, TRPM_TRAP_NO_ERRORCODE, enmEvent);
+                rc = TRPMForwardTrap(pVM, CPUMCTX2CORE(pCtx), u8Interrupt, 0, TRPM_TRAP_NO_ERRORCODE, enmEvent, -1);
                 if (rc == VINF_SUCCESS /* Don't use VBOX_SUCCESS */)
                 {
                     Assert(!VM_FF_ISPENDING(pVM, VM_FF_SELM_SYNC_GDT | VM_FF_SELM_SYNC_LDT | VM_FF_TRPM_SYNC_IDT | VM_FF_SELM_SYNC_TSS));
