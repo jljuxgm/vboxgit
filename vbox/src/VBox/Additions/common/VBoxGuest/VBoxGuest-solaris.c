@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 6434 2008-01-22 07:10:54Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 6435 2008-01-22 07:14:06Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -568,7 +568,7 @@ static int VBoxAddSolarisOpen(dev_t *pDev, int fFlag, int fType, cred_t *pCred)
     }
 #endif
     LogRel((DEVICE_NAME ":VBoxAddSolarisOpen: VBoxGuestCreateUserSession failed. rc=%d\n", rc));
-    return rc;
+    return EFAULT;
 }
 
 
