@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10498 2008-07-11 09:15:19Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10499 2008-07-11 09:18:15Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -919,7 +919,7 @@ ResumeExecution:
 
         pVMCB->ctrl.TLBCtrl.n.u1TLBFlush = pVM->hwaccm.s.svm.fForceTLBFlush;
     }
-
+    AssertMsg(pVM->hwaccm.s.svm.cTLBFlushes == pCpu->cTLBFlushes, ("Flush count mismatch for cpu %d (%x vs %x)\n", pCpu->idCpu, pVM->hwaccm.s.svm.cTLBFlushes, pCpu->cTLBFlushes));
     AssertMsg(pCpu->uCurrentASID >= 1 && pCpu->uCurrentASID < pVM->hwaccm.s.svm.u32MaxASID, ("cpu%d uCurrentASID = %x\n", pCpu->idCpu, pCpu->uCurrentASID));
     pVMCB->ctrl.TLBCtrl.n.u32ASID = pCpu->uCurrentASID;
 
