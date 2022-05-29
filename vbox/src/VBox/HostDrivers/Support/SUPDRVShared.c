@@ -1,4 +1,4 @@
-/* $Revision: 8837 $ */
+/* $Revision: 8877 $ */
 /** @file
  * VirtualBox Support Driver - Shared code.
  */
@@ -210,6 +210,7 @@ static SUPFUNC g_aFunctions[] =
     { "RTMpOnAll",                              (void *)RTMpOnAll },
     { "RTMpOnOthers",                           (void *)RTMpOnOthers },
     { "RTMpOnSpecific",                         (void *)RTMpOnSpecific },
+    { "RTMpCpuId",                              (void *)RTMpCpuId },
     { "RTLogRelDefaultInstance",                (void *)RTLogRelDefaultInstance },
     { "RTLogSetDefaultInstanceThread",          (void *)RTLogSetDefaultInstanceThread },
     { "RTLogLogger",                            (void *)RTLogLogger },
