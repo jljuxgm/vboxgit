@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGR.cpp 10541 2008-07-11 18:00:44Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGR.cpp 10553 2008-07-11 20:11:27Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, GR.
  */
@@ -72,7 +72,7 @@ int vbglR3GRAlloc(VMMDevRequestHeader **ppReq, uint32_t cb, VMMDevRequestType en
 
 VBGLR3DECL(int) vbglR3GRPerform(VMMDevRequestHeader *pReq)
 {
-    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_VMMREQUEST, pReq, pReq->size);
+    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_VMMREQUEST(pReq->size), pReq, pReq->size);
 }
 
 
