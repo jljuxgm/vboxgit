@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 9154 2008-05-27 11:33:58Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Disassembler.
  */
@@ -44,7 +44,7 @@
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-static DECLCALLBACK(int) dbgfR3DisasInstrRead(RTHCUINTPTR pSrc, uint8_t *pDest, uint32_t size, void *pvUserdata);
+static DECLCALLBACK(int) dbgfR3DisasInstrRead(RTUINTPTR pSrc, uint8_t *pDest, uint32_t size, void *pvUserdata);
 
 
 /**
@@ -167,7 +167,7 @@ static void dbgfR3DisasInstrDone(PDBGFDISASSTATE pState)
  * @param   uDisCpu     Pointer to the disassembler cpu state. (Why this is a VBOXHUINTPTR is beyond me...)
  *                      In this context it's always pointer to the Core of a DBGFDISASSTATE.
  */
-static DECLCALLBACK(int) dbgfR3DisasInstrRead(RTHCUINTPTR PtrSrc, uint8_t *pu8Dst, uint32_t cbRead, void *pvDisCpu)
+static DECLCALLBACK(int) dbgfR3DisasInstrRead(RTUINTPTR PtrSrc, uint8_t *pu8Dst, uint32_t cbRead, void *pvDisCpu)
 {
     PDBGFDISASSTATE pState = (PDBGFDISASSTATE)pvDisCpu;
     Assert(cbRead > 0);

@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 9154 2008-05-27 11:33:58Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -146,7 +146,9 @@ static int pdmR3CritSectInitOne(PVM pVM, PPDMCRITSECTINT pCritSect, void *pvKey,
  */
 PDMR3DECL(int) PDMR3CritSectInit(PVM pVM, PPDMCRITSECT pCritSect, const char *pszName)
 {
+#if HC_ARCH_BITS == 64 && GC_ARCH_BITS == 32
     AssertCompile(sizeof(pCritSect->padding) >= sizeof(pCritSect->s));
+#endif
     return pdmR3CritSectInitOne(pVM, &pCritSect->s, pCritSect, pszName);
 }
 
