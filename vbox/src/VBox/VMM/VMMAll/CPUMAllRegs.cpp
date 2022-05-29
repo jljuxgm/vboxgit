@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 7646 2008-03-31 11:10:27Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 7647 2008-03-31 11:23:51Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1023,10 +1023,7 @@ CPUMDECL(void) CPUMSetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
          */
         case CPUMCPUIDFEATURE_PAE:
         {
-            uint32_t ulEdx, ulDummy;
-
-            ASMCpuId(1, &ulDummy, &ulDummy, &ulDummy, &ulEdx);
-            if (!(ulEdx & X86_CPUID_FEATURE_EDX_PAE))
+            if (!(ASMCpuId_EDX(1) & X86_CPUID_FEATURE_EDX_PAE))
             {
                 AssertMsgFailed(("ERROR: Can't turn on PAE when the host doesn't support it!!\n"));
                 return;
