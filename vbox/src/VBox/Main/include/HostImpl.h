@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 10544 2008-07-11 18:39:28Z vboxsync $ */
+/* $Id: HostImpl.h 10592 2008-07-14 11:19:02Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -35,6 +35,10 @@ class USBProxyService;
 #ifdef RT_OS_WINDOWS
 # include "win/svchlp.h"
 #endif
+
+#ifdef VBOX_WITH_RESOURCE_USAGE_API
+# include "PerformanceImpl.h"
+#endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
 class VirtualBox;
 class SessionMachine;
