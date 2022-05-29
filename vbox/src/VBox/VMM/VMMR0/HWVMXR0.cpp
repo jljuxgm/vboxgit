@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 10716 2008-07-17 07:31:03Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 10828 2008-07-23 12:15:16Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1173,7 +1173,7 @@ ResumeExecution:
     /*
      * @todo reduce overhead
      */
-    if (    pCtx->msrEFER & MSR_K6_EFER_LMA
+    if (   (pCtx->msrEFER & MSR_K6_EFER_LMA)
         &&  pVM->hwaccm.s.vmx.pAPIC)
     {
         /* TPR caching in CR8 */
