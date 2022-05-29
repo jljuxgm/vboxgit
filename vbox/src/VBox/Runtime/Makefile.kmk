@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6013 2007-12-08 00:39:13Z vboxsync $
+# $Id: Makefile.kmk 6014 2007-12-08 00:41:16Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -41,6 +41,8 @@ ifdef VBOX_ONLY_ADDITIONS
 # else
   LIBRARIES = RuntimeGuestR0 RuntimeGuestR3
 # endif
+  #LIBRARIES.os2 = RuntimeOS2Warp3GuestR0
+  LIBRARIES.win = RuntimeW32NT4GuestR0
 
  #
  # Remote cross building... Will be removed unless somebody speaks up!
