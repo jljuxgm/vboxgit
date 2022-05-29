@@ -1,4 +1,4 @@
-# $Id: errmsgcom.sed 5999 2007-12-07 15:05:06Z vboxsync $
+# $Id: errmsgcom.sed 6080 2007-12-15 04:50:16Z vboxsync $
 ## @file
 # innotek Portable Runtime - SED script for converting COM errors
 #
@@ -24,12 +24,14 @@
 #
 
 # we only care about message definitions
+/No symbolic name defined/b skip_it
 \/\/ MessageId: /b messageid
 d
 b end
 
 
 # Everything else is deleted!
+:skip_it
 d
 b end
 
@@ -49,7 +51,7 @@ N
     # remove the message ID
     s/\/\/ MessageId: //g
     # remove the stuff in between
-    s/\/\/\n\/\/ MessageText:\n\/\/\n\/\/  //g
+    s/\/\/\n\/\/ MessageText:\n\/\/\n\/\/  *//g
     # backslashes have to be escaped
     s/\\/\\\\/g
     # double quotes have to be escaped, too
