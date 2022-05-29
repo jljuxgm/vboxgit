@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 9148 2008-05-27 09:21:03Z vboxsync $ */
+/* $Id: MMHyper.cpp 9303 2008-06-02 13:47:21Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Hypervisor Memory Area.
  */
@@ -271,8 +271,8 @@ static DECLCALLBACK(bool) mmR3HyperRelocateCallback(PVM pVM, RTGCPTR GCPtrOld, R
             /*
              * Accepted!
              */
-            AssertMsg(GCPtrOld == pVM->mm.s.pvHyperAreaGC, ("GCPtrOld=%#x pVM->mm.s.pvHyperAreaGC=%#x\n", GCPtrOld, pVM->mm.s.pvHyperAreaGC));
-            Log(("Relocating the hypervisor from %#x to %#x\n", GCPtrOld, GCPtrNew));
+            AssertMsg(GCPtrOld == pVM->mm.s.pvHyperAreaGC, ("GCPtrOld=%VGv pVM->mm.s.pvHyperAreaGC=%VGv\n", GCPtrOld, pVM->mm.s.pvHyperAreaGC));
+            Log(("Relocating the hypervisor from %VGv to %VGv\n", GCPtrOld, GCPtrNew));
 
             /* relocate our selves and the VM structure. */
             RTGCINTPTR      offDelta = GCPtrNew - GCPtrOld;
