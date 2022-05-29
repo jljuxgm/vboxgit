@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 7974 2008-04-15 10:28:26Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 7978 2008-04-15 11:36:58Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -42,8 +42,6 @@
 #include "Input/DevPS2.cpp"
 #undef LOG_GROUP
 #include "Network/DevPCNet.cpp"
-//#undef LOG_GROUP
-//#include "Network/ne2000.c"
 #undef LOG_GROUP
 #include "PC/DevACPI.cpp"
 #undef LOG_GROUP
