@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: Makefile.kmk 8496 2008-04-30 10:20:22Z vboxsync $
 ## @file
 # Makefile for the VBox API testcases.
 #
@@ -26,10 +26,14 @@ include $(PATH_KBUILD)/subheader.kmk
 ifdef VBOX_WITH_TESTCASES
  PROGRAMS       += tstAPI
  PROGRAMS.linux += tstVBoxAPILinux
+ # That testcase is actually not linux specific, it's generic XPCOM.
+ PROGRAMS.solaris += tstVBoxAPILinux
  PROGRAMS.win   += tstVBoxAPIWin
 else ifeq ($(USERNAME),dmik)
  PROGRAMS       += tstAPI
  PROGRAMS.linux += tstVBoxAPILinux
+ # That testcase is actually not linux specific, it's generic XPCOM.
+ PROGRAMS.solaris += tstVBoxAPILinux
  PROGRAMS.win   += tstVBoxAPIWin
 endif # VBOX_WITH_TESTCASES
 
