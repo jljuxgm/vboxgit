@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 10902 2008-07-27 19:57:55Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -779,6 +779,9 @@ static DECLCALLBACK(int) drvHostSerialWakeupMonitorThread(PPDMDRVINS pDrvIns, PP
 {
     PDRVHOSTSERIAL pData = PDMINS2DATA(pDrvIns, PDRVHOSTSERIAL);
     int rc;
+    unsigned int uSerialLineFlags;
+    unsigned int uSerialLineStatus;
+    unsigned int uIoctl;
 
     /*
      * Linux is a bit difficult as the thread is sleeping in an ioctl call.
@@ -787,18 +790,40 @@ static DECLCALLBACK(int) drvHostSerialWakeupMonitorThread(PPDMDRVINS pDrvIns, PP
      * modem control bits.
      * This should make the ioctl call return.
      */
-    rc = ioctl(pData->DeviceFile, TIOCMBIS, TIOCM_LOOP);
+
+    /* Get current status of control lines. */
+    rc = ioctl(pData->DeviceFile, TIOCMGET, &uSerialLineStatus);
     if (rc < 0)
         goto ioctl_error;
 
-    rc = ioctl(pData->DeviceFile, TIOCMBIS, TIOCM_RTS);
+    uSerialLineFlags = TIOCM_LOOP;
+    rc = ioctl(pData->DeviceFile, TIOCMBIS, &uSerialLineFlags);
+    if (rc < 0)
+        goto ioctl_error;
+
+    /* 
+     * Change current level on the RTS pin to make the ioctl call return in the
+     * monitor thread.
+     */
+    uIoctl = (uSerialLineStatus & TIOCM_CTS) ? TIOCMBIC : TIOCMBIS;
+    uSerialLineFlags = TIOCM_RTS;
+
+    rc = ioctl(pData->DeviceFile, uIoctl, &uSerialLineFlags);
+    if (rc < 0)
+        goto ioctl_error;
+
+    /* Change RTS back to the previous level. */
+    uIoctl = (uIoctl == TIOCMBIC) ? TIOCMBIS : TIOCMBIC;
+
+    rc = ioctl(pData->DeviceFile, uIoctl, &uSerialLineFlags);
     if (rc < 0)
         goto ioctl_error;
 
     /*
      * Set serial device into normal state.
      */
-    rc = ioctl(pData->DeviceFile, TIOCMBIC, TIOCM_LOOP);
+    uSerialLineFlags = TIOCM_LOOP;
+    rc = ioctl(pData->DeviceFile, TIOCMBIC, &uSerialLineFlags);
     if (rc >= 0)
         return VINF_SUCCESS;
 
