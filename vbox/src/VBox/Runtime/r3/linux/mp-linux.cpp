@@ -1,4 +1,4 @@
-/* $Id: mp-linux.cpp 10446 2008-07-09 18:39:22Z vboxsync $ */
+/* $Id: mp-linux.cpp 10470 2008-07-10 13:42:20Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Linux.
  */
@@ -66,6 +66,7 @@ bool rtLinuxSysFsExistsV(const char *pszFormat, va_list va)
     static const size_t cchPrefix = sizeof("/sys/") - 1;
     strcpy(szFilename, "/sys/");
     size_t cch = RTStrPrintfV(&szFilename[cchPrefix], sizeof(szFilename) - cchPrefix, pszFormat, va);
+    NOREF(cch);
     Assert(cch < sizeof(szFilename) - cchPrefix - 1);
 
     struct stat st;
@@ -108,6 +109,7 @@ int rtLinuxSysFsOpenV(const char *pszFormat, va_list va)
     static const size_t cchPrefix = sizeof("/sys/") - 1;
     strcpy(szFilename, "/sys/");
     size_t cch = RTStrPrintfV(&szFilename[cchPrefix], sizeof(szFilename) - cchPrefix, pszFormat, va);
+    NOREF(cch);
     Assert(cch < sizeof(szFilename) - cchPrefix - 1);
 
     return open(szFilename, O_RDONLY, 0);
