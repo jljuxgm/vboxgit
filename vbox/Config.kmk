@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6099 2007-12-17 10:03:55Z vboxsync $
+# $Id: Config.kmk 6100 2007-12-17 10:39:01Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -218,7 +218,7 @@ VBOX_WITH_ISCSI = 1
 # Enable ALSA support for Linux
 VBOX_WITH_ALSA = 1
 # Enable Pulse support for Linux
-#VBOX_WITH_PULSE = 1
+VBOX_WITH_PULSE = 1
 # Disable WINMM support for Windows (not implemented)
 VBOX_WITH_WINMM =
 # Enable the kchmviewer
@@ -2758,7 +2758,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6099 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6100 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
