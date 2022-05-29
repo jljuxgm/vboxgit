@@ -1,4 +1,4 @@
-/* $Id: ldrFile.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: ldrFile.cpp 7169 2008-02-27 13:16:24Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Binary Image Loader, The File Oriented Parts.
  */
@@ -120,7 +120,7 @@ static DECLCALLBACK(const char *) rtldrFileLogName(PRTLDRREADER pReader)
 }
 
 
-/** @copydoc RTLDRREADER::pfnFileMap */
+/** @copydoc RTLDRREADER::pfnMap */
 static DECLCALLBACK(int) rtldrFileMap(PRTLDRREADER pReader, const void **ppvBits)
 {
     PRTLDRREADERFILE pFileReader = (PRTLDRREADERFILE)pReader;
@@ -270,7 +270,7 @@ RTDECL(int) RTLdrOpen(const char *pszFilename, PRTLDRMOD phLdrMod)
 
 /**
  * Opens a binary image file using kLdr.
- * 
+ *
  * @returns iprt status code.
  * @param   pszFilename     Image filename.
  * @param   phLdrMod        Where to store the handle to the loaded module.
@@ -303,6 +303,6 @@ RTDECL(int) RTLdrOpenkLdr(const char *pszFilename, PRTLDRMOD phLdrMod)
 
 #else
     return RTLdrOpen(pszFilename, phLdrMod);
-#endif 
+#endif
 }
 

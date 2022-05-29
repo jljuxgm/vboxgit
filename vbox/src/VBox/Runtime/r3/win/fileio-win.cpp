@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 6994 2008-02-18 14:02:10Z vboxsync $ */
+/* $Id: fileio-win.cpp 7169 2008-02-27 13:16:24Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O, native implementation for the Windows host platform.
  */
@@ -98,6 +98,7 @@ inline bool MySetFilePointer(RTFILE File, uint64_t offSeek, uint64_t *poffNew, u
  * @returns true for file size limit exceeded.
  * @param   File        Filehandle.
  * @param   offSeek     Offset to seek.
+ * @param   uMethod     The seek method.
  */
 DECLINLINE(bool) IsBeyondLimit(RTFILE File, uint64_t offSeek, unsigned uMethod)
 {

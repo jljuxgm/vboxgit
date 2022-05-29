@@ -1,4 +1,4 @@
-/* $Id: fs.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: fs.cpp 7169 2008-02-27 13:16:24Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File System.
  */
@@ -92,8 +92,10 @@ RTFMODE rtFsModeFromDos(RTFMODE fMode, const char *pszName, unsigned cbName)
 /**
  * Converts Unix attributes to Dos-style attributes.
  *
- * @returns
+ * @returns File mode mask.
  * @param   fMode       The mode mask containing dos-style attibutes only.
+ * @param   pszName     The filename which this applies to (hidden check).
+ * @param   cbName      The length of that filename. (optional, set 0)
  */
 RTFMODE rtFsModeFromUnix(RTFMODE fMode, const char *pszName, unsigned cbName)
 {
@@ -179,6 +181,8 @@ bool rtFsModeIsValidPermissions(RTFMODE fMode)
  *
  * @param   pObjInfo        The file system object info structure to setup.
  * @param   pStat           The stat structure to use.
+ * @param   pszName         The filename which this applies to (exe/hidden check).
+ * @param   cbName          The length of that filename. (optional, set 0)
  */
 void rtFsConvertStatToObjInfo(PRTFSOBJINFO pObjInfo, const struct stat *pStat, const char *pszName, unsigned cbName)
 {

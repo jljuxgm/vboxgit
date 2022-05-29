@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 7013 2008-02-19 12:31:17Z vboxsync $ */
+/* $Id: log-vbox.cpp 7169 2008-02-27 13:16:24Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Logging configuration.
  */
@@ -388,7 +388,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
         /*
          * This is where you set your ring-0 logging preferences.
          */
-# if defined(DEBUG_bird) && !defined(IN_GUEST)
+# if 0//defined(DEBUG_bird) && !defined(IN_GUEST)
         RTLogGroupSettings(pLogger, "all=~0 -default.l6.l5.l4.l3");
         RTLogFlags(pLogger, "enabled unbuffered pid tid");
         pLogger->fDestFlags |= RTLOGDEST_DEBUGGER;

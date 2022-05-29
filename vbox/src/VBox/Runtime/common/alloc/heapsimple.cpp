@@ -1,4 +1,4 @@
-/* $Id: heapsimple.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: heapsimple.cpp 7169 2008-02-27 13:16:24Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - A Simple Heap.
  */
@@ -443,7 +443,7 @@ RTDECL(void *) RTHeapSimpleAllocZ(RTHEAPSIMPLE Heap, size_t cb, size_t cbAlignme
  *
  * @returns Pointer to the allocated block.
  * @returns NULL on failure.
- * @param   pHeap       The heap.
+ * @param   pHeapInt    The heap.
  * @param   cb     	Size of the memory block to allocate.
  * @param   uAlignment  The alignment specifications for the allocated block.
  */

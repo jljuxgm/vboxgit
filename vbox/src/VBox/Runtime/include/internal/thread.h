@@ -1,4 +1,4 @@
-/* $Id: thread.h 6961 2008-02-14 17:39:02Z vboxsync $ */
+/* $Id: thread.h 7169 2008-02-27 13:16:24Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Internal RTThread header.
  */
@@ -195,7 +195,7 @@ int rtThreadNativeAdopt(PRTTHREADINT pThread);
  * the caller on a successful return.
  *
  * @returns iprt status code.
- * @param   Thread      The thread in question.
+ * @param   pThread     The thread in question.
  * @param   enmType     The thread type.
  * @remark  Located in sched.
  */

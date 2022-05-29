@@ -1,4 +1,4 @@
-/* $Id: strtonum.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: strtonum.cpp 7169 2008-02-27 13:16:24Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - String To Number Convertion.
  */
@@ -896,7 +896,7 @@ RTDECL(int) RTStrToInt8Ex(const char *pszValue, char **ppszNext, unsigned uBase,
  * @param   pszValue    Pointer to the string value.
  * @param   uBase       The base of the representation used.
  *                      If the function will look for known prefixes before defaulting to 10.
- * @param   pi64        Where to store the converted number. (optional)
+ * @param   pi8         Where to store the converted number. (optional)
  */
 RTDECL(int) RTStrToInt8Full(const char *pszValue, unsigned uBase, int8_t *pi8)
 {
