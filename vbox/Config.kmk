@@ -1,4 +1,4 @@
-# $Id: Config.kmk 11634 2008-08-25 20:39:36Z vboxsync $
+# $Id: Config.kmk 11636 2008-08-25 22:17:46Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1323,11 +1323,22 @@ endif
 ## Edit an inf file an x86 target.
 # @param    1   The inf file to edit.
 # @param    2   The output file.
-VBOX_EDIT_INF32_FN = $(SED) $(if $(VBOX_SIGNING_MODE),-e 's/^;cat  *//', -e '/^;cat /d') -e 's/^;x86  *//' -e '/^;amd64 /d' --output $(2) $(1)
+VBOX_EDIT_INF32_FN = $(SED) $(if $(VBOX_SIGNING_MODE),-e 's/^;cat  *//', -e '/^;cat /d') \
+	-e 's/^;x86  *//' \
+	-e '/^;amd64 /d' \
+	-e 's/^;edit-DriverVer.*/DriverVer = $(date-utc %m\/%d\/%Y),$(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD)/' \
+	--output $(2) \
+	$(1)
 ## Edit an inf file an x86 target.
 # @param    1   The inf file to edit.
 # @param    2   The output file.
-VBOX_EDIT_INF64_FN = $(SED) $(if $(VBOX_SIGNING_MODE),-e 's/^;cat  *//', -e '/^;cat /d') -e 's/^;amd64  *//' -e '/^;x86 /d' --output $(2) $(1)
+VBOX_EDIT_INF64_FN = $(SED) \
+	$(if $(VBOX_SIGNING_MODE),-e 's/^;cat  *//', -e '/^;cat /d')\
+	-e 's/^;amd64  *//' \
+	-e '/^;x86 /d' \
+	-e 's/^;edit-DriverVer.*/DriverVer = $(date-utc %m\/%d\/%Y),$(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD)/' \
+	--output $(2) \
+	$(1)
 
 #
 # Default prefixes and suffixes.
@@ -2986,7 +2997,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11634 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11636 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

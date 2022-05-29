@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10129 2008-07-03 03:07:18Z vboxsync $
+# $Id: Makefile.kmk 11636 2008-08-25 22:17:46Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Windows guest mirror video driver.
 #
@@ -41,6 +41,8 @@ vrdpvd_LIBS        = \
 	$(PATH_SDK_W2K3DDK_LIB)/ntoskrnl.lib \
 	$(PATH_SDK_W2K3DDK_LIB)/hal.lib \
 	$(VBOX_LIB_IPRT_GUEST_R0)
+
+$(error Fix inf editing and dirver signing)
 
 include	$(KBUILD_PATH)/subfooter.kmk
 
