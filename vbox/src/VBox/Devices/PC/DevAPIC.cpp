@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 10492 2008-07-11 08:14:13Z vboxsync $ */
+/* $Id: DevAPIC.cpp 10660 2008-07-15 14:03:30Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -765,8 +765,14 @@ PDMBOTHCBDECL(int) apicGetInterrupt(PPDMDEVINS pDevIns)
 /* Check if the APIC has a pending interrupt/if a TPR change would active one. */
 PDMBOTHCBDECL(bool) apicHasPendingIrq(PPDMDEVINS pDevIns)
 {
+    int irrv;
+
     APICState *s = PDMINS2DATA(pDevIns, APICState *);
-    return false;
+    if (!s) 
+        return false;
+
+    irrv = get_highest_priority_int(s->irr);
+    return irrv >= 0;
 }
 
 
