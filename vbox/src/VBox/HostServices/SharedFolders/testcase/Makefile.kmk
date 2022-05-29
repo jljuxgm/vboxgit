@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
+# $Id: Makefile.kmk 8992 2008-05-21 00:55:09Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service testcases.
 #
@@ -48,6 +48,9 @@ ifeq ($(KBUILD_TARGET),$(KBUILD_HOST))
     $(PATH_TARGET)/tstShflSizes.run
  endif
 endif
+
+TESTING += \
+    $(PATH_TARGET)/tstShflSizes.run
 
 OTHER_CLEAN += \
 	$(PATH_TARGET)/tstShflSizes.run
