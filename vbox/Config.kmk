@@ -1,4 +1,4 @@
-# $Id: Config.kmk 11612 2008-08-25 13:52:37Z vboxsync $
+# $Id: Config.kmk 11618 2008-08-25 14:07:43Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2293,7 +2293,7 @@ ifeq ($(KBUILD_TARGET),win)
 	$(PATH_TOOL_$(VBOX_VCC_TOOL)_ATLMFC_LIB)/atls.lib
  TEMPLATE_VBOXMAINEXE_POST_CMDS          = $(VBOX_SIGN_IMAGE_CMDS)
  TEMPLATE_VBOXMAINEXE_INTERMEDIATES      = \
-	$(VBOX_PATH_SDK)/include/VirtualBox.h
+	$(VBOX_PATH_SDK)/bindings/mscom/include/VirtualBox.h
 
 else # the GCC guys:
 
@@ -2988,7 +2988,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11612 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11618 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
