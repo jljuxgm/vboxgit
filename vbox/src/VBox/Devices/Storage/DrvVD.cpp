@@ -1,4 +1,4 @@
-/** $Id: DrvVD.cpp 6291 2008-01-09 10:57:05Z vboxsync $ */
+/** $Id: DrvVD.cpp 6324 2008-01-10 12:52:59Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -488,7 +488,7 @@ const PDMDRVREG g_DrvVD =
     /* u32Version */
     PDM_DRVREG_VERSION,
     /* szDriverName */
-    "DrvVD",
+    "VD",
     /* pszDescription */
     "Generic VBox disk media driver.",
     /* fFlags */
