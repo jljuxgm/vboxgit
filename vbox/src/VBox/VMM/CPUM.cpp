@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 10570 2008-07-12 16:01:08Z vboxsync $ */
+/* $Id: CPUM.cpp 10571 2008-07-12 16:05:29Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -454,8 +454,8 @@ static int cpumR3CpuIdInit(PVM pVM)
      * is perhaps a bit crudely done as there is probably some relatively harmless
      * info too in these leaves (like words about having a constant TSC).
      */
-    if (pCPUM->aGuestCpuIdStd[0].eax > 2)
-        pCPUM->aGuestCpuIdStd[0].eax = 2;
+    if (pCPUM->aGuestCpuIdStd[0].eax > 5)
+        pCPUM->aGuestCpuIdStd[0].eax = 5;
     for (i = pCPUM->aGuestCpuIdStd[0].eax + 1; i < RT_ELEMENTS(pCPUM->aGuestCpuIdStd); i++)
         pCPUM->aGuestCpuIdStd[i] = pCPUM->GuestCpuIdDef;
 
