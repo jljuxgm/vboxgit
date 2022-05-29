@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-os2.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: timer-r0drv-os2.cpp 7490 2008-03-18 21:01:15Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -106,21 +106,6 @@ DECLASM(int) rtTimerOs2Arm(void);
 DECLASM(int) rtTimerOs2Dearm(void);
 __END_DECLS
 
-
-
-RTDECL(int) RTTimerCreate(PRTTIMER *ppTimer, unsigned uMilliesInterval, PFNRTTIMER pfnTimer, void *pvUser)
-{
-    int rc = RTTimerCreateEx(ppTimer, uMilliesInterval * UINT64_C(1000000), 0, pfnTimer, pvUser);
-    if (RT_SUCCESS(rc))
-    {
-        rc = RTTimerStart(*ppTimer, 0);
-        if (RT_SUCCESS(rc))
-            return rc;
-        int rc2 = RTTimerDestroy(*ppTimer); AssertRC(rc2);
-        *ppTimer = NULL;
-    }
-    return rc;
-}
 
 
 RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, unsigned fFlags, PFNRTTIMER pfnTimer, void *pvUser)
