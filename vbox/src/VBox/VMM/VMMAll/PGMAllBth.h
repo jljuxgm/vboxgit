@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 9754 2008-06-17 11:05:07Z vboxsync $ */
+/* $Id: PGMAllBth.h 9756 2008-06-17 11:26:10Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2185,7 +2185,7 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PGSTPD pPDSrc, RTGCUINTPTR G
 
 # if PGM_GST_TYPE == PGM_GST_PAE || PGM_GST_TYPE == PGM_GST_AMD64
     /* Fetch the pgm pool shadow descriptor. */
-    PPGMPOOLPAGE pShwPde = pgmPoolGetPage(pPool, pPdptDst->a[iPdPte].u & SHW_PDE_PG_MASK);
+    PPGMPOOLPAGE pShwPde = pgmPoolGetPage(pPool, pPdptDst->a[iPdPte].u & X86_PDPE_PG_MASK);
     Assert(pShwPde);
 # endif
 
@@ -3014,7 +3014,7 @@ PGM_BTH_DECL(int, SyncCR3)(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bo
 
         /* Fetch the pgm pool shadow descriptor if the shadow pml4e is present. */
         if (pVM->pgm.s.CTXMID(p,PaePML4)->a[iPML4E].n.u1Present)
-            pShwPdpt = pgmPoolGetPage(pPool, pVM->pgm.s.CTXMID(p,PaePML4)->a[iPML4E].u & SHW_PDE_PG_MASK);
+            pShwPdpt = pgmPoolGetPage(pPool, pVM->pgm.s.CTXMID(p,PaePML4)->a[iPML4E].u & X86_PML4E_PG_MASK);
 
         /* Guest PML4E not present (anymore). */
         if (!pVM->pgm.s.CTXSUFF(pGstPaePML4)->a[iPML4E].n.u1Present)
@@ -3067,7 +3067,7 @@ PGM_BTH_DECL(int, SyncCR3)(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bo
 
             /* Fetch the pgm pool shadow descriptor if the shadow pdpte is present. */
             if (pPdptDst->a[iPDPTE].n.u1Present) 
-                pShwPde = pgmPoolGetPage(pPool, pPdptDst->a[iPDPTE].u & SHW_PDE_PG_MASK);
+                pShwPde = pgmPoolGetPage(pPool, pPdptDst->a[iPDPTE].u & X86_PDPE_PG_MASK);
             else
                 Assert(pPDSrc == NULL);
 
