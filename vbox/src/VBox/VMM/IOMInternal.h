@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 9387 2008-06-04 13:51:21Z vboxsync $ */
+/* $Id: IOMInternal.h 9774 2008-06-17 14:55:50Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -518,8 +518,8 @@ DECLINLINE(PIOMMMIOSTATS) iomMMIOGetStats(PIOM pIOM, RTGCPHYS GCPhys, PIOMMMIORA
 #endif
 
 /* Disassembly helpers used in IOMAll.cpp & IOMAllMMIO.cpp */
-bool iomGetRegImmData(PDISCPUSTATE pCpu, PCOP_PARAMETER pParam, PCPUMCTXCORE pRegFrame, uint32_t *pu32Data, unsigned *pcbSize);
-bool iomSaveDataToReg(PDISCPUSTATE pCpu, PCOP_PARAMETER pParam, PCPUMCTXCORE pRegFrame, unsigned u32Data);
+bool iomGetRegImmData(PDISCPUSTATE pCpu, PCOP_PARAMETER pParam, PCPUMCTXCORE pRegFrame, uint64_t *pu64Data, unsigned *pcbSize);
+bool iomSaveDataToReg(PDISCPUSTATE pCpu, PCOP_PARAMETER pParam, PCPUMCTXCORE pRegFrame, uint64_t u32Data);
 
 __END_DECLS
 
