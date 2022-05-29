@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 8829 2008-05-15 01:37:31Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 8922 2008-05-19 15:44:47Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -3669,7 +3669,6 @@ REMR3DECL(void) REMR3NotifyInterruptSet(PVM pVM)
 REMR3DECL(void) REMR3NotifyInterruptClear(PVM pVM)
 {
     LogFlow(("REMR3NotifyInterruptClear:\n"));
-    VM_ASSERT_EMT(pVM);
     if (pVM->rem.s.fInREM)
         cpu_reset_interrupt(cpu_single_env, CPU_INTERRUPT_HARD);
 }
