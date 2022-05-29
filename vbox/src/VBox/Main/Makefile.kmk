@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8699 2008-05-08 11:16:29Z vboxsync $
+# $Id: Makefile.kmk 8709 2008-05-08 13:43:21Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -47,13 +47,13 @@ ifneq ($(BUILD_TARGET),win)
  endif
  VBOX_MAIN_DEFS += VBOX_WITH_UNIXY_TAP_NETWORKING
 endif
-#if1of ($(KBUILD_TARGET), linux freebsd solaris)
-# VBOX_MAIN_DEFS += VBOX_MAIN_USE_SEMRW
-#else
+if1of ($(KBUILD_TARGET), linux freebsd solaris)
+ VBOX_MAIN_DEFS += VBOX_MAIN_USE_SEMRW
+else
  ifneq ($(VBOX_VERSION_MAJOR)$(VBOX_VERSION_MINOR)$(VBOX_VERSION_BUILD),160)
   VBOX_MAIN_DEFS += VBOX_MAIN_AUTOLOCK_TRAP
  endif
-#endif
+endif
 
 ## @todo eliminate or expand VBOX_MAIN_DEFS.
 
