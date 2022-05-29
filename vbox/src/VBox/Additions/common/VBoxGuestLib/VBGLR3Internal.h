@@ -1,4 +1,4 @@
-/* $Id: VBGLR3Internal.h 6470 2008-01-24 07:09:56Z vboxsync $ */
+/* $Id: VBGLR3Internal.h 7427 2008-03-12 09:54:11Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -32,6 +32,7 @@ void    vbglR3GRFree(VMMDevRequestHeader *pReq);
 DECLINLINE(void) VbglHGCMParmUInt32Set(HGCMFunctionParameter *pParm, uint32_t u32)
 {
     pParm->type = VMMDevHGCMParmType_32bit;
+    pParm->u.value64 = 0; /* init unused bits to 0 */
     pParm->u.value32 = u32;
 }
 
