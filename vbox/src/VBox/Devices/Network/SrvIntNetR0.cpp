@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 10845 2008-07-23 21:53:40Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 10846 2008-07-23 22:03:16Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1757,10 +1757,6 @@ static int intnetR0NetworkCreateIf(PINTNETNETWORK pNetwork, PSUPDRVSESSION pSess
                     rc = RTHandleTableAllocWithCtx(pNetwork->pIntNet->hHtIfs, pIf, pSession, (uint32_t *)&pIf->hIf);
                     if (RT_SUCCESS(rc))
                     {
-                        /* auto activation */ /** @todo do this manually in the future, ditto for setting the MAC address. */
-                        rc = intnetR0IfSetActive(pIf, true /* activate */);
-                        AssertRC(rc);
-
                         *phIf = pIf->hIf;
                         Log(("intnetR0NetworkCreateIf: returns VINF_SUCCESS *phIf=%p cbSend=%u cbRecv=%u cbBuf=%u\n",
                              *phIf, pIf->pIntBufDefault->cbSend, pIf->pIntBufDefault->cbRecv, pIf->pIntBufDefault->cbBuf));
