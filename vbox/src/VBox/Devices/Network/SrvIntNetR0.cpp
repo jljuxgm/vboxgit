@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 11133 2008-08-05 14:08:55Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 11157 2008-08-05 23:08:37Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -2673,7 +2673,7 @@ INTNETR0DECL(int) INTNETR0IfSetPromiscuousModeReq(PINTNET pIntNet, PSUPDRVSESSIO
  * @param   pSession        The caller's session.
  * @param   pMAC            The new MAC address.
  */
-INTNETR0DECL(int) INTNETR0IfSetMacAddress(PINTNET pIntNet, INTNETIFHANDLE hIf, PSUPDRVSESSION pSession, PCPDMMAC pMac)
+INTNETR0DECL(int) INTNETR0IfSetMacAddress(PINTNET pIntNet, INTNETIFHANDLE hIf, PSUPDRVSESSION pSession, PCRTMAC pMac)
 {
     LogFlow(("INTNETR0IfSetMacAddress: pIntNet=%p hIf=%RX32 pMac=%p:{%.6Rhxs}\n", pIntNet, hIf, pMac, pMac));
 

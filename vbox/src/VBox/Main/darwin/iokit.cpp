@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 11100 2008-08-04 12:59:25Z vboxsync $ */
+/* $Id: iokit.cpp 11157 2008-08-05 23:08:37Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -1479,7 +1479,7 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
                         darwinDictGetBool(IfPropsRef, CFSTR("IOPrimaryInterface"), &fPrimaryIf);
 
                         /* Get the MAC address. */
-                        PDMMAC Mac;
+                        RTMAC Mac;
                         AssertBreak(darwinDictGetData(PropsRef, CFSTR("IOMACAddress"), &Mac, sizeof(Mac)));
 
                         /* The BSD Name from the interface dictionary. */

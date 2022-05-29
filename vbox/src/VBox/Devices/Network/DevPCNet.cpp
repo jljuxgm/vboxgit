@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
+/* $Id: DevPCNet.cpp 11157 2008-08-05 23:08:37Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -200,7 +200,7 @@ struct PCNetState_st
     /** Number of times we've reported the link down. */
     RTUINT                              cLinkDownReported;
     /** The configured MAC address. */
-    PDMMAC                              MacConfigured;
+    RTMAC                               MacConfigured;
     /** Alignment padding. */
     uint8_t                             Alignment4[HC_ARCH_BITS == 64 ? 6 : 2];
 
@@ -4178,7 +4178,7 @@ static DECLCALLBACK(int) pcnetLoadPrep(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle
 static DECLCALLBACK(int) pcnetLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle, uint32_t u32Version)
 {
     PCNetState *pData = PDMINS2DATA(pDevIns, PCNetState *);
-    PDMMAC      Mac;
+    RTMAC       Mac;
     if (   SSM_VERSION_MAJOR_CHANGED(u32Version, PCNET_SAVEDSTATE_VERSION)
         || SSM_VERSION_MINOR(u32Version) < 7)
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
@@ -4398,7 +4398,7 @@ static DECLCALLBACK(int) pcnetReceive(PPDMINETWORKPORT pInterface, const void *p
  * @param   pMac            Where to store the MAC address.
  * @thread  EMT
  */
-static DECLCALLBACK(int) pcnetGetMac(PPDMINETWORKCONFIG pInterface, PPDMMAC pMac)
+static DECLCALLBACK(int) pcnetGetMac(PPDMINETWORKCONFIG pInterface, PRTMAC pMac)
 {
     PCNetState *pData = INETWORKCONFIG_2_DATA(pInterface);
     memcpy(pMac, pData->aPROM, sizeof(*pMac));

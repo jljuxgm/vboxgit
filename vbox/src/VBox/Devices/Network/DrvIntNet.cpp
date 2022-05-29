@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 11075 2008-08-02 06:33:24Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 11157 2008-08-05 23:08:37Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -188,7 +188,7 @@ static int drvIntNetRingWriteFrame(PINTNETBUF pBuf, PINTNETRINGBUF pRingBuf, con
     Assert(pBuf);
     Assert(pRingBuf);
     Assert(pvFrame);
-    Assert(cbFrame >= sizeof(PDMMAC) * 2);
+    Assert(cbFrame >= sizeof(RTMAC) * 2);
     uint32_t offWrite = pRingBuf->offWrite;
     Assert(offWrite == RT_ALIGN_32(offWrite, sizeof(INTNETHDR)));
     uint32_t offRead = pRingBuf->offRead;

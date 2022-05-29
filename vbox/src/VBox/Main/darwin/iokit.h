@@ -1,4 +1,4 @@
-/* $Id: iokit.h 10895 2008-07-25 23:21:54Z vboxsync $ */
+/* $Id: iokit.h 11157 2008-08-05 23:08:37Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  */
@@ -54,7 +54,7 @@ typedef struct DARWINETHERNIC
     /** The fake unique identifier. */
     RTUUID Uuid;
     /** The MAC address. */
-    PDMMAC Mac;
+    RTMAC Mac;
     /** Internal category number (0..7). */
     int iCat;
     /** Whether it's wireless (true) or wired (false). */
