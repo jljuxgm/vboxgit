@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7881 2008-04-10 16:01:06Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7882 2008-04-10 16:04:40Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -1822,7 +1822,7 @@ static void pcnetReceiveNoSync(PCNetState *pData, const uint8_t *buf, size_t siz
             /*if (!CSR_LAPPEN(pData))*/
                 rmd.rmd1.stp = 1;
 
-            int count = RT_MIN(4096 - (int)rmd.rmd1.bcnt, size);
+            size_t count = RT_MIN(4096 - (size_t)rmd.rmd1.bcnt, size);
             RTGCPHYS32 rbadr = PHYSADDR(pData, rmd.rmd0.rbadr);
 #if 0
             if (pData->fPrivIfEnabled)
@@ -1861,7 +1861,7 @@ static void pcnetReceiveNoSync(PCNetState *pData, const uint8_t *buf, size_t siz
                 crda = next_crda;
                 rmd  = next_rmd;
 
-                count = RT_MIN(4096 - (int)rmd.rmd1.bcnt, size);
+                count = RT_MIN(4096 - (size_t)rmd.rmd1.bcnt, size);
                 RTGCPHYS32 rbadr = PHYSADDR(pData, rmd.rmd0.rbadr);
 #if 0
                 if (pData->fPrivIfEnabled)
