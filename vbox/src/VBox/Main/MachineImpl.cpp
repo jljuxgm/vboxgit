@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 8570 2008-05-05 12:36:54Z vboxsync $ */
+/* $Id: MachineImpl.cpp 8572 2008-05-05 12:47:59Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -3151,7 +3151,7 @@ HRESULT Machine::openRemoteSession (IInternalSessionControl *aControl,
             AssertRCBreak (vrc2, vrc = vrc2);
 
             newEnvStr = RTStrDup(Utf8Str (aEnvironment));
-            AssertPtrBreak (newEnvStr, vrc = vrc2);
+            AssertPtrBreakStmt (newEnvStr, vrc = vrc2);
 
             /* put new variables to the environment
              * (ignore empty variable names here since RTEnv API
