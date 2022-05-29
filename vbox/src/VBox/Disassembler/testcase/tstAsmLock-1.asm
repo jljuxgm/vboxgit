@@ -1,9 +1,10 @@
-; $Id: tstAsmLock-1.asm 8935 2008-05-19 20:39:21Z vboxsync $
+; $Id: tstAsmLock-1.asm 8937 2008-05-20 00:52:26Z vboxsync $
 ;; @file
 ; Disassembly testcase - Valid lock sequences and related instructions.
 ;
-; The intention is to check in a binary and the disassembler output.
-; Both will be recreated and verified during testing.
+; This is a build test, that means it will be assembled, disassembled,
+; then the disassembly output will be assembled and the new binary will
+; compared with the original.
 ;
 
 ;
@@ -22,7 +23,7 @@
 ; additional information or have any questions.
 ;
 
-    BITS 32
+    BITS TEST_BITS
 
     ; ADC
 

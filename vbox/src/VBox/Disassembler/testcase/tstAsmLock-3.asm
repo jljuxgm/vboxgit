@@ -1,4 +1,4 @@
-; $Id: tstAsmLock-3.asm 8935 2008-05-19 20:39:21Z vboxsync $
+; $Id: tstAsmLock-3.asm 8937 2008-05-20 00:52:26Z vboxsync $
 ;; @file
 ; Disassembly testcase - Invalid lock sequences for non-locking instructions.
 ;
@@ -22,7 +22,7 @@
 ; additional information or have any questions.
 ;
 
-    BITS 32
+    BITS TEST_BITS
 
     lock mov ebp, esp
     lock mov byte [0], 0
@@ -38,6 +38,11 @@
     lock mov [ebx], dx
     lock mov [ebx], dl
     lock ret
+%if TEST_BITS != 64
     lock pop  ebp
     lock push esp
+%else
+    lock pop  rbp
+    lock push rsp
+%endif
 

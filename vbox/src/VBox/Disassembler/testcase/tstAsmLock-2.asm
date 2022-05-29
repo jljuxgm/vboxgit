@@ -1,4 +1,4 @@
-; $Id: tstAsmLock-2.asm 8935 2008-05-19 20:39:21Z vboxsync $
+; $Id: tstAsmLock-2.asm 8937 2008-05-20 00:52:26Z vboxsync $
 ;; @file
 ; Disassembly testcase - Invalid invariants.
 ;
@@ -22,7 +22,7 @@
 ; additional information or have any questions.
 ;
 
-    BITS 32
+    BITS TEST_BITS
 
     ; ADC
     ; ADD
