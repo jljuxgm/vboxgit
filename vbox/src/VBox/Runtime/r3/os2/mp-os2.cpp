@@ -1,4 +1,4 @@
-/* $Id: mp-os2.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: mp-os2.cpp 8194 2008-04-19 21:02:49Z vboxsync $ */
 /** @file
  * Incredibly Portable Runtime - Multiprocessor, OS/2.
  */
@@ -95,7 +95,7 @@ RTDECL(RTCPUID) RTMpGetCount(void)
 }
 
 
-RTDECL(PRTCPUSET) RTMpGetOnlineSet(PRTCPUSET pSet);
+RTDECL(PRTCPUSET) RTMpGetOnlineSet(PRTCPUSET pSet)
 {
     union
     {

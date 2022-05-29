@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: thread-os2.cpp 8194 2008-04-19 21:02:49Z vboxsync $ */
 /** @file
  * Incredibly Portable Runtime - Threads, OS/2.
  */
@@ -239,7 +239,7 @@ RTR3DECL(int) RTTlsAllocEx(PRTTLS piTls, PFNRTTLSDTOR pfnDestructor)
     if (iTls != -1)
     {
         if (    !pfnDestructor
-            ||  __libc_TLSDestructor(iTls, (void (*)(void *, int, unsigned))pfnDestructor, fFlags) != -1)
+            ||  __libc_TLSDestructor(iTls, (void (*)(void *, int, unsigned))pfnDestructor, 0) != -1)
         {
             *piTls = iTls;
             return VINF_SUCCESS;
