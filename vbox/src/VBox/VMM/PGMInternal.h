@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 7037 2008-02-20 14:02:58Z vboxsync $ */
+/* $Id: PGMInternal.h 7039 2008-02-20 14:32:28Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -923,7 +923,11 @@ typedef struct PGMRAMRANGE
 #else
 # if HC_ARCH_BITS == 32
     /** Padding to make aPage aligned on sizeof(PGMPAGE). */
+#  ifdef RT_OS_WINDOWS
+    uint32_t                            u32Reserved[1];
+#  else
     uint32_t                            u32Reserved[2];
+#  endif
 # endif
 #endif
 
