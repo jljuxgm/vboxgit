@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: strformat.cpp 6296 2008-01-09 13:11:37Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - String Formatter.
  */
@@ -219,7 +219,7 @@ static int rtStrFormatNumber(char *psz, KSIZE64 ullValue, unsigned int uiBase, s
     /*
      * Special (0/0x).
      */
-    if (fFlags & RTSTR_F_SPECIAL && (uiBase % 8) == 0)
+    if ((fFlags & RTSTR_F_SPECIAL) && (uiBase % 8) == 0)
     {
         psz[i++] = '0';
         if (uiBase == 16)
