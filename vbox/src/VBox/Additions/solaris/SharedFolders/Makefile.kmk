@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10129 2008-07-03 03:07:18Z vboxsync $
+# $Id: Makefile.kmk 10307 2008-07-07 11:18:16Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris Shared folder kernel module.
 #
@@ -40,6 +40,13 @@ vboxvfs_LIBS          = \
 	$(VBOX_LIB_IPRT_GUEST_R0)
 #@todo find out why the additions box freaks out with this...
 #vboxvfs_LDFLAGS      += -N drv/vboxguest
+
+#
+# mount - Userland mount wrapper for vboxvfs
+#
+PROGRAMS                += vboxvfsmount
+vboxvfsmount_TEMPLATE    = VBOXGUESTR3EXE
+vboxvfsmount_SOURCES     = vboxvfs_mount.c
 
 include	$(KBUILD_PATH)/subfooter.kmk
 
