@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: PGMPool.cpp 9691 2008-06-13 15:56:28Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -199,7 +199,7 @@ int pgmR3PoolInit(PVM pVM)
     {
         paUsers[i].iNext = i + 1;
         paUsers[i].iUser = NIL_PGMPOOL_IDX;
-        paUsers[i].iUserTable = 0xfffe;
+        paUsers[i].iUserTable = 0xfffffffe;
     }
     paUsers[cMaxUsers - 1].iNext = NIL_PGMPOOL_USER_INDEX;
 #endif
