@@ -1,4 +1,4 @@
-/** $Id: VBoxControl.cpp 11105 2008-08-04 14:40:46Z vboxsync $ */
+/** $Id: VBoxControl.cpp 11114 2008-08-04 16:48:29Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface
  */
@@ -982,7 +982,7 @@ static int setGuestProperty(int argc, char *argv[])
             usageOK = false;
         else
         {
-            RTPrintf("You may not specify flags without a value");
+            VBoxControlError("You may not specify flags without a value");
             return 1;
         }
     }
