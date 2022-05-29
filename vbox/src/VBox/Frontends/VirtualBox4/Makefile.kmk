@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8210 2008-04-21 08:21:36Z vboxsync $
+# $Id: Makefile.kmk 8232 2008-04-21 14:25:36Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -727,7 +727,7 @@ VirtualBox_SOURCES += src/VBoxAboutNonOSEDlg.cpp
 VirtualBox_QT_MOCHDRS += include/VBoxAboutNonOSEDlg.h
 endif
 
-# non-OSE version is always necessary for lupdate/lrelease
+# OSE version is always necessary for lupdate/lrelease
 VirtualBox_QT_UISRCS4 += ui/VBoxAboutDlg.ui
 
 # Commit the magic.
