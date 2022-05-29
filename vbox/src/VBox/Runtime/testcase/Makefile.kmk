@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10944 2008-07-29 18:08:58Z vboxsync $
+# $Id: Makefile.kmk 11016 2008-07-30 21:55:23Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -71,6 +71,7 @@ PROGRAMS += \
 	tstLdr-4 \
 	tstLdrLoad \
 	tstLog \
+	tstMemAutoPtr \
 	tstMove \
 	tstMp-1 \
 	tstNoCrt-1 \
@@ -249,6 +250,8 @@ tstLdr-4_LIBS = \
 tstLdrLoad_SOURCES = tstLdrLoad.cpp
 
 tstLog_SOURCES = tstLog.cpp
+
+tstMemAutoPtr_SOURCES = tstMemAutoPtr.cpp
 
 tstMove_SOURCES = tstMove.cpp
 
