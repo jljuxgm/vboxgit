@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 6796 2008-02-04 18:19:58Z vboxsync $ */
+/* $Id: VMReq.cpp 7559 2008-03-25 17:08:42Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -715,6 +715,7 @@ VMR3DECL(int) VMR3ReqWait(PVMREQ pReq, unsigned cMillies)
      * Check for deadlock condition
      */
     PUVM pUVM = pReq->pUVM;
+    NOREF(pUVM);
     AssertMsg(!pUVM->pVM || !VMMR3LockIsOwner(pUVM->pVM),
               ("Waiting for EMT to process a request, but we own the global VM lock!?!?!?!\n"));
 
