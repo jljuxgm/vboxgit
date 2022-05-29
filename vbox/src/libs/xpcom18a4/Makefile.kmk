@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11641 2008-08-26 07:36:18Z vboxsync $
+# $Id: Makefile.kmk 11664 2008-08-26 14:55:44Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1382,7 +1382,7 @@ VBoxPython-inst-py-xpcom_SOURCES = \
 	python/server/policy.py=>server/policy.py
 
 # Python Client Module - a sample script.
-VBoxPython-inst-sample_INST = $(INST_SDK)/bindings/xpcom/python/sample/
+VBoxPython-inst-sample_INST = $(INST_SDK)bindings/xpcom/python/sample/
 VBoxPython-inst-sample_SOURCES = \
 	python/sample/vboxshell.py
 
