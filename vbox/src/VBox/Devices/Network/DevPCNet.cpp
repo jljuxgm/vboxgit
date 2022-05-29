@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7675 2008-04-01 08:30:39Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7683 2008-04-01 13:40:58Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -726,12 +726,12 @@ DECLINLINE(int) pcnetRmdLoad(PCNetState *pData, RMD *rmd, RTGCPHYS32 addr, bool 
     if (pData->fPrivIfEnabled)
     {
         /* RX/TX descriptors shared between host and guest => direct copy */
-        uint8_t *pv = (uint8_t*)pData->CTXSUFF(pSharedMMIO)
+        uint8_t *pb = (uint8_t*)pData->CTXSUFF(pSharedMMIO)
                     + (addr - pData->GCRDRA)
                     + pData->CTXSUFF(pSharedMMIO)->V.V1.u32OffRxDescriptors;
-        if (!(pv[7] & 0x80) && fRetIfNotOwn)
+        if (!(pb[7] & 0x80) && fRetIfNotOwn)
             return false;
-        memcpy(rmd, pv, 16);
+        memcpy(rmd, pb, 16);
         return true;
     }
     else if (RT_UNLIKELY(BCR_SWSTYLE(pData) == 0))
