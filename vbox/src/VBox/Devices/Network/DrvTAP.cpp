@@ -1,4 +1,4 @@
-/** $Id: DrvTAP.cpp 5719 2007-11-13 11:05:17Z vboxsync $ */
+/** $Id: DrvTAP.cpp 5931 2007-12-03 04:02:15Z vboxsync $ */
 /** @file
  * Universial TAP network transport driver.
  */
@@ -707,13 +707,13 @@ static int SolarisDLPIErr2VBoxErr(int rc)
         case DLPI_EVERNOTSUP:
         case DLPI_EMODENOTSUP:
         case DLPI_ERAWNOTSUP:
-        case DLPI_ENOTENOTSUP:
+        /* case DLPI_ENOTENOTSUP: */
         case DLPI_EUNAVAILSAP:      return VERR_NOT_SUPPORTED;
 
         /*  Define VBox error codes for these, if really needed. */
         case DLPI_ENOLINK:
         case DLPI_EBADLINK:
-        case DLPI_ENOTEIDINVAL:
+        /* case DLPI_ENOTEIDINVAL: */
         case DLPI_EBADMSG:
         case DLPI_ENOTSTYLE2:       return VERR_GENERAL_FAILURE;
     }
