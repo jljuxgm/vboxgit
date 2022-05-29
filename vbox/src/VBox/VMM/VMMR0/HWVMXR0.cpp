@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 10465 2008-07-10 11:51:19Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 10466 2008-07-10 12:01:10Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1408,6 +1408,14 @@ ResumeExecution:
     rc = VMXReadVMCS(VMX_VMCS_GUEST_RFLAGS,           &val);
     AssertRC(rc);
     pCtx->eflags.u32        = val;
+
+    /* Update the APIC with the cached TPR value. */
+    if (    pCtx->msrEFER & MSR_K6_EFER_LMA
+        &&  pVM->hwaccm.s.vmx.pAPIC)
+    {
+        rc = PDMApicSetTPR(pVM, pVM->hwaccm.s.vmx.pAPIC[0x80] >> 4);
+        AssertRC(rc);
+    }
 
     /* Take care of instruction fusing (sti, mov ss) */
     rc |= VMXReadVMCS(VMX_VMCS_GUEST_INTERRUPTIBILITY_STATE, &val);
