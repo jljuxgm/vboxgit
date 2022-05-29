@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6024 2007-12-09 18:00:38Z vboxsync $
+# $Id: Makefile.kmk 6045 2007-12-11 06:24:21Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -67,6 +67,10 @@ vboxadd_INCS         := $(PATH_SUB_CURRENT) \
 vboxadd_SOURCES       = \
 	VBoxGuest-solaris.c \
 	VBoxGuest.cpp
+vboxadd_LIBS          = \
+	$(PATH_LIB)/additions/VBoxGuestR0Lib$(VBOX_SUFF_LIB) \
+	$(PATH_LIB)/additions/VBoxGuestR0LibBase$(VBOX_SUFF_LIB) \
+	$(PATH_LIB)/additions/RuntimeGuestR0$(VBOX_SUFF_LIB)
 endif
 
 include	$(PATH_KBUILD)/subfooter.kmk
