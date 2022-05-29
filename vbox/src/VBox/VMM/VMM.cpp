@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 9244 2008-05-30 11:50:49Z vboxsync $ */
+/* $Id: VMM.cpp 9281 2008-06-02 08:28:30Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2516,7 +2516,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, int rcErr)
                 if (VBOX_SUCCESS(rc))
                 {
                     pHlp->pfnPrintf(pHlp,
-                                    "!! EIP in %s (%p) at rva %x near symbols:\n"
+                                    "!! EIP in %s (%VGv) at rva %x near symbols:\n"
                                     "!!    %VGv rva %VGv off %08x  %s\n"
                                     "!!    %VGv rva %VGv off -%08x %s\n",
                                     szModName,  GCPtrMod, (unsigned)(uEIP - GCPtrMod),
