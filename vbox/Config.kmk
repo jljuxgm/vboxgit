@@ -1,4 +1,4 @@
-# $Id: Config.kmk 9954 2008-06-26 14:01:49Z vboxsync $
+# $Id: Config.kmk 10023 2008-06-30 15:21:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2759,7 +2759,7 @@ TEMPLATE_VBOXGUESTR0_LIBS.win.x86   = \
 	$(PATH_SDK_W2K3DDK_LIB)/int64.lib
 TEMPLATE_VBOXGUESTR0_DEFS        = $(TEMPLATE_VBOXR0DRV_DEFS) IN_GUEST IN_GUEST_R0
 ifeq ($(KBUILD_TARGET),solaris) # No VBI for the guest additions yet.
- TEMPLATE_VBOXGUESTR0_LDFLAGS    = -r
+ TEMPLATE_VBOXGUESTR0_LDFLAGS    = -r -dy
 endif
 
 #
@@ -2866,7 +2866,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9954 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10023 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
