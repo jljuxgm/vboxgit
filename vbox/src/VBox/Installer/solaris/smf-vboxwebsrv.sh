@@ -1,5 +1,5 @@
 #!/sbin/sh
-# $Id: smf-vboxwebsrv.sh 11475 2008-08-19 08:48:02Z vboxsync $
+# $Id: smf-vboxwebsrv.sh 11506 2008-08-20 09:07:36Z vboxsync $
 
 # Copyright (C) 2008 Sun Microsystems, Inc.
 #
@@ -48,7 +48,7 @@ case $VW_OPT in
         [ -z "$VW_USER" ] && VW_USER=root
         [ -z "$VW_HOST" ] && VW_HOST=localhost
         [ -z "$VW_PORT" -o "$VW_PORT" -eq 0 ] && VW_PORT=18083
-        su "$VW_USER" -c /opt/VirtualBox/vboxwebsrv --daemonize --host "$VW_HOST" --port "$VW_PORT"
+        su "$VW_USER" -c "LOGNAME=\"$VW_USER\" USER=\"$VW_USER\" /opt/VirtualBox/vboxwebsrv --background --host \"$VW_HOST\" --port \"$VW_PORT\""
 
         VW_EXIT=$?
         if [ $VW_EXIT != 0 ]; then
