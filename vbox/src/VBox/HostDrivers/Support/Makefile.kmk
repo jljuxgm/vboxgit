@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9470 2008-06-06 12:19:12Z vboxsync $
+# $Id: Makefile.kmk 9587 2008-06-11 00:51:04Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -129,6 +129,7 @@ ifdef VBOX_SIGNING_MODE
  VBoxDrv_NOINST       = true
 endif
 VBoxDrv_DEFS          = IN_RT_R0 IN_SUP_R0 USE_NEW_OS_INTERFACE_FOR_MM
+#USE_NEW_OS_INTERFACE_FOR_GIP
 ifdef VBOX_WITH_IDT_PATCHING
 VBoxDrv_DEFS         += VBOX_WITH_IDT_PATCHING
 endif

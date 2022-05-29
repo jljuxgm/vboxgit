@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv.h 9309 2008-06-02 15:11:59Z vboxsync $ */
+/* $Id: mp-r0drv.h 9588 2008-06-11 00:52:02Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Internal Header.
  */
@@ -33,6 +33,8 @@
 
 #include <iprt/mp.h>
 
+__BEGIN_DECLS
+
 /**
  * MP callback
  *
@@ -62,5 +64,7 @@ typedef RTMPARGS *PRTMPARGS;
 int rtR0MpNotificationNativeInit(void *pvOS);
 void rtR0MpNotificationNativeTerm(void *pvOS);
 void rtMpNotificationDoCallbacks(RTMPEVENT enmEvent, RTCPUID idCpu);
+
+__END_DECLS
 
 #endif
