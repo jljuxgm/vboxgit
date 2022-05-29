@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 9647 2008-06-12 09:34:27Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 9649 2008-06-12 09:48:30Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -396,7 +396,7 @@ CPUMDECL(void) CPUMSetGuestCtxCore(PVM pVM, PCCPUMCTXCORE pCtxCore)
     *pCtxCoreDst = *pCtxCore;
 
     /* Mask away invalid parts of the cpu context. */
-    if (CPUMGetGuestMode(pVM) != CPUMMODE_LONG)
+    if (!CPUMIsGuestInLongMode(pVM))
     {
         uint64_t u64Mask = UINT64_C(0xffffffff);
 
