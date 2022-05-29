@@ -1,4 +1,4 @@
-/* $Id: RTUuidCreate-generic.cpp 9741 2008-06-16 22:46:46Z vboxsync $ */
+/* $Id: RTUuidCreate-generic.cpp 9744 2008-06-16 22:53:34Z vboxsync $ */
 /** @file
  * IPRT - UUID, Generic RTUuidCreate implementation.
  */
@@ -41,7 +41,6 @@
 /* WARNING: This implementation ASSUMES little endian. Needs testing on big endian! */
 
 
-/** @todo move to a different file. */
 RTDECL(int)  RTUuidCreate(PRTUUID pUuid)
 {
     /* validate input. */

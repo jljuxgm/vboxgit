@@ -1,4 +1,4 @@
-/* $Id: RTUuidCreate-win.cpp 9741 2008-06-16 22:46:46Z vboxsync $ */
+/* $Id: RTUuidCreate-win.cpp 9744 2008-06-16 22:53:34Z vboxsync $ */
 /** @file
  * IPRT - UUID, Windows RTUuidCreate implementation.
  */
@@ -40,7 +40,6 @@
 #include <iprt/err.h>
 
 
-/** @todo split out this guy */
 RTDECL(int)  RTUuidCreate(PRTUUID pUuid)
 {
     /* check params */
