@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 10683 2008-07-16 07:45:39Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 10687 2008-07-16 09:22:28Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -769,11 +769,6 @@ HWACCMR0DECL(int) HWACCMR0Leave(PVM pVM)
     /** @note It's rather tricky with longjmps done by e.g. Log statements or the page fault handler. */
     /*        We must restore the host FPU here to make absolutely sure we don't leave the guest FPU state active
      *        or trash somebody else's FPU state.
-     */
-
-    /*
-     * @note We are trashing our own FPU state. That could be a problem if some ring 3 code relies on the FPU control
-     *       word having a specific value (exceptions, precision etc).
      */
     /* Save the guest FPU and XMM state if necessary. */
     if (CPUMIsGuestFPUStateActive(pVM))

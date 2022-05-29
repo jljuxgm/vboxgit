@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 10569 2008-07-12 15:59:27Z vboxsync $
+; $Id: CPUMInternal.mac 10687 2008-07-16 09:22:28Z vboxsync $
 ;; @file
 ; CPUM - Internal header file.
 ;
@@ -404,6 +404,10 @@ struc CPUM
     ; CPUID eax=1
     .CPUFeatures.edx      resd    1
     .CPUFeatures.ecx      resd    1
+
+    ; CPUID eax=0x80000001
+    .CPUFeaturesExt.edx   resd    1
+    .CPUFeaturesExt.ecx   resd    1
 
     .enmCPUVendor         resd    1
 
