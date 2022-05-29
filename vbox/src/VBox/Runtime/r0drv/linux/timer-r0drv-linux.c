@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 9371 2008-06-03 22:46:03Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 9372 2008-06-04 01:10:06Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -641,7 +641,7 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
      * Validate.
      */
     AssertPtrReturn(pTimer, VERR_INVALID_HANDLE);
-    AssertPtrReturn(pTimer->u32Magic == RTTIMER_MAGIC, VERR_INVALID_HANDLE);
+    AssertReturn(pTimer->u32Magic == RTTIMER_MAGIC, VERR_INVALID_HANDLE);
 
     if (!pTimer->fSuspended)
         return VERR_TIMER_ACTIVE;
@@ -683,7 +683,7 @@ RTDECL(int) RTTimerStop(PRTTIMER pTimer)
      * Validate.
      */
     AssertPtrReturn(pTimer, VERR_INVALID_HANDLE);
-    AssertPtrReturn(pTimer->u32Magic == RTTIMER_MAGIC, VERR_INVALID_HANDLE);
+    AssertReturn(pTimer->u32Magic == RTTIMER_MAGIC, VERR_INVALID_HANDLE);
 
     if (pTimer->fSuspended)
         return VERR_TIMER_SUSPENDED;
@@ -712,7 +712,7 @@ RTDECL(int) RTTimerDestroy(PRTTIMER pTimer)
     if (pTimer == /*NIL_RTTIMER*/ NULL)
         return VINF_SUCCESS;
     AssertPtrReturn(pTimer, VERR_INVALID_HANDLE);
-    AssertPtrReturn(pTimer->u32Magic == RTTIMER_MAGIC, VERR_INVALID_HANDLE);
+    AssertReturn(pTimer->u32Magic == RTTIMER_MAGIC, VERR_INVALID_HANDLE);
 
     /*
      * Remove the MP notifications first because it'll reduce the risk of
