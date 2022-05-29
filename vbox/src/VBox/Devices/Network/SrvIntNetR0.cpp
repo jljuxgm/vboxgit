@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 9181 2008-05-27 23:14:15Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 9694 2008-06-14 03:15:06Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1476,7 +1476,7 @@ INTNETR0DECL(int) INTNETR0Open(PINTNET pIntNet, PSUPDRVSESSION pSession, const c
     {
         /*
          * Create a new interface to this network.
-         * On failure we close the network. On success it remains open untill the
+         * On failure we close the network. On success it remains open until the
          * interface is destroyed or the last session is doing cleanup (order problems).
          */
         rc = INTNETNetworkCreateIf(pNetwork, pSession, cbSend, cbRecv, phIf);
