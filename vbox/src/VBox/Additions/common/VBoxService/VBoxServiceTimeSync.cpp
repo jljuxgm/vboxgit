@@ -1,4 +1,4 @@
-/** $Id: VBoxServiceTimeSync.cpp 6118 2007-12-18 09:55:20Z vboxsync $ */
+/** $Id: VBoxServiceTimeSync.cpp 6709 2008-02-01 08:14:23Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -174,7 +174,7 @@ DECLCALLBACK(int) VBoxServiceTimeSyncWorker(bool volatile *pfShutdown)
 {
     RTTIME Time;
     char sz[64];
-    int rc;
+    int rc = VINF_SUCCESS;
 
     unsigned cErrors = 0;
     for (;;)
