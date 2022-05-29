@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 8040 2008-04-16 13:33:20Z vboxsync $ */
+/* $Id: PGM.cpp 8089 2008-04-17 11:27:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2035,7 +2035,7 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
 #if HC_ARCH_BITS == 64
 LogRel(("Mapping: %VGv -> %VGv %s\n", pMapping->GCPtr, GCPtr, pMapping->pszDesc));
 #endif
-            pgmR3MapRelocate(pVM, pMapping, pMapping->GCPtr >> X86_PD_SHIFT, GCPtr >> X86_PD_SHIFT);
+            pgmR3MapRelocate(pVM, pMapping, pMapping->GCPtr, GCPtr);
         }
         else
             Log(("pgmR3Load: '%s' needed no relocation (%VGv)\n", szDesc, GCPtr));
