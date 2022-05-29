@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibDaemonize.cpp 10984 2008-07-30 13:37:15Z vboxsync $ */
+/** $Id: VBoxGuestR3LibDaemonize.cpp 11179 2008-08-06 14:45:17Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, daemonize a process.
  */
@@ -74,7 +74,7 @@ VBGLR3DECL(int) VbglR3Daemonize(bool fNoChDir, bool fNoClose,
 
 #elif defined(RT_OS_OS2)
     /** @todo create a pidfile if this is (/was :) ) usual on OS/2 */
-    noref(pszPidfile);
+    NOREF(pszPidfile);
     PPIB pPib;
     PTIB pTib;
     DosGetInfoBlocks(&pTib, &pPib);
