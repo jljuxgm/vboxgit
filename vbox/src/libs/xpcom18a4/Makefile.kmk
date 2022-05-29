@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11579 2008-08-22 15:54:58Z vboxsync $
+# $Id: Makefile.kmk 11580 2008-08-22 15:58:51Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -38,8 +38,8 @@ XPCOM_C_NAMESPACE_MAP=$(VBOX_PATH_XPCOM_SRC)/xpcom-namespace-cleanup.map
 # where the whitelisting of symbols via the map file is not used).
 
 
-# Temporary disable Python on Solaris, as there's header conflict
-ifneq ($(KBUILD_TARGET),solaris)
+# Temporary disable everywhere but on Linux, as there's header conflict
+if1of ($(KBUILD_TARGET), linux)
 # Find most appropriate Python headers
 PYTHON_INCS=$(lastword $(sort $(wildcard /usr/include/python2.*/)))
 ifeq ($(wildcard $(PYTHON_INCS)/Python.h),)
