@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9207 2008-05-28 17:51:04Z vboxsync $
+# $Id: Makefile.kmk 9209 2008-05-28 17:52:25Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -654,15 +654,7 @@ $(call DIRDEP,$(PATH_VirtualBox)/include/):
 	$(call MSG_MKDIR,$@)
 	$(QUIET)$(MKDIR) -p $@
 
-# this is actually necessary only for Win32 target with disabled dependencies
-define def_wrapper_deps
-$(src): $(WRAPPERSFILE) $(WRAPPERSINCFILE)
-endef
-
-$(foreach src,$(VirtualBox_SOURCES),$(eval $(def_wrapper_deps)))
-
 # static images imported from VBoxUI.pro as VirtualBox_QT_IMAGES
-
 $(PATH_VirtualBox)/ui/vbox_image_collection.txt: VBoxUI.pro $(VirtualBox_QT_IMAGES)
 	$(RM) -f $@
 	$(APPEND) -v $@ VirtualBox_QT_IMAGES
