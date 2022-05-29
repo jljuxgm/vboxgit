@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 9021 2008-05-21 14:38:13Z vboxsync $ */
+/* $Id: PGMInternal.h 9026 2008-05-21 15:33:04Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2578,7 +2578,6 @@ void            pgmUnlock(PVM pVM);
 
 PGMGCDECL(int)  pgmGCGuestPDWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, void *pvFault, RTGCPHYS GCPhysFault, void *pvUser);
 PGMDECL(int)    pgmPhysRomWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, void *pvFault, RTGCPHYS GCPhysFault, void *pvUser);
-int             pgmR3ChangeMode(PVM pVM, PGMMODE enmGuestMode);
 
 int             pgmR3SyncPTResolveConflict(PVM pVM, PPGMMAPPING pMapping, PX86PD pPDSrc, RTGCPTR GCPtrOldMapping);
 int             pgmR3SyncPTResolveConflictPAE(PVM pVM, PPGMMAPPING pMapping, RTGCPTR GCPtrOldMapping);
