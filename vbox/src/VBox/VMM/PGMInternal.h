@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 9881 2008-06-23 14:55:44Z vboxsync $ */
+/* $Id: PGMInternal.h 9888 2008-06-23 15:46:11Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1290,8 +1290,10 @@ typedef PGMPAGER3MAPTLB *PPGMPAGER3MAPTLB;
 #define PGMPOOL_IDX_PDPT        7
 /** Page Map Level-4 (64-bit root). */
 #define PGMPOOL_IDX_PML4        8
+/** AMD64 cr3 level. */
+#define PGMPOOL_IDX_AMD64_CR3   9
 /** The first normal index. */
-#define PGMPOOL_IDX_FIRST       9
+#define PGMPOOL_IDX_FIRST       10
 /** The last valid index. (inclusive, 14 bits) */
 #define PGMPOOL_IDX_LAST        0x3fff
 /** @} */
@@ -1999,6 +2001,9 @@ typedef struct PGM
     R3R0PTRTYPE(PX86PML4)       pHCPaePML4;
     /** The Physical Address (HC) of the Page Map Level 4 table. */
     RTHCPHYS                    HCPhysPaePML4;
+    /** The pgm pool page descriptor for the current active CR3. */
+    R3R0PTRTYPE(PPGMPOOLPAGE)   pShwAmd64CR3;
+
     /** @}*/
 
     /** @name Function pointers for Shadow paging.
