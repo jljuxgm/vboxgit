@@ -1,6 +1,6 @@
-/* $Id: timesupref.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: timesupref.h 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Time using SUPLib, the C Code Template.
+ * Incredibly Portable Runtime - Time using SUPLib, the C Code Template.
  */
 
 /*

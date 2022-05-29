@@ -1,6 +1,6 @@
-/* $Id: tstPrfRT.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstPrfRT.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime testcase - profile some of the important functions.
+ * Incredibly Portable Runtime testcase - profile some of the important functions.
  */
 
 /*

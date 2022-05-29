@@ -1,6 +1,6 @@
-/* $Id: path.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: path.h 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - RTPath Internal header.
+ * Incredibly Portable Runtime - RTPath Internal header.
  */
 
 /*

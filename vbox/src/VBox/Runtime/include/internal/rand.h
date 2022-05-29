@@ -1,6 +1,6 @@
-/* $Id: rand.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: rand.h 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Internal RTRand header
+ * Incredibly Portable Runtime - Internal RTRand header
  */
 
 /*

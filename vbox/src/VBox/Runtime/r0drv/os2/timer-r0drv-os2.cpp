@@ -1,6 +1,6 @@
-/* $Id: timer-r0drv-os2.cpp 7490 2008-03-18 21:01:15Z vboxsync $ */
+/* $Id: timer-r0drv-os2.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, OS/2.
+ * Incredibly Portable Runtime - Memory Allocation, Ring-0 Driver, OS/2.
  */
 
 /*

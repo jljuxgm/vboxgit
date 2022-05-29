@@ -1,6 +1,6 @@
-/* $Id: mp-r0drv.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: mp-r0drv.h 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Multiprocessor, Ring-0 Driver, Internal Header.
+ * Incredibly Portable Runtime - Multiprocessor, Ring-0 Driver, Internal Header.
  */
 
 /*

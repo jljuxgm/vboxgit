@@ -1,6 +1,6 @@
-/* $Id: time-r0drv-freebsd.c 3977 2007-08-02 00:37:43Z vboxsync $ */
+/* $Id: time-r0drv-freebsd.c 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Time, Ring-0 Driver, FreeBSD.
+ * Incredibly Portable Runtime - Time, Ring-0 Driver, FreeBSD.
  */
 
 /*

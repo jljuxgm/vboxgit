@@ -1,6 +1,6 @@
-/* $Id: the-nt-kernel.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: the-nt-kernel.h 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Include all necessary headers for the NT kernel.
+ * Incredibly Portable Runtime - Include all necessary headers for the NT kernel.
  */
 
 /*

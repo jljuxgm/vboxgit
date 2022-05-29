@@ -1,6 +1,6 @@
-/* $Id: thread-r0drv-os2.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: thread-r0drv-os2.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Threads (Part 1), Ring-0 Driver, OS/2.
+ * Incredibly Portable Runtime - Threads (Part 1), Ring-0 Driver, OS/2.
  */
 
 /*

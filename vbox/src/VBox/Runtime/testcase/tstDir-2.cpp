@@ -1,6 +1,6 @@
-/* $Id: tstDir-2.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstDir-2.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime Testcase - Directory listing & filtering .
+ * Incredibly Portable Runtime Testcase - Directory listing & filtering .
  */
 
 /*

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: MachineImpl.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -89,7 +89,7 @@
 static const char DefaultMachineConfig[] =
 {
     "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" RTFILE_LINEFEED
-    "<!-- innotek VirtualBox Machine Configuration -->" RTFILE_LINEFEED
+    "<!-- Sun xVM VirtualBox Machine Configuration -->" RTFILE_LINEFEED
     "<VirtualBox xmlns=\"" VBOX_XML_NAMESPACE "\" "
         "version=\"" VBOX_XML_VERSION_FULL "\">" RTFILE_LINEFEED
     "</VirtualBox>" RTFILE_LINEFEED

@@ -1,6 +1,6 @@
-/* $Id: sems-win.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: sems-win.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Semaphores, implementation for Windows host platform.
+ * Incredibly Portable Runtime - Semaphores, implementation for Windows host platform.
  */
 
 /*

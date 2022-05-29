@@ -1,6 +1,6 @@
-/* $Id: tstUtf8.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstUtf8.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime Testcase - UTF-8 and UTF-16 string conversions.
+ * Incredibly Portable Runtime Testcase - UTF-8 and UTF-16 string conversions.
  */
 
 /*

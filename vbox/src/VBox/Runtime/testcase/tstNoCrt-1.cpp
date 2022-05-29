@@ -1,6 +1,6 @@
-/* $Id: tstNoCrt-1.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstNoCrt-1.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime Testcase - Testcase for the No-CRT assembly bits.
+ * Incredibly Portable Runtime Testcase - Testcase for the No-CRT assembly bits.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: tstIoCtl.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstIoCtl.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime Testcase - file IoCtl.
+ * Incredibly Portable Runtime Testcase - file IoCtl.
  */
 
 /*

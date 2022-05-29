@@ -1,6 +1,6 @@
-/* $Id: tstLdrObjR0.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstLdrObjR0.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - RTLdr test object.
+ * Incredibly Portable Runtime - RTLdr test object.
  *
  * We use precompiled versions of this object for testing all the loaders.
  *

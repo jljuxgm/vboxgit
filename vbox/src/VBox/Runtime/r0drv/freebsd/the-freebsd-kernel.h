@@ -1,6 +1,6 @@
-/* $Id: the-freebsd-kernel.h 4542 2007-09-05 20:07:47Z vboxsync $ */
+/* $Id: the-freebsd-kernel.h 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Ring-0 Driver, The FreeBSD Kernel Headers.
+ * Incredibly Portable Runtime - Ring-0 Driver, The FreeBSD Kernel Headers.
  */
 
 /*

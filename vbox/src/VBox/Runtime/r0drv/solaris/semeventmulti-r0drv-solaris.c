@@ -1,6 +1,6 @@
-/* $Id: semeventmulti-r0drv-solaris.c 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-solaris.c 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
+ * Incredibly Portable Runtime - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
  */
 
 /*

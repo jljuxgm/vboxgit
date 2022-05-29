@@ -1,6 +1,6 @@
-/* $Id: fs-win.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: fs-win.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - File System, Win32.
+ * Incredibly Portable Runtime - File System, Win32.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: tstLdr-4.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
+ * Incredibly Portable Runtime - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
 
 /*

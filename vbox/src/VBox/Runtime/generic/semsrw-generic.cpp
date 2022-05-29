@@ -1,6 +1,6 @@
-/* $Id: semsrw-generic.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: semsrw-generic.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Read-Write Semaphore, Generic.
+ * Incredibly Portable Runtime - Read-Write Semaphore, Generic.
  *
  * This is a generic implementation for OSes which don't have
  * native RW semaphores.

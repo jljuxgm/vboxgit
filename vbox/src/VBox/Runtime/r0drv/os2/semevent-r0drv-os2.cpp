@@ -1,6 +1,6 @@
-/* $Id: semevent-r0drv-os2.cpp 3676 2007-07-18 04:26:04Z vboxsync $ */
+/* $Id: semevent-r0drv-os2.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Single Release Event Semaphores, Ring-0 Driver, OS/2.
+ * Incredibly Portable Runtime - Single Release Event Semaphores, Ring-0 Driver, OS/2.
  */
 
 /*

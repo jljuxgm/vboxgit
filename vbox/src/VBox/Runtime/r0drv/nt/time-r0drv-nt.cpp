@@ -1,6 +1,6 @@
-/* $Id: time-r0drv-nt.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: time-r0drv-nt.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Time, Ring-0 Driver, Nt.
+ * Incredibly Portable Runtime - Time, Ring-0 Driver, Nt.
  */
 
 /*

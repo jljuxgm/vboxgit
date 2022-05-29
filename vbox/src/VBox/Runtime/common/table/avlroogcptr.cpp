@@ -1,6 +1,6 @@
-/* $Id: avlroogcptr.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: avlroogcptr.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - AVL tree, RTGCPTR, range, unique keys, overlapping ranges, offset pointers.
+ * Incredibly Portable Runtime - AVL tree, RTGCPTR, range, unique keys, overlapping ranges, offset pointers.
  */
 
 /*

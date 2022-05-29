@@ -1,6 +1,6 @@
-/* $Id: thread.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: thread.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Threads, common routines.
+ * Incredibly Portable Runtime - Threads, common routines.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: string.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: string.h 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - wrapper for the linux kernel asm/string.h.
+ * Incredibly Portable Runtime - wrapper for the linux kernel asm/string.h.
  */
 
 /*

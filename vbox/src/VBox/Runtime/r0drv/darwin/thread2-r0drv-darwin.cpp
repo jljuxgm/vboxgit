@@ -1,6 +1,6 @@
-/* $Id: thread2-r0drv-darwin.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: thread2-r0drv-darwin.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Threads (Part 2), Ring-0 Driver, Darwin.
+ * Incredibly Portable Runtime - Threads (Part 2), Ring-0 Driver, Darwin.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: process-r0drv-solaris.c 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: process-r0drv-solaris.c 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Process Management, Ring-0 Driver, Solaris.
+ * Incredibly Portable Runtime - Process Management, Ring-0 Driver, Solaris.
  */
 
 /*

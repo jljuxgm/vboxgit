@@ -1,4 +1,4 @@
-/** $Id: VDICore.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/** $Id: VDICore.h 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -50,7 +50,7 @@
 /** Image info, not handled anyhow.
  *  Must be less than 64 bytes in length, including the trailing 0.
  */
-#define VDI_IMAGE_FILE_INFO   "<<< innotek VirtualBox Disk Image >>>\n"
+#define VDI_IMAGE_FILE_INFO   "<<< Sun xVM VirtualBox Disk Image >>>\n"
 
 /** The Sector size.
  * Currently we support only 512 bytes sectors.

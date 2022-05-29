@@ -1,6 +1,6 @@
-; $Id: timesupA.asm 8155 2008-04-18 15:16:47Z vboxsync $%ifndef IN_GUEST
+; $Id: timesupA.asm 8170 2008-04-18 17:52:25Z vboxsync $%ifndef IN_GUEST
 ;; @file
-; innotek Portable Runtime - Time using SUPLib, the Assembly Implementation.
+; Incredibly Portable Runtime - Time using SUPLib, the Assembly Implementation.
 ;
 
 ;

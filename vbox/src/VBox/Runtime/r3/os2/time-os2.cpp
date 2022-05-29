@@ -1,6 +1,6 @@
-/* $Id: time-os2.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: time-os2.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Time, POSIX.
+ * Incredibly Portable Runtime - Time, POSIX.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: crc64.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: crc64.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - CRC64.
+ * Incredibly Portable Runtime - CRC64.
  *
  * The method to compute the CRC64 is referred to as CRC-64-ISO:
  *     http://en.wikipedia.org/wiki/Cyclic_redundancy_check

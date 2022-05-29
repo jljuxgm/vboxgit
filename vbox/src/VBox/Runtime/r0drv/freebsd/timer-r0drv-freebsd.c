@@ -1,6 +1,6 @@
-/* $Id: timer-r0drv-freebsd.c 4542 2007-09-05 20:07:47Z vboxsync $ */
+/* $Id: timer-r0drv-freebsd.c 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, FreeBSD.
+ * Incredibly Portable Runtime - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
 
 /*

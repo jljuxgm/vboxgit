@@ -1,6 +1,6 @@
-/* $Id: semeventmulti-r0drv-freebsd.c 5334 2007-10-16 17:56:58Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-freebsd.c 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Multiple Release Event Semaphores, Ring-0 Driver, FreeBSD.
+ * Incredibly Portable Runtime - Multiple Release Event Semaphores, Ring-0 Driver, FreeBSD.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: ldrMZ.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: ldrMZ.h 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime, MZ header.
+ * Incredibly Portable Runtime, MZ header.
  */
 
 /*

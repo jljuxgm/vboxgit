@@ -1,6 +1,6 @@
-/* $Id: time-darwin.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: time-darwin.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
 /** @file
- * innotek Portable Runtime - Time, Darwin.
+ * Incredibly Portable Runtime - Time, Darwin.
  */
 
 /*
