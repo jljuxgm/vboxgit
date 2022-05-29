@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 9476 2008-06-06 13:22:53Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Solaris Driver Code.
  */
@@ -804,6 +804,12 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
     NOREF(pSession);
     NOREF(pszObjName);
     NOREF(prc);
+    return false;
+}
+
+
+bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
+{
     return false;
 }
 
