@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_vfsops.c 10456 2008-07-10 07:04:39Z vboxsync $ */
+/* $Id: vboxvfs_vfsops.c 11602 2008-08-25 08:06:18Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests. VFS operations.
  */
@@ -24,6 +24,9 @@
 #include <sys/sysmacros.h>
 #include <sys/ddi.h>
 #include <sys/sunddi.h>
+#ifdef u
+#undef u
+#endif
 #include "vboxvfs.h"
 
 #if defined(DEBUG_ramshankar) && !defined(LOG_ENABLED)
