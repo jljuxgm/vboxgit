@@ -1,7 +1,6 @@
+/* $Id: USBDeviceFilterImpl.h 7964 2008-04-14 17:56:52Z vboxsync $ */
 /** @file
- *
- * Declaration of VirtualBox COM components:
- * USBDeviceFilter and HostUSBDeviceFilter
+ * Declaration of USBDeviceFilter and HostUSBDeviceFilter.
  */
 
 /*
