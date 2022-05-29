@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 10340 2008-07-07 16:58:59Z vboxsync $ */
+/* $Id: PGMAllGst.h 10342 2008-07-07 17:22:16Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -488,6 +488,8 @@ PGM_GST_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
                 {
                     pgmPoolFreeByPage(pPool, pVM->pgm.s.pHCShwAmd64CR3, PGMPOOL_IDX_AMD64_CR3, pVM->pgm.s.pHCShwAmd64CR3->GCPhys >> PAGE_SHIFT);
                     pVM->pgm.s.pHCShwAmd64CR3 = 0;
+                    pVM->pgm.s.pHCPaePML4     = 0;
+                    pVM->pgm.s.HCPhysPaePML4  = 0;
                 }
 
                 Assert(!(GCPhysCR3 >> (PAGE_SHIFT + 32)));
