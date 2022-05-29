@@ -1,4 +1,4 @@
-# $Id: Config.kmk 11686 2008-08-26 18:21:33Z vboxsync $
+# $Id: Config.kmk 11712 2008-08-27 16:24:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -345,6 +345,9 @@ VBOX_WITH_ALL_DOXYGEN_TARGETS = 1
 # (Current not enabled by default because all the build servers has
 # different Python versions installed and would start burning.)
 #VBOX_WITH_PYTHON = 1
+if1of ($(KBUILD_TARGET), solaris)
+ VBOX_WITH_PYTHON = 1
+endif
 
 
 #
@@ -3030,7 +3033,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11686 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11712 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
