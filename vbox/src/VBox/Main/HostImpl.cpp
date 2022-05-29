@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 10406 2008-07-09 11:48:08Z vboxsync $ */
+/* $Id: HostImpl.cpp 10407 2008-07-09 11:49:40Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -687,7 +687,7 @@ STDMETHODIMP Host::COMGETTER(ProcessorSpeed)(ULONG cpuId, ULONG *speed)
     AutoWriteLock alock (this);
     CHECK_READY();
     /** @todo after implementing the Mp runtime on all platforms replace with
-     * *speed = RTMpGetCpuMaxSpeed(aCpuId); */
+     * *speed = RTMpGetMaxFrequency(aCpuId); */
     *speed = 0;
     return S_OK;
 }
