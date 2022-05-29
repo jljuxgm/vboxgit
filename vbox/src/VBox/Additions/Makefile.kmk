@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10159 2008-07-03 15:51:10Z vboxsync $
+# $Id: Makefile.kmk 10162 2008-07-03 16:00:55Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -240,6 +240,11 @@ $(VBOX_PATH_ADDITIONS)/VBoxGuestAdditions.iso: \
 		$(GUESTADDITIONS_FILESPEC.linux.amd64) \
 		$(GUESTADDITIONS_FILESPEC.freebsd.x86) \
 		$(GUESTADDITIONS_FILESPEC.freebsd.amd64)
+
+# Alias for creating the iso.
+.PHONY: additions-iso
+additions-iso: $(VBOX_PATH_ADDITIONS)/VBoxGuestAdditions.iso
+
 endif
 
 
