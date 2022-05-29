@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 11430 2008-08-14 16:04:13Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 11501 2008-08-19 19:57:03Z vboxsync $ */
 
 /** @file
  *
@@ -44,7 +44,6 @@ class CollectorSolaris : public CollectorHAL
 public:
     CollectorSolaris();
     ~CollectorSolaris();
-    virtual int getHostCpuMHz(ULONG *mhz);
     virtual int getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available);
     virtual int getProcessMemoryUsage(RTPROCESS process, ULONG *used);
 
@@ -161,11 +160,6 @@ int CollectorSolaris::getRawProcessCpuLoad(RTPROCESS process, uint64_t *user, ui
     }
 
     return rc;
-}
-
-int CollectorSolaris::getHostCpuMHz(ULONG *mhz)
-{
-    return VERR_NOT_IMPLEMENTED;
 }
 
 int CollectorSolaris::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available)

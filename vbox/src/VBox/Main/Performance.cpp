@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 11498 2008-08-19 18:50:33Z vboxsync $ */
+/* $Id: Performance.cpp 11501 2008-08-19 19:57:03Z vboxsync $ */
 
 /** @file
  *
@@ -118,7 +118,8 @@ void BaseMetric::collectorBeat(uint64_t nowAt)
         if (nowAt - mLastSampleTaken >= mPeriod * 1000)
         {
             mLastSampleTaken = nowAt;
-            Log4(("{%p} " LOG_FN_FMT ": Collecting data for obj(%p)...\n", this, __PRETTY_FUNCTION__, (void *)mObject));
+            Log4(("{%p} " LOG_FN_FMT ": Collecting %s for obj(%p)...\n", 
+                        this, __PRETTY_FUNCTION__, getName(), (void *)mObject));
             collect();
         }
     }
