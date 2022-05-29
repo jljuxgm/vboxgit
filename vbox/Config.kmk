@@ -1,4 +1,4 @@
-# $Id: Config.kmk 9513 2008-06-08 04:05:00Z vboxsync $
+# $Id: Config.kmk 9516 2008-06-08 04:15:08Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2581,6 +2581,7 @@ $(warning Warning: VBOX Build: Target $(KBUILD_HOST) is not officially supported
 endif # !win
 
 
+ifndef VBOX_WITH_64BIT_ADDITIONS
 
 #
 # Template for building R3 win32 guest additions.
@@ -2709,6 +2710,7 @@ TEMPLATE_VBOXW32GUESTR0LIB         = VBox Win32 Guest Driver
 TEMPLATE_VBOXW32GUESTR0LIB_EXTENDS = VBOXW32GUESTR0
 TEMPLATE_VBOXW32GUESTR0LIB_INST    = $(INST_ADDITIONS_LIB)
 
+endif # !VBOX_WITH_64BIT_ADDITIONS
 
 #
 # Windows rc workaround for crosscompiling.
@@ -3023,7 +3025,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9513 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9516 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
