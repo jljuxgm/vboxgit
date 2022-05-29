@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 10513 2008-07-11 10:12:39Z vboxsync $ */
+/* $Id: PDMInternal.h 10640 2008-07-15 10:12:47Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -388,7 +388,7 @@ typedef struct PDMAPIC
     /** @copydoc PDMAPICREG::pfnGetInterruptHC */
     DECLR3CALLBACKMEMBER(int,       pfnGetInterruptR3,(PPDMDEVINS pDevIns));
     /** @copydoc PDMAPICREG::pfnHasPendingIrqHC */
-    DECLR3CALLBACKMEMBER(bool, pfnHasPendingIrqR3,(PPDMDEVINS pDevIns));
+    DECLR3CALLBACKMEMBER(bool,      pfnHasPendingIrqR3,(PPDMDEVINS pDevIns));
     /** @copydoc PDMAPICREG::pfnSetBaseHC */
     DECLR3CALLBACKMEMBER(void,      pfnSetBaseR3,(PPDMDEVINS pDevIns, uint64_t u64Base));
     /** @copydoc PDMAPICREG::pfnGetBaseHC */
@@ -401,12 +401,12 @@ typedef struct PDMAPIC
     DECLR3CALLBACKMEMBER(void,      pfnBusDeliverR3,(PPDMDEVINS pDevIns, uint8_t u8Dest, uint8_t u8DestMode, uint8_t u8DeliveryMode,
                                                      uint8_t iVector, uint8_t u8Polarity, uint8_t u8TriggerMode));
 
-    /** Pointer to the PIC device instance - R0. */
+    /** Pointer to the APIC device instance - R0. */
     R0PTRTYPE(PPDMDEVINS)           pDevInsR0;
     /** @copydoc PDMAPICREG::pfnGetInterruptHC */
     DECLR0CALLBACKMEMBER(int,       pfnGetInterruptR0,(PPDMDEVINS pDevIns));
     /** @copydoc PDMAPICREG::pfnHasPendingIrqHC */
-    DECLR0CALLBACKMEMBER(bool, pfnHasPendingIrqR0,(PPDMDEVINS pDevIns));
+    DECLR0CALLBACKMEMBER(bool,      pfnHasPendingIrqR0,(PPDMDEVINS pDevIns));
     /** @copydoc PDMAPICREG::pfnSetBaseHC */
     DECLR0CALLBACKMEMBER(void,      pfnSetBaseR0,(PPDMDEVINS pDevIns, uint64_t u64Base));
     /** @copydoc PDMAPICREG::pfnGetBaseHC */
@@ -424,7 +424,7 @@ typedef struct PDMAPIC
     /** @copydoc PDMAPICREG::pfnGetInterruptHC */
     DECLGCCALLBACKMEMBER(int,       pfnGetInterruptGC,(PPDMDEVINS pDevIns));
     /** @copydoc PDMAPICREG::pfnHasPendingIrqHC */
-    DECLGCCALLBACKMEMBER(bool, pfnHasPendingIrqGC,(PPDMDEVINS pDevIns));
+    DECLGCCALLBACKMEMBER(bool,      pfnHasPendingIrqGC,(PPDMDEVINS pDevIns));
     /** @copydoc PDMAPICREG::pfnSetBaseHC */
     DECLGCCALLBACKMEMBER(void,      pfnSetBaseGC,(PPDMDEVINS pDevIns, uint64_t u64Base));
     /** @copydoc PDMAPICREG::pfnGetBaseHC */
