@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 10533 2008-07-11 14:50:25Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 10547 2008-07-11 19:33:19Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -992,8 +992,6 @@ static DECLCALLBACK(void) intnetIfDestruct(void *pvObj, void *pvUser1, void *pvU
      * Because of cleanup order we might be an orphan now.
      */
     if (pIf->pNetwork)
-        SUPR0ObjRelease(pIf->pNetwork->pvObj, pIf->pSession);
-    if (pIf->pNetwork)
     {
         PINTNETNETWORK pNetwork = pIf->pNetwork;
         RTSemFastMutexRequest(pNetwork->FastMutex);
@@ -1015,6 +1013,12 @@ static DECLCALLBACK(void) intnetIfDestruct(void *pvObj, void *pvUser1, void *pvU
         }
         RTSemFastMutexRelease(pNetwork->FastMutex);
         pIf->pNext = NULL;
+
+        /*
+         * Release or reference to the network.
+         */
+        SUPR0ObjRelease(pIf->pNetwork->pvObj, pIf->pSession);
+        pIf->pNetwork = NULL;
     }
 
     /*
