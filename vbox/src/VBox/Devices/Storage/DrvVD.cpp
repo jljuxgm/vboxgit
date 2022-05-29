@@ -1,4 +1,4 @@
-/** $Id: DrvVD.cpp 11444 2008-08-15 14:33:02Z vboxsync $ */
+/** $Id: DrvVD.cpp 11459 2008-08-18 11:31:25Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -278,9 +278,9 @@ static bool drvvdCfgAreValuesValid(PVDCFGNODE pNode, const char *pszzValid)
 
 static int drvvdCfgQueryType(PVDCFGNODE pNode, const char *pszName, PVDCFGVALUETYPE penmType)
 {
-    Assert(VDCFGVALUETYPE_INTEGER == CFGMVALUETYPE_INTEGER);
-    Assert(VDCFGVALUETYPE_STRING == CFGMVALUETYPE_STRING);
-    Assert(VDCFGVALUETYPE_BYTES == CFGMVALUETYPE_BYTES);
+    Assert(VDCFGVALUETYPE_INTEGER == (VDCFGVALUETYPE)CFGMVALUETYPE_INTEGER);
+    Assert(VDCFGVALUETYPE_STRING == (VDCFGVALUETYPE)CFGMVALUETYPE_STRING);
+    Assert(VDCFGVALUETYPE_BYTES == (VDCFGVALUETYPE)CFGMVALUETYPE_BYTES);
     return CFGMR3QueryType((PCFGMNODE)pNode, pszName, (PCFGMVALUETYPE)penmType);
 }
 
