@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 9817 2008-06-19 11:47:38Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 9985 2008-06-27 10:12:35Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1126,6 +1126,8 @@ bool remR3CanExecuteRaw(CPUState *env, RTGCPTR eip, unsigned fFlags, int *piExce
         Ctx.ssHid.u64Base  = env->segs[R_SS].base;
         Ctx.ssHid.u32Limit = env->segs[R_SS].limit;
         Ctx.ssHid.Attr.u   = (env->segs[R_SS].flags >> 8) & 0xF0FF;
+
+        Ctx.msrEFER        = env->efer;
 
         /* Hardware accelerated raw-mode:
          *
