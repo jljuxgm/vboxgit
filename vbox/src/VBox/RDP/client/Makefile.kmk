@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10131 2008-07-03 03:36:30Z vboxsync $
+# $Id: Makefile.kmk 10138 2008-07-03 04:15:47Z vboxsync $
 ## @file
 # VBox - rdesktop with VRDP enhancements sub-makefile.
 #
@@ -91,7 +91,7 @@ rdesktop-vrdp_LIBS = \
 INSTALLS += rdesktop-vrdp-keymaps
 rdesktop-vrdp-keymaps_INST    = $(INST_BIN)rdesktop-vrdp-keymaps
 rdesktop-vrdp-keymaps_MODE    = 644
-rdesktop-vrdp-keymaps_SOURCES = $(wildcard keymaps/*)
+rdesktop-vrdp-keymaps_SOURCES := $(wildcard keymaps/*)
 
 
 #
