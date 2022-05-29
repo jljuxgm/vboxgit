@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11510 2008-08-20 11:46:39Z vboxsync $
+# $Id: Makefile.kmk 11610 2008-08-25 13:09:37Z vboxsync $
 ## @file
 # Makefile for the Solaris installer.
 #
@@ -151,10 +151,15 @@ ifdef VBOX_WITH_VRDP
  SOLARIS_STRIP_BINS += \
 	VBoxVRDP.so
 
-#
-# @todo This later...
-# SOLARIS_NO_STRIP += \
-#	rdesktop-vrdp.tar.gz
+ SOLARIS_NO_STRIP += \
+	rdesktop-vrdp.tar.gz
+
+ ifdef VBOX_WITH_VRDP_RDESKTOP
+  SOLARIS_NO_STRIP += \
+	rdesktop-vrdp-keymaps
+  SOLARIS_STRIP_BINS += \
+	rdesktop-vrdp
+ endif
 endif
 
 ifdef VBOX_WITH_HEADLESS
