@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 11086 2008-08-04 08:19:50Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 11099 2008-08-04 12:56:21Z vboxsync $ */
 
 /** @file
  *
@@ -21,13 +21,14 @@
  * additional information or have any questions.
  */
 
+#undef _FILE_OFFSET_BITS
+#include <procfs.h>
 #include <stdio.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <kstat.h>
 #include <sys/sysinfo.h>
 #include <sys/time.h>
-#include <procfs.h>
 
 #include <iprt/err.h>
 #include <iprt/string.h>
