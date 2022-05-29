@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10051 2008-07-01 01:11:35Z vboxsync $
+# $Id: Makefile.kmk 10198 2008-07-04 04:41:39Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service testcases.
 #
@@ -57,7 +57,7 @@ endif
 
 include $(KBUILD_PATH)/subfooter.kmk
 
-$(PATH_TARGET)/tstShflSizes.run: $(INSTARGET_tstShflSizes)
+$(PATH_TARGET)/tstShflSizes.run: $$(INSTARGET_tstShflSizes)
 	$(QUIET)$(RM) -f $@
 	$(INSTARGET_tstShflSizes) quiet
 	$(QUIET)$(APPEND) "$@" "done"
