@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 6944 2008-02-14 12:46:56Z vboxsync $ */
+/* $Id: thread-os2.cpp 6946 2008-02-14 12:59:57Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Threads, OS/2.
  */
@@ -278,22 +278,20 @@ RTR3DECL(int) RTTlsSet(RTTLS iTls, void *pvValue)
 }
 
 
-RTR3DECL(int) RTTlsSetDestructor(RTTLS iTls, PFNRTTLSDTOR pfnDestructor, uint32_t fFlags)
+RTR3DECL(int) RTTlsSetDestructor(RTTLS iTls, PFNRTTLSDTOR pfnDestructor)
 {
     AssertReturn(!fFlags, VERR_INVALID_PARAMETER)
-    if (__libc_TLSDestructor(iTls, pfnDestructor, fFlags) == -1)
+    if (__libc_TLSDestructor(iTls, (void (*)(void *, int, unsigned))pfnDestructor, fFlags) == -1)
         return VINF_SUCCESS;
     return RTErrConvertFromErrno(errno);
 }
 
 
-PFNRTTLSDTOR RTTlsGetDestructor(RTTLS iTls, PFNRTTLSDTOR *ppfnDestructor, uint32_t *pfFlags)
+PFNRTTLSDTOR RTTlsGetDestructor(RTTLS iTls, PFNRTTLSDTOR *ppfnDestructor)
 {
-    uint32_t fFlags;
-    if (!pfFlags)
-        pfFlags = &fFlags;
+    unsigned fFlags;
     errno = 0;
-    *ppfnDestructor = __libc_TLSGetDestructor(iTls, pFlags);
+    *ppfnDestructor = (PFNRTTLSDTOR)__libc_TLSGetDestructor(iTls, &fFlags);
     if (!*ppfnDestructor && errno)
         return RTErrConvertFromErrno(errno);
     return VINF_SUCCESS;
