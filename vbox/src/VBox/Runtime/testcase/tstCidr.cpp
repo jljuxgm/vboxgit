@@ -1,4 +1,4 @@
-/* $Id: tstIp.cpp 8290 2008-04-22 13:35:29Z vboxsync $ */
+/* $Id: tstCidr.cpp 8295 2008-04-22 13:57:10Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPv4.
  */
@@ -32,7 +32,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/ip.h>
+#include <iprt/cidr.h>
 #include <iprt/err.h>
 #include <iprt/stream.h>
 #include <iprt/initterm.h>
