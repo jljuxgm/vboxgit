@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 9566 2008-06-10 12:06:53Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 9599 2008-06-11 11:26:09Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -1043,10 +1043,6 @@ VBOXDDU_DECL(int) VDOpen(PVBOXHDD pDisk, const char *pszBackend,
         AssertMsgBreakStmt((uOpenFlags & ~VD_OPEN_FLAGS_MASK) == 0,
                            ("uOpenFlags=%#x\n", uOpenFlags),
                            rc = VERR_INVALID_PARAMETER);
-
-        /* Force readonly for images without base/diff consistency checking. */
-        if (uOpenFlags & VD_OPEN_FLAGS_INFO)
-            uOpenFlags |= VD_OPEN_FLAGS_READONLY;
 
         /* Set up image descriptor. */
         pImage = (PVDIMAGE)RTMemAllocZ(sizeof(VDIMAGE));
