@@ -1,4 +1,4 @@
-/* $Id: RTFileCopy-generic.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: RTFileCopy-generic.cpp 7340 2008-03-06 17:51:43Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - RTFileCopy, generic implementation.
  */
@@ -43,6 +43,6 @@
  */
 RTDECL(int) RTFileCopy(const char *pszSrc, const char *pszDst)
 {
-    return RTFileCopyEx(pszSrc, pszDst, NULL, NULL);
+    return RTFileCopyEx(pszSrc, pszDst, 0, NULL, NULL);
 }
 
