@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 8944 2008-05-20 09:49:14Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 8945 2008-05-20 09:49:51Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -820,7 +820,7 @@ ResumeExecution:
     }
     else
     {
-        /* We never increase uCurrentASID in the fAlwaysFlushTLB case. */
+        /* We never increase uCurrentASID in the fAlwaysFlushTLB (erratum 170) case. */
         if (!pCpu->uCurrentASID)
             pCpu->uCurrentASID = 1;
 
