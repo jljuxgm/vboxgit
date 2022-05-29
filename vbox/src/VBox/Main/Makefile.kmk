@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11086 2008-08-04 08:19:50Z vboxsync $
+# $Id: Makefile.kmk 11467 2008-08-18 14:52:12Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -275,7 +275,7 @@ VBoxSVC_SOURCES.os2     +=     os2/PerformanceOs2.cpp
 VBoxSVC_SOURCES.solaris += solaris/PerformanceSolaris.cpp
 VBoxSVC_SOURCES.win     +=     win/PerformanceWin.cpp
 VBoxSVC_LDFLAGS.solaris += -lkstat
-VBoxSVC_LDFLAGS.win     += wbemuuid.lib
+VBoxSVC_LDFLAGS.win     += wbemuuid.lib powrprof.lib
 endif
 
 VBoxSVC_LDFLAGS.darwin  = -framework IOKit
