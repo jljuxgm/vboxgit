@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10074 2008-07-01 15:05:31Z vboxsync $
+# $Id: Makefile.kmk 10096 2008-07-02 12:25:20Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -303,6 +303,10 @@ else # the gcc guys:
   ifeq ($(KBUILD_TARGET),solaris)
    TEMPLATE_VBOXQT4GUIEXE_LIBS += \
         rt socket nsl
+  endif
+  ifdef VBOX_WITH_ORIGIN
+    # Qt4 on Solaris in the same as it is on other platforms (i.e. no special qtgcc/lib folders) 
+    TEMPLATE_VBOXQT4GUIEXE_LDFLAGS += '$(VBOX_GCC_RPATH_OPT)$$(VBOX_ORIGIN)'
   endif
  endif
 
