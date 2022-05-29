@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 6796 2008-02-04 18:19:58Z vboxsync $ */
+/* $Id: VM.cpp 6799 2008-02-04 19:18:10Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -502,6 +502,7 @@ static int vmR3CreateU(PUVM pUVM, PFNCFGMCONSTRUCTOR pfnCFGMConstructor, void *p
         /* Tell GVMM that it can destroy the VM now. */
         int rc2 = SUPCallVMMR0Ex(CreateVMReq.pVMR0, VMMR0_DO_GVMM_DESTROY_VM, 0, NULL);
         AssertRC(rc2);
+        pUVM->pVM = NULL;
     }
     else
         vmR3SetErrorU(pUVM, rc, RT_SRC_POS, N_("VM creation failed (GVMM)"));

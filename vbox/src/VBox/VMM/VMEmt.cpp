@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 6796 2008-02-04 18:19:58Z vboxsync $ */
+/* $Id: VMEmt.cpp 6799 2008-02-04 19:18:10Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -798,6 +798,8 @@ static DECLCALLBACK(int) vmR3BootstrapWait(PUVM pUVM)
             break;
         if (    pUVM->pVM
             &&  VM_FF_ISPENDING(pUVM->pVM, VM_FF_EXTERNAL_SUSPENDED_MASK))
+            break;
+        if (pUVM->vm.s.fTerminateEMT)
             break;
 
         /*
