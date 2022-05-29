@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 6568 2008-01-29 15:03:34Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 6569 2008-01-29 15:19:27Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -44,9 +44,9 @@
    prototype what we need here. */
 # define XF86_O_RDWR  0x0002
 typedef void *pointer;
-extern int xf86open(const char*, int,...);
-extern int xf86close(int);
-extern int xf86ioctl(int, unsigned long, pointer);
+extern "C" int xf86open(const char*, int,...);
+extern "C" int xf86close(int);
+extern "C" int xf86ioctl(int, unsigned long, pointer);
 #endif
 
 /*******************************************************************************
