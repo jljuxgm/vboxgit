@@ -1,4 +1,4 @@
-# $Id: Config.kmk 10180 2008-07-04 01:07:20Z vboxsync $
+# $Id: Config.kmk 10182 2008-07-04 01:16:43Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -944,7 +944,7 @@ else
 endif
 
 # bin2c (convert binary files into C arrays)
-VBOX_BIN2C     ?= $(PATH_OBJ)/src/bldprogs/bin2c/bin2c$(HOSTSUFF_EXE)
+VBOX_BIN2C     ?= $(PATH_OBJ)/bin2c/bin2c$(HOSTSUFF_EXE)
 
 # mkisofs
 ifeq ($(KBUILD_HOST),win)
@@ -2891,7 +2891,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10180 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10182 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
