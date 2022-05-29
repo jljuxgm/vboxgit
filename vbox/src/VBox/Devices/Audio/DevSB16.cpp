@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 11266 2008-08-08 16:14:51Z vboxsync $ */
+/* $Id: DevSB16.cpp 11269 2008-08-08 16:24:48Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1712,13 +1712,13 @@ int SB16_init (AudioState *audio, qemu_irq *pic)
 static DECLCALLBACK(void *) sb16QueryInterface (struct PDMIBASE *pInterface,
                                                 PDMINTERFACE enmInterface)
 {
-    SB16State *pData = (SB16State *)((uintptr_t)pInterface
+    SB16State *pThis = (SB16State *)((uintptr_t)pInterface
                      - RT_OFFSETOF(SB16State, IBase));
-    Assert(&pData->IBase == pInterface);
+    Assert(&pThis->IBase == pInterface);
     switch (enmInterface)
     {
         case PDMINTERFACE_BASE:
-            return &pData->IBase;
+            return &pThis->IBase;
         default:
             return NULL;
     }

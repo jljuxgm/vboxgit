@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 11208 2008-08-07 15:40:10Z vboxsync $ */
+/* $Id: DevACPI.cpp 11269 2008-08-08 16:24:48Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1465,13 +1465,13 @@ static DECLCALLBACK(int) acpi_load_state (PPDMDEVINS pDevIns, PSSMHANDLE pSSMHan
  */
 static DECLCALLBACK(void *) acpiQueryInterface(PPDMIBASE pInterface, PDMINTERFACE enmInterface)
 {
-    ACPIState *pData = (ACPIState*)((uintptr_t)pInterface - RT_OFFSETOF(ACPIState, IBase));
+    ACPIState *pThis = (ACPIState*)((uintptr_t)pInterface - RT_OFFSETOF(ACPIState, IBase));
     switch (enmInterface)
     {
         case PDMINTERFACE_BASE:
-            return &pData->IBase;
+            return &pThis->IBase;
         case PDMINTERFACE_ACPI_PORT:
-            return &pData->IACPIPort;
+            return &pThis->IACPIPort;
         default:
             return NULL;
     }
