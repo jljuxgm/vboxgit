@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 11353 2008-08-12 12:55:15Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 11421 2008-08-14 12:06:14Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -408,7 +408,17 @@ typedef struct VMDKIMAGE
     VMDKDESCRIPTOR  Descriptor;
 } VMDKIMAGE;
 
+/*******************************************************************************
+ *   Static Variables                                                           *
+ *******************************************************************************/
 
+/** NULL-terminated array of supported file extensions. */
+static const char *const s_apszVmdkFileExtensions[] =
+{
+    "vmdk",
+    NULL
+};
+        
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
@@ -5152,6 +5162,8 @@ VBOXHDDBACKEND g_VmdkBackend =
     /* uBackendCaps */
       VD_CAP_UUID | VD_CAP_CREATE_FIXED | VD_CAP_CREATE_DYNAMIC
     | VD_CAP_CREATE_SPLIT_2G | VD_CAP_DIFF | VD_CAP_FILE |VD_CAP_ASYNC,
+    /* papszFileExtensions */
+    s_apszVmdkFileExtensions,
     /* pfnCheckIfValid */
     vmdkCheckIfValid,
     /* pfnOpen */

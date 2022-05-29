@@ -1,4 +1,4 @@
-/** $Id: RawHDDCore.cpp 11353 2008-08-12 12:55:15Z vboxsync $ */
+/** $Id: RawHDDCore.cpp 11421 2008-08-14 12:06:14Z vboxsync $ */
 /** @file
  * Raw Disk image, Core Code.
  */
@@ -66,6 +66,18 @@ typedef struct RAWIMAGE
 
 } RAWIMAGE, *PRAWIMAGE;
 
+/*******************************************************************************
+*   Static Variables                                                           *
+*******************************************************************************/
+
+/** NULL-terminated array of supported file extensions. */
+static const char *const s_apszRawFileExtensions[] =
+{
+    /** @todo At the monment this backend doesn't claim any extensions, but it might
+     * be useful to add a few later. However this needs careful testing, as the
+     * CheckIfValid function never returns success. */
+    NULL
+};
 
 /*******************************************************************************
 *   Internal Functions                                                         *
@@ -1057,6 +1069,8 @@ VBOXHDDBACKEND g_RawBackend =
     sizeof(VBOXHDDBACKEND),
     /* uBackendCaps */
     VD_CAP_CREATE_FIXED | VD_CAP_FILE,
+    /* papszFileExtensions */
+    s_apszRawFileExtensions,
     /* pfnCheckIfValid */
     rawCheckIfValid,
     /* pfnOpen */
