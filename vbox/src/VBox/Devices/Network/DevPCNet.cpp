@@ -1,4 +1,4 @@
-/** $Id: DevPCNet.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/** $Id: DevPCNet.cpp 6120 2007-12-18 10:23:52Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -1480,7 +1480,8 @@ static void pcnetRdtePoll(PCNetState *pData, bool fSkipCurrent=false)
                 CSR_CRBC(pData) = rmd.rmd1.bcnt;               /* Receive Byte Count */
                 CSR_CRST(pData) = ((uint32_t *)&rmd)[1] >> 16; /* Receive Status */
 #ifdef IN_RING3
-                pData->pDrv->pfnNotifyCanReceive(pData->pDrv);
+                if (pData->pDrv)
+                    pData->pDrv->pfnNotifyCanReceive(pData->pDrv);
 #else
                 PPDMQUEUEITEMCORE pItem = PDMQueueAlloc(CTXSUFF(pData->pCanRxQueue));
                 if (pItem)
