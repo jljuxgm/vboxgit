@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 9387 2008-06-04 13:51:21Z vboxsync $ */
+/* $Id: DevPIC.cpp 10202 2008-07-04 07:25:27Z vboxsync $ */
 /** @file
  * Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -37,19 +37,14 @@
  * Acquires the PDM lock. This is a NOP if locking is disabled. */
 /** @def PIC_UNLOCK
  * Releases the PDM lock. This is a NOP if locking is disabled. */
-#ifdef VBOX_WITH_PDM_LOCK
-# define PIC_LOCK(pThis, rc) \
+#define PIC_LOCK(pThis, rc) \
     do { \
         int rc2 = (pThis)->CTXALLSUFF(pPicHlp)->pfnLock((pThis)->CTXSUFF(pDevIns), rc); \
         if (rc2 != VINF_SUCCESS) \
             return rc2; \
     } while (0)
-# define PIC_UNLOCK(pThis) \
+#define PIC_UNLOCK(pThis) \
     (pThis)->CTXALLSUFF(pPicHlp)->pfnUnlock((pThis)->CTXSUFF(pDevIns))
-#else /* !VBOX_WITH_PDM_LOCK */
-# define PIC_LOCK(pThis, rc)   do { } while (0)
-# define PIC_UNLOCK(pThis)     do { } while (0)
-#endif /* !VBOX_WITH_PDM_LOCK */
 
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
@@ -889,9 +884,7 @@ static DECLCALLBACK(void)  picReset(PPDMDEVINS pDevIns)
     PDEVPIC     pData = PDMINS2DATA(pDevIns, PDEVPIC);
     unsigned    i;
     LogFlow(("picReset:\n"));
-#ifdef VBOX_WITH_PDM_LOCK
     pData->pPicHlpR3->pfnLock(pDevIns, VERR_INTERNAL_ERROR);
-#endif
 
     for (i = 0; i < ELEMENTS(pData->aPics); i++)
         pic_reset(&pData->aPics[i]);
