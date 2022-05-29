@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 11638 2008-08-26 01:02:36Z vboxsync $ */
+/* $Id: iokit.cpp 11639 2008-08-26 01:09:17Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -1568,7 +1568,7 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
                             memcpy(pNew->szName, szTmp, cchName + 1);
 
                             /*
-                             * Link it into the list, keep the list sorted by the BSD name.
+                             * Link it into the list, keep the list sorted by fPrimaryIf and the BSD name.
                              */
                             if (pTail)
                             {
@@ -1577,7 +1577,8 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
                                 {
                                     pPrev = NULL;
                                     for (PDARWINETHERNIC pCur = pHead; pCur; pPrev = pCur, pCur = pCur->pNext)
-                                        if (strcmp(pNew->szBSDName, pCur->szBSDName) >= 0)
+                                        if (    (int)pNew->fPrimaryIf - (int)pCur->fPrimaryIf >= 0
+                                            &&  strcmp(pNew->szBSDName, pCur->szBSDName) >= 0)
                                             break;
                                 }
                                 if (pPrev)
