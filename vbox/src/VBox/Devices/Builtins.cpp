@@ -1,4 +1,4 @@
-/** $Id: Builtins.cpp 5755 2007-11-15 13:03:25Z vboxsync $ */
+/** $Id: Builtins.cpp 5849 2007-11-27 15:31:02Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -88,6 +88,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
         return rc;
 #ifdef VBOX_WITH_E1000
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceE1000);
+    if (VBOX_FAILURE(rc))
+        return rc;
+#endif
+#ifdef VBOX_WITH_INIP
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceINIP);
     if (VBOX_FAILURE(rc))
         return rc;
 #endif
