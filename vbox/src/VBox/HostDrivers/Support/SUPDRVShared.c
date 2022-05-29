@@ -1,4 +1,4 @@
-/* $Revision: 9470 $ */
+/* $Revision: 9530 $ */
 /** @file
  * VirtualBox Support Driver - Shared code.
  */
@@ -3869,6 +3869,7 @@ static DECLCALLBACK(void) supdrvGipAsyncTimer(PRTTIMER pTimer, void *pvUser, uin
     RTCPUID         idCpu   = RTMpCpuId();
     uint64_t        NanoTS  = RTTimeSystemNanoTS();
 
+    /** @todo reset the transaction number and whatnot when iTick == 1. */
     if (pDevExt->idGipMaster == idCpu)
         supdrvGipUpdate(pDevExt->pGip, NanoTS);
     else
