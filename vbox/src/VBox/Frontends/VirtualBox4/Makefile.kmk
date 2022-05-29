@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10576 2008-07-13 16:43:31Z vboxsync $
+# $Id: Makefile.kmk 10577 2008-07-13 16:48:18Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -19,7 +19,9 @@
 # additional information or have any questions.
 #
 
-#USE_KBUILD_QT_UNIT := 1	                # Testing before enabling it.
+if1of ($(KBUILD_TARGET), darwin)
+USE_KBUILD_QT_UNIT := 1	                # Testing before enabling it.
+endif
 
 VBOX_WITH_REGISTRATION := 1
 
