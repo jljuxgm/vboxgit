@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7077 2008-02-21 15:03:06Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7094 2008-02-22 11:09:02Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -4242,7 +4242,8 @@ static DECLCALLBACK(void) pcnetRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
 #else
     pData->pTimerPollGC  = TMTimerGCPtr(pData->pTimerPollHC);
 #endif
-    pData->pTimerSoftIntGC = TMTimerGCPtr(pData->pTimerSoftIntHC);
+    if (pData->fAm79C973)
+        pData->pTimerSoftIntGC = TMTimerGCPtr(pData->pTimerSoftIntHC);
 }
 
 
