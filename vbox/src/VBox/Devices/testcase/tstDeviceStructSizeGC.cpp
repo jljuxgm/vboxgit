@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 7557 2008-03-25 16:05:54Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 7675 2008-04-01 08:30:39Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -369,9 +369,13 @@ int main()
     GEN_CHECK_OFF(PCNetState, pfnEMInterpretInstructionGC
     GEN_CHECK_OFF(PCNetState, pfnEMInterpretInstructionR0
 #endif
+    GEN_CHECK_OFF(PCNetState, pSharedMMIOHC);
+    GEN_CHECK_OFF(PCNetState, pSharedMMIOGC);
+    GEN_CHECK_OFF(PCNetState, fPrivIfEnabled);
     GEN_CHECK_OFF(PCNetState, fGCEnabled);
     GEN_CHECK_OFF(PCNetState, fR0Enabled);
     GEN_CHECK_OFF(PCNetState, fAm79C973);
+    GEN_CHECK_OFF(PCNetState, u32LinkSpeed);
 #ifdef VBOX_WITH_STATISTICS
     GEN_CHECK_OFF(PCNetState, StatMMIOReadGC);
     GEN_CHECK_OFF(PCNetState, StatMIIReads);

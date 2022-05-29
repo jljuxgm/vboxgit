@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7673 2008-04-01 08:09:06Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7675 2008-04-01 08:30:39Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -233,6 +233,10 @@ struct PCNetState_st
     R3R0PTRTYPE(PPCNETGUESTSHAREDMEMORY) pSharedMMIOHC;
     /** The hypervisor/guest context of the shared memory used for the private interface. */
     GCPTRTYPE(PPCNETGUESTSHAREDMEMORY)  pSharedMMIOGC;
+
+#if HC_ARCH_BITS == 64
+    uint32_t                            Alignment3;
+#endif
 
     /** True if host and guest admitted to use the private interface. */
     bool                                fPrivIfEnabled;
