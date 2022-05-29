@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10023 2008-06-30 15:21:25Z vboxsync $
+# $Id: Makefile.kmk 10028 2008-06-30 16:45:52Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris Shared folder kernel module.
 #
@@ -33,7 +33,7 @@ vboxvfs_SOURCES       = \
 vboxvfs_LIBS          = \
 	$(VBOX_LIB_VBGL_R0) \
 	$(VBOX_LIB_IPRT_GUEST_R0)
-vboxvfs_LDFLAGS      += -N drv/vboxguest
+vboxvfs_LDFLAGS      += -L$(PATH_TARGET)/vboxguest -N drv/vboxguest
 
 include	$(KBUILD_PATH)/subfooter.kmk
 
