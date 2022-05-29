@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 6040 2007-12-10 13:39:01Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 6043 2007-12-11 02:40:31Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -633,7 +633,7 @@ static int VBoxAddSolarisIOCtl(dev_t Dev, int Cmd, intptr_t pArg, int Mode, cred
     void *pvBuf = RTMemTmpAlloc(cbBuf);
     if (RT_UNLIKELY(!pvBuf))
     {
-        VBA_LOGNOTE("VBoxAddSolarisIOCtl: buffer size mismatch size=%d expected=%d.\n", IOCPARM_LEN(Cmd), cbBuf);
+        VBA_LOGNOTE("VBoxAddSolarisIOCtl: RTMemTmpAlloc failed to alloc %d bytes.\n", cbBuf);
         return ENOMEM;
     }
 
