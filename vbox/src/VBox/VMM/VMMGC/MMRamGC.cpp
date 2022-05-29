@@ -1,4 +1,4 @@
-/* $Id: MMRamGC.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: MMRamGC.cpp 7286 2008-03-05 08:06:41Z vboxsync $ */
 /** @file
  * MMRamGC - Guest Context Ram access Routines, pair for MMRamGCA.asm.
  */
@@ -44,6 +44,10 @@ DECLASM(void) EMGCEmulateLockCmpXchg_EndProc(void);
 DECLASM(void) EMGCEmulateLockCmpXchg_Error(void);
 DECLASM(void) EMGCEmulateCmpXchg_EndProc(void);
 DECLASM(void) EMGCEmulateCmpXchg_Error(void);
+DECLASM(void) EMGCEmulateLockXAdd_EndProc(void);
+DECLASM(void) EMGCEmulateLockXAdd_Error(void);
+DECLASM(void) EMGCEmulateXAdd_EndProc(void);
+DECLASM(void) EMGCEmulateXAdd_Error(void);
 DECLASM(void) EMEmulateLockOr_EndProc(void);
 DECLASM(void) EMEmulateLockOr_Error(void);
 DECLASM(void) EMEmulateLockBtr_EndProc(void);
@@ -179,6 +183,26 @@ DECLCALLBACK(int) mmGCRamTrap0eHandler(PVM pVM, PCPUMCTXCORE pRegFrame)
         &&  (uintptr_t)pRegFrame->eip < (uintptr_t)&EMGCEmulateCmpXchg_EndProc)
     {
         pRegFrame->eip = (uintptr_t)&EMGCEmulateCmpXchg_Error;
+        return VINF_SUCCESS;
+    }
+
+    /*
+     * Page fault inside EMGCEmulateLockXAdd()? Resume at _Error.
+     */
+    if (    (uintptr_t)&EMGCEmulateLockXAdd < (uintptr_t)pRegFrame->eip
+        &&  (uintptr_t)pRegFrame->eip < (uintptr_t)&EMGCEmulateLockXAdd_EndProc)
+    {
+        pRegFrame->eip = (uintptr_t)&EMGCEmulateLockXAdd_Error;
+        return VINF_SUCCESS;
+    }
+
+    /*
+     * Page fault inside EMGCEmulateXAdd()? Resume at _Error.
+     */
+    if (    (uintptr_t)&EMGCEmulateXAdd < (uintptr_t)pRegFrame->eip
+        &&  (uintptr_t)pRegFrame->eip < (uintptr_t)&EMGCEmulateXAdd_EndProc)
+    {
+        pRegFrame->eip = (uintptr_t)&EMGCEmulateXAdd_Error;
         return VINF_SUCCESS;
     }
 
