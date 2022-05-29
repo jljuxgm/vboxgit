@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6283 2008-01-08 15:40:41Z vboxsync $
+# $Id: Makefile.kmk 6343 2008-01-11 15:12:39Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -90,7 +90,8 @@ endif
 # Do not strip anything of these files
 LINUXNOSTRIP = \
 	$(if $(VBOX_OSE),,LICENSE) \
-	$(if $(VBOX_OSE),,License-$(VBOX_LICENSE_VER).html) \
+	$(if $(VBOX_WITH_QTGUI),\
+	  $(if $(VBOX_OSE),,License-$(VBOX_LICENSE_VER).html)) \
 	components/VBoxXPCOMBase.xpt \
 	components/VirtualBox_XPCOM.xpt \
         VBoxSysInfo.sh \
