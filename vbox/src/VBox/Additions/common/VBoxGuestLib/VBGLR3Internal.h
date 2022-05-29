@@ -1,4 +1,4 @@
-/* $Id: VBGLR3Internal.h 9536 2008-06-09 11:54:00Z vboxsync $ */
+/* $Id: VBGLR3Internal.h 10797 2008-07-22 08:12:42Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -49,6 +49,24 @@ DECLINLINE(int) VbglHGCMParmUInt32Get(HGCMFunctionParameter *pParm, uint32_t *pu
     if (pParm->type == VMMDevHGCMParmType_32bit)
     {
         *pu32 = pParm->u.value32;
+        return VINF_SUCCESS;
+    }
+    return VERR_INVALID_PARAMETER;
+}
+
+
+DECLINLINE(void) VbglHGCMParmUInt64Set(HGCMFunctionParameter *pParm, uint64_t u64)
+{
+    pParm->type      = VMMDevHGCMParmType_64bit;
+    pParm->u.value64 = u64;
+}
+
+
+DECLINLINE(int) VbglHGCMParmUInt64Get(HGCMFunctionParameter *pParm, uint64_t *pu64)
+{
+    if (pParm->type == VMMDevHGCMParmType_64bit)
+    {
+        *pu64 = pParm->u.value64;
         return VINF_SUCCESS;
     }
     return VERR_INVALID_PARAMETER;

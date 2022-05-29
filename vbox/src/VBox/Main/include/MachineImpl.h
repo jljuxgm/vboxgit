@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 10693 2008-07-16 11:48:19Z vboxsync $ */
+/* $Id: MachineImpl.h 10797 2008-07-22 08:12:42Z vboxsync $ */
 
 /** @file
  *
@@ -522,8 +522,12 @@ public:
     STDMETHOD(RemoveSharedFolder) (INPTR BSTR aName);
     STDMETHOD(CanShowConsoleWindow) (BOOL *aCanShow);
     STDMETHOD(ShowConsoleWindow) (ULONG64 *aWinId);
-    STDMETHOD(GetGuestProperty) (INPTR BSTR aKey, BSTR *aValue);
-    STDMETHOD(SetGuestProperty) (INPTR BSTR aKey, INPTR BSTR aValue);
+    STDMETHOD(GetGuestProperty) (INPTR BSTR aKey, BSTR *aValue, ULONG64 *aTimestamp, BSTR *aFlags);
+    STDMETHOD(GetGuestPropertyValue) (INPTR BSTR aKey, BSTR *aValue);
+    STDMETHOD(GetGuestPropertyTimestamp) (INPTR BSTR aKey, ULONG64 *aTimestamp);
+    STDMETHOD(SetGuestProperty) (INPTR BSTR aKey, INPTR BSTR aValue, INPTR BSTR aFlags);
+    STDMETHOD(SetGuestPropertyValue) (INPTR BSTR aKey, INPTR BSTR aValue);
+    STDMETHOD(EnumerateGuestProperties) (INPTR BSTR aPattern, ComSafeArrayOut(BSTR, aKeys), ComSafeArrayOut(BSTR, aValues), ComSafeArrayOut(ULONG64, aTimestamps), ComSafeArrayOut(BSTR, aFlags));
 
     // public methods only for internal purposes
 
