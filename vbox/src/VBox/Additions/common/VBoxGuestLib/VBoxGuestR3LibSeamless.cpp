@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibSeamless.cpp 6783 2008-02-04 13:26:21Z vboxsync $ */
+/** $Id: VBoxGuestR3LibSeamless.cpp 7367 2008-03-07 14:18:59Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Seamless mode.
  */
@@ -120,13 +120,9 @@ VBGLR3DECL(int) VbglR3SeamlessSendRects(uint32_t cRects, PRTRECT pRects)
         pReq->cRect = cRects;
         memcpy(&pReq->Rect, pRects, cRects * sizeof(RTRECT));
         rc = vbglR3GRPerform(&pReq->header);
-        vbglR3GRFree(&pReq->header);
         if (RT_SUCCESS(rc))
-        {
-            if (RT_SUCCESS(pReq->header.rc))
-                return VINF_SUCCESS;
             rc = pReq->header.rc;
-        }
+        vbglR3GRFree(&pReq->header);
     }
     return rc;
 }
