@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-darwin.cpp 6478 2008-01-24 12:31:11Z vboxsync $ */
+/* $Id: alloc-r0drv-darwin.cpp 7042 2008-02-20 14:57:07Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, Darwin.
  */
@@ -46,7 +46,7 @@ PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
         pHdr->u32Magic  = RTMEMHDR_MAGIC;
         pHdr->fFlags    = fFlags;
         pHdr->cb        = cb;
-        pHdr->u32Padding= 0;
+        pHdr->cbReq     = cb;
     }
     else
         printf("rmMemAlloc(%#x, %#x) failed\n", cb + sizeof(*pHdr), fFlags);
