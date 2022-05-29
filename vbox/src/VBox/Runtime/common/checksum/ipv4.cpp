@@ -1,4 +1,4 @@
-/* $Id: ipv4.cpp 10982 2008-07-30 13:33:48Z vboxsync $ */
+/* $Id: ipv4.cpp 10998 2008-07-30 16:22:30Z vboxsync $ */
 /** @file
  * IPRT - IPv4 Checksum calculation and validation.
  */
@@ -32,6 +32,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/net.h>
+#include <iprt/asm.h>
 #include <iprt/assert.h>
 
 
