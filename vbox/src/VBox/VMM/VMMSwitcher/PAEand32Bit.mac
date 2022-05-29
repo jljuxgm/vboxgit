@@ -1,4 +1,4 @@
-; $Id: PAEand32Bit.mac 9411 2008-06-05 11:41:38Z vboxsync $
+; $Id: PAEand32Bit.mac 9420 2008-06-05 13:06:17Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for PAE and 32-Bit.
 ;
@@ -292,7 +292,7 @@ GLOBALNAME FarJmpGCTarget
     DEBUG_CHAR('3')
     mov     eax, [edx + CPUM.Hyper.esp]
     mov     [edx + CPUM.Hyper.lss_esp], eax
-    lss     esp, [edx + CPUM.Hyper.esp]
+    lss     esp, [edx + CPUM.Hyper.lss_esp]
 
     ; Restore TSS selector; must mark it as not busy before using ltr (!)
     DEBUG_CHAR('4')
