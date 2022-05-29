@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 8454 2008-04-29 11:31:44Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 8557 2008-05-05 10:00:33Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -398,14 +398,8 @@ int main()
     GEN_CHECK_OFF(PGM, pfnR3ShwExit);
     GEN_CHECK_OFF(PGM, pfnR3ShwGetPage);
     GEN_CHECK_OFF(PGM, pfnR3ShwModifyPage);
-    GEN_CHECK_OFF(PGM, pfnR3ShwGetPDEByIndex);
-    GEN_CHECK_OFF(PGM, pfnR3ShwSetPDEByIndex);
-    GEN_CHECK_OFF(PGM, pfnR3ShwModifyPDEByIndex);
     GEN_CHECK_OFF(PGM, pfnGCShwGetPage);
     GEN_CHECK_OFF(PGM, pfnGCShwModifyPage);
-    GEN_CHECK_OFF(PGM, pfnGCShwGetPDEByIndex);
-    GEN_CHECK_OFF(PGM, pfnGCShwSetPDEByIndex);
-    GEN_CHECK_OFF(PGM, pfnGCShwModifyPDEByIndex);
     GEN_CHECK_OFF(PGM, pfnR3GstRelocate);
     GEN_CHECK_OFF(PGM, pfnR3GstExit);
     GEN_CHECK_OFF(PGM, pfnR3GstMonitorCR3);
