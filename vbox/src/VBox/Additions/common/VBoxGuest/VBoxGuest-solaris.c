@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 7626 2008-03-28 13:22:21Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 7886 2008-04-10 16:29:58Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -29,9 +29,6 @@
 #include <sys/sunddi.h>
 #undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
 
-#if defined(DEBUG_ramshankar) && !defined(LOG_ENABLED)
-#define LOG_ENABLED
-#endif
 #include "VBoxGuestInternal.h"
 #include <VBox/log.h>
 #include <iprt/assert.h>
