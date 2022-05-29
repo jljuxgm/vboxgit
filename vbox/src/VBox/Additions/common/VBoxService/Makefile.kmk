@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6469 2008-01-24 06:44:18Z vboxsync $
+# $Id: Makefile.kmk 7517 2008-03-22 23:15:44Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Addition Services.
 #
@@ -42,6 +42,9 @@ VBoxService_SOURCES.os2   = \
 VBoxService_LIBS          = \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
 	$(VBOX_LIB_VBGL_R3)
-
+VBoxService_LIBS.freebsd = \
+	iconv
+VBoxService_LIBPATH.freebsd = \
+	/usr/local/lib
 include	$(PATH_KBUILD)/subfooter.kmk
 

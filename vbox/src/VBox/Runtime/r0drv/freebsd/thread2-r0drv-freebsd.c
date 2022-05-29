@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-freebsd.c 3680 2007-07-18 04:31:28Z vboxsync $ */
+/* $Id: thread2-r0drv-freebsd.c 7517 2008-03-22 23:15:44Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Threads (Part 2), Ring-0 Driver, FreeBSD.
  */
@@ -69,13 +69,21 @@ int rtThreadNativeSetPriority(PRTTHREADINT pThread, RTTHREADTYPE enmType)
             return VERR_INVALID_PARAMETER;
     }
 
+#if __FreeBSD_version < 700000
     /* Do like they're doing in subr_ntoskrnl.c... */
     mtx_lock_spin(&sched_lock);
+#else
+    thread_lock(curthread);
+#endif
     sched_prio(curthread, iPriority);
 #if __FreeBSD_version < 600000
     curthread->td_base_pri = iPriority;
 #endif
+#if __FreeBSD_version < 700000
     mtx_unlock_spin(&sched_lock);
+#else
+    thread_unlock(curthread);
+#endif
 
     return VINF_SUCCESS;
 }
