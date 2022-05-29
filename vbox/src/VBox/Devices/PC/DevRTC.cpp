@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 11269 2008-08-08 16:24:48Z vboxsync $ */
+/* $Id: DevRTC.cpp 11293 2008-08-08 22:44:57Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -789,7 +789,7 @@ static DECLCALLBACK(void) rtcRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
 {
     RTCState *pThis = PDMINS_2_DATA(pDevIns, RTCState *);
 
-    pThis->pDevInsRC        = PDMDEVINS_2_GCPTR(pDevIns);
+    pThis->pDevInsRC        = PDMDEVINS_2_RCPTR(pDevIns);
     pThis->pPeriodicTimerRC = TMTimerRCPtr(pThis->pPeriodicTimerR3);
     pThis->pSecondTimerRC   = TMTimerRCPtr(pThis->pSecondTimerR3);
     pThis->pSecondTimer2RC  = TMTimerRCPtr(pThis->pSecondTimer2R3);
