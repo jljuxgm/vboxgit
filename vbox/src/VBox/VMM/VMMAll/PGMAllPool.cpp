@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 7843 2008-04-09 15:19:42Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 7928 2008-04-11 16:03:46Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -296,7 +296,7 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
                 if (uShw.pPTPae->a[iShw].n.u1Present)
                 {
 #  ifdef PGMPOOL_WITH_GCPHYS_TRACKING
-                    PCX86PTE pGstPte = (PCX86PTE)pgmPoolMonitorGCPtr2CCPtr(pPool, pvAddress, GCPhysFault, sizeof(*pGstPte));
+                    PCX86PTEPAE pGstPte = (PCX86PTEPAE)pgmPoolMonitorGCPtr2CCPtr(pPool, pvAddress, GCPhysFault, sizeof(*pGstPte));
                     Log4(("pgmPoolMonitorChainChanging pae_32: deref %VHp GCPhys %VGp\n", uShw.pPT->a[iShw].u & X86_PTE_PAE_PG_MASK, pGstPte->u & X86_PTE_PAE_PG_MASK));
                     pgmPoolTracDerefGCPhysHint(pPool, pPage,
                                                uShw.pPTPae->a[iShw].u & X86_PTE_PAE_PG_MASK,
