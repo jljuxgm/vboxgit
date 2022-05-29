@@ -1,4 +1,4 @@
-/** $Id: VDICore.h 6363 2008-01-16 15:40:29Z vboxsync $ */
+/** $Id: VDICore.h 6374 2008-01-18 09:34:15Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -332,9 +332,9 @@ DECLINLINE(PVDIDISKGEOMETRY) getImageLCHSGeometry(PVDIHEADER ph)
             switch (GET_MINOR_HEADER_VERSION(ph))
             {
                 case 1:
-		    if (ph->u.v1.cbHeader < sizeof(ph->u.v1plus))
+                    if (ph->u.v1.cbHeader < sizeof(ph->u.v1plus))
                         return NULL;
-		    else
+                    else
                         return &ph->u.v1plus.LCHSGeometry;
             }
     }

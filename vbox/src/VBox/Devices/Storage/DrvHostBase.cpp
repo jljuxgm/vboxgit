@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 6291 2008-01-09 10:57:05Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 6374 2008-01-18 09:34:15Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1179,7 +1179,7 @@ DECLCALLBACK(int) DRVHostBaseScsiCmd(PDRVHOSTBASE pThis, const uint8_t *pbCmd, s
 
         /* Execute the command and get the response. */
         SCSI_Sense_Data SenseData = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
-        SCSIServiceResponse	ServiceResponse	= kSCSIServiceResponse_Request_In_Process;
+        SCSIServiceResponse     ServiceResponse = kSCSIServiceResponse_Request_In_Process;
         SCSITaskStatus TaskStatus = kSCSITaskStatus_GOOD;
         UInt64 cbReturned = 0;
         irc = (*ppScsiTaskI)->ExecuteTaskSync(ppScsiTaskI, &SenseData, &TaskStatus, &cbReturned);

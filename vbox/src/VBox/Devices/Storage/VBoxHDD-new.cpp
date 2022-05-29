@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 6330 2008-01-10 15:39:33Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 6374 2008-01-18 09:34:15Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -700,7 +700,7 @@ VBOXDDU_DECL(int) VDGetFormat(const char *pszFilename, char **ppszFormat)
         AssertMsgBreak(VALID_PTR(ppszFormat),
                        ("ppszFormat=%#p\n", ppszFormat),
                        rc = VERR_INVALID_PARAMETER);
-	
+
         /* First check if static backends support this file format. */
         for (unsigned i = 0; aBackends[i] != NULL; i++)
         {
