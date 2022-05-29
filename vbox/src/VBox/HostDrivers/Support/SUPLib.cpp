@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 11332 2008-08-11 11:43:20Z vboxsync $ */
+/* $Id: SUPLib.cpp 11334 2008-08-11 12:12:54Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1223,9 +1223,9 @@ static int supInstallIDTE(void)
     else
     {
         /* SMP */
+        uint64_t        u64AffMaskSaved = RTThreadGetAffinity();
         RTCPUSET        OnlineSet;
         uint64_t        u64AffMaskPatched = RTCpuSetToU64(RTMpGetOnlineSet(&OnlineSet)) & u64AffMaskSaved;
-        uint64_t        u64AffMaskSaved = RTThreadGetAffinity();
         unsigned        cCpusPatched = 0;
         AssertLogRelReturn(cCpus < 64, VERR_INTERNAL_ERROR);
 
