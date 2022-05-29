@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9122 2008-05-26 12:56:58Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9125 2008-05-26 13:50:22Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -330,6 +330,8 @@ HWACCMR0DECL(int) SVMR0SetupVM(PVM pVM)
     /** The ASID must start at 1; the host uses 0. */
     pVMCB->ctrl.TLBCtrl.n.u32ASID = 1;
 
+    /** Setup the PAT msr (nested paging only) */
+    pVMCB->guest.u64GPAT = 0x0007040600070406ULL;
     return rc;
 }
 
