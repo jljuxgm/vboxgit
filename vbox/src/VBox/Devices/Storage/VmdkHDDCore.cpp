@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 10715 2008-07-16 22:38:23Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 10994 2008-07-30 15:04:10Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -3725,7 +3725,7 @@ static int vmdkOpen(const char *pszFilename, unsigned uOpenFlags,
     if (pImage->pInterfaceError)
         pImage->pInterfaceErrorCallbacks = VDGetInterfaceError(pImage->pInterfaceError->pCallbacks);
 
-    /* Try to get async I/O interfaec. */
+    /* Try to get async I/O interface. */
     pImage->pInterfaceAsyncIO = VDGetInterfaceFromList(pInterfaces, VDINTERFACETYPE_ASYNCIO);
     if (pImage->pInterfaceAsyncIO)
         pImage->pInterfaceAsyncIOCallbacks = VDGetInterfaceAsyncIO(pImage->pInterfaceAsyncIO->pCallbacks);
