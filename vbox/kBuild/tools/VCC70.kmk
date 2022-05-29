@@ -1,4 +1,4 @@
-# $Id: VCC70.kmk 1288 2007-11-30 03:58:03Z bird $
+# $Id: VCC70.kmk 1354 2007-12-03 01:07:33Z bird $
 ## @file
 #
 # kBuild Tool Config - Visual C++ 7.0 (aka Visual Studio .NET), targeting x86.
@@ -65,11 +65,7 @@ endif
 ## Constructs the correct .pdb name (the name is lowercased).
 # @param    $(1)        Base name, no extention.
 # @param    $(2)        The extension.
-ifeq ($(filter tolower,$(KMK_FEATURES)),tolower)
 TOOL_VCC70_PDB = $(dir $(1))$(tolower $(notdir $(1))).$(2)
-else # this fallback is incorrect and won't work on a case sensitive FS.
-TOOL_VCC70_PDB = $(1).$(2)
-endif
 
 # General Properties used by kBuild
 TOOL_VCC70_COBJSUFF         ?= .obj
@@ -307,12 +303,7 @@ define TOOL_VCC70_LINK_DLL_CMDS
 		$(subst /,\\,$(objs)) \
 		$(subst /,\\,$(libs))
 ifeq ($(filter %.exp .def,$(othersrc)),)
-ifdef KMK_NEW_CP
 	$(QUIET)$(CP) --changed --ignore-non-existing $(outbase).exp $(outbase).lib $(PATH_LIB)/
-else
-	$(QUIET)if test -f $(outbase).exp; then $(CP_EXT) $(outbase).exp $(PATH_LIB)/; fi
-	$(QUIET)if test -f $(outbase).lib; then $(CP_EXT) $(outbase).lib $(PATH_LIB)/; fi
-endif
 endif
 $(eval _DIRS += $(PATH_LIB))
 endef
