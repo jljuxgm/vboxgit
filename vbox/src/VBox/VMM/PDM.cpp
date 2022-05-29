@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 6796 2008-02-04 18:19:58Z vboxsync $ */
+/* $Id: PDM.cpp 7635 2008-03-28 17:15:38Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -106,6 +106,7 @@
 #include "PDMInternal.h"
 #include <VBox/pdm.h>
 #include <VBox/mm.h>
+#include <VBox/pgm.h>
 #include <VBox/ssm.h>
 #include <VBox/vm.h>
 #include <VBox/uvm.h>
@@ -427,6 +428,7 @@ PDMR3DECL(int) PDMR3Term(PVM pVM)
         pdmR3CritSectDeleteDevice(pVM, pDevIns);
         //pdmR3ThreadDestroyDevice(pVM, pDevIns);
         //PDMR3QueueDestroyDevice(pVM, pDevIns);
+        PGMR3PhysMMIO2Deregister(pVM, pDevIns, UINT32_MAX);
     }
 
     /*

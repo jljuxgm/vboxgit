@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 7617 2008-03-28 09:56:29Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 7635 2008-03-28 17:15:38Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -2040,7 +2040,7 @@ REMR3DECL(void) REMR3NotifyHandlerPhysicalModify(PVM pVM, PGMPHYSHANDLERTYPE enm
 #endif
 }
 
-REMDECL(bool) REMR3IsPageAccessHandled(PVM pVM, RTGCPHYS GCPhys)
+REMR3DECL(bool) REMR3IsPageAccessHandled(PVM pVM, RTGCPHYS GCPhys)
 {
 #ifdef USE_REM_STUBS
     return false;

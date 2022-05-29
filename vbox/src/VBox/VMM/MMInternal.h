@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 7632 2008-03-28 17:05:00Z vboxsync $ */
+/* $Id: MMInternal.h 7635 2008-03-28 17:15:38Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -562,6 +562,8 @@ typedef enum MMLOOKUPHYPERTYPE
     MMLOOKUPHYPERTYPE_HCPHYS,
     /** Mapping of contiguous GC physical memory. */
     MMLOOKUPHYPERTYPE_GCPHYS,
+    /** Mapping of MMIO2 memory. */
+    MMLOOKUPHYPERTYPE_MMIO2,
     /** Dynamic mapping area (MMR3HyperReserve).
      * A conversion will require to check what's in the page table for the pages. */
     MMLOOKUPHYPERTYPE_DYNAMIC
@@ -609,6 +611,16 @@ typedef struct MMLOOKUPHYPER
             /** HC physical address corresponding to pvHC. */
             RTGCPHYS                GCPhys;
         } GCPhys;
+        /** MMIO2 memory. */
+        struct
+        {
+            /** The device instance owning the MMIO2 region. */
+            PPDMDEVINS              pDevIns;
+            /** The region number. */
+            uint32_t                iRegion;
+            /** The offset into the MMIO2 region. */
+            RTGCPHYS                off;
+        } MMIO2;
     } u;
     /** Description. */
     R3PTRTYPE(const char *) pszDesc;

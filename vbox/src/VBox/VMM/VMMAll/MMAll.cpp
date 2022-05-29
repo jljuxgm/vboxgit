@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 6625 2008-01-30 19:31:09Z vboxsync $ */
+/* $Id: MMAll.cpp 7635 2008-03-28 17:15:38Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Any Context.
  */
@@ -68,6 +68,7 @@ DECLINLINE(PMMLOOKUPHYPER) mmHyperLookupR3(PVM pVM, RTR3PTR R3Ptr, uint32_t *pof
             }
 
             case MMLOOKUPHYPERTYPE_GCPHYS:  /* (for now we'll not allow these kind of conversions) */
+            case MMLOOKUPHYPERTYPE_MMIO2:
             case MMLOOKUPHYPERTYPE_DYNAMIC:
                 break;
 
@@ -534,6 +535,7 @@ MMDECL(RTGCPTR) MMHyperHC2GC(PVM pVM, RTHCPTR HCPtr)
             }
 
             case MMLOOKUPHYPERTYPE_GCPHYS:  /* (for now we'll not allow these kind of conversions) */
+            case MMLOOKUPHYPERTYPE_MMIO2:
             case MMLOOKUPHYPERTYPE_DYNAMIC:
                 break;
 

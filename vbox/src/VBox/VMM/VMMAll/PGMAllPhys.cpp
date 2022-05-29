@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 7629 2008-03-28 15:07:31Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 7635 2008-03-28 17:15:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -239,6 +239,24 @@ PDMDECL(void) PGMPhysInvalidatePageR3MapTLB(PVM pVM)
         pVM->pgm.s.PhysTlbHC.aEntries[i].pv = 0;
     }
     pgmUnlock(pVM);
+}
+
+
+/**
+ * Frees the specified RAM page.
+ *
+ * This is used by ballooning and remapping MMIO2.
+ *
+ * @param   pVM         Pointer to the shared VM structure.
+ * @param   pPage       Pointer to the page structure.
+ * @param   GCPhys      The guest physical address of the page, if applicable.
+ */
+void pgmPhysFreePage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
+{
+    AssertFatal(PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_RAM);
+
+    /** @todo implement this... */
+    AssertFatalFailed();
 }
 
 
