@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9811 2008-06-19 09:29:12Z vboxsync $
+# $Id: Makefile.kmk 10078 2008-07-01 16:13:41Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -51,8 +51,6 @@ VBoxGuestR0Lib_TEMPLATE     = VBOXGUESTR0LIB
 VBoxGuestR0Lib_DEFS         = VBOX_HGCM
 VBoxGuestR0Lib_INCS         = \
 	$(PATH_VBoxGuestR0Lib)
-VBoxGuestR0Lib_INCS.win     = \
-	$(PATH_SUB_ROOT)/WINNT/SharedFolders/include
 VBoxGuestR0Lib_SOURCES      = \
 	GenericRequest.cpp \
 	SysHlp.cpp \
