@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
+/* $Id: VBoxDev.cpp 11285 2008-08-08 22:32:49Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1600,7 +1600,7 @@ end:
  */
 static DECLCALLBACK(int) vmmdevIORAMRegionMap(PPCIDEVICE pPciDev, /*unsigned*/ int iRegion, RTGCPHYS GCPhysAddress, uint32_t cb, PCIADDRESSSPACE enmType)
 {
-    LogFlow(("vmmdevR3IORAMRegionMap: iRegion=%d GCPhysAddress=%VGp cb=%#x enmType=%d\n", iRegion, GCPhysAddress, cb, enmType));
+    LogFlow(("vmmdevR3IORAMRegionMap: iRegion=%d GCPhysAddress=%RGp cb=%#x enmType=%d\n", iRegion, GCPhysAddress, cb, enmType));
     VMMDevState *pThis = PCIDEV_2_VMMDEVSTATE(pPciDev);
     int rc;
 
