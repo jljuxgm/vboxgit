@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 9322 2008-06-02 20:27:44Z vboxsync $ */
+/* $Id: CFGM.cpp 9323 2008-06-02 20:28:55Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -51,7 +51,6 @@
  *        objects.
  *
  */
-
 
 /*******************************************************************************
 *   Header Files                                                               *
