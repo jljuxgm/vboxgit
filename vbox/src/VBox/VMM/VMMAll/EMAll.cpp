@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 10274 2008-07-05 13:14:52Z vboxsync $ */
+/* $Id: EMAll.cpp 10358 2008-07-08 12:19:29Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1726,10 +1726,20 @@ static int emInterpretCpuId(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, 
  */
 EMDECL(int) EMInterpretCRxRead(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRegGen, uint32_t SrcRegCrx)
 {
+    int      rc;
     uint64_t val64;
 
-    int rc = CPUMGetGuestCRx(pVM, SrcRegCrx, &val64);
-    AssertMsgRCReturn(rc, ("CPUMGetGuestCRx %d failed\n", SrcRegCrx), VERR_EM_INTERPRETER);
+    if (SrcRegCrx == USE_REG_CR8)
+    {
+        val64 = 0;
+        rc = PDMApicGetTPR(pVM, (uint8_t *)&val64);
+        AssertMsgRCReturn(rc, ("PDMApicGetTPR failed\n"), VERR_EM_INTERPRETER);
+    }
+    else
+    {
+        rc = CPUMGetGuestCRx(pVM, SrcRegCrx, &val64);
+        AssertMsgRCReturn(rc, ("CPUMGetGuestCRx %d failed\n", SrcRegCrx), VERR_EM_INTERPRETER);
+    }
 
     if (CPUMIsGuestIn64BitCode(pVM, pRegFrame))
         rc = DISWriteReg64(pRegFrame, DestRegGen, val64);
