@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 6382 2008-01-18 17:37:39Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 6384 2008-01-18 21:15:20Z vboxsync $ */
 
 /** @file
  *
@@ -160,7 +160,7 @@ public:
     STDMETHOD(UnregisterFloppyImage) (INPTR GUIDPARAM aId, IFloppyImage **aFloppyImage);
 
     STDMETHOD(GetGuestOSType) (INPTR BSTR aId, IGuestOSType **aType);
-    STDMETHOD(CreateSharedFolder) (INPTR BSTR aName, INPTR BSTR aHostPath);
+    STDMETHOD(CreateSharedFolder) (INPTR BSTR aName, INPTR BSTR aHostPath, BOOL aWritable);
     STDMETHOD(RemoveSharedFolder) (INPTR BSTR aName);
     STDMETHOD(GetNextExtraDataKey) (INPTR BSTR aKey, BSTR *aNextKey, BSTR *aNextValue);
     STDMETHOD(GetExtraData) (INPTR BSTR aKey, BSTR *aValue);
