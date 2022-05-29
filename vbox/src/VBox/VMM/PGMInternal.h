@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 9990 2008-06-27 11:46:14Z vboxsync $ */
+/* $Id: PGMInternal.h 10021 2008-06-30 15:13:44Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2004,6 +2004,13 @@ typedef struct PGM
     R3R0PTRTYPE(PPGMPOOLPAGE)   pHCShwAmd64CR3;
 
     /** @}*/
+
+    /** @name Nested Shadow Paging
+     * @{ */
+    /** Root table; format depends on the host paging mode (AMD-V) or EPT */
+    R3R0PTRTYPE(void *)         pHCNestedRoot;
+    /** The Physical Address (HC) of the nested paging root. */
+    RTHCPHYS                    HCPhysNestedRoot;
 
     /** @name Function pointers for Shadow paging.
      * @{

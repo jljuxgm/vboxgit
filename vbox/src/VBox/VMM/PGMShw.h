@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 9106 2008-05-26 09:06:33Z vboxsync $ */
+/* $Id: PGMShw.h 10021 2008-06-30 15:13:44Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -137,10 +137,11 @@ PGM_SHW_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
  */
 PGM_SHW_DECL(int, Enter)(PVM pVM)
 {
-#if PGM_SHW_MODE == PGM_MODE_AMD64
-    /*
-     * Set the RW, US and A flags for the fixed PDPEs.
-     */
+#if PGM_SHW_MODE == PGMMODE_NESTED
+    Assert(HWACCMIsNestedPagingActive(pVM));
+
+    /* In non-nested mode we allocate the PML4 page on-demand; in nested mode we just use our fixed nested paging root. */
+    pVM->pgm.s.pHCPaePML4 = (PX86PML4)pVM->pgm.s.pHCNestedRoot;
 #endif
     return VINF_SUCCESS;
 }
@@ -168,10 +169,9 @@ PGM_SHW_DECL(int, Relocate)(PVM pVM, RTGCUINTPTR offDelta)
  */
 PGM_SHW_DECL(int, Exit)(PVM pVM)
 {
-#if PGM_SHW_MODE == PGM_MODE_AMD64
-    /*
-     * Clear the RW, US and A flags for the fixed PDPEs.
-     */
+#if PGM_SHW_MODE == PGMMODE_NESTED
+    Assert(HWACCMIsNestedPagingActive(pVM));
+    pVM->pgm.s.pHCPaePML4 = 0;
 #endif
 
     return VINF_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 9999 2008-06-27 14:10:34Z vboxsync $ */
+/* $Id: PGMAll.cpp 10021 2008-06-30 15:13:44Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -823,7 +823,6 @@ PGMDECL(int) PGMShwSyncLongModePDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PX86PML4E pGs
     PPGMPOOLPAGE   pShwPage;
     int            rc;
 
-    Assert(!HWACCMIsNestedPagingActive(pVM));
     AssertReturn(pVM->pgm.s.pHCPaePML4, VERR_INTERNAL_ERROR);
 
     Assert(pVM->pgm.s.pHCPaePML4);
@@ -901,7 +900,6 @@ PGMDECL(int) PGMShwGetLongModePDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PX86PDPT *ppPd
     PX86PML4E      pPml4e;
     PPGMPOOLPAGE   pShwPage;
 
-    Assert(!HWACCMIsNestedPagingActive(pVM));
     AssertReturn(pVM->pgm.s.pHCPaePML4, VERR_INTERNAL_ERROR);
 
     pPml4e = &pPGM->pHCPaePML4->a[iPml4e];
