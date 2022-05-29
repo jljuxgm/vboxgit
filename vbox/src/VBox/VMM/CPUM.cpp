@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 9154 2008-05-27 11:33:58Z vboxsync $ */
+/* $Id: CPUM.cpp 9211 2008-05-29 08:54:54Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -1821,7 +1821,7 @@ CPUMR3DECL(int) CPUMR3DisasmInstrCPU(PVM pVM, PCPUMCTX pCtx, RTGCPTR GCPtrPC, PD
     pCpu->apvUserData[0]  = &State;
 
     uint32_t cbInstr;
-#ifdef LOG_ENABLED
+#ifndef LOG_ENABLED
     rc = DISInstr(pCpu, GCPtrPC, 0, &cbInstr, NULL);
     if (VBOX_SUCCESS(rc))
     {
