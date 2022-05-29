@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6577 2008-01-29 20:20:46Z vboxsync $
+# $Id: Config.kmk 6578 2008-01-29 20:26:16Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -975,6 +975,17 @@ VBOX_LIBPATH32_X11 ?= /usr/X11R6/lib32 /usr/X11R6/lib
 #
 VBOX_PATH_MACOSX_SDK ?= /Developer/SDKs/MacOSX10.4u.sdk
 VBOX_PATH_MACOSX_SDK_INCS ?= $(VBOX_PATH_MACOSX_SDK)/Developer/Headers
+
+#
+# The X11 headers.
+#
+VBOX_PATH_X11_ROOT      = $(PATH_ROOT)/src/VBox/Additions/x11/x11include
+VBOX_PATH_X11_XFREE_4_2 = $(VBOX_PATH_X11_ROOT)/4.2
+VBOX_PATH_X11_XFREE_4_3 = $(VBOX_PATH_X11_ROOT)/4.3
+VBOX_PATH_X11_XORG_7_0  = $(VBOX_PATH_X11_ROOT)/7.0
+VBOX_PATH_X11_XORG_7_1  = $(VBOX_PATH_X11_ROOT)/7.1
+VBOX_PATH_X11_XORG_1_3  = $(VBOX_PATH_X11_ROOT)/1.3
+VBOX_PATH_X11_XORG_1_4  = $(VBOX_PATH_X11_ROOT)/1.4
 
 
 #
@@ -2845,7 +2856,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6577 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6578 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
