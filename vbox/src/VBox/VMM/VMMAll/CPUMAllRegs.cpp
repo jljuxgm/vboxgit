@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 9825 2008-06-19 15:59:41Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 9841 2008-06-20 09:30:18Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -318,6 +318,11 @@ CPUMDECL(uint32_t) CPUMGetHyperEFlags(PVM pVM)
 CPUMDECL(uint32_t) CPUMGetHyperEIP(PVM pVM)
 {
     return pVM->cpum.s.CTXALLSUFF(pHyperCore)->eip;
+}
+
+CPUMDECL(uint64_t) CPUMGetHyperRIP(PVM pVM)
+{
+    return pVM->cpum.s.CTXALLSUFF(pHyperCore)->rip;
 }
 
 CPUMDECL(uint32_t) CPUMGetHyperIDTR(PVM pVM, uint16_t *pcbLimit)
@@ -746,6 +751,11 @@ CPUMDECL(void) CPUMGetGuestGDTR(PVM pVM, PVBOXGDTR pGDTR)
 CPUMDECL(uint32_t) CPUMGetGuestEIP(PVM pVM)
 {
     return pVM->cpum.s.Guest.eip;
+}
+
+CPUMDECL(uint64_t) CPUMGetGuestRIP(PVM pVM)
+{
+    return pVM->cpum.s.Guest.rip;
 }
 
 CPUMDECL(uint32_t) CPUMGetGuestEAX(PVM pVM)
