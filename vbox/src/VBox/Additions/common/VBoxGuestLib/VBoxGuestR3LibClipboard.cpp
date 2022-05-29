@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 6470 2008-01-24 07:09:56Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 7411 2008-03-10 15:11:41Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Clipboard.
  */
@@ -37,10 +37,11 @@
  */
 VBGLR3DECL(int) VbglR3ClipboardConnect(uint32_t *pu32ClientId)
 {
-    VBoxGuestHGCMConnectInfo Info;
+    VBoxGuestHGCMConnectInfo Info = { 0 };
+
     Info.result = (uint32_t)VERR_WRONG_ORDER; /** @todo drop the cast when the result type has been fixed! */
     Info.Loc.type = VMMDevHGCMLoc_LocalHost_Existing;
-    memset(&Info.Loc.u, 0, sizeof(Info.Loc.u));
+    // memset(&Info.Loc.u, 0, sizeof(Info.Loc.u));
     strcpy(Info.Loc.u.host.achName, "VBoxSharedClipboard");
 
     int rc = vbglR3DoIOCtl(IOCTL_VBOXGUEST_HGCM_CONNECT, &Info, sizeof(Info));
@@ -85,7 +86,7 @@ VBGLR3DECL(int) VbglR3ClipboardDisconnect(uint32_t u32ClientId)
  */
 VBGLR3DECL(int) VbglR3ClipboardGetHostMsg(uint32_t u32ClientId, uint32_t *pMsg, uint32_t *pfFormats)
 {
-    VBoxClipboardGetHostMsg Msg;
+    VBoxClipboardGetHostMsg Msg = { 0 };
 
     Msg.hdr.result = (uint32_t)VERR_WRONG_ORDER;  /** @todo drop the cast when the result type has been fixed! */
     Msg.hdr.u32ClientID = u32ClientId;
