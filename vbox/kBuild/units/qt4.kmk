@@ -1,4 +1,4 @@
-# $Id: qt4.kmk 1685 2008-07-15 09:11:21Z bird $
+# $Id: qt4.kmk 1689 2008-08-26 18:42:40Z bird $
 ## @file
 # Qt 4 unit.
 #
@@ -150,6 +150,9 @@ TOOL_QT4 = Qt4
 # Tool Specific Properties
 ifndef PATH_TOOL_QT4
  PATH_TOOL_QT4 := $(firstword $(rsort $(wildcard $(PATH_DEVTOOLS_BLD)/qt/v4*)))
+ ifeq ($(PATH_TOOL_QT4),)
+  PATH_TOOL_QT4 := $(patsubst %/bin/qt3to4,%,$(firstword $(wildcard /usr/lib/qt4/bin/qt3to4 /usr/qt/4/bin/qt3to4 /usr/share/qt4/bin/qt3to4 /usr/local/bin/qt3to4 /usr/bin/qt3to4)))
+ endif
  # If not found, we'll enter the 'pathless' mode.
 else
  # Resolve any fancy stuff once and for all.
@@ -268,7 +271,9 @@ define TOOL_QT4_RCC_QRC_CMDS
 		$(flags)\
 		-o $(out)\
 		$(source)
-	$(APPEND) $(dep) '$(source): \'
+	$(APPEND) $(dep) '\'
+	$(APPEND) $(dep) '$(out): \'
+	$(APPEND) $(dep) '$(source) \'
 	$(SED) \
 		-e '/^[[:blank:]]*<file[[:blank:]][^>]*>/!d' \
 		-e 's/^.*<file[[:blank:]][^>]*>\([^<]*\)<\/file>.*$$$$/\1/' \
@@ -887,6 +892,8 @@ ifneq ($(strip $(translations)),)
  $(eval $(expr))
  ifdef $(target)_QT_TRANSLATIONS_TEMPLATE
   $(target)-inst-nls_TEMPLATE := $($(target)_QT_TRANSLATIONS_TEMPLATE)
+ else
+  $(target)-inst-nls_MODE := 0644
  endif
  ifdef $(target)_QT_TRANSLATIONS_INST
   $(target)-inst-nls_INST := $($(target)_QT_TRANSLATIONS_INST)
