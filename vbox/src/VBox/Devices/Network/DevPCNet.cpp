@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7374 2008-03-07 15:41:17Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7375 2008-03-07 15:50:04Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -140,6 +140,9 @@ struct PCNetState_st
 
     /** Size of current send frame */
     uint32_t                            cbSendFrame;
+#if HC_ARCH_BITS == 64
+    uint32_t                            Alignment2;
+#endif
     /** Buffer address of current send frame */
     uint8_t                             *pvSendFrame;
     /** The xmit buffer. */
