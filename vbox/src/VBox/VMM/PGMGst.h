@@ -1,4 +1,4 @@
-/* $Id: PGMGst.h 10021 2008-06-30 15:13:44Z vboxsync $ */
+/* $Id: PGMGst.h 10035 2008-06-30 17:12:12Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
@@ -222,7 +222,6 @@ PGM_GST_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
  */
 PGM_GST_DECL(int, Enter)(PVM pVM, RTGCPHYS GCPhysCR3)
 {
-    Assert(!HWACCMIsNestedPagingActive(pVM));
     /*
      * Map and monitor CR3
      */
@@ -255,7 +254,6 @@ PGM_GST_DECL(int, Relocate)(PVM pVM, RTGCUINTPTR offDelta)
  */
 PGM_GST_DECL(int, Exit)(PVM pVM)
 {
-    Assert(!HWACCMIsNestedPagingActive(pVM));
     int rc = PGM_GST_NAME(UnmonitorCR3)(pVM);
     if (VBOX_SUCCESS(rc))
         rc = PGM_GST_NAME(UnmapCR3)(pVM);
