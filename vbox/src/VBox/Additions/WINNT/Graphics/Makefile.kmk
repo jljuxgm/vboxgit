@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11608 2008-08-25 11:01:41Z vboxsync $
+# $Id: Makefile.kmk 11635 2008-08-25 20:48:35Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows guest graphics driver.
 #
@@ -68,7 +68,7 @@ $(PATH_TARGET)/VBoxVideoCat.dir/VBoxVideo.cat: \
 		$(PATH_TARGET)/VBoxVideoCat.dir/VBoxVideo.sys \
 		$(PATH_TARGET)/VBoxVideoCat.dir/VBoxDisp.dll
 	$(call MSG_TOOL,Inf2Cat,VBoxVideo-inf,$@,$<)
-	$(call VBOX_MAKE_CAT32_FN, $(@D),$@)
+	$(call VBOX_MAKE_CAT_FN, $(@D),$@)
 
 include	$(KBUILD_PATH)/subfooter.kmk
 

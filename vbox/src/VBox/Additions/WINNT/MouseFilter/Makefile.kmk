@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11615 2008-08-25 13:59:22Z vboxsync $
+# $Id: Makefile.kmk 11635 2008-08-25 20:48:35Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Windows Guest mouse filter driver.
 #
@@ -69,7 +69,7 @@ $(PATH_TARGET)/VBoxMouseCat.dir/VBoxMouse.inf: $(PATH_SUB_CURRENT)/VBoxMouse.inf
 $(PATH_TARGET)/VBoxMouseCat.dir/VBoxMouse.cat: $(PATH_TARGET)/VBoxMouseCat.dir/VBoxMouse.inf $$(TARGET_VBoxMouse)
 	$(call MSG_TOOL,Inf2Cat,VBoxMouse-inf,$@,$<)
 	$(INSTALL) -m 644 $(TARGET_VBoxMouse) $(@D)
-	$(call VBOX_MAKE_CAT32_FN, $(@D),$@)
+	$(call VBOX_MAKE_CAT_FN, $(@D),$@)
 endif # signing
 
 include	$(KBUILD_PATH)/subfooter.kmk
