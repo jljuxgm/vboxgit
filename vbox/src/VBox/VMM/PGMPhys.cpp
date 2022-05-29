@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: PGMPhys.cpp 8347 2008-04-24 08:03:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -438,7 +438,7 @@ PDMR3DECL(int) PGMR3PhysMMIORegister(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb,
                                   VERR_PGM_RAM_CONFLICT);
 
             /* Check that it's all RAM or MMIO pages. */
-            PCPGMPAGE pPage = &pRam->aPages[GCPhys - pRam->GCPhys >> PAGE_SHIFT];
+            PCPGMPAGE pPage = &pRam->aPages[(GCPhys - pRam->GCPhys) >> PAGE_SHIFT];
             uint32_t cLeft = cb >> PAGE_SHIFT;
             while (cLeft-- > 0)
             {
