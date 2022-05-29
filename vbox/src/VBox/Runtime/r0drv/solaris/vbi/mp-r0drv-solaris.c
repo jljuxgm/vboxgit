@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-solaris.c 9429 2008-06-05 15:22:37Z vboxsync $ */
+/* $Id: mp-r0drv-solaris.c 10954 2008-07-29 19:51:36Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Solaris.
  */
@@ -228,7 +228,7 @@ static int rtmpOnSpecificSolarisWrapper(void *uArg, void *uIgnored1, void *uIgno
     PRTMPARGS pArgs = (PRTMPARGS)(uArg);
     RTCPUID idCpu = RTMpCpuId();
 
-    Assert(idCpu != pArgs->idCpu);
+    Assert(idCpu == pArgs->idCpu);
     pArgs->pfnWorker(idCpu, pArgs->pvUser1, pArgs->pvUser2);
     ASMAtomicIncU32(&pArgs->cHits);
 
