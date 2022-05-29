@@ -1,4 +1,4 @@
-/* $Id: errmsgxpcom.cpp 8402 2008-04-26 05:13:38Z vboxsync $ */
+/* $Id: errmsgxpcom.cpp 8482 2008-04-29 21:25:14Z vboxsync $ */
 /** @file
  * IPRT - Status code messages for XPCOM.
  */
@@ -48,6 +48,7 @@
 static const RTCOMERRMSG  g_aStatusMsgs[] =
 {
 //#include "errmsgxpcomdata.h"
+    { 0, "NS_SUCCESS", "Success" },
     { NULL, NULL, 0 }
 };
 
@@ -71,7 +72,7 @@ static volatile uint32_t    g_iUnknownMsgs;
 RTDECL(PCRTCOMERRMSG) RTErrCOMGet(uint32_t rc)
 {
     unsigned i;
-    for (i = 0; i < RT_ELEMENTS(g_aStatusMsgs); i++)
+    for (i = 0; i < RT_ELEMENTS(g_aStatusMsgs) - 1; i++)
         if (g_aStatusMsgs[i].iCode == rc)
             return &g_aStatusMsgs[i];
 
