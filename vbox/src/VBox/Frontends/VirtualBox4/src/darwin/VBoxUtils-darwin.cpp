@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 10230 2008-07-04 14:10:42Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 10231 2008-07-04 14:44:11Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -107,8 +107,8 @@ void darwinSetShowToolBarButton (QToolBar *aToolBar, bool aShow)
     QWidget *parent = aToolBar->parentWidget();
     if (parent)
     {
-        int attr[] = { kHIWindowBitToolbarButton, 0 };
-        int err = HIWindowChangeAttributes (::darwinToWindowRef (parent), aShow ? attr:NULL, aShow ? NULL:attr);
+        int err = ChangeWindowAttributes (::darwinToWindowRef (parent), aShow ? kWindowToolbarButtonAttribute:kWindowNoAttributes, 
+                                                                        aShow ? kWindowNoAttributes:kWindowToolbarButtonAttribute);
         AssertCarbonOSStatus (err);
     }
 }
