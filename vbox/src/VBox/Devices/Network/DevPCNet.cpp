@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 8610 2008-05-05 20:09:26Z vboxsync $ */
+/* $Id: DevPCNet.cpp 8613 2008-05-06 10:01:36Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -1533,7 +1533,7 @@ static void pcnetInit(PCNetState *pData)
         if (pcnetRmdLoad(pData, &rmd, PHYSADDR(pData, addr), false))
             cbRxBuffers += 4096-rmd.rmd1.bcnt;
     }
-    
+
     /*
      * Heuristics: The Solaris pcn driver allocates too few RX buffers (128 buffers of a
      * size of 128 bytes are 16KB in summary) leading to frequent RX buffer overflows. In
@@ -2539,9 +2539,7 @@ static void pcnetPollRxTx(PCNetState *pData)
  */
 static void pcnetPollTimerStart(PCNetState *pData)
 {
-    TMTimerSet(pData->CTXSUFF(pTimerPoll),
-               TMTimerGet(pData->CTXSUFF(pTimerPoll))
-               + TMTimerFromMilli(pData->CTXSUFF(pTimerPoll), 2));
+    TMTimerSetMillies(pData->CTXSUFF(pTimerPoll), 2);
 }
 
 
