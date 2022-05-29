@@ -1,4 +1,4 @@
-/** $Id: VBoxControl.cpp 10099 2008-07-02 12:40:08Z vboxsync $ */
+/** $Id: VBoxControl.cpp 10111 2008-07-02 14:36:35Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface
  */
@@ -183,7 +183,7 @@ typedef DECLCALLBACK(int) FNHANDLER(int argc, char *argv[]);
 typedef FNHANDLER *PFNHANDLER;
 
 /** The table of all registered command handlers. */
-struct
+struct COMMANDHANDLER
 {
     const char *command;
     PFNHANDLER handler;
