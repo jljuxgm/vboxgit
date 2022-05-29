@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 11383 2008-08-13 12:21:04Z vboxsync $ */
+/* $Id: Performance.cpp 11391 2008-08-13 14:48:53Z vboxsync $ */
 
 /** @file
  *
@@ -101,7 +101,7 @@ void BaseMetric::collectorBeat(uint64_t nowAt)
         if (nowAt - mLastSampleTaken >= mPeriod * 1000)
         {
             mLastSampleTaken = nowAt;
-            LogFlowThisFunc (("Collecting data for obj(%p)...\n", (void *)mObject));
+            Log4(("{%p} " LOG_FN_FMT ": Collecting data for obj(%p)...\n", this, __PRETTY_FUNCTION__, (void *)mObject));
             collect();
         }
     }
@@ -436,10 +436,10 @@ bool Filter::match(const ComPtr<IUnknown> object, const std::string &name) const
 {
     ElementList::const_iterator it;
 
-    LogFlowThisFunc(("Filter::match(%p, %s)\n", static_cast<const IUnknown*> (object), name.c_str()));
+    LogAleksey(("Filter::match(%p, %s)\n", static_cast<const IUnknown*> (object), name.c_str()));
     for (it = mElements.begin(); it != mElements.end(); it++)
     {
-        LogFlowThisFunc(("...matching against(%p, %s)\n", static_cast<const IUnknown*> ((*it).first), (*it).second.c_str()));
+        LogAleksey(("...matching against(%p, %s)\n", static_cast<const IUnknown*> ((*it).first), (*it).second.c_str()));
         if ((*it).first.isNull() || (*it).first == object)
         {
             // Objects match, compare names
@@ -450,6 +450,6 @@ bool Filter::match(const ComPtr<IUnknown> object, const std::string &name) const
             }
         }
     }
-    LogFlowThisFunc(("...no matches!\n"));
+    LogAleksey(("...no matches!\n"));
     return false;
 }

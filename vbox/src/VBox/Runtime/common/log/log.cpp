@@ -1,4 +1,4 @@
-/* $Id: log.cpp 10737 2008-07-18 08:34:45Z vboxsync $ */
+/* $Id: log.cpp 11391 2008-08-13 14:48:53Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -1139,6 +1139,7 @@ static unsigned rtlogGroupFlags(const char *psz)
             { "frank",      RTLOGGRPFLAGS_FRANK },
             { "b",          RTLOGGRPFLAGS_BIRD },
             { "bird",       RTLOGGRPFLAGS_BIRD },
+            { "aleksey",    RTLOGGRPFLAGS_ALEKSEY },
             { "n",          RTLOGGRPFLAGS_NONAME },
             { "noname",     RTLOGGRPFLAGS_NONAME }
         };
