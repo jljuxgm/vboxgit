@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 10830 2008-07-23 13:37:45Z vboxsync $ */
+/* $Id: HWACCM.cpp 10853 2008-07-24 13:31:40Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -747,7 +747,7 @@ HWACCMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
 
         /* The guest is about to complete the switch to protected mode. Wait a bit longer. */
         /* Windows XP; switch to protected mode; all selectors are marked not present in the
-         * hidden registers (possible recompiler bug) */
+         * hidden registers (possible recompiler bug; see load_seg_vm) */
         if (pCtx->csHid.Attr.n.u1Present == 0)
             return false;
         if (pCtx->ssHid.Attr.n.u1Present == 0)
