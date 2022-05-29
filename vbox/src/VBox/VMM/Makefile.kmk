@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: Makefile.kmk 8636 2008-05-06 17:24:11Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -439,4 +439,5 @@ PGMAllBth.o   PGMAllGst.o   PGMAllShw.o \
 PGMAllBth.obj PGMAllGst.obj PGMAllShw.obj: PGMAll.o
 PGMGCBth.o   PGMGCGst.o   PGMGCShw.o \
 PGMGCBth.obj PGMGCGst.obj PGMGCShw.obj: PGMGC.o
+PGMPhysRWTmpl.o PGMPhysRWTmpl.obj: PGMPhys.o
 
