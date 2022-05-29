@@ -1,4 +1,4 @@
-/* $Id: RTFileReadAllByHandleEx-generic.cpp 8925 2008-05-19 16:59:11Z vboxsync $ */
+/* $Id: RTFileReadAllByHandleEx-generic.cpp 8954 2008-05-20 14:02:01Z vboxsync $ */
 /** @file
  * IPRT - RTFileReadAllByHandleEx, generic implementation.
  */
@@ -62,8 +62,7 @@ RTDECL(int) RTFileReadAllByHandleEx(RTFILE File, RTFOFF off, RTFOFF cbMax, uint3
             if (cbAllocFile > cbMax)
                 cbAllocFile = cbMax;
             size_t cbAllocMem = (size_t)cbAllocFile;
-            if (    (RTFOFF)cbAllocMem == cbAllocFile
-                &&  cbAllocMem)
+            if ((RTFOFF)cbAllocMem == cbAllocFile)
             {
                 /*
                  * Try allocate the required memory and initialize the header (hardcoded fun).
@@ -98,8 +97,6 @@ RTDECL(int) RTFileReadAllByHandleEx(RTFILE File, RTFOFF off, RTFOFF cbMax, uint3
                 else
                     rc = VERR_NO_MEMORY;
             }
-            else if (!cbAllocMem)
-                rc = VERR_EOF;
             else
                 rc = VERR_TOO_MUCH_DATA;
         }
