@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10742 2008-07-18 10:12:28Z vboxsync $
+# $Id: Makefile.kmk 10916 2008-07-28 14:46:54Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -446,6 +446,7 @@ VirtualBox4_QT_MOCHDRS = \
 	include/QITreeWidget.h \
 	include/QIMainDialog.h \
 	include/QIHelpButton.h \
+	include/QIDialog.h \
 	include/VBoxFilePathSelectorWidget.h \
 	include/VBoxUtils.h \
 	include/VBoxGlobalSettings.h \
