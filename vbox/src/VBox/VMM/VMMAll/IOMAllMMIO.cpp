@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 7751 2008-04-04 17:10:17Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 7815 2008-04-08 19:57:44Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -1177,8 +1177,8 @@ IOMDECL(int) IOMMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore,
      * Should we defer the request right away?
      */
     if (uErrorCode & X86_TRAP_PF_RW
-        ? !pRange->CTXALLSUFF(pfnWriteCallback) && !pRange->pfnWriteCallbackR3
-        : !pRange->CTXALLSUFF(pfnReadCallback)  && !pRange->pfnReadCallbackR3)
+        ? !pRange->CTXALLSUFF(pfnWriteCallback) && pRange->pfnWriteCallbackR3
+        : !pRange->CTXALLSUFF(pfnReadCallback)  && pRange->pfnReadCallbackR3)
     {
 # ifdef VBOX_WITH_STATISTICS
         if (uErrorCode & X86_TRAP_PF_RW)
