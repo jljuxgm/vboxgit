@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 8626 2008-05-06 13:27:07Z vboxsync $ */
+/* $Id: PGMPhys.cpp 8635 2008-05-06 17:22:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -61,25 +61,25 @@ DECLCALLBACK(int) pgmR3PhysRomWriteHandler(PVM pVM, RTGCPHYS GCPhys, void *pvPhy
 #define PGMPHYSFN_WRITENAME PGMR3PhysWriteU8
 #define PGMPHYS_DATASIZE    1
 #define PGMPHYS_DATATYPE    uint8_t
-#include "PGMPhys.h"
+#include "PGMPhysRWTmpl.h"
 
 #define PGMPHYSFN_READNAME  PGMR3PhysReadU16
 #define PGMPHYSFN_WRITENAME PGMR3PhysWriteU16
 #define PGMPHYS_DATASIZE    2
 #define PGMPHYS_DATATYPE    uint16_t
-#include "PGMPhys.h"
+#include "PGMPhysRWTmpl.h"
 
 #define PGMPHYSFN_READNAME  PGMR3PhysReadU32
 #define PGMPHYSFN_WRITENAME PGMR3PhysWriteU32
 #define PGMPHYS_DATASIZE    4
 #define PGMPHYS_DATATYPE    uint32_t
-#include "PGMPhys.h"
+#include "PGMPhysRWTmpl.h"
 
 #define PGMPHYSFN_READNAME  PGMR3PhysReadU64
 #define PGMPHYSFN_WRITENAME PGMR3PhysWriteU64
 #define PGMPHYS_DATASIZE    8
 #define PGMPHYS_DATATYPE    uint64_t
-#include "PGMPhys.h"
+#include "PGMPhysRWTmpl.h"
 
 
 
