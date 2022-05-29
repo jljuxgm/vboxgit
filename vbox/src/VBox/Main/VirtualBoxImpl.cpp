@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 8803 2008-05-14 07:20:56Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 8804 2008-05-14 07:49:29Z vboxsync $ */
 /** @file
  * Implmentation of IVirtualBox in VBoxSVC.
  */
@@ -4522,7 +4522,7 @@ HRESULT VirtualBox::registerGuestOSTypes()
         { SchemaDefs_OSTypeId_netbsd,      "NetBSD",              VBOXOSTYPE_NetBSD,       64,   4,  2 * _1K },
         { SchemaDefs_OSTypeId_netware,     "Netware",             VBOXOSTYPE_Netware,     128,   4,  4 * _1K },
         { SchemaDefs_OSTypeId_solaris,     "Solaris",             VBOXOSTYPE_Solaris,     512,  12, 16 * _1K },
-	    { SchemaDefs_OSTypeId_opensolaris, "OpenSolaris",         VBOXOSTYPE_OpenSolaris, 512,  12, 16 * _1K },
+        { SchemaDefs_OSTypeId_opensolaris, "OpenSolaris",         VBOXOSTYPE_OpenSolaris, 512,  12, 16 * _1K },
         { SchemaDefs_OSTypeId_l4,          "L4",                  VBOXOSTYPE_L4,           64,   4,  2 * _1K }
     };
 
