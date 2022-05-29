@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 6864 2008-02-08 11:40:26Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 6960 2008-02-14 17:37:39Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -1083,13 +1083,11 @@ VBOXDDU_DECL(int) VDCreateBase(PVBOXHDD pDisk, const char *pszFilename,
                         pPCHSGeometry->cCylinders, pPCHSGeometry->cHeads,
                         pPCHSGeometry->cSectors),
                        rc = VERR_INVALID_PARAMETER);
+        /* The LCHS geometry fields may be 0 to leave it to later autodetection. */
         AssertMsgBreak(   VALID_PTR(pLCHSGeometry)
                        && pLCHSGeometry->cCylinders <= 16383
-                       && pLCHSGeometry->cCylinders != 0
                        && pLCHSGeometry->cHeads <= 16
-                       && pLCHSGeometry->cHeads != 0
-                       && pLCHSGeometry->cSectors <= 63
-                       && pLCHSGeometry->cSectors != 0,
+                       && pLCHSGeometry->cSectors <= 63,
                        ("pLCHSGeometry=%#p LCHS=%u/%u/%u\n", pLCHSGeometry,
                         pLCHSGeometry->cCylinders, pLCHSGeometry->cHeads,
                         pLCHSGeometry->cSectors),
