@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9074 2008-05-23 12:11:36Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9075 2008-05-23 12:14:51Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1160,10 +1160,8 @@ ResumeExecution:
             {   /* A genuine pagefault.
                  * Forward the trap to the guest by injecting the exception and resuming execution.
                  */
-                Log2(("Page fault at %VGv cr2=%VGv error code %x\n", pCtx->eip, uFaultAddress, errCode));
+                Log(("Page fault at %VGv cr2=%VGv error code %x\n", pCtx->eip, uFaultAddress, errCode));
                 STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitGuestPF);
-
-                TRPMResetTrap(pVM);
 
                 /* Now we must update CR2. */
                 pCtx->cr2 = uFaultAddress;
