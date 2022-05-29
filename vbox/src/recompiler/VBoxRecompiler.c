@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 8922 2008-05-19 15:44:47Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 8955 2008-05-20 14:24:20Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -3664,7 +3664,7 @@ REMR3DECL(void) REMR3NotifyInterruptSet(PVM pVM)
  * Notification about the interrupt FF being set.
  *
  * @param   pVM             VM Handle.
- * @thread  The emulation thread.
+ * @thread  Any.
  */
 REMR3DECL(void) REMR3NotifyInterruptClear(PVM pVM)
 {
