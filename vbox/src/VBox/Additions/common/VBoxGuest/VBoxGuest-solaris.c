@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 7101 2008-02-25 08:33:32Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 7255 2008-03-04 05:36:07Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -338,7 +338,7 @@ static int VBoxGuestSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t enmCmd)
                                              * Call the common device extension initializer.
                                              */
                                             rc = VBoxGuestInitDevExt(&g_DevExt, pState->uIOPortBase, pState->pMMIOBase,
-                                                        pState->cbMMIO, OSTypeSolaris);
+                                                        pState->cbMMIO, VBOXOSTYPE_Solaris);
                                             if (RT_SUCCESS(rc))
                                             {
                                                 rc = ddi_create_minor_node(pDip, DEVICE_NAME, S_IFCHR, instance, DDI_PSEUDO, 0);
