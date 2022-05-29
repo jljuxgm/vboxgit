@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8198 2008-04-19 21:21:16Z vboxsync $
+# $Id: Makefile.kmk 8199 2008-04-19 21:23:00Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -283,9 +283,6 @@ DevicesR3_SOURCES      += \
 	Network/lwip/src/netif/etharp.c \
 	Network/lwip/vbox/sys_arch.c \
 	Network/DevINIP.cpp
-ifneq ($(BUILD_TARGET),win)
-Network/lwip/src/api/sockets.c_CFLAGS = -Wno-address
-endif
 DevicesR3_DEFS	       += VBOX_WITH_INIP
 endif
 
