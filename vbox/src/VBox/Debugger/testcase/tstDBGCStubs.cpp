@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 9847 2008-06-20 11:21:16Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 9969 2008-06-26 15:58:05Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -111,7 +111,7 @@ SELMR3DECL(int) SELMR3GetSelectorInfo(PVM pVM, RTSEL Sel, PSELMSELINFO pSelInfo)
 
 #include <VBox/pgm.h>
 
-PGMDECL(uint32_t) PGMGetHyperCR3(PVM pVM)
+PGMDECL(RTHCPHYS) PGMGetHyperCR3(PVM pVM)
 {
     return 0;
 }
