@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10797 2008-07-22 08:12:42Z vboxsync $
+# $Id: Makefile.kmk 11031 2008-07-31 15:10:06Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -40,6 +40,7 @@ VBoxManage_DEFS.win    = _WIN32_WINNT=0x0500
 VBoxManage_SOURCES     = \
 	VBoxManage.cpp \
 	VBoxInternalManage.cpp \
+	$(if $(VBOX_WITH_GUEST_PROPS),VBoxManageGuestProps.cpp) \
 	VBoxManageSVN.cpp
 VBoxManage_LIBS       += $(LIB_DDU)
 
