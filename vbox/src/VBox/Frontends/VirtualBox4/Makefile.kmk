@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10515 2008-07-11 10:50:38Z vboxsync $
+# $Id: Makefile.kmk 10574 2008-07-13 16:40:42Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -18,6 +18,8 @@
 # Clara, CA 95054 USA or visit http://www.sun.com if you need
 # additional information or have any questions.
 #
+
+USE_KBUILD_QT_UNIT := 1	                # Testing before enabling it.
 
 VBOX_WITH_REGISTRATION := 1
 
@@ -202,10 +204,6 @@ ifdef USE_KBUILD_QT_UNIT
  USES += qt4
  TEMPLATE_VBOXQT4GUIEXE_USES = qt4
  TEMPLATE_VBOXQT4GUIEXE_QTTOOL = QT4
- TEMPLATE_VBOXQT4GUIEXE_MOCTOOL = QT4
- TEMPLATE_VBOXQT4GUIEXE_UICTOOL = QT4
- TEMPLATE_VBOXQT4GUIEXE_RCCTOOL = QT4
- TEMPLATE_VBOXQT4GUIEXE_LRCTOOL = QT4
  TEMPLATE_VBOXQT4GUIEXE_SDKS = QT4
 endif # USE_KBUILD_QT_UNIT
 TEMPLATE_VBOXQT4GUIEXE_DEFS = IN_RING3 QT_NO_DEBUG QT_THREAD_SUPPORT $(ARCH_BITS_DEFS) $(VBOX_DEFS_QT4)
