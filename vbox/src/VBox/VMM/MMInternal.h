@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 6796 2008-02-04 18:19:58Z vboxsync $ */
+/* $Id: MMInternal.h 7632 2008-03-28 17:05:00Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -144,6 +144,23 @@ typedef MMHEAP *PMMHEAP;
  */
 #if defined(VBOX_STRICT) || defined(__DOXYGEN__)
 # define MMHYPER_HEAP_FREE_POISON   0xCB
+#endif
+
+/** @def MMHYPER_HEAP_STRICT
+ * Enables a bunch of assertions in the heap code. */
+#if defined(VBOX_STRICT) || defined(__DOXYGEN__)
+# define MMHYPER_HEAP_STRICT 1
+# if 0 || defined(__DOXYGEN__)
+/** @def MMHYPER_HEAP_STRICT_FENCE
+ * Enables tail fence. */
+#  define MMHYPER_HEAP_STRICT_FENCE
+/** @def MMHYPER_HEAP_STRICT_FENCE_SIZE
+ * The fence size in bytes. */
+#  define MMHYPER_HEAP_STRICT_FENCE_SIZE    256
+/** @def MMHYPER_HEAP_STRICT_FENCE_U32
+ * The fence filler. */
+#  define MMHYPER_HEAP_STRICT_FENCE_U32     0xdeadbeef
+# endif
 #endif
 
 /**
