@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3Lib.cpp 5889 2007-11-30 12:39:22Z vboxsync $ */
+/** $Id: VBoxGuestR3Lib.cpp 5890 2007-11-30 12:52:50Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions.
  */
@@ -168,8 +168,7 @@ int vbglR3DoIOCtl(unsigned iFunction, void *pvData, size_t cbData)
 }
 
 
-VBGLR3DECL(int) VbglR3GRAlloc(VMMDevRequestHeader **ppReq, uint32_t cbSize,
-                              VMMDevRequestType enmReqType)
+VBGLR3DECL(int) VbglR3GRAlloc(VMMDevRequestHeader **ppReq, uint32_t cb, VMMDevRequestType enmReqType)
 {
     VMMDevRequestHeader *pReq;
 
@@ -181,7 +180,7 @@ VBGLR3DECL(int) VbglR3GRAlloc(VMMDevRequestHeader **ppReq, uint32_t cbSize,
     if (RT_UNLIKELY(!pReq))
         return VERR_NO_MEMORY;
 
-    pReq->size        = cbSize;
+    pReq->size        = cb;
     pReq->version     = VMMDEV_REQUEST_HEADER_VERSION;
     pReq->requestType = enmReqType;
     pReq->rc          = VERR_GENERAL_FAILURE;
