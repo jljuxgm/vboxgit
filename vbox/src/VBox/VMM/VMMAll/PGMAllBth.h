@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 7904 2008-04-11 09:39:47Z vboxsync $ */
+/* $Id: PGMAllBth.h 7997 2008-04-15 14:18:35Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1984,7 +1984,7 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PGSTPD pPDSrc, RTGCUINTPTR G
         PdeDst = *pPdeDst;
 #  endif
     }
-# else /* PGM_GST_TYPE == PGM_TYPE_32BIT */
+# elif PGM_GST_TYPE == PGM_TYPE_AMD64
     /* PAE and AMD64 modes are hardware accelerated only, so there are no mappings. */
     Assert(!pgmMapAreMappingsEnabled(&pVM->pgm.s));
 # endif /* PGM_GST_TYPE == PGM_TYPE_32BIT */
