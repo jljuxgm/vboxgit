@@ -1,4 +1,4 @@
-/* $Id: Performance.h 10868 2008-07-24 18:34:35Z vboxsync $ */
+/* $Id: Performance.h 10870 2008-07-24 19:32:11Z vboxsync $ */
 
 /** @file
  *
@@ -120,7 +120,7 @@ namespace pm
         void collect();
         const char *getUnit() { return "%"; };
         unsigned long getMinValue() { return 0; };
-        unsigned long getMaxValue() { return 100000000; };
+        unsigned long getMaxValue() { return PM_CPU_LOAD_MULTIPLIER; };
 
     protected:
         SubMetric *mUser;
@@ -183,7 +183,7 @@ namespace pm
         void collect();
         const char *getUnit() { return "%"; };
         unsigned long getMinValue() { return 0; };
-        unsigned long getMaxValue() { return 100000000; };
+        unsigned long getMaxValue() { return PM_CPU_LOAD_MULTIPLIER; };
     protected:
         RTPROCESS  mProcess;
         SubMetric *mUser;
