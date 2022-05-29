@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 10467 2008-07-10 12:40:53Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 10539 2008-07-11 17:57:11Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -4086,6 +4086,8 @@ static int vmdkFlush(void *pBackendData)
     LogFlowFunc(("pBackendData=%#p\n", pBackendData));
     PVMDKIMAGE pImage = (PVMDKIMAGE)pBackendData;
     int rc;
+    
+    Assert(pImage);
 
     rc = vmdkFlushImage(pImage);
     LogFlowFunc(("returns %Vrc\n", rc));
