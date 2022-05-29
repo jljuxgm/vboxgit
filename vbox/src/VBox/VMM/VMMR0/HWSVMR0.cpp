@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 8854 2008-05-15 13:58:37Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 8855 2008-05-15 14:09:16Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -768,17 +768,13 @@ ResumeExecution:
 
     /* All done! Let's start VM execution. */
     STAM_PROFILE_ADV_START(&pVM->hwaccm.s.StatInGC, x);
-    if (    pVM->hwaccm.s.svm.fForceTLBFlush
-        ||  pVM->hwaccm.s.svm.fAlwaysFlushTLB)
-    {
-        pVMCB->ctrl.TLBCtrl.n.u1TLBFlush = 1;
-    }
-    else
-        pVMCB->ctrl.TLBCtrl.n.u1TLBFlush = 0;
+
+    /* Make sure we flush the TLB when required. */
+    pVMCB->ctrl.TLBCtrl.n.u1TLBFlush = pVM->hwaccm.s.svm.fForceTLBFlush;
 
     /* In case we execute a goto ResumeExecution later on. */
     pVM->hwaccm.s.svm.fResumeVM      = true;
-    pVM->hwaccm.s.svm.fForceTLBFlush = false;
+    pVM->hwaccm.s.svm.fForceTLBFlush = pVM->hwaccm.s.svm.fAlwaysFlushTLB;
 
     Assert(sizeof(pVM->hwaccm.s.svm.pVMCBPhys) == 8);
     Assert(pVMCB->ctrl.u32InterceptCtrl2 == ( SVM_CTRL2_INTERCEPT_VMRUN         /* required */
