@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 7016 2008-02-19 13:32:39Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -207,7 +207,8 @@ int main(int argc, char **argv)
                              NearSym.aSyms[1].Value, NearSym.aSyms[1].szName, NearSym.aSyms[1].uSymbol);
                     if (NearSym.Addr - NearSym.aSyms[0].Value < 0x10000)
                     {
-                        DISCPUSTATE Cpu = {0};
+                        DISCPUSTATE Cpu;
+                        memset(&Cpu, 0, sizeof(Cpu));
                         Cpu.mode = CPUMODE_32BIT;
                         uint8_t *pbCode = (uint8_t *)pvBits + (NearSym.aSyms[0].Value - LoadAddr);
                         MyDisBlock(&Cpu, (uintptr_t)pbCode,

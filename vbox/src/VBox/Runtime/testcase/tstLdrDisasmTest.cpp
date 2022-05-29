@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: tstLdrDisasmTest.cpp 7016 2008-02-19 13:32:39Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - RTLdr test object.
  *
@@ -109,11 +109,14 @@ inline int MyDisasm(uintptr_t CodeIndex, PDISCPUSTATE pCpu, uint32_t *pcb)
 
 extern "C" DECLEXPORT(int) DisasmTest1(void)
 {
-    DISCPUSTATE Cpu = {0};
+    DISCPUSTATE Cpu;
     uintptr_t CodeIndex = 0;
     uint32_t cb;
     int rc;
     MY_PRINTF(("DisasmTest1: %p\n", &DisasmTest1));
+
+    memset(&Cpu, 0, sizeof(Cpu));
+    Cpu.mode = CPUMODE_32BIT;
 
 #define DISAS_AND_CHECK(cbInstr, enmOp) \
         do { \
