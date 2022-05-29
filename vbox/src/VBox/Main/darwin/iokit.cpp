@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 11375 2008-08-12 23:19:40Z vboxsync $ */
+/* $Id: iokit.cpp 11389 2008-08-13 13:30:32Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -323,7 +323,7 @@ static bool darwinDictGetData(CFMutableDictionaryRef DictRef, CFStringRef KeyStr
 #  define DARWIN_IOKIT_LOG_FLUSH()  RTStrmFlush(g_pStdOut)
 # else
 #  define DARWIN_IOKIT_LOG(a)       RTLogPrintf a
-#  define DARWIN_IOKIT_LOG(a)       RTLogFlush()
+#  define DARWIN_IOKIT_LOG_FLUSH()  RTLogFlush(NULL)
 # endif
 # define DARWIN_IOKIT_DUMP_OBJ(o)   darwinDumpObj(o)
 
