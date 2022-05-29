@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 10064 2008-07-01 10:02:18Z vboxsync $ */
+/* $Id: PGMR0.cpp 10471 2008-07-10 13:45:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -145,6 +145,7 @@ PGMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PGMMODE enmShwPagingMode,
         break;
     default:
         AssertFailed();
+        rc = VERR_INVALID_PARAMETER;
         break;
     }
     if (rc == VINF_PGM_SYNCPAGE_MODIFIED_PDE)
