@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11721 2008-08-27 20:09:03Z vboxsync $
+# $Id: Makefile.kmk 11723 2008-08-27 21:31:43Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -701,7 +701,7 @@ additions-packing:
 		$(VBOX_PATH_ADDITIONS)/VBoxGuestAdditions.iso
 
 sdk:
-	+ $(KMK) VBOX_ONLY_SDK=1 VBOX_WITH_PYTHON=1 VBOX_WITHOUT_ADDITIONS=1 \
+	+ $(KMK) VBOX_ONLY_SDK=1 VBOX_WITH_PYTHON=1  \
               pass_bldprogs pass_others pass_installs pass_packing
 
 
