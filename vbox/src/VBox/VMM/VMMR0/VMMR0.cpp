@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 10663 2008-07-15 14:38:39Z vboxsync $ */
+/* $Id: VMMR0.cpp 10721 2008-07-17 12:08:53Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -604,8 +604,9 @@ VMMR0DECL(int) VMMR0EntryFast(PVM pVM, VMMR0OPERATION enmOperation)
             }
 
             Assert(!pVM->vmm.s.fSwitcherDisabled);
-            return VERR_NOT_SUPPORTED;
-        }
+            pVM->vmm.s.iLastGCRc = VERR_NOT_SUPPORTED;
+            break;
+       }
 
         /*
          * Run guest code using the available hardware acceleration technology.
@@ -644,6 +645,7 @@ VMMR0DECL(int) VMMR0EntryFast(PVM pVM, VMMR0OPERATION enmOperation)
          * For profiling.
          */
         case VMMR0_DO_NOP:
+            pVM->vmm.s.iLastGCRc = VINF_SUCCESS;
             return VINF_SUCCESS;
 
         /*
@@ -651,8 +653,11 @@ VMMR0DECL(int) VMMR0EntryFast(PVM pVM, VMMR0OPERATION enmOperation)
          */
         default:
             AssertMsgFailed(("%#x\n", enmOperation));
-            return VERR_NOT_SUPPORTED;
+            pVM->vmm.s.iLastGCRc = VERR_NOT_SUPPORTED;
+            break;
     }
+    /* Error case, but the error was written to pVM->vmm.s.iLastGCRc */
+    return VINF_SUCCESS;
 }
 
 
