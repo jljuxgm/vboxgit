@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: VMM.cpp 11438 2008-08-15 08:35:42Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -930,7 +930,7 @@ VMMR3DECL(int)  VMMR3UpdateLoggers(PVM pVM)
             pR0Logger->fCreated = true;
         }
 
-        rc = RTLogCopyGroupsAndFlags(&pR0Logger->Logger, NULL /* default */, RTLOGFLAGS_BUFFERED, 0);
+        rc = RTLogCopyGroupsAndFlags(&pR0Logger->Logger, NULL /* default */, pVM->vmm.s.pLoggerHC->fFlags, RTLOGFLAGS_BUFFERED);
         AssertRC(rc);
     }
 
