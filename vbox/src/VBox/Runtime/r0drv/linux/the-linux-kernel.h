@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 9365 2008-06-03 22:09:54Z vboxsync $ */
+/* $Id: the-linux-kernel.h 9442 2008-06-05 17:15:42Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -174,7 +174,7 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
 /** @def TICK_NSEC
  * The time between ticks in nsec */
 #ifndef TICK_NSEC
-# define TICK_NSEC (1000000UL / HZ)
+# define TICK_NSEC (1000000000UL / HZ)
 #endif
 
 /*
