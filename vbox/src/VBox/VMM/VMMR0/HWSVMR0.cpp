@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10097 2008-07-02 12:28:55Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10108 2008-07-02 14:06:24Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1491,6 +1491,9 @@ ResumeExecution:
             break;
         case 4:
             pVM->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_GUEST_CR4;
+            break;
+        case 8:
+            pVM->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_GUEST_CR8;
             break;
         default:
             AssertFailed();

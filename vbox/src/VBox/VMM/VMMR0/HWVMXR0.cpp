@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 9998 2008-06-27 13:55:19Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 10108 2008-07-02 14:06:24Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1744,6 +1744,9 @@ ResumeExecution:
             case 4:
                 pVM->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_GUEST_CR4;
                 break;
+            case 8:
+                pVM->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_GUEST_CR8;
+                break;
             default:
                 AssertFailed();
             }
@@ -2062,6 +2065,9 @@ ResumeExecution:
     }
 
     case VMX_EXIT_TPR:                  /* 43 TPR below threshold. Guest software executed MOV to CR8. */
+        AssertMsgFailed(("Todo!!\n"));
+        break;
+
     case VMX_EXIT_ERR_MSR_LOAD:         /* 34 VM-entry failure due to MSR loading. */
     case VMX_EXIT_ERR_MACHINE_CHECK:    /* 41 VM-entry failure due to machine-check. */
     default:
