@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10128 2008-07-03 02:53:54Z vboxsync $
+# $Id: Makefile.kmk 11540 2008-08-21 15:24:59Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Additions XFree86 and X.org mouse drivers.
 #
@@ -45,6 +45,7 @@ if1of ($(KBUILD_TARGET), linux)
 	BUILDDEBUG X_BYTE_ORDER=X_LITTLE_ENDIAN DNDEBUG FUNCPROTO=15 NARROWPROTO \
 	IN_MODULE XFree86Module PNP_MOUSE
  vboxmouse_drv_INCS := \
+	$(VBOX_PATH_X11_XFREE_4_2)/exports/include \
 	$(VBOX_PATH_X11_XFREE_4_2)/exports/include/X11 \
 	$(VBOX_PATH_X11_XFREE_4_2)/include \
 	$(VBOX_PATH_X11_XFREE_4_2)/include/extensions \

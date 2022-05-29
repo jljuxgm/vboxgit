@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10128 2008-07-03 02:53:54Z vboxsync $
+# $Id: Makefile.kmk 11540 2008-08-21 15:24:59Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -49,7 +49,8 @@ if1of ($(KBUILD_TARGET), linux)
  ifdef ARGB_CURSORS
   vboxvideo_drv_INCS = \
 	$(VBOX_PATH_X11_XFREE_4_3)/include \
-	$(VBOX_PATH_X11_XFREE_4_3)/include/extensions \
+	$(VBOX_PATH_X11_XFREE_4_3)/include/X11 \
+	$(VBOX_PATH_X11_XFREE_4_3)/include/X11/extensions \
 	$(VBOX_PATH_X11_XFREE_4_3)/include/fonts \
 	$(VBOX_PATH_X11_XFREE_4_3)/programs/Xserver/afb \
 	$(VBOX_PATH_X11_XFREE_4_3)/programs/Xserver/include \
