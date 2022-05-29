@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 6147 2007-12-19 09:17:49Z vboxsync $ */
+/* $Id: log-vbox.cpp 6273 2008-01-08 11:06:38Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Logging configuration.
  */
@@ -184,6 +184,11 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
     if (g_pLogger || !ASMAtomicCmpXchgU32(&fInitializing, 1, 0))
         return g_pLogger;
 
+    /* If we are doing backdoor logging then we do not want to
+       create an additional log file inside the guest. */
+#ifdef LOG_TO_BACKDOOR
+    return g_pLogger = NULL;
+#endif
 #ifdef IN_RING3
     /*
      * Assert the group definitions.
