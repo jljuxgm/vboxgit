@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 9421 2008-06-05 13:17:00Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 9669 2008-06-12 19:26:45Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -635,8 +635,6 @@ static DECLCALLBACK(void) HWACCMR0DisableCPU(RTCPUID idCpu, void *pvUser1, void 
  */
 HWACCMR0DECL(int) HWACCMR0InitVM(PVM pVM)
 {
-    int rc = VINF_SUCCESS;
-
     AssertReturn(pVM, VERR_INVALID_PARAMETER);
 
 #ifdef LOG_ENABLED
@@ -679,8 +677,6 @@ HWACCMR0DECL(int) HWACCMR0InitVM(PVM pVM)
  */
 HWACCMR0DECL(int) HWACCMR0TermVM(PVM pVM)
 {
-    int rc = VINF_SUCCESS;
-
     AssertReturn(pVM, VERR_INVALID_PARAMETER);
 
 #ifdef LOG_ENABLED
@@ -700,8 +696,6 @@ HWACCMR0DECL(int) HWACCMR0TermVM(PVM pVM)
  */
 HWACCMR0DECL(int) HWACCMR0SetupVM(PVM pVM)
 {
-    int rc = VINF_SUCCESS;
-
     AssertReturn(pVM, VERR_INVALID_PARAMETER);
 
 #ifdef LOG_ENABLED

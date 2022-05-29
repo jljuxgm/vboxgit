@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 9661 2008-06-12 13:11:40Z vboxsync $ */
+/* $Id: PGM.cpp 9669 2008-06-12 19:26:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2648,6 +2648,9 @@ static int pgmR3ModeDataInit(PVM pVM, bool fResolveGCAndR0)
             pModeData = &pVM->pgm.s.paModeData[pgmModeDataIndex(PGM_TYPE_NESTED, i)];
             rc = PGM_SHW_NAME_AMD64(InitData)(      pVM, pModeData, fResolveGCAndR0); AssertRCReturn(rc, rc);
         }
+        break;
+    default:
+        AssertFailed();
         break;
     }
     return VINF_SUCCESS;
