@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10133 2008-07-03 03:53:50Z vboxsync $
+# $Id: Makefile.kmk 11374 2008-08-12 19:40:51Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -61,7 +61,7 @@ ifdef VBOX_ONLY_ADDITIONS
 	Additions
 
 else  # !VBOX_ONLY_ADDITIONS
- SUBDIRS_BLDPROGS = Devices
+ SUBDIRS_BLDPROGS = Devices Main
 
  SUBDIRS = \
 	Runtime \
