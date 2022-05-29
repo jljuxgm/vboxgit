@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: PGMMap.cpp 6862 2008-02-08 10:38:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1155,7 +1155,6 @@ static DECLCALLBACK(int) pgmR3DumpMappingsPhysicalCB(PAVLROGCPHYSNODECORE pNode,
     switch (pCur->enmType)
     {
         case PGMPHYSHANDLERTYPE_MMIO:           pszType = "MMIO   "; break;
-        case PGMPHYSHANDLERTYPE_PHYSICAL:       pszType = "Natural"; break;
         case PGMPHYSHANDLERTYPE_PHYSICAL_WRITE: pszType = "Write  "; break;
         case PGMPHYSHANDLERTYPE_PHYSICAL_ALL:   pszType = "All    "; break;
         default:                                pszType = "????"; break;

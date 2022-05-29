@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 6861 2008-02-08 10:04:44Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 6862 2008-02-08 10:38:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -94,7 +94,6 @@ PGMDECL(int) PGMHandlerPhysicalRegisterEx(PVM pVM, PGMPHYSHANDLERTYPE enmType, R
     switch (enmType)
     {
         case PGMPHYSHANDLERTYPE_MMIO:
-        case PGMPHYSHANDLERTYPE_PHYSICAL:
         case PGMPHYSHANDLERTYPE_PHYSICAL_WRITE:
         case PGMPHYSHANDLERTYPE_PHYSICAL_ALL:
             break;
@@ -813,7 +812,6 @@ PGMDECL(int)  PGMHandlerPhysicalReset(PVM pVM, RTGCPHYS GCPhys)
             /*
              * Invalid.
              */
-            case PGMPHYSHANDLERTYPE_PHYSICAL:
             case PGMPHYSHANDLERTYPE_MMIO:
                 AssertMsgFailed(("Can't reset type %d!\n",  pCur->enmType));
                 pgmUnlock(pVM);

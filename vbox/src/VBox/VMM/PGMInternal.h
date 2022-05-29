@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 6856 2008-02-07 19:30:15Z vboxsync $ */
+/* $Id: PGMInternal.h 6862 2008-02-08 10:38:38Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3045,9 +3045,6 @@ DECLINLINE(unsigned) pgmHandlerPhysicalCalcFlags(PPGMPHYSHANDLER pCur)
 {
     switch (pCur->enmType)
     {
-        case PGMPHYSHANDLERTYPE_PHYSICAL:
-            return MM_RAM_FLAGS_PHYSICAL_HANDLER;
-
         case PGMPHYSHANDLERTYPE_PHYSICAL_WRITE:
             return MM_RAM_FLAGS_PHYSICAL_HANDLER | MM_RAM_FLAGS_PHYSICAL_WRITE;
 

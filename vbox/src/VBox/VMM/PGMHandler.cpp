@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 6854 2008-02-07 19:24:14Z vboxsync $ */
+/* $Id: PGMHandler.cpp 6862 2008-02-08 10:38:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -525,7 +525,6 @@ static DECLCALLBACK(int) pgmR3InfoHandlersPhysicalOne(PAVLROGCPHYSNODECORE pNode
     switch (pCur->enmType)
     {
         case PGMPHYSHANDLERTYPE_MMIO:           pszType = "MMIO   "; break;
-        case PGMPHYSHANDLERTYPE_PHYSICAL:       pszType = "Natural"; break;
         case PGMPHYSHANDLERTYPE_PHYSICAL_WRITE: pszType = "Write  "; break;
         case PGMPHYSHANDLERTYPE_PHYSICAL_ALL:   pszType = "All    "; break;
         default:                                pszType = "????"; break;
