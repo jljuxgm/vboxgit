@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 7614 2008-03-28 08:29:42Z vboxsync $ */
+/* $Id: VMM.cpp 7616 2008-03-28 08:47:21Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2212,7 +2212,7 @@ static int vmmR3ServiceCallHostRequest(PVM pVM)
 
         case VMMCALLHOST_PGM_RAM_GROW_RANGE:
         {
-            RTGCPHYS GCPhys = pVM->vmm.s.u64CallHostArg;
+            const RTGCPHYS GCPhys = pVM->vmm.s.u64CallHostArg;
             pVM->vmm.s.rcCallHost = PGM3PhysGrowRange(pVM, &GCPhys);
             break;
         }
