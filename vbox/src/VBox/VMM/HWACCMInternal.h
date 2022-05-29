@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 9407 2008-06-05 09:42:13Z vboxsync $ */
+/* $Id: HWACCMInternal.h 9410 2008-06-05 11:12:18Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -167,6 +167,8 @@ typedef struct HWACCM
     /** Old style FPU reporting trap mask override performed (optimization) */
     uint32_t                    fFPUOldStyleOverride;
 
+    /** And mask for copying register contents. */
+    uint64_t                    u64RegisterMask;
     struct
     {
         /** Set by the ring-0 driver to indicate VMX is supported by the CPU. */
