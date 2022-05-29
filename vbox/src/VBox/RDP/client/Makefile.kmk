@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11624 2008-08-25 15:05:22Z vboxsync $
+# $Id: Makefile.kmk 11627 2008-08-25 15:42:13Z vboxsync $
 ## @file
 # VBox - rdesktop with VRDP enhancements sub-makefile.
 #
@@ -52,7 +52,7 @@ endif
 # @todo once rdp proxy is available on Solaris, add WITH_RDPUSB=1
 rdesktop-vrdp_DEFS.solaris = \
 	HAVE_SYS_FILIO_H=1 RDPSND_SUN=1 HAVE_ICONV_H=1 ICONV_CONST=const STAT_STATVFS64=1 _FILE_OFFSET_BITS=64 \
-	DIR_FD_MEMBER_NAME=d_fd
+	DIR_FD_MEMBER_NAME=dd_fd
 
 rdesktop-vrdp_SOURCES = \
 	tcp.c \
