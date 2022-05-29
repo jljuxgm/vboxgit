@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-solaris.c 4178 2007-08-16 15:07:51Z vboxsync $ */
+/* $Id: thread2-r0drv-solaris.c 5947 2007-12-04 05:17:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Threads (Part 2), Ring-0 Driver, Solaris.
  */
@@ -87,10 +87,8 @@ static void rtThreadNativeMain(void *pvThreadInt)
 int rtThreadNativeCreate(PRTTHREADINT pThreadInt, PRTNATIVETHREAD pNativeThread)
 {
     int rc;
-    /** @todo Passing hardcoded priority of 52, Find correct default priority */
-    /* We know its from 0 to 127 priority, but what's the default?? */
     kthread_t* pKernThread = thread_create(NULL, NULL, rtThreadNativeMain, pThreadInt, 0,
-                                           curproc, LMS_USER, 52);
+                                           curproc, LMS_USER, minclsyspri);
     if (pKernThread)
     {
         *pNativeThread = (RTNATIVETHREAD)pKernThread;

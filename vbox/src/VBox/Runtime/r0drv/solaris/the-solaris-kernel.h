@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 4544 2007-09-05 21:46:29Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 5947 2007-12-04 05:17:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the Solaris kernel.
  */
@@ -30,6 +30,7 @@
 #include <sys/sysmacros.h>
 #include <sys/vmsystm.h>
 #include <sys/cyclic.h>
+#include <sys/class.h>
 #include <vm/hat.h>
 #include <vm/seg_vn.h>
 #include <vm/seg_kmem.h>
