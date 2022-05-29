@@ -1,9 +1,9 @@
-// $Id: vbox.dsl 6222 2007-12-30 17:06:27Z vboxsync $
+// $Id: vbox.dsl 8207 2008-04-21 07:18:14Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
 //
-// Copyright (C) 2006-2007 innotek GmbH
+// Copyright (C) 2006-2007 Sun Microsystems, Inc.
 //
 // This file is part of VirtualBox Open Source Edition (OSE), as
 // available from http://www.virtualbox.org. This file is free software;
