@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9026 2008-05-21 15:33:04Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9029 2008-05-21 15:45:02Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -728,7 +728,6 @@ HWACCMR0DECL(int) SVMR0RunGuestCode(PVM pVM, CPUMCTX *pCtx, PHWACCM_CPUINFO pCpu
 
     STAM_PROFILE_ADV_START(&pVM->hwaccm.s.StatEntry, x);
 
-    Assert(!pVM->hwaccm.s.fNestedPaging);
     AssertReturn(pCpu->fSVMConfigured, VERR_EM_INTERNAL_ERROR);
 
     pVMCB = (SVM_VMCB *)pVM->hwaccm.s.svm.pVMCB;
