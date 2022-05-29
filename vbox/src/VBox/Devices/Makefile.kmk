@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7654 2008-03-31 12:13:35Z vboxsync $
+# $Id: Makefile.kmk 7759 2008-04-05 11:36:02Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -142,7 +142,7 @@ endif
 VBoxDD_LIBS             = \
 	$(PATH_LIB)/DevicesR3$(VBOX_SUFF_LIB) \
 	$(PATH_LIB)/Drivers$(VBOX_SUFF_LIB) \
-	$(PATH_LIB)/PcDefBiosLogo$(VBOX_SUFF_LIB) \
+	$(PATH_LIB)/VgaDefBiosLogo$(VBOX_SUFF_LIB) \
 	$(LIB_VMM) \
 	$(LIB_RUNTIME)
 ifeq ($(BUILD_TARGET),win)

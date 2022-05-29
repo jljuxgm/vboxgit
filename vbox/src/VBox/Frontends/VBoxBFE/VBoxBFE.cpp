@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 7418 2008-03-10 16:01:58Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 7759 2008-04-05 11:36:02Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -1432,15 +1432,6 @@ static DECLCALLBACK(int) vboxbfeConfigConstructor(PVM pVM, void *pvUser)
     RTUuidClear(&Uuid);
     rc = CFGMR3InsertBytes(pCfg,    "UUID", &Uuid, sizeof(Uuid));                   UPDATE_RC();
 
-    /* Default: no bios logo. */
-    rc = CFGMR3InsertInteger(pCfg,  "FadeIn",         1);                           UPDATE_RC();
-    rc = CFGMR3InsertInteger(pCfg,  "FadeOut",        0);                           UPDATE_RC();
-    rc = CFGMR3InsertInteger(pCfg,  "LogoTime",       0);                           UPDATE_RC();
-    rc = CFGMR3InsertString(pCfg,   "LogoFile",       "");                          UPDATE_RC();
-
-    /* Boot menu */
-    rc = CFGMR3InsertInteger(pCfg,  "ShowBootMenu",   g_iBootMenu);                 UPDATE_RC();
-
     /*
      * ACPI
      */
@@ -1616,6 +1607,15 @@ static DECLCALLBACK(int) vboxbfeConfigConstructor(PVM pVM, void *pvUser)
     rc = CFGMR3InsertInteger(pInst, "PCIFunctionNo",  0);                           UPDATE_RC();
     rc = CFGMR3InsertNode(pInst,    "Config",         &pCfg);                       UPDATE_RC();
     rc = CFGMR3InsertInteger(pCfg,  "VRamSize",       g_u32VRamSize);               UPDATE_RC();
+
+    /* Default: no bios logo. */
+    rc = CFGMR3InsertInteger(pCfg,  "FadeIn",         1);                           UPDATE_RC();
+    rc = CFGMR3InsertInteger(pCfg,  "FadeOut",        0);                           UPDATE_RC();
+    rc = CFGMR3InsertInteger(pCfg,  "LogoTime",       0);                           UPDATE_RC();
+    rc = CFGMR3InsertString(pCfg,   "LogoFile",       "");                          UPDATE_RC();
+
+    /* Boot menu */
+    rc = CFGMR3InsertInteger(pCfg,  "ShowBootMenu",   g_iBootMenu);                 UPDATE_RC();
 
 #ifdef RT_OS_L4
     /* XXX hard-coded */
