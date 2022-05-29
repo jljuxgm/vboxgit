@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 5288 2007-10-15 10:00:39Z vboxsync $ */
+/* $Id: GVMMR0.cpp 5941 2007-12-03 12:18:45Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -211,7 +211,7 @@ GVMMR0DECL(int) GVMMR0Init(void)
             pGVMM->aHandles[0].iNext = 0;
 
             /* the tail */
-            unsigned i = RT_ELEMENTS(pGVMM->aHandles);
+            unsigned i = RT_ELEMENTS(pGVMM->aHandles) - 1;
             pGVMM->aHandles[i].iSelf = i;
             pGVMM->aHandles[i].iNext = 0; /* nil */
 
