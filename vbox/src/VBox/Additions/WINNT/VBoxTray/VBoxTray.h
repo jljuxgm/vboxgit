@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 10798 2008-07-22 08:57:55Z vboxsync $ */
+/* $Id: VBoxTray.h 10801 2008-07-22 09:00:44Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service, Internal Header.
  */
@@ -19,8 +19,8 @@
  * additional information or have any questions.
  */
 
-#ifndef ___VBOXSERVICE_H
-#define ___VBOXSERVICE_H
+#ifndef ___VBOXTRAY_H
+#define ___VBOXTRAY_H
 
 #include <windows.h>
 #include <tchar.h>
@@ -65,5 +65,5 @@ typedef struct _VBOXSERVICEINFO
 
 extern HWND  gToolWindow;
 
-#endif /* !___VBOXSERVICE_H */
+#endif /* !___VBOXTRAY_H */
 
