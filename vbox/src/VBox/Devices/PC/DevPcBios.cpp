@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 9005 2008-05-21 09:42:46Z vboxsync $ */
+/* $Id: DevPcBios.cpp 9434 2008-06-05 15:36:55Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -855,6 +855,9 @@ static int pcbiosPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbM
     } while (0)
 
 
+    /*
+     * Don't change this information otherwise Windows guests will demand on re-activation!
+     */
     READCFGSTR("DmiBIOSVendor",        pszDmiBIOSVendor,      "innotek GmbH");
     READCFGSTR("DmiBIOSVersion",       pszDmiBIOSVersion,     "VirtualBox");
     READCFGSTR("DmiBIOSReleaseDate",   pszDmiBIOSReleaseDate, "12/01/2006");
