@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 7349 2008-03-07 11:19:09Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 7387 2008-03-09 23:54:02Z vboxsync $ */
 
 /** @file
  *
@@ -271,7 +271,7 @@ public:
         settings::Input *resolveEntity (const char *aURI, const char *aID);
 
         // AutoConverter interface
-        bool needsConversion (const settings::Key &aRoot, char *&aOldVersion) const;
+        bool needsConversion (const settings::Key &aRoot, char **aOldVersion) const;
         const char *templateUri() const;
     };
 
