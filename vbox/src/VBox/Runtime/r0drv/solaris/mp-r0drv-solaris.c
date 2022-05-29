@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-solaris.c 7331 2008-03-06 16:09:57Z vboxsync $ */
+/* $Id: mp-r0drv-solaris.c 7419 2008-03-10 16:05:51Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Multiprocessor, Ring-0 Driver, Solaris.
  */
@@ -43,6 +43,24 @@ RTDECL(RTCPUID) RTMpCpuId(void)
 }
 
 
+RTDECL(int) RTMpCpuIdToSetIndex(RTCPUID idCpu)
+{
+    return idCpu < NCPU ? idCpu : -1;
+}
+
+
+RTDECL(RTCPUID) RTMpCpuIdFromSetIndex(int iCpu)
+{
+    return (unsigned)iCpu < NCPU ? iCpu : NIL_RTCPUID;
+}
+
+
+RTDECL(RTCPUID) RTMpGetMaxCpuId(void)
+{
+    return NCPU - 1;
+}
+
+
 RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
 {
     cpu_t *pCpu = idCpu < NCPU ? cpu_get(idCpu) : NULL;
@@ -55,18 +73,6 @@ RTDECL(bool) RTMpDoesCpuExist(RTCPUID idCpu)
 {
     cpu_t *pCpu = idCpu < NCPU ? cpu_get(idCpu) : NULL;
     return pCpu != NULL;
-}
-
-
-RTDECL(int) RTMpCpuIdToSetIndex(RTCPUID idCpu)
-{
-    return idCpu < NCPU ? idCpu : -1;
-}
-
-
-RTDECL(RTCPUID) RTMpCpuIdFromSetIndex(int iCpu)
-{
-    return (unsigned)iCpu < NCPU ? iCpu : NIL_RTCPUID;
 }
 
 
