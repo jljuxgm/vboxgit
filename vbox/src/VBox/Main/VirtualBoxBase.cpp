@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 8668 2008-05-07 15:37:42Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 8683 2008-05-07 21:05:12Z vboxsync $ */
 
 /** @file
  *
@@ -613,9 +613,9 @@ HRESULT VirtualBoxSupportErrorInfoImplBase::setErrorInternal (
     /* whether multi-error mode is turned on */
     bool preserve = ((uintptr_t) RTTlsGet (MultiResult::sCounter)) > 0;
 
-    LogRel (("ERROR [COM]: aRC=%#08x aIID={%Vuuid} aComponent={%ls} aText={%ls} "
+    LogRel (("ERROR [COM]: aRC=%Rhrc (%#08x) aIID={%RTuuid} aComponent={%ls} aText={%ls} "
              "aWarning=%RTbool, preserve=%RTbool\n",
-             aResultCode, &aIID, aComponent.raw(), aText.raw(), aWarning,
+             aResultCode, aResultCode, &aIID, aComponent.raw(), aText.raw(), aWarning,
              preserve));
 
     /* these are mandatory, others -- not */
@@ -1150,7 +1150,7 @@ template<> com::Guid FromString <com::Guid> (const char *aValue)
     RTUUID uuid;
     int vrc = RTUuidFromStr (&uuid, buf);
     if (RT_FAILURE (vrc))
-        throw ENoConversion (FmtStr ("'%s' is not Guid (%Vrc)", aValue, vrc));
+        throw ENoConversion (FmtStr ("'%s' is not Guid (%Rrc)", aValue, vrc));
 
     return com::Guid (uuid);
 }
