@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 6063 2007-12-14 08:50:36Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 6065 2007-12-14 15:01:22Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -459,7 +459,7 @@ static int VBoxAddSolarisGetInfo(dev_info_t *pDip, ddi_info_cmd_t enmCmd, void *
             break;
 
         case DDI_INFO_DEVT2INSTANCE:
-            *ppResult = (void *)ddi_get_instance(g_pDip);
+            *ppResult = (void *)(uintptr_t)ddi_get_instance(g_pDip);
             break;
 
         default:
