@@ -1,4 +1,4 @@
-/** $Id: VBoxService.cpp 6136 2007-12-18 17:09:02Z vboxsync $ */
+/** $Id: VBoxService.cpp 6137 2007-12-18 17:10:04Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -272,20 +272,12 @@ int main(int argc, char **argv)
 
                 if (cch > sizeof("enable-") && !memcmp(psz, "enable-", sizeof("enable-") - 1))
                     for (unsigned j = 0; !fFound && j < RT_ELEMENTS(g_aServices); j++)
-#if defined(RT_OS_OS2)
-                        if ((fFound = !stricmp(psz + sizeof("enable-") - 1, g_aServices[j].pDesc->pszName)))
-#else
-                        if ((fFound = !strcasecmp(psz + sizeof("enable-") - 1, g_aServices[j].pDesc->pszName)))
-#endif
+                        if ((fFound = !RTStrICmp(psz + sizeof("enable-") - 1, g_aServices[j].pDesc->pszName)))
                             g_aServices[j].fEnabled = true;
 
                 if (cch > sizeof("disable-") && !memcmp(psz, "disable-", sizeof("disable-") - 1))
                     for (unsigned j = 0; !fFound && j < RT_ELEMENTS(g_aServices); j++)
-#if defined(RT_OS_OS2)
-                        if ((fFound = !stricmp(psz + sizeof("disable-") - 1, g_aServices[j].pDesc->pszName)))
-#else
-                        if ((fFound = !strcasecmp(psz + sizeof("disable-") - 1, g_aServices[j].pDesc->pszName)))
-#endif
+                        if ((fFound = !RTStrICmp(psz + sizeof("disable-") - 1, g_aServices[j].pDesc->pszName)))
                             g_aServices[j].fEnabled = false;
 
                 if (!fFound)
