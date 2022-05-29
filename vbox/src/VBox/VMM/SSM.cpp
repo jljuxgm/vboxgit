@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 7591 2008-03-27 14:49:46Z vboxsync $ */
+/* $Id: SSM.cpp 7631 2008-03-28 16:38:43Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -1766,7 +1766,7 @@ SSMR3DECL(int) SSMR3Close(PSSMHANDLE pSSM)
 SSMR3DECL(int) SSMR3Seek(PSSMHANDLE pSSM, const char *pszUnit, uint32_t iInstance, uint32_t *piVersion)
 {
     LogFlow(("SSMR3Seek: pSSM=%p pszUnit=%p:{%s} iInstance=%RU32 piVersion=%p\n",
-             pSSM, pszUnit, iInstance, piVersion));
+             pSSM, pszUnit, pszUnit, iInstance, piVersion));
 
     /*
      * Validate input.
