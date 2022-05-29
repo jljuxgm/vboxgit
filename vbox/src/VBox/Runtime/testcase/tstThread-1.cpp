@@ -1,4 +1,4 @@
-/* $Id: tstThread-1.cpp 10793 2008-07-21 22:33:15Z vboxsync $ */
+/* $Id: tstThread-1.cpp 10794 2008-07-21 22:34:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - Thread Testcase no.1.
  */
@@ -28,7 +28,6 @@
  * additional information or have any questions.
  */
 
-
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
@@ -36,6 +35,7 @@
 #include <iprt/stream.h>
 #include <iprt/initterm.h>
 #include <iprt/err.h>
+
 
 /*******************************************************************************
 *   Global Variables                                                           *
