@@ -1,4 +1,4 @@
-/* $Id: MMPhys.cpp 6529 2008-01-28 14:58:18Z vboxsync $ */
+/* $Id: MMPhys.cpp 6535 2008-01-28 19:16:04Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Physical Memory.
  */
@@ -131,7 +131,7 @@ MMR3DECL(int) MMR3PhysRegisterEx(PVM pVM, void *pvRam, RTGCPHYS GCPhys, unsigned
         if (VBOX_SUCCESS(rc))
         {
             if (fFlags == MM_RAM_FLAGS_DYNAMIC_ALLOC)
-                pVM->mm.s.cbRAMSize += cb;
+                pVM->mm.s.cbRamRegistered += cb;
 
             REMR3NotifyPhysRamRegister(pVM, GCPhys, cb, pvRam, fFlags);
             return rc;
@@ -164,7 +164,7 @@ MMR3DECL(int) MMR3PhysRegisterEx(PVM pVM, void *pvRam, RTGCPHYS GCPhys, unsigned
                 if (VBOX_SUCCESS(rc))
                 {
                     if (!fFlags)
-                        pVM->mm.s.cbRAMSize += cb;
+                        pVM->mm.s.cbRamRegistered += cb;
 
                     REMR3NotifyPhysRamRegister(pVM, GCPhys, cb, pvRam, fFlags);
                     return rc;

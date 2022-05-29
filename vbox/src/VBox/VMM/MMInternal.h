@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 6529 2008-01-28 14:58:18Z vboxsync $ */
+/* $Id: MMInternal.h 6535 2008-01-28 19:16:04Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -661,11 +661,9 @@ typedef struct MM
 
     /** Size of the currently allocated guest RAM.
      * Mark that this is the actual size, not the end address. */
-    RTUINT                      cbRAMSize;
+    RTUINT                      cbRamRegistered;
     /** Size of the base RAM in bytes. */
     RTUINT                      cbRamBase;
-    /** Pointer to the base RAM. */
-    R3PTRTYPE(void *)           pvRamBaseHC;
     /** The head of the ROM ranges. */
     R3PTRTYPE(PMMROMRANGE)      pRomHead;
 
