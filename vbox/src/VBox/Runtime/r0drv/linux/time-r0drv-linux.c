@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-linux.c 9237 2008-05-29 21:43:08Z vboxsync $ */
+/* $Id: time-r0drv-linux.c 9239 2008-05-29 22:22:32Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Linux.
  */
@@ -169,8 +169,8 @@ RTDECL(uint64_t) RTTimeSystemMilliTS(void)
 RTDECL(PRTTIMESPEC) RTTimeNow(PRTTIMESPEC pTime)
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 16)
-    ktime_t Kt = ktime_get_real();
-    struct timespec Ts = ktime_to_timespec(Kt);
+    struct timespec Ts;
+    ktime_get_real_ts(&Ts);
     return RTTimeSpecSetTimespec(pTime, &Ts);
 
 #else   /* < 2.6.16 */
