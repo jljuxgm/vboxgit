@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 9467 2008-06-06 11:50:13Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 9486 2008-06-06 14:39:56Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -293,7 +293,7 @@ REMR3DECL(int) REMR3Init(PVM pVM)
         return VERR_GENERAL_FAILURE;
     }
     CPUMGetGuestCpuId(pVM,          1, &u32Dummy, &u32Dummy, &pVM->rem.s.Env.cpuid_ext_features, &pVM->rem.s.Env.cpuid_features);
-    CPUMGetGuestCpuId(pVM, 0x80000001, &u32Dummy, &u32Dummy, &u32Dummy, &pVM->rem.s.Env.cpuid_ext2_features);
+    CPUMGetGuestCpuId(pVM, 0x80000001, &u32Dummy, &u32Dummy, &pVM->rem.s.Env.cpuid_ext3_features, &pVM->rem.s.Env.cpuid_ext2_features);
 
     /* allocate code buffer for single instruction emulation. */
     pVM->rem.s.Env.cbCodeBuffer = 4096;
