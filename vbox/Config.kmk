@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6704 2008-02-01 01:21:06Z vboxsync $
+# $Id: Config.kmk 6705 2008-02-01 01:21:58Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -2597,13 +2597,6 @@ TEMPLATE_VBOXLNX32GUESTR3EXENOCPP_EXTENDS      = VBOXLNX32GUESTR3EXE
 TEMPLATE_VBOXLNX32GUESTR3EXENOCPP_TOOL        := $(subst GXX,GCC,$(VBOX_GCC32_TOOL))
 # No LDFLAGS nor LIBS!
 
-TEMPLATE_VBOXLNX32GUESTR3DLLNOCPP              = Template for building 32-bit linux guest additions shared objects without any C++.
-TEMPLATE_VBOXLNX32GUESTR3DLLNOCPP_EXTENDS      = VBOXLNX32GUESTR3EXE
-TEMPLATE_VBOXLNX32GUESTR3DLLNOCPP_TOOL         = $(TEMPLATE_VBOXLNX32GUESTR3EXENOCPP_TOOL)
-TEMPLATE_VBOXLNX32GUESTR3DLLNOCPP_CFLAGS       = -fPIC $(TEMPLATE_VBOXLNX32GUESTR3EXE_CFLAGS)
-TEMPLATE_VBOXLNX32GUESTR3DLLNOCPP_CXXFLAGS     = -fPIC $(TEMPLATE_VBOXLNX32GUESTR3EXE_CXXFLAGS)
-TEMPLATE_VBOXLNX32GUESTR3DLLNOCPP_LDFLAGS      = -fPIC
-
 
 #
 # Template for building Linux host tools (only for BUILD_TARGET=l4)
@@ -2868,7 +2861,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6704 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6705 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
