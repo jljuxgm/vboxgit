@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 9582 2008-06-10 23:38:18Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 9584 2008-06-11 00:20:29Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -275,7 +275,7 @@ RTDECL(int) RTMpOnOthers(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)
 
 RTDECL(int) RTMpOnSpecific(RTCPUID idCpu, PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)
 {
-    if (RTMpIsCpuOnline(idCpu))
+    if (!RTMpIsCpuOnline(idCpu))
         return !RTMpIsCpuPossible(idCpu)
               ? VERR_CPU_NOT_FOUND
               : VERR_CPU_OFFLINE;
