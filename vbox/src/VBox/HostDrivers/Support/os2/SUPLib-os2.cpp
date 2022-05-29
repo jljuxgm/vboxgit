@@ -1,4 +1,4 @@
-/* $Id: SUPLib-os2.cpp 10256 2008-07-04 20:28:51Z vboxsync $ */
+/* $Id: SUPLib-os2.cpp 10720 2008-07-17 12:06:56Z vboxsync $ */
 /** @file
  * SUPLib - Support Library, OS/2 backend.
  */
@@ -170,10 +170,9 @@ int suplibOsIOCtl(uintptr_t uFunction, void *pvReq, size_t cbReq)
 int suplibOsIOCtlFast(uintptr_t uFunction)
 {
     int32_t rcRet = VERR_INTERNAL_ERROR;
-    ULONG cbRet = sizeof(rcRet);
     int rc = DosDevIOCtl(g_hDevice, SUP_CTL_CATEGORY_FAST, uFunction,
                          NULL, 0, NULL,
-                         &rcRet, sizeof(rcRet), &cbRet);
+                         NULL, 0, NULL);
     if (RT_LIKELY(rc == NO_ERROR))
         rc = rcRet;
     else

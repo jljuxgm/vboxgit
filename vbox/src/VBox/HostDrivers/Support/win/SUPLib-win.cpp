@@ -1,4 +1,4 @@
-/** $Id: SUPLib-win.cpp 10256 2008-07-04 20:28:51Z vboxsync $ */
+/** $Id: SUPLib-win.cpp 10720 2008-07-17 12:06:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -644,8 +644,7 @@ int suplibOsIOCtlFast(uintptr_t uFunction)
      * Issue device I/O control.
      */
     int rc = VERR_INTERNAL_ERROR;
-    DWORD cbReturned = (ULONG)sizeof(rc);
-    if (DeviceIoControl(g_hDevice, uFunction, NULL, 0, &rc, (DWORD)sizeof(rc), &cbReturned, NULL))
+    if (DeviceIoControl(g_hDevice, uFunction, NULL, 0, NULL, 0, NULL, NULL))
         return rc;
     return suplibConvertWin32Err(GetLastError());
 }
