@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10429 2008-07-09 14:17:45Z vboxsync $
+# $Id: Makefile.kmk 10439 2008-07-09 16:56:58Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -538,6 +538,7 @@ VirtualBox4_QT_MOCHDRS = \
 	include/VBoxNewHDWzd.h \
 	include/VBoxVMFirstRunWzd.h \
 	include/VBoxRegistrationDlg.h \
+	include/VBoxUpdateDlg.h \
 	include/VBoxSnapshotDetailsDlg.h \
 	include/VBoxVMInformationDlg.h \
 	include/VBoxTakeSnapshotDlg.h \
@@ -607,6 +608,7 @@ VirtualBox4_SOURCES = \
 	src/VBoxNewHDWzd.cpp \
 	src/VBoxVMFirstRunWzd.cpp \
 	src/VBoxRegistrationDlg.cpp \
+	src/VBoxUpdateDlg.cpp \
 	src/VBoxSnapshotDetailsDlg.cpp \
 	src/VBoxVMInformationDlg.cpp \
 	src/VBoxTakeSnapshotDlg.cpp \
