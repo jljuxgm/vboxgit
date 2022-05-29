@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 10357 2008-07-08 12:06:18Z vboxsync $ */
+/* $Id: REMAll.cpp 10410 2008-07-09 12:23:26Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -101,6 +101,7 @@ REMDECL(void) REMNotifyHandlerPhysicalRegister(PVM pVM, PGMPHYSHANDLERTYPE enmTy
     pRec->u.PhysicalRegister.GCPhys = GCPhys;
     pRec->u.PhysicalRegister.cb = cb;
     pRec->u.PhysicalRegister.fHasHCHandler = fHasHCHandler;
+    VM_FF_SET(pVM, VM_FF_REM_HANDLER_NOTIFY);
 }
 
 
@@ -125,6 +126,7 @@ REMDECL(void) REMNotifyHandlerPhysicalDeregister(PVM pVM, PGMPHYSHANDLERTYPE enm
     pRec->u.PhysicalDeregister.cb = cb;
     pRec->u.PhysicalDeregister.fHasHCHandler = fHasHCHandler;
     pRec->u.PhysicalDeregister.fRestoreAsRAM = fRestoreAsRAM;
+    VM_FF_SET(pVM, VM_FF_REM_HANDLER_NOTIFY);
 }
 
 
@@ -151,5 +153,6 @@ REMDECL(void) REMNotifyHandlerPhysicalModify(PVM pVM, PGMPHYSHANDLERTYPE enmType
     pRec->u.PhysicalModify.cb = cb;
     pRec->u.PhysicalModify.fHasHCHandler = fHasHCHandler;
     pRec->u.PhysicalModify.fRestoreAsRAM = fRestoreAsRAM;
+    VM_FF_SET(pVM, VM_FF_REM_HANDLER_NOTIFY);
 }
 
