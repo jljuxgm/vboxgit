@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DevPcBios.h 9440 2008-06-05 16:48:03Z vboxsync $ */
 /** @file
  * PC BIOS Device Header.
  */
@@ -22,10 +22,14 @@
 #ifndef DEV_PCBIOS_H
 #define DEV_PCBIOS_H
 
-#define VBOX_DMI_TABLE_ENTR          2
+#define VBOX_DMI_TABLE_ENTR          3
 #define VBOX_DMI_TABLE_SIZE          0x100 /* XXX make this variable */
 #define VBOX_DMI_TABLE_BASE          0xe1000
-#define VBOX_DMI_TABLE_VER           0x23
+#define VBOX_DMI_TABLE_VER           0x25
+
+#define VBOX_SMBIOS_MAJOR_VER        2
+#define VBOX_SMBIOS_MINOR_VER        5
+#define VBOX_SMBIOS_MAXSS            0xff   /* Not very accurate */
 
 #define VBOX_MPS_TABLE_BASE          0xe1100
 

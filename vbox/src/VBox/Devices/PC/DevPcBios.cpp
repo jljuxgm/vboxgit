@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 9434 2008-06-05 15:36:55Z vboxsync $ */
+/* $Id: DevPcBios.cpp 9440 2008-06-05 16:48:03Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -962,6 +962,12 @@ static int pcbiosPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbM
     STRCPY(pszStr, pszDmiSystemFamily);
     *pszStr++                    = '\0';
 
+    /* End-of-table marker - includes padding to account for fixed table size. */
+    PDMIHDR pEndOfTable          = (PDMIHDR)pszStr;
+    pEndOfTable->u8Type          = 0x7f;
+    pEndOfTable->u8Length        = cbMax - ((char *)pszStr - (char *)pTable) - 2;
+    pEndOfTable->u16Handle       = 0xFFFF;
+
     /* If more fields are added here, fix the size check in STRCPY */
 
 #undef STRCPY
@@ -979,7 +985,7 @@ static int pcbiosPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbM
 
     return VINF_SUCCESS;
 }
-AssertCompile(VBOX_DMI_TABLE_ENTR == 2);
+AssertCompile(VBOX_DMI_TABLE_ENTR == 3);
 
 
 /**
