@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 7753 2008-04-04 20:35:44Z vboxsync $ */
+/* $Id: PGM.cpp 7805 2008-04-08 13:58:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -891,9 +891,10 @@ PGMR3DECL(int) PGMR3Init(PVM pVM)
     pVM->pgm.s.pGstPaePDPTGC    = 0;
     for (unsigned i = 0; i < ELEMENTS(pVM->pgm.s.apGstPaePDsHC); i++)
     {
-        pVM->pgm.s.apGstPaePDsHC[i]     = NULL;
-        pVM->pgm.s.apGstPaePDsGC[i]     = 0;
-        pVM->pgm.s.aGCPhysGstPaePDs[i]  = NIL_RTGCPHYS;
+        pVM->pgm.s.apGstPaePDsHC[i]             = NULL;
+        pVM->pgm.s.apGstPaePDsGC[i]             = 0;
+        pVM->pgm.s.aGCPhysGstPaePDs[i]          = NIL_RTGCPHYS;
+        pVM->pgm.s.aGCPhysGstPaePDsMonitored[i] = NIL_RTGCPHYS;
     }
 
 #ifdef VBOX_STRICT
