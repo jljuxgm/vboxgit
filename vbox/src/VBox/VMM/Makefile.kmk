@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10450 2008-07-09 21:55:45Z vboxsync $
+# $Id: Makefile.kmk 10804 2008-07-22 09:42:40Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -429,7 +429,7 @@ endif
 #
 # For vmmGetSvnRev.
 #
-VMMAll/VMMAll.cpp_DEFS = VBOX_SVN_REV
+VMMAll/VMMAll.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
 
 
 include	$(KBUILD_PATH)/subfooter.kmk
