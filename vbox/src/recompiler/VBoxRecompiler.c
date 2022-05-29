@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 6546 2008-01-28 21:58:59Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 7613 2008-03-28 08:25:54Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2557,7 +2557,8 @@ void remR3GrowDynRange(unsigned long physaddr)
     PVM pVM = cpu_single_env->pVM;
 
     Log(("remR3GrowDynRange %VGp\n", physaddr));
-    rc = PGM3PhysGrowRange(pVM, (RTGCPHYS)physaddr);
+    RTGCPHYS GCPhys = physaddr;
+    rc = PGM3PhysGrowRange(pVM, &GCPhys);
     if (VBOX_SUCCESS(rc))
         return;
 
