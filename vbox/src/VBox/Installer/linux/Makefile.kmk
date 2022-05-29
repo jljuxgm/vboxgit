@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6692 2008-01-31 22:17:10Z vboxsync $
+# $Id: Makefile.kmk 6933 2008-02-13 14:14:21Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -167,7 +167,7 @@ LINUXARCHFILES := $(LINUXSTRIPBIN) $(LINUXSTRIPOBJ) $(LINUXNOSTRIP)
 DBGPATH        := usr/lib/debug/opt/VirtualBox-$(VBOX_VERSION_STRING)
 
 OTHER_CLEAN += $(addprefix $(PATH_TARGET)/archive/,$(LINUXARCHFILES)) \
-	       $(addprefix $(PATH_TARGET)/archive-dbg/$(DBGPATH)/$(LINUXSTRIPBIN))
+	       $(addprefix $(PATH_TARGET)/archive-dbg/$(DBGPATH)/,$(LINUXSTRIPBIN))
 
 include $(PATH_KBUILD)/footer.kmk
 
