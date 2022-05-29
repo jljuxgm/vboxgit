@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10010 2008-06-30 09:39:04Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10011 2008-06-30 09:43:49Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1910,7 +1910,7 @@ static int SVMR0InterpretInvpg(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t uASID)
     /*
      * Only allow 32 & 64 bits code.
      */
-    DISCPUMODE enmMode = SELMGetCpuModeFromSelector(pVM, pCtx->eflags, pCtx->cs, &pCtx->csHid);
+    DISCPUMODE enmMode = SELMGetCpuModeFromSelector(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid);
     if (enmMode != CPUMODE_16BIT)
     {
         RTGCPTR pbCode;
