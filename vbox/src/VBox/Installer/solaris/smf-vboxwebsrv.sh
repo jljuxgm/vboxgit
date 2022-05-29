@@ -1,5 +1,5 @@
 #!/sbin/sh
-# $Id: smf-vboxwebsrv.sh 11358 2008-08-12 14:13:23Z vboxsync $
+# $Id: smf-vboxwebsrv.sh 11475 2008-08-19 08:48:02Z vboxsync $
 
 # Copyright (C) 2008 Sun Microsystems, Inc.
 #
@@ -37,6 +37,13 @@ case $VW_OPT in
             echo "ERROR: /opt/VirtualBox/vboxwebsrv does not exist."
             return $SMF_EXIT_ERR_CONFIG
         fi
+
+        if [ ! -f /opt/VirtualBox/etc/webservice.cfg ]; then
+            echo "ERROR: /opt/VirtualBox/etc/webservice.cfg does not exist."
+            return $SMF_EXIT_ERR_CONFIG
+        fi
+
+        . /opt/VirtualBox/etc/webservice.cfg
 
         [ -z "$VW_USER" ] && VW_USER=root
         [ -z "$VW_HOST" ] && VW_HOST=localhost
