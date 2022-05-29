@@ -1,4 +1,4 @@
-/** $Id: VBoxControl.cpp 10143 2008-07-03 09:19:25Z vboxsync $ */
+/** $Id: VBoxControl.cpp 10234 2008-07-04 15:50:36Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface
  */
@@ -209,8 +209,9 @@ struct COMMANDHANDLER
 {
 #ifdef VBOX_WITH_INFO_SVC
     { "getguestproperty", getGuestProperty },
-    { "setguestproperty", setGuestProperty }
+    { "setguestproperty", setGuestProperty },
 #endif
+    { NULL, NULL }  /* terminator */
 };
 
 /** Main function */
@@ -313,7 +314,9 @@ int main(int argc, char **argv)
             bool found = false;
             /** And if so, what is its position in the table? */
             unsigned index = 0;
-            while (index < RT_ELEMENTS(g_commandHandlers) && !found)
+            while (   index < RT_ELEMENTS(g_commandHandlers)
+                   && !found
+                   && (g_commandHandlers[index].command != NULL))
             {
                 if (0 == strcmp(argv[iArg], g_commandHandlers[index].command))
                     found = true;
