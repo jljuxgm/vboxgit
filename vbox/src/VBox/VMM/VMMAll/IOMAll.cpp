@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 8234 2008-04-21 14:29:54Z vboxsync $ */
+/* $Id: IOMAll.cpp 8354 2008-04-24 09:54:53Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -128,7 +128,7 @@ bool iomGetRegImmData(PDISCPUSTATE pCpu, PCOP_PARAMETER pParam, PCPUMCTXCORE pRe
     if (pParam->flags & (USE_IMMEDIATE32|USE_IMMEDIATE32_SX8))
     {
         *pcbSize  = 4;
-        //*pu32Data = (uint32_t)pParam->parval;
+        *pu32Data = (uint32_t)pParam->parval;
         return true;
     }
 
