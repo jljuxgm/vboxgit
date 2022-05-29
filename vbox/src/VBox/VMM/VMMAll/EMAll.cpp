@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 11692 2008-08-27 09:09:09Z vboxsync $ */
+/* $Id: EMAll.cpp 11714 2008-08-27 16:40:37Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2076,6 +2076,7 @@ EMDECL(int) EMInterpretCRxWrite(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRe
                         return VERR_EM_INTERPRETER; /* @todo generate #GP(0) */
                     }
 
+                    CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAT);
                     msrEFER |= MSR_K6_EFER_LMA;
                 }
                 else
