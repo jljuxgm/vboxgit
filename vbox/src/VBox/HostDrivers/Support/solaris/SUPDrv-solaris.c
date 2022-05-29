@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 10454 2008-07-10 06:58:54Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 10455 2008-07-10 07:02:01Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Solaris Driver Code.
  */
@@ -189,7 +189,7 @@ int _init(void)
 {
     dprintf(("VBoxDrvSolaris _init"));
 
-    int rc = ddi_soft_state_init(&g_pVBoxDrvSolarisState, sizeof(vbox_devstate_t), 1);
+    int rc = ddi_soft_state_init(&g_pVBoxDrvSolarisState, sizeof(vbox_devstate_t), 8);
     if (!rc)
     {
         rc = mod_install(&g_VBoxDrvSolarisModLinkage);
