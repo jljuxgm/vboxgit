@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10197 2008-07-04 04:41:21Z vboxsync $
+# $Id: Makefile.kmk 11665 2008-08-26 14:58:06Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -131,6 +131,7 @@ SUBDIRS_LIBRARIES      = $(subdirs)
 SUBDIRS_BINARIES       = $(filter xpcom18a4,$(subdirs))
 SUBDIRS_DLLS           = $(filter xpcom18a4 ffmpeg-20060710,$(subdirs))
 SUBDIRS_OTHERS         = $(filter xpcom18a4,$(subdirs))
+SUBDIRS_INSTALLS       = $(filter xpcom18a4,$(subdirs))
 SUBDIRS_CLEAN          = $(subdirs)
 SUBDIRS_NOTHING        = $(subdirs)
 
