@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 6796 2008-02-04 18:19:58Z vboxsync $ */
+/* $Id: MM.cpp 6802 2008-02-04 19:37:16Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager).
  */
@@ -247,7 +247,6 @@ MMR3DECL(int) MMR3InitPaging(PVM pVM)
     pVM->mm.s.cbRamBase = cbRam;            /* Warning: don't move this code to MMR3Init without fixing REMR3Init.  */
     Log(("MM: %RU64 bytes of RAM%s\n", cbRam, fPreAlloc ? " (PreAlloc)" : ""));
 
-#ifdef VBOX_WITH_NEW_PHYS_CODE
     /** @cfgm{MM/Policy, string, no overcommitment}
      * Specifies the policy to use when reserving memory for this VM. The recognized
      * value is 'no overcommitment' (default). See GMMPOLICY.
@@ -304,7 +303,6 @@ MMR3DECL(int) MMR3InitPaging(PVM pVM)
         return VMSetError(pVM, rc, RT_SRC_POS, "GMMR3InitialReservation(,%#RX64,0,0,%d,%d).",
                           cbRam >> PAGE_SHIFT, enmPolicy, enmPriority);
     }
-#endif /* VBOX_WITH_NEW_PHYS_CODE */
 
     /*
      * If RamSize is 0 we're done now.
