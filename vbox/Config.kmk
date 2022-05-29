@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5957 2007-12-04 21:18:53Z vboxsync $
+# $Id: Config.kmk 5963 2007-12-05 07:51:54Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -660,7 +660,7 @@ DEFS.l4      = RT_OS_L4 __L4__ __L4ENV__ L4API_l4v2 ARCH_$(BUILD_TARGET_ARCH) __
 ifeq ($(L4_API),l4v2onv4)
  DEFS.l4    += L4API_l4v2onv4 STATIC_L4_INLINE
 endif
-DEFS.linux   = RT_OS_LINUX __LINUX__ _FILE_OFFSET_BITS=64
+DEFS.linux   = RT_OS_LINUX _FILE_OFFSET_BITS=64
 DEFS.netbsd  = RT_OS_NETBSD
 DEFS.openbsd = RT_OS_OPENBSD
 DEFS.os2     = RT_OS_OS2 __OS2__
@@ -2673,7 +2673,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5957 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5963 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
