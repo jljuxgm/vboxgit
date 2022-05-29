@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 8955 2008-05-20 14:24:20Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 9143 2008-05-27 08:06:46Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -58,7 +58,7 @@
 extern void cpu_x86_update_cr3(CPUX86State *env, target_ulong new_cr3);
 extern void cpu_x86_update_cr0(CPUX86State *env, uint32_t new_cr0);
 extern void cpu_x86_update_cr4(CPUX86State *env, uint32_t new_cr4);
-extern void tlb_flush_page(CPUX86State *env, uint32_t addr);
+extern void tlb_flush_page(CPUX86State *env, target_ulong addr);
 extern void tlb_flush(CPUState *env, int flush_global);
 extern void sync_seg(CPUX86State *env1, int seg_reg, int selector);
 extern void sync_ldtr(CPUX86State *env1, int selector);
