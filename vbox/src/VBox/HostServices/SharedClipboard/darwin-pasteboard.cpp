@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 7117 2008-02-25 15:54:42Z vboxsync $ */
+/* $Id: darwin-pasteboard.cpp 7131 2008-02-25 16:45:08Z vboxsync $ */
 /** @file
  * Shared Clipboard: Mac OS X host implementation.
  */
@@ -49,7 +49,7 @@ void destroyPasteboard (PasteboardRef *pPasteboardRef)
     *pPasteboardRef = NULL;
 }
 
-int queryPasteboardFormats (PasteboardRef pPasteboard, uint32_t pfFormats)
+int queryPasteboardFormats (PasteboardRef pPasteboard, uint32_t *pfFormats)
 {
     Log (("queryPasteboardFormats\n"));
 
@@ -210,7 +210,7 @@ int writeToPasteboard (PasteboardRef pPasteboard, void *pv, uint32_t cb, uint32_
             AssertRCReturn (rc, rc);
         }
         /* Empty clipboard? Not critical */
-        if (cwDest == NULL)
+        if (cwDest == 0)
         {
             Log (("writeToPasteboard: received empty clipboard data from the guest, returning false.\n"));
             return VINF_SUCCESS;
