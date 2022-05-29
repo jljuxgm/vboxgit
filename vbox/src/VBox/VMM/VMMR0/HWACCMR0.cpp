@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 7510 2008-03-20 16:31:39Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 7524 2008-03-25 09:54:26Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -125,8 +125,7 @@ HWACCMR0DECL(int) HWACCMR0Init()
     memset(&HWACCMR0Globals, 0, sizeof(HWACCMR0Globals));
     HWACCMR0Globals.enmHwAccmState = HWACCMSTATE_UNINITIALIZED;
 
-#ifdef RT_OS_WINDOWS /* kernel panics on Linux; disabled for now */
- #ifndef VBOX_WITH_HYBIRD_32BIT_KERNEL /* paranoia */
+#ifndef VBOX_WITH_HYBIRD_32BIT_KERNEL /* paranoia */
 
     /*
      * Check for VT-x and AMD-V capabilities
@@ -304,8 +303,7 @@ HWACCMR0DECL(int) HWACCMR0Init()
     else
         HWACCMR0Globals.lLastError = VERR_HWACCM_NO_CPUID;
 
- #endif /* !VBOX_WITH_HYBIRD_32BIT_KERNEL */
-#endif /* RT_OS_WINDOWS */
+#endif /* !VBOX_WITH_HYBIRD_32BIT_KERNEL */
 
     return VINF_SUCCESS;
 }
