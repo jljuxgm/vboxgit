@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 6837 2008-02-06 20:04:27Z vboxsync $ */
+/* $Id: PGMPhys.cpp 6840 2008-02-07 10:15:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -540,8 +540,8 @@ PGMR3DECL(int) PGMR3PhysRomRegister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
         MMHyperFree(pVM, pRomNew);
     }
 
-    /** @todo free the memory! */
-
+    /** @todo Purge the mapping cache or something... */
+    GMMR3FreeAllocatedPages(pVM, pReq);
     GMMR3AllocatePagesCleanup(pReq);
     return rc;
 }
