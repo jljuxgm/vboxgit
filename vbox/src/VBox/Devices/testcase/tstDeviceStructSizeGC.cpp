@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 11277 2008-08-08 20:15:59Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 11279 2008-08-08 21:16:59Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -829,8 +829,12 @@ int main()
     GEN_CHECK_SIZE(EHCI);
     GEN_CHECK_OFF(EHCI, PciDev);
     GEN_CHECK_OFF(EHCI, MMIOBase);
-    GEN_CHECK_OFF(EHCI, pEndOfFrameTimerHC);
-    GEN_CHECK_OFF(EHCI, pEndOfFrameTimerGC);
+    GEN_CHECK_OFF(EHCI, pEndOfFrameTimerR3);
+    GEN_CHECK_OFF(EHCI, pEndOfFrameTimerR0);
+    GEN_CHECK_OFF(EHCI, pEndOfFrameTimerRC);
+    GEN_CHECK_OFF(EHCI, pDevInsR3);
+    GEN_CHECK_OFF(EHCI, pDevInsR0);
+    GEN_CHECK_OFF(EHCI, pDevInsRC);
     GEN_CHECK_OFF(EHCI, SofTime);
     GEN_CHECK_OFF(EHCI, RootHub);
     GEN_CHECK_OFF(EHCI, intr_status);
@@ -843,8 +847,6 @@ int main()
     GEN_CHECK_OFF(EHCI, aInFlight[0].GCPhysTD);
     GEN_CHECK_OFF(EHCI, aInFlight[0].pUrb);
     GEN_CHECK_OFF(EHCI, aInFlight[1]);
-    GEN_CHECK_OFF(EHCI, pDevInsHC);
-    GEN_CHECK_OFF(EHCI, pDevInsGC);
     GEN_CHECK_OFF(EHCI, pLoad);
     GEN_CHECK_OFF(EHCI, fAsyncTraversalTimerActive);
 # ifdef VBOX_WITH_STATISTICS
