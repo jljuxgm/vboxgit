@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
+# $Id: Makefile.kmk 9252 2008-05-30 13:27:13Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -85,6 +85,7 @@ $(PATH_BIN)/additions/VBoxLinuxAdditions.run: \
 		$(PATH_BIN)/additions/vboxvideo_drv_71.so \
 		$(PATH_BIN)/additions/vboxvideo_drv_13.so \
 		$(PATH_BIN)/additions/vboxvideo_drv_14.so \
+		$(PATH_BIN)/additions/vboxvideo_drv_15.so \
 		$(VBOX_PATH_LINUX_ADDITION_INSTALLER)/vboxvfs.sh $(PATH_BIN)/additions/mountvboxsf \
 		$(VBOX_SELINUX_CMPLD) \
 		$(wildcard $(PATH_BIN)/additions/src/*) \
@@ -127,6 +128,7 @@ $(PATH_BIN)/additions/VBoxLinuxAdditions.run: \
 	$(QUIET)$(BIN_COPY) $(PATH_BIN)/additions/vboxvideo_drv_71.so    $(PATH_TARGET)/install/vboxvideo_drv_71.so
 	$(QUIET)$(BIN_COPY) $(PATH_BIN)/additions/vboxvideo_drv_13.so    $(PATH_TARGET)/install/vboxvideo_drv_13.so
 	$(QUIET)$(BIN_COPY) $(PATH_BIN)/additions/vboxvideo_drv_14.so    $(PATH_TARGET)/install/vboxvideo_drv_14.so
+	$(QUIET)$(BIN_COPY) $(PATH_BIN)/additions/vboxvideo_drv_15.so    $(PATH_TARGET)/install/vboxvideo_drv_15.so
 	$(QUIET)$(BIN_COPY) $(PATH_BIN)/additions/mountvboxsf            $(PATH_TARGET)/install/mount.vboxsf
 	$(QUIET)$(INSTALL) -m 0755 $(VBOX_PATH_LINUX_ADDITION_INSTALLER)/vboxvfs.sh $(PATH_TARGET)/install
 ifdef VBOX_SELINUX_CMPLD
