@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 9366 2008-06-03 22:12:15Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 9368 2008-06-03 22:30:13Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -660,12 +660,6 @@ static DECLCALLBACK(void) rtTimerLnxStartAllOnCpu(RTCPUID idCpu, void *pvUser1, 
 }
 
 
-DECLINLINE(bool) RTCpuSetEqual(PCRTCPUSET pSet1, PCRTCPUSET pSet2)
-{
-    return *pSet1 == *pSet2;
-}
-
-
 /**
  * Worker for RTTimerStart() that takes care of the ugly bit.s
  *
@@ -700,7 +694,7 @@ static int rtTimerLnxStartAll(PRTTIMER pTimer, PRTTIMERLINUXSTARTONCPUARGS pArgs
                                ? RTTIMERLNXSTATE_STARTING
                                : RTTIMERLNXSTATE_STOPPED);
         }
-    } while (!RTCpuSetEqual(&OnlineSet, RTMpGetOnlineSet(&OnlineSet2)));
+    } while (!RTCpuSetIsEqual(&OnlineSet, RTMpGetOnlineSet(&OnlineSet2)));
 
     ASMAtomicWriteBool(&pTimer->fSuspended, false);
 
