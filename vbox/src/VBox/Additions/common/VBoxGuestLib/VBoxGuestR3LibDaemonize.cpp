@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibDaemonize.cpp 10635 2008-07-15 09:36:16Z vboxsync $ */
+/** $Id: VBoxGuestR3LibDaemonize.cpp 10973 2008-07-30 11:48:37Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, daemonize a process.
  */
@@ -237,7 +237,7 @@ VBGLR3DECL(int) VbglR3Daemonize(bool fNoChDir, bool fNoClose,
         return RTErrConvertFromErrno(errno);
     if (pid != 0)
     {
-        if (hPidfile != NULL)
+        if (hPidfile != 0)
         {
             char szBuf[256];
             size_t cbPid = RTStrPrintf(szBuf, sizeof(szBuf), "%d\n", pid);
