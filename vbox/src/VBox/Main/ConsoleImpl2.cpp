@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 6140 2007-12-18 17:20:07Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 6173 2007-12-21 18:57:02Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -775,6 +775,19 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             hrc = customHardDisk->COMGETTER(Format)(&str);                              H();
             STR_CONV();
             rc = CFGMR3InsertString(pCfg,   "Format",           psz);                   RC_CHECK();
+            STR_FREE();
+        }
+        else if (hddType == HardDiskStorageType_VHDImage)
+        {
+            ComPtr<IVHDImage> vhdDisk = hardDisk;
+            AssertBreak (!vhdDisk.isNull(), hrc = E_FAIL);
+
+            rc = CFGMR3InsertNode(pLunL0,   "AttachedDriver", &pLunL1);                 RC_CHECK();
+            rc = CFGMR3InsertString(pLunL1, "Driver",         "VD");                    RC_CHECK();
+            rc = CFGMR3InsertNode(pLunL1,   "Config", &pCfg);                           RC_CHECK();
+            hrc = vhdDisk->COMGETTER(FilePath)(&str);                                   H();
+            STR_CONV();
+            rc = CFGMR3InsertString(pCfg,   "Path",             psz);                   RC_CHECK();
             STR_FREE();
         }
         else
