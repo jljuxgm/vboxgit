@@ -1,4 +1,4 @@
-/* $Id: log.cpp 7711 2008-04-02 16:52:26Z vboxsync $ */
+/* $Id: log.cpp 7713 2008-04-02 19:35:38Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2047,7 +2047,7 @@ static DECLCALLBACK(size_t) rtLogOutputPrefixed(void *pv, const char *pachChars,
                     const RTCPUID idCpu = RTMpCpuId();
 #endif
                     psz += RTStrFormatNumber(psz, idCpu, 16, sizeof(idCpu) * 2, 0, RTSTR_F_ZEROPAD);
-                    *psz++ = ' ';
+                    *psz++ = ' ';                                                               /* +17 */
                 }
                 if (pLogger->fFlags & RTLOGFLAGS_PREFIX_FLAG_NO)
                 {
