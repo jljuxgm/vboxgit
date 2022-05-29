@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 9473 2008-06-06 13:01:23Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 9829 2008-06-19 16:46:54Z vboxsync $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -268,7 +268,7 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
         //case ECOMM		70	/* Communication error on send */
 #endif
 #ifdef EPROTO
-        //case EPROTO		71	/* Protocol error */
+        case EPROTO:            return VERR_UNRESOLVED_ERROR;  /* Roughly correct */
 #endif
 #ifdef EMULTIHOP
         //case EMULTIHOP	72	/* Multihop attempted */
