@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7762 2008-04-07 07:12:34Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7769 2008-04-07 14:00:26Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -1731,7 +1731,7 @@ static void pcnetReceiveNoSync(PCNetState *pData, const uint8_t *buf, int size)
     /*
      * Drop packets if the VM is not running yet/anymore.
      */
-    if (VMR3GetState(PDMDevHlpGetVM(pDevIns)) != VMSTATE_RUNNING)
+    if (PDMDevHlpVMState(pDevIns) != VMSTATE_RUNNING)
         return;
 
     Log(("#%d pcnetReceiveNoSync: size=%d\n", PCNET_INST_NR, size));
