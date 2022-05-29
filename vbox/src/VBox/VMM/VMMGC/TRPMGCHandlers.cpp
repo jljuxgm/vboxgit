@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 9300 2008-06-02 13:30:12Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 9344 2008-06-03 09:49:14Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -616,7 +616,7 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTAT
         case OP_MOV_DR:
             /* We can safely emulate control/debug register move instructions in patched code. */
             if (    !PATMIsPatchGCAddr(pVM, (RTRCPTR)PC)
-                &&  !CSAMIsKnownDangerousInstr(pVM, PC))
+                &&  !CSAMIsKnownDangerousInstr(pVM, (RTRCPTR)PC))
                 break;
         case OP_INVLPG:
         case OP_LLDT:
