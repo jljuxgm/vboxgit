@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 6440 2008-01-22 13:35:10Z vboxsync $ */
+/* $Id: MachineImpl.h 6449 2008-01-22 16:13:28Z vboxsync $ */
 
 /** @file
  *
@@ -102,8 +102,6 @@ public:
         {
             /** Control of the direct session opened by openSession() */
             ComPtr <IInternalSessionControl> mDirectControl;
-            /** Cached IUnknown of mDirectControl (IPC) for fast comparison */
-            ComPtr <IUnknown> mDirectControlUnk;
 
             typedef std::list <ComPtr <IInternalSessionControl> > RemoteControlList;
 
