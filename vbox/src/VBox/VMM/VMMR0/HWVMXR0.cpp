@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 8876 2008-05-16 09:59:07Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 9151 2008-05-27 09:58:31Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -947,12 +947,14 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
         pVM->hwaccm.s.vmx.proc_ctls &= ~VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_RDTSC_EXIT;
         rc = VMXWriteVMCS(VMX_VMCS_CTRL_PROC_EXEC_CONTROLS, pVM->hwaccm.s.vmx.proc_ctls);
         AssertRC(rc);
+        STAM_COUNTER_INC(&pVM->hwaccm.s.StatTSCOffset);
     }
     else
     {
         pVM->hwaccm.s.vmx.proc_ctls |= VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_RDTSC_EXIT;
         rc = VMXWriteVMCS(VMX_VMCS_CTRL_PROC_EXEC_CONTROLS, pVM->hwaccm.s.vmx.proc_ctls);
         AssertRC(rc);
+        STAM_COUNTER_INC(&pVM->hwaccm.s.StatTSCIntercept);
     }
 
     /* Done. */
