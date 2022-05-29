@@ -1,4 +1,4 @@
-/* $Id: PATMGC.cpp 9290 2008-06-02 11:46:16Z vboxsync $ */
+/* $Id: PATMGC.cpp 9658 2008-06-12 12:33:17Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -509,7 +509,7 @@ PATMDECL(int) PATMHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                 return VINF_EM_RAW_EMULATE_INSTR;
             }
 
-            cpu.mode = SELMIsSelector32Bit(pVM, pRegFrame->eflags, pRegFrame->cs, 0) ? CPUMODE_32BIT : CPUMODE_16BIT;
+            cpu.mode = SELMGetSelectorType(pVM, pRegFrame->eflags, pRegFrame->cs, 0);
             if(cpu.mode != CPUMODE_32BIT)
             {
                 AssertFailed();

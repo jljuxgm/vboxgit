@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 9282 2008-06-02 08:36:10Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 9658 2008-06-12 12:33:17Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -301,7 +301,7 @@ static int iomInterpretMOVS(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame
     if (pCpu->prefix & PREFIX_REP)
     {
         cTransfers = pRegFrame->ecx;
-        if (!SELMIsSelector32Bit(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid))
+        if (SELMGetSelectorType(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid) == CPUMODE_16BIT)
             cTransfers &= 0xffff;
 
         if (!cTransfers)
@@ -542,7 +542,7 @@ static int iomInterpretSTOS(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFaul
     if (pCpu->prefix & PREFIX_REP)
     {
         cTransfers = pRegFrame->ecx;
-        if (!SELMIsSelector32Bit(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid))
+        if (SELMGetSelectorType(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid) == CPUMODE_16BIT)
             cTransfers &= 0xffff;
 
         if (!cTransfers)
@@ -1309,7 +1309,7 @@ IOMDECL(int) IOMInterpretINSEx(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t uPort, 
     {
         cTransfers = pRegFrame->ecx;
 
-        if (!SELMIsSelector32Bit(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid))
+        if (SELMGetSelectorType(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid) == CPUMODE_16BIT)
             cTransfers &= 0xffff;
 
         if (!cTransfers)
@@ -1464,7 +1464,7 @@ IOMDECL(int) IOMInterpretOUTSEx(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t uPort,
     if (uPrefix & PREFIX_REP)
     {
         cTransfers = pRegFrame->ecx;
-        if (!SELMIsSelector32Bit(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid))
+        if (SELMGetSelectorType(pVM, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid) == CPUMODE_16BIT)
             cTransfers &= 0xffff;
 
         if (!cTransfers)
