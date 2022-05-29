@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 9008 2008-05-21 10:17:41Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 9115 2008-05-26 11:18:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -888,6 +888,9 @@ PGMDECL(int)  PGMHandlerPhysicalPageTempOff(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS G
             int rc = pgmPhysGetPageEx(&pVM->pgm.s, GCPhysPage, &pPage);
             AssertRCReturn(rc, rc);
             PGM_PAGE_SET_HNDL_PHYS_STATE(pPage, PGM_PAGE_HNDL_PHYS_STATE_DISABLED);
+#ifdef IN_RING0
+            HWACCMInvalidatePhysPage(pVM, GCPhysPage);
+#endif
             return VINF_SUCCESS;
         }
 
