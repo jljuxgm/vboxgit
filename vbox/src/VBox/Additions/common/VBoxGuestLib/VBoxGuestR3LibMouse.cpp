@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMouse.cpp 6494 2008-01-25 06:11:27Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMouse.cpp 6502 2008-01-25 09:40:01Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Mouse.
  */
@@ -23,7 +23,7 @@
 
 
 /**
- * Retrieve mouse co-ordinate information from the host.
+ * Retrieve mouse coordinates and features from the host.
  *
  * @returns VBox status code.
  *
