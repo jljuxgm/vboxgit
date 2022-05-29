@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6343 2008-01-11 15:12:39Z vboxsync $
+# $Id: Makefile.kmk 6512 2008-01-25 11:34:26Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -148,6 +148,11 @@ endif
 ifdef VBOX_WITH_HEADLESS
  LINUXSTRIPBIN += \
 	VBoxHeadless
+endif
+ifdef VBOX_WITH_WEBSERVICES
+ LINUXSTRIPBIN += \
+	vboxwebsrv \
+	webtest
 endif
 
 LINUXARCHFILES := $(LINUXSTRIPBIN) $(LINUXSTRIPOBJ) $(LINUXNOSTRIP)
