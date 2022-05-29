@@ -1,4 +1,4 @@
-/** $Id: VDICore.h 10715 2008-07-16 22:38:23Z vboxsync $ */
+/** $Id: VDICore.h 10781 2008-07-21 14:45:28Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -309,6 +309,22 @@ DECLINLINE(VDIIMAGETYPE) getImageType(PVDIHEADER ph)
     return (VDIIMAGETYPE)0;
 }
 
+#ifdef VBOX_VDICORE_VD
+DECLINLINE(unsigned) getImageFlags(PVDIHEADER ph)
+{
+    switch (GET_MAJOR_HEADER_VERSION(ph))
+    {
+        case 0:
+            /* VDI image flag conversion to VD image flags. */
+            return ph->u.v0.fFlags << 8;
+        case 1:
+            /* VDI image flag conversion to VD image flags. */
+            return ph->u.v1.fFlags << 8;
+    }
+    AssertFailed();
+    return 0;
+}
+#else /* !VBOX_VDICORE_VD */
 DECLINLINE(unsigned) getImageFlags(PVDIHEADER ph)
 {
     switch (GET_MAJOR_HEADER_VERSION(ph))
@@ -319,6 +335,7 @@ DECLINLINE(unsigned) getImageFlags(PVDIHEADER ph)
     AssertFailed();
     return 0;
 }
+#endif /* !VBOX_VDICORE_VD */
 
 DECLINLINE(char *) getImageComment(PVDIHEADER ph)
 {
