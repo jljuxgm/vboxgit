@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6684 2008-01-31 20:07:27Z vboxsync $
+# $Id: Makefile.kmk 6712 2008-02-01 09:01:43Z vboxsync $
 ## @file
 # Makefile for the VBox Additions XFree86 and X.org mouse drivers.
 #
@@ -59,6 +59,9 @@ DLLS += vboxmouse_drv_70
 vboxmouse_drv_70_TEMPLATE = VBOXGUESTR3XORGMOD
 vboxmouse_drv_70_DEFS = \
 	XFree86Server IN_MODULE XFree86Module XFree86LOADER XINPUT XORG_7X
+ifeq ($(BUILD_TARGET),solaris) # don't use .solaris or anything here.
+ vboxmouse_drv_70_DEFS += _XPG6 __EXTENSIONS__
+endif
 vboxmouse_drv_70_INCS := \
 	$(VBOX_PATH_X11_XORG_7_0) \
 	$(VBOX_PATH_X11_XORG_7_0)/X11 \
