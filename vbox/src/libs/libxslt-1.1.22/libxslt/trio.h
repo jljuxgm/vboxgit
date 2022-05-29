@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: trio.h 7296 2008-03-05 10:43:38Z vboxsync $
+ * $Id: trio.h 7299 2008-03-05 11:02:10Z vboxsync $
  *
  * Copyright (C) 1998 Bjorn Reese and Daniel Stenberg.
  *
@@ -29,7 +29,11 @@
  * HAVE_CONFIG_H as a compiler option themselves.
  */
 #if defined(HAVE_CONFIG_H)
-# include <config.h>
+# if defined(VBOX)
+#  include "vboxconfig.h"
+# else
+#  include <config.h>
+# endif
 #endif
 
 #include "triodef.h"
