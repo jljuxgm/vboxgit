@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 7496 2008-03-19 10:22:50Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 7498 2008-03-19 10:49:21Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -448,6 +448,10 @@ HWACCMR0DECL(int) HWACCMR0EnableAllCpus(PVM pVM, HWACCMSTATE enmNewHwAccmState)
     {
         int     aRc[RTCPUSET_MAX_CPUS];
         RTCPUID idCpu = 0;
+
+        /* Don't setup hwaccm as that might not work (vt-x & 64 bits raw mode) */
+        if (enmNewHwAccmState == HWACCMSTATE_DISABLED)
+            return VINF_SUCESS;
 
         memset(aRc, 0, sizeof(aRc));
 
