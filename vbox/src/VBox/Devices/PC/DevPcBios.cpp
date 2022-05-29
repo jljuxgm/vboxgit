@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 9693 2008-06-13 16:30:46Z vboxsync $ */
+/* $Id: DevPcBios.cpp 10928 2008-07-29 12:54:08Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -642,6 +642,10 @@ static DECLCALLBACK(int) pcbiosInitComplete(PPDMDEVINS pDevIns)
      */
     if (pData->pszSataDevice)
     {
+        /* Clear pointers to IDE controller. */
+        for (i = 0; i < ELEMENTS(apHDs); i++)
+            apHDs[i] = NULL;
+
         for (i = 0; i < ELEMENTS(apHDs); i++)
         {
             PPDMIBASE pBase;
