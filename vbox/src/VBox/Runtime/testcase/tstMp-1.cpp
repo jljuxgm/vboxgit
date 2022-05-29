@@ -1,4 +1,4 @@
-/* $Id: tstMp-1.cpp 10428 2008-07-09 14:11:09Z vboxsync $ */
+/* $Id: tstMp-1.cpp 10452 2008-07-10 02:43:48Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMp.
  */
@@ -54,7 +54,7 @@ int main()
     RTR3Init();
     RTPrintf("tstMp-1: TESTING...\n");
 
-#if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX)
+#if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX) || defined(RT_OS_DARWIN)
     /*
      * Present and possible CPUs.
      */
