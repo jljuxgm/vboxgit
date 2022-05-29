@@ -1,4 +1,4 @@
-/* $Id: tstMemAutoPtr.cpp 11017 2008-07-30 22:27:27Z vboxsync $ */
+/* $Id: tstMemAutoPtr.cpp 11021 2008-07-30 23:03:57Z vboxsync $ */
 /** @file
  * IPRT - Testcase the RTMemAutoPtr template.
  */
@@ -91,11 +91,14 @@ void *tstMemAutoPtrAllocatorNoZero(void *pvOld, size_t cbNew)
 extern "C" int tstMemAutoPtrDisas1(void **ppv)
 {
     RTMemAutoPtr<TSTMEMAUTOPTRSTRUCT> Handle(1);
-    Handle->a = RTRandU32();
-    if (Handle->a < UINT32_MAX / 2)
+    if (!Handle)
     {
-        *ppv = Handle.release();
-        return VINF_SUCCESS;
+        Handle->a = RTRandU32();
+        if (Handle->a < UINT32_MAX / 2)
+        {
+            *ppv = Handle.release();
+            return VINF_SUCCESS;
+        }
     }
     return VERR_TRY_AGAIN;
 }
@@ -106,13 +109,16 @@ extern "C" int tstMemAutoPtrDisas1(void **ppv)
 extern "C" int tstMemAutoPtrDisas1PureC(void **ppv)
 {
     TSTMEMAUTOPTRSTRUCT *pHandle = (TSTMEMAUTOPTRSTRUCT *)RTMemRealloc(NULL, sizeof(*pHandle));
-    pHandle->a = RTRandU32();
-    if (pHandle->a < UINT32_MAX / 2)
+    if (pHandle)
     {
-        *ppv = pHandle;
-        return VINF_SUCCESS;
+        pHandle->a = RTRandU32();
+        if (pHandle->a < UINT32_MAX / 2)
+        {
+            *ppv = pHandle;
+            return VINF_SUCCESS;
+        }
+        RTMemFree(pHandle);
     }
-    RTMemFree(pHandle);
     return VERR_TRY_AGAIN;
 }
 
