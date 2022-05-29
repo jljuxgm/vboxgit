@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6673 2008-01-31 18:14:57Z vboxsync $
+# $Id: Makefile.kmk 6675 2008-01-31 19:26:14Z vboxsync $
 ## @file
 # Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -17,10 +17,6 @@
 
 DEPTH = ../../../../..
 include	$(PATH_KBUILD)/header.kmk
-
-ifeq ($(BUILD_TARGET),l4) ## @todo Frank, check if we can remove this now.
- SUFF_DLL = .so
-endif
 
 #
 # vboxvideo_drv

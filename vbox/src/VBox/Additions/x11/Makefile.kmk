@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6356 2008-01-15 13:27:51Z vboxsync $
+# $Id: Makefile.kmk 6675 2008-01-31 19:26:14Z vboxsync $
 ## @file
 # Sub-Makefile for the X11 Guest Additions.
 #
@@ -20,7 +20,7 @@ include $(PATH_KBUILD)/subheader.kmk
 
 # Include sub-dirs.
 SUBDIRS =
-if1of ($(BUILD_TARGET),linux solaris)
+if1of ($(BUILD_TARGET),l4 linux solaris)
 SUBDIRS += \
 	xclient \
 	xgraphics \
