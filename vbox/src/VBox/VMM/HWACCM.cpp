@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 10703 2008-07-16 14:23:20Z vboxsync $ */
+/* $Id: HWACCM.cpp 10704 2008-07-16 14:59:09Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -519,6 +519,9 @@ HWACCMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
             {
                 pVM->fHWACCMEnabled = true;
                 pVM->hwaccm.s.svm.fEnabled = true;
+
+                if (pVM->hwaccm.s.fNestedPaging)
+                    LogRel(("HWACCM:    Enabled nested paging\n"));
 
                 hwaccmr3DisableRawMode(pVM);
                 CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_SEP);
