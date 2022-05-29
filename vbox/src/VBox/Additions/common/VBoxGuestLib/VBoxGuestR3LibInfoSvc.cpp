@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibInfoSvc.cpp 10118 2008-07-02 18:18:37Z vboxsync $ */
+/* $Id: VBoxGuestR3LibInfoSvc.cpp 10125 2008-07-02 21:41:02Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, information service.
  */
@@ -126,7 +126,7 @@ VBGLR3DECL(int) VbglR3InfoSvcWriteKey(uint32_t u32ClientId, char *pszKey, char *
 /**
  * Retrieve a key value.
  *
- * @returns VBox status code.  If the value is not found, returns VERR_NOT_FOUND
+ * @returns VBox status code.
  * @retval  VINF_SUCCESS on success, pszValue and pcbActual containing valid data.
  * @retval  VERR_BUFFER_OVERFLOW if the buffer is too small, pcbActual will contain
  *          the require buffer size. Note race condition here when retrying wrt
