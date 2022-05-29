@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7065 2008-02-20 21:50:40Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7066 2008-02-21 07:35:02Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -2735,7 +2735,7 @@ static uint32_t pcnetMIIReadU16(PCNetState *pData, uint32_t miiaddr)
     bool autoneg, duplex, fast;
     STAM_COUNTER_INC(&pData->StatMIIReads);
 
-    autoneg = (pData->aBCR[BCR_MIICAS] & 0x20) != 0 /*|| (pData->aMII[0] & 0x1000)*/;
+    autoneg = (pData->aBCR[BCR_MIICAS] & 0x20) != 0;
     duplex  = (pData->aBCR[BCR_MIICAS] & 0x10) != 0;
     fast    = (pData->aBCR[BCR_MIICAS] & 0x08) != 0;
 
