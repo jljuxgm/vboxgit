@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 11357 2008-08-12 14:02:08Z vboxsync $ */
+/* $Id: MachineImpl.h 11683 2008-08-26 17:40:41Z vboxsync $ */
 
 /** @file
  *
@@ -736,7 +736,7 @@ protected:
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
     void registerMetrics (PerformanceCollector *aCollector, Machine *aMachine, RTPROCESS pid);
-    void unregisterMetrics (PerformanceCollector *aCollector);
+    void unregisterMetrics (PerformanceCollector *aCollector, Machine *aMachine);
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
     const InstanceType mType;

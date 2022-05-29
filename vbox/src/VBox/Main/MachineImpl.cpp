@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 11583 2008-08-22 19:05:15Z vboxsync $ */
+/* $Id: MachineImpl.cpp 11683 2008-08-26 17:40:41Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7625,10 +7625,10 @@ void Machine::registerMetrics (PerformanceCollector *aCollector, Machine *aMachi
                                                new pm::AggregateMax()));
 };
 
-void Machine::unregisterMetrics (PerformanceCollector *aCollector)
+void Machine::unregisterMetrics (PerformanceCollector *aCollector, Machine *aMachine)
 {
-    aCollector->unregisterMetricsFor (this);
-    aCollector->unregisterBaseMetricsFor (this);
+    aCollector->unregisterMetricsFor (aMachine);
+    aCollector->unregisterBaseMetricsFor (aMachine);
 };
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
@@ -7924,7 +7924,7 @@ void SessionMachine::uninit (Uninit::Reason aReason)
     AutoMultiWriteLock2 alock (mParent, this);
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
-    unregisterMetrics (mParent->performanceCollector());
+    unregisterMetrics (mParent->performanceCollector(), mPeer);
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
     MachineState_T lastState = mData->mMachineState;
