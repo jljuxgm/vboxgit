@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: PGMDbg.cpp 6528 2008-01-28 14:43:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -50,7 +50,7 @@
  */
 PGMR3DECL(int) PGMR3DbgHCPtr2GCPhys(PVM pVM, RTHCPTR HCPtr, PRTGCPHYS pGCPhys)
 {
-#ifdef NEW_PHYS_CODE
+#ifdef VBOX_WITH_NEW_PHYS_CODE
     *pGCPhys = NIL_RTGCPHYS;
     return VERR_NOT_IMPLEMENTED;
 
@@ -103,7 +103,7 @@ PGMR3DECL(int) PGMR3DbgHCPtr2GCPhys(PVM pVM, RTHCPTR HCPtr, PRTGCPHYS pGCPhys)
  */
 PGMR3DECL(int) PGMR3DbgHCPtr2HCPhys(PVM pVM, RTHCPTR HCPtr, PRTHCPHYS pHCPhys)
 {
-#ifdef NEW_PHYS_CODE
+#ifdef VBOX_WITH_NEW_PHYS_CODE
     *pHCPhys = NIL_RTHCPHYS;
     return VERR_NOT_IMPLEMENTED;
 
