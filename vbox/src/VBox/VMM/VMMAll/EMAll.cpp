@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 11714 2008-08-27 16:40:37Z vboxsync $ */
+/* $Id: EMAll.cpp 11736 2008-08-28 06:25:18Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1377,6 +1377,9 @@ static int emInterpretStosWD(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame,
         case CPUMODE_64BIT:
             pRegFrame->rdi += offIncrement;
             break;
+        default:
+            AssertFailed();
+            return VERR_EM_INTERPRETER;
         }
 
     }
@@ -1426,6 +1429,9 @@ static int emInterpretStosWD(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame,
             pRegFrame->rdi = GCOffset;
             pRegFrame->rcx = cTransfers;
             break;
+        default:
+            AssertFailed();
+            return VERR_EM_INTERPRETER;
         }
     }
 
