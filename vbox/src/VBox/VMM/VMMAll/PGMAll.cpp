@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 10340 2008-07-07 16:58:59Z vboxsync $ */
+/* $Id: PGMAll.cpp 10705 2008-07-16 15:03:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1565,6 +1565,7 @@ PGMDECL(const char *) PGMGetModeName(PGMMODE enmMode)
         case PGMMODE_PAE_NX:    return "PAE+NX";
         case PGMMODE_AMD64:     return "AMD64";
         case PGMMODE_AMD64_NX:  return "AMD64+NX";
+        case PGMMODE_NESTED:    return "Nested";
         default:                return "unknown mode value";
     }
 }
