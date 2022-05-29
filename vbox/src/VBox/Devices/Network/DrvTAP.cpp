@@ -1,4 +1,4 @@
-/** $Id: DrvTAP.cpp 6941 2008-02-14 12:16:17Z vboxsync $ */
+/** $Id: DrvTAP.cpp 7033 2008-02-20 13:23:53Z vboxsync $ */
 /** @file
  * Universial TAP network transport driver.
  */
@@ -364,7 +364,7 @@ static DECLCALLBACK(int) drvTAPAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
                     ASMAtomicXchgU32(&pData->fOutOfSpace, false);
                     STAM_PROFILE_STOP(&pData->StatRecvOverflows, b);
                     STAM_PROFILE_ADV_START(&pData->StatReceive, a);
-                    if (pThread->enmState == PDMTHREADSTATE_RUNNING)
+                    if (pThread->enmState != PDMTHREADSTATE_RUNNING)
                         break;
                 }
 
