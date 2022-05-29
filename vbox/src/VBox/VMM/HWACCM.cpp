@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 9539 2008-06-09 12:15:55Z vboxsync $ */
+/* $Id: HWACCM.cpp 9939 2008-06-26 08:38:11Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -642,8 +642,8 @@ HWACCMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
 
     /** @note The context supplied by REM is partial. If we add more checks here, be sure to verify that REM provides this info! */
 
-#if 0 //ndef HWACCM_VMX_EMULATE_ALL
-    /* Too early for VMX. */
+#ifndef HWACCM_VMX_EMULATE_ALL
+    /* Too early for VT-x; Solaris guests will fail with a guru meditation otherwise (investigate!) */
     if (pCtx->idtr.pIdt == 0 || pCtx->idtr.cbIdt == 0 || pCtx->tr == 0)
         return false;
 #endif
