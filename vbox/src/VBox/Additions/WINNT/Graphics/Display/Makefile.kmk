@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9632 2008-06-11 20:33:24Z vboxsync $
+# $Id: Makefile.kmk 9634 2008-06-11 23:26:56Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxDisp.dll.
 #
@@ -55,10 +55,6 @@ VBoxDisp_LDFLAGS.amd64 = /Entry:DrvEnableDriver
 VBoxDisp_LIBS = \
 	$(PATH_SDK_W2K3DDK_LIB)/win32k.lib \
 	$(VBOX_LIB_IPRT_GUEST_R0)
-ifndef VBOX_USE_VCC80 ## @todo remove this!
-VBoxDisp_LIBS       += \
-	$(PATH_TOOL_$(VBOX_VCC_TOOL)_LIB)/libcmt.lib
-endif
 
 include	$(KBUILD_PATH)/subfooter.kmk
 
