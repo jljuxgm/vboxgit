@@ -1,4 +1,4 @@
-# $Id: Config.kmk 9696 2008-06-15 22:06:49Z vboxsync $
+# $Id: Config.kmk 9787 2008-06-18 14:36:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -288,6 +288,12 @@ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), linux.amd64 solaris.amd64 win.amd
 VBOX_WITH_64_BITS_GUESTS = 1
 else
 # VBOX_WITH_64_BITS_GUESTS = 1
+endif
+# Don't cross-build Linux sanity test modules
+ifeq ($(KBUILD_TARGET),linux)
+ ifneq ($(KBUILD_HOST_ARCH),$(KBUILD_TARGET_ARCH))
+  VBOX_WITH_ADDITION_DRIVERS =
+ endif
 endif
 
 
@@ -2839,7 +2845,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9696 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9787 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
