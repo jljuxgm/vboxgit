@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9641 2008-06-12 00:36:22Z vboxsync $
+# $Id: Makefile.kmk 9643 2008-06-12 00:58:55Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -579,7 +579,7 @@ endif
 additions-packing:
 	+ $(KMK) VBOX_ONLY_ADDITIONS=1 \
 		VBOX_WITH_ADDITIONS_ISO.freebsd.amd64= \
-		VBOX_WITH_ADDITIONS_ISO.freebsd.x86=1 \
+		VBOX_WITH_ADDITIONS_ISO.freebsd.x86= \
 		VBOX_WITH_ADDITIONS_ISO.linux.amd64= \
 		VBOX_WITH_ADDITIONS_ISO.linux.x86=1 \
 		VBOX_WITH_ADDITIONS_ISO.solaris.amd64= \
