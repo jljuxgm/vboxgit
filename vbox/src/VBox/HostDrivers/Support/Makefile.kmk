@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10266 2008-07-05 00:58:00Z vboxsync $
+# $Id: Makefile.kmk 10267 2008-07-05 02:01:45Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -205,7 +205,7 @@ vboxdrv_DEFS          = KBUILD_MODNAME=KBUILD_STR\(vboxdrv\) KBUILD_BASENAME=KBU
 ifdef VBOX_WITH_IDT_PATCHING
 vboxdrv_DEFS         += VBOX_WITH_IDT_PATCHING
 endif
-ifndef VBOX_LINUX_VERSION_2_4
+ifdef VBOX_LINUX_VERSION_2_4
 vboxdrv_DEFS         += EXPORT_SYMTAB
 endif
 vboxdrv_INCS         := \
