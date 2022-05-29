@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8447 2008-04-29 09:06:16Z vboxsync $
+# $Id: Makefile.kmk 8732 2008-05-09 02:53:07Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -218,6 +218,8 @@ VBoxDrv_SOURCES       = \
 INSTALLS += VBoxDrv.kext
 VBoxDrv.kext_INST     = $(INST_VBOXDRV)Contents/
 VBoxDrv.kext_SOURCES  = \
+	$(PATH_TARGET)/VBoxDrv/Info.plist
+VBoxDrv.kext_CLEAN    = \
 	$(PATH_TARGET)/VBoxDrv/Info.plist
 
 $(PATH_TARGET)/VBoxDrv/Info.plist: $(PATH_SUB_CURRENT)/darwin/Info.plist $(VBOX_VERSION_MK) | $(call DIRDEP,$(PATH_TARGET)/VBoxDrv)
