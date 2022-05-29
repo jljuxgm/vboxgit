@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 7907 2008-04-11 11:26:07Z vboxsync $ */
+/* $Id: PGMAll.cpp 8108 2008-04-17 15:17:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1114,6 +1114,42 @@ PGMDECL(PGMMODE) PGMGetGuestMode(PVM pVM)
 PGMDECL(PGMMODE) PGMGetShadowMode(PVM pVM)
 {
     return pVM->pgm.s.enmShadowMode;
+}
+
+/**
+ * Gets the current host paging mode.
+ *
+ * @returns The current paging mode.
+ * @param   pVM             The VM handle.
+ */
+PGMDECL(PGMMODE) PGMGetHostMode(PVM pVM)
+{
+    switch (pVM->pgm.s.enmHostMode)
+    {
+        case SUPPAGINGMODE_32_BIT:
+        case SUPPAGINGMODE_32_BIT_GLOBAL:
+            return PGMMODE_32_BIT;
+
+        case SUPPAGINGMODE_PAE:
+        case SUPPAGINGMODE_PAE_GLOBAL:
+            return PGMMODE_PAE;
+
+        case SUPPAGINGMODE_PAE_NX:
+        case SUPPAGINGMODE_PAE_GLOBAL_NX:
+            return PGMMODE_PAE_NX;
+
+        case SUPPAGINGMODE_AMD64:
+        case SUPPAGINGMODE_AMD64_GLOBAL:
+            return PGMMODE_AMD64;
+
+        case SUPPAGINGMODE_AMD64_NX:
+        case SUPPAGINGMODE_AMD64_GLOBAL_NX:
+            return PGMMODE_AMD64_NX;
+
+        default: AssertMsgFailed(("enmHostMode=%d\n", pVM->pgm.s.enmHostMode)); break;
+    }
+
+    return PGMMODE_INVALID;
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 8089 2008-04-17 11:27:13Z vboxsync $ */
+/* $Id: PGM.cpp 8108 2008-04-17 15:17:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2683,9 +2683,10 @@ if (getenv("VBOX_32BIT"))
             {
                 case SUPPAGINGMODE_32_BIT:
                 case SUPPAGINGMODE_32_BIT_GLOBAL:
+                    AssertFailed(); /* this switcher is not well tested!! */
                     enmShadowMode = PGMMODE_PAE;
                     enmSwitcher = VMMSWITCHER_32_TO_PAE;
-                    break;
+                    return PGMMODE_INVALID;
 
                 case SUPPAGINGMODE_PAE:
                 case SUPPAGINGMODE_PAE_NX:
