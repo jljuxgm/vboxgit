@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 7635 2008-03-28 17:15:38Z vboxsync $ */
+/* $Id: VBoxDev.cpp 7674 2008-04-01 08:17:08Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1580,7 +1580,7 @@ static DECLCALLBACK(int) vmmdevIORAMRegionMap(PPCIDEVICE pPciDev, /*unsigned*/ i
         /*
          * It is about to be unmapped, just clean up.
          */
-        pData->GCPhysVMMDevRAM = NIL_RTGCPHYS;
+        pData->GCPhysVMMDevRAM = NIL_RTGCPHYS32;
         rc = VINF_SUCCESS;
     }
 
