@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 9539 2008-06-09 12:15:55Z vboxsync $ */
+/* $Id: PGMAllGst.h 9542 2008-06-09 12:41:22Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -847,10 +847,6 @@ PGM_GST_DECL(bool, HandlerVirtualUpdate)(PVM pVM, uint32_t cr4)
 #if PGM_GST_TYPE == PGM_TYPE_32BIT \
  || PGM_GST_TYPE == PGM_TYPE_PAE \
  || PGM_GST_TYPE == PGM_TYPE_AMD64
-
-#if PGM_GST_TYPE == PGM_TYPE_AMD64
-    AssertFailed();
-#endif
 
     /** @todo
      * In theory this is not sufficient: the guest can change a single page in a range with invlpg
