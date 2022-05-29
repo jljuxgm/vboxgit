@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 11157 2008-08-05 23:08:37Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 11316 2008-08-11 08:19:33Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -569,6 +569,8 @@ int main(int argc, char **argv)
     const char *pszIf = "en0";
 #elif defined(RT_OS_LINUX)
     const char *pszIf = "eth0";
+#elif defined(RT_OS_SOLARIS)
+    const char* pszIf = "rge0";
 #else
     const char *pszIf = "em0";
 #endif
