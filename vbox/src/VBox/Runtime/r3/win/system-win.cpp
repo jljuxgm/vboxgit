@@ -1,4 +1,4 @@
-/* $Id: system-win.cpp 9904 2008-06-25 11:03:03Z vboxsync $ */
+/* $Id: system-win.cpp 9906 2008-06-25 11:13:33Z vboxsync $ */
 /** @file
  * IPRT - System, Win32.
  */
@@ -36,6 +36,7 @@
 #include <Windows.h>
 #include <iprt/system.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 
 
 
