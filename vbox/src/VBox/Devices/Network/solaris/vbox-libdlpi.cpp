@@ -1,4 +1,4 @@
-/** $Id: vbox-libdlpi.cpp 9112 2008-05-26 10:11:34Z vboxsync $ */
+/** $Id: vbox-libdlpi.cpp 9114 2008-05-26 10:28:49Z vboxsync $ */
 /** @file
  * Dynamically load libdpli & symbols on Solaris hosts, Internal header.
  */
@@ -20,7 +20,7 @@
  */
 
 /* Solaris 10 and below has no dlpi. */
-#ifndef __SunOS_5.10
+#ifndef __SunOS_5_10
 
 #include "vbox-libdlpi.h"
 
@@ -85,4 +85,4 @@ bool VBoxLibDlpiFound(void)
     }
 }
 
-#endif /* __SunOS_5.10 */
+#endif /* __SunOS_5_10 */
