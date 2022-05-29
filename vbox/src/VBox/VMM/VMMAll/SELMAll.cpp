@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 9678 2008-06-13 11:42:02Z vboxsync $ */
+/* $Id: SELMAll.cpp 9679 2008-06-13 11:44:17Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -431,6 +431,7 @@ SELMDECL(int) SELMToFlatEx(PVM pVM, DIS_SELREG SelReg, PCPUMCTXCORE pCtxCore, RT
     return VERR_SELECTOR_NOT_PRESENT;
 }
 
+#ifndef IN_RING0
 /**
  * Converts a GC selector based address to a flat address.
  *
@@ -636,7 +637,7 @@ SELMDECL(int) SELMToFlatBySelEx(PVM pVM, X86EFLAGS eflags, RTSEL Sel, RTGCPTR Ad
     }
     return VERR_SELECTOR_NOT_PRESENT;
 }
-
+#endif /* !IN_RING0 */
 
 /**
  * Validates and converts a GC selector based code address to a flat
