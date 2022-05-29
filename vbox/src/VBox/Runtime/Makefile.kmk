@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9640 2008-06-12 00:23:40Z vboxsync $
+# $Id: Makefile.kmk 9670 2008-06-13 06:38:09Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -847,12 +847,6 @@ common/string/memcpy.cpp_CXXFLAGS.win = -Oi-
 common/string/memset.cpp_CXXFLAGS.win = -Oi-
 common/string/strcpy.cpp_CXXFLAGS.win = -Oi-
 common/string/strlen.cpp_CXXFLAGS.win = -Oi-
-
-ifeq ($(KBUILD_TARGET),l4) ## @todo Why is this here? Because of the additions? If so, the please remove, else explain.
-RuntimeR0Drv_BLD_TRG      = linux
-RuntimeR0Drv_BLD_TRG_ARCH = x86
-RuntimeR0Drv_BLD_TRG_CPU  = i386
-endif
 
 #
 # RuntimeR0Drv - Ring0 library for host drivers.
