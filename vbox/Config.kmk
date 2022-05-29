@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6031 2007-12-09 21:53:12Z vboxsync $
+# $Id: Config.kmk 6048 2007-12-11 12:11:23Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -232,7 +232,10 @@ VBOX_WITH_TESTCASES = 1
 # Enabled internal networking.
 VBOX_WITH_INTERNAL_NETWORKING = 1
 # Enables the ffmpeg module for recording test runs.
-#VBOX_WITH_FFMPEG = 1
+# Enable this for non-Linux builds later.
+ifeq ($(BUILD_TARGET),linux)
+  VBOX_WITH_FFMPEG = 1
+endif
 # Enable OpenGL service
 VBOX_WITH_OGL = 1
 # Enable shared folders
@@ -2737,7 +2740,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6031 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6048 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
