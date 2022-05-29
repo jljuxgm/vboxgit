@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 11478 2008-08-19 12:11:10Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 11483 2008-08-19 12:30:13Z vboxsync $ */
 
 /** @file
  *
@@ -100,7 +100,7 @@ int CollectorLinux::getHostCpuMHz(ULONG *mhz)
     uint64_t uTotalMHz  = 0;
 
     for (RTCPUID i = 0; i < nProcessors; ++i)
-        uTotalMHz += RTMpGetCurFrequency(i);
+        uTotalMHz += RTMpGetCurFrequency(RTMpCpuIdFromSetIndex(i));
 
     *mhz = (ULONG)(uTotalMHz / nProcessors);
     return VINF_SUCCESS;
