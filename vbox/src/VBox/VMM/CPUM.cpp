@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: CPUM.cpp 6171 2007-12-21 15:41:23Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -316,6 +316,13 @@ static int cpumR3CpuIdInit(PVM pVM)
            : 0;
          i < RT_ELEMENTS(pCPUM->aGuestCpuIdExt); i++)
         pCPUM->aGuestCpuIdExt[i] = pCPUM->GuestCpuIdDef;
+
+    /*
+     * Workaround for missing cpuid(0) patches: If we miss to patch a cpuid(0).eax then
+     * Linux tries to determine the number of processors from (cpuid(4).eax >> 26) + 1.
+     * We don't support more than 1 processor.
+     */
+    pCPUM->aGuestCpuIdStd[4].eax = 0;
 
     /*
      * Centaur stuff (VIA).
