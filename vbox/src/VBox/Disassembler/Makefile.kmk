@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8937 2008-05-20 00:52:26Z vboxsync $
+# $Id: Makefile.kmk 9266 2008-05-31 02:32:20Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -42,7 +42,9 @@ DisasmR3_SOURCES        = \
 	DisasmCore.cpp \
 	DisasmReg.cpp \
 	DisasmTables.cpp \
-	DisasmTablesX64.cpp
+	DisasmTablesX64.cpp \
+	DisasmFormatBytes.cpp \
+	DisasmFormatYasm.cpp
 
 LIBRARIES              += DisasmCoreR3
 DisasmCoreR3_TEMPLATE   = VBOXR3
