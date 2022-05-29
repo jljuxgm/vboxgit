@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 8030 2008-04-16 11:43:17Z vboxsync $ */
+/* $Id: PGMAllBth.h 8031 2008-04-16 11:44:49Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2629,10 +2629,6 @@ PGM_BTH_DECL(int, SyncCR3)(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bo
     STAM_PROFILE_START(&pVM->pgm.s.CTXMID(Stat,SyncCR3Handlers), h);
     PGM_GST_NAME(HandlerVirtualUpdate)(pVM, cr4);
     STAM_PROFILE_STOP(&pVM->pgm.s.CTXMID(Stat,SyncCR3Handlers), h);
-
-#ifdef IN_RING3
-_asm int 3;
-#endif
 
 #ifdef PGMPOOL_WITH_MONITORING
     /*
