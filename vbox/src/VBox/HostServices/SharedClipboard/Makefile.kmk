@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
+# $Id: Makefile.kmk 8774 2008-05-12 02:16:15Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service.
 #
@@ -35,7 +35,7 @@ VBoxSharedClipboard_INCS.win  = \
 VBoxSharedClipboard_SOURCES = \
 	service.cpp
 VBoxSharedClipboard_SOURCES.win = \
-	win32.cpp
+	VBoxClipboard-win.cpp
 VBoxSharedClipboard_SOURCES.darwin = \
 	darwin.cpp \
 	clipboard-helper.cpp \
