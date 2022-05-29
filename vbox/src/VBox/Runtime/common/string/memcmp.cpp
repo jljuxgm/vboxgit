@@ -1,4 +1,4 @@
-/* $Id: memcmp.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: memcmp.cpp 7054 2008-02-20 17:17:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - CRT Strings, memcmp().
  */
@@ -47,7 +47,7 @@
 # if _MSC_VER >= 1400
 __checkReturn int __cdecl memcmp(__in_bcount_opt(_Size) const void * pvDst, __in_bcount_opt(_Size) const void * pvSrc, __in size_t cb)
 # else
-int memcmp(const void *pvDst, const void *pvSrc, size_t cb)
+int __cdecl memcmp(const void *pvDst, const void *pvSrc, size_t cb)
 # endif
 #else
 int memcmp(const void *pvDst, const void *pvSrc, size_t cb)
