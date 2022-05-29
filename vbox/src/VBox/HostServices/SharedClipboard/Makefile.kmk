@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6773 2008-02-04 06:45:25Z vboxsync $
+# $Id: Makefile.kmk 7073 2008-02-21 14:28:28Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service.
 #
@@ -32,9 +32,14 @@ VBoxSharedClipboard_SOURCES = \
 	service.cpp
 VBoxSharedClipboard_SOURCES.win = \
 	win32.cpp
+VBoxSharedClipboard_SOURCES.darwin = \
+	darwin.cpp \
+    clipboard-helper.cpp \
+    darwin-pasteboard.cpp
 if1of ($(BUILD_TARGET),linux solaris)
  ifndef VBOX_HEADLESS
   VBoxSharedClipboard_SOURCES += \
+    clipboard-helper.cpp \
 	linux.cpp
  else
   VBoxSharedClipboard_SOURCES += \
@@ -55,6 +60,8 @@ if1of ($(BUILD_TARGET),linux solaris)
 	X11
  endif
 endif
+
+VBoxSharedClipboard_LDFLAGS.darwin =  -framework ApplicationServices
 
 include $(PATH_KBUILD)/subfooter.kmk
 
