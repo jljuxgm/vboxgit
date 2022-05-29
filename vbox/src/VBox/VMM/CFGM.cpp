@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: CFGM.cpp 8564 2008-05-05 11:50:50Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  *
@@ -142,7 +142,7 @@ CFGMR3DECL(int) CFGMR3Init(PVM pVM, PFNCFGMCONSTRUCTOR pfnCFGMConstructor, void 
 
     }
     else
-        NoDmik(AssertMsgFailed(("Constructor failed with rc=%Vrc pfnCFGMConstructor=%p\n", rc, pfnCFGMConstructor)));
+        NOT_DMIK(AssertMsgFailed(("Constructor failed with rc=%Vrc pfnCFGMConstructor=%p\n", rc, pfnCFGMConstructor)));
 
     return rc;
 }
