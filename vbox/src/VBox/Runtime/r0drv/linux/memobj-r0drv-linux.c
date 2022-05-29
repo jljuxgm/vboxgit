@@ -1,4 +1,4 @@
-/* $Revision: 5999 $ */
+/* $Revision: 6416 $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, Linux.
  */
@@ -37,6 +37,14 @@
 #include <iprt/string.h>
 #include <iprt/process.h>
 #include "internal/memobj.h"
+
+/* early 2.6 kernels */
+#ifndef PAGE_SHARED_EXEC
+# define PAGE_SHARED_EXEC PAGE_SHARED
+#endif
+#ifndef PAGE_READONLY_EXEC
+# define PAGE_READONLY_EXEC PAGE_READONLY
+#endif
 
 
 /*******************************************************************************
@@ -692,7 +700,7 @@ int rtR0MemObjNativeLockUser(PPRTR0MEMOBJINTERNAL ppMem, RTR3PTR R3Ptr, size_t c
     struct task_struct *pTask = rtR0ProcessToLinuxTask(R0Process);
     struct vm_area_struct **papVMAs;
     PRTR0MEMOBJLNX pMemLnx;
-    int rc;
+    int rc = VERR_NO_MEMORY;
 
     /*
      * Check for valid task and size overflows.
