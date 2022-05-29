@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6810 2008-02-05 15:28:54Z vboxsync $
+# $Id: Makefile.kmk 6926 2008-02-12 16:50:46Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -438,6 +438,8 @@ vslick.h: include/VBox/cdefs.h Makefile
 	echo '#define COM_INTERFACE_ENTRY(a) ' >> $@.tmp
 	echo '#define COMGETTER(n)                    Get##n ' >> $@.tmp
 	echo '#define COMSETTER(n)                    Set##n ' >> $@.tmp
+	echo '#define ComSafeArrayIn(t,a)             t a[] ' >> $@.tmp
+	echo '#define ComSafeArrayOut(t,a)            t * a[] ' >> $@.tmp
 	echo '#define DECLARE_NOT_AGGREGATABLE(a) ' >> $@.tmp
 	echo '#define DECLARE_PROTECT_FINAL_CONSTRUCT(a) ' >> $@.tmp
 	echo '#define NS_DECL_ISUPPORTS ' >> $@.tmp
