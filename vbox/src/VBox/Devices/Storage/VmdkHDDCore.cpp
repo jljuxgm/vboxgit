@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 9071 2008-05-23 11:51:22Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 9084 2008-05-23 13:28:45Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -3657,7 +3657,7 @@ static char * vmdkStrReplace(const char *pszWhere, const char *pszWhat, const ch
     Assert(VALID_PTR(pszWhere));
     Assert(VALID_PTR(pszWhat));
     Assert(VALID_PTR(pszByWhat));
-    char *pszFoundStr = strstr(pszWhere, pszWhat);
+    const char *pszFoundStr = strstr(pszWhere, pszWhat);
     if (!pszFoundStr)
         return NULL;
     size_t cFinal = strlen(pszWhere) + 1 + strlen(pszByWhat) - strlen(pszWhat);
