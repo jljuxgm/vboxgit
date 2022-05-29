@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 9430 2008-06-05 15:28:07Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 9543 2008-06-09 12:53:11Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1762,10 +1762,11 @@ CPUMDECL(CPUMMODE) CPUMGetGuestMode(PVM pVM)
     CPUMMODE enmMode;
     if (!(pVM->cpum.s.Guest.cr0 & X86_CR0_PE))
         enmMode = CPUMMODE_REAL;
-    else //GUEST64 if (!(pVM->cpum.s.Guest.efer & MSR_K6_EFER_LMA)
+    else 
+    if (!(pVM->cpum.s.Guest.msrEFER & MSR_K6_EFER_LMA))
         enmMode = CPUMMODE_PROTECTED;
-//GUEST64     else
-//GUEST64         enmMode = CPUMMODE_LONG;
+    else
+        enmMode = CPUMMODE_LONG;
 
     return enmMode;
 }
