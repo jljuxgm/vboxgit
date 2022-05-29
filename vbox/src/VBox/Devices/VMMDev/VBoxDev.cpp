@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 8312 2008-04-22 21:04:44Z vboxsync $ */
+/* $Id: VBoxDev.cpp 8313 2008-04-23 07:13:13Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2023,7 +2023,8 @@ static DECLCALLBACK(int) vmmdevSaveState(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHand
 static DECLCALLBACK(int) vmmdevLoadState(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle, uint32_t u32Version)
 {
     VMMDevState *pData = PDMINS2DATA(pDevIns, VMMDevState*);
-    if (u32Version != VMMDEV_SSM_VERSION)
+    if (   SSM_VERSION_MAJOR_CHANGED(u32Version, VMMDEV_SSM_VERSION)
+        || (SSM_VERSION_MINOR(u32Version) < 6))
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     SSMR3GetU32(pSSMHandle, &pData->hypervisorSize);
     SSMR3GetU32(pSSMHandle, &pData->mouseCapabilities);
@@ -2044,8 +2045,12 @@ static DECLCALLBACK(int) vmmdevLoadState(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHand
 
     SSMR3GetU32(pSSMHandle, &pData->guestCaps);
 
-    SSMR3GetU32(pSSMHandle, &pData->u32MaxGuestWidth);
-    SSMR3GetU32(pSSMHandle, &pData->u32MaxGuestHeight);
+    if (   SSM_VERSION_MAJOR(u32Version) >  0
+        || SSM_VERSION_MINOR(u32Version) >= 7)
+    {
+        SSMR3GetU32(pSSMHandle, &pData->u32MaxGuestWidth);
+        SSMR3GetU32(pSSMHandle, &pData->u32MaxGuestHeight);
+    }
 
 #ifdef VBOX_HGCM
     vmmdevHGCMLoadState (pData, pSSMHandle);
