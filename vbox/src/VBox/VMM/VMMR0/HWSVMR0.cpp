@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9184 2008-05-28 01:50:47Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9188 2008-05-28 07:44:21Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -449,7 +449,7 @@ static int SVMR0CheckPendingInterrupt(PVM pVM, SVM_VMCB *pVMCB, CPUMCTX *pCtx)
         int         rc;
         TRPMEVENT   enmType;
         SVM_EVENT   Event;
-        uint32_t    u32ErrorCode;
+        RTGCUINT    u32ErrorCode;
 
         Event.au64[0] = 0;
 
