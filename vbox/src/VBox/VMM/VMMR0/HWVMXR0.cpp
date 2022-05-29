@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 10502 2008-07-11 09:31:15Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 10537 2008-07-11 16:23:47Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1493,7 +1493,7 @@ ResumeExecution:
 
 #ifdef VBOX_STRICT
     if (exitReason == VMX_EXIT_ERR_INVALID_GUEST_STATE)
-        HWACCMDumpRegs(pCtx);
+        HWACCMDumpRegs(pVM, pCtx);
 #endif
 
     Log2(("E%d", exitReason));

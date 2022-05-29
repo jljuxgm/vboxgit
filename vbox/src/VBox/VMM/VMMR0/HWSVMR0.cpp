@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10509 2008-07-11 10:00:24Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10537 2008-07-11 16:23:47Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -980,7 +980,7 @@ ResumeExecution:
 
     if (exitCode == (uint64_t)SVM_EXIT_INVALID)          /* Invalid guest state. */
     {
-        HWACCMDumpRegs(pCtx);
+        HWACCMDumpRegs(pVM, pCtx);
 #ifdef DEBUG
         Log(("ctrl.u16InterceptRdCRx            %x\n",      pVMCB->ctrl.u16InterceptRdCRx));
         Log(("ctrl.u16InterceptWrCRx            %x\n",      pVMCB->ctrl.u16InterceptWrCRx));
