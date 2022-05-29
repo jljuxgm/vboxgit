@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 6765 2008-02-03 02:15:30Z vboxsync $ */
+/* $Id: PGMInternal.h 6820 2008-02-05 21:54:28Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -667,6 +667,11 @@ typedef struct PGMRAMRANGE
     /** Start of the HC mapping of the range.
      * For pure MMIO and dynamically allocated ranges this is NULL, while for all ranges this is a valid pointer. */
     R3PTRTYPE(void *)                   pvHC;
+    /** The range description. */
+    R3PTRTYPE(const char *)             pszDesc;
+
+    /** Padding to make aPage aligned on sizeof(PGMPAGE). */
+    RTR3PTR                             apvReserved[HC_ARCH_BITS == 32 ? 2 : 1];
 
     /** Array of physical guest page tracking structures. */
     PGMPAGE                             aPages[1];
