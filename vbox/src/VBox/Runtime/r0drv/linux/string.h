@@ -1,6 +1,6 @@
-/* $Id: string.h 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: string.h 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - wrapper for the linux kernel asm/string.h.
+ * IPRT - wrapper for the linux kernel asm/string.h.
  */
 
 /*

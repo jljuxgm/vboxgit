@@ -1,6 +1,6 @@
-/* $Id: strformat-vbox.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: strformat-vbox.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - VBox String Formatter extensions.
+ * IPRT - VBox String Formatter extensions.
  */
 
 /*

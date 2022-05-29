@@ -1,6 +1,6 @@
-/* $Id: avlrogcptr.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: avlrogcptr.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - AVL tree, RTGCPTR, range, unique keys, offset pointers.
+ * IPRT - AVL tree, RTGCPTR, range, unique keys, offset pointers.
  */
 
 /*

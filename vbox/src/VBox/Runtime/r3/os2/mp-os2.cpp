@@ -1,6 +1,6 @@
-/* $Id: mp-os2.cpp 8194 2008-04-19 21:02:49Z vboxsync $ */
+/* $Id: mp-os2.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Multiprocessor, OS/2.
+ * IPRT - Multiprocessor, OS/2.
  */
 
 /*

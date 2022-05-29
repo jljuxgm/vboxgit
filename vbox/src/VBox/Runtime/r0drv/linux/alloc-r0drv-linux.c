@@ -1,6 +1,6 @@
-/* $Id: alloc-r0drv-linux.c 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Memory Allocation, Ring-0 Driver, Linux.
+ * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
 
 /*

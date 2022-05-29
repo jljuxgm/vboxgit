@@ -1,6 +1,6 @@
-/* $Revision: 8170 $ */
+/* $Revision: 8245 $ */
 /** @file
- * Incredibly Portable Runtime - Ring-0 Memory Objects, Linux.
+ * IPRT - Ring-0 Memory Objects, Linux.
  */
 
 /*

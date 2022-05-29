@@ -1,6 +1,6 @@
-/* $Id: initterm-gc.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: initterm-gc.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Init Guest Context.
+ * IPRT - Init Guest Context.
  */
 
 /*

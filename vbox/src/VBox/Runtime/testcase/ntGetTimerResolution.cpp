@@ -1,6 +1,6 @@
-/* $Id: ntGetTimerResolution.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: ntGetTimerResolution.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Win32 (NT) testcase for getting the timer resolution.
+ * IPRT - Win32 (NT) testcase for getting the timer resolution.
  */
 
 /*

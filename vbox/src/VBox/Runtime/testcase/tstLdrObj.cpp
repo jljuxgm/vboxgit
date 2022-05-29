@@ -1,6 +1,6 @@
-/* $Id: tstLdrObj.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: tstLdrObj.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - RTLdr test object.
+ * IPRT - RTLdr test object.
  *
  * We use precompiled versions of this object for testing all the loaders.
  *

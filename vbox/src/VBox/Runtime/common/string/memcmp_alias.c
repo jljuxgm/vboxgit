@@ -1,6 +1,6 @@
-/* $Id: memcmp_alias.c 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: memcmp_alias.c 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - No-CRT memcmp() alias for gcc.
+ * IPRT - No-CRT memcmp() alias for gcc.
  */
 
 /*

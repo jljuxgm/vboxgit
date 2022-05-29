@@ -1,6 +1,6 @@
-/* $Id: tstAvl.cpp 8190 2008-04-19 20:31:36Z vboxsync $ */
+/* $Id: tstAvl.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime Testcase - Avl trees.
+ * IPRT Testcase - Avl trees.
  */
 
 /*

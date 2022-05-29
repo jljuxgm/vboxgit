@@ -1,6 +1,6 @@
-/* $Id: assert-r0drv-os2.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: assert-r0drv-os2.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Assertion Workers, Ring-0 Drivers, OS/2.
+ * IPRT - Assertion Workers, Ring-0 Drivers, OS/2.
  */
 
 /*

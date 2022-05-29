@@ -1,6 +1,6 @@
-/* $Id: alloc-win.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: alloc-win.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Memory Allocation, Win32.
+ * IPRT - Memory Allocation, Win32.
  */
 
 /*

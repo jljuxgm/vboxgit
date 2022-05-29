@@ -1,6 +1,6 @@
-# $Id: Makefile.kmk 8178 2008-04-19 07:51:41Z vboxsync $
+# $Id: Makefile.kmk 8245 2008-04-21 17:24:28Z vboxsync $
 ## @file
-# Makefile for the Incredibly Portable Runtime (IPRT).
+# Makefile for the IPRT (IPRT).
 #
 
 #

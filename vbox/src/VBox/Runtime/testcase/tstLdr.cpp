@@ -1,6 +1,6 @@
-/* $Id: tstLdr.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: tstLdr.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Testcase for parts of RTLdr*.
+ * IPRT - Testcase for parts of RTLdr*.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: semmutex-linux.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: semmutex-linux.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Mutex Semaphore, Linux  (2.6.x+).
+ * IPRT - Mutex Semaphore, Linux  (2.6.x+).
  */
 
 /*

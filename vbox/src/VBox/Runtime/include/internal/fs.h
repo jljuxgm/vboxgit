@@ -1,6 +1,6 @@
-/* $Id: fs.h 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: fs.h 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Internal RTFs header.
+ * IPRT - Internal RTFs header.
  */
 
 /*

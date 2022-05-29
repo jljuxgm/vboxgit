@@ -1,6 +1,6 @@
-/* $Id: spinlock-r0drv-freebsd.c 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: spinlock-r0drv-freebsd.c 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Spinlocks, Ring-0 Driver, FreeBSD.
+ * IPRT - Spinlocks, Ring-0 Driver, FreeBSD.
  */
 
 /*

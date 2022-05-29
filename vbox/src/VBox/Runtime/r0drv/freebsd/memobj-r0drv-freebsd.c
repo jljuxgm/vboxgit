@@ -1,6 +1,6 @@
-/* $Id: memobj-r0drv-freebsd.c 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: memobj-r0drv-freebsd.c 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Ring-0 Memory Objects, FreeBSD.
+ * IPRT - Ring-0 Memory Objects, FreeBSD.
  */
 
 /*
@@ -63,7 +63,7 @@ typedef struct RTR0MEMOBJFREEBSD
 } RTR0MEMOBJFREEBSD, *PRTR0MEMOBJFREEBSD;
 
 
-MALLOC_DEFINE(M_IPRTMOBJ, "iprtmobj", "Incredibly Portable Runtime - R0MemObj");
+MALLOC_DEFINE(M_IPRTMOBJ, "iprtmobj", "IPRT - R0MemObj");
 
 /*******************************************************************************
 *   Internal Functions                                                         *

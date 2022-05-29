@@ -1,6 +1,6 @@
-/* $Id: timeprog.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: timeprog.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Time Relative to Program Start.
+ * IPRT - Time Relative to Program Start.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: RTLogWriteStdErr-stub-generic.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: RTLogWriteStdErr-stub-generic.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Log To StdErr, Generic Dummy.
+ * IPRT - Log To StdErr, Generic Dummy.
  */
 
 /*

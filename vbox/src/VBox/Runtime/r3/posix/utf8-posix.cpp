@@ -1,6 +1,6 @@
-/* $Id: utf8-posix.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: utf8-posix.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - UTF-8 helpers, POSIX.
+ * IPRT - UTF-8 helpers, POSIX.
  */
 
 /*

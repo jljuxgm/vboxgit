@@ -1,6 +1,6 @@
-/* $Id: RTErrConvertFromOS2.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: RTErrConvertFromOS2.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Convert OS/2 error codes to iprt status codes.
+ * IPRT - Convert OS/2 error codes to iprt status codes.
  */
 
 /*

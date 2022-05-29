@@ -1,6 +1,6 @@
-/* $Id: system-win.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: system-win.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - System, Win32.
+ * IPRT - System, Win32.
  */
 
 /*

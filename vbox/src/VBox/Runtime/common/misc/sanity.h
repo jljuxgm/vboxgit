@@ -1,6 +1,6 @@
-/* $Id: sanity.h 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: sanity.h 8245 2008-04-21 17:24:28Z vboxsync $ */
 /** @file
- * Incredibly Portable Runtime - Setup Sanity Checks, C and C++.
+ * IPRT - Setup Sanity Checks, C and C++.
  */
 
 /*
