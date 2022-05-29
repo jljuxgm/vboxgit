@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 9354 2008-06-03 13:45:14Z vboxsync $ */
+/* $Id: CPUMInternal.h 10569 2008-07-12 15:59:27Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -335,7 +335,7 @@ typedef struct CPUM
     uint8_t                 abPadding[3 + (HC_ARCH_BITS == 64) * 4];
 
     /** The standard set of CpuId leafs. */
-    CPUMCPUID               aGuestCpuIdStd[5];
+    CPUMCPUID               aGuestCpuIdStd[6];
     /** The extended set of CpuId leafs. */
     CPUMCPUID               aGuestCpuIdExt[10];
     /** The centaur set of CpuId leafs. */
