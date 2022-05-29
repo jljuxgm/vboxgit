@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 7889 2008-04-10 18:11:07Z vboxsync $ */
+/* $Id: DevVGA.h 7890 2008-04-10 18:23:37Z vboxsync $ */
 /** @file
  * VBox VGA/VESA device
  */
@@ -345,7 +345,7 @@ typedef struct VGAState {
     uint16_t                    cbClrUsed;
     /** Palette size. */
     uint16_t                    cbPal;
-    uint8_t                     Padding9[2];       /**< Alignment padding. */
+    uint8_t                     Padding9[6];       /**< Alignment padding. */
     /** Palette data. */
     uint32_t                    au32Palette[256];
 #endif /* VBOX */
