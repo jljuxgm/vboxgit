@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 11244 2008-08-08 13:20:26Z vboxsync $ */
+/* $Id: DevRTC.cpp 11245 2008-08-08 13:22:37Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -133,8 +133,8 @@ struct RTCState {
     uint8_t Alignment0[7];
     struct my_tm current_tm;
     int32_t irq;
-    uint32_t alignment0;
-
+    /** Use UTC or local time initially. */
+    bool fUTC;
     /* periodic timer */
     int64_t next_periodic_time;
     /* second update */
@@ -171,14 +171,10 @@ struct RTCState {
     PDMRTCREG RtcReg;
     /** The RTC device helpers. */
     R3PTRTYPE(PCPDMRTCHLP) pRtcHlpR3;
-    /** Use UTC or local time initially. */
-    bool fUTC;
     /** Number of release log entries. Used to prevent flooding. */
     uint32_t cRelLogEntries;
     /** The current/previous timer period. Used to prevent flooding changes. */
     int32_t CurPeriod;
-
-    uint32_t alignment1;
 };
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
