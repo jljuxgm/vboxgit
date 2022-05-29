@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
+# $Id: Makefile.kmk 10129 2008-07-03 03:07:18Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Windows Guest Mirror Graphics driver.
 #
@@ -19,8 +19,12 @@
 # additional information or have any questions.
 #
 
-DEPTH ?= ../../../../../../..
+ifdef VBOX_KBUILD_HACKING
+SUB_DEPTH = ../../../../../../..
+else
 SUB_DEPTH = ../../../..
+DEPTH    ?= ../../../../../../..
+endif
 include	$(KBUILD_PATH)/subheader.kmk
 
 SYSMODS += vrdpdd

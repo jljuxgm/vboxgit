@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10067 2008-07-01 11:07:51Z vboxsync $
+# $Id: Makefile.kmk 10129 2008-07-03 03:07:18Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris Shared folder kernel module.
 #
@@ -10,8 +10,12 @@
 # All rights reserved
 #
 
-DEPTH ?= ../../../../..
+ifdef VBOX_KBUILD_HACKING
+SUB_DEPTH = ../../../../..
+else
+DEPTH    ?= ../../../../..
 SUB_DEPTH = ../..
+endif
 include	$(KBUILD_PATH)/subheader.kmk
 
 ifneq ($(KBUILD_HOST),solaris)

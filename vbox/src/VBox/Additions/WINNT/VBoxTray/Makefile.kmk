@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9664 2008-06-12 17:04:53Z vboxsync $
+# $Id: Makefile.kmk 10129 2008-07-03 03:07:18Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -19,8 +19,12 @@
 # additional information or have any questions.
 #
 
-DEPTH ?= ../../../../..
+ifdef VBOX_KBUILD_HACKING
+SUB_DEPTH = ../../../../..
+else
+DEPTH    ?= ../../../../..
 SUB_DEPTH = ../..
+endif
 include	$(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS += VBoxTray
