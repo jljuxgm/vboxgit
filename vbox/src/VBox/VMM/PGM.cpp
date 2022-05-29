@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 9980 2008-06-27 08:26:15Z vboxsync $ */
+/* $Id: PGM.cpp 9981 2008-06-27 08:39:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2777,13 +2777,15 @@ static PGMMODE pgmR3CalcShadowMode(PVM pVM, PGMMODE enmGuestMode, SUPPAGINGMODE 
          * anything since it's likely that we'll switch back pretty soon.
          *
          * During pgmR3InitPaging we'll end up here with PGMMODE_INVALID
-         * and is supposed to determin which shadow paging and switcher to
+         * and is supposed to determine which shadow paging and switcher to
          * use during init.
          */
         case PGMMODE_REAL:
         case PGMMODE_PROTECTED:
-            if (enmShadowMode != PGMMODE_INVALID)
+            if (    enmShadowMode != PGMMODE_INVALID
+                && !HWACCMIsEnabled(pVM) /* always switch in hwaccm mode! */)
                 break; /* (no change) */
+
             switch (enmHostMode)
             {
                 case SUPPAGINGMODE_32_BIT:
