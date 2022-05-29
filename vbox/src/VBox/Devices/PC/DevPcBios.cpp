@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 6338 2008-01-11 12:06:57Z vboxsync $ */
+/* $Id: DevPcBios.cpp 6339 2008-01-11 14:24:51Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -297,7 +297,7 @@ static int biosGuessDiskLCHS(PPDMIBLOCK pBlock, PPDMMEDIAGEOMETRY pLCHSGeometry)
             /* Assumption: partition terminates on a cylinder boundary. */
             cLCHSHeads = iEndHead + 1;
             cLCHSSectors = iEndSector;
-            cLCHSCylinders = pBlock->pfnGetSize(pBlock) / (512 * cLCHSHeads * cLCHSSectors);
+            cLCHSCylinders = RT_MIN(1024, pBlock->pfnGetSize(pBlock) / (512 * cLCHSHeads * cLCHSSectors));
             if (cLCHSCylinders >= 1)
             {
                 pLCHSGeometry->cCylinders = cLCHSCylinders;
