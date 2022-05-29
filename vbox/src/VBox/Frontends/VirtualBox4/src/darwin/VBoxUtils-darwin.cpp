@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 8733 2008-05-09 08:39:56Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 9245 2008-05-30 11:57:42Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -31,6 +31,7 @@
 #include <QImage>
 #include <QPixmap>
 #include <QPainter>
+#include <QApplication>
 
 /**
  * Callback for deleting the QImage object when CGImageCreate is done
@@ -94,6 +95,22 @@ CGImageRef darwinToCGImageRef (const char *aSource)
     QPixmap qpm (QString(":/") + aSource);
     Assert (!qpm.isNull());
     return ::darwinToCGImageRef (&qpm);
+}
+
+/* Proxy icon creation */
+QPixmap darwinCreateDragPixmap (const QPixmap& aPixmap, const QString &aText)
+{
+    QFontMetrics fm (qApp->font());
+    QRect tbRect = fm.boundingRect (aText);
+    const int h = qMax (aPixmap.height(), tbRect.height());
+    const int m = 2;
+    QPixmap dragPixmap (aPixmap.width() + tbRect.width() + m, h);
+    dragPixmap.fill (Qt::transparent);
+    QPainter painter (&dragPixmap);
+    painter.drawPixmap (0, qAbs (h - aPixmap.height()) / 2.0, aPixmap);
+    painter.drawText (aPixmap.width() + m, qAbs (h - aPixmap.height()) / 2.0 + aPixmap.height(), aText);
+    painter.end();
+    return dragPixmap;
 }
 
 /**
