@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 7471 2008-03-17 10:50:10Z vboxsync $ */
+/* $Id: HWVMXR0.h 7496 2008-03-19 10:22:50Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -74,6 +74,22 @@ HWACCMR0DECL(int) VMXR0EnableCpu(RTCPUID idCpu, PVM pVM, void *pvPageCpu, RTHCPH
  * @param   pPageCpuPhys    Physical address of the global cpu page
  */
 HWACCMR0DECL(int) VMXR0DisableCpu(RTCPUID idCpu, void *pvPageCpu, RTHCPHYS pPageCpuPhys);
+
+/**
+ * Does Ring-0 per VM VT-x init.
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+HWACCMR0DECL(int) VMXR0InitVM(PVM pVM);
+
+/**
+ * Does Ring-0 per VM VT-x termination.
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+HWACCMR0DECL(int) VMXR0TermVM(PVM pVM);
 
 /**
  * Sets up VT-x for the specified VM

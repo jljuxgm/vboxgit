@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 7471 2008-03-17 10:50:10Z vboxsync $ */
+/* $Id: HWSVMR0.h 7496 2008-03-19 10:22:50Z vboxsync $ */
 /** @file
  * HWACCM AMD-V - Internal header file.
  */
@@ -73,6 +73,22 @@ HWACCMR0DECL(int) SVMR0EnableCpu(RTCPUID idCpu, PVM pVM, void *pvPageCpu, RTHCPH
  * @param   pPageCpuPhys    Physical address of the global cpu page
  */
 HWACCMR0DECL(int) SVMR0DisableCpu(RTCPUID idCpu, void *pvPageCpu, RTHCPHYS pPageCpuPhys);
+
+/**
+ * Does Ring-0 per VM AMD-V init.
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+HWACCMR0DECL(int) SVMR0InitVM(PVM pVM);
+
+/**
+ * Does Ring-0 per VM AMD-V termination.
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+HWACCMR0DECL(int) SVMR0TermVM(PVM pVM);
 
 /**
  * Sets up AMD-V for the specified VM
