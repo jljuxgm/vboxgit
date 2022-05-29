@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7583 2008-03-26 15:49:53Z vboxsync $
+# $Id: Makefile.kmk 7594 2008-03-27 15:20:00Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -363,7 +363,7 @@ endif
 
 ifeq ($(BUILD_TARGET),darwin)
 # For the launch trick we need different inode numbers.
-VirtualBox_INST = $(INST_BIN)VirtualBox $(INST_BIN)VirtualBoxVM
+VirtualBox_INST = $(INST_BIN)VirtualBox4 $(INST_BIN)VirtualBoxVM4
 
  # For testing iChat Theater stuff change
  # the sdk path
