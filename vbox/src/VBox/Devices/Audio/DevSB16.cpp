@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 9326 2008-06-02 21:20:46Z vboxsync $ */
+/* $Id: DevSB16.cpp 9338 2008-06-03 07:46:53Z vboxsync $ */
 /** @file
  * VBox SB16 Audio Controller.
  * (r3917 sb16.c)
@@ -1094,7 +1094,8 @@ static IO_READ_PROTO (dsp_read)
 
     iport = nport - s->port;
 #ifdef VBOX
-    /** @todo reject non-byte access? */
+    /** @todo reject non-byte access?
+     *  The spec does not mention a non-byte access so we should check how real hardware behaves. */
 #endif
 
     switch (iport) {
@@ -1274,7 +1275,8 @@ static IO_WRITE_PROTO(mixer_write_datab)
 
     s->mixer_regs[s->mixer_nreg] = val;
 
-#ifdef VBOX /*???*/
+#ifdef VBOX
+    /* allow to set the PCM_out volume */
     if (s->mixer_nreg == 0x30 || s->mixer_nreg == 0x31)
     {
         int     mute = 0;
@@ -1282,7 +1284,7 @@ static IO_WRITE_PROTO(mixer_write_datab)
         uint8_t rvol = s->mixer_regs[0x31];
         AUD_set_volume (AUD_MIXER_VOLUME, &mute, &lvol, &rvol);
     }
-#endif /* VBOX ??? */
+#endif /* VBOX */
 
 #ifdef VBOX
     return VINF_SUCCESS;
