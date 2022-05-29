@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 8965 2008-05-20 15:41:55Z vboxsync $ */
+/* $Id: PGMR0.cpp 9001 2008-05-21 09:14:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -32,13 +32,16 @@
 __BEGIN_DECLS
 #define PGM_BTH_NAME(name)          PGM_BTH_NAME_32BIT_PROT(name)
 #include "PGMR0Bth.h"
+#undef PGM_BTH_NAME
 
 #define PGM_BTH_NAME(name)          PGM_BTH_NAME_PAE_PROT(name)
 #include "PGMR0Bth.h"
-/*
+#undef PGM_BTH_NAME
+
 #define PGM_BTH_NAME(name)          PGM_BTH_NAME_AMD64_PROT(name)
 #include "PGMR0Bth.h"
-*/
+#undef PGM_BTH_NAME
+
 __END_DECLS
 
 
@@ -122,6 +125,9 @@ PGMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PGMMODE enmShwPagingMode,
 
     /*
      * Call the worker.
+     *
+     * We pretend the guest is in protected mode without paging, so we can use existing code to build the 
+     * nested page tables.
      */
     switch(enmShwPagingMode)
     {
@@ -131,11 +137,9 @@ PGMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PGMMODE enmShwPagingMode,
     case PGMMODE_PAE:
         rc = PGM_BTH_NAME_PAE_PROT(Trap0eHandler)(pVM, uErr, pRegFrame, pvFault);
         break;
-        /*
     case PGMMODE_AMD64:
         rc = PGM_BTH_NAME_AMD64_PROT(Trap0eHandler)(pVM, uErr, pRegFrame, pvFault);
         break;
-        */
     }
     if (rc == VINF_PGM_SYNCPAGE_MODIFIED_PDE)
         rc = VINF_SUCCESS;

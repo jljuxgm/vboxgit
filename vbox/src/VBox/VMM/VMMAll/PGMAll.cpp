@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 8965 2008-05-20 15:41:55Z vboxsync $ */
+/* $Id: PGMAll.cpp 9001 2008-05-21 09:14:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -68,7 +68,6 @@ typedef struct PGMHVUSTATE
 *   Internal Functions                                                         *
 *******************************************************************************/
 
-#if 1///@todo ndef RT_ARCH_AMD64
 /*
  * Shadow - 32-bit mode
  */
@@ -116,7 +115,6 @@ typedef struct PGMHVUSTATE
 
 #undef PGM_SHW_TYPE
 #undef PGM_SHW_NAME
-#endif /* !RT_ARCH_AMD64 */
 
 
 /*
@@ -188,6 +186,17 @@ typedef struct PGMHVUSTATE
 #define PGM_SHW_TYPE                PGM_TYPE_AMD64
 #define PGM_SHW_NAME(name)          PGM_SHW_NAME_AMD64(name)
 #include "PGMAllShw.h"
+
+/* Guest - protected mode */ 
+#define PGM_GST_TYPE                PGM_TYPE_PROT 
+#define PGM_GST_NAME(name)          PGM_GST_NAME_PROT(name) 
+#define PGM_BTH_NAME(name)          PGM_BTH_NAME_AMD64_PROT(name) 
+#define BTH_PGMPOOLKIND_PT_FOR_PT   PGMPOOLKIND_PAE_PT_FOR_PHYS 
+#include "PGMAllBth.h" 
+#undef BTH_PGMPOOLKIND_PT_FOR_PT 
+#undef PGM_BTH_NAME 
+#undef PGM_GST_TYPE 
+#undef PGM_GST_NAME
 
 /* Guest - AMD64 mode */
 #define PGM_GST_TYPE                PGM_TYPE_AMD64
