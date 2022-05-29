@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9082 2008-05-23 13:14:15Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9092 2008-05-23 16:03:14Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1421,7 +1421,7 @@ ResumeExecution:
 
         Assert(!pVM->hwaccm.s.fNestedPaging);
 
-        /* Truly a pita. Why can't SVM give the same information as VMX? */
+        /* Truly a pita. Why can't SVM give the same information as VT-x? */
         rc = SVMR0InterpretInvpg(pVM, CPUMCTX2CORE(pCtx), pVMCB->ctrl.TLBCtrl.n.u32ASID);
         if (rc == VINF_SUCCESS)
         {
