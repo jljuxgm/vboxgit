@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7787 2008-04-08 08:44:30Z vboxsync $
+# $Id: Makefile.kmk 7844 2008-04-09 15:21:24Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -204,11 +204,6 @@ else # the gcc guys:
 	/usr/include \
 	/usr/X11R6/include \
 	/usr/local/include
-  endif
-  ifeq ($(BUILD_TARGET),solaris)
-   TEMPLATE_VBOXQT4GUIEXE_LDFLAGS += '-R$$(VBOX_ORIGIN):$$(VBOX_ORIGIN)/qtgcc/lib'
-   TEMPLATE_VBOXQT4GUIEXE_LIBS += \
-	rt socket nsl
   endif
  endif
 
