@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 8484 2008-04-30 00:12:33Z vboxsync $ */
+/* $Id: HostImpl.h 8547 2008-05-03 00:54:40Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -120,11 +120,7 @@ public:
 
     void onUSBDeviceAttached (HostUSBDevice *aDevice);
     void onUSBDeviceDetached (HostUSBDevice *aDevice);
-#ifdef NEW_HOSTUSBDEVICE_STATE
     void onUSBDeviceStateChanged(HostUSBDevice *aDevice, bool aRunFilters, SessionMachine *aIgnoreMachine);
-#else
-    void onUSBDeviceStateChanged(HostUSBDevice *aDevice);
-#endif
 
     /* must be called from under this object's lock */
     USBProxyService *usbProxyService() { return mUSBProxyService; }
