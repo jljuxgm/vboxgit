@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8571 2008-05-05 12:43:53Z vboxsync $
+# $Id: Makefile.kmk 8611 2008-05-06 07:49:38Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -742,13 +742,19 @@ endif
 # EEPROM device unit test requires cppunit
 #
 ifdef VBOX_WITH_CPPUNIT_TESTCASES
-ifndef VBOX_OSE
+ifdef VBOX_WITH_E1000
  PROGRAMS += tstDevEEPROM
  tstDevEEPROM_TEMPLATE    = VBOXCPPUNITEXE
  tstDevEEPROM_SOURCES     = \
 	Network/testcase/tstDevEEPROM.cpp
  tstDevEEPROM_LIBS        = \
 	$(TARGET_DevicesR3)
+ PROGRAMS += tstDevPhy
+ tstDevPhy_TEMPLATE    = VBOXCPPUNITEXE
+ tstDevPhy_SOURCES     = \
+	Network/testcase/tstDevPhy.cpp \
+	Network/DevE1000Phy.cpp
+ tstDevPhy_DEFS        = PHY_UNIT_TEST
 endif
 endif
 
