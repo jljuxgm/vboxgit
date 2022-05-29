@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 4071 2007-08-07 17:07:59Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 5856 2007-11-27 21:13:44Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -36,7 +36,7 @@ static bool MyDisBlock(PDISCPUSTATE pCpu, RTHCUINTPTR pvCodeBlock, int32_t cbMax
     {
         char        szOutput[256];
         uint32_t    cbInstr;
-        if (!DISInstr(pCpu, pvCodeBlock + i, off, &cbInstr, szOutput))
+        if (RT_FAILURE(DISInstr(pCpu, pvCodeBlock + i, off, &cbInstr, szOutput)))
             return false;
 
         RTPrintf("%s", szOutput);
