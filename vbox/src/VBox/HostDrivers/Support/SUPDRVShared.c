@@ -1,4 +1,4 @@
-/* $Revision: 7916 $ */
+/* $Revision: 8114 $ */
 /** @file
  * VirtualBox Support Driver - Shared code.
  */
@@ -185,12 +185,19 @@ static SUPFUNC g_aFunctions[] =
     { "RTThreadUserWait",                       (void *)RTThreadUserWait },
     { "RTThreadUserWaitNoResume",               (void *)RTThreadUserWaitNoResume },
 #endif
+    { "RTLogDefaultInstance",                   (void *)RTLogDefaultInstance },
+    { "RTMpCpuIdFromSetIndex",                  (void *)RTMpCpuIdFromSetIndex },
+    { "RTMpCpuIdToSetIndex",                    (void *)RTMpCpuIdToSetIndex },
+    { "RTMpDoesCpuExist",                       (void *)RTMpDoesCpuExist },
+    { "RTMpGetCount",                           (void *)RTMpGetCount },
+    { "RTMpGetMaxCpuId",                        (void *)RTMpGetMaxCpuId },
+    { "RTMpGetOnlineCount",                     (void *)RTMpGetOnlineCount },
+    { "RTMpGetOnlineSet",                       (void *)RTMpGetOnlineSet },
+    { "RTMpGetSet",                             (void *)RTMpGetSet },
+    { "RTMpIsCpuOnline",                        (void *)RTMpIsCpuOnline },
     { "RTMpOnAll",                              (void *)RTMpOnAll },
     { "RTMpOnOthers",                           (void *)RTMpOnOthers },
     { "RTMpOnSpecific",                         (void *)RTMpOnSpecific },
-    { "RTMpIsCpuOnline",                        (void *)RTMpIsCpuOnline },
-    { "RTMpGetCount",                           (void *)RTMpGetCount },
-    { "RTLogDefaultInstance",                   (void *)RTLogDefaultInstance },
     { "RTLogRelDefaultInstance",                (void *)RTLogRelDefaultInstance },
     { "RTLogSetDefaultInstanceThread",          (void *)RTLogSetDefaultInstanceThread },
     { "RTLogLogger",                            (void *)RTLogLogger },
