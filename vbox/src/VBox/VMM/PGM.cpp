@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 8108 2008-04-17 15:17:37Z vboxsync $ */
+/* $Id: PGM.cpp 8111 2008-04-17 16:02:55Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1579,6 +1579,15 @@ PGMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
 {
     LogFlow(("PGMR3Relocate\n"));
 
+    /* Note: remove this restriction once the 32->PAE switcher works properly. */
+    if (    CPUMGetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE)
+        &&  PGMGetHostMode(pVM) <= PGMMODE_32_BIT
+        &&  !HWACCMIsEnabled(pVM))
+    {
+        CPUMClearGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE);
+        LogRel(("WARNING: Can't turn on PAE when the host is in 32 bits paging mode!!\n"));
+    }
+
     /*
      * Paging stuff.
      */
@@ -2683,10 +2692,9 @@ if (getenv("VBOX_32BIT"))
             {
                 case SUPPAGINGMODE_32_BIT:
                 case SUPPAGINGMODE_32_BIT_GLOBAL:
-                    AssertFailed(); /* this switcher is not well tested!! */
                     enmShadowMode = PGMMODE_PAE;
                     enmSwitcher = VMMSWITCHER_32_TO_PAE;
-                    return PGMMODE_INVALID;
+                    break;
 
                 case SUPPAGINGMODE_PAE:
                 case SUPPAGINGMODE_PAE_NX:
