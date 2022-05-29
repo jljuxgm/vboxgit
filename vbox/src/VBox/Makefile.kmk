@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6009 2007-12-07 22:21:57Z vboxsync $
+# $Id: Makefile.kmk 6020 2007-12-09 08:33:41Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -44,7 +44,7 @@ else  # !VBOX_ONLY_ADDITIONS
  endif
 
  ifndef VBOX_WITHOUT_ADDITIONS
-  ifneq ($(VBOX_WITH_WIN32_ADDITIONS)$(VBOX_WITH_LINUX_ADDITIONS),)
+  ifneq ($(VBOX_WITH_WIN32_ADDITIONS)$(VBOX_WITH_LINUX_ADDITIONS)$(VBOX_WITH_SOLARIS_ADDITIONS),)
    SUBDIRS += Additions
   endif
  endif

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 6020 2007-12-09 08:33:41Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -124,7 +124,7 @@ typedef struct VBOXGUESTSESSION *PVBOXGUESTSESSION;
  */
 typedef struct VBOXGUESTSESSION
 {
-#if defined(RT_OS_OS2) || defined(RT_OS_FREEBSD)
+#if defined(RT_OS_OS2) || defined(RT_OS_FREEBSD) || defined(RT_OS_SOLARIS)
     /** Pointer to the next session with the same hash. */
     PVBOXGUESTSESSION           pNextHash;
 #endif

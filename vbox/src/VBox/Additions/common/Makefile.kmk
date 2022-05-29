@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5999 2007-12-07 15:05:06Z vboxsync $
+# $Id: Makefile.kmk 6020 2007-12-09 08:33:41Z vboxsync $
 ## @file
 # Sub-Makefile for the common addition code.
 #
@@ -21,6 +21,7 @@ include	$(PATH_KBUILD)/subheader.kmk
 
 # Include sub-makefile.
 include $(PATH_SUB_CURRENT)/VBoxGuestLib/Makefile.kmk
+include $(PATH_SUB_CURRENT)/VBoxGuest/Makefile.kmk
 
 include	$(PATH_KBUILD)/subfooter.kmk
 

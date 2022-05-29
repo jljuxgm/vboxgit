@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 6020 2007-12-09 08:33:41Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the Solaris kernel.
  */
@@ -45,6 +45,13 @@
 #include <vm/seg_kmem.h>
 #include <sys/ddi.h>
 #include <sys/sunddi.h>
+
+#ifdef VBGL_VBOXGUEST
+/* Additionally headers needed by the solaris Guest Driver */
+# include <sys/conf.h>
+# include <sys/pci.h>
+# include <sys/stat.h>
+#endif
 
 #undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
 

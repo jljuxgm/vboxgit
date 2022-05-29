@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6013 2007-12-08 00:39:13Z vboxsync $
+# $Id: Config.kmk 6020 2007-12-09 08:33:41Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -149,6 +149,9 @@ ifdef VBOX_WITH_LINUX_ADDITIONS
  ifeq ($(BUILD_TARGET).$(BUILD_PLATFORM_ARCH),linux.x86)
   VBOX_WITH_LINUX_ADDITIONS_32BIT_R0 = 1
  endif
+endif
+ifeq ($(BUILD_TARGET),solaris)
+ VBOX_WITH_SOLARIS_ADDITIONS = 1
 endif
 # Enable the building of shared folders in the windows additions.
 VBOX_WITH_WIN32_ADDITIONS_SHAREDFOLDERS = 1
@@ -2714,7 +2717,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6013 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6020 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
