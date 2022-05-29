@@ -1,4 +1,4 @@
-/* $Id: semfastmutex-r0drv-nt.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: semfastmutex-r0drv-nt.cpp 10738 2008-07-18 08:37:04Z vboxsync $ */
 /** @file
  * IPRT - Fast Mutex Semaphores, Ring-0 Driver, NT.
  */
@@ -95,6 +95,8 @@ RTDECL(int)  RTSemFastMutexDestroy(RTSEMFASTMUTEX MutexSem)
     }
 
     ASMAtomicIncU32(&pFastInt->u32Magic);
+    Assert(pFastInt->Mutex.Count == 1);
+    Assert(pFastInt->Mutex.Contention == 0);
     RTMemFree(pFastInt);
     return VINF_SUCCESS;
 }
