@@ -1,4 +1,4 @@
-/* $Id: straprintf.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: straprintf.cpp 7879 2008-04-10 15:54:58Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Allocating String Formatters.
  */
@@ -179,7 +179,7 @@ RTDECL(int) RTStrAPrintf(char **ppszBuffer, const char *pszFormat, ...)
 {
     va_list args;
     va_start(args, pszFormat);
-    size_t cbRet = RTStrAPrintfV(ppszBuffer, pszFormat, args);
+    int cbRet = RTStrAPrintfV(ppszBuffer, pszFormat, args);
     va_end(args);
     return cbRet;
 }
