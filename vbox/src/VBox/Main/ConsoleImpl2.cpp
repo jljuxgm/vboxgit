@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 6173 2007-12-21 18:57:02Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 6177 2007-12-22 19:48:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -788,6 +788,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             hrc = vhdDisk->COMGETTER(FilePath)(&str);                                   H();
             STR_CONV();
             rc = CFGMR3InsertString(pCfg,   "Path",             psz);                   RC_CHECK();
+            rc = CFGMR3InsertString(pCfg,   "Format",           "VHD");                 RC_CHECK();
             STR_FREE();
         }
         else
