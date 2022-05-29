@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 10757 2008-07-18 20:23:50Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 10764 2008-07-19 00:23:13Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -582,6 +582,7 @@ int main(int argc, char **argv)
     {
         { "--duration",     'd', RTGETOPT_REQ_UINT32 },
         { "--file",         'f', RTGETOPT_REQ_STRING },
+        { "--network",      'n', RTGETOPT_REQ_STRING },
         { "--promiscuous",  'p', RTGETOPT_REQ_NOTHING },
         { "--recv-buffer",  'r', RTGETOPT_REQ_UINT32 },
         { "--send-buffer",  's', RTGETOPT_REQ_UINT32 },
