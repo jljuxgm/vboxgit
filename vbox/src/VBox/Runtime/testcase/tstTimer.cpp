@@ -1,4 +1,4 @@
-/* $Id: tstTimer.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstTimer.cpp 9444 2008-06-05 18:08:17Z vboxsync $ */
 /** @file
  * IPRT Testcase - Timers.
  */
@@ -48,7 +48,7 @@ static volatile uint64_t gu64Min;
 static volatile uint64_t gu64Max;
 static volatile uint64_t gu64Prev;
 
-static DECLCALLBACK(void) TimerCallback(PRTTIMER pTimer, void *pvUser)
+static DECLCALLBACK(void) TimerCallback(PRTTIMER pTimer, void *pvUser, uint64_t iTick)
 {
     gcTicks++;
 

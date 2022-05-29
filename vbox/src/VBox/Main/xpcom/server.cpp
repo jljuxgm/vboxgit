@@ -1,4 +1,4 @@
-/* $Id: server.cpp 9332 2008-06-02 23:10:25Z vboxsync $ */
+/* $Id: server.cpp 9444 2008-06-05 18:08:17Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -434,7 +434,7 @@ public:
         }
     };
 
-    static void ShutdownTimer (PRTTIMER pTimer, void *pvUser)
+    static void ShutdownTimer (PRTTIMER pTimer, void *pvUser, uint64_t /*iTick*/)
     {
         NOREF (pTimer);
         NOREF (pvUser);

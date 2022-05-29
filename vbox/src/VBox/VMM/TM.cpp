@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 9354 2008-06-03 13:45:14Z vboxsync $ */
+/* $Id: TM.cpp 9444 2008-06-05 18:08:17Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -1307,7 +1307,7 @@ DECLINLINE(bool) tmR3AnyExpiredTimers(PVM pVM)
  *          and we wouldn't know the state of the affairs.
  *          So, we'll just raise the timer FF and force any REM execution to exit.
  */
-static DECLCALLBACK(void) tmR3TimerCallback(PRTTIMER pTimer, void *pvUser)
+static DECLCALLBACK(void) tmR3TimerCallback(PRTTIMER pTimer, void *pvUser, uint64_t /*iTick*/)
 {
     PVM pVM = (PVM)pvUser;
     AssertCompile(TMCLOCK_MAX == 4);

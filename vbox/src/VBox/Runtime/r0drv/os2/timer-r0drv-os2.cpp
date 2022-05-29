@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-os2.cpp 9416 2008-06-05 12:47:29Z vboxsync $ */
+/* $Id: timer-r0drv-os2.cpp 9444 2008-06-05 18:08:17Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -318,6 +318,7 @@ DECLASM(void) rtTimerOs2Tick(void)
             &&  pTimer->u64NextTS <= u64NanoTS)
         {
             pTimer->fDone = true;
+            pTimer->iTick++;
 
             /* calculate the next timeout */
             if (!pTimer->u64NanoInterval)
@@ -333,7 +334,7 @@ DECLASM(void) rtTimerOs2Tick(void)
             PFNRTTIMER  pfnTimer = pTimer->pfnTimer;
             void       *pvUser   = pTimer->pvUser;
             RTSpinlockReleaseNoInts(g_Spinlock, &Tmp);
-            pfnTimer(pTimer, pvUser);
+            pfnTimer(pTimer, pvUser, pTimer->iTick);
 
             RTSpinlockAcquireNoInts(g_Spinlock, &Tmp);
 
