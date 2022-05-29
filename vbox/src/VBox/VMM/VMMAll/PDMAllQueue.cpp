@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 11147 2008-08-05 22:04:24Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 11152 2008-08-05 22:47:07Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -143,7 +143,7 @@ PDMDECL(RCPTRTYPE(PPDMQUEUE)) PDMQueueRCPtr(PPDMQUEUE pQueue)
 #ifdef IN_GC
     return pQueue;
 #else
-    return MMHyperHC2GC(pQueue->pVMHC, pQueue);
+    return MMHyperCCToRC(pQueue->pVMHC, pQueue);
 #endif
 }
 
