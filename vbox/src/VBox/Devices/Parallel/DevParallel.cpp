@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 6222 2007-12-30 17:06:27Z vboxsync $ */
+/* $Id: DevParallel.cpp 6223 2007-12-30 22:08:26Z vboxsync $ */
 /** @file
  * VirtualBox Parallel Device Emulation.
  *
@@ -145,6 +145,7 @@ PDMBOTHCBDECL(int) parallelIOPortWriteECP(PPDMDEVINS pDevIns, void *pvUser, RTIO
 #endif
 __END_DECLS
 
+#ifdef IN_RING3
 static void parallel_set_irq(ParallelState *s)
 {
     if (s->reg_control & LPT_CONTROL_ENABLE_IRQ_VIA_ACK)
@@ -159,6 +160,7 @@ static void parallel_clear_irq(ParallelState *s)
     Log(("parallel_update_irq %d 0\n", s->irq));
     PDMDevHlpISASetIrqNoWait(CTXSUFF(s->pDevIns), s->irq, 0);
 }
+#endif
 
 static int parallel_ioport_write(void *opaque, uint32_t addr, uint32_t val)
 {
