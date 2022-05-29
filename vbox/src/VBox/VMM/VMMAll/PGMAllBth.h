@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 7804 2008-04-08 13:34:26Z vboxsync $ */
+/* $Id: PGMAllBth.h 7807 2008-04-08 14:03:54Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2357,6 +2357,8 @@ PGM_BTH_DECL(int, PrefetchPage)(PVM pVM, RTGCUINTPTR GCPtrPage)
 #  else /* PAE */
     unsigned        iPDSrc;
     PGSTPD          pPDSrc = pgmGstGetPaePDPtr(&pVM->pgm.s, GCPtrPage, &iPDSrc);
+    if (!pPDSrc)
+        return VINF_SUCCESS; /* not present */
 #  endif
     const GSTPDE    PdeSrc = pPDSrc->a[iPDSrc];
 # else
