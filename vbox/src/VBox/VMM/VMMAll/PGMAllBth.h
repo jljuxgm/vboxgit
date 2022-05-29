@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 8191 2008-04-19 20:32:53Z vboxsync $ */
+/* $Id: PGMAllBth.h 8503 2008-04-30 11:25:42Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -541,6 +541,17 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
                 }
 # endif /* PGM_WITH_PAGING(PGM_GST_TYPE) */
             }
+            else
+            {
+                /* When the guest accesses invalid physical memory (e.g. probing of RAM or accessing a remapped MMIO range), then we'll fall 
+                 * back to the recompiler to emulate the instruction.
+                 */
+                LogFlow(("pgmPhysGetPageEx %VGp failed with %Vrc\n", GCPhys, rc));
+                STAM_COUNTER_INC(&pVM->pgm.s.StatHandlersInvalid);
+                STAM_PROFILE_STOP(&pVM->pgm.s.StatHandlers, b);
+                return VINF_EM_RAW_EMULATE_INSTR;
+            }
+
             STAM_PROFILE_STOP(&pVM->pgm.s.StatHandlers, b);
 
 # ifdef PGM_OUT_OF_SYNC_IN_GC
