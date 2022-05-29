@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 10978 2008-07-30 12:34:20Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 10979 2008-07-30 12:35:31Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -40,37 +40,6 @@
 #include <iprt/net.h>
 
 #include "../Pcap.h"
-
-/*******************************************************************************
-*   Structures and Typedefs                                                    *
-*******************************************************************************/
-#pragma pack(1)
-
-
-struct MyDhcpMsg
-{
-    uint8_t     Op;
-    uint8_t     HType;
-    uint8_t     HLen;
-    uint8_t     Hops;
-    uint32_t    XID;
-    uint16_t    Secs;
-    uint16_t    Flags;
-    uint32_t    CIAddr;
-    uint32_t    YIAddr;
-    uint32_t    SIAddr;
-    uint32_t    GIAddr;
-    uint8_t     CHAddr[16];
-    uint8_t     SName[64];
-    uint8_t     File[128];
-    uint8_t     abMagic[4];
-    uint8_t     DhcpOpt;
-    uint8_t     DhcpLen; /* 1 */
-    uint8_t     DhcpReq;
-    uint8_t     abOptions[57];
-};
-
-#pragma pack(0)
 
 
 /*******************************************************************************
