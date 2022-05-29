@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: fs-posix.cpp 6480 2008-01-24 13:55:27Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File System, Linux.
  */
@@ -82,7 +82,7 @@ RTR3DECL(int) RTFsQuerySizes(const char *pszFsPath, RTFOFF *pcbTotal, RTFOFF *pc
     LogFlow(("RTFsQuerySizes(%p:{%s}, %p:{%RTfoff}, %p:{%RTfoff}, %p:{%RX32}, %p:{%RX32}): returns %Rrc\n",
              pszFsPath, pszFsPath, pcbTotal, pcbTotal ? *pcbTotal : 0, pcbFree, pcbFree ? *pcbFree : 0,
              pcbBlock, pcbBlock ? *pcbBlock : 0, pcbSector, pcbSector ? *pcbSector : 0, rc));
-    return VINF_SUCCESS;
+    return rc;
 }
 
 
