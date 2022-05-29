@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 10985 2008-07-30 13:39:37Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 10987 2008-07-30 14:10:53Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * guest properties.
@@ -533,7 +533,7 @@ VBGLR3DECL(int) VbglR3GuestPropEnum(uint32_t u32ClientId,
 {
     int rc = VINF_SUCCESS;
     RTMemAutoPtr<VBGLR3GUESTPROPENUM, VbglR3GuestPropEnumFree> Handle;
-    Handle = RTMemAllocZ(sizeof(VBGLR3GUESTPROPENUM));
+    Handle = (PVBGLR3GUESTPROPENUM) RTMemAllocZ(sizeof(VBGLR3GUESTPROPENUM));
     if (!Handle)
         rc = VERR_NO_MEMORY;
 
@@ -543,7 +543,7 @@ VBGLR3DECL(int) VbglR3GuestPropEnum(uint32_t u32ClientId,
         cchPatterns += strlen(papszPatterns[i]) + 1;
     /* Pack the pattern array */
     RTMemAutoPtr<char> Patterns;
-    Patterns = RTMemAlloc(cchPatterns);
+    Patterns = (char *) RTMemAlloc(cchPatterns);
     size_t iOffs = 0;
     for (int i = 0; i < cPatterns; ++i)
     {
