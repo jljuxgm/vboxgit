@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 6147 2007-12-19 09:17:49Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 7331 2008-03-06 16:09:57Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the Solaris kernel.
  */
@@ -27,6 +27,8 @@
 #ifndef ___the_solaris_kernel_h
 #define ___the_solaris_kernel_h
 
+#define _MACHDEP /* needed for cpuset_t and sys/x_call.h */
+
 #include <sys/kmem.h>
 #include <sys/types.h>
 #include <sys/mman.h>
@@ -41,6 +43,9 @@
 #include <sys/vmsystm.h>
 #include <sys/cyclic.h>
 #include <sys/class.h>
+#include <sys/cpuvar.h>
+#include <sys/x_call.h> /* in platform dir */
+#include <sys/x86_archext.h>
 #include <vm/hat.h>
 #include <vm/seg_vn.h>
 #include <vm/seg_kmem.h>
