@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 6528 2008-01-28 14:43:15Z vboxsync $ */
+/* $Id: VMMR0.cpp 6796 2008-02-04 18:19:58Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -82,9 +82,9 @@ VMMR0DECL(int) ModuleInit(void)
     int rc = GVMMR0Init();
     if (RT_SUCCESS(rc))
     {
-#ifdef VBOX_WITH_NEW_PHYS_CODE /* need to test on windows, solaris and darwin. */
+//#ifdef VBOX_WITH_NEW_PHYS_CODE /* need to test on windows, solaris and darwin. */
         rc = GMMR0Init();
-#endif
+//#endif
         if (RT_SUCCESS(rc))
         {
 #ifdef VBOX_WITH_INTERNAL_NETWORKING
@@ -133,9 +133,9 @@ VMMR0DECL(void) ModuleTerm(void)
     /*
      * Destroy the GMM and GVMM instances.
      */
-#ifdef VBOX_WITH_NEW_PHYS_CODE
+//#ifdef VBOX_WITH_NEW_PHYS_CODE
     GMMR0Term();
-#endif
+//#endif
     GVMMR0Term();
 
     LogFlow(("ModuleTerm: returns\n"));

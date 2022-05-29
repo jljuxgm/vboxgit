@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 6475 2008-01-24 10:55:48Z vboxsync $ */
+/* $Id: PDMDevice.cpp 6796 2008-02-04 18:19:58Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -993,7 +993,7 @@ static int pdmR3DevLoad(PVM pVM, PPDMDEVREGCBINT pRegCB, const char *pszFilename
     /*
      * Load it.
      */
-    int rc = pdmR3LoadR3(pVM, pszFilename, pszName);
+    int rc = pdmR3LoadR3U(pVM->pUVM, pszFilename, pszName);
     if (VBOX_SUCCESS(rc))
     {
         /*

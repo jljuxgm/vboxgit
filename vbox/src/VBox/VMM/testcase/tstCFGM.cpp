@@ -1,4 +1,4 @@
-/* $Id: tstCFGM.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: tstCFGM.cpp 6796 2008-02-04 18:19:58Z vboxsync $ */
 /** @file
  * Testcase for CFGM.
  */
@@ -24,10 +24,11 @@
 #include <VBox/cfgm.h>
 #include <VBox/mm.h>
 #include <VBox/vm.h>
+#include <VBox/uvm.h>
 
 #include <VBox/err.h>
 #include <VBox/param.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
 
@@ -45,14 +46,26 @@ int main()
     PVM         pVM;
     int rc = SUPInit(NULL);
     if (VBOX_SUCCESS(rc))
-        rc = SUPPageAlloc((sizeof(*pVM) + PAGE_SIZE - 1) >> PAGE_SHIFT, (void **)&pVM);
+        rc = SUPPageAlloc(RT_ALIGN_Z(sizeof(*pVM), PAGE_SIZE) >> PAGE_SHIFT, (void **)&pVM);
     if (VBOX_FAILURE(rc))
     {
         RTPrintf("Fatal error: SUP Failure! rc=%Vrc\n", rc);
         return 1;
     }
 
-    rc = STAMR3Init(pVM);
+    static UVM s_UVM;
+    PUVM pUVM = &s_UVM;
+    pUVM->pVM = pVM;
+    pVM->pUVM = pUVM;
+
+    rc = STAMR3InitUVM(pUVM);
+    if (VBOX_FAILURE(rc))
+    {
+        RTPrintf("FAILURE: STAMR3Init failed. rc=%Vrc\n", rc);
+        return 1;
+    }
+
+    rc = MMR3InitUVM(pUVM);
     if (VBOX_FAILURE(rc))
     {
         RTPrintf("FAILURE: STAMR3Init failed. rc=%Vrc\n", rc);
