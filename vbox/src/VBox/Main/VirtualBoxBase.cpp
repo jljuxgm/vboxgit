@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 8665 2008-05-07 15:23:25Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 8668 2008-05-07 15:37:42Z vboxsync $ */
 
 /** @file
  *
@@ -34,6 +34,7 @@
 #include "Logging.h"
 
 #include <iprt/semaphore.h>
+#include <iprt/asm.h>
 
 // VirtualBoxBaseNEXT_base methods
 ////////////////////////////////////////////////////////////////////////////////
