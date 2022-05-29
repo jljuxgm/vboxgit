@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: iokit.cpp 7745 2008-04-04 14:34:57Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -844,6 +844,7 @@ PUSBDEVICE DarwinGetUSBDevices(void)
                  * Optional.
                  * There are some nameless device in the iMac, apply names to them.
                  */
+                /** @todo Device Speed -> enmSpeed; (2 == high speed). */
                 darwinDictGetString(PropsRef, CFSTR("USB Vendor Name"),     (char **)&pCur->pszManufacturer);
                 if (    !pCur->pszManufacturer
                     &&  pCur->idVendor == kIOUSBVendorIDAppleComputer)
