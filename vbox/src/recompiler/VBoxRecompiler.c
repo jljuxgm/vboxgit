@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 9985 2008-06-27 10:12:35Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 10357 2008-07-08 12:06:18Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -463,7 +463,7 @@ static DECLCALLBACK(int) remR3Save(PVM pVM, PSSMHANDLE pSSM)
     SSMR3PutU32(pSSM, !!(pRem->Env.state & CPU_RAW_RING0));
 
     /*
-     * Save the REM stuff.
+     * Save the REM stuff. (is this really necessary? when the recompiler is restored, it has an empty TLB)
      */
     SSMR3PutUInt(pSSM,  pRem->cInvalidatedPages);
     unsigned i;
