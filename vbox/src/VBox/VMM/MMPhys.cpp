@@ -1,4 +1,4 @@
-/* $Id: MMPhys.cpp 6627 2008-01-30 19:34:55Z vboxsync $ */
+/* $Id: MMPhys.cpp 6856 2008-02-07 19:30:15Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Physical Memory.
  */
@@ -368,8 +368,8 @@ MMR3DECL(int) MMR3PhysRomRegister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys, 
          */
         rc = PGMR3HandlerPhysicalRegister(pVM, PGMPHYSHANDLERTYPE_PHYSICAL_WRITE, GCPhys, GCPhys + cbRange - 1,
                                           NULL, NULL,
-                                          NULL, "pgmGuestROMWriteHandler", 0,
-                                          NULL, "pgmGuestROMWriteHandler", 0, pszDesc);
+                                          NULL, "pgmPhysRomWriteHandler", 0,
+                                          NULL, "pgmPhysRomWriteHandler", 0, pszDesc);
         AssertRC(rc);
     }
 
@@ -540,8 +540,8 @@ MMR3DECL(int) MMR3PhysRomProtect(PVM pVM, RTGCPHYS GCPhys, RTUINT cbRange)
                 cbRange = pCur->cbRange;
                 int rc = PGMR3HandlerPhysicalRegister(pVM, PGMPHYSHANDLERTYPE_PHYSICAL_WRITE, GCPhys, GCPhys + cbRange - 1,
                                                       NULL, NULL,
-                                                      NULL, "pgmGuestROMWriteHandler", 0,
-                                                      NULL, "pgmGuestROMWriteHandler", 0, pCur->pszDesc);
+                                                      NULL, "pgmPhysRomWriteHandler", 0,
+                                                      NULL, "pgmPhysRomWriteHandler", 0, pCur->pszDesc);
                 AssertRCReturn(rc, rc);
                 pCur->fWritable = false;
 

@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 6854 2008-02-07 19:24:14Z vboxsync $ */
+/* $Id: PGMPhys.cpp 6856 2008-02-07 19:30:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -479,8 +479,8 @@ PGMR3DECL(int) PGMR3PhysRomRegister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
 #else
                                               NULL, NULL,
 #endif
-                                              NULL, "pgmGuestROMWriteHandler", MMHyperCCToR0(pVM, pRomNew),
-                                              NULL, "pgmGuestROMWriteHandler", MMHyperCCToGC(pVM, pRomNew), pszDesc);
+                                              NULL, "pgmPhysRomWriteHandler", MMHyperCCToR0(pVM, pRomNew),
+                                              NULL, "pgmPhysRomWriteHandler", MMHyperCCToGC(pVM, pRomNew), pszDesc);
             if (RT_SUCCESS(rc))
             {
                 pgmLock(pVM);

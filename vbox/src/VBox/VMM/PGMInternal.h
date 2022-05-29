@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 6854 2008-02-07 19:24:14Z vboxsync $ */
+/* $Id: PGMInternal.h 6856 2008-02-07 19:30:15Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2310,7 +2310,7 @@ typedef struct PGM
 __BEGIN_DECLS
 
 PGMGCDECL(int)  pgmGCGuestPDWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, void *pvFault, RTGCPHYS GCPhysFault, void *pvUser);
-PGMDECL(int)    pgmGuestROMWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, void *pvFault, RTGCPHYS GCPhysFault, void *pvUser);
+PGMDECL(int)    pgmPhysRomWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, void *pvFault, RTGCPHYS GCPhysFault, void *pvUser);
 PGMGCDECL(int)  pgmCachePTWriteGC(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPHYS GCPhysFault, void *pvUser);
 int             pgmR3SyncPTResolveConflict(PVM pVM, PPGMMAPPING pMapping, PVBOXPD pPDSrc, int iPDOld);
 PPGMMAPPING     pgmGetMapping(PVM pVM, RTGCPTR GCPtr);
