@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8774 2008-05-12 02:16:15Z vboxsync $
+# $Id: Makefile.kmk 10051 2008-07-01 01:11:35Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service.
 #
@@ -19,8 +19,12 @@
 # additional information or have any questions.
 #
 
-DEPTH ?= ../../../..
+ifdef VBOX_KBUILD_HACKING
+SUB_DEPTH = ../../../..
+else
+DEPTH    ?= ../../../..
 SUB_DEPTH = ..
+endif
 include $(KBUILD_PATH)/subheader.kmk
 
 #
