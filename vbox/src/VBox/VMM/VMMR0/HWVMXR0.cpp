@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 10833 2008-07-23 14:27:42Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 10835 2008-07-23 15:36:16Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1015,8 +1015,6 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
 
 /**
  * Runs guest code in a VT-x VM.
- *
- * @note NEVER EVER turn on interrupts here. Due to our illegal entry into the kernel, it might mess things up. (XP kernel traps have been frequently observed)
  *
  * @returns VBox status code.
  * @param   pVM         The VM to operate on.
