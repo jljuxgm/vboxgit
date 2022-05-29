@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 9349 2008-06-03 11:56:19Z vboxsync $ */
+/* $Id: EMAll.cpp 9353 2008-06-03 12:42:35Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1085,7 +1085,6 @@ static int emInterpretBitTest(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame
 static int emInterpretLockBitTest(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, 
                                   uint32_t *pcbSize, PFNEMULATELOCKPARAM2 pfnEmulate)
 {
-        return VERR_EM_INTERPRETER;
     OP_PARAMVAL param1, param2;
     int rc = DISQueryParamVal(pRegFrame, pCpu, &pCpu->param1, &param1, PARAM_DEST);
     if(VBOX_FAILURE(rc))
