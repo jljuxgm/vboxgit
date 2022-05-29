@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 7496 2008-03-19 10:22:50Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 7500 2008-03-19 12:20:58Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -73,7 +73,7 @@ HWACCMR0DECL(int) VMXR0EnableCpu(RTCPUID idCpu, PVM pVM, void *pvPageCpu, RTHCPH
     Assert(pVM->hwaccm.s.vmx.fSupported);
 
 #ifdef LOG_ENABLED
-    SUPR0Printf("VMXR0EnableCpu cpu %d page %x\n", idCpu, (uint32_t)pPageCpuPhys);
+    SUPR0Printf("VMXR0EnableCpu cpu %d page (%x) %x\n", idCpu, pvPageCpu, (uint32_t)pPageCpuPhys);
 #endif
     /* Set revision dword at the beginning of the VMXON structure. */
     *(uint32_t *)pvPageCpu = MSR_IA32_VMX_BASIC_INFO_VMCS_ID(pVM->hwaccm.s.vmx.msr.vmx_basic_info);
