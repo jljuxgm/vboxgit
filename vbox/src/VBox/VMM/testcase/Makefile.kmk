@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8990 2008-05-21 00:52:57Z vboxsync $
+# $Id: Makefile.kmk 9193 2008-05-28 09:44:03Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -224,7 +224,7 @@ MY_ASA_ASM_STUFF = \
 			$(DEFS) \
 			$(DEFS.$(KBUILD_TYPE)) \
 			$(DEFS.$(KBUILD_TARGET)) \
-			IN_RING3 \
+			IN_RING3 $(ARCH_BITS_DEFS) \
 			$(DEFS.$(KBUILD_TARGET_ARCH)) \
 			$(DEFS.$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)) \
 		) \
