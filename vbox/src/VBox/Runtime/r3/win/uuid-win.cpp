@@ -1,4 +1,4 @@
-/* $Id: uuid-win.cpp 9739 2008-06-16 22:43:01Z vboxsync $ */
+/* $Id: uuid-win.cpp 9740 2008-06-16 22:43:50Z vboxsync $ */
 /** @file
  * IPRT UUID (unique identifiers) handling (win32 host).
  */
@@ -134,7 +134,10 @@ RTDECL(int)  RTUuidToStr(PCRTUUID pUuid, char *pszString, size_t cchString)
     if (cchTmpStr < cchString)
         memcpy(pszString, pszTmpStr, cchTmpStr + 1);
     else
+    {
+        AssertFailed();
         rc = ERROR_BUFFER_OVERFLOW;
+    }
 
     /* free buffer */
 #ifdef RPC_UNICODE_SUPPORTED
