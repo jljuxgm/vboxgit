@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_mount.c 10307 2008-07-07 11:18:16Z vboxsync $ */
+/* $Id: vboxvfs_mount.c 10312 2008-07-07 11:35:35Z vboxsync $ */
 /** @file
  * VirtualBox File System Mount Helper, Solaris host.
  * Userspace mount wrapper that parses mount (or user-specified) options
@@ -69,7 +69,6 @@ int main(int argc, char **argv)
     char *pszName      = NULL;
     char *pszSpecial   = NULL;
     char *pszMount     = NULL;
-    char *pszOptBufCpy = NULL;
     char  achType[MAXFIDSZ];
     int   c = '?';
     int   rc = -1;
@@ -143,21 +142,11 @@ int main(int argc, char **argv)
     pszSpecial = argv[argc - 2];
     pszMount = argv[argc - 1];
 
-#if 0
-    pszOptBufCpy = strdup(g_achOptBuf);
-    if (!pszOptBufCpy)
-    {
-        fprintf(stderr, "%s: out of memory.\n", pszName);
-        return g_RetMagic;
-    }
-#endif
-
     rc = mount(pszSpecial, pszMount, mntFlags | MS_OPTIONSTR, DEVICE_NAME, NULL, 0, g_achOptBuf, MAX_MNTOPT_STR);
     if (rc)
     {
         fprintf(stderr, "mount:");
         perror(pszSpecial);
-        free(pszOptBufCpy);
         return g_RetErr;
     }
 

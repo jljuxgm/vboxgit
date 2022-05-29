@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_vfsops.c 10307 2008-07-07 11:18:16Z vboxsync $ */
+/* $Id: vboxvfs_vfsops.c 10312 2008-07-07 11:35:35Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests. VFS operations.
  */
@@ -71,8 +71,8 @@ static int vboxvfs_GetIntOpt(vfs_t *pVFS, char *pszOpt, int *pValue);
 static mntopt_t g_VBoxVFSMountOptions[] =
 {
     /* Option Name           Cancel Opt.     Default Arg       Flags           Data */
-    { MNTOPT_VBOXVFS_UID,    NULL,           "0",             MO_DEFAULT | MO_HASVALUE,    NULL },
-    { MNTOPT_VBOXVFS_GID,    NULL,           "0",             MO_DEFAULT | MO_HASVALUE,    NULL }
+    { MNTOPT_VBOXVFS_UID,    NULL,           "0",              MO_HASVALUE,    NULL },
+    { MNTOPT_VBOXVFS_GID,    NULL,           "0",              MO_HASVALUE,    NULL }
 };
 
 /**
