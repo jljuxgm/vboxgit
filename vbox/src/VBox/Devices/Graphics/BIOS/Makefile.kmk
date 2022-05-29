@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8035 2008-04-16 13:00:05Z vboxsync $
+# $Id: Makefile.kmk 8038 2008-04-16 13:21:16Z vboxsync $
 ## @file
 # VGA BIOS Sub-Makefile
 #
@@ -113,7 +113,7 @@ VBOX_LOGO_FILE := innotek_logo.bmp
 else
 VBOX_LOGO_FILE := sun_logo.bmp
 endif
-$(PATH_TARGET)/VgaDefBiosLogo.c: $(PATH_SUB_CURRENT)/$(VBOX_LOGO_FILE ) $(VBOX_BIN2C)
+$(PATH_TARGET)/VgaDefBiosLogo.c: $(PATH_SUB_CURRENT)/$(VBOX_LOGO_FILE) $(VBOX_BIN2C)
 	$(call MSG_TOOL,bin2c,VgaBiosBin,$<,$@)
 	$(QUIET)$(VBOX_BIN2C) VgaDefBiosLogo $< $@
 
