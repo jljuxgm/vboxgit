@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9149 2008-05-27 09:27:29Z vboxsync $
+# $Id: Makefile.kmk 9152 2008-05-27 09:58:36Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1120,6 +1120,7 @@ else  # !VBOX_WITH_SOLARIS_VBI
  	generic/RTMpGetOnlineSet-generic.cpp \
  	generic/RTMpGetSet-generic.cpp \
  	generic/RTMpIsCpuOnline-generic.cpp \
+	r0drv/generic/RTMpOn-r0drv-generic.cpp \
  	r0drv/solaris/alloc-r0drv-solaris.c \
  	r0drv/solaris/assert-r0drv-solaris.c \
  	r0drv/solaris/initterm-r0drv-solaris.c \
