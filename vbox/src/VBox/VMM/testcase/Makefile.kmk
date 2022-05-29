@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10046 2008-07-01 00:23:31Z vboxsync $
+# $Id: Makefile.kmk 10054 2008-07-01 01:44:00Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -43,7 +43,7 @@ ifdef VBOX_WITH_TESTCASES
 endif # VBOX_WITH_TESTCASES
 
 ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
-PROGRAMS += tstPDMAsyncCompletion
+ PROGRAMS  += tstPDMAsyncCompletion
 endif
 
 
