@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 8297 2008-04-22 14:30:50Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 8509 2008-04-30 14:35:38Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -2996,17 +2996,17 @@ static int vmdkCreateImage(PVMDKIMAGE pImage, VDIMAGETYPE enmType,
     }
     vmdkDescExtRemoveDummy(pImage, &pImage->Descriptor);
 
-    if (    pPCHSGeometry->cCylinders == 0
-        ||  pPCHSGeometry->cHeads == 0
-        ||  pPCHSGeometry->cSectors == 0)
+    if (    pPCHSGeometry->cCylinders != 0
+        &&  pPCHSGeometry->cHeads != 0
+        &&  pPCHSGeometry->cSectors != 0)
     {
         rc = vmdkDescSetPCHSGeometry(pImage, pPCHSGeometry);
         if (VBOX_FAILURE(rc))
             goto out;
     }
-    if (    pLCHSGeometry->cCylinders == 0
-        ||  pLCHSGeometry->cHeads == 0
-        ||  pLCHSGeometry->cSectors == 0)
+    if (    pLCHSGeometry->cCylinders != 0
+        &&  pLCHSGeometry->cHeads != 0
+        &&  pLCHSGeometry->cSectors != 0)
     {
         rc = vmdkDescSetLCHSGeometry(pImage, pLCHSGeometry);
         if (VBOX_FAILURE(rc))
