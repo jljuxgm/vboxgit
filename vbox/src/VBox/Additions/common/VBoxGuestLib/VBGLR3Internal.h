@@ -1,4 +1,4 @@
-/* $Id: VBGLR3Internal.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VBGLR3Internal.h 9500 2008-06-08 00:56:13Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -22,6 +22,9 @@
 #ifndef ___VBGLR3Internal_h
 #define ___VBGLR3Internal_h
 
+#if defined(RT_OS_WINDOWS)
+# include <Windows.h>
+#endif
 #include <VBox/VBoxGuest.h>
 
 __BEGIN_DECLS
