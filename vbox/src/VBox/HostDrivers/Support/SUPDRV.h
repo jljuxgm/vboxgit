@@ -1,4 +1,4 @@
-/* $Revision: 5999 $ */
+/* $Revision: 6340 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -94,6 +94,11 @@
 #   include <linux/slab.h>
 #   include <asm/semaphore.h>
 #   include <linux/timer.h>
+
+#   if 0
+#    include <linux/hrtimer.h>
+#    define VBOX_HRTIMER
+#   endif
 
 #elif defined(RT_OS_DARWIN)
 #   include <libkern/libkern.h>
@@ -258,6 +263,14 @@ __END_DECLS
 *******************************************************************************/
 /** Pointer to the device extension. */
 typedef struct SUPDRVDEVEXT *PSUPDRVDEVEXT;
+
+#ifdef RT_OS_LINUX
+# ifdef VBOX_HRTIMER
+typedef struct hrtimer    VBOXKTIMER;
+# else
+typedef struct timer_list VBOXKTIMER;
+# endif
+#endif
 
 #ifdef VBOX_WITH_IDT_PATCHING
 
@@ -709,7 +722,7 @@ typedef struct SUPDRVDEVEXT
         /** The Linux Process ID. */
         unsigned            iSmpProcessorId;
         /** The per cpu timer. */
-        struct timer_list   Timer;
+        VBOXKTIMER          Timer;
     }                       aCPUs[256];
 # endif
 #endif
