@@ -1,4 +1,4 @@
-/* $Id: clipboard-helper.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: clipboard-helper.cpp 8268 2008-04-22 09:12:54Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -49,7 +49,11 @@ int vboxClipboardUtf16GetWinSize(PRTUTF16 pwszSrc, size_t cwSrc, size_t *pcwDest
     /* Is this Utf16 or Utf16-LE? */
     for (i = (pwszSrc[0] == UTF16LEMARKER ? 1 : 0); i < cwSrc; ++i, ++cwDest)
     {
+        /* Check for a single line feed */
         if (pwszSrc[i] == LINEFEED)
+            ++cwDest;
+        /* Check for a single carriage return (MacOS) */
+        if (pwszSrc[i] == CARRIAGERETURN)
             ++cwDest;
         if (pwszSrc[i] == 0)
         {
@@ -112,6 +116,22 @@ int vboxClipboardUtf16LinToWin(PRTUTF16 pwszSrc, size_t cwSrc, PRTUTF16 pu16Dest
                 return VERR_BUFFER_OVERFLOW;
             }
         }
+        else
+            /* Check for a single carriage return (MacOS) */
+            if (pwszSrc[i] == CARRIAGERETURN)
+            {
+                /* set cr */
+                pu16Dest[j] = CARRIAGERETURN;
+                ++j;
+                if (j == cwDest)
+                {
+                    LogFlowFunc(("returning VERR_BUFFER_OVERFLOW\n"));
+                    return VERR_BUFFER_OVERFLOW;
+                }
+                /* add the lf */
+                pu16Dest[j] = LINEFEED;
+                continue;
+            }
         pu16Dest[j] = pwszSrc[i];
     }
     /* Add the trailing null. */
