@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-freebsd.c 3680 2007-07-18 04:31:28Z vboxsync $ */
+/* $Id: alloc-r0drv-freebsd.c 6478 2008-01-24 12:31:11Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -52,7 +52,6 @@ MALLOC_DEFINE(M_IPRTCONT, "iprtcont", "innotek Portable Runtime - contiguous");
 PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
 {
     PRTMEMHDR pHdr;
-    Assert(cb != sizeof(void *)); /* 99% of pointer sized allocations are wrong. */
 
     /** @todo Just like OS/2, FreeBSD doesn't need this header. */
     pHdr = (PRTMEMHDR)malloc(cb + sizeof(RTMEMHDR), M_IPRTHEAP,

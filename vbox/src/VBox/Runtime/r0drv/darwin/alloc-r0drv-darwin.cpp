@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-darwin.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: alloc-r0drv-darwin.cpp 6478 2008-01-24 12:31:11Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, Darwin.
  */
@@ -40,7 +40,6 @@
  */
 PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
 {
-    Assert(cb != sizeof(void *)); /* 99% of pointer sized allocations are wrong. */
     PRTMEMHDR pHdr = (PRTMEMHDR)IOMalloc(cb + sizeof(*pHdr));
     if (pHdr)
     {

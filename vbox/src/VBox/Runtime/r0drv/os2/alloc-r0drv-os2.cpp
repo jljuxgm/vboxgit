@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-os2.cpp 2981 2007-06-01 16:01:28Z vboxsync $ */
+/* $Id: alloc-r0drv-os2.cpp 6478 2008-01-24 12:31:11Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -42,8 +42,6 @@
 
 PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
 {
-    Assert(cb != sizeof(void *)); /* 99% of pointer sized allocations are wrong. */
-
     void *pv = NULL;
     APIRET rc = KernVMAlloc(cb + sizeof(RTMEMHDR), VMDHA_FIXED, &pv, (void **)-1, NULL);
     if (!rc)

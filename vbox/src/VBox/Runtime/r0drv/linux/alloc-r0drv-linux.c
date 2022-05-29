@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 6478 2008-01-24 12:31:11Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -113,7 +113,6 @@ PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
      * Allocate.
      */
     PRTMEMHDR pHdr;
-    Assert(cb != sizeof(void *)); /* 99% of pointer sized allocations are wrong. */
     if (fFlags & RTMEMHDR_FLAG_EXEC)
     {
 #if defined(RT_ARCH_AMD64)

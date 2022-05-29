@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: alloc-r0drv-solaris.c 6478 2008-01-24 12:31:11Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -42,7 +42,6 @@
  */
 PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
 {
-    Assert(cb != sizeof(void *));
     PRTMEMHDR pHdr;
 #ifdef RT_ARCH_AMD64
     if (fFlags & RTMEMHDR_FLAG_EXEC)
