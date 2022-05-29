@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6732 2008-02-01 19:38:14Z vboxsync $
+# $Id: Makefile.kmk 6734 2008-02-01 19:41:16Z vboxsync $
 ## @file
 # Makefile for the vboxvfs (linux shared folders module).
 #
@@ -80,7 +80,6 @@ vboxvfs_DEFS           += $(foreach inc,$(VBOX_LINUX_INCS),\
 mountvboxsf_TEMPLATE    = VBOXGUESTR3EXE
 mountvboxsf_DEFS        = _GNU_SOURCE
 mountvboxsf_SOURCES     = \
-	vbsfmount.h \
 	mount.vboxsf.c
 
 
