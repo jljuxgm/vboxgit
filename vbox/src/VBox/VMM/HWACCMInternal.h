@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 10359 2008-07-08 12:20:11Z vboxsync $ */
+/* $Id: HWACCMInternal.h 10465 2008-07-10 11:51:19Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -142,6 +142,17 @@ typedef struct
 } HWACCM_CPUINFO;
 typedef HWACCM_CPUINFO *PHWACCM_CPUINFO;
 
+/* VT-x capability qword. */
+typedef union
+{
+    struct
+    {
+        uint32_t        disallowed0;
+        uint32_t        allowed1;
+    } n;
+    uint64_t            u;
+} VMX_CAPABILITY;
+
 /**
  * HWACCM VM Instance data.
  * Changes to this must checked against the padding of the cfgm union in VM!
@@ -222,10 +233,10 @@ typedef struct HWACCM
         {
             uint64_t                feature_ctrl;
             uint64_t                vmx_basic_info;
-            uint64_t                vmx_pin_ctls;
-            uint64_t                vmx_proc_ctls;
-            uint64_t                vmx_exit;
-            uint64_t                vmx_entry;
+            VMX_CAPABILITY          vmx_pin_ctls;
+            VMX_CAPABILITY          vmx_proc_ctls;
+            VMX_CAPABILITY          vmx_exit;
+            VMX_CAPABILITY          vmx_entry;
             uint64_t                vmx_misc;
             uint64_t                vmx_cr0_fixed0;
             uint64_t                vmx_cr0_fixed1;
