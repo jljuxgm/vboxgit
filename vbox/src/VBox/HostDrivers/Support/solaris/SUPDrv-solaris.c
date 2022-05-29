@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 7272 2008-03-04 12:33:43Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 7712 2008-04-02 17:08:30Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Solaris Driver Code.
  */
@@ -59,7 +59,7 @@
 /** The module name. */
 #define DEVICE_NAME              "vboxdrv"
 /** The module description as seen in 'modinfo'. */
-#define DEVICE_DESC              "VirtualBox Driver"
+#define DEVICE_DESC              "VirtualBox Host Driver"
 /** Maximum number of driver instances. */
 #define DEVICE_MAXINSTANCES      16
 
