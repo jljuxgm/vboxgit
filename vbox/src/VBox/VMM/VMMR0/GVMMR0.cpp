@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 6528 2008-01-28 14:43:15Z vboxsync $ */
+/* $Id: GVMMR0.cpp 6542 2008-01-28 20:26:14Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1345,7 +1345,7 @@ static unsigned gvmmR0SchedDoWakeUps(PGVMM pGVMM, uint64_t u64Now)
  */
 GVMMR0DECL(int) GVMMR0SchedHalt(PVM pVM, uint64_t u64ExpireGipTime)
 {
-    LogFlow(("GVMMR0DisassociateEMTFromVM: pVM=%p\n", pVM));
+    LogFlow(("GVMMR0SchedHalt: pVM=%p\n", pVM));
 
     /*
      * Validate the VM structure, state and handle.
