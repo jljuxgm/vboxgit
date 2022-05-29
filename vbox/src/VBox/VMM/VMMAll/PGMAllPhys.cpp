@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 9341 2008-06-03 08:22:06Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 9606 2008-06-11 12:25:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -987,6 +987,8 @@ PGMDECL(int) PGMPhysGCPtr2HCPtrByGstCR3(PVM pVM, RTGCPTR GCPtr, uint64_t cr3, un
     /*
      * PAE or 32-bit?
      */
+    Assert(CPUMGetGuestMode(pVM) != CPUMMODE_LONG);
+
     int rc;
     if (!(fFlags & X86_CR4_PAE))
     {
