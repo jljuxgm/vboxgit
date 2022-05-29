@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 8533 2008-05-02 16:04:51Z vboxsync $ */
+/* $Id: PGMAll.cpp 8965 2008-05-20 15:41:55Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -275,7 +275,6 @@ PGMDECL(int)     PGMTrap0eHandler(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame
     STAM_PROFILE_STOP_EX(&pVM->pgm.s.StatGCTrap0e, pVM->pgm.s.CTXSUFF(pStatTrap0eAttribution), a);
     return rc;
 }
-
 
 /**
  * Prefetch a page
