@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9897 2008-06-25 08:02:49Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9988 2008-06-27 11:17:47Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -569,14 +569,11 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     }
 
     /*
-     * Sysenter MSRs
+     * Sysenter MSRs (unconditional)
      */
-    if (pVM->hwaccm.s.fContextUseFlags & HWACCM_CHANGED_GUEST_SYSENTER_MSR)
-    {
-        pVMCB->guest.u64SysEnterCS  = pCtx->SysEnter.cs;
-        pVMCB->guest.u64SysEnterEIP = pCtx->SysEnter.eip;
-        pVMCB->guest.u64SysEnterESP = pCtx->SysEnter.esp;
-    }
+    pVMCB->guest.u64SysEnterCS  = pCtx->SysEnter.cs;
+    pVMCB->guest.u64SysEnterEIP = pCtx->SysEnter.eip;
+    pVMCB->guest.u64SysEnterESP = pCtx->SysEnter.esp;
 
     /* Control registers */
     if (pVM->hwaccm.s.fContextUseFlags & HWACCM_CHANGED_GUEST_CR0)

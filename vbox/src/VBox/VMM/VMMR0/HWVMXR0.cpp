@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 9964 2008-06-26 14:55:50Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 9988 2008-06-27 11:17:47Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -752,15 +752,12 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     }
 
     /*
-     * Sysenter MSRs
+     * Sysenter MSRs (unconditional)
      */
-    if (pVM->hwaccm.s.fContextUseFlags & HWACCM_CHANGED_GUEST_SYSENTER_MSR)
-    {
-        rc  = VMXWriteVMCS(VMX_VMCS_GUEST_SYSENTER_CS,      pCtx->SysEnter.cs);
-        rc |= VMXWriteVMCS(VMX_VMCS_GUEST_SYSENTER_EIP,     pCtx->SysEnter.eip);
-        rc |= VMXWriteVMCS(VMX_VMCS_GUEST_SYSENTER_ESP,     pCtx->SysEnter.esp);
-        AssertRC(rc);
-    }
+    rc  = VMXWriteVMCS(VMX_VMCS_GUEST_SYSENTER_CS,      pCtx->SysEnter.cs);
+    rc |= VMXWriteVMCS(VMX_VMCS_GUEST_SYSENTER_EIP,     pCtx->SysEnter.eip);
+    rc |= VMXWriteVMCS(VMX_VMCS_GUEST_SYSENTER_ESP,     pCtx->SysEnter.esp);
+    AssertRC(rc);
 
     /* Control registers */
     if (pVM->hwaccm.s.fContextUseFlags & HWACCM_CHANGED_GUEST_CR0)
