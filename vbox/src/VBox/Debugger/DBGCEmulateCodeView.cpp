@@ -1,4 +1,4 @@
-/** $Id: DBGCEmulateCodeView.cpp 9844 2008-06-20 09:50:13Z vboxsync $ */
+/** $Id: DBGCEmulateCodeView.cpp 9845 2008-06-20 09:57:36Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -1465,7 +1465,7 @@ static DECLCALLBACK(int) dbgcCmdRegCommon(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, P
             /*
              * Disassemble one instruction at cs:rip.
              */
-            return pCmdHlp->pfnExec(pCmdHlp, "u %016x L 0", pCtx->rip);
+            return pCmdHlp->pfnExec(pCmdHlp, "u %016RX64 L 0", pCtx->rip);
         }
         else
         {
