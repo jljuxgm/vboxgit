@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 11146 2008-08-05 22:01:51Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -144,6 +144,25 @@ PDMDECL(RCPTRTYPE(PPDMQUEUE)) PDMQueueGCPtr(PPDMQUEUE pQueue)
     return pQueue;
 #else
     return MMHyperHC2GC(pQueue->pVMHC, pQueue);
+#endif
+}
+
+
+/**
+ * Gets the ring-0 pointer for the specified queue.
+ *
+ * @returns The ring-0 address of the queue.
+ * @returns NULL if pQueue is invalid.
+ * @param   pQueue          The queue handle.
+ */
+PDMDECL(R0PTRTYPE(PPDMQUEUE)) PDMQueueR0Ptr(PPDMQUEUE pQueue)
+{
+    Assert(VALID_PTR(pQueue));
+    Assert(pQueue->pVMHC && pQueue->pVMGC);
+#ifdef IN_RING0
+    return pQueue;
+#else
+    return MMHyperCCToR0(pQueue->CTXSUFF(pVM), pQueue);
 #endif
 }
 
