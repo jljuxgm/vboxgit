@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 7118 2008-02-25 16:01:16Z vboxsync $ */
+/** $Id: clipboard.cpp 7264 2008-03-04 09:14:24Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -47,6 +47,8 @@
 # undef LogFlow
 # define LogFlow(a) do {} while (0)
 #endif
+
+#define TRACE printf("%s: %d\n", __PRETTY_FUNCTION__, __LINE__); Log(("%s: %d\n", __PRETTY_FUNCTION__, __LINE__))
 
 /** The formats which we support in the guest. These can be deactivated in order to test specific code paths. */
 #define USE_UTF16
@@ -1356,17 +1358,7 @@ void vboxClipboardDisconnect(void)
     LogFlowFunc(("\n"));
 
     AssertReturn(g_ctx.client != 0, (void) 0);
-#if 0
-    /* Currently, disconnecting is not needed, as the new "connect clipboard" ioctl in the Guest Additions kernel
-     * module disconnects the last connection made automatically.  The reason for this change was that currently
-     * only one clipboard connection is allowed, and that if the client holding that connection was terminated
-     * too abruptly, the information needed to disconnect that connection was lost.  If the subsystem is ever
-     * changed to allow several connections, this will have to be rethought.
-     */
-    vmmdevInitRequest((VMMDevRequestHeader*)&request, VMMDevReq_HGCMDisconnect);
-    request.u32ClientID = g_ctx.client;
-    ioctl(g_ctx.sendDevice, IOCTL_VBOXGUEST_VMMREQUEST, (void*)&request);
-#endif
+    VbglR3ClipboardDisconnect(g_ctx.client);
     LogFlowFunc(("returning\n"));
 }
 
@@ -1475,22 +1467,29 @@ int vboxClipboardMain(void)
     int rc;
     LogFlowFunc(("\n"));
 
+    TRACE;
     rc = vboxClipboardCreateWindow();
     if (VBOX_FAILURE(rc))
         return rc;
 
+    TRACE;
     rc = RTThreadCreate(&g_ctx.thread, vboxClipboardThread, 0, 0, RTTHREADTYPE_IO,
                         RTTHREADFLAGS_WAITABLE, "SHCLIP");
     AssertRCReturn(rc, rc);
     /* Set up a timer to poll the host clipboard */
+    TRACE;
     XtAppAddTimeOut(g_ctx.appContext, 200 /* ms */, vboxClipboardTimerProc, 0);
 
+    TRACE;
     XtAppMainLoop(g_ctx.appContext);
+    TRACE;
     g_ctx.formatList.clear();
+    TRACE;
     XtDestroyApplicationContext(g_ctx.appContext);
     /* Set the termination signal. */
     RTSemEventSignal(g_ctx.terminating);
     LogFlowFunc(("returning %d\n", rc));
+    TRACE;
     return rc;
 }
 
