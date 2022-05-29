@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 9026 2008-05-21 15:33:04Z vboxsync $ */
+/* $Id: PGMAll.cpp 9032 2008-05-21 16:06:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -921,6 +921,9 @@ PGMDECL(uint32_t) PGMGetHyperCR3(PVM pVM)
         case PGMMODE_AMD64_NX:
             return pVM->pgm.s.HCPhysPaePML4;
 
+        case PGMMODE_NESTED:
+            return PGMGetNestedCR3(pVM, PGMGetHostMode(pVM));
+
         default:
             AssertMsgFailed(("enmShadowMode=%d\n", enmShadowMode));
             return ~0;
@@ -1038,6 +1041,9 @@ PGMDECL(uint32_t) PGMGetInterGCCR3(PVM pVM)
         case PGMMODE_AMD64:
         case PGMMODE_AMD64_NX:
             return pVM->pgm.s.HCPhysInterPaePML4;
+
+        case PGMMODE_NESTED:
+            return 0; /* not relevant */
 
         default:
             AssertMsgFailed(("enmShadowMode=%d\n", pVM->pgm.s.enmShadowMode));
