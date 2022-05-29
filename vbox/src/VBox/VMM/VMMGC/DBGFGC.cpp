@@ -1,4 +1,4 @@
-/* $Id: DBGFGC.cpp 8793 2008-05-13 17:38:29Z vboxsync $ */
+/* $Id: DBGFGC.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, GC part.
  */
@@ -45,7 +45,7 @@
  * @param   pRegFrame   Pointer to the register frame for the trap.
  * @param   uDr6        The DR6 register value.
  */
-DBGFGCDECL(int) DBGFGCTrap01Handler(PVM pVM, PCPUMCTXCORE pRegFrame, RTUINTREG uDr6)
+DBGFGCDECL(int) DBGFGCTrap01Handler(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCUINTREG uDr6)
 {
     const bool fInHyper = !(pRegFrame->ss & X86_SEL_RPL) && !pRegFrame->eflags.Bits.u1VM;
 

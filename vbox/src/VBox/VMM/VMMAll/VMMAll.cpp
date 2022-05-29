@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VMMAll.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -39,7 +39,7 @@
  */
 RTGCPTR VMMGetStackGC(PVM pVM)
 {
-    return pVM->vmm.s.pbGCStackBottom;
+    return (RTGCPTR)pVM->vmm.s.pbGCStackBottom;
 }
 
 

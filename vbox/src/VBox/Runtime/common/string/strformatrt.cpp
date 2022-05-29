@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 8479 2008-04-29 20:27:58Z vboxsync $ */
+/* $Id: strformatrt.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -53,7 +53,7 @@
  *      - \%RTnthrd         - Takes a #RTNATIVETHREAD value.
  *      - \%RTproc          - Takes a #RTPROCESS value.
  *      - \%RTptr           - Takes a #RTINTPTR or #RTUINTPTR value (but not void *).
- *      - \%RTreg           - Takes a #RTUINTREG value.
+ *      - \%RTreg           - Takes a #RTCCUINTREG value.
  *      - \%RTsel           - Takes a #RTSEL value.
  *      - \%RTsem           - Takes a #RTSEMEVENT, #RTSEMEVENTMULTI, #RTSEMMUTEX, #RTSEMFASTMUTEX, or #RTSEMRW value.
  *      - \%RTsock          - Takes a #RTSOCKET value.
@@ -244,7 +244,7 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
                     { STRMEM("Tnthrd"),  sizeof(RTNATIVETHREAD), 16, RTSF_INTW,  0 },
                     { STRMEM("Tproc"),   sizeof(RTPROCESS),      16, RTSF_INTW,  0 },
                     { STRMEM("Tptr"),    sizeof(RTUINTPTR),      16, RTSF_INTW,  0 },
-                    { STRMEM("Treg"),    sizeof(RTUINTREG),      16, RTSF_INTW,  0 },
+                    { STRMEM("Treg"),    sizeof(RTCCUINTREG),    16, RTSF_INTW,  0 },
                     { STRMEM("Tsel"),    sizeof(RTSEL),          16, RTSF_INTW,  0 },
                     { STRMEM("Tsem"),    sizeof(RTSEMEVENT),     16, RTSF_INTW,  0 },
                     { STRMEM("Tsock"),   sizeof(RTSOCKET),       10, RTSF_INT,   0 },

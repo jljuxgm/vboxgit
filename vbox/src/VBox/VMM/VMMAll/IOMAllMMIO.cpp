@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 8234 2008-04-21 14:29:54Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -249,7 +249,7 @@ static int iomInterpretMOVxXWrite(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE 
 DECLINLINE(int) iomRamRead(PVM pVM, void *pDest, RTGCPTR GCSrc, uint32_t cb)
 {
 #ifdef IN_GC
-    return MMGCRamReadNoTrapHandler(pDest, GCSrc, cb);
+    return MMGCRamReadNoTrapHandler(pDest, (void *)GCSrc, cb);
 #else
     return PGMPhysReadGCPtrSafe(pVM, pDest, GCSrc, cb);
 #endif
@@ -260,7 +260,7 @@ DECLINLINE(int) iomRamRead(PVM pVM, void *pDest, RTGCPTR GCSrc, uint32_t cb)
 DECLINLINE(int) iomRamWrite(PVM pVM, RTGCPTR GCDest, void *pSrc, uint32_t cb)
 {
 #ifdef IN_GC
-    return MMGCRamWriteNoTrapHandler(GCDest, pSrc, cb);
+    return MMGCRamWriteNoTrapHandler((void *)GCDest, pSrc, cb);
 #else
     return PGMPhysWriteGCPtrSafe(pVM, GCDest, pSrc, cb);
 #endif

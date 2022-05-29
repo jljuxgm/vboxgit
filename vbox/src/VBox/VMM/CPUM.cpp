@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 9211 2008-05-29 08:54:54Z vboxsync $ */
+/* $Id: CPUM.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -459,7 +459,7 @@ CPUMR3DECL(void) CPUMR3Relocate(PVM pVM)
  * @param   pVM         Handle to the virtual machine.
  * @param   ppCtx       Receives the CPUMCTX GC pointer when successful.
  */
-CPUMR3DECL(int) CPUMR3QueryGuestCtxGCPtr(PVM pVM, GCPTRTYPE(PCPUMCTX) *ppCtx)
+CPUMR3DECL(int) CPUMR3QueryGuestCtxGCPtr(PVM pVM, RCPTRTYPE(PCPUMCTX) *ppCtx)
 {
     LogFlow(("CPUMR3QueryGuestCtxGCPtr\n"));
     /*

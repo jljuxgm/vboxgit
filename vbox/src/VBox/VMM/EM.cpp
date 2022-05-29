@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 9069 2008-05-23 11:35:22Z vboxsync $ */
+/* $Id: EM.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -2042,7 +2042,7 @@ DECLINLINE(int) emR3RawHandleRC(PVM pVM, PCPUMCTX pCtx, int rc)
             if (TRPMHasTrap(pVM))
             {
                 uint8_t         u8Interrupt;
-                uint32_t        uErrorCode;
+                RTGCUINT        uErrorCode;
                 TRPMERRORCODE   enmError = TRPM_TRAP_NO_ERRORCODE;
 
                 rc = TRPMQueryTrapAll(pVM, &u8Interrupt, NULL, &uErrorCode, NULL);

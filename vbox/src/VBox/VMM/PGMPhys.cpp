@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 8635 2008-05-06 17:22:43Z vboxsync $ */
+/* $Id: PGMPhys.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -408,7 +408,7 @@ int pgmR3PhysRamReset(PVM pVM)
 PDMR3DECL(int) PGMR3PhysMMIORegister(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb,
                                      R3PTRTYPE(PFNPGMR3PHYSHANDLER) pfnHandlerR3, RTR3PTR pvUserR3,
                                      R0PTRTYPE(PFNPGMR0PHYSHANDLER) pfnHandlerR0, RTR0PTR pvUserR0,
-                                     GCPTRTYPE(PFNPGMGCPHYSHANDLER) pfnHandlerGC, RTGCPTR pvUserGC,
+                                     RCPTRTYPE(PFNPGMGCPHYSHANDLER) pfnHandlerGC, RTGCPTR pvUserGC,
                                      R3PTRTYPE(const char *) pszDesc)
 {
     /*

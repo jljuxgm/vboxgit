@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: CPUMInternal.h 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -261,7 +261,7 @@ typedef struct CPUM
     /** Offset to the VM structure. */
     RTUINT          offVM;
     /** Pointer to CPU structure in GC. */
-    GCPTRTYPE(struct CPUM *) pCPUMGC;
+    RCPTRTYPE(struct CPUM *) pCPUMGC;
     /** Pointer to CPU structure in HC. */
     R3R0PTRTYPE(struct CPUM *) pCPUMHC;
 
@@ -292,7 +292,7 @@ typedef struct CPUM
     /** Pointer to the current hypervisor core context - R3Ptr. */
     R0PTRTYPE(PCPUMCTXCORE) pHyperCoreR0;
     /** Pointer to the current hypervisor core context - GCPtr. */
-    GCPTRTYPE(PCPUMCTXCORE) pHyperCoreGC;
+    RCPTRTYPE(PCPUMCTXCORE) pHyperCoreGC;
 
     /** Use flags.
      * These flags indicates both what is to be used and what have been used.

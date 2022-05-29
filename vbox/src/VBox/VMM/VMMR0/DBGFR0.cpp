@@ -1,4 +1,4 @@
-/* $Id: DBGFR0.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DBGFR0.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, R0 part.
  */
@@ -44,7 +44,7 @@
  * @param   pRegFrame   Pointer to the register frame for the trap.
  * @param   uDr6        The DR6 register value.
  */
-DBGFR0DECL(int) DBGFR0Trap01Handler(PVM pVM, PCPUMCTXCORE pRegFrame, RTUINTREG uDr6)
+DBGFR0DECL(int) DBGFR0Trap01Handler(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCUINTREG uDr6)
 {
     /** @todo Intel docs say that X86_DR6_BS has the highest priority... */
     /*

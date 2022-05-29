@@ -1,4 +1,4 @@
-/* $Id: VMMCodingGuidelines.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VMMCodingGuidelines.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * VMM - Coding Guidelines.
  */
@@ -41,8 +41,8 @@
  *
  * The rules:
  *
- *      - When declaring pointers in shared structures use the GCPTRTYPE() and
- *        HCPTRTYPE() macros.
+ *      - When declaring pointers in shared structures use the RCPTRTYPE(), 
+ *        R0PTRTYPE() and R3PTRTYPE() macros.
  *
  *      - Use RTGCPTR and RTHCPTR when dealing with the other context in
  *        none shared structures, parameter lists, stack variables and such.

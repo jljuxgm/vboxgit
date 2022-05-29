@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -136,7 +136,7 @@ PDMDECL(void) PDMQueueInsertEx(PPDMQUEUE pQueue, PPDMQUEUEITEMCORE pItem, uint64
  * @returns NULL if pQueue is invalid.
  * @param   pQueue          The queue handle.
  */
-PDMDECL(GCPTRTYPE(PPDMQUEUE)) PDMQueueGCPtr(PPDMQUEUE pQueue)
+PDMDECL(RCPTRTYPE(PPDMQUEUE)) PDMQueueGCPtr(PPDMQUEUE pQueue)
 {
     Assert(VALID_PTR(pQueue));
     Assert(pQueue->pVMHC && pQueue->pVMGC);

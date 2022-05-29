@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 9148 2008-05-27 09:21:03Z vboxsync $ */
+/* $Id: PDMDevice.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -608,7 +608,7 @@ int pdmR3DevInit(PVM pVM)
     /*
      * Get the GC & R0 devhlps and create the devhlp R3 task queue.
      */
-    GCPTRTYPE(PCPDMDEVHLPGC) pDevHlpGC;
+    RCPTRTYPE(PCPDMDEVHLPGC) pDevHlpGC;
     int rc = PDMR3GetSymbolGC(pVM, NULL, "g_pdmGCDevHlp", &pDevHlpGC);
     AssertReleaseRCReturn(rc, rc);
 

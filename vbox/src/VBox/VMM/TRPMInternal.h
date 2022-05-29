@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 9148 2008-05-27 09:21:03Z vboxsync $ */
+/* $Id: TRPMInternal.h 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -138,8 +138,11 @@ typedef struct TRPM
     bool            fSafeToDropGuestIDTMonitoring;
 
     /** Padding to get the IDTs at a 16 byte alignement. */
+#if GC_ARCH_BITS == 32
     uint8_t         abPadding1[6];
-
+#else
+    uint8_t         abPadding1[14];
+#endif
     /** IDTs. Aligned at 16 byte offset for speed. */
     VBOXIDTE        aIdt[256];
 
@@ -185,7 +188,7 @@ typedef struct TRPM
     /* R0: Statistics for interrupt handlers (allocated on the hypervisor heap). */
     R0PTRTYPE(PSTAMCOUNTER) paStatForwardedIRQR0;
     /* GC: Statistics for interrupt handlers (allocated on the hypervisor heap). */
-    GCPTRTYPE(PSTAMCOUNTER) paStatForwardedIRQGC;
+    RCPTRTYPE(PSTAMCOUNTER) paStatForwardedIRQGC;
 } TRPM;
 #pragma pack()
 

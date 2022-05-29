@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 9117 2008-05-26 11:29:13Z vboxsync $ */
+/* $Id: DevRTC.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -124,14 +124,14 @@ struct RTCState {
     struct my_tm current_tm;
     int32_t irq;
     /* periodic timer */
-    GCPTRTYPE(PTMTIMER)   pPeriodicTimerGC;
+    RCPTRTYPE(PTMTIMER)   pPeriodicTimerGC;
     R3R0PTRTYPE(PTMTIMER) pPeriodicTimerHC;
     int64_t next_periodic_time;
     /* second update */
     int64_t next_second_time;
     R3R0PTRTYPE(PTMTIMER) pSecondTimerHC;
-    GCPTRTYPE(PTMTIMER)   pSecondTimerGC;
-    GCPTRTYPE(PTMTIMER)   pSecondTimer2GC;
+    RCPTRTYPE(PTMTIMER)   pSecondTimerGC;
+    RCPTRTYPE(PTMTIMER)   pSecondTimer2GC;
     R3R0PTRTYPE(PTMTIMER) pSecondTimer2HC;
     /** Pointer to the device instance - HC Ptr. */
     R3R0PTRTYPE(PPDMDEVINS)    pDevInsHC;

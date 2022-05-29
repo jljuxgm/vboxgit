@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DevACPI.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
 /** @file
  * Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -161,7 +161,7 @@ struct ACPIState
     uint16_t            Alignment0;
     int64_t             pm_timer_initial;
     R3R0PTRTYPE(PTMTIMER) tsHC;
-    GCPTRTYPE(PTMTIMER)   tsGC;
+    RCPTRTYPE(PTMTIMER)   tsGC;
 
     uint32_t            gpe0_en;
     uint32_t            gpe0_sts;
