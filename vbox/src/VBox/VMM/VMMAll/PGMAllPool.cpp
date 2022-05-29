@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 10368 2008-07-08 13:25:03Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 10397 2008-07-09 09:05:42Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2599,28 +2599,28 @@ static void pgmPoolTrackClearPageUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PCPGMP
     switch (pUserPage->enmKind)
     {
         case PGMPOOLKIND_ROOT_32BIT_PD:
-            Assert(!(u.pau32[pUser->iUser] & PGM_PDFLAGS_MAPPING));
             Assert(pUser->iUserTable < X86_PG_ENTRIES);
+            Assert(!(u.pau32[pUser->iUserTable] & PGM_PDFLAGS_MAPPING));
             break;
         case PGMPOOLKIND_ROOT_PAE_PD:
-            Assert(!(u.pau64[pUser->iUser] & PGM_PDFLAGS_MAPPING));
             Assert(pUser->iUserTable < 2048 && pUser->iUser == PGMPOOL_IDX_PAE_PD);
+            Assert(!(u.pau64[pUser->iUserTable] & PGM_PDFLAGS_MAPPING));
             break;
         case PGMPOOLKIND_ROOT_PDPT:
-            Assert(!(u.pau64[pUser->iUserTable] & PGM_PLXFLAGS_PERMANENT));
             Assert(pUser->iUserTable < 4);
+            Assert(!(u.pau64[pUser->iUserTable] & PGM_PLXFLAGS_PERMANENT));
             break;
         case PGMPOOLKIND_PAE_PD_FOR_32BIT_PD:
         case PGMPOOLKIND_PAE_PD_FOR_PAE_PD:
             Assert(pUser->iUserTable < X86_PG_PAE_ENTRIES);
             break;
         case PGMPOOLKIND_64BIT_PD_FOR_64BIT_PD:
-            Assert(!(u.pau64[pUser->iUser] & PGM_PDFLAGS_MAPPING));
             Assert(pUser->iUserTable < X86_PG_PAE_ENTRIES);
+            Assert(!(u.pau64[pUser->iUserTable] & PGM_PDFLAGS_MAPPING));
             break;
         case PGMPOOLKIND_64BIT_PDPT_FOR_64BIT_PDPT:
-            Assert(!(u.pau64[pUser->iUserTable] & PGM_PLXFLAGS_PERMANENT));
             Assert(pUser->iUserTable < X86_PG_PAE_ENTRIES);
+            Assert(!(u.pau64[pUser->iUserTable] & PGM_PLXFLAGS_PERMANENT));
             break;
         case PGMPOOLKIND_64BIT_PML4_FOR_64BIT_PML4:
             Assert(!(u.pau64[pUser->iUserTable] & PGM_PLXFLAGS_PERMANENT));
