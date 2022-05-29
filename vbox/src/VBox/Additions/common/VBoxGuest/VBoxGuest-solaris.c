@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 6245 2008-01-04 19:08:18Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 6270 2008-01-08 08:36:20Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -47,7 +47,7 @@
 /** The module name. */
 #define DEVICE_NAME              "vboxadd"
 /** The module description as seen in 'modinfo'. */
-#define DEVICE_DESC              "VirtualBox Guest Additions Driver"
+#define DEVICE_DESC              "VirtualBox Guest Driver"
 
 
 /*******************************************************************************
