@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 8824 2008-05-14 22:12:13Z vboxsync $ */
+/* $Id: EM.cpp 8851 2008-05-15 13:51:02Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -2178,6 +2178,7 @@ DECLINLINE(int) emR3RawHandleRC(PVM pVM, PCPUMCTX pCtx, int rc)
         case VERR_REM_FLUSHED_PAGES_OVERFLOW:
             Assert((pCtx->ss & X86_SEL_RPL) != 1);
             REMR3ReplayInvalidatedPages(pVM);
+            rc = VINF_SUCCESS;
             break;
 
         /*
