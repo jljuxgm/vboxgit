@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7362 2008-03-07 13:34:06Z vboxsync $
+# $Id: Makefile.kmk 7491 2008-03-18 21:01:36Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -1035,7 +1035,6 @@ RuntimeR0Drv_SOURCES.freebsd = \
 	generic/RTMpGetOnlineSet-generic.cpp \
 	generic/RTMpGetSet-generic.cpp \
 	generic/RTMpIsCpuOnline-generic.cpp \
-	generic/RTTimerCreate-generic.cpp \
 	generic/RTTimerCreate-generic.cpp \
 	r0drv/generic/RTMpOn-r0drv-generic.cpp \
 	r0drv/freebsd/alloc-r0drv-freebsd.c \
