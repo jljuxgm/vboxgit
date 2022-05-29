@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 6927 2008-02-12 20:44:35Z vboxsync $ */
+/* $Id: PGMAllGst.h 7629 2008-03-28 15:07:31Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -133,7 +133,7 @@ PGM_GST_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTGCP
 #elif PGM_GST_TYPE == PGM_TYPE_32BIT \
    || PGM_GST_TYPE == PGM_TYPE_PAE \
    || PGM_GST_TYPE == PGM_TYPE_AMD64
-
+ 	
 #if PGM_GST_TYPE == PGM_TYPE_AMD64
     /* later */
     AssertFailed();
@@ -178,8 +178,15 @@ PGM_GST_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTGCP
          * where the PDPE is simplified.
          */
         if (pfFlags)
+        {
             *pfFlags = (Pte.u & ~GST_PTE_PG_MASK)
                      & ((Pde.u & (X86_PTE_RW | X86_PTE_US)) | ~(uint64_t)(X86_PTE_RW | X86_PTE_US));
+# if PGM_WITH_NX(PGM_GST_TYPE)
+            /* The NX bit is determined by a bitwise OR between the PT and PD */
+            if (Pde.u & X86_PTE_PAE_NX)
+                *pfFlags |= X86_PTE_PAE_NX;
+# endif
+        }
         if (pGCPhys)
             *pGCPhys = Pte.u & GST_PTE_PG_MASK;
     }
@@ -790,6 +797,7 @@ PGM_GST_DECL(bool, HandlerVirtualUpdate)(PVM pVM, uint32_t cr4)
 #if PGM_GST_TYPE == PGM_TYPE_32BIT \
  || PGM_GST_TYPE == PGM_TYPE_PAE \
  || PGM_GST_TYPE == PGM_TYPE_AMD64
+
 #if PGM_GST_TYPE == PGM_TYPE_AMD64
     AssertFailed();
 #endif

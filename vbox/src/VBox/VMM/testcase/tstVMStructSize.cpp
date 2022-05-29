@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 6854 2008-02-07 19:24:14Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 7629 2008-03-28 15:07:31Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -105,8 +105,6 @@ int main()
     CHECK_SIZE(VBOXIDTE, 8);
     CHECK_SIZE(VBOXIDTR, 6);
     CHECK_SIZE(VBOXGDTR, 6);
-    CHECK_SIZE(VBOXPTE, 4);
-    CHECK_SIZE(VBOXPDE, 4);
     CHECK_SIZE(VBOXTSS, 136);
     CHECK_SIZE(X86FXSTATE, 512);
     CHECK_SIZE(RTUUID, 16);
