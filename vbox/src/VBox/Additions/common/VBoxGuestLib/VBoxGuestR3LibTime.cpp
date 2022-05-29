@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibTime.cpp 6469 2008-01-24 06:44:18Z vboxsync $ */
+/** $Id: VBoxGuestR3LibTime.cpp 6470 2008-01-24 07:09:56Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Time.
  */
@@ -28,7 +28,7 @@ VBGLR3DECL(int) VbglR3GetHostTime(PRTTIMESPEC pTime)
     VMMDevReqHostTime Req;
     vmmdevInitRequest(&Req.header, VMMDevReq_GetHostTime);
     Req.time = UINT64_MAX;
-    int rc = VbglR3GRPerform(&Req.header);
+    int rc = vbglR3GRPerform(&Req.header);
     if (RT_SUCCESS(rc))
         RTTimeSpecSetMilli(pTime, (int64_t)Req.time);
     return rc;
