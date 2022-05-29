@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 11175 2008-08-06 10:05:00Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 11176 2008-08-06 11:07:08Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -3723,12 +3723,12 @@ static int vmdkOpen(const char *pszFilename, unsigned uOpenFlags,
     /* Try to get error interface. */
     pImage->pInterfaceError = VDGetInterfaceFromList(pInterfaces, VDINTERFACETYPE_ERROR);
     if (pImage->pInterfaceError)
-        pImage->pInterfaceErrorCallbacks = VDGetInterfaceError(pImage->pInterfaceError->pCallbacks);
+        pImage->pInterfaceErrorCallbacks = VDGetInterfaceError(pImage->pInterfaceError);
 
     /* Try to get async I/O interface. */
     pImage->pInterfaceAsyncIO = VDGetInterfaceFromList(pInterfaces, VDINTERFACETYPE_ASYNCIO);
     if (pImage->pInterfaceAsyncIO)
-        pImage->pInterfaceAsyncIOCallbacks = VDGetInterfaceAsyncIO(pImage->pInterfaceAsyncIO->pCallbacks);
+        pImage->pInterfaceAsyncIOCallbacks = VDGetInterfaceAsyncIO(pImage->pInterfaceAsyncIO);
 
 
     rc = vmdkOpenImage(pImage, uOpenFlags);
@@ -3803,7 +3803,7 @@ static int vmdkCreate(const char *pszFilename, VDIMAGETYPE enmType,
     /* Get error interface. */
     pImage->pInterfaceError = VDGetInterfaceFromList(pInterfaces, VDINTERFACETYPE_ERROR);
     if (pImage->pInterfaceError)
-        pImage->pInterfaceErrorCallbacks = VDGetInterfaceError(pImage->pInterfaceError->pCallbacks);
+        pImage->pInterfaceErrorCallbacks = VDGetInterfaceError(pImage->pInterfaceError);
 
     rc = vmdkCreateImage(pImage, enmType, cbSize, uImageFlags, pszComment,
                          pPCHSGeometry, pLCHSGeometry,

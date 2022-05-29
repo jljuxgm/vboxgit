@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 10715 2008-07-16 22:38:23Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 11176 2008-08-06 11:07:08Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -816,7 +816,7 @@ VBOXDDU_DECL(int) VDCreate(PVDINTERFACE pInterfaces, PVBOXHDD *ppDisk)
 
             pDisk->pInterfaceError = VDGetInterfaceFromList(pInterfaces, VDINTERFACETYPE_ERROR);
             if (pDisk->pInterfaceError)
-                pDisk->pInterfaceErrorCallbacks = VDGetInterfaceError(pDisk->pInterfaceError->pCallbacks);
+                pDisk->pInterfaceErrorCallbacks = VDGetInterfaceError(pDisk->pInterfaceError);
             *ppDisk = pDisk;
         }
         else
