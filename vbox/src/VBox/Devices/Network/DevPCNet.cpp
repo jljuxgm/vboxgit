@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7943 2008-04-14 07:02:14Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7960 2008-04-14 16:26:49Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -1890,8 +1890,7 @@ static void pcnetReceiveNoSync(PCNetState *pData, const uint8_t *buf, size_t siz
             }
             else
             {
-                LogRel(("PCNet#%d: Overflow by %ubytes\n",
-                         PCNET_INST_NR, size));
+                Log(("#%d: Overflow by %ubytes\n", PCNET_INST_NR, size));
                 rmd.rmd1.oflo = 1;
                 rmd.rmd1.buff = 1;
                 rmd.rmd1.err  = 1;
