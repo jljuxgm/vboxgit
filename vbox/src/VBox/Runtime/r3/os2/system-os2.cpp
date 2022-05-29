@@ -1,4 +1,4 @@
-/* $Id: system-os2.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: system-os2.cpp 9904 2008-06-25 11:03:03Z vboxsync $ */
 /** @file
  * IPRT - System, OS/2.
  */
@@ -63,5 +63,17 @@ RTR3DECL(uint64_t) RTSystemProcessorGetActiveMask(void)
     if (rc)
         u.u64 = 1;
     return u.u64;
+}
+
+RTDECL(int) RTSystemProcessorGetUsageStats(PRTCPUUSAGESTATS pStats)
+{
+    /* @todo Implement! */
+    return VERR_NOT_IMPLEMENTED;
+}
+
+RTDECL(int) RTProcessGetProcessorUsageStats(RTPROCESS pid, PRTPROCCPUUSAGESTATS pStats)
+{
+    /* @todo Implement! */
+    return VERR_NOT_IMPLEMENTED;
 }
 

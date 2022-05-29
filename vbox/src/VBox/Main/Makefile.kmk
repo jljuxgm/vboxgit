@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9728 2008-06-16 15:12:54Z vboxsync $
+# $Id: Makefile.kmk 9904 2008-06-25 11:03:03Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -154,6 +154,9 @@ VBoxSVC_DEFS += VBOX_WITH_AHCI
 endif
 ifdef VBOX_WITHOUT_LINUX_COMPILER_H
 VBoxSVC_DEFS += VBOX_WITHOUT_LINUX_COMPILER_H
+endif
+ifdef VBOX_WITH_RESOURCE_USAGE_API
+VBoxSVC_DEFS += VBOX_WITH_RESOURCE_USAGE_API
 endif
 
 VBoxSVC_DEFS.win += VBOX_COM_OUTOFPROC_MODULE
