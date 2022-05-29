@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 11212 2008-08-07 16:19:03Z vboxsync $ */
+/* $Id: DevRTC.cpp 11213 2008-08-07 16:19:39Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -820,7 +820,7 @@ static DECLCALLBACK(int)  rtcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     /*
      * Validate configuration.
      */
-    if (!CFGMR3AreValuesValid(pCfgHandle, "Irq\0Base\0GCEnabled\0fR0Enabled\0"))
+    if (!CFGMR3AreValuesValid(pCfgHandle, "Irq\0" "Base\0" "GCEnabled\0" "R0Enabled\0"))
         return VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES;
 
     /*
