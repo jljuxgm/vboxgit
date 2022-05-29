@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8991 2008-05-21 00:53:53Z vboxsync $
+# $Id: Makefile.kmk 10042 2008-06-30 23:47:44Z vboxsync $
 ## @file
 # Sub-Makefile for the Devices testcases.
 #
@@ -19,8 +19,12 @@
 # additional information or have any questions.
 #
 
-DEPTH ?= ../../../..
+ifdef VBOX_KBUILD_HACKING
+SUB_DEPTH = ../../../..
+else
 SUB_DEPTH = ..
+DEPTH    ?= ../../../..
+endif
 include	$(KBUILD_PATH)/subheader.kmk
 
 #
@@ -42,7 +46,7 @@ TESTING += \
 #
 # Globals
 #
-VBOX_PATH_DEVICES_SRC = $(PATH_SUB_ROOT)
+VBOX_PATH_DEVICES_SRC = $(PATH_ROOT)/src/VBox/Devices
 
 #
 # The testcase generator.
