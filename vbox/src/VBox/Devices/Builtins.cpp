@@ -1,4 +1,4 @@
-/** $Id: Builtins.cpp 6313 2008-01-09 22:26:56Z vboxsync $ */
+/** $Id: Builtins.cpp 6597 2008-01-30 12:55:54Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -102,6 +102,9 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
         return rc;
 #endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceICHAC97);
+    if (VBOX_FAILURE(rc))
+        return rc;
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceSB16);
     if (VBOX_FAILURE(rc))
         return rc;
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceAudioSniffer);
