@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: DevPIC.cpp 6321 2008-01-10 10:20:44Z vboxsync $ */
 /** @file
  * Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -435,7 +435,7 @@ PDMBOTHCBDECL(int) picGetInterrupt(PPDMDEVINS pDevIns)
     }
     pic_update_irq(pData);
 
-    Log(("picGetInterrupt: pending 0:%d 1:%d\n", pic_get_irq(&pData->aPics[0]), pic_get_irq(&pData->aPics[1])));
+    Log(("picGetInterrupt: 0x%02x pending 0:%d 1:%d\n", intno, pic_get_irq(&pData->aPics[0]), pic_get_irq(&pData->aPics[1])));
 
     return intno;
 }
@@ -521,6 +521,7 @@ static int pic_ioport_write(void *opaque, uint32_t addr, uint32_t val)
             case 6:
             {
                 s->priority_add = (val + 1) & 7;
+                Log(("pic_write: lowest priority %d (highest %d)\n", val & 7, s->priority_add));
                 rc = pic_update_irq(pData);
                 Assert(rc == VINF_SUCCESS);
                 break;
