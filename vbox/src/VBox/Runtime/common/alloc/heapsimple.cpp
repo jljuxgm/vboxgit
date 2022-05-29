@@ -1,4 +1,4 @@
-/* $Id: heapsimple.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: heapsimple.cpp 11519 2008-08-20 14:25:02Z vboxsync $ */
 /** @file
  * IPRT - A Simple Heap.
  */
@@ -43,6 +43,12 @@
 
 #include "internal/magics.h"
 
+#if defined(IN_GUEST_R0) && defined(RT_OS_LINUX)
+#include "the-linux-kernel.h"
+EXPORT_SYMBOL(RTHeapSimpleAlloc);
+EXPORT_SYMBOL(RTHeapSimpleInit);
+EXPORT_SYMBOL(RTHeapSimpleFree);
+#endif
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *

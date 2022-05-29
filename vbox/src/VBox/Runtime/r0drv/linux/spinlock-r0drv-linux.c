@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-linux.c 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: spinlock-r0drv-linux.c 11519 2008-08-20 14:25:02Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Linux.
  */
@@ -43,6 +43,12 @@
 
 #include <linux/spinlock.h> /** @todo why is this here and not in the-linux-kernel.h? */
 
+#if defined(IN_GUEST_R0)
+EXPORT_SYMBOL(RTSpinlockCreate);
+EXPORT_SYMBOL(RTSpinlockDestroy);
+EXPORT_SYMBOL(RTSpinlockAcquireNoInts);
+EXPORT_SYMBOL(RTSpinlockReleaseNoInts);
+#endif
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
