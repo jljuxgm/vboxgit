@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 11683 2008-08-26 17:40:41Z vboxsync $ */
+/* $Id: MachineImpl.cpp 11699 2008-08-27 13:54:30Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2703,7 +2703,7 @@ STDMETHODIMP Machine::GetGuestProperty (INPTR BSTR aKey, BSTR *aValue, ULONG64 *
     if (!VALID_PTR (aFlags))
         return E_POINTER;
 
-    AutoLimitedCaller autoCaller (this);
+    AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
 
     AutoReadLock alock (this);
@@ -2945,7 +2945,7 @@ STDMETHODIMP Machine::EnumerateGuestProperties (INPTR BSTR aPatterns, ComSafeArr
     if (ComSafeArrayOutIsNull (aFlags))
         return E_POINTER;
 
-    AutoLimitedCaller autoCaller (this);
+    AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
 
     AutoReadLock alock (this);
