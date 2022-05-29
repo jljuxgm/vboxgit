@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5755 2007-11-15 13:03:25Z vboxsync $
+# $Id: Makefile.kmk 5829 2007-11-23 21:08:50Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -217,6 +217,7 @@ DevicesR3_SOURCES       = \
 ifndef VBOX_OSE
 DevicesR3_SOURCES      += \
 	Network/DevE1000.cpp \
+	Network/DevE1000Phy.cpp \
 	Network/DevEEPROM.cpp
 DevicesR3_DEFS	       += VBOX_WITH_E1000
 endif
