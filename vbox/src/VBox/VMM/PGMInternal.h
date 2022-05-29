@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 9890 2008-06-24 08:26:36Z vboxsync $ */
+/* $Id: PGMInternal.h 9990 2008-06-27 11:46:14Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2001,7 +2001,7 @@ typedef struct PGM
     /** The Physical Address (HC) of the Page Map Level 4 table. */
     RTHCPHYS                    HCPhysPaePML4;
     /** The pgm pool page descriptor for the current active CR3. */
-    R3R0PTRTYPE(PPGMPOOLPAGE)   pShwAmd64CR3;
+    R3R0PTRTYPE(PPGMPOOLPAGE)   pHCShwAmd64CR3;
 
     /** @}*/
 
