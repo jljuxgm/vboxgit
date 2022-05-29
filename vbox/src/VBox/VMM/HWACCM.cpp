@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 10465 2008-07-10 11:51:19Z vboxsync $ */
+/* $Id: HWACCM.cpp 10586 2008-07-14 10:03:59Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -648,15 +648,15 @@ HWACCMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
         /* Too early for VT-x; Solaris guests will fail with a guru meditation otherwise; same for XP. */
         if (pCtx->idtr.pIdt == 0 || pCtx->idtr.cbIdt == 0 || pCtx->tr == 0)
             return false;
-    }
 
-    /* The guest is about to complete the switch to protected mode. Wait a bit longer. */
-    /* Windows XP; switch to protected mode; all selectors are marked not present in the 
-     * hidden registers (possible recompiler bug) */
-    if (pCtx->csHid.Attr.n.u1Present == 0)
-        return false;
-    if (pCtx->ssHid.Attr.n.u1Present == 0)
-        return false;
+        /* The guest is about to complete the switch to protected mode. Wait a bit longer. */
+        /* Windows XP; switch to protected mode; all selectors are marked not present in the 
+         * hidden registers (possible recompiler bug) */
+        if (pCtx->csHid.Attr.n.u1Present == 0)
+            return false;
+        if (pCtx->ssHid.Attr.n.u1Present == 0)
+            return false;
+    }
 
     if (pVM->hwaccm.s.vmx.fEnabled)
     {
