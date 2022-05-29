@@ -1,4 +1,4 @@
-/* $Id: mp-darwin.cpp 10452 2008-07-10 02:43:48Z vboxsync $ */
+/* $Id: mp-darwin.cpp 10616 2008-07-14 21:29:36Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Darwin.
  */
@@ -153,7 +153,7 @@ RTDECL(RTCPUID) RTMpGetOnlineCount(void)
 
 RTDECL(uint32_t) RTMpGetCurFrequency(RTCPUID idCpu)
 {
-    /** @todo figure out how to get the current cpu speed on darwin. */
+    /** @todo figure out how to get the current cpu speed on darwin. Have to check what powermanagement does. */
     return 0;
 }
 
