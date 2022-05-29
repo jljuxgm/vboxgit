@@ -1,4 +1,4 @@
-/* $Id: PATMA.h 9220 2008-05-29 12:34:27Z vboxsync $ */
+/* $Id: PATMA.h 9228 2008-05-29 15:23:15Z vboxsync $ */
 /** @file
  * PATM macros & definitions (identical to PATMA.mac!!)
  */
@@ -132,8 +132,8 @@ typedef struct
     uint32_t     cAddresses;
     struct
     {
-        RTGCPTR32      pInstrGC;
-        RTGCUINTPTR32  pRelPatchGC; /* relative to patch base */
+        RTRCPTR      pInstrGC;
+        RTRCUINTPTR  pRelPatchGC; /* relative to patch base */
     } Slot[1];
 } PATCHJUMPTABLE, *PPATCHJUMPTABLE;
 
