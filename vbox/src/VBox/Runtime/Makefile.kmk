@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7331 2008-03-06 16:09:57Z vboxsync $
+# $Id: Makefile.kmk 7337 2008-03-06 17:27:51Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -883,11 +883,10 @@ RuntimeR0Drv_SOURCES.linux = \
 	common/string/strpbrk.cpp \
 	common/err/RTErrConvertToErrno.cpp \
 	generic/RTAssertDoBreakpoint-generic.cpp \
-	generic/RTMpCpuId-generic.cpp \
-	r0drv/generic/RTMpOn-r0drv-generic.cpp \
 	r0drv/linux/alloc-r0drv-linux.c \
 	r0drv/linux/initterm-r0drv-linux.c \
 	r0drv/linux/memobj-r0drv-linux.c \
+	r0drv/linux/mp-r0drv-linux.c \
 	r0drv/linux/process-r0drv-linux.c \
 	r0drv/linux/RTLogWriteDebugger-r0drv-linux.c \
 	r0drv/linux/semevent-r0drv-linux.c \
