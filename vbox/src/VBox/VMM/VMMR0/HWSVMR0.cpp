@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10505 2008-07-11 09:44:10Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10506 2008-07-11 09:46:31Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -899,6 +899,9 @@ ResumeExecution:
         /* Force a TLB flush on VM entry. */
         pVM->hwaccm.s.svm.fForceTLBFlush = true;
     }
+    else
+        Assert(!pCpu->fFlushTLB);
+
     pVM->hwaccm.s.svm.idLastCpu = pCpu->idCpu;
 
     /* Make sure we flush the TLB when required. Switch ASID to achieve the same thing, but without actually flushing the whole TLB (which is expensive). */
