@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 10647 2008-07-15 12:07:24Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 10672 2008-07-15 15:32:21Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -770,7 +770,11 @@ HWACCMR0DECL(int) HWACCMR0Leave(PVM pVM)
      *        or trash somebody else's FPU state.
      */
 
-    /* Restore host FPU and XMM state if necessary. */
+    /*
+     * @note We are trashing our own FPU state. That could be a problem if some ring 3 code relies on the FPU control
+     *       word having a specific value (exceptions, precision etc).
+     */
+    /* Save the guest FPU and XMM state if necessary. */
     if (CPUMIsGuestFPUStateActive(pVM))
     {
         Log2(("CPUMR0SaveGuestFPU\n"));
