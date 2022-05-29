@@ -1,4 +1,4 @@
-/** $Id: DrvACPI.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/** $Id: DrvACPI.cpp 11267 2008-08-08 16:15:43Z vboxsync $ */
 /** @file
  * ACPI Host Driver.
  */
@@ -72,7 +72,7 @@ typedef struct DRVACPI
 static DECLCALLBACK(void *) drvACPIQueryInterface(PPDMIBASE pInterface, PDMINTERFACE enmInterface)
 {
     PPDMDRVINS pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
-    PDRVACPI pData = PDMINS2DATA(pDrvIns, PDRVACPI);
+    PDRVACPI pData = PDMINS_2_DATA(pDrvIns, PDRVACPI);
     switch (enmInterface)
     {
         case PDMINTERFACE_BASE:
@@ -441,7 +441,7 @@ static DECLCALLBACK(void) drvACPIDestruct(PPDMDRVINS pDrvIns)
  */
 static DECLCALLBACK(int) drvACPIConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle)
 {
-    PDRVACPI pData = PDMINS2DATA(pDrvIns, PDRVACPI);
+    PDRVACPI pData = PDMINS_2_DATA(pDrvIns, PDRVACPI);
 
     /*
      * Init the static parts.

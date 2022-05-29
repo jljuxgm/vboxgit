@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 11266 2008-08-08 16:14:51Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 11267 2008-08-08 16:15:43Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -695,7 +695,7 @@ static int solarisExitRootMode(uid_t *pEffUserID)
  */
 static DECLCALLBACK(int) drvHostDvdConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle)
 {
-    PDRVHOSTBASE pThis = PDMINS2DATA(pDrvIns, PDRVHOSTBASE);
+    PDRVHOSTBASE pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTBASE);
     LogFlow(("drvHostDvdConstruct: iInstance=%d\n", pDrvIns->iInstance));
 
     /*

@@ -1,4 +1,4 @@
-/** $Id: DrvTAP.cpp 11266 2008-08-08 16:14:51Z vboxsync $ */
+/** $Id: DrvTAP.cpp 11267 2008-08-08 16:15:43Z vboxsync $ */
 /** @file
  * Universial TAP network transport driver.
  */
@@ -232,7 +232,7 @@ static DECLCALLBACK(void) drvTAPNotifyLinkChanged(PPDMINETWORKCONNECTOR pInterfa
  */
 static DECLCALLBACK(int) drvTAPAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
 {
-    PDRVTAP pData = PDMINS2DATA(pDrvIns, PDRVTAP);
+    PDRVTAP pData = PDMINS_2_DATA(pDrvIns, PDRVTAP);
     LogFlow(("drvTAPAsyncIoThread: pData=%p\n", pData));
 
     if (pThread->enmState == PDMTHREADSTATE_INITIALIZING)
@@ -376,7 +376,7 @@ static DECLCALLBACK(int) drvTAPAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
  */
 static DECLCALLBACK(int) drvTapAsyncIoWakeup(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
 {
-    PDRVTAP pData = PDMINS2DATA(pDrvIns, PDRVTAP);
+    PDRVTAP pData = PDMINS_2_DATA(pDrvIns, PDRVTAP);
 
     int rc = RTFileWrite(pData->PipeWrite, "", 1, NULL);
     AssertRC(rc);
@@ -784,7 +784,7 @@ static DECLCALLBACK(int) SolarisTAPAttach(PDRVTAP pData)
 static DECLCALLBACK(void *) drvTAPQueryInterface(PPDMIBASE pInterface, PDMINTERFACE enmInterface)
 {
     PPDMDRVINS pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
-    PDRVTAP pData = PDMINS2DATA(pDrvIns, PDRVTAP);
+    PDRVTAP pData = PDMINS_2_DATA(pDrvIns, PDRVTAP);
     switch (enmInterface)
     {
         case PDMINTERFACE_BASE:
@@ -808,7 +808,7 @@ static DECLCALLBACK(void *) drvTAPQueryInterface(PPDMIBASE pInterface, PDMINTERF
 static DECLCALLBACK(void) drvTAPDestruct(PPDMDRVINS pDrvIns)
 {
     LogFlow(("drvTAPDestruct\n"));
-    PDRVTAP pData = PDMINS2DATA(pDrvIns, PDRVTAP);
+    PDRVTAP pData = PDMINS_2_DATA(pDrvIns, PDRVTAP);
 
     /*
      * Terminate the control pipe.
@@ -878,7 +878,7 @@ static DECLCALLBACK(void) drvTAPDestruct(PPDMDRVINS pDrvIns)
  */
 static DECLCALLBACK(int) drvTAPConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle)
 {
-    PDRVTAP pData = PDMINS2DATA(pDrvIns, PDRVTAP);
+    PDRVTAP pData = PDMINS_2_DATA(pDrvIns, PDRVTAP);
 
     /*
      * Init the static parts.
