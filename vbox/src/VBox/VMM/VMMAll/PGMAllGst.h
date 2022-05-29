@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 7730 2008-04-03 16:30:35Z vboxsync $ */
+/* $Id: PGMAllGst.h 7732 2008-04-03 17:42:29Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -155,7 +155,7 @@ PGM_GST_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTGCP
     AssertFailed();
     return VERR_NOT_IMPLEMENTED;
 
-#elif PGM_GST_TYPE == PGM_GST_32BIT || PGM_GST_TYPE == PGM_GST_PAE
+#elif PGM_GST_TYPE == PGM_TYPE_32BIT || PGM_GST_TYPE == PGM_TYPE_PAE
 
     /*
      * Get the PDE.
