@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 8471 2008-04-29 15:20:44Z vboxsync $ */
+/* $Id: HostImpl.h 8484 2008-04-30 00:12:33Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -116,7 +116,7 @@ public:
     HRESULT captureUSBDevice (SessionMachine *aMachine, INPTR GUIDPARAM aId);
     HRESULT detachUSBDevice (SessionMachine *aMachine, INPTR GUIDPARAM aId, BOOL aDone);
     HRESULT autoCaptureUSBDevices (SessionMachine *aMachine);
-    HRESULT detachAllUSBDevices (SessionMachine *aMachine, BOOL aDone);
+    HRESULT detachAllUSBDevices (SessionMachine *aMachine, BOOL aDone, bool aAbnormal);
 
     void onUSBDeviceAttached (HostUSBDevice *aDevice);
     void onUSBDeviceDetached (HostUSBDevice *aDevice);

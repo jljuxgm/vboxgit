@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: iokit.cpp 8484 2008-04-30 00:12:33Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -1107,7 +1107,9 @@ int DarwinReEnumerateUSBDevice(PCUSBDEVICE pCur)
                  * Re-enumerate the device and bail out.
                  */
                 irc = (*ppDevI)->USBDeviceReEnumerate(ppDevI, 0);
-                if (irc != kIOReturnSuccess)
+                if (irc == kIOReturnSuccess)
+                    vrc = VINF_SUCCESS;
+                else
                 {
                     LogRel(("USB: Failed to open device '%s', plug-in creation failed with irc=%#x.\n", pszAddress, irc));
                     vrc = RTErrConvertFromDarwinIO(irc);
