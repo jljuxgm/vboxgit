@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9192 2008-05-28 09:12:23Z vboxsync $
+# $Id: Makefile.kmk 9279 2008-06-02 05:08:03Z vboxsync $
 ## @file
 # Makefile for the Solaris installer.
 #
@@ -321,7 +321,7 @@ $(PATH_BIN)/$(PKG_FILENAME).tar.gz: \
 	@# Clean up files emitted as side-effect or result of packing
 	$(QUIET)$(RM) -f $(SOLARIS_INST_DIR)/$(PKG_FILENAME).tar.gz
 	$(QUIET)$(RM) -f $(SOLARIS_INST_DIR)/$(PKG_FILENAME).pkg
-
+	$(QUIET)$(if $(VBOX_WITH_SOLARIS_VBI),$(RM) -f $(SOLARIS_INST_DIR)/$(VBIPKG_FILENAME).pkg,)
 
 $(SOLARIS_VBI_DIR)/$(VBIPKG_FILENAME).pkg: \
 		$(VBOX_VERSION_STAMP) \
