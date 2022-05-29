@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10499 2008-07-11 09:18:15Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10500 2008-07-11 09:19:07Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -876,7 +876,7 @@ ResumeExecution:
 
     /*
      * NOTE: DO NOT DO ANYTHING AFTER THIS POINT THAT MIGHT JUMP BACK TO RING 3!
-     *
+     *       (until the actual world switch)
      */
     /* Force a TLB flush for the first world switch if the current cpu differs from the one we ran on last. */
     /* Note that this can happen both for start and resume due to long jumps back to ring 3. */
