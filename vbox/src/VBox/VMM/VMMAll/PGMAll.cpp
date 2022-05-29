@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 6902 2008-02-11 16:51:52Z vboxsync $ */
+/* $Id: PGMAll.cpp 6903 2008-02-11 17:07:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1576,7 +1576,7 @@ PGMDECL(unsigned) PGMAssertHandlerAndFlagsInSync(PVM pVM)
                                 break;
                             unsigned uState2 = pgmHandlerPhysicalCalcState(pPhys2);
                             uState = RT_MAX(uState, uState2);
-                            pPhys2 = pPhys2;
+                            pPhys = pPhys2;
                         }
 
                         /* compare.*/
