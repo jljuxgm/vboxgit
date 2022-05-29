@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9029 2008-05-21 15:45:02Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9033 2008-05-21 16:09:35Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1071,7 +1071,12 @@ ResumeExecution:
         else
             pVM->hwaccm.s.Event.errCode  = 0;
     }
-    STAM_COUNTER_INC(&pVM->hwaccm.s.pStatExitReasonR0[exitCode & MASK_EXITREASON_STAT]);
+#ifdef VBOX_WITH_STATISTICS
+    if (exitCode == SVM_EXIT_NPF)
+        STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitReasonNPF);
+    else
+        STAM_COUNTER_INC(&pVM->hwaccm.s.pStatExitReasonR0[exitCode & MASK_EXITREASON_STAT]);
+#endif
 
     /* Deal with the reason of the VM-exit. */
     switch (exitCode)

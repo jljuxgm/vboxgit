@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 9031 2008-05-21 15:59:28Z vboxsync $ */
+/* $Id: HWACCM.cpp 9033 2008-05-21 16:09:35Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -174,6 +174,8 @@ HWACCMR3DECL(int) HWACCMR3Init(PVM pVM)
             int rc = STAMR3Register(pVM, &pVM->hwaccm.s.pStatExitReason[i], STAMTYPE_COUNTER, STAMVISIBILITY_USED, szName, STAMUNIT_OCCURENCES, "Exit reason");
             AssertRC(rc);
         }
+        int rc = STAMR3Register(pVM, &pVM->hwaccm.s.StatExitReasonNPF, STAMTYPE_COUNTER, STAMVISIBILITY_USED, "/HWACCM/Exit/Reason/#NPF", STAMUNIT_OCCURENCES, "Exit reason");
+        AssertRC(rc);
     }
     pVM->hwaccm.s.pStatExitReasonR0 = MMHyperR3ToR0(pVM, pVM->hwaccm.s.pStatExitReason);
     Assert(pVM->hwaccm.s.pStatExitReasonR0);
