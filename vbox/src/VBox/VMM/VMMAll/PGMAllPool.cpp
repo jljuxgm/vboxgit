@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 9874 2008-06-23 13:45:00Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 9877 2008-06-23 13:57:15Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -486,7 +486,7 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
                     if (uShw.pPDPT->a[iShw].n.u1Present)
                     {
                         LogFlow(("pgmPoolMonitorChainChanging: pdpt iShw=%#x: %RX64 -> freeing it!\n", iShw, uShw.pPDPT->a[iShw].u));
-                        pgmPoolFree(pPool->CTXSUFF(pVM), uShw.pPDPT->a[iShw].u & X86_PDE_PAE_PG_MASK, pPage->idx, iShw);
+                        pgmPoolFree(pPool->CTXSUFF(pVM), uShw.pPDPT->a[iShw].u & X86_PDPE_PG_MASK, pPage->idx, iShw);
                         uShw.pPDPT->a[iShw].u = 0;
                     }
                     /* paranoia / a bit assumptive. */
@@ -498,7 +498,7 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
                         if (uShw.pPDPT->a[iShw2].n.u1Present)
                         {
                             LogFlow(("pgmPoolMonitorChainChanging: pdpt iShw2=%#x: %RX64 -> freeing it!\n", iShw2, uShw.pPDPT->a[iShw2].u));
-                            pgmPoolFree(pPool->CTXSUFF(pVM), uShw.pPDPT->a[iShw2].u & X86_PDE_PAE_PG_MASK, pPage->idx, iShw2);
+                            pgmPoolFree(pPool->CTXSUFF(pVM), uShw.pPDPT->a[iShw2].u & X86_PDPE_PG_MASK, pPage->idx, iShw2);
                             uShw.pPDPT->a[iShw2].u = 0;
                         }
                     }
