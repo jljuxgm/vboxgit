@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: HWACCMInternal.h 8806 2008-05-14 09:34:15Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -209,6 +209,8 @@ typedef struct HWACCM
 
         /** Set if we don't have to flush the TLB on VM entry. */
         bool                        fResumeVM;
+        /** Set if erratum 170 affects the AMD cpu. */
+        bool                        fForceTLBFlush;
 
         /** R0 memory object for the VM control block (VMCB). */
         RTR0MEMOBJ                  pMemObjVMCB;
