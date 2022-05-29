@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: Makefile.kmk 8251 2008-04-21 19:05:24Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -175,10 +175,6 @@ endif
 VBoxSVC_LIBS += \
 	$(LIB_DDU) \
 	$(LIB_SETTINGS)
-ifdef VBOX_WITH_USB
- VBoxSVC_LIBS += \
- 	$(PATH_LIB)/USBLib$(VBOX_SUFF_LIB)
-endif
 VBoxSVC_LIBS.darwin = \
 	$(LIB_VMM) \
 	$(LIB_REM)

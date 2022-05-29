@@ -1,4 +1,4 @@
-/* $Id: VBoxDDUDeps.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VBoxDDUDeps.cpp 8251 2008-04-21 19:05:24Z vboxsync $ */
 /** @file
  * VBoxDDU - For dragging in library objects.
  */
@@ -24,6 +24,7 @@
 *******************************************************************************/
 #include <VBox/types.h>
 #ifdef VBOX_WITH_USB
+# include <VBox/usblib.h>
 # include <VBox/usbfilter.h>
 # ifdef RT_OS_OS2
 #  include <os2.h>
@@ -40,7 +41,11 @@ PFNRT g_apfnVBoxDDUDeps[] =
     (PFNRT)USBFilterInit,
 # ifdef RT_OS_OS2
     (PFNRT)UsbOpen,
-# endif 
-#endif
+# endif
+# if (defined(RT_OS_DARWIN) && defined(VBOX_WITH_NEW_USB_CODE_ON_DARWIN))
+  /** @todo || defined(RT_OS_SOLARIS) */
+    (PFNRT)USBLibInit,
+# endif
+#endif /* VBOX_WITH_USB */
     NULL
 };
