@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 10356 2008-07-08 11:34:38Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 10360 2008-07-08 12:42:08Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -806,7 +806,6 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
         }
         else
         {
-            Assert(pVM->hwaccm.s.vmx.fResumeVM == true);
             /** @todo check if we support the old style mess correctly. */
             if (!(val & X86_CR0_NE))
             {
