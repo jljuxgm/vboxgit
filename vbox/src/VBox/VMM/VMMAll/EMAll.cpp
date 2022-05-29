@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 8100 2008-04-17 14:22:22Z vboxsync $ */
+/* $Id: EMAll.cpp 8149 2008-04-18 13:56:29Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1412,7 +1412,8 @@ static int emInterpretXAdd(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, R
     if(VBOX_FAILURE(rc))
         return VERR_EM_INTERPRETER;
 
-    rc = DISQueryParamRegPtr(pRegFrame, pCpu, &pCpu->param2, &pParamReg2, &cbSizeParamReg2);
+    rc = DISQueryParamRegPtr(pRegFrame, pCpu, &pCpu->param2, (void **)&pParamReg2, &cbSizeParamReg2);
+    Assert(cbSizeParamReg2 <= 4);
     if(VBOX_FAILURE(rc))
         return VERR_EM_INTERPRETER;
 
