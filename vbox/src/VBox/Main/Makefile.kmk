@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7850 2008-04-09 16:46:16Z vboxsync $
+# $Id: Makefile.kmk 7852 2008-04-09 17:17:24Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -119,7 +119,7 @@ ifdef VBOX_MAIN_RELEASE_LOG
 VBoxSVC_DEFS += VBOX_MAIN_RELEASE_LOG LOG_ENABLED
 endif
 ifdef VBOX_WITH_USB
-VBoxSVC_DEFS += VBOX_WITH_USB VBOX_WITH_USBFILTER
+VBoxSVC_DEFS += VBOX_WITH_USB
  ifdef VBOX_WITH_EHCI
 VBoxSVC_DEFS += VBOX_WITH_EHCI
  endif

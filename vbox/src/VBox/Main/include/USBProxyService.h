@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 7851 2008-04-09 17:10:55Z vboxsync $ */
+/* $Id: USBProxyService.h 7852 2008-04-09 17:17:24Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -37,11 +37,7 @@ public:
      * @param   aFilter         Pointer to the inserted filter.
      * @return  ID of the inserted filter
      */
-#ifdef VBOX_WITH_USBFILTER
     virtual void *insertFilter (PCUSBFILTER aFilter);
-#else
-    virtual void *insertFilter (IUSBDeviceFilter *aFilter);
-#endif
 
     /**
      * A filter was removed.
@@ -125,7 +121,6 @@ public:
      */
     static uint64_t calcSerialHash (const char *aSerial);
 
-#ifdef VBOX_WITH_USBFILTER
     /**
      * Initializes a filter with the data from the specified device.
      *
@@ -133,7 +128,6 @@ public:
      * @param   aDevice     The device to fill it with.
      */
     static void initFilterFromDevice (PUSBFILTER aFilter, HostUSBDevice *aDevice);
-#endif
 
 protected:
 
