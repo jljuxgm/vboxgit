@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DevPIC.cpp 8923 2008-05-19 15:46:02Z vboxsync $ */
 /** @file
  * Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -293,6 +293,13 @@ static int pic_update_irq(PDEVPIC pData)
             /* Call ourselves again just in case other interrupts are pending */
             return pic_update_irq(pData);
         }
+    }
+    else
+    {
+        Log(("pic_update_irq: no interrupt is pending!!\n"));
+
+        /* we must clear the interrupt ff flag */
+        pData->CTXALLSUFF(pPicHlp)->pfnClearInterruptFF(pData->CTXSUFF(pDevIns));
     }
     return VINF_SUCCESS;
 }
