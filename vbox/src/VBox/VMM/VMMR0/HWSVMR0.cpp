@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 8862 2008-05-15 14:59:39Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 8864 2008-05-15 15:17:54Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1723,8 +1723,10 @@ static int SVMR0InterpretInvpg(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t uASID)
  */
 HWACCMR0DECL(int) SVMR0InvalidatePage(PVM pVM, RTGCPTR GCVirt)
 {
+    bool fFlushPending = pVM->hwaccm.s.svm.fAlwaysFlushTLB | pVM->hwaccm.s.svm.fForceTLBFlush;
+
     /* Skip it if a TLB flush is already pending. */
-    if (!pVM->hwaccm.s.svm.fForceTLBFlush)
+    if (!fFlushPending)
     {
         SVM_VMCB   *pVMCB;
 
