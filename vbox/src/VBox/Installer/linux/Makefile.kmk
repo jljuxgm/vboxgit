@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9591 2008-06-11 09:12:19Z vboxsync $
+# $Id: Makefile.kmk 9832 2008-06-19 19:05:21Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -122,6 +122,10 @@ LINUXSTRIPBIN += \
 LINUXSTRIPBIN += \
 	VBoxSharedClipboard.so \
 	$(if $(VBOX_WITH_DEBUGGER_GUI),VBoxDbg.so,)
+
+# Shared Info Services
+LINUXSTRIPBIN += \
+	$(if $(VBOX_WITH_INFO_SVC),VBoxSharedInfoSvc.so)
 
 ifdef VBOX_WITH_DOCS
  LINUXNOSTRIP += \
