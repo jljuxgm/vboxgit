@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 10838 2008-07-23 19:43:31Z vboxsync $ */
+/* $Id: PGMPhys.cpp 11235 2008-08-08 06:40:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -978,7 +978,9 @@ PDMR3DECL(int) PGMR3PhysMMIO2Unmap(PVM pVM, PPDMDEVINS pDevIns, uint32_t iRegion
         while (pRam->GCPhys > pCur->RamRange.GCPhysLast)
             pRam = pRam->pNextR3;
 
+#ifdef RT_STRICT
         RTHCPHYS const HCPhysZeroPg = pVM->pgm.s.HCPhysZeroPg;
+#endif
         Assert(HCPhysZeroPg != 0 && HCPhysZeroPg != NIL_RTHCPHYS);
         PPGMPAGE pPageDst = &pRam->aPages[(pCur->RamRange.GCPhys - pRam->GCPhys) >> PAGE_SHIFT];
         uint32_t cPagesLeft = pCur->RamRange.cb >> PAGE_SHIFT;
