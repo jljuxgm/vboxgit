@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-generic.cpp 9610 2008-06-11 13:08:30Z vboxsync $ */
+/* $Id: mpnotification-r0drv-generic.cpp 9619 2008-06-11 15:02:41Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Notifications, Ring-0 Driver, Generic Stubs.
  */
@@ -33,6 +33,7 @@
 *******************************************************************************/
 #include <iprt/mp.h>
 #include <iprt/err.h>
+#include "r0drv/mp-r0drv.h"
 
 
 RTDECL(int) RTMpNotificationRegister(PFNRTMPNOTIFICATION pfnCallback, void *pvUser)
