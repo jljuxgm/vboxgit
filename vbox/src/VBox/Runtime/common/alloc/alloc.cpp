@@ -1,4 +1,4 @@
-/* $Id: alloc.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: alloc.cpp 11019 2008-07-30 22:47:04Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation.
  */
@@ -45,7 +45,7 @@
  * @param   pvSrc   The memory to duplicate.
  * @param   cb      The amount of memory to duplicate.
  */
-RTDECL(void *) RTMemDup(const void *pvSrc, size_t cb)
+RTDECL(void *) RTMemDup(const void *pvSrc, size_t cb) RT_NO_THROW
 {
     void *pvDst = RTMemAlloc(cb);
     if (pvDst)
@@ -64,7 +64,7 @@ RTDECL(void *) RTMemDup(const void *pvSrc, size_t cb)
  * @param   cbSrc   The amount of memory to duplicate.
  * @param   cbExtra The amount of extra memory to allocate and zero.
  */
-RTDECL(void *) RTMemDupEx(const void *pvSrc, size_t cbSrc, size_t cbExtra)
+RTDECL(void *) RTMemDupEx(const void *pvSrc, size_t cbSrc, size_t cbExtra) RT_NO_THROW
 {
     void *pvDst = RTMemAlloc(cbSrc + cbExtra);
     if (pvDst)

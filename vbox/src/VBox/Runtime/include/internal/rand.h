@@ -1,4 +1,4 @@
-/* $Id: rand.h 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: rand.h 11019 2008-07-30 22:47:04Z vboxsync $ */
 /** @file
  * IPRT - Internal RTRand header
  */
@@ -49,7 +49,7 @@ void rtRandLazyInitNative(void);
  */
 int rtRandGenBytesNative(void *pv, size_t cb);
 
-void rtRandGenBytesFallback(void *pv, size_t cb);
+void rtRandGenBytesFallback(void *pv, size_t cb) RT_NO_THROW;
 
 __END_DECLS
 
