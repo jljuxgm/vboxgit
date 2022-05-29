@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 8828 2008-05-15 01:36:29Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 10664 2008-07-15 14:41:38Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -620,6 +620,7 @@ static const REMPARMDESC g_aArgsPDMApicGetBase[] =
 static const REMPARMDESC g_aArgsPDMApicGetTPR[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(uint8_t *), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(uint8_t *), NULL }
 };
 static const REMPARMDESC g_aArgsPDMApicSetBase[] =
