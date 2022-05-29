@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 10379 2008-07-08 16:52:25Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 10381 2008-07-08 17:53:27Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -662,13 +662,13 @@ static int iomInterpretLODS(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFaul
      * Get data size.
      */
     unsigned cb = DISGetParamSize(pCpu, &pCpu->param2);
-    AssertMsg(cb > 0 && cb <= sizeof(uint32_t), ("cb=%d\n", cb));
+    AssertMsg(cb > 0 && cb <= sizeof(uint64_t), ("cb=%d\n", cb));
     int     offIncrement = pRegFrame->eflags.Bits.u1DF ? -(signed)cb : (signed)cb;
 
     /*
      * Perform read.
      */
-    int rc = iomMMIODoRead(pVM, pRange, GCPhysFault, &pRegFrame->eax, cb);
+    int rc = iomMMIODoRead(pVM, pRange, GCPhysFault, &pRegFrame->rax, cb);
     if (rc == VINF_SUCCESS)
         pRegFrame->rsi += offIncrement;
 
