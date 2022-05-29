@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9698 2008-06-16 06:50:42Z vboxsync $
+# $Id: Makefile.kmk 9865 2008-06-23 06:53:24Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -177,6 +177,9 @@ ifeq ($(KBUILD_TARGET),solaris)
  VBoxDD_LIBS           += adm
  ifdef VBOX_WITH_SUID_WRAPPER
   VBoxDD_LIBS          += secdb
+ endif
+ ifdef VBOX_WITH_USB
+  VBoxDD_LIBS          += aio
  endif
 endif
 VBoxDD_LIBS.darwin     += \
@@ -708,7 +711,7 @@ ifdef VBOX_WITH_USB
  Drivers_DEFS.solaris    += VUSB_HAVE_USBPROXY_DEVICE
  Drivers_SOURCES.solaris += \
 	USB/USBProxyDevice.cpp \
-	USB/USBProxyDevice-stub.cpp
+	USB/solaris/USBProxyDevice-solaris.cpp
 endif # VBOX_WITH_USB
 
 ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
