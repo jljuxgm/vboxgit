@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 7613 2008-03-28 08:25:54Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 7617 2008-03-28 09:56:29Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -663,7 +663,7 @@ static const REMPARMDESC g_aArgsPGMPhysGCPtr2HCPtrByGstCR3[] =
 static const REMPARMDESC g_aArgsPGM3PhysGrowRange[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
-    { REMPARMDESC_FLAGS_GCPHYS,     sizeof(PCRTGCPHYS), NULL }
+    { REMPARMDESC_FLAGS_INT,        sizeof(PCRTGCPHYS), NULL }
 };
 static const REMPARMDESC g_aArgsPGMPhysIsGCPhysValid[] =
 {
