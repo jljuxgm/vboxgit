@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7844 2008-04-09 15:21:24Z vboxsync $
+# $Id: Makefile.kmk 7983 2008-04-15 12:33:57Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -263,6 +263,13 @@ VirtualBox_SOURCES.darwin = \
 ifdef VBOX_WITH_ICHAT_THEATER
  VirtualBox_SOURCES.darwin += \
 	 src/darwin/VBoxIChatTheaterWrapper.m
+endif
+
+ifndef VBOX_OSE
+VirtualBox_QT_IMAGES += images/about_sun.png
+VirtualBox_SOURCES += src/VBoxAboutNonOSEDlg.cpp
+else
+VirtualBox_QT_UISRCS += ui/VBoxAboutDlg.ui
 endif
 
 ifneq ($(BUILD_TARGET),win)
