@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 9527 2008-06-09 10:11:29Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 9529 2008-06-09 11:10:02Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -674,7 +674,7 @@ static DECLCALLBACK(void) rtTimerLinuxMpEvent(RTMPEVENT enmEvent, RTCPUID idCpu,
         }
     }
 
-    RTSpinlockAcquire(hSpinlock, &Tmp);
+    RTSpinlockRelease(hSpinlock, &Tmp);
 }
 
 #endif /* CONFIG_SMP */
@@ -933,10 +933,8 @@ RTDECL(uint32_t) RTTimerGetSystemGranularity(void)
         Assert(!Ts.tv_sec);
         return Ts.tv_nsec;
     }
-    return 1000000000 / HZ; /* ns */
-#else
-    return 1000000000 / HZ; /* ns */
 #endif
+    return 1000000000 / HZ; /* ns */
 }
 
 
