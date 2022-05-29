@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 10822 2008-07-23 09:02:58Z vboxsync $ */
+/* $Id: PGMAll.cpp 10824 2008-07-23 09:05:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1637,8 +1637,8 @@ PGMDECL(const char *) PGMGetModeName(PGMMODE enmMode)
 {
     switch (enmMode)
     {
-        case PGMMODE_REAL:      return "real";
-        case PGMMODE_PROTECTED: return "protected";
+        case PGMMODE_REAL:      return "Real";
+        case PGMMODE_PROTECTED: return "Protected";
         case PGMMODE_32_BIT:    return "32-bit";
         case PGMMODE_PAE:       return "PAE";
         case PGMMODE_PAE_NX:    return "PAE+NX";
