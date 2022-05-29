@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 7755 2008-04-04 22:21:04Z vboxsync $ */
+/* $Id: PGMPhys.cpp 8021 2008-04-16 10:16:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1012,11 +1012,11 @@ PDMR3DECL(bool) PGMR3PhysMMIO2IsBase(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhy
     /*
      * Validate input
      */
-    VM_ASSERT_EMT_RETURN(pVM, VERR_VM_THREAD_NOT_EMT);
-    AssertPtrReturn(pDevIns, VERR_INVALID_PARAMETER);
-    AssertReturn(GCPhys != NIL_RTGCPHYS, VERR_INVALID_PARAMETER);
-    AssertReturn(GCPhys != 0, VERR_INVALID_PARAMETER);
-    AssertReturn(!(GCPhys & PAGE_OFFSET_MASK), VERR_INVALID_PARAMETER);
+    VM_ASSERT_EMT_RETURN(pVM, false);
+    AssertPtrReturn(pDevIns, false);
+    AssertReturn(GCPhys != NIL_RTGCPHYS, false);
+    AssertReturn(GCPhys != 0, false);
+    AssertReturn(!(GCPhys & PAGE_OFFSET_MASK), false);
 
     /*
      * Search the list.
