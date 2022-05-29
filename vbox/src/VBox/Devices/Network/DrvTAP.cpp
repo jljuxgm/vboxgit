@@ -1,4 +1,4 @@
-/** $Id: DrvTAP.cpp 11157 2008-08-05 23:08:37Z vboxsync $ */
+/** $Id: DrvTAP.cpp 11242 2008-08-08 13:14:37Z vboxsync $ */
 /** @file
  * Universial TAP network transport driver.
  */
@@ -271,7 +271,7 @@ static DECLCALLBACK(int) drvTAPAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
             /*
              * Read the frame.
              */
-            char achBuf[4096];
+            char achBuf[16384];
             size_t cbRead = 0;
 #ifdef VBOX_WITH_CROSSBOW
             cbRead = sizeof(achBuf);
@@ -285,7 +285,8 @@ static DECLCALLBACK(int) drvTAPAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
 #endif
             if (VBOX_SUCCESS(rc))
             {
-                AssertMsg(cbRead <= 1536, ("cbRead=%d\n", cbRead));
+                // Assertion removed to be able to support jumbo frames.
+                //AssertMsg(cbRead <= 1536, ("cbRead=%d\n", cbRead));
 
                 /*
                  * Wait for the device to have space for this frame.
