@@ -1,4 +1,4 @@
-; $Id: VMMGC.mac 5999 2007-12-07 15:05:06Z vboxsync $
+; $Id: VMMGC.mac 6255 2008-01-06 01:07:29Z vboxsync $
 ;; @file
 ; VMMGC - Guest Context Assembly Macros.
 ;
@@ -48,7 +48,7 @@
  %ifdef __YASM__
   ; this syntax requires a patch yasm, sorry.
   %macro VMMR0_SEG 1
-  [section %1 segname VMMR0 align=1 ]
+  [section %1 segname=VMMR0 align=1 ]
   %endmacro
  %else
   %macro VMMR0_SEG 1
