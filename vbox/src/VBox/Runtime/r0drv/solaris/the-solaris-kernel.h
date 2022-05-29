@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 6020 2007-12-09 08:33:41Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 6021 2007-12-09 09:03:26Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the Solaris kernel.
  */
@@ -51,6 +51,7 @@
 # include <sys/conf.h>
 # include <sys/pci.h>
 # include <sys/stat.h>
+# include <sys/modctl.h>
 #endif
 
 #undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
