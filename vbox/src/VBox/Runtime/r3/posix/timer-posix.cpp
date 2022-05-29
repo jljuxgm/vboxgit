@@ -1,4 +1,4 @@
-/* $Id: timer-posix.cpp 10218 2008-07-04 11:37:58Z vboxsync $ */
+/* $Id: timer-posix.cpp 10614 2008-07-14 19:52:32Z vboxsync $ */
 /** @file
  * IPRT - Timer, POSIX.
  */
@@ -28,6 +28,12 @@
  * additional information or have any questions.
  */
 
+/*******************************************************************************
+*   Defined Constants And Macros                                               *
+*******************************************************************************/
+/** Enables the use of POSIX RT timers. */
+#define IPRT_WITH_POSIX_TIMERS
+
 
 /*******************************************************************************
 *   Header Files                                                               *
@@ -55,6 +61,7 @@
 #ifndef RT_OS_OS2
 # include <pthread.h>
 #endif
+
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
