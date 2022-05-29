@@ -1,4 +1,4 @@
-/* $Id: sanity.h 7579 2008-03-26 15:13:26Z vboxsync $ */
+/* $Id: sanity.h 7620 2008-03-28 10:12:44Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Setup Sanity Checks, C and C++.
  */
@@ -149,7 +149,7 @@ AssertCompileSize(RTCCUINTREG, 4);
 
 AssertCompileSize(RTGCPHYS64, 8);
 AssertCompileSize(RTGCPHYS32, 4);
-AssertCompileSize(RTGCPHYS, 4);
+AssertCompileSize(RTGCPHYS, 8);
 
 
 /*

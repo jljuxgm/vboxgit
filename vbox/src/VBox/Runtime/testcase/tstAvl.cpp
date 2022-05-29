@@ -1,4 +1,4 @@
-/* $Id: tstAvl.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: tstAvl.cpp 7620 2008-03-28 10:12:44Z vboxsync $ */
 /** @file
  * innotek Portable Runtime Testcase - Avl trees.
  */
@@ -629,6 +629,9 @@ int avlrogcphys(void)
     RTGCPHYS            j;
     RTGCPHYS            k;
     PAVLROGCPHYSTREE    pTree = (PAVLROGCPHYSTREE)calloc(sizeof(*pTree), 1);
+
+    AssertCompileSize(AVLOGCPHYSNODECORE, 24);
+    AssertCompileSize(AVLROGCPHYSNODECORE, 32);
 
     /*
      * Simple linear insert, get and remove.
