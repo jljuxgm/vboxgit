@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_utils.c 10067 2008-07-01 11:07:51Z vboxsync $ */
+/* $Id: vboxvfs_utils.c 10456 2008-07-10 07:04:39Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Utility functions.
  */
@@ -22,6 +22,12 @@
 
 #include <VBox/log.h>
 #include <iprt/time.h>
+#ifdef DEBUG_ramshankar
+# undef LogFlow
+# undef Log
+# define LogFlow    LogRel
+# define Log        LogRel
+#endif
 
 /**
  * Convert from RTTIMESPEC to timestruct_t.
@@ -86,11 +92,14 @@ int vboxvfs_Stat(const char *pszCaller, vboxvfs_globinfo_t *pVBoxVFSGlobalInfo, 
  * @param   pInfo                   Pointer to the RTFSOBJINFO used for initialization.
  */
 void vboxvfs_InitVNode(vboxvfs_globinfo_t *pVBoxVFSGlobalInfo, vboxvfs_vnode_t *pVBoxVNode,
-            RTFSOBJINFO *pFSInfo)
+            PRTFSOBJINFO pFSInfo)
 {
     RTFSOBJATTR *pFSAttr;
     int fDir;
     vfs_t *pVFS;
+
+    LogFlow((DEVICE_NAME ":vboxvfs_InitVNode pVBoxVFGSGlobalInfo=%p pVBoxVNode=%p pFSInfo=%p\n", pVBoxVFSGlobalInfo,
+            pVBoxVNode, pFSInfo));
 
     mutex_enter(&pVBoxVNode->MtxContents);
 

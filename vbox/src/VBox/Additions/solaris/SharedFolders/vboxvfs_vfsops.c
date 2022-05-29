@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_vfsops.c 10347 2008-07-08 06:23:10Z vboxsync $ */
+/* $Id: vboxvfs_vfsops.c 10456 2008-07-10 07:04:39Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests. VFS operations.
  */
@@ -437,6 +437,7 @@ static int VBoxVFS_Mount(vfs_t *pVFS, vnode_t *pVNode, struct mounta *pMount, cr
                 vboxvfs_InitVNode(pVBoxVFSGlobalInfo, pVNodeRoot, &FSInfo);
 
                 /* Success! */
+                LogFlow((DEVICE_NAME ":VBoxVFS_Mount: success!\n", rc));
                 return 0;
             }
             else
