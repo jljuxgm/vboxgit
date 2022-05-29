@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 6186 2007-12-26 19:45:16Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 6187 2007-12-26 19:49:44Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -636,7 +636,7 @@ static DECLCALLBACK(int) drvHostSerialRecvThread(PPDMDRVINS pDrvIns, PPDMTHREAD 
                     if (VBOX_FAILURE(rc))
                     {
                         /* Notifying device failed, continue but log it */
-                        LogRel(("HostSerial#%d: Notifying device failed with error %Vrc; continuing.\n", pDrvIns->iInstance, rc);
+                        LogRel(("HostSerial#%d: Notifying device failed with error %Vrc; continuing.\n", pDrvIns->iInstance, rc));
                     }
                 }
                 else
