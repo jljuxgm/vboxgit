@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 6475 2008-01-24 10:55:48Z vboxsync $ */
+/* $Id: CFGM.cpp 7719 2008-04-03 12:03:36Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  *
@@ -772,15 +772,6 @@ static int cfgmR3CreateDefault(PVM pVM)
     RTUuidClear(&Uuid);
     rc = CFGMR3InsertBytes(pCfg,    "UUID", &Uuid, sizeof(Uuid));
     UPDATERC();
-    /* Bios logo. */
-    rc = CFGMR3InsertInteger(pCfg,  "FadeIn",               1);
-    UPDATERC();
-    rc = CFGMR3InsertInteger(pCfg,  "FadeOut",              1);
-    UPDATERC();
-    rc = CFGMR3InsertInteger(pCfg,  "LogoTime",             0);
-    UPDATERC();
-    rc = CFGMR3InsertString(pCfg,   "LogoFile",             "");
-    UPDATERC();
 
     /*
      * PCI bus.
@@ -885,6 +876,17 @@ static int cfgmR3CreateDefault(PVM pVM)
     UPDATERC();
     rc = CFGMR3InsertInteger(pCfg,  "VRamSize",             4 * _1M);
     UPDATERC();
+
+    /* Bios logo. */
+    rc = CFGMR3InsertInteger(pCfg,  "FadeIn",               1);
+    UPDATERC();
+    rc = CFGMR3InsertInteger(pCfg,  "FadeOut",              1);
+    UPDATERC();
+    rc = CFGMR3InsertInteger(pCfg,  "LogoTime",             0);
+    UPDATERC();
+    rc = CFGMR3InsertString(pCfg,   "LogoFile",             "");
+    UPDATERC();
+
 #if 0
     rc = CFGMR3InsertNode(pInst,    "LUN#0", &pLunL0);
     UPDATERC();
