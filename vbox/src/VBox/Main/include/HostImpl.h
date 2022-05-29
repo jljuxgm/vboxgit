@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 10592 2008-07-14 11:19:02Z vboxsync $ */
+/* $Id: HostImpl.h 10595 2008-07-14 12:23:57Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -71,7 +71,7 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init (VirtualBox *parent);
+    HRESULT init (VirtualBox *aParent);
     void uninit();
 
     // IHost properties
@@ -163,8 +163,8 @@ private:
 #endif
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
-    void registerMetrics(PerformanceCollector *collector);
-    void unregisterMetrics(PerformanceCollector *collector);
+    void registerMetrics (PerformanceCollector *aCollector);
+    void unregisterMetrics (PerformanceCollector *aCollector);
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
     ComObjPtr <VirtualBox, ComWeakRef> mParent;
