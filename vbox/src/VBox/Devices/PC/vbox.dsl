@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 8207 2008-04-21 07:18:14Z vboxsync $
+// $Id: vbox.dsl 10372 2008-07-08 14:14:29Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -376,6 +376,17 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                 Device (FDC0)
                 {
                     Name (_HID, EisaId ("PNP0700"))
+
+                    OperationRegion (CFDC, SystemIO, 0x4054, 0x08)
+                    Field (CFDC, DwordAcc, NoLock, Preserve)
+                    {
+                        FSTA, 32,
+                    }
+
+                    Method (_STA, 0, NotSerialized)
+                    {
+                        Return (FSTA)
+                    }
 
                     // Current resource settings
                     Name (_CRS, ResourceTemplate ()
