@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10049 2008-07-01 00:58:41Z vboxsync $
+# $Id: Makefile.kmk 10380 2008-07-08 17:05:59Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -33,6 +33,9 @@ ifeq ($(KBUILD_TARGET),win)
 endif
 ifdef VBOX_WITH_USB
  include $(PATH_SUB_CURRENT)/VBoxUSB/Makefile.kmk
+endif
+if1of ($(KBUILD_TARGET), darwin)
+ include $(PATH_SUB_CURRENT)/VBoxNetFlt/Makefile.kmk
 endif
 
 # Let kBuild generate the rules.
