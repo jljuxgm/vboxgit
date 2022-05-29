@@ -1,4 +1,4 @@
-/* $Id: tstMemAutoPtr.cpp 11023 2008-07-31 00:12:25Z vboxsync $ */
+/* $Id: tstMemAutoPtr.cpp 11024 2008-07-31 00:12:57Z vboxsync $ */
 /** @file
  * IPRT - Testcase the RTMemAutoPtr template.
  */
@@ -64,7 +64,7 @@ static unsigned g_cFrees;
  */
 extern "C" int tstMemAutoPtrDisas1(void **ppv)
 {
-    register RTMemAutoPtr<TSTMEMAUTOPTRSTRUCT> Handle(1);
+    RTMemAutoPtr<TSTMEMAUTOPTRSTRUCT> Handle(1);
     if (!Handle)
     {
         Handle->a = RTRandU32();
