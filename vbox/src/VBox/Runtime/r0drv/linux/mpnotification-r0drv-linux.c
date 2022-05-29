@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-linux.c 9311 2008-06-02 15:27:03Z vboxsync $ */
+/* $Id: mpnotification-r0drv-linux.c 9313 2008-06-02 15:29:36Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Linux.
  */
@@ -118,7 +118,7 @@ static int rtMpNotificationLinuxCallback(struct notifier_block *pNotifierBlock, 
             break;
     }
 
-    return 0;
+    return NOTIFY_DONE;
 }
 
 
