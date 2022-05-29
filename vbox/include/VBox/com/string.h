@@ -1,4 +1,4 @@
-/* $Id: string.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: string.h 9332 2008-06-02 23:10:25Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -33,8 +33,16 @@
 #ifndef ___VBox_com_string_h
 #define ___VBox_com_string_h
 
+/* Make sure all the stdint.h macros are included - must come first! */
+#ifndef __STDC_LIMIT_MACROS
+# define __STDC_LIMIT_MACROS
+#endif
+#ifndef __STDC_CONSTANT_MACROS
+# define __STDC_CONSTANT_MACROS
+#endif
+
 #if defined (VBOX_WITH_XPCOM)
-#include <nsMemory.h>
+# include <nsMemory.h>
 #endif
 
 #include "VBox/com/defs.h"

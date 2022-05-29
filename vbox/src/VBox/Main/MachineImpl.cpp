@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 8744 2008-05-09 14:51:58Z vboxsync $ */
+/* $Id: MachineImpl.cpp 9332 2008-06-02 23:10:25Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -18,6 +18,14 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
+
+/* Make sure all the stdint.h macros are included - must come first! */
+#ifndef __STDC_LIMIT_MACROS
+# define __STDC_LIMIT_MACROS
+#endif
+#ifndef __STDC_CONSTANT_MACROS
+# define __STDC_CONSTANT_MACROS
+#endif
 
 #if defined(RT_OS_WINDOWS)
 #elif defined(RT_OS_LINUX)

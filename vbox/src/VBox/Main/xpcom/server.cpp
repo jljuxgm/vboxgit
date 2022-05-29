@@ -1,4 +1,4 @@
-/* $Id: server.cpp 8768 2008-05-12 01:12:42Z vboxsync $ */
+/* $Id: server.cpp 9332 2008-06-02 23:10:25Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -18,6 +18,14 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
+
+/* Make sure all the stdint.h macros are included - must come first! */
+#ifndef __STDC_LIMIT_MACROS
+# define __STDC_LIMIT_MACROS
+#endif
+#ifndef __STDC_CONSTANT_MACROS
+# define __STDC_CONSTANT_MACROS
+#endif
 
 #include <ipcIService.h>
 #include <ipcCID.h>
