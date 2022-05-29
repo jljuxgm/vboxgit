@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6301 2008-01-09 16:41:26Z vboxsync $
+# $Id: Makefile.kmk 6513 2008-01-25 11:38:38Z vboxsync $
 ## @file
 # Makefile for the VBox Linux Additions X.org mouse driver.
 #
@@ -108,9 +108,11 @@ DLLS = vboxmouse_drv
 vboxmouse_drv_TEMPLATE = VBOXGUESTR3DLL
 vboxmouse_drv_DEFS = 	\
 	XFree86Server IN_MODULE XFree86Module XFree86LOADER XINPUT \
-	IN_RING3 VBOX XORG_7X
+	IN_RING3 VBOX XORG_7X __EXTENSIONS__
 vboxmouse_drv_INCS = \
-	/usr/X11/include/xorg \
+	../x11include/7.1 \
+	../x11include/7.1/X11 \
+	../x11include/7.1/xorg \
 	$(PATH_SUB_CURRENT)
 vboxmouse_drv_SOURCES  = \
 	xorg71/mouse.c \
