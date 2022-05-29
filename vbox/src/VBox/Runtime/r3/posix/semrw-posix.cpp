@@ -1,4 +1,4 @@
-/* $Id: semrw-posix.cpp 7922 2008-04-11 15:11:51Z vboxsync $ */
+/* $Id: semrw-posix.cpp 7938 2008-04-11 18:16:35Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Read-Write Semaphore, POSIX.
  */
@@ -43,7 +43,7 @@
 /** @todo move this to r3/posix/something.h. */
 #ifdef RT_OS_SOLARIS
 # define ATOMIC_GET_PTHREAD_T(pvVar, pThread) ASMAtomicReadSize(pvVar, pThread)
-# define ATOMIC_SET_PTHREAD_T(pvVar, pThread) ASMAtomicReadSize(pvVar, pThread)
+# define ATOMIC_SET_PTHREAD_T(pvVar, pThread) ASMAtomicWriteSize(pvVar, pThread)
 #else
 AssertCompileSize(pthread_t, sizeof(void *));
 # define ATOMIC_GET_PTHREAD_T(pvVar, pThread) do { *(pThread) = (pthread_t)ASMAtomicReadPtr((void *volatile *)pvVar); } while (0)
