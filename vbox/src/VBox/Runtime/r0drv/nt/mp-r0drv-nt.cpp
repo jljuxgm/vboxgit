@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 9584 2008-06-11 00:20:29Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 9585 2008-06-11 00:23:38Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -74,7 +74,7 @@ RTDECL(RTCPUID) RTMpCpuId(void)
 
 RTDECL(int) RTMpCpuIdToSetIndex(RTCPUID idCpu)
 {
-    return idCpu < MAXIMUM_PROCESSORS ? idCpu : -1;
+    return idCpu < MAXIMUM_PROCESSORS ? (int)idCpu : -1;
 }
 
 
@@ -206,7 +206,7 @@ static int rtMpCall(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2, RT_NT
     {
         KeInitializeDpc(&paExecCpuDpcs[0], rtmpNtDPCWrapper, pArgs);
         KeSetImportanceDpc(&paExecCpuDpcs[0], HighImportance);
-        KeSetTargetProcessorDpc(&paExecCpuDpcs[0], idCpu);
+        KeSetTargetProcessorDpc(&paExecCpuDpcs[0], (int)idCpu);
     }
     else
     {
