@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 9212 2008-05-29 09:38:38Z vboxsync $ */
+/* $Id: MMInternal.h 9387 2008-06-04 13:51:21Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -675,6 +675,9 @@ typedef struct MM
 
     /** The hypervisor heap (GC Ptr). */
     RCPTRTYPE(PMMHYPERHEAP)     pHyperHeapGC;
+#if HC_ARCH_BITS == 64
+    uint32_t                    u32Padding2;
+#endif
     /** The hypervisor heap (HC Ptr). */
     R3R0PTRTYPE(PMMHYPERHEAP)   pHyperHeapHC;
 

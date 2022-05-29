@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 9244 2008-05-30 11:50:49Z vboxsync $ */
+/* $Id: VMMInternal.h 9387 2008-06-04 13:51:21Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -187,7 +187,7 @@ typedef struct VMM
     RTGCPTR32                   pfnCPUMGCResumeGuestV86;
     /** The last GC return code. */
     RTINT                       iLastGCRc;
-#if HC_ARCH_BITS == 64 && GC_ARCH_BITS == 32
+#if HC_ARCH_BITS == 64
     uint32_t                    u32Padding0; /**< Alignment padding. */
 #endif
 
