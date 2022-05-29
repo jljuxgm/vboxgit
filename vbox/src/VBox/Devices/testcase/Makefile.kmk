@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
+# $Id: Makefile.kmk 8991 2008-05-21 00:53:53Z vboxsync $
 ## @file
 # Sub-Makefile for the Devices testcases.
 #
@@ -33,6 +33,11 @@ ifeq ($(KBUILD_TARGET),$(KBUILD_HOST))
 	$(PATH_TARGET)/tstDeviceStructSize.run
  endif
 endif
+
+# The normal testing pass.
+TESTING += \
+	$(PATH_TARGET)/tstDeviceStructSize.run
+
 
 #
 # Globals
