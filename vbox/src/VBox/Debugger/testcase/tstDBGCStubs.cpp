@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 9842 2008-06-20 09:42:34Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 9847 2008-06-20 11:21:16Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -52,7 +52,7 @@ CPUMDECL(uint64_t) CPUMGetGuestRIP(PVM pVM)
     return 0;
 }
 
-CPUMDECL(uint32_t) CPUMGetGuestIDTR(PVM pVM, uint16_t *pcbLimit)
+CPUMDECL(RTGCPTR) CPUMGetGuestIDTR(PVM pVM, uint16_t *pcbLimit)
 {
     return 0;
 }

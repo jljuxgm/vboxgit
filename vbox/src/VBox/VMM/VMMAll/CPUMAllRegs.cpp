@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 9841 2008-06-20 09:30:18Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 9847 2008-06-20 11:21:16Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -676,7 +676,7 @@ CPUMDECL(void) CPUMSetGuestEFER(PVM pVM, uint64_t val)
     pVM->cpum.s.Guest.msrEFER = val;
 }
 
-CPUMDECL(uint32_t) CPUMGetGuestIDTR(PVM pVM, uint16_t *pcbLimit)
+CPUMDECL(RTGCPTR) CPUMGetGuestIDTR(PVM pVM, uint16_t *pcbLimit)
 {
     if (pcbLimit)
         *pcbLimit = pVM->cpum.s.Guest.idtr.cbIdt;
