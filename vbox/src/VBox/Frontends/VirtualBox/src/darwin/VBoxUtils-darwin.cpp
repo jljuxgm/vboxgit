@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 6680 2008-01-31 19:57:07Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 6715 2008-02-01 11:36:46Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -117,16 +117,18 @@ CGImageRef DarwinCreateDockBadge (const char *aSource)
     /* resize it and copy it onto the background. */
     if (badge.width() < 32)
         badge = badge.convertToImage().smoothScale (32, 32);
-    copyBlt (&back, back.width() - badge.width(), back.height() - badge.height(),
+    copyBlt (&back, (back.width() - badge.width()) / 2.0, (back.height() - badge.height()) / 2.0,
              &badge, 0, 0,
              badge.width(), badge.height());
+//    copyBlt (&back, back.width() - badge.width(), back.height() - badge.height(),
+//             &badge, 0, 0,
+//             badge.width(), badge.height());
     Assert (!back.isNull());
     Assert (back.width() == 128 && back.height() == 128);
 
     /* Convert it to a CGImage. */
     return ::DarwinQPixmapToCGImage (&back);
 }
-
 
 /**
  * Creates a dock preview image.
@@ -135,9 +137,10 @@ CGImageRef DarwinCreateDockBadge (const char *aSource)
  *
  * @returns CGImageRef for the new image. (Remember to release it when finished with it.)
  * @param   aVMImage   the vm screen as a CGImageRef
- * @param   aOverlayImage   an optional overlay image to add at the bottom right of the icon
+ * @param   aOverlayImage   an optional icon overlay image to add at the bottom right of the icon
+ * @param   aStateImage   an optional state overlay image to add at the center of the icon
  */
-CGImageRef DarwinCreateDockPreview (CGImageRef aVMImage, CGImageRef aOverlayImage)
+CGImageRef DarwinCreateDockPreview (CGImageRef aVMImage, CGImageRef aOverlayImage, CGImageRef aStateImage)
 {
     Assert (aVMImage);
 
@@ -188,7 +191,13 @@ CGImageRef DarwinCreateDockPreview (CGImageRef aVMImage, CGImageRef aOverlayImag
         /* vm content */
         iconRect = CGRectInset (iconRect, 1, 1);
         CGContextDrawImage (context, iconRect, aVMImage);
-        /* the overlay image */
+        /* the state image at center */
+        if (aStateImage)
+        {
+            CGRect stateRect = CGRectMake ((targetWidth - CGImageGetWidth (aStateImage)) / 2.0, (targetHeight - CGImageGetHeight (aStateImage)) / 2.0, CGImageGetWidth (aStateImage), CGImageGetHeight (aStateImage));
+            CGContextDrawImage (context, stateRect, aStateImage);
+        }
+        /* the overlay image at bottom/right */
         if (aOverlayImage)
         {
             CGRect overlayRect = CGRectMake (targetWidth - CGImageGetWidth (aOverlayImage), 0, CGImageGetWidth (aOverlayImage), CGImageGetHeight (aOverlayImage));
@@ -213,7 +222,7 @@ CGImageRef DarwinCreateDockPreview (CGImageRef aVMImage, CGImageRef aOverlayImag
  *
  * @returns CGImageRef for the new image. (Remember to release it when finished with it.)
  * @param   aFrameBuffer    The guest frame buffer.
- * @param   aOverlayImage   an optional overlay image to add at the bottom right of the icon
+ * @param   aOverlayImage   an optional icon overlay image to add at the bottom right of the icon
  */
 CGImageRef DarwinCreateDockPreview (VBoxFrameBuffer *aFrameBuffer, CGImageRef aOverlayImage)
 {
