@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 6171 2007-12-21 15:41:23Z vboxsync $ */
+/* $Id: CPUM.cpp 6172 2007-12-21 17:36:09Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -352,9 +352,9 @@ static int cpumR3CpuIdInit(PVM pVM)
      */
     PCPUMCPUID  pCpuId = &pCPUM->aGuestCpuIdStd[0];
     uint32_t    cElements = ELEMENTS(pCPUM->aGuestCpuIdStd);
-    for (;;)
+    for (i=0;; )
     {
-        while (cElements-- < 0)
+        while (cElements-- > 0)
         {
             PCFGMNODE pNode = CFGMR3GetChildF(CFGMR3GetRoot(pVM), "CPUM/CPUID/%RX32", i);
             if (pNode)
@@ -384,6 +384,8 @@ static int cpumR3CpuIdInit(PVM pVM)
                 else
                     AssertReturn(rc == VERR_CFGM_VALUE_NOT_FOUND, rc);
             }
+            pCpuId++;
+            i++;
         }
 
         /* next */
