@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 8819 2008-05-14 19:46:18Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -112,7 +112,7 @@ DBGFR3DECL(int) DBGFR3AddrFromSelOff(PVM pVM, PDBGFADDRESS pAddress, RTSEL Sel, 
  * @param   pAddress    Where to store the mixed address.
  * @param   FlatPtr     The flat pointer.
  */
-DBGFR3DECL(void) DBGFR3AddrFromFlat(PVM pVM, PDBGFADDRESS pAddress, RTGCUINTPTR FlatPtr)
+DBGFR3DECL(PDBGFADDRESS) DBGFR3AddrFromFlat(PVM pVM, PDBGFADDRESS pAddress, RTGCUINTPTR FlatPtr)
 {
     pAddress->Sel     = DBGF_SEL_FLAT;
     pAddress->off     = FlatPtr;
@@ -120,6 +120,7 @@ DBGFR3DECL(void) DBGFR3AddrFromFlat(PVM pVM, PDBGFADDRESS pAddress, RTGCUINTPTR 
     pAddress->fFlags  = DBGFADDRESS_FLAGS_FLAT | DBGFADDRESS_FLAGS_VALID;
     if (dbgfR3IsHMA(pVM, pAddress->FlatPtr))
         pAddress->fFlags |= DBGFADDRESS_FLAGS_HMA;
+    return pAddress;
 }
 
 
