@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 11214 2008-08-07 17:12:06Z vboxsync $ */
+/* $Id: DevRTC.cpp 11215 2008-08-07 17:51:52Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -133,6 +133,8 @@ struct RTCState {
     uint8_t Alignment0[7];
     struct my_tm current_tm;
     int32_t irq;
+    uint32_t alignment0;
+
     /* periodic timer */
     int64_t next_periodic_time;
     /* second update */
