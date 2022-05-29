@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 10401 2008-07-09 11:14:02Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 10402 2008-07-09 11:18:48Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -723,7 +723,7 @@ DECLINLINE(bool) pgmPoolMonitorIsReused(PPGMPOOLPAGE pPage, PCPUMCTXCORE pRegFra
         case OP_MOVSWD:
         case OP_STOSWD:
             if (    pRegFrame
-                &&  pCpu->prefix == PREFIX_REP
+                &&  pCpu->prefix == (PREFIX_REP|PREFIX_REX)
                 &&  pRegFrame->rcx == 0x200
                 &&  pCpu->mode == CPUMODE_64BIT
                )
