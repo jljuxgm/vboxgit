@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 10923 2008-07-29 00:22:11Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 10924 2008-07-29 03:48:35Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -3121,7 +3121,7 @@ static int intnetR0OpenNetwork(PINTNET pIntNet, PSUPDRVSESSION pSession, const c
                 ||  (   pCur->enmTrunkType == enmTrunkType
                      && !strcmp(pCur->szTrunk, pszTrunk)))
             {
-                if (!((pCur->fFlags ^ fFlags) & INTNET_OPEN_FLAGS_SECURITY_XOR_MASK))
+                if (!((pCur->fFlags ^ fFlags) & INTNET_OPEN_FLAGS_COMPATIBILITY_XOR_MASK))
                 {
 
                     /*
