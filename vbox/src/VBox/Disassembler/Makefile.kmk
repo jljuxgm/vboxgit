@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10050 2008-07-01 01:05:00Z vboxsync $
+# $Id: Makefile.kmk 11721 2008-08-27 20:09:03Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -26,6 +26,8 @@ SUB_DEPTH = .
 DEPTH    ?= ../../..
 endif
 include $(KBUILD_PATH)/subheader.kmk
+
+ifndef VBOX_ONLY_SDK
 
 # include the sub-makefile first.
 ifdef VBOX_WITH_TESTCASES
@@ -97,6 +99,7 @@ ifdef VBOX_WITH_TESTCASES
  	$(LIB_RUNTIME)
 endif # VBOX_WITH_TESTCASES
 
+endif #!VBOX_ONLY_SDK
 
 include $(KBUILD_PATH)/subfooter.kmk
 

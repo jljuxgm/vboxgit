@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11703 2008-08-27 14:51:40Z vboxsync $
+# $Id: Makefile.kmk 11721 2008-08-27 20:09:03Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -26,21 +26,24 @@ DEPTH     = ../../..
 endif
 include $(KBUILD_PATH)/subheader.kmk
 
-# Include sub-makefiles.
-include $(PATH_SUB_CURRENT)/Support/Makefile.kmk
-ifndef VBOX_ONLY_DOCS
- ifeq ($(KBUILD_TARGET),win)
-  include $(PATH_SUB_CURRENT)/VBoxTAP/Makefile.kmk
- endif
- ifdef VBOX_WITH_USB
-  include $(PATH_SUB_CURRENT)/VBoxUSB/Makefile.kmk
- endif
- if1of ($(KBUILD_TARGET), darwin solaris)
-  ifndef VBOX_OSE
-   include $(PATH_SUB_CURRENT)/VBoxNetFlt/Makefile.kmk
+ifndef VBOX_ONLY_SDK
+ # Include sub-makefiles.
+ include $(PATH_SUB_CURRENT)/Support/Makefile.kmk
+
+ ifndef VBOX_ONLY_DOCS
+  ifeq ($(KBUILD_TARGET),win)
+   include $(PATH_SUB_CURRENT)/VBoxTAP/Makefile.kmk
   endif
- endif
-endif # !VBOX_ONLY_DOCS
+  ifdef VBOX_WITH_USB
+   include $(PATH_SUB_CURRENT)/VBoxUSB/Makefile.kmk
+  endif
+  if1of ($(KBUILD_TARGET), darwin solaris)
+   ifndef VBOX_OSE
+    include $(PATH_SUB_CURRENT)/VBoxNetFlt/Makefile.kmk
+   endif
+  endif
+ endif # !VBOX_ONLY_DOCS
+endif # !VBOX_ONLY_SDK
 
 # Let kBuild generate the rules.
 include $(KBUILD_PATH)/subfooter.kmk

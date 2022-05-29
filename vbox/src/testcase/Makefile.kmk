@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10181 2008-07-04 01:10:54Z vboxsync $
+# $Id: Makefile.kmk 11721 2008-08-27 20:09:03Z vboxsync $
 ## @file
 # Sub-Makefile for misc testcases.
 #
@@ -22,7 +22,9 @@
 SUB_DEPTH = ../..
 include	$(KBUILD_PATH)/subheader.kmk
 
-PROGRAMS += tstRunTestcases
+ifndef VBOX_ONLY_SDK
+ PROGRAMS += tstRunTestcases
+endif
 
 tstRunTestcases_TEMPLATE = VBOXR3TSTEXE
 tstRunTestcases_LIBS = $(LIB_RUNTIME)
