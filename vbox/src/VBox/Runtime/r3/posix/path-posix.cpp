@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: path-posix.cpp 6536 2008-01-28 19:44:43Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Path Manipulation, POSIX.
  */
@@ -400,6 +400,8 @@ RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, unsigned cchAbsPath
 }
 
 
+#ifndef VBOX_SHARED_RUNTIME
+
 RTDECL(int) RTPathProgram(char *pszPath, unsigned cchPath)
 {
     /*
@@ -486,6 +488,7 @@ RTDECL(int) RTPathProgram(char *pszPath, unsigned cchPath)
     return VERR_BUFFER_OVERFLOW;
 }
 
+#endif /* !VBOX_SHARED_RUNTIME */
 
 #ifndef RT_OS_L4
 /**
