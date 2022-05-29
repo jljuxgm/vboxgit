@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 6243 2008-01-04 18:45:34Z vboxsync $
+; $Id: HWACCMR0A.asm 6244 2008-01-04 18:55:20Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -797,7 +797,8 @@ BEGINPROC SVMInvlpgA
 %else
     mov     eax, [esp + 4]
     mov     ecx, [esp + 8]
-    invlpga eax, ecx
+    ;invlpga eax, ecx - YASM BUG? ;; @todo investigate and file bug report.
+    db 0fh, 01h, 0dfh
 %endif
     ret
 ENDPROC SVMInvlpgA
