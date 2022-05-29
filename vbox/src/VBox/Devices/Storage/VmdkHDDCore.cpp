@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 7580 2008-03-26 15:22:35Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 7653 2008-03-31 12:06:27Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -4082,10 +4082,7 @@ static int vmdkGetComment(void *pBackendData, char *pszComment,
         if (pszComment)
             rc = vmdkDecodeString(pszCommentEncoded, pszComment, cbComment);
         else
-        {
-            *pszComment = '\0';
             rc = VINF_SUCCESS;
-        }
         if (pszCommentEncoded)
             RTStrFree((char *)(void *)pszCommentEncoded);
     }
