@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 9956 2008-06-26 14:19:39Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 9957 2008-06-26 14:20:26Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3443,7 +3443,7 @@ int pgmPoolFlushPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
      * Quietly reject any attempts at flushing the currently active shadow CR3 mapping
      */
     if (    pPage->idx == PGMPOOL_IDX_AMD64_CR3
-        &&  PGMGetHyperCR3(CTXSUFF(pPool->pVM)) != pPage->Core.Key)
+        &&  PGMGetHyperCR3(CTXSUFF(pPool->pVM)) == pPage->Core.Key)
     {
         Log(("pgmPoolFlushPage: current active shadow CR3, rejected. enmKind=%d idx=%d\n", pPage->enmKind, pPage->idx));
         return VINF_SUCCESS;
