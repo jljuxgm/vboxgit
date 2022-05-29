@@ -1,4 +1,4 @@
-# $Id: Config.kmk 7602 2008-03-27 17:25:37Z vboxsync $
+# $Id: Config.kmk 7691 2008-04-01 18:01:10Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -429,8 +429,8 @@ ifdef VBOX_OSE
   # Qt/Mac v3.3.x requires patching to work for us.
   VBOX_WITH_QTGUI=
  endif
- ifneq ($(BUILD_TARGET),linux)
-  # Only the Linux installer is public
+ ifn1of ($(BUILD_TARGET),linux solaris)
+  # Only the Linux, Solaris installers are public
   VBOX_WITH_INSTALLER=
  endif
  VBOX_WITH_AHCI=
@@ -2902,7 +2902,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 7602 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 7691 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
