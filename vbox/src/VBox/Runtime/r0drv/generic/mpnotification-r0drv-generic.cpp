@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-generic.cpp 9311 2008-06-02 15:27:03Z vboxsync $ */
+/* $Id: mpnotification-r0drv-generic.cpp 9602 2008-06-11 12:09:31Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Notifications, Ring-0 Driver, Generic Stubs.
  */
@@ -51,14 +51,14 @@ RTDECL(int) RTMpNotificationDeregister(PFNRTMPNOTIFICATION pfnCallback, void *pv
 }
 
 
-RTR0DECL(int) RTR0MpNotificationInit(void *pvOS)
+int rtR0MpNotificationInit(void)
 {
     NOREF(pvOS);
     return VINF_SUCCESS;
 }
 
 
-RTR0DECL(void) RTR0MpNotificationTerm(void *pvOS)
+void rtR0MpNotificationTerm(void)
 {
     NOREF(pvOS);
 }

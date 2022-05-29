@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-solaris.c 9318 2008-06-02 16:01:04Z vboxsync $ */
+/* $Id: mpnotification-r0drv-solaris.c 9602 2008-06-11 12:09:31Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Solaris.
  */
@@ -67,16 +67,14 @@ static int rtMpNotificationSolarisCallback(cpu_setup_t enmSolarisEvent, int iCpu
 }
 
 
-int rtR0MpNotificationNativeInit(void *pvOS)
+int rtR0MpNotificationNativeInit(void)
 {
-    NOREF(pvOS);
     register_cpu_setup_func(rtMpNotificationSolarisCallback, NULL);
 }
 
 
-void rtR0MpNotificationNativeTerm(void *pvOS)
+void rtR0MpNotificationNativeTerm(void)
 {
-    NOREF(pvOS);
     unregister_cpu_setup_func(rtMpNotificationSolarisCallback, NULL);
 }
 
