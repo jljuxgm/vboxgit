@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 7677 2008-04-01 12:20:28Z vboxsync $ */
+/* $Id: PGM.cpp 7700 2008-04-02 15:03:19Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2744,7 +2744,7 @@ if (getenv("VBOX_32BIT"))
                 case SUPPAGINGMODE_AMD64_GLOBAL:
                 case SUPPAGINGMODE_AMD64_NX:
                 case SUPPAGINGMODE_AMD64_GLOBAL_NX:
-                    enmShadowMode = PGMMODE_PAE;
+                    enmShadowMode = PGMMODE_AMD64;
                     enmSwitcher = VMMSWITCHER_AMD64_TO_AMD64;
                     break;
 
@@ -2886,8 +2886,7 @@ int pgmR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
                     break;
                 case PGMMODE_AMD64:
                 case PGMMODE_AMD64_NX:
-                    rc2 = PGM_BTH_NAME_PAE_REAL(Enter)(pVM, NIL_RTGCPHYS);
-                    break;
+                    AssertMsgFailed(("Should use PAE shadow mode!\n"));
                 default: AssertFailed(); break;
             }
             break;
@@ -2905,8 +2904,7 @@ int pgmR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
                     break;
                 case PGMMODE_AMD64:
                 case PGMMODE_AMD64_NX:
-                    rc2 = PGM_BTH_NAME_PAE_PROT(Enter)(pVM, NIL_RTGCPHYS);
-                    break;
+                    AssertMsgFailed(("Should use PAE shadow mode!\n"));
                 default: AssertFailed(); break;
             }
             break;
