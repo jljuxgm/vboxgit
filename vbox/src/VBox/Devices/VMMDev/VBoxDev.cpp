@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 8430 2008-04-28 16:06:30Z vboxsync $ */
+/* $Id: VBoxDev.cpp 8689 2008-05-07 22:10:24Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2328,6 +2328,7 @@ static DECLCALLBACK(void) vmmdevReset(PPDMDEVINS pDevIns)
     /* Reset means that additions will report again. */
     pData->fu32AdditionsOk = false;
     memset (&pData->guestInfo, 0, sizeof (pData->guestInfo));
+    pData->pDrv->pfnUpdateGuestVersion(pData->pDrv, &pData->guestInfo);
 
     memset (&pData->lastReadDisplayChangeRequest, 0, sizeof (pData->lastReadDisplayChangeRequest));
 
