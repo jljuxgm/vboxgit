@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 8020 2008-04-16 10:14:39Z vboxsync $ */
+/* $Id: MachineImpl.cpp 8024 2008-04-16 11:00:26Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5705,7 +5705,7 @@ HRESULT Machine::saveHardware (settings::Key &aNode)
 
         /* PAE (optional, default is false) */
         Key PAENode = cpuNode.createKey ("PAE");
-        PAENode.setValue <bool> ("enabled", mHWData->mPAEEnabled);
+        PAENode.setValue <bool> ("enabled", !!mHWData->mPAEEnabled);
     }
 
     /* memory (required) */
