@@ -1,4 +1,4 @@
-# $Id: Config.kmk 10945 2008-07-29 18:15:30Z vboxsync $
+# $Id: Config.kmk 11035 2008-07-31 15:45:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1841,7 +1841,7 @@ TEMPLATE_VBOXR0DRV_CFLAGS.x86          = -m32 -mno-sse -mno-mmx -mno-sse2 -mno-3
 TEMPLATE_VBOXR0DRV_CFLAGS.amd64        = -m64 -mno-sse -mno-mmx -mno-sse2 -mno-3dnow $(if $(VBOX_SOLARIS_10),,-msave-args) -mno-red-zone -mcmodel=kernel \
 	-fno-reorder-blocks -fno-asynchronous-unwind-tables -funit-at-a-time
 TEMPLATE_VBOXR0DRV_CXXFLAGS           = -Wno-trigraphs -Wpointer-arith -Winline $(VBOX_GCC_Wno-pointer-sign) \
-	-O2 -nodefaultlibs -fno-strict-aliasing -fno-common
+	-O2 -nodefaultlibs -fno-strict-aliasing -fno-common -fno-exceptions
 TEMPLATE_VBOXR0DRV_CXXFLAGS.x86       = $(TEMPLATE_VBOXR0DRV_CFLAGS.x86)
 TEMPLATE_VBOXR0DRV_CXXFLAGS.amd64     = $(TEMPLATE_VBOXR0DRV_CFLAGS.amd64)
 endif # Solaris
@@ -2944,7 +2944,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10945 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11035 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
