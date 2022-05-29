@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 7569 2008-03-26 11:47:48Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 7572 2008-03-26 12:39:10Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -254,7 +254,7 @@ HWACCMR0DECL(int) HWACCMR0Init()
             else
             {
 #ifdef LOG_ENABLED
-                SUPR0Printf("HWACCMR0InitCPU failed for cpu %d with rc=%d\n", idCpu, HWACCMR0Globals.lLastError);
+                SUPR0Printf("HWACCMR0InitCPU failed with rc=%d\n", HWACCMR0Globals.lLastError);
 #endif
                 HWACCMR0Globals.lLastError = VERR_VMX_NO_VMX;
             }
