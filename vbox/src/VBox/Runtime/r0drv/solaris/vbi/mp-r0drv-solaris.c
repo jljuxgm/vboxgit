@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-solaris.c 9149 2008-05-27 09:27:29Z vboxsync $ */
+/* $Id: mp-r0drv-solaris.c 9429 2008-06-05 15:22:37Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Solaris.
  */
@@ -71,7 +71,7 @@ RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
 }
 
 
-RTDECL(bool) RTMpDoesCpuExist(RTCPUID idCpu)
+RTDECL(bool) RTMpIsCpuPossible(RTCPUID idCpu)
 {
     return idCpu < vbi_cpu_count();
 }
@@ -85,7 +85,7 @@ RTDECL(PRTCPUSET) RTMpGetSet(PRTCPUSET pSet)
     idCpu = RTMpGetMaxCpuId(); /* it's inclusive */
     do
     {
-        if (RTMpDoesCpuExist(idCpu))
+        if (RTMpIsCpuPossible(idCpu))
             RTCpuSetAdd(pSet, idCpu);
     } while (idCpu-- > 0);
 

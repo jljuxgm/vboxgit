@@ -1,4 +1,4 @@
-/* $Id: mp-os2.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: mp-os2.cpp 9429 2008-06-05 15:22:37Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, OS/2.
  */
@@ -61,14 +61,7 @@ RTDECL(RTCPUID) RTMpGetMaxCpuId(void)
 }
 
 
-RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
-{
-    RTCPUSET Set;
-    return RTCpuSetIsMember(RTMpGetOnlineSet(&Set), idCpu);
-}
-
-
-RTDECL(bool) RTMpDoesCpuExist(RTCPUID idCpu)
+RTDECL(bool) RTMpIsCpuPossible(RTCPUID idCpu)
 {
     RTCPUSET Set;
     return RTCpuSetIsMember(RTMpGetSet(&Set), idCpu);
@@ -92,6 +85,13 @@ RTDECL(RTCPUID) RTMpGetCount(void)
     if (rc || !cCpus)
         cCpus = 1;
     return cCpus;
+}
+
+
+RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
+{
+    RTCPUSET Set;
+    return RTCpuSetIsMember(RTMpGetOnlineSet(&Set), idCpu);
 }
 
 

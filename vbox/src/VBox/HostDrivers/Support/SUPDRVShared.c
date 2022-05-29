@@ -1,4 +1,4 @@
-/* $Revision: 9212 $ */
+/* $Revision: 9429 $ */
 /** @file
  * VirtualBox Support Driver - Shared code.
  */
@@ -201,7 +201,7 @@ static SUPFUNC g_aFunctions[] =
     { "RTMpCpuId",                              (void *)RTMpCpuId },
     { "RTMpCpuIdFromSetIndex",                  (void *)RTMpCpuIdFromSetIndex },
     { "RTMpCpuIdToSetIndex",                    (void *)RTMpCpuIdToSetIndex },
-    { "RTMpDoesCpuExist",                       (void *)RTMpDoesCpuExist },
+    { "RTMpIsCpuPossible",                      (void *)RTMpIsCpuPossible },
     { "RTMpGetCount",                           (void *)RTMpGetCount },
     { "RTMpGetMaxCpuId",                        (void *)RTMpGetMaxCpuId },
     { "RTMpGetOnlineCount",                     (void *)RTMpGetOnlineCount },
