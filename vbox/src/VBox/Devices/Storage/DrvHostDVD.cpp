@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 8017 2008-04-16 07:54:25Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -331,14 +331,17 @@ DECLCALLBACK(int) drvHostDvdPoll(PDRVHOSTBASE pThis)
     bool fMediaChanged = false;
 
     /* Need to pass the previous state and DKIO_NONE for the first time. */
-    static dkio_state DeviceState = DKIO_NONE;
-    int rc2 = ioctl(pThis->FileRawDevice, DKIOCSTATE, &DeviceState);
+    static dkio_state s_DeviceState = DKIO_NONE;
+    dkio_state PreviousState = s_DeviceState;
+    int rc2 = ioctl(pThis->FileRawDevice, DKIOCSTATE, &s_DeviceState);
     if (rc2 == 0)
     {
-        fMediaPresent = DeviceState == DKIO_INSERTED;
-        if (pThis->fMediaPresent != fMediaPresent || !fMediaPresent)
-            fMediaChanged = true;   /** @todo find proper way to detect media change. */
+        fMediaPresent = (s_DeviceState == DKIO_INSERTED);
+        if (PreviousState != s_DeviceState)
+            fMediaChanged = true;
     }
+    else
+        fMediaChanged = true;
 
 #else
 # error "Unsupported platform."
