@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7447 2008-03-13 21:37:52Z vboxsync $
+# $Id: Makefile.kmk 7467 2008-03-17 07:44:00Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -391,7 +391,7 @@ VirtualBox_QT_MOCHDRS = \
 	include/QIStateIndicator.h \
 	include/QIMessageBox.h \
 	include/QIRichLabel.h \
-	include/QIAbstractWizardFramework.h \
+	include/QIAbstractWizard.h \
 	include/VBoxGlobalSettings.h \
 	include/VBoxUtils.h \
 	include/VBoxGlobal.h \
@@ -461,7 +461,7 @@ VirtualBox_SOURCES = \
 	src/QIStatusBar.cpp \
 	src/QIMessageBox.cpp \
 	src/QIRichLabel.cpp \
-	src/QIAbstractWizardFramework.cpp \
+	src/QIAbstractWizard.cpp \
 	src/VBoxDefs.cpp \
 	src/VBoxGlobalSettings.cpp \
 	src/VBoxGlobal.cpp \
