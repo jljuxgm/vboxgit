@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 7718 2008-04-03 11:26:16Z vboxsync $ */
+/* $Id: EMAll.cpp 7735 2008-04-04 09:14:57Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1673,7 +1673,7 @@ EMDECL(int) EMInterpretCRxWrite(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRe
                 rc = PGMFlushTLB(pVM, CPUMGetGuestCR3(pVM), true /* global */);
                 AssertRCReturn(rc, rc);
             }
-            return PGMChangeMode(pVM, CPUMGetGuestCR0(pVM), CPUMGetGuestCR4(pVM), 0);
+            return PGMChangeMode(pVM, CPUMGetGuestCR0(pVM), CPUMGetGuestCR4(pVM), CPUMGetGuestEFER(pVM));
 
         case USE_REG_CR2:
             rc = CPUMSetGuestCR2(pVM, val32); AssertRC(rc);
@@ -1713,7 +1713,7 @@ EMDECL(int) EMInterpretCRxWrite(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRe
                 VM_FF_SET(pVM, VM_FF_TO_R3);
             }
 # endif
-            return PGMChangeMode(pVM, CPUMGetGuestCR0(pVM), CPUMGetGuestCR4(pVM), 0);
+            return PGMChangeMode(pVM, CPUMGetGuestCR0(pVM), CPUMGetGuestCR4(pVM), CPUMGetGuestEFER(pVM));
 
         default:
             AssertFailed();
