@@ -1,4 +1,4 @@
-/* $Id: strformat-vbox.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: strformat-vbox.cpp 9224 2008-05-29 13:55:49Z vboxsync $ */
 /** @file
  * IPRT - VBox String Formatter extensions.
  */
@@ -52,10 +52,11 @@
  *      - \%Vhxs - Takes a pointer to the memory to be displayed as a hex string,
  *        i.e. a series of space separated bytes formatted as two digit hex value.
  *        Use the width to specify the length. Default length is 16 bytes.
- *      - \%VGp  - Guest context physical address.
- *      - \%VGv  - Guest context virtual address.
- *      - \%VHp  - Host context physical address.
- *      - \%VHv  - Host context virtual address.
+ *      - \%VGp   - Guest context physical address.
+ *      - \%VGv   - Guest context virtual address.
+ *      - \%VRv   - 32 bits guest context virtual address.
+ *      - \%VHp   - Host context physical address.
+ *      - \%VHv   - Host context virtual address.
  *      - \%VI[8|16|32|64] - Signed integer value of the specifed bit count.
  *      - \%VU[8|16|32|64] - Unsigned integer value of the specifed bit count.
  *      - \%VX[8|16|32|64] - Hexadecimal integer value of the specifed bit count.
@@ -274,6 +275,35 @@ size_t rtstrFormatVBox(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char *
                 }
                 break;
             }
+
+            /*
+             * Raw mode types.
+             */
+            case 'R':
+            {
+                /*
+                 * Raw mode types.
+                 */
+                ch = *(*ppszFormat)++;
+                switch (ch)
+                {
+                    case 'v':   /* Virtual address. */
+                    {
+                        RTRCPTR RCPtr = va_arg(*pArgs, RTRCPTR);
+                        switch (sizeof(RCPtr))
+                        {
+                            case 4: return RTStrFormat(pfnOutput, pvArgOutput, NULL, 0, "%08x", RCPtr);
+                            default: AssertFailed(); return 0;
+                        }
+                    }
+
+                    default:
+                        AssertMsgFailed(("Invalid status code format type '%%VR%c%.10s'!\n", ch, *ppszFormat));
+                        break;
+                }
+                break;
+            }
+
 
             /*
              * Host types.
