@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 11693 2008-08-27 09:43:43Z vboxsync $ */
+/* $Id: CPUM.cpp 11705 2008-08-27 14:53:58Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -262,9 +262,7 @@ static int cpumR3CpuIdInit(PVM pVM)
                                        | X86_CPUID_FEATURE_EDX_PGE
                                        | X86_CPUID_FEATURE_EDX_MCA
                                        | X86_CPUID_FEATURE_EDX_CMOV
-#if 0 /* Responsible for #3026 & VT-x; cause unknown */
                                        | X86_CPUID_FEATURE_EDX_PAT
-#endif
                                        | X86_CPUID_FEATURE_EDX_PSE36
                                        //| X86_CPUID_FEATURE_EDX_PSN   - no serial number.
                                        | X86_CPUID_FEATURE_EDX_CLFSH
