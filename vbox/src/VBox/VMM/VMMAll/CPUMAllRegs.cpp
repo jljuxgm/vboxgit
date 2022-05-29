@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 8108 2008-04-17 15:17:37Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 8110 2008-04-17 15:50:17Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1096,6 +1096,17 @@ CPUMDECL(void) CPUMClearGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
                 pVM->cpum.s.aGuestCpuIdExt[1].edx &= ~X86_CPUID_AMD_FEATURE_EDX_APIC;
             Log(("CPUMSetGuestCpuIdFeature: Disabled APIC\n"));
             break;
+
+        case CPUMCPUIDFEATURE_PAE:
+        {
+            if (pVM->cpum.s.aGuestCpuIdStd[0].eax >= 1)
+                pVM->cpum.s.aGuestCpuIdStd[1].edx &= ~X86_CPUID_FEATURE_EDX_PAE;
+            if (    pVM->cpum.s.aGuestCpuIdExt[0].eax >= 0x80000001
+                &&  pVM->cpum.s.aGuestCpuIdExt[1].edx)
+                pVM->cpum.s.aGuestCpuIdExt[1].edx &= ~X86_CPUID_AMD_FEATURE_EDX_PAE;
+            LogRel(("CPUMClearGuestCpuIdFeature: Disabled PAE!\n"));
+            break;
+        }
 
         default:
             AssertMsgFailed(("enmFeature=%d\n", enmFeature));
