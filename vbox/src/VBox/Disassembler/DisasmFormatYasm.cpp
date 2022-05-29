@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 9675 2008-06-13 09:49:54Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 9730 2008-06-16 15:37:46Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -332,7 +332,7 @@ DISDECL(size_t) DISFormatYasmEx(PCDISCPUSTATE pCpu, char *pszBuf, size_t cchBuf,
 #define PUT_NUM_8(num)  PUT_NUM(4,  "0%02xh", (uint8_t)(num))
 #define PUT_NUM_16(num) PUT_NUM(6,  "0%04xh", (uint16_t)(num))
 #define PUT_NUM_32(num) PUT_NUM(10, "0%08xh", (uint32_t)(num))
-#define PUT_NUM_64(num) PUT_NUM(18, "0%08xh", (uint64_t)(num))
+#define PUT_NUM_64(num) PUT_NUM(18, "0%016xh", (uint64_t)(num))
 
 #define PUT_NUM_SIGN(cch, fmt, num, stype, utype) \
             do { \
