@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 8033 2008-04-16 12:40:16Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -855,6 +855,7 @@ DECLASM(int) TRPMGCTrap0dHandler(PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
             Assert(TRPMHasTrap(pVM));
             /* no break; */
         case VINF_PGM_SYNC_CR3: /** @todo Check this with Sander. */
+        case VINF_EM_RAW_EMULATE_INSTR:
         case VINF_IOM_HC_IOPORT_READ:
         case VINF_IOM_HC_IOPORT_WRITE:
         case VINF_IOM_HC_MMIO_WRITE:

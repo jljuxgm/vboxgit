@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 8021 2008-04-16 10:16:22Z vboxsync $ */
+/* $Id: PGMMap.cpp 8033 2008-04-16 12:40:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1009,7 +1009,7 @@ int pgmR3SyncPTResolveConflictPAE(PVM pVM, PPGMMAPPING pMapping, RTGCPTR GCPtrOl
             /*
              * Ask for the mapping.
              */
-            RTGCPTR GCPtrNewMapping = iPDPTE << X86_PDPT_SHIFT + iPDNew << X86_PD_PAE_SHIFT;
+            RTGCPTR GCPtrNewMapping = (iPDPTE << X86_PDPT_SHIFT) + (iPDNew << X86_PD_PAE_SHIFT);
 
             if (pMapping->pfnRelocate(pVM, GCPtrOldMapping, GCPtrNewMapping, PGMRELOCATECALL_SUGGEST, pMapping->pvUser))
             {

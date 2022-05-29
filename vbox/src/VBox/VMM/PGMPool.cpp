@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 7961 2008-04-14 17:09:45Z vboxsync $ */
+/* $Id: PGMPool.cpp 8033 2008-04-16 12:40:16Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -432,6 +432,7 @@ PDMR3DECL(int) PGMR3PoolGrow(PVM pVM)
             return i ? VINF_SUCCESS : VERR_NO_PAGE_MEMORY;
         }
         pPage->Core.Key  = MMPage2Phys(pVM, pPage->pvPageHC);
+        LogFlow(("PGMR3PoolGrow: insert page %VHp\n", pPage->Core.Key));
         pPage->GCPhys    = NIL_RTGCPHYS;
         pPage->enmKind   = PGMPOOLKIND_FREE;
         pPage->idx       = pPage - &pPool->aPages[0];
