@@ -1,4 +1,4 @@
-; $Id: memcmp.asm 7208 2008-02-29 01:25:30Z vboxsync $
+; $Id: memcmp.asm 7213 2008-02-29 01:42:12Z vboxsync $
 ;; @file
 ; innotek Portable Runtime - No-CRT memcmp - AMD64 & X86.
 ;
@@ -34,10 +34,10 @@ BEGINCODE
 ; @param    cb      gcc: rdx  msc: r8   x86:[esp+0ch]
 BEGINPROC RT_NOCRT(memcmp)
         cld
+        xor     eax, eax
 
         ; Do the bulk of the work.
 %ifdef RT_ARCH_AMD64
-        xor     eax, eax
  %ifdef ASM_CALL64_MSC
         mov     r10, rdi                ; save
         mov     r11, rsi                ; save
