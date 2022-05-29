@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5902 2007-12-02 09:50:36Z vboxsync $
+# $Id: Config.kmk 5930 2007-12-03 03:09:24Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -243,7 +243,7 @@ if1of ($(BUILD_TARGET),darwin os2)
 IPRT_WITH_KSTUFF = 1
 endif
 # Enable Crossbow support for Solaris.
-#VBOX_WITH_CROSSBOW = 1
+VBOX_WITH_CROSSBOW = 1
 # Enable setuid wrapper for Solaris.
 #VBOX_WITH_SUID_WRAPPER = 1
 
@@ -2687,7 +2687,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5902 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5930 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 ifeq ($(KBUILD_VERSION_PATCH),2) ## tmp, remove later.
  ifeq ($(which (SVN)),)
