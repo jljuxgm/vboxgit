@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10299 2008-07-07 09:09:06Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10330 2008-07-07 14:21:22Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -580,14 +580,14 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     if (pVM->hwaccm.s.fContextUseFlags & HWACCM_CHANGED_GUEST_CR0)
     {
         val = pCtx->cr0;
-        if (CPUMIsGuestFPUStateActive(pVM) == false)
+        if (!CPUMIsGuestFPUStateActive(pVM))
         {
+            Assert(!pVM->hwaccm.s.svm.fResumeVM);
             /* Always use #NM exceptions to load the FPU/XMM state on demand. */
             val |= X86_CR0_TS | X86_CR0_ET | X86_CR0_NE | X86_CR0_MP;
         }
         else
         {
-            Assert(pVM->hwaccm.s.svm.fResumeVM == true);
             /** @todo check if we support the old style mess correctly. */
             if (!(val & X86_CR0_NE))
             {
