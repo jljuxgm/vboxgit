@@ -1,4 +1,4 @@
-# $Id: Config.kmk 9168 2008-05-27 14:19:48Z vboxsync $
+# $Id: Config.kmk 9169 2008-05-27 14:31:16Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2887,7 +2887,7 @@ ifeq ($(KBUILD_TARGET),l4) # cross building linux on l4.
  TEMPLATE_VBOXGUESTR0_SYSSUFF   = .ko
 endif
 ifeq ($(KBUILD_TARGET),solaris) # No VBI for the guest additions yet.
- TEMPLATE_VBOXGUESTR0_LDFLAGS := $(filter-out -r -dy -N misc/vbi, $(TEMPLATE_VBOXR0DRV_LDFLAGS))
+ TEMPLATE_VBOXGUESTR0_LDFLAGS   = -r
 endif
 
 #
@@ -2989,7 +2989,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9168 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9169 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
