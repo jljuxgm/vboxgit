@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: fileio-win.cpp 6431 2008-01-21 22:41:13Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O, native implementation for the Windows host platform.
  */
@@ -66,13 +66,24 @@
  */
 inline bool MySetFilePointer(RTFILE File, uint64_t offSeek, uint64_t *poffNew, unsigned uMethod)
 {
+    bool            fRc;
     LARGE_INTEGER   off;
+
     off.QuadPart = offSeek;
 #if 1
-    off.LowPart = SetFilePointer((HANDLE)File, off.LowPart, &off.HighPart, uMethod);
-    bool fRc = off.LowPart != INVALID_SET_FILE_POINTER;
+    if (off.LowPart != INVALID_SET_FILE_POINTER)
+    {
+        off.LowPart = SetFilePointer((HANDLE)File, off.LowPart, &off.HighPart, uMethod);
+        fRc = off.LowPart != INVALID_SET_FILE_POINTER;
+    }
+    else
+    {
+        SetLastError(NO_ERROR);
+        off.LowPart = SetFilePointer((HANDLE)File, off.LowPart, &off.HighPart, uMethod);
+        fRc = GetLastError() == NO_ERROR;
+    }
 #else
-    bool fRc = SetFilePointerEx((HANDLE)File, off, &off, uMethod);
+    fRc = SetFilePointerEx((HANDLE)File, off, &off, uMethod);
 #endif
     if (fRc && poffNew)
         *poffNew = off.QuadPart;
