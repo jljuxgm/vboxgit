@@ -1,4 +1,4 @@
-/* $Id: utf-16.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: utf-16.cpp 6041 2007-12-10 19:11:19Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - UTF-16
  */
@@ -505,6 +505,24 @@ RTDECL(int)  RTUtf16ToUtf8Ex(PCRTUTF16 pwszString, size_t cwcString, char **ppsz
         else
             rc = VERR_NO_STR_MEMORY;
     }
+    return rc;
+}
+
+
+RTDECL(size_t) RTUtf16CalcUtf8Len(PCRTUTF16 pwsz)
+{
+    size_t cch;
+    int rc = rtUtf16CalcUtf8Length(pwsz, RTSTR_MAX, &cch);
+    return RT_SUCCESS(rc) ? cch : 0;
+}
+
+
+RTDECL(int) RTUtf16CalcUtf8LenEx(PCRTUTF16 pwsz, size_t cwc, size_t *pcch)
+{
+    size_t cch;
+    int rc = rtUtf16CalcUtf8Length(pwsz, cwc, &cch);
+    if (pcch)
+        *pcch = RT_SUCCESS(rc) ? cch : ~(size_t)0;
     return rc;
 }
 
