@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 10692 2008-07-16 11:13:10Z vboxsync $ */
+/* $Id: HWACCM.cpp 10695 2008-07-16 12:17:31Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -708,6 +708,17 @@ HWACCMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
 HWACCMR3DECL(bool) HWACCMR3IsActive(PVM pVM)
 {
     return pVM->hwaccm.s.fActive;
+}
+
+/**
+ * Checks if we are currently using nested paging.
+ *
+ * @returns boolean
+ * @param   pVM         The VM to operate on.
+ */
+HWACCMR3DECL(bool) HWACCMR3IsNestedPagingActive(PVM pVM)
+{
+    return pVM->hwaccm.s.fNestedPaging;
 }
 
 /**
