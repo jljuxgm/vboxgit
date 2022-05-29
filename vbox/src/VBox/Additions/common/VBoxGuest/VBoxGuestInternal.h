@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 6032 2007-12-10 07:35:42Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 6033 2007-12-10 08:04:17Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -144,7 +144,7 @@ typedef struct VBOXGUESTSESSION
 
 __BEGIN_DECLS
 
-int  VBoxGuestInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase, RTCCPHYS PhysMMIOBase, VBOXOSTYPE enmOSType);
+int  VBoxGuestInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase, RTCCPHYS PhysMMIOBase, uint32_t cbMMIO, VBOXOSTYPE enmOSType);
 void VBoxGuestDeleteDevExt(PVBOXGUESTDEVEXT pDevExt);
 bool VBoxGuestCommonISR(PVBOXGUESTDEVEXT pDevExt);
 
