@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 11169 2008-08-06 00:50:03Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 11194 2008-08-06 21:25:20Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -304,8 +304,9 @@ int main()
     GEN_CHECK_OFF(KBDState, mouse_dy);
     GEN_CHECK_OFF(KBDState, mouse_dz);
     GEN_CHECK_OFF(KBDState, mouse_buttons);
-    GEN_CHECK_OFF(KBDState, pDevInsHC);
-    GEN_CHECK_OFF(KBDState, pDevInsGC);
+    GEN_CHECK_OFF(KBDState, pDevInsR3);
+    GEN_CHECK_OFF(KBDState, pDevInsR0);
+    GEN_CHECK_OFF(KBDState, pDevInsRC);
     GEN_CHECK_OFF(KBDState, Keyboard.Base);
     GEN_CHECK_OFF(KBDState, Keyboard.Port);
     GEN_CHECK_OFF(KBDState, Keyboard.pDrvBase);
