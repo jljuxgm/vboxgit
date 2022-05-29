@@ -1,4 +1,4 @@
-# $Id: Config.kmk 9537 2008-06-09 11:57:22Z vboxsync $
+# $Id: Config.kmk 9538 2008-06-09 12:05:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2887,8 +2887,11 @@ TEMPLATE_VBOXGUESTR3CPPEXE_EXTENDS = VBOXGUESTR3EXE
 ifeq ($(KBUILD_TARGET),win)
  # later
 else
- #TEMPLATE_VBOXGUESTR3CPPEXE_TOOL  = $(TEMPLATE_VBOXR3EXE_TOOL)
- TEMPLATE_VBOXGUESTR3CPPEXE_TOOL   = $(VBOX_GCC32_TOOL)
+ ifdef VBOX_WITH_64BIT_ADDITIONS
+  TEMPLATE_VBOXGUESTR3CPPEXE_TOOL  = $(TEMPLATE_VBOXR3EXE_TOOL)
+ else
+  TEMPLATE_VBOXGUESTR3CPPEXE_TOOL  = $(VBOX_GCC32_TOOL)
+ endif
  TEMPLATE_VBOXGUESTR3CPPEXE_CXXFLAGS = $(TEMPLATE_VBOXR3EXE_CXXFLAGS)
 endif
 
@@ -3028,7 +3031,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9537 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9538 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
