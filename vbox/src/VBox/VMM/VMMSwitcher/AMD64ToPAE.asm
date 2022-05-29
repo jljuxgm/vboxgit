@@ -1,4 +1,4 @@
-; $Id: AMD64ToPAE.asm 7095 2008-02-22 12:41:56Z vboxsync $
+; $Id: AMD64ToPAE.asm 7122 2008-02-25 16:17:09Z vboxsync $
 ;; @file
 ; VMM - World Switchers, AMD64 to PAE.
 ;
@@ -632,7 +632,7 @@ BEGINPROC VMMGCGuestToHostAsmGuestCtx
     ;
     ; Guest Context (assumes esp now points to CPUMCTXCORE structure).
     ;
-    ; general purpose registers (layout is pushad)
+    ; general purpose registers
     push    eax                         ; save return code.
     mov     eax, [esp + 4 + CPUMCTXCORE.edi]
     mov     [edx + CPUM.Guest.edi], eax
