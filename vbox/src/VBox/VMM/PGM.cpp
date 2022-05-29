@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 6914 2008-02-11 23:17:43Z vboxsync $ */
+/* $Id: PGM.cpp 6915 2008-02-11 23:35:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3884,7 +3884,7 @@ PGMR3DECL(int) PGMR3ChangeShwPDMappings(PVM pVM, bool fEnable)
 {
     pVM->pgm.s.fDisableMappings = !fEnable;
 
-    size_t cb;
+    uint32_t cb;
     int rc = PGMR3MappingsSize(pVM, &cb);
     AssertRCReturn(rc, rc);
 
