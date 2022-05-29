@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 9397 2008-06-04 18:01:34Z vboxsync $ */
+/* $Id: PGMInternal.h 9398 2008-06-04 18:50:56Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1623,11 +1623,11 @@ typedef struct PGMPOOL
     STAMCOUNTER     StatCacheUncacheable;
 # endif
 #elif HC_ARCH_BITS == 64
-    uint32_t        Alignment1;         /**< Align the next member on a 64-bit boundrary. */
+    uint32_t        Alignment3;         /**< Align the next member on a 64-bit boundrary. */
 #endif
     /** The AVL tree for looking up a page by its HC physical address. */
     AVLOHCPHYSTREE  HCPhysTree;
-    uint32_t        Alignment2;         /**< Align the next member on a 64-bit boundrary. */
+    uint32_t        Alignment4;         /**< Align the next member on a 64-bit boundrary. */
     /** Array of pages. (cMaxPages in length)
      * The Id is the index into thist array.
      */
