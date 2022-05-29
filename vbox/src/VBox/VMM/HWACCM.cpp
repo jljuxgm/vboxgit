@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 7904 2008-04-11 09:39:47Z vboxsync $ */
+/* $Id: HWACCM.cpp 7977 2008-04-15 11:17:08Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -404,9 +404,6 @@ HWACCMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                 pVM->fHWACCMEnabled = true;
                 pVM->hwaccm.s.vmx.fEnabled = true;
                 CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_SEP);
-#if 0 /* not yet */
-                CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE);
-#endif
                 LogRel(("HWACCM: VMX enabled!\n"));
             }
             else
