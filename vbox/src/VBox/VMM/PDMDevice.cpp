@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 10492 2008-07-11 08:14:13Z vboxsync $ */
+/* $Id: PDMDevice.cpp 10841 2008-07-23 19:54:12Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -925,7 +925,7 @@ int pdmR3DevInit(PVM pVM)
         rc = pDevIns->pDevReg->pfnConstruct(pDevIns, pDevIns->iInstance, pDevIns->pCfgHandle);
         if (VBOX_FAILURE(rc))
         {
-            NOT_DMIK(AssertMsgFailed(("Failed to construct '%s'/%d! %Vra\n", pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, rc)));
+            LogRel(("PDM: Failed to construct '%s'/%d! %Vra\n", pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, rc));
             /* because we're damn lazy right now, we'll say that the destructor will be called even if the constructor fails. */
             return rc;
         }
