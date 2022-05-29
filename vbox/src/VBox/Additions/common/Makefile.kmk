@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6119 2007-12-18 10:15:03Z vboxsync $
+# $Id: Makefile.kmk 6138 2007-12-18 17:11:36Z vboxsync $
 ## @file
 # Sub-Makefile for the common addition code.
 #
@@ -21,8 +21,8 @@ include	$(PATH_KBUILD)/subheader.kmk
 
 # Include sub-makefile.
 include $(PATH_SUB_CURRENT)/VBoxGuestLib/Makefile.kmk
+if1of ($(BUILD_TARGET),os2 solaris)
 include $(PATH_SUB_CURRENT)/VBoxGuest/Makefile.kmk
-ifeq ($(BUILD_PLATFORM),solaris)
 include $(PATH_SUB_CURRENT)/VBoxService/Makefile.kmk
 endif
 
