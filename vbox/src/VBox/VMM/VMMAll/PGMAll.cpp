@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 7905 2008-04-11 10:16:23Z vboxsync $ */
+/* $Id: PGMAll.cpp 7907 2008-04-11 11:26:07Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -998,7 +998,7 @@ PGMDECL(int) PGMSyncCR3(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bool 
     /* If global pages are not supported, then all flushes are global */
     if (!(cr4 & X86_CR4_PGE))
         fGlobal = true;
-    LogFlow(("PGMSyncCR3: cr0=%08x cr3=%08x cr4=%08x fGlobal=%d[%d,%d]\n", cr0, cr3, cr4, fGlobal,
+    LogFlow(("PGMSyncCR3: cr0=%VX64 cr3=%VX64 cr4=%VX64 fGlobal=%d[%d,%d]\n", cr0, cr3, cr4, fGlobal,
              VM_FF_ISSET(pVM, VM_FF_PGM_SYNC_CR3), VM_FF_ISSET(pVM, VM_FF_PGM_SYNC_CR3_NON_GLOBAL)));
 
     /*
