@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 6991 2008-02-18 13:19:02Z vboxsync $ */
+/* $Id: fileio-win.cpp 6992 2008-02-18 13:34:17Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O, native implementation for the Windows host platform.
  */
@@ -230,7 +230,7 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
         return RTErrConvertFromWin32(GetLastError());
 
     /*
-     * Turn off indexing of directory through Windows Indexing Service
+     * Turn off indexing of directory through Windows Indexing Service.
      */
     if (fOpen & RTFILE_O_NOT_CONTENT_INDEXED)
     {
@@ -263,7 +263,7 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
     }
 
     /*
-     * Turn off indexing of directory through Windows Indexing Service
+     * Turn off indexing of directory through Windows Indexing Service.
      */
     if (fOpen & RTFILE_O_NOT_CONTENT_INDEXED)
     {
