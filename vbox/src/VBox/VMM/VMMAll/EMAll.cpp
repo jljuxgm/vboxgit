@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: EMAll.cpp 6297 2008-01-09 15:49:50Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1165,9 +1165,11 @@ static int emInterpretMov(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, RT
 
             Assert(param2.size <= 4 && param2.size > 0);
 
+#if 0 /* CSAM/PATM translates aliases which causes this to incorrectly trigger. See #2609 and #1498. */
 #ifdef IN_GC
             /* Safety check (in theory it could cross a page boundary and fault there though) */
             AssertMsgReturn(pDest == pvFault, ("eip=%VGv pDest=%VGv pvFault=%VGv\n", pRegFrame->eip, pDest, pvFault), VERR_EM_INTERPRETER);
+#endif
 #endif
             rc = emRamWrite(pVM, pDest, &val32, param2.size);
             if (VBOX_FAILURE(rc))
