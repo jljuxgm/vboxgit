@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: PDMDriver.cpp 10710 2008-07-16 19:34:31Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1107,7 +1107,7 @@ static DECLCALLBACK(int) pdmR3DrvHlp_PDMAsyncCompletionTemplateCreate(PPDMDRVINS
     PDMDRV_ASSERT_DRVINS(pDrvIns);
     VM_ASSERT_EMT(pDrvIns->Internal.s.pVM);
     LogFlow(("pdmR3DrvHlp_PDMAsyncCompletionTemplateCreate: caller='%s'/%d: ppTemplate=%p pfnCompleted=%p pszDesc=%p:{%s}\n",
-             pDrvIns->pDrvReg->szDriverName, pDrvIns->iInstance, ppTemplate, pfnCompleted, pszDesc));
+             pDrvIns->pDrvReg->szDriverName, pDrvIns->iInstance, ppTemplate, pfnCompleted, pszDesc, pszDesc));
 
     int rc = PDMR3AsyncCompletionTemplateCreateDriver(pDrvIns->Internal.s.pVM, pDrvIns, ppTemplate, pfnCompleted, pszDesc);
 
