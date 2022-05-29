@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 7499 2008-03-19 10:51:50Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 7503 2008-03-19 13:42:34Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -471,9 +471,7 @@ HWACCMR0DECL(int) HWACCMR0EnableAllCpus(PVM pVM, HWACCMSTATE enmNewHwAccmState)
                 memset(pvR0, 0, PAGE_SIZE);
 
 #ifdef LOG_ENABLED
-                RTHCPHYS pPageCpuPhys = RTR0MemObjGetPagePhysAddr(HWACCMR0Globals.aCpuInfo[i].pMemObj, 0);
-
-                SUPR0Printf("address %x phys %x\n", pvR0, (uint32_t)pPageCpuPhys);
+                SUPR0Printf("address %x phys %x\n", pvR0, (uint32_t)RTR0MemObjGetPagePhysAddr(HWACCMR0Globals.aCpuInfo[i].pMemObj, 0));
 #endif
             }
         }
