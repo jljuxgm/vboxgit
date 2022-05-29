@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 6379 2008-01-18 17:25:20Z vboxsync $ */
+/* $Id: MachineImpl.h 6382 2008-01-18 17:37:39Z vboxsync $ */
 
 /** @file
  *
@@ -497,7 +497,7 @@ public:
     STDMETHOD(GetSnapshot) (INPTR GUIDPARAM aId, ISnapshot **aSnapshot);
     STDMETHOD(FindSnapshot) (INPTR BSTR aName, ISnapshot **aSnapshot);
     STDMETHOD(SetCurrentSnapshot) (INPTR GUIDPARAM aId);
-    STDMETHOD(CreateSharedFolder) (INPTR BSTR aName, INPTR BSTR aHostPath, BOOL aWritable);
+    STDMETHOD(CreateSharedFolder) (INPTR BSTR aName, INPTR BSTR aHostPath);
     STDMETHOD(RemoveSharedFolder) (INPTR BSTR aName);
     STDMETHOD(CanShowConsoleWindow) (BOOL *aCanShow);
     STDMETHOD(ShowConsoleWindow) (ULONG64 *aWinId);
