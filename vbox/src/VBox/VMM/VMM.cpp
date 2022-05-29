@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 10062 2008-07-01 09:31:01Z vboxsync $ */
+/* $Id: VMM.cpp 10315 2008-07-07 12:49:59Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2408,8 +2408,12 @@ static void vmmR3FatalDumpInfoHlpInit(PVMMR3FATALDUMPINFOHLP pHlp)
     /*
      * Check if we need write to stderr.
      */
+#ifdef DEBUG_sandervl
+    pHlp->fStdErr = false; /* takes too long to display here */
+#else
     pHlp->fStdErr = (!pHlp->pRelLogger || !(pHlp->pRelLogger->fDestFlags & (RTLOGDEST_STDOUT | RTLOGDEST_STDERR)))
                  && (!pHlp->pLogger || !(pHlp->pLogger->fDestFlags & (RTLOGDEST_STDOUT | RTLOGDEST_STDERR)));
+#endif
 }
 
 
