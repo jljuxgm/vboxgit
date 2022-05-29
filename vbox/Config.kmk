@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6555 2008-01-29 02:38:47Z vboxsync $
+# $Id: Config.kmk 6567 2008-01-29 13:33:41Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -2712,6 +2712,9 @@ endif
 #
 TEMPLATE_VBOXGUESTR3DLL          = VBox Guest User Dynamic Libraries
 TEMPLATE_VBOXGUESTR3DLL_EXTENDS  = VBOXGUESTR3EXE
+if1of ($(BUILD_TARGET),solaris)
+ TEMPLATE_VBOXGUESTR3DLL_TOOL    = $(VBOX_GCC_TOOL)
+endif
 ifn1of ($(BUILD_TARGET), os2 win)
  TEMPLATE_VBOXGUESTR3DLL_DEFS       = $(TEMPLATE_VBOXGUESTR3EXE_DEFS) PIC
  TEMPLATE_VBOXGUESTR3DLL_CFLAGS     = $(TEMPLATE_VBOXGUESTR3EXE_CFLAGS) -fPIC
@@ -2841,7 +2844,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6555 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6567 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
