@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 9375 2008-06-04 08:42:37Z vboxsync $ */
+/* $Id: HWACCM.cpp 9383 2008-06-04 12:22:45Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -45,11 +45,6 @@
 #include <iprt/asm.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>
-
-/* Uncomment to enable experimental nested paging. */
-//#define VBOX_WITH_NESTED_PAGING
-/* Uncomment to enable 64 bits guest support. */
-//#define VBOX_ENABLE_64_BITS_GUESTS
 
 /*******************************************************************************
 *   Internal Functions                                                         *
