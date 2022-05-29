@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibDaemonize.cpp 6445 2008-01-22 14:19:50Z vboxsync $ */
+/** $Id: VBoxGuestR3LibDaemonize.cpp 6524 2008-01-28 11:12:01Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, daemonize a process.
  */
@@ -123,16 +123,6 @@ VBGLR3DECL(int) VbglR3Daemonize(bool fNoChDir, bool fNoClose)
 # error "PORTME"
 
 #else /* the unices */
-
-# ifdef RT_OS_SOLARIS
-    /*
-     * Check if we already belong the init process (pid 1).
-     */
-    /** @todo Why do we need to check for this? */
-    if (getppid() == 1)
-        return VERR_GENERAL_FAILURE;
-# endif
-
     /*
      * Fork the child process and quit the parent.
      *
