@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 11688 2008-08-27 08:13:00Z vboxsync $ */
+/* $Id: EMAll.cpp 11690 2008-08-27 08:47:26Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2555,6 +2555,11 @@ EMDECL(int) EMInterpretRdmsr(PVM pVM, PCPUMCTXCORE pRegFrame)
         val = pCtx->msrKERNELGSBASE;
         break;
 
+#ifdef IN_RING0
+    case MSR_IA32_BIOS_SIGN_ID:
+        val = ASMRdMsr(MSR_IA32_BIOS_SIGN_ID);
+        break;
+#endif
     default:
         /* We should actually trigger a #GP here, but don't as that might cause more trouble. */
         val = 0;
