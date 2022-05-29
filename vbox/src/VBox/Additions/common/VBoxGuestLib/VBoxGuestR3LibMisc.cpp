@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 6458 2008-01-23 06:23:24Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 6463 2008-01-23 15:50:25Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -34,7 +34,7 @@
  */
 VBGLR3DECL(int) VbglR3InterruptEventWaits(void)
 {
-    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_WAITEVENT_INTERRUPT_ALL, 0, 0);
+    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_CANCEL_ALL_WAITEVENTS, 0, 0);
 }
 
 
