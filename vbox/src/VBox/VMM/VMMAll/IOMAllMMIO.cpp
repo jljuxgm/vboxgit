@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 10473 2008-07-10 15:02:53Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 10538 2008-07-11 17:53:49Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -1199,6 +1199,39 @@ IOMDECL(int) IOMMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore,
     STAM_PROFILE_STOP(&pVM->iom.s.StatGCMMIOHandler, a);
     return rc;
 }
+
+
+#ifdef IN_RING3
+/**
+ * \#PF Handler callback for MMIO ranges.
+ *
+ * @returns VINF_SUCCESS if the handler have carried out the operation.
+ * @returns VINF_PGM_HANDLER_DO_DEFAULT if the caller should carry out the access operation.
+ * @param   pVM             VM Handle.
+ * @param   GCPhys          The physical address the guest is writing to.
+ * @param   pvPhys          The HC mapping of that address.
+ * @param   pvBuf           What the guest is reading/writing.
+ * @param   cbBuf           How much it's reading/writing.
+ * @param   enmAccessType   The access type.
+ * @param   pvUser          Pointer to the MMIO range entry.
+ */
+DECLCALLBACK(int) IOMR3MMIOHandler(PVM pVM, RTGCPHYS GCPhysFault, void *pvPhys, void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType, void *pvUser)
+{
+    int           rc;
+    PIOMMMIORANGE pRange = (PIOMMMIORANGE)pvUser;
+
+    Assert(pRange);
+    Assert(pRange == iomMMIOGetRange(&pVM->iom.s, GCPhysFault));
+
+    if (enmAccessType == PGMACCESSTYPE_READ)
+        rc = iomMMIODoRead(pVM, pRange, GCPhysFault, pvBuf, cbBuf);
+    else
+        rc = iomMMIODoWrite(pVM, pRange, GCPhysFault, pvBuf, cbBuf);
+
+    AssertRC(rc);
+    return rc;
+}
+#endif /* IN_RING3 */
 
 
 /**
