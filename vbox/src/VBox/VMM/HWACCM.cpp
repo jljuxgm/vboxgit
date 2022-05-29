@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 8943 2008-05-20 09:15:53Z vboxsync $ */
+/* $Id: HWACCM.cpp 9021 2008-05-21 14:38:13Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -101,6 +101,7 @@ HWACCMR3DECL(int) HWACCMR3Init(PVM pVM)
     pVM->hwaccm.s.svm.fEnabled   = false;
 
     pVM->hwaccm.s.fActive        = false;
+    pVM->hwaccm.s.fNestedPaging  = false;
 
     /* On first entry we'll sync everything. */
     pVM->hwaccm.s.fContextUseFlags = HWACCM_CHANGED_ALL;
