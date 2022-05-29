@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6611 2008-01-30 16:11:44Z vboxsync $
+# $Id: Makefile.kmk 6612 2008-01-30 16:17:33Z vboxsync $
 ## @file
 # Makefile for the VBox Linux Additions X.org mouse driver.
 #
@@ -19,9 +19,6 @@ DEPTH = ../../../../..
 include	$(PATH_KBUILD)/header.kmk
 
 if1of ($(BUILD_TARGET),linux l4)
-
-## @todo clean up this by switching to VBoxGuestR3Lib
-VBOX_LIB_VBGL_R3 := $(PATH_LIB)/VBoxGuestR3LibLinux.a
 
 SYSMODS  = vboxmouse_drv
 DLLS     = vboxmouse_drv_70 vboxmouse_drv_71 vboxmouse_drv_14
