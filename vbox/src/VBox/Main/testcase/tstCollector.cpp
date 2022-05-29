@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 10955 2008-07-29 19:54:14Z vboxsync $ */
+/* $Id: tstCollector.cpp 11181 2008-08-06 15:43:09Z vboxsync $ */
 
 /** @file
  *
@@ -164,7 +164,7 @@ int main(int argc, char *argv[])
 
     RTPrintf("tstCollector: TESTING - Memory usage\n");
 
-    unsigned long total, used, available, processUsed;
+    ULONG total, used, available, processUsed;
 
     rc = collector->getHostMemoryUsage(&total, &used, &available);
     if (RT_FAILURE(rc))
