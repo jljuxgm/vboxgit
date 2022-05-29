@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5999 2007-12-07 15:05:06Z vboxsync $
+# $Id: Makefile.kmk 8153 2008-04-18 14:29:53Z vboxsync $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -108,6 +108,8 @@ VBoxDbg_SOURCES    = \
 	VBoxDbgBase.cpp \
 	VBoxDbgConsole.cpp \
 	VBoxDbgStats.cpp
+
+VBoxDbg_LDFLAGS.darwin = -install_name @executable_path/VBoxDbg.dylib
 
 VBoxDbg_LIBS = \
 	$(LIB_VMM)
