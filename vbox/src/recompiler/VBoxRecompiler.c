@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 10357 2008-07-08 12:06:18Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 10408 2008-07-09 12:04:37Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1687,6 +1687,10 @@ REMR3DECL(int) REMR3State(PVM pVM)
         pVM->rem.s.fIgnoreInvlPg = false;
         pVM->rem.s.cInvalidatedPages = 0;
     }
+
+    /* Replay notification changes? */
+    if (pVM->rem.s.cHandlerNotifications)
+        REMR3ReplayHandlerNotifications(pVM);
 
     /* Update MSRs; before CRx registers! */
     pVM->rem.s.Env.efer         = pCtx->msrEFER;
