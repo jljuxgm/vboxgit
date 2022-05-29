@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 11250 2008-08-08 14:05:38Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 11261 2008-08-08 15:46:17Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -446,17 +446,19 @@ int main()
     GEN_CHECK_OFF(PicState, init4);
     GEN_CHECK_OFF(PicState, elcr);
     GEN_CHECK_OFF(PicState, elcr_mask);
-    GEN_CHECK_OFF(PicState, pDevInsHC);
-    GEN_CHECK_OFF(PicState, pDevInsGC);
+    GEN_CHECK_OFF(PicState, pDevInsR3);
+    GEN_CHECK_OFF(PicState, pDevInsR0);
+    GEN_CHECK_OFF(PicState, pDevInsRC);
 
     GEN_CHECK_SIZE(DEVPIC);
     GEN_CHECK_OFF(DEVPIC, aPics);
     GEN_CHECK_OFF(DEVPIC, aPics[1]);
-    GEN_CHECK_OFF(DEVPIC, pDevInsHC);
-    GEN_CHECK_OFF(DEVPIC, pDevInsGC);
+    GEN_CHECK_OFF(DEVPIC, pDevInsR3);
+    GEN_CHECK_OFF(DEVPIC, pDevInsR0);
+    GEN_CHECK_OFF(DEVPIC, pDevInsRC);
     GEN_CHECK_OFF(DEVPIC, pPicHlpR3);
-    GEN_CHECK_OFF(DEVPIC, pPicHlpGC);
     GEN_CHECK_OFF(DEVPIC, pPicHlpR0);
+    GEN_CHECK_OFF(DEVPIC, pPicHlpRC);
 #ifdef VBOX_WITH_STATISTICS
     GEN_CHECK_OFF(DEVPIC, StatSetIrqGC);
     GEN_CHECK_OFF(DEVPIC, StatClearedActiveSlaveIRQ);
