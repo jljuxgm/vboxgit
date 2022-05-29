@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 7047 2008-02-20 15:54:25Z vboxsync $ */
+/* $Id: REMInternal.h 7064 2008-02-20 21:22:14Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -98,7 +98,7 @@ typedef struct REMHANDLERNOTIFICATION
             bool                fHasHCHandler;
             bool                fRestoreAsRAM;
         } PhysicalModify;
-        uint64_t                padding[5];
+        uint64_t                padding[4];
     } u;
 } REMHANDLERNOTIFICATION, *PREMHANDLERNOTIFICATION;
 
