@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: DevACPI.cpp 6156 2007-12-19 17:46:03Z vboxsync $ */
 /** @file
  * Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -541,8 +541,9 @@ static void acpiSetupFADT (ACPIState *s, RTGCPHYS addr, uint32_t facs_addr, uint
     fadt.u8Century            = 0;
     fadt.u16IAPCBOOTARCH      = RT_H2LE_U16(IAPC_BOOT_ARCH_LEGACY_DEV | IAPC_BOOT_ARCH_8042);
     /** @note WBINVD is required for ACPI versions newer than 1.0 */
-    fadt.u32Flags             = RT_H2LE_U32(  FADT_FL_WBINVD | FADT_FL_SLP_BUTTON
-                                            | FADT_FL_FIX_RTC | FADT_FL_TMR_VAL_EXT);
+    fadt.u32Flags             = RT_H2LE_U32(  FADT_FL_WBINVD
+                                            | FADT_FL_FIX_RTC
+                                            | FADT_FL_TMR_VAL_EXT);
     acpiWriteGenericAddr(&fadt.ResetReg,     1,  8, 0, 1, ACPI_RESET_BLK);
     fadt.u8ResetVal           = ACPI_RESET_REG_VAL;
     fadt.u64XFACS             = RT_H2LE_U64((uint64_t)facs_addr);
@@ -740,6 +741,19 @@ static DECLCALLBACK(int) acpiPowerButtonPress(PPDMIACPIPORT pInterface)
 {
     ACPIState *s = IACPIPORT_2_ACPISTATE(pInterface);
     update_pm1a (s, s->pm1a_sts | PWRBTN_STS, s->pm1a_en);
+    return VINF_SUCCESS;
+}
+
+/**
+ * Send an ACPI sleep button event.
+ *
+ * @returns VBox status code
+ * @param   pInterface      Pointer to the interface structure containing the called function pointer.
+ */
+static DECLCALLBACK(int) acpiSleepButtonPress(PPDMIACPIPORT pInterface)
+{
+    ACPIState *s = IACPIPORT_2_ACPISTATE(pInterface);
+    update_pm1a (s, s->pm1a_sts | SLPBTN_STS, s->pm1a_en);
     return VINF_SUCCESS;
 }
 
@@ -1663,6 +1677,7 @@ static DECLCALLBACK(int) acpiConstruct (PPDMDEVINS pDevIns, int iInstance, PCFGM
     /* IBase */
     s->IBase.pfnQueryInterface         = acpiQueryInterface;
     /* IACPIPort */
+    s->IACPIPort.pfnSleepButtonPress   = acpiSleepButtonPress;
     s->IACPIPort.pfnPowerButtonPress   = acpiPowerButtonPress;
 
    /*
