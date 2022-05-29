@@ -1,4 +1,4 @@
-/* $Id: logbackdoor-redirect.cpp 11640 2008-08-26 07:32:56Z vboxsync $ */
+/* $Id: logbackdoor-redirect.cpp 11682 2008-08-26 17:30:49Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - RTLog stubs for the stripped down IPRT used by 
  *                       RuntimeGuestR3Shared (X11), output is redirected
@@ -59,38 +59,43 @@ RTDECL(PRTLOGGER) RTLogRelSetDefaultInstance(PRTLOGGER pLogger)
 
 RTDECL(void) RTLogRelPrintf(const char *pszFormat, ...)
 {
-    va_list args;
+    va_list va;
 
-    va_start(args, pszFormat);
-    RTLogBackdoorPrintfV(pszFormat, args);
-    va_end(args);
+    va_start(va, pszFormat);
+    RTLogBackdoorPrintfV(pszFormat, va);
+    va_end(va);
 }
 
 
-RTDECL(void) RTLogRelPrintfV(const char *pszFormat, va_list args)
+RTDECL(void) RTLogRelPrintfV(const char *pszFormat, va_list va)
 {
-    RTLogBackdoorPrintfV(pszFormat, args);
+    RTLogBackdoorPrintfV(pszFormat, va);
 }
 
-#if defined(LOG_USE_C99)
+
 RTDECL(void) RTLogLoggerEx(PRTLOGGER pLogger, unsigned fFlags, unsigned iGroup, const char *pszFormat, ...)
 {
+    va_list va;
+
+    va_start(va, pszFormat);
+    RTLogBackdoorPrintfV(pszFormat, va);
+    va_end(va);
 }
-#endif
+
 
 RTDECL(void) RTLogPrintf(const char *pszFormat, ...)
 {
-    va_list args;
+    va_list va;
 
-    va_start(args, pszFormat);
-    RTLogBackdoorPrintfV(pszFormat, args);
-    va_end(args);
+    va_start(va, pszFormat);
+    RTLogBackdoorPrintfV(pszFormat, va);
+    va_end(va);
 }
 
 
-RTDECL(void) RTLogPrintfV(const char *pszFormat, va_list args)
+RTDECL(void) RTLogPrintfV(const char *pszFormat, va_list va)
 {
-    RTLogBackdoorPrintfV(pszFormat, args);
+    RTLogBackdoorPrintfV(pszFormat, va);
 }
 
 
