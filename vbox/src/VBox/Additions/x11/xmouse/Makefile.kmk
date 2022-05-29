@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6513 2008-01-25 11:38:38Z vboxsync $
+# $Id: Makefile.kmk 6590 2008-01-30 08:43:18Z vboxsync $
 ## @file
 # Makefile for the VBox Linux Additions X.org mouse driver.
 #
@@ -120,7 +120,7 @@ vboxmouse_drv_SOURCES  = \
 	VBoxUtils.c
 vboxmouse_drv_LIBS = \
 	$(VBOX_LIB_VBGL_R3) \
-	$(VBOX_LIB_IPRT_GUEST_R3)
+	$(VBOX_LIB_IPRT_GUEST_R3_MINI)
 endif
 
 include	$(PATH_KBUILD)/footer.kmk
