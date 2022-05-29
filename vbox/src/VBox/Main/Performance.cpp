@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 11391 2008-08-13 14:48:53Z vboxsync $ */
+/* $Id: Performance.cpp 11481 2008-08-19 12:13:53Z vboxsync $ */
 
 /** @file
  *
@@ -271,7 +271,10 @@ void CircularBuffer::init(ULONG length)
     if (mData)
         RTMemFree(mData);
     mLength = length;
-    mData = (ULONG *)RTMemAllocZ(length * sizeof(ULONG));
+    if (mLength)
+        mData = (ULONG *)RTMemAllocZ(length * sizeof(ULONG));
+    else
+        mData = NULL;
     mWrapped = false;
     mEnd = 0;
 }

@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 11467 2008-08-18 14:52:12Z vboxsync $ */
+/* $Id: HostImpl.cpp 11481 2008-08-19 12:13:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -2738,7 +2738,7 @@ void Host::registerMetrics (PerformanceCollector *aCollector)
     pm::SubMetric *cpuLoadUser   = new pm::SubMetric ("CPU/Load/User");
     pm::SubMetric *cpuLoadKernel = new pm::SubMetric ("CPU/Load/Kernel");
     pm::SubMetric *cpuLoadIdle   = new pm::SubMetric ("CPU/Load/Idle");
-    pm::SubMetric *cpuMhzSM      = new pm::SubMetric ("CPU/MHZ");
+    pm::SubMetric *cpuMhzSM      = new pm::SubMetric ("CPU/MHz");
     pm::SubMetric *ramUsageTotal = new pm::SubMetric ("RAM/Usage/Total");
     pm::SubMetric *ramUsageUsed  = new pm::SubMetric ("RAM/Usage/Used");
     pm::SubMetric *ramUsageFree  = new pm::SubMetric ("RAM/Usage/Free");
