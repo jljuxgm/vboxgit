@@ -1,4 +1,4 @@
-/* $Id: tstSystemQueryOsInfo.cpp 11352 2008-08-12 12:54:16Z vboxsync $ */
+/* $Id: tstSystemQueryOsInfo.cpp 11355 2008-08-12 13:02:15Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSystemQueryOSInfo.
  */
@@ -45,7 +45,7 @@ static int g_cErrors = 0;
 
 int main()
 {
-    RTR3Init();
+    RTR3Init(false /*fInitSUPLib */);
 
     RTPrintf("tstSystemQueryOsInfo: TESTINGS...\n");
 
