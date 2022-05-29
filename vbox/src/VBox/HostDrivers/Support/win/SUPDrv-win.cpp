@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 8792 2008-05-13 15:54:29Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 8833 2008-05-15 09:07:02Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Windows NT specific parts.
  */
@@ -758,6 +758,8 @@ void  VBOXCALL  supdrvOSGipSuspend(PSUPDRVDEVEXT pDevExt)
  */
 unsigned VBOXCALL supdrvOSGetCPUCount(void)
 {
+    /* KeQueryActiveProcessors must be executed at IRQL < DISPATCH_LEVEL */
+    Assert(KeGetCurrentIrql() < DISPATCH_LEVEL);
     KAFFINITY Mask = KeQueryActiveProcessors();
     unsigned cCpus = 0;
     unsigned iBit;
