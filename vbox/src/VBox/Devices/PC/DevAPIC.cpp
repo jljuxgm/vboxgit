@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 10665 2008-07-15 14:41:57Z vboxsync $ */
+/* $Id: DevAPIC.cpp 11155 2008-08-05 23:00:44Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -196,7 +196,7 @@ typedef struct APICState {
     /** Pointer to the APIC GC helpers. */
     PCPDMAPICHLPGC  pApicHlpGC;
     /** The APIC timer - GC Ptr. */
-    PTMTIMERGC      pTimerGC;
+    PTMTIMERRC      pTimerGC;
 
     /** Number of attempts made to optimize TPR accesses. */
     uint32_t        ulTPRPatchAttempts;
@@ -560,7 +560,7 @@ PDMBOTHCBDECL(bool) apicHasPendingIrq(PPDMDEVINS pDevIns)
     int irrv, ppr;
 
     APICState *s = PDMINS2DATA(pDevIns, APICState *);
-    if (!s) 
+    if (!s)
         return false;
 
     irrv = get_highest_priority_int(s->irr);

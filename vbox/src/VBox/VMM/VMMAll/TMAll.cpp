@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: TMAll.cpp 11155 2008-08-05 23:00:44Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -361,14 +361,14 @@ TMDECL(PTMTIMERR0) TMTimerR0Ptr(PTMTIMER pTimer)
 
 
 /**
- * Gets the GC pointer of the timer.
+ * Gets the RC pointer of the timer.
  *
- * @returns GC pointer.
+ * @returns RC pointer.
  * @param   pTimer      Timer handle as returned by one of the create functions.
  */
-TMDECL(PTMTIMERGC) TMTimerGCPtr(PTMTIMER pTimer)
+TMDECL(PTMTIMERRC) TMTimerRCPtr(PTMTIMER pTimer)
 {
-    return (PTMTIMERGC)MMHyperCCToGC(pTimer->CTXALLSUFF(pVM), pTimer);
+    return (PTMTIMERRC)MMHyperCCToRC(pTimer->CTXALLSUFF(pVM), pTimer);
 }
 
 

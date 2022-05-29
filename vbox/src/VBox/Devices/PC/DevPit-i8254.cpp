@@ -1,4 +1,4 @@
-/** $Id: DevPit-i8254.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
+/** $Id: DevPit-i8254.cpp 11155 2008-08-05 23:00:44Z vboxsync $ */
 /** @file
  * Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -88,7 +88,7 @@ typedef struct PITChannelState
     /** Pointer to the instance data - GCPtr. */
     RCPTRTYPE(struct PITState *)    pPitGC;
     /** The timer - HCPtr. */
-    PTMTIMERGC                      pTimerGC;
+    PTMTIMERRC                      pTimerGC;
     /** The virtual time stamp at the last reload. (only used in mode 2 for now) */
     uint64_t                        u64ReloadTS;
     /** The actual time of the next tick.
