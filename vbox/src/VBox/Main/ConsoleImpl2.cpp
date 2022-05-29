@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 8308 2008-04-22 19:03:17Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 8367 2008-04-24 15:28:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1091,6 +1091,12 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 STR_FREE();
                 rc = CFGMR3InsertString(pCfg, "BootFile", pszBootFile);             RC_CHECK();
                 RTStrFree(pszBootFile);
+
+                hrc = networkAdapter->COMGETTER(NATNetwork)(&str);                  H();
+                STR_CONV();
+                if (psz && *psz)
+                    rc = CFGMR3InsertString(pCfg, "Network", psz);                  RC_CHECK();
+                STR_FREE();
                 break;
             }
 

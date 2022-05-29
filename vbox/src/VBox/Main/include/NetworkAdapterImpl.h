@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 8367 2008-04-24 15:28:31Z vboxsync $ */
 
 /** @file
  *
@@ -49,7 +49,6 @@ public:
 #ifdef VBOX_WITH_UNIXY_TAP_NETWORKING
             , mTAPFD (NIL_RTFILE)
 #endif
-            , mInternalNetwork ("") // cannot be null
         {}
 
         bool operator== (const Data &that) const
@@ -68,7 +67,8 @@ public:
                     mTAPTerminateApplication == that.mTAPTerminateApplication &&
                     mTAPFD == that.mTAPFD &&
 #endif
-                    mInternalNetwork == that.mInternalNetwork);
+                    mInternalNetwork == that.mInternalNetwork &&
+                    mNATNetwork == that.mNATNetwork);
         }
 
         NetworkAdapterType_T mAdapterType;
@@ -87,6 +87,7 @@ public:
         RTFILE mTAPFD;
 #endif
         Bstr mInternalNetwork;
+        Bstr mNATNetwork;
     };
 
     VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (NetworkAdapter)
@@ -134,6 +135,8 @@ public:
 #endif
     STDMETHOD(COMGETTER(InternalNetwork)) (BSTR *aInternalNetwork);
     STDMETHOD(COMSETTER(InternalNetwork)) (INPTR BSTR aInternalNetwork);
+    STDMETHOD(COMGETTER(NATNetwork)) (BSTR *aNATNetwork);
+    STDMETHOD(COMSETTER(NATNetwork)) (INPTR BSTR aNATNetwork);
     STDMETHOD(COMGETTER(CableConnected)) (BOOL *aConnected);
     STDMETHOD(COMSETTER(CableConnected)) (BOOL aConnected);
     STDMETHOD(COMGETTER(TraceEnabled)) (BOOL *aEnabled);
