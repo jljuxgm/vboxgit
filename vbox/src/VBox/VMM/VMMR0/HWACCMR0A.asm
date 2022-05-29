@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 9814 2008-06-19 11:09:21Z vboxsync $
+; $Id: HWACCMR0A.asm 9815 2008-06-19 11:14:38Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -76,10 +76,8 @@
   %endmacro
 
   ; Save a guest and load the corresponding host MSR (trashes rdx & rcx)
-  %macro LOADHOSTMSR 2
+  %macro LOADHOSTMSR 1
     mov     rcx, %1
-    rdmsr
-    mov     qword [xSI + %2], rax
     pop     rax
     pop     rdx
     wrmsr
@@ -574,12 +572,12 @@ ALIGNCODE(16)
 
     pop     xSI         ; pCtx (needed in rsi by the macros below)
 
-    ; Save the guest LSTAR, CSTAR, SFMASK & KERNEL_GSBASE MSRs and restore the host MSRs
+    ; Restore the host LSTAR, CSTAR, SFMASK & KERNEL_GSBASE MSRs
     ; @todo use the automatic load feature for MSRs
-    LOADHOSTMSR MSR_K8_KERNEL_GS_BASE, CPUMCTX.msrKERNELGSBASE
-    LOADHOSTMSR MSR_K8_SF_MASK, CPUMCTX.msrSFMASK
-    LOADHOSTMSR MSR_K8_CSTAR, CPUMCTX.msrCSTAR
-    LOADHOSTMSR MSR_K8_LSTAR, CPUMCTX.msrLSTAR
+    LOADHOSTMSR MSR_K8_KERNEL_GS_BASE
+    LOADHOSTMSR MSR_K8_SF_MASK
+    LOADHOSTMSR MSR_K8_CSTAR
+    LOADHOSTMSR MSR_K8_LSTAR
 
     ; Restore segment registers
     MYPOPSEGS xAX, ax
@@ -607,12 +605,12 @@ ALIGNCODE(16)
 
     pop     xSI         ; pCtx (needed in rsi by the macros below)
 
-    ; Save the guest LSTAR, CSTAR, SFMASK & KERNEL_GSBASE MSRs and restore the host MSRs
+    ; Restore the host LSTAR, CSTAR, SFMASK & KERNEL_GSBASE MSRs
     ; @todo use the automatic load feature for MSRs
-    LOADHOSTMSR MSR_K8_KERNEL_GS_BASE, CPUMCTX.msrKERNELGSBASE
-    LOADHOSTMSR MSR_K8_SF_MASK, CPUMCTX.msrSFMASK
-    LOADHOSTMSR MSR_K8_CSTAR, CPUMCTX.msrCSTAR
-    LOADHOSTMSR MSR_K8_LSTAR, CPUMCTX.msrLSTAR
+    LOADHOSTMSR MSR_K8_KERNEL_GS_BASE
+    LOADHOSTMSR MSR_K8_SF_MASK
+    LOADHOSTMSR MSR_K8_CSTAR
+    LOADHOSTMSR MSR_K8_LSTAR
 
     ; Restore segment registers
     MYPOPSEGS xAX, ax
@@ -634,12 +632,12 @@ ALIGNCODE(16)
 
     pop     xSI         ; pCtx (needed in rsi by the macros below)
 
-    ; Save the guest LSTAR, CSTAR, SFMASK & KERNEL_GSBASE MSRs and restore the host MSRs
+    ; Restore the host LSTAR, CSTAR, SFMASK & KERNEL_GSBASE MSRs
     ; @todo use the automatic load feature for MSRs
-    LOADHOSTMSR MSR_K8_KERNEL_GS_BASE, CPUMCTX.msrKERNELGSBASE
-    LOADHOSTMSR MSR_K8_SF_MASK, CPUMCTX.msrSFMASK
-    LOADHOSTMSR MSR_K8_CSTAR, CPUMCTX.msrCSTAR
-    LOADHOSTMSR MSR_K8_LSTAR, CPUMCTX.msrLSTAR
+    LOADHOSTMSR MSR_K8_KERNEL_GS_BASE
+    LOADHOSTMSR MSR_K8_SF_MASK
+    LOADHOSTMSR MSR_K8_CSTAR
+    LOADHOSTMSR MSR_K8_LSTAR
 
     ; Restore segment registers
     MYPOPSEGS xAX, ax
