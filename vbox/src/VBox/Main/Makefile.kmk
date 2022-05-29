@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11612 2008-08-25 13:52:37Z vboxsync $
+# $Id: Makefile.kmk 11638 2008-08-26 01:02:36Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -283,7 +283,7 @@ VBoxSVC_LDFLAGS.solaris += -lkstat
 VBoxSVC_LDFLAGS.win     += wbemuuid.lib powrprof.lib
 endif
 
-VBoxSVC_LDFLAGS.darwin  = -framework IOKit
+VBoxSVC_LDFLAGS.darwin  = -framework IOKit -framework SystemConfiguration
 ifeq ($(KBUILD_TYPE),debug)
 VBoxSVC_LDFLAGS.linux  += -rdynamic # for backtrace_symbols()
 endif
