@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
+/* $Id: EMAll.cpp 9216 2008-05-29 11:29:55Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -88,7 +88,7 @@ EMDECL(EMSTATE) EMGetState(PVM pVM)
  * @param   dwUserdata  Callback specific user data (pCpu)
  *
  */
-DECLCALLBACK(int) EMReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, unsigned cb, void *pvUserdata)
+DECLCALLBACK(int) EMReadBytes(RTUINTPTR pSrc, uint8_t *pDest, unsigned cb, void *pvUserdata)
 {
     DISCPUSTATE  *pCpu     = (DISCPUSTATE *)pvUserdata;
     PVM           pVM      = (PVM)pCpu->apvUserData[0];

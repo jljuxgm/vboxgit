@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
+/* $Id: CSAM.cpp 9216 2008-05-29 11:29:55Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -599,7 +599,7 @@ static R3PTRTYPE(void *) CSAMGCVirtToHCVirt(PVM pVM, PCSAMP2GLOOKUPREC pCacheRec
  * @param   dwUserdata  Callback specific user data (pCpu)
  *
  */
-static DECLCALLBACK(int) CSAMR3ReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, unsigned size, void *pvUserdata)
+static DECLCALLBACK(int) CSAMR3ReadBytes(RTUINTPTR pSrc, uint8_t *pDest, unsigned size, void *pvUserdata)
 {
     DISCPUSTATE  *pCpu     = (DISCPUSTATE *)pvUserdata;
     PVM           pVM      = (PVM)pCpu->apvUserData[0];

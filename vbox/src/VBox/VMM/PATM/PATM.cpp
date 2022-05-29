@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
+/* $Id: PATM.cpp 9216 2008-05-29 11:29:55Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -513,7 +513,7 @@ PATMR3DECL(int) PATMR3Reset(PVM pVM)
  * @param   pvUserdata  Callback specific user data (pCpu)
  *
  */
-int patmReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, unsigned size, void *pvUserdata)
+int patmReadBytes(RTUINTPTR pSrc, uint8_t *pDest, unsigned size, void *pvUserdata)
 {
     DISCPUSTATE  *pCpu     = (DISCPUSTATE *)pvUserdata;
     PATMDISASM   *pDisInfo = (PATMDISASM *)pCpu->apvUserData[0];

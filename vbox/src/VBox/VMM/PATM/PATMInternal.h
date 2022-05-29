@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 9212 2008-05-29 09:38:38Z vboxsync $ */
+/* $Id: PATMInternal.h 9216 2008-05-29 11:29:55Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -672,7 +672,7 @@ PATMDECL(const char *) patmGetInstructionString(uint32_t opcode, uint32_t fPatch
  * @param   pvUserdata  Callback specific user data (pCpu)
  *
  */
-int patmReadBytes(RTHCUINTPTR pSrc, uint8_t *pDest, unsigned size, void *pvUserdata);
+int patmReadBytes(RTUINTPTR pSrc, uint8_t *pDest, unsigned size, void *pvUserdata);
 
 
 #ifndef IN_GC
