@@ -1,4 +1,4 @@
-/* $Revision: 10256 $ */
+/* $Revision: 10377 $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -369,7 +369,11 @@ typedef struct SUPLDRSYM
     uint32_t        offName;
     /** Offset of the symbol relative to the image load address. */
     uint32_t        offSymbol;
-} SUPLDRSYM, *PSUPLDRSYM;
+} SUPLDRSYM;
+/** Pointer to a symbol table entry. */
+typedef SUPLDRSYM *PSUPLDRSYM;
+/** Pointer to a const symbol table entry. */
+typedef SUPLDRSYM const *PCSUPLDRSYM;
 
 /**
  * SUPLDRLOAD::u::In::EP type.

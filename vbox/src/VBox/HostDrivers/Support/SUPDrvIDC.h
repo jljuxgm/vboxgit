@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIDC.h 10264 2008-07-05 00:38:39Z vboxsync $ */
+/* $Id: SUPDrvIDC.h 10377 2008-07-08 16:26:13Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Inter-Driver Communciation (IDC) definitions.
  */
@@ -111,10 +111,15 @@ typedef struct SUPDRVIDCREQCONNECT
         /** The output. */
         struct SUPDRVIDCREQCONNECTOUT
         {
-            /** The version of the IDC interface for this session. */
-            uint32_t        uVersion;
             /** The support driver session. (An opaque.) */
             PSUPDRVSESSION  pSession;
+            /** The version of the IDC interface for this session. */
+            uint32_t        uSessionVersion;
+            /** The version of the IDC interface . */
+            uint32_t        uDriverVersion;
+            /** The SVN revision of the driver.
+             * This will be set to 0 if not compiled into the driver. */
+            uint32_t        uDriverRevision;
         } Out;
     } u;
 } SUPDRVIDCREQCONNECT;

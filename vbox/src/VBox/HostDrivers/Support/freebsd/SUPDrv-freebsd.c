@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 10263 2008-07-05 00:26:17Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 10377 2008-07-08 16:26:13Z vboxsync $ */
 /** @file
  * VBoxDrv - FreeBSD specifics.
  */
@@ -300,13 +300,12 @@ static int VBoxDrvFreeBSDOpen(struct cdev *pDev, int fOpen, struct thread *pTd, 
     /*
      * Create a new session.
      */
-    rc = supdrvCreateSession(&g_VBoxDrvFreeBSDDevExt, &pSession);
+    rc = supdrvCreateSession(&g_VBoxDrvFreeBSDDevExt, true /* fUser */, &pSession);
     if (RT_SUCCESS(rc))
     {
-        pSession->Uid = 0;
-        pSession->Gid = 0;
-        pSession->Process = RTProcSelf();
-        pSession->R0Process = RTR0ProcHandleSelf();
+        /** @todo get (e)uid and (e)gid.
+        pSession->Uid = stuff;
+        pSession->Gid = stuff; */
         if (ASMAtomicCmpXchgPtr(&pDev->si_drv1, pSession, (void *)0x42))
             return 0;
 

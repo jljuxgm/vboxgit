@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 10254 2008-07-04 20:19:22Z vboxsync $ */
+/* $Id: SUPDrv-os2.cpp 10377 2008-07-08 16:26:13Z vboxsync $ */
 /** @file
  * VBoxDrv - OS/2 specifics.
  */
@@ -150,11 +150,9 @@ DECLASM(int) VBoxDrvOpen(uint16_t sfn)
     /*
      * Create a new session.
      */
-    rc = supdrvCreateSession(&g_DevExt, &pSession);
+    rc = supdrvCreateSession(&g_DevExt, true /* fUser */, &pSession);
     if (RT_SUCCESS(rc))
     {
-        pSession->Process = RTProcSelf();
-        pSession->R0Process = RTR0ProcHandleSelf();
         pSession->sfn = sfn;
 
         /*

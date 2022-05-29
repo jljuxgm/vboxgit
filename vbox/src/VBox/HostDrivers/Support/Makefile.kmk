@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10267 2008-07-05 02:01:45Z vboxsync $
+# $Id: Makefile.kmk 10377 2008-07-08 16:26:13Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -332,6 +332,12 @@ vboxdrv_SOURCES       = \
 	$(KBUILD_TARGET)/SUPDrv-$(KBUILD_TARGET).c \
 	SUPDrv.c
 endif # solaris
+
+
+#
+# SUPDrv.c needs the VBOX_SVN_REV.
+#
+SUPDrv.c_DEFS += VBOX_SVN_REV=$(VBOX_SVN_REV)
 
 
 include $(KBUILD_PATH)/subfooter.kmk
