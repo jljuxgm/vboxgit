@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 9341 2008-06-03 08:22:06Z vboxsync $ */
+/* $Id: TRPMAll.cpp 9412 2008-06-05 11:56:28Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -479,7 +479,7 @@ TRPMDECL(int) TRPMForwardTrap(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t iGate, u
             RTGCPTR pHandler, dummy;
             RTGCPTR pTrapStackGC;
 
-            pHandler = (RTGCPTR)((GuestIdte.Gen.u16OffsetHigh << 16) | GuestIdte.Gen.u16OffsetLow);
+            pHandler = (RTGCPTR)VBOXIDTE_OFFSET(GuestIdte);
 
             /* Note: SELMValidateAndConvertCSAddr checks for code type, memory type, selector validity. */
             /** @todo dpl <= cpl else GPF */
