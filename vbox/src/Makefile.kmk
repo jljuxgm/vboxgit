@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10194 2008-07-04 04:05:08Z vboxsync $
+# $Id: Makefile.kmk 11592 2008-08-23 19:35:29Z vboxsync $
 ## @file
 # Top-level makefile for the src directory.
 #
@@ -52,16 +52,8 @@ ifdef VBOX_ONLY_ADDITIONS
  SUBDIRS = VBox
 
 else  # !VBOX_ONLY_ADDITIONS
- # build Runtime first when IPC logging is on because it depends on Runtime
- ifdef VBOX_IPC_RELEASE_LOG
-  SUBDIRS = VBox/Runtime
- else ifneq ($(KBUILD_TYPE),release)
-  SUBDIRS = VBox/Runtime
- else
-  SUBDIRS =
- endif
-
- SUBDIRS += bldprogs libs VBox recompiler
+ # Build Runtime first because xpcom (IPC, nspr, python) depends on it.
+ SUBDIRS = VBox/Runtime	bldprogs libs VBox recompiler
  ifneq ($(wildcard apps),)
   SUBDIRS += apps
  endif
