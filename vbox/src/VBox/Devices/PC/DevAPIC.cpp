@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 10202 2008-07-04 07:25:27Z vboxsync $ */
+/* $Id: DevAPIC.cpp 10214 2008-07-04 10:55:00Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -453,7 +453,7 @@ PDMBOTHCBDECL(void) apicSetTPR(PPDMDEVINS pDevIns, uint8_t val)
 PDMBOTHCBDECL(uint8_t) apicGetTPR(PPDMDEVINS pDevIns)
 {
     APICState *s = PDMINS2DATA(pDevIns, APICState *);
-    LogFlow(("apicGetTPR: returns %#x\n", s->tpr >> 4));
+    Log2(("apicGetTPR: returns %#x\n", s->tpr >> 4));
     return s->tpr >> 4;
 }
 
