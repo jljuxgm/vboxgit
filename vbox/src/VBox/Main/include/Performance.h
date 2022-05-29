@@ -1,4 +1,4 @@
-/* $Id: Performance.h 11377 2008-08-13 07:52:43Z vboxsync $ */
+/* $Id: Performance.h 11498 2008-08-19 18:50:33Z vboxsync $ */
 
 /** @file
  *
@@ -66,7 +66,7 @@ namespace pm
     {
     public:
         virtual int getHostCpuLoad(ULONG *user, ULONG *kernel, ULONG *idle);
-        virtual int getHostCpuMHz(ULONG *mhz) = 0;
+        virtual int getHostCpuMHz(ULONG *mhz);
         virtual int getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available) = 0;
         virtual int getProcessCpuLoad(RTPROCESS process, ULONG *user, ULONG *kernel);
         virtual int getProcessMemoryUsage(RTPROCESS process, ULONG *used) = 0;

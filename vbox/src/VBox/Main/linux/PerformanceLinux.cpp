@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 11483 2008-08-19 12:30:13Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 11498 2008-08-19 18:50:33Z vboxsync $ */
 
 /** @file
  *
@@ -24,7 +24,6 @@
 #include <stdio.h>
 #include <iprt/alloc.h>
 #include <iprt/err.h>
-#include <iprt/mp.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
 #include "Performance.h"
@@ -34,7 +33,6 @@ namespace pm {
 class CollectorLinux : public CollectorHAL
 {
 public:
-    virtual int getHostCpuMHz(ULONG *mhz);
     virtual int getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available);
     virtual int getProcessMemoryUsage(RTPROCESS process, ULONG *used);
 
@@ -92,18 +90,6 @@ int CollectorLinux::getRawProcessCpuLoad(RTPROCESS process, uint64_t *user, uint
     }
 
     return rc;
-}
-
-int CollectorLinux::getHostCpuMHz(ULONG *mhz)
-{
-    RTCPUID nProcessors = RTMpGetCount();
-    uint64_t uTotalMHz  = 0;
-
-    for (RTCPUID i = 0; i < nProcessors; ++i)
-        uTotalMHz += RTMpGetCurFrequency(RTMpCpuIdFromSetIndex(i));
-
-    *mhz = (ULONG)(uTotalMHz / nProcessors);
-    return VINF_SUCCESS;
 }
 
 int CollectorLinux::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available)
