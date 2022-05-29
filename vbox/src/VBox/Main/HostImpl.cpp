@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 8720 2008-05-08 15:47:07Z vboxsync $ */
+/* $Id: HostImpl.cpp 8725 2008-05-08 17:48:23Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -978,6 +978,7 @@ STDMETHODIMP Host::InsertUSBDeviceFilter (ULONG aPosition, IHostUSBDeviceFilter 
     if (!aFilter)
         return E_INVALIDARG;
 
+    /* Note: HostUSBDeviceFilter and USBProxyService also uses this lock. */
     AutoWriteLock alock (this);
     CHECK_READY();
 
@@ -1025,6 +1026,7 @@ STDMETHODIMP Host::RemoveUSBDeviceFilter (ULONG aPosition, IHostUSBDeviceFilter 
     if (!aFilter)
         return E_POINTER;
 
+    /* Note: HostUSBDeviceFilter and USBProxyService also uses this lock. */
     AutoWriteLock alock (this);
     CHECK_READY();
 
