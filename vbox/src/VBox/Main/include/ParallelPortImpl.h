@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 6076 2007-12-14 19:23:03Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 6168 2007-12-21 14:38:19Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -35,7 +35,7 @@ public:
     {
         Data()
             : mSlot (0)
-            , mEnabled(FALSE)
+            , mEnabled (FALSE)
             , mIRQ (4)
             , mIOBase (0x378)
         {}
@@ -110,6 +110,8 @@ public:
     static const wchar_t *getComponentName() { return L"ParallelPort"; }
 
 private:
+
+    HRESULT checkSetPath (const BSTR aPath);
 
     const ComObjPtr <Machine, ComWeakRef> mParent;
     const ComObjPtr <ParallelPort> mPeer;
