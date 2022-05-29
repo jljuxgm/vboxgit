@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 10063 2008-07-01 09:57:49Z vboxsync $ */
+/* $Id: PGMInternal.h 10320 2008-07-07 13:27:57Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2650,6 +2650,7 @@ void            pgmPoolFreeByPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage, uint16_t i
 int             pgmPoolFlushPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
 void            pgmPoolFlushAll(PVM pVM);
 void            pgmPoolClearAll(PVM pVM);
+int             pgmPoolSyncCR3(PVM pVM);
 void            pgmPoolTrackFlushGCPhysPT(PVM pVM, PPGMPAGE pPhysPage, uint16_t iShw, uint16_t cRefs);
 void            pgmPoolTrackFlushGCPhysPTs(PVM pVM, PPGMPAGE pPhysPage, uint16_t iPhysExt);
 int             pgmPoolTrackFlushGCPhysPTsSlow(PVM pVM, PPGMPAGE pPhysPage);
