@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8372 2008-04-24 19:56:12Z vboxsync $
+# $Id: Makefile.kmk 8758 2008-05-11 18:27:49Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -24,7 +24,7 @@ SUB_DEPTH = ..
 include	$(PATH_KBUILD)/subheader.kmk
 
 # This can only be built on a real Linux system.
-if1of ($(BUILD_TARGET),linux l4)
+if1of ($(KBUILD_TARGET),linux l4)
  include $(PATH_SUB_CURRENT)/module/Makefile.kmk
  include $(PATH_SUB_CURRENT)/daemon/Makefile.kmk
  include $(PATH_SUB_CURRENT)/sharedfolders/Makefile.kmk

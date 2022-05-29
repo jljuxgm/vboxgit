@@ -1,6 +1,6 @@
-# $Id: CommonFetch.kmk 8265 2008-04-22 07:25:54Z vboxsync $
+# $Id: CommonFetch.kmk 8758 2008-05-11 18:27:49Z vboxsync $
 ## @file
-# Common Fetch. 
+# Common Fetch.
 # Included by both Makefile.kmk and Makefile-ose.kmk.
 #
 
@@ -35,7 +35,7 @@ TEMPLATE_VBOXFETCH_UNPACKFLAGS = -o
 #
 # OS/2 stuff.
 #
-ifeq ($(BUILD_TARGET),os2)
+ifeq ($(KBUILD_TARGET),os2)
 FETCHES += os2.x86.glibidl.20070521
 os2.x86.glibidl.20070521_TEMPLATE = VBOXFETCH
 os2.x86.glibidl.20070521_INST     = $(PATH_DEVTOOLS)/os2.x86/glibidl/20070521/

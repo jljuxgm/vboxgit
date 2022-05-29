@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: Makefile.kmk 8758 2008-05-11 18:27:49Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -24,7 +24,7 @@ include $(PATH_KBUILD)/subheader.kmk
 
 # Include sub-makefiles.
 include $(PATH_SUB_CURRENT)/Support/Makefile.kmk
-ifeq ($(BUILD_TARGET),win)
+ifeq ($(KBUILD_TARGET),win)
  include $(PATH_SUB_CURRENT)/VBoxTAP/Makefile.kmk
 endif
 ifdef VBOX_WITH_USB

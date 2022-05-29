@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8757 2008-05-11 18:19:50Z vboxsync $
+# $Id: Makefile.kmk 8758 2008-05-11 18:27:49Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service testcases.
 #
@@ -42,8 +42,8 @@ tstShflCase_LIBS     = $(LIB_RUNTIME)
 
 endif # VBOX_WITH_TESTCASES
 
-ifeq ($(BUILD_TARGET),$(KBUILD_HOST))
- ifeq ($(filter-out x86.x86 amd64.amd64 x86.amd64, $(BUILD_TARGET_ARCH).$(KBUILD_HOST_ARCH)),)
+ifeq ($(KBUILD_TARGET),$(KBUILD_HOST))
+ ifeq ($(filter-out x86.x86 amd64.amd64 x86.amd64, $(KBUILD_TARGET_ARCH).$(KBUILD_HOST_ARCH)),)
    OTHERS += \
     $(PATH_TARGET)/tstShflSizes.run
  endif

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8299 2008-04-22 15:17:50Z vboxsync $
+# $Id: Makefile.kmk 8758 2008-05-11 18:27:49Z vboxsync $
 ## @file
 # Makefile for the VBox Disassembler.
 #
@@ -27,10 +27,10 @@ PROGRAMS                = tstDisasmCore tstDisasm
 LIBRARIES               = DisasmR3 DisasmCoreR3 DisasmGC DisasmR0
 
 DisasmR3_TEMPLATE       = VBOXR3
-ifeq ($(BUILD_TARGET),win)
+ifeq ($(KBUILD_TARGET),win)
 DisasmR3_CXXFLAGS      += -EHa
 else
- ifneq ($(BUILD_TARGET),l4)
+ ifneq ($(KBUILD_TARGET),l4)
 DisasmR3_CXXFLAGS      += -fexceptions
  endif
 endif

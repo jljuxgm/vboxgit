@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8757 2008-05-11 18:19:50Z vboxsync $
+# $Id: Makefile.kmk 8758 2008-05-11 18:27:49Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -88,7 +88,7 @@ LINUXSTRIPOBJ = \
 	VBoxDDR0.r0 \
 	VMMGC.gc \
 	VMMR0.r0
-ifeq ($(BUILD_TARGET_ARCH),amd64)
+ifeq ($(KBUILD_TARGET_ARCH),amd64)
 LINUXSTRIPOBJ += \
 	VBoxREM2.rel
 endif
