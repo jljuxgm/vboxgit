@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7517 2008-03-22 23:15:44Z vboxsync $
+# $Id: Makefile.kmk 7540 2008-03-25 13:21:20Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Addition Services.
 #
@@ -42,6 +42,7 @@ VBoxService_SOURCES.os2   = \
 VBoxService_LIBS          = \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
 	$(VBOX_LIB_VBGL_R3)
+## @todo r=bird: Move to the template.
 VBoxService_LIBS.freebsd = \
 	iconv
 VBoxService_LIBPATH.freebsd = \
