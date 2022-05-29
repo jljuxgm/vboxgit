@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 8579 2008-05-05 13:54:26Z vboxsync $ */
+/* $Id: MachineImpl.cpp 8581 2008-05-05 13:58:33Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4691,7 +4691,7 @@ HRESULT Machine::findSnapshotNode (Snapshot *aSnapshot, settings::Key &aMachineN
             continue;
 
         /* the next uuid is not found, no need to continue... */
-        AssertFailedBreakVoid();
+        AssertFailedBreak();
     }
 
     // we must always succesfully find the node
