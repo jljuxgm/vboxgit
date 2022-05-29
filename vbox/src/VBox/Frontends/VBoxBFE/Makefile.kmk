@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: Makefile.kmk 8539 2008-05-02 17:02:10Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -87,7 +87,7 @@ VBoxBFE_SOURCES += \
 endif
 
 # USB Support
-ifneq ($(filter-out os2 darwin,$(BUILD_TARGET)),)
+if1of ($(BUILD_TARGET), l4 win)
 VBoxBFE_DEFS += VBOXBFE_WITH_USB
 VBoxBFE_SOURCES += \
 	HostUSBImpl.cpp \
