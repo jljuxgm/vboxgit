@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 6300 2008-01-09 16:41:22Z vboxsync $ */
+/* $Id: DevPcBios.cpp 6302 2008-01-09 16:43:27Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1139,7 +1139,6 @@ static int pcbiosBootFromCfg(PPDMDEVINS pDevIns, PCFGMNODE pCfgHandle, const cha
         *penmBoot = DEVPCBIOSBOOT_LAN;
     else if (!strcmp(psz, "NONE"))
         *penmBoot = DEVPCBIOSBOOT_NONE;
-//    else
     {
         PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS,
                             N_("Configuration error: The \"%s\" value \"%s\" is unknown"),
