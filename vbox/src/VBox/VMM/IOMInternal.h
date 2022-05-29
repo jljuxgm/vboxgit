@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 10538 2008-07-11 17:53:49Z vboxsync $ */
+/* $Id: IOMInternal.h 11303 2008-08-08 23:04:29Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -79,7 +79,7 @@ typedef struct IOMMMIORANGE
     /** Pointer to user argument. */
     RCPTRTYPE(void *)           pvUserGC;
     /** Pointer to device instance. */
-    PPDMDEVINSGC                pDevInsGC;
+    PPDMDEVINSRC                pDevInsGC;
     /** Pointer to write callback function. */
     RCPTRTYPE(PFNIOMMMIOWRITE)  pfnWriteCallbackGC;
     /** Pointer to read callback function. */
