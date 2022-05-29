@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 11050 2008-07-31 21:20:22Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 11051 2008-07-31 23:15:50Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -103,7 +103,6 @@ static void tstIntNetTestFrame(void const *pvFrame, size_t cbFrame, PRTSTREAM pE
         case RTNET_ETHERTYPE_ARP:
         {
             g_cArpPkts++;
-
             break;
         }
 
@@ -122,6 +121,7 @@ static void tstIntNetTestFrame(void const *pvFrame, size_t cbFrame, PRTSTREAM pE
             {
                 case RTNETIPV4_PROT_ICMP:
                 {
+                    /** @todo ICMP? */
                     break;
                 }
 
