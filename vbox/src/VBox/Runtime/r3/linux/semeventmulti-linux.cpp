@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-linux.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 8707 2008-05-08 13:36:09Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
@@ -231,6 +231,7 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
              */
             if (rc == -ETIMEDOUT)
             {
+/** @something is broken here. shows up every now and again in the ata code. Should try to run the timeout against RTTimeMilliTS to check that it's doing the right thing... */
                 Assert(pTimeout);
                 return VERR_TIMEOUT;
             }
