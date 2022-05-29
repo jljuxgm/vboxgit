@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DBGFAll.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -40,7 +40,7 @@ DBGFDECL(RTGCUINTREG) DBGFBpGetDR7(PVM pVM)
 {
     RTGCUINTREG uDr7 = X86_DR7_GD | X86_DR7_GE | X86_DR7_LE | X86_DR7_MB1_MASK;
     PDBGFBP     pBp = &pVM->dbgf.s.aHwBreakpoints[0];
-    unsigned    cLeft = ELEMENTS(pVM->dbgf.s.aHwBreakpoints);
+    unsigned    cLeft = RT_ELEMENTS(pVM->dbgf.s.aHwBreakpoints);
     while (cLeft-- > 0)
     {
         if (    pBp->enmType == DBGFBPTYPE_REG

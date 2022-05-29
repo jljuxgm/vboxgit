@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 11157 2008-08-05 23:08:37Z vboxsync $ */
+/* $Id: tstAnimate.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -175,7 +175,7 @@ static int scriptCommand(PVM pVM, const char *pszIn, size_t cch)
         };
 
         rc = -1;
-        for (unsigned i = 0; i < ELEMENTS(aVars); i++)
+        for (unsigned i = 0; i < RT_ELEMENTS(aVars); i++)
         {
             if (!strcmp(psz, aVars[i].pszVar))
             {

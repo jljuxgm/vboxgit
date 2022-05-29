@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 10087 2008-07-02 09:27:32Z vboxsync $ */
+/* $Id: TRPMAll.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -834,7 +834,7 @@ TRPMDECL(int) trpmClearGuestTrapHandler(PVM pVM, unsigned iTrap)
     /*
      * Validate.
      */
-    if (iTrap >= ELEMENTS(pVM->trpm.s.aIdt))
+    if (iTrap >= RT_ELEMENTS(pVM->trpm.s.aIdt))
     {
         AssertMsg(iTrap < TRPM_HANDLER_INT_BASE, ("Illegal gate number %d!\n", iTrap));
         return VERR_INVALID_PARAMETER;

@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 9675 2008-06-13 09:49:54Z vboxsync $ */
+/* $Id: PATM.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -183,7 +183,7 @@ PATMR3DECL(int) PATMR3Init(PVM pVM)
     static bool fRegisteredCmds = false;
     if (!fRegisteredCmds)
     {
-        int rc = DBGCRegisterCommands(&g_aCmds[0], ELEMENTS(g_aCmds));
+        int rc = DBGCRegisterCommands(&g_aCmds[0], RT_ELEMENTS(g_aCmds));
         if (VBOX_SUCCESS(rc))
             fRegisteredCmds = true;
     }
@@ -323,7 +323,7 @@ static int patmReinit(PVM pVM)
     Assert(pVM->patm.s.pGCStateHC);
     memset(pVM->patm.s.pGCStateHC, 0, PAGE_SIZE);
     AssertReleaseMsg(pVM->patm.s.pGCStateGC, ("Impossible! MMHyperHC2GC(%p) failed!\n", pVM->patm.s.pGCStateGC));
-    
+
     Log(("Patch memory allocated at %p - %VRv\n", pVM->patm.s.pPatchMemHC, pVM->patm.s.pPatchMemGC));
     pVM->patm.s.pGCStateHC->uVMFlags = X86_EFL_IF;
 

@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 11133 2008-08-05 14:08:55Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -989,7 +989,7 @@ HWACCMR0DECL(void) HWACCMDumpRegs(PVM pVM, PCPUMCTX pCtx)
     char szEFlags[80];
     char *psz = szEFlags;
     uint32_t efl = pCtx->eflags.u32;
-    for (unsigned i = 0; i < ELEMENTS(aFlags); i++)
+    for (unsigned i = 0; i < RT_ELEMENTS(aFlags); i++)
     {
         const char *pszAdd = aFlags[i].fFlag & efl ? aFlags[i].pszSet : aFlags[i].pszClear;
         if (pszAdd)

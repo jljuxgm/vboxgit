@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 11299 2008-08-08 22:56:56Z vboxsync $ */
+/* $Id: PDM.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -297,7 +297,7 @@ PDMR3DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     /*
      * The register PCI Buses.
      */
-    for (unsigned i = 0; i < ELEMENTS(pVM->pdm.s.aPciBuses); i++)
+    for (unsigned i = 0; i < RT_ELEMENTS(pVM->pdm.s.aPciBuses); i++)
     {
         if (pVM->pdm.s.aPciBuses[i].pDevInsRC)
         {

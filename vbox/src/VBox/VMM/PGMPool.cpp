@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 10032 2008-06-30 17:03:54Z vboxsync $ */
+/* $Id: PGMPool.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -219,7 +219,7 @@ int pgmR3PoolInit(PVM pVM)
     paPhysExts[cMaxPhysExts - 1].iNext = NIL_PGMPOOL_PHYSEXT_INDEX;
 #endif
 #ifdef PGMPOOL_WITH_CACHE
-    for (unsigned i = 0; i < ELEMENTS(pPool->aiHash); i++)
+    for (unsigned i = 0; i < RT_ELEMENTS(pPool->aiHash); i++)
         pPool->aiHash[i] = NIL_PGMPOOL_IDX;
     pPool->iAgeHead = NIL_PGMPOOL_IDX;
     pPool->iAgeTail = NIL_PGMPOOL_IDX;
@@ -258,7 +258,7 @@ int pgmR3PoolInit(PVM pVM)
         pPool->aPages[PGMPOOL_IDX_PAE_PD_0 + i].enmKind   = PGMPOOLKIND_PAE_PD_FOR_PAE_PD;
         pPool->aPages[PGMPOOL_IDX_PAE_PD_0 + i].idx       = PGMPOOL_IDX_PAE_PD_0 + i;
     }
-  
+
     /* The Shadow PDPT. */
     pPool->aPages[PGMPOOL_IDX_PDPT].Core.Key  = NIL_RTHCPHYS;
     pPool->aPages[PGMPOOL_IDX_PDPT].GCPhys    = NIL_RTGCPHYS;

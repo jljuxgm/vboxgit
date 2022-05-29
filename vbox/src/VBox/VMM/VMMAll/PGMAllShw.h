@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 9893 2008-06-24 15:56:57Z vboxsync $ */
+/* $Id: PGMAllShw.h 11311 2008-08-08 23:31:54Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -302,7 +302,7 @@ PGM_SHW_DECL(int, ModifyPage)(PVM pVM, RTGCUINTPTR GCPtr, size_t cb, uint64_t fF
             return rc;
 
         unsigned iPTE = (GCPtr >> SHW_PT_SHIFT) & SHW_PT_MASK;
-        while (iPTE < ELEMENTS(pPT->a))
+        while (iPTE < RT_ELEMENTS(pPT->a))
         {
             if (pPT->a[iPTE].n.u1Present)
             {

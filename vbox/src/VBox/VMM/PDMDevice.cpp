@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 11261 2008-08-08 15:46:17Z vboxsync $ */
+/* $Id: PDMDevice.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -2410,12 +2410,12 @@ static DECLCALLBACK(int) pdmR3DevHlp_PCIBusRegister(PPDMDEVINS pDevIns, PPDMPCIB
      * Find free PCI bus entry.
      */
     unsigned iBus = 0;
-    for (iBus = 0; iBus < ELEMENTS(pVM->pdm.s.aPciBuses); iBus++)
+    for (iBus = 0; iBus < RT_ELEMENTS(pVM->pdm.s.aPciBuses); iBus++)
         if (!pVM->pdm.s.aPciBuses[iBus].pDevInsR3)
             break;
-    if (iBus >= ELEMENTS(pVM->pdm.s.aPciBuses))
+    if (iBus >= RT_ELEMENTS(pVM->pdm.s.aPciBuses))
     {
-        AssertMsgFailed(("Too many PCI buses. Max=%u\n", ELEMENTS(pVM->pdm.s.aPciBuses)));
+        AssertMsgFailed(("Too many PCI buses. Max=%u\n", RT_ELEMENTS(pVM->pdm.s.aPciBuses)));
         LogFlow(("pdmR3DevHlp_PCIBusRegister: caller='%s'/%d: returns %Vrc (pci bus)\n", pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, VERR_INVALID_PARAMETER));
         return VERR_INVALID_PARAMETER;
     }

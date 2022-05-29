@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 10710 2008-07-16 19:34:31Z vboxsync $ */
+/* $Id: PDMDriver.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -905,7 +905,7 @@ static DECLCALLBACK(int) pdmR3DrvHlp_PDMPollerRegister(PPDMDRVINS pDrvIns, PFNPD
 
     int rc = VINF_SUCCESS;
     PVM pVM = pDrvIns->Internal.s.pVM;
-    if (pVM->pdm.s.cPollers < ELEMENTS(pVM->pdm.s.apfnPollers))
+    if (pVM->pdm.s.cPollers < RT_ELEMENTS(pVM->pdm.s.apfnPollers))
     {
         pVM->pdm.s.apfnPollers[pVM->pdm.s.cPollers] = pfnPoller;
         pVM->pdm.s.aDrvInsPollers[pVM->pdm.s.cPollers] = pDrvIns;
