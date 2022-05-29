@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 10216 2008-07-04 10:59:07Z vboxsync $ */
+/* $Id: EMAll.cpp 10270 2008-07-05 12:15:10Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2537,7 +2537,7 @@ DECLINLINE(int) emInterpretInstructionCPU(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCO
     }
 
     int rc;
-#if defined(IN_GC) && (defined(VBOX_STRICT) || defined(LOG_ENABLED))
+#if (defined(VBOX_STRICT) || defined(LOG_ENABLED))
     LogFlow(("emInterpretInstructionCPU %s\n", emGetMnemonic(pCpu)));
 #endif
     switch (pCpu->pCurInstr->opcode)
