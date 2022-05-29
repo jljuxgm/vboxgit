@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 5999 2007-12-07 15:05:06Z vboxsync $
+; $Id: HWACCMR0A.asm 6243 2008-01-04 18:45:34Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -777,9 +777,6 @@ BEGINPROC SVMVMRun
     ret
 ENDPROC SVMVMRun
 
-%ifdef RT_ARCH_AMD64
-%ifdef RT_OS_WINDOWS
-
 ;;
 ; Executes INVLPGA
 ;
@@ -804,5 +801,4 @@ BEGINPROC SVMInvlpgA
 %endif
     ret
 ENDPROC SVMInvlpgA
-%endif
-%endif
+
