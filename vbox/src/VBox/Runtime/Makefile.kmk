@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11352 2008-08-12 12:54:16Z vboxsync $
+# $Id: Makefile.kmk 11523 2008-08-20 20:48:52Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -281,13 +281,14 @@ RuntimeR3_SOURCES += \
 endif
 
 RuntimeR3_SOURCES.win = \
-	generic/rand-stubs-generic.cpp \
 	generic/RTDirQueryInfo-generic.cpp \
 	generic/RTDirSetTimes-generic.cpp \
-	generic/semnoint-generic.cpp \
-	generic/semsrw-generic.cpp \
 	generic/RTMpGetCurFrequency-generic.cpp \
 	generic/RTMpGetMaxFrequency-generic.cpp \
+	generic/RTRandAdvCreateNonPseudo-generic.cpp \
+	generic/RTRandAdvCreatePureNonPseudo-generic.cpp \
+	generic/semnoint-generic.cpp \
+	generic/semsrw-generic.cpp \
 	nt/RTErrConvertFromNtStatus.cpp \
 	r3/posix/env-posix.cpp \
 	r3/win/RTSystemQueryOSInfo-win.cpp \
@@ -365,11 +366,12 @@ endif
 
 RuntimeR3_SOURCES.os2   = \
 	generic/pathhost-generic.cpp \
-	generic/rand-stubs-generic.cpp \
 	generic/RTDirQueryInfo-generic.cpp \
 	generic/RTDirSetTimes-generic.cpp \
 	generic/RTFileMove-generic.cpp \
 	generic/RTLogWriteDebugger-generic.cpp \
+	generic/RTRandAdvCreateNonPseudo-generic.cpp \
+	generic/RTRandAdvCreatePureNonPseudo-generic.cpp \
 	generic/RTTimeLocalNow-generic.cpp \
 	generic/RTTimerCreate-generic.cpp \
 	generic/RTUuidCreate-generic.cpp \

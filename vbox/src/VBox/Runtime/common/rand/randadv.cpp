@@ -1,4 +1,4 @@
-/* $Id: randadv.cpp 11380 2008-08-13 08:44:46Z vboxsync $ */
+/* $Id: randadv.cpp 11523 2008-08-20 20:48:52Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers, Generic Glue.
  */
@@ -63,6 +63,33 @@ RTDECL(int) RTRandAdvSeed(RTRAND hRand, uint64_t u64Seed) RT_NO_THROW
 
     /* forward the call */
     return pThis->pfnSeed(pThis, u64Seed);
+}
+
+
+RTDECL(int) RTRandAdvSaveState(RTRAND hRand, char *pszState, size_t *pcbState) RT_NO_THROW
+{
+    /* Validate. */
+    PRTRANDINT pThis = hRand;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->u32Magic == RTRANDINT_MAGIC, VERR_INVALID_HANDLE);
+    AssertPtrNull(pszState);
+    AssertPtr(pcbState);
+
+    /* forward the call */
+    return pThis->pfnSaveState(pThis, pszState, pcbState);
+}
+
+
+RTDECL(int) RTRandAdvRestoreState(RTRAND hRand, char const *pszState) RT_NO_THROW
+{
+    /* Validate. */
+    PRTRANDINT pThis = hRand;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->u32Magic == RTRANDINT_MAGIC, VERR_INVALID_HANDLE);
+    AssertPtr(pszState);
+
+    /* forward the call */
+    return pThis->pfnRestoreState(pThis, pszState);
 }
 
 
@@ -336,4 +363,42 @@ DECLCALLBACK(uint64_t)  rtRandAdvSynthesizeU64FromU32(PRTRANDINT pThis, uint64_t
             |  ((uint64_t)pThis->pfnGetU32(pThis, 0, off >> 32) << 32))
          + u64First;
 }
+
+
+/** @copydoc RTRANDINT::pfnSeed */
+DECLCALLBACK(int) rtRandAdvStubSeed(PRTRANDINT pThis, uint64_t u64Seed)
+{
+    NOREF(pThis);
+    NOREF(u64Seed);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+/** @copydoc RTRANDINT::pfnSaveState */
+DECLCALLBACK(int) rtRandAdvStubSaveState(PRTRANDINT pThis, char *pszState, size_t *pcbState)
+{
+    NOREF(pThis);
+    NOREF(pszState);
+    NOREF(pcbState);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+/** @copydoc RTRANDINT::pfnRestoreState */
+DECLCALLBACK(int) rtRandAdvStubRestoreState(PRTRANDINT pThis, char const *pszState)
+{
+    NOREF(pThis);
+    NOREF(pszState);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+/** @copydoc RTRANDINT::pfnDestroy */
+DECLCALLBACK(int) rtRandAdvDefaultDestroy(PRTRANDINT pThis)
+{
+    pThis->u32Magic = ~RTRANDINT_MAGIC;
+    RTMemFree(pThis);
+    return VINF_SUCCESS;
+}
+
 
