@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 7738 2008-04-04 11:15:41Z vboxsync $ */
+/* $Id: EMAll.cpp 7905 2008-04-11 10:16:23Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1651,6 +1651,7 @@ EMDECL(int) EMInterpretCRxWrite(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRe
     uint32_t oldval;
 /** @todo Clean up this mess. */
 
+/** @todo AMD64 */
     int rc = DISFetchReg32(pRegFrame, SrcRegGen, &val32);
     if (VBOX_SUCCESS(rc))
     {

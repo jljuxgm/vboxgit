@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 7728 2008-04-03 15:25:34Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 7905 2008-04-11 10:16:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -975,7 +975,7 @@ PGMDECL(int) PGMPhysGCPtr2HCPtr(PVM pVM, RTGCPTR GCPtr, PRTHCPTR pHCPtr)
  *          potentially not be in sync. It could also be used by a
  *          future DBGF API to cpu state independent conversions.
  */
-PGMDECL(int) PGMPhysGCPtr2HCPtrByGstCR3(PVM pVM, RTGCPTR GCPtr, uint32_t cr3, unsigned fFlags, PRTHCPTR pHCPtr)
+PGMDECL(int) PGMPhysGCPtr2HCPtrByGstCR3(PVM pVM, RTGCPTR GCPtr, uint64_t cr3, unsigned fFlags, PRTHCPTR pHCPtr)
 {
 #ifdef VBOX_WITH_NEW_PHYS_CODE
     VM_ASSERT_EMT(pVM); /* no longer safe for use outside the EMT thread! */
