@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 8806 2008-05-14 09:34:15Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 8807 2008-05-14 09:44:34Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -668,7 +668,6 @@ HWACCMR0DECL(int) SVMR0RunGuestCode(PVM pVM, CPUMCTX *pCtx)
     int         rc = VINF_SUCCESS;
     uint64_t    exitCode = (uint64_t)SVM_EXIT_INVALID;
     SVM_VMCB   *pVMCB;
-    bool        fForceTLBFlush = false;
     bool        fGuestStateSynced = false;
     unsigned    cResume = 0;
 
