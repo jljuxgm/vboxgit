@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 10502 2008-07-11 09:31:15Z vboxsync $ */
+/* $Id: HWACCMInternal.h 10510 2008-07-11 10:03:00Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -394,7 +394,6 @@ typedef HWACCM *PHWACCM;
 
 #ifdef IN_RING0
 
-#ifdef VBOX_STRICT
 /**
  * Returns the cpu structure for the current cpu.
  * Keep in mind that there is no guarantee it will stay the same (long jumps to ring 3!!!).
@@ -404,6 +403,7 @@ typedef HWACCM *PHWACCM;
  */
 HWACCMR0DECL(PHWACCM_CPUINFO) HWACCMR0GetCurrentCpu();
 
+#ifdef VBOX_STRICT
 HWACCMR0DECL(void) HWACCMDumpRegs(PCPUMCTX pCtx);
 HWACCMR0DECL(void) HWACCMR0DumpDescriptor(PX86DESCHC  Desc, RTSEL Sel, const char *pszMsg);
 #else
