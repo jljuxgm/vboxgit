@@ -1,4 +1,4 @@
-/* $Id: strformat-vbox.cpp 6536 2008-01-28 19:44:43Z vboxsync $ */
+/* $Id: strformat-vbox.cpp 6553 2008-01-29 02:19:25Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - VBox String Formatter extensions.
  */
@@ -138,11 +138,11 @@ size_t rtstrFormatVBox(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char *
              * Current thread.
              */
             case 't':
-#if defined(IN_RING3) && !defined(VBOX_SHARED_RUNTIME)  /* we don't want this anywhere else yet. */
+#if defined(IN_RING3) && !defined(RT_MINI)  /* we don't want this anywhere else yet. */
                 return RTStrFormat(pfnOutput, pvArgOutput, NULL, 0, "%#x\n", RTThreadSelf());
-#else /* !IN_RING3 */
+#else /* !IN_RING3 || RT_MINI */
                 return pfnOutput(pvArgOutput, "0xffffffff", sizeof("0xffffffff") - 1);
-#endif /* !IN_RING3 */
+#endif /* !IN_RING3 || RT_MINI */
 
             case 'h':
             {

@@ -1,4 +1,4 @@
-/* $Id: path.cpp 6536 2008-01-28 19:44:43Z vboxsync $ */
+/* $Id: path.cpp 6553 2008-01-29 02:19:25Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Path Manipulation.
  */
@@ -552,7 +552,8 @@ RTDECL(char *) RTPathAbsExDup(const char *pszBase, const char *pszPath)
     return NULL;
 }
 
-#ifndef VBOX_SHARED_RUNTIME
+
+#ifndef RT_MINI
 
 /**
  * Gets the directory for architecture-independent application data, for
@@ -686,4 +687,5 @@ RTDECL(int) RTPathAppDocs(char *pszPath, unsigned cchPath)
 #endif
 }
 
-#endif /* !VBOX_SHARED_RUNTIME */
+#endif /* !RT_MINI */
+
