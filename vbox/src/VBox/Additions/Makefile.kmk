@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10164 2008-07-03 16:05:45Z vboxsync $
+# $Id: Makefile.kmk 10245 2008-07-04 17:31:35Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -26,6 +26,11 @@ SUB_DEPTH = .
 DEPTH     = ../../..
 endif
 include	$(KBUILD_PATH)/subheader.kmk
+
+#
+# Globals
+#
+VBOX_PATH_ADDITIONS_SRC := $(PATH_SUB_CURRENT)
 
 #
 # Cross building of the additions is generally done by remote building
@@ -222,7 +227,7 @@ $(VBOX_PATH_ADDITIONS)/VBoxGuestAdditions.iso: \
 			)\
 		) \
 		$(VBOX_SVN_REV_KMK) \
-		Makefile.kmk
+		$(VBOX_PATH_ADDITIONS_SRC)/Makefile.kmk
 	$(call MSG_TOOL,mkisofs,,$@)
 	$(QUIET)$(MKDIR) -p $(@D)
 	@# use iso-level 3 which is the most ISO conforming level with least restrictions; iso-level 4 maps to iso-level 2

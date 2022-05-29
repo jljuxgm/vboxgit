@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10129 2008-07-03 03:07:18Z vboxsync $
+# $Id: Makefile.kmk 10245 2008-07-04 17:31:35Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -61,7 +61,7 @@ VBoxTray.rc_CLEAN = $(PATH_VBoxTray)/VBoxTray-icon.rc
 include	$(KBUILD_PATH)/subfooter.kmk
 
 # Icon include file.
-$(PATH_VBoxTray)/VBoxTray-icon.rc: $(VBOX_WINDOWS_ICON_FILE) Makefile.kmk | $$(call DIRDEP,$$(@D))
+$(PATH_VBoxTray)/VBoxTray-icon.rc: $(VBOX_WINDOWS_ICON_FILE) $(VBoxTray_PATH)/Makefile.kmk | $$(call DIRDEP,$$(@D))
 	$(RM) -f $@
 	$(APPEND) $@ 'IDI_VIRTUALBOX ICON DISCARDABLE "$(subst /,\\,$(VBOX_WINDOWS_ICON_FILE))"'
 

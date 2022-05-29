@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10193 2008-07-04 03:35:01Z vboxsync $
+# $Id: Makefile.kmk 10245 2008-07-04 17:31:35Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -423,7 +423,7 @@ OTHER_CLEAN        += \
 # On Windows we'll have to generate/edit the resource file.
 # The IDI_ICON1 name is Qt specific.
 #
-$(PATH_TARGET)/VirtualBox.rc: Makefile.kmk $(VBOX_WINDOWS_ICON_FILE) | $$(call DIRDEP,$$(@D))
+$(PATH_TARGET)/VirtualBox.rc: $(PATH_SUB_CURRENT)/Makefile.kmk $(VBOX_WINDOWS_ICON_FILE) | $$(call DIRDEP,$$(@D))
 	$(RM) -f $@
 	$(APPEND) $@ 'IDI_ICON1 ICON "$(subst /,\\,$(VBOX_WINDOWS_ICON_FILE))"'
 	$(CAT) $@

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10242 2008-07-04 17:07:13Z vboxsync $
+# $Id: Makefile.kmk 10245 2008-07-04 17:31:35Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -273,7 +273,7 @@ win/VBoxSVC.rc_INCS   = $(PATH_TARGET)
 win/VBoxSVC.rc_DEPS   = $(PATH_TARGET)/VBoxSVC.rgs $(PATH_TARGET)/VBoxSVC-icon.rc
 win/VBoxSVC.rc_CLEAN  = $(PATH_TARGET)/VBoxSVC-icon.rc
 
-$(PATH_TARGET)/VBoxSVC-icon.rc: Makefile.kmk $(VBOX_WINDOWS_ICON_FILE) | $$(call DIRDEP,$$(@D))
+$(PATH_TARGET)/VBoxSVC-icon.rc: $(MAKEFILE_CURRENT) $(VBOX_WINDOWS_ICON_FILE) | $$(call DIRDEP,$$(@D))
 	$(RM) -f $@
 	$(APPEND) $@ '1 ICON DISCARDABLE "$(subst /,\\,$(VBOX_WINDOWS_ICON_FILE))"'
 
