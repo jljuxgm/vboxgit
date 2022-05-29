@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10682 2008-07-16 07:42:11Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10683 2008-07-16 07:45:39Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -503,6 +503,18 @@ static int SVMR0CheckPendingInterrupt(PVM pVM, SVM_VMCB *pVMCB, CPUMCTX *pCtx)
         SVMR0InjectEvent(pVM, pVMCB, pCtx, &Event);
     } /* if (interrupts can be dispatched) */
 
+    return VINF_SUCCESS;
+}
+
+/**
+ * Save the host state
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+HWACCMR0DECL(int) SVMR0SaveHostState(PVM pVM)
+{
+    /* Nothing to do here. */
     return VINF_SUCCESS;
 }
 
