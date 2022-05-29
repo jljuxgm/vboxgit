@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 8569 2008-05-05 12:32:51Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 8594 2008-05-05 14:11:24Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -820,7 +820,7 @@ VBOXDDU_DECL(void) VDDestroy(PVBOXHDD pDisk)
     do
     {
         /* sanity check */
-        AssertPtrBreakVoid(pDisk);
+        AssertPtrBreak(pDisk);
         AssertMsg(pDisk->u32Signature == VBOXHDDDISK_SIGNATURE, ("u32Signature=%08x\n", pDisk->u32Signature));
         VDCloseAll(pDisk);
         RTMemFree(pDisk);
@@ -3254,7 +3254,7 @@ VBOXDDU_DECL(void) VDDumpImages(PVBOXHDD pDisk)
     do
     {
         /* sanity check */
-        AssertPtrBreakVoid(pDisk);
+        AssertPtrBreak(pDisk);
         AssertMsg(pDisk->u32Signature == VBOXHDDDISK_SIGNATURE, ("u32Signature=%08x\n", pDisk->u32Signature));
 
         RTLogPrintf("--- Dumping VD Disk, Images=%u\n", pDisk->cImages);
