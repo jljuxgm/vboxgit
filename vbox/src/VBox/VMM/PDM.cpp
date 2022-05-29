@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 11219 2008-08-07 18:05:58Z vboxsync $ */
+/* $Id: PDM.cpp 11224 2008-08-07 18:25:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -299,10 +299,10 @@ PDMR3DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
      */
     for (unsigned i = 0; i < ELEMENTS(pVM->pdm.s.aPciBuses); i++)
     {
-        if (pVM->pdm.s.aPciBuses[i].pDevInsGC)
+        if (pVM->pdm.s.aPciBuses[i].pDevInsRC)
         {
-            pVM->pdm.s.aPciBuses[i].pDevInsGC   += offDelta;
-            pVM->pdm.s.aPciBuses[i].pfnSetIrqGC += offDelta;
+            pVM->pdm.s.aPciBuses[i].pDevInsRC   += offDelta;
+            pVM->pdm.s.aPciBuses[i].pfnSetIrqRC += offDelta;
         }
     }
 

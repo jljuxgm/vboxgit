@@ -1,4 +1,4 @@
-/* $Id: PDMGCDevice.cpp 11219 2008-08-07 18:05:58Z vboxsync $ */
+/* $Id: PDMGCDevice.cpp 11224 2008-08-07 18:25:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, GC Device parts.
  */
@@ -219,10 +219,10 @@ static DECLCALLBACK(void) pdmGCDevHlp_PCISetIrq(PPDMDEVINS pDevIns, int iIrq, in
     PPDMPCIBUS  pPciBus = pDevIns->Internal.s.pPciBusGC;
     if (    pPciDev
         &&  pPciBus
-        &&  pPciBus->pDevInsGC)
+        &&  pPciBus->pDevInsRC)
     {
         pdmLock(pVM);
-        pPciBus->pfnSetIrqGC(pPciBus->pDevInsGC, pPciDev, iIrq, iLevel);
+        pPciBus->pfnSetIrqRC(pPciBus->pDevInsRC, pPciDev, iIrq, iLevel);
         pdmUnlock(pVM);
     }
     else
