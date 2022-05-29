@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 7731 2008-04-03 17:05:29Z vboxsync $ */
+/* $Id: IOM.cpp 7749 2008-04-04 15:57:28Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -212,6 +212,9 @@ IOMR3DECL(void) IOMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     pVM->iom.s.pTreesGC = MMHyperHC2GC(pVM, pVM->iom.s.pTreesHC);
     RTAvlroIOPortDoWithAll(&pVM->iom.s.pTreesHC->IOPortTreeGC, true, iomr3RelocateIOPortCallback, &offDelta);
     RTAvlroGCPhysDoWithAll(&pVM->iom.s.pTreesHC->MMIOTreeGC, true, iomr3RelocateMMIOCallback, &offDelta);
+
+    if (pVM->iom.s.pfnMMIOHandlerGC)
+        pVM->iom.s.pfnMMIOHandlerGC += offDelta;
 
     /*
      * Apply relocations to the cached GC handlers
