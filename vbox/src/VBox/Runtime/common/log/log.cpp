@@ -1,4 +1,4 @@
-/* $Id: log.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: log.cpp 8247 2008-04-21 18:03:21Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -1375,6 +1375,20 @@ RTDECL(PRTLOGGER)   RTLogDefaultInstance(void)
     return g_pLogger;
 #endif /* !IN_GC */
 }
+
+
+#ifndef IN_GC
+/**
+ * Sets the default logger instance.
+ *
+ * @returns iprt status code.
+ * @param   pLogger     The new default release logger instance.
+ */
+RTDECL(PRTLOGGER) RTLogSetDefaultInstance(PRTLOGGER pLogger)
+{
+    return (PRTLOGGER)ASMAtomicXchgPtr((void * volatile *)&g_pLogger, pLogger);
+}
+#endif /* !IN_GC */
 
 
 #ifdef IN_RING0
