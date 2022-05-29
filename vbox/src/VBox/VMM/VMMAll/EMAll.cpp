@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 11522 2008-08-20 15:01:05Z vboxsync $ */
+/* $Id: EMAll.cpp 11688 2008-08-27 08:13:00Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2436,6 +2436,12 @@ static const char *emMSRtoString(unsigned uMsr)
         return "MSR_K8_GS_BASE";
     case MSR_K8_KERNEL_GS_BASE:
         return "MSR_K8_KERNEL_GS_BASE";
+    case MSR_IA32_BIOS_SIGN_ID:
+        return "Unsupported MSR_IA32_BIOS_SIGN_ID";
+    case MSR_IA32_PLATFORM_ID:
+        return "Unsupported MSR_IA32_PLATFORM_ID";
+    case MSR_IA32_BIOS_UPDT_TRIG:
+        return "Unsupported MSR_IA32_BIOS_UPDT_TRIG";
     case MSR_IA32_TSC:
         return "Unsupported MSR_IA32_TSC";
     case MSR_IA32_MTRR_CAP:
@@ -2456,6 +2462,10 @@ static const char *emMSRtoString(unsigned uMsr)
         return "Unsupported MSR_K7_EVNTSEL2";
     case MSR_K7_EVNTSEL3:
         return "Unsupported MSR_K7_EVNTSEL3";
+    case MSR_IA32_MC0_CTL:
+        return "Unsupported MSR_IA32_MC0_CTL";
+    case MSR_IA32_MC0_STATUS:
+        return "Unsupported MSR_IA32_MC0_STATUS";
     }
     return "Unknown MSR";
 }
