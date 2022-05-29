@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: VMMInternal.h 7924 2008-04-11 15:47:21Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -75,7 +75,7 @@ typedef FNVMMSWITCHERGC *PFNVMMSWITCHERGC;
 typedef struct VMMR0LOGGER
 {
     /** Pointer to the VM handle. */
-    PVM                         pVM;
+    R0PTRTYPE(PVM)              pVM;
     /** Size of the allocated logger instance (Logger). */
     uint32_t                    cbLogger;
     /** Flag indicating whether we've create the logger Ring-0 instance yet. */
