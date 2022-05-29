@@ -1,4 +1,4 @@
-/* $Id: bioslogo.h 7888 2008-04-10 17:56:35Z vboxsync $ */
+/* $Id: bioslogo.h 8006 2008-04-15 15:47:59Z vboxsync $ */
 /** @file
  * BiosLogo - The Private BIOS Logo Interface.
  */
@@ -42,7 +42,7 @@
 #define LOGO_IO_PORT         0x3b8
 
 /** The BIOS logo fade in/fade out steps. */
-#define LOGO_SHOW_STEPS      64
+#define LOGO_SHOW_STEPS      16
 
 /** @name The BIOS logo commands.
  * @{
