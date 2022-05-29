@@ -1,4 +1,4 @@
-/* $Id: Guid.h 9332 2008-06-02 23:10:25Z vboxsync $ */
+/* $Id: Guid.h 9738 2008-06-16 22:38:49Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -102,7 +102,7 @@ public:
         return Utf8Str (buf);
     }
 
-    bool isEmpty() const { return ::RTUuidIsNull (&uuid) != 0; }
+    bool isEmpty() const { return ::RTUuidIsNull (&uuid); }
     operator bool() const { return !isEmpty(); }
 
     bool operator== (const Guid &that) const { return ::RTUuidCompare (&uuid, &that.uuid) == 0; }
@@ -172,7 +172,7 @@ public:
     /* to directly test GUIDPARAM interface method's parameters */
     static bool isEmpty (const GUID &guid)
     {
-        return ::RTUuidIsNull ((PRTUUID) &guid) != 0;
+        return ::RTUuidIsNull ((PRTUUID) &guid);
     }
 
     /**
