@@ -1,4 +1,4 @@
-/* $Id: tstGetOpt.cpp 5911 2007-12-02 21:21:00Z vboxsync $ */
+/* $Id: tstGetOpt.cpp 5912 2007-12-02 21:32:00Z vboxsync $ */
 /** @file
  * innotek Portable Runtime Testcase - RTGetOpt
  */
@@ -51,7 +51,7 @@ int main()
         { "--quiet",            384, RTGETOPT_REQ_NOTHING },
     };
 
-    const char *argv2[] = 
+    char *argv2[] = 
     {
         "-s",               "string1",
         "--optwithstring",  "string2",
