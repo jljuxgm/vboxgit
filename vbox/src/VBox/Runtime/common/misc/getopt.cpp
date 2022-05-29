@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 5843 2007-11-26 18:45:33Z vboxsync $ */
+/* $Id: getopt.cpp 5911 2007-12-02 21:21:00Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Command Line Parsing
  */
@@ -25,7 +25,7 @@
 
 
 
-RTDECL(int) RTGetOpt(int argc, char *argv[], PCRTOPTIONDEF paOptions, size_t cOptions, int *piThis, PRTOPTIONUNION pValueUnion)
+RTDECL(int) RTGetOpt(int argc, const char *argv[], PCRTOPTIONDEF paOptions, size_t cOptions, int *piThis, PRTOPTIONUNION pValueUnion)
 {
     pValueUnion->pDef = NULL;
 
