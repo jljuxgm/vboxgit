@@ -1,11 +1,11 @@
-# $Id: CommonFetch.kmk 4629 2007-09-08 23:41:30Z vboxsync $
+# $Id: CommonFetch.kmk 8265 2008-04-22 07:25:54Z vboxsync $
 ## @file
 # Common Fetch. 
 # Included by both Makefile.kmk and Makefile-ose.kmk.
 #
 
 #
-#  Copyright (C) 2006-2007 innotek GmbH
+#  Copyright (C) 2006-2007 Sun Microsystems, Inc.
 #
 #  This file is part of VirtualBox Open Source Edition (OSE), as
 #  available from http://www.virtualbox.org. This file is free software;
