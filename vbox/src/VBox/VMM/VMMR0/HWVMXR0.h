@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 9453 2008-06-06 09:28:02Z vboxsync $ */
+/* $Id: HWVMXR0.h 9457 2008-06-06 09:46:39Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -160,6 +160,25 @@ HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx, PHWACCM_CPUINFO pCpu
         VMXReadVMCS(VMX_VMCS_GUEST_##REG##_ACCESS_RIGHTS, &val);     \
         pCtx->reg##Hid.Attr.u    = val;
 
+
+
+/**
+ * Prepares for and executes VMLAUNCH (32 bits guest mode)
+ *
+ * @returns VBox status code
+ * @param   fResume     vmlauch/vmresume
+ * @param   pCtx        Guest context
+ */
+DECLASM(int) VMXR0StartVM32(RTHCUINT fResume, PCPUMCTX pCtx);
+
+/**
+ * Prepares for and executes VMLAUNCH (64 bits guest mode)
+ *
+ * @returns VBox status code
+ * @param   fResume     vmlauch/vmresume
+ * @param   pCtx        Guest context
+ */
+DECLASM(int) VMXR0StartVM64(RTHCUINT fResume, PCPUMCTX pCtx);
 
 #endif /* IN_RING0 */
 

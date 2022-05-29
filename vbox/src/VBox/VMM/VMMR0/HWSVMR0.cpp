@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9453 2008-06-06 09:28:02Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9457 2008-06-06 09:46:39Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -641,7 +641,7 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
             case PGMMODE_REAL:
             case PGMMODE_PROTECTED:     /* Protected mode, no paging. */
                 AssertFailed();
-                return VERR_PGM_UNSUPPORTED_HOST_PAGING_MODE;
+                return VERR_PGM_UNSUPPORTED_SHADOW_PAGING_MODE;
 
             case PGMMODE_32_BIT:        /* 32-bit paging. */
                 break;
@@ -658,12 +658,12 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
                 break;
 #else
                 AssertFailed();
-                return VERR_PGM_UNSUPPORTED_HOST_PAGING_MODE;
+                return VERR_PGM_UNSUPPORTED_SHADOW_PAGING_MODE;
 #endif
 
             default:                    /* shut up gcc */
                 AssertFailed();
-                return VERR_PGM_UNSUPPORTED_HOST_PAGING_MODE;
+                return VERR_PGM_UNSUPPORTED_SHADOW_PAGING_MODE;
             }
         }
         pVMCB->guest.u64CR4 = val;

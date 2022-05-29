@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 9453 2008-06-06 09:28:02Z vboxsync $ */
+/* $Id: HWACCMInternal.h 9457 2008-06-06 09:46:39Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -193,6 +193,9 @@ typedef struct HWACCM
         RTHCPHYS                    pRealModeTSSPhys;
         /** Virtual address of the TSS page used for real mode emulation. */
         R0PTRTYPE(PVBOXTSS)         pRealModeTSS;
+
+        /** Ring 0 handlers for VT-x. */
+        DECLR0CALLBACKMEMBER(int, pfnStartVM,(RTHCUINT fResume, PCPUMCTX pCtx));
 
         /** Host CR4 value (set by ring-0 VMX init) */
         uint64_t                    hostCR4;
