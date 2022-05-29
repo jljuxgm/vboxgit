@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 8645 2008-05-07 11:01:00Z vboxsync $ */
+/* $Id: thread.cpp 8658 2008-05-07 14:27:19Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -524,10 +524,10 @@ uint32_t rtThreadRelease(PRTTHREADINT pThread)
 static void rtThreadDestroy(PRTTHREADINT pThread)
 {
     /*
-     * Mark it dead and remove it from the tree.
+     * Remove it from the tree and mark it as dead.
      */
-    ASMAtomicXchgU32(&pThread->u32Magic, RTTHREADINT_MAGIC_DEAD);
     rtThreadRemove(pThread);
+    ASMAtomicXchgU32(&pThread->u32Magic, RTTHREADINT_MAGIC_DEAD);
 
     /*
      * Free resources.
