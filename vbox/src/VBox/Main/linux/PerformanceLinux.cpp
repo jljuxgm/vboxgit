@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 10919 2008-07-28 18:41:31Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 10921 2008-07-28 18:49:16Z vboxsync $ */
 
 /** @file
  *
@@ -129,7 +129,7 @@ int CollectorLinux::getProcessMemoryUsage(RTPROCESS process, unsigned long *used
     int rc = getRawProcessStats(process, &u64Tmp, &u64Tmp, &nPagesUsed);
     if (RT_SUCCESS(rc))
     {
-        Assert(getpagesize() >= 1024);
+        Assert(PAGE_SIZE >= 1024);
         *used = nPagesUsed * (PAGE_SIZE / 1024);
     }
     return rc;
