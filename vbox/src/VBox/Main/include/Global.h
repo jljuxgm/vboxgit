@@ -1,4 +1,4 @@
-/* $Id: Global.h 9360 2008-06-03 17:10:09Z vboxsync $ */
+/* $Id: Global.h 9361 2008-06-03 17:12:36Z vboxsync $ */
 
 /** @file
  *
@@ -40,7 +40,7 @@ class Global
 public:
 
     /** Represents OS Type <-> string mappings. */
-    const struct OSType
+    struct OSType
     {
         const char    *id;          /* utf-8 */
         const char    *description; /* utf-8 */
