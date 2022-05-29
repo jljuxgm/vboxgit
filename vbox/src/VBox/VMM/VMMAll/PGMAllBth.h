@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 9990 2008-06-27 11:46:14Z vboxsync $ */
+/* $Id: PGMAllBth.h 10001 2008-06-27 15:37:15Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3582,7 +3582,7 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVM pVM, uint64_t cr3, uint64_t cr4, RTGCUINTP
         pPml4eDst     = &pVM->pgm.s.CTXMID(p,PaePML4)->a[iPml4e];
 
         /* Fetch the pgm pool shadow descriptor if the shadow pml4e is present. */
-        if (!pVM->pgm.s.CTXMID(p,PaePML4)->a[iPml4e].n.u1Present)
+        if (!pPml4eDst->n.u1Present)
         {
             GCPtr += UINT64_C(_2M * 512 * 512);
             continue;
