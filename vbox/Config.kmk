@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6020 2007-12-09 08:33:41Z vboxsync $
+# $Id: Config.kmk 6026 2007-12-09 18:51:42Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -2628,6 +2628,8 @@ TEMPLATE_VBOXGUESTR3LIB_INST    = $(INST_ADDITIONS_LIB)
 #
 TEMPLATE_VBOXGUESTR0            = VBox Guest Driver
 TEMPLATE_VBOXGUESTR0_EXTENDS    = VBOXR0DRV
+TEMPLATE_VBOXGUESTR0_SDKS.win.x86   = WIN32SDK W2K3DDKX86
+TEMPLATE_VBOXGUESTR0_SDKS.win.amd64 = W2K3DDK WINPSDKINCS
 TEMPLATE_VBOXGUESTR0_INST       = $(INST_ADDITIONS)
 TEMPLATE_VBOXGUESTR0_DEFS       = $(TEMPLATE_VBOXR0DRV_DEFS) IN_GUEST IN_GUEST_R0
 
@@ -2717,7 +2719,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6020 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6026 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
