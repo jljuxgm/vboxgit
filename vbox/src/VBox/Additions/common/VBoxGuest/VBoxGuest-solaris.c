@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 6150 2007-12-19 10:55:09Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 6151 2007-12-19 11:20:48Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -680,7 +680,6 @@ static int VBoxAddSolarisIOCtl(dev_t Dev, int Cmd, intptr_t pArg, int Mode, cred
 {
     LogFlow((DEVICE_NAME ":VBoxAddSolarisIOCtl\n"));
 
-    /** @todo use the faster way to find pSession (using the soft state) */
 #ifdef USE_SESSION_HASH
     RTSPINLOCKTMP       Tmp = RTSPINLOCKTMP_INITIALIZER;
     const RTPROCESS     Process = RTProcSelf();
