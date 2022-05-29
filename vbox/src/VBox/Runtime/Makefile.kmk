@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11327 2008-08-11 11:02:57Z vboxsync $
+# $Id: Makefile.kmk 11347 2008-08-11 21:12:55Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -196,6 +196,8 @@ RuntimeR3_SOURCES       = \
 	common/misc/thread.cpp \
 	common/misc/zip.cpp \
 	common/rand/rand.cpp \
+	common/rand/randadv.cpp \
+	common/rand/randparkmiller.cpp \
 	common/string/RTStrNLen.cpp \
 	common/string/RTStrNLenEx.cpp \
 	common/string/straprintf.cpp \

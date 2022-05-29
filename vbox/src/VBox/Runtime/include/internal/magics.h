@@ -1,4 +1,4 @@
-/* $Id: magics.h 10944 2008-07-29 18:08:58Z vboxsync $ */
+/* $Id: magics.h 11347 2008-08-11 21:12:55Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -54,6 +54,8 @@
 #define RTMEMHDR_MAGIC              0x18090119
 /** RTR0MEMOBJ::u32Magic. (Masakazu Katsura) */
 #define RTR0MEMOBJ_MAGIC            0x19611210
+/** RTRANDINT::u32Magic. (Alan Moore) */
+#define RTRANDINT_MAGIC             0x19531118
 /** Magic for the event semaphore structure. (Neil Gaiman) */
 #define RTSEMEVENT_MAGIC            0x19601110
 /** Magic for the multiple release event semaphore structure. (Isaac Asimov) */
