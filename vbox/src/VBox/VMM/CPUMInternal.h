@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 9212 2008-05-29 09:38:38Z vboxsync $ */
+/* $Id: CPUMInternal.h 9354 2008-06-03 13:45:14Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -319,6 +319,9 @@ typedef struct CPUM
         /** ecx part */
         X86CPUIDFEATECX     ecx;
     }   CPUFeatures;
+
+    /* CPU manufacturer. */
+    CPUMCPUVENDOR           enmCPUVendor;
 
     /** CR4 mask */
     struct
