@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 10806 2008-07-22 11:07:38Z vboxsync $ */
+/* $Id: VMMR0.cpp 10843 2008-07-23 21:49:52Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -669,8 +669,12 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMMR0OPERATION enmOperation)
  */
 DECLINLINE(bool) vmmR0IsValidSession(PVM pVM, PSUPDRVSESSION pClaimedSession, PSUPDRVSESSION pSession)
 {
-    /* Only one out of the two */
-    if (pVM && pSession)
+    /* This must be set! */
+    if (!pSession)
+        return false;
+
+    /* Only one out of the two. */
+    if (pVM && pClaimedSession)
         return false;
     if (pVM)
         pClaimedSession = pVM->pSession;
@@ -908,6 +912,20 @@ static int vmmR0EntryExWorker(PVM pVM, VMMR0OPERATION enmOperation, PSUPVMMR0REQ
             if (!g_pIntNet)
                 return VERR_NOT_SUPPORTED;
             return INTNETR0IfSetPromiscuousModeReq(g_pIntNet, pSession, (PINTNETIFSETPROMISCUOUSMODEREQ)pReqHdr);
+
+        case VMMR0_DO_INTNET_IF_SET_MAC_ADDRESS:
+            if (u64Arg || !pReqHdr || !vmmR0IsValidSession(pVM, ((PINTNETIFSETMACADDRESSREQ)pReqHdr)->pSession, pSession))
+                return VERR_INVALID_PARAMETER;
+            if (!g_pIntNet)
+                return VERR_NOT_SUPPORTED;
+            return INTNETR0IfSetMacAddressReq(g_pIntNet, pSession, (PINTNETIFSETMACADDRESSREQ)pReqHdr);
+
+        case VMMR0_DO_INTNET_IF_SET_ACTIVE:
+            if (u64Arg || !pReqHdr || !vmmR0IsValidSession(pVM, ((PINTNETIFSETACTIVEREQ)pReqHdr)->pSession, pSession))
+                return VERR_INVALID_PARAMETER;
+            if (!g_pIntNet)
+                return VERR_NOT_SUPPORTED;
+            return INTNETR0IfSetActiveReq(g_pIntNet, pSession, (PINTNETIFSETACTIVEREQ)pReqHdr);
 
         case VMMR0_DO_INTNET_IF_SEND:
             if (u64Arg || !pReqHdr || !vmmR0IsValidSession(pVM, ((PINTNETIFSENDREQ)pReqHdr)->pSession, pSession))
