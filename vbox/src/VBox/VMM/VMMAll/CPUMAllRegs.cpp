@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 9817 2008-06-19 11:47:38Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 9825 2008-06-19 15:59:41Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1061,7 +1061,7 @@ CPUMDECL(void) CPUMSetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
             }
             /* Valid for both Intel and AMD CPUs, although only in 64 bits mode for Intel. */
             pVM->cpum.s.aGuestCpuIdExt[1].edx |= X86_CPUID_AMD_FEATURE_EDX_SEP;
-            LogRel(("CPUMSetGuestCpuIdFeature: Enabled sysenter/exit\n"));
+            LogRel(("CPUMSetGuestCpuIdFeature: Enabled syscall/ret\n"));
             break;
         }
 
