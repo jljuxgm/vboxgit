@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10614 2008-07-14 19:52:32Z vboxsync $
+# $Id: Makefile.kmk 10708 2008-07-16 19:15:39Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -181,6 +181,7 @@ RuntimeR3_SOURCES       = \
 	common/log/logcom.cpp \
 	common/log/logformat.cpp \
 	common/misc/assert.cpp \
+	common/misc/cache.cpp \
 	common/misc/cidr.cpp \
 	common/misc/getopt.cpp \
 	common/misc/rand.cpp \

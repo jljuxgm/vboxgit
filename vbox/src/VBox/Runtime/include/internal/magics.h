@@ -1,4 +1,4 @@
-/* $Id: magics.h 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: magics.h 10708 2008-07-16 19:15:39Z vboxsync $ */
 /** @file
  * IPRT - Internal Header Defining The Magic Numbers.
  */
@@ -72,6 +72,8 @@
 #define RTTHREADINT_MAGIC_DEAD      0x19360614
 /** Magic number for timer handles. (Jared Mason Diamond) */
 #define RTTIMER_MAGIC               0x19370910
+/** Magic number for cache object headers. (Joseph Weizenbaum) */
+#define RTOBJCACHE_MAGIC            0x19230108
 
 /** @} */
 
