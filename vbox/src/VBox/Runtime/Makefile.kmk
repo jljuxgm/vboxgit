@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11239 2008-08-08 10:16:01Z vboxsync $
+# $Id: Makefile.kmk 11256 2008-08-08 14:17:59Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -497,7 +497,6 @@ RuntimeR3_SOURCES.solaris = \
 	r3/posix/path-posix.cpp \
 	r3/posix/process-posix.cpp \
 	r3/posix/rand-posix.cpp \
-	r3/posix/RTMpGetCount-posix.cpp \
 	r3/posix/RTTimeNow-posix.cpp \
 	r3/posix/semevent-posix.cpp \
 	r3/posix/semeventmulti-posix.cpp \
