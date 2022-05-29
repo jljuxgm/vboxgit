@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9162 2008-05-27 14:00:12Z vboxsync $
+# $Id: Makefile.kmk 9163 2008-05-27 14:02:14Z vboxsync $
 ## @file
 # Makefile for the Solaris installer.
 #
@@ -25,8 +25,6 @@ include $(KBUILD_PATH)/header.kmk
 ifneq ($(KBUILD_HOST),solaris)
 $(error "The Solaris installer can only be built on Solaris!") # yeah, right.
 endif
-
-VBOX_WITH_SOLARIS_VBI=1
 
 # Globals
 SOLARIS_INST_DIR := $(PATH_TARGET)/install
