@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11600 2008-08-24 09:57:08Z vboxsync $
+# $Id: Makefile.kmk 11604 2008-08-25 08:50:05Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -268,7 +268,7 @@ LIBRARIES += \
 DLLS += \
 	VBoxXPCOM \
 	VBoxXPCOMIPCC \
-	VBox-xpcom-helper
+	$(if $(VBOX_OSE),,VBox-xpcom-helper)
 
 # we put it here, as template it uses depends on VBoxRT,
 # which may not be built yet
