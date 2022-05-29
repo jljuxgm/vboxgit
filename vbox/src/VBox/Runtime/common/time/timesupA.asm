@@ -1,4 +1,4 @@
-; $Id: timesupA.asm 8273 2008-04-22 11:18:54Z vboxsync $%ifndef IN_GUEST
+; $Id: timesupA.asm 8281 2008-04-22 12:43:16Z vboxsync $
 ;; @file
 ; IPRT - Time using SUPLib, the Assembly Implementation.
 ;
