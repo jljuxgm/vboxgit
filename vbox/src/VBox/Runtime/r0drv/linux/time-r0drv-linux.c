@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-linux.c 9239 2008-05-29 22:22:32Z vboxsync $ */
+/* $Id: time-r0drv-linux.c 9240 2008-05-29 22:52:36Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Linux.
  */
@@ -43,12 +43,12 @@ DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 16)
     /*
-     * Use ktime_get, this is also what clock_gettime(CLOCK_MONOTONIC,) is using.
+     * Use ktime_get_ts, this is also what clock_gettime(CLOCK_MONOTONIC,) is using.
      */
-    ktime_t Kt = ktime_get();
-    struct timespec Ts = ktime_to_timespec(Kt);
-    uint64_t u64 = Ts.tv_sec * UINT64_C(1000000000)
-                 + Ts.tv_nsec;
+    uint64_t u64;
+    struct timespec Ts;
+    ktime_get_ts(&Ts);
+    u64 = Ts.tv_sec * UINT64_C(1000000000) + Ts.tv_nsec;
     return u64;
 
 #elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 60)
