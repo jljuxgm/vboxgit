@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 6846 2008-02-07 13:02:15Z vboxsync $ */
+/* $Id: the-linux-kernel.h 7032 2008-02-20 12:26:22Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the Linux kernel.
  */
@@ -239,6 +239,17 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
  */
 #ifndef __attribute_used__
 #define __attribute_used__ __used
+#endif
+
+/**
+ * Hack for shortening pointers on linux so we can stuff more stuff into the
+ * task_struct::comm field. This is used by the semaphore code but put here
+ * because we don't have any better place atm. Don't use outside IPRT, please.
+ */
+#ifdef RT_ARCH_AMD64
+# define IPRT_DEBUG_SEMS_ADDRESS(addr)  ( ((long)(addr) & (long)~UINT64_C(0xfffffff000000000)) )
+#else
+# define IPRT_DEBUG_SEMS_ADDRESS(addr)  ( (long)(addr) )
 #endif
 
 #endif

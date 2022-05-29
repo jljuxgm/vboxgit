@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-linux.c 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: semevent-r0drv-linux.c 7032 2008-02-20 12:26:22Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Single Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -23,7 +23,6 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
-
 
 
 /*******************************************************************************
@@ -138,6 +137,9 @@ static int rtSemEventWait(PRTSEMEVENTINTERNAL pEventInt, unsigned cMillies, bool
     DEFINE_WAIT(Wait);
     int     rc       = VINF_SUCCESS;
     long    lTimeout = cMillies == RT_INDEFINITE_WAIT ? MAX_SCHEDULE_TIMEOUT : msecs_to_jiffies(cMillies);
+#ifdef IPRT_DEBUG_SEMS
+    snprintf(current->comm, TASK_COMM_LEN, "e%lx", IPRT_DEBUG_SEMS_ADDRESS(pEventInt));
+#endif
     for (;;)
     {
         /* make everything thru schedule() atomic scheduling wise. */
@@ -173,6 +175,9 @@ static int rtSemEventWait(PRTSEMEVENTINTERNAL pEventInt, unsigned cMillies, bool
     }
 
     finish_wait(&pEventInt->Head, &Wait);
+#ifdef IPRT_DEBUG_SEMS
+    snprintf(current->comm, TASK_COMM_LEN, "e%lx:%d", IPRT_DEBUG_SEMS_ADDRESS(pEventInt), rc);
+#endif
     return rc;
 }
 
