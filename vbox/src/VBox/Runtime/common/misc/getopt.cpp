@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 8926 2008-05-19 17:41:44Z vboxsync $ */
+/* $Id: getopt.cpp 8927 2008-05-19 17:43:01Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -199,6 +199,7 @@ RTDECL(int) RTGetOpt(int argc, char **argv, PCRTOPTIONDEF paOptions, size_t cOpt
     /*
      * Not an option.
      */
+    (*piThis)--;
     /** @todo Sort options and arguments (i.e. stuff that doesn't start with '-'), stop when
      * encountering the first argument. */
 
