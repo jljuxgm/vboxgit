@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 7597 2008-03-27 16:01:26Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 7598 2008-03-27 16:08:49Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1063,7 +1063,7 @@ static void pgmPhysCacheAdd(PVM pVM, PGMPHYSCACHE *pCache, RTGCPHYS GCPhys, uint
 
     Assert(VM_IS_EMT(pVM));
 
-    GCPhys = GCPhys & X86_PTE_PAE_PG_MASK;
+    GCPhys = PHYS_PAGE_ADDRESS(GCPhys);
     pbHC   = (uint8_t *)PAGE_ADDRESS(pbHC);
 
     iCacheIndex = ((GCPhys >> PAGE_SHIFT) & PGM_MAX_PHYSCACHE_ENTRIES_MASK);
