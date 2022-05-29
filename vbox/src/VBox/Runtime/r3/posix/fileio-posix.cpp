@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: fileio-posix.cpp 8561 2008-05-05 10:13:47Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -211,6 +211,27 @@ RTR3DECL(int)  RTFileClose(RTFILE File)
     if (close((int)File) == 0)
         return VINF_SUCCESS;
     return RTErrConvertFromErrno(errno);
+}
+
+
+RTR3DECL(int) RTFileFromNative(PRTFILE pFile, RTHCINTPTR uNative)
+{
+    if (    uNative < 0
+        ||  (RTFILE)uNative != (RTUINTPTR)uNative)
+    {
+        AssertMsgFailed(("%p\n", uNative));
+        *pFile = NIL_RTFILE;
+        return VERR_INVALID_HANDLE;
+    }
+    *pFile = (RTFILE)uNative;
+    return VINF_SUCCESS;
+}
+
+
+RTR3DECL(RTHCINTPTR) RTFileToNative(RTFILE File)
+{
+    AssertReturn(File != NIL_RTFILE, -1);
+    return (RTHCINTPTR)File;
 }
 
 
