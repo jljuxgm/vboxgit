@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 10270 2008-07-05 12:15:10Z vboxsync $ */
+/* $Id: PGMAllBth.h 10280 2008-07-05 15:06:42Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -64,6 +64,11 @@ __END_DECLS
 
 #ifdef IN_RING0 /* no mappings in VT-x and AMD-V mode */
 # define PGM_WITHOUT_MAPPINGS
+#endif
+
+/* There's no need for tracking physical pages when there's no guest paging involved. */
+#if !PGM_WITH_PAGING(PGM_GST_TYPE)
+#undef PGMPOOL_WITH_USER_TRACKING
 #endif
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 10279 2008-07-05 15:03:17Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 10280 2008-07-05 15:06:42Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3157,7 +3157,6 @@ static void pgmPoolTrackDeref(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
             break;
         }
 
-        case PGMPOOLKIND_32BIT_PT_FOR_PHYS: /* treat it like a 4 MB page */
         case PGMPOOLKIND_32BIT_PT_FOR_32BIT_4MB:
         {
             STAM_PROFILE_START(&pPool->StatTrackDerefGCPhys, g);
@@ -3166,7 +3165,6 @@ static void pgmPoolTrackDeref(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
             break;
         }
 
-        case PGMPOOLKIND_PAE_PT_FOR_PHYS:   /* treat it like a 4 MB page */
         case PGMPOOLKIND_PAE_PT_FOR_PAE_2MB:
         case PGMPOOLKIND_PAE_PT_FOR_32BIT_4MB:
         {
@@ -3183,25 +3181,28 @@ static void pgmPoolTrackDeref(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
         case PGMPOOLKIND_32BIT_PT_FOR_32BIT_4MB:
         case PGMPOOLKIND_PAE_PT_FOR_PAE_2MB:
         case PGMPOOLKIND_PAE_PT_FOR_32BIT_4MB:
-        case PGMPOOLKIND_32BIT_PT_FOR_PHYS:
-        case PGMPOOLKIND_PAE_PT_FOR_PHYS:
             break;
 #endif /* !PGMPOOL_WITH_GCPHYS_TRACKING */
 
         case PGMPOOLKIND_PAE_PD_FOR_32BIT_PD:
         case PGMPOOLKIND_PAE_PD_FOR_PAE_PD:
         case PGMPOOLKIND_64BIT_PD_FOR_64BIT_PD:
-        case PGMPOOLKIND_64BIT_PD_FOR_PHYS:
             pgmPoolTrackDerefPDPae(pPool, pPage, (PX86PDPAE)pvShw);
             break;
 
-        case PGMPOOLKIND_64BIT_PDPT_FOR_PHYS:
         case PGMPOOLKIND_64BIT_PDPT_FOR_64BIT_PDPT:
             pgmPoolTrackDerefPDPT64Bit(pPool, pPage, (PX86PDPT)pvShw);
             break;
 
         case PGMPOOLKIND_64BIT_PML4_FOR_64BIT_PML4:
             pgmPoolTrackDerefPML464Bit(pPool, pPage, (PX86PML4)pvShw);
+            break;
+
+        case PGMPOOLKIND_64BIT_PD_FOR_PHYS:
+        case PGMPOOLKIND_64BIT_PDPT_FOR_PHYS:
+        case PGMPOOLKIND_PAE_PT_FOR_PHYS:
+        case PGMPOOLKIND_32BIT_PT_FOR_PHYS:
+            /* No tracking here. */
             break;
 
         default:
