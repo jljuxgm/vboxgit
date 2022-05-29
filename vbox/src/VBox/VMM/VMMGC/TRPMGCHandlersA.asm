@@ -1,4 +1,4 @@
-; $Id: TRPMGCHandlersA.asm 9714 2008-06-16 11:58:28Z vboxsync $
+; $Id: TRPMGCHandlersA.asm 11473 2008-08-19 07:31:58Z vboxsync $
 ;; @file
 ; TRPM - Guest Context Trap Handlers
 ;
@@ -1035,7 +1035,7 @@ BEGINPROC_EXPORTED TRPMGCHandlerTrap08
     mov     ds, eax
     mov     es, eax
 
-    COM_S_PRINT 10,13,'*** Guru Mediation 00000008 - Double Fault! ***',10,13
+    COM_S_PRINT 10,13,'*** Guru Meditation 00000008 - Double Fault! ***',10,13
 
     ;
     ; Disable write protection.

@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 11424 2008-08-14 13:46:06Z vboxsync $ */
+/* $Id: EM.cpp 11473 2008-08-19 07:31:58Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -619,7 +619,7 @@ static int emR3Debug(PVM pVM, int rc)
             /*
              * Guru meditation.
              */
-            case VERR_REM_TOO_MANY_TRAPS: /** @todo Make a guru mediation event! */
+            case VERR_REM_TOO_MANY_TRAPS: /** @todo Make a guru meditation event! */
                 rc = DBGFR3EventSrc(pVM, DBGFEVENT_DEV_STOP, "VERR_REM_TOO_MANY_TRAPS", 0, NULL, NULL);
                 break;
 
