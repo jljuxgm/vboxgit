@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 9457 2008-06-06 09:46:39Z vboxsync $ */
+/* $Id: HWACCMInternal.h 9897 2008-06-25 08:02:49Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -275,6 +275,9 @@ typedef struct HWACCM
         RTHCPHYS                    pMSRBitmapPhys;
         /** Virtual address of the MSR bitmap. */
         R0PTRTYPE(void *)           pMSRBitmap;
+
+        /** Ring 0 handlers for VT-x. */
+        DECLR0CALLBACKMEMBER(int, pfnVMRun,(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx));
 
         /** SVM revision. */
         uint32_t                    u32Rev;
