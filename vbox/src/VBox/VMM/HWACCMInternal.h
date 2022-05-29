@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 8878 2008-05-16 10:59:52Z vboxsync $ */
+/* $Id: HWACCMInternal.h 8943 2008-05-20 09:15:53Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -213,9 +213,14 @@ typedef struct HWACCM
         bool                        fAlwaysFlushTLB;
         /** Set if we need to flush the TLB during the world switch. */
         bool                        fForceTLBFlush;
+        /** Set if nested paging is enabled. */
+        bool                        fNestedPaging;
 
         /* Id of the last cpu we were executing code on (NIL_RTCPUID for the first time) */
         RTCPUID                     idLastCpu;
+
+        /* TLB flush count */
+        uint32_t                    cTLBFlushes;
 
         /** R0 memory object for the VM control block (VMCB). */
         RTR0MEMOBJ                  pMemObjVMCB;
@@ -337,6 +342,8 @@ typedef struct
     RTR0MEMOBJ  pMemObj;
     /* Current ASID (AMD-V only) */
     uint32_t    uCurrentASID;
+    /* TLB flush count */
+    uint32_t    cTLBFlushes;
 
     bool        fVMXConfigured;
     bool        fSVMConfigured;
