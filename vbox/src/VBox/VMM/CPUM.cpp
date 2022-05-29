@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 6176 2007-12-21 21:35:32Z vboxsync $ */
+/* $Id: CPUM.cpp 6178 2007-12-23 12:42:37Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -195,8 +195,8 @@ static int cpumR3CpuIdInit(PVM pVM)
      */
     for (i = 0; i < RT_ELEMENTS(pVM->cpum.s.aGuestCpuIdStd); i++)
         ASMCpuId_Idx_ECX(i, 0,
-                 &pCPUM->aGuestCpuIdStd[i].eax, &pCPUM->aGuestCpuIdStd[i].ebx,
-                 &pCPUM->aGuestCpuIdStd[i].ecx, &pCPUM->aGuestCpuIdStd[i].edx);
+                         &pCPUM->aGuestCpuIdStd[i].eax, &pCPUM->aGuestCpuIdStd[i].ebx,
+                         &pCPUM->aGuestCpuIdStd[i].ecx, &pCPUM->aGuestCpuIdStd[i].edx);
     for (i = 0; i < RT_ELEMENTS(pCPUM->aGuestCpuIdExt); i++)
         ASMCpuId(0x80000000 + i,
                  &pCPUM->aGuestCpuIdExt[i].eax, &pCPUM->aGuestCpuIdExt[i].ebx,
