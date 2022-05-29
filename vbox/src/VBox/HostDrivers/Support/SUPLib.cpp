@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: SUPLib.cpp 7035 2008-02-20 13:34:16Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -340,6 +340,8 @@ static int supInitFake(PSUPDRVSESSION *ppSession)
         { "RTR0MemObjFree",                         0xefef0015 },
         { "RTR0MemObjGetPagePhysAddr",              0xefef0016 },
         { "RTR0MemObjMapUser",                      0xefef0017 },
+        { "RTProcSelf",                             0xefef0038 },
+        { "RTR0ProcHandleSelf",                     0xefef0039 },
         { "RTSemEventCreate",                       0xefef0018 },
         { "RTSemEventSignal",                       0xefef0019 },
         { "RTSemEventWait",                         0xefef001a },
