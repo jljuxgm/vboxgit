@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7703 2008-04-02 15:17:20Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7708 2008-04-02 16:34:31Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -3455,7 +3455,7 @@ PDMBOTHCBDECL(int) pcnetIOPortRead(PPDMDEVINS pDevIns, void *pvUser,
     Log2(("#%d pcnetIOPortRead: Port=%RTiop *pu32=%#RX32 cb=%d rc=%Vrc\n", PCNET_INST_NR, Port, *pu32, cb, rc));
 #ifdef LOG_ENABLED
     if (rc == VINF_IOM_HC_IOPORT_READ)
-        LogFlow(("#%d => HC\n", PCNET_INST_NR));
+        LogFlow(("#%d pcnetIOPortRead/critsect failed in GC => HC\n", PCNET_INST_NR));
 #endif
     return rc;
 }
@@ -3497,7 +3497,7 @@ PDMBOTHCBDECL(int) pcnetIOPortWrite(PPDMDEVINS pDevIns, void *pvUser,
     Log2(("#%d pcnetIOPortWrite: Port=%RTiop u32=%#RX32 cb=%d rc=%Vrc\n", PCNET_INST_NR, Port, u32, cb, rc));
 #ifdef LOG_ENABLED
     if (rc == VINF_IOM_HC_IOPORT_WRITE)
-        LogFlow(("#%d => HC\n", PCNET_INST_NR));
+        LogFlow(("#%d pcnetIOPortWrite/critsect failed in GC => HC\n", PCNET_INST_NR));
 #endif
     return rc;
 }
