@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8245 2008-04-21 17:24:28Z vboxsync $
+# $Id: Makefile.kmk 8284 2008-04-22 12:59:37Z vboxsync $
 ## @file
 # Makefile for the IPRT (IPRT).
 #
@@ -188,6 +188,7 @@ RuntimeR3_SOURCES       = \
 	common/misc/semspingpong.cpp \
 	common/misc/thread.cpp \
 	common/misc/zip.cpp \
+	common/misc/ip.cpp \
 	common/string/straprintf.cpp \
 	common/string/strformat.cpp \
 	common/string/strformatrt.cpp \

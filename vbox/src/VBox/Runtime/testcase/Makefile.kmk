@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: Makefile.kmk 8284 2008-04-22 12:59:37Z vboxsync $
 ## @file
 # Makefile for the IPRT testcases.
 #
@@ -67,7 +67,8 @@ PROGRAMS = \
 	tstTimeSpec \
 	tstTSC \
 	tstUtf8 \
-	tstUuid
+	tstUuid \
+	tstIp
 PROGRAMS.win = \
 	tstRTProcWait \
 	tstCritSectW32 \
@@ -110,6 +111,8 @@ tstTSC_SOURCES = tstTSC.cpp
 tstTSC_CXXFLAGS.linux += -O3
 
 tstStrFormat_SOURCES = tstStrFormat.cpp
+
+tstIp_SOURCES = tstIp.cpp
 
 tstLog_SOURCES  = tstLog.cpp
 
