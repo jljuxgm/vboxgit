@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8634 2008-05-06 17:20:38Z vboxsync $
+# $Id: Makefile.kmk 8638 2008-05-06 18:44:55Z vboxsync $
 ## @file
 # Makefile for the Solaris installer.
 #
@@ -274,7 +274,6 @@ $(PATH_BIN)/$(PKGFILENAME).tar.gz: \
 	$(QUIET)$(INSTALL) -m 0755 $(SOLARISINSTDIR)/$(PKGFILENAME).tar.gz $(PATH_BIN)
 
 $(PATH_BIN)/$(DBGARCHIVE): \
-		$(addprefix $(SOLARISINSTDIR)/,$(SOLARISSTRIPBIN)) \
 		$(VBOX_VERSION_STAMP) \
 		Makefile.kmk
 	$(call MSG_L1,Installing debug binaries $(SOLARISDBGDIR))
