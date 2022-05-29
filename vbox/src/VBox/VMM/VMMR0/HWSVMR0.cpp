@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10095 2008-07-02 11:26:05Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10097 2008-07-02 12:28:55Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -688,7 +688,7 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     pVMCB->guest.u64RFlags = pCtx->eflags.u32;
 
     /* Set CPL */
-    pVMCB->guest.u8CPL     = pCtx->ssHid.Attr.n.u2Dpl;
+    pVMCB->guest.u8CPL     = pCtx->csHid.Attr.n.u2Dpl;
 
     /* RAX/EAX too, as VMRUN uses RAX as an implicit parameter. */
     pVMCB->guest.u64RAX    = pCtx->rax;
