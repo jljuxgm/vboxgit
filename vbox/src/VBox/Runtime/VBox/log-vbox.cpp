@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 6515 2008-01-25 13:23:54Z vboxsync $ */
+/* $Id: log-vbox.cpp 6543 2008-01-28 20:27:44Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Logging configuration.
  */
@@ -390,10 +390,8 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
          */
 # if defined(DEBUG_bird) && !defined(IN_GUEST)
         RTLogGroupSettings(pLogger, "all=~0");
-        RTLogFlags(pLogger, "enabled unbuffered pid");
-        //RTLogGroupSettings(pLogger, "-all");
-        //RTLogFlags(pLogger, "disabled unbuffered");
-        pLogger->fDestFlags |= RTLOGDEST_DEBUGGER;/* | RTLOGDEST_COM;*/
+        RTLogFlags(pLogger, "enabled unbuffered pid tid");
+        pLogger->fDestFlags |= RTLOGDEST_DEBUGGER;
 # endif
 # if defined(DEBUG_sandervl) && !defined(IN_GUEST)
         RTLogGroupSettings(pLogger, "+all");
