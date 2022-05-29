@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 10000 2008-06-27 14:56:59Z vboxsync $ */
+/* $Id: MachineImpl.cpp 10007 2008-06-27 21:42:47Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2700,6 +2700,8 @@ STDMETHODIMP Machine::GetGuestProperty (INPTR BSTR aKey, BSTR *aValue)
 #else
     using namespace svcInfo;
 
+    if (NULL == aKey)
+        return setError (E_INVALIDARG, tr ("Called with a NULL key argument"));
     HRESULT hrc = E_FAIL;
     AutoWriteLock alock (this);
     switch (mData->mSession.mState)
@@ -2768,6 +2770,8 @@ STDMETHODIMP Machine::SetGuestProperty (INPTR BSTR aKey, INPTR BSTR aValue)
 #else
     using namespace svcInfo;
 
+    if (NULL == aKey)
+        return setError (E_INVALIDARG, tr ("Called with a NULL key argument"));
     HRESULT hrc = E_FAIL;
     AutoWriteLock alock (this);
     switch (mData->mSession.mState)
