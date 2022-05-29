@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 9024 2008-05-21 14:49:54Z vboxsync $ */
+/* $Id: PGMBth.h 10494 2008-07-11 08:49:59Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -60,7 +60,7 @@ PGM_BTH_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
     pModeData->pfnR3BthPrefetchPage      = PGM_BTH_NAME(PrefetchPage);
     pModeData->pfnR3BthVerifyAccessSyncPage = PGM_BTH_NAME(VerifyAccessSyncPage);
 #ifdef VBOX_STRICT
-    PGM_BTH_PFN(AssertCR3, pVM)         = PGM_BTH_NAME(AssertCR3);
+    pModeData->pfnR3BthAssertCR3         = PGM_BTH_NAME(AssertCR3);
 #endif
 
     if (fResolveGCAndR0)
