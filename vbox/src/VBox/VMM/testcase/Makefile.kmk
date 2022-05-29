@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9546 2008-06-09 13:22:55Z vboxsync $
+# $Id: Makefile.kmk 9547 2008-06-09 13:30:16Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -243,7 +243,7 @@ $(PATH_TARGET)/tstAsmStructsAsm.mac: \
 		$(VBOX_PATH_VMM_SRC)/TRPMInternal.mac \
 		$(VBOX_PATH_VMM_SRC)/VMMInternal.mac \
 		$(VBOX_PATH_VMM_SRC)/testcase/Makefile.kmk \
-		$(PATH_ROOT)/Config.kmk $(LOCALCFG) $(AUTOCFG)
+		$(PATH_ROOT)/Config.kmk $(LOCALCFG) $(AUTOCFG) \
 		| $(call DIRDEP,$(PATH_TARGET))
 	$(call MSG_GENERATE,tstVMStructSize,$@,$<)
 ifndef DONT_USE_YASM
