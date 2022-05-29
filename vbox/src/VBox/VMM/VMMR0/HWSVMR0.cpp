@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10489 2008-07-11 07:17:00Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10491 2008-07-11 07:20:16Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -896,6 +896,9 @@ ResumeExecution:
         if (    ++pCpu->uCurrentASID >= pVM->hwaccm.s.svm.u32MaxASID
             ||  pCpu->fFlushTLB)
         {
+            if (pCpu->fFlushTLB) 
+                Log(("SVMR0RunGuestCode: First time cpu %d is used -> flush\n", pCpu->idCpu));
+
             pCpu->fFlushTLB                  = false;
             pCpu->uCurrentASID               = 1;       /* start at 1; host uses 0 */
             pVMCB->ctrl.TLBCtrl.n.u1TLBFlush = 1;       /* wrap around; flush TLB */
