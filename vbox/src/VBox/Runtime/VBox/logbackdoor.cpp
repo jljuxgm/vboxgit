@@ -1,4 +1,4 @@
-/* $Id: logbackdoor.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: logbackdoor.cpp 6231 2008-01-03 15:28:30Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Guest Backdoor Logging.
  */
@@ -67,6 +67,7 @@ static DECLCALLBACK(size_t) rtLogBackdoorOutput(void *pv, const char *pachChars,
     return cbChars;
 }
 
+#ifdef IN_GUEST_R0
 
 RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
 {
@@ -85,6 +86,18 @@ RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
      */
 }
 
+#elif defined(RT_OS_LINUX) && defined(IN_GUEST_R3)
+
+#include <VBox/VBoxGuest.h>
+
+RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
+{
+    VbglR3WriteLog(pch, cb);
+}
+
+#else
+# error Port me!
+#endif
 
 #if defined(RT_OS_LINUX) && defined(IN_MODULE)
 /*

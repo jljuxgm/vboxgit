@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6147 2007-12-19 09:17:49Z vboxsync $
+# $Id: Makefile.kmk 6231 2008-01-03 15:28:30Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -539,6 +539,7 @@ ifdef IPRT_WITH_KSTUFF
  RuntimeLnx32GuestR3_DEFS     += LDR_WITH_KLDR
 endif
 RuntimeLnx32GuestR3_SOURCES    = $(RuntimeR3_SOURCES.linux) $(RuntimeR3_SOURCES)
+RuntimeLnx32GuestR3_SOURCES   += VBox/logbackdoor.cpp
 RuntimeLnx32GuestR3_INCS       = $(RuntimeR3_INCS.linux)    $(RuntimeR3_INCS)
 
 
