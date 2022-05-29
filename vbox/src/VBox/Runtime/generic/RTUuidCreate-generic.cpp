@@ -1,4 +1,4 @@
-/* $Id: RTUuidCreate-generic.cpp 9744 2008-06-16 22:53:34Z vboxsync $ */
+/* $Id: RTUuidCreate-generic.cpp 11413 2008-08-14 08:03:03Z vboxsync $ */
 /** @file
  * IPRT - UUID, Generic RTUuidCreate implementation.
  */
@@ -38,7 +38,9 @@
 #include <iprt/rand.h>
 
 
-/* WARNING: This implementation ASSUMES little endian. Needs testing on big endian! */
+/* WARNING: This implementation ASSUMES little endian. Does not work on big endian! */
+
+/* Remember, the time fields in the UUID must be little endian. */
 
 
 RTDECL(int)  RTUuidCreate(PRTUUID pUuid)
@@ -47,7 +49,7 @@ RTDECL(int)  RTUuidCreate(PRTUUID pUuid)
     AssertPtrReturn(pUuid, VERR_INVALID_PARAMETER);
 
     RTRandBytes(pUuid, sizeof(*pUuid));
-    pUuid->Gen.u16ClockSeq = (pUuid->Gen.u16ClockSeq & 0x3fff) | 0x8000;
+    pUuid->Gen.u8ClockSeqHiAndReserved = (pUuid->Gen.u8ClockSeqHiAndReserved & 0x3f) | 0x80;
     pUuid->Gen.u16TimeHiAndVersion = (pUuid->Gen.u16TimeHiAndVersion & 0x0fff) | 0x4000;
 
     return VINF_SUCCESS;

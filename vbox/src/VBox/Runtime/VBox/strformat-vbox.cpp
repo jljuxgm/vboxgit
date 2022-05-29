@@ -1,4 +1,4 @@
-/* $Id: strformat-vbox.cpp 9224 2008-05-29 13:55:49Z vboxsync $ */
+/* $Id: strformat-vbox.cpp 11413 2008-08-14 08:03:03Z vboxsync $ */
 /** @file
  * IPRT - VBox String Formatter extensions.
  */
@@ -463,8 +463,8 @@ size_t rtstrFormatVBox(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char *
                                            pUuid->Gen.u32TimeLow,
                                            pUuid->Gen.u16TimeMid,
                                            pUuid->Gen.u16TimeHiAndVersion,
-                                           pUuid->Gen.u16ClockSeq & 0xff,
-                                           pUuid->Gen.u16ClockSeq >> 8,
+                                           pUuid->Gen.u8ClockSeqHiAndReserved,
+                                           pUuid->Gen.u8ClockSeqLow,
                                            pUuid->Gen.au8Node[0],
                                            pUuid->Gen.au8Node[1],
                                            pUuid->Gen.au8Node[2],
