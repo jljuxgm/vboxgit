@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 7286 2008-03-05 08:06:41Z vboxsync $ */
+/* $Id: EMAll.cpp 7469 2008-03-17 08:32:03Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1372,11 +1372,11 @@ static int emInterpretXAdd(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, R
 
             if (VBOX_FAILURE(rc))
             {
-                Log(("XAdd %VGv=%08x reg=%08x -> emulation failed due to page fault!\n", pParam1, valpar1, pRegFrame->eax));
+                Log(("XAdd %VGv=%08x reg=%08x -> emulation failed due to page fault!\n", pParam1, valpar1, *pParamReg2));
                 return VERR_EM_INTERPRETER;
             }
 
-            LogFlow(("XAdd %VGv=%08x reg=%08x ZF=%d\n", pParam1, valpar1, pRegFrame->eax, !!(eflags & X86_EFL_ZF)));
+            LogFlow(("XAdd %VGv=%08x reg=%08x ZF=%d\n", pParam1, valpar1, *pParamReg2, !!(eflags & X86_EFL_ZF)));
 
             /* Update guest's eflags and finish. */
             pRegFrame->eflags.u32 = (pRegFrame->eflags.u32 & ~(X86_EFL_CF | X86_EFL_PF | X86_EFL_AF | X86_EFL_ZF | X86_EFL_SF | X86_EFL_OF))
