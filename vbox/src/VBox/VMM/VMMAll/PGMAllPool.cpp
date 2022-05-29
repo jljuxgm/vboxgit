@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 7928 2008-04-11 16:03:46Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 7929 2008-04-11 16:07:26Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -292,7 +292,7 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
 
             case PGMPOOLKIND_PAE_PT_FOR_PAE_PT:
             {
-                const unsigned iShw = off / sizeof(X86PTPAE);
+                const unsigned iShw = off / sizeof(X86PTEPAE);
                 if (uShw.pPTPae->a[iShw].n.u1Present)
                 {
 #  ifdef PGMPOOL_WITH_GCPHYS_TRACKING
