@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 11509 2008-08-20 10:58:44Z vboxsync $ */
+/* $Id: EMAll.cpp 11522 2008-08-20 15:01:05Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2817,9 +2817,9 @@ DECLINLINE(int) emInterpretInstructionCPU(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCO
         INTERPRET_CASE_EX_PARAM2(OP_BTS,Bts, BitTest, EMEmulateBts);
         INTERPRET_CASE_EX_PARAM2(OP_BTC,Btc, BitTest, EMEmulateBtc);
         INTERPRET_CASE(OP_RDTSC,Rdtsc);
+        INTERPRET_CASE(OP_CMPXCHG, CmpXchg);
 #ifdef IN_GC
         INTERPRET_CASE(OP_STI,Sti);
-        INTERPRET_CASE(OP_CMPXCHG, CmpXchg);
         INTERPRET_CASE(OP_CMPXCHG8B, CmpXchg8b);
         INTERPRET_CASE(OP_XADD, XAdd);
 #endif
@@ -2827,7 +2827,6 @@ DECLINLINE(int) emInterpretInstructionCPU(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCO
         INTERPRET_CASE(OP_IRET,Iret);
 #ifdef VBOX_WITH_STATISTICS
 #ifndef IN_GC
-        INTERPRET_STAT_CASE(OP_CMPXCHG,CmpXchg);
         INTERPRET_STAT_CASE(OP_CMPXCHG8B, CmpXchg8b);
         INTERPRET_STAT_CASE(OP_XADD, XAdd);
 #endif
