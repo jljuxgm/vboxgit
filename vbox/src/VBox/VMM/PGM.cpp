@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 10021 2008-06-30 15:13:44Z vboxsync $ */
+/* $Id: PGM.cpp 10033 2008-06-30 17:06:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2965,6 +2965,9 @@ const char *pgmr3GuestModeString(PGMMODE enmGuestMode)
 
         case PGMMODE_AMD64_NX:
             return "AMD64 + NX";
+
+        case PGMMODE_NESTED:
+            return "Nested";
 
         default:
             return "Unknown";
