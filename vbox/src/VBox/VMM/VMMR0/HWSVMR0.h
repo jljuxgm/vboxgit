@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 9008 2008-05-21 10:17:41Z vboxsync $ */
+/* $Id: HWSVMR0.h 9407 2008-06-05 09:42:13Z vboxsync $ */
 /** @file
  * HWACCM AMD-V - Internal header file.
  */
@@ -116,6 +116,14 @@ HWACCMR0DECL(int) SVMR0SetupVM(PVM pVM);
  */
 HWACCMR0DECL(int) SVMR0RunGuestCode(PVM pVM, CPUMCTX *pCtx, PHWACCM_CPUINFO pCpu);
 
+
+/**
+ * Save the host state
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+HWACCMR0DECL(int) SVMR0SaveHostState(PVM pVM);
 
 /**
  * Loads the guest state

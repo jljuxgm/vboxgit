@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 9385 2008-06-04 12:37:23Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 9407 2008-06-05 09:42:13Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -990,7 +990,7 @@ HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx, PHWACCM_CPUINFO pCpu
 
     Log2(("\nE"));
 
-    AssertReturn(pCpu->fVMXConfigured, VERR_EM_INTERNAL_ERROR);
+    AssertReturn(pCpu->fConfigured, VERR_EM_INTERNAL_ERROR);
 
     STAM_PROFILE_ADV_START(&pVM->hwaccm.s.StatEntry, x);
 
@@ -2057,8 +2057,9 @@ end:
  *
  * @returns VBox status code.
  * @param   pVM         The VM to operate on.
+ * @param   pCpu        CPU info struct
  */
-HWACCMR0DECL(int) VMXR0Enter(PVM pVM)
+HWACCMR0DECL(int) VMXR0Enter(PVM pVM, PHWACCM_CPUINFO pCpu)
 {
     Assert(pVM->hwaccm.s.vmx.fSupported);
 

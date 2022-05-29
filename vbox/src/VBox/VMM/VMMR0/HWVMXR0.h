@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 8876 2008-05-16 09:59:07Z vboxsync $ */
+/* $Id: HWVMXR0.h 9407 2008-06-05 09:42:13Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -46,8 +46,9 @@ __BEGIN_DECLS
  *
  * @returns VBox status code.
  * @param   pVM         The VM to operate on.
+ * @param   pCpu        CPU info struct
  */
-HWACCMR0DECL(int) VMXR0Enter(PVM pVM);
+HWACCMR0DECL(int) VMXR0Enter(PVM pVMm, PHWACCM_CPUINFO pCpu);
 
 /**
  * Leaves the VT-x session
