@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6129 2007-12-18 15:26:46Z vboxsync $
+# $Id: Makefile.kmk 6142 2007-12-18 18:12:55Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -156,7 +156,7 @@ $(PATH_TARGET)/VBoxGuestAdditions.iso: $(VBOX_SVN_REV_KMK) $(PATH_DEVTOOLS)/bin/
 	$(QUIET)$(APPEND) $@ done
 
 buildserver-additions-affinity-hack:
-	$(PATH_DEVTOOLS)/bin/additions.sh --cmd fetch --filename $(PATH_TARGET)/VBoxGuestAdditions.iso.tmp
+	$(SHELL) $(PATH_DEVTOOLS)/bin/additions.sh --cmd fetch --filename $(PATH_TARGET)/VBoxGuestAdditions.iso.tmp
 endif
 
 
