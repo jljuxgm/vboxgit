@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10048 2008-07-01 00:47:54Z vboxsync $
+# $Id: Makefile.kmk 10419 2008-07-09 13:46:17Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -71,6 +71,7 @@ PROGRAMS += \
 	tstLdrLoad \
 	tstLog \
 	tstMove \
+	tstMp-1 \
 	tstNoCrt-1 \
 	tstPath \
 	tstPrfRT \
@@ -244,6 +245,8 @@ tstLdrLoad_SOURCES = tstLdrLoad.cpp
 tstLog_SOURCES = tstLog.cpp
 
 tstMove_SOURCES = tstMove.cpp
+
+tstMp-1_SOURCES = tstMp-1.cpp
 
 tstNoCrt-1_DEFS = RT_WITHOUT_NOCRT_WRAPPER_ALIASES
 tstNoCrt-1_SOURCES = \
