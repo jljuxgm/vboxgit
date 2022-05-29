@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11171 2008-08-06 01:51:29Z vboxsync $
+# $Id: Makefile.kmk 11410 2008-08-13 21:01:32Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -141,6 +141,9 @@ ifdef VBOX_WITH_ISCSI
 endif
 ifdef VBOX_WITH_E1000
  VBoxDD_DEFS           += VBOX_WITH_E1000
+endif
+ifdef VBOX_WITH_BUSLOGIC
+ VBoxDD_DEFS           += VBOX_WITH_BUSLOGIC
 endif
 ifndef VBOX_OSE
  VBoxDD_DEFS           += VBOX_WITH_INIP
@@ -305,6 +308,12 @@ DevicesR3_DEFS	       += VBOX_WITH_AHCI IN_AHCI_R3
 DevicesR3_SOURCES      += \
 	Storage/DevAHCI.cpp \
 	Storage/ATAController.cpp
+endif
+
+ifdef VBOX_WITH_BUSLOGIC
+DevicesR3_DEFS	       += VBOX_WITH_BUSLOGIC
+DevicesR3_SOURCES      += \
+	Storage/DevBusLogic.cpp
 endif
 
 ifdef VBOX_WITH_USB

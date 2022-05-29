@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: Builtins.h 11410 2008-08-13 21:01:32Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -62,6 +62,10 @@ extern const PDMDEVREG g_DeviceParallelPort;
 #ifdef VBOX_WITH_AHCI
 extern const PDMDEVREG g_DeviceAHCI;
 #endif
+#ifdef VBOX_WITH_BUSLOGIC
+extern const PDMDEVREG g_DeviceBusLogic;
+#endif
+
 
 extern const PDMDRVREG g_DrvMouseQueue;
 extern const PDMDRVREG g_DrvKeyboardQueue;
