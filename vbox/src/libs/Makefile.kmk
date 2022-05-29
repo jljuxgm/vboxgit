@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6124 2007-12-18 13:53:29Z vboxsync $
+# $Id: Makefile.kmk 6361 2008-01-15 22:39:01Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -23,14 +23,16 @@ subdirs := liblzf-1.51 $(subdirs.$(BUILD_TARGET))
 ifdef IPRT_WITH_KSTUFF
  subdirs += kStuff
 endif
-ifndef VBOX_OSE
+# @todo win and os2 need that even in OSE, all others should set proper *_INCS
+# values by the configure script
+#ifndef VBOX_OSE
  ifeq ($(SDK_VBOX_ZLIB_INCS),$(PATH_ROOT)/src/libs/zlib-1.2.1)
   subdirs += zlib-1.2.1
  endif
  ifeq ($(SDK_VBOX_LIBPNG_INCS),$(PATH_ROOT)/src/libs/libpng-1.2.8)
   subdirs += libpng-1.2.8
  endif
-endif # !VBOX_OSE
+#endif # !VBOX_OSE
 ifdef VBOX_WITH_VRDP
  ifeq ($(SDK_VBOX_OPENSSL_INCS),$(PATH_ROOT)/src/libs/openssl-0.9.7e/include)
   subdirs += openssl-0.9.7e

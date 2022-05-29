@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5999 2007-12-07 15:05:06Z vboxsync $
+# $Id: Makefile.kmk 6361 2008-01-15 22:39:01Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service.
 #
@@ -27,6 +27,7 @@ include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 #
 DLLS += VBoxSharedFolders
 VBoxSharedFolders_TEMPLATE  = VBOXR3
+VBoxSharedFolders_NAME.os2  = VBoxSFld
 VBoxSharedFolders_DEFS      = VBOX_HGCM RTSHFL
 VBoxSharedFolders_INCS.win  = \
 	$(PATH_TOOL_$(VBOX_VCC_TOOL)_ATLMFC_INC) \

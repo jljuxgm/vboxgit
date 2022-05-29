@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 6258 2008-01-06 01:38:45Z vboxsync $
+; $Id: HWACCMR0A.asm 6361 2008-01-15 22:39:01Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -30,6 +30,14 @@
  %endmacro
  %define vmlaunch int3
  %define vmresume int3
+ %define vmsave int3
+ %define vmload int3
+ %define vmrun int3
+ %define clgi int3
+ %define stgi int3
+ %macro invlpga 2,
+    int3
+ %endmacro
 %endif
 
 
