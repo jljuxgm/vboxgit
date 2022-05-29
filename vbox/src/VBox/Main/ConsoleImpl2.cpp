@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 10372 2008-07-08 14:14:29Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 10693 2008-07-16 11:48:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -173,6 +173,11 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         rc = CFGMR3InsertInteger(pHWVirtExt, "Enabled", 1);                         RC_CHECK();
     }
 #endif
+
+    /* Nested paging (VT-x/AMD-V) */
+    BOOL fEnableNestedPaging = false;
+    hrc = pMachine->COMGETTER(HWVirtExNestedPagingEnabled)(&fEnableNestedPaging);   H();
+    rc = CFGMR3InsertInteger(pRoot, "EnableNestedPaging", fEnableNestedPaging);     RC_CHECK();
 
     /* Physical Address Extension (PAE) */
     BOOL fEnablePAE = false;

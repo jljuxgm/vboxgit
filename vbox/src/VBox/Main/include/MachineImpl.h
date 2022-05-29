@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 10595 2008-07-14 12:23:57Z vboxsync $ */
+/* $Id: MachineImpl.h 10693 2008-07-16 11:48:19Z vboxsync $ */
 
 /** @file
  *
@@ -239,6 +239,7 @@ public:
         ULONG          mVRAMSize;
         ULONG          mMonitorCount;
         TSBool_T       mHWVirtExEnabled;
+        BOOL           mHWVirtExNestedPagingEnabled;
         BOOL           mPAEEnabled;
 
         DeviceType_T   mBootOrder [SchemaDefs::MaxBootPosition];
@@ -468,6 +469,8 @@ public:
     STDMETHOD(COMGETTER(BIOSSettings))(IBIOSSettings **biosSettings);
     STDMETHOD(COMGETTER(HWVirtExEnabled))(TSBool_T *enabled);
     STDMETHOD(COMSETTER(HWVirtExEnabled))(TSBool_T enabled);
+    STDMETHOD(COMGETTER(HWVirtExNestedPagingEnabled))(BOOL *enabled);
+    STDMETHOD(COMSETTER(HWVirtExNestedPagingEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(PAEEnabled))(BOOL *enabled);
     STDMETHOD(COMSETTER(PAEEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(SnapshotFolder))(BSTR *aSavedStateFolder);
