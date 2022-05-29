@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 8666 2008-05-07 15:24:57Z vboxsync $ */
+/* $Id: HostImpl.cpp 8719 2008-05-08 15:46:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -990,6 +990,7 @@ STDMETHODIMP Host::InsertUSBDeviceFilter (ULONG aPosition, IHostUSBDeviceFilter 
             tr ("The given USB device filter is not created within "
                 "this VirtualBox instance"));
 
+    AutoWriteLock alockFilter (filter);
     if (filter->mInList)
         return setError (E_INVALIDARG,
             tr ("The given USB device filter is already in the list"));
