@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 9669 2008-06-12 19:26:45Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 10297 2008-07-07 07:54:28Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -718,6 +718,8 @@ HWACCMR0DECL(int) HWACCMR0Enter(PVM pVM)
     CPUMCTX *pCtx;
     int      rc;
     RTCPUID  idCpu = RTMpCpuId();
+
+    Assert(!VM_FF_ISPENDING(pVM, VM_FF_PGM_SYNC_CR3 | VM_FF_PGM_SYNC_CR3_NON_GLOBAL));
 
     rc = CPUMQueryGuestCtxPtr(pVM, &pCtx);
     if (VBOX_FAILURE(rc))
