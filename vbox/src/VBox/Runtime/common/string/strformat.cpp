@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 6296 2008-01-09 13:11:37Z vboxsync $ */
+/* $Id: strformat.cpp 7183 2008-02-27 17:41:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - String Formatter.
  */
@@ -769,8 +769,16 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
                      */
                     case 'R':
                     {
-                        pszFormat--;
-                        cch += rtstrFormatRt(pfnOutput, pvArgOutput, &pszFormat, &args, cchPrecision, cchWidth, fFlags, chArgSize);
+                        if (*pszFormat != '[')
+                        {
+                            pszFormat--;
+                            cch += rtstrFormatRt(pfnOutput, pvArgOutput, &pszFormat, &args, cchPrecision, cchWidth, fFlags, chArgSize);
+                        }
+                        else
+                        {
+                            pszFormat--;
+                            cch += rtstrFormatType(pfnOutput, pvArgOutput, &pszFormat, &args, cchPrecision, cchWidth, fFlags, chArgSize);
+                        }
                         break;
                     }
 

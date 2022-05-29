@@ -1,4 +1,4 @@
-/* $Id: string.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: string.h 7183 2008-02-27 17:41:30Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Internal RTStr header.
  */
@@ -51,6 +51,7 @@ __BEGIN_DECLS
 size_t rtstrFormatVBox(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **ppszFormat, va_list *pArgs, int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize);
 #endif
 size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **ppszFormat, va_list *pArgs, int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize);
+size_t rtstrFormatType(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **ppszFormat, va_list *pArgs, int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize);
 
 __END_DECLS
 
