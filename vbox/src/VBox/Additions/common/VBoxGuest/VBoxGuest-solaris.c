@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 8318 2008-04-23 08:56:36Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -34,6 +34,7 @@
 #undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
 
 #include "VBoxGuestInternal.h"
+#include <VBox/VBoxDev.h>       /* for VMMDEV_GUEST_SUPPORTS_GRAPHICS */
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/initterm.h>
@@ -330,17 +331,26 @@ static int VBoxGuestSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t enmCmd)
                                                 pState->cbMMIO, VBOXOSTYPE_Solaris);
                                     if (RT_SUCCESS(rc))
                                     {
-                                        rc = ddi_create_minor_node(pDip, DEVICE_NAME, S_IFCHR, instance, DDI_PSEUDO, 0);
-                                        if (rc == DDI_SUCCESS)
+                                        /*
+                                         * Disable graphics capability explicitly for Solaris guests.
+                                         */
+                                        rc = VBoxGuestSetGuestCapabilities(0, VMMDEV_GUEST_SUPPORTS_GRAPHICS);
+                                        if (RT_SUCCESS(rc))
                                         {
-                                            g_pDip = pDip;
-                                            ddi_set_driver_private(pDip, pState);
-                                            pci_config_teardown(&PciHandle);
-                                            ddi_report_dev(pDip);
-                                            return DDI_SUCCESS;
-                                        }
+                                            rc = ddi_create_minor_node(pDip, DEVICE_NAME, S_IFCHR, instance, DDI_PSEUDO, 0);
+                                            if (rc == DDI_SUCCESS)
+                                            {
+                                                g_pDip = pDip;
+                                                ddi_set_driver_private(pDip, pState);
+                                                pci_config_teardown(&PciHandle);
+                                                ddi_report_dev(pDip);
+                                                return DDI_SUCCESS;
+                                            }
 
-                                        LogRel((DEVICE_NAME ":ddi_create_minor_node failed.\n"));
+                                            LogRel((DEVICE_NAME ":ddi_create_minor_node failed.\n"));
+                                        }
+                                        else
+                                            LogRel((DEVICE_NAME ":VBoxGuestSetGuestCapabilities failed. rc=%d\n", rc));
                                     }
                                     else
                                         LogRel((DEVICE_NAME ":VBoxGuestInitDevExt failed.\n"));
