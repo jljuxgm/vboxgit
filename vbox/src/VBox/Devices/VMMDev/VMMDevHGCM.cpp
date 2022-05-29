@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 11288 2008-08-08 22:37:38Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 11628 2008-08-25 16:06:34Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -249,7 +249,7 @@ static int vmmdevHGCMSaveLinPtr (PPDMDEVINS pDevIns,
 
         rc = PDMDevHlpPhysGCPtr2GCPhys(pDevIns, GCPtr, &GCPhys);
 
-        Log(("vmmdevHGCMSaveLinPtr: Page %d: %TGv -> %RGp. %Rrc\n", iPage, GCPtr, GCPhys, rc));
+        Log(("vmmdevHGCMSaveLinPtr: Page %d: %RGv -> %RGp. %Rrc\n", iPage, GCPtr, GCPhys, rc));
 
         if (RT_FAILURE (rc))
         {
