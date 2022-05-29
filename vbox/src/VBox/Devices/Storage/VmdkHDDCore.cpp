@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 9084 2008-05-23 13:28:45Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 9528 2008-06-09 10:12:30Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -3587,6 +3587,10 @@ static int vmdkCreate(const char *pszFilename, VDIMAGETYPE enmType,
         rc = VERR_INVALID_PARAMETER;
         goto out;
     }
+
+    /* @todo A quick hack to support differencing images in VMDK. */
+    if (enmType == VD_IMAGE_TYPE_DIFF)
+        enmType = VD_IMAGE_TYPE_NORMAL;
 
     /* Check remaining arguments. */
     if (   !VALID_PTR(pszFilename)

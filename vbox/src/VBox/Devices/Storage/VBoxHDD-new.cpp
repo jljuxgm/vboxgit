@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 9262 2008-05-30 17:32:54Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 9528 2008-06-09 10:12:30Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -1483,7 +1483,7 @@ VBOXDDU_DECL(int) VDCreateDiff(PVBOXHDD pDisk, const char *pszBackend,
 
         pImage->uOpenFlags = uOpenFlags & VD_OPEN_FLAGS_HONOR_SAME;
         rc = pImage->Backend->pfnCreate(pImage->pszFilename,
-                                        VD_IMAGE_TYPE_NORMAL, pDisk->cbSize,
+                                        VD_IMAGE_TYPE_DIFF, pDisk->cbSize,
                                         uImageFlags, pszComment,
                                         &pDisk->PCHSGeometry,
                                         &pDisk->LCHSGeometry,
