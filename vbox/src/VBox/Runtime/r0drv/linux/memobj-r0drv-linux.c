@@ -1,4 +1,4 @@
-/* $Revision: 7531 $ */
+/* $Revision: 7532 $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, Linux.
  */
@@ -259,7 +259,7 @@ static void rtR0MemObjLinuxFreePages(PRTR0MEMOBJLNX pMemLnx)
             ClearPageReserved(pMemLnx->apPages[iPage]);
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 4, 22)
 #else
-            MY_SET_PAGES_NOEXEC(pMemLnx->apPages[iPage]);
+            MY_SET_PAGES_NOEXEC(pMemLnx->apPages[iPage], 1);
 #endif
         }
 
