@@ -1,4 +1,4 @@
-/* $Id: timer-posix.cpp 10614 2008-07-14 19:52:32Z vboxsync $ */
+/* $Id: timer-posix.cpp 10854 2008-07-24 13:38:48Z vboxsync $ */
 /** @file
  * IPRT - Timer, POSIX.
  */
@@ -32,7 +32,9 @@
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
 /** Enables the use of POSIX RT timers. */
+#ifndef RT_OS_SOLARIS /* Solaris 10 doesn't have SIGEV_THREAD */
 #define IPRT_WITH_POSIX_TIMERS
+#endif /* !RT_OS_SOLARIS */
 
 
 /*******************************************************************************
