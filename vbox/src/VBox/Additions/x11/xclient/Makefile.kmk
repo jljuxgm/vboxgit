@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10128 2008-07-03 02:53:54Z vboxsync $
+# $Id: Makefile.kmk 10645 2008-07-15 12:07:10Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -47,6 +47,12 @@ VBoxClient_LIBS = \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
 	X11 \
 	Xt
+ifeq ($(KBUILD_TARGET),linux)
+# These are static replacements for gcc-specific parts of libstdc++
+VBoxClient_LIBS += \
+	supc++ \
+	gcc_eh
+endif
 ## @todo r=bird: move to the template (that's what they are there for). ditto for VBoxService.
 VBoxClient_LIBPATH.freebsd += \
 	/usr/local/lib
