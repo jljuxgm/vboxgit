@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10789 2008-07-21 17:22:32Z vboxsync $
+# $Id: Makefile.kmk 10791 2008-07-21 19:38:51Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -603,6 +603,7 @@ RuntimeGuestR3Mini_INCS.$(KBUILD_TARGET)    := $(RuntimeR3_INCS.$(KBUILD_TARGET)
 RuntimeGuestR3Mini_INCS.$(KBUILD_HOST)      := $(RuntimeR3_INCS.$(KBUILD_HOST))
 RuntimeGuestR3Mini_SOURCES = \
 	common/err/errmsg.cpp \
+	common/err/errmsgxpcom.cpp \
 	common/err/RTErrConvertFromErrno.cpp \
 	common/log/logformat.cpp \
 	common/misc/assert.cpp \
