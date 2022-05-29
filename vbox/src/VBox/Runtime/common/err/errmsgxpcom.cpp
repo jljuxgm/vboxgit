@@ -1,4 +1,4 @@
-/* $Id: errmsgxpcom.cpp 8482 2008-04-29 21:25:14Z vboxsync $ */
+/* $Id: errmsgxpcom.cpp 8483 2008-04-29 21:25:59Z vboxsync $ */
 /** @file
  * IPRT - Status code messages for XPCOM.
  */
@@ -48,7 +48,7 @@
 static const RTCOMERRMSG  g_aStatusMsgs[] =
 {
 //#include "errmsgxpcomdata.h"
-    { 0, "NS_SUCCESS", "Success" },
+    { "NS_SUCCESS", "Success", 0 },
     { NULL, NULL, 0 }
 };
 
