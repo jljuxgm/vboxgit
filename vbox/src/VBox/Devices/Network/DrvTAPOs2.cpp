@@ -1,4 +1,4 @@
-/** $Id: DrvTAPOs2.cpp 11448 2008-08-15 18:17:28Z vboxsync $ */
+/** $Id: DrvTAPOs2.cpp 11590 2008-08-22 22:16:05Z vboxsync $ */
 /** @file
  * VBox network devices: OS/2 TAP network transport driver.
  */
@@ -252,9 +252,6 @@ static DECLCALLBACK(int) drvTAPOs2ReceiveThread(PPDMDRVINS pDrvIns, PPDMTHREAD p
             &&  !Parm[0]
             &&  cbRead > 0 /* cbRead */)
         {
-            // The following assertion was commented out to support jumbo frames.
-            //AssertMsg(cbRead <= 1536, ("cbRead=%d\n", cbRead));
-
             /*
              * Wait for the device to have some room. A return code != VINF_SUCCESS
              * means that we were woken up during a VM state transition. Drop the
