@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5780 2007-11-16 17:58:41Z vboxsync $
+# $Id: Makefile.kmk 5827 2007-11-23 15:56:56Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host Services.
 #
@@ -28,9 +28,6 @@ endif
 ifdef VBOX_WITH_SHARED_CLIPBOARD
 include $(PATH_SUB_CURRENT)/SharedClipboard/Makefile.kmk
 endif
-endif
-ifdef VBOX_WITH_FFMPEG
- SUBDIRS += VideoCapture
 endif
 
 include	$(PATH_KBUILD)/subfooter.kmk

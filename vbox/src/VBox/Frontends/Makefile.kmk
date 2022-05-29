@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4071 2007-08-07 17:07:59Z vboxsync $
+# $Id: Makefile.kmk 5827 2007-11-23 15:56:56Z vboxsync $
 ## @file
 # Makefile for the VBox frontend base directory.
 #
@@ -34,6 +34,9 @@ SUBDIRS += VBoxFB
 endif
 ifdef VBOX_WITH_VRDP
 SUBDIRS += VBoxVRDP
+endif
+ifdef VBOX_WITH_HEADLESS
+SUBDIRS += VBoxHeadless
 endif
 
 include $(PATH_KBUILD)/footer.kmk
