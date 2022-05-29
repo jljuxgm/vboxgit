@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9427 2008-06-05 13:50:27Z vboxsync $
+# $Id: Makefile.kmk 9483 2008-06-06 13:46:44Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -167,11 +167,11 @@ VMMR3_SOURCES.solaris += \
 
 VMMR3_SOURCES.darwin += \
 	PDMAsyncCompletionSocketPosix.cpp \
-	PDMAsyncCompletionHostDarwin.cpp
+	PDMAsyncCompletionHostPosix.cpp
 
 VMMR3_SOURCES.freebsd += \
 	PDMAsyncCompletionSocketPosix.cpp \
-	PDMAsyncCompletionHostDarwin.cpp
+	PDMAsyncCompletionHostFreeBSD.cpp
 
 endif
 
