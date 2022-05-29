@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 11288 2008-08-08 22:37:38Z vboxsync $ */
+/* $Id: DevACPI.cpp 11289 2008-08-08 22:38:40Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1759,7 +1759,7 @@ static DECLCALLBACK(int) acpiConstruct (PPDMDEVINS pDevIns, int iInstance, PCFGM
 static DECLCALLBACK(void) acpiRelocate (PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
 {
     ACPIState *s = PDMINS_2_DATA (pDevIns, ACPIState *);
-    s->tsRC = TMTimerGCPtr (s->CTX_SUFF(ts));
+    s->tsRC = TMTimerRCPtr (s->CTX_SUFF(ts));
 }
 
 static DECLCALLBACK(void) acpiReset (PPDMDEVINS pDevIns)
