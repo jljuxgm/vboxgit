@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 11217 2008-08-07 17:55:46Z vboxsync $ */
+/* $Id: DevRTC.cpp 11218 2008-08-07 18:01:18Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -178,7 +178,7 @@ struct RTCState {
     /** The current/previous timer period. Used to prevent flooding changes. */
     int32_t CurPeriod;
 
-#
+    uint32_t alignment1;
 };
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
