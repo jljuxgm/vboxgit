@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 6056 2007-12-12 22:58:26Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1325,6 +1325,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             case AudioDriverType_ALSAAudioDriver:
             {
                 rc = CFGMR3InsertString(pCfg, "AudioDriver", "alsa");                   RC_CHECK();
+                break;
+            }
+# endif
+# ifdef VBOX_WITH_PULSE
+            case AudioDriverType_PulseAudioDriver:
+            {
+                rc = CFGMR3InsertString(pCfg, "AudioDriver", "pulse");                  RC_CHECK();
                 break;
             }
 # endif
