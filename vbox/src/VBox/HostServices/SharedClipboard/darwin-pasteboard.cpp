@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 7241 2008-03-03 14:24:56Z vboxsync $ */
+/* $Id: darwin-pasteboard.cpp 7242 2008-03-03 15:22:38Z vboxsync $ */
 /** @file
  * Shared Clipboard: Mac OS X host implementation.
  */
@@ -64,21 +64,27 @@ void destroyPasteboard (PasteboardRef *pPasteboardRef)
  * @param   pPasteboardRef Reference to the global pasteboard.
  * @param   pfFormats      Pointer for the bit combination of the
  *                         supported types.
+ * @param   pbChanged      True if something has changed after the
+ *                         last call.
  *
  * @returns IPRT status code.
  */
-int queryNewPasteboardFormats (PasteboardRef pPasteboard, uint32_t *pfFormats)
+int queryNewPasteboardFormats (PasteboardRef pPasteboard, uint32_t *pfFormats, bool *pbChanged)
 {
     Log (("queryNewPasteboardFormats\n"));
 
     OSStatus err = noErr;
+    *pbChanged = true;
 
     PasteboardSyncFlags syncFlags;
     /* Make sure all is in sync */
     syncFlags = PasteboardSynchronize (pPasteboard);
     /* If nothing changed return */
     if (!(syncFlags & kPasteboardModified))
+    {
+        *pbChanged = false; 
         return VINF_SUCCESS;
+    }
 
     /* Are some items in the pasteboard? */
     ItemCount itemCount;
