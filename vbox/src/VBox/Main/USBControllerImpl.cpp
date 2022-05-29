@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 10535 2008-07-11 15:28:06Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -317,7 +317,11 @@ STDMETHODIMP USBController::COMGETTER(USBStandard) (USHORT *aUSBStandard)
  * Fake class for build without USB.
  * We need an empty collection & enum for deviceFilters, that's all.
  */
-class ATL_NO_VTABLE USBDeviceFilter : public VirtualBoxBaseNEXT, public IUSBDeviceFilter
+class ATL_NO_VTABLE USBDeviceFilter :
+    public VirtualBoxBaseNEXT,
+    public VirtualBoxSupportErrorInfoImpl <USBDeviceFilter, IUSBDeviceFilter>,
+    public VirtualBoxSupportTranslation <USBDeviceFilter>,
+    public IUSBDeviceFilter
 {
 public:
     DECLARE_NOT_AGGREGATABLE(USBDeviceFilter)
