@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 11533 2008-08-21 11:12:49Z vboxsync $ */
+/* $Id: PGMAllGst.h 11711 2008-08-27 16:08:15Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -493,7 +493,9 @@ PGM_GST_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
             {
                 if (pVM->pgm.s.pHCShwAmd64CR3)
                 {
-                    pgmPoolFreeByPage(pPool, pVM->pgm.s.pHCShwAmd64CR3, PGMPOOL_IDX_AMD64_CR3, pVM->pgm.s.pHCShwAmd64CR3->GCPhys >> PAGE_SHIFT);
+                    /* It might have been freed already by a pool flush (see e.g. PGMR3MappingsUnfix). */
+                    if (pgmPoolGetPage(pPool, pVM->pgm.s.pHCShwAmd64CR3->GCPhys))
+                        pgmPoolFreeByPage(pPool, pVM->pgm.s.pHCShwAmd64CR3, PGMPOOL_IDX_AMD64_CR3, pVM->pgm.s.pHCShwAmd64CR3->GCPhys >> PAGE_SHIFT);
                     pVM->pgm.s.pHCShwAmd64CR3 = 0;
                     pVM->pgm.s.pHCPaePML4     = 0;
                     pVM->pgm.s.HCPhysPaePML4  = 0;
