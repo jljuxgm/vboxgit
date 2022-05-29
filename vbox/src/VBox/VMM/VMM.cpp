@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 7616 2008-03-28 08:47:21Z vboxsync $ */
+/* $Id: VMM.cpp 7917 2008-04-11 13:14:35Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1969,7 +1969,7 @@ VMMR3DECL(int) VMMR3RawRunGC(PVM pVM)
 
 
 /**
- * Executes guest code (Intel VMX and AMD SVM).
+ * Executes guest code (Intel VT-x and AMD-V).
  *
  * @param   pVM         VM handle.
  */
