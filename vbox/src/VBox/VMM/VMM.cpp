@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 9793 2008-06-18 15:26:42Z vboxsync $ */
+/* $Id: VMM.cpp 10062 2008-07-01 09:31:01Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -311,7 +311,7 @@ static int vmmR3InitCoreCode(PVM pVM)
         {
             pVM->vmm.s.pvGCCoreCode = GCPtr;
             MMR3HyperReserve(pVM, PAGE_SIZE, "fence", NULL);
-            LogRel(("CoreCode: R3=%VHv R0=%VHv GC=%VGv Phys=%VHp cb=%#x\n",
+            LogRel(("CoreCode: R3=%VHv R0=%VHv GC=%VRv Phys=%VHp cb=%#x\n",
                     pVM->vmm.s.pvHCCoreCodeR3, pVM->vmm.s.pvHCCoreCodeR0, pVM->vmm.s.pvGCCoreCode, pVM->vmm.s.HCPhysCoreCode, pVM->vmm.s.cbCoreCode));
 
             /*
@@ -324,7 +324,7 @@ static int vmmR3InitCoreCode(PVM pVM)
         }
 
         /* shit */
-        AssertMsgFailed(("PGMR3Map(,%VGv, %VGp, %#x, 0) failed with rc=%Vrc\n", pVM->vmm.s.pvGCCoreCode, pVM->vmm.s.HCPhysCoreCode, cbCoreCode, rc));
+        AssertMsgFailed(("PGMR3Map(,%VRv, %VGp, %#x, 0) failed with rc=%Vrc\n", pVM->vmm.s.pvGCCoreCode, pVM->vmm.s.HCPhysCoreCode, cbCoreCode, rc));
         SUPContFree(pVM->vmm.s.pvHCCoreCodeR3, pVM->vmm.s.cbCoreCode >> PAGE_SHIFT);
     }
     else
