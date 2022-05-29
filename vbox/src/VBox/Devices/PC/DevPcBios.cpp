@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 6306 2008-01-09 17:23:45Z vboxsync $ */
+/* $Id: DevPcBios.cpp 6309 2008-01-09 17:45:26Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -592,7 +592,7 @@ static DECLCALLBACK(int) pcbiosInitComplete(PPDMDEVINS pDevIns)
                         offInfo = 0x70;
                         break;
                 }
-                pcbiosCmosInitHardDisk(pDevIns, offInfo, offType,
+                pcbiosCmosInitHardDisk(pDevIns, offType, offInfo,
 		                       &LCHSGeometry);
             }
             LogRel(("DevPcBios: ATA LUN#%d LCHS=%u/%u/%u\n", i, LCHSGeometry.cCylinders, LCHSGeometry.cHeads, LCHSGeometry.cSectors));
