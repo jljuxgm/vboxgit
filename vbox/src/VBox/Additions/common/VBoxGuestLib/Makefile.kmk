@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
+# $Id: Makefile.kmk 9061 2008-05-23 06:48:50Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -54,6 +54,11 @@ else
    LIBRARIES += \
 	VBoxGuestR0Lib \
 	VBoxGuestR0LibBase \
+  	VBoxGuestR3Lib \
+	VBoxGuestR3LibShared \
+  	VBoxGuestR3LibXFree86
+ else ifdef VBOX_WITH_X11_ADDITIONS
+   LIBRARIES += \
   	VBoxGuestR3Lib \
 	VBoxGuestR3LibShared \
   	VBoxGuestR3LibXFree86
