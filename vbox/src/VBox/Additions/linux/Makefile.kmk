@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5999 2007-12-07 15:05:06Z vboxsync $
+# $Id: Makefile.kmk 6165 2007-12-21 09:52:02Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -24,10 +24,7 @@ ifeq ($(filter-out linux l4, $(BUILD_TARGET)),)
 SUBDIRS += \
 	module \
 	daemon \
-	xgraphics \
-	xmouse \
-	sharedfolders \
-	xclient
+	sharedfolders
 endif
 
 ifndef VBOX_OSE
