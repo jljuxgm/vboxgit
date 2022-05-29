@@ -1,6 +1,6 @@
-; $Id: ASMMultU64ByU32DivByU32.asm 8155 2008-04-18 15:16:47Z vboxsync $
+; $Id: ASMMultU64ByU32DivByU32.asm 8256 2008-04-21 20:53:28Z vboxsync $
 ;; @file
-; innotek Portable Runtime - Assembly Functions, ASMMultU64ByU32DivByU32.
+; IPRT - Assembly Functions, ASMMultU64ByU32DivByU32.
 ;
 
 ;

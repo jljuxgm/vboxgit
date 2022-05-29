@@ -1,6 +1,6 @@
-# $Id: errmsgxpcom.sed 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: errmsgxpcom.sed 8256 2008-04-21 20:53:28Z vboxsync $
 ## @file
-# innotek Portable Runtime - SED script for converting XPCOM errors
+# IPRT - SED script for converting XPCOM errors
 #
 
 #

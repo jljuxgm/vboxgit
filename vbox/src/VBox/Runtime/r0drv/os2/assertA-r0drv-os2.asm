@@ -1,6 +1,6 @@
-; $Id: assertA-r0drv-os2.asm 2988 2007-06-01 17:36:09Z vboxsync $
+; $Id: assertA-r0drv-os2.asm 8256 2008-04-21 20:53:28Z vboxsync $
 ;; @file
-; innotek Portable Runtime - DevHelp_GetDOSVar, Ring-0 Driver, OS/2.
+; IPRT - DevHelp_GetDOSVar, Ring-0 Driver, OS/2.
 ;
 
 ;

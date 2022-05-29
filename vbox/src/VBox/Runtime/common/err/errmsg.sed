@@ -1,6 +1,6 @@
-# $Id: errmsg.sed 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: errmsg.sed 8256 2008-04-21 20:53:28Z vboxsync $
 ## @file
-# innotek Portable Runtime - SED script for converting */err.h.
+# IPRT - SED script for converting */err.h.
 #
 
 # Copyright (C) 2006-2007 Sun Microsystems, Inc.

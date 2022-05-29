@@ -1,6 +1,6 @@
-; $Id: setjmp.asm 8155 2008-04-18 15:16:47Z vboxsync $
+; $Id: setjmp.asm 8256 2008-04-21 20:53:28Z vboxsync $
 ;; @file
-; innotek Portable Runtime - No-CRT setjmp & longjmp - AMD64 & X86.
+; IPRT - No-CRT setjmp & longjmp - AMD64 & X86.
 ;
 
 ;
