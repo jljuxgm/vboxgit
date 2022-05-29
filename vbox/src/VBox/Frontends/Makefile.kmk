@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7365 2008-03-07 14:01:21Z vboxsync $
+# $Id: Makefile.kmk 7563 2008-03-26 09:18:23Z vboxsync $
 ## @file
 # Top-level makefile for the VBox frontends.
 #
@@ -38,6 +38,9 @@ endif
 # Sub-directory walk (qt is too much work for now)
 ifdef VBOX_WITH_QTGUI
 SUBDIRS_AFTER += VirtualBox
+endif
+ifdef VBOX_WITH_QT4GUI
+SUBDIRS_AFTER += VirtualBox4
 endif
 
 include $(PATH_KBUILD)/subfooter.kmk
