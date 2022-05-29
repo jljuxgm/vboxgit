@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 4787 2007-09-14 09:08:56Z vboxsync $ */
+/* $Id: MMInternal.h 5914 2007-12-02 21:46:22Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -548,7 +548,7 @@ typedef enum MMLOOKUPHYPERTYPE
     /** Dynamic mapping area (MMR3HyperReserve).
      * A conversion will require to check what's in the page table for the pages. */
     MMLOOKUPHYPERTYPE_DYNAMIC
-};
+} MMLOOKUPHYPERTYPE;
 
 /**
  * Lookup record for the hypervisor memory area.
