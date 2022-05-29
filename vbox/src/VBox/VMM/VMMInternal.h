@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 9387 2008-06-04 13:51:21Z vboxsync $ */
+/* $Id: VMMInternal.h 11474 2008-08-19 08:11:20Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -87,7 +87,7 @@ typedef struct VMMR0LOGGER
 #if HC_ARCH_BITS == 32
     uint32_t                    u32Alignment;
 #endif
-    /** The ring-0 logger instance. This extends beyon the size.*/
+    /** The ring-0 logger instance. This extends beyond the size.*/
     RTLOGGER                    Logger;
 } VMMR0LOGGER, *PVMMR0LOGGER;
 

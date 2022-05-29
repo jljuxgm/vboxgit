@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 10817 2008-07-22 15:03:14Z vboxsync $ */
+/* $Id: HWACCMInternal.h 11474 2008-08-19 08:11:20Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -273,6 +273,9 @@ typedef struct HWACCM
 
         /* TLB flush count */
         uint32_t                    cTLBFlushes;
+
+        /* Current ASID in use by the VM */
+        uint32_t                    uCurrentASID;
 
         /** R0 memory object for the VM control block (VMCB). */
         RTR0MEMOBJ                  pMemObjVMCB;
