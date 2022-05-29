@@ -1,4 +1,4 @@
-/* $Id: darwin.cpp 7117 2008-02-25 15:54:42Z vboxsync $ */
+/* $Id: darwin.cpp 7123 2008-02-25 16:18:43Z vboxsync $ */
 /** @file
  * Shared Clipboard: Mac OS X host.
  */
@@ -49,7 +49,7 @@ int vboxClipboardChanged (VBOXCLIPBOARDCONTEXT *pCtx)
 
     uint32_t fFormats = 0;
     /* Retrieve the formats currently in the clipboard and supported by vbox */
-    int rc = queryPasteboardFormats (pCtx->pasteboard, fFormats);
+    int rc = queryPasteboardFormats (pCtx->pasteboard, &fFormats);
 
     if (fFormats > 0)
     {
