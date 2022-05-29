@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 9718 2008-06-16 12:35:09Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 9719 2008-06-16 12:48:00Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1518,11 +1518,6 @@ ResumeExecution:
                 TRPMSetErrorCode(pVM, errCode);
                 TRPMSetFaultAddress(pVM, exitQualification);
 
-if (exitQualification == 0x805ce018)
-{ 
-        rc = VINF_EM_RAW_EMULATE_INSTR;
-    break;
-}
                 /* Forward it to our trap handler first, in case our shadow pages are out of sync. */
                 rc = PGMTrap0eHandler(pVM, errCode, CPUMCTX2CORE(pCtx), (RTGCPTR)exitQualification);
                 Log2(("PGMTrap0eHandler %VGv returned %Vrc\n", pCtx->rip, rc));
