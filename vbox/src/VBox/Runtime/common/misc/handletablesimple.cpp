@@ -1,4 +1,4 @@
-/* $Id: handletablesimple.cpp 10789 2008-07-21 17:22:32Z vboxsync $ */
+/* $Id: handletablesimple.cpp 10790 2008-07-21 18:43:39Z vboxsync $ */
 /** @file
  * IPRT - Handle Tables.
  */
@@ -157,10 +157,11 @@ RTDECL(int)     RTHandleTableAlloc(RTHANDLETABLE hHandleTable, void *pvObj, uint
                 rtHandleTableLock(pThis, &Tmp);
             }
 
-            /* insert the table we allocated */
-            if (pThis->cCur < pThis->cMax)
+            /* insert the table we allocated. */
+            uint32_t iLevel1New = pThis->cCur / RTHT_LEVEL2_ENTRIES;
+            if (    iLevel1New < pThis->cLevel1
+                &&  pThis->cCur < pThis->cMax)
             {
-                uint32_t iLevel1New = pThis->cCur / RTHT_LEVEL2_ENTRIES;
                 pThis->papvLevel1[iLevel1New] = paTable;
 
                 /* link all entries into a free list. */
