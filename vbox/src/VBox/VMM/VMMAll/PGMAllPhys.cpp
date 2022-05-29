@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 6829 2008-02-06 14:06:30Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 6854 2008-02-07 19:24:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -312,12 +312,14 @@ int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
               GCPhys, pVM->pgm.s.aHandyPages[iHandyPage].idPage, HCPhys));
         STAM_COUNTER_INC(&pVM->pgm.s.StatPageReplaceShared);
         pVM->pgm.s.cSharedPages--;
+/** @todo err.. what about copying the page content? */
     }
     else
     {
         Log2(("PGM: Replaced zero page %RGp with %#x / %RHp\n", GCPhys, pVM->pgm.s.aHandyPages[iHandyPage].idPage, HCPhys));
         STAM_COUNTER_INC(&pVM->pgm.s.StatPageReplaceZero);
         pVM->pgm.s.cZeroPages--;
+/** @todo verify that the handy page is zero! */
     }
 
     /*
@@ -564,7 +566,10 @@ PGMDECL(int) PGMPhysGCPhys2CCPtr(PVM pVM, RTGCPHYS GCPhys, void **ppv, PPGMPAGEM
          */
         PPGMPAGE pPage = pTlbe->pPage;
         if (RT_UNLIKELY(pPage->u2State != PGM_PAGE_STATE_ALLOCATED))
+        {
             rc = pgmPhysPageMakeWritable(pVM, pPage, GCPhys);
+            /** @todo stuff is missing here! */
+        }
         if (RT_SUCCESS(rc))
         {
             /*

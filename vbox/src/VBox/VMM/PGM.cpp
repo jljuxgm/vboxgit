@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 6829 2008-02-06 14:06:30Z vboxsync $ */
+/* $Id: PGM.cpp 6854 2008-02-07 19:24:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1710,6 +1710,13 @@ PGMR3DECL(void) PGMR3Reset(PVM pVM)
                 ASMMemZero32((char *)pRam->pvHC + (iPage << PAGE_SHIFT), PAGE_SIZE);
         }
     }
+
+#ifdef VBOX_WITH_NEW_PHYS_CODE
+    /*
+     * Zero shadow ROM pages.
+     */
+    rc = pgmR3PhysRomReset(pVM);
+#endif
 
     /*
      * Switch mode back to real mode.

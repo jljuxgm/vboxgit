@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: PGMHandler.cpp 6854 2008-02-07 19:24:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -69,10 +69,10 @@ static DECLCALLBACK(int) pgmR3InfoHandlersVirtualOne(PAVLROGCPTRNODECORE pNode, 
  * @param   GCPhysLast      Last physical address. (inclusive)
  * @param   pfnHandlerR3    The R3 handler.
  * @param   pvUserR3        User argument to the R3 handler.
- * @param   pszModR0        The R0 handler module. NULL means default R0 module.
+ * @param   pszModR0        The R0 handler module. NULL means the default R0 module.
  * @param   pszHandlerR0    The R0 handler symbol name.
  * @param   pvUserR0        User argument to the R0 handler.
- * @param   pszModGC        The GC handler module. NULL means default GC module.
+ * @param   pszModGC        The GC handler module. NULL means the default GC module.
  * @param   pszHandlerGC    The GC handler symbol name.
  * @param   pvUserGC        User argument to the GC handler.
  *                          This must be a GC pointer because it will be relocated!
