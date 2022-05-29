@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 7715 2008-04-03 09:03:01Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 7728 2008-04-03 15:25:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1023,7 +1023,7 @@ PGMDECL(int) PGMPhysGCPtr2HCPtrByGstCR3(PVM pVM, RTGCPTR GCPtr, uint32_t cr3, un
         rc = PGM_GCPHYS_2_PTR(pVM, cr3 & X86_CR3_PAE_PAGE_MASK, &pPdpt);
         if (VBOX_SUCCESS(rc))
         {
-            X86PDPE Pdpe = pPdpt->a[((RTGCUINTPTR)GCPtr >> X86_PDPT_SHIFT) & X86_PDPT_MASK];
+            X86PDPE Pdpe = pPdpt->a[((RTGCUINTPTR)GCPtr >> X86_PDPT_SHIFT) & X86_PDPT_MASK_PAE];
             if (Pdpe.n.u1Present)
             {
                 PX86PDPAE pPD;
