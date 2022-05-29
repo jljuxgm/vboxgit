@@ -1,11 +1,11 @@
-# $Id: Makefile.kmk 5898 2007-12-02 06:08:26Z vboxsync $
+# $Id: Makefile.kmk 5976 2007-12-06 04:25:40Z vboxsync $
 ## @file
 # Sub-Makefile for the Devices testcases.
 #
 
 #
 #  Copyright (C) 2006-2007 innotek GmbH
-# 
+#
 #  This file is part of VirtualBox Open Source Edition (OSE), as
 #  available from http://www.virtualbox.org. This file is free software;
 #  you can redistribute it and/or modify it under the terms of the GNU
@@ -86,11 +86,7 @@ tstDeviceStructSize.cpp_DEPS = $(PATH_TARGET)/tstDeviceStructSizeGC.h
 # 1&2. Manually dump selected structures and members.
 $(PATH_TARGET)/tstDeviceStructSizeGC.h: $$(INSTARGET_tstDeviceStructSizeGC)
 	$(call MSG_GENERATE,,$@)
-ifdef KMK_USE_REDIRECT
 	$(QUIET)$(REDIRECT) -wo $@ -- $(INSTARGET_tstDeviceStructSizeGC)
-else
-	$(QUIET)$(INSTARGET_tstDeviceStructSizeGC) > $@
-endif
 
 # 3. run it.
 $(PATH_TARGET)/tstDeviceStructSize.run: $$(INSTARGET_tstDeviceStructSize)
