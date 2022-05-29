@@ -1,4 +1,4 @@
-/** $Id: VBoxService.cpp 6356 2008-01-15 13:27:51Z vboxsync $ */
+/** $Id: VBoxService.cpp 6445 2008-01-22 14:19:50Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -369,9 +369,9 @@ int main(int argc, char **argv)
     if (fDaemonize && !fDaemonzied)
     {
         VBoxServiceVerbose(1, "Daemonizing...\n");
-        errno = 0;
-        if (VbglR3Daemonize(0, 0) != 0)
-            return VBoxServiceError("daemon failed: %s\n", strerror(errno));
+        rc = VbglR3Daemonize(false /* fNoChDir */, false /* fNoClose */);
+        if (RT_FAILURE(rc))
+            return VBoxServiceError("daemon failed: %Rrc\n", rc);
         /* in-child */
     }
 
