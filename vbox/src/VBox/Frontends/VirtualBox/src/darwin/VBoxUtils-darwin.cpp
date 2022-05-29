@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 6721 2008-02-01 15:14:02Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 6798 2008-02-04 18:47:36Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -109,7 +109,7 @@ CGImageRef DarwinCreateDockBadge (const char *aSource)
     QImage transImage (128, 128, 32);
     transImage.fill (qRgba (0, 0, 0, 0));
     transImage.setAlphaBuffer (true);
-    QPixmap back (transImage); 
+    QPixmap back (transImage);
 
     /* load the badge */
     QPixmap badge = QPixmap::fromMimeSource (aSource);
@@ -135,7 +135,7 @@ CGImageRef DarwinCreateDockBadge (const char *aSource)
  * @param   aOverlayImage   an optional icon overlay image to add at the bottom right of the icon
  * @param   aStateImage   an optional state overlay image to add at the center of the icon
  */
-void DarwinUpdateDockPreview (CGImageRef aVMImage, CGImageRef aOverlayImage, CGImageRef aStateImage)
+void DarwinUpdateDockPreview (CGImageRef aVMImage, CGImageRef aOverlayImage, CGImageRef aStateImage /*= NULL*/)
 {
     Assert (aVMImage);
 
@@ -186,18 +186,18 @@ void DarwinUpdateDockPreview (CGImageRef aVMImage, CGImageRef aOverlayImage, CGI
     /* the state image at center */
     if (aStateImage)
     {
-        CGRect stateRect = CGRectMake ((targetWidth - CGImageGetWidth (aStateImage)) / 2.0, 
-                                       (targetHeight - CGImageGetHeight (aStateImage)) / 2.0, 
-                                       CGImageGetWidth (aStateImage), 
+        CGRect stateRect = CGRectMake ((targetWidth - CGImageGetWidth (aStateImage)) / 2.0,
+                                       (targetHeight - CGImageGetHeight (aStateImage)) / 2.0,
+                                       CGImageGetWidth (aStateImage),
                                        CGImageGetHeight (aStateImage));
         CGContextDrawImage (context, stateRect, aStateImage);
     }
     /* the overlay image at bottom/right */
     if (aOverlayImage)
     {
-        CGRect overlayRect = CGRectMake (targetWidth - CGImageGetWidth (aOverlayImage), 
-                                         0, 
-                                         CGImageGetWidth (aOverlayImage), 
+        CGRect overlayRect = CGRectMake (targetWidth - CGImageGetWidth (aOverlayImage),
+                                         0,
+                                         CGImageGetWidth (aOverlayImage),
                                          CGImageGetHeight (aOverlayImage));
         CGContextDrawImage (context, overlayRect, aOverlayImage);
     }
