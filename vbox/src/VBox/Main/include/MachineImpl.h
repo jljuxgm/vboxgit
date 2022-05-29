@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 9937 2008-06-25 18:18:13Z vboxsync $ */
+/* $Id: MachineImpl.h 10000 2008-06-27 14:56:59Z vboxsync $ */
 
 /** @file
  *
@@ -526,8 +526,8 @@ public:
     STDMETHOD(RemoveSharedFolder) (INPTR BSTR aName);
     STDMETHOD(CanShowConsoleWindow) (BOOL *aCanShow);
     STDMETHOD(ShowConsoleWindow) (ULONG64 *aWinId);
-    STDMETHOD(GetConfigRegistryValue) (INPTR BSTR aKey, BSTR *aValue);
-    STDMETHOD(SetConfigRegistryValue) (INPTR BSTR aKey, INPTR BSTR aValue);
+    STDMETHOD(GetGuestProperty) (INPTR BSTR aKey, BSTR *aValue);
+    STDMETHOD(SetGuestProperty) (INPTR BSTR aKey, INPTR BSTR aValue);
 
     STDMETHOD(GetProcessorUsage) (ULONG *user, ULONG *system);
 
