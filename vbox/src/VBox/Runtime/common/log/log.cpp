@@ -1,4 +1,4 @@
-/* $Id: log.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: log.cpp 6493 2008-01-24 18:37:10Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -1391,7 +1391,8 @@ RTDECL(int) RTLogSetDefaultInstanceThread(PRTLOGGER pLogger, uintptr_t uKey)
             return VERR_BUFFER_OVERFLOW; /* horrible error code! */
         }
 
-        for (unsigned j = 0; j < 10; j++)
+        unsigned j;
+        for (j = 0; j < 10; j++)
         {
             i = ELEMENTS(g_aPerThreadLoggers);
             while (i-- > 0)
