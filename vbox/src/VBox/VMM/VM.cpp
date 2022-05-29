@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 6398 2008-01-21 08:20:22Z vboxsync $ */
+/* $Id: VM.cpp 6448 2008-01-22 15:43:34Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1444,9 +1444,9 @@ DECLCALLBACK(int) vmR3Destroy(PVM pVM)
     RTLogFlags(NULL, "nodisabled nobuffered");
 #endif
 #ifdef VBOX_WITH_STATISTICS
-#ifndef DEBUG_dmik
+# ifndef DEBUG_dmik
     STAMR3Dump(pVM, "*");
-#endif
+# endif
 #else
     LogRel(("************************* Statistics *************************\n"));
     STAMR3DumpToReleaseLog(pVM, "*");
