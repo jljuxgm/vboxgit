@@ -1,4 +1,4 @@
-; $Id: tstAsmLock-2.asm 8971 2008-05-20 18:22:41Z vboxsync $
+; $Id: tstAsmLock-2.asm 8972 2008-05-20 18:43:08Z vboxsync $
 ;; @file
 ; Disassembly testcase - Invalid invariants.
 ;
@@ -223,9 +223,24 @@
     lock bts r10, 3
 %endif
 
+    ;
     ; CMPXCHG
+    ;
+        ; 0f b0 /r      CMPXCHG reg8/mem8, regX - with reg dst
+    lock cmpxchg bl, cl
+        ; 0f b1 /r      CMPXCHG regX/memX, regX - with reg dst
+    lock cmpxchg bx, cx
+    lock cmpxchg ebx, ecx
+%ifdef WITH_64_BIT_TESTS
+    lock cmpxchg rbx, rcx
+%endif
+
+    ;
     ; CMPXCHG8B
     ; CMPXCHG16B
+    ;
+        ; all valid.
+
     ; DEC
     ; INC
     ; NEG
