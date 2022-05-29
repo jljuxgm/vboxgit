@@ -1,4 +1,4 @@
-/** $Id: vl_vbox.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/** $Id: vl_vbox.h 7072 2008-02-21 14:06:23Z vboxsync $ */
 /** @file
  * VBox vl.h Replacement.
  *
@@ -69,7 +69,7 @@ __BEGIN_DECLS
 /*
  * Misc types.
  */
-typedef RTGCPHYS                target_phys_addr_t;
+typedef RTGCPHYS32              target_phys_addr_t;
 typedef PCIDEVICE               PCIDevice;
 typedef RTGCUINTREG             target_ulong;
 

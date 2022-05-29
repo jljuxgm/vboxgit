@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 6927 2008-02-12 20:44:35Z vboxsync $ */
+/* $Id: PGM.cpp 7072 2008-02-21 14:06:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -565,7 +565,7 @@
 
 
 /** Saved state data unit version. */
-#define PGM_SAVED_STATE_VERSION     5
+#define PGM_SAVED_STATE_VERSION     6
 
 /*******************************************************************************
 *   Header Files                                                               *
