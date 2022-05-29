@@ -1,4 +1,4 @@
-/* $Revision: 9470 $ */
+/* $Revision: 9621 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -711,8 +711,6 @@ typedef struct SUPDRVDEVEXT
     PMDL                    pGipMdl;
     /** GIP timer interval (ms). */
     ULONG                   ulGipTimerInterval;
-    /** Flag to force async GIP timer mode. */
-    BOOLEAN                 fForceAsyncTsc;
     /** Current CPU affinity mask. */
     KAFFINITY               uAffinityMask;
 # endif
