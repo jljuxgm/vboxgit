@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 11257 2008-08-08 14:23:19Z vboxsync $ */
+/* $Id: DevPcBios.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1436,7 +1436,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
             /*
              * In case of failure simply fall back to the built-in BIOS ROM.
              */
-            Log(("pcbiosConstruct: Failed to open system BIOS ROM file '%s', rc=%Vrc!\n", pThis->pszPcBiosFile, rc));
+            Log(("pcbiosConstruct: Failed to open system BIOS ROM file '%s', rc=%Rrc!\n", pThis->pszPcBiosFile, rc));
             RTFileClose(FilePcBios);
             FilePcBios = NIL_RTFILE;
             MMR3HeapFree(pThis->pszPcBiosFile);
@@ -1458,7 +1458,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
             rc = RTFileRead(FilePcBios, pThis->pu8PcBios, pThis->cbPcBios, NULL);
             if (RT_FAILURE(rc))
             {
-                AssertMsgFailed(("RTFileRead(,,%d,NULL) -> %Vrc\n", pThis->cbPcBios, rc));
+                AssertMsgFailed(("RTFileRead(,,%d,NULL) -> %Rrc\n", pThis->cbPcBios, rc));
                 MMR3HeapFree(pThis->pu8PcBios);
                 pThis->pu8PcBios = NULL;
             }
@@ -1568,7 +1568,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
             /*
              * Ignore failure and fall back to the built-in LAN boot ROM.
              */
-            Log(("pcbiosConstruct: Failed to open LAN boot ROM file '%s', rc=%Vrc!\n", pThis->pszLanBootFile, rc));
+            Log(("pcbiosConstruct: Failed to open LAN boot ROM file '%s', rc=%Rrc!\n", pThis->pszLanBootFile, rc));
             RTFileClose(FileLanBoot);
             FileLanBoot = NIL_RTFILE;
             MMR3HeapFree(pThis->pszLanBootFile);
@@ -1590,7 +1590,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
             rc = RTFileRead(FileLanBoot, pThis->pu8LanBoot, cbFileLanBoot, NULL);
             if (RT_FAILURE(rc))
             {
-                AssertMsgFailed(("RTFileRead(,,%d,NULL) -> %Vrc\n", cbFileLanBoot, rc));
+                AssertMsgFailed(("RTFileRead(,,%d,NULL) -> %Rrc\n", cbFileLanBoot, rc));
                 MMR3HeapFree(pThis->pu8LanBoot);
                 pThis->pu8LanBoot = NULL;
             }

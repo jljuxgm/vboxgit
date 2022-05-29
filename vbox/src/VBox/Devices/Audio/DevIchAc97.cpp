@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 11269 2008-08-08 16:24:48Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1650,7 +1650,7 @@ static DECLCALLBACK(int) ichac97Construct (PPDMDEVINS pDevIns, int iInstance,
         Log (("ac97: No attached driver!\n"));
     else if (RT_FAILURE (rc))
     {
-        AssertMsgFailed (("Failed to attach AC97 LUN #0! rc=%Vrc\n", rc));
+        AssertMsgFailed (("Failed to attach AC97 LUN #0! rc=%Rrc\n", rc));
         return rc;
     }
 

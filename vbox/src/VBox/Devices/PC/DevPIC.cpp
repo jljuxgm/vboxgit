@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 11265 2008-08-08 16:10:06Z vboxsync $ */
+/* $Id: DevPIC.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -972,7 +972,7 @@ static DECLCALLBACK(int)  picConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
 
     Assert(pDevIns->pDevHlp->pfnPICRegister);
     rc = pDevIns->pDevHlp->pfnPICRegister(pDevIns, &PicReg, &pThis->pPicHlpR3);
-    AssertLogRelMsgRCReturn(rc, ("PICRegister -> %Vrc\n", rc), rc);
+    AssertLogRelMsgRCReturn(rc, ("PICRegister -> %Rrc\n", rc), rc);
     if (fGCEnabled)
         pThis->pPicHlpRC = pThis->pPicHlpR3->pfnGetRCHelpers(pDevIns);
     if (fR0Enabled)

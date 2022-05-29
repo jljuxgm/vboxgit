@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 11271 2008-08-08 16:57:56Z vboxsync $ */
+/* $Id: DevParallel.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -849,7 +849,7 @@ static DECLCALLBACK(int) parallelConstruct(PPDMDEVINS pDevIns,
     }
     else
     {
-        AssertMsgFailed(("Parallel%d: Failed to attach to host driver. rc=%Vrc\n", iInstance, rc));
+        AssertMsgFailed(("Parallel%d: Failed to attach to host driver. rc=%Rrc\n", iInstance, rc));
         return PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS,
                                    N_("Parallel device %d cannot attach to host driver"), iInstance);
     }

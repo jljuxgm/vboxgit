@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 11269 2008-08-08 16:24:48Z vboxsync $ */
+/* $Id: DevAPIC.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1758,7 +1758,7 @@ static DECLCALLBACK(int) apicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     rc = pDevIns->pDevHlp->pfnAPICRegister(pDevIns, &ApicReg, &pThis->pApicHlpR3);
     if (RT_FAILURE(rc))
     {
-        AssertLogRelMsgFailed(("APICRegister -> %Vrc\n", rc));
+        AssertLogRelMsgFailed(("APICRegister -> %Rrc\n", rc));
         return rc;
     }
 
@@ -2052,7 +2052,7 @@ static DECLCALLBACK(int) ioapicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     rc = pDevIns->pDevHlp->pfnIOAPICRegister(pDevIns, &IoApicReg, &s->pIoApicHlpR3);
     if (RT_FAILURE(rc))
     {
-        AssertMsgFailed(("IOAPICRegister -> %Vrc\n", rc));
+        AssertMsgFailed(("IOAPICRegister -> %Rrc\n", rc));
         return rc;
     }
 
