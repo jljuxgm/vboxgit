@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 9953 2008-06-26 13:47:21Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 9956 2008-06-26 14:19:39Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2457,6 +2457,9 @@ static void pgmPoolTrackClearPageUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PCPGMP
     } u;
     u.pau64 = (uint64_t *)PGMPOOL_PAGE_2_PTR(pPool->CTXSUFF(pVM), pUserPage);
 
+    /* Safety precaution in case we change the paging for other modes too in the future. */
+    Assert(PGMGetHyperCR3(CTXSUFF(pPool->pVM)) != pPage->Core.Key);
+
 #ifdef VBOX_STRICT
     /*
      * Some sanity checks.
@@ -2514,8 +2517,11 @@ static void pgmPoolTrackClearPageUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PCPGMP
         case PGMPOOLKIND_PAE_PD_FOR_PAE_PD:
         case PGMPOOLKIND_64BIT_PD_FOR_64BIT_PD:
         case PGMPOOLKIND_64BIT_PDPT_FOR_64BIT_PDPT:
-        case PGMPOOLKIND_64BIT_PML4_FOR_64BIT_PML4:
             u.pau64[pUser->iUserTable] = 0;
+            break;
+
+        case PGMPOOLKIND_64BIT_PML4_FOR_64BIT_PML4:
+            /* There are no references to this page; it's loaded into CR3. */
             break;
 
         default:
@@ -3429,9 +3435,21 @@ int pgmPoolFlushPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
      */
     if (pPage->idx < PGMPOOL_IDX_FIRST)
     {
-        Log(("pgmPoolFlushPage: specaial root page, rejected. enmKind=%d idx=%d\n", pPage->enmKind, pPage->idx));
+        Log(("pgmPoolFlushPage: special root page, rejected. enmKind=%d idx=%d\n", pPage->enmKind, pPage->idx));
         return VINF_SUCCESS;
     }
+
+    /*
+     * Quietly reject any attempts at flushing the currently active shadow CR3 mapping
+     */
+    if (    pPage->idx == PGMPOOL_IDX_AMD64_CR3
+        &&  PGMGetHyperCR3(CTXSUFF(pPool->pVM)) != pPage->Core.Key)
+    {
+        Log(("pgmPoolFlushPage: current active shadow CR3, rejected. enmKind=%d idx=%d\n", pPage->enmKind, pPage->idx));
+        return VINF_SUCCESS;
+    }
+    /* Safety precaution in case we change the paging for other modes too in the future. */
+    AssertFatal(PGMGetHyperCR3(CTXSUFF(pPool->pVM)) != pPage->Core.Key);
 
     /*
      * Mark the page as being in need of a ASMMemZeroPage().
