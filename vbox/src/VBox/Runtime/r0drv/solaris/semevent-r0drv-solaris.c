@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 5354 2007-10-17 13:38:33Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 5948 2007-12-04 06:40:01Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Semaphores, Ring-0 Driver, Solaris.
  */
@@ -159,7 +159,7 @@ static int rtSemEventWait(RTSEMEVENT EventSem, unsigned cMillies, bool fInterrup
          */
         if (cMillies != RT_INDEFINITE_WAIT)
         {
-            int cTicks = drv_usectohz((clock_t)(cMillies * 1000L));
+            clock_t cTicks = drv_usectohz((clock_t)(cMillies * 1000L));
             clock_t timeout = ddi_get_lbolt();
             timeout += cTicks;
             if (fInterruptible)

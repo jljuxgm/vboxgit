@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 4287 2007-08-22 14:49:19Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 5948 2007-12-04 06:40:01Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Threads, Ring-0 Driver, Solaris.
  */
@@ -33,7 +33,7 @@ RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 
 RTDECL(int) RTThreadSleep(unsigned cMillies)
 {
-    int cTicks;
+    clock_t cTicks;
     unsigned long timeout;
     
     if (!cMillies)
