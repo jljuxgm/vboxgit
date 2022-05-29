@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 8174 2008-04-18 19:26:36Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 8217 2008-04-21 11:33:22Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1374,6 +1374,23 @@ void remR3ProtectCode(CPUState *env, RTGCPTR GCPtr)
         &&  !(env->eflags & VM_MASK)                        /* no V86 mode */
         &&  !HWACCMIsEnabled(env->pVM))
         CSAMR3MonitorPage(env->pVM, GCPtr, CSAM_TAG_REM);
+}
+
+/**
+ * Called from tlb_unprotect_code in order to clear write monitoring for a code page.
+ *
+ * @param   env             Pointer to the CPU environment.
+ * @param   GCPtr           Code page to monitor
+ */
+void remR3UnprotectCode(CPUState *env, RTGCPTR GCPtr)
+{
+    Assert(env->pVM->rem.s.fInREM);
+    if (     (env->cr[0] & X86_CR0_PG)                      /* paging must be enabled */
+        &&  !(env->state & CPU_EMULATE_SINGLE_INSTR)        /* ignore during single instruction execution */
+        &&   (((env->hflags >> HF_CPL_SHIFT) & 3) == 0)     /* supervisor mode only */
+        &&  !(env->eflags & VM_MASK)                        /* no V86 mode */
+        &&  !HWACCMIsEnabled(env->pVM))
+        CSAMR3UnmonitorPage(env->pVM, GCPtr, CSAM_TAG_REM);
 }
 
 
