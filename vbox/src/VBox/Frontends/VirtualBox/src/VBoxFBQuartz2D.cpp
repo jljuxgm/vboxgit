@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQuartz2D.cpp 6797 2008-02-04 18:27:45Z vboxsync $ */
+/* $Id: VBoxFBQuartz2D.cpp 7177 2008-02-27 15:06:30Z vboxsync $ */
 /** @file
  * Qt GUI (aka VirtualBox) - Quartz2D framebuffer implementation.
  */
@@ -24,6 +24,7 @@
 #include "VBoxGlobal.h"
 /* Needed for checking against seamless mode */
 #include "VBoxConsoleWnd.h"
+#include "VBoxIChatTheaterWrapper.h"
 
 /* Qt includes */
 #include <qapplication.h>
@@ -324,6 +325,9 @@ void VBoxQuartz2DFrameBuffer::resizeEvent (VBoxResizeEvent *re)
         CGDataProviderRelease (dp);
     }
     CGColorSpaceRelease (cs);
+#ifdef VBOX_WITH_ICHAT_THEATER
+    setImageRef (mImage);
+#endif
 
 //    if (remind)
 //    {
