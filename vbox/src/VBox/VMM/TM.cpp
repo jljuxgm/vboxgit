@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 9445 2008-06-05 18:15:58Z vboxsync $ */
+/* $Id: TM.cpp 10567 2008-07-12 15:29:13Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -566,7 +566,7 @@ static bool tmR3HasFixedTSC(PVM pVM)
                 PSUPGLOBALINFOPAGE pGip = g_pSUPGlobalInfoPage;
 
                 ASMCpuId(0x80000007, &uEAX, &uEBX, &uECX, &uEDX);
-                if (   (uEDX & RT_BIT(8)) /* TscInvariant */
+                if (   (uEDX & X86_CPUID_AMD_ADVPOWER_EDX_TSCINVAR) /* TscInvariant */
                     && pGip->u32Mode == SUPGIPMODE_SYNC_TSC /* no fixed tsc if the gip timer is in async mode */)
                     return true;
             }
