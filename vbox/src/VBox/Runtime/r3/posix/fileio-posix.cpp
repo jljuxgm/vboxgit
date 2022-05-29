@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 8913 2008-05-19 11:34:46Z vboxsync $ */
+/* $Id: fileio-posix.cpp 10634 2008-07-15 09:34:28Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -163,6 +163,8 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
             AssertMsgFailed(("RTFileOpen received an invalid RW value, fOpen=%#x\n", fOpen));
             return VERR_INVALID_PARAMETER;
     }
+    /* Unix permissions */
+    fOpenMode |= (fOpen & RTFILE_O_CREATE_MODE_MASK) >> RTFILE_O_CREATE_MODE_SHIFT;
 
     /** @todo sharing! */
 
