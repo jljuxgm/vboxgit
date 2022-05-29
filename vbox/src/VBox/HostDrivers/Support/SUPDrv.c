@@ -1,4 +1,4 @@
-/* $Revision: 10255 $ */
+/* $Revision: 10263 $ */
 /** @file
  * VirtualBox Support Driver - Shared code.
  */
@@ -1155,6 +1155,23 @@ int VBOXCALL supdrvIOCtl(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION
             break;
     }
     return SUPDRV_ERR_GENERAL_FAILURE;
+}
+
+
+/**
+ * Inter-Driver Communcation (IDC) worker.
+ *
+ * @returns 0 on success.
+ * @returns VERR_INVALID_PARAMETER if the request is invalid.
+ *
+ * @param   uReq        The request (function) code.
+ * @param   pDevExt     Device extention.
+ * @param   pSession    Session data.
+ * @param   pReqHdr     The request header.
+ */
+int VBOXCALL supdrvIDC(uintptr_t uReq, PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, PSUPDRVIDCREQHDR pReqHdr)
+{
+    return VERR_NOT_IMPLEMENTED;
 }
 
 
