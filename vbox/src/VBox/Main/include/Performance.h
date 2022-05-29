@@ -1,4 +1,4 @@
-/* $Id: Performance.h 10725 2008-07-17 13:27:48Z vboxsync $ */
+/* $Id: Performance.h 10726 2008-07-17 13:47:35Z vboxsync $ */
 
 /** @file
  *
@@ -282,7 +282,7 @@ namespace pm {
         unsigned long getMinValue() { return mBaseMetric->getMinValue(); };
         unsigned long getMaxValue() { return mBaseMetric->getMaxValue(); };
         unsigned long getPeriod() { return mBaseMetric->getPeriod(); };
-        unsigned long getLength() { return mBaseMetric->getLength(); };
+        unsigned long getLength() { return mAggregate ? 1 : mBaseMetric->getLength(); };
         void query(unsigned long **data, unsigned long *count);
     
     private:
