@@ -1,4 +1,4 @@
-# $Id: Config.kmk 10292 2008-07-06 21:31:33Z vboxsync $
+# $Id: Config.kmk 10298 2008-07-07 08:50:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -287,7 +287,7 @@ VBOX_WITH_NEW_USB_CODE_ON_DARWIN=1
 # Use the new VBI module on Solaris.
 VBOX_WITH_SOLARIS_VBI = 1
 # Enable 64 bits guest pointers.
-if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), linux.amd64 solaris.amd64 win.amd64 win.x86)
+if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), linux.amd64 solaris.amd64 win.amd64)
 VBOX_WITH_64_BITS_GUESTS = 1
 else
 # VBOX_WITH_64_BITS_GUESTS = 1
@@ -2897,7 +2897,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10292 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10298 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
