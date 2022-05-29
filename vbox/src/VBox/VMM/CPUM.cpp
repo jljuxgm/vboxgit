@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 10687 2008-07-16 09:22:28Z vboxsync $ */
+/* $Id: CPUM.cpp 10821 2008-07-23 08:03:39Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -454,8 +454,14 @@ static int cpumR3CpuIdInit(PVM pVM)
      * is perhaps a bit crudely done as there is probably some relatively harmless
      * info too in these leaves (like words about having a constant TSC).
      */
+#if 0
+    /** @todo NT4 installation regression - investigate */
     if (pCPUM->aGuestCpuIdStd[0].eax > 5)
         pCPUM->aGuestCpuIdStd[0].eax = 5;
+#else
+    if (pCPUM->aGuestCpuIdStd[0].eax > 2)
+        pCPUM->aGuestCpuIdStd[0].eax = 2;
+#endif
     for (i = pCPUM->aGuestCpuIdStd[0].eax + 1; i < RT_ELEMENTS(pCPUM->aGuestCpuIdStd); i++)
         pCPUM->aGuestCpuIdStd[i] = pCPUM->GuestCpuIdDef;
 
