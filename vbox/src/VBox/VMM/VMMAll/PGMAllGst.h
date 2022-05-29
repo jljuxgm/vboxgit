@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 10072 2008-07-01 13:03:38Z vboxsync $ */
+/* $Id: PGMAllGst.h 10073 2008-07-01 13:11:03Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -401,6 +401,9 @@ PGM_GST_DECL(int, GetPDE)(PVM pVM, RTGCUINTPTR GCPtr, PX86PDEPAE pPDE)
 /**
  * Maps the CR3 into HMA in GC and locate it in HC.
  *
+ * Note that a MapCR3 call is usually not followed by an UnmapCR3 call; whenever
+ * CR3 is updated we simply call MapCR3 again.
+ *
  * @returns VBox status, no specials.
  * @param   pVM             VM handle.
  * @param   GCPhysCR3       The physical address in the CR3 register.
@@ -508,7 +511,6 @@ PGM_GST_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
  *
  * @returns VBox status, no specials.
  * @param   pVM             VM handle.
- * @param   GCPhysCR3       The physical address in the CR3 register.
  */
 PGM_GST_DECL(int, UnmapCR3)(PVM pVM)
 {

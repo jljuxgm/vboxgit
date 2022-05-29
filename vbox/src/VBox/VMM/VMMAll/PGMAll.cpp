@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 10063 2008-07-01 09:57:49Z vboxsync $ */
+/* $Id: PGMAll.cpp 10073 2008-07-01 13:11:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1305,7 +1305,7 @@ PGMDECL(int) PGMFlushTLB(PVM pVM, uint64_t cr3, bool fGlobal)
 
 /**
  * Performs and schedules necessary updates following a CR3 load or reload, 
- * without actually the TLB as with PGMFlushTLB.
+ * without actually flushing the TLB as with PGMFlushTLB.
  *
  * This will normally involve mapping the guest PD or nPDPT
  *
