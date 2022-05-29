@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 11039 2008-07-31 17:31:13Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 11175 2008-08-06 10:05:00Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -3803,7 +3803,7 @@ static int vmdkCreate(const char *pszFilename, VDIMAGETYPE enmType,
     /* Get error interface. */
     pImage->pInterfaceError = VDGetInterfaceFromList(pInterfaces, VDINTERFACETYPE_ERROR);
     if (pImage->pInterfaceError)
-        pImage->pInterfaceErrorCallbacks = VDGetInterfaceError(pImage->pInterfaceError);
+        pImage->pInterfaceErrorCallbacks = VDGetInterfaceError(pImage->pInterfaceError->pCallbacks);
 
     rc = vmdkCreateImage(pImage, enmType, cbSize, uImageFlags, pszComment,
                          pPCHSGeometry, pLCHSGeometry,
