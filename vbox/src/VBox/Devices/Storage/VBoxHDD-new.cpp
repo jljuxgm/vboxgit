@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 8594 2008-05-05 14:11:24Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 9262 2008-05-30 17:32:54Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -2215,7 +2215,8 @@ VBOXDDU_DECL(int) VDRead(PVBOXHDD pDisk, uint64_t uOffset, void *pvBuf,
  * @returns VBox status code.
  * @returns VERR_VDI_NOT_OPENED if no image is opened in HDD container.
  * @param   pDisk           Pointer to HDD container.
- * @param   uOffset         Offset of first reading byte from start of disk.
+ * @param   uOffset         Offset of the first byte being 
+ *                          written from start of disk.
  * @param   pvBuf           Pointer to buffer for writing data.
  * @param   cbWrite         Number of bytes to write.
  */
