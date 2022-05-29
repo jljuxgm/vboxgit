@@ -1,4 +1,4 @@
-/* $Id: bioslogo.h 7814 2008-04-08 19:25:27Z vboxsync $ */
+/* $Id: bioslogo.h 7837 2008-04-09 13:25:49Z vboxsync $ */
 /** @file
  * BiosLogo - The Private BIOS Logo Interface.
  */
@@ -61,7 +61,7 @@
 
 #define LOGO_MAX_WIDTH       640
 #define LOGO_MAX_HEIGHT      480
-#define LOGO_MAX_SIZE        LOGO_MAX_WIDTH * LOGO_MAX_HEIGHT * 4
+#define LOGO_MAX_SIZE        ( LOGO_MAX_WIDTH * LOGO_MAX_HEIGHT * 4 )
 
 
 /** @name The BIOS logo commands.
