@@ -1,4 +1,4 @@
-/* $Id: helpers.h 10799 2008-07-22 08:59:09Z vboxsync $ */
+/* $Id: helpers.h 10800 2008-07-22 09:00:07Z vboxsync $ */
 /** @file
  * helpers - Guest Additions Service helper functions header
  */
@@ -19,8 +19,8 @@
  * additional information or have any questions.
  */
 
-#ifndef ___VBOXSERVICEHELPERS_H
-#define ___VBOXSERVICEHELPERS_H
+#ifndef ___VBOXTRAY_HELPERS_H
+#define ___VBOXTRAY_HELPERS_H
 
 // #define DEBUG_DISPLAY_CHANGE
 
@@ -32,5 +32,5 @@
 
 void resizeRect(RECTL *paRects, unsigned nRects, unsigned iPrimary, unsigned iResized, int NewWidth, int NewHeight);
 
-#endif /* !___VBOXSERVICEHELPERS_H */
+#endif /* !___VBOXTRAY_HELPERS_H */
 
