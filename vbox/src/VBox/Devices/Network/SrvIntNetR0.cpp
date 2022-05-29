@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 10961 2008-07-29 22:12:17Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 10965 2008-07-30 01:51:46Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -746,7 +746,7 @@ static void intnetR0IfSniffIPv4SourceAddr(PINTNETIF pIf, PCRTNETIPV4 pHdr, uint3
      * Ignore 255.255.255.255 (broadcast), 0.0.0.0 (null) and already cached addresses.
      */
     RTNETADDRU Addr;
-    Addr.au32[0] = pHdr->ip_src;
+    Addr.IPv4 = pHdr->ip_src;
     if (Addr.au32[0] == UINT32_C(0xffffffff))
         return;
 
