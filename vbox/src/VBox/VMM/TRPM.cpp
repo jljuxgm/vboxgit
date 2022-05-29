@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 8985 2008-05-20 21:03:33Z vboxsync $ */
+/* $Id: TRPM.cpp 9148 2008-05-27 09:21:03Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor
  */
@@ -551,7 +551,7 @@ TRPMR3DECL(void) TRPMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
      * would make init order impossible if we should assert the presence of these
      * exports in TRPMR3Init().
      */
-    RTGCPTR aGCPtrs[TRPM_HANDLER_MAX] = {0};
+    RTGCPTR32 aGCPtrs[TRPM_HANDLER_MAX] = {0};
     int rc;
     rc = PDMR3GetSymbolGC(pVM, VMMGC_MAIN_MODULE_NAME, "TRPMGCHandlerInterupt", &aGCPtrs[TRPM_HANDLER_INT]);
     AssertReleaseMsgRC(rc, ("Couldn't find TRPMGCHandlerInterupt in VMMGC.gc!\n"));
@@ -1050,7 +1050,7 @@ static DECLCALLBACK(int) trpmGuestIDTWriteHandler(PVM pVM, RTGCPTR GCPtr, void *
 TRPMR3DECL(int) trpmR3ClearPassThroughHandler(PVM pVM, unsigned iTrap)
 {
     /** @todo cleanup trpmR3ClearPassThroughHandler()! */
-    RTGCPTR aGCPtrs[TRPM_HANDLER_MAX];
+    RTGCPTR32 aGCPtrs[TRPM_HANDLER_MAX];
     int rc;
 
     memset(aGCPtrs, 0, sizeof(aGCPtrs));

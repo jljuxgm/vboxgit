@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: PDMLdr.cpp 9148 2008-05-27 09:21:03Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -749,7 +749,7 @@ PDMR3DECL(int) PDMR3GetSymbolR0Lazy(PVM pVM, const char *pszModule, const char *
  *                          ordinal value rather than a string pointer.
  * @param   pGCPtrValue     Where to store the symbol value.
  */
-PDMR3DECL(int) PDMR3GetSymbolGC(PVM pVM, const char *pszModule, const char *pszSymbol, PRTGCPTR pGCPtrValue)
+PDMR3DECL(int) PDMR3GetSymbolGC(PVM pVM, const char *pszModule, const char *pszSymbol, PRTGCPTR32 pGCPtrValue)
 {
 #ifdef PDMLDR_FAKE_MODE
     *pGCPtrValue = 0xfeedf00d;
@@ -805,7 +805,7 @@ PDMR3DECL(int) PDMR3GetSymbolGC(PVM pVM, const char *pszModule, const char *pszS
  *                          ordinal value rather than a string pointer.
  * @param   pGCPtrValue     Where to store the symbol value.
  */
-PDMR3DECL(int) PDMR3GetSymbolGCLazy(PVM pVM, const char *pszModule, const char *pszSymbol, PRTGCPTR pGCPtrValue)
+PDMR3DECL(int) PDMR3GetSymbolGCLazy(PVM pVM, const char *pszModule, const char *pszSymbol, PRTGCPTR32 pGCPtrValue)
 {
 #ifdef PDMLDR_FAKE_MODE
     *pGCPtrValue = 0xfeedf00d;

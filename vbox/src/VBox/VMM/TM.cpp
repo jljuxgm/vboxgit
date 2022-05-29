@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 8911 2008-05-19 10:08:21Z vboxsync $ */
+/* $Id: TM.cpp 9148 2008-05-27 09:21:03Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -212,12 +212,14 @@ TMR3DECL(int) TMR3Init(PVM pVM)
     rc = SUPGipGetPhys(&HCPhysGIP);
     AssertMsgRCReturn(rc, ("Failed to get GIP physical address!\n"), rc);
 
-    rc = MMR3HyperMapHCPhys(pVM, pVM->tm.s.pvGIPR3, HCPhysGIP, PAGE_SIZE, "GIP", &pVM->tm.s.pvGIPGC);
+    RTGCPTR GCPtr;
+    rc = MMR3HyperMapHCPhys(pVM, pVM->tm.s.pvGIPR3, HCPhysGIP, PAGE_SIZE, "GIP", &GCPtr);
     if (VBOX_FAILURE(rc))
     {
         AssertMsgFailed(("Failed to map GIP into GC, rc=%Vrc!\n", rc));
         return rc;
     }
+    pVM->tm.s.pvGIPGC = GCPtr;
     LogFlow(("TMR3Init: HCPhysGIP=%RHp at %VGv\n", HCPhysGIP, pVM->tm.s.pvGIPGC));
     MMR3HyperReserve(pVM, PAGE_SIZE, "fence", NULL);
 
