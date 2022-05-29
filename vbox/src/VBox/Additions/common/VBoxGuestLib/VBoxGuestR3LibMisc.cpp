@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 10591 2008-07-14 11:17:12Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 10606 2008-07-14 15:58:53Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -55,9 +55,9 @@ VBGLR3DECL(int) VbglR3WriteLog(const char *pch, size_t cb)
 {
 #if defined(RT_OS_WINDOWS) /** @todo more OSes could take this route (solaris and freebsd for instance). */
     /*
-     * Handle the entire request in one go (size ignored in IOCTL code).
+     * Handle the entire request in one go.
      */
-    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_LOG(0), (char *)pch, cb);
+    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_LOG(cb), (char *)pch, cb);
 
 #else
     /*
