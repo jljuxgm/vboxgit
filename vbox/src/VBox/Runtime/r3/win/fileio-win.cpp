@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: fileio-win.cpp 8560 2008-05-05 10:09:29Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -125,6 +125,28 @@ DECLINLINE(bool) IsBeyondLimit(RTFILE File, uint64_t offSeek, unsigned uMethod)
     }
 
     return fIsBeyondLimit;
+}
+
+
+RTR3DECL(int) RTFileFromNative(PRTFILE pFile, RTHCINTPTR uNative)
+{
+    HANDLE h = (HANDLE)uNative;
+    if (    h == INVALID_HANDLE_VALUE
+        ||  (RTFILE)uNative != uNative)
+    {
+        AssertMsgFailed(("%p\n", uNative));
+        *pFile = NIL_RTFILE;
+        return VERR_INVALID_HANDLE;
+    }
+    *pFile = (RTFILE)h;
+    return VINF_SUCCESS;
+}
+
+
+RTR3DECL(RTHCINTPTR) RTFileToNative(RTFILE File)
+{
+    AssertReturn(File != NIL_RTFILE, (RTHCINTPTR)INVALID_HANDLE_VALUE);
+    return (RTHCINTPTR)File;
 }
 
 
