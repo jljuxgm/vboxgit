@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 8160 2008-04-18 16:15:42Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -22,12 +22,12 @@
 #include <VBox/err.h>
 #include <VBox/cpum.h>
 
-CPUMDECL(uint32_t) CPUMGetGuestCR3(PVM pVM)
+CPUMDECL(uint64_t) CPUMGetGuestCR3(PVM pVM)
 {
     return 0;
 }
 
-CPUMDECL(uint32_t) CPUMGetGuestCR4(PVM pVM)
+CPUMDECL(uint64_t) CPUMGetGuestCR4(PVM pVM)
 {
     return 0;
 }

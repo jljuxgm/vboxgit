@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: PGMAllGst.h 8160 2008-04-18 16:15:42Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -191,7 +191,7 @@ PGM_GST_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTGCP
             return rc;
 
         /*
-         * Get PT entry and check presentness.
+         * Get PT entry and check presence.
          */
         const GSTPTE Pte = pPT->a[(GCPtr >> GST_PT_SHIFT) & GST_PT_MASK];
         if (!Pte.n.u1Present)
