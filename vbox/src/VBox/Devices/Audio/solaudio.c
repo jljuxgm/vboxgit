@@ -1,4 +1,4 @@
-/* $Id: solaudio.c 5977 2007-12-06 05:48:57Z vboxsync $ */
+/* $Id: solaudio.c 5980 2007-12-06 10:38:35Z vboxsync $ */
 /** @file
  * VirtualBox Audio Driver - Solaris host.
  */
@@ -240,7 +240,7 @@ static void solaudio_fini_out (HWVoiceOut *hw)
 {
     solaudioVoiceOut *sol = (solaudioVoiceOut *) hw;
     solaudio_stop (sol);
-    LogFlow((LOG_ERR, "solaudio: fini_out done.\n"));
+    LogFlow(("solaudio: fini_out done.\n"));
 }
 
 
