@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 11370 2008-08-12 17:50:18Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 11371 2008-08-12 17:51:23Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -72,7 +72,7 @@ HWACCMDECL(int) HWACCMFlushTLB(PVM pVM)
     /* @todo Intel for nested paging */
     if (pVM->hwaccm.s.svm.fSupported)
     {
-        Log(("HWACCMFlushTLB\n"));
+        LogFlow(("HWACCMFlushTLB\n"));
         pVM->hwaccm.s.svm.fForceTLBFlush = true;
         STAM_COUNTER_INC(&pVM->hwaccm.s.StatFlushTLBManual);
     }
