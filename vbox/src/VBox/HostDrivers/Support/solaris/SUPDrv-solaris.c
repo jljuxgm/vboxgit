@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 5886 2007-11-30 09:26:02Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 5929 2007-12-03 01:05:30Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Solaris Driver Code.
  */
@@ -361,7 +361,7 @@ static int VBoxDrvSolarisDetach(dev_info_t *pDip, ddi_detach_cmd_t enmCmd)
             RTSemFastMutexRelease(g_DevExt.mtxGip);
             return DDI_SUCCESS;
         }
-        
+
         default:
             return DDI_FAILURE;
     }
