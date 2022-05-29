@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
+/* $Id: VMMAll.cpp 10450 2008-07-09 21:55:45Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -30,6 +30,8 @@
 #include <VBox/param.h>
 
 
+#ifndef IN_RING0
+
 /**
  * Gets the bottom of the hypervisor stack - GC Ptr.
  * I.e. the returned address is not actually writable.
@@ -53,4 +55,20 @@ RTGCPTR VMMGetStackGC(PVM pVM)
 RTHCPTR VMMGetHCStack(PVM pVM)
 {
     return pVM->vmm.s.pbHCStack + VMM_STACK_SIZE;
+}
+
+#endif /* !IN_RING0 */
+
+
+/**
+ * Gets the VBOX_SVN_REV.
+ *
+ * This is just to avoid having to compile a bunch of big files
+ * and requires less Makefile mess.
+ *
+ * @returns VBOX_SVN_REV.
+ */
+VMMDECL(uint32_t) VMMGetSvnRev(void)
+{
+    return VBOX_SVN_REV;
 }
