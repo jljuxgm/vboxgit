@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6595 2008-01-30 12:10:22Z vboxsync $
+# $Id: Makefile.kmk 6599 2008-01-30 13:30:33Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -22,8 +22,8 @@ include	$(PATH_KBUILD)/header.kmk
 # VBoxClient (clipboard)
 #
 PROGRAMS += VBoxClient
-ifneq ($(BUILD_TARGET),linux)
- VBoxClient_TEMPLATE = VBOXGUESTR3EXE
+ifneq ($(BUILD_TARGET),linux) ## @todo Elimiate this too.
+ VBoxClient_TEMPLATE = VBOXGUESTR3CPPEXE
 else
  VBoxClient_TEMPLATE = VBOXLNX32GUESTR3EXE
 endif
