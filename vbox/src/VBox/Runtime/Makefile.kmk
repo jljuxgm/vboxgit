@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9741 2008-06-16 22:46:46Z vboxsync $
+# $Id: Makefile.kmk 9839 2008-06-20 09:27:34Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -136,6 +136,9 @@ ifdef IPRT_WITH_KSTUFF
 endif
 ifdef VBOX_MAIN_RELEASE_LOG ## @todo (dmik): temporary, until RTThreadSelf/RTThreadAdopt are properly updated
  RuntimeR3_DEFS         += RTCRITSECT_STRICT
+endif
+ifdef IPRT_WITH_POSIX_TIMERS
+ RuntimeR3_DEFS        += IPRT_WITH_POSIX_TIMERS
 endif
 RuntimeR3_INCS          = \
 	include \
