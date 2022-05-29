@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6165 2007-12-21 09:52:02Z vboxsync $
+# $Id: Makefile.kmk 6181 2007-12-23 13:21:20Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -67,8 +67,9 @@ ifdef VBOX_WITH_WIN32_ADDITIONS
 endif
 
 ifdef VBOX_WITH_LINUX_ADDITIONS
- SUBDIRS += linux \
-			x11
+ SUBDIRS += \
+	linux \
+	x11
  LINUXINSTALLER = $(VBOX_PATH_ADDITIONS)/VBoxLinuxAdditions.run
 endif
 LINUXINSTALLER_CROSS = $(PATH_OUT_BASE)/linux.x86/$(BUILD_TYPE)/bin/additions/VBoxLinuxAdditions.run
