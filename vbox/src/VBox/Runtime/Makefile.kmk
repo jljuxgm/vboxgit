@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8730 2008-05-09 01:40:44Z vboxsync $
+# $Id: Makefile.kmk 8731 2008-05-09 02:01:10Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -32,8 +32,6 @@
 DEPTH ?= ../../..
 SUB_DEPTH = .
 include $(PATH_KBUILD)/subheader.kmk
-
-include testcase/Makefile.kmk
 
 ifdef VBOX_ONLY_ADDITIONS
  #
