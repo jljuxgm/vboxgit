@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 8738 2008-05-09 10:57:17Z vboxsync $ */
+/* $Id: PGMAllBth.h 8739 2008-05-09 11:21:20Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2489,6 +2489,8 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PGSTPD pPDSrc, RTGCUINTPTR G
     PdeDst.u &= X86_PDE_AVL_MASK;
     PdeDst.u |= pShwPage->Core.Key;
     PdeDst.n.u1Present = 1;
+    PdeDst.n.u1Write   = 1;
+    PdeDst.n.u1User    = 1;
     *pPdeDst = PdeDst;
 
     rc = PGM_BTH_NAME(SyncPage)(pVM, PdeSrc, (RTGCUINTPTR)GCPtrPage, PGM_SYNC_NR_PAGES, 0 /* page not present */);
