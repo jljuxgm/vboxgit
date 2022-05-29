@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 9407 2008-06-05 09:42:13Z vboxsync $ */
+/* $Id: HWSVMR0.h 9421 2008-06-05 13:17:00Z vboxsync $ */
 /** @file
  * HWACCM AMD-V - Internal header file.
  */
@@ -142,13 +142,13 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx);
 #define SVM_WRITE_SELREG(REG, reg)                                      \
         pVMCB->guest.REG.u16Sel   = pCtx->reg;                          \
         pVMCB->guest.REG.u32Limit = pCtx->reg##Hid.u32Limit;            \
-        pVMCB->guest.REG.u64Base  = pCtx->reg##Hid.u32Base;             \
+        pVMCB->guest.REG.u64Base  = pCtx->reg##Hid.u64Base;             \
         pVMCB->guest.REG.u16Attr  = SVM_HIDSEGATTR_VMX2SVM(pCtx->reg##Hid.Attr.u);
 
 #define SVM_READ_SELREG(REG, reg)                                       \
         pCtx->reg                = pVMCB->guest.REG.u16Sel;             \
         pCtx->reg##Hid.u32Limit  = pVMCB->guest.REG.u32Limit;           \
-        pCtx->reg##Hid.u32Base   = pVMCB->guest.REG.u64Base;            \
+        pCtx->reg##Hid.u64Base   = pVMCB->guest.REG.u64Base;            \
         pCtx->reg##Hid.Attr.u    = SVM_HIDSEGATTR_SVM2VMX(pVMCB->guest.REG.u16Attr);
 
 #endif /* IN_RING0 */

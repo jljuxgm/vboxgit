@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 9292 2008-06-02 12:09:25Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 9421 2008-06-05 13:17:00Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Disassembler.
  */
@@ -322,7 +322,7 @@ DBGFR3DECL(int) DBGFR3DisasInstrEx(PVM pVM, RTSEL Sel, RTGCPTR GCPtr, unsigned f
     if (    pHiddenSel
         &&  CPUMAreHiddenSelRegsValid(pVM))
     {
-        SelInfo.GCPtrBase           = pHiddenSel->u32Base;
+        SelInfo.GCPtrBase           = pHiddenSel->u64Base;
         SelInfo.cbLimit             = pHiddenSel->u32Limit;
         SelInfo.fHyper              = false;
         SelInfo.fRealMode           = !!((pCtxCore && pCtxCore->eflags.Bits.u1VM) || enmMode == PGMMODE_REAL);

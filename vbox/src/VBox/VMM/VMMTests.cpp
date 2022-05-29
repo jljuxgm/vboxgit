@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 9221 2008-05-29 13:08:41Z vboxsync $ */
+/* $Id: VMMTests.cpp 9421 2008-06-05 13:17:00Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -436,7 +436,7 @@ VMMR3DECL(int) VMMDoTest(PVM pVM)
             int rc = SELMR3GetShadowSelectorInfo(pVM, pHyperCtx->reg, &selInfo);        \
             AssertRC(rc);                                                               \
                                                                                         \
-            pHyperCtx->reg##Hid.u32Base              = selInfo.GCPtrBase;               \
+            pHyperCtx->reg##Hid.u64Base              = selInfo.GCPtrBase;               \
             pHyperCtx->reg##Hid.u32Limit             = selInfo.cbLimit;                 \
             pHyperCtx->reg##Hid.Attr.n.u1Present     = selInfo.Raw.Gen.u1Present;       \
             pHyperCtx->reg##Hid.Attr.n.u1DefBig      = selInfo.Raw.Gen.u1DefBig;        \
