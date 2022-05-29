@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6899 2008-02-11 13:27:58Z vboxsync $
+# $Id: Config.kmk 6919 2008-02-12 12:54:07Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -338,9 +338,6 @@ ifeq ($(BUILD_TARGET),solaris)
  VBOX_WITH_VRDP_AUTHMOD=
  VBOX_WITH_VRDP_RDESKTOP=
  VBOX_WITH_OGL=
- ## @todo These two should be removed ASAP - should be simple.
- VBOX_WITH_USB=
- VBOX_WITH_EHCI=
 endif
 
 ifeq ($(BUILD_TARGET),freebsd)
@@ -2844,7 +2841,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6899 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6919 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
