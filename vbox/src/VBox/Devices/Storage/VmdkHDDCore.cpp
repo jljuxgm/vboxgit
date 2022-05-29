@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 7780 2008-04-07 16:36:56Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 7846 2008-04-09 15:46:08Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -925,6 +925,7 @@ static int vmdkDescSetStr(PVMDKIMAGE pImage, PVMDKDESCRIPTOR pDescriptor,
                 pszTmp++;
             if (*pszTmp == '=')
             {
+                pszTmp++;
                 while (*pszTmp == ' ' || *pszTmp == '\t')
                     pszTmp++;
                 break;
