@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 6812 2008-02-05 17:23:16Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 7235 2008-03-03 12:45:29Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -75,7 +75,7 @@ CGImageRef DarwinQImageToCGImage (const QImage *aImage)
  */
 CGImageRef DarwinQImageFromMimeSourceToCGImage (const char *aSource)
 {
-    QImage qim = QImage::fromMimeSource (aSource);
+    QImage qim = QImage::fromMimeSource (QString(":/") + aSource);
     Assert (!qim.isNull());
     return DarwinQImageToCGImage (&qim);
 }
@@ -101,7 +101,7 @@ CGImageRef DarwinQPixmapToCGImage (const QPixmap *aPixmap)
  */
 CGImageRef DarwinQPixmapFromMimeSourceToCGImage (const char *aSource)
 {
-    QPixmap qpm = QPixmap::fromMimeSource (aSource);
+    QPixmap qpm = QPixmap::fromMimeSource (QString(":/" + aSource);
     Assert (!qpm.isNull());
     return DarwinQPixmapToCGImage (&qpm);
 }
