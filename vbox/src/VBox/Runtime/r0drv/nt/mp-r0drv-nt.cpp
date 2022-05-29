@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 9433 2008-06-05 15:33:34Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 9436 2008-06-05 15:52:08Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -100,7 +100,7 @@ RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
 }
 
 
-RTDECL(bool) RTMpIsCpuPresent(RTCPUID idCpu)
+RTDECL(bool) RTMpIsCpuPossible(RTCPUID idCpu)
 {
     /* Cannot easily distinguish between online and offline cpus. */
     /** @todo online/present cpu stuff must be corrected for proper W2K8 support. */
