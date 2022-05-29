@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 7417 2008-03-10 15:58:35Z vboxsync $ */
+/* $Id: strformat.cpp 7422 2008-03-10 17:10:59Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - String Formatter.
  */
@@ -103,6 +103,7 @@ static unsigned _strnlenUtf16(PCRTUTF16 pwsz, unsigned cchMax)
         AssertRC(rc);
         if (RT_FAILURE(rc) || !cp)
             break;
+        cwc++;
     }
     return cwc;
 #else   /* !IN_RING3 */
