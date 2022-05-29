@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 7718 2008-04-03 11:26:16Z vboxsync $ */
+/* $Id: HWACCM.cpp 7904 2008-04-11 09:39:47Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -546,8 +546,6 @@ HWACCMR3DECL(void) HWACCMR3Reset(PVM pVM)
  */
 HWACCMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
 {
-    uint32_t mask;
-
     Assert(pVM->fHWACCMEnabled);
 
     /* AMD SVM supports real & protected mode with or without paging. */
@@ -579,6 +577,8 @@ HWACCMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
 
     if (pVM->hwaccm.s.vmx.fEnabled)
     {
+        uint32_t mask;
+
         /* if bit N is set in cr0_fixed0, then it must be set in the guest's cr0. */
         mask = (uint32_t)pVM->hwaccm.s.vmx.msr.vmx_cr0_fixed0;
         /* Note: We ignore the NE bit here on purpose; see vmmr0\hwaccmr0.cpp for details. */
