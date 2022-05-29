@@ -1,4 +1,4 @@
-/* $Id: PerformanceDarwin.cpp 11564 2008-08-22 07:09:03Z vboxsync $ */
+/* $Id: PerformanceDarwin.cpp 11689 2008-08-27 08:39:17Z vboxsync $ */
 
 /** @file
  *
@@ -42,7 +42,6 @@ class CollectorDarwin : public CollectorHAL
 {
 public:
     virtual int getRawHostCpuLoad(uint64_t *user, uint64_t *kernel, uint64_t *idle);
-    virtual int getHostCpuMHz(ULONG *mhz);
     virtual int getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available);
     virtual int getRawProcessCpuLoad(RTPROCESS process, uint64_t *user, uint64_t *kernel, uint64_t *total);
     virtual int getProcessMemoryUsage(RTPROCESS process, ULONG *used);
@@ -74,11 +73,6 @@ int CollectorDarwin::getRawHostCpuLoad(uint64_t *user, uint64_t *kernel, uint64_
     *kernel = (uint64_t)info.cpu_ticks[CPU_STATE_SYSTEM];
     *idle = (uint64_t)info.cpu_ticks[CPU_STATE_IDLE];
     return VINF_SUCCESS;
-}
-
-int CollectorDarwin::getHostCpuMHz(ULONG *mhz)
-{
-    return VERR_NOT_IMPLEMENTED;
 }
 
 int CollectorDarwin::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available)
