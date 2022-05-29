@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6361 2008-01-15 22:39:01Z vboxsync $
+# $Id: Config.kmk 6366 2008-01-17 09:36:42Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -323,7 +323,7 @@ ifeq ($(BUILD_TARGET),solaris)
  VBOX_WITH_TESTSUITE=
  VBOX_WITH_USB=
  VBOX_WITH_EHCI=
- #VBOX_WITH_DOCS=
+ VBOX_WITH_OGL=
 endif
 
 ifeq ($(BUILD_TARGET),freebsd)
@@ -2829,7 +2829,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6361 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6366 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
