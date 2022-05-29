@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 6528 2008-01-28 14:43:15Z vboxsync $ */
+/* $Id: VMM.cpp 6914 2008-02-11 23:17:43Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2595,17 +2595,6 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, int rcErr)
 
 
     /*
-     * Dump useful state information.
-     */
-    /** @todo convert these dumpers to DBGFR3Info() handlers!!! */
-    pHlp->pfnPrintf(pHlp,
-                    "!!\n"
-                    "!! PGM Access Handlers & Stuff:\n"
-                    "!!\n");
-    PGMR3DumpMappings(pVM);
-
-
-    /*
      * Generic info dumper loop.
      */
     static struct
@@ -2614,6 +2603,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, int rcErr)
         const char *pszArgs;
     } const     aInfo[] =
     {
+        { "mappings",       NULL },
         { "hma",            NULL },
         { "cpumguest",      "verbose" },
         { "cpumhyper",      "verbose" },
@@ -2629,7 +2619,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, int rcErr)
         //{ "pgmpd",          NULL }, - doesn't always work at init time...
         { "timers",         NULL },
         { "activetimers",   NULL },
-        { "handlers",       "phys virt stats" },
+        { "handlers",       "phys virt hyper stats" },
         { "cfgm",           NULL },
     };
     for (unsigned i = 0; i < ELEMENTS(aInfo); i++)
