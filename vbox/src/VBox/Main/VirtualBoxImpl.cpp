@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 8569 2008-05-05 12:32:51Z vboxsync $ */
 /** @file
  * Implmentation of IVirtualBox in VBoxSVC.
  */
@@ -2392,7 +2392,7 @@ VirtualBox::SVCHelperClientThread (RTTHREAD aThread, void *aUser)
 
     do
     {
-        AssertBreak (d.get(), rc = E_POINTER);
+        AssertBreakStmt (d.get(), rc = E_POINTER);
         AssertReturn (!d->progress.isNull(), E_POINTER);
 
         /* protect VirtualBox from uninitialization */
