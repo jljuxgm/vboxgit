@@ -1,4 +1,4 @@
-/** $Id: RawHDDCore.cpp 10715 2008-07-16 22:38:23Z vboxsync $ */
+/** $Id: RawHDDCore.cpp 11039 2008-07-31 17:31:13Z vboxsync $ */
 /** @file
  * Raw Disk image, Core Code.
  */
@@ -747,7 +747,6 @@ static int rawSetOpenFlags(void *pBackendData, unsigned uOpenFlags)
     LogFlowFunc(("pBackendData=%#p\n uOpenFlags=%#x", pBackendData, uOpenFlags));
     PRAWIMAGE pImage = (PRAWIMAGE)pBackendData;
     int rc;
-    const char *pszFilename;
 
     /* Image must be opened and the new flags must be valid. Just readonly flag
      * is supported. */
@@ -758,7 +757,6 @@ static int rawSetOpenFlags(void *pBackendData, unsigned uOpenFlags)
     }
 
     /* Implement this operation via reopening the image. */
-    pszFilename = pImage->pszFilename;
     rawFreeImage(pImage, false);
     rc = rawOpenImage(pImage, uOpenFlags);
 
