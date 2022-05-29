@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 10031 2008-06-30 17:00:39Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 10076 2008-07-01 15:45:27Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -96,7 +96,7 @@ typedef struct INTNETNETWORK
     /** The network mutex.
      * It protects everything dealing with this network. */
     RTSEMFASTMUTEX          FastMutex;
-    /** List of interfaces attached to the network. */
+    /** List of interfaces connected to the network. */
     PINTNETIF               pIFs;
     /** Pointer to the instance data. */
     struct INTNET          *pIntNet;
@@ -1436,7 +1436,7 @@ static int INTNETCreateNetwork(PINTNET pIntNet, PSUPDRVSESSION pSession, const c
 
 
 /**
- * Opens a network interface and attaches it to the specified network.
+ * Opens a network interface and connects it to the specified network.
  *
  * @returns VBox status code.
  * @param   pIntNet         The internal network instance.
