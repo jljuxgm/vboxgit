@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 10843 2008-07-23 21:49:52Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 10899 2008-07-26 02:41:40Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -749,7 +749,14 @@ static DECLCALLBACK(int) drvIntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHa
     /*
      * Validate the config.
      */
-    if (!CFGMR3AreValuesValid(pCfgHandle, "Network\0ReceiveBufferSize\0SendBufferSize\0RestrictAccess\0IsService\0"))
+    if (!CFGMR3AreValuesValid(pCfgHandle,
+                              "Network\0"
+                              "Trunk\0"
+                              "TrunkType\0"
+                              "ReceiveBufferSize\0"
+                              "SendBufferSize\0"
+                              "RestrictAccess\0"
+                              "IsService\0"))
         return VERR_PDM_DRVINS_UNKNOWN_CFG_VALUES;
 
     /*
