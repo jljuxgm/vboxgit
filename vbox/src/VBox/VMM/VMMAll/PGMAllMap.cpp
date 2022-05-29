@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 8856 2008-05-15 14:18:48Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -199,7 +199,7 @@ PGMDECL(int)  PGMMapModifyPage(PVM pVM, RTGCPTR GCPtr, size_t cb, uint64_t fFlag
                     CTXALLSUFF(pCur->aPTs[iPT].paPaePTs)[iPTE / 512].a[iPTE % 512].u |= fFlags & ~X86_PTE_PAE_PG_MASK;
 
                     /* invalidate tls */
-                    PGM_INVL_PG((uint8_t *)pCur->GCPtr + off);
+                    PGM_INVL_PG((RTGCUINTPTR)pCur->GCPtr + off);
 
                     /* next */
                     iPTE++;
