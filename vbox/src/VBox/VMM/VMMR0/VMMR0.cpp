@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 7530 2008-03-25 10:56:01Z vboxsync $ */
+/* $Id: VMMR0.cpp 7533 2008-03-25 12:00:32Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -209,7 +209,7 @@ static int VMMR0Init(PVM pVM, unsigned uVersion)
     }
 
     /*
-     * nitalize the per VM data for GVMM and GMM.
+     * Initialize the per VM data for GVMM and GMM.
      */
     int rc = GVMMR0InitVM(pVM);
 //    if (RT_SUCCESS(rc))
