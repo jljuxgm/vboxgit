@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 6911 2008-02-11 22:00:13Z vboxsync $ */
+/* $Id: PGMMap.cpp 6912 2008-02-11 22:04:41Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1089,9 +1089,6 @@ static DECLCALLBACK(int) pgmVirtHandlerDump(PAVLROGCPTRNODECORE pNode, void *pvU
 
     switch (pCur->enmType)
     {
-        case PGMVIRTHANDLERTYPE_NORMAL:
-            RTLogPrintf("NORMAL   %RGv-%RGv size %RGv %s\n", pCur->GCPtr, pCur->GCPtrLast, pCur->cb, pCur->pszDesc);
-            break;
         case PGMVIRTHANDLERTYPE_WRITE:
             RTLogPrintf("WRITE    %RGv-%RGv size %RGv %s\n", pCur->GCPtr, pCur->GCPtrLast, pCur->cb, pCur->pszDesc);
             break;
