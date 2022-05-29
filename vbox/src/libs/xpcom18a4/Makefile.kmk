@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11612 2008-08-25 13:52:37Z vboxsync $
+# $Id: Makefile.kmk 11617 2008-08-25 14:04:30Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -264,8 +264,12 @@ LIBRARIES += \
 
 DLLS += \
 	VBoxXPCOM \
-	VBoxXPCOMIPCC \
-	$(if $(VBOX_OSE),,VBoxHelper)
+	VBoxXPCOMIPCC 
+
+
+ifdef VBOX_WITH_PYTHON
+       DLLS += VBoxHelper
+endif
 
 # we put it here, as template it uses depends on VBoxRT,
 # which may not be built yet
