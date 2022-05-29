@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6757 2008-02-02 08:51:14Z vboxsync $
+# $Id: Makefile.kmk 6860 2008-02-08 09:18:12Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -56,9 +56,9 @@ ifdef VBOX_WITH_WIN32_ADDITIONS
  include $(PATH_SUB_CURRENT)/WINNT/Makefile.kmk
 endif
 ifdef VBOX_WITH_LINUX_ADDITIONS
- include $(PATH_SUB_CURRENT)/x11/Makefile.kmk
  include $(PATH_SUB_CURRENT)/linux/Makefile.kmk
-else if1of ($(BUILD_TARGET), solaris)
+endif
+ifdef VBOX_WITH_X11_ADDITIONS
  include $(PATH_SUB_CURRENT)/x11/Makefile.kmk
 endif
 
