@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10190 2008-07-04 02:25:55Z vboxsync $
+# $Id: Makefile.kmk 11216 2008-08-07 17:53:12Z vboxsync $
 ## @file
 # Sub-Makefile for the external apps.
 #
@@ -14,8 +14,9 @@ SUB_DEPTH = ../..
 include $(KBUILD_PATH)/subheader.kmk
 
 ifdef VBOX_WITH_KCHMVIEWER
- ifneq ($(wildcard $(PATH_SUB_CURRENT)/kchmviewer-2.6),)
-  include $(PATH_SUB_CURRENT)/kchmviewer-2.6/Makefile.kmk
+ ifneq ($(wildcard $(PATH_SUB_CURRENT)/kchmviewer-4.3),)
+  # subdirectory currently not possible because of _QT_MOCHDRS
+  SUBDIRS_AFTER += kchmviewer-4.3
  endif
 endif
 ifneq ($(wildcard $(PATH_SUB_CURRENT)/tunctl),)
