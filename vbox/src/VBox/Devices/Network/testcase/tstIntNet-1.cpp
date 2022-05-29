@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 10663 2008-07-15 14:38:39Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 10681 2008-07-15 20:00:27Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -122,6 +122,7 @@ int main(int argc, char **argv)
         g_cErrors++;
     }
 
+    RTThreadSleep(1000);
     SUPTerm(false /* not forced */);
 
     /*
