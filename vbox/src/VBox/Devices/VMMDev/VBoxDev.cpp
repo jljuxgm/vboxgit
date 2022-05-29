@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 8996 2008-05-21 08:24:45Z vboxsync $ */
+/* $Id: VBoxDev.cpp 9435 2008-06-05 15:39:11Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1064,7 +1064,12 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
             break;
         }
 
+#ifdef VBOX_WITH_64_BITS_GUESTS
+        case VMMDevReq_HGCMCall32:
+        case VMMDevReq_HGCMCall64:
+#else
         case VMMDevReq_HGCMCall:
+#endif /* VBOX_WITH_64_BITS_GUESTS */
         {
             if (pRequestHeader->size < sizeof(VMMDevHGCMCall))
             {
@@ -1083,7 +1088,13 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                 Log2(("VMMDevReq_HGCMCall: sizeof (VMMDevHGCMRequest) = %04X\n", sizeof (VMMDevHGCMCall)));
                 Log2(("%.*Vhxd\n", pRequestHeader->size, pRequestHeader));
 
-                pRequestHeader->rc = vmmdevHGCMCall (pData, pHGCMCall, (RTGCPHYS)u32);
+#ifdef VBOX_WITH_64_BITS_GUESTS
+                bool f64Bits = (pRequestHeader->requestType == VMMDevReq_HGCMCall64);
+#else
+                bool f64Bits = false;
+#endif /* VBOX_WITH_64_BITS_GUESTS */
+
+                pRequestHeader->rc = vmmdevHGCMCall (pData, pHGCMCall, (RTGCPHYS)u32, f64Bits);
             }
             break;
         }
