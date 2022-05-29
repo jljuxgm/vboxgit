@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6052 2007-12-11 15:19:46Z vboxsync $
+# $Id: Makefile.kmk 6124 2007-12-18 13:53:29Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -131,19 +131,6 @@ ifeq ($(BUILD_TARGET).$(VBOX_WITHOUT_COMPILER_REDIST),win.)
 	$(DLL_TOOL_VCC70_MSVCRT)=>testcase/msvcrt.dll
   endif
  endif
-endif
-
-# The Xerces DLL
-ifneq ($(DLL_SDK_VBOX_XERCES_XERCES),)
- bin_SOURCES += $(DLL_SDK_VBOX_XERCES_XERCES)
-endif
-
-# The Xalan DLLs
-ifneq ($(DLL_SDK_VBOX_XALAN_XALAN),)
- bin_SOURCES += $(DLL_SDK_VBOX_XALAN_XALAN)
-endif
-ifneq ($(DLL_SDK_VBOX_XALAN_XALAN-MESSAGES),)
- bin_SOURCES += $(DLL_SDK_VBOX_XALAN_XALAN-MESSAGES)
 endif
 
 

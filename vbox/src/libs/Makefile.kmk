@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6076 2007-12-14 19:23:03Z vboxsync $
+# $Id: Makefile.kmk 6124 2007-12-18 13:53:29Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -39,14 +39,6 @@ endif
 ifdef VBOX_WITH_MAIN
  ifdef VBOX_WITH_XPCOM
   subdirs += xpcom18a4
- endif
- # Only build xerces if we don't use an external library.
- ifeq ($(SDK_VBOX_XERCES_INCS),$(PATH_ROOT)/src/libs/xerces-2.6.0/src)
-  subdirs += xerces-2.6.0
- endif
- # Only build xalan if we don't use an external library.
- ifeq ($(SDK_VBOX_XALAN_INCS),$(PATH_ROOT)/src/libs/xalan-1.10.0)
-  subdirs += xalan-1.10.0
  endif
  # Only build libxml2 if we don't use an external library.
  ifeq ($(SDK_VBOX_LIBXML2_INCS),$(PATH_ROOT)/src/libs/libxml2-2.6.30/include)

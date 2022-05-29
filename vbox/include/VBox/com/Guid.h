@@ -1,4 +1,4 @@
-/* $Id: Guid.h 6076 2007-12-14 19:23:03Z vboxsync $ */
+/* $Id: Guid.h 6124 2007-12-18 13:53:29Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -103,7 +103,7 @@ public:
     /* to pass instances as GUIDPARAM parameters to interface methods */
     operator const GUID &() const { return *(GUID *) &uuid; }
 
-    /* to directly pass instances to CFGLDRQueryUUID() */
+    /* to directly pass instances to RTPrintf("%Vuuid") */
     PRTUUID ptr() { return &uuid; }
 
     /* to pass instances to printf-like functions */
