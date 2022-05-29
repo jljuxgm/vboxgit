@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-freebsd.c 8188 2008-04-19 20:27:39Z vboxsync $ */
+/* $Id: VBoxGuest-freebsd.c 8250 2008-04-21 18:42:58Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for FreeBSD.
  */
@@ -555,16 +555,16 @@ static int VBoxGuestFreeBSDAttach(device_t pDevice)
         if (pState->pMMIOBase)
         {
             /*
-             * Add IRQ of VMMDev.
+             * Call the common device extension initializer.
              */
-            rc = VBoxGuestFreeBSDAddIRQ(pDevice, pState);
+            rc = VBoxGuestInitDevExt(&g_DevExt, pState->uIOPortBase, pState->pMMIOBase,
+                                     pState->VMMDevMemSize, VBOXOSTYPE_FreeBSD);
             if (RT_SUCCESS(rc))
             {
                 /*
-                 * Call the common device extension initializer.
+                 * Add IRQ of VMMDev.
                  */
-                rc = VBoxGuestInitDevExt(&g_DevExt, pState->uIOPortBase, pState->pMMIOBase,
-                                            pState->VMMDevMemSize, VBOXOSTYPE_FreeBSD);
+                rc = VBoxGuestFreeBSDAddIRQ(pDevice, pState);
                 if (RT_SUCCESS(rc))
                 {
                     /*
@@ -578,13 +578,13 @@ static int VBoxGuestFreeBSDAttach(device_t pDevice)
                         return 0;
                     }
 
-                    printf("vboxdrv: EVENTHANDLER_REGISTER(dev_clone,,,) failed\n");
+                    printf(DEVICE_NAME ": EVENTHANDLER_REGISTER(dev_clone,,,) failed\n");
                     clone_cleanup(&g_pVBoxGuestFreeBSDClones);
-                    VBoxGuestDeleteDevExt(&g_DevExt);
+                    VBoxGuestFreeBSDRemoveIRQ(pDevice, pState);
                 }
                 else
                     printf((DEVICE_NAME ":VBoxGuestInitDevExt failed.\n"));
-                VBoxGuestFreeBSDRemoveIRQ(pDevice, pState);
+                VBoxGuestDeleteDevExt(&g_DevExt);
             }
             else
                 printf((DEVICE_NAME ":VBoxGuestFreeBSDAddIRQ failed.\n"));
