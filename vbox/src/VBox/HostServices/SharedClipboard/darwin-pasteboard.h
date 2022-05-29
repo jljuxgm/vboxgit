@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.h 7117 2008-02-25 15:54:42Z vboxsync $ */
+/* $Id: darwin-pasteboard.h 7241 2008-03-03 14:24:56Z vboxsync $ */
 /** @file
  * Shared Clipboard: Mac OS X host implementation.
  */
@@ -24,7 +24,7 @@ typedef struct OpaquePasteboardRef *PasteboardRef;
 int initPasteboard (PasteboardRef *pPasteboardRef);
 void destroyPasteboard (PasteboardRef *pPasteboardRef);
 
-int queryPasteboardFormats (PasteboardRef pPasteboard, uint32_t *pfFormats);
+int queryNewPasteboardFormats (PasteboardRef pPasteboard, uint32_t *pfFormats);
 int readFromPasteboard (PasteboardRef pPasteboard, uint32_t fFormat, void *pv, uint32_t cb, uint32_t *pcbActual);
 int writeToPasteboard (PasteboardRef pPasteboard, void *pv, uint32_t cb, uint32_t fFormat);
 
