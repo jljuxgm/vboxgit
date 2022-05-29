@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10504 2008-07-11 09:41:54Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10505 2008-07-11 09:44:10Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -882,7 +882,7 @@ ResumeExecution:
             Log(("Force TLB flush due to changed TLB flush count (%x vs %x)\n", pVM->hwaccm.s.svm.cTLBFlushes, pCpuTemp->cTLBFlushes));
     }
     if (pCpuTemp->fFlushTLB) 
-        Log(("SVMR0RunGuestCode: First time cpu %d is used -> flush\n", pCpuTemp->idCpu));
+        Log(("Force TLB flush: first time cpu %d is used -> flush\n", pCpuTemp->idCpu));
 #endif
 
     /*
