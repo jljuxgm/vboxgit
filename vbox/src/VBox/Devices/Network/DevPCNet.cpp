@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7882 2008-04-10 16:04:40Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7943 2008-04-14 07:02:14Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -4340,7 +4340,7 @@ static DECLCALLBACK(int) pcnetReceive(PPDMINETWORKPORT pInterface, const void *p
  * @param   pMac            Where to store the MAC address.
  * @thread  EMT
  */
-static DECLCALLBACK(int) pcnetGetMac(PPDMINETWORKCONFIG pInterface, PPDMMAC *pMac)
+static DECLCALLBACK(int) pcnetGetMac(PPDMINETWORKCONFIG pInterface, PPDMMAC pMac)
 {
     PCNetState *pData = INETWORKCONFIG_2_DATA(pInterface);
     memcpy(pMac, pData->aPROM, sizeof(*pMac));
