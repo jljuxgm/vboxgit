@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 8536 2008-05-02 16:46:51Z vboxsync $ */
+/* $Id: PGMAllBth.h 8537 2008-05-02 17:00:34Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1767,7 +1767,7 @@ PGM_BTH_DECL(int, CheckPageFault)(PVM pVM, uint32_t uErr, PSHWPDE pPdeDst, PGSTP
         /* Mark guest page directory as accessed */
 #  if PGM_GST_TYPE == PGM_TYPE_AMD64
         pPml4eSrc->n.u1Accessed = 1;
-        pPdpeSrc->lm.u1Accessed  = 1;
+        pPdpeSrc->lm.u1Accessed = 1;
 #  endif
         pPdeSrc->b.u1Accessed   = 1;
 

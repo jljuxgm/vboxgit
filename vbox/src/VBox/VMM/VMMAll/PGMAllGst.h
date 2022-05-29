@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 8536 2008-05-02 16:46:51Z vboxsync $ */
+/* $Id: PGMAllGst.h 8537 2008-05-02 17:00:34Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -183,7 +183,7 @@ PGM_GST_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTGCP
     Pde.n.u1Accessed  &= pPml4e->n.u1Accessed & Pdpe.lm.u1Accessed;
     Pde.n.u1Write     &= pPml4e->n.u1Write & Pdpe.lm.u1Write;
     Pde.n.u1User      &= pPml4e->n.u1User & Pdpe.lm.u1User;
-    Pde.n.u1NoExecute &= pPml4e->n.u1NoExecute& Pdpe.lm.u1NoExecute;
+    Pde.n.u1NoExecute &= pPml4e->n.u1NoExecute & Pdpe.lm.u1NoExecute;
 # endif
 
     /*
