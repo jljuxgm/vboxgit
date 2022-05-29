@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 10408 2008-07-09 12:04:37Z vboxsync $ */
+/* $Id: REMInternal.h 10409 2008-07-09 12:14:00Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -196,7 +196,7 @@ typedef struct REM
     RTUINT                  padding0; /**< Padding. */
     /** Array of recorded handler noticications.
      * These are replayed when entering REM. */
-    REMHANDLERNOTIFICATION  aHandlerNotifications[64];
+    REMHANDLERNOTIFICATION  aHandlerNotifications[32];
 
     /** Pointer to an array of hc virt to gc phys records. */
     R3PTRTYPE(PREMCHUNKINFO) paHCVirtToGCPhys;
