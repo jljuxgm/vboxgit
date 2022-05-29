@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: dir-posix.cpp 7418 2008-03-10 16:01:58Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Directory manipulation, POSIX.
  */
@@ -418,8 +418,8 @@ RTDECL(int) RTDirReadEx(PRTDIR pDir, PRTDIRENTRYEX pDirEntry, unsigned *pcbDirEn
             /*
              * Setup the returned data.
              */
-            pDirEntry->cucShortName = 0;
-            pDirEntry->uszShortName[0] = 0;
+            pDirEntry->cwcShortName = 0;
+            pDirEntry->wszShortName[0] = 0;
             pDirEntry->cbName  = (uint16_t)cchName;
             Assert(pDirEntry->cbName == cchName);
             memcpy(pDirEntry->szName, pszName, cchName + 1);

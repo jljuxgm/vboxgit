@@ -1,4 +1,4 @@
-/* $Id: tstPath.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: tstPath.cpp 7418 2008-03-10 16:01:58Z vboxsync $ */
 /** @file
  * innotek Portable Runtime Testcase - Test various path functions.
  */
@@ -65,14 +65,14 @@ int main()
     CHECK_RC(RTPathUserHome(szPath, sizeof(szPath)));
     if (RT_SUCCESS(rc))
         RTPrintf("UserHome={%s}\n", szPath);
-    
+
     /*
      * RTPathAbsEx
      */
     RTPrintf("tstPath: TESTING RTPathAbsEx()\n");
     static const char *aInput[] =
     {
-        // NULL, NULL, -- assertion in RTStrUtf8ToUcs2
+        // NULL, NULL, -- assertion in RTStrToUtf16
         NULL,                           "/absolute/..",
         NULL,                           "/absolute\\\\../..",
         NULL,                           "/absolute//../path",
