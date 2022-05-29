@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 11525 2008-08-21 09:07:51Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 11570 2008-08-22 12:15:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2320,10 +2320,10 @@ PGMDECL(int) PGMPhysInterpretedRead(PVM pVM, PCPUMCTXCORE pCtxCore, void *pvDst,
             switch (rc)
             {
                 case VINF_SUCCESS:
-                    memcpy((uint8_t *)pvDst + cb2, pvSrc2, cb2);
+                    memcpy((uint8_t *)pvDst + cb1, pvSrc2, cb2);
                     break;
                 case VERR_PGM_INVALID_GC_PHYSICAL_ADDRESS:
-                    memset((uint8_t *)pvDst + cb2, 0, cb2);
+                    memset((uint8_t *)pvDst + cb1, 0, cb2);
                     break;
                 default:
                     return rc;
