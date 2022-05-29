@@ -1,4 +1,4 @@
-/** $Id: DBGCEmulateCodeView.cpp 6000 2007-12-07 15:12:49Z vboxsync $ */
+/** $Id: DBGCEmulateCodeView.cpp 6058 2007-12-13 10:45:19Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -1299,8 +1299,8 @@ static DECLCALLBACK(int) dbgcCmdRegCommon(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, P
             { "dn", "up", X86_EFL_DF },
             { "ei", "di", X86_EFL_IF },
             { "tf", NULL, X86_EFL_TF },
-            { "nt", "pl", X86_EFL_SF },
-            { "nz", "zr", X86_EFL_ZF },
+            { "ng", "pl", X86_EFL_SF },
+            { "zr", "nz", X86_EFL_ZF },
             { "ac", "na", X86_EFL_AF },
             { "po", "pe", X86_EFL_PF },
             { "cy", "nc", X86_EFL_CF },
