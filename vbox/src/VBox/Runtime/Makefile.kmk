@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8400 2008-04-25 21:27:15Z vboxsync $
+# $Id: Makefile.kmk 8402 2008-04-26 05:13:38Z vboxsync $
 ## @file
 # Makefile for the IPRT (IPRT).
 #
@@ -256,6 +256,10 @@ RuntimeR3_SOURCES += \
 	VBox/strformat-vbox.cpp \
 	VBox/RTAssertDoBreakpoint-vbox.cpp \
 	VBox/log-vbox.cpp
+ifneq ($(BUILD_TARGET),win)
+RuntimeR3_SOURCES += \
+	common/err/errmsgxpcom.cpp
+endif
 
 RuntimeR3_SOURCES.win = \
 	generic/rand-stubs-generic.cpp \
