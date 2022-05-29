@@ -1,5 +1,4 @@
-#define VBOX_WITH_STATISTICS
-/* $Id: TRPMAll.cpp 8985 2008-05-20 21:03:33Z vboxsync $ */
+/* $Id: TRPMAll.cpp 8994 2008-05-21 07:47:09Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
