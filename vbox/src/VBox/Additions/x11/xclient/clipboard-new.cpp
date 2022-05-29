@@ -1,4 +1,4 @@
-/** $Id: clipboard-new.cpp 7063 2008-02-20 21:11:32Z vboxsync $ */
+/** $Id: clipboard-new.cpp 7081 2008-02-21 19:08:47Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -41,9 +41,8 @@
 #include "clipboard.h"
 
 /* #define DEBUG_CLIPBOARD */
-#if !defined(DEBUG_CLIPBOARD) && !defined(LOG_TO_BACKDOOR)
-  /* Disabled unnecessary debug logging in the shared clipboard when
-     LOG_TO_BACKDOOR is defined (to be removed). */
+#if !defined(DEBUG_CLIPBOARD)
+  /* Disabled unnecessary debug logging in the shared clipboard. */
 # undef LogFlow
 # define LogFlow(a) do {} while (0)
 #endif
