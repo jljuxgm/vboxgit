@@ -1,4 +1,4 @@
-/* $Id: strformattype.cpp 7240 2008-03-03 14:20:19Z vboxsync $ */
+/* $Id: strformattype.cpp 7253 2008-03-04 00:46:45Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - IPRT String Formatter Extensions, Dynamic Types.
  */
@@ -290,7 +290,7 @@ RTDECL(int) RTStrFormatTypeRegister(const char *pszType, PFNRTSTRFORMATTYPE pfnH
             /* insert the new entry. */
             memset(&g_aTypes[i], 0, sizeof(g_aTypes[i]));
             memcpy(&g_aTypes[i].szType[0], pszType, cchType + 1);
-            g_aTypes[i].cchType = cchType;
+            g_aTypes[i].cchType = (uint8_t)cchType;
             g_aTypes[i].pvUser = pvUser;
 #ifdef IN_GC
             g_aTypes[i].offHandler = (intptr_t)pfnHandler - (intptr_t)&g_aTypes[0];
