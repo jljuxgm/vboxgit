@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 10451 2008-07-09 21:57:49Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 10485 2008-07-10 20:49:50Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1493,7 +1493,7 @@ INTNETR0DECL(int) INTNETR0Open(PINTNET pIntNet, PSUPDRVSESSION pSession, const c
             return VERR_NOT_IMPLEMENTED;
     }
 
-    AssertMsgReturn(fFlags & ~(INTNET_OPEN_FLAGS_PUBLIC), ("%#x\n", fFlags), VERR_INVALID_PARAMETER);
+    AssertMsgReturn(!(fFlags & ~(INTNET_OPEN_FLAGS_PUBLIC)), ("%#x\n", fFlags), VERR_INVALID_PARAMETER);
     AssertPtrReturn(phIf, VERR_INVALID_PARAMETER);
 
     /*
