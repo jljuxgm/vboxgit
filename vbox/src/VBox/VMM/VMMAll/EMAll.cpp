@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 7737 2008-04-04 11:13:40Z vboxsync $ */
+/* $Id: EMAll.cpp 7738 2008-04-04 11:15:41Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1692,9 +1692,6 @@ EMDECL(int) EMInterpretCRxWrite(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRe
 
         case USE_REG_CR4:
             oldval = CPUMGetGuestCR4(pVM);
-#ifndef IN_RING3
-            /** @todo is flipping of the X86_CR4_PAE bit handled correctly here? */
-#endif
             rc = CPUMSetGuestCR4(pVM, val32); AssertRC(rc);
             val32 = CPUMGetGuestCR4(pVM);
             if (    (oldval & (X86_CR4_PGE|X86_CR4_PAE|X86_CR4_PSE))
