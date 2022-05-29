@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10047 2008-07-01 00:36:19Z vboxsync $
+# $Id: Makefile.kmk 10055 2008-07-01 01:44:23Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -41,8 +41,8 @@ ifdef VBOX_WITH_INTEL_PXE
  include $(PATH_SUB_CURRENT)/PC/PXE/Makefile.kmk
 else
  # Subdir with complex makefile.
- SUBDIRS_LIBRARIES = PC/Etherboot-src
- SUBDIRS_CLEAN     = PC/Etherboot-src
+ SUBDIRS_LIBRARIES += PC/Etherboot-src
+ SUBDIRS_CLEAN     += PC/Etherboot-src
 endif
 
 #
