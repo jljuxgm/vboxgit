@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 6869 2008-02-08 15:47:35Z vboxsync $ */
+/* $Id: PGMPhys.cpp 7017 2008-02-19 13:38:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -473,12 +473,12 @@ PGMR3DECL(int) PGMR3PhysRomRegister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
      * Allocate the new ROM range and RAM range (if necessary).
      */
     PPGMROMRANGE pRomNew;
-    rc = MMHyperAlloc(pVM, RT_OFFSETOF(PGMROMRANGE, aPages[cPages]), 0, MM_TAG_PGM_PHYS, (void **)pRomNew);
+    rc = MMHyperAlloc(pVM, RT_OFFSETOF(PGMROMRANGE, aPages[cPages]), 0, MM_TAG_PGM_PHYS, (void **)&pRomNew);
     if (RT_SUCCESS(rc))
     {
         PPGMRAMRANGE pRamNew = NULL;
         if (!fRamExists)
-            rc = MMHyperAlloc(pVM, RT_OFFSETOF(PGMRAMRANGE, aPages[cPages]), sizeof(PGMPAGE), MM_TAG_PGM_PHYS, (void **)pRamNew);
+            rc = MMHyperAlloc(pVM, RT_OFFSETOF(PGMRAMRANGE, aPages[cPages]), sizeof(PGMPAGE), MM_TAG_PGM_PHYS, (void **)&pRamNew);
         if (RT_SUCCESS(rc))
         {
             pgmLock(pVM);
