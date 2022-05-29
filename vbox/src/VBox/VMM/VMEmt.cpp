@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 6300 2008-01-09 16:41:22Z vboxsync $ */
+/* $Id: VMEmt.cpp 6632 2008-01-30 21:39:46Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -104,7 +104,7 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
         else if (VM_FF_ISSET(pVM, VM_FF_RESET))
         {
             /*
-             * Service a delay reset request.
+             * Service a delayed reset request.
              */
             rc = VMR3Reset(pVM);
             VM_FF_CLEAR(pVM, VM_FF_RESET);
