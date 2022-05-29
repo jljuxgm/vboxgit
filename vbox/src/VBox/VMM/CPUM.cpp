@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 7982 2008-04-15 12:32:02Z vboxsync $ */
+/* $Id: CPUM.cpp 7987 2008-04-15 13:29:05Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -406,10 +406,14 @@ static int cpumR3CpuIdInit(PVM pVM)
     }
 
     /* Check if PAE was explicitely enabled by the user. */
-    bool fEnable = false;
-    int rc = CFGMR3QueryBool(CFGMR3GetRoot(pVM), "EnablePAE", &fEnable);
-    if (VBOX_SUCCESS(rc) && fEnable)
-        CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE);
+    PCFGMNODE pNode = CFGMR3GetChildF(CFGMR3GetRoot(pVM), "CPUM/CPUID");
+    if (pNode)
+    {
+        bool fEnable;
+        int rc = CFGMR3QueryBool(pNode, "EnablePAE", &fEnable);
+        if (VBOX_SUCCESS(rc) && fEnable)
+            CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE);
+    }
 
     /*
      * Log the cpuid and we're good.
