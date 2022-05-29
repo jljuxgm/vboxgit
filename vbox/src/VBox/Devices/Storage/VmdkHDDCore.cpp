@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 7846 2008-04-09 15:46:08Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 7896 2008-04-11 07:48:37Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -4337,9 +4337,10 @@ static void vmdkDump(void *pBackendData)
                     pImage->PCHSGeometry.cCylinders, pImage->PCHSGeometry.cHeads, pImage->PCHSGeometry.cSectors,
                     pImage->LCHSGeometry.cCylinders, pImage->LCHSGeometry.cHeads, pImage->LCHSGeometry.cSectors,
                     VMDK_BYTE2SECTOR(pImage->cbSize));
-        RTLogPrintf("Header: uuidCreation={%Vuuid}\n", pImage->ImageUuid);
-        RTLogPrintf("Header: uuidModification={%Vuuid}\n", pImage->ModificationUuid);
-        RTLogPrintf("Header: uuidParent={%Vuuid}\n", pImage->ParentUuid);
+        RTLogPrintf("Header: uuidCreation={%Vuuid}\n", &pImage->ImageUuid);
+        RTLogPrintf("Header: uuidModification={%Vuuid}\n", &pImage->ModificationUuid);
+        RTLogPrintf("Header: uuidParent={%Vuuid}\n", &pImage->ParentUuid);
+        RTLogPrintf("Header: uuidParentModification={%Vuuid}\n", &pImage->ParentModificationUuid);
     }
 }
 
