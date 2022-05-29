@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 7506 2008-03-20 09:58:19Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 7913 2008-04-11 12:54:53Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -168,7 +168,8 @@ static int rtMpCall(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2, RT_NT
     KAFFINITY Mask = KeQueryActiveProcessors();
 
     if (    enmCpuid == RT_NT_CPUID_SPECIFIC
-        &&  !(Mask & RT_BIT_64(idCpu)))
+        &&  (   idCpu >= 64
+             || !(Mask & RT_BIT_64(idCpu))))
         return VERR_CPU_NOT_FOUND;  /* can't distinguish between cpu not present or offline */
 
     /* KeFlushQueuedDpcs is not present in Windows 2000; import it dynamically so we can just fail this call. */
