@@ -1,4 +1,4 @@
-/* $Id: log.cpp 8670 2008-05-07 15:53:15Z vboxsync $ */
+/* $Id: log.cpp 8671 2008-05-07 15:58:25Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2128,9 +2128,9 @@ static DECLCALLBACK(size_t) rtLogOutputPrefixed(void *pv, const char *pachChars,
                     else
 #endif
                     {
-                        *psz++ = '0';
+                        *psz++ = '?';
                         *psz++ = '/';
-                        *psz++ = '0';
+                        *psz++ = '?';
                     }
                     *psz++ = ' ';                                                               /* +8 */
                 }
