@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 6557 2008-01-29 03:04:51Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 7437 2008-03-12 16:11:04Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -19,8 +19,9 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "VBGLR3Internal.h"
+#include <VBox/log.h>
 
+#include "VBGLR3Internal.h"
 
 /**
  * Cause any pending WaitEvent calls (VBOXGUEST_IOCTL_WAITEVENT) to return
@@ -77,4 +78,32 @@ VBGLR3DECL(int) VbglR3CtlFilterMask(uint32_t fOr, uint32_t fNot)
     Info.u32OrMask = fOr;
     Info.u32NotMask = fNot;
     return vbglR3DoIOCtl(VBOXGUEST_IOCTL_CTL_FILTER_MASK, &Info, sizeof(Info));
+}
+
+
+/**
+ * Report a change in the capabilities that we support to the host.
+ *
+ * @returns IPRT status value
+ * @param   u32OrMask  Capabilities which have been added
+ * @param   u32NotMask Capabilities which have been removed
+ */
+VBGLR3DECL(int) VbglR3SetGuestCaps(uint32_t u32OrMask, uint32_t u32NotMask)
+{
+    VMMDevReqGuestCapabilities2 vmmreqGuestCaps;
+    int rc = VINF_SUCCESS;
+
+    vmmdevInitRequest(&vmmreqGuestCaps.header, VMMDevReq_SetGuestCapabilities);
+    vmmreqGuestCaps.u32OrMask = u32OrMask;
+    vmmreqGuestCaps.u32NotMask = u32NotMask;
+    rc = vbglR3GRPerform(&vmmreqGuestCaps.header);
+#ifdef DEBUG
+    if (RT_SUCCESS(rc))
+        LogRel(("Successfully changed guest capabilities: or mask 0x%x, not mask 0x%x.\n",
+                u32OrMask, u32NotMask));
+    else
+        LogRel(("Failed to change guest capabilities: or mask 0x%x, not mask 0x%x.  rc = %Rrc.\n",
+                u32OrMask, u32NotMask, rc));
+#endif
+    return rc;
 }
