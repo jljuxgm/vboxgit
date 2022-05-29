@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 9266 2008-05-31 02:32:20Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 9271 2008-05-31 18:11:10Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -94,7 +94,7 @@ static void MyDisasYasmFormatter(PMYDISSTATE pState)
 
 #else
     size_t cch = DISFormatYasmEx(&pState->Cpu, szTmp, sizeof(szTmp),
-                                 DIS_FMT_FLAGS_ADDR_RIGHT | DIS_FMT_FLAGS_ADDR_COMMENT
+                                 DIS_FMT_FLAGS_STRICT | DIS_FMT_FLAGS_ADDR_RIGHT | DIS_FMT_FLAGS_ADDR_COMMENT
                                  | DIS_FMT_FLAGS_BYTES_RIGHT | DIS_FMT_FLAGS_BYTES_COMMENT | DIS_FMT_FLAGS_BYTES_SPACED,
                                  NULL, NULL);
     Assert(cch < sizeof(szTmp));
