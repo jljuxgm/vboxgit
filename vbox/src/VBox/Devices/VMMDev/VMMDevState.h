@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VMMDevState.h 8312 2008-04-22 21:04:44Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, Internal header.
  */
@@ -106,6 +106,11 @@ typedef struct VMMDevState
 
     /** Video acceleration status set by guest. */
     uint32_t u32VideoAccelEnabled;
+
+    /** Maximum guest resolution, width - a value of 0 mean no maximum */
+    uint32_t u32MaxGuestWidth;
+    /** Maximum guest resolution, height - a value of 0 mean no maximum */
+    uint32_t u32MaxGuestHeight;
 
     /** resolution change request */
     struct
