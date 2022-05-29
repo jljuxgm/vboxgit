@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 10323 2008-07-07 13:54:05Z vboxsync $ */
+/* $Id: PGMAllBth.h 10340 2008-07-07 16:58:59Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2353,7 +2353,7 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PGSTPD pPDSrc, RTGCUINTPTR G
         }
         else if (rc == VERR_PGM_POOL_FLUSHED)
         {
-            VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3); /** @todo no need to do global sync, right? */
+            VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
             return VINF_PGM_SYNC_CR3;
         }
         else

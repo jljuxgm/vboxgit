@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 10336 2008-07-07 16:07:40Z vboxsync $ */
+/* $Id: PGMAll.cpp 10340 2008-07-07 16:58:59Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -755,7 +755,8 @@ PGMDECL(int) PGMShwSyncPAEPDPtr(PVM pVM, RTGCUINTPTR GCPtr, PX86PDPE pGstPdpe, P
         if (rc == VERR_PGM_POOL_FLUSHED)
         {
             Assert(pVM->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL);
-            rc = pgmPoolSyncCR3(pVM);
+            VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
+            return VINF_PGM_SYNC_CR3;
         }
         AssertRCReturn(rc, rc);
     }
@@ -850,7 +851,8 @@ PGMDECL(int) PGMShwSyncLongModePDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PX86PML4E pGs
         if (rc == VERR_PGM_POOL_FLUSHED)
         {
             Assert(pVM->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL);
-            rc = pgmPoolSyncCR3(pVM);
+            VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
+            return VINF_PGM_SYNC_CR3;
         }
         AssertRCReturn(rc, rc);
     }
@@ -890,7 +892,8 @@ PGMDECL(int) PGMShwSyncLongModePDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PX86PML4E pGs
         if (rc == VERR_PGM_POOL_FLUSHED)
         {
             Assert(pVM->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL);
-            rc = pgmPoolSyncCR3(pVM);
+            VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
+            return VINF_PGM_SYNC_CR3;
         }
         AssertRCReturn(rc, rc);
     }
