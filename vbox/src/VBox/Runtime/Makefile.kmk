@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7189 2008-02-27 19:26:08Z vboxsync $
+# $Id: Makefile.kmk 7198 2008-02-28 14:02:09Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -990,6 +990,7 @@ RuntimeR0Drv_SOURCES.freebsd = \
 	common/err/RTErrConvertToErrno.cpp \
 	common/misc/thread.cpp \
 	common/string/memchr.asm \
+	common/string/memmove.asm \
 	common/string/strpbrk.cpp \
 	generic/RTAssertDoBreakpoint-generic.cpp \
 	generic/RTLogWriteDebugger-generic.cpp \
