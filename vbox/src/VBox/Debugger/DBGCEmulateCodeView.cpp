@@ -1,4 +1,4 @@
-/** $Id: DBGCEmulateCodeView.cpp 9834 2008-06-20 08:24:49Z vboxsync $ */
+/** $Id: DBGCEmulateCodeView.cpp 9840 2008-06-20 09:27:40Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -908,9 +908,23 @@ static DECLCALLBACK(int) dbgcCmdUnassemble(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, 
     {
         if (!DBGCVAR_ISPOINTER(pDbgc->DisasmPos.enmType))
         {
-            pDbgc->DisasmPos.enmType     = DBGCVAR_TYPE_GC_FAR;
-            pDbgc->SourcePos.u.GCFar.off = pDbgc->fRegCtxGuest ? CPUMGetGuestEIP(pVM) : CPUMGetHyperEIP(pVM);
-            pDbgc->SourcePos.u.GCFar.sel = pDbgc->fRegCtxGuest ? CPUMGetGuestCS(pVM)  : CPUMGetHyperCS(pVM);
+            PCPUMCTX pCtx;
+            int rc = CPUMQueryGuestCtxPtr(pVM, &pCtx);
+            AssertRC(rc);
+
+            if (    pDbgc->fRegCtxGuest
+                &&  CPUMIsGuestIn64BitCodeEx(pCtx))
+            {
+                pDbgc->DisasmPos.enmType    = DBGCVAR_TYPE_GC_FLAT;
+                pDbgc->SourcePos.u.GCFlat   = CPUMGetGuestRIP(pVM);
+            }
+            else
+            {
+                pDbgc->DisasmPos.enmType     = DBGCVAR_TYPE_GC_FAR;
+                pDbgc->SourcePos.u.GCFar.off = pDbgc->fRegCtxGuest ? CPUMGetGuestEIP(pVM) : CPUMGetHyperEIP(pVM);
+                pDbgc->SourcePos.u.GCFar.sel = pDbgc->fRegCtxGuest ? CPUMGetGuestCS(pVM)  : CPUMGetHyperCS(pVM);
+            }
+
             if (pDbgc->fRegCtxGuest)
                 fFlags |= DBGF_DISAS_FLAGS_CURRENT_GUEST;
             else
