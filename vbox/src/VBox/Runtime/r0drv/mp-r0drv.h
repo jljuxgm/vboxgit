@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv.h 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: mp-r0drv.h 9309 2008-06-02 15:11:59Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Internal Header.
  */
@@ -45,7 +45,7 @@ typedef DECLCALLBACK(void) FNMPWORKER(RTCPUID idCpu, void *pvUser1, void *pvUser
 typedef FNMPWORKER *PFNMPWORKER;
 
 /**
- * RTMpOn* argument packet used by the host specific callback 
+ * RTMpOn* argument packet used by the host specific callback
  * wrapper functions.
  */
 typedef struct RTMPARGS
@@ -58,5 +58,9 @@ typedef struct RTMPARGS
 } RTMPARGS;
 /** Pointer to a RTMpOn* argument packet. */
 typedef RTMPARGS *PRTMPARGS;
+
+int rtR0MpNotificationNativeInit(void *pvOS);
+void rtR0MpNotificationNativeTerm(void *pvOS);
+void rtMpNotificationDoCallbacks(RTMPEVENT enmEvent, RTCPUID idCpu);
 
 #endif
