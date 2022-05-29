@@ -1,4 +1,4 @@
-# $Id: Config.kmk 8432 2008-04-28 16:37:59Z vboxsync $
+# $Id: Config.kmk 8487 2008-04-30 01:23:41Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -295,7 +295,7 @@ ifeq ($(BUILD_TARGET),solaris)
  VBOX_WITH_ORIGIN = 1
 endif
 # Temporary switch for enabling / disabling the new USB code on Darwin.
-#VBOX_WITH_NEW_USB_CODE_ON_DARWIN=1
+VBOX_WITH_NEW_USB_CODE_ON_DARWIN=1
 
 #
 # Skip stuff.
@@ -2921,7 +2921,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 8432 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 8487 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
