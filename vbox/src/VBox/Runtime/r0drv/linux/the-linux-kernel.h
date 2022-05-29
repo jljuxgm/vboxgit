@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 6845 2008-02-07 12:50:50Z vboxsync $ */
+/* $Id: the-linux-kernel.h 6846 2008-02-07 13:02:15Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Include all necessary headers for the Linux kernel.
  */
@@ -66,7 +66,6 @@
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0)
 # include <linux/moduleparam.h>
 #endif
-#include <linux/vermagic.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/fs.h>
