@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 9340 2008-06-03 08:19:19Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 9342 2008-06-03 09:09:32Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -507,7 +507,7 @@ DISDECL(size_t) DISFormatYasmEx(PCDISCPUSTATE pCpu, char *pszBuf, size_t cchBuf,
             case OP_NOP:
                 if (pCpu->opcode == 0x90)
                     /* fine, fine */;
-                else if (pszFmt[sizeof("nop %Ev")] == '/' && pszFmt[sizeof("nop %Ev") + 1] == 'p')
+                else if (pszFmt[sizeof("nop %Ev") - 1] == '/' && pszFmt[sizeof("nop %Ev")] == 'p')
                     pszFmt = "prefetch %Eb";
                 else if (pCpu->opcode == 0x1f)
                 {
