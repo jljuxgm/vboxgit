@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3Lib.cpp 6020 2007-12-09 08:33:41Z vboxsync $ */
+/** $Id: VBoxGuestR3Lib.cpp 6118 2007-12-18 09:55:20Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions.
  */
@@ -32,7 +32,6 @@
 #include <iprt/assert.h>
 #include <iprt/mem.h>
 #include <VBox/VBoxGuest.h>
-
 
 /*******************************************************************************
 *   Global Variables                                                           *
@@ -96,6 +95,13 @@ VBGLR3DECL(int) VbglR3Init(void)
         }
     }
     g_File = hf;
+
+#elif defined(RT_OS_SOLARIS)
+    RTFILE File;
+    int rc = RTFileOpen(&File, VBOXGUEST_DEVICE_NAME, RTFILE_O_READWRITE);
+    if (RT_FAILURE(rc))
+        return rc;
+    g_File = File;
 
 #else 
     /* the default implemenation. */
