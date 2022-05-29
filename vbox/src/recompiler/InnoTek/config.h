@@ -1,6 +1,6 @@
-/* $Id: config.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: config.h 8168 2008-04-18 16:58:27Z vboxsync $ */
 /** @file
- * Innotek Config - Maintained by hand
+ * Sun config - Maintained by hand
  */
 
 /*
