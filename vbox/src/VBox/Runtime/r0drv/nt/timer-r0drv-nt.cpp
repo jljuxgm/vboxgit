@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-nt.cpp 9586 2008-06-11 00:36:56Z vboxsync $ */
+/* $Id: timer-r0drv-nt.cpp 9959 2008-06-26 14:26:46Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, NT.
  */
@@ -226,7 +226,7 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
                      ? &pTimer->aSubTimers[RTMpCpuIdToSetIndex(pTimer->idCpu)].NtDpc
                      : &pTimer->aSubTimers[0].NtDpc;
 
-    uint64_t u64Interval = pTimer->u64NanoInterval / 100000; /* This is ms, believe it or not. */
+    uint64_t u64Interval = pTimer->u64NanoInterval / 1000000; /* This is ms, believe it or not. */
     ULONG ulInterval = (ULONG)u64Interval;
     if (ulInterval != u64Interval)
         ulInterval = MAXLONG;
