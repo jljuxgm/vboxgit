@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 9255 2008-05-30 14:13:00Z vboxsync $ */
+/* $Id: CSAMInternal.h 9300 2008-06-02 13:30:12Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -173,8 +173,8 @@ typedef struct CSAM
 
     /* To keep track of dirty pages */
     uint32_t            cDirtyPages;
-    RTGCPTR32           pvDirtyBasePage[CSAM_MAX_DIRTY_PAGES];
-    RTGCPTR32           pvDirtyFaultPage[CSAM_MAX_DIRTY_PAGES];
+    RTRCPTR             pvDirtyBasePage[CSAM_MAX_DIRTY_PAGES];
+    RTRCPTR             pvDirtyFaultPage[CSAM_MAX_DIRTY_PAGES];
 
     /* To keep track of possible code pages */
     uint32_t            cPossibleCodePages;

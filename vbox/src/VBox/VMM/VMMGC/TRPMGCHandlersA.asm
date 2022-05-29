@@ -1,4 +1,4 @@
-; $Id: TRPMGCHandlersA.asm 8155 2008-04-18 15:16:47Z vboxsync $
+; $Id: TRPMGCHandlersA.asm 9300 2008-06-02 13:30:12Z vboxsync $
 ;; @file
 ; TRPM - Guest Context Trap Handlers
 ;
@@ -337,6 +337,12 @@ gt_SkipV86Entry:
     mov     dword [eax + TRPM.enmActiveType], TRPM_TRAP
     mov     edx, cr2                       ;; @todo Check how expensive cr2 reads are!
     mov     dword [eax + TRPM.uActiveCR2], edx
+
+%if GC_ARCH_BITS == 64
+    ; zero out the high dword
+    mov     dword [eax + TRPM.uActiveErrorCode + 4], 0
+    mov     dword [eax + TRPM.uActiveCR2 + 4], 0
+%endif
 
     ;
     ; Check if we're in Hypervisor when this happend.
@@ -807,6 +813,11 @@ ti_SkipV86Entry:
     dec     edx
     mov     [eax + TRPM.uActiveErrorCode], edx
     mov     [eax + TRPM.uActiveCR2], edx
+%if GC_ARCH_BITS == 64
+    ; zero out the high dword
+    mov     dword [eax + TRPM.uActiveErrorCode + 4], 0
+    mov     dword [eax + TRPM.uActiveCR2 + 4], 0
+%endif
 
     ;
     ; Check if we're in Hypervisor when this happend.
