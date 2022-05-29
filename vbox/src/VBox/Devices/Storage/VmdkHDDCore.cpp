@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 11444 2008-08-15 14:33:02Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 11484 2008-08-19 12:41:38Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -5181,6 +5181,8 @@ VBOXHDDBACKEND g_VmdkBackend =
     | VD_CAP_CREATE_SPLIT_2G | VD_CAP_DIFF | VD_CAP_FILE |VD_CAP_ASYNC,
     /* papszFileExtensions */
     s_apszVmdkFileExtensions,
+    /* paConfigInfo */
+    NULL,
     /* pfnCheckIfValid */
     vmdkCheckIfValid,
     /* pfnOpen */

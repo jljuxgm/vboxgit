@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 11157 2008-08-05 23:08:37Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 11484 2008-08-19 12:41:38Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -789,9 +789,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 STR_CONV();
                 rc = CFGMR3InsertString(pCfg,   "TargetName",   psz);                       RC_CHECK();
                 STR_FREE();
-
-                // @todo currently there is no Initiator name config.
-                rc = CFGMR3InsertString(pCfg,   "InitiatorName", "iqn.2008-04.com.sun.virtualbox.initiator"); RC_CHECK();
 
                 ULONG64 lun;
                 hrc = iSCSIDisk->COMGETTER(Lun)(&lun);                                      H();
