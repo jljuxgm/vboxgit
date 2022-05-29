@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 9535 2008-06-09 11:49:52Z vboxsync $ */
+/* $Id: HWVMXR0.h 10502 2008-07-11 09:31:15Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -131,9 +131,8 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx);
  * @returns VBox status code.
  * @param   pVM         The VM to operate on.
  * @param   pCtx        Guest context
- * @param   pCpu        CPU info struct
  */
-HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx, PHWACCM_CPUINFO pCpu);
+HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx);
 
 
 #define VMX_WRITE_SELREG(REG, reg) \

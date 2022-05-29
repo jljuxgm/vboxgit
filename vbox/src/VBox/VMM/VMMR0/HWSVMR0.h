@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 9421 2008-06-05 13:17:00Z vboxsync $ */
+/* $Id: HWSVMR0.h 10502 2008-07-11 09:31:15Z vboxsync $ */
 /** @file
  * HWACCM AMD-V - Internal header file.
  */
@@ -112,9 +112,8 @@ HWACCMR0DECL(int) SVMR0SetupVM(PVM pVM);
  * @returns VBox status code.
  * @param   pVM         The VM to operate on.
  * @param   pCtx        Guest context
- * @param   pCpu        CPU info struct
  */
-HWACCMR0DECL(int) SVMR0RunGuestCode(PVM pVM, CPUMCTX *pCtx, PHWACCM_CPUINFO pCpu);
+HWACCMR0DECL(int) SVMR0RunGuestCode(PVM pVM, CPUMCTX *pCtx);
 
 
 /**

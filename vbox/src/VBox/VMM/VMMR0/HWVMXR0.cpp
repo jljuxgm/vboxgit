@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 10473 2008-07-10 15:02:53Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 10502 2008-07-11 09:31:15Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1021,9 +1021,8 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
  * @returns VBox status code.
  * @param   pVM         The VM to operate on.
  * @param   pCtx        Guest context
- * @param   pCpu        CPU info struct
  */
-HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx, PHWACCM_CPUINFO pCpu)
+HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx)
 {
     int         rc = VINF_SUCCESS;
     RTCCUINTREG val, valShadow;
@@ -1035,8 +1034,6 @@ HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx, PHWACCM_CPUINFO pCpu
     unsigned    cResume = 0;
 
     Log2(("\nE"));
-
-    AssertReturn(pCpu->fConfigured, VERR_EM_INTERNAL_ERROR);
 
     STAM_PROFILE_ADV_START(&pVM->hwaccm.s.StatEntry, x);
 
