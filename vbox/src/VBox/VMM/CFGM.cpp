@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 5517 2007-10-26 15:40:47Z vboxsync $ */
+/* $Id: CFGM.cpp 5909 2007-12-02 20:32:08Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  *
@@ -1677,9 +1677,6 @@ CFGMR3DECL(int) CFGMR3QueryS32(PCFGMNODE pNode, const char *pszName, int32_t *pi
     {
         if (   !(u64 & 0xffffffff80000000ULL)
             ||  (u64 & 0xffffffff80000000ULL) == 0xffffffff80000000ULL)
-
-        if (((uint32_t)(u64 >> 32) + 1) <= 1)
-            *pi32 = (int32_t)u64;
         else
             rc = VERR_CFGM_INTEGER_TOO_BIG;
     }
