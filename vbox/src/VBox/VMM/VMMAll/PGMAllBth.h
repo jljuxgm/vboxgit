@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 7715 2008-04-03 09:03:01Z vboxsync $ */
+/* $Id: PGMAllBth.h 7718 2008-04-03 11:26:16Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -538,6 +538,8 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
                         STAM_COUNTER_INC(&pVM->pgm.s.StatTrap0eWPEmulR3);
                     return rc;
                 }
+                else
+                    AssertFailed(); /* This shouldn't happen; the above check is paranoid. */
             }
 
 # ifdef PGM_OUT_OF_SYNC_IN_GC

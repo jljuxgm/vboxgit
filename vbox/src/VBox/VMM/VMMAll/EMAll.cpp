@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 7469 2008-03-17 08:32:03Z vboxsync $ */
+/* $Id: EMAll.cpp 7718 2008-04-03 11:26:16Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1658,7 +1658,7 @@ EMDECL(int) EMInterpretCRxWrite(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRe
         {
         case USE_REG_CR0:
             oldval = CPUMGetGuestCR0(pVM);
-#ifndef IN_RING3
+#ifdef IN_GC
             /* CR0.WP and CR0.AM changes require a reschedule run in ring 3. */
             if (    (val32 & (X86_CR0_WP | X86_CR0_AM)) 
                 !=  (oldval & (X86_CR0_WP | X86_CR0_AM)))
