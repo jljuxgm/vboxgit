@@ -1,4 +1,4 @@
-/* $Id: tstTimer.cpp 9444 2008-06-05 18:08:17Z vboxsync $ */
+/* $Id: tstTimer.cpp 10941 2008-07-29 16:53:12Z vboxsync $ */
 /** @file
  * IPRT Testcase - Timers.
  */
@@ -139,7 +139,8 @@ int main()
         aTests[i].cLower = (aTests[i].uMilliesWait - aTests[i].uMilliesWait / 10) / aTests[i].uMilliesInterval;
         aTests[i].cUpper = (aTests[i].uMilliesWait + aTests[i].uMilliesWait / 10) / aTests[i].uMilliesInterval;
 
-        RTPrintf("tstTimer: TESTING - %d ms interval, %d ms wait, expects %d-%d ticks.\n",
+        RTPrintf("\n"
+                 "tstTimer: TESTING - %d ms interval, %d ms wait, expects %d-%d ticks.\n",
                  aTests[i].uMilliesInterval, aTests[i].uMilliesWait, aTests[i].cLower, aTests[i].cUpper);
 
         /*
