@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 6029 2007-12-09 21:51:13Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 6136 2007-12-18 17:09:02Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -92,7 +92,7 @@ extern int VBoxServiceError(const char *pszFormat, ...);
 extern void VBoxServiceVerbose(int iLevel, const char *pszFormat, ...);
 extern int VBoxServiceArgUInt32(int argc, char **argv, const char *psz, int *pi, uint32_t *pu32, uint32_t u32Min, uint32_t u32Max);
 
-#if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS)
+#if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS) || defined(RT_OS_SOLARIS)
 extern int daemon(int, int);
 #endif
 

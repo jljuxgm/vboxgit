@@ -1,4 +1,4 @@
-/** $Id: VBoxService.cpp 6118 2007-12-18 09:55:20Z vboxsync $ */
+/** $Id: VBoxService.cpp 6136 2007-12-18 17:09:02Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -46,9 +46,6 @@ int g_cVerbosity = 0;
 uint32_t g_DefaultInterval = 0;
 /** Shutdown the main thread. (later, for signals) */
 bool volatile g_fShutdown;
-#ifndef RT_OS_OS2
-extern int daemon(int nochdir, int noclose);
-#endif
 
 /**
  * The details of the services that has been compiled in.
