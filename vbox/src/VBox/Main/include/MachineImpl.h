@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 6449 2008-01-22 16:13:28Z vboxsync $ */
+/* $Id: MachineImpl.h 6965 2008-02-14 18:53:50Z vboxsync $ */
 
 /** @file
  *
@@ -462,14 +462,14 @@ public:
     STDMETHOD(COMGETTER(DVDDrive))(IDVDDrive **dvdDrive);
     STDMETHOD(COMGETTER(FloppyDrive))(IFloppyDrive **floppyDrive);
     STDMETHOD(COMGETTER(AudioAdapter))(IAudioAdapter **audioAdapter);
-    STDMETHOD(COMGETTER(USBController))(IUSBController * *a_ppUSBController);
-    STDMETHOD(COMGETTER(SettingsFilePath))(BSTR *filePath);
-    STDMETHOD(COMGETTER(SettingsModified))(BOOL *modified);
-    STDMETHOD(COMGETTER(SessionState))(SessionState_T *aSessionState);
-    STDMETHOD(COMGETTER(SessionType))(BSTR *aSessionType);
-    STDMETHOD(COMGETTER(SessionPid))(ULONG *aSessionPid);
-    STDMETHOD(COMGETTER(State))(MachineState_T *machineState);
-    STDMETHOD(COMGETTER(LastStateChange))(LONG64 *aLastStateChange);
+    STDMETHOD(COMGETTER(USBController)) (IUSBController * *aUSBController);
+    STDMETHOD(COMGETTER(SettingsFilePath)) (BSTR *aFilePath);
+    STDMETHOD(COMGETTER(SettingsModified)) (BOOL *aModified);
+    STDMETHOD(COMGETTER(SessionState)) (SessionState_T *aSessionState);
+    STDMETHOD(COMGETTER(SessionType)) (BSTR *aSessionType);
+    STDMETHOD(COMGETTER(SessionPid)) (ULONG *aSessionPid);
+    STDMETHOD(COMGETTER(State)) (MachineState_T *machineState);
+    STDMETHOD(COMGETTER(LastStateChange)) (LONG64 *aLastStateChange);
     STDMETHOD(COMGETTER(StateFilePath)) (BSTR *aStateFilePath);
     STDMETHOD(COMGETTER(LogFolder)) (BSTR *aLogFolder);
     STDMETHOD(COMGETTER(CurrentSnapshot)) (ISnapshot **aCurrentSnapshot);
