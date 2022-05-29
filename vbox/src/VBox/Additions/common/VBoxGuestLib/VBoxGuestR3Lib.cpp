@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 7539 2008-03-25 13:19:36Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 7602 2008-03-27 17:25:37Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -37,6 +37,7 @@
 #include <iprt/assert.h>
 #include <iprt/thread.h>
 #include <VBox/VBoxGuest.h>
+#include <VBox/log.h>
 #include "VBGLR3Internal.h"
 
 #ifdef VBOX_VBGLR3_XFREE86
@@ -160,6 +161,16 @@ VBGLR3DECL(int) VbglR3Init(void)
     g_File = File;
 
 #endif
+
+    /* Create release logger */
+    PRTLOGGER loggerRelease;
+    static const char * const s_apszGroups[] = VBOX_LOGGROUP_NAMES;
+    int rrc = RTLogCreate(&loggerRelease, 0, NULL, "VBOXGUEST_RELEASE_LOG",
+                         RT_ELEMENTS(s_apszGroups), &s_apszGroups[0],
+                         RTLOGDEST_USER, "VBox.log");
+    /* This may legitimately fail if we are using the mini-runtime. */
+    if (RT_SUCCESS(rrc))
+        RTLogRelSetDefaultInstance(loggerRelease);
 
     return VINF_SUCCESS;
 }

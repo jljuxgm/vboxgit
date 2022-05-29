@@ -1,4 +1,4 @@
-/* $Id: logbackdoor-redirect.cpp 6551 2008-01-29 01:55:47Z vboxsync $ */
+/* $Id: logbackdoor-redirect.cpp 7602 2008-03-27 17:25:37Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - RTLog stubs for the stripped down IPRT used by 
  *                       RuntimeGuestR3Shared (X11), output is redirected
@@ -30,6 +30,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <VBox/log.h>
+#include <VBox/err.h>
 
 
 
@@ -46,6 +47,11 @@ RTDECL(PRTLOGGER) RTLogDefaultInstance(void)
     return NULL;
 }
 
+/* All logging goes to the backdoor logger anyway. */
+RTDECL(PRTLOGGER) RTLogRelSetDefaultInstance(PRTLOGGER pLogger)
+{
+    return NULL;
+}
 
 RTDECL(void) RTLogRelPrintf(const char *pszFormat, ...)
 {
@@ -84,3 +90,10 @@ RTDECL(void) RTLogFlush(PRTLOGGER)
 {
 }
 
+/* Do nothing. */
+RTDECL(int) RTLogCreate(PRTLOGGER *ppLogger, RTUINT fFlags, const char *pszGroupSettings,
+                        const char *pszEnvVarBase, unsigned cGroups, const char * const * papszGroups,
+                        RTUINT fDestFlags, const char *pszFilenameFmt, ...)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
