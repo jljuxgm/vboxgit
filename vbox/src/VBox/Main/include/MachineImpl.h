@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: MachineImpl.h 9883 2008-06-23 15:02:47Z vboxsync $ */
 
 /** @file
  *
@@ -515,6 +515,8 @@ public:
     STDMETHOD(RemoveSharedFolder) (INPTR BSTR aName);
     STDMETHOD(CanShowConsoleWindow) (BOOL *aCanShow);
     STDMETHOD(ShowConsoleWindow) (ULONG64 *aWinId);
+    STDMETHOD(GetConfigRegistryValue) (INPTR BSTR aKey, BSTR *aValue);
+    STDMETHOD(SetConfigRegistryValue) (INPTR BSTR aKey, INPTR BSTR aValue);
 
     // public methods only for internal purposes
 
