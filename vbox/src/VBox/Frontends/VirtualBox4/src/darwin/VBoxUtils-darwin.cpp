@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 9438 2008-06-05 16:13:11Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 10230 2008-07-04 14:10:42Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -32,6 +32,7 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QApplication>
+#include <QToolBar>
 
 #if QT_VERSION < 0x040400
 extern void qt_mac_set_menubar_icons(bool b);
@@ -99,6 +100,17 @@ CGImageRef darwinToCGImageRef (const char *aSource)
     QPixmap qpm (QString(":/") + aSource);
     Assert (!qpm.isNull());
     return ::darwinToCGImageRef (&qpm);
+}
+
+void darwinSetShowToolBarButton (QToolBar *aToolBar, bool aShow)
+{
+    QWidget *parent = aToolBar->parentWidget();
+    if (parent)
+    {
+        int attr[] = { kHIWindowBitToolbarButton, 0 };
+        int err = HIWindowChangeAttributes (::darwinToWindowRef (parent), aShow ? attr:NULL, aShow ? NULL:attr);
+        AssertCarbonOSStatus (err);
+    }
 }
 
 /* Proxy icon creation */
