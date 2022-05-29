@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 7573 2008-03-26 12:44:09Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 7574 2008-03-26 12:44:48Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -250,8 +250,8 @@ HWACCMR0DECL(int) HWACCMR0Init()
                         HWACCMR0Globals.lLastError = VERR_VMX_ILLEGAL_FEATURE_CONTROL_MSR;
                     }
                 }
-                else
 #ifdef LOG_ENABLED
+                else
                     SUPR0Printf("HWACCMR0InitCPU failed with rc=%d\n", HWACCMR0Globals.lLastError);
 #endif
             }
