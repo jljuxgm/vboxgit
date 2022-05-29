@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5831 2007-11-26 12:22:44Z vboxsync $
+# $Id: Config.kmk 5835 2007-11-26 15:48:35Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -188,6 +188,8 @@ VBOX_WITH_VBOXSDL = 1
 VBOX_WITH_VBOXBFE = 1
 # the Qt GUI
 VBOX_WITH_QTGUI = 1
+# the headless frontend
+VBOX_WITH_HEADLESS = 1
 ## the Direct Framebuffer GUI
 #VBOX_WITH_VBOXFB = 1
 # Enable the debugger.
@@ -2652,7 +2654,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5831 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5835 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(USERNAME),bird) # Wastes nearly half a second on windows, very annoying. TODO: $(which ).
   ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
