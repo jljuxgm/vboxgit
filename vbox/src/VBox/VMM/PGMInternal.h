@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 7624 2008-03-28 10:47:42Z vboxsync $ */
+/* $Id: PGMInternal.h 7625 2008-03-28 11:04:05Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -919,9 +919,11 @@ typedef struct PGMRAMRANGE
     /** The range description. */
     R3PTRTYPE(const char *)             pszDesc;
 
-#ifdef VBOX_WITH_NEW_PHYS_CODE
     /** Padding to make aPage aligned on sizeof(PGMPAGE). */
+#ifdef VBOX_WITH_NEW_PHYS_CODE
     uint32_t                            au32Reserved[2];
+#elif HC_ARCH_BITS == 32
+    uint32_t                            au32Reserved[1];
 #endif
 
     /** Array of physical guest page tracking structures. */
