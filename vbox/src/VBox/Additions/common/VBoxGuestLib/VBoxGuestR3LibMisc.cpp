@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 6506 2008-01-25 10:23:46Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 6531 2008-01-28 16:40:23Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -78,39 +78,4 @@ VBGLR3DECL(int) VbglR3CtlFilterMask(uint32_t fOr, uint32_t fNot)
     Info.u32OrMask = fOr;
     Info.u32NotMask = fNot;
     return vbglR3DoIOCtl(VBOXGUEST_IOCTL_CTL_FILTER_MASK, &Info, sizeof(Info));
-}
-
-/**
- * Query the last display change request.
- *
- * @returns iprt status value
- * @param   pcx         Where to store the horizontal pixel resolution (0 = do not change).
- * @param   pcy         Where to store the vertical pixel resolution (0 = do not change).
- * @param   pcBits      Where to store the bits per pixel (0 = do not change).
- * @param   fEventAck   Flag that the request is an acknowlegement for the
- *                      VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST.
- *                      Values:
- *                          0                                   - just querying,
- *                          VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST - event acknowledged.
- * @param   iDisplay    0 for primary display, 1 for the first secondary, etc.
- * @todo move to VBoxGuestR3LibVideo.cpp
- */
-VBGLR3DECL(int) VbglR3GetDisplayChangeRequest(uint32_t *pcx, uint32_t *pcy, uint32_t *pcBits,
-                                              uint32_t fEventAck, uint32_t iDisplay)
-{
-    VMMDevDisplayChangeRequest2 Req;
-    vmmdevInitRequest(&Req.header, VMMDevReq_GetDisplayChangeRequest2);
-    Req.xres = 0;
-    Req.yres = 0;
-    Req.bpp = 0;
-    Req.eventAck = fEventAck;
-    Req.display = iDisplay;
-    int rc = vbglR3GRPerform(&Req.header);
-    if (RT_SUCCESS(rc))
-    {
-        *pcx = Req.xres;
-        *pcy = Req.yres;
-        *pcBits = Req.bpp;
-    }
-    return rc;
 }
