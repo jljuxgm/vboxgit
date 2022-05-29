@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 7746 2008-04-04 14:34:58Z vboxsync $ */
+/* $Id: USBProxyService.h 7850 2008-04-09 16:46:16Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -269,7 +269,7 @@ public:
     USBProxyServiceDarwin (Host *aHost);
     ~USBProxyServiceDarwin();
 
-#ifdef VBOX_WITH_USBFILTER
+#ifdef VBOX_WITH_NEW_USB_CODE_ON_DARWIN
     virtual void *insertFilter (PCUSBFILTER aFilter);
     virtual void removeFilter (void *aId);
 #endif
@@ -295,7 +295,7 @@ private:
     /** A hack to work around the problem with the usb device enumeration
      * not including newly attached devices. */
     bool mWaitABitNextTime;
-#ifndef VBOX_WITH_USBFILTER
+#ifndef VBOX_WITH_NEW_USB_CODE_ON_DARWIN
     /** Whether we've got a fake async event and should return without entering the runloop. */
     bool volatile mFakeAsync;
 #endif
