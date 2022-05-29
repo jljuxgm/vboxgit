@@ -1,4 +1,4 @@
-; $Id: CPUMAllA.asm 10647 2008-07-15 12:07:24Z vboxsync $
+; $Id: CPUMAllA.asm 10648 2008-07-15 12:15:41Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -286,7 +286,7 @@ BEGINPROC   CPUMSaveFPUAsm
 ENDPROC CPUMSaveFPUAsm
 
 ;;
-; Saves the guest's XMM state
+; Restores the guest's XMM state
 ;
 ; @param    pCtx  x86:[esp+4] GCC:rdi MSC:rcx     CPUMCTX pointer
 ;
