@@ -1,4 +1,4 @@
-/* $Id: uuid-win.cpp 9741 2008-06-16 22:46:46Z vboxsync $ */
+/* $Id: uuid-win.cpp 9742 2008-06-16 22:49:19Z vboxsync $ */
 /** @file
  * IPRT - UUID, Windows implementation.
  */
@@ -63,6 +63,7 @@ RTDECL(bool)  RTUuidIsNull(PCRTUUID pUuid)
 RTDECL(int)  RTUuidCompare(PCRTUUID pUuid1, PCRTUUID pUuid2)
 {
     /* check params */
+    /** @todo this isn't working the same way as uuid-generic.cpp. */
     AssertPtrReturn(pUuid1, -1);
     AssertPtrReturn(pUuid1, 1);
 
