@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 8085 2008-04-17 09:54:16Z vboxsync $ */
+/* $Id: DevPCNet.cpp 8087 2008-04-17 10:11:42Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -192,8 +192,6 @@ struct PCNetState_st
     bool                                fLinkUp;
     /** If set the link is temporarily down because of a saved state load. */
     bool                                fLinkTempDown;
-    /** True if we signal the guest that RX packets are missing. */
-    bool                                fSignalRxMiss;
 
     /** Number of times we've reported the link down. */
     RTUINT                              cLinkDownReported;
@@ -220,7 +218,9 @@ struct PCNetState_st
     RTSEMEVENT                          hEventOutOfRxSpace;
     /** We are waiting/about to start waiting for more receive buffers. */
     bool volatile                       fMaybeOutOfSpace;
-    uint8_t                             Alignment5[HC_ARCH_BITS == 64 ? 7 : 3];
+    /** True if we signal the guest that RX packets are missing. */
+    bool                                fSignalRxMiss;
+    uint8_t                             Alignment5[HC_ARCH_BITS == 64 ? 6 : 2];
 
 #ifdef PCNET_NO_POLLING
     RTGCPHYS32                          TDRAPhysOld;
