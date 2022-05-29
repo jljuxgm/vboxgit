@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7964 2008-04-14 17:56:52Z vboxsync $
+# $Id: Makefile.kmk 7992 2008-04-15 13:53:12Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -176,6 +176,7 @@ VBoxSVC_LIBS.solaris = \
 
 VBoxSVC_SOURCES = \
 	Logging.cpp \
+	AutoLock.cpp \
 	Matching.cpp \
 	VirtualBoxBase.cpp \
 	VirtualBoxErrorInfoImpl.cpp \
@@ -349,6 +350,7 @@ VBoxC_LIBS += \
 
 VBoxC_SOURCES = \
 	Logging.cpp \
+	AutoLock.cpp \
 	VBoxDll.cpp \
 	Version.cpp \
 	USBDeviceImpl.cpp \

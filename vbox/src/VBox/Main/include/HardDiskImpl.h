@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 7207 2008-02-28 18:43:08Z vboxsync $ */
+/* $Id: HardDiskImpl.h 7992 2008-04-15 13:53:12Z vboxsync $ */
 
 /** @file
  *
@@ -116,7 +116,7 @@ public:
     ComObjPtr <HardDisk> parent() const { return static_cast <HardDisk *> (mParent); }
 
     /** Shortcut to #dependentChildrenLock() */
-    AutoLock::Handle &childrenLock() const { return dependentChildrenLock(); }
+    RWLockHandle *childrenLock() const { return dependentChildrenLock(); }
 
     /**
      *  Shortcut to #dependentChildren().

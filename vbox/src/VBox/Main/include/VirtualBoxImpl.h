@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 7387 2008-03-09 23:54:02Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 7992 2008-04-15 13:53:12Z vboxsync $ */
 
 /** @file
  *
@@ -466,7 +466,7 @@ private:
     const RTTHREAD mAsyncEventThread;
     EventQueue * const mAsyncEventQ;
     /** Lock for calling EventQueue->post() */
-    AutoLock::Handle mAsyncEventQLock;
+    RWLockHandle mAsyncEventQLock;
 
     static Bstr sVersion;
     static Bstr sSettingsFormatVersion;
