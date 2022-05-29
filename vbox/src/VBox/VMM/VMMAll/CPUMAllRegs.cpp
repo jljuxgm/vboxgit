@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 9661 2008-06-12 13:11:40Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 9675 2008-06-13 09:49:54Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -886,6 +886,16 @@ CPUMDECL(int) CPUMGetGuestDRx(PVM pVM, uint32_t iReg, uint64_t *pValue)
 CPUMDECL(uint64_t) CPUMGetGuestEFER(PVM pVM)
 {
     return pVM->cpum.s.Guest.msrEFER;
+}
+
+CPUMDECL(uint64_t) CPUMGetGuestFSBASE(PVM pVM)
+{
+    return pVM->cpum.s.Guest.msrFSBASE;
+}
+
+CPUMDECL(uint64_t) CPUMGetGuestGSBASE(PVM pVM)
+{
+    return pVM->cpum.s.Guest.msrGSBASE;
 }
 
 /**
