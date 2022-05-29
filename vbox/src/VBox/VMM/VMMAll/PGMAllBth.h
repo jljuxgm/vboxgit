@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 10340 2008-07-07 16:58:59Z vboxsync $ */
+/* $Id: PGMAllBth.h 10343 2008-07-07 17:24:00Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -119,7 +119,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
     /* Quick check for a valid guest trap. */
     if (!pPDSrc)
     {
-        LogFlow(("Trap0eHandler: guest PDPTR not present CR3=%VGp\n", (CPUMGetGuestCR3(pVM) & X86_CR3_PAGE_MASK)));
+        LogFlow(("Trap0eHandler: guest PDPTR %d not present CR3=%VGp\n", (pvFault >> X86_PML4_SHIFT) & X86_PML4_MASK, (CPUMGetGuestCR3(pVM) & X86_CR3_PAGE_MASK)));
         STAM_STATS({ pVM->pgm.s.CTXSUFF(pStatTrap0eAttribution) = &pVM->pgm.s.StatTrap0eGuestTrap; });
         TRPMSetErrorCode(pVM, uErr);
         return VINF_EM_RAW_GUEST_TRAP;
