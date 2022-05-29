@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9495 2008-06-06 16:36:40Z vboxsync $
+# $Id: Makefile.kmk 9524 2008-06-09 08:33:03Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -132,6 +132,8 @@ ifeq ($(KBUILD_TARGET),win)
  endif
 else ifeq ($(KBUILD_TARGET),linux)
  # when nothing special is defined, Q_OS_UNIX/Q_WS_X11 will be set
+else ifeq ($(KBUILD_TARGET),darwin)
+  VBOX_MOC4    += -D__APPLE__ -D__GNUC__
 else
  $(error Port me!)
 endif
