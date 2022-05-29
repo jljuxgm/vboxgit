@@ -1,4 +1,4 @@
-/* $Id: PATMGC.cpp 9228 2008-05-29 15:23:15Z vboxsync $ */
+/* $Id: PATMGC.cpp 9290 2008-06-02 11:46:16Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -118,7 +118,7 @@ PATMGCDECL(int) PATMGCHandleWriteToPatchPage(PVM pVM, PCPUMCTXCORE pRegFrame, RT
             uint32_t cb;
 
             LogFlow(("PATMHandleWriteToPatchPage: Interpret %x accessing %VRv\n", pRegFrame->eip, GCPtr));
-            int rc = EMInterpretInstruction(pVM, pRegFrame, (RTGCPTR)GCPtr, &cb);
+            int rc = EMInterpretInstruction(pVM, pRegFrame, (RTGCPTR)(RTRCUINTPTR)GCPtr, &cb);
             if (rc == VINF_SUCCESS)
             {
                 STAM_COUNTER_INC(&pVM->patm.s.StatPatchWriteInterpreted);
