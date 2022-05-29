@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 10036 2008-06-30 17:15:13Z vboxsync $ */
+/* $Id: PGMShw.h 10065 2008-07-01 10:15:40Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -140,8 +140,10 @@ PGM_SHW_DECL(int, Enter)(PVM pVM)
 #if PGM_SHW_TYPE == PGM_TYPE_NESTED
     Assert(HWACCMIsNestedPagingActive(pVM));
 
+    Log(("Enter nested shadow paging mode: root %VHv phys %VHp\n", pVM->pgm.s.pHCNestedRoot, pVM->pgm.s.HCPhysNestedRoot));
     /* In non-nested mode we allocate the PML4 page on-demand; in nested mode we just use our fixed nested paging root. */
-    pVM->pgm.s.pHCPaePML4 = (PX86PML4)pVM->pgm.s.pHCNestedRoot;
+    pVM->pgm.s.pHCPaePML4    = (PX86PML4)pVM->pgm.s.pHCNestedRoot;
+    pVM->pgm.s.HCPhysPaePML4 = pVM->pgm.s.HCPhysNestedRoot;
 #endif
     return VINF_SUCCESS;
 }
@@ -171,7 +173,9 @@ PGM_SHW_DECL(int, Exit)(PVM pVM)
 {
 #if PGM_SHW_TYPE == PGM_TYPE_NESTED
     Assert(HWACCMIsNestedPagingActive(pVM));
-    pVM->pgm.s.pHCPaePML4 = 0;
+    pVM->pgm.s.pHCPaePML4    = 0;
+    pVM->pgm.s.HCPhysPaePML4 = 0;
+    Log(("Leave nested shadow paging mode\n"));
 #endif
 
     return VINF_SUCCESS;
