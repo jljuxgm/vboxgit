@@ -1,4 +1,4 @@
-/* $Id: log.cpp 9244 2008-05-30 11:50:49Z vboxsync $ */
+/* $Id: log.cpp 10646 2008-07-15 12:07:17Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -532,7 +532,7 @@ RTDECL(int) RTLogCreateEx(PRTLOGGER *ppLogger, RTUINT fFlags, const char *pszGro
  * The instance is flushed and all output destinations closed (where applicable).
  *
  * @returns iprt status code.
- * @param   pLogger             The logger instance which close destroyed.
+ * @param   pLogger             The logger instance which close destroyed. NULL is fine.
  */
 RTDECL(int) RTLogDestroy(PRTLOGGER pLogger)
 {
@@ -543,6 +543,8 @@ RTDECL(int) RTLogDestroy(PRTLOGGER pLogger)
     /*
      * Validate input.
      */
+    if (!pLogger)
+        return VINF_SUCCESS;
     AssertReturn(VALID_PTR(pLogger), VERR_INVALID_POINTER);
     AssertReturn(pLogger->u32Magic == RTLOGGER_MAGIC, VERR_INVALID_MAGIC);
 
