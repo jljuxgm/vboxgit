@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 9858 2008-06-20 14:40:30Z vboxsync $ */
+/* $Id: PGMAllShw.h 9893 2008-06-24 15:56:57Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -79,7 +79,7 @@
 # define SHW_PDPT_MASK          X86_PDPT_MASK_AMD64
 # define SHW_PDPE_PG_MASK       X86_PDPE_PG_MASK
 # define SHW_TOTAL_PD_ENTRIES   (X86_PG_AMD64_ENTRIES*X86_PG_AMD64_PDPE_ENTRIES)
-# define SHW_POOL_ROOT_IDX      PGMPOOL_IDX_PAE_PD
+# define SHW_POOL_ROOT_IDX      PGMPOOL_IDX_PAE_PD      /* do not use! exception is real mode & protected mode without paging. */
 #else /* 32 bits PAE mode */
 # define SHW_PDPT_SHIFT         X86_PDPT_SHIFT
 # define SHW_PDPT_MASK          X86_PDPT_MASK_PAE
