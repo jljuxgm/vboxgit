@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6417 2008-01-21 16:45:17Z vboxsync $
+# $Id: Config.kmk 6439 2008-01-22 12:15:21Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1090,7 +1090,7 @@ ifdef VBOX_SIGNING_MODE
   else if1of ($(VBOX_SIGNING_MODE),release development)
    VBOX_CROSS_CERTIFICATE_FILE ?= $(VBOX_PATH_SELFSIGN)/MSCV-GlobalSign.cer
    VBOX_CROSS_CERTIFICATE_FILE_ARGS ?= /ac "$(VBOX_CROSS_CERTIFICATE_FILE)"
-   VBOX_CERTIFICATE_SUBJECT_NAME ?= InnoTek Systemberatung GmbH
+   VBOX_CERTIFICATE_SUBJECT_NAME ?= innotek GmbH
    VBOX_CERTIFICATE_SUBJECT_NAME_ARGS ?= /n "$(VBOX_CERTIFICATE_SUBJECT_NAME)"
    VBOX_CERTIFICATE_STORE ?= my
    VBOX_CERTIFICATE_STORE_ARGS ?= /s "$(VBOX_CERTIFICATE_STORE)"
@@ -2831,7 +2831,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6417 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6439 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
