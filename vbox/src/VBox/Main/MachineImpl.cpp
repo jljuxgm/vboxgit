@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 8573 2008-05-05 13:13:19Z vboxsync $ */
+/* $Id: MachineImpl.cpp 8579 2008-05-05 13:54:26Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4408,7 +4408,7 @@ HRESULT Machine::loadHardware (const settings::Key &aNode)
             /* slot number (required) */
             /* slot unicity is guaranteed by XML Schema */
             uint32_t slot = (*it).value <uint32_t> ("slot");
-            AssertBreakVoid (slot < ELEMENTS (mNetworkAdapters));
+            AssertBreak (slot < ELEMENTS (mNetworkAdapters));
 
             rc = mNetworkAdapters [slot]->loadSettings (*it);
             CheckComRCReturnRC (rc);
@@ -4428,7 +4428,7 @@ HRESULT Machine::loadHardware (const settings::Key &aNode)
             /* slot number (required) */
             /* slot unicity is guaranteed by XML Schema */
             uint32_t slot = (*it).value <uint32_t> ("slot");
-            AssertBreakVoid (slot < ELEMENTS (mSerialPorts));
+            AssertBreak (slot < ELEMENTS (mSerialPorts));
 
             rc = mSerialPorts [slot]->loadSettings (*it);
             CheckComRCReturnRC (rc);
@@ -4448,7 +4448,7 @@ HRESULT Machine::loadHardware (const settings::Key &aNode)
             /* slot number (required) */
             /* slot unicity is guaranteed by XML Schema */
             uint32_t slot = (*it).value <uint32_t> ("slot");
-            AssertBreakVoid (slot < ELEMENTS (mSerialPorts));
+            AssertBreak (slot < ELEMENTS (mSerialPorts));
 
             rc = mParallelPorts [slot]->loadSettings (*it);
             CheckComRCReturnRC (rc);
