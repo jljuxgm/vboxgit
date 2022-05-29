@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 7783 2008-04-07 16:58:25Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 7798 2008-04-08 12:45:05Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Ring-0 Memory Objects, Darwin.
  */
@@ -372,10 +372,11 @@ int rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS Ph
 
 int rtR0MemObjNativeAllocPhysNC(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest)
 {
-#if 0
-    /** @todo rtR0MemObjNativeAllocPhys / darwin. */
-    return rtR0MemObjNativeAllocPhys(ppMem, cb, PhysHighest);
-#endif
+    /** @todo rtR0MemObjNativeAllocPhys / darwin.
+     * This might be a bit problematic and may very well require having to create our own
+     * object which we populate with pages but without mapping it into any address space.
+     * Estimate is 2-3 days.
+     */
     return VERR_NOT_SUPPORTED;
 }
 
