@@ -1,4 +1,4 @@
-/** $Id: DrvTAP.cpp 8960 2008-05-20 14:49:14Z vboxsync $ */
+/** $Id: DrvTAP.cpp 9087 2008-05-23 14:01:04Z vboxsync $ */
 /** @file
  * Universial TAP network transport driver.
  */
@@ -19,6 +19,7 @@
  * additional information or have any questions.
  */
 
+#if !defined(RT_OS_SOLARIS) || SOLARIS2 >= 11
 
 /*******************************************************************************
 *   Header Files                                                               *
@@ -1092,3 +1093,4 @@ const PDMDRVREG g_DrvHostInterface =
     NULL
 };
 
+#endif /* !defined(RT_OS_SOLARIS) || SOLARIS2 >= 11 */
