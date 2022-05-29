@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 11736 2008-08-28 06:25:18Z vboxsync $ */
+/* $Id: EMAll.cpp 11748 2008-08-28 09:36:57Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2041,6 +2041,7 @@ EMDECL(int) EMInterpretCRxWrite(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRe
 
     if (VBOX_SUCCESS(rc))
     {
+        LogFlow(("EMInterpretCRxWrite at %VGv CR%d <- %VX64\n", pRegFrame->rip, DestRegCrx, val));
         switch (DestRegCrx)
         {
         case USE_REG_CR0:
