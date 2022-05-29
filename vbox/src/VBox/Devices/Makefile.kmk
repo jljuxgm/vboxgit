@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10243 2008-07-04 17:14:02Z vboxsync $
+# $Id: Makefile.kmk 10540 2008-07-11 17:58:44Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -689,6 +689,9 @@ ifdef VBOX_WITH_ISCSI
 	Network/lwip/src/include \
 	Network/lwip/src/include/ipv4 \
 	Network/lwip/vbox/include
+ VBoxDDU_SOURCES      += \
+    Storage/ISCSIHDDCore.cpp
+ VBoxDDU_DEFS         += VBOX_WITH_ISCSI
 endif # VBOX_WITH_ISCSI
 
 ifdef VBOX_WITH_ALSA
