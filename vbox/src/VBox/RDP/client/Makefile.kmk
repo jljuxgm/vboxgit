@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11614 2008-08-25 13:58:20Z vboxsync $
+# $Id: Makefile.kmk 11619 2008-08-25 14:13:18Z vboxsync $
 ## @file
 # VBox - rdesktop with VRDP enhancements sub-makefile.
 #
@@ -93,6 +93,8 @@ rdesktop-vrdp_LIBPATH = \
 	$(VBOX_LIBPATH_X11)
 rdesktop-vrdp_LIBS = \
 	X11
+rdesktop-vrdp_LIBS.solaris = \
+	nsl
 
 #
 # The keymaps.
