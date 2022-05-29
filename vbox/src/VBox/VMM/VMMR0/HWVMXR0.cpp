@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 10542 2008-07-11 18:03:56Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 10566 2008-07-12 14:16:58Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2036,9 +2036,7 @@ ResumeExecution:
         pCtx->rip++;    /* skip hlt */
         if (    pCtx->eflags.Bits.u1IF
             &&  VM_FF_ISPENDING(pVM, (VM_FF_INTERRUPT_APIC|VM_FF_INTERRUPT_PIC)))
-        {
             goto ResumeExecution;
-        }
 
         rc = VINF_EM_HALT;
         break;
