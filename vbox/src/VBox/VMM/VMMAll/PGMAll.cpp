@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 9888 2008-06-23 15:46:11Z vboxsync $ */
+/* $Id: PGMAll.cpp 9890 2008-06-24 08:26:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -824,8 +824,9 @@ PGMDECL(int) PGMShwSyncLongModePDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PX86PML4E pGs
     int            rc;
 
     Assert(!HWACCMIsNestedPagingActive(pVM));
-    Assert(pVM->pgm.s.pShwAmd64CR3);
+    AssertReturn(pVM->pgm.s.pHCPaePML4, VERR_INTERNAL_ERROR);
 
+    Assert(pVM->pgm.s.pHCPaePML4);
     /* Allocate page directory pointer table if not present. */
     pPml4e = &pPGM->pHCPaePML4->a[iPml4e];
     if (    !pPml4e->n.u1Present
@@ -901,6 +902,7 @@ PGMDECL(int) PGMShwGetLongModePDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PX86PDPT *ppPd
     PPGMPOOLPAGE   pShwPage;
 
     Assert(!HWACCMIsNestedPagingActive(pVM));
+    AssertReturn(pVM->pgm.s.pHCPaePML4, VERR_INTERNAL_ERROR);
 
     pPml4e = &pPGM->pHCPaePML4->a[iPml4e];
     if (!pPml4e->n.u1Present)
