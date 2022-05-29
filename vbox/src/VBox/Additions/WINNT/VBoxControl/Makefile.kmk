@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5999 2007-12-07 15:05:06Z vboxsync $
+# $Id: Makefile.kmk 6215 2007-12-28 17:41:03Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxControl.
 #
@@ -27,6 +27,10 @@ endif
 VBoxControl_SOURCES  = \
 	VBoxControl.cpp \
 	VBoxControl.rc
+
+# VBoxControl.cpp uses VBOX_SVN_REV.
+VBoxControl.cpp_DEFS += VBOX_SVN_REV=$(VBOX_SVN_REV)
+VBoxControl.cpp_DEPS = $(VBOX_SVN_REV_KMK)
 
 include	$(PATH_KBUILD)/subfooter.kmk
 
