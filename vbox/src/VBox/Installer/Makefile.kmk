@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5999 2007-12-07 15:05:06Z vboxsync $
+# $Id: Makefile.kmk 6878 2008-02-10 22:42:42Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages.
 #
@@ -19,7 +19,7 @@ DEPTH = ../../..
 include $(PATH_KBUILD)/header.kmk
 
 ifeq ($(BUILD_PLATFORM),win) # guard when cross-compiling.
- SUBDIRS.win = win32
+ SUBDIRS.win = win
 endif
 ifeq ($(BUILD_PLATFORM),linux)
  SUBDIRS.linux = linux
