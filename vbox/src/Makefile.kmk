@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10191 2008-07-04 02:26:15Z vboxsync $
+# $Id: Makefile.kmk 10194 2008-07-04 04:05:08Z vboxsync $
 ## @file
 # Top-level makefile for the src directory.
 #
@@ -41,7 +41,7 @@ else  # !VBOX_ONLY_ADDITIONS
  endif
 endif # !VBOX_ONLY_ADDITIONS
 
-include $(KBUILD_PATH)/footer.kmk
+include $(KBUILD_PATH)/subfooter.kmk
 
 
 else  # !VBOX_SINGLE_MAKEFILE
