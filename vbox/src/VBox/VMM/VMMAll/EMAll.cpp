@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 10088 2008-07-02 09:37:35Z vboxsync $ */
+/* $Id: EMAll.cpp 10107 2008-07-02 14:00:04Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1927,6 +1927,9 @@ EMDECL(int) EMInterpretCRxWrite(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRe
             }
 # endif
             return PGMChangeMode(pVM, CPUMGetGuestCR0(pVM), CPUMGetGuestCR4(pVM), CPUMGetGuestEFER(pVM));
+
+        case USE_REG_CR8:
+            return PDMApicSetTPR(pVM, val);
 
         default:
             AssertFailed();
