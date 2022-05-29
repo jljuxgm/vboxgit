@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 6912 2008-02-11 22:04:41Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 6913 2008-02-11 23:02:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1099,6 +1099,7 @@ DECLCALLBACK(int) pgmHandlerVirtualResetOne(PAVLROGCPTRNODECORE pNode, void *pvU
     /*
      * Calc flags.
      */
+    Assert(pCur->enmType != PGMVIRTHANDLERTYPE_HYPERVISOR);
     unsigned        fFlags;
     switch (pCur->enmType)
     {

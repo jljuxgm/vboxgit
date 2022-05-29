@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 6912 2008-02-11 22:04:41Z vboxsync $ */
+/* $Id: PGMAllGst.h 6913 2008-02-11 23:02:51Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -643,6 +643,7 @@ static DECLCALLBACK(int) PGM_GST_NAME(VirtHandlerUpdateOne)(PAVLROGCPTRNODECORE 
 {
     PPGMVIRTHANDLER pCur  = (PPGMVIRTHANDLER)pNode;
     PPGMHVUSTATE    pState = (PPGMHVUSTATE)pvUser;
+    Assert(pCur->enmType != PGMVIRTHANDLERTYPE_HYPERVISOR);
 
 #if PGM_GST_TYPE == PGM_TYPE_32BIT
     PX86PD          pPDSrc = pState->pVM->pgm.s.CTXSUFF(pGuestPD);

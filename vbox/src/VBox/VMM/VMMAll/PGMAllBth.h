@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 6911 2008-02-11 22:00:13Z vboxsync $ */
+/* $Id: PGMAllBth.h 6913 2008-02-11 23:02:51Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -196,12 +196,10 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
                 /*
                  * Check if the fault address is in a virtual page access handler range.
                  */
-                PPGMVIRTHANDLER pCur = (PPGMVIRTHANDLER)RTAvlroGCPtrRangeGet(&CTXSUFF(pVM->pgm.s.pTrees)->VirtHandlers, pvFault);
+                PPGMVIRTHANDLER pCur = (PPGMVIRTHANDLER)RTAvlroGCPtrRangeGet(&CTXSUFF(pVM->pgm.s.pTrees)->HyperVirtHandlers, pvFault);
                 if (    pCur
                     &&  (RTGCUINTPTR)pvFault - (RTGCUINTPTR)pCur->GCPtr < pCur->cb
-                    &&  (    uErr & X86_TRAP_PF_RW
-                         ||  (   pCur->enmType != PGMVIRTHANDLERTYPE_WRITE
-                              && pCur->enmType != PGMVIRTHANDLERTYPE_HYPERVISOR) ) ) /** r=bird: <- this is probably wrong. */
+                    &&  uErr & X86_TRAP_PF_RW)
                 {
 #  ifdef IN_GC
                     STAM_PROFILE_START(&pCur->Stat, h);
@@ -383,8 +381,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
 
                             if (    (RTGCUINTPTR)pvFault - (RTGCUINTPTR)pCur->GCPtr < pCur->cb
                                 &&  (    uErr & X86_TRAP_PF_RW
-                                     ||  (   pCur->enmType != PGMVIRTHANDLERTYPE_WRITE
-                                          && pCur->enmType != PGMVIRTHANDLERTYPE_HYPERVISOR) ) ) /** @todo r=bird: _HYPERVISOR is impossible here because of mapping check. */
+                                     ||  pCur->enmType != PGMVIRTHANDLERTYPE_WRITE ) )
                             {
 #  ifdef IN_GC
                                 STAM_PROFILE_START(&pCur->Stat, h);
@@ -410,8 +407,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
                             Assert(VBOX_SUCCESS(rc) || !pCur);
                             if (    pCur
                                 &&  (   uErr & X86_TRAP_PF_RW
-                                    ||  (   pCur->enmType != PGMVIRTHANDLERTYPE_WRITE
-                                        &&  pCur->enmType != PGMVIRTHANDLERTYPE_HYPERVISOR) ) )
+                                     || pCur->enmType != PGMVIRTHANDLERTYPE_WRITE ) )
                             {
                                 Assert((pCur->aPhysToVirt[iPage].Core.Key & X86_PTE_PAE_PG_MASK) == GCPhys);
 #  ifdef IN_GC
@@ -493,8 +489,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
 
                         if (    (RTGCUINTPTR)pvFault - (RTGCUINTPTR)pCur->GCPtr < pCur->cb
                             &&  (    uErr & X86_TRAP_PF_RW
-                                 ||  (   pCur->enmType != PGMVIRTHANDLERTYPE_WRITE
-                                      && pCur->enmType != PGMVIRTHANDLERTYPE_HYPERVISOR) ) ) /** @todo r=bird: _HYPERVISOR is impossible here because of mapping check. */
+                                 ||  pCur->enmType != PGMVIRTHANDLERTYPE_WRITE ) )
                         {
 #  ifdef IN_GC
                             STAM_PROFILE_START(&pCur->Stat, h);
