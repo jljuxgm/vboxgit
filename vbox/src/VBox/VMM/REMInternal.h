@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: REMInternal.h 6546 2008-01-28 21:58:59Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -250,7 +250,7 @@ typedef REM *PREM;
 
 
 #ifdef REM_INCLUDE_CPU_H
-bool    remR3CanExecuteRaw(CPUState *env, RTGCPTR eip, unsigned fFlags, uint32_t *pExceptionIndex);
+bool    remR3CanExecuteRaw(CPUState *env, RTGCPTR eip, unsigned fFlags, int *piException);
 void    remR3CSAMCheckEIP(CPUState *env, RTGCPTR GCPtrCode);
 bool    remR3GetOpcode(CPUState *env, RTGCPTR GCPtrInstr, uint8_t *pu8Byte);
 bool    remR3DisasInstr(CPUState *env, int f32BitCode, char *pszPrefix);
