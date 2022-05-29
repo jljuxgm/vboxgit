@@ -1,4 +1,4 @@
-/* $Id: TRPMGC.cpp 9212 2008-05-29 09:38:38Z vboxsync $ */
+/* $Id: TRPMGC.cpp 9223 2008-05-29 13:47:32Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -68,7 +68,7 @@ TRPMGCDECL(int) TRPMGCSetTempHandler(PVM pVM, unsigned iTrap, PFNTRPMGCTRAPHANDL
     /*
      * Install handler.
      */
-    pVM->trpm.s.aTmpTrapHandlers[iTrap] = (RTGCPTR32)(RTGCUINTPTR)pfnHandler;
+    pVM->trpm.s.aTmpTrapHandlers[iTrap] = (RTRCPTR)pfnHandler;
     return VINF_SUCCESS;
 }
 
