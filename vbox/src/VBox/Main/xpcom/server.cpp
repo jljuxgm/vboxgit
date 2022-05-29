@@ -1,4 +1,4 @@
-/* $Id: server.cpp 9444 2008-06-05 18:08:17Z vboxsync $ */
+/* $Id: server.cpp 9446 2008-06-05 18:26:45Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -357,7 +357,7 @@ public:
                 {
                     /* Failed to start the timer, post the shutdown event
                      * manually if not on the main thread alreay. */
-                    ShutdownTimer (NULL, NULL);
+                    ShutdownTimer (NULL, NULL, 0);
                 }
                 else
                 {
