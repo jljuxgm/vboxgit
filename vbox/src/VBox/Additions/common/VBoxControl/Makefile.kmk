@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10797 2008-07-22 08:12:42Z vboxsync $
+# $Id: Makefile.kmk 10869 2008-07-24 19:26:01Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Additions Command Line Management Interface.
 #
@@ -46,7 +46,8 @@ VBoxControl_SOURCES.win = \
 	VBoxControl.rc
 VBoxControl_LIBS = \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
-	$(VBOX_LIB_VBGL_R3)
+	$(VBOX_LIB_VBGL_R3) \
+	$(VBOX_LIB_IPRT_GUEST_R3)
 
 # VBoxControlSVN.cpp uses VBOX_SVN_REV.
 VBoxControlSVN.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
