@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8758 2008-05-11 18:27:49Z vboxsync $
+# $Id: Makefile.kmk 8759 2008-05-11 18:33:24Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -248,7 +248,7 @@ VBoxSVC_SOURCES.win     +=   win32/USBProxyServiceWin32.cpp
 endif
 
 VBoxSVC_LDFLAGS.darwin  = -framework IOKit
-ifeq ($(BUILD_TYPE),debug)
+ifeq ($(KBUILD_TYPE),debug)
 VBoxSVC_LDFLAGS.linux  += -rdynamic # for backtrace_symbols()
 endif
 

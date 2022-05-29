@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8758 2008-05-11 18:27:49Z vboxsync $
+# $Id: Makefile.kmk 8759 2008-05-11 18:33:24Z vboxsync $
 ## @file
 # Makefile for XPCOM.
 #
@@ -1141,7 +1141,7 @@ VBoxXPCOM_LDFLAGS.darwin = -install_name @executable_path/VBoxXPCOM.dylib
 
 ifdef VBOX_IPC_RELEASE_LOG
 IPC_LOGGING = 1
-else ifneq ($(BUILD_TYPE),release)
+else ifneq ($(KBUILD_TYPE),release)
 IPC_LOGGING = 1
 endif
 
