@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 9212 2008-05-29 09:38:38Z vboxsync $ */
+/* $Id: REMInternal.h 9219 2008-05-29 12:03:45Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -244,7 +244,7 @@ typedef struct REM
 #if GC_ARCH_BITS == 32
 #define REM_ENV_SIZE        (HC_ARCH_BITS == 32 ? 0x6440 : 0xb4a0)
 #else
-#define REM_ENV_SIZE        (HC_ARCH_BITS == 32 ? 0x8440 : 0xd4a0)
+#define REM_ENV_SIZE        (HC_ARCH_BITS == 32 ? 0x9440 : 0xd4a0)
 #endif
 
     /** Recompiler CPU state. */
