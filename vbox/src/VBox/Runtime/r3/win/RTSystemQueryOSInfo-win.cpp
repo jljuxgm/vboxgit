@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 11352 2008-08-12 12:54:16Z vboxsync $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 11356 2008-08-12 13:05:33Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -396,9 +396,9 @@ static int rtSystemWinQueryOSVersion(RTSYSOSINFO enmInfo, char *pszInfo, size_t 
             if (OSInfoEx.wServicePackMajor)
             {
                 if (OSInfoEx.wServicePackMinor)
-                    RTStrPrintf(szTmp, sizeof(szTmp), "Service Pack %u.%u", (unsigned)OSInfoEx.wServicePackMajor, (unsigned)OSInfoEx.wServicePackMinor);
+                    RTStrPrintf(szTmp, sizeof(szTmp), "%u.%u", (unsigned)OSInfoEx.wServicePackMajor, (unsigned)OSInfoEx.wServicePackMinor);
                 else
-                    RTStrPrintf(szTmp, sizeof(szTmp), "Service Pack %u", (unsigned)OSInfoEx.wServicePackMajor);
+                    RTStrPrintf(szTmp, sizeof(szTmp), "%u", (unsigned)OSInfoEx.wServicePackMajor);
             }
             else if (OSInfoEx.szCSDVersion[0])
             {
@@ -412,8 +412,8 @@ static int rtSystemWinQueryOSVersion(RTSYSOSINFO enmInfo, char *pszInfo, size_t 
                 RTWINOSTYPE enmVer = rtSystemWinOSType(&OSInfoEx);
                 switch (enmVer)
                 {
-                    case kRTWinOSType_95SP1:    strcpy(szTmp, "Service Pack 1"); break;
-                    case kRTWinOSType_98SP1:    strcpy(szTmp, "Service Pack 1"); break;
+                    case kRTWinOSType_95SP1:    strcpy(szTmp, "1"); break;
+                    case kRTWinOSType_98SP1:    strcpy(szTmp, "1"); break;
                     default:
                         break;
                 }
