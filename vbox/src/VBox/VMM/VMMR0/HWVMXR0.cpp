@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 10466 2008-07-10 12:01:10Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 10473 2008-07-10 15:02:53Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1185,6 +1185,9 @@ ResumeExecution:
     /* TPR caching using CR8 is only available in 64 bits mode */
     /* Note the 32 bits exception for AMD (X86_CPUID_AMD_FEATURE_ECX_CR8L), but that appears missing in Intel CPUs */
     /* Note: we can't do this in LoadGuestState as PDMApicGetTPR can jump back to ring 3 (lock). */
+    /*
+     * @todo reduce overhead
+     */
     if (    pCtx->msrEFER & MSR_K6_EFER_LMA
         &&  pVM->hwaccm.s.vmx.pAPIC)
     {
@@ -1409,7 +1412,9 @@ ResumeExecution:
     AssertRC(rc);
     pCtx->eflags.u32        = val;
 
-    /* Update the APIC with the cached TPR value. */
+    /* Update the APIC with the cached TPR value.
+     * @todo reduce overhead
+     */
     if (    pCtx->msrEFER & MSR_K6_EFER_LMA
         &&  pVM->hwaccm.s.vmx.pAPIC)
     {

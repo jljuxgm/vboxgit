@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 10362 2008-07-08 12:55:14Z vboxsync $ */
+/* $Id: EMAll.cpp 10473 2008-07-10 15:02:53Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -50,13 +50,6 @@
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
 *******************************************************************************/
-typedef DECLCALLBACK(uint32_t) PFN_EMULATE_PARAM2_UINT32(void *pvParam1, uint64_t val2);
-typedef DECLCALLBACK(uint32_t) PFN_EMULATE_PARAM2(void *pvParam1, size_t val2);
-typedef DECLCALLBACK(uint32_t) PFN_EMULATE_PARAM3(void *pvParam1, uint64_t val2, size_t val3);
-typedef DECLCALLBACK(int)      FNEMULATELOCKPARAM2(void *pvParam1, uint64_t val2, RTGCUINTREG32 *pf);
-typedef FNEMULATELOCKPARAM2 *PFNEMULATELOCKPARAM2;
-typedef DECLCALLBACK(int)      FNEMULATELOCKPARAM3(void *pvParam1, uint64_t val2, size_t cb, RTGCUINTREG32 *pf);
-typedef FNEMULATELOCKPARAM3 *PFNEMULATELOCKPARAM3;
 
 
 /*******************************************************************************
