@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10497 2008-07-11 09:13:46Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10498 2008-07-11 09:15:19Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -874,6 +874,10 @@ ResumeExecution:
     /* Enable nested paging if necessary (disabled each time after #VMEXIT). */
     pVMCB->ctrl.NestedPaging.n.u1NestedPaging = pVM->hwaccm.s.fNestedPaging;
 
+    /*
+     * NOTE: DO NOT DO ANYTHING AFTER THIS POINT THAT MIGHT JUMP BACK TO RING 3!
+     *
+     */
     /* Force a TLB flush for the first world switch if the current cpu differs from the one we ran on last. */
     /* Note that this can happen both for start and resume due to long jumps back to ring 3. */
     if (    pVM->hwaccm.s.svm.idLastCpu != pCpu->idCpu
