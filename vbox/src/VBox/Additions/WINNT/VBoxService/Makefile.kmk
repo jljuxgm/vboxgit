@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5999 2007-12-07 15:05:06Z vboxsync $
+# $Id: Makefile.kmk 6169 2007-12-21 14:59:22Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxService.
 #
@@ -39,6 +39,11 @@ VBoxService_SOURCES  = \
 	VBoxService.rc
 VBoxService_LIBS     = \
 	$(PATH_LIB)/additions/RuntimeW32GuestR3.lib
+
+# VBoxService.cpp uses VBOX_SVN_REV.
+VBoxService.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
+VBoxService.cpp_DEPS = $(VBOX_SVN_REV_KMK)
+
 
 include	$(PATH_KBUILD)/subfooter.kmk
 
