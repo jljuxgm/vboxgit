@@ -1,4 +1,4 @@
-# $Id: Config.kmk 9133 2008-05-26 17:21:04Z vboxsync $
+# $Id: Config.kmk 9135 2008-05-26 17:34:32Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1484,16 +1484,15 @@ endif
 # Determine Solaris version.
 #
 ifeq ($(KBUILD_TARGET),solaris)
- ifeq ($(origin SOLARIS_VER),undefined)
-  $(eval export SOLARIS_VER := $(shell uname -r | $(SED_EXT) 's|\([0-9]*\)\.\([0-9]*\)|$$(int-add $$(int-mul 100, \1), \2)|' ))
+ ifeq ($(origin SOLARIS_VERSION),undefined)
+  $(eval export SOLARIS_VERSION := $(shell uname -r | $(SED_EXT) 's|\([0-9]*\)\.\([0-9]*\)|$$(int-add $$(int-mul 100, \1), \2)|' ))
  endif
- ifeq ($(SOLARIS_VER),510)
+ ifeq ($(SOLARIS_VERSION),510)
   DEFS.solaris += RT_OS_SOLARIS_10
   # Solaris 10 does not include crossbow.
   VBOX_WITH_CROSSBOW =
   VBOX_SOLARIS_10 = 1
  endif
- DEFS.solaris += SOLARIS_VER=$(SOLARIS_VER)
 endif
 
 
@@ -2967,7 +2966,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9133 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9135 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
