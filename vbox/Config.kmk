@@ -1,4 +1,4 @@
-# $Id: Config.kmk 11726 2008-08-27 22:22:34Z vboxsync $
+# $Id: Config.kmk 11733 2008-08-28 00:47:02Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2274,6 +2274,21 @@ TEMPLATE_VBOXR3HARDENEDLIB = Hardened VBox Ring-3 LIB
 TEMPLATE_VBOXR3HARDENEDLIB_EXTENDS = VBOXR3HARDENEDEXE
 TEMPLATE_VBOXR3HARDENEDLIB_LIBS = $(NO_SUCH_VARIABLE)
 
+
+#
+# Ring-3 testcase, running automatically during the build.
+# This is the VBOXR3EXE template only with a different install dir.
+#
+TEMPLATE_VBOXR3AUTOTST  = VBox Ring 3 Testcase Exe
+TEMPLATE_VBOXR3AUTOTST_EXTENDS = VBOXR3EXE
+TEMPLATE_VBOXR3AUTOTST_INST    = $(INST_TESTCASE)
+TEMPLATE_VBOXR3AUTOTST_LIBS    = $(TEMPLATE_VBOXR3EXE_LIBS)
+ifeq ($(KBUILD_TARGET),win)
+ ifdef VBOX_SIGNING_MODE
+  TEMPLATE_VBOXR3AUTOTST_POST_CMDS =
+ endif
+endif
+
 #
 # Ring-3 testcase.
 # This is the VBOXR3EXE template only with a different install dir.
@@ -3202,7 +3217,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11726 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11733 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
