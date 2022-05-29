@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 6914 2008-02-11 23:17:43Z vboxsync $ */
+/* $Id: PGMHandler.cpp 7523 2008-03-25 09:52:30Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -100,7 +100,7 @@ PGMR3DECL(int) PGMR3HandlerPhysicalRegister(PVM pVM, PGMPHYSHANDLERTYPE enmType,
      */
     R0PTRTYPE(PFNPGMR0PHYSHANDLER) pfnHandlerR0 = NIL_RTR0PTR;
     int rc = VINF_SUCCESS;
-    if (pszHandlerR0 && HWACCMR3IsAllowed(pVM))
+    if (pszHandlerR0)
         rc = PDMR3GetSymbolR0Lazy(pVM, pszModR0, pszHandlerR0, &pfnHandlerR0);
     if (VBOX_SUCCESS(rc))
     {
