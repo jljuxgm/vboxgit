@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 8174 2008-04-18 19:26:36Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -211,7 +211,7 @@ static const DBGCCMD    g_aCmds[] =
 
 /* Instantiate the structure signatures. */
 #define REM_STRUCT_OP 0
-#include "InnoTek/structs.h"
+#include "Sun/structs.h"
 
 
 
