@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 7105 2008-02-25 12:52:13Z vboxsync $ */
+/* $Id: CPUM.cpp 7696 2008-04-02 12:36:33Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager)
  */
@@ -546,6 +546,9 @@ CPUMR3DECL(void) CPUMR3Reset(PVM pVM)
 
     pCtx->fpu.FTW                   = 0xff;         /* All tags are set, i.e. the regs are empty. */
     pCtx->fpu.FCW                   = 0x37f;
+
+    /* Init PAT MSR */
+    pCtx->msrPAT                    = 0x0007040600070406ULL; /* @todo correct? */
 }
 
 
