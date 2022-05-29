@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 6087 2007-12-15 17:02:19Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 6088 2007-12-15 17:40:25Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -801,12 +801,12 @@ static DECLCALLBACK(int) drvHostSerialSetModemLines(PPDMICHAR pInterface, bool R
     if (RequestToSend)
         EscapeCommFunction(pData->hDeviceFile, SETRTS);
     else
-        EscapeCommFunction(pData->hDeviceFIle, CLRRTS);
+        EscapeCommFunction(pData->hDeviceFile, CLRRTS);
 
     if (DataTerminalReady)
         EscapeCommFunction(pData->hDeviceFile, SETDTR);
     else
-        EscapeCommFunction(pData->hDeviceFIle, CLRDTR);
+        EscapeCommFunction(pData->hDeviceFile, CLRDTR);
 #endif
 
     return VINF_SUCCESS;
