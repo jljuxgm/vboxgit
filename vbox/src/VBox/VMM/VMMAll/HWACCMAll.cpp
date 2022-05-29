@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 10822 2008-07-23 09:02:58Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 11370 2008-08-12 17:50:18Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -72,6 +72,7 @@ HWACCMDECL(int) HWACCMFlushTLB(PVM pVM)
     /* @todo Intel for nested paging */
     if (pVM->hwaccm.s.svm.fSupported)
     {
+        Log(("HWACCMFlushTLB\n"));
         pVM->hwaccm.s.svm.fForceTLBFlush = true;
         STAM_COUNTER_INC(&pVM->hwaccm.s.StatFlushTLBManual);
     }
@@ -129,3 +130,15 @@ HWACCMDECL(int) HWACCMInvalidatePhysPage(PVM pVM, RTGCPHYS GCPhys)
 #endif
     return VINF_SUCCESS;
 }
+
+/**
+ * Checks if an interrupt event is currently pending. 
+ *
+ * @returns Interrupt event pending state.
+ * @param   pVM         The VM to operate on.
+ */
+HWACCMDECL(bool) HWACCMHasPendingIrq(PVM pVM)
+{
+    return pVM->hwaccm.s.Event.fPending;
+}
+
