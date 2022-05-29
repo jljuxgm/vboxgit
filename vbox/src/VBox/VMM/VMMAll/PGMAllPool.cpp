@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 10364 2008-07-08 13:09:13Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 10365 2008-07-08 13:12:01Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -248,7 +248,7 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
 {
     Assert(pPage->iMonitoredPrev == NIL_PGMPOOL_IDX);
     const unsigned off     = GCPhysFault & PAGE_OFFSET_MASK;
-    const unsigned cbWrite = pgmPoolDisasWriteSize(pCpu);
+    const unsigned cbWrite = (pCpu) ? pgmPoolDisasWriteSize(pCpu) : 0;
 
     LogFlow(("pgmPoolMonitorChainChanging: %VGv phys=%VGp kind=%d cbWrite=%d\n", pvAddress, GCPhysFault, pPage->enmKind, cbWrite));
 
