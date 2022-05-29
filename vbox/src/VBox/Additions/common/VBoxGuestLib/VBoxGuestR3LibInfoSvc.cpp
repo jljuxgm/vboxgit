@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibInfoSvc.cpp 10543 2008-07-11 18:27:31Z vboxsync $ */
+/* $Id: VBoxGuestR3LibInfoSvc.cpp 10552 2008-07-11 20:05:12Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, information service.
  */
@@ -102,7 +102,7 @@ VBGLR3DECL(int) VbglR3InfoSvcWriteKey(uint32_t u32ClientId, char *pszKey, char *
         Msg.hdr.cParms = 2;
         VbglHGCMParmPtrSet(&Msg.key, pszKey, strlen(pszKey) + 1);
         VbglHGCMParmPtrSet(&Msg.value, pszValue, strlen(pszValue) + 1);
-        rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL, &Msg, sizeof(Msg));
+        rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(Msg)), &Msg, sizeof(Msg));
         if (RT_SUCCESS(rc))
             rc = Msg.hdr.result;
     }
@@ -115,7 +115,7 @@ VBGLR3DECL(int) VbglR3InfoSvcWriteKey(uint32_t u32ClientId, char *pszKey, char *
         Msg.hdr.u32Function = DEL_CONFIG_KEY;
         Msg.hdr.cParms = 1;
         VbglHGCMParmPtrSet(&Msg.key, pszKey, strlen(pszKey) + 1);
-        rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL, &Msg, sizeof(Msg));
+        rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(Msg)), &Msg, sizeof(Msg));
         if (RT_SUCCESS(rc))
             rc = Msg.hdr.result;
     }
@@ -154,7 +154,7 @@ VBGLR3DECL(int) VbglR3InfoSvcReadKey(uint32_t u32ClientId, char *pszKey,
     VbglHGCMParmPtrSet(&Msg.value, pszValue, cbValue);
     VbglHGCMParmUInt32Set(&Msg.size, 0);
 
-    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL, &Msg, sizeof(Msg));
+    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(Msg)), &Msg, sizeof(Msg));
     if (RT_SUCCESS(rc))
         rc = Msg.hdr.result;
     uint32_t cbActual;
