@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3Lib.cpp 6408 2008-01-21 13:28:14Z vboxsync $ */
+/** $Id: VBoxGuestR3Lib.cpp 6423 2008-01-21 18:18:45Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions.
  */
@@ -172,6 +172,18 @@ int vbglR3DoIOCtl(unsigned iFunction, void *pvData, size_t cbData)
     if (RT_LIKELY(!rc))
         return vrc;
     return RTErrConvertFromOS2(rc);
+
+#elif defined(RT_OS_SOLARIS) && 0
+    VBGLBIGREQ Hdr;
+    Hdr.u32Magic = VBGLBIGREQ_MAGIC;
+    Hdr.cbData = cbData;
+    Hdr.pvData = pvData;
+    Assert(_IOC_SIZE(iFunction) == sizeof(Hdr));
+
+    int rc = ioctl((int)File, iFunction, &Hdr);
+    if (rc == -1)
+        rc = errno;
+    return rc;
 
     /* PORTME */
 #else
