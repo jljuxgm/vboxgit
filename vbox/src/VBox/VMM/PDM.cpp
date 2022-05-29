@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: PDM.cpp 8677 2008-05-07 18:13:32Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1181,13 +1181,17 @@ static DECLCALLBACK(void) pdmR3PollerTimer(PVM pVM, PTMTIMER pTimer, void *pvUse
 
 
 /**
- * Serivce a VMMCALLHOST_PDM_LOCK call.
+ * Service a VMMCALLHOST_PDM_LOCK call.
  *
  * @returns VBox status code.
  * @param   pVM     The VM handle.
  */
 PDMR3DECL(int) PDMR3LockCall(PVM pVM)
 {
-    return pdmLockEx(pVM, VERR_INTERNAL_ERROR);
+#ifdef VBOX_WITH_PDM_LOCK
+    return PDMR3CritSectEnterEx(&pVM->pdm.s.CritSect, true /* fHostCall */);
+#else
+    return VINF_SUCCESS;
+#endif
 }
 

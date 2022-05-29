@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 8624 2008-05-06 13:24:09Z vboxsync $ */
+/* $Id: PGM.cpp 8677 2008-05-07 18:13:32Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2312,7 +2312,9 @@ static DECLCALLBACK(void) pgmR3InfoCr3(PVM pVM, PCDBGFINFOHLP pHlp, const char *
  */
 PDMR3DECL(int) PGMR3LockCall(PVM pVM)
 {
-    return pgmLock(pVM);
+    int rc = PDMR3CritSectEnterEx(&pVM->pgm.s.CritSect, true /* fHostCall */);
+    AssertRC(rc);
+    return rc;
 }
 
 
