@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 7988 2008-04-15 13:29:51Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 7989 2008-04-15 13:30:41Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -166,11 +166,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         rc = CFGMR3InsertInteger(pHWVirtExt, "Enabled", 1);                         RC_CHECK();
     }
 #endif
-
-    /* Physical Address Extension (PAE) */
-    BOOL fEnablePAE = false;
-    hrc = pMachine->COMGETTER(PAEEnabled)(&fEnablePAE);                             H();
-    rc = CFGMR3InsertInteger(pRoot, "EnablePAE", fEnablePAE);                       RC_CHECK();
 
     BOOL fIOAPIC;
     hrc = biosSettings->COMGETTER(IOAPICEnabled)(&fIOAPIC);                          H();
