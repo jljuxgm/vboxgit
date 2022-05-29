@@ -1,10 +1,10 @@
-# $Id: GCC.kmk 1259 2007-11-07 16:02:56Z bird $
+# $Id: GCC.kmk 1547 2008-04-22 02:02:09Z bird $
 ## @file
-#
 # kBuild Tool Config - Generic GCC Using The System GCC.
 #
-# Copyright (c) 2004-2007 knut st. osmundsen <bird-kBuild-spam@anduin.net>
+
 #
+# Copyright (c) 2004-2008 knut st. osmundsen <bird-kBuild-spam@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -23,6 +23,13 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 #
+# As a special exception you are granted permission to include this file, via
+# the kmk include directive, as you wish without this in itself causing the 
+# resulting makefile, program or whatever to be covered by the GPL license. 
+# This exception does not however invalidate any other reasons why the makefile,
+# program, whatever should not be covered the GPL.
+#
+#
 
 TOOL_GCC := Generic GCC Using The System GCC.
 
@@ -35,10 +42,10 @@ TOOL_GCC_RANLIB ?= ranlib$(HOSTSUFF_EXE)
 TOOL_GCC_LD  ?= gcc$(HOSTSUFF_EXE)
 TOOL_GCC_LDFLAGS.dll.os2 ?= -Zdll
 TOOL_GCC_LDFLAGS.dll.darwin ?= -dynamiclib
-ifndef TOOL_GCC_LDFLAGS.$(BUILD_TARGET)
+ifndef TOOL_GCC_LDFLAGS.$(KBUILD_TARGET)
 TOOL_GCC_LDFLAGS.dll ?= -shared
 else
-TOOL_GCC_LDFLAGS.dll ?= $(TOOL_GCC_LDFLAGS.$(BUILD_TARGET))
+TOOL_GCC_LDFLAGS.dll ?= $(TOOL_GCC_LDFLAGS.$(KBUILD_TARGET))
 endif
 
 # General Properties used by kBuild

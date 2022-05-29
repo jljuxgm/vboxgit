@@ -1,9 +1,10 @@
-# $Id: GXX3OMF.kmk 1418 2008-03-18 22:52:45Z bird $
+# $Id: GXX3OMF.kmk 1547 2008-04-22 02:02:09Z bird $
 ## @file
-#
 # kBuild Tool Config - GCC v3 targeting OS/2 OMF, for building C++ code.
 #
-# Copyright (c) 2004-2007 knut st. osmundsen <bird-kBuild-spam@anduin.net>
+
+#
+# Copyright (c) 2004-2008 knut st. osmundsen <bird-kBuild-spam@anduin.net>
 #
 #
 # This file is part of kBuild.
@@ -23,6 +24,13 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 #
+# As a special exception you are granted permission to include this file, via
+# the kmk include directive, as you wish without this in itself causing the 
+# resulting makefile, program or whatever to be covered by the GPL license. 
+# This exception does not however invalidate any other reasons why the makefile,
+# program, whatever should not be covered the GPL.
+#
+#
 
 TOOL_GXX3OMF := GCC v3 targeting OS/2 OMF, for building C++ code.
 
@@ -34,10 +42,10 @@ TOOL_GXX3OMF_AR  ?= emxomfar$(HOSTSUFF_EXE)
 TOOL_GXX3OMF_AR_IMP ?= emximp$(HOSTSUFF_EXE)
 TOOL_GXX3OMF_LD ?= g++$(HOSTSUFF_EXE)
 TOOL_GXX3OMF_LD_SYSMOD ?= g++$(HOSTSUFF_EXE)
-ifndef TOOL_GXX3OMF_LDFLAGS.$(BUILD_TARGET)
+ifndef TOOL_GXX3OMF_LDFLAGS.$(KBUILD_TARGET)
 TOOL_GXX3OMF_LDFLAGS.dll ?= -shared -Zdll
 else
-TOOL_GXX3OMF_LDFLAGS.dll ?= $(TOOL_GXX3OMF_LDFLAGS.$(BUILD_TARGET))
+TOOL_GXX3OMF_LDFLAGS.dll ?= $(TOOL_GXX3OMF_LDFLAGS.$(KBUILD_TARGET))
 endif
 TOOL_GXX3OMF_LDFLAGS.sysmod ?= -nostdlib
 TOOL_GXX3OMF_LD_MAP ?= -Zmap=$(1)

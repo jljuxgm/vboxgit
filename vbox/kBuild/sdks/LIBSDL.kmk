@@ -1,10 +1,10 @@
-# $Id: LIBSDL.kmk 1243 2007-10-14 15:41:07Z bird $
+# $Id: LIBSDL.kmk 1547 2008-04-22 02:02:09Z bird $
 ## @file
+# kBuild SDK - Simple DirectMedia Layer, targeting $(KBUILD_TARGET).
 #
-# kBuild SDK - Simple DirectMedia Layer, targeting $(BUILD_TARGET).
+
 #
-# Copyright (c) 2006-2007 knut st. osmundsen <bird-kBuild-spam@anduin.net>
-#
+# Copyright (c) 2006-2008 knut st. osmundsen <bird-kBuild-spam@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -23,8 +23,15 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 #
+# As a special exception you are granted permission to include this file, via
+# the kmk include directive, as you wish without this in itself causing the 
+# resulting makefile, program or whatever to be covered by the GPL license. 
+# This exception does not however invalidate any other reasons why the makefile,
+# program, whatever should not be covered the GPL.
+#
+#
 
-SDK_LIBSDL := Simple DirectMedia Layer, targeting $(BUILD_TARGET).
+SDK_LIBSDL := Simple DirectMedia Layer, targeting $(KBUILD_TARGET).
 
 # SDK Specific Properties
 _SDK_LIBSDK_IS_FRAMEWORK := no
@@ -38,9 +45,9 @@ ifndef PATH_SDK_LIBSDL
  else
 
   # Darwin might have a framework for it.
-  ifeq ($(BUILD_TARGET),darwin)
+  ifeq ($(KBUILD_TARGET),darwin)
    PATH_SDK_LIBSDL := $(firstword $(wildcard \
-	/System/Library/Frameworks/SDL.frameworks/SDL \
+	/System/Library/Frameworks/SDL.framework/SDL \
 	/Library/Frameworks/SDL.framework/SDL \
 	) )
    ifneq ($(PATH_SDK_LIBSDL),)
@@ -51,7 +58,7 @@ ifndef PATH_SDK_LIBSDL
 
   ifeq ($(PATH_SDK_LIBSDL),)
    # Search in the typical unix places.
-   ifeq ($(filter-out %64,$(BUILD_TARGET_ARCH)),)
+   ifeq ($(filter-out %64,$(KBUILD_TARGET_ARCH)),)
     PATH_SDK_LIBSDL := $(firstword $(wildcard \
 	/lib64/libSDL.* \
 	/lib/libSDL.* \
@@ -92,7 +99,7 @@ ifndef PATH_SDK_LIBSDL
  endif
 else
  PATH_SDK_LIBSDL := $(PATH_SDK_LIBSDL)
- ifeq ($(BUILD_TARGET),darwin)
+ ifeq ($(KBUILD_TARGET),darwin)
   # Check if it's the framework or not.
   _SDK_LIBSDK_IS_FRAMEWORK := $(if $(wildcard $(PATH_SDK_LIBSDL)/Headers/SDL.h),yes)
  endif
@@ -102,7 +109,7 @@ endif
 # The way libsdl is distributed on the different platforms
 # varies quite a bit, thus this kludge.
 #
-ifeq ($(BUILD_TARGET),os2)
+ifeq ($(KBUILD_TARGET),os2)
  LIB_SDK_LIBSDL_SDLMAIN  ?=
  DLL_SDK_LIBSDL_SDL      ?= $(PATH_SDK_LIBSDL)/SDL/SDL12.dll
  DLL_SDK_LIBSDL_FSLIB    ?= $(PATH_SDK_LIBSDL)/SDL/FSLib.dll
@@ -131,7 +138,7 @@ ifeq ($(BUILD_TARGET),os2)
  	$(PATH_SDK_LIBSDL)/SDLNet \
  	$(PATH_SDK_LIBSDL)/SDLTTF
 
-else ifeq ($(BUILD_TARGET),win) # ASSUMES VC++ on windows, sorry.
+else ifeq ($(KBUILD_TARGET),win) # ASSUMES VC++ on windows, sorry.
  LIB_SDK_LIBSDL_SDLMAIN  ?= $(PATH_SDK_LIBSDL)/lib/SDLmain.lib
  LIB_SDK_LIBSDL_SDL      ?= $(PATH_SDK_LIBSDL)/lib/SDL.lib
  DLL_SDK_LIBSDL_SDL      ?= $(PATH_SDK_LIBSDL)/lib/SDL.dll
@@ -151,7 +158,7 @@ else ifeq ($(BUILD_TARGET),win) # ASSUMES VC++ on windows, sorry.
  SDK_LIBSDL_LIBPATH ?= \
  	$(PATH_SDK_LIBSDL)/lib
 
-else ifeq ($(BUILD_TARGET).$(_SDK_LIBSDK_IS_FRAMEWORK),darwin.yes)
+else ifeq ($(KBUILD_TARGET).$(_SDK_LIBSDK_IS_FRAMEWORK),darwin.yes)
  # darwin + framework
  LIB_SDK_LIBSDL_SDLMAIN  ?= $(NO_SUCH_VARIABLE)
  LIB_SDK_LIBSDL_SDL      ?= $(NO_SUCH_VARIABLE)
