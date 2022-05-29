@@ -1,4 +1,4 @@
-/* $Id: uuid-generic.cpp 9738 2008-06-16 22:38:49Z vboxsync $ */
+/* $Id: uuid-generic.cpp 9741 2008-06-16 22:46:46Z vboxsync $ */
 /** @file
  * IPRT - UUID, Generic.
  */
@@ -35,26 +35,9 @@
 #include <iprt/uuid.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
-#include <iprt/time.h>
-#include <iprt/asm.h>
-#include <iprt/rand.h>
 
 
-/* WARNING: This implementation ASSUMES little endian. */
-
-
-/** @todo move to a different file. */
-RTDECL(int)  RTUuidCreate(PRTUUID pUuid)
-{
-    /* validate input. */
-    AssertPtrReturn(pUuid, VERR_INVALID_PARAMETER);
-
-    RTRandBytes(pUuid, sizeof(*pUuid));
-    pUuid->Gen.u16ClockSeq = (pUuid->Gen.u16ClockSeq & 0x3fff) | 0x8000;
-    pUuid->Gen.u16TimeHiAndVersion = (pUuid->Gen.u16TimeHiAndVersion & 0x0fff) | 0x4000;
-
-    return VINF_SUCCESS;
-}
+/* WARNING: This implementation ASSUMES little endian. Needs testing on big endian! */
 
 
 RTDECL(int)  RTUuidClear(PRTUUID pUuid)
