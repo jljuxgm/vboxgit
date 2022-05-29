@@ -1,4 +1,4 @@
-/* $Id: Performance.h 10713 2008-07-16 20:28:43Z vboxsync $ */
+/* $Id: Performance.h 10725 2008-07-17 13:27:48Z vboxsync $ */
 
 /** @file
  *
@@ -325,7 +325,9 @@ namespace pm {
         bool match(const ComPtr<IUnknown> object, const std::string &name) const;
     private:
         typedef std::pair<const ComPtr<IUnknown>, const std::string> FilterElement;
-        std::list<FilterElement> mElements;
+        typedef std::list<FilterElement> ElementList;
+
+        ElementList mElements;
 
         void processMetricList(const std::string &name, const ComPtr<IUnknown> object);
     };
