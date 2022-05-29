@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8251 2008-04-21 19:05:24Z vboxsync $
+# $Id: Makefile.kmk 8401 2008-04-26 03:48:59Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -51,6 +51,9 @@ ifneq ($(BUILD_TARGET),win)
   VBOX_MAIN_DEFS+= VBOX_WITH_SYS_V_IPC_SESSION_WATCHER
  endif
  VBOX_MAIN_DEFS += VBOX_WITH_UNIXY_TAP_NETWORKING
+endif
+ifeq ($(USERNAME),bird) # temporary
+ #VBOX_MAIN_DEFS += NEW_HOSTUSBDEVICE_STATE
 endif
 ## @todo later when RTSemRWIsWriteOwner and RTSemRWGetWriteRecursion are done
 #ifeq ($(filter-out linux darwin freebsd solaris,$(BUILD_TARGET)),)
