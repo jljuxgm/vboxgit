@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 10868 2008-07-24 18:34:35Z vboxsync $ */
+/* $Id: Performance.cpp 10873 2008-07-24 20:36:01Z vboxsync $ */
 
 /** @file
  *
@@ -101,7 +101,7 @@ void BaseMetric::collectorBeat(uint64_t nowAt)
         if (nowAt - mLastSampleTaken >= mPeriod * 1000)
         {
             mLastSampleTaken = nowAt;
-            LogFlowThisFunc (("Collecting data for obj(%p)...\n", mObject));
+            LogFlowThisFunc (("Collecting data for obj(%p)...\n", (void *)mObject));
             collect();
         }
     }
