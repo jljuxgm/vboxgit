@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9319 2008-06-02 20:00:08Z vboxsync $
+# $Id: Makefile.kmk 9320 2008-06-02 20:14:26Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -38,7 +38,7 @@ endif
  endif
 #endif # !VBOX_OSE
 ifdef VBOX_WITH_VRDP
- if1of ($(KBUILD_TARGET),linux)
+ if1of ($(KBUILD_TARGET),linux solaris darwin win)
   ifeq ($(SDK_VBOX_OPENSSL_INCS),$(PATH_ROOT)/src/libs/openssl-0.9.8h/include)
    subdirs += openssl-0.9.8h
   endif
