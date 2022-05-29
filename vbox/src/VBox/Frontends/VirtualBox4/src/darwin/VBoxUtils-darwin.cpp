@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 10231 2008-07-04 14:44:11Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 10361 2008-07-08 12:54:06Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -111,6 +111,12 @@ void darwinSetShowToolBarButton (QToolBar *aToolBar, bool aShow)
                                                                         aShow ? kWindowNoAttributes:kWindowToolbarButtonAttribute);
         AssertCarbonOSStatus (err);
     }
+}
+
+void darwinWindowAnimateResize (QWidget *aWidget, const QRect &aTarget)
+{
+    HIRect r = ::darwinToHIRect (aTarget);
+    TransitionWindowWithOptions (::darwinToWindowRef (aWidget), kWindowSlideTransitionEffect, kWindowResizeTransitionAction, &r, false, NULL);
 }
 
 /* Proxy icon creation */
