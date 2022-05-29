@@ -1,4 +1,4 @@
-; $Id: memset.asm 7209 2008-02-29 01:26:26Z vboxsync $
+; $Id: memset.asm 7212 2008-02-29 01:40:28Z vboxsync $
 ;; @file
 ; innotek Portable Runtime - No-CRT memset - AMD64 & X86.
 ;
@@ -99,7 +99,7 @@ BEGINPROC RT_NOCRT(memset)
         ; eax = (al << 24) | (al << 16) | (al << 8) | al;
         mov     ah, al
         mov     edx, eax
-        shr     edx, 16
+        shl     edx, 16
         or      eax, edx
 
         mov     edx, ecx
