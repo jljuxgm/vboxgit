@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 7410 2008-03-10 14:52:17Z vboxsync $ */
+/** $Id: clipboard.cpp 7449 2008-03-14 06:12:27Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -18,7 +18,6 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define LOG_GROUP LOG_GROUP_DEV_VMM_BACKDOOR
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include <VBox/log.h>
 #include <iprt/alloc.h>
@@ -39,16 +38,6 @@
 #include <vector>
 
 #include "clipboard.h"
-
-/* #define DEBUG_CLIPBOARD */
-#if !defined(DEBUG_CLIPBOARD) && defined(LOG_TO_BACKDOOR)
-  /* Disabled unnecessary debug logging in the shared clipboard when
-     LOG_TO_BACKDOOR is defined (to be removed). */
-# undef LogFlow
-# define LogFlow(a) do {} while (0)
-#endif
-
-#define TRACE printf("%s: %d\n", __PRETTY_FUNCTION__, __LINE__); Log(("%s: %d\n", __PRETTY_FUNCTION__, __LINE__))
 
 /** The formats which we support in the guest. These can be deactivated in order to test specific code paths. */
 #define USE_UTF16
