@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 6162 2007-12-20 23:27:44Z vboxsync $ */
+/* $Id: PDMDriver.cpp 6182 2007-12-23 13:30:42Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -139,6 +139,7 @@ const PDMDRVHLP g_pdmR3DrvHlp =
     pdmR3DrvHlp_SUPCallVMMR0Ex,
     pdmR3DrvHlp_USBRegisterHub,
     pdmR3DrvHlp_PDMThreadCreate,
+    /** @todo add PDMAsyncCompletionTemplateCreate wrapper here. */
     0 /* the end */
 };
 
