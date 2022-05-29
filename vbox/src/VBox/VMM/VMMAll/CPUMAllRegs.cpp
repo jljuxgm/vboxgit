@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 8112 2008-04-17 16:19:18Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 8113 2008-04-17 16:31:58Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1078,6 +1078,7 @@ CPUMDECL(void) CPUMSetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
             AssertMsgFailed(("enmFeature=%d\n", enmFeature));
             break;
     }
+    pVM->cpum.s.fChanged |= CPUM_CHANGED_CPUID;
 }
 
 /**
@@ -1141,6 +1142,7 @@ CPUMDECL(void) CPUMClearGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
             AssertMsgFailed(("enmFeature=%d\n", enmFeature));
             break;
     }
+    pVM->cpum.s.fChanged |= CPUM_CHANGED_CPUID;
 }
 
 
