@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 7903 2008-04-11 09:08:46Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 7940 2008-04-11 19:53:53Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -903,6 +903,7 @@ int main()
     GEN_CHECK_OFF(AHCIPort, IPort);
     GEN_CHECK_OFF(AHCIPort, IPortAsync);
     GEN_CHECK_OFF(AHCIPort, PCHSGeometry);
+    GEN_CHECK_OFF(AHCIPort, Led);
     GEN_CHECK_OFF(AHCIPort, cTotalSectors);
     GEN_CHECK_OFF(AHCIPort, cMultSectors);
     GEN_CHECK_OFF(AHCIPort, uATATransferMode);
@@ -918,6 +919,9 @@ int main()
     GEN_CHECK_OFF(AHCI, dev);
     GEN_CHECK_OFF(AHCI, pDevInsHC);
     GEN_CHECK_OFF(AHCI, pDevInsGC);
+    GEN_CHECK_OFF(AHCI, IBase);
+    GEN_CHECK_OFF(AHCI, ILeds);
+    GEN_CHECK_OFF(AHCI, pLedsConnector);
     GEN_CHECK_OFF(AHCI, MMIOBase);
     GEN_CHECK_OFF(AHCI, regHbaCap);
     GEN_CHECK_OFF(AHCI, regHbaCtrl);
