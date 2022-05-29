@@ -1,4 +1,4 @@
-/** $Id: DrvTAP.cpp 11242 2008-08-08 13:14:37Z vboxsync $ */
+/** $Id: DrvTAP.cpp 11246 2008-08-08 13:41:43Z vboxsync $ */
 /** @file
  * Universial TAP network transport driver.
  */
@@ -285,9 +285,6 @@ static DECLCALLBACK(int) drvTAPAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
 #endif
             if (VBOX_SUCCESS(rc))
             {
-                // Assertion removed to be able to support jumbo frames.
-                //AssertMsg(cbRead <= 1536, ("cbRead=%d\n", cbRead));
-
                 /*
                  * Wait for the device to have space for this frame.
                  * Most guests use frame-sized receive buffers, hence non-zero cbMax
