@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7594 2008-03-27 15:20:00Z vboxsync $
+# $Id: Makefile.kmk 7610 2008-03-27 22:48:00Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -551,7 +551,6 @@ ifdef VBOX_WITH_ICHAT_THEATER
 endif
 ifneq ($(BUILD_TYPE),release)
  # non-release builds has some extra features.
- VirtualBox_DEFS         += VBOX_GUI_USE_REFRESH_TIMER
  VirtualBox_DEFS.win     += VBOX_GUI_USE_DDRAW
  VirtualBox_DEFS.linux   += VBOX_GUI_USE_QIMAGE
 endif
