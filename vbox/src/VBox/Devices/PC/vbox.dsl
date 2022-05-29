@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 4774 2007-09-13 14:28:34Z vboxsync $
+// $Id: vbox.dsl 6222 2007-12-30 17:06:27Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -411,6 +411,22 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                         IO (Decode16, 0x0060, 0x0060, 0x00, 0x01)
                         IO (Decode16, 0x0064, 0x0064, 0x00, 0x01)
                         IRQNoFlags () {12}
+                    })
+                }
+
+                // Parallel port
+                Device (LPT)
+                {
+                    Name (_HID, EisaId ("PNP0400"))
+                    Method (_STA, 0, NotSerialized)
+                    {
+                        Return (0x0F)
+                    }
+                    Name (_CRS, ResourceTemplate ()
+                    {
+                        IO (Decode16, 0x0378, 0x0378, 0x08, 0x08)
+                        IO (Decode16, 0x0778, 0x0778, 0x08, 0x08)
+                        IRQNoFlags () {7}
                     })
                 }
             }
