@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 9602 2008-06-11 12:09:31Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 9603 2008-06-11 12:13:02Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -82,6 +82,5 @@ int rtR0InitNative(void)
 
 void rtR0TermNative(void)
 {
-    RTR0MpNotificationTerm(NULL);
 }
 
