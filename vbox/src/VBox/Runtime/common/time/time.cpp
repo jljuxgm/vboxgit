@@ -1,4 +1,4 @@
-/* $Id: time.cpp 5974 2007-12-06 02:43:18Z vboxsync $ */
+/* $Id: time.cpp 5975 2007-12-06 02:45:22Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Time.
  */
@@ -572,7 +572,6 @@ PRTTIME rtTimeNormalizeInternal(PRTTIME pTime)
      * algorithm for points outside it. Feel free to optimize the latter by
      * using some clever formula.
      */
-#if 1
     if (    pTime->i32Year >= OFF_YEAR_IDX_0_YEAR
         &&  pTime->i32Year <  OFF_YEAR_IDX_0_YEAR + RT_ELEMENTS(g_aoffYear))
     {
@@ -581,7 +580,6 @@ PRTTIME rtTimeNormalizeInternal(PRTTIME pTime)
         pTime->u8WeekDay = ((offDays % 7) + 3 + 7) % 7;
     }
     else
-#endif
     {
         int32_t i32Year = pTime->i32Year;
         if (i32Year >= 1970)
