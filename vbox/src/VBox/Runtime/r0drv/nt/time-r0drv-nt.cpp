@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-nt.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: time-r0drv-nt.cpp 9958 2008-06-26 14:25:49Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Nt.
  */
@@ -41,7 +41,7 @@ DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
 {
 #if 1
     ULONGLONG InterruptTime = KeQueryInterruptTime();
-    return (uint64_t)InterruptTime * 100;
+    return (uint64_t)InterruptTime * 100; /* The value is in 100ns, convert to ns units. */
 #else
     LARGE_INTEGER InterruptTime;
     do
