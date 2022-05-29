@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 10895 2008-07-25 23:21:54Z vboxsync $ */
+/* $Id: iokit.cpp 11098 2008-08-04 12:46:44Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -1461,25 +1461,26 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
                     do
                     {
                         /* Check if airport (a bit heuristical - it's com.apple.driver.AirPortBrcm43xx here). */
-                        AssertBreak(darwinDictGetString(PropsRef, CFSTR("CFBundleIdentifier"), szTmp, sizeof(szTmp)));
+                        darwinDictGetString(PropsRef, CFSTR("CFBundleIdentifier"), szTmp, sizeof(szTmp));
                         bool fWireless;
                         bool fAirPort = fWireless = strstr(szTmp, ".AirPort") != NULL;
 
                         /* Check if it's USB. */
-                        AssertBreak(darwinDictGetString(PropsRef, CFSTR("IOProviderClass"), szTmp, sizeof(szTmp)));
+                        darwinDictGetString(PropsRef, CFSTR("IOProviderClass"), szTmp, sizeof(szTmp));
                         bool fUSB = strstr(szTmp, "USB") != NULL;
+
+
+                        /* Is it builtin? */
+                        bool fBuiltin;
+                        darwinDictGetBool(IfPropsRef, CFSTR("IOBuiltin"), &fBuiltin);
+
+                        /* Is it the primary interface  */
+                        bool fPrimaryIf;
+                        darwinDictGetBool(IfPropsRef, CFSTR("IOPrimaryInterface"), &fPrimaryIf);
 
                         /* Get the MAC address. */
                         PDMMAC Mac;
                         AssertBreak(darwinDictGetData(PropsRef, CFSTR("IOMACAddress"), &Mac, sizeof(Mac)));
-
-                        /* Is it builtin? */
-                        bool fBuiltin;
-                        AssertBreak(darwinDictGetBool(IfPropsRef, CFSTR("IOBuiltin"), &fBuiltin));
-
-                        /* Is it the primary interface  */
-                        bool fPrimaryIf;
-                        AssertBreak(darwinDictGetBool(IfPropsRef, CFSTR("IOPrimaryInterface"), &fPrimaryIf));
 
                         /* The BSD Name from the interface dictionary. */
                         char szBSDName[RT_SIZEOFMEMB(DARWINETHERNIC, szBSDName)];
