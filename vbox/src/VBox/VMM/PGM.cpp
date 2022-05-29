@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 7948 2008-04-14 09:35:57Z vboxsync $ */
+/* $Id: PGM.cpp 7949 2008-04-14 09:50:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2910,7 +2910,7 @@ int pgmR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
 
         //case PGMMODE_PAE_NX:
         case PGMMODE_PAE:
-            if (!HWACCMR3IsAllowed(pVM))
+            if (!HWACCMIsEnabled(pVM))
             {
                 VMSetRuntimeError(pVM, true, "PAEmodeDependsHwaccm",
                                   N_("The guest is trying to switch to the PAE mode which is currently supported by VirtualBox only in VT-x mode or AMD-V mode. Either enable hardware virtualization for this VM or choose another flavour of the guest kernel (install a desktop kernel instead of a server kernel)"));
