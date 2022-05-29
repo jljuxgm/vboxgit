@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 7559 2008-03-25 17:08:42Z vboxsync $ */
+/* $Id: VMReq.cpp 7634 2008-03-28 17:08:51Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -41,39 +41,6 @@
 *   Internal Functions                                                         *
 *******************************************************************************/
 static int  vmR3ReqProcessOneU(PUVM pUVM, PVMREQ pReq);
-
-
-/**
- * Allocate and queue a call request.
- *
- * If it's desired to poll on the completion of the request set cMillies
- * to 0 and use VMR3ReqWait() to check for completation. In the other case
- * use RT_INDEFINITE_WAIT.
- * The returned request packet must be freed using VMR3ReqFree().
- *
- * @returns VBox status code.
- *          Will not return VERR_INTERRUPTED.
- * @returns VERR_TIMEOUT if cMillies was reached without the packet being completed.
- *
- * @param   pUVM            Pointer to the user mode VM structure.
- * @param   ppReq           Where to store the pointer to the request.
- *                          This will be NULL or a valid request pointer not matter what happends.
- * @param   cMillies        Number of milliseconds to wait for the request to
- *                          be completed. Use RT_INDEFINITE_WAIT to only
- *                          wait till it's completed.
- * @param   pfnFunction     Pointer to the function to call.
- * @param   cArgs           Number of arguments following in the ellipsis.
- *                          Not possible to pass 64-bit arguments!
- * @param   ...             Function arguments.
- */
-VMR3DECL(int) VMR3ReqCallU(PUVM pUVM, PVMREQ *ppReq, unsigned cMillies, PFNRT pfnFunction, unsigned cArgs, ...)
-{
-    va_list va;
-    va_start(va, cArgs);
-    int rc = VMR3ReqCallVU(pUVM, ppReq, cMillies, VMREQFLAGS_VBOX_STATUS, pfnFunction, cArgs, va);
-    va_end(va);
-    return rc;
-}
 
 
 /**
