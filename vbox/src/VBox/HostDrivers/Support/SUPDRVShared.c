@@ -1,4 +1,4 @@
-/* $Revision: 6514 $ */
+/* $Revision: 6790 $ */
 /** @file
  * VirtualBox Support Driver - Shared code.
  */
@@ -1580,6 +1580,8 @@ SUPR0DECL(int) SUPR0ContFree(PSUPDRVSESSION pSession, RTHCUINTPTR uPtr)
 
 /**
  * Allocates a chunk of page aligned memory with fixed physical backing below 4GB.
+ *
+ * The memory isn't zeroed.
  *
  * @returns IPRT status code.
  * @param   pSession    Session data.
