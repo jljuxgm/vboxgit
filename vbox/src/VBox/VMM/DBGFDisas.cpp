@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 7136 2008-02-25 18:31:48Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 7484 2008-03-18 10:36:12Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Disassembler.
  */
@@ -424,6 +424,7 @@ DBGFR3DECL(int) DBGFR3DisasInstrEx(PVM pVM, RTSEL Sel, RTGCPTR GCPtr, unsigned f
                     {
                         case CPUMODE_16BIT: GCPtrTarget &= UINT16_MAX; break;
                         case CPUMODE_32BIT: GCPtrTarget &= UINT32_MAX; break;
+                        default: break;
                     }
 #ifdef DEBUG_bird   /* an experiment. */
                     DBGFSYMBOL  Sym;
