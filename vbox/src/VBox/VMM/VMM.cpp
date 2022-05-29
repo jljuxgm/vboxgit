@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 9281 2008-06-02 08:28:30Z vboxsync $ */
+/* $Id: VMM.cpp 9539 2008-06-09 12:15:55Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1698,6 +1698,10 @@ VMMR3DECL(int) VMMR3SelectSwitcher(PVM pVM, VMMSWITCHER enmSwitcher)
         AssertMsgFailed(("Invalid input enmSwitcher=%d\n", enmSwitcher));
         return VERR_INVALID_PARAMETER;
     }
+
+    /* Do nothing if the switcher is disabled. */
+    if (pVM->vmm.s.fSwitcherDisabled)
+        return VINF_SUCCESS;
 
     /*
      * Select the new switcher.

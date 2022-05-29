@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 9300 2008-06-02 13:30:12Z vboxsync $ */
+/* $Id: PGMAll.cpp 9539 2008-06-09 12:15:55Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -580,7 +580,7 @@ PGMDECL(int) PGMInvalidatePage(PVM pVM, RTGCPTR GCPtrPage)
 {
     int rc;
 
-    LogFlow(("PGMInvalidatePage: GCPtrPage=%VGv\n", GCPtrPage));
+    Log2(("PGMInvalidatePage: GCPtrPage=%VGv\n", GCPtrPage));
 
     /** @todo merge PGMGCInvalidatePage with this one */
 
