@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6404 2008-01-21 11:12:36Z vboxsync $
+# $Id: Config.kmk 6417 2008-01-21 16:45:17Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -1739,7 +1739,7 @@ ifeq ($(BUILD_TARGET),win)
 	VBOX_VERSION_MAJOR_NR=$(VBOX_VERSION_MAJOR) \
 	VBOX_VERSION_MINOR_NR=$(VBOX_VERSION_MINOR) \
 	VBOX_VERSION_BUILD_NR=$(VBOX_VERSION_BUILD) \
-	VBOX_SVN_REV=$(VBOX_SVN_REV)
+	VBOX_SVN_REV_NR=$(VBOX_SVN_REV)
  TEMPLATE_VBOXR3EXE_SDKS               = WINPSDK
  ifdef VBOX_USE_VCC80
   TEMPLATE_VBOXR3EXE_CXXFLAGS          = -Zi -Zl -GR- -EHs-c- -GF- -MD -W3 -wd4065 -wd4244 -wd4996 -Zc:wchar_t- $(VBOX_VCC_OPT) $(VBOX_VCC_FP)
@@ -2831,7 +2831,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6404 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6417 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
