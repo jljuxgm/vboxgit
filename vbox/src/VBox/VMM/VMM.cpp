@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VMM.cpp 8542 2008-05-02 17:26:30Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -254,7 +254,7 @@ static int vmmR3InitCoreCode(PVM pVM)
                 void    *pvR3;
                 RTHCPHYS HCPhys;
                 RTUINT   cb;
-            } aBadTries[16];
+            } aBadTries[128];
             unsigned i = 0;
             do
             {
