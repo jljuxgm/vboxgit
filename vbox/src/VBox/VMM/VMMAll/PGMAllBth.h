@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 7808 2008-04-08 14:25:58Z vboxsync $ */
+/* $Id: PGMAllBth.h 7819 2008-04-09 08:00:14Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2670,7 +2670,8 @@ PGM_BTH_DECL(int, SyncCR3)(PVM pVM, uint32_t cr0, uint32_t cr3, uint32_t cr4, bo
         if (pPDSrc == NULL)
         {
             /* PDPT not present */
-            pVM->pgm.s.CTXMID(p,PaePDPT)->a[iPDPTE].n.u1Present = 0;
+            /** @todo expensive */
+            ASMMemZero32(pVM->pgm.s.CTXMID(ap,PaePDs)[iPDPTE], PAGE_SIZE);
             continue;
         }
 #  else  /* PGM_GST_TYPE != PGM_TYPE_PAE && PGM_GST_TYPE != PGM_TYPE_AMD64 */
