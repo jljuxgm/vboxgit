@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 9470 2008-06-06 12:19:12Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 9477 2008-06-06 13:23:08Z vboxsync $ */
 /** @file
  * VBoxDrv - FreeBSD specifics.
  */
@@ -529,6 +529,7 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
     NOREF(prc);
     return false;
 }
+
 
 bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
 {
