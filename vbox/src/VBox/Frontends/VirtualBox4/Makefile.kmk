@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10420 2008-07-09 13:48:36Z vboxsync $
+# $Id: Makefile.kmk 10429 2008-07-09 14:17:45Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -875,7 +875,7 @@ $(VBOX_LICENSE_BIN): $(VBOX_LICENSE_SRC)
 	$(call MSG_GENERATE,,$@)
 	$(QUIET)$(CP) $< $@
 
-$(PATH_BIN)/VirtualBox4: $(VBOX_LICENSE_BIN)
+$(PATH_BIN)/VirtualBox: $(VBOX_LICENSE_BIN)
 endif
 endif
 
