@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10245 2008-07-04 17:31:35Z vboxsync $
+# $Id: Makefile.kmk 11673 2008-08-26 15:44:59Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -72,7 +72,6 @@ VBoxSDL_DEFS.win.x86 = _WIN32_WINNT=0x0500
 VBoxSDL_DEFS.win.amd64 = _WIN32_WINNT=0x0510
 
 VBoxSDL_INCS = \
-	$(PATH_BIN)/sdk/include \
 	$(PATH_VBoxSDL)
 ifeq ($(filter-out freebsd linux netbsd openbsd solaris,$(KBUILD_TARGET)),) # X11
 VBoxSDL_INCS += \
