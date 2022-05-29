@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 11321 2008-08-11 10:12:28Z vboxsync $ */
+/* $Id: PerformanceImpl.h 11583 2008-08-22 19:05:15Z vboxsync $ */
 
 /** @file
  *
@@ -72,6 +72,7 @@ public:
     // IPerformanceMetric properties
     STDMETHOD(COMGETTER(MetricName)) (BSTR *aMetricName);
     STDMETHOD(COMGETTER(Object)) (IUnknown **anObject);
+    STDMETHOD(COMGETTER(Description)) (BSTR *aDescription);
     STDMETHOD(COMGETTER(Period)) (ULONG *aPeriod);
     STDMETHOD(COMGETTER(Count)) (ULONG *aCount);
     STDMETHOD(COMGETTER(Unit)) (BSTR *aUnit);
@@ -94,6 +95,7 @@ private:
 
         Bstr             name;
         ComPtr<IUnknown> object;
+        Bstr             description;
         ULONG            period;
         ULONG            count;
         Bstr             unit;

@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 11571 2008-08-22 12:19:56Z vboxsync $ */
+/* $Id: Performance.cpp 11583 2008-08-22 19:05:15Z vboxsync $ */
 
 /** @file
  *
@@ -25,9 +25,6 @@
  * @todo list:
  *
  * 1) Detection of erroneous metric names
- * 2) Wildcards in metric names
- * 3) Darwin backend
- * 4) [OS/2 backend]
  */
 
 #include <VBox/com/array.h>

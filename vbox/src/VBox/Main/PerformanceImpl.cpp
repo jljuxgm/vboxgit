@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 11481 2008-08-19 12:13:53Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 11583 2008-08-22 19:05:15Z vboxsync $ */
 
 /** @file
  *
@@ -509,13 +509,14 @@ void PerformanceMetric::FinalRelease()
 
 HRESULT PerformanceMetric::init (pm::Metric *aMetric)
 {
-    m.name   = aMetric->getName();
-    m.object = aMetric->getObject();
-    m.period = aMetric->getPeriod();
-    m.count  = aMetric->getLength();
-    m.unit   = aMetric->getUnit();
-    m.min    = aMetric->getMinValue();
-    m.max    = aMetric->getMaxValue();
+    m.name        = aMetric->getName();
+    m.object      = aMetric->getObject();
+    m.description = aMetric->getDescription();
+    m.period      = aMetric->getPeriod();
+    m.count       = aMetric->getLength();
+    m.unit        = aMetric->getUnit();
+    m.min         = aMetric->getMinValue();
+    m.max         = aMetric->getMaxValue();
     return S_OK;
 }
 
@@ -535,6 +536,12 @@ STDMETHODIMP PerformanceMetric::COMGETTER(MetricName) (BSTR *aMetricName)
 STDMETHODIMP PerformanceMetric::COMGETTER(Object) (IUnknown **anObject)
 {
     m.object.queryInterfaceTo(anObject);
+    return S_OK;
+}
+
+STDMETHODIMP PerformanceMetric::COMGETTER(Description) (BSTR *aDescription)
+{
+    m.description.cloneTo (aDescription);
     return S_OK;
 }
 
