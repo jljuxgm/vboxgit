@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 11098 2008-08-04 12:46:44Z vboxsync $ */
+/* $Id: iokit.cpp 11100 2008-08-04 12:59:25Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -1499,6 +1499,8 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
 
                         /*
                          * Create a base name for it, we'll sort it later and add numbers where required.
+                         * Note! The ConsoleImpl2.cpp code ASSUMES things about the name. It is also
+                         *       stored in the VM config files. (really bright idea)
                          */
                         /** @todo not sure about "Wireless" here, none of my wireless sticks work on the mac. */
                         size_t cchName = RTStrPrintf(szTmp, sizeof(szTmp), "%s: %s%s",
