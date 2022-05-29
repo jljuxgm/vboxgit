@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 8820 2008-05-14 19:49:42Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 8821 2008-05-14 20:44:19Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -160,6 +160,7 @@ PGMR3DECL(int) PGMR3DbgHCPtr2HCPhys(PVM pVM, RTHCPTR HCPtr, PRTHCPHYS pHCPhys)
 #include <VBox/dbgf.h>
 DBGFR3DECL(PDBGFADDRESS) DBGFR3AddrFromFlat(PVM pVM, PDBGFADDRESS pAddress, RTGCUINTPTR FlatPtr)
 {
+    return NULL;
 }
 
 DBGFR3DECL(int) DBGFR3AddrFromSelOff(PVM pVM, PDBGFADDRESS pAddress, RTSEL Sel, RTUINTPTR off)
