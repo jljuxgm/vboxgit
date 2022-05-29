@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 4935 2007-09-20 14:53:38Z vboxsync $ */
+/* $Id: SUPDrv-os2.cpp 7206 2008-02-28 16:42:10Z vboxsync $ */
 /** @file
  * VBoxDrv - OS/2 specifics.
  */
@@ -376,6 +376,24 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
     return false;
 }
 
+/**
+ * Executes a callback handler on a specific cpu or all cpus
+ *
+ * @returns IPRT status code.
+ * @param   pSession    The session.
+ * @param   pfnCallback Callback handler
+ * @param   pvUser      The first user argument.
+ * @param   uCpu        Cpu id or SUPDRVEXECCALLBACK_CPU_ALL for all cpus
+ */
+int  VBOXCALL   supdrvOSExecuteCallback(PSUPDRVSESSION pSession, PFNSUPDRVEXECCALLBACK pfnCallback, void *pvUser, unsigned uCpu)
+{
+    NOREF(pSession);
+    NOREF(pfnCallback);
+    NOREF(pvUser);
+    NOREF(uCpu);
+    /** @todo */
+    return VERR_NOT_IMPLEMENTED;
+}
 
 /**
  * Callback for writing to the log buffer.
