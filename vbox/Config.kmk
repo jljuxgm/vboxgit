@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5809 2007-11-21 09:43:49Z vboxsync $
+# $Id: Config.kmk 5831 2007-11-26 12:22:44Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -305,7 +305,7 @@ ifeq ($(BUILD_TARGET),solaris)
  VBOX_WITH_TESTSUITE=
  VBOX_WITH_USB=
  VBOX_WITH_EHCI=
- VBOX_WITH_DOCS=
+ #VBOX_WITH_DOCS=
 endif
 
 ifeq ($(BUILD_TARGET),freebsd)
@@ -2652,7 +2652,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5809 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5831 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifneq ($(USERNAME),bird) # Wastes nearly half a second on windows, very annoying. TODO: $(which ).
   ifneq ($(shell $(SVN) --version > /dev/null 2>&1 || echo 'svn not installed'),)
