@@ -1,6 +1,7 @@
-/* $Id: DevSB16.cpp 9338 2008-06-03 07:46:53Z vboxsync $ */
+/* $Id: DevSB16.cpp 11167 2008-08-06 00:29:13Z vboxsync $ */
 /** @file
- * VBox SB16 Audio Controller.
+ * DevSB16 - VBox SB16 Audio Controller.
+ *
  * (r3917 sb16.c)
  *
  * @todo hiccups on NT4 and Win98.
@@ -115,7 +116,7 @@ static struct {
 
 typedef struct SB16State {
 #ifdef VBOX
-    PPDMDEVINS pDevIns;
+    PPDMDEVINSR3 pDevIns;
 #endif
     QEMUSoundCard card;
 #ifndef VBOX
