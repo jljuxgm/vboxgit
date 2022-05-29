@@ -1,4 +1,4 @@
-# $Id: Config.kmk 10863 2008-07-24 17:40:37Z vboxsync $
+# $Id: Config.kmk 10874 2008-07-24 21:56:56Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -322,6 +322,8 @@ endif
 VBOX_WITH_GUEST_PROPS = 1
 # Enable performance API.
 VBOX_WITH_RESOURCE_USAGE_API = 1
+# Enables all the doxgen bits.
+VBOX_WITH_ALL_DOXYGEN_TARGETS = 1
 
 
 #
@@ -2942,7 +2944,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10863 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10874 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
