@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11551 2008-08-21 17:16:02Z vboxsync $
+# $Id: Makefile.kmk 11566 2008-08-22 08:29:30Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1113,10 +1113,11 @@ VBoxXPCOM_TEMPLATE = XPCOM
 VBoxXPCOM_NAME = $(basename $(notdir $(LIB_XPCOM)))
 VBoxXPCOM_DEFS = BUILD_DCONNECT="1" _IMPL_NS_COM
 ifdef VBOX_WITH_XPCOM_NAMESPACE_CLEANUP
-VBoxXPCOM_LDFLAGS.linux     = -Wl,--version-script=$(XPCOM_C_NAMESPACE_MAP)
-VBoxXPCOM_DEPS.linux       += $(XPCOM_C_NAMESPACE_MAP)
-VBoxXPCOM_LDFLAGS.solaris   = -Wl,-M,$(XPCOM_C_NAMESPACE_MAP)
-VBoxXPCOM_DEPS.solaris     += $(XPCOM_C_NAMESPACE_MAP)
+# @todo disabled, causes trouble at the moment
+#VBoxXPCOM_LDFLAGS.linux     = -Wl,--version-script=$(XPCOM_C_NAMESPACE_MAP)
+#VBoxXPCOM_DEPS.linux       += $(XPCOM_C_NAMESPACE_MAP)
+#VBoxXPCOM_LDFLAGS.solaris   = -Wl,-M,$(XPCOM_C_NAMESPACE_MAP)
+#VBoxXPCOM_DEPS.solaris     += $(XPCOM_C_NAMESPACE_MAP)
 endif
 VBoxXPCOM_SOURCES = \
 	xpcom/build/nsXPComInit.cpp \
