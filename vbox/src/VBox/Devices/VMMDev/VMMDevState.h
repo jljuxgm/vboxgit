@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 7635 2008-03-28 17:15:38Z vboxsync $ */
+/* $Id: VMMDevState.h 7681 2008-04-01 13:06:23Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, Internal header.
  */
@@ -155,6 +155,9 @@ typedef struct VMMDevState
 
     /** Set if backdoor logging should be disabled (output will be ignored then) */
     bool fBackdoorLogDisabled;
+
+    /** Don't clear credentials */
+    bool fKeepCredentials;
 
 #ifdef VBOX_HGCM
     /** List of pending HGCM requests, used for saving the HGCM state. */
