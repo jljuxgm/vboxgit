@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 10606 2008-07-14 15:58:53Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 10626 2008-07-15 07:38:26Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -23,6 +23,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#include <iprt/mem.h>
 #include <VBox/log.h>
 
 #include "VBGLR3Internal.h"
@@ -57,7 +58,15 @@ VBGLR3DECL(int) VbglR3WriteLog(const char *pch, size_t cb)
     /*
      * Handle the entire request in one go.
      */
-    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_LOG(cb), (char *)pch, cb);
+    if (!pch || !cb)
+        return VINF_SUCCESS;
+
+    void *pvTmp = RTMemDup(pch, cb);
+    if (!pvTmp)
+        return VERR_NO_MEMORY;
+    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_LOG(cb), pvTmp, cb);
+    RTMemFree(pvTmp);
+    return rc;
 
 #else
     /*
