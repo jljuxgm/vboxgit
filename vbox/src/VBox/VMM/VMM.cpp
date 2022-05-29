@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 7924 2008-04-11 15:47:21Z vboxsync $ */
+/* $Id: VMM.cpp 7925 2008-04-11 15:48:11Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1996,10 +1996,7 @@ VMMR3DECL(int) VMMR3HwAccRunGC(PVM pVM)
         PVMMR0LOGGER pR0Logger = pVM->vmm.s.pR0Logger;
         if (    pR0Logger
             &&  pR0Logger->Logger.offScratch > 0)
-{
-            RTLogWriteStdOut(pR0Logger->Logger.achScratch, pR0Logger->Logger.offScratch);
             RTLogFlushToLogger(&pR0Logger->Logger, NULL);
-}
 #endif /* !LOG_ENABLED */
         if (rc != VINF_VMM_CALL_HOST)
         {
