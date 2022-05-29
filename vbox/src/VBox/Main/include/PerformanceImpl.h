@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 10779 2008-07-21 14:29:29Z vboxsync $ */
+/* $Id: PerformanceImpl.h 10959 2008-07-29 21:13:02Z vboxsync $ */
 
 /** @file
  *
@@ -237,7 +237,7 @@ public:
 
 private:
 
-    static void staticSamplerCallback (PRTTIMER pTimer, void *pvUser, uint64_t iTick);
+    static void staticSamplerCallback (RTTIMERLR hTimerLR, void *pvUser, uint64_t iTick);
     void samplerCallback();
 
     typedef std::list<pm::Metric*> MetricList;
@@ -256,7 +256,7 @@ private:
 
         BaseMetricList     baseMetrics;
         MetricList         metrics;
-        PRTTIMER           sampler;
+        RTTIMERLR          sampler;
         pm::MetricFactory *factory;
     };
 
