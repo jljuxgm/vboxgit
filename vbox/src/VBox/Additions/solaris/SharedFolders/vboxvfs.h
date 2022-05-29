@@ -1,4 +1,4 @@
-/* $Id: vboxvfs.h 10140 2008-07-03 08:45:37Z vboxsync $ */
+/* $Id: vboxvfs.h 10347 2008-07-08 06:23:10Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Internal Header.
  */
@@ -61,7 +61,6 @@ typedef struct vboxvfs_globinfo
     int             Uid;
     int             Gid;
     vfs_t           *pVFS;
-    vnode_t         *pVNodeDev;
     vboxvfs_vnode_t *pVNodeRoot;
     kmutex_t        MtxFS;
 } vboxvfs_globinfo_t;
