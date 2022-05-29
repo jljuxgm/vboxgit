@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 9659 2008-06-12 12:37:02Z vboxsync $ */
+/* $Id: EMAll.cpp 9661 2008-06-12 13:11:40Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1867,7 +1867,7 @@ EMDECL(int) EMInterpretDRxWrite(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRe
     uint64_t val;
     int      rc;
 
-    if (CPUMIsGuestInLongMode(pVM))
+    if (CPUMIsGuestIn64BitCode(pVM, pRegFrame))
     {
         rc = DISFetchReg64(pRegFrame, SrcRegGen, &val);
     }
@@ -1904,7 +1904,7 @@ EMDECL(int) EMInterpretDRxRead(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestReg
 
     int rc = CPUMGetGuestDRx(pVM, SrcRegDrx, &val64);
     AssertMsgRCReturn(rc, ("CPUMGetGuestDRx %d failed\n", SrcRegDrx), VERR_EM_INTERPRETER);
-    if (CPUMIsGuestInLongMode(pVM))
+    if (CPUMIsGuestIn64BitCode(pVM, pRegFrame))
     {
         rc = DISWriteReg64(pRegFrame, DestRegGen, val64);
     }

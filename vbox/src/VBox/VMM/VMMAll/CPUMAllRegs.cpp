@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 9649 2008-06-12 09:48:30Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 9661 2008-06-12 13:11:40Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1796,4 +1796,3 @@ CPUMDECL(CPUMMODE) CPUMGetGuestMode(PVM pVM)
 
     return enmMode;
 }
-
