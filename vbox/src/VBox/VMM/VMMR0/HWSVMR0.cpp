@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10011 2008-06-30 09:43:49Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10014 2008-06-30 12:02:49Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -709,6 +709,9 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     }
     else
     {
+        /* Filter out the MSR_K6_LME bit or else AMD-V expects amd64 shadow paging. */
+        pVMCB->guest.u64EFER &= ~MSR_K6_EFER_LME;
+
         pVM->hwaccm.s.svm.pfnVMRun = SVMVMRun;
     }
 
