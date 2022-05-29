@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 6914 2008-02-11 23:17:43Z vboxsync $ */
+/* $Id: VMM.cpp 7015 2008-02-19 13:14:15Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1463,7 +1463,9 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, uin
              * Disassemble it.
              */
             RTLogPrintf("  %s: offCode=%#x cbCode=%#x\n", pszDesc, offCode, cbCode);
-            DISCPUSTATE Cpu = {0};
+            DISCPUSTATE Cpu;
+
+            memset(&Cpu, 0, sizeof(Cpu));
             Cpu.mode = CPUMODE_32BIT;
             while (cbCode > 0)
             {

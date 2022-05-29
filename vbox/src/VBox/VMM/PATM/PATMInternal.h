@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: PATMInternal.h 7015 2008-02-19 13:14:15Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -219,7 +219,7 @@ typedef struct _PATCHINFO
 {
     uint32_t        uState;
     uint32_t        uOldState;
-    uint32_t        uOpMode;
+    DISCPUMODE      uOpMode;
 
     GCPTRTYPE(uint8_t *)  pPrivInstrGC;    //GC pointer of privileged instruction
     R3PTRTYPE(uint8_t *)  pPrivInstrHC;    //HC pointer of privileged instruction
