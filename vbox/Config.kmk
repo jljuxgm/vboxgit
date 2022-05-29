@@ -1,4 +1,4 @@
-# $Id: Config.kmk 10298 2008-07-07 08:50:33Z vboxsync $
+# $Id: Config.kmk 10309 2008-07-07 11:25:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -966,7 +966,7 @@ VBOX_MAKESELF  ?= $(PATH_DEVTOOLS)/common/makeself/v2.1.4_1/makeself.sh
 VBOX_PATH_HTML_HELP_WORKSHOP ?= $(PATH_DEVTOOLS)/win.x86/HTML_Help_Workshop/v1.3/
 
 # Path to the null soft installer.
-VBOX_PATH_NSIS ?= $(PATH_DEVTOOLS)/win.x86/nsis/v2.33-log-nsscm
+VBOX_PATH_NSIS ?= $(PATH_DEVTOOLS)/win.x86/nsis/v2.33-log-nsscm-r1
 
 # Path to AutoIt3.
 VBOX_PATH_AUTOIT3 ?= $(PATH_DEVTOOLS)/win.x86/autoit/v3.2.10.0
@@ -2897,7 +2897,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10298 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10309 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
