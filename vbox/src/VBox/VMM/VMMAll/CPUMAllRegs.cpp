@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 10097 2008-07-02 12:28:55Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 10122 2008-07-02 21:22:41Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1275,7 +1275,7 @@ CPUMDECL(void) CPUMClearGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
 }
 
 /**
- * Gets the CPU vendor 
+ * Gets the CPU vendor
  *
  * @returns CPU vendor
  * @param   pVM     The VM handle.
@@ -1823,7 +1823,7 @@ CPUMDECL(uint32_t) CPUMGetGuestCPL(PVM pVM, PCPUMCTXCORE pCtxCore)
     {
         if (RT_LIKELY(!pCtxCore->eflags.Bits.u1VM))
         {
-            cpl = (pCtxCore->cs & X86_SEL_RPL);
+            cpl = (pCtxCore->ss & X86_SEL_RPL);
 #ifndef IN_RING0
             if (cpl == 1)
                 cpl = 0;
@@ -1852,7 +1852,7 @@ CPUMDECL(CPUMMODE) CPUMGetGuestMode(PVM pVM)
     CPUMMODE enmMode;
     if (!(pVM->cpum.s.Guest.cr0 & X86_CR0_PE))
         enmMode = CPUMMODE_REAL;
-    else 
+    else
     if (!(pVM->cpum.s.Guest.msrEFER & MSR_K6_EFER_LMA))
         enmMode = CPUMMODE_PROTECTED;
     else
