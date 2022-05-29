@@ -1,4 +1,4 @@
-/* $Id: solaudio.c 7525 2008-03-25 10:17:49Z vboxsync $ */
+/* $Id: solaudio.c 7661 2008-03-31 13:48:00Z vboxsync $ */
 /** @file
  * VirtualBox Audio Driver - Solaris host.
  */
@@ -397,13 +397,13 @@ static int solaudio_run_out (HWVoiceOut *hw)
         if (cbWritten < 0)
             break;
 
-        /* Increment eof marker for synchronous buffer processed */
-        write (pSol->AudioDev, NULL, 0);
-        pSol->cBuffersPlayed++;
-
         hw->rpos   = (hw->rpos + csToWrite) % hw->samples;
         csSamples -= csToWrite;
     }
+
+    /* Increment eof marker for synchronous buffer processed */
+    write (pSol->AudioDev, NULL, 0);
+    pSol->cBuffersPlayed++;
     return csDecr;
 }
 
