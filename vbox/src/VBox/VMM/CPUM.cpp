@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 10569 2008-07-12 15:59:27Z vboxsync $ */
+/* $Id: CPUM.cpp 10570 2008-07-12 16:01:08Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -376,6 +376,9 @@ static int cpumR3CpuIdInit(PVM pVM)
      *        ECX - extensions (ignored for now)
      * Safe to expose
      */
+    if (!(pCPUM->aGuestCpuIdStd[1].ecx & X86_CPUID_FEATURE_ECX_MONITOR))
+        pCPUM->aGuestCpuIdStd[5].eax = pCPUM->aGuestCpuIdStd[5].ebx = 0;
+
     pCPUM->aGuestCpuIdStd[5].ecx = pCPUM->aGuestCpuIdStd[5].edx = 0;
 
     /*
