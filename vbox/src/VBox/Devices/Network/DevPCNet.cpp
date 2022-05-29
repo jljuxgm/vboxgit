@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 11436 2008-08-14 18:26:29Z vboxsync $ */
+/* $Id: DevPCNet.cpp 11437 2008-08-14 18:34:57Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4396,7 +4396,7 @@ static DECLCALLBACK(int) pcnetReceive(PPDMINETWORKPORT pInterface, const void *p
      * (excluding CRC which is not transferred).
      * It consists of 14-byte header [+ 4-byte vlan tag] + 1500-byte body.
      */
-    register maxFrameSize = ((uint16_t*)pvBuf)[6] == 0x81 ? 1518 : 1514;
+    register unsigned maxFrameSize = ((uint16_t*)pvBuf)[6] == 0x81 ? 1518 : 1514;
     if (RT_UNLIKELY(cb > maxFrameSize))
     {
         if (RT_UNLIKELY(firstBigFrameLoss))
@@ -4404,7 +4404,7 @@ static DECLCALLBACK(int) pcnetReceive(PPDMINETWORKPORT pInterface, const void *p
             firstBigFrameLoss = false;
             Log(("#%d Received frame exceeds max size (%u > %u). "
                  "Further frame losses will be reported at level5\n",
-                 PCNET_INST_NR, (unsigned)cb, (unsigned)maxFrameSize));
+                 PCNET_INST_NR, (unsigned)cb, maxFrameSize));
         }
         else
             Log5(("#%d Received frame exceeds max size (%u > %u)\n",
