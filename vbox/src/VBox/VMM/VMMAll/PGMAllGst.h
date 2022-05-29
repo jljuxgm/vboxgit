@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 7740 2008-04-04 13:18:03Z vboxsync $ */
+/* $Id: PGMAllGst.h 7806 2008-04-08 14:01:25Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -473,7 +473,7 @@ PGM_GST_DECL(int, UnmapCR3)(PVM pVM)
     pVM->pgm.s.pGstPaePDPTHC = 0;
     pVM->pgm.s.pGstPaePDPTGC = 0;
     /** PAE todo: pVM->pgm.s.apGstPaePDsHC? -> unmap?? */
-    AssertFailed();
+    Assert(pVM->pgm.s.fMappingsFixed);
 
 #elif PGM_GST_TYPE == PGM_TYPE_AMD64
 //#error not implemented
