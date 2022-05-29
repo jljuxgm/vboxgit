@@ -1,4 +1,4 @@
-# $Id: Config.kmk 9145 2008-05-27 08:36:18Z vboxsync $
+# $Id: Config.kmk 9149 2008-05-27 09:27:29Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -292,6 +292,8 @@ ifeq ($(KBUILD_TARGET),solaris)
 endif
 # Temporary switch for enabling / disabling the new USB code on Darwin.
 VBOX_WITH_NEW_USB_CODE_ON_DARWIN=1
+# Use the new VBI module on Solaris.
+#VBOX_WITH_SOLARIS_VBI = 1
 
 #
 # Skip stuff.
@@ -1776,6 +1778,9 @@ TEMPLATE_VBOXR0DRV_TOOL                = $(VBOX_GCC_TOOL)
 TEMPLATE_VBOXR0DRV_DEFS                = _KERNEL _STRICT_STDC IN_RING0 IN_RT_R0
 TEMPLATE_VBOXR0DRV_INCS                = $(VBOX_SOLARIS_SYS_INCS)
 TEMPLATE_VBOXR0DRV_LDFLAGS             = -r
+ifdef VBOX_WITH_SOLARIS_VBI
+ TEMPLATE_VBOXR0DRV_LDFLAGS           += -dy -N misc/vbi
+endif
 TEMPLATE_VBOXR0DRV_LDFLAGS.amd64       = -64
 # Exclude -Wall because of solaris headers' pragma ident warnings that gcc refuses to supress.
 TEMPLATE_VBOXR0DRV_CFLAGS              = -Wno-trigraphs -Wpointer-arith -Winline $(VBOX_GCC_Wno-pointer-sign) \
@@ -2981,7 +2986,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9145 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9149 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
