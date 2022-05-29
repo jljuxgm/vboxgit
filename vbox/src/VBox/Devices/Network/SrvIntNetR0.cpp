@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 10548 2008-07-11 19:36:43Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 10549 2008-07-11 19:42:41Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1204,12 +1204,8 @@ static int intnetNetworkClose(PINTNETNETWORK pNetwork, PSUPDRVSESSION pSession)
     LogFlow(("intnetNetworkClose: pNetwork=%p pSession=%p\n", pNetwork, pSession));
     AssertPtrReturn(pSession, VERR_INVALID_PARAMETER);
     AssertPtrReturn(pNetwork, VERR_INVALID_PARAMETER);
-    PINTNET         pIntNet = pNetwork->pIntNet;
-    RTSPINLOCKTMP   Tmp = RTSPINLOCKTMP_INITIALIZER;
 
-    RTSpinlockAcquire(pIntNet->Spinlock, &Tmp);
     int rc = SUPR0ObjRelease(pNetwork->pvObj, pSession);
-    RTSpinlockRelease(pIntNet->Spinlock, &Tmp);
     LogFlow(("intnetNetworkClose: return %Vrc\n", rc));
     return rc;
 }
@@ -1345,11 +1341,7 @@ static int intnetOpenNetwork(PINTNET pIntNet, PSUPDRVSESSION pSession, const cha
                         if (RT_SUCCESS(rc))
                             *ppNetwork = pCur;
                         else
-                        {
-                            RTSpinlockAcquire(pIntNet->Spinlock, &Tmp);
                             SUPR0ObjRelease(pCur->pvObj, pSession);
-                            RTSpinlockRelease(pIntNet->Spinlock, &Tmp);
-                        }
                     }
                 }
                 else
