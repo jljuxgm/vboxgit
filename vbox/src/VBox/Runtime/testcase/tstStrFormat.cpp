@@ -1,4 +1,4 @@
-/* $Id: tstStrFormat.cpp 10905 2008-07-28 11:26:12Z vboxsync $ */
+/* $Id: tstStrFormat.cpp 11376 2008-08-13 07:38:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - String formatting.
  */
@@ -411,6 +411,13 @@ int main()
     CHECKSTR("cmd        args                           description");
 
     cch = RTStrPrintf(szStr, sizeof(szStr), "%-10s %-30s %s", "cmd", "", "description");
+    CHECKSTR("cmd                                       description");
+
+
+    cch = RTStrPrintf(szStr, sizeof(szStr), "%-10ls %-30ls %ls", L"cmd", L"args", L"description");
+    CHECKSTR("cmd        args                           description");
+
+    cch = RTStrPrintf(szStr, sizeof(szStr), "%-10ls %-30ls %ls", L"cmd", L"", L"description");
     CHECKSTR("cmd                                       description");
 
 
