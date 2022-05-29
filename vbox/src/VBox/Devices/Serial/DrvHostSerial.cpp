@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 11286 2008-08-08 22:33:43Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -922,7 +922,7 @@ static DECLCALLBACK(int) drvHostSerialConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
     int rc = CFGMR3QueryStringAlloc(pCfgHandle, "DevicePath", &pThis->pszDevicePath);
     if (RT_FAILURE(rc))
     {
-        AssertMsgFailed(("Configuration error: query for \"DevicePath\" string returned %Vra.\n", rc));
+        AssertMsgFailed(("Configuration error: query for \"DevicePath\" string returned %Rra.\n", rc));
         return rc;
     }
 

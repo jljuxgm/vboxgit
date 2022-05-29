@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 11269 2008-08-08 16:24:48Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 11286 2008-08-08 22:33:43Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -302,7 +302,7 @@ static DECLCALLBACK(int) drvHostParallelConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     int rc = CFGMR3QueryStringAlloc(pCfgHandle, "DevicePath", &pThis->pszDevicePath);
     if (RT_FAILURE(rc))
     {
-        AssertMsgFailed(("Configuration error: query for \"DevicePath\" string returned %Vra.\n", rc));
+        AssertMsgFailed(("Configuration error: query for \"DevicePath\" string returned %Rra.\n", rc));
         return rc;
     }
 

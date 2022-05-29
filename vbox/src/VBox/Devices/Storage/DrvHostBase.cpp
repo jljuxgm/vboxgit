@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 11286 2008-08-08 22:33:43Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1740,7 +1740,7 @@ int DRVHostBaseInitData(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, PDMBLOCKTYPE e
     int rc = CFGMR3QueryStringAlloc(pCfgHandle, "Path", &pThis->pszDevice);
     if (RT_FAILURE(rc))
     {
-        AssertMsgFailed(("Configuration error: query for \"Path\" string returned %Vra.\n", rc));
+        AssertMsgFailed(("Configuration error: query for \"Path\" string returned %Rra.\n", rc));
         return rc;
     }
 
