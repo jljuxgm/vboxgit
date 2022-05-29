@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 11267 2008-08-08 16:15:43Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 11268 2008-08-08 16:17:22Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -552,7 +552,7 @@ static DECLCALLBACK(int) drvHostSerialRecvThread(PPDMDRVINS pDrvIns, PPDMTHREAD 
             aFDs[1].fd      = pData->WakeupPipeR;
             aFDs[1].events  = POLLIN | POLLERR | POLLHUP;
             aFDs[1].revents = 0;
-            rc = poll(aFDs, ELEMENTS(aFDs), -1);
+            rc = poll(aFDs, RT_ELEMENTS(aFDs), -1);
             if (rc < 0)
             {
                 /* poll failed for whatever reason */
