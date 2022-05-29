@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 7233 2008-03-03 12:25:32Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 8130 2008-04-18 09:27:47Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -188,7 +188,7 @@ DECLASM(int) VBoxGuestOS2Init(const char *pszArgs)
                             strcpy(&g_szInitText[0],
                                    "\r\n"
                                    "VirtualBox Guest Additions Driver for OS/2 version " VBOX_VERSION_STRING "\r\n"
-                                   "Copyright (C) 2007-2008 innotek GmbH\r\n");
+                                   "Copyright (C) 2008 Sun Microsystems, Inc.\r\n");
                             g_cchInitText = strlen(&g_szInitText[0]);
                         }
                         Log(("VBoxGuestOS2Init: Successfully loaded\n%s", g_szInitText));
