@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 10815 2008-07-22 14:38:30Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 10816 2008-07-22 14:40:59Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * guest properties.
@@ -279,7 +279,7 @@ VBGLR3DECL(int) VbglR3GuestPropReadValueAlloc(uint32_t u32ClientId,
                 if (NULL == pvBuf)
                     rc = VERR_NO_MEMORY;
             }
-            else
+            if (rc != VERR_BUFFER_OVERFLOW)
                 finish = true;
         }
         if (VERR_BUFFER_OVERFLOW == rc)
