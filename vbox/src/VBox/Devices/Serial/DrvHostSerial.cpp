@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 6185 2007-12-26 19:40:48Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 6186 2007-12-26 19:45:16Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -622,7 +622,7 @@ static DECLCALLBACK(int) drvHostSerialRecvThread(PPDMDRVINS pDrvIns, PPDMTHREAD 
                 uint8_t uNewStatusLinesState = 0;
 
                 /* Get the new state */
-                if (GetModemStatus(pData->hDeviceFile, &dwNewStatusLinesState))
+                if (GetCommModemStatus(pData->hDeviceFile, &dwNewStatusLinesState))
                 {
                     if (dwNewStatusLinesState & MS_RLSD_ON)
                         uNewStatusLinesState |= PDM_ICHAR_STATUS_LINES_DCD;
