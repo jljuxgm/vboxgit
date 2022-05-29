@@ -1,4 +1,4 @@
-# $Id: Config.kmk 9601 2008-06-11 11:40:41Z vboxsync $
+# $Id: Config.kmk 9615 2008-06-11 13:59:01Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1790,9 +1790,9 @@ VBOX_SOLARIS_SYS_INCS ?= /usr/platform/i86pc/include /usr/include
 TEMPLATE_VBOXR0DRV_TOOL                = $(VBOX_GCC_TOOL)
 TEMPLATE_VBOXR0DRV_DEFS                = _KERNEL _STRICT_STDC IN_RING0 IN_RT_R0
 TEMPLATE_VBOXR0DRV_INCS                = $(VBOX_SOLARIS_SYS_INCS)
-TEMPLATE_VBOXR0DRV_LDFLAGS             = -r
+TEMPLATE_VBOXR0DRV_LDFLAGS             = -r -dy
 ifdef VBOX_WITH_SOLARIS_VBI
- TEMPLATE_VBOXR0DRV_LDFLAGS           += -dy -N misc/vbi
+ TEMPLATE_VBOXR0DRV_LDFLAGS           += -N misc/vbi
 endif
 TEMPLATE_VBOXR0DRV_LDFLAGS.amd64       = -64
 # Exclude -Wall because of solaris headers' pragma ident warnings that gcc refuses to supress.
@@ -3043,7 +3043,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9601 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9615 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
