@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 10921 2008-07-28 18:49:16Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 10938 2008-07-29 16:27:06Z vboxsync $ */
 
 /** @file
  *
@@ -106,12 +106,15 @@ int CollectorLinux::getHostMemoryUsage(unsigned long *total, unsigned long *used
 
     if (f)
     {
-        int processed = fscanf(f, "MemTotal: %lu kB", total);
-        processed    += fscanf(f, "MemFree: %lu kB", available);
-        processed    += fscanf(f, "Buffers: %lu kB", &buffers);
-        processed    += fscanf(f, "Cached: %lu kB", &cached);
+        int processed = fscanf(f, "MemTotal: %lu kB\n", total);
+        processed    += fscanf(f, "MemFree: %lu kB\n", available);
+        processed    += fscanf(f, "Buffers: %lu kB\n", &buffers);
+        processed    += fscanf(f, "Cached: %lu kB\n", &cached);
         if (processed == 4)
+        {
             *available += buffers + cached;
+            *used       = *total - *available;
+        }
         else
             rc = VERR_FILE_IO_ERROR;
         fclose(f);
