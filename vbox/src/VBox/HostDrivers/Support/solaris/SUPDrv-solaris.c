@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 6412 2008-01-21 14:54:51Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Solaris Driver Code.
  */
@@ -488,7 +488,7 @@ static int VBoxDrvSolarisClose(dev_t Dev, int flag, int otyp, cred_t *cred)
     if (!pState)
     {
         OSDBGPRINT(("VBoxDrvSolarisClose: no state data for %#x (%d)\n", Dev, getminor(Dev)));
-        return DDI_SUCCESS;
+        return EFAULT;
     }
 
     PSUPDRVSESSION pSession = pState->pSession;
@@ -498,7 +498,7 @@ static int VBoxDrvSolarisClose(dev_t Dev, int flag, int otyp, cred_t *cred)
     if (!pSession)
     {
         OSDBGPRINT(("VBoxDrvSolarisClose: no session in state data for %#x (%d)\n", Dev, getminor(Dev)));
-        return DDI_SUCCESS;
+        return EFAULT;
     }
     OSDBGPRINT(("VBoxDrvSolarisClose: Dev=%#x pSession=%p pid=%d r0proc=%p thread=%p\n", Dev, pSession, RTProcSelf(), RTR0ProcHandleSelf(), RTThreadNativeSelf() ));
 
@@ -544,7 +544,7 @@ static int VBoxDrvSolarisClose(dev_t Dev, int flag, int otyp, cred_t *cred)
     {
         OSDBGPRINT(("VBoxDrvSolarisClose: WHAT?!? pSession == NULL! This must be a mistake... pid=%d (close)\n",
                     (int)Process));
-        return DDI_FAILURE;
+        return EFAULT;
     }
 #endif
 
@@ -553,21 +553,21 @@ static int VBoxDrvSolarisClose(dev_t Dev, int flag, int otyp, cred_t *cred)
      */
     supdrvCloseSession(&g_DevExt, pSession);
     OSDBGPRINT(("VBoxDrvSolarisClose: returns\n"));
-    return DDI_SUCCESS;
+    return 0;
 }
 
 
 static int VBoxDrvSolarisRead(dev_t Dev, struct uio *pUio, cred_t *pCred)
 {
     cmn_err(CE_CONT, "VBoxDrvSolarisRead");
-    return DDI_SUCCESS;
+    return 0;
 }
 
 
 static int VBoxDrvSolarisWrite(dev_t Dev, struct uio *pUio, cred_t *pCred)
 {
     cmn_err(CE_CONT, "VBoxDrvSolarisWrite");
-    return DDI_SUCCESS;
+    return 0;
 }
 
 
