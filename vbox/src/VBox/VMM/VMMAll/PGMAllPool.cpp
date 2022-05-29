@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 10063 2008-07-01 09:57:49Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 10279 2008-07-05 15:03:17Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3031,7 +3031,7 @@ DECLINLINE(void) pgmPoolTrackDerefPTPaeBig(PPGMPOOL pPool, PPGMPOOLPAGE pPage, P
     for (unsigned i = 0; i < ELEMENTS(pShwPT->a); i++, GCPhys += PAGE_SIZE)
         if (pShwPT->a[i].n.u1Present)
         {
-            Log4(("pgmPoolTrackDerefPTPae32Bit: i=%d pte=%RX32 hint=%RX32\n",
+            Log4(("pgmPoolTrackDerefPTPaeBig: i=%d pte=%RX32 hint=%RX32\n",
                   i, pShwPT->a[i].u & X86_PTE_PAE_PG_MASK, GCPhys));
             pgmPoolTracDerefGCPhys(pPool, pPage, pShwPT->a[i].u & X86_PTE_PAE_PG_MASK, GCPhys);
         }
