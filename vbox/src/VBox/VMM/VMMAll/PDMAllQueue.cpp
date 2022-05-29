@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 11146 2008-08-05 22:01:51Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 11147 2008-08-05 22:04:24Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -130,13 +130,13 @@ PDMDECL(void) PDMQueueInsertEx(PPDMQUEUE pQueue, PPDMQUEUEITEMCORE pItem, uint64
 
 
 /**
- * Gets the GC pointer for the specified queue.
+ * Gets the RC pointer for the specified queue.
  *
- * @returns The GC address of the queue.
+ * @returns The RC address of the queue.
  * @returns NULL if pQueue is invalid.
  * @param   pQueue          The queue handle.
  */
-PDMDECL(RCPTRTYPE(PPDMQUEUE)) PDMQueueGCPtr(PPDMQUEUE pQueue)
+PDMDECL(RCPTRTYPE(PPDMQUEUE)) PDMQueueRCPtr(PPDMQUEUE pQueue)
 {
     Assert(VALID_PTR(pQueue));
     Assert(pQueue->pVMHC && pQueue->pVMGC);
