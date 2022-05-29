@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 9857 2008-06-20 14:34:46Z vboxsync $ */
+/* $Id: PGMAllGst.h 9858 2008-06-20 14:40:30Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -45,6 +45,7 @@
 #undef GST_PDPE_ENTRIES
 #undef GST_PDPT_SHIFT
 #undef GST_PDPT_MASK
+#undef GST_PDPE_PG_MASK
 
 #if PGM_GST_TYPE == PGM_TYPE_32BIT \
  || PGM_GST_TYPE == PGM_TYPE_REAL \

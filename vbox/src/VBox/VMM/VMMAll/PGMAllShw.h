@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 9857 2008-06-20 14:34:46Z vboxsync $ */
+/* $Id: PGMAllShw.h 9858 2008-06-20 14:40:30Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -39,6 +39,7 @@
 #undef SHW_TOTAL_PD_ENTRIES
 #undef SHW_PDPT_SHIFT
 #undef SHW_PDPT_MASK
+#undef SHW_PDPE_PG_MASK
 #undef SHW_POOL_ROOT_IDX
 
 #if PGM_SHW_TYPE == PGM_TYPE_32BIT
