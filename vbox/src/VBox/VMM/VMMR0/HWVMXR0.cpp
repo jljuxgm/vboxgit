@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 9383 2008-06-04 12:22:45Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 9384 2008-06-04 12:31:03Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -980,11 +980,11 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
 HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx, PHWACCM_CPUINFO pCpu)
 {
     int         rc = VINF_SUCCESS;
-    uint64_t    val, valShadow;
-    uint64_t    exitReason, instrError, cbInstr;
-    uint64_t    exitQualification;
-    uint64_t    intInfo = 0; /* shut up buggy gcc 4 */
-    uint64_t    errCode, instrInfo, uInterruptState;
+    RTCCUINTREG val, valShadow;
+    RTCCUINTREG exitReason, instrError, cbInstr;
+    RTGCUINTPTR exitQualification;
+    RTGCUINTPTR intInfo = 0; /* shut up buggy gcc 4 */
+    RTGCUINTPTR errCode, instrInfo, uInterruptState;
     bool        fGuestStateSynced = false;
     unsigned    cResume = 0;
 
