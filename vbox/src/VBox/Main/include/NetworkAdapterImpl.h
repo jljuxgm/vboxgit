@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 7207 2008-02-28 18:43:08Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 8083 2008-04-17 09:12:12Z vboxsync $ */
 
 /** @file
  *
@@ -150,8 +150,8 @@ public:
     HRESULT loadSettings (const settings::Key &aAdapterNode);
     HRESULT saveSettings (settings::Key &aAdapterNode);
 
-    bool isModified() { AutoLock alock (this); return mData.isBackedUp(); }
-    bool isReallyModified() { AutoLock alock (this); return mData.hasActualChanges(); }
+    bool isModified() { AutoWriteLock alock (this); return mData.isBackedUp(); }
+    bool isReallyModified() { AutoWriteLock alock (this); return mData.hasActualChanges(); }
     bool rollback();
     void commit();
     void copyFrom (NetworkAdapter *aThat);

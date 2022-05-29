@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 7992 2008-04-15 13:53:12Z vboxsync $ */
+/* $Id: MachineImpl.h 8083 2008-04-17 09:12:12Z vboxsync $ */
 
 /** @file
  *
@@ -590,7 +590,7 @@ public:
                              ComObjPtr <SharedFolder> &aSharedFolder,
                              bool aSetError = false)
     {
-        AutoLock alock (this);
+        AutoWriteLock alock (this);
         return findSharedFolder (aName, aSharedFolder, aSetError);
     }
 
@@ -615,7 +615,7 @@ protected:
     HRESULT initDataAndChildObjects();
     void uninitDataAndChildObjects();
 
-    void ensureNoStateDependencies (AutoLock &aLock);
+    void ensureNoStateDependencies (AutoWriteLock &aLock);
 
     virtual HRESULT setMachineState (MachineState_T aMachineState);
 

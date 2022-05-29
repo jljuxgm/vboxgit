@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 7990 2008-04-15 13:50:59Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 8083 2008-04-17 09:12:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -87,7 +87,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     AssertComRCReturn (autoCaller.rc(), VERR_ACCESS_DENIED);
 
     /* lock the console because we widely use internal fields and methods */
-    AutoLock alock (pConsole);
+    AutoWriteLock alock (pConsole);
 
     ComPtr <IMachine> pMachine = pConsole->machine();
 

@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 6168 2007-12-21 14:38:19Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 8083 2008-04-17 09:12:12Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -97,8 +97,8 @@ public:
     HRESULT loadSettings (const settings::Key &aPortNode);
     HRESULT saveSettings (settings::Key &aPortNode);
 
-    bool isModified() { AutoLock alock (this); return mData.isBackedUp(); }
-    bool isReallyModified() { AutoLock alock (this); return mData.hasActualChanges(); }
+    bool isModified() { AutoWriteLock alock (this); return mData.isBackedUp(); }
+    bool isReallyModified() { AutoWriteLock alock (this); return mData.hasActualChanges(); }
     bool rollback();
     void commit();
     void copyFrom (ParallelPort *aThat);

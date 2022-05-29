@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 7207 2008-02-28 18:43:08Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 8083 2008-04-17 09:12:12Z vboxsync $ */
 
 /** @file
  *
@@ -89,8 +89,8 @@ public:
     HRESULT loadSettings (const settings::Key &aMachineNode);
     HRESULT saveSettings (settings::Key &aMachineNode);
 
-    bool isModified() { AutoLock alock (this); return mData.isBackedUp(); }
-    bool isReallyModified() { AutoLock alock (this); return mData.hasActualChanges(); }
+    bool isModified() { AutoWriteLock alock (this); return mData.isBackedUp(); }
+    bool isReallyModified() { AutoWriteLock alock (this); return mData.hasActualChanges(); }
     bool rollback();
     void commit();
     void copyFrom (AudioAdapter *aThat);

@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.h 6076 2007-12-14 19:23:03Z vboxsync $ */
+/* $Id: FloppyDriveImpl.h 8083 2008-04-17 09:12:12Z vboxsync $ */
 
 /** @file
  *
@@ -95,8 +95,8 @@ public:
     HRESULT loadSettings (const settings::Key &aMachineNode);
     HRESULT saveSettings (settings::Key &aMachineNode);
 
-    bool isModified() { AutoLock alock (this); return mData.isBackedUp(); }
-    bool isReallyModified() { AutoLock alock (this); return mData.hasActualChanges(); }
+    bool isModified() { AutoWriteLock alock (this); return mData.isBackedUp(); }
+    bool isReallyModified() { AutoWriteLock alock (this); return mData.hasActualChanges(); }
     bool rollback();
     void commit();
     void copyFrom (FloppyDrive *aThat);
