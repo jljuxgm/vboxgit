@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 7414 2008-03-10 15:40:15Z vboxsync $ */
+/* $Id: strformat.cpp 7417 2008-03-10 15:58:35Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - String Formatter.
  */
@@ -98,9 +98,10 @@ static unsigned _strnlenUtf16(PCRTUTF16 pwsz, unsigned cchMax)
     unsigned cwc = 0;
     while (cchMax-- > 0)
     {
-        RTUNICP cp = RTUtf16GetCp(pwsz);
-        Assert(cp != RTUNICP_INVALID);
-        if (!cp || cp == RTUNICP_INVALID)
+        RTUNICP cp;
+        int rc = RTUtf16GetCpEx(&pwsz, &cp);
+        AssertRC(rc);
+        if (RT_FAILURE(rc) || !cp)
             break;
     }
     return cwc;
