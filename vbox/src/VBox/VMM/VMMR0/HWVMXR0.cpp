@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 10886 2008-07-25 11:30:55Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 11398 2008-08-13 16:09:53Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1192,7 +1192,8 @@ ResumeExecution:
         rc  = VMXWriteVMCS(VMX_VMCS_CTRL_TPR_THRESHOLD, (fPending) ? u8TPR : 0);
         AssertRC(rc);
 
-        fSyncTPR = !fPending;
+        /* Always sync back the TPR; we should optimize this though (@todo) */
+        fSyncTPR = true;
     }
 
     /*
