@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7132 2008-02-25 16:55:38Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7230 2008-03-03 11:04:57Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -2413,7 +2413,7 @@ static int pcnetCSRWriteU16(PCNetState *pData, uint32_t u32RAP, uint32_t new_val
                 if ((val & 7) == 7)
                     val &= ~3;
 
-                Log(("#%d pcnetWriteCSR0: %#06x => %#06x\n", pData->aCSR[0], csr0));
+                Log(("#%d pcnetWriteCSR0: %#06x => %#06x\n", PCNETSTATE_2_DEVINS(pData)->iInstance, pData->aCSR[0], csr0));
 
 #ifndef IN_RING3
                 if (!(csr0 & 0x0001/*init*/) && (val & 1))
