@@ -1,4 +1,4 @@
-/* $Id: mp-solaris.cpp 11330 2008-08-11 11:36:27Z vboxsync $ */
+/* $Id: mp-solaris.cpp 11331 2008-08-11 11:41:51Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */
@@ -192,7 +192,7 @@ RTDECL(uint32_t) RTMpGetMaxFrequency(RTCPUID idCpu)
 
 RTDECL(int) RTMpCpuIdToSetIndex(RTCPUID idCpu)
 {
-    return idCpu < RTCPUSET_MAX_CPUS ? idCpu : -1;
+    return idCpu < RTCPUSET_MAX_CPUS ? (int)idCpu : -1;
 }
 
 
@@ -238,7 +238,7 @@ RTDECL(RTCPUID) RTMpGetCount(void)
 RTDECL(PRTCPUSET) RTMpGetSet(PRTCPUSET pSet)
 {
     RTCpuSetEmpty(pSet);
-    int cCpus = RTMpGetCount()
+    int cCpus = RTMpGetCount();
     while (cCpus-- > 0)
         RTCpuSetAdd(pSet, idCpu);
     return pSet;
