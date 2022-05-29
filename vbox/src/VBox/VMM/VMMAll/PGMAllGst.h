@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 6764 2008-02-03 02:15:04Z vboxsync $ */
+/* $Id: PGMAllGst.h 6911 2008-02-11 22:00:13Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -658,7 +658,6 @@ static DECLCALLBACK(int) PGM_GST_NAME(VirtHandlerUpdateOne)(PAVLROGCPTRNODECORE 
     unsigned    fFlags;
     switch (pCur->enmType)
     {
-        case PGMVIRTHANDLERTYPE_EIP:
         case PGMVIRTHANDLERTYPE_NORMAL:     fFlags = MM_RAM_FLAGS_VIRTUAL_HANDLER; break;
         case PGMVIRTHANDLERTYPE_WRITE:      fFlags = MM_RAM_FLAGS_VIRTUAL_HANDLER | MM_RAM_FLAGS_VIRTUAL_WRITE; break;
         case PGMVIRTHANDLERTYPE_ALL:        fFlags = MM_RAM_FLAGS_VIRTUAL_HANDLER | MM_RAM_FLAGS_VIRTUAL_ALL; break;
