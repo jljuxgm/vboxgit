@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DevDMA.cpp 11247 2008-08-08 13:53:15Z vboxsync $ */
 /** @file
  * DMA Controller Device.
  */
@@ -91,8 +91,6 @@ typedef PFNDMATRANSFERHANDLER DMA_transfer_handler;
 #endif
 #else /* VBOX */
 
-#ifdef LOG_ENABLED
-#endif
 # ifdef LOG_ENABLED
 #   define DEBUG_DMA
     static void DMA_DPRINTF (const char *fmt, ...)
@@ -108,10 +106,10 @@ typedef PFNDMATRANSFERHANDLER DMA_transfer_handler;
   DECLINLINE(void) DMA_DPRINTF(const char *pszFmt, ...) {}
 # endif
 
-#define dolog DMA_DPRINTF
-#define lwarn DMA_DPRINTF
-#define linfo DMA_DPRINTF
-#define ldebug DMA_DPRINTF
+# define dolog DMA_DPRINTF
+# define lwarn DMA_DPRINTF
+# define linfo DMA_DPRINTF
+# define ldebug DMA_DPRINTF
 
 #endif /* VBOX */
 
