@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 7872 2008-04-10 15:19:52Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 7903 2008-04-11 09:08:46Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -949,14 +949,14 @@ int main()
 
 #ifdef VBOX_WITH_E1000
     GEN_CHECK_SIZE(EEPROM93C46);
-    GEN_CHECK_OFF(EEPROM93C46, state);
-    GEN_CHECK_OFF(EEPROM93C46, data);
-    GEN_CHECK_OFF(EEPROM93C46, writeEnabled);
-    GEN_CHECK_OFF(EEPROM93C46, word);
-    GEN_CHECK_OFF(EEPROM93C46, mask);
-    GEN_CHECK_OFF(EEPROM93C46, addr);
-    GEN_CHECK_OFF(EEPROM93C46, internalWires);
-    GEN_CHECK_OFF(EEPROM93C46, op);
+    GEN_CHECK_OFF(EEPROM93C46, m_eState);
+    GEN_CHECK_OFF(EEPROM93C46, m_au16Data);
+    GEN_CHECK_OFF(EEPROM93C46, m_fWriteEnabled);
+    GEN_CHECK_OFF(EEPROM93C46, m_u16Word);
+    GEN_CHECK_OFF(EEPROM93C46, m_u16Mask);
+    GEN_CHECK_OFF(EEPROM93C46, m_u16Addr);
+    GEN_CHECK_OFF(EEPROM93C46, m_u32InternalWires);
+    GEN_CHECK_OFF(EEPROM93C46, m_eOp);
 
     GEN_CHECK_SIZE(E1KSTATE);
     GEN_CHECK_OFF(E1KSTATE, IBase);
