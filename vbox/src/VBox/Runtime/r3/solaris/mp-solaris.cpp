@@ -1,4 +1,4 @@
-/* $Id: mp-solaris.cpp 11331 2008-08-11 11:41:51Z vboxsync $ */
+/* $Id: mp-solaris.cpp 11333 2008-08-11 11:45:07Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */
@@ -238,8 +238,8 @@ RTDECL(RTCPUID) RTMpGetCount(void)
 RTDECL(PRTCPUSET) RTMpGetSet(PRTCPUSET pSet)
 {
     RTCpuSetEmpty(pSet);
-    int cCpus = RTMpGetCount();
-    while (cCpus-- > 0)
+    int idCpu = RTMpGetCount();
+    while (idCpu-- > 0)
         RTCpuSetAdd(pSet, idCpu);
     return pSet;
 }
