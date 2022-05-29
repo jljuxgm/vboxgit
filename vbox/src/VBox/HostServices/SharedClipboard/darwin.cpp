@@ -1,4 +1,4 @@
-/* $Id: darwin.cpp 7162 2008-02-27 02:28:43Z vboxsync $ */
+/* $Id: darwin.cpp 7163 2008-02-27 02:31:40Z vboxsync $ */
 /** @file
  * Shared Clipboard: Mac OS X host.
  */
@@ -18,6 +18,7 @@
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 
 #include <iprt/assert.h>
+#include <iprt/asm.h>
 #include <iprt/thread.h>
 
 #include "VBoxClipboard.h"
@@ -94,7 +95,7 @@ static int vboxClipboardThread (RTTHREAD ThreadSelf, void *pvUser)
     {
         vboxClipboardChanged (pCtx);
         /* Sleep for 200 msecs before next poll */
-        RTThreadUserWait (self, 200);
+        RTThreadUserWait (ThreadSelf, 200);
     }
 
     Log (("vboxClipboardThread: clipboard thread terminated successfully with return code %Rrc\n", VINF_SUCCESS));
