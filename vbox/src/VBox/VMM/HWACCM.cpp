@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 8868 2008-05-16 07:43:10Z vboxsync $ */
+/* $Id: HWACCM.cpp 8873 2008-05-16 08:55:47Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -466,6 +466,7 @@ HWACCMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
             LogRel(("HWACMM: cpuid 0x80000001.u32AMDFeatureEDX = %VX32\n", pVM->hwaccm.s.cpuid.u32AMDFeatureEDX));
             LogRel(("HWACCM: SVM revision                      = %X\n", pVM->hwaccm.s.svm.u32Rev));
             LogRel(("HWACCM: SVM max ASID                      = %d\n", pVM->hwaccm.s.svm.u32MaxASID));
+            LogRel(("HWACCM: SVM features                      = %X\n", pVM->hwaccm.s.svm.u32Features));
 
             /* Only try once. */
             pVM->hwaccm.s.fInitialized = true;

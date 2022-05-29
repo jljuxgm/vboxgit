@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 8860 2008-05-15 14:43:16Z vboxsync $ */
+/* $Id: HWACCMInternal.h 8873 2008-05-16 08:55:47Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -247,6 +247,9 @@ typedef struct HWACCM
 
         /** Maximum ASID allowed. */
         uint32_t                    u32MaxASID;
+
+        /** SVM feature bits from cpuid 0x8000000a */
+        uint32_t                    u32Features;
     } svm;
 
     struct
