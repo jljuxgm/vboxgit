@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 9421 2008-06-05 13:17:00Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 9656 2008-06-12 11:56:51Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Disassembler.
  */
@@ -102,7 +102,7 @@ static int dbgfR3DisasInstrFirst(PVM pVM, PSELMSELINFO pSelInfo, PGMMODE enmMode
     uint32_t cbInstr;
     int rc = DISCoreOneEx(GCPtr,
                           pSelInfo->Raw.Gen.u1DefBig
-                          ? enmMode >= PGMMODE_AMD64 && pSelInfo->Raw.Gen.u1Reserved
+                          ? enmMode >= PGMMODE_AMD64 && pSelInfo->Raw.Gen.u1Long
                           ? CPUMODE_64BIT
                           : CPUMODE_32BIT
                           : CPUMODE_16BIT,
