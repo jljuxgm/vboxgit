@@ -1,4 +1,4 @@
-/** $Id: DrvTAPOs2.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/** $Id: DrvTAPOs2.cpp 8610 2008-05-05 20:09:26Z vboxsync $ */
 /** @file
  * VBox network devices: OS/2 TAP network transport driver.
  */
@@ -255,11 +255,13 @@ static DECLCALLBACK(int) drvTAPOs2ReceiveThread(PPDMDRVINS pDrvIns, PPDMTHREAD p
             AssertMsg(cbRead <= 1536, ("cbRead=%d\n", cbRead));
 
             /*
-             * Wait for the device to have some room.
+             * Wait for the device to have some room. A return code != VINF_SUCCESS
+             * means that we were woken up during a VM state transition. Drop the
+             * current packet and wait for the next one.
              */
             rc = pThis->pPort->pfnWaitReceiveAvail(pThis->pPort, RT_INDEFINITE_WAIT);
             if (RT_FAILURE(rc))
-                break;
+                continue;
 
             /*
              * Pass the data up.
