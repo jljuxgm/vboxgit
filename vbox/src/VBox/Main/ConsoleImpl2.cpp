@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 7207 2008-02-28 18:43:08Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 7277 2008-03-04 14:12:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -759,6 +759,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             STR_CONV();
             rc = CFGMR3InsertString(pCfg,   "Path",             psz);                   RC_CHECK();
             STR_FREE();
+            rc = CFGMR3InsertString(pCfg,   "Format",           "VMDK");                RC_CHECK();
         }
         else if (hddType == HardDiskStorageType_CustomHardDisk)
         {
