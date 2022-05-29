@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 10634 2008-07-15 09:34:28Z vboxsync $ */
+/* $Id: fileio-posix.cpp 10644 2008-07-15 11:18:20Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -163,8 +163,11 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
             AssertMsgFailed(("RTFileOpen received an invalid RW value, fOpen=%#x\n", fOpen));
             return VERR_INVALID_PARAMETER;
     }
-    /* Unix permissions */
-    fOpenMode |= (fOpen & RTFILE_O_CREATE_MODE_MASK) >> RTFILE_O_CREATE_MODE_SHIFT;
+
+    /* File mode. */
+    int fMode = (fOpen & RTFILE_O_CREATE_MODE_MASK)
+              ? (fOpen & RTFILE_O_CREATE_MODE_MASK) >> RTFILE_O_CREATE_MODE_SHIFT
+              : RT_FILE_PERMISSION;
 
     /** @todo sharing! */
 
@@ -172,7 +175,7 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
      * Open/create the file.
      */
 #ifdef RT_DONT_CONVERT_FILENAMES
-    int fh = open(pszFilename, fOpenMode, RT_FILE_PERMISSION);
+    int fh = open(pszFilename, fOpenMode, fMode);
     int iErr = errno;
 #else
     char *pszNativeFilename;
@@ -180,7 +183,7 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
     if (RT_FAILURE(rc))
         return (rc);
 
-    int fh = open(pszNativeFilename, fOpenMode, RT_FILE_PERMISSION);
+    int fh = open(pszNativeFilename, fOpenMode, fMode);
     int iErr = errno;
     rtPathFreeNative(pszNativeFilename);
 #endif
