@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 11248 2008-08-08 13:53:26Z vboxsync $ */
+/* $Id: DevDMA.cpp 11249 2008-08-08 13:54:07Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -61,7 +61,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Builtins.h"
+#include "../Builtins.h"
 #include "../vl_vbox.h"
 typedef PFNDMATRANSFERHANDLER DMA_transfer_handler;
 
