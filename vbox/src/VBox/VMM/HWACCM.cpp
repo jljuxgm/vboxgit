@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 10586 2008-07-14 10:03:59Z vboxsync $ */
+/* $Id: HWACCM.cpp 10691 2008-07-16 11:06:20Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -92,6 +92,11 @@ HWACCMR3DECL(int) HWACCMR3Init(PVM pVM)
                                    NULL, hwaccmR3Load, NULL);
     if (VBOX_FAILURE(rc))
         return rc;
+
+    /* Check CFGM option. */
+    rc = CFGMR3QueryBool(CFGMR3GetRoot(pVM), "EnableNestedPaging", &pVM->hwaccm.s.fAllowNestedPaging);
+    if (VBOX_FAILURE(rc))
+        pVM->hwaccm.s.fAllowNestedPaging = true;    /* enabled by default now. */
 
     /* Misc initialisation. */
     pVM->hwaccm.s.vmx.fSupported = false;
@@ -503,10 +508,8 @@ HWACCMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
             /* Only try once. */
             pVM->hwaccm.s.fInitialized = true;
 
-#ifdef VBOX_WITH_NESTED_PAGING
             if (pVM->hwaccm.s.svm.u32Features & AMD_CPUID_SVM_FEATURE_EDX_NESTED_PAGING)
-                pVM->hwaccm.s.fNestedPaging = true;
-#endif
+                pVM->hwaccm.s.fNestedPaging = pVM->hwaccm.s.fAllowNestedPaging;
 
             rc = SUPCallVMMR0Ex(pVM->pVMR0, VMMR0_DO_HWACC_SETUP_VM, 0, NULL);
             AssertRC(rc);

@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 10537 2008-07-11 16:23:47Z vboxsync $ */
+/* $Id: HWACCMInternal.h 10691 2008-07-16 11:06:20Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -33,8 +33,6 @@
 #include <iprt/cpuset.h>
 #include <iprt/mp.h>
 
-/* Uncomment to enable experimental nested paging. */
-/////#define VBOX_WITH_NESTED_PAGING
 #if HC_ARCH_BITS == 64
 /* Enable 64 bits guest support. */
 # define VBOX_ENABLE_64_BITS_GUESTS
@@ -176,6 +174,9 @@ typedef struct HWACCM
 
     /** Set if nested paging is enabled. */
     bool                        fNestedPaging;
+
+    /** Set if nested paging is allowed. */
+    bool                        fAllowNestedPaging;
 
     /** HWACCM_CHANGED_* flags. */
     uint32_t                    fContextUseFlags;
