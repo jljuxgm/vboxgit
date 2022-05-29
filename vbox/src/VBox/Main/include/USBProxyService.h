@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: USBProxyService.h 7746 2008-04-04 14:34:58Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -384,6 +384,32 @@ private:
     APIRET (APIENTRY *mpfnUsbQueryDeviceReport)(ULONG, PULONG, PVOID);
 };
 # endif /* RT_OS_LINUX */
+
+
+# ifdef RT_OS_SOLARIS
+#  include <libdevinfo.h>
+
+/**
+ * The Solaris hosted USB Proxy Service.
+ */
+class USBProxyServiceSolaris : public USBProxyService
+{
+public:
+    USBProxyServiceSolaris (Host *aHost);
+    ~USBProxyServiceSolaris();
+
+    virtual int captureDevice (HostUSBDevice *aDevice);
+    virtual int releaseDevice (HostUSBDevice *aDevice);
+    virtual bool updateDeviceState (HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice);
+    virtual void deviceAdded (HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice);
+
+protected:
+    virtual int wait (unsigned aMillies);
+    virtual int interruptWait (void);
+    virtual PUSBDEVICE getDevices (void);
+    int addDeviceToChain (PUSBDEVICE pDev, PUSBDEVICE *ppFirst, PUSBDEVICE **pppNext, int rc);
+};
+#endif  /* RT_OS_SOLARIS */
 
 
 # ifdef RT_OS_WINDOWS
