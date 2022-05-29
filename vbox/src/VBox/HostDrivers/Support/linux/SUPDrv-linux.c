@@ -1,4 +1,4 @@
-/* $Rev: 9470 $ */
+/* $Rev: 9526 $ */
 /** @file
  * The VirtualBox Support Driver - Linux hosts.
  */
@@ -757,6 +757,7 @@ static void __exit VBoxDrvLinuxUnload(void)
     VBoxDrvLinuxTermGip(&g_DevExt);
 #endif /* !USE_NEW_OS_INTERFACE_FOR_GIP */
     supdrvDeleteDevExt(&g_DevExt);
+    RTR0MpNotificationTerm(NULL);
     RTR0Term();
 }
 
