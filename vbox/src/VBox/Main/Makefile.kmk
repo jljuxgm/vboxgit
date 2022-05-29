@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5982 2007-12-06 11:08:42Z vboxsync $
+# $Id: Makefile.kmk 5983 2007-12-06 12:06:53Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -101,7 +101,7 @@ $(call DIRDEP, $(PATH_OUT)/docs/Main):
 VBoxSVC_TEMPLATE = VBOXMAINEXE
 VBoxSVC_DEFS = CFGLDR_HAVE_COM IN_CFGLDR_R3
 ifdef VBOX_WITH_VRDP
-VBoxSVC_DEFS += VBOX_VRDP IN_VRDP_R3
+VBoxSVC_DEFS += VBOX_VRDP
 endif
 ifdef VBOX_WITH_HGCM
 VBoxSVC_DEFS += VBOX_HGCM
@@ -277,7 +277,7 @@ VBoxC_DEFS = IN_RING3 IN_CFGLDR_R3
 VBoxC_DEFS += VBOX_COM_INPROC
 
 ifdef VBOX_WITH_VRDP
-VBoxC_DEFS += VBOX_VRDP IN_VRDP_R3
+VBoxC_DEFS += VBOX_VRDP
 endif
 ifdef VBOX_WITH_HGCM
 VBoxC_DEFS += VBOX_HGCM
