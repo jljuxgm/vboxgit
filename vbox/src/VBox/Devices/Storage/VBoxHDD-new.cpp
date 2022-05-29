@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 6326 2008-01-10 13:34:14Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 6328 2008-01-10 14:48:35Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -801,14 +801,14 @@ VBOXDDU_DECL(int) VDGetFormat(const char *pszFilename, char **ppszFormat)
 
                             /* Report the format name. */
                             RTPathStripExt(pPluginDirEntry->szName);
-                            char *pszFormat = NULL;
+                            AssertBreak(strlen(pPluginDirEntry->szName) >= VBOX_HDDFORMAT_PLUGIN_PREFIX_LENGTH,
+                                        rc = VERR_INVALID_NAME);
 
+                            char *pszFormat = NULL;
                             pszFormat = RTStrDup(pPluginDirEntry->szName + VBOX_HDDFORMAT_PLUGIN_PREFIX_LENGTH);
                             if (!pszFormat)
                                 rc = VERR_NO_MEMORY;
 
-                            AssertBreak(strlen(pszFormat) >= VBOX_HDDFORMAT_PLUGIN_PREFIX_LENGTH,
-                                        rc = VERR_INVALID_NAME);
                             *ppszFormat = pszFormat;
                         }
                     }
