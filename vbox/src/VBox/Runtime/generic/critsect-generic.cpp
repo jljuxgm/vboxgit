@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 8651 2008-05-07 12:16:29Z vboxsync $ */
+/* $Id: critsect-generic.cpp 8662 2008-05-07 14:58:05Z vboxsync $ */
 /** @file
  * IPRT - Critical Section, Generic.
  */
@@ -380,7 +380,8 @@ RTDECL(int) RTCritSectLeave(PRTCRITSECT pCritSect)
          * Decrement waiters, if >= 0 then we have to wake one of them up.
          */
 #ifdef RTCRITSECT_STRICT
-        RTThreadWriteLockDec(pCritSect->Strict.ThreadOwner);
+        if (pCritSect->Strict.ThreadOwner != NIL_RTTHREAD) /* May happen for PDMCritSects when entering GC/R0. */
+            RTThreadWriteLockDec(pCritSect->Strict.ThreadOwner);
         ASMAtomicXchgSize(&pCritSect->Strict.ThreadOwner, NIL_RTTHREAD);
 #endif
         ASMAtomicXchgSize(&pCritSect->NativeThreadOwner, NIL_RTNATIVETHREAD);
