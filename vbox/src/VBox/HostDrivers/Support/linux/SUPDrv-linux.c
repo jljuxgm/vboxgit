@@ -1,4 +1,4 @@
-/* $Rev: 10248 $ */
+/* $Rev: 10254 $ */
 /** @file
  * The VirtualBox Support Driver - Linux hosts.
  */
@@ -33,7 +33,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "SUPDRV.h"
+#include "SUPDrvInternal.h"
 #include "the-linux-kernel.h"
 #include "version-generated.h"
 

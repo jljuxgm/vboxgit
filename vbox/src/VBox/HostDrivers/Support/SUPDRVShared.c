@@ -1,4 +1,4 @@
-/* $Revision: 10248 $ */
+/* $Revision: 10254 $ */
 /** @file
  * VirtualBox Support Driver - Shared code.
  */
@@ -32,7 +32,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "SUPDRV.h"
+#include "SUPDrvInternal.h"
 #ifndef PAGE_SHIFT
 # include <iprt/param.h>
 #endif

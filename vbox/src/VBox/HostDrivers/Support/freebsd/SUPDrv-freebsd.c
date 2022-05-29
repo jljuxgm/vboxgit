@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 9477 2008-06-06 13:23:08Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 10254 2008-07-04 20:19:22Z vboxsync $ */
 /** @file
  * VBoxDrv - FreeBSD specifics.
  */
@@ -44,7 +44,7 @@
 #include <sys/conf.h>
 #include <sys/uio.h>
 
-#include "SUPDRV.h"
+#include "SUPDrvInternal.h"
 #include <VBox/version.h>
 #include <iprt/initterm.h>
 #include <iprt/string.h>

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: SUPDrv-os2.cpp 10254 2008-07-04 20:19:22Z vboxsync $ */
 /** @file
  * VBoxDrv - OS/2 specifics.
  */
@@ -38,7 +38,7 @@
 #include <os2ddk/bsekee.h>
 #undef RT_MAX
 
-#include "SUPDRV.h"
+#include "SUPDrvInternal.h"
 #include <VBox/version.h>
 #include <iprt/initterm.h>
 #include <iprt/string.h>

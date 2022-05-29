@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 9602 2008-06-11 12:09:31Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 10254 2008-07-04 20:19:22Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Solaris Driver Code.
  */
@@ -47,7 +47,7 @@
 #include <sys/file.h>
 #undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
 
-#include "SUPDRV.h"
+#include "SUPDrvInternal.h"
 #include <iprt/semaphore.h>
 #include <iprt/spinlock.h>
 #include <iprt/mp.h>
