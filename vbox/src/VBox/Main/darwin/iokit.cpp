@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 8484 2008-04-30 00:12:33Z vboxsync $ */
+/* $Id: iokit.cpp 8485 2008-04-30 00:55:14Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -844,6 +844,7 @@ PUSBDEVICE DarwinGetUSBDevices(void)
                             pCur->idProduct, pCur->idVendor, u64SessionId, u32LocationId);
                 pCur->pszAddress = RTStrDup(szAddress);
                 AssertBreak(pCur->pszAddress,);
+                AssertBreak(darwinDictGetU8(PropsRef,  CFSTR("PortNum"),                &pCur->bPort),);
                 uint8_t bSpeed;
                 AssertBreak(darwinDictGetU8(PropsRef,  CFSTR(kUSBDevicePropertySpeed),  &bSpeed),);
                 Assert(bSpeed <= 2);
