@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 5697 2007-11-12 04:49:50Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 5886 2007-11-30 09:26:02Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Solaris Driver Code.
  */
@@ -805,7 +805,7 @@ RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
     va_end(args);
 
     szMsg[sizeof(szMsg) - 1] = '\0';
-#if 1
+#if 0
     uprintf("SUPR0Printf: %s", szMsg);
 #endif
 #if 1
