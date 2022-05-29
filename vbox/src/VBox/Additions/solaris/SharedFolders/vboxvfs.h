@@ -1,4 +1,4 @@
-/* $Id: vboxvfs.h 9175 2008-05-27 15:19:34Z vboxsync $ */
+/* $Id: vboxvfs.h 9177 2008-05-27 16:14:44Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Internal Header.
  */
@@ -13,7 +13,7 @@
 #ifndef ___VBoxVFS_Solaris_h
 #define ___VBoxVFS_Solaris_h
 
-#ifdef	__cplusplus
+#ifdef __cplusplus
 extern "C" {
 #endif
 
@@ -30,7 +30,7 @@ typedef struct vboxvfs_mountinfo
     int ttl;
 } vboxvfs_mountinfo_t;
 
-#ifdef	_KERNEL
+#ifdef _KERNEL
 
 #include "../../common/VBoxGuestLib/VBoxCalls.h"
 #include <sys/vfs.h>

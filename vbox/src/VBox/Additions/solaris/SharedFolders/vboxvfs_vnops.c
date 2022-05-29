@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_vnops.c 9175 2008-05-27 15:19:34Z vboxsync $ */
+/* $Id: vboxvfs_vnops.c 9177 2008-05-27 16:14:44Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests.
  */
@@ -213,7 +213,7 @@ const fs_operation_def_t g_VBoxVFS_vnodeops_template[] =
     VOPNAME_MAP,         { .vop_map = VBoxVFS_Map },
     VOPNAME_ADDMAP,      { .vop_addmap = VBoxVFS_Addmap },
     VOPNAME_DELMAP,      { .vop_delmap = VBoxVFS_Delmap },
-	VOPNAME_PATHCONF,	 { .vop_pathconf = VBoxVFS_Pathconf },
+    VOPNAME_PATHCONF,    { .vop_pathconf = VBoxVFS_Pathconf },
     VOPNAME_SHRLOCK,     { .vop_shrlock = VBoxVFS_Shrlock },
     NULL,                NULL
 };
