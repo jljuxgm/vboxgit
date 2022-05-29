@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 9752 2008-06-17 10:14:26Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 9777 2008-06-17 15:04:30Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2402,11 +2402,11 @@ static void pgmPoolTrackClearPageUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PCPGMP
             break;
         case PGMPOOLKIND_64BIT_PD_FOR_64BIT_PD:
             Assert(!(u.pau64[pUser->iUser] & PGM_PDFLAGS_MAPPING));
-            Assert(pUser->iUserTable < X86_PG_PAE_ENTRIES*X86_PG_PAE_ENTRIES && pUser->iUser == PGMPOOL_IDX_PDPT);
+            Assert(pUser->iUserTable < X86_PG_PAE_ENTRIES);
             break;
         case PGMPOOLKIND_64BIT_PDPT_FOR_64BIT_PDPT:
             Assert(!(u.pau64[pUser->iUserTable] & PGM_PLXFLAGS_PERMANENT));
-            Assert(pUser->iUserTable < X86_PG_PAE_ENTRIES && pUser->iUser == PGMPOOL_IDX_PML4);
+            Assert(pUser->iUserTable < X86_PG_PAE_ENTRIES);
             break;
         case PGMPOOLKIND_ROOT_PML4:
             Assert(!(u.pau64[pUser->iUserTable] & PGM_PLXFLAGS_PERMANENT));
