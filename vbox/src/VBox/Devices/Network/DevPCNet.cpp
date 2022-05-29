@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7377 2008-03-07 16:12:35Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7504 2008-03-19 15:26:59Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -4495,7 +4495,7 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
         return rc;
     }
 #else
-    rc = PDMDevHlpTMTimerCreate(pDevIns, TMCLOCK_VIRTUAL, pcnetTimer,
+    rc = PDMDevHlpTMTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, pcnetTimer,
                                 "PCNet Poll Timer", &pData->pTimerPollHC);
     if (VBOX_FAILURE(rc))
     {
@@ -4506,7 +4506,7 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     if (pData->fAm79C973)
     {
         /* Software Interrupt timer */
-        rc = PDMDevHlpTMTimerCreate(pDevIns, TMCLOCK_VIRTUAL, pcnetTimerSoftInt,
+        rc = PDMDevHlpTMTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, pcnetTimerSoftInt,
                                     "PCNet SoftInt Timer", &pData->pTimerSoftIntHC);
         if (VBOX_FAILURE(rc))
         {
