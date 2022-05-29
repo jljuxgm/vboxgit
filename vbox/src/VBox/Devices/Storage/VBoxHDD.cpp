@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
+/** $Id: VBoxHDD.cpp 11287 2008-08-08 22:35:40Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -177,7 +177,7 @@ static DECLCALLBACK(int) vdiGetUuid(PPDMIMEDIA pInterface, PRTUUID pUuid)
 {
     PVDIDISK pThis = PDMIMEDIA_2_VDIDISK(pInterface);
     int rc = VDIDiskGetImageUuid(pThis, 0, pUuid);
-    LogFlow(("vdiGetUuid: returns %Rrc ({%Vuuid})\n", rc, pUuid));
+    LogFlow(("vdiGetUuid: returns %Rrc ({%RTuuid})\n", rc, pUuid));
     return rc;
 }
 
