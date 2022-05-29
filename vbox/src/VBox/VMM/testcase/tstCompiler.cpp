@@ -1,4 +1,4 @@
-/* $Id: tstCompiler.cpp 5605 2007-11-01 16:09:26Z vboxsync $ */
+/* $Id: tstCompiler.cpp 5854 2007-11-27 21:12:50Z vboxsync $ */
 /** @file
  * Testing how the compiler deals with various things.
  *
@@ -202,7 +202,7 @@ static void DisasFunction(const char *pszName, PFNRT pv)
     {
         char        sz[256];
         uint32_t    cbInstr = 0;
-        if (DISInstr(&Cpu, uCur, 0, &cbInstr, sz))
+        if (RT_SUCCESS(DISInstr(&Cpu, uCur, 0, &cbInstr, sz)))
         {
             RTPrintf("tstBitFields: %s", sz);
             uCur += cbInstr;
