@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6459 2008-01-23 06:30:01Z vboxsync $
+# $Id: Makefile.kmk 6469 2008-01-24 06:44:18Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Guest Addition X11 Client.
 #
@@ -89,8 +89,8 @@ VBoxClient_SOURCES  = \
 	clipboard-new.cpp \
 	main.cpp
 VBoxClient_LIBS = \
-	$(VBOX_LIB_VBGL_R3) \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
+	$(VBOX_LIB_VBGL_R3) \
 	X11 \
 	Xt
 endif # target solaris

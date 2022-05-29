@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGR.cpp 6447 2008-01-22 15:32:45Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGR.cpp 6469 2008-01-24 06:44:18Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, GR.
  */
@@ -27,7 +27,7 @@
 #include "VBGLR3Internal.h"
 
 
-int vbglR3GRAlloc(VMMDevRequestHeader **ppReq, uint32_t cb, VMMDevRequestType enmReqType)
+int VbglR3GRAlloc(VMMDevRequestHeader **ppReq, uint32_t cb, VMMDevRequestType enmReqType)
 {
     VMMDevRequestHeader *pReq;
 
@@ -52,13 +52,13 @@ int vbglR3GRAlloc(VMMDevRequestHeader **ppReq, uint32_t cb, VMMDevRequestType en
 }
 
 
-int vbglR3GRPerform(VMMDevRequestHeader *pReq)
+VBGLR3DECL(int) VbglR3GRPerform(VMMDevRequestHeader *pReq)
 {
-    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_VMMREQUEST(pReq->size), pReq, pReq->size);
+    return VbglR3DoIOCtl(VBOXGUEST_IOCTL_VMMREQUEST(pReq->size), pReq, pReq->size);
 }
 
 
-void vbglR3GRFree(VMMDevRequestHeader *pReq)
+void VbglR3GRFree(VMMDevRequestHeader *pReq)
 {
     RTMemTmpFree(pReq);
 }

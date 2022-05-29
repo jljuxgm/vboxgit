@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 6447 2008-01-22 15:32:45Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 6469 2008-01-24 06:44:18Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -149,7 +149,7 @@ VBGLR3DECL(void) VbglR3Term(void)
  *          here is OS specific. On BSD and Darwin we can use errno,
  *          while on OS/2 we use the 2nd buffer of the IOCtl.
  */
-int vbglR3DoIOCtl(unsigned iFunction, void *pvData, size_t cbData)
+int VbglR3DoIOCtl(unsigned iFunction, void *pvData, size_t cbData)
 {
 #ifdef RT_OS_OS2
     ULONG cbOS2Parm = cbData;
