@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibInfoSvc.cpp 10017 2008-06-30 14:06:54Z vboxsync $ */
+/* $Id: VBoxGuestR3LibInfoSvc.cpp 10098 2008-07-02 12:36:45Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, information service.
  */
@@ -126,15 +126,14 @@ VBGLR3DECL(int) VbglR3InfoSvcWriteKey(uint32_t u32ClientId, char *pszKey, char *
 /**
  * Retrieve a registry value.
  *
- * @returns VBox status code.
+ * @returns VBox status code.  If the value is not found, returns VERR_NOT_FOUND
  * @param   u32ClientId     The client id returned by VbglR3ClipboardConnect().
  * @param   pszKey          The registry key to save to.
  * @param   pszValue        Where to store the value retrieved.
  * @param   cbValue         The size of the buffer pszValue points to.
  * @param   pcbActual       Where to store the required buffer size if cbValue
  *                          is too small.  On success this contains the
- *                          actual size of the value retrieved.  If there is 
- *                          no such value this is set to zero.  Optional.
+ *                          actual size of the value retrieved.  Optional.
  */
 VBGLR3DECL(int) VbglR3InfoSvcReadKey(uint32_t u32ClientId, char *pszKey,
                                      char *pszValue, uint32_t cbValue, uint32_t *pcbActual)
