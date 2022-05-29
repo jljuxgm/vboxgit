@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 10538 2008-07-11 17:53:49Z vboxsync $ */
+/* $Id: IOM.cpp 11299 2008-08-08 22:56:56Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1460,7 +1460,7 @@ IOMR3DECL(int)  IOMR3MMIORegisterR3(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
         rc = PGMR3PhysMMIORegister(pVM, GCPhysStart, cbRange,
                                    IOMR3MMIOHandler, pRange,
                                    pVM->iom.s.pfnMMIOHandlerR0, MMHyperR3ToR0(pVM, pRange),
-                                   pVM->iom.s.pfnMMIOHandlerGC, MMHyperR3ToGC(pVM, pRange), pszDesc);
+                                   pVM->iom.s.pfnMMIOHandlerGC, MMHyperR3ToRC(pVM, pRange), pszDesc);
         if (RT_SUCCESS(rc))
         {
             if (RTAvlroGCPhysInsert(&pVM->iom.s.pTreesHC->MMIOTree, &pRange->Core))
@@ -1524,7 +1524,7 @@ IOMR3DECL(int)  IOMR3MMIORegisterGC(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
     pRange->pfnReadCallbackGC = pfnReadCallback;
     pRange->pfnWriteCallbackGC= pfnWriteCallback;
     pRange->pfnFillCallbackGC = pfnFillCallback;
-    pRange->pDevInsGC         = MMHyperCCToGC(pVM, pDevIns);
+    pRange->pDevInsGC         = MMHyperCCToRC(pVM, pDevIns);
 
     return VINF_SUCCESS;
 }

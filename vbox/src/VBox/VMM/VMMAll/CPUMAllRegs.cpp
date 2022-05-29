@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 10523 2008-07-11 13:17:02Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 11299 2008-08-08 22:56:56Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -69,7 +69,7 @@ CPUMDECL(void) CPUMHyperSetCtxCore(PVM pVM, PCPUMCTXCORE pCtxCore)
     {
         pVM->cpum.s.pHyperCoreR3 = (R3PTRTYPE(PCPUMCTXCORE))MMHyperCCToR3(pVM, pCtxCore);
         pVM->cpum.s.pHyperCoreR0 = (R0PTRTYPE(PCPUMCTXCORE))MMHyperCCToR0(pVM, pCtxCore);
-        pVM->cpum.s.pHyperCoreGC = (RCPTRTYPE(PCPUMCTXCORE))MMHyperCCToGC(pVM, pCtxCore);
+        pVM->cpum.s.pHyperCoreGC = (RCPTRTYPE(PCPUMCTXCORE))MMHyperCCToRC(pVM, pCtxCore);
     }
 }
 
