@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 8569 2008-05-05 12:32:51Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 8765 2008-05-12 00:59:03Z vboxsync $ */
 /** @file
  * Implmentation of IVirtualBox in VBoxSVC.
  */
@@ -36,7 +36,7 @@
 #include "Logging.h"
 
 #ifdef RT_OS_WINDOWS
-#include "win32/svchlp.h"
+# include "win/svchlp.h"
 #endif
 
 #include <stdio.h>

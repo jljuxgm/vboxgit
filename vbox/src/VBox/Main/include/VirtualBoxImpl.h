@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 8765 2008-05-12 00:59:03Z vboxsync $ */
 
 /** @file
  *
@@ -33,7 +33,7 @@
 #include <map>
 
 #ifdef RT_OS_WINDOWS
-#include "win32/resource.h"
+# include "win/resource.h"
 #endif
 
 class Machine;
