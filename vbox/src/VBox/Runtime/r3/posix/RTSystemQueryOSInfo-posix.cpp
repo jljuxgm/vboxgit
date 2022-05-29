@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-posix.cpp 11350 2008-08-12 11:25:18Z vboxsync $ */
+/* $Id: RTSystemQueryOSInfo-posix.cpp 11352 2008-08-12 12:54:16Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, POSIX implementation.
  */
@@ -82,7 +82,7 @@ RTDECL(int) RTSystemQueryOSInfo(RTSYSOSINFO enmInfo, char *pszInfo, size_t cchIn
         }
 
 
-        case RTSYSOSINFO_SERVICEPACK:
+        case RTSYSOSINFO_SERVICE_PACK:
         default:
             *pszInfo = '\0';
             return VERR_NOT_SUPPORTED;

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11350 2008-08-12 11:25:18Z vboxsync $
+# $Id: Makefile.kmk 11352 2008-08-12 12:54:16Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -288,9 +288,9 @@ RuntimeR3_SOURCES.win = \
 	generic/semsrw-generic.cpp \
 	generic/RTMpGetCurFrequency-generic.cpp \
 	generic/RTMpGetMaxFrequency-generic.cpp \
-	generic/RTSystemQueryOSInfo-generic.cpp \
 	nt/RTErrConvertFromNtStatus.cpp \
 	r3/posix/env-posix.cpp \
+	r3/win/RTSystemQueryOSInfo-win.cpp \
 	r3/win/alloc-win.cpp \
 	r3/win/dir-win.cpp \
 	r3/win/fileio-win.cpp \
