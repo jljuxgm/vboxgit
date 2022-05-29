@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8968 2008-05-20 17:59:23Z vboxsync $
+# $Id: Makefile.kmk 8970 2008-05-20 18:21:38Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -150,7 +150,6 @@ OTHER_CLEAN += $(VBOX_DISAS_TEST_CLEAN)
 # We don't want any of the tests rules to run in parallel because the
 # output will be difficult to follow. Abusing VBOX_DISAS_TEST_CLEAN here...
 .NOTPARALLEL: $(VBOX_DISAS_TEST_CLEAN)
-$(warning VBOX_DISAS_TEST_CLEAN:=$(VBOX_DISAS_TEST_CLEAN))
 
 
 
