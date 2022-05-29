@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 9563 2008-06-10 11:01:33Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 9582 2008-06-10 23:38:18Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -187,10 +187,7 @@ static int rtMpCall(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2, RT_NT
     KAFFINITY Mask = KeQueryActiveProcessors();
 
     /* KeFlushQueuedDpcs is not present in Windows 2000; import it dynamically so we can just fail this call. */
-    UNICODE_STRING  RoutineName;
-    RtlInitUnicodeString(&RoutineName, L"KeFlushQueuedDpcs");
-    VOID (*pfnKeFlushQueuedDpcs)(VOID) = (VOID (*)(VOID))MmGetSystemRoutineAddress(&RoutineName);
-    if (!pfnKeFlushQueuedDpcs)
+    if (!g_pfnrtNtKeFlushQueuedDpcs)
         return VERR_NOT_SUPPORTED;
 
     pArgs = (PRTMPARGS)ExAllocatePoolWithTag(NonPagedPool, MAXIMUM_PROCESSORS*sizeof(KDPC) + sizeof(RTMPARGS), (ULONG)'RTMp');
@@ -257,7 +254,7 @@ static int rtMpCall(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2, RT_NT
     KeLowerIrql(oldIrql);
 
     /* Flush all DPCs and wait for completion. (can take long!) */
-    pfnKeFlushQueuedDpcs();
+    g_pfnrtNtKeFlushQueuedDpcs();
 
     ExFreePool(pArgs);
     return VINF_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 9563 2008-06-10 11:01:33Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 9582 2008-06-10 23:38:18Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -35,11 +35,19 @@
 
 __BEGIN_DECLS
 
+/*******************************************************************************
+*   Structures and Typedefs                                                    *
+*******************************************************************************/
+typedef ULONG (__stdcall *PFNMYEXSETTIMERRESOLUTION)(ULONG, BOOLEAN);
+typedef VOID (__stdcall *PFNMYKEFLUSHQUEUEDDPCS)(VOID);
+
 
 /*******************************************************************************
 *   Global Variables                                                           *
 *******************************************************************************/
 extern RTCPUSET g_rtMpNtCpuSet;
+extern PFNMYEXSETTIMERRESOLUTION g_pfnrtNtExSetTimerResolution;
+extern PFNMYKEFLUSHQUEUEDDPCS g_pfnrtNtKeFlushQueuedDpcs;
 
 
 __END_DECLS
