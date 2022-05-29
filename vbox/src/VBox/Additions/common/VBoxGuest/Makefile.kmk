@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6020 2007-12-09 08:33:41Z vboxsync $
+# $Id: Makefile.kmk 6022 2007-12-09 17:59:27Z vboxsync $
 ## @file
 # Makefile for the OS/2 Guest Additions Driver.
 #
@@ -15,7 +15,8 @@
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 #
 
-DEPTH = ../../../../..
+DEPTH ?= ../../../../..
+SUB_DEPTH = ../..
 include	$(PATH_KBUILD)/subheader.kmk
 
 #
@@ -59,7 +60,6 @@ endif
 #
 ifeq ($(BUILD_PLATFORM),solaris)
 SYSMODS.solaris += vboxadd
-
 vboxadd_TEMPLATE      = VBOXGUESTR0
 vboxadd_DEFS          = VBGL_VBOXGUEST VBOX_HGCM
 vboxadd_INCS         := $(PATH_SUB_CURRENT) \
