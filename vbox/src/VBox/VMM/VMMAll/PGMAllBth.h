@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 9858 2008-06-20 14:40:30Z vboxsync $ */
+/* $Id: PGMAllBth.h 9859 2008-06-20 14:43:24Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1013,7 +1013,7 @@ PGM_BTH_DECL(int, InvalidatePage)(PVM pVM, RTGCUINTPTR GCPtrPage)
         PGM_INVL_PG(GCPtrPage);
         return VINF_SUCCESS;
     }
-    RTGCPHYS GCPhysPdpt = pPml4eSrc->u & GST_PDPT_MASK;
+    RTGCPHYS GCPhysPdpt = pPml4eSrc->u & X86_PML4E_PG_MASK;
 
     /* Check if the PML4 entry has changed. */
     if (pShwPdpt->GCPhys != GCPhysPdpt)
