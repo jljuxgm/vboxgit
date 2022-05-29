@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6919 2008-02-12 12:54:07Z vboxsync $
+# $Id: Config.kmk 6968 2008-02-14 21:03:24Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -234,6 +234,8 @@ VBOX_WITH_USB = 1
 VBOX_WITH_EHCI = 1
 # Enable the ISCSI feature.
 VBOX_WITH_ISCSI = 1
+# Enable the E1000 feature
+VBOX_WITH_E1000 = 1
 # Enable ALSA support for Linux
 VBOX_WITH_ALSA = 1
 # Enable Pulse support for Linux
@@ -399,6 +401,7 @@ ifdef VBOX_OSE
  VBOX_WITH_USB=
  VBOX_WITH_EHCI=
  VBOX_WITH_ISCSI=
+ VBOX_WITH_E1000=
  VBOX_WITH_DEBUGGER_GUI=
  VBOX_WITH_WIN32_ADDITIONS_SHAREDFOLDERS=
  VBOX_WITHOUT_ADDITIONS_ISO=1
@@ -2841,7 +2844,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6919 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6968 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

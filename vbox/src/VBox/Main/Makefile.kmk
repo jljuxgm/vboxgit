@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6851 2008-02-07 16:02:11Z vboxsync $
+# $Id: Makefile.kmk 6968 2008-02-14 21:03:24Z vboxsync $
 
 ## @file
 # Makefile for the VBox Main module.
@@ -48,9 +48,6 @@ ifneq ($(BUILD_TARGET),win)
   VBOX_MAIN_DEFS+= VBOX_WITH_SYS_V_IPC_SESSION_WATCHER
  endif
  VBOX_MAIN_DEFS += VBOX_WITH_UNIXY_TAP_NETWORKING
-endif
-ifndef VBOX_OSE
-VBOX_MAIN_DEFS  += VBOX_WITH_E1000
 endif
 ## @todo eliminate or expand VBOX_MAIN_DEFS.
 
@@ -136,6 +133,9 @@ VBoxSVC_DEFS += VBOX_WITH_PULSE
 endif
 ifdef VBOX_WITH_WINMM
 VBoxSVC_DEFS += VBOX_WITH_WINMM
+endif
+ifdef VBOX_WITH_E1000
+VBoxSVC_DEFS += VBOX_WITH_E1000
 endif
 ifdef VBOX_WITHOUT_LINUX_COMPILER_H
 VBoxSVC_DEFS += VBOX_WITHOUT_LINUX_COMPILER_H
@@ -311,6 +311,9 @@ VBoxC_DEFS += VBOX_WITH_WINMM
 endif
 ifdef VBOX_WITH_CROSSBOW
 VBoxC_DEFS += VBOX_WITH_CROSSBOW
+endif
+ifdef VBOX_WITH_E1000
+VBoxC_DEFS += VBOX_WITH_E1000
 endif
 
 VBoxC_DEFS.win.x86 += _WIN32_WINNT=0x0500
