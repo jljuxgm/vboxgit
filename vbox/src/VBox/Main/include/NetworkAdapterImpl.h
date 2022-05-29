@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 6076 2007-12-14 19:23:03Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 7207 2008-02-28 18:43:08Z vboxsync $ */
 
 /** @file
  *
@@ -37,7 +37,7 @@ public:
     {
         Data()
             : mSlot (0), mEnabled (FALSE)
-            , mAttachmentType (NetworkAttachmentType_NoNetworkAttachment)
+            , mAttachmentType (NetworkAttachmentType_Null)
             ,  mCableConnected (TRUE), mLineSpeed (0), mTraceEnabled (FALSE)
 #ifdef RT_OS_WINDOWS
             , mHostInterface ("") // cannot be null

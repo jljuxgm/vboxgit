@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 6597 2008-01-30 12:55:54Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 7207 2008-02-28 18:43:08Z vboxsync $ */
 
 /** @file
  *
@@ -36,7 +36,7 @@ public:
     {
         Data() {
             mEnabled = false;
-            mAudioDriver = AudioDriverType_NullAudioDriver;
+            mAudioDriver = AudioDriverType_Null;
             mAudioController = AudioControllerType_AC97;
         }
 

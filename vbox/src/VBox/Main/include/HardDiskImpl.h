@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 6174 2007-12-21 19:05:37Z vboxsync $ */
+/* $Id: HardDiskImpl.h 7207 2008-02-28 18:43:08Z vboxsync $ */
 
 /** @file
  *
@@ -101,14 +101,14 @@ public:
 
     bool isDifferencing() const
     {
-        return mType == HardDiskType_NormalHardDisk &&
+        return mType == HardDiskType_Normal &&
                mStorageType == HardDiskStorageType_VirtualDiskImage &&
                !mParent.isNull();
     }
     bool isParentImmutable() const
     {
         AutoLock parentLock (mParent);
-        return !mParent.isNull() && mParent->type() == HardDiskType_ImmutableHardDisk;
+        return !mParent.isNull() && mParent->type() == HardDiskType_Immutable;
     }
 
     inline HVirtualDiskImage *asVDI();
@@ -305,7 +305,7 @@ private:
     };
 
     State mState;
-    
+
     RTSEMEVENTMULTI mStateCheckSem;
     ULONG mStateCheckWaiters;
 
@@ -520,7 +520,7 @@ private:
     };
 
     State mState;
-    
+
     RTSEMEVENTMULTI mStateCheckSem;
     ULONG mStateCheckWaiters;
 
@@ -631,7 +631,7 @@ private:
     };
 
     State mState;
-    
+
     RTSEMEVENTMULTI mStateCheckSem;
     ULONG mStateCheckWaiters;
 
@@ -652,7 +652,7 @@ private:
 };
 
 ////////////////////////////////////////////////////////////////////////////////
- 
+
 class ATL_NO_VTABLE HVHDImage :
     public HardDisk,
     public VirtualBoxSupportTranslation <HVHDImage>,
@@ -745,7 +745,7 @@ private:
     };
 
     State mState;
-    
+
     RTSEMEVENTMULTI mStateCheckSem;
     ULONG mStateCheckWaiters;
 
