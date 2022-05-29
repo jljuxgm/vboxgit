@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 7715 2008-04-03 09:03:01Z vboxsync $ */
+/* $Id: PGMPool.cpp 7945 2008-04-14 07:53:00Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -409,7 +409,7 @@ PDMR3DECL(int) PGMR3PoolGrow(PVM pVM)
      */
     uint32_t cPages = pPool->cMaxPages - pPool->cCurPages;
     cPages = RT_MIN(PGMPOOL_CFG_MAX_GROW, cPages);
-    LogFlow(("PGMR3PoolGrow: Growing the by %d (%#x) pages.\n", cPages, cPages));
+    LogFlow(("PGMR3PoolGrow: Growing the pool by %d (%#x) pages.\n", cPages, cPages));
 
     for (unsigned i = pPool->cCurPages; cPages-- > 0; i++)
     {
