@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 9258 2008-05-30 15:06:42Z vboxsync $ */
+/* $Id: IOM.cpp 9293 2008-06-02 12:18:45Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -616,11 +616,11 @@ IOMR3DECL(int) IOMR3IOPortRegisterR3(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT PortS
  * @param   pfnInStrCallback    Pointer to function which is gonna handle string IN operations in GC.
  * @param   pszDesc             Pointer to description string. This must not be freed.
  */
-IOMR3DECL(int)  IOMR3IOPortRegisterGC(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT PortStart, RTUINT cPorts, RTGCPTR pvUser,
+IOMR3DECL(int)  IOMR3IOPortRegisterGC(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT PortStart, RTUINT cPorts, RTRCPTR pvUser,
                                       RCPTRTYPE(PFNIOMIOPORTOUT) pfnOutCallback, RCPTRTYPE(PFNIOMIOPORTIN) pfnInCallback,
                                       RCPTRTYPE(PFNIOMIOPORTOUTSTRING) pfnOutStrCallback, RCPTRTYPE(PFNIOMIOPORTINSTRING) pfnInStrCallback, const char *pszDesc)
 {
-    LogFlow(("IOMR3IOPortRegisterGC: pDevIns=%p PortStart=%#x cPorts=%#x pvUser=%VGv pfnOutCallback=%VGv pfnInCallback=%VGv pfnOutStrCallback=%VGv  pfnInStrCallback=%VGv pszDesc=%s\n",
+    LogFlow(("IOMR3IOPortRegisterGC: pDevIns=%p PortStart=%#x cPorts=%#x pvUser=%VRv pfnOutCallback=%VGv pfnInCallback=%VRv pfnOutStrCallback=%VRv  pfnInStrCallback=%VRv pszDesc=%s\n",
              pDevIns, PortStart, cPorts, pvUser, pfnOutCallback, pfnInCallback, pfnOutStrCallback, pfnInStrCallback, pszDesc));
 
     /*
