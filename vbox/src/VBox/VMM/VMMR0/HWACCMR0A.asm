@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 9484 2008-06-06 14:02:24Z vboxsync $
+; $Id: HWACCMR0A.asm 9592 2008-06-11 09:39:14Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -563,7 +563,7 @@ ALIGNCODE(16)
     pop     xAX         ; saved LDTR
     lldt    ax
 
-    add     xSP, xS      ; pCtx
+    pop     xSI         ; pCtx (needed in rsi by the macros below
 
     ; Save the guest LSTAR, CSTAR, SFMASK & KERNEL_GSBASE MSRs and restore the host MSRs
     ; @todo use the automatic load feature for MSRs
@@ -596,7 +596,7 @@ ALIGNCODE(16)
     pop     xAX         ; saved LDTR
     lldt    ax
 
-    add     xSP, xS     ; pCtx
+    pop     xSI         ; pCtx (needed in rsi by the macros below
 
     ; Save the guest LSTAR, CSTAR, SFMASK & KERNEL_GSBASE MSRs and restore the host MSRs
     ; @todo use the automatic load feature for MSRs
@@ -623,7 +623,7 @@ ALIGNCODE(16)
     pop     xAX         ; saved LDTR
     lldt    ax
 
-    add     xSP, xS     ; pCtx
+    pop     xSI         ; pCtx (needed in rsi by the macros below
 
     ; Save the guest LSTAR, CSTAR, SFMASK & KERNEL_GSBASE MSRs and restore the host MSRs
     ; @todo use the automatic load feature for MSRs
