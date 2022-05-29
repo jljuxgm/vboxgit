@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 6076 2007-12-14 19:23:03Z vboxsync $ */
+/* $Id: USBControllerImpl.h 6851 2008-02-07 16:02:11Z vboxsync $ */
 
 /** @file
  *
@@ -136,7 +136,7 @@ private:
     /** specialization for IUSBDeviceFilter */
     ComObjPtr <USBDeviceFilter> getDependentChild (IUSBDeviceFilter *aFilter)
     {
-        VirtualBoxBase *child = VirtualBoxBaseWithChildren::
+        VirtualBoxBase *child = VirtualBoxBaseWithChildrenNEXT::
                                 getDependentChild (ComPtr <IUnknown> (aFilter));
         return child ? static_cast <USBDeviceFilter *> (child)
                      : NULL;

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6778 2008-02-04 10:25:17Z vboxsync $
+# $Id: Makefile.kmk 6851 2008-02-07 16:02:11Z vboxsync $
 
 ## @file
 # Makefile for the VBox Main module.
@@ -393,7 +393,7 @@ Version.cpp_DEPS = $(VBOX_SVN_REV_KMK)
 
 ConsoleImpl.cpp_DEFS = VBOX_BUILD_TARGET=\"$(BUILD_TARGET).$(BUILD_TARGET_ARCH)\"
 
-win32/VBoxC.rc_DEPS = $(PATH_TARGET)/VBoxC.rgs
+win32/VBoxC.rc_DEPS = $(PATH_TARGET)/VBoxC.rgs $(PATH_VBoxCOM)/VirtualBox.tlb
 
 
 #
