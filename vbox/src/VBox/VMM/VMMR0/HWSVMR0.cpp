@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9115 2008-05-26 11:18:34Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9116 2008-05-26 11:21:13Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1948,6 +1948,8 @@ HWACCMR0DECL(int) SVMR0InvalidatePhysPage(PVM pVM, RTGCPHYS GCPhys)
 
         pVMCB = (SVM_VMCB *)pVM->hwaccm.s.svm.pVMCB;
         AssertMsgReturn(pVMCB, ("Invalid pVMCB\n"), VERR_EM_INTERNAL_ERROR);
+
+        STAM_COUNTER_INC(&pVM->hwaccm.s.StatFlushPhysPageManual);
 
         return SVMR0InterpretInvpg(pVM, CPUMCTX2CORE(pCtx), pVMCB->ctrl.TLBCtrl.n.u32ASID);
     }

@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 9082 2008-05-23 13:14:15Z vboxsync $ */
+/* $Id: HWACCM.cpp 9116 2008-05-26 11:21:13Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -152,7 +152,8 @@ HWACCMR3DECL(int) HWACCMR3Init(PVM pVM)
     STAM_REG(pVM, &pVM->hwaccm.s.StatIntReinject,   STAMTYPE_COUNTER, "/HWACCM/Irq/Reinject",           STAMUNIT_OCCURENCES,    "Nr of occurances");
     STAM_REG(pVM, &pVM->hwaccm.s.StatPendingHostIrq,STAMTYPE_COUNTER, "/HWACCM/Irq/PendingOnHost",      STAMUNIT_OCCURENCES,    "Nr of occurances");
 
-    STAM_REG(pVM, &pVM->hwaccm.s.StatFlushPageManual,       STAMTYPE_COUNTER, "/HWACCM/Flush/Page/Manual", STAMUNIT_OCCURENCES,    "Nr of occurances");
+    STAM_REG(pVM, &pVM->hwaccm.s.StatFlushPageManual,       STAMTYPE_COUNTER, "/HWACCM/Flush/Page/Virt/Manual", STAMUNIT_OCCURENCES,    "Nr of occurances");
+    STAM_REG(pVM, &pVM->hwaccm.s.StatFlushPhysPageManual,   STAMTYPE_COUNTER, "/HWACCM/Flush/Page/Phys/Manual", STAMUNIT_OCCURENCES,    "Nr of occurances");
     STAM_REG(pVM, &pVM->hwaccm.s.StatFlushTLBManual,        STAMTYPE_COUNTER, "/HWACCM/Flush/TLB/Manual",  STAMUNIT_OCCURENCES,    "Nr of occurances");
     STAM_REG(pVM, &pVM->hwaccm.s.StatFlushTLBCRxChange,     STAMTYPE_COUNTER, "/HWACCM/Flush/TLB/CRx",     STAMUNIT_OCCURENCES,    "Nr of occurances");
     STAM_REG(pVM, &pVM->hwaccm.s.StatFlushPageInvlpg,       STAMTYPE_COUNTER, "/HWACCM/Flush/Page/Invlpg", STAMUNIT_OCCURENCES,    "Nr of occurances");
