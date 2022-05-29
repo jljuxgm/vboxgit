@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8295 2008-04-22 13:57:10Z vboxsync $
+# $Id: Makefile.kmk 8400 2008-04-25 21:27:15Z vboxsync $
 ## @file
 # Makefile for the IPRT (IPRT).
 #
@@ -1270,7 +1270,7 @@ ifneq ($(wildcard /usr/bin/chcon),)
 # this is needed for testcases executed at build time
 ## @todo Make a special installer tool that does this.
 $(PATH_BIN)/VBoxRT.so:
-	$(INSTALL) $(out) $@
+	$(INSTALL) $(TARGET_VBoxRT) $@
 	chcon -t texrel_shlib_t $@ || true
 endif
 
