@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 6347 2008-01-11 20:17:34Z vboxsync $ */
+/* $Id: VMInternal.h 6398 2008-01-21 08:20:22Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -237,8 +237,6 @@ typedef struct VMINT
     R3PTRTYPE(PVMATERROR)           pAtError;
     /** List of registered error callbacks. */
     R3PTRTYPE(PVMATERROR *)         ppAtErrorNext;
-    /** Ignore all but the first error */
-    bool                            fErrorSet;
 
     /** List of registered error callbacks. */
     R3PTRTYPE(PVMATRUNTIMEERROR)    pAtRuntimeError;
