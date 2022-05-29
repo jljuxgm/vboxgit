@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10056 2008-07-01 01:45:03Z vboxsync $
+# $Id: Makefile.kmk 10868 2008-07-24 18:34:35Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -66,6 +66,9 @@ ifeq ($(KBUILD_TARGET),win) ## @todo just add this to the template.
 tstAPI_DEPS     = $(VBOX_PATH_SDK)/include/VirtualBox.h
 else
 tstAPI_DEPS     = $(VBOX_PATH_SDK)/include/VirtualBox_XPCOM.h
+endif
+ifdef VBOX_WITH_RESOURCE_USAGE_API
+tstAPI_DEFS += VBOX_WITH_RESOURCE_USAGE_API
 endif
 
 

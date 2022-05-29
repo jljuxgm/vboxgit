@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 10797 2008-07-22 08:12:42Z vboxsync $ */
+/* $Id: MachineImpl.h 10868 2008-07-24 18:34:35Z vboxsync $ */
 
 /** @file
  *
@@ -718,7 +718,7 @@ protected:
     void copyFrom (Machine *aThat);
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
-    void registerMetrics (PerformanceCollector *aCollector);
+    void registerMetrics (PerformanceCollector *aCollector, RTPROCESS pid);
     void unregisterMetrics (PerformanceCollector *aCollector);
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
