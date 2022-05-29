@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 8454 2008-04-29 11:31:44Z vboxsync $ */
+/* $Id: PGMAllGst.h 8455 2008-04-29 11:36:19Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -731,7 +731,7 @@ static DECLCALLBACK(int) PGM_GST_NAME(VirtHandlerUpdateOne)(PAVLROGCPTRNODECORE 
         Pde.u = pgmGstGetPaePDE(&pState->pVM->pgm.s, GCPtr);
 #elif PGM_GST_TYPE == PGM_TYPE_AMD64
         X86PDEPAE    Pde;
-        Pde.u = pgmGstGetLongModePDE(&pVM->pgm.s, GCPtr);
+        Pde.u = pgmGstGetLongModePDE(&pState->pVM->pgm.s, GCPtr);
 #endif
         if (Pde.n.u1Present)
         {
