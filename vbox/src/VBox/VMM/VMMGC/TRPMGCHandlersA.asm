@@ -1,4 +1,4 @@
-; $Id: TRPMGCHandlersA.asm 9713 2008-06-16 11:53:37Z vboxsync $
+; $Id: TRPMGCHandlersA.asm 9714 2008-06-16 11:58:28Z vboxsync $
 ;; @file
 ; TRPM - Guest Context Trap Handlers
 ;
@@ -263,6 +263,10 @@ GenericTrapErrCode:
 
     mov     eax, [esp + 14h + ESPOFF]           ; esp
     mov     [esp + CPUMCTXCORE.esp], eax
+%if GC_ARCH_BITS == 64
+    ; zero out the high dword
+    mov     dword [esp + CPUMCTXCORE.esp + 4], 0
+%endif
     mov     eax, [esp + 18h + ESPOFF]           ; ss
     mov     dword [esp + CPUMCTXCORE.ss], eax
 
@@ -764,6 +768,10 @@ ti_GenericInterrupt:
 
     mov     eax, [esp + 10h + ESPOFF]           ; esp
     mov     [esp + CPUMCTXCORE.esp], eax
+%if GC_ARCH_BITS == 64
+    ; zero out the high dword
+    mov     dword [esp + CPUMCTXCORE.esp + 4], 0
+%endif
     mov     eax, dword [esp + 14h + ESPOFF]     ; ss
     mov     [esp + CPUMCTXCORE.ss], eax
 
@@ -1077,6 +1085,10 @@ BEGINPROC_EXPORTED TRPMGCHandlerTrap08
     mov     [esp + CPUMCTXCORE.ss], eax
     mov     eax, [ecx + VBOXTSS.esp]
     mov     [esp + CPUMCTXCORE.esp], eax
+%if GC_ARCH_BITS == 64
+    ; zero out the high dword
+    mov     dword [esp + CPUMCTXCORE.esp + 4], 0
+%endif
     mov     eax, [ecx + VBOXTSS.ecx]
     mov     [esp + CPUMCTXCORE.ecx], eax
     mov     eax, [ecx + VBOXTSS.edx]
