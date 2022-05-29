@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 8677 2008-05-07 18:13:32Z vboxsync $ */
+/* $Id: PGM.cpp 8952 2008-05-20 13:16:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2467,7 +2467,7 @@ static int pgmR3ModeDataInit(PVM pVM, bool fResolveGCAndR0)
 
 
 /**
- * Swtich to different (or relocated in the relocate case) mode data.
+ * Switch to different (or relocated in the relocate case) mode data.
  *
  * @param   pVM         The VM handle.
  * @param   enmShw      The the shadow paging mode.
