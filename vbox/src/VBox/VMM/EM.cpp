@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 10706 2008-07-16 15:21:50Z vboxsync $ */
+/* $Id: EM.cpp 11424 2008-08-14 13:46:06Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -212,6 +212,8 @@ EMR3DECL(int) EMR3Init(PVM pVM)
     STAM_REG_USED(pVM, &pStats->StatGCRdmsr,                STAMTYPE_COUNTER, "/EM/GC/Interpret/Success/Rdmsr",      STAMUNIT_OCCURENCES,   "The number of times RDMSR was not interpreted.");
     STAM_REG_USED(pVM, &pStats->StatHCWrmsr,                STAMTYPE_COUNTER, "/EM/HC/Interpret/Success/Wrmsr",      STAMUNIT_OCCURENCES,   "The number of times WRMSR was not interpreted.");
     STAM_REG_USED(pVM, &pStats->StatGCWrmsr,                STAMTYPE_COUNTER, "/EM/GC/Interpret/Success/Wrmsr",      STAMUNIT_OCCURENCES,   "The number of times WRMSR was not interpreted.");
+    STAM_REG_USED(pVM, &pStats->StatHCStosWD,               STAMTYPE_COUNTER, "/EM/HC/Interpret/Success/Stoswd",     STAMUNIT_OCCURENCES,   "The number of times STOSWD was not interpreted.");
+    STAM_REG_USED(pVM, &pStats->StatGCStosWD,               STAMTYPE_COUNTER, "/EM/GC/Interpret/Success/Stoswd",     STAMUNIT_OCCURENCES,   "The number of times STOSWD was not interpreted.");
 
     STAM_REG(pVM, &pStats->StatGCInterpretFailed,           STAMTYPE_COUNTER, "/EM/GC/Interpret/Failed",            STAMUNIT_OCCURENCES,    "The number of times an instruction was not interpreted.");
     STAM_REG(pVM, &pStats->StatHCInterpretFailed,           STAMTYPE_COUNTER, "/EM/HC/Interpret/Failed",            STAMUNIT_OCCURENCES,    "The number of times an instruction was not interpreted.");
