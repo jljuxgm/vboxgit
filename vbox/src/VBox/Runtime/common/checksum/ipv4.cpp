@@ -1,4 +1,4 @@
-/* $Id: ipv4.cpp 11049 2008-07-31 21:19:52Z vboxsync $ */
+/* $Id: ipv4.cpp 11060 2008-08-01 02:20:15Z vboxsync $ */
 /** @file
  * IPRT - IPv4 Checksum calculation and validation.
  */
@@ -447,9 +447,12 @@ RTDECL(bool) RTNetIPv4IsUDPValid(PCRTNETIPV4 pIpHdr, PCRTNETUDP pUdpHdr, void co
 {
     if (RT_UNLIKELY(!rtNetIPv4IsUDPSizeValid(pIpHdr, pUdpHdr, cbPktMax)))
         return false;
-    uint16_t u16Sum = RTNetIPv4UDPChecksum(pIpHdr, pUdpHdr, pvData);
-    if (RT_UNLIKELY(pUdpHdr->uh_sum != u16Sum))
-        return false;
+    if (pUdpHdr->uh_sum)
+    {
+        uint16_t u16Sum = RTNetIPv4UDPChecksum(pIpHdr, pUdpHdr, pvData);
+        if (RT_UNLIKELY(pUdpHdr->uh_sum != u16Sum))
+            return false;
+    }
     return true;
 }
 
