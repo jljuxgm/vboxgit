@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 6432 2008-01-21 23:05:25Z vboxsync $ */
+/* $Id: fileio-win.cpp 6971 2008-02-15 14:18:10Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O, native implementation for the Windows host platform.
  */
@@ -229,7 +229,18 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
     if (hFile == INVALID_HANDLE_VALUE)
         return RTErrConvertFromWin32(GetLastError());
 
+    /*
+     * Turn off indexing of directory through Windows Indexing Service
+     */
+    if (   (dwCreationDisposition == OPEN_ALWAYS)
+        || (dwCreationDisposition == CREATE_NEW)
+        || (dwCreationDisposition == CREATE_ALWAYS))
+    {
+        if (FALSE == SetFileAttributes(pszFilename, FILE_ATTRIBUTE_NOT_CONTENT_INDEXED))
+            return RTErrConvertFromWin32(GetLastError());
+    }
 #else
+
     PRTUCS2 pwszFilename;
     rc = RTStrToUtf16(pszFilename, &pwszFilename);
     if (RT_FAILURE(rc))
@@ -248,6 +259,22 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
         RTUtf16Free(pwszFilename);
         return rc;
     }
+
+    /*
+     * Turn off indexing of directory through Windows Indexing Service
+     */
+    if (   (dwCreationDisposition == OPEN_ALWAYS)
+        || (dwCreationDisposition == CREATE_NEW)
+        || (dwCreationDisposition == CREATE_ALWAYS))
+    {
+        if (FALSE == SetFileAttributesW(pwszFilename, FILE_ATTRIBUTE_NOT_CONTENT_INDEXED))
+        {
+            rc = RTErrConvertFromWin32(GetLastError());
+            RTUtf16Free(pwszFilename);
+            return rc;
+        }
+    }
+
     RTUtf16Free(pwszFilename);
 #endif
 

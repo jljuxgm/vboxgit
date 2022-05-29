@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: dir-win.cpp 6971 2008-02-15 14:18:10Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Directory, win32.
  */
@@ -97,6 +97,17 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode)
                 rc = VINF_SUCCESS;
             else
                 rc = RTErrConvertFromWin32(GetLastError());
+
+            /*
+             * Turn off indexing of directory through Windows Indexing Service
+             */
+            if (RT_SUCCESS(rc))
+            {
+                if (SetFileAttributesW((LPCWSTR)pucszString, FILE_ATTRIBUTE_NOT_CONTENT_INDEXED))
+                    rc = VINF_SUCCESS;
+                else
+                    rc = RTErrConvertFromWin32(GetLastError());
+            }
 
             RTStrUcs2Free(pucszString);
         }
