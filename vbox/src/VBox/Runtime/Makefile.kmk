@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11078 2008-08-02 18:41:47Z vboxsync $
+# $Id: Makefile.kmk 11137 2008-08-05 16:00:43Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1229,6 +1229,7 @@ RuntimeGuestR0_SOURCES.solaris = \
  	generic/RTMpGetOnlineSet-generic.cpp \
  	generic/RTMpGetSet-generic.cpp \
  	generic/RTMpIsCpuOnline-generic.cpp \
+	generic/RTLogWriteStdOut-stub-generic.cpp \
 	r0drv/generic/RTMpOn-r0drv-generic.cpp \
 	r0drv/generic/mpnotification-r0drv-generic.cpp \
  	r0drv/solaris/alloc-r0drv-solaris.c \
