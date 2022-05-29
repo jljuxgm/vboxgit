@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 10411 2008-07-09 12:26:37Z vboxsync $ */
+/* $Id: EM.cpp 10458 2008-07-10 08:08:05Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -3023,7 +3023,7 @@ static int emR3ForcedActions(PVM pVM, int rc)
             UPDATE_RC();
         }
 
-        /* Replays the handler notification changes. */
+        /* Replay the handler notification changes. */
         if (VM_FF_ISSET(pVM, VM_FF_REM_HANDLER_NOTIFY))
             REMR3ReplayHandlerNotifications(pVM);
 
