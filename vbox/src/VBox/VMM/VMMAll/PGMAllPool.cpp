@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 7962 2008-04-14 17:24:54Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 7963 2008-04-14 17:26:08Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -446,7 +446,7 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
                         const unsigned iShw2 = (off + pgmPoolDisasWriteSize(pCpu) - 1) / sizeof(X86PDPE);
                         if (    iShw2 != iShw
                             &&  iShw2 < X86_PG_PAE_PDPE_ENTRIES
-                            &&  uShw.pPDPae->a[iShw2].u & PGM_PDFLAGS_MAPPING)
+                            &&  uShw.pPDPT->a[iShw2].u & PGM_PDFLAGS_MAPPING)
                         {
                             Assert(pgmMapAreMappingsEnabled(&pPool->CTXSUFF(pVM)->pgm.s));
                             VM_FF_SET(pPool->CTXSUFF(pVM), VM_FF_PGM_SYNC_CR3);
