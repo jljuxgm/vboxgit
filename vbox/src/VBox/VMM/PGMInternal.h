@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 6902 2008-02-11 16:51:52Z vboxsync $ */
+/* $Id: PGMInternal.h 6906 2008-02-11 18:17:52Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2478,7 +2478,7 @@ void            pgmUnlock(PVM pVM);
 void            pgmR3HandlerPhysicalUpdateAll(PVM pVM);
 int             pgmHandlerVirtualFindByPhysAddr(PVM pVM, RTGCPHYS GCPhys, PPGMVIRTHANDLER *ppVirt, unsigned *piPage);
 DECLCALLBACK(int) pgmHandlerVirtualResetOne(PAVLROGCPTRNODECORE pNode, void *pvUser);
-#ifdef VBOX_STRICT
+#if defined(VBOX_STRICT) || defined(LOG_ENABLED)
 void            pgmHandlerVirtualDumpPhysPages(PVM pVM);
 #else
 # define pgmHandlerVirtualDumpPhysPages(a) do { } while (0)
