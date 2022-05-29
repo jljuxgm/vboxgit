@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 10018 2008-06-30 14:34:57Z vboxsync $ */
+/* $Id: PGMR0.cpp 10019 2008-06-30 14:36:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -135,10 +135,15 @@ PGMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PGMMODE enmShwPagingMode,
         rc = PGM_BTH_NAME_32BIT_PROT(Trap0eHandler)(pVM, uErr, pRegFrame, pvFault);
         break;
     case PGMMODE_PAE:
+    case PGMMODE_PAE_NX:
         rc = PGM_BTH_NAME_PAE_PROT(Trap0eHandler)(pVM, uErr, pRegFrame, pvFault);
         break;
     case PGMMODE_AMD64:
+    case PGMMODE_AMD64_NX:
         rc = PGM_BTH_NAME_AMD64_PROT(Trap0eHandler)(pVM, uErr, pRegFrame, pvFault);
+        break;
+    default:
+        AssertFailed();
         break;
     }
     if (rc == VINF_PGM_SYNCPAGE_MODIFIED_PDE)
