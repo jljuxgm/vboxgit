@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 10465 2008-07-10 11:51:19Z vboxsync $ */
+/* $Id: HWACCMInternal.h 10489 2008-07-11 07:17:00Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -137,6 +137,9 @@ typedef struct
     uint32_t    uCurrentASID;
     /* TLB flush count */
     uint32_t    cTLBFlushes;
+
+    /* Set the first time a cpu is used to make sure we start with a clean TLB. */
+    bool        fFlushTLB;
 
     bool        fConfigured;
 } HWACCM_CPUINFO;
