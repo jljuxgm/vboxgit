@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 10663 2008-07-15 14:38:39Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 10677 2008-07-15 16:32:15Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1345,7 +1345,7 @@ static int intnetNetworkCreateTrunkConnection(PINTNETNETWORK pNetwork, PSUPDRVSE
         if (RT_SUCCESS(rc))
         {
             rc = pTrunkFactory->pfnCreateAndConnect(pTrunkFactory, pNetwork->szTrunk, &pTrunkIF->SwitchPort, &pTrunkIF->pIfPort);
-            /** @todo pTrunkFactory->pfnRelease(pTrunkFactory); */
+            pTrunkFactory->pfnRelease(pTrunkFactory);
             if (RT_SUCCESS(rc))
             {
                 Assert(pTrunkIF->pIfPort);
