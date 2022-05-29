@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6760 2008-02-02 20:16:17Z vboxsync $
+# $Id: Config.kmk 6859 2008-02-08 09:01:04Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -168,7 +168,7 @@ VBOX_WITH_OS2_ADDITIONS_BIN = 1
 # Only build the additions (for the additions build server).
 #VBOX_ONLY_ADDITIONS = 1
 ifdef VBOX_ADDITIONS_ONLY # typical mistake.
- $(error It's VBOX_ONLY_ADDITIONS=1 not VBOX_ADDITIONS_ONLY!)
+ $(error It is VBOX_ONLY_ADDITIONS=1 not VBOX_ADDITIONS_ONLY!)
 endif
 # Don't create the additions ISO.
 # (Used by the additions build server, don't invert it.)
@@ -2835,7 +2835,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6760 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6859 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
