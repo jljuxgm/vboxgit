@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 8460 2008-04-29 12:10:47Z vboxsync $ */
+/* $Id: PGMInternal.h 8500 2008-04-30 11:18:43Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2378,6 +2378,8 @@ typedef struct PGM
     STAMCOUNTER     StatHandlersVirtualUnmarked;
     /** GC: Number of traps due to access outside range of monitored page(s). */
     STAMCOUNTER     StatHandlersUnhandled;
+    /** GC: Number of traps due to access to invalid physical memory. */
+    STAMCOUNTER     StatHandlersInvalid;
 
     /** GC: The number of times pgmGCGuestROMWriteHandler() was successfully called. */
     STAMCOUNTER     StatGCGuestROMWriteHandled;
