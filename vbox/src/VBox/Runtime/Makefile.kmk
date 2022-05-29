@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11205 2008-08-07 13:58:16Z vboxsync $
+# $Id: Makefile.kmk 11239 2008-08-08 10:16:01Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -513,8 +513,6 @@ RuntimeR3_SOURCES.solaris = \
 	r3/solaris/alloc-solaris.cpp \
 	r3/solaris/mp-solaris.cpp
 
-VBoxRT_LIBS.solaris += kstat
-
 ## PORTME: Porters add their selection of platform specific files for Ring-3 here.
 
 
@@ -698,6 +696,8 @@ VBoxRT_LIBS.darwin             = \
 	iconv
 VBoxRT_LIBS.freebsd            = \
 	iconv
+VBoxRT_LIBS.solaris            = \
+	kstat
 VBoxRT_LIBPATH.freebsd         = \
 	/usr/local/lib
 VBoxRT_LDFLAGS.darwin          = -framework IOKit -install_name @executable_path/VBoxRT.dylib
