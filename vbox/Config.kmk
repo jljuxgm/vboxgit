@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6118 2007-12-18 09:55:20Z vboxsync $
+# $Id: Config.kmk 6121 2007-12-18 11:06:52Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -2637,6 +2637,9 @@ TEMPLATE_VBOXGUESTR3EXE_INST    = $(INST_ADDITIONS)
 TEMPLATE_VBOXGUESTR3EXE_BLD_TRG_ARCH  = x86
 TEMPLATE_VBOXGUESTR3EXE_BLD_TRG_CPU   = i386
 TEMPLATE_VBOXGUESTR3EXE_DEFS    = IN_RING3 IN_GUEST IN_GUEST_R3 IN_RT_R3 HC_ARCH_BITS=32 GC_ARCH_BITS=32
+ifeq ($(BUILD_TARGET),solaris)
+ TEMPLATE_VBOXGUESTR3EXE_DEFS  += LIBICONV_PLUG _REENTRANT # Avoid the GNU libiconv, for now at least.
+endif
 if1of ($(BUILD_TARGET),win)
  ## @todo make static TEMPLATE_VBOXGUESTR3EXE_LDFLAGS =
 else
@@ -2762,7 +2765,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6118 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6121 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
