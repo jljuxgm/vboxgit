@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 10473 2008-07-10 15:02:53Z vboxsync $ */
+/* $Id: EMAll.cpp 10661 2008-07-15 14:21:04Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1725,7 +1725,7 @@ EMDECL(int) EMInterpretCRxRead(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestReg
     if (SrcRegCrx == USE_REG_CR8)
     {
         val64 = 0;
-        rc = PDMApicGetTPR(pVM, (uint8_t *)&val64);
+        rc = PDMApicGetTPR(pVM, (uint8_t *)&val64, NULL);
         AssertMsgRCReturn(rc, ("PDMApicGetTPR failed\n"), VERR_EM_INTERPRETER);
     }
     else
