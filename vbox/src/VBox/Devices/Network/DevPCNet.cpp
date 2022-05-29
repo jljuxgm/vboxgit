@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DevPCNet.cpp 8314 2008-04-23 07:20:31Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -4163,7 +4163,8 @@ static DECLCALLBACK(int) pcnetLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle
 {
     PCNetState *pData = PDMINS2DATA(pDevIns, PCNetState *);
     PDMMAC      Mac;
-    if (SSM_VERSION_MAJOR_CHANGED(u32Version, PCNET_SAVEDSTATE_VERSION))
+    if (   SSM_VERSION_MAJOR_CHANGED(u32Version, PCNET_SAVEDSTATE_VERSION)
+        || SSM_VERSION_MINOR(u32Version) < 7)
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
 
     /* restore data */
