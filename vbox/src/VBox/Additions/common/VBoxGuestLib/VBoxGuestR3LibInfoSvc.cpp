@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibInfoSvc.cpp 10145 2008-07-03 09:23:14Z vboxsync $ */
+/* $Id: VBoxGuestR3LibInfoSvc.cpp 10541 2008-07-11 18:00:44Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, information service.
  */
@@ -49,7 +49,7 @@ VBGLR3DECL(int) VbglR3InfoSvcConnect(uint32_t *pu32ClientId)
     strcpy(Info.Loc.u.host.achName, "VBoxSharedInfoSvc");
     Info.u32ClientID = UINT32_MAX;  /* try make valgrid shut up. */
 
-    int rc = vbglR3DoIOCtl(IOCTL_VBOXGUEST_HGCM_CONNECT, &Info, sizeof(Info));
+    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CONNECT, &Info, sizeof(Info));
     if (RT_SUCCESS(rc))
     {
         rc = Info.result;
@@ -72,7 +72,7 @@ VBGLR3DECL(int) VbglR3InfoSvcDisconnect(uint32_t u32ClientId)
     Info.result = (uint32_t)VERR_WRONG_ORDER;  /** @todo drop the cast when the result type has been fixed! */
     Info.u32ClientID = u32ClientId;
 
-    int rc = vbglR3DoIOCtl(IOCTL_VBOXGUEST_HGCM_DISCONNECT, &Info, sizeof(Info));
+    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_DISCONNECT, &Info, sizeof(Info));
     if (RT_SUCCESS(rc))
         rc = Info.result;
     return rc;
