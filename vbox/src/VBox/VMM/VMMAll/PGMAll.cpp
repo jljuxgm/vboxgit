@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 9021 2008-05-21 14:38:13Z vboxsync $ */
+/* $Id: PGMAll.cpp 9023 2008-05-21 14:48:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -214,6 +214,7 @@ typedef struct PGMHVUSTATE
 
 #undef PGM_SHW_TYPE
 #undef PGM_SHW_NAME
+#endif
 
 /*
  * Shadow - Nested paging mode
@@ -270,6 +271,7 @@ typedef struct PGMHVUSTATE
 #undef PGM_GST_TYPE
 #undef PGM_GST_NAME
 
+#ifndef IN_GC /* AMD64 implies VT-x/AMD-V */
 /* Guest - AMD64 mode */
 #define PGM_GST_TYPE                PGM_TYPE_AMD64
 #define PGM_GST_NAME(name)          PGM_GST_NAME_AMD64(name)
@@ -285,9 +287,7 @@ typedef struct PGMHVUSTATE
 
 #undef PGM_SHW_TYPE
 #undef PGM_SHW_NAME
-
 #endif
-
 
 /**
  * #PF Handler.

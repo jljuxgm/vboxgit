@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 8557 2008-05-05 10:00:33Z vboxsync $ */
+/* $Id: PGMAllShw.h 9023 2008-05-21 14:48:23Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -111,6 +111,9 @@ __END_DECLS
  */
 PGM_SHW_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTHCPHYS pHCPhys)
 {
+#if PGM_SHW_TYPE == PGM_TYPE_NESTED
+    return VERR_PAGE_TABLE_NOT_PRESENT;
+#else
     /*
      * Get the PDE.
      */
@@ -214,6 +217,7 @@ PGM_SHW_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTHCP
         *pHCPhys = Pte.u & SHW_PTE_PG_MASK;
 
     return VINF_SUCCESS;
+#endif /* PGM_SHW_TYPE == PGM_TYPE_NESTED */
 }
 
 
@@ -233,6 +237,9 @@ PGM_SHW_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTHCP
  */
 PGM_SHW_DECL(int, ModifyPage)(PVM pVM, RTGCUINTPTR GCPtr, size_t cb, uint64_t fFlags, uint64_t fMask)
 {
+#if PGM_SHW_TYPE == PGM_TYPE_NESTED
+    return VERR_PAGE_TABLE_NOT_PRESENT;
+#else
     int rc;
 
     /*
@@ -307,5 +314,6 @@ PGM_SHW_DECL(int, ModifyPage)(PVM pVM, RTGCUINTPTR GCPtr, size_t cb, uint64_t fF
             iPTE++;
         }
     }
+#endif /* PGM_SHW_TYPE == PGM_TYPE_NESTED */
 }
 
