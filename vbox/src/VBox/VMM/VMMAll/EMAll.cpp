@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 9246 2008-05-30 12:28:31Z vboxsync $ */
+/* $Id: EMAll.cpp 9248 2008-05-30 12:42:42Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2359,7 +2359,7 @@ DECLINLINE(int) emInterpretInstructionCPU(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCO
 #ifdef IN_GC
         INTERPRET_CASE(OP_STI,Sti);
         INTERPRET_CASE(OP_CMPXCHG, CmpXchg);
-/*        INTERPRET_CASE(OP_CMPXCHG8B, CmpXchg8b); */
+        INTERPRET_CASE(OP_CMPXCHG8B, CmpXchg8b);
         INTERPRET_CASE(OP_XADD, XAdd);
 #endif
         INTERPRET_CASE(OP_HLT,Hlt);
