@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6250 2008-01-04 20:44:18Z vboxsync $
+# $Id: Makefile.kmk 6467 2008-01-23 21:24:21Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -55,6 +55,30 @@ ifeq ($(filter-out freebsd linux openbsd netbsd solaris,$(BUILD_TARGET)),) # X11
 DLLS = VBoxKeyboard
 endif
 INSTALLS = VirtualBox.nls
+
+ifeq ($(BUILD_TARGET),os2)
+ DLLS += VBoxHlp
+ ifneq ($(strip $(VBOX_DLL_QT)),)
+  INSTALLS += qt.dll
+  qt.dll_INST = $(INST_BIN)
+  qt.dll_SOURCES += \
+	$(VBOX_DLL_QT)=>$(not-dir $(VBOX_DLL_QT))
+ endif
+endif
+
+
+#
+# VBoxHlp - helper DLL for OS/2.
+#
+VBoxHlp_ASTOOL      = NASM
+VBoxHlp_ASFLAGS     = -f obj
+VBoxHlp_DEFS        = IN_RING3 IN_VBOXHLP
+VBoxHlp_CXXFLAGS    = -fno-exceptions
+VBoxHlp_LDFLAGS     = -nostdlib -los2
+VBoxHlp_LDFLAGS    += -Zlinker option -Zlinker manyautodata
+VBoxHlp_SOURCES     = \
+	src/os2/VBoxHlp.asm \
+	src/os2/VBoxHlp.cpp
 
 
 #
@@ -278,6 +302,7 @@ VirtualBox_LIBS.win       = \
 	$(PATH_SDK_WINPSDK_LIB)/Htmlhelp.Lib \
 	$(PATH_SDK_DXSDK_LIB)/ddraw.lib \
 	$(PATH_SDK_DXSDK_LIB)/dxguid.lib
+VirtualBox_LIBS.os2      += $(PATH_DLL)/VBoxHlp$(VBOX_SUFF_DLL)
 ifeq ($(filter-out freebsd linux netbsd openbsd solaris,$(BUILD_TARGET)),) # X11
 VirtualBox_LIBS          += $(PATH_DLL)/VBoxKeyboard$(VBOX_SUFF_DLL)
 endif
