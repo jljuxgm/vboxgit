@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 6531 2008-01-28 16:40:23Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 6538 2008-01-28 19:50:14Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -19,7 +19,9 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/assert.h>
+#ifndef VBOX_VBGLR3_XFREE86
+# include <iprt/assert.h>
+#endif
 #include "VBGLR3Internal.h"
 
 

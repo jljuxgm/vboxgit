@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGR.cpp 6470 2008-01-24 07:09:56Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGR.cpp 6538 2008-01-28 19:50:14Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, GR.
  */
@@ -19,9 +19,29 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/mem.h>
-#include <iprt/assert.h>
-#include <iprt/string.h>
+#ifdef VBOX_VBGLR3_XFREE86
+/* For the definitions of standard X server library functions like xalloc. */
+/* Make the headers C++-compatible */
+# define class xf86_vbox_class
+# define bool xf86_vbox_bool
+# define private xf86_vbox_private
+# define new xf86_vbox_new
+extern "C"
+{
+# include "xf86.h"
+# include "xf86_OSproc.h"
+# include "xf86Resources.h"
+# include "xf86_ansic.h"
+}
+# undef class
+# undef bool
+# undef private
+# undef new
+#else
+# include <iprt/mem.h>
+# include <iprt/assert.h>
+# include <iprt/string.h>
+#endif
 #include <iprt/err.h>
 #include <VBox/VBoxGuest.h>
 #include "VBGLR3Internal.h"
@@ -31,11 +51,15 @@ int vbglR3GRAlloc(VMMDevRequestHeader **ppReq, uint32_t cb, VMMDevRequestType en
 {
     VMMDevRequestHeader *pReq;
 
+#ifdef VBOX_VBGLR3_XFREE86
+    pReq = (VMMDevRequestHeader *)xalloc(cb);
+#else
     AssertPtrReturn(ppReq, VERR_INVALID_PARAMETER);
     AssertMsgReturn(cb >= sizeof(VMMDevRequestHeader), ("%#x vs %#zx\n", cb, sizeof(VMMDevRequestHeader)),
                     VERR_INVALID_PARAMETER);
 
     pReq = (VMMDevRequestHeader *)RTMemTmpAlloc(cb);
+#endif
     if (RT_UNLIKELY(!pReq))
         return VERR_NO_MEMORY;
 
@@ -60,6 +84,10 @@ VBGLR3DECL(int) vbglR3GRPerform(VMMDevRequestHeader *pReq)
 
 void vbglR3GRFree(VMMDevRequestHeader *pReq)
 {
+#ifdef VBOX_VBGLR3_XFREE86
+    xfree(pReq);
+#else
     RTMemTmpFree(pReq);
+#endif
 }
 
