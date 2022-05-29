@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6599 2008-01-30 13:30:33Z vboxsync $
+# $Id: Makefile.kmk 6605 2008-01-30 14:03:18Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -92,7 +92,7 @@ endif
 # Link aginst libstdc++.a. (http://www.trilithium.com/johan/2005/06/static-libstdc/).
 # (It would've been preferred to avoid features depending on libstdc++, of course...)
 #
-VBoxClient_LIBPATH         = $(PATH_TARGET)/VBoxClient
+VBoxClient_LIBPATH        += $(PATH_TARGET)/VBoxClient
 VBoxClient_ORDERDEPS       = $(PATH_TARGET)/VBoxClient/libstdc++.a
 VBoxClient_CLEAN           = $(PATH_TARGET)/VBoxClient/libstdc++.a
 $(PATH_TARGET)/VBoxClient/libstdc++.a:
