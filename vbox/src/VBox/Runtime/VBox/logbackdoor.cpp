@@ -1,4 +1,4 @@
-/* $Id: logbackdoor.cpp 6351 2008-01-15 09:08:30Z vboxsync $ */
+/* $Id: logbackdoor.cpp 6427 2008-01-21 19:02:20Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Guest Backdoor Logging.
  */
@@ -67,7 +67,17 @@ static DECLCALLBACK(size_t) rtLogBackdoorOutput(void *pv, const char *pachChars,
     return cbChars;
 }
 
-#ifdef IN_GUEST_R0
+#ifdef IN_GUEST_R3
+
+#include <VBox/VBoxGuest.h>
+
+RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
+{
+    VbglR3WriteLog(pch, cb);
+}
+
+
+#else  /* !IN_GUEST_R3 */
 
 RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
 {
@@ -86,25 +96,15 @@ RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
      */
 }
 
-#elif (defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS)) && defined(IN_GUEST_R3)
-
-#include <VBox/VBoxGuest.h>
-
-RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
-{
-    VbglR3WriteLog(pch, cb);
-}
-
-#else
-# error Port me!
-#endif
-
-#if defined(RT_OS_LINUX) && defined(IN_MODULE)
+# if defined(RT_OS_LINUX) && defined(IN_MODULE)
 /*
  * When we build this in the Linux kernel module, we wish to make the
  * symbols available to other modules as well.
  */
-# include "the-linux-kernel.h"
+#  include "the-linux-kernel.h"
 EXPORT_SYMBOL(RTLogBackdoorPrintf);
+EXPORT_SYMBOL(RTLogBackdoorPrintfV);
 EXPORT_SYMBOL(RTLogWriteUser);
-#endif /* RT_OS_LINUX && IN_MODULE */
+# endif /* RT_OS_LINUX && IN_MODULE */
+#endif /* !IN_GUEST_R3 */
+
