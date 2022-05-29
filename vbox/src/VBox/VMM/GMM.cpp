@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 6839 2008-02-07 10:12:59Z vboxsync $ */
+/* $Id: GMM.cpp 6841 2008-02-07 10:17:16Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -19,6 +19,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define LOG_GROUP LOG_GROUP_GMM
 #include <VBox/gmm.h>
 #include <VBox/vmm.h>
 #include <VBox/vm.h>
@@ -26,6 +27,8 @@
 #include <VBox/err.h>
 #include <VBox/param.h>
 
+#include <iprt/assert.h>
+#include <VBox/log.h>
 #include <iprt/mem.h>
 
 
