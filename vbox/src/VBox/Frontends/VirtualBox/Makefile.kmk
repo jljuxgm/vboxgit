@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10433 2008-07-09 14:36:14Z vboxsync $
+# $Id: Makefile.kmk 10530 2008-07-11 14:46:47Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -116,9 +116,10 @@ VBoxHlp_SOURCES     = \
 
 
 #
-# VBoxKeyboard - keyboard library for X11.
+# VBoxKeyboard3 - keyboard library for X11.
 #
 VBoxKeyboard3_TEMPLATE = VBOXR3
+VBoxKeyboard3_NAME = VBoxKeyboard3OtherName
 VBoxKeyboard3_SOURCES  = \
 	src/linux/keyboard-new.c
 VBoxKeyboard3_TARSOURCES = \
