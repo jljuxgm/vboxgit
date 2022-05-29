@@ -1,6 +1,5 @@
-# $Id: Config.kmk 8761 2008-05-11 18:53:32Z vboxsync $
+# $Id: Config.kmk 8764 2008-05-11 19:31:13Z vboxsync $
 ## @file
-#
 # The global build configuration file for VBox.
 #
 # This file gets included by all makefiles through the
@@ -22,12 +21,6 @@
 #
 # kBuild stuff
 #
-
-# tmp hacks.
-KMK_NEW_SED = 1
-KMK_NEW_CP = 1
-KMK_USE_REDIRECT = 1
-KMK_USE_TEST = 1
 
 # Enable automatic installation of what's built.
 KBUILD_DO_AUTO_INSTALL := 1
@@ -2931,7 +2924,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 8761 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 8764 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
