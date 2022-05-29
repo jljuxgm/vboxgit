@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7320 2008-03-06 13:46:50Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7321 2008-03-06 14:03:20Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -4649,7 +4649,7 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     AssertRC(rc);
 
     /* Create asynchronous thread */
-    rc = PDMDevHlpPDMThreadCreate(pDevIns, &pData->pSendThread, pData, pcnetAsyncSendThread, pcnetAsyncSendThreadWakeUp, 0, RTTHREADTYPE_IO, "PCNET_SEND");
+    rc = PDMDevHlpPDMThreadCreate(pDevIns, &pData->pSendThread, pData, pcnetAsyncSendThread, pcnetAsyncSendThreadWakeUp, 0, RTTHREADTYPE_IO, "PCNET_TX");
     AssertRCReturn(rc, rc);
 
     unsigned i;
