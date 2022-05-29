@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6966 2008-02-14 19:03:58Z vboxsync $
+# $Id: Makefile.kmk 6980 2008-02-18 09:37:25Z vboxsync $
 ## @file
 # Makefile for XPCOM.
 #
@@ -67,7 +67,7 @@ TEMPLATE_XPCOM_LDFLAGS.amd64       = -m64
 TEMPLATE_XPCOM_LDFLAGS.darwin      = $(VBOXR3NP_LDFLAGS.darwin) \
                                      -fshort-wchar -fno-rtti -fno-exceptions -fpascal-strings \
                                      -framework CoreServices -framework CoreFoundation -framework Foundation -framework AppKit -framework Carbon
-TEMPLATE_XPCOM_LDFLAGS.solaris     += -lsendfile
+TEMPLATE_XPCOM_LDFLAGS.solaris     += -lsendfile '-R$$(VBOX_ORIGIN)'
 ifeq ($(filter os2 win,$(BUILD_TARGET)),)
  TEMPLATE_XPCOM_CXXFLAGS          += -fPIC
  TEMPLATE_XPCOM_CFLAGS            += -fPIC
