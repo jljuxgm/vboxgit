@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 7017 2008-02-19 13:38:50Z vboxsync $ */
+/* $Id: PGMPhys.cpp 7605 2008-03-27 19:51:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1217,7 +1217,7 @@ int pgmr3PhysGrowRange(PVM pVM, RTGCPHYS GCPhys)
 
         AssertMsg(!PDMCritSectIsOwner(&pVM->pgm.s.CritSect), ("We own the PGM lock -> deadlock danger!!\n"));
 
-        rc = VMR3ReqCall(pVM, &pReq, RT_INDEFINITE_WAIT, (PFNRT)PGM3PhysGrowRange, 2, pVM, GCPhys);
+        rc = VMR3ReqCall(pVM, &pReq, RT_INDEFINITE_WAIT, (PFNRT)PGM3PhysGrowRange, 1 + sizeof(RTGCPHYS)/sizeof(uintptr_t), pVM, GCPhys);
         if (VBOX_SUCCESS(rc))
         {
             rc = pReq->iStatus;
