@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 9821 2008-06-19 12:57:24Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 9964 2008-06-26 14:55:50Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -871,6 +871,7 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     {
         /* Save our shadow CR3 register. */
         val = PGMGetHyperCR3(pVM);
+        Assert(val);
         rc = VMXWriteVMCS(VMX_VMCS_GUEST_CR3, val);
         AssertRC(rc);
     }
