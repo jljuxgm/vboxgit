@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 11336 2008-08-11 14:36:14Z vboxsync $ */
+/* $Id: Performance.cpp 11383 2008-08-13 12:21:04Z vboxsync $ */
 
 /** @file
  *
@@ -386,9 +386,9 @@ const char * AggregateMax::getName()
 Filter::Filter(ComSafeArrayIn(INPTR BSTR, metricNames),
                ComSafeArrayIn(IUnknown *, objects))
 {
-    com::SafeIfaceArray <IUnknown> objectArray(ComSafeArrayInArg(objects));
     com::SafeArray <INPTR BSTR> nameArray(ComSafeArrayInArg(metricNames));
-    if (objectArray.isNull())
+
+    if (ComSafeArrayInIsNull(objects))
     {
         if (nameArray.size())
         {
@@ -400,6 +400,8 @@ Filter::Filter(ComSafeArrayIn(INPTR BSTR, metricNames),
     }
     else
     {
+        com::SafeIfaceArray <IUnknown> objectArray(ComSafeArrayInArg(objects));
+
         for (size_t i = 0; i < objectArray.size(); ++i)
             switch (nameArray.size())
             {
