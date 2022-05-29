@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 8870 2008-05-16 08:23:10Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 8871 2008-05-16 08:29:00Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -791,6 +791,8 @@ ResumeExecution:
                                              | SVM_CTRL2_INTERCEPT_CLGI
                                              | SVM_CTRL2_INTERCEPT_SKINIT
                                              | SVM_CTRL2_INTERCEPT_RDTSCP        /* AMD only; we don't support this one */
+                                             | SVM_CTRL2_INTERCEPT_WBINVD
+                                             | SVM_CTRL2_INTERCEPT_MWAIT_UNCOND  /* don't execute mwait or else we'll idle inside the guest (host thinks the cpu load is high) */
                                             ));
     Assert(pVMCB->ctrl.IntCtrl.n.u1VIrqMasking);
     Assert(pVMCB->ctrl.u64IOPMPhysAddr  == pVM->hwaccm.s.svm.pIOBitmapPhys);
