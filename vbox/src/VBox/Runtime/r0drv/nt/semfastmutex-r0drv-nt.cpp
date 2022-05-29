@@ -1,4 +1,4 @@
-/* $Id: semfastmutex-r0drv-nt.cpp 10738 2008-07-18 08:37:04Z vboxsync $ */
+/* $Id: semfastmutex-r0drv-nt.cpp 10827 2008-07-23 11:50:55Z vboxsync $ */
 /** @file
  * IPRT - Fast Mutex Semaphores, Ring-0 Driver, NT.
  */
@@ -96,7 +96,10 @@ RTDECL(int)  RTSemFastMutexDestroy(RTSEMFASTMUTEX MutexSem)
 
     ASMAtomicIncU32(&pFastInt->u32Magic);
     Assert(pFastInt->Mutex.Count == 1);
-    Assert(pFastInt->Mutex.Contention == 0);
+    /* It's not very clear what this Contention field really means. Seems to be a counter for the number of times contention occurred. (see e.g. http://winprogger.com/?p=6) 
+     * The following assertion is therefor wrong:
+     * Assert(pFastInt->Mutex.Contention == 0);
+     */
     RTMemFree(pFastInt);
     return VINF_SUCCESS;
 }
