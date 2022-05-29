@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 11096 2008-08-04 12:15:41Z vboxsync $ */
+/* $Id: MachineImpl.cpp 11108 2008-08-04 15:35:17Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2807,8 +2807,9 @@ STDMETHODIMP Machine::SetGuestProperty (INPTR BSTR aName, INPTR BSTR aValue, INP
         {
             if (NULL != aValue)
             {
+                RTTIMESPEC time;
                 property.mValue = aValue;
-                property.mTimestamp = RTTimeMilliTS();
+                property.mTimestamp = RTTimeSpecGetNano(RTTimeNow(&time));
                 if (aFlags != NULL)
                     property.mFlags = aFlags;
                 mHWData->mGuestProperties.push_back(property);
@@ -2816,10 +2817,11 @@ STDMETHODIMP Machine::SetGuestProperty (INPTR BSTR aName, INPTR BSTR aValue, INP
         }
         else if (aValue != NULL)
         {
+            RTTIMESPEC time;
             mHWData.backup();
             property.mName = aName;
             property.mValue = aValue;
-            property.mTimestamp = RTTimeMilliTS();
+            property.mTimestamp = RTTimeSpecGetNano(RTTimeNow(&time));
             property.mFlags = (aFlags != NULL ? Bstr(aFlags) : Bstr(""));
             mHWData->mGuestProperties.push_back(property);
         }
