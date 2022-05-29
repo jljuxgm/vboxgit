@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 8794 2008-05-13 17:43:23Z vboxsync $ */
+/* $Id: VM.cpp 10840 2008-07-23 19:51:30Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -240,7 +240,6 @@ VMR3DECL(int)   VMR3Create(PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCON
 
                 default:
                     pszError = N_("Unknown error creating VM");
-                    NOT_DMIK(AssertMsgFailed(("Add error message for rc=%d (%Vrc)\n", rc, rc)));
                     break;
             }
             vmR3SetErrorU(pUVM, rc, RT_SRC_POS, pszError, rc);
