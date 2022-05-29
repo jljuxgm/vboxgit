@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 7666 2008-03-31 15:02:43Z vboxsync $ */
+/* $Id: PGMAllGst.h 7676 2008-04-01 09:18:10Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -77,7 +77,11 @@
 # define GST_PDE_BIG_PG_MASK        X86_PDE2M_PAE_PG_MASK
 # define GST_PD_SHIFT               X86_PD_PAE_SHIFT
 # define GST_PD_MASK                X86_PD_PAE_MASK
-# define GST_TOTAL_PD_ENTRIES       (X86_PG_PAE_ENTRIES*4)
+# if PGM_GST_TYPE == PGM_TYPE_PAE
+#  define GST_TOTAL_PD_ENTRIES       (X86_PG_PAE_ENTRIES * X86_PG_PAE_PDPTE_ENTRIES)
+# else
+#  define GST_TOTAL_PD_ENTRIES       (X86_PG_AMD64_ENTRIES * X86_PG_AMD64_PDPTE_ENTRIES)
+# endif
 # define GST_PTE_PG_MASK            X86_PTE_PAE_PG_MASK
 # define GST_PT_SHIFT               X86_PT_PAE_SHIFT
 # define GST_PT_MASK                X86_PT_PAE_MASK
