@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 9710 2008-06-16 11:29:18Z vboxsync $ */
+/* $Id: SELMAll.cpp 9817 2008-06-19 11:47:38Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -119,10 +119,8 @@ SELMDECL(RTGCPTR) SELMToFlat(PVM pVM, DIS_SELREG SelReg, PCPUMCTXCORE pCtxCore, 
         switch (SelReg)
         {
         case DIS_SELREG_FS:
-            return (RTGCPTR)(CPUMGetGuestFSBASE(pVM) + Addr);
-
         case DIS_SELREG_GS:
-            return (RTGCPTR)(CPUMGetGuestGSBASE(pVM) + Addr);
+            return (RTGCPTR)(pHiddenSel->u64Base + Addr);
 
         default:
             return Addr;    /* base 0 */
@@ -199,11 +197,8 @@ SELMDECL(int) SELMToFlatEx(PVM pVM, DIS_SELREG SelReg, PCPUMCTXCORE pCtxCore, RT
             switch (SelReg)
             {
             case DIS_SELREG_FS:
-                pvFlat = (CPUMGetGuestFSBASE(pVM) + Addr);
-                break;
-
             case DIS_SELREG_GS:
-                pvFlat = (CPUMGetGuestGSBASE(pVM) + Addr);
+                pvFlat = (pHiddenSel->u64Base + Addr);
                 break;
 
             default:
