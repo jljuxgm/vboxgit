@@ -1,4 +1,4 @@
-# $Id: Config.kmk 5945 2007-12-04 03:33:48Z vboxsync $
+# $Id: Config.kmk 5946 2007-12-04 04:57:15Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -26,26 +26,14 @@
 # tmp hacks.
 KMK_NEW_SED = 1
 KMK_NEW_CP = 1
-#KMK_USE_REDIRECT = 1
+KMK_USE_REDIRECT = 1
 #KMK_USE_TEST = 1
 
 # Enable automatic installation of what's built.
 KBUILD_DO_AUTO_INSTALL := 1
-# Add the GPLExport pass.
 PASSES := $(filter-out PACKING,$(PASSES)) PACKING # temporary hack
-PASSES               += GPLEXPORT
 # Modify the order of the INSTALLS and OTHERS passes.
 DEFAULT_PASSES       := BLDPROGS LIBRARIES DLLS BINARIES INSTALLS OTHERS
-
-## PASS: gplexport
-# This pass processes custom gplexport rules listed in
-# the GPLEXPORTS variable.
-PASS_GPLEXPORT      := GPL and LGPL source export
-PASS_GPLEXPORT_trgs :=
-PASS_GPLEXPORT_vars := GPLEXPORTS
-PASS_GPLEXPORT_pass := gplexport
-#alias
-gplexport: pass_gplexport
 
 # Install paths.
 PATH_INS            := $(PATH_OUT)
@@ -2693,7 +2681,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5945 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 5946 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
 ifeq ($(KBUILD_VERSION_PATCH),2) ## tmp, remove later.
  ifeq ($(which (SVN)),)
