@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 9216 2008-05-29 11:29:55Z vboxsync $ */
+/* $Id: SELMInternal.h 9222 2008-05-29 13:31:12Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -121,7 +121,7 @@ typedef struct SELM
     VBOXTSS                 TssTrap08;
 
     /** GC Pointer to the TSS shadow area (Tss) placed in Hypervisor memory arena. */
-    RTGCPTR                 GCPtrTss;
+    RCPTRTYPE(void *)       GCPtrTss;
     /** GC Pointer to the current Guest's TSS. */
     RTGCPTR                 GCPtrGuestTss;
     /** The size of the guest TSS. */
