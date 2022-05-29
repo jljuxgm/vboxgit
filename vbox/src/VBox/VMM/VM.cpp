@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 5684 2007-11-11 10:38:00Z vboxsync $ */
+/* $Id: VM.cpp 5934 2007-12-03 09:03:21Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1859,6 +1859,7 @@ static int vmr3AtResetRegister(PVM pVM, void *pvUser, const char *pszDesc, PVMAT
         *pVM->vm.s.ppAtResetNext = pNew;
         pVM->vm.s.ppAtResetNext = &pNew->pNext;
 
+        *ppNew = pNew;
         return VINF_SUCCESS;
     }
     return VERR_NO_MEMORY;
