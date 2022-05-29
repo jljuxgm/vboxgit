@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8077 2008-04-17 08:16:12Z vboxsync $
+# $Id: Makefile.kmk 8096 2008-04-17 13:38:21Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -550,7 +550,7 @@ additions-build-solaris.x86:
 ifeq ($(BUILD_TARGET),solaris)
 	+ $(KMK) BUILD_TARGET_ARCH=x86 $(VBOX_ADDITIONS_BUILD)
 else
-	ssh vbox@192.168.27.4 " pfexec /sbin/umount /mnt/vbox; pfexec /sbin/mount /mnt/vbox; cd /mnt/vbox/add && ./tools/env.sh --no-wine kmk BUILD_TARGET_ARCH=x86 $(VBOX_ADDITIONS_BUILD) "
+	ssh vbox@192.168.27.4 " cd /mnt/vbox/add && ./tools/env.sh --no-wine kmk BUILD_TARGET_ARCH=x86 $(VBOX_ADDITIONS_BUILD) "
 endif
 
 additions-build-os2.x86:
