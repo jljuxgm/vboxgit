@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 9774 2008-06-17 14:55:50Z vboxsync $ */
+/* $Id: IOMInternal.h 9776 2008-06-17 14:58:11Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -402,6 +402,7 @@ typedef struct IOM
     STAMCOUNTER             StatGCMMIO1Byte;
     STAMCOUNTER             StatGCMMIO2Bytes;
     STAMCOUNTER             StatGCMMIO4Bytes;
+    STAMCOUNTER             StatGCMMIO8Bytes;
 
     RTUINT                  cMovsMaxBytes;
     RTUINT                  cStosMaxBytes;

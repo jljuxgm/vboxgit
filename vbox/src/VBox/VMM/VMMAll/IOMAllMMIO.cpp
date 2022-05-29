@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 9774 2008-06-17 14:55:50Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 9776 2008-06-17 14:58:11Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -141,6 +141,9 @@ DECLINLINE(void) iomMMIOStatLength(PVM pVM, unsigned cb)
             break;
         case 4:
             STAM_COUNTER_INC(&pVM->iom.s.StatGCMMIO4Bytes);
+            break;
+        case 8:
+            STAM_COUNTER_INC(&pVM->iom.s.StatGCMMIO8Bytes);
             break;
         default:
             /* No way. */
