@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6003 2007-12-07 20:35:01Z vboxsync $
+# $Id: Makefile.kmk 6076 2007-12-14 19:23:03Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -47,6 +47,10 @@ ifdef VBOX_WITH_MAIN
  # Only build xalan if we don't use an external library.
  ifeq ($(SDK_VBOX_XALAN_INCS),$(PATH_ROOT)/src/libs/xalan-1.10.0)
   subdirs += xalan-1.10.0
+ endif
+ # Only build libxml2 if we don't use an external library.
+ ifeq ($(SDK_VBOX_LIBXML2_INCS),$(PATH_ROOT)/src/libs/libxml2-2.6.30/include)
+  subdirs += libxml2-2.6.30
  endif
  # FFmpeg for test videos
  ifdef VBOX_WITH_FFMPEG

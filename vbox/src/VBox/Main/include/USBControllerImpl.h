@@ -1,3 +1,5 @@
+/* $Id: USBControllerImpl.h 6076 2007-12-14 19:23:03Z vboxsync $ */
+
 /** @file
  *
  * VBox USBController COM Class declaration.
@@ -20,8 +22,6 @@
 
 #include "VirtualBoxBase.h"
 #include "USBDeviceFilterImpl.h"
-
-#include <VBox/cfgldr.h>
 
 #include <list>
 
@@ -101,8 +101,8 @@ public:
 
     // public methods only for internal purposes
 
-    HRESULT loadSettings (CFGNODE aMachine);
-    HRESULT saveSettings (CFGNODE aMachine);
+    HRESULT loadSettings (const settings::Key &aMachineNode);
+    HRESULT saveSettings (settings::Key &aMachineNode);
 
     bool isModified();
     bool isReallyModified();

@@ -1,3 +1,5 @@
+/* $Id: AudioAdapterImpl.h 6076 2007-12-14 19:23:03Z vboxsync $ */
+
 /** @file
  *
  * VirtualBox COM class implementation
@@ -78,6 +80,9 @@ public:
     STDMETHOD(COMSETTER(AudioDriver)) (AudioDriverType_T aAudioDriverType);
 
     // public methods only for internal purposes
+
+    HRESULT loadSettings (const settings::Key &aMachineNode);
+    HRESULT saveSettings (settings::Key &aMachineNode);
 
     bool isModified() { AutoLock alock (this); return mData.isBackedUp(); }
     bool isReallyModified() { AutoLock alock (this); return mData.hasActualChanges(); }
