@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 5606 2007-11-01 19:43:40Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 5940 2007-12-03 12:05:10Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Hypervisor Memory Area, All Contexts.
  */
@@ -552,7 +552,7 @@ static void *mmHyperAllocPages(PMMHYPERHEAP pHeap, uint32_t cb)
      */
     PMMHYPERCHUNKFREE pFree = (PMMHYPERCHUNKFREE)((char *)CTXSUFF(pHeap->pbHeap) + pHeap->offFreeTail);
     ASSERT_CHUNK_FREE(pHeap, pFree);
-    if (    (((uintptr_t)(&pFree->core + 1) + pFree->cb) & PAGE_OFFSET_MASK - 1)
+    if (    (((uintptr_t)(&pFree->core + 1) + pFree->cb) & (PAGE_OFFSET_MASK - 1))
         ||  pFree->cb + sizeof(MMHYPERCHUNK) < cb)
     {
         Log3(("mmHyperAllocPages: Not enough/no page aligned memory!\n"));
