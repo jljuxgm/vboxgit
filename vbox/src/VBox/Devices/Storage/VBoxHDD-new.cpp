@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 6291 2008-01-09 10:57:05Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 6292 2008-01-09 11:15:37Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -115,9 +115,9 @@ extern VBOXHDDBACKEND g_VhdBackend;
 
 static PCVBOXHDDBACKEND aBackends[] =
 {
-    { &g_VmdkBackend },
-    { &g_VhdBackend},
-    { NULL }
+    &g_VmdkBackend,
+    &g_VhdBackend,
+    NULL
 };
 
 
