@@ -1,4 +1,4 @@
-/* $Id: MMHeap.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: MMHeap.cpp 8797 2008-05-13 23:16:03Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Heap.
  */
@@ -655,10 +655,11 @@ const char *mmR3GetTagName(MMTAG enmTag)
         TAG2STR(DBGF_INFO);
         TAG2STR(DBGF_LINE);
         TAG2STR(DBGF_LINE_DUP);
+        TAG2STR(DBGF_MODULE);
+        TAG2STR(DBGF_OS);
         TAG2STR(DBGF_STACK);
         TAG2STR(DBGF_SYMBOL);
         TAG2STR(DBGF_SYMBOL_DUP);
-        TAG2STR(DBGF_MODULE);
 
         TAG2STR(EM);
 
