@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 8318 2008-04-23 08:56:36Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 8328 2008-04-23 13:17:00Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -151,7 +151,7 @@ __BEGIN_DECLS
 int  VBoxGuestInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase, void *pvMMIOBase, uint32_t cbMMIO, VBOXOSTYPE enmOSType);
 void VBoxGuestDeleteDevExt(PVBOXGUESTDEVEXT pDevExt);
 bool VBoxGuestCommonISR(PVBOXGUESTDEVEXT pDevExt);
-int  VBoxGuestSetGuestCapabilities(uint32_t u32OrMask, uint32_t u32NotMask);
+int  VBoxGuestSetGuestCapabilities(uint32_t fOr, uint32_t fNot);
 
 int  VBoxGuestCreateUserSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION *ppSession);
 int  VBoxGuestCreateKernelSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION *ppSession);
