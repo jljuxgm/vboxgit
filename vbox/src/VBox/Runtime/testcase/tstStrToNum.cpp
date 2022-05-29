@@ -1,4 +1,4 @@
-/* $Id: tstStrToNum.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstStrToNum.cpp 8279 2008-04-22 12:13:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - String To Number Conversion.
  */
@@ -212,7 +212,8 @@ int main()
     {
         { "0",                      0,  VINF_SUCCESS,           0 },
         { "1",                      0,  VINF_SUCCESS,           1 },
-        { "-1",                     0,  VWRN_NEGATIVE_UNSIGNED, ~0 },
+        /// @todo { "-1",                     0,  VWRN_NEGATIVE_UNSIGNED, ~0 }, - no longer true. bad idea?
+        { "-1",                     0,  VWRN_NUMBER_TOO_BIG,    ~0 },
         { "0x",                     0,  VWRN_TRAILING_CHARS,    0 },
         { "0x1",                    0,  VINF_SUCCESS,           1 },
         { "0x0fffffffffffffff",     0,  VWRN_NUMBER_TOO_BIG,    0xffffffffU },
