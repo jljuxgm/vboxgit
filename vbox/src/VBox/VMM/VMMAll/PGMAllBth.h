@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 10285 2008-07-05 17:29:23Z vboxsync $ */
+/* $Id: PGMAllBth.h 10287 2008-07-05 17:39:18Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2649,7 +2649,7 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PGSTPD pPDSrc, RTGCUINTPTR G
     RTGCPHYS        GCPhys;
 
     /* Virtual address = physical address */
-    GCPhys = GCPtrPage & SHW_PD_MASK;
+    GCPhys = GCPtrPage & X86_PAGE_4K_BASE_MASK;
 # if PGM_SHW_TYPE == PGM_TYPE_AMD64
     rc = pgmPoolAlloc(pVM, GCPhys & ~(RT_BIT_64(SHW_PD_SHIFT) - 1), BTH_PGMPOOLKIND_PT_FOR_PT, pShwPde->idx,    iPDDst, &pShwPage);
 # else
