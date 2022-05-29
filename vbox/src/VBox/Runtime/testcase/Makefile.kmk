@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5843 2007-11-26 18:45:33Z vboxsync $
+# $Id: Makefile.kmk 5882 2007-11-29 05:34:02Z vboxsync $
 ## @file
 # Makefile for the IPRT testcases.
 #
@@ -81,6 +81,7 @@ TEMPLATE = VBOXR3TSTEXE
 tstTimer_SOURCES = tstTimer.cpp
 
 tstTSC_SOURCES = tstTSC.cpp
+tstTSC_CXXFLAGS.linux += -O3
 
 tstTime_SOURCES = tstTime.cpp
 
