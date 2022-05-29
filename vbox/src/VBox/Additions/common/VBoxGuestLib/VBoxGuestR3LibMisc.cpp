@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 6470 2008-01-24 07:09:56Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 6506 2008-01-25 10:23:46Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -87,12 +87,13 @@ VBGLR3DECL(int) VbglR3CtlFilterMask(uint32_t fOr, uint32_t fNot)
  * @param   pcx         Where to store the horizontal pixel resolution (0 = do not change).
  * @param   pcy         Where to store the vertical pixel resolution (0 = do not change).
  * @param   pcBits      Where to store the bits per pixel (0 = do not change).
- * @param   fFventAck   Flag that the request is an acknowlegement for the
+ * @param   fEventAck   Flag that the request is an acknowlegement for the
  *                      VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST.
  *                      Values:
  *                          0                                   - just querying,
  *                          VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST - event acknowledged.
  * @param   iDisplay    0 for primary display, 1 for the first secondary, etc.
+ * @todo move to VBoxGuestR3LibVideo.cpp
  */
 VBGLR3DECL(int) VbglR3GetDisplayChangeRequest(uint32_t *pcx, uint32_t *pcy, uint32_t *pcBits,
                                               uint32_t fEventAck, uint32_t iDisplay)
