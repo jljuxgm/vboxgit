@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11422 2008-08-14 12:12:39Z vboxsync $
+# $Id: Makefile.kmk 11482 2008-08-19 12:22:48Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -258,7 +258,8 @@ TEMPLATE_VBOXQT4GUI = VBox Qt GUI Components
 TEMPLATE_VBOXQT4GUI_EXTENDS = VBOXQTGUIEXE
 TEMPLATE_VBOXQT4GUI_LIBS = $(filter-out $(QTMAIN),$(TEMPLATE_VBOXQT4GUIEXE_LIBS))
 ifeq ($(KBUILD_TARGET),darwin)
- TEMPLATE_VBOXQT4GUI_LDFLAGS = $(filter-out -framework Carbon -framework QuickTime -bind_at_load,$(TEMPLATE_VBOXQT4GUIEXE_LDFLAGS))
+ TEMPLATE_VBOXQT4GUI_LDFLAGS = $(filter-out -framework Carbon -framework QuickTime -bind_at_load,$(TEMPLATE_VBOXQT4GUIEXE_LDFLAGS)) \
+	-current_version $(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD)
 endif
 ifeq ($(filter-out solaris.x86 %.amd64,$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)),)
  ifneq ($(KBUILD_TARGET),win)
