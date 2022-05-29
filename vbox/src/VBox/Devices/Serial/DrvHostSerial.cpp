@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 6262 2008-01-07 12:50:11Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 6268 2008-01-08 04:32:42Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -783,20 +783,25 @@ static DECLCALLBACK(int) drvHostSerialWakeupMonitorThread(PPDMDRVINS pDrvIns, PP
      */
     rc = ioctl(pData->DeviceFile, TIOCMBIS, TIOCM_LOOP);
     if (rc < 0)
-       AssertMsgFailed(("%s: Setting device into loopback mode failed. Cannot wake up the thread!!\n", __FUNCTION__));
+        goto ioctl_error;
 
     rc = ioctl(pData->DeviceFile, TIOCMBIS, TIOCM_RTS);
     if (rc < 0)
-        AssertMsgFailed(("%s: Setting bit failed. Cannot wake up thread!!\n", __FUNCTION__));
+        goto ioctl_error;
 
     /*
      * Set serial device into normal state.
      */
     rc = ioctl(pData->DeviceFile, TIOCMBIC, TIOCM_LOOP);
     if (rc < 0)
-        AssertMsgFailed(("%s: Setting device into normal mode failed. Device is not in a working state!!\n", __FUNCTION__));
+        goto ioctl_error;
 
-    return rc;
+ioctl_error:
+    PDMDrvHlpVMSetRuntimeError(pDrvIns, false, "DrvHostSerialFail",
+                                N_("Ioctl failed for serial host device '%s' (error %d)"),
+                                pData->pszDevicePath, errno);
+
+    return VINF_SUCCESS;
 }
 #endif /* RT_OS_LINUX */
 
