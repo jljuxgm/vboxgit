@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 6056 2007-12-12 22:58:26Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 6140 2007-12-18 17:20:07Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1344,6 +1344,10 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             }
 #endif
         }
+        hrc = pMachine->COMGETTER(Name)(&str);                                          H();
+        STR_CONV();
+        rc = CFGMR3InsertString(pCfg,  "StreamName", psz);                              RC_CHECK();
+        STR_FREE();
     }
 
     /*
