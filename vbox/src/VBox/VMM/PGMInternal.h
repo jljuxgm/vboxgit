@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 11221 2008-08-07 18:07:49Z vboxsync $ */
+/* $Id: PGMInternal.h 11309 2008-08-08 23:25:08Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3769,7 +3769,7 @@ DECLINLINE(void) pgmHandlerVirtualClearPage(PPGM pPGM, PPGMVIRTHANDLER pCur, uns
         }
     }
     Log2(("PHYS2VIRT: Removing %VGp-%VGp %#RX32 %s\n",
-          pPhys2Virt->Core.Key, pPhys2Virt->Core.KeyLast, pPhys2Virt->offNextAlias, HCSTRING(pCur->pszDesc)));
+          pPhys2Virt->Core.Key, pPhys2Virt->Core.KeyLast, pPhys2Virt->offNextAlias, R3STRING(pCur->pszDesc)));
     pPhys2Virt->offNextAlias = 0;
     pPhys2Virt->Core.KeyLast = NIL_RTGCPHYS; /* require reinsert */
 
