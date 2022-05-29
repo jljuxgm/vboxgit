@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 9720 2008-06-16 13:12:04Z vboxsync $ */
+/* $Id: EMAll.cpp 9721 2008-06-16 13:13:18Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2228,6 +2228,7 @@ EMDECL(int) EMInterpretRdmsr(PVM pVM, PCPUMCTXCORE pRegFrame)
  */
 static int emInterpretRdmsr(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, uint32_t *pcbSize)
 {
+    /* Note: the intel manual claims there's a REX version of RDMSR that's slightly different, so we play safe by completely disassembling the instruction. */
     Assert(!(pCpu->prefix & PREFIX_REX));
     return EMInterpretRdmsr(pVM, pRegFrame);
 }
