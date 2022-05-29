@@ -1,4 +1,4 @@
-/* $Id: logbackdoor.cpp 6231 2008-01-03 15:28:30Z vboxsync $ */
+/* $Id: logbackdoor.cpp 6351 2008-01-15 09:08:30Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Guest Backdoor Logging.
  */
@@ -86,7 +86,7 @@ RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
      */
 }
 
-#elif defined(RT_OS_LINUX) && defined(IN_GUEST_R3)
+#elif (defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS)) && defined(IN_GUEST_R3)
 
 #include <VBox/VBoxGuest.h>
 
