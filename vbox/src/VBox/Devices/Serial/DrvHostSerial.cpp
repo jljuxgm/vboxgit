@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 6188 2007-12-27 15:29:12Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 6262 2008-01-07 12:50:11Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -735,8 +735,18 @@ static DECLCALLBACK(int) drvHostSerialMonitorThread(PPDMDRVINS pDrvIns, PPDMTHRE
         rc = ioctl(pData->DeviceFile, TIOCMIWAIT, &uStatusLinesToCheck);
         if (pThread->enmState != PDMTHREADSTATE_RUNNING)
             break;
+        if (rc < 0)
+        {
+ioctl_error:
+            PDMDrvHlpVMSetRuntimeError(pDrvIns, false, "DrvHostSerialFail",
+                                       N_("Ioctl failed for serial host device '%s' (error %d)"),
+                                       pData->pszDevicePath, errno);
+            break;
+        }
 
-        ioctl(pData->DeviceFile, TIOCMGET, &statusLines);
+        rc = ioctl(pData->DeviceFile, TIOCMGET, &statusLines);
+        if (rc < 0)
+            goto ioctl_error;
 
         if (statusLines & TIOCM_CAR)
             newStatusLine |= PDM_ICHAR_STATUS_LINES_DCD;
