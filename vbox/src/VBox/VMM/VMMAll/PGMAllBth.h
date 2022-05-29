@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 8021 2008-04-16 10:16:22Z vboxsync $ */
+/* $Id: PGMAllBth.h 8027 2008-04-16 11:24:50Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2901,6 +2901,8 @@ PGM_BTH_DECL(int, SyncCR3)(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bo
       ||  PGM_GST_TYPE == PGM_TYPE_PAE)  \
       && !defined(PGM_WITHOUT_MAPPINGS)
 
+                const unsigned cPTs = pMapping->cb >> SHW_PD_SHIFT; /* needed below to skip the mapping */
+
                 Assert(pgmMapAreMappingsEnabled(&pVM->pgm.s));
                 if (pVM->pgm.s.fMappingsFixed)
                 {
@@ -2953,7 +2955,6 @@ PGM_BTH_DECL(int, SyncCR3)(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bo
                 }
 
                 /* advance. */
-                const unsigned cPTs = pMapping->cb >> SHW_PD_SHIFT;
                 iPD += cPTs - 1;
                 pPDEDst += cPTs + cPTs;
 #  else  /* PGM_GST_TYPE != PGM_TYPE_32BIT && PGM_GST_TYPE != PGM_TYPE_PAE && PGM_WITHOUT_MAPPINGS */
