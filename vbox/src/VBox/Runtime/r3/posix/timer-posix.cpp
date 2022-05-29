@@ -1,4 +1,4 @@
-/* $Id: timer-posix.cpp 10941 2008-07-29 16:53:12Z vboxsync $ */
+/* $Id: timer-posix.cpp 11133 2008-08-05 14:08:55Z vboxsync $ */
 /** @file
  * IPRT - Timer, POSIX.
  */
@@ -661,7 +661,7 @@ RTR3DECL(int) RTTimerDestroy(PRTTIMER pTimer)
         struct itimerspec TimerSpec;
         TimerSpec.it_value.tv_sec     = 0;
         TimerSpec.it_value.tv_nsec    = 0;
-        int err = timer_settime(pTimer->NativeTimer, 0, &TimerSpec, NULL);
+        int err = timer_settime(pTimer->NativeTimer, 0, &TimerSpec, NULL); NOREF(err);
         AssertMsg(!err, ("%d\n", err));
     }
 #endif

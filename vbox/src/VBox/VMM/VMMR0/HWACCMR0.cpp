@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 10817 2008-07-22 15:03:14Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 11133 2008-08-05 14:08:55Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -804,7 +804,7 @@ HWACCMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM)
 {
     CPUMCTX *pCtx;
     int      rc;
-    RTCPUID  idCpu = RTMpCpuId();
+    RTCPUID  idCpu = RTMpCpuId(); NOREF(idCpu);
 
     Assert(!VM_FF_ISPENDING(pVM, VM_FF_PGM_SYNC_CR3 | VM_FF_PGM_SYNC_CR3_NON_GLOBAL));
     Assert(HWACCMR0Globals.aCpuInfo[idCpu].fConfigured);
