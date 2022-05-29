@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 9692 2008-06-13 16:03:19Z vboxsync $ */
+/* $Id: PGMInternal.h 9715 2008-06-16 12:00:08Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1308,7 +1308,7 @@ typedef struct PGMPOOLUSER
     /** The index to the next item in the chain. NIL_PGMPOOL_USER_INDEX is no next. */
     uint16_t            iNext;
     /** The user page index. */
-    uint32_t            iUser;
+    uint16_t            iUser;
     /** Index into the user table. */
     uint32_t            iUserTable;
 } PGMPOOLUSER, *PPGMPOOLUSER;
