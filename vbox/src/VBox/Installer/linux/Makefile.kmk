@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10441 2008-07-09 17:09:34Z vboxsync $
+# $Id: Makefile.kmk 10449 2008-07-09 21:15:33Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -138,7 +138,7 @@ ifdef VBOX_WITH_DOCS
  LINUXNOSTRIP += \
 	UserManual.pdf
  LINUXSTRIPBIN += \
-	$(if $(VBOX_WITH_QTGUI4),kchmviewer,)
+	$(if $(VBOX_WITH_QT4GUI),kchmviewer,)
  ifneq ($(wildcard $(PATH_BIN)/VirtualBox.chm),)
   # our 64-bit tinderboxes are not able to generate VirtualBox.chm so far
   # but for building .deb/.rpm packages we use precompiled binaries.
