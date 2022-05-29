@@ -1,4 +1,4 @@
-/* $Id: mp-solaris.cpp 11329 2008-08-11 11:34:44Z vboxsync $ */
+/* $Id: mp-solaris.cpp 11330 2008-08-11 11:36:27Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */
@@ -257,10 +257,10 @@ RTDECL(RTCPUID) RTMpGetOnlineCount(void)
 RTDECL(PRTCPUSET) RTMpGetOnlineSet(PRTCPUSET pSet)
 {
     RTCpuSetEmpty(pSet);
-    int cCpus = RTMpGetCount();
+    RTCPUID cCpus = RTMpGetCount();
     for (RTCPUID idCpu = 0; idCpu < cCpus; idCpu++)
         if (RTMpIsCpuOnline(idCpu))
-            RTCpuSetAdd(pSet, cMax);
+            RTCpuSetAdd(pSet, idCpu);
     return pSet;
 }
 
