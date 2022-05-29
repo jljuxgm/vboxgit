@@ -1,4 +1,4 @@
-# $Id: Config.kmk 9020 2008-05-21 14:35:17Z vboxsync $
+# $Id: Config.kmk 9111 2008-05-26 10:05:51Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1471,6 +1471,16 @@ if1of ($(KBUILD_TARGET), linux)
  endif
 endif
 
+#
+# Determine Solaris version.
+#
+ifeq ($(KBUILD_TARGET),solaris)
+ ifeq ($(origin SOLARIS_VER),undefined)
+   export SOLARIS_VER       := $(shell uname -s)_$(shell uname -r)
+ endif
+ DEFS.solaris += __$(SOLARIS_VER)
+endif
+
 
 #
 # Template for building GC things.
@@ -2924,7 +2934,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9020 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9111 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
