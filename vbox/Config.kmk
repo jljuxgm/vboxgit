@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6988 2008-02-18 12:29:53Z vboxsync $
+# $Id: Config.kmk 6997 2008-02-18 15:06:42Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -279,6 +279,9 @@ endif
 VBOX_WITH_CROSSBOW = 1
 # Enable setuid wrapper for Solaris.
 #VBOX_WITH_SUID_WRAPPER = 1
+# Enable the PDM Lock and let I/O threads call into the PICs.
+#VBOX_WITH_PDM_LOCK = 1
+
 
 #
 # Skip stuff.
@@ -2863,7 +2866,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6988 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6997 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
