@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 5605 2007-11-01 16:09:26Z vboxsync $ */
+/* $Id: DevPcBios.cpp 5905 2007-12-02 19:39:02Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -607,7 +607,7 @@ static DECLCALLBACK(int) pcbiosIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTI
         }
         else
         {
-            if (pData->iMsg >= sizeof(pData->szMsg))
+            if (pData->iMsg >= sizeof(pData->szMsg)-1)
             {
                 pData->szMsg[pData->iMsg] = '\0';
                 Log(("pcbios: %s\n", pData->szMsg));
