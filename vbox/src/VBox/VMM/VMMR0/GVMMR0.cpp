@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 7034 2008-02-20 13:29:17Z vboxsync $ */
+/* $Id: GVMMR0.cpp 7135 2008-02-25 18:24:08Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1225,7 +1225,7 @@ static unsigned gvmmR0SchedDoWakeUps(PGVMM pGVMM, uint64_t u64Now)
 
     if (cTodo2nd)
     {
-        for (unsigned i = pGVMM->iUsedHead, cGuard;
+        for (unsigned i = pGVMM->iUsedHead, cGuard = 0;
              i != NIL_GVM_HANDLE && i < RT_ELEMENTS(pGVMM->aHandles);
              i = pGVMM->aHandles[i].iNext)
         {
