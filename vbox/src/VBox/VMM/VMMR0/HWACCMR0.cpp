@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 9409 2008-06-05 11:09:59Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 9411 2008-06-05 11:41:38Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -737,9 +737,9 @@ HWACCMR0DECL(int) HWACCMR0Enter(PVM pVM)
 
     /* Setup the register and mask according to the current execution mode. */
     if (pCtx->msrEFER & MSR_K6_EFER_LMA)
-        pVM->hwaccm.s.u64RegisterMask = 0xFFFFFFFFFFFFFFFFULL;
+        pVM->hwaccm.s.u64RegisterMask = UINT64_C(0xFFFFFFFFFFFFFFFF);
     else
-        pVM->hwaccm.s.u64RegisterMask = 0xFFFFFFFFULL;
+        pVM->hwaccm.s.u64RegisterMask = UINT64_C(0xFFFFFFFF);
 
     rc  = HWACCMR0Globals.pfnEnterSession(pVM, &HWACCMR0Globals.aCpuInfo[idCpu]);
     AssertRC(rc);
