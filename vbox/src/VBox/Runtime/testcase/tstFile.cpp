@@ -1,4 +1,4 @@
-/* $Id: tstFile.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: tstFile.cpp 6421 2008-01-21 17:48:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime Testcase - File I/O.
  */
@@ -48,6 +48,8 @@ int main()
         RTPrintf("tstFile: FATAL ERROR - Failed to open file #1. rc=%Rrc\n", rc);
         return 1;
     }
+
+    RTPrintf("Maximum file size is %lld bytes.\n", RTFileGetMaxSize(File));
 
     /* grow file beyond 2G */
     rc = RTFileSetSize(File, _2G + _1M);

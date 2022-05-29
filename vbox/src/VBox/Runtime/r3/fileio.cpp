@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: fileio.cpp 6421 2008-01-21 17:48:46Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O.
  */
@@ -214,6 +214,31 @@ RTR3DECL(uint64_t)  RTFileTell(RTFILE File)
         return off;
     AssertMsgFailed(("RTFileSeek(%d) -> %d\n", File, rc));
     return ~0ULL;
+}
+
+
+/**
+ * Determine the maximum file size. Tested on Windows and Linux.
+ */
+RTR3DECL(uint64_t)  RTFileGetMaxSize(RTFILE File)
+{
+    uint64_t offLow  =       0;
+    uint64_t offHigh = 8 * _1T; /* we don't need bigger files */
+    uint64_t offOld  = RTFileTell(File);
+
+    for (;;)
+    {
+        uint64_t interval = (offHigh - offLow) >> 1;
+        if (interval == 0)
+        {
+            RTFileSeek(File, offOld, RTFILE_SEEK_BEGIN, NULL);
+            return offLow;
+        }
+        if (RT_FAILURE(RTFileSeek(File, offLow + interval, RTFILE_SEEK_BEGIN, NULL)))
+            offHigh = offLow + interval;
+        else
+            offLow  = offLow + interval;
+    }
 }
 
 
