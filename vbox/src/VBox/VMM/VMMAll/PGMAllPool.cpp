@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 7957 2008-04-14 16:09:19Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 7959 2008-04-14 16:22:42Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -359,8 +359,8 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
                     }
                     /* paranoia / a bit assumptive. */
                     else if (   pCpu
-                             && (off & 7)
-                             && (off & 7) + pgmPoolDisasWriteSize(pCpu) > 8)
+                             && (off & 3)
+                             && (off & 3) + pgmPoolDisasWriteSize(pCpu) > 4)
                     {
                         const unsigned iShw2 = iShw + 2;
                         if (    iShw2 < ELEMENTS(uShw.pPDPae->a)
