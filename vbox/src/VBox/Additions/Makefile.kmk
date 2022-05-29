@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 4410 2007-08-28 20:51:29Z vboxsync $
+# $Id: Makefile.kmk 5926 2007-12-02 23:17:11Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -172,7 +172,7 @@ endif
 
 
 # build the Linux installer on a remote machine
-# TODO: Move the VBOX_REMOTE_LINUX32_ADDITIONS_BUILD stuff into LocaleConfig.kmk on the x86 box.
+# TODO: Move the VBOX_REMOTE_LINUX32_ADDITIONS_BUILD stuff into LocalConfig.kmk on the x86 box.
 VBOX_REMOTE_LINUX32_ADDITIONS_BUILD ?= ssh vbox@$(VBOX_ADDITIONS_LINUX_CROSS_HOST) "./enter-rhel3-jail /mnt/tinderwin_vbox/w32-rel/tools/env.sh --no-wine kmk -C src/VBox/Additions build-linux32-additions BUILD_TYPE=release"
 $(LINUXINSTALLER_CROSS):
 	$(VBOX_REMOTE_LINUX32_ADDITIONS_BUILD)
