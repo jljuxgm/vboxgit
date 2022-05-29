@@ -1,4 +1,4 @@
-/* $Id: SATAControllerImpl.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: SATAControllerImpl.cpp 8603 2008-05-05 15:23:23Z vboxsync $ */
 
 /** @file
  *
@@ -234,6 +234,12 @@ STDMETHODIMP SATAController::COMGETTER(PortCount) (ULONG *aPortCount)
 STDMETHODIMP SATAController::COMSETTER(PortCount) (ULONG aPortCount)
 {
     LogFlowThisFunc (("aPortCount=%u\n", aPortCount));
+
+    /* We support a maximum of 30 channels. */
+    if ((aPortCount < 1) || (aPortCount > 30))
+        return setError (E_INVALIDARG,
+            tr ("Invalid port count: %lu (must be in range [%lu, %lu])"),
+                aPortCount, 1, 30);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
