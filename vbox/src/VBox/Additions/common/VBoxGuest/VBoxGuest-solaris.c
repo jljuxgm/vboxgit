@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 6154 2007-12-19 15:24:56Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 6241 2008-01-04 16:25:30Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -498,6 +498,12 @@ static int VBoxAddSolarisOpen(dev_t *pDev, int fFlag, int fType, cred_t *pCred)
 
     LogFlow((DEVICE_NAME ":VBoxAddSolarisOpen\n"));
 
+	/*
+	 * Verify we are being opened as a character device
+	 */
+	if (fType != OTYP_CHR)
+		return EINVAL;
+
 #ifndef USE_SESSION_HASH
     VBoxAddDevState *pState = NULL;
     unsigned iOpenInstance;
@@ -564,7 +570,7 @@ static int VBoxAddSolarisOpen(dev_t *pDev, int fFlag, int fType, cred_t *pCred)
         return 0;
     }
 #endif
-    LogRel((DEVICE_NAME "VBoxAddSolarisOpen: VBoxGuestCreateUserSession failed. rc=%d\n", rc));
+    LogRel((DEVICE_NAME ":VBoxAddSolarisOpen: VBoxGuestCreateUserSession failed. rc=%d\n", rc));
     return rc;
 }
 

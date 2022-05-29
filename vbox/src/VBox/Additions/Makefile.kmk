@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6181 2007-12-23 13:21:20Z vboxsync $
+# $Id: Makefile.kmk 6241 2008-01-04 16:25:30Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -85,6 +85,11 @@ ifndef VBOX_WITHOUT_ADDITIONS_ISO
    PACKING += $(if $(VBOX_OSE),,$(PATH_BIN)/additions/VBoxGuestAdditions.iso)
   endif
  endif
+endif
+
+# Solaris additions
+ifeq ($(BUILD_TARGET),solaris)
+ SUBDIRS += x11
 endif
 
 include	$(PATH_KBUILD)/subfooter.kmk

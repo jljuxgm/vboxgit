@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6202 2007-12-28 14:02:30Z vboxsync $
+# $Id: Makefile.kmk 6241 2008-01-04 16:25:30Z vboxsync $
 ## @file
 # Sub-Makefile for the X11 Guest Additions.
 #
@@ -25,6 +25,10 @@ SUBDIRS += \
 	xclient \
 	xgraphics \
 	xmouse
+endif
+
+ifeq ($(BUILD_TARGET),solaris)
+SUBDIRS += xmouse
 endif
 
 include $(PATH_KBUILD)/subfooter.kmk
