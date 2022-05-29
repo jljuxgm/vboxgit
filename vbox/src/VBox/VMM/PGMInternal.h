@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 7961 2008-04-14 17:09:45Z vboxsync $ */
+/* $Id: PGMInternal.h 7971 2008-04-15 10:12:22Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -169,6 +169,8 @@
 /** The entry is a permanent one and it's must always be present.
  * Never free such an entry. */
 #define PGM_PLXFLAGS_PERMANENT      RT_BIT_64(10)
+/** Mapping (hypervisor allocated pagetable). */
+#define PGM_PLXFLAGS_MAPPING        RT_BIT_64(11)
 /** @} */
 
 /** @name Page directory flags.
