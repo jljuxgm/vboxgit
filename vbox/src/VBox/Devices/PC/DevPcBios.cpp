@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 6322 2008-01-10 11:03:56Z vboxsync $ */
+/* $Id: DevPcBios.cpp 6335 2008-01-11 10:38:46Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -571,6 +571,11 @@ static DECLCALLBACK(int) pcbiosInitComplete(PPDMDEVINS pDevIns)
 
                 }
                 rc = apHDs[i]->pfnSetLCHSGeometry(apHDs[i], &LCHSGeometry);
+		if (rc == VERR_VDI_IMAGE_READ_ONLY)
+		{
+                    LogRel(("DevPcBios: ATA LUN#%d: failed to update LCHS geometry\n", __FUNCTION__, i));
+		    rc = VINF_SUCCESS;
+		}
                 AssertRC(rc);
             }
             if (i < 4)
