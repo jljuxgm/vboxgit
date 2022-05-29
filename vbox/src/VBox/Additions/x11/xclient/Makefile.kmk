@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9632 2008-06-11 20:33:24Z vboxsync $
+# $Id: Makefile.kmk 9635 2008-06-11 23:28:07Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -63,7 +63,7 @@ endif
 # Link aginst libstdc++.a. (http://www.trilithium.com/johan/2005/06/static-libstdc/).
 # (It would've been preferred to avoid features depending on libstdc++, of course...)
 #
-# Actually, this is darn annoying and will *NOT* be tollerated for any new code!
+# Actually, this is darn annoying and will *NOT* be tolerated for any new code!
 #
 VBoxClient_LIBPATH  += $(PATH_TARGET)/VBoxClient
 VBoxClient_ORDERDEPS = $(PATH_TARGET)/VBoxClient/libstdc++.a
