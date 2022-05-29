@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 6616 2008-01-30 17:31:18Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 6935 2008-02-13 16:43:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -69,7 +69,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     /* Note: hardcoded assumption about number of slots; see rom bios */
     bool afPciDeviceNo[15] = {false};
 
-#if defined(RT_OS_WINDOWS)
+#if !defined (VBOX_WITH_XPCOM)
     {
         /* initialize COM */
         HRESULT hrc = CoInitializeEx(NULL,
