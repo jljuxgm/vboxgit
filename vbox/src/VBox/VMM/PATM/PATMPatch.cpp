@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 9228 2008-05-29 15:23:15Z vboxsync $ */
+/* $Id: PATMPatch.cpp 9341 2008-06-03 08:22:06Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -934,10 +934,10 @@ int patmPatchGenGlobalFunctions(PVM pVM, PPATCHINFO pPatch)
     size = patmPatchGenCode(pVM, pPatch, pPB, &PATMIretFunctionRecord, 0, false);
     PATCHGEN_EPILOG(pPatch, size);
 
-    Log(("pfnHelperCallGC %VGv\n", pVM->patm.s.pfnHelperCallGC));
-    Log(("pfnHelperRetGC  %VGv\n", pVM->patm.s.pfnHelperRetGC));
-    Log(("pfnHelperJumpGC %VGv\n", pVM->patm.s.pfnHelperJumpGC));
-    Log(("pfnHelperIretGC  %VGv\n", pVM->patm.s.pfnHelperIretGC));
+    Log(("pfnHelperCallGC %VRv\n", pVM->patm.s.pfnHelperCallGC));
+    Log(("pfnHelperRetGC  %VRv\n", pVM->patm.s.pfnHelperRetGC));
+    Log(("pfnHelperJumpGC %VRv\n", pVM->patm.s.pfnHelperJumpGC));
+    Log(("pfnHelperIretGC %VRv\n", pVM->patm.s.pfnHelperIretGC));
 
     return VINF_SUCCESS;
 }
