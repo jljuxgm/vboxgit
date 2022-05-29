@@ -1,4 +1,4 @@
-/* $Id: semmutex-linux.cpp 6742 2008-02-02 00:30:13Z vboxsync $ */
+/* $Id: semmutex-linux.cpp 6743 2008-02-02 00:30:45Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Mutex Semaphore, Linux  (2.6.x+).
  */
@@ -56,8 +56,6 @@
  */
 struct RTSEMMUTEXINTERNAL
 {
-    /** Magic value. */
-    intptr_t volatile   iMagic;
     /** The futex state variable.
      * 0 means unlocked.
      * 1 means locked, no waiters.
@@ -68,6 +66,8 @@ struct RTSEMMUTEXINTERNAL
     volatile pthread_t  Owner;
     /** Nesting count. */
     volatile uint32_t   cNesting;
+    /** Magic value. */
+    intptr_t volatile   iMagic;
 };
 
 
