@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 7072 2008-02-21 14:06:23Z vboxsync $ */
+/* $Id: DevPCNet.cpp 7076 2008-02-21 14:55:02Z vboxsync $ */
 /** @file
  * AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  */
@@ -134,6 +134,11 @@ struct PCNetState_st
     R3R0PTRTYPE(PTMTIMER)               pTimerSoftIntHC;
     /** Software Interrupt timer (address for guest context) */
     GCPTRTYPE(PTMTIMER)                 pTimerSoftIntGC;
+
+#if HC_ARCH_BITS == 64
+    uint32_t                            Alignment;
+#endif
+
     /** Register Address Pointer */
     uint32_t                            u32RAP;
     /** Internal interrupt service */
