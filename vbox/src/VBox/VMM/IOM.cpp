@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 7600 2008-03-27 16:57:17Z vboxsync $ */
+/* $Id: IOM.cpp 7603 2008-03-27 17:58:07Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -391,7 +391,9 @@ PIOMIOPORTSTATS iomr3IOPortStatsCreate(PVM pVM, RTIOPORT Port, const char *pszDe
  */
 PIOMMMIOSTATS iomR3MMIOStatsCreate(PVM pVM, RTGCPHYS GCPhys, const char *pszDesc)
 {
+#ifdef DEBUG_sandervl
     AssertGCPhys32(GCPhys);
+#endif
     /* check if it already exists. */
     PIOMMMIOSTATS pStats = (PIOMMMIOSTATS)RTAvloGCPhysGet(&pVM->iom.s.pTreesHC->MMIOStatTree, GCPhys);
     if (pStats)
