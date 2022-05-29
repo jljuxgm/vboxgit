@@ -1,4 +1,4 @@
-/* $Id: Performance.h 11498 2008-08-19 18:50:33Z vboxsync $ */
+/* $Id: Performance.h 11571 2008-08-22 12:19:56Z vboxsync $ */
 
 /** @file
  *
@@ -340,6 +340,7 @@ namespace pm
     public:
         Filter(ComSafeArrayIn(INPTR BSTR, metricNames),
                ComSafeArrayIn(IUnknown * , objects));
+        static bool patternMatch(const char *pszPat, const char *pszName);
         bool match(const ComPtr<IUnknown> object, const std::string &name) const;
     private:
         typedef std::pair<const ComPtr<IUnknown>, const std::string> FilterElement;
