@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6004 2007-12-07 20:36:47Z vboxsync $
+# $Id: Makefile.kmk 6009 2007-12-07 22:21:57Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -43,8 +43,10 @@ else  # !VBOX_ONLY_ADDITIONS
   SUBDIRS += RDP
  endif
 
- ifneq ($(VBOX_WITH_WIN32_ADDITIONS)$(VBOX_WITH_LINUX_ADDITIONS),)
-  SUBDIRS += Additions
+ ifndef VBOX_WITHOUT_ADDITIONS
+  ifneq ($(VBOX_WITH_WIN32_ADDITIONS)$(VBOX_WITH_LINUX_ADDITIONS),)
+   SUBDIRS += Additions
+  endif
  endif
 
  SUBDIRS += Frontends
