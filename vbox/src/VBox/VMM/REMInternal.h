@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: REMInternal.h 8223 2008-04-21 12:30:34Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -48,7 +48,8 @@
 
 /** @def REM_MONITOR_CODE_PAGES
  * Enable to monitor code pages that have been translated by the recompiler. */
-#define REM_MONITOR_CODE_PAGES
+/** Currently broken and interferes with CSAM monitoring (see #2784) */
+////#define REM_MONITOR_CODE_PAGES
 
 typedef enum REMHANDLERNOTIFICATIONKIND
 {
