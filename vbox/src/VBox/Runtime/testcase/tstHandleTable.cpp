@@ -1,4 +1,4 @@
-/* $Id: tstHandleTable.cpp 10803 2008-07-22 09:10:57Z vboxsync $ */
+/* $Id: tstHandleTable.cpp 11127 2008-08-04 21:30:46Z vboxsync $ */
 /** @file
  * IPRT Testcase - Handle Tables.
  */
@@ -416,7 +416,7 @@ static int tstHandleTableTest2(uint32_t uBase, uint32_t cMax, uint32_t cThreads)
     /*
      * Wait for them to complete.
      */
-    uint32_t cRunning;
+    uint32_t cRunning = cThreads;
     do /** @todo Remove when RTSemEventWait (linux) has been fixed. */
     {
         if (cRunning != cThreads)
