@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 6528 2008-01-28 14:43:15Z vboxsync $ */
+/* $Id: PGMInternal.h 6764 2008-02-03 02:15:04Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -111,7 +111,7 @@
  *
  * This requires PGMPOOL_WITH_USER_TRACKING and PGMPOOL_WITH_MONITORING.
  */
-#define PGMPOOL_WITH_CACHE
+//#define PGMPOOL_WITH_CACHE
 
 /** @def PGMPOOL_WITH_MIXED_PT_CR3
  * When defined, we'll deal with 'uncachable' pages.
@@ -1426,6 +1426,8 @@ typedef struct PGMMODEDATA
     DECLR0CALLBACKMEMBER(int,  pfnR0GstUnmonitorCR3,(PVM pVM));
     DECLR0CALLBACKMEMBER(int,  pfnR0GstMapCR3,(PVM pVM, RTGCPHYS GCPhysCR3));
     DECLR0CALLBACKMEMBER(int,  pfnR0GstUnmapCR3,(PVM pVM));
+    R0PTRTYPE(PFNPGMGCPHYSHANDLER)  pfnR0GstWriteHandlerCR3;
+    R0PTRTYPE(PFNPGMGCPHYSHANDLER)  pfnR0GstPAEWriteHandlerCR3;
     /** @} */
 
     /** @name Function pointers for Both Shadow and Guest paging.
@@ -1653,6 +1655,8 @@ typedef struct PGM
     DECLR0CALLBACKMEMBER(int,  pfnR0GstUnmonitorCR3,(PVM pVM));
     DECLR0CALLBACKMEMBER(int,  pfnR0GstMapCR3,(PVM pVM, RTGCPHYS GCPhysCR3));
     DECLR0CALLBACKMEMBER(int,  pfnR0GstUnmapCR3,(PVM pVM));
+    R0PTRTYPE(PFNPGMGCPHYSHANDLER)  pfnR0GstWriteHandlerCR3;
+    R0PTRTYPE(PFNPGMGCPHYSHANDLER)  pfnR0GstPAEWriteHandlerCR3;
     /** @} */
 
     /** @name Function pointers for Both Shadow and Guest paging.

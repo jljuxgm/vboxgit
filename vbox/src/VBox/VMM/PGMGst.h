@@ -1,4 +1,4 @@
-/* $Id: PGMGst.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: PGMGst.h 6764 2008-02-03 02:15:04Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
@@ -180,10 +180,10 @@ PGM_GST_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
         rc = PDMR3GetSymbolR0(pVM, NULL, PGM_GST_NAME_R0_STR(UnmapCR3),         &pModeData->pfnR0GstUnmapCR3);
         AssertMsgRCReturn(rc, ("%s -> rc=%Vrc\n", PGM_GST_NAME_R0_STR(UnmapCR3), rc), rc);
 #if PGM_GST_TYPE == PGM_TYPE_32BIT || PGM_GST_TYPE == PGM_TYPE_PAE
-# if 0/** @todo ring-0. */
         rc = PDMR3GetSymbolR0(pVM, NULL, PGM_GST_NAME_R0_STR(WriteHandlerCR3),  &pModeData->pfnR0GstWriteHandlerCR3);
         AssertMsgRCReturn(rc, ("%s -> rc=%Vrc\n", PGM_GST_NAME_R0_STR(WriteHandlerCR3), rc), rc);
-# endif
+        rc = PDMR3GetSymbolR0(pVM, NULL, PGM_GST_NAME_R0_STR(WriteHandlerCR3),  &pModeData->pfnR0GstPAEWriteHandlerCR3);
+        AssertMsgRCReturn(rc, ("%s -> rc=%Vrc\n", PGM_GST_NAME_R0_STR(PAEWriteHandlerCR3), rc), rc);
 #endif
     }
 
