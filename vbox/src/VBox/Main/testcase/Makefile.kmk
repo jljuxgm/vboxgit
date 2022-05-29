@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11467 2008-08-18 14:52:12Z vboxsync $
+# $Id: Makefile.kmk 11551 2008-08-21 17:16:02Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -85,6 +85,9 @@ tstVBoxAPILinux_TEMPLATE = VBOXR3
 tstVBoxAPILinux_SOURCES  = tstVBoxAPILinux.cpp
 tstVBoxAPILinux_CXXFLAGS = -Wno-non-virtual-dtor -fshort-wchar
 tstVBoxAPILinux_LDFLAGS.solaris += '$(VBOX_GCC_RPATH_OPT)$$(VBOX_ORIGIN)/../../..'
+ifdef VBOX_WITH_XPCOM_NAMESPACE_CLEANUP
+ tstVBoxAPILinux_DEFS += VBOX_WITH_XPCOM_NAMESPACE_CLEANUP
+endif
 tstVBoxAPILinux_INCS     = \
 	$(VBOX_XPCOM_INCS) \
 	$(PATH_BIN)/sdk/include
