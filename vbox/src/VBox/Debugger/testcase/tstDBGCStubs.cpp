@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 8160 2008-04-18 16:15:42Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 8800 2008-05-14 03:03:54Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -281,6 +281,22 @@ DBGFR3DECL(int) DBGFR3MemScan(PVM pVM, PCDBGFADDRESS pAddress, RTGCUINTPTR cbRan
 {
     return VERR_INTERNAL_ERROR;
 }
+DBGFR3DECL(int) DBGFR3MemRead(PVM pVM, PCDBGFADDRESS pAddress, void *pvBuf, size_t cbRead)
+{
+    return VERR_INTERNAL_ERROR;
+}
 DBGFR3DECL(void) DBGFR3AddrFromPhys(PVM pVM, PDBGFADDRESS pAddress, RTGCPHYS PhysAddr)
 {
+}
+DBGFR3DECL(int) DBGFR3OSRegister(PVM pVM, PCDBGFOSREG pReg)
+{
+    return VERR_INTERNAL_ERROR;
+}
+DBGFR3DECL(int) DBGFR3OSDetect(PVM pVM, char *pszName, size_t cchName)
+{
+    return VERR_INTERNAL_ERROR;
+}
+DBGFR3DECL(int) DBGFR3OSQueryNameAndVersion(PVM pVM, char *pszName, size_t cchName, char *pszVersion, size_t cchVersion)
+{
+    return VERR_INTERNAL_ERROR;
 }
