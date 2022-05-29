@@ -1,4 +1,4 @@
-/* $Id: mp-solaris.cpp 11333 2008-08-11 11:45:07Z vboxsync $ */
+/* $Id: mp-solaris.cpp 11719 2008-08-27 18:16:22Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */
@@ -82,7 +82,7 @@ static DECLCALLBACK(int) rtMpSolarisOnce(void *pvUser1, void *pvUser2)
     if (g_pKsCtl)
     {
         g_capCpuInfo = RTMpGetCount();
-        g_papCpuInfo = (kstat_t **)RTMemAlloc(g_capCpuInfo * sizeof(kstat_t *));
+        g_papCpuInfo = (kstat_t **)RTMemAllocZ(g_capCpuInfo * sizeof(kstat_t *));
         if (g_papCpuInfo)
         {
             rc = RTCritSectInit(&g_MpSolarisCritSect);
