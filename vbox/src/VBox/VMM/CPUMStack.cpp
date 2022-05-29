@@ -1,4 +1,4 @@
-/* $Id: CPUMStack.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: CPUMStack.cpp 6386 2008-01-18 21:46:40Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Stack manipulation.
  */
@@ -26,7 +26,7 @@
 
 /** Disable stack frame pointer generation here. */
 #if defined(_MSC_VER) && !defined(DEBUG)
-# pragma optimize("y", "off");
+# pragma optimize("y", off);
 #endif
 
 
