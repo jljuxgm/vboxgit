@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11673 2008-08-26 15:44:59Z vboxsync $
+# $Id: Makefile.kmk 11725 2008-08-27 22:21:47Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -27,14 +27,33 @@ SUB_DEPTH = ..
 endif
 include $(KBUILD_PATH)/subheader.kmk
 
-PROGRAMS += VBoxSDL tstSDL
+
+#
+# Targets.
+#
+ifdef VBOX_WITH_HARDENING
+ ifneq ($(KBUILD_TARGET),darwin) # No hardened VBoxSDL on darwin.
+  PROGRAMS += VBoxSDLHardened
+  DLLS += VBoxSDL
+ endif
+else
+ PROGRAMS += VBoxSDL
+endif
+PROGRAMS += tstSDL
+
+
+#
+# Hardened VBoxSDL
+#
+VBoxSDLHardened_TEMPLATE = VBOXR3HARDENEDEXE
+VBoxSDLHardened_SOURCES = VBoxSDLHardened.cpp
+VBoxSDLHardened_NAME = VBoxSDL
 
 
 #
 # VBoxSDL
 #
-
-VBoxSDL_TEMPLATE   = VBOXMAINCLIENTEXE
+VBoxSDL_TEMPLATE  := $(if $(VBOX_WITH_HARDENING),VBOXMAINCLIENTDLL,VBOXMAINCLIENTEXE)
 VBoxSDL_SDKS       = LIBSDL
 VBoxSDL_SOURCES    = \
 	VBoxSDL.cpp \
