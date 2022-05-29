@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 9062 2008-05-23 07:39:08Z vboxsync $ */
+/* $Id: HWACCM.cpp 9082 2008-05-23 13:14:15Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -159,6 +159,9 @@ HWACCMR3DECL(int) HWACCMR3Init(PVM pVM)
     STAM_REG(pVM, &pVM->hwaccm.s.StatFlushTLBWorldSwitch,   STAMTYPE_COUNTER, "/HWACCM/Flush/TLB/Switch",  STAMUNIT_OCCURENCES,    "Nr of occurances");
     STAM_REG(pVM, &pVM->hwaccm.s.StatNoFlushTLBWorldSwitch, STAMTYPE_COUNTER, "/HWACCM/Flush/TLB/Skipped", STAMUNIT_OCCURENCES,    "Nr of occurances");
     STAM_REG(pVM, &pVM->hwaccm.s.StatFlushASID,             STAMTYPE_COUNTER, "/HWACCM/Flush/TLB/ASID",    STAMUNIT_OCCURENCES,    "Nr of occurances");
+
+    STAM_REG(pVM, &pVM->hwaccm.s.StatTSCOffset,             STAMTYPE_COUNTER, "/HWACCM/TSC/Offset",        STAMUNIT_OCCURENCES,    "Nr of occurances");
+    STAM_REG(pVM, &pVM->hwaccm.s.StatTSCIntercept,          STAMTYPE_COUNTER, "/HWACCM/TSC/Intercept",     STAMUNIT_OCCURENCES,    "Nr of occurances");
 
     pVM->hwaccm.s.pStatExitReason = 0;
 
