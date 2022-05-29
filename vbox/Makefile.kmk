@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5903 2007-12-02 11:32:16Z vboxsync $
+# $Id: Makefile.kmk 5957 2007-12-04 21:18:53Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -300,6 +300,14 @@ ifndef VBOX_OSE
 else
 	$(MAKE) -C tools -f Makefile-ose.kmk fetch
 endif
+
+up2 update2::
+	$(SVN) up src/lib/kStuff
+if1of ($(BUILD_PLATFORM),win os2)
+	$(ECHO) This may fail if kmk.exe is updated.
+endif
+	$(SVN) up kBuild
+
 
 #
 # Generate VirtualBox-OSE-x.x.x.tar.bz2 tarballs for distribution
