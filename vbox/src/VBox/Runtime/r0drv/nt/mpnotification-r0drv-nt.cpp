@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-nt.cpp 9311 2008-06-02 15:27:03Z vboxsync $ */
+/* $Id: mpnotification-r0drv-nt.cpp 9563 2008-06-10 11:01:33Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, NT.
  */
@@ -38,6 +38,7 @@
 #include <iprt/err.h>
 #include <iprt/cpuset.h>
 #include "r0drv/mp-r0drv.h"
+#include "internal-r0drv-nt.h"
 
 
 #if /*NTDDI_VERSION >= NTDDI_WS08*/ 0
@@ -87,6 +88,7 @@ static VOID __stdcall rtMpNotificationNtCallback(IN PVOID pvUser,
 
         case KeProcessorAddCompleteNotify:
             rtMpNotificationDoCallbacks(RTMPEVENT_ONLINE, idCpu);
+            RTCpuSetAdd(&g_rtMpNtCpuSet, idCpu);
             break;
 
         //case KeProcessorDelCompleteNotify:
