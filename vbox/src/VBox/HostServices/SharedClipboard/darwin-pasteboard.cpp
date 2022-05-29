@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 7131 2008-02-25 16:45:08Z vboxsync $ */
+/* $Id: darwin-pasteboard.cpp 7162 2008-02-27 02:28:43Z vboxsync $ */
 /** @file
  * Shared Clipboard: Mac OS X host implementation.
  */
@@ -32,6 +32,8 @@
 #include "clipboard-helper.h"
 
 //#define SHOW_CLIPBOARD_CONTENT
+
+/** @todo r=bird: document these functions */
 
 int initPasteboard (PasteboardRef *pPasteboardRef)
 {
