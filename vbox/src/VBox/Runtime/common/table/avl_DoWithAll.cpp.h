@@ -1,4 +1,4 @@
-/* $Id: avl_DoWithAll.cpp.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: avl_DoWithAll.cpp.h 8155 2008-04-18 15:16:47Z vboxsync $ */
 /** @file
  * kAVLDoWithAll - Do with all nodes routine for AVL trees.
  */
@@ -22,6 +22,10 @@
  *
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
+ *
+ * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
+ * Clara, CA 95054 USA or visit http://www.sun.com if you need
+ * additional information or have any questions.
  */
 
 #ifndef _kAVLDoWithAll_h_
