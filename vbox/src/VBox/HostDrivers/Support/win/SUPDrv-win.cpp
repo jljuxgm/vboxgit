@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 7287 2008-03-05 08:20:52Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 7461 2008-03-14 16:24:35Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Windows NT specific parts.
  */
@@ -568,7 +568,11 @@ static void VBoxDrvNtGipTerm(PSUPDRVDEVEXT pDevExt)
         RtlInitUnicodeString(&RoutineName, L"KeFlushQueuedDpcs");
         VOID (*pfnKeFlushQueuedDpcs)(VOID) = (VOID (*)(VOID))MmGetSystemRoutineAddress(&RoutineName);
         if (pfnKeFlushQueuedDpcs)
+        {
+            /* KeFlushQueuedDpcs must be run at IRQL PASSIVE_LEVEL */
+            AssertMsg(KeGetCurrentIrql() == PASSIVE_LEVEL, ("%d != %d (PASSIVE_LEVEL)\n", KeGetCurrentIrql(), PASSIVE_LEVEL));
             pfnKeFlushQueuedDpcs();
+        }
     }
 
     /*
