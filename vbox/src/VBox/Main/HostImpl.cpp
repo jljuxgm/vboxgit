@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 8547 2008-05-03 00:54:40Z vboxsync $ */
+/* $Id: HostImpl.cpp 8566 2008-05-05 12:04:23Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -3070,8 +3070,8 @@ int Host::networkInterfaceHelperServer (SVCHlpClient *aClient,
             break;
         }
         default:
-            AssertMsgFailedBreak ((
-                "Invalid message code %d (%08lX)\n", aMsgCode, aMsgCode),
+            AssertMsgFailedBreakStmt (
+                ("Invalid message code %d (%08lX)\n", aMsgCode, aMsgCode),
                 VERR_GENERAL_FAILURE);
     }
 
