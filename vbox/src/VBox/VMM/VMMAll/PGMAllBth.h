@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 7873 2008-04-10 15:46:31Z vboxsync $ */
+/* $Id: PGMAllBth.h 7874 2008-04-10 15:49:15Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2974,7 +2974,6 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVM pVM, uint64_t cr3, uint64_t cr4, RTGCUINTP
     || PGM_GST_TYPE == PGM_TYPE_PAE
 
     PPGM        pPGM = &pVM->pgm.s;
-    RTHCPHYS    HCPhysShw;              /* page address derived from the shadow page tables. */
     RTGCPHYS    GCPhysGst;              /* page address derived from the guest page tables. */
     RTHCPHYS    HCPhys;                 /* general usage. */
     int         rc;
@@ -2986,6 +2985,8 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVM pVM, uint64_t cr3, uint64_t cr4, RTGCUINTP
                     ("Invalid GCPhysCR3=%VGp cr3=%VGp\n", pPGM->GCPhysCR3, (RTGCPHYS)cr3),
                     false);
 # ifndef IN_RING0
+    RTHCPHYS    HCPhysShw;              /* page address derived from the shadow page tables. */
+
 #  if PGM_GST_TYPE == PGM_TYPE_32BIT
     rc = PGMShwGetPage(pVM, pPGM->pGuestPDGC, NULL, &HCPhysShw);
 #  else
