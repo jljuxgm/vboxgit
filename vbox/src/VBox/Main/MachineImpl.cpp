@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 8484 2008-04-30 00:12:33Z vboxsync $ */
+/* $Id: MachineImpl.cpp 8570 2008-05-05 12:36:54Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1654,6 +1654,10 @@ STDMETHODIMP Machine::AttachHardDisk (INPTR GUIDPARAM aId,
 
     if (id.isEmpty() || aBus == StorageBus_Null)
         return E_INVALIDARG;
+
+    /* The device property is not used for SATA yet. Thus it is always zero. */
+    if ((aBus == StorageBus_SATA) && (aDevice != 0))
+        AssertMsgFailed(("Invalid aDevice %d\n", aDevice));
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
