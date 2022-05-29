@@ -1,4 +1,4 @@
-/* $Id: RTMpGetCurFrequency-generic.cpp 10418 2008-07-09 13:45:07Z vboxsync $ */
+/* $Id: RTMpGetCurFrequency-generic.cpp 10425 2008-07-09 14:08:23Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetCurFrequency.
  */
@@ -28,17 +28,16 @@
  * additional information or have any questions.
  */
 
-
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/mp.h>
-#include <iprt/cpuset.h>
 
 
-RTDECL(RTCPUID) RTMpGetCurFrequency(void)
+RTDECL(uint32_t) RTMpGetCurFrequency(RTCPUID idCpu)
 {
-    /** @note this is a generic stub which returns "unknown". */
+    NOREF(idCpu);
+    /* this is a generic stub which returns "unknown". */
     return 0;
 }
 
