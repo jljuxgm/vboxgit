@@ -1,4 +1,4 @@
-/** $Id: DrvTAPOs2.cpp 11267 2008-08-08 16:15:43Z vboxsync $ */
+/** $Id: DrvTAPOs2.cpp 11448 2008-08-15 18:17:28Z vboxsync $ */
 /** @file
  * VBox network devices: OS/2 TAP network transport driver.
  */
@@ -237,7 +237,7 @@ static DECLCALLBACK(int) drvTAPOs2ReceiveThread(PPDMDRVINS pDrvIns, PPDMTHREAD p
         /*
          * Read a frame, this will block for a while if nothing to read.
          */
-        char    abBuf[4096];
+        char    abBuf[16384];
         ULONG   Parm[2] = { ~0UL, ~0UL };   /* mysterious output */
         ULONG   cbParm = sizeof(Parm);      /* this one is actually ignored... */
         ULONG   cbBuf = sizeof(abBuf);
@@ -252,7 +252,8 @@ static DECLCALLBACK(int) drvTAPOs2ReceiveThread(PPDMDRVINS pDrvIns, PPDMTHREAD p
             &&  !Parm[0]
             &&  cbRead > 0 /* cbRead */)
         {
-            AssertMsg(cbRead <= 1536, ("cbRead=%d\n", cbRead));
+            // The following assertion was commented out to support jumbo frames.
+            //AssertMsg(cbRead <= 1536, ("cbRead=%d\n", cbRead));
 
             /*
              * Wait for the device to have some room. A return code != VINF_SUCCESS
