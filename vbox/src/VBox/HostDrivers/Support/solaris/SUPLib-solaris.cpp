@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 10256 2008-07-04 20:28:51Z vboxsync $ */
 /** @file
  * Support Library - Solaris Specific Back-End.
  */
@@ -43,8 +43,8 @@
 #include <iprt/mem.h>
 #include <iprt/err.h>
 #include <iprt/string.h>
-#include "SUPLibInternal.h"
-#include "SUPDRVIOC.h"
+#include "../SUPLibInternal.h"
+#include "../SUPDrvIOC.h"
 
 #include <sys/fcntl.h>
 #include <sys/ioctl.h>

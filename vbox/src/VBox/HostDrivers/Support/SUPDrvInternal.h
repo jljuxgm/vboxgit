@@ -1,4 +1,4 @@
-/* $Revision: 10254 $ */
+/* $Revision: 10256 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -123,7 +123,7 @@
 #   error "unsupported OS."
 #endif
 
-#include "SUPDRVIOC.h"
+#include "SUPDrvIOC.h"
 
 
 

@@ -1,4 +1,4 @@
-/* $Id: SUPLib-os2.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: SUPLib-os2.cpp 10256 2008-07-04 20:28:51Z vboxsync $ */
 /** @file
  * SUPLib - Support Library, OS/2 backend.
  */
@@ -45,8 +45,8 @@
 #include <iprt/path.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
-#include "SUPLibInternal.h"
-#include "SUPDRVIOC.h"
+#include "../SUPLibInternal.h"
+#include "../SUPDrvIOC.h"
 
 #include <errno.h>
 #include <unistd.h>

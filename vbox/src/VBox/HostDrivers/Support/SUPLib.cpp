@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 8891 2008-05-16 12:43:44Z vboxsync $ */
+/* $Id: SUPLib.cpp 10256 2008-07-04 20:28:51Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -71,7 +71,7 @@
 #include <iprt/rand.h>
 
 #include "SUPLibInternal.h"
-#include "SUPDRVIOC.h"
+#include "SUPDrvIOC.h"
 
 
 

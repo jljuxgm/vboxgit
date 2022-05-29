@@ -1,4 +1,4 @@
-; $Id: SUPDrvA-os2.asm 1197 2007-03-04 20:58:39Z vboxsync $
+; $Id: SUPDrvA-os2.asm 10256 2008-07-04 20:28:51Z vboxsync $
 ;; @file
 ; VBoxDrv - OS/2 assembly file, the first file in the link.
 ;
@@ -162,7 +162,7 @@ segment DATA16
 %define DevHlp_SAVE_MESSAGE     03dh
 %define DevHlp_PhysToVirt       015h
 
-; Fast IOCtl category, also defined in SUPDRVIOC.h
+; Fast IOCtl category, also defined in SUPDrvIOC.h
 %define SUP_CTL_CATEGORY_FAST   0c1h
 
 
