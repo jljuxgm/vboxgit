@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8771 2008-05-12 02:06:12Z vboxsync $
+# $Id: Makefile.kmk 8772 2008-05-12 02:07:02Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -698,7 +698,7 @@ ifdef VBOX_WITH_USB
  Drivers_DEFS.win     += VUSB_HAVE_USBPROXY_DEVICE
  Drivers_SOURCES.win  += \
 	USB/USBProxyDevice.cpp \
-	USB/win/USBProxyDevice-win32.cpp
+	USB/win/USBProxyDevice-win.cpp
 
  Drivers_DEFS.solaris    += VUSB_HAVE_USBPROXY_DEVICE
  Drivers_SOURCES.solaris += \
