@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 6447 2008-01-22 15:32:45Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 6454 2008-01-22 16:46:25Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -50,10 +50,10 @@ VBGLR3DECL(int) VbglR3InterruptEventWaits(void)
 VBGLR3DECL(int) VbglR3WriteLog(const char *pch, size_t cb)
 {
     /*
-     * Solaris does not accept more than 255 bytes of data per ioctl request,
-     * so split large string into 128 byte chunks to prevent truncation.
+     * *BSD does not accept more than 4KB per ioctl request,
+     * so, split it up into 2KB chunks.
      */
-#define STEP 128 /** @todo increase to 512 when solaris ioctl code is fixed. (darwin limits us to 1024 IIRC) */
+#define STEP 2048
     int rc = VINF_SUCCESS;
     for (size_t off = 0; off < cb && RT_SUCCESS(rc); off += STEP)
     {
