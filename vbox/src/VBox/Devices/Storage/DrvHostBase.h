@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: DrvHostBase.h 6291 2008-01-09 10:57:05Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -96,16 +96,10 @@ typedef struct DRVHOSTBASE
     /** The shutdown indicator. */
     bool volatile           fShutdownPoller;
 
-    /** Whether or not enmTranslation is valid. */
-    bool                    fTranslationSet;
-    /** BIOS Geometry: Translation mode. */
-    PDMBIOSTRANSLATION      enmTranslation;
-    /** BIOS Geometry: Cylinders. */
-    uint32_t                cCylinders;
-    /** BIOS Geometry: Heads. */
-    uint32_t                cHeads;
-    /** BIOS Geometry: Sectors. */
-    uint32_t                cSectors;
+    /** BIOS PCHS geometry. */
+    PDMMEDIAGEOMETRY        PCHSGeometry;
+    /** BIOS LCHS geometry. */
+    PDMMEDIAGEOMETRY        LCHSGeometry;
 
     /** The number of errors that could go into the release log. (flood gate) */
     uint32_t                cLogRelErrors;

@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: Builtins.h 6291 2008-01-09 10:57:05Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -64,12 +64,10 @@ extern const PDMDRVREG g_DrvKeyboardQueue;
 extern const PDMDRVREG g_DrvBlock;
 extern const PDMDRVREG g_DrvVBoxHDD;
 extern const PDMDRVREG g_DrvVD;
-extern const PDMDRVREG g_DrvVmdkHDD;
 extern const PDMDRVREG g_DrvHostDVD;
 extern const PDMDRVREG g_DrvHostFloppy;
 extern const PDMDRVREG g_DrvMediaISO;
 extern const PDMDRVREG g_DrvRawImage;
-extern const PDMDRVREG g_DrvHostHDD;
 extern const PDMDRVREG g_DrvISCSI;
 extern const PDMDRVREG g_DrvISCSITransportTcp;
 extern const PDMDRVREG g_DrvHostInterface;
