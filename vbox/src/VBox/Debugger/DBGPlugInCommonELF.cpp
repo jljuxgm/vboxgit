@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELF.cpp 8820 2008-05-14 19:49:42Z vboxsync $ */
+/* $Id: DBGPlugInCommonELF.cpp 8928 2008-05-19 18:26:20Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Common code for dealing with ELF images.
  */
@@ -69,7 +69,7 @@ int DBGDiggerCommonParseElf32Mod(PVM pVM, const char *pszModName, const char *ps
     AssertPtrReturn(pszFilename, VERR_INVALID_POINTER);
     AssertReturn(!(fFlags & ~DBG_DIGGER_ELF_MASK), VERR_INVALID_PARAMETER);
     AssertReturn(fFlags & (DBG_DIGGER_ELF_FUNNY_SHDRS | DBG_DIGGER_ELF_ADJUST_SYM_VALUE)
-                 != DBG_DIGGER_ELF_FUNNY_SHDRS | DBG_DIGGER_ELF_ADJUST_SYM_VALUE, VERR_INVALID_PARAMETER);
+                 != (DBG_DIGGER_ELF_FUNNY_SHDRS | DBG_DIGGER_ELF_ADJUST_SYM_VALUE), VERR_INVALID_PARAMETER);
     AssertPtrReturn(paShdrs, VERR_INVALID_POINTER);
     AssertPtrReturn(paSyms, VERR_INVALID_POINTER);
     AssertPtrReturn(pbStrings, VERR_INVALID_POINTER);

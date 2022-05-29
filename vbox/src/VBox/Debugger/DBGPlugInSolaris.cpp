@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInSolaris.cpp 8844 2008-05-15 11:28:05Z vboxsync $ */
+/* $Id: DBGPlugInSolaris.cpp 8928 2008-05-19 18:26:20Z vboxsync $ */
 /** @file
  * DBGPlugInSolaris - Debugger and Guest OS Digger Plugin For Solaris.
  */
@@ -393,6 +393,7 @@ static DECLCALLBACK(void)  dbgDiggerSolarisTerm(PVM pVM, void *pvData)
 static DECLCALLBACK(int)  dbgDiggerSolarisRefresh(PVM pVM, void *pvData)
 {
     PDBGDIGGERSOLARIS pThis = (PDBGDIGGERSOLARIS)pvData;
+    NOREF(pThis);
     Assert(pThis->fValid);
 
     /*
