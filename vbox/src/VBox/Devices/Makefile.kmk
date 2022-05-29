@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10540 2008-07-11 17:58:44Z vboxsync $
+# $Id: Makefile.kmk 10663 2008-07-15 14:38:39Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -785,6 +785,17 @@ ifdef VBOX_WITH_TESTCASES
  tstIntNetR0_SOURCES     = \
 	Network/testcase/tstIntNetR0.cpp
 endif
+
+#
+# Internal Networking - Ring-3 Testcase for the Ring-0 code (a bit hackish).
+#
+ifdef VBOX_WITH_TESTCASES
+ PROGRAMS += tstIntNet-1
+ tstIntNet-1_TEMPLATE    = VBOXR3TSTEXE
+ tstIntNet-1_SOURCES     = \
+	Network/testcase/tstIntNet-1.cpp
+endif
+
 
 #
 # EEPROM device unit test requires cppunit

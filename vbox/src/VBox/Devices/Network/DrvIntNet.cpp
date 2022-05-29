@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 10451 2008-07-09 21:57:49Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 10663 2008-07-15 14:38:39Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -703,6 +703,7 @@ static DECLCALLBACK(int) drvIntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHa
     memset(&OpenReq, 0, sizeof(OpenReq));
     OpenReq.Hdr.cbReq = sizeof(OpenReq);
     OpenReq.Hdr.u32Magic = SUPVMMR0REQHDR_MAGIC;
+    OpenReq.pSession = NULL;
 
     /** @cfgm{Network, string}
      * The name of the internal network to connect to.

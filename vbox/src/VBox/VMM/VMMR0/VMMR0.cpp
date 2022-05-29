@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 10450 2008-07-09 21:55:45Z vboxsync $ */
+/* $Id: VMMR0.cpp 10663 2008-07-15 14:38:39Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -855,11 +855,14 @@ static int vmmR0EntryExWorker(PVM pVM, VMMR0OPERATION enmOperation, PSUPVMMR0REQ
          * Requests to the internal networking service.
          */
         case VMMR0_DO_INTNET_OPEN:
-            if (!pVM || u64Arg)
+        {
+            PINTNETOPENREQ pReq = (PINTNETOPENREQ)pReqHdr;
+            if (u64Arg || !pReq || (pVM ? pReq->pSession != NULL : !pReq->pSession))
                 return VERR_INVALID_PARAMETER;
             if (!g_pIntNet)
                 return VERR_NOT_SUPPORTED;
-            return INTNETR0OpenReq(g_pIntNet, pVM->pSession, (PINTNETOPENREQ)pReqHdr);
+            return INTNETR0OpenReq(g_pIntNet, pVM ? pVM->pSession : pReq->pSession, pReq);
+        }
 
         case VMMR0_DO_INTNET_IF_CLOSE:
             if (!pVM || u64Arg)
