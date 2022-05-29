@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 8815 2008-05-14 14:47:55Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 8839 2008-05-15 10:05:49Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1652,8 +1652,8 @@ static int svmInterpretInvlPg(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame
         SVMInvlpgA(addr, uASID);
         return VINF_SUCCESS;
     }
-    /** @todo r=bird: we shouldn't ignore returns codes like this... I'm 99% sure the error is fatal. */
-    return VERR_EM_INTERPRETER;
+    AssertRC(rc);
+    return rc;
 }
 
 /**

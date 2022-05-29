@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 8155 2008-04-18 15:16:47Z vboxsync $
+; $Id: HWACCMR0A.asm 8839 2008-05-15 10:05:49Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -707,6 +707,7 @@ BEGINPROC SVMVMRun
 %endif
     push    xBP
     mov     xBP, xSP
+    pushf
 
     ;/* Manual save and restore:
     ; * - General purpose registers except RIP, RSP, RAX
@@ -782,6 +783,7 @@ BEGINPROC SVMVMRun
 
     mov     eax, VINF_SUCCESS
 
+    popf
     pop     xBP
 %ifdef RT_ARCH_AMD64
     add     xSP, 4*xS
