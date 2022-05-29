@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9309 2008-06-02 15:11:59Z vboxsync $
+# $Id: Makefile.kmk 9314 2008-06-02 15:36:06Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1100,7 +1100,7 @@ RuntimeR0Drv_SOURCES.solaris = \
 	generic/RTAssertDoBreakpoint-generic.cpp \
 	generic/RTTimerCreate-generic.cpp \
 	r0drv/memobj-r0drv.cpp \
-	r0drv/mpnotification-r0drv.cpp \
+	r0drv/mpnotification-r0drv.c \
 	r0drv/solaris/mpnotification-r0drv-solaris.cpp
 
 ifdef VBOX_WITH_SOLARIS_VBI
