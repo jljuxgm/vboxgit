@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 6820 2008-02-05 21:54:28Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 6829 2008-02-06 14:06:30Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -419,7 +419,8 @@ int main()
     GEN_CHECK_OFF(PGM, pfnGCBthPrefetchPage);
     GEN_CHECK_OFF(PGM, pfnGCBthVerifyAccessSyncPage);
     GEN_CHECK_OFF(PGM, pfnGCBthAssertCR3);
-    GEN_CHECK_OFF(PGM, pRamRangesHC);
+    GEN_CHECK_OFF(PGM, pRamRangesR3);
+    GEN_CHECK_OFF(PGM, pRamRangesR0);
     GEN_CHECK_OFF(PGM, pRamRangesGC);
     GEN_CHECK_OFF(PGM, cbRamSize);
     GEN_CHECK_OFF(PGM, pTreesHC);
@@ -530,7 +531,8 @@ int main()
     GEN_CHECK_SIZE(PGMPAGE);
     GEN_CHECK_OFF(PGMPAGE, HCPhys);
     GEN_CHECK_SIZE(PGMRAMRANGE);
-    GEN_CHECK_OFF(PGMRAMRANGE, pNextHC);
+    GEN_CHECK_OFF(PGMRAMRANGE, pNextR3);
+    GEN_CHECK_OFF(PGMRAMRANGE, pNextR0);
     GEN_CHECK_OFF(PGMRAMRANGE, pNextGC);
     GEN_CHECK_OFF(PGMRAMRANGE, GCPhys);
     GEN_CHECK_OFF(PGMRAMRANGE, GCPhysLast);

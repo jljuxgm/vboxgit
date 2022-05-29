@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: PGMAll.cpp 6829 2008-02-06 14:06:30Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1570,7 +1570,7 @@ PGMDECL(unsigned) PGMAssertHandlerAndFlagsInSync(PVM pVM)
     /*
      * Check the RAM flags against the handlers.
      */
-    for (PPGMRAMRANGE pRam = CTXSUFF(pPGM->pRamRanges); pRam; pRam = CTXSUFF(pRam->pNext))
+    for (PPGMRAMRANGE pRam = CTXALLSUFF(pPGM->pRamRanges); pRam; pRam = CTXALLSUFF(pRam->pNext))
     {
         const unsigned cPages = pRam->cb >> PAGE_SHIFT;
         for (unsigned iPage = 0; iPage < cPages; iPage++)
