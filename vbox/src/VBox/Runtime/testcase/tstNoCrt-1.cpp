@@ -1,4 +1,4 @@
-/* $Id: tstNoCrt-1.cpp 7214 2008-02-29 01:45:37Z vboxsync $ */
+/* $Id: tstNoCrt-1.cpp 7215 2008-02-29 01:49:05Z vboxsync $ */
 /** @file
  * innotek Portable Runtime Testcase - Testcase for the No-CRT assembly bits.
  */
@@ -108,6 +108,9 @@ static void TstBufCheck(PTSTBUF pBuf, const char *pszDesc)
 #if 0 /* enable this to test the testcase. */
 # undef RT_NOCRT
 # define RT_NOCRT(a) a
+# ifdef _MSC_VER
+#  define mempcpy nocrt_mempcpy
+# endif 
 #endif
 
 int main()
