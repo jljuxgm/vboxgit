@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9670 2008-06-13 06:38:09Z vboxsync $
+# $Id: Makefile.kmk 9723 2008-06-16 13:25:03Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -585,6 +585,7 @@ RuntimeGuestR3Mini_SOURCES = \
 	common/string/strformattype.cpp \
 	common/string/string.cpp \
 	common/string/strprintf.cpp \
+	common/string/strtonum.cpp \
 	common/string/unidata.cpp \
 	common/string/utf-8.cpp \
 	common/string/utf-16.cpp \
