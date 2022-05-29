@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 10715 2008-07-16 22:38:23Z vboxsync $ */
+/* $Id: HardDiskImpl.h 11435 2008-08-14 18:23:31Z vboxsync $ */
 
 /** @file
  *
@@ -538,6 +538,8 @@ private:
 
     PVBOXHDD mContainer;
 
+    PVDINTERFACE     mVDInterfaces;
+
     VDINTERFACE      mInterfaceError;
     VDINTERFACEERROR mInterfaceErrorCallbacks;
 
@@ -652,6 +654,8 @@ private:
     Bstr mFormat;
 
     PVBOXHDD mContainer;
+
+    PVDINTERFACE     mVDInterfaces;
 
     VDINTERFACE      mInterfaceError;
     VDINTERFACEERROR mInterfaceErrorCallbacks;
@@ -768,6 +772,8 @@ private:
     Bstr mFilePathFull;
 
     PVBOXHDD mContainer;
+
+    PVDINTERFACE     mVDInterfaces;
 
     VDINTERFACE      mInterfaceError;
     VDINTERFACEERROR mInterfaceErrorCallbacks;
