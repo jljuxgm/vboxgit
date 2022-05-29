@@ -1,4 +1,4 @@
-/* $Id: fs.cpp 9785 2008-06-18 10:48:49Z vboxsync $ */
+/* $Id: fs.cpp 9786 2008-06-18 11:14:50Z vboxsync $ */
 /** @file
  * IPRT - File System.
  */
@@ -122,10 +122,14 @@ RTFMODE rtFsModeFromUnix(RTFMODE fMode, const char *pszName, unsigned cbName)
 
 
 /**
- * Converts dos-style attributes to Unix attributes.
+ * Normalizes the give mode mask.
+ *
+ * It will create the missing unix or dos mask from the other (one
+ * of them is required by all APIs), and guess the file type if that's
+ * missing.
  *
  * @returns Normalized file mode.
- * @param   fMode       The mode mask containing dos-style attibutes only.
+ * @param   fMode       The mode mask that may contain a partial/incomplete mask.
  * @param   pszName     The filename which this applies to (exe check).
  * @param   cbName      The length of that filename. (optional, set 0)
  */
