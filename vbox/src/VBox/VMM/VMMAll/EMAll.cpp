@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 9713 2008-06-16 11:53:37Z vboxsync $ */
+/* $Id: EMAll.cpp 9720 2008-06-16 13:12:04Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2143,7 +2143,8 @@ EMDECL(int) EMInterpretRdmsr(PVM pVM, PCPUMCTXCORE pRegFrame)
     CPUMCTX *pCtx;
     int      rc;
 
-    /* Note: works the same in 32 and 64 bits modes. */
+    /** @todo According to the Intel manuals, there's a REX version of RDMSR that is slightly different.
+     *  That version clears the high dwords of both RDX & RAX */
     rc = CPUMQueryGuestCtxPtr(pVM, &pCtx);
     AssertRC(rc);
 
@@ -2227,6 +2228,7 @@ EMDECL(int) EMInterpretRdmsr(PVM pVM, PCPUMCTXCORE pRegFrame)
  */
 static int emInterpretRdmsr(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, uint32_t *pcbSize)
 {
+    Assert(!(pCpu->prefix & PREFIX_REX));
     return EMInterpretRdmsr(pVM, pRegFrame);
 }
 
