@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7048 2008-02-20 16:02:21Z vboxsync $
+# $Id: Makefile.kmk 7083 2008-02-21 19:12:48Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -29,7 +29,7 @@ VBoxClient_DEFS.linux += _GNU_SOURCE
 VBoxClient_SOURCES = \
 	main.cpp
 VBoxClient_SOURCES += \
-	clipboard-new.cpp
+	clipboard.cpp
 VBoxClient_LIBPATH = \
 	$(VBOX_LIBPATH32_X11)
 VBoxClient_LIBS = \
