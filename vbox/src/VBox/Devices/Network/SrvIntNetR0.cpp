@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 10550 2008-07-11 19:43:19Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 10551 2008-07-11 20:04:54Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -120,6 +120,7 @@ typedef INTNETNETWORK *PINTNETNETWORK;
 
 /**
  * Handle table entry.
+ * @todo move to IPRT.
  */
 typedef union INTNETHTE
 {
@@ -128,11 +129,13 @@ typedef union INTNETHTE
     /** Index to the next free entry. */
     uintptr_t               iNext;
 } INTNETHTE;
+/** Pointer to a handle table entry. */
 typedef INTNETHTE *PINTNETHTE;
 
 
 /**
  * Handle table.
+ * @todo move to IPRT (RTHandleTableCreate/Destroy/Add/Delete/Lookup).
  */
 typedef struct INTNETHT
 {
@@ -147,6 +150,7 @@ typedef struct INTNETHT
      * UINT32_MAX means empty list. */
     uint32_t volatile       iTail;
 } INTNETHT;
+/** Pointer to a handle table. */
 typedef INTNETHT *PINTNETHT;
 
 
