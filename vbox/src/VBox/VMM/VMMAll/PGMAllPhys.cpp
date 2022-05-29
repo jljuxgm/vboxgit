@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 9649 2008-06-12 09:48:30Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 9713 2008-06-16 11:53:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -97,7 +97,7 @@ PGMDECL(int) pgmPhysRomWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE p
                     /** @todo Find other instructions we can safely skip, possibly
                      * adding this kind of detection to DIS or EM. */
                     case OP_MOV:
-                        pRegFrame->eip += cbOp;
+                        pRegFrame->rip += cbOp;
                         STAM_COUNTER_INC(&pVM->pgm.s.StatGCGuestROMWriteHandled);
                         return VINF_SUCCESS;
                 }
