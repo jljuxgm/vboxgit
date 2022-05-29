@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 8797 2008-05-13 23:16:03Z vboxsync $ */
+/* $Id: DBGFInternal.h 8799 2008-05-14 01:47:53Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -275,6 +275,7 @@ typedef struct DBGF
     PDBGFOS                 pCurOS;
     /** The head of the Guest OS digger instances. */
     PDBGFOS                 pOSHead;
+    uint64_t u64Padding; /**< Size alignment padding. */
 } DBGF;
 /** Pointer to DBGF Data. */
 typedef DBGF *PDBGF;
