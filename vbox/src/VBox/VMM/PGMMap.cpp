@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 6915 2008-02-11 23:35:37Z vboxsync $ */
+/* $Id: PGMMap.cpp 6916 2008-02-12 09:21:30Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -281,7 +281,7 @@ PGMR3DECL(int) PGMR3MappingsSize(PVM pVM, uint32_t *pcb)
         cb += pCur->cb;
 
     *pcb = cb;
-    AssertReturn(*pcb != cb, VERR_NUMBER_TOO_BIG);
+    AssertReturn(*pcb == cb, VERR_NUMBER_TOO_BIG);
     Log(("PGMR3MappingsSize: return %d (%#x) bytes\n", cb, cb));
     return VINF_SUCCESS;
 }
