@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 11473 2008-08-19 07:31:58Z vboxsync $ */
+/* $Id: VM.cpp 11740 2008-08-28 07:52:26Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -278,6 +278,7 @@ VMR3DECL(int)   VMR3Create(PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCON
 #endif
                     break;
                 case VERR_VM_DRIVER_NOT_INSTALLED:
+                case VERR_INVALID_HANDLE:
 #ifdef RT_OS_LINUX
                     pszError = N_("VirtualBox kernel driver not installed. The vboxdrv kernel module "
                                   "was either not loaded or /dev/vboxdrv was not created for some "
