@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 7282 2008-03-04 16:59:05Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 7412 2008-03-10 15:14:36Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -19,12 +19,13 @@
 
 #include "VBoxUtils.h"
 #include "VBoxFrameBuffer.h"
-#include <qimage.h>
-#include <qpixmap.h>
 
 #include <iprt/assert.h>
 #include <iprt/mem.h>
 
+/* Qt includes */
+#include <QImage>
+#include <QPixmap>
 
 /**
  * Callback for deleting the QImage object when CGImageCreate is done
