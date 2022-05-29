@@ -1,4 +1,4 @@
-/* $Id: TRPMGC.cpp 9223 2008-05-29 13:47:32Z vboxsync $ */
+/* $Id: TRPMGC.cpp 9282 2008-06-02 08:36:10Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -114,7 +114,7 @@ TRPMGCDECL(int) trpmgcGuestIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCT
     uint32_t    iGate       = ((RTGCUINTPTR)pvFault - (RTGCUINTPTR)GCPtrIDT)/sizeof(VBOXIDTE);
 
     AssertMsg(offRange < (uint32_t)cbIDT+1, ("pvFault=%VGv GCPtrIDT=%VGv-%VGv pvRange=%VGv\n", pvFault, GCPtrIDT, GCPtrIDTEnd, pvRange));
-    Assert((RTGCPTR)pvRange == GCPtrIDT);
+    Assert((RTGCPTR)(RTRCUINTPTR)pvRange == GCPtrIDT);
 
 #if 0
     /** @note this causes problems in Windows XP as instructions following the update can be dangerous (str eax has been seen) */

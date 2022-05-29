@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 9064 2008-05-23 09:20:55Z vboxsync $ */
+/* $Id: PGMAll.cpp 9282 2008-06-02 08:36:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -298,7 +298,7 @@ typedef struct PGMHVUSTATE
  */
 PGMDECL(int)     PGMTrap0eHandler(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault)
 {
-    LogFlow(("PGMTrap0eHandler: uErr=%#x pvFault=%VGv eip=%VGv\n", uErr, pvFault, pRegFrame->eip));
+    LogFlow(("PGMTrap0eHandler: uErr=%#x pvFault=%VGv eip=%VGv\n", (uint32_t)uErr, pvFault, pRegFrame->eip));
     STAM_PROFILE_START(&pVM->pgm.s.StatGCTrap0e, a);
     STAM_STATS({ pVM->pgm.s.CTXSUFF(pStatTrap0eAttribution) = NULL; } );
 

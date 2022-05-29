@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 9231 2008-05-29 15:31:26Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 9282 2008-06-02 08:36:10Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -466,9 +466,10 @@ DECLASM(int) TRPMGCTrap0bHandler(PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
      * XXX note: this code may cause \#PF (trap e) or \#GP (trap d) while
      * accessing user code. need to handle it somehow in future!
      */
-    uint8_t *pu8Code;
-    if (SELMValidateAndConvertCSAddr(pVM, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid, (RTGCPTR)pRegFrame->eip, (PRTGCPTR)&pu8Code) == VINF_SUCCESS)
+    RTGCPTR GCPtr;
+    if (SELMValidateAndConvertCSAddr(pVM, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid, (RTGCPTR)pRegFrame->eip, &GCPtr) == VINF_SUCCESS)
     {
+        uint8_t *pu8Code = (uint8_t *)GCPtr;
         /*
          * First skip possible instruction prefixes, such as:
          *      OS, AS
