@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 5999 2007-12-07 15:05:06Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 7644 2008-03-31 11:01:34Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1014,6 +1014,30 @@ CPUMDECL(void) CPUMSetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
                 &&  pVM->cpum.s.aGuestCpuIdExt[1].edx)
                 pVM->cpum.s.aGuestCpuIdExt[1].edx |= X86_CPUID_AMD_FEATURE_EDX_SEP;
             Log(("CPUMSetGuestCpuIdFeature: Enabled sysenter/exit\n"));
+            break;
+        }
+
+        /*
+         * Set the PAE bit in both feature masks.
+         * Assumes the caller knows what it's doing! (host must support these)
+         */
+        case CPUMCPUIDFEATURE_PAE:
+        {
+            uint32_t ulEdx, ulDummy;
+
+            ASMCpuId(1, &ulDummy, &ulDummy, &ulDummy, &ulEdx);
+            if (!(ulEdx & X86_CPUID_FEATURE_EDX_PAE))
+            {
+                AssertMsgFailed(("ERROR: Can't turn on PAE when the host doesn't support it!!\n"));
+                return;
+            }
+
+            if (pVM->cpum.s.aGuestCpuIdStd[0].eax >= 1)
+                pVM->cpum.s.aGuestCpuIdStd[1].edx |= X86_CPUID_FEATURE_EDX_PAE;
+            if (    pVM->cpum.s.aGuestCpuIdExt[0].eax >= 0x80000001
+                &&  pVM->cpum.s.aGuestCpuIdExt[1].edx)
+                pVM->cpum.s.aGuestCpuIdExt[1].edx |= X86_CPUID_AMD_FEATURE_EDX_PAE;
+            Log(("CPUMSetGuestCpuIdFeature: Enabled PAE\n"));
             break;
         }
 
