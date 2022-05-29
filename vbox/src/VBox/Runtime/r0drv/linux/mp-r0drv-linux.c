@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-linux.c 7337 2008-03-06 17:27:51Z vboxsync $ */
+/* $Id: mp-r0drv-linux.c 7347 2008-03-07 10:36:40Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Multiprocessor, Ring-0 Driver, Linux.
  */
@@ -122,7 +122,7 @@ RTDECL(RTCPUID) RTMpGetCount(void)
 # else
     RTCPUSET Set;
     RTMpGetSet(&Set);
-    return RTCpuSetCount(pSet);
+    return RTCpuSetCount(&Set);
 # endif
 #else
     return 1;
@@ -158,7 +158,7 @@ RTDECL(RTCPUID) RTMpGetOnlineCount(void)
 # else
     RTCPUSET Set;
     RTMpGetOnlineSet(&Set);
-    return RTCpuSetCount(pSet);
+    return RTCpuSetCount(&Set);
 # endif
 #else
     return 1;
