@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10942 2008-07-29 17:13:05Z vboxsync $
+# $Id: Makefile.kmk 11086 2008-08-04 08:19:50Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -111,6 +111,7 @@ tstCollector_SOURCES  = \
 	tstCollector.cpp \
 	../Performance.cpp
 tstCollector_INCS     = ../include
+tstCollector_LDFLAGS.solaris += -lkstat
 tstCollector_LDFLAGS.win += wbemuuid.lib
 
 
