@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 10272 2008-07-05 13:13:50Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 11493 2008-08-19 15:59:34Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -887,7 +887,7 @@ DISDECL(size_t) DISFormatYasmEx(PCDISCPUSTATE pCpu, char *pszBuf, size_t cchBuf,
                             if (fPrefix)
                                 PUT_SZ("near ");
                             offDisplacement = (int32_t)pParam->parval;
-                            Assert(pParam->flags & USE_IMMEDIATE32_REL);
+                            Assert(pParam->flags & (USE_IMMEDIATE32_REL|USE_IMMEDIATE64_REL));
                             Assert(*pszFmt == 'v'); pszFmt++;
 
                             if (fFlags & DIS_FMT_FLAGS_RELATIVE_BRANCH)
