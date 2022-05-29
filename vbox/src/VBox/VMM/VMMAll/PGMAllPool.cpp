@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 10320 2008-07-07 13:27:57Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 10321 2008-07-07 13:38:02Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1889,6 +1889,7 @@ int pgmPoolSyncCR3(PVM pVM)
         pgmPoolClearAll(pVM);
 # else
         LogFlow(("SyncCR3: PGM_SYNC_CLEAR_PGM_POOL is set -> VINF_PGM_SYNC_CR3\n"));
+        VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3); /** @todo no need to do global sync, right? */
         return VINF_PGM_SYNC_CR3;
 # endif
     }

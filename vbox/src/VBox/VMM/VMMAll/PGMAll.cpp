@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 10299 2008-07-07 09:09:06Z vboxsync $ */
+/* $Id: PGMAll.cpp 10321 2008-07-07 13:38:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -753,7 +753,10 @@ PGMDECL(int) PGMShwSyncPAEPDPtr(PVM pVM, RTGCUINTPTR GCPtr, PX86PDPE pGstPdpe, P
         /* Create a reference back to the PDPT by using the index in its shadow page. */
         rc = pgmPoolAlloc(pVM, pPdptGst->u & X86_PDPE_PG_MASK, PGMPOOLKIND_PAE_PD_FOR_PAE_PD, PGMPOOL_IDX_PDPT, iPdPt, &pShwPage);
         if (rc == VERR_PGM_POOL_FLUSHED)
-            return VINF_PGM_SYNC_CR3;
+        {
+            Assert(pVM->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL);
+            pgmPoolSyncCR3(pVM);
+        }
 
         AssertRCReturn(rc, rc);
     }
@@ -846,8 +849,10 @@ PGMDECL(int) PGMShwSyncLongModePDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PX86PML4E pGs
             rc = pgmPoolAlloc(pVM, GCPtr + RT_BIT_64(63) /* hack: make the address unique */, PGMPOOLKIND_64BIT_PDPT_FOR_PHYS, PGMPOOL_IDX_NESTED_ROOT, iPml4e, &pShwPage);
 
         if (rc == VERR_PGM_POOL_FLUSHED)
-            return VINF_PGM_SYNC_CR3;
-
+        {
+            Assert(pVM->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL);
+            pgmPoolSyncCR3(pVM);
+        }
         AssertRCReturn(rc, rc);
     }
     else
@@ -884,8 +889,10 @@ PGMDECL(int) PGMShwSyncLongModePDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PX86PML4E pGs
             rc = pgmPoolAlloc(pVM, GCPtr + RT_BIT_64(62) /* hack: make the address unique */, PGMPOOLKIND_64BIT_PD_FOR_PHYS, pShwPage->idx, iPdPt, &pShwPage);
 
         if (rc == VERR_PGM_POOL_FLUSHED)
-            return VINF_PGM_SYNC_CR3;
-
+        {
+            Assert(pVM->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL);
+            pgmPoolSyncCR3(pVM);
+        }
         AssertRCReturn(rc, rc);
     }
     else
