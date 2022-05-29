@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7142 2008-02-26 05:05:58Z vboxsync $
+# $Id: Makefile.kmk 7228 2008-03-03 06:15:15Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -48,6 +48,11 @@ ifdef VBOX_WITH_WIN32_ADDITIONS
 endif
 ifdef VBOX_WITH_LINUX_ADDITIONS
  VBOX_WITH_ADDITIONS_ISO.linux.x86 = 1
+endif
+ifdef VBOX_WITH_ADDITIONS
+ ifeq ($(BUILD_TARGET),solaris)
+  VBOX_WITH_ADDITIONS_ISO.solaris.x86 = 1
+ endif
 endif
 
 # Include sub-makefiles.
@@ -153,6 +158,21 @@ endif
 
 
 #
+# The x86 Solaris .iso file spec.
+#
+ifdef VBOX_WITH_ADDITIONS_ISO.solaris.x86
+ ifdef VBOX_ONLY_ADDITIONS
+  VBOX_PATH_ADDITIONS.solaris.x86 = $(PATH_OUT_BASE)/solaris.x86/$(BUILD_TYPE)/bin/additions
+ else
+  # 32-bit only hack
+  VBOX_PATH_ADDITIONS.solaris.x86 = $(VBOX_PATH_ADDITIONS)
+ endif
+ GUESTADDITIONS_FILESPEC.solaris.x86 = \
+ 	VBoxSolarisAdditions=$(VBOX_PATH_ADDITIONS.solaris.x86)/VBoxSolarisAdditions
+endif
+
+
+#
 # Build the Guest Additions ISO image.
 #
 ifndef VBOX_WITHOUT_ADDITIONS_ISO
@@ -172,6 +192,7 @@ $(VBOX_PATH_ADDITIONS)/VBoxGuestAdditions.iso: \
 		-volid "VBOXADDITIONS_$(VBOX_VERSION_STRING)_$(VBOX_SVN_REV)" -l -graft-points -o $@ \
 		$(GUESTADDITIONS_FILESPEC.win.x86) \
 		$(GUESTADDITIONS_FILESPEC.linux.x86) \
+		$(GUESTADDITIONS_FILESPEC.solaris.x86) \
 		$(GUESTADDITIONS_FILESPEC.os2.x86)
 endif
 
