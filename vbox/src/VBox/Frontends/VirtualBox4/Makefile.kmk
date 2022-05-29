@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9973 2008-06-26 17:11:38Z vboxsync $
+# $Id: Makefile.kmk 9976 2008-06-26 19:09:14Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -117,7 +117,7 @@ else
  else ifdef VBOX_WITH_QT4_SUN
   # Qt4 compiled by Sun with altered library names
   VBOX_LIBS_QT4      = $(patsubst %, VBox%, $(VBOX_MODULE_QT4))
-  VBOX_QT4_RUNTIME   = $(patsubst %, $(VBOX_PATH_QT4_LIB)/libVBox%.so, $(VBOX_MODULE_QT4))
+  VBOX_QT4_RUNTIME   = $(patsubst %, $(VBOX_PATH_QT4_LIB)/libVBox%.so.4, $(VBOX_MODULE_QT4))
  else
   VBOX_LIBS_QT4      = $(VBOX_MODULE_QT4)
   VBOX_QT4_RUNTIME   =
