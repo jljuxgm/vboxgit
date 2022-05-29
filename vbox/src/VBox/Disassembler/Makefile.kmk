@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8930 2008-05-19 19:22:46Z vboxsync $
+# $Id: Makefile.kmk 8933 2008-05-19 19:37:00Z vboxsync $
 ## @file
 # Makefile for the VBox Disassembler.
 #
@@ -65,6 +65,7 @@ tstDisasmCore_LIBS      = \
 
 tstDisasm-2_TEMPLATE    = VBOXR3TSTEXE
 tstDisasm-2_SOURCES     = testcase/tstDisasm-2.cpp
+tstDisasm-2_DEFS        = IN_DIS_R3
 tstDisasm-2_LIBS        = \
 	$(PATH_LIB)/DisasmR3$(VBOX_SUFF_LIB) \
 	$(LIB_RUNTIME)
