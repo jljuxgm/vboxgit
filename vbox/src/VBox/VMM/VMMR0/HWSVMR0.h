@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 8878 2008-05-16 10:59:52Z vboxsync $ */
+/* $Id: HWSVMR0.h 9008 2008-05-21 10:17:41Z vboxsync $ */
 /** @file
  * HWACCM AMD-V - Internal header file.
  */
@@ -125,23 +125,6 @@ HWACCMR0DECL(int) SVMR0RunGuestCode(PVM pVM, CPUMCTX *pCtx, PHWACCM_CPUINFO pCpu
  * @param   pCtx        Guest context
  */
 HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx);
-
-/**
- * Invalidates a guest page
- *
- * @returns VBox status code.
- * @param   pVM         The VM to operate on.
- * @param   GCVirt      Page to invalidate
- */
-HWACCMR0DECL(int) SVMR0InvalidatePage(PVM pVM, RTGCPTR GCVirt);
-
-/**
- * Flushes the guest TLB
- *
- * @returns VBox status code.
- * @param   pVM         The VM to operate on.
- */
-HWACCMR0DECL(int) SVMR0FlushTLB(PVM pVM);
 
 
 /* Convert hidden selector attribute word between VMX and SVM formats. */

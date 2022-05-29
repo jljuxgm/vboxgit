@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 8965 2008-05-20 15:41:55Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9008 2008-05-21 10:17:41Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -265,7 +265,7 @@ HWACCMR0DECL(int) SVMR0SetupVM(PVM pVM)
     if (!pVM->hwaccm.s.svm.fNestedPaging)
         pVMCB->ctrl.u16InterceptWrCRx = RT_BIT(0) | RT_BIT(3) | RT_BIT(4) | RT_BIT(8);
     else
-        pVMCB->ctrl.u16InterceptWrCRx = RT_BIT(0) | RT_BIT(4) | RT_BIT(8);
+        pVMCB->ctrl.u16InterceptWrCRx = RT_BIT(0) | RT_BIT(8);
 
     /* Intercept all DRx reads and writes. */
     pVMCB->ctrl.u16InterceptRdDRx = RT_BIT(0) | RT_BIT(1) | RT_BIT(2) | RT_BIT(3) | RT_BIT(4) | RT_BIT(5) | RT_BIT(6) | RT_BIT(7);
@@ -1413,6 +1413,7 @@ ResumeExecution:
             pVM->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_GUEST_CR3;
             break;
         case 4:
+            Assert(!pVM->hwaccm.s.svm.fNestedPaging);
             pVM->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_GUEST_CR4;
             break;
         default:
@@ -1876,16 +1877,3 @@ HWACCMR0DECL(int) SVMR0InvalidatePage(PVM pVM, RTGCPTR GCVirt)
     return VINF_SUCCESS;
 }
 
-/**
- * Flushes the guest TLB
- *
- * @returns VBox status code.
- * @param   pVM         The VM to operate on.
- */
-HWACCMR0DECL(int) SVMR0FlushTLB(PVM pVM)
-{
-    Log2(("SVMR0FlushTLB\n"));
-    pVM->hwaccm.s.svm.fForceTLBFlush = true;
-    STAM_COUNTER_INC(&pVM->hwaccm.s.StatFlushTLBManual);
-    return VINF_SUCCESS;
-}

@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 9001 2008-05-21 09:14:26Z vboxsync $ */
+/* $Id: PGMR0.cpp 9008 2008-05-21 10:17:41Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -81,7 +81,7 @@ PGMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PGMMODE enmShwPagingMode,
     STAM_STATS({ pVM->pgm.s.CTXSUFF(pStatTrap0eAttribution) = NULL; } );
 
     /* AMD uses the host's paging mode; Intel's version is on the todo list */
-    Assert(enmShwPagingMode == PGMMODE_32_BIT || enmShwPagingMode == PGMMODE_PAE); // || enmShwPagingMode == PGMMODE_AMD64);
+    Assert(enmShwPagingMode == PGMMODE_32_BIT || enmShwPagingMode == PGMMODE_PAE || enmShwPagingMode == PGMMODE_AMD64);
 
 #ifdef VBOX_WITH_STATISTICS
     /*

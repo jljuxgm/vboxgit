@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 8879 2008-05-16 11:13:00Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 9008 2008-05-21 10:17:41Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -811,35 +811,6 @@ HWACCMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM)
         Assert(pVM->hwaccm.s.svm.fSupported);
         return SVMR0RunGuestCode(pVM, pCtx, &HWACCMR0Globals.aCpuInfo[idCpu]);
     }
-}
-
-/**
- * Invalidates a guest page
- *
- * @returns VBox status code.
- * @param   pVM         The VM to operate on.
- * @param   GCVirt      Page to invalidate
- */
-HWACCMR0DECL(int) HWACCMR0InvalidatePage(PVM pVM, RTGCPTR GCVirt)
-{
-    if (pVM->hwaccm.s.svm.fSupported)
-        return SVMR0InvalidatePage(pVM, GCVirt);
-
-    return VINF_SUCCESS;
-}
-
-/**
- * Flushes the guest TLB
- *
- * @returns VBox status code.
- * @param   pVM         The VM to operate on.
- */
-HWACCMR0DECL(int) HWACCMR0FlushTLB(PVM pVM)
-{
-    if (pVM->hwaccm.s.svm.fSupported)
-        return SVMR0FlushTLB(pVM);
-
-    return VINF_SUCCESS;
 }
 
 
