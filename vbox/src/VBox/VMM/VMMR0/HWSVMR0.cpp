@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9064 2008-05-23 09:20:55Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9073 2008-05-23 12:06:57Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1293,7 +1293,7 @@ ResumeExecution:
 
         Assert(pVM->hwaccm.s.fNestedPaging);
 
-        Log2(("Page fault at %VGp cr2=%VGv error code %x\n", pCtx->eip, uFaultAddress, errCode));
+        Log(("Nested page fault at %VGv cr2=%VGp error code %x\n", pCtx->eip, uFaultAddress, errCode));
         /* Exit qualification contains the linear address of the page fault. */
         TRPMAssertTrap(pVM, X86_XCPT_PF, TRPM_TRAP);
         TRPMSetErrorCode(pVM, errCode);
