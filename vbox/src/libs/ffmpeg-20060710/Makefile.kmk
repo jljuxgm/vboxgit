@@ -1,13 +1,14 @@
-# $Id: Makefile.kmk 5776 2007-11-16 16:35:53Z vboxsync $
+# $Id: Makefile.kmk 5999 2007-12-07 15:05:06Z vboxsync $
 ## @file
 # Makefile for ffmpeg.
 #
 
 #
-#  Copyright (C) 2006-2007 innotek GmbH
-# 
-#  innotek GmbH confidential
-#  All rights reserved
+# Copyright (C) 2006-2007 innotek GmbH
+#
+# innotek GmbH confidential
+# All rights reserved
+#
 
 DEPTH = ../../..
 include $(PATH_KBUILD)/header.kmk

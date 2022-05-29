@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 4787 2007-09-14 09:08:56Z vboxsync $ */
+/* $Id: DBGFInternal.h 5999 2007-12-07 15:05:06Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -9,10 +9,10 @@
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
  * you can redistribute it and/or modify it under the terms of the GNU
- * General Public License as published by the Free Software Foundation,
- * in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
- * distribution. VirtualBox OSE is distributed in the hope that it will
- * be useful, but WITHOUT ANY WARRANTY of any kind.
+ * General Public License (GPL) as published by the Free Software
+ * Foundation, in version 2 as it comes in the "COPYING" file of the
+ * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+ * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
 #ifndef ___DBGFInternal_h
