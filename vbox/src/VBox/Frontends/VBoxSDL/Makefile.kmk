@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11727 2008-08-27 22:38:38Z vboxsync $
+# $Id: Makefile.kmk 11728 2008-08-27 22:53:37Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -120,7 +120,7 @@ VBoxSDL_LDFLAGS.darwin = \
 	-framework Foundation -framework AppKit
 
 VBoxSDL_CLEAN = $(PATH_VBoxSDL)/Ico64x01.h
-Framebuffer.cpp_DEPS = $(PATH_VBoxSDL)/Ico64x01.h
+VBoxSDL_INTERMEDIATES = $(PATH_VBoxSDL)/Ico64x01.h
 
 
 #
