@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 8842 2008-05-15 11:08:01Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 8843 2008-05-15 11:16:29Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1653,7 +1653,7 @@ static int svmInterpretInvlPg(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame
         return VINF_SUCCESS;
     }
     Assert(rc == VERR_REM_FLUSHED_PAGES_OVERFLOW);
-    return rc;
+    return (rc == VERR_REM_FLUSHED_PAGES_OVERFLOW) ? VERR_EM_INTERPRETER : rc;
 }
 
 /**
