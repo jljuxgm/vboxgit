@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6705 2008-02-01 01:21:58Z vboxsync $
+# $Id: Config.kmk 6706 2008-02-01 01:23:01Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -2571,7 +2571,7 @@ endif
 #
 # Templates for building 32-bit linux guest additions.
 #
-
+## @todo Eliminate VBOXLNX32GUESTR3EXE and VBOXLNX32GUESTR3EXENOCPP.
 TEMPLATE_VBOXLNX32GUESTR3EXE                   = Template for building 32-bit linux guest additions programs.
 TEMPLATE_VBOXLNX32GUESTR3EXE_INST              = $(INST_ADDITIONS)
 TEMPLATE_VBOXLNX32GUESTR3EXE_BLD_TRG           = linux
@@ -2861,7 +2861,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6705 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6706 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
