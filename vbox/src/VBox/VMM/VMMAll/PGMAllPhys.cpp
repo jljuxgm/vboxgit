@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 9836 2008-06-20 08:57:26Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 11525 2008-08-21 09:07:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1001,7 +1001,7 @@ PGMDECL(int) PGMPhysGCPtr2HCPtrByGstCR3(PVM pVM, RTGCPTR GCPtr, uint64_t cr3, un
             {
                 if ((fFlags & X86_CR4_PSE) && Pde.b.u1Size)
                 {   /* (big page) */
-                    rc = PGMPhysGCPhys2HCPtr(pVM, (Pde.u & X86_PDE4M_PG_MASK) | ((RTGCUINTPTR)GCPtr & X86_PAGE_4M_OFFSET_MASK), 1 /* we always stay within one page */, pHCPtr);
+                    rc = PGMPhysGCPhys2HCPtr(pVM, pgmGstGet4MBPhysPage(&pVM->pgm.s, Pde) | ((RTGCUINTPTR)GCPtr & X86_PAGE_4M_OFFSET_MASK), 1 /* we always stay within one page */, pHCPtr);
                 }
                 else
                 {   /* (normal page) */
