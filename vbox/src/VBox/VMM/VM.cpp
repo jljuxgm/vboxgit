@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 8608 2008-05-05 17:01:15Z vboxsync $ */
+/* $Id: VM.cpp 8794 2008-05-13 17:43:23Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2256,7 +2256,21 @@ VMR3DECL(const char *) VMR3GetStateName(VMSTATE enmState)
  */
 void vmR3SetState(PVM pVM, VMSTATE enmStateNew)
 {
+    /*
+     * Validate state machine transitions before doing the actual change.
+     */
     VMSTATE enmStateOld = pVM->enmVMState;
+    switch (enmStateOld)
+    {
+        case VMSTATE_OFF:
+            Assert(enmStateNew != VMSTATE_GURU_MEDITATION);
+            break;
+
+        default:
+            /** @todo full validation. */
+            break;
+    }
+
     pVM->enmVMState = enmStateNew;
     LogRel(("Changing the VM state from '%s' to '%s'.\n", VMR3GetStateName(enmStateOld),  VMR3GetStateName(enmStateNew)));
 
