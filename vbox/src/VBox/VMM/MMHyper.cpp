@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 7635 2008-03-28 17:15:38Z vboxsync $ */
+/* $Id: MMHyper.cpp 7715 2008-04-03 09:03:01Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Hypervisor Memory Area.
  */
@@ -634,7 +634,7 @@ MMR3DECL(int) MMR3HyperMapPages(PVM pVM, void *pvR3, RTR0PTR pvR0, size_t cPages
 
 /**
  * Reserves a hypervisor memory area.
- * Most frequent usage is fence pages and dynamically mappings like the guest PD and PDPTR.
+ * Most frequent usage is fence pages and dynamically mappings like the guest PD and PDPT.
  *
  * @return VBox status code.
  *
