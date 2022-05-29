@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-posix.cpp 6738 2008-02-01 21:45:27Z vboxsync $ */
+/* $Id: semeventmulti-posix.cpp 7986 2008-04-15 13:11:20Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Multiple Release Event Semaphore, POSIX.
  */
@@ -233,12 +233,12 @@ RTDECL(int)  RTSemEventMultiSignal(RTSEMEVENTMULTI EventMultiSem)
     if (pThis->u32State == EVENTMULTI_STATE_NOT_SIGNALED)
     {
         ASMAtomicXchgU32(&pThis->u32State, EVENTMULTI_STATE_SIGNALED);
-        rc = pthread_cond_signal(&pThis->Cond);
+        rc = pthread_cond_broadcast(&pThis->Cond);
         AssertMsg(!rc, ("Failed to signal event sem %p, rc=%d.\n", EventMultiSem, rc));
     }
     else if (pThis->u32State == EVENTMULTI_STATE_SIGNALED)
     {
-        rc = pthread_cond_signal(&pThis->Cond); /* give'm another kick... */
+        rc = pthread_cond_broadcast(&pThis->Cond); /* give'm another kick... */
         AssertMsg(!rc, ("Failed to signal event sem %p, rc=%d. (2)\n", EventMultiSem, rc));
     }
     else
