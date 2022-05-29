@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10129 2008-07-03 03:07:18Z vboxsync $
+# $Id: Makefile.kmk 10516 2008-07-11 11:17:48Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxGINA.
 #
@@ -37,7 +37,8 @@ VBoxGINA_SOURCES  = \
 	VBoxGINA.def \
 	VBoxGINA.rc
 VBoxGINA_LIBS     = \
-	$(VBOX_LIB_IPRT_GUEST_R3)
+	$(VBOX_LIB_IPRT_GUEST_R3) \
+	$(VBOX_LIB_VBGL_R3)
 
 include	$(KBUILD_PATH)/subfooter.kmk
 
