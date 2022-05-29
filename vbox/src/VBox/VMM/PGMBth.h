@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 10494 2008-07-11 08:49:59Z vboxsync $ */
+/* $Id: PGMBth.h 10822 2008-07-23 09:02:58Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -67,7 +67,7 @@ PGM_BTH_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
     {
         int rc;
 
-#if PGM_SHW_TYPE != PGM_TYPE_AMD64 && PGM_SHW_TYPE != PGM_TYPE_NESTED /* No AMD64 for traditional virtualization, only VT-x and AMD-V. */
+#if PGM_SHW_TYPE != PGM_TYPE_AMD64 && PGM_SHW_TYPE != PGM_TYPE_NESTED && PGM_SHW_TYPE != PGM_TYPE_EPT /* No AMD64 for traditional virtualization, only VT-x and AMD-V. */
         /* GC */
         rc = PDMR3GetSymbolGC(pVM, NULL, PGM_BTH_NAME_GC_STR(Trap0eHandler),  &pModeData->pfnGCBthTrap0eHandler);
         AssertMsgRCReturn(rc, ("%s -> rc=%Vrc\n", PGM_BTH_NAME_GC_STR(Trap0eHandler),  rc), rc);
