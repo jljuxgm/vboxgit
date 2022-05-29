@@ -1,4 +1,4 @@
-/* $Id: logbackdoor.cpp 6427 2008-01-21 19:02:20Z vboxsync $ */
+/* $Id: logbackdoor.cpp 6428 2008-01-21 19:04:28Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Guest Backdoor Logging.
  */
@@ -30,6 +30,9 @@
 #include <VBox/log.h>
 #include <iprt/asm.h>
 #include <iprt/string.h>
+#ifdef IN_GUEST_R3
+# include <VBox/VBoxGuest.h>
+#endif
 
 
 /*******************************************************************************
@@ -67,15 +70,15 @@ static DECLCALLBACK(size_t) rtLogBackdoorOutput(void *pv, const char *pachChars,
     return cbChars;
 }
 
-#ifdef IN_GUEST_R3
 
-#include <VBox/VBoxGuest.h>
+#ifdef IN_GUEST_R3
 
 RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
 {
+# ifndef RT_OS_WINDOWS /** @todo VbglR3WriteLog on windows */
     VbglR3WriteLog(pch, cb);
+# endif
 }
-
 
 #else  /* !IN_GUEST_R3 */
 
