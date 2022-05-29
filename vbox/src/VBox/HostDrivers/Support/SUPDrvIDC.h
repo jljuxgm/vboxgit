@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIDC.h 10258 2008-07-04 23:31:26Z vboxsync $ */
+/* $Id: SUPDrvIDC.h 10264 2008-07-05 00:38:39Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Inter-Driver Communciation (IDC) definitions.
  */
@@ -44,7 +44,7 @@
 #ifdef RT_OS_WINDOWS
 # define SUP_IDC_CODE(Function)                 CTL_CODE(FILE_DEVICE_UNKNOWN, (Function) + 2542, METHOD_BUFFERED, FILE_WRITE_ACCESS)
 #else
-# define SUP_IDC_CODE(Function)                 ( UINT32_C(0xc0ffee) | (uint32_t)(0x000000ff & (Function)) )
+# define SUP_IDC_CODE(Function)                 ( UINT32_C(0xc0ffee00) | (uint32_t)(0x000000ff & (Function)) )
 #endif
 
 
