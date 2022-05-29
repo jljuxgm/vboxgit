@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: PGM.cpp 8454 2008-04-29 11:31:44Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1536,12 +1536,6 @@ PGMR3DECL(int) PGMR3InitFinalize(PVM pVM)
     GCPtr += PAGE_SIZE;
     GCPtr += PAGE_SIZE; /* reserved page */
 
-    rc = PGMMap(pVM, GCPtr, pVM->pgm.s.HCPhysPaePML4, PAGE_SIZE, 0);
-    AssertRCReturn(rc, rc);
-    pVM->pgm.s.pGCPaePML4 = GCPtr;
-    GCPtr += PAGE_SIZE;
-    GCPtr += PAGE_SIZE; /* reserved page */
-
 
     /*
      * Reserve space for the dynamic mappings.
@@ -1599,7 +1593,6 @@ PGMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     }
     pVM->pgm.s.pGstPaePDPTGC += offDelta;
     pVM->pgm.s.pGCPaePDPT    += offDelta;
-    pVM->pgm.s.pGCPaePML4    += offDelta;
 
     pgmR3ModeDataInit(pVM, true /* resolve GC/R0 symbols */);
     pgmR3ModeDataSwitch(pVM, pVM->pgm.s.enmShadowMode, pVM->pgm.s.enmGuestMode);
