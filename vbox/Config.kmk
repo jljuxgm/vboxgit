@@ -1,4 +1,4 @@
-# $Id: Config.kmk 9427 2008-06-05 13:50:27Z vboxsync $
+# $Id: Config.kmk 9428 2008-06-05 14:16:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -342,6 +342,7 @@ ifeq ($(KBUILD_TARGET),darwin)
  # Later:
  VBOX_WITH_VRDP_AUTHMOD=
  VBOX_WITH_VRDP_RDESKTOP=
+ VBOX_WITH_PDM_ASYNC_COMPLETION=
 endif
 
 # Most stuff doesn't build yet on the new targets.
@@ -2997,7 +2998,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9427 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 9428 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
