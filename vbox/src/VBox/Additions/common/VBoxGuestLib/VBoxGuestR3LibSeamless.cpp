@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibSeamless.cpp 7411 2008-03-10 15:11:41Z vboxsync $ */
+/** $Id: VBoxGuestR3LibSeamless.cpp 7428 2008-03-12 09:58:58Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Seamless mode.
  */
@@ -64,12 +64,14 @@ VBGLR3DECL(int) VbglR3SeamlessSetCap(bool fState)
  */
 VBGLR3DECL(int) VbglR3SeamlessWaitEvent(VMMDevSeamlessMode *pMode)
 {
-    VBoxGuestWaitEventInfo waitEvent = { 0 };
+    VBoxGuestWaitEventInfo waitEvent;
     int rc;
 
     AssertPtrReturn(pMode, VERR_INVALID_PARAMETER);
     waitEvent.u32TimeoutIn = RT_INDEFINITE_WAIT;
     waitEvent.u32EventMaskIn = VMMDEV_EVENT_SEAMLESS_MODE_CHANGE_REQUEST;
+    waitEvent.u32Result = VBOXGUEST_WAITEVENT_ERROR;
+    waitEvent.u32EventFlagsOut = 0;
     rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_WAITEVENT, &waitEvent, sizeof(waitEvent));
     if (RT_SUCCESS(rc))
     {
