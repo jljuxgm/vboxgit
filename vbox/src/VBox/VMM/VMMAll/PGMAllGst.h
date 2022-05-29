@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 6913 2008-02-11 23:02:51Z vboxsync $ */
+/* $Id: PGMAllGst.h 6927 2008-02-12 20:44:35Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -655,16 +655,6 @@ static DECLCALLBACK(int) PGM_GST_NAME(VirtHandlerUpdateOne)(PAVLROGCPTRNODECORE 
     if (GCPtr >= _4GB)
         return 0;
 #endif
-
-    unsigned    fFlags;
-    switch (pCur->enmType)
-    {
-        case PGMVIRTHANDLERTYPE_WRITE:      fFlags = MM_RAM_FLAGS_VIRTUAL_HANDLER | MM_RAM_FLAGS_VIRTUAL_WRITE; break;
-        case PGMVIRTHANDLERTYPE_ALL:        fFlags = MM_RAM_FLAGS_VIRTUAL_HANDLER | MM_RAM_FLAGS_VIRTUAL_ALL; break;
-        /* hypervisor handlers need no flags and wouldn't have nowhere to put them in any case. */
-        case PGMVIRTHANDLERTYPE_HYPERVISOR:
-            return 0;
-    }
 
     unsigned    offPage = GCPtr & PAGE_OFFSET_MASK;
     unsigned    iPage = 0;
