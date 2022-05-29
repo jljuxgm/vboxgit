@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 10722 2008-07-17 12:21:02Z vboxsync $ */
+/* $Id: SUPDrv-os2.cpp 10729 2008-07-17 15:05:47Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -228,7 +228,7 @@ DECLASM(int) VBoxDrvClose(uint16_t sfn)
 }
 
 
-DECLASM(int) VBoxDrvIOCtlFast(uint16_t sfn, uint8_t iFunction, int32_t *prc)
+DECLASM(int) VBoxDrvIOCtlFast(uint16_t sfn, uint8_t iFunction)
 {
     /*
      * Find the session.
