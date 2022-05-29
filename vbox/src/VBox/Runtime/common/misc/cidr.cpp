@@ -1,4 +1,4 @@
-/* $Id: cidr.cpp 8295 2008-04-22 13:57:10Z vboxsync $ */
+/* $Id: cidr.cpp 8346 2008-04-24 07:36:20Z vboxsync $ */
 /** @file
  * IPRT - IPv4 address parsing.
  */
@@ -50,8 +50,8 @@
 static int scanIPv4Digit(int iDigit, const char *psz, char **ppszNext, uint8_t *pu8)
 {
     int rc = RTStrToUInt8Ex(psz, ppszNext, 10, pu8);
-    if (      rc != VINF_SUCCESS
-           && rc != VWRN_TRAILING_CHARS
+    if ((      rc != VINF_SUCCESS
+           && rc != VWRN_TRAILING_CHARS)
         || *pu8 > 254)
         return VERR_INVALID_PARAMETER;
 
