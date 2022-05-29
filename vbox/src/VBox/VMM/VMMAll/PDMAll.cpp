@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 10492 2008-07-11 08:14:13Z vboxsync $ */
+/* $Id: PDMAll.cpp 10520 2008-07-11 12:46:31Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -187,11 +187,11 @@ PDMDECL(int) PDMApicGetBase(PVM pVM, uint64_t *pu64Base)
 
 
 /**
- * Check if the APIC has a pending interrupt/if a TPR change would active one
+ * Check if the APIC has a pending interrupt/if a TPR change would active one.
  *
- * @returns Pending interrupt yes/no
+ * @returns VINF_SUCCESS or VERR_PDM_NO_APIC_INSTANCE.
  * @param   pDevIns         Device instance of the APIC.
- * @param   pfPending       Pending state (out)
+ * @param   pfPending       Pending state (out).
  */
 PDMDECL(int) PDMApicHasPendingIrq(PVM pVM, bool *pfPending)
 {
@@ -205,6 +205,7 @@ PDMDECL(int) PDMApicHasPendingIrq(PVM pVM, bool *pfPending)
     }
     return VERR_PDM_NO_APIC_INSTANCE;
 }
+
 
 /**
  * Set the TPR (task priority register?).
