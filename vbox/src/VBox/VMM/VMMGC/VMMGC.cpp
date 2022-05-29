@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VMMGC.cpp 9244 2008-05-30 11:50:49Z vboxsync $ */
 /** @file
  * VMM - Guest Context.
  */
@@ -40,8 +40,8 @@
 *   Global Variables                                                           *
 *******************************************************************************/
 /** Default logger instance. */
-extern "C" DECLIMPORT(RTLOGGERGC)   g_Logger;
-extern "C" DECLIMPORT(RTLOGGERGC)   g_RelLogger;
+extern "C" DECLIMPORT(RTLOGGERRC)   g_Logger;
+extern "C" DECLIMPORT(RTLOGGERRC)   g_RelLogger;
 
 
 /*******************************************************************************
@@ -167,7 +167,7 @@ VMMGCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
  * @param   pLogger     The logger instance to flush.
  * @remark  This function must be exported!
  */
-VMMGCDECL(int) vmmGCLoggerFlush(PRTLOGGERGC pLogger)
+VMMGCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger)
 {
     PVM pVM = &g_VM;
     NOREF(pLogger);
