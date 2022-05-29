@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 6020 2007-12-09 08:33:41Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 6032 2007-12-10 07:35:42Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -72,13 +72,7 @@ typedef VBOXGUESTWAITLIST *PVBOXGUESTWAITLIST;
 typedef struct VBOXGUESTDEVEXT
 {
     /** The base of the adapter I/O ports. */
-    RTCCPHYS                    PhysMMIOBase;
-    /** The base of the adapter I/O ports. */
     RTIOPORT                    IOPortBase;
-    /** The memory object for the MMIO memory. */
-    RTR0MEMOBJ                  MemObjMMIO;
-    /** The memory mapping object the MMIO memory. */
-    RTR0MEMOBJ                  MemMapMMIO;
     /** Pointer to the mapping of the VMMDev adapter memory. */
     VMMDevMemory volatile      *pVMMDevMemory;
 
@@ -105,8 +99,6 @@ typedef struct VBOXGUESTDEVEXT
     /** The current clipboard client ID, 0 if no client.
      * For implementing the VBOXGUEST_IOCTL_CLIPBOARD_CONNECT interface. */
     uint32_t                    u32ClipboardClientId;
-
-
 } VBOXGUESTDEVEXT;
 /** Pointer to the VBoxGuest driver data. */
 typedef VBOXGUESTDEVEXT *PVBOXGUESTDEVEXT;
