@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 8458 2008-04-29 12:00:53Z vboxsync $ */
+/* $Id: PGMAllGst.h 8536 2008-05-02 16:46:51Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -180,10 +180,10 @@ PGM_GST_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTGCP
         return VERR_PAGE_TABLE_NOT_PRESENT;
 
     /* Merge accessed, write, user and no-execute bits into the PDE. */
-    Pde.n.u1Accessed  &= pPml4e->n.u1Accessed & Pdpe.n.u1Accessed;
-    Pde.n.u1Write     &= pPml4e->n.u1Write & Pdpe.n.u1Write;
-    Pde.n.u1User      &= pPml4e->n.u1User & Pdpe.n.u1User;
-    Pde.n.u1NoExecute &= pPml4e->n.u1NoExecute& Pdpe.n.u1NoExecute;
+    Pde.n.u1Accessed  &= pPml4e->n.u1Accessed & Pdpe.lm.u1Accessed;
+    Pde.n.u1Write     &= pPml4e->n.u1Write & Pdpe.lm.u1Write;
+    Pde.n.u1User      &= pPml4e->n.u1User & Pdpe.lm.u1User;
+    Pde.n.u1NoExecute &= pPml4e->n.u1NoExecute& Pdpe.lm.u1NoExecute;
 # endif
 
     /*
