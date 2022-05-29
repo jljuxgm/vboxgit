@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8758 2008-05-11 18:27:49Z vboxsync $
+# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service testcases.
 #
@@ -21,7 +21,7 @@
 
 DEPTH ?= ../../../../..
 SUB_DEPTH = ../..
-include $(PATH_KBUILD)/subheader.kmk
+include $(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS += tstShflSizes
 tstShflSizes_TEMPLATE = VBOXR3TSTEXE
@@ -52,7 +52,7 @@ endif
 OTHER_CLEAN += \
 	$(PATH_TARGET)/tstShflSizes.run
 
-include $(PATH_KBUILD)/subfooter.kmk
+include $(KBUILD_PATH)/subfooter.kmk
 
 $(PATH_TARGET)/tstShflSizes.run: $(INSTARGET_tstShflSizes)
 	$(QUIET)$(RM) -f $@

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8758 2008-05-11 18:27:49Z vboxsync $
+# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -21,7 +21,7 @@
 
 DEPTH ?= ../../../..
 SUB_DEPTH = ..
-include $(PATH_KBUILD)/subheader.kmk
+include $(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS += VBoxSDL tstSDL
 
@@ -149,7 +149,7 @@ tstSDL_CXXFLAGS.linux = \
 
 
 # generate rules
-include $(PATH_KBUILD)/subfooter.kmk
+include $(KBUILD_PATH)/subfooter.kmk
 
 
 # Convert the pnm-file to a byte array.

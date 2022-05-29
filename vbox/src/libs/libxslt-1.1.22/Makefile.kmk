@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
 ## @file
 # Makefile for the libxslt library.
 #
@@ -20,7 +20,7 @@
 #
 
 DEPTH = ../../..
-include $(PATH_KBUILD)/header.kmk
+include $(KBUILD_PATH)/header.kmk
 
 LIBRARIES = VBox-libxslt
 
@@ -54,5 +54,5 @@ VBox-libxslt_SOURCES        = \
 # VBox-libxslt_LDFLAGS.win    = /VERSION:$(LIBXSLT_MAJOR_VERSION).$(LIBXSLT_MINOR_VERSION)
 # VBox-libxslt_SDKS.win      += WINPSDK
 
-include $(PATH_KBUILD)/footer.kmk
+include $(KBUILD_PATH)/footer.kmk
 

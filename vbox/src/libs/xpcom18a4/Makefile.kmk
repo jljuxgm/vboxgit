@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8759 2008-05-11 18:33:24Z vboxsync $
+# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
 ## @file
 # Makefile for XPCOM.
 #
@@ -20,7 +20,7 @@
 #
 
 DEPTH = ../../..
-include $(PATH_KBUILD)/header.kmk
+include $(KBUILD_PATH)/header.kmk
 
 
 #
@@ -1411,7 +1411,7 @@ OTHER_CLEAN += \
 
 
 # generate rules
-include $(PATH_KBUILD)/footer.kmk
+include $(KBUILD_PATH)/footer.kmk
 
 
 

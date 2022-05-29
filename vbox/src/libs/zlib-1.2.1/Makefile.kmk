@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8155 2008-04-18 15:16:47Z vboxsync $
+# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
 ## @file
 # Makefile for zlib
 #
@@ -38,5 +38,5 @@ VBox-zlib_SOURCES = \
 	inffast.c
 
 DEPTH = ../../..
-include $(PATH_KBUILD)/rules.kmk
+include $(KBUILD_PATH)/rules.kmk
 

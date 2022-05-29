@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8758 2008-05-11 18:27:49Z vboxsync $
+# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
 ## @file
 # Sub-Makefile for the Devices testcases.
 #
@@ -21,7 +21,7 @@
 
 DEPTH ?= ../../../..
 SUB_DEPTH = ..
-include	$(PATH_KBUILD)/subheader.kmk
+include	$(KBUILD_PATH)/subheader.kmk
 
 #
 # We setup one 'other' target for executing the structure & alignment
@@ -109,5 +109,5 @@ $(PATH_TARGET)/tstDeviceStructSize.run: $$(INSTARGET_tstDeviceStructSize)
 run-struct-tests: $(PATH_TARGET)/tstDeviceStructSize.run
 
 
-include	$(PATH_KBUILD)/subfooter.kmk
+include	$(KBUILD_PATH)/subfooter.kmk
 

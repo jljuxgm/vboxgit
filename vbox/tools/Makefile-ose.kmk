@@ -1,4 +1,4 @@
-# $Id: Makefile-ose.kmk 8265 2008-04-22 07:25:54Z vboxsync $
+# $Id: Makefile-ose.kmk 8760 2008-05-11 18:39:30Z vboxsync $
 ## @file
 # Fetch OSE tools.
 #
@@ -16,7 +16,7 @@
 #
 
 DEPTH = ..
-include $(PATH_KBUILD)/header.kmk
+include $(KBUILD_PATH)/header.kmk
 include CommonFetch.kmk
-include $(PATH_KBUILD)/footer.kmk
+include $(KBUILD_PATH)/footer.kmk
 

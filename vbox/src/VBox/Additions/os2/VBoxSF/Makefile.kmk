@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 3655 2007-07-16 18:47:26Z vboxsync $
+# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
 ## @file
 # Makefile for the OS/2 Guest Additions Shared Folder FSD.
 #
 
 DEPTH = ../../../../..
-include	$(PATH_KBUILD)/header.kmk
+include	$(KBUILD_PATH)/header.kmk
 
 #?DLLS += VBoxSF
 SYSMODS += VBoxSF
@@ -32,5 +32,5 @@ VBoxSF_LIBS          = \
 	$(VBOX_GCC_LIBGCC) \
 	end
 
-include	$(PATH_KBUILD)/footer.kmk
+include	$(KBUILD_PATH)/footer.kmk
 

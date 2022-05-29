@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8758 2008-05-11 18:27:49Z vboxsync $
+# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -20,7 +20,7 @@
 #
 
 DEPTH = ../../..
-include $(PATH_KBUILD)/subheader.kmk
+include $(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefiles.
 include $(PATH_SUB_CURRENT)/PC/BIOS/Makefile.kmk
@@ -758,4 +758,4 @@ ifdef VBOX_WITH_E1000
 endif
 endif
 
-include $(PATH_KBUILD)/subfooter.kmk
+include $(KBUILD_PATH)/subfooter.kmk

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8759 2008-05-11 18:33:24Z vboxsync $
+# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -31,7 +31,7 @@
 
 DEPTH ?= ../../..
 SUB_DEPTH = .
-include $(PATH_KBUILD)/subheader.kmk
+include $(KBUILD_PATH)/subheader.kmk
 
 ifdef VBOX_ONLY_ADDITIONS
  #
@@ -1283,7 +1283,7 @@ win/errmsgwin.cpp_INCS = $(PATH_TARGET)
 #
 # Generate the rules (we're the to sub-makefile).
 #
-include $(PATH_KBUILD)/subfooter.kmk
+include $(KBUILD_PATH)/subfooter.kmk
 
 
 ifneq ($(wildcard /usr/bin/chcon),)

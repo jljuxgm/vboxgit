@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8730 2008-05-09 01:40:44Z vboxsync $
+# $Id: Makefile.kmk 8760 2008-05-11 18:39:30Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -30,7 +30,7 @@
 
 DEPTH ?= ../../../..
 SUB_DEPTH = ..
-include	$(PATH_KBUILD)/subheader.kmk
+include	$(KBUILD_PATH)/subheader.kmk
 
 ifdef VBOX_WITH_TESTCASES
 
@@ -290,5 +290,5 @@ ntGetTimerResolution_SDKS.win = WINPSDK W2K3DDK VBOX_NTDLL
 
 endif # VBOX_WITH_TESTCASES
 
-include	$(PATH_KBUILD)/subfooter.kmk
+include	$(KBUILD_PATH)/subfooter.kmk
 
