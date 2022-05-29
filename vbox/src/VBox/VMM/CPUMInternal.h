@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 10569 2008-07-12 15:59:27Z vboxsync $ */
+/* $Id: CPUMInternal.h 10630 2008-07-15 09:06:33Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -357,8 +357,10 @@ typedef struct CPUM
 
 __BEGIN_DECLS
 
-DECLASM(int) CPUMHandleLazyFPUAsm(PCPUM pCPUM);
-DECLASM(int) CPUMRestoreHostFPUStateAsm(PCPUM pCPUM);
+DECLASM(int)  CPUMHandleLazyFPUAsm(PCPUM pCPUM);
+DECLASM(int)  CPUMRestoreHostFPUStateAsm(PCPUM pCPUM);
+DECLASM(void) CPUMLoadFPUAsm(PCPUMCTX pCtx);
+DECLASM(void) CPUMSaveFPUAsm(PCPUMCTX pCtx);
 
 __END_DECLS
 
