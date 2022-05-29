@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 7602 2008-03-27 17:25:37Z vboxsync $ */
+/* $Id: log-vbox.cpp 7942 2008-04-11 20:32:20Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Logging configuration.
  */
@@ -181,6 +181,8 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
      * Take care to do this once and not recursivly.
      */
     static volatile uint32_t fInitializing = 0;
+    PRTLOGGER pLogger;
+
     if (g_pLogger || !ASMAtomicCmpXchgU32(&fInitializing, 1, 0))
         return g_pLogger;
 
@@ -281,7 +283,6 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
     /*
      * Create the default logging instance.
      */
-    PRTLOGGER pLogger;
 #ifdef IN_RING3
 # ifndef IN_GUEST_R3
     char szExecName[RTPATH_MAX];
