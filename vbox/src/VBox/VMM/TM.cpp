@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: TM.cpp 8911 2008-05-19 10:08:21Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -539,7 +539,7 @@ TMR3DECL(int) TMR3Init(PVM pVM)
  *
  * @returns true if it has, false if it hasn't.
  *
- * @remark  This test doesn't bother with very old CPUs that doesn't do power
+ * @remark  This test doesn't bother with very old CPUs that don't do power
  *          management or any other stuff that might influence the TSC rate.
  *          This isn't currently relevant.
  */
@@ -564,8 +564,11 @@ static bool tmR3HasFixedTSC(void)
             ASMCpuId(0x80000000, &uEAX, &uEBX, &uECX, &uEDX);
             if (uEAX >= 0x80000007)
             {
+                PSUPGLOBALINFOPAGE pGip = g_pSUPGlobalInfoPage;
+
                 ASMCpuId(0x80000007, &uEAX, &uEBX, &uECX, &uEDX);
-                if (uEDX & RT_BIT(8) /* TscInvariant */)
+                if (   (uEDX & RT_BIT(8)) /* TscInvariant */
+                    && pGip->u32Mode == SUPGIPMODE_SYNC_TSC /* no fixed tsc if the gip timer is in async mode */)
                     return true;
             }
         }
