@@ -1,4 +1,4 @@
-# $Id: Config.kmk 11586 2008-08-22 19:25:04Z vboxsync $
+# $Id: Config.kmk 11587 2008-08-22 21:42:22Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -330,6 +330,10 @@ VBOX_WITH_GUEST_PROPS = 1
 VBOX_WITH_RESOURCE_USAGE_API = 1
 # Enables all the doxgen bits.
 VBOX_WITH_ALL_DOXYGEN_TARGETS = 1
+# Enables the Python<->XPCOM and later Python<->COM bindings.
+# (Current not enabled by default because all the build servers has
+# different Python versions installed and would start burning.)
+#VBOX_WITH_PYTHON = 1
 
 
 #
@@ -2977,7 +2981,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11586 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11587 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
