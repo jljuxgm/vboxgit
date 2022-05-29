@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 10202 2008-07-04 07:25:27Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 11219 2008-08-07 18:05:58Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -274,20 +274,20 @@ int main()
     GEN_CHECK_OFF(PDM, Apic.pfnSetTPRR0);
     GEN_CHECK_OFF(PDM, Apic.pfnGetTPRR0);
     GEN_CHECK_OFF(PDM, Apic.pfnBusDeliverR0);
-    GEN_CHECK_OFF(PDM, Apic.pDevInsGC);
-    GEN_CHECK_OFF(PDM, Apic.pfnGetInterruptGC);
-    GEN_CHECK_OFF(PDM, Apic.pfnSetBaseGC);
-    GEN_CHECK_OFF(PDM, Apic.pfnGetBaseGC);
-    GEN_CHECK_OFF(PDM, Apic.pfnSetTPRGC);
-    GEN_CHECK_OFF(PDM, Apic.pfnGetTPRGC);
-    GEN_CHECK_OFF(PDM, Apic.pfnBusDeliverGC);
+    GEN_CHECK_OFF(PDM, Apic.pDevInsRC);
+    GEN_CHECK_OFF(PDM, Apic.pfnGetInterruptRC);
+    GEN_CHECK_OFF(PDM, Apic.pfnSetBaseRC);
+    GEN_CHECK_OFF(PDM, Apic.pfnGetBaseRC);
+    GEN_CHECK_OFF(PDM, Apic.pfnSetTPRRC);
+    GEN_CHECK_OFF(PDM, Apic.pfnGetTPRRC);
+    GEN_CHECK_OFF(PDM, Apic.pfnBusDeliverRC);
     GEN_CHECK_OFF(PDM, IoApic);
     GEN_CHECK_OFF(PDM, IoApic.pDevInsR3);
     GEN_CHECK_OFF(PDM, IoApic.pfnSetIrqR3);
     GEN_CHECK_OFF(PDM, IoApic.pDevInsR0);
     GEN_CHECK_OFF(PDM, IoApic.pfnSetIrqR0);
-    GEN_CHECK_OFF(PDM, IoApic.pDevInsGC);
-    GEN_CHECK_OFF(PDM, IoApic.pfnSetIrqGC);
+    GEN_CHECK_OFF(PDM, IoApic.pDevInsRC);
+    GEN_CHECK_OFF(PDM, IoApic.pfnSetIrqRC);
     GEN_CHECK_OFF(PDM, pDmac);
     GEN_CHECK_OFF(PDM, pRtc);
     GEN_CHECK_OFF(PDM, pUsbHubs);
