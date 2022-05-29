@@ -1,4 +1,4 @@
-/** $Id: VBoxService.cpp 6137 2007-12-18 17:10:04Z vboxsync $ */
+/** $Id: VBoxService.cpp 6285 2008-01-08 19:58:53Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -102,7 +102,7 @@ static int VBoxServiceUsage(void)
         RTPrintf("%s", g_aServices[j].pDesc->pszOptions);
     }
     RTPrintf("\n"
-             " Copyright (C) 2007 innotek GmbH\n");
+             " Copyright (C) 2007-2008 innotek GmbH\n");
 
     return 1;
 }
