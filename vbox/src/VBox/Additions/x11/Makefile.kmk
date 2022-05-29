@@ -1,4 +1,4 @@
-# $Id$
+# $Id: Makefile.kmk 6180 2007-12-23 13:20:31Z vboxsync $
 ## @file
 # Sub-Makefile for the X11 Guest Additions.
 #
@@ -20,10 +20,11 @@ include $(PATH_KBUILD)/subheader.kmk
 
 # Include sub-dirs.
 SUBDIRS =
-ifeq ($(BUILD_TARGET),linux)
-SUBDIRS += xclient \
-			xgraphics \
-			xmouse
+if1of ($(BUILD_TARGET),linux)
+SUBDIRS += \
+	xclient \
+	xgraphics \
+	xmouse
 endif
 
 include $(PATH_KBUILD)/subfooter.kmk
