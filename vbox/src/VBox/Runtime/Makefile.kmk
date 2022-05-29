@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6014 2007-12-08 00:41:16Z vboxsync $
+# $Id: Makefile.kmk 6015 2007-12-08 00:50:23Z vboxsync $
 ## @file
 # Makefile for the innotek Portable Runtime (IPRT).
 #
@@ -75,6 +75,9 @@ else
   endif
   ifdef VBOX_WITH_OS2_ADDITIONS
    LIBRARIES += RuntimeOS2GuestR0 RuntimeOS2GuestR3 #RuntimeOS2Warp3GuestR0
+  endif
+  ifn1of ($(BUILD_TARGET),win os2 linux)
+   LIBRARIES += RuntimeGuestR0 RuntimeGuestR3
   endif
  endif # !VBOX_WITHOUT_ADDITIONS
  LIBRARIES.l4 = RuntimeR3L4
