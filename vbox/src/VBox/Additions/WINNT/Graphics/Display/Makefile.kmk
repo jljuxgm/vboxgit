@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 6002 2007-12-07 17:05:01Z vboxsync $
+# $Id: Makefile.kmk 6973 2008-02-15 17:28:12Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxDisp.dll.
 #
@@ -43,6 +43,7 @@ VBoxDisp_SOURCES     = \
 	vbva.c \
 	vrdp.c \
 	vrdpbmp.c \
+	vrdptext.c \
 	vbox.c \
 	VBoxDisp.def \
 	VBoxDisp.rc
