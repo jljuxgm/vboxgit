@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 9259 2008-05-30 15:52:31Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 9437 2008-06-05 16:08:03Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -32,6 +32,10 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QApplication>
+
+#if QT_VERSION < 0x040400
+extern void qt_mac_set_menubar_icons(bool b);
+#endif /* QT_VERSION < 0x040400 */
 
 /**
  * Callback for deleting the QImage object when CGImageCreate is done
@@ -253,6 +257,17 @@ void darwinUpdateDockPreview (VBoxFrameBuffer *aFrameBuffer, CGImageRef aOverlay
     CGDataProviderRelease (dp);
     CGImageRelease (ir);
     CGColorSpaceRelease (cs);
+}
+
+void darwinDisableIconsInMenus()
+{
+    /* No icons in the menu of a mac application. */
+#if QT_VERSION < 0x040400
+    qt_mac_set_menubar_icons (false);
+#else /* QT_VERSION < 0x040400 */
+    /* Available since Qt 4.4 only */
+    a.setAttribute (Qt::AA_DontShowIconsInMenus, true);
+#endif /* QT_VERSION >= 0x040400 */
 }
 
 /* Currently not used! */
