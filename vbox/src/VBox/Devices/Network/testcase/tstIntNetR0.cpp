@@ -1,4 +1,4 @@
-/* $Id: tstIntNetR0.cpp 10847 2008-07-23 22:05:46Z vboxsync $ */
+/* $Id: tstIntNetR0.cpp 11071 2008-08-01 17:18:19Z vboxsync $ */
 /** @file
  * Internal networking - Usermode testcase for the kernel mode bits.
  *
@@ -248,7 +248,7 @@ DECLCALLBACK(int) SendThread(RTTHREAD Thread, void *pvArg)
 #else
         INTNETSG Sg;
         intnetR0SgInitTemp(&Sg, abBuf, cb);
-        int rc = intnetR0RingWriteFrame(pArgs->pBuf, &pArgs->pBuf->Send, &Sg);
+        int rc = intnetR0RingWriteFrame(pArgs->pBuf, &pArgs->pBuf->Send, &Sg, NULL);
         if (RT_SUCCESS(rc))
             rc = INTNETR0IfSend(pArgs->pIntNet, pArgs->hIf, g_pSession, NULL, 0);
 #endif
