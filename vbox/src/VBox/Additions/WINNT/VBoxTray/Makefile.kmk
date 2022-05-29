@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9632 2008-06-11 20:33:24Z vboxsync $
+# $Id: Makefile.kmk 9638 2008-06-12 00:14:58Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -41,7 +41,6 @@ VBoxTray_SOURCES  = \
         VBoxMemBalloon.cpp \
 	helpers.cpp \
 	VBoxTray.rc
-
 VBoxTray_LIBS     = \
 	$(VBOX_LIB_IPRT_GUEST_R3)
 
