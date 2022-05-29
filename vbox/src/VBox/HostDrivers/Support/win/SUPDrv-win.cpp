@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 7461 2008-03-14 16:24:35Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 7462 2008-03-14 16:26:36Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Windows NT specific parts.
  */
@@ -176,8 +176,9 @@ ULONG _stdcall DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
  */
 void _stdcall VBoxDrvNtUnload(PDRIVER_OBJECT pDrvObj)
 {
-    dprintf(("VBoxDrvNtUnload\n"));
-    PSUPDRVDEVEXT       pDevExt = (PSUPDRVDEVEXT)pDrvObj->DeviceObject->DeviceExtension;
+    PSUPDRVDEVEXT pDevExt = (PSUPDRVDEVEXT)pDrvObj->DeviceObject->DeviceExtension;
+
+    dprintf(("VBoxDrvNtUnload at irql %d\n", KeGetCurrentIrql()));
 
     /*
      * We ASSUME that it's not possible to unload a driver with open handles.
