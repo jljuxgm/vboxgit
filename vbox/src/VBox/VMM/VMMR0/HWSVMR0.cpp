@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 8880 2008-05-16 11:13:50Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 8881 2008-05-16 11:17:35Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -802,7 +802,6 @@ ResumeExecution:
     }
     else
     {
-        Assert(pVM->hwaccm.s.svm.fForceTLBFlush == pVM->hwaccm.s.svm.fAlwaysFlushTLB);
         pVMCB->ctrl.TLBCtrl.n.u1TLBFlush = pVM->hwaccm.s.svm.fForceTLBFlush;
     }
 
