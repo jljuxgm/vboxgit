@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 10537 2008-07-11 16:23:47Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 10542 2008-07-11 18:03:56Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1747,14 +1747,13 @@ ResumeExecution:
 
     case SVM_EXIT_HLT:
         /** Check if external interrupts are pending; if so, don't switch back. */
+        pCtx->rip++;    /* skip hlt */
         if (    pCtx->eflags.Bits.u1IF
             &&  VM_FF_ISPENDING(pVM, (VM_FF_INTERRUPT_APIC|VM_FF_INTERRUPT_PIC)))
         {
-            pCtx->rip++;    /* skip hlt */
             goto ResumeExecution;
         }
-
-        rc = VINF_EM_RAW_EMULATE_INSTR_HLT;
+        rc = VINF_EM_HALT;
         break;
 
     case SVM_EXIT_RSM:
