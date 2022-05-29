@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-os2.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: timer-r0drv-os2.cpp 9416 2008-06-05 12:47:29Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -111,6 +111,12 @@ __END_DECLS
 RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, unsigned fFlags, PFNRTTIMER pfnTimer, void *pvUser)
 {
     *ppTimer = NULL;
+
+    /*
+     * We don't support the fancy MP features.
+     */
+    if (fFlags & RTTIMER_FLAGS_CPU_SPECIFIC)
+        return VERR_NOT_SUPPORTED;
 
     /*
      * Lazy initialize the spinlock.

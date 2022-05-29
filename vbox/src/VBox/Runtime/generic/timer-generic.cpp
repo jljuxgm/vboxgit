@@ -1,4 +1,4 @@
-/** $Id: timer-generic.cpp 9308 2008-06-02 15:08:15Z vboxsync $ */
+/** $Id: timer-generic.cpp 9416 2008-06-05 12:47:29Z vboxsync $ */
 /** @file
  * IPRT - Timers, Generic.
  */
@@ -91,6 +91,12 @@ static DECLCALLBACK(int) rtTimerThread(RTTHREAD Thread, void *pvUser);
 RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, unsigned fFlags, PFNRTTIMER pfnTimer, void *pvUser)
 {
     *ppTimer = NULL;
+
+    /*
+     * We don't support the fancy MP features.
+     */
+    if (fFlags & RTTIMER_FLAGS_CPU_SPECIFIC)
+        return VERR_NOT_SUPPORTED;
 
     /*
      * Allocate and initialize the timer handle.
