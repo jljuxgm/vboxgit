@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibDaemonize.cpp 6524 2008-01-28 11:12:01Z vboxsync $ */
+/** $Id: VBoxGuestR3LibDaemonize.cpp 6570 2008-01-29 15:54:24Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, daemonize a process.
  */
@@ -182,12 +182,7 @@ VBGLR3DECL(int) VbglR3Daemonize(bool fNoChDir, bool fNoClose)
     /*
      * Change the umask - this is non-standard daemon() behavior.
      */
-    /** @todo why is umask set to 0 on linux? the solaris value is more sensible... */
-# ifdef RT_OS_SOLARIS
     umask(027);
-# else
-    umask(0);
-# endif
 
 # ifdef RT_OS_LINUX
     /*
