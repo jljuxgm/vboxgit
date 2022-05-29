@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 7581 2008-03-26 15:24:36Z vboxsync $ */
+/* $Id: SSM.cpp 7591 2008-03-27 14:49:46Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -2249,6 +2249,7 @@ SSMR3DECL(int) SSMR3PutGCPhys32(PSSMHANDLE pSSM, RTGCPHYS32 GCPhys)
     return VERR_SSM_INVALID_STATE;
 }
 
+
 /**
  * Saves a 64 bits GC physical address item to the current data unit.
  *
@@ -2806,6 +2807,7 @@ SSMR3DECL(int) SSMR3GetGCPhys32(PSSMHANDLE pSSM, PRTGCPHYS32 pGCPhys)
     AssertMsgFailed(("Invalid state %d\n", pSSM->enmOp));
     return VERR_SSM_INVALID_STATE;
 }
+
 
 /**
  * Loads a 64 bits GC physical address item from the current data unit.
