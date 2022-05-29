@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 11270 2008-08-08 16:56:16Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 11277 2008-08-08 20:15:59Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -900,8 +900,9 @@ int main()
     GEN_CHECK_OFF(SerialState, msr_changed);
     GEN_CHECK_OFF(SerialState, fGCEnabled);
     GEN_CHECK_OFF(SerialState, fR0Enabled);
-    GEN_CHECK_OFF(SerialState, pDevInsGC);
-    GEN_CHECK_OFF(SerialState, pDevInsHC);
+    GEN_CHECK_OFF(SerialState, pDevInsR3);
+    GEN_CHECK_OFF(SerialState, pDevInsR0);
+    GEN_CHECK_OFF(SerialState, pDevInsRC);
     GEN_CHECK_OFF(SerialState, IBase);
     GEN_CHECK_OFF(SerialState, ICharPort);
     GEN_CHECK_OFF(SerialState, pDrvBase);
