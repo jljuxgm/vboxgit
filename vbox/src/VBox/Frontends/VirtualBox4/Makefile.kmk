@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10621 2008-07-14 22:08:59Z vboxsync $
+# $Id: Makefile.kmk 10622 2008-07-15 00:16:10Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -783,7 +783,6 @@ $(VBOX_WRAPPERS_FILE4): $(VBOX_WRAPPERS_XIDLFILE4) $(VBOX_WRAPPERS_TEMPLATE4) | 
 # languages and should never be actually translated or installed.
 #
 updatenls:: \
-		$(VirtualBox4_QT_UISRCS) \
 		$(filter-out %.qrc,$(VirtualBox4_SOURCES)) \
 		$(wildcard include/*.h)
 	$(call MSG_L1,lupdate all languages (nls/*.ts))
