@@ -1,4 +1,4 @@
-/* $Id: vboxvfs.h 9177 2008-05-27 16:14:44Z vboxsync $ */
+/* $Id: vboxvfs.h 9672 2008-06-13 08:01:07Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Internal Header.
  */
@@ -21,6 +21,7 @@ extern "C" {
 #define MAX_NLS_NAME    32
 
 /* Not sure if we need this; it seems only necessary for kernel mounts. */
+#if 0
 typedef struct vboxvfs_mountinfo
 {
     char name[MAX_HOST_NAME];
@@ -29,6 +30,7 @@ typedef struct vboxvfs_mountinfo
     int gid;
     int ttl;
 } vboxvfs_mountinfo_t;
+#endif
 
 #ifdef _KERNEL
 
@@ -44,7 +46,6 @@ typedef struct vboxvfs_globinfo
     int Uid;
     int Gid;
     vfs_t *pVFS;
-    dev_t Dev;
     vnode_t *pVNodeDev;
     vnode_t *pVNodeRoot;
 } vboxvfs_globinfo_t;
