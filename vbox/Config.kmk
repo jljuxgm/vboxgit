@@ -1,4 +1,4 @@
-# $Id: Config.kmk 10023 2008-06-30 15:21:25Z vboxsync $
+# $Id: Config.kmk 10025 2008-06-30 15:53:46Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -199,7 +199,7 @@ VBOX_WITH_VBOXBFE = 1
 VBOX_WITH_QTGUI = 1
 # The Qt 4 GUI (experimental).
 ifndef VBOX_OSE
- if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.x86 win.x86)
+ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.x86 win.x86 win.amd64)
   VBOX_WITH_QT4GUI = 1
  endif
 endif
@@ -2866,7 +2866,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10023 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 10025 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
