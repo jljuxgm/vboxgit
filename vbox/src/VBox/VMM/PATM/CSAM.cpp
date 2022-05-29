@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 9658 2008-06-12 12:33:17Z vboxsync $ */
+/* $Id: CSAM.cpp 9659 2008-06-12 12:37:02Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2118,7 +2118,7 @@ CSAMR3DECL(int) CSAMR3CheckCodeEx(PVM pVM, RTSEL Sel, CPUMSELREGHID *pHiddenSel,
         fakeflags.u32 = 0;
 
         /* Assuming 32 bits code for now. */
-        Assert(SELMGetSelectorType(pVM, fakeflags, Sel, pHiddenSel) == CPUMODE_32BIT);
+        Assert(SELMGetCpuModeFromSelector(pVM, fakeflags, Sel, pHiddenSel) == CPUMODE_32BIT);
 
         pInstrGC = SELMToFlat(pVM, fakeflags, Sel, pHiddenSel, pInstrGC);
 

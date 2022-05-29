@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 9658 2008-06-12 12:33:17Z vboxsync $ */
+/* $Id: SELMAll.cpp 9659 2008-06-12 12:37:02Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -535,13 +535,13 @@ SELMDECL(int) SELMValidateAndConvertCSAddr(PVM pVM, X86EFLAGS eflags, RTSEL SelC
 
 
 /**
- * Return the selector type
+ * Return the cpu mode corresponding to the (CS) selector
  *
  * @returns DISCPUMODE according to the selector type (16, 32 or 64 bits)
  * @param   pVM     VM Handle.
  * @param   Sel     The selector.
  */
-static DISCPUMODE selmGetSelectorType(PVM pVM, RTSEL Sel)
+static DISCPUMODE selmGetCpuModeFromSelector(PVM pVM, RTSEL Sel)
 {
     Assert(!CPUMAreHiddenSelRegsValid(pVM));
 
@@ -560,7 +560,7 @@ static DISCPUMODE selmGetSelectorType(PVM pVM, RTSEL Sel)
 
 
 /**
- * Return the selector type
+ * Return the cpu mode corresponding to the (CS) selector
  *
  * @returns DISCPUMODE according to the selector type (16, 32 or 64 bits)
  * @param   pVM        VM Handle.
@@ -568,7 +568,7 @@ static DISCPUMODE selmGetSelectorType(PVM pVM, RTSEL Sel)
  * @param   Sel        The selector.
  * @param   pHiddenSel The hidden selector register.
  */
-SELMDECL(DISCPUMODE) SELMGetSelectorType(PVM pVM, X86EFLAGS eflags, RTSEL Sel, CPUMSELREGHID *pHiddenSel)
+SELMDECL(DISCPUMODE) SELMGetCpuModeFromSelector(PVM pVM, X86EFLAGS eflags, RTSEL Sel, CPUMSELREGHID *pHiddenSel)
 {
     if (!CPUMAreHiddenSelRegsValid(pVM))
     {
@@ -579,7 +579,7 @@ SELMDECL(DISCPUMODE) SELMGetSelectorType(PVM pVM, X86EFLAGS eflags, RTSEL Sel, C
             ||  eflags.Bits.u1VM)
             return CPUMODE_16BIT;
 
-        return selmGetSelectorType(pVM, Sel);
+        return selmGetCpuModeFromSelector(pVM, Sel);
     }
     if (    CPUMIsGuestInLongMode(pVM)
         &&  pHiddenSel->Attr.n.u1Long)
