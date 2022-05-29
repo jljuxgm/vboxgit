@@ -1,4 +1,4 @@
-/* $Id: SATAControllerImpl.cpp 8606 2008-05-05 16:02:31Z vboxsync $ */
+/* $Id: SATAControllerImpl.cpp 10082 2008-07-01 18:50:28Z vboxsync $ */
 
 /** @file
  *
@@ -56,7 +56,7 @@ void SATAController::FinalRelease()
 /////////////////////////////////////////////////////////////////////////////
 
 /**
- * Initializes the USB controller object.
+ * Initializes the SATA controller object.
  *
  * @returns COM result indicator.
  * @param aParent       Pointer to our parent object.
