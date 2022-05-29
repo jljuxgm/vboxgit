@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 10205 2008-07-04 08:22:55Z vboxsync $ */
+/* $Id: EM.cpp 10411 2008-07-09 12:26:37Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -3023,8 +3023,12 @@ static int emR3ForcedActions(PVM pVM, int rc)
             UPDATE_RC();
         }
 
+        /* Replays the handler notification changes. */
+        if (VM_FF_ISSET(pVM, VM_FF_REM_HANDLER_NOTIFY))
+            REMR3ReplayHandlerNotifications(pVM);
+
         /* check that we got them all  */
-        Assert(!(VM_FF_NORMAL_PRIORITY_MASK & ~(VM_FF_REQUEST | VM_FF_PDM_QUEUES | VM_FF_PDM_DMA)));
+        Assert(!(VM_FF_NORMAL_PRIORITY_MASK & ~(VM_FF_REQUEST | VM_FF_PDM_QUEUES | VM_FF_PDM_DMA | VM_FF_REM_HANDLER_NOTIFY)));
     }
 
     /*
