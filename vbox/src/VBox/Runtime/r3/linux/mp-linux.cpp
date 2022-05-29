@@ -1,4 +1,4 @@
-/* $Id: mp-linux.cpp 10442 2008-07-09 17:34:10Z vboxsync $ */
+/* $Id: mp-linux.cpp 10445 2008-07-09 18:21:07Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Linux.
  */
@@ -253,6 +253,7 @@ static uint32_t rtMpLinuxGetFrequency(RTCPUID idCpu)
     char sz[256];
     char *psz = NULL;
     RTCPUID idCpuFound = NIL_RTCPUID;
+    uint32_t freq = 0;
     while (fgets(sz, sizeof(sz), f))
     {
         if (   !strncmp(sz, "processor", 9)
@@ -274,10 +275,14 @@ static uint32_t rtMpLinuxGetFrequency(RTCPUID idCpu)
             int64_t v;
             int rc = RTStrToInt64Ex(psz, &psz, 0, &v);
             if (RT_SUCCESS(rc))
-                return v;
+            {
+                freq = v;
+                break;
+            }
         }
     }
-    return 0;
+    fclose(f);
+    return freq;
 }
 
 
