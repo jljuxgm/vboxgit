@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9266 2008-05-31 02:32:20Z vboxsync $
+# $Id: Makefile.kmk 10050 2008-07-01 01:05:00Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -19,8 +19,12 @@
 # additional information or have any questions.
 #
 
-DEPTH ?= ../../..
+ifdef VBOX_KBUILD_HACKING
+SUB_DEPTH = ../../..
+else
 SUB_DEPTH = .
+DEPTH    ?= ../../..
+endif
 include $(KBUILD_PATH)/subheader.kmk
 
 # include the sub-makefile first.
