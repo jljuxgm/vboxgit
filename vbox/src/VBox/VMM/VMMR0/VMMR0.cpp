@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 5640 2007-11-07 16:34:44Z vboxsync $ */
+/* $Id: VMMR0.cpp 5955 2007-12-04 17:33:00Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -506,7 +506,7 @@ VMMR0DECL(int) VMMR0EntryInt(PVM pVM, VMMR0OPERATION enmOperation, void *pvArg)
                     if (!s_fHaveWarned)
                     {
                          s_fHaveWarned = true;
-                         //RTLogPrintf("VMMR0.r0: The compiler can't find the stack frame!\n"); -- @todo export me!
+                         RTLogPrintf("VMMR0.r0: The compiler can't find the stack frame!\n");
                          RTLogComPrintf("VMMR0.r0: The compiler can't find the stack frame!\n");
                     }
 # endif
