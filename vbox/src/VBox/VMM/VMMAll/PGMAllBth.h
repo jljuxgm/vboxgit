@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 8533 2008-05-02 16:04:51Z vboxsync $ */
+/* $Id: PGMAllBth.h 8535 2008-05-02 16:08:33Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1692,6 +1692,7 @@ PGM_BTH_DECL(int, CheckPageFault)(PVM pVM, uint32_t uErr, PSHWPDE pPdeDst, PGSTP
     bool fNoExecuteBitValid = !!(CPUMGetGuestEFER(pVM) & MSR_K6_EFER_NXE);
 # endif
     unsigned uPageFaultLevel;
+    int rc;
 
     STAM_PROFILE_START(&pVM->pgm.s.CTXMID(Stat, DirtyBitTracking), a);
     LogFlow(("CheckPageFault: GCPtrPage=%VGv uErr=%#x PdeSrc=%08x\n", GCPtrPage, uErr, pPdeSrc->u));
@@ -1797,7 +1798,7 @@ PGM_BTH_DECL(int, CheckPageFault)(PVM pVM, uint32_t uErr, PSHWPDE pPdeDst, PGSTP
      * Map the guest page table.
      */
     PGSTPT pPTSrc;
-    int rc = PGM_GCPHYS_2_PTR(pVM, pPdeSrc->u & GST_PDE_PG_MASK, &pPTSrc);
+    rc = PGM_GCPHYS_2_PTR(pVM, pPdeSrc->u & GST_PDE_PG_MASK, &pPTSrc);
     if (VBOX_SUCCESS(rc))
     {
         /*
@@ -1953,7 +1954,7 @@ UpperLevelPageFault:
              * Map the guest page table.
              */
             PGSTPT pPTSrc;
-            int rc = PGM_GCPHYS_2_PTR(pVM, pPdeSrc->u & GST_PDE_PG_MASK, &pPTSrc);
+            rc = PGM_GCPHYS_2_PTR(pVM, pPdeSrc->u & GST_PDE_PG_MASK, &pPTSrc);
             if (VBOX_SUCCESS(rc))
             {
                 PGSTPTE         pPteSrc = &pPTSrc->a[(GCPtrPage >> GST_PT_SHIFT) & GST_PT_MASK];
