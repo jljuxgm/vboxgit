@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 8853 2008-05-15 13:57:31Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 8958 2008-05-20 14:33:56Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1710,7 +1710,9 @@ void pgmPoolClearAll(PVM pVM)
         }
     }
 
+#ifndef DEBUG_michael
     AssertMsg(cModifiedPages == pPool->cModifiedPages, ("%d != %d\n", cModifiedPages, pPool->cModifiedPages));
+#endif
     pPool->iModifiedHead = NIL_PGMPOOL_IDX;
     pPool->cModifiedPages = 0;
 
