@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 11691 2008-08-27 08:50:42Z vboxsync $ */
+/* $Id: EMAll.cpp 11692 2008-08-27 09:09:09Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2555,12 +2555,17 @@ EMDECL(int) EMInterpretRdmsr(PVM pVM, PCPUMCTXCORE pRegFrame)
         val = pCtx->msrKERNELGSBASE;
         break;
 
-#ifdef IN_RING0
+#if 0 /*def IN_RING0 */
+    case MSR_IA32_PLATFORM_ID:
     case MSR_IA32_BIOS_SIGN_ID:
         if (CPUMGetCPUVendor(pVM) == CPUMCPUVENDOR_INTEL)
         {
             /* Available since the P6 family. VT-x implies that this feature is present. */
-            val = ASMRdMsr(MSR_IA32_BIOS_SIGN_ID);
+            if (pRegFrame->ecx == MSR_IA32_PLATFORM_ID)
+                val = ASMRdMsr(MSR_IA32_PLATFORM_ID);
+            else
+            if (pRegFrame->ecx == MSR_IA32_BIOS_SIGN_ID)
+                val = ASMRdMsr(MSR_IA32_BIOS_SIGN_ID);
             break;
         }
         /* no break */
