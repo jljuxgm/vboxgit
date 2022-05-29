@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 9859 2008-06-20 14:43:24Z vboxsync $ */
+/* $Id: PGMAllBth.h 9860 2008-06-20 14:49:02Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1024,6 +1024,7 @@ PGM_BTH_DECL(int, InvalidatePage)(PVM pVM, RTGCUINTPTR GCPtrPage)
         pPml4eDst->u = 0;
         STAM_COUNTER_INC(&pVM->pgm.s.CTXMID(Stat,InvalidatePagePDNPs));
         PGM_INVL_PG(GCPtrPage);
+        return VINF_SUCCESS;
     }
 
 
@@ -1077,6 +1078,7 @@ PGM_BTH_DECL(int, InvalidatePage)(PVM pVM, RTGCUINTPTR GCPtrPage)
         pPdpeDst->u = 0;
         STAM_COUNTER_INC(&pVM->pgm.s.CTXMID(Stat,InvalidatePagePDNPs));
         PGM_INVL_PG(GCPtrPage);
+        return VINF_SUCCESS;
     }
 # endif
 
