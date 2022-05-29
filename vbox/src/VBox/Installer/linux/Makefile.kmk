@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9190 2008-05-28 08:44:35Z vboxsync $
+# $Id: Makefile.kmk 9548 2008-06-09 13:44:08Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -28,7 +28,6 @@ endif
 
 VBOX_NO_LINUX_RUN_INSTALLER ?= $(VBOX_OSE)
 
-PROGRAMS       = VBoxTunctl
 PACKING        = $(if $(VBOX_NO_LINUX_RUN_INSTALLER),,\
 		 $(PATH_BIN)/VirtualBox.run $(PATH_BIN)/VirtualBox-dbg.tar.bz2)
 PACKING       += $(PATH_BIN)/VirtualBox.tar.bz2
@@ -39,9 +38,6 @@ OTHER_CLEAN    = $(addprefix $(PATH_TARGET)/install/,\
 	         $(wildcard $(PATH_TARGET)/VirtualBox-*) \
 		 $(PATH_TARGET)/vboxdrv.sh $(PATH_TARGET)/vboxnet.sh
 INSTALLS       = linux-bin linux-doc
-
-VBoxTunctl_TEMPLATE = VBOXR3EXE
-VBoxTunctl_SOURCES  = tunctl.c
 
 #
 # Linux installs.
