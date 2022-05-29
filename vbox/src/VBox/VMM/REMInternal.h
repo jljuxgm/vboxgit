@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 7621 2008-03-28 10:22:43Z vboxsync $ */
+/* $Id: REMInternal.h 7622 2008-03-28 10:23:22Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -127,7 +127,9 @@ typedef struct REMPHYSREGISTRATION
     RTGCPHYS        GCPhys;
     RTHCUINTPTR     HCVirt;
     RTUINT          cb;
+#if HC_ARCH_BITS == 64
     uint32_t        u32Padding;
+#endif
 } REMPHYSREGISTRATION, *PREMPHYSREGISTRATION;
 
 /**
