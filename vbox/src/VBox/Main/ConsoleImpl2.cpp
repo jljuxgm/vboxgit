@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 5755 2007-11-15 13:03:25Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 5972 2007-12-05 19:26:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1400,7 +1400,21 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 rc = CFGMR3InsertInteger(pCfg,  "First",    0);                             RC_CHECK();
                 rc = CFGMR3InsertInteger(pCfg,  "Last",     0);                             RC_CHECK();
             }
+            else
 #endif
+            {
+                /*
+                 * Enable the 2.0 -> 1.1 device morphing of proxied devies to keep windows quiet.
+                 */
+                rc = CFGMR3InsertNode(pRoot, "USB", &pCfg);                                RC_CHECK();
+                rc = CFGMR3InsertNode(pCfg, "USBProxy", &pCfg);                            RC_CHECK();
+                rc = CFGMR3InsertNode(pCfg, "GlobalConfig", &pCfg);                        RC_CHECK();
+                rc = CFGMR3InsertInteger(pCfg, "Force11Device", true);                     RC_CHECK();
+                // The following breaks stuff, but it makes MSDs work in vista. (I include it here so
+                // that it's documented somewhere.) Users needing it can use:
+                //      VBoxManage setextradata "myvm" "VBoxInternal/USB/USBProxy/GlobalConfig/Force11PacketSize" 1
+                //rc = CFGMR3InsertInteger(pCfg, "Force11PacketSize", true);                  RC_CHECK();
+            }
         }
     }
 
