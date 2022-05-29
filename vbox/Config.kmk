@@ -1,4 +1,4 @@
-# $Id: Config.kmk 11341 2008-08-11 17:21:36Z vboxsync $
+# $Id: Config.kmk 11392 2008-08-13 14:54:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1015,7 +1015,8 @@ endif
 # XPCOM setup for all but win32.
 ifneq ($(KBUILD_TARGET),win)
  VBOX_WITH_XPCOM      = 1
- VBOX_XPIDL          ?= $(VBOX_PATH_SDK)/bin/xpidl$(HOSTSUFF_EXE)
+ # if updating, also update xpidl_INST var in src/libs/xpcom18a4/Makefile.kmk
+ VBOX_XPIDL          ?= $(PATH_BIN)/xpidl$(HOSTSUFF_EXE)
  VBOX_PATH_XPCOM_IDL ?= $(VBOX_PATH_SDK)/idl
  VBOX_XPCOM_INCS     ?= \
 	$(VBOX_PATH_SDK)/include \
@@ -2952,7 +2953,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11341 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11392 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

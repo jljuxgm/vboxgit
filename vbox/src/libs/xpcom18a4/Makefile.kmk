@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10201 2008-07-04 04:46:17Z vboxsync $
+# $Id: Makefile.kmk 11392 2008-08-13 14:54:17Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -575,7 +575,7 @@ IPCD-HEADERS_SOURCES = \
 xpidl_TEMPLATE = XPCOMBLDPROG
 xpidl_DEFS = EXPORT_XPT_API
 ## @todo This assumes HOST == TARGET.
-xpidl_INST = $(INST_SDK)bin/
+xpidl_INST = bin/
 xpidl_SOURCES = \
 	xpcom/typelib/xpidl/xpidl.c \
 	xpcom/typelib/xpidl/xpidl_idl.c \
