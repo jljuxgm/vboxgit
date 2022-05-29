@@ -1,4 +1,4 @@
-/* $Id: tstIntNetR0.cpp 10819 2008-07-22 17:58:54Z vboxsync $ */
+/* $Id: tstIntNetR0.cpp 10847 2008-07-23 22:05:46Z vboxsync $ */
 /** @file
  * Internal networking - Usermode testcase for the kernel mode bits.
  *
@@ -467,6 +467,20 @@ int main(int argc, char **argv)
                         RTPrintf("tstIntNetR0: INTNETIfGetRing0Buffer failed! pBuf1=%p rc=%Vrc\n", pBuf1, rc);
                         g_cErrors++;
                     }
+
+                    rc = INTNETR0IfSetActive(pIntNet, hIf0, g_pSession, true);
+                    if (VBOX_FAILURE(rc))
+                    {
+                        RTPrintf("tstIntNetR0: INTNETR0IfSetActive failed! rc=%Rrc\n", rc);
+                        g_cErrors++;
+                    }
+                    rc = INTNETR0IfSetActive(pIntNet, hIf1, g_pSession, true);
+                    if (VBOX_FAILURE(rc))
+                    {
+                        RTPrintf("tstIntNetR0: INTNETR0IfSetActive failed! rc=%Rrc\n", rc);
+                        g_cErrors++;
+                    }
+
 
                     /*
                      * Test basic waiting.
