@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5999 2007-12-07 15:05:06Z vboxsync $
+# $Id: Makefile.kmk 6190 2007-12-27 15:55:11Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxGINA.
 #
@@ -26,7 +26,8 @@ VBoxGINA_SOURCES  = \
 	VBoxGINA.cpp \
 	Helper.cpp  \
 	Dialog.cpp \
-	VBoxGINA.def
+	VBoxGINA.def \
+	VBoxGINA.rc
 VBoxGINA_LIBS     = \
 	$(PATH_LIB)/additions/RuntimeW32GuestR3$(VBOXW32GUEST_SUFF_LIB)
 
