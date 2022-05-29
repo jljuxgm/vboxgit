@@ -1,4 +1,4 @@
-/* $Id: fs.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: fs.cpp 9785 2008-06-18 10:48:49Z vboxsync $ */
 /** @file
  * IPRT - File System.
  */
@@ -132,9 +132,9 @@ RTFMODE rtFsModeFromUnix(RTFMODE fMode, const char *pszName, unsigned cbName)
 RTFMODE rtFsModeNormalize(RTFMODE fMode, const char *pszName, unsigned cbName)
 {
     if (!(fMode & RTFS_UNIX_MASK))
-        rtFsModeFromDos(fMode, pszName, cbName);
+        fMode = rtFsModeFromDos(fMode, pszName, cbName);
     else if (!(fMode & RTFS_DOS_MASK))
-        rtFsModeFromUnix(fMode, pszName, cbName);
+        fMode = rtFsModeFromUnix(fMode, pszName, cbName);
     else if (!(fMode & RTFS_TYPE_MASK))
         fMode |= fMode & RTFS_DOS_DIRECTORY ? RTFS_TYPE_DIRECTORY : RTFS_TYPE_FILE;
     else if (RTFS_IS_DIRECTORY(fMode))
