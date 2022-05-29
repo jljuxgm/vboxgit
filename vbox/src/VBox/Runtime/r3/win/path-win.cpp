@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 7401 2008-03-10 13:48:33Z vboxsync $ */
+/* $Id: path-win.cpp 7403 2008-03-10 13:54:42Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Path manipulation.
  */
@@ -475,7 +475,7 @@ RTDECL(bool) RTPathExists(const char *pszPath)
      * Try query file info.
      */
 #ifndef RT_DONT_CONVERT_FILENAMES
-    PRT16UTF pwszPath;
+    PRTUTF16 pwszPath;
     int rc = RTStrUtf8ToUcs2(&pwszPath, pszPath);
     if (RT_SUCCESS(rc))
     {
