@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 7015 2008-02-19 13:14:15Z vboxsync $ */
+/* $Id: PATMInternal.h 7046 2008-02-20 15:45:18Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -427,6 +427,9 @@ typedef struct PATM
     {
         RTGCPHYS            GCPhys;
         RTGCPTR             pCachedData;
+#if GC_ARCH_BITS == 32
+        RTGCPTR             Alignment0; /**< Align the structure size on a 8-byte boundrary. */
+#endif
     } mmio;
 
     /* Temporary storage during load/save state */
