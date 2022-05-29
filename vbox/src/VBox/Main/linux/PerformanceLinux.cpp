@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 10880 2008-07-25 08:30:15Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 10881 2008-07-25 08:51:57Z vboxsync $ */
 
 /** @file
  *
@@ -21,15 +21,12 @@
  * additional information or have any questions.
  */
 
+#include <unistd.h>
 #include <stdio.h>
 #include <iprt/alloc.h>
 #include <iprt/err.h>
 #include <iprt/string.h>
 #include "Performance.h"
-
-#ifndef PAGESIZE
-#define PAGESIZE _SC_PAGESIZE
-#endif
 
 namespace pm {
 
@@ -44,7 +41,7 @@ public:
     virtual int getRawProcessCpuLoad(RTPROCESS process, uint64_t *user, uint64_t *kernel, uint64_t *total);
 private:
     int getRawProcessStats(RTPROCESS process, uint64_t *cpuUser, uint64_t *cpuKernel, unsigned long *memPagesUsed);
-    long getPageSize() { return sysconf(PAGESIZE); };
+    long getPageSize() { return getpagesize(); };
 };
 
 // Linux Metric factory
