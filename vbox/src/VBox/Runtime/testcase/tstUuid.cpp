@@ -1,4 +1,4 @@
-/* $Id: tstUuid.cpp 11538 2008-08-21 15:16:07Z vboxsync $ */
+/* $Id: tstUuid.cpp 11539 2008-08-21 15:17:43Z vboxsync $ */
 /** @file
  * IPRT Testcase - UUID.
  */
@@ -105,7 +105,7 @@ int main(int argc, char **argv)
     CHECK_EXPR(RTUuidCompare(&Uuid, &Uuid3) == 0);
     CHECK_EXPR(memcmp(&Uuid3, &Uuid, sizeof(Uuid)) == 0);
 
-#if 1 /** @todo make less verbose and print the bits that remain unchanged. */
+#if 0 /** @todo make less verbose and print the bits that remain unchanged. */
     /*
      * checking the clock seq and time hi and version bits...
      */
