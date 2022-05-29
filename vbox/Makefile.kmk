@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 8032 2008-04-16 12:20:46Z vboxsync $
+# $Id: Makefile.kmk 8058 2008-04-16 18:34:53Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -572,6 +572,7 @@ additions-packing:
 	+ $(KMK) VBOX_ONLY_ADDITIONS=1 \
 		VBOX_WITH_ADDITIONS_ISO.win.x86=1 \
 		VBOX_WITH_ADDITIONS_ISO.linux.x86=1 \
+		VBOX_WITH_ADDITIONS_ISO.solaris.x86=1 \
 		-C src/VBox/Additions \
 		$(VBOX_PATH_ADDITIONS)/VBoxGuestAdditions.iso
 
