@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 7759 2008-04-05 11:36:02Z vboxsync $
+# $Id: Makefile.kmk 7872 2008-04-10 15:19:52Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -349,8 +349,7 @@ ifdef VBOX_WITH_E1000
  VBoxDDGC_DEFS         += VBOX_WITH_E1000
  VBoxDDGC_SOURCES      += \
 	Network/DevE1000.cpp \
-	Network/DevE1000Phy.cpp \
-	Network/DevEEPROM.cpp
+	Network/DevE1000Phy.cpp
 endif
 
 ifdef VBOX_WITH_USB
@@ -408,8 +407,7 @@ ifdef VBOX_WITH_E1000
  VBoxDDR0_DEFS         += VBOX_WITH_E1000
  VBoxDDR0_SOURCES      += \
 	Network/DevE1000.cpp \
-	Network/DevE1000Phy.cpp \
-	Network/DevEEPROM.cpp
+	Network/DevE1000Phy.cpp
 endif
 
 ifdef VBOX_WITH_USB
