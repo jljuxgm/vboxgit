@@ -1,4 +1,4 @@
-/* $Id: strlen_alias.c 9506 2008-06-08 03:07:08Z vboxsync $ */
+/* $Id: strlen_alias.c 10137 2008-07-03 04:12:26Z vboxsync $ */
 /** @file
  * IPRT - No-CRT strlen() alias for gcc.
  */
@@ -41,7 +41,7 @@
 # endif
 
 /* No alias support here (yet in the ming case). */
-extern char *(strlen)(const char *psz)
+extern size_t (strlen)(const char *psz)
 {
     return RT_NOCRT(strlen)(psz);
 }
