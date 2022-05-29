@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 10896 2008-07-25 23:58:01Z vboxsync $ */
+/* $Id: HostImpl.h 11258 2008-08-08 14:38:28Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -81,6 +81,7 @@ public:
     STDMETHOD(COMGETTER(USBDeviceFilters))(IHostUSBDeviceFilterCollection ** aUSBDeviceFilters);
     STDMETHOD(COMGETTER(NetworkInterfaces))(IHostNetworkInterfaceCollection **networkInterfaces);
     STDMETHOD(COMGETTER(ProcessorCount))(ULONG *count);
+    STDMETHOD(COMGETTER(ProcessorOnlineCount))(ULONG *count);
     STDMETHOD(GetProcessorSpeed)(ULONG cpuId, ULONG *speed);
     STDMETHOD(GetProcessorDescription)(ULONG cpuId, BSTR *description);
     STDMETHOD(COMGETTER(MemorySize))(ULONG *size);
