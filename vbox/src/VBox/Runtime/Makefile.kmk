@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 9228 2008-05-29 15:23:15Z vboxsync $
+# $Id: Makefile.kmk 9236 2008-05-29 21:41:45Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -929,6 +929,7 @@ RuntimeR0Drv_SOURCES.linux = \
 	r0drv/linux/semfastmutex-r0drv-linux.c \
 	r0drv/linux/spinlock-r0drv-linux.c \
 	r0drv/linux/thread-r0drv-linux.c \
+	r0drv/linux/time-r0drv-linux.c \
 	r0drv/memobj-r0drv.cpp
 ## @todo thread2-r0drv-linux.c, timer-r0drv-linux.c and assert-r0drv-linux.c
 
