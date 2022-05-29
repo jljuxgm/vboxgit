@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 7676 2008-04-01 09:18:10Z vboxsync $ */
+/* $Id: PGMAllShw.h 7677 2008-04-01 12:20:28Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -72,11 +72,12 @@
 #if PGM_SHW_TYPE == PGM_TYPE_AMD64
 # define SHW_PDPTR_SHIFT        X86_PDPTR_SHIFT
 # define SHW_PDPTR_MASK         X86_PDPTR_MASK
+# define SHW_TOTAL_PD_ENTRIES   (X86_PG_AMD64_ENTRIES*X86_PG_AMD64_PDPE_ENTRIES)
 # define SHW_POOL_ROOT_IDX      PGMPOOL_IDX_PML4
 #else /* 32 bits PAE mode */
 # define SHW_PDPTR_SHIFT        X86_PDPTR_SHIFT
 # define SHW_PDPTR_MASK         X86_PDPTR_MASK_32
-# define SHW_TOTAL_PD_ENTRIES   (X86_PG_PAE_ENTRIES*X86_PG_PAE_PDPTE_ENTRIES)
+# define SHW_TOTAL_PD_ENTRIES   (X86_PG_PAE_ENTRIES*X86_PG_PAE_PDPE_ENTRIES)
 # define SHW_POOL_ROOT_IDX      PGMPOOL_IDX_PAE_PD
 #endif
 #endif

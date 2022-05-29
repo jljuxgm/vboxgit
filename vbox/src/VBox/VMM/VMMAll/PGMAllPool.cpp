@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 7676 2008-04-01 09:18:10Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 7677 2008-04-01 12:20:28Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2988,7 +2988,7 @@ static void pgmPoolFlushAllSpecialRoots(PPGMPOOL pPool)
                 break;
 
             case PGMPOOLKIND_ROOT_PAE_PD:
-                for (unsigned iPage = 0; iPage < X86_PG_PAE_ENTRIES * X86_PG_PAE_PDPTE_ENTRIES; iPage++)
+                for (unsigned iPage = 0; iPage < X86_PG_PAE_ENTRIES * X86_PG_PAE_PDPE_ENTRIES; iPage++)
                     if ((u.pau64[iPage] & (PGM_PDFLAGS_MAPPING | X86_PDE_P)) == X86_PDE_P)
                         u.pau64[iPage] = 0;
                 break;
