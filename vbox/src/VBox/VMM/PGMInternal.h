@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 8458 2008-04-29 12:00:53Z vboxsync $ */
+/* $Id: PGMInternal.h 8460 2008-04-29 12:10:47Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1976,6 +1976,9 @@ typedef struct PGM
     /** @name AMD64 Shadow Paging
      * Extends PAE Paging.
      * @{ */
+#if GC_ARCH_BITS == 32 && HC_ARCH_BITS == 64
+    RTGCPTR                    alignment5; /**< structure size alignment. */
+#endif
     /** The Page Map Level 4 table - HC Ptr. */
     R3R0PTRTYPE(PX86PML4)       pHCPaePML4;
     /** The Physical Address (HC) of the Page Map Level 4 table. */
