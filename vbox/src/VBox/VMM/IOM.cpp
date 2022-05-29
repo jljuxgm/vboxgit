@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 9293 2008-06-02 12:18:45Z vboxsync $ */
+/* $Id: IOM.cpp 9294 2008-06-02 12:20:51Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -733,7 +733,7 @@ IOMR3DECL(int)  IOMR3IOPortRegisterR0(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT Port
                                       R0PTRTYPE(PFNIOMIOPORTOUTSTRING) pfnOutStrCallback, R0PTRTYPE(PFNIOMIOPORTINSTRING) pfnInStrCallback,
                                       const char *pszDesc)
 {
-    LogFlow(("IOMR3IOPortRegisterR0: pDevIns=%p PortStart=%#x cPorts=%#x pvUser=%VHv pfnOutCallback=%VGv pfnInCallback=%VGv pfnOutStrCallback=%VGv  pfnInStrCallback=%VGv pszDesc=%s\n",
+    LogFlow(("IOMR3IOPortRegisterR0: pDevIns=%p PortStart=%#x cPorts=%#x pvUser=%VHv pfnOutCallback=%VHv pfnInCallback=%VHv pfnOutStrCallback=%VHv  pfnInStrCallback=%VHv pszDesc=%s\n",
              pDevIns, PortStart, cPorts, pvUser, pfnOutCallback, pfnInCallback, pfnOutStrCallback, pfnInStrCallback, pszDesc));
 
     /*
