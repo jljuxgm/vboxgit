@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 7169 2008-02-27 13:16:24Z vboxsync $ */
+/* $Id: fileio-win.cpp 7426 2008-03-12 09:46:29Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - File I/O, native implementation for the Windows host platform.
  */
@@ -228,7 +228,7 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
                               dwFlagsAndAttributes,
                               NULL);
 #else
-    PRTUCS2 pwszFilename;
+    PRTUTF16 pwszFilename;
     rc = RTStrToUtf16(pszFilename, &pwszFilename);
     if (RT_FAILURE(rc))
         return rc;
