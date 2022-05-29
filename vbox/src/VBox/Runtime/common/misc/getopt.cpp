@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 8147 2008-04-18 13:49:01Z vboxsync $ */
+/* $Id: getopt.cpp 8148 2008-04-18 13:52:58Z vboxsync $ */
 /** @file
  * innotek Portable Runtime - Command Line Parsing
  */
@@ -53,6 +53,7 @@ RTDECL(int) RTGetOpt(int argc, char **argv, PCRTOPTIONDEF paOptions, size_t cOpt
         for (size_t i = 0; i < cOptions; i++)
         {
             Assert(!(paOptions[i].fFlags & ~RTGETOPT_VALID_MASK));
+            Assert(paOptions[i].iShort > 0);
 
             if ((paOptions[i].fFlags & RTGETOPT_REQ_MASK) != RTGETOPT_REQ_NOTHING)
             {
