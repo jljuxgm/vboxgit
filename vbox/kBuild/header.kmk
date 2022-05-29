@@ -1,4 +1,4 @@
-# $Id: header.kmk 1390 2008-02-03 21:53:30Z bird $
+# $Id: header.kmk 1441 2008-03-30 05:31:21Z bird $
 ## @file
 #
 # kBuild - File included at top of a makefile.
@@ -29,6 +29,7 @@ ifndef __header_kmk__
 ifdef KBUILD_PROFILE_SELF
  _KBUILD_TS_HEADER_START := $(nanots ) # just a dummy warm up query
  $(info prof: since start - since previous - event description)
+ $(info stat: $(make-stats ))
  _KBUILD_TS_HEADER_START := $(nanots )
  _KBUILD_TS_PREV := $(_KBUILD_TS_HEADER_START)
 endif
@@ -56,7 +57,7 @@ endif
 # The revision in which this file was last modified.
 # This can be useful when using development versions of kBuild.
 #
-KMK_REVISION := $(patsubst %:,,  $Rev: 1390 $  )
+KMK_REVISION := $(patsubst %:,,  $Rev: 1441 $  )
 
 
 #
@@ -130,6 +131,15 @@ DOLLAR := $$
 ##
 # Equal character.
 EQUAL := =
+
+
+#
+# The list of standard build types in kBuild.
+#
+# This list can be extended in Config.kmk and it's possible to extend
+# (inherit) another build type.
+#
+KBUILD_BLD_TYPES := release profile debug
 
 
 #
@@ -554,22 +564,48 @@ TARGET_PATH = $(PATH_TARGET)/$(1)
 # others can add stuff to if they like for processing in the footer.
 #
 
-## TEMPLATE_PATHS
+## KBUILD_TEMPLATE_PATHS
 # List a paths (separated by space) where templates can be found.
-TEMPLATE_PATHS :=
+KBUILD_TEMPLATE_PATHS :=
 
-## TOOL_PATHS
+## KBUILD_TOOL_PATHS
 # List of paths (separated by space) where tools can be found.
-TOOL_PATHS :=
+KBUILD_TOOL_PATHS :=
 
-## SDK_PATHS
+## KBUILD_SDK_PATHS
 # List of paths (separated by space) where SDKs can be found.
-SDK_PATHS :=
+KBUILD_SDK_PATHS :=
+
+## KBUILD_DEFAULT_PATHS
+# List of paths (separated by space) to search for stuff as a last resort.
+KBUILD_DEFAULT_PATHS :=
 
 ## Proritized list of the default makefile when walking subdirectories.
 # The user can overload this list.
 DEFAULT_MAKEFILE := Makefile.kmk makefile.kmk Makefile makefile
 
+## KBUILD_SRC_HANDLERS
+# The list of source handlers, pair of extension and handler.
+# The user can overload this list to provide additional or custom
+# handlers. On a per-target/template see SRC_HANDLERS.
+KBUILD_SRC_HANDLERS := \
+  .c:def_src_handler_c \
+  .C:def_src_handler_c \
+.cxx:def_src_handler_cxx \
+.CXX:def_src_handler_cxx \
+.cpp:def_src_handler_cxx \
+.CPP:def_src_handler_cxx \
+ .cc:def_src_handler_cxx \
+ .CC:def_src_handler_cxx \
+  .m:def_src_handler_objc \
+.asm:def_src_handler_asm \
+.ASM:def_src_handler_asm \
+  .s:def_src_handler_asm \
+  .S:def_src_handler_asm \
+ .rc:def_src_handler_rc \
+.obj:def_src_handler_obj \
+  .o:def_src_handler_obj \
+.res:def_src_handler_obj
 
 ## PROPS_TOOLS
 # This is a subset of PROPS_SINGLE.
@@ -578,12 +614,12 @@ PROPS_TOOLS := TOOL CTOOL CXXTOOL OBJCTOOL ASTOOL RCTOOL ARTOOL LDTOOL FETCHTOOL
 ## PROPS_SINGLE
 # The list of non-accumulative target properties.
 # A Config.kmk file can add it's own properties to this list and kBuild
-# will do the necessary inheritance from templates to targets.
-PROPS_SINGLE := $(PROPS_TOOLS) INST NOINST BLD_TYPE BLD_TRG BLD_TRG_ARCH BLD_TRG_CPU FETCHDIR \
+# will do the necessary inheritance for templates, sdks, tools and targets.
+PROPS_SINGLE := $(PROPS_TOOLS) TEMPLATE INST NOINST BLD_TYPE BLD_TRG BLD_TRG_ARCH BLD_TRG_CPU FETCHDIR \
 	OBJSUFF COBJSUFF CXXOBJSUFF OBJCOBJSUFF ASOBJSUFF RCOBJSUFF SYSSUFF EXESUFF DLLSUFF LIBSUFF ARLIBSUFF
 ## PROPS_SINGLE_LNK
 # Subset of PROPS_SINGLE which applies to all linkable targets.
-PROPS_SINGLE_LNK := TOOL CTOOL CXXTOOL OBJCTOOL ASTOOL RCTOOL \
+PROPS_SINGLE_LNK := TOOL TEMPLATE CTOOL CXXTOOL OBJCTOOL ASTOOL RCTOOL \
     INST NOINST BLD_TYPE BLD_TRG BLD_TRG_ARCH BLD_TRG_CPU \
 	OBJSUFF COBJSUFF CXXOBJSUFF OBJCOBJSUFF ASOBJSUFF RCOBJSUFF
 
@@ -625,14 +661,14 @@ PROPS_ACCUMULATE_R_LNK := \
 # A Config.kmk file can add it's own properties to this list and kBuild
 # will do the necessary inheritance from templates to targets.
 PROPS_ACCUMULATE_L := \
-	SDKS SOURCES \
+	SDKS SOURCES SRC_HANDLERS INTERMEDIATES \
 	INCS CINCS CXXINCS OBJCINCS ASINCS RCINCS \
 	LIBS LIBPATH \
 	DIRS BLDDIRS CLEAN
 ## PROPS_ACCUMULATE_L_LNK
 # Subset of PROPS_ACCUMULATE_L which applies to all linkable targets.
 PROPS_ACCUMULATE_L_LNK := \
-	SDKS SOURCES \
+	SDKS SOURCES SRC_HANDLERS \
 	INCS CINCS CXXINCS OBJCINCS ASINCS RCINCS \
 	BLDDIRS CLEAN
 
@@ -675,7 +711,7 @@ PROPS_SYSMODS_ACCUMULATE_L   := $(PROPS_ACCUMULATE_L_LNK) LIBS LIBPATH
 
 ## @name Properties valid on installs (INSTALLS)
 ## @{
-PROPS_INSTALLS_SINGLE        := TOOL INST NOINST
+PROPS_INSTALLS_SINGLE        := TOOL TEMPLATE INST NOINST
 PROPS_INSTALLS_DEFERRED      := INSTFUN INSTALLER
 PROPS_INSTALLS_ACCUMULATE_R  := DEPS ORDERDEPS
 PROPS_INSTALLS_ACCUMULATE_L  := SOURCES DIRS CLEAN
@@ -683,7 +719,7 @@ PROPS_INSTALLS_ACCUMULATE_L  := SOURCES DIRS CLEAN
 
 ## @name Properties valid on fetches (INSTALLS)
 ## @{
-PROPS_FETCHES_SINGLE         := TOOL FETCHTOOL UNPACKTOOL PATCHTOOL INST FETCHDIR
+PROPS_FETCHES_SINGLE         := TOOL TEMPLATE FETCHTOOL UNPACKTOOL PATCHTOOL INST FETCHDIR
 PROPS_FETCHES_DEFERRED       :=
 PROPS_FETCHES_ACCUMULATE_R   := FETCHFLAGS UNPACKFLAGS PATCHFLAGS
 PROPS_FETCHES_ACCUMULATE_L   := SOURCES
@@ -829,6 +865,17 @@ endif
 
 
 #
+# Legacy variable translation.
+# These will be eliminated when switching to the next version.
+#
+ifdef USE_KOBJCACHE
+ ifndef KBUILD_USE_KOBJCACHE
+  export KBUILD_USE_KOBJCACHE := $(USE_KOBJCACHE)
+ endif
+endif
+
+
+#
 # This is how we find the closest config.kmk.
 # It's a little hacky but I think it works fine.
 #
@@ -852,12 +899,14 @@ endif
 ifdef KBUILD_PROFILE_SELF
  _KBUILD_TS_NOW := $(nanots )
  $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - including $(_CFGFILE))
+ $(info stat: $(make-stats ))
  _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 
  include $(_CFGFILE)
 
  _KBUILD_TS_NOW := $(nanots )
  $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - included $(_CFGFILE))
+ $(info stat: $(make-stats ))
  _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 else
  include $(_CFGFILE)
@@ -1026,9 +1075,28 @@ else
 endif
 
 
+#
+# Validate any KBUILD_BLD_TYPES additions and finally the BUILD_TYPE.
+#
+if1of ($(KBUILD_BLD_TYPES), $(KBUILD_OSES))
+ $(error kBuild: found KBUILD_BLD_TYPES in KBUILD_OSES!)
+endif
+if1of ($(KBUILD_BLD_TYPES), $(KBUILD_ARCHES))
+ $(error kBuild: found KBUILD_BLD_TYPES in KBUILD_ARCHES!)
+endif
+if1of ($(KBUILD_OSES), $(KBUILD_ARCHES))
+ $(error kBuild: found KBUILD_OSES in KBUILD_ARCHES!)
+endif
+ifn1of ($(BUILD_TYPE), $(KBUILD_BLD_TYPES))
+ $(error kBuild: BUILD_TYPE(=$(BUILD_TYPE)) is not found in KBUILD_BLD_TYPES(=$(KBUILD_BLD_TYPES))!)
+endif
+
+
+
 ifdef KBUILD_PROFILE_SELF
  _KBUILD_TS_HEADER_END := $(nanots )
  $(info prof: $(int-sub $(_KBUILD_TS_HEADER_END), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_HEADER_END), $(_KBUILD_TS_PREV)) - end of header.kmk)
+ $(info stat: $(make-stats ))
  _KBUILD_TS_PREV := $(_KBUILD_TS_HEADER_END)
 endif
 
