@@ -1,4 +1,4 @@
-# $Id: Config.kmk 6275 2008-01-08 13:40:48Z vboxsync $
+# $Id: Config.kmk 6282 2008-01-08 14:59:57Z vboxsync $
 ## @file
 #
 # The global build configuration file for VBox.
@@ -408,13 +408,13 @@ endif
 ifdef VBOX_WITH_ADDITIONS_FROM_BUILD_SERVER
  VBOX_WITHOUT_ADDITIONS := 1
  ifdef VBOX_ONLY_ADDITIONS
-  $(error VBOX_ONLY_ADDITIONS + VBOX_WITH_ADDITIONS_FROM_BUILD_SERVER doesn't add up!)
+  $(error VBOX_ONLY_ADDITIONS + VBOX_WITH_ADDITIONS_FROM_BUILD_SERVER does not add up!)
  endif
 endif
 
 ifdef VBOX_ONLY_ADDITIONS
  ifdef VBOX_WITHOUT_ADDITIONS
-  $(error VBOX_ONLY_ADDITIONS + VBOX_WITHOUT_ADDITIONS doesn't add up!)
+  $(error VBOX_ONLY_ADDITIONS + VBOX_WITHOUT_ADDITIONS does not add up!)
  endif
 endif
 
@@ -2801,7 +2801,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6275 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 6282 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
