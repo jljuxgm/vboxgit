@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 9092 2008-05-23 16:03:14Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 9110 2008-05-26 10:01:07Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1045,7 +1045,8 @@ ResumeExecution:
 
     /* Note: no reason to sync back the CRx and DRx registers. They can't be changed by the guest. */
     /* Note: only in the nested paging case can CR3 & CR4 be changed by the guest. */
-    if (pVM->hwaccm.s.fNestedPaging)
+    if (    pVM->hwaccm.s.fNestedPaging
+        &&  pCtx->cr3 != pVMCB->guest.u64CR3)
     {
         CPUMSetGuestCR3(pVM, pVMCB->guest.u64CR3);
         PGMUpdateCR3(pVM, pVMCB->guest.u64CR3);
