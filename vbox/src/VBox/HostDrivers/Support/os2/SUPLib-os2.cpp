@@ -1,4 +1,4 @@
-/* $Id: SUPLib-os2.cpp 13858 2008-11-05 13:45:41Z vboxsync $ */
+/* $Id: SUPLib-os2.cpp 13865 2008-11-05 14:14:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - OS/2 specific parts.
  */
@@ -152,8 +152,9 @@ int suplibOsIOCtl(PSUPLIBDATA pThis, uintptr_t uFunction, void *pvReq, size_t cb
 }
 
 
-int suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction, unsigned idCpu)
+int suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction, uintptr_t idCpu)
 {
+    NOREF(idCpu);
     int32_t rcRet = VERR_INTERNAL_ERROR;
     int rc = DosDevIOCtl((HFILE)pThis->hDevice, SUP_CTL_CATEGORY_FAST, uFunction,
                          NULL, 0, NULL,

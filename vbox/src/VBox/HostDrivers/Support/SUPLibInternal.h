@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 13858 2008-11-05 13:45:41Z vboxsync $ */
+/* $Id: SUPLibInternal.h 13865 2008-11-05 14:14:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -250,7 +250,7 @@ int     suplibOsUninstall(void);
 int     suplibOsInit(PSUPLIBDATA pThis, bool fPreInited);
 int     suplibOsTerm(PSUPLIBDATA pThis);
 int     suplibOsIOCtl(PSUPLIBDATA pThis, uintptr_t uFunction, void *pvReq, size_t cbReq);
-int     suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction, unsigned idCPU);
+int     suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction, uintptr_t idCpu);
 int     suplibOsPageAlloc(PSUPLIBDATA pThis, size_t cPages, void **ppvPages);
 int     suplibOsPageFree(PSUPLIBDATA pThis, void *pvPages, size_t cPages);
 

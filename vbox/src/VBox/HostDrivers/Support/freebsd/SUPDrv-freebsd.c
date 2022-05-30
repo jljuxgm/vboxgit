@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 13862 2008-11-05 13:54:02Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 13865 2008-11-05 14:14:11Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -370,7 +370,7 @@ static int VBoxDrvFreeBSDIOCtl(struct cdev *pDev, u_long ulCmd, caddr_t pvData, 
     if (    ulCmd == SUP_IOCTL_FAST_DO_RAW_RUN
         ||  ulCmd == SUP_IOCTL_FAST_DO_HWACC_RUN
         ||  ulCmd == SUP_IOCTL_FAST_DO_NOP)
-        return supdrvIOCtlFast(uCmd, 0 /* @todo VMCPU id. */, &g_VBoxDrvFreeBSDDevExt, pSession);
+        return supdrvIOCtlFast(uCmd, *(uint32_t *)pvData, &g_VBoxDrvFreeBSDDevExt, pSession);
 
     return VBoxDrvFreeBSDIOCtlSlow(pSession, ulCmd, pvData, pTd);
 }
