@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12179 2008-09-06 14:38:12Z vboxsync $
+# $Id: Config.kmk 12185 2008-09-07 18:09:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2745,19 +2745,24 @@ else # the gcc guys:
  TEMPLATE_VBOXQTGUIEXE_CXXFLAGS.linux = -pthread
  TEMPLATE_VBOXQTGUIEXE_LDFLAGS.x86 = -m32
  TEMPLATE_VBOXQTGUIEXE_LDFLAGS.amd64 = -m64
- TEMPLATE_VBOXQTGUIEXE_LIBS = \
-	$(LIB_QT) \
+  ifndef USE_KBUILD_QT3_UNIT
+  TEMPLATE_VBOXQTGUIEXE_LIBS = \
+	$(LIB_QT)
+  endif
+ TEMPLATE_VBOXQTGUIEXE_LIBS += \
 	$(LIB_SDL) \
 	$(LIB_RUNTIME) \
 	$(LIB_REM) \
 	$(LIB_VMM)
 
- ifeq ($(KBUILD_TARGET_ARCH),amd64)
-  TEMPLATE_VBOXQTGUIEXE_LIBPATH = \
-	$(VBOX_PATH_QT)/lib64 $(VBOX_PATH_QT)/lib
- else
-  TEMPLATE_VBOXQTGUIEXE_LIBPATH = \
-	$(VBOX_PATH_QT)/lib
+ ifndef USE_KBUILD_QT3_UNIT
+  ifeq ($(KBUILD_TARGET_ARCH),amd64)
+   TEMPLATE_VBOXQTGUIEXE_LIBPATH = \
+ 	$(VBOX_PATH_QT)/lib64 $(VBOX_PATH_QT)/lib
+  else
+   TEMPLATE_VBOXQTGUIEXE_LIBPATH = \
+ 	$(VBOX_PATH_QT)/lib
+  endif
  endif
 
  ifeq ($(KBUILD_TARGET),linux)
@@ -2782,7 +2787,7 @@ else # the gcc guys:
   TEMPLATE_VBOXQTGUIEXE_INCS += \
 	$(VBOX_XCURSOR_INCS)
   TEMPLATE_VBOXQTGUIEXE_LIBS += \
-    $(VBOX_XCURSOR_LIBS) \
+	$(VBOX_XCURSOR_LIBS) \
 	Xext \
 	X11 \
 	m \
@@ -3456,7 +3461,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12179 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12185 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
