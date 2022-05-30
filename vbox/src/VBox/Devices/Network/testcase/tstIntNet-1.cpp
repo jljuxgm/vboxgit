@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 16536 2009-02-05 17:38:01Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -53,9 +53,9 @@ static bool     g_fPingReply = false;
 static uint32_t g_cOtherPkts = 0;
 static uint32_t g_cArpPkts = 0;
 static uint32_t g_cIpv4Pkts = 0;
-static uint32_t     g_cUdpPkts = 0;
-static uint32_t         g_cDhcpPkts = 0;
-static uint32_t     g_cTcpPkts = 0;
+static uint32_t g_cUdpPkts = 0;
+static uint32_t g_cDhcpPkts = 0;
+static uint32_t g_cTcpPkts = 0;
 
 
 /**
