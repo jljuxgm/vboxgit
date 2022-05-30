@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15401 2008-12-12 22:05:34Z vboxsync $
+# $Id: Makefile.kmk 15422 2008-12-13 07:46:20Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -32,7 +32,7 @@ ifndef VBOX_ONLY_SDK
 	$(if $(VBOX_WITH_XPCOM),tstVBoxAPILinux,tstVBoxAPIWin) \
 	$(if $(VBOX_WITH_RESOURCE_USAGE_API),tstCollector,)
   PROGRAMS.linux += \
-	tstHostHardwareLinux
+	$(if $(VBOX_WITH_USB),tstHostHardwareLinux,)
  endif # !VBOX_WITH_TESTCASES
 endif # !VBOX_ONLY_SDK
 if defined(VBOX_ONLY_SDK) || !defined(VBOX_WITH_XPCOM)
