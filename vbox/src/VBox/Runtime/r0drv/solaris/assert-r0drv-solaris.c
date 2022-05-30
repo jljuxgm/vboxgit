@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-solaris.c 13306 2008-10-15 21:17:04Z vboxsync $ */
+/* $Id: assert-r0drv-solaris.c 13307 2008-10-15 21:20:50Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, Solaris.
  */
@@ -57,6 +57,7 @@ RTDATADECL(const char *) volatile   g_pszRTAssertFunction;
 
 RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
 {
+
 #ifdef IN_GUEST_R0
     RTLogBackdoorPrintf("\n!!Assertion Failed!!\n"
                         "Expression: %s\n"
@@ -114,5 +115,6 @@ RTR0DECL(void) RTR0AssertPanicSystem(void)
         assfail(psz, g_pszRTAssertFile, g_u32RTAssertLine);
     else
         assfail(g_szRTAssertMsg1, g_pszRTAssertFile, g_u32RTAssertLine);
+    g_szRTAssertMsg2[0] = '\0';
 }
 
