@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 15852 2009-01-08 10:56:11Z vboxsync $ */
+/* $Id: VMM.cpp 16107 2009-01-20 23:16:00Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1392,6 +1392,7 @@ static int vmmR3ServiceCallHostRequest(PVM pVM)
          */
         case VMMCALLHOST_VMM_LOGGER_FLUSH:
             pVM->vmm.s.rcCallHost = VINF_SUCCESS;
+            LogAlways(("*FLUSH*\n"));
             break;
 
         /*
