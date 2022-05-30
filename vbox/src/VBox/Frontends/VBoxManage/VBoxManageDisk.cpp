@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 15556 2008-12-15 22:31:49Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 15557 2008-12-15 22:40:58Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -767,8 +767,7 @@ int handleAddiSCSIDisk(int argc, char *argv[],
             if (argc <= i + 1)
                 return errorArgument("Missing argument to '%s'", argv[i]);
             i++;
-            lun = L"enc";
-            lun = lun + argv[i];
+            lun = BstrFmt("enc%s", argv[i]);
         }
         else if (strcmp(argv[i], "-username") == 0)
         {
