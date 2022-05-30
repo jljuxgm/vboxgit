@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 12550 2008-09-17 18:19:38Z vboxsync $ */
+/* $Id: TMInternal.h 13572 2008-10-27 11:02:33Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -487,6 +487,12 @@ typedef struct TM
     /** The timer callback. */
     STAMCOUNTER                 StatTimerCallbackSetFF;
 
+
+    STAMCOUNTER                 StatTSCNotFixed;
+    STAMCOUNTER                 StatTSCNotTicking;
+    STAMCOUNTER                 StatTSCCatchup;
+    STAMCOUNTER                 StatTSCWarp;
+    STAMCOUNTER                 StatTSCSyncNotTicking;
 } TM;
 /** Pointer to TM VM instance data. */
 typedef TM *PTM;

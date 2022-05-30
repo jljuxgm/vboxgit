@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 13572 2008-10-27 11:02:33Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -147,6 +147,26 @@ VMMDECL(bool) TMCpuTickCanUseRealTSC(PVM pVM, uint64_t *poffRealTSC)
      *          b) the virtual sync clock hasn't been halted by an expired timer, and
      *          c) we're not using warp drive (accelerated virtual guest time).
      */
+#ifdef VBOX_WITH_STATISTICS
+    if (!pVM->tm.s.fMaybeUseOffsettedHostTSC)
+       STAM_COUNTER_INC(&pVM->tm.s.StatTSCNotFixed);
+    else
+    if (!pVM->tm.s.fTSCTicking)
+       STAM_COUNTER_INC(&pVM->tm.s.StatTSCNotTicking);
+    else
+    if (!pVM->tm.s.fTSCUseRealTSC)
+    {
+        if (pVM->tm.s.fVirtualSyncCatchUp)
+           STAM_COUNTER_INC(&pVM->tm.s.StatTSCCatchup);
+        else
+        if (!pVM->tm.s.fVirtualSyncTicking)
+           STAM_COUNTER_INC(&pVM->tm.s.StatTSCSyncNotTicking);
+        else
+        if (!pVM->tm.s.fVirtualWarpDrive)
+           STAM_COUNTER_INC(&pVM->tm.s.StatTSCWarp);
+    }
+#endif
+
     if (    pVM->tm.s.fMaybeUseOffsettedHostTSC
         &&  RT_LIKELY(pVM->tm.s.fTSCTicking)
         &&  (   pVM->tm.s.fTSCUseRealTSC
