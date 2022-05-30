@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 12829 2008-09-30 13:20:29Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 12857 2008-10-01 10:19:38Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -291,7 +291,12 @@ QString darwinSystemLanguage()
     /* Some cleanup */
     CFRelease (supportedLocales);
     CFRelease (preferredLocales);
-    return QString (localeName);
+    QString id(localeName);
+    /* Check for some misbehavior */
+    if (id.isEmpty() ||
+        id.toLower() == "english")
+        id = "en";
+    return id;
 }
 
 bool darwinIsMenuOpen()
