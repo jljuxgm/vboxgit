@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
+/* $Id: iokit.cpp 11856 2008-08-29 23:24:22Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -1513,7 +1513,7 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
                         char *psz = strchr(szTmp, '\0');
                         *psz++ = ':';
                         *psz++ = ' ';
-                        size_t cchLeft = sizeof(szTmp) - (psz - &szTmp[0]);
+                        size_t cchLeft = sizeof(szTmp) - (psz - &szTmp[0]) - (sizeof(" (Wireless)") - 1);
                         CFIndex i;
                         for (i = 0; i < cIfs; i++)
                         {
@@ -1535,6 +1535,11 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
                                         szBSDName,
                                         fUSB ? "USB " : "",
                                         fWireless ? fAirPort ? "AirPort " : "Wireless" : "Ethernet");
+                        /* If we did find it and it's wireless but without "AirPort" or "Wireless", fix it */
+                        else if (   fWireless
+                                 && !strstr(szTmp, "AirPort")
+                                 && !strstr(szTmp, "Wireless"))
+                            strcat(szTmp, " (Wireless)");
 
                         /*
                          * Create the list entry.
