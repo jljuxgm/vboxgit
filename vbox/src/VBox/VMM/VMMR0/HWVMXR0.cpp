@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 12162 2008-09-05 23:28:27Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 12225 2008-09-08 12:59:59Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -977,7 +977,7 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
 
 #ifdef VBOX_WITH_HWACCM_DEBUG_REGISTER_SUPPORT
         /* Any guest breakpoints enabled? */
-        if (    (pCtx->dr7 & X86_DR7_ENABLED_MASK)
+        if (    (pCtx->dr7 & (X86_DR7_ENABLED_MASK | X86_DR7_GD))
             &&  !pVM->hwaccm.s.savedhoststate.fHostDebugRegsSaved)
         {
             /* Save the host debug register; a bit paranoid if the host has no active breakpoints set in dr7, but we
