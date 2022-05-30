@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 13098 2008-10-08 17:10:32Z vboxsync $ */
+/* $Id: PGMPhys.cpp 13371 2008-10-17 12:01:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -615,7 +615,7 @@ DECLINLINE(PPGMMMIO2RANGE) pgmR3PhysMMIO2Find(PVM pVM, PPDMDEVINS pDevIns, uint3
 
 
 /**
- * Allocate and register a MMIO2 region.
+ * Allocate and register an MMIO2 region.
  *
  * As mentioned elsewhere, MMIO2 is just RAM spelled differently. It's
  * RAM associated with a device. It is also non-shared memory with a
@@ -729,7 +729,7 @@ VMMR3DECL(int) PGMR3PhysMMIO2Register(PVM pVM, PPDMDEVINS pDevIns, uint32_t iReg
 
 
 /**
- * Deregisters and frees a MMIO2 region.
+ * Deregisters and frees an MMIO2 region.
  *
  * Any physical (and virtual) access handlers registered for the region must
  * be deregistered before calling this function.

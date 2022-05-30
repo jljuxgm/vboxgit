@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 13042 2008-10-07 12:43:34Z vboxsync $ */
+/* $Id: IOMInternal.h 13371 2008-10-17 12:01:15Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -49,7 +49,8 @@ typedef struct IOMMMIORANGE
     RTGCPHYS                    GCPhys;
     /** Size of the range. */
     uint32_t                    cb;
-    uint32_t                    u32Alignment; /**< Alignment padding. */
+    /** MMIO type. */
+    IOMMMIOTYPE                 enmType;
 
     /** Pointer to user argument - R3. */
     RTR3PTR                     pvUserR3;
