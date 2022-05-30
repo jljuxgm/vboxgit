@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 13430 2008-10-21 10:52:25Z vboxsync $ */
+/* $Id: DevVGA.h 13432 2008-10-21 11:36:19Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -267,6 +267,11 @@ typedef struct VGAState {
     bool                        fRenderVRAM;
     bool                        padding9[2];
 
+    /** Current refresh timer interval. */
+    uint32_t                    cMilliesRefreshInterval;
+    /** Refresh timer handle - HC. */
+    PTMTIMERR3                  RefreshTimer;
+
     /** Bitmap tracking dirty pages. */
     uint32_t                    au32DirtyBitmap[VGA_VRAM_MAX / PAGE_SIZE / 32];
     /** Pointer to vgaGCLFBAccessHandler(). */
@@ -286,10 +291,6 @@ typedef struct VGAState {
     R3PTRTYPE(PPDMIBASE)        pDrvBase;
     /** Pointer to display connector interface of the driver. */
     R3PTRTYPE(PPDMIDISPLAYCONNECTOR) pDrv;
-    /** Refresh timer handle - HC. */
-    PTMTIMERR3                  RefreshTimer;
-    /** Current refresh timer interval. */
-    uint32_t                    cMilliesRefreshInterval;
 
     /** The PCI device. */
     PCIDEVICE                   Dev;
