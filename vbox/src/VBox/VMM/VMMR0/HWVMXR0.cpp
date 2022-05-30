@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13200 2008-10-13 09:27:44Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13253 2008-10-14 12:28:39Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1318,6 +1318,8 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     /* Real mode emulation using v86 mode with CR4.VME (interrupt redirection using the int bitmap in the TSS) */
     if (CPUMIsGuestInRealModeEx(pCtx))
     {
+        pVM->hwaccm.s.vmx.RealMode.eflags = eflags;
+
         eflags.Bits.u1VM   = 1;
         eflags.Bits.u2IOPL = 3;
     }
@@ -1523,7 +1525,7 @@ DECLINLINE(int) VMXR0SaveGuestState(PVM pVM, CPUMCTX *pCtx)
     {
         /* Hide our emulation flags */
         pCtx->eflags.Bits.u1VM   = 0;
-        pCtx->eflags.Bits.u2IOPL = 0;
+        pCtx->eflags.Bits.u2IOPL = pVM->hwaccm.s.vmx.RealMode.eflags.Bits.u2IOPL;
 
         /* Force a TR resync every time in case we switch modes. */
         pVM->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_GUEST_TR;

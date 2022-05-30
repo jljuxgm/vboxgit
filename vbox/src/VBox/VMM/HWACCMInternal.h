@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13251 2008-10-14 12:07:13Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13253 2008-10-14 12:28:39Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -359,6 +359,7 @@ typedef struct HWACCM
             RTSEL                       ss;
             RTSEL                       padding5[3];
             uint32_t                    eip;
+            X86EFLAGS                   eflags;
             uint32_t                    fValid;
         } RealMode;
 
