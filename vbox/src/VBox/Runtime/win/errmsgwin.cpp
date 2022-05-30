@@ -1,4 +1,4 @@
-/* $Id: errmsgwin.cpp 14614 2008-11-26 01:07:50Z vboxsync $ */
+/* $Id: errmsgwin.cpp 14626 2008-11-26 10:01:53Z vboxsync $ */
 /** @file
  * IPRT - Status code messages.
  */
@@ -48,7 +48,7 @@
 static const RTWINERRMSG  g_aStatusMsgs[] =
 {
 #include "errmsgcomdata.h"
-#ifdef VBOX
+#if defined(VBOX) && !defined(IN_GUEST)
 # include "errmsgvboxcomdata.h"
 #endif
     { NULL, NULL, 0 }
