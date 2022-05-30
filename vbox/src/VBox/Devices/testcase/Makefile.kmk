@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12630 2008-09-22 09:31:52Z vboxsync $
+# $Id: Makefile.kmk 13363 2008-10-17 07:41:23Z vboxsync $
 ## @file
 # Sub-Makefile for the Devices testcases.
 #
@@ -97,7 +97,7 @@ tstDeviceStructSize_INCS     = \
 tstDeviceStructSize_SOURCES  = tstDeviceStructSize.cpp
 tstDeviceStructSize_CLEAN    = \
 	$(VBOX_DEVICES_TEST_OUT_DIR)/tstDeviceStructSizeGC.h \
-	$(VBOX_DEVICES_TEST_OUT_DIR)/tstDeviceStructSizeGC.run
+	$(VBOX_DEVICES_TEST_OUT_DIR)/tstDeviceStructSize.run
 tstDeviceStructSize.cpp_DEPS = $(VBOX_DEVICES_TEST_OUT_DIR)/tstDeviceStructSizeGC.h
 
 #
