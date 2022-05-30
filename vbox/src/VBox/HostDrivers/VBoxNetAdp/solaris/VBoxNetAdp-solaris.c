@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-solaris.c 16848 2009-02-17 14:57:35Z vboxsync $ */
+/* $Id: VBoxNetAdp-solaris.c 16855 2009-02-17 15:52:47Z vboxsync $ */
 /** @file
  * VBoxNetAdapter - Network Adapter Driver (Host), Solaris Specific Code.
  */
@@ -413,7 +413,7 @@ static int VBoxNetAdpSolarisDetach(dev_info_t *pDip, ddi_detach_cmd_t enmCmd)
                 if (pState)
                 {
                     int rc = gld_unregister(pMacInfo);
-                    if (rc = DDI_SUCCESS)
+                    if (rc == DDI_SUCCESS)
                     {
                         RTMemFree(pState);
                         gld_mac_free(pMacInfo);
