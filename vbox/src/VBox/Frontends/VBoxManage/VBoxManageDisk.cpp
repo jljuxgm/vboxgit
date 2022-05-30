@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 17975 2009-03-16 20:01:22Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 17976 2009-03-16 20:06:09Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -171,7 +171,7 @@ int handleCreateHardDisk(HandlerArg *a)
                 break;
 
             case 'F':   // --static ("fixed"/"flat")
-                DiskVariant |= HardDiskVariant_Fixed;
+                DiskVariant |= (unsigned)HardDiskVariant_Fixed;
                 break;
 
             case 'm':   // --variant
