@@ -1,4 +1,4 @@
-/* $Id: PGMGst.h 13067 2008-10-08 10:11:24Z vboxsync $ */
+/* $Id: PGMGst.h 13087 2008-10-08 15:38:52Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
@@ -306,12 +306,12 @@ static DECLCALLBACK(int) pgmR3Gst32BitWriteHandlerCR3(PVM pVM, RTGCPHYS GCPhys, 
            )
         {
             Log(("pgmR3Gst32BitWriteHandlerCR3: detected conflict. iPD1=%#x iPD2=%#x GCPhys=%VGp\n", iPD1, iPD2, GCPhys));
-            STAM_COUNTER_INC(&pVM->pgm.s.StatHCGuestPDWriteConflict);
+            STAM_COUNTER_INC(&pVM->pgm.s.StatR3GuestPDWriteConflict);
             VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
         }
     }
 
-    STAM_COUNTER_INC(&pVM->pgm.s.StatHCGuestPDWrite);
+    STAM_COUNTER_INC(&pVM->pgm.s.StatR3GuestPDWrite);
     return VINF_SUCCESS;
 }
 #endif /* 32BIT */
@@ -378,7 +378,7 @@ static DECLCALLBACK(int) pgmR3GstPAEWriteHandlerCR3(PVM pVM, RTGCPHYS GCPhys, vo
         pVM->pgm.s.fSyncFlags |= PGM_SYNC_MONITOR_CR3;
 
 
-    STAM_COUNTER_INC(&pVM->pgm.s.StatHCGuestPDWrite);
+    STAM_COUNTER_INC(&pVM->pgm.s.StatR3GuestPDWrite);
     return VINF_SUCCESS;
 }
 
@@ -430,7 +430,7 @@ static DECLCALLBACK(int) pgmR3GstPAEWriteHandlerPD(PVM pVM, RTGCPHYS GCPhys, voi
                 {
                     Log(("pgmR3GstPaePD3WriteHandler: detected conflict. i=%d iPD1=%#x iPD2=%#x GCPhys=%VGp\n",
                          i, iPD1, iPD2, GCPhys));
-                    STAM_COUNTER_INC(&pVM->pgm.s.StatHCGuestPDWriteConflict);
+                    STAM_COUNTER_INC(&pVM->pgm.s.StatR3GuestPDWriteConflict);
                     VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
                 }
                 break; /* ASSUMES no duplicate entries... */
@@ -438,7 +438,7 @@ static DECLCALLBACK(int) pgmR3GstPAEWriteHandlerPD(PVM pVM, RTGCPHYS GCPhys, voi
         Assert(i < 4);
     }
 
-    STAM_COUNTER_INC(&pVM->pgm.s.StatHCGuestPDWrite);
+    STAM_COUNTER_INC(&pVM->pgm.s.StatR3GuestPDWrite);
     return VINF_SUCCESS;
 }
 # endif
