@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14521 2008-11-24 14:48:30Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14554 2008-11-25 08:40:18Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -163,6 +163,12 @@
   <result name="VBOX_E_INVALID_VM_STATE" value="0x80BB0002">
     <desc>
        Current virtual machine state prevents the operation.
+    </desc>
+  </result>
+
+  <result name="VBOX_E_VM_ERROR" value="0x80BB0003">
+    <desc>
+       Virtual machine error occurred attempting the operation.
     </desc>
   </result>
 
