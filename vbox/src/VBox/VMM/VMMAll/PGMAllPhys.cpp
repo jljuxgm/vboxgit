@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 14075 2008-11-11 00:14:05Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 14559 2008-11-25 09:53:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2194,7 +2194,7 @@ VMMDECL(int) PGMPhysWriteGCPtr(PVM pVM, RTGCPTR GCPtrDst, const void *pvSrc, siz
     {
         /* Convert virtual to physical address */
         rc = PGMPhysGCPtr2GCPhys(pVM, GCPtrDst, &GCPhys);
-        AssertRCReturn(rc, rc);
+        AssertMsgRCReturn(rc, ("PGMPhysGCPtr2GCPhys failed for %VGv\n", GCPtrDst), rc);
 
         /* mark the guest page as accessed and dirty. */
         rc = PGMGstModifyPage(pVM, GCPtrDst, 1, X86_PTE_A | X86_PTE_D, ~(uint64_t)(X86_PTE_A | X86_PTE_D));
