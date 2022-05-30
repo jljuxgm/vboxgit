@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 13555 2008-10-24 14:09:12Z vboxsync $ */
+/* $Id: MachineImpl.cpp 13574 2008-10-27 12:13:56Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2886,7 +2886,7 @@ STDMETHODIMP Machine::SetGuestProperty (INPTR BSTR aName, INPTR BSTR aValue, INP
                 if (it->mName == aName)
                 {
                     property = *it;
-                    if (it->mFlags & (GUESTWRITE | READONLY))
+                    if (it->mFlags & (RDONLYHOST))
                         rc = setError (E_ACCESSDENIED, tr ("The property '%ls' cannot be changed by the host"), aName);
                     else
                     {
