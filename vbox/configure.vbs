@@ -1,4 +1,4 @@
-' $Id: configure.vbs 17351 2009-03-04 16:09:54Z vboxsync $
+' $Id: configure.vbs 17878 2009-03-14 22:03:07Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -1974,7 +1974,7 @@ Sub Main
    CheckForlibSDL strOptlibSDL
    ' Don't check for these libraries by default as they are part of OSE
    ' Using external libs can add a dependency to iconv
-   if (strOptXml2 >> "") then
+   if (strOptXml2 <> "") then
       CheckForXml2 strOptXml2
    end if
    if (strOptXslt <> "") then
