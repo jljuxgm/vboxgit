@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17965 2009-03-16 18:36:34Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17970 2009-03-16 19:08:16Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2216,7 +2216,7 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD /* aThread */, vo
                             if (FAILED(rc)) throw rc;
 
                             /* Create a dynamic growing disk image with the given capacity */
-                            rc = dstHdVBox->CreateDynamicStorage(di.iCapacity / _1M, HardDiskVariant_Standard, progress.asOutParam());
+                            rc = dstHdVBox->CreateBaseStorage(di.iCapacity / _1M, HardDiskVariant_Standard, progress.asOutParam());
                             if (FAILED(rc)) throw rc;
 
                             /* Advance to the next operation */
