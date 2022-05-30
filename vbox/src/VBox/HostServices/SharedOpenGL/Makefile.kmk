@@ -1,6 +1,6 @@
-# $Id: Makefile.kmk 16276 2009-01-27 21:15:24Z vboxsync $
+# $Id: Makefile.kmk 16277 2009-01-27 21:16:06Z vboxsync $
 ## @file
-# Sub-Makefile for the VirtualBox Windows Chromium OpenGL ICD.
+# Sub-Makefile for the VirtualBox HGCM Service.
 #
 
 #
