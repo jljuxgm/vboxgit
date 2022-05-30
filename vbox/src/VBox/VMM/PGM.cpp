@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 14240 2008-11-17 09:30:39Z vboxsync $ */
+/* $Id: PGM.cpp 14260 2008-11-17 17:11:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -77,7 +77,8 @@
  *
  * The switcher code is mapped at the same location as on the host, at an
  * identity mapped location (physical equals virtual address), and at the
- * hypervisor location.
+ * hypervisor location. The identity mapped location is for when the world
+ * switches that involves disabling paging.
  *
  * PGM maintain page tables for 32-bit, PAE and AMD64 paging modes. This
  * simplifies switching guest CPU mode and consistency at the cost of more
