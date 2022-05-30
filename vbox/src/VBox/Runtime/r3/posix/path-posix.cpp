@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 14050 2008-11-10 22:48:21Z vboxsync $ */
+/* $Id: path-posix.cpp 14054 2008-11-10 22:50:44Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX.
  */
@@ -59,7 +59,7 @@
 
 
 
-RTDECL(int) RTPathReal(const char *pszPath, char *pszRealPath, unsigned cchRealPath)
+RTDECL(int) RTPathReal(const char *pszPath, char *pszRealPath, size_t cchRealPath)
 {
     /*
      * Convert input.
@@ -166,7 +166,7 @@ static int fsCleanPath(char *pszPath)
 }
 
 
-RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, unsigned cchAbsPath)
+RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, size_t cchAbsPath)
 {
     /*
      * Convert input.

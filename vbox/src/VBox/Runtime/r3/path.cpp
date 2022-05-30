@@ -1,4 +1,4 @@
-/* $Id: path.cpp 14052 2008-11-10 22:49:04Z vboxsync $ */
+/* $Id: path.cpp 14054 2008-11-10 22:50:44Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation.
  */
@@ -570,7 +570,7 @@ size_t rtPathVolumeSpecLen(const char *pszPath)
  * @param   pszAbsPath      Where to store the absolute path.
  * @param   cchAbsPath      Size of the buffer.
  */
-RTDECL(int) RTPathAbsEx(const char *pszBase, const char *pszPath, char *pszAbsPath, unsigned cchAbsPath)
+RTDECL(int) RTPathAbsEx(const char *pszBase, const char *pszPath, char *pszAbsPath, size_t cchAbsPath)
 {
     if (pszBase && pszPath && !rtPathVolumeSpecLen(pszPath))
     {

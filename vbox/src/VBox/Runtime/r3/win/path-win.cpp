@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 14050 2008-11-10 22:48:21Z vboxsync $ */
+/* $Id: path-win.cpp 14054 2008-11-10 22:50:44Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -55,7 +55,7 @@
  * @param   pszRealPath     Where to store the real path.
  * @param   cchRealPath     Size of the buffer.
  */
-RTDECL(int) RTPathReal(const char *pszPath, char *pszRealPath, unsigned cchRealPath)
+RTDECL(int) RTPathReal(const char *pszPath, char *pszRealPath, size_t cchRealPath)
 {
     /*
      * Convert to UTF-16, call Win32 APIs, convert back.
@@ -96,7 +96,7 @@ RTDECL(int) RTPathReal(const char *pszPath, char *pszRealPath, unsigned cchRealP
  * @param   pszAbsPath      Where to store the absolute path.
  * @param   cchAbsPath      Size of the buffer.
  */
-RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, unsigned cchAbsPath)
+RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, size_t cchAbsPath)
 {
     /*
      * Convert to UTF-16, call Win32 API, convert back.
