@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12565 2008-09-18 12:31:04Z vboxsync $
+# $Id: Makefile.kmk 12584 2008-09-18 16:19:07Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -143,6 +143,9 @@ ifndef VBOX_OSE
 endif
 ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
  VBoxDD_DEFS           += VBOX_WITH_PDM_ASYNC_COMPLETION
+endif
+ifdef VBOX_WITH_SCSI
+ VBoxDD_DEFS           += VBOX_WITH_SCSI
 endif
 VBoxDD_LIBS             = \
 	$(PATH_LIB)/DevicesR3$(VBOX_SUFF_LIB) \
