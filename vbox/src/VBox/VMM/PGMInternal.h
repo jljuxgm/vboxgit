@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 17438 2009-03-06 04:35:00Z vboxsync $ */
+/* $Id: PGMInternal.h 17461 2009-03-06 12:47:54Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -4728,30 +4728,26 @@ DECLINLINE(void) pgmPoolCacheUsed(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
 /**
  * Locks a page to prevent flushing (important for cr3 root pages or shadow pae pd pages).
  *
- * @returns VBox status code.
  * @param   pVM         VM Handle.
  * @param   pPage       PGM pool page
  */
-DECLINLINE(int) pgmPoolLockPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
+DECLINLINE(void) pgmPoolLockPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
 {
     Assert(!pPage->fLocked);
     pPage->fLocked = true;
-    return VINF_SUCCESS;
 }
 
 
 /**
  * Unlocks a page to allow flushing again
  *
- * @returns VBox status code.
  * @param   pVM         VM Handle.
  * @param   pPage       PGM pool page
  */
-DECLINLINE(int) pgmPoolUnlockPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
+DECLINLINE(void) pgmPoolUnlockPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
 {
     Assert(pPage->fLocked);
     pPage->fLocked = false;
-    return VINF_SUCCESS;
 }
 
 
