@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 12002 2008-09-02 18:07:01Z vboxsync $ */
+/* $Id: HostImpl.cpp 12106 2008-09-04 19:50:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -822,7 +822,7 @@ STDMETHODIMP Host::COMGETTER(ProcessorCount)(ULONG *count)
         return E_POINTER;
     AutoWriteLock alock (this);
     CHECK_READY();
-    *count = RTMpGetCount();
+    *count = RTMpGetPresentCount();
     return S_OK;
 }
 
