@@ -1,4 +1,4 @@
-/* $Id: HardDiskFormatImpl.cpp 14561 2008-11-25 10:15:45Z vboxsync $ */
+/* $Id: HardDiskFormatImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  *
@@ -57,7 +57,7 @@ HRESULT HardDiskFormat::init (const VDBACKENDINFO *aVDInfo)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     /* The ID of the backend */
     unconst (m.id) = aVDInfo->pszBackend;

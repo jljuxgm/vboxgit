@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 14569 2008-11-25 13:04:37Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  *
@@ -299,7 +299,7 @@ HRESULT Console::init (IMachine *aMachine, IInternalMachineControl *aControl)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     LogFlowThisFuncEnter();
     LogFlowThisFunc(("aMachine=%p, aControl=%p\n", aMachine, aControl));

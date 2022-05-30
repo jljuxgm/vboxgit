@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.cpp 13580 2008-10-27 14:04:18Z vboxsync $ */
+/* $Id: ParallelPortImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -58,7 +58,7 @@ HRESULT ParallelPort::init (Machine *aParent, ULONG aSlot)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
     /* mPeer is left null */
@@ -92,7 +92,7 @@ HRESULT ParallelPort::init (Machine *aParent, ParallelPort *aThat)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
     unconst (mPeer) = aThat;
@@ -124,7 +124,7 @@ HRESULT ParallelPort::initCopy (Machine *aParent, ParallelPort *aThat)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
     /* mPeer is left null */

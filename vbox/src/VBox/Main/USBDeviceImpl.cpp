@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 13659 2008-10-29 15:45:03Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  *
@@ -56,7 +56,7 @@ HRESULT OUSBDevice::init(IUSBDevice *aUSBDevice)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     HRESULT hrc = aUSBDevice->COMGETTER(VendorId)(&unconst (mData.vendorId));
     ComAssertComRCRet (hrc, hrc);

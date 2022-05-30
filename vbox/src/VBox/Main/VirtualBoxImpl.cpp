@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 14437 2008-11-20 21:37:06Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -146,7 +146,7 @@ HRESULT VirtualBox::init()
 {
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     LogFlow (("===========================================================\n"));
     LogFlowThisFuncEnter();

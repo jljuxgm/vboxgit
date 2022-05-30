@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 10535 2008-07-11 15:28:06Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -74,7 +74,7 @@ HRESULT USBController::init (Machine *aParent)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
     /* mPeer is left null */
@@ -111,7 +111,7 @@ HRESULT USBController::init (Machine *aParent, USBController *aPeer)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
     unconst (mPeer) = aPeer;
@@ -153,7 +153,7 @@ HRESULT USBController::initCopy (Machine *aParent, USBController *aPeer)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
     /* mPeer is left null */

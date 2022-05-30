@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.cpp 13659 2008-10-29 15:45:03Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  *
@@ -59,7 +59,7 @@ HRESULT RemoteUSBDevice::init (uint32_t u32ClientId, VRDPUSBDEVICEDESC *pDevDesc
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mData.id).create();
 

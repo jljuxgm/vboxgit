@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.cpp 13580 2008-10-27 14:04:18Z vboxsync $ */
+/* $Id: FloppyDriveImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  *
@@ -64,7 +64,7 @@ HRESULT FloppyDrive::init (Machine *aParent)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
     /* mPeer is left null */
@@ -95,7 +95,7 @@ HRESULT FloppyDrive::init (Machine *aParent, FloppyDrive *aThat)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
     unconst (mPeer) = aThat;
@@ -127,7 +127,7 @@ HRESULT FloppyDrive::initCopy (Machine *aParent, FloppyDrive *aThat)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
     /* mPeer is left null */

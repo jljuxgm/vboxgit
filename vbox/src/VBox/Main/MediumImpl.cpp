@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 14294 2008-11-18 12:20:46Z vboxsync $ */
+/* $Id: MediumImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  *
@@ -949,7 +949,7 @@ HRESULT ImageMediumBase::protectedInit (VirtualBox *aVirtualBox, const BSTR aLoc
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     HRESULT rc = S_OK;
 
@@ -1002,7 +1002,7 @@ HRESULT ImageMediumBase::protectedInit (VirtualBox *aVirtualBox,
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     HRESULT rc = S_OK;
 

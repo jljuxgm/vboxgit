@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 14527 2008-11-24 16:04:15Z vboxsync $ */
+/* $Id: HostImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -158,7 +158,7 @@ HRESULT Host::init (VirtualBox *aParent)
     ComAssertRet (aParent, E_INVALIDARG);
 
     AutoWriteLock alock (this);
-    ComAssertRet (!isReady(), E_UNEXPECTED);
+    ComAssertRet (!isReady(), E_FAIL);
 
     mParent = aParent;
 

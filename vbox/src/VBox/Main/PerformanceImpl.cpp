@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 13082 2008-10-08 14:36:19Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  *
@@ -101,7 +101,7 @@ HRESULT PerformanceCollector::init()
 {
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     LogFlowThisFuncEnter();
 
@@ -293,7 +293,7 @@ PerformanceCollector::SetupMetrics (ComSafeArrayIn (INPTR BSTR, metricNames),
             }
             filteredMetrics.push_back(*it);
         }
-        
+
     com::SafeIfaceArray<IPerformanceMetric> retMetrics (filteredMetrics.size());
     int i = 0;
     for (it = filteredMetrics.begin();

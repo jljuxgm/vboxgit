@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 13607 2008-10-28 10:43:42Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  *
@@ -59,7 +59,7 @@ HRESULT HostNetworkInterface::init (Bstr aInterfaceName, Guid aGuid)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mInterfaceName) = aInterfaceName;
     unconst (mGuid) = aGuid;

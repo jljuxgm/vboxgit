@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  *
@@ -119,7 +119,7 @@ HRESULT Display::init (Console *aParent)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
 

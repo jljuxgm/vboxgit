@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 14215 2008-11-14 14:48:49Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  *
@@ -90,7 +90,7 @@ HRESULT Keyboard::init (Console *aParent)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
 

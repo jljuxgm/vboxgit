@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 9360 2008-06-03 17:10:09Z vboxsync $ */
+/* $Id: GuestImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
 
 /** @file
  *
@@ -64,7 +64,7 @@ HRESULT Guest::init (Console *aParent)
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan (this);
-    AssertReturn (autoInitSpan.isOk(), E_UNEXPECTED);
+    AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     unconst (mParent) = aParent;
 
