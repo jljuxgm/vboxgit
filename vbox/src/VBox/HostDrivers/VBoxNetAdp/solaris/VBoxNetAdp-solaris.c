@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-solaris.c 16891 2009-02-18 11:08:07Z vboxsync $ */
+/* $Id: VBoxNetAdp-solaris.c 16943 2009-02-19 11:57:12Z vboxsync $ */
 /** @file
  * VBoxNetAdapter - Network Adapter Driver (Host), Solaris Specific Code.
  */
@@ -161,8 +161,7 @@ static struct dev_ops g_VBoxNetAdpSolarisDevOps =
     nodev,                          /* reset */
     &g_VBoxNetAdpSolarisCbOps,
     (struct bus_ops *)0,
-    nodev,                          /* power */
-    ddi_quiesce_not_supported
+    nodev                           /* power */
 };
 
 /**
