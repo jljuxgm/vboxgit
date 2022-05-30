@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp.c 17185 2009-02-27 00:52:08Z vboxsync $ */
+/* $Id: VBoxNetAdp.c 17198 2009-02-27 12:16:54Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Common Code.
  */
@@ -758,7 +758,7 @@ static DECLCALLBACK(int) vboxNetAdpFactoryCreateAndConnect(PINTNETTRUNKFACTORY p
 
     LogFlow(("vboxNetAdpFactoryCreateAndConnect: pszName=%p:{%s} fFlags=%#x\n", pszName, pszName, fFlags));
     Assert(pGlobals->cFactoryRefs > 0);
-    AssertMsgReturn(fFlags,
+    AssertMsgReturn(!fFlags,
                     ("%#x\n", fFlags), VERR_INVALID_PARAMETER);
 
     /*
