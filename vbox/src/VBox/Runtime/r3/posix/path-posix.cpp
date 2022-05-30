@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 15754 2008-12-25 10:52:24Z vboxsync $ */
+/* $Id: path-posix.cpp 15756 2008-12-25 11:12:42Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX.
  */
@@ -179,6 +179,12 @@ RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, size_t cchAbsPath)
     strcpy(szTmpPath, pszPath);
     fsCleanPath(szTmpPath);
 
+    /*
+     * fsCleanPath will leave the single dot alone, we don't need it here.
+     */
+    if (szTmpPath[0] == '.' && !szTmpPath[1])
+        szTmpPath[0] = '\0';
+
     char *pszCur = szTmpPath;
 
 #ifdef HAVE_DRIVE
@@ -213,9 +219,6 @@ RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, size_t cchAbsPath)
         fsCleanPath(szCurDir);
 
         {
-            /*
-             * Convert result and copy it to the return buffer.
-             */
             char *pszUtf8CurDir;
             int rc = rtPathFromNative(&pszUtf8CurDir, szCurDir);
             if (RT_FAILURE(rc))

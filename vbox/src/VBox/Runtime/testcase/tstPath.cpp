@@ -1,4 +1,4 @@
-/* $Id: tstPath.cpp 15754 2008-12-25 10:52:24Z vboxsync $ */
+/* $Id: tstPath.cpp 15756 2008-12-25 11:12:42Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -100,8 +100,8 @@ int main()
     aRTPathAbsExTests[] =
     {
 #if defined (RT_OS_OS2) || defined (RT_OS_WINDOWS)
-//  { NULL, "", VINF_SUCCESS, "%p" },
-//  { NULL, ".", VINF_SUCCESS, "%p" },
+    { NULL, "", VINF_SUCCESS, "%p" },
+    { NULL, ".", VINF_SUCCESS, "%p" },
     { NULL, "\\", VINF_SUCCESS, "%d\\" },
     { NULL, "\\..", VINF_SUCCESS, "%d\\" },
     { NULL, "/absolute/..", VINF_SUCCESS, "%d\\" },
@@ -113,8 +113,8 @@ int main()
     { "relative_base/dir\\", "\\from_root", VINF_SUCCESS, "%d\\from_root" },
     { "relative_base/dir/", "relative_also", VINF_SUCCESS, "%p\\relative_base\\dir\\relative_also" },
 #else
-//  { NULL, "", VINF_SUCCESS, "/" },
-//  { NULL, ".", VINF_SUCCESS, "%p" },
+    { NULL, "", VINF_SUCCESS, "%p" },
+    { NULL, ".", VINF_SUCCESS, "%p" },
     { NULL, "/", VINF_SUCCESS, "/" },
     { NULL, "/..", VINF_SUCCESS, "/" },
     { NULL, "/absolute/..", VINF_SUCCESS, "/" },
