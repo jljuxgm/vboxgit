@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 17079 2009-02-24 16:59:51Z vboxsync $ */
+/* $Id: VBoxManage.cpp 17081 2009-02-24 17:14:04Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -276,7 +276,7 @@ static void printUsage(USAGECATEGORY u64Cmd)
 
     if (u64Cmd & USAGE_LIST)
     {
-        RTPrintf("VBoxManage list             vms|runningvms|ostypes|hostdvds|hostfloppies|\n"
+        RTPrintf("VBoxManage list [--long|-l] vms|runningvms|ostypes|hostdvds|hostfloppies|\n"
                  "                            hostifs|hostinfo|hddbackends|hdds|dvds|floppies|\n"
                  "                            usbhost|usbfilters|systemproperties\n"
                  "\n");
