@@ -1,4 +1,4 @@
-/* $Id: config.h 14277 2008-11-18 09:10:18Z vboxsync $ */
+/* $Id: config.h 15272 2008-12-10 18:47:19Z vboxsync $ */
 /** @file
  * Sun config - Maintained by hand
  */
@@ -26,7 +26,9 @@
 #define CONFIG_SOFTMMU 1
 
 #ifdef VBOX_WITH_64_BITS_GUESTS
-#define TARGET_X86_64
+# if (TCG_TARGET_REG_BITS == 64) || defined (VBOX_ENABLE_VBOXREM64)
+#  define TARGET_X86_64
+# endif
 #endif
 
 /* Uncomment to see all phys memory accesses */
