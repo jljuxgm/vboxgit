@@ -1,4 +1,4 @@
-/* $Revision: 17813 $ */
+/* $Revision: 17815 $ */
 /** @file
  * Glue code for dynamically linking to VBoxXPCOMC.
  */
@@ -164,7 +164,7 @@ int VBoxCGlueInit(void)
     if (tryLoadOne("/opt/VirtualBox/i386") == 0)
         return 0;
 #elif defined(__APPLE__)
-    if (tryLoadOne("/Application/VirtualBox.app/Contents/MacOS", pszMsgPrefix) == 0)
+    if (tryLoadOne("/Application/VirtualBox.app/Contents/MacOS") == 0)
         return 0;
 #else
 # error "port me"
