@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 15752 2008-12-24 15:19:35Z vboxsync $ */
+/* $Id: HostImpl.cpp 15869 2009-01-08 14:52:34Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -2350,7 +2350,7 @@ HRESULT Host::checkUSBProxyService()
         if (mUSBProxyService->getLastError() == VERR_FILE_NOT_FOUND)
             return setWarning (E_FAIL,
                 tr ("Could not load the Host USB Proxy Service (%Rrc). "
-                    "The service might be not installed on the host computer"),
+                    "The service might not be installed on the host computer"),
                 mUSBProxyService->getLastError());
         if (mUSBProxyService->getLastError() == VINF_SUCCESS)
             return setWarning (E_FAIL,
