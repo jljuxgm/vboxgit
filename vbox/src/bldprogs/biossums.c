@@ -1,4 +1,4 @@
-/* $Id: biossums.c 14047 2008-11-10 22:42:14Z vboxsync $ */
+/* $Id: biossums.c 14076 2008-11-11 07:24:05Z vboxsync $ */
 /** @file
  * Tool for modifying a BIOS image to write the BIOS checksum.
  */
@@ -24,6 +24,9 @@
 #include <string.h>
 #include <stdarg.h>
 #include <errno.h>
+#ifndef RT_OS_WINDOWS
+# include <unistd.h> /* unlink */
+#endif
 
 typedef unsigned char uint8_t;
 
