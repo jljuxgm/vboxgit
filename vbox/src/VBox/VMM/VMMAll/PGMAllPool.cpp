@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17586 2009-03-09 15:28:25Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17595 2009-03-09 17:24:16Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -472,6 +472,7 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
                             STAM_COUNTER_INC(&(pVM->pgm.s.StatRZGuestCR3WriteConflict));
                             VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
                             LogFlow(("pgmPoolMonitorChainChanging: Detected conflict at iShw2=%#x!\n", iShw2));
+                            break;
                         }
 #  endif /* !IN_RING0 */
 #   ifndef IN_RING0
@@ -554,6 +555,7 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
                         VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
                         STAM_COUNTER_INC(&(pVM->pgm.s.StatRZGuestCR3WriteConflict));
                         LogFlow(("pgmPoolMonitorChainChanging: Detected conflict at iShw2=%#x!\n", iShw2));
+                        break;
                     }
 #endif /* !IN_RING0 */
 # ifndef IN_RING0
@@ -625,6 +627,7 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
                                 STAM_COUNTER_INC(&(pVM->pgm.s.StatRZGuestCR3WriteConflict));
                                 VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
                                 LogFlow(("pgmPoolMonitorChainChanging: Detected conflict at iShw2=%#x!\n", iShw2));
+                                break;
                             }
 # endif /* !IN_RING0 */
 #  ifndef IN_RING0
