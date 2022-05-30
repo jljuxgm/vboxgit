@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 12549 2008-09-17 18:02:02Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 12554 2008-09-18 10:10:08Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -996,21 +996,25 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
 
         if (pCtx->dr7 & (X86_DR7_L0|X86_DR7_G0))
         {
+            STAM_COUNTER_INC(&pVM->hwaccm.s.StatDR0Armed);
             ASMSetDR0(pCtx->dr0);
             Assert(pVM->hwaccm.s.savedhoststate.fHostDebugRegsSaved);
         }
         if (pCtx->dr7 & (X86_DR7_L1|X86_DR7_G1))
         {
+            STAM_COUNTER_INC(&pVM->hwaccm.s.StatDR1Armed);
             ASMSetDR1(pCtx->dr1);
             Assert(pVM->hwaccm.s.savedhoststate.fHostDebugRegsSaved);
         }
         if (pCtx->dr7 & (X86_DR7_L2|X86_DR7_G2))
         {
+            STAM_COUNTER_INC(&pVM->hwaccm.s.StatDR2Armed);
             ASMSetDR2(pCtx->dr2);
             Assert(pVM->hwaccm.s.savedhoststate.fHostDebugRegsSaved);
         }
         if (pCtx->dr7 & (X86_DR7_L3|X86_DR7_G3))
         {
+            STAM_COUNTER_INC(&pVM->hwaccm.s.StatDR3Armed);
             ASMSetDR3(pCtx->dr3);
             Assert(pVM->hwaccm.s.savedhoststate.fHostDebugRegsSaved);
         }

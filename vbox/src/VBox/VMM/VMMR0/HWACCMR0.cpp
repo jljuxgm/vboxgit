@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 12225 2008-09-08 12:59:59Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 12554 2008-09-18 10:10:08Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -827,6 +827,8 @@ HWACCMR0DECL(int) HWACCMR0Leave(PVM pVM)
         ASMSetDR3(pVM->hwaccm.s.savedhoststate.dr3);
         ASMSetDR6(pVM->hwaccm.s.savedhoststate.dr6);
         pVM->hwaccm.s.savedhoststate.fHostDebugRegsSaved = false;
+
+        STAM_COUNTER_INC(&pVM->hwaccm.s.StatDRxContextSwitch);
     }
     if (pVM->hwaccm.s.savedhoststate.fHostDR7Saved)
     {
