@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 12702 2008-09-24 16:56:02Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 12932 2008-10-02 11:48:49Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -139,6 +139,6 @@ HWACCMDECL(int) HWACCMInvalidatePhysPage(PVM pVM, RTGCPHYS GCPhys)
  */
 HWACCMDECL(bool) HWACCMHasPendingIrq(PVM pVM)
 {
-    return pVM->hwaccm.s.Event.fPending;
+    return !!pVM->hwaccm.s.Event.fPending;
 }
 

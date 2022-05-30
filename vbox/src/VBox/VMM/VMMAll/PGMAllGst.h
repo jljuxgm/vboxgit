@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 11713 2008-08-27 16:27:13Z vboxsync $ */
+/* $Id: PGMAllGst.h 12932 2008-10-02 11:48:49Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -236,7 +236,7 @@ PGM_GST_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTGCP
         {
             *pfFlags = (Pte.u & ~GST_PTE_PG_MASK)
                      & ((Pde.u & (X86_PTE_RW | X86_PTE_US)) | ~(uint64_t)(X86_PTE_RW | X86_PTE_US));
-# if PGM_WITH_NX(PGM_GST_TYPE)
+# if PGM_WITH_NX(PGM_GST_TYPE, PGM_GST_TYPE)
             /* The NX bit is determined by a bitwise OR between the PT and PD */
             if (fNoExecuteBitValid)
                 *pfFlags |= (Pte.u & Pde.u & X86_PTE_PAE_NX);
@@ -254,7 +254,7 @@ PGM_GST_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTGCP
         {
             *pfFlags = (Pde.u & ~(GST_PTE_PG_MASK | X86_PTE_PAT))
                      | ((Pde.u & X86_PDE4M_PAT) >> X86_PDE4M_PAT_SHIFT);
-# if PGM_WITH_NX(PGM_GST_TYPE)
+# if PGM_WITH_NX(PGM_GST_TYPE, PGM_GST_TYPE)
             /* The NX bit is determined by a bitwise OR between the PT and PD */
             if (fNoExecuteBitValid)
                 *pfFlags |= (Pde.u & X86_PTE_PAE_NX);
