@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: MM.cpp 13980 2008-11-07 21:10:49Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -285,7 +285,7 @@ VMMR3DECL(int) MMR3InitPaging(PVM pVM)
      */
     int rc;
     PCFGMNODE pMMCfg = CFGMR3GetChild(CFGMR3GetRoot(pVM), "MM");
-    if (pMMCfg)
+    if (!pMMCfg)
     {
         rc = CFGMR3InsertNode(CFGMR3GetRoot(pVM), "MM", &pMMCfg);
         AssertRCReturn(rc, rc);
