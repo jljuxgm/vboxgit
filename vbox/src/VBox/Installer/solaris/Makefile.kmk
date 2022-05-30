@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12453 2008-09-15 08:58:04Z vboxsync $
+# $Id: Makefile.kmk 12502 2008-09-16 16:21:42Z vboxsync $
 ## @file
 # Makefile for the Solaris installer.
 #
@@ -57,7 +57,7 @@ OTHER_CLEAN      = $(addprefix $(SOLARIS_INST_DIR)/,\
 solaris-doc_INST = bin/
 solaris-doc_MODE = a+r,u+w
 solaris-doc_SOURCES = \
-	$(if $(VBOX_OSE),,$(PATH_ROOT)/doc/License.txt=>LICENSE) \
+	$(if $(VBOX_OSE),,$(VBOX_BRAND_LICENSE_TXT)=>LICENSE) \
 	$(PATH_ROOT)/src/VBox/Frontends/VirtualBox/images/$(if $(VBOX_OSE),OSE,NonOSE)/VirtualBox_64px.png=>VBox.png
 
 #

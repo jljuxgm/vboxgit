@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12489 2008-09-16 13:21:47Z vboxsync $
+# $Id: Config.kmk 12502 2008-09-16 16:21:42Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -434,6 +434,8 @@ endif
 VBOX_BRAND_BIOS_LOGO          := $(PATH_ROOT)/src/VBox/Devices/Graphics/BIOS/sun_logo.bmp
 VBOX_BRAND_LICENSE_HTML       := $(PATH_ROOT)/doc/License.html
 VBOX_BRAND_LICENSE_RTF        := $(PATH_ROOT)/doc/License.rtf
+VBOX_BRAND_LICENSE_TXT        := $(PATH_ROOT)/doc/License.txt
+VBOX_BRAND_LICENSE_VER        :=
 VBOX_BRAND_GUI_ABOUT_PNG      := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/about.png
 VBOX_BRAND_GUI_ABOUT_16PX_PNG := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/about_16px.png
 VBOX_BRAND_GUI_VBOX_16PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_16px.png
@@ -3491,7 +3493,12 @@ VBOX_LICENSE_VER_KMK = $(PATH_OUT)/license-version.kmk
 $(VBOX_LICENSE_VER_KMK): $(VBOX_BRAND_LICENSE_HTML)
 	$(call MSG_GENERATE,,$(VBOX_LICENSE_VER_KMK))
 	$(QUIET)$(MKDIR) -p $(@D)
+ifdef VBOX_BRAND_LICENSE_VER
+	$(QUIET)$(RM) -f '$@'
+	$(APPEND) '$@' 'VBOX_LICENSE_VER=$(VBOX_BRAND_LICENSE_VER)'
+else
 	$(QUIET)$(SED) -e "s/.*License version \([0-9.]*\),.*/VBOX_LICENSE_VER=\1/;t;d" --output $@ $(VBOX_BRAND_LICENSE_HTML)
+endif
 -include $(VBOX_LICENSE_VER_KMK)
 VBOX_LICENSE_BIN = $(PATH_BIN)/License-$(VBOX_LICENSE_VER).html
 endif
@@ -3516,7 +3523,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12489 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12502 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
