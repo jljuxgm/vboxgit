@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14769 2008-11-28 10:32:16Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14770 2008-11-28 11:04:41Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -306,6 +306,12 @@
   <result name="VBOX_E_OBJECT_IN_USE" value="0x80BB0007">
     <desc>
        Operation prohibited because object is in use.
+    </desc>
+  </result>
+
+  <result name="VBOX_E_HOST_ERROR" value="0x80BB0008">
+    <desc>
+       Host operating system related error.
     </desc>
   </result>
 
@@ -4561,6 +4567,15 @@
         </note>
 
         <see>#saveState</see>
+        <result name="VBOX_E_INVALID_VM_STATE">
+          Virtual machine already running.
+        </result>
+        <result name="VBOX_E_HOST_ERROR">
+          Host interface does not exist or name not set.
+        </result>
+        <result name="VBOX_E_FILE_ERROR">
+          Invalid saved state file.
+        </result>
       </desc>
       <param name="progress" type="IProgress" dir="return">
         <desc>Progress object to track the operation completion.</desc>
