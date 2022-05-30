@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 11516 2008-08-20 14:21:18Z vboxsync $
+; $Id: HWACCMR0A.asm 12062 2008-09-03 15:38:28Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -748,7 +748,6 @@ BEGINPROC VMXEnable
     ret
 ENDPROC VMXEnable
 
-
 ;/**
 ; * Executes VMXOFF
 ; */
@@ -819,6 +818,27 @@ BEGINPROC VMXActivateVMCS
 ENDPROC VMXActivateVMCS
 
 %endif ; RT_ARCH_AMD64
+
+;/**
+; * Executes VMPTRST
+; *
+; * @returns VBox status code
+; * @param    [esp + 04h]  gcc:rdi  msc:rcx   Param 1 - First parameter - Address that will receive the current pointer
+; */
+;DECLASM(int) VMXGetActivateVMCS(RTHCPHYS *pVMCS);
+BEGINPROC VMXGetActivateVMCS
+%ifdef RT_ARCH_AMD64
+ %ifdef ASM_CALL64_GCC
+    vmptrst rdi
+ %else
+    vmptrst rcx
+ %endif
+%else
+    vmptrst [esp+04h]
+%endif
+    xor     rAX, rAX
+    ret
+ENDPROC
 
 
 ;/**
