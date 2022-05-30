@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
+/* $Id: DevPcBios.cpp 15192 2008-12-09 16:48:53Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -459,7 +459,12 @@ static int setLogicalDiskGeometry(PPDMIBASE pBase, PPDMIBLOCKBIOS pHardDisk, PPD
         rc = pHardDisk->pfnSetLCHSGeometry(pHardDisk, &LCHSGeometry);
         if (rc == VERR_VDI_IMAGE_READ_ONLY)
         {
-            LogRel(("DevPcBios: ATA failed to update LCHS geometry\n"));
+            LogRel(("DevPcBios: ATA failed to update LCHS geometry, read only\n"));
+            rc = VINF_SUCCESS;
+        }
+        else if (rc == VERR_PDM_GEOMETRY_NOT_SET)
+        {
+            LogRel(("DevPcBios: ATA failed to update LCHS geometry, backend refused\n"));
             rc = VINF_SUCCESS;
         }
     }
