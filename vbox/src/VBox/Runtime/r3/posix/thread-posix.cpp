@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 13661 2008-10-29 15:46:56Z vboxsync $ */
+/* $Id: thread-posix.cpp 13664 2008-10-29 16:16:55Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -152,7 +152,6 @@ int rtThreadNativeAdopt(PRTTHREADINT pThread)
     sigset_t SigSet;
     sigemptyset(&SigSet);
     sigaddset(&SigSet, SIGALRM);
-    sigdelset(&SigSet, RTTHREAD_POSIX_POKE_SIG);
     sigprocmask(SIG_BLOCK, &SigSet, NULL);
     siginterrupt(RTTHREAD_POSIX_POKE_SIG, 1);
 
@@ -178,7 +177,6 @@ static void *rtThreadNativeMain(void *pvArgs)
     sigset_t SigSet;
     sigemptyset(&SigSet);
     sigaddset(&SigSet, SIGALRM);
-    sigdelset(&SigSet, RTTHREAD_POSIX_POKE_SIG);
     sigprocmask(SIG_BLOCK, &SigSet, NULL);
     siginterrupt(RTTHREAD_POSIX_POKE_SIG, 1);
 
