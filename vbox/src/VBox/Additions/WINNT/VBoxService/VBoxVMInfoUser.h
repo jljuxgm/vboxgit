@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInfoUser.h 13462 2008-10-22 06:46:45Z vboxsync $ */
+/* $Id: VBoxVMInfoUser.h 14409 2008-11-20 13:19:20Z vboxsync $ */
 /** @file
  * VBoxVMInfoUser - User information for the host.
  */
@@ -24,7 +24,9 @@
 
 typedef struct _VBOXUSERINFO
 {
-    TCHAR szUser[_MAX_PATH];
+    TCHAR szUser [_MAX_PATH];
+    TCHAR szAuthenticationPackage [_MAX_PATH];
+    TCHAR szLogonDomain [_MAX_PATH];
 } VBOXUSERINFO;
 
 int vboxVMInfoUser (VBOXINFORMATIONCONTEXT* a_pCtx);
