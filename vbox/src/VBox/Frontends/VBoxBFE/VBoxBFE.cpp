@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 17542 2009-03-08 08:52:07Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 17743 2009-03-12 13:18:06Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -1680,13 +1680,17 @@ static DECLCALLBACK(int) vboxbfeConfigConstructor(PVM pVM, void *pvUser)
         {
             rc = CFGMR3InsertString(pCfg, "Format",       "SPF");                   UPDATE_RC();
         }
-        else if (!strcmp(RTPathExt(g_pszHdaFile), ".vdi"))
-        {
-            rc = CFGMR3InsertString(pCfg, "Format",       "VDI");                   UPDATE_RC();
-        }
         else
         {
-            rc = CFGMR3InsertString(pCfg, "Format",       "VMDK");                  UPDATE_RC();
+            char *pcExt = RTPathExt(g_pszHdaFile);
+            if ((pcExt) && (!strcmp(pcExt, ".vdi")))
+            {
+                rc = CFGMR3InsertString(pCfg, "Format",       "VDI");               UPDATE_RC();
+            }
+            else
+            {
+                rc = CFGMR3InsertString(pCfg, "Format",       "VMDK");              UPDATE_RC();
+            }
         }
     }
 
@@ -1707,13 +1711,17 @@ static DECLCALLBACK(int) vboxbfeConfigConstructor(PVM pVM, void *pvUser)
         {
             rc = CFGMR3InsertString(pCfg, "Format",       "SPF");                   UPDATE_RC();
         }
-        else if (!strcmp(RTPathExt(g_pszHdbFile), ".vdi"))
-        {
-            rc = CFGMR3InsertString(pCfg, "Format",       "VDI");                   UPDATE_RC();
-        }
         else
         {
-            rc = CFGMR3InsertString(pCfg, "Format",       "VMDK");                  UPDATE_RC();
+            char *pcExt = RTPathExt(g_pszHdbFile);
+            if ((pcExt) && (!strcmp(pcExt, ".vdi")))
+            {
+                rc = CFGMR3InsertString(pCfg, "Format",       "VDI");               UPDATE_RC();
+            }
+            else
+            {
+                rc = CFGMR3InsertString(pCfg, "Format",       "VMDK");              UPDATE_RC();
+            }
         }
     }
 
