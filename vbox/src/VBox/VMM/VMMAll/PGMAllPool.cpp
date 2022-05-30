@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17112 2009-02-25 09:58:28Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17114 2009-02-25 10:30:42Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -912,6 +912,7 @@ bool pgmPoolIsActiveRootPage(PVM pVM, PPGMPOOLPAGE pPage)
         return true;
     }
 
+# ifndef IN_RING0
     switch (PGMGetShadowMode(pVM))
     {
         case PGMMODE_PAE:
@@ -930,7 +931,8 @@ bool pgmPoolIsActiveRootPage(PVM pVM, PPGMPOOLPAGE pPage)
 
                     for (unsigned i=0;i<X86_PG_PAE_PDPE_ENTRIES;i++)
                     {
-                        if (    pPdpt->a[i].n.u1Present
+                        if (   (pPdpt->a[i].u & PGM_PLXFLAGS_MAPPING)
+                            &&  pPdpt->a[i].n.u1Present
                             &&  pPage->Core.Key == (pPdpt->a[i].u & X86_PDPE_PG_MASK))
                         {
                             LogFlow(("pgmPoolIsActiveRootPage found PAE PDPE root\n"));
@@ -945,7 +947,7 @@ bool pgmPoolIsActiveRootPage(PVM pVM, PPGMPOOLPAGE pPage)
             break;
         }
     }
-
+# endif
     return false;
 }
 #endif /* VBOX_WITH_PGMPOOL_PAGING_ONLY */
