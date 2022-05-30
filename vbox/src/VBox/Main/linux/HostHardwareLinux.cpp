@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 14991 2008-12-04 15:17:33Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 14992 2008-12-04 15:25:12Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -74,6 +74,7 @@ static bool validateDevice(const char *deviceNode, bool isDVD);
 static int getDriveInfoFromEnv(const char *pszVar, DriveInfoList *pList,
                                bool isDVD, bool *pfSuccess);
 static int getDVDInfoFromMTab(char *mountTable, DriveInfoList *pList);
+#ifdef VBOX_WITH_DBUS
 static int halInit(DBusConnection **ppConnection);
 static int halFindDeviceStringMatch (DBusConnection *pConnection,
                                      const char *pszKey, const char *pszValue,
@@ -84,6 +85,7 @@ static int halGetPropertyStrings (DBusConnection *pConnection,
                                   DBusMessage **ppMessage);
 static int getDriveInfoFromHal(DriveInfoList *pList, bool isDVD,
                                bool *pfSuccess);
+#endif  /* VBOX_WITH_DBUS */
 
 /**
  * Updates the list of host DVD drives.
