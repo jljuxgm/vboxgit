@@ -1,4 +1,4 @@
-/* $Id: simplepattern.cpp 13472 2008-10-22 09:19:00Z vboxsync $ */
+/* $Id: simplepattern.cpp 13513 2008-10-23 07:26:33Z vboxsync $ */
 /** @file
  * IPRT - RTStrSimplePattern.
  */
@@ -164,7 +164,7 @@ RTDECL(bool) RTStrSimplePatternMultiMatch(const char *pszPatterns, size_t cchPat
         /*
          * Find the end of the current pattern.
          */
-        unsigned char ch;
+        unsigned char ch = '\0';
         const char *pszEnd = pszCur;
         while (cchPatterns && (ch = *pszEnd) != '\0' && ch != '|')
             cchPatterns--, pszEnd++;
