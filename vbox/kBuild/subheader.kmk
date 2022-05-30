@@ -1,4 +1,4 @@
-# $Id: subheader.kmk 2018 2008-11-02 00:08:56Z bird $
+# $Id: subheader.kmk 1772 2008-09-08 02:36:03Z bird $
 ## @file
 # kBuild - File included at top of a makefile or sub-makefile.
 #
@@ -29,7 +29,6 @@
 # This exception does not however invalidate any other reasons why the makefile,
 # program, whatever should not be covered the GPL.
 #
-#
 
 #
 # Sanity check.
@@ -58,7 +57,6 @@ else
     $(target)_PATH := $($(target)_DEFPATH)
    else
     $(target)_PATH := $(PATH_SUB_CURRENT)
-    $(target)_DEFPATH := $(PATH_SUB_CURRENT)
    endif
   else ifndef $(target)_DEFPATH
    $(target)_DEFPATH := $($(target)_PATH)

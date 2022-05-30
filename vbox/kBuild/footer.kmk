@@ -1,4 +1,4 @@
-# $Id: footer.kmk 2026 2008-11-02 06:29:20Z bird $
+# $Id: footer.kmk 1755 2008-09-06 03:34:38Z bird $
 ## @file
 # kBuild - File included at top of makefile.
 #
@@ -34,8 +34,10 @@
 ifndef __footer_kmk__
 # start-of-file-content
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, start of footer.kmk)
- _KBUILD_TS_FOOTER_START := $(_KBUILD_TS_PREV)
+ _KBUILD_TS_FOOTER_START := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_FOOTER_START), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_FOOTER_START), $(_KBUILD_TS_PREV)) - start of footer.kmk)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_FOOTER_START)
 endif
 
 #
@@ -162,15 +164,6 @@ _INSTALL_FILE = $(patsubst %/,%/$(notdir $(1)),$(if $(3),$(PATH_INS)/$(3),$(4)/)
 
 
 
-## Converts a variable from simple to recursive flavor.
-# This is used by def_inherit_template_one_accumulate_l and def_inherit_template_one_accumulate_r.
-# @param    $1              The variable name.
-define def_simple_2_recursive
-$1_DEFERRED := $$($1)
-$1 = $$($1_DEFERRED)
-endef
-
-
 ## Inherit one keyword in a non-accumulative manner.
 # @param    $(trg)          Target object.
 # @param    $(prop)     	The property.
@@ -283,9 +276,6 @@ endef
 # @param    $(trg_key)      Target keyword.
 define def_inherit_one_keyword_prepending_deferred_l
 ifdef $(trg)_$(prop).$(src_key)
- ifeq ($$(flavor $(trg)_$(prop).$(trg_key)),simple)
-  $$(evalcall2 def_simple_2_recursive,$(trg)_$(prop).$(trg_key))
- endif
  $(trg)_$(prop).$(trg_key) <= $$($(trg)_$(prop).$(src_key))
 endif
 endef
@@ -293,10 +283,7 @@ endef
 ## @copydoc def_inherit_one_prepending_deferred_l
 define def_inherit_one_keyword_prepending_deferred_r
 ifdef $(trg)_$(prop).$(src_key)
- ifeq ($$(flavor $(trg)_$(prop).$(trg_key)),simple)
-  $$(evalcall2 def_simple_2_recursive,$(trg)_$(prop).$(trg_key))
- endif
- $(trg)_$(prop).$(trg_key) += $$($(trg)_$(prop).$(src_key))
+  $(trg)_$(prop).$(trg_key) += $$($(trg)_$(prop).$(src_key))
 endif
 endef
 
@@ -342,9 +329,6 @@ endef
 # @param    $(trg_key)      Target keyword.
 define def_inherit_one_keyword_appending_deferred_l
 ifdef $(trg)_$(prop).$(src_key)
- ifeq ($$(flavor $(trg)_$(prop).$(trg_key)),simple)
-  $$(evalcall2 def_simple_2_recursive,$(trg)_$(prop).$(trg_key))
- endif
  $(trg)_$(prop).$(trg_key) += $$($(trg)_$(prop).$(src_key))
 endif
 endef
@@ -352,15 +336,12 @@ endef
 ## @copydoc def_inherit_one_appending_deferred_l
 define def_inherit_one_keyword_appending_deferred_r
 ifdef $(trg)_$(prop).$(src_key)
- ifeq ($$(flavor $(trg)_$(prop).$(trg_key)),simple)
-  $$(evalcall2 def_simple_2_recursive,$(trg)_$(prop).$(trg_key))
- endif
- $(trg)_$(prop).$(trg_key) <= $$($(trg)_$(prop).$(src_key))
+  $(trg)_$(prop).$(trg_key) <= $$($(trg)_$(prop).$(src_key))
 endif
 endef
 
 
-## Worker for def_inherit that deals with one keyword that makes
+## Worker fro def_inherit that deals with one keyword that makes
 # use of inheritance.
 # @param    prefix_keyword        key_prefix:keyword. The cool join/split game as usual.
 # @param    trg                   Object to consider for inheriting.
@@ -493,9 +474,6 @@ endef
 # @param    $(trg)          Target (child) object.
 define def_inherit_one_prepending_deferred_l
 ifdef $(src)_$(prop)
- ifeq ($$(flavor $(trg)_$(prop)),simple)
-  $$(evalcall2 def_simple_2_recursive,$(trg)_$(prop))
- endif
  $(trg)_$(prop) <= $$($(src)_$(prop))
 endif
 endef
@@ -503,10 +481,7 @@ endef
 ## @copydoc def_inherit_one_prepending_deferred_l
 define def_inherit_one_prepending_deferred_r
 ifdef $(src)_$(prop)
- ifeq ($$(flavor $(trg)_$(prop)),simple)
-  $$(evalcall2 def_simple_2_recursive,$(trg)_$(prop))
- endif
- $(trg)_$(prop) += $$($(src)_$(prop))
+  $(trg)_$(prop) += $$($(src)_$(prop))
 endif
 endef
 
@@ -549,9 +524,6 @@ endef
 # @param    $(trg)          Target (child) object.
 define def_inherit_one_appending_deferred_l
 ifdef $(src)_$(prop)
- ifeq ($$(flavor $(trg)_$(prop)),simple)
-  $$(evalcall2 def_simple_2_recursive,$(trg)_$(prop))
- endif
  $(trg)_$(prop) += $$($(src)_$(prop))
 endif
 endef
@@ -559,10 +531,7 @@ endef
 ## @copydoc def_inherit_one_appending_deferred_l
 define def_inherit_one_appending_deferred_r
 ifdef $(src)_$(prop)
- ifeq ($$(flavor $(trg)_$(prop)),simple)
-  $$(evalcall2 def_simple_2_recursive,$(trg)_$(prop))
- endif
- $(trg)_$(prop) <= $$($(src)_$(prop))
+  $(trg)_$(prop) <= $$($(src)_$(prop))
 endif
 endef
 
@@ -815,7 +784,6 @@ else
  $(prefix)_$(src)_EXTENDS_STATUS_ := 42
 endif
 endef # def_keyword_ordering
-$(eval-opt-var def_keyword_ordering)
 
 # Look for keywords which extends others and their parents, and from this
 # construct two lists.
@@ -846,7 +814,10 @@ _KEYWORDS := $(_KEYWORDS_ORDERED) $(_KEYWORDS_EXTENDS) \
 	$(foreach bld_trg,$(_BLD_TARGETS),$(addprefix $(bld_trg).,$(_BLD_ARCHES)))
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done keywords)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done keywords)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -924,7 +895,10 @@ properties_deferred := $(PROPS_INSTALLS_DEFERRED)
 $(foreach trg, $(_ALL_INSTALLS),$(evalval def_inherit))
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done target inheritance)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done target inheritance)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -960,7 +934,10 @@ properties_deferred_l :=
 properties_deferred_r :=
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done template inheritance)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done template inheritance)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -973,12 +950,6 @@ endif
 # allows more generic code and less mess down in the pass 2 target handling.
 # However it does eat a good deal of memory.
 #
-
-if1of ($(KMK_FEATURES), kb-exp-tmpl)
- $(kb-exp-tmpl 1,$(_ALL_TARGET_TARGETS),$(KBUILD_TARGET),$(KBUILD_TARGET_ARCH),$(KBUILD_TARGET_CPU),$(KBUILD_TYPE))
- $(kb-exp-tmpl 1,$(_ALL_HOST_TARGETS),$(KBUILD_HOST),$(KBUILD_HOST_ARCH),$(KBUILD_HOST_CPU),$(KBUILD_TYPE))
-
-else  # !kb-exp-tmpl
 
 ## Inherit one template property in a non-accumulative manner.
 # @param    $(prop)     Property name
@@ -1050,39 +1021,21 @@ endef
 # @param    $(target)	Target name
 define def_inherit_template_one_accumulate_l
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop)
- ifeq ($$(flavor $(target)_$(prop)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop))
- endif
 $(target)_$(prop) += $$(TEMPLATE_$($(target)_TEMPLATE)_$(prop))
 endif
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(KBUILD_TYPE)
- ifeq ($$(flavor $(target)_$(prop).$(KBUILD_TYPE)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop).$(KBUILD_TYPE))
- endif
 $(target)_$(prop).$(KBUILD_TYPE) += $$(TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(KBUILD_TYPE))
 endif
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg)
- ifeq ($$(flavor $(target)_$(prop).$(bld_trg)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop).$(bld_trg))
- endif
 $(target)_$(prop).$(bld_trg) += $$(TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg))
 endif
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg).$(bld_trg_arch)
- ifeq ($$(flavor $(target)_$(prop).$(bld_trg).$(bld_trg_arch)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop).$(bld_trg).$(bld_trg_arch))
- endif
 $(target)_$(prop).$(bld_trg).$(bld_trg_arch) += $$(TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg).$(bld_trg_arch))
 endif
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg_cpu)
- ifeq ($$(flavor $(target)_$(prop).$(bld_trg_cpu)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop).$(bld_trg_cpu))
- endif
 $(target)_$(prop).$(bld_trg_cpu) += $$(TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg_cpu))
 endif
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg_arch)
- ifeq ($$(flavor $(target)_$(prop).$(bld_trg_arch)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop).$(bld_trg_arch))
- endif
 $(target)_$(prop).$(bld_trg_arch) += $$(TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg_arch))
 endif
 endef
@@ -1092,39 +1045,21 @@ endef
 # @param    $(target)	Target name
 define def_inherit_template_one_accumulate_r
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop)
- ifeq ($$(flavor $(target)_$(prop)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop))
- endif
 $(target)_$(prop) <=$$(TEMPLATE_$($(target)_TEMPLATE)_$(prop))
 endif
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(KBUILD_TYPE)
- ifeq ($$(flavor $(target)_$(prop).$(KBUILD_TYPE)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop).$(KBUILD_TYPE))
- endif
 $(target)_$(prop).$(KBUILD_TYPE) <=$$(TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(KBUILD_TYPE))
 endif
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg)
- ifeq ($$(flavor $(target)_$(prop).$(bld_trg)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop).$(bld_trg))
- endif
 $(target)_$(prop).$(bld_trg) <=$$(TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg))
 endif
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg).$(bld_trg_arch)
- ifeq ($$(flavor $(target)_$(prop).$(bld_trg).$(bld_trg_arch)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop).$(bld_trg).$(bld_trg_arch))
- endif
 $(target)_$(prop).$(bld_trg).$(bld_trg_arch) <=$$(TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg).$(bld_trg_arch))
 endif
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg_cpu)
- ifeq ($$(flavor $(target)_$(prop).$(bld_trg_cpu)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop).$(bld_trg_cpu))
- endif
 $(target)_$(prop).$(bld_trg_cpu) <=$$(TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg_cpu))
 endif
 ifdef TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg_arch)
- ifeq ($$(flavor $(target)_$(prop).$(bld_trg_arch)),simple)
- $$(evalcall2 def_simple_2_recursive,$(target)_$(prop).$(bld_trg_arch))
- endif
 $(target)_$(prop).$(bld_trg_arch) <=$$(TEMPLATE_$($(target)_TEMPLATE)_$(prop).$(bld_trg_arch))
 endif
 endef
@@ -1153,7 +1088,6 @@ $(foreach prop,$(PROPS_ACCUMULATE_L),$(eval $(def_inherit_template_one_accumulat
 $(foreach prop,$(PROPS_ACCUMULATE_R),$(eval $(def_inherit_template_one_accumulate_r))) # use <= (kmk addition)
 endif
 endef
-$(eval-opt-var def_inherit_template)
 
 # Inherit template properties
 bld_trg := $(KBUILD_TARGET)
@@ -1166,9 +1100,11 @@ bld_trg_arch := $(KBUILD_HOST_ARCH)
 bld_trg_cpu := $(KBUILD_HOST_CPU)
 $(foreach target, $(_ALL_HOST_TARGETS),$(evalval def_inherit_template))
 
-endif # !kb-exp-tmpl
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done template/target expansion)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done template/target expansion)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -1222,7 +1158,6 @@ $(eval _USES += \
 	$($(source)_USES) \
 	$($(target)_$(source)_USES))
 endef # def_tools_sdks_target_source
-$(eval-opt-var def_tools_sdks_target_source)
 
 define def_tools_sdks_target
 local _bld_type := $(firstword $($(target)_BLD_TYPE) $(KBUILD_TYPE))
@@ -1254,7 +1189,6 @@ $(foreach source, \
 	$($(target)_SOURCES) \
 	, $(evalval def_tools_sdks_target_source))
 endef # def_tools_sdks_target
-$(eval-opt-var def_tools_sdks_target)
 
 define def_tools_srcname_target
 local _bld_type := $(firstword $($(target)_BLD_TYPE) $(KBUILD_TYPE))
@@ -1271,7 +1205,6 @@ $(foreach source, $(notdir\
 	$($(target)_SOURCES) \
 	), $(evalval def_tools_sdks_target_source))
 endef # def_tools_srcname_target
-$(eval-opt-var def_tools_srcname_target)
 
 bld_trg := $(KBUILD_TARGET)
 bld_trg_arch := $(KBUILD_TARGET_ARCH)
@@ -1348,7 +1281,10 @@ $(foreach loading, $(_USES), $(evalval def_unit_load_function))
 
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done tools + sdks + units)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done tools, sdks and units)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -1441,7 +1377,6 @@ else # NOINST
 endif # NOINST
 
 endef
-$(eval-opt-var def_pass1_link_common)
 
 
 #
@@ -1553,12 +1488,14 @@ TARGET_$(target)  := $(PATH_TARGET)/$(target).ins
 local outbase     := $(call TARGET_BASE,$(target),$(target))
 PATH_$(target)    := $(patsubst %/,%,$(dir $(outbase)))
 endef # def_pass1_install
-$(eval-opt-var def_pass1_install)
 $(foreach target, $(_ALL_INSTALLS), \
 	$(evalval def_pass1_install))
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done pass 1)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done pass 1)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -1654,8 +1591,7 @@ _TARGET_$(target)_FETCHED += $(out) $(out).checked_$(md5)_$(size)
 # Just a little precaution.
 .NOTPARALLEL: $(out) $(out).checked_$(md5)_$(size)
 
-endef # def_fetch_src_fetch_rule
-$(eval-opt-var def_fetch_src_fetch_rule)
+endef
 
 ## generates the unpack rule
 define def_fetch_src_unpack_rule
@@ -1678,8 +1614,7 @@ _TARGET_$(target)_DIGEST := $(_TARGET_$(target)_DIGEST)-$(srcname)_$(md5)_$(size
 
 .NOTPARALLEL: $(out)
 
-endef # def_fetch_src_unpack_rule
-$(eval-opt-var def_fetch_src_unpack_rule)
+endef
 
 ## Processes a fetch source
 #
@@ -1858,8 +1793,7 @@ $(eval $(def_fetch_src_unpack_rule))
 
 _DIRS += $(inst) $(fetchdir)
 
-endef #	def_fetch_src
-$(eval-opt-var def_fetch_src)
+endef
 
 
 ##
@@ -1943,7 +1877,6 @@ _DIRS += $(inst)
 _CLEAN_FILES += $(clean_files)
 
 endef
-$(eval-opt-var def_fetch)
 
 # Walk the FETCH target lists.
 bld_trg := $(KBUILD_TARGET)
@@ -1958,7 +1891,10 @@ fetch: $(_FETCHES)
 unfetch: $(_UNFETCHES)
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done fetching targets)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done fetching targets)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -1992,24 +1928,15 @@ endif
 
 ## wrapper the compile command dependency check.
 ifndef NO_COMPILE_CMDS_DEPS
- if1of ($(KMK_FEATURES),dot-must-make)
-  _DEP_COMPILE_CMDS =
-  # for debugging:  $$(warning MUST_MAKE=$$$$(comp-cmds-ex $$$$($(target)_$(subst :,_,$(source))_CMDS_PREV_), $$$$(commands $$@)) -> $$(comp-cmds-ex $$($(target)_$(subst :,_,$(source))_CMDS_PREV_),$$(commands $$@),FORCE))
- else
-  _DEP_COMPILE_CMDS = $$(comp-cmds-ex $$($(target)_$(subst :,_,$(source))_CMDS_PREV_),$$(commands $(obj)),FORCE)
- endif
+ _DEP_COMPILE_CMDS = $$(comp-cmds-ex $$($(target)_$(subst :,_,$(source))_CMDS_PREV_),$$(commands $(obj)),FORCE)
 else
  _DEP_COMPILE_CMDS =
 endif
-
 
 ## Generates the rules for building a specific object, and the aliases
 # for building a source file.
 # @param    $(obj)    The object file.
 define def_target_source_rule
-ifndef NO_COMPILE_CMDS_DEPS
-$(obj): .MUST_MAKE = $$(comp-cmds-ex $$($(target)_$(subst :,_,$(source))_CMDS_PREV_),$$(commands $$@),FORCE)
-endif
 ifdef TOOL_$(tool)_COMPILE_$(type)_USES_KOBJCACHE
 $(outbase).koc +| $(obj) $($(target)_$(source)_OUTPUT_) $($(target)_$(source)_OUTPUT_MAYBE_) : \
 		$($(target)_$(source)_DEPEND_) \
@@ -2045,17 +1972,12 @@ $(basename $(notdir $(obj))).obj: $(obj)
 
 ## @todo make this 'local cmds' in 0.2.x or when a new kb-src-one is added.
 $(target)_$(source)_CMDS_ :=
-endef # def_target_source_rule
-$(eval-opt-var def_target_source_rule)
+endef
 
 
 ## wrapper the link command dependency check.
 ifndef NO_LINK_CMDS_DEPS
- if1of ($(KMK_FEATURES),dot-must-make)
-  _DEP_LINK_CMDS =
- else
-  _DEP_LINK_CMDS = $$(comp-cmds-ex $$($(target)_CMDS_PREV_),$$(commands $(out)),FORCE)
- endif
+ _DEP_LINK_CMDS = $$(comp-cmds-ex $$($(target)_CMDS_PREV_),$$(commands $(out)),FORCE)
 else
  _DEP_LINK_CMDS =
 endif
@@ -2072,14 +1994,11 @@ endif
 # @param    $(cmds)                 The link commands.
 # @param    $($(target)_CMDS_PREV_) The link commands from the previous run.
 define def_link_rule
-ifndef NO_LINK_CMDS_DEPS
-$(out): .MUST_MAKE = $$(comp-cmds-ex $$($(target)_CMDS_PREV_),$$(commands $$@),FORCE)
-endif
 $(out) + $($(target)_OUTPUT_) +| $($(target)_OUTPUT_MAYBE_) : \
-		$$$$($(target)_DEPEND_) \
+		$($(target)_DEPEND_) \
 		$(value _DEP_LINK_CMDS) \
 		| \
-		$$$$($(target)_DEPORD_)
+		$($(target)_DEPORD_)
 	%$$(call MSG_LINK,$(target),$$@,$(tool_do))
 	$$(QUIET)$$(RM) -f -- $(dep) $(out) $($(target)_OUTPUT_) $($(target)_OUTPUT_MAYBE_)
 
@@ -2093,8 +2012,7 @@ endif
 
 $(basename $(notdir $(out))):: $(out)
 
-endef # def_link_rule
-$(eval-opt-var def_link_rule)
+endef
 
 
 ## Generate the link & lib install rule
@@ -2110,7 +2028,7 @@ $(INSTARGET_$(target)) : $(out) | $(call DIRDEP,$(dir $(INSTARGET_$(target))))
 ifdef KBUILD_DO_AUTO_INSTALL
 $(basename $(notdir $(out))):: $(INSTARGET_$(target))
 endif
-endef # def_link_install_rule
+endef
 
 
 ## def_src_handler_*
@@ -2118,27 +2036,27 @@ endef # def_link_install_rule
 # @{
 define def_src_handler_c
 local type := C
- $(kb-src-one 2)
+ $(kb-src-one )
 endef
 
 define def_src_handler_cxx
 local type := CXX
- $(kb-src-one 2)
+ $(kb-src-one )
 endef
 
 define def_src_handler_objc
 local type := OBJC
- $(kb-src-one 2)
+ $(kb-src-one )
 endef
 
 define def_src_handler_asm
 local type := AS
- $(kb-src-one 2)
+ $(kb-src-one )
 endef
 
 define def_src_handler_rc
 local type := RC
- $(kb-src-one 2)
+ $(kb-src-one )
 endef
 
 define def_src_handler_obj
@@ -2187,8 +2105,7 @@ $(foreach source,\
 	$($(target)_GEN_SOURCES_.$(bld_trg_cpu))\
 	$($(target)_GEN_SOURCES_.$(bld_type))\
 	,$(evalval def_src_handler_one) )
-endef # def_target_sources
-$(eval-opt-var def_target_sources)
+endef
 
 
 
@@ -2239,7 +2156,7 @@ _CLEAN_FILES += $($(target)_CLEAN) $($(target)_CLEAN.$(bld_trg)) $($(target)_CLE
 _DIRS += $($(target)_BLDDIRS) $($(target)_BLDDIRS.$(bld_trg)) $($(target)_BLDDIRS.$(bld_trg).$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_cpu)) $($(target)_BLDDIRS.$(bld_type))
 _OBJS += $($(target)_OBJS_)
 
-endef # def_target_install_pluss
+endef
 
 
 
@@ -2436,11 +2353,7 @@ local objs = $($(target)_OBJS_)
 local dep := $(out)$(SUFF_DEP)
 ifndef NO_LINK_CMDS_DEPS
  _DEPFILES_INCLUDED += $(dep)
- ifdef KB_HAVE_INCLUDEDEP_QUEUE
-  includedep-queue $(dep)
- else
-  includedep $(dep)
- endif
+ $(eval includedep $(dep))
 endif
 
 # check that the tool is defined.
@@ -2480,7 +2393,6 @@ $(eval $(def_link_rule))
 # installing and globals
 $(evalval def_target_install_pluss)
 endef
-$(eval-opt-var def_lib)
 
 # Process libraries
 definst := $(PATH_LIB)
@@ -2490,7 +2402,10 @@ mode := 0644
 $(foreach target, $(_ALL_LIBRARIES), $(evalval def_lib))
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done library targets)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done library targets)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -2830,11 +2745,8 @@ endif # NOINST
 # dependency file
 local dep := $(outbase)$(SUFF_DEP)
 ifndef NO_LINK_CMDS_DEPS
- ifdef KB_HAVE_INCLUDEDEP_QUEUE
-  includedep-queue $(dep)
- else
-  includedep $(dep)
- endif
+ _DEPFILES_INCLUDED += $(dep)
+ $(eval includedep $(dep))
 endif
 
 # check that the tool is defined.
@@ -2879,8 +2791,7 @@ _CLEAN_FILES += $($(target)_CLEAN) $($(target)_CLEAN.$(bld_trg)) $($(target)_CLE
 _DIRS += $($(target)_BLDDIRS) $($(target)_BLDDIRS.$(bld_trg)) $($(target)_BLDDIRS.$(bld_trg).$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_cpu)) $($(target)_BLDDIRS.$(bld_type))
 _INSTALLS_FILES += $(INSTARGET_$(target))
 
-endef # def_link_common
-$(eval-opt-var def_link_common)
+endef
 
 
 #
@@ -2912,7 +2823,10 @@ bld_trg_base_var := PLATFORM
 $(foreach target, $(_ALL_BLDPROGS), $(evalval def_bldprog))
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done build program targets)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done build program targets)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -2931,7 +2845,10 @@ bld_trg_base_var := TARGET
 $(foreach target, $(_ALL_DLLS), $(evalval def_link_common))
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done dll targets)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done dll targets)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -2958,7 +2875,10 @@ else
 endif
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done import library targets)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done import library targets)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -2977,7 +2897,10 @@ bld_trg_base_var := TARGET
 $(foreach target, $(_ALL_PROGRAMS), $(evalval def_link_common))
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done program targets)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done program targets)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -2996,7 +2919,10 @@ bld_trg_base_var := TARGET
 $(foreach target, $(_ALL_SYSMODS), $(evalval def_link_common))
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done sysmod targets)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done sysmod targets)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -3017,7 +2943,6 @@ $(insdst) : $(srcsrc) | $(call DIRDEP,$(dir $(insdst)))
 	%$$(call MSG_INST_FILE,$(srcsrc),$(insdst))
 	$$(QUIET)$(inscmd)
 endef
-$(eval-opt-var def_install_src_rule)
 
 ## install one file
 define def_install_src
@@ -3154,8 +3079,7 @@ endif
 $(eval $(def_install_src_rule))
 
 INSTARGET_$(target) += $(insdst)
-endef # def_install_src
-$(eval-opt-var def_install_src)
+endef
 
 
 ## generate the symlink rule
@@ -3165,8 +3089,7 @@ $(insdst) : | $(call DIRDEP,$(dir $(insdst)))
 	%$$(call MSG_INST_SYM,$(insdst),$(symdst))
 	$$(QUIET)$$(RM) -f -- $$@
 	$$(QUIET)$$(LN_SYMLINK) $(symdst) $(insdst)
-endef # def_install_symlink_rule
-$(eval-opt-var def_install_symlink_rule)
+endef
 
 ## create one symlink
 define def_install_symlink
@@ -3202,8 +3125,7 @@ local insdst := $(call $(instfun),$(symlnk),$(target),$(inst),$(PATH_INS))
 $(eval $(def_install_symlink_rule))
 
 INSTARGET_$(target) += $(insdst)
-endef # def_install_symlink
-$(optmize def_install_symlink)
+endef
 
 
 ## generate the install rule
@@ -3219,8 +3141,7 @@ $(insdst):
 		$(insdst)
 
 .NOTPARALLEL: $(insdst)
-endef # def_install_directory_rule
-$(eval-opt-var def_install_directory_rule)
+endef
 
 
 ## create one directory
@@ -3283,8 +3204,7 @@ local insdst := $(inst)/$(directory)/
 $(eval $(def_install_directory_rule))
 
 INSTARGET_DIRS_$(target) += $(insdst)
-endef # def_install_directory
-$(eval-opt-var def_install_directory)
+endef
 
 
 ## process one install target.
@@ -3317,25 +3237,27 @@ $(foreach src,$($(target)_SYMLINKS) $($(target)_SYMLINKS.$(bld_trg)) $($(target)
 
 # the collection target
 TARGET_$(target) := $(PATH_TARGET)/$(target).ins
-$(TARGET_$(target)): $$(INSTARGET_$(target)) | $$(INSTARGET_DIRS_$(target)) $(call DIRDEP,$(PATH_TARGET))
+$(TARGET_$(target)): $(INSTARGET_$(target)) | $(INSTARGET_DIRS_$(target)) $(call DIRDEP,$(PATH_TARGET))
 	@$(QUIET2)$(APPEND) $@
 
-$(target): $$(TARGET_$(target))
+$(target): $(TARGET_$(target))
 
 _INSTALLS += $(TARGET_$(target))
 _INSTALLS_FILES += $(INSTARGET_$(target))
 _INSTALLS_DIRS += $(INSTARGET_DIRS_$(target))
 _CLEAN_FILES += $(clean_files)
 _DIRS += $(PATH_$(target)) $($(target)_BLDDIRS) $($(target)_BLDDIRS.$(bld_trg)) $($(target)_BLDDIRS.$(bld_trg).$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_cpu)) $($(target)_BLDDIRS.$(bld_type))
-endef # def_install
-$(eval-opt-var def_install)
+endef
 
 ## process all install targets
 $(foreach target, $(_ALL_INSTALLS), \
 	$(evalvalctx def_install))
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done install targets)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done install targets)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 #
@@ -3371,7 +3293,10 @@ endef
 $(foreach directory,$(_DIR_ALL),$(eval $(def_mkdir_rule)))
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done directories)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done directories)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -3379,13 +3304,11 @@ endif
 # NOTHING
 #
 do-nothing:
-	%$(call MSG_NOTHING)
 ifdef KBUILD_PROFILE_SELF
-	@$(ECHO) 'prof: $(call _KBUILD_FMT_ELAPSED_EX, $(nanots ), $(_KBUILD_TS_HEADER_START)) - $(call _KBUILD_FMT_ELAPSED_EX, $(nanots ), $(_KBUILD_TS_PREV)) - executing $@'
- ifeq ($(KBUILD_PROFILE_SELF),2)
+	@$(ECHO) 'prof: $(int-sub $(nanots ), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(nanots ), $(_KBUILD_TS_PREV)) - executing $@'
 	@$(ECHO) 'stat: $(make-stats )'
- endif
 endif
+	%$(call MSG_NOTHING)
 
 
 #
@@ -3439,7 +3362,6 @@ ifeq ($(_KBUILD_STRICT_PASS_ORDER),nonstrict)
  endif
 endif # _KBUILD_STRICT_PASS_ORDER == nonstrict
 endef # def_pass_setup_and_optimize
-$(eval-opt-var def_pass_setup_and_optimize)
 
 ## PASS: Setup & optimization.
 # Check if we can apply the non-strict pass order optimzation (no SUBDIRS_* and MAKEFILES_*),
@@ -3504,14 +3426,13 @@ endif # !KBUILD_SAFE_PARALLEL
 
 #$ (warning pass=$(pass) PASS=$(PASS): $(PASS_$(PASS)_trgs) $(PASS_$(PASS)_trgs) $(foreach var,$(PASS_$(PASS)_vars),$($(var))))
 endef # def_pass_strict
-$(eval-opt-var def_pass_strict)
 
 ## Execute a pass, non-strict pass ordering.
 # @param	$(pass)		Lowercase pass name.
 # @param	$(PASS)		Uppercase pass name.
 define def_pass_nonstrict
 .PHONY:       pass_$(pass) pass_$(pass)_before pass_$(pass)_after pass_$(pass)_doit
-pass_$(pass)_doit: $(PASS_$(PASS)_trgs) $(foreach var,$(PASS_$(PASS)_vars),$$$$($(var)))
+pass_$(pass)_doit: $(PASS_$(PASS)_trgs) $(foreach var,$(PASS_$(PASS)_vars),$($(var)))
 pass_$(pass):	pass_$(pass)_doit
 endef # def_pass_nonstrict
 
@@ -3544,7 +3465,6 @@ pass_$(pass)_order: \
 endif # !KBUILD_SAFE_PARALLEL
 $(eval pass_prev := pass_$(pass)_order)
 endef # def_pass_order_strict
-$(eval-opt-var def_pass_order_strict)
 
 ## Pass order, non-strict.
 # @param	$(pass)		Current pass name.
@@ -3559,7 +3479,6 @@ pass_$(pass)_order: \
 		pass_$(pass)
 $(eval pass_prev := pass_$(pass)_order)
 endef # def_pass_order_nonstrict
-$(eval-opt-var def_pass_order_nonstrict)
 
 ## PASS: order
 # Use dependencies to ensure correct pass order.
@@ -3569,7 +3488,10 @@ $(foreach PASS,$(DEFAULT_PASSES),\
 	$(eval $(def_pass_order_$(_KBUILD_STRICT_PASS_ORDER))))
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, done passes)
+ _KBUILD_TS_NOW := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_NOW), $(_KBUILD_TS_PREV)) - done passes)
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_NOW)
 endif
 
 
@@ -3587,16 +3509,16 @@ uninstall:
 
 install: pass_installs
 
-# misc shortcuts (use secondary expansion here to save strcache[file] space).
+# misc shortcuts.
 targets:   bldprogs libraries dlls programs sysmods others installs
-objects:   $$(_OBJS)
-bldprogs:  $$(_BLDPROGS)
-libraries: $$(_LIBS) $$(_IMPORT_LIBS) $$(_OTHER_LIBRARIES)
-dlls:      $$(_DLLS)
-programs:  $$(_PROGRAMS)
-sysmods:   $$(_SYSMODS)
-others:    $$(_OTHERS)
-installs:  $$(_INSTALLS) $$(_INSTALLS_DIRS) $$(_INSTALLS_FILES)
+objects:   $(_OBJS)
+bldprogs:  $(_BLDPROGS)
+libraries: $(_LIBS) $(_IMPORT_LIBS) $(_OTHER_LIBRARIES)
+dlls:      $(_DLLS)
+programs:  $(_PROGRAMS)
+sysmods:   $(_SYSMODS)
+others:    $(_OTHERS)
+installs:  $(_INSTALLS) $(_INSTALLS_DIRS) $(_INSTALLS_FILES)
 
 
 
@@ -3628,31 +3550,18 @@ $(foreach prop,$(PROPS_DEFERRED), \
 #
 # Include dependency files.
 #
-ifdef _DEPFILES
- # TODO: first works the second doesn't, provided _KB_INCLUDE_DEPS is undefined:
- #   if "$(_KB_INCLUDE_DEPS)" == "1"
- #   if $(_KB_INCLUDE_DEPS) == "1"
-
- ifdef KB_HAVE_INCLUDEDEP_QUEUE
-  includedep-queue $(_DEPFILES)
- else
-  $(foreach dep, $(_DEPFILES), $(eval includedep $(dep)))
- endif
+ifneq ($(_DEPFILES),)
+ includedep $(_DEPFILES)
 endif
 
 
 ifdef KBUILD_PROFILE_SELF
- $(evalcall def_profile_self, end of footer.kmk)
- _KBUILD_TS_FOOTER_END := $(_KBUILD_TS_PREV)
-
- ifneq ($(KBUILD_PROFILE_SELF),0)
-  $(info prof: ALL=$(words $(_ALL_TARGETS)) BLDPROGS=$(words $(_ALL_BLDPROGS)) LIBRARIES=$(words $(_ALL_LIBRARIES)) IMPORT_LIBS=$(words $(IMPORT_LIBS)) DLLS=$(words $(DLLS)) PROGRAMS=$(words $(_ALL_PROGRAMS)) )
-  $(info prof: SYSMODS=$(words $(_ALL_SYSMODS)) OTHERS=$(words $(_ALL_OTHERS)) INSTALLS=$(words $(_ALL_INSTALLS)) FETCHES=$(words $(_ALL_FETCHES)) PACKING=$(words $(_PACKING)) TESTING=$(words $(TESTING)) )
-  $(info prof: DIRS=$(words $(_DIR_ALL)) TOOLS=$(words $(_TOOLS)) SDKS=$(words $(_SDKS)) USES=$(words $(_USES)) OUT_FILES=$(words $(_OUT_FILES)) OBJS=$(words $(_OBJS)) CLEAN_FILES=$(words $(CLEAN_FILES) $(OTHER_CLEAN)) )
-  $(info prof: DEPFILES_INCLUDED=$(words $(_DEPFILES_INCLUDED)) DEPFILES=$(words $(_DEPFILES)) MAKEFILES=$(words $(MAKEFILE_LIST)) )
- endif
+ _KBUILD_TS_FOOTER_END := $(nanots )
+ $(info prof: $(int-sub $(_KBUILD_TS_FOOTER_END), $(_KBUILD_TS_HEADER_START)) - $(int-sub $(_KBUILD_TS_FOOTER_END), $(_KBUILD_TS_PREV)) - end of footer.kmk)
+ $(info prof: footer.kmk: $(int-sub $(_KBUILD_TS_FOOTER_END), $(_KBUILD_TS_FOOTER_START)))
+ $(info stat: $(make-stats ))
+ _KBUILD_TS_PREV := $(_KBUILD_TS_FOOTER_END)
 endif
-
 
 # end-of-file-content
 __footer_kmk__ := target

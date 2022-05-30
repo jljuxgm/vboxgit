@@ -1,10 +1,11 @@
-# $Id: MINGW32.kmk 2018 2008-11-02 00:08:56Z bird $
+# $Id: MINGW32.kmk 1612 2008-05-12 15:42:09Z bird $
 ## @file
 # kBuild Tool Config - MinGW32 GCC v3.3+.
 #
 
 #
 # Copyright (c) 2004-2008 knut st. osmundsen <bird-kBuild-spam@anduin.net>
+#
 #
 # This file is part of kBuild.
 #
@@ -31,9 +32,6 @@
 #
 #
 
-ifdef TOOL_MINGW32
-$(error Already included (TOOL_MINGW32=$(TOOL_MINGW32)))
-endif
 TOOL_MINGW32 := MinGW32 GCC v3.3+.
 
 # Tool Specific Properties
@@ -74,7 +72,7 @@ ifndef TOOL_MINGW32_PREFIX
  endif
 else
  # Resolve any fancy stuff once and for all.
- TOOL_MINGW32_PREFIX := $(TOOL_MINGW32_PREFIX)
+ TOOL_MINGW32_PREFIX :=
 endif
 
 TOOL_MINGW32_CC  ?= $(TOOL_MINGW32_PREFIX)gcc$(TOOL_MINGW32_HOSTSUFF_EXE)
