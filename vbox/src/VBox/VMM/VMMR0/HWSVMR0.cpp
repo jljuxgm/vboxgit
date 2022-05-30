@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 13252 2008-10-14 12:13:44Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 13514 2008-10-23 07:56:55Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -61,14 +61,13 @@ static uint32_t const g_aIOSize[4] = {1, 2, 0, 4};
  *
  * @returns VBox status code.
  * @param   pCpu            CPU info struct
- * @param   pVM             The VM to operate on.
+ * @param   pVM             The VM to operate on. (can be NULL after a resume!!)
  * @param   pvPageCpu       Pointer to the global cpu page
  * @param   pPageCpuPhys    Physical address of the global cpu page
  */
 VMMR0DECL(int) SVMR0EnableCpu(PHWACCM_CPUINFO pCpu, PVM pVM, void *pvPageCpu, RTHCPHYS pPageCpuPhys)
 {
     AssertReturn(pPageCpuPhys, VERR_INVALID_PARAMETER);
-    AssertReturn(pVM, VERR_INVALID_PARAMETER);
     AssertReturn(pvPageCpu, VERR_INVALID_PARAMETER);
 
     /* We must turn on AMD-V and setup the host state physical address, as those MSRs are per-cpu/core. */
