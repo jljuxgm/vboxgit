@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 15660 2008-12-18 14:13:57Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 15770 2008-12-29 18:04:56Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1030,7 +1030,7 @@ int  vboxNetFltOsPreInitInstance(PVBOXNETFLTINS pThis)
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 20)
     INIT_WORK(&pThis->u.s.XmitTask, vboxNetFltLinuxXmitTask);
 #else
-    INIT_WORK(&pThis->u.s.XmitTask, vboxNetFltLinuxXmitTask, NULL);
+    INIT_WORK(&pThis->u.s.XmitTask, vboxNetFltLinuxXmitTask, &pThis->u.s.XmitTask);
 #endif
 
     return VINF_SUCCESS;
