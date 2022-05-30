@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 12594 2008-09-19 09:45:17Z vboxsync $ */
+/* $Id: tstCollector.cpp 12913 2008-10-02 09:44:10Z vboxsync $ */
 
 /** @file
  *
@@ -268,7 +268,8 @@ int main(int argc, char *argv[])
         return 1;
     }
     start = RTTimeMilliTS();
-    while(RTTimeMilliTS() - start < 5000); // Loop for 5 seconds
+    while(RTTimeMilliTS() - start < 5000)
+        ; // Loop for 5 seconds
     rc = collector->preCollect(hints);
     if (RT_FAILURE(rc))
     {
