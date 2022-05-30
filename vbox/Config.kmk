@@ -1224,7 +1224,8 @@ ifeq ($(KBUILD_TARGET),win)
  LIB_DDU         = $(PATH_LIB)/VBoxDDU.lib
  LIB_SETTINGS    = $(PATH_LIB)/VBoxSettings.lib
 endif
-VBOX_LIB_SUPHARDENED = $(PATH_LIB)/SUPR3HardenedStatic$(VBOX_SUFF_LIB)
+VBOX_LIB_SUPHARDENED    = $(PATH_LIB)/SUPR3HardenedStatic$(VBOX_SUFF_LIB)
+VBOX_LIB_RUNTIME_STATIC = $(PATH_LIB)/RuntimeR3$(VBOX_SUFF_LIB)
 
 # Python
 ifndef VBOX_BLD_PYTHON
@@ -3695,7 +3696,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 17264 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 17354 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
