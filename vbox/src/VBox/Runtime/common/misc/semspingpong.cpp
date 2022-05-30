@@ -1,4 +1,4 @@
-/* $Id: semspingpong.cpp 12874 2008-10-01 20:09:09Z vboxsync $ */
+/* $Id: semspingpong.cpp 14057 2008-11-10 23:00:21Z vboxsync $ */
 /** @file
  * IPRT - Thread Ping-Pong Construct.
  */
@@ -51,7 +51,8 @@
 #define RTSEMPP_VALIDATE_RETURN(pPP) \
     do { \
         AssertPtrReturn(pPP, VERR_INVALID_PARAMETER); \
-        ASMAtomicUoReadSize(&pPP->enmSpeaker, &enmSpeaker); \
+        AssertCompileSize(pPP->enmSpeaker, 4); \
+        enmSpeaker = (RTPINGPONGSPEAKER)ASMAtomicUoReadU32((volatile uint32_t *)&pPP->enmSpeaker); \
         AssertMsgReturn(    enmSpeaker == RTPINGPONGSPEAKER_PING \
                         ||  enmSpeaker == RTPINGPONGSPEAKER_PONG \
                         ||  enmSpeaker == RTPINGPONGSPEAKER_PONG_SIGNALED \
