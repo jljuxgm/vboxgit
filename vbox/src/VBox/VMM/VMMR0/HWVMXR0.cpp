@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 14110 2008-11-11 19:42:05Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 14306 2008-11-18 15:09:43Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1286,7 +1286,7 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
             Assert(!(pVCpu->hwaccm.s.vmx.GCPhysEPTP & 0xfff));
             /** @todo Check the IA32_VMX_EPT_VPID_CAP MSR for other supported memory types. */
             pVCpu->hwaccm.s.vmx.GCPhysEPTP |=   VMX_EPT_MEMTYPE_WB
-                                                         | (VMX_EPT_PAGE_WALK_LENGTH_DEFAULT << VMX_EPT_PAGE_WALK_LENGTH_SHIFT);
+                                             | (VMX_EPT_PAGE_WALK_LENGTH_DEFAULT << VMX_EPT_PAGE_WALK_LENGTH_SHIFT);
 
             rc = VMXWriteVMCS(VMX_VMCS_CTRL_EPTP_FULL, pVCpu->hwaccm.s.vmx.GCPhysEPTP);
 #if HC_ARCH_BITS == 32
@@ -2020,7 +2020,10 @@ ResumeExecution:
     AssertRC(rc);
     pVCpu->hwaccm.s.Event.intInfo = VMX_VMCS_CTRL_ENTRY_IRQ_INFO_FROM_EXIT_INT_INFO(val);
     if (    VMX_EXIT_INTERRUPTION_INFO_VALID(pVCpu->hwaccm.s.Event.intInfo)
-        &&  VMX_EXIT_INTERRUPTION_INFO_TYPE(pVCpu->hwaccm.s.Event.intInfo) != VMX_EXIT_INTERRUPTION_INFO_TYPE_SW)
+        /* Ignore 'int xx' as they'll be restarted anyway. */
+        &&  VMX_EXIT_INTERRUPTION_INFO_TYPE(pVCpu->hwaccm.s.Event.intInfo) != VMX_EXIT_INTERRUPTION_INFO_TYPE_SW
+        /* Ignore software exceptions (such as int3) as they're reoccur when we restart the instruction anyway. */
+        &&  VMX_EXIT_INTERRUPTION_INFO_TYPE(pVCpu->hwaccm.s.Event.intInfo) != VMX_EXIT_INTERRUPTION_INFO_TYPE_SWEXCPT)
     {
         pVCpu->hwaccm.s.Event.fPending = true;
         /* Error code present? */
