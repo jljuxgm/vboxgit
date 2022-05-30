@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 12702 2008-09-24 16:56:02Z vboxsync $ */
+/* $Id: HWVMXR0.h 12725 2008-09-25 12:25:31Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -143,7 +143,8 @@ HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx);
         rc  = VMXWriteVMCS(VMX_VMCS_GUEST_FIELD_##REG,      pCtx->reg);                         \
         rc |= VMXWriteVMCS(VMX_VMCS_GUEST_##REG##_LIMIT,    pCtx->reg##Hid.u32Limit);           \
         rc |= VMXWriteVMCS(VMX_VMCS_GUEST_##REG##_BASE,     pCtx->reg##Hid.u64Base);            \
-        if (pCtx->eflags.u32 & X86_EFL_VM)                                                      \
+        if (   (pCtx->eflags.u32 & X86_EFL_VM)                                                  \
+            || !(pCtx->cr0 & X86_CR0_PROTECTION_ENABLE))                                        \
             val = pCtx->reg##Hid.Attr.u;                                                        \
         else                                                                                    \
         if (pCtx->reg && pCtx->reg##Hid.Attr.n.u1Present == 1)                                  \

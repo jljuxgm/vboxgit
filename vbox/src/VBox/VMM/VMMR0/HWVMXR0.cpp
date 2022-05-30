@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 12711 2008-09-25 09:32:13Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 12725 2008-09-25 12:25:31Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2357,6 +2357,9 @@ ResumeExecution:
 
         VMXReadVMCS(VMX_VMCS_GUEST_CR4, &val);
         Log(("VMX_VMCS_GUEST_CR4        %RX64\n", val));
+
+        VMXReadVMCS(VMX_VMCS_GUEST_RFLAGS, &val);
+        Log(("VMX_VMCS_GUEST_RFLAGS     %08x\n", val));
 
         VMX_LOG_SELREG(CS, "CS");
         VMX_LOG_SELREG(DS, "DS");
