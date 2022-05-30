@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: PGM.cpp 13001 2008-10-06 11:06:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -22,6 +22,7 @@
 
 /** @page pg_pgm PGM - The Page Manager and Monitor
  *
+ * See also @ref pg_pgmPhys, @ref pg_pgm_pool.
  *
  *
  * @section         sec_pgm_modes           Paging Modes

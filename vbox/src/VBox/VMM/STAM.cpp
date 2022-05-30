@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: STAM.cpp 13001 2008-10-06 11:06:14Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -17,6 +17,20 @@
  * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
+ */
+
+/** @page pg_stam       STAM - The Statistics Manager
+ *
+ * The purpose for the statistics manager is to present the rest of the system
+ * with a somewhat uniform way of accessing VMM statistics. STAM sports a couple
+ * of different APIs for accessing them: STAMR3EnumU, STAMR3SnapshotU,
+ * STAMR3DumpU, STAMR3DumpToReleaseLogU. Main is exposing the XML based one,
+ * STAMR3SnapshotU.
+ *
+ * The rest of the VMM together with the devices and drivers registers their
+ * statistics with STAM giving them a name. The name is like hierarchical, the
+ * components separated by slashes ('/').
+ *
  */
 
 
