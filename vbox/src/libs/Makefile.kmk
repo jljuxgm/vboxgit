@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14193 2008-11-13 23:19:42Z vboxsync $
+# $Id: Makefile.kmk 15897 2009-01-12 14:31:42Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -49,7 +49,7 @@ endif
 # OpenSSL for VRDP.
 if defined(VBOX_WITH_VRDP) && !defined(VBOX_ONLY_DOCS) && !defined(VBOX_ONLY_SDK) \
  && "$(SDK_VBOX_OPENSSL_INCS)" == "$(SDK_VBOX_OPENSSL_DEFAULT_INCS)"
- include $(PATH_SUB_CURRENT)/openssl-0.9.8h/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/openssl-0.9.8j/Makefile.kmk
 endif
 
 
