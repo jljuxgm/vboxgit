@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15800 2009-01-05 13:11:37Z vboxsync $
+# $Id: Makefile.kmk 15802 2009-01-05 13:21:54Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -49,7 +49,8 @@ OTHER_CLEAN += \
 	$(VBOX_VERSION_STAMP) \
 	$(wildcard $(PATH_OUT)/version-stamp-*.*.*) \
 	$(VBOX_SVN_REV_KMK).ts \
-	$(VBOX_SVN_REV_KMK)
+	$(VBOX_SVN_REV_KMK) \
+	$(PATH_OUT)/GCCConfig.kmk
 
 
 ifndef VBOX_ONLY_DOCS
