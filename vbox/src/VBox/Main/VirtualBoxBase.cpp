@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 13857 2008-11-05 13:37:32Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 13874 2008-11-05 15:06:06Z vboxsync $ */
 
 /** @file
  *
@@ -216,7 +216,7 @@ HRESULT VirtualBoxBaseProto::addCaller (State *aState /* = NULL */,
                 mInitUninitSem = NIL_RTSEMEVENTMULTI;
             }
 
-            if (mState == Ready)
+            if (mState == Ready || (aLimited && mState == Limited))
                 rc = S_OK;
             else
             {
