@@ -1,4 +1,4 @@
-# $Id: Config.kmk 14643 2008-11-26 13:52:49Z vboxsync $
+# $Id: Config.kmk 14686 2008-11-27 09:11:18Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1846,8 +1846,7 @@ if1of ($(KBUILD_TARGET), linux)
  ifneq ($(VBOX_LINUX_SRC),)
   ifeq ($(origin VBOX_LINUX_INCS),undefined)
    export VBOX_LINUX_INCS           := $(VBOX_LINUX_SRC)/include
-   # support splitted Linux kernels (make O=<build directory>)
-   # XXX hack alert!
+   # XXX hack alert! support splitted Linux kernels (make O=<build directory>)
    kernelsrc := $(shell $(SED_EXT) -ne 's+^KERNELSRC.*= *\(.*\)+\1+p' $(VBOX_LINUX_SRC)/Makefile)
    ifneq ($(kernelsrc),)
     kernelpath := $(realpath $(VBOX_LINUX_SRC)/$(kernelsrc))
@@ -1861,7 +1860,9 @@ if1of ($(KBUILD_TARGET), linux)
     kernelpath := $(VBOX_LINUX_SRC)
    endif
    VBOX_LINUX_INCS                  += $(kernelpath)/include/asm-i386/mach-default \
-                                       $(kernelpath)/include/asm-x86/mach-default
+                                       $(kernelpath)/include/asm-x86/mach-default \
+                                       $(kernelpath)/arch/x86/include \
+                                       $(kernelpath)/arch/x86/include/asm/mach-default
   endif
  endif
 endif
@@ -2090,7 +2091,7 @@ TEMPLATE_VBOXR0DRV_TOOL                = $(VBOX_GCC_TOOL)
 TEMPLATE_VBOXR0DRV_DEFS                = __KERNEL__ MODULE IN_RING0 IN_RT_R0
 TEMPLATE_VBOXR0DRV_INCS                = $(VBOX_LINUX_INCS)
 TEMPLATE_VBOXR0DRV_CFLAGS              = -nostdinc -iwithprefix include \
-	$(VBOX_GCC_WARN) -Wstrict-prototypes $(VBOX_GCC_Wno-pointer-sign) \
+	$(VBOX_GCC_WARN) -Wstrict-prototypes $(VBOX_GCC_Wno-pointer-sign) -Wno-sign-compare \
 	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_OPT) $(VBOX_GCC_FP) -fno-strict-aliasing -fno-common
 TEMPLATE_VBOXR0DRV_CFLAGS.x86          = -mpreferred-stack-boundary=2 -msoft-float
 TEMPLATE_VBOXR0DRV_CFLAGS.amd64        = -m64 -mno-red-zone -mcmodel=kernel -mno-sse -mno-mmx -mno-sse2 -mno-3dnow \
@@ -3637,7 +3638,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14643 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14686 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
