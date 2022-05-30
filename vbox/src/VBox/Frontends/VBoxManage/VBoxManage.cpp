@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 14178 2008-11-13 15:14:25Z vboxsync $ */
+/* $Id: VBoxManage.cpp 14258 2008-11-17 17:05:09Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -75,6 +75,11 @@ using namespace com;
 /** command handler type */
 typedef DECLCALLBACK(int) FNHANDLER(int argc, char *argv[], ComPtr<IVirtualBox> aVirtualBox, ComPtr<ISession> aSession);
 typedef FNHANDLER *PFNHANDLER;
+
+#ifdef USE_XPCOM_QUEUE
+/** A pointer to the event queue, set by main() before calling any handlers. */
+nsCOMPtr<nsIEventQueue> g_pEventQ;
+#endif
 
 /**
  * Quick IUSBDevice implementation for detaching / attaching
@@ -8497,7 +8502,9 @@ int main(int argc, char *argv[])
      * (here it is necessary only to process remaining XPCOM/IPC events
      * after the session is closed) */
 
-    EventQueue eventQ;
+#ifdef USE_XPCOM_QUEUE
+    NS_GetMainEventQ(getter_AddRefs(g_pEventQ));
+#endif
 
     if (!checkForAutoConvertedSettings (virtualBox, session, fConvertSettings))
         break;
@@ -8573,6 +8580,10 @@ int main(int argc, char *argv[])
      * Aborted which may have unwanted side effects like killing the saved
      * state file (if the machine was in the Saved state before). */
     session->Close();
+
+#ifdef USE_XPCOM_QUEUE
+    g_pEventQ->ProcessPendingEvents();
+#endif
 
     // end "all-stuff" scope
     ////////////////////////////////////////////////////////////////////////////
