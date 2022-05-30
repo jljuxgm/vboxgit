@@ -1,4 +1,4 @@
-/* $Id: kLdr.h 2 2007-11-16 16:07:14Z bird $ */
+/* $Id: kLdr.h 19 2009-01-30 06:27:14Z bird $ */
 /** @file
  *
  * kLdr - The Dynamic Loader.
@@ -240,7 +240,7 @@ typedef struct KLDRSEG
     /** Segment flags. */
     KU32            fFlags;
     /** The segment protection. */
-    KPROT        enmProt;
+    KPROT           enmProt;
     /** The size of the segment. */
     KLDRSIZE        cb;
     /** The required segment alignment.
