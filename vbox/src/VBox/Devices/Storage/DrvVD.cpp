@@ -1,4 +1,4 @@
-/** $Id: DrvVD.cpp 12463 2008-09-15 15:18:58Z vboxsync $ */
+/** $Id: DrvVD.cpp 12467 2008-09-15 15:22:03Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -669,6 +669,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
      */
     unsigned    iLevel = 0;
     PCFGMNODE   pCurNode = pCfgHandle;
+    rc = VINF_SUCCESS;
     for (;;)
     {
         bool fValid;
@@ -693,6 +694,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
                                      RT_SRC_POS, N_("DrvVD: Configuration error: keys incorrect at level %d"), iLevel);
             break;
         }
+    
 
         PCFGMNODE pParent = CFGMR3GetChild(pCurNode, "Parent");
         if (!pParent)
