@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 14185 2008-11-13 17:09:13Z vboxsync $ -->
+<!-- $Id: midl.xsl 14469 2008-11-21 15:44:45Z vboxsync $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
@@ -151,17 +151,33 @@
   <xsl:value-of select="@name"/>
   <xsl:text>&#x0A;{&#x0A;</xsl:text>
   <xsl:text>&#x0A;importlib("stdole2.tlb");&#x0A;&#x0A;</xsl:text>
+  <!-- result codes -->
+  <xsl:for-each select="result">
+    <xsl:apply-templates select="."/>
+  </xsl:for-each>
+  <xsl:text>&#x0A;</xsl:text>
   <!-- forward declarations -->
   <xsl:apply-templates select="if | interface | collection | enumerator" mode="forward"/>
   <xsl:text>&#x0A;</xsl:text>
   <!-- all enums go first -->
   <xsl:apply-templates select="enum | if/enum"/>
-  <!-- everything else but enums -->
-  <xsl:apply-templates select="*[not(self::enum) and not(self::if[enum])]"/>
+  <!-- everything else but result codes and enums -->
+  <xsl:apply-templates select="*[not(self::result or self::enum) and
+                                 not(self::if[result] or self::if[enum])]"/>
   <!-- -->
   <xsl:text>}; /* library </xsl:text>
   <xsl:value-of select="@name"/>
   <xsl:text> */&#x0A;&#x0A;</xsl:text>
+</xsl:template>
+
+
+<!--
+ *  result codes
+-->
+<xsl:template match="result">
+  <xsl:text>cpp_quote("</xsl:text>
+  <xsl:value-of select="concat('#define ',@name,' ',@value)"/>
+  <xsl:text>")&#x0A;</xsl:text>
 </xsl:template>
 
 

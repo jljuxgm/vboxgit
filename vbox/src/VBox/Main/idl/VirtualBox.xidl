@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14437 2008-11-20 21:37:06Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14469 2008-11-21 15:44:45Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -147,6 +147,25 @@
    appUuid="819B4D85-9CEE-493C-B6FC-64FFE759B3C9"
    supportsErrorInfo="yes"
 >
+
+
+  <!--
+  // COM result codes for VirtualBox
+  /////////////////////////////////////////////////////////////////////////
+  -->
+
+  <result name="VBOX_E_OBJECT_NOT_FOUND" value="0x80BB0001">
+    <desc>
+       Object corresponding to the supplied arguments does not exist.
+    </desc>
+  </result>
+
+  <result name="VBOX_E_INVALID_VM_STATE" value="0x80BB0002">
+    <desc>
+       Current virtual machine state prevents the operation.
+    </desc>
+  </result>
+
 
   <!--
   // all common enums
@@ -590,6 +609,7 @@
     <const name="ImageMounted"      value="2"/>
     <const name="HostDriveCaptured" value="3"/>
   </enum>
+
 
   <!--
   // IVirtualBoxErrorInfo

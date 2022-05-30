@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl.xsl 14361 2008-11-19 16:35:45Z vboxsync $ -->
+<!-- $Id: xpidl.xsl 14469 2008-11-21 15:44:45Z vboxsync $ -->
 
 <!--
  *  A template to generate a XPCOM IDL compatible interface definition file
@@ -183,13 +183,30 @@
  *  libraries
 -->
 <xsl:template match="library">
+  <!-- result codes -->
+  <xsl:text>%{C++&#x0A;</xsl:text>
+  <xsl:for-each select="result">
+    <xsl:apply-templates select="."/>
+  </xsl:for-each>
+  <xsl:text>%}&#x0A;&#x0A;</xsl:text>
   <!-- forward declarations -->
   <xsl:apply-templates select="if | interface | collection | enumerator" mode="forward"/>
   <xsl:text>&#x0A;</xsl:text>
   <!-- all enums go first -->
   <xsl:apply-templates select="enum | if/enum"/>
-  <!-- everything else but enums -->
-  <xsl:apply-templates select="*[not(self::enum) and not(self::if[enum])]"/>
+  <!-- everything else but result codes and enums -->
+  <xsl:apply-templates select="*[not(self::result or self::enum) and
+                                 not(self::if[result] or self::if[enum])]"/>
+  <!-- -->
+</xsl:template>
+
+
+<!--
+ *  result codes
+-->
+<xsl:template match="result">
+  <xsl:value-of select="concat('#define ',@name,' ',@value)"/>
+  <xsl:text>&#x0A;</xsl:text>
 </xsl:template>
 
 
