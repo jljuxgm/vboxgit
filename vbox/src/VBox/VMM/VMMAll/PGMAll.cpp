@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 17432 2009-03-06 02:04:24Z vboxsync $ */
+/* $Id: PGMAll.cpp 17433 2009-03-06 02:18:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2348,7 +2348,7 @@ VMMDECL(void) PGMDynCheckLocks(PVM pVM)
 # endif /* IN_RC */
 #endif /* IN_RC || VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0 */
 
-#ifdef LOG_ENABLED
+#if !defined(IN_R0) || defined(LOG_ENABLED)
 
 /** Format handler for PGMPAGE.
  * @copydoc FNRTSTRFORMATTYPE */
@@ -2448,7 +2448,7 @@ static const struct
     { "pgmramrange",    pgmFormatTypeHandlerRamRange }
 };
 
-#endif /* LOG_ENABLED */
+#endif /* !IN_R0 || LOG_ENABLED */
 
 
 /**
