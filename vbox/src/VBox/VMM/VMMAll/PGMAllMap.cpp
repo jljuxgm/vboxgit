@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 17006 2009-02-23 12:11:21Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 17007 2009-02-23 12:11:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -515,7 +515,6 @@ VMMDECL(void) PGMMapCheck(PVM pVM)
 
 # ifdef IN_RING0
     AssertFailed();
-    return;
 # else
 #  ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     Assert(pVM->pgm.s.CTX_SUFF(pShwPageCR3));
@@ -530,7 +529,6 @@ VMMDECL(void) PGMMapCheck(PVM pVM)
 
         pgmMapCheckShadowPDEs(pVM, pVM->pgm.s.CTX_SUFF(pShwPageCR3), pCur, iPDE);
     }
-    return VINF_SUCCESS;
 # endif /* IN_RING0 */
 #endif /* VBOX_WITH_PGMPOOL_PAGING_ONLY */
 }
