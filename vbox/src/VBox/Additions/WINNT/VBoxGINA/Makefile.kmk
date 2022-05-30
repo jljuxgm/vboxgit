@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12446 2008-09-14 23:32:31Z vboxsync $
+# $Id: Makefile.kmk 16138 2009-01-21 14:01:28Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxGINA.
 #
@@ -24,7 +24,7 @@ include	$(KBUILD_PATH)/subheader.kmk
 
 DLLS += VBoxGINA
 VBoxGINA_TEMPLATE = VBOXGUESTR3DLL
-VBoxGINA_DEFS     = UNICODE
+VBoxGINA_DEFS     = UNICODE LOG_TO_BACKDOOR VBGL_VBOXGUEST VBOX_WITH_HGCM
 VBoxGINA_SOURCES  = \
 	VBoxGINA.cpp \
 	Helper.cpp  \
