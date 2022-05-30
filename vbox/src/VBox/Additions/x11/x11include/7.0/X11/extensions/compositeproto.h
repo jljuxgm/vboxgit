@@ -1,5 +1,5 @@
 /*
- * $Id: compositeproto.h 17233 2009-03-02 10:37:38Z vboxsync $
+ * $Id: compositeproto.h 43555 2009-03-02 10:37:38Z michael $
  *
  * Copyright © 2003 Keith Packard
  *
