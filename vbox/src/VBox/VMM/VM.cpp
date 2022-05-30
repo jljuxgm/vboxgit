@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 16184 2009-01-22 17:33:01Z vboxsync $ */
+/* $Id: VM.cpp 16584 2009-02-09 13:33:10Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -3124,7 +3124,7 @@ static void vmR3SetRuntimeErrorWorkerDoCall(PVM pVM, PVMATRUNTIMEERROR pCur, boo
 VMMR3DECL(void) VMR3SetRuntimeErrorWorker(PVM pVM)
 {
     VM_ASSERT_EMT(pVM);
-    AssertReleaseMsgFailed(("And we have a winner! You get to implement Ring-0 and GC VMSetRuntimeErrorV! Contrats!\n"));
+    AssertReleaseMsgFailed(("And we have a winner! You get to implement Ring-0 and GC VMSetRuntimeErrorV! Congrats!\n"));
 
     /*
      * Unpack the error (if we managed to format one).
