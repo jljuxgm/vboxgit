@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 12608 2008-09-19 15:59:24Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 13024 2008-10-06 22:35:32Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -40,6 +40,9 @@
 
 #include "../Builtins.h"
 
+#if defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT) && !defined(VBOX_NETFLT_ONDEMAND_BIND)
+# include "win/DrvIntNet-win.h"
+#endif
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
@@ -912,6 +915,15 @@ static DECLCALLBACK(int) drvIntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHa
     }
 
 #elif defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT)
+# ifndef VBOX_NETFLT_ONDEMAND_BIND
+    /* we have a ndis filter driver started on system boot before the VBoxDrv,
+     * tell the filter driver to init VBoxNetFlt functionality */
+    rc = drvIntNetWinConstruct(pDrvIns, pCfgHandle);
+    if (RT_FAILURE(rc))
+    {
+        return rc;
+    }
+# endif
     /* Temporary hack: attach to a network with the name 'if=en0' and you're hitting the wire. */
     if (    !OpenReq.szTrunk[0]
         &&   OpenReq.enmTrunkType == kIntNetTrunkType_None
