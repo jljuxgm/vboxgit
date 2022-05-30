@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 14539 2008-11-24 18:42:23Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 14607 2008-11-25 22:09:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -333,7 +333,7 @@ VMMR0DECL(int) PGMR0DynMapInitVM(PVM pVM)
      * Do we need the cache? Skip the last bit if we don't.
      */
 #if 1
-    if (!HWACCMIsEnabled(pVM))
+    if (!VMMIsHwVirtExtForced(pVM))
         return VINF_SUCCESS;
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 14499 2008-11-24 01:48:34Z vboxsync $ */
+/* $Id: VMM.cpp 14607 2008-11-25 22:09:20Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -231,7 +231,7 @@ static int vmmR3InitStacks(PVM pVM)
     {
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
         /* MMHyperR3ToR0 returns R3 when not doing hardware assisted virtualization. */
-        if (!HWACCMIsEnabled(pVM))
+        if (!VMMIsHwVirtExtForced(pVM))
             pVM->vmm.s.CallHostR0JmpBuf.pvSavedStack = NIL_RTR0PTR;
         else
 #endif
