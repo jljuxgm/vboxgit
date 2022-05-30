@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16783 2009-02-16 12:42:55Z vboxsync $
+# $Id: Makefile.kmk 16995 2009-02-23 09:24:17Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -34,7 +34,7 @@ PKGFILENAME           := VBoxSolarisAdditions.pkg
 PKGINFO_ARCH           = $(shell uname -p)
 PKGINFO_REVSTAMP       = $(date %Y.%m.%d.%H.%M)
 VBOX_PATH_SOLARIS_ADDITION_INSTALLER := $(PATH_SUB_CURRENT)/Installer
-VBOX_PATH_X11_ADDITION_INSTALLER     := $(PATH_ROOT)/src/VBox/Additions/x11/installer
+VBOX_PATH_X11_ADDITION_INSTALLER     := $(PATH_ROOT)/src/VBox/Additions/x11/Installer
 SOLARIS_ADD_INST_DIR  := $(PATH_TARGET)/AdditionsInstaller
 
 ifeq ($(KBUILD_TYPE),debug)
