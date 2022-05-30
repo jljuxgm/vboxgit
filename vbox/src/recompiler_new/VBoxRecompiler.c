@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 17035 2009-02-23 22:26:39Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 17036 2009-02-23 22:30:51Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -30,8 +30,6 @@
 #include "config.h"
 #include "cpu-all.h"
 
-void cpu_exec_init_all(unsigned long tb_size);
-
 #include <VBox/rem.h>
 #include <VBox/vmapi.h>
 #include <VBox/tm.h>
@@ -60,6 +58,7 @@ void cpu_exec_init_all(unsigned long tb_size);
 #include <iprt/string.h>
 
 /* Don't wanna include everything. */
+extern void cpu_exec_init_all(unsigned long tb_size);
 extern void cpu_x86_update_cr3(CPUX86State *env, target_ulong new_cr3);
 extern void cpu_x86_update_cr0(CPUX86State *env, uint32_t new_cr0);
 extern void cpu_x86_update_cr4(CPUX86State *env, uint32_t new_cr4);
