@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 12343 2008-09-10 10:54:02Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 12365 2008-09-10 16:00:18Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -754,7 +754,7 @@ VBOXDDU_DECL(int) VDBackendInfo(unsigned cEntriesAlloc, PVDBACKENDINFO pEntries,
                         unsigned cExts, iExt;
                         for (cExts=0; pBackend->papszFileExtensions[cExts]; cExts++)
                             ;
-                        const char **paExts = (const char **)RTMemAlloc((cExts+1) * sizeof(paExts[0]));
+                        const char **paExts = (const char **)RTMemAlloc((cExts+1) * sizeof(paExts[0])); /** @todo rainy day: fix leak on error. */
                         if (!paExts)
                         {
                             rc = VERR_NO_MEMORY;
