@@ -1,4 +1,4 @@
-# $Id: footer.kmk 1686 2008-08-11 21:47:33Z bird $
+# $Id: footer.kmk 1702 2008-09-02 02:20:48Z bird $
 ## @file
 # kBuild - File included at top of makefile.
 #
@@ -91,8 +91,8 @@ _ALL_SRCNAME_TARGETS = \
 	$(_ALL_FETCHES) \
 	$(_ALL_PATCHES)
 
-# dependency files.
-_DEPFILES :=
+# Dependency files. (currently not on target level, only this global stuff)
+_DEPFILES        := $(DEPFILES)    $(DEPFILES.$(KBUILD_TARGET))      $(DEPFILES.$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH))        $(DEPFILES.$(KBUILD_TARGET_ARCH))    $(DEPFILES.$(KBUILD_TARGET_CPU))     $(DEPFILES.$(KBUILD_TYPE))
 
 # included dependency files.
 _DEPFILES_INCLUDED :=
@@ -1352,12 +1352,28 @@ local out := $(outbase)$(suff)
 TARGET_$(target) := $(out)
 
 # INSTARGET_*
-ifndef $(target)_NOINST
-INSTARGET_$(target) := $(patsubst %/,%/$(notdir $(out)), \
-	$(if $($(target)_INST), $(addprefix $(PATH_INS)/,$($(target)_INST)), $(definst)/))
+ifeq ($(strip $($(target)_NOINST) $($(target)_NOINST.$(bld_trg)) $($(target)_NOINST.$(bld_trg).$(bld_trg_arch)) $($(target)_NOINST.$(bld_trg).$(bld_trg_arch).$(bld_type))  $($(target)_NOINST.$(bld_trg_arch)) $($(target)_NOINST.$(bld_trg_cpu)) $($(target)_NOINST.$(bld_trg_type))),)
+ ifneq ($(strip $($(target)_INST.$(bld_trg).$(bld_trg_arch).$(bld_type))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg).$(bld_trg_arch).$(bld_type)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg).$(bld_trg_arch))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg).$(bld_trg_arch)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg).$(bld_type))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg).$(bld_type)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg_arch))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg_arch)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg)))
+ else ifneq ($(strip $($(target)_INST.$(bld_type))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_type)))
+ else ifneq ($(strip $($(target)_INST)),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST))
+ else
+  local inst := $(definst)/
+ endif
+ INSTARGET_$(target) := $(patsubst %/,%/$(notdir $(out)),$(inst))
 
 else # NOINST
-INSTARGET_$(target) :=
+ INSTARGET_$(target) :=
 endif # NOINST
 
 endef
@@ -2099,21 +2115,37 @@ endef
 # @param	$(typevar)  The name of the variable with all the root targets of its type.
 # @remark   Only library uses this now.
 define def_target_install_pluss
-ifndef $(target)_NOINST
-INSTARGET_$(target) := $(patsubst %/,%/$(notdir $(out)), \
-	$(if $($(target)_INST), $(addprefix $(PATH_INS)/,$($(target)_INST)), $(definst)/))
+ifeq ($(strip $($(target)_NOINST) $($(target)_NOINST.$(bld_trg)) $($(target)_NOINST.$(bld_trg).$(bld_trg_arch)) $($(target)_NOINST.$(bld_trg).$(bld_trg_arch).$(bld_type))  $($(target)_NOINST.$(bld_trg_arch)) $($(target)_NOINST.$(bld_trg_cpu)) $($(target)_NOINST.$(bld_trg_type))),)
+ ifneq ($(strip $($(target)_INST.$(bld_trg).$(bld_trg_arch).$(bld_type))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg).$(bld_trg_arch).$(bld_type)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg).$(bld_trg_arch))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg).$(bld_trg_arch)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg).$(bld_type))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg).$(bld_type)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg_arch))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg_arch)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg)))
+ else ifneq ($(strip $($(target)_INST.$(bld_type))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_type)))
+ else ifneq ($(strip $($(target)_INST)),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST))
+ else
+  local inst := $(definst)/
+ endif
+ INSTARGET_$(target) := $(patsubst %/,%/$(notdir $(out)),$(inst))
 
 $(eval $(def_link_install_rule))
 
-_INSTALLS_FILES += $(INSTARGET_$(target))
+ _INSTALLS_FILES += $(INSTARGET_$(target))
 
-ifdef KBUILD_DO_AUTO_INSTALL
-$(typevar) += $(INSTARGET_$(target))
-else
-$(typevar) += $(out)
-endif
+ ifdef KBUILD_DO_AUTO_INSTALL
+  $(typevar) += $(INSTARGET_$(target))
+ else
+  $(typevar) += $(out)
+ endif
 else # _NOINST
-$(typevar) += $(out)
+ $(typevar) += $(out)
 endif
 
 _OUT_FILES += $($(target)_OUTPUT_) $($(target)_OUTPUT_MAYBE_) $(out)
@@ -2204,8 +2236,40 @@ local flags       :=\
 	$($(target)_ARFLAGS.$(bld_trg).$(bld_trg_arch)) \
 	$($(target)_ARFLAGS.$(bld_trg_cpu))
 local dirdep      := $(call DIRDEP,$(dir $(out)))
-local deps        := $($(target)_DEPS)
-local orderdeps   := $($(target)_ORDERDEPS)
+local deps        := \
+	$($(target)_DEPS.$(bld_trg_cpu)) \
+	$($(target)_DEPS.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+	$($(target)_DEPS.$(bld_trg).$(bld_trg_arch)) \
+	$($(target)_DEPS.$(bld_trg).$(bld_type)) \
+	$($(target)_DEPS.$(bld_trg_arch)) \
+	$($(target)_DEPS.$(bld_trg)) \
+	$($(target)_DEPS.$(bld_type)) \
+	$($(target)_DEPS) \
+	$($(target)_LNK_DEPS.$(bld_trg_cpu)) \
+	$($(target)_LNK_DEPS.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+	$($(target)_LNK_DEPS.$(bld_trg).$(bld_trg_arch)) \
+	$($(target)_LNK_DEPS.$(bld_trg).$(bld_type)) \
+	$($(target)_LNK_DEPS.$(bld_trg_arch)) \
+	$($(target)_LNK_DEPS.$(bld_trg)) \
+	$($(target)_LNK_DEPS.$(bld_type)) \
+	$($(target)_LNK_DEPS)
+local orderdeps   := \
+	$($(target)_ORDERDEPS.$(bld_trg_cpu)) \
+	$($(target)_ORDERDEPS.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+	$($(target)_ORDERDEPS.$(bld_trg).$(bld_trg_arch)) \
+	$($(target)_ORDERDEPS.$(bld_trg).$(bld_type)) \
+	$($(target)_ORDERDEPS.$(bld_trg_arch)) \
+	$($(target)_ORDERDEPS.$(bld_trg)) \
+	$($(target)_ORDERDEPS.$(bld_type)) \
+	$($(target)_ORDERDEPS) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg_cpu)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg).$(bld_trg_arch)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg).$(bld_type)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg_arch)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_type)) \
+	$($(target)_LNK_ORDERDEPS)
 
 # Adjust paths if we got a default path.
 ifneq ($(defpath),)
@@ -2217,6 +2281,7 @@ endif
 
 
 # Custom pre-link actions.
+## @todo bld_trg_cpu is missing here.
 ifdef $(target)_PRE_CMDS.$(bld_trg).$(bld_trg_arch).$(bld_type)
  local pre_cmds := $($(target)_PRE_CMDS.$(bld_trg).$(bld_trg_arch).$(bld_type))
 else ifdef $(target)_PRE_CMDS.$(bld_trg).$(bld_trg_arch)
@@ -2531,8 +2596,40 @@ local libpath    :=\
 	$(TOOL_$(tool)_LIBPATH.$(bld_type))\
 	$(TOOL_$(tool)_LIBPATH)
 local dirdep      := $(call DIRDEP,$(dir $(out)))
-local deps        := $($(target)_DEPS)
-local orderdeps   := $($(target)_ORDERDEPS)
+local deps        := \
+	$($(target)_DEPS.$(bld_trg_cpu)) \
+	$($(target)_DEPS.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+	$($(target)_DEPS.$(bld_trg).$(bld_trg_arch)) \
+	$($(target)_DEPS.$(bld_trg).$(bld_type)) \
+	$($(target)_DEPS.$(bld_trg_arch)) \
+	$($(target)_DEPS.$(bld_trg)) \
+	$($(target)_DEPS.$(bld_type)) \
+	$($(target)_DEPS) \
+	$($(target)_LNK_DEPS.$(bld_trg_cpu)) \
+	$($(target)_LNK_DEPS.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+	$($(target)_LNK_DEPS.$(bld_trg).$(bld_trg_arch)) \
+	$($(target)_LNK_DEPS.$(bld_trg).$(bld_type)) \
+	$($(target)_LNK_DEPS.$(bld_trg_arch)) \
+	$($(target)_LNK_DEPS.$(bld_trg)) \
+	$($(target)_LNK_DEPS.$(bld_type)) \
+	$($(target)_LNK_DEPS)
+local orderdeps   := \
+	$($(target)_ORDERDEPS.$(bld_trg_cpu)) \
+	$($(target)_ORDERDEPS.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+	$($(target)_ORDERDEPS.$(bld_trg).$(bld_trg_arch)) \
+	$($(target)_ORDERDEPS.$(bld_trg).$(bld_type)) \
+	$($(target)_ORDERDEPS.$(bld_trg_arch)) \
+	$($(target)_ORDERDEPS.$(bld_trg)) \
+	$($(target)_ORDERDEPS.$(bld_type)) \
+	$($(target)_ORDERDEPS) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg_cpu)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg).$(bld_trg_arch)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg).$(bld_type)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg_arch)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_trg)) \
+	$($(target)_LNK_ORDERDEPS.$(bld_type)) \
+	$($(target)_LNK_ORDERDEPS)
 
 # Adjust paths if we got a default path.
 ifneq ($(defpath),)
@@ -2610,20 +2707,36 @@ endif
 local objs = $($(target)_OBJS_)
 
 # installation targets
-ifndef $(target)_NOINST
-INSTARGET_$(target) := $(patsubst %/,%/$(notdir $(out)), \
-	$(if $($(target)_INST), $(addprefix $(PATH_INS)/,$($(target)_INST)), $(definst)/))
-ifdef KBUILD_DO_AUTO_INSTALL
-$(typevar)  += $(INSTARGET_$(target))
-else
-$(typevar)  += $(out)
-endif
-# generate the install rule
+ifeq ($(strip $($(target)_NOINST) $($(target)_NOINST.$(bld_trg)) $($(target)_NOINST.$(bld_trg).$(bld_trg_arch)) $($(target)_NOINST.$(bld_trg).$(bld_trg_arch).$(bld_type))  $($(target)_NOINST.$(bld_trg_arch)) $($(target)_NOINST.$(bld_trg_cpu)) $($(target)_NOINST.$(bld_trg_type))),)
+ ifneq ($(strip $($(target)_INST.$(bld_trg).$(bld_trg_arch).$(bld_type))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg).$(bld_trg_arch).$(bld_type)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg).$(bld_trg_arch))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg).$(bld_trg_arch)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg).$(bld_type))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg).$(bld_type)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg_arch))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg_arch)))
+ else ifneq ($(strip $($(target)_INST.$(bld_trg))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_trg)))
+ else ifneq ($(strip $($(target)_INST.$(bld_type))),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST.$(bld_type)))
+ else ifneq ($(strip $($(target)_INST)),)
+  local inst := $(addprefix $(PATH_INS)/,$($(target)_INST))
+ else
+  local inst := $(definst)/
+ endif
+ INSTARGET_$(target) := $(patsubst %/,%/$(notdir $(out)),$(inst))
+ ifdef KBUILD_DO_AUTO_INSTALL
+  $(typevar)  += $(INSTARGET_$(target))
+ else
+  $(typevar)  += $(out)
+ endif
+ # generate the install rule
 $(eval $(def_link_install_rule))
 
 else # NOINST
-INSTARGET_$(target) :=
-$(typevar)  += $(out)
+ INSTARGET_$(target) :=
+ $(typevar)  += $(out)
 endif # NOINST
 
 # dependency file
