@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 13887 2008-11-05 18:43:42Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 14294 2008-11-18 12:20:46Z vboxsync $ */
 
 /** @file
  *
@@ -647,7 +647,7 @@ VirtualBoxBaseProto::AutoMayUninitSpan::~AutoMayUninitSpan()
  *  two or more semantically different roles of the same source text in the
  *  same context.
  *
- *  @param context      the context of the the translation (can be NULL
+ *  @param context      the context of the translation (can be NULL
  *                      to indicate the global context)
  *  @param sourceText   the string to translate
  *  @param comment      the comment to the string (NULL means no comment)
