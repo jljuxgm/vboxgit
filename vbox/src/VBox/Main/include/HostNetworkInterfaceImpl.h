@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 17497 2009-03-06 17:06:07Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 17613 2009-03-10 10:34:42Z vboxsync $ */
 
 /** @file
  *
@@ -74,7 +74,7 @@ public:
     STDMETHOD(COMGETTER(NetworkMask)) (ULONG *aNetworkMask);
     STDMETHOD(COMGETTER(IPV6Supported)) (BOOL *aIPV6Supported);
     STDMETHOD(COMGETTER(IPV6Address)) (BSTR *aIPV6Address);
-    STDMETHOD(COMGETTER(IPV6NetworkMask)) (BSTR *aIPV6Mask);
+    STDMETHOD(COMGETTER(IPV6NetworkMaskPrefixLength)) (ULONG *aIPV6NetworkMaskPrefixLength);
     STDMETHOD(COMGETTER(HardwareAddress)) (BSTR *aHardwareAddress);
     STDMETHOD(COMGETTER(MediumType)) (HostNetworkInterfaceMediumType_T *aType);
     STDMETHOD(COMGETTER(Status)) (HostNetworkInterfaceStatus_T *aStatus);
@@ -105,7 +105,7 @@ private:
         ULONG IPAddress;
         ULONG networkMask;
         Bstr IPV6Address;
-        Bstr IPV6NetworkMask;
+        ULONG IPV6NetworkMaskPrefixLength;
         Bstr hardwareAddress;
         HostNetworkInterfaceMediumType_T mediumType;
         HostNetworkInterfaceStatus_T status;

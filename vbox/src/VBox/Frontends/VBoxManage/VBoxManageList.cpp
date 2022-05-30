@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 17394 2009-03-05 12:48:15Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 17613 2009-03-10 10:34:42Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -343,9 +343,9 @@ int handleList(HandlerArg *a)
                 Bstr IPV6Address;
                 networkInterface->COMGETTER(IPV6Address)(IPV6Address.asOutParam());
                 RTPrintf("IPV6Address:     %lS\n", IPV6Address.raw());
-                Bstr IPV6NetworkMask;
-                networkInterface->COMGETTER(IPV6NetworkMask)(IPV6NetworkMask.asOutParam());
-                RTPrintf("IPV6NetworkMask: %lS\n", IPV6NetworkMask.raw());
+                ULONG IPV6NetworkMaskPrefixLength;
+                networkInterface->COMGETTER(IPV6NetworkMaskPrefixLength)(&IPV6NetworkMaskPrefixLength);
+                RTPrintf("IPV6NetworkMaskPrefixLength: %d\n", IPV6NetworkMaskPrefixLength);
                 Bstr HardwareAddress;
                 networkInterface->COMGETTER(HardwareAddress)(HardwareAddress.asOutParam());
                 RTPrintf("HardwareAddress: %lS\n", HardwareAddress.raw());
