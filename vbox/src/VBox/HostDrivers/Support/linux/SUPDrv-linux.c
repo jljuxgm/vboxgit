@@ -1,4 +1,4 @@
-/* $Rev: 13314 $ */
+/* $Rev: 13668 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -548,6 +548,7 @@ nmi_activated:
         {
 #ifdef RT_ARCH_AMD64
             rc = RTR0MemExecDonate(&g_abExecMemory[0], sizeof(g_abExecMemory));
+            printk("VBoxDrv: dbg - g_abExecMemory=%p\n", (void *)&g_abExecMemory[0]);
 #endif
             /*
              * Initialize the device extension.
