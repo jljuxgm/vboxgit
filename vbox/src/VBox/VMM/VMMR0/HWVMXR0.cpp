@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 14091 2008-11-11 13:31:09Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 14109 2008-11-11 19:39:53Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -661,6 +661,21 @@ static int VMXR0CheckPendingInterrupt(PVM pVM, PVMCPU pVCpu, CPUMCTX *pCtx)
         AssertRC(rc);
 
         pVCpu->hwaccm.s.Event.fPending = false;
+        return VINF_SUCCESS;
+    }
+
+    if (pVM->hwaccm.s.fInjectNMI)
+    {
+        RTGCUINTPTR intInfo;
+
+        intInfo  = X86_XCPT_NMI;
+        intInfo |= (1 << VMX_EXIT_INTERRUPTION_INFO_VALID_SHIFT);
+        intInfo |= (VMX_EXIT_INTERRUPTION_INFO_TYPE_NMI << VMX_EXIT_INTERRUPTION_INFO_TYPE_SHIFT);
+
+        rc = VMXR0InjectEvent(pVM, pVCpu, pCtx, intInfo, 0, errCode);
+        AssertRC(rc);
+
+        pVM->hwaccm.s.fInjectNMI = false;
         return VINF_SUCCESS;
     }
 

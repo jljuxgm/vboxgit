@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 13960 2008-11-07 13:04:45Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 14109 2008-11-11 19:39:53Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -409,6 +409,20 @@ static int SVMR0CheckPendingInterrupt(PVM pVM, PVMCPU pVCpu, SVM_VMCB *pVMCB, CP
         SVMR0InjectEvent(pVM, pVMCB, pCtx, &Event);
 
         pVCpu->hwaccm.s.Event.fPending = false;
+        return VINF_SUCCESS;
+    }
+
+    if (pVM->hwaccm.s.fInjectNMI)
+    {
+        SVM_EVENT Event;
+
+        Event.n.u8Vector     = X86_XCPT_NMI;
+        Event.n.u1Valid      = 1;
+        Event.n.u32ErrorCode = 0;
+        Event.n.u3Type       = SVM_EVENT_NMI;
+
+        SVMR0InjectEvent(pVM, pVMCB, pCtx, &Event);
+        pVM->hwaccm.s.fInjectNMI = false;
         return VINF_SUCCESS;
     }
 

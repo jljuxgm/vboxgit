@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 14106 2008-11-11 19:23:55Z vboxsync $ */
+/* $Id: HWACCM.cpp 14109 2008-11-11 19:39:53Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1084,6 +1084,7 @@ VMMR3DECL(bool) HWACCMR3IsEventPending(PVM pVM)
  */
 VMMR3DECL(int)  HWACCMR3InjectNMI(PVM pVM)
 {
+    pVM->hwaccm.s.fInjectNMI = true;
     return VINF_SUCCESS;
 }
 
