@@ -1,4 +1,4 @@
-; $Id: strcmp.asm 8256 2008-04-21 20:53:28Z vboxsync $
+; $Id: strcmp.asm 14017 2008-11-10 15:16:46Z vboxsync $
 ;; @file
 ; IPRT - No-CRT strcmp - AMD64 & X86.
 ;
@@ -69,8 +69,6 @@ BEGINPROC RT_NOCRT(strcmp)
         jne     .not_equal
         test    al, al
         jz      .equal
-        inc     psz1
-        inc     psz2
 
         mov     al, [psz1 + 2]
         mov     ah, [psz2 + 2]
@@ -78,8 +76,6 @@ BEGINPROC RT_NOCRT(strcmp)
         jne     .not_equal
         test    al, al
         jz      .equal
-        inc     psz1
-        inc     psz2
 
         mov     al, [psz1 + 3]
         mov     ah, [psz2 + 3]
