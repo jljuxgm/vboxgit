@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 16560 2009-02-06 18:06:04Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 16569 2009-02-09 08:59:58Z vboxsync $ */
 
 /** @file
  *
@@ -191,6 +191,34 @@ STDMETHODIMP SystemProperties::COMGETTER(MaxGuestVRAM)(ULONG *maxVRAM)
 
     /* no need to lock, this is const */
     *maxVRAM = SchemaDefs::MaxGuestVRAM;
+
+    return S_OK;
+}
+
+STDMETHODIMP SystemProperties::COMGETTER(MinGuestCPUCount)(ULONG *minCPUCount)
+{
+    if (!minCPUCount)
+        return E_POINTER;
+
+    AutoCaller autoCaller (this);
+    CheckComRCReturnRC (autoCaller.rc());
+
+    /* no need to lock, this is const */
+    *minCPUCount = SchemaDefs::MinCPUCount;
+
+    return S_OK;
+}
+
+STDMETHODIMP SystemProperties::COMGETTER(MaxGuestCPUCount)(ULONG *maxCPUCount)
+{
+    if (!maxCPUCount)
+        return E_POINTER;
+
+    AutoCaller autoCaller (this);
+    CheckComRCReturnRC (autoCaller.rc());
+
+    /* no need to lock, this is const */
+    *maxCPUCount = 1; // SchemaDefs::MaxCPUCount;
 
     return S_OK;
 }
