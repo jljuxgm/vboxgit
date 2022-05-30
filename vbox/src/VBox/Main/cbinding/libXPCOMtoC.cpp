@@ -1,8 +1,6 @@
+/* $Id: libXPCOMtoC.cpp 16487 2009-02-03 13:39:37Z vboxsync $ */
 /** @file libXPCOMtoC.cpp
- *
  * Utility functions to use with the C binding for XPCOM.
- *
- * $Id: libXPCOMtoC.cpp 16483 2009-02-03 10:52:11Z vboxsync $
  */
 
 /*
@@ -83,14 +81,16 @@ const char* VBoxConvertPRUnichartoAscii(PRUnichar *src)
 
 void VBoxComUnallocStr(PRUnichar *str_dealloc)
 {
-    if (str_dealloc) {
+    if (str_dealloc)
+    {
         nsMemory::Free(str_dealloc);
     }
 }
 
 void VBoxComUnallocIID(nsIID *iid)
 {
-    if (iid) {
+    if (iid)
+    {
         nsMemory::Free(iid);
     }
 }
@@ -104,6 +104,11 @@ void VBoxComInitialize(IVirtualBox **virtualBox, ISession **session)
 
     Session     = *session;
     Ivirtualbox = *virtualBox;
+
+/** @todo r=bird: Why is cout/cerr used unconditionally here?
+ * It would be preferred to use RTPrintf/RTStrmPrintf(g_pStdErr,..). If this is
+ * going to be used in real life, the cout(/RTPrintf) bits should be optional,
+ * add a flag argument and define VBOXCOMINIT_FLAG_VERBOSE for the purpose. */
 
     // All numbers on stderr in hex prefixed with 0X.
     cerr.setf(ios_base::showbase | ios_base::uppercase);
