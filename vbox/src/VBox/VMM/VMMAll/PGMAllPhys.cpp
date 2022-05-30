@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 17520 2009-03-07 06:20:17Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 17524 2009-03-07 07:24:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -305,7 +305,7 @@ static int pgmPhysEnsureHandyPage(PVM pVM)
 #endif
         if (RT_UNLIKELY(rc != VINF_SUCCESS))
         {
-            Assert(rc == VINF_EM_NO_MEMORY);
+            AssertMsg(rc == VINF_EM_NO_MEMORY, ("%Rrc\n", rc));
             if (!pVM->pgm.s.cHandyPages)
             {
                 LogRel(("PGM: no more handy pages!\n"));
