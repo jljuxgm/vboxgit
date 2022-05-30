@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: ParallelPortImpl.cpp 13580 2008-10-27 14:04:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -536,6 +536,10 @@ STDMETHODIMP ParallelPort::COMSETTER(Path) (INPTR BSTR aPath)
     CheckComRCReturnRC (adep.rc());
 
     AutoWriteLock alock (this);
+
+    /* we treat empty as null when e.g. saving to XML, do the same here */
+    if (aPath && *aPath == '\0')
+        aPath = NULL;
 
     if (mData->mPath != aPath)
     {

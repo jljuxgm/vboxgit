@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxXMLUtil.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VirtualBoxXMLUtil.h 13580 2008-10-27 14:04:18Z vboxsync $ */
 
 /** @file
  *
@@ -28,7 +28,7 @@
 #define VBOX_XML_NAMESPACE      "http://www.innotek.de/VirtualBox-settings"
 
 /** VirtualBox XML settings version number substring ("x.y")  */
-#define VBOX_XML_VERSION        "1.3"
+#define VBOX_XML_VERSION        "1.4"
 
 /** VirtualBox XML settings version platform substring */
 #if defined (RT_OS_DARWIN)

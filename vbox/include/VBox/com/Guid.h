@@ -1,4 +1,4 @@
-/* $Id: Guid.h 9738 2008-06-16 22:38:49Z vboxsync $ */
+/* $Id: Guid.h 13580 2008-10-27 14:04:18Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -64,7 +64,13 @@ public:
     Guid () { ::RTUuidClear (&uuid); }
     Guid (const Guid &that) { uuid = that.uuid; }
     Guid (const RTUUID &that) { uuid = that; }
-    Guid (const GUID &that) { ::memcpy (&uuid, &that, sizeof (GUID)); }
+
+    Guid (const GUID &that)
+    {
+        AssertCompileSize (GUID, sizeof (RTUUID));
+        ::memcpy (&uuid, &that, sizeof (GUID));
+    }
+
     Guid (const char *that)
     {
         ::RTUuidClear (&uuid);

@@ -1,10 +1,12 @@
+/* $Id: ConsoleImpl.h 13580 2008-10-27 14:04:18Z vboxsync $ */
+
 /** @file
  *
  * VBox Console COM Class definition
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2008 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD-new.cpp 13295 2008-10-15 18:07:59Z vboxsync $ */
+/* $Id: VBoxHDD-new.cpp 13580 2008-10-27 14:04:18Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -972,7 +972,16 @@ VBOXDDU_DECL(int) VDGetFormat(const char *pszFilename, char **ppszFormat)
         /* The plugins are in the same directory as the other shared libs. */
         rc = RTDirOpenFiltered(&pPluginDir, pszPluginFilter, RTDIRFILTER_WINNT);
         if (RT_FAILURE(rc))
+        {
+            if (rc == VERR_FILE_NOT_FOUND)
+            {
+                /* VERR_FILE_NOT_FOUND would be interpreted as the hard
+                 * disk storage unit was not found, so replace with
+                 * VERR_NOT_SUPPORTED which is more meaningful in this case */
+                rc = VERR_NOT_SUPPORTED;
+            }
             break;
+        }
 
         PRTDIRENTRYEX pPluginDirEntry = NULL;
         unsigned cbPluginDirEntry = sizeof(RTDIRENTRY);
