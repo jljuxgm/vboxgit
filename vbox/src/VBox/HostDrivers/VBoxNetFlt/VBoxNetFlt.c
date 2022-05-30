@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 17184 2009-02-27 00:37:35Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 17185 2009-02-27 00:52:08Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -221,12 +221,13 @@
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <iprt/assert.h>
-#include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/spinlock.h>
-#include <iprt/semaphore.h>
-#include <iprt/time.h>
 #include <iprt/uuid.h>
+#include <iprt/mem.h>
+#include <iprt/time.h>
+#include <iprt/semaphore.h>
+
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
