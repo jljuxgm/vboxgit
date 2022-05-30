@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 17015 2009-02-23 12:50:03Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 17017 2009-02-23 13:15:27Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -503,8 +503,6 @@ void pgmMapCheckShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAPPING pMap, 
 VMMDECL(void) PGMMapCheck(PVM pVM)
 {
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
-    Log(("PGMMapCheck fixed mappings=%d\n", pVM->pgm.s.fMappingsFixed));
-
     /*
      * Can skip this if mappings are disabled.
      */
