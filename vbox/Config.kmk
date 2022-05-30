@@ -1,4 +1,4 @@
-# $Id: Config.kmk 16091 2009-01-20 16:53:58Z vboxsync $
+# $Id: Config.kmk 16120 2009-01-21 10:28:37Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -624,7 +624,6 @@ endif
 # Disable components that are not open sourced.
 #
 ifdef VBOX_OSE
- VBOX_WITH_WEBSERVICES=
  VBOX_WITH_VRDP=
  VBOX_WITH_USB=
  VBOX_WITH_EHCI=
@@ -3774,7 +3773,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16091 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16120 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
