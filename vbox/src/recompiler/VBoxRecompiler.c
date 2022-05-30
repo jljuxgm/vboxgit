@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 11813 2008-08-29 12:01:13Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 11897 2008-09-01 08:10:47Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -578,6 +578,10 @@ static DECLCALLBACK(int) remR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
      */
     pVM->rem.s.fIgnoreAll = false;
 
+    /*
+     * Sync the whole CPU state when executing code in the recompiler.
+     */
+    CPUMSetChangedFlags(pVM, CPUM_CHANGED_ALL);
     return VINF_SUCCESS;
 }
 
