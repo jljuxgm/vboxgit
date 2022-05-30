@@ -1,4 +1,4 @@
-/* $Id: DBGFSym.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
+/* $Id: DBGFSym.cpp 13841 2008-11-05 03:38:52Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Symbol Management.
  */
@@ -509,7 +509,7 @@ static int dbgfR3LoadLinuxSystemMap(PVM pVM, FILE *pFile, RTGCUINTPTR ModuleAddr
                 {
                     int rc2 = DBGFR3SymbolAdd(pVM, ModuleAddress, Address + AddressDelta, 0, psz);
                     if (RT_FAILURE(rc2))
-                        Log2(("DBGFR3SymbolAdd(,, %#VGv, 0, '%s') -> %Rrc\n", Address, psz, rc2));
+                        Log2(("DBGFR3SymbolAdd(,, %RGv, 0, '%s') -> %Rrc\n", Address, psz, rc2));
                 }
             }
         }

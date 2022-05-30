@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13840 2008-11-05 03:31:46Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 13841 2008-11-05 03:38:52Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -3791,7 +3791,7 @@ void target_disas(FILE *phFileIgnored, target_ulong uCode, target_ulong cb, int 
         /*
          * Do the disassembling.
          */
-        RTLogPrintf("Guest Code: PC=%RGp %#VGp (%RGp) bytes fFlags=%d\n", uCode, cb, cb, fFlags);
+        RTLogPrintf("Guest Code: PC=%RGp %RGp bytes fFlags=%d\n", uCode, cb, fFlags);
         cs = cpu_single_env->segs[R_CS].selector;
         eip = uCode - cpu_single_env->segs[R_CS].base;
         for (;;)
