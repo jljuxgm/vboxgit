@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 17182 2009-02-26 18:04:58Z vboxsync $ */
+/* $Id: MachineImpl.cpp 17350 2009-03-04 15:54:40Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3009,9 +3009,15 @@ STDMETHODIMP Machine::GetGuestProperty (IN_BSTR aName, BSTR *aValue, ULONG64 *aT
         /* just be on the safe side when calling another process */
         alock.unlock();
 
-        rc = directControl->AccessGuestProperty (aName, NULL, NULL,
-                                                 false /* isSetter */,
-                                                 aValue, aTimestamp, aFlags);
+        /* fail if we were called after #OnSessionEnd() is called.  This is a
+         * silly race condition. */
+
+        if (!directControl)
+            rc = E_FAIL;
+        else
+            rc = directControl->AccessGuestProperty (aName, NULL, NULL,
+                                                     false /* isSetter */,
+                                                     aValue, aTimestamp, aFlags);
     }
     return rc;
 #endif /* else !defined (VBOX_WITH_GUEST_PROPS) */
@@ -3147,9 +3153,12 @@ STDMETHODIMP Machine::SetGuestProperty (IN_BSTR aName, IN_BSTR aValue, IN_BSTR a
 
         BSTR dummy = NULL;
         ULONG64 dummy64;
-        rc = directControl->AccessGuestProperty (aName, aValue, aFlags,
-                                                 true /* isSetter */,
-                                                 &dummy, &dummy64, &dummy);
+        if (!directControl)
+            rc = E_FAIL;
+        else
+            rc = directControl->AccessGuestProperty (aName, aValue, aFlags,
+                                                     true /* isSetter */,
+                                                     &dummy, &dummy64, &dummy);
     }
     return rc;
 #endif /* else !defined (VBOX_WITH_GUEST_PROPS) */
@@ -3239,11 +3248,14 @@ EnumerateGuestProperties (IN_BSTR aPatterns, ComSafeArrayOut (BSTR, aNames),
         /* just be on the safe side when calling another process */
         alock.unlock();
 
-        rc = directControl->EnumerateGuestProperties (aPatterns,
-                                                      ComSafeArrayOutArg (aNames),
-                                                      ComSafeArrayOutArg (aValues),
-                                                      ComSafeArrayOutArg (aTimestamps),
-                                                      ComSafeArrayOutArg (aFlags));
+        if (!directControl)
+            rc = E_FAIL;
+        else
+            rc = directControl->EnumerateGuestProperties (aPatterns,
+                                                          ComSafeArrayOutArg (aNames),
+                                                          ComSafeArrayOutArg (aValues),
+                                                          ComSafeArrayOutArg (aTimestamps),
+                                                          ComSafeArrayOutArg (aFlags));
     }
     return rc;
 #endif /* else !defined (VBOX_WITH_GUEST_PROPS) */
