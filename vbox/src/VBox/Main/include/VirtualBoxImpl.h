@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 16560 2009-02-06 18:06:04Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 16662 2009-02-11 13:01:48Z vboxsync $ */
 
 /** @file
  *
@@ -144,7 +144,7 @@ public:
     STDMETHOD(GetMachine) (IN_GUID aId, IMachine **aMachine);
     STDMETHOD(FindMachine) (IN_BSTR aName, IMachine **aMachine);
     STDMETHOD(UnregisterMachine) (IN_GUID aId, IMachine **aMachine);
-    STDMETHOD(OpenAppliance) (IN_BSTR aName, IAppliance **anAppliance);
+    STDMETHOD(CreateAppliance) (IAppliance **anAppliance);
 
     STDMETHOD(CreateHardDisk2) (IN_BSTR aFormat, IN_BSTR aLocation,
                                 IHardDisk2 **aHardDisk);

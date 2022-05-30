@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 16606 2009-02-09 17:17:34Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 16662 2009-02-11 13:01:48Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -154,7 +154,9 @@ int handleImportAppliance(HandlerArg *a)
     {
         Bstr bstrOvfFilename(strOvfFilename);
         ComPtr<IAppliance> appliance;
-        CHECK_ERROR_BREAK(a->virtualBox, OpenAppliance(bstrOvfFilename, appliance.asOutParam()));
+        CHECK_ERROR_BREAK(a->virtualBox, CreateAppliance(appliance.asOutParam()));
+
+        CHECK_ERROR_BREAK(appliance, Read(bstrOvfFilename));
 
         RTPrintf("Interpreting %s... ", strOvfFilename.c_str());
         CHECK_ERROR_BREAK(appliance, Interpret());
@@ -433,7 +435,7 @@ int handleImportAppliance(HandlerArg *a)
             {
                 ComPtr<IProgress> progress;
                 CHECK_ERROR_BREAK(appliance,
-                                  ImportAppliance(progress.asOutParam()));
+                                  ImportMachines(progress.asOutParam()));
 
                 showProgress(progress);
 
