@@ -1,4 +1,4 @@
-# $Id: Config.kmk 15038 2008-12-05 13:02:30Z vboxsync $
+# $Id: Config.kmk 15049 2008-12-05 14:47:48Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1430,17 +1430,20 @@ endif
 # The icons to use.
 ifdef VBOX_OSE
  VBOX_WINDOWS_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Frontends/VirtualBox/images/OSE/VirtualBox_win.ico
+ VBOX_WINDOWS_GA_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Frontends/VirtualBox/images/OSE/VirtualBox_win.ico
  VBOX_NSIS_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Frontends/VirtualBox/images/OSE/VirtualBox_win.ico
  VBOX_MACOSX_ICON_FILE  ?= $(PATH_ROOT)/src/VBox/Frontends/VirtualBox/images/OSE/VirtualBox.icns
 else
  ifeq ($(KBUILD_HOST),win)
   VBOX_WINDOWS_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Artwork/VirtualBox-vista.ico
-  VBOX_NSIS_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Artwork/VirtualBox-nsis.ico
+  VBOX_WINDOWS_GA_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Artwork/VirtualBoxGA-vista.ico
+  VBOX_NSIS_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Artwork/VirtualBoxGA-nsis.ico
   TOOL_VCC80X86_RC   := $(PATH_DEVTOOLS)/win.x86/ddk/6000/bin/x86/rc.exe
   TOOL_VCC80AMD64_RC := $(PATH_DEVTOOLS)/win.x86/ddk/6000/bin/x86/rc.exe
   TOOL_VCC70_RC      := $(PATH_DEVTOOLS)/win.x86/ddk/6000/bin/x86/rc.exe
  else
   VBOX_WINDOWS_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Artwork/VirtualBox-winxp.ico
+  VBOX_WINDOWS_GA_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Artwork/VirtualBoxGA-winxp.ico
   VBOX_NSIS_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Artwork/VirtualBox-nsis.ico
  endif
  VBOX_MACOSX_ICON_FILE  ?= $(PATH_ROOT)/src/VBox/Artwork/VirtualBox.icns
@@ -3660,7 +3663,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15038 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15049 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
