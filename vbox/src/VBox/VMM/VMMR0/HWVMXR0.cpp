@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13514 2008-10-23 07:56:55Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13541 2008-10-23 15:31:20Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1761,6 +1761,7 @@ ResumeExecution:
     AssertMsg(pVM->hwaccm.s.idEnteredCpu == RTMpCpuId(),
               ("Expected %d, I'm %d; cResume=%d exitReason=%RTreg exitQualification=%RTreg\n",
                (int)pVM->hwaccm.s.idEnteredCpu, (int)RTMpCpuId(), cResume, exitReason, exitQualification));
+    Assert(!HWACCMR0SuspendPending());
 
     /* Safety precaution; looping for too long here can have a very bad effect on the host */
     if (++cResume > HWACCM_MAX_RESUME_LOOPS)

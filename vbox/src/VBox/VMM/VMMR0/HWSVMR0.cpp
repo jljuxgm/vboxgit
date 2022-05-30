@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 13514 2008-10-23 07:56:55Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 13541 2008-10-23 15:31:20Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -809,6 +809,8 @@ VMMR0DECL(int) SVMR0RunGuestCode(PVM pVM, CPUMCTX *pCtx)
     /* We can jump to this point to resume execution after determining that a VM-exit is innocent.
      */
 ResumeExecution:
+    Assert(!HWACCMR0SuspendPending());
+
     /* Safety precaution; looping for too long here can have a very bad effect on the host */
     if (++cResume > HWACCM_MAX_RESUME_LOOPS)
     {
