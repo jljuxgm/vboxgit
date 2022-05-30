@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 16408 2009-01-30 12:14:26Z vboxsync $ */
+/* $Id: PGM.cpp 16412 2009-01-30 13:23:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1278,6 +1278,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
                                    pgmR3MapInfo);
 
         STAM_REL_REG(pVM, &pVM->pgm.s.cGuestModeChanges, STAMTYPE_COUNTER, "/PGM/cGuestModeChanges", STAMUNIT_OCCURENCES, "Number of guest mode changes.");
+        STAM_REL_REG(pVM, &pVM->pgm.s.cRelocations, STAMTYPE_COUNTER, "/PGM/cRelocations", STAMUNIT_OCCURENCES, "Number of hypervisor relocations.");
 #ifdef VBOX_WITH_STATISTICS
         pgmR3InitStats(pVM);
 #endif

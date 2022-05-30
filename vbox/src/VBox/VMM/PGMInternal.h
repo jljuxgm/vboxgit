@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 16376 2009-01-29 16:46:31Z vboxsync $ */
+/* $Id: PGMInternal.h 16412 2009-01-30 13:23:20Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2633,6 +2633,8 @@ typedef struct PGM
     uint32_t                        cZeroPages;         /**< The number of zero backed pages. */
     /** The number of times the guest has switched mode since last reset or statistics reset. */
     STAMCOUNTER                     cGuestModeChanges;
+    /** The number of times we were forced to change the hypervisor region location. */
+    STAMCOUNTER                     cRelocations;
     /** @} */
 
 #ifdef VBOX_WITH_STATISTICS /** @todo move this chunk to the heap.  */
