@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 17669 2009-03-11 09:56:29Z vboxsync $ */
+/* $Id: ConsoleImpl.h 17684 2009-03-11 12:15:33Z vboxsync $ */
 
 /** @file
  *
@@ -115,7 +115,7 @@ public:
     STDMETHOD(COMGETTER(Display)) (IDisplay **aDisplay);
     STDMETHOD(COMGETTER(Debugger)) (IMachineDebugger **aDebugger);
     STDMETHOD(COMGETTER(USBDevices)) (ComSafeArrayOut (IUSBDevice *, aUSBDevices));
-    STDMETHOD(COMGETTER(RemoteUSBDevices)) (IHostUSBDeviceCollection **aRemoteUSBDevices);
+    STDMETHOD(COMGETTER(RemoteUSBDevices)) (ComSafeArrayOut (IHostUSBDevice *, aRemoteUSBDevices));
     STDMETHOD(COMGETTER(RemoteDisplayInfo)) (IRemoteDisplayInfo **aRemoteDisplayInfo);
     STDMETHOD(COMGETTER(SharedFolders)) (ComSafeArrayOut (ISharedFolder *, aSharedFolders));
 

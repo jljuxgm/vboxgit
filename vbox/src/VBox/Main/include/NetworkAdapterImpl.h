@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 17387 2009-03-05 11:00:14Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 17684 2009-03-11 12:15:33Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -25,7 +25,6 @@
 #define ____H_NETWORKADAPTER
 
 #include "VirtualBoxBase.h"
-#include "Collection.h"
 
 class Machine;
 class GuestOSType;

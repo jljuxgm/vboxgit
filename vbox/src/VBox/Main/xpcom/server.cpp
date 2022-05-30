@@ -1,4 +1,4 @@
-/* $Id: server.cpp 17669 2009-03-11 09:56:29Z vboxsync $ */
+/* $Id: server.cpp 17684 2009-03-11 12:15:33Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -117,7 +117,6 @@
 #include <StorageControllerImpl.h>
 #include <AudioAdapterImpl.h>
 #include <SystemPropertiesImpl.h>
-#include <Collection.h>
 
 /* implement nsISupports parts of our objects with support for nsIClassInfo */
 
@@ -238,12 +237,6 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(PerformanceMetric, IPerformanceMetric)
 
 NS_DECL_CLASSINFO(BIOSSettings)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(BIOSSettings, IBIOSSettings)
-
-/* collections and enumerators */
-
-#ifdef VBOX_WITH_USB
-COM_IMPL_READONLY_ENUM_AND_COLLECTION(HostUSBDevice)
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 

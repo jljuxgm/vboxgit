@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 17553 2009-03-09 09:34:22Z vboxsync $ */
+/* $Id: VBoxManage.cpp 17684 2009-03-11 12:15:33Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -582,10 +582,10 @@ static int handleControlVM(HandlerArg *a)
                 {
                     ComPtr <IHost> host;
                     CHECK_ERROR_BREAK (a->virtualBox, COMGETTER(Host) (host.asOutParam()));
-                    ComPtr <IHostUSBDeviceCollection> coll;
-                    CHECK_ERROR_BREAK (host, COMGETTER(USBDevices) (coll.asOutParam()));
+                    SafeIfaceArray <IHostUSBDevice> coll;
+                    CHECK_ERROR_BREAK (host, COMGETTER(USBDevices) (ComSafeArrayAsOutParam(coll)));
                     ComPtr <IHostUSBDevice> dev;
-                    CHECK_ERROR_BREAK (coll, FindByAddress (Bstr (a->argv [2]), dev.asOutParam()));
+                    CHECK_ERROR_BREAK (host, FindUSBDeviceByAddress (Bstr (a->argv [2]), dev.asOutParam()));
                     CHECK_ERROR_BREAK (dev, COMGETTER(Id) (usbId.asOutParam()));
                 }
                 else

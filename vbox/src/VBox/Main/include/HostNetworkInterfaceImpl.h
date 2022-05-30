@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 17613 2009-03-10 10:34:42Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 17684 2009-03-11 12:15:33Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2008 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -25,7 +25,6 @@
 #define ____H_HOSTNETWORKINTERFACEIMPL
 
 #include "VirtualBoxBase.h"
-#include "Collection.h"
 #include "VirtualBoxImpl.h"
 
 #ifdef VBOX_WITH_HOSTNETIF_API

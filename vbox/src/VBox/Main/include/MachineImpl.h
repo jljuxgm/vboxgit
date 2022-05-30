@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 17673 2009-03-11 10:32:44Z vboxsync $ */
+/* $Id: MachineImpl.h 17684 2009-03-11 12:15:33Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -31,7 +31,6 @@
 #include "DVDDriveImpl.h"
 #include "FloppyDriveImpl.h"
 #include "HardDiskAttachmentImpl.h"
-#include "Collection.h"
 #include "NetworkAdapterImpl.h"
 #include "AudioAdapterImpl.h"
 #include "SerialPortImpl.h"
