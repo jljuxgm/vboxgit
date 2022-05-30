@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: GVMMR0.cpp 12310 2008-09-09 16:10:02Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -907,6 +907,12 @@ static DECLCALLBACK(void) gvmmR0HandleObjDestructor(void *pvObj, void *pvGVMM, v
         {
             rc = RTR0MemObjFree(pGVM->gvmm.s.VMMemObj, false /* fFreeMappings */); AssertRC(rc);
             pGVM->gvmm.s.VMMemObj = NIL_RTR0MEMOBJ;
+        }
+
+        if (pGVM->gvmm.s.HaltEventMulti != NIL_RTSEMEVENTMULTI)
+        {
+            rc = RTSemEventMultiDestroy(pGVM->gvmm.s.HaltEventMulti); AssertRC(rc);
+            pGVM->gvmm.s.HaltEventMulti = NIL_RTSEMEVENTMULTI;
         }
 
         /* the GVM structure itself. */
