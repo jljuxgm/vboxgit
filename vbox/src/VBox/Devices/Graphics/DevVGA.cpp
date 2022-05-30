@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 15977 2009-01-15 18:42:16Z vboxsync $ */
+/* $Id: DevVGA.cpp 17297 2009-03-03 16:01:29Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -127,6 +127,7 @@
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #include <iprt/file.h>
+#include <iprt/time.h>
 #include <iprt/string.h>
 
 #include <VBox/VBoxGuest.h>
@@ -1375,6 +1376,20 @@ int vga_mem_writeb(void *opaque, target_phys_addr_t addr, uint32_t val)
     } else {
         /* standard VGA latched access */
         VERIFY_VRAM_WRITE_OFF_RETURN(s, addr * 4 + 3);
+
+#ifdef IN_RING0
+        if (((++s->cLatchAccesses) & 0x3ff) == 0x3ff)
+        {
+            uint64_t u64CurTime = RTTimeSystemNanoTS();
+            /* About 1000 accesses per 10 ms or more will trigger a reschedule
+             * to the recompiler
+             */
+            if (u64CurTime - s->u64LastLatchedAccess < 10000000)
+                return VINF_EM_RAW_EMULATE_IO_BLOCK;
+
+            s->u64LastLatchedAccess = u64CurTime;            
+        }
+#endif
 
         write_mode = s->gr[5] & 3;
         switch(write_mode) {
