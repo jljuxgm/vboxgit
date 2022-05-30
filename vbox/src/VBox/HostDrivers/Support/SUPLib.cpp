@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 14496 2008-11-24 00:13:50Z vboxsync $ */
+/* $Id: SUPLib.cpp 14501 2008-11-24 02:22:21Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -448,6 +448,9 @@ static int supInitFake(PSUPDRVSESSION *ppSession)
         { "RTLogLoggerExV",                         0xefef0039 },
         { "AssertMsg1",                             0xefef003a },
         { "AssertMsg2",                             0xefef003b },
+        { "RTAssertMsg1",                           0xefef003c },
+        { "RTAssertMsg2",                           0xefef003d },
+        { "RTAssertMsg2V",                          0xefef003e },
     };
 
     /* fake r0 functions. */
