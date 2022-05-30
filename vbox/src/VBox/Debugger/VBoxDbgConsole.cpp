@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 12853 2008-10-01 04:58:27Z vboxsync $ */
+/* $Id: VBoxDbgConsole.cpp 12854 2008-10-01 05:20:04Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -125,6 +125,16 @@ VBoxDbgConsoleOutput::appendText(const QString &rStr)
     if (rStr.isEmpty() || rStr.isNull() || !rStr.length())
         return;
 
+#ifdef VBOXDBG_USE_QT4
+    /*
+     * Insert all in one go and make sure it's visible.
+     */
+    QTextCursor Cursor = textCursor();
+    if (!Cursor.atEnd())
+        moveCursor(QTextCursor::End); /* make sure we append the text */
+    Cursor.insertText(rStr);
+    ensureCursorVisible();
+#else
     /*
      * Insert line by line.
      */
@@ -132,11 +142,7 @@ VBoxDbgConsoleOutput::appendText(const QString &rStr)
     unsigned iPos = 0;
     while (iPos < cch)
     {
-#ifdef VBOXDBG_USE_QT4
-        int iPosNL = rStr.indexOf('\n', iPos);
-#else
         int iPosNL = rStr.find('\n', iPos);
-#endif
         int iPosEnd = iPosNL >= 0 ? iPosNL : cch;
         if ((unsigned)iPosNL != iPos)
         {
@@ -144,14 +150,7 @@ VBoxDbgConsoleOutput::appendText(const QString &rStr)
             if (m_uCurPos == 0)
                 append(Str);
             else
-            {
-#ifdef VBOXDBG_USE_QT4
-                moveCursor(QTextCursor::End); /* make sure we append the text */
-                insertPlainText(Str);
-#else
                 insertAt(Str, m_uCurLine, m_uCurPos);
-#endif
-            }
             if (iPosNL >= 0)
             {
                 m_uCurLine++;
@@ -169,6 +168,7 @@ VBoxDbgConsoleOutput::appendText(const QString &rStr)
         /* next */
         iPos = iPosEnd + 1;
     }
+#endif
 }
 
 
