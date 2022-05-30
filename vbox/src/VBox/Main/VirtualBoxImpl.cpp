@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 17930 2009-03-16 13:16:22Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 17990 2009-03-16 23:44:40Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -91,7 +91,14 @@ static const char gDefaultGlobalConfig [] =
     "  <Global>"RTFILE_LINEFEED
     "    <MachineRegistry/>"RTFILE_LINEFEED
     "    <MediaRegistry/>"RTFILE_LINEFEED
-    "    <NetserviceRegistry/>"RTFILE_LINEFEED
+    "    <NetserviceRegistry>"RTFILE_LINEFEED
+    "       <DhcpServers>"RTFILE_LINEFEED
+    "          <DhcpServer networkName=\"HostInterfaceNetworking-VirtualBox Host-Only Network Adapter\" "
+                          "IPAddress=\"192.168.56.2\" networkMask=\"255.255.255.0\" "
+                          "lowerIP=\"192.168.56.3\" upperIP=\"192.168.56.255\" "
+                          "enabled=\"1\"/>"RTFILE_LINEFEED
+    "       </DhcpServers>"RTFILE_LINEFEED
+    "    </NetserviceRegistry>"RTFILE_LINEFEED
     "    <USBDeviceFilters/>"RTFILE_LINEFEED
     "    <SystemProperties/>"RTFILE_LINEFEED
     "  </Global>"RTFILE_LINEFEED
