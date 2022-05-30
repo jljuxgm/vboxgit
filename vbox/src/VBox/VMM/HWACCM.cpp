@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 12702 2008-09-24 16:56:02Z vboxsync $ */
+/* $Id: HWACCM.cpp 12707 2008-09-25 09:08:00Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -520,6 +520,7 @@ HWACCMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
             /* Only try once. */
             pVM->hwaccm.s.fInitialized = true;
 
+#ifdef VBOX_WITH_VMMDEV_HEAP
             /* Allocate one page for the TSS we need for real mode emulation. */
             rc = PDMR3VMMDevHeapAlloc(pVM, sizeof(*pVM->hwaccm.s.vmx.pRealModeTSS), (RTR3PTR *)&pVM->hwaccm.s.vmx.pRealModeTSS);
             AssertRC(rc);
@@ -532,6 +533,7 @@ HWACCMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
             pVM->hwaccm.s.vmx.pRealModeTSS->offIoBitmap = sizeof(*pVM->hwaccm.s.vmx.pRealModeTSS);
             /* Bit set to 0 means redirection enabled. */
             memset(pVM->hwaccm.s.vmx.pRealModeTSS->IntRedirBitmap, 0x0, sizeof(pVM->hwaccm.s.vmx.pRealModeTSS->IntRedirBitmap));
+#endif
 
             rc = SUPCallVMMR0Ex(pVM->pVMR0, VMMR0_DO_HWACC_SETUP_VM, 0, NULL);
             AssertRC(rc);
