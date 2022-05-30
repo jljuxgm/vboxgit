@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 14133 2008-11-12 16:37:47Z vboxsync $ */
+/* $Id: PGMMap.cpp 14145 2008-11-12 21:59:25Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1102,13 +1102,12 @@ VMMR3DECL(bool) PGMR3MapHasConflicts(PVM pVM, uint64_t cr3, bool fRawR0) /** @to
     {
         for (PPGMMAPPING pCur = pVM->pgm.s.pMappingsR3; pCur; pCur = pCur->pNextR3)
         {
-            X86PDEPAE Pde;
             RTGCPTR   GCPtr = pCur->GCPtr;
 
             unsigned  iPT = pCur->cb >> X86_PD_PAE_SHIFT;
             while (iPT-- > 0)
             {
-                Pde.u = pgmGstGetPaePDE(&pVM->pgm.s, GCPtr);
+                X86PDEPAE Pde = pgmGstGetPaePDE(&pVM->pgm.s, GCPtr);
 
                 if (   Pde.n.u1Present
                     && (fRawR0 || Pde.n.u1User))
