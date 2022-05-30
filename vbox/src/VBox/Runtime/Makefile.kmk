@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16824 2009-02-17 10:44:01Z vboxsync $
+# $Id: Makefile.kmk 16825 2009-02-17 10:47:05Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -741,7 +741,7 @@ VBoxRT_SOURCES.$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH) = $(RuntimeR3_SOURCES.$(KB
 VBoxRT_SOURCES.win            += r3/win/dllmain-win.cpp
 VBoxRT_SOURCES.win.x86        += r3/win/VBoxRT-win32.def
 VBoxRT_SOURCES.win.amd64      += r3/win/VBoxRT-win64.def
-VBoxRT_INCS                    = $(RuntimeR3_INCS)
+VBoxRT_INCS                    = $(RuntimeR3_INCS) $(SDK_VBOX_ZLIB_INCS)
 VBoxRT_INCS.$(KBUILD_TARGET)   = $(RuntimeR3_INCS.$(KBUILD_TARGET))
 VBoxRT_INCS.$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH) = $(RuntimeR3_INCS.$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH))
 VBoxRT_LIBS                    = \
