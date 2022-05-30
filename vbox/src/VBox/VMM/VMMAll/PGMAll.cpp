@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 13235 2008-10-13 20:48:53Z vboxsync $ */
+/* $Id: PGMAll.cpp 13418 2008-10-21 08:42:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1678,7 +1678,7 @@ VMMDECL(int) PGMChangeMode(PVM pVM, uint64_t cr0, uint64_t cr4, uint64_t efer)
 #ifdef IN_RING3
     return PGMR3ChangeMode(pVM, enmGuestMode);
 #else
-    Log(("PGMChangeMode: returns VINF_PGM_CHANGE_MODE.\n"));
+    LogFlow(("PGMChangeMode: returns VINF_PGM_CHANGE_MODE.\n"));
     return VINF_PGM_CHANGE_MODE;
 #endif
 }
