@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 15439 2008-12-13 12:48:22Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 15666 2008-12-18 15:18:39Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -694,6 +694,7 @@ VMMR0DECL(int) SVMR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
                 return VERR_PGM_UNSUPPORTED_SHADOW_PAGING_MODE;
 
             case PGMMODE_32_BIT:        /* 32-bit paging. */
+                val &= ~X86_CR4_PAE;
                 break;
 
             case PGMMODE_PAE:           /* PAE paging. */
