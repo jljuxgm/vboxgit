@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 17494 2009-03-06 16:55:44Z vboxsync $ */
+/* $Id: HostImpl.h 17679 2009-03-11 11:39:18Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -95,8 +95,7 @@ public:
     // IHost methods
 #ifdef RT_OS_WINDOWS
 
-    STDMETHOD(CreateHostOnlyNetworkInterface) (IN_BSTR aName,
-                                           IHostNetworkInterface **aHostNetworkInterface,
+    STDMETHOD(CreateHostOnlyNetworkInterface) (IHostNetworkInterface **aHostNetworkInterface,
                                            IProgress **aProgress);
     STDMETHOD(RemoveHostOnlyNetworkInterface) (IN_GUID aId,
                                            IHostNetworkInterface **aHostNetworkInterface,

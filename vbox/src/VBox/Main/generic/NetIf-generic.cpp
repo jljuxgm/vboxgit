@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 17494 2009-03-06 16:55:44Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 17679 2009-03-11 11:39:18Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -37,7 +37,7 @@ int NetIfEnableDynamicIpConfig(HostNetworkInterface * pIf)
     return VERR_NOT_IMPLEMENTED;
 }
 
-int NetIfCreateHostOnlyNetworkInterface (VirtualBox *pVbox, IN_BSTR aName, IHostNetworkInterface **aHostNetworkInterface, IProgress **aProgress)
+int NetIfCreateHostOnlyNetworkInterface (VirtualBox *pVbox, IHostNetworkInterface **aHostNetworkInterface, IProgress **aProgress)
 {
     return VERR_NOT_IMPLEMENTED;
 }
