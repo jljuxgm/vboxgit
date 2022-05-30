@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 16218 2009-01-26 10:16:38Z vboxsync $ */
+/* $Id: ApplianceImpl.h 16237 2009-01-26 15:06:34Z vboxsync $ */
 
 /** @file
  *
@@ -56,23 +56,26 @@ public:
     HRESULT FinalConstruct() { return S_OK; }
     void FinalRelease() { uninit(); }
 
-    HRESULT init (VirtualBox *aVirtualBox, IN_BSTR &path);
+    HRESULT init(VirtualBox *aVirtualBox, IN_BSTR &path);
     void uninit();
 
     // for VirtualBoxSupportErrorInfoImpl
     static const wchar_t *getComponentName() { return L"Appliance"; }
 
     /* IAppliance properties */
-    STDMETHOD(COMGETTER(Path)) (BSTR *aPath);
+    STDMETHOD(COMGETTER(Path))(BSTR *aPath);
+
+    STDMETHOD(COMGETTER(VirtualSystemDescriptions))(ComSafeArrayOut (IVirtualSystemDescription*, aVirtualSystemDescriptions));
 
     /* IAppliance methods */
-    /* void getDisks (out unsigned long aDisksSize, [array, size_is (aDisksSize)] out wstring aDisks, [retval] out unsigned long cDisks); */
-    STDMETHOD(GetDisks) (ComSafeArrayOut(BSTR, aDisks), ULONG *cDisks);
+    /* void interpret (); */
+    STDMETHOD(Interpret)(void);
 
-    STDMETHOD (COMGETTER (VirtualSystemDescriptions)) (ComSafeArrayOut (IVirtualSystemDescription*, aVirtualSystemDescriptions));
+    /* void getDisks (out unsigned long aDisksSize, [array, size_is (aDisksSize)] out wstring aDisks, [retval] out unsigned long cDisks); */
+    STDMETHOD(GetDisks)(ComSafeArrayOut(BSTR, aDisks), ULONG *cDisks);
 
     /* public methods only for internal purposes */
-    STDMETHOD (ImportAppliance)();
+    STDMETHOD(ImportAppliance)();
 
     /* private instance data */
 private:
@@ -87,7 +90,6 @@ private:
     HRESULT HandleNetworkSection(const char *pcszPath, const xml::Node *pSectionElem);
     HRESULT HandleVirtualSystemContent(const char *pcszPath, const xml::Node *pContentElem);
 
-    HRESULT construeAppliance();
     HRESULT searchUniqueVMName (std::string& aName);
 };
 
@@ -150,8 +152,8 @@ public:
 
     /* private instance data */
 private:
-    void addEntry (VirtualSystemDescriptionType_T aType, ULONG aRef, std::string aOrigValue, std::string aAutoValue);
-    std::list<VirtualSystemDescriptionEntry> findByType (VirtualSystemDescriptionType_T aType);
+    void addEntry(VirtualSystemDescriptionType_T aType, ULONG aRef, std::string aOrigValue, std::string aAutoValue);
+    std::list<VirtualSystemDescriptionEntry> findByType(VirtualSystemDescriptionType_T aType);
 
     struct Data;
     Data *m;

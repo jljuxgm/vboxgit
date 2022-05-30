@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16234 2009-01-26 14:20:26Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16237 2009-01-26 15:06:34Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -807,10 +807,6 @@ HRESULT Appliance::init(VirtualBox *aVirtualBox, IN_BSTR &path)
                         x.what());
     }
 
-    rc = construeAppliance();
-    if (FAILED(rc))
-        return rc;
-
     /* Confirm a successful initialization */
     autoInitSpan.setSucceeded();
 
@@ -1016,7 +1012,7 @@ STDMETHODIMP Appliance::ImportAppliance()
     return S_OK;
 }
 
-HRESULT Appliance::construeAppliance()
+STDMETHODIMP Appliance::Interpret()
 {
     // @todo:
     //  - Locking
