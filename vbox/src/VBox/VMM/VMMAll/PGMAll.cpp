@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 13072 2008-10-08 12:10:36Z vboxsync $ */
+/* $Id: PGMAll.cpp 13073 2008-10-08 12:10:59Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1819,7 +1819,7 @@ VMMDECL(int) PGMDynMapGCPageOff(PVM pVM, RTGCPHYS GCPhys, void **ppv)
     }
 
     /*
-     * Pass it on to PGMDynMapHCPageOff.
+     * Pass it on to PGMDynMapHCPage.
      */
     RTHCPHYS HCPhys = PGM_PAGE_GET_HCPHYS(&pRam->aPages[(GCPhys - pRam->GCPhys) >> PAGE_SHIFT]);
     int rc = PGMDynMapHCPage(pVM, HCPhys, ppv);
