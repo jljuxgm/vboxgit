@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15648 2008-12-18 12:26:26Z vboxsync $ */
+/* $Id: HWACCM.cpp 15694 2008-12-19 14:11:07Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -280,6 +280,12 @@ VMMR3DECL(int) HWACCMR3InitCPU(PVM pVM)
         rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatInGC, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL, "Profiling of vmlaunch",
                              "/PROF/HWACCM/CPU%d/InGC", i);
         AssertRC(rc);
+
+# if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
+        rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatWorldSwitch3264, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL, "Profiling of the 32/64 switcher",
+                             "/PROF/HWACCM/CPU%d/Switcher3264", i);
+        AssertRC(rc);
+# endif
 
 # define HWACCM_REG_COUNTER(a, b) \
         rc = STAMR3RegisterF(pVM, a, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES, "Profiling of vmlaunch", b, i); \
