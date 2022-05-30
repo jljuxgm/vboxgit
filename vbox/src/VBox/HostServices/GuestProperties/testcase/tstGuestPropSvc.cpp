@@ -1,4 +1,4 @@
-/* $Id: tstGuestPropSvc.cpp 14213 2008-11-14 14:45:40Z vboxsync $ */
+/* $Id: tstGuestPropSvc.cpp 14458 2008-11-21 13:51:51Z vboxsync $ */
 /** @file
  *
  * Testcase for the guest property service.
@@ -418,7 +418,7 @@ setProperties[] =
     { "Red", "Stop!", "transient", false, true, true },
     { "Amber", "Caution!", "", false, false, true },
     { "Green", "Go!", "readonly", true, true, true },
-    { "Blue", "What on earth...?", "", true, false, true },
+    { "Blue", "What on earth...", "", true, false, true },
     { "/test/name", "test", "", false, true, false },
     { "TEST NAME", "test", "", true, true, false },
     { "Green", "gone out...", "", false, false, false },
@@ -582,7 +582,7 @@ getProperties[] =
     { "/test/name", "/test/value\0RDONLYGUEST",
       sizeof("/test/value\0RDONLYGUEST"), true, true, UINT64_C(999999999999) },
     { "Green", "Go!\0READONLY", sizeof("Go!\0READONLY"), true, false, 0 },
-    { "Blue", "What on earth...?\0", sizeof("What on earth...?\0"), true,
+    { "Blue", "What on earth...\0", sizeof("What on earth...\0"), true,
       false, 0 },
     { "Red", "", 0, false, false, 0 },
     { NULL, NULL, 0, false, false, 0 }
@@ -676,7 +676,7 @@ getNotifications[] =
     { "Red\0Stop!\0TRANSIENT", sizeof("Red\0Stop!\0TRANSIENT") },
     { "Amber\0Caution!\0", sizeof("Amber\0Caution!\0") },
     { "Green\0Go!\0READONLY", sizeof("Green\0Go!\0READONLY") },
-    { "Blue\0What on earth...?\0", sizeof("Blue\0What on earth...?\0") },
+    { "Blue\0What on earth...\0", sizeof("Blue\0What on earth...\0") },
     { "Red\0\0", sizeof("Red\0\0") },
     { "Amber\0\0", sizeof("Amber\0\0") },
     { NULL, 0 }
