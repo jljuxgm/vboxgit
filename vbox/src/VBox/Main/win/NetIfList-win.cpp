@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17835 2009-03-13 15:18:59Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17842 2009-03-13 15:44:36Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -914,7 +914,7 @@ static HRESULT netIfDhcpRediscover(const Guid &guid)
                 hr = netIfWinAdapterConfigPath(pAdapterConfig, &ObjPath);
                 if(SUCCEEDED(hr))
                 {
-                    hr = netIfWinEnableDHCP(pSvc, ObjPath);
+                    hr = netIfWinDhcpRediscover(pSvc, ObjPath);
                     if(SUCCEEDED(hr))
                     {
 //                        hr = netIfWinUpdateConfig(pIf);
@@ -2618,7 +2618,7 @@ int NetIfDhcpRediscover(VirtualBox *vBox, HostNetworkInterface * pIf)
                         d (new NetworkInterfaceHelperClientData());
                     AssertReturn (d.get(), E_OUTOFMEMORY);
 
-                    d->msgCode = SVCHlpMsg::EnableDynamicIpConfig;
+                    d->msgCode = SVCHlpMsg::DhcpRediscover;
                     d->guid = guid;
                     d->iface = pIf;
 
