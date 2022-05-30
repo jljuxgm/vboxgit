@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 16582 2009-02-09 12:50:45Z vboxsync $ */
+/* $Id: PGMAllBth.h 16590 2009-02-09 14:18:54Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -160,7 +160,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
     X86PDPE         PdpeSrc;
 
     /* Fake PDPT entry; access control handled on the page table level, so allow everything. */
-    PdpeSrc.u  = X86_PDPE_P | X86_PDPE_RW | X86_PDPE_US | X86_PDPE_A;
+    PdpeSrc.u  = X86_PDPE_P | X86_PDPE_A;   /* rw/us are reserved for PAE pdpte's. */
 #    endif
     rc = pgmShwSyncPaePDPtr(pVM, pvFault, &PdpeSrc, &pPDDst);
     if (rc != VINF_SUCCESS)
