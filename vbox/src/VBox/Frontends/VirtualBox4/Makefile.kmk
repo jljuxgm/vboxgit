@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11725 2008-08-27 22:21:47Z vboxsync $
+# $Id: Makefile.kmk 11754 2008-08-28 12:15:00Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -182,7 +182,7 @@ else # the gcc guys:
  TEMPLATE_VBOXQT4GUIEXE_INCS += \
 	$(LIB_SDL_INC)
  TEMPLATE_VBOXQT4GUIEXE_CXXFLAGS = \
-	-pipe -Wall -W -frtti -fno-exceptions -Wno-non-virtual-dtor \
+	-g -pipe -Wall -W -frtti -fno-exceptions -Wno-non-virtual-dtor \
 	-Wno-long-long -fshort-wchar -fno-strict-aliasing \
 	$(VBOX_GCC_fvisibility-hidden) $(VBOX_GCC_fvisibility-inlines-hidden)
  TEMPLATE_VBOXQT4GUIEXE_CXXFLAGS.x86 = -m32
