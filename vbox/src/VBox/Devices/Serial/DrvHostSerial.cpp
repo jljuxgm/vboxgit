@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 12354 2008-09-10 13:08:43Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 12355 2008-09-10 13:09:23Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -472,7 +472,7 @@ static DECLCALLBACK(int) drvHostSerialSendThread(PPDMDRVINS pDrvIns, PPDMTHREAD 
                     /*
                      * write blocked, wait ...
                      */
-                    dwRet = WaitForMultipleObjects(2, ahWait, FALSE, INFINITE);
+                    dwRet = WaitForMultipleObjects(2, haWait, FALSE, INFINITE);
                     if (dwRet != WAIT_OBJECT_0)
                     {
                         AssertMsg(pThread->enmState != PDMTHREADSTATE_RUNNING, ("The halt event sempahore is set but the thread is still in running state\n"));
@@ -552,7 +552,7 @@ static DECLCALLBACK(int) drvHostSerialRecvThread(PPDMDRVINS pDrvIns, PPDMTHREAD 
 
 #ifdef RT_OS_WINDOWS
     /* Make sure that the halt event sempahore is resetted. */
-    DWORD dwRet = WaitForSingleObject(pThis->hHaltEventSem, 0)
+    DWORD dwRet = WaitForSingleObject(pThis->hHaltEventSem, 0);
 
     HANDLE ahWait[2];
     ahWait[0] = pThis->hEventRecv;
