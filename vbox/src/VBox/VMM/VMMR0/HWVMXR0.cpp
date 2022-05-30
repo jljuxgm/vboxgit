@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13175 2008-10-10 13:30:50Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13176 2008-10-10 13:35:30Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1439,7 +1439,7 @@ DECLINLINE(int) VMXR0SaveGuestState(PVM pVM, CPUMCTX *pCtx)
     /* Note: no reason to sync back the CRx registers. They can't be changed by the guest. */
     /* Note: only in the nested paging case can CR3 & CR4 be changed by the guest. */
     if (    pVM->hwaccm.s.fNestedPaging
-        &&  !CPUMIsGuestInRealModeEx(pCtx))
+        &&  !CPUMIsGuestInPagedProtectedModeEx(pCtx))
     {
         /* Can be updated behind our back in the nested paging case. */
         CPUMSetGuestCR2(pVM, ASMGetCR2());
