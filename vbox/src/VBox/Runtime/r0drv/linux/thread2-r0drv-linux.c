@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-linux.c 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: thread2-r0drv-linux.c 14423 2008-11-20 16:08:45Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Linux.
  */
@@ -33,13 +33,21 @@
 *******************************************************************************/
 #include "the-linux-kernel.h"
 
+#include <iprt/assert.h>
 #include <iprt/thread.h>
 #include <iprt/err.h>
 #include "internal/thread.h"
 
-
+/* @todo Implement
 RTDECL(RTTHREAD) RTThreadSelf(void)
 {
-    return rtThreadGetByNative(((RTNATIVETHREAD)current);
+    return rtThreadGetByNative((RTNATIVETHREAD)current);
 }
+*/
 
+RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
+{
+    Assert(hThread == NIL_RTTHREAD);
+    return !in_atomic();
+}
+ 
