@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 12970 2008-10-03 07:04:11Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 13062 2008-10-08 08:06:56Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -231,7 +231,7 @@ int main()
     CHECK_PADDING(PDMDRVINS, Internal);
     CHECK_PADDING2(PDMCRITSECT);
     CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, idx, sizeof(uint16_t));
-    CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, pvPageHC, sizeof(RTHCPTR));
+    CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, pvPageR3, sizeof(RTHCPTR));
     CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, GCPhys, sizeof(RTGCPHYS));
     CHECK_SIZE(PGMPAGE, 16);
     CHECK_MEMBER_ALIGNMENT(PGMRAMRANGE, aPages, 16);
