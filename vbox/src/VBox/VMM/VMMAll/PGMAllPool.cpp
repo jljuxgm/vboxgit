@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17199 2009-02-27 12:47:03Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17202 2009-02-27 13:13:31Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -265,12 +265,7 @@ int pgmPoolMonitorChainFlush(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
  */
 DECLINLINE(int) pgmPoolPhysSimpleReadGCPhys(PVM pVM, void *pvDst, CTXTYPE(RTGCPTR, RTHCPTR, RTGCPTR) pvSrc, RTGCPHYS GCPhysSrc, size_t cb)
 {
-#ifdef IN_RC
-    int rc = MMGCRamRead(pVM, (RTRCPTR)((RTRCUINTPTR)pvDst & ~(cb - 1)), (RTRCPTR)pvSrc, cb);
-    if (RT_FAILURE(rc))
-        rc = PGMPhysSimpleReadGCPhys(pVM, pvDst, GCPhysSrc & ~(RTGCPHYS)(cb - 1), cb);
-    return rc;
-#elif defined(IN_RING3)
+#if defined(IN_RING3)
     memcpy(pvDst, (RTHCPTR)((uintptr_t)pvSrc & ~(RTHCUINTPTR)(cb - 1)), cb);
     return VINF_SUCCESS;
 #else
@@ -298,11 +293,10 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
     const unsigned off     = GCPhysFault & PAGE_OFFSET_MASK;
     const unsigned cbWrite = (pCpu) ? pgmPoolDisasWriteSize(pCpu) : 0;
 
-    LogFlow(("pgmPoolMonitorChainChanging: %RGv phys=%RGp kind=%d cbWrite=%d\n", pvAddress, GCPhysFault, pPage->enmKind, cbWrite));
-
+    LogFlow(("pgmPoolMonitorChainChanging: %RGv phys=%RGp kind=%s cbWrite=%d\n", pvAddress, GCPhysFault, pgmPoolPoolKindToStr(pPage->enmKind), cbWrite));
     for (;;)
     {
-        union
+       union
         {
             void       *pv;
             PX86PT      pPT;
