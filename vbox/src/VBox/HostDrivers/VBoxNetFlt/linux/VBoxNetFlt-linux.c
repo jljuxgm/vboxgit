@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 14551 2008-11-24 22:36:17Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 14968 2008-12-04 09:24:33Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -75,6 +75,24 @@
 # define VBOX_SKB_IS_GSO(skb) false
 # define VBOX_SKB_GSO_SEGMENT(skb) NULL
 #endif /* LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 18) */
+
+#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+unsigned dev_get_flags(const struct net_device *dev)
+{
+        unsigned flags;
+
+        flags = (dev->flags & ~(IFF_PROMISC |
+                                IFF_ALLMULTI |
+                                IFF_RUNNING)) | 
+                (dev->gflags & (IFF_PROMISC |
+                                IFF_ALLMULTI));
+
+        if (netif_running(dev) && netif_carrier_ok(dev))
+                flags |= IFF_RUNNING;
+
+        return flags;
+}
+#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12) */
 
 /*******************************************************************************
 *   Internal Functions                                                         *
