@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11892 2008-08-31 23:49:10Z vboxsync $
+# $Id: Makefile.kmk 11905 2008-09-01 09:45:45Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1325,6 +1325,7 @@ endif
 VBoxPython_TEMPLATE = XPCOM
 VBoxPython_DEFS = _IMPL_NS_COM _IMPL_NS_BASE EXPORT_XPTI_API EXPORT_XPT_API \
                   VBOX_PYXPCOM VBOX_WITH_XPCOM
+VBoxPython_NAME.darwin = VBoxPython2_3
 VBoxPython_INCS = \
 	python/src \
 	$(VBOX_PATH_PYTHON_INC)
