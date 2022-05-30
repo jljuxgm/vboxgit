@@ -1,4 +1,4 @@
-# $Id: Config.kmk 16388 2009-01-29 21:28:47Z vboxsync $
+# $Id: Config.kmk 16403 2009-01-30 01:13:08Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -530,7 +530,7 @@ ifeq ($(KBUILD_TARGET),darwin)
   # Temporary:
   VBOX_WITH_QTGUI=
   override VBOX_WITH_DEBUGGER_GUI=
-  VBOX_WITH_PYTHON=
+  #VBOX_WITH_PYTHON=
   VBOX_WITH_WEBSERVICES=
   VBOX_WITH_CROGL=
   # Permanent (no working SDL).
@@ -3578,7 +3578,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16388 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16403 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
