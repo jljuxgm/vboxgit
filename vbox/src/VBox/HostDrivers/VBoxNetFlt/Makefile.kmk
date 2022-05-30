@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16877 2009-02-18 08:55:42Z vboxsync $
+# $Id: Makefile.kmk 16878 2009-02-18 09:06:13Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -244,8 +244,7 @@ VBoxNetAdp_LIBS = \
 	$(PATH_LIB)/SUPR0IdcClient$(VBOX_SUFF_LIB)
 
 
-# MISSING FILE!!
-#INSTALLS.win += VBoxNetAdp-inf
+INSTALLS.win += VBoxNetAdp-inf
 VBoxNetAdp-inf_INST = $(INST_BIN)
 VBoxNetAdp-inf_MODE = a+r,u+w
 VBoxNetAdp-inf_SOURCES = \
