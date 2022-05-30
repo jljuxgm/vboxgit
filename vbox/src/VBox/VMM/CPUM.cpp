@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 13828 2008-11-05 01:33:17Z vboxsync $ */
+/* $Id: CPUM.cpp 13829 2008-11-05 01:39:10Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -47,6 +47,7 @@
 #include <VBox/selm.h>
 #include <VBox/dbgf.h>
 #include <VBox/patm.h>
+#include <VBox/hwaccm.h>
 #include <VBox/ssm.h>
 #include "CPUMInternal.h"
 #include <VBox/vm.h>
