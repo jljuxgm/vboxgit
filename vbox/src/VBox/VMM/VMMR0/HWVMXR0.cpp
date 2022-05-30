@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 17708 2009-03-11 16:27:47Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 17734 2009-03-12 11:22:10Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2554,7 +2554,7 @@ ResumeExecution:
 
                 LogFlow(("Real mode X86_XCPT_GP instruction emulation at %RGv\n", (RTGCPTR)pCtx->rip));
 
-#if 0
+#if 1
                 /* For testing purposes */
                 rc = EMInterpretInstruction(pVM, CPUMCTX2CORE(pCtx), 0, &cbSize);
                 if (rc == VINF_SUCCESS)
