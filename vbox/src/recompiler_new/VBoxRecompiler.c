@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 15014 2008-12-05 08:43:21Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 15015 2008-12-05 08:44:26Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -243,7 +243,6 @@ uint8_t* code_gen_prologue;
 REMR3DECL(int) REMR3Init(PVM pVM)
 {
     uint32_t u32Dummy;
-    unsigned i;
     int rc;
 
     /*
