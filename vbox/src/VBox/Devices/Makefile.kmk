@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13604 2008-10-28 04:47:11Z vboxsync $
+# $Id: Makefile.kmk 13720 2008-10-31 15:02:40Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -172,6 +172,10 @@ ifdef VBOX_USE_NAT
 VBoxDD_LIBS           += $(PATH_LIB)/NatAlias$(VBOX_SUFF_LIB)
 endif
 
+ifdef VBOX_WITH_NETFLT
+VBoxDD_LIBS.win       += $(PATH_LIB)/WinNetConfig.lib
+endif
+
 ifeq ($(KBUILD_TARGET),solaris)
  VBoxDD_LIBS           += adm
  ifdef VBOX_WITH_SUID_WRAPPER
@@ -190,7 +194,6 @@ VBoxDD_LDFLAGS.darwin   = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxDD.dyli
 	-framework DiskArbitration
 VBoxDD_LDFLAGS.linux    = -Wl,--no-undefined
 VBoxDD_LDFLAGS.l4       = -Wl,--no-undefined
-
 
 #
 # VBoxDD2 (shared object)
