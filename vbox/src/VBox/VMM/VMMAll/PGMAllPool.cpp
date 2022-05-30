@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17467 2009-03-06 13:10:47Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17469 2009-03-06 13:50:50Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -112,7 +112,7 @@ DECLINLINE(void *) PGMPOOL_PAGE_2_LOCKED_PTR(PVM pVM, PPGMPOOLPAGE pPage)
     return pv;
 }
 #else
-# define PGMPOOL_PAGE_2_LOCKED_PTR(pPGM, pPage)  PGMPOOL_PAGE_2_PTR(pVM, pPage)
+# define PGMPOOL_PAGE_2_LOCKED_PTR(pVM, pPage)  PGMPOOL_PAGE_2_PTR(pVM, pPage)
 #endif
 
 /** @def PGMPOOL_UNLOCK_PTR
