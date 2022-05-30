@@ -1,4 +1,4 @@
-/* $Id: HardDiskFormatImpl.cpp 14225 2008-11-14 17:55:28Z vboxsync $ */
+/* $Id: HardDiskFormatImpl.cpp 14561 2008-11-25 10:15:45Z vboxsync $ */
 
 /** @file
  *
@@ -122,6 +122,10 @@ HRESULT HardDiskFormat::init (const VDBACKENDINFO *aVDInfo)
                         defaultValue = pa->pDefaultValue->String.psz;
                     break;
                 }
+
+                default:
+                    AssertMsgFailed(("Invalid enm type %d!\n", pa->enmValueType));
+                    return E_INVALIDARG;
             }
 
             /// @todo add extendedFlags to Property when we reach the 32 bit
