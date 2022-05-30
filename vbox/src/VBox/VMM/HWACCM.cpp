@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 14902 2008-12-02 14:24:03Z vboxsync $ */
+/* $Id: HWACCM.cpp 14981 2008-12-04 13:48:32Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -847,10 +847,10 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
         rc = PDMR3LdrGetSymbolRC(pVM, NULL,       "HWACCMSaveGuestDebug64",   &pVM->hwaccm.s.pfnSaveGuestDebug64);
         AssertMsgRCReturn(rc, ("HWACCMSetupDebug64 -> rc=%Rrc\n", rc), rc);
 
-#ifdef DEBUG
+# ifdef DEBUG
         rc = PDMR3LdrGetSymbolRC(pVM, NULL,       "HWACCMTestSwitcher64",   &pVM->hwaccm.s.pfnTest64);
         AssertMsgRCReturn(rc, ("HWACCMTestSwitcher64 -> rc=%Rrc\n", rc), rc);
-#endif
+# endif
     }
 #endif
     return VINF_SUCCESS;
