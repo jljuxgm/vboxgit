@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 14870 2008-12-01 15:28:54Z vboxsync $ */
+/* $Id: CPUMR0.cpp 14871 2008-12-01 15:36:48Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -259,7 +259,6 @@ VMMR0DECL(int) CPUMR0SaveGuestFPU(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 #if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
     if (CPUMIsGuestInLongModeEx(pCtx))
     {
-        Assert(!(pVCpu->cpum.s.fUseFlags & CPUM_SYNC_FPU_STATE));
         HWACCMR0SaveFPUState(pVM, pVCpu, pCtx);
         CPUMR0RestoreHostFPUState(&pVCpu->cpum.s);
     }
@@ -321,7 +320,6 @@ VMMR0DECL(int) CPUMR0SaveGuestDebugState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, b
 #if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
     if (CPUMIsGuestInLongModeEx(pCtx))
     {
-        Assert(!(pVCpu->cpum.s.fUseFlags & CPUM_SYNC_DEBUG_STATE));
         HWACCMR0SaveDebugState(pVM, pVCpu, pCtx, fDR6);
     }
     else
