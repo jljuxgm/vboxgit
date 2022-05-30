@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: DVDDriveImpl.h 15334 2008-12-11 19:37:55Z vboxsync $ */
 
 /** @file
  *
@@ -107,6 +107,8 @@ public:
     void commit();
     void copyFrom (DVDDrive *aThat);
 
+    HRESULT unmount();
+
     // public methods for internal purposes only
     // (ensure there is a caller and a read lock before calling them!)
 
@@ -116,8 +118,6 @@ public:
     static const wchar_t *getComponentName() { return L"DVDDrive"; }
 
 private:
-
-    HRESULT unmount();
 
     const ComObjPtr <Machine, ComWeakRef> mParent;
     const ComObjPtr <DVDDrive> mPeer;
