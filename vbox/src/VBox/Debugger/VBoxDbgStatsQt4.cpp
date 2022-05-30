@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.cpp 12670 2008-09-23 13:47:44Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.cpp 12671 2008-09-23 13:52:30Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -1248,7 +1248,7 @@ static PDBGGUISTATSNODE nextNode(PDBGGUISTATSNODE pNode)
         {
             for (;;)
             {
-                uint32_t breakage!!! yea! iSelf = pParent->iSelf;
+                uint32_t iSelf = pParent->iSelf;
                 pNode = pNode->pParent;
                 if (!pNode)
                     break;
