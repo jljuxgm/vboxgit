@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 12143 2008-09-05 15:57:39Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 12328 2008-09-10 08:14:31Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -751,8 +751,30 @@ VBOXDDU_DECL(int) VDBackendInfo(unsigned cEntriesAlloc, PVDBACKENDINFO pEntries,
                         }
                         pEntries[cEntries].pszBackend = pszName;
                         pEntries[cEntries].uBackendCaps = pBackend->uBackendCaps;
-                        pEntries[cEntries].papszFileExtensions = pBackend->papszFileExtensions;
-                        pEntries[cEntries].paConfigInfo = pBackend->paConfigInfo;
+                        unsigned cExts, iExt;
+                        for (cExts=0; pBackend->papszFileExtensions[cExts]; cExts++)
+                            ;
+                        const char **paExts = (const char **)RTMemAlloc((cExts+1) * sizeof(paExts[0]));
+                        for (iExt=0; iExt < cExts; iExt++)
+                        {
+                            paExts[iExt] = (const char*)RTStrDup(pBackend->papszFileExtensions[iExt]);
+                            if (!paExts[iExt])
+                            {
+                                rc = VERR_NO_MEMORY;
+                                break;
+                            }
+                        }
+                        paExts[iExt] = NULL;
+                        if (RT_FAILURE(rc))
+                            break;
+                        pEntries[cEntries].papszFileExtensions = paExts;
+                        if (pBackend->paConfigInfo != NULL)
+                        {
+                            /* copy the whole config field! */
+                            rc = VERR_NOT_IMPLEMENTED;
+                            break;
+                        }
+                        pEntries[cEntries].paConfigInfo = NULL;
                         cEntries++;
                         if (cEntries >= cEntriesAlloc)
                         {
