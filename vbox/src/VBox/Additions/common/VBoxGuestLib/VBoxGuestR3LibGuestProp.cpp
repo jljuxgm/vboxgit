@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 12812 2008-09-29 16:27:32Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 13282 2008-10-15 12:42:08Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * guest properties.
@@ -122,7 +122,7 @@ VBGLR3DECL(int) VbglR3GuestPropWrite(uint32_t u32ClientId, const char *pszName, 
         Msg.hdr.result = (uint32_t)VERR_WRONG_ORDER;  /** @todo drop the cast when the result type has been fixed! */
         Msg.hdr.u32ClientID = u32ClientId;
         Msg.hdr.u32Function = SET_PROP_VALUE;
-        Msg.hdr.cParms = 2;
+        Msg.hdr.cParms = 3;
         VbglHGCMParmPtrSet(&Msg.name, const_cast<char *>(pszName), strlen(pszName) + 1);
         VbglHGCMParmPtrSet(&Msg.value, const_cast<char *>(pszValue), strlen(pszValue) + 1);
         VbglHGCMParmPtrSet(&Msg.flags, const_cast<char *>(pszFlags), strlen(pszFlags) + 1);
