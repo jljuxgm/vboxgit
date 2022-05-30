@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 13962 2008-11-07 14:53:32Z vboxsync $ */
+/* $Id: MachineImpl.h 14664 2008-11-26 21:19:35Z vboxsync $ */
 
 /** @file
  *
@@ -459,6 +459,7 @@ public:
     // public initializer/uninitializer for internal purposes only
     HRESULT init (VirtualBox *aParent, const BSTR aConfigFile,
                   InitMode aMode, const BSTR aName = NULL,
+                  GuestOSType *aOsType = NULL,
                   BOOL aNameSync = TRUE, const Guid *aId = NULL);
     void uninit();
 

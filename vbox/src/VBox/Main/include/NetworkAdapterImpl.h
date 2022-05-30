@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 10898 2008-07-26 02:11:55Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 14664 2008-11-26 21:19:35Z vboxsync $ */
 
 /** @file
  *
@@ -28,6 +28,7 @@
 #include "Collection.h"
 
 class Machine;
+class GuestOSType;
 
 class ATL_NO_VTABLE NetworkAdapter :
     public VirtualBoxBaseNEXT,
@@ -161,6 +162,7 @@ public:
     bool rollback();
     void commit();
     void copyFrom (NetworkAdapter *aThat);
+    void applyDefaults (GuestOSType *aOsType);
 
     // public methods for internal purposes only
     // (ensure there is a caller and a read lock before calling them!)
