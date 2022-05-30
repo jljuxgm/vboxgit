@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 16419 2009-01-30 15:00:20Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 16423 2009-01-30 15:23:46Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1626,7 +1626,14 @@ static int pgmPoolMonitorInsert(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
             /* Nothing to monitor here. */
             return VINF_SUCCESS;
 
-#ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+        case PGMPOOLKIND_32BIT_PD_PHYS_REAL:
+        case PGMPOOLKIND_32BIT_PD_PHYS_PROT:
+        case PGMPOOLKIND_PAE_PDPT_PHYS_REAL:
+        case PGMPOOLKIND_PAE_PDPT_PHYS_PROT:
+            /* Nothing to monitor here. */
+            return VINF_SUCCESS;
+#else
         case PGMPOOLKIND_ROOT_32BIT_PD:
         case PGMPOOLKIND_ROOT_PAE_PD:
 #endif
