@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13792 2008-11-04 17:08:06Z vboxsync $
+# $Id: Makefile.kmk 13793 2008-11-04 17:11:22Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -302,6 +302,10 @@ endif
 
 #
 # The VBoxREM import library.
+#
+# This is a HACK to get around (a) the cyclic dependency between VBoxVMM and
+# VBoxREM during linking and (b) the recursive build ordering which means VBoxREM
+# won't be built until after all the other DLLs.
 #
 VBoxREMImp_TEMPLATE         = VBOXR3
 if1of ($(KBUILD_TARGET), os2 win)
