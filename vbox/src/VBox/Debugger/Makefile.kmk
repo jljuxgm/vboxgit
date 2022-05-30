@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12470 2008-09-15 16:35:01Z vboxsync $
+# $Id: Makefile.kmk 12478 2008-09-16 03:12:57Z vboxsync $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -131,7 +131,7 @@ VBoxDbg_QT_MODULES = Core Gui
 VBoxDbg_QT_MOCHDRS = \
 	VBoxDbgGui.h \
 	VBoxDbgConsole.h \
-	VBoxDbgStats.h
+	VBoxDbgStatsQt4.h
 VBoxDbg_SOURCES = \
 	VBoxDbg.cpp \
 	VBoxDbgGui.cpp \

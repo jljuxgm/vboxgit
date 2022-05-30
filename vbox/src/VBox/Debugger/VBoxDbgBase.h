@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.h 12466 2008-09-15 15:22:01Z vboxsync $ */
+/* $Id: VBoxDbgBase.h 12478 2008-09-16 03:12:57Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base class.
  */
@@ -58,7 +58,6 @@ public:
     virtual ~VBoxDbgBase();
 
 
-protected:
     /**
      * Checks if the VM is OK for normal operations.
      * @returns true if ok, false if not.
