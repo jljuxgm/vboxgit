@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 14758 2008-11-28 08:34:19Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 14768 2008-11-28 09:55:59Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -57,7 +57,7 @@ static PVMMSWITCHERDEF s_apSwitchers[VMMSWITCHER_MAX] =
     NULL, //&vmmR3Switcher32BitToAMD64_Def - disabled because it causes assertions.
     &vmmR3SwitcherPAETo32Bit_Def,
     &vmmR3SwitcherPAEToPAE_Def,
-    NULL, //&vmmR3Switcher32BitToAMD64_Def - disabled because it causes assertions.
+    NULL, //&vmmR3SwitcherPAEToAMD64_Def - disabled because it causes assertions.
     NULL,   //&vmmR3SwitcherPAETo32Bit_Def,
 # ifdef VBOX_WITH_HYBIRD_32BIT_KERNEL
     &vmmR3SwitcherAMD64ToPAE_Def,
