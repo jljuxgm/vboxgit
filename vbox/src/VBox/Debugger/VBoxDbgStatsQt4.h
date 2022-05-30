@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.h 12817 2008-09-30 01:31:41Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.h 12819 2008-09-30 02:20:33Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -76,32 +76,6 @@ public:
      * @param   rPatStr     Selection pattern. NULL means everything, see STAM for further details.
      */
     void resetStats(const QString &rPatStr);
-
-private:
-    /**
-     * Callback function for the STAMR3Enum() made by update().
-     *
-     * @returns 0 (i.e. never halt enumeration).
-     *
-     * @param   pszName         The name of the sample.
-     * @param   enmType         The type.
-     * @param   pvSample        Pointer to the data. enmType indicates the format of this data.
-     * @param   enmUnit         The unit.
-     * @param   enmVisibility   The visibility.
-     * @param   pszDesc         The description.
-     * @param   pvUser          Pointer to the VBoxDbgStatsView object.
-     */
-//later:    static DECLCALLBACK(int) updateCallback(const char *pszName, STAMTYPE enmType, void *pvSample, STAMUNIT enmUnit,
-//later:                                            STAMVISIBILITY enmVisibility, const char *pszDesc, void *pvUser);
-
-protected:
-    /**
-     * Creates / finds the path to the specified stats item and makes is visible.
-     *
-     * @returns Parent node.
-     * @param   pszName     Path to a stats item.
-     */
-//    VBoxDbgStatsItem *createPath(const char *pszName);
 
 protected slots:
 //later:    /** Context menu. */
