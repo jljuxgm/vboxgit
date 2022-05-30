@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 14590 2008-11-25 18:47:55Z vboxsync $ */
+/* $Id: MMHyper.cpp 14592 2008-11-25 20:05:50Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -971,6 +971,7 @@ VMMDECL(int) MMR3HyperAllocOnceNoRel(PVM pVM, size_t cb, unsigned uAlignment, MM
             *ppv = pvPages;
             Log2(("MMR3HyperAllocOnceNoRel: cb=%#x uAlignment=%#x returns VINF_SUCCESS and *ppv=%p\n",
                   cb, uAlignment, *ppv));
+            MMR3HyperReserve(pVM, PAGE_SIZE, "fence", NULL);
             return rc;
         }
         AssertMsgFailed(("Failed to allocate %zd bytes! %Rrc\n", cb, rc));
