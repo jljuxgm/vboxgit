@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 15161 2008-12-09 13:03:20Z vboxsync $ */
+/* $Id: PGMAll.cpp 15226 2008-12-10 04:25:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1962,27 +1962,6 @@ VMMDECL(int) PGMDynMapHCPage(PVM pVM, RTHCPHYS HCPhys, void **ppv)
     return VINF_SUCCESS;
 }
 # endif /* IN_RC */
-
-
-/**
- * Temporarily maps one host page specified by HC physical address, returning
- * pointer within the page.
- *
- * Be WARNED that the dynamic page mapping area is small, 8 pages, thus the space is
- * reused after 8 mappings (or perhaps a few more if you score with the cache).
- *
- * @returns VBox status.
- * @param   pVM         VM handle.
- * @param   HCPhys      HC Physical address of the page.
- * @param   ppv         Where to store the address corresponding to HCPhys.
- */
-VMMDECL(int) PGMDynMapHCPageOff(PVM pVM, RTHCPHYS HCPhys, void **ppv)
-{
-    int rc = PGMDynMapHCPage(pVM, HCPhys & ~(RTHCPHYS)PAGE_OFFSET_MASK, ppv);
-    if (RT_SUCCESS(rc))
-        *ppv = (void *)((uintptr_t)*ppv | (HCPhys & PAGE_OFFSET_MASK));
-    return rc;
-}
 
 #endif /* IN_RC || VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0 */
 #ifdef VBOX_STRICT
