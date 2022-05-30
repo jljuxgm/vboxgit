@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 16843 2009-02-17 13:57:19Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 16882 2009-02-18 10:11:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -269,6 +269,26 @@ void pgmMapSetShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
                 pShwPdpt  = pgmShwGetPaePDPTPtr(&pVM->pgm.s);
                 Assert(pShwPdpt);
                 pShwPaePd = pgmShwGetPaePDPtr(&pVM->pgm.s, (iPdPt << X86_PDPT_SHIFT));
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+                if (!pShwPaePd)
+                {
+                    X86PDPE GstPdpe;
+
+                    if (PGMGetGuestMode(pVM) < PGMMODE_PAE)
+                    {
+                        /* Fake PDPT entry; access control handled on the page table level, so allow everything. */
+                        GstPdpe.u  = X86_PDPE_P;   /* rw/us are reserved for PAE pdpte's; accessed bit causes invalid VT-x guest state errors */
+                    }
+                    else
+                    {
+                        PX86PDPE pGstPdpe;
+                        pGstPdpe = pgmGstGetPaePDPEPtr(&pVM->pgm.s, (iPdPt << X86_PDPT_SHIFT));
+                        AssertFatal(pGstPdpe);
+                        GstPdpe = *pGstPdpe;
+                    }
+                    rc = pgmShwSyncPaePDPtr(pVM, (iPdPt << X86_PDPT_SHIFT), &GstPdpe, &pShwPaePd);
+                }
+#endif
                 AssertFatal(pShwPaePd);
 
                 PPGMPOOLPAGE pPoolPagePde = pgmPoolGetPageByHCPhys(pVM, pShwPdpt->a[iPdPt].u & X86_PDPE_PG_MASK);
