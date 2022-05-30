@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12778 2008-09-28 00:42:32Z vboxsync $
+# $Id: Config.kmk 12779 2008-09-28 01:08:11Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1744,9 +1744,6 @@ else
     QTDIR := $(wildcard /usr/share/qt3)
     ifeq ($(QTDIR),)
      QTDIR := $(patsubst %/bin/moc,%,$(firstword $(wildcard /usr/bin/moc /usr/local/bin/moc /usr/X11R6/bin/moc)))
-$(warning QTDIR-2=$(QTDIR))
-else
-$(warning QTDIR-1=$(QTDIR))
     endif
     ifneq ($(QTDIR),)
      export QTDIR
@@ -1759,7 +1756,7 @@ $(warning QTDIR-1=$(QTDIR))
  endif
 endif
 ifndef VBOX_PATH_QT
- VBOX_PATH_QT ?= $(QTDIR)
+ VBOX_PATH_QT := $(QTDIR)
  LIB_QT ?= qt-mt
 endif
 ifeq ($(KBUILD_HOST),$(KBUILD_TARGET))
@@ -3544,7 +3541,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12778 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12779 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -3604,5 +3601,4 @@ st stat status:
 
 quick:
 	$(MAKE) VBOX_QUICK=1
-
 
