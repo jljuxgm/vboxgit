@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 15420 2008-12-13 07:21:55Z vboxsync $ */
+/* $Id: EMAll.cpp 15421 2008-12-13 07:23:07Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2943,6 +2943,9 @@ DECLINLINE(int) emInterpretInstructionCPU(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCO
             &&  uOpCode != OP_MOV
             &&  uOpCode != OP_CMPXCHG8B
             &&  uOpCode != OP_XCHG
+            &&  uOpCode != OP_BTS
+            &&  uOpCode != OP_BTR
+            &&  uOpCode != OP_BTC
 # ifdef VBOX_WITH_HYBRID_32BIT_KERNEL_IN_R0
             &&  uOpCode != OP_CMPXCHG /* solaris */
             &&  uOpCode != OP_AND     /* windows */
