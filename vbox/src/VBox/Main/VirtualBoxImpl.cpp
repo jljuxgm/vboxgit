@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 17881 2009-03-14 23:33:49Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 17886 2009-03-15 15:04:47Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -744,7 +744,18 @@ VirtualBox::COMGETTER(PerformanceCollector) (IPerformanceCollector **aPerformanc
 STDMETHODIMP
 VirtualBox::COMGETTER(DhcpServers) (ComSafeArrayOut (IDhcpServer *, aDhcpServers))
 {
-    return E_NOTIMPL;
+    if (ComSafeArrayOutIsNull (aDhcpServers))
+        return E_POINTER;
+
+    AutoCaller autoCaller (this);
+    CheckComRCReturnRC (autoCaller.rc());
+
+    AutoReadLock alock (this);
+
+    SafeIfaceArray<IDhcpServer> svrs (mData.mDhcpServers);
+    svrs.detachTo (ComSafeArrayOutArg (aDhcpServers));
+
+    return S_OK;
 }
 
 // IVirtualBox methods
