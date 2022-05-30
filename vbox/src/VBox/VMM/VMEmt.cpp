@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 8795 2008-05-13 17:44:24Z vboxsync $ */
+/* $Id: VMEmt.cpp 12549 2008-09-17 18:02:02Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -29,6 +29,7 @@
 #include <VBox/em.h>
 #include <VBox/pdmapi.h>
 #include <VBox/rem.h>
+#include <VBox/tm.h>
 #include "VMInternal.h"
 #include <VBox/vm.h>
 #include <VBox/uvm.h>
@@ -1002,9 +1003,11 @@ VMR3DECL(int) VMR3WaitHalted(PVM pVM, bool fIgnoreInterrupts)
     }
 
     /*
-     * The yielder is suspended while we're halting.
+     * The yielder is suspended while we're halting, while TM might have clock(s) running
+     * only at certain times and need to be notified..
      */
     VMMR3YieldSuspend(pVM);
+    TMNotifyStartOfHalt(pVM);
 
     /*
      * Record halt averages for the last second.
@@ -1035,8 +1038,9 @@ VMR3DECL(int) VMR3WaitHalted(PVM pVM, bool fIgnoreInterrupts)
     int rc = g_aHaltMethods[pUVM->vm.s.iHaltMethod].pfnHalt(pUVM, fMask, u64Now);
 
     /*
-     * Resume the yielder.
+     * Notify TM and resume the yielder
      */
+    TMNotifyEndOfHalt(pVM);
     VMMR3YieldResume(pVM);
 
     LogFlow(("VMR3WaitHalted: returns %Vrc (FF %#x)\n", rc, pVM->fForcedActions));

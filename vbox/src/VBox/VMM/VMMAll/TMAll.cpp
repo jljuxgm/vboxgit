@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 11309 2008-08-08 23:25:08Z vboxsync $ */
+/* $Id: TMAll.cpp 12549 2008-09-17 18:02:02Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -42,6 +42,76 @@
 #ifdef IN_RING3
 # include <iprt/thread.h>
 #endif
+
+
+/**
+ * Notification that execution is about to start.
+ *
+ * This call must always be paired with a TMNotifyEndOfExecution call.
+ *
+ * The function may, depending on the configuration, resume the TSC and future
+ * clocks that only ticks when we're executing guest code.
+ *
+ * @param   pVM         Pointer to the shared VM structure.
+ */
+TMDECL(void) TMNotifyStartOfExecution(PVM pVM)
+{
+    if (pVM->tm.s.fTSCTiedToExecution)
+        tmCpuTickResume(pVM);
+}
+
+
+/**
+ * Notification that execution is about to start.
+ *
+ * This call must always be paired with a TMNotifyStartOfExecution call.
+ *
+ * The function may, depending on the configuration, suspend the TSC and future
+ * clocks that only ticks when we're executing guest code.
+ *
+ * @param   pVM         Pointer to the shared VM structure.
+ */
+TMDECL(void) TMNotifyEndOfExecution(PVM pVM)
+{
+    if (pVM->tm.s.fTSCTiedToExecution)
+        tmCpuTickPause(pVM);
+}
+
+
+/**
+ * Notification that the cpu is entering the halt state
+ *
+ * This call must always be paired with a TMNotifyEndOfExecution call.
+ *
+ * The function may, depending on the configuration, resume the TSC and future
+ * clocks that only ticks when we're halted.
+ *
+ * @param   pVM         Pointer to the shared VM structure.
+ */
+TMDECL(void) TMNotifyStartOfHalt(PVM pVM)
+{
+    if (    pVM->tm.s.fTSCTiedToExecution
+        &&  !pVM->tm.s.fTSCNotTiedToHalt)
+        tmCpuTickResume(pVM);
+}
+
+
+/**
+ * Notification that the cpu is leaving the halt state
+ *
+ * This call must always be paired with a TMNotifyStartOfHalt call.
+ *
+ * The function may, depending on the configuration, suspend the TSC and future
+ * clocks that only ticks when we're halted.
+ *
+ * @param   pVM         Pointer to the shared VM structure.
+ */
+TMDECL(void) TMNotifyEndOfHalt(PVM pVM)
+{
+    if (    pVM->tm.s.fTSCTiedToExecution
+        &&  !pVM->tm.s.fTSCNotTiedToHalt)
+        tmCpuTickPause(pVM);
+}
 
 
 /**
