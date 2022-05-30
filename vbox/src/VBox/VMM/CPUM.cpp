@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 16665 2009-02-11 13:57:23Z vboxsync $ */
+/* $Id: CPUM.cpp 16666 2009-02-11 13:58:39Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1023,8 +1023,8 @@ static DECLCALLBACK(int) cpumR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Versio
     if (RT_SUCCESS(rc))
     {
         /* Ignore CPU stepping. */
-        au32CpuId[0]      &=  0xfffffff0;
-        au32CpuIdSaved[0] &=  0xfffffff0;
+        au32CpuId[4]      &=  0xfffffff0;
+        au32CpuIdSaved[4] &=  0xfffffff0;
 
         /* Ignore APIC ID (AMD specs). */
         au32CpuId[5]      &= ~0xff000000;
