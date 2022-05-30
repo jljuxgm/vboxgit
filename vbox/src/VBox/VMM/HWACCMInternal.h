@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 12121 2008-09-05 09:41:05Z vboxsync $ */
+/* $Id: HWACCMInternal.h 12162 2008-09-05 23:28:27Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -386,6 +386,15 @@ typedef struct HWACCM
         bool                    fHostDR7Saved;
         bool                    fHostDebugRegsSaved;
     } savedhoststate;
+#endif
+
+#ifdef VBOX_STRICT
+    /** The CPU ID of the CPU currently owning the VMCS. Set in
+     * HWACCMR0Enter and cleared in HWACCMR0Leave. */
+    RTCPUID                 idEnteredCpu;
+# if HC_ARCH_BITS == 32
+    RTCPUID                 Alignment0;
+# endif
 #endif
 
     STAMPROFILEADV          StatEntry;

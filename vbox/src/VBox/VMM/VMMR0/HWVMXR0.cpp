@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 12121 2008-09-05 09:41:05Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 12162 2008-09-05 23:28:27Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1194,6 +1194,10 @@ HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx)
     /* We can jump to this point to resume execution after determining that a VM-exit is innocent.
      */
 ResumeExecution:
+    AssertMsg(pVM->hwaccm.s.idEnteredCpu == RTMpCpuId(),
+              ("Expected %d, I'm %d; cResume=%d exitReason=%RTreg exitQualification=%RTreg\n",
+               (int)pVM->hwaccm.s.idEnteredCpu, (int)RTMpCpuId(), cResume, exitReason, exitQualification));
+
     /* Safety precaution; looping for too long here can have a very bad effect on the host */
     if (++cResume > HWACCM_MAX_RESUME_LOOPS)
     {
@@ -1762,7 +1766,7 @@ ResumeExecution:
 
             case X86_XCPT_DB:   /* Debug exception. */
             {
-                /* DR6, DR7.GD and IA32_DEBUGCTL.LBR are not updated yet. 
+                /* DR6, DR7.GD and IA32_DEBUGCTL.LBR are not updated yet.
                  *
                  * Exit qualification bits:
                  *  3:0     B0-B3 which breakpoint condition was met
