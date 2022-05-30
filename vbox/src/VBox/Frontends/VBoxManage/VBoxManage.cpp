@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 17193 2009-02-27 10:00:17Z vboxsync $ */
+/* $Id: VBoxManage.cpp 17200 2009-02-27 12:48:14Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -670,10 +670,11 @@ static int handleControlVM(HandlerArg *a)
             {
                 ComPtr<IHost> host;
                 CHECK_ERROR(a->virtualBox, COMGETTER(Host)(host.asOutParam()));
-                ComPtr<IHostDVDDriveCollection> hostDVDs;
-                CHECK_ERROR(host, COMGETTER(DVDDrives)(hostDVDs.asOutParam()));
+                com::SafeIfaceArray <IHostDVDDrive> hostDVDs;
+                rc = host->COMGETTER(DVDDrives)(ComSafeArrayAsOutParam(hostDVDs));
+
                 ComPtr<IHostDVDDrive> hostDVDDrive;
-                rc = hostDVDs->FindByName(Bstr(a->argv[2] + 5), hostDVDDrive.asOutParam());
+                rc = host->FindHostDVDDrive(Bstr(a->argv[2] + 5), hostDVDDrive.asOutParam());
                 if (!hostDVDDrive)
                 {
                     errorArgument("Invalid host DVD drive name");

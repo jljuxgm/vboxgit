@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.cpp 17193 2009-02-27 10:00:17Z vboxsync $ */
+/* $Id: DVDDriveImpl.cpp 17200 2009-02-27 12:48:14Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2008 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -451,15 +451,16 @@ HRESULT DVDDrive::loadSettings (const settings::Key &aMachineNode)
 
         Bstr src = typeNode.stringValue ("src");
 
-        /* find the correspoding object */
+        /* find the corresponding object */
         ComObjPtr <Host> host = mParent->virtualBox()->host();
 
-        ComPtr <IHostDVDDriveCollection> coll;
-        rc = host->COMGETTER(DVDDrives) (coll.asOutParam());
+        com::SafeIfaceArray <IHostDVDDrive> coll;
+        rc = host->COMGETTER(DVDDrives) (ComSafeArrayAsOutParam(coll));
         AssertComRC (rc);
 
         ComPtr <IHostDVDDrive> drive;
-        rc = coll->FindByName (src, drive.asOutParam());
+        rc = host->FindHostDVDDrive (src, drive.asOutParam());
+
         if (SUCCEEDED (rc))
         {
             rc = CaptureHostDrive (drive);
