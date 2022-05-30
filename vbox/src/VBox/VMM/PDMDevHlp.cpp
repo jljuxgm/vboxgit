@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 15126 2008-12-08 19:05:24Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 15127 2008-12-08 19:09:39Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -575,7 +575,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_PCIIORegionRegister(PPDMDEVINS pDevIns, int
              * Sanity check: don't allow to register more than 512MB of the PCI MMIO space for
              * now. If this limit is increased beyond 2GB, adapt the aligned check below as well!
              */
-            AssertMsgReturn(cbRegion <= _512K,
+            AssertMsgReturn(cbRegion <= 512 * _1M,
                             ("caller='%s'/%d: %#x\n", pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, cbRegion),
                             VERR_INVALID_PARAMETER);
             break;
