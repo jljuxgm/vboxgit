@@ -1,4 +1,4 @@
-/* $Id: RTThreadPreemptRestore-r0drv-generic.cpp 13274 2008-10-15 08:11:38Z vboxsync $ */
+/* $Id: RTThreadPreemptRestore-r0drv-generic.cpp 13275 2008-10-15 08:48:31Z vboxsync $ */
 /** @file
  * IPRT - RTThreadPreemptRestore, Generic ring-0 driver implementation.
  */
@@ -37,13 +37,8 @@
 
 RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
 {
-#ifdef RT_OS_WINDOWS
-    /** @todo I disabled this because it did not build on Windows */
-    AssertReleaseMsgFailed(("This has not yet been implemented on Windows!\n"));
-#else
     AssertPtr(pState);
     Assert(pState->uchDummy == 42);
     pState->uchDummy = 0;
-#endif
 }
 
