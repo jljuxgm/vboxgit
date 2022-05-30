@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 17292 2009-03-03 15:31:32Z vboxsync $ */
+/* $Id: HWACCMInternal.h 17295 2009-03-03 15:56:07Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -557,6 +557,8 @@ typedef struct HWACCMCPU
 
         /** Esp at the start of the io code we wish to emulate in the recompiler. */
         RTGCPTR                 GCPtrFunctionEsp;
+
+        uint64_t                cr0;
     } EmulateIoBlock;
 
     /** Currenty shadow paging mode. */
