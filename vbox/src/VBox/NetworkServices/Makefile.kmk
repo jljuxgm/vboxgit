@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17320 2009-03-04 03:58:27Z vboxsync $
+# $Id: Makefile.kmk 17374 2009-03-05 06:50:26Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Network Services.
 #
@@ -23,7 +23,7 @@ SUB_DEPTH = ../../..
 include	$(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefiles.
-include $(PATH_SUB_CURRENT)/VBoxNetDHCP/Makefile.kmk
+include $(PATH_SUB_CURRENT)/DHCP/Makefile.kmk
 
 include	$(KBUILD_PATH)/subfooter.kmk
 
