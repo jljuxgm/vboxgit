@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 13235 2008-10-13 20:48:53Z vboxsync $ */
+/* $Id: PGMAllBth.h 13394 2008-10-20 14:01:17Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2798,8 +2798,9 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PGSTPD pPDSrc, RTGCUINTPTR G
  */
 PGM_BTH_DECL(int, PrefetchPage)(PVM pVM, RTGCUINTPTR GCPtrPage)
 {
-#if   (PGM_GST_TYPE == PGM_TYPE_32BIT || PGM_GST_TYPE == PGM_TYPE_REAL || PGM_GST_TYPE == PGM_TYPE_PROT || PGM_GST_TYPE == PGM_TYPE_PAE || PGM_GST_TYPE == PGM_TYPE_AMD64) \
-    && PGM_SHW_TYPE != PGM_TYPE_NESTED && PGM_SHW_TYPE != PGM_TYPE_EPT
+#if        (    (   PGM_GST_TYPE == PGM_TYPE_32BIT || PGM_GST_TYPE == PGM_TYPE_REAL || PGM_GST_TYPE == PGM_TYPE_PROT || PGM_GST_TYPE == PGM_TYPE_PAE || PGM_GST_TYPE == PGM_TYPE_AMD64) \
+                 && PGM_SHW_TYPE != PGM_TYPE_NESTED ) \
+        || (PGM_SHW_TYPE == PGM_TYPE_EPT && (PGM_GST_TYPE == PGM_TYPE_REAL || PGM_GST_TYPE == PGM_TYPE_PROT))
     /*
      * Check that all Guest levels thru the PDE are present, getting the
      * PD and PDE in the processes.
@@ -2858,6 +2859,21 @@ PGM_BTH_DECL(int, PrefetchPage)(PVM pVM, RTGCUINTPTR GCPtrPage)
 #  endif
 
         int rc = PGMShwSyncLongModePDPtr(pVM, GCPtrPage, pPml4eSrc, &PdpeSrc, &pPDDst);
+        if (rc != VINF_SUCCESS)
+        {
+            AssertRC(rc);
+            return rc;
+        }
+        Assert(pPDDst);
+        PdeDst = pPDDst->a[iPDDst];
+# elif PGM_SHW_TYPE == PGM_TYPE_EPT
+        const unsigned  iPdpte = (GCPtrPage >> EPT_PDPT_SHIFT) & EPT_PDPT_MASK;
+        const unsigned  iPDDst = ((GCPtrPage >> SHW_PD_SHIFT) & SHW_PD_MASK);
+        PEPTPD          pPDDst;
+        PEPTPDPT        pPdptDst;
+        EPTPDE          PdeDst;
+
+        rc = PGMShwGetEPTPDPtr(pVM, GCPtrPage, &pPdptDst, &pPDDst);
         if (rc != VINF_SUCCESS)
         {
             AssertRC(rc);
