@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 14875 2008-12-01 16:24:22Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 14888 2008-12-02 10:36:00Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3449,6 +3449,7 @@ VMMR0DECL(int) VMXR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
 
     /* @todo This code is not guest SMP safe (hyper context) */
     AssertReturn(pVM->cCPUs == 1, VERR_ACCESS_DENIED);
+    AssertReturn(pVM->hwaccm.s.pfnHost32ToGuest64R0, VERR_INTERNAL_ERROR);
 
     pCpu = HWACCMR0GetCurrentCpuEx(pVCpu->idCpu);
     pPageCpuPhys = RTR0MemObjGetPagePhysAddr(pCpu->pMemObj, 0);

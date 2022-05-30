@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 14887 2008-12-02 10:15:21Z vboxsync $ */
+/* $Id: HWACCM.cpp 14888 2008-12-02 10:36:00Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -329,10 +329,6 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
         return rc;
 
 #else  /* !RT_OS_DARWIN */
-
-        /* Invert the selection */
-        pVM->hwaccm.s.fAllowed ^= 1;
-        LogRel(("HWACCMR3InitFinalize: new HWACCM status = %s\n", pVM->hwaccm.s.fAllowed ? "enabled" : "disabled"));
 
         if (pVM->hwaccm.s.fAllowed)
         {
