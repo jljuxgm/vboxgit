@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 13962 2008-11-07 14:53:32Z vboxsync $ */
+/* $Id: MachineImpl.cpp 14142 2008-11-12 19:17:19Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -6445,7 +6445,7 @@ HRESULT Machine::saveHardware (settings::Key &aNode)
         Key displayNode = aNode.createKey ("Display");
         displayNode.setValue <ULONG> ("VRAMSize", mHWData->mVRAMSize);
         displayNode.setValue <ULONG> ("MonitorCount", mHWData->mMonitorCount);
-        displayNode.setValue <bool> ("Accelerate3D", mHWData->mAccelerate3DEnabled);
+        displayNode.setValue <bool> ("Accelerate3D", !!mHWData->mAccelerate3DEnabled);
     }
 
 #ifdef VBOX_WITH_VRDP
