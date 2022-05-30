@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 13936 2008-11-06 20:44:09Z vboxsync $ */
+/* $Id: PGMHandler.cpp 14346 2008-11-19 11:25:35Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -428,6 +428,23 @@ VMMDECL(int) PGMHandlerVirtualChangeInvalidateCallback(PVM pVM, RTGCPTR GCPtr, P
     pgmUnlock(pVM);
     AssertMsgFailed(("Range %#x not found!\n", GCPtr));
     return VERR_INVALID_PARAMETER;
+}
+
+
+/**
+ * Check if particular guest's VA is being monitored.
+ *
+ * @returns true or false
+ * @param   pVM             VM handle.
+ * @param   GCPtr           Virtual address.
+ */
+VMMDECL(bool) PGMHandlerIsAddressMonitored(PVM pVM, RTGCPTR GCPtr)
+{
+    pgmLock(pVM);
+    PPGMVIRTHANDLER pCur = (PPGMVIRTHANDLER)RTAvlroGCPtrGet(&pVM->pgm.s.pTreesR3->VirtHandlers, GCPtr);
+    pgmUnlock(pVM);
+
+    return pCur != 0;
 }
 
 
