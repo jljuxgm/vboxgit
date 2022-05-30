@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 15534 2008-12-15 19:06:14Z vboxsync $ */
+/* $Id: VBoxDev.cpp 17425 2009-03-06 00:05:07Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -311,7 +311,7 @@ static DECLCALLBACK(int) vmmdevBackdoorLog(PPDMDEVINS pDevIns, void *pvUser, RTI
         {
             pThis->szMsg[pThis->iMsg] = '\0';
             if (pThis->iMsg)
-                LogRel(("Guest Log: %s\n", pThis->szMsg));
+                LogRelIt(LOG_REL_INSTANCE, RTLOGGRPFLAGS_LEVEL_1, LOG_GROUP_DEV_VMM_BACKDOOR, ("Guest Log: %s\n", pThis->szMsg));
             pThis->iMsg = 0;
         }
         else
