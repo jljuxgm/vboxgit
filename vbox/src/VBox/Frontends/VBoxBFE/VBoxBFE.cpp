@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 13838 2008-11-05 03:16:55Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -708,7 +708,7 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char **envp)
                 return SyntaxError("missing argument for %s!\n", pszArg);
             rc = RTStrToInt32Ex(argv[curArg], NULL, 0, &g_aNetDevs[i].fd);
             if (RT_FAILURE(rc))
-                return SyntaxError("bad tap file descriptor: %s (error %VRc)\n", argv[curArg], rc);
+                return SyntaxError("bad tap file descriptor: %s (error %Rrc)\n", argv[curArg], rc);
             g_aNetDevs[i].fHaveFd = true;
         }
 #endif /* RT_OS_LINUX */
@@ -721,7 +721,7 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char **envp)
             {
                 rc = RTStrToInt32Ex(argv[curArg], NULL, 0, &portVRDP);
                 if (RT_FAILURE(rc))
-                    return SyntaxError("cannot vrpd port: %s (%VRc)\n", argv[curArg], rc);
+                    return SyntaxError("cannot vrpd port: %s (%Rrc)\n", argv[curArg], rc);
                 if (portVRDP < 0 || portVRDP >= 0x10000)
                     return SyntaxError("vrdp port number is out of range: %RI32\n", portVRDP);
             }

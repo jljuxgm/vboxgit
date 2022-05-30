@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: VBoxManage.cpp 13838 2008-11-05 03:16:55Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -2812,7 +2812,7 @@ static int handleList(int argc, char *argv[],
                 Bstr name;
                 machine->COMGETTER(Name)(name.asOutParam());
                 machine->COMGETTER(Id)(uuid.asOutParam());
-                RTPrintf("%s%lS (UUID: %Vuuid)\n",
+                RTPrintf("%s%lS (UUID: %Ruuid)\n",
                          j == 0 ? "Usage:        " : "              ",
                          name.raw(), &machineIds[j]);
             }
@@ -6502,7 +6502,7 @@ static int handleShowHardDiskInfo(int argc, char *argv[],
                 Bstr name;
                 machine->COMGETTER(Name)(name.asOutParam());
                 machine->COMGETTER(Id)(uuid.asOutParam());
-                RTPrintf("%s%lS (UUID: %Vuuid)\n",
+                RTPrintf("%s%lS (UUID: %Ruuid)\n",
                          j == 0 ? "In use by VMs:        " : "                      ",
                          name.raw(), &machineIds[j]);
             }

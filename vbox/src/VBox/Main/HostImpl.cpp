@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: HostImpl.cpp 13838 2008-11-05 03:16:55Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1366,7 +1366,7 @@ Host::RemoveHostNetworkInterface (INPTR GUIDPARAM aId,
         ComPtr <IHostNetworkInterface> iface;
         if (FAILED (coll->FindById (aId, iface.asOutParam())))
             return setError (E_FAIL,
-                tr ("Host network interface with UUID {%Vuuid} does not exist"),
+                tr ("Host network interface with UUID {%Ruuid} does not exist"),
                 Guid (aId).raw());
 
         /* return the object to be removed to the caller */
@@ -2661,7 +2661,7 @@ int Host::createNetworkInterface (SVCHlpClient *aClient,
         LogFlowFunc (("Network connection GUID string = {%ls}\n", pCfgGuidString + 1));
 
         aGUID = Guid (Utf8Str (pCfgGuidString + 1));
-        LogFlowFunc (("Network connection GUID = {%Vuuid}\n", aGUID.raw()));
+        LogFlowFunc (("Network connection GUID = {%Ruuid}\n", aGUID.raw()));
         Assert (!aGUID.isEmpty());
     }
 
@@ -2676,7 +2676,7 @@ int Host::removeNetworkInterface (SVCHlpClient *aClient,
                                   Utf8Str &aErrMsg)
 {
     LogFlowFuncEnter();
-    LogFlowFunc (("Network connection GUID = {%Vuuid}\n", aGUID.raw()));
+    LogFlowFunc (("Network connection GUID = {%Ruuid}\n", aGUID.raw()));
 
     AssertReturn (aClient, VERR_INVALID_POINTER);
     AssertReturn (!aGUID.isEmpty(), VERR_INVALID_PARAMETER);
@@ -2941,7 +2941,7 @@ HRESULT Host::networkInterfaceHelperClient (SVCHlpClient *aClient,
                         vrc = aClient->read (guid);
                         if (RT_FAILURE (vrc)) break;
 
-                        LogFlowFunc (("Network connection GUID = {%Vuuid}\n", guid.raw()));
+                        LogFlowFunc (("Network connection GUID = {%Ruuid}\n", guid.raw()));
 
                         /* initialize the object returned to the caller by
                          * CreateHostNetworkInterface() */
@@ -2976,7 +2976,7 @@ HRESULT Host::networkInterfaceHelperClient (SVCHlpClient *aClient,
         case SVCHlpMsg::RemoveHostNetworkInterface:
         {
             LogFlowFunc (("RemoveHostNetworkInterface:\n"));
-            LogFlowFunc (("Network connection GUID = {%Vuuid}\n", d->guid.raw()));
+            LogFlowFunc (("Network connection GUID = {%Ruuid}\n", d->guid.raw()));
 
             /* write message and parameters */
             vrc = aClient->write (d->msgCode);

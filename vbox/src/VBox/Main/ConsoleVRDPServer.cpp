@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 13838 2008-11-05 03:16:55Z vboxsync $ */
 
 /** @file
  *
@@ -1324,7 +1324,7 @@ VRDPAuthResult ConsoleVRDPServer::Authenticate (const Guid &uuid, VRDPAuthGuestJ
 
     memcpy (rawuuid, ((Guid &)uuid).ptr (), sizeof (rawuuid));
 
-    LogFlow(("ConsoleVRDPServer::Authenticate: uuid = %Vuuid, guestJudgement = %d, pszUser = %s, pszPassword = %s, pszDomain = %s, u32ClientId = %d\n",
+    LogFlow(("ConsoleVRDPServer::Authenticate: uuid = %Ruuid, guestJudgement = %d, pszUser = %s, pszPassword = %s, pszDomain = %s, u32ClientId = %d\n",
              rawuuid, guestJudgement, pszUser, pszPassword, pszDomain, u32ClientId));
 
     /*
@@ -1432,7 +1432,7 @@ void ConsoleVRDPServer::AuthDisconnect (const Guid &uuid, uint32_t u32ClientId)
 
     memcpy (rawuuid, ((Guid &)uuid).ptr (), sizeof (rawuuid));
 
-    LogFlow(("ConsoleVRDPServer::AuthDisconnect: uuid = %Vuuid, u32ClientId = %d\n",
+    LogFlow(("ConsoleVRDPServer::AuthDisconnect: uuid = %Ruuid, u32ClientId = %d\n",
              rawuuid, u32ClientId));
 
     Assert (mAuthLibrary && (mpfnAuthEntry || mpfnAuthEntry2));
