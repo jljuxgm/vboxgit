@@ -1,4 +1,4 @@
-/** $Id: VBoxService.cpp 10654 2008-07-15 12:42:23Z vboxsync $ */
+/** $Id: VBoxService.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -229,7 +229,7 @@ int main(int argc, char **argv)
     /*
      * Init globals and such.
      */
-    RTR3Init(false, 0);
+    RTR3Init();
     g_pszProgName = RTPathFilename(argv[0]);
     for (unsigned j = 0; j < RT_ELEMENTS(g_aServices); j++)
     {

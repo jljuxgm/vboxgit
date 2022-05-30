@@ -1,4 +1,4 @@
-/* $Id: server.cpp 11820 2008-08-29 14:09:39Z vboxsync $ */
+/* $Id: server.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -998,7 +998,7 @@ int main (int argc, char **argv)
      * Initialize the VBox runtime without loading
      * the support driver
      */
-    RTR3Init(false);
+    RTR3Init();
 
     nsresult rc;
 

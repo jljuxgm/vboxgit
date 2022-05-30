@@ -1,4 +1,4 @@
-/* $Id: tstSSM.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
+/* $Id: tstSSM.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
@@ -612,7 +612,7 @@ int main(int argc, char **argv)
     /*
      * Init runtime and static data.
      */
-    RTR3Init();
+    RTR3InitAndSUPLib();
     RTPrintf("tstSSM: TESTING...\n");
     initBigMem();
     const char *pszFilename = "SSMTestSave#1";

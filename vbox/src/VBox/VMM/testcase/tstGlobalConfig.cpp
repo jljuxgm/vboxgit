@@ -1,4 +1,4 @@
-/* $Id: tstGlobalConfig.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
+/* $Id: tstGlobalConfig.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * Ring-3 Management program for the GCFGM mock-up.
  */
@@ -44,7 +44,7 @@ static int Usage(void)
 
 int main(int argc, char **argv)
 {
-    RTR3Init(false, 0);
+    RTR3Init();
 
     /*
      * Parse args, building the request as we do so.

@@ -1,4 +1,4 @@
-/* $Id: tstHandleTable.cpp 11127 2008-08-04 21:30:46Z vboxsync $ */
+/* $Id: tstHandleTable.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - Handle Tables.
  */
@@ -452,7 +452,7 @@ int main(int argc, char **argv)
     /*
      * Init the runtime and parse the arguments.
      */
-    RTR3Init(false, 0);
+    RTR3Init();
 
     static RTOPTIONDEF const s_aOptions[] =
     {

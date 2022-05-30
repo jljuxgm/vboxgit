@@ -1,4 +1,4 @@
-/* $Id: tstTime-2.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstTime-2.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime test.
  */
@@ -43,7 +43,7 @@ int main()
 {
     unsigned cErrors = 0;
     int i;
-    RTR3Init();
+    RTR3InitAndSUPLib();
     RTPrintf("tstTime-2: TESTING...\n");
 
     /*

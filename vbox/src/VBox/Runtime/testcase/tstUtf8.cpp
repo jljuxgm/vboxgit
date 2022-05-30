@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstUtf8.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -905,7 +905,7 @@ void Benchmarks(void)
 
 int main()
 {
-    RTR3Init(false);
+    RTR3Init();
 
     InitStrings();
     test1();

@@ -1,4 +1,4 @@
-/* $Id: tstTime-3.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstTime-3.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime test.
  */
@@ -72,7 +72,7 @@ DECLINLINE(uint64_t) OSNanoTS(void)
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitAndSUPLib();
 
     if (argc <= 1)
     {

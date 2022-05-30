@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -667,7 +667,7 @@ int main(int argc, char **argv)
     /*
      * Init the runtime and parse the arguments.
      */
-    RTR3Init(false, 0);
+    RTR3Init();
 
     static RTOPTIONDEF const s_aOptions[] =
     {

@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 11181 2008-08-06 15:43:09Z vboxsync $ */
+/* $Id: tstCollector.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 
 /** @file
  *
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
      * Initialize the VBox runtime without loading
      * the support driver.
      */
-    int rc = RTR3Init(false);
+    int rc = RTR3Init();
     if (RT_FAILURE(rc))
     {
         RTPrintf("tstCollector: RTR3Init() -> %d\n", rc);

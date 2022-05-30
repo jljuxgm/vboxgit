@@ -1,4 +1,4 @@
-/* $Id: tstThread-1.cpp 10794 2008-07-21 22:34:16Z vboxsync $ */
+/* $Id: tstThread-1.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - Thread Testcase no.1.
  */
@@ -53,7 +53,7 @@ static DECLCALLBACK(int) tstThread1ReturnImmediately(RTTHREAD Thread, void *pvUs
 
 int main(int argc, const char * const *argv)
 {
-    RTR3Init(false, 0);
+    RTR3Init();
 
     /*
      * A simple testcase for the termination race we used to have.

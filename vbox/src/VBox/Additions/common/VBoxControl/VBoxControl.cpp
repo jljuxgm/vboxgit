@@ -1,4 +1,4 @@
-/** $Id: VBoxControl.cpp 11563 2008-08-21 23:13:47Z vboxsync $ */
+/** $Id: VBoxControl.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface
  */
@@ -539,7 +539,7 @@ int handleSetVideoMode(int argc, char *argv[])
         else VBoxControlError("Error retrieving API for display change!");
     }
     else VBoxControlError("Error retrieving handle to user32.dll!");
-    
+
     return 0;
 }
 
@@ -862,7 +862,7 @@ int handleRemoveCustomMode(int argc, char *argv[])
         writeCustomModes(hkeyVideo);
         RegCloseKey(hkeyVideo);
     }
-    
+
     return 0;
 }
 
@@ -1222,7 +1222,7 @@ int main(int argc, char **argv)
 
     if (!onlyinfo)
     {
-        rrc = RTR3Init(false, 0);
+        rrc = RTR3Init(); /** @todo r=bird: This ALWAYS goes first, the only exception is when you have to parse args to figure out which to call! */
         if (!RT_SUCCESS(rrc))
         {
             VBoxControlError("Failed to initialise the VirtualBox runtime - error %Rrc\n", rrc);

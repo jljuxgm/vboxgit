@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstVMM.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 {
     int     rcRet = 0;                  /* error count. */
 
-    RTR3Init();
+    RTR3InitAndSUPLib();
 
     /*
      * Create empty VM.

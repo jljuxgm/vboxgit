@@ -1,4 +1,4 @@
-/* $Id: tstSemMutex.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstSemMutex.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple Semaphore Smoke Test.
  */
@@ -207,7 +207,7 @@ static int Test1(unsigned cThreads, unsigned cSeconds, bool fYield, bool fQuiet)
 
 int main(int argc, char **argv)
 {
-    int rc = RTR3Init(false, 0);
+    int rc = RTR3Init();
     if (RT_FAILURE(rc))
     {
         RTPrintf("tstSemMutex: RTR3Init failed (rc=%Rrc)\n", rc);

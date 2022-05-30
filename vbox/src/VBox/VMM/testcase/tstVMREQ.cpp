@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -218,7 +218,7 @@ static DECLCALLBACK(int) Thread(RTTHREAD Thread, void *pvUser)
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitAndSUPLib();
     RTPrintf(TESTCASE ": TESTING...\n");
 
     /*

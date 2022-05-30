@@ -1,4 +1,4 @@
-/* $Id: tstMemAutoPtr.cpp 11024 2008-07-31 00:12:57Z vboxsync $ */
+/* $Id: tstMemAutoPtr.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * IPRT - Testcase the RTMemAutoPtr template.
  */
@@ -128,7 +128,7 @@ void *tstMemAutoPtrAllocatorNoZero(void *pvOld, size_t cbNew)
 
 int main()
 {
-    RTR3Init(false);
+    RTR3Init();
     RTPrintf("tstMemAutoPtr: TESTING...\n");
 
 #define CHECK_EXPR(expr) \

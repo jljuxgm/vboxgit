@@ -1,4 +1,4 @@
-/* $Id: tstRunTestcases.cpp 11421 2008-08-14 12:06:14Z vboxsync $ */
+/* $Id: tstRunTestcases.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * tstRunTescases - Driver program for running VBox testcase (tst* testcase/tst*).
  */
@@ -255,7 +255,7 @@ static void Process(const char *pszFilter, const char *pszDir)
 
 int main(int argc, char **argv)
 {
-    RTR3Init(false, 0);
+    RTR3Init();
 
     if (argc == 1)
     {

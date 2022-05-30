@@ -1,4 +1,4 @@
-/* $Id: tstTime-4.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstTime-4.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime vs. RTTimeSystem test.
  */
@@ -43,11 +43,11 @@ int main()
 {
     unsigned cErrors = 0;
 
-    RTR3Init();
+    RTR3InitAndSUPLib();
     RTPrintf("tstTime-4: TESTING...\n");
 
     /*
-     * Check that RTTimeSystemNanoTS doesn't go backwards and 
+     * Check that RTTimeSystemNanoTS doesn't go backwards and
      * isn't too far from RTTimeNanoTS().
      */
     RTTimeSystemNanoTS(); RTTimeNanoTS(); RTThreadYield(); /* warmup */
