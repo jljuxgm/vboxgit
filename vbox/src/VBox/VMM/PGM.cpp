@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 16794 2009-02-16 14:40:47Z vboxsync $ */
+/* $Id: PGM.cpp 16801 2009-02-16 17:01:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2002,6 +2002,10 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     pVM->pgm.s.pGstPaePdptRC += offDelta;
 #ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
     pVM->pgm.s.pShwPaePdptRC += offDelta;
+#endif
+
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+    pVM->pgm.s.pShwPageCR3RC += offDelta;
 #endif
 
     pgmR3ModeDataInit(pVM, true /* resolve GC/R0 symbols */);
