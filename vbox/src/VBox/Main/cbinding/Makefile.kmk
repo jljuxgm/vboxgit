@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16483 2009-02-03 10:52:11Z vboxsync $
+# $Id: Makefile.kmk 16497 2009-02-04 07:56:07Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -58,7 +58,7 @@ ifndef VBOX_ONLY_SDK
  VBoxXPCOMC_TEMPLATE = VBOXMAINDLL
  VBoxXPCOMC_DEFS = MOZ_UNICODE IN_VBOXXPCOMC
  VBoxXPCOMC_SOURCES = \
- 	libXPCOMtoC.cpp
+ 	VBoxXPCOMC.cpp
 
  ifdef VBOX_WITH_TESTCASES
   #
