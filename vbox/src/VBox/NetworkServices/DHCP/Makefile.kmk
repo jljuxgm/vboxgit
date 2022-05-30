@@ -1,4 +1,4 @@
- # $Id: Makefile.kmk 17678 2009-03-11 11:19:47Z vboxsync $
+ # $Id: Makefile.kmk 17782 2009-03-12 23:59:35Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxNetDHCP.
 #
@@ -51,7 +51,9 @@ VBoxNetDHCP_INCS = \
 	../UDPLib
 VBoxNetDHCP_SOURCES = \
 	VBoxNetDHCP.cpp \
-	../UDPLib/VBoxNetUDP.cpp
+	../NetLib/VBoxNetIntIf.cpp \
+	../NetLib/VBoxNetUDP.cpp \
+	../NetLib/VBoxNetARP.cpp
 VBoxNetDHCP_LIBS = \
 	$(LIB_RUNTIME)
 
