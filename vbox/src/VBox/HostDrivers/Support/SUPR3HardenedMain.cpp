@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 12112 2008-09-04 22:13:31Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 12114 2008-09-04 23:22:29Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -675,7 +675,7 @@ DECLHIDDEN(int) SUPR3HardenedMain(const char *pszProgName, uint32_t fFlags, int 
        OS X 10.4, libc emulates it. While 10.4 have a sligtly different and
        non-standard setuid implementation compared to 10.5, the following
        works the same way with both version since we're super user (10.5 req).
-       So, the following will set all three variants of the group and user ids. */
+       The following will set all three variants of the group and user IDs. */
     setgid(gid);
     setuid(uid);
     euid = geteuid();
