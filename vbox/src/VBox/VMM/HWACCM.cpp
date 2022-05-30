@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 17292 2009-03-03 15:31:32Z vboxsync $ */
+/* $Id: HWACCM.cpp 17293 2009-03-03 15:35:41Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1217,7 +1217,7 @@ VMMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
     Assert(pVM->fHWACCMEnabled);
 
     if (    RT_UNLIKELY(pVCpu->hwaccm.s.EmulateIoBlock.fEnabled)
-        &&  pCtx->rsp < pVCpu->hwaccm.s.EmulateIoBlock.GCPtrFunctionEsp)
+        &&  pCtx->rsp <= pVCpu->hwaccm.s.EmulateIoBlock.GCPtrFunctionEsp)
         return false;
 
     pVCpu->hwaccm.s.EmulateIoBlock.fEnabled = false;
