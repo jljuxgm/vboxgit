@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 13847 2008-11-05 10:48:31Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 13860 2008-11-05 13:52:29Z vboxsync $ */
 
 /** @file
  *
@@ -1519,7 +1519,7 @@ DECLCALLBACK(int) ConsoleVRDPServer::ClipboardServiceExtension (void *pvExtensio
     {
         case VBOX_CLIPBOARD_EXT_FN_SET_CALLBACK:
         {
-            pServer->mpfnClipboardCallback = (PFNVRDPCLIPBOARDEXTCALLBACK)pParms->u.pfnCallback;
+            pServer->mpfnClipboardCallback = pParms->u.pfnCallback;
         } break;
 
         case VBOX_CLIPBOARD_EXT_FN_FORMAT_ANNOUNCE:
