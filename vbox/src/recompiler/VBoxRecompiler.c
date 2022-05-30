@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13565 2008-10-24 17:48:59Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 13708 2008-10-31 10:26:14Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -729,6 +729,8 @@ REMR3DECL(int) REMR3BreakpointClear(PVM pVM, RTGCUINTPTR Address)
  */
 REMR3DECL(int) REMR3EmulateInstruction(PVM pVM)
 {
+    bool fFlushTBs;
+
     Log2(("REMR3EmulateInstruction: (cs:eip=%04x:%08x)\n", CPUMGetGuestCS(pVM), CPUMGetGuestEIP(pVM)));
 
     /* Make sure this flag is set; we might never execute remR3CanExecuteRaw in the AMD-V case.
@@ -737,10 +739,15 @@ REMR3DECL(int) REMR3EmulateInstruction(PVM pVM)
     if (HWACCMIsEnabled(pVM))
         pVM->rem.s.Env.state |= CPU_RAW_HWACC;
 
+    /* Skip the TB flush as that's rather expensive and not necessary for single instruction emulation. */
+    fFlushTBs = pVM->rem.s.fFlushTBs;
+    pVM->rem.s.fFlushTBs = false;
+
     /*
      * Sync the state and enable single instruction / single stepping.
      */
     int rc = REMR3State(pVM);
+    pVM->rem.s.fFlushTBs = fFlushTBs;
     if (VBOX_SUCCESS(rc))
     {
         int interrupt_request = pVM->rem.s.Env.interrupt_request;

@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13652 2008-10-29 14:16:35Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 13708 2008-10-31 10:26:14Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -730,10 +730,15 @@ REMR3DECL(int) REMR3EmulateInstruction(PVM pVM)
     if (HWACCMIsEnabled(pVM))
         pVM->rem.s.Env.state |= CPU_RAW_HWACC;
 
+    /* Skip the TB flush as that's rather expensive and not necessary for single instruction emulation. */
+    fFlushTBs = pVM->rem.s.fFlushTBs;
+    pVM->rem.s.fFlushTBs = false;
+
     /*
      * Sync the state and enable single instruction / single stepping.
      */
     rc = REMR3State(pVM);
+    pVM->rem.s.fFlushTBs = fFlushTBs;
     if (VBOX_SUCCESS(rc))
     {
         int interrupt_request = pVM->rem.s.Env.interrupt_request;
