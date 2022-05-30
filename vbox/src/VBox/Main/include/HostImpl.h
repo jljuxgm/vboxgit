@@ -1,10 +1,10 @@
-/* $Id: HostImpl.h 17200 2009-02-27 12:48:14Z vboxsync $ */
+/* $Id: HostImpl.h 17218 2009-02-27 18:02:48Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
 
 /*
- * Copyright (C) 2006-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2007 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -80,7 +80,7 @@ public:
     void uninit();
 
     // IHost properties
-    STDMETHOD(COMGETTER(DVDDrives))(ComSafeArrayOut (IHostDVDDrive*, drives));
+    STDMETHOD(COMGETTER(DVDDrives))(IHostDVDDriveCollection **drives);
     STDMETHOD(COMGETTER(FloppyDrives))(IHostFloppyDriveCollection **drives);
     STDMETHOD(COMGETTER(USBDevices))(IHostUSBDeviceCollection **aUSBDevices);
     STDMETHOD(COMGETTER(USBDeviceFilters))(IHostUSBDeviceFilterCollection ** aUSBDeviceFilters);
@@ -110,7 +110,6 @@ public:
     STDMETHOD(InsertUSBDeviceFilter) (ULONG aPosition, IHostUSBDeviceFilter *aFilter);
     STDMETHOD(RemoveUSBDeviceFilter) (ULONG aPosition, IHostUSBDeviceFilter **aFilter);
 
-    STDMETHOD(FindHostDVDDrive) (IN_BSTR aName, IHostDVDDrive **aDrive);
     STDMETHOD(FindHostNetworkInterfaceByName) (IN_BSTR aName, IHostNetworkInterface **networkInterface);
     STDMETHOD(FindHostNetworkInterfaceById) (IN_GUID id, IHostNetworkInterface **networkInterface);
 
