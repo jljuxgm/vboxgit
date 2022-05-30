@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 14065 2008-11-10 23:29:48Z vboxsync $ */
+/* $Id: path-win.cpp 15755 2008-12-25 10:53:52Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -117,6 +117,19 @@ RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, size_t cchAbsPath)
         rc = VERR_FILENAME_TOO_LONG;
 
     RTUtf16Free(pwszPath);
+
+    if (RT_SUCCESS(rc))
+    {
+        /*
+         * Remove trailing slash if the path may be pointing to a directory.
+         */
+        size_t cch = strlen(pszAbsPath);
+        if (    cch > 1
+            &&  RTPATH_IS_SLASH(pszAbsPath[cch - 1])
+            &&  !RTPATH_IS_VOLSEP(pszAbsPath[cch - 2])
+            &&  !RTPATH_IS_SLASH(pszAbsPath[cch - 2]))
+            pszAbsPath[cch - 1] = '\0';
+    }
 
     return rc;
 }
