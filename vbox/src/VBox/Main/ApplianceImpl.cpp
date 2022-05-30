@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16668 2009-02-11 14:12:11Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16702 2009-02-12 10:20:52Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -1678,6 +1678,9 @@ DECLCALLBACK(int) Appliance::taskThread(RTTHREAD aThread, void *pvUser)
     /// @todo ugly hack, fix ComAssert... (same as in HardDisk2::taskThread)
     #define setError app->setError
 
+    LogFlowFuncEnter();
+    LogFlowFunc(("Appliance %p\n", app));
+
     AutoCaller autoCaller(app);
     CheckComRCReturnRC(autoCaller.rc());
 
@@ -2154,6 +2157,9 @@ DECLCALLBACK(int) Appliance::taskThread(RTTHREAD aThread, void *pvUser)
 
     if (!task->progress.isNull())
         task->progress->notifyComplete (rc);
+
+    LogFlowFunc(("rc=%Rhrc\n", rc));
+    LogFlowFuncLeave();
 
     /// @todo ugly hack, fix ComAssert... (same as in HardDisk2::taskThread)
     #undef setError
