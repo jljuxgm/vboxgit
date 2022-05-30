@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 12597 2008-09-19 11:46:06Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 12656 2008-09-22 17:08:10Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -153,11 +153,11 @@ typedef struct VBOXNETFLTINS
             /** @name Solaris instance data.
              * @{ */
             /** Pointer to the bound IP stream. */
-            void *pvIpStream;
+            void volatile *pvIpStream;
             /** Pointer to the bound ARP stream. */
-            void *pvArpStream;
+            void volatile *pvArpStream;
             /** Pointer to the unbound promiscuous stream. */
-            void *pvPromiscStream;
+            void volatile *pvPromiscStream;
             /** Layered device handle to the interface. */
             ldi_handle_t hIface;
             /** The MAC address of the interface. */
