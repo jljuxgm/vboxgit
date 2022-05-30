@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 15586 2008-12-16 14:03:43Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 15642 2008-12-18 11:09:00Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -366,26 +366,6 @@ void darwinDisableIconsInMenus()
     /* Available since Qt 4.4 only */
     QApplication::instance()->setAttribute (Qt::AA_DontShowIconsInMenus, true);
 #endif /* QT_VERSION >= 0x040400 */
-}
-
-
-void darwinEnableAsyncDragForWindow (QWidget *aWindow)
-{
-    /* Disabled for now, cause we didn't get any move events anymore. */
-//    WindowAttributes waGet;
-//    WindowAttributes waSet = kWindowAsyncDragAttribute | kWindowLiveResizeAttribute;
-//    GetWindowAttributes (::darwinToWindowRef (aWindow), &waGet);
-//    if ((waGet & kWindowResizableAttribute) != kWindowResizableAttribute)
-//        waSet |= kWindowResizableAttribute;
-//    ChangeWindowAttributes (::darwinToWindowRef (aWindow), waSet, kWindowNoAttributes);
-    /* Not working yet : */
-//    ReshapeCustomWindow(::darwinToWindowRef (aWindow));
-//    QMainWindow *mw = qobject_cast<QMainWindow *> (aWindow);
-//    if (mw)
-//    {
-//        aWindow->setAttribute (Qt::WA_MacOpaqueSizeGrip, false);
-//        mw->statusBar()->setSizeGripEnabled (true);
-//    }
 }
 
 /* Currently not used! */
