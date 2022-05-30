@@ -1,4 +1,4 @@
-/* $Id: VRDPServerImpl.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VRDPServerImpl.h 12126 2008-09-05 12:28:36Z vboxsync $ */
 
 /** @file
  *
@@ -48,7 +48,8 @@ public:
                     mVRDPAddress == that.mVRDPAddress &&
                     mAuthType == that.mAuthType &&
                     mAuthTimeout == that.mAuthTimeout &&
-                    mAllowMultiConnection == that.mAllowMultiConnection);
+                    mAllowMultiConnection == that.mAllowMultiConnection &&
+                    mReuseSingleConnection == that.mReuseSingleConnection);
         }
 
         BOOL mEnabled;
@@ -57,6 +58,7 @@ public:
         VRDPAuthType_T mAuthType;
         ULONG mAuthTimeout;
         BOOL mAllowMultiConnection;
+        BOOL mReuseSingleConnection;
     };
 
     VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (VRDPServer)
@@ -96,6 +98,8 @@ public:
     STDMETHOD(COMSETTER(AuthTimeout)) (ULONG aTimeout);
     STDMETHOD(COMGETTER(AllowMultiConnection)) (BOOL *aAllowMultiConnection);
     STDMETHOD(COMSETTER(AllowMultiConnection)) (BOOL aAllowMultiConnection);
+    STDMETHOD(COMGETTER(ReuseSingleConnection)) (BOOL *aReuseSingleConnection);
+    STDMETHOD(COMSETTER(ReuseSingleConnection)) (BOOL aReuseSingleConnection);
 
     // IVRDPServer methods
 
