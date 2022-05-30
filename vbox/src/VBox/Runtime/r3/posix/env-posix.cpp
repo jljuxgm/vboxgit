@@ -1,4 +1,4 @@
-/* $Id: env-posix.cpp 16522 2009-02-05 05:56:11Z vboxsync $ */
+/* $Id: env-posix.cpp 16523 2009-02-05 06:14:48Z vboxsync $ */
 /** @file
  * IPRT - Environment, Posix.
  */
@@ -111,7 +111,7 @@ RTDECL(int) RTEnvUnset(const char *pszVar)
         return VINF_SUCCESS;
 #else
     /* This is the preferred function as putenv() like used above does neither work on Solaris nor on Darwin. */
-    if (unsetenv((char*)pszVar) == 0)
+    if (!unsetenv((char*)pszVar))
         return VINF_SUCCESS;
 #endif
 
