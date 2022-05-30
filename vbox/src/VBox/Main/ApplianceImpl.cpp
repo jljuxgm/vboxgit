@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17871 2009-03-14 16:56:14Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17873 2009-03-14 18:32:01Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3047,7 +3047,7 @@ DECLCALLBACK(int) Appliance::taskThreadWriteOVF(RTTHREAD aThread, void *pvUser)
             pelmDisk->setAttribute("ovf:capacity", Utf8StrFmt("%RI64", cbCapacity).c_str());
             pelmDisk->setAttribute("ovf:diskId", strDiskID);
             pelmDisk->setAttribute("ovf:fileRef", strFileRef);
-            pelmDisk->setAttribute("ovf:format", "http://www.vmware.com/specifications/vmdk.html#sparse");
+            pelmDisk->setAttribute("ovf:format", "http://www.vmware.com/specifications/vmdk.html#compressed");
         }
 
         // now go write the XML
