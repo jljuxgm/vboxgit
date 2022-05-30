@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 16113 2009-01-21 09:08:29Z vboxsync $ */
+/* $Id: CPUMR0.cpp 16119 2009-01-21 10:19:34Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -329,7 +329,7 @@ VMMR0DECL(int) CPUMR0SaveGuestFPU(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 #endif /* CPUM_CAN_HANDLE_NM_TRAPS_IN_KERNEL_MODE */
     }
 
-    pVCpu->cpum.s.fUseFlags &= ~(CPUM_USED_FPU | CPUM_MANUAL_XMM_RESTORE);
+    pVCpu->cpum.s.fUseFlags &= ~(CPUM_USED_FPU | CPUM_SYNC_FPU_STATE | CPUM_MANUAL_XMM_RESTORE);
     return VINF_SUCCESS;
 }
 

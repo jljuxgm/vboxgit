@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 15989 2009-01-16 10:55:12Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 16119 2009-01-21 10:19:34Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1024,6 +1024,7 @@ VMMR0DECL(int) HWACCMR0Leave(PVM pVM, PVMCPU pVCpu)
         CPUMR0SaveGuestFPU(pVM, pVCpu, pCtx);
 
         pVCpu->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_GUEST_CR0;
+        Assert(!CPUMIsGuestFPUStateActive(pVCpu));
     }
 
     rc = HWACCMR0Globals.pfnLeaveSession(pVM, pVCpu, pCtx);
