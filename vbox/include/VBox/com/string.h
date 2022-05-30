@@ -1,4 +1,4 @@
-/* $Id: string.h 17742 2009-03-12 13:12:10Z vboxsync $ */
+/* $Id: string.h 17745 2009-03-12 13:28:22Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -472,6 +472,9 @@ public:
 
     bool endsWith (const Utf8Str &that, CaseSensitivity cs = CaseSensitive) const
     {
+        if (isNull() || that.isNull())
+            return false;
+
         if (length() < that.length())
             return false;
 
@@ -484,6 +487,9 @@ public:
 
     bool startsWith (const Utf8Str &that, CaseSensitivity cs = CaseSensitive) const
     {
+        if (isNull() || that.isNull())
+            return false;
+
         if (length() < that.length())
             return false;
 
