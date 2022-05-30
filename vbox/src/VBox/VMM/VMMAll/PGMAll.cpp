@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 16918 2009-02-18 15:58:38Z vboxsync $ */
+/* $Id: PGMAll.cpp 17030 2009-02-23 16:22:08Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2165,8 +2165,8 @@ VMMDECL(int) PGMDynMapHCPage(PVM pVM, RTHCPHYS HCPhys, void **ppv)
             { 4, 5, 6, 3 },
             { 4, 5, 6, 7 },
         };
-        Assert(RT_ELEMENTS(au8Trans) == 8);
-        Assert(RT_ELEMENTS(au8Trans[0]) == 4);
+        AssertCompile(RT_ELEMENTS(au8Trans) == 8);
+        AssertCompile(RT_ELEMENTS(au8Trans[0]) == 4);
         int iPage = au8Trans[pVM->pgm.s.iDynPageMapLast][iCache];
         void *pv = pVM->pgm.s.pbDynPageMapBaseGC + (iPage << PAGE_SHIFT);
         *ppv = pv;
