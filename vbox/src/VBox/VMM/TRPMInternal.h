@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: TRPMInternal.h 13596 2008-10-27 18:55:55Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -97,13 +97,13 @@ typedef struct TRPM
     TRPMEVENT       enmActiveType;
 
     /** Errorcode for the active interrupt/trap. */
-    RTGCUINT        uActiveErrorCode;
+    RTGCUINT        uActiveErrorCode; /**< @todo don't use RTGCUINT */
 
     /** CR2 at the time of the active exception. */
     RTGCUINTPTR     uActiveCR2;
 
     /** Saved trap vector number. */
-    RTGCUINT        uSavedVector;
+    RTGCUINT        uSavedVector; /**< @todo don't use RTGCUINT */
 
     /** Saved trap type. */
     TRPMEVENT       enmSavedType;
