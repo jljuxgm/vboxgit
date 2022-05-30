@@ -1,4 +1,4 @@
-/* $Id: init.cpp 11841 2008-08-29 18:00:13Z vboxsync $ */
+/* $Id: init.cpp 11842 2008-08-29 18:02:56Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -276,7 +276,7 @@ RTR3DECL(int) RTR3Init(void)
 RTR3DECL(int) RTR3InitEx(uint32_t iVersion, const char *pszProgramPath, bool fInitSUPLib)
 {
     AssertReturn(iVersion == 0, VERR_NOT_SUPPORTED);
-    return rtR3Init(pszProgramPath, fInitSUPLib);
+    return rtR3Init(fInitSUPLib, pszProgramPath);
 }
 
 
