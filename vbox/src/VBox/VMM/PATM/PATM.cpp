@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: PATM.cpp 11925 2008-09-01 15:03:24Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -81,7 +81,6 @@ static void         patmPrintStat(PVM pVM, void *pvSample, char *pszBuf, size_t 
 
 static int               patmReinit(PVM pVM);
 static DECLCALLBACK(int) RelocatePatches(PAVLOU32NODECORE pNode, void *pParam);
-static DECLCALLBACK(int) patmVirtPageHandler(PVM pVM, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType, void *pvUser);
 
 #ifdef VBOX_WITH_DEBUGGER
 static DECLCALLBACK(int) DisableAllPatches(PAVLOU32NODECORE pNode, void *pVM);
@@ -818,7 +817,7 @@ static DECLCALLBACK(int) RelocatePatches(PAVLOU32NODECORE pNode, void *pParam)
  * @param   enmAccessType   The access type.
  * @param   pvUser          User argument.
  */
-static DECLCALLBACK(int) patmVirtPageHandler(PVM pVM, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType, void *pvUser)
+DECLCALLBACK(int) patmVirtPageHandler(PVM pVM, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType, void *pvUser)
 {
     Assert(enmAccessType == PGMACCESSTYPE_WRITE);
     /** @todo could be the wrong virtual address (alias) */

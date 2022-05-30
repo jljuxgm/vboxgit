@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 11070 2008-08-01 17:05:56Z vboxsync $ */
+/* $Id: PATMInternal.h 11925 2008-09-01 15:03:24Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -27,6 +27,7 @@
 #include <VBox/patm.h>
 #include <VBox/stam.h>
 #include <VBox/dis.h>
+#include <VBox/pgm.h>
 #include <iprt/avl.h>
 #include <iprt/param.h>
 #include <VBox/log.h>
@@ -520,6 +521,7 @@ typedef struct PATM
  */
 DECLCALLBACK(int) patmr3Save(PVM pVM, PSSMHANDLE pSSM);
 
+DECLCALLBACK(int) patmVirtPageHandler(PVM pVM, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType, void *pvUser);
 
 /**
  * Execute state load operation.
