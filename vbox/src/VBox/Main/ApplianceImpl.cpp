@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17417 2009-03-05 16:39:39Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17418 2009-03-05 16:48:30Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2569,7 +2569,7 @@ DECLCALLBACK(int) Appliance::taskThreadExportOVF(RTTHREAD aThread, void *pvUser)
             {
                 const VirtualSystemDescriptionEntry &desc = *itD;
 
-                OVFResourceType_T type = 0;     // if this becomes != 0 then we do stuff
+                OVFResourceType_T type = (OVFResourceType_T)0;     // if this becomes != 0 then we do stuff
                 Utf8Str strDescription;         // must also be set then
                 int32_t lVirtualQuantity = -1;
                 uint64_t uTemp;
@@ -2603,7 +2603,7 @@ DECLCALLBACK(int) Appliance::taskThreadExportOVF(RTTHREAD aThread, void *pvUser)
                         strDescription = "Memory Size";
                         type = OVFResourceType_Memory; // 4
                         desc.strVbox.toInt(uTemp);
-                        lVirtualQuantity = uTemp / _1M;
+                        lVirtualQuantity = (int32_t)(uTemp / _1M);
                     break;
 
                     case VirtualSystemDescriptionType_HardDiskControllerIDE:
