@@ -1,4 +1,4 @@
-/* $Revision: 14575 $ */
+/* $Revision: 14798 $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -187,7 +187,7 @@ typedef SUPREQHDR *PSUPREQHDR;
  *          - Remove SUPR0PageAlloc in favor of SUPR0PageAllocEx, removing
  *            and renaming the related IOCtls too.
  */
-#define SUPDRV_IOC_VERSION                              0x000a0004
+#define SUPDRV_IOC_VERSION                              0x000a0005
 
 /** SUP_IOCTL_COOKIE. */
 typedef struct SUPCOOKIE
