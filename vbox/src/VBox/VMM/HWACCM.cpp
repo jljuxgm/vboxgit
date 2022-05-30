@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 13532 2008-10-23 12:39:48Z vboxsync $ */
+/* $Id: HWACCM.cpp 13542 2008-10-23 16:25:44Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1039,6 +1039,16 @@ VMMR3DECL(void) HWACCMR3CheckError(PVM pVM, int iStatusCode)
     case VERR_VMX_INVALID_VMCS_PTR:
         LogRel(("VERR_VMX_INVALID_VMCS_PTR: Current pointer %VGp vs %VGp\n", pVM->hwaccm.s.vmx.lasterror.u64VMCSPhys, pVM->hwaccm.s.vmx.pVMCSPhys));
         LogRel(("VERR_VMX_INVALID_VMCS_PTR: Current VMCS version %x\n", pVM->hwaccm.s.vmx.lasterror.ulVMCSRevision));
+        break;
+
+    case VERR_VMX_UNABLE_TO_START_VM:
+        LogRel(("VERR_VMX_UNABLE_TO_START_VM: instruction error %x\n", pVM->hwaccm.s.vmx.lasterror.ulLastInstrError));
+        LogRel(("VERR_VMX_UNABLE_TO_START_VM: exit reason       %x\n", pVM->hwaccm.s.vmx.lasterror.ulLastExitReason));
+        break;
+
+    case VERR_VMX_UNABLE_TO_RESUME_VM:
+        LogRel(("VERR_VMX_UNABLE_TO_RESUME_VM: instruction error %x\n", pVM->hwaccm.s.vmx.lasterror.ulLastInstrError));
+        LogRel(("VERR_VMX_UNABLE_TO_RESUME_VM: exit reason       %x\n", pVM->hwaccm.s.vmx.lasterror.ulLastExitReason));
         break;
 
     case VERR_VMX_INVALID_VMXON_PTR:

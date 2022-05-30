@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13533 2008-10-23 13:00:28Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13542 2008-10-23 16:25:44Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -351,6 +351,8 @@ typedef struct HWACCM
         {
             uint64_t                u64VMCSPhys;
             uint32_t                ulVMCSRevision;
+            uint32_t                ulLastInstrError;
+            uint32_t                ulLastExitReason;
             uint32_t                padding;
         } lasterror;
     } vmx;
