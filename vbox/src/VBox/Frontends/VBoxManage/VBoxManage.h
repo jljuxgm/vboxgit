@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 17549 2009-03-09 06:27:25Z vboxsync $ */
+/* $Id: VBoxManage.h 17882 2009-03-15 10:20:05Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -88,6 +88,7 @@
 #define USAGE_IMPORTAPPLIANCE       RT_BIT_64(44)
 #define USAGE_EXPORTAPPLIANCE       RT_BIT_64(45)
 #define USAGE_HOSTONLYIFS           RT_BIT_64(46)
+#define USAGE_DHCPSERVER            RT_BIT_64(47)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
@@ -190,6 +191,9 @@ int handleUSBFilter(HandlerArg *a);
 
 /* VBoxManageHostonly.cpp */
 int handleHostonlyIf(HandlerArg *a);
+
+/* VBoxManageHostonly.cpp */
+int handleDhcpServer(HandlerArg *a);
 
 #endif /* !VBOX_ONLY_DOCS */
 unsigned long VBoxSVNRev();
