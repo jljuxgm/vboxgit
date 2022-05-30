@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15708 2008-12-19 18:28:27Z vboxsync $
+# $Id: Makefile.kmk 16016 2009-01-18 00:25:10Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -328,6 +328,7 @@ ifdef VBOX_WITH_RESOURCE_USAGE_API
  	PerformanceImpl.cpp \
  	Performance.cpp
  VBoxSVC_SOURCES.darwin  +=  darwin/PerformanceDarwin.cpp
+ VBoxSVC_SOURCES.freebsd += freebsd/PerformanceFreeBSD.cpp
  VBoxSVC_SOURCES.linux   +=   linux/PerformanceLinux.cpp
  VBoxSVC_SOURCES.os2     +=     os2/PerformanceOs2.cpp
  VBoxSVC_SOURCES.solaris += solaris/PerformanceSolaris.cpp

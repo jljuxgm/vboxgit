@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 16005 2009-01-16 21:48:26Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 16016 2009-01-18 00:25:10Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1514,6 +1514,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                     }
 #elif defined(RT_OS_LINUX)
 /// @todo aleksey: is there anything to be done here?
+#elif defined(RT_OS_FREEBSD)
+/** @todo FreeBSD: Check out this later (HIF networking). */
 #else
 # error "Port me"
 #endif
