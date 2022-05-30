@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15340 2008-12-11 21:51:13Z vboxsync $
+# $Id: Makefile.kmk 15341 2008-12-11 21:53:11Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -217,7 +217,6 @@ ifdef VBOX_USE_REM64
  VBoxREM32_EXTENDS    = VBoxREM
  VBoxREM32_EXTENDS_BY = appending
  VBoxREM32_TEMPLATE   = $(VBoxREM_TEMPLATE)
- VBoxREM32_NAME
  VBoxREM32_LDFLAGS.darwin = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxREM32.dylib
 
  DLLS += VBoxREM64
