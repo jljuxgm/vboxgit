@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 13791 2008-11-04 16:12:57Z vboxsync $ */
+/* $Id: VMInternal.h 16311 2009-01-28 13:46:41Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -399,7 +399,7 @@ typedef struct VMINTUSERPERVM
     /** Pointer to the DBGC instance data. */
     void                           *pvDBGC;
 
-    /* TLS index for the VMINTUSERPERVMCPU pointer. */
+    /** TLS index for the VMINTUSERPERVMCPU pointer. */
     RTTLS                           idxTLS;
 } VMINTUSERPERVM;
 
