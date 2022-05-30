@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12248 2008-09-09 01:21:58Z vboxsync $
+# $Id: Makefile.kmk 12964 2008-10-02 22:25:43Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -98,7 +98,6 @@ VMMR3_SOURCES   = \
 	VMMAll/MMAll.cpp \
 	VMMAll/MMAllHyper.cpp \
 	VMMAll/MMAllPagePool.cpp \
-	VMMAll/MMAllPhys.cpp \
 	VMMAll/PDMAll.cpp \
 	VMMAll/PDMAllCritSect.cpp \
 	VMMAll/PDMAllQueue.cpp \
@@ -384,7 +383,6 @@ VMMR0_SOURCES   = \
 	VMMAll/MMAll.cpp \
 	VMMAll/MMAllHyper.cpp \
 	VMMAll/MMAllPagePool.cpp \
-	VMMAll/MMAllPhys.cpp \
 	VMMAll/PDMAll.cpp \
 	VMMAll/PDMAllCritSect.cpp \
 	VMMAll/PDMAllQueue.cpp \

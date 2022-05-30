@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 12902 2008-10-02 08:52:44Z vboxsync $ */
+/* $Id: PGM.cpp 12964 2008-10-02 22:25:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2546,7 +2546,7 @@ static DECLCALLBACK(void) pgmR3InfoCr3(PVM pVM, PCDBGFINFOHLP pHlp, const char *
      */
     PX86PD     pPDSrc = pVM->pgm.s.pGuestPDHC;
     Assert(pPDSrc);
-    Assert(MMPhysGCPhys2HCVirt(pVM, (RTGCPHYS)(CPUMGetGuestCR3(pVM) & X86_CR3_PAGE_MASK), sizeof(*pPDSrc)) == pPDSrc);
+    Assert(PGMPhysGCPhys2HCPtrAssert(pVM, (RTGCPHYS)(CPUMGetGuestCR3(pVM) & X86_CR3_PAGE_MASK), sizeof(*pPDSrc)) == pPDSrc);
 
     /*
      * Iterate the page directory.
@@ -3237,7 +3237,7 @@ PGMR3DECL(int) PGMR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
      * switch shadow paging mode (e.g. protected->32-bit) and shouldn't reuse
      * the shadow page tables.
      *
-     * That only applies when switching between paging and non-paging modes. 
+     * That only applies when switching between paging and non-paging modes.
      *
      * @todo A20 setting
      */

@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 11570 2008-08-22 12:15:39Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 12964 2008-10-02 22:25:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -899,6 +899,24 @@ PGMDECL(int) PGMPhysGCPhys2HCPtr(PVM pVM, RTGCPHYS GCPhys, RTUINT cbRange, PRTHC
     else
         return VERR_PGM_PHYS_PAGE_RESERVED;
     return VINF_SUCCESS;
+}
+
+
+/**
+ * PGMPhysGCPhys2HCPtr convenience for use with assertions.
+ *
+ * @returns The HCPtr, NIL_RTHCPTR on failure.
+ * @param   pVM         The VM handle.
+ * @param   GCPhys      The GC Physical addresss.
+ * @param   cbRange     Physical range.
+ */
+PGMDECL(RTHCPTR) PGMPhysGCPhys2HCPtrAssert(PVM pVM, RTGCPHYS GCPhys, RTUINT cbRange)
+{
+    RTHCPTR HCPtr;
+    int rc = PGMPhysGCPhys2HCPtr(pVM, GCPhys, cbRange, &HCPtr);
+    if (VBOX_SUCCESS(rc))
+        return HCPtr;
+    return NIL_RTHCPTR;
 }
 
 
