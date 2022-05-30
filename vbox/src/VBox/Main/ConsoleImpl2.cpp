@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 11814 2008-08-29 12:47:44Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 11827 2008-08-29 14:57:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1189,6 +1189,31 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                         rc = CFGMR3InsertInteger(pCfg, "FileHandle", pConsole->maTapFD[ulInstance]); RC_CHECK();
 # endif
                     }
+
+#elif defined(RT_OS_SOLARIS) && defined(VBOX_WITH_NETFLT)
+                    if (fSniffer)
+                    {
+                        rc = CFGMR3InsertNode(pLunL0, "AttachedDriver", &pLunL0);   RC_CHECK();
+                    }
+                    else
+                    {
+                        rc = CFGMR3InsertNode(pInst, "LUN#0", &pLunL0);             RC_CHECK();
+                    }
+
+                    /* The name is on the form BSD format 'ifX'; use as-is. */
+                    Bstr HifName;
+                    hrc = networkAdapter->COMGETTER(HostInterface)(HifName.asOutParam()); H();
+                    Utf8Str HifNameUtf8(HifName);
+                    const char *pszHifName = HifNameUtf8.raw();
+
+                    rc = CFGMR3InsertString(pLunL0, "Driver", "IntNet");            RC_CHECK();
+                    rc = CFGMR3InsertNode(pLunL0, "Config", &pCfg);                 RC_CHECK();
+                    rc = CFGMR3InsertString(pCfg, "Trunk", pszHifName);             RC_CHECK();
+                    rc = CFGMR3InsertInteger(pCfg, "TrunkType", kIntNetTrunkType_NetFlt); RC_CHECK();
+                    char szNetwork[80];
+                    RTStrPrintf(szNetwork, sizeof(szNetwork), "HostInterfaceNetworking-%s\n", pszHifName);
+                    rc = CFGMR3InsertString(pCfg, "Network", szNetwork);            RC_CHECK();
+                    /** @todo wireless (yeah right) */
 
 #elif defined(RT_OS_DARWIN)
                     if (fSniffer)
