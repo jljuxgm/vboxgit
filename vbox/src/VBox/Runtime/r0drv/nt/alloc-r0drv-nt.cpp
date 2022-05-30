@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-nt.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: alloc-r0drv-nt.cpp 14069 2008-11-10 23:39:34Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NT.
  */
@@ -49,8 +49,8 @@ PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
     {
         pHdr->u32Magic  = RTMEMHDR_MAGIC;
         pHdr->fFlags    = fFlags;
-        pHdr->cb        = cb;
-        pHdr->cbReq     = cb;
+        pHdr->cb        = (uint32_t)cb; Assert(pHdr->cb == cb);
+        pHdr->cbReq     = (uint32_t)cb;
     }
     return pHdr;
 }
