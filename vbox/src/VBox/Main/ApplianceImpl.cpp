@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16600 2009-02-09 16:29:25Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16601 2009-02-09 16:33:28Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -2146,32 +2146,8 @@ STDMETHODIMP VirtualSystemDescription::GetDescription(ComSafeArrayOut(VirtualSys
     return S_OK;
 }
 
-STDMETHODIMP VirtualSystemDescription::DisableItem(ULONG index)
-{
-    AutoCaller autoCaller(this);
-    CheckComRCReturnRC(autoCaller.rc());
-
-    AutoWriteLock alock(this);
-
-    list<VirtualSystemDescriptionEntry>::iterator it;
-    for (it = m->descriptions.begin();
-         it != m->descriptions.end();
-         ++it)
-    {
-        VirtualSystemDescriptionEntry &e = *it;
-        if (e.ulIndex == index)
-        {
-            e.type = VirtualSystemDescriptionType_Ignore;
-            return S_OK;
-        }
-    }
-
-    return setError(VBOX_E_OBJECT_NOT_FOUND,
-                    tr("Array item index %d not found"),
-                    index);
-}
-
-STDMETHODIMP VirtualSystemDescription::SetFinalValues(ComSafeArrayIn(IN_BSTR, aFinalValues))
+STDMETHODIMP VirtualSystemDescription::SetFinalValues(ComSafeArrayIn(BOOL, aEnabled),
+                                                      ComSafeArrayIn(IN_BSTR, aFinalValues))
 {
     CheckComArgSafeArrayNotNull(aFinalValues);
 
@@ -2191,7 +2167,11 @@ STDMETHODIMP VirtualSystemDescription::SetFinalValues(ComSafeArrayIn(IN_BSTR, aF
          ++it, ++i)
     {
         VirtualSystemDescriptionEntry& vsde = *it;
-        vsde.strConfig = values[i];
+
+        if (aEnabled[i])
+            vsde.strConfig = values[i];
+        else
+            vsde.type = VirtualSystemDescriptionType_Ignore;
     }
 
     return S_OK;
