@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17649 2009-03-10 18:57:00Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17650 2009-03-10 19:04:36Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1775,8 +1775,6 @@ int netIfNetworkInterfaceHelperServer (SVCHlpClient *aClient,
     LogFlowFunc (("aClient={%p}, aMsgCode=%d\n", aClient, aMsgCode));
 
     AssertReturn (aClient, VERR_INVALID_POINTER);
-
-    __asm {int 3};
 
     int vrc = VINF_SUCCESS;
 
