@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 15871 2009-01-08 15:27:46Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 15873 2009-01-08 16:14:42Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -64,6 +64,9 @@
 #  include <linux/capability.h>
 #  include <sys/capability.h>
 #  include <sys/prctl.h>
+#  ifndef CAP_TO_MASK
+#   define CAP_TO_MASK(cap) RT_BIT(cap)
+#  endif
 # elif defined(RT_OS_SOLARIS)
 #  include <priv.h>
 # endif
