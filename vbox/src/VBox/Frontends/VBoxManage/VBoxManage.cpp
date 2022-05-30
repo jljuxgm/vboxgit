@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 17382 2009-03-05 10:16:06Z vboxsync $ */
+/* $Id: VBoxManage.cpp 17419 2009-03-05 18:32:17Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1723,6 +1723,7 @@ int main(int argc, char *argv[])
         { "metrics",          handleMetrics },
         { "import",           handleImportAppliance },
         { "export",           handleExportAppliance },
+        { "hostonlyif",       handleHostonlyIf },
         { NULL,               NULL }
     };
 

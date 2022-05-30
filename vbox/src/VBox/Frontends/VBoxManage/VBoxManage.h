@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 17104 2009-02-24 23:18:45Z vboxsync $ */
+/* $Id: VBoxManage.h 17419 2009-03-05 18:32:17Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -186,6 +186,9 @@ int handleSnapshot(HandlerArg *a);
 
 /* VBoxManageUSB.cpp */
 int handleUSBFilter(HandlerArg *a);
+
+/* VBoxManageHostonly.cpp */
+int handleHostonlyIf(HandlerArg *a);
 
 #endif /* !VBOX_ONLY_DOCS */
 unsigned long VBoxSVNRev();
