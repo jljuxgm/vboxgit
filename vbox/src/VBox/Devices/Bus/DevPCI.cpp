@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 16245 2009-01-26 19:11:27Z vboxsync $ */
+/* $Id: DevPCI.cpp 16745 2009-02-13 15:53:00Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -911,9 +911,9 @@ static void pci_bios_init_device(PPCIGLOBALS pGlobals, uint8_t uBus, uint8_t uDe
         {
             case 0x0101:
                 if (   (vendor_id == 0x8086)
-                    && (device_id == 0x7010 || device_id == 0x7111))
+                    && (device_id == 0x7010 || device_id == 0x7111 || device_id == 0x269e))
                 {
-                    /* PIIX3 or PIIX4 IDE */
+                    /* PIIX3, PIIX4 or ICH6 IDE */
                     pci_config_writew(pGlobals, uBus, uDevFn, 0x40, 0x8000); /* enable IDE0 */
                     pci_config_writew(pGlobals, uBus, uDevFn, 0x42, 0x8000); /* enable IDE1 */
                     goto default_map;
