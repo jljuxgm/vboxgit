@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 13820 2008-11-05 00:55:49Z vboxsync $ */
+/* $Id: EM.cpp 13821 2008-11-05 01:07:25Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1212,7 +1212,7 @@ static int emR3RawExecuteInstructionWorker(PVM pVM, int rcGC)
      */
     if (PATMIsPatchGCAddr(pVM, pCtx->eip))
     {
-        Log(("emR3RawExecuteInstruction: In patch block. eip=%VRv\n", pCtx->eip));
+        Log(("emR3RawExecuteInstruction: In patch block. eip=%VRv\n", (RTRCPTR)pCtx->eip));
 
         RTGCPTR pNewEip;
         rc = PATMR3HandleTrap(pVM, pCtx, pCtx->eip, &pNewEip);
