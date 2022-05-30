@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 12407 2008-09-11 15:28:42Z vboxsync $ */
+/* $Id: PGM.cpp 12417 2008-09-12 11:45:24Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3249,6 +3249,7 @@ PGMR3DECL(int) PGMR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
      * @todo A20 setting
      */
     if (   pVM->pgm.s.CTXSUFF(pPool)
+        && !HWACCMIsNestedPagingActive(pVM)
         && PGMMODE_WITH_PAGING(pVM->pgm.s.enmGuestMode) != PGMMODE_WITH_PAGING(enmGuestMode))
     {
         Log(("PGMR3ChangeMode: changing guest paging mode -> flush pgm pool cache!\n"));
