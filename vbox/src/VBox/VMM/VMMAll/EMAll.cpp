@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 11764 2008-08-28 14:28:50Z vboxsync $ */
+/* $Id: EMAll.cpp 12121 2008-09-05 09:41:05Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2198,6 +2198,7 @@ EMDECL(int) EMInterpretDRxWrite(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRe
 
     if (VBOX_SUCCESS(rc))
     {
+        /* @todo: we don't fail if illegal bits are set/cleared for e.g. dr7 */
         rc = CPUMSetGuestDRx(pVM, DestRegDrx, val);
         if (VBOX_SUCCESS(rc))
             return rc;
