@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 13963 2008-11-07 14:58:24Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14009 2008-11-10 13:38:35Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -7223,7 +7223,8 @@ Snapshot 1 (B.vdi)            Snapshot 1 (B.vdi)
     <const name="None" value="0x00"/>
     <const name="Mandatory" value="0x01"/>
     <const name="Expert" value="0x02"/>
-    <const name="FlagMask" value="0x03"/>
+    <const name="Array" value="0x04"/>
+    <const name="FlagMask" value="0x07"/>
   </enum>
 
   <enum
