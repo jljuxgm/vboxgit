@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 17012 2009-02-23 12:31:14Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 17014 2009-02-23 12:43:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -218,7 +218,7 @@ VMMDECL(int)  PGMMapModifyPage(PVM pVM, RTGCPTR GCPtr, size_t cb, uint64_t fFlag
  */
 void pgmMapSetShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
 {
-    Log(("pgmMapSetShadowPDEs new pde %x (mappings enabled %d)\n", iNewPDE, pgmMapAreMappingsEnabled(&pVM->pgm.s)));
+    Log4(("pgmMapSetShadowPDEs new pde %x (mappings enabled %d)\n", iNewPDE, pgmMapAreMappingsEnabled(&pVM->pgm.s)));
 
     if (!pgmMapAreMappingsEnabled(&pVM->pgm.s))
         return;
@@ -542,7 +542,8 @@ VMMDECL(void) PGMMapCheck(PVM pVM)
  */
 VMMDECL(int) PGMMapActivateAll(PVM pVM)
 {
-    Log(("PGMMapActivateAll fixed mappings=%d\n", pVM->pgm.s.fMappingsFixed));
+    /* @note A log flush (in RC) can cause problems when called from MapCR3 (inconsistent state will trigger assertions). */
+    Log4(("PGMMapActivateAll fixed mappings=%d\n", pVM->pgm.s.fMappingsFixed));
 
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     /*
