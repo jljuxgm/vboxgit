@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 12981 2008-10-04 21:32:38Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 12982 2008-10-04 21:46:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -46,8 +46,8 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-/*
- * Allow physical read and writes from any thread
+/** Allow physical read and writes from any thread.
+ * (pdmR3DevHlp_PhysRead and pdmR3DevHlp_PhysWrite.)
  */
 #define PDM_PHYS_READWRITE_FROM_ANY_THREAD
 
