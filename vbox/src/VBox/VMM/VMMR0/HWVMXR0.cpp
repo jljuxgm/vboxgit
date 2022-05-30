@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 12736 2008-09-25 14:10:54Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 12737 2008-09-25 14:11:18Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1274,7 +1274,6 @@ ResumeExecution:
         /* Always sync back the TPR; we should optimize this though */ /** @todo optimize TPR sync. */
         fSyncTPR = true;
     }
-        HWACCMDumpRegs(pVM, pCtx);
 
     /*
      * NOTE: DO NOT DO ANYTHING AFTER THIS POINT THAT MIGHT JUMP BACK TO RING 3!
