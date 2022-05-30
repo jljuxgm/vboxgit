@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 16941 2009-02-19 10:14:40Z vboxsync $ */
+/* $Id: PGMInternal.h 17057 2009-02-24 12:14:19Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -183,6 +183,10 @@
  * @todo Move PGM_PTFLAGS_* and PGM_PDFLAGS_* to VBox/pgm.h. */
 #define PGM_PTFLAGS_CSAM_VALIDATED      RT_BIT_64(11)
 #endif
+
+/** Mark a dynamic map entry (PGMDynMapHCPage) as locked. */
+#define PGM_PTFLAGS_DYN_LOCKED          RT_BIT(9)
+
 /** @} */
 
 /** @name Defines used to indicate the shadow and guest paging in the templates.
