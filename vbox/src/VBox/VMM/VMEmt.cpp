@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: VMEmt.cpp 13858 2008-11-05 13:45:41Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -55,7 +55,7 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
 {
     PUVMCPU pUVMCPU = (PUVMCPU)pvArgs;
     PUVM    pUVM    = pUVMCPU->pUVM;
-    RTCPUID idCPU   = pUVMCPU->idCPU;
+    RTCPUID idCpu   = pUVMCPU->idCpu;
     int     rc;
 
     AssertReleaseMsg(VALID_PTR(pUVM) && pUVM->u32Magic == UVM_MAGIC,
@@ -183,7 +183,7 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
             &&  pUVM->pVM->enmVMState == VMSTATE_RUNNING)
         {
             PVM pVM = pUVM->pVM;
-            rc = EMR3ExecuteVM(pVM);
+            rc = EMR3ExecuteVM(pVM, idCpu);
             Log(("vmR3EmulationThread: EMR3ExecuteVM() -> rc=%Rrc, enmVMState=%d\n", rc, pVM->enmVMState));
             if (   EMGetState(pVM) == EMSTATE_GURU_MEDITATION
                 && pVM->enmVMState == VMSTATE_RUNNING)

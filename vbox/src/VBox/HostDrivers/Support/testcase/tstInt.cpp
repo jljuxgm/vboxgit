@@ -1,4 +1,4 @@
-/** $Id: tstInt.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/** $Id: tstInt.cpp 13858 2008-11-05 13:45:41Z vboxsync $ */
 /** @file
  * Testcase: Test the interrupt gate feature of the support library.
  */
@@ -143,7 +143,7 @@ int main(int argc, char **argv)
                         for (i = 0; i < 1000000; i++)
                         {
                             uint64_t OneStartTick = ASMReadTSC();
-                            rc = SUPCallVMMR0Fast(pVMR0, VMMR0_DO_NOP);
+                            rc = SUPCallVMMR0Fast(pVMR0, VMMR0_DO_NOP, 0);
                             uint64_t Ticks = ASMReadTSC() - OneStartTick;
                             if (Ticks < MinTicks)
                                 MinTicks = Ticks;

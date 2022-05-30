@@ -1,4 +1,4 @@
-/* $Id: SUPLib-linux.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: SUPLib-linux.cpp 13858 2008-11-05 13:45:41Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - GNU/Linux specific parts.
  */
@@ -201,7 +201,7 @@ int suplibOsIOCtl(PSUPLIBDATA pThis, uintptr_t uFunction, void *pvReq, size_t cb
 }
 
 
-int suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction)
+int suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction, unsigned idCpu)
 {
     int rc = ioctl(pThis->hDevice, uFunction, NULL);
     if (rc == -1)
