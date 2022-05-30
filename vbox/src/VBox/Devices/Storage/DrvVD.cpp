@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 12637 2008-09-22 13:13:17Z vboxsync $ */
+/* $Id: DrvVD.cpp 12892 2008-10-02 07:22:55Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -887,7 +887,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
         if (pThis->fAsyncIOSupported)
         {
             rc = RTCacheCreate(&pThis->pCache, 0, sizeof(DRVVDASYNCTASK), RTOBJCACHE_PROTECT_INSERT);
-            AssertMsg(RT_SUCCESS(rc), ("Failed to create cache rc=%Rrc\n", rc));
+            AssertMsgRC(rc, ("Failed to create cache rc=%Rrc\n", rc));
         }
     }
 

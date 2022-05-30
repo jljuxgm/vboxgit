@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 12384 2008-09-10 23:56:43Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 12892 2008-10-02 07:22:55Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -1106,7 +1106,7 @@ ioctl_error:
     RTFileClose(pData->DeviceFile);
     /* Open again to make use after suspend possible again. */
     rc = RTFileOpen(&pData->DeviceFile, pData->pszDevicePath, RTFILE_O_OPEN | RTFILE_O_READWRITE);
-    AssertMsg(RT_SUCCESS(rc), ("Opening device file again failed rc=%Vrc\n", rc));
+    AssertMsgRC(rc, ("Opening device file again failed rc=%Vrc\n", rc));
 
     if (RT_FAILURE(rc))
         PDMDrvHlpVMSetRuntimeError(pDrvIns, false, "DrvHostSerialFail",

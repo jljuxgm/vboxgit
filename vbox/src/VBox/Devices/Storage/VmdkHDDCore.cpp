@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 12641 2008-09-22 13:19:56Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 12892 2008-10-02 07:22:55Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -5083,7 +5083,7 @@ static int vmdkAsyncRead(void *pvBackendData, uint64_t uOffset, size_t cbRead,
                                                                 pImage->apTask, cTasksToSubmit,
                                                                 NULL, pvUser,
                                                                 NULL /* Nothing required after read. */);
-        AssertMsg(RT_SUCCESS(rc), ("Failed to enqueue tasks rc=%Rrc\n", rc));
+        AssertMsgRC(rc, ("Failed to enqueue tasks rc=%Rrc\n", rc));
     }
 
 out:
@@ -5219,7 +5219,7 @@ static int vmdkAsyncWrite(void *pvBackendData, uint64_t uOffset, size_t cbWrite,
                                                                 pImage->apTask, cTasksToSubmit,
                                                                 NULL, pvUser,
                                                                 NULL /* Nothing required after read. */);
-        AssertMsg(RT_SUCCESS(rc), ("Failed to enqueue tasks rc=%Rrc\n", rc));
+        AssertMsgRC(rc, ("Failed to enqueue tasks rc=%Rrc\n", rc));
     }
 
 out:
