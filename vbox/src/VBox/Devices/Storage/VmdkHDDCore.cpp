@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 12306 2008-09-09 15:51:08Z vboxsync $ */
+/** $Id: VmdkHDDCore.cpp 12353 2008-09-10 13:03:10Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -2129,7 +2129,7 @@ static int vmdkReadMetaExtent(PVMDKIMAGE pImage, PVMDKEXTENT pExtent)
         rc = vmdkError(pExtent->pImage, VERR_VDI_INVALID_HEADER, RT_SRC_POS, N_("VMDK: file size is not a multiple of 512 in '%s', file is truncated or otherwise garbled"), pExtent->pszFullname);
         goto out;
     }
-    if (pExtent->enmType == VMDKETYPE_HOSTED_SPARSE)
+    if (pExtent->enmType != VMDKETYPE_HOSTED_SPARSE)
         goto out;
 
     /* The spec says that this must be a power of two and greater than 8,
