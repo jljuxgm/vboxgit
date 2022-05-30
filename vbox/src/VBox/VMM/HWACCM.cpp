@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 14091 2008-11-11 13:31:09Z vboxsync $ */
+/* $Id: HWACCM.cpp 14106 2008-11-11 19:23:55Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1073,6 +1073,18 @@ VMMR3DECL(bool) HWACCMR3IsEventPending(PVM pVM)
 {
     /* @todo SMP */
     return HWACCMIsEnabled(pVM) && pVM->aCpus[0].hwaccm.s.Event.fPending;
+}
+
+
+/**
+ * Inject an NMI into a running VM
+ *
+ * @returns boolean
+ * @param   pVM         The VM to operate on.
+ */
+VMMR3DECL(int)  HWACCMR3InjectNMI(PVM pVM)
+{
+    return VINF_SUCCESS;
 }
 
 /**
