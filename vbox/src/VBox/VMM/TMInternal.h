@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 12549 2008-09-17 18:02:02Z vboxsync $ */
+/* $Id: TMInternal.h 12550 2008-09-17 18:19:38Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -305,7 +305,7 @@ typedef struct TM
     /** Modifier for fTSCTiedToExecution which pauses the TSC while halting if true.
      * Config variable: TSCNotTiedToHalt (bool) */
     bool                        fTSCNotTiedToHalt;
-    bool                        afAlignment0[2]; /**< alignment padding */
+    bool                        afAlignment0[6]; /**< alignment padding */
     /** The offset between the host TSC and the Guest TSC.
      * Only valid if fTicking is set and and fTSCUseRealTSC is clear. */
     uint64_t                    u64TSCOffset;
