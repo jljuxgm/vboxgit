@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD-new.cpp 14344 2008-11-19 10:50:48Z vboxsync $ */
+/* $Id: VBoxHDD-new.cpp 14350 2008-11-19 12:52:23Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -795,10 +795,10 @@ VBOXDDU_DECL(int) VDBackendInfo(unsigned cEntriesAlloc, PVDBACKENDINFO pEntries,
                         }
                     }
                     else
-                        LogFunc(("ignored plugin '%s': pBackend->cbSize=%d rc=%Vrc\n", pszPluginPath, pBackend->cbSize, rc));
+                        LogFunc(("ignored plugin '%s': pBackend->cbSize=%d rc=%Rrc\n", pszPluginPath, pBackend->cbSize, rc));
                 }
                 else
-                    LogFunc(("ignored plugin '%s': rc=%Vrc\n", pszPluginPath, rc));
+                    LogFunc(("ignored plugin '%s': rc=%Rrc\n", pszPluginPath, rc));
 
                 RTLdrClose(hPlugin);
             }
