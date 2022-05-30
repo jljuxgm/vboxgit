@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 17398 2009-03-05 13:36:57Z vboxsync $ */
+/* $Id: PGMAllBth.h 17422 2009-03-05 20:33:58Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4689,7 +4689,7 @@ PGM_BTH_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
 
 #  ifdef IN_RC
     /** NOTE: We can't deal with jumps to ring 3 here as we're now in an inconsistent state! */
-    VMMGCLogDisable(pVM);
+    bool fLog = VMMGCLogDisable(pVM);
 #  endif
 
     pVM->pgm.s.iShwUser      = SHW_POOL_ROOT_IDX;
@@ -4728,7 +4728,7 @@ PGM_BTH_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
     CPUMSetHyperCR3(pVM, PGMGetHyperCR3(pVM));
 
 #  ifdef IN_RC
-    VMMGCLogEnable(pVM);
+    VMMGCLogRestore(pVM, fLog);
 #  endif
 
     /* Clean up the old CR3 root. */
