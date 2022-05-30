@@ -1,4 +1,4 @@
-/* $Id: config.h 9143 2008-05-27 08:06:46Z vboxsync $ */
+/* $Id: config.h 13184 2008-10-10 17:04:38Z vboxsync $ */
 /** @file
  * Sun config - Maintained by hand
  */
@@ -28,3 +28,5 @@
 #ifdef VBOX_WITH_64_BITS_GUESTS
 #define TARGET_X86_64
 #endif
+
+#define unlikely(cond) RT_UNLIKELY(cond)
