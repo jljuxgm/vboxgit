@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 13854 2008-11-05 13:05:58Z vboxsync $ */
+/* $Id: HostImpl.cpp 13938 2008-11-06 20:54:47Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -42,6 +42,7 @@
 #  include "vbox-libhal.h"
 # endif
 # include <errno.h>
+# include <net/if.h>
 #endif /* RT_OS_LINUX */
 
 #ifdef RT_OS_SOLARIS
@@ -1005,7 +1006,31 @@ STDMETHODIMP Host::COMGETTER(NetworkInterfaces) (IHostNetworkInterfaceCollection
 #  endif /* #  if defined VBOX_WITH_NETFLT */
 
 
-# endif /* RT_OS_WINDOWS */
+# elif defined RT_OS_LINUX
+    int sock = socket(AF_INET, SOCK_DGRAM, 0);
+    if (sock >= 0)
+    {
+        char pBuffer[2048];
+        struct ifconf ifConf;
+        ifConf.ifc_len = sizeof(pBuffer);
+        ifConf.ifc_buf = pBuffer;
+        if (ioctl(sock, SIOCGIFCONF, &ifConf) >= 0)
+        {
+            for (struct ifreq *pReq = ifConf.ifc_req; pReq < pBuffer + ifConf.ifc_len; pReq++)
+            {
+                RTUUID uuid;
+                Assert(sizeof(uuid) <= sizeof(*pReq));
+                memcpy(&uuid, pReq, sizeof(uuid));
+
+                ComObjPtr<HostNetworkInterface> IfObj;
+                IfObj.createObject();
+                if (SUCCEEDED(IfObj->init(Bstr(pReq->ifr_name), Guid(uuid))))
+                    list.push_back(IfObj);
+            }
+        }
+        close(sock);
+    }
+# endif /* RT_OS_LINUX */
 
     ComObjPtr <HostNetworkInterfaceCollection> collection;
     collection.createObject();
