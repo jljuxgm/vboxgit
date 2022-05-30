@@ -1,4 +1,4 @@
-; $Id: HWACCMGCA.asm 15519 2008-12-15 16:55:01Z vboxsync $
+; $Id: HWACCMGCA.asm 15576 2008-12-16 12:01:10Z vboxsync $
 ;; @file
 ; VMXM - GC vmx helpers
 ;
@@ -335,6 +335,17 @@ ALIGN(16)
     ; Disable VMX root mode
     vmxoff
 .vmstart64_vmxon_failed:
+%ifdef VMX_USE_CACHED_VMCS_ACCESSES
+%ifdef DEBUG
+    cmp     eax, VINF_SUCCESS
+    jne     .skip_flags_save
+
+    pushf
+    pop     rdx
+    mov     [rdi + VMCSCACHE.TestOut.eflags], rdx
+.skip_flags_save:
+%endif
+%endif
     pop     rbp
     ret
 

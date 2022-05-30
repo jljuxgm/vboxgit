@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 15507 2008-12-15 14:51:45Z vboxsync $ */
+/* $Id: HWACCMInternal.h 15576 2008-12-16 12:01:10Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -415,6 +415,7 @@ typedef struct VMCSCACHE
         RTHCPHYS    pVMCSPhys;
         RTGCPTR     pCache;
         RTGCPTR     pCtx;
+        uint64_t    eflags;
     } TestOut;
     struct
     {
