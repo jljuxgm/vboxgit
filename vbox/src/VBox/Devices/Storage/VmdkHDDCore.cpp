@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 15554 2008-12-15 21:42:24Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 15565 2008-12-16 09:45:10Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -3356,7 +3356,7 @@ static int vmdkSetImageComment(PVMDKIMAGE pImage, const char *pszComment)
     else
         pszCommentEncoded = NULL;
     int rc = vmdkDescDDBSetStr(pImage, &pImage->Descriptor,
-                          "ddb.comment", pszCommentEncoded);
+                               "ddb.comment", pszCommentEncoded);
     if (pszComment)
         RTStrFree(pszCommentEncoded);
     if (RT_FAILURE(rc))
@@ -4713,7 +4713,11 @@ static int vmdkGetComment(void *pBackendData, char *pszComment,
         if (pszComment && pszCommentEncoded)
             rc = vmdkDecodeString(pszCommentEncoded, pszComment, cbComment);
         else
+        {
+            if (pszComment)
+                *pszComment = '\0';
             rc = VINF_SUCCESS;
+        }
         if (pszCommentEncoded)
             RTStrFree((char *)(void *)pszCommentEncoded);
     }
