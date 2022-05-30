@@ -1,4 +1,4 @@
-; $Id: HWACCMGCA.asm 15371 2008-12-12 14:41:28Z vboxsync $
+; $Id: HWACCMGCA.asm 15378 2008-12-12 15:43:03Z vboxsync $
 ;; @file
 ; VMXM - GC vmx helpers
 ;
@@ -163,13 +163,7 @@ ALIGN(16)
     ; Save the pCache pointer
     push    xBX
 %endif
-
-    ; Signal that we're in 64 bits mode now!
-    mov     eax, VMX_VMCS_CTRL_EXIT_CONTROLS
-    vmread  rdx, rax
-    or      rdx, VMX_VMCS_CTRL_EXIT_CONTROLS_HOST_AMD64
-    vmwrite rax, rdx
-    
+  
     ; Save the host state that's relevant in the temporary 64 bits mode
     mov     rdx, cr0
     mov     eax, VMX_VMCS_HOST_CR0
@@ -319,12 +313,6 @@ ALIGN(16)
     MYPOPSEGS rax
 
 .vmstart64_end:
-    ; Signal that we're going back to 32 bits mode!
-    mov      ebx, VMX_VMCS_CTRL_EXIT_CONTROLS
-    vmread   rdx, rbx
-    and      rdx, ~VMX_VMCS_CTRL_EXIT_CONTROLS_HOST_AMD64
-    vmwrite  rbx, rdx
-
 %ifdef DEBUG
     mov     rax, [rsp]                             ; pVMCSPhys
     mov     [rdi + VMCSCACHE.TestOut.pVMCSPhys], rax
