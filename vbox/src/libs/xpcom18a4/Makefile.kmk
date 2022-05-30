@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13547 2008-10-23 22:17:58Z vboxsync $
+# $Id: Makefile.kmk 13805 2008-11-04 20:29:57Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1159,6 +1159,8 @@ VBoxXPCOM_LIBS = \
 	$(TARGET_VBox-xpcom-proxy) \
 	$(TARGET_VBox-xpcom-nspr) \
 	$(TARGET_VBoxXPCOMGlue_s)
+VBoxXPCOM_LIBS.linux = \
+	pthread dl
 
 ifeq ($(filter-out freebsd l4 linux netbsd openbsd,$(KBUILD_TARGET)),) # gnu ld.
 VBoxXPCOM_LDFLAGS = -Wl,--whole-archive \
