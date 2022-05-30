@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 15344 2008-12-12 00:13:56Z vboxsync $ */
+/* $Id: PGMInternal.h 15346 2008-12-12 01:23:23Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1314,6 +1314,8 @@ typedef PGMMAPSETENTRY *PPGMMAPSETENTRY;
  */
 typedef struct PGMMAPSET
 {
+    /** The index of the current CPU, only valid if the set is open. */
+    int32_t                     iCpu;
     /** The number of occupied.
      * This is PGMMAPSET_CLOSED if the set is closed and we're not supposed to do
      * dynamic mappings. */
