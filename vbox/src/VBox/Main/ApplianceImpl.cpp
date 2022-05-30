@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16518 2009-02-04 16:29:47Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16560 2009-02-06 18:06:04Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -1564,7 +1564,7 @@ DECLCALLBACK(int) Appliance::taskThread(RTTHREAD aThread, void *pvUser)
 
     /* For now we report 2 steps for every virtual system. Later we may add the
        progress of the image cloning. */
-    float opCountMax = 100.0/(app->m->llVirtualSystems.size() * 2);
+    float opCountMax = (float)100.0 / (app->m->llVirtualSystems.size() * 2);
     uint32_t opCount = 0;
 
     list<VirtualSystem>::const_iterator it;
@@ -1612,7 +1612,7 @@ DECLCALLBACK(int) Appliance::taskThread(RTTHREAD aThread, void *pvUser)
             std::list<VirtualSystemDescriptionEntry*> vsdeRAM = vsdescThis->findByType(VirtualSystemDescriptionType_Memory);
             Assert(vsdeRAM.size() == 1);
             const Utf8Str &memoryVBox = vsdeRAM.front()->strConfig;
-            uint64_t tt = RTStrToUInt64(memoryVBox.c_str()) / _1M;
+            ULONG tt = (ULONG)RTStrToUInt64(memoryVBox.c_str()) / _1M;
 
             rc = pNewMachine->COMSETTER(MemorySize)(tt);
             CheckComRCThrowRC(rc);

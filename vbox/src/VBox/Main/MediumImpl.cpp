@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 16558 2009-02-06 16:41:43Z vboxsync $ */
+/* $Id: MediumImpl.cpp 16560 2009-02-06 18:06:04Z vboxsync $ */
 
 /** @file
  *
@@ -29,11 +29,12 @@
 
 #include <VBox/com/array.h>
 
+#include <VBox/err.h>
+#include <VBox/settings.h>
+
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/file.h>
-
-#include <VBox/err.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 // MediumBase class

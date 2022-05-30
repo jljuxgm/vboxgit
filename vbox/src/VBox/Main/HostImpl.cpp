@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 16558 2009-02-06 16:41:43Z vboxsync $ */
+/* $Id: HostImpl.cpp 16560 2009-02-06 18:06:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -101,9 +101,6 @@ extern "C" char *getfullrawname(char *);
 #endif
 
 
-#include <VBox/usb.h>
-#include <VBox/x86.h>
-#include <VBox/err.h>
 #include <iprt/asm.h>
 #include <iprt/string.h>
 #include <iprt/mp.h>
@@ -118,6 +115,11 @@ extern "C" char *getfullrawname(char *);
 #ifdef VBOX_WITH_HOSTNETIF_API
 #include "netif.h"
 #endif
+
+#include <VBox/usb.h>
+#include <VBox/x86.h>
+#include <VBox/err.h>
+#include <VBox/settings.h>
 
 #if defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT)
 # include <VBox/WinNetConfig.h>

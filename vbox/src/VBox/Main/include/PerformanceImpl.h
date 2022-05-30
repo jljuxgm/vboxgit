@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: PerformanceImpl.h 16560 2009-02-06 18:06:04Z vboxsync $ */
 
 /** @file
  *
@@ -36,6 +36,9 @@
 //#include <set>
 
 #include "Performance.h"
+
+#undef min
+#undef max
 
 /* Each second we obtain new CPU load stats. */
 #define VBOX_USAGE_SAMPLER_MIN_INTERVAL 1000
@@ -92,7 +95,10 @@ private:
     struct Data
     {
         /* Constructor. */
-        Data() : period(0), count(0), min(0), max(0) { }
+        Data()
+            : period(0), count(0), min(0), max(0)
+        {
+        }
 
         Bstr             name;
         ComPtr<IUnknown> object;
