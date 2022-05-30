@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 13561 2008-10-24 16:27:26Z vboxsync $ */
+/* $Id: EMAll.cpp 13565 2008-10-24 17:48:59Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -82,20 +82,6 @@ DECLINLINE(int) emInterpretInstructionCPU(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCO
 VMMDECL(EMSTATE) EMGetState(PVM pVM)
 {
     return pVM->em.s.enmState;
-}
-
-
-/**
- * Flushes the REM translation blocks the next time we execute code there.
- *
- * @param   pVM         The VM handle.
- *
- * @todo    This doesn't belong here, it should go in REMAll.cpp!
- */
-VMMDECL(void) EMFlushREMTBs(PVM pVM)
-{
-    LogFlow(("EMFlushREMTBs\n"));
-    pVM->em.s.fREMFlushTBs = true;
 }
 
 #ifndef IN_GC

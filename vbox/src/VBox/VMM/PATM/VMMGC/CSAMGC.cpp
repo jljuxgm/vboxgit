@@ -1,4 +1,4 @@
-/* $Id: CSAMGC.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: CSAMGC.cpp 13565 2008-10-24 17:48:59Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -32,6 +32,7 @@
 #include <VBox/mm.h>
 #include <VBox/sup.h>
 #include <VBox/mm.h>
+#include <VBox/rem.h>
 #include <VBox/param.h>
 #include <iprt/avl.h>
 #include "CSAMInternal.h"
@@ -71,7 +72,7 @@ VMMRCDECL(int) CSAMGCCodePageWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
     Assert(pVM->csam.s.cDirtyPages < CSAM_MAX_DIRTY_PAGES);
 
     /* Flush the recompilers translation block cache as the guest seems to be modifying instructions. */
-    EMFlushREMTBs(pVM);
+    REMFlushTBs(pVM);
 
     pPATMGCState = PATMQueryGCState(pVM);
     Assert(pPATMGCState);
