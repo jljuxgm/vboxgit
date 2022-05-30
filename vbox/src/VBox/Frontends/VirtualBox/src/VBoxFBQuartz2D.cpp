@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQuartz2D.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VBoxFBQuartz2D.cpp 12631 2008-09-22 09:33:54Z vboxsync $ */
 /** @file
  * Qt GUI (aka VirtualBox) - Quartz2D framebuffer implementation.
  */
@@ -20,6 +20,8 @@
  */
 
 #if defined (VBOX_GUI_USE_QUARTZ2D)
+
+#include <iprt/asm.h>
 
 /* VBox includes */
 #include "VBoxFrameBuffer.h"
