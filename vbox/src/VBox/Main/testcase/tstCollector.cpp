@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 12546 2008-09-17 17:11:15Z vboxsync $ */
+/* $Id: tstCollector.cpp 12594 2008-09-19 09:45:17Z vboxsync $ */
 
 /** @file
  *
@@ -34,10 +34,6 @@
 #include "../linux/PerformanceLinux.cpp"
 #endif
 #ifdef RT_OS_WINDOWS
-#ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0501
-#endif
-
 #define _WIN32_DCOM
 #include <objidl.h>
 #include <objbase.h>
