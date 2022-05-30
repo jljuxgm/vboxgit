@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 15305 2008-12-11 15:31:29Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 15309 2008-12-11 15:46:03Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -220,14 +220,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
        can be only enabled if hardware acceleration is used. */
     if (fHWVirtExEnabled)
     {
-        PRBool fSupportsLongMode = false, fIs64BitGuest = false; 
+        BOOL fSupportsLongMode = false, fIs64BitGuest = false; 
         ComPtr<IGuest> guest;
         ComPtr <IGuestOSType> guestOSType;
         Bstr osTypeId;
         rc = pMachine->COMGETTER(OSTypeId)(osTypeId.asOutParam());                  RC_CHECK();
-        rc = virtualBox->COMGETTER(GuestOSType) (osTypeId, 
-                                                 guestOSType.asOutParam());         RC_CHECK();
-        rc = host->COMGETTER(ProcessorFeature) (ProcessorFeature_LongMode, 
+        rc = virtualBox->GetGuestOSType (osTypeId, guestOSType.asOutParam());       RC_CHECK();
+        rc = host->GetProcessorFeature(ProcessorFeature_LongMode, 
                                                 &fSupportsLongMode);                RC_CHECK();
         rc = guestOSType->COMGETTER(Is64Bit) (&fIs64BitGuest);                      RC_CHECK();
         
