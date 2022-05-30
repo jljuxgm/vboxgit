@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 12649 2008-09-22 13:40:23Z vboxsync $ */
+/* $Id: DevPcBios.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1756,7 +1756,7 @@ const PDMDEVREG g_DevicePcBios =
     PDM_DEVREG_VERSION,
     /* szDeviceName */
     "pcbios",
-    /* szGCMod */
+    /* szRCMod */
     "",
     /* szR0Mod */
     "",
@@ -1793,6 +1793,12 @@ const PDMDEVREG g_DevicePcBios =
     /* pfnQueryInterface. */
     NULL,
     /* pfnInitComplete. */
-    pcbiosInitComplete
+    pcbiosInitComplete,
+    /* pfnPowerOff */
+    NULL,
+    /* pfnSoftReset */
+    NULL,
+    /* u32VersionEnd */
+    PDM_DEVREG_VERSION
 };
 

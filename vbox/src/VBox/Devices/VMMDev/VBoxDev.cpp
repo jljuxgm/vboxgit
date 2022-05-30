@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 12924 2008-10-02 10:18:50Z vboxsync $ */
+/* $Id: VBoxDev.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2456,7 +2456,7 @@ extern "C" const PDMDEVREG g_DeviceVMMDev =
     PDM_DEVREG_VERSION,
     /* szDeviceName */
     "VMMDev",
-    /* szGCMod */
+    /* szRCMod */
     "",
     /* szR0Mod */
     "",
@@ -2491,7 +2491,15 @@ extern "C" const PDMDEVREG g_DeviceVMMDev =
     /* pfnDetach */
     NULL,
     /* pfnQueryInterface. */
-    NULL
+    NULL,
+    /* pfnInitComplete */
+    NULL,
+    /* pfnPowerOff */
+    NULL,
+    /* pfnSoftReset */
+    NULL,
+    /* u32VersionEnd */
+    PDM_DEVREG_VERSION
 };
 #endif /* !VBOX_DEVICE_STRUCT_TESTCASE */
 
