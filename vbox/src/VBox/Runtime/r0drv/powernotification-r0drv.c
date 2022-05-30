@@ -1,4 +1,4 @@
-/* $Id: powernotification-r0drv.c 13488 2008-10-22 13:13:52Z vboxsync $ */
+/* $Id: powernotification-r0drv.c 13489 2008-10-22 13:15:15Z vboxsync $ */
 /** @file
  * IPRT - Power Management, Ring-0 Driver, Event Notifications.
  */
@@ -280,7 +280,7 @@ int rtR0PowerNotificationInit(void)
         if (RT_SUCCESS(rc))
         {
             /** @todo OS specific init here */
-            return rc
+            return rc;
 #if 0
             RTSpinlockDestroy(g_hRTPowerNotifySpinLock);
             g_hRTPowerNotifySpinLock = NIL_RTSPINLOCK;
