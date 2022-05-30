@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16830 2009-02-17 12:28:06Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16831 2009-02-17 12:33:18Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -2380,7 +2380,7 @@ std::list<VirtualSystemDescriptionEntry*> VirtualSystemDescription::findByType(V
          ++it)
     {
         if (it->type == aType)
-            vsd.push_back(pThis);
+            vsd.push_back(&(*it));
     }
 
     return vsd;
