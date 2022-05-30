@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 17755 2009-03-12 15:03:46Z vboxsync $ */
+/* $Id: MachineImpl.cpp 17825 2009-03-13 14:03:09Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2169,7 +2169,7 @@ STDMETHODIMP Machine::AttachHardDisk(IN_GUID aId,
         alock.leave();
         vboxLock.unlock();
 
-        rc = hd->createDiffStorageAndWait (diff);
+        rc = hd->createDiffStorageAndWait (diff, HardDiskVariant_Standard);
 
         alock.enter();
         hdLock.enter();
@@ -7248,7 +7248,8 @@ HRESULT Machine::createImplicitDiffs (const Bstr &aFolder,
             /* leave the lock before the potentially lengthy operation */
             alock.leave();
 
-            rc = hd->createDiffStorageAndWait (diff, &aProgress);
+            rc = hd->createDiffStorageAndWait (diff, HardDiskVariant_Standard,
+                                               &aProgress);
 
             alock.enter();
 

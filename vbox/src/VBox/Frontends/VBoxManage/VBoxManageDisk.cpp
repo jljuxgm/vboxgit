@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 17753 2009-03-12 14:33:49Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 17825 2009-03-13 14:03:09Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -136,11 +136,11 @@ int handleCreateHardDisk(HandlerArg *a)
         ComPtr<IProgress> progress;
         if (fStatic)
         {
-            CHECK_ERROR(hardDisk, CreateFixedStorage(sizeMB, progress.asOutParam()));
+            CHECK_ERROR(hardDisk, CreateFixedStorage(sizeMB, HardDiskVariant_Standard, progress.asOutParam()));
         }
         else
         {
-            CHECK_ERROR(hardDisk, CreateDynamicStorage(sizeMB, progress.asOutParam()));
+            CHECK_ERROR(hardDisk, CreateDynamicStorage(sizeMB, HardDiskVariant_Standard, progress.asOutParam()));
         }
         if (SUCCEEDED(rc) && progress)
         {
@@ -414,7 +414,7 @@ int handleCloneHardDisk(HandlerArg *a)
         CHECK_ERROR_BREAK(a->virtualBox, CreateHardDisk(format, dst, dstDisk.asOutParam()));
 
         ComPtr<IProgress> progress;
-        CHECK_ERROR_BREAK(srcDisk, CloneTo(dstDisk, progress.asOutParam()));
+        CHECK_ERROR_BREAK(srcDisk, CloneTo(dstDisk, HardDiskVariant_Standard, progress.asOutParam()));
 
         showProgress(progress);
         progress->COMGETTER(ResultCode)(&rc);
