@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13721 2008-10-31 15:06:24Z vboxsync $
+# $Id: Makefile.kmk 16874 2009-02-17 20:10:30Z vboxsync $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -35,7 +35,6 @@ cpp_hdrs := \
 r3_only_hdrs := \
 	VBox/vrdpapi.h \
         VBox/vrdpusb.h \
-	VBox/VBoxHDD-new.h \
 	VBox/VBoxHDD.h \
 	iprt/tcp.h \
 	iprt/localipc.h
