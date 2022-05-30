@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 13106 2008-10-09 08:46:19Z vboxsync $ */
+/* $Id: PGMAll.cpp 13113 2008-10-09 09:28:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1264,6 +1264,15 @@ VMMDECL(RTHCPHYS) PGMGetNestedCR3(PVM pVM, PGMMODE enmShadowMode)
     }
 }
 
+/**
+ * Gets the current CR3 register value for the EPT paging memory context.
+ * @returns CR3 value.
+ * @param   pVM         The VM handle.
+ */
+VMMDECL(RTHCPHYS) PGMGetEPTCR3(PVM pVM)
+{
+    return pVM->pgm.s.HCPhysNestedRoot;
+}
 
 /**
  * Gets the CR3 register value for the 32-Bit shadow memory context.

@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13105 2008-10-09 08:19:19Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13113 2008-10-09 09:28:09Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -295,9 +295,6 @@ typedef struct HWACCM
         uint64_t                    cr0_mask;
         /** Current CR4 mask. */
         uint64_t                    cr4_mask;
-
-        /** Current EPTP. */
-        RTHCPHYS                    GCPhysEPTP;
 
         /** VMX MSR values */
         struct
