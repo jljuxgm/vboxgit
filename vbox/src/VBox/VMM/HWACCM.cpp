@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15962 2009-01-15 12:33:49Z vboxsync $ */
+/* $Id: HWACCM.cpp 16136 2009-01-21 13:17:41Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1127,7 +1127,7 @@ VMMR3DECL(void) HWACCMR3PagingModeChanged(PVM pVM, PGMMODE enmShadowMode, PGMMOD
         /* Did we miss a change, because all code was executed in the recompiler? */
         if (pVCpu->hwaccm.s.vmx.enmLastSeenGuestMode == enmGuestMode)
         {
-            Log(("HWACCMR3PagingModeChanged missed %s->%s transition (last seen %s)\n", PGMGetModeName(pVCpu->hwaccm.s.vmx.enmPrevGuestMode), PGMGetModeName(pVCpu->hwaccm.s.vmx.enmCurrGuestMode), PGMGetModeName(pVCpu->hwaccm.s.vmx.enmLastSeenGuestMode)));
+            Log(("HWACCMR3PagingModeChanged missed %s->%s transition (prev %s)\n", PGMGetModeName(pVCpu->hwaccm.s.vmx.enmPrevGuestMode), PGMGetModeName(pVCpu->hwaccm.s.vmx.enmCurrGuestMode), PGMGetModeName(pVCpu->hwaccm.s.vmx.enmLastSeenGuestMode)));
             pVCpu->hwaccm.s.vmx.enmLastSeenGuestMode = pVCpu->hwaccm.s.vmx.enmPrevGuestMode;
         }
     }
