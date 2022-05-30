@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 14215 2008-11-14 14:48:49Z vboxsync $ */
 
 /** @file
  *
@@ -186,7 +186,7 @@ STDMETHODIMP Keyboard::PutScancodes (ComSafeArrayIn (LONG, scancodes),
 
     /// @todo is it actually possible that not all scancodes can be transmitted?
     if (codesStored)
-        *codesStored = keys.size();
+        *codesStored = (uint32_t)keys.size();
 
     return rc;
 }
