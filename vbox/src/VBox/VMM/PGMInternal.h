@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 17285 2009-03-03 14:34:35Z vboxsync $ */
+/* $Id: PGMInternal.h 17286 2009-03-03 14:44:11Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1977,11 +1977,10 @@ DECLINLINE(void *) pgmPoolMapPageStrict(PPGMPOOLPAGE pPage)
 # if MM_RAM_FLAGS_IDX_SHIFT - 48 != PGMPOOL_TD_IDX_SHIFT
 #  error "MM_RAM_FLAGS_IDX_SHIFT - 48 != PGMPOOL_TD_IDX_SHIFT"
 # endif
+#endif
+#ifdef MM_RAM_FLAGS_IDX_MASK
 # if MM_RAM_FLAGS_IDX_MASK != PGMPOOL_TD_IDX_MASK
 #  error "MM_RAM_FLAGS_IDX_MASK != PGMPOOL_TD_IDX_MASK"
-# endif
-# if MM_RAM_FLAGS_IDX_OVERFLOWED != PGMPOOL_TD_IDX_OVERFLOWED
-#  error "MM_RAM_FLAGS_IDX_OVERFLOWED != PGMPOOL_TD_IDX_OVERFLOWED"
 # endif
 #endif
 
