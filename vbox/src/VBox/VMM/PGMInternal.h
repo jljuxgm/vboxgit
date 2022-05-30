@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 14868 2008-12-01 15:20:06Z vboxsync $ */
+/* $Id: PGMInternal.h 14877 2008-12-01 16:37:38Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2569,7 +2569,6 @@ typedef struct PGM
     STAMCOUNTER StatR0DynMapPageHit0;               /**< R0: Hit at iPage+0. */
     STAMCOUNTER StatR0DynMapPageHit1;               /**< R0: Hit at iPage+1. */
     STAMCOUNTER StatR0DynMapPageHit2;               /**< R0: Hit at iPage+2. */
-    STAMCOUNTER StatR0DynMapPageHit3;               /**< R0: Hit at iPage+3. */
     STAMCOUNTER StatR0DynMapPageInvlPg;             /**< R0: invlpg. */
     STAMCOUNTER StatR0DynMapPageSlow;               /**< R0: Calls to pgmR0DynMapPageSlow. */
     STAMCOUNTER StatR0DynMapPageSlowLoopHits;       /**< R0: Hits in the pgmR0DynMapPageSlow search loop. */
