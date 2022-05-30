@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12458 2008-09-15 11:32:49Z vboxsync $
+# $Id: Makefile.kmk 12691 2008-09-24 14:42:09Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -390,6 +390,9 @@ vboxdrv_TEMPLATE      = VBOXR0DRV
 vboxdrv_DEFS          = IN_RT_R0 IN_SUP_R0
 ifdef VBOX_WITH_IDT_PATCHING
 vboxdrv_DEFS         += VBOX_WITH_IDT_PATCHING
+endif
+ifdef VBOX_WITH_NETFLT
+vboxdrv_DEFS         += VBOX_WITH_NETFLT
 endif
 vboxdrv_INCS         := $(PATH_SUB_CURRENT)
 vboxdrv_LIBS          = $(PATH_LIB)/RuntimeR0Drv$(VBOX_SUFF_LIB)

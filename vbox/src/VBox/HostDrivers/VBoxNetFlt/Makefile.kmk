@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12313 2008-09-09 16:52:54Z vboxsync $
+# $Id: Makefile.kmk 12691 2008-09-24 14:42:09Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -121,10 +121,7 @@ vboxnetflt_INCS         := \
 vboxnetflt_LDFLAGS.solaris += -N drv/vboxdrv
 vboxnetflt_LIBS = \
 	$(PATH_LIB)/SUPR0IdcClient$(VBOX_SUFF_LIB)
-if1of ($(KBUILD_TARGET),solaris) ## @todo vboxflt should resolve all the IPRT bits from vboxdrv.
-vboxnetflt_LIBS += \
-	$(PATH_LIB)/RuntimeR0Drv$(VBOX_SUFF_LIB)
-endif
+## vboxflt resolves all the IPRT bits from vboxdrv.
 vboxnetflt_SOURCES.linux = linux/VBoxNetFlt-linux.c
 vboxnetflt_SOURCES.solaris = solaris/VBoxNetFlt-solaris.c
 vboxnetflt_SOURCES = VBoxNetFlt.c
