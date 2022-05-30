@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 16113 2009-01-21 09:08:29Z vboxsync $ */
+/* $Id: PGM.cpp 16172 2009-01-22 15:09:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1528,11 +1528,10 @@ static int pgmR3InitPaging(PVM pVM)
         LogFlow(("pgmR3InitPaging: returns successfully\n"));
 #if HC_ARCH_BITS == 64
 # ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
-        LogRel(("Debug: HCPhysShw32BitPD=%RHp aHCPhysPaePDs={%RHp,%RHp,%RHp,%RHp} HCPhysShwPaePdpt=%RHp HCPhysShwPaePml4=%RHp\n",
+        LogRel(("Debug: HCPhysShw32BitPD=%RHp aHCPhysPaePDs={%RHp,%RHp,%RHp,%RHp} HCPhysShwPaePdpt=%RHp\n",
                 pVM->pgm.s.HCPhysShw32BitPD,
                 pVM->pgm.s.aHCPhysPaePDs[0], pVM->pgm.s.aHCPhysPaePDs[1], pVM->pgm.s.aHCPhysPaePDs[2], pVM->pgm.s.aHCPhysPaePDs[3],
-                pVM->pgm.s.HCPhysShwPaePdpt,
-                pVM->pgm.s.HCPhysShwPaePml4));
+                pVM->pgm.s.HCPhysShwPaePdpt));
 # endif
         LogRel(("Debug: HCPhysInterPD=%RHp HCPhysInterPaePDPT=%RHp HCPhysInterPaePML4=%RHp\n",
                 pVM->pgm.s.HCPhysInterPD, pVM->pgm.s.HCPhysInterPaePDPT, pVM->pgm.s.HCPhysInterPaePML4));
