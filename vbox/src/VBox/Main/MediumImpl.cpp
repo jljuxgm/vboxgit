@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 16853 2009-02-17 15:48:20Z vboxsync $ */
+/* $Id: MediumImpl.cpp 16867 2009-02-17 17:00:56Z vboxsync $ */
 
 /** @file
  *
@@ -1110,16 +1110,16 @@ HRESULT DVDImage::unregisterWithVirtualBox()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// FloppyImage2 class
+// FloppyImage class
 ////////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR (FloppyImage2)
+DEFINE_EMPTY_CTOR_DTOR (FloppyImage)
 
 /**
  * @note Called from within this object's AutoMayUninitSpan and from under
  *       mVirtualBox write lock.
  */
-HRESULT FloppyImage2::unregisterWithVirtualBox()
+HRESULT FloppyImage::unregisterWithVirtualBox()
 {
     return mVirtualBox->unregisterFloppyImage (this);
 }

@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.cpp 16560 2009-02-06 18:06:04Z vboxsync $ */
+/* $Id: FloppyDriveImpl.cpp 16867 2009-02-17 17:00:56Z vboxsync $ */
 
 /** @file
  *
@@ -272,9 +272,9 @@ STDMETHODIMP FloppyDrive::MountImage (IN_GUID aImageId)
     /* Our lifetime is bound to mParent's lifetime, so we don't add caller.
      * We also don't lock mParent since its mParent field is const. */
 
-    ComObjPtr <FloppyImage2> image;
-    rc = mParent->virtualBox()->findFloppyImage2 (&imageId, NULL,
-                                                  true /* aSetError */, &image);
+    ComObjPtr<FloppyImage> image;
+    rc = mParent->virtualBox()->findFloppyImage(&imageId, NULL,
+                                                true /* aSetError */, &image);
 
     if (SUCCEEDED (rc))
     {
@@ -376,7 +376,7 @@ STDMETHODIMP FloppyDrive::Unmount()
     return S_OK;
 }
 
-STDMETHODIMP FloppyDrive::GetImage (IFloppyImage2 **aFloppyImage)
+STDMETHODIMP FloppyDrive::GetImage(IFloppyImage **aFloppyImage)
 {
     CheckComArgOutPointerValid(aFloppyImage);
 

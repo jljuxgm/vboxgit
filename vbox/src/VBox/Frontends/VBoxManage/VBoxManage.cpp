@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 16853 2009-02-17 15:48:20Z vboxsync $ */
+/* $Id: VBoxManage.cpp 16867 2009-02-17 17:00:56Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1413,7 +1413,7 @@ static int handleControlVM(HandlerArg *a)
             {
                 /* first assume it's a UUID */
                 Guid uuid(a->argv[2]);
-                ComPtr<IFloppyImage2> floppyImage;
+                ComPtr<IFloppyImage> floppyImage;
                 rc = a->virtualBox->GetFloppyImage(uuid, floppyImage.asOutParam());
                 if (FAILED(rc) || !floppyImage)
                 {
