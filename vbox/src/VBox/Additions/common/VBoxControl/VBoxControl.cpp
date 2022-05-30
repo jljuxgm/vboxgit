@@ -1,4 +1,4 @@
-/** $Id: VBoxControl.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
+/** $Id: VBoxControl.cpp 12719 2008-09-25 11:36:07Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface
  */
@@ -1067,7 +1067,7 @@ static int enumGuestProperty(int argc, char *argv[])
     int rc = VINF_SUCCESS;
     rc = VbglR3GuestPropConnect(&u32ClientId);
     if (!RT_SUCCESS(rc))
-        VBoxControlError("Failed to connect to the guest property service, error %Rrc\n", rc);
+        VBoxControlError("Failed to connect to the guest property service! Error: %Rrc\n", rc);
     if (RT_SUCCESS(rc))
     {
         char **ppaszPatterns = argc > 1 ? argv + 1 : NULL;
@@ -1081,7 +1081,7 @@ static int enumGuestProperty(int argc, char *argv[])
         else if (VERR_NOT_FOUND == rc)
             RTPrintf("No properties found.\n");
         else
-            VBoxControlError("Failed to enumerate the guest properties, error %Rrc.\n", rc);
+            VBoxControlError("Failed to enumerate the guest properties! Error: %Rrc\n", rc);
     }
     while (RT_SUCCESS(rc) && (pszName != NULL))
     {
@@ -1089,7 +1089,7 @@ static int enumGuestProperty(int argc, char *argv[])
                  pszName, pszValue, u64Timestamp, pszFlags);
         rc = VbglR3GuestPropEnumNext(Handle.get(), &pszName, &pszValue, &u64Timestamp, &pszFlags);
         if (!RT_SUCCESS(rc))
-            VBoxControlError("Error while enumerating guest propertied: %Rrc\n", rc);
+            VBoxControlError("Error while enumerating guest properties: %Rrc\n", rc);
     }
 
     if (u32ClientId != 0)
