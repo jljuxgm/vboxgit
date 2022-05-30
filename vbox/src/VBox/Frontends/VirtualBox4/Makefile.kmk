@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13361 2008-10-17 07:24:19Z vboxsync $
+# $Id: Makefile.kmk 13410 2008-10-20 22:19:01Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -176,7 +176,7 @@ VirtualBox4_DEFS          += \
 	$(if $(VBOX_WITH_E1000),VBOX_WITH_E1000) \
 	$(if $(VBOX_OSE),VBOX_OSE) \
 	$(if $(VBOX_WITH_NETFLT),VBOX_WITH_NETFLT)
-if "$(KBUILD_TARGET)" != "release" && defined(VBOX_WITH_DEBUGGER_GUI)
+if "$(KBUILD_TYPE)" != "release" && defined(VBOX_WITH_DEBUGGER_GUI)
  VirtualBox4_DEFS         += VBOX_WITH_DEBUGGER_GUI_MENU
 endif
 
