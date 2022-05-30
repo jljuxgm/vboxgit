@@ -1,4 +1,4 @@
-/* $Id: env-posix.cpp 16525 2009-02-05 07:06:55Z vboxsync $ */
+/* $Id: env-posix.cpp 16526 2009-02-05 09:43:21Z vboxsync $ */
 /** @file
  * IPRT - Environment, Posix.
  */
@@ -33,11 +33,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #ifdef RT_OS_DARWIN
-/*
- * @todo: here is workaround for unsetenv(3) which doen't return status 
- * see sys/cdefs.h for better solution
- */
-# define __DARWIN_UNIX03 1
+/* pick the correct prototype for unsetenv. */
+# define _POSIX_C_SOURCE 1
 #endif
 #include <iprt/env.h>
 #include <iprt/string.h>
