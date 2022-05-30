@@ -1,4 +1,4 @@
-/** $Id: VBoxControl.cpp 14220 2008-11-14 15:05:30Z vboxsync $ */
+/** $Id: VBoxControl.cpp 14360 2008-11-19 16:29:31Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface
  */
@@ -111,7 +111,7 @@ static void usage(g_eUsage eWhich = USAGE_ALL)
         doUsage("set <property> [<value> [-flags <flags>]]\n", g_pszProgName, "guestproperty");
         doUsage("enumerate [-patterns <patterns>]\n", g_pszProgName, "guestproperty");
         doUsage("wait <patterns> [-timestamp <last timestamp>]\n", g_pszProgName, "guestproperty");
-        doUsage("[-timeout <timeout>\n");
+        doUsage("[-timeout <timeout in ms>\n");
     }
 #endif
 }
