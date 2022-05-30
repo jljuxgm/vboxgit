@@ -1,4 +1,4 @@
-/* $Id: uuid-generic.cpp 13977 2008-11-07 20:14:23Z vboxsync $ */
+/* $Id: uuid-generic.cpp 14067 2008-11-10 23:35:26Z vboxsync $ */
 /** @file
  * IPRT - UUID, Generic.
  */
@@ -53,7 +53,7 @@ RTDECL(int)  RTUuidClear(PRTUUID pUuid)
 
 RTDECL(bool)  RTUuidIsNull(PCRTUUID pUuid)
 {
-    AssertPtrReturn(pUuid, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pUuid, true);
     return !pUuid->au64[0]
         && !pUuid->au64[1];
 }
