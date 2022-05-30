@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
+/* $Id: DVDDriveImpl.cpp 14959 2008-12-03 21:25:17Z vboxsync $ */
 
 /** @file
  *
@@ -526,7 +526,7 @@ HRESULT DVDDrive::saveSettings (settings::Key &aMachineNode)
             /* do nothing, i.e.leave the drive node empty */
             break;
         default:
-            ComAssertMsgFailedRet (("Invalid drive state: %d\n", mData->mState),
+            ComAssertMsgFailedRet (("Invalid drive state: %d", mData->mState),
                                     E_FAIL);
     }
 
