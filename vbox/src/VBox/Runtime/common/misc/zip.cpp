@@ -1,4 +1,4 @@
-/* $Id: zip.cpp 16164 2009-01-22 13:21:40Z vboxsync $ */
+/* $Id: zip.cpp 16823 2009-02-17 10:41:45Z vboxsync $ */
 /** @file
  * IPRT - Compression.
  */
@@ -33,7 +33,7 @@
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
 #define RTZIP_USE_STORE 1
-//#define RTZIP_USE_ZLIB 1
+#define RTZIP_USE_ZLIB 1
 //#define RTZIP_USE_BZLIB 1
 #define RTZIP_USE_LZF 1
 
@@ -554,7 +554,10 @@ static DECLCALLBACK(int) rtZipZlibDecompress(PRTZIPDECOMP pZip, void *pvBuf, siz
     pZip->u.Zlib.next_out = (Bytef *)pvBuf;
     pZip->u.Zlib.avail_out = cbBuf;
     int rc = Z_OK;
-    while (pZip->u.Zlib.avail_out > 0)
+    /* Be greedy reading input, even if no output buffer is left. It's possible
+     * that it's just the end of stream marker which needs to be read. Happens
+     * for incompressible blocks just larger than the input buffer size.*/
+    while (pZip->u.Zlib.avail_out > 0 || pZip->u.Zlib.avail_in <= 0)
     {
         /*
          * Read more input?
