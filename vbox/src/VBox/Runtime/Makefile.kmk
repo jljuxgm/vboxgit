@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15301 2008-12-11 12:30:25Z vboxsync $
+# $Id: Makefile.kmk 15372 2008-12-12 14:51:29Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -285,12 +285,6 @@ RuntimeR3_SOURCES       = \
 	r3/process.cpp \
 	r3/stream.cpp \
 	r3/tcp.cpp
-
-ifdef VBOX_WITH_HOSTNETIF_API
- RuntimeR3_SOURCES     += \
-	generic/RTNetIfList-generic.cpp
- RuntimeR3_DEFS        += VBOX_WITH_HOSTNETIF_API
-endif
 
 #if1of ($(KBUILD_TARGET_ARCH),amd64 x86)
 # RuntimeR3_SOURCES += common/time/timesupA.asm
