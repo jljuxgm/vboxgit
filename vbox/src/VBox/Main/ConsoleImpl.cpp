@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 14786 2008-11-28 15:17:42Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 14791 2008-11-28 16:30:57Z vboxsync $ */
 
 /** @file
  *
@@ -1871,7 +1871,7 @@ STDMETHODIMP Console::AdoptSavedState (INPTR BSTR aSavedStateFile)
 
     if (mMachineState != MachineState_PoweredOff &&
         mMachineState != MachineState_Aborted)
-        return setError (E_FAIL,
+        return setError (VBOX_E_INVALID_VM_STATE,
             tr ("Cannot adopt the saved machine state as the machine is "
                 "not in Powered Off or Aborted state (machine state: %d)"),
             mMachineState);
@@ -1887,7 +1887,7 @@ STDMETHODIMP Console::DiscardSavedState()
     AutoWriteLock alock (this);
 
     if (mMachineState != MachineState_Saved)
-        return setError (E_FAIL,
+        return setError (VBOX_E_INVALID_VM_STATE,
             tr ("Cannot discard the machine state as the machine is "
                 "not in the saved state (machine state: %d)"),
             mMachineState);
