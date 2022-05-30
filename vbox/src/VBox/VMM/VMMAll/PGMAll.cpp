@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 13197 2008-10-13 08:52:06Z vboxsync $ */
+/* $Id: PGMAll.cpp 13198 2008-10-13 09:05:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1208,6 +1208,19 @@ VMMDECL(int)  PGMGstModifyPage(PVM pVM, RTGCPTR GCPtr, size_t cb, uint64_t fFlag
 
     STAM_PROFILE_STOP(&pVM->pgm.s.CTX_MID_Z(Stat,GstModifyPage), a);
     return rc;
+}
+
+/**
+ * Gets the specified page directory pointer table entry.
+ *
+ * @returns PDP entry
+ * @param   pPGM        Pointer to the PGM instance data.
+ * @param   iPdpt       PDPT index
+ */
+VMMDECL(X86PDPE) PGMGstGetPaePDPtr(PVM pVM, unsigned iPdpt)
+{
+    Assert(iPdpt <= 3);
+    return pVM->pgm.s.CTXSUFF(pGstPaePDPT)->a[iPdpt & 3];
 }
 
 
