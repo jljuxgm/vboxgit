@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 13960 2008-11-07 13:04:45Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 14532 2008-11-24 16:50:00Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -958,11 +958,9 @@ VMMR0DECL(int) HWACCMR0Leave(PVM pVM, PVMCPU pVCpu)
 
     rc = HWACCMR0Globals.pfnLeaveSession(pVM, pVCpu, pCtx);
 
-#ifdef VBOX_STRICT
     /* keep track of the CPU owning the VMCS for debugging scheduling weirdness and ring-3 calls. */
     AssertMsg(pVCpu->hwaccm.s.idEnteredCpu == idCpu, ("owner is %d, I'm %d", (int)pVCpu->hwaccm.s.idEnteredCpu, (int)idCpu));
     pVCpu->hwaccm.s.idEnteredCpu = NIL_RTCPUID;
-#endif
 
     ASMAtomicWriteBool(&pCpu->fInUse, false);
     return rc;
