@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 11925 2008-09-01 15:03:24Z vboxsync $ */
+/* $Id: PATMInternal.h 11967 2008-09-02 11:06:07Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -42,7 +42,8 @@
 /* Last version to use SSMR3Put/GetMem */
 # define PATM_SSM_VERSION_GETPUTMEM          53
 #else
-# define PATM_SSM_VERSION                    53
+# define PATM_SSM_VERSION                    54
+# define PATM_SSM_VERSION_VER16              53
 #endif
 
 /* Enable for call patching. */
