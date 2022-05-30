@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 14336 2008-11-18 22:21:54Z vboxsync $ */
+/* $Id: HostImpl.cpp 14337 2008-11-18 22:24:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1194,7 +1194,7 @@ STDMETHODIMP Host::COMGETTER(MemorySize)(ULONG *size)
         return VERR_INTERNAL_ERROR;
     ULONG tmp;
     int rc = hal->getHostMemoryUsage(size, &tmp, &tmp);
-    size /= 1024;
+    *size /= 1024;
     delete hal;
     return rc;
 }
@@ -1217,7 +1217,7 @@ STDMETHODIMP Host::COMGETTER(MemoryAvailable)(ULONG *available)
         return VERR_INTERNAL_ERROR;
     ULONG tmp;
     int rc = hal->getHostMemoryUsage(&tmp, &tmp, available);
-    available /= 1024;
+    *available /= 1024;
     delete hal;
     return rc;
 }
