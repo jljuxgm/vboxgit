@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 15372 2008-12-12 14:51:29Z vboxsync $ *
+ * $Id: VirtualBox.xidl 15381 2008-12-12 16:11:33Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -5920,7 +5920,7 @@
 
   <interface
      name="IHostNetworkInterface" extends="$unknown"
-     uuid="4A89BA1D-E2AD-4D1B-98BB-F04FF2D923F6"
+     uuid="832720ac-2df6-41d4-a867-a0b40df14c7f"
      wsmap="managed"
      >
     <attribute name="name" type="wstring" readonly="yes">
