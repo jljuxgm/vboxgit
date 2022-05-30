@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15857 2009-01-08 11:52:28Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15858 2009-01-08 11:56:52Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1988,6 +1988,7 @@ ResumeExecution:
         ||  RTTimeNanoTS() - pVCpu->hwaccm.s.u64TimeEntry >= 2000000)
     {
         LogFlow(("delta %VX64\n", RTTimeNanoTS() - pVCpu->hwaccm.s.u64TimeEntry));
+        STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatTimeoutResume);
         STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitMaxResume);
         rc = VINF_EM_RAW_INTERRUPT;
         goto end;
@@ -3611,6 +3612,7 @@ DECLASM(int) VMXR0SwitcherStartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVMCSCACHE 
     if (    rc == VINF_SUCCESS
         &&  RTTimeNanoTS() - pVCpu->hwaccm.s.u64TimeEntry >= 2000000)
     {
+        STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatTimeoutSwitcher3264);
         LogFlow(("delta (2) %VX64\n", RTTimeNanoTS() - pVCpu->hwaccm.s.u64TimeEntry));
         return VINF_VMX_PREEMPT_PENDING;
     }

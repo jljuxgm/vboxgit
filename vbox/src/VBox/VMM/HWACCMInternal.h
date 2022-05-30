@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 15853 2009-01-08 10:57:44Z vboxsync $ */
+/* $Id: HWACCMInternal.h 15858 2009-01-08 11:56:52Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -615,6 +615,8 @@ typedef struct HWACCMCPU
     STAMCOUNTER             StatDRxContextSwitch;
     STAMCOUNTER             StatDRxIOCheck;
 
+    STAMCOUNTER             StatTimeoutSwitcher3264;
+    STAMCOUNTER             StatTimeoutResume;
 
     R3PTRTYPE(PSTAMCOUNTER) paStatExitReason;
     R0PTRTYPE(PSTAMCOUNTER) paStatExitReasonR0;
