@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13547 2008-10-23 22:17:58Z vboxsync $
+# $Id: Makefile.kmk 13908 2008-11-06 11:53:47Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1131,6 +1131,7 @@ RuntimeR0Drv_SOURCES.os2 = \
 	common/string/strpbrk.cpp \
 	\
 	common/misc/thread.cpp \
+	generic/RTAssertShouldPanic-generic.cpp \
 	generic/RTLogWriteDebugger-generic.cpp \
 	generic/RTLogWriteStdOut-stub-generic.cpp \
 	generic/RTMpCpuId-generic.cpp \

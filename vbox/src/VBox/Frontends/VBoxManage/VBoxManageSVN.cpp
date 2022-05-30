@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSVN.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VBoxManageSVN.cpp 13908 2008-11-06 11:53:47Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxManage (command-line interface):
  * SVN revision.
@@ -20,8 +20,9 @@
  * additional information or have any questions.
  */
 
-#include <VBox/version.h>
 #include "VBoxManage.h"
+
+#include <VBox/version.h>
 
 /**
  * Return the SVN revision number. We put this function into a separate file

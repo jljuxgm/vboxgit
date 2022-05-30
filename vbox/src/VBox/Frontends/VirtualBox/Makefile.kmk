@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13547 2008-10-23 22:17:58Z vboxsync $
+# $Id: Makefile.kmk 13908 2008-11-06 11:53:47Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt3 GUI.
 #
@@ -63,11 +63,11 @@ ifeq ($(KBUILD_TARGET),os2)
  #
  # Hack for installing the qt.dll when building for OS/2.
  #
- ifneq ($(strip $(VBOX_DLL_QT)),)
+ ifneq ($(strip $(DLL_SDK_QT3_QT)),)
   INSTALLS.os2 += qt.dll
   qt.dll_INST = $(INST_BIN)
   qt.dll_SOURCES += \
-	$(VBOX_DLL_QT)=>$(not-dir $(VBOX_DLL_QT))
+	$(DLL_SDK_QT3_QT)=>$(not-dir $(DLL_SDK_QT3_QT))
  endif
 endif # OS/2
 
@@ -338,6 +338,7 @@ ifdef VBOX_WITH_NETFLT
 endif
 
 VirtualBox_INCS           = \
+    . \
 	./include \
 	$(PATH_VirtualBox)/include
 

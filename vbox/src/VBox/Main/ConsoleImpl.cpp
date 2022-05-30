@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 13878 2008-11-05 15:56:44Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 13908 2008-11-06 11:53:47Z vboxsync $ */
 
 /** @file
  *
@@ -20,8 +20,6 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
-
-#include <iprt/types.h> /* for stdint.h constants */
 
 #if defined(RT_OS_WINDOWS)
 #elif defined(RT_OS_LINUX)
@@ -62,6 +60,8 @@
 #include "Logging.h"
 
 #include <VBox/com/array.h>
+
+#include <iprt/types.h> /* for stdint.h constants */
 
 #include <iprt/string.h>
 #include <iprt/asm.h>

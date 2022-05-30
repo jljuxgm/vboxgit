@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 13279 2008-10-15 11:15:56Z vboxsync $
+; $Id: HWACCMR0A.asm 13908 2008-11-06 11:53:47Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -837,17 +837,22 @@ ENDPROC VMXActivateVMCS
 ; */
 ;DECLASM(int) VMXGetActivateVMCS(RTHCPHYS *pVMCS);
 BEGINPROC VMXGetActivateVMCS
-%ifdef RT_ARCH_AMD64
- %ifdef ASM_CALL64_GCC
-    vmptrst qword [rdi]
- %else
-    vmptrst qword [rcx]
- %endif
+%ifdef RT_OS_OS2
+    mov     eax, VERR_NOT_SUPPORTED
+    ret
 %else
+ %ifdef RT_ARCH_AMD64
+  %ifdef ASM_CALL64_GCC
+    vmptrst qword [rdi]
+  %else
+    vmptrst qword [rcx]
+  %endif
+ %else
     vmptrst qword [esp+04h]
-%endif
+ %endif
     xor     eax, eax
     ret
+%endif
 ENDPROC VMXGetActivateVMCS
 
 ;/**

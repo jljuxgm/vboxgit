@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 13842 2008-11-05 03:46:01Z vboxsync $ */
+/* $Id: MachineImpl.cpp 13908 2008-11-06 11:53:47Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3881,7 +3881,7 @@ bool Machine::isSessionOpen (ComObjPtr <SessionMachine> &aMachine,
 bool Machine::isSessionOpen (ComObjPtr <SessionMachine> &aMachine,
                              ComPtr <IInternalSessionControl> *aControl /*= NULL*/,
                              HMTX *aIPCSem /*= NULL*/,
-                             bool aAllowClosing /*= false*/);
+                             bool aAllowClosing /*= false*/)
 #else
 bool Machine::isSessionOpen (ComObjPtr <SessionMachine> &aMachine,
                              ComPtr <IInternalSessionControl> *aControl /*= NULL*/,

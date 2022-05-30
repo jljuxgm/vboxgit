@@ -1,4 +1,4 @@
-/* $Id: Performance.h 12973 2008-10-03 17:46:19Z vboxsync $ */
+/* $Id: Performance.h 13908 2008-11-06 11:53:47Z vboxsync $ */
 
 /** @file
  *
@@ -22,9 +22,12 @@
  */
 
 
-#include <iprt/types.h>
 #include <VBox/com/defs.h>
 #include <VBox/com/ptr.h>
+
+#include <iprt/types.h>
+#include <iprt/err.h>
+
 #include <algorithm>
 #include <list>
 #include <string>
