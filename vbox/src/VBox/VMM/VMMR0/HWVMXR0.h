@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 13883 2008-11-05 17:04:48Z vboxsync $ */
+/* $Id: HWVMXR0.h 14366 2008-11-19 17:20:49Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -206,6 +206,15 @@ DECLASM(int) VMXR0StartVM32(RTHCUINT fResume, PCPUMCTX pCtx);
  * @param   pCtx        Guest context
  */
 DECLASM(int) VMXR0StartVM64(RTHCUINT fResume, PCPUMCTX pCtx);
+
+/**
+ * Prepares for and executes VMLAUNCH (64 bits guest mode)
+ *
+ * @returns VBox status code
+ * @param   fResume     vmlauch/vmresume
+ * @param   pCtx        Guest context
+ */
+DECLASM(int) VMXR0SwitcherStartVM64(RTHCUINT fResume, PCPUMCTX pCtx);
 
 #endif /* IN_RING0 */
 

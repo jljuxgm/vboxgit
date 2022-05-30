@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 14364 2008-11-19 17:07:11Z vboxsync $ */
+/* $Id: HWACCMInternal.h 14366 2008-11-19 17:20:49Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -518,10 +518,6 @@ typedef HWACCMCPU *PHWACCMCPU;
 #ifdef IN_RING0
 
 VMMR0DECL(PHWACCM_CPUINFO) HWACCMR0GetCurrentCpu();
-
-DECLASM(int) SVMVMRun(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx);
-DECLASM(int) SVMVMRun64(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx);
-DECLASM(int) SVMVMSwitcherRun64(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx);
 
 
 #ifdef VBOX_STRICT
