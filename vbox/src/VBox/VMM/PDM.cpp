@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 12696 2008-09-24 15:29:14Z vboxsync $ */
+/* $Id: PDM.cpp 12744 2008-09-25 14:57:17Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1258,7 +1258,7 @@ PDMR3DECL(int) PDMR3VMMDevHeapFree(PVM pVM, RTR3PTR pv)
 {
     Log(("PDMR3VMMDevHeapFree %VHv\n", pv));
 
-    Assert(pVM->pdm.s.cbVMMDevHeapLeft == 0);
+    /* @todo not a real heap as there's currently only one user. */
     pVM->pdm.s.cbVMMDevHeapLeft = pVM->pdm.s.cbVMMDevHeap;
     return VINF_SUCCESS;
 }
