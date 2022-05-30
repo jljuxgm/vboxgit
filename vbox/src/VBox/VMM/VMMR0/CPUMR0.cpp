@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 16109 2009-01-21 01:35:14Z vboxsync $ */
+/* $Id: CPUMR0.cpp 16111 2009-01-21 01:42:23Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -171,7 +171,7 @@ VMMR0DECL(int) CPUMR0LoadGuestFPU(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     if (CPUMIsGuestInLongModeEx(pCtx))
     {
         /* Save/Restore the state on entry as we need to be in 64 bits mode to access the full state. */
-        pVCpu->cpum.s.fUseFlags |= CPUM_SYNC_FPU_STATE | CPUM_USED_FPU;
+        pVCpu->cpum.s.fUseFlags |= CPUM_SYNC_FPU_STATE | CPUM_USED_FPU | CPUM_USED_FPU_SINCE_REM;
         /** @todo who is saving the host state??  */
     }
     else
@@ -193,7 +193,6 @@ VMMR0DECL(int) CPUMR0LoadGuestFPU(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 
         /* Do the job and record that we've switched FPU state. */
         cpumR0SaveHostRestoreGuestFPUState(&pVCpu->cpum.s);
-        pVCpu->cpum.s.fUseFlags |= CPUM_USED_FPU;
 
         /* Restore EFER. */
         if (pVCpu->cpum.s.fUseFlags & CPUM_MANUAL_XMM_RESTORE)
