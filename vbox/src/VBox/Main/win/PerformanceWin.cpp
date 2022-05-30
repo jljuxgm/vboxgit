@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 12457 2008-09-15 11:14:35Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 12459 2008-09-15 12:07:41Z vboxsync $ */
 
 /** @file
  *
@@ -165,7 +165,7 @@ CollectorWin::CollectorWin() : mRefresher(0), mNameSpace(0), mEnumProcessor(0), 
         return;
     }
 
-    // Retrieve property handles
+    // Retrieve property handles (Returned handles work across all instances of a class!)
 
     if (FAILED (hr = mRefresher->Refresh(0L)))
     {
