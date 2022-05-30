@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 16782 2009-02-16 10:56:21Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 16904 2009-02-18 14:35:38Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1234,7 +1234,10 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
      */
     bool fReused = false;
     if (    (   pPage->cModifications < 48   /** @todo #define */ /** @todo need to check that it's not mapping EIP. */ /** @todo adjust this! */
-             || pPage->fCR3Mix)
+#ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
+             || pPage->fCR3Mix
+#endif
+            )
         &&  !(fReused = pgmPoolMonitorIsReused(pVM, pPage, pRegFrame, &Cpu, pvFault))
         &&  !pgmPoolMonitorIsForking(pPool, &Cpu, GCPhysFault & PAGE_OFFSET_MASK))
     {
@@ -1943,7 +1946,9 @@ static int pgmPoolMonitorFlush(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
         {
             PPGMPOOLPAGE pNewHead = &pPool->aPages[pPage->iMonitoredNext];
             pNewHead->iMonitoredPrev = NIL_PGMPOOL_IDX;
+#ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
             pNewHead->fCR3Mix = pPage->fCR3Mix;
+#endif
             rc = PGMHandlerPhysicalChangeCallbacks(pVM, pPage->GCPhys & ~(RTGCPHYS)(PAGE_SIZE - 1),
                                                    pPool->pfnAccessHandlerR3, MMHyperCCToR3(pVM, pNewHead),
                                                    pPool->pfnAccessHandlerR0, MMHyperCCToR0(pVM, pNewHead),
@@ -4109,9 +4114,10 @@ static void pgmPoolFlushAllInt(PPGMPOOL pPool)
         pPage->fMonitored= false;
         pPage->fCached   = false;
         pPage->fReusedFlushPending = false;
-        pPage->fCR3Mix = false;
 #ifdef PGMPOOL_WITH_USER_TRACKING
         pPage->iUserHead = NIL_PGMPOOL_USER_INDEX;
+#else
+        pPage->fCR3Mix = false;
 #endif
 #ifdef PGMPOOL_WITH_CACHE
         pPage->iAgeNext  = NIL_PGMPOOL_IDX;
@@ -4495,11 +4501,12 @@ int pgmPoolAlloc(PVM pVM, RTGCPHYS GCPhys, PGMPOOLKIND enmKind, uint16_t iUser, 
     pPage->fMonitored = false;
     pPage->fCached = false;
     pPage->fReusedFlushPending = false;
-    pPage->fCR3Mix = false;
 #ifdef PGMPOOL_WITH_MONITORING
     pPage->cModifications = 0;
     pPage->iModifiedNext = NIL_PGMPOOL_IDX;
     pPage->iModifiedPrev = NIL_PGMPOOL_IDX;
+#else
+    pPage->fCR3Mix = false;
 #endif
 #ifdef PGMPOOL_WITH_USER_TRACKING
     pPage->cPresent = 0;
