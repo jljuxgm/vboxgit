@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 15895 2009-01-12 14:18:43Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 15896 2009-01-12 14:19:37Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -162,7 +162,6 @@ typedef struct
     volatile ULONG DpcQueueDepth;
     ULONG          DpcQueueCount;
 } KDPC_DATA, *PKDPC_DATA;
-#endif
 
 RTDECL(bool) RTMpIsCpuWorkPending(void)
 {
