@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 15762 2008-12-25 23:53:50Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 15945 2009-01-14 16:52:20Z vboxsync $ */
 
 /** @file
  *
@@ -2104,14 +2104,6 @@ Console::CreateSharedFolder (IN_BSTR aName, IN_BSTR aHostPath, BOOL aWritable)
     sharedFolder.createObject();
     rc = sharedFolder->init (this, aName, aHostPath, aWritable);
     CheckComRCReturnRC (rc);
-
-    BOOL accessible = FALSE;
-    rc = sharedFolder->COMGETTER(Accessible) (&accessible);
-    CheckComRCReturnRC (rc);
-
-    if (!accessible)
-        return setError (VBOX_E_FILE_ERROR,
-            tr ("Shared folder host path '%ls' is not accessible"), aHostPath);
 
     /* protect mpVM (if not NULL) */
     AutoVMCallerQuietWeak autoVMCaller (this);
