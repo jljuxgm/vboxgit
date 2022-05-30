@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 15991 2009-01-16 14:02:20Z vboxsync $ */
+/* $Id: MachineImpl.cpp 15994 2009-01-16 14:16:33Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3169,10 +3169,15 @@ EnumerateGuestProperties (IN_BSTR aPatterns, ComSafeArrayOut (BSTR, aNames),
 #else
     if (!VALID_PTR (aPatterns) && (aPatterns != NULL))
         return E_POINTER;
-    CheckComArgSafeArrayNotNull (aNames);
-    CheckComArgSafeArrayNotNull (aValues);
-    CheckComArgSafeArrayNotNull (aTimestamps);
-    CheckComArgSafeArrayNotNull (aFlags);
+
+    if (ComSafeArrayOutIsNull (aNames))
+        return E_POINTER;
+    if (ComSafeArrayOutIsNull (aValues))
+        return E_POINTER;
+    if (ComSafeArrayOutIsNull (aTimestamps))
+        return E_POINTER;
+    if (ComSafeArrayOutIsNull (aFlags))
+        return E_POINTER;
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
