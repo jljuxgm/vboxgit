@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 12703 2008-09-24 17:47:58Z vboxsync $ */
+/* $Id: HWACCMInternal.h 12746 2008-09-25 15:18:01Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -120,6 +120,9 @@ __BEGIN_DECLS
 
 /** Maxium resume loops allowed in ring 0 (safety precaution) */
 #define HWACCM_MAX_RESUME_LOOPS             1024
+
+/** Size of the TSS structure + 2 pages for the IO bitmap + end byte. */
+#define HWACCM_VTX_TSS_SIZE                 (sizeof(VBOXTSS) + 2*PAGE_SIZE + 1)
 
 /** HWACCM SSM version
  */
