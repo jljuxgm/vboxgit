@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 13742 2008-11-03 12:19:40Z vboxsync $ */
+/* $Id: VMMInternal.h 13796 2008-11-04 18:37:33Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -349,6 +349,7 @@ typedef struct VMM
 } VMM;
 /** Pointer to VMM. */
 typedef VMM *PVMM;
+
 
 /**
  * VMMCPU Data (part of VMCPU)

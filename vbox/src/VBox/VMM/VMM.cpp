@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 13778 2008-11-04 09:45:27Z vboxsync $ */
+/* $Id: VMM.cpp 13796 2008-11-04 18:37:33Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -255,6 +255,7 @@ VMMR3DECL(int) VMMR3InitCPU(PVM pVM)
     LogFlow(("VMMR3InitCPU\n"));
     return VINF_SUCCESS;
 }
+
 
 /**
  * VMMR3Init worker that initiates the core code.
@@ -764,6 +765,7 @@ VMMR3DECL(int) VMMR3Term(PVM pVM)
     return rc;
 }
 
+
 /**
  * Terminates the per-VCPU VMM.
  *
@@ -775,7 +777,7 @@ VMMR3DECL(int) VMMR3Term(PVM pVM)
  */
 VMMR3DECL(int) VMMR3TermCPU(PVM pVM)
 {
-    return 0;
+    return VINF_SUCCESS;
 }
 
 

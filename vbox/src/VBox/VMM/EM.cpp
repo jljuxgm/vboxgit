@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 13782 2008-11-04 12:16:30Z vboxsync $ */
+/* $Id: EM.cpp 13796 2008-11-04 18:37:33Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -373,6 +373,7 @@ VMMR3DECL(int) EMR3Init(PVM pVM)
     return VINF_SUCCESS;
 }
 
+
 /**
  * Initializes the per-VCPU EM.
  *
@@ -384,6 +385,7 @@ VMMR3DECL(int) EMR3InitCPU(PVM pVM)
     LogFlow(("EMR3InitCPU\n"));
     return VINF_SUCCESS;
 }
+
 
 /**
  * Applies relocations to data and code managed by this
