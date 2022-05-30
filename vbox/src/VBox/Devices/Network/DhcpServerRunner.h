@@ -1,4 +1,4 @@
-/* $Id: DhcpServerRunner.h 17957 2009-03-16 16:56:17Z vboxsync $ */
+/* $Id: DhcpServerRunner.h 17995 2009-03-17 07:51:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -299,7 +299,7 @@ public:
     DhcpServerRunner() : mProcess (NIL_RTPROCESS) {}
     ~DhcpServerRunner() { stop(); /* don't leave abandoned servers */}
 
-    int setOption(DHCPCFG opt, char *val)
+    int setOption(DHCPCFG opt, const char *val)
     {
         if(opt == 0 || opt >= DHCPCFG_NOTOPT_MAXVAL)
             return VERR_INVALID_PARAMETER;
