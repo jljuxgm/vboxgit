@@ -1,4 +1,4 @@
-/* $Revision: 14575 $ */
+/* $Revision: 14901 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -598,6 +598,7 @@ __BEGIN_DECLS
 void VBOXCALL   supdrvOSObjInitCreator(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession);
 bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, const char *pszObjName, int *prc);
 bool VBOXCALL   supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt);
+int  VBOXCALL   supdrvOSEnableVTx(bool fEnabled);
 
 /*******************************************************************************
 *   Shared Functions                                                           *
