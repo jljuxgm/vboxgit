@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 14526 2008-11-24 15:16:01Z vboxsync $ */
+/* $Id: DrvVD.cpp 14535 2008-11-24 17:23:46Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -866,7 +866,10 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
 
             rc = CFGMR3QueryBool(pCfgHandle, "HostIPStack", &fHostIP);
             if (rc == VERR_CFGM_VALUE_NOT_FOUND)
+            {
                 fHostIP = true;
+                rc = VINF_SUCCESS;
+            }
             else if (RT_FAILURE(rc))
             {
                 rc = PDMDRV_SET_ERROR(pDrvIns, rc,
