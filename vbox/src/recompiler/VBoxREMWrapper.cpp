@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 11897 2008-09-01 08:10:47Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 12295 2008-09-09 13:47:40Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -496,20 +496,20 @@ static const REMPARMDESC g_aArgsCPUMQueryGuestCtxPtr[] =
 static const REMPARMDESC g_aArgsCSAMR3MonitorPage[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(RTGCPTR), NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(RTRCPTR), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(CSAMTAG), NULL }
 };
 static const REMPARMDESC g_aArgsCSAMR3UnmonitorPage[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(RTGCPTR), NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(RTRCPTR), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(CSAMTAG), NULL }
 };
 
 static const REMPARMDESC g_aArgsCSAMR3RecordCallAddress[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(RTGCPTR), NULL }
+    { REMPARMDESC_FLAGS_INT,        sizeof(RTRCPTR), NULL }
 };
 
 #if defined(VBOX_WITH_DEBUGGER) && !(defined(RT_OS_WINDOWS) && defined(RT_ARCH_AMD64)) /* the callbacks are problematic */
