@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15273 2008-12-10 18:48:52Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15289 2008-12-11 08:03:16Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1860,6 +1860,19 @@ VMMR0DECL(int) VMXR0RunGuestCode(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     STAM_PROFILE_ADV_START(&pVCpu->hwaccm.s.StatEntry, x);
 
 #ifdef VBOX_STRICT
+
+# ifdef VMX_USE_CACHED_VMCS_ACCESSES
+    {
+        PVMCSCACHE pCache = &pVCpu->hwaccm.s.vmx.VMCSCache;
+        /* Flush the queued writes first. */
+        for (unsigned i=0;i<pCache->Write.cValidEntries;i++)
+        {
+            VMXWriteVMCS(pCache->Write.aField[i], pCache->Write.aFieldVal[i]);
+        }
+        pCache->Write.cValidEntries = 0;
+    }
+# endif
+
     rc = VMXReadVMCS(VMX_VMCS_CTRL_PIN_EXEC_CONTROLS, &val);
     AssertRC(rc);
     Log2(("VMX_VMCS_CTRL_PIN_EXEC_CONTROLS = %08x\n", val));
