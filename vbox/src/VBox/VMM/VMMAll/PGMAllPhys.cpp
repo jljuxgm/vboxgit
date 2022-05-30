@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 15284 2008-12-11 03:23:40Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 15344 2008-12-12 00:13:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -499,7 +499,11 @@ int pgmPhysPageMap(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, PPPGMPAGEMAP ppMap,
     *ppMap = NULL;
     RTHCPHYS HCPhys = PGM_PAGE_GET_HCPHYS(pPage);
     Assert(HCPhys != pVM->pgm.s.HCPhysZeroPg);
+# ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
+    return pgmR0DynMapHCPageInlined(&pVM->pgm.s, HCPhys, ppv);
+# else
     return PGMDynMapHCPage(pVM, HCPhys, ppv);
+# endif
 
 #else /* IN_RING3 || IN_RING0 */
 
