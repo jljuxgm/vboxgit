@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 15366 2008-12-12 13:50:32Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 15918 2009-01-13 15:16:49Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -365,7 +365,7 @@ HRESULT showVMInfo (ComPtr <IVirtualBox> virtualBox, ComPtr<IMachine> machine,
     if (details == VMINFO_MACHINEREADABLE)
         RTPrintf("accelerate3d=\"%s\"\n", accelerate3d ? "on" : "off");
     else
-        RTPrintf("3D Acceleration:       %s\n", accelerate3d ? "on" : "off");
+        RTPrintf("3D Acceleration: %s\n", accelerate3d ? "on" : "off");
 
     ComPtr<IFloppyDrive> floppyDrive;
     rc = machine->COMGETTER(FloppyDrive)(floppyDrive.asOutParam());
