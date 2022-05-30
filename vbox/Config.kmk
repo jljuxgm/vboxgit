@@ -1,4 +1,4 @@
-# $Id: Config.kmk 16881 2009-02-18 09:59:30Z vboxsync $
+# $Id: Config.kmk 16914 2009-02-18 15:40:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1651,7 +1651,7 @@ ifdef VBOX_SIGNING_MODE
     VBOX_PATH_SELFSIGN := $(PATH_DEVTOOLS)/win.x86/selfsign/r1
    endif
   endif
-  VBOX_SIGNTOOL ?= $(VBOX_PATH_SELFSIGN)/SignTool.exe
+  VBOX_SIGNTOOL ?= $(PATH_DEVTOOLS)/bin/retry.cmd $(VBOX_PATH_SELFSIGN)/SignTool.exe
   VBOX_INF2CAT  ?= $(VBOX_PATH_SELFSIGN)/Inf2Cat.exe
 
   # There are three signing modes; 'test', 'development' and 'release'.
@@ -3672,7 +3672,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16881 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16914 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
