@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 16414 2009-01-30 13:43:50Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 16415 2009-01-30 14:00:01Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -297,7 +297,8 @@ void pgmMapSetShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
             }
 
             default:
-                ;
+                AssertFailed();
+                break;
         }
     }
 }
@@ -357,7 +358,8 @@ void pgmMapClearShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iOldPDE)
             }
 
             default:
-                ;
+                AssertFailed();
+                break;
         }
     }
 }
@@ -377,6 +379,10 @@ VMMDECL(int) PGMMapActivateAll(PVM pVM)
         return VINF_SUCCESS;
 
     Assert(PGMGetGuestMode(pVM) >= PGMMODE_32_BIT && PGMGetGuestMode(pVM) <= PGMMODE_PAE_NX);
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+    if (!pPGM->CTX_SUFF(pShwPageCR3))
+        return VINF_SUCCESS;    /* too early */
+#endif
 
     /*
      * Iterate mappings.
@@ -407,6 +413,9 @@ VMMDECL(int) PGMMapDeactivateAll(PVM pVM)
 
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     Assert(PGMGetGuestMode(pVM) >= PGMMODE_32_BIT && PGMGetGuestMode(pVM) <= PGMMODE_PAE_NX);
+
+    if (!pPGM->CTX_SUFF(pShwPageCR3))
+        return VINF_SUCCESS;    /* too early */
 #endif
 
     /*
