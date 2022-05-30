@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 15152 2008-12-09 10:43:07Z vboxsync $ */
+/* $Id: GuestImpl.cpp 16123 2009-01-21 11:02:05Z vboxsync $ */
 
 /** @file
  *
@@ -287,7 +287,7 @@ STDMETHODIMP Guest::SetCredentials(IN_BSTR aUserName, IN_BSTR aPassword,
 
 STDMETHODIMP Guest::GetStatistic(ULONG aCpuId, GuestStatisticType_T aStatistic, ULONG *aStatVal)
 {
-    CheckComArgExpr(aCpuId, aCpuId = 0);
+    CheckComArgExpr(aCpuId, aCpuId == 0);
     CheckComArgExpr(aStatistic, aStatistic < GuestStatisticType_MaxVal);
     CheckComArgOutPointerValid(aStatVal);
 
