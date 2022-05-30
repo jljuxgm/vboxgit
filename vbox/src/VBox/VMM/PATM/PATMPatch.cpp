@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 12600 2008-09-19 13:07:44Z vboxsync $ */
+/* $Id: PATMPatch.cpp 13144 2008-10-09 22:44:11Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -403,7 +403,7 @@ static uint32_t patmPatchGenCode(PVM pVM, PPATCHINFO pPatch, uint8_t *pPB, PPATC
 /* Read bytes and check for overwritten instructions. */
 static int patmPatchReadBytes(PVM pVM, uint8_t *pDest, RTRCPTR pSrc, uint32_t cb)
 {
-    int rc = PGMPhysReadGCPtr(pVM, pDest, pSrc, cb);
+    int rc = PGMPhysSimpleReadGCPtr(pVM, pDest, pSrc, cb);
     AssertRCReturn(rc, rc);
     /*
      * Could be patched already; make sure this is checked!

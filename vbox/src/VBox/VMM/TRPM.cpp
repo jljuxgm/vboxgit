@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: TRPM.cpp 13144 2008-10-09 22:44:11Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor
  */
@@ -956,7 +956,7 @@ VMMR3DECL(int) TRPMR3SyncIDT(PVM pVM)
      * Should probably check/sync the others too, but for now we'll handle that in #GP.
      */
     X86DESC  Idte3;
-    rc = PGMPhysReadGCPtr(pVM, &Idte3, IDTR.pIdt + sizeof(Idte3) * 3,  sizeof(Idte3));
+    rc = PGMPhysSimpleReadGCPtr(pVM, &Idte3, IDTR.pIdt + sizeof(Idte3) * 3,  sizeof(Idte3));
     if (VBOX_FAILURE(rc))
     {
         AssertMsgRC(rc, ("Failed to read IDT[3]! rc=%Vrc\n", rc));
@@ -1180,7 +1180,7 @@ VMMR3DECL(int) TRPMR3SetGuestTrapHandler(PVM pVM, unsigned iTrap, RTRCPTR pHandl
      * Read the guest IDT entry.
      */
     VBOXIDTE GuestIdte;
-    int rc = PGMPhysReadGCPtr(pVM, &GuestIdte, GCPtrIDT + iTrap * sizeof(GuestIdte),  sizeof(GuestIdte));
+    int rc = PGMPhysSimpleReadGCPtr(pVM, &GuestIdte, GCPtrIDT + iTrap * sizeof(GuestIdte),  sizeof(GuestIdte));
     if (VBOX_FAILURE(rc))
     {
         AssertMsgRC(rc, ("Failed to read IDTE! rc=%Vrc\n", rc));

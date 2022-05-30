@@ -1,4 +1,4 @@
-/* $Id: SELMGC.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: SELMGC.cpp 13144 2008-10-09 22:44:11Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager, Guest Context.
  */
@@ -450,7 +450,7 @@ l_tryagain:
 
 #else /* !IN_GC */
         /* Reading too much. Could be cheaper than two seperate calls though. */
-        rc = PGMPhysReadGCPtr(pVM, &tss, GCPtrTss, sizeof(VBOXTSS));
+        rc = PGMPhysSimpleReadGCPtr(pVM, &tss, GCPtrTss, sizeof(VBOXTSS));
         if (VBOX_FAILURE(rc))
         {
             AssertReleaseMsgFailed(("Unable to read TSS structure at %08X\n", GCPtrTss));
