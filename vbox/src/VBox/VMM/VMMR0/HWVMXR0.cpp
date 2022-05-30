@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15258 2008-12-10 16:09:34Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15273 2008-12-10 18:48:52Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -503,6 +503,7 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
         VMXSetupCachedReadVMCS(pCache, VMX_VMCS32_RO_VM_INSTR_ERROR);
         VMXSetupCachedReadVMCS(pCache, VMX_VMCS32_RO_EXIT_INSTR_LENGTH);
         VMXSetupCachedReadVMCS(pCache, VMX_VMCS32_RO_EXIT_INTERRUPTION_ERRCODE);
+        VMXSetupCachedReadVMCS(pCache, VMX_VMCS32_RO_EXIT_INTERRUPTION_INFO);
         VMXSetupCachedReadVMCS(pCache, VMX_VMCS32_RO_EXIT_INSTR_INFO);
         VMXSetupCachedReadVMCS(pCache, VMX_VMCS_RO_EXIT_QUALIFICATION);
         VMXSetupCachedReadVMCS(pCache, VMX_VMCS32_RO_IDT_INFO);
