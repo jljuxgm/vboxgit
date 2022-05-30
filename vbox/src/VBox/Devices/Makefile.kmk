@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14080 2008-11-11 08:28:04Z vboxsync $
+# $Id: Makefile.kmk 14118 2008-11-12 01:08:13Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -254,11 +254,9 @@ DevicesR3_SOURCES       = \
 	Audio/DevSB16.cpp \
 	PC/DevDMA.cpp \
 	Storage/fdc.c \
+	Storage/Debug.cpp \
 	Serial/DevSerial.cpp \
 	Parallel/DevParallel.cpp
-
-DevicesR3_SOURCES.debug = \
-	Storage/Debug.cpp
 
 ifdef VBOX_WITH_E1000
  DevicesR3_DEFS        += VBOX_WITH_E1000
