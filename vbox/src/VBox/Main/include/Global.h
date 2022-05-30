@@ -1,4 +1,4 @@
-/* $Id: Global.h 14664 2008-11-26 21:19:35Z vboxsync $ */
+/* $Id: Global.h 14667 2008-11-26 23:10:02Z vboxsync $ */
 
 /** @file
  *
@@ -26,7 +26,9 @@
 
 /* generated header */
 #include "SchemaDefs.h"
-#include "VirtualBox.h"
+
+/* interface definitions */
+#include "VBox/com/VirtualBox.h"
 
 #include <VBox/ostypes.h>
 
