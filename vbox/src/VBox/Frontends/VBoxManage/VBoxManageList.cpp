@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 17888 2009-03-15 16:44:08Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 17894 2009-03-15 18:05:25Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -784,6 +784,9 @@ int handleList(HandlerArg *a)
                 Bstr upperIp;
                 svr->COMGETTER(UpperIP)(upperIp.asOutParam());
                 RTPrintf("upperIPAddress: %lS\n", upperIp.raw());
+                BOOL bEnabled;
+                svr->COMGETTER(Enabled)(&bEnabled);
+                RTPrintf("Enabled:        %s\n", bEnabled ? "Yes" : "No");
                 RTPrintf("\n");
             }
         }
