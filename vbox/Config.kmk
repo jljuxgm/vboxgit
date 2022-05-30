@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12251 2008-09-09 01:57:21Z vboxsync $
+# $Id: Config.kmk 12261 2008-09-09 03:08:14Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2733,25 +2733,11 @@ else # the gcc guys:
  TEMPLATE_VBOXQTGUIEXE_CXXFLAGS.linux = -pthread
  TEMPLATE_VBOXQTGUIEXE_LDFLAGS.x86 = -m32
  TEMPLATE_VBOXQTGUIEXE_LDFLAGS.amd64 = -m64
-  ifndef USE_KBUILD_QT3_UNIT
-  TEMPLATE_VBOXQTGUIEXE_LIBS = \
-	$(LIB_QT)
-  endif
  TEMPLATE_VBOXQTGUIEXE_LIBS += \
 	$(LIB_SDL) \
 	$(LIB_RUNTIME) \
 	$(LIB_REM) \
 	$(LIB_VMM)
-
- ifndef USE_KBUILD_QT3_UNIT
-  ifeq ($(KBUILD_TARGET_ARCH),amd64)
-   TEMPLATE_VBOXQTGUIEXE_LIBPATH = \
- 	$(VBOX_PATH_QT)/lib64 $(VBOX_PATH_QT)/lib
-  else
-   TEMPLATE_VBOXQTGUIEXE_LIBPATH = \
- 	$(VBOX_PATH_QT)/lib
-  endif
- endif
 
  ifeq ($(KBUILD_TARGET),linux)
   TEMPLATE_VBOXQTGUIEXE_LDFLAGS += $(VBOX_LD_as_needed)
@@ -3448,7 +3434,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12251 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12261 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
