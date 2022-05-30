@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 12692 2008-09-24 14:54:14Z vboxsync $ */
+/* $Id: PGMInternal.h 12902 2008-10-02 08:52:44Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -192,6 +192,7 @@
 #define PGM_TYPE_AMD64      5
 #define PGM_TYPE_NESTED     6
 #define PGM_TYPE_EPT        7
+#define PGM_TYPE_MAX        PGM_TYPE_EPT
 /** @} */
 
 /** Macro for checking if the guest is using paging.
