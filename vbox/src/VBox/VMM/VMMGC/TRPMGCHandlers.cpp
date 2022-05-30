@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 11221 2008-08-07 18:07:49Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 12339 2008-09-10 09:45:53Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -793,7 +793,7 @@ static int trpmGCTrap0dHandler(PVM pVM, PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
 
     /*
      * Optimize RDTSC traps.
-     * Some guests (like Solaris) is using RDTSC all over the place and
+     * Some guests (like Solaris) are using RDTSC all over the place and
      * will end up trapping a *lot* because of that.
      */
     if (   !pRegFrame->eflags.Bits.u1VM
