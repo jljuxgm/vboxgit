@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 14886 2008-12-02 09:55:46Z vboxsync $ */
+/* $Id: DevVGA.cpp 14918 2008-12-02 15:46:46Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2461,7 +2461,7 @@ static int vga_update_display(PVGASTATE s)
         }
 
         full_update = 0;
-        if (!(s->ar_index & 0x20)) {
+        if (!(s->ar_index & 0x20) || (s->sr[0x01] & 0x20)) {
             graphic_mode = GMODE_BLANK;
         } else {
             graphic_mode = s->gr[6] & 1;
