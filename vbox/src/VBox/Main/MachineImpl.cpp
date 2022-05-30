@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 17685 2009-03-11 12:22:40Z vboxsync $ */
+/* $Id: MachineImpl.cpp 17686 2009-03-11 12:26:08Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -1888,8 +1888,8 @@ STDMETHODIMP Machine::AttachHardDisk(IN_GUID aId,
                                      IN_BSTR aControllerName, LONG aControllerPort,
                                      LONG aDevice)
 {
-    LogFlowThisFunc(("aControllerName=\"%ls\" aPort=%ld aDevice=%ld\n",
-                     aControllerName, aPort, aDevice));
+    LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%ld aDevice=%ld\n",
+                     aControllerName, aControllerPort, aDevice));
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
@@ -2208,8 +2208,8 @@ STDMETHODIMP Machine::AttachHardDisk(IN_GUID aId,
 STDMETHODIMP Machine::GetHardDisk(IN_BSTR aControllerName, LONG aControllerPort,
                                   LONG aDevice, IHardDisk **aHardDisk)
 {
-    LogFlowThisFunc(("aControllerName=\"%ls\" aPort=%ld aDevice=%ld\n",
-                     aControllerName, aPort, aDevice));
+    LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%ld aDevice=%ld\n",
+                     aControllerName, aControllerPort, aDevice));
 
     CheckComArgNotNull (aControllerName);
     CheckComArgOutPointerValid (aHardDisk);
@@ -2241,8 +2241,8 @@ STDMETHODIMP Machine::DetachHardDisk(IN_BSTR aControllerName, LONG aControllerPo
 {
     CheckComArgNotNull (aControllerName);
 
-    LogFlowThisFunc(("aControllerName=\"%ls\" aPort=%ld aDevice=%ld\n",
-                     aControllerName, aPort, aDevice));
+    LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%ld aDevice=%ld\n",
+                     aControllerName, aControllerPort, aDevice));
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
