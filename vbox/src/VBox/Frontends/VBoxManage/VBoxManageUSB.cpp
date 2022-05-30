@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUSB.cpp 17104 2009-02-24 23:18:45Z vboxsync $ */
+/* $Id: VBoxManageUSB.cpp 17336 2009-03-04 09:27:24Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -498,11 +498,10 @@ int handleUSBFilter (HandlerArg *a)
             }
             else
             {
-                ComPtr <IUSBDeviceFilterCollection> coll;
-                CHECK_ERROR_BREAK (ctl, COMGETTER(DeviceFilters) (coll.asOutParam()));
+                SafeIfaceArray <IUSBDeviceFilter> coll;
+                CHECK_ERROR_BREAK (ctl, COMGETTER(DeviceFilters) (ComSafeArrayAsOutParam(coll)));
 
-                ComPtr <IUSBDeviceFilter> flt;
-                CHECK_ERROR_BREAK (coll, GetItemAt (cmd.mIndex, flt.asOutParam()));
+                ComPtr <IUSBDeviceFilter> flt = coll[cmd.mIndex];
 
                 if (!f.mName.isNull())
                     CHECK_ERROR_BREAK (flt, COMSETTER(Name) (f.mName.setNullIfEmpty()));
