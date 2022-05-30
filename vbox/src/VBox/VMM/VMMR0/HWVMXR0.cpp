@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15656 2008-12-18 13:38:53Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15679 2008-12-19 10:10:38Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3649,6 +3649,7 @@ VMMR0DECL(int) VMXR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
     }
 
     VMXActivateVMCS(pVCpu->hwaccm.s.vmx.pVMCSPhys);
+    Assert(ASMGetFlags() & X86_EFL_IF);
 
     return rc;
 }
