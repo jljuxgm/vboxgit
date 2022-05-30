@@ -1,4 +1,4 @@
-/* $Id: vboxfs.h 17579 2009-03-09 14:47:32Z vboxsync $ */
+/* $Id: vboxfs.h 17625 2009-03-10 12:56:54Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Internal Header.
  */
@@ -30,7 +30,7 @@ extern "C" {
 #define MAX_NLS_NAME    32
 
 /** The module name. */
-#define DEVICE_NAME              "vboxvfs"
+#define DEVICE_NAME              "vboxfs"
 /** The module description as seen in 'modinfo'. */
 #define DEVICE_DESC              "filesystem for VirtualBox Shared Folders"
 
