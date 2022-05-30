@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13884 2008-11-05 17:17:01Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13885 2008-11-05 17:41:57Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -197,6 +197,10 @@ typedef struct HWACCM
     /** Maximum ASID allowed. */
     RTUINT                      uMaxASID;
 
+#if HC_ARCH_BITS == 32
+    uint32_t                    Alignment0;
+#endif
+
     struct
     {
         /** Set by the ring-0 driver to indicate VMX is supported by the CPU. */
@@ -347,8 +351,9 @@ typedef struct HWACCM
     /** The CPU ID of the CPU currently owning the VMCS. Set in
      * HWACCMR0Enter and cleared in HWACCMR0Leave. */
     RTCPUID                 idEnteredCpu;
+#else
 # if HC_ARCH_BITS == 32
-    RTCPUID                 Alignment0;
+    RTCPUID                 Alignment2;
 # endif
 #endif
 
@@ -500,6 +505,10 @@ typedef struct HWACCMCPU
         DECLR0CALLBACKMEMBER(int, pfnVMRun,(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx));
 
     } svm;
+
+#if HC_ARCH_BITS == 32
+    uint32_t                        Alignment;
+#endif
 
     /** Event injection state. */
     struct
