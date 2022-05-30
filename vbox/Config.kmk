@@ -1,4 +1,4 @@
-# $Id: Config.kmk 13141 2008-10-09 16:55:54Z vboxsync $
+# $Id: Config.kmk 13153 2008-10-10 06:50:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1217,9 +1217,6 @@ endif
 
 # bin2c (convert binary files into C arrays)
 VBOX_BIN2C     ?= $(PATH_OBJ)/bin2c/bin2c$(HOSTSUFF_EXE)
-
-# biossums (set BIOS checksums)
-VBOX_BIOSSUMS  ?= $(PATH_OBJ)/biossums/biossums$(HOSTSUFF_EXE)
 
 # mkisofs
 ifeq ($(KBUILD_HOST),win)
@@ -3554,7 +3551,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13141 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13153 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
