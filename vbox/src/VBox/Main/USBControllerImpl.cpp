@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 17341 2009-03-04 12:22:49Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 17394 2009-03-05 12:48:15Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -361,6 +361,7 @@ public:
 
 STDMETHODIMP USBController::COMGETTER(DeviceFilters) (ComSafeArrayOut(IUSBDeviceFilter *, aDevicesFilters))
 {
+#ifdef VBOX_WITH_USB
     CheckComArgOutSafeArrayPointerValid(aDevicesFilters);
 
     AutoCaller autoCaller (this);
@@ -368,14 +369,13 @@ STDMETHODIMP USBController::COMGETTER(DeviceFilters) (ComSafeArrayOut(IUSBDevice
 
     AutoReadLock alock (this);
 
-#ifdef VBOX_WITH_USB
     SafeIfaceArray <IUSBDeviceFilter> collection (*mDeviceFilters.data());
-#else
-    SafeIfaceArray <IUSBDeviceFilter> collection;
-#endif
     collection.detachTo (ComSafeArrayOutArg (aDevicesFilters));
 
     return S_OK;
+#else
+    ReturnComNotImplemented();
+#endif
 }
 
 // IUSBController methods

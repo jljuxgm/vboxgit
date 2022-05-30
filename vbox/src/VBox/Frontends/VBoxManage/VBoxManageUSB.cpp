@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUSB.cpp 17336 2009-03-04 09:27:24Z vboxsync $ */
+/* $Id: VBoxManageUSB.cpp 17394 2009-03-05 12:48:15Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -471,10 +471,10 @@ int handleUSBFilter (HandlerArg *a)
         {
             if (cmd.mGlobal)
             {
-                ComPtr <IHostUSBDeviceFilterCollection> coll;
-                CHECK_ERROR_BREAK (host, COMGETTER(USBDeviceFilters) (coll.asOutParam()));
-                ComPtr <IHostUSBDeviceFilter> flt;
-                CHECK_ERROR_BREAK (coll, GetItemAt (cmd.mIndex, flt.asOutParam()));
+                SafeIfaceArray <IHostUSBDeviceFilter> coll;
+                CHECK_ERROR_BREAK (host, COMGETTER(USBDeviceFilters) (ComSafeArrayAsOutParam(coll)));
+
+                ComPtr <IHostUSBDeviceFilter> flt = coll[cmd.mIndex];
 
                 if (!f.mName.isNull())
                     CHECK_ERROR_BREAK (flt, COMSETTER(Name) (f.mName.setNullIfEmpty()));
@@ -551,4 +551,4 @@ int handleUSBFilter (HandlerArg *a)
 
     return SUCCEEDED (rc) ? 0 : 1;
 }
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

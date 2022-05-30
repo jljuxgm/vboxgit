@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 17280 2009-03-03 14:19:22Z vboxsync $ */
+/* $Id: HostImpl.h 17394 2009-03-05 12:48:15Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -83,7 +83,7 @@ public:
     STDMETHOD(COMGETTER(DVDDrives))(ComSafeArrayOut (IHostDVDDrive*, drives));
     STDMETHOD(COMGETTER(FloppyDrives))(ComSafeArrayOut (IHostFloppyDrive*, drives));
     STDMETHOD(COMGETTER(USBDevices))(IHostUSBDeviceCollection **aUSBDevices);
-    STDMETHOD(COMGETTER(USBDeviceFilters))(IHostUSBDeviceFilterCollection ** aUSBDeviceFilters);
+    STDMETHOD(COMGETTER(USBDeviceFilters))(ComSafeArrayOut (IHostUSBDeviceFilter *, aUSBDeviceFilters));
     STDMETHOD(COMGETTER(NetworkInterfaces))(ComSafeArrayOut (IHostNetworkInterface *, aNetworkInterfaces));
     STDMETHOD(COMGETTER(ProcessorCount))(ULONG *count);
     STDMETHOD(COMGETTER(ProcessorOnlineCount))(ULONG *count);
