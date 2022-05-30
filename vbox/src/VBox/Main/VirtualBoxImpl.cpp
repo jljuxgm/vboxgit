@@ -1,11 +1,11 @@
-/* $Id: VirtualBoxImpl.cpp 16966 2009-02-20 09:14:28Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 16971 2009-02-20 12:26:19Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -691,19 +691,17 @@ STDMETHODIMP VirtualBox::COMGETTER(ProgressOperations) (ComSafeArrayOut (IProgre
     return S_OK;
 }
 
-STDMETHODIMP VirtualBox::COMGETTER(GuestOSTypes) (IGuestOSTypeCollection **aGuestOSTypes)
+STDMETHODIMP VirtualBox::COMGETTER(GuestOSTypes) (ComSafeArrayOut (IGuestOSType *, aGuestOSTypes))
 {
     CheckComArgOutSafeArrayPointerValid(aGuestOSTypes);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
 
-    ComObjPtr <GuestOSTypeCollection> collection;
-    collection.createObject();
-
     AutoReadLock alock (this);
-    collection->init (mData.mGuestOSTypes);
-    collection.queryInterfaceTo (aGuestOSTypes);
+
+    SafeIfaceArray <IGuestOSType> ostypes (mData.mGuestOSTypes);
+    ostypes.detachTo (ComSafeArrayOutArg (aGuestOSTypes));
 
     return S_OK;
 }
