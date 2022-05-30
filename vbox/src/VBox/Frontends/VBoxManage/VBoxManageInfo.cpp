@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 16966 2009-02-20 09:14:28Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 17075 2009-02-24 15:13:31Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -502,6 +502,9 @@ HRESULT showVMInfo (ComPtr <IVirtualBox> virtualBox, ComPtr<IMachine> machine,
             break;
         case IDEControllerType_PIIX4:
             pszIdeController = "PIIX4";
+            break;
+        case IDEControllerType_ICH6:
+            pszIdeController = "ICH6";
             break;
         default:
             pszIdeController = "unknown";

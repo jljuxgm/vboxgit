@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17055 2009-02-24 11:43:36Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17075 2009-02-24 15:13:31Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1882,6 +1882,8 @@ DECLCALLBACK(int) Appliance::taskThread(RTTHREAD aThread, void *pvUser)
                     rc = biosSettings->COMSETTER(IDEControllerType)(IDEControllerType_PIIX3);
                 else if (!strcmp(pcszIDEType, "PIIX4"))
                     rc = biosSettings->COMSETTER(IDEControllerType)(IDEControllerType_PIIX4);
+                else if (!strcmp(pcszIDEType, "ICH6"))
+                    rc = biosSettings->COMSETTER(IDEControllerType)(IDEControllerType_ICH6);
                 else
                     throw setError(VBOX_E_FILE_ERROR,
                                    tr("Invalid IDE controller type \"%s\""),
