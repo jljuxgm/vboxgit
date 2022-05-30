@@ -1,4 +1,4 @@
-# $Id: Config.kmk 16385 2009-01-29 18:48:50Z vboxsync $
+# $Id: Config.kmk 16388 2009-01-29 21:28:47Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -529,7 +529,7 @@ ifeq ($(KBUILD_TARGET),darwin)
  ifeq ($(KBUILD_TARGET_ARCH),amd64)
   # Temporary:
   VBOX_WITH_QTGUI=
-  VBOX_WITH_DEBUGGER_GUI=
+  override VBOX_WITH_DEBUGGER_GUI=
   VBOX_WITH_PYTHON=
   VBOX_WITH_WEBSERVICES=
   VBOX_WITH_CROGL=
@@ -3208,6 +3208,8 @@ TEMPLATE_VBOXBLDPROG_CXXFLAGS.darwin     = $(VBOX_DARWIN_DEF_SDK_CXXFLAGS)
 TEMPLATE_VBOXBLDPROG_OBJCFLAGS.darwin    = $(VBOX_DARWIN_DEF_SDK_OBJCFLAGS)
 TEMPLATE_VBOXBLDPROG_LDFLAGS.darwin      = $(VBOX_DARWIN_DEF_SDK_LDFLAGS)
   endif
+TEMPLATE_VBOXBLDPROG_OBJCFLAGS.darwin.x86= -m32
+TEMPLATE_VBOXBLDPROG_OBJCFLAGS.darwin.amd64= -m64
 TEMPLATE_VBOXBLDPROG_LIBS                =
  else if1of ($(KBUILD_HOST), freebsd netbsd openbsd)
 TEMPLATE_VBOXBLDPROG_TOOL                = GXX3
@@ -3576,7 +3578,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16385 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16388 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
