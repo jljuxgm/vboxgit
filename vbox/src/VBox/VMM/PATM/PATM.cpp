@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 12532 2008-09-17 09:46:38Z vboxsync $ */
+/* $Id: PATM.cpp 12534 2008-09-17 10:00:00Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -97,7 +97,7 @@ static const DBGCCMD    g_aCmds[] =
 #endif
 
 /* Don't want to break saved states, so put it here as a global variable. */
-static int cIDTHandlersDisabled = 0;
+static unsigned int cIDTHandlersDisabled = 0;
 
 /**
  * Initializes the PATM.
