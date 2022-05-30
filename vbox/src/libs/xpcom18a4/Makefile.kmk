@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16442 2009-01-31 03:29:59Z vboxsync $
+# $Id: Makefile.kmk 16844 2009-02-17 14:06:49Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -629,9 +629,10 @@ xpidl_TEMPLATE = XPCOMBLDPROG
 xpidl_DEFS = EXPORT_XPT_API
 ## @todo This assumes HOST == TARGET.
 xpidl_INST = $(INST_BIN)
-ifeq ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),darwin.amd64) # HACK ALERT!
+ifeq ($(KBUILD_HOST).$(KBUILD_HOST_ARCH),darwin.amd64) # HACK ALERT!
  xpidl_BLD_TRG_ARCH = x86
  ## @todo kBuild ticket 84 workarounds:
+ xpidl_DEFS.x86     = $(TEMPLATE_XPCOMBLDPROG_DEFS.x86)
  xpidl_CFLAGS.x86   = $(TEMPLATE_XPCOMBLDPROG_CFLAGS.x86)
  xpidl_CXXFLAGS.x86 = $(TEMPLATE_XPCOMBLDPROG_CXXFLAGS.x86)
  xpidl_LDFLAGS.x86  = $(TEMPLATE_XPCOMBLDPROG_LDFLAGS.x86)
