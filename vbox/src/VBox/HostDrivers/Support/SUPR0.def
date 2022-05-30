@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 12492 2008-09-16 15:11:03Z vboxsync $
+; $Id: SUPR0.def 13497 2008-10-22 15:15:21Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Built-in exports.
 ;
@@ -107,6 +107,8 @@ EXPORTS
     RTMpGetCount
     RTMpCpuIdToSetIndex
     RTMpCpuId
+    RTPowerNotificationRegister
+    RTPowerNotificationDeregister
     RTLogDefaultInstance
     RTLogRelDefaultInstance
     RTLogSetDefaultInstanceThread
