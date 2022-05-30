@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 13538 2008-10-23 14:11:01Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 13654 2008-10-29 15:01:22Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -152,8 +152,10 @@ typedef struct VBOXNETFLTINS
 # elif defined(RT_OS_SOLARIS)
             /** @name Solaris instance data.
              * @{ */
-            /** Pointer to the bound IP stream. */
-            void volatile *pvIpStream;
+            /** Pointer to the bound IPv4 stream. */
+            void volatile *pvIp4Stream;
+            /** Pointer to the bound IPv6 stream. */
+            void volatile *pvIp6Stream;
             /** Pointer to the bound ARP stream. */
             void volatile *pvArpStream;
             /** Pointer to the unbound promiscuous stream. */
