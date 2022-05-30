@@ -1,4 +1,4 @@
-/* $Id: MMPhys.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: MMPhys.cpp 13819 2008-11-04 23:14:51Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Physical Memory.
  *
@@ -267,7 +267,7 @@ VMMR3DECL(int) MMR3PhysRomRegister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys,
         if (    (pCur->aPhysPages[iPage].Phys & (MM_RAM_FLAGS_RESERVED | MM_RAM_FLAGS_ROM | MM_RAM_FLAGS_MMIO | MM_RAM_FLAGS_MMIO2))
             !=  MM_RAM_FLAGS_RESERVED)
         {
-            AssertMsgFailed(("Flags conflict at %VGp, HCPhys=%VHp.\n", pCur->u.phys.GCPhys + (iPage << PAGE_SHIFT), pCur->aPhysPages[iPage].Phys));
+            AssertMsgFailed(("Flags conflict at %VGp, HCPhys=%RHp.\n", pCur->u.phys.GCPhys + (iPage << PAGE_SHIFT), pCur->aPhysPages[iPage].Phys));
             return VERR_INVALID_PARAMETER;
         }
 

@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: MMHyper.cpp 13819 2008-11-04 23:14:51Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -1101,7 +1101,7 @@ static DECLCALLBACK(void) mmR3HyperInfoHma(PVM pVM, PCDBGFINFOHLP pHlp, const ch
                 break;
 
             case MMLOOKUPHYPERTYPE_HCPHYS:
-                pHlp->pfnPrintf(pHlp, "%VGv-%VGv %RHv HCPHYS  %VHp %s\n",
+                pHlp->pfnPrintf(pHlp, "%VGv-%VGv %RHv HCPHYS  %RHp %s\n",
                                 pLookup->off + pVM->mm.s.pvHyperAreaGC,
                                 pLookup->off + pVM->mm.s.pvHyperAreaGC + pLookup->cb,
                                 pLookup->u.HCPhys.pvR3, pLookup->u.HCPhys.HCPhys,

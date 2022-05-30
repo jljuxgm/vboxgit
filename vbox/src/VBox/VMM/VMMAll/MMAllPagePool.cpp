@@ -1,4 +1,4 @@
-/* $Id: MMAllPagePool.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: MMAllPagePool.cpp 13819 2008-11-04 23:14:51Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  *
@@ -161,7 +161,7 @@ VMMDECL(void *) MMPagePhys2Page(PVM pVM, RTHCPHYS HCPhysPage)
         if (!pvPage)
         {
             STAM_COUNTER_INC(&pVM->mm.s.CTX_SUFF(pPagePool)->cErrors);
-            AssertMsg(pvPage, ("Invalid HCPhysPage=%VHp specified\n", HCPhysPage));
+            AssertMsg(pvPage, ("Invalid HCPhysPage=%RHp specified\n", HCPhysPage));
         }
     }
     return pvPage;
@@ -188,7 +188,7 @@ VMMDECL(int) MMPagePhys2PageEx(PVM pVM, RTHCPHYS HCPhysPage, void **ppvPage)
         if (!pvPage)
         {
             STAM_COUNTER_INC(&pVM->mm.s.CTX_SUFF(pPagePool)->cErrors);
-            AssertMsg(pvPage, ("Invalid HCPhysPage=%VHp specified\n", HCPhysPage));
+            AssertMsg(pvPage, ("Invalid HCPhysPage=%RHp specified\n", HCPhysPage));
             return VERR_INVALID_POINTER;
         }
     }

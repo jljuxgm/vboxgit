@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: CSAM.cpp 13819 2008-11-04 23:14:51Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1802,7 +1802,7 @@ VMMR3DECL(int) CSAMR3MonitorPage(PVM pVM, RTRCPTR pPageAddrGC, CSAMTAG enmTag)
         rc = PGMShwGetPage(pVM, pPageAddrGC, &fPageShw, &GCPhys);
 //        AssertMsg(     (rc == VERR_PAGE_NOT_PRESENT || rc == VERR_PAGE_TABLE_NOT_PRESENT)
 //                ||  !(fPageShw & X86_PTE_RW)
-//                ||   (pPageRec->page.GCPhys == 0), ("Shadow page flags for %VRv (%VHp) aren't readonly (%VX64)!!\n", pPageAddrGC, GCPhys, fPageShw));
+//                ||   (pPageRec->page.GCPhys == 0), ("Shadow page flags for %VRv (%RHp) aren't readonly (%VX64)!!\n", pPageAddrGC, GCPhys, fPageShw));
     }
 #endif
 
