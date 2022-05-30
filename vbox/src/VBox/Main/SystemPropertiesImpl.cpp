@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 13835 2008-11-05 02:34:43Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 
 /** @file
  *
@@ -578,7 +578,7 @@ HRESULT SystemProperties::setDefaultMachineFolder (const BSTR aPath)
     int vrc = mParent->calculateFullPath (path, folder);
     if (RT_FAILURE (vrc))
         return setError (E_FAIL,
-            tr ("Invalid default machine folder '%ls' (%Vrc)"),
+            tr ("Invalid default machine folder '%ls' (%Rrc)"),
             path.raw(), vrc);
 
     mDefaultMachineFolder = path;
@@ -600,7 +600,7 @@ HRESULT SystemProperties::setDefaultHardDiskFolder (const BSTR aPath)
     int vrc = mParent->calculateFullPath (path, folder);
     if (RT_FAILURE (vrc))
         return setError (E_FAIL,
-            tr ("Invalid default hard disk folder '%ls' (%Vrc)"),
+            tr ("Invalid default hard disk folder '%ls' (%Rrc)"),
             path.raw(), vrc);
 
     mDefaultHardDiskFolder = path;

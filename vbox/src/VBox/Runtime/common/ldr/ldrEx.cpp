@@ -1,4 +1,4 @@
-/* $Id: ldrEx.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: ldrEx.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Extended Features.
  */
@@ -263,7 +263,7 @@ RTDECL(int) RTLdrRelocate(RTLDRMOD hLdrMod, void *pvBits, RTUINTPTR NewBaseAddre
      * Do it.
      */
     int rc = pMod->pOps->pfnRelocate(pMod, pvBits, NewBaseAddress, OldBaseAddress, pfnGetImport, pvUser);
-    LogFlow(("RTLdrRelocate: returns %Vrc\n", rc));
+    LogFlow(("RTLdrRelocate: returns %Rrc\n", rc));
     return rc;
 }
 

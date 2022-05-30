@@ -1,4 +1,4 @@
-/* $Id: fs-win.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: fs-win.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  * IPRT - File System, Win32.
  */
@@ -261,7 +261,7 @@ RTR3DECL(int) RTFsQuerySizes(const char *pszFsPath, RTFOFF *pcbTotal, RTFOFF *pc
         {
             DWORD Err = GetLastError();
             rc = RTErrConvertFromWin32(Err);
-            Log(("RTFsQuerySizes(%s,): GetDiskFreeSpaceEx failed with lasterr %d (%Vrc)\n",
+            Log(("RTFsQuerySizes(%s,): GetDiskFreeSpaceEx failed with lasterr %d (%Rrc)\n",
                  pszFsPath, Err, rc));
         }
     }
@@ -290,7 +290,7 @@ RTR3DECL(int) RTFsQuerySizes(const char *pszFsPath, RTFOFF *pcbTotal, RTFOFF *pc
         {
             DWORD Err = GetLastError();
             rc = RTErrConvertFromWin32(Err);
-            Log(("RTFsQuerySizes(%s,): GetDiskFreeSpace failed with lasterr %d (%Vrc)\n",
+            Log(("RTFsQuerySizes(%s,): GetDiskFreeSpace failed with lasterr %d (%Rrc)\n",
                  pszFsPath, Err, rc));
         }
     }
@@ -344,7 +344,7 @@ RTR3DECL(int) RTFsQuerySerial(const char *pszFsPath, uint32_t *pu32Serial)
     {
         DWORD Err = GetLastError();
         rc = RTErrConvertFromWin32(Err);
-        Log(("RTFsQuerySizes(%s,): GetDiskFreeSpaceEx failed with lasterr %d (%Vrc)\n",
+        Log(("RTFsQuerySizes(%s,): GetDiskFreeSpaceEx failed with lasterr %d (%Rrc)\n",
              pszFsPath, Err, rc));
     }
 
@@ -406,7 +406,7 @@ RTR3DECL(int) RTFsQueryProperties(const char *pszFsPath, PRTFSPROPERTIES pProper
     {
         DWORD Err = GetLastError();
         rc = RTErrConvertFromWin32(Err);
-        Log(("RTFsQuerySizes(%s,): GetVolumeInformation failed with lasterr %d (%Vrc)\n",
+        Log(("RTFsQuerySizes(%s,): GetVolumeInformation failed with lasterr %d (%Rrc)\n",
              pszFsPath, Err, rc));
     }
 

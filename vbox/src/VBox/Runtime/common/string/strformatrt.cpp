@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
+/* $Id: strformatrt.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -661,7 +661,7 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
             }
 
             /*
-             * iprt status code: %Vrc, %Vrs, %Vrf, %Vra.
+             * iprt status code: %Rrc, %Rrs, %Rrf, %Rra.
              */
             case 'r':
             {

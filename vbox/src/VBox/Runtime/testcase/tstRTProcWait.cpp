@@ -1,4 +1,4 @@
-/* $Id: tstRTProcWait.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstRTProcWait.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcWait.
  */
@@ -97,13 +97,13 @@ int main(int argc, char **argv)
                 }
             }
             else
-                RTPrintf("tstRTWait: RTProcWait failed with rc=%Vrc!\n", rc);
+                RTPrintf("tstRTWait: RTProcWait failed with rc=%Rrc!\n", rc);
         }
         else
-            RTPrintf("tstRTWait: RTThreadWait or SpawnerThread failed with rc=%Vrc!\n", rc);
+            RTPrintf("tstRTWait: RTThreadWait or SpawnerThread failed with rc=%Rrc!\n", rc);
     }
     else
-        RTPrintf("tstRTWait: RTThreadCreate failed with rc=%Vrc!\n", rc);
+        RTPrintf("tstRTWait: RTThreadCreate failed with rc=%Rrc!\n", rc);
 
     return RT_SUCCESS(rc) ? 0 : 1;
 }

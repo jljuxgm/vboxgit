@@ -1,4 +1,4 @@
-/* $Id: tstCidr.cpp 8295 2008-04-22 13:57:10Z vboxsync $ */
+/* $Id: tstCidr.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPv4.
  */
@@ -48,7 +48,7 @@
         if (expected_result && !result) \
         { \
             g_cErrors++; \
-            RTPrintf("%s, %d: %s: expected %Vrc got %Vrc\n", \
+            RTPrintf("%s, %d: %s: expected %Rrc got %Rrc\n", \
                     __FUNCTION__, __LINE__, string, expected_result, result); \
         } \
         else if (   expected_result != result \
@@ -57,7 +57,7 @@
                          || expected_netmask != netmask))) \
         { \
             g_cErrors++; \
-            RTPrintf("%s, %d: '%s': expected %Vrc got %Vrc, expected network %08x got %08x, expected netmask %08x got %08x\n", \
+            RTPrintf("%s, %d: '%s': expected %Rrc got %Rrc, expected network %08x got %08x, expected netmask %08x got %08x\n", \
                     __FUNCTION__, __LINE__, string, expected_result, result, expected_network, network, expected_netmask, netmask); \
         } \
     } while (0)

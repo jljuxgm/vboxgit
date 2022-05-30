@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 11836 2008-08-29 16:52:20Z vboxsync $ */
+/* $Id: process-posix.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -81,7 +81,7 @@ RTR3DECL(int)   RTProcCreate(const char *pszExec, const char * const *papszArgs,
     if (access(pszExec, X_OK))
     {
         int rc = RTErrConvertFromErrno(errno);
-        AssertMsgFailed(("'%s' %Vrc!\n", pszExec, rc));
+        AssertMsgFailed(("'%s' %Rrc!\n", pszExec, rc));
         return rc;
     }
 

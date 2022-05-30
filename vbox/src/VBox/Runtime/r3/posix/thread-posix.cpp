@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 13664 2008-10-29 16:16:55Z vboxsync $ */
+/* $Id: thread-posix.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -265,7 +265,7 @@ RTDECL(int) RTThreadSleep(unsigned cMillies)
         if (!pthread_yield())
 #endif
         {
-            LogFlow(("RTThreadSleep: returning %Vrc (cMillies=%d)\n", VINF_SUCCESS, cMillies));
+            LogFlow(("RTThreadSleep: returning %Rrc (cMillies=%d)\n", VINF_SUCCESS, cMillies));
             return VINF_SUCCESS;
         }
     }
@@ -278,13 +278,13 @@ RTDECL(int) RTThreadSleep(unsigned cMillies)
         ts.tv_sec  = cMillies / 1000;
         if (!nanosleep(&ts, &tsrem))
         {
-            LogFlow(("RTThreadSleep: returning %Vrc (cMillies=%d)\n", VINF_SUCCESS, cMillies));
+            LogFlow(("RTThreadSleep: returning %Rrc (cMillies=%d)\n", VINF_SUCCESS, cMillies));
             return VINF_SUCCESS;
         }
     }
 
     int rc = RTErrConvertFromErrno(errno);
-    LogFlow(("RTThreadSleep: returning %Vrc (cMillies=%d)\n", rc, cMillies));
+    LogFlow(("RTThreadSleep: returning %Rrc (cMillies=%d)\n", rc, cMillies));
     return rc;
 }
 

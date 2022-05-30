@@ -1,4 +1,4 @@
-/* $Id: tstUuid.cpp 11543 2008-08-21 15:35:28Z vboxsync $ */
+/* $Id: tstUuid.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  * IPRT Testcase - UUID.
  */
@@ -47,12 +47,12 @@ int main(int argc, char **argv)
     rc = RTR3Init();
     if (rc)
     {
-        RTPrintf("RTR3Init failed: %Vrc\n", rc);
+        RTPrintf("RTR3Init failed: %Rrc\n", rc);
         return 1;
     }
 
 #define CHECK_RC()      \
-    do { if (RT_FAILURE(rc)) { RTPrintf("tstUuid(%d): rc=%Vrc!\n", __LINE__, rc); cErrors++; } } while (0)
+    do { if (RT_FAILURE(rc)) { RTPrintf("tstUuid(%d): rc=%Rrc!\n", __LINE__, rc); cErrors++; } } while (0)
 #define CHECK_EXPR(expr) \
     do { const bool f = !!(expr); if (!f) { RTPrintf("tstUuid(%d): %s!\n", __LINE__, #expr); cErrors++; } } while (0)
 

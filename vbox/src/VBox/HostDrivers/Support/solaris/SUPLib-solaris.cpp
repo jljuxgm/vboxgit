@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 11725 2008-08-27 22:21:47Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */
@@ -97,7 +97,7 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited)
             case ENOENT:    rc = VERR_VM_DRIVER_NOT_INSTALLED; break;
             default:        rc = VERR_VM_DRIVER_OPEN_ERROR; break;
         }
-        LogRel(("Failed to open \"%s\", errno=%d, rc=%Vrc\n", DEVICE_NAME, errno, rc));
+        LogRel(("Failed to open \"%s\", errno=%d, rc=%Rrc\n", DEVICE_NAME, errno, rc));
         return rc;
     }
 

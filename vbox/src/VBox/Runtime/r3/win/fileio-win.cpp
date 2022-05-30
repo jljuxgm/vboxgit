@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 13104 2008-10-08 23:38:46Z vboxsync $ */
+/* $Id: fileio-win.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -713,7 +713,7 @@ RTR3DECL(int) RTFileSetTimes(RTFILE File, PCRTTIMESPEC pAccessTime, PCRTTIMESPEC
     {
         DWORD Err = GetLastError();
         rc = RTErrConvertFromWin32(Err);
-        Log(("RTFileSetTimes(%RTfile, %p, %p, %p, %p): SetFileTime failed with lasterr %d (%Vrc)\n",
+        Log(("RTFileSetTimes(%RTfile, %p, %p, %p, %p): SetFileTime failed with lasterr %d (%Rrc)\n",
              File, pAccessTime, pModificationTime, pChangeTime, pBirthTime, Err, rc));
     }
     return rc;

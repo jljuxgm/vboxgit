@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 13835 2008-11-05 02:34:43Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1843,7 +1843,7 @@ static int remLoadLinuxObj(void)
                 {
                     RTUINTPTR Value;
                     rc = RTLdrGetSymbolEx(g_ModREM2, g_pvREM2, (RTUINTPTR)g_pvREM2, g_aExports[i].pszName, &Value);
-                    AssertMsgRC(rc, ("%s rc=%Vrc\n", g_aExports[i].pszName, rc));
+                    AssertMsgRC(rc, ("%s rc=%Rrc\n", g_aExports[i].pszName, rc));
                     if (RT_FAILURE(rc))
                         break;
                     rc = remGenerateExportGlue(&Value, &g_aExports[i]);
@@ -1858,7 +1858,7 @@ static int remLoadLinuxObj(void)
         RTLdrClose(g_ModREM2);
         g_ModREM2 = NIL_RTLDRMOD;
     }
-    LogRel(("REM: failed loading '%s', rc=%Vrc\n", szPath, rc));
+    LogRel(("REM: failed loading '%s', rc=%Rrc\n", szPath, rc));
     return rc;
 }
 

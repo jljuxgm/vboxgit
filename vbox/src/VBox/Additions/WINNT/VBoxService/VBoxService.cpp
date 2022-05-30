@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 13835 2008-11-05 02:34:43Z vboxsync $ */
+/* $Id: VBoxService.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
 /** @file
  * VBoxService - The Guest Additions Helper Service.
  */
@@ -173,7 +173,7 @@ static int vboxStartServices (VBOXSERVICEENV *pEnv, VBOXSERVICEINFO *pTable)
 
         if (RT_FAILURE (rc))
         {
-            writeLog("VBoxService: Failed to initialize! Error = %Vrc.\n", rc);
+            writeLog("VBoxService: Failed to initialize! Error = %Rrc.\n", rc);
         }
         else
         {

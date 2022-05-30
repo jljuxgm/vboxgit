@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 13779 2008-11-04 09:46:13Z vboxsync $ */
+/* $Id: ConsoleImpl.h 13837 2008-11-05 02:54:02Z vboxsync $ */
 
 /** @file
  *
@@ -224,7 +224,7 @@ public:
 
     void reportAuthLibraryError (const char *filename, int rc)
     {
-        setError (E_FAIL, tr("Could not load the external authentication library '%s' (%Vrc)"), filename, rc);
+        setError (E_FAIL, tr("Could not load the external authentication library '%s' (%Rrc)"), filename, rc);
     }
 
     // for VirtualBoxSupportErrorInfoImpl
