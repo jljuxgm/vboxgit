@@ -1,4 +1,4 @@
-/* $Id: config.h 9143 2008-05-27 08:06:46Z vboxsync $ */
+/* $Id: config.h 15520 2008-12-15 16:58:50Z vboxsync $ */
 /** @file
  * Sun config - Maintained by hand
  */
@@ -26,5 +26,7 @@
 #define CONFIG_SOFTMMU 1
 
 #ifdef VBOX_WITH_64_BITS_GUESTS
-#define TARGET_X86_64
+# if defined(__x86_64__) || defined (VBOX_ENABLE_VBOXREM64)
+#  define TARGET_X86_64
+# endif
 #endif
