@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 17639 2009-03-10 15:31:20Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 17667 2009-03-11 09:35:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -298,11 +298,6 @@ void pgmMapSetShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
                     }
                     int rc = pgmShwSyncPaePDPtr(pVM, (iPdPt << X86_PDPT_SHIFT), &GstPdpe, &pShwPaePd);
                     AssertFatal(RT_SUCCESS(rc));
-                    if (rc != VINF_SUCCESS)
-                    {
-                        rc = pgmShwSyncPaePDPtr(pVM, (iPdPt << X86_PDPT_SHIFT), &GstPdpe, &pShwPaePd);
-                        AssertFatalMsg(rc == VINF_SUCCESS, ("rc = %Rrc\n", rc));
-                    }
                 }
                 Assert(pShwPaePd);
 #ifdef IN_RC    /* Lock mapping to prevent it from being reused during pgmPoolFree. */
