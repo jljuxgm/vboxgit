@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14932 2008-12-03 08:04:59Z vboxsync $
+# $Id: Makefile.kmk 15316 2008-12-11 17:19:45Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -96,7 +96,7 @@ VBOX_LNX_STRIP_BIN = \
 	VBoxDD.so \
 	VBoxDD2.so \
 	VBoxManage \
-	VBoxREM.so \
+	$(notdir $(wildcard $(PATH_BIN)/VBoxREM*.so)) \
 	VBoxRT.so \
 	$(if $(VBOX_WITH_VBOXSDL),VBoxSDL $(if $(VBOX_WITH_HARDENING),VBoxSDL.so),) \
 	VBoxSettings.so \
