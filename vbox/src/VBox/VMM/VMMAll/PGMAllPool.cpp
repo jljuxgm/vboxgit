@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17202 2009-02-27 13:13:31Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17203 2009-02-27 13:14:53Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -269,6 +269,7 @@ DECLINLINE(int) pgmPoolPhysSimpleReadGCPhys(PVM pVM, void *pvDst, CTXTYPE(RTGCPT
     memcpy(pvDst, (RTHCPTR)((uintptr_t)pvSrc & ~(RTHCUINTPTR)(cb - 1)), cb);
     return VINF_SUCCESS;
 #else
+    /* @todo in RC we could attempt to use the virtual address, although this can cause many faults (PAE Windows XP guest). */
     return PGMPhysSimpleReadGCPhys(pVM, pvDst, GCPhysSrc & ~(RTGCPHYS)(cb - 1), cb);
 #endif
 }
