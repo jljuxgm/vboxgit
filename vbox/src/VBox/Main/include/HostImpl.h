@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 17394 2009-03-05 12:48:15Z vboxsync $ */
+/* $Id: HostImpl.h 17494 2009-03-06 16:55:44Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -32,10 +32,6 @@
 class USBProxyService;
 #endif
 #include "HostPower.h"
-
-#ifdef RT_OS_WINDOWS
-# include "win/svchlp.h"
-#endif
 
 #ifdef RT_OS_LINUX
 # include <HostHardwareLinux.h>
@@ -132,11 +128,6 @@ public:
     HRESULT checkUSBProxyService();
 #endif /* !VBOX_WITH_USB */
 
-#ifdef RT_OS_WINDOWS
-    static int networkInterfaceHelperServer (SVCHlpClient *aClient,
-                                             SVCHlpMsg::Code aMsgCode);
-#endif
-
     // for VirtualBoxSupportErrorInfoImpl
     static const wchar_t *getComponentName() { return L"Host"; }
 
@@ -161,18 +152,6 @@ private:
                      : NULL;
     }
 #endif /* VBOX_WITH_USB */
-
-#ifdef RT_OS_WINDOWS
-    static int createNetworkInterface (SVCHlpClient *aClient,
-                                       const Utf8Str &aName,
-                                       Guid &aGUID, Utf8Str &aErrMsg);
-    static int removeNetworkInterface (SVCHlpClient *aClient,
-                                       const Guid &aGUID,
-                                       Utf8Str &aErrMsg);
-    static HRESULT networkInterfaceHelperClient (SVCHlpClient *aClient,
-                                                 Progress *aProgress,
-                                                 void *aUser, int *aVrc);
-#endif
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
     void registerMetrics (PerformanceCollector *aCollector);

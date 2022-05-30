@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 17419 2009-03-05 18:32:17Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 17494 2009-03-06 16:55:44Z vboxsync $ */
 
 /** @file
  *
@@ -62,7 +62,7 @@ public:
     HRESULT init (Bstr interfaceName, Guid guid, HostNetworkInterfaceType_T ifType);
 #ifdef VBOX_WITH_HOSTNETIF_API
     HRESULT init (Bstr aInterfaceName, HostNetworkInterfaceType_T ifType, struct NETIFINFO *pIfs);
-    HRESULT updateConfig (struct NETIFINFO *pIfs);
+    HRESULT updateConfig ();
 #endif
 
     // IHostNetworkInterface properties
@@ -85,10 +85,14 @@ public:
     // for VirtualBoxSupportErrorInfoImpl
     static const wchar_t *getComponentName() { return L"HostNetworkInterface"; }
 
+    HRESULT setVirtualBox(VirtualBox *pVBox);
+    HRESULT getVirtualBox(VirtualBox **ppVBox);
 private:
     const Bstr mInterfaceName;
     const Guid mGuid;
     HostNetworkInterfaceType_T mIfType;
+
+    ComObjPtr <VirtualBox, ComWeakRef> mVBox;
 
     struct Data
     {
