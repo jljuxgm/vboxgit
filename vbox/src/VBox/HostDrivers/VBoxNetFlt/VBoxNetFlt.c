@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 13929 2008-11-06 18:37:19Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 13979 2008-11-07 21:09:02Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -402,7 +402,7 @@ NETFLT_DECL_CALLBACK(void) NETFLT_CALLBACK(vboxNetFltPortRelease)(PINTNETTRUNKIF
 NETFLT_DECL_CALLBACK(int) vboxNetFltPortXmit(PINTNETTRUNKIFPORT pIfPort, PINTNETSG pSG, uint32_t fDst)
 {
     PVBOXNETFLTINS pThis = IFPORT_2_VBOXNETFLTINS(pIfPort);
-    int rc;
+    int rc = VINF_SUCCESS;
 
     /*
      * Input validation.
