@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17838 2009-03-13 15:31:07Z vboxsync $
+# $Id: Makefile.kmk 17841 2009-03-13 15:42:39Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -103,9 +103,9 @@ VBOX_LNX_STRIP_BIN = \
 	$(if $(eq $(KBUILD_TARGET_ARCH),x86),VBoxREM64.so,) \
 	VBoxRT.so \
 	$(if $(VBOX_WITH_VBOXSDL),VBoxSDL $(if $(VBOX_WITH_HARDENING),VBoxSDL.so),) \
-	$(if $(VBOX_WITH_SHARED_CLIPBOARD), VBoxSharedClipboard.so) \
-	$(if $(VBOX_WITH_SHARED_FOLDERS), VBoxSharedFolders.so) \
-	$(if $(VBOX_WITH_GUEST_PROPS),VBoxGuestPropSvc.so) \
+	$(if $(VBOX_WITH_SHARED_CLIPBOARD), VBoxSharedClipboard.so,) \
+	$(if $(VBOX_WITH_SHARED_FOLDERS), VBoxSharedFolders.so,) \
+	$(if $(VBOX_WITH_GUEST_PROPS),VBoxGuestPropSvc.so,) \
 	$(if $(VBOX_WITH_MAIN), \
 	  VBoxManage \
 	  VBoxNetDHCP $(if $(VBOX_WITH_HARDENING),VBoxNetDHCP.so),) \
@@ -116,13 +116,13 @@ VBOX_LNX_STRIP_BIN = \
 	  VBoxXPCOMIPCD \
 	  components/VBoxXPCOMIPCC.so \
 	  components/VBoxSVCM.so \
-	  components/VBoxC.so) \
+	  components/VBoxC.so,) \
 	$(if $(VBOX_WITH_CROGL),\
 	  VBoxOGLhostcrutil.so \
 	  VBoxOGLhosterrorspu.so \
 	  VBoxOGLrenderspu.so \
-	  VBoxSharedCrOpenGL.so) \
-	$(if $(VBOX_WITH_PYTHON),VBoxPython.so) \
+	  VBoxSharedCrOpenGL.so,) \
+	$(if $(VBOX_WITH_PYTHON),VBoxPython.so,) \
 	VBoxTunctl
 
 # Do not remove relocation information of these binaries
