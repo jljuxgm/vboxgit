@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16170 2009-01-22 14:40:08Z vboxsync $
+# $Id: Makefile.kmk 16226 2009-01-26 13:05:01Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -636,7 +636,8 @@ define def_vbox_slirp_cflags
   $(file)_DEFS += \
       $(if $(VBOX_WITH_SIMPLIFIED_SLIRP_SYNC), VBOX_WITH_SIMPLIFIED_SLIRP_SYNC) \
       $(if $(VBOX_WITH_SLIRP_MEMORY_CHECK),RTMEM_WRAP_TO_EF_APIS,) \
-      $(if $(VBOX_WITH_DEBUG_NAT_SOCKETS),VBOX_WITH_DEBUG_NAT_SOCKETS,)
+      $(if $(VBOX_WITH_DEBUG_NAT_SOCKETS),VBOX_WITH_DEBUG_NAT_SOCKETS,)	\
+      $(if $(VBOX_WITH_MULTI_DNS),VBOX_WITH_MULTI_DNS,)
  ifeq ($(KBUILD_TARGET),win)
   $(file)_CFLAGS = -wd4018
  else
