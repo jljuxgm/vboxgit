@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13193 2008-10-13 06:30:04Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13194 2008-10-13 07:51:31Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1160,6 +1160,8 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
         {
             /* We use 4 MB pages in our identity mapping page table for real and protected mode without paging. */
             val |= X86_CR4_PSE;
+            /* Our identity mapping is a 32 bits page directory. */
+            val &= ~X86_CR4_PAE;
         }
 
 #ifdef HWACCM_VMX_EMULATE_REALMODE
