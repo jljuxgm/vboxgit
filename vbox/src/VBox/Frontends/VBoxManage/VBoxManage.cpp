@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 12599 2008-09-19 12:57:35Z vboxsync $ */
+/* $Id: VBoxManage.cpp 12605 2008-09-19 15:10:37Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -8027,11 +8027,11 @@ static BOOL WINAPI ctrlHandler(DWORD dwCtrlType)
         case CTRL_BREAK_EVENT:
         case CTRL_CLOSE_EVENT:
             /* Let's shut down gracefully. */
-            ASMAtomicWriteBool(&g_fKeepGoing, true);
-            return true;
+            ASMAtomicWriteBool(&g_fKeepGoing, FALSE);
+            return TRUE;
     }
     /* Don't care about the rest -- let it die a horrible death. */
-    return false;
+    return FALSE;
 }
 #endif /* RT_OS_WINDOWS */
 
