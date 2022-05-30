@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 13303 2008-10-15 20:55:16Z vboxsync $ */
+/* $Id: DevATA.cpp 13756 2008-11-03 15:54:01Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -2336,7 +2336,7 @@ static void atapiParseCmdVirtualATAPI(ATADevState *s)
                         PVMREQ pReq;
 
                         PDMCritSectLeave(&pCtl->lock);
-                        rc = VMR3ReqCall(PDMDevHlpGetVM(pDevIns), &pReq, RT_INDEFINITE_WAIT,
+                        rc = VMR3ReqCall(PDMDevHlpGetVM(pDevIns), VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT,
                                          (PFNRT)s->pDrvMount->pfnUnmount, 2, s->pDrvMount, false);
                         AssertReleaseRC(rc);
                         VMR3ReqFree(pReq);
@@ -3908,7 +3908,7 @@ static void ataSuspendRedo(PATACONTROLLER pCtl)
     int         rc;
 
     pCtl->fRedoIdle = true;
-    rc = VMR3ReqCall(PDMDevHlpGetVM(pDevIns), &pReq, RT_INDEFINITE_WAIT,
+    rc = VMR3ReqCall(PDMDevHlpGetVM(pDevIns), VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT,
                      (PFNRT)PDMDevHlpVMSuspend, 1, pDevIns);
     AssertReleaseRC(rc);
     VMR3ReqFree(pReq);
