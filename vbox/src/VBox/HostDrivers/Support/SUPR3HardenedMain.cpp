@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 15270 2008-12-10 17:29:25Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 15271 2008-12-10 17:33:37Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -634,12 +634,18 @@ static void supR3HardenedMainDropPrivileges(void)
                 }
                 else
                     supR3HardenedFatal("SUPR3HardenedMain: failed to get permitted privilege set rc=%d.\n", rc);                
+            
+                priv_freeset(pPrivSetInherit);
             }
             else
                 supR3HardenedFatal("SUPR3HardenedMain: failed to allocate inheritable privilege set.\n");
+
+            priv_freeset(pPrivSetEffective);
         }
         else
             supR3HardenedFatal("SUPR3HardenedMain: failed to allocate effective privilege set.\n");
+
+        priv_freeset(pPrivSetPermitted);
     }
     else
         supR3HardenedFatal("SUPR3HardenedMain: failed to allocate permitted privilege set.\n");
