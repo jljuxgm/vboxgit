@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 16871 2009-02-17 17:48:42Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 16873 2009-02-17 19:07:37Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -23,7 +23,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VD_VMDK
-#include "VBoxHDD-newInternal.h"
+#include "VBoxHDD-Internal.h"
 #include <VBox/err.h>
 
 #include <VBox/log.h>

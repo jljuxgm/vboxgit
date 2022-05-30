@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 16867 2009-02-17 17:00:56Z vboxsync $ */
+/* $Id: HardDiskImpl.h 16873 2009-02-17 19:07:37Z vboxsync $ */
 
 /** @file
  *
@@ -32,7 +32,7 @@
 
 #include <VBox/com/SupportErrorInfo.h>
 
-#include <VBox/VBoxHDD-new.h>
+#include <VBox/VBoxHDD.h>
 
 #include <map>
 

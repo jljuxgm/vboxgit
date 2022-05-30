@@ -1,4 +1,4 @@
-/* $Id: RawHDDCore.cpp 15366 2008-12-12 13:50:32Z vboxsync $ */
+/* $Id: RawHDDCore.cpp 16873 2009-02-17 19:07:37Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -23,7 +23,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VD_RAW
-#include "VBoxHDD-newInternal.h"
+#include "VBoxHDD-Internal.h"
 #include <VBox/err.h>
 
 #include <VBox/log.h>
