@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 13960 2008-11-07 13:04:45Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 13975 2008-11-07 16:33:20Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -407,6 +407,17 @@ VMMDECL(PCCPUMCTXCORE) CPUMGetGuestCtxCore(PVM pVM)
 {
     VM_ASSERT_EMT(pVM);
     return CPUMCTX2CORE(&pVM->aCpus[VMMGetCpuId(pVM)].cpum.s.Guest);
+}
+
+/**
+ * Gets the pointer to the internal CPUMCTXCORE structure.
+ * This is only for reading in order to save a few calls.
+ *
+ * @param   pVM         Handle to the virtual machine.
+ */
+VMMDECL(PCCPUMCTXCORE) CPUMGetGuestCtxCoreEx(PVM pVM, PVMCPU pVCpu)
+{
+    return CPUMCTX2CORE(&pVCpu->cpum.s.Guest);
 }
 
 
