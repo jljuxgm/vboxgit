@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 15159 2008-12-09 13:01:55Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 15160 2008-12-09 13:02:46Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -106,7 +106,7 @@ VMMDECL(PGMMODE) HWACCMGetShwPagingMode(PVM pVM)
         PGMMODE enmShwPagingMode;
 
 #if HC_ARCH_BITS == 32 
-        if (CPUMIsGuestInLongModeEx(pCtx))
+        if (CPUMIsGuestInLongMode(pVM))
             enmShwPagingMode = PGMMODE_AMD64_NX;
         else
 #endif
