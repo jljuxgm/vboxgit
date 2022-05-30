@@ -1,4 +1,4 @@
-; $Id: HWACCMGCA.asm 14898 2008-12-02 12:24:43Z vboxsync $
+; $Id: HWACCMGCA.asm 14899 2008-12-02 12:39:34Z vboxsync $
 ;; @file
 ; VMXM - GC vmx helpers
 ;
@@ -549,3 +549,6 @@ BEGINPROC HWACCMSaveGuestDebug64
     ret
 ENDPROC HWACCMSaveGuestDebug64
 
+BEGINPROC HWACCMTestSwitcher64
+    ret
+ENDPROC HWACCMTestSwitcher64
