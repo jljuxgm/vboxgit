@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 12770 2008-09-26 14:54:09Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 12883 2008-10-01 23:19:15Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -165,8 +165,13 @@ typedef struct VBOXNETFLTINS
             /** Mutex protection used for loopback. */
             RTSEMFASTMUTEX hFastMtx;
 # elif defined(RT_OS_WINDOWS)
+#  ifdef VBOX_NETFLT_ONDEMAND_BIND
+            /** filter driver device context */
+            ADAPT IfAdaptor;
+#  else
             /** pointer to the filter driver device context */
             PADAPT volatile pIfAdaptor;
+#  endif
 # else
 #  error "PORTME"
 # endif
