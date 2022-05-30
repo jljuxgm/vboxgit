@@ -1,4 +1,4 @@
-/* $Id: errmsgwin.cpp 14604 2008-11-25 22:05:30Z vboxsync $ */
+/* $Id: errmsgwin.cpp 14614 2008-11-26 01:07:50Z vboxsync $ */
 /** @file
  * IPRT - Status code messages.
  */
@@ -31,7 +31,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <windows.h>
+#include <Windows.h>
 
 #include <iprt/err.h>
 #include <iprt/asm.h>
@@ -48,7 +48,9 @@
 static const RTWINERRMSG  g_aStatusMsgs[] =
 {
 #include "errmsgcomdata.h"
-#include "errmsgvboxcomdata.h"
+#ifdef VBOX
+# include "errmsgvboxcomdata.h"
+#endif
     { NULL, NULL, 0 }
 };
 
