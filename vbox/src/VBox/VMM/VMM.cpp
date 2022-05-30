@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 14683 2008-11-27 02:09:19Z vboxsync $ */
+/* $Id: VMM.cpp 15508 2008-12-15 15:05:16Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -223,9 +223,9 @@ static int vmmR3InitStacks(PVM pVM)
 {
     /** @todo SMP: On stack per vCPU. */
 #ifdef VBOX_STRICT_VMM_STACK
-    int rc = MMHyperAlloc(pVM, VMM_STACK_SIZE + PAGE_SIZE + PAGE_SIZE, PAGE_SIZE, MM_TAG_VMM, (void **)&pVM->vmm.s.pbEMTStackR3);
+    int rc = MMR3HyperAllocOnceNoRel(pVM, VMM_STACK_SIZE + PAGE_SIZE + PAGE_SIZE, PAGE_SIZE, MM_TAG_VMM, (void **)&pVM->vmm.s.pbEMTStackR3);
 #else
-    int rc = MMHyperAlloc(pVM, VMM_STACK_SIZE, PAGE_SIZE, MM_TAG_VMM, (void **)&pVM->vmm.s.pbEMTStackR3);
+    int rc = MMR3HyperAllocOnceNoRel(pVM, VMM_STACK_SIZE, PAGE_SIZE, MM_TAG_VMM, (void **)&pVM->vmm.s.pbEMTStackR3);
 #endif
     if (RT_SUCCESS(rc))
     {
@@ -265,14 +265,14 @@ static int vmmR3InitLoggers(PVM pVM)
     if (pLogger)
     {
         pVM->vmm.s.cbRCLogger = RT_OFFSETOF(RTLOGGERRC, afGroups[pLogger->cGroups]);
-        rc = MMHyperAlloc(pVM, pVM->vmm.s.cbRCLogger, 0, MM_TAG_VMM, (void **)&pVM->vmm.s.pRCLoggerR3);
+        rc = MMR3HyperAllocOnceNoRel(pVM, pVM->vmm.s.cbRCLogger, 0, MM_TAG_VMM, (void **)&pVM->vmm.s.pRCLoggerR3);
         if (RT_FAILURE(rc))
             return rc;
         pVM->vmm.s.pRCLoggerRC = MMHyperR3ToRC(pVM, pVM->vmm.s.pRCLoggerR3);
 
 # ifdef VBOX_WITH_R0_LOGGING
-        rc = MMHyperAlloc(pVM, RT_OFFSETOF(VMMR0LOGGER, Logger.afGroups[pLogger->cGroups]),
-                          0, MM_TAG_VMM, (void **)&pVM->vmm.s.pR0LoggerR3);
+        rc = MMR3HyperAllocOnceNoRel(pVM, RT_OFFSETOF(VMMR0LOGGER, Logger.afGroups[pLogger->cGroups]),
+                                     0, MM_TAG_VMM, (void **)&pVM->vmm.s.pR0LoggerR3);
         if (RT_FAILURE(rc))
             return rc;
         pVM->vmm.s.pR0LoggerR3->pVM = pVM->pVMR0;
@@ -291,7 +291,7 @@ static int vmmR3InitLoggers(PVM pVM)
     if (pRelLogger)
     {
         pVM->vmm.s.cbRCRelLogger = RT_OFFSETOF(RTLOGGERRC, afGroups[pRelLogger->cGroups]);
-        rc = MMHyperAlloc(pVM, pVM->vmm.s.cbRCRelLogger, 0, MM_TAG_VMM, (void **)&pVM->vmm.s.pRCRelLoggerR3);
+        rc = MMR3HyperAllocOnceNoRel(pVM, pVM->vmm.s.cbRCRelLogger, 0, MM_TAG_VMM, (void **)&pVM->vmm.s.pRCRelLoggerR3);
         if (RT_FAILURE(rc))
             return rc;
         pVM->vmm.s.pRCRelLoggerRC = MMHyperR3ToRC(pVM, pVM->vmm.s.pRCRelLoggerR3);
