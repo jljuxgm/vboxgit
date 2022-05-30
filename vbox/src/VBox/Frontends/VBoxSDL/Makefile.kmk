@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12258 2008-09-09 03:01:02Z vboxsync $
+# $Id: Makefile.kmk 12262 2008-09-09 03:09:08Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -21,7 +21,7 @@
 
 SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
-if !defined(VBOX_WITH_HARDENING) || "$(KBUILD_TARGET)" == "darwin" # No hardened VBoxSDL on darwin.
+if !defined(VBOX_WITH_HARDENING) || "$(KBUILD_TARGET)" != "darwin" # No hardened VBoxSDL on darwin.
 
 #
 # Targets.
@@ -177,5 +177,4 @@ tstSDL_CXXFLAGS.linux = \
 
 endif # !VBOX_WITH_HARDENING || "$(KBUILD_TARGET)" != "darwin"
 include $(KBUILD_PATH)/subfooter.kmk
-
 
