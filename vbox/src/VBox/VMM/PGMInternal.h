@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 14682 2008-11-27 02:09:04Z vboxsync $ */
+/* $Id: PGMInternal.h 14750 2008-11-28 00:45:45Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1771,7 +1771,7 @@ typedef struct PGMPOOL
 #if defined(IN_RC) || defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0)
 # define PGMPOOL_PAGE_2_PTR(pVM, pPage)    pgmPoolMapPage((pVM), (pPage))
 #else
- inline R3R0PTRTYPE(void *) PGMPOOL_PAGE_2_PTR(PVM pVM, PPGMPOOLPAGE pPage)
+ DECLINLINE(R3R0PTRTYPE(void *)) PGMPOOL_PAGE_2_PTR(PVM pVM, PPGMPOOLPAGE pPage)
  {
      Assert(pPage->pvPageR3);
      return pPage->pvPageR3;
