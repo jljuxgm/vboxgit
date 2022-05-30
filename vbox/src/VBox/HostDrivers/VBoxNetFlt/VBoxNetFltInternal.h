@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 14097 2008-11-11 16:56:41Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 14112 2008-11-11 21:27:07Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -148,17 +148,15 @@ typedef struct VBOXNETFLTINS
              * @{ */
             /** Pointer to the device. */
             struct net_device volatile *pDev;
-            struct notifier_block volatile *pNotifier;
-            /** Whether we've need to set promiscuous mode when the interface comes up. */
-            bool volatile fNeedSetPromiscuous;
             /** Whether we've successfully put the interface into to promiscuous mode.
              * This is for dealing with the ENETDOWN case. */
-            bool volatile fSetPromiscuous;
+            bool volatile fPromiscuousSet;
             /** The MAC address of the interface. */
             RTMAC Mac;
-            struct packet_type  PacketType;
-            struct sk_buff_head XmitQueue;
-            struct work_struct  XmitTask;
+            struct notifier_block Notifier;
+            struct packet_type    PacketType;
+            struct sk_buff_head   XmitQueue;
+            struct work_struct    XmitTask;
             /** @} */
 # elif defined(RT_OS_SOLARIS)
             /** @name Solaris instance data.
