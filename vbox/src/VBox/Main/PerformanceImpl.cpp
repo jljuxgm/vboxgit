@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 12456 2008-09-15 10:52:17Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 12461 2008-09-15 13:05:51Z vboxsync $ */
 
 /** @file
  *
@@ -467,6 +467,9 @@ void PerformanceCollector::samplerCallback()
             (*it)->preCollect(hints);
             toBeCollected.push_back(*it);
         }
+
+    if (toBeCollected.size() == 0)
+        return;
 
     /* Let know the platform specific code what is being collected */
     m.hal->preCollect(hints);
