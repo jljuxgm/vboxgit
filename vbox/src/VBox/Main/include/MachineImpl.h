@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 13221 2008-10-13 14:43:54Z vboxsync $ */
+/* $Id: MachineImpl.h 13356 2008-10-16 18:44:34Z vboxsync $ */
 
 /** @file
  *
@@ -239,7 +239,7 @@ public:
             /** Property timestamp */
             ULONG64 mTimestamp;
             /** Property flags */
-            Bstr mFlags;
+            ULONG mFlags;
         };
 
         HWData();
