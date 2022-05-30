@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17358 2009-03-04 17:42:18Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17380 2009-03-05 10:05:30Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -732,7 +732,14 @@ int NetIfEnableStaticIpConfigV6(HostNetworkInterface * pIf, IN_BSTR aIPV6Address
 
 int NetIfEnableStaticIpConfigV6(HostNetworkInterface * pIf, IN_BSTR aIPV6Address, ULONG aIPV6MaskPrefixLength, IN_BSTR aIPV6DefaultGateway)
 {
-    return VERR_GENERAL_FAILURE;
+    RTNETADDRIPV6 Mask;
+    int rc = prefixLength2IPv6Address(aIPV6MaskPrefixLength, &Mask);
+    if(RT_SUCCESS(rc))
+    {
+        Bstr maskStr = composeIPv6Address(&Mask);
+        rc = NetIfEnableStaticIpConfigV6(pIf, aIPV6Address, maskStr, aIPV6DefaultGateway);
+    }
+    return rc;
 }
 
 int NetIfEnableDynamicIpConfig(HostNetworkInterface * pIf)
