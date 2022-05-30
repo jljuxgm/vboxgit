@@ -1,6 +1,6 @@
-/** $Id: VBoxHDD-new.cpp 12423 2008-09-12 14:42:49Z vboxsync $ */
+/* $Id: VBoxHDD-new.cpp 12639 2008-09-22 13:19:14Z vboxsync $ */
 /** @file
- * VBox HDD Container implementation.
+ * VBoxHDD - VBox HDD Container implementation.
  */
 
 /*
