@@ -1,7 +1,6 @@
-/* $Id: VBoxManageMetrics.cpp 14731 2008-11-27 18:35:31Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 14732 2008-11-27 18:44:11Z vboxsync $ */
 /** @file
- * VBoxManage - VirtualBox's command-line interface.
- * Metrics handling code.
+ * VBoxManage - Metrics handling code.
  */
 
 /*

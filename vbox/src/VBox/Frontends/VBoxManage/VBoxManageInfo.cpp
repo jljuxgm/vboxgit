@@ -1,7 +1,6 @@
-/* $Id: VBoxManageInfo.cpp 14646 2008-11-26 14:30:34Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 14732 2008-11-27 18:44:11Z vboxsync $ */
 /** @file
- * VBoxManage - VirtualBox's command-line interface.
- * Information dumping code.
+ * VBoxManage - The 'showvminfo' command and helper routines.
  */
 
 /*
