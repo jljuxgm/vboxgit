@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13069 2008-10-08 11:36:59Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13070 2008-10-08 12:07:49Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1621,7 +1621,7 @@ ResumeExecution:
         fSyncTPR = true;
     }
 
-#ifdef LOG_ENABLED
+#if defined(HWACCM_VTX_WITH_EPT) && defined(LOG_ENABLED)
     pCpu = HWACCMR0GetCurrentCpu();
     if (    pVM->hwaccm.s.idLastCpu   != pCpu->idCpu
         ||  pVM->hwaccm.s.cTLBFlushes != pCpu->cTLBFlushes)
