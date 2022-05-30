@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 15955 2009-01-14 20:14:36Z vboxsync $ */
+/* $Id: DevE1000.cpp 17183 2009-02-26 21:17:18Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -225,6 +225,8 @@ typedef struct
 } PBAST;
 AssertCompileSize(PBAST, 4);
 
+#define TXDCTL_WTHRESH_MASK   0x003F0000
+#define TXDCTL_WTHRESH_SHIFT  16
 #define TXDCTL_LWTHRESH_MASK  0xFE000000
 #define TXDCTL_LWTHRESH_SHIFT 25
 
@@ -2907,9 +2909,12 @@ static bool e1kAddToFrame(E1KSTATE* pState, E1KTXDESC* pDesc, uint32_t u32PartLe
  */
 static void e1kDescReport(E1KSTATE* pState, E1KTXDESC* pDesc, RTGCPHYS addr)
 {
-    /* Note: We do not support descriptor write-back bursting. */
+    /*
+     * We fake descriptor write-back bursting. Descriptors are written back as they are
+     * processed.
+     */
     /* Let's pretend we process descriptors. Write back with DD set. */
-    if (pDesc->legacy.cmd.fRS)
+    if (pDesc->legacy.cmd.fRS || (GET_BITS(TXDCTL, WTHRESH) > 0))
     {
         pDesc->legacy.dw3.fDD = 1; /* Descriptor Done */
         e1kWriteBackDesc(pState, pDesc, addr);
