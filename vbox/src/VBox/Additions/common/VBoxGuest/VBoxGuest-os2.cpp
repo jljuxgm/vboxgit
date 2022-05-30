@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 14297 2008-11-18 12:40:43Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -287,7 +287,7 @@ static int vboxGuestOS2MapMemory(void)
             &&  pVMMDev->u32Size >= 32 /* just for checking sanity */)
         {
             /*
-             * Did we hit the the correct size? If not we'll have to
+             * Did we hit the correct size? If not we'll have to
              * redo the mapping using the correct size.
              */
             if (RT_ALIGN_32(pVMMDev->u32Size, PAGE_SIZE) == cb)

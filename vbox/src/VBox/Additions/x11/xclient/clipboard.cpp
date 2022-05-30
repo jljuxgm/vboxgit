@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/** $Id: clipboard.cpp 14297 2008-11-18 12:40:43Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -1198,7 +1198,7 @@ static void vboxClipboardLoseProc(Widget, Atom *)
  * The host is taking possession of the shared clipboard.  Called by the HGCM clipboard
  * subsystem.
  *
- * @param u32Formats Clipboard formats the the guest is offering
+ * @param u32Formats Clipboard formats the guest is offering
  */
 void vboxClipboardFormatAnnounce (uint32_t u32Formats)
 {
@@ -1206,7 +1206,7 @@ void vboxClipboardFormatAnnounce (uint32_t u32Formats)
     LogFlowFunc(("u32Formats = %d\n", u32Formats));
     if (u32Formats == 0)
     {
-        /* This is just an automatism, not a genuine anouncement */
+        /* This is just an automatism, not a genuine announcement */
         LogFlowFunc(("returning\n"));
         return;
     }
