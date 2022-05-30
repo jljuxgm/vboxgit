@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 14271 2008-11-17 22:49:54Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 14348 2008-11-19 12:27:21Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1020,8 +1020,10 @@ static DECLCALLBACK(int) drvIntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHa
         /* we have a ndis filter driver started on system boot before the VBoxDrv,
          * tell the filter driver to init VBoxNetFlt functionality */
         rc = drvIntNetWinConstruct(pDrvIns, pCfgHandle);
+        Assert(RT_SUCCESS(rc));
         if (RT_FAILURE(rc))
         {
+            LogRel(("drvIntNetConstruct: drvIntNetWinConstruct failed, rc (0x%x)", rc));
             return rc;
         }
 # endif
@@ -1030,9 +1032,10 @@ static DECLCALLBACK(int) drvIntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHa
         int cBindName = INTNET_MAX_TRUNK_NAME;
 
         rc = drvIntNetWinIfGuidToBindName(OpenReq.szTrunk, szBindName, cBindName);
+        Assert(RT_SUCCESS(rc));
         if (RT_FAILURE(rc))
         {
-            Assert(0);
+            LogRel(("drvIntNetConstruct: drvIntNetWinIfGuidToBindName failed, rc (0x%x)", rc));
             return rc;
         }
 
