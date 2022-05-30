@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14015 2008-11-10 13:57:45Z vboxsync $
+# $Id: Makefile.kmk 14218 2008-11-14 14:53:05Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Linux Guest Additions Kernel Module.
 #
@@ -57,8 +57,7 @@ vboxadd_DEFS     = \
 vboxadd_INCS     = $(PATH_ROOT)/src/VBox/Runtime/r0drv/linux
 vboxadd_SOURCES  = \
 	vboxmod.c \
-	cmc.c \
-	hgcmcall.c
+	cmc.c
 vboxadd_LIBS     = \
 	$(VBOX_LIB_VBGL_R0BASE) \
 	$(VBOX_LIB_IPRT_GUEST_R0)
