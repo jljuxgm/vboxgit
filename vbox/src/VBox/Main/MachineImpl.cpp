@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 12400 2008-09-11 10:34:58Z vboxsync $ */
+/* $Id: MachineImpl.cpp 12914 2008-10-02 09:44:41Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2799,7 +2799,8 @@ STDMETHODIMP Machine::SetGuestProperty (INPTR BSTR aName, INPTR BSTR aValue, INP
                 /* The backup() operation invalidates our iterator, so get a
                  * new one. */
                 for (it = mHWData->mGuestProperties.begin();
-                     it->mName != aName; ++it); 
+                     it->mName != aName; ++it)
+                    ;
                 mHWData->mGuestProperties.erase(it);
                 found = true;
             }
