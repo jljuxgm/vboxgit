@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 15696 2008-12-19 14:20:13Z vboxsync $ */
+/* $Id: VMMR0.cpp 16784 2009-02-16 12:43:45Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -542,6 +542,14 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, unsigned idCpu, VMMR0OPERATION enmOperat
             if (RT_LIKELY(!pVM->vmm.s.fSwitcherDisabled))
             {
                 RTCCUINTREG uFlags = ASMIntDisableFlags();
+
+#ifdef VBOX_STRICT
+                if (RT_UNLIKELY(!PGMGetHyperCR3(pVM)))
+                {
+                    pVM->vmm.s.iLastGZRc = VERR_ACCESS_DENIED;
+                    return;
+                }
+#endif
 
                 TMNotifyStartOfExecution(pVM);
                 int rc = pVM->vmm.s.pfnHostToGuestR0(pVM);
