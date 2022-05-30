@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.h 12478 2008-09-16 03:12:57Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.h 12817 2008-09-30 01:31:41Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -67,7 +67,7 @@ public:
      *
      * @param   rPatStr     Selection pattern. NULL means everything, see STAM for further details.
      */
-    void update(const QString &rPatStr);
+    void updateStats(const QString &rPatStr);
 
     /**
      * Resets the stats items matching the specified pattern.
@@ -75,7 +75,7 @@ public:
      *
      * @param   rPatStr     Selection pattern. NULL means everything, see STAM for further details.
      */
-    void reset(const QString &rPatStr);
+    void resetStats(const QString &rPatStr);
 
 private:
     /**
