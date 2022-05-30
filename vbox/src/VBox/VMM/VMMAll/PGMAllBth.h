@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 13098 2008-10-08 17:10:32Z vboxsync $ */
+/* $Id: PGMAllBth.h 13121 2008-10-09 11:17:44Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2708,7 +2708,7 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PGSTPD pPDSrc, RTGCUINTPTR G
     Assert(pPDDst);
 
     /* Fetch the pgm pool shadow descriptor. */
-    PPGMPOOLPAGE pShwPde = pgmPoolGetPageByHCPhys(pVM, pPdptDst->a[iPdpte].u & X86_PDPE_PG_MASK);
+    PPGMPOOLPAGE pShwPde = pgmPoolGetPageByHCPhys(pVM, pPdptDst->a[iPdpte].u & EPT_PDPTE_PG_MASK);
     Assert(pShwPde);
 # endif
     PSHWPDE         pPdeDst = &pPDDst->a[iPDDst];
