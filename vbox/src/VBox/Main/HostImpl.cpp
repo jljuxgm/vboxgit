@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
+/* $Id: HostImpl.cpp 14990 2008-12-04 15:02:08Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -969,7 +969,7 @@ STDMETHODIMP Host::COMGETTER(NetworkInterfaces) (IHostNetworkInterfaceCollection
                                            &dwKeyType, (LPBYTE) name.mutableRaw(), &len);
                 if (status == ERROR_SUCCESS)
                 {
-                    RTLogPrintf("Connection name %ls\n", name.mutableRaw());
+                    LogFunc(("Connection name %ls\n", name.mutableRaw()));
                     /* put a trailing zero, just in case (see MSDN) */
                     name.mutableRaw() [uniLen] = 0;
                     /* create a new object and add it to the list */
