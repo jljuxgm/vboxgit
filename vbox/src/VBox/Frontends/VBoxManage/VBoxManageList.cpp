@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 17309 2009-03-03 18:54:23Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 17311 2009-03-03 19:15:37Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -140,6 +140,10 @@ int handleList(HandlerArg *a)
                     return errorSyntax(USAGE_LIST, "Too many subcommands for \"list\" command.\n");
 
                 command = c;
+            break;
+
+            case VINF_GETOPT_NOT_OPTION:
+                return errorSyntax(USAGE_LIST, "Unknown subcommand \"%s\".", ValueUnion.psz);
             break;
 
             default:
