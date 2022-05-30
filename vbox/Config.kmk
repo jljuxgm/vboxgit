@@ -1,4 +1,4 @@
-# $Id: Config.kmk 14726 2008-11-27 17:37:23Z vboxsync $
+# $Id: Config.kmk 14727 2008-11-27 17:42:53Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -301,7 +301,7 @@ VBOX_WITH_ALSA = 1
 VBOX_WITH_PULSE = 1
 # Enable statically linked libhal support for Linux
 ifeq ($(KBUILD_TARGET),linux)
- VBOX_WITH_LIBHAL = 1
+# VBOX_WITH_LIBHAL = 1
 endif
 # Disable WINMM support for Windows (not implemented)
 VBOX_WITH_WINMM =
@@ -3663,7 +3663,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14726 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14727 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
