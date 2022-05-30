@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 15063 2008-12-07 14:04:13Z vboxsync $ */
+/* $Id: REMInternal.h 17429 2009-03-06 02:00:14Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -279,7 +279,6 @@ bool    remR3CanExecuteRaw(CPUState *env, RTGCPTR eip, unsigned fFlags, int *piE
 void    remR3CSAMCheckEIP(CPUState *env, RTGCPTR GCPtrCode);
 bool    remR3GetOpcode(CPUState *env, RTGCPTR GCPtrInstr, uint8_t *pu8Byte);
 bool    remR3DisasInstr(CPUState *env, int f32BitCode, char *pszPrefix);
-bool    remR3DisasBlock(CPUState *env, int f32BitCode, int nrInstructions, char *pszPrefix);
 void    remR3FlushPage(CPUState *env, RTGCPTR GCPtr);
 void    remR3SetPage(CPUState *env, CPUTLBEntry *pRead,  CPUTLBEntry *pWrite, int prot, int is_user);
 void    remR3FlushTLB(CPUState *env, bool fGlobal);
