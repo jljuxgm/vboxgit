@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 13364 2008-10-17 08:16:58Z vboxsync $ */
+/* $Id: MachineImpl.cpp 13372 2008-10-17 12:36:06Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9118,7 +9118,7 @@ STDMETHODIMP SessionMachine::PushGuestProperty (INPTR BSTR aName, INPTR BSTR aVa
         return E_POINTER;  /* aValue can be NULL to indicate deletion */
 
     uint32_t fFlags = NILFLAG;
-    if (RT_FAILURE (validateFlags (Utf8Str(aFlags).raw(), &fFlags)))
+    if ((aFlags != NULL) && RT_FAILURE (validateFlags (Utf8Str(aFlags).raw(), &fFlags)))
         return E_INVALIDARG;
 
     AutoCaller autoCaller (this);
