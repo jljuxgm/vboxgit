@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 11477 2008-08-19 09:59:57Z vboxsync $ */
+/* $Id: PGMAll.cpp 12894 2008-10-02 08:02:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -286,8 +286,6 @@ typedef struct PGMHVUSTATE
 #undef PGM_SHW_TYPE
 #undef PGM_SHW_NAME
 
-
-#ifdef PGM_WITH_EPT
 /*
  * Shadow - EPT
  */
@@ -358,7 +356,6 @@ typedef struct PGMHVUSTATE
 
 #undef PGM_SHW_TYPE
 #undef PGM_SHW_NAME
-#endif /* PGM_WITH_EPT */
 
 #endif
 
