@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 16856 2009-02-17 16:05:48Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 16858 2009-02-17 16:11:49Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -743,8 +743,6 @@ static DECLCALLBACK(int) drvIntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHa
 {
     PDRVINTNET pThis = PDMINS_2_DATA(pDrvIns, PDRVINTNET);
     bool f;
-
-    __asm {int 3};
 
     /*
      * Init the static parts.
