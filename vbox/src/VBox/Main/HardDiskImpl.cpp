@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.cpp 17359 2009-03-04 17:54:03Z vboxsync $ */
+/* $Id: HardDiskImpl.cpp 17376 2009-03-05 09:10:43Z vboxsync $ */
 
 /** @file
  *
@@ -1456,7 +1456,7 @@ STDMETHODIMP HardDisk::Reset (IProgress **aProgress)
     {
         progress.createObject();
         rc = progress->init (mVirtualBox, static_cast <IHardDisk *> (this),
-            BstrFmt (tr ("Resettng differencing hard disk '%ls'"),
+            BstrFmt (tr ("Resetting differencing hard disk '%ls'"),
                      m.locationFull.raw()),
             FALSE /* aCancelable */);
         CheckComRCThrowRC (rc);
