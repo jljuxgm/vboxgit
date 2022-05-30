@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 14214 2008-11-14 14:47:38Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 14352 2008-11-19 14:10:24Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * guest properties.
@@ -845,7 +845,7 @@ VBGLR3DECL(int) VbglR3GuestPropWait(uint32_t u32ClientId,
     Msg.timestamp.SetUInt64(u64Timestamp);
     Msg.size.SetUInt32(0);
 
-    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL_TIMEOUT(sizeof(Msg)), &Msg, sizeof(Msg));
+    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL_TIMED(sizeof(Msg)), &Msg, sizeof(Msg));
     if (RT_SUCCESS(rc))
         rc = Msg.hdr.info.result;
 
