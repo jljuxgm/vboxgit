@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 16917 2009-02-18 15:47:22Z vboxsync $ */
+/* $Id: PGMAllBth.h 17001 2009-02-23 11:01:10Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4627,6 +4627,7 @@ PGM_BTH_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
     if (rc == VERR_PGM_POOL_FLUSHED)
     {
         Log(("MapCR3: PGM pool flushed -> signal sync cr3\n"));
+        pVM->pgm.s.CTX_SUFF(pShwPageCR3) = pOldShwPageCR3;
         Assert(VM_FF_ISSET(pVM, VM_FF_PGM_SYNC_CR3));
         return VINF_PGM_SYNC_CR3;
     }
