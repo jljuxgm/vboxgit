@@ -1,4 +1,4 @@
-/* $Id: DBGCTcp.cpp 9269 2008-05-31 14:53:24Z vboxsync $ */
+/* $Id: DBGCTcp.cpp 12880 2008-10-01 21:45:19Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, TCP backend.
  */
@@ -168,6 +168,14 @@ static DECLCALLBACK(int) dbgcTcpBackWrite(PDBGCBACK pBack, const void *pvBuf, si
     return rc;
 }
 
+/** @copydoc FNDBGCBACKSETREADY */
+static DECLCALLBACK(void) dbgcTcpBackSetReady(PDBGCBACK pBack, bool fBusy)
+{
+    /* stub */
+    NOREF(pBack);
+    NOREF(fBusy);
+}
+
 
 /**
  * Serve a TCP Server connection.
@@ -187,9 +195,10 @@ static int      dbgcTcpConnection(RTSOCKET Sock, void *pvUser)
      * Start the console.
      */
     DBGCTCP    DbgcTcp;
-    DbgcTcp.Back.pfnInput = dbgcTcpBackInput;
-    DbgcTcp.Back.pfnRead  = dbgcTcpBackRead;
-    DbgcTcp.Back.pfnWrite = dbgcTcpBackWrite;
+    DbgcTcp.Back.pfnInput    = dbgcTcpBackInput;
+    DbgcTcp.Back.pfnRead     = dbgcTcpBackRead;
+    DbgcTcp.Back.pfnWrite    = dbgcTcpBackWrite;
+    DbgcTcp.Back.pfnSetReady = dbgcTcpBackSetReady;
     DbgcTcp.fAlive = true;
     DbgcTcp.Sock   = Sock;
     int rc = DBGCCreate((PVM)pvUser, &DbgcTcp.Back, 0);

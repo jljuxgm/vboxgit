@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 12878 2008-10-01 21:11:52Z vboxsync $ */
+/* $Id: VBoxDbgConsole.h 12880 2008-10-01 21:45:19Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -238,6 +238,11 @@ protected:
     static DECLCALLBACK(int) backWrite(PDBGCBACK pBack, const void *pvBuf, size_t cbBuf, size_t *pcbWritten);
 
     /**
+     * @copydoc FNDBGCBACKSETREADY
+     */
+    static DECLCALLBACK(void) backSetReady(PDBGCBACK pBack, bool fReady);
+
+    /**
      * The Debugger Console Thread
      *
      * @returns VBox status code (ignored).
@@ -263,8 +268,6 @@ protected:
     VBoxDbgConsoleOutput *m_pOutput;
     /** The input widget. */
     VBoxDbgConsoleInput *m_pInput;
-    /** Whether we should send the kInputEnable event or not. */
-    bool m_fInputNeedsEnabling;
     /** A hack to restore focus to the combobox after a command execution. */
     bool m_fInputRestoreFocus;
     /** The input buffer. */
