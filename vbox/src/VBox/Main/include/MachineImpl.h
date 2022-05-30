@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 11683 2008-08-26 17:40:41Z vboxsync $ */
+/* $Id: MachineImpl.h 13165 2008-10-10 11:27:30Z vboxsync $ */
 
 /** @file
  *
@@ -844,6 +844,8 @@ public:
               ComSafeArrayOut(ULONG64, aTimestamps), ComSafeArrayOut(BSTR, aFlags));
     STDMETHOD(PushGuestProperties) (ComSafeArrayIn(INPTR BSTR, aNames), ComSafeArrayIn(INPTR BSTR, aValues),
               ComSafeArrayIn(ULONG64, aTimestamps), ComSafeArrayIn(INPTR BSTR, aFlags));
+    STDMETHOD(PushGuestProperty) (INPTR BSTR aName, INPTR BSTR aValue,
+                                  ULONG64 aTimestamp, INPTR BSTR aFlags);
 
     // public methods only for internal purposes
 
