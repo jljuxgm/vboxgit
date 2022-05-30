@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16262 2009-01-27 12:46:59Z vboxsync $
+# $Id: Makefile.kmk 17266 2009-03-03 10:00:55Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -157,7 +157,7 @@ ifdef VBOX_WITH_QTGUI
  VBOX_LNX_NO_STRIP += \
 	VirtualBox.desktop \
 	$(VBOX_LICENSE_FILES) \
- 	$(if $(VBOX_WITH_QT4_SUN),$(notdir $(wildcard $(PATH_BIN)/libVBox*)),) \
+ 	$(if $(VBOX_WITH_QT4_SUN),$(notdir $(wildcard $(PATH_BIN)/lib*VBox*)),) \
 	$(if $(VBOX_WITH_QT4_SUN),accessible/libqtaccessiblewidgets.so,) \
  	$(foreach f,$(VBOX_APPROVED_GUI_LANGUAGES),nls/VirtualBox_$(f).qm nls/qt_$(f).qm)
 endif
