@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 14144 2008-11-12 21:19:24Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 14237 2008-11-17 08:44:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -62,6 +62,7 @@
 #endif
 
 #if defined(RT_OS_LINUX) && defined(VBOX_WITH_NETFLT)
+# include <unistd.h>
 # include <sys/ioctl.h>
 # include <sys/socket.h>
 # include <linux/types.h>
