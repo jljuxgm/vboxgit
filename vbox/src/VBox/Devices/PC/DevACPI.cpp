@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 16170 2009-01-22 14:40:08Z vboxsync $ */
+/* $Id: DevACPI.cpp 16173 2009-01-22 15:09:40Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -191,6 +191,8 @@ struct ACPIState
     uint8_t             u8UseSmc;
 
     bool                fPowerButtonHandled;
+    uint32_t            Alignment0;
+
     /** ACPI port base interface. */
     PDMIBASE            IBase;
     /** ACPI port interface. */
@@ -202,7 +204,6 @@ struct ACPIState
     /** Pointer to the driver connector interface */
     R3PTRTYPE(PPDMIACPICONNECTOR) pDrv;
 
-    uint32_t            Alignment0; /**< Structure size alignment. */
 
 };
 
