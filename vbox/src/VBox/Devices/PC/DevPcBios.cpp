@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 12468 2008-09-15 15:42:08Z vboxsync $ */
+/* $Id: DevPcBios.cpp 12555 2008-09-18 10:46:25Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1398,6 +1398,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
 #ifdef VBOX_WITH_SMP_GUESTS
     LogRel(("[SMP] BIOS with %d CPUs\n", pThis->cCpus));
 #else
+    /* @todo: move this check up in configuration chain */
     if (pThis->cCpus != 1)
     {
         LogRel(("WARNING: guest SMP not supported in this build, going UP\n"));
