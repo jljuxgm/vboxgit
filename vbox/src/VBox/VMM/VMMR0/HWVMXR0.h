@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 12756 2008-09-26 08:25:57Z vboxsync $ */
+/* $Id: HWVMXR0.h 12793 2008-09-29 12:36:09Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -149,7 +149,7 @@ HWACCMR0DECL(int) VMXR0RunGuestCode(PVM pVM, CPUMCTX *pCtx);
             val = 0xf3;                                                                         \
         }                                                                                       \
         else                                                                                    \
-        if (pCtx->reg && pCtx->reg##Hid.Attr.n.u1Present == 1)                                  \
+        if (pCtx->reg##Hid.Attr.n.u1Present == 1)                                  \
             val = pCtx->reg##Hid.Attr.u | X86_SEL_TYPE_ACCESSED;                                \
         else                                                                                    \
             val = 0x10000;  /* Invalid guest state error otherwise. (BIT(16) = Unusable) */     \

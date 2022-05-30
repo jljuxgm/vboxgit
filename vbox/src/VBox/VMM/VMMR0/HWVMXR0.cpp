@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 12788 2008-09-29 11:09:02Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 12793 2008-09-29 12:36:09Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -823,6 +823,14 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
                 pCtx->fs = pCtx->fsHid.u64Base >> 4;
                 pCtx->gs = pCtx->gsHid.u64Base >> 4;
                 pCtx->ss = pCtx->ssHid.u64Base >> 4;
+
+                /* The limit must also be adjusted. */
+                pCtx->csHid.u32Limit &= 0xffff;
+                pCtx->dsHid.u32Limit &= 0xffff;
+                pCtx->esHid.u32Limit &= 0xffff;
+                pCtx->fsHid.u32Limit &= 0xffff;
+                pCtx->gsHid.u32Limit &= 0xffff;
+                pCtx->ssHid.u32Limit &= 0xffff;
 
                 Assert(pCtx->dsHid.u64Base <= 0xfffff);
                 Assert(pCtx->esHid.u64Base <= 0xfffff);
