@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.cpp 15591 2008-12-16 14:46:08Z vboxsync $ */
+/* $Id: HardDisk2Impl.cpp 15594 2008-12-16 15:05:18Z vboxsync $ */
 
 /** @file
  *
@@ -3392,6 +3392,8 @@ DECLCALLBACK(int) HardDisk2::taskThread (RTTHREAD thread, void *pvUser)
                 Utf8Str targetFormat (target->mm.format);
                 Utf8Str targetLocation (target->m.locationFull);
 
+                Guid thatId = that->m.id;
+
                 Assert (target->m.state == MediaState_Creating);
 
                 /* Note: MediaState_LockedWrite is ok when taking an online
@@ -3425,7 +3427,7 @@ DECLCALLBACK(int) HardDisk2::taskThread (RTTHREAD thread, void *pvUser)
                     vrc = VDCreateDiff (hdd, targetFormat, targetLocation,
                                         VD_IMAGE_FLAGS_NONE,
                                         NULL, targetId.raw(),
-                                        NULL /******/,
+                                        thatId.raw(),
                                         VD_OPEN_FLAGS_NORMAL,
                                         target->mm.vdDiskIfaces,
                                         that->mm.vdDiskIfaces);
