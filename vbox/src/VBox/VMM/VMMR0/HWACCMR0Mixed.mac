@@ -1,4 +1,4 @@
-; $Id: HWACCMR0Mixed.mac 15276 2008-12-10 19:09:08Z vboxsync $
+; $Id: HWACCMR0Mixed.mac 15294 2008-12-11 09:18:52Z vboxsync $
 ;; @file
 ; HWACCMR0Mixed.mac - Stuff that darwin needs to build two versions of.
 ;
@@ -89,15 +89,17 @@ BEGINPROC MY_NAME(VMXR0StartVM32)
     mov     ecx, [xBX + VMCSCACHE.Write.cValidEntries]
     cmp     ecx, 0
     je      .no_cached_writes
+    mov     edx, ecx
+    mov     ecx, 0
     jmp     .cached_write
     
 ALIGN(16)    
 .cached_write:
-    dec     xCX
-    mov     eax, [xBX + VMCSCACHE.Write.aField + xCX*4]
-    vmwrite xAX, [xBX + VMCSCACHE.Write.aFieldVal + xCX*8]
-    cmp     xCX, 0
-    jnz     .cached_write
+    mov     eax, [xBX + VMCSCACHE.Write.aField + xDX*4]
+    vmwrite xAX, [xBX + VMCSCACHE.Write.aFieldVal + xDX*8]
+    inc     xDX
+    cmp     xDX, xCX
+    jl     .cached_write
 
     mov     dword [xBX + VMCSCACHE.Write.cValidEntries], 0
 .no_cached_writes:
