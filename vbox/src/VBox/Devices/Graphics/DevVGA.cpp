@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 15867 2009-01-08 14:25:02Z vboxsync $ */
+/* $Id: DevVGA.cpp 15872 2009-01-08 15:56:50Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4512,10 +4512,6 @@ static DECLCALLBACK(int) vgaPortUpdateDisplay(PPDMIDISPLAYPORT pInterface)
     PVGASTATE pThis = IDISPLAYPORT_2_VGASTATE(pInterface);
     PDMDEV_ASSERT_EMT(VGASTATE2DEVINS(pThis));
     PPDMDEVINS pDevIns = pThis->CTX_SUFF(pDevIns);
-
-#ifdef DEBUG_sunlover
-    LogFlow(("vgaPortUpdateDisplay\n"));
-#endif /* DEBUG_sunlover */
 
     /* This should be called only in non VBVA mode. */
 
