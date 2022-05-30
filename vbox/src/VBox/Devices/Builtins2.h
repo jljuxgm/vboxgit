@@ -1,4 +1,4 @@
-/* $Id: Builtins2.h 9693 2008-06-13 16:30:46Z vboxsync $ */
+/* $Id: Builtins2.h 16627 2009-02-10 12:45:20Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 2) header.
  */
@@ -35,6 +35,10 @@ extern DECLEXPORT(const unsigned char)  g_abNetBiosBinary[];
 extern DECLEXPORT(const unsigned)       g_cbNetBiosBinary;
 extern DECLEXPORT(const unsigned char)  g_abVmiBiosBinary[];
 extern DECLEXPORT(const unsigned)       g_cbVmiBiosBinary;
+#ifdef VBOX_WITH_EFI
+extern DECLEXPORT(const unsigned char)  g_abEfiThunkBinary[];
+extern DECLEXPORT(const unsigned)       g_cbEfiThunkBinary;
+#endif
 #else
 extern DECLIMPORT(const unsigned char)  g_abPcBiosBinary[];
 extern DECLIMPORT(const unsigned)       g_cbPcBiosBinary;
@@ -44,6 +48,10 @@ extern DECLIMPORT(const unsigned char)  g_abNetBiosBinary[];
 extern DECLIMPORT(const unsigned)       g_cbNetBiosBinary;
 extern DECLIMPORT(const unsigned char)  g_abVmiBiosBinary[];
 extern DECLIMPORT(const unsigned)       g_cbVmiBiosBinary;
+#ifdef VBOX_WITH_EFI
+extern DECLIMPORT(const unsigned char)  g_abEfiThunkBinary[];
+extern DECLIMPORT(const unsigned)       g_cbEfiThunkBinary;
+#endif
 #endif
 extern const PDMDEVREG g_DeviceAPIC;
 extern const PDMDEVREG g_DeviceIOAPIC;
@@ -51,4 +59,3 @@ extern const PDMDEVREG g_DeviceIOAPIC;
 __END_DECLS
 
 #endif
-
