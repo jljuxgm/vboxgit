@@ -1,4 +1,4 @@
-# $Id: qt-Q_OBJECT.sed 1671 2008-07-07 21:36:05Z bird $
+# $Id: qt-Q_OBJECT.sed 2243 2009-01-10 02:24:02Z bird $
 ## @file
 # Qt unit - sed script for checking for Q_OBJECT in a file.
 #
@@ -9,7 +9,7 @@
 #
 
 #
-# Copyright (c) 2008 knut st. osmundsen <bird-src-spam@anduin.net>
+# Copyright (c) 2008-2009 knut st. osmundsen <bird-kBuild-spamix@anduin.net>
 #
 # This file is part of kBuild.
 #

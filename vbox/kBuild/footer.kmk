@@ -1,10 +1,10 @@
-# $Id: footer.kmk 2220 2009-01-07 03:07:18Z bird $
+# $Id: footer.kmk 2243 2009-01-10 02:24:02Z bird $
 ## @file
 # kBuild - File included at top of makefile.
 #
 
 #
-# Copyright (c) 2004-2008 knut st. osmundsen <bird-kBuild-spam@anduin.net>
+# Copyright (c) 2004-2009 knut st. osmundsen <bird-kBuild-spamix@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -1400,11 +1400,8 @@ local name        := $(firstword\
 	$($(target)_NAME)\
 	$(target))
 local outbase     := $(call TARGET_BASE,$(name),$(target))
-ifndef PATH_$(target)
- PATH_$(target) := $(patsubst %/,%,$(dir $(outbase)))
-else ifneq ($(PATH_$(target)),$(patsubst %/,%,$(dir $(outbase))))
- $(error kBuild internal error: PATH_$(target)=$(PATH_$(target)) expected $(patsubst %/,%,$(dir $(outbase))))
-endif
+$(target)_0_OUTDIR:= $(patsubst %/,%,$(dir $(outbase)))
+PATH_$(target)    := $($(target)_0_OUTDIR)
 ## @todo fix the fun at the last line (AR != LIB => mess).
 local suff := $(firstword \
 	$($(target)_$(EXT)SUFF.$(bld_trg).$(bld_trg_arch))\
@@ -1417,7 +1414,8 @@ local suff := $(firstword \
 local out := $(outbase)$(suff)
 
 # TARGET_*
-TARGET_$(target) := $(out)
+TARGET_$(target)   := $(out)
+$(target)_1_TARGET := $(out)
 
 # INSTARGET_*
 ifeq ($(strip $($(target)_NOINST) $($(target)_NOINST.$(bld_trg)) $($(target)_NOINST.$(bld_trg).$(bld_trg_arch)) $($(target)_NOINST.$(bld_trg).$(bld_trg_arch).$(bld_type))  $($(target)_NOINST.$(bld_trg_arch)) $($(target)_NOINST.$(bld_trg_cpu)) $($(target)_NOINST.$(bld_trg_type))),)
@@ -1558,16 +1556,19 @@ $(foreach target, $(_ALL_MISCBINS), \
 # 	Note! INSTARGET_* for INSTALLS aren't available until later.
 #
 define def_pass1_install
-local bld_type    := $(firstword $($(target)_BLD_TYPE)     $(KBUILD_TYPE))
-local bld_trg     := $(firstword $($(target)_BLD_TRG)      $(KBUILD_TARGET))
-local bld_trg_arch:= $(firstword $($(target)_BLD_TRG_ARCH) $(KBUILD_TARGET_ARCH))
-local bld_trg_cpu := $(firstword $($(target)_BLD_TRG_CPU)  $(KBUILD_TARGET_CPU))
+local bld_type     := $(firstword $($(target)_BLD_TYPE)     $(KBUILD_TYPE))
+local bld_trg      := $(firstword $($(target)_BLD_TRG)      $(KBUILD_TARGET))
+local bld_trg_arch := $(firstword $($(target)_BLD_TRG_ARCH) $(KBUILD_TARGET_ARCH))
+local bld_trg_cpu  := $(firstword $($(target)_BLD_TRG_CPU)  $(KBUILD_TARGET_CPU))
 # TARGET_*
-TARGET_$(target)  := $(PATH_TARGET)/$(target).ins
+$(target)_1_TARGET := $(PATH_TARGET)/$(target).ins
+TARGET_$(target)   := $($(target)_1_TARGET)
+
 # INSTARGET_ later.
 # PATH_*
-local outbase     := $(call TARGET_BASE,$(target),$(target))
-PATH_$(target)    := $(patsubst %/,%,$(dir $(outbase)))
+local outbase      := $(call TARGET_BASE,$(target),$(target))
+$(target)_0_OUTDIR := $(patsubst %/,%,$(dir $(outbase)))
+PATH_$(target)     := $($(target)_0_OUTDIR)
 endef # def_pass1_install
 $(eval-opt-var def_pass1_install)
 $(foreach target, $(_ALL_INSTALLS), \
@@ -1644,18 +1645,18 @@ endif
 define def_fetch_src_fetch_rule
 # Indirect goal for downloading something.
 .PRECIOUS: $(out)
-$(out) + $($(target)_$(srcname)_FETCH_OUTPUT_) +| $($(target)_$(srcname)_FETCH_OUTPUT_MAYBE_)  : \
-		| $($(target)_$(srcname)_FETCH_DEPORD_)
+$(out) + $($(target)_$(srcname)_FETCH_2_OUTPUT) +| $($(target)_$(srcname)_FETCH_2_OUTPUT_MAYBE)  : \
+		| $($(target)_$(srcname)_FETCH_2_DEPORD)
 	%$$(call MSG_FETCH_DL,$(target),$(source),$(out))
 	@## @todo do fancy stuff like download continuation.
 	$$(QUIET)$$(RM) -f -- $(out)
-	$($(target)_$(srcname)_FETCH_CMDS_)
+	$(cmds)
 	$$(QUIET)$(if $(md5),$$(MD5SUM_EXT) -b -C $(md5) $(out))
 
 
 
 # Intermediate goal for making sure the md5 and size matches. it will (re) fetch the archive if necessary.
-$(out).checked_$(md5)_$(size): $($(target)_$(srcname)_FETCH_DEPEND_) | $($(target)_$(srcname)_FETCH_DEPORD_)
+$(out).checked_$(md5)_$(size): $($(target)_$(srcname)_FETCH_2_DEPEND) | $($(target)_$(srcname)_FETCH_2_DEPORD)
 	%$$(call MSG_FETCH_CHK,$(target),$(source),$(out))
 	$$(QUIET)$$(RM) -f -- $$@
 	@# (re)fetch the file if it doesn't exist or if it doesn't matches the md5.
@@ -1676,9 +1677,9 @@ $(eval-opt-var def_fetch_src_fetch_rule)
 ## generates the unpack rule
 define def_fetch_src_unpack_rule
 # This is the unpack rule. it has an order-only dependency on the download check.
-$(out) + $($(target)_$(srcname)_UNPACK_OUTPUT_) +| $($(target)_$(srcname)_UNPACK_OUTPUT_MAYBE_) : \
-		$($(target)_$(srcname)_UNPACK_DEPEND_) \
-		| $($(target)_$(srcname)_UNPACK_DEPORD_) \
+$(out) + $($(target)_$(srcname)_UNPACK_2_OUTPUT) +| $($(target)_$(srcname)_UNPACK_2_OUTPUT_MAYBE) : \
+		$($(target)_$(srcname)_UNPACK_2_DEPEND) \
+		| $($(target)_$(srcname)_UNPACK_2_DEPORD) \
 		$(archive).checked_$(md5)_$(size) \
 		$(dir $(out))
 	%$$(call MSG_FETCH_UP,$(target),$(archive),$(inst))
@@ -1688,7 +1689,7 @@ $(out) + $($(target)_$(srcname)_UNPACK_OUTPUT_) +| $($(target)_$(srcname)_UNPACK
 	$$(QUIET)test -f $(archive) \
 	         || (   $$(RM_EXT) -f $(archive).checked_$(md5)_$(size) \
 	             && $$(MAKE)      $(archive).checked_$(md5)_$(size) -f $(MAKEFILE) --no-print-directory )
-	$($(target)_$(srcname)_UNPACK_CMDS_)
+	$(cmds)
 	$$(QUIET2)$$(APPEND) $(out) $(notdir $(archive).checked_$(md5)_$(size))
 	$$(QUIET2)$$(APPEND) $(out) $(notdir $(out))
 
@@ -1767,6 +1768,7 @@ local dep := # not legal for fetch and unpack tools
 local out := $(fetchdir)/$(srcname)
 local archive := $(out)
 TARGET_$(target)_$(srcname) := $(out)
+$(target)_$(srcname)_1_TARGET = $(TARGET_$(target)_$(srcname))
 local dirdep := $(call DIRDEP,$(fetchdir))
 local tool := $(firstword \
 	$($(target)_$(source)_FETCHTOOL)\
@@ -1807,11 +1809,11 @@ $(error kBuild: TOOL_$(tool)_FETCH_CMDS is not defined. source=$(source) target=
 endif
 
 # call the tool
-$(target)_$(srcname)_FETCH_CMDS_   := $(TOOL_$(tool)_FETCH_CMDS)
-$(target)_$(srcname)_FETCH_OUTPUT_ := $(TOOL_$(tool)_FETCH_OUTPUT)
-$(target)_$(srcname)_FETCH_OUTPUT_MAYBE_ := $(TOOL_$(tool)_FETCH_OUTPUT_MAYBE)
-$(target)_$(srcname)_FETCH_DEPEND_ := $(TOOL_$(tool)_FETCH_DEPEND) $(deps)
-$(target)_$(srcname)_FETCH_DEPORD_ := $(TOOL_$(tool)_FETCH_DEPORD) $(dirdep) $(orderdeps)
+local cmds := $(TOOL_$(tool)_FETCH_CMDS)
+$(target)_$(srcname)_FETCH_2_OUTPUT := $(TOOL_$(tool)_FETCH_OUTPUT)
+$(target)_$(srcname)_FETCH_2_OUTPUT_MAYBE := $(TOOL_$(tool)_FETCH_OUTPUT_MAYBE)
+$(target)_$(srcname)_FETCH_2_DEPEND := $(TOOL_$(tool)_FETCH_DEPEND) $(deps)
+$(target)_$(srcname)_FETCH_2_DEPORD := $(TOOL_$(tool)_FETCH_DEPORD) $(dirdep) $(orderdeps)
 
 # generate the fetch rule.
 $(eval $(def_fetch_src_fetch_rule))
@@ -1866,11 +1868,11 @@ $(error kBuild: TOOL_$(tool)_UNPACK_CMDS is not defined. source=$(source) target
 endif
 
 # call the tool
-$(target)_$(srcname)_UNPACK_CMDS_   := $(TOOL_$(tool)_UNPACK_CMDS)
-$(target)_$(srcname)_UNPACK_OUTPUT_ := $(TOOL_$(tool)_UNPACK_OUTPUT)
-$(target)_$(srcname)_UNPACK_OUTPUT_MAYBE_ := $(TOOL_$(tool)_UNPACK_OUTPUT_MAYBE)
-$(target)_$(srcname)_UNPACK_DEPEND_ := $(TOOL_$(tool)_UNPACK_DEPEND) $(deps)
-$(target)_$(srcname)_UNPACK_DEPORD_ := $(TOOL_$(tool)_UNPACK_DEPORD) $(dirdep) $(orderdeps)
+local cmds := $(TOOL_$(tool)_UNPACK_CMDS)
+$(target)_$(srcname)_UNPACK_2_OUTPUT := $(TOOL_$(tool)_UNPACK_OUTPUT)
+$(target)_$(srcname)_UNPACK_2_OUTPUT_MAYBE := $(TOOL_$(tool)_UNPACK_OUTPUT_MAYBE)
+$(target)_$(srcname)_UNPACK_2_DEPEND := $(TOOL_$(tool)_UNPACK_DEPEND) $(deps)
+$(target)_$(srcname)_UNPACK_2_DEPORD := $(TOOL_$(tool)_UNPACK_DEPORD) $(dirdep) $(orderdeps)
 
 # generate the fetch rule.
 $(eval $(def_fetch_src_unpack_rule))
@@ -2063,8 +2065,12 @@ endif
 $(basename $(notdir $(obj))).o: $(obj)
 $(basename $(notdir $(obj))).obj: $(obj)
 
-## @todo make this 'local cmds' in 0.2.x or when a new kb-src-one is added.
+## @todo make this 'local cmds,output,output_maybe,depend and depord' in 0.2.x or when a new kb-src-one is added.
 $(target)_$(source)_CMDS_ :=
+$(target)_$(source)_OUTPUT_ :=
+$(target)_$(source)_OUTPUT_MAYBE_ :=
+$(target)_$(source)_DEPEND_ :=
+$(target)_$(source)_DEPORD_ :=
 endef # def_target_source_rule
 $(eval-opt-var def_target_source_rule)
 
@@ -2085,23 +2091,23 @@ endif
 # @param    $(dirdep)               Directories we depend upon begin created before linking.
 # @param    $(dep)                  The name of the dependency file.
 # @param    $(out)
-# @param    $($(target)_OUTPUT_)    Output files from the link.
-# @param    $($(target)_OUTPUT_MAYBE_)	Output files that the link may perhaps create.
-# @param    $($(target)_DEPEND_)    Dependencies.
-# @param    $($(target)_DEPORD_)    Dependencies which should only affect build order.
+# @param    $($(target)_2_OUTPUT)   Output files from the link.
+# @param    $($(target)_2_OUTPUT_MAYBE)	Output files that the link may perhaps create.
+# @param    $($(target)_2_DEPEND)   Dependencies.
+# @param    $($(target)_2_DEPORD)   Dependencies which should only affect build order.
 # @param    $(cmds)                 The link commands.
 # @param    $($(target)_CMDS_PREV_) The link commands from the previous run.
 define def_link_rule
 ifndef NO_LINK_CMDS_DEPS
 $(out): .MUST_MAKE = $$(comp-cmds-ex $$($(target)_CMDS_PREV_),$$(commands $$@),FORCE)
 endif
-$(out) + $($(target)_OUTPUT_) +| $($(target)_OUTPUT_MAYBE_) : \
-		$$$$($(target)_DEPEND_) \
+$(out) + $($(target)_2_OUTPUT) +| $($(target)_2_OUTPUT_MAYBE) : \
+		$$$$($(target)_2_DEPEND) \
 		$(value _DEP_LINK_CMDS) \
 		| \
-		$$$$($(target)_DEPORD_)
+		$$$$($(target)_2_DEPORD)
 	%$$(call MSG_LINK,$(target),$$@,$(tool_do))
-	$$(QUIET)$$(RM) -f -- $(dep) $(out) $($(target)_OUTPUT_) $($(target)_OUTPUT_MAYBE_)
+	$$(QUIET)$$(RM) -f -- $(dep) $(out) $($(target)_2_OUTPUT) $($(target)_2_OUTPUT_MAYBE)
 
 $(cmds)
 
@@ -2125,7 +2131,7 @@ $(eval-opt-var def_link_rule)
 define def_link_install_rule
 $(INSTARGET_$(target)) : $(out) | $(call DIRDEP,$(dir $(INSTARGET_$(target))))
 	%$$(call MSG_INST_TRG,$(target),$(out),$$@)
-	$$(QUIET)$$(INSTALL) $$(if $(mode),-m $(mode)) -- $(out) $$@
+	$$(QUIET)$$(INSTALL) $(if $(mode),-m $(mode)) $(if $(uid),-o $(uid)) $(if $(gid),-g $(gid)) -- $(out) $$@
 
 ifdef KBUILD_DO_AUTO_INSTALL
 $(basename $(notdir $(out))):: $(INSTARGET_$(target))
@@ -2161,7 +2167,6 @@ local type := RC
  $(kb-src-one 2)
 endef
 
-if $(KBUILD_VERSION_PATCH) != 4
 define def_src_handler_obj
 ifeq ($(defpath),)
  $(target)_2_OBJS += $(source)
@@ -2169,15 +2174,6 @@ else
  $(target)_2_OBJS += $(abspathex $(source), $(defpath))
 endif
 endef
-else  # legacy - remove
-define def_src_handler_obj
-ifeq ($(defpath),)
- $(target)_OBJS_ += $(source)
-else
- $(target)_OBJS_ += $(abspathex $(source), $(defpath))
-endif
-endef
-endif # legacy - remove
 ## @}
 
 ## Handle one source.
@@ -2197,7 +2193,7 @@ endef
 # @param    $(target)   Normalized target name.
 # @param    $(defpath)
 # @param    much-more...
-# @returns  othersrc, $(target)_OBJS_, ++
+# @returns  othersrc, $(target)_2_OBJS, ++
 define def_target_sources
 local target_src_handlers := $($(target)_SRC_HANDLERS) $(KBUILD_SRC_HANDLERS)
 $(foreach source,\
@@ -2250,7 +2246,32 @@ ifeq ($(strip $($(target)_NOINST) $($(target)_NOINST.$(bld_trg)) $($(target)_NOI
   local inst := $(definst)/
  endif
  INSTARGET_$(target) := $(patsubst %/,%/$(notdir $(out)),$(inst))
+ local mode := $(firstword \
+ 	$($(target)_MODE.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+ 	$($(target)_MODE.$(bld_trg).$(bld_trg_arch)) \
+ 	$($(target)_MODE.$(bld_trg).$(bld_type)) \
+ 	$($(target)_MODE.$(bld_trg_arch)) \
+ 	$($(target)_MODE.$(bld_trg)) \
+ 	$($(target)_MODE.$(bld_type)) \
+ 	$($(target)_MODE) )
+ local uid := $(firstword \
+ 	$($(target)_UID.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+ 	$($(target)_UID.$(bld_trg).$(bld_trg_arch)) \
+ 	$($(target)_UID.$(bld_trg).$(bld_type)) \
+ 	$($(target)_UID.$(bld_trg_arch)) \
+ 	$($(target)_UID.$(bld_trg)) \
+ 	$($(target)_UID.$(bld_type)) \
+ 	$($(target)_UID) )
+ local gid := $(firstword \
+ 	$($(target)_GID.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+ 	$($(target)_GID.$(bld_trg).$(bld_trg_arch)) \
+ 	$($(target)_GID.$(bld_trg).$(bld_type)) \
+ 	$($(target)_GID.$(bld_trg_arch)) \
+ 	$($(target)_GID.$(bld_trg)) \
+ 	$($(target)_GID.$(bld_type)) \
+ 	$($(target)_GID) )
 
+ # generate the install rule
 $(eval $(def_link_install_rule))
 
  _INSTALLS_FILES += $(INSTARGET_$(target))
@@ -2264,10 +2285,10 @@ else # _NOINST
  $(typevar) += $(out)
 endif
 
-_OUT_FILES += $($(target)_OUTPUT_) $($(target)_OUTPUT_MAYBE_) $(out)
+_OUT_FILES += $($(target)_2_OUTPUT) $($(target)_2_OUTPUT_MAYBE) $(out)
 _CLEAN_FILES += $($(target)_CLEAN) $($(target)_CLEAN.$(bld_trg)) $($(target)_CLEAN.$(bld_trg).$(bld_trg_arch)) $($(target)_CLEAN.$(bld_trg_arch)) $($(target)_CLEAN.$(bld_trg_cpu)) $($(target)_CLEAN.$(bld_type))
 _DIRS += $($(target)_BLDDIRS) $($(target)_BLDDIRS.$(bld_trg)) $($(target)_BLDDIRS.$(bld_trg).$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_cpu)) $($(target)_BLDDIRS.$(bld_type))
-_OBJS += $($(target)_OBJS_)
+_OBJS += $($(target)_2_OBJS)
 
 endef # def_target_install_pluss
 
@@ -2298,11 +2319,8 @@ local name        := $(firstword\
 	$($(target)_NAME)\
 	$(target))
 local outbase     := $(call TARGET_BASE,$(name),$(target))
-ifndef PATH_$(target)
- PATH_$(target)   := $(patsubst %/,%,$(dir $(outbase)))
-else ifneq ($(PATH_$(target)),$(patsubst %/,%,$(dir $(outbase))))
- $(error kBuild internal error: PATH_$(target)=$(PATH_$(target)) expected $(patsubst %/,%,$(dir $(outbase))))
-endif
+$(target)_0_OUTDIR:= $(patsubst %/,%,$(dir $(outbase)))
+PATH_$(target)    := $($(target)_0_OUTDIR)
 local suff        := $(firstword\
 	$($(target)_LIBSUFF.$(bld_trg).$(bld_trg_arch))\
 	$($(target)_LIBSUFF.$(bld_trg))\
@@ -2314,9 +2332,10 @@ local suff        := $(firstword\
 local out         := $(outbase)$(suff)
 local defpath     := $(firstword $($(target)_PATH) $($(target)_DEFPATH))
 TARGET_$(target)  := $(out)
+$(target)_1_TARGET:= $(out)
 # no local here - must be writable across some foreachs.
 othersrc          :=
-$(target)_OBJS_   :=
+$(target)_2_OBJS  :=
 
 # Do units pre source callouts.
 local units       := \
@@ -2389,7 +2408,7 @@ local orderdeps   := \
 
 # Adjust paths if we got a default path.
 ifneq ($(defpath),)
- $(target)_OBJS_  := $(abspathex $($(target)_OBJS_),$(defpath))
+ $(target)_2_OBJS := $(abspathex $($(target)_2_OBJS),$(defpath))
  local deps       := $(abspathex $(deps),$(defpath))
  local orderdeps  := $(abspathex $(orderdeps),$(defpath))
  othersrc := $(abspathex $(othersrc),$(defpath))
@@ -2460,7 +2479,7 @@ else
 endif
 
 # eliminate this guy?
-local objs = $($(target)_OBJS_)
+local objs = $($(target)_2_OBJS)
 
 # dependency file
 local dep := $(out)$(SUFF_DEP)
@@ -2499,10 +2518,10 @@ endif
 ifneq ($(post_cmds),)
  local cmds  := $(cmds)$(NL)$(TAB)$(post_cmds)
 endif
-$(target)_OUTPUT_ := $(TOOL_$(tool)_LINK_LIBRARY_OUTPUT)
-$(target)_OUTPUT_MAYBE_ := $(TOOL_$(tool)_LINK_LIBRARY_OUTPUT_MAYBE)
-$(target)_DEPEND_ := $(TOOL_$(tool)_LINK_LIBRARY_DEPEND) $(deps) $($(target)_OBJS_)
-$(target)_DEPORD_ := $(TOOL_$(tool)_LINK_LIBRARY_DEPORD) $(dirdep) $(orderdeps)
+$(target)_2_OUTPUT := $(TOOL_$(tool)_LINK_LIBRARY_OUTPUT)
+$(target)_2_OUTPUT_MAYBE := $(TOOL_$(tool)_LINK_LIBRARY_OUTPUT_MAYBE)
+$(target)_2_DEPEND := $(TOOL_$(tool)_LINK_LIBRARY_DEPEND) $(deps) $($(target)_2_OBJS)
+$(target)_2_DEPORD := $(TOOL_$(tool)_LINK_LIBRARY_DEPORD) $(dirdep) $(orderdeps)
 
 # generate the link rule.
 $(eval $(def_link_rule))
@@ -2551,11 +2570,8 @@ local name        := $(firstword\
 	$($(target)_NAME)\
 	$(target))
 local outbase     := $(call TARGET_BASE,$(name),$(target))
-ifndef PATH_$(target)
- PATH_$(target)   := $(patsubst %/,%,$(dir $(outbase)))
-else ifneq ($(PATH_$(target)),$(patsubst %/,%,$(dir $(outbase))))
- $(error kBuild internal error: PATH_$(target)=$(PATH_$(target)) expected $(patsubst %/,%,$(dir $(outbase))))
-endif
+$(target)_0_OUTDIR:= $(patsubst %/,%,$(dir $(outbase)))
+PATH_$(target)    := $($(target)_0_OUTDIR)
 local suff := $(firstword \
 	$($(target)_$(EXT)SUFF.$(bld_trg).$(bld_trg_arch))\
 	$($(target)_$(EXT)SUFF.$(bld_trg))\
@@ -2566,10 +2582,11 @@ local suff := $(firstword \
 	$($(EXTPRE)SUFF_$(EXT)) )
 local out         := $(outbase)$(suff)
 TARGET_$(target)  := $(out)
+$(target)_1_TARGET:= $(out)
 local defpath     := $(firstword $($(target)_PATH) $($(target)_DEFPATH))
 # no local here - must be writable across some foreachs.
 othersrc          :=
-$(target)_OBJS_   :=
+$(target)_2_OBJS  :=
 
 # Do units pre source callouts.
 local units       := \
@@ -2755,7 +2772,7 @@ local orderdeps   := \
 # Adjust paths if we got a default path.
 ifneq ($(defpath),)
  local libpath    := $(abspathex $(libpath),$(defpath))
- $(target)_OBJS_  := $(abspathex $($(target)_OBJS_),$(defpath))
+ $(target)_2_OBJS := $(abspathex $($(target)_2_OBJS),$(defpath))
  local deps       := $(abspathex $(deps),$(defpath))
  local orderdeps  := $(abspathex $(orderdeps),$(defpath))
  othersrc := $(abspathex $(othersrc),$(defpath))
@@ -2825,7 +2842,7 @@ else
 endif
 
 # eliminate this guy?
-local objs = $($(target)_OBJS_)
+local objs = $($(target)_2_OBJS)
 
 # installation targets
 ifeq ($(strip $($(target)_NOINST) $($(target)_NOINST.$(bld_trg)) $($(target)_NOINST.$(bld_trg).$(bld_trg_arch)) $($(target)_NOINST.$(bld_trg).$(bld_trg_arch).$(bld_type))  $($(target)_NOINST.$(bld_trg_arch)) $($(target)_NOINST.$(bld_trg_cpu)) $($(target)_NOINST.$(bld_trg_type))),)
@@ -2852,6 +2869,31 @@ ifeq ($(strip $($(target)_NOINST) $($(target)_NOINST.$(bld_trg)) $($(target)_NOI
  else
   $(typevar)  += $(out)
  endif
+ local mode := $(firstword \
+ 	$($(target)_MODE.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+ 	$($(target)_MODE.$(bld_trg).$(bld_trg_arch)) \
+ 	$($(target)_MODE.$(bld_trg).$(bld_type)) \
+ 	$($(target)_MODE.$(bld_trg_arch)) \
+ 	$($(target)_MODE.$(bld_trg)) \
+ 	$($(target)_MODE.$(bld_type)) \
+ 	$($(target)_MODE) )
+ local uid := $(firstword \
+ 	$($(target)_UID.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+ 	$($(target)_UID.$(bld_trg).$(bld_trg_arch)) \
+ 	$($(target)_UID.$(bld_trg).$(bld_type)) \
+ 	$($(target)_UID.$(bld_trg_arch)) \
+ 	$($(target)_UID.$(bld_trg)) \
+ 	$($(target)_UID.$(bld_type)) \
+ 	$($(target)_UID) )
+ local gid := $(firstword \
+ 	$($(target)_GID.$(bld_trg).$(bld_trg_arch).$(bld_type)) \
+ 	$($(target)_GID.$(bld_trg).$(bld_trg_arch)) \
+ 	$($(target)_GID.$(bld_trg).$(bld_type)) \
+ 	$($(target)_GID.$(bld_trg_arch)) \
+ 	$($(target)_GID.$(bld_trg)) \
+ 	$($(target)_GID.$(bld_type)) \
+ 	$($(target)_GID) )
+
  # generate the install rule
 $(eval $(def_link_install_rule))
 
@@ -2897,18 +2939,18 @@ endif
 ifneq ($(post_cmds),)
  local cmds  := $(cmds)$(NL)$(TAB)$(post_cmds)
 endif
-$(target)_OUTPUT_ := $(TOOL_$(tool)_$(tool_do)_OUTPUT)
-$(target)_OUTPUT_MAYBE_ := $(TOOL_$(tool)_$(tool_do)_OUTPUT_MAYBE)
-$(target)_DEPEND_ := $(TOOL_$(tool)_$(tool_do)_DEPEND) $(deps) $($(target)_OBJS_)
-$(target)_DEPORD_ := $(TOOL_$(tool)_$(tool_do)_DEPORD) $(dirdep) $(orderdeps)
+$(target)_2_OUTPUT := $(TOOL_$(tool)_$(tool_do)_OUTPUT)
+$(target)_2_OUTPUT_MAYBE := $(TOOL_$(tool)_$(tool_do)_OUTPUT_MAYBE)
+$(target)_2_DEPEND := $(TOOL_$(tool)_$(tool_do)_DEPEND) $(deps) $($(target)_2_OBJS)
+$(target)_2_DEPORD := $(TOOL_$(tool)_$(tool_do)_DEPORD) $(dirdep) $(orderdeps)
 
 # generate the link rule.
 $(eval $(def_link_rule))
 
 
 # Update globals.
-_OBJS += $($(target)_OBJS_)
-_OUT_FILES += $($(target)_OUTPUT_) $($(target)_OUTPUT_MAYBE_) $(out)
+_OBJS += $($(target)_2_OBJS)
+_OUT_FILES += $($(target)_2_OUTPUT) $($(target)_2_OUTPUT_MAYBE) $(out)
 _CLEAN_FILES += $($(target)_CLEAN) $($(target)_CLEAN.$(bld_trg)) $($(target)_CLEAN.$(bld_trg).$(bld_trg_arch)) $($(target)_CLEAN.$(bld_trg_arch)) $($(target)_CLEAN.$(bld_trg_cpu)) $($(target)_CLEAN.$(bld_type))
 _DIRS += $($(target)_BLDDIRS) $($(target)_BLDDIRS.$(bld_trg)) $($(target)_BLDDIRS.$(bld_trg).$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_cpu)) $($(target)_BLDDIRS.$(bld_type))
 _INSTALLS_FILES += $(INSTARGET_$(target))
@@ -3360,11 +3402,8 @@ local bld_trg_cpu := $(firstword $($(target)_BLD_TRG_CPU)  $(KBUILD_TARGET_CPU))
 INSTARGET_$(target) := $($(target)_GOALS)
 INSTARGET_DIRS_$(target) :=
 local outbase := $(call TARGET_BASE,$(target),$(target))
-ifndef PATH_$(target)
- PATH_$(target) := $(patsubst %/,%,$(dir $(outbase)))
-else ifneq ($(PATH_$(target)),$(patsubst %/,%,$(dir $(outbase))))
- $(error kBuild internal error: PATH_$(target)=$(PATH_$(target)) expected $(patsubst %/,%,$(dir $(outbase))))
-endif
+$(target)_0_OUTDIR := $(patsubst %/,%,$(dir $(outbase)))
+PATH_$(target) := $($(target)_0_OUTDIR)
 
 local clean_files := $($(target)_CLEAN) $($(target)_CLEAN.$(bld_trg)) $($(target)_CLEAN.$(bld_trg).$(bld_trg_arch)) $($(target)_CLEAN.$(bld_trg_arch)) $($(target)_CLEAN.$(bld_trg_cpu)) $($(target)_CLEAN.$(bld_type))
 
@@ -3378,18 +3417,19 @@ $(foreach src,$($(target)_SYMLINKS) $($(target)_SYMLINKS.$(bld_trg)) $($(target)
 	$(evalval def_install_symlink))
 
 # the collection target
-local clean_files += $(PATH_TARGET)/$(target).ins
-TARGET_$(target)  := $(PATH_TARGET)/$(target).ins
-$(TARGET_$(target)): $$(INSTARGET_$(target)) | $$(INSTARGET_DIRS_$(target)) $(call DIRDEP,$(PATH_TARGET))
+local clean_files  += $(PATH_TARGET)/$(target).ins
+$(target)_1_TARGET := $(PATH_TARGET)/$(target).ins
+TARGET_$(target)   := $($(target)_1_TARGET)
+$($(target)_1_TARGET): $$(INSTARGET_$(target)) | $$(INSTARGET_DIRS_$(target)) $(call DIRDEP,$(PATH_TARGET))
 	@$(QUIET2)$(APPEND) $@
 
-$(target): $$(TARGET_$(target))
+$(target): $$($(target)_1_TARGET)
 
-_INSTALLS += $(TARGET_$(target))
+_INSTALLS += $($(target)_1_TARGET)
 _INSTALLS_FILES += $(INSTARGET_$(target))
 _INSTALLS_DIRS += $(INSTARGET_DIRS_$(target))
 _CLEAN_FILES += $(clean_files)
-_DIRS += $(PATH_$(target)) $($(target)_BLDDIRS) $($(target)_BLDDIRS.$(bld_trg)) $($(target)_BLDDIRS.$(bld_trg).$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_cpu)) $($(target)_BLDDIRS.$(bld_type))
+_DIRS += $($(target)_0_OUTDIR) $($(target)_BLDDIRS) $($(target)_BLDDIRS.$(bld_trg)) $($(target)_BLDDIRS.$(bld_trg).$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_arch)) $($(target)_BLDDIRS.$(bld_trg_cpu)) $($(target)_BLDDIRS.$(bld_type))
 endef # def_install
 $(eval-opt-var def_install)
 
@@ -3400,6 +3440,15 @@ $(foreach target, $(_ALL_INSTALLS), \
 ifdef KBUILD_PROFILE_SELF
  $(evalcall def_profile_self, done install targets)
 endif
+
+# Some introspection targets that can be useful for package maintainers.
+.PHONY: kbuild-show-install-files kbuild-show-install-dirs
+kbuild-show-install-files::
+	$(addprefix $(NL)$(TAB)$(QUIET)$(ECHO) , $(subst $(PATH_INS)/,,$(_INSTALLS_FILES)))
+
+kbuild-show-install-dirs::
+	$(addprefix $(NL)$(TAB)$(QUIET)$(ECHO) , $(subst $(PATH_INS)/,,$(_INSTALLS_DIRS)))
+
 
 #
 # TESTING
@@ -3670,12 +3719,14 @@ nothing: pass_nothing
 .PHONY:  packing
 packing: pass_packing
 
+ ifndef KBUILD_NO_TESTING_PASS_ALIASES
 .PHONY:  check
 check::  pass_testing
 
 .PHONY:  test
 test::   pass_testing
-endif
+ endif # KBUILD_NO_TESTING_PASS_ALIASES
+endif # KBUILD_NO_PASS_ALIASES
 
 
 #
@@ -3713,10 +3764,10 @@ installs:  $$(_INSTALLS) $$(_INSTALLS_DIRS) $$(_INSTALLS_FILES)
 show_targets:
 	@$(foreach target, $(_ALL_TARGETS),\
 	@$(ECHO) "target: $(target)" $(NLTAB)\
-	@$(ECHO) "  PATH_$(target)=$(PATH_$(target))" $(NLTAB)\
-	@$(ECHO) "  TARGET_$(target)=$(TARGET_$(target))" $(NLTAB)\
+	@$(ECHO) "  $(target)_0_OUTDIR=$($(target)_0_OUTDIR)" $(NLTAB)\
+	@$(ECHO) "  $(target)_1_TARGET=$($(target)_1_TARGET)" $(NLTAB)\
 	@$(ECHO) "  INSTARGET_$(target)=$(INSTARGET_$(target))" $(NLTAB)\
-$(foreach prop,$(PROPS_SINGLE) $(PROPS_ACCUMULATE_L) $(PROPS_ACCUMULATE_R) OBJS_ CLEAN, \
+$(foreach prop,$(PROPS_SINGLE) $(PROPS_ACCUMULATE_L) $(PROPS_ACCUMULATE_R) 2_OBJS CLEAN, \
 	$(eval _tmp:=$(firstword $($(target)_BLD_TRG) $(KBUILD_TARGET))) \
 	$(if $($(target)_$(prop).$(_tmp)),\
 		@$(ECHO) "  $(target)_$(prop).$(_tmp)=$($(target)_$(prop).$(_tmp))" $(NLTAB)) \

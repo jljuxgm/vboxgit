@@ -1,10 +1,10 @@
-# $Id: qt4.kmk 2197 2009-01-05 13:13:30Z bird $
+# $Id: qt4.kmk 2245 2009-01-16 17:07:44Z bird $
 ## @file
 # Qt 4 unit.
 #
 
 #
-# Copyright (c) 2008 knut st. osmundsen <bird-src-spam@anduin.net>
+# Copyright (c) 2008-2009 knut st. osmundsen <bird-kBuild-spamix@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -499,7 +499,7 @@ local type      := LRC
 
 # fetch the properties.
 local tool      := $(kb-src-tool dummy_var)
-local qtnlsdir  := $(PATH_$(target))/qtnls
+local qtnlsdir  := $($(target)_0_OUTDIR)/qtnls
 local outbase   := $(qtnlsdir)/$(notdir $(basename $(source)))
 local out       := $(outbase).qm
 local dep       := $(out).dep
@@ -585,7 +585,7 @@ local type      := RCC
 
 # fetch the properties.
 local tool      := $(kb-src-tool dummy_var)
-local qtrccdir  := $(PATH_$(target))/qtrcc
+local qtrccdir  := $($(target)_0_OUTDIR)/qtrcc
 local outbase   := $(qtrccdir)/$(notdir $(basename $(source)))
 local out       := $(outbase).tmp.gen.cpp
 local realout   := $(outbase).gen.cpp
@@ -671,7 +671,7 @@ local type      := UIC
 
 # fetch the properties.
 local tool      := $(kb-src-tool dummy_var)
-local qtuicdir  := $(PATH_$(target))/qtuic
+local qtuicdir  := $($(target)_0_OUTDIR)/qtuic
 local outbase   := $(qtuicdir)/$(notdir $(basename $(source)))
 local out       := $(outbase).tmp.gen.h
 local realout   := $(outbase).gen.h
@@ -957,12 +957,9 @@ ifeq ($(bld_trg),darwin)
  $(eval $(target)_INCS     += $(foreach module,$(qt_modules), $(PATH_SDK_QT4_LIB)/$(qt_prefix)Qt$(module)$(qt_infix).framework/Versions/4/Headers) )
 else
  ifeq ($(bld_trg),win)
-  ifndef qt_infix
-   local qt_infix := 4
-  endif
-  $(eval $(target)_LIBS    += $(foreach module,$(qt_modules), $(PATH_SDK_QT4_LIB)/$(qt_prefix)Qt$(module)$(qt_infix)$(SUFF_LIB)) )
+  $(eval $(target)_LIBS    += $(foreach module,$(qt_modules), $(PATH_SDK_QT4_LIB)/$(qt_prefix)Qt$(module)$(qt_infix)4$(SUFF_LIB)) )
   ifeq ($(tool_do),LINK_PROGRAM)
-   $(eval $(target)_LIBS   += $(PATH_SDK_QT4_LIB)/$(qt_prefix)qtmain$(SUFF_LIB) )
+   $(eval $(target)_LIBS   += $(PATH_SDK_QT4_LIB)/$(qt_prefix)qtmain$(qt_infix)$(SUFF_LIB) )
   endif
  else
   $(eval $(target)_LIBS    += $(foreach module,$(qt_modules), $(PATH_SDK_QT4_LIB)/lib$(qt_prefix)Qt$(module)$(qt_infix)$(SUFF_DLL)) )
@@ -993,10 +990,10 @@ $(target)_SRC_HANDLERS += \
 	.qrc:def_unit_qt4_src_handler_qrc
 
 # Calc the MOC and UI output directories and add them to BLDDIRS and INCS.
-local qtmocdir := $(PATH_$(target))/qtmoc
-local qtuicdir := $(PATH_$(target))/qtuic
-local qtrccdir := $(PATH_$(target))/qtrcc
-local qtnlsdir := $(PATH_$(target))/qtnls
+local qtmocdir := $($(target)_0_OUTDIR)/qtmoc
+local qtuicdir := $($(target)_0_OUTDIR)/qtuic
+local qtrccdir := $($(target)_0_OUTDIR)/qtrcc
+local qtnlsdir := $($(target)_0_OUTDIR)/qtnls
 $(eval $(target)_BLDDIRS += $(qtmocdir) $(qtuicdir) $(qtrccdir) $(qtnlsdir))
 $(eval $(target)_INCS    += $(qtmocdir) $(qtuicdir))
 

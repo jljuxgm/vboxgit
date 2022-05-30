@@ -1,10 +1,10 @@
-# $Id: VCC80AMD64.kmk 2182 2009-01-03 00:52:10Z bird $
+# $Id: VCC80AMD64.kmk 2243 2009-01-10 02:24:02Z bird $
 ## @file
 # kBuild Tool Config - Visual C++ 8.0 (aka Visual .NET 2005, or MSC v14), targeting AMD64.
 #
 
 #
-# Copyright (c) 2004-2008 knut st. osmundsen <bird-kBuild-spam@anduin.net>
+# Copyright (c) 2004-2009 knut st. osmundsen <bird-kBuild-spamix@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -134,7 +134,7 @@ define TOOL_VCC80AMD64_COMPILE_C_CMDS
 		-FD\
 		-Fo$(obj)\
 		$(subst /,\\,$(abspath $(source)))
-	$(QUIET)$(DEP_IDB) -f -s $(DEP_IDB_Q) -o $(dep) -t $(obj) $(call TOOL_VCC80AMD64_PDB,$(outbase)-obj,idb)
+	$(QUIET)$(DEP_IDB) -f -s -q -o $(dep) -t $(obj) $(call TOOL_VCC80AMD64_PDB,$(outbase)-obj,idb)
 endef
 
 
@@ -162,7 +162,7 @@ define TOOL_VCC80AMD64_COMPILE_CXX_CMDS
 		-FD\
 		-Fo$(obj)\
 		$(subst /,\\,$(abspath $(source)))
-	$(QUIET)$(DEP_IDB) -f -s $(DEP_IDB_Q) -o $(dep) -t $(obj) $(call TOOL_VCC80AMD64_PDB,$(outbase)-obj,idb)
+	$(QUIET)$(DEP_IDB) -f -s -q -o $(dep) -t $(obj) $(call TOOL_VCC80AMD64_PDB,$(outbase)-obj,idb)
 endef
 
 
