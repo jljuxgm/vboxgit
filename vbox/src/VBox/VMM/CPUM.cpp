@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 11946 2008-09-01 17:47:35Z vboxsync $ */
+/* $Id: CPUM.cpp 11947 2008-09-01 18:26:17Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -714,6 +714,8 @@ CPUMR3DECL(void) CPUMR3Reset(PVM pVM)
 
     /* Init PAT MSR */
     pCtx->msrPAT                    = UINT64_C(0x0007040600070406); /** @todo correct? */
+
+    pCtx->msrEFER                   = 0;
 }
 
 
