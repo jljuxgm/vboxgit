@@ -1,4 +1,4 @@
-/* $Id: RTThreadPreemptDisable-r0drv-linux.c 15798 2009-01-05 13:03:42Z vboxsync $ */
+/* $Id: RTThreadPreemptDisable-r0drv-linux.c 15801 2009-01-05 13:18:08Z vboxsync $ */
 /** @file
  * IPRT - RTThreadPreemptDisable, Generic ring-0 driver implementation.
  */
@@ -39,6 +39,10 @@
 
 RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
 {
+    AssertPtr(pState);
+    Assert(pState->uchDummy != 42);
+    pState->uchDummy = 42;
+
     /*
      * Note: This call is a NOP if CONFIG_PREEMPT is not enabled in the Linux kernel
      * configuration. In that case, schedule() is only called need_resched() is set
@@ -46,3 +50,4 @@ RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
      */
     preempt_disable();
 }
+

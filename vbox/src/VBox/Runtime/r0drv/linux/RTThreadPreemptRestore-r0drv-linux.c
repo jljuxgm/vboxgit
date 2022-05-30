@@ -1,4 +1,4 @@
-/* $Id: RTThreadPreemptRestore-r0drv-linux.c 15798 2009-01-05 13:03:42Z vboxsync $ */
+/* $Id: RTThreadPreemptRestore-r0drv-linux.c 15801 2009-01-05 13:18:08Z vboxsync $ */
 /** @file
  * IPRT - RTThreadPreemptRestore, Generic ring-0 driver implementation.
  */
@@ -39,5 +39,10 @@
 
 RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
 {
+    AssertPtr(pState);
+    Assert(pState->uchDummy == 42);
+    pState->uchDummy = 0;
+
     preempt_enable();
 }
+
