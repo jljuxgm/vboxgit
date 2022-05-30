@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 16666 2009-02-11 13:58:39Z vboxsync $ */
+/* $Id: CPUM.cpp 16667 2009-02-11 13:59:16Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1014,6 +1014,7 @@ static DECLCALLBACK(int) cpumR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Versio
 
     /*
      * Check that the basic cpuid id information is unchanged.
+     * @todo we should check the 64 bits capabilities too!
      */
     uint32_t au32CpuId[8] = {0};
     ASMCpuId(0, &au32CpuId[0], &au32CpuId[1], &au32CpuId[2], &au32CpuId[3]);
