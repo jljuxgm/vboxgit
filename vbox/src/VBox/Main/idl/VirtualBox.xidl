@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 15308 2008-12-11 15:39:53Z vboxsync $ *
+ * $Id: VirtualBox.xidl 15335 2008-12-11 20:27:29Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -398,7 +398,7 @@
     +-------------- Stopping -------[powerDown()]&lt;----------+---------------------+
       </pre>
 
-      Note that states to the left from PoweredOff, Aborted and Saved in the
+      Note that states to the right from PoweredOff, Aborted and Saved in the
       above diagram are called <i>online VM states</i>. These states
       represent the virtual machine which is being executed in a dedicated
       process (usually with a GUI window attached to it where you can see the
@@ -415,7 +415,7 @@
         }
       </pre>
 
-      When the virtual machine is on one of the online VM states (that is, being
+      When the virtual machine is in one of the online VM states (that is, being
       executed), only a few machine settings can be modified. Methods working
       with such settings contain an explicit note about that. An attempt to
       change any oter setting or perform a modifying operation during this time
