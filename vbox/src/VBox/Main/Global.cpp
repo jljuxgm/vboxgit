@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 15237 2008-12-10 10:13:02Z vboxsync $ */
+/* $Id: Global.cpp 15259 2008-12-10 16:30:40Z vboxsync $ */
 
 /** @file
  *
@@ -122,7 +122,7 @@ const Global::OSType Global::sOSTypes [SchemaDefs::OSTypeId_COUNT] =
     { "Solaris", "Solaris",           SchemaDefs_OSTypeId_OpenSolaris_64,  "OpenSolaris (64 bit)",
       VBOXOSTYPE_OpenSolaris_x64, VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC,  512,  12, 16 * _1K, NetworkAdapterType_I82540EM },
     { "BSD",     "BSD",               SchemaDefs_OSTypeId_FreeBSD,         "FreeBSD",
-      VBOXOSTYPE_FreeBSD,         VBOXOSHINT_NONE,  64,   4,  2 * _1K, NetworkAdapterType_Am79C973 },
+      VBOXOSTYPE_FreeBSD,         VBOXOSHINT_NONE,  64,   4,  2 * _1K, NetworkAdapterType_I82540EM },
     { "BSD",     "BSD",               SchemaDefs_OSTypeId_FreeBSD_64,      "FreeBSD (64 bit)",
       VBOXOSTYPE_FreeBSD_x64,     VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC,   64,   4,  2 * _1K, NetworkAdapterType_I82540EM },
     { "BSD",     "BSD",               SchemaDefs_OSTypeId_OpenBSD,         "OpenBSD",
