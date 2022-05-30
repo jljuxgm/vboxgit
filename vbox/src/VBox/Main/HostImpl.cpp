@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 11868 2008-08-30 13:31:30Z vboxsync $ */
+/* $Id: HostImpl.cpp 11869 2008-08-30 13:35:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -46,7 +46,6 @@
 
 #ifdef RT_OS_SOLARIS
 # include <fcntl.h>
-# include <syslog.h>
 # include <unistd.h>
 # include <stropts.h>
 # include <errno.h>
