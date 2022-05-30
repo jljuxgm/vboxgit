@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 12551 2008-09-17 18:58:37Z vboxsync $ */
+/* $Id: DevATA.cpp 12586 2008-09-18 17:21:13Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -5110,7 +5110,7 @@ static int ataConfigLun(PPDMDEVINS pDevIns, ATADevState *pIf)
         else
             pIf->cbIOBuffer = ATA_MAX_MULT_SECTORS * 512;
         Assert(!pIf->pbIOBufferR3);
-        rc = MMHyperAlloc(pVM, pIf->cbIOBuffer, 1, MM_TAG_PDM_DEVICE_USER, (void **)&pIf->pbIOBufferR3);
+        rc = MMHyperAlloc(pVM, pIf->cbIOBuffer, 1, MM_TAG_PDM_DEVICE_USER, (void **)&pIf->pbIOBufferR3); /** @todo rainy day: change to MMR3HyperAllocOnceNoRel */
         if (RT_FAILURE(rc))
             return VERR_NO_MEMORY;
         pIf->pbIOBufferR0 = MMHyperR3ToR0(pVM, pIf->pbIOBufferR3);
