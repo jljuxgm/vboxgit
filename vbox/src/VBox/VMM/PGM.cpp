@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 12300 2008-09-09 15:07:21Z vboxsync $ */
+/* $Id: PGM.cpp 12405 2008-09-11 15:01:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3179,6 +3179,8 @@ PGMR3DECL(int) PGMR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
         }
 
     }
+    else
+        LogFlow(("PGMR3ChangeMode: Shadow mode remains: %s\n",  PGMGetModeName(pVM->pgm.s.enmShadowMode)));
 
     /* guest */
     if (PGM_GST_PFN(Exit, pVM))
@@ -3236,6 +3238,17 @@ PGMR3DECL(int) PGMR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
             pVM->pgm.s.enmShadowMode = PGMMODE_INVALID;
             return rc;
         }
+    }
+
+    /* We must flush the PGM pool cache if the guest mode changes; we don't always
+     * switch shadow paging mode (e.g. protected->32-bit) and shouldn't reuse
+     * the shadow page tables.
+     */
+    if (   pVM->pgm.s.CTXSUFF(pPool)
+        && pVM->pgm.s.enmGuestMode != enmGuestMode)
+    {
+        Log(("PGMR3ChangeMode: changing guest paging mode -> flush pgm pool cache!\n"));
+        pgmPoolFlushAll(pVM);
     }
 
     /*
