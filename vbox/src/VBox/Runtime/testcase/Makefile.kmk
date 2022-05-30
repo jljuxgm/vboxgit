@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14025 2008-11-10 17:10:54Z vboxsync $
+# $Id: Makefile.kmk 14369 2008-11-19 18:19:32Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -55,6 +55,7 @@ PROGRAMS += \
 	tstDeadlock \
 	tstDir \
 	tstDir-2 \
+	tstDir-3 \
 	tstEnv \
 	tstErrUnique \
 	tstFile \
@@ -143,6 +144,8 @@ tstDeadlock_SOURCES = tstDeadlock.cpp
 tstDir_SOURCES = tstDir.cpp
 
 tstDir-2_SOURCES = tstDir-2.cpp
+
+tstDir-3_SOURCES = tstDir-3.cpp
 
 tstEnv_SOURCES = tstEnv.cpp
 
