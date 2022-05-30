@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 13191 2008-10-11 12:47:27Z vboxsync $ */
+/* $Id: DevPCI.cpp 13192 2008-10-11 21:30:39Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1914,7 +1914,7 @@ PDMBOTHCBDECL(void) pcibridgeSetIrq(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, int 
      */
     PPCIBUS     pBus = PDMINS_2_DATA(pDevIns, PPCIBUS);
     int iIrqPinBridge = 0;
-    uint8_t uDevFnBridge;
+    uint8_t uDevFnBridge = pPciDev->devfn;
 
     /* Walk the chain until we reach the host bus. */
     while (pBus->iBus != 0)
