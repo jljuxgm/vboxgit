@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 17886 2009-03-15 15:04:47Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 17888 2009-03-15 16:44:08Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -779,10 +779,10 @@ int handleList(HandlerArg *a)
                 svr->COMGETTER(NetworkMask)(netmask.asOutParam());
                 RTPrintf("NetworkMask:    %lS\n", netmask.raw());
                 Bstr lowerIp;
-                svr->COMGETTER(FromIPAddress)(lowerIp.asOutParam());
+                svr->COMGETTER(LowerIP)(lowerIp.asOutParam());
                 RTPrintf("lowerIPAddress: %lS\n", lowerIp.raw());
                 Bstr upperIp;
-                svr->COMGETTER(ToIPAddress)(upperIp.asOutParam());
+                svr->COMGETTER(UpperIP)(upperIp.asOutParam());
                 RTPrintf("upperIPAddress: %lS\n", upperIp.raw());
                 RTPrintf("\n");
             }

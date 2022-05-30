@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 17886 2009-03-15 15:04:47Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 17888 2009-03-15 16:44:08Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -4777,6 +4777,7 @@ HRESULT VirtualBox::registerDhcpServer(DhcpServer *aDhcpServer,
     {
         return E_INVALIDARG;
     }
+    rc = S_OK;
 
     mData.mDhcpServers.push_back (aDhcpServer);
 
