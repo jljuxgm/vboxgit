@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 16575 2009-02-09 10:28:03Z vboxsync $ */
+/* $Id: PGMBth.h 16579 2009-02-09 12:07:16Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -141,7 +141,7 @@ PGM_BTH_DECL(int, Enter)(PVM pVM, RTGCPHYS GCPhysCR3)
 
     Assert(!HWACCMIsNestedPagingActive(pVM));
     /* We only need shadow paging in real and protected mode for VT-x and AMD-V (excluding nested paging/EPT modes) */
-    if (HWACCMR3IsActive(pVM))
+    if (HWACCMIsEnabled(pVM))
     {
         /* Free the previous root mapping if still active. */
         PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
