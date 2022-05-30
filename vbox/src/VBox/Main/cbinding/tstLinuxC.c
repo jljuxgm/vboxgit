@@ -1,4 +1,4 @@
-/* $Revision: 17727 $ */
+/* $Revision: 17729 $ */
 /** @file tstLinuxC.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -327,7 +327,7 @@ int main(int argc, char **argv)
     /*
      * VBoxGetXPCOMCFunctions() is the only function exported by
      * VBoxXPCOMC.so and the only one needed to make virtualbox
-     * work with C. This functions gives you the pointer to the
+     * work with C. This function gives you the pointer to the
      * function table (g_pVBoxFuncs).
      *
      * Once you get the function table, then how and which functions
