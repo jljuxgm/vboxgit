@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 15291 2008-12-11 08:22:18Z vboxsync $ */
+/* $Id: HWVMXR0.h 15292 2008-12-11 08:23:09Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -277,7 +277,7 @@ DECLINLINE(int) VMXWriteCachedVMCSEx(PVMCPU pVCpu, uint32_t idxField, uint64_t u
 {
     PVMCSCACHE pCache = &pVCpu->hwaccm.s.vmx.VMCSCache;
 
-    Assert(pCache->Write.cValidEntries < VMCSCACHE_MAX_ENTRY - 1);
+    AssertMsgReturn(pCache->Write.cValidEntries < VMCSCACHE_MAX_ENTRY - 1, ("entries=%x\n", pCache->Write.cValidEntries), VERR_ACCESS_DENIED);
     pCache->Write.aField[pCache->Write.cValidEntries]    = idxField;
     pCache->Write.aFieldVal[pCache->Write.cValidEntries] = u64Val;
     pCache->Write.cValidEntries++;
