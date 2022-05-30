@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 14298 2008-11-18 12:47:26Z vboxsync $ */
+/* $Id: utf-8.cpp 17189 2009-02-27 08:41:03Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -1322,7 +1322,6 @@ RTDECL(int) RTStrNICmp(const char *psz1, const char *psz2, size_t cchMax)
     if (!psz2)
         return 1;
 
-    const char *pszStart1 = psz1;
     for (;;)
     {
         /* Get the codepoints */

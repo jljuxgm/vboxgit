@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 17189 2009-02-27 08:41:03Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -229,7 +229,6 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, int rcErr)
         case VERR_VMM_RING0_ASSERTION:
         case VINF_EM_DBG_HYPER_ASSERTION:
         {
-            bool fIsRing0 = rcErr == VERR_VMM_RING0_ASSERTION;
             const char *pszMsg1 = VMMR3GetRZAssertMsg1(pVM);
             while (pszMsg1 && *pszMsg1 == '\n')
                 pszMsg1++;
