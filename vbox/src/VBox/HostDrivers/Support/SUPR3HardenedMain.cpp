@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 12114 2008-09-04 23:22:29Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 12226 2008-09-08 13:04:09Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -698,7 +698,7 @@ DECLHIDDEN(int) SUPR3HardenedMain(const char *pszProgName, uint32_t fFlags, int 
     /* This is the preferred one, full control no questions about semantics.
        PORTME: If this isn't work, try join one of two other gangs above. */
     setresgid(gid, gid, gid);
-    setresuid(uid, uid, gid);
+    setresuid(uid, uid, uid);
     if (getresuid(&ruid, &euid, &suid) != 0)
     {
         euid = geteuid();
