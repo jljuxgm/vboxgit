@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15336 2008-12-11 21:00:40Z vboxsync $
+# $Id: Makefile.kmk 15337 2008-12-11 21:04:24Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -170,6 +170,8 @@ endif
 ifdef VBOX_USE_REM2
 $(REM_MOD)_LIBS            = \
 	$(PATH_LIB)/RuntimeR3NoCRTGCC$(VBOX_SUFF_LIB)
+$(REM_MOD)_LIBS.win       += \
+	$(LIB_VMM)
 else
 $(REM_MOD)_LIBS            = \
 	$(LIB_VMM) \
