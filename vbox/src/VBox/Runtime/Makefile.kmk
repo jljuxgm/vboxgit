@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15881 2009-01-08 18:46:52Z vboxsync $
+# $Id: Makefile.kmk 16012 2009-01-17 23:46:56Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -178,10 +178,6 @@ ifdef IPRT_WITH_KSTUFF
 endif
 RuntimeR3_INCS.l4       = \
 	$(L4_INCDIR)
-# for iconv.h
-RuntimeR3_INCS.freebsd  = \
-	/usr/local/include
-
 
 # RuntimeR3_INCS.solaris  = \
 #    /usr/include
