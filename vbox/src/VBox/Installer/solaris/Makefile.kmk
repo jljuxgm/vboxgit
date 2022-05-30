@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15951 2009-01-14 18:29:50Z vboxsync $
+# $Id: Makefile.kmk 16168 2009-01-22 14:02:44Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -106,7 +106,7 @@ solaris-doc_INST    = bin/
 solaris-doc_MODE    = a+r,u+w
 solaris-doc_SOURCES = \
 	$(if $(VBOX_OSE),,$(VBOX_BRAND_LICENSE_TXT)=>LICENSE) \
-	$(PATH_ROOT)/src/VBox/Frontends/VirtualBox/images/$(if $(VBOX_OSE),OSE,NonOSE)/VirtualBox_64px.png=>VBox.png
+	$(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/$(if $(VBOX_OSE),OSE,NonOSE)/VirtualBox_64px.png=>VBox.png
 
 #
 # Note: Other than the files produced during packing (.pkg, .gzip etc.) all files that
