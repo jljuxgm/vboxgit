@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 14411 2008-11-20 13:26:47Z vboxsync $ */
+/* $Id: EMAll.cpp 14562 2008-11-25 10:21:24Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1354,9 +1354,8 @@ static int emInterpretStosWD(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame,
             return VINF_SUCCESS;
 
         LogFlow(("emInterpretStosWD dest=%04X:%RGv (%RGv) cbSize=%d cTransfers=%x DF=%d\n", pRegFrame->es, GCOffset, GCDest, cbSize, cTransfers, pRegFrame->eflags.Bits.u1DF));
-
         /* Access verification first; we currently can't recover properly from traps inside this instruction */
-        rc = PGMVerifyAccess(pVM, GCDest - (offIncrement > 0) ? 0 : ((cTransfers-1) * cbSize), cTransfers * cbSize, X86_PTE_RW | X86_PTE_US);
+        rc = PGMVerifyAccess(pVM, GCDest - ((offIncrement > 0) ? 0 : ((cTransfers-1) * cbSize)), cTransfers * cbSize, X86_PTE_RW | X86_PTE_US);
         if (rc != VINF_SUCCESS)
         {
             Log(("STOSWD will generate a trap -> recompiler, rc=%d\n", rc));
