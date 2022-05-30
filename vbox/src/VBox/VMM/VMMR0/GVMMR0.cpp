@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 14811 2008-11-29 23:48:26Z vboxsync $ */
+/* $Id: GVMMR0.cpp 14821 2008-11-30 01:08:47Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -767,7 +767,7 @@ GVMMR0DECL(bool) GVMMR0DoingTermVM(PVM pVM, PGVM pGVM)
 {
     /* Validate the VM structure, state and handle. */
     AssertPtrNullReturn(pGVM, false);
-    AssertPtrNullReturn(!pGVM || pGVM->u32Magic == GVM_MAGIC, false);
+    AssertReturn(!pGVM || pGVM->u32Magic == GVM_MAGIC, false);
     if (!pGVM)
     {
         PGVMM pGVMM;
@@ -1004,7 +1004,7 @@ static DECLCALLBACK(void) gvmmR0HandleObjDestructor(void *pvObj, void *pvGVMM, v
         }
 
         /* the GVM structure itself. */
-        pGVM->u32Magic++;
+        pGVM->u32Magic |= UINT32_C(0x80000000);
         RTMemFree(pGVM);
     }
     /* else: GVMMR0CreateVM cleanup.  */
