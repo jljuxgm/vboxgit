@@ -1,4 +1,4 @@
-/* $Id: string.h 16495 2009-02-03 21:20:36Z vboxsync $ */
+/* $Id: string.h 17566 2009-03-09 11:22:42Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -426,6 +426,11 @@ public:
     bool operator != (const char *that) const { return !!compare (that); }
     bool operator < (const Utf8Str &that) const { return compare (that.str) < 0; }
     bool operator < (const char *that) const { return compare (that) < 0; }
+
+    int compareIgnoreCase(const char *pcsz) const
+    {
+        return ::RTStrICmp(str, pcsz);
+    }
 
     bool isNull() const { return str == NULL; }
     operator bool() const { return !isNull(); }
