@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 16854 2009-02-17 15:50:47Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 16856 2009-02-17 16:05:48Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1028,7 +1028,7 @@ static DECLCALLBACK(int) drvIntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHa
 
 #elif defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT)
     if (OpenReq.enmTrunkType == kIntNetTrunkType_NetFlt
-            || OpenReq.enmTrunkType == kIntNetTrunkType_NetTap)
+            || OpenReq.enmTrunkType == kIntNetTrunkType_NetAdp)
     {
 # ifndef VBOX_NETFLT_ONDEMAND_BIND
         /*
