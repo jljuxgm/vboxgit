@@ -1,4 +1,4 @@
-/* $Id: config.h 13230 2008-10-13 19:03:16Z vboxsync $ */
+/* $Id: config.h 13853 2008-11-05 12:56:15Z vboxsync $ */
 /** @file
  * Sun config - Maintained by hand
  */
@@ -28,3 +28,8 @@
 #ifdef VBOX_WITH_64_BITS_GUESTS
 #define TARGET_X86_64
 #endif
+
+/* Uncomment to see all phys memory accesses */
+/* #define VBOX_DEBUG_PHYS */
+/* Uncomment to see emulated CPU state changes */
+/* #define VBOX_DUMP_STATE */
