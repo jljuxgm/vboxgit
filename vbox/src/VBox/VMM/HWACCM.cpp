@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 14847 2008-12-01 10:26:31Z vboxsync $ */
+/* $Id: HWACCM.cpp 14851 2008-12-01 11:17:50Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -842,6 +842,12 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
 
         rc = PDMR3LdrGetSymbolRC(pVM, NULL,       "SVMGCVMRun64",   &pVM->hwaccm.s.pfnSVMGCVMRun64);
         AssertMsgRCReturn(rc, ("SVMGCVMRun64 -> rc=%Rrc\n", rc), rc);
+
+        rc = PDMR3LdrGetSymbolRC(pVM, NULL,       "HWACCMSetupFPU64",   &pVM->hwaccm.s.pfnSetupFPU64);
+        AssertMsgRCReturn(rc, ("HWACCMSetupFPU64 -> rc=%Rrc\n", rc), rc);
+        
+        rc = PDMR3LdrGetSymbolRC(pVM, NULL,       "HWACCMSetupDebug64",   &pVM->hwaccm.s.pfnSetupDebug64);
+        AssertMsgRCReturn(rc, ("HWACCMSetupDebug64 -> rc=%Rrc\n", rc), rc);
     }
 #endif
     return VINF_SUCCESS;

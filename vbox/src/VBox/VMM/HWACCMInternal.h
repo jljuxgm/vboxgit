@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 14848 2008-12-01 10:33:42Z vboxsync $ */
+/* $Id: HWACCMInternal.h 14851 2008-12-01 11:17:50Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -208,6 +208,12 @@ typedef struct HWACCM
 
     /* VT-x 64 bits vmlaunch handler */
     RTRCPTR                     pfnVMXGCStartVM64;
+
+    /* RC handler to setup the 64 bits FPU state. */
+    RTRCPTR                     pfnSetupFPU64;
+
+    /* RC handler to setup the 64 bits debug state. */
+    RTRCPTR                     pfnSetupDebug64;
 #endif
 
     struct
