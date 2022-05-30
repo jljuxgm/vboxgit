@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 16890 2009-02-18 10:57:21Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 16892 2009-02-18 11:47:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -551,7 +551,7 @@ VMMDECL(bool) PGMMapHasConflicts(PVM pVM, bool fResolveConflicts)
         /*
          * Resolve the page directory.
          */
-        PX86PD pPD = pVM->pgm.s.CTX_SUFF(pGst32BitPd);
+        PX86PD pPD = pgmGstGet32bitPDPtr(&pVM->pgm.s);
         Assert(pPD);
 
         for (PPGMMAPPING pCur = pVM->pgm.s.CTX_SUFF(pMappings); pCur; pCur = pCur->CTX_SUFF(pNext))
