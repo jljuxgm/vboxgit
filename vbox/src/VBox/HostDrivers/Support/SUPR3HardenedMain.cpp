@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 12111 2008-09-04 22:11:21Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 12112 2008-09-04 22:13:31Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -683,7 +683,7 @@ DECLHIDDEN(int) SUPR3HardenedMain(const char *pszProgName, uint32_t fFlags, int 
     egid = getegid();
     rgid = sgid = getgid();
 
-# elif defined(RT_SOLARIS)
+# elif defined(RT_OS_SOLARIS)
     /* Solaris doesn't have setresuid, but the setreuid interface is BSD
        compatible and will set the saved uid to euid when we pass it a ruid
        that isn't -1 (which we do). */
