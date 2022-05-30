@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 14381 2008-11-19 20:52:55Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 14437 2008-11-20 21:37:06Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -261,9 +261,12 @@ HRESULT VirtualBox::init()
                 rc = guestOSTypeObj.createObject();
                 if (SUCCEEDED (rc))
                 {
-                    rc = guestOSTypeObj->init (Global::sOSTypes [i].id,
+                    rc = guestOSTypeObj->init (Global::sOSTypes [i].familyId,
+                                               Global::sOSTypes [i].familyDescription,
+                                               Global::sOSTypes [i].id,
                                                Global::sOSTypes [i].description,
                                                Global::sOSTypes [i].osType,
+                                               Global::sOSTypes [i].is64Bit,
                                                Global::sOSTypes [i].recommendedRAM,
                                                Global::sOSTypes [i].recommendedVRAM,
                                                Global::sOSTypes [i].recommendedHDD);
