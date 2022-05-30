@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-solaris.c 17184 2009-02-27 00:37:35Z vboxsync $ */
+/* $Id: VBoxNetAdp-solaris.c 17803 2009-03-13 10:39:08Z vboxsync $ */
 /** @file
  * VBoxNetAdapter - Network Adapter Driver (Host), Solaris Specific Code.
  */
@@ -472,25 +472,5 @@ static int vboxNetAdpSolarisSetPromisc(gld_mac_info_t *pMacInfo, int fPromisc)
 {
     /* Host requesting promiscuous intnet connection... */
     return GLD_SUCCESS;
-}
-
-
-int vboxNetAdpOsConnectIt(PVBOXNETADP pThis)
-{
-    /* Nothing to do here. */
-    return VINF_SUCCESS;
-}
-
-
-int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMACAddress)
-{
-    /* Nothing to do here. */
-    return VINF_SUCCESS;
-}
-
-
-void vboxNetAdpOsDestroy(PVBOXNETADP pThis)
-{
-    /* Nothing to do here. */
 }
 
