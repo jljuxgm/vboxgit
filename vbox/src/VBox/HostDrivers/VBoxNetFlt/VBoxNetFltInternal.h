@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 14417 2008-11-20 13:57:46Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 14421 2008-11-20 15:11:17Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -204,7 +204,7 @@ typedef struct VBOXNETFLTINS
         uint8_t abPadding[1024];
 # endif
 #elif defined(RT_OS_LINUX)
-        uint8_t abPadding[256];
+        uint8_t abPadding[320];
 #else
         uint8_t abPadding[64];
 #endif
