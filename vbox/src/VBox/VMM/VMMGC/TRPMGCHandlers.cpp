@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 12339 2008-09-10 09:45:53Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 13635 2008-10-28 20:27:33Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -278,7 +278,6 @@ DECLASM(int) TRPMGCTrap01Handler(PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
 
     return trpmGCExitTrap(pVM, rc, pRegFrame);
 }
-
 
 
 /**
@@ -913,6 +912,7 @@ DECLASM(int) TRPMGCTrap0dHandler(PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
         }
     return rc;
 }
+
 
 /**
  * \#PF (Page Fault) handler.
