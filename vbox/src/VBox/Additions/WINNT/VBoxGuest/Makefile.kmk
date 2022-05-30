@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11687 2008-08-27 07:15:20Z vboxsync $
+# $Id: Makefile.kmk 11820 2008-08-29 14:09:39Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxGuest (Windows Guest Additions Driver).
 #
@@ -35,7 +35,7 @@ VBoxGuest_TEMPLATE    = VBOXGUESTR0
 ifdef VBOX_SIGN_ADDITIONS # (See the parent makefile.)
  VBoxGuest_NOINST     = true
 endif
-VBoxGuest_DEFS        = LOG_TO_BACKDOOR VBGL_VBOXGUEST VBOX_HGCM VBOX_REBOOT_ON_UNINSTALL
+VBoxGuest_DEFS        = LOG_TO_BACKDOOR VBGL_VBOXGUEST VBOX_WITH_HGCM VBOX_REBOOT_ON_UNINSTALL
 #VBoxGuest_DEFS       += LOG_ENABLED
 VBoxGuest_INCS        = ../include
 VBoxGuest_LDFLAGS.x86   = -Entry:DriverEntry@8

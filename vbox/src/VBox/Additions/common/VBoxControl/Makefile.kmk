@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10869 2008-07-24 19:26:01Z vboxsync $
+# $Id: Makefile.kmk 11820 2008-08-29 14:09:39Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Additions Command Line Management Interface.
 #
@@ -38,7 +38,7 @@ ifeq ($(KBUILD_TARGET),win)
  endif
 endif
 VBoxControl_DEFS     += \
-	$(if $(VBOX_WITH_GUEST_PROPS),VBOX_WITH_GUEST_PROPS VBOX_HGCM,)
+	$(if $(VBOX_WITH_GUEST_PROPS),VBOX_WITH_GUEST_PROPS VBOX_WITH_HGCM,)
 VBoxControl_SOURCES = \
 	VBoxControl.cpp \
 	VBoxControlSVN.cpp

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10129 2008-07-03 03:07:18Z vboxsync $
+# $Id: Makefile.kmk 11820 2008-08-29 14:09:39Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Linux Guest Additions Kernel Module.
 #
@@ -64,7 +64,7 @@ vboxmod-mod_SOURCES = $(subst ",,$(FILES_VBOXADD_NOBIN))
 vboxadd_TEMPLATE = VBOXGUESTR0
 vboxadd_NOINST   = 1
 vboxadd_DEFS     = \
-	MODULE IN_RT_R0 VBGL_VBOXGUEST EXPORT_SYMTAB VBGL_HGCM VBOX_HGCM \
+	MODULE IN_RT_R0 VBGL_VBOXGUEST EXPORT_SYMTAB VBGL_HGCM VBOX_WITH_HGCM \
 	KBUILD_MODNAME=KBUILD_STR\(vboxadd\) \
 	KBUILD_BASENAME=KBUILD_STR\(vboxadd\)
 vboxadd_INCS     = $(PATH_ROOT)/src/VBox/Runtime/r0drv/linux

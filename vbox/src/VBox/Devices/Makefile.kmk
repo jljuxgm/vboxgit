@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11805 2008-08-29 10:17:27Z vboxsync $
+# $Id: Makefile.kmk 11820 2008-08-29 14:09:39Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -29,7 +29,7 @@ include $(KBUILD_PATH)/subheader.kmk
 # Include sub-makefiles.
 include $(PATH_SUB_CURRENT)/PC/BIOS/Makefile.kmk
 ifndef VBOX_OSE # not yet
- include $(PATH_SUB_CURRENT)/PC/VMI/Makefile.kmk
+# include $(PATH_SUB_CURRENT)/PC/VMI/Makefile.kmk
 endif
 include $(PATH_SUB_CURRENT)/Graphics/BIOS/Makefile.kmk
 include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
@@ -330,7 +330,7 @@ DevicesR3_SOURCES      += \
 
 endif
 
-DevicesR3_DEFS         += VBOX_HGCM
+DevicesR3_DEFS         += VBOX_WITH_HGCM
 DevicesR3_DEFS.linux   += _GNU_SOURCE
 DevicesR3_DEFS.l4      += _GNU_SOURCE
 
@@ -794,7 +794,7 @@ ifdef VBOX_WITH_USB
 	USB/VUSBDevice.cpp \
 	USB/VUSBUrb.cpp
  ifdef VBOX_WITH_VRDP
-  Drivers_DEFS        += VBOX_VRDP
+  Drivers_DEFS        += VBOX_WITH_VRDP
   Drivers_SOURCES     += \
 	USB/vrdp/USBProxyDevice-vrdp.cpp
  endif

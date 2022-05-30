@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10129 2008-07-03 03:07:18Z vboxsync $
+# $Id: Makefile.kmk 11820 2008-08-29 14:09:39Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -40,7 +40,7 @@ endif
 #
 VBoxService_TEMPLATE      = VBOXGUESTR3EXE
 VBoxService_DEFS          = VBOXSERVICE_TIMESYNC
-VBoxService_DEFS.os2      = VBOX_HGCM VBOXSERVICE_CLIPBOARD
+VBoxService_DEFS.os2      = VBOX_WITH_HGCM VBOXSERVICE_CLIPBOARD
 VBoxService_SOURCES       = \
 	VBoxService.cpp \
 	VBoxServiceTimeSync.cpp

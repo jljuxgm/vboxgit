@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10129 2008-07-03 03:07:18Z vboxsync $
+# $Id: Makefile.kmk 11820 2008-08-29 14:09:39Z vboxsync $
 ## @file
 # Sub-Makefile for the FreeBSD Shared folder kernel module.
 #
@@ -36,7 +36,7 @@ endif
 #
 SYSMODS.freebsd      += vboxvfs
 vboxvfs_TEMPLATE      = VBOXGUESTR0
-vboxvfs_DEFS          = VBOX_HGCM
+vboxvfs_DEFS          = VBOX_WITH_HGCM
 vboxvfs_INCS         := \
        $(PATH_SUB_CURRENT) \
        $(PATH_TARGET)

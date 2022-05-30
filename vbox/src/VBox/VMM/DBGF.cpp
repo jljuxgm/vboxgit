@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: DBGF.cpp 11820 2008-08-29 14:09:39Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility.
  */
@@ -240,7 +240,7 @@ bool dbgfR3WaitForAttach(PVM pVM, DBGFEVENTTYPE enmEvent)
 
     RTStrmPrintf(g_pStdErr, "DBGF: No debugger attached, waiting 15 seconds for one to attach (event=%d)\n", enmEvent);
     RTStrmFlush(g_pStdErr);
-# ifdef DEBUG_sandervl
+# if defined (DEBUG_sandervl) || defined (DEBUG_frank)
     int cWait = 10;
 # else
     int cWait = 150;

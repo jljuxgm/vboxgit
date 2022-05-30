@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11728 2008-08-27 22:53:37Z vboxsync $
+# $Id: Makefile.kmk 11820 2008-08-29 14:09:39Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -76,7 +76,7 @@ ifdef VBOX_WITH_SECURELABEL
  VBoxSDL_DEFS     += VBOX_SECURELABEL
 endif
 ifdef VBOX_WITH_VRDP
- VBoxSDL_DEFS     += VBOX_VRDP
+ VBoxSDL_DEFS     += VBOX_WITH_VRDP
 endif
 VBoxSDL_DEFS.freebsd = VBOXSDL_WITH_X11
 VBoxSDL_DEFS.linux = _GNU_SOURCE VBOXSDL_WITH_X11
