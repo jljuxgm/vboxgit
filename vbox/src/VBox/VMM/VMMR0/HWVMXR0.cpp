@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 14605 2008-11-25 22:07:29Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 14647 2008-11-26 14:51:12Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2411,7 +2411,7 @@ ResumeExecution:
         if (rc == VINF_SUCCESS)
         {   /* We've successfully synced our shadow pages, so let's just continue execution. */
             Log2(("Shadow page fault at %RGv cr2=%RGp error code %x\n", (RTGCPTR)pCtx->rip, exitQualification , errCode));
-            STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitShadowPF);
+            STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitReasonNPF);
 
             TRPMResetTrap(pVM);
 
