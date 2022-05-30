@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 17063 2009-02-24 12:55:51Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 17284 2009-03-03 14:33:35Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2428,7 +2428,7 @@ ResumeExecution:
                     goto ResumeExecution;
                 }
 #ifdef VBOX_STRICT
-                if (rc != VINF_EM_RAW_EMULATE_INSTR)
+                if (rc != VINF_EM_RAW_EMULATE_INSTR && rc != VINF_EM_RAW_EMULATE_IO_BLOCK)
                     Log2(("PGMTrap0eHandler failed with %d\n", rc));
 #endif
                 /* Need to go back to the recompiler to emulate the instruction. */

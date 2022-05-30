@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 17246 2009-03-02 12:31:50Z vboxsync $ */
+/* $Id: VMMR0.cpp 17284 2009-03-03 14:33:35Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -371,6 +371,9 @@ static void vmmR0RecordRC(PVM pVM, int rc)
             break;
         case VINF_EM_RAW_EMULATE_INSTR:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetEmulate);
+            break;
+        case VINF_EM_RAW_EMULATE_IO_BLOCK:
+            STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetIOBlockEmulate);
             break;
         case VINF_PATCH_EMULATE_INSTR:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPatchEmulate);
