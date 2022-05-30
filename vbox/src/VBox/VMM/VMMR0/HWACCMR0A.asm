@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 12071 2008-09-03 16:05:46Z vboxsync $
+; $Id: HWACCMR0A.asm 12301 2008-09-09 15:09:41Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -464,7 +464,9 @@ BEGINPROC VMXR0StartVM64
     ; Save the host LSTAR, CSTAR, SFMASK & KERNEL_GSBASE MSRs and restore the guest MSRs
     ; @todo use the automatic load feature for MSRs
     LOADGUESTMSR MSR_K8_LSTAR, CPUMCTX.msrLSTAR
+%if 0  ; not supported on Intel CPUs
     LOADGUESTMSR MSR_K8_CSTAR, CPUMCTX.msrCSTAR
+%endif
     LOADGUESTMSR MSR_K6_STAR, CPUMCTX.msrSTAR
     LOADGUESTMSR MSR_K8_SF_MASK, CPUMCTX.msrSFMASK
     LOADGUESTMSR MSR_K8_KERNEL_GS_BASE, CPUMCTX.msrKERNELGSBASE
@@ -581,7 +583,9 @@ ALIGNCODE(16)
     LOADHOSTMSREX MSR_K8_KERNEL_GS_BASE, CPUMCTX.msrKERNELGSBASE
     LOADHOSTMSR MSR_K8_SF_MASK
     LOADHOSTMSR MSR_K6_STAR
+%if 0  ; not supported on Intel CPUs
     LOADHOSTMSR MSR_K8_CSTAR
+%endif
     LOADHOSTMSR MSR_K8_LSTAR
 
     ; Restore segment registers
