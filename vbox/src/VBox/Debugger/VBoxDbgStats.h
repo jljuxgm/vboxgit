@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStats.h 12465 2008-09-15 15:19:58Z vboxsync $ */
+/* $Id: VBoxDbgStats.h 12466 2008-09-15 15:22:01Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -20,8 +20,8 @@
  */
 
 
-#ifndef __VBoxDbgStats_h__
-#define __VBoxDbgStats_h__
+#ifndef ___Debugger_VBoxDbgStats_h
+#define ___Debugger_VBoxDbgStats_h
 
 #include "VBoxDbgBase.h"
 
@@ -433,3 +433,4 @@ protected:
 
 
 #endif
+
