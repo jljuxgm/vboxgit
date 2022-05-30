@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 11980 2008-09-02 13:01:19Z vboxsync $ */
+/* $Id: PATMSSM.cpp 11981 2008-09-02 13:05:59Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -905,7 +905,9 @@ static void patmCorrectFixup(PVM pVM, unsigned ulSSMVersion, PATM &patmInfo, PPA
         else
             AssertMsgFailed(("Unexpected fixup value %x\n", *pFixup));
 
+#ifdef RT_OS_WINDOWS
         AssertCompile(RT_OFFSETOF(VM, fForcedActions) < 32);
+#endif
         break;
     }
 
