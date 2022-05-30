@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 17105 2009-02-25 00:20:22Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 17130 2009-02-25 13:33:09Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -624,6 +624,8 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTAT
         case OP_RDTSC:  /* just in case */
         case OP_CLTS:
         case OP_WBINVD: /* nop */
+        case OP_RDMSR:
+        case OP_WRMSR:
         {
             uint32_t cbIgnored;
             rc = EMInterpretInstructionCPU(pVM, pCpu, pRegFrame, PC, &cbIgnored);
