@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.h 14167 2008-11-13 12:31:38Z vboxsync $ */
+/* $Id: VMMSwitcher.h 14771 2008-11-28 11:07:18Z vboxsync $ */
 /** @file
  * VMM - World Switchers.
  */
@@ -62,6 +62,7 @@
 #define FIX_ID_64BIT            32
 #define FIX_ID_FAR32_TO_64BIT_MODE 33
 #define FIX_GC_APIC_BASE_32BIT  34
+#define FIX_HC_64BIT_NOCHECK    35
 #define FIX_THE_END             255
 /** @} */
 
