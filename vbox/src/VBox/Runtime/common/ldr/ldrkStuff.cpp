@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 16934 2009-02-19 01:08:23Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 16935 2009-02-19 01:59:26Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -668,11 +668,7 @@ int rtldrkLdrOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTL
 
     /* Try open it. */
     PKLDRMOD pMod;
-#if 0
     int krc = kLdrModOpenFromRdr(&pRdr->Core, fFlags, enmCpuArch, &pMod);
-#else
-    int krc = kLdrModOpenFromRdr(&pRdr->Core, &pMod);
-#endif
     if (!krc)
     {
         /* Create a module wrapper for it. */

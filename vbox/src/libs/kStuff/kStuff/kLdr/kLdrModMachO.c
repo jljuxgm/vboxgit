@@ -1,4 +1,4 @@
-/* $Id: kLdrModMachO.c 23 2009-01-31 01:52:14Z bird $ */
+/* $Id: kLdrModMachO.c 25 2009-02-19 00:56:15Z bird $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -126,6 +126,8 @@ typedef struct KLDRMODMACHO
     /** Pointer to the user mapping. */
     void                   *pvMapping;
 
+    /** The offset of the image. (FAT fun.) */
+    KLDRFOFF                offImage;
     /** The link address. */
     KLDRADDR                LinkAddress;
     /** The size of the mapped image. */
@@ -183,8 +185,8 @@ static KI32 kldrModMachONumberOfImports(PKLDRMOD pMod, const void *pvBits);
 static int kldrModMachORelocateBits(PKLDRMOD pMod, void *pvBits, KLDRADDR NewBaseAddress, KLDRADDR OldBaseAddress,
                                     PFNKLDRMODGETIMPORT pfnGetImport, void *pvUser);
 
-static int  kldrModMachODoCreate(PKRDR pRdr, PKLDRMODMACHO *ppMod);
-static int  kldrModMachOPreParseLoadCommands(KU8 *pbLoadCommands, const mach_header_32_t *pHdr, PKRDR pRdr,
+static int  kldrModMachODoCreate(PKRDR pRdr, KLDRFOFF offImage, PKLDRMODMACHO *ppMod);
+static int  kldrModMachOPreParseLoadCommands(KU8 *pbLoadCommands, const mach_header_32_t *pHdr, PKRDR pRdr, KLDRFOFF offImage,
                                              KU32 *pcSegments, KU32 *pcSections, KU32 *pcbStringPool);
 static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStringPool, KU32 cbStringPool);
 static int  kldrModMachOAdjustBaseAddress(PKLDRMODMACHO pModMachO, PKLDRADDR pBaseAddress);
@@ -227,10 +229,14 @@ static int  kldrModMachODoImports(PKLDRMODMACHO pModMachO, void *pvMapping, PFNK
  *          On failure, a non-zero OS specific error code is returned.
  * @param   pOps            Pointer to the registered method table.
  * @param   pRdr            The file provider instance to use.
+ * @param   fFlags          Flags, MBZ.
+ * @param   enmCpuArch      The desired CPU architecture. KCPUARCH_UNKNOWN means
+ *                          anything goes, but with a preference for the current
+ *                          host architecture.
  * @param   offNewHdr       The offset of the new header in MZ files. -1 if not found.
  * @param   ppMod           Where to store the module instance pointer.
  */
-static int kldrModMachOCreate(PCKLDRMODOPS pOps, PKRDR pRdr, KLDRFOFF offNewHdr, PPKLDRMOD ppMod)
+static int kldrModMachOCreate(PCKLDRMODOPS pOps, PKRDR pRdr, KU32 fFlags, KCPUARCH enmCpuArch, KLDRFOFF offNewHdr, PPKLDRMOD ppMod)
 {
     PKLDRMODMACHO pModMachO;
     int rc;
@@ -238,13 +244,22 @@ static int kldrModMachOCreate(PCKLDRMODOPS pOps, PKRDR pRdr, KLDRFOFF offNewHdr,
     /*
      * Create the instance data and do a minimal header validation.
      */
-    rc = kldrModMachODoCreate(pRdr, &pModMachO);
+    rc = kldrModMachODoCreate(pRdr, offNewHdr == -1 ? 0 : offNewHdr, &pModMachO);
     if (!rc)
     {
-        pModMachO->pMod->pOps = pOps;
-        pModMachO->pMod->u32Magic = KLDRMOD_MAGIC;
-        *ppMod = pModMachO->pMod;
-        return 0;
+
+        /*
+         * Match up against the requested CPU architecture.
+         */
+        if (    enmCpuArch == KCPUARCH_UNKNOWN
+            ||  pModMachO->pMod->enmArch == enmCpuArch)
+        {
+            pModMachO->pMod->pOps = pOps;
+            pModMachO->pMod->u32Magic = KLDRMOD_MAGIC;
+            *ppMod = pModMachO->pMod;
+            return 0;
+        }
+        rc = KLDR_ERR_CPU_ARCH_MISMATCH;
     }
     if (pModMachO)
     {
@@ -259,7 +274,7 @@ static int kldrModMachOCreate(PCKLDRMODOPS pOps, PKRDR pRdr, KLDRFOFF offNewHdr,
  * Separate function for reading creating the Mach-O module instance to
  * simplify cleanup on failure.
  */
-static int kldrModMachODoCreate(PKRDR pRdr, PKLDRMODMACHO *ppModMachO)
+static int kldrModMachODoCreate(PKRDR pRdr, KLDRFOFF offImage, PKLDRMODMACHO *ppModMachO)
 {
     union
     {
@@ -285,7 +300,7 @@ static int kldrModMachODoCreate(PKRDR pRdr, PKLDRMODMACHO *ppModMachO)
     /*
      * Read the Mach-O header.
      */
-    rc = kRdrRead(pRdr, &s, sizeof(s), 0);
+    rc = kRdrRead(pRdr, &s, sizeof(s), offImage);
     if (rc)
         return rc;
     if (    s.Hdr32.magic != IMAGE_MACHO32_SIGNATURE
@@ -326,11 +341,12 @@ static int kldrModMachODoCreate(PKRDR pRdr, PKLDRMODMACHO *ppModMachO)
     if (!pbLoadCommands)
         return KERR_NO_MEMORY;
     rc = kRdrRead(pRdr, pbLoadCommands, s.Hdr32.sizeofcmds,
-                        s.Hdr32.magic == IMAGE_MACHO32_SIGNATURE
-                     || s.Hdr32.magic == IMAGE_MACHO32_SIGNATURE_OE
-                     ? sizeof(mach_header_32_t) : sizeof(mach_header_64_t));
+                     s.Hdr32.magic == IMAGE_MACHO32_SIGNATURE
+                  || s.Hdr32.magic == IMAGE_MACHO32_SIGNATURE_OE
+                  ? sizeof(mach_header_32_t) + offImage
+                  : sizeof(mach_header_64_t) + offImage);
     if (!rc)
-        rc = kldrModMachOPreParseLoadCommands(pbLoadCommands, &s.Hdr32, pRdr, &cSegments, &cSections, &cbStringPool);
+        rc = kldrModMachOPreParseLoadCommands(pbLoadCommands, &s.Hdr32, pRdr, offImage, &cSegments, &cSections, &cbStringPool);
     if (rc)
     {
         kHlpFree(pbLoadCommands);
@@ -353,6 +369,7 @@ static int kldrModMachODoCreate(PKRDR pRdr, PKLDRMODMACHO *ppModMachO)
         return KERR_NO_MEMORY;
     *ppModMachO = pModMachO;
     pModMachO->pbLoadCommands = pbLoadCommands;
+    pModMachO->offImage = offImage;
 
     /* KLDRMOD */
     pMod = (PKLDRMOD)((KU8 *)pModMachO + K_ALIGN_Z(  K_OFFSETOF(KLDRMODMACHO, aSegments[cSegments])
@@ -474,11 +491,12 @@ static int kldrModMachODoCreate(PKRDR pRdr, PKLDRMODMACHO *ppModMachO)
  * @param   pbLoadCommands  The load commands to parse.
  * @param   pHdr            The header.
  * @param   pRdr            The file reader.
+ * @param   offImage        The image header (FAT fun).
  * @param   pcSegments      Where to store the segment count.
  * @param   pcSegments      Where to store the section count.
  * @param   pcbStringPool   Where to store the string pool size.
  */
-static int  kldrModMachOPreParseLoadCommands(KU8 *pbLoadCommands, const mach_header_32_t *pHdr, PKRDR pRdr,
+static int  kldrModMachOPreParseLoadCommands(KU8 *pbLoadCommands, const mach_header_32_t *pHdr, PKRDR pRdr, KLDRFOFF offImage,
                                              KU32 *pcSegments, KU32 *pcSections, KU32 *pcbStringPool)
 {
     union
@@ -491,7 +509,7 @@ static int  kldrModMachOPreParseLoadCommands(KU8 *pbLoadCommands, const mach_hea
         symtab_command_t     *pSymTab;
         uuid_command_t       *pUuid;
     } u;
-    const KU64 cbFile = kRdrSize(pRdr);
+    const KU64 cbFile = kRdrSize(pRdr) - offImage;
     KU32 cSegments = 0;
     KU32 cSections = 0;
     KU32 cbStringPool = 0;
@@ -1061,10 +1079,10 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                             pSectExtra->cb = pSect->size;
                             pSectExtra->RVA = pSect->addr;
                             pSectExtra->LinkAddress = pSect->addr;
-                            pSectExtra->offFile = pSect->offset ? pSect->offset : -1;
+                            pSectExtra->offFile = pSect->offset ? pSect->offset + pModMachO->offImage : -1;
                             pSectExtra->cFixups = pSect->nreloc;
                             pSectExtra->paFixups = NULL;
-                            pSectExtra->offFixups = pSect->nreloc ? pSect->reloff : -1;
+                            pSectExtra->offFixups = pSect->nreloc ? pSect->reloff + pModMachO->offImage : -1;
                             pSectExtra->fFlags = pSect->flags;
                             pSectExtra->iSegment = pSegExtra - &pModMachO->aSegments[0];
                             pSectExtra->pvMachoSection = pSect;
@@ -1098,7 +1116,7 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                                 pSeg->cb = pSect->size;
                                 pSeg->Alignment = (1 << pSect->align);
                                 pSeg->LinkAddress = pSect->addr;
-                                pSeg->offFile = pSect->offset ? pSect->offset : -1;
+                                pSeg->offFile = pSect->offset ? pSect->offset + pModMachO->offImage : -1;
                                 pSeg->cbFile  = pSect->offset ? pSect->size : -1;
                                 pSeg->RVA = pSect->addr - pModMachO->LinkAddress;
                                 pSeg->cbMapped = 0;
@@ -1124,9 +1142,9 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                                 if (    pSect->offset
                                     &&  pSeg[-1].cbFile == pSeg[-1].cb)
                                 {
-                                    int fOk = pSeg[-1].offFile + (pSect->addr - pSeg[-1].LinkAddress) == pSect->offset
+                                    int fOk = pSeg[-1].offFile + (pSect->addr - pSeg[-1].LinkAddress) == pSect->offset + pModMachO->offImage
                                            && pSect[-1].offset
-                                           && pSeg[-1].offFile + pSeg[-1].cbFile == pSect[-1].offset + pSect[-1].size;
+                                           && pSeg[-1].offFile + pSeg[-1].cbFile == pSect[-1].offset + pModMachO->offImage + pSect[-1].size;
                                     /* more checks? */
                                     if (fOk)
                                         pSeg[-1].cbFile = (KLDRFOFF)(pSect->addr - pSeg[-1].LinkAddress) + pSect->size;
@@ -1178,10 +1196,10 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                             pSectExtra->cb = pSect->size;
                             pSectExtra->RVA = pSect->addr;
                             pSectExtra->LinkAddress = pSect->addr;
-                            pSectExtra->offFile = pSect->offset ? pSect->offset : -1;
+                            pSectExtra->offFile = pSect->offset ? pSect->offset + pModMachO->offImage : -1;
                             pSectExtra->cFixups = pSect->nreloc;
                             pSectExtra->paFixups = NULL;
-                            pSectExtra->offFixups = pSect->nreloc ? pSect->reloff : -1;
+                            pSectExtra->offFixups = pSect->nreloc ? pSect->reloff + pModMachO->offImage : -1;
                             pSectExtra->fFlags = pSect->flags;
                             pSectExtra->iSegment = pSegExtra - &pModMachO->aSegments[0];
                             pSectExtra->pvMachoSection = pSect;
@@ -1215,7 +1233,7 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                                 pSeg->cb = pSect->size;
                                 pSeg->Alignment = (1 << pSect->align);
                                 pSeg->LinkAddress = pSect->addr;
-                                pSeg->offFile = pSect->offset ? pSect->offset : -1;
+                                pSeg->offFile = pSect->offset ? pSect->offset + pModMachO->offImage : -1;
                                 pSeg->cbFile  = pSect->offset ? pSect->size : -1;
                                 pSeg->RVA = pSect->addr - pModMachO->LinkAddress;
                                 pSeg->cbMapped = 0;
@@ -1241,9 +1259,9 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                                 if (    pSect->offset
                                     &&  pSeg[-1].cbFile == pSeg[-1].cb)
                                 {
-                                    int fOk = pSeg[-1].offFile + (pSect->addr - pSeg[-1].LinkAddress) == pSect->offset
+                                    int fOk = pSeg[-1].offFile + (pSect->addr - pSeg[-1].LinkAddress) == pSect->offset + pModMachO->offImage
                                            && pSect[-1].offset
-                                           && pSeg[-1].offFile + pSeg[-1].cbFile == pSect[-1].offset + pSect[-1].size;
+                                           && pSeg[-1].offFile + pSeg[-1].cbFile == pSect[-1].offset + pModMachO->offImage + pSect[-1].size;
                                     /* more checks? */
                                     if (fOk)
                                         pSeg[-1].cbFile = (KLDRFOFF)(pSect->addr - pSeg[-1].LinkAddress) + pSect->size;
@@ -1276,9 +1294,9 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                 switch (pModMachO->Hdr.filetype)
                 {
                     case MH_OBJECT:
-                        pModMachO->offSymbols = u.pSymTab->symoff;
+                        pModMachO->offSymbols = u.pSymTab->symoff + pModMachO->offImage;
                         pModMachO->cSymbols = u.pSymTab->nsyms;
-                        pModMachO->offStrings = u.pSymTab->stroff;
+                        pModMachO->offStrings = u.pSymTab->stroff + pModMachO->offImage;
                         pModMachO->cchStrings = u.pSymTab->strsize;
                         break;
                 }

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 5 2008-02-03 20:56:09Z bird $
+# $Id: Makefile.kmk 24 2009-02-08 13:58:54Z bird $
 ## @file
 # kStuff - Top-level makefile.
 #
@@ -33,7 +33,9 @@ include $(PATH_SUB_CURRENT)/kLdr/Makefile.kmk
 include $(PATH_SUB_CURRENT)/kRdr/Makefile.kmk
 
 include $(PATH_SUB_CURRENT)/kHlp/Makefile.kmk
-include $(PATH_SUB_CURRENT)/kProfiler2/Makefile.kmk
+ifn1of ($(KBUILD_TARGET), darwin)
+ include $(PATH_SUB_CURRENT)/kProfiler2/Makefile.kmk
+endif
 
 LIBRARIES += kStuffStatic
 kStuffStatic_TEMPLATE = kStuffLIB

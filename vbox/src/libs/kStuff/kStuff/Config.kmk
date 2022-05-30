@@ -1,10 +1,10 @@
-# $Id: Config.kmk 8 2008-04-20 03:46:13Z bird $
+# $Id: Config.kmk 24 2009-02-08 13:58:54Z bird $
 ## @file
 # kBuild configuration for kStuff
 #
 
 #
-# Copyright (c) 2006-2007 knut st. osmundsen <bird-kStuff-spam@anduin.net>
+# Copyright (c) 2006-2008 knut st. osmundsen <bird-kStuff-spam@anduin.net>
 #
 # This file is part of kStuff.
 #
@@ -33,10 +33,10 @@ PATH_INS := $(PATH_OUT)/kStuff
 # Templates for the kStuff.
 #
 TEMPLATE_kStuff = kStuff Template
-TEMPLATE_kStuff_TOOL             = GCC3
-TEMPLATE_kStuff_TOOL.darwin      = GCC4MACHO
-TEMPLATE_kStuff_TOOL.os2         = GCC3OMF
-TEMPLATE_kStuff_TOOL.solaris     = GCC3PLAIN
+TEMPLATE_kStuff_TOOL             = GXX3
+TEMPLATE_kStuff_TOOL.darwin      = GXX4MACHO
+TEMPLATE_kStuff_TOOL.os2         = GXX3OMF
+TEMPLATE_kStuff_TOOL.solaris     = GXX3PLAIN
 TEMPLATE_kStuff_TOOL.win.x86     = VCC70
 TEMPLATE_kStuff_TOOL.win.amd64   = VCC80AMD64
 
@@ -81,10 +81,10 @@ else
 TEMPLATE_kStuff_CFLAGS.win      += -Od
 endif
 
-TEMPLATE_kStuff_CXXFLAGS.darwin  = -g -fno-common
-TEMPLATE_kStuff_CXXFLAGS.freebsd = -g
-TEMPLATE_kStuff_CXXFLAGS.linux   = -g
-TEMPLATE_kStuff_CXXFLAGS.os2     = -g
+TEMPLATE_kStuff_CXXFLAGS.darwin  = -g -fno-exceptions -fno-common
+TEMPLATE_kStuff_CXXFLAGS.freebsd = -g -fno-exceptions
+TEMPLATE_kStuff_CXXFLAGS.linux   = -g -fno-exceptions
+TEMPLATE_kStuff_CXXFLAGS.os2     = -g -fno-exceptions
 TEMPLATE_kStuff_CXXFLAGS.win     = -Zi -Zl -W3 -GF -GR-
 TEMPLATE_kStuff_CXXFLAGS.win.x86 = -MD
 TEMPLATE_kStuff_CXXFLAGS.win.amd64 = -MT
