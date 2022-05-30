@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17842 2009-03-13 15:44:36Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17891 2009-03-15 17:29:59Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -2324,6 +2324,9 @@ int NetIfCreateHostOnlyNetworkInterface (VirtualBox *pVBox,
                                   IHostNetworkInterface **aHostNetworkInterface,
                                   IProgress **aProgress)
 {
+#ifndef VBOX_WITH_NETFLT
+    return VERR_NOT_IMPLEMENTED;
+#else
     /* create a progress object */
     ComObjPtr <Progress> progress;
     progress.createObject();
@@ -2369,12 +2372,16 @@ int NetIfCreateHostOnlyNetworkInterface (VirtualBox *pVBox,
     }
 
     return SUCCEEDED(rc) ? VINF_SUCCESS : VERR_GENERAL_FAILURE;
+#endif
 }
 
 int NetIfRemoveHostOnlyNetworkInterface (VirtualBox *pVBox, IN_GUID aId,
                                   IHostNetworkInterface **aHostNetworkInterface,
                                   IProgress **aProgress)
 {
+#ifndef VBOX_WITH_NETFLT
+    return VERR_NOT_IMPLEMENTED;
+#else
     /* create a progress object */
     ComObjPtr <Progress> progress;
     progress.createObject();
@@ -2413,6 +2420,7 @@ int NetIfRemoveHostOnlyNetworkInterface (VirtualBox *pVBox, IN_GUID aId,
     }
 
     return SUCCEEDED(rc) ? VINF_SUCCESS : VERR_GENERAL_FAILURE;
+#endif
 }
 
 int NetIfEnableStaticIpConfig(VirtualBox *vBox, HostNetworkInterface * pIf, ULONG ip, ULONG mask)
