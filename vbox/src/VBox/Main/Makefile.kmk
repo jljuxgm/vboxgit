@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14991 2008-12-04 15:17:33Z vboxsync $
+# $Id: Makefile.kmk 15057 2008-12-05 21:47:30Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -301,7 +301,8 @@ VBoxSVC_SOURCES.win = \
 	win/VBoxSVC.rc
 
 VBoxSVC_SOURCES.linux += \
-	linux/HostHardwareLinux.cpp
+	linux/HostHardwareLinux.cpp \
+	linux/vbox-dbus.cpp
 
 VBoxSVC_SOURCES.solaris = \
 	linux/vbox-libhal.cpp \
@@ -343,11 +344,6 @@ ifdef VBOX_WITH_RESOURCE_USAGE_API
  VBoxSVC_LDFLAGS.solaris += -lkstat
  VBoxSVC_LDFLAGS.win     += psapi.lib powrprof.lib
 endif
-
-# dbus stuff
-VBoxSVC_CFLAGS   += $(if $(VBOX_WITH_DBUS),$(VBOX_DBUS_CFLAGS),)
-VBoxSVC_CXXFLAGS += $(if $(VBOX_WITH_DBUS),$(VBOX_DBUS_CXXFLAGS),)
-VBoxSVC_LDFLAGS  += $(if $(VBOX_WITH_DBUS),$(VBOX_DBUS_LDFLAGS),)
 
 win/VBoxSVC.rc_INCS  = $(PATH_VBoxSVC)
 win/VBoxSVC.rc_DEPS  = $(PATH_VBoxSVC)/VBoxSVC.rgs $(PATH_VBoxSVC)/VBoxSVC-icon.rc

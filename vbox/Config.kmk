@@ -1,4 +1,4 @@
-# $Id: Config.kmk 15049 2008-12-05 14:47:48Z vboxsync $
+# $Id: Config.kmk 15057 2008-12-05 21:47:30Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -301,7 +301,7 @@ VBOX_WITH_ALSA = 1
 VBOX_WITH_PULSE = 1
 # Enable statically linked dbus support for Linux
 ifeq ($(KBUILD_TARGET),linux)
-# VBOX_WITH_DBUS = 1
+ VBOX_WITH_DBUS = 1
 endif
 # Disable WINMM support for Windows (not implemented)
 VBOX_WITH_WINMM =
@@ -1336,15 +1336,6 @@ endif
 
 # 32bit X11 LIBPATH for building 32bit guest additions
 VBOX_LIBPATH32_X11 ?= /usr/X11R6/lib32 /usr/X11R6/lib
-
-# dbus settings for Linux
-ifeq ($(KBUILD_TARGET),linux)
- if defined(VBOX_WITH_DBUS) && (!defined(VBOX_DBUS_CFLAGS) || !defined(VBOX_DBUS_CXXFLAGS) || !defined(VBOX_DBUS_LDFLAGS))
-  export VBOX_DBUS_CFLAGS   := $(shell pkg-config dbus-1 --cflags) -DDBUS_API_SUBJECT_TO_CHANGE
-  export VBOX_DBUS_CXXFLAGS := $(VBOX_DBUS_CFLAGS)
-  export VBOX_DBUS_LDFLAGS  := $(shell pkg-config dbus-1 --libs)
- endif
-endif
 
 #
 # Macros dealing with the darwin version we're targeting.
@@ -3663,7 +3654,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15049 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15057 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
