@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 14828 2008-11-30 07:57:05Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -596,7 +596,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     hrc = pMachine->COMGETTER(VRAMSize)(&cRamMBs);                                  H();
     rc = CFGMR3InsertInteger(pCfg,  "VRamSize",             cRamMBs * _1M);         RC_CHECK();
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE /* not safe here yet. */
-    rc = CFGMR3InsertInteger(pCfg,  "R0Enabled",            false);                 RC_CHECK();
+    rc = CFGMR3InsertInteger(pCfg,  "R0Enabled",            fHWVirtExEnabled);      RC_CHECK();
 #endif
 
     /*
