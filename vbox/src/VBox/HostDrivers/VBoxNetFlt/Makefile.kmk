@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13730 2008-11-01 16:09:13Z vboxsync $
+# $Id: Makefile.kmk 13854 2008-11-05 13:05:58Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -31,7 +31,6 @@ VBoxNetFlt_SOURCES.darwin = darwin/VBoxNetFlt-darwin.cpp
 VBoxNetFlt_SOURCES.win = \
 	win/VBoxNetFlt-win.c \
 	win/VBoxNetFltPt-win.c \
-	win/VBoxNetFltNf-win.c \
 	win/VBoxNetFlt-win.rc
 ifdef VBOX_NETFLT_ONDEMAND_BIND
  VBoxNetFlt_DEFS.win += VBOX_NETFLT_ONDEMAND_BIND
