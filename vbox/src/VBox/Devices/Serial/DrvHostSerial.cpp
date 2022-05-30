@@ -1,4 +1,4 @@
-/** $Id: DrvHostSerial.cpp 12325 2008-09-10 05:52:01Z vboxsync $ */
+/** $Id: DrvHostSerial.cpp 12334 2008-09-10 09:05:02Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -778,6 +778,7 @@ ioctl_error:
             PDMR3ThreadSleep(pThread, 1000); /* 1 sec */
             continue;
         }
+        pThis->fStatusLines = statusLines;
 # endif /* !RT_OS_LINUX */
 
         if (statusLines & TIOCM_CAR)
