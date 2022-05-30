@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 17816 2009-03-13 12:42:06Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 17843 2009-03-13 15:51:55Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -716,23 +716,15 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                     }
                     case NetworkAttachmentType_HostOnly:
                     {
-#if (defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT))
                         Bstr strHostonlyAdp;
                         nic->COMGETTER(HostInterface)(strHostonlyAdp.asOutParam());
-#endif
                         if (details == VMINFO_MACHINEREADABLE)
                         {
-#if (defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT))
                             RTPrintf("hostonlyadapter%d=\"%lS\"\n", currentNIC + 1, strHostonlyAdp.raw());
-#endif
                             strAttachment = "hostonly";
                         }
                         else
-#if (defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT))
                             strAttachment = Utf8StrFmt("Host-only Interface '%lS'", strHostonlyAdp.raw());
-#else
-                            strAttachment = "Host-only Network";
-#endif
                         break;
                     }
                     default:

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 17759 2009-03-12 15:57:18Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 17843 2009-03-13 15:51:55Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -180,7 +180,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [-nictracefile<1-N> <filename>]\n"
                  "                            [-nicspeed<1-N> <kbps>]\n"
                  "                            [-bridgeadapter<1-N> none|<devicename>]\n"
-#if (defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT))
+#if defined(VBOX_WITH_NETFLT)
                  "                            [-hostonlyadapter<1-N> none|<devicename>]\n"
 #endif
                  "                            [-intnet<1-N> <network name>]\n"
