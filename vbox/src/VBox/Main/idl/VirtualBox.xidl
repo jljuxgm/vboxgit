@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14568 2008-11-25 12:43:19Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14569 2008-11-25 13:04:37Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -181,6 +181,12 @@
   <result name="VBOX_E_IPRT_ERROR" value="0x80BB0005">
     <desc>
        Runtime subsystem error.
+    </desc>
+  </result>
+
+  <result name="VBOX_E_PDM_ERROR" value="0x80BB0006">
+    <desc>
+       Pluggable Device Manager error.
     </desc>
   </result>
 
