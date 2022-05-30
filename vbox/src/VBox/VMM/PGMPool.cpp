@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 15225 2008-12-10 04:24:39Z vboxsync $ */
+/* $Id: PGMPool.cpp 16317 2009-01-28 14:42:00Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -302,7 +302,7 @@ int pgmR3PoolInit(PVM pVM)
 #else
     pPool->aPages[PGMPOOL_IDX_AMD64_CR3].pvPageR3  = pVM->pgm.s.pShwPaePdptR3;  /* not used - isn't it wrong as well? */
 #endif
-    pPool->aPages[PGMPOOL_IDX_AMD64_CR3].enmKind   = PGMPOOLKIND_64BIT_PML4_FOR_64BIT_PML4;
+    pPool->aPages[PGMPOOL_IDX_AMD64_CR3].enmKind   = PGMPOOLKIND_64BIT_PML4;
     pPool->aPages[PGMPOOL_IDX_AMD64_CR3].idx       = PGMPOOL_IDX_AMD64_CR3;
 
     /* The Nested Paging CR3. */
