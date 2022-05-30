@@ -1,4 +1,4 @@
-/* $Id: path.h 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: path.h 11836 2008-08-29 16:52:20Z vboxsync $ */
 /** @file
  * IPRT - RTPath Internal header.
  */
@@ -35,7 +35,6 @@
 #include <iprt/param.h>
 
 __BEGIN_DECLS
-extern char g_szrtProgramPath[RTPATH_MAX];
 
 #if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS)
 # define HAVE_UNC 1

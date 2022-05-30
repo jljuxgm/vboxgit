@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: process-win.cpp 11836 2008-08-29 16:52:20Z vboxsync $ */
 /** @file
  * IPRT - Process, Win32.
  */
@@ -241,14 +241,5 @@ RTR3DECL(uint64_t) RTProcGetAffinityMask(void)
     Assert(fRc);
 
     return dwProcessAffinityMask;
-}
-
-
-RTR3DECL(char *) RTProcGetExecutableName(char *pszExecName, size_t cchExecName)
-{
-    HMODULE hExe = GetModuleHandle(NULL);
-    if (GetModuleFileName(hExe, pszExecName, cchExecName))
-        return pszExecName;
-    return NULL;
 }
 

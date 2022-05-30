@@ -1,4 +1,4 @@
-/* $Id: process.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: process.cpp 11836 2008-08-29 16:52:20Z vboxsync $ */
 /** @file
  * IPRT - Process, Common.
  */
@@ -36,6 +36,7 @@
 #include <iprt/process.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
+#include <iprt/string.h>
 #include "internal/process.h"
 #include "internal/thread.h"
 
@@ -91,5 +92,25 @@ RTR3DECL(int) RTProcSetPriority(RTPROCPRIORITY enmPriority)
 RTR3DECL(RTPROCPRIORITY) RTProcGetPriority(void)
 {
     return g_enmProcessPriority;
+}
+
+
+RTR3DECL(char *) RTProcGetExecutableName(char *pszExecName, size_t cchExecName)
+{
+    AssertReturn(g_szrtProcExePath[0] != '\0', NULL);
+
+    /*
+     * Calc the length and check if there is space before copying.
+     */
+    size_t cch = g_cchrtProcExePath;
+    if (cch <= cchExecName)
+    {
+        memcpy(pszExecName, g_szrtProcExePath, cch);
+        pszExecName[cch] = '\0';
+        return pszExecName;
+    }
+
+    AssertMsgFailed(("Buffer too small (%zu <= %zu)\n", cchExecName, cch));
+    return NULL;
 }
 

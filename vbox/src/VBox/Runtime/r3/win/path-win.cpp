@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 10911 2008-07-28 12:58:44Z vboxsync $ */
+/* $Id: path-win.cpp 11836 2008-08-29 16:52:20Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -119,44 +119,6 @@ RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, unsigned cchAbsPath
     RTUtf16Free(pwszPath);
 
     return rc;
-}
-
-
-/**
- * Gets the program path.
- *
- * @returns iprt status code.
- * @param   pszPath     Buffer where to store the path.
- * @param   cchPath     Buffer size in bytes.
- */
-RTDECL(int) RTPathProgram(char *pszPath, unsigned cchPath)
-{
-    /*
-     * First time only.
-     */
-    if (!g_szrtProgramPath[0])
-    {
-        HMODULE hExe = GetModuleHandle(NULL);
-        if (!GetModuleFileName(hExe, &g_szrtProgramPath[0], sizeof(g_szrtProgramPath)))
-        {
-            AssertMsgFailed(("Couldn't get exe module name. lasterr=%d\n", GetLastError()));
-            return RTErrConvertFromWin32(GetLastError());
-        }
-        RTPathStripFilename(g_szrtProgramPath);
-    }
-
-    /*
-     * Calc the length and check if there is space before copying.
-     */
-    unsigned cch = strlen(g_szrtProgramPath) + 1;
-    if (cch <= cchPath)
-    {
-        memcpy(pszPath, g_szrtProgramPath, cch + 1);
-        return VINF_SUCCESS;
-    }
-
-    AssertMsgFailed(("Buffer too small (%d < %d)\n", cchPath, cch));
-    return VERR_BUFFER_OVERFLOW;
 }
 
 
