@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 15527 2008-12-15 18:11:08Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 16195 2009-01-23 11:56:46Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -1049,6 +1049,29 @@ void vboxNetFltPortOsSetActive(PVBOXNETFLTINS pThis, bool fActive)
     ifnet_t pIfNet = vboxNetFltDarwinRetainIfNet(pThis);
     if (pIfNet)
     {
+        /*
+         * If there is no need to set promiscuous mode the only thing
+         * we have to do in order to preserve the backward compatibility
+         * is to try bringing the interface up if it gets activated.
+         */
+        if (pThis->fDisablePromiscuous)
+        {
+            Log(("vboxNetFltPortOsSetActive: promisc disabled, do nothing.\n"));
+            if (fActive)
+            {
+                /*
+                 * Try bring the interface up and running if it's down.
+                 */
+                u_int16_t fIf = ifnet_flags(pIfNet);
+                if ((fIf & (IFF_UP | IFF_RUNNING)) != (IFF_UP | IFF_RUNNING))
+                {
+                    ifnet_set_flags(pIfNet, IFF_UP, IFF_UP);
+                    ifnet_ioctl(pIfNet, 0, SIOCSIFFLAGS, NULL);
+                }
+            }
+            vboxNetFltDarwinReleaseIfNet(pThis, pIfNet);
+            return;
+        }
         /*
          * This api is a bit weird, the best reference is the code.
          *
