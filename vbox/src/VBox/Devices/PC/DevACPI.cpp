@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 17606 2009-03-10 09:39:43Z vboxsync $ */
+/* $Id: DevACPI.cpp 17607 2009-03-10 09:48:54Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1329,7 +1329,7 @@ PDMBOTHCBDECL(int) acpiSysInfoDataRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPOR
                     break;
 
                 case SYSTEM_INFO_INDEX_HIGH_MEMORY_LENGTH:
-                    *pu32 = s->cbRamHigh >> 16; /* 64KB unit */
+                    *pu32 = s->cbRamHigh >> 16; /* 64KB units */
                     Assert(((uint64_t)*pu32 << 16) == s->cbRamHigh);
                     break;
 
