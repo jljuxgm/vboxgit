@@ -3081,6 +3081,7 @@ ifdef VBOX_WITH_QTGUI
    TEMPLATE_VBOXQT4GUIEXE_LIBPATH += \
      $(VBOX_LIBPATH_X11)
   else ifeq ($(KBUILD_TARGET),darwin)
+   TEMPLATE_VBOXQT4GUIEXE_DEFS.darwin      += $(VBOX_DARWIN_DEF_SDK_DEFS)
    TEMPLATE_VBOXQT4GUIEXE_CFLAGS.darwin    += $(VBOX_DARWIN_DEF_SDK_CFLAGS)
    TEMPLATE_VBOXQT4GUIEXE_CXXFLAGS.darwin  += $(VBOX_DARWIN_DEF_SDK_CXXFLAGS)
    TEMPLATE_VBOXQT4GUIEXE_OBJCFLAGS.darwin += $(VBOX_DARWIN_DEF_SDK_OBJCFLAGS)
@@ -3684,7 +3685,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 17069 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 17153 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
