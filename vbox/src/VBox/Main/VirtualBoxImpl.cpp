@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 17888 2009-03-15 16:44:08Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 17893 2009-03-15 17:57:49Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -397,6 +397,7 @@ void VirtualBox::uninit()
     mData.mFloppyImages.clear();
     mData.mDVDImages.clear();
     mData.mHardDisks.clear();
+    mData.mDhcpServers.clear();
 
     mData.mProgressOperations.clear();
 

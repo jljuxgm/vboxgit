@@ -1,4 +1,4 @@
-/* $Id: DhcpServerImpl.cpp 17888 2009-03-15 16:44:08Z vboxsync $ */
+/* $Id: DhcpServerImpl.cpp 17893 2009-03-15 17:57:49Z vboxsync $ */
 
 /** @file
  *
@@ -43,7 +43,18 @@ void DhcpServer::FinalRelease()
 
 void DhcpServer::uninit()
 {
+    /* Enclose the state transition Ready->InUninit->NotReady */
+    AutoUninitSpan autoUninitSpan (this);
+    if (autoUninitSpan.uninitDone())
+        return;
+
+//    /* we uninit children and reset mParent
+//     * and VirtualBox::removeDependentChild() needs a write lock */
+//    AutoMultiWriteLock2 alock (mVirtualBox->lockHandle(), this->treeLock());
+
     mVirtualBox->removeDependentChild (this);
+
+    unconst (mVirtualBox).setNull();
 }
 
 HRESULT DhcpServer::init(VirtualBox *aVirtualBox, IN_BSTR aName)
