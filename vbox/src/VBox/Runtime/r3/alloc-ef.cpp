@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.cpp 13306 2008-10-15 21:17:04Z vboxsync $ */
+/* $Id: alloc-ef.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -365,7 +365,7 @@ RTDECL(void) rtMemFree(const char *pszOp, RTMEMTYPE enmType, void *pv, void *pvC
     /*
      * Check watch points.
      */
-    for (unsigned i = 0; i < ELEMENTS(gapvRTMemFreeWatch); i++)
+    for (unsigned i = 0; i < RT_ELEMENTS(gapvRTMemFreeWatch); i++)
         if (gapvRTMemFreeWatch[i] == pv)
             RTAssertDoPanic();
 

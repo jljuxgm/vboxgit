@@ -1,4 +1,4 @@
-/* $Id: sched-posix.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: sched-posix.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, POSIX.
  */
@@ -665,11 +665,11 @@ int rtProcNativeSetPriority(RTPROCPRIORITY enmPriority)
         {
             case OSPRIOSUP_PROCESS_AND_THREAD_LEVEL:
                 pa = g_aProcessAndThread;
-                c = ELEMENTS(g_aProcessAndThread);
+                c = RT_ELEMENTS(g_aProcessAndThread);
                 break;
             case OSPRIOSUP_THREAD_LEVEL:
                 pa = g_aUnixConfigs;
-                c = ELEMENTS(g_aUnixConfigs);
+                c = RT_ELEMENTS(g_aUnixConfigs);
                 break;
             default:
                 pa = NULL;

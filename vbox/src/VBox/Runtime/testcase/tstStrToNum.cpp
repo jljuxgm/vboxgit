@@ -1,4 +1,4 @@
-/* $Id: tstStrToNum.cpp 8279 2008-04-22 12:13:16Z vboxsync $ */
+/* $Id: tstStrToNum.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - String To Number Conversion.
  */
@@ -86,7 +86,7 @@ struct TstU32
 #define RUN_TESTS(aTests, Type, Fmt, Fun) \
     do \
     { \
-        for (unsigned iTest = 0; iTest < ELEMENTS(aTests); iTest++) \
+        for (unsigned iTest = 0; iTest < RT_ELEMENTS(aTests); iTest++) \
         { \
             TEST(aTests[iTest], Type, Fmt, Fun, iTest); \
         } \

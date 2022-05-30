@@ -1,4 +1,4 @@
-/* $Id: semsrw-generic.cpp 12892 2008-10-02 07:22:55Z vboxsync $ */
+/* $Id: semsrw-generic.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, Generic.
  *
@@ -301,7 +301,7 @@ RTDECL(int)   RTSemRWRequestRead(RTSEMRW RWSem, unsigned cMillies)
         {
             if (pIntRWSem->cWriters == 0)
             {
-                if (pIntRWSem->cReaders < ELEMENTS(pIntRWSem->aReaders))
+                if (pIntRWSem->cReaders < RT_ELEMENTS(pIntRWSem->aReaders))
                 {
                     /*
                      * Add ourselves to the list of readers and return.

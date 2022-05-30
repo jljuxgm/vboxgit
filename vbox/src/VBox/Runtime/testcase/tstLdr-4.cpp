@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * IPRT - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -109,7 +109,7 @@ static int testLdrOne(const char *pszFilename)
     /*
      * Load them.
      */
-    for (i = 0; i < ELEMENTS(aLoads); i++)
+    for (i = 0; i < RT_ELEMENTS(aLoads); i++)
     {
         if (!strncmp(aLoads[i].pszName, "kLdr-", sizeof("kLdr-") - 1))
             rc = RTLdrOpenkLdr(pszFilename, &aLoads[i].hLdrMod);
@@ -157,7 +157,7 @@ static int testLdrOne(const char *pszFilename)
      */
     if (!cErrors)
     {
-        for (i = 0; i < ELEMENTS(aLoads); i += 1)
+        for (i = 0; i < RT_ELEMENTS(aLoads); i += 1)
         {
             /* get the pointer. */
             RTUINTPTR Value;
@@ -187,7 +187,7 @@ static int testLdrOne(const char *pszFilename)
     /*
      * Clean up.
      */
-    for (i = 0; i < ELEMENTS(aLoads); i++)
+    for (i = 0; i < RT_ELEMENTS(aLoads); i++)
     {
         if (aLoads[i].pvBits)
             RTMemFree(aLoads[i].pvBits);

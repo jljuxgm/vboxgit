@@ -1,4 +1,4 @@
-/* $Id: heapsimple.cpp 13775 2008-11-04 08:35:37Z vboxsync $ */
+/* $Id: heapsimple.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * IPRT - A Simple Heap.
  */
@@ -328,7 +328,7 @@ RTDECL(int) RTHeapSimpleInit(PRTHEAPSIMPLE pHeap, void *pvMemory, size_t cbMemor
                      - sizeof(RTHEAPSIMPLEBLOCK)
                      - sizeof(RTHEAPSIMPLEINTERNAL);
     pHeapInt->pFreeTail = pHeapInt->pFreeHead = (PRTHEAPSIMPLEFREE)(pHeapInt + 1);
-    for (i = 0; i < ELEMENTS(pHeapInt->auAlignment); i++)
+    for (i = 0; i < RT_ELEMENTS(pHeapInt->auAlignment); i++)
         pHeapInt->auAlignment[i] = ~(size_t)0;
 
     /* Init the single free block. */

@@ -1,4 +1,4 @@
-/* $Id: tstRunTestcases.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
+/* $Id: tstRunTestcases.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * tstRunTescases - Driver program for running VBox testcase (tst* testcase/tst*).
  */
@@ -112,7 +112,7 @@ static bool IsTestcaseIncluded(const char *pszTestcase)
     if (pszDup)
     {
         RTPathStripExt(pszDup);
-        for (unsigned i = 0; i < ELEMENTS(g_apszExclude); i++)
+        for (unsigned i = 0; i < RT_ELEMENTS(g_apszExclude); i++)
         {
             if (!strcmp(g_apszExclude[i], pszDup))
             {

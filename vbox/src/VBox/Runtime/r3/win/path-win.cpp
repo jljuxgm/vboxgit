@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 13104 2008-10-08 23:38:46Z vboxsync $ */
+/* $Id: path-win.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -67,8 +67,8 @@ RTDECL(int) RTPathReal(const char *pszPath, char *pszRealPath, unsigned cchRealP
 
     LPWSTR lpFile;
     WCHAR  wsz[RTPATH_MAX];
-    rc = GetFullPathNameW((LPCWSTR)pwszPath, ELEMENTS(wsz), &wsz[0], &lpFile);
-    if (rc > 0 && rc < ELEMENTS(wsz))
+    rc = GetFullPathNameW((LPCWSTR)pwszPath, RT_ELEMENTS(wsz), &wsz[0], &lpFile);
+    if (rc > 0 && rc < RT_ELEMENTS(wsz))
     {
         /* Check that it exists. (Use RTPathAbs() to just resolve the name.) */
         DWORD dwAttr = GetFileAttributesW(wsz);

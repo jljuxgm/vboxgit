@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 11413 2008-08-14 08:03:03Z vboxsync $ */
+/* $Id: strformatrt.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -270,8 +270,8 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
                 };
                 const char *pszType = *ppszFormat - 1;
                 int         iStart  = 0;
-                int         iEnd    = ELEMENTS(s_aTypes) - 1;
-                int         i       = ELEMENTS(s_aTypes) / 2;
+                int         iEnd    = RT_ELEMENTS(s_aTypes) - 1;
+                int         i       = RT_ELEMENTS(s_aTypes) / 2;
 
                 union
                 {
@@ -764,8 +764,8 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
                 };
                 const char *pszType = *ppszFormat - 1;
                 int         iStart  = 0;
-                int         iEnd    = ELEMENTS(s_aTypes) - 1;
-                int         i       = ELEMENTS(s_aTypes) / 2;
+                int         iEnd    = RT_ELEMENTS(s_aTypes) - 1;
+                int         i       = RT_ELEMENTS(s_aTypes) / 2;
 
                 union
                 {

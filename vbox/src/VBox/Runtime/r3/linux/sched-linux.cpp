@@ -1,4 +1,4 @@
-/* $Id: sched-linux.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: sched-linux.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, POSIX.
  */
@@ -565,7 +565,7 @@ int rtProcNativeSetPriority(RTPROCPRIORITY enmPriority)
          * Find a configuration which matches and can be applied.
          */
         rc = VERR_FILE_NOT_FOUND;
-        for (unsigned i = 0; i < ELEMENTS(g_aUnixConfigs); i++)
+        for (unsigned i = 0; i < RT_ELEMENTS(g_aUnixConfigs); i++)
         {
             if (g_aUnixConfigs[i].enmPriority == enmPriority)
             {

@@ -1,4 +1,4 @@
-/* $Id: mp-darwin.cpp 11810 2008-08-29 11:52:39Z vboxsync $ */
+/* $Id: mp-darwin.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Darwin.
  */
@@ -61,7 +61,7 @@ static RTCPUID rtMpDarwinMaxCpus(void)
     aiMib[1] = HW_NCPU;
     int cCpus = -1;
     size_t cb = sizeof(cCpus);
-    int rc = sysctl(aiMib, ELEMENTS(aiMib), &cCpus, &cb, NULL, 0);
+    int rc = sysctl(aiMib, RT_ELEMENTS(aiMib), &cCpus, &cb, NULL, 0);
     if (rc != -1 && cCpus >= 1)
         return cCpus;
     AssertFailed();
@@ -190,7 +190,7 @@ RTDECL(uint32_t) RTMpGetMaxFrequency(RTCPUID idCpu)
     aiMib[1] = HW_CPU_FREQ;
     int cCpus = -1;
     cb = sizeof(cCpus);
-    rc = sysctl(aiMib, ELEMENTS(aiMib), &cCpus, &cb, NULL, 0);
+    rc = sysctl(aiMib, RT_ELEMENTS(aiMib), &cCpus, &cb, NULL, 0);
     if (rc != -1 && cCpus >= 1)
         return cCpus;
     AssertFailed();

@@ -1,4 +1,4 @@
-/* $Id: tstTimerLR.cpp 10944 2008-07-29 18:08:58Z vboxsync $ */
+/* $Id: tstTimerLR.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - Low Resolution Timers.
  */
@@ -131,7 +131,7 @@ int main()
     };
 
     unsigned i = 0;
-    for (i = 0; i < ELEMENTS(aTests); i++)
+    for (i = 0; i < RT_ELEMENTS(aTests); i++)
     {
         //aTests[i].cLower = (aTests[i].uMilliesWait - aTests[i].uMilliesWait / 10) / aTests[i].uMilliesInterval;
         //aTests[i].cUpper = (aTests[i].uMilliesWait + aTests[i].uMilliesWait / 10) / aTests[i].uMilliesInterval;
