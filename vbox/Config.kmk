@@ -1,4 +1,4 @@
-# $Id: Config.kmk 15475 2008-12-14 23:21:50Z vboxsync $
+# $Id: Config.kmk 15477 2008-12-14 23:51:40Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -391,7 +391,7 @@ VBOX_WITH_ALL_DOXYGEN_TARGETS = 1
 # Enable BusLogic SCSI host adapter
 VBOX_WITH_BUSLOGIC = 1
 # Enable LsiLogic SCSI host adapter
-VBOX_WITH_LSILOGIC = 1
+#VBOX_WITH_LSILOGIC = 1
 # Enable SCSI drivers
 VBOX_WITH_SCSI = 1
 # Enable host network interface API.
@@ -3674,7 +3674,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15475 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15477 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
