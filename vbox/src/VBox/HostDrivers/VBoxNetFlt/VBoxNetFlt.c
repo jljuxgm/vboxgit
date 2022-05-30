@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 17185 2009-02-27 00:52:08Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 17187 2009-02-27 01:06:42Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -1130,8 +1130,11 @@ static DECLCALLBACK(int) vboxNetFltFactoryCreateAndConnect(PINTNETTRUNKFACTORY p
     /*
      * Dynamically create a new instance.
      */
-    rc = vboxNetFltNewInstance(pGlobals, pszName, pSwitchPort,
+    rc = vboxNetFltNewInstance(pGlobals,
+                               pszName,
+                               pSwitchPort,
                                !!(fFlags & INTNETTRUNKFACTORY_FLAG_NO_PROMISC),
+                               NULL,
                                ppIfPort);
 #endif
     LogFlow(("vboxNetFltFactoryCreateAndConnect: returns %Rrc\n", rc));
