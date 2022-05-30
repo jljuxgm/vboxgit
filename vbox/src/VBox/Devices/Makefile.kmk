@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11741 2008-08-28 08:10:52Z vboxsync $
+# $Id: Makefile.kmk 11750 2008-08-28 11:24:42Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -667,9 +667,6 @@ NatAlias_SOURCES += Network/nat/src/sys/netinet/libalias/alias_proxy.c
 #NatAlias_SOURCES += Network/nat/src/sys/libalias/alias_skinny.c
 #NatAlias_SOURCES += Network/nat/src/sys/libalias/alias_smedia.c
 NatAlias_SOURCES += Network/nat/src/sys/netinet/libalias/alias_util.c
-NatAlias_SOURCES += Network/nat/src/common/lib/libc/gen/bswap16.c
-NatAlias_SOURCES += Network/nat/src/common/lib/libc/gen/bswap32.c
-NatAlias_SOURCES += Network/nat/src/common/lib/libc/gen/bswap64.c
 
 NatAlias_SOURCES.amd64 +=	Network/nat/src/sys/amd64/amd64/in_cksum.c
 
