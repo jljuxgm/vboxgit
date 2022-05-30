@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 15694 2008-12-19 14:11:07Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 15695 2008-12-19 14:11:54Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1115,6 +1115,7 @@ VMMR0DECL(int)   HWACCMR0TestSwitcher3264(PVM pVM)
     PVMCPU   pVCpu = &pVM->aCpus[0];
     CPUMCTX *pCtx;
     uint32_t aParam[5] = {0, 1, 2, 3, 4};
+    int      rc;
 
     pCtx = CPUMQueryGuestCtxPtrEx(pVM, pVCpu);
 
