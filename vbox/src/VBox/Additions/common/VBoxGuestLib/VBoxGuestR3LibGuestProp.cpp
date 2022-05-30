@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 10987 2008-07-30 14:10:53Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 12722 2008-09-25 12:08:14Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * guest properties.
@@ -649,4 +649,47 @@ VBGLR3DECL(void) VbglR3GuestPropEnumFree(PVBGLR3GUESTPROPENUM pHandle)
 {
     RTMemFree(pHandle->pchBuf);
     RTMemFree(pHandle);
+}
+
+/**
+ * Deletes a key (matching pattern) including its children.
+ *
+ * @returns VBox status code.
+ */
+VBGLR3DECL(int) VbglR3GuestPropDelTree(uint32_t u32ClientId,
+                                       char **papszPatterns,
+                                       int cPatterns)
+{
+    PVBGLR3GUESTPROPENUM pHandle = NULL;
+    int rc = VINF_SUCCESS;
+
+    char* pszName = NULL;
+    char* pszValue = NULL;
+    uint64_t pu64Timestamp = 0;
+    char* pszFlags = NULL;
+
+    rc = VbglR3GuestPropEnum(u32ClientId,
+                             papszPatterns,
+                             cPatterns,
+                             &pHandle,
+                             &pszName,
+                             &pszValue,
+                             &pu64Timestamp,
+                             &pszFlags);
+
+    while (RT_SUCCESS(rc) && (pszName != NULL))
+    {
+        rc = VbglR3GuestPropWriteValue(u32ClientId, pszName, NULL);
+        if(!RT_SUCCESS(rc))
+            break;
+
+        rc = VbglR3GuestPropEnumNext(pHandle,
+                                     &pszName,
+                                     &pszValue,
+                                     &pu64Timestamp,
+                                     &pszFlags);
+    }
+
+    VbglR3GuestPropEnumFree(pHandle);
+    return rc;
 }
