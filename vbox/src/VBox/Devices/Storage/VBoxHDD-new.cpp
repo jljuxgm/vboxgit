@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD-new.cpp 13580 2008-10-27 14:04:18Z vboxsync $ */
+/* $Id: VBoxHDD-new.cpp 14062 2008-11-10 23:23:05Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -690,7 +690,7 @@ VBOXDDU_DECL(int) VDBackendInfo(unsigned cEntriesAlloc, PVDBACKENDINFO pEntries,
             break;
 
         PRTDIRENTRYEX pPluginDirEntry = NULL;
-        unsigned cbPluginDirEntry = sizeof(RTDIRENTRY);
+        size_t cbPluginDirEntry = sizeof(RTDIRENTRY);
         pPluginDirEntry = (PRTDIRENTRYEX)RTMemAllocZ(sizeof(RTDIRENTRY));
         if (!pPluginDirEntry)
         {
@@ -984,7 +984,7 @@ VBOXDDU_DECL(int) VDGetFormat(const char *pszFilename, char **ppszFormat)
         }
 
         PRTDIRENTRYEX pPluginDirEntry = NULL;
-        unsigned cbPluginDirEntry = sizeof(RTDIRENTRY);
+        size_t cbPluginDirEntry = sizeof(RTDIRENTRY);
         pPluginDirEntry = (PRTDIRENTRYEX)RTMemAllocZ(sizeof(RTDIRENTRY));
         if (!pPluginDirEntry)
         {
