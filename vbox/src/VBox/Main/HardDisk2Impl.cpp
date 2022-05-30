@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.cpp 15568 2008-12-16 10:23:39Z vboxsync $ */
+/* $Id: HardDisk2Impl.cpp 15591 2008-12-16 14:46:08Z vboxsync $ */
 
 /** @file
  *
@@ -3370,7 +3370,7 @@ DECLCALLBACK(int) HardDisk2::taskThread (RTTHREAD thread, void *pvUser)
             uint64_t size = 0, logicalSize = 0;
 
             /* The object may request a specific UUID (through a special form of
-             * the setLocation() argumet). Otherwise we have to generate it */
+             * the setLocation() argument). Otherwise we have to generate it */
             Guid targetId = target->m.id;
             bool generateUuid = targetId.isEmpty();
             if (generateUuid)
@@ -3425,6 +3425,7 @@ DECLCALLBACK(int) HardDisk2::taskThread (RTTHREAD thread, void *pvUser)
                     vrc = VDCreateDiff (hdd, targetFormat, targetLocation,
                                         VD_IMAGE_FLAGS_NONE,
                                         NULL, targetId.raw(),
+                                        NULL /******/,
                                         VD_OPEN_FLAGS_NORMAL,
                                         target->mm.vdDiskIfaces,
                                         that->mm.vdDiskIfaces);
