@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 13825 2008-11-05 01:12:46Z vboxsync $ */
+/* $Id: PGMAllBth.h 13826 2008-11-05 01:14:08Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1443,7 +1443,7 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorker)(PVM pVM, PSHWPTE pPteDst, GSTPDE P
                 }
                 else
                 {
-                    LogFlow(("SyncPageWorker: monitored page (%VHp) -> mark not present\n", HCPhys));
+                    LogFlow(("SyncPageWorker: monitored page (%RHp) -> mark not present\n", HCPhys));
                     PteDst.u = 0;
                 }
                 /** @todo count these two kinds. */
@@ -3868,7 +3868,7 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVM pVM, uint64_t cr3, uint64_t cr4, RTGCUINTP
                     PPGMPOOLPAGE pPoolPage = pgmPoolGetPageByHCPhys(pVM, HCPhysShw);
                     if (!pPoolPage)
                     {
-                        AssertMsgFailed(("Invalid page table address %VHp at %RGv! PdeDst=%#RX64\n",
+                        AssertMsgFailed(("Invalid page table address %RHp at %RGv! PdeDst=%#RX64\n",
                                         HCPhysShw, GCPtr, (uint64_t)PdeDst.u));
                         cErrors++;
                         continue;
