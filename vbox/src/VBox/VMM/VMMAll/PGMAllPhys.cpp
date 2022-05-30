@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 17518 2009-03-07 06:18:52Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 17519 2009-03-07 06:19:35Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1464,7 +1464,6 @@ static void pgmPhysReadHandler(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void *p
         Assert(GCPhys >= pVirt->aPhysToVirt[iPage].Core.Key && GCPhys <= pVirt->aPhysToVirt[iPage].Core.KeyLast);
 
 #ifdef IN_RING3
-        rc = VINF_PGM_HANDLER_DO_DEFAULT;
         if (pVirt->pfnHandlerR3)
         {
             if (!pPhys)
