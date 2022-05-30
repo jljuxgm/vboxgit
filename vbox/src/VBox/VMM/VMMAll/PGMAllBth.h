@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 17137 2009-02-25 16:18:51Z vboxsync $ */
+/* $Id: PGMAllBth.h 17142 2009-02-25 17:10:23Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4787,15 +4787,14 @@ PGM_BTH_DECL(int, UnmapCR3)(PVM pVM)
     /* Update shadow paging info. */
 # if  (   (   PGM_SHW_TYPE == PGM_TYPE_32BIT  \
            || PGM_SHW_TYPE == PGM_TYPE_PAE    \
-           || PGM_SHW_TYPE == PGM_TYPE_AMD64) \
-       && (   PGM_GST_TYPE != PGM_TYPE_REAL   \
-           && PGM_GST_TYPE != PGM_TYPE_PROT))
+           || PGM_SHW_TYPE == PGM_TYPE_AMD64))
 
     Assert(!HWACCMIsNestedPagingActive(pVM));
 
 # ifndef PGM_WITHOUT_MAPPINGS
-    /* Remove the hypervisor mappings from the shadow page table. */
-    pgmMapDeactivateCR3(pVM, pVM->pgm.s.CTX_SUFF(pShwPageCR3));
+    if (pVM->pgm.s.CTX_SUFF(pShwPageCR3))
+        /* Remove the hypervisor mappings from the shadow page table. */
+        pgmMapDeactivateCR3(pVM, pVM->pgm.s.CTX_SUFF(pShwPageCR3));
 # endif
 
     pVM->pgm.s.pShwRootR3 = 0;
