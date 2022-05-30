@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 17296 2009-03-03 15:57:30Z vboxsync $ */
+/* $Id: HWACCM.cpp 17303 2009-03-03 16:53:01Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1203,7 +1203,7 @@ VMMR3DECL(int) HWACCMR3EmulateIoBlock(PVM pVM, PCPUMCTX pCtx)
     Log(("HWACCMR3EmulateIoBlock\n"));
 
     /* This is primarily intended to speed up Grub, so we don't care about paged protected mode. */
-    if (!CPUMIsGuestInPagedProtectedModeEx(pCtx))
+    if (HWACCMCanEmulateIoBlock(pCtx))
     {
         Log(("HWACCMR3EmulateIoBlock -> enabled\n"));
         pVCpu->hwaccm.s.EmulateIoBlock.fEnabled         = true;
