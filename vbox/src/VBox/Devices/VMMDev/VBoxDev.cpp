@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 13833 2008-11-05 02:15:04Z vboxsync $ */
+/* $Id: VBoxDev.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1091,7 +1091,7 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                 VMMDevHGCMCall *pHGCMCall = (VMMDevHGCMCall *)pRequestHeader;
 
                 Log2(("VMMDevReq_HGCMCall: sizeof (VMMDevHGCMRequest) = %04X\n", sizeof (VMMDevHGCMCall)));
-                Log2(("%.*Vhxd\n", pRequestHeader->size, pRequestHeader));
+                Log2(("%.*Rhxd\n", pRequestHeader->size, pRequestHeader));
 
 #ifdef VBOX_WITH_64_BITS_GUESTS
                 bool f64Bits = (pRequestHeader->requestType == VMMDevReq_HGCMCall64);

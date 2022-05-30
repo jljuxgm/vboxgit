@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -384,7 +384,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, int rcErr)
                                 "!!\n"
                                 "!! Raw stack (mind the direction).\n"
                                 "!!\n"
-                                "%.*Vhxd\n",
+                                "%.*Rhxd\n",
                                 VMM_STACK_SIZE, pVM->vmm.s.pbEMTStackR3);
             } /* !HWACCMR3IsActive */
             break;

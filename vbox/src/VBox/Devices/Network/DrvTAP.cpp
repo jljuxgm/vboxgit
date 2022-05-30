@@ -1,4 +1,4 @@
-/** $Id: DrvTAP.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
+/** $Id: DrvTAP.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * Universial TAP network transport driver.
  */
@@ -181,7 +181,7 @@ static DECLCALLBACK(int) drvTAPSend(PPDMINETWORKCONNECTOR pInterface, const void
     pThis->u64LastTransferTS = u64Now;
 #endif
     Log2(("drvTAPSend: pvBuf=%p cb=%#x\n"
-          "%.*Vhxd\n",
+          "%.*Rhxd\n",
           pvBuf, cb, cb, pvBuf));
 
     int rc = RTFileWrite(pThis->FileDevice, pvBuf, cb, NULL);
@@ -318,7 +318,7 @@ static DECLCALLBACK(int) drvTAPAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
                          cbRead, u64Now, u64Now - pThis->u64LastReceiveTS, u64Now - pThis->u64LastTransferTS));
                 pThis->u64LastReceiveTS = u64Now;
 #endif
-                Log2(("drvTAPAsyncIoThread: cbRead=%#x\n" "%.*Vhxd\n", cbRead, cbRead, achBuf));
+                Log2(("drvTAPAsyncIoThread: cbRead=%#x\n" "%.*Rhxd\n", cbRead, cbRead, achBuf));
                 STAM_COUNTER_INC(&pThis->StatPktRecv);
                 STAM_COUNTER_ADD(&pThis->StatPktRecvBytes, cbRead);
                 rc = pThis->pPort->pfnReceive(pThis->pPort, achBuf, cbRead);

@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 13404 2008-10-20 17:58:02Z vboxsync $ */
+/* $Id: DevPCI.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1379,7 +1379,7 @@ static DECLCALLBACK(int) pciLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle, 
         if (    DevTmp.config[0] != pDev->config[0]
             ||  DevTmp.config[1] != pDev->config[1])
         {
-            LogRel(("Device in slot %#x (%s) vendor id mismatch! saved=%.4Vhxs current=%.4Vhxs\n",
+            LogRel(("Device in slot %#x (%s) vendor id mismatch! saved=%.4Rhxs current=%.4Rhxs\n",
                     i, pDev->name, DevTmp.config, pDev->config));
             AssertFailedReturn(VERR_SSM_LOAD_CONFIG_MISMATCH);
         }
@@ -2099,7 +2099,7 @@ static DECLCALLBACK(int) pcibridgeLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHa
         if (    DevTmp.config[0] != pDev->config[0]
             ||  DevTmp.config[1] != pDev->config[1])
         {
-            LogRel(("Device in slot %#x (%s) vendor id mismatch! saved=%.4Vhxs current=%.4Vhxs\n",
+            LogRel(("Device in slot %#x (%s) vendor id mismatch! saved=%.4Rhxs current=%.4Rhxs\n",
                     i, pDev->name, DevTmp.config, pDev->config));
             AssertFailedReturn(VERR_SSM_LOAD_CONFIG_MISMATCH);
         }

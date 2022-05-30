@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 13416 2008-10-20 23:52:06Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -284,7 +284,7 @@ static DECLCALLBACK(int) drvIntNetSend(PPDMINETWORKCONNECTOR pInterface, const v
              cb, u64Now, u64Now - pThis->u64LastReceiveTS, u64Now - pThis->u64LastTransferTS));
     pThis->u64LastTransferTS = u64Now;
     Log2(("drvIntNetSend: pvBuf=%p cb=%#x\n"
-          "%.*Vhxd\n",
+          "%.*Rhxd\n",
           pvBuf, cb, cb, pvBuf));
 #endif
 
@@ -446,7 +446,7 @@ static int drvIntNetAsyncIoRun(PDRVINTNET pThis)
                              cbFrame, u64Now, u64Now - pThis->u64LastReceiveTS, u64Now - pThis->u64LastTransferTS));
                     pThis->u64LastReceiveTS = u64Now;
                     Log2(("drvIntNetAsyncIoRun: cbFrame=%#x\n"
-                          "%.*Vhxd\n",
+                          "%.*Rhxd\n",
                           cbFrame, cbFrame, INTNETHdrGetFramePtr(pHdr, pBuf)));
 #endif
                     int rc = pThis->pPort->pfnReceive(pThis->pPort, INTNETHdrGetFramePtr(pHdr, pBuf), cbFrame);

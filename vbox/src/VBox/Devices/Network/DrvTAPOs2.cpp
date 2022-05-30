@@ -1,4 +1,4 @@
-/** $Id: DrvTAPOs2.cpp 11590 2008-08-22 22:16:05Z vboxsync $ */
+/** $Id: DrvTAPOs2.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * VBox network devices: OS/2 TAP network transport driver.
  */
@@ -134,7 +134,7 @@ static DECLCALLBACK(int) drvTAPOs2Send(PPDMINETWORKCONNECTOR pInterface, const v
              cb, u64Now, u64Now - pThis->u64LastReceiveTS, u64Now - pThis->u64LastTransferTS));
     pThis->u64LastTransferTS = u64Now;
     Log2(("%s Send: pvBuf=%p cb=%#zx\n"
-          "%.*Vhxd\n",
+          "%.*Rhxd\n",
           pThis->szName, pvBuf, cb, cb, pvBuf));
 #endif
 
@@ -271,7 +271,7 @@ static DECLCALLBACK(int) drvTAPOs2ReceiveThread(PPDMDRVINS pDrvIns, PPDMTHREAD p
             pThis->u64LastReceiveTS = u64Now;
 #endif
             Log2(("%s: ReceiveThread: cbRead=%#x\n"
-                  "%.*Vhxd\n",
+                  "%.*Rhxd\n",
                   pThis->szName, cbRead, cbRead, abBuf));
             STAM_COUNTER_INC(&pThis->StatPktRecv);
             STAM_COUNTER_ADD(&pThis->StatPktRecvBytes, cbRead);

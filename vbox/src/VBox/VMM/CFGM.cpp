@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: CFGM.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -2531,7 +2531,7 @@ static void cfgmR3Dump(PCFGMNODE pRoot, unsigned iLevel, PCDBGFINFOHLP pHlp)
                 break;
 
             case CFGMVALUETYPE_BYTES:
-                pHlp->pfnPrintf(pHlp, "  %-*s <bytes>   = \"%.*Vhxs\" (cb=%d)\n", cchMax, pLeaf->szName, pLeaf->Value.Bytes.cb, pLeaf->Value.Bytes.pau8, pLeaf->Value.Bytes.cb);
+                pHlp->pfnPrintf(pHlp, "  %-*s <bytes>   = \"%.*Rhxs\" (cb=%d)\n", cchMax, pLeaf->szName, pLeaf->Value.Bytes.cb, pLeaf->Value.Bytes.pau8, pLeaf->Value.Bytes.cb);
                 break;
 
             default:

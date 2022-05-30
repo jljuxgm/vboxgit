@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 12639 2008-09-22 13:19:14Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD container implementation.
  */
@@ -129,7 +129,7 @@ static DECLCALLBACK(int) vdiRead(PPDMIMEDIA pInterface, uint64_t off, void *pvBu
     int rc = VDIDiskRead(pThis, off, pvBuf, cbRead);
     if (RT_SUCCESS(rc))
         Log2(("vdiRead: off=%#llx pvBuf=%p cbRead=%d\n"
-              "%.*Vhxd\n",
+              "%.*Rhxd\n",
               off, pvBuf, cbRead, cbRead, pvBuf));
     LogFlow(("vdiRead: returns %Rrc\n", rc));
     return rc;
@@ -146,7 +146,7 @@ static DECLCALLBACK(int) vdiWrite(PPDMIMEDIA pInterface, uint64_t off, const voi
     LogFlow(("vdiWrite: off=%#llx pvBuf=%p cbWrite=%d\n", off, pvBuf, cbWrite));
     PVDIDISK pThis = PDMIMEDIA_2_VDIDISK(pInterface);
     Log2(("vdiWrite: off=%#llx pvBuf=%p cbWrite=%d\n"
-          "%.*Vhxd\n",
+          "%.*Rhxd\n",
           off, pvBuf, cbWrite, cbWrite, pvBuf));
     int rc = VDIDiskWrite(pThis, off, pvBuf, cbWrite);
     LogFlow(("vdiWrite: returns %Rrc\n", rc));

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -2984,7 +2984,7 @@ static void vboxNetFltSolarisAnalyzeMBlk(mblk_t *pMsg)
     {
         LogFlow((DEVICE_NAME ":Unknown EtherType=%x D=%.6Rhxs S=%.6Rhxs\n", RT_H2BE_U16(pEthHdr->EtherType), &pEthHdr->DstMac,
                     &pEthHdr->SrcMac));
-        /* LogFlow((DEVICE_NAME ":%.*Vhxd\n", MBLKL(pMsg), pMsg->b_rptr)); */
+        /* LogFlow((DEVICE_NAME ":%.*Rhxd\n", MBLKL(pMsg), pMsg->b_rptr)); */
     }
 }
 

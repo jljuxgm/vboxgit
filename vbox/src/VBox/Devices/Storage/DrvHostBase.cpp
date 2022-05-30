@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 11287 2008-08-08 22:35:40Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -171,7 +171,7 @@ static DECLCALLBACK(int) drvHostBaseRead(PPDMIBLOCK pInterface, uint64_t off, vo
             if (RT_SUCCESS(rc))
             {
                 Log2(("%s-%d: drvHostBaseRead: off=%#llx cbRead=%#x\n"
-                      "%16.*Vhxd\n",
+                      "%16.*Rhxd\n",
                       pThis->pDrvIns->pDrvReg->szDriverName, pThis->pDrvIns->iInstance, off, cbRead, cbRead, pvBuf));
             }
             else
@@ -200,7 +200,7 @@ static DECLCALLBACK(int) drvHostBaseWrite(PPDMIBLOCK pInterface, uint64_t off, c
     LogFlow(("%s-%d: drvHostBaseWrite: off=%#llx pvBuf=%p cbWrite=%#x (%s)\n",
              pThis->pDrvIns->pDrvReg->szDriverName, pThis->pDrvIns->iInstance, off, pvBuf, cbWrite, pThis->pszDevice));
     Log2(("%s-%d: drvHostBaseWrite: off=%#llx cbWrite=%#x\n"
-          "%16.*Vhxd\n",
+          "%16.*Rhxd\n",
           pThis->pDrvIns->pDrvReg->szDriverName, pThis->pDrvIns->iInstance, off, cbWrite, cbWrite, pvBuf));
     RTCritSectEnter(&pThis->CritSect);
 

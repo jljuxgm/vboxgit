@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
+/* $Id: DevRTC.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -775,7 +775,7 @@ static DECLCALLBACK(int)  rtcInitComplete(PPDMDEVINS pDevIns)
      */
     rtcCalcCRC(pThis);
 
-    Log(("CMOS: \n%16.128Vhxd\n", pThis->cmos_data));
+    Log(("CMOS: \n%16.128Rhxd\n", pThis->cmos_data));
     return VINF_SUCCESS;
 }
 

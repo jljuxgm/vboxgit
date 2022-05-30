@@ -1,4 +1,4 @@
-/* $Id: PGMGst.h 13824 2008-11-05 01:11:24Z vboxsync $ */
+/* $Id: PGMGst.h 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
@@ -283,7 +283,7 @@ static DECLCALLBACK(int) pgmR3Gst32BitWriteHandlerCR3(PVM pVM, RTGCPHYS GCPhys, 
 {
     AssertMsg(!pVM->pgm.s.fMappingsFixed, ("Shouldn't be registered when mappings are fixed!\n"));
     Assert(enmAccessType == PGMACCESSTYPE_WRITE);
-    Log2(("pgmR3Gst32BitWriteHandlerCR3: ff=%#x GCPhys=%RGp pvPhys=%p cbBuf=%d pvBuf={%.*Vhxs}\n", pVM->fForcedActions, GCPhys, pvPhys, cbBuf, cbBuf, pvBuf));
+    Log2(("pgmR3Gst32BitWriteHandlerCR3: ff=%#x GCPhys=%RGp pvPhys=%p cbBuf=%d pvBuf={%.*Rhxs}\n", pVM->fForcedActions, GCPhys, pvPhys, cbBuf, cbBuf, pvBuf));
 
     /*
      * Do the write operation.
@@ -336,7 +336,7 @@ static DECLCALLBACK(int) pgmR3GstPAEWriteHandlerCR3(PVM pVM, RTGCPHYS GCPhys, vo
 {
     AssertMsg(!pVM->pgm.s.fMappingsFixed, ("Shouldn't be registered when mappings are fixed!\n"));
     Assert(enmAccessType == PGMACCESSTYPE_WRITE);
-    Log2(("pgmR3GstPAEWriteHandlerCR3: ff=%#x GCPhys=%RGp pvPhys=%p cbBuf=%d pvBuf={%.*Vhxs}\n", pVM->fForcedActions, GCPhys, pvPhys, cbBuf, cbBuf, pvBuf));
+    Log2(("pgmR3GstPAEWriteHandlerCR3: ff=%#x GCPhys=%RGp pvPhys=%p cbBuf=%d pvBuf={%.*Rhxs}\n", pVM->fForcedActions, GCPhys, pvPhys, cbBuf, cbBuf, pvBuf));
 
     /*
      * Do the write operation.
@@ -401,7 +401,7 @@ static DECLCALLBACK(int) pgmR3GstPAEWriteHandlerPD(PVM pVM, RTGCPHYS GCPhys, voi
 {
     AssertMsg(!pVM->pgm.s.fMappingsFixed, ("Shouldn't be registered when mappings are fixed!\n"));
     Assert(enmAccessType == PGMACCESSTYPE_WRITE);
-    Log2(("pgmR3GstPAEWriteHandlerPD: ff=%#x GCPhys=%RGp pvPhys=%p cbBuf=%d pvBuf={%.*Vhxs}\n", pVM->fForcedActions, GCPhys, pvPhys, cbBuf, cbBuf, pvBuf));
+    Log2(("pgmR3GstPAEWriteHandlerPD: ff=%#x GCPhys=%RGp pvPhys=%p cbBuf=%d pvBuf={%.*Rhxs}\n", pVM->fForcedActions, GCPhys, pvPhys, cbBuf, cbBuf, pvBuf));
 
     /*
      * Do the write operation.

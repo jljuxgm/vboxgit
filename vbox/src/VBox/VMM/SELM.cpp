@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 13830 2008-11-05 01:49:18Z vboxsync $ */
+/* $Id: SELM.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -1571,7 +1571,7 @@ VMMR3DECL(int) SELMR3SyncTSS(PVM pVM)
                         rc = PGMPhysSimpleReadGCPtr(pVM, &pVM->selm.s.Tss.IntRedirBitmap, GCPtrTss + offRedirBitmap, sizeof(tss.IntRedirBitmap));
                         AssertRC(rc);
                         Log2(("Redirection bitmap:\n"));
-                        Log2(("%.*Vhxd\n", sizeof(tss.IntRedirBitmap), &pVM->selm.s.Tss.IntRedirBitmap));
+                        Log2(("%.*Rhxd\n", sizeof(tss.IntRedirBitmap), &pVM->selm.s.Tss.IntRedirBitmap));
                     }
                 }
             }
