@@ -1,4 +1,4 @@
-/* $Revision: 17815 $ */
+/* $Revision: 17821 $ */
 /** @file
  * Glue code for dynamically linking to VBoxXPCOMC.
  */
@@ -120,8 +120,10 @@ static int tryLoadOne(const char *pszHome)
             sprintf(g_szVBoxErrMsg, "dlsym(%.80s/%.32s): %128s",
                     pszBuf, VBOX_GET_XPCOMC_FUNCTIONS_SYMBOL_NAME, dlerror());
         if (rc != 0)
+        {
             dlclose(g_hVBoxXPCOMC);
-        g_hVBoxXPCOMC = NULL;
+            g_hVBoxXPCOMC = NULL;
+        }
     }
     else
         sprintf(g_szVBoxErrMsg, "dlopen(%.80s): %128s", pszBuf, dlerror());
