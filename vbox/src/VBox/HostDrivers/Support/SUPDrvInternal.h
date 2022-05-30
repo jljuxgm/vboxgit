@@ -1,4 +1,4 @@
-/* $Revision: 12000 $ */
+/* $Revision: 12100 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -237,6 +237,21 @@ __END_DECLS
 # define dprintf2 dprintf
 #else
 # define dprintf2(a) do { } while (0)
+#endif
+
+
+/** @def SUPDRV_WITH_UNWIND_HACK
+ * Changes a function name into the wrapped version if we've
+ * enabled the unwind hack.
+ *
+ * The unwind hack is for making the NT unwind procedures skip
+ * our dynamically loaded code when they try to walk the call
+ * stack. Needless to say, they kind of don't expect what
+ * we're doing here and get kind of confused and may BSOD. */
+#ifdef SUPDRV_WITH_UNWIND_HACK
+# define UNWIND_WRAP(Name)  supdrvNtWrap##Name
+#else
+# define UNWIND_WRAP(Name)  Name
 #endif
 
 
@@ -668,12 +683,6 @@ __BEGIN_DECLS
 void VBOXCALL   supdrvOSObjInitCreator(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession);
 bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, const char *pszObjName, int *prc);
 bool VBOXCALL   supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt);
-
-#ifdef SUPDRV_WITH_UNWIND_HACK
-DECLASM(int) supdrvNtWrapVMMR0EntryEx(PFNRT pfnVMMR0EntryEx, PVM pVM, unsigned uOperation, PSUPVMMR0REQHDR pReq, uint64_t u64Arg, PSUPDRVSESSION pSession);
-DECLASM(int) supdrvNtWrapRTSemEventMultiWaitNoResume(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies);
-#endif
-
 
 /*******************************************************************************
 *   Shared Functions                                                           *
