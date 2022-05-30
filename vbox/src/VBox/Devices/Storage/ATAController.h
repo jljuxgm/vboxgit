@@ -1,4 +1,4 @@
-/* $Id: ATAController.h 11159 2008-08-05 23:23:18Z vboxsync $ */
+/* $Id: ATAController.h 12508 2008-09-16 16:52:11Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller types.
  */
@@ -60,6 +60,9 @@
  * Fastest UDMA mode supported by the drive.
  */
 #define ATA_UDMA_MODE_MAX 6
+
+/** ATAPI sense info size. */
+#define ATAPI_SENSE_SIZE 64
 
 /** The maximum number of release log entries per device. */
 #define MAX_LOG_REL_ERRORS  1024
@@ -148,10 +151,8 @@ typedef struct ATADevState {
     uint32_t cbATAPISector;
     /** ATAPI current command. */
     uint8_t aATAPICmd[ATAPI_PACKET_SIZE];
-    /** ATAPI sense key. */
-    uint8_t uATAPISenseKey;
-    /** ATAPI additional sense code. */
-    uint8_t uATAPIASC;
+    /** ATAPI sense data. */
+    uint8_t abATAPISense[ATAPI_SENSE_SIZE];
     /** HACK: Countdown till we report a newly unmounted drive as mounted. */
     uint8_t cNotifiedMediaChange;
 
