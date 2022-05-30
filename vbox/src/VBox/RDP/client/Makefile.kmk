@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11721 2008-08-27 20:09:03Z vboxsync $
+# $Id: Makefile.kmk 11805 2008-08-29 10:17:27Z vboxsync $
 ## @file
 # VBox - rdesktop with VRDP enhancements sub-makefile.
 #
@@ -25,9 +25,7 @@ VBOX_RDESKTOP_SRC_SUBDIR = rdesktop-1.6.0-vrdp
 #
 # The rdesktop-vrdp program.
 #
-ifndef VBOX_ONLY_SDK
- PROGRAMS += rdesktop-vrdp
-endif
+PROGRAMS += rdesktop-vrdp
 rdesktop-vrdp_TEMPLATE = VBOXR3NPEXE
 rdesktop-vrdp_SDKS = VBOX_OPENSSL
 rdesktop-vrdp_DEFS = \

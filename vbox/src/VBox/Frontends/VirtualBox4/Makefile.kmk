@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11754 2008-08-28 12:15:00Z vboxsync $
+# $Id: Makefile.kmk 11805 2008-08-29 10:17:27Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -286,13 +286,12 @@ DLLS += VirtualBox4
 else
 PROGRAMS += VirtualBox4
 endif
-ifndef VBOX_ONLY_SDK
- ifeq ($(filter-out freebsd linux openbsd netbsd solaris,$(KBUILD_TARGET)),) # X11
-  DLLS += VBoxKeyboard
-  ## @todo convert to install target.
-  OTHERS += $(PATH_BIN)/vboxkeyboard.tar.gz
-  CLEAN += $(PATH_BIN)/vboxkeyboard.tar.gz
- endif
+
+ifeq ($(filter-out freebsd linux openbsd netbsd solaris,$(KBUILD_TARGET)),) # X11
+ DLLS += VBoxKeyboard
+ ## @todo convert to install target.
+ OTHERS += $(PATH_BIN)/vboxkeyboard.tar.gz
+ CLEAN += $(PATH_BIN)/vboxkeyboard.tar.gz
 endif
 INSTALLS += VirtualBox4.nls
 

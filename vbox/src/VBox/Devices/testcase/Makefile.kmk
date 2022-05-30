@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11734 2008-08-28 00:59:41Z vboxsync $
+# $Id: Makefile.kmk 11805 2008-08-29 10:17:27Z vboxsync $
 ## @file
 # Sub-Makefile for the Devices testcases.
 #
@@ -31,12 +31,10 @@ include	$(KBUILD_PATH)/subheader.kmk
 # We setup one 'other' target for executing the structure & alignment
 # validation testcases. Perhaps a bit hackish, but extremely useful.
 #
-ifndef VBOX_ONLY_SDK
- ifeq ($(KBUILD_TARGET),$(KBUILD_HOST))
-  ifeq ($(filter-out x86.x86 amd64.amd64 x86.amd64, $(KBUILD_TARGET_ARCH).$(KBUILD_HOST_ARCH)),)
-   OTHERS += \
+ifeq ($(KBUILD_TARGET),$(KBUILD_HOST))
+ ifeq ($(filter-out x86.x86 amd64.amd64 x86.amd64, $(KBUILD_TARGET_ARCH).$(KBUILD_HOST_ARCH)),)
+  OTHERS += \
 	$(PATH_TARGET)/tstDeviceStructSize.run
-  endif
  endif
 endif
 

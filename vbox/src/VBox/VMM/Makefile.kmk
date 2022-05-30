@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11725 2008-08-27 22:21:47Z vboxsync $
+# $Id: Makefile.kmk 11805 2008-08-29 10:17:27Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -25,8 +25,6 @@ else
 DEPTH     = ../../..
 endif
 include	$(KBUILD_PATH)/subheader.kmk
-
-ifndef VBOX_ONLY_SDK
 
 # Include sub-makefiles.
 include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
@@ -433,8 +431,6 @@ endif
 # For vmmGetSvnRev.
 #
 VMMAll/VMMAll.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
-
-endif #!VBOX_ONLY_SDK
 
 include	$(KBUILD_PATH)/subfooter.kmk
 

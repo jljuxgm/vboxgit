@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11721 2008-08-27 20:09:03Z vboxsync $
+# $Id: Makefile.kmk 11805 2008-08-29 10:17:27Z vboxsync $
 ## @file
 # Sub-Makefile for the external apps.
 #
@@ -13,19 +13,17 @@
 SUB_DEPTH = ../..
 include $(KBUILD_PATH)/subheader.kmk
 
-ifndef VBOX_ONLY_SDK
- ifdef VBOX_WITH_KCHMVIEWER
-  ifneq ($(wildcard $(PATH_SUB_CURRENT)/kchmviewer-4.3),)
-   # subdirectory currently not possible because of _QT_MOCHDRS
-   SUBDIRS_AFTER += kchmviewer-4.3
-  endif
+ifdef VBOX_WITH_KCHMVIEWER
+ ifneq ($(wildcard $(PATH_SUB_CURRENT)/kchmviewer-4.3),)
+  # subdirectory currently not possible because of _QT_MOCHDRS
+  SUBDIRS_AFTER += kchmviewer-4.3
  endif
- ifneq ($(wildcard $(PATH_SUB_CURRENT)/tunctl),)
-  ifeq ($(KBUILD_TARGET),linux)
-   include $(PATH_SUB_CURRENT)/tunctl/Makefile.kmk
-  endif
+endif
+ifneq ($(wildcard $(PATH_SUB_CURRENT)/tunctl),)
+ ifeq ($(KBUILD_TARGET),linux)
+  include $(PATH_SUB_CURRENT)/tunctl/Makefile.kmk
  endif
-endif # !VBOX_ONLY_SDK
+endif
 
 include $(KBUILD_PATH)/subfooter.kmk
 
