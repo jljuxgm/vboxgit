@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17930 2009-03-16 13:16:22Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17936 2009-03-16 14:04:13Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2511,8 +2511,8 @@ DECLCALLBACK(int) Appliance::taskThreadWriteOVF(RTTHREAD /* aThread */, void *pv
                 </OperatingSystemSection> */
             xml::ElementNode *pelmOperatingSystemSection = pelmVirtualSystem->createChild("OperatingSystemSection");
             pelmOperatingSystemSection->setAttribute("ovf:id", llOS.front()->strOvf);
-            pelmOperatingSystemSection->createChild("Info")->addContent("blah");        // @ŧodo
-            pelmOperatingSystemSection->createChild("Description")->addContent("blah");        // @ŧodo
+//             pelmOperatingSystemSection->createChild("Info")->addContent("blah");        // @ŧodo
+//             pelmOperatingSystemSection->createChild("Description")->addContent("blah");        // @ŧodo
 
             // <VirtualHardwareSection ovf:id="hw1" ovf:transport="iso">
             xml::ElementNode *pelmVirtualHardwareSection = pelmVirtualSystem->createChild("VirtualHardwareSection");
