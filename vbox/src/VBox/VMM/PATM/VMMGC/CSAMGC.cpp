@@ -1,4 +1,4 @@
-/* $Id: CSAMGC.cpp 13565 2008-10-24 17:48:59Z vboxsync $ */
+/* $Id: CSAMGC.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -89,7 +89,7 @@ VMMRCDECL(int) CSAMGCCodePageWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
          * Make this particular page R/W.
          */
         int rc = PGMShwModifyPage(pVM, pvFault, 1, X86_PTE_RW, ~(uint64_t)X86_PTE_RW);
-        AssertMsgRC(rc, ("PGMShwModifyPage -> rc=%Vrc\n", rc));
+        AssertMsgRC(rc, ("PGMShwModifyPage -> rc=%Rrc\n", rc));
         ASMInvalidatePage((void *)pvFault);
         return VINF_SUCCESS;
     }
@@ -130,7 +130,7 @@ VMMRCDECL(int) CSAMGCCodePageWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
      */
     Log(("CSAMGCCodePageWriteHandler: enabled r/w for page %VGv\n", pvFault));
     rc = PGMShwModifyPage(pVM, pvFault, 1, X86_PTE_RW, ~(uint64_t)X86_PTE_RW);
-    AssertMsgRC(rc, ("PGMShwModifyPage -> rc=%Vrc\n", rc));
+    AssertMsgRC(rc, ("PGMShwModifyPage -> rc=%Rrc\n", rc));
     ASMInvalidatePage((void *)pvFault);
 
     STAM_COUNTER_INC(&pVM->csam.s.StatCodePageModified);

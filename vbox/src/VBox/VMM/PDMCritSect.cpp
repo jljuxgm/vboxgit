@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -301,7 +301,7 @@ VMMR3DECL(void) PDMR3CritSectFF(PVM pVM)
     {
         PPDMCRITSECT pCritSect = pVM->pdm.s.apQueuedCritSectsLeaves[i];
         int rc = RTCritSectLeave(&pCritSect->s.Core);
-        LogFlow(("PDMR3CritSectFF: %p - %Vrc\n", pCritSect, rc));
+        LogFlow(("PDMR3CritSectFF: %p - %Rrc\n", pCritSect, rc));
         AssertRC(rc);
     }
 

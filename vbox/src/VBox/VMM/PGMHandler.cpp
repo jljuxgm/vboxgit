@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: PGMHandler.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -253,7 +253,7 @@ VMMR3DECL(int) PGMR3HandlerVirtualRegister(PVM pVM, PGMVIRTHANDLERTYPE enmType, 
     if (RT_SUCCESS(rc))
         return PGMR3HandlerVirtualRegisterEx(pVM, enmType, GCPtr, GCPtrLast, pfnInvalidateR3, pfnHandlerR3, pfnHandlerRC, pszDesc);
 
-    AssertMsgFailed(("Failed to resolve %s.%s, rc=%Vrc.\n", pszModRC, pszHandlerRC, rc));
+    AssertMsgFailed(("Failed to resolve %s.%s, rc=%Rrc.\n", pszModRC, pszHandlerRC, rc));
     return rc;
 }
 

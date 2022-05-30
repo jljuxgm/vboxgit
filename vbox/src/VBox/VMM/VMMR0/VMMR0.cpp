@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: VMMR0.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -101,7 +101,7 @@ VMMR0DECL(int) ModuleInit(void)
                     return VINF_SUCCESS;
                 }
                 g_pIntNet = NULL;
-                LogFlow(("ModuleTerm: returns %Vrc\n", rc));
+                LogFlow(("ModuleTerm: returns %Rrc\n", rc));
             }
         }
     }

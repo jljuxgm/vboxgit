@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: PGMAllGst.h 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -520,10 +520,10 @@ l_try_again:
 # endif
         }
         else
-            AssertMsgFailed(("rc=%Vrc GCPhysGuestPD=%VGp\n", rc, GCPhysCR3));
+            AssertMsgFailed(("rc=%Rrc GCPhysGuestPD=%VGp\n", rc, GCPhysCR3));
     }
     else
-        AssertMsgFailed(("rc=%Vrc GCPhysGuestPD=%VGp\n", rc, GCPhysCR3));
+        AssertMsgFailed(("rc=%Rrc GCPhysGuestPD=%VGp\n", rc, GCPhysCR3));
 
 #else /* prot/real stub */
     int rc = VINF_SUCCESS;

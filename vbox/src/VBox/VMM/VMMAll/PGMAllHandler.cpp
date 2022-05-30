@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -168,7 +168,7 @@ VMMDECL(int) PGMHandlerPhysicalRegisterEx(PVM pVM, PGMPHYSHANDLERTYPE enmType, R
 #endif
         pgmUnlock(pVM);
         if (rc != VINF_SUCCESS)
-            Log(("PGMHandlerPhysicalRegisterEx: returns %Vrc (%VGp-%VGp)\n", rc, GCPhys, GCPhysLast));
+            Log(("PGMHandlerPhysicalRegisterEx: returns %Rrc (%VGp-%VGp)\n", rc, GCPhys, GCPhysLast));
         return rc;
     }
 
@@ -266,7 +266,7 @@ static int pgmHandlerPhysicalSetRamFlagsAndFlushShadowPTs(PVM pVM, PPGMPHYSHANDL
         Log(("pgmHandlerPhysicalSetRamFlagsAndFlushShadowPTs: flushing guest TLBs\n"));
     }
     else
-        Log(("pgmHandlerPhysicalSetRamFlagsAndFlushShadowPTs: doesn't flush guest TLBs. rc=%Vrc\n", rc));
+        Log(("pgmHandlerPhysicalSetRamFlagsAndFlushShadowPTs: doesn't flush guest TLBs. rc=%Rrc\n", rc));
     return rc;
 }
 

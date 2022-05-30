@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2389,7 +2389,7 @@ VMMDECL(int) PGMPhysInterpretedRead(PVM pVM, PCPUMCTXCORE pCtxCore, void *pvDst,
             break;
 
         default:
-            AssertMsgFailed(("rc=%Vrc GCPtrSrc=%VGv cb=%#x\n", rc, GCPtrSrc, cb));
+            AssertMsgFailed(("rc=%Rrc GCPtrSrc=%VGv cb=%#x\n", rc, GCPtrSrc, cb));
             return rc;
     }
     Log(("PGMPhysInterpretedRead: GCPtrSrc=%VGv cb=%#x -> #PF(%#x)\n", GCPtrSrc, cb, uErr));

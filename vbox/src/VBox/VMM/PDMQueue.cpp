@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: PDMQueue.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -125,12 +125,12 @@ static int pdmR3QueueCreate(PVM pVM, RTUINT cbItem, RTUINT cItems, uint32_t cMil
             rc = TMTimerSetMillies(pQueue->pTimer, cMilliesInterval);
             if (RT_FAILURE(rc))
             {
-                AssertMsgFailed(("TMTimerSetMillies failed rc=%Vrc\n", rc));
+                AssertMsgFailed(("TMTimerSetMillies failed rc=%Rrc\n", rc));
                 int rc2 = TMTimerDestroy(pQueue->pTimer); AssertRC(rc2);
             }
         }
         else
-            AssertMsgFailed(("TMR3TimerCreateInternal failed rc=%Vrc\n", rc));
+            AssertMsgFailed(("TMR3TimerCreateInternal failed rc=%Rrc\n", rc));
         if (RT_FAILURE(rc))
         {
             if (fRZEnabled)

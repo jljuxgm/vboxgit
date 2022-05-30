@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 13415 2008-10-20 23:22:47Z vboxsync $ */
+/* $Id: IOM.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -208,7 +208,7 @@ VMMR3DECL(int) IOMR3Init(PVM pVM)
     /* Redundant, but just in case we change something in the future */
     iomR3FlushCache(pVM);
 
-    LogFlow(("IOMR3Init: returns %Vrc\n", rc));
+    LogFlow(("IOMR3Init: returns %Rrc\n", rc));
     return rc;
 }
 

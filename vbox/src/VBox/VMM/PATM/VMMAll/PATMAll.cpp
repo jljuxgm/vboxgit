@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: PATMAll.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -131,8 +131,8 @@ VMMDECL(void) PATMRawLeave(PVM pVM, PCPUMCTXCORE pCtxCore, int rawRC)
     pCtxCore->eflags.u32 = efl;
     CTXSUFF(pVM->patm.s.pGCState)->uVMFlags = X86_EFL_IF;
 
-    AssertReleaseMsg((efl & X86_EFL_IF) || fPatchCode || rawRC == VINF_PATM_PENDING_IRQ_AFTER_IRET || RT_FAILURE(rawRC), ("Inconsistent state at %VRv rc=%Vrc\n", pCtxCore->eip, rawRC));
-    AssertReleaseMsg(CTXSUFF(pVM->patm.s.pGCState)->fPIF || fPatchCode || RT_FAILURE(rawRC), ("fPIF=%d eip=%VRv rc=%Vrc\n", CTXSUFF(pVM->patm.s.pGCState)->fPIF, pCtxCore->eip, rawRC));
+    AssertReleaseMsg((efl & X86_EFL_IF) || fPatchCode || rawRC == VINF_PATM_PENDING_IRQ_AFTER_IRET || RT_FAILURE(rawRC), ("Inconsistent state at %VRv rc=%Rrc\n", pCtxCore->eip, rawRC));
+    AssertReleaseMsg(CTXSUFF(pVM->patm.s.pGCState)->fPIF || fPatchCode || RT_FAILURE(rawRC), ("fPIF=%d eip=%VRv rc=%Rrc\n", CTXSUFF(pVM->patm.s.pGCState)->fPIF, pCtxCore->eip, rawRC));
 
 #ifdef IN_RING3
     if (    (efl & X86_EFL_IF)

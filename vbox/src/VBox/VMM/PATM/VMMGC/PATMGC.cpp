@@ -1,4 +1,4 @@
-/* $Id: PATMGC.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: PATMGC.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -512,7 +512,7 @@ VMMDECL(int) PATMHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
             rc = DISCoreOne(&cpu, (RTUINTPTR)&pRec->patch.aPrivInstr[0], &cbOp);
             if (RT_FAILURE(rc))
             {
-                Log(("DISCoreOne failed with %Vrc\n", rc));
+                Log(("DISCoreOne failed with %Rrc\n", rc));
                 PATM_STAT_FAULT_INC(&pRec->patch);
                 pRec->patch.cTraps++;
                 return VINF_EM_RAW_EMULATE_INSTR;
@@ -521,7 +521,7 @@ VMMDECL(int) PATMHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
             rc = EMInterpretInstructionCPU(pVM, &cpu, pRegFrame, 0 /* not relevant here */, &size);
             if (rc != VINF_SUCCESS)
             {
-                Log(("EMInterpretInstructionCPU failed with %Vrc\n", rc));
+                Log(("EMInterpretInstructionCPU failed with %Rrc\n", rc));
                 PATM_STAT_FAULT_INC(&pRec->patch);
                 pRec->patch.cTraps++;
                 return VINF_EM_RAW_EMULATE_INSTR;

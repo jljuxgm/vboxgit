@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 13796 2008-11-04 18:37:33Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -94,7 +94,7 @@ VMMDECL(int) PDMCritSectEnter(PPDMCRITSECT pCritSect, int rcBusy)
     /*
      * Failed.
      */
-    LogFlow(("PDMCritSectEnter: locked => R3 (%Vrc)\n", rcBusy));
+    LogFlow(("PDMCritSectEnter: locked => R3 (%Rrc)\n", rcBusy));
     STAM_COUNTER_INC(&pCritSect->s.StatContentionRZLock);
     return rcBusy;
 #endif /* !IN_RING3 */

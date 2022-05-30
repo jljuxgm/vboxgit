@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: MMPagePool.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -326,7 +326,7 @@ DECLINLINE(void *) mmR3PagePoolAlloc(PMMPAGEPOOL pPool)
         VMSetError(pPool->pVM, rc, RT_SRC_POS,
                    N_("Failed to expand page pool for memory below 4GB. current size: %d pages"),
                    pPool->cPages);
-    AssertMsgFailed(("Failed to expand pool%s. rc=%Vrc poolsize=%d\n",
+    AssertMsgFailed(("Failed to expand pool%s. rc=%Rrc poolsize=%d\n",
                      pPool->fLow ? " (<4GB)" : "", rc, pPool->cPages));
     return NULL;
 }

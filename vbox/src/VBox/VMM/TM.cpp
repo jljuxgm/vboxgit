@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: TM.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -219,7 +219,7 @@ VMMR3DECL(int) TMR3Init(PVM pVM)
     rc = MMR3HyperMapHCPhys(pVM, pVM->tm.s.pvGIPR3, HCPhysGIP, PAGE_SIZE, "GIP", &GCPtr);
     if (RT_FAILURE(rc))
     {
-        AssertMsgFailed(("Failed to map GIP into GC, rc=%Vrc!\n", rc));
+        AssertMsgFailed(("Failed to map GIP into GC, rc=%Rrc!\n", rc));
         return rc;
     }
     pVM->tm.s.pvGIPRC = GCPtr;
@@ -495,7 +495,7 @@ VMMR3DECL(int) TMR3Init(PVM pVM)
     rc = RTTimerCreate(&pVM->tm.s.pTimer, u32Millies, tmR3TimerCallback, pVM);
     if (RT_FAILURE(rc))
     {
-        AssertMsgFailed(("Failed to create timer, u32Millies=%d rc=%Vrc.\n", u32Millies, rc));
+        AssertMsgFailed(("Failed to create timer, u32Millies=%d rc=%Rrc.\n", u32Millies, rc));
         return rc;
     }
     Log(("TM: Created timer %p firing every %d millieseconds\n", pVM->tm.s.pTimer, u32Millies));

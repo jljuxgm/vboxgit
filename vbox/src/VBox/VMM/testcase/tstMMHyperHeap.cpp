@@ -1,4 +1,4 @@
-/* $Id: tstMMHyperHeap.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: tstMMHyperHeap.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
 /** @file
  * MM Hypervisor Heap testcase.
  */
@@ -57,7 +57,7 @@ int main(int argc, char **argv)
         rc = SUPLowAlloc(RT_ELEMENTS(aPages), (void **)&pVM, &pvR0, &aPages[0]);
     if (RT_FAILURE(rc))
     {
-        RTPrintf("Fatal error: SUP Failure! rc=%Vrc\n", rc);
+        RTPrintf("Fatal error: SUP Failure! rc=%Rrc\n", rc);
         return 1;
     }
     memset(pVM, 0, sizeof(*pVM)); /* wtf? */
@@ -72,21 +72,21 @@ int main(int argc, char **argv)
     rc = STAMR3InitUVM(pUVM);
     if (RT_FAILURE(rc))
     {
-        RTPrintf("FAILURE: STAMR3Init failed. rc=%Vrc\n", rc);
+        RTPrintf("FAILURE: STAMR3Init failed. rc=%Rrc\n", rc);
         return 1;
     }
 
     rc = MMR3InitUVM(pUVM);
     if (RT_FAILURE(rc))
     {
-        RTPrintf("FAILURE: STAMR3Init failed. rc=%Vrc\n", rc);
+        RTPrintf("FAILURE: STAMR3Init failed. rc=%Rrc\n", rc);
         return 1;
     }
 
     rc = MMR3Init(pVM);
     if (RT_FAILURE(rc))
     {
-        RTPrintf("Fatal error: MMR3Init failed! rc=%Vrc\n", rc);
+        RTPrintf("Fatal error: MMR3Init failed! rc=%Rrc\n", rc);
         return 1;
     }
 
