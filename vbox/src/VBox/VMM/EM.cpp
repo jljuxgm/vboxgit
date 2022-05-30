@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 13858 2008-11-05 13:45:41Z vboxsync $ */
+/* $Id: EM.cpp 14268 2008-11-17 19:28:31Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3437,9 +3437,17 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, RTCPUID idCpu)
                  * We might end up doing a double reset for now, we'll have to clean up the mess later.
                  */
                 case VINF_EM_RESET:
+#if 0
                     Log2(("EMR3ExecuteVM: VINF_EM_RESET: %d -> %d\n", pVM->em.s.enmState, EMSTATE_REM));
                     pVM->em.s.enmState = EMSTATE_REM;
+#else
+                {
+                    EMSTATE enmState = emR3Reschedule(pVM, pVM->em.s.pCtx);
+                    Log2(("EMR3ExecuteVM: VINF_EM_RESET: %d -> %d (%s)\n", pVM->em.s.enmState, enmState, EMR3GetStateName(enmState)));
+                    pVM->em.s.enmState = enmState;
                     break;
+                }
+#endif
 
                 /*
                  * Power Off.
