@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 16867 2009-02-17 17:00:56Z vboxsync $ */
+/* $Id: MachineImpl.cpp 16966 2009-02-20 09:14:28Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -1753,19 +1753,17 @@ STDMETHODIMP Machine::COMGETTER(CurrentStateModified) (BOOL *aCurrentStateModifi
 }
 
 STDMETHODIMP
-Machine::COMGETTER(SharedFolders) (ISharedFolderCollection **aSharedFolders)
+Machine::COMGETTER(SharedFolders) (ComSafeArrayOut (ISharedFolder *, aSharedFolders))
 {
-    CheckComArgOutPointerValid (aSharedFolders);
+    CheckComArgOutSafeArrayPointerValid (aSharedFolders);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
 
     AutoReadLock alock (this);
 
-    ComObjPtr <SharedFolderCollection> coll;
-    coll.createObject();
-    coll->init (mHWData->mSharedFolders);
-    coll.queryInterfaceTo (aSharedFolders);
+    SafeIfaceArray <ISharedFolder> folders (mHWData->mSharedFolders);
+    folders.detachTo (ComSafeArrayOutArg(aSharedFolders));
 
     return S_OK;
 }

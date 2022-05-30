@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 16867 2009-02-17 17:00:56Z vboxsync $ */
+/* $Id: MachineImpl.h 16966 2009-02-20 09:14:28Z vboxsync $ */
 
 /** @file
  *
@@ -522,7 +522,7 @@ public:
     STDMETHOD(COMGETTER(CurrentSnapshot)) (ISnapshot **aCurrentSnapshot);
     STDMETHOD(COMGETTER(SnapshotCount)) (ULONG *aSnapshotCount);
     STDMETHOD(COMGETTER(CurrentStateModified))(BOOL *aCurrentStateModified);
-    STDMETHOD(COMGETTER(SharedFolders)) (ISharedFolderCollection **aSharedFolders);
+    STDMETHOD(COMGETTER(SharedFolders)) (ComSafeArrayOut (ISharedFolder *, aSharedFolders));
     STDMETHOD(COMGETTER(ClipboardMode)) (ClipboardMode_T *aClipboardMode);
     STDMETHOD(COMSETTER(ClipboardMode)) (ClipboardMode_T aClipboardMode);
     STDMETHOD(COMGETTER(GuestPropertyNotificationPatterns)) (BSTR *aPattern);
