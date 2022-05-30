@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16682 2009-02-11 16:37:38Z vboxsync $
+# $Id: Makefile.kmk 17086 2009-02-24 18:01:58Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -268,7 +268,7 @@ VBoxSVC_SOURCES = \
 	MachineImpl.cpp \
 	SnapshotImpl.cpp \
 	MediumImpl.cpp \
-	HardDisk2Impl.cpp \
+	HardDiskImpl.cpp \
 	HardDiskAttachmentImpl.cpp \
 	HardDiskFormatImpl.cpp \
 	ProgressImpl.cpp \
