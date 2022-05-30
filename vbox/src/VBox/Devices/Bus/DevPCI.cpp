@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 14830 2008-11-30 09:03:02Z vboxsync $ */
+/* $Id: DevPCI.cpp 15100 2008-12-08 11:02:44Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1612,6 +1612,13 @@ static DECLCALLBACK(int) pciIORegionRegister(PPDMDEVINS pDevIns, PPCIDEVICE pPci
     if ((unsigned)iRegion >= PCI_NUM_REGIONS)
     {
         AssertMsgFailed(("Invalid iRegion=%d PCI_NUM_REGIONS=%d\n", iRegion, PCI_NUM_REGIONS));
+        return VERR_INVALID_PARAMETER;
+    }
+    int iLastSet = ASMBitLastSetU32(cbRegion);
+    if (   iLastSet == 0
+        || ((1U << (iLastSet - 1)) != cbRegion))
+    {
+        AssertMsgFailed(("Invalid cbRegion=%x (not a power of 2)\n", cbRegion));
         return VERR_INVALID_PARAMETER;
     }
 
