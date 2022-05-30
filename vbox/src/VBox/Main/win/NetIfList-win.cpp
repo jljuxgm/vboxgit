@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17172 2009-02-26 15:25:20Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17173 2009-02-26 15:26:20Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -699,17 +699,8 @@ static int enableStatic()
     return r;
 }
 
-static bool bTest = true;
-
 int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
 {
-    if(bTest)
-    {
-        bTest = false;
-        Assert(0);
-        enableStatic();
-    }
-
 #ifndef VBOX_WITH_NETFLT
     static const char *NetworkKey = "SYSTEM\\CurrentControlSet\\Control\\Network\\"
                                     "{4D36E972-E325-11CE-BFC1-08002BE10318}";
