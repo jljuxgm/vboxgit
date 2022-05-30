@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17149 2009-02-26 10:27:45Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17158 2009-02-26 12:19:48Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3469,7 +3469,7 @@ void pgmPoolTrackPhysExtDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PPGMPAGE
                     for (i = 0; i < RT_ELEMENTS(paPhysExts[iPhysExt].aidx); i++)
                         if (paPhysExts[iPhysExt].aidx[i] != NIL_PGMPOOL_IDX)
                         {
-                            LogFlow(("pgmPoolTrackPhysExtDerefGCPhys: HCPhys=%RX64 idx=%d\n", pPhysPage->HCPhys, pPage->idx));
+                            Log2(("pgmPoolTrackPhysExtDerefGCPhys: HCPhys=%RX64 idx=%d\n", pPhysPage->HCPhys, pPage->idx));
                             return;
                         }
 
@@ -3481,13 +3481,13 @@ void pgmPoolTrackPhysExtDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PPGMPAGE
                     {
                         /* lonely node */
                         pgmPoolTrackPhysExtFree(pVM, iPhysExt);
-                        LogFlow(("pgmPoolTrackPhysExtDerefGCPhys: HCPhys=%RX64 idx=%d lonely\n", pPhysPage->HCPhys, pPage->idx));
+                        Log2(("pgmPoolTrackPhysExtDerefGCPhys: HCPhys=%RX64 idx=%d lonely\n", pPhysPage->HCPhys, pPage->idx));
                         pPhysPage->HCPhys &= MM_RAM_FLAGS_NO_REFS_MASK; /** @todo PAGE FLAGS */
                     }
                     else if (iPhysExtPrev == NIL_PGMPOOL_PHYSEXT_INDEX)
                     {
                         /* head */
-                        LogFlow(("pgmPoolTrackPhysExtDerefGCPhys: HCPhys=%RX64 idx=%d head\n", pPhysPage->HCPhys, pPage->idx));
+                        Log2(("pgmPoolTrackPhysExtDerefGCPhys: HCPhys=%RX64 idx=%d head\n", pPhysPage->HCPhys, pPage->idx));
                         pPhysPage->HCPhys = (pPhysPage->HCPhys & MM_RAM_FLAGS_NO_REFS_MASK)    /** @todo PAGE FLAGS */
                                           | ((uint64_t)MM_RAM_FLAGS_CREFS_PHYSEXT << MM_RAM_FLAGS_CREFS_SHIFT)
                                           | ((uint64_t)iPhysExtNext << MM_RAM_FLAGS_IDX_SHIFT);
@@ -3496,7 +3496,7 @@ void pgmPoolTrackPhysExtDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PPGMPAGE
                     else
                     {
                         /* in list */
-                        LogFlow(("pgmPoolTrackPhysExtDerefGCPhys: HCPhys=%RX64 idx=%d\n", pPhysPage->HCPhys, pPage->idx));
+                        Log2(("pgmPoolTrackPhysExtDerefGCPhys: HCPhys=%RX64 idx=%d\n", pPhysPage->HCPhys, pPage->idx));
                         paPhysExts[iPhysExtPrev].iNext = iPhysExtNext;
                         pgmPoolTrackPhysExtFree(pVM, iPhysExt);
                     }
@@ -3513,7 +3513,7 @@ void pgmPoolTrackPhysExtDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PPGMPAGE
         AssertFatalMsgFailed(("not-found! cRefs=%d HCPhys=%RHp pPage=%p:{.idx=%d}\n", cRefs, pPhysPage->HCPhys, pPage, pPage->idx));
     }
     else /* nothing to do */
-        LogFlow(("pgmPoolTrackPhysExtDerefGCPhys: HCPhys=%RX64\n", pPhysPage->HCPhys));
+        Log2(("pgmPoolTrackPhysExtDerefGCPhys: HCPhys=%RX64\n", pPhysPage->HCPhys));
 }
 
 
@@ -3545,7 +3545,7 @@ static void pgmPoolTracDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTHCPHYS 
             Assert(PGM_PAGE_GET_HCPHYS(&pRam->aPages[iPage]));
 #ifdef LOG_ENABLED
 RTHCPHYS HCPhysPage = PGM_PAGE_GET_HCPHYS(&pRam->aPages[iPage]);
-Log(("pgmPoolTracDerefGCPhys %RHp vs %RHp\n", HCPhysPage, HCPhys));
+Log2(("pgmPoolTracDerefGCPhys %RHp vs %RHp\n", HCPhysPage, HCPhys));
 #endif
             if (PGM_PAGE_GET_HCPHYS(&pRam->aPages[iPage]) == HCPhys)
             {
