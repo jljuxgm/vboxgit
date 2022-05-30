@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 11502 2008-08-19 21:07:25Z vboxsync $ */
+/* $Id: Builtins.h 12559 2008-09-18 11:22:08Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -101,6 +101,7 @@ extern const PDMDRVREG g_DrvTransportAsync;
 
 #ifdef VBOX_WITH_BUSLOGIC
 extern const PDMDRVREG g_DrvSCSI;
+extern const PDMDRVREG g_DrvSCSIHost;
 #endif
 
 __END_DECLS
