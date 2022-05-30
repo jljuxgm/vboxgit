@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 15141 2008-12-09 09:19:20Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 15142 2008-12-09 09:22:03Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2290,7 +2290,6 @@ VMMR0DECL(int) SVMR0InvalidatePhysPage(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys)
 DECLASM(int) SVMR0VMSwitcherRun64(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx, PVM pVM, PVMCPU pVCpu)
 {
     uint32_t aParam[4];
-    int      rc;
 
     aParam[0] = (uint32_t)(pVMCBHostPhys >> 32);            /* Param 1: pVMCBHostPhys - Hi. */
     aParam[1] = (uint32_t)(pVMCBHostPhys);                  /* Param 1: pVMCBHostPhys - Lo. */

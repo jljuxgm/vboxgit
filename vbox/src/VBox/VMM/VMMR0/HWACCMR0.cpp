@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 15141 2008-12-09 09:19:20Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 15142 2008-12-09 09:22:03Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1114,7 +1114,7 @@ VMMR0DECL(int)   HWACCMR0TestSwitcher3264(PVM pVM)
     if (pVM->hwaccm.s.vmx.fSupported)
         return VMXR0Execute64BitsHandler(pVM, pVCpu, pCtx, pVM->hwaccm.s.pfnTest64, 5, &aParam[0]);
 
-    return SVMR0Execute64BitsHandler(pVM, pVCpu, pCtx, pVM->hwaccm.s.pfnTest64);
+    return SVMR0Execute64BitsHandler(pVM, pVCpu, pCtx, pVM->hwaccm.s.pfnTest64, 5, &aParam[0]);
 }
 # endif
 
