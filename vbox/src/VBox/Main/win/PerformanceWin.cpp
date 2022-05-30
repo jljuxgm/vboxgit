@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 12594 2008-09-19 09:45:17Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 14341 2008-11-19 09:26:58Z vboxsync $ */
 
 /** @file
  *
@@ -309,8 +309,8 @@ int CollectorWin::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available
     mstat.dwLength = sizeof(mstat);
     if (GlobalMemoryStatusEx(&mstat))
     {
-        *total = (ULONG)( mstat.ullTotalPhys / 1000 );
-        *available = (ULONG)( mstat.ullAvailPhys / 1000 );
+        *total = (ULONG)( mstat.ullTotalPhys / 1024 );
+        *available = (ULONG)( mstat.ullAvailPhys / 1024 );
         *used = *total - *available;
     }
     else
