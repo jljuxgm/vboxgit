@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14870 2008-12-01 15:28:54Z vboxsync $
+# $Id: Makefile.kmk 14994 2008-12-04 15:44:25Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -51,7 +51,6 @@ VMMR3_INCS     := \
 VMMR3_SOURCES   = \
 	CFGM.cpp \
 	CPUM.cpp \
-	CPUMStack.cpp \
 	DBGF.cpp \
 	DBGFAddr.cpp \
 	DBGFBp.cpp \
@@ -99,6 +98,7 @@ VMMR3_SOURCES   = \
 	VMMTests.cpp \
 	HWACCM.cpp \
 	VMMAll/CPUMAllRegs.cpp \
+	VMMAll/CPUMStack.cpp \
 	VMMAll/DBGFAll.cpp \
 	VMMAll/HWACCMAll.cpp \
 	VMMAll/IOMAll.cpp \
@@ -433,6 +433,7 @@ VMMR0_SOURCES   = \
 	VMMR0/VMMR0A.asm \
 	VMMAll/CPUMAllA.asm \
 	VMMAll/CPUMAllRegs.cpp \
+	VMMAll/CPUMStack.cpp \
 	VMMAll/DBGFAll.cpp \
 	VMMAll/EMAll.cpp \
 	VMMAll/EMAllA.asm \
