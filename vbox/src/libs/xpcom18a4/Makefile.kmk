@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13908 2008-11-06 11:53:47Z vboxsync $
+# $Id: Makefile.kmk 14003 2008-11-10 12:24:53Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1747,7 +1747,7 @@ $(PATH_VBox-xpcom-string)/idl_ts: $$(addprefix $$(VBOX_PATH_SDK)/bindings/xpcom/
 # i.e. the copy residing in obj/, while VBOX_XPIDL is pointing to
 # INSTARGET_xpidl which is the one in bin/.
 #
-$(lastword $(VBOX_XPIDL)): $$(PATH_VBox-xpcom-string)/idl_ts
+$(VBOX_XPIDL): $$(PATH_VBox-xpcom-string)/idl_ts
 
 
 #

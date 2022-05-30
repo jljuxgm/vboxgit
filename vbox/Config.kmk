@@ -1,4 +1,4 @@
-# $Id: Config.kmk 13908 2008-11-06 11:53:47Z vboxsync $
+# $Id: Config.kmk 14003 2008-11-10 12:24:53Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1269,6 +1269,9 @@ ifneq ($(KBUILD_TARGET),win)
  VBOX_WITH_XPCOM      = 1
  # if updating, also update xpidl_INST var in src/libs/xpcom18a4/Makefile.kmk
  VBOX_XPIDL          ?= $(PATH_BIN)/xpidl$(HOSTSUFF_EXE)
+ ifeq ($(KBUILD_TARGET),os2)
+  VBOX_XPIDL_ENV      = BEGINLIBPATH="$(dir $(VBOX_XPIDL));$$BEGINLIBPATH"$(SP)
+ endif
  VBOX_PATH_XPCOM_IDL ?= $(VBOX_PATH_SDK)/bindings/xpcom/idl
  VBOX_XPCOM_INCS     ?= 				\
 	$(VBOX_PATH_SDK)/bindings/xpcom/include 	\
@@ -1284,12 +1287,6 @@ ifneq ($(KBUILD_TARGET),win)
   endif
  endif
 endif
-
-ifeq ($(KBUILD_TARGET),os2)
- # search DLLs in the EXE directory first
- VBOX_XPIDL    := BEGINLIBPATH="$(dir $(VBOX_XPIDL));$$BEGINLIBPATH" $(VBOX_XPIDL)
-endif
-#$(error $(VBOX_XPIDL))
 
 # The X11 LIBPATH. (The amd64 hack is for RHEL4.)
 ifeq ($(KBUILD_TARGET_ARCH),amd64)
@@ -3577,7 +3574,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13908 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14003 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
