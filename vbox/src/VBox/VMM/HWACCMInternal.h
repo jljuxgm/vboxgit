@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13175 2008-10-10 13:30:50Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13204 2008-10-13 10:09:21Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -40,6 +40,7 @@
 #endif
 
 #define HWACCM_VMX_EMULATE_REALMODE
+#define HWACCM_VTX_WITH_EPT
 
 __BEGIN_DECLS
 
