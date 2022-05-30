@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: HardDisk2Impl.h 15318 2008-12-11 17:27:02Z vboxsync $ */
 
 /** @file
  *
@@ -223,7 +223,7 @@ protected:
      *    with the exception that it must be requested *after* the VirtualBox
      *    object lock.
      */
-    RWLockHandle *treeLock() { return mVirtualBox->hardDiskTreeHandle(); }
+    RWLockHandle *treeLock() { return mVirtualBox->hardDiskTreeLockHandle(); }
 
     /** Reimplements VirtualBoxWithTypedChildren::childrenLock() to return
      *  treeLock(). */
