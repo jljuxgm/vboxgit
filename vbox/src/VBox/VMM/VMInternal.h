@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 13782 2008-11-04 12:16:30Z vboxsync $ */
+/* $Id: VMInternal.h 13791 2008-11-04 16:12:57Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -261,10 +261,6 @@ typedef struct VMINTUSERPERVM
      * Mainly for creation and destruction.. */
     PSUPDRVSESSION                  pSession;
 
-    /** The handle to the EMT thread. */
-    RTTHREAD                        ThreadEMT;
-    /** The native of the EMT thread. */
-    RTNATIVETHREAD                  NativeThreadEMT;
     /** Wait event semaphore. */
     RTSEMEVENT                      EventSemWait;
     /** Wait/Idle indicator. */

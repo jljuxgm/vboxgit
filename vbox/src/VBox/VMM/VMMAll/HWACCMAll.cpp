@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 13025 2008-10-07 07:28:54Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 13791 2008-11-04 16:12:57Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -141,3 +141,16 @@ VMMDECL(bool) HWACCMHasPendingIrq(PVM pVM)
     return !!pVM->hwaccm.s.Event.fPending;
 }
 
+#ifndef IN_GC
+/**
+ * Returns the VMCPU id of the current EMT thread.
+ *
+ * @param   pVM         The VM to operate on.
+ */
+VMMDECL(RTCPUID) HWACCMGetVMCPUId(PVM pVM)
+{
+    /* @todo */
+    Assert(pVM->cCPUs == 1);
+    return 0;
+}
+#endif

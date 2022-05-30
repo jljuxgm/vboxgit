@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 13785 2008-11-04 13:11:37Z vboxsync $ */
+/* $Id: VMEmt.cpp 13791 2008-11-04 16:12:57Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -63,12 +63,6 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
 
     rc = RTTlsSet(pUVM->vm.s.idxTLS, pUVMCPU);
     AssertReleaseMsgReturn(RT_SUCCESS(rc), ("RTTlsSet %x failed with %Rrc\n", pUVM->vm.s.idxTLS, rc), rc);
-
-    /*
-     * Init the native thread member.
-     */
-    pUVM->vm.s.NativeThreadEMT    = RTThreadGetNative(ThreadSelf);  /* @todo should go away */
-    pUVMCPU->vm.s.NativeThreadEMT = RTThreadGetNative(ThreadSelf);
 
     /*
      * The request loop.
@@ -214,7 +208,7 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
     {
         vmR3DestroyFinalBitFromEMT(pUVM);
 
-        pUVM->vm.s.NativeThreadEMT = NIL_RTNATIVETHREAD;
+        pUVMCPU->vm.s.NativeThreadEMT = NIL_RTNATIVETHREAD;
     }
     Log(("vmR3EmulationThread: EMT is terminated.\n"));
     return rc;
