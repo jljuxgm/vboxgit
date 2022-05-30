@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13498 2008-10-22 15:24:46Z vboxsync $
+# $Id: Makefile.kmk 13548 2008-10-24 11:31:17Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -33,7 +33,11 @@ VBOX_PATH_SOL_INST_SRC := $(PATH_SUB_CURRENT)
 SOLARIS_INST_DIR := $(PATH_TARGET)/Installer/solaris/install
 SOLARIS_DBG_DIR  := $(PATH_TARGET)/Installer/solaris/installdbg
 SOLARIS_VBI_DIR  := $(PATH_TARGET)/Installer/solaris/installvbi
-SOL_DBG_OBJCOPY  := $(CP) -p    # Solaris ld/gobjcopy(2.15) don't get along on x86, works only on amd64. So just using cp for now.
+ifeq ($(KBUILD_TARGET_ARCH),amd64)
+ SOL_DBG_OBJCOPY  := /usr/sfw/bin/gobjcopy --only-keep-debug
+else
+ SOL_DBG_OBJCOPY  := $(CP) -p    # Solaris ld/gobjcopy(2.15) don't get along on x86, works only on amd64. So just using cp for now.
+endif
 SOL_OBJCOPY      := /usr/sfw/bin/gobjcopy --strip-unneeded -R .comment
 
 # Base package
