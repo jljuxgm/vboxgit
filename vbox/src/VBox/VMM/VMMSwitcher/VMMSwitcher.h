@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.h 13717 2008-10-31 14:31:23Z vboxsync $ */
+/* $Id: VMMSwitcher.h 13830 2008-11-05 01:49:18Z vboxsync $ */
 /** @file
  * VMM - World Switchers.
  */
@@ -36,7 +36,7 @@
 #define FIX_ID_2_GC_NEAR_REL    6
 #define FIX_GC_FAR32            7
 #define FIX_GC_CPUM_OFF         8
-#define FIX_GC_VM_OFF           9
+#define FIX_GC_VM_OFF           9   /** @todo cleanup fixup names GC->RC, HC->R0. */
 #define FIX_HC_CPUM_OFF         10
 #define FIX_HC_VM_OFF           11
 #define FIX_INTER_32BIT_CR3     12

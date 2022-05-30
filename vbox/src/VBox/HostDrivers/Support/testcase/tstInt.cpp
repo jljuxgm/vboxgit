@@ -1,4 +1,4 @@
-/** $Id: tstInt.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
+/** $Id: tstInt.cpp 13830 2008-11-05 01:49:18Z vboxsync $ */
 /** @file
  * Testcase: Test the interrupt gate feature of the support library.
  */
@@ -105,7 +105,7 @@ int main(int argc, char **argv)
                 rc = VERR_NO_MEMORY;
             if (VBOX_SUCCESS(rc))
             {
-                pVM->pVMGC = 0;
+                pVM->pVMRC = 0;
                 pVM->pVMR3 = pVM;
                 pVM->pVMR0 = pVMR0;
                 pVM->paVMPagesR3 = paPages;

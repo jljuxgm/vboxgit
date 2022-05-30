@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 13830 2008-11-05 01:49:18Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -394,7 +394,7 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, RTR
             {
                 uint32_t offCPUM = *u.pu32++;
                 Assert(offCPUM < sizeof(pVM->cpum));
-                *uSrc.pu32 = (uint32_t)(VM_GUEST_ADDR(pVM, &pVM->cpum) + offCPUM);
+                *uSrc.pu32 = (uint32_t)(VM_RC_ADDR(pVM, &pVM->cpum) + offCPUM);
                 break;
             }
 
@@ -405,7 +405,7 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, RTR
             {
                 uint32_t offVM = *u.pu32++;
                 Assert(offVM < sizeof(VM));
-                *uSrc.pu32 = (uint32_t)(VM_GUEST_ADDR(pVM, pVM) + offVM);
+                *uSrc.pu32 = (uint32_t)(VM_RC_ADDR(pVM, pVM) + offVM);
                 break;
             }
 

@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: TM.cpp 13830 2008-11-05 01:49:18Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -853,7 +853,7 @@ VMMR3DECL(void) TMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     AssertFatalRC(rc);
 
     /*
-     * Iterate the timers updating the pVMGC pointers.
+     * Iterate the timers updating the pVMRC pointers.
      */
     for (PTMTIMER pTimer = pVM->tm.s.pCreated; pTimer; pTimer = pTimer->pBigNext)
     {
