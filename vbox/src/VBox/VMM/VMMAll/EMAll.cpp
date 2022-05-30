@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 15426 2008-12-13 09:38:42Z vboxsync $ */
+/* $Id: EMAll.cpp 15632 2008-12-17 14:55:42Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -406,6 +406,7 @@ static const char *emGetMnemonic(PDISCPUSTATE pCpu)
         case OP_BTS:        return "Bts";
         case OP_BTC:        return "Btc";
         case OP_LMSW:       return "Lmsw";
+        case OP_SMSW:       return "Smsw";
         case OP_CMPXCHG:    return pCpu->prefix & PREFIX_LOCK ? "Lock CmpXchg"   : "CmpXchg";
         case OP_CMPXCHG8B:  return pCpu->prefix & PREFIX_LOCK ? "Lock CmpXchg8b" : "CmpXchg8b";
 
