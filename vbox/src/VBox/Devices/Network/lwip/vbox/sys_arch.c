@@ -1,4 +1,4 @@
-/** $Id: sys_arch.c 17797 2009-03-13 10:00:54Z vboxsync $ */
+/** $Id: sys_arch.c 17807 2009-03-13 11:17:54Z vboxsync $ */
 /** @file
  * System dependent parts of lwIP, implemented with IPRT.
  */
@@ -6,8 +6,17 @@
 /*
  * Copyright (C) 2007 Sun Microsystems, Inc.
  *
- * Sun Microsystems, Inc. confidential
- * All rights reserved
+ * This file is part of VirtualBox Open Source Edition (OSE), as
+ * available from http://www.virtualbox.org. This file is free software;
+ * you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GPL) as published by the Free Software
+ * Foundation, in version 2 as it comes in the "COPYING" file of the
+ * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+ * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ *
+ * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
+ * Clara, CA 95054 USA or visit http://www.sun.com if you need
+ * additional information or have any questions.
  */
 
 
