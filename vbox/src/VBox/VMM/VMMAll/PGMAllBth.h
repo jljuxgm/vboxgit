@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 13122 2008-10-09 11:22:53Z vboxsync $ */
+/* $Id: PGMAllBth.h 13126 2008-10-09 12:09:55Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2761,7 +2761,9 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PGSTPD pPDSrc, RTGCUINTPTR G
     PdeDst.u |= pShwPage->Core.Key;
     PdeDst.n.u1Present  = 1;
     PdeDst.n.u1Write    = 1;
-# if PGM_SHW_TYPE != PGM_TYPE_EPT
+# if PGM_SHW_TYPE == PGM_TYPE_EPT
+    PdeDst.n.u1Execute  = 1;
+# else
     PdeDst.n.u1User     = 1;
     PdeDst.n.u1Accessed = 1;
 # endif
