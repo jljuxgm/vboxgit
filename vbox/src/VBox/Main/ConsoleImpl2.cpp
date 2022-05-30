@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 17077 2009-02-24 16:58:15Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 17217 2009-02-27 17:13:14Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1293,7 +1293,23 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 hrc = pConsole->attachToHostInterface(networkAdapter);
                 if (SUCCEEDED(hrc))
                 {
-#if defined(VBOX_WITH_NETFLT)
+#if !defined(VBOX_WITH_NETFLT) && defined(RT_OS_LINUX)
+                    Assert ((int)pConsole->maTapFD[ulInstance] >= 0);
+                    if ((int)pConsole->maTapFD[ulInstance] >= 0)
+                    {
+                        if (fSniffer)
+                        {
+                            rc = CFGMR3InsertNode(pLunL0, "AttachedDriver", &pLunL0); RC_CHECK();
+                        }
+                        else
+                        {
+                            rc = CFGMR3InsertNode(pInst, "LUN#0", &pLunL0);         RC_CHECK();
+                        }
+                        rc = CFGMR3InsertString(pLunL0, "Driver", "HostInterface"); RC_CHECK();
+                        rc = CFGMR3InsertNode(pLunL0, "Config", &pCfg);             RC_CHECK();
+                        rc = CFGMR3InsertInteger(pCfg, "FileHandle", pConsole->maTapFD[ulInstance]); RC_CHECK();
+                    }
+#elif defined(VBOX_WITH_NETFLT)
                     /*
                      * This is the new VBoxNetFlt+IntNet stuff.
                      */

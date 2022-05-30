@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 16966 2009-02-20 09:14:28Z vboxsync $ */
+/* $Id: ConsoleImpl.h 17217 2009-02-27 17:13:14Z vboxsync $ */
 
 /** @file
  *
@@ -544,6 +544,10 @@ private:
     PPDMLED     mapNetworkLeds[8];
     PPDMLED     mapSharedFolderLed;
     PPDMLED     mapUSBLed[2];
+#if !defined(VBOX_WITH_NETFLT) && defined(RT_OS_LINUX)
+    Utf8Str     maTAPDeviceName[8];
+    RTFILE      maTapFD[8];
+#endif
 
     bool mVMStateChangeCallbackDisabled;
 
