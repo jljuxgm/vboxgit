@@ -1,4 +1,4 @@
-; $Id: mempcpy.asm 8256 2008-04-21 20:53:28Z vboxsync $
+; $Id: mempcpy.asm 14021 2008-11-10 16:31:22Z vboxsync $
 ;; @file
 ; IPRT - No-CRT mempcpy - AMD64 & X86.
 ;
@@ -36,7 +36,7 @@ BEGINCODE
 ; @param    pvDst   gcc: rdi  msc: rcx  x86:[esp+4]
 ; @param    pvSrc   gcc: rsi  msc: rdx  x86:[esp+8]
 ; @param    cb      gcc: rdx  msc: r8   x86:[esp+0ch]
-BEGINPROC RT_NOCRT(mempcpy)
+RT_NOCRT_BEGINPROC mempcpy
         cld                             ; paranoia
 
         ; Do the bulk of the work.

@@ -1,4 +1,4 @@
-; $Id: strchr.asm 8256 2008-04-21 20:53:28Z vboxsync $
+; $Id: strchr.asm 14021 2008-11-10 16:31:22Z vboxsync $
 ;; @file
 ; IPRT - No-CRT strchr - AMD64 & X86.
 ;
@@ -35,7 +35,7 @@ BEGINCODE
 ;;
 ; @param    psz     gcc: rdi  msc: rcx  x86:[esp+4]
 ; @param    ch      gcc: esi  msc: edx  x86:[esp+8]
-BEGINPROC RT_NOCRT(strchr)
+RT_NOCRT_BEGINPROC strchr
         cld
 
         ; check for ch == 0 and setup normal strchr.

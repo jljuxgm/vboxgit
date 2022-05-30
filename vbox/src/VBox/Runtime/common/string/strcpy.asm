@@ -1,10 +1,10 @@
-; $Id: strlen.asm 14021 2008-11-10 16:31:22Z vboxsync $
+; $Id: strcpy.asm 14021 2008-11-10 16:31:22Z vboxsync $
 ;; @file
-; IPRT - No-CRT strlen - AMD64 & X86.
+; IPRT - No-CRT strcpy - AMD64 & X86.
 ;
 
 ;
-; Copyright (C) 2006-2008 Sun Microsystems, Inc.
+; Copyright (C) 2006-2007 Sun Microsystems, Inc.
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
@@ -33,33 +33,61 @@
 BEGINCODE
 
 ;;
-; @param    psz     gcc: rdi  msc: rcx  x86: [esp+4]
-RT_NOCRT_BEGINPROC strlen
-        cld
+; @param    psz1   gcc: rdi  msc: rcx  x86:[esp+4]
+; @param    psz2   gcc: rsi  msc: rdx  x86:[esp+8]
+RT_NOCRT_BEGINPROC strcpy
+        ; input
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
-        mov     r9, rdi                 ; save rdi
-        mov     rdi, rcx
+  %define psz1 rcx
+  %define psz2 rdx
+ %else
+  %define psz1 rdi
+  %define psz2 rsi
  %endif
+        mov     r8, psz1
 %else
-        mov     edx, edi                ; save edi
-        mov     edi, [esp + 4]
+        mov     ecx, [esp + 4]
+        mov     edx, [esp + 8]
+  %define psz1 ecx
+  %define psz2 edx
+        push    psz1
 %endif
 
-        ; do the search
-        mov     xCX, -1
-        xor     eax, eax
-        repne   scasb
+        ;
+        ; The loop.
+        ;
+.next:
+        mov     al, [psz1]
+        mov     [psz2], al
+        test    al, al
+        jz      .done
 
-        ; found it
-        neg     xCX
-        lea     xAX, [xCX - 2]
-%ifdef ASM_CALL64_MSC
-        mov     rdi, r9
-%endif
-%ifdef RT_ARCH_X86
-        mov     edi, edx
+        mov     al, [psz1 + 1]
+        mov     [psz2 + 1], al
+        test    al, al
+        jz      .done
+
+        mov     al, [psz1 + 2]
+        mov     [psz2 + 2], al
+        test    al, al
+        jz      .done
+
+        mov     al, [psz1 + 3]
+        mov     [psz2 + 3], al
+        test    al, al
+        jz      .done
+
+        add     psz1, 4
+        add     psz2, 4
+        jmp     .next
+
+.done:
+%ifdef RT_ARCH_AMD64
+        mov     rax, r8
+%else
+        pop     eax
 %endif
         ret
-ENDPROC RT_NOCRT(strlen)
+ENDPROC RT_NOCRT(strcpy)
 
