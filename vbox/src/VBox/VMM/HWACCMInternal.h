@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 17295 2009-03-03 15:56:07Z vboxsync $ */
+/* $Id: HWACCMInternal.h 17327 2009-03-04 08:46:40Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -555,8 +555,8 @@ typedef struct HWACCMCPU
         bool                    fEnabled;
         uint8_t                 u8Align[7];
 
-        /** Esp at the start of the io code we wish to emulate in the recompiler. */
-        RTGCPTR                 GCPtrFunctionEsp;
+        /** RIP at the start of the io code we wish to emulate in the recompiler. */
+        RTGCPTR                 GCPtrFunctionEip;
 
         uint64_t                cr0;
     } EmulateIoBlock;

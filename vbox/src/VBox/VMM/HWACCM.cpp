@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 17303 2009-03-03 16:53:01Z vboxsync $ */
+/* $Id: HWACCM.cpp 17327 2009-03-04 08:46:40Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1207,7 +1207,7 @@ VMMR3DECL(int) HWACCMR3EmulateIoBlock(PVM pVM, PCPUMCTX pCtx)
     {
         Log(("HWACCMR3EmulateIoBlock -> enabled\n"));
         pVCpu->hwaccm.s.EmulateIoBlock.fEnabled         = true;
-        pVCpu->hwaccm.s.EmulateIoBlock.GCPtrFunctionEsp = pCtx->rsp;
+        pVCpu->hwaccm.s.EmulateIoBlock.GCPtrFunctionEip = pCtx->rip;
         pVCpu->hwaccm.s.EmulateIoBlock.cr0              = pCtx->cr0;
         return VINF_EM_RESCHEDULE_REM;
     }
@@ -1229,7 +1229,8 @@ VMMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
 
     /* If we're still executing the IO code, then return false. */
     if (    RT_UNLIKELY(pVCpu->hwaccm.s.EmulateIoBlock.fEnabled)
-        &&  pCtx->rsp <= pVCpu->hwaccm.s.EmulateIoBlock.GCPtrFunctionEsp
+        &&  pCtx->rip <  pVCpu->hwaccm.s.EmulateIoBlock.GCPtrFunctionEip + 0x200
+        &&  pCtx->rip >  pVCpu->hwaccm.s.EmulateIoBlock.GCPtrFunctionEip - 0x200
         &&  pCtx->cr0 == pVCpu->hwaccm.s.EmulateIoBlock.cr0)
         return false;
 
