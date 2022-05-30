@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 14414 2008-11-20 13:35:21Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 14415 2008-11-20 13:37:26Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1030,16 +1030,28 @@ ResumeExecution:
     pVCpu->hwaccm.s.fForceTLBFlush = pVM->hwaccm.s.svm.fAlwaysFlushTLB;
 
     Assert(sizeof(pVCpu->hwaccm.s.svm.pVMCBPhys) == 8);
-    Assert(pVMCB->ctrl.u32InterceptCtrl2 == ( SVM_CTRL2_INTERCEPT_VMRUN         /* required */
-                                             | SVM_CTRL2_INTERCEPT_VMMCALL
-                                             | SVM_CTRL2_INTERCEPT_VMLOAD
-                                             | SVM_CTRL2_INTERCEPT_VMSAVE
-                                             | SVM_CTRL2_INTERCEPT_STGI
-                                             | SVM_CTRL2_INTERCEPT_CLGI
-                                             | SVM_CTRL2_INTERCEPT_SKINIT
-                                             | SVM_CTRL2_INTERCEPT_WBINVD
-                                             | SVM_CTRL2_INTERCEPT_MWAIT_UNCOND  /* don't execute mwait or else we'll idle inside the guest (host thinks the cpu load is high) */
-                                            ));
+    Assert((pVMCB->ctrl.u32InterceptCtrl2 &  (  SVM_CTRL2_INTERCEPT_VMRUN         /* required */
+                                              | SVM_CTRL2_INTERCEPT_VMMCALL
+                                              | SVM_CTRL2_INTERCEPT_VMLOAD
+                                              | SVM_CTRL2_INTERCEPT_VMSAVE
+                                              | SVM_CTRL2_INTERCEPT_STGI
+                                              | SVM_CTRL2_INTERCEPT_CLGI
+                                              | SVM_CTRL2_INTERCEPT_SKINIT
+                                              | SVM_CTRL2_INTERCEPT_WBINVD
+                                              | SVM_CTRL2_INTERCEPT_MWAIT_UNCOND  /* don't execute mwait or else we'll idle inside the guest (host thinks the cpu load is high) */
+                                             ))
+                                           ==
+                                             (  SVM_CTRL2_INTERCEPT_VMRUN         /* required */
+                                              | SVM_CTRL2_INTERCEPT_VMMCALL
+                                              | SVM_CTRL2_INTERCEPT_VMLOAD
+                                              | SVM_CTRL2_INTERCEPT_VMSAVE
+                                              | SVM_CTRL2_INTERCEPT_STGI
+                                              | SVM_CTRL2_INTERCEPT_CLGI
+                                              | SVM_CTRL2_INTERCEPT_SKINIT
+                                              | SVM_CTRL2_INTERCEPT_WBINVD
+                                              | SVM_CTRL2_INTERCEPT_MWAIT_UNCOND  /* don't execute mwait or else we'll idle inside the guest (host thinks the cpu load is high) */                                          );
+                                             ));
+
     Assert(pVMCB->ctrl.IntCtrl.n.u1VIrqMasking);
     Assert(pVMCB->ctrl.u64IOPMPhysAddr  == pVM->hwaccm.s.svm.pIOBitmapPhys);
     Assert(pVMCB->ctrl.u64MSRPMPhysAddr == pVM->hwaccm.s.svm.pMSRBitmapPhys);
