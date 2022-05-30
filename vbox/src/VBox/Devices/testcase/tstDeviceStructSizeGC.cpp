@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 13737 2008-11-02 22:58:56Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -26,7 +26,7 @@
 /*
  * Sanity checks.
  */
-#ifndef IN_GC
+#ifndef IN_RC
 # error Incorrect template!
 #endif
 #if defined(IN_RING3) || defined(IN_RING0)

@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 13822 2008-11-05 01:08:56Z vboxsync $ */
+/* $Id: PATMAll.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -462,7 +462,7 @@ VMMDECL(int) PATMAddBranchToLookupCache(PVM pVM, RTRCPTR pJumpTableGC, RTRCPTR p
 
     AssertReturn(PATMIsPatchGCAddr(pVM, pJumpTableGC), VERR_INVALID_PARAMETER);
 
-#ifdef IN_GC
+#ifdef IN_RC
     pJumpTable = (PPATCHJUMPTABLE) pJumpTableGC;
 #else
     pJumpTable = (PPATCHJUMPTABLE) (pJumpTableGC - pVM->patm.s.pPatchMemGC + pVM->patm.s.pPatchMemHC);

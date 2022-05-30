@@ -1,4 +1,4 @@
-/* $Id: VMAll.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: VMAll.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * VM - Virtual Machine All Contexts.
  */
@@ -92,7 +92,7 @@ VMMDECL(int) VMSetErrorV(PVM pVM, int rc, RT_SRC_POS_DECL, const char *pszFormat
      */
     vmSetErrorCopy(pVM, rc, RT_SRC_POS_ARGS, pszFormat, args);
 
-# ifdef IN_GC
+# ifdef IN_RC
     VMMGCCallHost(pVM, VMMCALLHOST_VM_SET_ERROR, 0);
 # elif defined(IN_RING0)
     VMMR0CallHost(pVM, VMMCALLHOST_VM_SET_ERROR, 0);
@@ -270,7 +270,7 @@ VMMDECL(int) VMSetRuntimeErrorV(PVM pVM, bool fFatal, const char *pszErrorID,
      */
     vmSetRuntimeErrorCopy(pVM, fFatal, pszErrorID, pszFormat, args);
 
-# ifdef IN_GC
+# ifdef IN_RC
     VMMGCCallHost(pVM, VMMCALLHOST_VM_SET_RUNTIME_ERROR, 0);
 # elif defined(IN_RING0)
     VMMR0CallHost(pVM, VMMCALLHOST_VM_SET_RUNTIME_ERROR, 0);

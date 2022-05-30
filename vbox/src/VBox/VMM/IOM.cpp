@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 13824 2008-11-05 01:11:24Z vboxsync $ */
+/* $Id: IOM.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -632,7 +632,7 @@ VMMR3DECL(int)  IOMR3IOPortRegisterRC(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT Port
             return VERR_IOM_NO_HC_IOPORT_RANGE;
         }
 #ifndef IOM_NO_PDMINS_CHECKS
-# ifndef IN_GC
+# ifndef IN_RC
         if (pRange->pDevIns != pDevIns)
 # else
         if (pRange->pDevIns != MMHyperRCToCC(pVM, pDevIns))
@@ -740,7 +740,7 @@ VMMR3DECL(int)  IOMR3IOPortRegisterR0(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT Port
             return VERR_IOM_NO_HC_IOPORT_RANGE;
         }
 #ifndef IOM_NO_PDMINS_CHECKS
-# ifndef IN_GC
+# ifndef IN_RC
         if (pRange->pDevIns != pDevIns)
 # else
         if (pRange->pDevIns != MMHyperRCToCC(pVM, pDevIns))

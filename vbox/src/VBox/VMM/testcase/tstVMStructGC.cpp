@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 13714 2008-10-31 14:01:43Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -26,7 +26,7 @@
 /*
  * Sanity checks.
  */
-#ifndef IN_GC
+#ifndef IN_RC
 # error Incorrect template!
 #endif
 #if defined(IN_RING3) || defined(IN_RING0)

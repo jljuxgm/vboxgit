@@ -1,4 +1,4 @@
-/* $Id: timesupref.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: timesupref.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib, the C Implementation.
  */
@@ -49,7 +49,7 @@
 #include "timesupref.h"
 
 #define ASYNC_GIP
-#ifdef IN_GC
+#ifdef IN_RC
 # undef NEED_TRANSACTION_ID
 #endif
 #undef  rtTimeNanoTSInternalRef
@@ -69,7 +69,7 @@
 #include "timesupref.h"
 
 #define ASYNC_GIP
-#ifdef IN_GC
+#ifdef IN_RC
 # undef NEED_TRANSACTION_ID
 #endif
 #undef  rtTimeNanoTSInternalRef

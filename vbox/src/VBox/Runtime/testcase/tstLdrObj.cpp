@@ -1,4 +1,4 @@
-/* $Id: tstLdrObj.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstLdrObj.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -38,8 +38,8 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#ifndef IN_GC
-# error "not IN_GC!"
+#ifndef IN_RC
+# error "not IN_RC!"
 #endif
 #include <VBox/dis.h>
 #include <VBox/vm.h>

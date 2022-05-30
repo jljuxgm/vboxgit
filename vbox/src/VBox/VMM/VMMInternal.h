@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 13813 2008-11-04 21:55:34Z vboxsync $ */
+/* $Id: VMMInternal.h 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -512,7 +512,7 @@ VMMR0DECL(void) vmmR0LoggerWrapper(const char *pszFormat, ...);
 VMMR0DECL(void) vmmR0LoggerFlush(PRTLOGGER pLogger);
 
 #endif /* IN_RING0 */
-#ifdef IN_GC
+#ifdef IN_RC
 
 /**
  * Internal GC logger worker: Logger wrapper.
@@ -545,7 +545,7 @@ DECLASM(int)    vmmGCTestTrap0e_FaultEIP(void); /**< a label */
 DECLASM(int)    vmmGCTestTrap0e_ResumeEIP(void); /**< a label */
 /** @} */
 
-#endif /* IN_GC */
+#endif /* IN_RC */
 
 __END_DECLS
 

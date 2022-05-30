@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 13782 2008-11-04 12:16:30Z vboxsync $ */
+/* $Id: VBoxDev.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -39,7 +39,7 @@
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/time.h>
-#ifndef IN_GC
+#ifndef IN_RC
 # include <iprt/mem.h>
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 13797 2008-11-04 18:51:29Z vboxsync $ */
+/* $Id: VMMAll.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -60,7 +60,7 @@ VMCPUID VMMGetCpuId(PVM pVM)
     /* Only emulation thread(s) allowed to ask for CPU id */
     VM_ASSERT_EMT(pVM);
 
-# if defined(IN_GC)
+# if defined(IN_RC)
     /* There is only one CPU if we're in GC. */
     return 0;
 

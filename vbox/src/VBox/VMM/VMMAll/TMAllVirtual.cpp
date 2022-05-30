@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -169,7 +169,7 @@ static uint64_t tmVirtualGetRawNanoTS(PVM pVM)
             u32NanoTSFactor0 = pGip->u32UpdateIntervalNS;
             u64Delta = ASMReadTSC();
             u64PrevNanoTS = ASMAtomicReadU64(&pVM->tm.s.u64VirtualRawPrev);
-#ifdef IN_GC
+#ifdef IN_RC
             Assert(!(ASMGetFlags() & X86_EFL_IF));
 #else
             if (RT_UNLIKELY(u8ApicId != ASMGetApicId()))

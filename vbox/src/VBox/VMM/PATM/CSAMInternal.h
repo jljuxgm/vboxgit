@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: CSAMInternal.h 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -271,7 +271,7 @@ inline RTRCPTR CSAMResolveBranch(PDISCPUSTATE pCpu, RTRCPTR pBranchInstrGC)
         Log(("We don't support far jumps here!! (%08X)\n", pCpu->param1.flags));
         return 0;
     }
-#ifdef IN_GC
+#ifdef IN_RC
     return (RTRCPTR)((uint8_t *)pBranchInstrGC + pCpu->opsize + disp);
 #else
     return pBranchInstrGC + pCpu->opsize + disp;

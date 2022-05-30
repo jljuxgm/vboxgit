@@ -1,4 +1,4 @@
-; $Id: timesupA.asm 8281 2008-04-22 12:43:16Z vboxsync $
+; $Id: timesupA.asm 13832 2008-11-05 02:01:12Z vboxsync $
 ;; @file
 ; IPRT - Time using SUPLib, the Assembly Implementation.
 ;
@@ -92,7 +92,7 @@ BEGINCODE
 %include "timesupA.mac"
 
 %define ASYNC_GIP
-%ifdef IN_GC
+%ifdef IN_RC
  %undef NEED_TRANSACTION_ID
 %endif
 %define rtTimeNanoTSInternalAsm    RTTimeNanoTSLegacyAsync
@@ -109,7 +109,7 @@ BEGINCODE
 %include "timesupA.mac"
 
 %define ASYNC_GIP
-%ifdef IN_GC
+%ifdef IN_RC
  %undef NEED_TRANSACTION_ID
 %endif
 %define rtTimeNanoTSInternalAsm    RTTimeNanoTSLFenceAsync

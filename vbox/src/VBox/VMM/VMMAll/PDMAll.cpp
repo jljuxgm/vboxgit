@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 13020 2008-10-06 16:27:16Z vboxsync $ */
+/* $Id: PDMAll.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -311,7 +311,7 @@ void pdmLock(PVM pVM)
     int rc = PDMCritSectEnter(&pVM->pdm.s.CritSect, VERR_GENERAL_FAILURE);
     if (rc == VERR_GENERAL_FAILURE)
     {
-# ifdef IN_GC
+# ifdef IN_RC
         rc = VMMGCCallHost(pVM, VMMCALLHOST_PDM_LOCK, 0);
 # else
         rc = VMMR0CallHost(pVM, VMMCALLHOST_PDM_LOCK, 0);
