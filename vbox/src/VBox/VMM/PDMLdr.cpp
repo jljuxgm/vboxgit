@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: PDMLdr.cpp 13817 2008-11-04 22:54:25Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -642,7 +642,7 @@ VMMR3DECL(int) PDMR3LdrGetSymbolR3(PVM pVM, const char *pszModule, const char *p
             }
             else
             {
-                if (pszSymbol < (const char *)(void *)0x10000)
+                if ((uintptr_t)pszSymbol < 0x10000)
                     AssertMsg(rc, ("Couldn't symbol '%u' in module '%s'\n", (unsigned)(uintptr_t)pszSymbol, pszModule));
                 else
                     AssertMsg(rc, ("Couldn't symbol '%s' in module '%s'\n", pszSymbol, pszModule));
@@ -786,7 +786,7 @@ VMMR3DECL(int) PDMR3LdrGetSymbolRC(PVM pVM, const char *pszModule, const char *p
             }
             else
             {
-                if (pszSymbol < (const char*)(void*)0x10000)
+                if ((uintptr_t)pszSymbol < 0x10000)
                     AssertMsg(rc, ("Couldn't symbol '%u' in module '%s'\n", (unsigned)(uintptr_t)pszSymbol, pszModule));
                 else
                     AssertMsg(rc, ("Couldn't symbol '%s' in module '%s'\n", pszSymbol, pszModule));
