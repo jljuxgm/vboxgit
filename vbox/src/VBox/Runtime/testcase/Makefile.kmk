@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13472 2008-10-22 09:19:00Z vboxsync $
+# $Id: Makefile.kmk 14025 2008-11-10 17:10:54Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -270,6 +270,7 @@ tstNoCrt-1_SOURCES = \
 	../common/string/memcmp.asm \
 	../common/string/strchr.asm \
 	../common/string/strcmp.asm \
+	../common/string/strcpy.asm \
 	../common/string/strlen.asm
 
 tstOnce_SOURCES = tstOnce.cpp
