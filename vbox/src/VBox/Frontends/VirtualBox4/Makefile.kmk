@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12484 2008-09-16 12:55:41Z vboxsync $
+# $Id: Makefile.kmk 12488 2008-09-16 13:12:08Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -571,7 +571,7 @@ endif
 #
 ifndef VBOX_OSE
 ifeq ($(filter-out freebsd linux netbsd openbsd solaris,$(KBUILD_TARGET)),)
-$(VBOX_LICENSE_BIN): $(VBOX_LICENSE_SRC)
+$(VBOX_LICENSE_BIN): $(VBOX_BRAND_LICENSE_HTML)
 	$(call MSG_GENERATE,,$@)
 	$(QUIET)$(CP) $< $@
 

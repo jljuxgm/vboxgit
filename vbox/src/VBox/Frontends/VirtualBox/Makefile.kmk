@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12472 2008-09-15 18:49:33Z vboxsync $
+# $Id: Makefile.kmk 12488 2008-09-16 13:12:08Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt3 GUI.
 #
@@ -131,7 +131,7 @@ endif
 ## @todo is is an ugly hack, change into an install target or make the root Makefile do this!
 ifndef VBOX_OSE
  ifeq ($(filter-out freebsd linux netbsd openbsd solaris,$(KBUILD_TARGET)),) # linux only, yea, right.
-$(VBOX_LICENSE_BIN): $(VBOX_LICENSE_SRC)
+$(VBOX_LICENSE_BIN): $(VBOX_BRAND_LICENSE_HTML)
 	$(call MSG_GENERATE,,$@)
 	$(QUIET)$(CP) $< $@
 
