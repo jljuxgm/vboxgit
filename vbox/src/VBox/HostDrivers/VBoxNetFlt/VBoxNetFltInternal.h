@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 12656 2008-09-22 17:08:10Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 12770 2008-09-26 14:54:09Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -162,6 +162,8 @@ typedef struct VBOXNETFLTINS
             ldi_handle_t hIface;
             /** The MAC address of the interface. */
             RTMAC Mac;
+            /** Mutex protection used for loopback. */
+            RTSEMFASTMUTEX hFastMtx;
 # elif defined(RT_OS_WINDOWS)
             /** pointer to the filter driver device context */
             PADAPT volatile pIfAdaptor;
