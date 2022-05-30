@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 11979 2008-09-02 13:00:58Z vboxsync $ */
+/* $Id: PATMSSM.cpp 11980 2008-09-02 13:01:19Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -883,8 +883,7 @@ static void patmCorrectFixup(PVM pVM, unsigned ulSSMVersion, PATM &patmInfo, PPA
 #ifdef LOG_ENABLED
             RTRCPTR oldFixup = *pFixup;
 #endif
-            /* very dirty assumptions about the cpuid patch */
-
+            /* very dirty assumptions about the cpuid patch and cpuid ordering. */
             switch(cCpuidFixup % 4)
             {
             case 0:
