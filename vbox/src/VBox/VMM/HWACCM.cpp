@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15749 2008-12-24 12:47:42Z vboxsync $ */
+/* $Id: HWACCM.cpp 15803 2009-01-05 13:27:11Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -376,6 +376,10 @@ VMMR3DECL(int) HWACCMR3InitCPU(PVM pVM)
 # else
         Assert(pVCpu->hwaccm.s.paStatExitReasonR0 != NIL_RTR0PTR);
 # endif
+
+        PVMCSCACHE pCache = &pVCpu->hwaccm.s.vmx.VMCSCache;
+        /* Magic marker for searching in crash dumps. */
+        strcpy((char *)pCache->aMagic, "VMCSCACHE Magic");
     }
 #endif /* VBOX_WITH_STATISTICS */
     return VINF_SUCCESS;
@@ -1209,7 +1213,6 @@ VMMR3DECL(void) HWACCMR3Reset(PVM pVM)
 
         /* Magic marker for searching in crash dumps. */
         strcpy((char *)pCache->aMagic, "VMCSCACHE Magic");
-
     }
 }
 
