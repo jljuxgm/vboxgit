@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 17207 2009-02-27 13:52:21Z vboxsync $ */
+/* $Id: PGMAllBth.h 17215 2009-02-27 16:33:19Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1571,8 +1571,10 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorker)(PVM pVM, PSHWPTE pPteDst, GSTPDE P
             /*
              * Update statistics and commit the entry.
              */
+#if PGM_WITH_PAGING(PGM_GST_TYPE, PGM_SHW_TYPE)
             if (!PteSrc.n.u1Global)
                 pShwPage->fSeenNonGlobal = true;
+#endif
             *pPteDst = PteDst;
         }
         /* else MMIO or invalid page, we must handle them manually in the #PF handler. */
