@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 13830 2008-11-05 01:49:18Z vboxsync $ */
+/* $Id: TRPM.cpp 14351 2008-11-19 13:38:31Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -678,8 +678,10 @@ VMMR3DECL(void) TRPMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
         }
     }
 
+#ifdef VBOX_WITH_STATISTICS
     pVM->trpm.s.paStatForwardedIRQRC += offDelta;
     pVM->trpm.s.paStatForwardedIRQR0 = MMHyperR3ToR0(pVM, pVM->trpm.s.paStatForwardedIRQR3);
+#endif
 }
 
 

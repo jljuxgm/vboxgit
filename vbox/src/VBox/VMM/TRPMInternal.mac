@@ -1,4 +1,4 @@
-; $Id: TRPMInternal.mac 13635 2008-10-28 20:27:33Z vboxsync $
+; $Id: TRPMInternal.mac 14351 2008-11-19 13:38:31Z vboxsync $
 ;; @file
 ; TRPM - Internal header file.
 ;
@@ -74,9 +74,11 @@ struc TRPM
     .StatTrap0dDisasm         resb STAMPROFILE_size
     .StatTrap0dRdTsc          resb STAMCOUNTER_size
 
+%ifdef VBOX_WITH_STATISTICS
     .paStatForwardedIRQR3  RTR3PTR_RES 1
     .paStatForwardedIRQR0  RTR0PTR_RES 1
     .paStatForwardedIRQRC  RTRCPTR_RES 1
+%endif
 endstruc
 
 struc VBOXTSS
