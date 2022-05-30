@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 16887 2009-02-18 10:42:49Z vboxsync $ */
+/* $Id: PGMMap.cpp 16889 2009-02-18 10:53:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1300,87 +1300,6 @@ int pgmR3SyncPTResolveConflictPAE(PVM pVM, PPGMMAPPING pMapping, RTGCPTR GCPtrOl
     STAM_PROFILE_STOP(&pVM->pgm.s.StatR3ResolveConflict, a);
     AssertMsgFailed(("Failed to relocate page table mapping '%s' from %#x! (cPTs=%d)\n", pMapping->pszDesc, GCPtrOldMapping, pMapping->cb >> X86_PD_PAE_SHIFT));
     return VERR_PGM_NO_HYPERVISOR_ADDRESS;
-}
-
-
-/**
- * Checks guest PD for conflicts with VMM GC mappings.
- *
- * @returns true if conflict detected.
- * @returns false if not.
- * @param   pVM         The virtual machine.
- * @param   cr3         Guest context CR3 register.
- * @param   fRawR0      Whether RawR0 is enabled or not.
- */
-VMMR3DECL(bool) PGMR3MapHasConflicts(PVM pVM, uint64_t cr3, bool fRawR0) /** @todo how many HasConflict constructs do we really need? */
-{
-    /*
-     * Can skip this if mappings are safely fixed.
-     */
-    if (pVM->pgm.s.fMappingsFixed)
-        return false;
-
-    PGMMODE const enmGuestMode = PGMGetGuestMode(pVM);
-    Assert(enmGuestMode <= PGMMODE_PAE_NX);
-
-    /*
-     * Iterate mappings.
-     */
-    if (enmGuestMode == PGMMODE_32_BIT)
-    {
-        /*
-         * Resolve the page directory.
-         */
-        PX86PD pPD = pVM->pgm.s.pGst32BitPdR3;
-        Assert(pPD);
-        Assert(pPD == (PX86PD)PGMPhysGCPhys2R3PtrAssert(pVM, cr3 & X86_CR3_PAGE_MASK, sizeof(*pPD)));
-
-        for (PPGMMAPPING pCur = pVM->pgm.s.pMappingsR3; pCur; pCur = pCur->pNextR3)
-        {
-            unsigned iPDE = pCur->GCPtr >> X86_PD_SHIFT;
-            unsigned iPT = pCur->cPTs;
-            while (iPT-- > 0)
-                if (    pPD->a[iPDE + iPT].n.u1Present /** @todo PGMGstGetPDE. */
-                    &&  (fRawR0 || pPD->a[iPDE + iPT].n.u1User))
-                {
-                    STAM_COUNTER_INC(&pVM->pgm.s.StatR3DetectedConflicts);
-                    Log(("PGMR3HasMappingConflicts: Conflict was detected at %08RX32 for mapping %s (32 bits)\n"
-                         "                          iPDE=%#x iPT=%#x PDE=%RGp.\n",
-                        (iPT + iPDE) << X86_PD_SHIFT, pCur->pszDesc,
-                        iPDE, iPT, pPD->a[iPDE + iPT].au32[0]));
-                    return true;
-                }
-        }
-    }
-    else if (   enmGuestMode == PGMMODE_PAE
-             || enmGuestMode == PGMMODE_PAE_NX)
-    {
-        for (PPGMMAPPING pCur = pVM->pgm.s.pMappingsR3; pCur; pCur = pCur->pNextR3)
-        {
-            RTGCPTR   GCPtr = pCur->GCPtr;
-
-            unsigned  iPT = pCur->cb >> X86_PD_PAE_SHIFT;
-            while (iPT-- > 0)
-            {
-                X86PDEPAE Pde = pgmGstGetPaePDE(&pVM->pgm.s, GCPtr);
-
-                if (   Pde.n.u1Present
-                    && (fRawR0 || Pde.n.u1User))
-                {
-                    STAM_COUNTER_INC(&pVM->pgm.s.StatR3DetectedConflicts);
-                    Log(("PGMR3HasMappingConflicts: Conflict was detected at %RGv for mapping %s (PAE)\n"
-                         "                          PDE=%016RX64.\n",
-                        GCPtr, pCur->pszDesc, Pde.u));
-                    return true;
-                }
-                GCPtr += (1 << X86_PD_PAE_SHIFT);
-            }
-        }
-    }
-    else
-        AssertFailed();
-
-    return false;
 }
 
 /**

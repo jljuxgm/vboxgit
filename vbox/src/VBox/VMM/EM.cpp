@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 16652 2009-02-11 08:46:06Z vboxsync $ */
+/* $Id: EM.cpp 16889 2009-02-18 10:53:14Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2606,7 +2606,7 @@ static int emR3RawExecute(PVM pVM, bool *pfFFDone)
                   || PATMShouldUseRawMode(pVM, (RTGCPTR)pCtx->eip),
                   ("Tried to execute code with IF at EIP=%08x!\n", pCtx->eip));
         if (    !VM_FF_ISPENDING(pVM, VM_FF_PGM_SYNC_CR3 | VM_FF_PGM_SYNC_CR3_NON_GLOBAL)
-            &&  PGMR3MapHasConflicts(pVM, pCtx->cr3, pVM->fRawR0Enabled))
+            &&  PGMMapHasConflicts(pVM, pCtx->cr3, false))
         {
             AssertMsgFailed(("We should not get conflicts any longer!!!\n"));
             return VERR_INTERNAL_ERROR;
@@ -2719,7 +2719,7 @@ static int emR3RawExecute(PVM pVM, bool *pfFFDone)
          * Let's go paranoid!
          */
         if (    !VM_FF_ISPENDING(pVM, VM_FF_PGM_SYNC_CR3 | VM_FF_PGM_SYNC_CR3_NON_GLOBAL)
-            &&  PGMR3MapHasConflicts(pVM, pCtx->cr3, pVM->fRawR0Enabled))
+            &&  PGMMapHasConflicts(pVM, pCtx->cr3, false))
         {
             AssertMsgFailed(("We should not get conflicts any longer!!!\n"));
             return VERR_INTERNAL_ERROR;
