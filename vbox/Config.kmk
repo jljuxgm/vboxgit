@@ -1,4 +1,4 @@
-# $Id: Config.kmk 16676 2009-02-11 16:16:56Z vboxsync $
+# $Id: Config.kmk 16681 2009-02-11 16:34:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3576,7 +3576,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16676 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16681 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -3621,7 +3621,7 @@ endif
 
 # Real XIDL source file; from this we strip the <desc> elements to generate
 # a second XIDL file, from which the COM/XPCOM IDL files are then generated:
-VBOX_XIDL_FILE_SRC     = $(VBOX_PATH_MAIN_SRC)/idl/VirtualBox.xidl
+VBOX_XIDL_FILE_SRC     = $(PATH_ROOT)/src/VBox/Main/idl/VirtualBox.xidl
 # second XIDL file to use as source for COM/XPCOM IDL (with stripped docs):
 VBOX_XIDL_FILE         = $(PATH_OUT)/obj/VirtualBox_stripped.xidl
 
