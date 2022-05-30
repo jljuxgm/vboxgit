@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14245 2008-11-17 11:00:59Z vboxsync $
+# $Id: Makefile.kmk 14317 2008-11-18 16:50:15Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -67,6 +67,9 @@ ifneq ($(KBUILD_TARGET),win)
 endif
 ifdef VBOX_WITH_NETFLT
  VBOX_MAIN_DEFS += VBOX_WITH_NETFLT
+endif
+ifdef VBOX_WITH_CROGL
+ VBOX_MAIN_DEFS += VBOX_WITH_CROGL
 endif
 ifdef VBOX_WITH_GUEST_PROPS
  VBOX_MAIN_DEFS += VBOX_WITH_GUEST_PROPS
