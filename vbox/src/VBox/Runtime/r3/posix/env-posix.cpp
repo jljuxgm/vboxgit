@@ -1,4 +1,4 @@
-/* $Id: env-posix.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: env-posix.cpp 16502 2009-02-04 10:26:18Z vboxsync $ */
 /** @file
  * IPRT - Environment, Posix.
  */
@@ -99,8 +99,17 @@ RTDECL(int) RTEnvUnset(const char *pszVar)
         return VINF_ENV_VAR_NOT_FOUND;
 
     /* Ok, try remove it. */
+#ifdef RT_OS_WINDOWS
+    /* Windows does not have unsetenv() */
     if (!putenv((char *)pszVar))
         return VINF_SUCCESS;
+#else
+    /* This is the preferred function as putenv() like used
+     * above does neither work on Solaris nor on Darwin. */
+    if (!unsetenv((char*)pszVar))
+        return VINF_SUCCESS;
+#endif
+
     return RTErrConvertFromErrno(errno);
 }
 
