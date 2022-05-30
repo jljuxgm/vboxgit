@@ -1,4 +1,4 @@
-/* $Id: icd_drv.c 15760 2008-12-25 16:05:58Z vboxsync $ */
+/* $Id: icd_drv.c 15820 2009-01-06 15:37:59Z vboxsync $ */
 
 /** @file
  * VBox OpenGL windows ICD driver functions
@@ -276,12 +276,4 @@ BOOL APIENTRY DrvSwapBuffers(HDC hdc)
     window = stubGetWindowInfo(hdc);    
     stubSwapBuffers( window, 0 );
     return 1;
-}
-
-void APIENTRY DrvPresentBuffers(void)
-{
-}
-
-void APIENTRY DrvSetCallbackProcs(void)
-{
 }

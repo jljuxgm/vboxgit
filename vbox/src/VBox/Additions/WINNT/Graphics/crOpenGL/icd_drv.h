@@ -1,4 +1,4 @@
-/* $Id: icd_drv.h 15760 2008-12-25 16:05:58Z vboxsync $ */
+/* $Id: icd_drv.h 15820 2009-01-06 15:37:59Z vboxsync $ */
 
 /** @file
  *
@@ -54,10 +54,5 @@ int APIENTRY DrvSetLayerPaletteEntries(HDC hdc, int iLayerPlane,
 BOOL APIENTRY DrvRealizeLayerPalette(HDC hdc, int iLayerPlane, BOOL bRealize);
 BOOL APIENTRY DrvSwapLayerBuffers(HDC hdc, UINT fuPlanes);
 BOOL APIENTRY DrvSwapBuffers(HDC hdc);
-
-/*temp stub for vista64*/
-void APIENTRY DrvPresentBuffers(void);
-void APIENTRY DrvSetCallbackProcs(void);
-
 
 #endif /* __ICDDRV_H__ */
