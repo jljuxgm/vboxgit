@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 13049 2008-10-07 14:02:51Z vboxsync $ */
+/* $Id: HWACCM.cpp 13050 2008-10-07 14:05:30Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -478,6 +478,8 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
             if (val & VMX_VMCS_CTRL_EXIT_CONTROLS_SAVE_VMX_PREEMPT_TIMER)
                 LogRel(("HWACCM:    VMX_VMCS_CTRL_EXIT_CONTROLS_SAVE_VMX_PREEMPT_TIMER\n"));
             val = pVM->hwaccm.s.vmx.msr.vmx_exit.n.disallowed0;
+            if (val & VMX_VMCS_CTRL_EXIT_CONTROLS_SAVE_DEBUG)
+                LogRel(("HWACCM:    VMX_VMCS_CTRL_EXIT_CONTROLS_SAVE_DEBUG *must* be set\n"));
             if (val & VMX_VMCS_CTRL_EXIT_CONTROLS_HOST_AMD64)
                 LogRel(("HWACCM:    VMX_VMCS_CTRL_EXIT_CONTROLS_HOST_AMD64 *must* be set\n"));
             if (val & VMX_VMCS_CTRL_EXIT_CONTROLS_ACK_EXTERNAL_IRQ)
