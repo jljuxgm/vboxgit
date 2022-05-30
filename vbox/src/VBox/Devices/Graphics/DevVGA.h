@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 17308 2009-03-03 18:30:12Z vboxsync $ */
+/* $Id: DevVGA.h 17325 2009-03-04 08:44:25Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -303,7 +303,8 @@ typedef struct VGAState {
     /* Keep track of ring 0 latched accesses to the VGA MMIO memory. */
     uint64_t                    u64LastLatchedAccess;
     uint32_t                    cLatchAccesses;
-    uint32_t                    Padding10;
+    uint16_t                    uMaskLatchAccess;
+    uint16_t                    iMask;
 
 #ifdef VBE_BYTEWISE_IO
     /** VBE read/write data/index flags */
