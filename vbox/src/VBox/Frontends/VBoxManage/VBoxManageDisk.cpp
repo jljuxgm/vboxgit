@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 15692 2008-12-19 13:52:38Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 15693 2008-12-19 14:04:04Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -431,7 +431,7 @@ int handleConvertFromRaw(int argc, char *argv[])
 {
     VDIMAGETYPE enmImgType = VD_IMAGE_TYPE_NORMAL;
     bool fReadFromStdIn = false;
-    const char *format = NULL;
+    const char *format = "VDI";
     const char *srcfilename = NULL;
     const char *dstfilename = NULL;
     const char *filesize = NULL;
