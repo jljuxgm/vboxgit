@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13025 2008-10-07 07:28:54Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13026 2008-10-07 07:48:40Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -314,10 +314,6 @@ typedef struct HWACCM
 
         /** The last known guest paging mode. */
         PGMMODE                     enmCurrGuestMode;
-
-#if HC_ARCH_BITS == 32
-        uint32_t                    padding3; /**< explicit alignment for 32-bit gcc */
-#endif
 
         /** Real-mode emulation state. */
         struct
