@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 15747 2008-12-24 12:36:19Z vboxsync $ */
+/* $Id: thread.cpp 15880 2009-01-08 18:46:22Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -138,12 +138,10 @@ int rtThreadInit(void)
         if (RT_SUCCESS(rc))
         {
             rc = rtThreadNativeInit();
-#ifdef IN_RING3
             if (RT_SUCCESS(rc))
                 rc = rtThreadAdopt(RTTHREADTYPE_DEFAULT, 0, "main");
             if (RT_SUCCESS(rc))
                 rc = rtSchedNativeCalcDefaultPriority(RTTHREADTYPE_DEFAULT);
-#endif
             if (RT_SUCCESS(rc))
                 return VINF_SUCCESS;
 
