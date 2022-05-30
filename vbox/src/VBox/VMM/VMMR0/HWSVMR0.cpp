@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 12090 2008-09-04 12:51:46Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 12091 2008-09-04 12:58:23Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -685,11 +685,10 @@ HWACCMR0DECL(int) SVMR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     /* Debug registers. */
     if (pVM->hwaccm.s.fContextUseFlags & HWACCM_CHANGED_GUEST_DEBUG)
     {
-        /** @todo DR0-6 */
         val  = pCtx->dr7;
         val &= ~(RT_BIT(11) | RT_BIT(12) | RT_BIT(14) | RT_BIT(15));    /* must be zero */
         val |= 0x400;                                       /* must be one */
-#ifdef VBOX_STRICT
+#ifndef VBOX_WITH_DEBUG_REGISTER_SUPPORT
         val = 0x400;
 #endif
         pVMCB->guest.u64DR7 = val;
@@ -1201,7 +1200,6 @@ ResumeExecution:
     Log2(("exitCode = %x\n", exitCode));
 
     /* Sync back the debug registers. */
-    /** @todo Implement debug registers correctly. */
     pCtx->dr6 = pVMCB->guest.u64DR6;
     pCtx->dr7 = pVMCB->guest.u64DR7;
 
