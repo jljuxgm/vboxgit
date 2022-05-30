@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drm.c 17406 2009-03-05 15:07:49Z vboxsync $
+/** @file $Id: vboxvideo_drm.c 17935 2009-03-16 14:01:40Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -54,6 +54,10 @@
  */
 
 #include <linux/autoconf.h>
+#include <linux/version.h>
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27)
+
 #include "drm/drmP.h"
 #include "vboxvideo_drm.h"
 
@@ -105,3 +109,4 @@ MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);
 MODULE_LICENSE("GPL and additional rights");
 
+#endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27) */
