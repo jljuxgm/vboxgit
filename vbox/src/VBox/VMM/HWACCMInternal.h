@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 15440 2008-12-13 13:09:30Z vboxsync $ */
+/* $Id: HWACCMInternal.h 15507 2008-12-15 14:51:45Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -131,7 +131,8 @@ __BEGIN_DECLS
 
 /** HWACCM SSM version
  */
-#define HWACCM_SSM_VERSION                  3
+#define HWACCM_SSM_VERSION                  4
+#define HWACCM_SSM_VERSION_2_0_X            3
 
 /* Per-cpu information. (host) */
 typedef struct
@@ -501,8 +502,12 @@ typedef struct HWACCMCPU
             uint32_t                padding;
         } lasterror;
 
-        /** The last known guest paging mode. */
+        /** The last seen guest paging mode (by VT-x). */
+        PGMMODE                     enmLastSeenGuestMode;
+        /** Current guest paging mode (as seen by HWACCMR3PagingModeChanged). */
         PGMMODE                     enmCurrGuestMode;
+        /** Previous guest paging mode (as seen by HWACCMR3PagingModeChanged). */
+        PGMMODE                     enmPrevGuestMode;
     } vmx;
 
     struct
