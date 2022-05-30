@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 13220 2008-10-13 14:19:11Z vboxsync $ */
+/* $Id: DevPCI.cpp 13233 2008-10-13 20:43:48Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -846,7 +846,6 @@ static void pci_set_io_region_addr(PPCIGLOBALS pGlobals, uint8_t uBus, uint8_t u
 
     /* Read memory type first. */
     uint8_t uRessourceType = pci_config_readb(pGlobals, uBus, uDevFn, ofs);
-    AssertMsg(uRessourceType != 0xff, ("Device non existent\n"));
 
     /* Read command register. */
     cmd = pci_config_readw(pGlobals, uBus, uDevFn, PCI_COMMAND);
