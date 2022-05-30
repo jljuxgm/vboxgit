@@ -1,4 +1,4 @@
-/* $Id: VBoxXPCOMC.cpp 17712 2009-03-11 17:13:57Z vboxsync $ */
+/* $Id: VBoxXPCOMC.cpp 17757 2009-03-12 15:31:16Z vboxsync $ */
 /** @file VBoxXPCOMC.cpp
  * Utility functions to use with the C binding for XPCOM.
  */
@@ -72,18 +72,6 @@ VBoxComUnallocMem(void *ptr)
     {
         nsMemory::Free(ptr);
     }
-}
-
-int
-VBoxSetEnv(const char *pszVar, const char *pszValue)
-{
-    return RTEnvSet(pszVar, pszValue);
-}
-
-const char *
-VBoxGetEnv(const char *pszVar)
-{
-    return RTEnvGet(pszVar);
 }
 
 void
@@ -174,9 +162,6 @@ VBoxGetXPCOMCFunctions(unsigned uVersion)
 
         VBoxUtf16ToUtf8,
         VBoxUtf8ToUtf16,
-
-        VBoxGetEnv,
-        VBoxSetEnv,
 
         VBOX_XPCOMC_VERSION
     };
