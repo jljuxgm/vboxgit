@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17384 2009-03-05 10:35:59Z vboxsync $
+# $Id: Makefile.kmk 17450 2009-03-06 10:27:03Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -287,7 +287,8 @@ VirtualBox_QT_MOCHDRS = \
 	include/VBoxSettingsPage.h \
 	include/VBoxSettingsSelector.h \
 	include/VBoxImportApplianceWgt.h \
-	include/VBoxImportApplianceWzd.h
+	include/VBoxImportApplianceWzd.h \
+	include/VBoxExportApplianceWzd.h
 
 # Sources containing local definitions of classes that use the Q_OBJECT macro.
 VirtualBox_QT_MOCSRCS = \
@@ -366,7 +367,8 @@ VirtualBox_SOURCES = \
 	src/VBoxMediaManagerDlg.cpp \
 	src/VBoxMedium.cpp \
 	src/VBoxImportApplianceWgt.cpp \
-	src/VBoxImportApplianceWzd.cpp
+	src/VBoxImportApplianceWzd.cpp \
+	src/VBoxExportApplianceWzd.cpp
 
 ifeq ($(filter-out freebsd linux netbsd openbsd solaris,$(KBUILD_TARGET)),) # X11
  ifndef VBOX_OSE
