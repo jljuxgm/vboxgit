@@ -1,4 +1,4 @@
-/* $Id: string.h 17634 2009-03-10 15:01:07Z vboxsync $ */
+/* $Id: string.h 17646 2009-03-10 17:47:31Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -406,6 +406,35 @@ public:
                 str [0] = 0;
         }
         return *this;
+    }
+
+    void append(const Utf8Str &that)
+    {
+        size_t cbThis = length();
+        size_t cbThat = that.length();
+
+        if (cbThat)
+        {
+            size_t cbBoth = cbThis + cbThat + 1;
+
+            // @todo optimize
+            char *pszTemp;
+#if !defined (VBOX_WITH_XPCOM)
+            pszTemp = (char*)::RTMemTmpAlloc(cbBoth);
+#else
+            pszTemp = (char*)nsMemory::Alloc(cbBoth);
+#endif
+            if (str)
+            {
+                memcpy(pszTemp, str, cbThis);
+                setNull();
+            }
+            if (that.str)
+                memcpy(pszTemp + cbThis, that.str, cbThat);
+            pszTemp[cbThis + cbThat] = '\0';
+
+            str = pszTemp;
+        }
     }
 
     int compare (const char *s) const

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 17634 2009-03-10 15:01:07Z vboxsync $ */
+/* $Id: ApplianceImpl.h 17646 2009-03-10 17:47:31Z vboxsync $ */
 
 /** @file
  *
@@ -100,8 +100,8 @@ private:
     struct TaskImportMachines;  /* Worker thread for import */
     static DECLCALLBACK(int) taskThreadImportMachines(RTTHREAD thread, void *pvUser);
 
-    struct TaskExportOVF;       /* Worker thread for export */
-    static DECLCALLBACK(int) taskThreadExportOVF(RTTHREAD thread, void *pvUser);
+    struct TaskWriteOVF;       /* Worker thread for export */
+    static DECLCALLBACK(int) taskThreadWriteOVF(RTTHREAD thread, void *pvUser);
 
     friend class Machine;
 };
