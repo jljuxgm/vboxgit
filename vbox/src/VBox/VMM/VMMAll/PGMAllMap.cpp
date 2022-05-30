@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 16416 2009-01-30 14:00:42Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 16418 2009-01-30 14:49:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -220,6 +220,11 @@ void pgmMapSetShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
     if (!pgmMapAreMappingsEnabled(&pVM->pgm.s))
         return;
 
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+    if (!pVM->pgm.s.CTX_SUFF(pShwPageCR3))
+        return;    /* too early */
+#endif
+
     PGMMODE enmShadowMode = PGMGetShadowMode(pVM);
     Assert(enmShadowMode <= PGMMODE_PAE_NX);
 
@@ -318,6 +323,11 @@ void pgmMapClearShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iOldPDE)
     if (!pgmMapAreMappingsEnabled(&pVM->pgm.s))
         return;
 
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+    if (!pVM->pgm.s.CTX_SUFF(pShwPageCR3))
+        return;    /* too early */
+#endif
+
     iOldPDE += i;
     while (i-- > 0)
     {
@@ -378,11 +388,12 @@ VMMDECL(int) PGMMapActivateAll(PVM pVM)
     if (pVM->pgm.s.fMappingsFixed)
         return VINF_SUCCESS;
 
-    Assert(PGMGetGuestMode(pVM) >= PGMMODE_32_BIT && PGMGetGuestMode(pVM) <= PGMMODE_PAE_NX);
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     if (!pVM->pgm.s.CTX_SUFF(pShwPageCR3))
         return VINF_SUCCESS;    /* too early */
 #endif
+
+    Assert(PGMGetGuestMode(pVM) >= PGMMODE_32_BIT && PGMGetGuestMode(pVM) <= PGMMODE_PAE_NX);
 
     /*
      * Iterate mappings.
@@ -412,10 +423,10 @@ VMMDECL(int) PGMMapDeactivateAll(PVM pVM)
         return VINF_SUCCESS;
 
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
-    Assert(PGMGetGuestMode(pVM) >= PGMMODE_32_BIT && PGMGetGuestMode(pVM) <= PGMMODE_PAE_NX);
-
     if (!pVM->pgm.s.CTX_SUFF(pShwPageCR3))
         return VINF_SUCCESS;    /* too early */
+
+    Assert(PGMGetGuestMode(pVM) >= PGMMODE_32_BIT && PGMGetGuestMode(pVM) <= PGMMODE_PAE_NX);
 #endif
 
     /*
