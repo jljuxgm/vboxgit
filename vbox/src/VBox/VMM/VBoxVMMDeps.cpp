@@ -1,4 +1,4 @@
-/* $Id: VBoxVMMDeps.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VBoxVMMDeps.cpp 13035 2008-10-07 09:54:32Z vboxsync $ */
 /** @file
  * VBoxVMM link dependencies - drag all we want into the link!
  */
@@ -48,7 +48,7 @@ PFNRT g_apfnDeps[] =
     (PFNRT)PDMQueueInsert,
     (PFNRT)PDMCritSectEnter,
     (PFNRT)PGMInvalidatePage,
-    (PFNRT)PGMR3DbgHCPtr2GCPhys,
+    (PFNRT)PGMR3DbgR3Ptr2GCPhys,
     (PFNRT)VMR3Create,
     (PFNRT)VMMDoTest,
 #ifdef VBOX_WITH_DEBUGGER

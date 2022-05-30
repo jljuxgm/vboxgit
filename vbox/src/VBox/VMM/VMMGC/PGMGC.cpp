@@ -1,4 +1,4 @@
-/* $Id: PGMGC.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: PGMGC.cpp 13035 2008-10-07 09:54:32Z vboxsync $ */
 /** @file
  * PGM - Page Monitor, Guest Context.
  */
@@ -183,9 +183,9 @@ VMMRCDECL(int) PGMGCDynMapGCPage(PVM pVM, RTGCPHYS GCPhys, void **ppv)
     /*
      * Get the ram range.
      */
-    PPGMRAMRANGE pRam = pVM->pgm.s.pRamRangesGC;
+    PPGMRAMRANGE pRam = pVM->pgm.s.pRamRangesRC;
     while (pRam && GCPhys - pRam->GCPhys >= pRam->cb)
-        pRam = pRam->pNextGC;
+        pRam = pRam->pNextRC;
     if (!pRam)
     {
         AssertMsgFailed(("Invalid physical address %VGp!\n", GCPhys));
@@ -221,9 +221,9 @@ VMMRCDECL(int) PGMGCDynMapGCPageEx(PVM pVM, RTGCPHYS GCPhys, void **ppv)
     /*
      * Get the ram range.
      */
-    PPGMRAMRANGE pRam = pVM->pgm.s.pRamRangesGC;
+    PPGMRAMRANGE pRam = pVM->pgm.s.pRamRangesRC;
     while (pRam && GCPhys - pRam->GCPhys >= pRam->cb)
-        pRam = pRam->pNextGC;
+        pRam = pRam->pNextRC;
     if (!pRam)
     {
         AssertMsgFailed(("Invalid physical address %VGp!\n", GCPhys));
