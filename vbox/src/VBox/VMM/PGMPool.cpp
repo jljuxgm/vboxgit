@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 14038 2008-11-10 18:23:15Z vboxsync $ */
+/* $Id: PGMPool.cpp 14133 2008-11-12 16:37:47Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -261,7 +261,7 @@ int pgmR3PoolInit(PVM pVM)
     /* The Shadow PAE PDs. This is actually 4 pages! (32 bits guest paging)  */
     pPool->aPages[PGMPOOL_IDX_PAE_PD].Core.Key  = NIL_RTHCPHYS;
     pPool->aPages[PGMPOOL_IDX_PAE_PD].GCPhys    = NIL_RTGCPHYS;
-    pPool->aPages[PGMPOOL_IDX_PAE_PD].pvPageR3  = pVM->pgm.s.apHCPaePDs[0];
+    pPool->aPages[PGMPOOL_IDX_PAE_PD].pvPageR3  = pVM->pgm.s.apShwPaePDsR3[0];
     pPool->aPages[PGMPOOL_IDX_PAE_PD].enmKind   = PGMPOOLKIND_ROOT_PAE_PD;
     pPool->aPages[PGMPOOL_IDX_PAE_PD].idx       = PGMPOOL_IDX_PAE_PD;
 
@@ -270,7 +270,7 @@ int pgmR3PoolInit(PVM pVM)
     {
         pPool->aPages[PGMPOOL_IDX_PAE_PD_0 + i].Core.Key  = NIL_RTHCPHYS;
         pPool->aPages[PGMPOOL_IDX_PAE_PD_0 + i].GCPhys    = NIL_RTGCPHYS;
-        pPool->aPages[PGMPOOL_IDX_PAE_PD_0 + i].pvPageR3  = pVM->pgm.s.apHCPaePDs[i];
+        pPool->aPages[PGMPOOL_IDX_PAE_PD_0 + i].pvPageR3  = pVM->pgm.s.apShwPaePDsR3[i];
         pPool->aPages[PGMPOOL_IDX_PAE_PD_0 + i].enmKind   = PGMPOOLKIND_PAE_PD_FOR_PAE_PD;
         pPool->aPages[PGMPOOL_IDX_PAE_PD_0 + i].idx       = PGMPOOL_IDX_PAE_PD_0 + i;
     }
