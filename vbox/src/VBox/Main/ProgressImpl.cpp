@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 15165 2008-12-09 13:20:45Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -631,8 +631,7 @@ STDMETHODIMP Progress::WaitForCompletion (LONG aTimeout)
             mWaitersCount ++;
             alock.leave();
             int vrc = RTSemEventMultiWait (mCompletedSem,
-                                           forever ? RT_INDEFINITE_WAIT
-                                                   : (unsigned) timeLeft);
+                forever ? RT_INDEFINITE_WAIT : (unsigned) timeLeft);
             alock.enter();
             mWaitersCount --;
 
@@ -652,7 +651,7 @@ STDMETHODIMP Progress::WaitForCompletion (LONG aTimeout)
         }
 
         if (RT_FAILURE (vrc) && vrc != VERR_TIMEOUT)
-            return setError (E_FAIL,
+            return setError (VBOX_E_IPRT_ERROR,
                 tr ("Failed to wait for the task completion (%Rrc)"), vrc);
     }
 
@@ -677,9 +676,7 @@ STDMETHODIMP Progress::WaitForOperationCompletion (ULONG aOperation, LONG aTimeo
 
     AutoWriteLock alock (this);
 
-    if (aOperation >= mOperationCount)
-        return setError (E_FAIL,
-            tr ("Operation number must be in range [0, %d]"), mOperation - 1);
+    CheckComArgExpr(aOperation, aOperation < mOperationCount);
 
     /* if we're already completed or if the given operation is already done,
      * then take a shortcut */
@@ -737,7 +734,8 @@ STDMETHODIMP Progress::Cancel()
     AutoWriteLock alock (this);
 
     if (!mCancelable)
-        return setError (E_FAIL, tr ("Operation cannot be canceled"));
+        return setError (VBOX_E_INVALID_OBJECT_STATE,
+            tr ("Operation cannot be canceled"));
 
 /// @todo (dmik): implement operation cancellation!
 //    mCompleted = TRUE;
