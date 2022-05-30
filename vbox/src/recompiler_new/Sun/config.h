@@ -1,4 +1,4 @@
-/* $Id: config.h 13881 2008-11-05 17:01:56Z vboxsync $ */
+/* $Id: config.h 13968 2008-11-07 15:48:52Z vboxsync $ */
 /** @file
  * Sun config - Maintained by hand
  */
@@ -33,4 +33,7 @@
 /* #define VBOX_DEBUG_PHYS */
 /* Uncomment to see emulated CPU state changes */
 /* #define VBOX_DUMP_STATE */
-
+/* Uncomment to see QEMU logging, goes to /tmp/vbox-qemu.log */
+/* #define DEBUG_ALL_LOGGING */
+/* Uncomment to see generated code */
+/* #define DEBUG_DISAS */

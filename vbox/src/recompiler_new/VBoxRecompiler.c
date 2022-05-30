@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13882 2008-11-05 17:04:00Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 13968 2008-11-07 15:48:52Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -386,6 +386,7 @@ REMR3DECL(int) REMR3Init(PVM pVM)
 
 #ifdef DEBUG_ALL_LOGGING
     loglevel = ~0;
+    logfile = fopen("/tmp/vbox-qemu.log", "w");
 #endif
 
     return rc;
