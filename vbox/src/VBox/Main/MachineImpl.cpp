@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 17686 2009-03-11 12:26:08Z vboxsync $ */
+/* $Id: MachineImpl.cpp 17736 2009-03-12 12:19:40Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -1926,8 +1926,11 @@ STDMETHODIMP Machine::AttachHardDisk(IN_GUID aId,
     rc = ctl->COMGETTER(MaxDevicesPerPortCount)(&devicesPerPort);
     CheckComRCReturnRC(rc);
 
-    if (   (aControllerPort < 0) || (aControllerPort >= portCount)
-        || (aDevice < 0) || (aDevice >= devicesPerPort))
+    if (   (aControllerPort < 0)
+        || (aControllerPort >= (LONG)portCount)
+        || (aDevice < 0)
+        || (aDevice >= (LONG)devicesPerPort)
+       )
         return setError (E_INVALIDARG,
             tr ("The port and/or count parameter are out of range [%lu:%lu]"),
                 portCount, devicesPerPort);
@@ -11371,7 +11374,7 @@ HRESULT SnapshotMachine::init (SessionMachine *aSessionMachine,
         AssertComRC (rc);
     }
 
-    /* create copies of all storage controllers (mStorageControllerData 
+    /* create copies of all storage controllers (mStorageControllerData
      * after attaching a copy contains just references to original objects) */
     mStorageControllers.allocate();
     for (StorageControllerList::const_iterator
