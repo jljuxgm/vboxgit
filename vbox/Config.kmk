@@ -1,4 +1,4 @@
-# $Id: Config.kmk 13465 2008-10-22 08:24:54Z vboxsync $
+# $Id: Config.kmk 13490 2008-10-22 13:27:36Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -632,17 +632,20 @@ endif
 #
 # VBOX_WITHOUT_HARDENING is for developers (put in LocalConfig.kmk).
 # Note that this is a bit rough since hardening governs more than one
-# variable...
+# variable...  Also note that we allow VBOX_WITH_HARDENING=1 on the 
+# command line to overrule VBOX_WITHOUT_HARDENING (the check below).
 #
 ifdef VBOX_WITHOUT_HARDENING
  VBOX_WITH_HARDENING=
- VBOX_PATH_APP_PRIVATE=
- VBOX_PATH_APP_PRIVATE_ARCH=
- VBOX_PATH_SHARED_LIBS=
- VBOX_PATH_APP_DOCS=
- VBOX_WITH_RUNPATH=
- if1of ($(KBUILD_TARGET), linux solaris)
-  VBOX_WITH_ORIGIN=1
+ ifeq ($(VBOX_WITH_HARDENING),)
+  VBOX_PATH_APP_PRIVATE=
+  VBOX_PATH_APP_PRIVATE_ARCH=
+  VBOX_PATH_SHARED_LIBS=
+  VBOX_PATH_APP_DOCS=
+  VBOX_WITH_RUNPATH=
+  if1of ($(KBUILD_TARGET), linux solaris)
+   VBOX_WITH_ORIGIN=1
+  endif
  endif
 endif
 
@@ -3565,7 +3568,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13465 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13490 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
