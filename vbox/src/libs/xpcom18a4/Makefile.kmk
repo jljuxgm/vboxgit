@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11771 2008-08-28 15:57:47Z vboxsync $
+# $Id: Makefile.kmk 11784 2008-08-28 18:55:26Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1153,7 +1153,7 @@ VBoxXPCOM_LDFLAGS = -Wl,--whole-archive \
 	-Wl,--no-whole-archive
 endif
 
-VBoxXPCOM_LDFLAGS.solaris = -Wl,-z,allextract \
+VBoxXPCOM_LDFLAGS.solaris += -Wl,-z,allextract \
 	$(TARGET_VBox-xpcom-typelib) \
 	$(TARGET_VBox-xpcom-string) \
 	$(TARGET_VBox-xpcom-base) \
