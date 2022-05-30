@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 15865 2009-01-08 13:10:01Z vboxsync $ */
+/* $Id: GVMMR0.cpp 16575 2009-02-09 10:28:03Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1288,7 +1288,7 @@ GVMMR0DECL(PVM) GVMMR0GetVMByEMT(RTNATIVETHREAD hEMT)
 static unsigned gvmmR0SchedDoWakeUps(PGVMM pGVMM, uint64_t u64Now)
 {
     /*
-     * The first pass will wake up VMs which has actually expired
+     * The first pass will wake up VMs which have actually expired
      * and look for VMs that should be woken up in the 2nd and 3rd passes.
      */
     unsigned cWoken = 0;

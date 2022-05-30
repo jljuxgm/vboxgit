@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 16420 2009-01-30 15:01:16Z vboxsync $ */
+/* $Id: PGMBth.h 16575 2009-02-09 10:28:03Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -163,11 +163,7 @@ PGM_BTH_DECL(int, Enter)(PVM pVM, RTGCPHYS GCPhysCR3)
         }
 
         /* contruct a fake address */
-#  if PGM_GST_TYPE == PGM_TYPE_REAL 
         RTGCPHYS GCPhysCR3 = RT_BIT_64(63);
-#  else
-        RTGCPHYS GCPhysCR3 = RT_BIT_64(63) | RT_BIT_64(62);
-#  endif
         pVM->pgm.s.iShwUser      = SHW_POOL_ROOT_IDX;
         pVM->pgm.s.iShwUserTable = GCPhysCR3 >> PAGE_SHIFT;
         int rc = pgmPoolAlloc(pVM, GCPhysCR3, BTH_PGMPOOLKIND_ROOT, pVM->pgm.s.iShwUser, pVM->pgm.s.iShwUserTable, &pVM->pgm.s.CTX_SUFF(pShwPageCR3));
