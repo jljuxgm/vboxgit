@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 15009 2008-12-04 23:27:46Z vboxsync $ */
+/* $Id: REMInternal.h 15063 2008-12-07 14:04:13Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -287,7 +287,11 @@ void    remR3ProtectCode(CPUState *env, RTGCPTR GCPtr);
 void    remR3ChangeCpuMode(CPUState *env);
 void    remR3DmaRun(CPUState *env);
 void    remR3TimersRun(CPUState *env);
+# ifdef VBOX_WITH_NEW_RECOMPILER
 int     remR3NotifyTrap(CPUState *env, uint32_t uTrap, uint32_t uErrorCode, RTGCPTR pvNextEIP);
+# else
+int remR3NotifyTrap(CPUState *env, uint32_t uTrap, uint32_t uErrorCode, uint32_t pvNextEIP);
+# endif
 void    remR3TrapStat(CPUState *env, uint32_t uTrap);
 void    remR3CpuId(CPUState *env, unsigned uOperator, void *pvEAX, void *pvEBX, void *pvECX, void *pvEDX);
 void    remR3RecordCall(CPUState *env);
