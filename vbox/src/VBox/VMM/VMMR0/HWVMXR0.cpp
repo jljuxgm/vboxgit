@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 14366 2008-11-19 17:20:49Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 14385 2008-11-20 08:48:14Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2493,7 +2493,6 @@ ResumeExecution:
         rc = EMInterpretRdtsc(pVM, CPUMCTX2CORE(pCtx));
         if (rc == VINF_SUCCESS)
         {
-Log(("Rdtsc: %x:%x\n", pCtx->edx, pCtx->eax));
             /* Update EIP and continue execution. */
             Assert(cbInstr == 2);
             pCtx->rip += cbInstr;
