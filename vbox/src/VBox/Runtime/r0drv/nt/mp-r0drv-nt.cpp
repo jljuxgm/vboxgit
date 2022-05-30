@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 15837 2009-01-07 15:50:58Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 15839 2009-01-07 16:07:54Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -115,7 +115,22 @@ RTDECL(bool) RTMpIsCpuPossible(RTCPUID idCpu)
 
 RTDECL(bool) RTMpIsCpuWorkPending()
 {
-    /** @todo (not used on non-Windows platforms yet */
+    RTCPUID idCpuEntry = RTMpCpuId();
+
+    Assert(KeGetCurrentIrql() == DISPATCH_LEVEL);
+
+    /** @todo the best solution is to check for pending DPCs, but there doesn't seem to be any documented way to do this.
+     *   The KPRCB or KPCR contains an undocumented entry, but it's too risky to make any assumptions about it.
+
+    /* Flush all pending DPCs. Not sure if we can get rescheduling as a direct result. */
+    KeFlushQueuedDpcs();
+
+    Assert(KeGetCurrentIrql() == DISPATCH_LEVEL);
+
+    if (idCpuEntry != RTMpCpuId())
+        return true;
+
+    /* We've stayed on the same CPU, so we can continue. */
     return false;
 }
 
