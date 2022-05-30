@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 13573 2008-10-27 12:03:26Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 13707 2008-10-31 09:17:45Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -195,10 +195,6 @@ static RTSPINLOCK           g_Spinlock = NIL_RTSPINLOCK;
 int _init(void)
 {
     LogFlow((DEVICE_NAME ":_init\n"));
-
-#ifdef VBOX_WITH_NETFLT
-    NOREF(g_vboxNetFltSolarisRTR0Symbols);
-#endif
 
     /*
      * Prevent module autounloading.
