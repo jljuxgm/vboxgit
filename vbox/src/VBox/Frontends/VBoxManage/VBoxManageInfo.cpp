@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 14555 2008-11-25 09:08:06Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 14564 2008-11-25 11:13:26Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -485,8 +485,8 @@ HRESULT showVMInfo (ComPtr <IVirtualBox> virtualBox, ComPtr<IMachine> machine,
                 hardDisk->COMGETTER(Id)(uuid.asOutParam());
                 if (details == VMINFO_MACHINEREADABLE)
                 {
-                    RTPrintf("sata%d=\"%lS\"\n", i, filePath.raw());
-                    RTPrintf("sata%dImageUUID=\"%s\"\n", i, uuid.toString().raw());
+                    RTPrintf("sataport%d=\"%lS\"\n", i, filePath.raw());
+                    RTPrintf("SataPortImageUUID%d=\"%s\"\n", i, uuid.toString().raw());
                 }
                 else
                     RTPrintf("SATA %d:          %lS (UUID: %s)\n", i, filePath.raw(), uuid.toString().raw());
