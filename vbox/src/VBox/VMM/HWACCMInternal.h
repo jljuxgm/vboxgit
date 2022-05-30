@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 12758 2008-09-26 09:28:46Z vboxsync $ */
+/* $Id: HWACCMInternal.h 12786 2008-09-29 11:01:57Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -29,6 +29,7 @@
 #include <VBox/dis.h>
 #include <VBox/hwaccm.h>
 #include <VBox/pgm.h>
+#include <VBox/cpum.h>
 #include <iprt/memobj.h>
 #include <iprt/cpuset.h>
 #include <iprt/mp.h>
@@ -297,6 +298,30 @@ typedef struct HWACCM
 #if HC_ARCH_BITS == 32
         uint32_t                    padding3; /**< explicit alignment for 32-bit gcc */
 #endif
+
+        /** Real-mode emulation state. */
+        struct
+        {
+            struct
+            {
+                uint32_t                fPending;
+                uint32_t                padding4;
+                uint64_t                intInfo;
+            } Event;
+
+            CPUMSELREGHID               dsHid;
+            CPUMSELREGHID               esHid;
+            CPUMSELREGHID               fsHid;
+            CPUMSELREGHID               gsHid;
+            CPUMSELREGHID               ssHid;
+            RTSEL                       ds;
+            RTSEL                       es;
+            RTSEL                       fs;
+            RTSEL                       gs;
+            RTSEL                       ss;
+            uint32_t                    eip;
+            RTSEL                       padding4[3];
+        } RealMode;
 
         struct
         {
