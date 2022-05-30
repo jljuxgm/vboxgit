@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 14072 2008-11-10 23:53:50Z vboxsync $ */
+/* $Id: PDMLdr.cpp 14077 2008-11-11 07:43:35Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -922,7 +922,7 @@ static char *pdmR3FileConstruct(const char *pszDir, const char *pszFile, const c
     AssertMsgReturn(cchPath <= RTPATH_MAX, ("Path too long!\n"), NULL);
 
     char *pszRet = (char *)RTMemTmpAlloc(cchDir + 1 + cchFile + cchDefaultExt + 1);
-    AssertMsgReturn(!pszRet, ("Out of temporary memory!\n"), NULL);
+    AssertMsgReturn(pszRet, ("Out of temporary memory!\n"), NULL);
 
     /*
      * Construct the filename.
