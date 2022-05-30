@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 16478 2009-02-03 10:07:55Z vboxsync $ */
+/* $Id: TRPM.cpp 17428 2009-03-06 01:59:51Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -1319,8 +1319,9 @@ VMMR3DECL(bool) TRPMR3IsGateHandler(PVM pVM, RTRCPTR GCPtr)
          * Convert this page to a HC address.
          * (This function checks for not-present pages.)
          */
-        PVBOXIDTE   pIDTE;
-        int rc = PGMPhysGCPtr2R3Ptr(pVM, GCPtrIDTE, (void **)&pIDTE);
+        PCVBOXIDTE      pIDTE;
+        PGMPAGEMAPLOCK  Lock;
+        int rc = PGMPhysGCPtr2CCPtrReadOnly(pVM, GCPtrIDTE, (const void **)&pIDTE, &Lock);
         if (RT_SUCCESS(rc))
         {
             /*
@@ -1333,7 +1334,10 @@ VMMR3DECL(bool) TRPMR3IsGateHandler(PVM pVM, RTRCPTR GCPtr)
                 {
                     RTRCPTR GCPtrHandler = VBOXIDTE_OFFSET(*pIDTE);
                     if (GCPtr == GCPtrHandler)
+                    {
+                        PGMPhysReleasePageMappingLock(pVM, &Lock);
                         return true;
+                    }
                 }
 
                 /* next entry */
@@ -1347,6 +1351,7 @@ VMMR3DECL(bool) TRPMR3IsGateHandler(PVM pVM, RTRCPTR GCPtr)
                 GCPtrIDTE += sizeof(VBOXIDTE);
                 pIDTE++;
             }
+            PGMPhysReleasePageMappingLock(pVM, &Lock);
         }
         else
         {
