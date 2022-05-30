@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 16927 2009-02-18 18:27:52Z vboxsync $ */
+/* $Id: HostImpl.cpp 16929 2009-02-18 19:03:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -766,7 +766,12 @@ STDMETHODIMP Host::COMGETTER(TapInterfaces) (ComSafeArrayOut (IHostNetworkInterf
 
     return S_OK;
 }
-#endif /* #if defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT) */
+#else /* !defined(RT_OS_WINDOWS) || !defined(VBOX_WITH_NETFLT) */
+STDMETHODIMP Host::COMGETTER(TapInterfaces) (ComSafeArrayOut (IHostNetworkInterface *, aNetworkInterfaces))
+{
+    return NS_ERROR_NOT_IMPLEMENTED;
+}
+#endif /* !defined(RT_OS_WINDOWS) && !defined(VBOX_WITH_NETFLT) */
 
 /**
  * Returns a list of host network interfaces.
