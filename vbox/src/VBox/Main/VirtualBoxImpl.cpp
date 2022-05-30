@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 15064 2008-12-07 15:34:34Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -267,9 +267,7 @@ HRESULT VirtualBox::init()
                                                Global::sOSTypes [i].id,
                                                Global::sOSTypes [i].description,
                                                Global::sOSTypes [i].osType,
-                                               Global::sOSTypes [i].is64Bit,
-                                               Global::sOSTypes [i].recommendedIOAPIC,
-                                               Global::sOSTypes [i].recommendedVirtEx,
+                                               Global::sOSTypes [i].osHint,
                                                Global::sOSTypes [i].recommendedRAM,
                                                Global::sOSTypes [i].recommendedVRAM,
                                                Global::sOSTypes [i].recommendedHDD,
