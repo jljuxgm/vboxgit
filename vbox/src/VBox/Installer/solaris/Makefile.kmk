@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17642 2009-03-10 16:30:54Z vboxsync $
+# $Id: Makefile.kmk 17840 2009-03-13 15:33:56Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -133,6 +133,7 @@ SOLARIS_STRIP_EXES = \
 	$(if $(VBOX_WITH_VBOXBFE),VBoxBFE,) \
 	$(if $(VBOX_WITH_VBOXSDL),VBoxSDL,) \
 	$(if $(VBOX_WITH_USB),VBoxUSBHelper,) \
+	VBoxNetDHCP \
 	VBoxSVC \
 	VBoxXPCOMIPCD \
 	kchmviewer
@@ -171,6 +172,7 @@ SOLARIS_STRIP_BINS = \
 	components/VBoxXPCOMIPCC.so
 ifdef VBOX_WITH_HARDENING
 SOLARIS_STRIP_BINS += \
+	VBoxNetDHCP.so \
 	$(if $(VBOX_WITH_VBOXBFE),VBoxBFE.so,) \
 	$(if $(VBOX_WITH_VBOXSDL),VBoxSDL.so,) \
 	$(if $(VBOX_WITH_QTGUI),VirtualBox.so,)
