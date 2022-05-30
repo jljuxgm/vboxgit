@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 14397 2008-11-20 11:01:52Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 14453 2008-11-21 12:40:17Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -375,7 +375,7 @@ OSStatus darwinRegionHandler (EventHandlerCallRef aInHandlerCallRef, EventRef aI
 
 OSStatus darwinOverlayWindowHandler (EventHandlerCallRef aInHandlerCallRef, EventRef aInEvent, void *aInUserData)
 {
-    if (aInUserData)
+    if (!aInUserData)
         return ::CallNextEventHandler (aInHandlerCallRef, aInEvent);
 
     UInt32 eventClass = ::GetEventClass (aInEvent);
@@ -423,7 +423,9 @@ OSStatus darwinOverlayWindowHandler (EventHandlerCallRef aInHandlerCallRef, Even
             HISize s;
             if (GetEventParameter (aInEvent, kEventParamDimensions, typeHISize, NULL, sizeof (s), NULL, &s) != noErr)
                 return noErr;
+            ChangeWindowGroupAttributes (GetWindowGroup (w), 0, kWindowGroupAttrMoveTogether);
             SizeWindow (w, s.width, s.height, true);
+            ChangeWindowGroupAttributes (GetWindowGroup (w), kWindowGroupAttrMoveTogether, 0);
             return noErr;
         }
     }
