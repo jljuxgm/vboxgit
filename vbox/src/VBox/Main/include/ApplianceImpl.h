@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 16205 2009-01-23 17:11:17Z vboxsync $ */
+/* $Id: ApplianceImpl.h 16218 2009-01-26 10:16:38Z vboxsync $ */
 
 /** @file
  *
@@ -25,6 +25,8 @@
 #define ____H_APPLIANCEIMPL
 
 #include "VirtualBoxBase.h"
+
+class VirtualBox;
 
 class ATL_NO_VTABLE Appliance :
     public VirtualBoxBaseWithChildrenNEXT,
@@ -54,7 +56,7 @@ public:
     HRESULT FinalConstruct() { return S_OK; }
     void FinalRelease() { uninit(); }
 
-    HRESULT init(IN_BSTR &path);
+    HRESULT init (VirtualBox *aVirtualBox, IN_BSTR &path);
     void uninit();
 
     // for VirtualBoxSupportErrorInfoImpl
@@ -74,6 +76,9 @@ public:
 
     /* private instance data */
 private:
+    /** weak VirtualBox parent */
+    const ComObjPtr <VirtualBox, ComWeakRef> mVirtualBox;
+
     struct Data;            // obscure, defined in AppliannceImpl.cpp
     Data *m;
 
@@ -83,6 +88,7 @@ private:
     HRESULT HandleVirtualSystemContent(const char *pcszPath, const xml::Node *pContentElem);
 
     HRESULT construeAppliance();
+    HRESULT searchUniqueVMName (std::string& aName);
 };
 
 
