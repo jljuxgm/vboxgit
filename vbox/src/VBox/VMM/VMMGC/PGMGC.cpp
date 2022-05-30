@@ -1,4 +1,4 @@
-/* $Id: PGMGC.cpp 13087 2008-10-08 15:38:52Z vboxsync $ */
+/* $Id: PGMGC.cpp 13106 2008-10-09 08:46:19Z vboxsync $ */
 /** @file
  * PGM - Page Monitor, Guest Context.
  */
@@ -150,6 +150,7 @@
 #define PGM_SHW_NAME(name)          PGM_SHW_NAME_AMD64(name)
 #include "PGMGCShw.h"
 
+#ifdef VBOX_WITH_64_BITS_GUESTS
 /* Guest - AMD64 mode */
 #define PGM_GST_TYPE                PGM_TYPE_AMD64
 #define PGM_GST_NAME(name)          PGM_GST_NAME_AMD64(name)
@@ -159,6 +160,7 @@
 #undef PGM_BTH_NAME
 #undef PGM_GST_TYPE
 #undef PGM_GST_NAME
+#endif
 
 #undef PGM_SHW_TYPE
 #undef PGM_SHW_NAME
