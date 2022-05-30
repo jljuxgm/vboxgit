@@ -1,4 +1,4 @@
-/* $Id: env-posix.cpp 16523 2009-02-05 06:14:48Z vboxsync $ */
+/* $Id: env-posix.cpp 16524 2009-02-05 06:42:52Z vboxsync $ */
 /** @file
  * IPRT - Environment, Posix.
  */
@@ -32,6 +32,10 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#ifdef RT_OS_DARWIN
+/*XXX: see sys/cdefs.h */
+#define __DARWIN_UNIX03 1
+#endif
 #include <iprt/env.h>
 #include <iprt/string.h>
 #include <iprt/alloca.h>
