@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 14940 2008-12-03 13:07:39Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 14952 2008-12-03 15:30:33Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -535,7 +535,7 @@ STDMETHODIMP VirtualBox::COMGETTER(PackageType) (BSTR *aPackageType)
 
 STDMETHODIMP VirtualBox::COMGETTER(HomeFolder) (BSTR *aHomeFolder)
 {
-    CheckComArgOutSafeArrayPointerValid(aHomeFolder);
+    CheckComArgNotNull(aHomeFolder);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
@@ -1362,7 +1362,7 @@ STDMETHODIMP VirtualBox::RemoveSharedFolder (INPTR BSTR aName)
 STDMETHODIMP VirtualBox::
 GetNextExtraDataKey (INPTR BSTR aKey, BSTR *aNextKey, BSTR *aNextValue)
 {
-    CheckComArgOutSafeArrayPointerValid(aNextKey);
+    CheckComArgNotNull(aNextKey);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
@@ -1461,7 +1461,7 @@ GetNextExtraDataKey (INPTR BSTR aKey, BSTR *aNextKey, BSTR *aNextValue)
 STDMETHODIMP VirtualBox::GetExtraData (INPTR BSTR aKey, BSTR *aValue)
 {
     CheckComArgNotNull(aKey);
-    CheckComArgOutSafeArrayPointerValid(aValue);
+    CheckComArgNotNull(aValue);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
@@ -1823,7 +1823,7 @@ STDMETHODIMP VirtualBox::SaveSettings()
 
 STDMETHODIMP VirtualBox::SaveSettingsWithBackup (BSTR *aBakFileName)
 {
-    CheckComArgOutSafeArrayPointerValid(aBakFileName);
+    CheckComArgNotNull(aBakFileName);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
