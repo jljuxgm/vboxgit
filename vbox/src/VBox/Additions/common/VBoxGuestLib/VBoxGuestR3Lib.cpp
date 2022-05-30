@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 14217 2008-11-14 14:51:23Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 17196 2009-02-27 11:57:04Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -336,6 +336,9 @@ int vbglR3DoIOCtl(unsigned iFunction, void *pvData, size_t cbData)
     Hdr.u32Magic = VBGLBIGREQ_MAGIC;
     Hdr.cbData = cbData;
     Hdr.pvDataR3 = pvData;
+# if HC_ARCH_BITS == 32
+    Hdr.u32Padding = 0;
+# endif
 
 /** @todo test status code passing! */
     int rc = ioctl((int)g_File, iFunction, &Hdr);
