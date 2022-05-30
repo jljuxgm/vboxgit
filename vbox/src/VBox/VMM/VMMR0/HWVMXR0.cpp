@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 12350 2008-09-10 12:55:05Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 12501 2008-09-16 16:12:10Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1556,6 +1556,8 @@ ResumeExecution:
     CPUMSetGuestCR4(pVM, val);
 
     CPUMSetGuestCR2(pVM, ASMGetCR2());
+
+    /* No need to sync back DR7 here; it can only be changed by DR7 writes and debug exceptions. Both are intercepted. */
 
     /* Guest CPU context: ES, CS, SS, DS, FS, GS. */
     VMX_READ_SELREG(ES, es);
