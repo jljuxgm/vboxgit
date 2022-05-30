@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 13960 2008-11-07 13:04:45Z vboxsync $ */
+/* $Id: CPUMInternal.h 14411 2008-11-20 13:26:47Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -338,6 +338,12 @@ typedef struct CPUMCPU
      * Aligned on a 64-byte boundrary.
      */
     CPUMCTX                 Guest;
+
+    /** 
+     * Guest context - misc MSRs
+     * Aligned on a 64-byte boundrary.
+     */
+    CPUMCTXMSR              GuestMsr;
 
     /** Use flags.
      * These flags indicates both what is to be used and what has been used.

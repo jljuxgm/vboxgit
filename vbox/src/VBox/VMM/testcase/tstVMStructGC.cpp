@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 14155 2008-11-12 23:55:08Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 14411 2008-11-20 13:26:47Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -81,6 +81,7 @@ int main()
     GEN_CHECK_SIZE(CPUM); // has .mac
     GEN_CHECK_SIZE(CPUMHOSTCTX);
     GEN_CHECK_SIZE(CPUMCTX);
+    GEN_CHECK_SIZE(CPUMCTXMSR);
     GEN_CHECK_SIZE(CPUMCTXCORE);
     GEN_CHECK_SIZE(STAMRATIOU32);
     GEN_CHECK_SIZE(AVLOHCPHYSNODECORE);
