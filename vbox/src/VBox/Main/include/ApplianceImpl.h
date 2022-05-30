@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 16568 2009-02-09 08:57:02Z vboxsync $ */
+/* $Id: ApplianceImpl.h 16600 2009-02-09 16:29:25Z vboxsync $ */
 
 /** @file
  *
@@ -144,6 +144,7 @@ public:
     static const wchar_t *getComponentName() { return L"VirtualSystemDescription"; }
 
     /* IVirtualSystemDescription properties */
+    STDMETHOD(COMGETTER(Count))(ULONG *aCount);
 
     /* IVirtualSystemDescription methods */
     STDMETHOD(GetDescription)(ComSafeArrayOut(VirtualSystemDescriptionType_T, aTypes),

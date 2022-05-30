@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16597 2009-02-09 16:06:07Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16600 2009-02-09 16:29:25Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -2072,6 +2072,21 @@ void VirtualSystemDescription::uninit()
 {
     delete m;
     m = NULL;
+}
+
+STDMETHODIMP VirtualSystemDescription::COMGETTER(Count)(ULONG *aCount)
+{
+    if (!aCount)
+        return E_POINTER;
+
+    AutoCaller autoCaller(this);
+    CheckComRCReturnRC(autoCaller.rc());
+
+    AutoReadLock alock(this);
+
+    *aCount = (ULONG)m->descriptions.size();
+
+    return S_OK;
 }
 
 STDMETHODIMP VirtualSystemDescription::GetDescription(ComSafeArrayOut(VirtualSystemDescriptionType_T, aTypes),
