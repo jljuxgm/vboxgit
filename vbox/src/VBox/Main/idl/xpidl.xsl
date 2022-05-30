@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl.xsl 14469 2008-11-21 15:44:45Z vboxsync $ -->
+<!-- $Id: xpidl.xsl 14572 2008-11-25 13:37:40Z vboxsync $ -->
 
 <!--
  *  A template to generate a XPCOM IDL compatible interface definition file
@@ -80,6 +80,12 @@
 //  templates
 /////////////////////////////////////////////////////////////////////////////
 -->
+
+
+<!--
+ *  not explicitly matched elements and attributes
+-->
+<xsl:template match="*"/>
 
 
 <!--
@@ -633,6 +639,14 @@
 
   <xsl:apply-templates select="@if" mode="end"/>
 
+</xsl:template>
+
+
+<!--
+ *  modules
+-->
+<xsl:template match="module">
+  <xsl:apply-templates select="class"/>
 </xsl:template>
 
 
