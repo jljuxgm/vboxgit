@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 17284 2009-03-03 14:33:35Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 17528 2009-03-07 08:43:59Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -893,7 +893,7 @@ ResumeExecution:
     if (!DBGFIsStepping(pVM))
 #endif
     {
-        if (VM_FF_ISPENDING(pVM, VM_FF_TO_R3 | VM_FF_TIMER))
+        if (VM_FF_ISPENDING(pVM, VM_FF_TO_R3 | VM_FF_TIMER | VM_FF_PGM_NEED_HANDY_PAGES))
         {
             VM_FF_CLEAR(pVM, VM_FF_TO_R3);
             STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatSwitchToR3);
