@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 13040 2008-10-07 11:57:50Z vboxsync $ */
+/* $Id: PGM.cpp 13042 2008-10-07 12:43:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1932,10 +1932,10 @@ static DECLCALLBACK(int) pgmR3RelocatePhysHandler(PAVLROGCPHYSNODECORE pNode, vo
 {
     PPGMPHYSHANDLER pHandler = (PPGMPHYSHANDLER)pNode;
     RTGCINTPTR      offDelta = *(PRTGCINTPTR)pvUser;
-    if (pHandler->pfnHandlerGC)
-        pHandler->pfnHandlerGC += offDelta;
-    if ((RTGCUINTPTR)pHandler->pvUserGC >= 0x10000)
-        pHandler->pvUserGC += offDelta;
+    if (pHandler->pfnHandlerRC)
+        pHandler->pfnHandlerRC += offDelta;
+    if (pHandler->pvUserRC >= 0x10000)
+        pHandler->pvUserRC += offDelta;
     return 0;
 }
 

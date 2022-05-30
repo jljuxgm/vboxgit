@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 13035 2008-10-07 09:54:32Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 13042 2008-10-07 12:43:34Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -545,8 +545,8 @@ int main()
     GEN_CHECK_OFF(PGMPHYSHANDLER, pvUserR3);
     GEN_CHECK_OFF(PGMPHYSHANDLER, pfnHandlerR0);
     GEN_CHECK_OFF(PGMPHYSHANDLER, pvUserR0);
-    GEN_CHECK_OFF(PGMPHYSHANDLER, pfnHandlerGC);
-    GEN_CHECK_OFF(PGMPHYSHANDLER, pvUserGC);
+    GEN_CHECK_OFF(PGMPHYSHANDLER, pfnHandlerRC);
+    GEN_CHECK_OFF(PGMPHYSHANDLER, pvUserRC);
     GEN_CHECK_OFF(PGMPHYSHANDLER, pszDesc);
     GEN_CHECK_SIZE(PGMPHYS2VIRTHANDLER);
     GEN_CHECK_OFF(PGMPHYS2VIRTHANDLER, Core);
@@ -661,7 +661,7 @@ int main()
     GEN_CHECK_OFF(PGMPOOL, fCacheEnabled);
 #endif
 #ifdef PGMPOOL_WITH_MONITORING
-    GEN_CHECK_OFF(PGMPOOL, pfnAccessHandlerGC);
+    GEN_CHECK_OFF(PGMPOOL, pfnAccessHandlerRC);
     GEN_CHECK_OFF(PGMPOOL, pfnAccessHandlerR0);
     GEN_CHECK_OFF(PGMPOOL, pfnAccessHandlerR3);
     GEN_CHECK_OFF(PGMPOOL, pszAccessHandler);

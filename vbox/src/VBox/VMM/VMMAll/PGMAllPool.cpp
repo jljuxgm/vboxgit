@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 13035 2008-10-07 09:54:32Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 13042 2008-10-07 12:43:34Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1526,7 +1526,7 @@ static int pgmPoolMonitorInsert(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
                                           GCPhysPage, GCPhysPage + (PAGE_SIZE - 1),
                                           pPool->pfnAccessHandlerR3, MMHyperCCToR3(pVM, pPage),
                                           pPool->pfnAccessHandlerR0, MMHyperCCToR0(pVM, pPage),
-                                          pPool->pfnAccessHandlerGC, MMHyperCCToRC(pVM, pPage),
+                                          pPool->pfnAccessHandlerRC, MMHyperCCToRC(pVM, pPage),
                                           pPool->pszAccessHandler);
         /** @todo we should probably deal with out-of-memory conditions here, but for now increasing
          * the heap size should suffice. */
@@ -1605,7 +1605,7 @@ static int pgmPoolMonitorFlush(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
             rc = PGMHandlerPhysicalChangeCallbacks(pVM, pPage->GCPhys & ~(RTGCPHYS)(PAGE_SIZE - 1),
                                                    pPool->pfnAccessHandlerR3, MMHyperCCToR3(pVM, pNewHead),
                                                    pPool->pfnAccessHandlerR0, MMHyperCCToR0(pVM, pNewHead),
-                                                   pPool->pfnAccessHandlerGC, MMHyperCCToRC(pVM, pNewHead),
+                                                   pPool->pfnAccessHandlerRC, MMHyperCCToRC(pVM, pNewHead),
                                                    pPool->pszAccessHandler);
             AssertFatalRCSuccess(rc);
             pPage->iMonitoredNext = NIL_PGMPOOL_IDX;
@@ -3669,7 +3669,7 @@ static void pgmPoolFlushAllInt(PPGMPOOL pPool)
             int rc = PGMHandlerPhysicalChangeCallbacks(pVM, pPage->GCPhys & ~(RTGCPHYS)(PAGE_SIZE - 1),
                                                        pPool->pfnAccessHandlerR3, MMHyperCCToR3(pVM, pPage),
                                                        pPool->pfnAccessHandlerR0, MMHyperCCToR0(pVM, pPage),
-                                                       pPool->pfnAccessHandlerGC, MMHyperCCToRC(pVM, pPage),
+                                                       pPool->pfnAccessHandlerRC, MMHyperCCToRC(pVM, pPage),
                                                        pPool->pszAccessHandler);
             AssertFatalRCSuccess(rc);
 # ifdef PGMPOOL_WITH_CACHE

@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 13035 2008-10-07 09:54:32Z vboxsync $ */
+/* $Id: PGMAllBth.h 13042 2008-10-07 12:43:34Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -394,10 +394,10 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
                                       ("Unexpected trap for physical handler: %08X (phys=%08x) HCPhys=%X uErr=%X, enum=%d\n", pvFault, GCPhys, pPage->HCPhys, uErr, pCur->enmType));
 
 #if defined(IN_GC) || defined(IN_RING0)
-                            if (CTXALLSUFF(pCur->pfnHandler))
+                            if (pCur->CTX_SUFF(pfnHandler))
                             {
                                 STAM_PROFILE_START(&pCur->Stat, h);
-                                rc = pCur->CTXALLSUFF(pfnHandler)(pVM, uErr, pRegFrame, pvFault, GCPhysFault, CTXALLSUFF(pCur->pvUser));
+                                rc = pCur->CTX_SUFF(pfnHandler)(pVM, uErr, pRegFrame, pvFault, GCPhysFault, pCur->CTX_SUFF(pvUser));
                                 STAM_PROFILE_STOP(&pCur->Stat, h);
                             }
                             else

@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: PGMPool.cpp 13042 2008-10-07 12:43:34Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -388,7 +388,7 @@ void pgmR3PoolRelocate(PVM pVM)
     pVM->pgm.s.pPoolHC->paPhysExtsGC = MMHyperHC2GC(pVM, pVM->pgm.s.pPoolHC->paPhysExtsHC);
 #endif
 #ifdef PGMPOOL_WITH_MONITORING
-    int rc = PDMR3LdrGetSymbolRC(pVM, NULL, "pgmPoolAccessHandler", &pVM->pgm.s.pPoolHC->pfnAccessHandlerGC);
+    int rc = PDMR3LdrGetSymbolRC(pVM, NULL, "pgmPoolAccessHandler", &pVM->pgm.s.pPoolHC->pfnAccessHandlerRC);
     AssertReleaseRC(rc);
     /* init order hack. */
     if (!pVM->pgm.s.pPoolHC->pfnAccessHandlerR0)
