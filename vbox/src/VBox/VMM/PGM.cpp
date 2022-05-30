@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 12894 2008-10-02 08:02:05Z vboxsync $ */
+/* $Id: PGM.cpp 12901 2008-10-02 08:50:35Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2625,7 +2625,7 @@ DECLINLINE(unsigned) pgmModeToType(PGMMODE pgmMode)
  */
 DECLINLINE(unsigned) pgmModeDataIndex(unsigned uShwType, unsigned uGstType)
 {
-    Assert(uShwType >= PGM_TYPE_32BIT && uShwType <= PGM_TYPE_NESTED);
+    Assert(uShwType >= PGM_TYPE_32BIT && uShwType <= PGM_TYPE_EPT);
     Assert(uGstType >= PGM_TYPE_REAL  && uGstType <= PGM_TYPE_AMD64);
     return (uShwType - PGM_TYPE_32BIT) * (PGM_TYPE_AMD64 - PGM_TYPE_REAL + 1)
          + (uGstType - PGM_TYPE_REAL);
