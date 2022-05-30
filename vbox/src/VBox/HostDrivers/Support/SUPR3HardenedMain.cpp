@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 15873 2009-01-08 16:14:42Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 15884 2009-01-09 08:05:43Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -61,7 +61,6 @@
                          libcap1 or libcap2 */
 
 #  undef _POSIX_SOURCE
-#  include <linux/capability.h>
 #  include <sys/capability.h>
 #  include <sys/prctl.h>
 #  ifndef CAP_TO_MASK
