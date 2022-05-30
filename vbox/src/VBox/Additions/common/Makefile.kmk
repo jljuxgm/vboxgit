@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14347 2008-11-19 11:32:30Z vboxsync $
+# $Id: Makefile.kmk 17543 2009-03-08 12:00:34Z vboxsync $
 ## @file
 # Sub-Makefile for the common addition code.
 #
@@ -31,6 +31,8 @@ endif
 if1of ($(KBUILD_TARGET), freebsd os2 solaris)
  include $(PATH_SUB_CURRENT)/VBoxService/Makefile.kmk
 endif
+ifdef VBOX_WITH_CROGL
+include $(PATH_SUB_CURRENT)/crOpenGL/Makefile.kmk
+endif
 
 include	$(KBUILD_PATH)/subfooter.kmk
-
