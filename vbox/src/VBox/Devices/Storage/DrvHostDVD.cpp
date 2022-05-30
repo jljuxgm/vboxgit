@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 12511 2008-09-16 17:37:04Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 12515 2008-09-16 20:38:18Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -418,7 +418,6 @@ static int drvHostDvdSendCmd(PPDMIBLOCK pInterface, const uint8_t *pbCmd,
 #elif defined(RT_OS_LINUX)
     int direction;
     struct cdrom_generic_command cgc;
-    request_sense sense;
 
     switch (enmTxDir)
     {
