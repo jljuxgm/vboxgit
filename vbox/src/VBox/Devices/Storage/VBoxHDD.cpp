@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 16873 2009-02-17 19:07:37Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 16962 2009-02-20 00:07:46Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -686,7 +686,7 @@ out:
  *
  * @returns VBox status code.
  */
-VBOXDDU_DECL(int) VDInit()
+VBOXDDU_DECL(int) VDInit(void)
 {
     int rc = vdAddBackends(aStaticBackends, RT_ELEMENTS(aStaticBackends));
     if (RT_SUCCESS(rc))
@@ -700,7 +700,7 @@ VBOXDDU_DECL(int) VDInit()
  *
  * @returns VBox status code.
  */
-VBOXDDU_DECL(int) VDShutdown()
+VBOXDDU_DECL(int) VDShutdown(void)
 {
     PVBOXHDDBACKEND *pBackends = g_apBackends;
     unsigned cBackends = g_cBackends;
