@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 15807 2009-01-05 15:41:57Z vboxsync $ */
+/* $Id: DevVGA.cpp 15867 2009-01-08 14:25:02Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2104,11 +2104,9 @@ void vga_invalidate_scanlines(VGAState *s, int y1, int y2)
 static int vga_resize_graphic(VGAState *s, int cx, int cy, int v)
 {
     const unsigned cBits = s->get_bpp(s);
-    /** @todo r=sunlover: If the guest changes VBE_DISPI_INDEX_X_OFFSET, VBE_DISPI_INDEX_Y_OFFSET
-     *                    registers, then the third parameter of the following call should be
-     *                    probably 's->CTX_SUFF(vram_ptr) + s->vbe_start_addr'.
-     */
-    int rc = s->pDrv->pfnResize(s->pDrv, cBits, s->CTX_SUFF(vram_ptr), s->line_offset, cx, cy);
+
+    /* Take into account the programmed start address (in DWORDs) of the visible screen. */
+    int rc = s->pDrv->pfnResize(s->pDrv, cBits, s->CTX_SUFF(vram_ptr) + s->start_addr * 4, s->line_offset, cx, cy);
 
     /* last stuff */
     s->last_bpp = cBits;
