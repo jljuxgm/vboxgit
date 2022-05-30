@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 12241 2008-09-08 18:01:24Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 12413 2008-09-12 07:53:37Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -320,7 +320,7 @@ static int VBoxDrvSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t enmCmd)
              */
 #ifdef VBOX_WITH_HARDENING
             rc = ddi_create_priv_minor_node(pDip, DEVICE_NAME, S_IFCHR, instance, DDI_PSEUDO,
-                                            0, "all", "all", 0600);
+                                            0, "none", "none", 0600);
 #else
             rc = ddi_create_priv_minor_node(pDip, DEVICE_NAME, S_IFCHR, instance, DDI_PSEUDO,
                                             0, "none", "none", 0666);
