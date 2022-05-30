@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.h 9269 2008-05-31 14:53:24Z vboxsync $ */
+/* $Id: VBoxDbgGui.h 12180 2008-09-06 18:31:18Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -41,7 +41,7 @@
  */
 class VBoxDbgGui : public QObject
 {
-    Q_OBJECT
+    Q_OBJECT;
 
 public:
     /**
