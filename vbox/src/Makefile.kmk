@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13143 2008-10-09 21:14:31Z vboxsync $
+# $Id: Makefile.kmk 13230 2008-10-13 19:03:16Z vboxsync $
 ## @file
 # Top-level makefile for the src directory.
 #
@@ -72,7 +72,7 @@ else  # !VBOX_ONLY_ADDITIONS
  SUBDIRS = VBox/Runtime	bldprogs libs VBox 
 
  ifdef VBOX_WITH_NEW_RECOMPILER
-  SUBDIRS += recompiler_new
+   SUBDIRS += recompiler_new
  else
    SUBDIRS += recompiler
  endif

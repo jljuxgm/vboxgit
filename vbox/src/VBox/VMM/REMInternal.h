@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: REMInternal.h 13230 2008-10-13 19:03:16Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -242,11 +242,19 @@ typedef struct REM
     uint32_t                abPadding[HC_ARCH_BITS == 32 ? 0 : 4];
 #endif
 
+#ifdef VBOX_WITH_NEW_RECOMPILER
+#if GC_ARCH_BITS == 32
+#define REM_ENV_SIZE        (HC_ARCH_BITS == 32 ? 0xff00 : 0xff00)
+#else
+#define REM_ENV_SIZE        (HC_ARCH_BITS == 32 ? 0xff00 : 0xff00)
+#endif
+#else
 #if GC_ARCH_BITS == 32
 #define REM_ENV_SIZE        (HC_ARCH_BITS == 32 ? 0x6550 : 0xb4a0)
 #else
 #define REM_ENV_SIZE        (HC_ARCH_BITS == 32 ? 0x9440 : 0xd4a0)
 #endif
+#endif // VBOX_WITH_NEW_RECOMILER
 
     /** Recompiler CPU state. */
 #ifdef REM_INCLUDE_CPU_H

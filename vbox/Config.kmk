@@ -1,4 +1,4 @@
-# $Id: Config.kmk 13155 2008-10-10 08:07:41Z vboxsync $
+# $Id: Config.kmk 13230 2008-10-13 19:03:16Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1029,9 +1029,11 @@ ifdef VBOX_PATH_APP_DOCS
 endif
 ## @todo eliminate these guys.
 ifdef VBOX_WITH_INTERNAL_NETWORKING
-DEFS += VBOX_WITH_INTERNAL_NETWORKING
+ DEFS += VBOX_WITH_INTERNAL_NETWORKING
 endif
-
+ifdef VBOX_WITH_NEW_RECOMPILER
+ DEFS += VBOX_WITH_NEW_RECOMPILER
+endif
 
 #
 # Compiler optimization flags.
@@ -3554,7 +3556,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13155 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13230 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

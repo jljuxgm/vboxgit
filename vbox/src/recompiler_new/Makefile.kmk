@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13184 2008-10-10 17:04:38Z vboxsync $
+# $Id: Makefile.kmk 13230 2008-10-13 19:03:16Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -40,6 +40,9 @@ include $(KBUILD_PATH)/subheader.kmk
 REM_MOD              += VBoxREM
 DLLS                 += VBoxREM
 IMPORT_LIBS          += VBoxREMImp
+
+DEFS                 += VBOX_WITH_NEW_RECOMPILER
+
 
 OTHER_CLEAN          += \
 	$(PATH_$(REM_MOD))/op.h \
@@ -217,10 +220,6 @@ cpu-exec.c_CFLAGS.solaris.amd64 = -O2 -fomit-frame-pointer -fno-strict-aliasing
 # transitional rule
 $(PATH_$(REM_MOD))/op.h:
 	$(APPEND)    $@ ''
-
-translate-all.c_DEPS = 
-translate-op.c_DEPS = $(translate-all.c_DEPS)
-target-i386/translate.c_DEPS = $(translate-all.c_DEPS)
 
 #
 # The math testcase as a standalone program for testing and debugging purposes.
