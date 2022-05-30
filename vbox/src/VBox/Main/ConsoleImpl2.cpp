@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 15053 2008-12-05 17:38:57Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 15109 2008-12-08 13:55:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -852,8 +852,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 rc = CFGMR3InsertNode (pCfg, "VDConfig", &pVDC);                RC_CHECK();
                 for (size_t i = 0; i < names.size(); ++ i)
                 {
-                    rc = CFGMR3InsertString (pVDC, Utf8Str (names [i]),
-                                             Utf8Str (values [i]));             RC_CHECK();
+                    if (values [i])
+                        rc = CFGMR3InsertString (pVDC, Utf8Str (names [i]),
+                                                 Utf8Str (values [i]));             RC_CHECK();
                 }
             }
 

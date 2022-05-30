@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: HardDisk2Impl.cpp 15109 2008-12-08 13:55:37Z vboxsync $ */
 
 /** @file
  *
@@ -3134,7 +3134,7 @@ DECLCALLBACK(int) HardDisk2::vdConfigQuery (void *pvUser, const char *pszName,
     if (it->second.isNull())
         return VERR_CFGM_VALUE_NOT_FOUND;
 
-    memcpy (pszValue, value, value.length());
+    memcpy (pszValue, value, value.length() + 1);
 
     return VINF_SUCCESS;
 }
