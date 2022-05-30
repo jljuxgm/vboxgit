@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 15433 2008-12-13 10:48:49Z vboxsync $ */
+/* $Id: PGMInternal.h 15434 2008-12-13 11:37:45Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1338,6 +1338,9 @@ typedef PGMMAPSET *PPGMMAPSET;
 
 /** Hash function for aiHashTable. */
 #define PGMMAPSET_HASH(HCPhys)      (((HCPhys) >> PAGE_SHIFT) & 127)
+
+/** The max fill size (strict builds). */
+#define PGMMAPSET_MAX_FILL          (64U * 80U / 100U)
 
 
 /** @name Context neutrual page mapper TLB.
