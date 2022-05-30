@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 13910 2008-11-06 12:27:56Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 13983 2008-11-08 18:35:21Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -16,6 +16,7 @@
 #if defined(DEBUG_ramshankar) && !defined(LOG_ENABLED)
 # define LOG_ENABLED
 #endif
+
 #define LOG_GROUP LOG_GROUP_NET_FLT_DRV
 #include <VBox/log.h>
 #include <VBox/err.h>
@@ -904,8 +905,8 @@ static int VBoxNetFltSolarisModReadPut(queue_t *pQueue, mblk_t *pMsg)
                     {
                         vboxNetFltSolarisRecv(pThis, pStream, pQueue, pMsg);
                         pMsg = NULL;
-                        fSendUpstream = false;
                     }
+                    fSendUpstream = false;
                     break;
                 }
 
