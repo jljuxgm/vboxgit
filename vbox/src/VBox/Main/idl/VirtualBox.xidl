@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14356 2008-11-19 16:05:04Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14403 2008-11-20 12:14:52Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -4095,7 +4095,7 @@
           more than one callback at a time. If you have multiple
           IConsoleCallback instances registered on the given
           IConsole object, make sure you simply do nothing but
-          return@c S_OK from all but one of them that actually
+          return @c S_OK from all but one of them that actually
           manages console window activation.
         </note>
       </desc>
