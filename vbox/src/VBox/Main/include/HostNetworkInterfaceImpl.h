@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 15442 2008-12-13 13:40:42Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 15570 2008-12-16 10:39:34Z vboxsync $ */
 
 /** @file
  *
@@ -97,64 +97,6 @@ private:
     } m;
 
 };
-
-COM_DECL_READONLY_ENUM_AND_COLLECTION_BEGIN (HostNetworkInterface)
-
-    STDMETHOD(FindByName) (IN_BSTR name, IHostNetworkInterface **networkInterface)
-    {
-        if (!name)
-            return E_INVALIDARG;
-        if (!networkInterface)
-            return E_POINTER;
-
-        *networkInterface = NULL;
-        Vector::value_type found;
-        Vector::iterator it = vec.begin();
-        while (it != vec.end() && !found)
-        {
-            Bstr n;
-            (*it)->COMGETTER(Name) (n.asOutParam());
-            if (n == name)
-                found = *it;
-            ++ it;
-        }
-
-        if (!found)
-            return setError (E_INVALIDARG, HostNetworkInterfaceCollection::tr (
-                "The host network interface with the given name could not be found"));
-
-        return found.queryInterfaceTo (networkInterface);
-    }
-
-    STDMETHOD(FindById) (IN_GUID id, IHostNetworkInterface **networkInterface)
-    {
-        if (Guid(id).isEmpty())
-            return E_INVALIDARG;
-        if (!networkInterface)
-            return E_POINTER;
-
-        *networkInterface = NULL;
-        Vector::value_type found;
-        Vector::iterator it = vec.begin();
-        while (it != vec.end() && !found)
-        {
-            Guid g;
-            (*it)->COMGETTER(Id) (g.asOutParam());
-            if (g == Guid(id))
-                found = *it;
-            ++ it;
-        }
-
-        if (!found)
-            return setError (E_INVALIDARG, HostNetworkInterfaceCollection::tr (
-                "The host network interface with the given GUID could not be found"));
-
-        return found.queryInterfaceTo (networkInterface);
-    }
-
-
-COM_DECL_READONLY_ENUM_AND_COLLECTION_END (HostNetworkInterface)
-
 
 #endif // ____H_H_HOSTNETWORKINTERFACEIMPL
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

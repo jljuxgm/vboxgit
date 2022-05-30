@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: HostImpl.h 15570 2008-12-16 10:39:34Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -84,7 +84,7 @@ public:
     STDMETHOD(COMGETTER(FloppyDrives))(IHostFloppyDriveCollection **drives);
     STDMETHOD(COMGETTER(USBDevices))(IHostUSBDeviceCollection **aUSBDevices);
     STDMETHOD(COMGETTER(USBDeviceFilters))(IHostUSBDeviceFilterCollection ** aUSBDeviceFilters);
-    STDMETHOD(COMGETTER(NetworkInterfaces))(IHostNetworkInterfaceCollection **networkInterfaces);
+    STDMETHOD(COMGETTER(NetworkInterfaces))(ComSafeArrayOut (IHostNetworkInterface *, aNetworkInterfaces));
     STDMETHOD(COMGETTER(ProcessorCount))(ULONG *count);
     STDMETHOD(COMGETTER(ProcessorOnlineCount))(ULONG *count);
     STDMETHOD(GetProcessorSpeed)(ULONG cpuId, ULONG *speed);
