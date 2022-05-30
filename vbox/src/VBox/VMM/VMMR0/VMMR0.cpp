@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 13306 2008-10-15 21:17:04Z vboxsync $ */
+/* $Id: VMMR0.cpp 13517 2008-10-23 08:33:55Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -617,21 +617,31 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMMR0OPERATION enmOperation)
          *
          * Disable interrupts before we do anything interesting. On Windows we avoid
          * this by having the support driver raise the IRQL before calling us, this way
-         * we hope to get away we page faults and later calling into the kernel.
+         * we hope to get away with page faults and later calling into the kernel.
          */
         case VMMR0_DO_HWACC_RUN:
         {
+            int rc;
+
             STAM_COUNTER_INC(&pVM->vmm.s.StatRunGC);
 
 #ifndef RT_OS_WINDOWS /** @todo check other hosts */
             RTCCUINTREG uFlags = ASMIntDisableFlags();
 #endif
-            int rc = HWACCMR0Enter(pVM);
-            if (VBOX_SUCCESS(rc))
+            if (!HWACCMR0SuspendPending())
             {
-                rc = vmmR0CallHostSetJmp(&pVM->vmm.s.CallHostR0JmpBuf, HWACCMR0RunGuestCode, pVM); /* this may resume code. */
-                int rc2 = HWACCMR0Leave(pVM);
-                AssertRC(rc2);
+                rc = HWACCMR0Enter(pVM);
+                if (VBOX_SUCCESS(rc))
+                {
+                    rc = vmmR0CallHostSetJmp(&pVM->vmm.s.CallHostR0JmpBuf, HWACCMR0RunGuestCode, pVM); /* this may resume code. */
+                    int rc2 = HWACCMR0Leave(pVM);
+                    AssertRC(rc2);
+                }
+            }
+            else
+            {
+                /* System is about to go into suspend mode; go back to ring 3. */
+                rc = VINF_EM_RAW_INTERRUPT;
             }
             pVM->vmm.s.iLastGCRc = rc;
 #ifndef RT_OS_WINDOWS /** @todo check other hosts */
