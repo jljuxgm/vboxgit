@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15071 2008-12-07 16:42:49Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15072 2008-12-07 16:57:53Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3194,7 +3194,7 @@ static void vmxR0FlushVPID(PVM pVM, PVMCPU pVCpu, VMX_FLUSH enmFlush, RTGCPTR GC
 {
 #if HC_ARCH_BITS == 32
     /* If we get a flush in 64 bits guest mode, then force a full TLB flush. Invvpid probably takes only 32 bits addresses. (@todo) */
-    if (CPUMIsGuestInLongMode(pVM)
+    if (CPUMIsGuestInLongMode(pVM))
     {
         pVCpu->hwaccm.s.fForceTLBFlush = true;
     }

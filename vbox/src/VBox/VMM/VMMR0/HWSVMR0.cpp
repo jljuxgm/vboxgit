@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 15071 2008-12-07 16:42:49Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 15072 2008-12-07 16:57:53Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2249,7 +2249,7 @@ VMMR0DECL(int) SVMR0InvalidatePage(PVM pVM, PVMCPU pVCpu, RTGCPTR GCVirt)
         STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatFlushPageManual);
 #if HC_ARCH_BITS == 32
         /* If we get a flush in 64 bits guest mode, then force a full TLB flush. Invlpga takes only 32 bits addresses. */
-        if (CPUMIsGuestInLongMode(pVM)
+        if (CPUMIsGuestInLongMode(pVM))
             pVCpu->hwaccm.s.fForceTLBFlush = true;
         else
 #endif
