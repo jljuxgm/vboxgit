@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 15570 2008-12-16 10:39:34Z vboxsync $ */
+/* $Id: HostImpl.h 16198 2009-01-23 12:46:45Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -108,6 +108,9 @@ public:
     STDMETHOD(CreateUSBDeviceFilter) (IN_BSTR aName, IHostUSBDeviceFilter **aFilter);
     STDMETHOD(InsertUSBDeviceFilter) (ULONG aPosition, IHostUSBDeviceFilter *aFilter);
     STDMETHOD(RemoveUSBDeviceFilter) (ULONG aPosition, IHostUSBDeviceFilter **aFilter);
+
+    STDMETHOD(FindHostNetworkInterfaceByName) (IN_BSTR aName, IHostNetworkInterface **networkInterface);
+    STDMETHOD(FindHostNetworkInterfaceById) (IN_GUID id, IHostNetworkInterface **networkInterface);
 
     // public methods only for internal purposes
 
