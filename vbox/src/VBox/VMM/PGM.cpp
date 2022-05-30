@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 16801 2009-02-16 17:01:02Z vboxsync $ */
+/* $Id: PGM.cpp 16859 2009-02-17 16:19:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1505,8 +1505,6 @@ static int pgmR3InitPaging(PVM pVM)
         pVM->pgm.s.pShwPaePdptR3->a[i].u = X86_PDPE_P | PGM_PLXFLAGS_PERMANENT | pVM->pgm.s.aHCPhysPaePDs[i];
         /* The flags will be corrected when entering and leaving long mode. */
     }
-
-    CPUMSetHyperCR3(pVM, (uint32_t)pVM->pgm.s.HCPhysShw32BitPD);
 #endif
 
     /*

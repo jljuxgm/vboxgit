@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 16376 2009-01-29 16:46:31Z vboxsync $ */
+/* $Id: PGMShw.h 16859 2009-02-17 16:19:51Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -194,6 +194,11 @@ PGM_SHW_DECL(int, Enter)(PVM pVM)
 # endif
     pVM->pgm.s.HCPhysShwCR3 = pVM->pgm.s.HCPhysShwNestedRoot;
 #endif
+
+#ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
+    CPUMSetHyperCR3(pVM, PGMGetHyperCR3(pVM));
+#endif
+
     return VINF_SUCCESS;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 15416 2008-12-13 05:31:06Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 16859 2009-02-17 16:19:51Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -125,6 +125,16 @@ VMMDECL(void) CPUMSetHyperIDTR(PVM pVM, uint32_t addr, uint16_t limit)
 VMMDECL(void) CPUMSetHyperCR3(PVM pVM, uint32_t cr3)
 {
     pVM->cpum.s.Hyper.cr3 = cr3;
+
+#ifdef IN_RC
+    /* Update the current CR3. */
+    ASMSetCR3(cr3);
+#endif
+}
+
+VMMDECL(uint32_t) CPUMGetHyperCR3(PVM pVM)
+{
+    return pVM->cpum.s.Hyper.cr3;
 }
 
 

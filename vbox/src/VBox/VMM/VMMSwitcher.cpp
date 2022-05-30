@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 16847 2009-02-17 14:45:25Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 16859 2009-02-17 16:19:51Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -461,27 +461,6 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, RTR
             {
 
                 *uSrc.pu32 = PGMGetInterAmd64CR3(pVM);
-                break;
-            }
-
-#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
-            /* @todo No need for three GetHyper calls; one and the same base is used */
-#endif
-            /*
-             * Store the 32-Bit CR3 (32-bit) for the hypervisor (shadow) memory context.
-             */
-            case FIX_HYPER_32BIT_CR3:
-            {
-                *uSrc.pu32 = PGMGetHyper32BitCR3(pVM);
-                break;
-            }
-
-            /*
-             * Store the PAE CR3 (32-bit) for the hypervisor (shadow) memory context.
-             */
-            case FIX_HYPER_PAE_CR3:
-            {
-                *uSrc.pu32 = PGMGetHyperPaeCR3(pVM);
                 break;
             }
 
