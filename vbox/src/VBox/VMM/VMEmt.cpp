@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: VMEmt.cpp 13059 2008-10-07 19:23:17Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -68,7 +68,7 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
      * The request loop.
      */
     int     rc = VINF_SUCCESS;
-    VMSTATE enmBefore = VMSTATE_CREATING;
+    volatile VMSTATE enmBefore = VMSTATE_CREATING; /* volatile because of setjmp */
     Log(("vmR3EmulationThread: Emulation thread starting the days work... Thread=%#x pUVM=%p\n", ThreadSelf, pUVM));
     for (;;)
     {
