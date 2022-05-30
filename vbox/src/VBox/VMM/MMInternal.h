@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 12968 2008-10-03 00:16:13Z vboxsync $ */
+/* $Id: MMInternal.h 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -29,10 +29,6 @@
 #include <iprt/avl.h>
 #include <iprt/critsect.h>
 
-
-#if !defined(IN_MM_R3) && !defined(IN_MM_R0) && !defined(IN_MM_GC)
-# error "Not in MM! This is an internal header!"
-#endif
 
 
 /** @defgroup grp_mm_int   Internals
@@ -774,7 +770,7 @@ void mmR3PhysRomReset(PVM pVM);
  * @param   pv      The address to convert.
  * @thread  The Emulation Thread.
  */
-MMDECL(RTHCPHYS) mmPagePoolPtr2Phys(PMMPAGEPOOL pPool, void *pv);
+VMMDECL(RTHCPHYS) mmPagePoolPtr2Phys(PMMPAGEPOOL pPool, void *pv);
 
 /**
  * Converts a pool physical address to a linear address.
@@ -786,7 +782,7 @@ MMDECL(RTHCPHYS) mmPagePoolPtr2Phys(PMMPAGEPOOL pPool, void *pv);
  * @param   HCPhys      The address to convert.
  * @thread  The Emulation Thread.
  */
-MMDECL(void *) mmPagePoolPhys2Ptr(PMMPAGEPOOL pPool, RTHCPHYS HCPhys);
+VMMDECL(void *) mmPagePoolPhys2Ptr(PMMPAGEPOOL pPool, RTHCPHYS HCPhys);
 
 __END_DECLS
 

@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 10471 2008-07-10 13:45:02Z vboxsync $ */
+/* $Id: PGMR0.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -57,7 +57,7 @@ __END_DECLS
  *
  * @remarks Must be called from within the PGM critical section.
  */
-PGMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM)
+VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM)
 {
     return VERR_NOT_IMPLEMENTED;
 }
@@ -73,7 +73,7 @@ PGMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM)
  * @param   pRegFrame           Trap register frame.
  * @param   pvFault             The fault address.
  */
-PGMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PGMMODE enmShwPagingMode, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPHYS pvFault)
+VMMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PGMMODE enmShwPagingMode, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPHYS pvFault)
 {
     int rc;
 
@@ -127,7 +127,7 @@ PGMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PGMMODE enmShwPagingMode,
     /*
      * Call the worker.
      *
-     * We pretend the guest is in protected mode without paging, so we can use existing code to build the 
+     * We pretend the guest is in protected mode without paging, so we can use existing code to build the
      * nested page tables.
      */
     switch(enmShwPagingMode)

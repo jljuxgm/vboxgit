@@ -1,4 +1,4 @@
-; $Id: CPUMGCA.asm 12657 2008-09-22 18:29:06Z vboxsync $
+; $Id: CPUMGCA.asm 12989 2008-10-06 02:15:39Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -142,7 +142,7 @@ ENDPROC CPUMGCRestoreInt
 ;
 ; @remark This call never returns!
 ;
-; CPUMGCDECL(void) CPUMGCCallGuestTrapHandler(PCPUMCTXCORE pRegFrame, uint32_t selCS, RTGCPTR pHandler, uint32_t eflags, uint32_t selSS, RTGCPTR pEsp);
+; VMMRCDECL(void) CPUMGCCallGuestTrapHandler(PCPUMCTXCORE pRegFrame, uint32_t selCS, RTGCPTR pHandler, uint32_t eflags, uint32_t selSS, RTGCPTR pEsp);
 align 16
 BEGINPROC_EXPORTED CPUMGCCallGuestTrapHandler
     mov     ebp, esp
@@ -197,7 +197,7 @@ ENDPROC CPUMGCCallGuestTrapHandler
 ;
 ; This function does not return!
 ;
-;CPUMGCDECL(void) CPUMGCCallV86Code(PCPUMCTXCORE pRegFrame);
+;VMMRCDECL(void) CPUMGCCallV86Code(PCPUMCTXCORE pRegFrame);
 align 16
 BEGINPROC CPUMGCCallV86Code
     mov     ebp, [esp + 4]                  ; pRegFrame

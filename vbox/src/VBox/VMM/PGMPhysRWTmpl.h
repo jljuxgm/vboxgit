@@ -1,4 +1,4 @@
-/* $Id: PGMPhysRWTmpl.h 8635 2008-05-06 17:22:43Z vboxsync $ */
+/* $Id: PGMPhysRWTmpl.h 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Access Template.
  */
@@ -29,7 +29,7 @@
  * @param   pVM             VM Handle.
  * @param   GCPhys          Physical address start reading from.
  */
-PGMDECL(PGMPHYS_DATATYPE) PGMPHYSFN_READNAME(PVM pVM, RTGCPHYS GCPhys)
+VMMDECL(PGMPHYS_DATATYPE) PGMPHYSFN_READNAME(PVM pVM, RTGCPHYS GCPhys)
 {
     uint32_t iCacheIndex;
 
@@ -71,7 +71,7 @@ PGMDECL(PGMPHYS_DATATYPE) PGMPHYSFN_READNAME(PVM pVM, RTGCPHYS GCPhys)
  * @param   GCPhys          Physical address to write to.
  * @param   val             What to write.
  */
-PGMDECL(void) PGMPHYSFN_WRITENAME(PVM pVM, RTGCPHYS GCPhys, PGMPHYS_DATATYPE val)
+VMMDECL(void) PGMPHYSFN_WRITENAME(PVM pVM, RTGCPHYS GCPhys, PGMPHYS_DATATYPE val)
 {
     uint32_t iCacheIndex;
 

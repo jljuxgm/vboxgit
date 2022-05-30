@@ -1,4 +1,4 @@
-/* $Id: IOMGC.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: IOMGC.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -67,7 +67,7 @@
  * @param   pRegFrame   Pointer to CPUMCTXCORE guest registers structure.
  * @param   pCpu        Disassembler CPU state.
  */
-IOMGCDECL(int) IOMGCIOPortHandler(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu)
+VMMRCDECL(int) IOMGCIOPortHandler(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu)
 {
     switch (pCpu->pCurInstr->opcode)
     {

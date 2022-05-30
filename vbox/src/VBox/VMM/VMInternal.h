@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VMInternal.h 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -26,9 +26,6 @@
 #include <VBox/vmapi.h>
 #include <setjmp.h>
 
-#if !defined(IN_VM_R3) && !defined(IN_VM_R0) && !defined(IN_VM_GC)
-# error "Not in VM! This is an internal header!"
-#endif
 
 
 /** @defgroup grp_vm_int   Internals

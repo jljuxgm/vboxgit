@@ -1,4 +1,4 @@
-/* $Id: CPUMStack.cpp 12897 2008-10-02 08:09:23Z vboxsync $ */
+/* $Id: CPUMStack.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Stack manipulation.
  */
@@ -34,7 +34,7 @@
 #endif
 
 
-CPUMDECL(void) CPUMPushHyper(PVM pVM, uint32_t u32)
+VMMDECL(void) CPUMPushHyper(PVM pVM, uint32_t u32)
 {
     /* ASSUME always on flat stack within hypervisor memory for now */
     pVM->cpum.s.Hyper.esp -= sizeof(u32);

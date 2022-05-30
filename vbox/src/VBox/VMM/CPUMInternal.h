@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 12659 2008-09-22 23:18:19Z vboxsync $ */
+/* $Id: CPUMInternal.h 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -26,10 +26,6 @@
 #include <VBox/types.h>
 #include <VBox/x86.h>
 
-
-#if !defined(IN_CPUM_R3) && !defined(IN_CPUM_R0) && !defined(IN_CPUM_GC)
-# error "Not in CPUM! This is an internal header!"
-#endif
 
 
 /** @defgroup grp_cpum_int   Internals

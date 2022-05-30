@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 12653 2008-09-22 16:03:25Z vboxsync $ */
+/* $Id: REMInternal.h 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -32,9 +32,6 @@
 #endif
 
 
-#if !defined(IN_REM_R3) && !defined(IN_REM_R0) && !defined(IN_REM_GC)
-# error "Not in REM! This is an internal header!"
-#endif
 
 /** @defgroup grp_rem_int   Internals
  * @ingroup grp_rem

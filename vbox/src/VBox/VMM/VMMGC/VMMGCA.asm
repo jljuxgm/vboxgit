@@ -1,4 +1,4 @@
-; $Id: VMMGCA.asm 8155 2008-04-18 15:16:47Z vboxsync $
+; $Id: VMMGCA.asm 12989 2008-10-06 02:15:39Z vboxsync $
 ;; @file
 ; VMMGC - Guest Context Virtual Machine Monitor assembly routines.
 ;
@@ -61,7 +61,7 @@ BEGINCODE
 ;/**
 ; * Internal GC logger worker: Logger wrapper.
 ; */
-;VMMGCDECL(void) vmmGCLoggerWrapper(const char *pszFormat, ...);
+;VMMRCDECL(void) vmmGCLoggerWrapper(const char *pszFormat, ...);
 EXPORTEDNAME vmmGCLoggerWrapper
 %ifdef __YASM__
 %ifdef ASM_FORMAT_ELF
@@ -81,7 +81,7 @@ ENDPROC vmmGCLoggerWrapper
 ;/**
 ; * Internal GC logger worker: Logger (release) wrapper.
 ; */
-;VMMGCDECL(void) vmmGCRelLoggerWrapper(const char *pszFormat, ...);
+;VMMRCDECL(void) vmmGCRelLoggerWrapper(const char *pszFormat, ...);
 EXPORTEDNAME vmmGCRelLoggerWrapper
 %ifdef __YASM__
 %ifdef ASM_FORMAT_ELF

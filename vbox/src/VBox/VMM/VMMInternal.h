@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 12837 2008-09-30 15:34:05Z vboxsync $ */
+/* $Id: VMMInternal.h 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -28,7 +28,7 @@
 #include <iprt/critsect.h>
 
 
-#if !defined(IN_VMM_R3) && !defined(IN_VMM_R0) && !defined(IN_VMM_GC)
+#if !defined(IN_VMM_R3) && !defined(IN_VMM_R0) && !defined(IN_VMM_RC)
 # error "Not in VMM! This is an internal header!"
 #endif
 
@@ -465,12 +465,12 @@ VMMR0DECL(void) vmmR0LoggerFlush(PRTLOGGER pLogger);
 /**
  * Internal GC logger worker: Logger wrapper.
  */
-VMMGCDECL(void) vmmGCLoggerWrapper(const char *pszFormat, ...);
+VMMRCDECL(void) vmmGCLoggerWrapper(const char *pszFormat, ...);
 
 /**
  * Internal GC release logger worker: Logger wrapper.
  */
-VMMGCDECL(void) vmmGCRelLoggerWrapper(const char *pszFormat, ...);
+VMMRCDECL(void) vmmGCRelLoggerWrapper(const char *pszFormat, ...);
 
 /**
  * Internal GC logger worker: Flush logger.
@@ -479,7 +479,7 @@ VMMGCDECL(void) vmmGCRelLoggerWrapper(const char *pszFormat, ...);
  * @param   pLogger     The logger instance to flush.
  * @remark  This function must be exported!
  */
-VMMGCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger);
+VMMRCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger);
 
 /** @name Trap testcases and related labels.
  * @{ */

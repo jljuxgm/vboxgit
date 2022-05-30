@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 12677 2008-09-24 07:19:03Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -56,7 +56,7 @@ DECLINLINE(bool) dbgfR3IsHMA(PVM pVM, RTGCUINTPTR FlatPtr)
  * @param   Sel         The selector part.
  * @param   off         The offset part.
  */
-DBGFR3DECL(int) DBGFR3AddrFromSelOff(PVM pVM, PDBGFADDRESS pAddress, RTSEL Sel, RTUINTPTR off)
+VMMR3DECL(int) DBGFR3AddrFromSelOff(PVM pVM, PDBGFADDRESS pAddress, RTSEL Sel, RTUINTPTR off)
 {
     pAddress->Sel = Sel;
     pAddress->off = off;
@@ -112,7 +112,7 @@ DBGFR3DECL(int) DBGFR3AddrFromSelOff(PVM pVM, PDBGFADDRESS pAddress, RTSEL Sel, 
  * @param   pAddress    Where to store the mixed address.
  * @param   FlatPtr     The flat pointer.
  */
-DBGFR3DECL(PDBGFADDRESS) DBGFR3AddrFromFlat(PVM pVM, PDBGFADDRESS pAddress, RTGCUINTPTR FlatPtr)
+VMMR3DECL(PDBGFADDRESS) DBGFR3AddrFromFlat(PVM pVM, PDBGFADDRESS pAddress, RTGCUINTPTR FlatPtr)
 {
     pAddress->Sel     = DBGF_SEL_FLAT;
     pAddress->off     = FlatPtr;
@@ -131,7 +131,7 @@ DBGFR3DECL(PDBGFADDRESS) DBGFR3AddrFromFlat(PVM pVM, PDBGFADDRESS pAddress, RTGC
  * @param   pAddress    Where to store the mixed address.
  * @param   PhysAddr    The guest physical address.
  */
-DBGFR3DECL(void) DBGFR3AddrFromPhys(PVM pVM, PDBGFADDRESS pAddress, RTGCPHYS PhysAddr)
+VMMR3DECL(void) DBGFR3AddrFromPhys(PVM pVM, PDBGFADDRESS pAddress, RTGCPHYS PhysAddr)
 {
     pAddress->Sel     = DBGF_SEL_FLAT;
     pAddress->off     = PhysAddr;
@@ -148,7 +148,7 @@ DBGFR3DECL(void) DBGFR3AddrFromPhys(PVM pVM, PDBGFADDRESS pAddress, RTGCPHYS Phy
  * @param   pVM         The VM handle.
  * @param   pAddress    The address to validate.
  */
-DBGFR3DECL(bool) DBGFR3AddrIsValid(PVM pVM, PCDBGFADDRESS pAddress)
+VMMR3DECL(bool) DBGFR3AddrIsValid(PVM pVM, PCDBGFADDRESS pAddress)
 {
     if (!VALID_PTR(pAddress))
         return false;

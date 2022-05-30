@@ -1,4 +1,4 @@
-/* $Id: TMAllReal.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: TMAllReal.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Real Time, All Contexts.
  */
@@ -36,7 +36,7 @@
  * @returns Real time.
  * @param   pVM             The VM handle.
  */
-TMDECL(uint64_t) TMRealGet(PVM pVM)
+VMMDECL(uint64_t) TMRealGet(PVM pVM)
 {
     return RTTimeMilliTS();
 }
@@ -48,7 +48,7 @@ TMDECL(uint64_t) TMRealGet(PVM pVM)
  * @returns frequency.
  * @param   pVM             The VM handle.
  */
-TMDECL(uint64_t) TMRealGetFreq(PVM pVM)
+VMMDECL(uint64_t) TMRealGetFreq(PVM pVM)
 {
     return TMCLOCK_FREQ_REAL;
 }

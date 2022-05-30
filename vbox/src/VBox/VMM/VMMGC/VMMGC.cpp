@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 10804 2008-07-22 09:42:40Z vboxsync $ */
+/* $Id: VMMGC.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * VMM - Guest Context.
  */
@@ -61,7 +61,7 @@ static DECLCALLBACK(int) vmmGCTestTmpPFHandlerCorruptFS(PVM pVM, PCPUMCTXCORE pR
  * @param   uOperation  Which operation to execute (VMMGCOPERATION).
  * @param   uArg        Argument to that operation.
  */
-VMMGCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
+VMMRCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
 {
     /* todo */
     switch (uOperation)
@@ -167,7 +167,7 @@ VMMGCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
  * @param   pLogger     The logger instance to flush.
  * @remark  This function must be exported!
  */
-VMMGCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger)
+VMMRCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger)
 {
     PVM pVM = &g_VM;
     NOREF(pLogger);
@@ -181,7 +181,7 @@ VMMGCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger)
  * @param   pVM         The VM handle.
  * @param   rc          The status code.
  */
-VMMGCDECL(void) VMMGCGuestToHost(PVM pVM, int rc)
+VMMRCDECL(void) VMMGCGuestToHost(PVM pVM, int rc)
 {
     pVM->vmm.s.pfnGCGuestToHost(rc);
 }
@@ -195,7 +195,7 @@ VMMGCDECL(void) VMMGCGuestToHost(PVM pVM, int rc)
  * @param   enmOperation    The operation.
  * @param   uArg            The argument to the operation.
  */
-VMMGCDECL(int) VMMGCCallHost(PVM pVM, VMMCALLHOST enmOperation, uint64_t uArg)
+VMMRCDECL(int) VMMGCCallHost(PVM pVM, VMMCALLHOST enmOperation, uint64_t uArg)
 {
 /** @todo profile this! */
     pVM->vmm.s.enmCallHostOperation = enmOperation;

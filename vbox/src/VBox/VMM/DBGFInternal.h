@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 12875 2008-10-01 20:09:41Z vboxsync $ */
+/* $Id: DBGFInternal.h 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -30,10 +30,6 @@
 #include <iprt/avl.h>
 #include <VBox/dbgf.h>
 
-
-#if !defined(IN_DBGF_R3) && !defined(IN_DBGF_R0) && !defined(IN_DBGF_GC)
-# error "Not in DBGF! This is an internal header!"
-#endif
 
 
 /** @defgroup grp_dbgf_int   Internals

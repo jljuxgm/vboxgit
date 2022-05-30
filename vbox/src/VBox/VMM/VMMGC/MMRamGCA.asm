@@ -1,4 +1,4 @@
-; $Id: MMRamGCA.asm 8155 2008-04-18 15:16:47Z vboxsync $
+; $Id: MMRamGCA.asm 12989 2008-10-06 02:15:39Z vboxsync $
 ;; @file
 ; MMRamGCA - Guest Context Ram access Assembly Routines.
 ;
@@ -33,7 +33,7 @@ BEGINCODE
 
 ;;
 ; Read data in guest context, CDECL calling conv.
-; MMGCDECL(int) MMGCRamRead(void *pDst, void *pSrc, size_t cb);
+; VMMRCDECL(int) MMGCRamRead(void *pDst, void *pSrc, size_t cb);
 ; MMRamGC page fault handler must be installed prior this call for safe operation.
 ;
 ; @returns eax=0 if data read, other code - invalid access, #PF was generated.
@@ -105,7 +105,7 @@ ENDPROC     MMGCRamReadNoTrapHandler
 
 ;;
 ; Write data in guest context, CDECL calling conv.
-; MMGCDECL(int) MMGCRamWrite(void *pDst, void *pSrc, size_t cb);
+; VMMRCDECL(int) MMGCRamWrite(void *pDst, void *pSrc, size_t cb);
 ;
 ; @returns eax=0 if data written, other code - invalid access, #PF was generated.
 ; @param    [esp + 04h]    Param 1 - Pointer where to write data (pDst).

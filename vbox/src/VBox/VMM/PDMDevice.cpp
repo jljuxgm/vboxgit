@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 12984 2008-10-04 23:20:58Z vboxsync $ */
+/* $Id: PDMDevice.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -787,7 +787,7 @@ int pdmR3DevFindLun(PVM pVM, const char *pszDevice, unsigned iInstance, unsigned
  * @param   ppBase          Where to store the base interface pointer. Optional.
  * @thread  EMT
  */
-PDMR3DECL(int) PDMR3DeviceAttach(PVM pVM, const char *pszDevice, unsigned iInstance, unsigned iLun, PPDMIBASE *ppBase)
+VMMR3DECL(int) PDMR3DeviceAttach(PVM pVM, const char *pszDevice, unsigned iInstance, unsigned iLun, PPDMIBASE *ppBase)
 {
     VM_ASSERT_EMT(pVM);
     LogFlow(("PDMR3DeviceAttach: pszDevice=%p:{%s} iInstance=%d iLun=%d ppBase=%p\n",
@@ -843,7 +843,7 @@ PDMR3DECL(int) PDMR3DeviceAttach(PVM pVM, const char *pszDevice, unsigned iInsta
  * @param   iLun            The Logical Unit to obtain the interface of.
  * @thread  EMT
  */
-PDMR3DECL(int) PDMR3DeviceDetach(PVM pVM, const char *pszDevice, unsigned iInstance, unsigned iLun)
+VMMR3DECL(int) PDMR3DeviceDetach(PVM pVM, const char *pszDevice, unsigned iInstance, unsigned iLun)
 {
     VM_ASSERT_EMT(pVM);
     LogFlow(("PDMR3DeviceDetach: pszDevice=%p:{%s} iInstance=%d iLun=%d\n",

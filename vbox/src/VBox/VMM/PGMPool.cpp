@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 12975 2008-10-03 22:22:37Z vboxsync $ */
+/* $Id: PGMPool.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -420,7 +420,7 @@ void pgmR3PoolReset(PVM pVM)
  * @returns VBox status code.
  * @param   pVM     The VM handle.
  */
-PDMR3DECL(int) PGMR3PoolGrow(PVM pVM)
+VMMR3DECL(int) PGMR3PoolGrow(PVM pVM)
 {
     PPGMPOOL pPool = pVM->pgm.s.pPoolHC;
     AssertReturn(pPool->cCurPages < pPool->cMaxPages, VERR_INTERNAL_ERROR);
