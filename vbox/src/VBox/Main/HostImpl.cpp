@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 14942 2008-12-03 13:36:42Z vboxsync $ */
+/* $Id: HostImpl.cpp 14953 2008-12-03 15:47:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -576,8 +576,8 @@ static bool IsTAPDevice(const char *guid)
 
                 if (   !strcmp(szNetCfgInstanceId, guid)
                     && !strcmp(szNetProductName, "VirtualBox TAP Adapter")
-                    && (   !strcmp(szNetProviderName, "innotek GmbH")
-                        || !strcmp(szNetProviderName, "Sun Microsystems, Inc.")))
+                    && (   (!strcmp(szNetProviderName, "innotek GmbH"))
+                        || (!strcmp(szNetProviderName, "Sun Microsystems, Inc."))))
                 {
                     ret = true;
                     RegCloseKey(hNetCardGUID);
