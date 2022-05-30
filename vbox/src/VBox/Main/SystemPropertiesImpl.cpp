@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 16081 2009-01-20 11:21:43Z vboxsync $ */
 
 /** @file
  *
@@ -617,7 +617,7 @@ ComObjPtr <HardDiskFormat> SystemProperties::hardDiskFormat (CBSTR aFormat)
     {
         /* HardDiskFormat is all const, no need to lock */
 
-        if ((*it)->id() == aFormat)
+        if ((*it)->id().compareIgnoreCase (aFormat) == 0)
         {
             format = *it;
             break;
