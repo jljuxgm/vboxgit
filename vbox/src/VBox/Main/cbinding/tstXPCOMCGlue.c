@@ -1,4 +1,4 @@
-/* $Revision: 17737 $ */
+/* $Revision: 17813 $ */
 /** @file tstXPCOMCGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -318,7 +318,7 @@ int main(int argc, char **argv)
      * when done.
      */
 
-    if (VBoxCGlueInit(NULL) != 0)
+    if (VBoxCGlueInit() != 0)
     {
         fprintf(stderr, "%s: FATAL: VBoxCGlueInit failed: %s\n",
                 argv[0], g_szVBoxErrMsg);

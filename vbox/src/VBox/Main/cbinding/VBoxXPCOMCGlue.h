@@ -1,4 +1,4 @@
-/* $Revision: 17793 $ */
+/* $Revision: 17813 $ */
 /** @file VBoxXPCOMCGlue.h
  * Glue for dynamically linking with VBoxXPCOMC.
  */
@@ -47,7 +47,7 @@ extern PCVBOXXPCOM g_pVBoxFuncs;
 extern PFNVBOXGETXPCOMCFUNCTIONS g_pfnGetFunctions;
 
 
-int VBoxCGlueInit(const char *pszMsgPrefix);
+int VBoxCGlueInit(void);
 void VBoxCGlueTerm(void);
 
 
