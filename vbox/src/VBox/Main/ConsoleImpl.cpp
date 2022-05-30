@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 13580 2008-10-27 14:04:18Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 13690 2008-10-30 21:09:50Z vboxsync $ */
 
 /** @file
  *
@@ -5817,7 +5817,8 @@ HRESULT Console::callTapSetupApplication(bool isStatic, RTFILE tapFD, Bstr &tapD
  */
 HRESULT Console::attachToHostInterface(INetworkAdapter *networkAdapter)
 {
-#if !defined(RT_OS_LINUX)
+//#if !defined(RT_OS_LINUX)
+#if 1
     /*
      * Nothing to do here.
      *
@@ -6004,7 +6005,8 @@ HRESULT Console::attachToHostInterface(INetworkAdapter *networkAdapter)
  */
 HRESULT Console::detachFromHostInterface(INetworkAdapter *networkAdapter)
 {
-#if !defined(RT_OS_LINUX)
+//#if !defined(RT_OS_LINUX)
+#if 1
 
     /*
      * Nothing to do here.
