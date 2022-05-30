@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 16413 2009-01-30 13:29:42Z vboxsync $ */
+/* $Id: PGMMap.cpp 16840 2009-02-17 13:26:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -928,7 +928,7 @@ static void pgmR3MapClearPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iOldPDE)
     unsigned i = pMap->cPTs;
 
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
-    pgmMapClearShadowPDEs(pVM, pMap, iOldPDE);
+    pgmMapClearShadowPDEs(pVM, pVM->pgm.s.CTX_SUFF(pShwPageCR3), pMap, iOldPDE);
 #endif
 
     iOldPDE += i;
