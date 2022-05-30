@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 17737 2009-03-12 12:20:25Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 17759 2009-03-12 15:57:18Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -330,20 +330,12 @@ int handleList(HandlerArg *a)
                 networkInterface->COMGETTER(DhcpEnabled)(&bDhcpEnabled);
                 RTPrintf("Dhcp:            %s\n", bDhcpEnabled ? "Enabled" : "Disabled");
 
-                ULONG IPAddress;
-                networkInterface->COMGETTER(IPAddress)(&IPAddress);
-                RTPrintf("IPAddress:       %d.%d.%d.%d\n",
-                        ((uint8_t*)&IPAddress)[0],
-                        ((uint8_t*)&IPAddress)[1],
-                        ((uint8_t*)&IPAddress)[2],
-                        ((uint8_t*)&IPAddress)[3]);
-                ULONG NetworkMask;
-                networkInterface->COMGETTER(NetworkMask)(&NetworkMask);
-                RTPrintf("NetworkMask:     %d.%d.%d.%d\n",
-                        ((uint8_t*)&NetworkMask)[0],
-                        ((uint8_t*)&NetworkMask)[1],
-                        ((uint8_t*)&NetworkMask)[2],
-                        ((uint8_t*)&NetworkMask)[3]);
+                Bstr IPAddress;
+                networkInterface->COMGETTER(IPAddress)(IPAddress.asOutParam());
+                RTPrintf("IPAddress:       %lS\n", IPAddress.raw());
+                Bstr NetworkMask;
+                networkInterface->COMGETTER(NetworkMask)(NetworkMask.asOutParam());
+                RTPrintf("NetworkMask:     %lS\n", NetworkMask.raw());
                 Bstr IPV6Address;
                 networkInterface->COMGETTER(IPV6Address)(IPV6Address.asOutParam());
                 RTPrintf("IPV6Address:     %lS\n", IPV6Address.raw());
