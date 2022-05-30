@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17744 2009-03-12 13:24:31Z vboxsync $
+# $Id: Makefile.kmk 17748 2009-03-12 13:41:28Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -663,6 +663,7 @@ RuntimeGuestR3_SOURCES.$(KBUILD_HOST).$(KBUILD_TARGET_ARCH)   := $(RuntimeR3_SOU
 #
 RuntimeGuestR3Shared_TEMPLATE           := VBOXGUESTR3DLL
 RuntimeGuestR3Shared_EXTENDS            := RuntimeGuestR3
+RuntimeGuestR3Shared_INST                = $(INST_ADDITIONS_LIB)
 
 
 #
