@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13363 2008-10-17 07:41:23Z vboxsync $
+# $Id: Makefile.kmk 13625 2008-10-28 15:11:59Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -104,7 +104,7 @@ endif
 VBOX_LNX_STRIP_BIN = \
 	VBoxDD.so \
 	VBoxDD2.so \
-	$(if $(VBOX_WITH_FFMPEG),VBoxFFmpegFB.so,) \
+	$(if $(VBOX_WITH_FFMPEG),VBoxFFmpegFB.so VBoxFFmpeg.so,) \
 	VBoxManage \
 	VBoxREM.so \
 	VBoxRT.so \
