@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17696 2009-03-11 13:49:24Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17699 2009-03-11 15:14:04Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2906,6 +2906,10 @@ DECLCALLBACK(int) Appliance::taskThreadWriteOVF(RTTHREAD aThread, void *pvUser)
                 HRESULT rc2 = setError(vrc, pcsz);
                 throw rc2;
             }
+
+            /* Make sure the target disk get detached */
+            rc = pTargetDisk->Close();
+            if (FAILED(rc)) throw rc;
 
             // we need the capacity and actual file size for the XML
             uint64_t cbFile = 12345678; // @todo
