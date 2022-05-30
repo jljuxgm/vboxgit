@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 15776 2009-01-01 20:35:32Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 16044 2009-01-19 12:47:22Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -938,6 +938,10 @@ int getUSBDeviceInfoFromHal(USBDeviceInfoList *pList, bool *pfSuccess)
     {
         rc = halFindDeviceStringMatch (dbusConnection.get(), "info.subsystem",
                                        "usb_device", &replyFind);
+        if (RT_SUCCESS(rc) && !replyFind)  /* "Old" syntax. */
+            rc = halFindDeviceStringMatch (dbusConnection.get(),
+                                           "linux.subsystem", "usb_device",
+                                           &replyFind);
         if (!replyFind)
             halSuccess = false;
     }
