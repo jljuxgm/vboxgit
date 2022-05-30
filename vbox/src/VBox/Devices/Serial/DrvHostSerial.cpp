@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 12351 2008-09-10 13:00:40Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 12352 2008-09-10 13:01:49Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -555,8 +555,8 @@ static DECLCALLBACK(int) drvHostSerialRecvThread(PPDMDRVINS pDrvIns, PPDMTHREAD 
     DWORD dwRet = WaitForSingleObject(pThis->hHaltEventSem, 0)
 
     HANDLE ahWait[2];
-    haWait[0] = pThis->hEventRecv;
-    haWait[1] = pThis->hHaltEventSem;
+    aWait[0] = pThis->hEventRecv;
+    aWait[1] = pThis->hHaltEventSem;
 #endif
 
     while (pThread->enmState == PDMTHREADSTATE_RUNNING)
