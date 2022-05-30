@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 13161 2008-10-10 11:01:14Z vboxsync $ */
+/* $Id: EMAll.cpp 13193 2008-10-13 06:30:04Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2641,7 +2641,7 @@ VMMDECL(int) EMInterpretWrmsr(PVM pVM, PCPUMCTXCORE pRegFrame)
     if (!(u32Features & X86_CPUID_FEATURE_EDX_MSR))
         return VERR_EM_INTERPRETER; /* not supported */
 
-    val = (uint64_t)pRegFrame->eax | ((uint64_t)pRegFrame->edx << 32ULL);
+    val = RT_MAKE_U64(pRegFrame->eax, pRegFrame->edx);
     Log(("EMInterpretWrmsr %s (%x) val=%VX64\n", emMSRtoString(pRegFrame->ecx), pRegFrame->ecx, val));
     switch (pRegFrame->ecx)
     {
