@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13181 2008-10-10 15:48:26Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13182 2008-10-10 15:54:54Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2056,6 +2056,8 @@ ResumeExecution:
                      * Forward the trap to the guest by injecting the exception and resuming execution.
                      */
                     Log(("Guest page fault at %VGv cr2=%VGv error code %x rsp=%VGv\n", (RTGCPTR)pCtx->rip, exitQualification, errCode, (RTGCPTR)pCtx->rsp));
+
+                    Assert(CPUMIsGuestInPagedProtectedModeEx(pCtx));
 
                     STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitGuestPF);
 
