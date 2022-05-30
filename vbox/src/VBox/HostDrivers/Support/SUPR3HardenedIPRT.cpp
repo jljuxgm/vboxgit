@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedIPRT.cpp 13458 2008-10-21 18:40:56Z vboxsync $ */
+/* $Id: SUPR3HardenedIPRT.cpp 15352 2008-12-12 06:08:19Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened Support Routines using IPRT.
  */
@@ -141,8 +141,10 @@ DECLHIDDEN(int) supR3HardenedErrorV(int rc, bool fFatal, const char *pszFormat, 
 
     va_list vaCopy;
     va_copy(vaCopy, va);
-    AssertLogRelMsgFailed(("%N", pszFormat, &vaCopy));
+    AssertLogRelMsgFailed(("%N", pszFormat, &vaCopy)); /** @todo figure out why this ain't working, or at seems to be that way... */
     va_end(vaCopy);
+
+    RTLogRelPrintfV(pszFormat, va);
     return rc;
 }
 
