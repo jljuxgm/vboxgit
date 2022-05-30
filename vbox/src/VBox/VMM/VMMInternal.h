@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 13879 2008-11-05 16:11:03Z vboxsync $ */
+/* $Id: VMMInternal.h 14167 2008-11-13 12:31:38Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -195,6 +195,9 @@ typedef struct VMM
     RTUINT                      aoffSwitchers[VMMSWITCHER_MAX];
     /** Flag to disable the switcher permanently (VMX) (boolean) */
     bool                        fSwitcherDisabled;
+#if HC_ARCH_BITS == 64
+    uint32_t                    u32PaddingMinus1; /**< Alignment padding. */
+#endif
 
     /** Host to guest switcher entry point. */
     R0PTRTYPE(PFNVMMSWITCHERHC) pfnHostToGuestR0;

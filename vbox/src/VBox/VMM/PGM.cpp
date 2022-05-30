@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 14154 2008-11-12 23:34:50Z vboxsync $ */
+/* $Id: PGM.cpp 14167 2008-11-13 12:31:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3086,6 +3086,13 @@ static PGMMODE pgmR3CalcShadowMode(PVM pVM, PGMMODE enmGuestMode, SUPPAGINGMODE 
                 case SUPPAGINGMODE_AMD64_GLOBAL_NX:
                     enmShadowMode = PGMMODE_PAE;
                     enmSwitcher = VMMSWITCHER_AMD64_TO_PAE;
+#ifdef DEBUG_bird
+                    if (RTEnvExist("VBOX_32BIT"))
+                    {
+                        enmShadowMode = PGMMODE_32_BIT;
+                        enmSwitcher = VMMSWITCHER_AMD64_TO_32;
+                    }
+#endif
                     break;
 
                 default: AssertMsgFailed(("enmHostMode=%d\n", enmHostMode)); break;
@@ -3122,6 +3129,13 @@ static PGMMODE pgmR3CalcShadowMode(PVM pVM, PGMMODE enmGuestMode, SUPPAGINGMODE 
                 case SUPPAGINGMODE_AMD64_GLOBAL_NX:
                     enmShadowMode = PGMMODE_PAE;
                     enmSwitcher = VMMSWITCHER_AMD64_TO_PAE;
+#ifdef DEBUG_bird
+                    if (RTEnvExist("VBOX_32BIT"))
+                    {
+                        enmShadowMode = PGMMODE_32_BIT;
+                        enmSwitcher = VMMSWITCHER_AMD64_TO_32;
+                    }
+#endif
                     break;
 
                 default: AssertMsgFailed(("enmHostMode=%d\n", enmHostMode)); break;
