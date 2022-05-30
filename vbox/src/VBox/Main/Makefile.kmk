@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12275 2008-09-09 04:11:10Z vboxsync $
+# $Id: Makefile.kmk 12284 2008-09-09 10:26:27Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -273,6 +273,7 @@ VBoxSVC_SOURCES = \
 	SharedFolderImpl.cpp \
 	SystemPropertiesImpl.cpp \
 	BIOSSettingsImpl.cpp \
+	Version.cpp \
 	$(if $(VBOX_WITH_VRDP),VRDPServerImpl.cpp,) \
 	$(if $(VBOX_WITH_XPCOM),xpcom/server.cpp,) \
 	$(VBOX_XML_SCHEMADEFS_CPP)

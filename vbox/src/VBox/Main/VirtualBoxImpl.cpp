@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 10595 2008-07-14 12:23:57Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 12284 2008-09-09 10:26:27Z vboxsync $ */
 
 /** @file
  * Implmentation of IVirtualBox in VBoxSVC.
@@ -33,6 +33,7 @@
 #include "USBControllerImpl.h"
 #include "SystemPropertiesImpl.h"
 #include "GuestOSTypeImpl.h"
+#include "Version.h"
 
 #include "VirtualBoxXMLUtil.h"
 
@@ -98,6 +99,9 @@ static const char gDefaultGlobalConfig [] =
 Bstr VirtualBox::sVersion;
 
 // static
+ULONG VirtualBox::sRevision;
+
+// static
 Bstr VirtualBox::sPackageType;
 
 // static
@@ -150,6 +154,7 @@ HRESULT VirtualBox::init()
 
     if (sVersion.isNull())
         sVersion = VBOX_VERSION_STRING;
+    sRevision = VBoxSVNRev();
     if (sPackageType.isNull())
         sPackageType = VBOX_PACKAGE_STRING;
     LogFlowThisFunc (("Version: %ls, Package: %ls\n", sVersion.raw(), sPackageType.raw()));
@@ -492,6 +497,18 @@ STDMETHODIMP VirtualBox::COMGETTER(Version) (BSTR *aVersion)
     CheckComRCReturnRC (autoCaller.rc());
 
     sVersion.cloneTo (aVersion);
+    return S_OK;
+}
+
+STDMETHODIMP VirtualBox::COMGETTER(Revision) (ULONG *aRevision)
+{
+    if (!aRevision)
+        return E_INVALIDARG;
+
+    AutoCaller autoCaller (this);
+    CheckComRCReturnRC (autoCaller.rc());
+
+    *aRevision = sRevision;
     return S_OK;
 }
 

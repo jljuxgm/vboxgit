@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 10595 2008-07-14 12:23:57Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 12284 2008-09-09 10:26:27Z vboxsync $ */
 
 /** @file
  *
@@ -116,6 +116,7 @@ public:
 
     /* IVirtualBox properties */
     STDMETHOD(COMGETTER(Version)) (BSTR *aVersion);
+    STDMETHOD(COMGETTER(Revision)) (ULONG *aRevision);
     STDMETHOD(COMGETTER(PackageType)) (BSTR *aPackageType);
     STDMETHOD(COMGETTER(HomeFolder)) (BSTR *aHomeFolder);
     STDMETHOD(COMGETTER(SettingsFilePath)) (BSTR *aSettingsFilePath);
@@ -488,6 +489,7 @@ private:
     RWLockHandle mAsyncEventQLock;
 
     static Bstr sVersion;
+    static ULONG sRevision;
     static Bstr sPackageType;
     static Bstr sSettingsFormatVersion;
 
