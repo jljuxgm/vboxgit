@@ -1,4 +1,4 @@
-/* $Revision: 16832 $ */
+/* $Revision: 16835 $ */
 /** @file cbinding.h
  * Glue for dynamically linking with VBoxXPCOMC.
  */
@@ -31,7 +31,7 @@ extern "C" {
 /** The dlopen handle for VBoxXPCOMC. */
 extern void *g_hVBoxXPCOMC;
 /** The last load error. */
-extern char g_szVBoxXPCOMErrMsg[256];
+extern char g_szVBoxErrMsg[256];
 /** Pointer to the VBoxXPCOMC function table.  */
 extern PCVBOXXPCOM g_pVBoxFuncs;
 
