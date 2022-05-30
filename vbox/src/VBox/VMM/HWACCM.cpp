@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15018 2008-12-05 08:59:44Z vboxsync $ */
+/* $Id: HWACCM.cpp 15019 2008-12-05 09:00:36Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -224,10 +224,10 @@ VMMR3DECL(int) HWACCMR3InitCPU(PVM pVM)
         for (int j=0;i<RT_ELEMENTS(pVCpu->hwaccm.s.StatExitCRxWrite);j++)
         {
             rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatExitCRxWrite[j], STAMTYPE_COUNTER, STAMVISIBILITY_USED, STAMUNIT_OCCURENCES, "Profiling of CRx writes",
-                                "/HWACCM/CPU%d/Exit/Instr/CR/Write/%", j);
+                                "/HWACCM/CPU%d/Exit/Instr/CR/Write/%x", j);
             AssertRC(rc);
             rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatExitCRxRead[j], STAMTYPE_COUNTER, STAMVISIBILITY_USED, STAMUNIT_OCCURENCES, "Profiling of CRx reads",
-                                "/HWACCM/CPU%d/Exit/Instr/CR/Read/%", j);
+                                "/HWACCM/CPU%d/Exit/Instr/CR/Read/%x", j);
             AssertRC(rc);
         }
 
