@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: PGMHandler.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -231,7 +231,7 @@ VMMR3DECL(int) PGMR3HandlerVirtualRegister(PVM pVM, PGMVIRTHANDLERTYPE enmType, 
                                            const char *pszHandlerRC, const char *pszModRC,
                                            const char *pszDesc)
 {
-    LogFlow(("PGMR3HandlerVirtualRegisterEx: enmType=%d GCPtr=%VGv GCPtrLast=%VGv pszHandlerRC=%p:{%s} pszModRC=%p:{%s} pszDesc=%s\n",
+    LogFlow(("PGMR3HandlerVirtualRegisterEx: enmType=%d GCPtr=%RGv GCPtrLast=%RGv pszHandlerRC=%p:{%s} pszModRC=%p:{%s} pszDesc=%s\n",
              enmType, GCPtr, GCPtrLast, pszHandlerRC, pszHandlerRC, pszModRC, pszModRC, pszDesc));
 
     /*
@@ -391,7 +391,7 @@ VMMDECL(int) PGMR3HandlerVirtualRegisterEx(PVM pVM, PGMVIRTHANDLERTYPE enmType, 
 
 #ifdef VBOX_WITH_STATISTICS
         char szPath[256];
-        RTStrPrintf(szPath, sizeof(szPath), "/PGM/VirtHandler/Calls/%VGv-%VGv", pNew->Core.Key, pNew->Core.KeyLast);
+        RTStrPrintf(szPath, sizeof(szPath), "/PGM/VirtHandler/Calls/%RGv-%RGv", pNew->Core.Key, pNew->Core.KeyLast);
         rc = STAMR3Register(pVM, &pNew->Stat, STAMTYPE_PROFILE, STAMVISIBILITY_USED, szPath, STAMUNIT_TICKS_PER_CALL, pszDesc);
         AssertRC(rc);
 #endif

@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 13822 2008-11-05 01:08:56Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -708,13 +708,13 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, RTR
         RTLogPrintf("*** Disassembly of switcher %d '%s' %#x bytes ***\n"
                     "   R0PtrCode   = %p\n"
                     "   pu8CodeR3   = %p\n"
-                    "   GCPtrCode   = %VGv\n"
+                    "   GCPtrCode   = %RGv\n"
                     "   u32IDCode   = %08x\n"
                     "   pVMRC       = %RRv\n"
                     "   pCPUMRC     = %RRv\n"
                     "   pVMR3       = %p\n"
                     "   pCPUMR3     = %p\n"
-                    "   GCPtrGDT    = %VGv\n"
+                    "   GCPtrGDT    = %RGv\n"
                     "   InterCR3s   = %08RHp, %08RHp, %08RHp (32-Bit, PAE, AMD64)\n"
                     "   HyperCR3s   = %08RHp, %08RHp, %08RHp (32-Bit, PAE, AMD64)\n"
                     "   SelCS       = %04x\n"

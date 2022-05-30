@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 13822 2008-11-05 01:08:56Z vboxsync $ */
+/* $Id: VMM.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -624,7 +624,7 @@ VMMR3DECL(int) VMMR3TermCPU(PVM pVM)
  */
 VMMR3DECL(void) VMMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
 {
-    LogFlow(("VMMR3Relocate: offDelta=%VGv\n", offDelta));
+    LogFlow(("VMMR3Relocate: offDelta=%RGv\n", offDelta));
 
     /*
      * Recalc the RC address.

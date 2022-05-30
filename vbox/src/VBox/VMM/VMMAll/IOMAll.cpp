@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: IOMAll.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -749,7 +749,7 @@ VMMDECL(int) IOMInterpretCheckPortIOAccess(PVM pVM, PCPUMCTXCORE pCtxCore, RTIOP
         rc = PGMPhysInterpretedRead(pVM, pCtxCore, &offIOPB, GCPtrTss + RT_OFFSETOF(VBOXTSS, offIoBitmap), sizeof(offIOPB));
         if (rc != VINF_SUCCESS)
         {
-            Log(("iomInterpretCheckPortIOAccess: Port=%RTiop cb=%d GCPtrTss=%VGv %Rrc\n",
+            Log(("iomInterpretCheckPortIOAccess: Port=%RTiop cb=%d GCPtrTss=%RGv %Rrc\n",
                  Port, cb, GCPtrTss, rc));
             return rc;
         }
@@ -768,7 +768,7 @@ VMMDECL(int) IOMInterpretCheckPortIOAccess(PVM pVM, PCPUMCTXCORE pCtxCore, RTIOP
         rc = PGMPhysInterpretedRead(pVM, pCtxCore, &u16, GCPtrTss + offTss, sizeof(u16));
         if (rc != VINF_SUCCESS)
         {
-            Log(("iomInterpretCheckPortIOAccess: Port=%RTiop cb=%d GCPtrTss=%VGv offTss=%#x -> %Rrc\n",
+            Log(("iomInterpretCheckPortIOAccess: Port=%RTiop cb=%d GCPtrTss=%RGv offTss=%#x -> %Rrc\n",
                  Port, cb, GCPtrTss, offTss, rc));
             return rc;
         }

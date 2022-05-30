@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 13819 2008-11-04 23:14:51Z vboxsync $ */
+/* $Id: HWACCM.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -774,7 +774,7 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
  */
 VMMR3DECL(void) HWACCMR3Relocate(PVM pVM)
 {
-    Log(("HWACCMR3Relocate to %VGv\n", MMHyperGetArea(pVM, 0)));
+    Log(("HWACCMR3Relocate to %RGv\n", MMHyperGetArea(pVM, 0)));
     return;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 13822 2008-11-05 01:08:56Z vboxsync $ */
+/* $Id: CSAM.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1940,7 +1940,7 @@ static DECLCALLBACK(int) CSAMCodePageWriteHandler(PVM pVM, RTGCPTR GCPtr, void *
     int rc;
 
     Assert(enmAccessType == PGMACCESSTYPE_WRITE);
-    Log(("CSAMCodePageWriteHandler: write to %VGv size=%zu\n", GCPtr, cbBuf));
+    Log(("CSAMCodePageWriteHandler: write to %RGv size=%zu\n", GCPtr, cbBuf));
 
     if (VM_IS_EMT(pVM))
     {
@@ -1971,7 +1971,7 @@ static DECLCALLBACK(int) CSAMCodePageWriteHandler(PVM pVM, RTGCPTR GCPtr, void *
 static DECLCALLBACK(int) CSAMCodePageInvalidate(PVM pVM, RTGCPTR GCPtr)
 {
     fInCSAMCodePageInvalidate = true;
-    LogFlow(("CSAMCodePageInvalidate %VGv\n", GCPtr));
+    LogFlow(("CSAMCodePageInvalidate %RGv\n", GCPtr));
     /** @todo We can't remove the page (which unregisters the virtual handler) as we are called from a DoWithAll on the virtual handler tree. Argh. */
     csamFlushPage(pVM, GCPtr, false /* don't remove page! */);
     fInCSAMCodePageInvalidate = false;

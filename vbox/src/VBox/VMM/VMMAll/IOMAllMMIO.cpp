@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 13820 2008-11-05 00:55:49Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1017,7 +1017,7 @@ static int iomInterpretXCHG(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFaul
 VMMDECL(int) IOMMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore, RTGCPTR pvFault, RTGCPHYS GCPhysFault, void *pvUser)
 {
     STAM_PROFILE_START(&pVM->iom.s.StatRZMMIOHandler, a);
-    Log(("IOMMMIOHandler: GCPhys=%RGp uErr=%#x pvFault=%VGv rip=%RGv\n",
+    Log(("IOMMMIOHandler: GCPhys=%RGp uErr=%#x pvFault=%RGv rip=%RGv\n",
          GCPhysFault, (uint32_t)uErrorCode, pvFault, (RTGCPTR)pCtxCore->rip));
 
     PIOMMMIORANGE pRange = (PIOMMMIORANGE)pvUser;

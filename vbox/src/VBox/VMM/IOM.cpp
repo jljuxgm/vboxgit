@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 13822 2008-11-05 01:08:56Z vboxsync $ */
+/* $Id: IOM.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1462,7 +1462,7 @@ VMMR3DECL(int)  IOMR3MMIORegisterRC(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
                                     RCPTRTYPE(PFNIOMMMIOWRITE) pfnWriteCallback, RCPTRTYPE(PFNIOMMMIOREAD) pfnReadCallback,
                                     RCPTRTYPE(PFNIOMMMIOFILL) pfnFillCallback)
 {
-    LogFlow(("IOMR3MMIORegisterRC: pDevIns=%p GCPhysStart=%VGp cbRange=%#x pvUser=%VGv pfnWriteCallback=%#x pfnReadCallback=%#x pfnFillCallback=%#x\n",
+    LogFlow(("IOMR3MMIORegisterRC: pDevIns=%p GCPhysStart=%VGp cbRange=%#x pvUser=%RGv pfnWriteCallback=%#x pfnReadCallback=%#x pfnFillCallback=%#x\n",
              pDevIns, GCPhysStart, cbRange, pvUser, pfnWriteCallback, pfnReadCallback, pfnFillCallback));
 
     /*

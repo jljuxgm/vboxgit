@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 13820 2008-11-05 00:55:49Z vboxsync $ */
+/* $Id: PDMLdr.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -176,7 +176,7 @@ void pdmR3LdrTermU(PUVM pUVM)
  */
 VMMR3DECL(void) PDMR3LdrRelocateU(PUVM pUVM, RTGCINTPTR offDelta)
 {
-    LogFlow(("PDMR3LdrRelocate: offDelta=%VGv\n", offDelta));
+    LogFlow(("PDMR3LdrRelocate: offDelta=%RGv\n", offDelta));
 
     /*
      * GC Modules.

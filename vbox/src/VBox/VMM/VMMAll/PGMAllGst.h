@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 13820 2008-11-05 00:55:49Z vboxsync $ */
+/* $Id: PGMAllGst.h 13823 2008-11-05 01:10:20Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -454,7 +454,7 @@ PGM_GST_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
             unsigned offset = GCPhysCR3 & GST_CR3_PAGE_MASK & PAGE_OFFSET_MASK;
             pVM->pgm.s.pGstPaePDPTHC = (R3R0PTRTYPE(PX86PDPT)) HCPtrGuestCR3;
             pVM->pgm.s.pGstPaePDPTGC = (RCPTRTYPE(PX86PDPT))   ((RCPTRTYPE(uint8_t *))pVM->pgm.s.GCPtrCR3Mapping + offset);
-            Log(("Cached mapping %VGv\n", pVM->pgm.s.pGstPaePDPTGC));
+            Log(("Cached mapping %RGv\n", pVM->pgm.s.pGstPaePDPTGC));
 
             /*
              * Map the 4 PDs too.

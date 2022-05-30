@@ -1,4 +1,4 @@
-/* $Id: tstMicro.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: tstMicro.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -274,7 +274,7 @@ static DECLCALLBACK(int) doit(PVM pVM)
             RTLogPrintf("%s\n", sz);
         else
         {
-            RTLogPrintf("%VGv rc=%Rrc\n", GCPtr, rc);
+            RTLogPrintf("%RGv rc=%Rrc\n", GCPtr, rc);
             cb = 1;
         }
         GCPtr += cb;
