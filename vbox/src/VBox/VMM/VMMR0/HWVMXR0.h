@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 15288 2008-12-11 07:51:21Z vboxsync $ */
+/* $Id: HWVMXR0.h 15291 2008-12-11 08:22:18Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -283,6 +283,16 @@ DECLINLINE(int) VMXWriteCachedVMCSEx(PVMCPU pVCpu, uint32_t idxField, uint64_t u
     pCache->Write.cValidEntries++;
     return VINF_SUCCESS;
 }
+
+/**
+ * Flush the write cache in order not to overflow it with frequent ring switches.
+ *
+ * @param   pVCpu       The VMCPU to operate on.
+ */
+VMMR0DECL(void) VMXFlushWriteCache(PVMCPU pVCpu);
+
+#else
+# define VMXFlushWriteCache(a)     do { } while (0)
 #endif
 
 /**
