@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 17787 2009-03-13 01:39:33Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 17795 2009-03-13 09:37:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2396,7 +2396,7 @@ VMMDECL(void) PGMPhysWrite(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t c
                 if (RT_UNLIKELY(!PGM_PAGE_GET_HCPHYS(pPage)))
                 {
                     int         rc;
-                    RTGCPHYS    GCPhysPage = GCPhys + off;
+                    RTGCPHYS    GCPhysPage = pRam->GCPhys + off;
 #ifdef IN_RING3
                     if (fGrabbedLock)
                     {
