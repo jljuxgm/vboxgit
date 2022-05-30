@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 13838 2008-11-05 03:16:55Z vboxsync $ */
+/* $Id: MediumImpl.cpp 13842 2008-11-05 03:46:01Z vboxsync $ */
 
 /** @file
  *
@@ -941,7 +941,7 @@ HRESULT MediumBase::setStateError()
 HRESULT ImageMediumBase::protectedInit (VirtualBox *aVirtualBox, const BSTR aLocation,
                                         const Guid &aId)
 {
-    LogFlowThisFunc (("aLocation='%ls', aId={%Ruuid}\n", aLocation, aId.raw()));
+    LogFlowThisFunc (("aLocation='%ls', aId={%RTuuid}\n", aLocation, aId.raw()));
 
     AssertReturn (aVirtualBox, E_INVALIDARG);
     AssertReturn (aLocation, E_INVALIDARG);
@@ -1030,7 +1030,7 @@ HRESULT ImageMediumBase::protectedInit (VirtualBox *aVirtualBox,
             m.description = descNode.keyStringValue();
     }
 
-    LogFlowThisFunc (("m.location='%ls', m.id={%Ruuid}\n",
+    LogFlowThisFunc (("m.location='%ls', m.id={%RTuuid}\n",
                       m.location.raw(), m.id.raw()));
     LogFlowThisFunc (("m.locationFull='%ls'\n", m.locationFull.raw()));
 
