@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 17102 2009-02-24 22:42:29Z vboxsync $ */
+/* $Id: VBoxManage.h 17103 2009-02-24 23:07:24Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -125,7 +125,8 @@ typedef enum
  * Prototypes
  */
 
-/* VBoxManage.cpp */
+/* VBoxManageHelp.cpp */
+void printUsage(USAGECATEGORY u64Cmd);
 int errorSyntax(USAGECATEGORY u64Cmd, const char *pszFormat, ...);
 int errorArgument(const char *pszFormat, ...);
 
@@ -133,7 +134,12 @@ void printUsageInternal(USAGECATEGORY u64Cmd);
 
 #ifndef VBOX_ONLY_DOCS
 void showProgress(ComPtr<IProgress> progress);
+#endif
 
+/* VBoxManage.cpp */
+void showLogo(void);
+
+#ifndef VBOX_ONLY_DOCS
 int handleInternalCommands(HandlerArg *a);
 
 unsigned parseNum(const char *psz, unsigned cMaxNum, const char *name);
