@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13314 2008-10-15 22:46:08Z vboxsync $
+# $Id: Makefile.kmk 13316 2008-10-16 08:02:36Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -972,6 +972,7 @@ RuntimeR0Drv_SOURCES.linux = \
 	common/alloc/heapsimple.cpp \
 	common/string/strpbrk.cpp \
 	common/err/RTErrConvertToErrno.cpp \
+	common/err/RTErrConvertFromErrno.cpp \
 	generic/RTAssertShouldPanic-generic.cpp \
 	generic/RTLogWriteStdOut-stub-generic.cpp \
 	generic/mppresent-generic.cpp \
