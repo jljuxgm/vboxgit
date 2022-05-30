@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11795 2008-08-29 09:13:42Z vboxsync $
+# $Id: Makefile.kmk 11850 2008-08-29 21:40:39Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1314,9 +1314,9 @@ ifdef VBOX_WITH_PYTHON
    $(warning Unable to determine the python library (VBOX_LIB_PYTHON).)
   endif
  endif
-ifndef VBOX_ONLY_SDK
- DLLS += VBoxPython
-endif
+ ifndef VBOX_ONLY_SDK
+  DLLS += VBoxPython
+ endif
  INSTALLS += VBoxPython-inst-py-xpcom
  INSTALLS += VBoxPython-inst-sample
 endif
