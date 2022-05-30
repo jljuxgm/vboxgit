@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 14875 2008-12-01 16:24:22Z vboxsync $ */
+/* $Id: HWSVMR0.h 15141 2008-12-09 09:19:20Z vboxsync $ */
 /** @file
  * HWACCM AMD-V - Internal header file.
  */
@@ -159,8 +159,10 @@ DECLASM(int) SVMR0VMSwitcherRun64(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PC
  * @param   pVCpu       The VMCPU to operate on.
  * @param   pCtx        Guest context
  * @param   pfnHandler  RC handler
+ * @param   cbParam     Number of parameters
+ * @param   paParam     Array of 32 bits parameters
  */
-VMMR0DECL(int) SVMR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, RTRCPTR pfnHandler);
+VMMR0DECL(int) SVMR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, RTRCPTR pfnHandler, uint32_t cbParam, uint32_t *paParam);
 
 #endif /* HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) */
 
