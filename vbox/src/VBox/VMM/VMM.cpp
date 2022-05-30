@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 11945 2008-09-01 17:43:08Z vboxsync $ */
+/* $Id: VMM.cpp 12479 2008-09-16 09:14:29Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2274,6 +2274,8 @@ static int vmmR3ServiceCallHostRequest(PVM pVM)
 #else
             pVM->vmm.s.CallHostR0JmpBuf.rip = 0;
 #endif
+            LogRel((pVM->vmm.s.szRing0AssertMsg1));
+            LogRel((pVM->vmm.s.szRing0AssertMsg2));
             return VINF_EM_DBG_HYPER_ASSERTION;
 
         default:
