@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16256 2009-01-27 10:23:56Z vboxsync $
+# $Id: Makefile.kmk 16259 2009-01-27 10:35:11Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -148,7 +148,7 @@ ifdef VBOX_WITH_ICHAT_THEATER
  VBOX_PATH_MACOSX_SDK = /Developer/SDKs/MacOSX10.5.sdk
 endif
 
-VirtualBox_DEFS           = VBOX_GUI_SEPARATE_VM_PROCESS VBOX_GUI_WITH_SYSTRAY
+VirtualBox_DEFS           = VBOX_GUI_SEPARATE_VM_PROCESS
 VirtualBox_DEFS.debug     = VBOX_CHECK_STATE # QT_FATAL_ASSERT
 VirtualBox_DEFS.darwin    = VBOX_GUI_USE_QUARTZ2D VBOX_GUI_USE_QIMAGE VBOX_WITHOUT_QHTTP
 VirtualBox_DEFS.freebsd   = VBOX_GUI_USE_QIMAGE VBOX_GUI_USE_SDL
