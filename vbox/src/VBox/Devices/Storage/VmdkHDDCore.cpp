@@ -1,4 +1,4 @@
-/** $Id: VmdkHDDCore.cpp 12367 2008-09-10 16:21:34Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 12641 2008-09-22 13:19:56Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -424,7 +424,7 @@ static const char *const s_apszVmdkFileExtensions[] =
     "vmdk",
     NULL
 };
-        
+
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
