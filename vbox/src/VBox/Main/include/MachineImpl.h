@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 17073 2009-02-24 14:43:29Z vboxsync $ */
+/* $Id: MachineImpl.h 17156 2009-02-26 11:17:21Z vboxsync $ */
 
 /** @file
  *
@@ -59,7 +59,6 @@
 // helper declarations
 ////////////////////////////////////////////////////////////////////////////////
 
-class IAppliance;
 class VirtualBox;
 class Progress;
 class CombinedProgress;
