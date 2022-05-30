@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMetrics.cpp 14734 2008-11-27 18:45:50Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 14735 2008-11-27 18:46:52Z vboxsync $ */
 /** @file
  * VBoxManage - Metrics handling code.
  */
@@ -24,6 +24,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#include <VBox/com/com.h>
 #include <VBox/com/array.h>
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/VirtualBox.h>
