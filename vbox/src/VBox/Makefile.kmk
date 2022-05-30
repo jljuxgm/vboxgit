@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16373 2009-01-29 15:26:38Z vboxsync $
+# $Id: Makefile.kmk 17552 2009-03-09 08:59:08Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -27,7 +27,7 @@ ifdef VBOX_SINGLE_MAKEFILE
 ifdef VBOX_ONLY_ADDITIONS
  include $(PATH_SUB_CURRENT)/Runtime/Makefile.kmk
  ifdef VBOX_WITH_CROGL
-  if1of ($(KBUILD_TARGET),win)
+  if1of ($(KBUILD_TARGET),win linux)  ## @todo add Solaris here?
    include $(PATH_SUB_CURRENT)/GuestHost/Makefile.kmk
   endif
  endif
