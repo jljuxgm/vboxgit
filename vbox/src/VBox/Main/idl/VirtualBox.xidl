@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 16215 2009-01-24 11:11:56Z vboxsync $ *
+ * $Id: VirtualBox.xidl 16222 2009-01-26 10:38:10Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -9856,7 +9856,7 @@ Snapshot 1 (B.vdi)            Snapshot 1 (B.vdi)
   </interface>
 
   <interface
-     name="IFramebufferOverlay" extends="IFrameBuffer"
+     name="IFramebufferOverlay" extends="IFramebuffer"
      uuid="0bcc1c7e-e415-47d2-bfdb-e4c705fb0f47"
      wsmap="suppress"
      >
