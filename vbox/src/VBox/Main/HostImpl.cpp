@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 13544 2008-10-23 17:37:55Z vboxsync $ */
+/* $Id: HostImpl.cpp 13655 2008-10-29 15:15:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -185,6 +185,11 @@ HRESULT Host::init (VirtualBox *aParent)
     registerMetrics (aParent->performanceCollector());
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
+#if defined (RT_OS_WINDOWS)
+    mHostPowerService = new HostPowerServiceWin (mParent);
+#else
+    mHostPowerService = new HostPowerService (mParent);
+#endif
     setReady(true);
     return S_OK;
 }
@@ -211,6 +216,8 @@ void Host::uninit()
     mUSBProxyService = NULL;
     LogFlowThisFunc (("Done stopping USB proxy service.\n"));
 #endif
+
+    delete mHostPowerService;
 
     /* uninit all USB device filters still referenced by clients */
     uninitDependentChildren();

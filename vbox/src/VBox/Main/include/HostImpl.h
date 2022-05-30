@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 12443 2008-09-13 16:40:46Z vboxsync $ */
+/* $Id: HostImpl.h 13655 2008-10-29 15:15:42Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -31,6 +31,7 @@
 #else
 class USBProxyService;
 #endif
+#include "HostPower.h"
 
 #ifdef RT_OS_WINDOWS
 # include "win/svchlp.h"
@@ -123,6 +124,8 @@ public:
     static int networkInterfaceHelperServer (SVCHlpClient *aClient,
                                              SVCHlpMsg::Code aMsgCode);
 #endif
+
+    HostPowerService *mHostPowerService;
 
     // for VirtualBoxSupportErrorInfoImpl
     static const wchar_t *getComponentName() { return L"Host"; }
