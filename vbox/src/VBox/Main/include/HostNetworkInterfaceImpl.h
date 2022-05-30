@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 17494 2009-03-06 16:55:44Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 17497 2009-03-06 17:06:07Z vboxsync $ */
 
 /** @file
  *
@@ -26,6 +26,8 @@
 
 #include "VirtualBoxBase.h"
 #include "Collection.h"
+#include "VirtualBoxImpl.h"
+
 #ifdef VBOX_WITH_HOSTNETIF_API
 /* class HostNetworkInterface; */
 /* #include "netif.h" */
