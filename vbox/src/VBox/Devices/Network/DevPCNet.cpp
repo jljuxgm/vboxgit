@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 14419 2008-11-20 14:50:10Z vboxsync $ */
+/* $Id: DevPCNet.cpp 14420 2008-11-20 14:52:57Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -3198,7 +3198,6 @@ static uint32_t pcnetIoportReadU8(PCNetState *pThis, uint32_t addr, int *pRC)
 
     pcnetUpdateIrq(pThis);
 
-skip_update_irq:
 #ifdef PCNET_DEBUG_IO
     Log2(("#%d pcnetIoportReadU8: addr=%#010x val=%#06x\n", PCNET_INST_NR, addr, val & 0xff));
 #endif
