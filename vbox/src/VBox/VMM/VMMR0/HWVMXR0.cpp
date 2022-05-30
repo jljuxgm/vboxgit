@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13093 2008-10-08 16:01:56Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13095 2008-10-08 16:14:20Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2982,7 +2982,8 @@ VMMR0DECL(int) VMXR0InvalidatePage(PVM pVM, RTGCPTR GCVirt)
     Assert(!pVM->hwaccm.s.fNestedPaging);
 
     /* Skip it if a TLB flush is already pending. */
-    if (!fFlushPending)
+    if (   !fFlushPending 
+        && pVM->hwaccm.s.vmx.fVPID)
         VMXR0FlushVPID(pVM, pVM->hwaccm.s.vmx.enmFlushPage, GCVirt);
 
     return VINF_SUCCESS;
