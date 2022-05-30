@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 12565 2008-09-18 12:31:04Z vboxsync $ */
+/* $Id: Builtins.h 12567 2008-09-18 12:43:46Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -101,7 +101,9 @@ extern const PDMDRVREG g_DrvTransportAsync;
 
 #ifdef VBOX_WITH_SCSI
 extern const PDMDRVREG g_DrvSCSI;
+#if def(RT_OS_LINUX)
 extern const PDMDRVREG g_DrvSCSIHost;
+#endif
 #endif
 
 __END_DECLS
