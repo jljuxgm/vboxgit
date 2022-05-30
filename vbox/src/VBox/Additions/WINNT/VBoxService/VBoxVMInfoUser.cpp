@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInfoUser.cpp 13127 2008-10-09 12:13:02Z vboxsync $ */
+/* $Id: VBoxVMInfoUser.cpp 13129 2008-10-09 12:22:12Z vboxsync $ */
 /** @file
  * VBoxVMInfoUser - User information for the host.
  */
@@ -344,7 +344,7 @@ int vboxVMInfoUser(VBOXINFORMATIONCONTEXT* a_pCtx)
         else if (a_pCtx->iUserCount == 0)
             vboxVMInfoWriteProp(a_pCtx, "GuestInfo/OS/NoLoggedInUsers", "false");
     }
-    a_pCtx->iPrevUserCount = iUserCount;
+    a_pCtx->iUserCount = iUserCount;
 
     return ret;
 }
