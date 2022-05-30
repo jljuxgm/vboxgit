@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 16376 2009-01-29 16:46:31Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 16419 2009-01-30 15:00:20Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4243,8 +4243,6 @@ int pgmPoolAlloc(PVM pVM, RTGCPHYS GCPhys, PGMPOOLKIND enmKind, uint16_t iUser, 
     pPage->fCached = false;
     pPage->fReusedFlushPending = false;
     pPage->fCR3Mix = false;
-    pPage->iUser = iUser;
-    pPage->iUserTable = iUserTable;
 #ifdef PGMPOOL_WITH_MONITORING
     pPage->cModifications = 0;
     pPage->iModifiedNext = NIL_PGMPOOL_IDX;
