@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 14149 2008-11-12 23:23:27Z vboxsync $ */
+/* $Id: PGMInternal.h 14150 2008-11-12 23:24:49Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2110,7 +2110,7 @@ typedef struct PGM
     RTR0PTR                         pShwNestedRootR0;
 #endif
     /** The Physical Address (HC) of the nested paging root. */
-    RTHCPHYS                        HCPhysNestedRoot;
+    RTHCPHYS                        HCPhysShwNestedRoot;
     /** @}  */
 
     /** @name Function pointers for Shadow paging.
