@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 13059 2008-10-07 19:23:17Z vboxsync $ */
+/* $Id: VMEmt.cpp 13667 2008-10-29 18:27:15Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -42,8 +42,6 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include <iprt/time.h>
-
-
 
 
 /**
@@ -849,7 +847,6 @@ static DECLCALLBACK(void) vmR3BootstrapNotifyFF(PUVM pUVM, bool fNotifiedREM)
         AssertRC(rc);
     }
 }
-
 
 
 /**

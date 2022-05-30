@@ -1,4 +1,4 @@
-/* $Id: VMAll.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: VMAll.cpp 13667 2008-10-29 18:27:15Z vboxsync $ */
 /** @file
  * VM - Virtual Machine All Contexts.
  */
@@ -225,7 +225,7 @@ void vmSetErrorCopy(PVM pVM, int rc, RT_SRC_POS_DECL, const char *pszFormat, va_
  *                  Also, why a string ID and not an enum?
  */
 VMMDECL(int) VMSetRuntimeError(PVM pVM, bool fFatal, const char *pszErrorID,
-                              const char *pszFormat, ...)
+                               const char *pszFormat, ...)
 {
     va_list args;
     va_start(args, pszFormat);
@@ -378,3 +378,4 @@ VMMDECL(const char *) VMGetStateName(VMSTATE enmState)
             return "Unknown";
     }
 }
+
