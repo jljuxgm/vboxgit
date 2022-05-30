@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 17275 2009-03-03 13:28:12Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 17281 2009-03-03 14:26:06Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of -modifyvm command.
  */
@@ -1393,8 +1393,9 @@ int handleModifyVM(HandlerArg *a)
 #if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) || (defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT))
                 else if (strcmp(nics[n], "hostonly") == 0)
                 {
+
                     CHECK_ERROR_RET(nic, COMSETTER(Enabled) (TRUE), 1);
-                    CHECK_ERROR_RET(nic, AttachToHostOnlyInterface(), 1);
+                    CHECK_ERROR_RET(nic, AttachToHostOnlyNetwork(), 1);
                 }
 #endif /* defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) */
                 else
