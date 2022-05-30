@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14965 2008-12-03 22:49:27Z vboxsync $
+# $Id: Makefile.kmk 14973 2008-12-04 12:16:08Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -64,6 +64,7 @@ SYSMODS   += VBoxDDGC VBoxDD2GC VBoxDDR0 VBoxDD2R0
 #
 VBoxDDU_TEMPLATE         = VBOXR3
 VBoxDDU_NAME             = $(basename $(notdir $(LIB_DDU)))
+VBoxDDU_INST.darwin      = $(INST_DLL) $(INST_TESTCASE)
 VBoxDDU_DEFS             = IN_VBOXDDU
 ifdef VBOX_WITH_USB
  VBoxDDU_DEFS           += VBOX_WITH_USB IN_USBLIB
