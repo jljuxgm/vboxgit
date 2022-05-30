@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 14966 2008-12-04 01:54:38Z vboxsync $ */
+/* $Id: PGMDbg.cpp 17370 2009-03-05 01:09:27Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -187,8 +187,7 @@ VMMR3DECL(int) PGMR3DbgHCPhys2GCPhys(PVM pVM, RTHCPHYS HCPhys, PRTGCPHYS pGCPhys
     {
         uint32_t iPage = pRam->cb >> PAGE_SHIFT;
         while (iPage-- > 0)
-            if (    PGM_PAGE_GET_HCPHYS(&pRam->aPages[iPage]) == HCPhys
-                &&  !PGM_PAGE_IS_RESERVED(&pRam->aPages[iPage]))
+            if (PGM_PAGE_GET_HCPHYS(&pRam->aPages[iPage]) == HCPhys)
             {
                 *pGCPhys = pRam->GCPhys + (iPage << PAGE_SHIFT) + off;
                 return VINF_SUCCESS;
@@ -582,8 +581,13 @@ VMMR3DECL(int) PGMR3DbgScanPhysical(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cbRange, 
             for (uint32_t iPage = off >> PAGE_SHIFT; iPage < cPages; iPage++)
             {
                 PPGMPAGE pPage = &pRam->aPages[iPage];
+#ifdef VBOX_WITH_NEW_PHYS_CODE
+                if (    !PGM_PAGE_IS_ZERO(pPage)
+                    &&  !PGM_PAGE_IS_MMIO(pPage))
+#else
                 if (    /** @todo !PGM_PAGE_IS_ZERO(pPage)
                     &&*/  !PGM_PAGE_IS_MMIO(pPage))
+#endif
                 {
                     void const *pvPage;
                     PGMPAGEMAPLOCK Lock;
