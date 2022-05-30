@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14904 2008-12-02 14:37:52Z vboxsync $
+# $Id: Makefile.kmk 14909 2008-12-02 15:05:02Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -550,7 +550,7 @@ DLLS += VBoxSettings
 VBoxSettings_TEMPLATE	= VBOXMAINDLL
 VBoxSettings_NAME       = $(basename $(notdir $(LIB_SETTINGS)))
 VBoxSettings_SDKS       = VBOX_LIBXSLT VBOX_LIBXML2 VBOX_ZLIB
-VBoxSettings_DEFS       = IN_VBOXSETTINGS_R3
+VBoxSettings_DEFS       = IN_VBOXXML_R3
 VBoxSettings_INCS       = \
 	include
 VBoxSettings_SOURCES    = \
