@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 16557 2009-02-06 16:35:42Z vboxsync $ */
 
 /** @file
  *
@@ -21,16 +21,14 @@
  * additional information or have any questions.
  */
 
-#if defined(RT_OS_WINDOWS)
-#elif defined(RT_OS_LINUX)
-#endif
-
 #include "PerformanceImpl.h"
 
 #include "Logging.h"
 
-#include <VBox/err.h>
 #include <iprt/process.h>
+
+#include <VBox/err.h>
+#include <VBox/settings.h>
 
 #include <vector>
 #include <algorithm>

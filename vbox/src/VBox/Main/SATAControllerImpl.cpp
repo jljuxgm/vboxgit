@@ -1,4 +1,4 @@
-/* $Id: SATAControllerImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
+/* $Id: SATAControllerImpl.cpp 16557 2009-02-06 16:35:42Z vboxsync $ */
 
 /** @file
  *
@@ -21,8 +21,6 @@
  * additional information or have any questions.
  */
 
-
-
 #include "SATAControllerImpl.h"
 #include "MachineImpl.h"
 #include "VirtualBoxImpl.h"
@@ -30,7 +28,9 @@
 
 #include <iprt/string.h>
 #include <iprt/cpputils.h>
+
 #include <VBox/err.h>
+#include <VBox/settings.h>
 
 #include <algorithm>
 

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 16191 2009-01-22 21:23:10Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 16557 2009-02-06 16:35:42Z vboxsync $ */
 
 /** @file
  *
@@ -39,7 +39,6 @@
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
 #include "PerformanceImpl.h"
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
-
 
 class Machine;
 class SessionMachine;
@@ -273,19 +272,6 @@ public:
     const Bstr &settingsFileName() { return mData.mCfgFile.mName; }
 
     static HRESULT ensureFilePathExists (const char *aFileName);
-
-    class SettingsTreeHelper : public settings::XmlTreeBackend::InputResolver
-                             , public settings::XmlTreeBackend::AutoConverter
-    {
-    public:
-
-        // InputResolver interface
-        xml::Input *resolveEntity (const char *aURI, const char *aID);
-
-        // AutoConverter interface
-        bool needsConversion (const settings::Key &aRoot, char **aOldVersion) const;
-        const char *templateUri() const;
-    };
 
     static HRESULT loadSettingsTree (settings::XmlTreeBackend &aTree,
                                      xml::File &aFile,

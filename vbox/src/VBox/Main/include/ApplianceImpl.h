@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 16517 2009-02-04 16:25:29Z vboxsync $ */
+/* $Id: ApplianceImpl.h 16557 2009-02-06 16:35:42Z vboxsync $ */
 
 /** @file
  *
@@ -26,7 +26,10 @@
 
 #include "VirtualBoxBase.h"
 
-// #include <string>
+namespace xml
+{
+    class Node;
+}
 
 class VirtualBox;
 

@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.cpp 15991 2009-01-16 14:02:20Z vboxsync $ */
+/* $Id: DVDDriveImpl.cpp 16557 2009-02-06 16:35:42Z vboxsync $ */
 
 /** @file
  *
@@ -34,6 +34,8 @@
 
 #include <iprt/string.h>
 #include <iprt/cpputils.h>
+
+#include <VBox/settings.h>
 
 // constructor / destructor
 ////////////////////////////////////////////////////////////////////////////////

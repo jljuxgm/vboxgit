@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.cpp 16118 2009-01-21 09:43:00Z vboxsync $ */
+/* $Id: HardDisk2Impl.cpp 16557 2009-02-06 16:35:42Z vboxsync $ */
 
 /** @file
  *
@@ -32,6 +32,7 @@
 #include <VBox/com/SupportErrorInfo.h>
 
 #include <VBox/err.h>
+#include <VBox/settings.h>
 
 #include <iprt/param.h>
 #include <iprt/path.h>
