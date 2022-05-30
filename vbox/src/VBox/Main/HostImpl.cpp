@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 14283 2008-11-18 10:31:24Z vboxsync $ */
+/* $Id: HostImpl.cpp 14335 2008-11-18 22:18:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1188,8 +1188,14 @@ STDMETHODIMP Host::COMGETTER(MemorySize)(ULONG *size)
         return E_POINTER;
     AutoWriteLock alock (this);
     CHECK_READY();
-    /** @todo */
-    return E_NOTIMPL;
+    /* @todo This is an ugly hack. There must be a function in IPRT for that. */
+    pm::CollectorHAL *hal = pm::createHAL();
+    if (!hal)
+        return VERR_INTERNAL_ERROR;
+    ULONG tmp;
+    int rc = hal->getHostMemoryUsage(size, &tmp, &tmp);
+    delete hal;
+    return rc;
 }
 
 /**
@@ -1204,8 +1210,14 @@ STDMETHODIMP Host::COMGETTER(MemoryAvailable)(ULONG *available)
         return E_POINTER;
     AutoWriteLock alock (this);
     CHECK_READY();
-    /** @todo */
-    return E_NOTIMPL;
+    /* @todo This is an ugly hack. There must be a function in IPRT for that. */
+    pm::CollectorHAL *hal = pm::createHAL();
+    if (!hal)
+        return VERR_INTERNAL_ERROR;
+    ULONG tmp;
+    int rc = hal->getHostMemoryUsage(&tmp, &tmp, available);
+    delete hal;
+    return rc;
 }
 
 /**
