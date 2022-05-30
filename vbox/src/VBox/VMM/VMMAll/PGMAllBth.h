@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 16792 2009-02-16 14:35:26Z vboxsync $ */
+/* $Id: PGMAllBth.h 16798 2009-02-16 15:42:39Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4623,6 +4623,9 @@ PGM_BTH_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
     PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
     if (pVM->pgm.s.CTX_SUFF(pShwPageCR3))
     {
+        /* Remove the hypervisor mappings from the shadow page table. */
+        PGMMapDeactivateAll(pVM);
+
         /* It might have been freed already by a pool flush (see e.g. PGMR3MappingsUnfix). */
         /** @todo Coordinate this better with the pool. */
         if (pVM->pgm.s.CTX_SUFF(pShwPageCR3)->enmKind != PGMPOOLKIND_FREE)
