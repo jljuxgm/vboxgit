@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 17700 2009-03-11 15:23:55Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 17710 2009-03-11 16:46:55Z vboxsync $ */
 
 /** @file
  *
@@ -88,7 +88,6 @@ public:
     static const wchar_t *getComponentName() { return L"HostNetworkInterface"; }
 
     HRESULT setVirtualBox(VirtualBox *pVBox);
-    HRESULT getVirtualBox(VirtualBox **ppVBox);
 private:
     const Bstr mInterfaceName;
     const Guid mGuid;
