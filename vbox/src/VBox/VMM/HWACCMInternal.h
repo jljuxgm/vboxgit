@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 15852 2009-01-08 10:56:11Z vboxsync $ */
+/* $Id: HWACCMInternal.h 15853 2009-01-08 10:57:44Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -386,6 +386,10 @@ typedef struct VMCSCACHE
 {
     /* Magic marker for searching in crash dumps. */
     uint8_t         aMagic[16];
+    uint64_t        uMagic;
+    uint32_t        uPos;
+    uint32_t        idCpu;
+
     /* CR2 is saved here for EPT syncing. */
     uint64_t        cr2;
     struct
@@ -416,6 +420,7 @@ typedef struct VMCSCACHE
         RTGCPTR     pCache;
         RTGCPTR     pCtx;
         uint64_t    eflags;
+        uint64_t    cr8;
     } TestOut;
     struct
     {
