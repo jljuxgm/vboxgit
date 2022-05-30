@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11875 2008-08-30 14:41:03Z vboxsync $
+# $Id: Makefile.kmk 11896 2008-09-01 08:10:34Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -91,6 +91,7 @@ IDLHEADER.XPCOM       = $(VBOX_PATH_SDK)/bindings/xpcom/include/VirtualBox_XPCOM
 
 ifdef VBOX_ONLY_SDK
   NEED_MSCOM = 1
+  NEED_XPCOM = 1
 endif
 
 ifeq ($(KBUILD_TARGET),win)
