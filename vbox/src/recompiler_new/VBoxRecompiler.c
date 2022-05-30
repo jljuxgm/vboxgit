@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13337 2008-10-16 11:59:21Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 13358 2008-10-16 21:35:59Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -4033,7 +4033,7 @@ int cpu_get_pic_interrupt(CPUState *env)
     if (env->pVM->rem.s.u32PendingInterrupt != REM_NO_PENDING_IRQ)
     {
         rc = VINF_SUCCESS;
-        Assert(env->pVM->rem.s.u32PendingInterrupt >= 0 && env->pVM->rem.s.u32PendingInterrupt <= 255);
+        Assert(env->pVM->rem.s.u32PendingInterrupt <= 255);
         u8Interrupt = env->pVM->rem.s.u32PendingInterrupt;
         env->pVM->rem.s.u32PendingInterrupt = REM_NO_PENDING_IRQ;
     }
