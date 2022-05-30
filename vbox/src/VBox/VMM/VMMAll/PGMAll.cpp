@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 14141 2008-11-12 19:12:30Z vboxsync $ */
+/* $Id: PGMAll.cpp 14148 2008-11-12 23:20:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1256,7 +1256,7 @@ VMMDECL(RTHCPHYS) PGMGetHyperCR3(PVM pVM)
     switch (enmShadowMode)
     {
         case PGMMODE_32_BIT:
-            return pVM->pgm.s.HCPhys32BitPD;
+            return pVM->pgm.s.HCPhysShw32BitPD;
 
         case PGMMODE_PAE:
         case PGMMODE_PAE_NX:
@@ -1289,7 +1289,7 @@ VMMDECL(RTHCPHYS) PGMGetNestedCR3(PVM pVM, PGMMODE enmShadowMode)
     switch (enmShadowMode)
     {
         case PGMMODE_32_BIT:
-            return pVM->pgm.s.HCPhys32BitPD;
+            return pVM->pgm.s.HCPhysShw32BitPD;
 
         case PGMMODE_PAE:
         case PGMMODE_PAE_NX:
@@ -1324,7 +1324,7 @@ VMMDECL(RTHCPHYS) PGMGetEPTCR3(PVM pVM)
  */
 VMMDECL(RTHCPHYS) PGMGetHyper32BitCR3(PVM pVM)
 {
-    return pVM->pgm.s.HCPhys32BitPD;
+    return pVM->pgm.s.HCPhysShw32BitPD;
 }
 
 
