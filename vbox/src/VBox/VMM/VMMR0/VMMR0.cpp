@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 13858 2008-11-05 13:45:41Z vboxsync $ */
+/* $Id: VMMR0.cpp 13871 2008-11-05 14:45:31Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -565,12 +565,18 @@ VMMR0DECL(int) VMMR0EntryInt(PVM pVM, VMMR0OPERATION enmOperation, void *pvArg)
  *
  * @param   pVM             The VM to operate on.
  *                          The return code is stored in pVM->vmm.s.iLastGZRc.
- * @param   idCPU           VMCPU id.
+ * @param   idCpu           VMCPU id.
  * @param   enmOperation    Which operation to execute.
  * @remarks Assume called with interrupts _enabled_.
  */
-VMMR0DECL(void) VMMR0EntryFast(PVM pVM, unsigned idCPU, VMMR0OPERATION enmOperation)
+VMMR0DECL(void) VMMR0EntryFast(PVM pVM, unsigned idCpu, VMMR0OPERATION enmOperation)
 {
+    if (RT_UNLIKELY(idCpu >= pVM->cCPUs))
+    {
+        pVM->vmm.s.iLastGZRc = VERR_INVALID_PARAMETER;
+        return;
+    }
+
     switch (enmOperation)
     {
         /*
@@ -620,12 +626,6 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, unsigned idCPU, VMMR0OPERATION enmOperat
             int rc;
 
             STAM_COUNTER_INC(&pVM->vmm.s.StatRunRC);
-
-            if (idCPU >= pVM->cCPUs)
-            {
-                pVM->vmm.s.iLastGZRc = VERR_INVALID_PARAMETER;
-                return;
-            }
 
 #ifndef RT_OS_WINDOWS /** @todo check other hosts */
             RTCCUINTREG uFlags = ASMIntDisableFlags();
