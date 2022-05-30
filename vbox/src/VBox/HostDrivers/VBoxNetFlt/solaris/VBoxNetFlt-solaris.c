@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 15629 2008-12-17 13:34:36Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 15779 2009-01-02 17:55:25Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -2512,7 +2512,6 @@ static inline void vboxNetFltSolarisInitPacketId(PVBOXNETFLTPACKETID pTag, mblk_
  * @param   pThis               The instance.
  * @param   pPromiscStream      Pointer to the promiscuous stream.
  * @param   pMsg                Pointer to the message.
- * @remarks Warning!! Assumes caller has taken care of any locking necessary.
  */
 static int vboxNetFltSolarisQueueLoopback(PVBOXNETFLTINS pThis, vboxnetflt_promisc_stream_t *pPromiscStream, mblk_t *pMsg)
 {
