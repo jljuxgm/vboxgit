@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 11763 2008-08-28 14:27:11Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 11767 2008-08-28 15:10:46Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -877,6 +877,9 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
         val |= X86_CR0_PE | X86_CR0_PG;
         /* Note: We must also set this as we rely on protecting various pages for which supervisor writes must be caught. */
         val |= X86_CR0_WP;
+
+        /* Always enable caching. */
+        val &= ~(X86_CR0_CD|X86_CR0_NW);
 
         rc |= VMXWriteVMCS(VMX_VMCS_GUEST_CR0,              val);
         Log2(("Guest CR0 %08x\n", val));
