@@ -1,4 +1,4 @@
-; $Id: VBoxREM.def 17251 2009-03-02 13:55:31Z vboxsync $
+; $Id: VBoxREM.def 17537 2009-03-08 05:22:28Z vboxsync $
 ;; @file
 ; VBoxREM Definition File.
 ;
@@ -23,6 +23,7 @@ LIBRARY VBoxREM.dll
 
 EXPORTS
     REMR3Init
+    REMR3InitFinalize
     REMR3Term
     REMR3Reset
     REMR3Step
