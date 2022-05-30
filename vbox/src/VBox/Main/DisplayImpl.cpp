@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 14942 2008-12-03 13:36:42Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
 
 /** @file
  *
@@ -1459,8 +1459,7 @@ STDMETHODIMP Display::SetFramebuffer (ULONG aScreenId, IFramebuffer *aFramebuffe
 {
     LogFlowFunc (("\n"));
 
-    if (!aFramebuffer)
-        return E_POINTER;
+    CheckComArgOutPointerValid(aFramebuffer);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
@@ -1500,8 +1499,7 @@ STDMETHODIMP Display::GetFramebuffer (ULONG aScreenId, IFramebuffer **aFramebuff
 {
     LogFlowFunc (("aScreenId = %d\n", aScreenId));
 
-    if (!aFramebuffer)
-        return E_POINTER;
+    CheckComArgOutPointerValid(aFramebuffer);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());

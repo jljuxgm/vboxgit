@@ -1,4 +1,4 @@
-/* $Id: HardDiskFormatImpl.cpp 14780 2008-11-28 14:36:22Z vboxsync $ */
+/* $Id: HardDiskFormatImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
 
 /** @file
  *
@@ -172,8 +172,7 @@ void HardDiskFormat::uninit()
 
 STDMETHODIMP HardDiskFormat::COMGETTER(Id)(BSTR *aId)
 {
-    if (!aId)
-        return E_POINTER;
+    CheckComArgOutPointerValid(aId);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
@@ -186,8 +185,7 @@ STDMETHODIMP HardDiskFormat::COMGETTER(Id)(BSTR *aId)
 
 STDMETHODIMP HardDiskFormat::COMGETTER(Name)(BSTR *aName)
 {
-    if (!aName)
-        return E_POINTER;
+    CheckComArgOutPointerValid(aName);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
@@ -220,8 +218,7 @@ COMGETTER(FileExtensions)(ComSafeArrayOut (BSTR, aFileExtensions))
 
 STDMETHODIMP HardDiskFormat::COMGETTER(Capabilities)(ULONG *aCaps)
 {
-    if (!aCaps)
-        return E_POINTER;
+    CheckComArgOutPointerValid(aCaps);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());

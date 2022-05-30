@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
 
 /** @file
  *
@@ -81,8 +81,7 @@ HRESULT HostNetworkInterface::init (Bstr aInterfaceName, Guid aGuid)
  */
 STDMETHODIMP HostNetworkInterface::COMGETTER(Name) (BSTR *aInterfaceName)
 {
-    if (!aInterfaceName)
-        return E_POINTER;
+    CheckComArgOutPointerValid(aInterfaceName);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
@@ -100,8 +99,7 @@ STDMETHODIMP HostNetworkInterface::COMGETTER(Name) (BSTR *aInterfaceName)
  */
 STDMETHODIMP HostNetworkInterface::COMGETTER(Id) (GUIDPARAMOUT aGuid)
 {
-    if (!aGuid)
-        return E_POINTER;
+    CheckComArgOutPointerValid(aGuid);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());

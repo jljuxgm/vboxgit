@@ -1,4 +1,4 @@
-/* $Id: SATAControllerImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
+/* $Id: SATAControllerImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
 
 /** @file
  *
@@ -174,8 +174,7 @@ void SATAController::uninit()
 
 STDMETHODIMP SATAController::COMGETTER(Enabled) (BOOL *aEnabled)
 {
-    if (!aEnabled)
-        return E_POINTER;
+    CheckComArgOutPointerValid(aEnabled);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
@@ -217,8 +216,7 @@ STDMETHODIMP SATAController::COMSETTER(Enabled) (BOOL aEnabled)
 
 STDMETHODIMP SATAController::COMGETTER(PortCount) (ULONG *aPortCount)
 {
-    if (!aPortCount)
-        return E_POINTER;
+    CheckComArgOutPointerValid(aPortCount);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
@@ -269,8 +267,7 @@ STDMETHODIMP SATAController::COMSETTER(PortCount) (ULONG aPortCount)
 
 STDMETHODIMP SATAController::GetIDEEmulationPort(LONG DevicePosition, LONG *aPortNumber)
 {
-    if (!aPortNumber)
-        return E_POINTER;
+    CheckComArgOutPointerValid(aPortNumber);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
