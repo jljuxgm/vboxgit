@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 17190 2009-02-27 08:42:08Z vboxsync $ */
+/* $Id: vboxhgcm.c 17860 2009-03-13 21:55:58Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -690,7 +690,7 @@ static int crVBoxHGCMDoConnect( CRConnection *conn )
 #else
     if (g_crvboxhgcm.iGuestDrv == INVALID_HANDLE_VALUE)
     {
-        g_crvboxhgcm.iGuestDrv = open(VBOXGUEST_DEVICE_NAME, O_RDWR, 0);
+        g_crvboxhgcm.iGuestDrv = open(VBOXGUEST_USER_DEVICE_NAME, O_RDWR, 0);
         if (g_crvboxhgcm.iGuestDrv == INVALID_HANDLE_VALUE)
         {
             crDebug("could not open Guest Additions kernel module! rc = %d\n", errno);
