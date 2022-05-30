@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 17323 2009-03-04 07:34:16Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 17387 2009-03-05 11:00:14Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of -modifyvm command.
  */
@@ -1386,7 +1386,7 @@ int handleModifyVM(HandlerArg *a)
                         || strcmp(nics[n], "hostif") == 0) /* backward compatibility */
                 {
                     CHECK_ERROR_RET(nic, COMSETTER(Enabled) (TRUE), 1);
-                    CHECK_ERROR_RET(nic, AttachToBridgedNetwork(), 1);
+                    CHECK_ERROR_RET(nic, AttachToBridgedInterface(), 1);
                 }
                 else if (strcmp(nics[n], "intnet") == 0)
                 {
@@ -1398,7 +1398,7 @@ int handleModifyVM(HandlerArg *a)
                 {
 
                     CHECK_ERROR_RET(nic, COMSETTER(Enabled) (TRUE), 1);
-                    CHECK_ERROR_RET(nic, AttachToHostOnlyNetwork(), 1);
+                    CHECK_ERROR_RET(nic, AttachToHostOnlyInterface(), 1);
                 }
 #endif /* defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) */
                 else
