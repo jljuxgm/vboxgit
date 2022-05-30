@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 14899 2008-12-02 12:39:34Z vboxsync $ */
+/* $Id: HWACCMInternal.h 15017 2008-12-05 08:58:38Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -498,8 +498,8 @@ typedef struct HWACCMCPU
     STAMCOUNTER             StatExitInvd;
     STAMCOUNTER             StatExitCpuid;
     STAMCOUNTER             StatExitRdtsc;
-    STAMCOUNTER             StatExitCRxWrite;
-    STAMCOUNTER             StatExitCRxRead;
+    STAMCOUNTER             StatExitCRxWrite[8];
+    STAMCOUNTER             StatExitCRxRead[8];
     STAMCOUNTER             StatExitDRxWrite;
     STAMCOUNTER             StatExitDRxRead;
     STAMCOUNTER             StatExitCLTS;

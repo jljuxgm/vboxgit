@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 14995 2008-12-04 15:44:57Z vboxsync $ */
+/* $Id: HWACCM.cpp 15017 2008-12-05 08:58:38Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -186,8 +186,6 @@ VMMR3DECL(int) HWACCMR3InitCPU(PVM pVM)
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatExitInvd,               "/HWACCM/CPU%d/Exit/Instr/Invd");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatExitCpuid,              "/HWACCM/CPU%d/Exit/Instr/Cpuid");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatExitRdtsc,              "/HWACCM/CPU%d/Exit/Instr/Rdtsc");
-        HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatExitCRxWrite,           "/HWACCM/CPU%d/Exit/Instr/CR/Write");
-        HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatExitCRxRead,            "/HWACCM/CPU%d/Exit/Instr/CR/Read");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatExitDRxWrite,           "/HWACCM/CPU%d/Exit/Instr/DR/Write");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatExitDRxRead,            "/HWACCM/CPU%d/Exit/Instr/DR/Read");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatExitCLTS,               "/HWACCM/CPU%d/Exit/Instr/CLTS");
@@ -222,6 +220,16 @@ VMMR3DECL(int) HWACCMR3InitCPU(PVM pVM)
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatDRxArmed,               "/HWACCM/CPU%d/Debug/Armed");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatDRxContextSwitch,       "/HWACCM/CPU%d/Debug/ContextSwitch");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatDRxIOCheck,             "/HWACCM/CPU%d/Debug/IOCheck");
+
+        for (int j=0;i<RT_ELEMENTS(pVCpu->hwaccm.s.StatExitCRxWrite);j++)
+        {
+            rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatExitCRxWrite[j], STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL, "Profiling of CRx writes",
+                                "/HWACCM/CPU%d/Exit/Instr/CR/Write/%", j);
+            AssertRC(rc);
+            rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatExitCRxRead[j], STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL, "Profiling of CRx reads",
+                                "/HWACCM/CPU%d/Exit/Instr/CR/Read/%", j);
+            AssertRC(rc);
+        }
 
 #undef HWACCM_REG_COUNTER
 

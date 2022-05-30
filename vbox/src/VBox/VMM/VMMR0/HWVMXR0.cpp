@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 14997 2008-12-04 16:32:35Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15017 2008-12-05 08:58:38Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2610,7 +2610,7 @@ ResumeExecution:
         {
         case VMX_EXIT_QUALIFICATION_CRX_ACCESS_WRITE:
             Log2(("VMX: %RGv mov cr%d, x\n", (RTGCPTR)pCtx->rip, VMX_EXIT_QUALIFICATION_CRX_REGISTER(exitQualification)));
-            STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitCRxWrite);
+            STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitCRxWrite[VMX_EXIT_QUALIFICATION_CRX_REGISTER(exitQualification)]);
             rc = EMInterpretCRxWrite(pVM, CPUMCTX2CORE(pCtx),
                                      VMX_EXIT_QUALIFICATION_CRX_REGISTER(exitQualification),
                                      VMX_EXIT_QUALIFICATION_CRX_GENREG(exitQualification));
@@ -2649,7 +2649,7 @@ ResumeExecution:
 
         case VMX_EXIT_QUALIFICATION_CRX_ACCESS_READ:
             Log2(("VMX: mov x, crx\n"));
-            STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitCRxRead);
+            STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitCRxRead[VMX_EXIT_QUALIFICATION_CRX_REGISTER(exitQualification)]);
 
             Assert(!pVM->hwaccm.s.fNestedPaging || !CPUMIsGuestInPagedProtectedModeEx(pCtx) || VMX_EXIT_QUALIFICATION_CRX_REGISTER(exitQualification) != USE_REG_CR3);
 
