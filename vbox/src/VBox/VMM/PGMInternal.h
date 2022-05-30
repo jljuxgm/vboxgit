@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 17622 2009-03-10 12:32:23Z vboxsync $ */
+/* $Id: PGMInternal.h 17660 2009-03-11 08:18:09Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -535,8 +535,11 @@ typedef PGMVIRTHANDLER *PPGMVIRTHANDLER;
 
 /**
  * Page type.
+ *
  * @remarks This enum has to fit in a 3-bit field (see PGMPAGE::u3Type).
- * @todo convert to \#defines.
+ * @remarks This is used in the saved state, so changes to it requires bumping
+ *          the saved state version.
+ * @todo    So, convert to \#defines!
  */
 typedef enum PGMPAGETYPE
 {

@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 17534 2009-03-08 03:05:52Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 17660 2009-03-11 08:18:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -143,7 +143,7 @@ VMMDECL(int) pgmPhysRomWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE p
 VMMDECL(bool) PGMPhysIsA20Enabled(PVM pVM)
 {
     LogFlow(("PGMPhysIsA20Enabled %d\n", pVM->pgm.s.fA20Enabled));
-    return !!pVM->pgm.s.fA20Enabled ; /* stupid MS compiler doesn't trust me. */
+    return pVM->pgm.s.fA20Enabled;
 }
 
 

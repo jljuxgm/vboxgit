@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 17538 2009-03-08 05:32:49Z vboxsync $ */
+/* $Id: PGMPhys.cpp 17660 2009-03-11 08:18:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2018,13 +2018,14 @@ VMMR3DECL(int) PGMR3PhysRomProtect(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb, PGMROM
     bool fFlushedPool = false;
     for (PPGMROMRANGE pRom = pVM->pgm.s.pRomRangesR3; pRom; pRom = pRom->pNextR3)
         if (    GCPhys     <= pRom->GCPhysLast
-            &&  GCPhysLast >= pRom->GCPhys)
+            &&  GCPhysLast >= pRom->GCPhys
+            &&  (pRom->fFlags & PGMPHYS_ROM_FLAG_SHADOWED))
         {
             /*
              * Iterate the relevant pages and the ncessary make changes.
              */
             bool fChanges = false;
-            uint32_t const cPages = pRom->GCPhysLast > GCPhysLast
+            uint32_t const cPages = pRom->GCPhysLast <= GCPhysLast
                                   ? pRom->cb >> PAGE_SHIFT
                                   : (GCPhysLast - pRom->GCPhys) >> PAGE_SHIFT;
             for (uint32_t iPage = (GCPhys - pRom->GCPhys) >> PAGE_SHIFT;
@@ -2484,7 +2485,7 @@ VMMR3DECL(int) PGMR3PhysSetFlags(PVM pVM, RTGCPHYS GCPhys, size_t cb, unsigned f
 VMMDECL(void) PGMR3PhysSetA20(PVM pVM, bool fEnable)
 {
     LogFlow(("PGMR3PhysSetA20 %d (was %d)\n", fEnable, pVM->pgm.s.fA20Enabled));
-    if (pVM->pgm.s.fA20Enabled != (RTUINT)fEnable)
+    if (pVM->pgm.s.fA20Enabled != fEnable)
     {
         pVM->pgm.s.fA20Enabled = fEnable;
         pVM->pgm.s.GCPhysA20Mask = ~(RTGCPHYS)(!fEnable << 20);

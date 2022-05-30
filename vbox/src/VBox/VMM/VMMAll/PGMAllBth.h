@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 17644 2009-03-10 16:39:21Z vboxsync $ */
+/* $Id: PGMAllBth.h 17660 2009-03-11 08:18:09Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4285,7 +4285,7 @@ PGM_BTH_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
     pgmPoolLockPage(pPool, pNewShwPageCR3);
 
 #  ifdef IN_RC
-    /** NOTE: We can't deal with jumps to ring 3 here as we're now in an inconsistent state! */
+    /* NOTE: We can't deal with jumps to ring 3 here as we're now in an inconsistent state! */
     bool fLog = VMMGCLogDisable(pVM);
 #  endif
 
