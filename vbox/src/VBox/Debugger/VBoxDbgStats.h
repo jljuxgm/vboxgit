@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStats.h 12183 2008-09-07 02:35:53Z vboxsync $ */
+/* $Id: VBoxDbgStats.h 12465 2008-09-15 15:19:58Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -39,7 +39,7 @@
 # include <qtimer.h>
 # include <qcombobox.h>
 # include <qpopupmenu.h>
-#endif 
+#endif
 
 class VBoxDbgStats;
 
@@ -122,7 +122,7 @@ public:
     {
         return QListViewItem::key(iColumn, fAscending);
     }
-#endif 
+#endif
 
     /**
      * Logs the tree starting at this item to one of the default logs.
@@ -152,7 +152,7 @@ public:
     {
         return !isHidden();
     }
-#endif 
+#endif
 
 protected:
     /** The name of this item. */
@@ -378,12 +378,12 @@ protected:
  * a entry field for the selection pattern, a refresh interval
  * spinbutton, and the tree view with the statistics.
  */
-class VBoxDbgStats : 
+class VBoxDbgStats :
 #ifdef VBOXDBG_USE_QT4
-    public QWidget, 
+    public QWidget,
 #else
-    public QVBox, 
-#endif 
+    public QVBox,
+#endif
     public VBoxDbgBase
 {
     Q_OBJECT;
