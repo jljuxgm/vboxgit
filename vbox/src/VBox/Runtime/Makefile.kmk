@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12104 2008-09-04 19:33:44Z vboxsync $
+# $Id: Makefile.kmk 12105 2008-09-04 19:46:14Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -510,7 +510,6 @@ RuntimeR3_SOURCES.solaris = \
 	generic/RTTimeLocalNow-generic.cpp \
 	generic/RTTimerCreate-generic.cpp \
 	generic/RTUuidCreate-generic.cpp \
-	generic/mppresent-generic.cpp \
 	generic/sched-generic.cpp \
 	generic/utf16locale-generic.cpp \
 	generic/uuid-generic.cpp \
