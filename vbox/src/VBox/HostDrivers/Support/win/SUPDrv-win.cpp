@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 13867 2008-11-05 14:16:33Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 13913 2008-11-06 12:59:01Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -155,13 +155,13 @@ ULONG _stdcall DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
                     OBJECT_ATTRIBUTES   Attr;
 
                     RtlInitUnicodeString(&CallbackName, L"\\Callback\\PowerState");
-	                InitializeObjectAttributes(&Attr, &CallbackName, OBJ_CASE_INSENSITIVE, NULL, NULL);
+                    InitializeObjectAttributes(&Attr, &CallbackName, OBJ_CASE_INSENSITIVE, NULL, NULL);
 
-	                rc = ExCreateCallback(&pDevExt->pObjPowerCallback, &Attr, TRUE, TRUE);
+                    rc = ExCreateCallback(&pDevExt->pObjPowerCallback, &Attr, TRUE, TRUE);
                     if (rc == STATUS_SUCCESS)
-		                pDevExt->hPowerCallback = ExRegisterCallback(pDevExt->pObjPowerCallback, VBoxPowerDispatchCallback, pDevObj);
+                        pDevExt->hPowerCallback = ExRegisterCallback(pDevExt->pObjPowerCallback, VBoxPowerDispatchCallback, pDevObj);
 
-                    dprintf(("VBoxDrv::DriverEntry   returning STATUS_SUCCESS\n"));
+                    dprintf(("VBoxDrv::DriverEntry returning STATUS_SUCCESS\n"));
                     return STATUS_SUCCESS;
                 }
 
