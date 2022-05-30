@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 17033 2009-02-23 20:12:10Z vboxsync $ */
+/* $Id: MachineImpl.h 17073 2009-02-24 14:43:29Z vboxsync $ */
 
 /** @file
  *
@@ -135,7 +135,7 @@ public:
             /** Session type string (for indirect sessions) */
             Bstr mType;
 
-            /** Sesison machine object */
+            /** Session machine object */
             ComObjPtr <SessionMachine> mMachine;
         };
 
