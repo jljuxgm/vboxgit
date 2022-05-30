@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15681 2008-12-19 11:25:06Z vboxsync $
+# $Id: Makefile.kmk 15800 2009-01-05 13:11:37Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -267,7 +267,8 @@ ifeq ($(KBUILD_TARGET),linux)
 	$(PATH_VBoxNetFlt-src)/Makefile
  VBoxNetFlt-src_CLEAN   = \
 	$(PATH_VBoxNetFlt-src)/dkms.conf \
-	$(PATH_VBoxNetFlt-src)/Makefile
+	$(PATH_VBoxNetFlt-src)/Makefile	\
+	$(PATH_TARGET)/VBoxNetFlt-src-1.dep
 
  VBoxNetFlt-sh_INST    = bin/src/vboxnetflt/
  VBoxNetFlt-sh_MODE    = a+rx,u+w
