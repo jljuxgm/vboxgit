@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 17180 2009-02-26 17:32:49Z vboxsync $ */
+/* $Id: MachineImpl.h 17287 2009-03-03 14:45:17Z vboxsync $ */
 
 /** @file
  *
@@ -280,7 +280,7 @@ public:
      *  is necessary because hard disk data requires different procedures when
      *  taking or discarding snapshots, etc.
      *
-     *  The data variable is |mHWData|.
+     *  The data variable is |mHDData|.
      */
     struct HDData
     {

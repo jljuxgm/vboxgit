@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 17098 2009-02-24 20:18:52Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 17287 2009-03-03 14:45:17Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -580,7 +580,22 @@ int handleExportAppliance(HandlerArg *a)
         if (FAILED(rc))
             break;
 
-        CHECK_ERROR_BREAK(pAppliance, Write(Bstr(strOutputFile)));
+        ComPtr<IProgress> progress;
+        CHECK_ERROR_BREAK(pAppliance, Write(Bstr(strOutputFile), progress.asOutParam()));
+
+        showProgress(progress);
+
+        if (SUCCEEDED(rc))
+            progress->COMGETTER(ResultCode)(&rc);
+
+        if (FAILED(rc))
+        {
+            com::ProgressErrorInfo info(progress);
+            com::GluePrintErrorInfo(info);
+            com::GluePrintErrorContext("Write", __FILE__, __LINE__);
+        }
+        else
+            RTPrintf("Successfully exported %d machine(s).\n", llMachines.size());
 
     } while (0);
 
