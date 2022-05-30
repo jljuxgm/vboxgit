@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 16884 2009-02-18 10:15:06Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 16886 2009-02-18 10:16:59Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -326,6 +326,7 @@ void pgmMapSetShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
 
                 /* Set the PGM_PDFLAGS_MAPPING flag in the page directory pointer entry. (legacy PAE guest mode) */
                 pShwPdpt->a[iPdPt].u |= PGM_PLXFLAGS_MAPPING;
+                break;
             }
 
             default:
