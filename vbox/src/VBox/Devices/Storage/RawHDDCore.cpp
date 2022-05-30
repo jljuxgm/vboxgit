@@ -1,4 +1,4 @@
-/** $Id: RawHDDCore.cpp 11484 2008-08-19 12:41:38Z vboxsync $ */
+/** $Id: RawHDDCore.cpp 12143 2008-09-05 15:57:39Z vboxsync $ */
 /** @file
  * Raw Disk image, Core Code.
  */
@@ -395,7 +395,8 @@ static int rawCreate(const char *pszFilename, VDIMAGETYPE enmType,
     if (pIfProgress)
     {
         pCbProgress = VDGetInterfaceProgress(pIfProgress);
-        pfnProgress = pCbProgress->pfnProgress;
+        if (pCbProgress)
+            pfnProgress = pCbProgress->pfnProgress;
         pvUser = pIfProgress->pvUser;
     }
 
