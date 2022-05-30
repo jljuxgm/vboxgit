@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 15538 2008-12-15 19:32:34Z vboxsync $ */
+/* $Id: MMHyper.cpp 17536 2009-03-08 03:39:42Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -655,8 +655,8 @@ static int mmR3HyperMap(PVM pVM, const size_t cb, const char *pszDesc, PRTGCPTR 
     AssertReturn(cbAligned >= cb, VERR_INVALID_PARAMETER);
     if (pVM->mm.s.offHyperNextStatic + cbAligned >= pVM->mm.s.cbHyperArea) /* don't use the last page, it's a fence. */
     {
-        AssertMsgFailed(("Out of static mapping space in the HMA! offHyperAreaGC=%x cbAligned=%x\n",
-                         pVM->mm.s.offHyperNextStatic, cbAligned));
+        AssertMsgFailed(("Out of static mapping space in the HMA! offHyperAreaGC=%x cbAligned=%x cbHyperArea=%x\n",
+                         pVM->mm.s.offHyperNextStatic, cbAligned, pVM->mm.s.cbHyperArea));
         return VERR_NO_MEMORY;
     }
 
