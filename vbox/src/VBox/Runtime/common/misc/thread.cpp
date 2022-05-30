@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 13908 2008-11-06 11:53:47Z vboxsync $ */
+/* $Id: thread.cpp 14001 2008-11-10 12:12:55Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -421,8 +421,7 @@ void rtThreadInsert(PRTTHREADINT pThread, RTNATIVETHREAD NativeThread)
 static void rtThreadRemoveLocked(PRTTHREADINT pThread)
 {
     PRTTHREADINT pThread2 = (PRTTHREADINT)RTAvlPVRemove(&g_ThreadTree, pThread->Core.Key);
-#if !defined(RT_OS_OS2)
-    /// @todo this asserts for threads created by NSPR
+#if !defined(RT_OS_OS2) /** @todo this asserts for threads created by NSPR */
     AssertMsg(pThread2 == pThread, ("%p(%s) != %p (%p/%s)\n", pThread2, pThread2  ? pThread2->szName : "<null>",
                                     pThread, pThread->Core.Key, pThread->szName));
 #endif
