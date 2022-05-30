@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14083 2008-11-11 10:45:21Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14084 2008-11-11 11:11:16Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -105,7 +105,7 @@
    NS_INTERFACE_MAP_END
 #endif
 
-#ifndef NS_IMPL_QUERY_INTERFACE2_AMBGUOUS_CI
+#ifndef NS_IMPL_QUERY_INTERFACE2_AMBIGUOUS_CI
 # define NS_IMPL_QUERY_INTERFACE2_AMBIGUOUS_CI(_class, _i1, _ic1,             \
                                                _i2, _ic2)                     \
    NS_INTERFACE_MAP_BEGIN(_class)                                             \
