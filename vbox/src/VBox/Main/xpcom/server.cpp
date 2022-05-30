@@ -1,4 +1,4 @@
-/* $Id: server.cpp 17260 2009-03-03 09:16:15Z vboxsync $ */
+/* $Id: server.cpp 17310 2009-03-03 19:12:13Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -193,6 +193,9 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(HostFloppyDrive, IHostFloppyDrive)
 
 NS_DECL_CLASSINFO(HostNetworkInterface)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(HostNetworkInterface, IHostNetworkInterface)
+
+NS_DECL_CLASSINFO(HostNetworkInterfaceIpConfig)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(HostNetworkInterfaceIpConfig, IHostNetworkInterfaceIpConfig)
 
 NS_DECL_CLASSINFO(GuestOSType)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(GuestOSType, IGuestOSType)
