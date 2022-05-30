@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 16557 2009-02-06 16:35:42Z vboxsync $ */
+/* $Id: MachineImpl.cpp 16558 2009-02-06 16:41:43Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -26,6 +26,10 @@
 #endif
 #ifndef __STDC_CONSTANT_MACROS
 # define __STDC_CONSTANT_MACROS
+#endif
+
+#if defined(RT_OS_WINDOWS)
+#elif defined(RT_OS_LINUX)
 #endif
 
 #ifdef VBOX_WITH_SYS_V_IPC_SESSION_WATCHER
@@ -72,8 +76,6 @@
 
 #include <VBox/err.h>
 #include <VBox/param.h>
-#include <VBox/settings.h>
-
 #ifdef VBOX_WITH_GUEST_PROPS
 # include <VBox/HostServices/GuestPropertySvc.h>
 # include <VBox/com/array.h>

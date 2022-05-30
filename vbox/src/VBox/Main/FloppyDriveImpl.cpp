@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.cpp 16557 2009-02-06 16:35:42Z vboxsync $ */
+/* $Id: FloppyDriveImpl.cpp 16558 2009-02-06 16:41:43Z vboxsync $ */
 
 /** @file
  *
@@ -34,8 +34,6 @@
 
 #include <iprt/string.h>
 #include <iprt/cpputils.h>
-
-#include <VBox/settings.h>
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
