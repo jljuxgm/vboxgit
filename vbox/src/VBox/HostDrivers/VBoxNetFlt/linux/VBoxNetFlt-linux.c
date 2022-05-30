@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 15770 2008-12-29 18:04:56Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 15840 2009-01-07 16:37:24Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -82,6 +82,10 @@
 # define VBOX_SKB_IS_GSO(skb) false
 # define VBOX_SKB_GSO_SEGMENT(skb) NULL
 #endif /* LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 18) */
+
+#ifndef NET_IP_ALIGN
+# define NET_IP_ALIGN 2
+#endif
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
 unsigned dev_get_flags(const struct net_device *dev)
