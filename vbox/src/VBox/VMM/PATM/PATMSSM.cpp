@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 14885 2008-12-02 09:33:42Z vboxsync $ */
+/* $Id: PATMSSM.cpp 14887 2008-12-02 10:15:21Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -705,19 +705,6 @@ DECLCALLBACK(int) patmr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
     pVM->patm.s.StatEnabled   = patmInfo.StatEnabled;
     pVM->patm.s.StatInstalled = patmInfo.StatInstalled;
 #endif
-
-    /* We can't allow a patched VM to be restored when we're currently forced to use VT-x, because another VT-x VM is already running. */
-    if (    PATMIsEnabled(pVM)
-        &&  HWACCMIsEnabled(pVM))
-    {
-        if (CPUMGetCPUVendor(pVM) == CPUMCPUVENDOR_AMD)
-            VM_SET_ERROR(pVM, rc, "An active VM already uses AMD-V hardware acceleration. It is not "
-                                  "allowed to simultaneously use software virtualization.\n");
-        else
-            VM_SET_ERROR(pVM, rc, "An active VM already uses Intel VT-x hardware acceleration. It is not "
-                                  "allowed to simultaneously use software virtualization.\n");
-        return VERR_ACCESS_DENIED;
-    }
 
     return VINF_SUCCESS;
 }
