@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 14485 2008-11-21 23:34:34Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 14525 2008-11-24 15:14:18Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1343,6 +1343,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                                     {
                                         /* that was simple, now examine PhMedium */
                                         if(PhMedium == NdisPhysicalMediumWirelessWan
+                                                || PhMedium == NdisPhysicalMediumWirelessLan
                                                 || PhMedium == NdisPhysicalMediumNative802_11
                                                 || PhMedium == NdisPhysicalMediumBluetooth
                                                 /*|| PhMedium == NdisPhysicalMediumWiMax*/
