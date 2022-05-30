@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 15218 2008-12-10 00:23:49Z vboxsync $ */
+/* $Id: HWACCMInternal.h 15236 2008-12-10 09:50:10Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -373,6 +373,20 @@ typedef struct HWACCM
 /** Pointer to HWACCM VM instance data. */
 typedef HWACCM *PHWACCM;
 
+/* Maximum number of cached entries. */
+#define VMCSCACHE_MAX_ENTRY                             256
+
+/* Structure for storing read and write VMCS actions. */
+typedef struct VMCSCACHE
+{
+    uint32_t    cValidEntries;
+    uint32_t    uAlignment[3];
+    uint32_t    aField[VMCSCACHE_MAX_ENTRY];
+    uint64_t    aFieldVal[VMCSCACHE_MAX_ENTRY];
+} VMCSCACHE;
+/** Pointer to VMCSCACHE. */
+typedef VMCSCACHE *PVMCSCACHE;
+
 /**
  * HWACCM VMCPU Instance data.
  */
@@ -425,6 +439,11 @@ typedef struct HWACCMCPU
 
         /** Current EPTP. */
         RTHCPHYS                    GCPhysEPTP;
+
+        /** VMXWriteVMCS cache. */
+        VMCSCACHE                   VMCSWriteCache;
+        /** VMXReadVMCS cache. */
+        VMCSCACHE                   VMCSReadCache;
 
         /** Real-mode emulation state. */
         struct

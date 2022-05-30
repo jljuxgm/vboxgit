@@ -1,4 +1,4 @@
-; $Id: tstAsmStructsAsm.asm 10648 2008-07-15 12:15:41Z vboxsync $
+; $Id: tstAsmStructsAsm.asm 15236 2008-12-10 09:50:10Z vboxsync $
 ;; @file
 ; Assembly / C structure layout testcase.
 ;
@@ -27,6 +27,7 @@ BITS 64
 %endif
 
 %include "../CPUMInternal.mac"
+%include "../HWACCMInternal.mac"
 %include "../TRPMInternal.mac"
 %include "../VMMInternal.mac"
 %include "VBox/cpum.mac"

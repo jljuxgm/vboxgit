@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14833 2008-11-30 11:14:27Z vboxsync $
+# $Id: Makefile.kmk 15236 2008-12-10 09:50:10Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -261,6 +261,7 @@ $(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructsAsm.mac: \
 		$(DEPTH)/include/VBox/vm.mac \
 		$(VBOX_PATH_VMM_SRC)/CPUMInternal.mac \
 		$(VBOX_PATH_VMM_SRC)/TRPMInternal.mac \
+		$(VBOX_PATH_VMM_SRC)/HWACCMInternal.mac \
 		$(VBOX_PATH_VMM_SRC)/VMMInternal.mac \
 		$(VBOX_PATH_VMM_SRC)/testcase/Makefile.kmk \
 		$(PATH_ROOT)/Config.kmk $(LOCALCFG) $(AUTOCFG) \
