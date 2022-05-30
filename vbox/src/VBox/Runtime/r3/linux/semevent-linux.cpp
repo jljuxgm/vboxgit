@@ -1,4 +1,4 @@
-/* $Id: semevent-linux.cpp 14429 2008-11-20 17:23:43Z vboxsync $ */
+/* $Id: semevent-linux.cpp 14468 2008-11-21 15:44:27Z vboxsync $ */
 /** @file
  * IPRT - Event Semaphore, Linux (2.6.x+).
  */
@@ -31,13 +31,18 @@
 #include <features.h>
 #if __GLIBC_PREREQ(2,6)
 
-/* glibc 2.6 fixed a serious bug in the mutex implementation
- * The external refernce to epoll_pwait is a hack which prevents
- * that we link against glibc < 2.6 */
-
+/*
+ * glibc 2.6 fixed a serious bug in the mutex implementation. We wrote this
+ * linux specific event semaphores code in order to work around the bug. As it
+ * turns out, this code seems to have an unresolved issue (#2599), so we'll
+ * fall back on the pthread based implementation if glibc is known to contain
+ * the bug fix.
+ *
+ * The external refernce to epoll_pwait is a hack which prevents that we link
+ * against glibc < 2.6.
+ */
+#include "../posix/semevent-posix.cpp"
 asm volatile (".global epoll_pwait");
-
-#include "r3/posix/semevent-posix.cpp"
 
 #else /* glibc < 2.6 */
 

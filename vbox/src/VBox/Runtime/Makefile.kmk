@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14429 2008-11-20 17:23:43Z vboxsync $
+# $Id: Makefile.kmk 14468 2008-11-21 15:44:27Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -387,9 +387,6 @@ RuntimeR3_SOURCES.linux.x86 += \
 RuntimeR3_SOURCES.linux.amd64 += \
 	r3/linux/semevent-linux.cpp \
 	r3/linux/semeventmulti-linux.cpp
-# with glibc >= 2.6 we use the libc implementation
-r3/linux/semevent-linux.cpp_INCS = .
-r3/linux/semeventmulti-linux.cpp_INCS = .
 ifdef RT_NEW_LINUX_MUTEX_CODE
  RuntimeR3_SOURCES.linux.amd64 += \
 	r3/linux/semmutex-linux.cpp
