@@ -1,4 +1,4 @@
-/* $Id: string.cpp 16384 2009-01-29 18:16:07Z vboxsync $ */
+/* $Id: string.cpp 16495 2009-02-03 21:20:36Z vboxsync $ */
 
 /** @file
  *
@@ -76,6 +76,16 @@ Utf8Str Utf8Str::substr(size_t pos /*= 0*/, size_t n /*= npos*/) const
     }
 
     return ret;
+}
+
+int Utf8Str::toInt(uint64_t &i) const
+{
+    return RTStrToUInt64Ex(str, NULL, 0, &i);
+}
+
+int Utf8Str::toInt(uint32_t &i) const
+{
+    return RTStrToUInt32Ex(str, NULL, 0, &i);
 }
 
 struct FormatData

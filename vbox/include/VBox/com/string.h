@@ -1,4 +1,4 @@
-/* $Id: string.h 16384 2009-01-29 18:16:07Z vboxsync $ */
+/* $Id: string.h 16495 2009-02-03 21:20:36Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -510,6 +510,20 @@ public:
      * @param n Number of codepoints to copy, starting with the one at "pos".
      */
     Utf8Str substr(size_t pos = 0, size_t n = npos) const;
+
+    /**
+     * Attempts to convert the member string into an unsigned 64-bit integer.
+     * @return IPRT error code.
+     * @param i Output buffer.
+     */
+    int toInt(uint64_t &i) const;
+
+    /**
+     * Attempts to convert the member string into an unsigned 32-bit integer.
+     * @return IPRT error code.
+     * @param i Output buffer.
+     */
+    int toInt(uint32_t &i) const;
 
     /**
      *  Intended to pass instances as out (|char **|) parameters to methods.
