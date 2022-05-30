@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 14125 2008-11-12 09:20:30Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 14208 2008-11-14 13:26:25Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -151,6 +151,8 @@ typedef struct VBOXNETFLTINS
             /** Whether we've successfully put the interface into to promiscuous mode.
              * This is for dealing with the ENETDOWN case. */
             bool volatile fPromiscuousSet;
+            /** Whether device exists and physically attached. */
+            bool volatile fRegistered;
             /** The MAC address of the interface. */
             RTMAC Mac;
             struct notifier_block Notifier;
