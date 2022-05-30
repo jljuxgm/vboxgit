@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17362 2009-03-04 18:10:58Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17400 2009-03-05 13:55:30Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2458,6 +2458,11 @@ DECLCALLBACK(int) Appliance::taskThreadExportOVF(RTTHREAD aThread, void *pvUser)
 
         xml::XmlFileWriter writer(doc);
         writer.write(pAppliance->m->strPath.c_str());
+    }
+    catch(xml::Error &x)
+    {
+        rc = setError(VBOX_E_FILE_ERROR,
+                      x.what());
     }
     catch(HRESULT aRC)
     {
