@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14003 2008-11-10 12:24:53Z vboxsync $
+# $Id: Makefile.kmk 14245 2008-11-17 11:00:59Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -113,7 +113,9 @@ if defined(VBOX_ONLY_SDK) || "$(KBUILD_TARGET)" != "win"
     $(VBOX_IDL_TYPELIB.XPCOM)
 
  VBOX_MAIN_PREREQS += $(VBOX_IDL_TYPELIB.XPCOM) $(VBOX_IDL_HEADER.XPCOM)
- BLDDIRS += $(VBOX_PATH_SDK)/bindings/xpcom/idl
+ BLDDIRS += \
+	$(VBOX_PATH_SDK)/bindings/xpcom/idl \
+	$(VBOX_PATH_SDK)/bindings/xpcom/include
 endif # xpcom
 
 
