@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 14857 2008-12-01 13:43:57Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 14861 2008-12-01 14:13:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -1220,7 +1220,7 @@ static uint32_t pgmR0DynMapPageSlow(PPGMR0DYNMAP pThis, RTHCPHYS HCPhys, uint32_
     }
     Assert(iFreePage < cPages);
 
-#ifdef VBOX_WITH_STATISTICS
+#if 0 //def VBOX_WITH_STATISTICS
     /* Check for lost hits. */
     if (!fLooped)
         for (uint32_t iPage2 = (iPage + 5) % cPages; iPage2 != iPage; iPage2 = (iPage2 + 1) % cPages)
@@ -1642,7 +1642,8 @@ static void pgmDynMapOptimizeAutoSet(PPGMMAPSET pSet)
 }
 
 
-/* documented elsewhere - a bit of a mess. */
+/* documented elsewhere - a bit of a mess.
+   This is a VERY hot path. */
 VMMDECL(int) PGMDynMapHCPage(PVM pVM, RTHCPHYS HCPhys, void **ppv)
 {
     /*
