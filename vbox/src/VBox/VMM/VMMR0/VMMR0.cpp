@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 12549 2008-09-17 18:02:02Z vboxsync $ */
+/* $Id: VMMR0.cpp 12836 2008-09-30 15:33:20Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1191,14 +1191,18 @@ DECLEXPORT(void) RTCALL AssertMsg2(const char *pszFormat, ...)
     PRTLOGGER pLog = RTLogDefaultInstance(); /** @todo we want this for release as well! */
     if (pLog)
     {
-        va_list args;
+        va_list va;
+        va_start(va, pszFormat);
+        RTLogFormatV(rtLogOutput, pLog, pszFormat, va);
+        va_end(va);
 
-        va_start(args, pszFormat);
-        RTLogFormatV(rtLogOutput, pLog, pszFormat, args);
         PVM pVM = GVMMR0GetVMByEMT(NIL_RTNATIVETHREAD);
         if (pVM)
-            RTStrPrintfV(pVM->vmm.s.szRing0AssertMsg2, sizeof(pVM->vmm.s.szRing0AssertMsg2), pszFormat, args);
-        va_end(args);
+        {
+            va_start(va, pszFormat);
+            RTStrPrintfV(pVM->vmm.s.szRing0AssertMsg2, sizeof(pVM->vmm.s.szRing0AssertMsg2), pszFormat, va);
+            va_end(va);
+        }
     }
 }
 
