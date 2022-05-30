@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 13432 2008-10-21 11:36:19Z vboxsync $ */
+/* $Id: DevVGA.h 14829 2008-11-30 08:16:10Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -295,10 +295,10 @@ typedef struct VGAState {
     /** The PCI device. */
     PCIDEVICE                   Dev;
 
-    STAMPROFILE                 StatGCMemoryRead;
-    STAMPROFILE                 StatGCMemoryWrite;
-    STAMPROFILE                 StatGCIOPortRead;
-    STAMPROFILE                 StatGCIOPortWrite;
+    STAMPROFILE                 StatRZMemoryRead;
+    STAMPROFILE                 StatR3MemoryRead;
+    STAMPROFILE                 StatRZMemoryWrite;
+    STAMPROFILE                 StatR3MemoryWrite;
 
 #ifdef VBE_BYTEWISE_IO
     /** VBE read/write data/index flags */
