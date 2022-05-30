@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 17622 2009-03-10 12:32:23Z vboxsync $ */
+/* $Id: PGMMap.cpp 17898 2009-03-15 19:48:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1078,7 +1078,7 @@ void pgmR3MapRelocate(PVM pVM, PPGMMAPPING pMapping, RTGCPTR GCPtrOldMapping, RT
  */
 bool pgmR3MapIsKnownConflictAddress(PPGMMAPPING pMapping, RTGCPTR GCPtr)
 {
-    for (int i=0;i<RT_ELEMENTS(pMapping->GCPtrConflict);i++)
+    for (unsigned i=0; i<RT_ELEMENTS(pMapping->GCPtrConflict); i++)
     {
         if (GCPtr == pMapping->GCPtrConflict[i])
             return true;
