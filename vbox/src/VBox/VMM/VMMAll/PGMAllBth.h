@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 16658 2009-02-11 12:22:03Z vboxsync $ */
+/* $Id: PGMAllBth.h 16659 2009-02-11 12:24:21Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1884,8 +1884,8 @@ PGM_BTH_DECL(int, SyncPage)(PVM pVM, GSTPDE PdeSrc, RTGCPTR GCPtrPage, unsigned 
     else
     {
         STAM_COUNTER_INC(&pVM->pgm.s.CTX_MID_Z(Stat,SyncPagePDOutOfSync));
-        Log2(("SyncPage: Out-Of-Sync PDE at %RGp PdeSrc=%RX64 PdeDst=%RX64\n",
-              GCPtrPage, (uint64_t)PdeSrc.u, (uint64_t)PdeDst.u));
+        Log2(("SyncPage: Out-Of-Sync PDE at %RGp PdeSrc=%RX64 PdeDst=%RX64 (GCPhys %RGp vs %RGp)\n",
+              GCPtrPage, (uint64_t)PdeSrc.u, (uint64_t)PdeDst.u, pShwPage->GCPhys, GCPhys));
     }
 
     /*
