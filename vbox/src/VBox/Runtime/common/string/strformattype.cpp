@@ -1,4 +1,4 @@
-/* $Id: strformattype.cpp 8504 2008-04-30 11:45:08Z vboxsync $ */
+/* $Id: strformattype.cpp 12906 2008-10-02 09:15:24Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions, Dynamic Types.
  */
@@ -329,7 +329,7 @@ RTDECL(int) RTStrFormatTypeRegister(const char *pszType, PFNRTSTRFORMATTYPE pfnH
  */
 RTDECL(int) RTStrFormatTypeDeregister(const char *pszType)
 {
-    uint32_t i;
+    int32_t i;
 
     /*
      * Validate input.
