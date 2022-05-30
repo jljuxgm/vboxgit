@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 14154 2008-11-12 23:34:50Z vboxsync $ */
+/* $Id: PGMAllBth.h 14364 2008-11-19 17:07:11Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3135,7 +3135,7 @@ PGM_BTH_DECL(int, SyncCR3)(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bo
     HWACCMFlushTLB(pVM);
     return VINF_SUCCESS;
 
-#elif PGM_SHW_TYPE == PGM_TYPE_AMD64
+#elif PGM_SHW_TYPE == PGM_TYPE_AMD64 || defined(VBOX_WITH_PGMPOOL_PAGING_ONLY)
     /*
      * AMD64 (Shw & Gst) - No need to check all paging levels; we zero
      * out the shadow parts when the guest modifies its tables.
