@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 12808 2008-09-29 15:19:15Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 13530 2008-10-23 11:33:30Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -50,6 +50,7 @@
 
 #include "../SUPDrvInternal.h"
 #include <VBox/log.h>
+#include <VBox/version.h>
 #include <iprt/semaphore.h>
 #include <iprt/spinlock.h>
 #include <iprt/mp.h>
@@ -63,10 +64,12 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
+#define _QUOTE2(x) #x
+#define QUOTE(x) _QUOTE2(x)
 /** The module name. */
 #define DEVICE_NAME              "vboxdrv"
 /** The module description as seen in 'modinfo'. */
-#define DEVICE_DESC              "VirtualBox Host Driver"
+#define DEVICE_DESC              "VirtualBox Driver"
 /** Maximum number of driver instances. */
 #define DEVICE_MAXINSTANCES      16
 
@@ -137,7 +140,7 @@ static struct dev_ops g_VBoxDrvSolarisDevOps =
 static struct modldrv g_VBoxDrvSolarisModule =
 {
     &mod_driverops,         /* extern from kernel */
-    DEVICE_DESC,
+    DEVICE_DESC " " VBOX_VERSION_STRING "r" QUOTE(VBOX_SVN_REV),
     &g_VBoxDrvSolarisDevOps
 };
 
