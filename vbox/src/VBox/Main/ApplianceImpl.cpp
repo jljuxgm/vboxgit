@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16209 2009-01-23 18:48:23Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16210 2009-01-23 19:22:46Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -140,6 +140,8 @@ struct VirtualDisk
 
 struct VirtualSystem
 {
+    string              strName;                // copy of VirtualSystem/@id
+
     CIMOSType_T         cimos;
     string              strVirtualSystemType;
 
@@ -416,6 +418,10 @@ HRESULT Appliance::HandleVirtualSystemContent(const char *pcszPath,
                                               const xml::Node *pelmVirtualSystem)
 {
     VirtualSystem d;
+
+    const xml::Node *pIdAttr = pelmVirtualSystem->findAttribute("type");
+    if (pIdAttr)
+        d.strName = pIdAttr->getValue();
 
     xml::NodesLoop loop(*pelmVirtualSystem);      // all child elements
     const xml::Node *pelmThis;
