@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 16172 2009-01-22 15:09:31Z vboxsync $ */
+/* $Id: PGM.cpp 16203 2009-01-23 16:36:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1962,15 +1962,17 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
      */
     pVM->pgm.s.GCPtrCR3Mapping += offDelta;
     /** @todo move this into shadow and guest specific relocation functions. */
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+    AssertMsg(pVM->pgm.s.pShwNestedRootR3, ("Init order, no relocation before paging is initialized!\n"));
+#else
     AssertMsg(pVM->pgm.s.pShw32BitPdR3, ("Init order, no relocation before paging is initialized!\n"));
-#ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
     pVM->pgm.s.pShw32BitPdRC += offDelta;
 #endif
     pVM->pgm.s.pGst32BitPdRC += offDelta;
-    AssertCompile(RT_ELEMENTS(pVM->pgm.s.apShwPaePDsRC) == RT_ELEMENTS(pVM->pgm.s.apGstPaePDsRC));
-    for (unsigned i = 0; i < RT_ELEMENTS(pVM->pgm.s.apShwPaePDsRC); i++)
+    for (unsigned i = 0; i < RT_ELEMENTS(pVM->pgm.s.apGstPaePDsRC); i++)
     {
 #ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
+        AssertCompile(RT_ELEMENTS(pVM->pgm.s.apShwPaePDsRC) == RT_ELEMENTS(pVM->pgm.s.apGstPaePDsRC));
         pVM->pgm.s.apShwPaePDsRC[i] += offDelta;
 #endif
         pVM->pgm.s.apGstPaePDsRC[i] += offDelta;
