@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14256 2008-11-17 15:27:53Z vboxsync $
+# $Id: Makefile.kmk 14436 2008-11-20 21:06:10Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -251,7 +251,6 @@ $(PATH_BIN)/$(VBOX_LNX_PACKAGE_NAME): \
 $(VBOX_LNX_INST_OUT_DIR)/vboxdrv.sh: $(VBOX_PATH_LNX_INST_SRC)/vboxdrv.sh.in | $$(dir $$@)
 	$(QUIET)$(SED_EXT) \
 		-e "s|%NOLSB%|yes|g" \
-		-e "s|%NETFLT%|$(VBOX_WITH_NETFLT)|g" \
 		-e "s|%PACKAGE%|virtualbox|g" \
 		--output $@ \
 		$<
