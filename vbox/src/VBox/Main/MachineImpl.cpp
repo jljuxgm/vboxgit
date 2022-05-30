@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 11820 2008-08-29 14:09:39Z vboxsync $ */
+/* $Id: MachineImpl.cpp 11832 2008-08-29 15:35:21Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -8990,6 +8990,7 @@ STDMETHODIMP SessionMachine::PushGuestProperties (ComSafeArrayIn(INPTR BSTR, aNa
     com::SafeArray <INPTR BSTR> values(ComSafeArrayInArg(aValues));
     com::SafeArray <ULONG64> timestamps(ComSafeArrayInArg(aTimestamps));
     com::SafeArray <INPTR BSTR> flags(ComSafeArrayInArg(aFlags));
+    DiscardSettings();
     mHWData.backup();
     mHWData->mGuestProperties.erase(mHWData->mGuestProperties.begin(),
                                     mHWData->mGuestProperties.end());
