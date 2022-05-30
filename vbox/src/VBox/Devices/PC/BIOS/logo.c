@@ -1,4 +1,4 @@
-/* $Id: logo.c 9534 2008-06-09 11:37:06Z vboxsync $ */
+/* $Id: logo.c 16537 2009-02-05 17:55:47Z vboxsync $ */
 /** @file
  * Stuff for drawing the BIOS logo.
  */
@@ -304,6 +304,9 @@ void print_detected_harddisks()
         actual_device++;
         device = read_byte(ebda_seg, &EbdaData->ata.hdidmap[actual_device]);
     }
+
+    if ((first_ctrl_printed == 0) && (second_ctrl_printed == 0))
+        printf("No hard disks found");
 
     printf("\n");
 }
