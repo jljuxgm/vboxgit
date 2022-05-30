@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 17978 2009-03-16 20:15:21Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 17980 2009-03-16 20:41:00Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -482,6 +482,7 @@ int handleCloneHardDisk(HandlerArg *a)
                     dst = ValueUnion.psz;
                 else
                     return errorSyntax(USAGE_CLONEHD, "Invalid parameter '%s'", ValueUnion.psz);
+                break;
 
             default:
                 if (c > 0)
@@ -600,7 +601,7 @@ int handleConvertFromRaw(int argc, char *argv[])
     RTGETOPTUNION ValueUnion;
     RTGETOPTSTATE GetState;
     // start at 0 because main() has hacked both the argc and argv given to us
-    RTGetOptInit(&GetState, argc, argv, g_aCloneHardDiskOptions, RT_ELEMENTS(g_aCloneHardDiskOptions), 0, 0 /* fFlags */);
+    RTGetOptInit(&GetState, argc, argv, g_aConvertFromRawHardDiskOptions, RT_ELEMENTS(g_aConvertFromRawHardDiskOptions), 0, 0 /* fFlags */);
     while ((c = RTGetOpt(&GetState, &ValueUnion)))
     {
         switch (c)
@@ -632,6 +633,7 @@ int handleConvertFromRaw(int argc, char *argv[])
                     filesize = ValueUnion.psz;
                 else
                     return errorSyntax(USAGE_CONVERTFROMRAW, "Invalid parameter '%s'", ValueUnion.psz);
+                break;
 
             default:
                 if (c > 0)
