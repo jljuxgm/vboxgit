@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 13522 2008-10-23 09:21:07Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 13534 2008-10-23 13:04:05Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1272,8 +1272,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
 # elif defined(RT_OS_SOLARIS)
                     /* The name is on the form format 'ifX[:1] - long name, chop it off at space. */
-                    char szTrunk[8];
-                    strncpy(szTrunk, pszHifName, sizeof(szTrunk));
+                    char szTrunk[256];
+                    strlcpy(szTrunk, pszHifName, sizeof(szTrunk));
                     char *pszSpace = (char *)memchr(szTrunk, ' ', sizeof(szTrunk));
 
                     /*
