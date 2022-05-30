@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13020 2008-10-06 16:27:16Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 13034 2008-10-07 09:49:28Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -521,7 +521,7 @@ static DECLCALLBACK(int) remR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
     int rc = SSMR3GetU32(pSSM, &u32Sep);            /* separator */
     if (VBOX_FAILURE(rc))
         return rc;
-    if (u32Sep != ~0)
+    if (u32Sep != ~0U)
     {
         AssertMsgFailed(("u32Sep=%#x\n", u32Sep));
         return VERR_SSM_DATA_UNIT_FORMAT_CHANGED;
@@ -558,7 +558,7 @@ static DECLCALLBACK(int) remR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
     rc = SSMR3GetU32(pSSM, &u32Sep);
     if (VBOX_FAILURE(rc))
         return rc;
-    if (u32Sep != ~0)
+    if (u32Sep != ~0U)
     {
         AssertMsgFailed(("u32Sep=%#x (term)\n", u32Sep));
         return VERR_SSM_DATA_UNIT_FORMAT_CHANGED;
