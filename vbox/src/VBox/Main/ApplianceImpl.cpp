@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16361 2009-01-29 10:59:19Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16362 2009-01-29 11:01:33Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -1450,6 +1450,7 @@ STDMETHODIMP Appliance::ImportAppliance()
             const Utf8Str& audioAdapterVBox = vsdeAudioAdapter.front()->strFinalValue;
             if (RTStrICmp(audioAdapterVBox, "null") != 0)
             {
+                uint32_t audio = RTStrToUInt32(audioAdapterVBox.c_str());
                 ComPtr<IAudioAdapter> audioAdapter;
                 rc = newMachine->COMGETTER(AudioAdapter)(audioAdapter.asOutParam());
                 ComAssertComRCThrowRC(rc);
@@ -1482,7 +1483,7 @@ STDMETHODIMP Appliance::ImportAppliance()
 #endif
                 rc = audioAdapter->COMSETTER(AudioDriver)(adt);
                 ComAssertComRCThrowRC(rc);
-                rc = audioAdapter->COMSETTER(AudioController)(audioAdapterVBox);
+                rc = audioAdapter->COMSETTER(AudioController)(static_cast<AudioControllerType_T>(audio));
                 ComAssertComRCThrowRC(rc);
             }
         }
