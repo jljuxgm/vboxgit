@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14227 2008-11-15 20:12:41Z vboxsync $
+# $Id: Makefile.kmk 14275 2008-11-18 03:44:28Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -536,6 +536,9 @@ Drivers_DEFS       = VBOX_WITH_SIMPLEFIED_SLIRP_SYNC
 endif
 ifdef VBOX_WITH_BSD_REASS
 Drivers_DEFS       = VBOX_WITH_BSD_REASS
+endif
+ifdef VBOX_WITH_BSD_TCP_REASS
+Drivers_DEFS       = VBOX_WITH_BSD_TCP_REASS
 endif
 Drivers_INCS      := \
 	$(PATH_SUB_CURRENT) \
