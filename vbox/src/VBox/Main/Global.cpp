@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 12277 2008-09-09 08:30:44Z vboxsync $ */
+/* $Id: Global.cpp 12406 2008-09-11 15:10:36Z vboxsync $ */
 
 /** @file
  *
@@ -45,6 +45,7 @@ const Global::OSType Global::sOSTypes [SchemaDefs::OSTypeId_COUNT] =
     { SchemaDefs_OSTypeId_win2k3,      "Windows Server 2003", VBOXOSTYPE_Win2k3,      256,  12, 20 * _1K },
     { SchemaDefs_OSTypeId_winvista,    "Windows Vista",       VBOXOSTYPE_WinVista,    512,  12, 20 * _1K },
     { SchemaDefs_OSTypeId_win2k8,      "Windows Server 2008", VBOXOSTYPE_Win2k8,      512,  12, 20 * _1K },
+/* @todo missing VBOXOSTYPE_OS2 */
     { SchemaDefs_OSTypeId_os2warp3,    "OS/2 Warp 3",         VBOXOSTYPE_OS2Warp3,     48,   4,  1 * _1K },
     { SchemaDefs_OSTypeId_os2warp4,    "OS/2 Warp 4",         VBOXOSTYPE_OS2Warp4,     64,   4,  2 * _1K },
     { SchemaDefs_OSTypeId_os2warp45,   "OS/2 Warp 4.5",       VBOXOSTYPE_OS2Warp45,    96,   4,  2 * _1K },
