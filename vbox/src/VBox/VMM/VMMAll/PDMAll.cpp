@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 11261 2008-08-08 15:46:17Z vboxsync $ */
+/* $Id: PDMAll.cpp 12687 2008-09-24 14:07:47Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -302,3 +302,19 @@ void pdmUnlock(PVM pVM)
     PDMCritSectLeave(&pVM->pdm.s.CritSect);
 }
 
+
+/**
+ * Converts ring 3 VMM heap pointer to a guest physical address
+ *
+ * @returns VBox status code.
+ * @param   pVM             VM handle.
+ * @param   pv              Ring-3 pointer.
+ * @param   pGCPhys         GC phys address (out).
+ */
+PDMDECL(int) PDMVMMDevHeapR3ToGCPhys(PVM pVM, RTR3PTR pv, RTGCPHYS *pGCPhys)
+{
+    AssertReturn(pv >= pVM->pdm.s.pvVMMDevHeap && (RTR3UINTPTR)pv < (RTR3UINTPTR)pVM->pdm.s.pvVMMDevHeap + pVM->pdm.s.cbVMMDevHeap, VERR_INVALID_PARAMETER);
+
+    *pGCPhys = (pVM->pdm.s.GCPhysVMMDevHeap + ((RTR3UINTPTR)pv - (RTR3UINTPTR)pVM->pdm.s.pvVMMDevHeap));
+    return VINF_SUCCESS;
+}

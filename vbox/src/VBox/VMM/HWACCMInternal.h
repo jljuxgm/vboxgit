@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 12610 2008-09-19 16:42:31Z vboxsync $ */
+/* $Id: HWACCMInternal.h 12687 2008-09-24 14:07:47Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -204,12 +204,8 @@ typedef struct HWACCM
         /** Virtual address of the VM control structure (VMCS). */
         R0PTRTYPE(void *)           pVMCS;
 
-        /** R0 memory object for the TSS page used for real mode emulation. */
-        RTR0MEMOBJ                  pMemObjRealModeTSS;
-        /** Physical address of the TSS page used for real mode emulation. */
-        RTHCPHYS                    pRealModeTSSPhys;
         /** Virtual address of the TSS page used for real mode emulation. */
-        R0PTRTYPE(PVBOXTSS)         pRealModeTSS;
+        R3PTRTYPE(PVBOXTSS)         pRealModeTSS;
 
         /** R0 memory object for the virtual APIC mmio cache. */
         RTR0MEMOBJ                  pMemObjAPIC;

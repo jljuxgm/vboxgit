@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 12653 2008-09-22 16:03:25Z vboxsync $ */
+/* $Id: PDMInternal.h 12687 2008-09-24 14:07:47Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -842,6 +842,14 @@ typedef struct PDM
     R3PTRTYPE(PPDMASYNCCOMPLETIONMANAGER) pAsyncCompletionManagerHead;
     /** Head of the templates. (singly linked) */
     R3PTRTYPE(PPDMASYNCCOMPLETIONTEMPLATE) pAsyncCompletionTemplates;
+
+    /** PDM VMM device heap
+     * @{ */
+    RTR3PTR                         pvVMMDevHeap;
+    RTUINT                          cbVMMDevHeap;
+    RTUINT                          cbVMMDevHeapLeft;
+    RTGCPHYS                        GCPhysVMMDevHeap;
+    /** @} */
 
     /** TEMPORARY HACKS FOR NETWORK POLLING.
      * @todo fix NAT and kill this!

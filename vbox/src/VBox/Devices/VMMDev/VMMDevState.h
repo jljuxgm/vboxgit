@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 11820 2008-08-29 14:09:39Z vboxsync $ */
+/* $Id: VMMDevState.h 12687 2008-09-24 14:07:47Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -89,6 +89,12 @@ typedef struct VMMDevState
     R3PTRTYPE(VMMDevMemory *) pVMMDevRAMR3;
     /** GC physical address of VMMDev RAM area */
     RTGCPHYS32 GCPhysVMMDevRAM;
+
+    /** R3 pointer to VMMDev Heap RAM area 
+     */
+    R3PTRTYPE(VMMDevMemory *) pVMMDevHeapR3;
+    /** GC physical address of VMMDev Heap RAM area */
+    RTGCPHYS32 GCPhysVMMDevHeap;
 
     /** Information reported by guest via VMMDevReportGuestInfo generic request.
      * Until this information is reported the VMMDev refuses any other requests.
