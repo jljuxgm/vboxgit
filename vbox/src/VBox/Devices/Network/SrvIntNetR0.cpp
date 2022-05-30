@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 15505 2008-12-15 14:36:30Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 15643 2008-12-18 11:14:59Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -2311,7 +2311,7 @@ static bool intnetR0NetworkSendUnicast(PINTNETNETWORK pNetwork, PINTNETIF pIfSen
             &&  !(pNetwork->fFlags & (INTNET_OPEN_FLAGS_IGNORE_PROMISC | INTNET_OPEN_FLAGS_QUIETLY_IGNORE_PROMISC | INTNET_OPEN_FLAGS_IGNORE_PROMISC_TRUNK_WIRE | INTNET_OPEN_FLAGS_QUIETLY_IGNORE_PROMISC_TRUNK_WIRE)) )
             fDst |= INTNETTRUNKDIR_WIRE;
         if (    !(pNetwork->fFlags & (INTNET_OPEN_FLAGS_IGNORE_PROMISC | INTNET_OPEN_FLAGS_QUIETLY_IGNORE_PROMISC | INTNET_OPEN_FLAGS_IGNORE_PROMISC_TRUNK_HOST | INTNET_OPEN_FLAGS_QUIETLY_IGNORE_PROMISC_TRUNK_HOST))
-            ||  pTrunkIf->pIfPort->pfnIsPromiscuous(pTrunkIf->pIfPort) )
+            &&  pTrunkIf->pIfPort->pfnIsPromiscuous(pTrunkIf->pIfPort) )
             fDst |= INTNETTRUNKDIR_HOST;
 
         if (    fDst != (INTNETTRUNKDIR_HOST | INTNETTRUNKDIR_WIRE)
