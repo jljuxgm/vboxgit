@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 14251 2008-11-17 12:45:08Z vboxsync $ */
+/* $Id: EMAll.cpp 14257 2008-11-17 15:46:29Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1897,10 +1897,16 @@ static int emInterpretInvlPg(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame,
  */
 VMMDECL(int) EMInterpretCpuId(PVM pVM, PCPUMCTXCORE pRegFrame)
 {
-    uint32_t iLeaf = pRegFrame->eax; NOREF(iLeaf);
+    uint32_t iLeaf = pRegFrame->eax;
+
+    /* cpuid clears the high dwords of the affected 64 bits registers. */
+    pRegFrame->rax = 0;
+    pRegFrame->rbx = 0;
+    pRegFrame->rcx = 0;
+    pRegFrame->rdx = 0;
 
     /* Note: operates the same in 64 and non-64 bits mode. */
-    CPUMGetGuestCpuId(pVM, pRegFrame->eax, &pRegFrame->eax, &pRegFrame->ebx, &pRegFrame->ecx, &pRegFrame->edx);
+    CPUMGetGuestCpuId(pVM, iLeaf, &pRegFrame->eax, &pRegFrame->ebx, &pRegFrame->ecx, &pRegFrame->edx);
     Log(("Emulate: CPUID %x -> %08x %08x %08x %08x\n", iLeaf, pRegFrame->eax, pRegFrame->ebx, pRegFrame->ecx, pRegFrame->edx));
     return VINF_SUCCESS;
 }
