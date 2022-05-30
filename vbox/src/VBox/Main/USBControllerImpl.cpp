@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 15762 2008-12-25 23:53:50Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 15829 2009-01-07 11:17:56Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -435,7 +435,7 @@ STDMETHODIMP USBController::InsertDeviceFilter (ULONG aPosition,
                 "this VirtualBox instance"));
 
     if (filter->mInList)
-        return setError (E_INVALIDARG,
+        return setError (VBOX_E_INVALID_OBJECT_STATE,
             tr ("The given USB device filter is already in the list"));
 
     /* backup the list before modification */
