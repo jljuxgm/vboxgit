@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 13324 2008-10-16 09:54:42Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 13344 2008-10-16 15:10:29Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -108,9 +108,7 @@ static SUPINSTFILE const    g_aSupInstallFiles[] =
 
     {   kSupIFT_Dll,  kSupID_AppPrivArch,       false, "VBoxSharedClipboard" SUPLIB_DLL_SUFF },
     {   kSupIFT_Dll,  kSupID_AppPrivArch,       false, "VBoxSharedFolders" SUPLIB_DLL_SUFF },
-#ifdef VBOX_WITH_CROGL
-    {   kSupIFT_Dll,  kSupID_AppPrivArch,       false, "VBoxSharedCrOpenGL" SUPLIB_DLL_SUFF },
-#endif
+    {   kSupIFT_Dll,  kSupID_AppPrivArch,        true, "VBoxSharedCrOpenGL" SUPLIB_DLL_SUFF },
     {   kSupIFT_Dll,  kSupID_AppPrivArch,       false, "VBoxGuestPropSvc" SUPLIB_DLL_SUFF },
 
     {   kSupIFT_Exe,  kSupID_AppBin,            false, "VBoxManage" SUPLIB_EXE_SUFF },
