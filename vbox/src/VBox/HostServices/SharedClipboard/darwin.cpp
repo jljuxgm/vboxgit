@@ -1,4 +1,4 @@
-/* $Id: darwin.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: darwin.cpp 14303 2008-11-18 13:45:38Z vboxsync $ */
 /** @file
  * Shared Clipboard: Mac OS X host.
  */
@@ -207,7 +207,7 @@ void vboxClipboardDisconnect (VBOXCLIPBOARDCLIENTDATA *pClient)
  * subsystem.
  *
  * @param pClient    Context data for the guest system
- * @param u32Formats Clipboard formats the the guest is offering
+ * @param u32Formats Clipboard formats the guest is offering
  */
 void vboxClipboardFormatAnnounce (VBOXCLIPBOARDCLIENTDATA *pClient, uint32_t u32Formats)
 {
