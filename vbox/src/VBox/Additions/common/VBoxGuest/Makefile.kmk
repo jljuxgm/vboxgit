@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12446 2008-09-14 23:32:31Z vboxsync $
+# $Id: Makefile.kmk 13573 2008-10-27 12:03:26Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -87,6 +87,8 @@ else if1of ($(KBUILD_TARGET), freebsd solaris)
  vboxguest_LIBS          = \
  	$(VBOX_LIB_VBGL_R0BASE) \
  	$(VBOX_LIB_IPRT_GUEST_R0)
+ vboxguest_DEFS.solaris += VBOX_SVN_REV=$(VBOX_SVN_REV)
+ vboxguest_DEPS.solaris += $(VBOX_SVN_REV_KMK)
  vboxguest_DEPS.freebsd  = \
 	$(PATH_vboxguest)/pci_if.h \
 	$(PATH_vboxguest)/bus_if.h \
