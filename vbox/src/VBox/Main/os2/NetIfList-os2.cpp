@@ -1,4 +1,4 @@
-/* $Id: NetIfList-os2.cpp 17710 2009-03-11 16:46:55Z vboxsync $ */
+/* $Id: NetIfList-os2.cpp 17835 2009-03-13 15:18:59Z vboxsync $ */
 /** @file
  * Main - NetIfList, OS/2 implementation.
  */
@@ -52,3 +52,8 @@ int NetIfEnableDynamicIpConfig(VirtualBox *pVbox, HostNetworkInterface * pIf)
     return VERR_NOT_IMPLEMENTED;
 }
 
+
+int NetIfDhcpRediscover(VirtualBox *pVbox, HostNetworkInterface * pIf)
+{
+    return VERR_NOT_IMPLEMENTED;
+}

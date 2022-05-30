@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 17759 2009-03-12 15:57:18Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 17835 2009-03-13 15:18:59Z vboxsync $ */
 
 /** @file
  *
@@ -83,6 +83,7 @@ public:
     STDMETHOD(EnableStaticIpConfig) (IN_BSTR aIPAddress, IN_BSTR aNetworkMask);
     STDMETHOD(EnableStaticIpConfigV6) (IN_BSTR aIPV6Address, ULONG aIPV6MaskPrefixLength);
     STDMETHOD(EnableDynamicIpConfig) ();
+    STDMETHOD(DhcpRediscover) ();
 
     // for VirtualBoxSupportErrorInfoImpl
     static const wchar_t *getComponentName() { return L"HostNetworkInterface"; }

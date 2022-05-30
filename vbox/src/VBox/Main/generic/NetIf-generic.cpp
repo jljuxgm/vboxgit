@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 17764 2009-03-12 16:44:22Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 17835 2009-03-13 15:18:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -117,3 +117,9 @@ int NetIfGetConfig(HostNetworkInterface * pIf, NETIFINFO *)
 {
     return VERR_NOT_IMPLEMENTED;
 }
+
+int NetIfDhcpRediscover(VirtualBox *pVbox, HostNetworkInterface * pIf)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
