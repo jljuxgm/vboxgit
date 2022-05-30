@@ -1,4 +1,4 @@
-/* $Id: GVMMR0Internal.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: GVMMR0Internal.h 14811 2008-11-29 23:48:26Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager, Internal header.
  */
@@ -24,6 +24,7 @@
 
 #include <iprt/mem.h>
 
+
 /**
  * The GVMM per VM data.
  */
@@ -48,6 +49,11 @@ typedef struct GVMMPERVM
 
     /** The scheduler statistics. */
     GVMMSTATSSCHED      StatsSched;
+
+    /** Whether the per-VM ring-0 initialization has been performed. */
+    bool                fDoneVMMR0Init;
+    /** Whether the per-VM ring-0 termination is being or has been performed. */
+    bool                fDoneVMMR0Term;
 } GVMMPERVM;
 /** Pointer to the GVMM per VM data. */
 typedef GVMMPERVM *PGVMMPERVM;

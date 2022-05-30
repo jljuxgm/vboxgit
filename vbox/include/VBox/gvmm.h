@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 13742 2008-11-03 12:19:40Z vboxsync $ */
+/* $Id: gvmm.h 14811 2008-11-29 23:48:26Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -126,6 +126,8 @@ GVMMR0DECL(int)     GVMMR0QueryConfig(PSUPDRVSESSION pSession, const char *pszNa
 
 GVMMR0DECL(int)     GVMMR0CreateVM(PSUPDRVSESSION pSession, uint32_t cCPUs, PVM *ppVM);
 GVMMR0DECL(int)     GVMMR0InitVM(PVM pVM);
+GVMMR0DECL(void)    GVMMR0DoneInitVM(PVM pVM);
+GVMMR0DECL(bool)    GVMMR0DoingTermVM(PVM pVM, PGVM pGVM);
 GVMMR0DECL(int)     GVMMR0DestroyVM(PVM pVM);
 GVMMR0DECL(PGVM)    GVMMR0ByHandle(uint32_t hGVM);
 GVMMR0DECL(PGVM)    GVMMR0ByVM(PVM pVM);
