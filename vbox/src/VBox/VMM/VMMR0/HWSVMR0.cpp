@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 13898 2008-11-06 09:44:29Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 13905 2008-11-06 10:52:08Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -664,7 +664,7 @@ VMMR0DECL(int) SVMR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         val = pCtx->cr4;
         if (!pVM->hwaccm.s.fNestedPaging)
         {
-            switch(pVM->hwaccm.s.enmShadowMode)
+            switch(pVCpu->hwaccm.s.enmShadowMode)
             {
             case PGMMODE_REAL:
             case PGMMODE_PROTECTED:     /* Protected mode, no paging. */

@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13898 2008-11-06 09:44:29Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13905 2008-11-06 10:52:08Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1198,7 +1198,7 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 
         if (!pVM->hwaccm.s.fNestedPaging)
         {
-            switch(pVM->hwaccm.s.enmShadowMode)
+            switch(pVCpu->hwaccm.s.enmShadowMode)
             {
             case PGMMODE_REAL:          /* Real mode                 -> emulated using v86 mode */
             case PGMMODE_PROTECTED:     /* Protected mode, no paging -> emulated using identity mapping. */
