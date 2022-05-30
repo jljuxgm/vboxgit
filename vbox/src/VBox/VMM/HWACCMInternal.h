@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 15576 2008-12-16 12:01:10Z vboxsync $ */
+/* $Id: HWACCMInternal.h 15578 2008-12-16 12:51:59Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -381,7 +381,7 @@ typedef struct HWACCM
 typedef HWACCM *PHWACCM;
 
 /* Maximum number of cached entries. */
-#define VMCSCACHE_MAX_ENTRY                             256
+#define VMCSCACHE_MAX_ENTRY                             128
 
 /* Structure for storing read and write VMCS actions. */
 typedef struct VMCSCACHE
