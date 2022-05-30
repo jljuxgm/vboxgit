@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 12866 2008-10-01 13:50:12Z vboxsync $ */
+/* $Id: HostImpl.cpp 12953 2008-10-02 17:56:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -656,6 +656,21 @@ static int vboxSolarisAddPhysHostIface(di_node_t Node, di_minor_t Minor, void *p
     vboxSolarisAddHostIface(di_driver_name(Node), di_instance(Node), NULL, pvHostNetworkInterfaceList);
 	return DI_WALK_CONTINUE;
 }
+
+static bool vboxSolarisSameNIC(ComObjPtr <HostNetworkInterface> Iface1, ComObjPtr <HostNetworkInterface> Iface2)
+{
+    Bstr Iface1Str;
+    (*Iface1).COMGETTER(Name) (Iface1Str.asOutParam());
+
+    Bstr Iface2Str;
+    (*Iface2).COMGETTER(Name) (Iface2Str.asOutParam());
+
+    if (Iface1Str == Iface2Str)
+        return true;
+
+    return false;
+}
+
 # endif /* VBOX_SOLARIS_USE_DEVINFO */
 
 #endif
@@ -711,6 +726,11 @@ STDMETHODIMP Host::COMGETTER(NetworkInterfaces) (IHostNetworkInterfaceCollection
      */
     if (VBoxSolarisLibDlpiFound())
         g_pfnLibDlpiWalk(vboxSolarisAddLinkHostIface, &list, 0);
+
+    /*
+     * Weed out duplicates caused by dlpi_walk inconsistencies across Nevadas.
+     */
+    list.unique(vboxSolarisSameNIC);
 
 #else
     /*
