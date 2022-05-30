@@ -1,4 +1,4 @@
-/** $Id: DrvVD.cpp 11459 2008-08-18 11:31:25Z vboxsync $ */
+/** $Id: DrvVD.cpp 12463 2008-09-15 15:18:58Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -827,6 +827,8 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
             MMR3HeapFree(pszName);
         if (VALID_PTR(pszFormat))
             MMR3HeapFree(pszFormat);
+
+        return rc;
     }
 
     /*
