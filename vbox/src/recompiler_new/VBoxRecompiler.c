@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 14957 2008-12-03 20:53:19Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 14958 2008-12-03 21:02:33Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -3178,7 +3178,7 @@ int32_t remR3PhysReadS16(RTGCPHYS SrcGCPhys)
     val = PGMR3PhysReadU16(cpu_single_env->pVM, SrcGCPhys);
     STAM_PROFILE_ADV_STOP(&gStatMemRead, a);
 #ifdef VBOX_DEBUG_PHYS
-    LogRel(("reads16: %x <- %08x\n", val, (uint32_t)SrcGCPhys));
+    LogRel(("reads16: %x <- %08x\n", (uint16_t)val, (uint32_t)SrcGCPhys));
 #endif
     return val;
 }
