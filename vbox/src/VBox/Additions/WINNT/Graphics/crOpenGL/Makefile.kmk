@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17076 2009-02-24 16:24:00Z vboxsync $
+# $Id: Makefile.kmk 17466 2009-03-06 13:09:26Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest OpenGL part
 #
@@ -53,7 +53,6 @@ VBoxOGL_SOURCES.linux  = \
 VBoxOGL_SOURCES.win    = \
 	wgl.c \
 	icd_drv.c \
-	ogl_hgcm.c \
 	VBoxCROGL.rc \
 	$(VBOX_PATH_CROGL_GENFILES)/windows_exports.asm \
 	$(VBOX_PATH_CROGL_GENFILES)/cropengl.def
