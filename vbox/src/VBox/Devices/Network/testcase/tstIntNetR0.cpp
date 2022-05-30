@@ -1,4 +1,4 @@
-/* $Id: tstIntNetR0.cpp 15505 2008-12-15 14:36:30Z vboxsync $ */
+/* $Id: tstIntNetR0.cpp 15842 2009-01-07 16:41:48Z vboxsync $ */
 /** @file
  * Internal networking - Usermode testcase for the kernel mode bits.
  *
@@ -160,6 +160,7 @@ INTNETR3DECL(int) SUPR0ObjRelease(void *pvObj, PSUPDRVSESSION pSession)
     {
         pRef->pfnDestructor(pRef, pRef->pvUser1, pRef->pvUser2);
         RTMemFree(pRef);
+        return VINF_OBJECT_DESTROYED;
     }
     return VINF_SUCCESS;
 }
