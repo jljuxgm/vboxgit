@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 15556 2008-12-15 22:31:49Z vboxsync $ */
+/* $Id: VBoxManage.cpp 15574 2008-12-16 11:37:26Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -3669,9 +3669,25 @@ static int handleRemoveHostIF(int argc, char *argv[],
         if (uuid.isEmpty())
         {
             /* not a valid UUID, search for it */
-            ComPtr<IHostNetworkInterfaceCollection> coll;
-            CHECK_ERROR_BREAK(host, COMGETTER(NetworkInterfaces)(coll.asOutParam()));
-            CHECK_ERROR_BREAK(coll, FindByName(Bstr(argv[0]), hostif.asOutParam()));
+            Bstr strName(argv[0]);
+            com::SafeIfaceArray <IHostNetworkInterface> hostNetworkInterfaces;
+            CHECK_ERROR_BREAK(host, COMGETTER(NetworkInterfaces) (ComSafeArrayAsOutParam (hostNetworkInterfaces)));
+            ComPtr <IHostNetworkInterface> hostif;
+            for (size_t i = 0; i < hostNetworkInterfaces.size(); ++i)
+            {
+                Bstr name;
+                hostNetworkInterfaces[i]->COMGETTER(Name) (name.asOutParam());
+                if (name == strName)
+                {
+                    hostif = hostNetworkInterfaces[i];
+                    break;
+                }
+            }
+            if (hostif.isNull())
+            {
+                rc = E_INVALIDARG;
+                break;
+            }
             CHECK_ERROR_BREAK(hostif, COMGETTER(Id)(uuid.asOutParam()));
         }
 
