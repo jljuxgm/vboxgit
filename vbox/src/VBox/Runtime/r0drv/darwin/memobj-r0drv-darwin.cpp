@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 14824 2008-11-30 07:52:59Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 14836 2008-11-30 20:51:20Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -549,7 +549,6 @@ int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, 
      */
     int rc = VERR_INVALID_PARAMETER;
     PRTR0MEMOBJDARWIN pMemToMapDarwin = (PRTR0MEMOBJDARWIN)pMemToMap;
-printf("rtR0MemObjNativeMapKernel: pMemDesc=%p\n", pMemToMapDarwin->pMemDesc);
     if (pMemToMapDarwin->pMemDesc)
     {
         IOMemoryMap *pMemMap = pMemToMapDarwin->pMemDesc->map(kernel_task, kIOMapAnywhere,
