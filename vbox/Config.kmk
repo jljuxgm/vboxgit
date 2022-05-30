@@ -1,4 +1,4 @@
-# $Id: Config.kmk 15414 2008-12-13 04:33:30Z vboxsync $
+# $Id: Config.kmk 15463 2008-12-14 14:09:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -392,6 +392,10 @@ VBOX_WITH_ALL_DOXYGEN_TARGETS = 1
 VBOX_WITH_BUSLOGIC = 1
 # Enable SCSI drivers
 VBOX_WITH_SCSI = 1
+# Enable host network interface API.
+if1of ($(KBUILD_TARGET), darwin solaris linux)
+ VBOX_WITH_HOSTNETIF_API = 1
+endif
 # Enables the Python<->XPCOM and later Python<->COM bindings.
 # (Current not enabled by default because all the build servers has
 # different Python versions installed and would start burning.)
@@ -3667,7 +3671,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15414 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15463 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
