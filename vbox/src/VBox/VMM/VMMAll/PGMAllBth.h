@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 14677 2008-11-27 01:18:47Z vboxsync $ */
+/* $Id: PGMAllBth.h 14681 2008-11-27 02:08:28Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1609,7 +1609,7 @@ PGM_BTH_DECL(int, SyncPage)(PVM pVM, GSTPDE PdeSrc, RTGCPTR GCPtrPage, unsigned 
 # endif
 
     SHWPDE          PdeDst   = *pPdeDst;
-    Assert(PdeDst.n.u1Present);
+    AssertMsg(PdeDst.n.u1Present, ("%p=%llx\n", pPdeDst, (uint64_t)PdeDst.u));
     PPGMPOOLPAGE    pShwPage = pgmPoolGetPageByHCPhys(pVM, PdeDst.u & SHW_PDE_PG_MASK);
 
 # if PGM_GST_TYPE == PGM_TYPE_AMD64
@@ -1875,7 +1875,7 @@ PGM_BTH_DECL(int, SyncPage)(PVM pVM, GSTPDE PdeSrc, RTGCPTR GCPtrPage, unsigned 
     Assert(pPDDst);
     PdeDst = pPDDst->a[iPDDst];
 # endif
-    AssertMsg(PdeDst.n.u1Present, ("#llx\n", (uint64_t)PdeDst.u));
+    AssertMsg(PdeDst.n.u1Present, ("%#llx\n", (uint64_t)PdeDst.u));
     PPGMPOOLPAGE    pShwPage = pgmPoolGetPageByHCPhys(pVM, PdeDst.u & SHW_PDE_PG_MASK);
     PSHWPT pPTDst = (PSHWPT)PGMPOOL_PAGE_2_PTR(pVM, pShwPage);
 
