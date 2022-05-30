@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 12714 2008-09-25 09:38:45Z vboxsync $ */
+/* $Id: PDMLdr.cpp 12716 2008-09-25 09:46:58Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -272,7 +272,7 @@ int pdmR3LoadR3U(PUVM pUVM, const char *pszFilename, const char *pszName)
      */
     const char *pszSuff = RTLdrGetSuff();
     size_t      cchSuff = RTPathHaveExt(pszFilename) ? strlen(pszSuff) : 0;
-    PPDMMOD     pModule = (PPDMMOD)RTMemAllocZ(sizeof(*pModule) + cchFilename + cchSuff);
+    PPDMMOD     pModule = (PPDMMOD)RTMemAllocZ(RT_OFFSETOF(PDMMOD, szFilename[cchFilename + cchSuff + 1]));
     if (!pModule)
         return VERR_NO_MEMORY;
 
