@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 17184 2009-02-27 00:37:35Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 17219 2009-02-27 19:06:22Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -3742,7 +3742,7 @@ static int intnetR0NetworkCreateTrunkIf(PINTNETNETWORK pNetwork, PSUPDRVSESSION 
         rc = SUPR0ComponentQueryFactory(pSession, pszName, INTNETTRUNKFACTORY_UUID_STR, (void **)&pTrunkFactory);
         if (RT_SUCCESS(rc))
         {
-            rc = pTrunkFactory->pfnCreateAndConnect(pTrunkFactory, pNetwork->szTrunk, &pTrunkIF->SwitchPort, !
+            rc = pTrunkFactory->pfnCreateAndConnect(pTrunkFactory, pNetwork->szTrunk, &pTrunkIF->SwitchPort,
                                                     pNetwork->fFlags & INTNET_OPEN_FLAGS_SHARED_MAC_ON_WIRE
                                                     ? INTNETTRUNKFACTORY_FLAG_NO_PROMISC : 0,
                                                     &pTrunkIF->pIfPort);
