@@ -1,4 +1,4 @@
-/* $Id: log.cpp 12099 2008-09-04 17:54:01Z vboxsync $ */
+/* $Id: log.cpp 12154 2008-09-05 20:42:16Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -82,7 +82,6 @@ typedef struct RTLOGOUTPUTPREFIXEDARGS
 #ifndef IN_GC
 static unsigned rtlogGroupFlags(const char *psz);
 #endif
-static void rtlogLogger(PRTLOGGER pLogger, unsigned fFlags, unsigned iGroup, const char *pszFormat, va_list args);
 static void rtlogFlush(PRTLOGGER pLogger);
 static DECLCALLBACK(size_t) rtLogOutput(void *pv, const char *pachChars, size_t cbChars);
 static DECLCALLBACK(size_t) rtLogOutputPrefixed(void *pv, const char *pachChars, size_t cbChars);
