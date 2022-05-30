@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 17284 2009-03-03 14:33:35Z vboxsync $ */
+/* $Id: EM.cpp 17292 2009-03-03 15:31:32Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2359,6 +2359,7 @@ DECLINLINE(int) emR3RawHandleRC(PVM pVM, PCPUMCTX pCtx, int rc)
          * (MM)IO intensive code block detected; fall back to the recompiler for better performance
          */
         case VINF_EM_RAW_EMULATE_IO_BLOCK:
+            HWACCMR3EmulateIoBlock(pVM, pCtx);
             rc = VINF_EM_RESCHEDULE_REM;
             break;
 

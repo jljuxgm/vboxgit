@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 15962 2009-01-15 12:33:49Z vboxsync $ */
+/* $Id: HWACCMInternal.h 17292 2009-03-03 15:31:32Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -548,6 +548,16 @@ typedef struct HWACCMCPU
         uint32_t                    errCode;
         uint64_t                    intInfo;
     } Event;
+
+    /** IO Block emulation state. */
+    struct
+    {
+        bool                    fEnabled;
+        uint8_t                 u8Align[7];
+
+        /** Esp at the start of the io code we wish to emulate in the recompiler. */
+        RTGCPTR                 GCPtrFunctionEsp;
+    } EmulateIoBlock;
 
     /** Currenty shadow paging mode. */
     PGMMODE                 enmShadowMode;
