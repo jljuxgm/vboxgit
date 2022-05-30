@@ -1,4 +1,4 @@
-/* $Id: Guid.h 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: Guid.h 15959 2009-01-15 11:09:41Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -192,7 +192,7 @@ private:
 };
 
 /* work around error C2593 of the stupid MSVC 7.x ambiguity resolver */
-WORKAROUND_MSVC7_ERROR_C2593_FOR_BOOL_OP (Guid);
+WORKAROUND_MSVC7_ERROR_C2593_FOR_BOOL_OP (Guid)
 
 } /* namespace com */
 
