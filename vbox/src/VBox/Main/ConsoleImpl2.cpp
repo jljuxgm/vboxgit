@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 13406 2008-10-20 20:25:54Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 13522 2008-10-23 09:21:07Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1271,7 +1271,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                     const char *pszTrunk = szTrunk;
 
 # elif defined(RT_OS_SOLARIS)
-                    /* The name is on the form format 'ifX - long name, chop it off at space. */
+                    /* The name is on the form format 'ifX[:1] - long name, chop it off at space. */
                     char szTrunk[8];
                     strncpy(szTrunk, pszHifName, sizeof(szTrunk));
                     char *pszSpace = (char *)memchr(szTrunk, ' ', sizeof(szTrunk));
@@ -1283,6 +1283,12 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                      */
                     if (pszSpace)
                         *pszSpace = '\0';
+
+                    /* Chop it off at the colon (zone naming eg: e1000g:1 we need only the e1000g) */
+                    char *pszColon = (char *)memchr(szTrunk, ':', sizeof(szTrunk));
+                    if (pszColon)
+                        *pszColon = '\0';
+
                     const char *pszTrunk = szTrunk;
 # elif defined(RT_OS_WINDOWS)
                     ComPtr<IHostNetworkInterfaceCollection> coll;
