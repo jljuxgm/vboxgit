@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12288 2008-09-09 12:17:59Z vboxsync $
+# $Id: Makefile.kmk 12331 2008-09-10 08:44:41Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -196,6 +196,9 @@ src/main.cpp_DEPS         += $(VBOX_VERSION_MK)
 VirtualBox4_INCS           = \
 	./include \
 	$(PATH_VirtualBox4)/include
+
+# Necessary for the hdd backend enumeration
+VirtualBox4_LIBS = $(LIB_DDU)
 
 ifeq ($(KBUILD_TYPE),release)
  VirtualBox4_LDFLAGS.win  += /SUBSYSTEM:windows
