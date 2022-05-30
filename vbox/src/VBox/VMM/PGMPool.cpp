@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 13100 2008-10-08 17:33:04Z vboxsync $ */
+/* $Id: PGMPool.cpp 13135 2008-10-09 14:36:48Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -277,7 +277,7 @@ int pgmR3PoolInit(PVM pVM)
     pPool->aPages[PGMPOOL_IDX_AMD64_CR3].enmKind   = PGMPOOLKIND_64BIT_PML4_FOR_64BIT_PML4;
     pPool->aPages[PGMPOOL_IDX_AMD64_CR3].idx       = PGMPOOL_IDX_AMD64_CR3;
 
-    /* The Shadow AMD64 CR3. */
+    /* The Nested Paging CR3. */
     pPool->aPages[PGMPOOL_IDX_NESTED_ROOT].Core.Key  = NIL_RTHCPHYS;
     pPool->aPages[PGMPOOL_IDX_NESTED_ROOT].GCPhys    = NIL_RTGCPHYS;
     pPool->aPages[PGMPOOL_IDX_NESTED_ROOT].pvPageR3  = pVM->pgm.s.pHCNestedRoot;
