@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 13380 2008-10-17 18:40:13Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -88,7 +88,15 @@ DECLEXPORT(uint64_t) tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData)
  */
 DECLINLINE(uint64_t) tmVirtualGetRawNanoTS(PVM pVM)
 {
+#ifdef IN_RING3
     return CTXALLSUFF(pVM->tm.s.pfnVirtualGetRaw)(&CTXALLSUFF(pVM->tm.s.VirtualGetRawData));
+# else  /* !IN_RING3 */
+    uint32_t cPrevSteps = pVM->tm.s.CTXALLSUFF(VirtualGetRawData).c1nsSteps;
+    uint64_t u64 = CTXALLSUFF(pVM->tm.s.pfnVirtualGetRaw)(&CTXALLSUFF(pVM->tm.s.VirtualGetRawData));
+    if (cPrevSteps != pVM->tm.s.CTXALLSUFF(VirtualGetRawData).c1nsSteps)
+        VM_FF_SET(pVM, VM_FF_TO_R3); /* S10 hack */
+    return u64;
+# endif /* !IN_RING3 */
 }
 
 #else
@@ -219,6 +227,9 @@ static uint64_t tmVirtualGetRawNanoTS(PVM pVM)
         /* occasional - u64NanoTS is in the 'past' relative to previous returns. */
         ASMAtomicIncU32(&pVM->tm.s.CTXALLSUFF(VirtualGetRawData).c1nsSteps);
         u64NanoTS = u64PrevNanoTS + 1;
+#ifndef IN_RING3
+        VM_FF_SET(pVM, VM_FF_TO_R3); /* S10 hack */
+#endif
     }
     else if (u64PrevNanoTS)
     {
