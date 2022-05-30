@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 15439 2008-12-13 12:48:22Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 15485 2008-12-15 09:42:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -874,6 +874,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             }
 #endif
             /* Pass all custom parameters. */
+            bool fHostIP = true;
             SafeArray <BSTR> names;
             SafeArray <BSTR> values;
             hrc = hardDisk->GetProperties (NULL,
@@ -889,6 +890,15 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                     if (values [i])
                         rc = CFGMR3InsertString (pVDC, Utf8Str (names [i]),
                                                  Utf8Str (values [i]));             RC_CHECK();
+                    if (    names [i] == L"HostIPStack"
+                        &&  values [i] == L"0")
+                        fHostIP = false;
+                }
+                /* Custom code: put marker to not use host IP stack to driver
+                 * configuration node. Simplifies life of DrvVD a bit. */
+                if (!fHostIP)
+                {
+                    rc = CFGMR3InsertString (pCfg, "HostIPStack", "0");             RC_CHECK();
                 }
             }
 
