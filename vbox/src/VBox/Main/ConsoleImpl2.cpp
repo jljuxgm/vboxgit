@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 15582 2008-12-16 13:22:33Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 15592 2008-12-16 14:48:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -897,12 +897,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                             fHostIP = false;
                     }
                 }
-                /* Custom code: put marker to not use host IP stack to driver
-                 * configuration node. Simplifies life of DrvVD a bit. */
-                if (!fHostIP)
-                {
-                    rc = CFGMR3InsertInteger (pCfg, "HostIPStack", 0);          RC_CHECK();
-                }
             }
 
             /* Create an inversed tree of parents. */
@@ -932,12 +926,26 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 if (names.size() != 0)
                 {
                     PCFGMNODE pVDC;
-                    rc = CFGMR3InsertNode (pCfg, "VDConfig", &pVDC);            RC_CHECK();
+                    rc = CFGMR3InsertNode (pCur, "VDConfig", &pVDC);            RC_CHECK();
                     for (size_t i = 0; i < names.size(); ++ i)
                     {
-                        rc = CFGMR3InsertString (pVDC, Utf8Str (names [i]),
-                                                 Utf8Str (values [i]));         RC_CHECK();
+                        if (values [i])
+                        {
+                            Utf8Str name = names [i];
+                            Utf8Str value = values [i];
+                            rc = CFGMR3InsertString (pVDC, name, value);
+                            if (    !(name.compare("HostIPStack"))
+                                &&  !(value.compare("0")))
+                                fHostIP = false;
+                        }
                     }
+                }
+
+                /* Custom code: put marker to not use host IP stack to driver
+                 * configuration node. Simplifies life of DrvVD a bit. */
+                if (!fHostIP)
+                {
+                    rc = CFGMR3InsertInteger (pCfg, "HostIPStack", 0);          RC_CHECK();
                 }
 
                 /* next */
