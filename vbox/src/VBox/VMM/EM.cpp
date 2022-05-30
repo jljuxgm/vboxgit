@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 13565 2008-10-24 17:48:59Z vboxsync $ */
+/* $Id: EM.cpp 13645 2008-10-29 10:01:22Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2940,7 +2940,7 @@ DECLINLINE(EMSTATE) emR3Reschedule(PVM pVM, PCPUMCTX pCtx)
             return EMSTATE_REM;
         }
 
-        /* Write protection muts be turned on, or else the guest can overwrite our hypervisor code and data. */
+        /* Write protection must be turned on, or else the guest can overwrite our hypervisor code and data. */
         if (!(u32CR0 & X86_CR0_WP))
         {
             Log2(("raw r0 mode refused: CR0.WP=0!\n"));
