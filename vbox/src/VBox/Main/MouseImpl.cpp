@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 13607 2008-10-28 10:43:42Z vboxsync $ */
+/* $Id: MouseImpl.cpp 13671 2008-10-30 10:09:08Z vboxsync $ */
 
 /** @file
  *
@@ -77,7 +77,7 @@ void Mouse::FinalRelease()
  */
 HRESULT Mouse::init (Console *parent)
 {
-    LogFlow(("Mouse::init()\n"));
+    LogFlowThisFunc (("\n"));
 
     ComAssertRet (parent, E_INVALIDARG);
 
