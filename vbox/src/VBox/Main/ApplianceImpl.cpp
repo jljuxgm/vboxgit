@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16210 2009-01-23 19:22:46Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16212 2009-01-23 19:41:48Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -1013,6 +1013,9 @@ HRESULT Appliance::construeAppliance()
         vsd.createObject();
         rc = vsd->init();
         ComAssertComRCThrowRC(rc);
+
+        /* VM name */
+        vsd->addEntry(VirtualSystemDescriptionType_Name, 0, vs.strName, vs.strName);
 
         string osTypeVBox = SchemaDefs_OSTypeId_Other;
         /* Guest OS type */
