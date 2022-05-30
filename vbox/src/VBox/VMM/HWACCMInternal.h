@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 14366 2008-11-19 17:20:49Z vboxsync $ */
+/* $Id: HWACCMInternal.h 14530 2008-11-24 16:28:46Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -408,6 +408,8 @@ typedef struct HWACCMCPU
             uint32_t                ulVMCSRevision;
             uint32_t                ulInstrError;
             uint32_t                ulExitReason;
+            RTCPUID                 idEnteredCpu;
+            RTCPUID                 idCurrentCpu;
             uint32_t                padding;
         } lasterror;
 
