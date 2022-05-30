@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11874 2008-08-30 14:38:30Z vboxsync $
+# $Id: Makefile.kmk 11875 2008-08-30 14:41:03Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -212,7 +212,11 @@ VBoxSVC_LIBS.darwin = \
 	$(LIB_VMM) \
 	$(LIB_REM)
 VBoxSVC_LIBS.solaris = \
-	adm socket
+	adm
+ifdef VBOX_WITH_NETFLT
+ VBoxSVC_LIBS.solaris += \
+	socket
+endif
 ifdef VBOX_WITH_USB
  VBoxSVC_LIBS.solaris += \
 	devinfo
