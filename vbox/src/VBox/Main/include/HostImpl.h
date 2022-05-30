@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 14523 2008-11-24 14:57:18Z vboxsync $ */
+/* $Id: HostImpl.h 14524 2008-11-24 14:58:13Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -178,7 +178,7 @@ private:
 #endif /* VBOX_WITH_USB */
 
     /* Features that can be queried with GetProcessorFeature */
-    bool fVTxAMDVSupported, fLongModeSupported, fPAESupported;
+    BOOL fVTxAMDVSupported, fLongModeSupported, fPAESupported;
 
     HostPowerService *mHostPowerService;
 };
