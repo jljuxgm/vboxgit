@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 12564 2008-09-18 12:13:15Z vboxsync $ */
+/* $Id: VMM.cpp 12675 2008-09-23 17:53:19Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -388,9 +388,6 @@ VMMR3DECL(int) VMMR3Init(PVM pVM)
 #ifdef VBOX_WITH_SMP_GUESTS
     LogRel(("[SMP] VMM with %RU32 CPUs\n", pVM->cCPUs));
 #endif
-
-    /* Current CPU id */ /** @todo move to per CPU structure. */
-    pVM->idCPU = 0;
 
     /*
      * Register the saved state data unit.
