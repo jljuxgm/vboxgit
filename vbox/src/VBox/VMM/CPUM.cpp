@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 11808 2008-08-29 11:29:35Z vboxsync $ */
+/* $Id: CPUM.cpp 11946 2008-09-01 17:47:35Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -784,7 +784,7 @@ static void cpumR3LoadCPUM1_6(PVM pVM, CPUMCTX_VER1_6 *pCpumctx16)
     CPUMCTX16_LOADREG(rdi);
     CPUMCTX16_LOADREG(rsi);
     CPUMCTX16_LOADREG(rbp);
-    CPUMCTX16_LOADREG(rsp);
+    CPUMCTX16_LOADREG(esp);
     CPUMCTX16_LOADREG(rip);
     CPUMCTX16_LOADREG(rflags);
 
