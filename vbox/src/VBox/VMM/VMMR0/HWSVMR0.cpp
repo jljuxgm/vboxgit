@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 13025 2008-10-07 07:28:54Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 13089 2008-10-08 15:52:46Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1872,7 +1872,7 @@ ResumeExecution:
 
                             /* Clear all breakpoint status flags and set the one we just hit. */
                             pCtx->dr[6] &= ~(X86_DR6_B0|X86_DR6_B1|X86_DR6_B2|X86_DR6_B3);
-                            pCtx->dr[6] |= RT_BIT(i);
+                            pCtx->dr[6] |= (uint64_t)RT_BIT(i);
 
                             /* Note: AMD64 Architecture Programmer's Manual 13.1:
                              * Bits 15:13 of the DR6 register is never cleared by the processor and must be cleared by software after

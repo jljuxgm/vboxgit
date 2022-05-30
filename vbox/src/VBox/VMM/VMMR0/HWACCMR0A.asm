@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 13036 2008-10-07 11:05:23Z vboxsync $
+; $Id: HWACCMR0A.asm 13089 2008-10-08 15:52:46Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -847,6 +847,66 @@ BEGINPROC VMXGetActivateVMCS
     xor     eax, eax
     ret
 ENDPROC VMXGetActivateVMCS
+
+;/**
+; * Invalidate a page using invept
+; @param   enmFlush     msc:ecx  gcc:edi  x86:[esp+04]  Type of flush
+; @param   pDescriptor  msc:edx  gcc:esi  x86:[esp+08]  Descriptor pointer
+; */
+;DECLASM(int) VMXR0InvEPT(VMX_FLUSH enmFlush, uint128_t *pDescriptor);
+BEGINPROC VMXR0InvEPT
+%ifdef ASM_CALL64_GCC
+    mov         eax, 0ffffffffh
+    and         rdi, rax
+    xor         rax, rax
+;    invept      rdi, rsi
+    DB          0x66, 0x0F, 0x38, 0x80, 0xA
+%else
+    mov         eax, 0ffffffffh
+    and         rcx, rax
+    xor         rax, rax
+;    invept      rcx, rdx
+    DB          0x66, 0x0F, 0x38, 0x80, 0xA
+%endif
+    jnc         .valid_vmcs
+    mov         eax, VERR_VMX_INVALID_VMCS_PTR
+    ret
+.valid_vmcs:
+    jnz         .the_end
+    mov         eax, VERR_INVALID_PARAMETER
+.the_end:
+    ret
+ENDPROC VMXR0InvEPT
+
+;/**
+; * Invalidate a page using invvpid
+; @param   enmFlush     msc:ecx  gcc:edi  x86:[esp+04]  Type of flush
+; @param   pDescriptor  msc:edx  gcc:esi  x86:[esp+08]  Descriptor pointer
+; */
+;DECLASM(int) VMXR0InvVPID(VMX_FLUSH enmFlush, uint128_t *pDescriptor);
+BEGINPROC VMXR0InvVPID
+%ifdef ASM_CALL64_GCC
+    mov         eax, 0ffffffffh
+    and         rdi, rax
+    xor         rax, rax
+    ;invvpid     rdi, rsi
+    DB          0x66, 0x0F, 0x38, 0x81, 0xA
+%else
+    mov         eax, 0ffffffffh
+    and         rcx, rax
+    xor         rax, rax
+;    invvpid     rcx, rdx
+    DB          0x66, 0x0F, 0x38, 0x81, 0xA
+%endif
+    jnc         .valid_vmcs
+    mov         eax, VERR_VMX_INVALID_VMCS_PTR
+    ret
+.valid_vmcs:
+    jnz         .the_end
+    mov         eax, VERR_INVALID_PARAMETER
+.the_end:
+    ret
+ENDPROC VMXR0InvVPID
 
 
 ;/**
