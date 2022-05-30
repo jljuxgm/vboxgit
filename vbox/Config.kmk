@@ -1,4 +1,4 @@
-# $Id: Config.kmk 15373 2008-12-12 15:05:46Z vboxsync $
+# $Id: Config.kmk 15414 2008-12-13 04:33:30Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1015,7 +1015,6 @@ DEFS.strict  = RT_STRICT VBOX_STRICT
 DEFS.x86     = RT_ARCH_X86 __X86__
 DEFS.amd64   = RT_ARCH_AMD64 __AMD64__
 DEFS.darwin  = RT_OS_DARWIN __DARWIN__
-DEFS.darwin.x86 = VBOX_WITH_HYBIRD_32BIT_KERNEL
 DEFS.freebsd = RT_OS_FREEBSD __FREEBSD__
 DEFS.l4      = RT_OS_L4 __L4__ __L4ENV__ L4API_l4v2 ARCH_$(KBUILD_TARGET_ARCH) __NO_CTYPE _FILE_OFFSET_BITS=64
 DEFS.linux   = RT_OS_LINUX _FILE_OFFSET_BITS=64
@@ -3668,7 +3667,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15373 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15414 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

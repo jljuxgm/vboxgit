@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 15411 2008-12-13 03:30:58Z vboxsync $ */
+/* $Id: PGM.cpp 15414 2008-12-13 04:33:30Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1507,7 +1507,7 @@ static int pgmR3InitPaging(PVM pVM)
         case SUPPAGINGMODE_AMD64_GLOBAL:
         case SUPPAGINGMODE_AMD64_NX:
         case SUPPAGINGMODE_AMD64_GLOBAL_NX:
-#ifndef VBOX_WITH_HYBIRD_32BIT_KERNEL
+#ifndef VBOX_WITH_HYBRID_32BIT_KERNEL
             if (ARCH_BITS != 64)
             {
                 AssertMsgFailed(("Host mode %d (64-bit) is not supported by non-64bit builds\n", pVM->pgm.s.enmHostMode));

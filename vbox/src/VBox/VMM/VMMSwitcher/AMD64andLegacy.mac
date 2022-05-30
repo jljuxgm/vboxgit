@@ -1,4 +1,4 @@
-; $Id: AMD64andLegacy.mac 14979 2008-12-04 13:14:29Z vboxsync $
+; $Id: AMD64andLegacy.mac 15414 2008-12-13 04:33:30Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for AMD64 to PAE and 32-bit.
 ;
@@ -48,7 +48,7 @@ GLOBALNAME Fixups
 BEGINCODE
 GLOBALNAME Start
 
-%ifndef VBOX_WITH_HYBIRD_32BIT_KERNEL
+%ifndef VBOX_WITH_HYBRID_32BIT_KERNEL
 BITS 64
 
 ;;
@@ -112,7 +112,7 @@ BEGINPROC vmmR0HostToGuest
 ENDPROC vmmR0HostToGuest
 
 
-%else ; VBOX_WITH_HYBIRD_32BIT_KERNEL
+%else ; VBOX_WITH_HYBRID_32BIT_KERNEL
 
 
 BITS 32
@@ -177,7 +177,7 @@ BEGINPROC vmmR0HostToGuest
 ENDPROC vmmR0HostToGuest
 
 BITS 64
-%endif ;!VBOX_WITH_HYBIRD_32BIT_KERNEL
+%endif ;!VBOX_WITH_HYBRID_32BIT_KERNEL
 
 
 

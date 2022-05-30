@@ -1,4 +1,4 @@
-/* $Id: TRPMR0.cpp 14515 2008-11-24 12:33:00Z vboxsync $ */
+/* $Id: TRPMR0.cpp 15414 2008-12-13 04:33:30Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor - HC Ring 0
  */
@@ -45,7 +45,7 @@ VMMR0DECL(void) TRPMR0DispatchHostInterrupt(PVM pVM)
     pVM->trpm.s.uActiveVector = ~0;
     AssertMsgReturnVoid(uActiveVector < 256, ("uActiveVector=%#x is invalid! (More assertions to come, please enjoy!)\n", uActiveVector));
 
-#ifdef VBOX_WITH_HYBIRD_32BIT_KERNEL
+#ifdef VBOX_WITH_HYBRID_32BIT_KERNEL
     /*
      * Check if we're in long mode or not.
      */
