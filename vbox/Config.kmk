@@ -1,4 +1,4 @@
-# $Id: Config.kmk 14111 2008-11-11 20:37:18Z vboxsync $
+# $Id: Config.kmk 14117 2008-11-12 01:07:53Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -36,6 +36,23 @@ DEFAULT_PASSES       := BLDPROGS LIBRARIES DLLS BINARIES INSTALLS OTHERS
 # Modify the build types.
 ## @todo checked and dbgopt
 KBUILD_BLD_TYPES = release profile debug kprofile
+
+## 'strict' builds
+# Same as release builds, except that RT_STRICT and VBOX_STRICT are defined,
+# meaning all assertions are in action. (Appending means '.strict' props take
+# precedence in argument lists.)
+KBUILD_BLD_TYPES += strict
+BLD_TYPE_strict_EXTENDS = release
+BLD_TYPE_strict_EXTENDS_BY = appending
+
+## 'dbgopt' builds
+# Same as debug builds, except that compiler optimizations are enabled.  This
+# intended for cases where all the debug facitities (logging, assertions, ++)
+# is wanted but actual source level debugging as important as execution speed.
+KBUILD_BLD_TYPES += dbgopt
+BLD_TYPE_dbgopt_EXTENDS = debug
+BLD_TYPE_dbgopt_EXTENDS_BY = appending
+
 
 # Install paths.
 PATH_INS              = $(PATH_OUT)
@@ -978,6 +995,7 @@ INCS += $(PATH_ROOT)/include $(PATH_OUT)
 DEFS += VBOX
 DEFS.debug := DEBUG DEBUG_$(subst $(subst _, ,_),_,$(USERNAME)) DEBUG_USERNAME=$(subst $(subst _, ,_),_,$(USERNAME))
 DEFS.profile = VBOX_WITH_STATISTICS
+DEFS.strict  = RT_STRICT VBOX_STRICT
 DEFS.x86     = RT_ARCH_X86 __X86__
 DEFS.amd64   = RT_ARCH_AMD64 __AMD64__
 DEFS.darwin  = RT_OS_DARWIN __DARWIN__
@@ -3593,7 +3611,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14111 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14117 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
