@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 14351 2008-11-19 13:38:31Z vboxsync $ */
+/* $Id: TRPM.cpp 14755 2008-11-28 02:58:01Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -1318,7 +1318,7 @@ VMMR3DECL(bool) TRPMR3IsGateHandler(PVM pVM, RTRCPTR GCPtr)
          * (This function checks for not-present pages.)
          */
         PVBOXIDTE   pIDTE;
-        int rc = PGMPhysGCPtr2HCPtr(pVM, GCPtrIDTE, (void **)&pIDTE);
+        int rc = PGMPhysGCPtr2R3Ptr(pVM, GCPtrIDTE, (void **)&pIDTE);
         if (RT_SUCCESS(rc))
         {
             /*

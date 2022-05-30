@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 13830 2008-11-05 01:49:18Z vboxsync $ */
+/* $Id: PATMSSM.cpp 14755 2008-11-28 02:58:01Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -581,7 +581,7 @@ DECLCALLBACK(int) patmr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
 
         pPatchRec->patch.pPrivInstrHC   = 0;
         /* The GC virtual ptr is fixed, but we must convert it manually again to HC. */
-        rc = PGMPhysGCPtr2HCPtr(pVM, pPatchRec->patch.pPrivInstrGC, (PRTHCPTR)&pPatchRec->patch.pPrivInstrHC);
+        rc = PGMPhysGCPtr2R3Ptr(pVM, pPatchRec->patch.pPrivInstrGC, (PRTR3PTR)&pPatchRec->patch.pPrivInstrHC);
         /* Can fail due to page or page table not present. */
 
         /*
