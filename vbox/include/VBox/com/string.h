@@ -1,4 +1,4 @@
-/* $Id: string.h 16324 2009-01-28 18:06:59Z vboxsync $ */
+/* $Id: string.h 16326 2009-01-28 18:37:23Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -501,6 +501,14 @@ public:
 
     static const size_t npos;
 
+    /**
+     * Returns a substring of "this" as a new Utf8Str. Works exactly like
+     * its equivalent in std::string except that this interprets pos and n
+     * as UTF-8 codepoints instead of bytes. With the default parameters "0"
+     * and "npos", this always copies the entire string.
+     * @param pos Index of first codepoints to copy from "this", counting from 0.
+     * @param n Number of codepoints to copy, starting with the one at "pos".
+     */
     Utf8Str substr(size_t pos = 0, size_t n = npos) const;
 
     /**
