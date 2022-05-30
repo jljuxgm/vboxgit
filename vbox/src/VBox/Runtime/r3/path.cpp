@@ -1,4 +1,4 @@
-/* $Id: path.cpp 14050 2008-11-10 22:48:21Z vboxsync $ */
+/* $Id: path.cpp 14052 2008-11-10 22:49:04Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation.
  */
@@ -778,7 +778,7 @@ RTDECL(int) RTPathSharedLibs(char *pszPath, size_t cchPath)
  * @param   pszPath     Buffer where to store the path.
  * @param   cchPath     Buffer size in bytes.
  */
-RTDECL(int) RTPathAppDocs(char *pszPath, unsigned cchPath)
+RTDECL(int) RTPathAppDocs(char *pszPath, size_t cchPath)
 {
 #if !defined(RT_OS_WINDOWS) && defined(RTPATH_APP_DOCS)
     char *pszUtf8Path;
