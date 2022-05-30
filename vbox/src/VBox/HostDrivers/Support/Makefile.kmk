@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12115 2008-09-04 23:23:06Z vboxsync $
+# $Id: Makefile.kmk 12170 2008-09-06 03:58:49Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -28,7 +28,7 @@
 # additional information or have any questions.
 #
 
-ifdef VBOX_KBUILD_HACKING
+ifdef VBOX_SINGLE_MAKEFILE
 SUB_DEPTH = ../../../..
 else
 SUB_DEPTH = ..

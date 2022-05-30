@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12134 2008-09-05 14:18:44Z vboxsync $
+# $Id: Makefile.kmk 12170 2008-09-06 03:58:49Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -19,7 +19,7 @@
 # additional information or have any questions.
 #
 
-ifdef VBOX_KBUILD_HACKING
+ifdef VBOX_SINGLE_MAKEFILE
 SUB_DEPTH = ../../..
 else
 SUB_DEPTH = .

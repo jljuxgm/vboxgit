@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11820 2008-08-29 14:09:39Z vboxsync $
+# $Id: Makefile.kmk 12170 2008-09-06 03:58:49Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -20,7 +20,7 @@
 #
 
 
-ifdef VBOX_KBUILD_HACKING
+ifdef VBOX_SINGLE_MAKEFILE
 SUB_DEPTH = ../../../..
 else
 DEPTH    ?= ../../../..
