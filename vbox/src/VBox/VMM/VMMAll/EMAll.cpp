@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
+/* $Id: EMAll.cpp 14082 2008-11-11 10:12:57Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2678,7 +2678,7 @@ VMMDECL(int) EMInterpretRdmsr(PVM pVM, PCPUMCTXCORE pRegFrame)
             val = 0;
         break;
     }
-    Log(("EMInterpretRdmsr %s (%x) -> val=%RX64\n", emMSRtoString(pRegFrame->ecx), pRegFrame->ecx, val));
+    LogFlow(("EMInterpretRdmsr %s (%x) -> val=%RX64\n", emMSRtoString(pRegFrame->ecx), pRegFrame->ecx, val));
     if (rc == VINF_SUCCESS)
     {
         pRegFrame->eax = (uint32_t) val;
@@ -2725,7 +2725,7 @@ VMMDECL(int) EMInterpretWrmsr(PVM pVM, PCPUMCTXCORE pRegFrame)
         return VERR_EM_INTERPRETER; /* not supported */
 
     val = RT_MAKE_U64(pRegFrame->eax, pRegFrame->edx);
-    Log(("EMInterpretWrmsr %s (%x) val=%RX64\n", emMSRtoString(pRegFrame->ecx), pRegFrame->ecx, val));
+    LogFlow(("EMInterpretWrmsr %s (%x) val=%RX64\n", emMSRtoString(pRegFrame->ecx), pRegFrame->ecx, val));
     switch (pRegFrame->ecx)
     {
     case MSR_IA32_APICBASE:
