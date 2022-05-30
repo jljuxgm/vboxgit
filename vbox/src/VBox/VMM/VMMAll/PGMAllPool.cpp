@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 14149 2008-11-12 23:23:27Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 14678 2008-11-27 01:26:27Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -156,7 +156,7 @@ void *pgmPoolMapPage(PVM pVM, PPGMPOOLPAGE pPage)
             return NULL;
     }
     void *pv;
-    int rc = PGMDynMapHCPage(pVM, pPage->Core.Key, &pv);
+    int rc = PGMDynMapHCPage(pVM, HCPhys, &pv);
     AssertReleaseRC(rc);
     return pv;
 # endif /* VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0 */
