@@ -1,4 +1,4 @@
-/* $Id: tstGuestPropSvc.cpp 13779 2008-11-04 09:46:13Z vboxsync $ */
+/* $Id: tstGuestPropSvc.cpp 13781 2008-11-04 10:13:43Z vboxsync $ */
 /** @file
  *
  * Testcase for the guest property service.
@@ -217,7 +217,7 @@ const char *apcszValueBlock[] =
  */
 uint64_t au64TimestampBlock[] =
 {
-    0, 999, 999999, 999999999999, 0
+    0, 999, 999999, UINT64_C(999999999999), 0
 };
 
 /**
@@ -615,7 +615,7 @@ getProperties[] =
     { "TEST NAME", "TEST VALUE\0RDONLYHOST", sizeof("TEST VALUE\0RDONLYHOST"),
       true, true, 999999 },
     { "/test/name", "/test/value\0RDONLYGUEST",
-      sizeof("/test/value\0RDONLYGUEST"), true, true, 999999999999 },
+      sizeof("/test/value\0RDONLYGUEST"), true, true, UINT64_C(999999999999) },
     { "Green", "Go!\0READONLY", sizeof("Go!\0READONLY"), true, false, 0 },
     { "Blue", "What on earth...?\0", sizeof("What on earth...?\0"), true,
       false, 0 },
