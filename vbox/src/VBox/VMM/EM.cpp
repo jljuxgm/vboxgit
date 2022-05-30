@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 14279 2008-11-18 09:28:40Z vboxsync $ */
+/* $Id: EM.cpp 14570 2008-11-25 13:09:30Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3324,8 +3324,11 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, RTCPUID idCpu)
          * The Outer Main Loop.
          */
         bool fFFDone = false;
-        rc = VINF_EM_RESCHEDULE;
-        pVM->em.s.enmState = EMSTATE_REM;
+
+        /* Reschedule right away to start in the right state. */
+        rc = VINF_SUCCESS;
+        pVM->em.s.enmState = emR3Reschedule(pVM, pVM->em.s.pCtx);
+
         STAM_REL_PROFILE_ADV_START(&pVM->em.s.StatTotal, x);
         for (;;)
         {
