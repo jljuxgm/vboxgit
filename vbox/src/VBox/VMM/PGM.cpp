@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 13042 2008-10-07 12:43:34Z vboxsync $ */
+/* $Id: PGM.cpp 13045 2008-10-07 13:04:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1954,8 +1954,8 @@ static DECLCALLBACK(int) pgmR3RelocateVirtHandler(PAVLROGCPTRNODECORE pNode, voi
     RTGCINTPTR      offDelta = *(PRTGCINTPTR)pvUser;
     Assert(     pHandler->enmType == PGMVIRTHANDLERTYPE_ALL
            ||   pHandler->enmType == PGMVIRTHANDLERTYPE_WRITE);
-    Assert(pHandler->pfnHandlerGC);
-    pHandler->pfnHandlerGC  += offDelta;
+    Assert(pHandler->pfnHandlerRC);
+    pHandler->pfnHandlerRC += offDelta;
     return 0;
 }
 
@@ -1973,8 +1973,8 @@ static DECLCALLBACK(int) pgmR3RelocateHyperVirtHandler(PAVLROGCPTRNODECORE pNode
     PPGMVIRTHANDLER pHandler = (PPGMVIRTHANDLER)pNode;
     RTGCINTPTR      offDelta = *(PRTGCINTPTR)pvUser;
     Assert(pHandler->enmType == PGMVIRTHANDLERTYPE_HYPERVISOR);
-    Assert(pHandler->pfnHandlerGC);
-    pHandler->pfnHandlerGC  += offDelta;
+    Assert(pHandler->pfnHandlerRC);
+    pHandler->pfnHandlerRC  += offDelta;
     return 0;
 }
 
