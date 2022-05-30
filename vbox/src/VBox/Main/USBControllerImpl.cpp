@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 17336 2009-03-04 09:27:24Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 17341 2009-03-04 12:22:49Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -356,8 +356,6 @@ public:
     STDMETHOD(COMGETTER(MaskedInterfaces)) (ULONG *aMaskedIfs);
     STDMETHOD(COMSETTER(MaskedInterfaces)) (ULONG aMaskedIfs);
 };
-COM_DECL_READONLY_ENUM_AND_COLLECTION (USBDeviceFilter);
-COM_IMPL_READONLY_ENUM_AND_COLLECTION (USBDeviceFilter);
 #endif /* !VBOX_WITH_USB */
 
 
