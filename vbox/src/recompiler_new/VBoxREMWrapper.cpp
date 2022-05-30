@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 15320 2008-12-11 17:30:31Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 15322 2008-12-11 17:40:47Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1954,7 +1954,7 @@ static void remUnloadLinuxObj(void)
 static bool remIs64bitEnabled(PVM pVM)
 {
     bool f;
-    int rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "Rem64Enabled", &f, false);
+    int rc = CFGMR3QueryBoolDef(CFGMR3GetChild(CFGMR3GetRoot(pVM), "REM"), "64bitEnabled", &f, false);
     AssertRCReturn(rc, false);
     return f;
 }
