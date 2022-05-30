@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 13373 2008-10-17 12:36:57Z vboxsync $ */
+/* $Id: IOMInternal.h 13413 2008-10-20 23:15:20Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -49,7 +49,7 @@ typedef struct IOMMMIORANGE
     RTGCPHYS                    GCPhys;
     /** Size of the range. */
     uint32_t                    cb;
-    uint32_t                    uAlignmnet;
+    uint32_t                    u32Alignment; /**< Alignment padding. */
 
     /** Pointer to user argument - R3. */
     RTR3PTR                     pvUserR3;

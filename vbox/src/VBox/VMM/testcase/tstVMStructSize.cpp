@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 13375 2008-10-17 14:18:29Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 13413 2008-10-20 23:15:20Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -47,7 +47,7 @@
 #include "HWACCMInternal.h"
 #include "PATMInternal.h"
 #ifdef VBOX_WITH_VMI
-#include "PARAVInternal.h"
+# include "PARAVInternal.h"
 #endif
 #include "VMMInternal.h"
 #include "DBGFInternal.h"
