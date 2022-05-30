@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 13290 2008-10-15 15:26:08Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 13291 2008-10-15 15:57:54Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * guest properties.
@@ -656,9 +656,9 @@ VBGLR3DECL(int) VbglR3GuestPropEnumNext(PVBGLR3GUESTPROPENUM pHandle,
            || (('\0' == *pszValue) && ('\0' == *pszTimestamp) && ('\0' == *pszFlags))
           );
     *ppszName = *pszName != '\0' ? pszName : NULL;
-    *ppszValue = pszValue != '\0' ? pszValue : NULL;
+    *ppszValue = *pszValue != '\0' ? pszValue : NULL;
     *pu64Timestamp = u64Timestamp;
-    *ppszFlags = pszFlags != '\0' ? pszFlags : NULL;
+    *ppszFlags = *pszFlags != '\0' ? pszFlags : NULL;
     return VINF_SUCCESS;
 }
 
