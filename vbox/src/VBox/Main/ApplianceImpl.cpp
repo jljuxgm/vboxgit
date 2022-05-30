@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17109 2009-02-25 08:18:39Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17152 2009-02-26 10:59:22Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1374,11 +1374,11 @@ STDMETHODIMP Appliance::Interpret()
                                    vsysThis.strSoundCardType,
                                    Utf8StrFmt("%RI32", (uint32_t)AudioControllerType_AC97));
 
- #ifdef VBOX_WITH_USB
+#ifdef VBOX_WITH_USB
             /* USB Controller */
             if (vsysThis.fHasUsbController)
                 pNewDesc->addEntry(VirtualSystemDescriptionType_USBController, "", "", "");
- #endif /* VBOX_WITH_USB */
+#endif /* VBOX_WITH_USB */
 
             NetworksMap::const_iterator itN;
             for (itN = m->mapNetworks.begin();
