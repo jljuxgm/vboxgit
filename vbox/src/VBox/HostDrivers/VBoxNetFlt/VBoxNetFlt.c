@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 17213 2009-02-27 16:29:55Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 17214 2009-02-27 16:32:43Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -1036,7 +1036,7 @@ DECLHIDDEN(int) vboxNetFltSearchCreateInstance(PVBOXNETFLTGLOBALS pGlobals, cons
                                 RTSemFastMutexRelease(pGlobals->hFastMtx);
                                 RTThreadSleep(2); /* (2ms) */
                                 RTSemFastMutexRequest(pGlobals->hFastMtx);
-                                enmState = ;
+                                enmState = vboxNetFltGetState(pCur);
                             }
                             while (enmState == kVBoxNetFltInsState_Disconnecting);
                             AssertMsg(enmState == kVBoxNetFltInsState_Unconnected, ("%d\n", enmState));
