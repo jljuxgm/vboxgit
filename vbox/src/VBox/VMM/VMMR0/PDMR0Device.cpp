@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 13367 2008-10-17 11:19:29Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 13412 2008-10-20 22:23:59Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -339,6 +339,7 @@ static DECLCALLBACK(int) pdmR0DevHlp_PATMSetMMIOPatchInfo(PPDMDEVINS pDevIns, RT
     return VINF_SUCCESS;
 }
 
+
 /** @copydoc PDMDEVHLPR0::pfnGetVM */
 static DECLCALLBACK(PVM)  pdmR0DevHlp_GetVM(PPDMDEVINS pDevIns)
 {
@@ -346,6 +347,7 @@ static DECLCALLBACK(PVM)  pdmR0DevHlp_GetVM(PPDMDEVINS pDevIns)
     LogFlow(("pdmR0DevHlp_GetVM: caller='%p'/%d\n", pDevIns, pDevIns->iInstance));
     return pDevIns->Internal.s.pVMR0;
 }
+
 
 
 

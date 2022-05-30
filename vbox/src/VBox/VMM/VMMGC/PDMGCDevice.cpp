@@ -1,4 +1,4 @@
-/* $Id: PDMGCDevice.cpp 13367 2008-10-17 11:19:29Z vboxsync $ */
+/* $Id: PDMGCDevice.cpp 13412 2008-10-20 22:23:59Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, GC Device parts.
  */
@@ -336,6 +336,7 @@ static DECLCALLBACK(int) pdmGCDevHlp_PATMSetMMIOPatchInfo(PPDMDEVINS pDevIns, RT
     return PATMSetMMIOPatchInfo(pDevIns->Internal.s.pVMRC, GCPhys, (RTRCPTR)pCachedData);
 }
 
+
 /** @copydoc PDMDEVHLPRC::pfnGetVM */
 static DECLCALLBACK(PVM)  pdmGCDevHlp_GetVM(PPDMDEVINS pDevIns)
 {
@@ -343,6 +344,7 @@ static DECLCALLBACK(PVM)  pdmGCDevHlp_GetVM(PPDMDEVINS pDevIns)
     LogFlow(("pdmGCDevHlp_GetVM: caller='%p'/%d\n", pDevIns, pDevIns->iInstance));
     return pDevIns->Internal.s.pVMRC;
 }
+
 
 
 
