@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 14592 2008-11-25 20:05:50Z vboxsync $ */
+/* $Id: PGMPhys.cpp 14826 2008-11-30 07:55:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1070,6 +1070,47 @@ VMMR3DECL(int) PGMR3PhysMMIO2GetHCPhys(PVM pVM, PPDMDEVINS pDevIns, uint32_t iRe
     PCPGMPAGE pPage = &pCur->RamRange.aPages[off >> PAGE_SHIFT];
     *pHCPhys = PGM_PAGE_GET_HCPHYS(pPage);
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Maps a portion of an MMIO2 region into kernel space (host).
+ *
+ * The kernel mapping will become invalid when the MMIO2 memory is deregistered
+ * or the VM is terminated.
+ *
+ * @return VBox status code.
+ *
+ * @param   pVM         Pointer to the shared VM structure.
+ * @param   pDevIns     The device owning the MMIO2 memory.
+ * @param   iRegion     The region.
+ * @param   off         The offset into the region. Must be page aligned.
+ * @param   cb          The number of bytes to map. Must be page aligned.
+ * @param   pszDesc     Mapping description.
+ * @param   pR0Ptr      Where to store the R0 address.
+ */
+VMMR3DECL(int) PGMR3PhysMMIO2MapKernel(PVM pVM, PPDMDEVINS pDevIns, uint32_t iRegion, RTGCPHYS off, RTGCPHYS cb,
+                                       const char *pszDesc, PRTR0PTR pR0Ptr)
+{
+    /*
+     * Validate input.
+     */
+    VM_ASSERT_EMT_RETURN(pVM, VERR_VM_THREAD_NOT_EMT);
+    AssertPtrReturn(pDevIns, VERR_INVALID_PARAMETER);
+    AssertReturn(iRegion <= UINT8_MAX, VERR_INVALID_PARAMETER);
+
+    PPGMMMIO2RANGE pCur = pgmR3PhysMMIO2Find(pVM, pDevIns, iRegion);
+    AssertReturn(pCur, VERR_NOT_FOUND);
+    AssertReturn(off < pCur->RamRange.cb, VERR_INVALID_PARAMETER);
+    AssertReturn(cb <= pCur->RamRange.cb, VERR_INVALID_PARAMETER);
+    AssertReturn(off + cb <= pCur->RamRange.cb, VERR_INVALID_PARAMETER);
+
+    /*
+     * Pass the request on to the support library/driver.
+     */
+    int rc = SUPR3PageMapKernel(pCur->pvR3, off, cb, 0, pR0Ptr);
+
+    return rc;
 }
 
 

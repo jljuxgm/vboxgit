@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 14823 2008-11-30 07:30:09Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 14826 2008-11-30 07:55:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -1359,9 +1359,10 @@ VMMR0DECL(int) PGMR0DynMapAssertIntegrity(void)
     int             rc = VINF_SUCCESS;
     RTSPINLOCKTMP   Tmp = RTSPINLOCKTMP_INITIALIZER;
     RTSpinlockAcquire(pThis->hSpinlock, &Tmp);
+
 #define CHECK_RET(expr, a) \
     do { \
-        if (!(expr)) \
+        if (RT_UNLIKELY(!(expr))) \
         { \
             RTSpinlockRelease(pThis->hSpinlock, &Tmp); \
             AssertMsg1(#expr, __LINE__, __FILE__, __PRETTY_FUNCTION__); \
