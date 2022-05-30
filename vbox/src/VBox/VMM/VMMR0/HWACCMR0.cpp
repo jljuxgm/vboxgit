@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 15988 2009-01-16 10:50:47Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 15989 2009-01-16 10:55:12Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -542,7 +542,7 @@ static DECLCALLBACK(void) HWACCMR0InitCPU(RTCPUID idCpu, void *pvUser1, void *pv
             if (val & MSR_K6_EFER_SVME)
             {
                 /* Restore previous value. */
-                ASMWrMsr(MSR_K6_EFER, val);
+                ASMWrMsr(MSR_K6_EFER, val & ~MSR_K6_EFER_SVME);
                 paRc[idCpu] = VINF_SUCCESS;
             }
             else
