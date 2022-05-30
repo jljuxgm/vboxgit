@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 11832 2008-08-29 15:35:21Z vboxsync $ */
+/* $Id: MachineImpl.cpp 12020 2008-09-03 08:51:55Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -189,7 +189,7 @@ Machine::HWData::HWData()
     mVRAMSize = 8;
     mMonitorCount = 1;
     mHWVirtExEnabled = TSBool_False;
-    mHWVirtExNestedPagingEnabled = true;
+    mHWVirtExNestedPagingEnabled = false;
     mPAEEnabled = false;
 
     /* default boot order: floppy - DVD - HDD */
@@ -4751,7 +4751,7 @@ HRESULT Machine::loadHardware (const settings::Key &aNode)
     {
         /* default value in case the node is not there */
         mHWData->mHWVirtExEnabled             = TSBool_Default;
-        mHWData->mHWVirtExNestedPagingEnabled = true;
+        mHWData->mHWVirtExNestedPagingEnabled = false;
         mHWData->mPAEEnabled                  = false;
 
         Key cpuNode = aNode.findKey ("CPU");
@@ -4768,7 +4768,7 @@ HRESULT Machine::loadHardware (const settings::Key &aNode)
                 else
                     mHWData->mHWVirtExEnabled = TSBool_Default;
             }
-            /* HardwareVirtExNestedPaging (optional, default is true) */
+            /* HardwareVirtExNestedPaging (optional, default is false) */
             Key HWVirtExNestedPagingNode = cpuNode.findKey ("HardwareVirtExNestedPaging");
             if (!HWVirtExNestedPagingNode.isNull())
             {

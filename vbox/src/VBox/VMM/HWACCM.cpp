@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 11792 2008-08-29 08:51:20Z vboxsync $ */
+/* $Id: HWACCM.cpp 12020 2008-09-03 08:51:55Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -188,11 +188,9 @@ HWACCMR3DECL(int) HWACCMR3Init(PVM pVM)
     /*
      * Check CFGM options.
      */
-#ifdef VBOX_WITH_NESTED_PAGING /* regressions on testboxlin */
-    /* Nested paging: enabled by default. */
-    rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "EnableNestedPaging", &pVM->hwaccm.s.fAllowNestedPaging, true);
+    /* Nested paging: disabled by default. */
+    rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "EnableNestedPaging", &pVM->hwaccm.s.fAllowNestedPaging, false);
     AssertRC(rc);
-#endif
 
     /* HWACCM support must be explicitely enabled in the configuration file. */
     rc = CFGMR3QueryBoolDef(CFGMR3GetChild(CFGMR3GetRoot(pVM), "HWVirtExt/"), "Enabled", &pVM->hwaccm.s.fAllowed, false);
