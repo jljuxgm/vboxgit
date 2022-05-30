@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 11428 2008-08-14 15:27:05Z vboxsync $ */
+/* $Id: DevPcBios.cpp 11819 2008-08-29 14:06:46Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1508,6 +1508,8 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
     if (RT_FAILURE(rc))
         return rc;
 
+#if 0
+    /* VMI not yet */
 #ifndef VBOX_OSE
     /*
      * Map the VMI BIOS into memory.
@@ -1516,6 +1518,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
     rc = PDMDevHlpROMRegister(pDevIns, VBOX_VMI_BIOS_BASE, g_cbVmiBiosBinary, g_abVmiBiosBinary, false, "VMI BIOS");
     if (RT_FAILURE(rc))
         return rc;
+#endif
 #endif
 
     /*
