@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 17654 2009-03-10 23:55:28Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 17753 2009-03-12 14:33:49Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -704,9 +704,11 @@ int handleAddiSCSIDisk(HandlerArg *a)
     do
     {
         ComPtr<IHardDisk> hardDisk;
+        /** @todo move the location stuff to Main, which can use pfnComposeName
+         * from the disk backends to construct the location properly. */
         CHECK_ERROR_BREAK (a->virtualBox,
             CreateHardDisk(Bstr ("iSCSI"),
-                           BstrFmt ("%ls/%ls", server.raw(), target.raw()),
+                           BstrFmt ("%ls/%ls/%ls", server.raw(), target.raw(), lun.raw()),
                            hardDisk.asOutParam()));
         CheckComRCBreakRC (rc);
 
