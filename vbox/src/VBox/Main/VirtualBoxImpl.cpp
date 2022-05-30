@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 14272 2008-11-18 00:22:15Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 14313 2008-11-18 16:09:21Z vboxsync $ */
 
 /** @file
  * Implmentation of IVirtualBox in VBoxSVC.
@@ -3723,7 +3723,7 @@ HRESULT VirtualBox::ensureFilePathExists (const char *aFileName)
  * @param aCatchLoadErrors  @c true to catch exceptions caused by file
  *                          access or validation errors.
  * @param aAddDefaults      @c true to cause the substitution of default
- *                          values for for missing attributes that have
+ *                          values for missing attributes that have
  *                          defaults in the XML schema.
  * @param aFormatVersion    Where to store the current format version of the
  *                          loaded settings tree (optional, may be NULL).
