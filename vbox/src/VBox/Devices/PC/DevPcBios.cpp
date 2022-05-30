@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 11825 2008-08-29 14:29:45Z vboxsync $ */
+/* $Id: DevPcBios.cpp 12095 2008-09-04 14:07:26Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -86,6 +86,10 @@
  *          0x50 - 0x57
  *     Fourth Sata HDD:
  *          0x58 - 0x5f
+ *     Number of CPUs:
+ *          0x60
+ *     RAM above 4G (in 64K units):
+ *          0x61 - 0x63
  */
 
 
