@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 11705 2008-08-27 14:53:58Z vboxsync $ */
+/* $Id: CPUM.cpp 11792 2008-08-29 08:51:20Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -767,7 +767,7 @@ static DECLCALLBACK(int) cpumR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Versio
      */
     if (u32Version != CPUM_SAVED_STATE_VERSION)
     {
-        Log(("cpuR3Load: Invalid version u32Version=%d!\n", u32Version));
+        AssertMsgFailed(("cpuR3Load: Invalid version u32Version=%d!\n", u32Version));
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     }
 

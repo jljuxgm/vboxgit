@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: TRPM.cpp 11792 2008-08-29 08:51:20Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor
  */
@@ -778,7 +778,7 @@ static DECLCALLBACK(int) trpmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Versio
      */
     if (u32Version != TRPM_SAVED_STATE_VERSION)
     {
-        Log(("trpmR3Load: Invalid version u32Version=%d!\n", u32Version));
+        AssertMsgFailed(("trpmR3Load: Invalid version u32Version=%d!\n", u32Version));
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     }
 

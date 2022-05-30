@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 11514 2008-08-20 13:28:29Z vboxsync $ */
+/* $Id: EM.cpp 11792 2008-08-29 08:51:20Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -422,7 +422,7 @@ static DECLCALLBACK(int) emR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
      */
     if (u32Version != EM_SAVED_STATE_VERSION)
     {
-        Log(("emR3Load: Invalid version u32Version=%d (current %d)!\n", u32Version, EM_SAVED_STATE_VERSION));
+        AssertMsgFailed(("emR3Load: Invalid version u32Version=%d (current %d)!\n", u32Version, EM_SAVED_STATE_VERSION));
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     }
 

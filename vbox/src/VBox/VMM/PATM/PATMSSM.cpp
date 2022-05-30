@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 10141 2008-07-03 08:58:33Z vboxsync $ */
+/* $Id: PATMSSM.cpp 11792 2008-08-29 08:51:20Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -287,7 +287,10 @@ DECLCALLBACK(int) patmr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
 #else
        )
 #endif
+    {
+        AssertMsgFailed(("patmR3Load: Invalid version u32Version=%d!\n", u32Version));
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
+    }
 
     pVM->patm.s.savedstate.pSSM = pSSM;
 

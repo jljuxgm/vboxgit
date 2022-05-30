@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 11438 2008-08-15 08:35:42Z vboxsync $ */
+/* $Id: VMM.cpp 11792 2008-08-29 08:51:20Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1635,7 +1635,7 @@ static DECLCALLBACK(int) vmmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
      */
     if (u32Version != VMM_SAVED_STATE_VERSION)
     {
-        Log(("vmmR3Load: Invalid version u32Version=%d!\n", u32Version));
+        AssertMsgFailed(("vmmR3Load: Invalid version u32Version=%d!\n", u32Version));
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     }
 

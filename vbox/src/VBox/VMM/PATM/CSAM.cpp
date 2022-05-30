@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: CSAM.cpp 11792 2008-08-29 08:51:20Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -449,7 +449,10 @@ static DECLCALLBACK(int) csamr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Versio
     CSAM csamInfo;
 
     if (u32Version != CSAM_SSM_VERSION)
+    {
+        AssertMsgFailed(("csamR3Load: Invalid version u32Version=%d!\n", u32Version));
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
+    }
 
     pVM->csam.s.savedstate.pSSM = pSSM;
 

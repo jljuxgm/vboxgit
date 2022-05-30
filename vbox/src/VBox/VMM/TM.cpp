@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: TM.cpp 11792 2008-08-29 08:51:20Z vboxsync $ */
 /** @file
  * TM - Timeout Manager.
  */
@@ -934,7 +934,7 @@ static DECLCALLBACK(int) tmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
      */
     if (u32Version != TM_SAVED_STATE_VERSION)
     {
-        Log(("tmR3Load: Invalid version u32Version=%d!\n", u32Version));
+        AssertMsgFailed(("tmR3Load: Invalid version u32Version=%d!\n", u32Version));
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     }
 

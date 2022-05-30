@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 10087 2008-07-02 09:27:32Z vboxsync $ */
+/* $Id: SELM.cpp 11792 2008-08-29 08:51:20Z vboxsync $ */
 /** @file
  * SELM - The Selector manager.
  */
@@ -663,7 +663,7 @@ static DECLCALLBACK(int) selmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Versio
      */
     if (u32Version != SELM_SAVED_STATE_VERSION)
     {
-        Log(("selmR3Load: Invalid version u32Version=%d!\n", u32Version));
+        AssertMsgFailed(("selmR3Load: Invalid version u32Version=%d!\n", u32Version));
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     }
 

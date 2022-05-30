@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: MM.cpp 11792 2008-08-29 08:51:20Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager).
  */
@@ -471,7 +471,7 @@ static DECLCALLBACK(int) mmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
     if (    SSM_VERSION_MAJOR_CHANGED(u32Version, MM_SAVED_STATE_VERSION)
         ||  !u32Version)
     {
-        Log(("mmR3Load: Invalid version u32Version=%d!\n", u32Version));
+        AssertMsgFailed(("mmR3Load: Invalid version u32Version=%d!\n", u32Version));
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     }
 
