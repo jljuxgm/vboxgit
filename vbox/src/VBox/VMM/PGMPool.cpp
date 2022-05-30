@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 16418 2009-01-30 14:49:06Z vboxsync $ */
+/* $Id: PGMPool.cpp 16657 2009-02-11 11:57:14Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -470,7 +470,12 @@ VMMR3DECL(int) PGMR3PoolGrow(PVM pVM)
     {
         PPGMPOOLPAGE pPage = &pPool->aPages[i];
 
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+        /* Allocate all pages in low (below 4 GB) memory as 32 bits guests need a page table root in low memory. */
+        pPage->pvPageR3 = MMR3PageAllocLow(pVM);
+#else
         pPage->pvPageR3 = MMR3PageAlloc(pVM);
+#endif
         if (!pPage->pvPageR3)
         {
             Log(("We're out of memory!! i=%d\n", i));
