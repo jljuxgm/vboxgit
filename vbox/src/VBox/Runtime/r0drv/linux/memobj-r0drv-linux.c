@@ -1,4 +1,4 @@
-/* $Revision: 13891 $ */
+/* $Revision: 13992 $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -556,7 +556,7 @@ int rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecu
         rc = rtR0MemObjLinuxVMap(pMemLnx, fExecutable);
         if (RT_SUCCESS(rc))
         {
-#if defined(RT_STRICT) && defined(RT_ARCH_AMD64)
+#if defined(RT_STRICT)
             size_t iPage = pMemLnx->cPages;
             while (iPage-- > 0)
                 Assert(page_to_phys(pMemLnx->apPages[iPage]) < _4G);
