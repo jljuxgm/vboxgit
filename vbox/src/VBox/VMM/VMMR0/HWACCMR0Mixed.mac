@@ -1,4 +1,4 @@
-; $Id: HWACCMR0Mixed.mac 15296 2008-12-11 09:22:46Z vboxsync $
+; $Id: HWACCMR0Mixed.mac 15360 2008-12-12 12:25:21Z vboxsync $
 ;; @file
 ; HWACCMR0Mixed.mac - Stuff that darwin needs to build two versions of.
 ;
@@ -446,7 +446,7 @@ ALIGNCODE(16)
     add     xSP, xS*2
 
     push    xDI
-    mov     xDI, [xSP + xS * 2]         ; pCtx
+    mov     xDI, [xSP + xS * 2]         ; pCtx (*2 to skip the saved LDTR)
 
     mov     qword [xDI + CPUMCTX.eax], rax
     mov     qword [xDI + CPUMCTX.ebx], rbx
