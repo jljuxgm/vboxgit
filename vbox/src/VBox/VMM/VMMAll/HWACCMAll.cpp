@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 11371 2008-08-12 17:51:23Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 12702 2008-09-24 16:56:02Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -52,7 +52,7 @@
  */
 HWACCMDECL(int) HWACCMInvalidatePage(PVM pVM, RTGCPTR GCVirt)
 {
-    /* @todo Intel for nested paging */
+    /** @todo Intel for nested paging */
 #ifdef IN_RING0
     if (pVM->hwaccm.s.svm.fSupported)
         return SVMR0InvalidatePage(pVM, GCVirt);
@@ -69,7 +69,7 @@ HWACCMDECL(int) HWACCMInvalidatePage(PVM pVM, RTGCPTR GCVirt)
  */
 HWACCMDECL(int) HWACCMFlushTLB(PVM pVM)
 {
-    /* @todo Intel for nested paging */
+    /** @todo Intel for nested paging */
     if (pVM->hwaccm.s.svm.fSupported)
     {
         LogFlow(("HWACCMFlushTLB\n"));
@@ -120,7 +120,7 @@ HWACCMDECL(int) HWACCMInvalidatePhysPage(PVM pVM, RTGCPHYS GCPhys)
         return VINF_SUCCESS;
 
 #ifdef IN_RING0
-    /* @todo Intel for nested paging */
+    /** @todo Intel for nested paging */
     if (pVM->hwaccm.s.svm.fSupported)
     {
         SVMR0InvalidatePhysPage(pVM, GCPhys);
@@ -132,7 +132,7 @@ HWACCMDECL(int) HWACCMInvalidatePhysPage(PVM pVM, RTGCPHYS GCPhys)
 }
 
 /**
- * Checks if an interrupt event is currently pending. 
+ * Checks if an interrupt event is currently pending.
  *
  * @returns Interrupt event pending state.
  * @param   pVM         The VM to operate on.
