@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13779 2008-11-04 09:46:13Z vboxsync $
+# $Id: Makefile.kmk 13916 2008-11-06 13:48:05Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Properties Host Service testcases.
 #
@@ -41,7 +41,7 @@ ifdef VBOX_RUN_GUEST_PROPERTY_TEST
   TESTING  += $(PATH_tstGuestPropSvc)/tstGuestPropSvc.run
   OTHERS += $(PATH_tstGuestPropSvc)/tstGuestPropSvc.run
 $$(PATH_tstGuestPropSvc)/tstGuestPropSvc.run: $$(INSTARGET_tstGuestPropSvc)
-	$(INSTARGET_tstGuestPropSvc) quiet
+	export VBOX_LOG_DEST=nofile; $(INSTARGET_tstGuestPropSvc) quiet
 	$(QUIET)$(APPEND) -t "$@" "done"
  endif
 endif
