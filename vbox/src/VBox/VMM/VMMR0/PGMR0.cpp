@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 13037 2008-10-07 11:10:32Z vboxsync $ */
+/* $Id: PGMR0.cpp 13038 2008-10-07 11:29:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -169,7 +169,7 @@ VMMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PGMMODE enmShwPagingMode,
 /** darwin stub */
 VMMR0DECL(int) PGMR0DynMapGCPage(PVM pVM, RTGCPHYS GCPhys, void **ppv)
 {
-    Assert(!(GCPhys & PAGE_OFFSET));
+    Assert(!(GCPhys & PAGE_OFFSET_MASK));
     return VERR_NOT_IMPLEMENTED;
 }
 

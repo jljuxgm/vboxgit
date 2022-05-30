@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 13035 2008-10-07 09:54:32Z vboxsync $ */
+/* $Id: PGM.cpp 13038 2008-10-07 11:29:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1872,15 +1872,7 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     {
         pVM->pgm.s.pRamRangesRC = MMHyperR3ToRC(pVM, pVM->pgm.s.pRamRangesR3);
         for (PPGMRAMRANGE pCur = pVM->pgm.s.pRamRangesR3; pCur->pNextR3; pCur = pCur->pNextR3)
-#ifdef VBOX_WITH_NEW_PHYS_CODE
             pCur->pNextRC = MMHyperR3ToRC(pVM, pCur->pNextR3);
-#else
-        {
-            pCur->pNextRC = MMHyperR3ToRC(pVM, pCur->pNextR3);
-            if (pCur->pavHCChunkGC)
-                pCur->pavHCChunkGC = MMHyperHC2GC(pVM, pCur->pavHCChunkHC);
-        }
-#endif
     }
 
     /*

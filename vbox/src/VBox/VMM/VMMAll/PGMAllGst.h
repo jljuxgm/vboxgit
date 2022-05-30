@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 12932 2008-10-02 11:48:49Z vboxsync $ */
+/* $Id: PGMAllGst.h 13038 2008-10-07 11:29:51Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -552,7 +552,7 @@ PGM_GST_DECL(int, UnmapCR3)(PVM pVM)
     for (unsigned i=0; i < X86_PG_PAE_PDPE_ENTRIES; i++)
     {
         pVM->pgm.s.apGstPaePDsHC[i]    = 0;
-        pVM->pgm.s.apGstPaePDsGC[i]    = 0;        
+        pVM->pgm.s.apGstPaePDsGC[i]    = 0;
         pVM->pgm.s.aGCPhysGstPaePDs[i] = NIL_RTGCPHYS;
     }
 
@@ -797,7 +797,7 @@ static DECLCALLBACK(int) PGM_GST_NAME(VirtHandlerUpdateOne)(PAVLROGCPTRNODECORE 
 #endif
         if (Pde.n.u1Present)
         {
-            if (    !Pde.b.u1Size 
+            if (    !Pde.b.u1Size
 # if PGM_GST_TYPE != PGM_TYPE_AMD64
                 ||  !(pState->cr4 & X86_CR4_PSE)
 # endif
