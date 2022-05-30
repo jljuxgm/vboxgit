@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 13398 2008-10-20 14:58:11Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 13399 2008-10-20 15:32:41Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1750,8 +1750,8 @@ VMMDECL(int)  IOMMMIOModifyPage(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCPhysRemappe
                     ("Handlers and page tables are out of sync or something! GCPhys=%VGp\n", GCPhys),
                     VERR_INTERNAL_ERROR);
 
-    GCPhys         &= ~0xfff;
-    GCPhysRemapped &= ~0xfff;
+    GCPhys         &= ~(RTGCPHYS)0xfff;
+    GCPhysRemapped &= ~(RTGCPHYS)0xfff;
 
     /* This currently only works in real mode, protected mode without paging or with nested paging. */
     if (    CPUMIsGuestInPagedProtectedMode(pVM)
