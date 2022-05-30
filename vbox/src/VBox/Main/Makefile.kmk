@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16406 2009-01-30 09:42:31Z vboxsync $
+# $Id: Makefile.kmk 16530 2009-02-05 16:08:49Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -586,6 +586,7 @@ VBoxCOM_SOURCES         = \
 	glue/string.cpp \
 	glue/EventQueue.cpp \
 	glue/ErrorInfo.cpp \
+	glue/errorprint2.cpp \
 	glue/SupportErrorInfo.cpp \
 	glue/VirtualBoxErrorInfo.cpp
 ifeq ($(KBUILD_TARGET),win)

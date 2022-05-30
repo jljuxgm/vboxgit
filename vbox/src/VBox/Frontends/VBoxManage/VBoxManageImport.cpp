@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 16517 2009-02-04 16:25:29Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 16530 2009-02-05 16:08:49Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -30,6 +30,7 @@
 #include <VBox/com/Guid.h>
 #include <VBox/com/array.h>
 #include <VBox/com/ErrorInfo.h>
+#include <VBox/com/errorprint2.h>
 #include <VBox/com/EventQueue.h>
 
 #include <VBox/com/VirtualBox.h>

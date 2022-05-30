@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 16509 2009-02-04 11:26:01Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 16530 2009-02-05 16:08:49Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of -modifyvm command.
  */
@@ -25,6 +25,7 @@
 #ifndef VBOX_ONLY_DOCS
 #include <VBox/com/com.h>
 #include <VBox/com/ErrorInfo.h>
+#include <VBox/com/errorprint2.h>
 #include <VBox/com/EventQueue.h>
 
 #include <VBox/com/VirtualBox.h>

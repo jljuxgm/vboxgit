@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 16052 2009-01-19 18:24:29Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 16530 2009-02-05 16:08:49Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -32,6 +32,7 @@
 #include <VBox/com/string.h>
 #include <VBox/com/Guid.h>
 #include <VBox/com/ErrorInfo.h>
+#include <VBox/com/errorprint2.h>
 
 #include <VBox/com/VirtualBox.h>
 
