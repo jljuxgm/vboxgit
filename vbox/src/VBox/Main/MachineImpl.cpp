@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 13444 2008-10-21 13:43:12Z vboxsync $ */
+/* $Id: MachineImpl.cpp 13448 2008-10-21 15:13:27Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5211,7 +5211,8 @@ HRESULT Machine::loadHardware (const settings::Key &aNode)
                 HWData::GuestProperty property = { name, value, timestamp, fFlags };
                 mHWData->mGuestProperties.push_back(property);
             }
-            notificationPatterns = guestPropertiesNode.stringValue ("NotificationPatterns");
+            if (!guestPropertiesNode.findKey ("NotificationPatterns").isNull())
+                notificationPatterns = guestPropertiesNode.stringValue ("NotificationPatterns");
         }
         mHWData->mPropertyServiceActive = false;
         mHWData->mGuestPropertyNotificationPatterns = notificationPatterns;
