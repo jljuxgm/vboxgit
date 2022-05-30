@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 17106 2009-02-25 00:35:15Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 17251 2009-03-02 13:55:31Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2860,12 +2860,10 @@ REMR3DECL(void) REMR3NotifyPhysRomRegister(PVM pVM, RTGCPHYS GCPhys, RTUINT cb, 
  * @param   pVM         VM Handle.
  * @param   GCPhys      Start physical address.
  * @param   cb          The size of the range.
- * @todo    Rename to REMR3NotifyPhysRamDeregister (for MMIO2) as we won't
- *          reserve any memory soon.
  */
-REMR3DECL(void) REMR3NotifyPhysReserve(PVM pVM, RTGCPHYS GCPhys, RTUINT cb)
+REMR3DECL(void) REMR3NotifyPhysRamDeregister(PVM pVM, RTGCPHYS GCPhys, RTUINT cb)
 {
-    Log(("REMR3NotifyPhysReserve: GCPhys=%RGp cb=%d\n", GCPhys, cb));
+    Log(("REMR3NotifyPhysRamDeregister: GCPhys=%RGp cb=%d\n", GCPhys, cb));
     VM_ASSERT_EMT(pVM);
 
     /*

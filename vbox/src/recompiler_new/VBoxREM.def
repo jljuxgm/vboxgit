@@ -1,7 +1,8 @@
-; $Id: VBoxREM.def 8155 2008-04-18 15:16:47Z vboxsync $
+; $Id: VBoxREM.def 17251 2009-03-02 13:55:31Z vboxsync $
 ;; @file
-;
 ; VBoxREM Definition File.
+;
+
 ;
 ; Copyright (C) 2006-2007 Sun Microsystems, Inc.
 ;
@@ -38,7 +39,7 @@ EXPORTS
     REMR3ReplayHandlerNotifications
     REMR3NotifyPhysRamRegister
     REMR3NotifyPhysRamChunkRegister
-    REMR3NotifyPhysReserve
+    REMR3NotifyPhysRamDeregister
     REMR3NotifyPhysRomRegister
     REMR3NotifyHandlerPhysicalModify
     REMR3NotifyHandlerPhysicalRegister

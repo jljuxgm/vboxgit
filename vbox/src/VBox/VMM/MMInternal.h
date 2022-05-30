@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 14597 2008-11-25 20:41:40Z vboxsync $ */
+/* $Id: MMInternal.h 17251 2009-03-02 13:55:31Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -564,6 +564,7 @@ typedef struct MMLOCKEDMEM
 typedef MMLOCKEDMEM *PMMLOCKEDMEM;
 
 
+#ifndef VBOX_WITH_NEW_PHYS_CODE
 /**
  * A registered Rom range.
  *
@@ -593,6 +594,7 @@ typedef struct MMROMRANGE
 } MMROMRANGE;
 /** Pointer to a ROM range. */
 typedef MMROMRANGE *PMMROMRANGE;
+#endif /* !VBOX_WITH_NEW_PHYS_CODE */
 
 
 /**
@@ -764,8 +766,10 @@ typedef struct MM
     /** The number of fixed pages we've reserved (GMM). */
     uint32_t                    cFixedPages;
 
+#ifndef VBOX_WITH_NEW_PHYS_CODE
     /** The head of the ROM ranges. */
     R3PTRTYPE(PMMROMRANGE)      pRomHead;
+#endif
 } MM;
 /** Pointer to MM Data (part of VM). */
 typedef MM *PMM;
@@ -802,7 +806,9 @@ int  mmR3MapLocked(PVM pVM, PMMLOCKEDMEM pLockedMem, RTGCPTR Addr, unsigned iPag
 
 const char *mmR3GetTagName(MMTAG enmTag);
 
+#ifndef VBOX_WITH_NEW_PHYS_CODE
 void mmR3PhysRomReset(PVM pVM);
+#endif
 
 /**
  * Converts a pool address to a physical address.

@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 14299 2008-11-18 13:25:40Z vboxsync $ */
+/* $Id: MM.cpp 17251 2009-03-02 13:55:31Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -499,7 +499,9 @@ VMMR3DECL(void) MMR3TermUVM(PUVM pUVM)
  */
 VMMR3DECL(void) MMR3Reset(PVM pVM)
 {
+#ifndef VBOX_WITH_NEW_PHYS_CODE
     mmR3PhysRomReset(pVM);
+#endif
 }
 
 
