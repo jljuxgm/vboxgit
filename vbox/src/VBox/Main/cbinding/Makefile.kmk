@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16676 2009-02-11 16:16:56Z vboxsync $
+# $Id: Makefile.kmk 16705 2009-02-12 12:47:57Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -33,6 +33,7 @@ XpComCSamples_INST = \
 	$(INST_SDK)bindings/xpcom/cbinding/samples/
 XpComCSamples_SOURCES = \
 	tstLinuxC.c \
+	tstdlOpen.c \
 	makefile.tstLinuxC=>Makefile
 
 INSTALLS += XpComCHeaders
