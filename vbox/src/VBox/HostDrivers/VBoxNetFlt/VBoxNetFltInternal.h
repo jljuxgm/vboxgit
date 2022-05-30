@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 15923 2009-01-13 18:20:34Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 16183 2009-01-22 17:31:11Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -118,6 +118,8 @@ typedef struct VBOXNETFLTINS
      * cBusy will never reach zero during rediscovery, so which
      * takes care of serializing rediscovery and disconnecting. */
     bool volatile fRediscoveryPending;
+    /** Whether we should not attempt to set promiscuous mode at all. */
+    bool fDisablePromiscuous;
 #if (ARCH_BITS == 32) && defined(__GNUC__)
     uint32_t u32Padding;    /**< Alignment padding, will assert in ASMAtomicUoWriteU64 otherwise. */
 #endif

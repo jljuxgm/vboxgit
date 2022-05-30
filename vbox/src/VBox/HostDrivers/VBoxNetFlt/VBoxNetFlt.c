@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 15950 2009-01-14 18:25:22Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 16183 2009-01-22 17:31:11Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -1018,7 +1018,7 @@ DECLHIDDEN(int) vboxNetFltSearchCreateInstance(PVBOXNETFLTGLOBALS pGlobals, cons
  * @copydoc INTNETTRUNKFACTORY::pfnCreateAndConnect
  */
 static DECLCALLBACK(int) vboxNetFltFactoryCreateAndConnect(PINTNETTRUNKFACTORY pIfFactory, const char *pszName,
-                                                           PINTNETTRUNKSWPORT pSwitchPort, PINTNETTRUNKIFPORT *ppIfPort)
+                                                           PINTNETTRUNKSWPORT pSwitchPort, PINTNETTRUNKIFPORT *ppIfPort, bool fNoPromisc)
 {
     PVBOXNETFLTGLOBALS pGlobals = (PVBOXNETFLTGLOBALS)((uint8_t *)pIfFactory - RT_OFFSETOF(VBOXNETFLTGLOBALS, TrunkFactory));
     PVBOXNETFLTINS pCur;
@@ -1043,6 +1043,8 @@ static DECLCALLBACK(int) vboxNetFltFactoryCreateAndConnect(PINTNETTRUNKFACTORY p
             case kVBoxNetFltInsState_Unconnected:
                 /* instance can be destroyed when it is neither used by the IntNet nor by the ndis filter driver mechanism
                  * (i.e. the driver is not bound to the specified adapter)*/
+                /* Prevent setting promiscuous mode for WiFi adapters. */
+                pCur->fDisablePromiscuous = fNoPromisc;
                 vboxNetFltRetain(pCur, false /* fBusy */); /** @todo who releases this on failure? */
                 rc = vboxNetFltConnectIt(pCur, pSwitchPort, ppIfPort);
                 break;
