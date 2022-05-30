@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 9277 2008-06-01 01:00:26Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 12541 2008-09-17 12:59:55Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Address Space Management.
  */
@@ -20,7 +20,7 @@
  */
 
 
-/** @page pg_dbgf_addr_space     Address Space Management
+/** @page pg_dbgf_addr_space     DBGFAddrSpace - Address Space Management
  *
  * What's an address space? It's mainly a convenient way of stuffing
  * module segments and ad-hoc symbols together. It will also help out
