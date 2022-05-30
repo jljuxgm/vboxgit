@@ -1,4 +1,4 @@
-/* $Id: base64.cpp 16762 2009-02-14 08:21:28Z vboxsync $ */
+/* $Id: base64.cpp 16765 2009-02-14 08:49:30Z vboxsync $ */
 /** @file
  * IPRT - Base64, MIME content transfer encoding.
  */
@@ -446,12 +446,13 @@ RTDECL(size_t) RTBase64EncodedLength(size_t cbData)
  * @retval  VERR_BUFFER_OVERFLOW if the output buffer is too small. The buffer
  *          may contain an invalid Base64 string.
  *
- * @param   pszBuf      Where to put the Base64 string.
- * @param   cbBuf       The size of the output buffer, including the terminator.
  * @param   pvData      The data to encode.
  * @param   cbData      The number of bytes to encode.
+ * @param   pszBuf      Where to put the Base64 string.
+ * @param   cbBuf       The size of the output buffer, including the terminator.
+ * @param   pcchActual  The actual number of characters returned.
  */
-RTDECL(int) RTBase64Encode(char *pszBuf, size_t cbBuf, const void *pvData, size_t cbData)
+RTDECL(int) RTBase64Encode(const void *pvData, size_t cbData, char *pszBuf, size_t cbBuf, size_t *pcchActual)
 {
     /** @todo implement RTBase64Encode. */
     return VERR_NOT_IMPLEMENTED;
