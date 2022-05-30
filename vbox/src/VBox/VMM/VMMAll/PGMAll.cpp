@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 16624 2009-02-10 12:24:56Z vboxsync $ */
+/* $Id: PGMAll.cpp 16626 2009-02-10 12:41:48Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -905,7 +905,7 @@ DECLINLINE(int) pgmShwSyncPaePDPtr(PVM pVM, RTGCPTR GCPtr, PX86PDPE pGstPdpe, PX
             else
             {
                 GCPdPt  = CPUMGetGuestCR3(pVM);
-                enmKind = PGMPOOLKIND_PAE_PD_FOR_32BIT_PD;
+                enmKind = (PGMPOOLKIND)(PGMPOOLKIND_PAE_PD0_FOR_32BIT_PD + iPdPt);
             }
         }
 
