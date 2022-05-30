@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 16376 2009-01-29 16:46:31Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 16408 2009-01-30 12:14:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -208,9 +208,6 @@ VMMDECL(int)  PGMMapModifyPage(PVM pVM, RTGCPTR GCPtr, size_t cb, uint64_t fFlag
 }
 
 
-
-#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
-
 /**
  * Sets all PDEs involved with the mapping in the shadow page table.
  *
@@ -415,4 +412,3 @@ VMMDECL(int) PGMMapDeactivateAll(PVM pVM)
     }
     return VINF_SUCCESS;
 }
-#endif /* VBOX_WITH_PGMPOOL_PAGING_ONLY */

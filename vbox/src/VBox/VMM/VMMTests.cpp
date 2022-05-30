@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 13858 2008-11-05 13:45:41Z vboxsync $ */
+/* $Id: VMMTests.cpp 16408 2009-01-30 12:14:26Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -477,7 +477,13 @@ VMMR3DECL(int) VMMDoHwAccmTest(PVM pVM)
     VM_FF_CLEAR(pVM, VM_FF_SELM_SYNC_TSS);
 
     /* Enable mapping of the hypervisor into the shadow page table. */
-    PGMR3ChangeShwPDMappings(pVM, true);
+    uint32_t cb;
+    rc = PGMR3MappingsSize(pVM, &cb);
+    AssertRCReturn(rc, rc);
+
+    /* Pretend the mappings are now fixed; to force a refresh of the reserved PDEs. */
+    rc = PGMR3MappingsFix(pVM, MM_HYPER_AREA_ADDRESS, cb);
+    AssertRCReturn(rc, rc);
 
     CPUMQueryHyperCtxPtr(pVM, &pHyperCtx);
 
