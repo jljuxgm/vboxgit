@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 17759 2009-03-12 15:57:18Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 17761 2009-03-12 16:15:43Z vboxsync $ */
 
 /** @file
  *
@@ -24,6 +24,10 @@
 #include "HostNetworkInterfaceImpl.h"
 #include "Logging.h"
 #include "netif.h"
+
+#ifndef RT_OS_WINDOWS
+#include <arpa/inet.h>
+#endif /* RT_OS_WINDOWS */
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
@@ -236,7 +240,11 @@ STDMETHODIMP HostNetworkInterface::COMGETTER(NetworkMask) (BSTR *aNetworkMask)
     CheckComRCReturnRC (autoCaller.rc());
 
     in_addr tmp;
+#if defined(RT_OS_WINDOWS)
     tmp.S_un.S_addr = m.networkMask;
+#else
+    tmp.s_addr = m.networkMask;
+#endif
     char *addr = inet_ntoa(tmp);
     if(addr)
     {
