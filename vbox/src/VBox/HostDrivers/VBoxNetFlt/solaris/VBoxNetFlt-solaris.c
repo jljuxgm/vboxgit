@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 13033 2008-10-07 09:40:06Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 13055 2008-10-07 16:30:47Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -190,7 +190,7 @@ static struct cb_ops g_VBoxNetFltSolarisCbOps =
     nochpoll,                       /* c poll */
     ddi_prop_op,                    /* property ops */
     &g_VBoxNetFltSolarisStreamTab,
-    D_NEW | D_MP | D_MTPERQ,        /* compat. flag */
+    D_NEW | D_MP | D_MTQPAIR,       /* compat. flag */
     CB_REV                          /* revision */
 };
 
