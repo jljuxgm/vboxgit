@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 17275 2009-03-03 13:28:12Z vboxsync $ */
+/* $Id: HostImpl.h 17280 2009-03-03 14:19:22Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -114,7 +114,7 @@ public:
     STDMETHOD(FindHostFloppyDrive) (IN_BSTR aName, IHostFloppyDrive **aDrive);
     STDMETHOD(FindHostNetworkInterfaceByName) (IN_BSTR aName, IHostNetworkInterface **networkInterface);
     STDMETHOD(FindHostNetworkInterfaceById) (IN_GUID id, IHostNetworkInterface **networkInterface);
-    STDMETHOD(FindHostNetworkInterfacesOfType) (HostNetworkInterfaceType type, ComSafeArrayOut (IHostNetworkInterface *, aNetworkInterfaces));
+    STDMETHOD(FindHostNetworkInterfacesOfType) (HostNetworkInterfaceType_T type, ComSafeArrayOut (IHostNetworkInterface *, aNetworkInterfaces));
 
     // public methods only for internal purposes
 
