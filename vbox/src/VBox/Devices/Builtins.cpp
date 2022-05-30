@@ -1,4 +1,4 @@
-/** $Id: Builtins.cpp 11502 2008-08-19 21:07:25Z vboxsync $ */
+/** $Id: Builtins.cpp 12325 2008-09-10 05:52:01Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -246,7 +246,7 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
         return rc;
 #endif
 
-#if defined(RT_OS_LINUX) || defined(RT_OS_WINDOWS)
+#if defined(RT_OS_DARWIN) || defined(RT_OS_LINUX) || defined(RT_OS_WINDOWS)
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostSerial);
     if (RT_FAILURE(rc))
         return rc;
