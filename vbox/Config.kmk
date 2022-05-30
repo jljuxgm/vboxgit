@@ -1,4 +1,4 @@
-# $Id: Config.kmk 16010 2009-01-17 23:32:37Z vboxsync $
+# $Id: Config.kmk 16011 2009-01-17 23:41:35Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2741,6 +2741,10 @@ TEMPLATE_VBOXMAINEXE_LIBS                = $(LIB_RUNTIME)
  else if1of ($(KBUILD_TARGET), freebsd netbsd openbsd)
 TEMPLATE_VBOXMAINEXE_TOOL                = GXX3
 TEMPLATE_VBOXMAINEXE_LIBS                = $(LIB_RUNTIME)
+TEMPLATE_VBOXMAINEXE_INCS               += \
+	/usr/include \
+	/usr/X11R6/include \
+	/usr/local/include
  else ifeq ($(KBUILD_TARGET),solaris)
 TEMPLATE_VBOXMAINEXE_TOOL                = GXX3PLAIN
 TEMPLATE_VBOXMAINEXE_DEFS               += _REENTRANT
@@ -3360,6 +3364,10 @@ TEMPLATE_VBOXBLDPROG_LIBS                =
  else if1of ($(KBUILD_HOST), freebsd netbsd openbsd)
 TEMPLATE_VBOXBLDPROG_TOOL                = GXX3
 TEMPLATE_VBOXBLDPROG_LIBS                =
+TEMPLATE_VBOXBLDPROG_INCS               += \
+	/usr/include \
+	/usr/X11R6/include \
+	/usr/local/include
  else ifeq ($(KBUILD_HOST),solaris)
 TEMPLATE_VBOXBLDPROG_TOOL                = GXX3PLAIN
 TEMPLATE_VBOXBLDPROG_LIBS                = rt
@@ -3713,7 +3721,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16010 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16011 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
