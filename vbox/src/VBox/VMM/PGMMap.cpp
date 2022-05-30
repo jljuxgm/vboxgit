@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 17586 2009-03-09 15:28:25Z vboxsync $ */
+/* $Id: PGMMap.cpp 17589 2009-03-09 16:07:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -983,7 +983,7 @@ void pgmR3MapRelocate(PVM pVM, PPGMMAPPING pMapping, RTGCPTR GCPtrOldMapping, RT
     unsigned iPDNew = GCPtrNewMapping >> X86_PD_SHIFT;
 
     Log(("PGM: Relocating %s from %RGv to %RGv\n", pMapping->pszDesc, GCPtrOldMapping, GCPtrNewMapping));
-    Assert(((unsigned)iPDOld << X86_PD_SHIFT) == pMapping->GCPtr);
+    AssertMsg(((unsigned)iPDOld << X86_PD_SHIFT) == pMapping->GCPtr, ("%RGv vs %RGv\n", ((unsigned)iPDOld << X86_PD_SHIFT) == pMapping->GCPtr));
 
     /*
      * Relocate the page table(s).
