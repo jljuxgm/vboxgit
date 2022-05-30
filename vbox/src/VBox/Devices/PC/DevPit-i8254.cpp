@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 14583 2008-11-25 17:33:24Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 14631 2008-11-26 11:00:55Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -652,7 +652,10 @@ PDMBOTHCBDECL(int) pitIOPortSpeakerRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
         pThis->dummy_refresh_clock ^= 1;
         const int fRefresh = pThis->dummy_refresh_clock;
 #else
-        const int fRefresh = (u64Now / 15085 ) & 1;
+        /* To make refresh info statistically correct */
+        const int freq = 15085;
+        const int fRefresh = ((u64Now % freq ) > (freq / 2)) ? 1 : 0;
+        LogRel(("unow=%lld\n", u64Now));
 #endif
         /* bit 2,3 NMI / parity status stuff. */
         /* bit 1 - speaker data status */
