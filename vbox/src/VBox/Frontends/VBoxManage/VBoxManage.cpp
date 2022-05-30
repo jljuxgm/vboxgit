@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 17081 2009-02-24 17:14:04Z vboxsync $ */
+/* $Id: VBoxManage.cpp 17090 2009-02-24 19:39:36Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -319,7 +319,7 @@ static void printUsage(USAGECATEGORY u64Cmd)
 
     if (u64Cmd & USAGE_EXPORTAPPLIANCE)
     {
-        RTPrintf("VBoxManage export           <machines> -o <ovf>\n"
+        RTPrintf("VBoxManage export           <machines> [--output|-o] <ovf>\n"
                  "\n");
     }
 

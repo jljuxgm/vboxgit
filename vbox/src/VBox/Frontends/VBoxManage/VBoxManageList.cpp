@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 17078 2009-02-24 16:59:16Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 17090 2009-02-24 19:39:36Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -204,13 +204,9 @@ int handleList(HandlerArg *a)
                             {
                                 case MachineState_Running:
                                 case MachineState_Paused:
-                                    {
-                                        Guid uuid;
-                                        rc = machines [i]->COMGETTER(Id) (uuid.asOutParam());
-                                        if (SUCCEEDED(rc))
-                                            RTPrintf ("%s\n", uuid.toString().raw());
-                                        break;
-                                    }
+                                    rc = showVMInfo(a->virtualBox,
+                                                    machines[i],
+                                                    (fOptLong) ? VMINFO_STANDARD : VMINFO_COMPACT);
                             }
                         }
                     }
