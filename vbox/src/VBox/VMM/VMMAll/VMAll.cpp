@@ -1,4 +1,4 @@
-/* $Id: VMAll.cpp 13782 2008-11-04 12:16:30Z vboxsync $ */
+/* $Id: VMAll.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
 /** @file
  * VM - Virtual Machine All Contexts.
  */
@@ -139,7 +139,7 @@ void vmSetErrorCopy(PVM pVM, int rc, RT_SRC_POS_DECL, const char *pszFormat, va_
     /* allocate it */
     void *pv;
     int rc2 = MMHyperAlloc(pVM, cb, 0, MM_TAG_VM, &pv);
-    if (VBOX_SUCCESS(rc2))
+    if (RT_SUCCESS(rc2))
     {
         /* initialize it. */
         PVMERROR pErr = (PVMERROR)pv;
@@ -316,7 +316,7 @@ void vmSetRuntimeErrorCopy(PVM pVM, bool fFatal, const char *pszErrorID,
     /* allocate it */
     void *pv;
     int rc2 = MMHyperAlloc(pVM, cb, 0, MM_TAG_VM, &pv);
-    if (VBOX_SUCCESS(rc2))
+    if (RT_SUCCESS(rc2))
     {
         /* initialize it. */
         PVMRUNTIMEERROR pErr = (PVMRUNTIMEERROR)pv;

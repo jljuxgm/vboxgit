@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: GMM.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -120,7 +120,7 @@ GMMR3DECL(int) GMMR3AllocatePagesPerform(PVM pVM, PGMMALLOCATEPAGESREQ pReq)
          */
         void *pvChunk;
         rc = SUPPageAlloc(GMM_CHUNK_SIZE >> PAGE_SHIFT, &pvChunk);
-        if (VBOX_FAILURE(rc))
+        if (RT_FAILURE(rc))
             return VMSetError(pVM, rc, RT_SRC_POS,
                               N_("Out of memory (SUPPageAlloc) seeding a %u pages allocation request"),
                               pReq->cPages);

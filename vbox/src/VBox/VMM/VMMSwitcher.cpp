@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 13813 2008-11-04 21:55:34Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -142,7 +142,7 @@ int vmmR3SwitcherInit(PVM pVM)
                      && i < cTries - 1);
 
             /* cleanup */
-            if (VBOX_FAILURE(rc))
+            if (RT_FAILURE(rc))
             {
                 paBadTries[i].pvR3   = pVM->vmm.s.pvCoreCodeR3;
                 paBadTries[i].pvR0   = pVM->vmm.s.pvCoreCodeR0;
@@ -160,7 +160,7 @@ int vmmR3SwitcherInit(PVM pVM)
             RTMemTmpFree(paBadTries);
         }
     }
-    if (VBOX_SUCCESS(rc))
+    if (RT_SUCCESS(rc))
     {
         /*
          * copy the code.
@@ -178,7 +178,7 @@ int vmmR3SwitcherInit(PVM pVM)
          */
         RTGCPTR GCPtr;
         rc = MMR3HyperMapHCPhys(pVM, pVM->vmm.s.pvCoreCodeR3, pVM->vmm.s.HCPhysCoreCode, cbCoreCode, "Core Code", &GCPtr);
-        if (VBOX_SUCCESS(rc))
+        if (RT_SUCCESS(rc))
         {
             pVM->vmm.s.pvCoreCodeRC = GCPtr;
             MMR3HyperReserve(pVM, PAGE_SIZE, "fence", NULL);

@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -64,7 +64,7 @@ VMMR3DECL(int) DBGFR3AddrFromSelOff(PVM pVM, PDBGFADDRESS pAddress, RTSEL Sel, R
     {
         SELMSELINFO SelInfo;
         int rc = SELMR3GetSelectorInfo(pVM, Sel, &SelInfo);
-        if (VBOX_FAILURE(rc))
+        if (RT_FAILURE(rc))
             return rc;
 
         /* check limit. */

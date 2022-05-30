@@ -1,4 +1,4 @@
-/* $Id: TRPMGC.cpp 13635 2008-10-28 20:27:33Z vboxsync $ */
+/* $Id: TRPMGC.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -125,7 +125,7 @@ VMMRCDECL(int) trpmRCGuestIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
     {
         uint32_t cb;
         int rc = EMInterpretInstruction(pVM, pRegFrame, pvFault, &cb);
-        if (VBOX_SUCCESS(rc) && cb)
+        if (RT_SUCCESS(rc) && cb)
         {
             uint32_t iGate1 = (offRange + cb - 1)/sizeof(VBOXIDTE);
 

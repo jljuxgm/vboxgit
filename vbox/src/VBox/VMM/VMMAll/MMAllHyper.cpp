@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -834,7 +834,7 @@ Assert(pHeap == pVM->mm.s.CTX_SUFF(pHyperHeap));
      */
 #ifdef VBOX_WITH_STATISTICS
     pStat->cFrees++;
-    if (VBOX_SUCCESS(rc))
+    if (RT_SUCCESS(rc))
     {
         pStat->cbFreed        += cbChunk;
         pStat->cbCurAllocated -= cbChunk;

@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 13782 2008-11-04 12:16:30Z vboxsync $ */
+/* $Id: PGMPool.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -189,7 +189,7 @@ int pgmR3PoolInit(PVM pVM)
 #endif
     PPGMPOOL pPool;
     rc = MMR3HyperAllocOnceNoRel(pVM, cb, 0, MM_TAG_PGM_POOL, (void **)&pPool);
-    if (VBOX_FAILURE(rc))
+    if (RT_FAILURE(rc))
         return rc;
     pVM->pgm.s.pPoolR3 = pPool;
     pVM->pgm.s.pPoolR0 = MMHyperR3ToR0(pVM, pPool);

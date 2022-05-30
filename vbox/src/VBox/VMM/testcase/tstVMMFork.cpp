@@ -1,4 +1,4 @@
-/* $Id: tstVMMFork.cpp 13782 2008-11-04 12:16:30Z vboxsync $ */
+/* $Id: tstVMMFork.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
 /** @file
  * VMM Fork Test.
  */
@@ -71,7 +71,7 @@ int main(int argc, char* argv[])
     RTPrintf(TESTCASE ": Initializing...\n");
     PVM pVM;
     int rc = VMR3Create(1, NULL, NULL, NULL, NULL, &pVM);
-    if (VBOX_SUCCESS(rc))
+    if (RT_SUCCESS(rc))
     {
         /*
          * Do testing.
@@ -153,7 +153,7 @@ int main(int argc, char* argv[])
          * Cleanup.
          */
         rc = VMR3Destroy(pVM);
-        if (!VBOX_SUCCESS(rc))
+        if (!RT_SUCCESS(rc))
         {
             RTPrintf(TESTCASE ": error: failed to destroy vm! rc=%d\n", rc);
             rcErrors++;

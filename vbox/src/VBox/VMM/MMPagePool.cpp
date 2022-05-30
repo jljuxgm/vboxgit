@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: MMPagePool.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -68,7 +68,7 @@ int mmR3PagePoolInit(PVM pVM)
      *        ring-0. Need to change the wasy we allocate it... */
     AssertReleaseReturn(sizeof(*pVM->mm.s.pPagePoolR3) + sizeof(*pVM->mm.s.pPagePoolLowR3) < PAGE_SIZE, VERR_INTERNAL_ERROR);
     int rc = SUPPageAllocLocked(1, (void **)&pVM->mm.s.pPagePoolR3);
-    if (VBOX_FAILURE(rc))
+    if (RT_FAILURE(rc))
         return rc;
     memset(pVM->mm.s.pPagePoolR3, 0, PAGE_SIZE);
     pVM->mm.s.pPagePoolR3->pVM = pVM;
@@ -237,7 +237,7 @@ DECLINLINE(void *) mmR3PagePoolAlloc(PMMPAGEPOOL pPool)
                           0,
                           MM_TAG_MM_PAGE,
                           (void **)&pSub);
-    if (VBOX_FAILURE(rc))
+    if (RT_FAILURE(rc))
         return NULL;
 
     PSUPPAGE paPhysPages = (PSUPPAGE)&pSub->auBitmap[cPages / (sizeof(pSub->auBitmap[0]) * 8)];
@@ -248,10 +248,10 @@ DECLINLINE(void *) mmR3PagePoolAlloc(PMMPAGEPOOL pPool)
          * Allocate and lock the pages.
          */
         rc = SUPPageAlloc(cPages, &pSub->pvPages);
-        if (VBOX_SUCCESS(rc))
+        if (RT_SUCCESS(rc))
         {
             rc = SUPPageLock(pSub->pvPages, cPages, paPhysPages);
-            if (VBOX_FAILURE(rc))
+            if (RT_FAILURE(rc))
             {
                 SUPPageFree(pSub->pvPages, cPages);
                 rc = VMSetError(pPool->pVM, rc, RT_SRC_POS,
@@ -261,7 +261,7 @@ DECLINLINE(void *) mmR3PagePoolAlloc(PMMPAGEPOOL pPool)
     }
     else
         rc = SUPLowAlloc(cPages, &pSub->pvPages, NULL, paPhysPages);
-    if (VBOX_SUCCESS(rc))
+    if (RT_SUCCESS(rc))
     {
         /*
          * Setup the sub structure and allocate the requested page.

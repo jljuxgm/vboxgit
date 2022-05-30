@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -90,7 +90,7 @@ VMMDECL(int) PDMR3CritSectTerm(PVM pVM)
     {
         int rc2 = pdmR3CritSectDeleteOne(pVM, pVM->pdm.s.pCritSects, NULL, true /* final */);
         AssertRC(rc2);
-        if (VBOX_FAILURE(rc2) && VBOX_SUCCESS(rc))
+        if (RT_FAILURE(rc2) && RT_SUCCESS(rc))
             rc = rc2;
     }
     return rc;
@@ -111,7 +111,7 @@ static int pdmR3CritSectInitOne(PVM pVM, PPDMCRITSECTINT pCritSect, void *pvKey,
 {
     VM_ASSERT_EMT(pVM);
     int rc = RTCritSectInit(&pCritSect->Core);
-    if (VBOX_SUCCESS(rc))
+    if (RT_SUCCESS(rc))
     {
         pCritSect->pVMR3 = pVM;
         pCritSect->pVMR0 = (RTR0PTR)pVM;//pVM->pVMR0;
@@ -230,7 +230,7 @@ static int pdmR3CritSectDeleteByKey(PVM pVM, void *pvKey)
         {
             int rc2 = pdmR3CritSectDeleteOne(pVM, pCur, pPrev, false /* not final */);
             AssertRC(rc2);
-            if (VBOX_FAILURE(rc2) && VBOX_SUCCESS(rc))
+            if (RT_FAILURE(rc2) && RT_SUCCESS(rc))
                 rc = rc2;
         }
 

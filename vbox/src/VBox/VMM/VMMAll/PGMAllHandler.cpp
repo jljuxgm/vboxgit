@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 13415 2008-10-20 23:22:47Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -131,7 +131,7 @@ VMMDECL(int) PGMHandlerPhysicalRegisterEx(PVM pVM, PGMPHYSHANDLERTYPE enmType, R
      */
     PPGMPHYSHANDLER pNew;
     int rc = MMHyperAlloc(pVM, sizeof(*pNew), 0, MM_TAG_PGM_HANDLERS, (void **)&pNew);
-    if (VBOX_FAILURE(rc))
+    if (RT_FAILURE(rc))
         return rc;
 
     pNew->Core.Key      = GCPhys;
@@ -644,7 +644,7 @@ VMMDECL(int) PGMHandlerPhysicalSplit(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCPhysSp
      */
     PPGMPHYSHANDLER pNew;
     int rc = MMHyperAlloc(pVM, sizeof(*pNew), 0, MM_TAG_PGM_HANDLERS, (void **)&pNew);
-    if (VBOX_FAILURE(rc))
+    if (RT_FAILURE(rc))
         return rc;
 
     /*
