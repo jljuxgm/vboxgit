@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.cpp 15334 2008-12-11 19:37:55Z vboxsync $ */
+/* $Id: DVDDriveImpl.cpp 15661 2008-12-18 14:21:08Z vboxsync $ */
 
 /** @file
  *
@@ -245,8 +245,7 @@ STDMETHODIMP DVDDrive::COMSETTER(Passthrough) (BOOL aPassthrough)
 STDMETHODIMP DVDDrive::MountImage (IN_GUID aImageId)
 {
     Guid imageId = aImageId;
-    if (imageId.isEmpty())
-        return E_INVALIDARG;
+    CheckComArgExpr(aImageId, !imageId.isEmpty());
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
