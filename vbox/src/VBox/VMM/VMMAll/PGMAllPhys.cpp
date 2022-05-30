@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 17421 2009-03-05 20:17:00Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 17423 2009-03-05 20:34:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -514,7 +514,7 @@ int pgmPhysPageMapByPageID(PVM pVM, uint32_t idPage, RTHCPHYS HCPhys, void **ppv
     /*
      * Map it by HCPhys.
      */
-    return pgmR0DynMapHCPageInlined(pVM, HCPhys, ppv);
+    return pgmR0DynMapHCPageInlined(&pVM->pgm.s, HCPhys, ppv);
 
 #else
     /*
