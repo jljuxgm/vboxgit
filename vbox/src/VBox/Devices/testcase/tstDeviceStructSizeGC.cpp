@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 11556 2008-08-21 21:36:45Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 12476 2008-09-15 19:19:21Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -1120,6 +1120,7 @@ int main()
     GEN_CHECK_OFF(BUSLOGICDEVICE, ISCSIPort);
     GEN_CHECK_OFF(BUSLOGICDEVICE, pDrvBase);
     GEN_CHECK_OFF(BUSLOGICDEVICE, pDrvSCSIConnector);
+    GEN_CHECK_OFF(BUSLOGICDEVICE, cOutstandingRequests);
 
     GEN_CHECK_SIZE(BUSLOGIC);
     GEN_CHECK_OFF(BUSLOGIC, dev);
