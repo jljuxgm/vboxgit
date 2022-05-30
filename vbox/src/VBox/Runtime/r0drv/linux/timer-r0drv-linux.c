@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 12595 2008-09-19 10:00:54Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 13103 2008-10-08 18:51:00Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -338,7 +338,7 @@ static void rtTimerLinuxCallback(unsigned long ulUser)
     if (    ASMAtomicUoReadBool(&pTimer->fSuspended)
 #ifdef CONFIG_SMP
         ||  (   pTimer->fAllCpus
-             && (pSubTimer - &pTimer->aSubTimers[0]) != RTMpCpuId())
+             && (RTCPUID)(pSubTimer - &pTimer->aSubTimers[0]) != RTMpCpuId())
 #endif
        )
     {
