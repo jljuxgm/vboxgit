@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInfoNet.cpp 12392 2008-09-11 07:21:51Z vboxsync $ */
+/* $Id: VBoxVMInfoNet.cpp 12393 2008-09-11 07:25:47Z vboxsync $ */
 /** @file
  * VBoxVMInfoNet - Network information for the host.
  */
@@ -40,7 +40,7 @@ int vboxVMInfoNet(VBOXINFORMATIONCONTEXT* a_pCtx)
     int nNumInterfaces = nBytesReturned / sizeof(INTERFACE_INFO);
 
     RTStrPrintf(szPropPath, sizeof(szPropPath), "GuestInfo/Net/Count");
-    vboxVMInfoWritePropInt(a_pCtx, szPropPath, nNumInterfaces);
+    vboxVMInfoWritePropInt(a_pCtx, szPropPath, (nNumInterfaces > 1 ? nNumInterfaces-1 : 0));
 
     dwCurIface = 0;
 
