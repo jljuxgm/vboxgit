@@ -1,4 +1,4 @@
-/* $Id: string.h 16369 2009-01-29 14:26:18Z vboxsync $ */
+/* $Id: string.h 16384 2009-01-29 18:16:07Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -125,9 +125,9 @@ public:
     }
 
     /**
-     *  Allocates memory for a string capable to store \a aSize - 1 characters
-     *  plus the terminating zero character. If \a aSize is zero, or if a
-     *  memory allocation error occurs, this object will become null.
+     *  Allocates memory for a string capable to store \a aSize - 1 characters;
+     *  in other words, aSize includes the terminating zero character. If \a aSize
+     *  is zero, or if a memory allocation error occurs, this object will become null.
      */
     Bstr &alloc (size_t aSize)
     {
@@ -388,9 +388,9 @@ public:
     }
 
     /**
-     *  Allocates memory for a string capable to store \a aSize - 1 characters
-     *  plus the terminating zero character. If \a aSize is zero, or if a
-     *  memory allocation error occurs, this object will become null.
+     *  Allocates memory for a string capable to store \a aSize - 1 bytes (not characters!);
+     *  in other words, aSize includes the terminating zero character. If \a aSize
+     *  is zero, or if a memory allocation error occurs, this object will become null.
      */
     Utf8Str &alloc (size_t aSize)
     {
