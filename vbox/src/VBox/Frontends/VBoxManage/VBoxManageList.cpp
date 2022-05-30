@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 14612 2008-11-26 00:37:24Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 14661 2008-11-26 19:33:20Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -601,7 +601,7 @@ int handleList(int argc, char *argv[],
         systemProperties->COMGETTER(MaxVDISize)(&ul64Value);
         RTPrintf("Maximum VDI size:            %lu Megabytes\n", ul64Value);
         systemProperties->COMGETTER(DefaultHardDiskFolder)(str.asOutParam());
-        RTPrintf("Default hard disk filder:    %lS\n", str.raw());
+        RTPrintf("Default hard disk folder:    %lS\n", str.raw());
         systemProperties->COMGETTER(DefaultMachineFolder)(str.asOutParam());
         RTPrintf("Default machine folder:      %lS\n", str.raw());
         systemProperties->COMGETTER(RemoteDisplayAuthLibrary)(str.asOutParam());
