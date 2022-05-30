@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 14075 2008-11-11 00:14:05Z vboxsync $ */
+/* $Id: PGMPhys.cpp 14589 2008-11-25 18:16:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -676,6 +676,8 @@ VMMR3DECL(int) PGMR3PhysMMIO2Register(PVM pVM, PPDMDEVINS pDevIns, uint32_t iReg
         rc = SUPPageAllocLockedEx(cPages, &pvPages, paPages);
     if (RT_SUCCESS(rc))
     {
+        memset(pvPages, 0, cPages * PAGE_SIZE);
+
         /*
          * Create the MMIO2 range record for it.
          */

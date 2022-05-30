@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 14155 2008-11-12 23:55:08Z vboxsync $ */
+/* $Id: MMInternal.h 14589 2008-11-25 18:16:51Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -279,6 +279,12 @@ typedef struct MMHYPERHEAP
 #else
     /** Padding the structure to a 64-bit aligned size. */
     uint32_t                u32Padding0;
+#endif
+    /** The heap physical pages. */
+    R3PTRTYPE(PSUPPAGE)     paPages;
+#if HC_ARCH_BITS == 32
+    /** Padding the structure to a 64-bit aligned size. */
+    uint32_t                u32Padding1;
 #endif
 } MMHYPERHEAP;
 /** Pointer to the hypervisor heap. */

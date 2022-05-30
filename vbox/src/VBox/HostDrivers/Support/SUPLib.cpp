@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 14587 2008-11-25 17:55:53Z vboxsync $ */
+/* $Id: SUPLib.cpp 14589 2008-11-25 18:16:51Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -847,12 +847,6 @@ SUPR3DECL(int) SUPPageUnlock(void *pvStart)
     if (RT_SUCCESS(rc))
         rc = Req.Hdr.rc;
     return rc;
-}
-
-
-SUPR3DECL(int) SUPPageAllocLocked(size_t cPages, void **ppvPages)
-{
-    return SUPR3PageAllocEx(cPages, 0 /*fFlags*/, ppvPages, NULL /*pR0Ptr*/, NULL /*paPages*/);
 }
 
 

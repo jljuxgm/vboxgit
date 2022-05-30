@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 14157 2008-11-13 02:50:46Z vboxsync $ */
+/* $Id: MMPagePool.cpp 14589 2008-11-25 18:16:51Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -67,7 +67,7 @@ int mmR3PagePoolInit(PVM pVM)
     /** @todo @bufref{1865},@bufref{3202}: mapping the page pool page into
      *        ring-0. Need to change the wasy we allocate it... */
     AssertReleaseReturn(sizeof(*pVM->mm.s.pPagePoolR3) + sizeof(*pVM->mm.s.pPagePoolLowR3) < PAGE_SIZE, VERR_INTERNAL_ERROR);
-    int rc = SUPPageAllocLocked(1, (void **)&pVM->mm.s.pPagePoolR3);
+    int rc = SUPPageAllocLockedEx(1, (void **)&pVM->mm.s.pPagePoolR3, NULL);
     if (RT_FAILURE(rc))
         return rc;
     memset(pVM->mm.s.pPagePoolR3, 0, PAGE_SIZE);
