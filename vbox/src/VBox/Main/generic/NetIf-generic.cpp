@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 17711 2009-03-11 16:53:03Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 17722 2009-03-12 09:04:08Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -86,7 +86,10 @@ int NetIfEnableStaticIpConfig(VirtualBox *vBox, HostNetworkInterface * pIf, ULON
 
 int NetIfEnableStaticIpConfigV6(VirtualBox *vBox, HostNetworkInterface * pIf, IN_BSTR aIPV6Address, ULONG aIPV6MaskPrefixLength)
 {
-    return VERR_NOT_IMPLEMENTED;
+    char szAddress[5*8 + 1 + 5 + 1];
+    RTStrPrintf(szAddress, sizeof(szAddress), "%ls/%d",
+                aIPV6Address, aIPV6MaskPrefixLength);
+    return NetIfAdpCtl(pIf, szAddress, NULL);
 }
 
 int NetIfEnableDynamicIpConfig(VirtualBox *vBox, HostNetworkInterface * pIf)
