@@ -1,4 +1,4 @@
-# $Id: Config.kmk 16019 2009-01-18 01:33:51Z vboxsync $
+# $Id: Config.kmk 16025 2009-01-19 04:49:21Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2280,7 +2280,7 @@ TEMPLATE_VBOXR0DRV_CFLAGS.amd64        = -m64 --param inline-unit-growth=100 --p
 	-fno-omit-frame-pointer -mcmodel=kernel -mno-red-zone -mfpmath=387 -mno-sse -mno-sse2 -mno-mmx \
 	-mno-3dnow -msoft-float -fno-asynchronous-unwind-tables -Wundef
 TEMPLATE_VBOXR0DRV_CXXFLAGS            = -fno-exceptions -fno-rtti \
-	$(VBOX_GCC_WARN) -Wpointer-arith -Winline $(VBOX_GCC_Wno-pointer-sign) \
+	$(VBOX_GCC_WARN) -Wpointer-arith -Winline \
 	-O2 -fno-format-extensions -fno-strict-aliasing -fno-common -finline-limit=8000 \
 	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_OPT) $(VBOX_GCC_FP) \
 	-nostdinc
@@ -3756,7 +3756,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16019 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16025 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
