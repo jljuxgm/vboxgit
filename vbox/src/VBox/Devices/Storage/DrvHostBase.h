@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DrvHostBase.h 15815 2009-01-05 19:42:23Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -128,6 +128,12 @@ typedef struct DRVHOSTBASE
     volatile HWND           hwndDeviceChange;
     /** The unit mask. */
     DWORD                   fUnitMask;
+#endif
+
+#ifdef RT_OS_LINUX
+    /** Double buffer required for ioctl with the Linux kernel as long as we use
+     * remap_pfn_range() instead of vm_insert_page(). */
+    void                    *pbDoubleBuffer;
 #endif
 
 
