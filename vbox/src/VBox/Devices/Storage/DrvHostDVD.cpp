@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 12125 2008-09-05 11:41:29Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -543,7 +543,7 @@ static int drvHostDvdSendCmd(PPDMIBLOCK pInterface, const uint8_t *pbCmd, PDMBLO
             Log2(("%s: error status. rc=%Rrc\n", __FUNCTION__, rc));
         }
         else
-            *pbStat = 0;
+            *pbStat = SCSI_SENSE_NONE;
     }
     Log2(("%s: after ioctl: residual buflen=%d original buflen=%d\n", __FUNCTION__, usc.uscsi_resid, usc.uscsi_buflen));
 
@@ -596,7 +596,7 @@ static int drvHostDvdSendCmd(PPDMIBLOCK pInterface, const uint8_t *pbCmd, PDMBLO
         if (cbReturned > RT_OFFSETOF(struct _REQ, aSense))
             *pbStat = Req.aSense[2] & 0x0f;
         else
-            *pbStat = 0;
+            *pbStat = SCSI_SENSE_NONE;
         /* Windows shares the property of not properly reflecting the actually
          * transferred data size. See above. Assume that everything worked ok. */
         rc = VINF_SUCCESS;
