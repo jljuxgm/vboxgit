@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 14253 2008-11-17 12:49:21Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -507,7 +507,30 @@ VMMDECL(uint64_t) TMVirtualSyncGetEx(PVM pVM, bool fCheckTimers)
         }
     }
     else
+    {
         u64 = pVM->tm.s.u64VirtualSync;
+
+        /*
+         * If it looks like a halt caused by pending timers, make sure the FF is raised.
+         * This is a safeguard against timer queue runner leaving the virtual sync clock stopped.
+         */
+        if (    fCheckTimers
+            &&  pVM->tm.s.fVirtualTicking
+            &&  !VM_FF_ISSET(pVM, VM_FF_TIMER))
+        {
+            const uint64_t u64Expire = pVM->tm.s.CTX_SUFF(paTimerQueues)[TMCLOCK_VIRTUAL_SYNC].u64Expire;
+            if (u64 >= u64Expire)
+            {
+                VM_FF_SET(pVM, VM_FF_TIMER);
+#ifdef IN_RING3
+                REMR3NotifyTimerPending(pVM);
+                VMR3NotifyFF(pVM, true);
+#endif
+                STAM_COUNTER_INC(&pVM->tm.s.StatVirtualGetSyncSetFF);
+                Log4(("TM: %RU64/%RU64: exp tmr=>ff (!)\n", u64, pVM->tm.s.offVirtualSync - pVM->tm.s.offVirtualSyncGivenUp));
+            }
+        }
+    }
     return u64;
 }
 
