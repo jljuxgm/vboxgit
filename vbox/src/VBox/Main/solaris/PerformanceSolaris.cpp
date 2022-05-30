@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 11501 2008-08-19 19:57:03Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 12400 2008-09-11 10:34:58Z vboxsync $ */
 
 /** @file
  *
@@ -54,12 +54,9 @@ private:
     kstat_t     *mSysPages;
 };
 
-// Solaris Metric factory
-
-MetricFactorySolaris::MetricFactorySolaris()
+CollectorHAL *createHAL()
 {
-    mHAL = new CollectorSolaris();
-    Assert(mHAL);
+    return new CollectorSolaris();
 }
 
 // Collector HAL for Solaris

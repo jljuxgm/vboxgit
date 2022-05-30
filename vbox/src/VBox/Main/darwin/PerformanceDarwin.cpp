@@ -1,4 +1,4 @@
-/* $Id: PerformanceDarwin.cpp 12133 2008-09-05 14:13:33Z vboxsync $ */
+/* $Id: PerformanceDarwin.cpp 12400 2008-09-11 10:34:58Z vboxsync $ */
 
 /** @file
  *
@@ -73,10 +73,9 @@ private:
     ULONG totalRAM;
 };
 
-MetricFactoryDarwin::MetricFactoryDarwin()
+CollectorHAL *createHAL()
 {
-    mHAL = new CollectorDarwin();
-    Assert(mHAL);
+    return new CollectorDarwin();
 }
 
 CollectorDarwin::CollectorDarwin()

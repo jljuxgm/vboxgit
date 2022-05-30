@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 11498 2008-08-19 18:50:33Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 12400 2008-09-11 10:34:58Z vboxsync $ */
 
 /** @file
  *
@@ -42,12 +42,9 @@ private:
     int getRawProcessStats(RTPROCESS process, uint64_t *cpuUser, uint64_t *cpuKernel, ULONG *memPagesUsed);
 };
 
-// Linux Metric factory
-
-MetricFactoryLinux::MetricFactoryLinux()
+CollectorHAL *createHAL()
 {
-    mHAL = new CollectorLinux();
-    Assert(mHAL);
+    return new CollectorLinux();
 }
 
 // Collector HAL for Linux
