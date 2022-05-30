@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 12554 2008-09-18 10:10:08Z vboxsync $ */
+/* $Id: HWACCMInternal.h 12566 2008-09-18 12:42:54Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -33,7 +33,7 @@
 #include <iprt/cpuset.h>
 #include <iprt/mp.h>
 
-////#define VBOX_WITH_HWACCM_DEBUG_REGISTER_SUPPORT
+#define VBOX_WITH_HWACCM_DEBUG_REGISTER_SUPPORT
 
 #if HC_ARCH_BITS == 64
 /* Enable 64 bits guest support. */
