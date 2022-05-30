@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17556 2009-03-09 09:46:40Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17558 2009-03-09 09:52:37Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4257,10 +4257,6 @@ static void pgmPoolFlushAllInt(PPGMPOOL pPool)
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     /* Unmap the old CR3 value before flushing everything. */
     int rc = PGM_BTH_PFN(UnmapCR3, pVM)(pVM);
-    AssertRC(rc);
-
-    /* Exit the current shadow paging mode as well; nested paging and EPT use a root CR3 which will get flushed here. */
-    rc = PGM_SHW_PFN(Exit, pVM)(pVM);
     AssertRC(rc);
 #endif
 
