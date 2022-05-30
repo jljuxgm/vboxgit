@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17984 2009-03-16 21:55:22Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17985 2009-03-16 22:02:09Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -802,7 +802,7 @@ static int netIfEnableStaticIpConfig(const Guid &guid, ULONG ip, ULONG mask)
                 hr = netIfWinAdapterConfigPath(pAdapterConfig, &ObjPath);
                 if(SUCCEEDED(hr))
                 {
-                    hr = netIfWinEnableStaticV4(pSvc, ObjPath, aIp, aMask, 1);
+                    hr = netIfWinEnableStaticV4(pSvc, ObjPath, aIp, aMask, ip != 0 ? 1 : 0);
                     if(SUCCEEDED(hr))
                     {
 #if 0
