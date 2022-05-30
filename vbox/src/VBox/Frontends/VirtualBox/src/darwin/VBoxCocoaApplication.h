@@ -1,4 +1,4 @@
-/* $Id: VBoxCocoaApplication.h 16699 2009-02-11 20:56:58Z vboxsync $ */
+/* $Id: VBoxCocoaApplication.h 16771 2009-02-14 21:27:45Z vboxsync $ */
 /** @file
  * VBoxCocoaApplication - NSApplication subclass for handling -sendEvent.
  */
@@ -17,7 +17,6 @@
  * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
- *
  */
 
 #ifndef ___darwin_VBoxCocoaApplication_h
