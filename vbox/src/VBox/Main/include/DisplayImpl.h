@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: DisplayImpl.h 16185 2009-01-22 17:34:15Z vboxsync $ */
 
 /** @file
  *
@@ -68,6 +68,16 @@ typedef struct _DISPLAYFBINFO
         int32_t yTop;
         int32_t yBottom;
     } dirtyRect;
+
+    struct {
+        bool fPending;
+        ULONG pixelFormat;
+        void *pvVRAM;
+        uint32_t bpp;
+        uint32_t cbLine;
+        int w;
+        int h;
+    } pendingResize;
 
 } DISPLAYFBINFO;
 
