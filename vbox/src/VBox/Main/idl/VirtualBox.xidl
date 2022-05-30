@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 13674 2008-10-30 13:09:29Z vboxsync $ *
+ * $Id: VirtualBox.xidl 13676 2008-10-30 13:34:41Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -7328,7 +7328,7 @@ Snapshot 1 (B.vdi)            Snapshot 1 (B.vdi)
       </desc>
     </attribute>
 
-    <attribute name="configNames" type="wstring" safearray="yes" readonly="yes">
+    <attribute name="propertyNames" type="wstring" safearray="yes" readonly="yes">
       <desc>
         Array of strings containing the supported configuration keys.
       </desc>
