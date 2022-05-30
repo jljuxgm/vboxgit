@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 15366 2008-12-12 13:50:32Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 16000 2009-01-16 16:51:34Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -199,7 +199,7 @@ HRESULT VirtualBox::init()
             if (RT_SUCCESS (vrc))
                 vrc = RTFileWrite (handle,
                                    (void *) gDefaultGlobalConfig,
-                                   sizeof (gDefaultGlobalConfig), NULL);
+                                   strlen (gDefaultGlobalConfig), NULL);
             if (RT_FAILURE (vrc))
             {
                 rc = setError (E_FAIL, tr ("Could not create the default settings file "
