@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 8155 2008-04-18 15:16:47Z vboxsync $
+; $Id: PATMA.asm 11979 2008-09-02 13:00:58Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -1542,6 +1542,7 @@ PATMCpuidStart:
     cmp     eax, PATM_CPUID_CENTAUR_MAX
     jb      cpuid_centaur
 
+    ; Dirty assumptions in patmCorrectFixup about the pointer fixup order!!!!
 cpuid_def:
     mov     eax, PATM_CPUID_DEF_PTR
     jmp     cpuid_fetch
