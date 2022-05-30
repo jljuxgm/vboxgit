@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 14521 2008-11-24 14:48:30Z vboxsync $ */
+/* $Id: HostImpl.h 14523 2008-11-24 14:57:18Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -176,6 +176,9 @@ private:
     /** Pointer to the USBProxyService object. */
     USBProxyService *mUSBProxyService;
 #endif /* VBOX_WITH_USB */
+
+    /* Features that can be queried with GetProcessorFeature */
+    bool fVTxAMDVSupported, fLongModeSupported, fPAESupported;
 
     HostPowerService *mHostPowerService;
 };
