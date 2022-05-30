@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15255 2008-12-10 15:45:19Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15258 2008-12-10 16:09:34Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2505,7 +2505,7 @@ ResumeExecution:
 
         Assert(pVM->hwaccm.s.fNestedPaging);
 
-        rc = VMXReadCachedVMCS64(VMX_VMCS_EXIT_PHYS_ADDR_FULL, &GCPhys);
+        rc = VMXReadVMCS64(VMX_VMCS_EXIT_PHYS_ADDR_FULL, &GCPhys);
         AssertRC(rc);
         Assert(((exitQualification >> 7) & 3) != 2);
 
@@ -2556,7 +2556,7 @@ ResumeExecution:
 
         Assert(pVM->hwaccm.s.fNestedPaging);
 
-        rc = VMXReadCachedVMCS64(VMX_VMCS_EXIT_PHYS_ADDR_FULL, &GCPhys);
+        rc = VMXReadVMCS64(VMX_VMCS_EXIT_PHYS_ADDR_FULL, &GCPhys);
         AssertRC(rc);
 
         Log(("VMX_EXIT_EPT_MISCONFIG for %VGp\n", GCPhys));
