@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 12764 2008-09-26 11:07:52Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 12829 2008-09-30 13:20:29Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -275,6 +275,23 @@ void darwinUpdateDockPreview (VBoxFrameBuffer *aFrameBuffer, CGImageRef aOverlay
     CGDataProviderRelease (dp);
     CGImageRelease (ir);
     CGColorSpaceRelease (cs);
+}
+
+QString darwinSystemLanguage()
+{
+    /* Get the locales supported by our bundle */
+    CFArrayRef supportedLocales = CFBundleCopyBundleLocalizations (CFBundleGetMainBundle());
+    /* Check them against the languages currently selected by the user */
+    CFArrayRef preferredLocales = CFBundleCopyPreferredLocalizationsFromArray (supportedLocales);
+    /* Get the one which is on top */
+    CFStringRef localeId = (CFStringRef)CFArrayGetValueAtIndex (preferredLocales, 0);
+    /* Convert them to a C-string */
+    char localeName[20];
+    CFStringGetCString (localeId, localeName, sizeof (localeName), kCFStringEncodingUTF8);
+    /* Some cleanup */
+    CFRelease (supportedLocales);
+    CFRelease (preferredLocales);
+    return QString (localeName);
 }
 
 bool darwinIsMenuOpen()
