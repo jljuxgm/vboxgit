@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 16172 2009-01-22 15:09:31Z vboxsync $ */
+/* $Id: PGMInternal.h 16175 2009-01-22 15:32:51Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -4294,8 +4294,8 @@ DECLINLINE(PX86PML4) pgmShwGetLongModePML4Ptr(PPGM pPGM)
 #else
 # ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
     PX86PML4 pShwPml4;
-    Assert(pPGM->HCPhysShwPaePml4 != 0 && pPGM->HCPhysShwPaePml4 != NIL_RTHCPHYS);
-    int rc = PGM_HCPHYS_2_PTR_BY_PGM(pPGM, pPGM->HCPhysShwPaePml4, &pShwPml4);
+    Assert(pPGM->HCPhysShwCR3 != 0 && pPGM->HCPhysShwCR3 != NIL_RTHCPHYS);
+    int rc = PGM_HCPHYS_2_PTR_BY_PGM(pPGM, pPGM->HCPhysShwCR3, &pShwPml4);
     AssertRCReturn(rc, 0);
     return pShwPml4;
 # else
