@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 16408 2009-01-30 12:14:26Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 16409 2009-01-30 12:29:57Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -399,7 +399,9 @@ VMMDECL(int) PGMMapDeactivateAll(PVM pVM)
     if (pVM->pgm.s.fMappingsFixed)
         return VINF_SUCCESS;
 
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     Assert(PGMGetGuestMode(pVM) >= PGMMODE_32_BIT && PGMGetGuestMode(pVM) <= PGMMODE_PAE_NX);
+#endif
 
     /*
      * Iterate mappings.
