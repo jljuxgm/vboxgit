@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 12617 2008-09-20 17:18:44Z vboxsync $ */
+/* $Id: DevAPIC.cpp 12626 2008-09-22 07:42:11Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1813,11 +1813,7 @@ static DECLCALLBACK(void) apicRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
 #endif
     dev->pDevInsRC  = PDMDEVINS_2_RCPTR(pDevIns);
     dev->pApicHlpRC = dev->pApicHlpR3->pfnGetRCHelpers(pDevIns);
-    /** @todo: write pLapicsRC relocation right */
-#if 0
-    if (dev->pLapicsRC)
-        dev->pLapicsRC  = MMHyperR3ToR0(PDMDevHlpGetVM(pDevIns), dev->pLapicsR3);
-#endif
+    dev->pLapicsRC  = MMHyperR3ToRC(PDMDevHlpGetVM(pDevIns), dev->pLapicsR3);
     foreach_apic(dev, 0xffffffff,
                  apic->pTimerRC = TMTimerRCPtr(apic->CTX_SUFF(pTimer)));
 }
