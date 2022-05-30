@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 14829 2008-11-30 08:16:10Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 15121 2008-12-08 16:54:08Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -207,7 +207,7 @@ int main()
     GEN_CHECK_OFF(VGASTATE, vbe_regs[VBE_DISPI_INDEX_NB - 1]);
     GEN_CHECK_OFF(VGASTATE, vbe_start_addr);
     GEN_CHECK_OFF(VGASTATE, vbe_line_offset);
-    GEN_CHECK_OFF(VGASTATE, vbe_bank_mask);
+    GEN_CHECK_OFF(VGASTATE, vbe_bank_max);
 #endif
     GEN_CHECK_OFF(VGASTATE, font_offsets);
     GEN_CHECK_OFF(VGASTATE, font_offsets[1]);
