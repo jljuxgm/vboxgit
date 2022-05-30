@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 14114 2008-11-11 23:37:04Z vboxsync $ */
+/* $Id: VMMR0.cpp 14499 2008-11-24 01:48:34Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -54,8 +54,6 @@
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-static int VMMR0Init(PVM pVM, uint32_t uSvnRev);
-static int VMMR0Term(PVM pVM);
 __BEGIN_DECLS
 VMMR0DECL(int) ModuleInit(void);
 VMMR0DECL(void) ModuleTerm(void);

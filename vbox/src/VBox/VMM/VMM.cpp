@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 14299 2008-11-18 13:25:40Z vboxsync $ */
+/* $Id: VMM.cpp 14499 2008-11-24 01:48:34Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -229,7 +229,13 @@ static int vmmR3InitStacks(PVM pVM)
 #endif
     if (RT_SUCCESS(rc))
     {
-        pVM->vmm.s.CallHostR0JmpBuf.pvSavedStack = MMHyperR3ToR0(pVM, pVM->vmm.s.pbEMTStackR3);
+#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
+        /* MMHyperR3ToR0 returns R3 when not doing hardware assisted virtualization. */
+        if (!HWACCMIsEnabled(pVM))
+            pVM->vmm.s.CallHostR0JmpBuf.pvSavedStack = NIL_RTR0PTR;
+        else
+#endif
+            pVM->vmm.s.CallHostR0JmpBuf.pvSavedStack = MMHyperR3ToR0(pVM, pVM->vmm.s.pbEMTStackR3);
         pVM->vmm.s.pbEMTStackRC = MMHyperR3ToRC(pVM, pVM->vmm.s.pbEMTStackR3);
         pVM->vmm.s.pbEMTStackBottomRC = pVM->vmm.s.pbEMTStackRC + VMM_STACK_SIZE;
         AssertRelease(pVM->vmm.s.pbEMTStackRC);
