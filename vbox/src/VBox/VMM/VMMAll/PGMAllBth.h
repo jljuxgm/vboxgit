@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 16172 2009-01-22 15:09:31Z vboxsync $ */
+/* $Id: PGMAllBth.h 16177 2009-01-22 15:38:28Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -909,7 +909,7 @@ PGM_BTH_DECL(int, InvalidatePage)(PVM pVM, RTGCPTR GCPtrPage)
 
 # else /* PGM_SHW_TYPE == PGM_TYPE_AMD64 */
     /* PML4 */
-    AssertReturn(CTX_SUFF(pVM->pgm.s.pShwRoot), VERR_INTERNAL_ERROR);
+    AssertReturn(pVM->pgm.s.pShwRootR3, VERR_INTERNAL_ERROR);
 
     const unsigned  iPml4     = (GCPtrPage >> X86_PML4_SHIFT) & X86_PML4_MASK;
     const unsigned  iPdpt     = (GCPtrPage >> X86_PDPT_SHIFT) & X86_PDPT_MASK_AMD64;
