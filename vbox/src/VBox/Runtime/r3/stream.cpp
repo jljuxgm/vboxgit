@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 14060 2008-11-10 23:10:48Z vboxsync $ */
+/* $Id: stream.cpp 17008 2009-02-23 12:23:01Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -199,11 +199,11 @@ RTR3DECL(int) RTStrmOpen(const char *pszFilename, const char *pszMode, PRTSTREAM
  * @param   pszFilenameFmt  Filename path format string.
  * @param   args            Arguments to the format string.
  */
-RTR3DECL(int) RTStrmOpenfV(const char *pszMode, PRTSTREAM *ppStream, const char *pszFilenameFmt, va_list args)
+RTR3DECL(int) RTStrmOpenFV(const char *pszMode, PRTSTREAM *ppStream, const char *pszFilenameFmt, va_list args)
 {
     int     rc;
     char    szFilename[RTPATH_MAX];
-    size_t  cch = RTStrPrintf(szFilename, sizeof(szFilename), pszFilenameFmt, args);
+    size_t  cch = RTStrPrintfV(szFilename, sizeof(szFilename), pszFilenameFmt, args);
     if (cch < sizeof(szFilename))
         rc = RTStrmOpen(szFilename, pszMode, ppStream);
     else
@@ -225,11 +225,11 @@ RTR3DECL(int) RTStrmOpenfV(const char *pszMode, PRTSTREAM *ppStream, const char 
  * @param   pszFilenameFmt  Filename path format string.
  * @param   ...             Arguments to the format string.
  */
-RTR3DECL(int) RTStrmOpenf(const char *pszMode, PRTSTREAM *ppStream, const char *pszFilenameFmt, ...)
+RTR3DECL(int) RTStrmOpenF(const char *pszMode, PRTSTREAM *ppStream, const char *pszFilenameFmt, ...)
 {
     va_list args;
     va_start(args, pszFilenameFmt);
-    int rc = RTStrmOpenfV(pszMode, ppStream, pszFilenameFmt, args);
+    int rc = RTStrmOpenFV(pszMode, ppStream, pszFilenameFmt, args);
     va_end(args);
     return rc;
 }
