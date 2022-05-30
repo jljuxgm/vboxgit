@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 13713 2008-10-31 13:35:03Z vboxsync $ */
+/* $Id: MachineImpl.h 13722 2008-10-31 15:53:18Z vboxsync $ */
 
 /** @file
  *
@@ -258,6 +258,7 @@ public:
         BOOL           mHWVirtExNestedPagingEnabled;
         BOOL           mHWVirtExVPIDEnabled;
         BOOL           mPAEEnabled;
+        ULONG          mCPUCount;
 
         DeviceType_T   mBootOrder [SchemaDefs::MaxBootPosition];
 
@@ -473,6 +474,8 @@ public:
     STDMETHOD(COMSETTER(OSTypeId)) (INPTR BSTR aOSTypeId);
     STDMETHOD(COMGETTER(MemorySize))(ULONG *memorySize);
     STDMETHOD(COMSETTER(MemorySize))(ULONG memorySize);
+    STDMETHOD(COMGETTER(CPUCount))(ULONG *cpuCount);
+    STDMETHOD(COMSETTER(CPUCount))(ULONG cpuCount);
     STDMETHOD(COMGETTER(MemoryBalloonSize))(ULONG *memoryBalloonSize);
     STDMETHOD(COMSETTER(MemoryBalloonSize))(ULONG memoryBalloonSize);
     STDMETHOD(COMGETTER(StatisticsUpdateInterval))(ULONG *statisticsUpdateInterval);

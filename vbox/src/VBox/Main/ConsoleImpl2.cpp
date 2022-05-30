@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 13690 2008-10-30 21:09:50Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 13722 2008-10-31 15:53:18Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -145,11 +145,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     ULONG cRamMBs;
     hrc = pMachine->COMGETTER(MemorySize)(&cRamMBs);                                H();
 
+    ULONG cCpus = 1;
 #ifdef VBOX_WITH_SMP_GUESTS
-    /* @todo nike: Testing code, should use actual getter when ready */
-    uint16_t cCpus = 2;
-#else
-    uint16_t cCpus = 1;
+    hrc = pMachine->COMGETTER(CPUCount)(&cCpus);                                    H();
 #endif
 
     /*
