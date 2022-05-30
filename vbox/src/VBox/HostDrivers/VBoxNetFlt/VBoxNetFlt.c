@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 17306 2009-03-03 18:23:42Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 17307 2009-03-03 18:25:24Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -645,11 +645,7 @@ static bool vboxNetFltDestroyInstance(PVBOXNETFLTINS pThis)
      * specific code do its part of the cleanup outside the mutex.
      */
     rc = RTSemFastMutexRequest(pGlobals->hFastMtx); AssertRC(rc);
-#ifdef VBOXNETFLT_STATIC_CONFIG
-    vboxNetFltSetState(pThis, kVBoxNetFltInsState_Destroying);
-#else
     vboxNetFltSetState(pThis, kVBoxNetFltInsState_Disconnecting);
-#endif
     RTSemFastMutexRelease(pGlobals->hFastMtx);
 
     vboxNetFltOsDeleteInstance(pThis);

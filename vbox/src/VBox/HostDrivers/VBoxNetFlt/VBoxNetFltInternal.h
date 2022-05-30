@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 17306 2009-03-03 18:23:42Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 17307 2009-03-03 18:25:24Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -67,11 +67,6 @@ typedef enum VBOXNETFTLINSSTATE
     /** Disconnecting from the internal network and possibly the host network interface.
      * Partly for reasons of deadlock avoidance again. */
     kVBoxNetFltInsState_Disconnecting,
-#ifdef VBOXNETFLT_STATIC_CONFIG
-    /** Destroying the instance
-     * Partly for reasons of deadlock avoidance again. */
-    kVBoxNetFltInsState_Destroying,
-#endif
     /** The instance has been disconnected from both the host and the internal network. */
     kVBoxNetFltInsState_Destroyed,
 
