@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16848 2009-02-17 14:57:35Z vboxsync $
+# $Id: Makefile.kmk 16960 2009-02-19 22:13:33Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -37,8 +37,7 @@ ifndef VBOX_ONLY_DOCS
    include $(PATH_SUB_CURRENT)/VBoxNetFlt/Makefile.kmk
   endif
  endif
-
- if1of ($(KBUILD_TARGET),solaris)
+ if1of ($(KBUILD_TARGET), darwin solaris)
   ifdef VBOX_WITH_NETADP
    include $(PATH_SUB_CURRENT)/VBoxNetAdp/Makefile.kmk
   endif

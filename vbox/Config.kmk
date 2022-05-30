@@ -1,4 +1,4 @@
-# $Id: Config.kmk 16959 2009-02-19 21:14:25Z vboxsync $
+# $Id: Config.kmk 16960 2009-02-19 22:13:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -73,7 +73,7 @@ ifeq ($(KBUILD_TARGET),darwin)
  INST_VBOXDRV         = $(INST_DIST)VBoxDrv.kext/
  INST_VBOXDRV_TIGER   = $(INST_DIST)VBoxDrvTiger.kext/
  INST_VBOXNETFLT      = $(INST_DIST)VBoxNetFlt.kext/
- INST_VBOXNETTAP      = $(INST_DIST)VBoxNetTap.kext/
+ INST_VBOXNETADP      = $(INST_DIST)VBoxNetAdp.kext/
  INST_VBOXUSB         = $(INST_DIST)VBoxUSB.kext/
  INST_VBOXUSB_TIGER   = $(INST_DIST)VBoxUSBTiger.kext/
 
@@ -3676,7 +3676,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16959 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16960 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
