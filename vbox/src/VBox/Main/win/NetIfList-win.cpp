@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17494 2009-03-06 16:55:44Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17501 2009-03-06 17:12:09Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -904,10 +904,10 @@ static HRESULT netIfNetworkInterfaceHelperClient (SVCHlpClient *aClient,
                     default:
                     {
                         endLoop = true;
-                        ComAssertMsgFailedBreak ((
-                            "Invalid message code %d (%08lX)\n",
-                            reply, reply),
-                            rc = E_FAIL);
+                        rc = E_FAIL;//TODO: ComAssertMsgFailedBreak ((
+                            //"Invalid message code %d (%08lX)\n",
+                            //reply, reply),
+                            //rc = E_FAIL);
                     }
                 }
             }
@@ -957,10 +957,10 @@ static HRESULT netIfNetworkInterfaceHelperClient (SVCHlpClient *aClient,
                     default:
                     {
                         endLoop = true;
-                        ComAssertMsgFailedBreak ((
-                            "Invalid message code %d (%08lX)\n",
-                            reply, reply),
-                            rc = E_FAIL);
+                        rc = E_FAIL; // TODO: ComAssertMsgFailedBreak ((
+                            //"Invalid message code %d (%08lX)\n",
+                            //reply, reply),
+                            //rc = E_FAIL);
                     }
                 }
             }
@@ -968,10 +968,10 @@ static HRESULT netIfNetworkInterfaceHelperClient (SVCHlpClient *aClient,
             break;
         }
         default:
-            ComAssertMsgFailedBreak ((
-                "Invalid message code %d (%08lX)\n",
-                d->msgCode, d->msgCode),
-                rc = E_FAIL);
+            rc = E_FAIL; // TODO: ComAssertMsgFailedBreak ((
+//                "Invalid message code %d (%08lX)\n",
+//                d->msgCode, d->msgCode),
+//                rc = E_FAIL);
     }
 
     if (aVrc)
