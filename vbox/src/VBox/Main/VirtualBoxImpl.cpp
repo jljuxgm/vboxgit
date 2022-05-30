@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 16971 2009-02-20 12:26:19Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 17737 2009-03-12 12:20:25Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -609,7 +609,7 @@ VirtualBox::COMGETTER(SystemProperties) (ISystemProperties **aSystemProperties)
 }
 
 STDMETHODIMP
-VirtualBox::COMGETTER(Machines2) (ComSafeArrayOut (IMachine *, aMachines))
+VirtualBox::COMGETTER(Machines) (ComSafeArrayOut (IMachine *, aMachines))
 {
     if (ComSafeArrayOutIsNull (aMachines))
         return E_POINTER;

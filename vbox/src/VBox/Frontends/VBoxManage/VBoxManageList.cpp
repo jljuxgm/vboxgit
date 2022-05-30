@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 17713 2009-03-11 17:30:58Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 17737 2009-03-12 12:20:25Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -178,7 +178,7 @@ int handleList(HandlerArg *a)
              * Get the list of all registered VMs
              */
             com::SafeIfaceArray <IMachine> machines;
-            rc = a->virtualBox->COMGETTER(Machines2)(ComSafeArrayAsOutParam (machines));
+            rc = a->virtualBox->COMGETTER(Machines)(ComSafeArrayAsOutParam (machines));
             if (SUCCEEDED(rc))
             {
                 /*
@@ -186,7 +186,7 @@ int handleList(HandlerArg *a)
                  */
                 for (size_t i = 0; i < machines.size(); ++ i)
                 {
-                    if (machines [i])
+                    if (machines[i])
                         rc = showVMInfo(a->virtualBox,
                                         machines[i],
                                         (fOptLong) ? VMINFO_STANDARD : VMINFO_COMPACT);
@@ -201,7 +201,7 @@ int handleList(HandlerArg *a)
              * Get the list of all _running_ VMs
              */
             com::SafeIfaceArray <IMachine> machines;
-            rc = a->virtualBox->COMGETTER(Machines2)(ComSafeArrayAsOutParam (machines));
+            rc = a->virtualBox->COMGETTER(Machines)(ComSafeArrayAsOutParam (machines));
             if (SUCCEEDED(rc))
             {
                 /*
@@ -209,7 +209,7 @@ int handleList(HandlerArg *a)
                  */
                 for (size_t i = 0; i < machines.size(); ++ i)
                 {
-                    if (machines [i])
+                    if (machines[i])
                     {
                         MachineState_T machineState;
                         rc = machines [i]->COMGETTER(State)(&machineState);
