@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 11725 2008-08-27 22:21:47Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 11927 2008-09-01 15:26:24Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -189,7 +189,16 @@ static RTSPINLOCK           g_Spinlock = NIL_RTSPINLOCK;
  */
 int _init(void)
 {
-    LogFlow((DEVICE_NAME ":_init"));
+    LogFlow((DEVICE_NAME ":_init\n"));
+
+    /*
+     * Prevent module autounloading.
+     */
+    modctl_t *pModCtl = mod_getctl(&g_VBoxDrvSolarisModLinkage);
+    if (pModCtl)
+        pModCtl->mod_loadflags |= MOD_NOAUTOUNLOAD;
+    else
+        LogRel((DEVICE_NAME ":failed to disable autounloading!\n"));
 
     int rc = ddi_soft_state_init(&g_pVBoxDrvSolarisState, sizeof(vbox_devstate_t), 8);
     if (!rc)
@@ -199,16 +208,18 @@ int _init(void)
             return 0; /* success */
 
         ddi_soft_state_fini(&g_pVBoxDrvSolarisState);
+        LogRel((DEVICE_NAME ":mod_install failed! rc=%d\n", rc));
     }
+    else
+        LogRel((DEVICE_NAME ":failed to initialize soft state.\n"));
 
-    cmn_err(CE_CONT, "VBoxDrvSolaris _init failed with rc=%d\n", rc);
     return rc;
 }
 
 
 int _fini(void)
 {
-    LogFlow((DEVICE_NAME ":_fini"));
+    LogFlow((DEVICE_NAME ":_fini\n"));
 
     int e = mod_remove(&g_VBoxDrvSolarisModLinkage);
     if (e != 0)
@@ -221,7 +232,7 @@ int _fini(void)
 
 int _info(struct modinfo *pModInfo)
 {
-    LogFlow((DEVICE_NAME ":_info"));
+    LogFlow((DEVICE_NAME ":_info\n"));
     int e = mod_info(&g_VBoxDrvSolarisModLinkage, pModInfo);
     return e;
 }
