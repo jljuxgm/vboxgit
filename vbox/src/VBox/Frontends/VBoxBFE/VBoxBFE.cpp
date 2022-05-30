@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 12320 2008-09-09 20:03:07Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 13742 2008-11-03 12:19:40Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -1166,7 +1166,7 @@ DECLCALLBACK(int) VMPowerUpThread(RTTHREAD Thread, void *pvUser)
     /*
      * Create empty VM.
      */
-    rc = VMR3Create(setVMErrorCallback, NULL, vboxbfeConfigConstructor, NULL, &pVM);
+    rc = VMR3Create(1, setVMErrorCallback, NULL, vboxbfeConfigConstructor, NULL, &pVM);
     if (VBOX_FAILURE(rc))
     {
         RTPrintf("Error: VM creation failed with %Vrc.\n", rc);

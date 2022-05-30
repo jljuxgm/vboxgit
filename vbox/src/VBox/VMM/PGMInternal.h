@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 13236 2008-10-13 21:25:50Z vboxsync $ */
+/* $Id: PGMInternal.h 13742 2008-11-03 12:19:40Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2609,6 +2609,15 @@ typedef struct PGM
 #endif /* VBOX_WITH_STATISTICS */
 } PGM, *PPGM;
 
+
+/**
+ * PGMCPU Data (part of VMCPU)
+ */
+typedef struct PGMCPU
+{
+    /** Offset to the VMCPU structure. */
+    RTINT                           offVMCPU;
+} PGMCPU, *PPGMCPU;
 
 /** @name PGM::fSyncFlags Flags
  * @{

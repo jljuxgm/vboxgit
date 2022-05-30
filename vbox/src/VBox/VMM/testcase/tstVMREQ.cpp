@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 13742 2008-11-03 12:19:40Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -225,7 +225,7 @@ int main(int argc, char **argv)
      * Create empty VM.
      */
     PVM pVM;
-    int rc = VMR3Create(NULL, NULL, NULL, NULL, &pVM);
+    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, &pVM);
     if (VBOX_SUCCESS(rc))
     {
         /*

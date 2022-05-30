@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 13565 2008-10-24 17:48:59Z vboxsync $ */
+/* $Id: EMInternal.h 13742 2008-11-03 12:19:40Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -370,6 +370,17 @@ typedef struct EM
 typedef EM *PEM;
 
 
+/**
+ * EM VMCPU Instance data.
+ */
+typedef struct EMCPU
+{
+    /** Offset to the VM structure.
+     * See EMCPU2VM(). */
+    RTUINT                  offVMCPU;
+} EMCPU;
+/** Pointer to EM VM instance data. */
+typedef EMCPU *PEMCPU;
 
 /** @} */
 

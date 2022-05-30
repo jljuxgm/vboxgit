@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13542 2008-10-23 16:25:44Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13742 2008-11-03 12:19:40Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -504,6 +504,19 @@ typedef struct HWACCM
 } HWACCM;
 /** Pointer to HWACCM VM instance data. */
 typedef HWACCM *PHWACCM;
+
+/**
+ * HWACCM VMCPU Instance data.
+ */
+typedef struct HWACCMCPU
+{
+    /** Offset to the VM structure.
+     * See HWACCMCPU2VM(). */
+    RTUINT                      offVMCPU;
+} HWACCMCPU;
+/** Pointer to HWACCM VM instance data. */
+typedef HWACCMCPU *PHWACCMCPU;
+
 
 #ifdef IN_RING0
 

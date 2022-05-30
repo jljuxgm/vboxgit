@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 13717 2008-10-31 14:31:23Z vboxsync $ */
+/* $Id: VMM.cpp 13742 2008-11-03 12:19:40Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -177,21 +177,6 @@ VMMR3DECL(int) VMMR3Init(PVM pVM)
 
     /* GC switchers are enabled by default. Turned off by HWACCM. */
     pVM->vmm.s.fSwitcherDisabled = false;
-
-    /* Get the CPU count.*/
-    rc = CFGMR3QueryU32Def(CFGMR3GetRoot(pVM), "NumCPUs", &pVM->cCPUs, 1);
-    AssertLogRelMsgRCReturn(rc, ("Configuration error: Querying \"NumCPUs\" as integer failed, rc=%Vrc\n", rc), rc);
-#ifdef VBOX_WITH_SMP_GUESTS
-    AssertLogRelMsgReturn(pVM->cCPUs > 0 && pVM->cCPUs <= 256,
-                          ("Configuration error: \"NumCPUs\"=%RU32 is out of range [1..256]\n", pVM->cCPUs), VERR_INVALID_PARAMETER);
-#else
-    AssertLogRelMsgReturn(pVM->cCPUs != 0,
-                          ("Configuration error: \"NumCPUs\"=%RU32, expected 1\n", pVM->cCPUs), VERR_INVALID_PARAMETER);
-#endif
-
-#ifdef VBOX_WITH_SMP_GUESTS
-    LogRel(("[SMP] VMM with %RU32 CPUs\n", pVM->cCPUs));
-#endif
 
     /*
      * Register the saved state data unit.
