@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 15694 2008-12-19 14:11:07Z vboxsync $ */
+/* $Id: HWACCMInternal.h 15702 2008-12-19 16:02:42Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -230,12 +230,10 @@ typedef struct HWACCM
     /* RC handler to setup the 64 bits debug state. */
     RTRCPTR                     pfnSaveGuestDebug64;
 
-# ifdef DEBUG
     /* Test handler */
     RTRCPTR                     pfnTest64;
 
     RTRCPTR                     uAlignment[1];
-# endif
 #elif defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
     uint32_t                    u32Alignment[1];
 #endif
