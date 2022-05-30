@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 13820 2008-11-05 00:55:49Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -442,14 +442,14 @@ VMMR3DECL(int) DBGFR3DisasInstrEx(PVM pVM, RTSEL Sel, RTGCPTR GCPtr, unsigned fF
             if (enmMode >= PGMMODE_AMD64)
                 RTStrPrintf(pszOutput, cchOutput, "%VGv  %s", GCPtr, szBuf);
             else
-                RTStrPrintf(pszOutput, cchOutput, "%VRv  %s", (RTRCPTR)GCPtr, szBuf);
+                RTStrPrintf(pszOutput, cchOutput, "%08RX32  %s", (uint32_t)GCPtr, szBuf);
         }
         else
         {
             if (enmMode >= PGMMODE_AMD64)
                 RTStrPrintf(pszOutput, cchOutput, "%04x:%VGv  %s", Sel, GCPtr, szBuf);
             else
-                RTStrPrintf(pszOutput, cchOutput, "%04x:%VRv  %s", Sel, (RTRCPTR)GCPtr, szBuf);
+                RTStrPrintf(pszOutput, cchOutput, "%04x:%08RX32  %s", Sel, (uint32_t)GCPtr, szBuf);
         }
     }
     else
@@ -475,8 +475,8 @@ VMMR3DECL(int) DBGFR3DisasInstrEx(PVM pVM, RTSEL Sel, RTGCPTR GCPtr, unsigned fF
                             cbBits, pau8Bits, cbBits < 8 ? (8 - cbBits) * 3 : 0, "",
                             szBuf);
             else
-                RTStrPrintf(pszOutput, cchOutput, "%VRv %.*Vhxs%*s %s",
-                            (RTRCPTR)GCPtr,
+                RTStrPrintf(pszOutput, cchOutput, "%08RX32 %.*Vhxs%*s %s",
+                            (uint32_t)GCPtr,
                             cbBits, pau8Bits, cbBits < 8 ? (8 - cbBits) * 3 : 0, "",
                             szBuf);
         }
@@ -488,8 +488,8 @@ VMMR3DECL(int) DBGFR3DisasInstrEx(PVM pVM, RTSEL Sel, RTGCPTR GCPtr, unsigned fF
                             cbBits, pau8Bits, cbBits < 8 ? (8 - cbBits) * 3 : 0, "",
                             szBuf);
             else
-                RTStrPrintf(pszOutput, cchOutput, "%04x:%VRv %.*Vhxs%*s %s",
-                            Sel, (RTRCPTR)GCPtr,
+                RTStrPrintf(pszOutput, cchOutput, "%04x:%08RX32 %.*Vhxs%*s %s",
+                            Sel, (uint32_t)GCPtr,
                             cbBits, pau8Bits, cbBits < 8 ? (8 - cbBits) * 3 : 0, "",
                             szBuf);
         }

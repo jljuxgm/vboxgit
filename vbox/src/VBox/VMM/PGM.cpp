@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 13819 2008-11-04 23:14:51Z vboxsync $ */
+/* $Id: PGM.cpp 13820 2008-11-05 00:55:49Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2613,7 +2613,7 @@ static DECLCALLBACK(void) pgmR3InfoCr3(PVM pVM, PCDBGFINFOHLP pHlp, const char *
                 pHlp->pfnPrintf(pHlp,
                                 "%04X - %VGp P=%d U=%d RW=%d [G=%d]\n",
                                 iPD,
-                                PdeSrc.u & X86_PDE_PG_MASK,
+                                (RTGCPHYS)(PdeSrc.u & X86_PDE_PG_MASK),
                                 PdeSrc.n.u1Present, PdeSrc.n.u1User, PdeSrc.n.u1Write, PdeSrc.b.u1Global && fPGE);
         }
     }

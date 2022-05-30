@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: PDMLdr.cpp 13820 2008-11-05 00:55:49Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -591,7 +591,7 @@ static int pdmR3LoadR0U(PUVM pUVM, const char *pszFilename, const char *pszName)
         }
         else
             pUVM->pdm.s.pModules = pModule; /* (pNext is zeroed by alloc) */
-        Log(("PDM: GC Module at %VGvx %s (%s)\n", (RTGCPTR)pModule->ImageBase, pszName, pszFilename));
+        Log(("PDM: R0 Module at %RHv %s (%s)\n", (RTR0PTR)pModule->ImageBase, pszName, pszFilename));
         RTMemTmpFree(pszFile);
         return VINF_SUCCESS;
     }

@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: PATMAll.cpp 13820 2008-11-05 00:55:49Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -59,7 +59,7 @@ VMMDECL(void) PATMRawEnter(PVM pVM, PCPUMCTXCORE pCtxCore)
      */
     register uint32_t efl = pCtxCore->eflags.u32;
     CTXSUFF(pVM->patm.s.pGCState)->uVMFlags = efl & PATM_VIRTUAL_FLAGS_MASK;
-    AssertMsg((efl & X86_EFL_IF) || PATMShouldUseRawMode(pVM, (RTRCPTR)pCtxCore->eip), ("X86_EFL_IF is clear and PATM is disabled! (eip=%VRv eflags=%08x fPATM=%d pPATMGC=%VGv-%VGv\n", pCtxCore->eip, pCtxCore->eflags.u32, PATMIsEnabled(pVM), pVM->patm.s.pPatchMemGC, pVM->patm.s.pPatchMemGC + pVM->patm.s.cbPatchMem));
+    AssertMsg((efl & X86_EFL_IF) || PATMShouldUseRawMode(pVM, (RTRCPTR)pCtxCore->eip), ("X86_EFL_IF is clear and PATM is disabled! (eip=%VRv eflags=%08x fPATM=%d pPATMGC=%RRv-%RRv\n", pCtxCore->eip, pCtxCore->eflags.u32, PATMIsEnabled(pVM), pVM->patm.s.pPatchMemGC, pVM->patm.s.pPatchMemGC + pVM->patm.s.cbPatchMem));
 
     AssertReleaseMsg(CTXSUFF(pVM->patm.s.pGCState)->fPIF || fPatchCode, ("fPIF=%d eip=%VRv\n", CTXSUFF(pVM->patm.s.pGCState)->fPIF, pCtxCore->eip));
 
