@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14841 2008-12-01 09:24:42Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14842 2008-12-01 09:40:05Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -303,9 +303,9 @@
     </desc>
   </result>
 
-  <result name="VBOX_E_OBJECT_IN_USE" value="0x80BB0007">
+  <result name="VBOX_E_INVALID_OBJECT_STATE" value="0x80BB0007">
     <desc>
-       Operation prohibited because object is in use.
+       Current object state prohibits operation.
     </desc>
   </result>
 

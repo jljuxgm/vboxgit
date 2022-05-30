@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.cpp 14783 2008-11-28 14:55:59Z vboxsync $ */
+/* $Id: HardDisk2Impl.cpp 14842 2008-12-01 09:40:05Z vboxsync $ */
 
 /** @file
  *
@@ -1860,7 +1860,7 @@ HRESULT HardDisk2::deleteStorage (ComObjPtr <Progress> *aProgress, bool aWait)
     }
 
     if (m.backRefs.size() != 0)
-        return setError (VBOX_E_OBJECT_IN_USE,
+        return setError (VBOX_E_INVALID_OBJECT_STATE,
             tr ("Hard disk '%ls' is attached to %d virtual machines"),
                 m.locationFull.raw(), m.backRefs.size());
 
@@ -2015,7 +2015,7 @@ HRESULT HardDisk2::createDiffStorage (ComObjPtr <HardDisk2> &aTarget,
 
             if (it->snapshotIds.size() == 0)
             {
-                return setError (VBOX_E_OBJECT_IN_USE,
+                return setError (VBOX_E_INVALID_OBJECT_STATE,
                     tr ("Hard disk '%ls' is attached to a virtual machine "
                         "with UUID {%RTuuid}. No differencing hard disks "
                         "based on it may be created until it is detached"),
