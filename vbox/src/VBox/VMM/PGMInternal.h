@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 15436 2008-12-13 11:59:30Z vboxsync $ */
+/* $Id: PGMInternal.h 16045 2009-01-19 16:27:59Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2906,6 +2906,7 @@ void            pgmR3MapRelocate(PVM pVM, PPGMMAPPING pMapping, RTGCPTR GCPtrOld
 DECLCALLBACK(void) pgmR3MapInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
 
 void            pgmR3HandlerPhysicalUpdateAll(PVM pVM);
+bool            pgmHandlerPhysicalIsAll(PVM pVM, RTGCPHYS GCPhys);
 int             pgmHandlerVirtualFindByPhysAddr(PVM pVM, RTGCPHYS GCPhys, PPGMVIRTHANDLER *ppVirt, unsigned *piPage);
 DECLCALLBACK(int) pgmHandlerVirtualResetOne(PAVLROGCPTRNODECORE pNode, void *pvUser);
 #if defined(VBOX_STRICT) || defined(LOG_ENABLED)
