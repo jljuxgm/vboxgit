@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 14515 2008-11-24 12:33:00Z vboxsync $ */
+/* $Id: VMMR0.cpp 14608 2008-11-25 22:12:10Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -260,6 +260,9 @@ static int vmmR0InitVM(PVM pVM, uint32_t uSvnRev)
  */
 static int vmmR0TermVM(PVM pVM)
 {
+/** @todo @bugref{1865,3202}: Make these tail onto the VM object destruction
+ *        to make sure they are *always* executed and don't leave mess behind
+ *        when the process is killed. */
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
     PGMR0DynMapTermVM(pVM);
 #endif
