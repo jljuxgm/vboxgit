@@ -1,4 +1,4 @@
-/* $Id: semevent-posix.cpp 12907 2008-10-02 09:17:01Z vboxsync $ */
+/* $Id: semevent-posix.cpp 12960 2008-10-02 21:06:23Z vboxsync $ */
 /** @file
  * IPRT - Event Semaphore, POSIX.
  */
@@ -188,7 +188,7 @@ RTDECL(int)  RTSemEventDestroy(RTSEMEVENT EventSem)
             break;
         pthread_cond_broadcast(&pIntEventSem->Cond);
         usleep(1000);
-    };
+    }
     if (rc)
     {
         AssertMsgFailed(("Failed to destroy event sem %p, rc=%d.\n", EventSem, rc));
