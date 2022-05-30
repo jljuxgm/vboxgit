@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.h 12180 2008-09-06 18:31:18Z vboxsync $ */
+/* $Id: VBoxDbgGui.h 12462 2008-09-15 13:22:28Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -50,12 +50,20 @@ public:
     VBoxDbgGui();
 
     /**
-     * Initializes a VBoxDbgGui object.
+     * Initializes a VBoxDbgGui object by ISession.
      *
      * @returns VBox status code.
      * @param   pSession    VBox Session object.
      */
     int init(ISession *pSession);
+
+    /**
+     * Initializes a VBoxDbgGui object by VM handle.
+     *
+     * @returns VBox status code.
+     * @param   pVM         The VM handle.
+     */
+    int init(PVM pVM);
 
     /**
      * Destroys the VBoxDbgGui object.
