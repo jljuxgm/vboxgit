@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 15495 2008-12-15 11:25:05Z vboxsync $ */
+/* $Id: MachineImpl.cpp 15496 2008-12-15 11:30:01Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -9735,8 +9735,8 @@ void SessionMachine::discardSnapshotHandler (DiscardSnapshotTask &aTask)
                  * because it will be going to delete the child) */
 
                 /* The below assert would be nice but I don't want to move
-                 * HardDisk2::MergeChain to the header just for that */
-                /* Assert (!chain->isForward()); */
+                 * HardDisk2::MergeChain to the header just for that
+                 * Assert (!chain->isForward()); */
 
                 Assert (hd->children().size() == 1);
 
