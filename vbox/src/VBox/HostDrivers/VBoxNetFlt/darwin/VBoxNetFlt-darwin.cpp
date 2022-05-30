@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 11935 2008-09-01 16:07:27Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 11957 2008-09-02 06:28:48Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -17,7 +17,6 @@
  * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
- *
  */
 
 /*******************************************************************************
