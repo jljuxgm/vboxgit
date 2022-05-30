@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
+/* $Id: HardDisk2Impl.h 15044 2008-12-05 13:48:24Z vboxsync $ */
 
 /** @file
  *
@@ -103,6 +103,8 @@ public:
     STDMETHOD(GetProperties) (INPTR BSTR aNames,
                               ComSafeArrayOut (BSTR, aReturnNames),
                               ComSafeArrayOut (BSTR, aReturnValues));
+    STDMETHOD(SetProperties) (ComSafeArrayIn (INPTR BSTR, aNames),
+                              ComSafeArrayIn (INPTR BSTR, aValues));
     STDMETHOD(CreateDynamicStorage) (ULONG64 aLogicalSize, IProgress **aProgress);
     STDMETHOD(CreateFixedStorage) (ULONG64 aLogicalSize, IProgress **aProgress);
     STDMETHOD(DeleteStorage) (IProgress **aProgress);
