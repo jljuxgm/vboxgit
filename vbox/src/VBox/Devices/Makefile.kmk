@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13435 2008-10-21 12:21:12Z vboxsync $
+# $Id: Makefile.kmk 13604 2008-10-28 04:47:11Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -530,6 +530,9 @@ Drivers_DEFS.win  += _WIN32_WINNT=0x0510
 Drivers_DEFS       = IN_IDE_R3
 ifdef VBOX_WITH_NETFLT
 Drivers_DEFS       = VBOX_WITH_NETFLT
+endif
+ifdef VBOX_WITH_SYNC_SLIRP
+Drivers_DEFS       = VBOX_WITH_SYNC_SLIRP
 endif
 Drivers_INCS      := \
 	$(PATH_SUB_CURRENT) \
