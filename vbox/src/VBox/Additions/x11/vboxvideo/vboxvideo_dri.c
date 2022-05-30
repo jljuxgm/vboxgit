@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_dri.c 17318 2009-03-03 21:24:52Z vboxsync $
+/** @file $Id: vboxvideo_dri.c 17451 2009-03-06 10:28:41Z vboxsync $
  *
  * VirtualBox X11 Additions graphics driver, DRI support
  */
@@ -248,6 +248,10 @@ Bool VBOXDRIScreenInit(int scrnIndex, ScreenPtr pScreen, VBOXPtr pVBox)
         pDRIInfo->ddxDriverPatchVersion = 0;
         pDRIInfo->ddxDrawableTableEntry = VBOX_MAX_DRAWABLES;
         pDRIInfo->maxDrawableTableEntry = VBOX_MAX_DRAWABLES;
+        pDRIInfo->frameBufferPhysicalAddress = pVBox->base;
+        pDRIInfo->frameBufferSize = pVBox->mapSize;
+        pDRIInfo->frameBufferStride = pScrn->displayWidth;
+        pDRIInfo->SAREASize = SAREA_MAX;  /* we have no private bits yet. */
         /* This can't be zero, as the server callocs this size and checks for
          * non-NULL... */
         pDRIInfo->contextSize = 4;
@@ -350,7 +354,7 @@ VBOXDRIMoveBuffers(WindowPtr pParent, DDXPointRec ptOldOrg,
 {
 }
 
-/* Apparantly the next two are just legacy. */
+/* Apparently the next two are just legacy. */
 static Bool
 VBOXDRIOpenFullScreen(ScreenPtr pScreen)
 {
