@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 13850 2008-11-05 11:14:11Z vboxsync $ */
+/* $Id: VBoxManage.cpp 13851 2008-11-05 11:29:24Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -2824,7 +2824,7 @@ static int handleList(int argc, char *argv[],
             /* Configuration keys */
             com::SafeArray <BSTR> propertyNames;
             com::SafeArray <BSTR> propertyDescriptions;
-            com::SafeArray <DataType_T> propertyTypes;
+            com::SafeArray <ULONG> propertyTypes;
             com::SafeArray <ULONG> propertyFlags;
             com::SafeArray <BSTR> propertyDefaults;
             CHECK_ERROR(hardDiskFormats [i],
