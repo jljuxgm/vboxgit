@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 15492 2008-12-15 10:36:07Z vboxsync $ */
+/* $Id: VBoxManage.cpp 15556 2008-12-15 22:31:49Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -529,6 +529,8 @@ static void printUsage(USAGECATEGORY u64Cmd)
     if (u64Cmd & USAGE_CLONEHD)
     {
         RTPrintf("VBoxManage clonehd          <uuid>|<filename> <outputfile>\n"
+                 "                            [-format VDI|VMDK|VHD|RAW|<other>]\n"
+                 "                            [-remember]\n"
                  "\n");
     }
 
