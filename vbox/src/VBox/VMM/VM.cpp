@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 14543 2008-11-24 19:36:37Z vboxsync $ */
+/* $Id: VM.cpp 14756 2008-11-28 03:01:37Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -525,7 +525,7 @@ static int vmR3CreateU(PUVM pUVM, uint32_t cCPUs, PFNCFGMCONSTRUCTOR pfnCFGMCons
         rc = CFGMR3Init(pVM, pfnCFGMConstructor, pvUserCFGM);
         if (RT_SUCCESS(rc))
         {
-            rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "fHwVirtExtForced", &pVM->fHwVirtExtForced, false);
+            rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "HwVirtExtForced", &pVM->fHwVirtExtForced, false);
             if (RT_SUCCESS(rc) && pVM->fHwVirtExtForced)
                 pVM->fHWACCMEnabled = true;
 
