@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13726 2008-10-31 19:30:54Z vboxsync $
+# $Id: Makefile.kmk 14132 2008-11-12 13:17:33Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -27,7 +27,6 @@ REM_MOD              += VBoxREM
 #DLLS                 += VBoxREM
 IMPORT_LIBS          += VBoxREM
 
-DEFS                 += VBOX_WITH_NEW_RECOMPILER
 $(REM_MOD)_TEMPLATE  = VBOXR3NP
 
 OTHER_CLEAN          += 
