@@ -1,4 +1,4 @@
-# $Id: Config.kmk 13843 2008-11-05 09:17:37Z vboxsync $
+# $Id: Config.kmk 13859 2008-11-05 13:50:08Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -234,7 +234,7 @@ VBOX_WITH_VRDP = 1
 VBOX_WITH_VRDP_AUTHMOD = 1
 # build enhanced version of rdesktop
 VBOX_WITH_VRDP_RDESKTOP = 1
-if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.x86 l4.x86 l4.amd64)
+if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), l4.x86 l4.amd64)
 # build the support driver & library with IDT patching.
 VBOX_WITH_IDT_PATCHING = 1
 endif
@@ -3573,7 +3573,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13843 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13859 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
