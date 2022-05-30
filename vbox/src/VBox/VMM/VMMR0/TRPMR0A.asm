@@ -1,4 +1,4 @@
-; $Id: TRPMR0A.asm 8155 2008-04-18 15:16:47Z vboxsync $
+; $Id: TRPMR0A.asm 14515 2008-11-24 12:33:00Z vboxsync $
 ;; @file
 ; TRPM - Host Context Ring-0
 ;
@@ -116,50 +116,6 @@ BEGINPROC trpmR0DispatchHostInterrupt
     leave
     ret
 ENDPROC trpmR0DispatchHostInterrupt
-
-
-%ifdef VBOX_WITH_IDT_PATCHING
-
-    align 16
-;;
-; This is the alternative return from VMMR0Entry() used when
-; we need to dispatch an interrupt to the Host (we received it in GC).
-;
-; As seen in TRPMR0SetupInterruptDispatcherFrame() the stack is different
-; than for the normal VMMR0Entry() return.
-;
-; 32-bit:
-;           18  iret frame
-;           14  retf selector (interrupt handler)
-;           10  retf offset   (interrupt handler)
-;            c  es
-;            8  fs
-;            4  ds
-;            0  pVM (esp here)
-;
-; 64-bit:
-;           24  iret frame
-;           18  retf selector (interrupt handler)
-;           10  retf offset   (interrupt handler)
-;            8  uOperation
-;            0  pVM (rsp here)
-;
-BEGINPROC trpmR0InterruptDispatcher
-%ifdef RT_ARCH_AMD64
-    lea     rsp, [rsp + 10h]            ; skip pVM and uOperation
-    swapgs
-    db 48h
-    retf
-%else  ; !RT_ARCH_AMD64
-    add     esp, byte 4                 ; skip pVM
-    pop     ds
-    pop     fs
-    pop     es
-    retf
-%endif ; !RT_ARCH_AMD64
-ENDPROC   trpmR0InterruptDispatcher
-
-%endif ; VBOX_WITH_IDT_PATCHING
 
 
 ;;

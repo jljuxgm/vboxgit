@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 14351 2008-11-19 13:38:31Z vboxsync $ */
+/* $Id: TRPMInternal.h 14515 2008-11-24 12:33:00Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -238,14 +238,6 @@ DECLASM(void) trpmR0DispatchHostInterrupt(RTR0UINTPTR uIP, RTSEL SelCS, RTR0UINT
  * @param   uActiveVector   The vector number.
  */
 DECLASM(void) trpmR0DispatchHostInterruptSimple(RTUINT uActiveVector);
-
-# ifdef VBOX_WITH_IDT_PATCHING
-/**
- * Code used for the dispatching of interrupts in R0 upon return from RC.
- * @internal
- */
-DECLASM(int) trpmR0InterruptDispatcher(void);
-# endif /* VBOX_WITH_IDT_PATCHING */
 
 #endif /* IN_RING0 */
 

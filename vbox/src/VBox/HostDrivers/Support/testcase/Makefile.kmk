@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12252 2008-09-09 01:58:29Z vboxsync $
+# $Id: Makefile.kmk 14515 2008-11-24 12:33:00Z vboxsync $
 ## @file
 # Sub-Makefile for the SUPLib testcases.
 #
@@ -57,9 +57,6 @@ SUPUninstall_LIBS     = $(LIB_RUNTIME)
 tstInt_TEMPLATE       = VBOXR3EXE
 tstInt_SOURCES        = tstInt.cpp
 tstInt_LIBS           = $(LIB_RUNTIME)
-ifdef VBOX_WITH_IDT_PATCHING
-tstInt_DEFS          += VBOX_WITH_IDT_PATCHING
-endif
 
 tstContiguous_TEMPLATE= VBOXR3TSTEXE
 tstContiguous_SOURCES = tstContiguous.cpp

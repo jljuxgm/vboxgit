@@ -1,4 +1,4 @@
-# $Id: Config.kmk 14513 2008-11-24 12:00:03Z vboxsync $
+# $Id: Config.kmk 14515 2008-11-24 12:33:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -258,10 +258,6 @@ VBOX_WITH_VRDP = 1
 VBOX_WITH_VRDP_AUTHMOD = 1
 # build enhanced version of rdesktop
 VBOX_WITH_VRDP_RDESKTOP = 1
-if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), l4.x86 l4.amd64)
-# build the support driver & library with IDT patching.
-VBOX_WITH_IDT_PATCHING = 1
-endif
 # Activate this to force the VM to pre-allocate the guest RAM before startup
 VBOX_WITH_PREALLOC_RAM_BY_DEFAULT =
 # The kernel driver/module and related runtime libraries.
@@ -3643,7 +3639,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14513 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14515 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
