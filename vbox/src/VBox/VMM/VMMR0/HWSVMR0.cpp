@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 13251 2008-10-14 12:07:13Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 13252 2008-10-14 12:13:44Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2208,8 +2208,6 @@ VMMR0DECL(int) SVMR0InvalidatePage(PVM pVM, RTGCPTR GCVirt)
 
 /**
  * Invalidates a guest page by physical address
- *
- * NOTE: Assumes the current instruction references this physical page though a virtual address!!
  *
  * @returns VBox status code.
  * @param   pVM         The VM to operate on.
