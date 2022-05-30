@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 17057 2009-02-24 12:14:19Z vboxsync $ */
+/* $Id: PGMAll.cpp 17058 2009-02-24 12:21:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2249,6 +2249,18 @@ VMMDECL(int) PGMDynUnlockHCPage(PVM pVM, RCPTRTYPE(uint8_t *) GCPage)
     return VINF_SUCCESS;
 }
 
+# ifdef VBOX_STRICT
+/**
+ * Check for lock leaks.
+ *
+ * @param   pVM         VM handle.
+ */
+VMMDECL(void) PGMDynCheckLocks(PVM pVM)
+{
+    for (unsigned i=0;i<(MM_HYPER_DYNAMIC_SIZE >> PAGE_SHIFT);i++)
+        Assert(!(pVM->pgm.s.paDynPageMap32BitPTEsGC[i].u & PGM_PTFLAGS_DYN_LOCKED));
+}
+# endif
 # endif /* IN_RC */
 
 #endif /* IN_RC || VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0 */
