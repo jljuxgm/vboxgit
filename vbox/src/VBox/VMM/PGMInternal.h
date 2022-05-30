@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 17140 2009-02-25 16:43:48Z vboxsync $ */
+/* $Id: PGMInternal.h 17204 2009-02-27 13:20:04Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -56,7 +56,7 @@
 /*
  * Enable to use the PGM pool for all levels in the paging chain in all paging modes.
  */
-//#define VBOX_WITH_PGMPOOL_PAGING_ONLY
+#define VBOX_WITH_PGMPOOL_PAGING_ONLY
 
 /**
  * Solve page is out of sync issues inside Guest Context (in PGMGC.cpp).
@@ -4691,7 +4691,7 @@ DECLINLINE(void) pgmTrackDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPoolPage, PPG
     }
     else
         pgmPoolTrackPhysExtDerefGCPhys(pPool, pPoolPage, pPhysPage);
-    LogFlow(("pgmTrackDerefGCPhys: HCPhys=%RHp -> %RHp\n", HCPhysOrg, pPhysPage->HCPhys));
+    Log2(("pgmTrackDerefGCPhys: HCPhys=%RHp -> %RHp\n", HCPhysOrg, pPhysPage->HCPhys));
 }
 #endif /* PGMPOOL_WITH_GCPHYS_TRACKING */
 
