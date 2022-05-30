@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 12423 2008-09-12 14:42:49Z vboxsync $ */
+/* $Id: SUPLib.cpp 12426 2008-09-12 14:50:20Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1903,7 +1903,7 @@ static int supR3HardenedLdrLoadIt(const char *pszFilename, PRTLDRMOD phLdrMod)
     /*
      * Verify the image file.
      */
-    rc = supR3HardenedVerifyFile(pszFilename, false /* fFatal */);
+    int rc = supR3HardenedVerifyFile(pszFilename, false /* fFatal */);
     if (RT_FAILURE(rc))
     {
         LogRel(("supR3HardenedLdrLoadIt: Verification of \"%s\" failed, rc=%Rrc\n", rc));
