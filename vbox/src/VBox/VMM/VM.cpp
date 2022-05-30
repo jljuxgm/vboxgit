@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 11883 2008-08-31 16:06:43Z vboxsync $ */
+/* $Id: VM.cpp 12497 2008-09-16 15:52:31Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -234,7 +234,7 @@ VMR3DECL(int)   VMR3Create(PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCON
                     pszError = N_("VirtualBox can't operate in VMX root mode. "
                                   "Please disable the KVM kernel extension, recompile your kernel and reboot");
 #else
-                    pszError = N_("VirtualBox can't operate in VMX root mode");
+                    pszError = N_("VirtualBox can't operate in VMX root mode. Please close all other virtualization programs.");
 #endif
                     break;
 
