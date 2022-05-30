@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12230 2008-09-08 14:41:58Z vboxsync $
+# $Id: Makefile.kmk 12253 2008-09-09 01:59:27Z vboxsync $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -19,12 +19,7 @@
 # additional information or have any questions.
 #
 
-ifdef VBOX_SINGLE_MAKEFILE
 SUB_DEPTH = ../../..
-else
-SUB_DEPTH = .
-DEPTH     = ../../..
-endif
 include $(KBUILD_PATH)/subheader.kmk
 
 #
