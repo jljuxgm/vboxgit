@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12247 2008-09-09 01:13:58Z vboxsync $
+# $Id: Makefile.kmk 12874 2008-10-01 20:09:09Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -78,6 +78,7 @@ PROGRAMS += \
 	tstPrfRT \
 	tstRand \
 	tstRTFsQueries \
+	tstSemPingPong \
 	tstStrFormat \
 	tstStrToNum \
 	tstSystemQueryOsInfo \
@@ -283,6 +284,8 @@ tstRTFsQueries_SOURCES = tstRTFsQueries.cpp
 tstRTProcWait_SOURCES = tstRTProcWait.cpp
 
 tstSemMutex_SOURCES = tstSemMutex.cpp
+
+tstSemPingPong_SOURCES = tstSemPingPong.cpp
 
 tstSems_SOURCES = tstSems.cpp
 
