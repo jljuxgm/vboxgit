@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 15845 2009-01-07 19:51:29Z vboxsync $ */
+/* $Id: SSM.cpp 16165 2009-01-22 13:22:06Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -2255,6 +2255,7 @@ static int ssmR3Write(PSSMHANDLE pSSM, const void *pvBuf, size_t cbBuf)
         {
             //int rc = RTZipCompCreate(&pSSM->pZipComp, pSSM, ssmR3WriteOut, RTZIPTYPE_ZLIB, RTZIPLEVEL_FAST);
             int rc = RTZipCompCreate(&pSSM->pZipComp, pSSM, ssmR3WriteOut, RTZIPTYPE_LZF, RTZIPLEVEL_FAST);
+            //int rc = RTZipCompCreate(&pSSM->pZipComp, pSSM, ssmR3WriteOut, RTZIPTYPE_STORE, RTZIPLEVEL_FAST);
             if (RT_FAILURE(rc))
                 return rc;
         }
