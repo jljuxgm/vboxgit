@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 12284 2008-09-09 10:26:27Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 13405 2008-10-20 19:49:09Z vboxsync $ */
 
 /** @file
  *
@@ -229,7 +229,9 @@ public:
     ComObjPtr <GuestOSType> getUnknownOSType();
 
     typedef std::vector <ComObjPtr <SessionMachine> > SessionMachineVector;
+    typedef std::vector <ComObjPtr <Machine> > MachineVector;
     void getOpenedMachines (SessionMachineVector &aVector);
+    void getSpawnedMachines (MachineVector &aVector);
 
     bool isMachineIdValid (const Guid &aId)
     {

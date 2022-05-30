@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 13356 2008-10-16 18:44:34Z vboxsync $ */
+/* $Id: MachineImpl.h 13405 2008-10-20 19:49:09Z vboxsync $ */
 
 /** @file
  *
@@ -551,6 +551,12 @@ public:
 
     // public methods only for internal purposes
 
+    //
+    //  Called from the client watcher thread to check for unexpected client
+    //  process death during Session_Spawning state.
+    //
+    bool checkForSpawnFailure();
+
     /// @todo (dmik) add lock and make non-inlined after revising classes
     //  that use it. Note: they should enter Machine lock to keep the returned
     //  information valid!
@@ -853,6 +859,7 @@ public:
     // public methods only for internal purposes
 
     bool checkForDeath();
+    bool checkForSpawnFailure();
 
 #if defined (RT_OS_WINDOWS)
     HANDLE ipcSem() { return mIPCSem; }
