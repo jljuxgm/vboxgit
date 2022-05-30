@@ -1,4 +1,4 @@
-/* $Id: ipv4.cpp 11313 2008-08-09 07:17:34Z vboxsync $ */
+/* $Id: ipv4.cpp 12821 2008-09-30 07:30:01Z vboxsync $ */
 /** @file
  * IPRT - IPv4 Checksum calculation and validation.
  */
@@ -107,7 +107,7 @@ RTDECL(bool) RTNetIPv4IsHdrValid(PCRTNETIPV4 pIpHdr, size_t cbHdrMax, size_t cbP
         return false;
     if (RT_UNLIKELY((size_t)pIpHdr->ip_hl * 4 > cbHdrMax))
     {
-        Assert(pIpHdr->ip_hl * 4 > cbPktMax); /* You'll hit this if you mapped/copy too little of the header! */
+        Assert((size_t)pIpHdr->ip_hl * 4 > cbPktMax); /* You'll hit this if you mapped/copy too little of the header! */
         return false;
     }
     if (RT_UNLIKELY(pIpHdr->ip_v != 4))
