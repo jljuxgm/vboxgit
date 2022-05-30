@@ -1,4 +1,4 @@
-/* $Id: SUPLib-linux.cpp 11725 2008-08-27 22:21:47Z vboxsync $ */
+/* $Id: SUPLib-linux.cpp 12908 2008-10-02 09:25:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - GNU/Linux specific parts.
  */
@@ -95,13 +95,13 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited)
      * Try open the device.
      */
     pThis->hDevice = open(DEVICE_NAME, O_RDWR, 0);
-    if (pThis->hDevice < 0)
+    if ((int)pThis->hDevice < 0)
     {
         /*
          * Try load the device.
          */
         pThis->hDevice = open(DEVICE_NAME, O_RDWR, 0);
-        if (pThis->hDevice < 0)
+        if ((int)pThis->hDevice < 0)
         {
             int rc;
             switch (errno)
@@ -146,7 +146,7 @@ int     suplibOsTerm(PSUPLIBDATA pThis)
     /*
      * Check if we're initited at all.
      */
-    if (pThis->hDevice >= 0)
+    if ((int)pThis->hDevice >= 0)
     {
         if (close(pThis->hDevice))
             AssertFailed();
