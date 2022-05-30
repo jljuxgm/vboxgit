@@ -1,4 +1,4 @@
-/* $Id: VBoxCocoaApplication.h 16610 2009-02-10 00:32:12Z vboxsync $ */
+/* $Id: VBoxCocoaApplication.h 16691 2009-02-11 19:33:19Z vboxsync $ */
 /** @file
  * VBoxCocoaApplication - NSApplication subclass for handling -sendEvent.
  */
@@ -84,6 +84,9 @@ extern VBoxCocoaApplication *g_pVBoxCocoaApp;
 void VBoxCocoaApplication_sharedApplication(void);
 void VBoxCocoaApplication_setCallback(uint32_t fMask, PFNVBOXCACALLBACK pfnCallback, void *pvUser);
 void VBoxCocoaApplication_unsetCallback(uint32_t fMask, PFNVBOXCACALLBACK pfnCallback, void *pvUser);
+const char *VBoxCocoaApplication_eventTypeName(unsigned long eEvtType);
+void VBoxCocoaApplication_printEvent(const char *pszPrefix, const void *pvEvent);
+
 /** @} */
 
 __END_DECLS
