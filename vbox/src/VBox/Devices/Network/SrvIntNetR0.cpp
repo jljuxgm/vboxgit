@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 17219 2009-02-27 19:06:22Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 17256 2009-03-02 16:23:00Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -3702,7 +3702,11 @@ static int intnetR0NetworkCreateTrunkIf(PINTNETNETWORK pNetwork, PSUPDRVSESSION 
             pszName = "VBoxNetFlt";
             break;
         case kIntNetTrunkType_NetAdp:
+#if defined(RT_OS_DARWIN) && !defined(VBOXNETADP_DO_NOT_USE_NETFLT)
+            pszName = "VBoxNetFlt";
+#else /* VBOXNETADP_DO_NOT_USE_NETFLT */
             pszName = "VBoxNetAdp";
+#endif /* VBOXNETADP_DO_NOT_USE_NETFLT */
             break;
         case kIntNetTrunkType_SrvNat:
             pszName = "VBoxSrvNat";
