@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10187 2008-07-04 02:05:55Z vboxsync $
+# $Id: Makefile.kmk 13141 2008-10-09 16:55:54Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -22,9 +22,13 @@
 SUB_DEPTH = ../..
 include $(KBUILD_PATH)/subheader.kmk
 
-BLDPROGS += bin2c
+BLDPROGS += bin2c biossums
+
 bin2c_TEMPLATE = VBOXBLDPROG
 bin2c_SOURCES = bin2c.c
+
+biossums_TEMPLATE = VBOXBLDPROG
+biossums_SOURCES = biossums.c
 
 include $(KBUILD_PATH)/subfooter.kmk
 
