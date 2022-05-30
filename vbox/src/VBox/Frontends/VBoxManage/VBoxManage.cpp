@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 17255 2009-03-02 15:42:10Z vboxsync $ */
+/* $Id: VBoxManage.cpp 17382 2009-03-05 10:16:06Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -284,10 +284,12 @@ static int handleStartVM(HandlerArg *a)
             {
                 sessionType = "gui";
             }
+#ifdef VBOX_WITH_VRDP
             else if (strcmp(a->argv[2], "vrdp") == 0)
             {
                 sessionType = "vrdp";
             }
+#endif
             else if (strcmp(a->argv[2], "capture") == 0)
             {
                 sessionType = "capture";
