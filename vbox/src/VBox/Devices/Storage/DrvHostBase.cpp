@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 16334 2009-01-28 20:34:41Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -29,8 +29,8 @@
 # include <Carbon/Carbon.h>
 # include <IOKit/IOKitLib.h>
 # include <IOKit/storage/IOStorageDeviceCharacteristics.h>
-# include <IOKit/scsi-commands/SCSITaskLib.h>
-# include <IOKit/scsi-commands/SCSICommandOperationCodes.h>
+# include <IOKit/scsi/SCSITaskLib.h>
+# include <IOKit/scsi/SCSICommandOperationCodes.h>
 # include <IOKit/IOBSD.h>
 # include <DiskArbitration/DiskArbitration.h>
 # include <mach/mach_error.h>

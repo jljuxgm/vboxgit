@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 15831 2009-01-07 12:51:42Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 16334 2009-01-28 20:34:41Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -31,8 +31,8 @@
 # include <Carbon/Carbon.h>
 # include <IOKit/IOKitLib.h>
 # include <IOKit/IOCFPlugIn.h>
-# include <IOKit/scsi-commands/SCSITaskLib.h>
-# include <IOKit/scsi-commands/SCSICommandOperationCodes.h>
+# include <IOKit/scsi/SCSITaskLib.h>
+# include <IOKit/scsi/SCSICommandOperationCodes.h>
 # include <IOKit/storage/IOStorageDeviceCharacteristics.h>
 # include <mach/mach_error.h>
 # define USE_MEDIA_POLLING
