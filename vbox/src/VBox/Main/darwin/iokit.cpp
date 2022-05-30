@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 11857 2008-08-29 23:39:12Z vboxsync $ */
+/* $Id: iokit.cpp 16401 2009-01-30 00:54:43Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -36,7 +36,7 @@
 #include <Carbon/Carbon.h>
 #include <IOKit/IOKitLib.h>
 #include <IOKit/storage/IOStorageDeviceCharacteristics.h>
-#include <IOKit/scsi-commands/SCSITaskLib.h>
+#include <IOKit/scsi/SCSITaskLib.h>
 #include <SystemConfiguration/SystemConfiguration.h>
 #include <mach/mach_error.h>
 #ifdef VBOX_WITH_USB
