@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD-new.cpp 14855 2008-12-01 13:28:58Z vboxsync $ */
+/* $Id: VBoxHDD-new.cpp 14928 2008-12-02 22:22:43Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -965,7 +965,7 @@ VBOXDDU_DECL(int) VDOpen(PVBOXHDD pDisk, const char *pszBackend,
     int rc = VINF_SUCCESS;
     PVDIMAGE pImage = NULL;
 
-    LogFlowFunc(("pDisk=%#p pszBackend=\"%s\" pszFilename=\"%s\" uOpenFlags=%#x\n, pVDIfsImage=%#p",
+    LogFlowFunc(("pDisk=%#p pszBackend=\"%s\" pszFilename=\"%s\" uOpenFlags=%#x, pVDIfsImage=%#p\n",
                  pDisk, pszBackend, pszFilename, uOpenFlags, pVDIfsImage));
     do
     {
