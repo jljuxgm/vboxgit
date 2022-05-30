@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 14815 2008-11-30 00:15:49Z vboxsync $ */
+/* $Id: HostImpl.cpp 14819 2008-11-30 00:24:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -109,6 +109,7 @@ extern "C" char *getfullrawname(char *);
 
 #include <VBox/usb.h>
 #include <VBox/x86.h>
+#include <VBox/asm.h>
 #include <VBox/err.h>
 #include <iprt/string.h>
 #include <iprt/mp.h>
