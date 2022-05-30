@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12964 2008-10-02 22:25:43Z vboxsync $
+# $Id: Makefile.kmk 12980 2008-10-04 21:20:46Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -68,6 +68,8 @@ VMMR3_SOURCES   = \
 	MMPhys.cpp \
 	PDM.cpp \
 	PDMDevice.cpp \
+	PDMDevHlp.cpp \
+	PDMDevMiscHlp.cpp \
 	PDMDriver.cpp \
 	PDMLdr.cpp \
 	PDMCritSect.cpp \
