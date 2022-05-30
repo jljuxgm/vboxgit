@@ -1,4 +1,4 @@
-/* $Id: HardDiskFormatImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
+/* $Id: HardDiskFormatImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  *
@@ -292,4 +292,4 @@ STDMETHODIMP HardDiskFormat::DescribeProperties(ComSafeArrayOut (BSTR, aNames),
 
 // public methods only for internal purposes
 /////////////////////////////////////////////////////////////////////////////
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

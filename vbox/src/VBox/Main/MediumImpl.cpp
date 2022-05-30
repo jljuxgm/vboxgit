@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 14715 2008-11-27 15:34:57Z vboxsync $ */
+/* $Id: MediumImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  *
@@ -1133,4 +1133,4 @@ HRESULT FloppyImage2::unregisterWithVirtualBox()
 {
     return mVirtualBox->unregisterFloppyImage (this);
 }
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

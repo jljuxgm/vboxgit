@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  *
@@ -1304,3 +1304,4 @@ ToString <com::Guid> (const com::Guid &aValue, unsigned int aExtra)
 } /* namespace settings */
 
 #endif /* VBOX_MAIN_SETTINGS_ADDONS */
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 14725 2008-11-27 17:31:56Z vboxsync $ */
+/* $Id: HostImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -3548,4 +3548,4 @@ void Host::unregisterMetrics (PerformanceCollector *aCollector)
     aCollector->unregisterBaseMetricsFor (this);
 };
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

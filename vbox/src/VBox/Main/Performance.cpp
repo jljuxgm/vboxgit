@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 13915 2008-11-06 13:29:32Z vboxsync $ */
+/* $Id: Performance.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  *
@@ -608,3 +608,4 @@ bool Filter::match(const ComPtr<IUnknown> object, const std::string &name) const
     LogAleksey(("...no matches!\n"));
     return false;
 }
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

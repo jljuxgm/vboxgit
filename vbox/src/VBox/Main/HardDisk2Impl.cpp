@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.cpp 14715 2008-11-27 15:34:57Z vboxsync $ */
+/* $Id: HardDisk2Impl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  *
@@ -3620,4 +3620,4 @@ DECLCALLBACK(int) HardDisk2::taskThread (RTTHREAD thread, void *pvUser)
     /// @todo ugly hack, fix ComAssert... later
     #undef setError
 }
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

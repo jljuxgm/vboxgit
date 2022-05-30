@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 14715 2008-11-27 15:34:57Z vboxsync $ */
+/* $Id: MachineImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -10824,5 +10824,4 @@ HRESULT SnapshotMachine::onSnapshotChange (Snapshot *aSnapshot)
 
     return S_OK;
 }
-
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

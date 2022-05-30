@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 14715 2008-11-27 15:34:57Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -4576,4 +4576,4 @@ void *VirtualBox::CallbackEvent::handler()
 
     return NULL;
 }
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

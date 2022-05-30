@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
+/* $Id: FloppyDriveImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  *
@@ -656,3 +656,4 @@ HRESULT FloppyDrive::unmount()
 
     return S_OK;
 }
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

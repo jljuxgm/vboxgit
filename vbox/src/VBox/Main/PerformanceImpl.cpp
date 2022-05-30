@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  *
@@ -669,4 +669,4 @@ STDMETHODIMP PerformanceMetric::COMGETTER(MaximumValue) (LONG *aMaxValue)
     *aMaxValue = m.max;
     return S_OK;
 }
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  *
@@ -2171,3 +2171,4 @@ IMPL_GETTER_SCALAR (ULONG,   EncryptionStyle,    VRDP_QI_ENCRYPTION_STYLE);
 
 #undef IMPL_GETTER_BSTR
 #undef IMPL_GETTER_SCALAR
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 14715 2008-11-27 15:34:57Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -1373,4 +1373,4 @@ HRESULT USBController::notifyProxy (bool aInsertFilters)
 
 // private methods
 /////////////////////////////////////////////////////////////////////////////
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

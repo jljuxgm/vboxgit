@@ -1,4 +1,4 @@
-/* $Id: SATAControllerImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
+/* $Id: SATAControllerImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  *
@@ -521,4 +521,4 @@ void SATAController::copyFrom (SATAController *aThat)
 
 // private methods
 /////////////////////////////////////////////////////////////////////////////
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

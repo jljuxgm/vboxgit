@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 14664 2008-11-26 21:19:35Z vboxsync $ */
+/* $Id: Global.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
 
 /** @file
  *
@@ -170,4 +170,4 @@ const char *Global::OSTypeId (VBOXOSTYPE aOSType)
     AssertMsgFailed (("No record for VBOXOSTYPE %d\n", aOSType));
     return sOSTypes [0].id;
 }
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */
