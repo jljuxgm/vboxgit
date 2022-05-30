@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 12767 2008-09-26 13:00:29Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 15776 2009-01-01 20:35:32Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -48,6 +48,7 @@
 # define _LINUX_BYTEORDER_GENERIC_H
 /* This is another hack for not bothering with C++ unfriendly byteswap macros. */
 # define _LINUX_BYTEORDER_SWAB_H
+# define _LINUX_BYTEORDER_SWABB_H
 /* Those macros that are needed are defined in the header below */
 # include "swab.h"
 # include <linux/cdrom.h>

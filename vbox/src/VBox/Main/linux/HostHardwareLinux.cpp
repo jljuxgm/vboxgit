@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 15468 2008-12-14 15:54:21Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 15776 2009-01-01 20:35:32Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -46,6 +46,7 @@
  *       and the GLIBC tcpip headers. They have different declarations of the 4
  *       standard byte order functions. */
 // # define _LINUX_BYTEORDER_GENERIC_H
+# define _LINUX_BYTEORDER_SWABB_H
 # include <linux/cdrom.h>
 # ifdef VBOX_WITH_DBUS
 #  include <vbox-dbus.h>
