@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 15404 2008-12-12 22:43:42Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 15410 2008-12-13 01:04:17Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -677,7 +677,7 @@ VMMR0DECL(int) SVMR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         else
         {
             pVMCB->guest.u64CR3             = PGMGetHyperCR3(pVM);
-            Assert(pVMCB->guest.u64CR3);
+            Assert(pVMCB->guest.u64CR3 || VM_FF_ISPENDING(pVM, VM_FF_PGM_SYNC_CR3 | VM_FF_PGM_SYNC_CR3_NON_GLOBAL));
         }
     }
 

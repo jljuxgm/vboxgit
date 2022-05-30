@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 14979 2008-12-04 13:14:29Z vboxsync $ */
+/* $Id: PGMMap.cpp 15410 2008-12-13 01:04:17Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -481,11 +481,11 @@ VMMR3DECL(int) PGMR3MappingsUnfix(PVM pVM)
 #endif
     /* Remap CR3 as we have just flushed the CR3 shadow PML4 in case we're in long mode. */
     int rc = PGM_GST_PFN(MapCR3, pVM)(pVM, pVM->pgm.s.GCPhysCR3);
-    AssertRC(rc);
+    AssertRCSuccess(rc);
 
 #ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
     rc = PGM_GST_PFN(MonitorCR3, pVM)(pVM, pVM->pgm.s.GCPhysCR3);
-    AssertRC(rc);
+    AssertRCSuccess(rc);
 #endif
     return VINF_SUCCESS;
 }

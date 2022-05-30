@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 15404 2008-12-12 22:43:42Z vboxsync $ */
+/* $Id: PGMInternal.h 15410 2008-12-13 01:04:17Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2870,6 +2870,8 @@ typedef PGMCPU *PPGMCPU;
 #define PGM_SYNC_ALWAYS                         RT_BIT(1)
 /** Check monitoring on next CR3 (re)load and invalidate page. */
 #define PGM_SYNC_MONITOR_CR3                    RT_BIT(2)
+/** Check guest mapping in SyncCR3. */
+#define PGM_SYNC_MAP_CR3                        RT_BIT(3)
 /** Clear the page pool (a light weight flush). */
 #define PGM_SYNC_CLEAR_PGM_POOL                 RT_BIT(8)
 /** @} */

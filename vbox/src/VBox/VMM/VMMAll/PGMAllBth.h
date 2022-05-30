@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 15228 2008-12-10 04:51:43Z vboxsync $ */
+/* $Id: PGMAllBth.h 15410 2008-12-13 01:04:17Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3119,17 +3119,11 @@ PGM_BTH_DECL(int, SyncCR3)(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bo
     STAM_PROFILE_STOP(&pVM->pgm.s.CTX_MID_Z(Stat,SyncCR3Handlers), h);
 #endif
 
-#ifdef PGMPOOL_WITH_MONITORING
-    int rc = pgmPoolSyncCR3(pVM);
-    if (rc != VINF_SUCCESS)
-        return rc;
-#endif
-
 #if PGM_SHW_TYPE == PGM_TYPE_NESTED || PGM_SHW_TYPE == PGM_TYPE_EPT
     /*
      * Nested / EPT - almost no work.
      */
-    /** @todo check if this is really necessary */
+    /** @todo check if this is really necessary; the call does it as well... */
     HWACCMFlushTLB(pVM);
     return VINF_SUCCESS;
 
