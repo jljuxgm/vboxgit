@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 13388 2008-10-20 11:44:51Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 13390 2008-10-20 12:32:44Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1725,7 +1725,7 @@ VMMDECL(int) IOMInterpretOUTS(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu
     return IOMInterpretOUTSEx(pVM, pRegFrame, Port, pCpu->prefix, cb);
 }
 
-#ifdef IN_RING0
+#ifndef IN_GC
 /**
  * Modify an existing MMIO region page; map to another guest physical region and change the access flags
  *
@@ -1812,4 +1812,5 @@ VMMDECL(int)  IOMMMIOResetRegion(PVM pVM, RTGCPHYS GCPhys)
     }
     return VINF_SUCCESS;
 }
-#endif
+#endif /* !IN_GC */
+
