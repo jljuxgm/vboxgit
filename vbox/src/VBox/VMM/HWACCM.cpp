@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15611 2008-12-16 22:28:15Z vboxsync $ */
+/* $Id: HWACCM.cpp 15612 2008-12-16 22:30:23Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1271,6 +1271,8 @@ VMMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
 
             /* Windows XP: possible same as above, but new recompiler requires new heuristics?
                VT-x doesn't seem to like something about the guest state and this stuff avoids it. */
+            /** @todo This check is actually wrong, it doesn't take the direction of the
+             *        stack segment into account. But, it does the job for now. */
             if (pCtx->rsp >= pCtx->ssHid.u32Limit)
                 return false;
 #if 0
