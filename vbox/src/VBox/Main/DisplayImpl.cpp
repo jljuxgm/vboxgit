@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 15732 2008-12-23 15:12:45Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 15762 2008-12-25 23:53:50Z vboxsync $ */
 
 /** @file
  *
@@ -204,7 +204,7 @@ STDMETHODIMP Display::OnStateChange(MachineState_T machineState)
 {
     if (machineState == MachineState_Running)
     {
-        LogFlowFunc (("Machine running\n"));
+        LogFlowFunc (("Machine is running.\n"));
 
         mfMachineRunning = true;
     }
