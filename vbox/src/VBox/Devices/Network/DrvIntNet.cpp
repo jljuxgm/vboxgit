@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 13234 2008-10-13 20:48:44Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 13286 2008-10-15 13:33:59Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -924,15 +924,15 @@ static DECLCALLBACK(int) drvIntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHa
         return rc;
     }
 # endif
-
     if(OpenReq.enmTrunkType == kIntNetTrunkType_NetFlt)
     {
         char szBindName[INTNET_MAX_TRUNK_NAME];
-        size_t cBindName = INTNET_MAX_TRUNK_NAME;
+        int cBindName = INTNET_MAX_TRUNK_NAME;
 
-        rc = drvIntNetWinIfNameToBindName(OpenReq.szTrunk, szBindName, cBindName);
+        rc = drvIntNetWinIfGuidToBindName(OpenReq.szTrunk, szBindName, cBindName);
         if (RT_FAILURE(rc))
         {
+            Assert(0);
             return rc;
         }
 
