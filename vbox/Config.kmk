@@ -1,10 +1,10 @@
-# $Id: Config.kmk 12415 2008-09-12 09:11:06Z vboxsync $
+# $Id: Config.kmk 12419 2008-09-12 12:02:05Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
 # This file gets included by all makefiles through the
 # include $(KBUILD_PATH)/header.kmk statement.
-#
+# 
 
 #
 # Copyright (C) 2006-2007 Sun Microsystems, Inc.
@@ -3479,7 +3479,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12415 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12419 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
