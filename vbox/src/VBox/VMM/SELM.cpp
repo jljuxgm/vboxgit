@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
+/* $Id: SELM.cpp 15742 2008-12-24 11:15:29Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -1563,7 +1563,16 @@ VMMR3DECL(int) SELMR3SyncTSS(PVM pVM)
                 /* Should we sync the virtual interrupt redirection bitmap as well? */
                 if (CPUMGetGuestCR4(pVM) & X86_CR4_VME)
                 {
-                    uint32_t offRedirBitmap = tss.offIoBitmap - sizeof(tss.IntRedirBitmap);
+                    uint32_t offRedirBitmap;
+                    
+                    /* Make sure the io bitmap offset is valid; anything less than sizeof(VBOXTSS) means there's none. */
+                    if (tss.offIoBitmap < RT_OFFSETOF(VBOXTSS, IntRedirBitmap) + sizeof(tss.IntRedirBitmap))
+                    {
+                        Log(("Invalid io bitmap offset detected (%x)!\n", tss.offIoBitmap));
+                        tss.offIoBitmap = RT_OFFSETOF(VBOXTSS, IntRedirBitmap) + sizeof(tss.IntRedirBitmap);
+                    }
+                        
+                    offRedirBitmap = tss.offIoBitmap - sizeof(tss.IntRedirBitmap);
 
                     /** @todo not sure how the partial case is handled; probably not allowed */
                     if (offRedirBitmap + sizeof(tss.IntRedirBitmap) <= pVM->selm.s.cbGuestTss)
