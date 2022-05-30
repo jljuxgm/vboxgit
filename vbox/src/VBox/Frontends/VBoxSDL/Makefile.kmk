@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12262 2008-09-09 03:09:08Z vboxsync $
+# $Id: Makefile.kmk 12267 2008-09-09 03:41:38Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -122,7 +122,7 @@ $$(PATH_VBoxSDL)/Ico64x01.h: $(PATH_ROOT)/src/VBox/Frontends/VBoxSDL/ico64x01.pn
 	$(QUIET)$(VBOX_BIN2C) Ico64x01 $< $@
 
 # Icon include file.
-$$(PATH_VBoxSDL)/VBoxSDL-icon.rc: $(VBOX_WINDOWS_ICON_FILE) $(VBoxSDL_PATH)/Makefile.kmk | $$(dir $$@)
+$$(PATH_VBoxSDL)/VBoxSDL-icon.rc: $(VBOX_WINDOWS_ICON_FILE) $$(VBoxSDL_PATH)/Makefile.kmk | $$(dir $$@)
 	$(RM) -f $@
 	$(APPEND) $@ 'IDI_VIRTUALBOX ICON DISCARDABLE "$(subst /,\\,$(VBOX_WINDOWS_ICON_FILE))"'
 
