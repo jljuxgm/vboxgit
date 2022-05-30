@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 17613 2009-03-10 10:34:42Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 17700 2009-03-11 15:23:55Z vboxsync $ */
 
 /** @file
  *
@@ -178,6 +178,19 @@ STDMETHODIMP HostNetworkInterface::COMGETTER(Id) (OUT_GUID aGuid)
     CheckComRCReturnRC (autoCaller.rc());
 
     mGuid.cloneTo (aGuid);
+
+    return S_OK;
+}
+
+STDMETHODIMP HostNetworkInterface::COMGETTER(DhcpEnabled) (BOOL *aDhcpEnabled)
+{
+    CheckComArgOutPointerValid(aDhcpEnabled);
+
+    AutoCaller autoCaller (this);
+    CheckComRCReturnRC (autoCaller.rc());
+
+    /* return true + S_OK instead of E_NOTIMPL is done for UI testing purposes */
+    *aDhcpEnabled = FALSE;
 
     return S_OK;
 }
