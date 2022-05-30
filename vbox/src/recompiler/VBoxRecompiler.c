@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13708 2008-10-31 10:26:14Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 13709 2008-10-31 10:29:13Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -440,6 +440,9 @@ REMR3DECL(void) REMR3Reset(PVM pVM)
 
     /* Clear raw ring 0 init state */
     pVM->rem.s.Env.state &= ~CPU_RAW_RING0;
+
+    /* Flush the TBs the next time we execute code here. */
+    pVM->rem.s.fFlushTBs = true;
 }
 
 
