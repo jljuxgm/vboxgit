@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 13343 2008-10-16 15:01:44Z vboxsync $ */
+/* $Id: HWACCM.cpp 13345 2008-10-16 15:14:08Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -903,7 +903,9 @@ VMMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
     else
     {
         PGMMODE enmGuestMode = PGMGetGuestMode(pVM);
-        /* Correct weird requirements for switching to protected mode. */
+        /* Verify the requirements for executing code in protected mode. VT-x can't handle the CPU state right after a switch
+         * from real to protected mode. (all sorts of RPL & DPL assumptions)
+         */
         if (    pVM->hwaccm.s.vmx.enmCurrGuestMode == PGMMODE_REAL
             &&  enmGuestMode >= PGMMODE_PROTECTED)
         {
