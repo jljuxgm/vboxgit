@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 16560 2009-02-06 18:06:04Z vboxsync $ */
+/* $Id: MediumImpl.cpp 16853 2009-02-17 15:48:20Z vboxsync $ */
 
 /** @file
  *
@@ -1095,16 +1095,16 @@ HRESULT ImageMediumBase::saveSettings (settings::Key &aImagesNode)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// DVDImage2 class
+// DVDImage class
 ////////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR (DVDImage2)
+DEFINE_EMPTY_CTOR_DTOR (DVDImage)
 
 /**
  * @note Called from within this object's AutoMayUninitSpan and from under
  *       mVirtualBox write lock.
  */
-HRESULT DVDImage2::unregisterWithVirtualBox()
+HRESULT DVDImage::unregisterWithVirtualBox()
 {
     return mVirtualBox->unregisterDVDImage (this);
 }

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 16735 2009-02-13 10:39:56Z vboxsync $ */
+/* $Id: VBoxManage.cpp 16853 2009-02-17 15:48:20Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1352,7 +1352,7 @@ static int handleControlVM(HandlerArg *a)
             {
                 /* first assume it's a UUID */
                 Guid uuid(a->argv[2]);
-                ComPtr<IDVDImage2> dvdImage;
+                ComPtr<IDVDImage> dvdImage;
                 rc = a->virtualBox->GetDVDImage(uuid, dvdImage.asOutParam());
                 if (FAILED(rc) || !dvdImage)
                 {

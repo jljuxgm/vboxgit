@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16849 2009-02-17 14:59:38Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16853 2009-02-17 15:48:20Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -237,7 +237,6 @@ STDMETHODIMP VirtualBox::CreateAppliance(IAppliance** anAppliance)
     ComObjPtr<Appliance> appliance;
     appliance.createObject();
     rc = appliance->init(this);
-//     ComAssertComRCThrowRC(rc);
 
     if (SUCCEEDED(rc))
         appliance.queryInterfaceTo(anAppliance);

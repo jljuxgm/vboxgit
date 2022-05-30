@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 16745 2009-02-13 15:53:00Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 16853 2009-02-17 15:48:20Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1070,7 +1070,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             rc = CFGMR3InsertString(pCfg,   "Type",                 "DVD");         RC_CHECK();
             rc = CFGMR3InsertInteger(pCfg,  "Mountable",            1);             RC_CHECK();
 
-            ComPtr<IDVDImage2> dvdImage;
+            ComPtr<IDVDImage> dvdImage;
             hrc = dvdDrive->GetImage(dvdImage.asOutParam());                        H();
             if (dvdImage)
             {

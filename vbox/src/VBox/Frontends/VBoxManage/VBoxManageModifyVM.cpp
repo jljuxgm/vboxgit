@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 16530 2009-02-05 16:08:49Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 16853 2009-02-17 15:48:20Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of -modifyvm command.
  */
@@ -1118,7 +1118,7 @@ int handleModifyVM(HandlerArg *a)
             {
                 /* first assume it's a UUID */
                 Guid uuid(dvd);
-                ComPtr<IDVDImage2> dvdImage;
+                ComPtr<IDVDImage> dvdImage;
                 rc = a->virtualBox->GetDVDImage(uuid, dvdImage.asOutParam());
                 if (FAILED(rc) || !dvdImage)
                 {

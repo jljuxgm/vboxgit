@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 16530 2009-02-05 16:08:49Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 16853 2009-02-17 15:48:20Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -571,7 +571,7 @@ HRESULT showVMInfo (ComPtr <IVirtualBox> virtualBox, ComPtr<IMachine> machine,
     rc = machine->COMGETTER(DVDDrive)(dvdDrive.asOutParam());
     if (SUCCEEDED(rc) && dvdDrive)
     {
-        ComPtr<IDVDImage2> dvdImage;
+        ComPtr<IDVDImage> dvdImage;
         rc = dvdDrive->GetImage(dvdImage.asOutParam());
         if (SUCCEEDED(rc) && dvdImage)
         {

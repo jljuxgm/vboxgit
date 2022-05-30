@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 16530 2009-02-05 16:08:49Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 16853 2009-02-17 15:48:20Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -908,7 +908,7 @@ int handleOpenMedium(HandlerArg *a)
     }
     else if (strcmp(a->argv[0], "dvd") == 0)
     {
-        ComPtr<IDVDImage2> dvdImage;
+        ComPtr<IDVDImage> dvdImage;
         CHECK_ERROR(a->virtualBox, OpenDVDImage(filepath, Guid(), dvdImage.asOutParam()));
     }
     else if (strcmp(a->argv[0], "floppy") == 0)
@@ -949,7 +949,7 @@ int handleCloseMedium(HandlerArg *a)
     else
     if (strcmp(a->argv[0], "dvd") == 0)
     {
-        ComPtr<IDVDImage2> dvdImage;
+        ComPtr<IDVDImage> dvdImage;
         rc = a->virtualBox->GetDVDImage(uuid, dvdImage.asOutParam());
         /* not a UUID or not registered? Then it must be a filename */
         if (!dvdImage)
