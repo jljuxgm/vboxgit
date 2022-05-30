@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 13459 2008-10-21 18:59:37Z vboxsync $ */
+/* $Id: MachineImpl.cpp 13460 2008-10-21 19:43:31Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -201,6 +201,7 @@ Machine::HWData::HWData()
         mBootOrder [i] = DeviceType_Null;
 
     mClipboardMode = ClipboardMode_Bidirectional;
+    mGuestPropertyNotificationPatterns = "";
 }
 
 Machine::HWData::~HWData()
@@ -6678,9 +6679,6 @@ HRESULT Machine::saveHardware (settings::Key &aNode)
             writeFlags(property.mFlags, szFlags);
             propertyNode.setValue <Bstr> ("flags", Bstr(szFlags));
         }
-        /* Temporary testbox hack */
-        if (mHWData->mGuestPropertyNotificationPatterns.isNull())
-            mHWData->mGuestPropertyNotificationPatterns = "";
         guestPropertiesNode.setValueOr <Bstr> ("notificationPatterns",
                                                mHWData->mGuestPropertyNotificationPatterns,
                                                Bstr (""));
