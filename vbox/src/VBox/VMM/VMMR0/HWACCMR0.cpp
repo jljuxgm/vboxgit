@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 15142 2008-12-09 09:22:03Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 15404 2008-12-12 22:43:42Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1063,7 +1063,7 @@ VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
 }
 
 
-#if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
+#if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBIRD_32BIT_KERNEL)
 /**
  * Save guest FPU/XMM state (64 bits guest mode & 32 bits host only)
  *
@@ -1118,7 +1118,7 @@ VMMR0DECL(int)   HWACCMR0TestSwitcher3264(PVM pVM)
 }
 # endif
 
-#endif /* HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) */
+#endif /* HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBIRD_32BIT_KERNEL) */
 
 /**
  * Returns suspend status of the host
