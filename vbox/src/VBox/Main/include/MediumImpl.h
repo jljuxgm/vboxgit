@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 13580 2008-10-27 14:04:18Z vboxsync $ */
+/* $Id: MediumImpl.h 14514 2008-11-24 12:24:35Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -170,7 +170,7 @@ protected:
 
     HRESULT setStateError();
 
-    /** weak VirualBox parent */
+    /** weak VirtualBox parent */
     const ComObjPtr <VirtualBox, ComWeakRef> mVirtualBox;
 
     struct Data
