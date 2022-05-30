@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 15722 2008-12-23 11:03:05Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 15723 2008-12-23 11:05:27Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1830,13 +1830,13 @@ VMMDECL(int)  IOMMMIOResetRegion(PVM pVM, RTGCPHYS GCPhys)
 
         /* Mark it as not present again to intercept all read and write access. */
         rc = PGMShwModifyPage(pVM, (RTGCPTR)GCPhys, 1, 0, ~(uint64_t)(X86_PTE_RW|X86_PTE_P));
-        AssertRC(rc);
+        Assert(rc == VINF_SUCCESS || rc == VERR_PAGE_NOT_PRESENT || rc == VERR_PAGE_TABLE_NOT_PRESENT);
 
 #ifdef VBOX_STRICT
         uint64_t fFlags;
         RTHCPHYS HCPhys;
         rc = PGMShwGetPage(pVM, (RTGCPTR)GCPhys, &fFlags, &HCPhys);
-        Assert(rc == VERR_PAGE_NOT_PRESENT);
+        Assert(rc == VERR_PAGE_NOT_PRESENT || rc == VERR_PAGE_TABLE_NOT_PRESENT);
 #endif
         cb     -= PAGE_SIZE;
         GCPhys += PAGE_SIZE;
