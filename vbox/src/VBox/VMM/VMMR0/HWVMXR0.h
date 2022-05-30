@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 14649 2008-11-26 15:01:53Z vboxsync $ */
+/* $Id: HWVMXR0.h 14845 2008-12-01 10:12:25Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -195,8 +195,10 @@ VMMR0DECL(int) VMXR0RunGuestCode(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx);
  * @returns VBox status code
  * @param   fResume     vmlauch/vmresume
  * @param   pCtx        Guest context
+ * @param   pVM         The VM to operate on.
+ * @param   pVCpu       The VMCPU to operate on.
  */
-DECLASM(int) VMXR0StartVM32(RTHCUINT fResume, PCPUMCTX pCtx);
+DECLASM(int) VMXR0StartVM32(RTHCUINT fResume, PCPUMCTX pCtx, PVM pVM, PVMCPU pVCpu);
 
 /**
  * Prepares for and executes VMLAUNCH (64 bits guest mode)
@@ -204,8 +206,10 @@ DECLASM(int) VMXR0StartVM32(RTHCUINT fResume, PCPUMCTX pCtx);
  * @returns VBox status code
  * @param   fResume     vmlauch/vmresume
  * @param   pCtx        Guest context
+ * @param   pVM         The VM to operate on.
+ * @param   pVCpu       The VMCPU to operate on.
  */
-DECLASM(int) VMXR0StartVM64(RTHCUINT fResume, PCPUMCTX pCtx);
+DECLASM(int) VMXR0StartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVM pVM, PVMCPU pVCpu);
 
 /**
  * Prepares for and executes VMLAUNCH (64 bits guest mode)
@@ -213,8 +217,10 @@ DECLASM(int) VMXR0StartVM64(RTHCUINT fResume, PCPUMCTX pCtx);
  * @returns VBox status code
  * @param   fResume     vmlauch/vmresume
  * @param   pCtx        Guest context
+ * @param   pVM         The VM to operate on.
+ * @param   pVCpu       The VMCPU to operate on.
  */
-DECLASM(int) VMXR0SwitcherStartVM64(RTHCUINT fResume, PCPUMCTX pCtx);
+DECLASM(int) VMXR0SwitcherStartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVM pVM, PVMCPU pVCpu);
 
 #endif /* IN_RING0 */
 

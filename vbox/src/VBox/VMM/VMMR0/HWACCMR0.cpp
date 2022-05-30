@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 14804 2008-11-29 03:17:08Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 14845 2008-12-01 10:12:25Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1013,12 +1013,23 @@ VMMR0DECL(bool) HWACCMR0SuspendPending()
  * Keep in mind that there is no guarantee it will stay the same (long jumps to ring 3!!!).
  *
  * @returns cpu structure pointer
- * @param   pVM         The VM to operate on.
  */
 VMMR0DECL(PHWACCM_CPUINFO) HWACCMR0GetCurrentCpu()
 {
     RTCPUID  idCpu = RTMpCpuId();
 
+    return &HWACCMR0Globals.aCpuInfo[idCpu];
+}
+
+/**
+ * Returns the cpu structure for the current cpu.
+ * Keep in mind that there is no guarantee it will stay the same (long jumps to ring 3!!!).
+ *
+ * @returns cpu structure pointer
+ * @param   idCpu       id of the VCPU
+ */
+VMMR0DECL(PHWACCM_CPUINFO) HWACCMR0GetCurrentCpuEx(RTCPUID idCpu)
+{
     return &HWACCMR0Globals.aCpuInfo[idCpu];
 }
 

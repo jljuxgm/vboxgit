@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 14771 2008-11-28 11:07:18Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 14845 2008-12-01 10:12:25Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -981,3 +981,33 @@ VMMR3DECL(int) VMMR3DisableSwitcher(PVM pVM)
     return VINF_SUCCESS;
 }
 
+/**
+ * Gets the switcher to be used for switching to GC.
+ *
+ * @returns host to guest ring 0 switcher entrypoint
+ * @param   pVM             VM handle.
+ * @param   enmSwitcher     The new switcher.
+ */
+VMMR3DECL(RTR0PTR) VMMR3GetHostToGuestSwitcher(PVM pVM, VMMSWITCHER enmSwitcher)
+{
+    /*
+     * Validate input.
+     */
+    if (    enmSwitcher < VMMSWITCHER_INVALID
+        ||  enmSwitcher >= VMMSWITCHER_MAX)
+    {
+        AssertMsgFailed(("Invalid input enmSwitcher=%d\n", enmSwitcher));
+        return VERR_INVALID_PARAMETER;
+    }
+
+    /*
+     * Select the new switcher.
+     */
+    PVMMSWITCHERDEF pSwitcher = s_apSwitchers[enmSwitcher];
+    if (pSwitcher)
+    {
+        RTR0PTR     pbCodeR0 = (RTR0PTR)pVM->vmm.s.pvCoreCodeR0 + pVM->vmm.s.aoffSwitchers[enmSwitcher]; /** @todo fix the pvCoreCodeR0 type */
+        return pbCodeR0 + pSwitcher->offR0HostToGuest;
+    }
+    return (RTR0PTR)0;
+}
