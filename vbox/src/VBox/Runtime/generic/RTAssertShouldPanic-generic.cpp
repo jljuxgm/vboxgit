@@ -1,4 +1,4 @@
-/* $Id: RTAssertShouldPanic-generic.cpp 13306 2008-10-15 21:17:04Z vboxsync $ */
+/* $Id: RTAssertShouldPanic-generic.cpp 13319 2008-10-16 08:23:23Z vboxsync $ */
 /** @file
  * IPRT - Assertions, generic RTAssertShouldPanic.
  */
@@ -39,3 +39,12 @@ RTDECL(bool) RTAssertShouldPanic(void)
     return true;
 }
 
+
+#if defined(IN_RING0) && defined(RT_OS_LINUX) && defined(IN_MODULE)
+/*
+ * When we build this in the Linux kernel module, we wish to make the
+ * symbols available to other modules as well.
+ */
+#  include "the-linux-kernel.h"
+EXPORT_SYMBOL(RTAssertShouldPanic);
+#endif /* IN_RING0 && RT_OS_LINUX && IN_MODULE */

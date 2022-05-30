@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-linux.c 13314 2008-10-15 22:46:08Z vboxsync $ */
+/* $Id: assert-r0drv-linux.c 13319 2008-10-16 08:23:23Z vboxsync $ */
 /** @file
  * IPRT -  Assertion Workers, Ring-0 Drivers, Linux.
  */
@@ -112,3 +112,14 @@ RTR0DECL(void) RTR0AssertPanicSystem(void)
     panic("%s%s", g_szRTAssertMsg1, g_szRTAssertMsg2);
 }
 
+
+#if defined(RT_OS_LINUX) && defined(IN_MODULE)
+/*
+ * When we build this in the Linux kernel module, we wish to make the
+ * symbols available to other modules as well.
+ */
+# include "the-linux-kernel.h"
+EXPORT_SYMBOL (RTR0AssertPanicSystem);
+EXPORT_SYMBOL (AssertMsg1);
+EXPORT_SYMBOL (AssertMsg2);
+#endif /* RT_OS_LINUX && IN_MODULE */
