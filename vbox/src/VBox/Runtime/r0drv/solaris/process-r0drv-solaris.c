@@ -1,4 +1,4 @@
-/* $Id: process-r0drv-solaris.c 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: process-r0drv-solaris.c 13299 2008-10-15 19:07:33Z vboxsync $ */
 /** @file
  * IPRT - Process Management, Ring-0 Driver, Solaris.
  */
@@ -38,6 +38,7 @@
 
 RTDECL(RTPROCESS) RTProcSelf(void)
 {
+    /* use ddi_get_pid()? */
     struct pid *pPidInfo = curproc->p_pidp;
     return pPidInfo->pid_id;
 }
