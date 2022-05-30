@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 16216 2009-01-24 16:30:43Z vboxsync $ */
+/* $Id: MachineImpl.cpp 16244 2009-01-26 18:06:59Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -7755,7 +7755,7 @@ HRESULT SessionMachine::init (Machine *aMachine)
     char *configFileCP = NULL;
     int error;
     RTStrUtf8ToCurrentCP (&configFileCP, configFile);
-    key_t key = ::ftok (configFileCP, 0);
+    key_t key = ::ftok (configFileCP, 'V');
     RTStrFree (configFileCP);
     mIPCSem = ::semget (key, 1, S_IRWXU | S_IRWXG | S_IRWXO | IPC_CREAT);
     error = errno;
