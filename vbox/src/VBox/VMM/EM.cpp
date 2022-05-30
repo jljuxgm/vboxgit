@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 12079 2008-09-04 09:35:39Z vboxsync $ */
+/* $Id: EM.cpp 12299 2008-09-09 14:31:16Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -722,7 +722,7 @@ static int emR3RemStep(PVM pVM)
     /*
      * Switch to REM, step instruction, switch back.
      */
-    int rc = REMR3State(pVM);
+    int rc = REMR3State(pVM, true /* flush the TBs */);
     if (VBOX_SUCCESS(rc))
     {
         rc = REMR3Step(pVM);
@@ -780,7 +780,7 @@ static int emR3RemExecute(PVM pVM, bool *pfFFDone)
         if (!fInREMState)
         {
             STAM_PROFILE_START(&pVM->em.s.StatREMSync, b);
-            rc = REMR3State(pVM);
+            rc = REMR3State(pVM, true /* flush TBs */);
             STAM_PROFILE_STOP(&pVM->em.s.StatREMSync, b);
             if (VBOX_FAILURE(rc))
                 break;
