@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 14613 2008-11-26 00:56:39Z vboxsync $ */
+/* $Id: VBoxManage.cpp 14615 2008-11-26 02:06:17Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -32,8 +32,6 @@
 #include <VBox/com/EventQueue.h>
 
 #include <VBox/com/VirtualBox.h>
-
-#include <stdlib.h>
 
 #include <vector>
 #include <list>
@@ -6000,7 +5998,7 @@ int main(int argc, char *argv[])
         {
             /* Print version number, and do nothing else. */
             RTPrintf("%sr%d\n", VBOX_VERSION_STRING, VBoxSVNRev ());
-            exit(0);
+            return 0;
         }
         else if (strcmp(argv[i], "-dumpopts") == 0)
         {
