@@ -1,4 +1,4 @@
-/* $Id: tstSSM.cpp 10903 2008-07-28 11:10:18Z vboxsync $ */
+/* $Id: tstSSM.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
@@ -620,7 +620,7 @@ int main(int argc, char **argv)
     /*
      * Create an fake VM structure and init SSM.
      */
-    int rc = SUPInit(NULL);
+    int rc = SUPR3Init(NULL);
     if (VBOX_FAILURE(rc))
     {
         RTPrintf("Fatal error: SUP Failure! rc=%Vrc\n", rc);

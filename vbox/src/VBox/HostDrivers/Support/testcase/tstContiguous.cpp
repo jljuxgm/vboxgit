@@ -1,4 +1,4 @@
-/* $Id: tstContiguous.cpp 9334 2008-06-02 23:15:27Z vboxsync $ */
+/* $Id: tstContiguous.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
 /** @file
  * VBox Support Driver - Contiguous Memory Testcase (ring-3).
  */
@@ -46,8 +46,8 @@ int main(int argc, char **argv)
     int rcRet = 0;
 
     RTR3Init(false);
-    rc = SUPInit();
-    RTPrintf("tstContiguous: SUPInit -> rc=%Vrc\n", rc);
+    rc = SUPR3Init(NULL);
+    RTPrintf("tstContiguous: SUPR3Init -> rc=%Vrc\n", rc);
     rcRet += rc != 0;
     if (!rc)
     {

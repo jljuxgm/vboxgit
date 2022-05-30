@@ -1,4 +1,4 @@
-/* $Id: tstMMHyperHeap.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: tstMMHyperHeap.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
 /** @file
  * MM Hypervisor Heap testcase.
  */
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     PVM         pVM;
     RTR0PTR     pvR0;
     SUPPAGE     aPages[RT_ALIGN_Z(sizeof(*pVM), PAGE_SIZE) >> PAGE_SHIFT];
-    int rc = SUPInit(NULL);
+    int rc = SUPR3Init(NULL);
     if (VBOX_SUCCESS(rc))
         rc = SUPLowAlloc(RT_ELEMENTS(aPages), (void **)&pVM, &pvR0, &aPages[0]);
     if (VBOX_FAILURE(rc))

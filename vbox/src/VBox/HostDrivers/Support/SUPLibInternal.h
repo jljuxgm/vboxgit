@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 11725 2008-08-27 22:21:47Z vboxsync $ */
+/* $Id: SUPLibInternal.h 11794 2008-08-29 09:13:37Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -257,7 +257,7 @@ int     suplibOsPageFree(PSUPLIBDATA pThis, void *pvPages, size_t cPages);
  * Performs the pre-initialization of the support library.
  *
  * This is dynamically resolved and invoked by the static library before it
- * calls RTR3Init and thereby SUPInit.
+ * calls RTR3Init and thereby SUPR3Init.
  *
  * @returns IPRT status code.
  * @param   pPreInitData    The pre init data.

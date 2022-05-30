@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 11320 2008-08-11 10:11:34Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -40,6 +40,6 @@
 *******************************************************************************/
 PFNRT g_VBoxRTDeps[] =
 {
-    (PFNRT)SUPInit,
+    (PFNRT)SUPR3Init,
     (PFNRT)SUPPageLock
 };

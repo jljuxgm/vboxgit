@@ -1,4 +1,4 @@
-/* $Id: tstCFGM.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstCFGM.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
 /** @file
  * Testcase for CFGM.
  */
@@ -48,7 +48,7 @@ int main()
      * Create empty VM structure and init SSM.
      */
     PVM         pVM;
-    int rc = SUPInit(NULL);
+    int rc = SUPR3Init(NULL);
     if (VBOX_SUCCESS(rc))
         rc = SUPPageAlloc(RT_ALIGN_Z(sizeof(*pVM), PAGE_SIZE) >> PAGE_SHIFT, (void **)&pVM);
     if (VBOX_FAILURE(rc))

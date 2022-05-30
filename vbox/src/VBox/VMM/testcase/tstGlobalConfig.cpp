@@ -1,4 +1,4 @@
-/* $Id: tstGlobalConfig.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstGlobalConfig.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
 /** @file
  * Ring-3 Management program for the GCFGM mock-up.
  */
@@ -95,10 +95,10 @@ int main(int argc, char **argv)
      * Open the session, load ring-0 and issue the request.
      */
     PSUPDRVSESSION pSession;
-    int rc = SUPInit(&pSession, 0);
+    int rc = SUPR3Init(&pSession);
     if (RT_FAILURE(rc))
     {
-        RTPrintf("tstGlobalConfig: SUPInit -> %Rrc\n", rc);
+        RTPrintf("tstGlobalConfig: SUPR3Init -> %Rrc\n", rc);
         return 1;
     }
 

@@ -1,4 +1,4 @@
-/** $Id: tstInt.cpp 10724 2008-07-17 13:08:56Z vboxsync $ */
+/** $Id: tstInt.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
 /** @file
  * Testcase: Test the interrupt gate feature of the support library.
  */
@@ -80,9 +80,9 @@ int main(int argc, char **argv)
      */
     RTR3Init();
     PSUPDRVSESSION pSession;
-    rc = SUPInit(&pSession);
+    rc = SUPR3Init(&pSession);
     rcRet += rc != 0;
-    RTPrintf("tstInt: SUPInit -> rc=%Vrc\n", rc);
+    RTPrintf("tstInt: SUPR3Init -> rc=%Vrc\n", rc);
     if (!rc)
     {
         /*

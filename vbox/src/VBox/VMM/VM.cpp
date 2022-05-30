@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 11740 2008-08-28 07:52:26Z vboxsync $ */
+/* $Id: VM.cpp 11794 2008-08-29 09:13:37Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -196,7 +196,7 @@ VMR3DECL(int)   VMR3Create(PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCON
         /*
          * Initialize the support library creating the session for this v
          */
-        rc = SUPInit(&pUVM->vm.s.pSession, 0);
+        rc = SUPR3Init(&pUVM->vm.s.pSession);
         if (RT_SUCCESS(rc))
         {
             /*
