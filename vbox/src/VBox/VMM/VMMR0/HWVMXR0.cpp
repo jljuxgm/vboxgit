@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 12664 2008-09-23 10:33:35Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 12674 2008-09-23 15:12:56Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2175,7 +2175,7 @@ ResumeExecution:
                     {
                         unsigned uBPLen = aIOSize[X86_DR7_GET_LEN(pCtx->dr[7], i)];
 
-                        if (    (uPort >= pCtx->dr[i] && uPort <= pCtx->dr[i] + uBPLen)
+                        if (    (uPort >= pCtx->dr[i] && uPort < pCtx->dr[i] + uBPLen)
                             &&  (pCtx->dr[7] & (X86_DR7_L(i) | X86_DR7_G(i)))
                             &&  (pCtx->dr[7] & X86_DR7_RW(i, X86_DR7_RW_IO)) == X86_DR7_RW(i, X86_DR7_RW_IO))
                         {
