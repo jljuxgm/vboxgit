@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 11757 2008-08-28 12:30:01Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 11761 2008-08-28 14:02:30Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -888,6 +888,7 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
               | X86_CR0_PG  /* Must monitor this bit (assumptions are made for real mode & protected mode without paging emulation) */
               | X86_CR0_TS
               | X86_CR0_ET
+              | X86_CR0_CD  /* Cache disable must not be changed! */
               | X86_CR0_NE
               | X86_CR0_MP;
         pVM->hwaccm.s.vmx.cr0_mask = val;
