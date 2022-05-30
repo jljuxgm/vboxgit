@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14097 2008-11-11 16:56:41Z vboxsync $
+# $Id: Makefile.kmk 14242 2008-11-17 09:41:07Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -107,6 +107,7 @@ $(PATH_TARGET)/VBoxNetFltCat.dir/VBoxNetFlt.sys: $$(TARGET_VBoxNetFlt) | $$(dir 
 	$(INSTALL) -m 644 $< $(@D)
 
 $(PATH_TARGET)/VBoxNetFltCat.dir/VBoxNetFlt.cat: \
+		$(PATH_TARGET)/VBoxNetFltCat.dir/VBoxNetFlt.sys \
 		$(PATH_TARGET)/VBoxNetFltCat.dir/VBoxNetFlt.inf \
 		$(PATH_TARGET)/VBoxNetFltCat.dir/VBoxNetFlt_m.inf \
 		$(PATH_TARGET)/VBoxNetFltCat.dir/VBoxNetFlt.cat
