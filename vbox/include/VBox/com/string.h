@@ -1,4 +1,4 @@
-/* $Id: string.h 17646 2009-03-10 17:47:31Z vboxsync $ */
+/* $Id: string.h 17648 2009-03-10 17:57:03Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -417,7 +417,7 @@ public:
         {
             size_t cbBoth = cbThis + cbThat + 1;
 
-            // @todo optimize
+            // @todo optimize with realloc() once the memory management is fixed
             char *pszTemp;
 #if !defined (VBOX_WITH_XPCOM)
             pszTemp = (char*)::RTMemTmpAlloc(cbBoth);
