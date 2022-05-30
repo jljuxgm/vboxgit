@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.cpp 12852 2008-10-01 04:21:25Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.cpp 12884 2008-10-01 23:48:04Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -2828,7 +2828,7 @@ VBoxDbgStatsView::actToRelLog()
 
 
 VBoxDbgStats::VBoxDbgStats(PVM pVM, const char *pszPat/* = NULL*/, unsigned uRefreshRate/* = 0*/, QWidget *pParent/* = NULL*/)
-    : QWidget(pParent), VBoxDbgBase(pVM), m_PatStr(pszPat), m_pPatCB(NULL), m_uRefreshRate(0), m_pTimer(NULL), m_pView(NULL)
+    : QWidget(pParent, Qt::Window), VBoxDbgBase(pVM), m_PatStr(pszPat), m_pPatCB(NULL), m_uRefreshRate(0), m_pTimer(NULL), m_pView(NULL)
 {
     setWindowTitle("VBoxDbg - Statistics");
 
