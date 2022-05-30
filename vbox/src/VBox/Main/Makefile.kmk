@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14722 2008-11-27 17:11:36Z vboxsync $
+# $Id: Makefile.kmk 14730 2008-11-27 18:25:19Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -21,7 +21,6 @@
 
 SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
-
 
 #
 # Include sub-makefile(s).
