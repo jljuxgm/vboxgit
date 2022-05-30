@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11848 2008-08-29 20:31:36Z vboxsync $
+# $Id: Makefile.kmk 11864 2008-08-30 02:51:48Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -152,11 +152,12 @@ ifdef VBOX_WITH_DOCS
   LINUXNOSTRIP += \
 	VirtualBox.chm
  endif
- ifneq ($(wildcard $(VBOX_PATH_SDK)/docs/VirtualBoxAPI.chm),)
- # same applies to VirtualBoxAPI.chm
- LINUXNOSTRIP += \
-	VirtualBoxAPI.chm
- endif
+## @todo This does not work working.
+# ifneq ($(wildcard $(VBOX_PATH_SDK)/docs/VirtualBoxAPI.chm),)
+#  # same applies to VirtualBoxAPI.chm
+#  LINUXNOSTRIP += \
+#	VirtualBoxAPI.chm
+# endif
 endif
 ifdef VBOX_WITH_VRDP
  LINUXSTRIPBIN += \
