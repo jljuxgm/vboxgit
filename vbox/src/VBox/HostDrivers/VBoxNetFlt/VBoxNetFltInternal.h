@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 17184 2009-02-27 00:37:35Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 17186 2009-02-27 00:57:39Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -407,14 +407,12 @@ DECLHIDDEN(void) vboxNetFltOsDeleteInstance(PVBOXNETFLTINS pThis);
  *
  * @return  IPRT status code.
  * @param   pThis           The new instance.
+ * @param   pvContext       The user supplied context in the static config only.
+ *                          NULL in the dynamic config.
  *
  * @remarks Owns no locks.
  */
-DECLHIDDEN(int) vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis
-#ifdef VBOXNETFLT_STATIC_CONFIG
-        , void * pContext
-#endif
-        );
+DECLHIDDEN(int) vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis, void *pvContext);
 
 /**
  * This is called to perform structure initializations.

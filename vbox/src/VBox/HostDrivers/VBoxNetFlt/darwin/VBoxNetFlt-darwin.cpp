@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 17184 2009-02-27 00:37:35Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 17186 2009-02-27 00:57:39Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -1184,8 +1184,9 @@ void vboxNetFltOsDeleteInstance(PVBOXNETFLTINS pThis)
 }
 
 
-int  vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis)
+int  vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis, void *pvContext)
 {
+    NOREF(pvContext);
     return vboxNetFltDarwinAttachToInterface(pThis, false /* fRediscovery */);
 }
 

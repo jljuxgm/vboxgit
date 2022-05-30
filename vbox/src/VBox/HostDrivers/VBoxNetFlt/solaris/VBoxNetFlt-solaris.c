@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 17184 2009-02-27 00:37:35Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 17186 2009-02-27 00:57:39Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -127,6 +127,7 @@ static int VBoxNetFltSolarisModWritePut(queue_t *pQueue, mblk_t *pMsg);
 /**
  * OS specific hooks invoked from common VBoxNetFlt ring-0.
  */
+/** @todo r=bird: What are these doing here? */
 bool vboxNetFltPortOsIsPromiscuous(PVBOXNETFLTINS pThis);
 void vboxNetFltPortOsGetMacAddress(PVBOXNETFLTINS pThis, PRTMAC pMac);
 bool vboxNetFltPortOsIsHostMac(PVBOXNETFLTINS pThis, PCRTMAC pMac);
@@ -134,7 +135,7 @@ void vboxNetFltPortOsSetActive(PVBOXNETFLTINS pThis, bool fActive);
 int vboxNetFltOsDisconnectIt(PVBOXNETFLTINS pThis);
 int vboxNetFltOsConnectIt(PVBOXNETFLTINS pThis);
 void vboxNetFltOsDeleteInstance(PVBOXNETFLTINS pThis);
-int vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis);
+int vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis, void *pvContext);
 int vboxNetFltOsPreInitInstance(PVBOXNETFLTINS pThis);
 
 
@@ -3089,7 +3090,7 @@ void vboxNetFltOsDeleteInstance(PVBOXNETFLTINS pThis)
 }
 
 
-int vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis)
+int vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis, void *pvContext)
 {
     LogFlow((DEVICE_NAME ":vboxNetFltOsInitInstance pThis=%p\n"));
 
@@ -3110,6 +3111,7 @@ int vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis)
     else
         LogRel((DEVICE_NAME ":vboxNetFltOsInitInstance failed to create mutex. rc=%Rrc\n", rc));
 
+    NOREF(pvContext)
     return rc;
 }
 
