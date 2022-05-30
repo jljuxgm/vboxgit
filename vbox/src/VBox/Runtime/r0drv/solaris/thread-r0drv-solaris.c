@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 13254 2008-10-14 12:35:50Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -48,7 +48,7 @@ RTDECL(int) RTThreadSleep(unsigned cMillies)
 {
     clock_t cTicks;
     unsigned long timeout;
-    
+
     if (!cMillies)
     {
         RTThreadYield();
@@ -62,8 +62,8 @@ RTDECL(int) RTThreadSleep(unsigned cMillies)
 
 #if 0
     timeout = ddi_get_lbolt();
-    timeout += cTicks; 
- 
+    timeout += cTicks;
+
     kcondvar_t cnd;
     kmutex_t mtx;
     mutex_init(&mtx, "IPRT Sleep Mutex", MUTEX_DRIVER, NULL);
@@ -95,5 +95,32 @@ RTDECL(bool) RTThreadYield(void)
 {
     schedctl_set_yield(curthread, 0);
     return true;
+}
+
+
+RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
+{
+    Assert(hThread == NIL_RTTHREAD);
+    return curthread->t_preempt == 0;
+}
+
+
+RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
+{
+    AssertPtr(pState);
+    Assert(pState->uchDummy != 42);
+    pState->uchDummy = 42;
+
+    kpreempt_disable();
+}
+
+
+RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
+{
+    AssertPtr(pState);
+    Assert(pState->uchDummy == 42);
+    pState->uchDummy = 0;
+
+    kpreempt_enable();
 }
 

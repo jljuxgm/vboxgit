@@ -1,4 +1,4 @@
-/* $Id: log.cpp 12905 2008-10-02 09:14:00Z vboxsync $ */
+/* $Id: log.cpp 13254 2008-10-14 12:35:50Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -142,6 +142,11 @@ DECLINLINE(int) rtlogLock(PRTLOGGER pLogger)
 #ifndef IN_GC
     if (pLogger->MutexSem != NIL_RTSEMFASTMUTEX)
     {
+# if defined(IN_RING0) \
+  && (defined(RT_OS_WINDOWS) || defined(RT_OS_SOLARIS))
+        if (!RTThreadPreemptIsEnabled())
+            return VERR_PREEMPT_DISABLED;
+# endif
         int rc = RTSemFastMutexRequest(pLogger->MutexSem);
         if (RT_FAILURE(rc))
             return rc;
