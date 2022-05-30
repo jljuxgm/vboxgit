@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 17033 2009-02-23 20:12:10Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 17074 2009-02-24 15:00:32Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -538,6 +538,9 @@ int handleExportAppliance(HandlerArg *a)
                     llMachines.push_back(machine);
             }
         }
+
+        if (FAILED(rc))
+            break;
 
         if (llMachines.size() == 0)
             return errorSyntax(USAGE_EXPORTAPPLIANCE, "Missing arguments to export command.");
