@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 16530 2009-02-05 16:08:49Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 16570 2009-02-09 09:02:10Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -144,7 +144,6 @@ int handleImportAppliance(HandlerArg *a)
 
                         case VirtualSystemDescriptionType_Memory:
                             Utf8Str(Bstr(aConfigValues[a])).toInt(ulMemMB);
-                            ulMemMB /= 1024 * 1024;
                             RTPrintf("%2d: Guest memory: %u MB\n    (change with \"-vsys %d -memory <MB>\")\n",
                                      a, ulMemMB, i);
                         break;
