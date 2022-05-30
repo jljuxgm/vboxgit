@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 16675 2009-02-11 16:15:54Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 16680 2009-02-11 16:33:04Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1395,6 +1395,7 @@ static int pgmPoolCacheFreeOne(PPGMPOOL pPool, uint16_t iUser)
     if (PGMGetHyperCR3(pPool->CTX_SUFF(pVM)) == pPage->Core.Key)
     {
         /* Refresh the cr3 mapping by putting it at the head of the age list. */
+        LogFlow(("pgmPoolCacheFreeOne refuse CR3 mapping\n"));
         pgmPoolCacheUsed(pPool, pPage);
         return pgmPoolCacheFreeOne(pPool, iUser);
     }
