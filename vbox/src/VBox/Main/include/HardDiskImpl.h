@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 16873 2009-02-17 19:07:37Z vboxsync $ */
+/* $Id: HardDiskImpl.h 17359 2009-03-04 17:54:03Z vboxsync $ */
 
 /** @file
  *
@@ -96,6 +96,8 @@ public:
     STDMETHOD(COMGETTER(Root)) (IHardDisk **aRoot);
     STDMETHOD(COMGETTER(ReadOnly)) (BOOL *aReadOnly);
     STDMETHOD(COMGETTER(LogicalSize)) (ULONG64 *aLogicalSize);
+    STDMETHOD(COMGETTER(AutoReset)) (BOOL *aAutoReset);
+    STDMETHOD(COMSETTER(AutoReset)) (BOOL aAutoReset);
 
     // IHardDisk methods
     STDMETHOD(GetProperty) (IN_BSTR aName, BSTR *aValue);
@@ -113,6 +115,7 @@ public:
     STDMETHOD(CloneTo) (IHardDisk *aTarget, IProgress **aProgress);
     STDMETHOD(FlattenTo) (IHardDisk *aTarget, IProgress **aProgress);
     STDMETHOD(Compact) (IProgress **aProgress);
+    STDMETHOD(Reset) (IProgress **aProgress);
 
     // public methods for internal purposes only
 
@@ -268,7 +271,7 @@ private:
 
     struct Data
     {
-        Data() : type (HardDiskType_Normal), logicalSize (0)
+        Data() : type (HardDiskType_Normal), logicalSize (0), autoReset (false)
                , implicit (false), numCreateDiffTasks (0)
                , vdProgress (NULL) , vdDiskIfaces (NULL) {}
 
@@ -277,6 +280,8 @@ private:
 
         HardDiskType_T type;
         uint64_t logicalSize;   /*< In MBytes. */
+
+        BOOL autoReset : 1;
 
         typedef std::map <Bstr, Bstr> PropertyMap;
         PropertyMap properties;
