@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17068 2009-02-24 13:46:21Z vboxsync $
+# $Id: Makefile.kmk 17568 2009-03-09 12:12:45Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -144,6 +144,7 @@ SOLARIS_STRIP_BINS = \
 	VBoxDDU.so \
 	VBoxVMM.so \
 	VBoxXPCOM.so \
+	VBoxXPCOMC.so \
 	$(if $(VBOX_WITH_SHARED_FOLDERS),VBoxSharedFolders.so,) \
 	$(if $(VBOX_WITH_SHARED_CLIPBOARD),VBoxSharedClipboard.so,) \
 	$(if $(VBOX_WITH_GUEST_PROPS),VBoxGuestPropSvc.so,) \
