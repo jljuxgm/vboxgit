@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 13646 2008-10-29 11:07:29Z vboxsync $ */
+/* $Id: HWACCM.cpp 13778 2008-11-04 09:45:27Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -206,6 +206,18 @@ VMMR3DECL(int) HWACCMR3Init(PVM pVM)
     rc = CFGMR3QueryBoolDef(CFGMR3GetChild(CFGMR3GetRoot(pVM), "HWVirtExt/"), "Enabled", &pVM->hwaccm.s.fAllowed, false);
     AssertRC(rc);
 
+    return VINF_SUCCESS;
+}
+
+/**
+ * Initializes the per-VCPU HWACCM.
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+VMMR3DECL(int) HWACCMR3InitCPU(PVM pVM)
+{
+    LogFlow(("HWACCMR3InitCPU\n"));
     return VINF_SUCCESS;
 }
 
@@ -830,6 +842,20 @@ VMMR3DECL(int) HWACCMR3Term(PVM pVM)
         MMHyperFree(pVM, pVM->hwaccm.s.paStatExitReason);
         pVM->hwaccm.s.paStatExitReason = NULL;
     }
+    return 0;
+}
+
+/**
+ * Terminates the per-VCPU HWACCM.
+ *
+ * Termination means cleaning up and freeing all resources,
+ * the VM it self is at this point powered off or suspended.
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+VMMR3DECL(int) HWACCMR3TermCPU(PVM pVM)
+{
     return 0;
 }
 

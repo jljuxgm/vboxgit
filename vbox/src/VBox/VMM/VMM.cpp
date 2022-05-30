@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 13742 2008-11-03 12:19:40Z vboxsync $ */
+/* $Id: VMM.cpp 13778 2008-11-04 09:45:27Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -243,6 +243,18 @@ VMMR3DECL(int) VMMR3Init(PVM pVM)
     return rc;
 }
 
+
+/**
+ * Initializes the per-VCPU VMM.
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+VMMR3DECL(int) VMMR3InitCPU(PVM pVM)
+{
+    LogFlow(("VMMR3InitCPU\n"));
+    return VINF_SUCCESS;
+}
 
 /**
  * VMMR3Init worker that initiates the core code.
@@ -750,6 +762,20 @@ VMMR3DECL(int) VMMR3Term(PVM pVM)
     RTMemProtect(pVM->vmm.s.pbEMTStackR3 + VMM_STACK_SIZE, PAGE_SIZE, RTMEM_PROT_READ | RTMEM_PROT_WRITE);
 #endif
     return rc;
+}
+
+/**
+ * Terminates the per-VCPU VMM.
+ *
+ * Termination means cleaning up and freeing all resources,
+ * the VM it self is at this point powered off or suspended.
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+VMMR3DECL(int) VMMR3TermCPU(PVM pVM)
+{
+    return 0;
 }
 
 
