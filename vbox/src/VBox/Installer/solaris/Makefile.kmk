@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14353 2008-11-19 15:07:34Z vboxsync $
+# $Id: Makefile.kmk 14932 2008-12-03 08:04:59Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -180,6 +180,7 @@ ifdef VBOX_WITH_QT4GUI
  SOLARIS_NLS := $(foreach f,$(VBOX_APPROVED_GUI_LANGUAGES),nls/VirtualBox_$(f).qm nls/qt_$(f).qm)
 endif
 
+# Documentation
 ifdef VBOX_WITH_DOCS_PACKING
  SOLARIS_NO_STRIP += \
  	VirtualBox.chm \
@@ -187,13 +188,13 @@ ifdef VBOX_WITH_DOCS_PACKING
 	$(foreach f,$(VBOX_MANUAL_ADD_LANGUAGES),VirtualBox_$(f).chm UserManual_$(f).pdf)
 endif
 
+# VRDP
 ifdef VBOX_WITH_VRDP
  SOLARIS_STRIP_BINS += \
-	VBoxVRDP.so
-
+	VBoxVRDP.so \
+	VRDPAuth.so
  SOLARIS_NO_STRIP += \
 	rdesktop-vrdp.tar.gz
-
  ifdef VBOX_WITH_VRDP_RDESKTOP
   SOLARIS_NO_STRIP += \
 	rdesktop-vrdp-keymaps
