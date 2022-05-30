@@ -1,4 +1,4 @@
-# $Id: qt4.kmk 2018 2008-11-02 00:08:56Z bird $
+# $Id: qt4.kmk 2197 2009-01-05 13:13:30Z bird $
 ## @file
 # Qt 4 unit.
 #
@@ -43,7 +43,7 @@ ifndef UNIT_qt3
  PROPS_SINGLE += QTTOOL MOCTOOL UICTOOL LRCTOOL QT_TRANSLATIONS_INST QT_TRANSLATIONS_TEMPLATE QT_PREFIX
  PROPS_ACCUMULATE_R += MOCDEFS MOCFLAGS UICFLAGS LRCFLAGS QT_TRANSLATIONS QT_MOCSRCS QT_MOCHDRS
 endif
-PROPS_SINGLE += RCCTOOL
+PROPS_SINGLE += RCCTOOL QT_INFIX
 PROPS_ACCUMULATE_R += RCCFLAGS QT_MODULES
 
 
@@ -404,7 +404,7 @@ define TOOL_QT4_RCC_QRC_CMDS
 	$(SED) \
 		-e '/^[[:blank:]]*<file[[:blank:]][^>]*>/!d' \
 		-e 's/^.*<file[[:blank:]][^>]*>\([^<]*\)<\/file>.*$$$$/\1/' \
-		-e 's|^[^/]|$(abspathex $(dir $(source)),$(defpath))/&|' \
+		-e 's|^[^/][^:]|$(abspathex $(dir $(source)),$(defpath))/&|' \
 		-e 's|$$$$| \\|' \
 		--append $(dep) \
 		$(source)
@@ -412,7 +412,7 @@ define TOOL_QT4_RCC_QRC_CMDS
 	$(SED) \
 		-e '/^[[:blank:]]*<file[[:blank:]][^>]*>/!d' \
 		-e 's/^.*<file[[:blank:]][^>]*>\([^<]*\)<\/file>.*$$$$/\1/' \
-		-e 's|^[^/]|$(abspathex $(dir $(source)),$(defpath))/&|' \
+		-e 's|^[^/][^:]|$(abspathex $(dir $(source)),$(defpath))/&|' \
 		-e 's|$$$$|:\n|' \
 		--append $(dep) \
 		$(source)
@@ -482,7 +482,7 @@ ifndef NO_COMPILE_CMDS_DEPS
 	%$$(QUIET2)$$(APPEND) '$(dep)' 'endef'
 endif
 
-$(target)_OUT_FILES += $(out) $(more_output) $(maybe_output)
+$(target)_CLEAN += $(out) $(more_output) $(maybe_output) $(dep)
 $(target)-inst-nls_SOURCES += $(out)
 
 endef # def_unit_qt4_target_pre_handle_translation_dx
@@ -572,7 +572,7 @@ endif
 
 $(target)_INTERMEDIATES += $(realout)
 $(target)_GEN_SOURCES_ += $(realout)
-$(target)_OUT_FILES += $(out) $(realout) $(more_output) $(maybe_output)
+$(target)_CLEAN += $(out) $(realout) $(more_output) $(maybe_output) $(dep)
 
 endef # def_unit_qt4_target_pre_handle_rcc_dx
 
@@ -658,7 +658,7 @@ ifndef NO_COMPILE_CMDS_DEPS
 endif
 
 $(target)_INTERMEDIATES += $(realout)
-$(target)_OUT_FILES += $(out) $(realout) $(more_output) $(maybe_output)
+$(target)_CLEAN += $(out) $(realout) $(more_output) $(maybe_output) $(dep)
 
 endef # def_unit_qt4_target_pre_handle_ui_dx
 
@@ -745,7 +745,7 @@ endif
 
 $(target)_INTERMEDIATES += $(realout)
 $(target)_GEN_SOURCES_ += $(realout)
-$(target)_OUT_FILES += $(out) $(realout) $(more_output) $(maybe_output)
+$(target)_CLEAN += $(out) $(realout) $(more_output) $(maybe_output) $(dep)
 
 endef
 
@@ -837,7 +837,7 @@ ifndef NO_COMPILE_CMDS_DEPS
 endif
 
 $(target)_INTERMEDIATES += $(realout)
-$(target)_OUT_FILES += $(out) $(realout) $(more_output) $(maybe_output)
+$(target)_CLEAN += $(out) $(realout) $(more_output) $(maybe_output) $(dep)
 
 endef
 
@@ -928,7 +928,7 @@ ifneq ($($(target)_QTTOOL),)
  endif
 endif
 
-# Deal with QT_MODULES and QT_PREFIX.
+# Deal with QT_MODULES, QT_PREFIX and QT_INFIX.
 local qt_modules := \
 	$($(target)_QT_MODULES.$(bld_trg)) \
  	$($(target)_QT_MODULES.$(bld_trg_arch)) \
@@ -943,19 +943,29 @@ local qt_prefix := $(firstword \
  	$($(target)_QT_PREFIX.$(bld_trg_cpu)) \
  	$($(target)_QT_PREFIX.$(bld_type)) \
  	$($(target)_QT_PREFIX))
+local qt_infix := $(firstword \
+	$($(target)_QT_INFIX.$(bld_trg)) \
+ 	$($(target)_QT_INFIX.$(bld_trg_arch)) \
+ 	$($(target)_QT_INFIX.$(bld_trg).$(bld_trg_arch)) \
+ 	$($(target)_QT_INFIX.$(bld_trg_cpu)) \
+ 	$($(target)_QT_INFIX.$(bld_type)) \
+ 	$($(target)_QT_INFIX))
 ifeq ($(bld_trg),darwin)
  # Adding -F to CXXFLAGS is necessary to make #include <QtCore/qstring.h> stuff work...
  $(eval $(target)_CXXFLAGS += -F$(PATH_SDK_QT4_LIB) )
- $(eval $(target)_LDFLAGS  += -F$(PATH_SDK_QT4_LIB) $(addprefix -framework Qt$(qt_prefix),$(qt_modules)) )
- $(eval $(target)_INCS     += $(foreach module,$(qt_modules), $(PATH_SDK_QT4_LIB)/$(qt_prefix)Qt$(module).framework/Versions/4/Headers) )
+ $(eval $(target)_LDFLAGS  += -F$(PATH_SDK_QT4_LIB) $(foreach module,$(qt_modules), -framework $(qt_prefix)Qt$(module)$(qt_infix)) )
+ $(eval $(target)_INCS     += $(foreach module,$(qt_modules), $(PATH_SDK_QT4_LIB)/$(qt_prefix)Qt$(module)$(qt_infix).framework/Versions/4/Headers) )
 else
  ifeq ($(bld_trg),win)
-  $(eval $(target)_LIBS    += $(foreach module,$(qt_modules), $(PATH_SDK_QT4_LIB)/$(qt_prefix)Qt$(module)4$(SUFF_LIB)) )
+  ifndef qt_infix
+   local qt_infix := 4
+  endif
+  $(eval $(target)_LIBS    += $(foreach module,$(qt_modules), $(PATH_SDK_QT4_LIB)/$(qt_prefix)Qt$(module)$(qt_infix)$(SUFF_LIB)) )
   ifeq ($(tool_do),LINK_PROGRAM)
    $(eval $(target)_LIBS   += $(PATH_SDK_QT4_LIB)/$(qt_prefix)qtmain$(SUFF_LIB) )
   endif
  else
-  $(eval $(target)_LIBS    += $(foreach module,$(qt_modules), $(PATH_SDK_QT4_LIB)/lib$(qt_prefix)Qt$(module)$(SUFF_DLL)) )
+  $(eval $(target)_LIBS    += $(foreach module,$(qt_modules), $(PATH_SDK_QT4_LIB)/lib$(qt_prefix)Qt$(module)$(qt_infix)$(SUFF_DLL)) )
  endif
  $(eval $(target)_INCS     += $(addprefix $(PATH_SDK_QT4_INC)/Qt,$(qt_modules)) $(PATH_SDK_QT4_INC) )
 endif
