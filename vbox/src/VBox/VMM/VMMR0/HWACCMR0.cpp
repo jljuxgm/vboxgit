@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 12600 2008-09-19 13:07:44Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 12657 2008-09-22 18:29:06Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -747,7 +747,7 @@ HWACCMR0DECL(int) HWACCMR0Enter(PVM pVM)
     CPUMDeactivateGuestFPUState(pVM);
 
     /* Always load the guest's debug state on-demand. */
-    CPUMDeactivateGuestDebugtate(pVM);
+    CPUMDeactivateGuestDebugState(pVM);
 
     /* Always reload the host context and the guest's CR0 register. (!!!!) */
     pVM->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_GUEST_CR0 | HWACCM_CHANGED_HOST_CONTEXT;
