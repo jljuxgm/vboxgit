@@ -1,4 +1,4 @@
-/* $Id: PATMA.h 9228 2008-05-29 15:23:15Z vboxsync $ */
+/* $Id: PATMA.h 11920 2008-09-01 13:44:18Z vboxsync $ */
 /** @file
  * PATM macros & definitions (identical to PATMA.mac!!)
  */
@@ -79,7 +79,7 @@
 /* PATM stack size (identical in PATMA.mac!!) */
 #define PATM_STACK_SIZE                         (PAGE_SIZE)
 #define PATM_STACK_TOTAL_SIZE                   (2*PATM_STACK_SIZE)
-#define PATM_MAX_STACK                          (PATM_STACK_SIZE/sizeof(RTGCPTR))
+#define PATM_MAX_STACK                          (PATM_STACK_SIZE/sizeof(RTRCPTR))
 
 /* Patch Manager pending actions (in GCSTATE). */
 #define PATM_ACTION_LOOKUP_ADDRESS              1

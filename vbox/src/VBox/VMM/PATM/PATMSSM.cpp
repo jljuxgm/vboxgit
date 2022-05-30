@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 11915 2008-09-01 12:48:25Z vboxsync $ */
+/* $Id: PATMSSM.cpp 11920 2008-09-01 13:44:18Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -639,6 +639,7 @@ DECLCALLBACK(int) patmr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
     PRELOCREC pRec = 0;
     AVLPVKEY  key  = 0;
 
+    Log(("Correct fixups in global helper functions\n"));
     while (true)
     {
         int32_t offset;
