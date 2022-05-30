@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 17940 2009-03-16 14:47:42Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 17946 2009-03-16 15:42:55Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1808,13 +1808,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 break;
         }
 
-        ComPtr<IDhcpServer> dhcpServer;
-        hrc = virtualBox->FindDhcpServerByName(networkName.mutableRaw(), dhcpServer.asOutParam());
-        if(FAILED(hrc))
-        {
-            LogRel(("NetworkAttachmentType_HostOnly: COMGETTER(Id) failed, hrc (0x%x)", hrc));
-            H();
-        }
+//        ComPtr<IDhcpServer> dhcpServer;
+//        hrc = virtualBox->FindDhcpServerByName(networkName.mutableRaw(), dhcpServer.asOutParam());
+//        if(FAILED(hrc))
+//        {
+//            LogRel(("NetworkAttachmentType_HostOnly: COMGETTER(Id) failed, hrc (0x%x)", hrc));
+//            H();
+//        }
 
     }
 
