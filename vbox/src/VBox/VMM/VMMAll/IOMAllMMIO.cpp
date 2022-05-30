@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 15996 2009-01-16 15:39:41Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 16037 2009-01-19 10:30:36Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -344,7 +344,7 @@ static int iomInterpretMOVS(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame
      * Get data size.
      */
     unsigned cb = DISGetParamSize(pCpu, &pCpu->param1);
-    AssertMsg(cb > 0 && cb <= sizeof(uint32_t), ("cb=%d\n", cb));
+    AssertMsg(cb > 0 && cb <= sizeof(uint64_t), ("cb=%d\n", cb));
     int      offIncrement = pRegFrame->eflags.Bits.u1DF ? -(signed)cb : (signed)cb;
 
 #ifdef VBOX_WITH_STATISTICS
@@ -573,7 +573,7 @@ static int iomInterpretSTOS(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFaul
      * Get data size.
      */
     unsigned cb = DISGetParamSize(pCpu, &pCpu->param1);
-    AssertMsg(cb > 0 && cb <= sizeof(uint32_t), ("cb=%d\n", cb));
+    AssertMsg(cb > 0 && cb <= sizeof(uint64_t), ("cb=%d\n", cb));
     int      offIncrement = pRegFrame->eflags.Bits.u1DF ? -(signed)cb : (signed)cb;
 
 #ifdef VBOX_WITH_STATISTICS
