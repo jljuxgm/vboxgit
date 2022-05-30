@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 12645 2008-09-22 13:22:38Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 12911 2008-10-02 09:40:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1163,8 +1163,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 if (SUCCEEDED(hrc))
                 {
 #ifdef VBOX_WITH_UNIXY_TAP_NETWORKING
-                    Assert (pConsole->maTapFD[ulInstance] >= 0);
-                    if (pConsole->maTapFD[ulInstance] >= 0)
+                    Assert ((int)pConsole->maTapFD[ulInstance] >= 0);
+                    if ((int)pConsole->maTapFD[ulInstance] >= 0)
                     {
                         if (fSniffer)
                         {
