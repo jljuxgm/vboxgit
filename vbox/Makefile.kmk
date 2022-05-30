@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12803 2008-09-29 14:23:46Z vboxsync $
+# $Id: Makefile.kmk 12804 2008-09-29 14:30:07Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -764,12 +764,19 @@ additions-packing:
 		-C src/VBox/Additions \
 		$(VBOX_PATH_ADDITIONS)/VBoxGuestAdditions.iso
 
-sdk:
-	+ $(KMK) VBOX_ONLY_SDK=1  \
-              pass_bldprogs pass_others pass_installs pass_packing
 
-fetch-sdk-reqs:
+
+#
+# Aliases for building the SDK.
+#
+sdk:
+	+ $(KMK) VBOX_ONLY_SDK=1 \
+		pass_bldprogs pass_others pass_installs pass_packing
+
+sdk-fetch:
 	+ $(KMK) KBUILD_TARGET=win  KBUILD_TARGET_ARCH=x86  -C tools fetch
+
+
 
 #
 # Generate VirtualBox-OSE-x.x.x.tar.bz2 tarballs for distribution
