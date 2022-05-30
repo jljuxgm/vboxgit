@@ -1,4 +1,4 @@
-/* $Id: hardenedmain.cpp 11725 2008-08-27 22:21:47Z vboxsync $ */
+/* $Id: hardenedmain.cpp 17862 2009-03-13 22:51:44Z vboxsync $ */
 /** @file
  * VirtualBox - Hardened main().
  */
@@ -21,6 +21,12 @@
 
 #include <VBox/sup.h>
 
+#ifdef RT_OS_DARWIN
+extern "C" DECLEXPORT(int) issetugid(void)
+{
+    return 0;
+}
+#endif
 
 int main(int argc, char **argv, char **envp)
 {
