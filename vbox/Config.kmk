@@ -1,4 +1,4 @@
-# $Id: Config.kmk 14031 2008-11-10 17:32:33Z vboxsync $
+# $Id: Config.kmk 14111 2008-11-11 20:37:18Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3367,6 +3367,27 @@ if1of ($(KBUILD_TARGET), solaris) ## @todo r=bird: Fix the *R3Mini template to V
  TEMPLATE_VBOXGUESTR3LIB_CXXFLAGS = $(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS) -fPIC -fno-exceptions
 endif
 
+#
+# Template for building R3 programs for the guest additions (no -pedantic)
+#
+TEMPLATE_VBOXGUESTR3NPEXE          = VBox Guest Program Non-pedantic
+TEMPLATE_VBOXGUESTR3NPEXE_EXTENDS  = VBOXGUESTR3EXE
+TEMPLATE_VBOXGUESTR3NPEXE_CXXFLAGS = $(filter-out -pedantic,$(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS)) -Wno-sign-compare
+TEMPLATE_VBOXGUESTR3NPEXE_CFLAGS   = $(filter-out -pedantic -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations,$(TEMPLATE_VBOXGUESTR3EXE_CFLAGS)) -Wno-sign-compare
+
+#
+# Template for building R3 (dynamic) libraries for the guest additions (no -pedantic)
+#
+TEMPLATE_VBOXGUESTR3NPDLL           = VBox Guest User Dynamic Libraries Non-pedantic
+TEMPLATE_VBOXGUESTR3NPDLL_EXTENDS   = VBOXGUESTR3NPEXE
+## @todo add a INSTFUN that separates dlls and libs.
+ifn1of ($(KBUILD_TARGET), os2 win)
+ TEMPLATE_VBOXGUESTR3NPDLL_DEFS     = $(TEMPLATE_VBOXGUESTR3NPEXE_DEFS) PIC
+ TEMPLATE_VBOXGUESTR3NPDLL_CFLAGS   = $(TEMPLATE_VBOXGUESTR3NPEXE_CFLAGS) -fPIC
+ TEMPLATE_VBOXGUESTR3NPDLL_CXXFLAGS = $(TEMPLATE_VBOXGUESTR3NPEXE_CXXFLAGS) -fPIC -fno-exceptions
+ TEMPLATE_VBOXGUESTR3NPDLL_LDFLAGS  = $(TEMPLATE_VBOXGUESTR3NPEXE_LDFLAGS) -fPIC
+endif
+
 
 #
 # Template for XFree86 guest modules (relocatable module, i.e. sysmod).
@@ -3572,7 +3593,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14031 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14111 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
