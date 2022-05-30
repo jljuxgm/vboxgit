@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 12737 2008-09-25 14:11:18Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 12745 2008-09-25 15:01:57Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -793,7 +793,7 @@ HWACCMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
             AssertRC(rc);
 
             rc =  VMXWriteVMCS(VMX_VMCS_GUEST_FIELD_TR,         0);
-            rc |= VMXWriteVMCS(VMX_VMCS_GUEST_TR_LIMIT,         sizeof(VBOXTSS));
+            rc |= VMXWriteVMCS(VMX_VMCS_GUEST_TR_LIMIT,         sizeof(VBOXTSS) + 2*PAGE_SIZE);
             rc |= VMXWriteVMCS(VMX_VMCS_GUEST_TR_BASE,          GCPhys /* phys = virt in this mode */);
 
             X86DESCATTR attr;
