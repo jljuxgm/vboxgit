@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 15197 2008-12-09 17:35:39Z vboxsync $ */
+/* $Id: HWACCMInternal.h 15218 2008-12-10 00:23:49Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -480,6 +480,11 @@ typedef struct HWACCMCPU
     STAMPROFILEADV          StatEntry;
     STAMPROFILEADV          StatExit1;
     STAMPROFILEADV          StatExit2;
+#if 1 /* temporary for tracking down darwin issues. */
+    STAMPROFILEADV          StatExit2Sub1;
+    STAMPROFILEADV          StatExit2Sub2;
+    STAMPROFILEADV          StatExit2Sub3;
+#endif
     STAMPROFILEADV          StatInGC;
 
     STAMCOUNTER             StatIntInject;
