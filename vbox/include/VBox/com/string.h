@@ -1,4 +1,4 @@
-/* $Id: string.h 17648 2009-03-10 17:57:03Z vboxsync $ */
+/* $Id: string.h 17740 2009-03-12 12:38:38Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -459,6 +459,15 @@ public:
     int compareIgnoreCase(const char *pcsz) const
     {
         return ::RTStrICmp(str, pcsz);
+    }
+
+    bool endsWith (const Utf8Str &that) const
+    {
+        if (length() < that.length())
+            return false;
+
+        int l = length() - that.length();
+        return ::strcmp (&str[l], that.str) == 0;
     }
 
     bool isNull() const { return str == NULL; }
