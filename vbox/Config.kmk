@@ -1,4 +1,4 @@
-# $Id: Config.kmk 14507 2008-11-24 10:10:25Z vboxsync $
+# $Id: Config.kmk 14513 2008-11-24 12:00:03Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -226,10 +226,10 @@ ifdef VBOX_ONLY_SDK
  VBOX_WITHOUT_ADDITIONS=1
 endif
 
-# Enable new TCG-based recompiler only for those platforms yet  
-if1of ($(KBUILD_TARGET), linux win)
- VBOX_WITH_NEW_RECOMPILER = 1
-endif
+## Enable new TCG-based recompiler only for those platforms yet
+#if1of ($(KBUILD_TARGET), linux win)
+# VBOX_WITH_NEW_RECOMPILER = 1
+#endif
 
 # Don't create the additions ISO.
 # (Used by the additions build server, don't invert it.)
@@ -3643,7 +3643,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14507 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14513 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
