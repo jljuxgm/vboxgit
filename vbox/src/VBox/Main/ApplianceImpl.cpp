@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17669 2009-03-11 09:56:29Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17672 2009-03-11 10:25:04Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2309,7 +2309,7 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD aThread, void *pv
                 rc2 = session->COMGETTER(Machine)(sMachine.asOutParam());
                 if (SUCCEEDED(rc2))
                 {
-                    rc2 = sMachine->DetachHardDisk(mhda.controllerType, mhda.lChannel, mhda.lDevice);
+                    rc2 = sMachine->DetachHardDisk(Bstr(mhda.controllerType), mhda.lChannel, mhda.lDevice);
                     rc2 = sMachine->SaveSettings();
                 }
                 session->Close();
