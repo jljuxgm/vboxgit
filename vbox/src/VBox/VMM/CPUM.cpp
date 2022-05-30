@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 13827 2008-11-05 01:31:18Z vboxsync $ */
+/* $Id: CPUM.cpp 13828 2008-11-05 01:33:17Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2121,7 +2121,8 @@ static DECLCALLBACK(int) cpumR3DisasInstrRead(RTUINTPTR PtrSrc, uint8_t *pu8Dst,
 
             /* translate the address */
             pState->pvPageGC = GCPtr & PAGE_BASE_GC_MASK;
-            if (MMHyperIsInsideArea(pState->pVM, pState->pvPageGC)) /** @todo r=bird: Don't do this if we're in VT-x/AMD-V mode. */
+            if (    MMHyperIsInsideArea(pState->pVM, pState->pvPageGC)
+                &&  !HWACCMIsEnabled(pState->pVM))
             {
                 pState->pvPageR3 = MMHyperRCToR3(pState->pVM, (RTRCPTR)pState->pvPageGC);
                 if (!pState->pvPageR3)
