@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 17201 2009-02-27 12:51:37Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 17340 2009-03-04 12:11:33Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -139,6 +139,10 @@ void darwinDisableIconsInMenus (void)
 #endif /* QT_VERSION >= 0x040400 */
 }
 
+CGContextRef darwinToCGContextRef (QWidget *aWidget)
+{
+    return static_cast<CGContext *> (aWidget->macCGHandle());
+}
 
 /* Proxy icon creation */
 QPixmap darwinCreateDragPixmap (const QPixmap& aPixmap, const QString &aText)
