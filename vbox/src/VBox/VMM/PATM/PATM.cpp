@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 11925 2008-09-01 15:03:24Z vboxsync $ */
+/* $Id: PATM.cpp 11929 2008-09-01 15:40:03Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -6180,7 +6180,9 @@ PATMR3DECL(int) PATMR3HandleTrap(PVM pVM, PCPUMCTX pCtx, RTRCPTR pEip, RTGCPTR *
     }
 
     Log2(("pPatchBlockGC %VRv - pEip %VRv corresponding GC address %VRv\n", PATCHCODE_PTR_GC(&pPatch->patch), pEip, pNewEip));
-
+#ifdef LOG_ENABLED
+    CPUMR3DisasmInstr(pVM, pCtx, pNewEip, "PATCHRET: ");
+#endif
     if (pNewEip >= pPatch->patch.pPrivInstrGC && pNewEip < pPatch->patch.pPrivInstrGC + pPatch->patch.cbPatchJump)
     {
         /* We can't jump back to code that we've overwritten with a 5 byte jump! */
