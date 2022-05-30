@@ -1,4 +1,4 @@
-/* $Id: tstRunTestcases.cpp 14220 2008-11-14 15:05:30Z vboxsync $ */
+/* $Id: tstRunTestcases.cpp 14384 2008-11-20 08:37:14Z vboxsync $ */
 /** @file
  * tstRunTescases - Driver program for running VBox testcase (tst* testcase/tst*).
  */
@@ -52,13 +52,14 @@ static const char  *g_apszExclude[] =
     "testcase/tstSemMutex",
     "testcase/tstVD",
 #endif
-    "testcase/tstVD-2",
     "testcase/tstFileLock",
     "testcase/tstCritSect",
     "testcase/tstCritSectW32",
     "testcase/tstDeadlock",
     "testcase/tstDisasm-2",
     "testcase/tstFileAppendWin-1",
+    "testcase/tstDir",              /* useless, requires parameters */
+    "testcase/tstDir-2",            /* useless, requires parameters */
     "testcase/tstGlobalConfig",
     "testcase/tstLdr-2",
     "testcase/tstLdr-3",
