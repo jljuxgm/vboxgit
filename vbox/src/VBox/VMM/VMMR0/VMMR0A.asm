@@ -1,4 +1,4 @@
-; $Id: VMMR0A.asm 14672 2008-11-27 00:19:22Z vboxsync $
+; $Id: VMMR0A.asm 14721 2008-11-27 16:34:10Z vboxsync $
 ;; @file
 ; VMM - R0 assembly routines.
 ;
@@ -28,7 +28,7 @@
 
 
 %ifdef RT_ARCH_X86      ; The other architecture(s) use(s) C99 variadict macros.
-extern IMPNAME(RTLogLogger)
+extern NAME(RTLogLogger)
 %endif
 
 %ifdef RT_OS_DARWIN
@@ -522,7 +522,7 @@ ENDPROC vmmR0CallHostLongJmp
 EXPORTEDNAME vmmR0LoggerWrapper
 %ifdef RT_ARCH_X86      ; The other architecture(s) use(s) C99 variadict macros.
     push    0                           ; assumes we're the wrapper for a default instance.
-    call    IMP(RTLogLogger)
+    call    NAME(RTLogLogger)
     add     esp, byte 4
     ret
 %else
