@@ -1,4 +1,4 @@
-/* $Id: VBoxXPCOMC.cpp 16519 2009-02-04 17:03:19Z vboxsync $ */
+/* $Id: VBoxXPCOMC.cpp 16534 2009-02-05 17:30:59Z vboxsync $ */
 /** @file VBoxXPCOMC.cpp
  * Utility functions to use with the C binding for XPCOM.
  */
@@ -19,16 +19,13 @@
  * additional information or have any questions.
  */
 
-#include <iostream>
-#include <iomanip>
-
+#define LOG_GROUP LOG_GROUP_MAIN
 #include <nsMemory.h>
 #include <nsIServiceManager.h>
 #include <nsEventQueueUtils.h>
 
 #include <iprt/string.h>
-#define LOG_GROUP_MAIN
-#include <iprt/log.h>
+#include <VBox/log.h>
 
 #include "VirtualBox_XPCOM.h"
 #include "cbinding.h"
@@ -83,11 +80,6 @@ VBoxComInitialize(IVirtualBox **virtualBox, ISession **session)
 
     Session     = *session;
     Ivirtualbox = *virtualBox;
-
-/** @todo r=bird: Why is cout/cerr used unconditionally here?
- * It would be preferred to use RTPrintf/RTStrmPrintf(g_pStdErr,..). If this is
- * going to be used in real life, the cout(/RTPrintf) bits should be optional,
- * add a flag argument and define VBOXCOMINIT_FLAG_VERBOSE for the purpose. */
 
     rc = NS_InitXPCOM2(&serviceManager, nsnull, nsnull);
     if (NS_FAILED(rc))
