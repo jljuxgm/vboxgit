@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 17330 2009-03-04 09:03:09Z vboxsync $ */
+/* $Id: HWACCM.cpp 17379 2009-03-05 09:35:42Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -838,10 +838,10 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                     CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_NXE);
                 }
                 LogRel((pVM->hwaccm.s.fAllow64BitGuests
-                        ? "HWACCM: 32-bit and 64-bit guest supported.\n"
-                        : "HWACCM: 32-bit guest supported.\n"));
+                        ? "HWACCM: 32-bit and 64-bit guests supported.\n"
+                        : "HWACCM: 32-bit guests supported.\n"));
 #else
-                LogRel(("HWACCM: 32-bit guest supported.\n"));
+                LogRel(("HWACCM: 32-bit guests supported.\n"));
 #endif
                 LogRel(("HWACCM: VMX enabled!\n"));
                 if (pVM->hwaccm.s.fNestedPaging)
