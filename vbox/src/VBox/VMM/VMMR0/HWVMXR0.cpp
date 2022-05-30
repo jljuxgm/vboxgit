@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13174 2008-10-10 13:29:27Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13175 2008-10-10 13:30:50Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1211,7 +1211,7 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
                 RTGCPHYS GCPhys;
 
                 /* We convert it here every time as pci regions could be reconfigured. */
-                rc = PDMVMMDevHeapR3ToGCPhys(pVM, pVM->hwaccm.s.vmx.pRealModeEPTPageTable, &GCPhys);
+                rc = PDMVMMDevHeapR3ToGCPhys(pVM, pVM->hwaccm.s.vmx.pNonPagingModeEPTPageTable, &GCPhys);
                 AssertRC(rc);
 
                 /* We use our identity mapping page table here as we need to map guest virtual to guest physical addresses; EPT will

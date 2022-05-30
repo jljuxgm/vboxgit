@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13115 2008-10-09 09:32:28Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13175 2008-10-10 13:30:50Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -239,8 +239,8 @@ typedef struct HWACCM
         /** Virtual address of the TSS page used for real mode emulation. */
         R3PTRTYPE(PVBOXTSS)         pRealModeTSS;
 
-        /** Virtual address of the identity page table used for real mode emulation in EPT mode. */
-        R3PTRTYPE(PX86PD)           pRealModeEPTPageTable;
+        /** Virtual address of the identity page table used for real mode and protected mode without paging emulation in EPT mode. */
+        R3PTRTYPE(PX86PD)           pNonPagingModeEPTPageTable;
 
         /** R0 memory object for the virtual APIC mmio cache. */
         RTR0MEMOBJ                  pMemObjAPIC;
