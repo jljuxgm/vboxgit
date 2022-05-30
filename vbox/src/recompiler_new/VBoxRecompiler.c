@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 14425 2008-11-20 16:32:52Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 14475 2008-11-21 16:49:38Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -217,7 +217,7 @@ static const DBGCCMD    g_aCmds[] =
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-static void remAbort(int rc, const char *pszTip);
+void remAbort(int rc, const char *pszTip);
 extern int testmath(void);
 
 /* Put them here to avoid unused variable warning. */
@@ -4455,7 +4455,7 @@ void cpu_abort(CPUState *env, const char *pszFormat, ...)
  * @param   rc      VBox error code.
  * @param   pszTip  Hint about why/when this happend.
  */
-static void remAbort(int rc, const char *pszTip)
+void remAbort(int rc, const char *pszTip)
 {
     PVM pVM;
 
