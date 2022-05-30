@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17129 2009-02-25 13:17:55Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17133 2009-02-25 14:10:04Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -921,7 +921,8 @@ bool pgmPoolIsActiveRootPage(PVM pVM, PPGMPOOLPAGE pPage)
     if (pPage == pVM->pgm.s.CTX_SUFF(pShwPageCR3))
     {
         LogFlow(("pgmPoolIsActiveRootPage found CR3 root\n"));
-        pPage->cModifications = 1; /* reset counter (can't use 0, or else it will be reinserted in the modified list) */
+        if (pPage->cModifications)
+            pPage->cModifications = 1; /* reset counter (can't use 0, or else it will be reinserted in the modified list) */
         return true;
     }
 
@@ -949,7 +950,8 @@ bool pgmPoolIsActiveRootPage(PVM pVM, PPGMPOOLPAGE pPage)
                         {
                             Assert(pPdpt->a[i].n.u1Present);
                             LogFlow(("pgmPoolIsActiveRootPage found PAE PDPE root\n"));
-                            pPage->cModifications = 1; /* reset counter (can't use 0, or else it will be reinserted in the modified list) */
+                            if (pPage->cModifications)
+                                pPage->cModifications = 1; /* reset counter (can't use 0, or else it will be reinserted in the modified list) */
                             return true;
                         }
                     }
