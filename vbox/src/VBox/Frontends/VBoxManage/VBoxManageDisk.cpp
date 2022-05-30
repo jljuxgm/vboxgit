@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 15492 2008-12-15 10:36:07Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 15514 2008-12-15 16:00:22Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -129,7 +129,10 @@ int handleCreateHardDisk(int argc, char *argv[],
          * created unless fRegister is set */
         bool doClose = false;
 
-        CHECK_ERROR(hardDisk,COMSETTER(Description)(comment));
+        if (!comment.isEmpty())
+        {
+            CHECK_ERROR(hardDisk,COMSETTER(Description)(comment));
+        }
         ComPtr<IProgress> progress;
         if (fStatic)
         {
