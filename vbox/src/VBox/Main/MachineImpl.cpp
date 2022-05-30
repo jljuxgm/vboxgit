@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 14263 2008-11-17 17:30:00Z vboxsync $ */
+/* $Id: MachineImpl.cpp 14290 2008-11-18 11:57:53Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -9574,8 +9574,8 @@ void SessionMachine::takeSnapshotHandler (TakeSnapshotTask &aTask)
 
         if (RT_FAILURE (vrc))
             rc = setError (E_FAIL,
-                tr ("Could not copy the state file '%ls' to '%ls' (%Rrc)"),
-                stateFrom.raw(), stateTo.raw());
+                tr ("Could not copy the state file '%s' to '%s' (%Rrc)"),
+                stateFrom.raw(), stateTo.raw(), vrc);
     }
 
     /* we have to call endTakingSnapshot() ourselves if the snapshot was taken
