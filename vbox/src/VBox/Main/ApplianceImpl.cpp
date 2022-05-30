@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16587 2009-02-09 13:48:57Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16597 2009-02-09 16:06:07Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -2169,13 +2169,13 @@ STDMETHODIMP VirtualSystemDescription::SetFinalValues(ComSafeArrayIn(IN_BSTR, aF
     if (values.size() != m->descriptions.size())
         return E_INVALIDARG;
 
-    list<VirtualSystemDescriptionEntry>::const_iterator it;
+    list<VirtualSystemDescriptionEntry>::iterator it;
     size_t i = 0;
     for (it = m->descriptions.begin();
          it != m->descriptions.end();
          ++it, ++i)
     {
-        VirtualSystemDescriptionEntry vsde = (*it);
+        VirtualSystemDescriptionEntry& vsde = *it;
         vsde.strConfig = values[i];
     }
 
