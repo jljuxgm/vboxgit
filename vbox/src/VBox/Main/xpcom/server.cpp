@@ -1,4 +1,4 @@
-/* $Id: server.cpp 16188 2009-01-22 19:58:31Z vboxsync $ */
+/* $Id: server.cpp 16267 2009-01-27 16:59:57Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -59,6 +59,10 @@
 #include <unistd.h>
 #include <errno.h>
 #include <getopt.h>
+
+#ifdef RT_OS_SOLARIS
+# include <sys/resource.h>
+#endif
 
 // for the backtrace signal handler
 #if defined(DEBUG) && defined(RT_OS_LINUX)
@@ -1046,6 +1050,24 @@ int main (int argc, char **argv)
 
     do
     {
+#ifdef RT_OS_SOLARIS
+        struct rlimit lim;
+        if (getrlimit(RLIMIT_NOFILE, &lim) == 0)
+        {
+            if (lim.rlim_cur < 2048)
+            {
+                lim.rlim_cur = 2048;
+                if (setrlimit(RLIMIT_NOFILE, &lim) != 0)
+                {
+                    getrlimit(RLIMIT_NOFILE, &lim);
+                    printf ("WARNING: failed to increase per-process file-descriptor limit to 2048.\n", lim.rlim_cur);
+                }
+            }
+        }
+        else
+            printf ("WARNING: failed to obtain per-process file-descriptor limit.\n");
+#endif
+
         rc = com::Initialize();
         if (NS_FAILED (rc))
         {
