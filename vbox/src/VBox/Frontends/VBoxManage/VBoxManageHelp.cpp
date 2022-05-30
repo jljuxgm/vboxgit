@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 17549 2009-03-09 06:27:25Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 17669 2009-03-11 09:56:29Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -156,6 +156,10 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [-sataportcount <1-30>]\n"
                  "                            [-sataport<1-30> none|<uuid>|<filename>]\n"
                  "                            [-sataideemulation<1-4> <1-30>]\n"
+#endif
+#ifdef VBOX_WITH_LSILOGIC
+                 "                            [-lsilogic on|off]\n"
+                 "                            [-lsilogicport<1-16> none|<uuid>|<filename>]\n"
 #endif
                  "                            [-dvd none|<uuid>|<filename>|host:<drive>]\n"
                  "                            [-dvdpassthrough on|off]\n"

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17443 2009-03-06 09:56:18Z vboxsync $
+# $Id: Makefile.kmk 17669 2009-03-11 09:56:29Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -285,7 +285,7 @@ VBoxSVC_SOURCES = \
 	SerialPortImpl.cpp \
 	ParallelPortImpl.cpp \
 	USBControllerImpl.cpp \
-	SATAControllerImpl.cpp \
+	StorageControllerImpl.cpp \
 	AudioAdapterImpl.cpp \
 	SharedFolderImpl.cpp \
 	SystemPropertiesImpl.cpp \

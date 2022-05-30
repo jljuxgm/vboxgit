@@ -1,4 +1,4 @@
-/* $Id: server.cpp 17553 2009-03-09 09:34:22Z vboxsync $ */
+/* $Id: server.cpp 17669 2009-03-11 09:56:29Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -114,7 +114,7 @@
 # include <HostUSBDeviceImpl.h>
 # include <USBDeviceImpl.h>
 #endif
-#include <SATAControllerImpl.h>
+#include <StorageControllerImpl.h>
 #include <AudioAdapterImpl.h>
 #include <SystemPropertiesImpl.h>
 #include <Collection.h>
@@ -209,8 +209,8 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ParallelPort, IParallelPort)
 NS_DECL_CLASSINFO(USBController)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(USBController, IUSBController)
 
-NS_DECL_CLASSINFO(SATAController)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(SATAController, ISATAController)
+NS_DECL_CLASSINFO(StorageController)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(StorageController, IStorageController)
 
 #ifdef VBOX_WITH_USB
 NS_DECL_CLASSINFO(USBDeviceFilter)

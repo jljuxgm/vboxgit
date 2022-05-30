@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 17553 2009-03-09 09:34:22Z vboxsync $ */
+/* $Id: ConsoleImpl.h 17669 2009-03-11 09:56:29Z vboxsync $ */
 
 /** @file
  *
@@ -178,6 +178,7 @@ public:
     HRESULT onNetworkAdapterChange (INetworkAdapter *aNetworkAdapter);
     HRESULT onSerialPortChange (ISerialPort *aSerialPort);
     HRESULT onParallelPortChange (IParallelPort *aParallelPort);
+    HRESULT onStorageControllerChange ();
     HRESULT onVRDPServerChange();
     HRESULT onUSBControllerChange();
     HRESULT onSharedFolderChange (BOOL aGlobal);
