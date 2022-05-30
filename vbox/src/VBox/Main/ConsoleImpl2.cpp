@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 15708 2008-12-19 18:28:27Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 16005 2009-01-16 21:48:26Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -557,6 +557,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
         rc = CFGMR3InsertInteger(pCfg,  "IOAPIC", fIOAPIC);                         RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "FdcEnabled", fFdcEnabled);                 RC_CHECK();
+        rc = CFGMR3InsertInteger(pCfg,  "HpetEnabled", 0);                          RC_CHECK();
+        rc = CFGMR3InsertInteger(pCfg,  "SmcEnabled", 0);                           RC_CHECK();
         rc = CFGMR3InsertInteger(pInst, "PCIDeviceNo",          7);                 RC_CHECK();
         Assert(!afPciDeviceNo[7]);
         afPciDeviceNo[7] = true;
