@@ -1,6 +1,6 @@
-/* $Id: MMAllPagePool.cpp 12815 2008-09-29 18:33:17Z vboxsync $ */
+/* $Id: MMAllPagePool.cpp 12967 2008-10-02 23:49:04Z vboxsync $ */
 /** @file
- * MM - Memory Monitor(/Manager) - Page Pool.
+ * MM - Memory Manager - Page Pool.
  *
  * @remarks     This file is NOT built for the raw-mode context.
  */

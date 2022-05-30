@@ -1,6 +1,6 @@
-/* $Id: MMPhys.cpp 12814 2008-09-29 18:14:37Z vboxsync $ */
+/* $Id: MMPhys.cpp 12967 2008-10-02 23:49:04Z vboxsync $ */
 /** @file
- * MM - Memory Monitor(/Manager) - Physical Memory.
+ * MM - Memory Manager - Physical Memory.
  *
  * @remarks This will will be eliminated ASAP, all physical memory management
  *          is done by PGM now.
