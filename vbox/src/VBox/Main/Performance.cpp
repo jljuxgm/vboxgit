@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
+/* $Id: Performance.cpp 14950 2008-12-03 15:20:54Z vboxsync $ */
 
 /** @file
  *
@@ -483,7 +483,6 @@ void Filter::init(ComSafeArrayIn(INPTR BSTR, metricNames),
     }
     else
     {
- 
         for (size_t i = 0; i < objectArray.size(); ++i)
             switch (nameArray.size())
             {
