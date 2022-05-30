@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 16679 2009-02-11 16:32:06Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 17063 2009-02-24 12:55:51Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3412,7 +3412,7 @@ VMMR0DECL(int) VMXR0InvalidatePage(PVM pVM, PVMCPU pVCpu, RTGCPTR GCVirt)
 {
     bool fFlushPending = pVCpu->hwaccm.s.fForceTLBFlush;
 
-    LogFlow(("VMXR0InvalidatePage %RGv\n", GCVirt));
+    Log2(("VMXR0InvalidatePage %RGv\n", GCVirt));
 
     /* Only relevant if we want to use VPID.
      * In the nested paging case we still see such calls, but
