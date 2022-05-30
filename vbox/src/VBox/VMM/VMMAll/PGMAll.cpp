@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 17059 2009-02-24 12:24:44Z vboxsync $ */
+/* $Id: PGMAll.cpp 17134 2009-02-25 15:10:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2192,7 +2192,8 @@ VMMDECL(int) PGMDynMapHCPage(PVM pVM, RTHCPHYS HCPhys, void **ppv)
      */
     register unsigned iPage = pVM->pgm.s.iDynPageMapLast;
 #  ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
-    for (unsigned i=0;i<(MM_HYPER_DYNAMIC_SIZE >> PAGE_SHIFT);i++)
+    unsigned i;
+    for (i=0;i<(MM_HYPER_DYNAMIC_SIZE >> PAGE_SHIFT);i++)
     {
         pVM->pgm.s.iDynPageMapLast = iPage = (iPage + 1) & ((MM_HYPER_DYNAMIC_SIZE >> PAGE_SHIFT) - 1);
         if (!(pVM->pgm.s.paDynPageMap32BitPTEsGC[iPage].u & PGM_PTFLAGS_DYN_LOCKED))

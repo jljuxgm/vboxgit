@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 17057 2009-02-24 12:14:19Z vboxsync $ */
+/* $Id: PGMInternal.h 17134 2009-02-25 15:10:11Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2985,9 +2985,11 @@ bool            pgmPoolIsActiveRootPage(PVM pVM, PPGMPOOLPAGE pPage);
 
 void            pgmMapClearShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAPPING pMap, unsigned iOldPDE);
 void            pgmMapSetShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE);
-int             pgmMapDeactivateCR3(PVM pVM, PPGMPOOLPAGE pShwPageCR3);
 int             pgmShwSyncPaePDPtr(PVM pVM, RTGCPTR GCPtr, PX86PDPE pGstPdpe, PX86PDPAE *ppPD);
 #endif
+int             pgmMapDeactivateCR3(PVM pVM, PPGMPOOLPAGE pShwPageCR3);
+int             pgmMapActivateCR3(PVM pVM, PPGMPOOLPAGE pShwPageCR3);
+
 #ifndef IN_RC
 int             pgmShwSyncLongModePDPtr(PVM pVM, RTGCPTR64 GCPtr, PX86PML4E pGstPml4e, PX86PDPE pGstPdpe, PX86PDPAE *ppPD);
 #endif

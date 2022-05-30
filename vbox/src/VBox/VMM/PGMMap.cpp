@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 16889 2009-02-18 10:53:14Z vboxsync $ */
+/* $Id: PGMMap.cpp 17134 2009-02-25 15:10:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -651,7 +651,7 @@ VMMR3DECL(int) PGMR3MappingsDisable(PVM pVM)
     int rc = PGMR3MappingsSize(pVM, &cb);
     AssertRCReturn(rc, rc);
 
-    rc = PGMMapDeactivateAll(pVM);
+    rc = pgmMapDeactivateCR3(pVM, pVM->pgm.s.pShwPageCR3R3);
     AssertRCReturn(rc, rc);
 
     /*
