@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 11792 2008-08-29 08:51:20Z vboxsync $ */
+/* $Id: PGM.cpp 11997 2008-09-02 16:43:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3326,10 +3326,7 @@ PGMR3DECL(int) PGMR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
             }
             break;
 
-        case PGMMODE_PAE_NX:    /* VT-x/AMD-V only */
-            Assert(HWACCMIsEnabled(pVM));
-            /* no break */
-
+        case PGMMODE_PAE_NX:
         case PGMMODE_PAE:
         {
             uint32_t u32Dummy, u32Features;
