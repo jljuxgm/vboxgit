@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 17669 2009-03-11 09:56:29Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 17885 2009-03-15 14:36:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2189,6 +2189,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     }
 
 #ifdef VBOX_WITH_CROGL
+/* Currently broken on Snow Leopard 64-bit */
+# if !(defined(RT_OS_DARWIN) && defined(RT_ARCH_AMD64))
     /*
      * crOpenGL
      */
@@ -2224,6 +2226,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 }
         }
     }
+# endif
 #endif
 
 #ifdef VBOX_WITH_GUEST_PROPS
