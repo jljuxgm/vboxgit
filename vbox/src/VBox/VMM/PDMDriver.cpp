@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: PDMDriver.cpp 12970 2008-10-03 07:04:11Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1086,7 +1086,7 @@ static DECLCALLBACK(int) pdmR3DrvHlp_PDMThreadCreate(PPDMDRVINS pDrvIns, PPPDMTH
 }
 
 
-/** @copydoc PDMDEVHLP::pfnVMState */
+/** @copydoc PDMDEVHLPR3::pfnVMState */
 static DECLCALLBACK(VMSTATE) pdmR3DrvHlp_VMState(PPDMDRVINS pDrvIns)
 {
     PDMDRV_ASSERT_DRVINS(pDrvIns);
