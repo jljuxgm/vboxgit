@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11855 2008-08-29 23:17:40Z vboxsync $
+# $Id: Makefile.kmk 11859 2008-08-30 00:05:45Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1118,7 +1118,7 @@ VBoxXPCOM_SOURCES = \
 	xpcom/build/nsXPComInit.cpp \
 	xpcom/build/nsStringAPI.cpp
 VBoxXPCOM_SOURCES.darwin = \
-	darwindeps.cpp
+	vboxdeps.cpp
 VBoxXPCOM_SOURCES.os2 = \
 	vboxdeps.cpp
 VBoxXPCOM_SOURCES.solaris = \
