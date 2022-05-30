@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 14599 2008-11-25 20:48:16Z vboxsync $ */
+/* $Id: MMAll.cpp 14600 2008-11-25 20:51:37Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -254,16 +254,15 @@ DECLINLINE(RTR0PTR) mmHyperLookupCalcR0(PMMLOOKUPHYPER pLookup, uint32_t off)
         case MMLOOKUPHYPERTYPE_LOCKED:
             if (pLookup->u.Locked.pvR0)
                 return (RTR0PTR)((RTR0UINTPTR)pLookup->u.Locked.pvR0 + off);
-#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE /** @todo make NIL_RTR0PTR default! */
+            AssertMsgFailed(("%s\n", R3STRING(pLookup->pszDesc)));
             return NIL_RTR0PTR;
-#else
-            return (RTR0PTR)((RTR3UINTPTR)pLookup->u.Locked.pvR3 + off);
-#endif
 
         case MMLOOKUPHYPERTYPE_HCPHYS:
             if (pLookup->u.HCPhys.pvR0)
                 return (RTR0PTR)((RTR0UINTPTR)pLookup->u.HCPhys.pvR0 + off);
+            AssertMsgFailed(("%s\n", R3STRING(pLookup->pszDesc)));
             return NIL_RTR0PTR;
+
         default:
             AssertMsgFailed(("enmType=%d\n", pLookup->enmType));
             return NIL_RTR0PTR;
