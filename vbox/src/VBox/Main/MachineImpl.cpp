@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 13453 2008-10-21 16:10:22Z vboxsync $ */
+/* $Id: MachineImpl.cpp 13455 2008-10-21 16:53:38Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6600,6 +6600,7 @@ HRESULT Machine::saveHardware (settings::Key &aNode)
             writeFlags(property.mFlags, szFlags);
             propertyNode.setValue <Bstr> ("flags", Bstr(szFlags));
         }
+        AssertRelease(!mHWData->mGuestPropertyNotificationPatterns.isNull());
         guestPropertiesNode.setValueOr <Bstr> ("notificationPatterns",
                                                mHWData->mGuestPropertyNotificationPatterns,
                                                Bstr (""));
