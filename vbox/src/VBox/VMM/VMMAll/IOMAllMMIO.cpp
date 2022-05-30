@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 15037 2008-12-05 12:50:21Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 15096 2008-12-08 09:08:02Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1078,7 +1078,7 @@ VMMDECL(int) IOMMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore,
 #endif /* !IN_RING3 */
 
     /*
-     * Disassemble the instruction and interprete it.
+     * Disassemble the instruction and interpret it.
      */
     DISCPUSTATE Cpu;
     unsigned cbOp;
