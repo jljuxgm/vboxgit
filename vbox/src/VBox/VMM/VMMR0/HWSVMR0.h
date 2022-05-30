@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 12702 2008-09-24 16:56:02Z vboxsync $ */
+/* $Id: HWSVMR0.h 12756 2008-09-26 08:25:57Z vboxsync $ */
 /** @file
  * HWACCM AMD-V - Internal header file.
  */
@@ -107,10 +107,6 @@ HWACCMR0DECL(int) SVMR0SetupVM(PVM pVM);
 
 /**
  * Runs guest code in an AMD-V VM.
- *
- * @note NEVER EVER turn on interrupts here. Due to our illegal entry into the
- *       kernel, it might mess things up. (XP kernel traps have been frequently
- *       observed.) [obsolete?]
  *
  * @returns VBox status code.
  * @param   pVM         The VM to operate on.
