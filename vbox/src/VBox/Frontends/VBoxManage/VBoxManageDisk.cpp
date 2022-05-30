@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 17402 2009-03-05 14:39:05Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 17654 2009-03-10 23:55:28Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -832,13 +832,19 @@ int handleShowHardDiskInfo(HandlerArg *a)
         hardDisk->COMGETTER(Size)(&actualSize);
         RTPrintf("Current size on disk: %llu MBytes\n", actualSize >> 20);
 
+        ComPtr <IHardDisk> parent;
+        hardDisk->COMGETTER(Parent) (parent.asOutParam());
+
         HardDiskType_T type;
         hardDisk->COMGETTER(Type)(&type);
         const char *typeStr = "unknown";
         switch (type)
         {
             case HardDiskType_Normal:
-                typeStr = "normal";
+                if (!parent.isNull())
+                    typeStr = "normal (differencing)";
+                else
+                    typeStr = "normal (base)";
                 break;
             case HardDiskType_Immutable:
                 typeStr = "immutable";
@@ -870,13 +876,20 @@ int handleShowHardDiskInfo(HandlerArg *a)
                          name.raw(), &machineIds[j]);
             }
             /// @todo NEWMEDIA check usage in snapshots too
-            /// @todo NEWMEDIA also list children and say 'differencing' for
-            /// hard disks with the parent or 'base' otherwise.
+            /// @todo NEWMEDIA also list children
         }
 
         Bstr loc;
         hardDisk->COMGETTER(Location)(loc.asOutParam());
         RTPrintf("Location:             %lS\n", loc.raw());
+
+        /* print out information specific for differencing hard disks */
+        if (!parent.isNull())
+        {
+            BOOL autoReset = FALSE;
+            hardDisk->COMGETTER(AutoReset)(&autoReset);
+            RTPrintf("Auto-Reset:           %s\n", autoReset ? "on" : "off");
+        }
     }
     while (0);
 
