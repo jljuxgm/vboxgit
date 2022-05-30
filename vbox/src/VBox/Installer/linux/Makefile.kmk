@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12611 2008-09-19 17:43:54Z vboxsync $
+# $Id: Makefile.kmk 12613 2008-09-19 18:19:23Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -163,7 +163,7 @@ endif
 # Guest Additions
 ifdef VBOX_WITH_ADDITIONS_PACKING
  VBOX_LNX_NO_STRIP += \
- 	$(if $(VBOX_OSE),,additions/VBoxGuestAdditions.iso)
+ 	additions/VBoxGuestAdditions.iso
 endif
 
 # Shared Folders
