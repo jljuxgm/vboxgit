@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 14637 2008-11-26 13:28:00Z vboxsync $ */
+/* $Id: MMHyper.cpp 14645 2008-11-26 14:09:41Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -536,8 +536,8 @@ VMMR3DECL(int) MMR3HyperMapPages(PVM pVM, void *pvR3, RTR0PTR pvR0, size_t cPage
      */
     AssertPtrReturn(pvR3, VERR_INVALID_POINTER);
     AssertPtrReturn(paPages, VERR_INVALID_POINTER);
-    AssertReturn(cPages > 0, VERR_INVALID_PARAMETER);
-    AssertReturn(cPages < 128 * _1M / PAGE_SIZE, VERR_INVALID_PARAMETER);
+    AssertReturn(cPages > 0, VERR_PAGE_COUNT_OUT_OF_RANGE);
+    AssertReturn(cPages <= VBOX_MAX_ALLOC_PAGE_COUNT, VERR_PAGE_COUNT_OUT_OF_RANGE);
     AssertPtrReturn(pszDesc, VERR_INVALID_POINTER);
     AssertReturn(*pszDesc, VERR_INVALID_PARAMETER);
     AssertPtrReturn(pGCPtr, VERR_INVALID_PARAMETER);
