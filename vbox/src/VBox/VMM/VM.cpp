@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 14756 2008-11-28 03:01:37Z vboxsync $ */
+/* $Id: VM.cpp 15303 2008-12-11 13:31:00Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -3269,4 +3269,18 @@ VMMR3DECL(RTTHREAD) VMR3GetVMCPUThreadU(PUVM pUVM)
         return NIL_RTTHREAD;
 
     return pUVMCPU->vm.s.ThreadEMT;
+}
+
+/**
+ * Compute supposed guest bitness.
+ * 
+ * @returns maximum bitness this guest may use
+ * @param   pVM             The VM handle.
+ */
+VMMR3DECL(int32_t)          VMR3GetGuestBitness(PVM pVM)
+{
+    
+    bool hasLongMode = CPUMGetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_LONG_MODE);
+
+    return hasLongMode ? 64 : 32;
 }

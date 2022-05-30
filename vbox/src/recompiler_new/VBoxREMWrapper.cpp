@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 15300 2008-12-11 12:02:12Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 15303 2008-12-11 13:31:00Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1952,7 +1952,7 @@ static int remLoadProperObj(PVM pVM)
 {
     size_t  offFilename;
     char    szPath[RTPATH_MAX];
-    bool use64 = true;
+    bool use64 = (VMR3GetGuestBitness(pVM) == 64);
     int rc = RTPathAppPrivateArch(szPath, sizeof(szPath) - 32);
     AssertRCReturn(rc, rc);
     offFilename = strlen(szPath);
