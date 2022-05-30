@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 11967 2008-09-02 11:06:07Z vboxsync $ */
+/* $Id: PATMInternal.h 12524 2008-09-17 08:06:35Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -433,6 +433,9 @@ typedef struct PATM
 
     // GC address of fault in monitored page (set by PATMGCMonitorPage, used by PATMR3HandleMonitoredPage)
     RTRCPTR                 pvFaultMonitor;
+
+    /* Counter for disabled IDT gates (in order not to overflow the release log).*/
+    uint32_t                cGateDisabled;
 
     /* Temporary information for pending MMIO patch. Set in GC or R0 context. */
     struct
