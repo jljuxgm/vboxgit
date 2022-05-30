@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12522 2008-09-17 07:26:47Z vboxsync $
+# $Id: Makefile.kmk 12523 2008-09-17 07:33:07Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -504,8 +504,7 @@ $$(PATH_VBoxC)/VBoxC.def: $(MAKEFILE_CURRENT)
 endif
 
 ConsoleImpl.cpp_DEFS = \
-	VBOX_BUILD_TARGET=\"$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)\" \
-	VBOX_PACKAGE_STRING=\"$(VBOX_PACKAGE_STRING)\"
+	VBOX_BUILD_TARGET=\"$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)\"
 		
 
 Version.cpp_DEFS  = VBOX_SVN_REV=$(VBOX_SVN_REV)
