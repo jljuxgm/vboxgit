@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 14225 2008-11-14 17:55:28Z vboxsync $ */
+/* $Id: MachineImpl.cpp 14263 2008-11-17 17:30:00Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -197,6 +197,7 @@ Machine::HWData::HWData()
     mHWVirtExNestedPagingEnabled = false;
     mHWVirtExVPIDEnabled = false;
     mPAEEnabled = false;
+    mPropertyServiceActive = false;
 
     /* default boot order: floppy - DVD - HDD */
     mBootOrder [0] = DeviceType_Floppy;
