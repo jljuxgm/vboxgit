@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 13962 2008-11-07 14:53:32Z vboxsync $ *
+ * $Id: VirtualBox.xidl 13963 2008-11-07 14:58:24Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -2741,7 +2741,7 @@
 
     <attribute name="Accelerate3DEnabled" type="boolean" default="false">
       <desc>
-        This setting determines whether VirtualBox allows guests make use
+        This setting determines whether VirtualBox allows guests to make use
         of the 3D graphics support available on the host. Currently limited
         to OpenGL only. </desc>
     </attribute>
