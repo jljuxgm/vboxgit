@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInfoNet.cpp 12394 2008-09-11 07:29:28Z vboxsync $ */
+/* $Id: VBoxVMInfoNet.cpp 12396 2008-09-11 07:48:55Z vboxsync $ */
 /** @file
  * VBoxVMInfoNet - Network information for the host.
  */
@@ -40,6 +40,8 @@ int vboxVMInfoNet(VBOXINFORMATIONCONTEXT* a_pCtx)
 
     RTStrPrintf(szPropPath, sizeof(szPropPath), "GuestInfo/Net/Count");
     vboxVMInfoWritePropInt(a_pCtx, szPropPath, (nNumInterfaces > 1 ? nNumInterfaces-1 : 0));
+
+    /* Later: Use GetAdaptersInfo() and GetAdapterAddresses (IPv4 + IPv6) for more information. */
 
     for (int i = 0; i < nNumInterfaces; ++i)
     {
