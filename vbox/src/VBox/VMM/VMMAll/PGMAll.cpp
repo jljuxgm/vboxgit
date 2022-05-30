@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 17058 2009-02-24 12:21:56Z vboxsync $ */
+/* $Id: PGMAll.cpp 17059 2009-02-24 12:24:44Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2226,6 +2226,7 @@ VMMDECL(int) PGMDynLockHCPage(PVM pVM, RCPTRTYPE(uint8_t *) GCPage)
 {
     unsigned iPage;
 
+    Assert(GCPage >= pVM->pgm.s.pbDynPageMapBaseGC && GCPage < (pVM->pgm.s.pbDynPageMapBaseGC + MM_HYPER_DYNAMIC_SIZE));
     iPage = ((uintptr_t)(GCPage - pVM->pgm.s.pbDynPageMapBaseGC)) >> PAGE_SHIFT;
     Assert(!(pVM->pgm.s.paDynPageMap32BitPTEsGC[iPage].u & PGM_PTFLAGS_DYN_LOCKED));
     pVM->pgm.s.paDynPageMap32BitPTEsGC[iPage].u |= PGM_PTFLAGS_DYN_LOCKED;
@@ -2243,6 +2244,7 @@ VMMDECL(int) PGMDynUnlockHCPage(PVM pVM, RCPTRTYPE(uint8_t *) GCPage)
 {
     unsigned iPage;
 
+    Assert(GCPage >= pVM->pgm.s.pbDynPageMapBaseGC && GCPage < (pVM->pgm.s.pbDynPageMapBaseGC + MM_HYPER_DYNAMIC_SIZE));
     iPage = ((uintptr_t)(GCPage - pVM->pgm.s.pbDynPageMapBaseGC)) >> PAGE_SHIFT;
     Assert(pVM->pgm.s.paDynPageMap32BitPTEsGC[iPage].u & PGM_PTFLAGS_DYN_LOCKED);
     pVM->pgm.s.paDynPageMap32BitPTEsGC[iPage].u &= ~PGM_PTFLAGS_DYN_LOCKED;
