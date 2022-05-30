@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 17524 2009-03-07 07:24:36Z vboxsync $ */
+/* $Id: PGMR0.cpp 17526 2009-03-07 08:36:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -69,7 +69,7 @@ VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM)
     uint32_t iFirst = pVM->pgm.s.cHandyPages;
     if (iFirst > RT_ELEMENTS(pVM->pgm.s.aHandyPages))
     {
-//        LogRel(("%d", iFirst));
+        LogRel(("%d", iFirst));
         return VERR_INTERNAL_ERROR;
     }
 
@@ -91,8 +91,8 @@ VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM)
 
         pVM->pgm.s.cHandyPages = RT_ELEMENTS(pVM->pgm.s.aHandyPages);
     }
-//    else
-//        LogRel(("PGMR0PhysAllocateHandyPages: rc=%Rrc iFirst=%d cPages=%d\n", rc, iFirst, cPages));
+    else if (rc != VERR_GMM_SEED_ME)
+        LogRel(("PGMR0PhysAllocateHandyPages: rc=%Rrc iFirst=%d cPages=%d\n", rc, iFirst, cPages));
     LogFlow(("PGMR0PhysAllocateHandyPages: cPages=%d rc=%Rrc\n", cPages, rc));
     return rc;
 }
