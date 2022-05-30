@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 15563 2008-12-16 09:25:08Z vboxsync $ */
+/* $Id: CPUMInternal.h 15962 2009-01-15 12:33:49Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -341,6 +341,11 @@ typedef struct CPUMCPU
      * Aligned on a 64-byte boundrary.
      */
     CPUMHOSTCTX             Host;
+
+#ifdef VBOX_WITH_CRASHDUMP_MAGIC
+    uint8_t                 aMagic[56];
+    uint64_t                uMagic;
+#endif
 
     /**
      * Guest context.

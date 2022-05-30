@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 15563 2008-12-16 09:25:08Z vboxsync $
+; $Id: CPUMInternal.mac 15962 2009-01-15 12:33:49Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -305,6 +305,10 @@ struc CPUMCPU
     .Host.efer           resq    1
 %endif ; 64-bit
 
+%ifdef VBOX_WITH_CRASHDUMP_MAGIC
+    .aMagic              resb    56
+    .uMagic              resq    1
+%endif
     ;
     ; Guest context state
     ; (Identical to the .Hyper chunk above.)
