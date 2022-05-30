@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-linux.c 13319 2008-10-16 08:23:23Z vboxsync $ */
+/* $Id: assert-r0drv-linux.c 13512 2008-10-23 07:21:59Z vboxsync $ */
 /** @file
  * IPRT -  Assertion Workers, Ring-0 Drivers, Linux.
  */
@@ -77,9 +77,9 @@ RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile
                 "Expression: %s\n"
                 "Location  : %s(%d) %s\n",
                 pszExpr, pszFile, uLine, pszFunction);
-    ASMAtomicUoWritePtr((void * volatile *)&g_pszRTAssertExpr, (void *)pszExpr);
-    ASMAtomicUoWritePtr((void * volatile *)&g_pszRTAssertFile, (void *)pszFile);
-    ASMAtomicUoWritePtr((void * volatile *)&g_pszRTAssertFunction, (void *)pszFunction);
+    ASMAtomicUoWritePtr((void * volatile *)&g_pszRTAssertExpr, pszExpr);
+    ASMAtomicUoWritePtr((void * volatile *)&g_pszRTAssertFile, pszFile);
+    ASMAtomicUoWritePtr((void * volatile *)&g_pszRTAssertFunction, pszFunction);
     ASMAtomicUoWriteU32(&g_u32RTAssertLine, uLine);
 }
 
