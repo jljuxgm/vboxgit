@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 17462 2009-03-06 13:00:54Z vboxsync $ */
+/* $Id: PGMAll.cpp 17463 2009-03-06 13:01:57Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2308,7 +2308,6 @@ VMMDECL(int) PGMDynLockHCPage(PVM pVM, RCPTRTYPE(uint8_t *) GCPage)
 
     Assert(GCPage >= pVM->pgm.s.pbDynPageMapBaseGC && GCPage < (pVM->pgm.s.pbDynPageMapBaseGC + MM_HYPER_DYNAMIC_SIZE));
     iPage = ((uintptr_t)(GCPage - pVM->pgm.s.pbDynPageMapBaseGC)) >> PAGE_SHIFT;
-    Assert(!pVM->pgm.s.aLockedDynPageMapCache[iPage]);
     ASMAtomicIncU32(&pVM->pgm.s.aLockedDynPageMapCache[iPage]);
     return VINF_SUCCESS;
 }
