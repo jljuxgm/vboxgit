@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 15371 2008-12-12 14:41:28Z vboxsync $ */
+/* $Id: HWACCMInternal.h 15374 2008-12-12 15:06:08Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -408,6 +408,13 @@ typedef struct VMCSCACHE
         RTGCPTR     pCache;
         RTGCPTR     pCtx;
     } TestOut;
+   struct 
+   {
+        uint64_t    param1;
+        uint64_t    param2;
+        uint64_t    param3;
+        uint64_t    param4;
+   } ScratchPad;
 #endif
 } VMCSCACHE;
 /** Pointer to VMCSCACHE. */
