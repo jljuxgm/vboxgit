@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17469 2009-03-06 13:50:50Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17470 2009-03-06 13:51:37Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -133,7 +133,7 @@ DECLINLINE(void) PGMPOOL_UNLOCK_PTR(PVM pVM, void *pvPage)
         PGMDynUnlockHCPage(pVM, (uint8_t *)pvPage);
 }
 #else
-# define PGMPOOL_UNLOCK_PTR(pPGM, pPage)  do {} while (0)
+# define PGMPOOL_UNLOCK_PTR(pVM, pPage)  do {} while (0)
 #endif
 
 #if defined(IN_RC) || defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0)
