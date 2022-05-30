@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 17130 2009-02-25 13:33:09Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 17506 2009-03-06 22:37:25Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -218,7 +218,6 @@ static int trpmGCExitTrap(PVM pVM, int rc, PCPUMCTXCORE pRegFrame)
         }
         /*
          * Try sync CR3?
-         * This ASSUMES that the MOV CRx, x emulation doesn't return with VINF_PGM_SYNC_CR3. (a bit hackish)
          */
         else if (VM_FF_ISPENDING(pVM, VM_FF_PGM_SYNC_CR3 | VM_FF_PGM_SYNC_CR3_NON_GLOBAL))
 #if 1
