@@ -1,4 +1,4 @@
-/* $Id $ */
+/* $Id: ConsoleVRDPServer.h 13607 2008-10-28 10:43:42Z vboxsync $ */
 
 /** @file
  *
