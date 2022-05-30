@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 17100 2009-02-24 21:37:20Z vboxsync $ */
+/* $Id: getopt.cpp 17101 2009-02-24 21:41:17Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -84,9 +84,8 @@ static PCRTGETOPTDEF rtGetOptSearchLong(const char *pszOption, PCRTGETOPTDEF paO
                 /*
                  * A value is required with the argument. We're trying to be very
                  * understanding here and will permit any of the following:
-                 *      -svalue, -s:value, -s=value,
-                 *      -s value, -s: value, -s= value
-                 * (Ditto for long options.)
+                 *      --long:value,  --long=value, --long value,
+                 *      --long: value, --long= value
                  */
                 size_t cchLong = strlen(pOpt->pszLong);
                 if (    !strncmp(pszOption, pOpt->pszLong, cchLong)
