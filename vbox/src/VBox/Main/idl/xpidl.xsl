@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl.xsl 13580 2008-10-27 14:04:18Z vboxsync $ -->
+<!-- $Id: xpidl.xsl 14185 2008-11-13 17:09:13Z vboxsync $ -->
 
 <!--
  *  A template to generate a XPCOM IDL compatible interface definition file
@@ -90,7 +90,7 @@
 /*
  *  DO NOT EDIT! This is a generated file.
  *
- *  XPCOM IDL (XPIDL) definition for VirualBox Main API (COM interfaces)
+ *  XPCOM IDL (XPIDL) definition for VirtualBox Main API (COM interfaces)
  *  generated from XIDL (XML interface definition).
  *
  *  Source    : src/VBox/Main/idl/VirtualBox.xidl
