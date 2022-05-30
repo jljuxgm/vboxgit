@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInfo.cpp 12724 2008-09-25 12:13:12Z vboxsync $ */
+/* $Id: VBoxVMInfo.cpp 12734 2008-09-25 14:06:43Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -85,7 +85,7 @@ int vboxVMInfoInit(const VBOXSERVICEENV *pEnv, void **ppInstance, bool *pfStartT
         LogRel(("vboxVMInfoThread: Failed to connect to the guest property service! Error: %Rrc\n", rc));
     else
     {
-        LogRel(("vboxVMInfoThread: GuestProp ClientID = %d\n", gCtx.iInfoSvcClientID));
+        Log(("vboxVMInfoThread: GuestProp ClientID = %d\n", gCtx.iInfoSvcClientID));
 
         /* Loading dynamic APIs. */
         HMODULE hKernel32 = LoadLibrary(_T("kernel32"));
