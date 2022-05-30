@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 15695 2008-12-19 14:11:54Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 15701 2008-12-19 16:01:26Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1103,7 +1103,6 @@ VMMR0DECL(int)   HWACCMR0SaveDebugState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     return SVMR0Execute64BitsHandler(pVM, pVCpu, pCtx, pVM->hwaccm.s.pfnSaveGuestDebug64, 0, NULL);
 }
 
-# ifdef DEBUG
 /**
  * Test the 32->64 bits switcher
  *
@@ -1127,7 +1126,6 @@ VMMR0DECL(int)   HWACCMR0TestSwitcher3264(PVM pVM)
     STAM_PROFILE_ADV_STOP(&pVCpu->hwaccm.s.StatWorldSwitch3264, z);
     return rc;
 }
-# endif
 
 #endif /* HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL) */
 
