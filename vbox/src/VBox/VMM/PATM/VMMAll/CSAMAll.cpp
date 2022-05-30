@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
+/* $Id: CSAMAll.cpp 14299 2008-11-18 13:25:40Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -167,7 +167,7 @@ VMMDECL(int) CSAMMarkPage(PVM pVM, RTRCPTR pPage, bool fScanned)
  * only when CSAM is enabled. Leaving these selection criteria
  * to the caller simplifies the interface (PTE passing).
  *
- * Note the the page has not yet been synced, so the TLB trick
+ * Note that the page has not yet been synced, so the TLB trick
  * (which wasn't ever active anyway) cannot be applied.
  *
  * @returns true if the page should be marked not present because

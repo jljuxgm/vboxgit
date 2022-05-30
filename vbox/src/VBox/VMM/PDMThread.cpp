@@ -1,4 +1,4 @@
-/* $Id: PDMThread.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: PDMThread.cpp 14299 2008-11-18 13:25:40Z vboxsync $ */
 /** @file
  * PDM Thread - VM Thread Management.
  */
@@ -666,7 +666,7 @@ VMMR3DECL(int) PDMR3ThreadIAmSuspending(PPDMTHREAD pThread)
  * Called by the PDM thread in response to a resuming state.
  *
  * The purpose of this API is to tell the PDMR3ThreadResume caller that
- * the the PDM thread has successfully resumed. It will also do the
+ * the PDM thread has successfully resumed. It will also do the
  * state transition from the resuming to the running state.
  *
  * @returns VBox status code.

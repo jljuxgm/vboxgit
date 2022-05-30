@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 13937 2008-11-06 20:52:05Z vboxsync $ */
+/* $Id: PGMDbg.cpp 14299 2008-11-18 13:25:40Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -403,7 +403,7 @@ VMMR3DECL(int) PGMR3DbgScanPhysical(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cbRange, 
                 else
                     cbPrev = 0;
 
-                /* advance to the the next page. */
+                /* advance to the next page. */
                 GCPhys |= PAGE_OFFSET_MASK;
                 if (GCPhys++ >= GCPhysLast)
                     return VERR_DBGF_MEM_NOT_FOUND;
@@ -498,7 +498,7 @@ VMMR3DECL(int) PGMR3DbgScanVirtual(PVM pVM, RTGCPTR GCPtr, RTGCPTR cbRange, cons
         else
             cbPrev = 0; /* ignore error. */
 
-        /* advance to the the next page. */
+        /* advance to the next page. */
         GCPtr |= PAGE_OFFSET_MASK;
         GCPtr++;
     }

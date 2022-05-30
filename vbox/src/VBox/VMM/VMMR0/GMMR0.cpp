@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 12930 2008-10-02 11:39:14Z vboxsync $ */
+/* $Id: GMMR0.cpp 14299 2008-11-18 13:25:40Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -327,7 +327,7 @@ typedef GMMPAGE *PGMMPAGE;
 #define GMM_PAGE_IS_FREE(pPage)     ( (pPage)->Common.u2State == GMM_PAGE_STATE_FREE )
 
 /** @def GMM_PAGE_PFN_END
- * The end of the the valid guest pfn range, {0..GMM_PAGE_PFN_END-1}.
+ * The end of the valid guest pfn range, {0..GMM_PAGE_PFN_END-1}.
  * @remark Some of the values outside the range has special meaning, see related \#defines.
  */
 #if HC_ARCH_BITS == 64

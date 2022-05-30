@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 14072 2008-11-10 23:53:50Z vboxsync $ */
+/* $Id: PDMDevice.cpp 14299 2008-11-18 13:25:40Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -93,7 +93,7 @@ static int                  pdmR3DevLoad(PVM pVM, PPDMDEVREGCBINT pRegCB, const 
  * Then the device configuration is enumerated, the instantiation order
  * is determined, and finally they are instantiated.
  *
- * After all device have been successfully instantiated the the primary
+ * After all devices have been successfully instantiated the primary
  * PCI Bus device is called to emulate the PCI BIOS, i.e. making the
  * resource assignments. If there is no PCI device, this step is of course
  * skipped.

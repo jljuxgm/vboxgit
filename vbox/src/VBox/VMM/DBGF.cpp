@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 13973 2008-11-07 16:22:50Z vboxsync $ */
+/* $Id: DBGF.cpp 14299 2008-11-18 13:25:40Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -985,7 +985,7 @@ VMMR3DECL(bool) DBGFR3IsHalted(PVM pVM)
 
 
 /**
- * Checks if the the debugger can wait for events or not.
+ * Checks if the debugger can wait for events or not.
  *
  * This function is only used by lazy, multiplexing debuggers. :-)
  *
