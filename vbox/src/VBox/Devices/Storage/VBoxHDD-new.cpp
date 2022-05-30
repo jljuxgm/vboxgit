@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD-new.cpp 14852 2008-12-01 11:46:18Z vboxsync $ */
+/* $Id: VBoxHDD-new.cpp 14855 2008-12-01 13:28:58Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -714,6 +714,8 @@ VBOXDDU_DECL(int) VDShutdown()
     for (unsigned i = 0; i < cBackends; i++)
         if (pBackends[i]->hPlugin != NIL_RTLDRMOD)
             RTLdrClose(pBackends[i]->hPlugin);
+
+    RTMemFree(pBackends);
     return VINF_SUCCESS;
 }
 
