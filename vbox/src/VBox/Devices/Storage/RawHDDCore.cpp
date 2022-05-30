@@ -1,4 +1,4 @@
-/* $Id: RawHDDCore.cpp 14852 2008-12-01 11:46:18Z vboxsync $ */
+/* $Id: RawHDDCore.cpp 14954 2008-12-03 19:28:03Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -1166,6 +1166,10 @@ VBOXHDDBACKEND g_RawBackend =
     /* pfnAsyncRead */
     rawAsyncRead,
     /* pfnAsyncWrite */
-    rawAsyncWrite
+    rawAsyncWrite,
+    /* pfnComposeLocation */
+    genericFileComposeLocation,
+    /* pfnComposeName */
+    genericFileComposeName
 };
 
