@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.cpp 12843 2008-10-01 01:00:26Z vboxsync $ */
+/* $Id: VBoxDbgGui.cpp 12844 2008-10-01 01:07:12Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -153,7 +153,7 @@ VBoxDbgGui::showStatistics()
 {
     if (!m_pDbgStats)
     {
-        m_pDbgStats = new VBoxDbgStats(m_pVM);
+        m_pDbgStats = new VBoxDbgStats(m_pVM, "*");
         connect(m_pDbgStats, SIGNAL(destroyed(QObject *)), this, SLOT(notifyChildDestroyed(QObject *)));
         repositionStatistics();
     }
