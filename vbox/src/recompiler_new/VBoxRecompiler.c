@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13615 2008-10-28 12:54:17Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 13652 2008-10-29 14:16:35Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -5044,3 +5044,6 @@ void *memcpy(void *dst, const void *src, size_t size)
 
 #endif
 
+void cpu_smm_update(CPUState* env)
+{
+}

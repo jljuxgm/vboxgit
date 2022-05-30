@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13649 2008-10-29 12:27:45Z vboxsync $
+# $Id: Makefile.kmk 13652 2008-10-29 14:16:35Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -64,6 +64,7 @@ $(REM_MOD)_SOURCES          = 	\
 	exec.c 			\
 	translate-all.c 	\
 	host-utils.c            \
+	cutils.c                \
 	tcg/tcg.c               \
         tcg/tcg-dyngen.c        \
 	tcg/tcg-runtime.c       \
