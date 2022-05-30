@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 16222 2009-01-26 10:38:10Z vboxsync $ *
+ * $Id: VirtualBox.xidl 16228 2009-01-26 13:11:42Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -2859,7 +2859,7 @@
     <const name="ComputerSystem" value="2" />
     <const name="Processor" value="3" />
     <const name="Memory" value="4" />
-    <const name="IdeCController" value="5" />
+    <const name="IdeController" value="5" />
     <const name="ParallelScsiHba" value="6" />
     <const name="FcHba" value="7" />
     <const name="iScsiHba" value="8" />
