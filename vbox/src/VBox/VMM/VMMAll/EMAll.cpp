@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 14248 2008-11-17 11:56:22Z vboxsync $ */
+/* $Id: EMAll.cpp 14249 2008-11-17 12:23:38Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2535,6 +2535,8 @@ static const char *emMSRtoString(uint32_t uMsr)
         return "MSR_K8_GS_BASE";
     case MSR_K8_KERNEL_GS_BASE:
         return "MSR_K8_KERNEL_GS_BASE";
+    case MSR_K8_TSC_AUX:
+        return "Unsupported MSR_K8_TSC_AUX";
     case MSR_IA32_BIOS_SIGN_ID:
         return "Unsupported MSR_IA32_BIOS_SIGN_ID";
     case MSR_IA32_PLATFORM_ID:
