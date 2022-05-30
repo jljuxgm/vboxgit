@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.h 12843 2008-10-01 01:00:26Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.h 12849 2008-10-01 03:59:27Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -210,6 +210,11 @@ protected slots:
      */
     void setRefresh(int iRefresh);
 
+    /**
+     * Change the focus to the pattern combo box.
+     */
+    void actFocusToPat();
+
 protected:
 
     /** The current selection pattern. */
@@ -223,6 +228,9 @@ protected:
     QTimer             *m_pTimer;
     /** The tree view widget. */
     VBoxDbgStatsView   *m_pView;
+
+    /** Move to pattern field action. */
+    QAction *m_pFocusToPat;
 };
 
 
