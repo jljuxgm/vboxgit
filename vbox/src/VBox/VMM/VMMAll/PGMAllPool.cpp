@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17127 2009-02-25 13:15:26Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17128 2009-02-25 13:16:16Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4362,7 +4362,7 @@ int pgmPoolFlushPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
         AssertMsg(   pPage->enmKind == PGMPOOLKIND_64BIT_PML4
                   || pPage->enmKind == PGMPOOLKIND_PAE_PDPT
                   || pPage->enmKind == PGMPOOLKIND_PAE_PDPT_FOR_32BIT
-                  || pPage->enmKind == PGMPOOLKIND_32BIT_PD,
+                  || pPage->enmKind == PGMPOOLKIND_32BIT_PD
                   || pPage->enmKind == PGMPOOLKIND_PAE_PD0_FOR_32BIT_PD
                   || pPage->enmKind == PGMPOOLKIND_PAE_PD1_FOR_32BIT_PD
                   || pPage->enmKind == PGMPOOLKIND_PAE_PD2_FOR_32BIT_PD
