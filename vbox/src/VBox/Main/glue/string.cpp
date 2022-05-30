@@ -1,4 +1,4 @@
-/* $Id: string.cpp 17054 2009-02-24 11:40:53Z vboxsync $ */
+/* $Id: string.cpp 17634 2009-03-10 15:01:07Z vboxsync $ */
 
 /** @file
  *
@@ -37,7 +37,23 @@ const Utf8Str Utf8Str::Null; /* default ctor is OK */
 
 const size_t Utf8Str::npos = (size_t)-1;
 
-Utf8Str Utf8Str::substr(size_t pos /*= 0*/, size_t n /*= npos*/) const
+size_t Utf8Str::find(const char *pcszFind,
+                     size_t pos /*= 0*/)
+    const
+{
+    const char *pszThis, *p;
+
+    if (    ((pszThis = c_str()))
+         && (pos < length())
+         && ((p = strstr(pszThis + pos, pcszFind)))
+       )
+        return p - pszThis;
+
+    return npos;
+}
+
+Utf8Str Utf8Str::substr(size_t pos /*= 0*/, size_t n /*= npos*/)
+    const
 {
     Utf8Str ret;
 

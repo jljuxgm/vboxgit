@@ -1,4 +1,4 @@
-/* $Id: string.h 17566 2009-03-09 11:22:42Z vboxsync $ */
+/* $Id: string.h 17634 2009-03-10 15:01:07Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -505,6 +505,12 @@ public:
     }
 
     static const size_t npos;
+
+    /**
+     * Looks for pcszFind in "this" starting at "pos" and returns its position,
+     * counting from the beginning of "this" at 0. Returns npos if not found.
+     */
+    size_t find(const char *pcszFind, size_t pos = 0) const;
 
     /**
      * Returns a substring of "this" as a new Utf8Str. Works exactly like

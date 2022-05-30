@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 17573 2009-03-09 13:02:45Z vboxsync $ */
+/* $Id: ApplianceImpl.h 17634 2009-03-10 15:01:07Z vboxsync $ */
 
 /** @file
  *
@@ -182,6 +182,8 @@ public:
 private:
     struct Data;
     Data *m;
+
+    friend class Machine;
 };
 
 #endif // ____H_APPLIANCEIMPL
