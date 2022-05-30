@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 16931 2009-02-18 20:32:10Z vboxsync $ */
+/* $Id: ApplianceImpl.h 16932 2009-02-18 20:42:18Z vboxsync $ */
 
 /** @file
  *
@@ -82,7 +82,7 @@ public:
     /* private instance data */
 private:
     /** weak VirtualBox parent */
-    VirtualBox*         mVirtualBox;
+    const ComObjPtr <VirtualBox, ComWeakRef> mVirtualBox;
 
     struct Task; /* Worker thread for import */
 
