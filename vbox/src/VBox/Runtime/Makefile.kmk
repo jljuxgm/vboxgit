@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13325 2008-10-16 09:59:53Z vboxsync $
+# $Id: Makefile.kmk 13330 2008-10-16 11:18:38Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -970,7 +970,6 @@ RuntimeR0Drv_SOURCES    = \
 
 RuntimeR0Drv_SOURCES.linux = \
 	common/alloc/heapsimple.cpp \
-	common/string/memchr.cpp \
 	common/string/strpbrk.cpp \
 	common/string/strlen.cpp \
 	common/string/strncmp.cpp \
