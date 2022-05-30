@@ -1,4 +1,4 @@
-/* $Id: tstCritSect.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstCritSect.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - Critical Sections.
  */
@@ -41,7 +41,7 @@
 #include <iprt/log.h>
 #include <iprt/semaphore.h>
 #include <iprt/asm.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/time.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

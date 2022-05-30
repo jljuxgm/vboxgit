@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 13908 2008-11-06 11:53:47Z vboxsync $ */
+/* $Id: tstCollector.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 
 /** @file
  *
@@ -40,11 +40,13 @@
 #include "../darwin/PerformanceDarwin.cpp"
 #endif
 
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/stream.h>
 #include <iprt/env.h>
 #include <iprt/err.h>
 #include <iprt/process.h>
+#include <iprt/thread.h>
+#include <iprt/time.h>
 
 #define RUN_TIME_MS        1000
 

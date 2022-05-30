@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 12138 2008-09-05 15:35:34Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -23,12 +23,15 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <VBox/dis.h>
-#include <iprt/stream.h>
+#include <VBox/err.h>
+#include <iprt/alloc.h>
+#include <iprt/assert.h>
+#include <iprt/initterm.h>
 #include <iprt/getopt.h>
 #include <iprt/file.h>
+#include <iprt/path.h>
+#include <iprt/stream.h>
 #include <iprt/string.h>
-#include <iprt/runtime.h>
-#include <VBox/err.h>
 #include <iprt/ctype.h>
 
 

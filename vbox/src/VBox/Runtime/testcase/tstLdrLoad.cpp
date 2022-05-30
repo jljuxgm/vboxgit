@@ -1,4 +1,4 @@
-/* $Id: tstLdrLoad.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstLdrLoad.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - Native Loader.
  */
@@ -31,7 +31,7 @@
 
 #include <iprt/ldr.h>
 #include <iprt/stream.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/err.h>
 
 int main(int argc, const char * const *argv)

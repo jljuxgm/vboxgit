@@ -1,4 +1,4 @@
-/* $Id: tstRTFsQueries.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: tstRTFsQueries.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTFs Queries..
  */
@@ -32,7 +32,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/path.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/stream.h>
 #include <iprt/err.h>
 

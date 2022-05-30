@@ -1,4 +1,4 @@
-/* $Id: server.cpp 13908 2008-11-06 11:53:47Z vboxsync $ */
+/* $Id: server.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -46,7 +46,7 @@
 #include <VBox/param.h>
 #include <VBox/version.h>
 
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/path.h>
 #include <iprt/critsect.h>
 #include <iprt/timer.h>

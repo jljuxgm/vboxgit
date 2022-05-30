@@ -1,4 +1,4 @@
-/* $Id: tstDir-3.cpp 14369 2008-11-19 18:19:32Z vboxsync $ */
+/* $Id: tstDir-3.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - Directory listing & filtering (no parameters needed).
  */
@@ -28,11 +28,12 @@
  * additional information or have any questions.
  */
 
-#include <iprt/path.h>
 #include <iprt/dir.h>
+#include <iprt/path.h>
 #include <iprt/stream.h>
 #include <iprt/err.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
+#include <iprt/string.h>
 
 static int tstDirOpenFiltered(const char *pszFilter, unsigned *pcFilesMatch, int *pRc)
 {

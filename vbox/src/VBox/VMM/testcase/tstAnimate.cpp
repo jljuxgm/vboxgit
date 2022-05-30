@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 13824 2008-11-05 01:11:24Z vboxsync $ */
+/* $Id: tstAnimate.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -38,7 +38,7 @@
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/alloc.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/semaphore.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>

@@ -1,4 +1,4 @@
-/* $Id: tstPrfRT.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstPrfRT.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * IPRT testcase - profile some of the important functions.
  */
@@ -31,7 +31,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/time.h>
 #include <iprt/log.h>
 #include <iprt/stream.h>

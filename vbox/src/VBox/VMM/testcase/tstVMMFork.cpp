@@ -1,4 +1,4 @@
-/* $Id: tstVMMFork.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: tstVMMFork.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * VMM Fork Test.
  */
@@ -28,7 +28,7 @@
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/stream.h>
 
 #include <errno.h>

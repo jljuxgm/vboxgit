@@ -1,4 +1,4 @@
-/* $Id: tstLdr.cpp 14298 2008-11-18 12:47:26Z vboxsync $ */
+/* $Id: tstLdr.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*.
  */
@@ -36,7 +36,7 @@
 #include <iprt/alloc.h>
 #include <iprt/stream.h>
 #include <iprt/assert.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/err.h>
 #include <iprt/string.h>
 

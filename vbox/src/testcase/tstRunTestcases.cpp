@@ -1,4 +1,4 @@
-/* $Id: tstRunTestcases.cpp 14384 2008-11-20 08:37:14Z vboxsync $ */
+/* $Id: tstRunTestcases.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * tstRunTescases - Driver program for running VBox testcase (tst* testcase/tst*).
  */
@@ -23,10 +23,11 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/dir.h>
-#include <iprt/process.h>
+#include <iprt/param.h>
 #include <iprt/path.h>
+#include <iprt/process.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>
 #include <iprt/thread.h>

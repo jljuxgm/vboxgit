@@ -1,4 +1,4 @@
-/* $Id: tstMove.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstMove.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * IPRT - RTFileMove & RTDirMove test program.
  */
@@ -35,7 +35,7 @@
 #include <iprt/path.h>
 #include <iprt/dir.h>
 #include <iprt/err.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/stream.h>
 
 

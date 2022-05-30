@@ -1,4 +1,4 @@
-/* $Id: tstVMMR0CallHost-1.cpp 14672 2008-11-27 00:19:22Z vboxsync $ */
+/* $Id: tstVMMR0CallHost-1.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
@@ -22,7 +22,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>
 #include <iprt/alloca.h>

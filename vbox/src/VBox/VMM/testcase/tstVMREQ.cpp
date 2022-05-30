@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -29,9 +29,10 @@
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/semaphore.h>
 #include <iprt/stream.h>
+#include <iprt/string.h>
 #include <iprt/thread.h>
 #include <iprt/time.h>
 

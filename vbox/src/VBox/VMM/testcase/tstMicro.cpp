@@ -1,4 +1,4 @@
-/* $Id: tstMicro.cpp 13827 2008-11-05 01:31:18Z vboxsync $ */
+/* $Id: tstMicro.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -34,7 +34,7 @@
 
 #include <VBox/log.h>
 #include <iprt/assert.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
 #include <iprt/semaphore.h>

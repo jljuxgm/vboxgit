@@ -1,4 +1,4 @@
-/* $Id: tstFileLock.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: tstFileLock.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - File Locks.
  */
@@ -36,7 +36,7 @@
 #include <iprt/stream.h>
 #include <iprt/err.h>
 #include <iprt/thread.h>  /* for RTThreadSleep() */
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/string.h>
 
 #include <stdio.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 13838 2008-11-05 03:16:55Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -48,12 +48,13 @@ using namespace com;
 #ifdef VBOX_WITH_HGCM
 # include <VBox/shflsvc.h>
 #endif
+#include <iprt/alloc.h>
 #include <iprt/alloca.h>
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
 #include <iprt/file.h>
 #include <iprt/path.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/semaphore.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>

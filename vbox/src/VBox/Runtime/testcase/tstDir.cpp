@@ -1,4 +1,4 @@
-/* $Id: tstDir.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: tstDir.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - Directory listing.
  */
@@ -29,7 +29,7 @@
  */
 
 #include <iprt/dir.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/stream.h>
 #include <iprt/err.h>
 //#include <iprt/

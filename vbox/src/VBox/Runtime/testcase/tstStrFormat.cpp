@@ -1,4 +1,4 @@
-/* $Id: tstStrFormat.cpp 11381 2008-08-13 10:14:09Z vboxsync $ */
+/* $Id: tstStrFormat.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - String formatting.
  */
@@ -32,7 +32,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/string.h>
-#include <iprt/runtime.h>
+#include <iprt/initterm.h>
 #include <iprt/uuid.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 14732 2008-11-27 18:44:11Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -35,15 +35,18 @@
 
 #include <VBox/com/VirtualBox.h>
 
-#include <iprt/runtime.h>
-#include <iprt/stream.h>
-#include <iprt/string.h>
-#include <iprt/uuid.h>
-#include <VBox/err.h>
-
 #include <VBox/VBoxHDD.h>
 #include <VBox/VBoxHDD-new.h>
 #include <VBox/sup.h>
+#include <VBox/err.h>
+#include <VBox/log.h>
+
+#include <iprt/file.h>
+#include <iprt/initterm.h>
+#include <iprt/stream.h>
+#include <iprt/string.h>
+#include <iprt/uuid.h>
+
 
 #include "VBoxManage.h"
 
