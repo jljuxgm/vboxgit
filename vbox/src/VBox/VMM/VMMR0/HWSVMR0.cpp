@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 12702 2008-09-24 16:56:02Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 12708 2008-09-25 09:14:29Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2032,6 +2032,7 @@ end:
     {
         /* On the next entry we'll sync everything. */
         /** @todo we can do better than this */
+        /* Not in the VINF_PGM_CHANGE_MODE though! */
         pVM->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_ALL;
     }
 
