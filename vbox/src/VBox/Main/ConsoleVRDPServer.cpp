@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 15145 2008-12-09 09:56:02Z vboxsync $ */
 
 /** @file
  *
@@ -418,10 +418,16 @@ static void mousePointerGenerateANDMask (uint8_t *pu8DstAndMask, int cbDstAndMas
     }
 }
 
-STDMETHODIMP VRDPConsoleCallback::OnMousePointerShapeChange (BOOL visible, BOOL alpha, ULONG xHot, ULONG yHot,
-                                                             ULONG width, ULONG height, BYTE *shape)
+STDMETHODIMP VRDPConsoleCallback::OnMousePointerShapeChange (
+    BOOL visible,
+    BOOL alpha,
+    ULONG xHot,
+    ULONG yHot,
+    ULONG width,
+    ULONG height,
+    BYTE *shape)
 {
-    LogSunlover(("VRDPConsoleCallback::OnMousePointerShapeChange: %d, %d, %dx%d, @%d,%d\n", visible, alpha, width, height, xHot, yHot));
+    LogSunlover(("VRDPConsoleCallback::OnMousePointerShapeChange: %d, %d, %lux%lu, @%lu,%lu\n", visible, alpha, width, height, xHot, yHot));
 
     if (m_server)
     {
