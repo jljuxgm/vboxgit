@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 14332 2008-11-18 22:11:06Z vboxsync $ */
+/* $Id: SUPLib.cpp 14373 2008-11-19 19:12:26Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -397,7 +397,7 @@ static int supInitFake(PSUPDRVSESSION *ppSession)
         { "SUPR0MemGetPhys",                        0xefef0009 },
         { "SUPR0MemFree",                           0xefef000a },
         { "SUPR0Printf",                            0xefef000b },
-        { "SUPR0ExecuteCallback",                   0xefef000c },
+        { "SUPR0GetPagingMode",                     0xefef000c },
         { "RTMemAlloc",                             0xefef000d },
         { "RTMemAllocZ",                            0xefef000e },
         { "RTMemFree",                              0xefef000f },
