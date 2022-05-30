@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 11847 2008-08-29 19:30:54Z vboxsync $ */
+/* $Id: HostImpl.cpp 11849 2008-08-29 21:32:44Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -530,7 +530,7 @@ static bool IsTAPDevice(const char *guid)
  */
 STDMETHODIMP Host::COMGETTER(NetworkInterfaces) (IHostNetworkInterfaceCollection **networkInterfaces)
 {
-#if defined(RT_OS_WINDOWS) || defined(RT_OS_DARWIN) || (defined(RT_OS_SOLARIS) && defined(VBOX_WITH_NETFLT)) /*|| defined(RT_OS_OS2)*/
+#if defined(RT_OS_WINDOWS) ||  defined(VBOX_WITH_NETFLT) /*|| defined(RT_OS_OS2)*/
     if (!networkInterfaces)
         return E_POINTER;
     AutoWriteLock alock (this);

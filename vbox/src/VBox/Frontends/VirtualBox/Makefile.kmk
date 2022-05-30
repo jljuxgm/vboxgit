@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11725 2008-08-27 22:21:47Z vboxsync $
+# $Id: Makefile.kmk 11849 2008-08-29 21:32:44Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt3 GUI.
 #
@@ -401,6 +401,9 @@ ifdef VBOX_OSE
 endif
 ifdef VBOX_WITH_DEBUGGER_GUI
  VirtualBox_DEFS         += VBOX_WITH_DEBUGGER_GUI_MENU
+endif
+ifdef VBOX_WITH_NETFLT
+ VirtualBox_DEFS         += VBOX_WITH_NETFLT
 endif
 
 VirtualBox_INCS           = \
