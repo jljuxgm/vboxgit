@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 16217 2009-01-26 10:03:46Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 16527 2009-02-05 13:44:51Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -967,7 +967,7 @@ static DECLCALLBACK(int) drvHostSerialMonitorThread(PPDMDRVINS pDrvIns, PPDMTHRE
         /*
          * Wait for status line change.
          */
-        rc = ioctl(pThis->DeviceFile, TIOCMIWAIT, &uStatusLinesToCheck);
+        rc = ioctl(pThis->DeviceFile, TIOCMIWAIT, uStatusLinesToCheck);
         if (pThread->enmState != PDMTHREADSTATE_RUNNING)
             break;
         if (rc < 0)
