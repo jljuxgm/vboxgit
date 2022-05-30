@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13198 2008-10-13 09:05:42Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13199 2008-10-13 09:08:50Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -832,7 +832,10 @@ static void vmxR0PrefetchPAEPdptrs(PVM pVM, PCPUMCTX pCtx)
         for (unsigned i=0;i<4;i++)
         {
             Pdpe = PGMGstGetPaePDPtr(pVM, i);
-            int rc = VMXWriteVMCS64(VMX_VMCS_GUEST_PDPTR0_FULL + i*2, Pdpe.u);
+            int rc = VMXWriteVMCS(VMX_VMCS_GUEST_PDPTR0_FULL + i*2, Pdpe.u);
+#if HC_ARCH_BITS == 32
+            rc |=   VMXWriteVMCS(VMX_VMCS_GUEST_PDPTR0_FULL + i*2 + 1, Pdpe.u >> 32ULL);
+#endif
             AssertRC(rc);
         }
     }
