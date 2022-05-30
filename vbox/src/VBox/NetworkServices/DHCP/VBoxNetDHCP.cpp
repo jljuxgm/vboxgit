@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 17864 2009-03-13 23:04:21Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 17889 2009-03-15 17:26:30Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -1005,7 +1005,9 @@ int VBoxNetDhcp::run(void)
                 m_cbCurMsg = 0;
             }
             else if (VBoxNetArpHandleIt(m_pSession, m_hIf, m_pIfBuf, &m_MacAddress, m_Ipv4Address))
-                /* nothing */;
+            {
+                /* nothing */
+            }
 
             /* Advance to the next frame. */
             INTNETRingSkipFrame(m_pIfBuf, pRingBuf);
