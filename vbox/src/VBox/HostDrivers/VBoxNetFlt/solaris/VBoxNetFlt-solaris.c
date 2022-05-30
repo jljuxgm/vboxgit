@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 11982 2008-09-02 13:09:44Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 12003 2008-09-02 18:11:12Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -395,19 +395,6 @@ int _fini(void)
 {
     int rc;
     LogFlow((DEVICE_NAME ":_fini\n"));
-
-#if 0
-    /*
-     * First check if Detach has been called and thus unloaded the correct way.
-     * This fixes the boot-up auto-unload problem where Solaris silently unloads
-     * us without calling detach which would wrongly succeed.
-     */
-    if (g_VBoxNetFltSolarisMtx == NIL_RTSEMFASTMUTEX)
-    {
-        LogRel((DEVICE_NAME ":_fini - cannot unload now!\n"));
-        return EBUSY;
-    }
-#endif
 
     /*
      * Undo the work done during start (in reverse order).
