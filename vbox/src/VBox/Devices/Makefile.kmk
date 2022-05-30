@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16341 2009-01-28 21:12:18Z vboxsync $
+# $Id: Makefile.kmk 16344 2009-01-28 21:23:06Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -392,7 +392,9 @@ Graphics/DevVGA.cpp_DEPS = $(PATH_VgaBiosBin)/vbetables.h
 #
 VBoxDDGC_TEMPLATE       = VBOXGC
 VBoxDDGC_SYSSUFF        = .gc
-VBoxDDGC_DEFS.darwin.x86= VBOX_WITH_2X_4GB_ADDR_SPACE
+ifeq ($(KBUILD_TARGET_ARCH),x86)
+ VBoxDDGC_DEFS.darwin   = VBOX_WITH_2X_4GB_ADDR_SPACE
+endif
 VBoxDDGC_DEFS           =
 VBoxDDGC_INCS          := \
 	$(PATH_SUB_CURRENT)
