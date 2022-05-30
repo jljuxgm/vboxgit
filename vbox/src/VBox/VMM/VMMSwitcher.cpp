@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 14705 2008-11-27 13:55:13Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 14716 2008-11-27 15:51:16Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -189,7 +189,7 @@ int vmmR3SwitcherInit(PVM pVM)
                     pVM->vmm.s.pvCoreCodeR3, pVM->vmm.s.pvCoreCodeR0, pVM->vmm.s.pvCoreCodeRC, pVM->vmm.s.HCPhysCoreCode, pVM->vmm.s.cbCoreCode));
 
             /*
-             * Finally, PGM probably have selected a switcher already but we need
+             * Finally, PGM probably has selected a switcher already but we need
              * to get the routine addresses, so we'll reselect it.
              * This may legally fail so, we're ignoring the rc.
              */

@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 14301 2008-11-18 13:31:42Z vboxsync $ */
+/* $Id: PGMMap.cpp 14716 2008-11-27 15:51:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -582,7 +582,7 @@ static int pgmR3MapIntermediateCheckOne(PVM pVM, uintptr_t uAddress, unsigned cP
 
     /*
      * Check that the ranges are available.
-     * (This codes doesn't have to be fast.)
+     * (This code doesn't have to be fast.)
      */
     while (cPages > 0)
     {
