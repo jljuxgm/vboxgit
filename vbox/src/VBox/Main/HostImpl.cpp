@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 11846 2008-08-29 19:29:57Z vboxsync $ */
+/* $Id: HostImpl.cpp 11847 2008-08-29 19:30:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -157,7 +157,7 @@ HRESULT Host::init (VirtualBox *aParent)
     mUSBProxyService = new USBProxyServiceLinux (this);
 # elif defined (RT_OS_OS2)
     mUSBProxyService = new USBProxyServiceOs2 (this);
-# elif defined (RT_OS_SOLARIS)
+# elif defined (RT_OS_SOLARIS) && 0
     mUSBProxyService = new USBProxyServiceSolaris (this);
 # elif defined (RT_OS_WINDOWS)
     mUSBProxyService = new USBProxyServiceWindows (this);
