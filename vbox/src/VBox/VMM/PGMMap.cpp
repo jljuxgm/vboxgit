@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 17589 2009-03-09 16:07:13Z vboxsync $ */
+/* $Id: PGMMap.cpp 17591 2009-03-09 16:58:49Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1155,6 +1155,10 @@ int pgmR3SyncPTResolveConflictPAE(PVM pVM, PPGMMAPPING pMapping, RTGCPTR GCPtrOl
     {
         unsigned  iPDSrc;
         PX86PDPAE pPDSrc = pgmGstGetPaePDPtr(&pVM->pgm.s, (RTGCPTR32)iPDPTE << X86_PDPT_SHIFT, &iPDSrc, NULL);
+
+        /* It would be annoying to have to deal with a PD that isn't (yet) present in the guest PDPT. */ 
+        if (!pPDSrc) 
+            continue; 
 
         /*
          * Scan for free page directory entries.
