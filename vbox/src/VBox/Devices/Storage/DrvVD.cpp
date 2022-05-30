@@ -1,8 +1,6 @@
-/** $Id: DrvVD.cpp 12474 2008-09-15 19:02:54Z vboxsync $ */
+/* $Id: DrvVD.cpp 12637 2008-09-22 13:13:17Z vboxsync $ */
 /** @file
- *
- * VBox storage devices:
- * Media implementation for VBox disk container
+ * DrvVD - Generic VBox disk media driver.
  */
 
 /*
@@ -884,7 +882,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
 
         /*
          * We know definitly if async I/O is supported now.
-         * Create cache if it is supported. 
+         * Create cache if it is supported.
          */
         if (pThis->fAsyncIOSupported)
         {
