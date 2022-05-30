@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13170 2008-10-10 12:03:30Z vboxsync $
+# $Id: Makefile.kmk 13172 2008-10-10 12:30:49Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -331,6 +331,7 @@ BLDDIRS += $(foreach d,\
 	archive \
 	archive/components \
 	archive/nls \
+	$(if $(VBOX_WITH_QT4_SUN),archive/accessible,) \
 	archive/additions \
 	install\
 ,$(VBOX_LNX_INST_OUT_DIR)/$(d)/)
