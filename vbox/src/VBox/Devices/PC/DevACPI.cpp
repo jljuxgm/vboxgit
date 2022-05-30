@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 13079 2008-10-08 13:40:19Z vboxsync $ */
+/* $Id: DevACPI.cpp 14464 2008-11-21 15:03:53Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -141,10 +141,6 @@ enum
 
 #define BAT_TECH_PRIMARY                        1
 #define BAT_TECH_SECONDARY                      2
-
-#define BAT_STATUS_DISCHARGING_MASK             RT_BIT(0)
-#define BAT_STATUS_CHARGING_MASK                RT_BIT(1)
-#define BAT_STATUS_CRITICAL_MASK                RT_BIT(2)
 
 #define STA_DEVICE_PRESENT_MASK                 RT_BIT(0)
 #define STA_DEVICE_ENABLED_MASK                 RT_BIT(1)
