@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 16860 2009-02-17 16:24:38Z vboxsync $ */
+/* $Id: VMM.cpp 16862 2009-02-17 16:39:13Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -516,6 +516,7 @@ VMMR3DECL(int) VMMR3InitRC(PVM pVM)
         CPUMPushHyper(pVM, 5 * sizeof(RTRCPTR));        /* trampoline param: stacksize.  */
         CPUMPushHyper(pVM, RCPtrEP);                    /* Call EIP. */
         CPUMSetHyperEIP(pVM, pVM->vmm.s.pfnCallTrampolineRC);
+        Assert(CPUMGetHyperCR3(pVM) && CPUMGetHyperCR3(pVM) == PGMGetHyperCR3(pVM));
 
         for (;;)
         {
