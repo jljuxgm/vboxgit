@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 11851 2008-08-29 22:27:24Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 11870 2008-08-30 13:56:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1225,7 +1225,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
 # elif defined(RT_OS_SOLARIS) 
                     /* The name is on the form BSD format 'ifX'; use as-is. */
-                    const char *pszTrunk = szTrunk;
+                    const char *pszTrunk = pszHifName;
 # else 
 #  error "PORTME (VBOX_WITH_NETFLT)"
 # endif
