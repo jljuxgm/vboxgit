@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 15917 2009-01-13 14:45:18Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 15923 2009-01-13 18:20:34Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -199,6 +199,8 @@ typedef struct VBOXNETFLTINS
             PACKET_QUEUE_WORKER PacketQueueWorker;
             /** The MAC address of the interface. Caching MAC for performance reasons. */
             RTMAC Mac;
+            /** mutex used to synchronize ADAPT init/deinit */
+            RTSEMMUTEX hAdaptMutex;
             /** @}  */
 # else
 #  error "PORTME"
