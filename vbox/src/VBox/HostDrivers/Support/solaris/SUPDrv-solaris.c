@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 11966 2008-09-02 10:00:59Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 12241 2008-09-08 18:01:24Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -78,7 +78,7 @@ static int VBoxDrvSolarisOpen(dev_t *pDev, int fFlag, int fType, cred_t *pCred);
 static int VBoxDrvSolarisClose(dev_t Dev, int fFlag, int fType, cred_t *pCred);
 static int VBoxDrvSolarisRead(dev_t Dev, struct uio *pUio, cred_t *pCred);
 static int VBoxDrvSolarisWrite(dev_t Dev, struct uio *pUio, cred_t *pCred);
-static int VBoxDrvSolarisIOCtl (dev_t Dev, int Cmd, intptr_t pArgs, int mode, cred_t *pCred, int *pVal);
+static int VBoxDrvSolarisIOCtl(dev_t Dev, int Cmd, intptr_t pArgs, int mode, cred_t *pCred, int *pVal);
 
 static int VBoxDrvSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t Cmd);
 static int VBoxDrvSolarisDetach(dev_info_t *pDip, ddi_detach_cmd_t Cmd);
