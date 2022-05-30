@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 14829 2008-11-30 08:16:10Z vboxsync $ */
+/* $Id: DevVGA.h 15120 2008-12-08 16:53:53Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -102,7 +102,7 @@
     uint16_t vbe_regs[VBE_DISPI_INDEX_NB];      \
     uint32_t vbe_start_addr;                    \
     uint32_t vbe_line_offset;                   \
-    uint32_t vbe_bank_mask;
+    uint32_t vbe_bank_max;
 
 #else
 
