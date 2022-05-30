@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 13722 2008-10-31 15:53:18Z vboxsync $ */
+/* $Id: MachineImpl.cpp 13723 2008-10-31 16:05:55Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -4984,7 +4984,7 @@ HRESULT Machine::loadHardware (const settings::Key &aNode)
             Key CPUCountNode = cpuNode.findKey ("CPUCount");
             if (!CPUCountNode.isNull())
             {
-                mHWData->mCPUCount = CPUCountNode.value <ULONG> ("CPUCount");
+                mHWData->mCPUCount = CPUCountNode.value <ULONG> ("count");
             }
         }
     }
@@ -6359,7 +6359,7 @@ HRESULT Machine::saveHardware (settings::Key &aNode)
 
         /* CPU count */
         Key CPUCountNode = cpuNode.createKey ("CPUCount");
-        CPUCountNode.setValue <ULONG> ("CPUCount", mHWData->mCPUCount);
+        CPUCountNode.setValue <ULONG> ("count", mHWData->mCPUCount);
     }
 
     /* memory (required) */
