@@ -1,4 +1,4 @@
-/* $Id: VBoxNetUDP.cpp 17374 2009-03-05 06:50:26Z vboxsync $ */
+/* $Id: VBoxNetUDP.cpp 17403 2009-03-05 14:49:41Z vboxsync $ */
 /** @file
  * VBoxNetUDP - UDP Library for IntNet.
  */
@@ -113,7 +113,7 @@ void *VBoxNetUDPMatch(PCINTNETBUF pBuf, unsigned uDstPort, PCRTMAC pDstMac, uint
 
     /* Valid IPv4 header? */
     size_t const offIpHdr = (uintptr_t)pIpHdr - (uintptr_t)pEthHdr;
-    if (!RTNetIPv4IsHdrValid(pIpHdr, cbFrame, cbFrame - offIpHdr))
+    if (!RTNetIPv4IsHdrValid(pIpHdr, cbFrame - offIpHdr, cbFrame - offIpHdr))
         return NULL;
 
     /*
