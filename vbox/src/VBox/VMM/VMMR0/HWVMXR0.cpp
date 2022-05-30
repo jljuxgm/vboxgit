@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15344 2008-12-12 00:13:56Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15358 2008-12-12 11:13:01Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3576,6 +3576,9 @@ VMMR0DECL(int) VMXR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
     }
 
     VMXActivateVMCS(pVCpu->hwaccm.s.vmx.pVMCSPhys);
+
+    /* Resync the whole guest state. (test) */
+    pVCpu->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_ALL;
     return rc;
 }
 
