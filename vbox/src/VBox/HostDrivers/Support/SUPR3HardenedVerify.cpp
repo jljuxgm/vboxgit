@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 17792 2009-03-13 09:26:28Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 17794 2009-03-13 09:36:06Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -128,22 +128,22 @@ static SUPINSTFILE const    g_aSupInstallFiles[] =
     {   kSupIFT_Dll,  kSupID_AppPrivArch,       true, "VBoxOGLhostcrutil" SUPLIB_DLL_SUFF },
     {   kSupIFT_Dll,  kSupID_AppPrivArch,       true, "VBoxOGLhosterrorspu" SUPLIB_DLL_SUFF },
     {   kSupIFT_Dll,  kSupID_AppPrivArch,       true, "VBoxOGLrenderspu" SUPLIB_DLL_SUFF },
-//#ifdef VBOX_WITH_MAIN
+
     {   kSupIFT_Exe,  kSupID_AppBin,            true, "VBoxManage" SUPLIB_EXE_SUFF },
-//#endif
+
+#ifdef VBOX_WITH_MAIN
     {   kSupIFT_Exe,  kSupID_AppBin,            false, "VBoxSVC" SUPLIB_EXE_SUFF },
     {   kSupIFT_Dll,  kSupID_SharedLib,         false, "VBoxSettings" SUPLIB_DLL_SUFF },
-#ifdef RT_OS_WINDOWS
-    /** @todo */
-#else
-#ifdef VBOX_WITH_MAIN
+ #ifdef RT_OS_WINDOWS
+    {   kSupIFT_Dll,  kSupID_AppPrivArchComp,   false, "VBoxC" SUPLIB_DLL_SUFF },
+ #else
     {   kSupIFT_Exe,  kSupID_AppPrivArch,       false, "VBoxXPCOMIPCD" SUPLIB_EXE_SUFF },
     {   kSupIFT_Dll,  kSupID_SharedLib,         false, "VBoxXPCOM" SUPLIB_DLL_SUFF },
     {   kSupIFT_Dll,  kSupID_AppPrivArchComp,   false, "VBoxXPCOMIPCC" SUPLIB_DLL_SUFF },
     {   kSupIFT_Dll,  kSupID_AppPrivArchComp,   false, "VBoxC" SUPLIB_DLL_SUFF },
     {   kSupIFT_Dll,  kSupID_AppPrivArchComp,   false, "VBoxSVCM" SUPLIB_DLL_SUFF },
     {   kSupIFT_Data, kSupID_AppPrivArchComp,   false, "VBoxXPCOMBase.xpt" },
-#endif
+ #endif
 #endif
 
 //#ifdef VBOX_WITH_VRDP
