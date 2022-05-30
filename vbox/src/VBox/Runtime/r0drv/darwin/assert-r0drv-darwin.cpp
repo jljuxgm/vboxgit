@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-darwin.cpp 13310 2008-10-15 21:30:44Z vboxsync $ */
+/* $Id: assert-r0drv-darwin.cpp 13312 2008-10-15 22:07:10Z vboxsync $ */
 /** @file
  * IPRT -  Assertion Workers, Ring-0 Drivers, Darwin.
  */
@@ -75,9 +75,9 @@ RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile
                 "Expression: %s\n"
                 "Location  : %s(%d) %s\n",
                 pszExpr, pszFile, uLine, pszFunction);
-    ASMAtomicUoWritePtr(&g_pszRTAssertFile, pszFile);
+    ASMAtomicUoWritePtr((void * volatile *)&g_pszRTAssertFile, (void *)pszFile);
+    ASMAtomicUoWritePtr((void * volatile *)&g_pszRTAssertFunction, (void *)pszFunction);
     ASMAtomicUoWriteU32(&g_u32RTAssertLine, uLine);
-    ASMAtomicUoWritePtr(&g_pszRTAssertFunction, pszFunction);
 }
 
 
