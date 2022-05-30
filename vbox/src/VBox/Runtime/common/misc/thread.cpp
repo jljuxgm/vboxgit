@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 15740 2008-12-24 10:16:41Z vboxsync $ */
+/* $Id: thread.cpp 15747 2008-12-24 12:36:19Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -1011,6 +1011,7 @@ static int rtThreadWait(RTTHREAD Thread, unsigned cMillies, int *prc, bool fAuto
             else
             {
                 rc = VERR_THREAD_NOT_WAITABLE;
+                AssertRC(rc);
             }
             rtThreadRelease(pThread);
         }
