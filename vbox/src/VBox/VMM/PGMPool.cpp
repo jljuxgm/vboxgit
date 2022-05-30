@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 17137 2009-02-25 16:18:51Z vboxsync $ */
+/* $Id: PGMPool.cpp 17140 2009-02-25 16:43:48Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -586,7 +586,7 @@ static DECLCALLBACK(int) pgmR3PoolAccessHandler(PVM pVM, RTGCPHYS GCPhys, void *
     }
     else if (    (   pPage->cModifications < 96 /* it's cheaper here. */
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
-                  || pgmPoolIsPageLocked(pVM, pPage)
+                  || pgmPoolIsPageLocked(&pVM->pgm.s, pPage)
 #else
                   || pPage->fCR3Mix
 #endif

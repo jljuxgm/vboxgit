@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 17139 2009-02-25 16:39:54Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 17140 2009-02-25 16:43:48Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -305,7 +305,7 @@ void pgmMapSetShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
                 AssertFatal(pPoolPagePd);
 
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
-                if (!pgmPoolIsPageLocked(pVM, pPoolPagePd))
+                if (!pgmPoolIsPageLocked(&pVM->pgm.s, pPoolPagePd))
                 {
                     /* Mark the page as locked; disallow flushing. */
                     pgmPoolLockPage(pVM->pgm.s.CTX_SUFF(pPool), pPoolPagePd);
@@ -419,7 +419,7 @@ void pgmMapClearShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAPPING pMap, 
                 PPGMPOOLPAGE pPoolPagePd = pgmPoolGetPageByHCPhys(pVM, pShwPdpt->a[iPD].u & X86_PDPE_PG_MASK);
                 AssertFatal(pPoolPagePd);
 
-                if (pgmPoolIsPageLocked(pVM, pPoolPagePd))
+                if (pgmPoolIsPageLocked(&pVM->pgm.s, pPoolPagePd))
                 {
                     /* Mark the page as unlocked; allow flushing again. */
                     pgmPoolUnlockPage(pVM->pgm.s.CTX_SUFF(pPool), pPoolPagePd);
