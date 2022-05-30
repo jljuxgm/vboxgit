@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 17186 2009-02-27 00:57:39Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 17306 2009-03-03 18:23:42Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -261,11 +261,6 @@ typedef struct VBOXNETFLTGLOBALS
     bool fIDCOpen;
     /** The SUPDRV IDC handle (opaque struct). */
     SUPDRVIDCHANDLE SupDrvIDC;
-
-#ifdef VBOXNETFLT_STATIC_CONFIG
-    /** Something we can block on while waiting for an instance to be unlinked. */
-    RTSEMEVENT hBlockEvent;
-#endif
 } VBOXNETFLTGLOBALS;
 
 
