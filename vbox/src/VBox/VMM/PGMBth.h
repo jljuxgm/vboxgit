@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 16799 2009-02-16 16:28:24Z vboxsync $ */
+/* $Id: PGMBth.h 16864 2009-02-17 16:43:51Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -186,6 +186,9 @@ PGM_BTH_DECL(int, Enter)(PVM pVM, RTGCPHYS GCPhysCR3)
     pVM->pgm.s.pShwRootR0    = (R0PTRTYPE(void *))PGMPOOL_PAGE_2_PTR(pVM, pVM->pgm.s.pShwPageCR3R3);
 #  endif
     pVM->pgm.s.HCPhysShwCR3  = pVM->pgm.s.pShwPageCR3R3->Core.Key;
+
+    /* Set the current hypervisor CR3. */
+    CPUMSetHyperCR3(pVM, PGMGetHyperCR3(pVM));
 
     /* Apply all hypervisor mappings to the new CR3. */
     return PGMMapActivateAll(pVM);
