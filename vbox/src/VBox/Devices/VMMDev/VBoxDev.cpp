@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 12278 2008-09-09 09:16:01Z vboxsync $ */
+/* $Id: VBoxDev.cpp 12409 2008-09-11 16:58:17Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2378,6 +2378,9 @@ static DECLCALLBACK(void) vmmdevReset(PPDMDEVINS pDevIns)
 
     /* disabled statistics updating */
     pThis->u32LastStatIntervalSize = 0;
+
+    /* Clear the "HGCM event enabled" flag so the event can be automatically reenabled.  */
+    pThis->u32HGCMEnabled = 0;
 
     /*
      * Clear the event variables.
