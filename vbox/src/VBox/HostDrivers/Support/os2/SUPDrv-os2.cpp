@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 13908 2008-11-06 11:53:47Z vboxsync $ */
+/* $Id: SUPDrv-os2.cpp 13998 2008-11-10 12:08:56Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -377,7 +377,7 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
 
 bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
 {
-	NOREF(pDevExt);
+    NOREF(pDevExt);
     return false;
 }
 
