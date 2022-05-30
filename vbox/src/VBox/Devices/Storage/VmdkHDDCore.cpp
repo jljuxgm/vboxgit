@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 12892 2008-10-02 07:22:55Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 12928 2008-10-02 11:36:31Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -5069,7 +5069,7 @@ static int vmdkAsyncRead(void *pvBackendData, uint64_t uOffset, size_t cbRead,
         }
     }
 
-    AssertMsg((cSeg >= 0) && (cbRead == 0), ("No segment left but there is still data to read\n"));
+    AssertMsg(cbRead == 0, ("No segment left but there is still data to read\n"));
 
     if (cTasksToSubmit == 0)
     {
@@ -5205,7 +5205,7 @@ static int vmdkAsyncWrite(void *pvBackendData, uint64_t uOffset, size_t cbWrite,
         }
     }
 
-    AssertMsg((cSeg >= 0) && (cbWrite == 0), ("No segment left but there is still data to read\n"));
+    AssertMsg(cbWrite == 0, ("No segment left but there is still data to read\n"));
 
     if (cTasksToSubmit == 0)
     {
