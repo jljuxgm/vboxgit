@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 11928 2008-09-01 15:35:24Z vboxsync $ */
+/* $Id: PATMSSM.cpp 11936 2008-09-01 16:07:56Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -557,6 +557,7 @@ DECLCALLBACK(int) patmr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
         pPatchRec->Core.Key          = patch.Core.Key;
         pPatchRec->CoreOffset.Key    = patch.CoreOffset.Key;
 
+        Log(("Restoring patch %VRv -> %VRv\n", pPatchRec->patch.pPrivInstrGC, pVM->patm.s.pPatchMemGC + pPatchRec->patch.pPatchBlockOffset));
         bool ret = RTAvloU32Insert(&pVM->patm.s.PatchLookupTreeHC->PatchTree, &pPatchRec->Core);
         Assert(ret);
         if (pPatchRec->patch.uState != PATCH_REFUSED)
