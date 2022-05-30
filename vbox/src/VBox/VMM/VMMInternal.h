@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 14176 2008-11-13 13:35:36Z vboxsync $ */
+/* $Id: VMMInternal.h 14680 2008-11-27 02:08:02Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -100,6 +100,8 @@ typedef struct VMMR0LOGGER
     uint32_t                    cbLogger;
     /** Flag indicating whether we've create the logger Ring-0 instance yet. */
     bool                        fCreated;
+    /** Flag indicating whether we've disabled flushing (world switch) or not. */
+    bool                        fFlushingDisabled;
 #if HC_ARCH_BITS == 32
     uint32_t                    u32Alignment;
 #endif
