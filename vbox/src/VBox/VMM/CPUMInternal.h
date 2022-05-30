@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 15417 2008-12-13 06:11:26Z vboxsync $ */
+/* $Id: CPUMInternal.h 15563 2008-12-16 09:25:08Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -188,8 +188,13 @@ typedef struct CPUMHOSTCTX
      * This member is not used by the hypervisor context. */
     CPUMSYSENTER    SysEnter;
 
+    /** MSRs
+     * @{ */
+    uint64_t        efer;
+    /** @} */
+
     /* padding to get 64byte aligned size */
-    uint8_t         auPadding[24+32];
+    uint8_t         auPadding[16+32];
 
 #elif HC_ARCH_BITS == 64 || defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
 

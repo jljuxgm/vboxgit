@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 15414 2008-12-13 04:33:30Z vboxsync $
+; $Id: CPUMInternal.mac 15563 2008-12-16 09:25:08Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -271,6 +271,7 @@ struc CPUMCPU
     .Host.SysEnter.cs    resq    1
     .Host.SysEnter.eip   resq    1
     .Host.SysEnter.esp   resq    1
+    .Host.efer           resq    1
 
 %else ; 64-bit
 
