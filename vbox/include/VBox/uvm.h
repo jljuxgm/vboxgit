@@ -1,4 +1,4 @@
-/* $Id: uvm.h 13751 2008-11-03 14:53:11Z vboxsync $ */
+/* $Id: uvm.h 13755 2008-11-03 15:49:06Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -41,6 +41,14 @@
 typedef struct UVMCPU
 {
     uint32_t     uFiller;
+    /** The VM internal data. */
+    struct
+    {
+#ifdef ___VMInternal_h
+        struct VMINTUSERPERVMCPU    s;
+#endif
+        uint8_t                     padding[768];
+    } vm;
 } UVMCPU;
 
 /**

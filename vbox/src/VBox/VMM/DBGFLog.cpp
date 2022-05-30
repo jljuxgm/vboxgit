@@ -1,4 +1,4 @@
-/* $Id: DBGFLog.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: DBGFLog.cpp 13755 2008-11-03 15:49:06Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Log Manager.
  */
@@ -52,7 +52,7 @@ VMMR3DECL(int) DBGFR3LogModifyGroups(PVM pVM, const char *pszGroupSettings)
     AssertReturn(VALID_PTR(pszGroupSettings), VERR_INVALID_POINTER);
 
     PVMREQ pReq;
-    int rc = VMR3ReqCall(pVM, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3LogModifyGroups, 2, pVM, pszGroupSettings);
+    int rc = VMR3ReqCall(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3LogModifyGroups, 2, pVM, pszGroupSettings);
     if (VBOX_SUCCESS(rc))
         rc = pReq->iStatus;
     VMR3ReqFree(pReq);
@@ -89,7 +89,7 @@ VMMR3DECL(int) DBGFR3LogModifyFlags(PVM pVM, const char *pszFlagSettings)
     AssertReturn(VALID_PTR(pszFlagSettings), VERR_INVALID_POINTER);
 
     PVMREQ pReq;
-    int rc = VMR3ReqCall(pVM, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3LogModifyFlags, 2, pVM, pszFlagSettings);
+    int rc = VMR3ReqCall(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3LogModifyFlags, 2, pVM, pszFlagSettings);
     if (VBOX_SUCCESS(rc))
         rc = pReq->iStatus;
     VMR3ReqFree(pReq);
@@ -126,7 +126,7 @@ VMMR3DECL(int) DBGFR3LogModifyDestinations(PVM pVM, const char *pszDestSettings)
     AssertReturn(VALID_PTR(pszDestSettings), VERR_INVALID_POINTER);
 
     PVMREQ pReq;
-    int rc = VMR3ReqCall(pVM, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3LogModifyDestinations, 2, pVM, pszDestSettings);
+    int rc = VMR3ReqCall(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3LogModifyDestinations, 2, pVM, pszDestSettings);
     if (VBOX_SUCCESS(rc))
         rc = pReq->iStatus;
     VMR3ReqFree(pReq);

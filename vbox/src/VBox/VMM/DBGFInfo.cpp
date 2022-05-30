@@ -1,4 +1,4 @@
-/* $Id: DBGFInfo.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: DBGFInfo.cpp 13755 2008-11-03 15:49:06Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Info.
  */
@@ -716,28 +716,28 @@ VMMR3DECL(int) DBGFR3Info(PVM pVM, const char *pszName, const char *pszArgs, PCD
         {
             case DBGFINFOTYPE_DEV:
                 if (Info.fFlags & DBGFINFO_FLAGS_RUN_ON_EMT)
-                    rc = VMR3ReqCallVoid(pVM, &pReq, RT_INDEFINITE_WAIT, (PFNRT)Info.u.Dev.pfnHandler, 3, Info.u.Dev.pDevIns, pHlp, pszArgs);
+                    rc = VMR3ReqCallVoid(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)Info.u.Dev.pfnHandler, 3, Info.u.Dev.pDevIns, pHlp, pszArgs);
                 else
                     Info.u.Dev.pfnHandler(Info.u.Dev.pDevIns, pHlp, pszArgs);
                 break;
 
             case DBGFINFOTYPE_DRV:
                 if (Info.fFlags & DBGFINFO_FLAGS_RUN_ON_EMT)
-                    rc = VMR3ReqCallVoid(pVM, &pReq, RT_INDEFINITE_WAIT, (PFNRT)Info.u.Drv.pfnHandler, 3, Info.u.Drv.pDrvIns, pHlp, pszArgs);
+                    rc = VMR3ReqCallVoid(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)Info.u.Drv.pfnHandler, 3, Info.u.Drv.pDrvIns, pHlp, pszArgs);
                 else
                     Info.u.Drv.pfnHandler(Info.u.Drv.pDrvIns, pHlp, pszArgs);
                 break;
 
             case DBGFINFOTYPE_INT:
                 if (Info.fFlags & DBGFINFO_FLAGS_RUN_ON_EMT)
-                    rc = VMR3ReqCallVoid(pVM, &pReq, RT_INDEFINITE_WAIT, (PFNRT)Info.u.Int.pfnHandler, 3, pVM, pHlp, pszArgs);
+                    rc = VMR3ReqCallVoid(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)Info.u.Int.pfnHandler, 3, pVM, pHlp, pszArgs);
                 else
                     Info.u.Int.pfnHandler(pVM, pHlp, pszArgs);
                 break;
 
             case DBGFINFOTYPE_EXT:
                 if (Info.fFlags & DBGFINFO_FLAGS_RUN_ON_EMT)
-                    rc = VMR3ReqCallVoid(pVM, &pReq, RT_INDEFINITE_WAIT, (PFNRT)Info.u.Ext.pfnHandler, 3, Info.u.Ext.pvUser, pHlp, pszArgs);
+                    rc = VMR3ReqCallVoid(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)Info.u.Ext.pfnHandler, 3, Info.u.Ext.pvUser, pHlp, pszArgs);
                 else
                     Info.u.Ext.pfnHandler(Info.u.Ext.pvUser, pHlp, pszArgs);
                 break;

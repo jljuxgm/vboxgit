@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 13543 2008-10-23 16:49:58Z vboxsync $ */
+/* $Id: PGMPool.cpp 13755 2008-11-03 15:49:06Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -545,7 +545,7 @@ static DECLCALLBACK(int) pgmR3PoolAccessHandler(PVM pVM, RTGCPHYS GCPhys, void *
         STAM_COUNTER_INC(&pPool->StatMonitorR3Async);
         if (!pPage->fReusedFlushPending)
         {
-            int rc = VMR3ReqCallEx(pPool->pVMR3, NULL, 0, VMREQFLAGS_NO_WAIT | VMREQFLAGS_VOID, (PFNRT)pgmR3PoolFlushReusedPage, 2, pPool, pPage);
+            int rc = VMR3ReqCallEx(pPool->pVMR3, VMREQDEST_ALL, NULL, 0, VMREQFLAGS_NO_WAIT | VMREQFLAGS_VOID, (PFNRT)pgmR3PoolFlushReusedPage, 2, pPool, pPage);
             AssertRCReturn(rc, rc);
             pPage->fReusedFlushPending = true;
             pPage->cModifications += 0x1000;

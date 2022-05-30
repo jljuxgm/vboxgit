@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 13456 2008-10-21 16:55:48Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 13755 2008-11-03 15:49:06Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -894,6 +894,7 @@ static const REMPARMDESC g_aArgsTRPMSetFaultAddress[] =
 static const REMPARMDESC g_aArgsVMR3ReqCall[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(VMREQDEST), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(PVMREQ *), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(unsigned), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(void *), NULL },
