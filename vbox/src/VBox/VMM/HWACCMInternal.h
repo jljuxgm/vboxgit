@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 14847 2008-12-01 10:26:31Z vboxsync $ */
+/* $Id: HWACCMInternal.h 14848 2008-12-01 10:33:42Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -173,6 +173,7 @@ typedef struct HWACCM
 {
     /** Set when we've initialized VMX or SVM. */
     bool                        fInitialized;
+
     /** Set when we're using VMX/SVN at that moment. */
     bool                        fActive;
 
@@ -190,7 +191,7 @@ typedef struct HWACCM
 
     /** Explicit alignment padding to make 32-bit gcc align u64RegisterMask
      *  naturally. */
-    bool                        padding[1];
+    bool                        padding[2];
 
     /** And mask for copying register contents. */
     uint64_t                    u64RegisterMask;
@@ -207,8 +208,6 @@ typedef struct HWACCM
 
     /* VT-x 64 bits vmlaunch handler */
     RTRCPTR                     pfnVMXGCStartVM64;
-
-    uint32_t                    Alignment0;
 #endif
 
     struct
