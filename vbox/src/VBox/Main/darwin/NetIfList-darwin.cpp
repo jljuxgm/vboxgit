@@ -1,4 +1,4 @@
-/* $Id: NetIfList-darwin.cpp 15442 2008-12-13 13:40:42Z vboxsync $ */
+/* $Id: NetIfList-darwin.cpp 15466 2008-12-14 14:31:23Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -67,7 +67,7 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
     {
         close(sock);
         Log(("NetIfList: getifaddrs() -> %d\n", rc));
-        return NULL;
+        return VERR_INTERNAL_ERROR;
     }
 
     PDARWINETHERNIC pEtherNICs = DarwinGetEthernetControllers();
@@ -146,5 +146,5 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
 
     freeifaddrs(IfAddrs);
     close(sock);
-    return pIfs;
+    return VINF_SUCCESS;
 }
