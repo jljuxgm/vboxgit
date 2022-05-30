@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 12454 2008-09-15 10:47:08Z vboxsync $ */
+/* $Id: tstCollector.cpp 12455 2008-09-15 10:49:19Z vboxsync $ */
 
 /** @file
  *
@@ -198,7 +198,7 @@ int main(int argc, char *argv[])
         RTPrintf("tstCollector: createMetricFactory() failed\n", rc);
         return 1;
     }
-#if 1
+#if 0
     uint64_t start;
 
     uint64_t hostUserStart, hostKernelStart, hostIdleStart;

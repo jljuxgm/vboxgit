@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 12454 2008-09-15 10:47:08Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 12455 2008-09-15 10:49:19Z vboxsync $ */
 
 /** @file
  *
@@ -472,7 +472,7 @@ void PerformanceCollector::samplerCallback()
     m.hal->preCollect(hints);
 
     /* Finally, collect the data */
-    std::for_each (toBeCollected.begin(), toBeCollected.end(),
+    std::for_each (m.baseMetrics.begin(), m.baseMetrics.end(),
                    std::mem_fun (&pm::BaseMetric::collect));
     Log4(("{%p} " LOG_FN_FMT ": LEAVE\n", this, __PRETTY_FUNCTION__));
 }
