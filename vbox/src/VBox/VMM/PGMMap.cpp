@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 17228 2009-03-02 09:43:50Z vboxsync $ */
+/* $Id: PGMMap.cpp 17489 2009-03-06 16:35:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -59,7 +59,7 @@ static void pgmR3MapIntermediateDoOne(PVM pVM, uintptr_t uAddress, RTHCPHYS HCPh
 VMMR3DECL(int) PGMR3MapPT(PVM pVM, RTGCPTR GCPtr, uint32_t cb, PFNPGMRELOCATE pfnRelocate, void *pvUser, const char *pszDesc)
 {
     LogFlow(("PGMR3MapPT: GCPtr=%#x cb=%d pfnRelocate=%p pvUser=%p pszDesc=%s\n", GCPtr, cb, pfnRelocate, pvUser, pszDesc));
-    AssertMsg(pVM->pgm.s.pInterPD && pVM->pgm.s.pShwNestedRootR3, ("Paging isn't initialized, init order problems!\n"));
+    AssertMsg(pVM->pgm.s.pInterPD, ("Paging isn't initialized, init order problems!\n"));
 
     /*
      * Validate input.

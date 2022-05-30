@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 17483 2009-03-06 15:59:52Z vboxsync $ */
+/* $Id: PGMAll.cpp 17489 2009-03-06 16:35:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1227,12 +1227,16 @@ int pgmShwGetEPTPDPtr(PVM pVM, RTGCPTR64 GCPtr, PEPTPDPT *ppPdpt, PEPTPD *ppPD)
 
     Assert(HWACCMIsNestedPagingActive(pVM));
 
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+    pPml4 = (PEPTPML4)PGMPOOL_PAGE_2_PTR_BY_PGM(pPGM, pPGM->CTX_SUFF(pShwPageCR3));
+#else
 # ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
     rc = PGM_HCPHYS_2_PTR(pVM, pPGM->HCPhysShwNestedRoot, &pPml4);
     AssertRCReturn(rc, rc);
 # else
     pPml4 = (PEPTPML4)pPGM->CTX_SUFF(pShwNestedRoot);
 # endif
+#endif /* VBOX_WITH_PGMPOOL_PAGING_ONLY */
     Assert(pPml4);
 
     /* Allocate page directory pointer table if not present. */
@@ -1487,17 +1491,6 @@ VMMDECL(RTHCPHYS) PGMGetNestedCR3(PVM pVM, PGMMODE enmShadowMode)
             return ~0;
     }
 #endif
-}
-
-
-/**
- * Gets the current CR3 register value for the EPT paging memory context.
- * @returns CR3 value.
- * @param   pVM         The VM handle.
- */
-VMMDECL(RTHCPHYS) PGMGetEPTCR3(PVM pVM)
-{
-    return pVM->pgm.s.HCPhysShwNestedRoot;
 }
 
 

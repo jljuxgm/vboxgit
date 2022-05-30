@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 17379 2009-03-05 09:35:42Z vboxsync $ */
+/* $Id: HWACCM.cpp 17489 2009-03-06 16:35:33Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -847,7 +847,7 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                 if (pVM->hwaccm.s.fNestedPaging)
                 {
                     LogRel(("HWACCM: Enabled nested paging\n"));
-                    LogRel(("HWACCM: EPT root page                 = %RHp\n", PGMGetEPTCR3(pVM)));
+                    LogRel(("HWACCM: EPT root page                 = %RHp\n", PGMGetHyperCR3(pVM)));
                 }
                 if (pVM->hwaccm.s.vmx.fVPID)
                     LogRel(("HWACCM: Enabled VPID\n"));
