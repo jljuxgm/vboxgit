@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 13189 2008-10-11 12:36:11Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 13304 2008-10-15 21:00:07Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -137,10 +137,13 @@ int main()
     GEN_CHECK_SIZE(PCIBUS);
     GEN_CHECK_OFF(PCIBUS, iBus);
     GEN_CHECK_OFF(PCIBUS, iDevSearch);
+    GEN_CHECK_OFF(PCIBUS, cBridges);
     GEN_CHECK_OFF(PCIBUS, devices);
     GEN_CHECK_OFF(PCIBUS, devices[1]);
     GEN_CHECK_OFF(PCIBUS, pDevInsR3);
     GEN_CHECK_OFF(PCIBUS, pPciHlpR3);
+    GEN_CHECK_OFF(PCIBUS, apBridgesR3);
+    GEN_CHECK_OFF(PCIBUS, apBridgesR3[1]);
     GEN_CHECK_OFF(PCIBUS, pDevInsR0);
     GEN_CHECK_OFF(PCIBUS, pPciHlpR0);
     GEN_CHECK_OFF(PCIBUS, pDevInsRC);
