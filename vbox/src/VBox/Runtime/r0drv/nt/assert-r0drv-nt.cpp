@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-nt.c 11899 2008-09-01 09:03:50Z vboxsync $ */
+/* $Id: assert-r0drv-nt.cpp 11900 2008-09-01 09:06:53Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, NT.
  */
