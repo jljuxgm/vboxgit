@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 12772 2008-09-26 16:13:09Z vboxsync $ */
+/* $Id: DevVGA.cpp 12969 2008-10-03 07:03:26Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4793,7 +4793,7 @@ static DECLCALLBACK(int) vgaR3IORegionMap(PPCIDEVICE pPciDev, /*unsigned*/ int i
                                               GCPhysAddress, GCPhysAddress + (pThis->vram_size - 1),
                                               vgaR3LFBAccessHandler, pThis,
                                               g_DeviceVga.szR0Mod, "vgaR0LFBAccessHandler", pDevIns->pvInstanceDataR0,
-                                              g_DeviceVga.szGCMod, "vgaGCLFBAccessHandler", pDevIns->pvInstanceDataGC,
+                                              g_DeviceVga.szGCMod, "vgaGCLFBAccessHandler", pDevIns->pvInstanceDataRC,
                                               "VGA LFB");
             AssertRC(rc);
             if (RT_SUCCESS(rc))

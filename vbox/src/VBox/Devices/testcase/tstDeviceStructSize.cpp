@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 12588 2008-09-18 17:47:53Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 12969 2008-10-03 07:03:26Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and GC uses the same
@@ -212,7 +212,7 @@ int main()
     /*
      * Misc alignment checks.
      */
-    CHECK_MEMBER_ALIGNMENT(PDMDEVINS, achInstanceData, 32);
+    CHECK_MEMBER_ALIGNMENT(PDMDEVINS, achInstanceData, 64);
     CHECK_MEMBER_ALIGNMENT(PCIDEVICE, Int.s, 16);
     CHECK_MEMBER_ALIGNMENT(PCIDEVICE, Int.s.aIORegions, 16);
     CHECK_MEMBER_ALIGNMENT(PCIBUS, devices, 16);
