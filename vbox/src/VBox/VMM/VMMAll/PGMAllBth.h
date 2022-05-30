@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 16591 2009-02-09 14:19:53Z vboxsync $ */
+/* $Id: PGMAllBth.h 16592 2009-02-09 14:58:51Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -160,7 +160,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
     X86PDPE         PdpeSrc;
 
     /* Fake PDPT entry; access control handled on the page table level, so allow everything. */
-    PdpeSrc.u  = X86_PDPE_P | X86_PDPE_A;   /* rw/us are reserved for PAE pdpte's. */
+    PdpeSrc.u  = X86_PDPE_P;   /* rw/us are reserved for PAE pdpte's; accessed bit causes invalid VT-x guest state errors */
 #    endif
     rc = pgmShwSyncPaePDPtr(pVM, pvFault, &PdpeSrc, &pPDDst);
     if (rc != VINF_SUCCESS)
@@ -2962,7 +2962,7 @@ PGM_BTH_DECL(int, PrefetchPage)(PVM pVM, RTGCPTR GCPtrPage)
         X86PDPE         PdpeSrc;
 
         /* Fake PDPT entry; access control handled on the page table level, so allow everything. */
-        PdpeSrc.u  = X86_PDPE_P | X86_PDPE_A;   /* rw/us are reserved for PAE pdpte's. */
+        PdpeSrc.u  = X86_PDPE_P;   /* rw/us are reserved for PAE pdpte's; accessed bit causes invalid VT-x guest state errors */
 #   endif
         int rc = pgmShwSyncPaePDPtr(pVM, GCPtrPage, &PdpeSrc, &pPDDst);
         if (rc != VINF_SUCCESS)
