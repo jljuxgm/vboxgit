@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 14969 2008-12-04 10:57:17Z vboxsync $ */
+/* $Id: PGMHandler.cpp 17132 2009-02-25 13:46:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -280,7 +280,7 @@ VMMDECL(int) PGMR3HandlerVirtualRegisterEx(PVM pVM, PGMVIRTHANDLERTYPE enmType, 
                                            RCPTRTYPE(PFNPGMRCVIRTHANDLER) pfnHandlerRC,
                                            R3PTRTYPE(const char *) pszDesc)
 {
-    Log(("PGMR3HandlerVirtualRegister: enmType=%d GCPtr=%RGv GCPtrLast=%RGv pfnInvalidateR3=%RHv pfnHandlerR3=%RHv pfnHandlerRC=%RGv pszDesc=%s\n",
+    Log(("PGMR3HandlerVirtualRegister: enmType=%d GCPtr=%RGv GCPtrLast=%RGv pfnInvalidateR3=%RHv pfnHandlerR3=%RHv pfnHandlerRC=%RRv pszDesc=%s\n",
          enmType, GCPtr, GCPtrLast, pfnInvalidateR3, pfnHandlerR3, pfnHandlerRC, pszDesc));
 
     /*
