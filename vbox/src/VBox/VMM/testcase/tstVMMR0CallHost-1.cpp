@@ -1,4 +1,4 @@
-/* $Id: tstVMMR0CallHost-1.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
+/* $Id: tstVMMR0CallHost-1.cpp 13872 2008-11-05 15:00:48Z vboxsync $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
@@ -59,11 +59,16 @@ int foo(int i, int iZero, int iMinusOne)
 }
 
 
-DECLCALLBACK(int) tst2(intptr_t i)
+DECLCALLBACK(int) tst2(intptr_t i, intptr_t i2)
 {
     if (i < 0 || i > 8192)
     {
         RTPrintf("tstVMMR0CallHost-1: FAILURE - i=%d is out of range [0..8192]\n", i);
+        return 1;
+    }
+    if (i2 != 0)
+    {
+        RTPrintf("tstVMMR0CallHost-1: FAILURE - i2=%d is out of range [0]\n", i2);
         return 1;
     }
     int iExpect = (i % 7) == 0 ? i + 10000 : i;
@@ -80,7 +85,7 @@ int tst(int iFrom, int iTo, int iInc)
 {
     for (int i = iFrom; i < iTo; i += iInc)
     {
-        int rc = vmmR0CallHostSetJmp(&g_Jmp, (PFNVMMR0SETJMP)tst2, (PVM)i);
+        int rc = vmmR0CallHostSetJmp(&g_Jmp, (PFNVMMR0SETJMP)tst2, (PVM)i, 0);
         if (rc != 0 && rc != 42)
         {
             RTPrintf("tstVMMR0CallHost-1: FAILURE - i=%d rc=%d setjmp\n", i, rc);
