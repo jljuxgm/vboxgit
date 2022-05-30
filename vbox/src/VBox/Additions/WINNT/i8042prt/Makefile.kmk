@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12623 2008-09-21 19:36:36Z vboxsync $
+# $Id: Makefile.kmk 12624 2008-09-21 19:37:36Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox NT4 guest additions mouse driver.
 #
@@ -22,7 +22,7 @@
 SUB_DEPTH = ../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
 
-ifeq ($(KBUILD_TARGET_ARCH),x86
+ifeq ($(KBUILD_TARGET_ARCH),x86)
 SYSMODS += VBoxMouseNT
 VBoxMouseNT_TEMPLATE    = VBOXGUESTR0
 VBoxMouseNT_DEFS        = LOG_TO_BACKDOOR
