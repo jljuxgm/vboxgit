@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 16321 2009-01-28 16:36:24Z vboxsync $ */
+/* $Id: PGMInternal.h 16376 2009-01-29 16:46:31Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1622,6 +1622,10 @@ typedef struct PGMPOOLPAGE
     /** The previous page in the age list. */
     uint16_t            iAgePrev;
 #endif /* PGMPOOL_WITH_CACHE */
+    /* The shadow page pool index of the user table as specified during allocation; useful for freeing root pages */
+    uint16_t            iUser;
+    /* The index into the user table (shadowed) as specified during allocation; useful for freeing root pages. */
+    uint32_t            iUserTable;
     /** Used to indicate that the page is zeroed. */
     bool                fZeroed;
     /** Used to indicate that a PT has non-global entries. */
