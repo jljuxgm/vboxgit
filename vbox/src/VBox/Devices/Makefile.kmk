@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15791 2009-01-05 10:30:45Z vboxsync $
+# $Id: Makefile.kmk 15836 2009-01-07 15:45:20Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -687,7 +687,8 @@ Drivers_SOURCES.solaris = \
 	Audio/solaudio.c \
 	$(if $(VBOX_SOLARIS_10),,Network/DrvTAP.cpp) \
 	Storage/DrvHostBase.cpp \
-	Storage/DrvHostDVD.cpp
+	Storage/DrvHostDVD.cpp \
+	Serial/DrvHostSerial.cpp
  ifdef VBOX_WITH_CROSSBOW
   Drivers_SOURCES += Network/solaris/vbox-libdlpi.cpp
   Drivers_DEFS += VBOX_WITH_CROSSBOW
