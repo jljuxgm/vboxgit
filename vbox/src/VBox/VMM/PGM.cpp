@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 13235 2008-10-13 20:48:53Z vboxsync $ */
+/* $Id: PGM.cpp 13343 2008-10-16 15:01:44Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3449,7 +3449,7 @@ VMMR3DECL(int) PGMR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
     SELMR3PagingModeChanged(pVM);
 
     /* Notify HWACCM as well. */
-    HWACCMR3PagingModeChanged(pVM, pVM->pgm.s.enmShadowMode);
+    HWACCMR3PagingModeChanged(pVM, pVM->pgm.s.enmShadowMode, pVM->pgm.s.enmGuestMode);
     return rc;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 13265 2008-10-14 14:26:42Z vboxsync $ */
+/* $Id: EM.cpp 13343 2008-10-16 15:01:44Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -778,7 +778,7 @@ static int emR3RemExecute(PVM pVM, bool *pfFFDone)
     if (pCtx->eflags.Bits.u1VM)
         Log(("EMV86: %04X:%08X IF=%d\n", pCtx->cs, pCtx->eip, pCtx->eflags.Bits.u1IF));
     else
-        Log(("EMR%d: %08X ESP=%08X IF=%d CR0=%x\n", cpl, pCtx->eip, pCtx->esp, pCtx->eflags.Bits.u1IF, (uint32_t)pCtx->cr0));
+        Log(("EMR%d: %04X:%08X ESP=%08X IF=%d CR0=%x\n", cpl, pCtx->cs, pCtx->eip, pCtx->esp, pCtx->eflags.Bits.u1IF, (uint32_t)pCtx->cr0));
 #endif
     STAM_REL_PROFILE_ADV_START(&pVM->em.s.StatREMTotal, a);
 

@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13276 2008-10-15 09:57:45Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13343 2008-10-16 15:01:44Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -339,17 +339,6 @@ typedef struct HWACCM
         /** Real-mode emulation state. */
         struct
         {
-            CPUMSELREGHID               dsHid;
-            CPUMSELREGHID               esHid;
-            CPUMSELREGHID               fsHid;
-            CPUMSELREGHID               gsHid;
-            CPUMSELREGHID               ssHid;
-            RTSEL                       ds;
-            RTSEL                       es;
-            RTSEL                       fs;
-            RTSEL                       gs;
-            RTSEL                       ss;
-            RTSEL                       padding5[1];
             X86EFLAGS                   eflags;
             uint32_t                    fValid;
         } RealMode;
