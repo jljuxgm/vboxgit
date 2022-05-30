@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 12746 2008-09-25 15:18:01Z vboxsync $ */
+/* $Id: HWACCMInternal.h 12757 2008-09-26 08:27:14Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -290,6 +290,9 @@ typedef struct HWACCM
 
         /** Current trap mask. */
         uint32_t                    u32TrapMask;
+
+        /** The last known guest paging mode. */
+        PGMMODE                     enmCurrGuestMode;
 
         struct
         {
