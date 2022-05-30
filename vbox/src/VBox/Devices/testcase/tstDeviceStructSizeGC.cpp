@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 15475 2008-12-14 23:21:50Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 15517 2008-12-15 16:11:49Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -1369,7 +1369,7 @@ int main()
     GEN_CHECK_OFF(LSILOGICSCSI, uInterruptMask);
     GEN_CHECK_OFF(LSILOGICSCSI, uInterruptStatus);
     GEN_CHECK_OFF(LSILOGICSCSI, aMessage);
-    GEN_CHECK_OFF(LSILOGICSCSI, aMessage[sizeof(MptIOCInitRequest)-1]);
+    GEN_CHECK_OFF(LSILOGICSCSI, aMessage[sizeof(MptConfigurationRequest)-1]);
     GEN_CHECK_OFF(LSILOGICSCSI, iMessage);
     GEN_CHECK_OFF(LSILOGICSCSI, cMessage);
     GEN_CHECK_OFF(LSILOGICSCSI, ReplyBuffer);
