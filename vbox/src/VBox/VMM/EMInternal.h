@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 11424 2008-08-14 13:46:06Z vboxsync $ */
+/* $Id: EMInternal.h 12305 2008-09-09 15:50:15Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -276,7 +276,10 @@ typedef struct EM
     bool                    fTracing;
 #endif
 
-    uint8_t                 u8Padding[GC_ARCH_BITS == 64 ? 6 : 2];
+    /* Set when the translation blocks in the recompiler cache need to be flushed. */
+    bool                    fREMFlushTBs;
+
+    uint8_t                 u8Padding[GC_ARCH_BITS == 64 ? 5 : 1];
 
     /** Inhibit interrupts for this instruction. Valid only when VM_FF_INHIBIT_INTERRUPTS is set. */
     RTGCUINTPTR             GCPtrInhibitInterrupts;

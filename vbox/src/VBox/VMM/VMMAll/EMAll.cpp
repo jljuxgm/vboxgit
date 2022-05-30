@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 12121 2008-09-05 09:41:05Z vboxsync $ */
+/* $Id: EMAll.cpp 12305 2008-09-09 15:50:15Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -68,6 +68,15 @@ EMDECL(EMSTATE) EMGetState(PVM pVM)
     return pVM->em.s.enmState;
 }
 
+/**
+ * Flushes the REM translation blocks the next time we execute code there.
+ *
+ * @param   pVM         The VM handle.
+ */
+EMDECL(void) EMFlushREMTBs(PVM pVM)
+{
+    pVM->em.s.fREMFlushTBs = true;
+}
 
 #ifndef IN_GC
 /**
