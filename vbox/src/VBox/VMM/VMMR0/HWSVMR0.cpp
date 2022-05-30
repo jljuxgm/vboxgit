@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 15197 2008-12-09 17:35:39Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 15362 2008-12-12 12:49:10Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2330,7 +2330,7 @@ DECLASM(int) SVMR0VMSwitcherRun64(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PC
 VMMR0DECL(int) SVMR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, RTRCPTR pfnHandler, uint32_t cbParam, uint32_t *paParam)
 {
     int             rc;
-    RTCCUINTREG     uFlags;
+    RTHCUINTREG     uFlags;
 
     /* @todo This code is not guest SMP safe (hyper context) */
     AssertReturn(pVM->cCPUs == 1, VERR_ACCESS_DENIED);

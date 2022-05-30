@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 15292 2008-12-11 08:23:09Z vboxsync $ */
+/* $Id: HWVMXR0.h 15362 2008-12-12 12:49:10Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -324,7 +324,7 @@ VMMR0DECL(void) VMXFlushWriteCache(PVMCPU pVCpu);
  * @param   idxField    VMCS cache index (not VMCS field index!)
  * @param   pVal        Value
  */
-DECLINLINE(int) VMXReadCachedVMCSEx(PVMCPU pVCpu, uint32_t idxCache, RTCCUINTREG *pVal)
+DECLINLINE(int) VMXReadCachedVMCSEx(PVMCPU pVCpu, uint32_t idxCache, RTGCUINTREG *pVal)
 {
     Assert(idxCache <= VMX_VMCS_MAX_NESTED_PAGING_CACHE_IDX);
     *pVal = pVCpu->hwaccm.s.vmx.VMCSCache.Read.aFieldVal[idxCache];
