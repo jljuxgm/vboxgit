@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16991 2009-02-22 00:32:37Z vboxsync $
+# $Id: Makefile.kmk 16992 2009-02-22 00:46:57Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -102,7 +102,7 @@ if "$(VBOX_PATH_GSOAP_BIN)" == ""
  else if "$(KBUILD_HOST)" == "linux"
   VBOX_PATH_GSOAP_BIN  := $(VBOX_PATH_GSOAP_BIN)/linux386
  else
-  VBOX_PATH_GSOAP_BIN  := $(VBOX_PATH_GSOAP_BIN)/$(KBUILD_HOST)
+  VBOX_PATH_GSOAP_BIN  := $(VBOX_PATH_GSOAP_BIN)/$(KBUILD_HOST).x86
  endif
  if !exists($(VBOX_PATH_GSOAP_BIN))
   VBOX_PATH_GSOAP_BIN  := $(VBOX_PATH_GSOAP)/bin
