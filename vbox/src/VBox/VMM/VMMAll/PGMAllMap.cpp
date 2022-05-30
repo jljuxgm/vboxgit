@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 17014 2009-02-23 12:43:15Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 17015 2009-02-23 12:50:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -429,8 +429,6 @@ void pgmMapClearShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAPPING pMap, 
  */
 void pgmMapCheckShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAPPING pMap, unsigned iPDE)
 {
-    Log(("pgmMapCheckShadowPDEs pde %x (mappings enabled %d)\n", iPDE, pgmMapAreMappingsEnabled(&pVM->pgm.s)));
-
     if (!pgmMapAreMappingsEnabled(&pVM->pgm.s))
         return;
 
