@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 15862 2009-01-08 12:41:13Z vboxsync $ */
+/* $Id: PGMPhys.cpp 15885 2009-01-09 18:21:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2479,7 +2479,7 @@ VMMR3DECL(int) PGMR3PhysTlbGCPhys2Ptr(PVM pVM, RTGCPHYS GCPhys, bool fWritable, 
                 }
                 else if (RT_LIKELY(pRam->pvR3))
                 {
-                    AssertMsg(PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_RAM, ("GCPhys=%RGp type=%d\n", GCPhys, PGM_PAGE_GET_TYPE(pPage)));
+                    AssertMsg(PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_RAM || PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_MMIO2, ("GCPhys=%RGp type=%d\n", GCPhys, PGM_PAGE_GET_TYPE(pPage)));
                     RTGCPHYS off = GCPhys - pRam->GCPhys;
                     *pvPtr = (uint8_t *)pRam->pvR3 + off;
                 }
