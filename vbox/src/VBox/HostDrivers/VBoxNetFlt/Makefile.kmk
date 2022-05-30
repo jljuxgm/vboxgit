@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14738 2008-11-27 19:11:39Z vboxsync $
+# $Id: Makefile.kmk 15263 2008-12-10 16:47:53Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -127,11 +127,10 @@ $(PATH_TARGET)/VBoxNetFltCat.dir/VBoxNetFlt.cat: \
 #
 LIBRARIES.win += WinNetConfig
 WinNetConfig_TEMPLATE = VBOXR3STATIC
-WinNetConfig_DEFS     = _WIN32_WINNT=0x0500 _UNICODE UNICODE
+WinNetConfig_DEFS     = _WIN32_WINNT=0x0501 _UNICODE UNICODE
 WinNetConfig_SDKS     = WINPSDK W2K3DDK
 WinNetConfig_SOURCES  = \
 	win/WinNetConfig.cpp
-
 
 #
 # NetFltInstall
