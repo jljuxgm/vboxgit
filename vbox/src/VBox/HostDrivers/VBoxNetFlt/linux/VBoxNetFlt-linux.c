@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 15840 2009-01-07 16:37:24Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 15889 2009-01-11 16:11:36Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -70,7 +70,11 @@
 # if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 10)
 #  define VBOX_SKB_CHECKSUM_HELP(skb) skb_checksum_help(skb, 0)
 # else /* LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 10) */
-#  define VBOX_SKB_CHECKSUM_HELP(skb) skb_checksum_help(&skb, 0)
+#  if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 7)
+#   define VBOX_SKB_CHECKSUM_HELP(skb) skb_checksum_help(&skb, 0)
+#  else /* LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 7) */
+#   define VBOX_SKB_CHECKSUM_HELP(skb) (!skb_checksum_help(skb))
+#  endif /* LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 7) */
 # endif /* LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 10) */
 #endif /* LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 19) */
 
