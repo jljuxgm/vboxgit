@@ -1,4 +1,4 @@
-/* $Id: DBGFSym.cpp 13841 2008-11-05 03:38:52Z vboxsync $ */
+/* $Id: DBGFSym.cpp 14072 2008-11-10 23:53:50Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Symbol Management.
  */
@@ -637,7 +637,7 @@ VMMR3DECL(int) DBGFR3ModuleLoad(PVM pVM, const char *pszFilename, RTGCUINTPTR Ad
  * @param   pszFilename     The image filename.
  * @param   pszName         The module name.
  */
-VMMR3DECL(void) DBGFR3ModuleRelocate(PVM pVM, RTGCUINTPTR OldImageBase, RTGCUINTPTR NewImageBase, unsigned cbImage,
+VMMR3DECL(void) DBGFR3ModuleRelocate(PVM pVM, RTGCUINTPTR OldImageBase, RTGCUINTPTR NewImageBase, RTGCUINTPTR cbImage,
                                       const char *pszFilename, const char *pszName)
 {
 #ifdef HAVE_DBGHELP
@@ -646,7 +646,8 @@ VMMR3DECL(void) DBGFR3ModuleRelocate(PVM pVM, RTGCUINTPTR OldImageBase, RTGCUINT
         if (!SymUnloadModule64(pVM, OldImageBase))
             Log(("SymUnloadModule64(,%RGv) failed, lasterr=%d\n", OldImageBase, GetLastError()));
 
-        DWORD64 LoadedImageBase = SymLoadModule64(pVM, NULL, (char *)(void *)pszFilename, (char *)(void *)pszName, NewImageBase, cbImage);
+        DWORD ImageSize = (DWORD)cbImage; Assert(ImageSize == cbImage);
+        DWORD64 LoadedImageBase = SymLoadModule64(pVM, NULL, (char *)(void *)pszFilename, (char *)(void *)pszName, NewImageBase, ImageSize);
         if (!LoadedImageBase)
             Log(("SymLoadModule64(,,%s,,) -> lasterr=%d (relocate)\n", pszFilename, GetLastError()));
         else
