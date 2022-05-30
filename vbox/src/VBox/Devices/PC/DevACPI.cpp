@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 14464 2008-11-21 15:03:53Z vboxsync $ */
+/* $Id: DevACPI.cpp 14976 2008-12-04 12:50:07Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1305,7 +1305,12 @@ IO_READ_PROTO (acpiSysInfoDataRead)
                 case SYSTEM_INFO_INDEX_USE_IOAPIC:
                     *pu32 = s->u8UseIOApic;
                     break;
-
+                    
+                /* Solaris 9 tries to read from this index */
+                case SYSTEM_INFO_INDEX_INVALID:
+                    *pu32 = 0;
+                    break;
+                    
                 default:
                     AssertMsgFailed (("Invalid system info index %d\n", s->uSystemInfoIndex));
                     break;
