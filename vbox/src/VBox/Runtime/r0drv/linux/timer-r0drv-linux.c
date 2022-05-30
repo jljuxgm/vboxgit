@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 9529 2008-06-09 11:10:02Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 12141 2008-09-05 15:49:14Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -469,7 +469,7 @@ static int rtTimerLnxStartAll(PRTTIMER pTimer, PRTTIMERLINUXSTARTONCPUARGS pArgs
     do
     {
         RTMpGetOnlineSet(&OnlineSet);
-        for (iCpu = 0; iCpu <= pTimer->cCpus; iCpu++)
+        for (iCpu = 0; iCpu < pTimer->cCpus; iCpu++)
         {
             Assert(pTimer->aSubTimers[iCpu].enmState != RTTIMERLNXSTATE_MP_STOPPING);
             rtTimerLnxSetState(&pTimer->aSubTimers[iCpu].enmState,
@@ -497,7 +497,7 @@ static int rtTimerLnxStartAll(PRTTIMER pTimer, PRTTIMERLINUXSTARTONCPUARGS pArgs
      */
     RTSpinlockAcquire(pTimer->hSpinlock, &Tmp);
 
-    for (iCpu = 0; iCpu <= pTimer->cCpus; iCpu++)
+    for (iCpu = 0; iCpu < pTimer->cCpus; iCpu++)
         if (rtTimerLnxCmpXchgState(&pTimer->aSubTimers[iCpu].enmState, RTTIMERLNXSTATE_STOPPED, RTTIMERLNXSTATE_STARTING))
         {
             /** @todo very odd case for a rainy day. Cpus that temporarily went offline while
