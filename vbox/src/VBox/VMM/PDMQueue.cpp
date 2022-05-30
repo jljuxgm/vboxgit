@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: PDMQueue.cpp 12993 2008-10-06 08:32:44Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -647,7 +647,7 @@ static bool pdmR3QueueFlush(PPDMQUEUE pQueue)
     PPDMQUEUEITEMCORE pItems = (PPDMQUEUEITEMCORE)ASMAtomicXchgPtr((void * volatile *)&pQueue->pPendingR3, NULL);
     RTRCPTR           pItemsRC;
     ASMAtomicXchgSizeCorrect(&pQueue->pPendingRC, NIL_RTRCPTR, &pItemsRC);
-    RTRCPTR           pItemsR0;
+    RTR0PTR           pItemsR0;
     ASMAtomicXchgSizeCorrect(&pQueue->pPendingR0, NIL_RTR0PTR, &pItemsR0);
 
     AssertMsg(pItems || pItemsRC || pItemsR0, ("ERROR: can't all be NULL now!\n"));
