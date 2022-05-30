@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12185 2008-09-07 18:09:58Z vboxsync $
+# $Id: Config.kmk 12197 2008-09-08 02:32:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1576,17 +1576,9 @@ else
 endif
 
 SDK_VBOX_OPENSSL      = .
-if1of ($(KBUILD_TARGET), darwin linux solaris win)
- ifdef VBOX_SINGLE_MAKEFILE
-  SDK_VBOX_OPENSSL_DEFAULT_INCS := $(PATH_OUT)/obj/crypto-headers/include
- else
-  SDK_VBOX_OPENSSL_DEFAULT_INCS := $(PATH_OUT)/obj/src/libs/openssl-0.9.8h/crypto-headers/include
- endif
- SDK_VBOX_OPENSSL_INCS ?= $(SDK_VBOX_OPENSSL_DEFAULT_INCS)
-else
- SDK_VBOX_OPENSSL_INCS ?= $(PATH_ROOT)/src/libs/openssl-0.9.7e/include
-endif
-SDK_VBOX_OPENSSL_LIBS?= $(PATH_LIB)/VBox-libcrypto$(VBOX_SUFF_LIB)
+SDK_VBOX_OPENSSL_DEFAULT_INCS := $(PATH_OUT)/obj/crypto-headers/include
+SDK_VBOX_OPENSSL_INCS ?= $(SDK_VBOX_OPENSSL_DEFAULT_INCS)
+SDK_VBOX_OPENSSL_LIBS ?= $(PATH_LIB)/VBox-libcrypto$(VBOX_SUFF_LIB)
 # Build entire openssl library, not just the minimal subset.
 if1of ($(KBUILD_TARGET), linux solaris)
  VBOX_OPENSSL_ALL=1
@@ -3461,7 +3453,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12185 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12197 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
