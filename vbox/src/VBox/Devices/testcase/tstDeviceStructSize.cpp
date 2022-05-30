@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 14829 2008-11-30 08:16:10Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 15475 2008-12-14 23:21:50Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and GC uses the same
@@ -70,6 +70,10 @@
 #ifdef VBOX_WITH_BUSLOGIC
 # undef LOG_GROUP
 # include "../Storage/DevBusLogic.cpp"
+#endif
+#ifdef VBOX_WITH_LSILOGIC
+# undef LOG_GROUP
+# include "../Storage/DevLsiLogicSCSI.cpp"
 #endif
 
 #include <stdio.h>

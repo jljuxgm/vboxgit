@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13363 2008-10-17 07:41:23Z vboxsync $
+# $Id: Makefile.kmk 15475 2008-12-14 23:21:50Z vboxsync $
 ## @file
 # Sub-Makefile for the Devices testcases.
 #
@@ -66,6 +66,9 @@ endif
 ifdef VBOX_WITH_SCSI
 tstDeviceStructSizeGC_DEFS     += VBOX_WITH_SCSI
 endif
+ifdef VBOX_WITH_BUSLOGIC
+tstDeviceStructSizeGC_DEFS     += VBOX_WITH_LSILOGIC
+endif
 tstDeviceStructSizeGC_SOURCES   = tstDeviceStructSizeGC.cpp
 tstDeviceStructSizeGC_INCS      = \
 	$(VBOX_PATH_DEVICES_SRC) \
@@ -89,6 +92,9 @@ tstDeviceStructSize_DEFS     += VBOX_WITH_E1000
 endif
 ifdef VBOX_WITH_BUSLOGIC
 tstDeviceStructSize_DEFS     += VBOX_WITH_BUSLOGIC
+endif
+ifdef VBOX_WITH_LSILOGIC
+tstDeviceStructSize_DEFS     += VBOX_WITH_LSILOGIC
 endif
 tstDeviceStructSize_INCS     = \
 	$(VBOX_PATH_DEVICES_SRC) \
