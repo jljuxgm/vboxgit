@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: MediumImpl.cpp 15124 2008-12-08 17:09:27Z vboxsync $ */
 
 /** @file
  *
@@ -1022,9 +1022,8 @@ HRESULT ImageMediumBase::protectedInit (VirtualBox *aVirtualBox,
             m.description = descNode.keyStringValue();
     }
 
-    LogFlowThisFunc (("m.location='%ls', m.id={%RTuuid}\n",
-                      m.location.raw(), m.id.raw()));
-    LogFlowThisFunc (("m.locationFull='%ls'\n", m.locationFull.raw()));
+    LogFlowThisFunc (("m.locationFull='%ls', m.id={%RTuuid}\n",
+                      m.locationFull.raw(), m.id.raw()));
 
     /* Don't call queryInfo() for registered media to prevent the calling
      * thread (i.e. the VirtualBox server startup thread) from an unexpected
