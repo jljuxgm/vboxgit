@@ -1,4 +1,4 @@
-/* $Id: HardDiskFormatImpl.h 14272 2008-11-18 00:22:15Z vboxsync $ */
+/* $Id: HardDiskFormatImpl.h 14596 2008-11-25 20:23:51Z vboxsync $ */
 
 /** @file
  *
@@ -113,11 +113,13 @@ public:
     // (ensure there is a caller and a read lock before calling them!)
 
     /** Const, no need to lock */
-    const Bstr &id() { return m.id; }
+    const Bstr &id() const { return m.id; }
     /** Const, no need to lock */
-    const BstrList &fileExtensions() { return m.fileExtensions; }
+    const BstrList &fileExtensions() const { return m.fileExtensions; }
     /** Const, no need to lock */
-    uint64_t capabilities() { return m.capabilities; }
+    uint64_t capabilities() const { return m.capabilities; }
+    /** Const, no need to lock */
+    const PropertyList &properties() const { return m.properties; }
 
     // for VirtualBoxSupportErrorInfoImpl
     static const wchar_t *getComponentName() { return L"HardDiskFormat"; }
