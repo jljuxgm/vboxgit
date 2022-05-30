@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 17137 2009-02-25 16:18:51Z vboxsync $ */
+/* $Id: PGMBth.h 17483 2009-03-06 15:59:52Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -159,11 +159,6 @@ PGM_BTH_DECL(int, Enter)(PVM pVM, RTGCPHYS GCPhysCR3)
         pVM->pgm.s.pShwPageCR3R3 = 0;
         pVM->pgm.s.pShwPageCR3RC = 0;
         pVM->pgm.s.pShwPageCR3R0 = 0;
-        pVM->pgm.s.pShwRootR3    = 0;
-#  ifndef VBOX_WITH_2X_4GB_ADDR_SPACE
-        pVM->pgm.s.pShwRootR0    = 0;
-#  endif
-        pVM->pgm.s.HCPhysShwCR3  = 0;
         pVM->pgm.s.iShwUser      = 0;
         pVM->pgm.s.iShwUserTable = 0;
     }
@@ -186,12 +181,6 @@ PGM_BTH_DECL(int, Enter)(PVM pVM, RTGCPHYS GCPhysCR3)
 
     pVM->pgm.s.pShwPageCR3R0 = MMHyperCCToR0(pVM, pVM->pgm.s.pShwPageCR3R3);
     pVM->pgm.s.pShwPageCR3RC = MMHyperCCToRC(pVM, pVM->pgm.s.pShwPageCR3R3);
-    pVM->pgm.s.pShwRootR3    = (R3PTRTYPE(void *))pVM->pgm.s.pShwPageCR3R3->pvPageR3;
-    Assert(pVM->pgm.s.pShwRootR3);
-#  ifndef VBOX_WITH_2X_4GB_ADDR_SPACE
-    pVM->pgm.s.pShwRootR0    = (R0PTRTYPE(void *))PGMPOOL_PAGE_2_PTR(pVM, pVM->pgm.s.pShwPageCR3R3);
-#  endif
-    pVM->pgm.s.HCPhysShwCR3  = pVM->pgm.s.pShwPageCR3R3->Core.Key;
 
     /* Set the current hypervisor CR3. */
     CPUMSetHyperCR3(pVM, PGMGetHyperCR3(pVM));
