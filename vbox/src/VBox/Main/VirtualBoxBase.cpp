@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 14854 2008-12-01 13:12:56Z vboxsync $ */
 
 /** @file
  *
@@ -1254,7 +1254,7 @@ ToString <com::Bstr> (const com::Bstr &aValue, unsigned int aExtra)
     }
 
     if (RT_FAILURE (vrc))
-        throw LogicError (RT_SRC_POS);
+        throw vboxxml::LogicError (RT_SRC_POS);
 
     return result;
 }
@@ -1292,7 +1292,7 @@ ToString <com::Guid> (const com::Guid &aValue, unsigned int aExtra)
 
     int vrc = RTUuidToStr (aValue.raw(), result.get() + 1, RTUUID_STR_LENGTH);
     if (RT_FAILURE (vrc))
-        throw LogicError (RT_SRC_POS);
+        throw vboxxml::LogicError (RT_SRC_POS);
 
     result.get() [0] = '{';
     result.get() [RTUUID_STR_LENGTH] = '}';
