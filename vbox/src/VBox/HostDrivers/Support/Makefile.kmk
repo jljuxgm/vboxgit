@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13308 2008-10-15 21:22:46Z vboxsync $
+# $Id: Makefile.kmk 13324 2008-10-16 09:54:42Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -85,6 +85,9 @@ endif
 ifdef VBOX_WITH_SUPSVC
  SUPR3_DEFS        += VBOX_WITH_SUPSVC
 endif
+ifdef VBOX_WITH_CROGL
+ SUPR3_DEFS        += VBOX_WITH_CROGL
+endif
 SUPR3_INCS         := $(PATH_SUB_CURRENT)
 SUPR3_INCS.l4       = $(L4_INCDIR)
 SUPR3_SOURCES       = \
@@ -101,6 +104,9 @@ SUPR3HardenedStatic_TEMPLATE = VBOXR3HARDENEDLIB
 SUPR3HardenedStatic_DEFS     = IN_SUP_HARDENED_R3
 ifdef VBOX_WITH_SUPSVC
  SUPR3HardenedStatic_DEFS   += VBOX_WITH_SUPSVC
+endif
+ifdef VBOX_WITH_CROGL
+ SUPR3HardenedStatic_DEFS   += VBOX_WITH_CROGL
 endif
 SUPR3HardenedStatic_INCS     = .
 SUPR3HardenedStatic_SOURCES  = \
