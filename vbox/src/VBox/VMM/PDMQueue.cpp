@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 12985 2008-10-04 23:25:26Z vboxsync $ */
+/* $Id: PDMQueue.cpp 12986 2008-10-04 23:41:17Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -18,7 +18,6 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
-
 
 
 /*******************************************************************************
