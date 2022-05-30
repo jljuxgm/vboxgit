@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 13395 2008-10-20 14:13:38Z vboxsync $ */
+/* $Id: PGMAllBth.h 13396 2008-10-20 14:35:31Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2799,7 +2799,7 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PGSTPD pPDSrc, RTGCUINTPTR G
 PGM_BTH_DECL(int, PrefetchPage)(PVM pVM, RTGCUINTPTR GCPtrPage)
 {
 #if        (    (   PGM_GST_TYPE == PGM_TYPE_32BIT || PGM_GST_TYPE == PGM_TYPE_REAL || PGM_GST_TYPE == PGM_TYPE_PROT || PGM_GST_TYPE == PGM_TYPE_PAE || PGM_GST_TYPE == PGM_TYPE_AMD64) \
-                 && PGM_SHW_TYPE != PGM_TYPE_NESTED ) \
+                 && PGM_SHW_TYPE != PGM_TYPE_NESTED && PGM_SHW_TYPE != PGM_TYPE_EPT) \
         || (PGM_SHW_TYPE == PGM_TYPE_EPT && (PGM_GST_TYPE == PGM_TYPE_REAL || PGM_GST_TYPE == PGM_TYPE_PROT))
     /*
      * Check that all Guest levels thru the PDE are present, getting the
