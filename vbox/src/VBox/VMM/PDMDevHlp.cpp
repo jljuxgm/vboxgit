@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 15127 2008-12-08 19:09:39Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 15129 2008-12-08 19:12:50Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -615,7 +615,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_PCIIORegionRegister(PPDMDEVINS pDevIns, int
          */
         int iLastSet = ASMBitLastSetU32(cbRegion);
         Assert(iLastSet > 0);
-        uint32_t cbRegionAligned = 1U << (iLastSet - 1);
+        uint32_t cbRegionAligned = RT_BIT_32(iLastSet - 1);
         if (cbRegion > cbRegionAligned)
             cbRegion = cbRegionAligned * 2; /* round up */
 
