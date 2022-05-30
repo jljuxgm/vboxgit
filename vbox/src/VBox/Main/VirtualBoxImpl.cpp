@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 16873 2009-02-17 19:07:37Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 16903 2009-02-18 14:17:15Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -748,6 +748,7 @@ STDMETHODIMP VirtualBox::CreateMachine (IN_BSTR aName,
                                         IMachine **aMachine)
 {
     LogFlowThisFuncEnter();
+    LogFlowThisFunc (("aName=\"%ls\",aOsTypeId =\"%ls\",aBaseFolder=\"%ls\"\n", aName, aOsTypeId, aBaseFolder));
 
     CheckComArgStrNotEmptyOrNull (aName);
     CheckComArgOutPointerValid (aMachine);
