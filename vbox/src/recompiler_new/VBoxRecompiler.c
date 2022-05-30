@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 14346 2008-11-19 11:25:35Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 14418 2008-11-20 14:33:41Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -72,7 +72,6 @@ extern int  sync_tr(CPUX86State *env1, int selector);
 #ifdef VBOX_STRICT
 unsigned long get_phys_page_offset(target_ulong addr);
 #endif
-
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
