@@ -1,4 +1,4 @@
-# $Id: Config.kmk 16621 2009-02-10 11:06:10Z vboxsync $
+# $Id: Config.kmk 16670 2009-02-11 15:17:39Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3284,6 +3284,7 @@ TEMPLATE_VBOXLNXHOSTR3LIB_INST              = $(INST_LIB)
 TEMPLATE_VBOXGUESTR3EXE           = VBox Guest Program
 ifeq ($(KBUILD_TARGET),win)
  TEMPLATE_VBOXGUESTR3EXE_EXTENDS  = VBOXR3EXE
+ TEMPLATE_VBOXGUESTR3EXE_SDKS     = $(TEMPLATE_VBOXR3EXE_SDKS) VBOX_NTDLL
  TEMPLATE_VBOXGUESTR3EXE_CFLAGS   = $(filter-out -MD, $(TEMPLATE_VBOXR3EXE_CFLAGS)) -MT
  TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS = $(filter-out -MD, $(TEMPLATE_VBOXR3EXE_CFLAGS)) -MT
  TEMPLATE_VBOXGUESTR3EXE_LDFLAGS  = $(filter-out /DISALLOWLIB:libcmt.lib, $(TEMPLATE_VBOXR3EXE_LDFLAGS)) \
@@ -3575,7 +3576,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16621 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16670 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
