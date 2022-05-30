@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 15064 2008-12-07 15:34:34Z vboxsync $ */
+/* $Id: Global.cpp 15114 2008-12-08 15:48:37Z vboxsync $ */
 
 /** @file
  *
@@ -150,7 +150,7 @@ const Global::OSType Global::sOSTypes [SchemaDefs::OSTypeId_COUNT] =
     { "Other",   "Other",             SchemaDefs_OSTypeId_L4,              "L4",
       VBOXOSTYPE_L4,              VBOXOSHINT_NONE,  64,   4,  2 * _1K, NetworkAdapterType_Am79C973 },
     { "Other",   "Other",             SchemaDefs_OSTypeId_QNX,             "QNX",
-      VBOXOSTYPE_QNX,             VBOXOSHINT_HWVIRTEX,  64,   4,  2 * _1K, NetworkAdapterType_Am79C973 }
+      VBOXOSTYPE_QNX,             VBOXOSHINT_HWVIRTEX,  512,   4,  4 * _1K, NetworkAdapterType_Am79C973 }
 };
 
 /**
