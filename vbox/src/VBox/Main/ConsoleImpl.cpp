@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 17276 2009-03-03 13:44:25Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 17360 2009-03-04 17:55:05Z vboxsync $ */
 
 /** @file
  *
@@ -4220,7 +4220,7 @@ HRESULT Console::powerUp (IProgress **aProgress, bool aPaused)
     if (Global::IsOnlineOrTransient (mMachineState))
         return setError(VBOX_E_INVALID_VM_STATE,
             tr ("Virtual machine is already running or busy "
-            "(machine state: %d)"), mMachineState);
+                "(machine state: %d)"), mMachineState);
 
     HRESULT rc = S_OK;
 
