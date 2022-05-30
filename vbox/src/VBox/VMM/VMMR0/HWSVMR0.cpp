@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 15017 2008-12-05 08:58:38Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 15031 2008-12-05 12:08:28Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -757,7 +757,7 @@ VMMR0DECL(int) SVMR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     /* 64 bits guest mode? */
     if (pCtx->msrEFER & MSR_K6_EFER_LMA)
     {
-#if !defined(VBOX_WITH_64_BITS_GUESTS)
+#if !defined(VBOX_ENABLE_64_BITS_GUESTS)
         return VERR_PGM_UNSUPPORTED_SHADOW_PAGING_MODE;
 #elif HC_ARCH_BITS == 32
         pVCpu->hwaccm.s.svm.pfnVMRun = SVMR0VMSwitcherRun64;
