@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 14901 2008-12-02 14:23:22Z vboxsync $
+; $Id: SUPR0.def 15505 2008-12-15 14:36:30Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Built-in exports.
 ;
@@ -40,6 +40,7 @@ EXPORTS
     SUPR0ComponentQueryFactory
     SUPR0ObjRegister
     SUPR0ObjAddRef
+    SUPR0ObjAddRefEx
     SUPR0ObjRelease
     SUPR0ObjVerifyAccess
     SUPR0LockMem
