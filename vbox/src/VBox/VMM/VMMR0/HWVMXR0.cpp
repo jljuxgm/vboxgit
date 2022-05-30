@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13108 2008-10-09 09:00:35Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13110 2008-10-09 09:02:48Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -342,7 +342,7 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
         if (pVM->hwaccm.s.fNestedPaging)
             val |= VMX_VMCS_CTRL_PROC_EXEC2_EPT;
         else
-        if (pVM->hwaccm.s.fVPID)
+        if (pVM->hwaccm.s.vmx.fVPID)
             val |= VMX_VMCS_CTRL_PROC_EXEC2_VPID;
 #endif
         /* Mask away the bits that the CPU doesn't support */
