@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 17156 2009-02-26 11:17:21Z vboxsync $ */
+/* $Id: MachineImpl.h 17180 2009-02-26 17:32:49Z vboxsync $ */
 
 /** @file
  *
@@ -987,6 +987,9 @@ private:
                                         HMTX *aIPCSem, bool aAllowClosing);
 #elif defined (VBOX_WITH_SYS_V_IPC_SESSION_WATCHER)
     int mIPCSem;
+# ifdef VBOX_WITH_NEW_SYS_V_KEYGEN
+    Bstr mIPCKey;
+# endif /*VBOX_WITH_NEW_SYS_V_KEYGEN */
 #else
 # error "Port me!"
 #endif
