@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15637 2008-12-18 07:51:22Z vboxsync $
+# $Id: Makefile.kmk 15641 2008-12-18 11:08:36Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -262,7 +262,6 @@ DevicesR3_SOURCES       = \
 	Audio/DevSB16.cpp \
 	PC/DevDMA.cpp \
 	Storage/fdc.c \
-	Storage/Debug.cpp \
 	Serial/DevSerial.cpp \
 	Parallel/DevParallel.cpp
 
@@ -579,6 +578,7 @@ Drivers_SOURCES    = \
 	Storage/DrvHostFloppy.cpp \
 	Storage/DrvMediaISO.cpp \
 	Storage/DrvRawImage.cpp \
+	Storage/Debug.cpp \
 	Storage/DrvVD.cpp \
 	Network/DrvNetSniffer.cpp \
 	Network/Pcap.cpp
