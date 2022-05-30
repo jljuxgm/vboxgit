@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 13594 2008-10-27 18:41:07Z vboxsync $ */
+/* $Id: SSM.cpp 13595 2008-10-27 18:44:32Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -2498,38 +2498,6 @@ VMMR3DECL(int) SSMR3PutGCUIntPtr(PSSMHANDLE pSSM, RTGCUINTPTR GCPtr)
 {
     if (pSSM->enmOp == SSMSTATE_SAVE_EXEC)
         return ssmR3Write(pSSM, &GCPtr, sizeof(GCPtr));
-    AssertMsgFailed(("Invalid state %d\n", pSSM->enmOp));
-    return VERR_SSM_INVALID_STATE;
-}
-
-
-/**
- * Saves a HC natural unsigned integer item to the current data unit.
- *
- * @returns VBox status.
- * @param   pSSM            SSM operation handle.
- * @param   u               Item to save.
- */
-VMMR3DECL(int) SSMR3PutHCUInt(PSSMHANDLE pSSM, RTHCUINT u)
-{
-    if (pSSM->enmOp == SSMSTATE_SAVE_EXEC)
-        return ssmR3Write(pSSM, &u, sizeof(u));
-    AssertMsgFailed(("Invalid state %d\n", pSSM->enmOp));
-    return VERR_SSM_INVALID_STATE;
-}
-
-
-/**
- * Saves a HC natural signed integer item to the current data unit.
- *
- * @returns VBox status.
- * @param   pSSM            SSM operation handle.
- * @param   i               Item to save.
- */
-VMMR3DECL(int) SSMR3PutHCSInt(PSSMHANDLE pSSM, RTHCINT i)
-{
-    if (pSSM->enmOp == SSMSTATE_SAVE_EXEC)
-        return ssmR3Write(pSSM, &i, sizeof(i));
     AssertMsgFailed(("Invalid state %d\n", pSSM->enmOp));
     return VERR_SSM_INVALID_STATE;
 }
