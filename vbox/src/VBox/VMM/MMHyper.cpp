@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 13831 2008-11-05 01:53:59Z vboxsync $ */
+/* $Id: MMHyper.cpp 14071 2008-11-10 23:47:46Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -724,7 +724,7 @@ static int mmR3HyperMap(PVM pVM, const size_t cb, const char *pszDesc, PRTGCPTR 
     /*
      * Validate input.
      */
-    const uint32_t cbAligned = RT_ALIGN(cb, PAGE_SIZE);
+    const uint32_t cbAligned = RT_ALIGN_32(cb, PAGE_SIZE);
     AssertReturn(cbAligned >= cb, VERR_INVALID_PARAMETER);
     if (pVM->mm.s.offHyperNextStatic + cbAligned >= pVM->mm.s.cbHyperArea) /* don't use the last page, it's a fence. */
     {
@@ -780,7 +780,7 @@ static int mmR3HyperHeapCreate(PVM pVM, const size_t cb, PMMHYPERHEAP *ppHeap)
     /*
      * Allocate the hypervisor heap.
      */
-    const uint32_t cbAligned = RT_ALIGN_Z(cb, PAGE_SIZE);
+    const uint32_t cbAligned = RT_ALIGN_32(cb, PAGE_SIZE);
     AssertReturn(cbAligned >= cb, VERR_INVALID_PARAMETER);
     void *pv;
     int rc = SUPPageAlloc(cbAligned >> PAGE_SHIFT, &pv); /** @todo #1865: heap allocation must be changed for osx (only). */
