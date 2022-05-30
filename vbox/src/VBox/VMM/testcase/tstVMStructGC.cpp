@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 12566 2008-09-18 12:42:54Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 12688 2008-09-24 14:22:18Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -120,8 +120,9 @@ int main()
     GEN_CHECK_OFF(EM, u.achPaddingFatalLongJump);
     GEN_CHECK_OFF(EM, StatForcedActions);
     GEN_CHECK_OFF(EM, StatTotalClis);
-    GEN_CHECK_OFF(EM, pStatsHC);
-    GEN_CHECK_OFF(EM, pStatsGC);
+    GEN_CHECK_OFF(EM, pStatsR3);
+    GEN_CHECK_OFF(EM, pStatsR0);
+    GEN_CHECK_OFF(EM, pStatsRC);
     GEN_CHECK_OFF(EM, pCliStatTree);
 
     GEN_CHECK_SIZE(IOM);

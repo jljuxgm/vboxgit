@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 12566 2008-09-18 12:42:54Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 12688 2008-09-24 14:22:18Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -762,7 +762,7 @@ static int iomInterpretCMP(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFault
  * @param   pRange      Pointer MMIO range.
  * @param   pfnEmulate  Instruction emulation function.
  */
-static int iomInterpretOrXorAnd(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFault, PDISCPUSTATE pCpu, PIOMMMIORANGE pRange, PFN_EMULATE_PARAM3 pfnEmulate)
+static int iomInterpretOrXorAnd(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFault, PDISCPUSTATE pCpu, PIOMMMIORANGE pRange, PFNEMULATEPARAM3 pfnEmulate)
 {
     unsigned    cb     = 0;
     uint64_t    uData1 = 0;
