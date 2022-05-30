@@ -1,4 +1,4 @@
-# $Id: Config.kmk 14402 2008-11-20 11:34:19Z vboxsync $
+# $Id: Config.kmk 14406 2008-11-20 12:23:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -453,7 +453,7 @@ ifdef VBOX_WITH_HARDENING
  endif
 endif
 # Use VBoxNetFlt for host interface networking.
-if1of ($(KBUILD_TARGET), darwin solaris win)
+if1of ($(KBUILD_TARGET), darwin linux solaris win)
  VBOX_WITH_NETFLT = 1
  VBOX_SOLARIS_NSL_RESOLVED = 1
 endif
@@ -3634,7 +3634,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14402 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14406 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
