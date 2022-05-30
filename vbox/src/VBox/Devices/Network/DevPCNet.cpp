@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 15000 2008-12-04 19:04:23Z vboxsync $ */
+/* $Id: DevPCNet.cpp 15006 2008-12-04 20:08:23Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4703,8 +4703,8 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     char            szTmp[128];
     int             rc;
 
-    /* up to four instances are supported */
-    Assert((iInstance >= 0) && (iInstance < 4));
+    /* up to eight instances are supported */
+    Assert((iInstance >= 0) && (iInstance < 8));
 
     Assert(RT_ELEMENTS(pThis->aBCR) == BCR_MAX_RAP);
     Assert(RT_ELEMENTS(pThis->aMII) == MII_MAX_REG);

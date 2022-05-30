@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 15000 2008-12-04 19:04:23Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 15006 2008-12-04 20:08:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -105,7 +105,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 {
     LogFlowFuncEnter();
     /* Note: hardcoded assumption about number of slots; see rom bios */
-    bool afPciDeviceNo[15] = {false};
+    bool afPciDeviceNo[32] = {false};
 
 #if !defined (VBOX_WITH_XPCOM)
     {
