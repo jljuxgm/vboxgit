@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 12068 2008-09-03 15:53:35Z vboxsync $ */
+/* $Id: EM.cpp 12079 2008-09-04 09:35:39Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -2292,6 +2292,10 @@ DECLINLINE(int) emR3RawHandleRC(PVM pVM, PCPUMCTX pCtx, int rc)
         case VERR_VMX_INVALID_VMCS_FIELD:
         case VERR_VMX_INVALID_VMCS_PTR:
         case VERR_VMX_INVALID_VMXON_PTR:
+        case VERR_VMX_UNEXPECTED_INTERRUPTION_EXIT_CODE:
+        case VERR_VMX_UNEXPECTED_EXCEPTION:
+        case VERR_VMX_UNEXPECTED_EXIT_CODE:
+        case VERR_VMX_INVALID_GUEST_STATE:
             HWACCMR3CheckError(pVM, rc);
             break;
         /*
