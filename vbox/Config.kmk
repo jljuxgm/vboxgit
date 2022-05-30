@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12261 2008-09-09 03:08:14Z vboxsync $
+# $Id: Config.kmk 12270 2008-09-09 03:51:07Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3022,10 +3022,15 @@ ifdef VBOX_WITH_XPCOM
 	$(VBOX_XPCOM_INCS)
  TEMPLATE_VBOXQT4GUIEXE_LIBS += \
 	$(LIB_XPCOM)
+ TEMPLATE_VBOXQT4GUIEXE_INTERMEDIATES += \
+	$(VBOX_PATH_SDK)/bindings/xpcom/include/VirtualBox_XPCOM.h
 else  # COM
  TEMPLATE_VBOXQT4GUIEXE_INCS += \
 	$(VBOX_PATH_SDK)/bindings/mscom/include
+ TEMPLATE_VBOXQT4GUIEXE_INTERMEDIATES += \
+ 	$(VBOX_PATH_SDK)/bindings/mscom/include/VirtualBox.h
 endif # COM
+
 
 #
 # Template for building Qt4 GUI components.
@@ -3434,7 +3439,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12261 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12270 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
