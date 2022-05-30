@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11725 2008-08-27 22:21:47Z vboxsync $
+# $Id: Makefile.kmk 11760 2008-08-28 13:49:44Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -37,6 +37,10 @@ ifndef VBOX_ONLY_SDK
  LIBRARIES       += VBoxCOM
  DLLS            += VBoxSettings VBoxC
  PROGRAMS        += VBoxSVC
+else
+ PATH_VBoxCOM    = $(PATH_BIN)/sdk/mscom/
+$(PATH_VBoxCOM):
+	$(QUIET)$(MKDIR) -p $@
 endif #!VBOX_ONLY_SDK
 
 OTHERS           += $(VBOX_PATH_SDK)/bindings/VirtualBox.xidl

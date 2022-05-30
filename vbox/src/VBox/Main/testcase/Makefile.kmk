@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11721 2008-08-27 20:09:03Z vboxsync $
+# $Id: Makefile.kmk 11760 2008-08-28 13:49:44Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -51,11 +51,12 @@ INSTALLS += samples
 #
 # The samples
 #
-samples_INST = $(INST_SDK_SAMPLES)/API/
 samples_MODE = a+r,u+w
 ifeq ($(KBUILD_TARGET),win)
+ samples_INST = $(INST_SDK)/bindings/mscom/samples
  samples_SOURCES = tstVBoxAPIWin.cpp
 else
+ samples_INST = $(INST_SDK)/bindings/xpcom/samples
  samples_SOURCES = tstVBoxAPILinux.cpp makefile.tstVBoxAPILinux=>Makefile
  ifdef VBOX_WITH_TESTCASES
  samples_SYMLINKS = tstVBoxAPILinux=>../../../tstVBoxAPILinux

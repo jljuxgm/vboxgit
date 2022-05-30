@@ -1,4 +1,4 @@
-# $Id: Config.kmk 11734 2008-08-28 00:59:41Z vboxsync $
+# $Id: Config.kmk 11760 2008-08-28 13:49:44Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -39,7 +39,6 @@ PATH_INS            := $(PATH_OUT)
 ifeq ($(KBUILD_TARGET),darwin)
  INST_DIST            = dist/
  INST_SDK             = $(INST_DIST)sdk/
- INST_SDK_SAMPLES     = $(INST_SDK)samples
 
  # the bundles
  INST_VIRTUALBOX      = $(INST_DIST)VirtualBox.app/
@@ -66,7 +65,6 @@ else
  INST_DIST            = $(INST_BIN)
  INST_DLL             = $(INST_BIN)
  INST_SDK             = $(INST_BIN)sdk/
- INST_SDK_SAMPLES     = $(INST_SDK)samples
  INST_DLL             = $(INST_BIN)
  INST_SYS             = $(INST_BIN)
  INST_TESTCASE        = $(INST_BIN)testcase/
@@ -3218,7 +3216,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11734 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11760 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
