@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_mount.c 10456 2008-07-10 07:04:39Z vboxsync $ */
+/* $Id: vboxfs_mount.c 17579 2009-03-09 14:47:32Z vboxsync $ */
 /** @file
  * VirtualBox File System Mount Helper, Solaris host.
  * Userspace mount wrapper that parses mount (or user-specified) options
@@ -30,7 +30,7 @@
 #include <sys/vfs.h>
 #include <sys/mount.h>
 
-#include "vboxvfs.h"
+#include "vboxfs.h"
 
 /*******************************************************************************
 *   Global Variables                                                           *
