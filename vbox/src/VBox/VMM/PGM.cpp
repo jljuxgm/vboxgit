@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 14167 2008-11-13 12:31:38Z vboxsync $ */
+/* $Id: PGM.cpp 14240 2008-11-17 09:30:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3437,7 +3437,7 @@ VMMR3DECL(int) PGMR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
                 AssertRC(rc);
 
                 VMSetRuntimeError(pVM, true, "PAEmode",
-                                  N_("The guest is trying to switch to the PAE mode which is currently disabled by default in VirtualBox. Experimental PAE support can be enabled using the -pae option with VBoxManage"));
+                                  N_("The guest is trying to switch to the PAE mode which is currently disabled by default in VirtualBox. PAE support can be enabled using the VM settings (General/Advanced)"));
                 /* we must return VINF_SUCCESS here otherwise the recompiler will assert */
                 return VINF_SUCCESS;
             }
