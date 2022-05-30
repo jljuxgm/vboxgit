@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 14732 2008-11-27 18:44:11Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 14814 2008-11-30 00:14:34Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -32,10 +32,11 @@
 
 #include <VBox/com/VirtualBox.h>
 
-#include <iprt/stream.h>
-#include <iprt/string.h>
-#include <VBox/log.h>
 #include <VBox/VBoxHDD.h>
+#include <VBox/log.h>
+#include <iprt/stream.h>
+#include <iprt/time.h>
+#include <iprt/string.h>
 
 #include "VBoxManage.h"
 using namespace com;
