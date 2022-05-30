@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 16668 2009-02-11 14:12:11Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 16830 2009-02-17 12:28:06Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -80,7 +80,7 @@ int handleImportAppliance(HandlerArg *a)
     HRESULT rc = S_OK;
 
     Utf8Str strOvfFilename;
-    bool fExecute = false;                  // if true, then we actually do the import (-exec argument)
+    bool fExecute = true;                  // if true, then we actually do the import
 
     uint32_t ulCurVsys = (uint32_t)-1;
 
@@ -96,8 +96,10 @@ int handleImportAppliance(HandlerArg *a)
     {
         bool fIsIgnore = false;
         Utf8Str strThisArg(a->argv[i]);
-        if (strThisArg == "-exec")
-            fExecute = true;
+        if (    (strThisArg == "--dry-run")
+             || (strThisArg == "-n")
+           )
+            fExecute = false;
         else if (strThisArg == "-vsys")
         {
             if (++i < a->argc)
@@ -233,6 +235,8 @@ int handleImportAppliance(HandlerArg *a)
                     Bstr bstrFinalValue = aConfigValues[a];
 
                     bool fIgnoreThis = mapIgnoresMapsPerVsys[i][a];
+
+                    aEnabled[a] = true;
 
                     switch (t)
                     {
