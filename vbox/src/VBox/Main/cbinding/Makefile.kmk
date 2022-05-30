@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16716 2009-02-12 17:43:13Z vboxsync $
+# $Id: Makefile.kmk 16832 2009-02-17 12:36:30Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -60,6 +60,15 @@ ifndef VBOX_ONLY_SDK
  VBoxXPCOMC_DEFS = MOZ_UNICODE IN_VBOXXPCOMC
  VBoxXPCOMC_SOURCES = \
  	VBoxXPCOMC.cpp
+
+ #
+ # The C glue library.
+ #
+ LIBRARIES.linux += VBoxXPCOMCGlue
+ VBoxXPCOMCGlue_TEMPLATE = VBOXMAINEXE
+ VBoxXPCOMCGlue_DEFS = MOZ_UNICODE IN_VBOXXPCOMC
+ VBoxXPCOMCGlue_SOURCES = \
+ 	VBoxXPCOMCGlue.c
 
  ifdef VBOX_WITH_TESTCASES
   #
