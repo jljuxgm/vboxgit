@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 16907 2009-02-18 15:04:16Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 16916 2009-02-18 15:44:47Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -487,6 +487,10 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
             {
                 uShw.pv = PGMPOOL_PAGE_2_PTR(pPool->CTX_SUFF(pVM), pPage);
                 const unsigned iShw = off / sizeof(X86PTE);         // ASSUMING 32-bit guest paging!
+
+#  ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+                LogFlow(("pgmPoolMonitorChainChanging: PGMPOOLKIND_32BIT_PD %x\n", iShw));
+#  endif
                 if (uShw.pPD->a[iShw].u & PGM_PDFLAGS_MAPPING)
                 {
                     Assert(pgmMapAreMappingsEnabled(&pPool->CTX_SUFF(pVM)->pgm.s));
