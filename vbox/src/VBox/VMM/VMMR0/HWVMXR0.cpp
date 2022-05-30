@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15386 2008-12-12 16:53:20Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15389 2008-12-12 17:19:26Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1571,6 +1571,10 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     {
         pVCpu->hwaccm.s.vmx.pfnStartVM  = VMXR0StartVM32;
     }
+
+    /* Unconditionally update the guest EFER. */
+    rc = VMXWriteVMCS64(VMX_VMCS_GUEST_EFER_FULL, pCtx->msrEFER);
+    AssertRC(rc);
 
     vmxR0UpdateExceptionBitmap(pVM, pVCpu, pCtx);
 
@@ -3643,6 +3647,7 @@ VMMR0DECL(int) VMXWriteVMCS64Ex(PVMCPU pVCpu, uint32_t idxField, uint64_t u64Val
     case VMX_VMCS_GUEST_PDPTR2_FULL:
     case VMX_VMCS_GUEST_PDPTR3_FULL:
     case VMX_VMCS_GUEST_DEBUGCTL_FULL:
+    case VMX_VMCS_GUEST_EFER_FULL:
     case VMX_VMCS_CTRL_EPTP_FULL:
         /* These fields consist of two parts, which are both writable in 32 bits mode. */
         rc  = VMXWriteVMCS32(idxField, u64Val);
