@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 11982 2008-09-02 13:09:44Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 12008 2008-09-02 20:16:28Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -159,6 +159,7 @@ typedef struct VBOXNETFLTINS
             /** The MAC address of the interface. */
             RTMAC Mac;
 # elif defined(RT_OS_WINDOWS)
+            /** pointer to the filter driver device context */
             PADAPT volatile pIfAdaptor;
 # else
 #  error "PORTME"
