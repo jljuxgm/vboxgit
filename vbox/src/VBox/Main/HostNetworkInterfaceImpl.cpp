@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 17275 2009-03-03 13:28:12Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 17277 2009-03-03 13:51:47Z vboxsync $ */
 
 /** @file
  *
@@ -137,7 +137,7 @@ HRESULT HostNetworkInterface::init (Bstr aInterfaceName, HostNetworkInterfaceTyp
     m.mediumType = (HostNetworkInterfaceMediumType)pIf->enmMediumType;
     m.status = (HostNetworkInterfaceStatus)pIf->enmStatus;
 #else /* !RT_OS_WINDOWS */
-    m.type = pIf->enmType;
+    m.mediumType = pIf->enmMediumType;
     m.status = pIf->enmStatus;
 #endif /* !RT_OS_WINDOWS */
 
