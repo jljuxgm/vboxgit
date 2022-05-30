@@ -1,6 +1,6 @@
-/* $Id: RTAssertDoBreakpoint-generic.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: RTAssertShouldPanic-generic.cpp 13306 2008-10-15 21:17:04Z vboxsync $ */
 /** @file
- * IPRT - Assertions, generic RTAssertDoBreakpoint.
+ * IPRT - Assertions, generic RTAssertShouldPanic.
  */
 
 /*
@@ -28,22 +28,13 @@
  * additional information or have any questions.
  */
 
-
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/assert.h>
 
 
-/**
- * Overridable function that decides whether assertions executes the breakpoint or not. 
- * 
- * The generic implementation will return true.
- * 
- * @returns true if the breakpoint should be hit, false if it should be ignored.
- * @remark  The RTDECL() makes this a bit difficult to override on windows. Sorry.
- */
-RTDECL(bool)    RTAssertDoBreakpoint(void)
+RTDECL(bool) RTAssertShouldPanic(void)
 {
     return true;
 }

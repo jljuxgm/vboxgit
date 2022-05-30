@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 10608 2008-07-14 16:21:07Z vboxsync $ */
+/* $Id: log-vbox.cpp 13306 2008-10-15 21:17:04Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Logging configuration.
  */
@@ -196,7 +196,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
      */
 #define ASSERT_LOG_GROUP(grp)  ASSERT_LOG_GROUP2(LOG_GROUP_##grp, #grp)
 #define ASSERT_LOG_GROUP2(def, str) \
-    do { if (strcmp(g_apszGroups[def], str)) {printf("%s='%s' expects '%s'\n", #def, g_apszGroups[def], str); AssertReleaseBreakpoint(); } } while (0)
+    do { if (strcmp(g_apszGroups[def], str)) {printf("%s='%s' expects '%s'\n", #def, g_apszGroups[def], str); RTAssertDoPanic(); } } while (0)
     ASSERT_LOG_GROUP(DEFAULT);
     ASSERT_LOG_GROUP(CFGM);
     ASSERT_LOG_GROUP(CPUM);

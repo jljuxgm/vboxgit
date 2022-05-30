@@ -1,4 +1,4 @@
-/* $Rev: 12360 $ */
+/* $Rev: 13306 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -941,13 +941,6 @@ RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
                              "m" (printk));
 #endif
     return 0;
-}
-
-
-/** @todo move to IPRT! */
-RTDECL(bool) RTAssertDoBreakpoint(void)
-{
-    return true;
 }
 
 

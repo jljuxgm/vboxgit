@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.cpp 11019 2008-07-30 22:47:04Z vboxsync $ */
+/* $Id: alloc-ef.cpp 13306 2008-10-15 21:17:04Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -84,7 +84,7 @@ static void rtmemComplain(const char *pszOp, const char *pszFormat, ...)
     va_start(args, pszFormat);
     vfprintf(stderr, pszFormat, args);
     va_end(args);
-    AssertReleaseBreakpoint();
+    RTAssertDoPanic();
 }
 
 /**
@@ -367,7 +367,7 @@ RTDECL(void) rtMemFree(const char *pszOp, RTMEMTYPE enmType, void *pv, void *pvC
      */
     for (unsigned i = 0; i < ELEMENTS(gapvRTMemFreeWatch); i++)
         if (gapvRTMemFreeWatch[i] == pv)
-            AssertReleaseBreakpoint();
+            RTAssertDoPanic();
 
 #ifdef RTALLOC_EFENCE_TRACE
     /*
