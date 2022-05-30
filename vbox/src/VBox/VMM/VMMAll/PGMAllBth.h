@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 17483 2009-03-06 15:59:52Z vboxsync $ */
+/* $Id: PGMAllBth.h 17486 2009-03-06 16:14:24Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4906,6 +4906,7 @@ PGM_BTH_DECL(int, UnmapCR3)(PVM pVM)
         pgmPoolFreeByPage(pPool, pVM->pgm.s.CTX_SUFF(pShwPageCR3), pVM->pgm.s.iShwUser, pVM->pgm.s.iShwUserTable);
         pVM->pgm.s.pShwPageCR3R3 = 0;
         pVM->pgm.s.pShwPageCR3R0 = 0;
+        pVM->pgm.s.pShwPageCR3RC = 0;
         pVM->pgm.s.iShwUser      = 0;
         pVM->pgm.s.iShwUserTable = 0;
     }

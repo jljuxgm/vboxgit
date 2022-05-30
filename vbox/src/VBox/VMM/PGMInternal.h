@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 17483 2009-03-06 15:59:52Z vboxsync $ */
+/* $Id: PGMInternal.h 17486 2009-03-06 16:14:24Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3525,7 +3525,7 @@ DECLINLINE(void *) pgmPoolMapPageInlined(PPGM pPGM, PPGMPOOLPAGE pPage)
         return pv;
     }
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
-    AssertFatalMsg(("pgmPoolMapPageInlined invalid page index %x\n", pPage->idx));
+    AssertFatalMsgFailed(("pgmPoolMapPageInlined invalid page index %x\n", pPage->idx));
 #else
     return pgmPoolMapPageFallback(pPGM, pPage);
 #endif
