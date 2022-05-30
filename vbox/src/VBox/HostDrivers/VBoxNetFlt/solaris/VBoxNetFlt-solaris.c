@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 12825 2008-09-30 10:06:17Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 12862 2008-10-01 12:55:02Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1508,16 +1508,29 @@ static int vboxNetFltSolarisOpenStream(PVBOXNETFLTINS pThis)
     DevId = ldi_ident_from_anon();
     int ret;
 
+    /*
+     * Try style-1 open first.
+     */
     char szDev[128];
-    RTStrPrintf(szDev, sizeof(szDev), "/dev/%s", pThis->szName);
-
+    RTStrPrintf(szDev, sizeof(szDev), "/dev/net/%s", pThis->szName);
     int rc = ldi_open_by_name(szDev, FREAD | FWRITE, kcred, &pThis->u.s.hIface, DevId);
-    ldi_ident_release(DevId);
-    if (rc)
+    if (   rc
+        && rc == ENODEV)
     {
-        LogRel((DEVICE_NAME ":vboxNetFltSolarisOpenStream Failed to open '%s'\n", szDev));
-        return VERR_INTNET_FLT_IF_FAILED;
+        /*
+         * Fallback to style-2 open.
+         */
+        RTStrPrintf(szDev, sizeof(szDev), "/dev/%s", pThis->szName);
+        rc = ldi_open_by_name(szDev, FREAD | FWRITE, kcred, &pThis->u.s.hIface, DevId);
+        ldi_ident_release(DevId);
+        if (rc)
+        {
+            LogRel((DEVICE_NAME ":vboxNetFltSolarisOpenStream Failed to open '%s' rc=%d\n", szDev, rc));
+            return VERR_INTNET_FLT_IF_FAILED;
+        }
     }
+    else
+        ldi_ident_release(DevId);    
 
     rc = ldi_ioctl(pThis->u.s.hIface, I_FIND, (intptr_t)DEVICE_NAME, FKIOCTL, kcred, &ret);
     if (!rc)
