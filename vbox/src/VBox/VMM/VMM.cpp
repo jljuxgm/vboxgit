@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 16862 2009-02-17 16:39:13Z vboxsync $ */
+/* $Id: VMM.cpp 17005 2009-02-23 12:10:36Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1072,6 +1072,9 @@ VMMR3DECL(int) VMMR3RawRunGC(PVM pVM)
     for (;;)
     {
         Assert(CPUMGetHyperCR3(pVM) && CPUMGetHyperCR3(pVM) == PGMGetHyperCR3(pVM));
+#ifdef VBOX_STRICT
+        PGMMapCheck(pVM);
+#endif
         int rc;
         do
         {
