@@ -1,4 +1,4 @@
-/* $Id: DhcpServerRunner.cpp 17920 2009-03-16 11:28:04Z vboxsync $ */
+/* $Id: DhcpServerRunner.cpp 17940 2009-03-16 14:47:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -61,6 +61,11 @@ static const ARGDEF * getArgDef(DHCPCFG type)
             return &g_aArgDefs[i];
     }
     return NULL;
+}
+
+void DhcpServerRunner::detachFromServer()
+{
+    mProcess = NIL_RTPROCESS;
 }
 
 int DhcpServerRunner::start()

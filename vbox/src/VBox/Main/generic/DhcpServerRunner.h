@@ -1,4 +1,4 @@
-/* $Id: DhcpServerRunner.h 17882 2009-03-15 10:20:05Z vboxsync $ */
+/* $Id: DhcpServerRunner.h 17940 2009-03-16 14:47:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -68,6 +68,8 @@ public:
     int start();
     int stop();
     bool isRunning();
+
+    void detachFromServer();
 private:
     Utf8Str mOptions[DHCPCFG_NOTOPT_MAXVAL];
     RTPROCESS mProcess;
