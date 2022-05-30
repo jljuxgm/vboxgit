@@ -1,6 +1,6 @@
-/* $Id: DBGFDisas.cpp 12663 2008-09-23 10:16:45Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 12677 2008-09-24 07:19:03Z vboxsync $ */
 /** @file
- * VMM DBGF - Debugger Facility, Disassembler.
+ * DBGF - Debugger Facility, Disassembler.
  */
 
 /*
