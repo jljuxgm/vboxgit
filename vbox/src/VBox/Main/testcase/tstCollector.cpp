@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 12400 2008-09-11 10:34:58Z vboxsync $ */
+/* $Id: tstCollector.cpp 12401 2008-09-11 11:10:34Z vboxsync $ */
 
 /** @file
  *
@@ -137,7 +137,8 @@ void measurePerformance(pm::CollectorHAL *collector, const char *pszName, int cV
 
     start = RTTimeNanoTS();
 
-    for (int times = 0; times < 100; times++)
+    int times;
+    for (times = 0; times < 100; times++)
     {
         /* Pre-collect */
         N_CALLS(1, preCollect(hints));
