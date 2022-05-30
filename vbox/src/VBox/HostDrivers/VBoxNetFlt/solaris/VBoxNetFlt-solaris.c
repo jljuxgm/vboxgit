@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 12621 2008-09-21 16:14:59Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 12622 2008-09-21 16:22:25Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -84,7 +84,7 @@
 #define VBOXNETFLT_IFNAME_LEN           LIFNAMSIZ + 1
 
 /** Maximum loopback packet queue size per interface */
-#define VBOXNETFLT_LOOPBACK_SIZE        64
+#define VBOXNETFLT_LOOPBACK_SIZE        32
 
 /*******************************************************************************
 *   Global Functions                                                           *
