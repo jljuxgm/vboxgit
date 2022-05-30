@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 15366 2008-12-12 13:50:32Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 15529 2008-12-15 18:23:42Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1314,7 +1314,7 @@ static int CmdRenameVMDK(int argc, char **argv, ComPtr<IVirtualBox> aVirtualBox,
         }
         else
         {
-            vrc = VDCopy(pDisk, 0, pDisk, "VMDK", Utf8Str(dst).raw(), true, 0, NULL, NULL, NULL);
+            vrc = VDCopy(pDisk, 0, pDisk, "VMDK", Utf8Str(dst).raw(), true, 0, NULL, NULL, NULL, NULL);
             if (RT_FAILURE(vrc))
             {
                 RTPrintf("Error while renaming the image: %Rrc\n", vrc);

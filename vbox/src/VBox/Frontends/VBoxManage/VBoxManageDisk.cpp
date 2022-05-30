@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 15516 2008-12-15 16:06:08Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 15529 2008-12-15 18:23:42Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -468,7 +468,7 @@ int handleConvertHardDisk(int argc, char **argv)
 
         /* Create the output image */
         vrc = VDCopy(pSrcDisk, VD_LAST_IMAGE, pDstDisk, Utf8Str(dstformat).raw(),
-                     Utf8Str(dst).raw(), false, 0, NULL, NULL, NULL);
+                     Utf8Str(dst).raw(), false, 0, NULL, NULL, NULL, NULL);
         if (RT_FAILURE(vrc))
         {
             RTPrintf("Error while copying the image: %Rrc\n", vrc);
