@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 14657 2008-11-26 18:08:15Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -114,7 +114,7 @@ static int pdmR3CritSectInitOne(PVM pVM, PPDMCRITSECTINT pCritSect, void *pvKey,
     if (RT_SUCCESS(rc))
     {
         pCritSect->pVMR3 = pVM;
-        pCritSect->pVMR0 = (RTR0PTR)pVM;//pVM->pVMR0;
+        pCritSect->pVMR0 = pVM->pVMR0;
         pCritSect->pVMRC = pVM->pVMRC;
         pCritSect->pvKey = pvKey;
         pCritSect->EventToSignal = NIL_RTSEMEVENT;
