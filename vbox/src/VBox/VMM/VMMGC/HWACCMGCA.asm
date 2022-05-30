@@ -1,4 +1,4 @@
-; $Id: HWACCMGCA.asm 15328 2008-12-11 18:14:32Z vboxsync $
+; $Id: HWACCMGCA.asm 15331 2008-12-11 18:38:19Z vboxsync $
 ;; @file
 ; VMXM - GC vmx helpers
 ;
@@ -57,6 +57,7 @@
 
   ; Load the corresponding guest MSR (trashes rdx & rcx)
   %macro LOADGUESTMSR 2
+    mov     rcx, %1
     mov     edx, dword [rsi + %2 + 4]
     mov     eax, dword [rsi + %2]
     wrmsr
@@ -181,6 +182,7 @@ BEGINPROC VMXGCStartVM64
     ;/* Save segment registers */
     MYPUSHSEGS rax
 
+
 %ifdef VMX_USE_CACHED_VMCS_ACCESSES
     mov     rbx, [rbp + 24 + 8]                             ; pCache
     mov     ecx, [xBX + VMCSCACHE.Write.cValidEntries]
@@ -245,8 +247,6 @@ ALIGN(16)
     ;/* Restore rdi & rsi. */
     mov     rdi, qword [rsi + CPUMCTX.edi]
     mov     rsi, qword [rsi + CPUMCTX.esi]
-
-    jmp     near .vmstart64_invalid_vmxon_ptr
 
     vmlaunch
     jmp     .vmlaunch64_done;      ;/* here if vmlaunch detected a failure. */
