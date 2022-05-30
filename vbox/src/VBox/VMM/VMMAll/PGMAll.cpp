@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 13113 2008-10-09 09:28:09Z vboxsync $ */
+/* $Id: PGMAll.cpp 13122 2008-10-09 11:22:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1086,7 +1086,7 @@ VMMDECL(int) PGMShwGetEPTPDPtr(PVM pVM, RTGCUINTPTR64 GCPtr, PEPTPDPT *ppPdpt, P
     }
     else
     {
-        pShwPage = pgmPoolGetPage(pPool, pPdpe->u & X86_PDPE_PG_MASK);
+        pShwPage = pgmPoolGetPage(pPool, pPdpe->u & EPT_PDPTE_PG_MASK);
         AssertReturn(pShwPage, VERR_INTERNAL_ERROR);
     }
     /* The PD was cached or created; hook it up now and fill with the default value. */
