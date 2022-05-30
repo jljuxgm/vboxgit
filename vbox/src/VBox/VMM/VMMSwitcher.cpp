@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 16321 2009-01-28 16:36:24Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 16847 2009-02-17 14:45:25Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -485,15 +485,6 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, RTR
                 break;
             }
 
-            /*
-             * Store the AMD64 CR3 (32-bit) for the hypervisor (shadow) memory context.
-             */
-            case FIX_HYPER_AMD64_CR3:
-            {
-
-                *uSrc.pu32 = PGMGetHyperAmd64CR3(pVM);
-                break;
-            }
             /*
              * Store Hypervisor CS (16-bit).
              */
