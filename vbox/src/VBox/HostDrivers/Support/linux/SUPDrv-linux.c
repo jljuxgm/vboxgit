@@ -1,4 +1,4 @@
-/* $Rev: 13306 $ */
+/* $Rev: 13314 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -942,35 +942,6 @@ RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
 #endif
     return 0;
 }
-
-
-/** @todo move to IPRT! */
-RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
-{
-    printk("!!Assertion Failed!!\n"
-             "Expression: %s\n"
-             "Location  : %s(%d) %s\n",
-             pszExpr, pszFile, uLine, pszFunction);
-}
-
-
-/** @todo move to IPRT! */
-RTDECL(void) AssertMsg2(const char *pszFormat, ...)
-{   /* forwarder. */
-    va_list ap;
-    char    msg[256];
-
-    va_start(ap, pszFormat);
-    vsnprintf(msg, sizeof(msg) - 1, pszFormat, ap);
-    msg[sizeof(msg) - 1] = '\0';
-    printk("%s", msg);
-    va_end(ap);
-}
-
-
-/* GCC C++ hack. (shouldn't be necessary with the right exception flags...) */
-unsigned __gxx_personality_v0 = 0xcccccccc;
-
 
 module_init(VBoxDrvLinuxInit);
 module_exit(VBoxDrvLinuxUnload);

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13306 2008-10-15 21:17:04Z vboxsync $
+# $Id: Makefile.kmk 13314 2008-10-15 22:46:08Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -979,6 +979,7 @@ RuntimeR0Drv_SOURCES.linux = \
 	r0drv/generic/RTThreadPreemptDisable-r0drv-generic.cpp \
 	r0drv/generic/RTThreadPreemptRestore-r0drv-generic.cpp \
 	r0drv/linux/alloc-r0drv-linux.c \
+	r0drv/linux/assert-r0drv-linux.c \
 	r0drv/linux/initterm-r0drv-linux.c \
 	r0drv/linux/memobj-r0drv-linux.c \
 	r0drv/linux/mp-r0drv-linux.c \
