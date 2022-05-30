@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 15493 2008-12-15 11:00:58Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 15512 2008-12-15 15:49:37Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -34,6 +34,8 @@
 #include <QPainter>
 #include <QApplication>
 #include <QToolBar>
+#include <QMainWindow>
+#include <QStatusBar>
 
 #if QT_VERSION < 0x040400
 extern void qt_mac_set_menubar_icons(bool b);
@@ -364,6 +366,25 @@ void darwinDisableIconsInMenus()
     /* Available since Qt 4.4 only */
     QApplication::instance()->setAttribute (Qt::AA_DontShowIconsInMenus, true);
 #endif /* QT_VERSION >= 0x040400 */
+}
+
+
+void darwinEnableAsyncDragForWindow (QWidget *aWindow)
+{
+    WindowAttributes waGet;
+    WindowAttributes waSet = kWindowAsyncDragAttribute;
+    GetWindowAttributes (::darwinToWindowRef (aWindow), &waGet);
+    if ((waGet & kWindowResizableAttribute) != kWindowResizableAttribute)
+        waSet |= kWindowResizableAttribute;
+    ChangeWindowAttributes (::darwinToWindowRef (aWindow), waSet, kWindowNoAttributes);
+    /* Not working yet : */
+//    ReshapeCustomWindow(::darwinToWindowRef (aWindow));
+//    QMainWindow *mw = qobject_cast<QMainWindow *> (aWindow);
+//    if (mw)
+//    {
+//        aWindow->setAttribute (Qt::WA_MacOpaqueSizeGrip, false);
+//        mw->statusBar()->setSizeGripEnabled (true);
+//    }
 }
 
 /* Currently not used! */
