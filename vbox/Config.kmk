@@ -1,4 +1,4 @@
-# $Id: Config.kmk 15963 2009-01-15 12:47:03Z vboxsync $
+# $Id: Config.kmk 15980 2009-01-16 08:11:23Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1864,12 +1864,19 @@ if1of ($(KBUILD_TARGET), linux)
   ifeq ($(origin VBOX_LINUX_INCS),undefined)
    export VBOX_LINUX_INCS           := $(VBOX_LINUX_SRC)/include
    # XXX hack alert! support splitted Linux kernels (make O=<build directory>)
+   # XXX put this crap elsewhere
    kernelsrc := $(shell $(SED_EXT) -ne 's+^KERNELSRC.*= *\(.*\)+\1+p' $(VBOX_LINUX_SRC)/Makefile)
    ifneq ($(kernelsrc),)
     kernelpath := $(realpath $(VBOX_LINUX_SRC)/$(kernelsrc))
    else
     # Linux >= 2.6.25
     kernelpath := $(shell $(SED_EXT) -ne 's+^MAKEARGS *:= *-C *\(.*\)+\1+p' $(VBOX_LINUX_SRC)/Makefile)
+    ifneq ($(kernelpath),)
+     ifneq ($(patsubst /%,,$(kernelpath)),)
+      # relative path
+      kernelpath := $(realpath $(VBOX_LINUX_SRC)/$(kernelpath))
+     endif
+    endif
    endif
    ifneq ($(kernelpath),)
     VBOX_LINUX_INCS                 += $(VBOX_LINUX_SRC)/include2 $(kernelpath)/include
@@ -3679,7 +3686,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15963 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15980 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
