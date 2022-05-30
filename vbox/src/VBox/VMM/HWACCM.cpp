@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 13914 2008-11-06 13:18:15Z vboxsync $ */
+/* $Id: HWACCM.cpp 13932 2008-11-06 18:54:21Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -874,7 +874,7 @@ VMMR3DECL(int) HWACCMR3TermCPU(PVM pVM)
         {
             MMHyperFree(pVM, pVCpu->hwaccm.s.paStatExitReason);
             pVCpu->hwaccm.s.paStatExitReason   = NULL;
-            pVCpu->hwaccm.s.paStatExitReasonR0 = NULL;
+            pVCpu->hwaccm.s.paStatExitReasonR0 = NIL_RTR0PTR;
         }
     }
     return 0;
