@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 16103 2009-01-20 21:46:18Z vboxsync $ */
+/* $Id: CPUMR0.cpp 16106 2009-01-20 22:35:20Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -260,11 +260,8 @@ VMMR0DECL(int) CPUMR0SaveGuestFPU(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 #if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
     if (CPUMIsGuestInLongModeEx(pCtx))
     {
-if (!(pVCpu->cpum.s.fUseFlags & CPUM_SYNC_FPU_STATE))
         if (!(pVCpu->cpum.s.fUseFlags & CPUM_SYNC_FPU_STATE))
             HWACCMR0SaveFPUState(pVM, pVCpu, pCtx);
-
-
         cpumR0RestoreHostFPUState(&pVCpu->cpum.s);
     }
     else
