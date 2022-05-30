@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 11814 2008-08-29 12:47:44Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 12157 2008-09-05 21:00:37Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -564,15 +564,6 @@ static NTSTATUS     VBoxDrvNtErr2NtStatus(int rc)
 }
 
 
-
-/** @todo move this to IPRT */
-RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
-{
-    DbgPrint("\n!!Assertion Failed!!\n"
-             "Expression: %s\n"
-             "Location  : %s(%d) %s\n",
-             pszExpr, pszFile, uLine, pszFunction);
-}
 
 /** @todo use the nocrt stuff? */
 int VBOXCALL mymemcmp(const void *pv1, const void *pv2, size_t cb)
