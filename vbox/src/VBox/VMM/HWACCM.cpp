@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15524 2008-12-15 17:52:47Z vboxsync $ */
+/* $Id: HWACCM.cpp 15525 2008-12-15 17:55:16Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1159,8 +1159,9 @@ VMMR3DECL(void) HWACCMR3Reset(PVM pVM)
         pVCpu->hwaccm.s.vmx.enmCurrGuestMode     = PGMMODE_REAL;
 
         /* Reset the contents of the read cache. */
-        for (unsigned i=0;i<pCache->Read.cValidEntries;i++)
-            pCache->Read.aFieldVal[i] = 0;
+        PVMCSCACHE pCache = &pVCpu->hwaccm.s.vmx.VMCSCache;
+        for (unsigned j=0;j<pCache->Read.cValidEntries;j++)
+            pCache->Read.aFieldVal[j] = 0;
     }
 }
 
