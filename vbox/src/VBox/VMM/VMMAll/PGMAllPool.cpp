@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 14148 2008-11-12 23:20:06Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 14149 2008-11-12 23:23:27Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -149,7 +149,7 @@ void *pgmPoolMapPage(PVM pVM, PPGMPOOLPAGE pPage)
             HCPhys = pVM->pgm.s.aHCPhysPaePDs[3];
             break;
         case PGMPOOL_IDX_PDPT:
-            HCPhys = pVM->pgm.s.HCPhysPaePDPT;
+            HCPhys = pVM->pgm.s.HCPhysShwPaePdpt;
             break;
         default:
             AssertReleaseMsgFailed(("Invalid index %d\n", pPage->idx));
