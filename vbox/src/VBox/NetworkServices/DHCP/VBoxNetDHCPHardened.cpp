@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCPHardened.cpp 17320 2009-03-04 03:58:27Z vboxsync $ */
+/* $Id: VBoxNetDHCPHardened.cpp 17822 2009-03-13 13:32:49Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - Hardened main().
  */
@@ -24,6 +24,6 @@
 
 int main(int argc, char **argv, char **envp)
 {
-    return SUPR3HardenedMain("VBoxNetDCHP", fFlags, argc, argv, envp);
+    return SUPR3HardenedMain("VBoxNetDCHP", 0 /* fFlags */, argc, argv, envp);
 }
 
