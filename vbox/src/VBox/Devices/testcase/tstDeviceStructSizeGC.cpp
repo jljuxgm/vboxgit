@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 16245 2009-01-26 19:11:27Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 16247 2009-01-26 20:54:05Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -445,9 +445,9 @@ int main()
     GEN_CHECK_OFF(ACPIState, au8RSDPPage);
     GEN_CHECK_OFF(ACPIState, u8IndexShift);
     GEN_CHECK_OFF(ACPIState, u8UseIOApic);
-    GEN_CHECK_OFF(ACPIState, u8UseFdc);
-    GEN_CHECK_OFF(ACPIState, u8UseHpet);
-    GEN_CHECK_OFF(ACPIState, u8UseSmc);
+    GEN_CHECK_OFF(ACPIState, fUseFdc);
+    GEN_CHECK_OFF(ACPIState, fUseHpet);
+    GEN_CHECK_OFF(ACPIState, fUseSmc);
     GEN_CHECK_OFF(ACPIState, IBase);
     GEN_CHECK_OFF(ACPIState, IACPIPort);
     GEN_CHECK_OFF(ACPIState, pDevIns);
