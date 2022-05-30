@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 17874 2009-03-14 19:01:57Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 17876 2009-03-14 19:51:28Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -4680,7 +4680,37 @@ STDMETHODIMP VirtualBox::CreateDhcpServer (IN_BSTR aName, IDhcpServer ** aServer
 
 STDMETHODIMP VirtualBox::FindDhcpServerByName (IN_BSTR aName, IDhcpServer ** aServer)
 {
-    return E_NOTIMPL;
+    CheckComArgNotNull(aName);
+    CheckComArgNotNull(aServer);
+
+    AutoCaller autoCaller (this);
+    CheckComRCReturnRC (autoCaller.rc());
+
+    AutoWriteLock alock (this);
+
+    HRESULT rc;
+    Bstr bstr;
+    ComPtr <DhcpServer> found;
+
+    for (DhcpServerList::const_iterator it =
+            mData.mDhcpServers.begin();
+         it != mData.mDhcpServers.end();
+         ++ it)
+    {
+        rc = (*it)->COMGETTER(NetworkName) (bstr.asOutParam());
+        CheckComRCThrowRC (rc);
+
+        if(bstr == aName)
+        {
+            found = *it;
+            break;
+        }
+    }
+
+    if (!found)
+        return E_INVALIDARG;
+
+    return found.queryInterfaceTo (aServer);
 }
 
 STDMETHODIMP VirtualBox::RemoveDhcpServer (IDhcpServer * aServer)
