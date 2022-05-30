@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 15166 2008-12-09 13:38:57Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 15448 2008-12-13 19:32:05Z vboxsync $ */
 
 /** @file
  *
@@ -4597,11 +4597,12 @@ HRESULT Console::powerDown (Progress *aProgress /*= NULL*/)
         mVMPoweredOff = true;
 
     /* go to Stopping state if not already there. Note that we don't go from
-     * Saving to Stopping because vmstateChangeCallback() needs it to set the
-     * state to Saved on VMSTATE_TERMINATED. In terms of protecting from
-     * inappropriate operations while leaving the lock below, Saving should be
-     * fine too */
+     * Saving/Restoring to Stopping because vmstateChangeCallback() needs it to
+     * set the state to Saved on VMSTATE_TERMINATED. In terms of protecting from
+     * inappropriate operations while leaving the lock below, Saving or
+     * Restoring should be fine too */
     if (mMachineState != MachineState_Saving &&
+        mMachineState != MachineState_Restoring &&
         mMachineState != MachineState_Stopping)
         setMachineState (MachineState_Stopping);
 
