@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 11166 2008-08-06 00:24:37Z vboxsync $ */
+/* $Id: DevVGA.h 13401 2008-10-20 15:46:38Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -260,7 +260,11 @@ typedef struct VGAState {
     /** Indicates if the R0 extensions are enabled or not. */
     bool                        fR0Enabled;
     /** Flag indicating that there are dirty bits. This is used to optimize the handler resetting. */
-    bool                        fHaveDirtyBits;
+    bool                        fHasDirtyBits;
+    /** Flag indicating that the VGA memory in the 0xa0000-0xbffff region has been remapped to allow direct access. */
+    bool                        fRemappedVGA;
+    bool                        padding9[3];
+
     /** Pointer to vgaGCLFBAccessHandler(). */
     RTRCPTR                     RCPtrLFBHandler;
     /** Bitmap tracking dirty pages. */
