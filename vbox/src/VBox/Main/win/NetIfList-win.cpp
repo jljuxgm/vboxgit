@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17773 2009-03-12 18:19:03Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17774 2009-03-12 18:35:36Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1306,13 +1306,13 @@ static HRESULT netIfRenameConnection (PCWSTR GuidString, PCWSTR NewName)
 #define VBOX_CONNECTION_NAME L"Virtualbox Host-Only Network"
 static HRESULT netIfGenConnectionName (PCWSTR DevName, WCHAR *pBuf, PULONG pcbBuf)
 {
-    WCHAR * pSuffix = wcsrchr( DevName, L'#' );
+    const WCHAR * pSuffix = wcsrchr( DevName, L'#' );
     ULONG cbSize = sizeof(VBOX_CONNECTION_NAME);
     ULONG cbSufSize = 0;
 
     if(pSuffix)
     {
-        cbSize += wcslen(pSuffix) * 2;
+        cbSize += (ULONG)wcslen(pSuffix) * 2;
     }
 
     if(*pcbBuf < cbSize)
