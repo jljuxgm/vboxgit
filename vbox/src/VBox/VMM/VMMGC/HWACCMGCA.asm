@@ -1,4 +1,4 @@
-; $Id: HWACCMGCA.asm 15045 2008-12-05 13:54:11Z vboxsync $
+; $Id: HWACCMGCA.asm 15046 2008-12-05 13:58:00Z vboxsync $
 ;; @file
 ; VMXM - GC vmx helpers
 ;
@@ -347,10 +347,6 @@ BEGINPROC SVMGCVMRun64
 
     ;/* Save the Guest CPU context pointer. */
     push    rsi                     ; push for saving the state at the end
-
-    ; Restore CR2
-    mov     rbx, [rsi + CPUMCTX.cr2]
-    mov     cr2, rbx
 
     ; save host fs, gs, sysenter msr etc
     mov     rax, [rbp + 8]                  ; pVMCBHostPhys (64 bits physical address)
