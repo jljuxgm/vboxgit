@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16226 2009-01-26 13:05:01Z vboxsync $
+# $Id: Makefile.kmk 16245 2009-01-26 19:11:27Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -154,6 +154,15 @@ ifdef VBOX_WITH_SCSI
 endif
 ifdef VBOX_WITH_LSILOGIC
  VBoxDD_DEFS           += VBOX_WITH_LSILOGIC
+endif
+ifdef VBOX_WITH_HPET
+ VBoxDD_DEFS           += VBOX_WITH_HPET
+endif
+ifdef VBOX_WITH_SMC
+ VBoxDD_DEFS           += VBOX_WITH_SMC
+endif
+ifdef VBOX_WITH_LPC
+ VBoxDD_DEFS           += VBOX_WITH_LPC
 endif
 ifdef VBOX_WITH_FAULT_INJECTION
  VBoxDD_DEFS           += VBOX_WITH_FAULT_INJECTION
