@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 13356 2008-10-16 18:44:34Z vboxsync $ */
+/* $Id: MachineImpl.cpp 13364 2008-10-17 08:16:58Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2807,7 +2807,7 @@ STDMETHODIMP Machine::SetGuestProperty (INPTR BSTR aName, INPTR BSTR aValue, INP
     if ((aFlags != NULL) && !VALID_PTR (aFlags))
         return E_INVALIDARG;
     uint32_t fFlags = NILFLAG;
-    if (RT_FAILURE (validateFlags (Utf8Str(aFlags).raw(), &fFlags)))
+    if ((aFlags != NULL) && RT_FAILURE (validateFlags (Utf8Str(aFlags).raw(), &fFlags)))
         return setError (E_INVALIDARG, tr ("Invalid flag values: '%ls'"),
                 aFlags);
 
