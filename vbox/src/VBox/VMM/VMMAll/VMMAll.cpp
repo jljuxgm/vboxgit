@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 14875 2008-12-01 16:24:22Z vboxsync $ */
+/* $Id: VMMAll.cpp 17246 2009-03-02 12:31:50Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -129,3 +129,13 @@ VMMDECL(uint32_t) VMMGetSvnRev(void)
     return VBOX_SVN_REV;
 }
 
+/**
+ * Queries the current switcher
+ *
+ * @returns active switcher
+ * @param   pVM             VM handle.
+ */
+VMMDECL(VMMSWITCHER) VMMGetSwitcher(PVM pVM)
+{
+    return pVM->vmm.s.enmSwitcher;
+}
