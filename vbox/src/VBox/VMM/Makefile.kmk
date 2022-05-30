@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14515 2008-11-24 12:33:00Z vboxsync $
+# $Id: Makefile.kmk 14766 2008-11-28 09:44:48Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -135,6 +135,7 @@ VMMR3_SOURCES.x86 += \
 	VMMSwitcher/32BitToPAE.asm \
         VMMSwitcher/32BitToAMD64.asm \
 	VMMSwitcher/PAETo32Bit.asm \
+        VMMSwitcher/PAEToAMD64.asm \
 	VMMSwitcher/PAEToPAE.asm
 VMMR3_SOURCES.amd64 = \
 	VMMSwitcher/AMD64To32Bit.asm \
