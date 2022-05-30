@@ -1,4 +1,4 @@
-/* $Id: dir.h 9355 2008-06-03 15:32:05Z vboxsync $ */
+/* $Id: dir.h 14059 2008-11-10 23:05:44Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDir.
  */
@@ -69,13 +69,13 @@ typedef struct RTDIR
      * This is allocated in the same block as this structure, thus the const. */
     const char         *pszFilter;
     /** The length of the filter string. */
-    unsigned            cchFilter;
+    size_t              cchFilter;
     /** Normalized path to the directory including a trailing slash.
      * We keep this around so we can query more information if required (posix).
      * This is allocated in the same block as this structure, thus the const. */
     const char         *pszPath;
     /** The length of the path. */
-    unsigned            cchPath;
+    size_t              cchPath;
     /** Set to indicate that the Data member contains unread data. */
     bool                fDataUnread;
 #ifndef RT_DONT_CONVERT_FILENAMES
@@ -83,7 +83,7 @@ typedef struct RTDIR
      * This can be NULL. */
     char               *pszName;
     /** The length of the converted filename. */
-    unsigned            cchName;
+    size_t              cchName;
 #endif
 
 #ifdef RT_OS_WINDOWS
