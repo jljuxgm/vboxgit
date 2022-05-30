@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15532 2008-12-15 18:53:11Z vboxsync $
+# $Id: Makefile.kmk 16241 2009-01-26 17:14:44Z vboxsync $
 ## @file
 # Makefile for Chromium packer
 #
@@ -77,7 +77,7 @@ VBoxOGLpackspu_DEPS       := \
 	$(GEN_H_FILES)
 VBoxOGLpackspu_CLEAN      := $(GEN_C_FILES) $(GEN_H_FILES)
 VBoxOGLpackspu_LIBS.win    = \
-	$(PATH_LIB)/VBoxOGLcrutil$(VBOX_SUFF_LIB) \
+	$(PATH_OBJ)/VBoxOGLcrutil/VBoxOGLcrutil$(VBOX_SUFF_LIB) \
 	$(PATH_LIB)/additions/VBoxOGLspuload$(VBOX_SUFF_LIB) \
 	$(PATH_LIB)/additions/VBoxOGLcrstate$(VBOX_SUFF_LIB) \
 	$(PATH_LIB)/additions/VBoxOGLcrpacker$(VBOX_SUFF_LIB)

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15532 2008-12-15 18:53:11Z vboxsync $
+# $Id: Makefile.kmk 16241 2009-01-26 17:14:44Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Windows Chromium OpenGL ICD.
 #
@@ -127,7 +127,7 @@ VBoxOGL_LIBS.win = \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
 	$(VBOX_LIB_VBGL_R3) \
 	$(PATH_LIB)/additions/VBoxOGLspuload$(VBOX_SUFF_LIB) \
-	$(PATH_LIB)/VBoxOGLcrutil$(VBOX_SUFF_LIB)
+	$(PATH_OBJ)/VBoxOGLcrutil/VBoxOGLcrutil$(VBOX_SUFF_LIB)
 if1of ($(KBUILD_TARGET), linux solaris) ## @todo r=bird: See dll comment else where.
  VBoxOGL_LIBS += \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
