@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 15258 2008-12-10 16:09:34Z vboxsync $ */
+/* $Id: HWVMXR0.h 15288 2008-12-11 07:51:21Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -97,10 +97,10 @@ __BEGIN_DECLS
 #define VMX_VMCS_RO_EXIT_QUALIFICATION_CACHE_IDX                            54
 #define VMX_VMCS32_RO_IDT_INFO_CACHE_IDX                                    55
 #define VMX_VMCS32_RO_IDT_ERRCODE_CACHE_IDX                                 56
-#define VMX_VMCS_MAX_CACHE_IDX                                              VMX_VMCS32_RO_IDT_ERRCODE_CACHE_IDX
+#define VMX_VMCS_MAX_CACHE_IDX                                              (VMX_VMCS32_RO_IDT_ERRCODE_CACHE_IDX+1)
 #define VMX_VMCS64_GUEST_CR3_CACHE_IDX                                      57
 #define VMX_VMCS_EXIT_PHYS_ADDR_FULL_CACHE_IDX                              58
-#define VMX_VMCS_MAX_NESTED_PAGING_CACHE_IDX                                VMX_VMCS_EXIT_PHYS_ADDR_FULL_CACHE_IDX
+#define VMX_VMCS_MAX_NESTED_PAGING_CACHE_IDX                                (VMX_VMCS_EXIT_PHYS_ADDR_FULL_CACHE_IDX+1)
 
 
 #ifdef IN_RING0
