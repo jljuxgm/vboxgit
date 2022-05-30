@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 14922 2008-12-02 17:39:34Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 14931 2008-12-03 00:33:47Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -489,7 +489,8 @@ void VirtualBox::uninit()
 #else
 # error "Port me!"
 #endif
-    /* Unload plugin backends. */
+
+    /* Unload hard disk plugin backends. */
     VDShutdown();
 
     LogFlowThisFuncLeave();

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
+/* $Id: MediumImpl.cpp 14931 2008-12-03 00:33:47Z vboxsync $ */
 
 /** @file
  *
@@ -58,7 +58,8 @@ STDMETHODIMP MediumBase::COMGETTER(Id) (GUIDPARAMOUT aId)
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
 
-    /* m.id is constant during life time, no need to lock */
+    AutoReadLock alock (this);
+
     m.id.cloneTo (aId);
 
     return S_OK;
