@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17895 2009-03-15 19:18:07Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17904 2009-03-16 07:31:12Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -2228,7 +2228,16 @@ static int vboxNetWinAddComponent(std::list <ComObjPtr <HostNetworkInterface> > 
     return rc;
 }
 
-#endif /* #ifndef VBOX_WITH_NETFLT */
+#else /* !VBOX_WITH_NETFLT */
+
+int netIfNetworkInterfaceHelperServer (SVCHlpClient *aClient,
+                                       SVCHlpMsg::Code aMsgCode)
+{
+    /* dummy */
+    return VINF_SUCCESS;
+}
+
+#endif /* ! VBOX_WITH_NETFLT */
 
 
 static int netIfListHostAdapters(std::list <ComObjPtr <HostNetworkInterface> > &list)
