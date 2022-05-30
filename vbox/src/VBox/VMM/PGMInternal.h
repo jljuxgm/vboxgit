@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 14145 2008-11-12 21:59:25Z vboxsync $ */
+/* $Id: PGMInternal.h 14146 2008-11-12 22:06:45Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3486,7 +3486,7 @@ DECLINLINE(X86PDEPAE) pgmGstGetPaePDE(PPGM pPGM, RTGCPTR GCPtr)
 
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
     PX86PDPT pGuestPDPT = pgmGstGetPaePDPTPtr(pPGM);
-    if (LIKELY(pGuestPDPT))
+    if (RT_LIKELY(pGuestPDPT))
 #else
     PX86PDPT pGuestPDPT = pPGM->CTX_SUFF(pGstPaePDPT);
 #endif
