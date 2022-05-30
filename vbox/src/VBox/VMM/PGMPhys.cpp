@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 11299 2008-08-08 22:56:56Z vboxsync $ */
+/* $Id: PGMPhys.cpp 12300 2008-09-09 15:07:21Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2023,7 +2023,7 @@ int pgmr3PhysGrowRange(PVM pVM, RTGCPHYS GCPhys)
         rc = VMR3SuspendNoSave(pVM);
         AssertRC(rc);
 
-        VMSetRuntimeError(pVM, false, "HostMemoryLow", "Unable to allocate and lock memory. The virtual machine will be paused. Please close applications to free up memory or close the VM.");
+        VMSetRuntimeError(pVM, false, "HostMemoryLow", "Unable to allocate and lock memory. The virtual machine will be paused. Please close applications to free up memory or close the VM");
 
         /* Wait for resume event; will only return in that case. If the VM is stopped, the EMT thread will be destroyed. */
         rc = VMR3WaitForResume(pVM);

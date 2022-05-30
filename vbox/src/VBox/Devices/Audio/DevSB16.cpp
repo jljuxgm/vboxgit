@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 11284 2008-08-08 22:32:08Z vboxsync $ */
+/* $Id: DevSB16.cpp 12300 2008-09-09 15:07:21Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1836,7 +1836,7 @@ static DECLCALLBACK(int) sb16Construct (PPDMDEVINS pDevIns, int iInstance, PCFGM
         AUD_init_null();
         PDMDevHlpVMSetRuntimeError(pDevIns, false, "HostAudioNotResponding",
             N_("No audio devices could be opened. Selecting the NULL audio backend "
-               "with the consequence that no sound is audible."));
+               "with the consequence that no sound is audible"));
     }
     return VINF_SUCCESS;
 }
