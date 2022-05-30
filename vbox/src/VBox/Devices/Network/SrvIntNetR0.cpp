@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 13421 2008-10-21 09:26:26Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 13435 2008-10-21 12:21:12Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -3300,7 +3300,7 @@ static int intnetR0NetworkCreateIf(PINTNETNETWORK pNetwork, PSUPDRVSESSION pSess
 }
 
 
-#ifdef SUPDRV_WITH_UNWIND_HACK
+#ifdef RT_WITH_W64_UNWIND_HACK
 # if defined(RT_OS_WINDOWS) && defined(RT_ARCH_AMD64)
 #  define INTNET_DECL_CALLBACK(type) DECLASM(DECLHIDDEN(type))
 #  define INTNET_CALLBACK(_n) intnetNtWrap##_n
@@ -3312,7 +3312,7 @@ static int intnetR0NetworkCreateIf(PINTNETNETWORK pNetwork, PSUPDRVSESSION pSess
    INTNET_DECL_CALLBACK(void) INTNET_CALLBACK(intnetR0TrunkIfPortSGRelease)(PINTNETTRUNKSWPORT pSwitchPort, PINTNETSG pSG);
 
 # else
-#  error "UNSUPPORTED (SUPDRV_WITH_UNWIND_HACK)"
+#  error "UNSUPPORTED (RT_WITH_W64_UNWIND_HACK)"
 # endif
 #else
 #  define INTNET_DECL_CALLBACK(_t) static DECLCALLBACK(_t)

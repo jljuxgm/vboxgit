@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 13421 2008-10-21 09:26:26Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 13435 2008-10-21 12:21:12Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -373,7 +373,7 @@ static bool vboxNetFltMaybeRediscovered(PVBOXNETFLTINS pThis)
     return fRediscovered;
 }
 
-#ifdef SUPDRV_WITH_UNWIND_HACK
+#ifdef RT_WITH_W64_UNWIND_HACK
 # if defined(RT_OS_WINDOWS) && defined(RT_ARCH_AMD64)
 #  define NETFLT_DECL_CALLBACK(type) DECLASM(DECLHIDDEN(type))
 #  define NETFLT_CALLBACK(_n) netfltNtWrap##_n
@@ -389,7 +389,7 @@ NETFLT_DECL_CALLBACK(void) NETFLT_CALLBACK(vboxNetFltPortRetain)(PINTNETTRUNKIFP
 NETFLT_DECL_CALLBACK(void) NETFLT_CALLBACK(vboxNetFltPortRelease)(PINTNETTRUNKIFPORT pIfPort);
 
 # else
-#  error "UNSUPPORTED (SUPDRV_WITH_UNWIND_HACK)"
+#  error "UNSUPPORTED (RT_WITH_W64_UNWIND_HACK)"
 # endif
 #else
 # define NETFLT_DECL_CALLBACK(type) static DECLCALLBACK(type)
