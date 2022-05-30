@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.cpp 15485 2008-12-15 09:42:39Z vboxsync $ */
+/* $Id: HardDisk2Impl.cpp 15486 2008-12-15 09:57:20Z vboxsync $ */
 
 /** @file
  *
@@ -1312,6 +1312,14 @@ STDMETHODIMP HardDisk2::CloneTo (IHardDisk2 *aTarget, IProgress **aProgress)
 }
 
 STDMETHODIMP HardDisk2::FlattenTo (IHardDisk2 *aTarget, IProgress **aProgress)
+{
+    AutoCaller autoCaller (this);
+    CheckComRCReturnRC (autoCaller.rc());
+
+    ReturnComNotImplemented();
+}
+
+STDMETHODIMP HardDisk2::Compact (IProgress **aProgress)
 {
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());

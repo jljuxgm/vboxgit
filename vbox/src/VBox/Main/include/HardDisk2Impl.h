@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.h 15318 2008-12-11 17:27:02Z vboxsync $ */
+/* $Id: HardDisk2Impl.h 15486 2008-12-15 09:57:20Z vboxsync $ */
 
 /** @file
  *
@@ -112,6 +112,7 @@ public:
     STDMETHOD(MergeTo) (IN_GUID aTargetId, IProgress **aProgress);
     STDMETHOD(CloneTo) (IHardDisk2 *aTarget, IProgress **aProgress);
     STDMETHOD(FlattenTo) (IHardDisk2 *aTarget, IProgress **aProgress);
+    STDMETHOD(Compact) (IProgress **aProgress);
 
     // public methods for internal purposes only
 
