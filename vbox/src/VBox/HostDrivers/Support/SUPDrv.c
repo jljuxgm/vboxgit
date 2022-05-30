@@ -1,4 +1,4 @@
-/* $Revision: 16446 $ */
+/* $Revision: 16447 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -2073,7 +2073,7 @@ SUPR0DECL(int) SUPR0ObjVerifyAccess(void *pvObj, PSUPDRVSESSION pSession, const 
  * @param   pvR3        Start of the memory range to lock.
  *                      This must be page aligned.
  * @param   cPages      Number of pages to lock.
- * @param   paPages     Where to put the physical addresses of allocated memory.
+ * @param   paPages     Where to put the physical addresses of locked memory.
  */
 SUPR0DECL(int) SUPR0LockMem(PSUPDRVSESSION pSession, RTR3PTR pvR3, uint32_t cPages, PRTHCPHYS paPages)
 {
