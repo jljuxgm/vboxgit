@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 16428 2009-01-30 16:49:19Z vboxsync $ */
+/* $Id: PGMInternal.h 16429 2009-01-30 16:50:00Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -56,7 +56,7 @@
 /*
  * Enable to use the PGM pool for all levels in the paging chain in all paging modes.
  */
-#define VBOX_WITH_PGMPOOL_PAGING_ONLY
+//#define VBOX_WITH_PGMPOOL_PAGING_ONLY
 
 /**
  * Solve page is out of sync issues inside Guest Context (in PGMGC.cpp).
