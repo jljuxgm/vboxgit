@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 13189 2008-10-11 12:36:11Z vboxsync $ */
+/* $Id: DevPCI.cpp 13191 2008-10-11 12:47:27Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -79,9 +79,7 @@ typedef struct PCIBus
     /** Start device number. */
     int32_t             iDevSearch;
 
-#if HC_ARCH_BITS == 64
     uint32_t            Alignment0[2];
-#endif
 
     /** Array of PCI devices. */
     R3PTRTYPE(PPCIDEVICE) devices[256];
