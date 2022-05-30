@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 15193 2008-12-09 16:51:30Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 15200 2008-12-09 20:25:26Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -879,7 +879,9 @@ void vboxNetFltPortOsSetActive(PVBOXNETFLTINS pThis, bool fActive)
          * host the interface promiscuity for vboxNetFltPortOsIsPromiscuous.
          */
         u_int16_t fIf;
+#ifdef LOG_ENABLED
         unsigned const cPromiscBefore = VBOX_GET_PCOUNT(pDev);
+#endif
         if (fActive)
         {
             Assert(!pThis->u.s.fPromiscuousSet);
