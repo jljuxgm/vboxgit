@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 12061 2008-09-03 15:37:33Z vboxsync $ */
+/* $Id: HWACCMInternal.h 12090 2008-09-04 12:51:46Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -374,6 +374,16 @@ typedef struct HWACCM
 
     /** Currenty shadow paging mode. */
     PGMMODE                 enmShadowMode;
+
+
+#ifdef VBOX_SAVE_HOST_DEBUG_REGISTERS
+    struct
+    {
+        /* Saved host debug registers. */
+        uint64_t                dr0, dr1, dr2, dr3, dr6, dr7;
+        bool                    fHostDR7Saved;
+    } savedhoststate;
+#endif
 
     STAMPROFILEADV          StatEntry;
     STAMPROFILEADV          StatExit;
