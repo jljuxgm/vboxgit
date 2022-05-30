@@ -1,4 +1,4 @@
-/* $Id: Global.h 14667 2008-11-26 23:10:02Z vboxsync $ */
+/* $Id: Global.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -65,3 +65,4 @@ public:
 };
 
 #endif /* ____H_GLOBAL */
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 13878 2008-11-05 15:56:44Z vboxsync $ */
+/* $Id: ConsoleImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -607,3 +607,4 @@ private:
 };
 
 #endif // ____H_CONSOLEIMPL
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

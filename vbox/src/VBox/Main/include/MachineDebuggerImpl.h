@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 14627 2008-11-26 10:17:37Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -110,3 +110,4 @@ private:
 };
 
 #endif /* ____H_MACHINEDEBUGGER */
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

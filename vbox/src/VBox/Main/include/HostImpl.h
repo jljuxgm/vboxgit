@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 14722 2008-11-27 17:11:36Z vboxsync $ */
+/* $Id: HostImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -184,3 +184,4 @@ private:
 };
 
 #endif // ____H_HOSTIMPL
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

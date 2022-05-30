@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: USBControllerImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -171,3 +171,4 @@ private:
 };
 
 #endif //!____H_USBCONTROLLERIMPL
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

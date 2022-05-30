@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 13607 2008-10-28 10:43:42Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -127,3 +127,4 @@ COM_DECL_READONLY_ENUM_AND_COLLECTION_END (HostNetworkInterface)
 
 
 #endif // ____H_H_HOSTNETWORKINTERFACEIMPL
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.h 14929 2008-12-02 22:29:29Z vboxsync $ */
+/* $Id: HardDisk2Impl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -305,3 +305,4 @@ private:
 
 #endif /* ____H_HARDDISK2IMPL */
 
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

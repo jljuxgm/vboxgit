@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 14225 2008-11-14 17:55:28Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -143,3 +143,4 @@ private:
 };
 
 #endif // ____H_SYSTEMPROPERTIESIMPL
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.h 13659 2008-10-29 15:45:03Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -198,3 +198,4 @@ COM_DECL_READONLY_ENUM_AND_COLLECTION_EX_END (ComObjPtr <RemoteUSBDevice>, IHost
 
 
 #endif // ____H_REMOTEUSBDEVICEIMPL
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

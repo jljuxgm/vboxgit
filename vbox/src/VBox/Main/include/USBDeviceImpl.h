@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.h 13659 2008-10-29 15:45:03Z vboxsync $ */
+/* $Id: USBDeviceImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
@@ -182,3 +182,4 @@ COM_DECL_READONLY_ENUM_AND_COLLECTION_EX_BEGIN (ComObjPtr <OUSBDevice>, IUSBDevi
 COM_DECL_READONLY_ENUM_AND_COLLECTION_EX_END (ComObjPtr <OUSBDevice>, IUSBDevice, OUSBDevice)
 
 #endif // ____H_USBDEVICEIMPL
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

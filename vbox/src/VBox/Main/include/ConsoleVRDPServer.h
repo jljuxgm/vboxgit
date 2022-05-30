@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 13607 2008-10-28 10:43:42Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -288,3 +288,4 @@ private:
 };
 
 #endif // ____H_CONSOLEVRDPSERVER
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

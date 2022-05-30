@@ -1,4 +1,4 @@
-/* $Id: Performance.h 13908 2008-11-06 11:53:47Z vboxsync $ */
+/* $Id: Performance.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -403,3 +403,4 @@ namespace pm
     };
 }
 
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

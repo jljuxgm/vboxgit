@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxXMLUtil.h 14437 2008-11-20 21:37:06Z vboxsync $ */
+/* $Id: VirtualBoxXMLUtil.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -65,3 +65,4 @@
 #define VBOX_XML_SETTINGS_CONVERTER "SettingsConverter.xsl"
 
 #endif /* ____H_VIRTUALBOXXMLUTIL */
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 14664 2008-11-26 21:19:35Z vboxsync $ */
+/* $Id: MachineImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
 
 /** @file
  *
@@ -1078,3 +1078,4 @@ inline Machine *Machine::machine()
 }
 
 #endif // ____H_MACHINEIMPL
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */
