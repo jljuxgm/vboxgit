@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 11261 2008-08-08 15:46:17Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 12545 2008-09-17 15:11:37Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -138,18 +138,18 @@ int main()
     GEN_CHECK_OFF(IOMMMIORANGE, GCPhys);
     GEN_CHECK_OFF(IOMMMIORANGE, cb);
     GEN_CHECK_OFF(IOMMMIORANGE, pszDesc);
-    GEN_CHECK_OFF(IOMMMIORANGE, pvUserR3);
-    GEN_CHECK_OFF(IOMMMIORANGE, pDevInsR3);
+    GEN_CHECK_OFF(IOMMMIORANGE, u[0].pvUserR3);
+    GEN_CHECK_OFF(IOMMMIORANGE, u[0].pDevInsR3);
     GEN_CHECK_OFF(IOMMMIORANGE, pfnWriteCallbackR3);
     GEN_CHECK_OFF(IOMMMIORANGE, pfnReadCallbackR3);
     GEN_CHECK_OFF(IOMMMIORANGE, pfnFillCallbackR3);
-    GEN_CHECK_OFF(IOMMMIORANGE, pvUserR0);
-    GEN_CHECK_OFF(IOMMMIORANGE, pDevInsR0);
+    GEN_CHECK_OFF(IOMMMIORANGE, u[0].pvUserR0);
+    GEN_CHECK_OFF(IOMMMIORANGE, u[0].pDevInsR0);
     GEN_CHECK_OFF(IOMMMIORANGE, pfnWriteCallbackR0);
     GEN_CHECK_OFF(IOMMMIORANGE, pfnReadCallbackR0);
     GEN_CHECK_OFF(IOMMMIORANGE, pfnFillCallbackR0);
-    GEN_CHECK_OFF(IOMMMIORANGE, pvUserGC);
-    GEN_CHECK_OFF(IOMMMIORANGE, pDevInsGC);
+    GEN_CHECK_OFF(IOMMMIORANGE, u[0].pvUserGC);
+    GEN_CHECK_OFF(IOMMMIORANGE, u[0].pDevInsGC);
     GEN_CHECK_OFF(IOMMMIORANGE, pfnWriteCallbackGC);
     GEN_CHECK_OFF(IOMMMIORANGE, pfnReadCallbackGC);
     GEN_CHECK_OFF(IOMMMIORANGE, pfnFillCallbackGC);

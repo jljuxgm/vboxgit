@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 12479 2008-09-16 09:14:29Z vboxsync $ */
+/* $Id: VMM.cpp 12545 2008-09-17 15:11:37Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -373,6 +373,11 @@ VMMR3DECL(int) VMMR3Init(PVM pVM)
 
     /* GC switchers are enabled by default. Turned off by HWACCM. */
     pVM->vmm.s.fSwitcherDisabled = false;
+
+    /** @todo fetch the configured number of VCPUs. */
+    pVM->cCPUs = 1;
+    /** Current CPU id; @todo move to per CPU structure. */
+    pVM->idCPU = 0;
 
     /*
      * Register the saved state data unit.
