@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 15488 2008-12-15 10:00:20Z vboxsync $ */
+/* $Id: VBoxManage.cpp 15489 2008-12-15 10:03:35Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -511,7 +511,7 @@ static void printUsage(USAGECATEGORY u64Cmd)
         /// @todo NEWMEDIA add -format to specify the hard disk backend
         RTPrintf("VBoxManage createhd         -filename <filename>\n"
                  "                            -size <megabytes>\n"
-                 "                            [-format VDI|VMDK]\n"
+                 "                            [-format VDI|VMDK|VHD]\n"
                  "                            [-static]\n"
                  "                            [-comment <comment>]\n"
                  "                            [-register]\n"
@@ -535,17 +535,17 @@ static void printUsage(USAGECATEGORY u64Cmd)
 
     if (u64Cmd & USAGE_CONVERTHD)
     {
-        RTPrintf("VBoxManage converthd        [-srcformat VDI|VMDK|RAW]\n"
-                 "                            [-dstformat VDI|VMDK|RAW]\n"
+        RTPrintf("VBoxManage converthd        [-srcformat VDI|VMDK|VHD|RAW]\n"
+                 "                            [-dstformat VDI|VMDK|VHD|RAW]\n"
                  "                            <inputfile> <outputfile>\n"
                  "\n");
     }
 
     if (u64Cmd & USAGE_CONVERTDD)
     {
-        RTPrintf("VBoxManage convertdd        [-static] [-format VDI|VMDK]"
+        RTPrintf("VBoxManage convertdd        [-static] [-format VDI|VMDK|VHD]"
                  "                            <filename> <outputfile>\n"
-                 "VBoxManage convertdd        [-static] [-format VDI|VMDK]"
+                 "VBoxManage convertdd        [-static] [-format VDI|VMDK|VHD]"
                  "                            stdin <outputfile> <bytes>\n"
                  "\n");
     }
