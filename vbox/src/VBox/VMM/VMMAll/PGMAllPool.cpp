@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17496 2009-03-06 16:56:43Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17500 2009-03-06 17:10:41Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4205,6 +4205,9 @@ static void pgmPoolFlushAllInt(PPGMPOOL pPool)
 #ifdef PGMPOOL_WITH_CACHE
         pPage->iAgeNext  = NIL_PGMPOOL_IDX;
         pPage->iAgePrev  = NIL_PGMPOOL_IDX;
+#endif
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+        pPage->fLocked   = false;
 #endif
     }
     pPool->aPages[pPool->cCurPages - 1].iNext = NIL_PGMPOOL_IDX;
