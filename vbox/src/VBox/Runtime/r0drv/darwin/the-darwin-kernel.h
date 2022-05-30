@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 16330 2009-01-28 20:22:08Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 16354 2009-01-28 23:52:28Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -62,6 +62,7 @@
 # include <i386/mp_events.h>
 #endif
 #include <libkern/libkern.h>
+#include <libkern/sysctl.h>
 #include <mach/thread_act.h>
 #include <mach/vm_map.h>
 #include <pexpert/pexpert.h>
