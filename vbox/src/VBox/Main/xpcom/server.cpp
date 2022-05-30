@@ -1,4 +1,4 @@
-/* $Id: server.cpp 16382 2009-01-29 17:16:22Z vboxsync $ */
+/* $Id: server.cpp 16707 2009-02-12 13:19:37Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -252,7 +252,6 @@ COM_IMPL_READONLY_ENUM_AND_COLLECTION(HostUSBDeviceFilter)
 COM_IMPL_READONLY_ENUM_AND_COLLECTION(USBDeviceFilter)
 #endif
 
-COM_IMPL_READONLY_ENUM_AND_COLLECTION_AS(Progress, IProgress)
 #ifdef VBOX_WITH_USB
 COM_IMPL_READONLY_ENUM_AND_COLLECTION_AS(IfaceUSBDevice, IUSBDevice)
 #endif

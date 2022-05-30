@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 16560 2009-02-06 18:06:04Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 16707 2009-02-12 13:19:37Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -675,21 +675,18 @@ VirtualBox::COMGETTER(FloppyImages) (ComSafeArrayOut (IFloppyImage2 *, aFloppyIm
     return S_OK;
 }
 
-STDMETHODIMP VirtualBox::COMGETTER(ProgressOperations) (IProgressCollection **aOperations)
+STDMETHODIMP VirtualBox::COMGETTER(ProgressOperations) (ComSafeArrayOut (IProgress *, aOperations))
 {
     CheckComArgOutSafeArrayPointerValid(aOperations);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
 
-    ComObjPtr <ProgressCollection> collection;
-    collection.createObject();
-
     /* protect mProgressOperations */
     AutoReadLock safeLock (mSafeLock);
 
-    collection->init (mData.mProgressOperations);
-    collection.queryInterfaceTo (aOperations);
+    SafeIfaceArray <IProgress> progress (mData.mProgressOperations);
+    progress.detachTo (ComSafeArrayOutArg (aOperations));
 
     return S_OK;
 }

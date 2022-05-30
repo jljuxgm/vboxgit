@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: ProgressImpl.h 16707 2009-02-12 13:19:37Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -357,8 +357,6 @@ private:
     size_t mProgress;
     ULONG mCompletedOperations;
 };
-
-COM_DECL_READONLY_ENUM_AND_COLLECTION_AS (Progress, IProgress)
 
 #endif /* ____H_PROGRESSIMPL */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
