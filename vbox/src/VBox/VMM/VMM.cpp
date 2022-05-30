@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 13691 2008-10-30 21:16:40Z vboxsync $ */
+/* $Id: VMM.cpp 13694 2008-10-30 21:50:12Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -34,11 +34,10 @@
  *
  * @section sec_vmmstate        VMM State
  *
+ * @image html VM_Statechart_Diagram.gif
+ *
  * To be written.
  *
- * Lets see which of these links that works...
- * @image "VM Statechart Diagram.gif"
- * @image VM\ Statechart\ Diagram.gif
  *
  * @subsection  subsec_vmm_init     VMM Initialization
  *
