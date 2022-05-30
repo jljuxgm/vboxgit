@@ -1,6 +1,6 @@
-/* $Id: VMMGC.cpp 13714 2008-10-31 14:01:43Z vboxsync $ */
+/* $Id: VMMGC.cpp 13813 2008-11-04 21:55:34Z vboxsync $ */
 /** @file
- * VMM - Guest Context.
+ * VMM - Raw-mode Context.
  */
 
 /*
@@ -67,7 +67,7 @@ VMMRCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
     switch (uOperation)
     {
         /*
-         * Init GC modules.
+         * Init RC modules.
          */
         case VMMGC_DO_VMMGC_INIT:
         {
@@ -86,7 +86,7 @@ VMMRCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
             uint64_t u64TS = va_arg(va, uint64_t);
             va_end(va);
 
-            int rc = RTGCInit(u64TS);
+            int rc = RTRCInit(u64TS);
             Log(("VMMGCEntry: VMMGC_DO_VMMGC_INIT - uArg=%u (svn revision) u64TS=%RX64; rc=%Rrc\n", uArg, u64TS, rc));
             AssertRCReturn(rc, rc);
 
@@ -161,7 +161,7 @@ VMMRCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
 
 
 /**
- * Internal GC logger worker: Flush logger.
+ * Internal RC logger worker: Flush logger.
  *
  * @returns VINF_SUCCESS.
  * @param   pLogger     The logger instance to flush.

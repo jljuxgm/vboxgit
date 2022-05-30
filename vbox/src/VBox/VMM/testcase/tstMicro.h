@@ -1,4 +1,4 @@
-/* $Id: tstMicro.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstMicro.h 13813 2008-11-04 21:55:34Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -74,10 +74,10 @@ typedef struct TSTMICRORESULT
  */
 typedef struct TSTMICRO
 {
-    /** The GC address of this structure. */
-    RTGCPTR     GCPtr;
+    /** The RC address of this structure. */
+    RTRCPTR     RCPtr;
     /** Just for proper alignment. */
-    RTGCPTR     GCPtrStack;
+    RTRCPTR     RCPtrStack;
 
     /** TSC sampled right before leaving R0. */
     uint64_t    u64TSCR0Start;

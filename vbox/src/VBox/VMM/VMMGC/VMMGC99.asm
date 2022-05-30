@@ -1,6 +1,6 @@
-; $Id: VMMGC99.asm 8155 2008-04-18 15:16:47Z vboxsync $
+; $Id: VMMGC99.asm 13813 2008-11-04 21:55:34Z vboxsync $
 ;; @file
-; VMMGC0 - The first object module in the link.
+; VMMGC99 - The last object module in the link.
 ;
 
 ; Copyright (C) 2006-2007 Sun Microsystems, Inc.

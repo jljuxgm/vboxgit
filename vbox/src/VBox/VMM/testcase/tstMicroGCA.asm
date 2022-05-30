@@ -1,4 +1,4 @@
-; $Id: tstMicroGCA.asm 8155 2008-04-18 15:16:47Z vboxsync $
+; $Id: tstMicroGCA.asm 13813 2008-11-04 21:55:34Z vboxsync $
 ;; @file
 ; tstMicroGCA
 ;
@@ -302,7 +302,7 @@ BEGINPROC_EXPORTED tstPFR1
     mov     es, eax
     mov     ds, eax
     push    dword 01069h                ; ss
-    push    dword [ebx + TSTMICRO.GCPtrStack] ; esp
+    push    dword [ebx + TSTMICRO.RCPtrStack] ; esp
     push    dword 0000h                 ; eflags
     push    dword 01061h                ; cs
     push    tstPTR1_R1                  ; eip
@@ -342,7 +342,7 @@ BEGINPROC_EXPORTED tstPFR2
     mov     es, eax
     mov     ds, eax
     push    0206ah                      ; ss
-    push    dword [ebx + TSTMICRO.GCPtrStack] ; esp
+    push    dword [ebx + TSTMICRO.RCPtrStack] ; esp
     push    dword 0000h                 ; eflags
     push    02062h                      ; cs
     push    tstPTR2_R2                  ; eip
@@ -382,7 +382,7 @@ BEGINPROC_EXPORTED tstPFR3
     mov     es, eax
     mov     ds, eax
     push    0306bh                      ; ss
-    push    dword [ebx + TSTMICRO.GCPtrStack] ; esp
+    push    dword [ebx + TSTMICRO.RCPtrStack] ; esp
     push    dword 0000h                 ; eflags
     push    03063h                      ; cs
     push    tstPTR3_R3                  ; eip
