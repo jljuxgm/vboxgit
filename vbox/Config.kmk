@@ -484,7 +484,9 @@ endif
 if1of ($(KBUILD_TARGET), darwin linux solaris win)
  VBOX_WITH_NETFLT = 1
  VBOX_SOLARIS_NSL_RESOLVED = 1
-# VBOX_WITH_NETADP = 1
+ if1of ($(KBUILD_TARGET), darwin)
+  VBOX_WITH_NETADP = 1
+ endif
 endif
 ## Use the new version of liblzf. Remove with the old liblzf.
 #VBOX_WITH_NEW_LIBLZF = 1
@@ -3694,7 +3696,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 17744 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 17777 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
