@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 13543 2008-10-23 16:49:58Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 13585 2008-10-27 16:07:58Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1165,10 +1165,23 @@ static int pgmPoolCacheFreeOne(PPGMPOOL pPool, uint16_t iUser)
         }
     }
 */
+
     Assert(iToFree != iUser);
     AssertRelease(iToFree != NIL_PGMPOOL_IDX);
 
-    int rc = pgmPoolFlushPage(pPool, &pPool->aPages[iToFree]);
+    PPGMPOOLPAGE pPage = &pPool->aPages[iToFree];
+
+    /*
+     * Reject any attempts at flushing the currently active shadow CR3 mapping
+     */
+    if (PGMGetHyperCR3(pPool->CTX_SUFF(pVM)) == pPage->Core.Key)
+    {
+        /* Refresh the cr3 mapping by putting it at the head of the age list. */
+        pgmPoolCacheUsed(pPool, pPage);
+        return pgmPoolCacheFreeOne(pPool, iUser);
+    }
+
+    int rc = pgmPoolFlushPage(pPool, pPage);
     if (rc == VINF_SUCCESS)
         PGM_INVL_GUEST_TLBS(); /* see PT handler. */
     return rc;
