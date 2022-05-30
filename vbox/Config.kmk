@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12429 2008-09-12 15:11:16Z vboxsync $
+# $Id: Config.kmk 12445 2008-09-14 23:31:21Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1489,9 +1489,9 @@ ifdef VBOX_SIGNING_MODE
   ifeq ($(strip $(VBOX_SIGNING_MODE)),release)
    ## Commands for signing an executable or a dll image after link.
    VBOX_SIGN_IMAGE_CMDS  ?= $(if $(eq $(tool_do),LINK_LIBRARY),,$(call VBOX_SIGN_FILE_FN,$(out)))
-   ## Enable signing of the additions.
-   VBOX_SIGN_ADDITIONS   ?= 1
   endif
+  ## Enable signing of the additions.
+  VBOX_SIGN_ADDITIONS   ?= 1
  else
   # Not windows build platform, ignore.
   VBOX_SIGNING_MODE :=
@@ -3480,7 +3480,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12429 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12445 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
