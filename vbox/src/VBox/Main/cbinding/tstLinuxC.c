@@ -1,4 +1,4 @@
-/* $Revision: 16838 $ */
+/* $Revision: 17304 $ */
 /** @file tstLinuxC.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -25,7 +25,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/stat.h>
-#include "cbinding.h"
+#include "VirtualBox_CXPCOM.h"
 
 static char *nsIDToString(nsID *guid);
 static void listVMs(IVirtualBox *virtualBox, ISession *session);

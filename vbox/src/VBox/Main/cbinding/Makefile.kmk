@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16841 2009-02-17 13:28:11Z vboxsync $
+# $Id: Makefile.kmk 17304 2009-03-03 17:13:00Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -40,7 +40,6 @@ INSTALLS += XpComCHeaders
 XpComCHeaders_MODE = a+r,u+rw
 XpComCHeaders_INST = $(INST_SDK)bindings/xpcom/include/
 XpComCHeaders_SOURCES = \
-	cbinding.h \
 	$(XpComCHeaders_0_OUTDIR)/VirtualBox_CXPCOM.h
 
 $$(XpComCHeaders_0_OUTDIR)/VirtualBox_CXPCOM.h: \

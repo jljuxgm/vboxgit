@@ -1,4 +1,4 @@
-/* $Revision: 16838 $ */
+/* $Revision: 17304 $ */
 /** @file tstdlOpen.c
  * Demonstrator program to illustrate use of C bindings of Main API
  * using dynamic linking (dlopen and friends).
@@ -25,7 +25,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <dlfcn.h>
-#include "cbinding.h"
+#include "VirtualBox_CXPCOM.h"
 
 static char *nsIDToString(nsID *guid);
 static void listVMs(IVirtualBox *virtualBox, ISession *session);
