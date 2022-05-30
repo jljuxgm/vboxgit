@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 16570 2009-02-09 09:02:10Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 16581 2009-02-09 12:08:17Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -231,19 +231,16 @@ int handleImportAppliance(HandlerArg *a)
                 showProgress(progress);
 
                 if (SUCCEEDED(rc))
-                {
                     progress->COMGETTER(ResultCode)(&rc);
-                    if (FAILED (rc))
-                    {
-                        com::ProgressErrorInfo info(progress);
-                        if (info.isBasicAvailable())
-                            RTPrintf("Error: failed to import appliance. Error message: %lS\n", info.getText().raw());
-                        else
-                            RTPrintf("Error: failed to import appliance. No error message available!\n");
-                    }
-                    else
-                        RTPrintf("Successfully imported the appliance.\n");
+
+                if (FAILED(rc))
+                {
+                    com::ProgressErrorInfo info(progress);
+                    com::GluePrintErrorInfo(info);
+                    com::GluePrintErrorContext("ImportAppliance", __FILE__, __LINE__);
                 }
+                else
+                    RTPrintf("Successfully imported the appliance.\n");
             }
         } // end if (aVirtualSystemDescriptions.size() > 0)
     } while (0);
