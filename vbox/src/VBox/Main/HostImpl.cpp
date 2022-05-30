@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 12106 2008-09-04 19:50:42Z vboxsync $ */
+/* $Id: HostImpl.cpp 12327 2008-09-10 08:12:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -584,6 +584,7 @@ STDMETHODIMP Host::COMGETTER(NetworkInterfaces) (IHostNetworkInterfaceCollection
         SolarisNICMap.insert(NICPair("rtls", "Realtek 8139 Fast Ethernet"));
         SolarisNICMap.insert(NICPair("skge", "SksKonnect Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("spwr", "SMC EtherPower II 10/100 (9432)   Ethernet"));
+        SolarisNICMap.insert(NICPair("vnic", "Virtual Ethernet Interface"));
         SolarisNICMap.insert(NICPair("xge", "Neterior Xframe Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("xge", "Neterior Xframe 10Gigabit Ethernet"));
     }
