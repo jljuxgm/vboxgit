@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12517 2008-09-16 20:42:29Z vboxsync $
+# $Id: Config.kmk 12526 2008-09-17 08:39:23Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -431,22 +431,23 @@ endif
 #
 # Branding
 #
-VBOX_BRAND_BIOS_LOGO          := $(PATH_ROOT)/src/VBox/Devices/Graphics/BIOS/sun_logo.bmp
-VBOX_BRAND_LICENSE_HTML       := $(PATH_ROOT)/doc/License.html
-VBOX_BRAND_LICENSE_RTF        := $(PATH_ROOT)/doc/License.rtf
-VBOX_BRAND_LICENSE_TXT        := $(PATH_ROOT)/doc/License.txt
-VBOX_BRAND_LICENSE_VER        :=
-VBOX_BRAND_GUI_ABOUT_PNG      := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/about.png
-VBOX_BRAND_GUI_ABOUT_16PX_PNG := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/about_16px.png
-VBOX_BRAND_GUI_VBOX_16PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_16px.png
-VBOX_BRAND_GUI_VBOX_20PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_20px.png
-VBOX_BRAND_GUI_VBOX_32PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_32px.png
-VBOX_BRAND_GUI_VBOX_40PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_40px.png
-VBOX_BRAND_GUI_VBOX_48PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_48px.png
-VBOX_BRAND_GUI_VBOX_64PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_64px.png
-VBOX_BRAND_GUI_CUBE_42PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_cube_42px.png
-VBOX_BRAND_WIN_INST_DLGBMP    := $(PATH_ROOT)/src/VBox/Installer/win/Binary/Dialog.bmp
+VBOX_BRAND_BIOS_LOGO           := $(PATH_ROOT)/src/VBox/Devices/Graphics/BIOS/sun_logo.bmp
+VBOX_BRAND_LICENSE_HTML        := $(PATH_ROOT)/doc/License.html
+VBOX_BRAND_LICENSE_RTF         := $(PATH_ROOT)/doc/License.rtf
+VBOX_BRAND_LICENSE_TXT         := $(PATH_ROOT)/doc/License.txt
+VBOX_BRAND_LICENSE_VER         :=
+VBOX_BRAND_GUI_ABOUT_PNG       := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/about.png
+VBOX_BRAND_GUI_ABOUT_16PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/about_16px.png
+VBOX_BRAND_GUI_VBOX_16PX_PNG   := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_16px.png
+VBOX_BRAND_GUI_VBOX_20PX_PNG   := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_20px.png
+VBOX_BRAND_GUI_VBOX_32PX_PNG   := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_32px.png
+VBOX_BRAND_GUI_VBOX_40PX_PNG   := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_40px.png
+VBOX_BRAND_GUI_VBOX_48PX_PNG   := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_48px.png
+VBOX_BRAND_GUI_VBOX_64PX_PNG   := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_64px.png
+VBOX_BRAND_GUI_CUBE_42PX_PNG   := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_cube_42px.png
+VBOX_BRAND_WIN_INST_DLGBMP     := $(PATH_ROOT)/src/VBox/Installer/win/Binary/Dialog.bmp
 VBOX_BRAND_WIN_ADD_INST_DLGBMP := $(PATH_ROOT)/src/VBox/Additions/WINNT/Installer/welcome.bmp
+VBOX_BRAND_DARWIN_DISKIMAGE_BG := $(PATH_ROOT)/src/VBox/Installer/darwin/DiskImage/vbox_folder.tiff
 
 #
 # Skip stuff.
@@ -609,8 +610,6 @@ ifdef VBOX_OSE
  VBOX_BRAND_GUI_VBOX_48PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/OSE/VirtualBox_48px.png
  VBOX_BRAND_GUI_VBOX_64PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/OSE/VirtualBox_64px.png
  VBOX_BRAND_GUI_CUBE_42PX_PNG  := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/OSE/VirtualBox_cube_42px.png
- VBOX_BRAND_WIN_INST_DLGBMP    := $(PATH_ROOT)/src/VBox/Installer/win/Binary/Dialog.bmp
- VBOX_BRAND_WIN_ADD_INST_DLGBMP := $(PATH_ROOT)/src/VBox/Additions/WINNT/Installer/welcome.bmp
 endif
 
 #
@@ -3527,7 +3526,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12517 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12526 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
