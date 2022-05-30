@@ -1,4 +1,4 @@
- # $Id: Makefile.kmk 17782 2009-03-12 23:59:35Z vboxsync $
+ # $Id: Makefile.kmk 17820 2009-03-13 13:15:51Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxNetDHCP.
 #
@@ -26,7 +26,7 @@ include $(KBUILD_PATH)/subheader.kmk
 # Targets.
 #
 ifdef VBOX_WITH_HARDENING
- PROGRAMS += VBoxNetDHCP
+ PROGRAMS += VBoxNetDHCPHardened
  DLLS += VBoxNetDHCP
 else
  PROGRAMS += VBoxNetDHCP
@@ -36,9 +36,9 @@ endif
 #
 # Hardened VBoxNetDHCP.
 #
-VBoxNetDHCP_TEMPLATE = VBOXR3HARDENEDEXE
-VBoxNetDHCP_SOURCES = VBoxNetDHCP.cpp
-VBoxNetDHCP_NAME = VBoxNetDHCP
+VBoxNetDHCPHardened_TEMPLATE = VBOXR3HARDENEDEXE
+VBoxNetDHCPHardened_SOURCES = VBoxNetDHCP.cpp
+VBoxNetDHCPHardened_NAME = VBoxNetDHCP
 
 
 #
