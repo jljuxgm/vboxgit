@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 12586 2008-09-18 17:21:13Z vboxsync $ */
+/* $Id: DevATA.cpp 12739 2008-09-25 14:21:59Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1594,6 +1594,7 @@ static bool atapiPassthroughSS(ATADevState *s)
                 if (    rc == VERR_DEV_IO_ERROR
                     && (   u8Cmd == SCSI_TEST_UNIT_READY
                         || u8Cmd == SCSI_READ_CAPACITY
+                        || u8Cmd == SCSI_READ_DVD_STRUCTURE
                         || u8Cmd == SCSI_READ_TOC_PMA_ATIP))
                     break;
                 s->cErrors++;
