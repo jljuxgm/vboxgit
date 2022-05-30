@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 14150 2008-11-12 23:24:49Z vboxsync $ */
+/* $Id: PGMShw.h 14151 2008-11-12 23:26:37Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -146,7 +146,7 @@ PGM_SHW_DECL(int, Enter)(PVM pVM)
 # ifndef VBOX_WITH_2X_4GB_ADDR_SPACE
     pVM->pgm.s.pShwPaePml4R0 = (R0PTRTYPE(PX86PML4))pVM->pgm.s.pShwNestedRootR0;
 # endif
-    pVM->pgm.s.HCPhysPaePML4 = pVM->pgm.s.HCPhysShwNestedRoot;
+    pVM->pgm.s.HCPhysShwPaePml4 = pVM->pgm.s.HCPhysShwNestedRoot;
 #endif
     return VINF_SUCCESS;
 }
@@ -180,7 +180,7 @@ PGM_SHW_DECL(int, Exit)(PVM pVM)
 # ifndef VBOX_WITH_2X_4GB_ADDR_SPACE
     pVM->pgm.s.pShwPaePml4R0 = 0;
 # endif
-    pVM->pgm.s.HCPhysPaePML4 = 0;
+    pVM->pgm.s.HCPhysShwPaePml4 = 0;
     Log(("Leave nested shadow paging mode\n"));
 #endif
 
