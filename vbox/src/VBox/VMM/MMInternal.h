@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 12814 2008-09-29 18:14:37Z vboxsync $ */
+/* $Id: MMInternal.h 12815 2008-09-29 18:33:17Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -686,18 +686,22 @@ typedef struct MM
 #if HC_ARCH_BITS == 64 && GC_ARCH_BITS == 64
     uint32_t                    u32Padding2;
 #endif
-    /** The hypervisor heap (R3 Ptr). */
-    R3PTRTYPE(PMMHYPERHEAP)     pHyperHeapR3;
+
     /** The hypervisor heap (R0 Ptr). */
     R0PTRTYPE(PMMHYPERHEAP)     pHyperHeapR0;
+    /** Page pool - R0 Ptr. */
+    R0PTRTYPE(PMMPAGEPOOL)      pPagePoolR0;
+    /** Page pool pages in low memory R0 Ptr. */
+    R0PTRTYPE(PMMPAGEPOOL)      pPagePoolLowR0;
 
+    /** The hypervisor heap (R3 Ptr). */
+    R3PTRTYPE(PMMHYPERHEAP)     pHyperHeapR3;
+    /** Page pool - R3 Ptr. */
+    R3PTRTYPE(PMMPAGEPOOL)      pPagePoolR3;
+    /** Page pool pages in low memory R3 Ptr. */
+    R3PTRTYPE(PMMPAGEPOOL)      pPagePoolLowR3;
     /** List of memory locks. (HC only) */
     R3PTRTYPE(PMMLOCKEDMEM)     pLockedMem;
-
-    /** Page pool. (HC only) */
-    R3R0PTRTYPE(PMMPAGEPOOL)    pPagePool;
-    /** Page pool pages in low memory. (HC only) */
-    R3R0PTRTYPE(PMMPAGEPOOL)    pPagePoolLow;
 
     /** Pointer to the dummy page.
      * The dummy page is a paranoia thingy used for instance for pure MMIO RAM ranges
