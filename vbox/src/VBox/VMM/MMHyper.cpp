@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 15508 2008-12-15 15:05:16Z vboxsync $ */
+/* $Id: MMHyper.cpp 15538 2008-12-15 19:32:34Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -78,7 +78,7 @@ int mmR3HyperInit(PVM pVM)
     int rc = CFGMR3QueryU32(CFGMR3GetChild(CFGMR3GetRoot(pVM), "MM"), "cbHyperHeap", &cbHyperHeap);
     if (rc == VERR_CFGM_NO_PARENT || rc == VERR_CFGM_VALUE_NOT_FOUND)
         cbHyperHeap = VMMIsHwVirtExtForced(pVM)
-                    ? 384*_1K
+                    ? 640*_1K
                     : 1280*_1K;
     else if (RT_FAILURE(rc))
     {
