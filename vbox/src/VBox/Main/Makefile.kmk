@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17929 2009-03-16 13:09:36Z vboxsync $
+# $Id: Makefile.kmk 17983 2009-03-16 21:44:47Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -374,8 +374,6 @@ ifdef VBOX_WITH_HOSTNETIF_API
   VBoxSVC_SOURCES        += generic/NetIf-generic.cpp
  endif
 endif
-
-VBoxSVC_SOURCES         += generic/DhcpServerRunner.cpp
 
 
 win/VBoxSVC.rc_INCS  = $(PATH_VBoxSVC)
