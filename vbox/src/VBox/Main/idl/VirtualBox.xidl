@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14224 2008-11-14 16:17:20Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14342 2008-11-19 09:47:56Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -1398,7 +1398,7 @@
       </desc>
       <param name="format" type="wstring" dir="in">
         <desc>
-          Idetifier of the torage format to use for the new hard disk.
+          Identifier of the storage format to use for the new hard disk.
         </desc>
       </param>
       <param name="location" type="wstring" dir="in">
