@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 15779 2009-01-02 17:55:25Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 16060 2009-01-19 19:59:47Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -761,7 +761,6 @@ static int VBoxNetFltSolarisModOpen(queue_t *pQueue, dev_t *pDev, int fOpenMode,
             /*
              * Request the physical address (we cache the acknowledgement).
              */
-            /** @todo take a look at DLPI notifications additionally for these things. */
             rc = vboxNetFltSolarisPhysAddrReq(pStream->pReadQueue);
             if (RT_LIKELY(RT_SUCCESS(rc)))
             {
