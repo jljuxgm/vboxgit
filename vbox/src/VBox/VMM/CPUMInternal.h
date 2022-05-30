@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 12657 2008-09-22 18:29:06Z vboxsync $ */
+/* $Id: CPUMInternal.h 12659 2008-09-22 23:18:19Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -235,7 +235,7 @@ typedef struct CPUMHOSTCTX
 
     /* padding to get 32byte aligned size */
 # ifdef VBOX_WITH_HYBIRD_32BIT_KERNEL
-    uint8_t         auPadding[16+32];
+    uint8_t         auPadding[16];
 # else
     uint8_t         auPadding[8+32];
 # endif
