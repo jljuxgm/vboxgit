@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 16079 2009-01-20 11:13:08Z vboxsync $ */
+/* $Id: log-vbox.cpp 16170 2009-01-22 14:40:08Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Logging configuration.
  */
@@ -212,6 +212,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
     ASSERT_LOG_GROUP(DEV_HPET);
     ASSERT_LOG_GROUP(DEV_IDE);
     ASSERT_LOG_GROUP(DEV_KBD);
+    ASSERT_LOG_GROUP(DEV_LPC);
     ASSERT_LOG_GROUP(DEV_NE2000);
     ASSERT_LOG_GROUP(DEV_PC);
     ASSERT_LOG_GROUP(DEV_PC_ARCH);
@@ -434,4 +435,3 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
 #endif /* IN_RING0 */
     return g_pLogger = RT_SUCCESS(rc) ? pLogger : NULL;
 }
-

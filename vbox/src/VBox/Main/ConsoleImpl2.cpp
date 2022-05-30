@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 16049 2009-01-19 17:12:11Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 16170 2009-01-22 14:40:08Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -472,6 +472,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 #else
     fLpcEnabled = false;
 #endif
+
+    if (fLpcEnabled)
+    {
+        rc = CFGMR3InsertNode(pDevices, "lpc", &pDev);                       RC_CHECK();
+        rc = CFGMR3InsertNode(pDev,     "0", &pInst);                        RC_CHECK();
+        rc = CFGMR3InsertInteger(pInst, "Trusted",   1);     /* boolean */   RC_CHECK();
+    }
 
     /*
      * PS/2 keyboard & mouse.
