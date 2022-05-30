@@ -1,4 +1,4 @@
-/* $Revision: 10935 $ */
+/* $Revision: 12000 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -668,6 +668,11 @@ __BEGIN_DECLS
 void VBOXCALL   supdrvOSObjInitCreator(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession);
 bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, const char *pszObjName, int *prc);
 bool VBOXCALL   supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt);
+
+#ifdef SUPDRV_WITH_UNWIND_HACK
+DECLASM(int) supdrvNtWrapVMMR0EntryEx(PFNRT pfnVMMR0EntryEx, PVM pVM, unsigned uOperation, PSUPVMMR0REQHDR pReq, uint64_t u64Arg, PSUPDRVSESSION pSession);
+DECLASM(int) supdrvNtWrapRTSemEventMultiWaitNoResume(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies);
+#endif
 
 
 /*******************************************************************************
