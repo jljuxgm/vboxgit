@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13709 2008-10-31 10:29:13Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 13716 2008-10-31 14:11:01Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -724,6 +724,8 @@ REMR3DECL(int) REMR3BreakpointClear(PVM pVM, RTGCUINTPTR Address)
  */
 REMR3DECL(int) REMR3EmulateInstruction(PVM pVM)
 {
+    bool fFlushTBs;
+
     int rc, rc2;
     Log2(("REMR3EmulateInstruction: (cs:eip=%04x:%08x)\n", CPUMGetGuestCS(pVM), CPUMGetGuestEIP(pVM)));
 
