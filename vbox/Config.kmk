@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12270 2008-09-09 03:51:07Z vboxsync $
+# $Id: Config.kmk 12289 2008-09-09 12:53:44Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1088,7 +1088,7 @@ ifeq ($(KBUILD_TARGET),win)
  LIB_RUNTIME_EF  = #$(PATH_LIB)/RuntimeEFCPP.lib
  LIB_KPROFILE    = $(PATH_LIB)/kPrf2.lib
  LIB_VMM         = $(PATH_LIB)/VBoxVMM.lib
- LIB_VMMGC      = $(PATH_OBJ)/VMMGC/VMMGC.lib
+ LIB_VMMGC       = $(PATH_OBJ)/VMMGC/VMMGC.lib
  LIB_REM         = $(PATH_LIB)/VBoxREMImp.lib
  LIB_XPCOM       = $(PATH_BIN)/VBoxXPCOM.dll
  LIB_DDU         = $(PATH_LIB)/VBoxDDU.lib
@@ -3439,7 +3439,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12270 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12289 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
