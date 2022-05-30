@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 12975 2008-10-03 22:22:37Z vboxsync $ */
+/* $Id: PGMShw.h 13067 2008-10-08 10:11:24Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -114,10 +114,10 @@ PGM_SHW_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
 
 #if PGM_SHW_TYPE != PGM_TYPE_AMD64 && PGM_SHW_TYPE != PGM_TYPE_NESTED && PGM_SHW_TYPE != PGM_TYPE_EPT /* No AMD64 for traditional virtualization, only VT-x and AMD-V. */
         /* GC */
-        rc = PDMR3LdrGetSymbolRC(pVM, NULL, PGM_SHW_NAME_GC_STR(GetPage),  &pModeData->pfnGCShwGetPage);
-        AssertMsgRCReturn(rc, ("%s -> rc=%Vrc\n", PGM_SHW_NAME_GC_STR(GetPage),  rc), rc);
-        rc = PDMR3LdrGetSymbolRC(pVM, NULL, PGM_SHW_NAME_GC_STR(ModifyPage),  &pModeData->pfnGCShwModifyPage);
-        AssertMsgRCReturn(rc, ("%s -> rc=%Vrc\n", PGM_SHW_NAME_GC_STR(ModifyPage),  rc), rc);
+        rc = PDMR3LdrGetSymbolRC(pVM, NULL, PGM_SHW_NAME_RC_STR(GetPage),  &pModeData->pfnRCShwGetPage);
+        AssertMsgRCReturn(rc, ("%s -> rc=%Vrc\n", PGM_SHW_NAME_RC_STR(GetPage),  rc), rc);
+        rc = PDMR3LdrGetSymbolRC(pVM, NULL, PGM_SHW_NAME_RC_STR(ModifyPage),  &pModeData->pfnRCShwModifyPage);
+        AssertMsgRCReturn(rc, ("%s -> rc=%Vrc\n", PGM_SHW_NAME_RC_STR(ModifyPage),  rc), rc);
 #endif /* Not AMD64 shadow paging. */
 
         /* Ring-0 */
