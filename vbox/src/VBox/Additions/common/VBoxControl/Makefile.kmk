@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12446 2008-09-14 23:32:31Z vboxsync $
+# $Id: Makefile.kmk 14220 2008-11-14 15:05:30Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Additions Command Line Management Interface.
 #
@@ -21,6 +21,9 @@
 
 SUB_DEPTH = ../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
+
+# Include sub-makefile(s).
+include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 
 #
 # VBoxControl
