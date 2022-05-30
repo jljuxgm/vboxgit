@@ -1,4 +1,4 @@
-/* $Id: NetIfList-solaris.cpp 16972 2009-02-20 12:32:55Z vboxsync $ */
+/* $Id: NetIfList-solaris.cpp 17275 2009-03-03 13:28:12Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -185,11 +185,11 @@ static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNe
     Uuid.Gen.au8Node[4] = Info.MACAddress.au8[4];
     Uuid.Gen.au8Node[5] = Info.MACAddress.au8[5];
     Info.Uuid = Uuid;
-    Info.enmType = NETIF_T_ETHERNET;
+    Info.enmMediumType = NETIF_T_ETHERNET;
 
     ComObjPtr<HostNetworkInterface> IfObj;
     IfObj.createObject();
-    if (SUCCEEDED(IfObj->init(Bstr(szNICDesc), TRUE, &Info)))
+    if (SUCCEEDED(IfObj->init(Bstr(szNICDesc), HostNetworkInterfaceType_Bridged, &Info)))
         pList->push_back(IfObj);
 }
 

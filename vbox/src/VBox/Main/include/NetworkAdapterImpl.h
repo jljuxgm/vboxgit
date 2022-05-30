@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 16509 2009-02-04 11:26:01Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 17275 2009-03-03 13:28:12Z vboxsync $ */
 
 /** @file
  *
@@ -126,7 +126,7 @@ public:
 
     // INetworkAdapter methods
     STDMETHOD(AttachToNAT)();
-    STDMETHOD(AttachToHostInterface)();
+    STDMETHOD(AttachToBridgedNetwork)();
     STDMETHOD(AttachToInternalNetwork)();
     STDMETHOD(AttachToHostOnlyNetwork)();
     STDMETHOD(Detach)();

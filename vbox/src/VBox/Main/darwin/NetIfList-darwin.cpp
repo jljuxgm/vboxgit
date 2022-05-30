@@ -1,4 +1,4 @@
-/* $Id: NetIfList-darwin.cpp 16968 2009-02-20 10:20:47Z vboxsync $ */
+/* $Id: NetIfList-darwin.cpp 17275 2009-03-03 13:28:12Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -67,7 +67,7 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
         size_t cbNameLen = strlen(pEtherNICs->szName) + 1;
         PNETIFINFO pNew = (PNETIFINFO)RTMemAllocZ(RT_OFFSETOF(NETIFINFO, szName[cbNameLen]));
         pNew->MACAddress = pEtherNICs->Mac;
-        pNew->enmType = NETIF_T_ETHERNET;
+        pNew->enmMediumType = NETIF_T_ETHERNET;
         pNew->Uuid = pEtherNICs->Uuid;
         Assert(sizeof(pNew->szShortName) > sizeof(pEtherNICs->szBSDName));
         memcpy(pNew->szShortName, pEtherNICs->szBSDName, sizeof(pEtherNICs->szBSDName));
@@ -125,7 +125,7 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
 
         ComObjPtr<HostNetworkInterface> IfObj;
         IfObj.createObject();
-        if (SUCCEEDED(IfObj->init(Bstr(pEtherNICs->szName), TRUE, pNew)))
+        if (SUCCEEDED(IfObj->init(Bstr(pEtherNICs->szName), HostNetworkInterfaceType_Bridged, pNew)))
             list.push_back(IfObj);
         RTMemFree(pNew);
 

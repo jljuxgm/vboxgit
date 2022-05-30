@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 17217 2009-02-27 17:13:14Z vboxsync $ */
+/* $Id: ConsoleImpl.h 17275 2009-03-03 13:28:12Z vboxsync $ */
 
 /** @file
  *
@@ -402,8 +402,8 @@ private:
 
     HRESULT callTapSetupApplication(bool isStatic, RTFILE tapFD, Bstr &tapDevice,
                                     Bstr &tapSetupApplication);
-    HRESULT attachToHostInterface(INetworkAdapter *networkAdapter);
-    HRESULT detachFromHostInterface(INetworkAdapter *networkAdapter);
+    HRESULT attachToBridgedInterface(INetworkAdapter *networkAdapter);
+    HRESULT detachFromBridgedInterface(INetworkAdapter *networkAdapter);
     HRESULT powerDownHostInterfaces();
 
     HRESULT setMachineState (MachineState_T aMachineState, bool aUpdateServer = true);

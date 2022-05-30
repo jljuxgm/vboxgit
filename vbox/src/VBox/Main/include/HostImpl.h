@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 17255 2009-03-02 15:42:10Z vboxsync $ */
+/* $Id: HostImpl.h 17275 2009-03-03 13:28:12Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -99,10 +99,10 @@ public:
     // IHost methods
 #ifdef RT_OS_WINDOWS
 
-    STDMETHOD(CreateHostNetworkInterface) (IN_BSTR aName,
+    STDMETHOD(CreateHostOnlyNetworkInterface) (IN_BSTR aName,
                                            IHostNetworkInterface **aHostNetworkInterface,
                                            IProgress **aProgress);
-    STDMETHOD(RemoveHostNetworkInterface) (IN_GUID aId,
+    STDMETHOD(RemoveHostOnlyNetworkInterface) (IN_GUID aId,
                                            IHostNetworkInterface **aHostNetworkInterface,
                                            IProgress **aProgress);
 #endif
@@ -114,6 +114,7 @@ public:
     STDMETHOD(FindHostFloppyDrive) (IN_BSTR aName, IHostFloppyDrive **aDrive);
     STDMETHOD(FindHostNetworkInterfaceByName) (IN_BSTR aName, IHostNetworkInterface **networkInterface);
     STDMETHOD(FindHostNetworkInterfaceById) (IN_GUID id, IHostNetworkInterface **networkInterface);
+    STDMETHOD(FindHostNetworkInterfacesOfType) (HostNetworkInterfaceType type, ComSafeArrayOut (IHostNetworkInterface *, aNetworkInterfaces));
 
     // public methods only for internal purposes
 

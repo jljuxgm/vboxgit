@@ -1,4 +1,4 @@
-/* $Id: NetIfList-linux.cpp 16968 2009-02-20 10:20:47Z vboxsync $ */
+/* $Id: NetIfList-linux.cpp 17275 2009-03-03 13:28:12Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -51,10 +51,10 @@ static int getInterfaceInfo(int iSocket, const char *pszName, PNETIFINFO pInfo)
         switch (Req.ifr_hwaddr.sa_family)
         {
             case ARPHRD_ETHER:
-                pInfo->enmType = NETIF_T_ETHERNET;
+                pInfo->enmMediumType = NETIF_T_ETHERNET;
                 break;
             default:
-                pInfo->enmType = NETIF_T_UNKNOWN;
+                pInfo->enmMediumType = NETIF_T_UNKNOWN;
                 break;
         }
         /* Generate UUID from name and MAC address. */
@@ -141,11 +141,11 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
                 rc = getInterfaceInfo(sock, pszName, &Info);
                 if (RT_FAILURE(rc))
                     break;
-                if (Info.enmType == NETIF_T_ETHERNET)
+                if (Info.enmMediumType == NETIF_T_ETHERNET)
                 {
                     ComObjPtr<HostNetworkInterface> IfObj;
                     IfObj.createObject();
-                    if (SUCCEEDED(IfObj->init(Bstr(pszName), TRUE, &Info)))
+                    if (SUCCEEDED(IfObj->init(Bstr(pszName), HostNetworkInterfaceType_Bridged, &Info)))
                         list.push_back(IfObj);
                 }
 
