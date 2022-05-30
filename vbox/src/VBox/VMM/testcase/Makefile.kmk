@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15236 2008-12-10 09:50:10Z vboxsync $
+# $Id: Makefile.kmk 16350 2009-01-28 22:19:45Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -150,7 +150,7 @@ tstSSM_TEMPLATE         = VBOXR3TSTEXE
 tstSSM_SOURCES          = tstSSM.cpp
 tstSSM_LIBS             = $(LIB_VMM) $(LIB_REM) $(LIB_RUNTIME)
 
-tstInstrEmul_TEMPLATE   = VBOXR3TSTEXE
+tstInstrEmul_TEMPLATE   = VBOXR3EXE
 tstInstrEmul_SOURCES    = tstInstrEmul.cpp ../VMMAll/EMAllA.asm
 tstInstrEmul_LIBS       = $(LIB_VMM) $(LIB_REM) $(LIB_RUNTIME)
 
