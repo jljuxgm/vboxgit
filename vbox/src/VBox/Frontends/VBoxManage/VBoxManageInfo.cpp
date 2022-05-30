@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 16052 2009-01-19 18:24:29Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 16509 2009-02-04 11:26:01Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -696,6 +696,16 @@ HRESULT showVMInfo (ComPtr <IVirtualBox> virtualBox, ComPtr<IMachine> machine,
                         }
                         else
                             strAttachment = Utf8StrFmt("Internal Network '%s'", Utf8Str(strNetwork).raw());
+                        break;
+                    }
+                    case NetworkAttachmentType_HostOnly:
+                    {
+                        if (details == VMINFO_MACHINEREADABLE)
+                        {
+                            strAttachment = "hostonly";
+                        }
+                        else
+                            strAttachment = "Host-only Network";
                         break;
                     }
                     default:

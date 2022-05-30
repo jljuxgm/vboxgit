@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 16491 2009-02-03 14:08:35Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 16509 2009-02-04 11:26:01Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of -modifyvm command.
  */
@@ -1387,6 +1387,13 @@ int handleModifyVM(HandlerArg *a)
                     CHECK_ERROR_RET(nic, COMSETTER(Enabled) (TRUE), 1);
                     CHECK_ERROR_RET(nic, AttachToInternalNetwork(), 1);
                 }
+#ifdef RT_OS_LINUX
+                else if (strcmp(nics[n], "hostonly") == 0)
+                {
+                    CHECK_ERROR_RET(nic, COMSETTER(Enabled) (TRUE), 1);
+                    CHECK_ERROR_RET(nic, AttachToHostOnlyNetwork(), 1);
+                }
+#endif /* RT_OS_LINUX */
                 else
                 {
                     errorArgument("Invalid type '%s' specfied for NIC %lu", nics[n], n + 1);

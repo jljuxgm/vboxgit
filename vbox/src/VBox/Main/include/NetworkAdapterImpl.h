@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 15708 2008-12-19 18:28:27Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 16509 2009-02-04 11:26:01Z vboxsync $ */
 
 /** @file
  *
@@ -128,6 +128,7 @@ public:
     STDMETHOD(AttachToNAT)();
     STDMETHOD(AttachToHostInterface)();
     STDMETHOD(AttachToInternalNetwork)();
+    STDMETHOD(AttachToHostOnlyNetwork)();
     STDMETHOD(Detach)();
 
     // public methods only for internal purposes

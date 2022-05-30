@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 16246 2009-01-26 19:12:41Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 16509 2009-02-04 11:26:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1594,6 +1594,25 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                     }
                     STR_FREE();
                 }
+                break;
+            }
+
+            case NetworkAttachmentType_HostOnly:
+            {
+                if (fSniffer)
+                {
+                    rc = CFGMR3InsertNode(pLunL0, "AttachedDriver", &pLunL0);   RC_CHECK();
+                }
+                else
+                {
+                    rc = CFGMR3InsertNode(pInst, "LUN#0", &pLunL0);             RC_CHECK();
+                }
+
+                rc = CFGMR3InsertString(pLunL0, "Driver", "IntNet");            RC_CHECK();
+                rc = CFGMR3InsertNode(pLunL0, "Config", &pCfg);                 RC_CHECK();
+                rc = CFGMR3InsertString(pCfg, "Trunk", "vboxnet0");             RC_CHECK();
+                rc = CFGMR3InsertInteger(pCfg, "TrunkType", kIntNetTrunkType_NetFlt); RC_CHECK();
+                rc = CFGMR3InsertString(pCfg, "Network", "HostInterfaceNetworking-vboxnet0"); RC_CHECK();
                 break;
             }
 
