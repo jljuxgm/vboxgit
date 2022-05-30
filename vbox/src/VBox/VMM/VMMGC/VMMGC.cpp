@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 17399 2009-03-05 13:44:06Z vboxsync $ */
+/* $Id: VMMGC.cpp 17411 2009-03-05 15:16:47Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -186,7 +186,6 @@ VMMRCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger)
  */
 VMMRCDECL(void) VMMGCLogFlushIfFull(PVM pVM)
 {
-
     if (    pVM->vmm.s.pRCLoggerRC
         &&  pVM->vmm.s.pRCLoggerRC->offScratch >= (sizeof(pVM->vmm.s.pRCLoggerRC->achScratch)*3/4))
     {
