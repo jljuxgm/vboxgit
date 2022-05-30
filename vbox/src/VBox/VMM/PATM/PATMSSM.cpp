@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 11981 2008-09-02 13:05:59Z vboxsync $ */
+/* $Id: PATMSSM.cpp 11983 2008-09-02 13:16:55Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -848,7 +848,7 @@ static void patmCorrectFixup(PVM pVM, unsigned ulSSMVersion, PATM &patmInfo, PPA
         }
         else
         if (    *pFixup >= patmInfo.pStatsGC 
-            &&  *pFixup <  patmInfo.pStatsGC + sizeof(CPUMCTX))
+            &&  *pFixup <  patmInfo.pStatsGC + PATM_STAT_MEMSIZE)
         {
             LogFlow(("Changing absolute Stats at %VRv from %VRv to %VRv\n", patmInfo.pPatchMemGC + offset, *pFixup, (*pFixup - patmInfo.pStatsGC) + pVM->patm.s.pStatsGC));
             *pFixup = (*pFixup - patmInfo.pStatsGC) + pVM->patm.s.pStatsGC;
