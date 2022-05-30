@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 13045 2008-10-07 13:04:43Z vboxsync $ */
+/* $Id: PGMInternal.h 13046 2008-10-07 13:17:17Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -451,12 +451,6 @@ typedef struct PGMVIRTHANDLER
     PGMVIRTHANDLERTYPE                  enmType;
     /** Number of cache pages. */
     uint32_t                            cPages;
-
-/** @todo The next two members are redundant. It adds some readability though. */
-    /** Start of the range. */
-    RTGCPTR                             GCPtr;
-    /** End of the range (exclusive). */
-    RTGCPTR                             GCPtrLast;
 
     /** Size of the range (in bytes). */
     RTGCUINTPTR                         cb;

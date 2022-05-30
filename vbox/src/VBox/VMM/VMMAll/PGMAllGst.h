@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 13038 2008-10-07 11:29:51Z vboxsync $ */
+/* $Id: PGMAllGst.h 13046 2008-10-07 13:17:17Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -775,7 +775,7 @@ static DECLCALLBACK(int) PGM_GST_NAME(VirtHandlerUpdateOne)(PAVLROGCPTRNODECORE 
     PX86PD          pPDSrc = pState->pVM->pgm.s.CTXSUFF(pGuestPD);
 #endif
 
-    RTGCUINTPTR     GCPtr = (RTUINTPTR)pCur->GCPtr;
+    RTGCUINTPTR     GCPtr = (RTUINTPTR)pCur->Core.Key;
 #if PGM_GST_MODE != PGM_MODE_AMD64
     /* skip all stuff above 4GB if not AMD64 mode. */
     if (GCPtr >= _4GB)
