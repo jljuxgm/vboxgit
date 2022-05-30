@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14391 2008-11-20 10:20:10Z vboxsync $
+# $Id: Makefile.kmk 14396 2008-11-20 10:49:31Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -586,6 +586,7 @@ Drivers_SOURCES += $(VBOX_SLIRP_SOURCES)
    $(file)_CFLAGS = -wd4018
   else
    $(file)_CFLAGS = -Wno-sign-compare
+   $(file)_DEFS  += VBOX_WITH_BSD_REASS VBOX_WITH_BSD_TCP_REASS
   endif
  endef
   $(foreach file,$(VBOX_SLIRP_SOURCES),$(eval $(def_vbox_slirp_cflags)))
