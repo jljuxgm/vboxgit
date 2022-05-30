@@ -1,4 +1,4 @@
-/* $Revision: 13666 $ */
+/* $Revision: 13675 $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -183,7 +183,11 @@ static int rtR0MemObjLinuxAllocPages(PRTR0MEMOBJLNX *ppMemLnx, RTR0MEMOBJTYPE en
     if (    fContiguous
         ||  cb <= PAGE_SIZE * 2)
     {
+#ifdef VBOX_USE_INSERT_PAGE
+        paPages = alloc_pages(fFlagsLnx |  __GFP_COMP, rtR0MemObjLinuxOrder(cb >> PAGE_SHIFT));
+#else
         paPages = alloc_pages(fFlagsLnx, rtR0MemObjLinuxOrder(cb >> PAGE_SHIFT));
+#endif
         if (paPages)
         {
             fContiguous = true;
