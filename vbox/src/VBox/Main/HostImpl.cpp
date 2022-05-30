@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: HostImpl.cpp 15235 2008-12-10 09:29:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -114,6 +114,9 @@ extern "C" char *getfullrawname(char *);
 #ifdef RT_OS_SOLARIS
 # include <iprt/path.h>
 # include <iprt/ctype.h>
+#endif
+#ifdef VBOX_WITH_HOSTNETIF_API
+#include <iprt/netif.h>
 #endif
 
 #if defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT)
@@ -757,6 +760,21 @@ STDMETHODIMP Host::COMGETTER(NetworkInterfaces) (IHostNetworkInterfaceCollection
 
     std::list <ComObjPtr <HostNetworkInterface> > list;
 
+#ifdef VBOX_WITH_HOSTNETIF_API
+    PRTNETIFINFO pIfs = RTNetIfList();
+    while (pIfs)
+    {
+        ComObjPtr<HostNetworkInterface> IfObj;
+        IfObj.createObject();
+        if (SUCCEEDED(IfObj->init(pIfs)))
+            list.push_back(IfObj);
+
+        /* next, free current */
+        void *pvFree = pIfs;
+        pIfs = pIfs->pNext;
+        RTMemFree(pvFree);
+    }
+#else
 # if defined(RT_OS_DARWIN)
     PDARWINETHERNIC pEtherNICs = DarwinGetEthernetControllers();
     while (pEtherNICs)
@@ -1044,7 +1062,7 @@ STDMETHODIMP Host::COMGETTER(NetworkInterfaces) (IHostNetworkInterfaceCollection
         close(sock);
     }
 # endif /* RT_OS_LINUX */
-
+#endif
     ComObjPtr <HostNetworkInterfaceCollection> collection;
     collection.createObject();
     collection->init (list);
