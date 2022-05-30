@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 17187 2009-02-27 01:06:42Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 17197 2009-02-27 12:15:52Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -1053,7 +1053,7 @@ static DECLCALLBACK(int) vboxNetFltFactoryCreateAndConnect(PINTNETTRUNKFACTORY p
 
     LogFlow(("vboxNetFltFactoryCreateAndConnect: pszName=%p:{%s} fFlags=%#x\n", pszName, pszName, fFlags));
     Assert(pGlobals->cFactoryRefs > 0);
-    AssertMsgReturn(fFlags & ~(INTNETTRUNKFACTORY_FLAG_NO_PROMISC),
+    AssertMsgReturn(!(fFlags & ~(INTNETTRUNKFACTORY_FLAG_NO_PROMISC)),
                     ("%#x\n", fFlags), VERR_INVALID_PARAMETER);
 
     /*
