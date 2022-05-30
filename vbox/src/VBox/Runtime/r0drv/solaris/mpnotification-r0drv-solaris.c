@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-solaris.c 11873 2008-08-30 14:31:48Z vboxsync $ */
+/* $Id: mpnotification-r0drv-solaris.c 11982 2008-09-02 13:09:44Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Solaris.
  */
@@ -26,7 +26,6 @@
  * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
- *
  */
 
 /*******************************************************************************

@@ -6,7 +6,7 @@ This file Copyright (C) 2003 Michael Brown <mbrown@fensystems.co.uk>
 of Fen Systems Ltd. (http://www.fensystems.co.uk/).  All rights
 reserved.
 
-$Id: undi.h 1  vboxsync $
+$Id: undi.h 11982 2008-09-02 13:09:44Z vboxsync $
 ***************************************************************************/
 
 /*
@@ -14,6 +14,15 @@ $Id: undi.h 1  vboxsync $
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2, or (at
  * your option) any later version.
+ */
+
+/*
+ * Sun GPL Disclaimer: For the avoidance of doubt, except that if any license choice
+ * other than GPL or LGPL is available it will apply instead, Sun elects to use only
+ * the General Public License version 2 (GPLv2) at this time for any software where
+ * a choice of GPL license versions is made available with the language indicating
+ * that GPLv2 or any later version may be used, or where a choice of which version
+ * of the GPL is applied is otherwise unspecified.
  */
 
 #include "pxe.h"
