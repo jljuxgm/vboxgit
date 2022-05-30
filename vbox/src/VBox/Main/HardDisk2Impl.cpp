@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.cpp 14931 2008-12-03 00:33:47Z vboxsync $ */
+/* $Id: HardDisk2Impl.cpp 14947 2008-12-03 14:55:29Z vboxsync $ */
 
 /** @file
  *
@@ -1885,7 +1885,7 @@ HRESULT HardDisk2::deleteStorage (ComObjPtr <Progress> *aProgress, bool aWait)
     }
 
     if (m.backRefs.size() != 0)
-        return setError (VBOX_E_INVALID_OBJECT_STATE,
+        return setError (VBOX_E_OBJECT_IN_USE,
             tr ("Hard disk '%ls' is attached to %d virtual machines"),
                 m.locationFull.raw(), m.backRefs.size());
 

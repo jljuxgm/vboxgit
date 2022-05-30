@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14934 2008-12-03 10:39:39Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14947 2008-12-03 14:55:29Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -330,6 +330,12 @@
   <result name="VBOX_E_INVALID_SESSION_STATE" value="0x80BB000B">
     <desc>
       Current session state prohibits operation.
+    </desc>
+  </result>
+
+  <result name="VBOX_E_OBJECT_IN_USE" value="0x80BB000C">
+    <desc>
+      Object being in use prohibits operation.
     </desc>
   </result>
 
