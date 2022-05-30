@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 13265 2008-10-14 14:26:42Z vboxsync $ */
+/* $Id: EMAll.cpp 13266 2008-10-14 14:33:38Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1953,7 +1953,7 @@ static int emInterpretLmsw(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, R
     {
     case PARMTYPE_IMMEDIATE:
     case PARMTYPE_ADDRESS:
-        if(!(param1.flags & (PARAM_VAL32|PARAM_VAL64)))
+        if(!(param1.flags & PARAM_VAL16))
             return VERR_EM_INTERPRETER;
         val = param1.val.val32;
         break;
