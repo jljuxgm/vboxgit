@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 15647 2008-12-18 12:12:46Z vboxsync $ */
+/* $Id: PGM.cpp 16113 2009-01-21 09:08:29Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1374,7 +1374,7 @@ static int pgmR3InitPaging(PVM pVM)
     pVM->pgm.s.HCPhysInterPaePDPT = MMPage2Phys(pVM, pVM->pgm.s.pInterPaePDPT);
     AssertRelease(pVM->pgm.s.HCPhysInterPaePDPT != NIL_RTHCPHYS && !(pVM->pgm.s.HCPhysInterPaePDPT & PAGE_OFFSET_MASK));
     pVM->pgm.s.HCPhysInterPaePML4 = MMPage2Phys(pVM, pVM->pgm.s.pInterPaePML4);
-    AssertRelease(pVM->pgm.s.HCPhysInterPaePML4 != NIL_RTHCPHYS && !(pVM->pgm.s.HCPhysInterPaePML4 & PAGE_OFFSET_MASK));
+    AssertRelease(pVM->pgm.s.HCPhysInterPaePML4 != NIL_RTHCPHYS && !(pVM->pgm.s.HCPhysInterPaePML4 & PAGE_OFFSET_MASK) && pVM->pgm.s.HCPhysInterPaePML4 < 0xffffffff);
 
     /*
      * Initialize the pages, setting up the PML4 and PDPT for repetitive 4GB action.

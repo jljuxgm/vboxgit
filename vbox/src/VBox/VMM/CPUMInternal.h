@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 16108 2009-01-21 00:16:27Z vboxsync $ */
+/* $Id: CPUMInternal.h 16113 2009-01-21 09:08:29Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -391,6 +391,7 @@ DECLASM(int)      cpumHandleLazyFPUAsm(PCPUMCPU pCPUM);
 #ifdef IN_RING0
 DECLASM(int)      cpumR0SaveHostRestoreGuestFPUState(PCPUMCPU pCPUM);
 DECLASM(int)      cpumR0SaveGuestRestoreHostFPUState(PCPUMCPU pCPUM);
+DECLASM(int)      cpumR0SaveHostFPUState(PCPUMCPU pCPUM);
 DECLASM(int)      cpumR0RestoreHostFPUState(PCPUMCPU pCPUM);
 DECLASM(void)     cpumR0LoadFPU(PCPUMCTX pCtx);
 DECLASM(void)     cpumR0SaveFPU(PCPUMCTX pCtx);
