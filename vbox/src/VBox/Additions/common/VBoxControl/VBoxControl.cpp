@@ -1,4 +1,4 @@
-/** $Id: VBoxControl.cpp 13282 2008-10-15 12:42:08Z vboxsync $ */
+/** $Id: VBoxControl.cpp 13292 2008-10-15 16:07:24Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface
  */
@@ -984,15 +984,7 @@ static int setGuestProperty(int argc, char *argv[])
         pszValue = argv[1];
     }
     else if (3 == argc)
-    {
-        if (strcmp(argv[2], "-flags") == 0)
-        {
-            VBoxControlError("You may not specify flags without a value");
-            return 1;
-        }
-        else
-            usageOK = false;
-    }
+        usageOK = false;
     else if (4 == argc)
     {
         pszValue = argv[1];
