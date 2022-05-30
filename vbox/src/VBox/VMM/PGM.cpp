@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 15438 2008-12-13 12:39:15Z vboxsync $ */
+/* $Id: PGM.cpp 15491 2008-12-15 10:28:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2481,10 +2481,7 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
                  || fHaveBits != !!pRam->pvR3)
             &&  !strcmp(pRam->pszDesc, "VMMDev Heap")
             &&  pRam->pNextR3)
-        {
-            pRam = pRam->pNextR3;
-            i++;
-        }
+            pRam = pRam->pNextR3; /* don't increment i. */
 
         /* Match it up with the current range. */
         if (    GCPhys != pRam->GCPhys
