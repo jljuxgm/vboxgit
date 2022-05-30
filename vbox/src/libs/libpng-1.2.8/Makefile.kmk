@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 10179 2008-07-04 00:49:22Z vboxsync $
+# $Id: Makefile.kmk 12196 2008-09-08 02:23:00Z vboxsync $
 ## @file
 # Sub-Makefile for libpng.
 #
@@ -19,12 +19,7 @@
 # additional information or have any questions.
 #
 
-ifdef VBOX_SINGLE_MAKEFILE
 SUB_DEPTH = ../../..
-else
-SUB_DEPTH = .
-DEPTH     = ../../..
-endif
 include $(KBUILD_PATH)/subheader.kmk
 
 LIBRARIES += VBox-libpng
