@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16835 2009-02-17 12:49:35Z vboxsync $
+# $Id: Makefile.kmk 16841 2009-02-17 13:28:11Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -69,6 +69,8 @@ ifndef VBOX_ONLY_SDK
  VBoxXPCOMCGlue_DEFS = IN_VBOXXPCOMC
  VBoxXPCOMCGlue_SOURCES = \
  	VBoxXPCOMCGlue.c
+ VBoxXPCOMCGlue_INTERMEDIATES = \
+ 	$(VBOX_PATH_SDK)/bindings/xpcom/include/VirtualBox_CXPCOM.h
 
  ifdef VBOX_WITH_TESTCASES
   #
