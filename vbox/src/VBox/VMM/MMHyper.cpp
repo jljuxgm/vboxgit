@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 14071 2008-11-10 23:47:46Z vboxsync $ */
+/* $Id: MMHyper.cpp 14543 2008-11-24 19:36:37Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -780,10 +780,23 @@ static int mmR3HyperHeapCreate(PVM pVM, const size_t cb, PMMHYPERHEAP *ppHeap)
     /*
      * Allocate the hypervisor heap.
      */
-    const uint32_t cbAligned = RT_ALIGN_32(cb, PAGE_SIZE);
+    const uint32_t  cbAligned = RT_ALIGN_32(cb, PAGE_SIZE);
     AssertReturn(cbAligned >= cb, VERR_INVALID_PARAMETER);
-    void *pv;
-    int rc = SUPPageAlloc(cbAligned >> PAGE_SHIFT, &pv); /** @todo #1865: heap allocation must be changed for osx (only). */
+    int             rc;
+    void           *pv;
+    RTR0PTR         pvR0;
+#if 1
+    rc = SUPPageAlloc(cbAligned >> PAGE_SHIFT, &pv); /** @todo #1865: heap allocation must be changed for osx (only). */
+    pvR0 = (uintptr_t)pv;
+#else /**@todo resume here. */
+    if (VMMIsHwVirtExtForced(pVM))
+        rc = SUPPageAllocKernel((cbAligned >> PAGE_SHIFT, &pv, &pvR0, paPages);
+    else
+    {
+        rc = SUPPageAllocLocked((cbAligned >> PAGE_SHIFT, &pv, paPages);
+        pvR0 = (uintptr_t)pv;
+    }
+#endif
     if (RT_SUCCESS(rc))
     {
         /*
