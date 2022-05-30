@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 15544 2008-12-15 20:51:42Z vboxsync $ *
+ * $Id: VirtualBox.xidl 15546 2008-12-15 21:05:03Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -5866,7 +5866,8 @@
     uuid="763754FA-3246-4539-9590-9E603EDBF706"
   >
     <desc>
-      Type of encapsulation.
+      Type of encapsulation. Ethernet encapsulation includes both wired and
+      wireless Ethernet connections.
       <see>IHostNetworkInterface</see>
     </desc>
 
@@ -5877,8 +5878,7 @@
     </const>
     <const name="Ethernet" value="1">
       <desc>
-        Ethernet frame encapsulation. This includes both wired and wireless
-        Ethernet connections.
+        Ethernet frame encapsulation.
       </desc>
     </const>
     <const name="PPP" value="2">
