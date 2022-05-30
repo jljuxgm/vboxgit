@@ -1,4 +1,4 @@
-; $Id: AMD64andLegacy.mac 14254 2008-11-17 13:44:51Z vboxsync $
+; $Id: AMD64andLegacy.mac 14979 2008-12-04 13:14:29Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for AMD64 to PAE and 32-bit.
 ;
@@ -387,7 +387,7 @@ GLOBALNAME IDEnterTarget
     mov     cr0, ebx
     DEBUG_CHAR('4')
 
-    ; 3. Load 32-bit intermediate page table.
+    ; 3. Load intermediate page table.
     FIXUP SWITCHER_FIX_INTER_CR3_GC, 1
     mov     edx, 0ffffffffh
     mov     cr3, edx

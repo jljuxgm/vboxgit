@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 14845 2008-12-01 10:12:25Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 14979 2008-12-04 13:14:29Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -614,11 +614,21 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, RTR
             case FIX_HC_64BIT_CS:
             {
                 Assert(offSrc < pSwitcher->cbCode);
-#if defined(RT_OS_DARWIN) && defined(VBOX_WITH_HYBIRD_32BIT_KERNEL)
+# if defined(RT_OS_DARWIN) && defined(VBOX_WITH_HYBIRD_32BIT_KERNEL)
                 *uSrc.pu16 = 0x80; /* KERNEL64_CS from i386/seg.h */
-#else
+# else
                 AssertFatalMsgFailed(("FIX_HC_64BIT_CS not implemented for this host\n"));
-#endif
+# endif
+                break;
+            }
+
+            /*
+             * 64-bit HC pointer to the CPUM instance data (no argument).
+             */
+            case FIX_HC_64BIT_CPUM:
+            {
+                Assert(offSrc < pSwitcher->cbCode);
+                *uSrc.pu64 = pVM->pVMR0 + RT_OFFSETOF(VM, cpum);
                 break;
             }
 #endif
@@ -634,15 +644,15 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, RTR
                 break;
             }
 
-            /*
-             * 64-bit HC pointer to the CPUM instance data (no argument).
-             */
-            case FIX_HC_64BIT_CPUM:
+#if defined(RT_ARCH_X86) && defined(VBOX_WITH_64_BITS_GUESTS)
+            case FIX_GC_64_BIT_CPUM_OFF:
             {
-                Assert(offSrc < pSwitcher->cbCode);
-                *uSrc.pu64 = pVM->pVMR0 + RT_OFFSETOF(VM, cpum);
+                uint32_t offCPUM = *u.pu32++;
+                Assert(offCPUM < sizeof(pVM->cpum));
+                *uSrc.pu64 = (uint32_t)(VM_RC_ADDR(pVM, &pVM->cpum) + offCPUM);
                 break;
             }
+#endif
 
             /*
              * 32-bit ID pointer to (ID) target within the code (32-bit offset).

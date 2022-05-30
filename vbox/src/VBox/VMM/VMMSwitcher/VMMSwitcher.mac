@@ -1,4 +1,4 @@
-; $Id: VMMSwitcher.mac 14771 2008-11-28 11:07:18Z vboxsync $
+; $Id: VMMSwitcher.mac 14979 2008-12-04 13:14:29Z vboxsync $
 ;; @file
 ; VMM - World Switchers.
 ;
@@ -107,6 +107,7 @@ endstruc
 %define FIX_ID_FAR32_TO_64BIT_MODE 33
 %define FIX_GC_APIC_BASE_32BIT  34
 %define FIX_HC_64BIT_NOCHECK    35
+%define FIX_GC_64_BIT_CPUM_OFF  36
 %define FIX_THE_END             255
 ;/** @} */
 
