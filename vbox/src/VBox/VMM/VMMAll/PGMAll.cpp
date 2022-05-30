@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 17158 2009-02-26 12:19:48Z vboxsync $ */
+/* $Id: PGMAll.cpp 17166 2009-02-26 13:45:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -875,6 +875,11 @@ int pgmShwSyncPaePDPtr(PVM pVM, RTGCPTR GCPtr, PX86PDPE pGstPdpe, PX86PDPAE *ppP
     PPGMPOOLPAGE   pShwPage;
     int            rc;
 
+# if defined(IN_RC) && defined(VBOX_WITH_PGMPOOL_PAGING_ONLY)
+    /* Make sure the dynamic pPdeDst mapping will not be reused during this function. */
+    PGMDynLockHCPage(pVM, (uint8_t *)pPdpe);
+# endif
+
     /* Allocate page directory if not present. */
     if (    !pPdpe->n.u1Present
         &&  !(pPdpe->u & X86_PDPE_PG_MASK))
@@ -913,6 +918,9 @@ int pgmShwSyncPaePDPtr(PVM pVM, RTGCPTR GCPtr, PX86PDPE pGstPdpe, PX86PDPAE *ppP
             Log(("pgmShwSyncPaePDPtr: PGM pool flushed -> signal sync cr3\n"));
             Assert(pVM->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL);
             VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
+# if defined(IN_RC) && defined(VBOX_WITH_PGMPOOL_PAGING_ONLY)
+            PGMDynUnlockHCPage(pVM, (uint8_t *)pPdpe);
+# endif
             return VINF_PGM_SYNC_CR3;
         }
         AssertRCReturn(rc, rc);
@@ -926,6 +934,9 @@ int pgmShwSyncPaePDPtr(PVM pVM, RTGCPTR GCPtr, PX86PDPE pGstPdpe, PX86PDPAE *ppP
     pPdpe->u |= pShwPage->Core.Key
              | (pGstPdpe->u & ~(X86_PDPE_PG_MASK | X86_PDPE_AVL_MASK | X86_PDPE_PCD | X86_PDPE_PWT));
 
+# if defined(IN_RC) && defined(VBOX_WITH_PGMPOOL_PAGING_ONLY)
+    PGMDynUnlockHCPage(pVM, (uint8_t *)pPdpe);
+# endif
     *ppPD = (PX86PDPAE)PGMPOOL_PAGE_2_PTR(pVM, pShwPage);
     return VINF_SUCCESS;
 }
