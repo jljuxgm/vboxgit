@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 13495 2008-10-22 14:51:14Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 13496 2008-10-22 14:56:33Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -37,6 +37,7 @@
 #include <iprt/assert.h>
 #include <iprt/process.h>
 #include <iprt/initterm.h>
+#include <iprt/power.h>
 #include <VBox/log.h>
 
 
@@ -538,6 +539,9 @@ VOID _stdcall VBoxPowerDispatchCallback(PVOID pCallbackContext, PVOID pArgument1
             dprintf(("VBoxPowerDispatchCallback: about to go into suspend mode!\n"));
         else
             dprintf(("VBoxPowerDispatchCallback: resumed!\n"));
+
+        /* Inform any clients that have registered themselves with IPRT. */
+        RTPowerSignalEvent(((unsigned)pArgument2 == 0) ? RTPOWEREVENT_SUSPEND : RTPOWEREVENT_RESUME);
     }
 }
 
