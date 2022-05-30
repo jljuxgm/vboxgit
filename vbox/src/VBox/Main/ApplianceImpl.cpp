@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17580 2009-03-09 14:49:09Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17581 2009-03-09 14:52:11Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2085,8 +2085,7 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD aThread, void *pv
 
                         ComPtr<IHardDisk> dstHdVBox;
                         /* If strHref is empty we have to create a new file */
-                        if (di.strHref.isNull() ||
-                            di.strHref.c_str()[0] == 0)
+                        if (di.strHref.isEmpty())
                         {
                             /* Which format to use? */
                             Bstr srcFormat = L"VDI";
