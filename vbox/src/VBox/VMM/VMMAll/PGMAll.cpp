@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 16882 2009-02-18 10:11:10Z vboxsync $ */
+/* $Id: PGMAll.cpp 16907 2009-02-18 15:04:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -718,10 +718,8 @@ VMMDECL(int) PGMInvalidatePage(PVM pVM, RTGCPTR GCPtrPage)
     {
         pVM->pgm.s.fSyncFlags &= ~PGM_SYNC_MONITOR_CR3;
         Assert(!pVM->pgm.s.fMappingsFixed);
-#ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
         Assert(pVM->pgm.s.GCPhysCR3 == pVM->pgm.s.GCPhysGstCR3Monitored);
         rc = PGM_GST_PFN(MonitorCR3, pVM)(pVM, pVM->pgm.s.GCPhysCR3);
-#endif
     }
 
     /*
@@ -1640,9 +1638,7 @@ VMMDECL(int) PGMFlushTLB(PVM pVM, uint64_t cr3, bool fGlobal)
             if (!pVM->pgm.s.fMappingsFixed)
             {
                 pVM->pgm.s.fSyncFlags &= ~PGM_SYNC_MONITOR_CR3;
-#ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
                 rc = PGM_GST_PFN(MonitorCR3, pVM)(pVM, GCPhysCR3);
-#endif
             }
         }
         else
@@ -1669,9 +1665,7 @@ VMMDECL(int) PGMFlushTLB(PVM pVM, uint64_t cr3, bool fGlobal)
         {
             pVM->pgm.s.fSyncFlags &= ~PGM_SYNC_MONITOR_CR3;
             Assert(!pVM->pgm.s.fMappingsFixed);
-#ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
             rc = PGM_GST_PFN(MonitorCR3, pVM)(pVM, GCPhysCR3);
-#endif
         }
         if (fGlobal)
             STAM_COUNTER_INC(&pVM->pgm.s.CTX_MID_Z(Stat,FlushTLBSameCR3Global));
@@ -1847,10 +1841,8 @@ VMMDECL(int) PGMSyncCR3(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bool 
         {
             pVM->pgm.s.fSyncFlags &= ~PGM_SYNC_MONITOR_CR3;
             Assert(!pVM->pgm.s.fMappingsFixed);
-#ifndef VBOX_WITH_PGMPOOL_PAGING_ONLY
             Assert(pVM->pgm.s.GCPhysCR3 == pVM->pgm.s.GCPhysGstCR3Monitored);
             rc = PGM_GST_PFN(MonitorCR3, pVM)(pVM, pVM->pgm.s.GCPhysCR3);
-#endif
         }
     }
 
