@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 17077 2009-02-24 16:58:15Z vboxsync $ */
+/* $Id: DevATA.cpp 17312 2009-03-03 19:47:07Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -6097,7 +6097,7 @@ static int ataControllerFromCfg(PPDMDEVINS pDevIns, PCFGMNODE pCfgHandle, CHIPSE
 {
     char szType[20];
 
-    int rc = CFGMR3QueryString(pCfgHandle, "Type", &szType[0], sizeof(szType));
+    int rc = CFGMR3QueryStringDef(pCfgHandle, "Type", &szType[0], sizeof(szType), "PIIX4");
     if (RT_FAILURE(rc))
         return PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS,
                                    N_("Configuration error: Querying \"Type\" as a string failed"));
