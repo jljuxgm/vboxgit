@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 15762 2008-12-25 23:53:50Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 15812 2009-01-05 16:05:21Z vboxsync $ */
 
 /** @file
  *
@@ -1249,7 +1249,7 @@ void Display::VideoAccelFlush (void)
  */
 STDMETHODIMP Display::COMGETTER(Width) (ULONG *width)
 {
-    CheckComArgSafeArrayNotNull(width);
+    CheckComArgNotNull(width);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
