@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 12834 2008-09-30 14:29:45Z vboxsync $ */
+/* $Id: CPUM.cpp 12923 2008-10-02 10:14:11Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1678,7 +1678,7 @@ static DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const cha
     /*
      * Understandable output
      */
-    if (iVerbosity && cExtMax >= 0)
+    if (iVerbosity)
     {
         Guest = pVM->cpum.s.aGuestCpuIdExt[0];
         pHlp->pfnPrintf(pHlp,
@@ -1968,7 +1968,7 @@ static DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const cha
     /*
      * Understandable output
      */
-    if (iVerbosity && cCentaurMax >= 0)
+    if (iVerbosity)
     {
         Guest = pVM->cpum.s.aGuestCpuIdCentaur[0];
         pHlp->pfnPrintf(pHlp,
