@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 15527 2008-12-15 18:11:08Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 15893 2009-01-12 14:11:29Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -190,13 +190,10 @@ typedef struct VBOXNETFLTINS
 # elif defined(RT_OS_WINDOWS)
             /** @name Windows instance data.
              * @{ */
-//#  ifdef VBOX_NETFLT_ONDEMAND_BIND
             /** Filter driver device context. */
             ADAPT IfAdaptor;
-//#  else
-//            /** Pointer to the filter driver device context. */
-//            PADAPT volatile pIfAdaptor;
-//#  endif
+            /** Packet worker thread info */
+            PACKET_QUEUE_WORKER PacketQueueWorker;
             /** The MAC address of the interface. Caching MAC for performance reasons. */
             RTMAC Mac;
             /** @}  */

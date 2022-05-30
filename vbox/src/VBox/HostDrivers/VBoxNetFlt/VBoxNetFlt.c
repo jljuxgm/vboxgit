@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 15527 2008-12-15 18:11:08Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 15893 2009-01-12 14:11:29Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -1024,7 +1024,8 @@ static DECLCALLBACK(int) vboxNetFltFactoryCreateAndConnect(PINTNETTRUNKFACTORY p
             rc = vboxNetFltConnectIt(pCur, pSwitchPort, ppIfPort);
             break;
         case kVBoxNetFltInsState_Connected:
-            rc = VINF_SUCCESS;
+            Assert(0);
+            rc = VERR_INTNET_FLT_IF_BUSY;
             break;
         case kVBoxNetFltInsState_Disconnecting:
             Assert(0);

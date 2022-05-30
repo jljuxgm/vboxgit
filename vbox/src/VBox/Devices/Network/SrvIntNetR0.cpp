@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 15842 2009-01-07 16:41:48Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 15893 2009-01-12 14:11:29Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -3047,7 +3047,7 @@ INTNETR0DECL(int) INTNETR0IfWait(PINTNET pIntNet, INTNETIFHANDLE hIf, PSUPDRVSES
         ASMAtomicDecU32(&pIf->cSleepers);
         if (!pIf->fDestroying)
         {
-            if (!intnetR0IfRelease(pIf, pSession))
+            if (intnetR0IfRelease(pIf, pSession))
                 rc = VERR_SEM_DESTROYED;
         }
         else
