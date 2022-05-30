@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15746 2008-12-24 12:35:57Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15749 2008-12-24 12:47:42Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -329,9 +329,9 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
 
         /* Without nested paging we should intercept invlpg and cr3 mov instructions. */
         if (!pVM->hwaccm.s.fNestedPaging)
-            val |=    VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_INVLPG_EXIT
-                   |  VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR3_LOAD_EXIT
-                   |  VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR3_STORE_EXIT;
+            val |=  VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_INVLPG_EXIT
+                  | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR3_LOAD_EXIT
+                  | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR3_STORE_EXIT;
 
         /* Note: VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_MWAIT_EXIT might cause a vmlaunch failure with an invalid control fields error. (combined with some other exit reasons) */
         if (pVM->hwaccm.s.vmx.msr.vmx_proc_ctls.n.allowed1 & VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_USE_TPR_SHADOW)
