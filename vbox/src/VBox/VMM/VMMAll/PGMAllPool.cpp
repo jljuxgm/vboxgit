@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17000 2009-02-23 10:01:12Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17048 2009-02-24 09:52:53Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2403,6 +2403,7 @@ void pgmPoolClearAll(PVM pVM)
  */
 int pgmPoolSyncCR3(PVM pVM)
 {
+    LogFlow(("pgmPoolSyncCR3\n"));
     /*
      * When monitoring shadowed pages, we reset the modification counters on CR3 sync.
      * Occasionally we will have to clear all the shadow page tables because we wanted
