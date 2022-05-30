@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 13635 2008-10-28 20:27:33Z vboxsync $ */
+/* $Id: TRPMInternal.h 13636 2008-10-28 20:31:03Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -161,7 +161,6 @@ typedef struct TRPM
     /** Checked trap & interrupt handler array */
     RCPTRTYPE(void *)       aGuestTrapHandler[256];
 
-#ifdef VBOX_WITH_STATISTICS
     /** RC: The number of times writes to the Guest IDT were detected. */
     STAMCOUNTER             StatRCWriteGuestIDTFault;
     STAMCOUNTER             StatRCWriteGuestIDTHandled;
@@ -187,7 +186,6 @@ typedef struct TRPM
     R0PTRTYPE(PSTAMCOUNTER) paStatForwardedIRQR0;
     /* RC: Statistics for interrupt handlers (allocated on the hypervisor heap). */
     RCPTRTYPE(PSTAMCOUNTER) paStatForwardedIRQRC;
-#endif /* VBOX_WITH_STATISTICS */
 } TRPM;
 #pragma pack()
 
