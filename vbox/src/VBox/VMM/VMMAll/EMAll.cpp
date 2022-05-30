@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 14082 2008-11-11 10:12:57Z vboxsync $ */
+/* $Id: EMAll.cpp 14247 2008-11-17 11:07:44Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2439,8 +2439,8 @@ VMMDECL(int) EMInterpretRdtsc(PVM pVM, PCPUMCTXCORE pRegFrame)
     uint64_t uTicks = TMCpuTickGet(pVM);
 
     /* Same behaviour in 32 & 64 bits mode */
-    pRegFrame->eax = uTicks;
-    pRegFrame->edx = (uTicks >> 32ULL);
+    pRegFrame->rax = uTicks;
+    pRegFrame->rdx = (uTicks >> 32ULL);
 
     return VINF_SUCCESS;
 }
