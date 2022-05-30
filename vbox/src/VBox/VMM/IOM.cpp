@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: IOM.cpp 13005 2008-10-06 12:35:21Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -26,6 +26,8 @@
  * appropriate device. It implements an API to register and deregister virtual
  * I/0 port handlers and memory mapped I/O handlers. A handler is PDM devices
  * and a set of callback functions.
+ *
+ * @see grp_iom
  *
  *
  * @section sec_iom_rawmode     Raw-Mode

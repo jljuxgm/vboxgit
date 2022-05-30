@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: CFGM.cpp 13005 2008-10-06 12:35:21Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -40,6 +40,8 @@
  * Data validation out over the basic primitives is left to the caller. The
  * caller is in a better position to know the proper validation rules of the
  * individual properties.
+ *
+ * @see grp_cfgm
  *
  *
  * @section sec_cfgm_primitives     Data Primitives

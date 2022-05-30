@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: CPUM.cpp 13005 2008-10-06 12:35:21Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -31,6 +31,8 @@
  * raw-mode, CPUM also maintains a host context for saving and restoring
  * registers accross world switches. This latter is done in cooperation with the
  * world switcher (@see pg_vmm).
+ *
+ * @see grp_cpum
  */
 
 /*******************************************************************************

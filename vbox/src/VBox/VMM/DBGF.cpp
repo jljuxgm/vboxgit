@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: DBGF.cpp 13005 2008-10-06 12:35:21Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -37,6 +37,7 @@
  * "ping thread" and the "pong thread, respectivly. (The last set of names comes
  * from the use of the Ping-Pong synchronization construct from the RTSem API.)
  *
+ * @see grp_dbgf
  *
  *
  * @section sec_dbgf_scenario   Usage Scenario

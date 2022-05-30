@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 12975 2008-10-03 22:22:37Z vboxsync $ */
+/* $Id: VMM.cpp 13005 2008-10-06 12:35:21Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -76,6 +76,8 @@
  *      - Debugger Facility (DBGF) provides the basic features for
  *        debugging the alternate reality execution.
  *
+ *
+ * @see grp_vmm, grp_vm
  *
  *
  * @section pg_vmm_s_use_cases          Use Cases

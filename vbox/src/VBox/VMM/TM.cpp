@@ -1,6 +1,6 @@
-/* $Id: TM.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: TM.cpp 13005 2008-10-06 12:35:21Z vboxsync $ */
 /** @file
- * TM - Timeout Manager.
+ * TM - Time Manager.
  */
 
 /*
@@ -24,6 +24,8 @@
  *
  * The Time Manager abstracts the CPU clocks and manages timers used by the VMM,
  * device and drivers.
+ *
+ * @see grp_tm
  *
  *
  * @section sec_tm_clocks   Clocks

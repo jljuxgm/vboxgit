@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 13001 2008-10-06 11:06:14Z vboxsync $ */
+/* $Id: SELM.cpp 13005 2008-10-06 12:35:21Z vboxsync $ */
 /** @file
  * SELM - The Selector manager.
  */
@@ -23,6 +23,8 @@
  *
  * Manages the hypervisor GDT entires, monitors and shadows the guest GDT, LDT
  * and TSS. Only active in raw-mode.
+ *
+ * @see grp_selm
  *
  */
 

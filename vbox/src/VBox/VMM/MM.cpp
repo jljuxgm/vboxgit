@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: MM.cpp 13005 2008-10-06 12:35:21Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -33,6 +33,8 @@
  * The global memory manager (GMM) is the global counter part / partner of MM.
  * MM will provide therefore ring-3 callable interfaces for some of the GMM APIs
  * related to resource tracking (PGM is the user).
+ *
+ * @see grp_mm
  *
  *
  * @section sec_mm_hma  Hypervisor Memory Area

@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 13001 2008-10-06 11:06:14Z vboxsync $ */
+/* $Id: STAM.cpp 13005 2008-10-06 12:35:21Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -31,8 +31,8 @@
  * statistics with STAM giving them a name. The name is like hierarchical, the
  * components separated by slashes ('/').
  *
+ * @see grp_stam
  */
-
 
 /*******************************************************************************
 *   Header Files                                                               *
