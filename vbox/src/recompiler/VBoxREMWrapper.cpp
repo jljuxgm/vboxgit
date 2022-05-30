@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 12654 2008-09-22 16:06:01Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 12655 2008-09-22 16:14:51Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -90,8 +90,8 @@
              [Not preserved]
     %r9      used to pass 6th argument to functions
              [Not preserved]
- *  %r10     temporary register, used for passing a function's static chain
- *           pointer [Not preserved]
+    %r10     temporary register, used for passing a function's static chain
+             pointer [Not preserved]
     %r11     temporary register
              [Not preserved]
     %r12-r15 callee-saved registers
