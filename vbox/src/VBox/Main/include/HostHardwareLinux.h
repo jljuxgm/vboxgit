@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.h 15401 2008-12-12 22:05:34Z vboxsync $ */
+/* $Id: HostHardwareLinux.h 15465 2008-12-14 14:31:14Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -189,8 +189,9 @@ public:
      * @returns  VERR_NOT_SUPPORTED if the wait failed and will definitely not
      *           succeed if retried.
      * @returns  Possibly other iprt status codes otherwise.
+     * @param    cMillies   How long to wait for at most.
      */
-    int Wait (void);
+    int Wait (unsigned cMillies);
     /** Interrupts an active wait. */
     void Interrupt (void);
 };

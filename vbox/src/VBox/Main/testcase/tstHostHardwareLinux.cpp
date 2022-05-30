@@ -1,4 +1,4 @@
-/* $Id: tstHostHardwareLinux.cpp 15401 2008-12-12 22:05:34Z vboxsync $ */
+/* $Id: tstHostHardwareLinux.cpp 15465 2008-12-14 14:31:14Z vboxsync $ */
 /** @file
  *
  * Test executable for quickly excercising/debugging the Linux host hardware
@@ -129,9 +129,12 @@ int main()
                       it2->c_str(), szDriver, u64InterfaceClass);
         }
     }
-    RTPrintf ("Waiting for a hotplug event, Ctrl-C to abort...\n");
     VBoxMainHotplugWaiter waiter;
-    waiter.Wait();
+    RTPrintf ("Waiting for hotplug events.  Note that DBus often seems to deliver duplicate events in close succession.\n");
+    RTPrintf ("Waiting for a hotplug event for five seconds...\n");
+    waiter.Wait (5000);
+    RTPrintf ("Waiting for a hotplug event, Ctrl-C to abort...\n");
+    waiter.Wait(RT_INDEFINITE_WAIT);
 #endif  /* VBOX_USB_WITH_SYSFS */
     return 0;
 }
