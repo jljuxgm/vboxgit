@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 13782 2008-11-04 12:16:30Z vboxsync $ */
+/* $Id: VM.cpp 13784 2008-11-04 12:49:42Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -489,7 +489,6 @@ static int vmR3CreateU(PUVM pUVM, uint32_t cCPUs, PFNCFGMCONSTRUCTOR pfnCFGMCons
          * Initialize the VM structure and our internal data (VMINT).
          */
         pVM->pUVM = pUVM;
-        pVM->ThreadEMT = pVM->aCpu[0].hThreadR3 = pUVM->vm.s.ThreadEMT;
         pVM->NativeThreadEMT = pVM->aCpu[0].hNativeThreadR3 = pUVM->vm.s.NativeThreadEMT;
 
         /*
