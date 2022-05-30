@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.cpp 15334 2008-12-11 19:37:55Z vboxsync $ */
+/* $Id: FloppyDriveImpl.cpp 15714 2008-12-22 12:46:17Z vboxsync $ */
 
 /** @file
  *
@@ -252,8 +252,7 @@ STDMETHODIMP FloppyDrive::COMGETTER(State) (DriveState_T *aState)
 STDMETHODIMP FloppyDrive::MountImage (IN_GUID aImageId)
 {
     Guid imageId = aImageId;
-    if (imageId.isEmpty())
-        return E_INVALIDARG;
+    CheckComArgExpr(aImageId, !imageId.isEmpty());
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());

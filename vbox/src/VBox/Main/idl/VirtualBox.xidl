@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 15708 2008-12-19 18:28:27Z vboxsync $ *
+ * $Id: VirtualBox.xidl 15714 2008-12-22 12:46:17Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -8831,7 +8831,19 @@ Snapshot 1 (B.vdi)            Snapshot 1 (B.vdi)
     </attribute>
 
     <method name="mountImage">
-      <desc>Mounts a floppy image with the specified UUID.</desc>
+      <desc>Mounts a floppy image with the specified UUID.
+
+        <result name="VBOX_E_FILE_ERROR">
+          Invalid image file location.
+        </result>
+        <result name="VBOX_E_OBJECT_NOT_FOUND">
+          Could not find a floppy image matching @a imageID.
+        </result>
+        <result name="VBOX_E_INVALID_OBJECT_STATE">
+          Invalid media state.
+        </result>
+
+      </desc>
       <param name="imageId" type="uuid" dir="in"/>
     </method>
 
