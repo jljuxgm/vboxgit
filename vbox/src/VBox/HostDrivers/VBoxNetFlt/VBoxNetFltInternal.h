@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 13938 2008-11-06 20:54:47Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 13976 2008-11-07 19:31:50Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -156,7 +156,9 @@ typedef struct VBOXNETFLTINS
             bool volatile fSetPromiscuous;
             /** The MAC address of the interface. */
             RTMAC Mac;
-            struct packet_type PacketType;
+            struct packet_type  PacketType;
+            struct sk_buff_head XmitQueue;
+            struct work_struct  XmitTask;
             /** @} */
 # elif defined(RT_OS_SOLARIS)
             /** @name Solaris instance data.
@@ -197,6 +199,8 @@ typedef struct VBOXNETFLTINS
         /** Padding. */
 #if defined(RT_OS_WINDOWS) && defined(VBOX_NETFLT_ONDEMAND_BIND)
         uint8_t abPadding[192];
+#elif defined(RT_OS_LINUX)
+        uint8_t abPadding[128];
 #else
         uint8_t abPadding[64];
 #endif
