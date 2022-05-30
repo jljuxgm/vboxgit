@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 17118 2009-02-25 10:46:39Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 17184 2009-02-27 00:37:35Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -31,7 +31,7 @@
 #include <sys/param.h>
 #undef PVM
 
-#define LOG_GROUP LOG_GROUP_NET_TAP_DRV
+#define LOG_GROUP LOG_GROUP_NET_ADP_DRV
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/version.h>

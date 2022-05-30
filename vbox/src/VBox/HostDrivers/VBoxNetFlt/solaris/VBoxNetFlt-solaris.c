@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 16928 2009-02-18 18:47:32Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 17184 2009-02-27 00:37:35Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -429,7 +429,7 @@ int _init(void)
              * for establishing the connect to the support driver.
              */
             memset(&g_VBoxNetFltSolarisGlobals, 0, sizeof(g_VBoxNetFltSolarisGlobals));
-            rc = vboxNetFltInitGlobals(&g_VBoxNetFltSolarisGlobals);
+            rc = vboxNetFltInitGlobalsAndIdc(&g_VBoxNetFltSolarisGlobals);
             if (RT_SUCCESS(rc))
             {
                 rc = mod_install(&g_VBoxNetFltSolarisModLinkage);
@@ -437,7 +437,7 @@ int _init(void)
                     return rc;
 
                 LogRel((DEVICE_NAME ":mod_install failed. rc=%d\n", rc));
-                vboxNetFltTryDeleteGlobals(&g_VBoxNetFltSolarisGlobals);
+                vboxNetFltTryDeleteIdcAndGlobals(&g_VBoxNetFltSolarisGlobals);
             }
             else
                 LogRel((DEVICE_NAME ":failed to initialize globals.\n"));
@@ -464,7 +464,7 @@ int _fini(void)
     /*
      * Undo the work done during start (in reverse order).
      */
-    rc = vboxNetFltTryDeleteGlobals(&g_VBoxNetFltSolarisGlobals);
+    rc = vboxNetFltTryDeleteIdcAndGlobals(&g_VBoxNetFltSolarisGlobals);
     if (RT_FAILURE(rc))
     {
         LogRel((DEVICE_NAME ":_fini - busy!\n"));
@@ -2975,7 +2975,7 @@ static void vboxNetFltSolarisAnalyzeMBlk(mblk_t *pMsg)
         {
             int Pcp:3;
             int Cfi:1;
-            int Vid:12; 
+            int Vid:12;
         } VLANHEADER;
 
         VLANHEADER *pVlanHdr = (VLANHEADER *)(pMsg->b_rptr + sizeof(RTNETETHERHDR));

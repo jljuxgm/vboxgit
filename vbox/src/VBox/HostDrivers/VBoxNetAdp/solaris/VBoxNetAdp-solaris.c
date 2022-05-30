@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-solaris.c 17025 2009-02-23 15:17:24Z vboxsync $ */
+/* $Id: VBoxNetAdp-solaris.c 17184 2009-02-27 00:37:35Z vboxsync $ */
 /** @file
  * VBoxNetAdapter - Network Adapter Driver (Host), Solaris Specific Code.
  */
@@ -26,7 +26,7 @@
 # define LOG_ENABLED
 #endif
 
-#define LOG_GROUP LOG_GROUP_NET_TAP_DRV
+#define LOG_GROUP LOG_GROUP_NET_ADP_DRV
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/version.h>
