@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 13950 2008-11-07 11:23:23Z vboxsync $ *
+ * $Id: VirtualBox.xidl 13956 2008-11-07 12:41:45Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -7373,7 +7373,7 @@ Snapshot 1 (B.vdi)            Snapshot 1 (B.vdi)
       <param name="description" type="wstring" safearray="yes" dir="out">
         <desc>Array of property descriptions.</desc>
       </param>
-      <param name="types" type="unsigned long" safearray="yes" dir="out">
+      <param name="types" type="DataType" safearray="yes" dir="out">
         <desc>Array of property types.</desc>
       </param>
       <param name="flags" type="unsigned long" safearray="yes" dir="out">

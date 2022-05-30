@@ -1,4 +1,4 @@
-/* $Id: HardDiskFormatImpl.cpp 13950 2008-11-07 11:23:23Z vboxsync $ */
+/* $Id: HardDiskFormatImpl.cpp 13956 2008-11-07 12:41:45Z vboxsync $ */
 
 /** @file
  *
@@ -239,7 +239,7 @@ STDMETHODIMP HardDiskFormat::COMGETTER(Capabilities)(ULONG *aCaps)
 
 STDMETHODIMP HardDiskFormat::DescribeProperties(ComSafeArrayOut (BSTR, aNames),
                                                 ComSafeArrayOut (BSTR, aDescriptions),
-                                                ComSafeArrayOut (ULONG, aTypes),
+                                                ComSafeArrayOut (DataType_T, aTypes),
                                                 ComSafeArrayOut (ULONG, aFlags),
                                                 ComSafeArrayOut (BSTR, aDefaults))
 {
@@ -256,7 +256,7 @@ STDMETHODIMP HardDiskFormat::DescribeProperties(ComSafeArrayOut (BSTR, aNames),
     /* this is const, no need to lock */
     com::SafeArray <BSTR> propertyNames (mData.properties.size());
     com::SafeArray <BSTR> propertyDescriptions (mData.properties.size());
-    com::SafeArray <ULONG> propertyTypes (mData.properties.size());
+    com::SafeArray <DataType_T> propertyTypes (mData.properties.size());
     com::SafeArray <ULONG> propertyFlags (mData.properties.size());
     com::SafeArray <BSTR> propertyDefaults (mData.properties.size());
 
