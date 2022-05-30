@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 15001 2008-12-04 19:14:56Z vboxsync $ */
+/* $Id: process-posix.cpp 15007 2008-12-04 20:32:15Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -63,7 +63,7 @@
 
 RTR3DECL(int)   RTProcCreate(const char *pszExec, const char * const *papszArgs, RTENV Env, unsigned fFlags, PRTPROCESS pProcess)
 {
-    int rc;
+    int rc = 0;
 
     /*
      * Validate input.
