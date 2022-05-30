@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 14038 2008-11-10 18:23:15Z vboxsync $ */
+/* $Id: PGMMap.cpp 14075 2008-11-11 00:14:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1139,7 +1139,7 @@ VMMR3DECL(int) PGMR3MapRead(PVM pVM, void *pvDst, RTGCPTR GCPtrSrc, size_t cb)
     {
         for (;;)
         {
-            unsigned cbRead = RT_MIN(cb, PAGE_SIZE - (GCPtrSrc & PAGE_OFFSET_MASK));
+            size_t cbRead = RT_MIN(cb, PAGE_SIZE - (GCPtrSrc & PAGE_OFFSET_MASK));
             int rc = PGMR3MapRead(pVM, pvDst, GCPtrSrc, cbRead);
             if (RT_FAILURE(rc))
                 return rc;

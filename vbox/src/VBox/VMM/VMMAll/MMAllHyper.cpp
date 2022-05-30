@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 13918 2008-11-06 14:10:07Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 14075 2008-11-11 00:14:05Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -182,7 +182,7 @@ VMMDECL(int) MMHyperAlloc(PVM pVM, size_t cb, unsigned uAlignment, MMTAG enmTag,
         case 8:
         case 16:
         case 32:
-            cbAligned = RT_ALIGN(cb, MMHYPER_HEAP_ALIGN_MIN);
+            cbAligned = RT_ALIGN_32(cb, MMHYPER_HEAP_ALIGN_MIN);
             if (!cbAligned || cbAligned < cb)
             {
                 Log2(("MMHyperAlloc: cb=%#x uAlignment=%#x returns VERR_INVALID_PARAMETER\n", cb, uAlignment));
@@ -192,8 +192,8 @@ VMMDECL(int) MMHyperAlloc(PVM pVM, size_t cb, unsigned uAlignment, MMTAG enmTag,
             break;
 
         case PAGE_SIZE:
-            AssertMsg(RT_ALIGN(cb, PAGE_SIZE) == cb, ("The size isn't page aligned. (cb=%#x)\n", cb));
-            cbAligned = RT_ALIGN(cb, PAGE_SIZE);
+            AssertMsg(RT_ALIGN_32(cb, PAGE_SIZE) == cb, ("The size isn't page aligned. (cb=%#x)\n", cb));
+            cbAligned = RT_ALIGN_32(cb, PAGE_SIZE);
             if (!cbAligned)
             {
                 Log2(("MMHyperAlloc: cb=%#x uAlignment=%#x returns VERR_INVALID_PARAMETER\n", cb, uAlignment));

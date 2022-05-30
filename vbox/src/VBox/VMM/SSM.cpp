@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 13840 2008-11-05 03:31:46Z vboxsync $ */
+/* $Id: SSM.cpp 14075 2008-11-11 00:14:05Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -1043,7 +1043,7 @@ VMMR3DECL(int) SSMR3Save(PVM pVM, const char *pszFilename, SSMAFTER enmAfter, PF
                  * Write data unit header
                  */
                 uint64_t   offHdr = RTFileTell(Handle.File);
-                SSMFILEUNITHDR  UnitHdr = { SSMFILEUNITHDR_MAGIC, 0, pUnit->u32Version, pUnit->u32Instance, pUnit->cchName + 1, { '\0' } };
+                SSMFILEUNITHDR  UnitHdr = { SSMFILEUNITHDR_MAGIC, 0, pUnit->u32Version, pUnit->u32Instance, (uint32_t)pUnit->cchName + 1, { '\0' } };
                 rc = RTFileWrite(Handle.File, &UnitHdr, RT_OFFSETOF(SSMFILEUNITHDR, szName[0]), NULL);
                 if (RT_SUCCESS(rc))
                 {

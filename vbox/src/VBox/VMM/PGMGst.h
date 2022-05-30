@@ -1,4 +1,4 @@
-/* $Id: PGMGst.h 13937 2008-11-06 20:52:05Z vboxsync $ */
+/* $Id: PGMGst.h 14075 2008-11-11 00:14:05Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
@@ -297,7 +297,7 @@ static DECLCALLBACK(int) pgmR3Gst32BitWriteHandlerCR3(PVM pVM, RTGCPHYS GCPhys, 
          */
         const RTGCPTR   offPD = GCPhys & PAGE_OFFSET_MASK;
         const unsigned  iPD1  = offPD / sizeof(X86PDE);
-        const unsigned  iPD2  = (offPD + cbBuf - 1) / sizeof(X86PDE);
+        const unsigned  iPD2  = (unsigned)(offPD + cbBuf - 1) / sizeof(X86PDE);
         Assert(iPD1 - iPD2 <= 1);
         if (    (   pVM->pgm.s.pGuestPDR3->a[iPD1].n.u1Present
                  && pgmGetMapping(pVM, iPD1 << X86_PD_SHIFT) )
