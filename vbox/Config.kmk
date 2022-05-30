@@ -1,4 +1,4 @@
-# $Id: Config.kmk 13014 2008-10-06 15:05:16Z vboxsync $
+# $Id: Config.kmk 13030 2008-10-07 08:38:12Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2474,7 +2474,7 @@ endif
 TEMPLATE_VBOXNOCRTGCC = VBox no-crt GCC libraries and modules, yasm/nasm.
 TEMPLATE_VBOXNOCRTGCC_DEFS              = IN_RING3 IPRT_NO_CRT $(ARCH_BITS_DEFS)
 TEMPLATE_VBOXNOCRTGCC_ASDEFS            = ASM_CALL64_GCC
-TEMPLATE_VBOXNOCRTGCC_CFLAGS            = -nostdinc -fno-strict-aliasing -fno-math-errno $(VBOX_GCC_PEDANTIC)
+TEMPLATE_VBOXNOCRTGCC_CFLAGS            = -nostdinc -fno-strict-aliasing -fno-math-errno $(VBOX_GCC_WARN)
 TEMPLATE_VBOXNOCRTGCC_CFLAGS.x86        = -m32
 TEMPLATE_VBOXNOCRTGCC_CFLAGS.amd64      = -m64 -mcmodel=medium -fno-common
 TEMPLATE_VBOXNOCRTGCC_CFLAGS.release    = -O2 -fno-strict-aliasing
@@ -3551,7 +3551,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13014 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13030 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
