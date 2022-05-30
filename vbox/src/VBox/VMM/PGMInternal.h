@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 14502 2008-11-24 03:05:52Z vboxsync $ */
+/* $Id: PGMInternal.h 14541 2008-11-24 19:18:23Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1249,7 +1249,8 @@ typedef struct PGMMAPSETENTRY
 {
     /** The mapping cache index. */
     uint16_t                    iPage;
-    /** The number of references. */
+    /** The number of references.
+     * The max is UINT16_MAX - 1. */
     uint16_t                    cRefs;
 } PGMMAPSETENTRY;
 /** Pointer to a mapping cache usage set entry. */
