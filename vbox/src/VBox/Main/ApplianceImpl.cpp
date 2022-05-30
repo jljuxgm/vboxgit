@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17683 2009-03-11 12:14:52Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17689 2009-03-11 12:42:20Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3580,3 +3580,5 @@ STDMETHODIMP Machine::Export(IAppliance *appliance)
 
     return rc;
 }
+
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 16586 2009-02-09 13:38:57Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 17689 2009-03-11 12:42:20Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1214,4 +1214,4 @@ void VirtualBoxBaseWithChildrenNEXT::doRemoveDependentChild (IUnknown *aUnk)
     NOREF (result);
 }
 
-
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */
