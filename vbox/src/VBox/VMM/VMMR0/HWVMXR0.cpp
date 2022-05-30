@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15439 2008-12-13 12:48:22Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15440 2008-12-13 13:09:30Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1648,8 +1648,10 @@ DECLINLINE(int) VMXR0SaveGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     if (    pVM->hwaccm.s.fNestedPaging
         &&  CPUMIsGuestInPagedProtectedModeEx(pCtx))
     {
+        PVMCSCACHE pCache = &pVCpu->hwaccm.s.vmx.VMCSCache;
+
         /* Can be updated behind our back in the nested paging case. */
-        CPUMSetGuestCR2(pVM, ASMGetCR2());
+        CPUMSetGuestCR2(pVM, pCache->cr2);
 
         VMXReadCachedVMCS(VMX_VMCS64_GUEST_CR3, &val);
 

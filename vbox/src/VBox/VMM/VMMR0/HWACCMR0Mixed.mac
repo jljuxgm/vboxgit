@@ -1,4 +1,4 @@
-; $Id: HWACCMR0Mixed.mac 15360 2008-12-12 12:25:21Z vboxsync $
+; $Id: HWACCMR0Mixed.mac 15440 2008-12-13 13:09:30Z vboxsync $
 ;; @file
 ; HWACCMR0Mixed.mac - Stuff that darwin needs to build two versions of.
 ;
@@ -218,6 +218,10 @@ ALIGN(16)
     cmp     xCX, 0
     jnz     .cached_read
 .no_cached_reads:
+
+    ; Save CR2 for EPT
+    mov     xAX, cr2
+    mov     [ss:xDX + VMCSCACHE.cr2], xAX
 %endif
 
     ; Restore segment registers
@@ -503,6 +507,10 @@ ALIGN(16)
     cmp      xCX, 0
     jnz     .cached_read
 .no_cached_reads:
+
+    ; Save CR2 for EPT
+    mov     xAX, cr2
+    mov     [xDX + VMCSCACHE.cr2], xAX
 %endif
 
     ; Restore segment registers

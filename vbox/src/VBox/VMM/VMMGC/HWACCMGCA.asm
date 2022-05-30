@@ -1,4 +1,4 @@
-; $Id: HWACCMGCA.asm 15378 2008-12-12 15:43:03Z vboxsync $
+; $Id: HWACCMGCA.asm 15440 2008-12-13 13:09:30Z vboxsync $
 ;; @file
 ; VMXM - GC vmx helpers
 ;
@@ -307,6 +307,10 @@ ALIGN(16)
     cmp     xCX, 0
     jnz     .cached_read
 .no_cached_reads:
+
+    ; Save CR2 for EPT
+    mov     xAX, cr2
+    mov     [xDX + VMCSCACHE.cr2], xAX
 %endif
 
     ; Restore segment registers
