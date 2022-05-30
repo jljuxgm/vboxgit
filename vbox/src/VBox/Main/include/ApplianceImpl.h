@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 17343 2009-03-04 12:57:43Z vboxsync $ */
+/* $Id: ApplianceImpl.h 17573 2009-03-09 13:02:45Z vboxsync $ */
 
 /** @file
  *
@@ -29,6 +29,7 @@
 namespace xml
 {
     class Node;
+    class ElementNode;
 }
 
 class VirtualBox;
@@ -87,10 +88,10 @@ private:
     struct Data;            // obscure, defined in AppliannceImpl.cpp
     Data *m;
 
-    HRESULT LoopThruSections(const char *pcszPath, const xml::Node *pReferencesElem, const xml::Node *pCurElem);
-    HRESULT HandleDiskSection(const char *pcszPath, const xml::Node *pReferencesElem, const xml::Node *pSectionElem);
-    HRESULT HandleNetworkSection(const char *pcszPath, const xml::Node *pSectionElem);
-    HRESULT HandleVirtualSystemContent(const char *pcszPath, const xml::Node *pContentElem);
+    HRESULT LoopThruSections(const char *pcszPath, const xml::ElementNode *pReferencesElem, const xml::ElementNode *pCurElem);
+    HRESULT HandleDiskSection(const char *pcszPath, const xml::ElementNode *pReferencesElem, const xml::ElementNode *pSectionElem);
+    HRESULT HandleNetworkSection(const char *pcszPath, const xml::ElementNode *pSectionElem);
+    HRESULT HandleVirtualSystemContent(const char *pcszPath, const xml::ElementNode *pContentElem);
 
     HRESULT searchUniqueVMName(Utf8Str& aName) const;
     HRESULT searchUniqueDiskImageFilePath(Utf8Str& aName) const;
