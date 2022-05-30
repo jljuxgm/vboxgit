@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 12970 2008-10-03 07:04:11Z vboxsync $ */
+/* $Id: PDMDriver.cpp 12975 2008-10-03 22:22:37Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -321,7 +321,7 @@ static int pdmR3DrvLoad(PVM pVM, PPDMDRVREGCBINT pRegCB, const char *pszFilename
          * Get the registration export and call it.
          */
         FNPDMVBOXDRIVERSREGISTER *pfnVBoxDriversRegister;
-        rc = PDMR3GetSymbolR3(pVM, pszName, "VBoxDriversRegister", (void **)&pfnVBoxDriversRegister);
+        rc = PDMR3LdrGetSymbolR3(pVM, pszName, "VBoxDriversRegister", (void **)&pfnVBoxDriversRegister);
         if (VBOX_SUCCESS(rc))
         {
             Log(("PDM: Calling VBoxDriversRegister (%p) of %s (%s)\n", pfnVBoxDriversRegister, pszName, pszFilename));

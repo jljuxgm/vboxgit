@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 12970 2008-10-03 07:04:11Z vboxsync $ */
+/* $Id: PDMInternal.h 12975 2008-10-03 22:22:37Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -542,8 +542,8 @@ typedef struct PDMRTC
  */
 typedef enum PDMMODTYPE
 {
-    /** Guest context module. */
-    PDMMOD_TYPE_GC,
+    /** Raw-mode (RC) context module. */
+    PDMMOD_TYPE_RC,
     /** Ring-0 (host) context module. */
     PDMMOD_TYPE_R0,
     /** Ring-3 (host) context module. */

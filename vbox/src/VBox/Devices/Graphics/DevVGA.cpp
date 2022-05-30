@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 12969 2008-10-03 07:03:26Z vboxsync $ */
+/* $Id: DevVGA.cpp 12975 2008-10-03 22:22:37Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5223,10 +5223,10 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     PCIDevSetHeaderType(&pThis->Dev,   0x00);
 
     /* The LBF access handler - error handling is better here than in the map function.  */
-    rc = PDMR3GetSymbolGCLazy(pVM, pDevIns->pDevReg->szGCMod, "vgaGCLFBAccessHandler", &pThis->RCPtrLFBHandler);
+    rc = PDMR3LdrGetSymbolRCLazy(pVM, pDevIns->pDevReg->szGCMod, "vgaGCLFBAccessHandler", &pThis->RCPtrLFBHandler);
     if (RT_FAILURE(rc))
     {
-        AssertReleaseMsgFailed(("PDMR3GetSymbolGC(, %s, \"vgaGCLFBAccessHandler\",) -> %Rrc\n", pDevIns->pDevReg->szGCMod, rc));
+        AssertReleaseMsgFailed(("PDMR3LdrGetSymbolRC(, %s, \"vgaGCLFBAccessHandler\",) -> %Rrc\n", pDevIns->pDevReg->szGCMod, rc));
         return rc;
     }
 

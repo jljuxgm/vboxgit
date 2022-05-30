@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 12970 2008-10-03 07:04:11Z vboxsync $ */
+/* $Id: PDM.cpp 12975 2008-10-03 22:22:37Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -311,7 +311,7 @@ PDMR3DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
      * Devices.
      */
     PCPDMDEVHLPRC pDevHlpRC;
-    int rc = PDMR3GetSymbolGC(pVM, NULL, "g_pdmRCDevHlp", &pDevHlpRC);
+    int rc = PDMR3LdrGetSymbolRC(pVM, NULL, "g_pdmRCDevHlp", &pDevHlpRC);
     AssertReleaseMsgRC(rc, ("rc=%Vrc when resolving g_pdmRCDevHlp\n", rc));
     for (PPDMDEVINS pDevIns = pVM->pdm.s.pDevInstances; pDevIns; pDevIns = pDevIns->Internal.s.pNextR3)
     {
