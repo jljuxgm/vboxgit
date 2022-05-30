@@ -1,4 +1,4 @@
-/* $Id: HardDiskFormatImpl.h 13844 2008-11-05 10:10:24Z vboxsync $ */
+/* $Id: HardDiskFormatImpl.h 13950 2008-11-07 11:23:23Z vboxsync $ */
 
 /** @file
  *
@@ -93,7 +93,7 @@ private:
         Bstr description;
         DataType_T type;
         ULONG flags;
-        Bstr defaults;
+        Bstr defaultValue;
     };
     typedef std::list <Property> PropertyList;
 
