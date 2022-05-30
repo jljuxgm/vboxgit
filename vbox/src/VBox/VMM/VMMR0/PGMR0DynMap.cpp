@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 14880 2008-12-01 17:51:53Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 15196 2008-12-09 17:34:25Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -1644,7 +1644,7 @@ VMMDECL(int) PGMDynMapHCPage(PVM pVM, RTHCPHYS HCPhys, void **ppv)
     /*
      * Validate state.
      */
-    STAM_COUNTER_INC(&pVM->pgm.s.StatR0DynMapHCPage);
+    STAM_PROFILE_START(&pVM->pgm.s.StatR0DynMapHCPage, a);
     AssertPtr(ppv);
     *ppv = NULL;
     AssertMsgReturn(pVM->pgm.s.pvR0DynMapUsed == g_pPGMR0DynMap,
@@ -1663,6 +1663,7 @@ VMMDECL(int) PGMDynMapHCPage(PVM pVM, RTHCPHYS HCPhys, void **ppv)
     uint32_t const  iPage = pgmR0DynMapPage(g_pPGMR0DynMap, HCPhys, pVM, ppv);
     if (RT_UNLIKELY(iPage == UINT32_MAX))
     {
+        STAM_PROFILE_STOP(&pVM->pgm.s.StatR0DynMapHCPage, a);
         static uint32_t s_cBitched = 0;
         if (++s_cBitched < 10)
             LogRel(("PGMDynMapHCPage: cLoad=%u/%u cPages=%u cGuardPages=%u\n",
@@ -1741,6 +1742,7 @@ VMMDECL(int) PGMDynMapHCPage(PVM pVM, RTHCPHYS HCPhys, void **ppv)
                 /* We're screwed. */
                 pgmR0DynMapReleasePage(g_pPGMR0DynMap, iPage, 1);
 
+                STAM_PROFILE_STOP(&pVM->pgm.s.StatR0DynMapHCPage, a);
                 static uint32_t s_cBitched = 0;
                 if (++s_cBitched < 10)
                     LogRel(("PGMDynMapHCPage: set is full!\n"));
@@ -1750,6 +1752,7 @@ VMMDECL(int) PGMDynMapHCPage(PVM pVM, RTHCPHYS HCPhys, void **ppv)
         }
     }
 
+    STAM_PROFILE_STOP(&pVM->pgm.s.StatR0DynMapHCPage, a);
     return VINF_SUCCESS;
 }
 
