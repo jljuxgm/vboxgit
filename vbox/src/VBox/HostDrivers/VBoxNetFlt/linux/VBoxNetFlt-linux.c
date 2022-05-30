@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 15527 2008-12-15 18:11:08Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 15625 2008-12-17 09:20:11Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -171,7 +171,7 @@ static int __init VBoxNetFltLinuxInit(void)
         LogRel(("VBoxNetFlt: failed to initialize IPRT (rc=%d)\n", rc));
 
     memset(&g_VBoxNetFltGlobals, 0, sizeof(g_VBoxNetFltGlobals));
-    return RTErrConvertToErrno(rc);
+    return -RTErrConvertToErrno(rc);
 }
 
 
