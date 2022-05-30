@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 12643 2008-09-22 13:21:22Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 12653 2008-09-22 16:03:25Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -75,6 +75,9 @@
  * Define this to flip the 15usec refresh bit on every read.
  * If not defined, it will be flipped correctly. */
 //#define FAKE_REFRESH_CLOCK
+#ifdef DOXYGEN_RUNNING
+# define FAKE_REFRESH_CLOCK
+#endif
 
 
 /*******************************************************************************

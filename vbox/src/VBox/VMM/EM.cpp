@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 12305 2008-09-09 15:50:15Z vboxsync $ */
+/* $Id: EM.cpp 12653 2008-09-22 16:03:25Z vboxsync $ */
 /** @file
  * EM - Execution Monitor/Manager.
  */
@@ -1548,7 +1548,7 @@ int emR3RawRingSwitch(PVM pVM)
 }
 
 /**
- * Handle a trap (#PF or #GP) in patch code
+ * Handle a trap (\#PF or \#GP) in patch code
  *
  * @returns VBox status code suitable for EM.
  * @param   pVM     VM handle.

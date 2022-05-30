@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 11982 2008-09-02 13:09:44Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 12653 2008-09-22 16:03:25Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -906,7 +906,7 @@ static int vboxNetFltNewInstance(PVBOXNETFLTGLOBALS pGlobals, const char *pszNam
 
 
 /**
- * @copydoc INTNETTRUNKNETFLTFACTORY::pfnCreateAndConnect
+ * @copydoc INTNETTRUNKFACTORY::pfnCreateAndConnect
  */
 static DECLCALLBACK(int) vboxNetFltFactoryCreateAndConnect(PINTNETTRUNKFACTORY pIfFactory, const char *pszName,
                                                            PINTNETTRUNKSWPORT pSwitchPort, PINTNETTRUNKIFPORT *ppIfPort)
@@ -954,7 +954,7 @@ static DECLCALLBACK(int) vboxNetFltFactoryCreateAndConnect(PINTNETTRUNKFACTORY p
 
 
 /**
- * @copydoc INTNETTRUNKNETFLTFACTORY::pfnRelease
+ * @copydoc INTNETTRUNKFACTORY::pfnRelease
  */
 static DECLCALLBACK(void) vboxNetFltFactoryRelease(PINTNETTRUNKFACTORY pIfFactory)
 {

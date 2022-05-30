@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 12324 2008-09-10 05:18:38Z vboxsync $ */
+/* $Id: PDMInternal.h 12653 2008-09-22 16:03:25Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -355,25 +355,25 @@ typedef struct PDMDRV
  */
 typedef struct PDMPIC
 {
-    /** Pointer to the PIC device instance - HC. */
+    /** Pointer to the PIC device instance - R3. */
     R3PTRTYPE(PPDMDEVINS)   pDevInsR3;
-    /** @copydoc PDMPICREG::pfnSetIrqHC */
+    /** @copydoc PDMPICREG::pfnSetIrqR3 */
     DECLR3CALLBACKMEMBER(void, pfnSetIrqR3,(PPDMDEVINS pDevIns, int iIrq, int iLevel));
-    /** @copydoc PDMPICREG::pfnGetInterruptHC */
+    /** @copydoc PDMPICREG::pfnGetInterruptR3 */
     DECLR3CALLBACKMEMBER(int, pfnGetInterruptR3,(PPDMDEVINS pDevIns));
 
     /** Pointer to the PIC device instance - R0. */
     R0PTRTYPE(PPDMDEVINS)   pDevInsR0;
-    /** @copydoc PDMPICREG::pfnSetIrqHC */
+    /** @copydoc PDMPICREG::pfnSetIrqR3 */
     DECLR0CALLBACKMEMBER(void, pfnSetIrqR0,(PPDMDEVINS pDevIns, int iIrq, int iLevel));
-    /** @copydoc PDMPICREG::pfnGetInterruptHC */
+    /** @copydoc PDMPICREG::pfnGetInterruptR3 */
     DECLR0CALLBACKMEMBER(int, pfnGetInterruptR0,(PPDMDEVINS pDevIns));
 
     /** Pointer to the PIC device instance - RC. */
     RCPTRTYPE(PPDMDEVINS)   pDevInsRC;
-    /** @copydoc PDMPICREG::pfnSetIrqHC */
+    /** @copydoc PDMPICREG::pfnSetIrqR3 */
     DECLRCCALLBACKMEMBER(void, pfnSetIrqRC,(PPDMDEVINS pDevIns, int iIrq, int iLevel));
-    /** @copydoc PDMPICREG::pfnGetInterruptHC */
+    /** @copydoc PDMPICREG::pfnGetInterruptR3 */
     DECLRCCALLBACKMEMBER(int, pfnGetInterruptRC,(PPDMDEVINS pDevIns));
     /** Alignment padding. */
     RTRCPTR                 RCPtrPadding;

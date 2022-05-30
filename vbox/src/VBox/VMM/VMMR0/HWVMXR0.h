@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 12578 2008-09-18 14:58:57Z vboxsync $ */
+/* $Id: HWVMXR0.h 12653 2008-09-22 16:03:25Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -33,7 +33,7 @@
 
 __BEGIN_DECLS
 
-/** @defgroup grp_vmx       Internal
+/** @defgroup grp_vmx_int   Internal
  * @ingroup grp_vmx
  * @internal
  * @{

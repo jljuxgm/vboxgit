@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 12569 2008-09-18 12:52:42Z vboxsync $ */
+/* $Id: DevPCI.cpp 12653 2008-09-22 16:03:25Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1332,7 +1332,7 @@ static DECLCALLBACK(int) pciIORegionRegister(PPDMDEVINS pDevIns, PPCIDEVICE pPci
 
 
 /**
- * @copydoc PDMPCIBUSREG::pfnSetConfigCallbacksHC
+ * @copydoc PDMPCIBUSREG::pfnSetConfigCallbacksR3
  */
 static DECLCALLBACK(void) pciSetConfigCallbacks(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, PFNPCICONFIGREAD pfnRead, PPFNPCICONFIGREAD ppfnReadOld,
                                                 PFNPCICONFIGWRITE pfnWrite, PPFNPCICONFIGWRITE ppfnWriteOld)
