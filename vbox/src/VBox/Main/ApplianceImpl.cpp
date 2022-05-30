@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17911 2009-03-16 10:30:55Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17913 2009-03-16 10:53:29Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3198,7 +3198,6 @@ STDMETHODIMP VirtualSystemDescription::SetFinalValues(ComSafeArrayIn(BOOL, aEnab
                                                       ComSafeArrayIn(IN_BSTR, argVboxValues),
                                                       ComSafeArrayIn(IN_BSTR, argExtraConfigValues))
 {
-    NOREF(aEnabledSize);
     CheckComArgSafeArrayNotNull(argVboxValues);
     CheckComArgSafeArrayNotNull(argExtraConfigValues);
 
