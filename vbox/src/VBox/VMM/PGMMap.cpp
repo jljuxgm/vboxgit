@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 11996 2008-09-02 16:40:12Z vboxsync $ */
+/* $Id: PGMMap.cpp 12909 2008-10-02 09:35:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -964,7 +964,7 @@ int pgmR3SyncPTResolveConflictPAE(PVM pVM, PPGMMAPPING pMapping, RTGCPTR GCPtrOl
 {
     STAM_PROFILE_START(&pVM->pgm.s.StatHCResolveConflict, a);
 
-    for (unsigned iPDPTE = X86_PG_PAE_PDPE_ENTRIES - 1; iPDPTE >= 0; iPDPTE--)
+    for (int iPDPTE = X86_PG_PAE_PDPE_ENTRIES - 1; iPDPTE >= 0; iPDPTE--)
     {
         unsigned  iPDSrc;
         PX86PDPAE pPDSrc = pgmGstGetPaePDPtr(&pVM->pgm.s, iPDPTE << X86_PDPT_SHIFT, &iPDSrc);
