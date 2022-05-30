@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 17274 2009-03-03 13:16:06Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 17300 2009-03-03 16:21:15Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1042,9 +1042,7 @@ bool remR3CanExecuteRaw(CPUState *env, RTGCPTR eip, unsigned fFlags, int *piExce
         Ctx.gdtr.pGdt      = env->gdt.base;
 
         Ctx.rsp            = env->regs[R_ESP];
-#ifdef LOG_ENABLED
         Ctx.rip            = env->eip;
-#endif
 
         Ctx.eflags.u32     = env->eflags;
 
