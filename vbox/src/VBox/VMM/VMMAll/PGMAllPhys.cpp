@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 17435 2009-03-06 03:23:13Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 17438 2009-03-06 04:35:00Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -461,6 +461,29 @@ int pgmPhysPageMakeWritable(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
         case PGM_PAGE_STATE_SHARED:
             return pgmPhysAllocPage(pVM, pPage, GCPhys);
     }
+}
+
+
+/**
+ * Wrapper for pgmPhysPageMakeWritable which enters the critsect.
+ *
+ * @returns VBox status code.
+ * @retval  VINF_SUCCESS on success.
+ * @retval  VERR_PGM_PHYS_PAGE_RESERVED it it's a valid page but has no physical backing.
+ *
+ * @param   pVM         The VM address.
+ * @param   pPage       The physical page tracking structure.
+ * @param   GCPhys      The address of the page.
+ */
+int pgmPhysPageMakeWritableUnlocked(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
+{
+    int rc = pgmLock(pVM);
+    if (RT_SUCCESS(rc))
+    {
+        rc = pgmPhysPageMakeWritable(pVM, pPage, GCPhys);
+        pgmUnlock(pVM);
+    }
+    return rc;
 }
 
 
