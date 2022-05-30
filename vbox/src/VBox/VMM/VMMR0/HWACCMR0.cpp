@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 13872 2008-11-05 15:00:48Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 13873 2008-11-05 15:05:58Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -964,7 +964,7 @@ VMMR0DECL(int) HWACCMR0Leave(PVM pVM, RTCPUID idVCpu)
  * @param   pVM         The VM to operate on.
  * @param   idVCpu      VMCPUD id.
  */
-VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, RTCPUID idVCpu)
+VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, uintptr_t idVCpu)
 {
     CPUMCTX *pCtx;
     int      rc;

@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 13872 2008-11-05 15:00:48Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 13873 2008-11-05 15:05:58Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -525,6 +525,8 @@ VMMR0DECL(int) SVMR0SaveHostState(PVM pVM, RTCPUID idVCpu)
 
 /**
  * Loads the guest state
+ *
+ * NOTE: Don't do anything here that can cause a jump back to ring 3!!!!!
  *
  * @returns VBox status code.
  * @param   pVM         The VM to operate on.
