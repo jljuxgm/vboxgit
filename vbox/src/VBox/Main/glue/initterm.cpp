@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 16649 2009-02-10 18:29:02Z vboxsync $ */
+/* $Id: initterm.cpp 16674 2009-02-11 16:05:15Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -455,25 +455,30 @@ HRESULT Initialize()
         }
 
         /* Finally, initialize XPCOM */
-        nsCOMPtr <nsIServiceManager> serviceManager;
-        rc = NS_InitXPCOM2 (getter_AddRefs (serviceManager),
-                            appDir, dsProv);
-
-        if (NS_SUCCEEDED (rc))
         {
-            nsCOMPtr <nsIComponentRegistrar> registrar =
-                do_QueryInterface (serviceManager, &rc);
+            nsCOMPtr <nsIServiceManager> serviceManager;
+            rc = NS_InitXPCOM2 (getter_AddRefs (serviceManager),
+                                appDir, dsProv);
+
             if (NS_SUCCEEDED (rc))
             {
-                rc = registrar->AutoRegister (nsnull);
+                nsCOMPtr <nsIComponentRegistrar> registrar =
+                    do_QueryInterface (serviceManager, &rc);
                 if (NS_SUCCEEDED (rc))
                 {
-                    /* We succeeded, stop probing paths */
-                    LogFlowFunc (("Succeeded.\n"));
-                    break;
+                    rc = registrar->AutoRegister (nsnull);
+                    if (NS_SUCCEEDED (rc))
+                    {
+                        /* We succeeded, stop probing paths */
+                        LogFlowFunc (("Succeeded.\n"));
+                        break;
+                    }
                 }
             }
         }
+
+        /* clean up before the new try */
+        rc = NS_ShutdownXPCOM (nsnull);
 
         if (i == 0)
         {
