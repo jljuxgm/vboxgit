@@ -1,4 +1,4 @@
-# $Id: Config.kmk 11861 2008-08-30 00:31:50Z vboxsync $
+# $Id: Config.kmk 11862 2008-08-30 00:32:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -287,7 +287,7 @@ VBOX_WITH_TESTCASES = 1
 # caused by our XPCOM library polluting the symbol namespace for system libs.
 # @todo disabled this for now, as it causes problem with old external xpcom components.
 if1of ($(KBUILD_TARGET), linux solaris)
- VBOX_WITH_XPCOM_NAMESPACE_CLEANUP=1
+ VBOX_WITH_XPCOM_NAMESPACE_CLEANUP = 1
 endif
 # Set this to skip installing the redistributable compiler runtime.
 #VBOX_WITHOUT_COMPILER_REDIST = 1
@@ -3239,7 +3239,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11861 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 11862 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
