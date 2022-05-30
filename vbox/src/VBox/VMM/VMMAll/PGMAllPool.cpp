@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 15411 2008-12-13 03:30:58Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 15424 2008-12-13 08:56:44Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -158,8 +158,7 @@ void *pgmPoolMapPageFallback(PPGM pPGM, PPGMPOOLPAGE pPage)
     AssertMsg(HCPhys && HCPhys != NIL_RTHCPHYS && !(PAGE_OFFSET_MASK & HCPhys), ("%RHp\n", HCPhys));
 
     void *pv;
-    int rc = pgmR0DynMapHCPageInlined(pPGM, HCPhys, &pv);
-    AssertReleaseRCReturn(rc, NULL);
+    pgmR0DynMapHCPageInlined(pPGM, HCPhys, &pv);
     return pv;
 # endif /* VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0 */
 }
