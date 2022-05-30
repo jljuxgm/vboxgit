@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 14888 2008-12-02 10:36:00Z vboxsync $ */
+/* $Id: HWACCM.cpp 14891 2008-12-02 11:03:05Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -330,6 +330,8 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
 
 #else  /* !RT_OS_DARWIN */
 
+        /* Invert the selection */
+        pVM->hwaccm.s.fAllowed ^= 1;
         if (pVM->hwaccm.s.fAllowed)
         {
             if (pVM->hwaccm.s.vmx.fSupported)
