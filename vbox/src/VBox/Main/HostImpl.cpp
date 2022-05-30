@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 15574 2008-12-16 11:37:26Z vboxsync $ */
+/* $Id: HostImpl.cpp 15686 2008-12-19 12:47:01Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1301,7 +1301,7 @@ STDMETHODIMP Host::COMGETTER(UTCTime)(LONG64 *aUTCTime)
 ////////////////////////////////////////////////////////////////////////////////
 
 #ifdef RT_OS_WINDOWS
-
+/** @todo REMOVE. OBSOLETE NOW. */
 /**
  * Returns TRUE if the Windows version is 6.0 or greater (i.e. it's Vista and
  * later OSes) and it has the UAC (User Account Control) feature enabled.
