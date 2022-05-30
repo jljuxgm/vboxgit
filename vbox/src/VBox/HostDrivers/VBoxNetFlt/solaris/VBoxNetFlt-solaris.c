@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 16060 2009-01-19 19:59:47Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 16082 2009-01-20 12:47:18Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -2962,6 +2962,19 @@ static void vboxNetFltSolarisAnalyzeMBlk(mblk_t *pMsg)
         {
             LogFlow((DEVICE_NAME ":Chained IP packet. Skipping validity check.\n"));
         }
+    }
+    else if (pEthHdr->EtherType == RT_H2BE_U16(RTNET_ETHERTYPE_VLAN))
+    {
+        typedef struct VLANHEADER
+        {
+            int Pcp:3;
+            int Cfi:1;
+            int Vid:12; 
+        } VLANHEADER;
+
+        VLANHEADER *pVlanHdr = (VLANHEADER *)(pMsg->b_rptr + sizeof(RTNETETHERHDR));
+        LogFlow((DEVICE_NAME ":VLAN Pcp=%d Cfi=%d Id=%d\n", pVlanHdr->Pcp, pVlanHdr->Cfi, pVlanHdr->Vid >> 4));
+        LogFlow((DEVICE_NAME "%.*Rhxd\n", MBLKL(pMsg), pMsg->b_rptr));
     }
     else if (pEthHdr->EtherType == RT_H2BE_U16(RTNET_ETHERTYPE_ARP))
     {
