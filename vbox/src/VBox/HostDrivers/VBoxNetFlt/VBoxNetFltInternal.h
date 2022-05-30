@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 12883 2008-10-01 23:19:15Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 12974 2008-10-03 18:54:37Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -178,7 +178,15 @@ typedef struct VBOXNETFLTINS
         } s;
 #endif
         /** Padding. */
+#if defined(RT_OS_WINDOWS) && defined(VBOX_NETFLT_ONDEMAND_BIND)
+        /* windows AND protocol-based approach :
+         * we include the ADAPT into the VBOXNETFLTINS,
+         * and we do not feet into the 64 bytes padding,
+         * make it bigger */
+        uint8_t abPadding[192];
+#else
         uint8_t abPadding[64];
+#endif
     } u;
 
     /** The interface name. */
