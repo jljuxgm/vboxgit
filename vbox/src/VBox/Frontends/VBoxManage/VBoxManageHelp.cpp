@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 17669 2009-03-11 09:56:29Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 17680 2009-03-11 11:43:41Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -490,7 +490,7 @@ void printUsage(USAGECATEGORY u64Cmd)
         RTPrintf("VBoxManage hostonlyif       ipconfig <name> [-dhcp| -ip<ipv4> -netmask<ipv4> | -ipv6<ipv6> -netmasklengthv6<length>]"
 # if defined(RT_OS_WINDOWS)
                  "|\n"
-                 "                            create <name>|\n"
+                 "                            create |\n"
                  "                            remove <name>\n"
 # endif
                  "\n");
