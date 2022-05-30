@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 15557 2008-12-15 22:40:58Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 15567 2008-12-16 10:16:56Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -360,7 +360,7 @@ int handleCloneHardDisk(int argc, char *argv[],
     bool unknown = false;
 
     /* first guess is that it's a UUID */
-    Guid uuid(argv[0]);
+    Guid uuid(Utf8Str(src).raw());
     rc = virtualBox->GetHardDisk2(uuid, srcDisk.asOutParam());
     /* no? then it must be a filename */
     if (FAILED (rc))
