@@ -1,4 +1,4 @@
-/* $Id: ldrNative-posix.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: ldrNative-posix.cpp 12146 2008-09-05 16:27:28Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, POSIX native.
  */
@@ -79,7 +79,7 @@ int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle)
         *phHandle = (uintptr_t)pvMod;
         return VINF_SUCCESS;
     }
-    Log(("rtldrNativeLoad: dlopen('%s', RTLD_NOW | RTLD_LOCAL) failed: %s\n", pszFilename, dlerror()));
+    LogRel(("rtldrNativeLoad: dlopen('%s', RTLD_NOW | RTLD_LOCAL) failed: %s\n", pszFilename, dlerror()));
     return VERR_FILE_NOT_FOUND;
 }
 
