@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16277 2009-01-27 21:16:06Z vboxsync $
+# $Id: Makefile.kmk 16279 2009-01-27 21:30:52Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox HGCM Service.
 #
@@ -74,7 +74,8 @@ $(foreach hdr, $(VBOX_DARWIN_OPENGL_HEADERS), \
 $(VBOX_PATH_DARWIN_OPENGL)/$(hdr): \
 	$(VBOX_PATH_MACOSX_SDK)/System/Library/Frameworks/OpenGL.framework/Versions/Current/Headers/$(hdr) \
 	| $(VBOX_PATH_DARWIN_OPENGL)/ \
-	; $$(LN_SYMLINK) $$< $$@ )
+	; $$(LN_SYMLINK) $$< $$@ \
+$(NL))
 endif # darwin
 
 #
