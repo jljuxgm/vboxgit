@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 16047 2009-01-19 16:30:58Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 16457 2009-02-02 13:05:07Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1031,6 +1031,11 @@ VMMDECL(int)  PGMHandlerPhysicalPageReset(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCP
             int rc = pgmPhysGetPageEx(&pVM->pgm.s, GCPhysPage, &pPage);
             AssertRCReturn(rc, rc);
             PGM_PAGE_SET_HNDL_PHYS_STATE(pPage, pgmHandlerPhysicalCalcState(pCur));
+
+            /* MMIO has no backing memory; overwrite previously aliased physical address. */
+            if (pCur->enmType == PGMPHYSHANDLERTYPE_MMIO)
+                pPage->HCPhys = 0;
+
 #ifndef IN_RC
             HWACCMInvalidatePhysPage(pVM, GCPhysPage);
 #endif
