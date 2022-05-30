@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14439 2008-11-20 23:33:47Z vboxsync $
+# $Id: Makefile.kmk 14485 2008-11-21 23:34:34Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -462,6 +462,10 @@ endif
 VBoxC_LIBS += \
 	$(LIB_VMM) \
 	$(LIB_REM)
+
+ifdef VBOX_WITH_NETFLT
+ VBoxC_LIBS.win += $(PATH_LIB)/WinNetConfig.lib
+endif
 
 VBoxC_INTERMEDIATES = \
 	$(VBOX_MAIN_PREREQS) \
