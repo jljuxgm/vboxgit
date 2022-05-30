@@ -1,4 +1,4 @@
-/** $Id: VBoxHDD-new.cpp 12328 2008-09-10 08:14:31Z vboxsync $ */
+/** $Id: VBoxHDD-new.cpp 12329 2008-09-10 08:16:23Z vboxsync $ */
 /** @file
  * VBox HDD Container implementation.
  */
@@ -755,6 +755,11 @@ VBOXDDU_DECL(int) VDBackendInfo(unsigned cEntriesAlloc, PVDBACKENDINFO pEntries,
                         for (cExts=0; pBackend->papszFileExtensions[cExts]; cExts++)
                             ;
                         const char **paExts = (const char **)RTMemAlloc((cExts+1) * sizeof(paExts[0]));
+                        if (!paExts)
+                        {
+                            rc = VERR_NO_MEMORY;
+                            break;
+                        }
                         for (iExt=0; iExt < cExts; iExt++)
                         {
                             paExts[iExt] = (const char*)RTStrDup(pBackend->papszFileExtensions[iExt]);
@@ -764,9 +769,9 @@ VBOXDDU_DECL(int) VDBackendInfo(unsigned cEntriesAlloc, PVDBACKENDINFO pEntries,
                                 break;
                             }
                         }
-                        paExts[iExt] = NULL;
                         if (RT_FAILURE(rc))
                             break;
+                        paExts[iExt] = NULL;
                         pEntries[cEntries].papszFileExtensions = paExts;
                         if (pBackend->paConfigInfo != NULL)
                         {
