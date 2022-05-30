@@ -1,4 +1,4 @@
-/* $Id: Performance.h 12457 2008-09-15 11:14:35Z vboxsync $ */
+/* $Id: Performance.h 12513 2008-09-16 19:11:15Z vboxsync $ */
 
 /** @file
  *
@@ -81,28 +81,9 @@ namespace pm
 
     class CollectorHints
     {
+    public:
         typedef std::list<ProcessFlagsPair> ProcessList;
 
-        HintFlags   mHostFlags;
-        ProcessList mProcesses;
-
-        ProcessFlagsPair& findProcess(RTPROCESS process)
-        {
-            ProcessList::iterator it;
-
-            it = std::find_if(mProcesses.begin(),
-                              mProcesses.end(),
-                              std::bind2nd(std::ptr_fun(processEqual), process));
-
-            if (it != mProcesses.end())
-                return *it;
-
-            /* Not found -- add new */
-            mProcesses.push_back(ProcessFlagsPair(process, COLLECT_NONE));
-            return mProcesses.back();
-        }
-
-    public:
         CollectorHints() : mHostFlags(COLLECT_NONE) {}
         void collectHostCpuLoad() { mHostFlags |= COLLECT_CPU_LOAD; }
         void collectHostRamUsage() { mHostFlags |= COLLECT_RAM_USAGE; }
@@ -130,6 +111,29 @@ namespace pm
             processes.reserve(mProcesses.size());
             for (ProcessList::const_iterator it = mProcesses.begin(); it != mProcesses.end(); it++)
                 processes.push_back(it->first);
+        }
+        const ProcessList& getProcessFlags() const
+        {
+            return mProcesses;
+        }
+    private:
+        HintFlags   mHostFlags;
+        ProcessList mProcesses;
+
+        ProcessFlagsPair& findProcess(RTPROCESS process)
+        {
+            ProcessList::iterator it;
+
+            it = std::find_if(mProcesses.begin(),
+                              mProcesses.end(),
+                              std::bind2nd(std::ptr_fun(processEqual), process));
+
+            if (it != mProcesses.end())
+                return *it;
+
+            /* Not found -- add new */
+            mProcesses.push_back(ProcessFlagsPair(process, COLLECT_NONE));
+            return mProcesses.back();
         }
     };
 

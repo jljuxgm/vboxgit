@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12244 2008-09-09 00:35:24Z vboxsync $
+# $Id: Makefile.kmk 12513 2008-09-16 19:11:15Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -117,7 +117,7 @@ tstCollector_SOURCES  = \
 tstCollector_INCS     = ../include
 tstCollector_LDFLAGS.darwin  += -lproc
 tstCollector_LDFLAGS.solaris += -lkstat
-tstCollector_LDFLAGS.win     += wbemuuid.lib powrprof.lib
+tstCollector_LDFLAGS.win     += psapi.lib powrprof.lib
 
 
 # generate rules.
