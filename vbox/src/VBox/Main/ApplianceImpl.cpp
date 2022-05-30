@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17577 2009-03-09 14:17:19Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17578 2009-03-09 14:38:03Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2168,7 +2168,8 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD aThread, void *pv
 
                         ComPtr<IHardDisk> dstHdVBox;
                         /* If strHref is empty we have to create a new file */
-                        if (di.strHref.c_str()[0] == 0)
+                        if (di.strHref.isNull() ||
+                            di.strHref.c_str()[0] == 0)
                         {
                             /* Which format to use? */
                             Bstr srcFormat = L"VDI";
@@ -2180,7 +2181,6 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD aThread, void *pv
                             if (FAILED(rc)) throw rc;
 
                             /* Create a dynamic growing disk image with the given capacity */
-                            ComPtr<IProgress> progress;
                             rc = dstHdVBox->CreateDynamicStorage(di.iCapacity / _1M, progress.asOutParam());
                             if (FAILED(rc)) throw rc;
 
