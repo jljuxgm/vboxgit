@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 16560 2009-02-06 18:06:04Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 17911 2009-03-16 10:30:55Z vboxsync $ */
 
 /** @file
  *
@@ -514,7 +514,7 @@ void PerformanceCollector::unregisterMetricsFor (const ComPtr <IUnknown> &aObjec
 
 /* static */
 void PerformanceCollector::staticSamplerCallback (RTTIMERLR hTimerLR, void *pvUser,
-                                                  uint64_t iTick)
+                                                  uint64_t /* iTick */)
 {
     AssertReturnVoid (pvUser != NULL);
     PerformanceCollector *collector = static_cast <PerformanceCollector *> (pvUser);

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 16867 2009-02-17 17:00:56Z vboxsync $ */
+/* $Id: MediumImpl.h 17911 2009-03-16 10:30:55Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -158,8 +158,8 @@ protected:
      * Otherwise, returns a respective error message. Called by attachTo() from
      * within this object's AutoWriteLock.
      */
-    virtual HRESULT canAttach (const Guid &aMachineId,
-                               const Guid &aSnapshotId)
+    virtual HRESULT canAttach (const Guid & /* aMachineId */,
+                               const Guid & /* aSnapshotId */)
     { return S_OK; }
 
     /**
