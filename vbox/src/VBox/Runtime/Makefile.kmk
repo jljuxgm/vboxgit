@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11900 2008-09-01 09:06:53Z vboxsync $
+# $Id: Makefile.kmk 11916 2008-09-01 12:54:21Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -996,7 +996,6 @@ RuntimeR0Drv_SOURCES.win = \
 	r0drv/mpnotification-r0drv.c \
 	r0drv/nt/alloc-r0drv-nt.cpp \
 	r0drv/nt/assert-r0drv-nt.cpp \
-	r0drv/nt/assertA-r0drv-nt.asm \
 	r0drv/nt/initterm-r0drv-nt.cpp \
 	r0drv/nt/memobj-r0drv-nt.cpp \
 	r0drv/nt/mp-r0drv-nt.cpp \
