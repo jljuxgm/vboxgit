@@ -1,4 +1,4 @@
-/* $Id: PATMGC.cpp 13827 2008-11-05 01:31:18Z vboxsync $ */
+/* $Id: PATMGC.cpp 14029 2008-11-10 17:27:22Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -46,8 +46,6 @@
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #include <iprt/string.h>
-#include <stdlib.h>
-#include <stdio.h>
 
 
 /**
