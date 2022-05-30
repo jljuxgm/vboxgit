@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 17419 2009-03-05 18:32:17Z vboxsync $ */
+/* $Id: VBoxManage.h 17549 2009-03-09 06:27:25Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -87,6 +87,7 @@
 #define USAGE_CONVERTHD             RT_BIT_64(43)
 #define USAGE_IMPORTAPPLIANCE       RT_BIT_64(44)
 #define USAGE_EXPORTAPPLIANCE       RT_BIT_64(45)
+#define USAGE_HOSTONLYIFS           RT_BIT_64(46)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
