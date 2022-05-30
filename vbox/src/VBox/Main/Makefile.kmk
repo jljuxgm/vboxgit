@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17333 2009-03-04 09:14:29Z vboxsync $
+# $Id: Makefile.kmk 17443 2009-03-06 09:56:18Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -371,6 +371,9 @@ ifdef VBOX_WITH_HOSTNETIF_API
  VBoxSVC_SOURCES.darwin  +=  darwin/NetIfList-darwin.cpp
  VBoxSVC_SOURCES.solaris += solaris/NetIfList-solaris.cpp
  VBoxSVC_DEFS            += VBOX_WITH_HOSTNETIF_API
+ if1of ($(KBUILD_TARGET), linux darwin solaris)
+  VBoxSVC_SOURCES        += generic/NetIf-generic.cpp
+ endif
 endif
 
 win/VBoxSVC.rc_INCS  = $(PATH_VBoxSVC)
