@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 14411 2008-11-20 13:26:47Z vboxsync $ */
+/* $Id: CPUM.cpp 14746 2008-11-27 21:47:40Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -309,7 +309,10 @@ static int cpumR3CpuIdInit(PVM pVM)
                                        //| X86_CPUID_FEATURE_EDX_TM    - no thermal monitor.
                                        //| X86_CPUID_FEATURE_EDX_PBE   - no pneding break enabled.
                                        | 0;
-    pCPUM->aGuestCpuIdStd[1].ecx      &= 0//X86_CPUID_FEATURE_ECX_SSE3 - not supported by the recompiler yet.
+    pCPUM->aGuestCpuIdStd[1].ecx      &= 0
+#ifdef VBOX_WITH_NEW_RECOMPILER
+                                       | X86_CPUID_FEATURE_ECX_SSE3
+#endif
                                        | X86_CPUID_FEATURE_ECX_MONITOR
                                        //| X86_CPUID_FEATURE_ECX_CPLDS - no CPL qualified debug store.
                                        //| X86_CPUID_FEATURE_ECX_VMX   - not virtualized.
