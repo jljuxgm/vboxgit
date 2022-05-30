@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 17703 2009-03-11 15:39:29Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 17709 2009-03-11 16:33:30Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -24,6 +24,7 @@
 #include <iprt/process.h>
 #include <iprt/env.h>
 #include <iprt/path.h>
+#include <iprt/param.h>
 
 #include "HostNetworkInterfaceImpl.h"
 #include "netif.h"
@@ -39,7 +40,7 @@ static int NetIfAdpCtl(HostNetworkInterface * pIf, char *pszAddr, char *pszMask)
         args[4] = pszMask;
     }
     
-    char szAdpCtl[PATH_MAX];
+    char szAdpCtl[RTPATH_MAX];
     int rc = RTPathProgram(szAdpCtl, sizeof(szAdpCtl) - sizeof("/" VBOXNETADPCTL_NAME));
     if (RT_FAILURE(rc))
         return rc;
