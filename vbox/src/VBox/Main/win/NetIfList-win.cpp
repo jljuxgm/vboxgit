@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17275 2009-03-03 13:28:12Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17337 2009-03-04 09:29:53Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -686,9 +686,9 @@ static int NetIfListHostAdapters(std::list <ComObjPtr <HostNetworkInterface> > &
     return VINF_SUCCESS;
 }
 
-#if 0
 //TODO: this is sample currently, hardcoded balues should be removed and exposed to the API
-static int enableStatic()
+#if 0
+static int NetIfEnableStatic()
 {
     INetCfg *pnc;
     LPWSTR lpszLockedBy = NULL;

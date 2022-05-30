@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 17333 2009-03-04 09:14:29Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 17337 2009-03-04 09:29:53Z vboxsync $ */
 
 /** @file
  *
@@ -357,7 +357,7 @@ STDMETHODIMP HostNetworkInterface::EnableStaticIpConfig (ULONG aIPAddress, ULONG
     return E_NOTIMPL;
 }
 
-STDMETHODIMP HostNetworkInterface::EnableStaticIpConfigV6 (BSTR aIPV6Address, BSTR aIPV6Mask)
+STDMETHODIMP HostNetworkInterface::EnableStaticIpConfigV6 (IN_BSTR aIPV6Address, IN_BSTR aIPV6Mask)
 {
     return E_NOTIMPL;
 }
