@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 12361 2008-09-10 15:05:50Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 12362 2008-09-10 15:07:37Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -191,7 +191,7 @@ static DECLCALLBACK(int) drvHostSerialWrite(PPDMICHAR pInterface, const void *pv
                          : CHAR_MAX_SEND_QUEUE - (iHead - iTail) - 1;
         if (cbAvail <= 0)
         {
-            Log(("%s: dropping %d chars (cbAvail=%d iHead=%d iTail=%d)\n", __FUNCTION__, cbWrite - i , cbAvial, iHead, iTail));
+            Log(("%s: dropping %d chars (cbAvail=%d iHead=%d iTail=%d)\n", __FUNCTION__, cbWrite - i , cbAvail, iHead, iTail));
             break;
         }
 
@@ -868,7 +868,7 @@ ioctl_error:
         }
         if (!((statusLines ^ pThis->fStatusLines) & uStatusLinesToCheck))
         {
-            PDMR3ThreadSleep(pThread, 1000); /* 1 sec */
+            PDMR3ThreadSleep(pThread, 50); /* 1 sec */
             continue;
         }
         pThis->fStatusLines = statusLines;
