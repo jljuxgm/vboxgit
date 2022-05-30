@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17140 2009-02-25 16:43:48Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17148 2009-02-26 09:55:26Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3092,6 +3092,8 @@ static void pgmPoolTrackClearPageUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PCPGMP
         uint32_t       *pau32;
     } u;
     u.pau64 = (uint64_t *)PGMPOOL_PAGE_2_PTR(pPool->CTX_SUFF(pVM), pUserPage);
+
+    LogFlow(("pgmPoolTrackClearPageUser: clear %x in %s (flushing %s)\n", iUserTable, pgmPoolPoolKindToStr(pUserPage->enmKind), pgmPoolPoolKindToStr(pPage->enmKind)));
 
     /* Safety precaution in case we change the paging for other modes too in the future. */
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
