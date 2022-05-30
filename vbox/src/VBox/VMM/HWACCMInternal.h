@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 15702 2008-12-19 16:02:42Z vboxsync $ */
+/* $Id: HWACCMInternal.h 15852 2009-01-08 10:56:11Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -434,6 +434,9 @@ typedef VMCSCACHE *PVMCSCACHE;
  */
 typedef struct HWACCMCPU
 {
+    /** Time of entry into the ring 0 world switcher code. */
+    uint64_t                    u64TimeEntry;
+
     /** Old style FPU reporting trap mask override performed (optimization) */
     bool                        fFPUOldStyleOverride;
 
