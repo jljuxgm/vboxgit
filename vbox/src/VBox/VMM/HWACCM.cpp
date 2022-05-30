@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 12020 2008-09-03 08:51:55Z vboxsync $ */
+/* $Id: HWACCM.cpp 12061 2008-09-03 15:37:33Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -824,6 +824,30 @@ HWACCMR3DECL(bool) HWACCMR3IsNestedPagingActive(PVM pVM)
 HWACCMR3DECL(bool) HWACCMR3IsEventPending(PVM pVM)
 {
     return HWACCMIsEnabled(pVM) && pVM->hwaccm.s.Event.fPending;
+}
+
+/**
+ * Check fatal VT-x/AMD-V error and produce some meaningful 
+ * log release message.
+ *
+ * @param   pVM         The VM to operate on.
+ * @param   iStatusCode VBox status code
+ */
+HWACCMR3DECL(void) HWACCMR3CheckError(PVM pVM, int iStatusCode)
+{
+    switch(iStatusCode)
+    {
+    case VERR_VMX_INVALID_VMCS_FIELD:
+        break;
+
+    case VERR_VMX_INVALID_VMCS_PTR:
+        LogRel(("VERR_VMX_INVALID_VMCS_PTR: Current pointer %VGp vs %VGp\n", pVM->hwaccm.s.vmx.lasterror.u64VMCSPhys, pVM->hwaccm.s.vmx.pVMCSPhys));
+        LogRel(("VERR_VMX_INVALID_VMCS_PTR: Current VMCS version %x\n", pVM->hwaccm.s.vmx.lasterror.ulVMCSRevision));
+        break;
+
+    case VERR_VMX_INVALID_VMXON_PTR:
+        break;
+    }
 }
 
 /**
