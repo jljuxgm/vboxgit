@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13938 2008-11-06 20:54:47Z vboxsync $
+# $Id: Makefile.kmk 14545 2008-11-24 21:15:01Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -37,6 +37,17 @@ ifndef VBOX_ONLY_DOCS
    include $(PATH_SUB_CURRENT)/VBoxNetFlt/Makefile.kmk
   endif
  endif
+
+ ifeq ($(KBUILD_TARGET),linux)
+  #
+  # Install the Makefile for module compliation on Linux hosts
+  #
+  INSTALLS += HostDrivers-src
+  HostDrivers-src_INST    = bin/src/
+  HostDrivers-src_MODE    = a+r,u+w
+  HostDrivers-src_SOURCES = linux/Makefile
+ endif
+
 endif # !VBOX_ONLY_DOCS
 
 # Let kBuild generate the rules.
