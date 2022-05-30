@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 17348 2009-03-04 15:34:40Z vboxsync $ */
+/* $Id: assert.cpp 17410 2009-03-05 15:15:04Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers.
  */
@@ -130,7 +130,9 @@ RTDECL(void)    AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszF
                        "Expression: %s\n"
                        "Location  : %s(%d) %s\n",
                        pszExpr, pszFile, uLine, pszFunction);
+#ifndef IN_RC /* flushing is done automatically in RC */
         RTLogFlush(pLog);
+#endif
     }
 
 #ifndef LOG_ENABLED
@@ -144,7 +146,9 @@ RTDECL(void)    AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszF
                         "Expression: %s\n"
                         "Location  : %s(%d) %s\n",
                         pszExpr, pszFile, uLine, pszFunction);
+#ifndef IN_RC /* flushing is done automatically in RC */
             RTLogFlush(pLog);
+#endif
         }
     }
 
@@ -192,7 +196,9 @@ RTDECL(void)    AssertMsg2(const char *pszFormat, ...)
         va_start(args, pszFormat);
         RTLogRelPrintfV(pszFormat, args);
         va_end(args);
+#ifndef IN_RC /* flushing is done automatically in RC */
         RTLogFlush(pLog);
+#endif
     }
 
     pLog = RTLogDefaultInstance();
@@ -201,7 +207,9 @@ RTDECL(void)    AssertMsg2(const char *pszFormat, ...)
         va_start(args, pszFormat);
         RTLogPrintfV(pszFormat, args);
         va_end(args);
+#ifndef IN_RC /* flushing is done automatically in RC */
         RTLogFlush(pLog);
+#endif
     }
 
 #ifdef IN_RING3
