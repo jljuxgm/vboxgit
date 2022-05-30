@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 14038 2008-11-10 18:23:15Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -122,7 +122,7 @@ void *pgmPoolMapPage(PVM pVM, PPGMPOOLPAGE pPage)
         case PGMPOOL_IDX_PAE_PD_3:
             return pVM->pgm.s.apGCPaePDs[3];
         case PGMPOOL_IDX_PDPT:
-            return pVM->pgm.s.pGCPaePDPT;
+            return pVM->pgm.s.pShwPaePdptRC;
         default:
             AssertReleaseMsgFailed(("Invalid index %d\n", pPage->idx));
             return NULL;

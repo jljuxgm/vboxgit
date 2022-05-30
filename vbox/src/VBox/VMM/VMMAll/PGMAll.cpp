@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 14032 2008-11-10 17:33:18Z vboxsync $ */
+/* $Id: PGMAll.cpp 14038 2008-11-10 18:23:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -825,7 +825,7 @@ DECLINLINE(int) pgmShwSyncPAEPDPtr(PVM pVM, RTGCPTR GCPtr, PX86PDPE pGstPdpe, PX
     Assert(!HWACCMIsNestedPagingActive(pVM));
 
     const unsigned iPdPt = (GCPtr >> X86_PDPT_SHIFT) & X86_PDPT_MASK_PAE;
-    PX86PDPT  pPdpt = pVM->pgm.s.CTXMID(p,PaePDPT);
+    PX86PDPT  pPdpt = pgmShwGetPaePDPTPtr(&pVM->pgm.s);
     PX86PDPE  pPdpe = &pPdpt->a[iPdPt];
 
     /* Allocate page directory if not present. */
@@ -878,7 +878,7 @@ DECLINLINE(int) pgmShwGetPAEPDPtr(PVM pVM, RTGCPTR GCPtr, PX86PDPT *ppPdpt, PX86
     Assert(!HWACCMIsNestedPagingActive(pVM));
 
     const unsigned iPdPt = (GCPtr >> X86_PDPT_SHIFT) & X86_PDPT_MASK_PAE;
-    PX86PDPT  pPdpt = pVM->pgm.s.CTXMID(p,PaePDPT);
+    PX86PDPT  pPdpt = pgmShwGetPaePDPTPtr(&pVM->pgm.s);
     PX86PDPE  pPdpe = &pPdpt->a[iPdPt];
 
     *ppPdpt = pPdpt;

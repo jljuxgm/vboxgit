@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 13991 2008-11-10 10:36:38Z vboxsync $ */
+/* $Id: PGMPool.cpp 14038 2008-11-10 18:23:15Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -278,14 +278,14 @@ int pgmR3PoolInit(PVM pVM)
     /* The Shadow PDPT. */
     pPool->aPages[PGMPOOL_IDX_PDPT].Core.Key  = NIL_RTHCPHYS;
     pPool->aPages[PGMPOOL_IDX_PDPT].GCPhys    = NIL_RTGCPHYS;
-    pPool->aPages[PGMPOOL_IDX_PDPT].pvPageR3  = pVM->pgm.s.pHCPaePDPT;
+    pPool->aPages[PGMPOOL_IDX_PDPT].pvPageR3  = pVM->pgm.s.pShwPaePdptR3;
     pPool->aPages[PGMPOOL_IDX_PDPT].enmKind   = PGMPOOLKIND_ROOT_PDPT;
     pPool->aPages[PGMPOOL_IDX_PDPT].idx       = PGMPOOL_IDX_PDPT;
 
     /* The Shadow AMD64 CR3. */
     pPool->aPages[PGMPOOL_IDX_AMD64_CR3].Core.Key  = NIL_RTHCPHYS;
     pPool->aPages[PGMPOOL_IDX_AMD64_CR3].GCPhys    = NIL_RTGCPHYS;
-    pPool->aPages[PGMPOOL_IDX_AMD64_CR3].pvPageR3  = pVM->pgm.s.pHCPaePDPT;     /* not used - isn't it wrong as well? */
+    pPool->aPages[PGMPOOL_IDX_AMD64_CR3].pvPageR3  = pVM->pgm.s.pShwPaePdptR3;  /* not used - isn't it wrong as well? */
     pPool->aPages[PGMPOOL_IDX_AMD64_CR3].enmKind   = PGMPOOLKIND_64BIT_PML4_FOR_64BIT_PML4;
     pPool->aPages[PGMPOOL_IDX_AMD64_CR3].idx       = PGMPOOL_IDX_AMD64_CR3;
 
