@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 15707 2008-12-19 18:16:40Z vboxsync $ */
+/* $Id: crservice.cpp 17021 2009-02-23 14:06:14Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -58,7 +58,7 @@
 
 PVBOXHGCMSVCHELPERS g_pHelpers;
 static IFramebuffer* g_pFrameBuffer;
-static uint64_t g_winId = 0;
+static ULONG64 g_winId = 0;
 
 #ifndef RT_OS_WINDOWS
 #define DWORD int
