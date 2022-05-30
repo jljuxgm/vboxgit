@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 13836 2008-11-05 02:42:54Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 14049 2008-11-10 22:45:51Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -1047,7 +1047,7 @@ static int RTLDRELF_NAME(Open)(PRTLDRREADER pReader, PRTLDRMOD phLdrMod)
                     {
                         paShdrs[i].sh_addr = paShdrs[i].sh_addralign
                             ? RT_ALIGN_T(pModElf->cbImage, paShdrs[i].sh_addralign, Elf_Addr)
-                            : pModElf->cbImage;
+                            : (Elf_Addr)pModElf->cbImage;
                         pModElf->cbImage = (size_t)paShdrs[i].sh_addr + (size_t)paShdrs[i].sh_size;
                         AssertMsgReturn(pModElf->cbImage == paShdrs[i].sh_addr + paShdrs[i].sh_size,
                                         (FMT_ELF_ADDR "\n", paShdrs[i].sh_addr + paShdrs[i].sh_size),
