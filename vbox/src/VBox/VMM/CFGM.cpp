@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 14070 2008-11-10 23:45:24Z vboxsync $ */
+/* $Id: CFGM.cpp 17541 2009-03-08 08:51:17Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -768,7 +768,9 @@ static int cfgmR3CreateDefaultTree(PVM pVM)
      */
     rc = CFGMR3InsertString(pRoot,  "Name",                 "Default VM");
     UPDATERC();
-    rc = CFGMR3InsertInteger(pRoot, "RamSize",              128 * _1M);
+    rc = CFGMR3InsertInteger(pRoot, "RamSize",              128U * _1M);
+    UPDATERC();
+    rc = CFGMR3InsertInteger(pRoot, "RamHoleSize",          512U * _1M);
     UPDATERC();
     rc = CFGMR3InsertInteger(pRoot, "TimerMillies",         10);
     UPDATERC();
@@ -838,7 +840,9 @@ static int cfgmR3CreateDefaultTree(PVM pVM)
     UPDATERC();
     rc = CFGMR3InsertNode(pInst,    "Config", &pCfg);
     UPDATERC();
-    rc = CFGMR3InsertInteger(pCfg,  "RamSize",              128 * _1M);
+    rc = CFGMR3InsertInteger(pCfg,  "RamSize",              128U * _1M);
+    UPDATERC();
+    rc = CFGMR3InsertInteger(pCfg,  "RamHoleSize",          512U * _1M);
     UPDATERC();
     rc = CFGMR3InsertString(pCfg,   "BootDevice0",          "IDE");
     UPDATERC();
