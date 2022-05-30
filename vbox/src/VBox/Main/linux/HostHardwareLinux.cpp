@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 16327 2009-01-28 19:11:27Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 16363 2009-01-29 11:24:18Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -303,6 +303,8 @@ int VBoxMainHotplugWaiter::Wait(unsigned cMillies)
     {
         connected = dbus_connection_read_write_dispatch (mContext->mConnection.get(),
                                                          cRealMillies);
+        if (mContext->mInterrupt)
+            LogFlowFunc(("wait loop interrupted\n"));
         if (cMillies != RT_INDEFINITE_WAIT)
             mContext->mInterrupt = true;
     }
@@ -318,6 +320,7 @@ int VBoxMainHotplugWaiter::Wait(unsigned cMillies)
 void VBoxMainHotplugWaiter::Interrupt()
 {
 #if defined RT_OS_LINUX && defined VBOX_WITH_DBUS
+    LogFlowFunc(("\n"));
     mContext->mInterrupt = true;
 #endif  /* defined RT_OS_LINUX && defined VBOX_WITH_DBUS */
 }
