@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12284 2008-09-09 10:26:27Z vboxsync $
+# $Id: Makefile.kmk 12474 2008-09-15 19:02:54Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -411,7 +411,8 @@ VBoxC_DEFS = \
 	$(if $(VBOX_WITH_PULSE),VBOX_WITH_PULSE,) \
 	$(if $(VBOX_WITH_WINMM),VBOX_WITH_WINMM,) \
 	$(if $(VBOX_WITH_CROSSBOW),VBOX_WITH_CROSSBOW,) \
-	$(if $(VBOX_WITH_E1000),VBOX_WITH_E1000,)
+	$(if $(VBOX_WITH_E1000),VBOX_WITH_E1000,) \
+	$(if $(VBOX_WITH_PDM_ASYNC_COMPLETION),VBOX_WITH_PDM_ASYNC_COMPLETION,)
 
 ifdef VBOX_WITH_USB
 VBoxC_DEFS += \
