@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 17722 2009-03-12 09:04:08Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 17778 2009-03-12 20:44:11Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -75,7 +75,7 @@ static int executeIfconfig(const char *pcszAdapterName, const char *pcszArg1,
     return rc;
 }
 
-static bool removeAddresses(char *pszAdapterName)
+static bool removeAddresses(const char *pszAdapterName)
 {
     static char szCmd[1024], szBuf[1024];
 
@@ -117,10 +117,10 @@ static bool removeAddresses(char *pszAdapterName)
 int main(int argc, char *argv[])
 
 {
-    char *pszAdapterName;
-    char *pszAddress;
-    char *pszNetworkMask = NULL;
-    char *pszOption = NULL;
+    const char *pszAdapterName;
+    const char *pszAddress;
+    const char *pszNetworkMask = NULL;
+    const char *pszOption = NULL;
     int rc = EXIT_SUCCESS;
 
     switch (argc)
