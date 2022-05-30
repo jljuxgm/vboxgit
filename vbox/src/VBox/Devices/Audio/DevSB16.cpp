@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
+/* $Id: DevSB16.cpp 12978 2008-10-03 23:28:44Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1854,7 +1854,7 @@ const PDMDEVREG g_DeviceSB16 =
     /* pszDescription */
     "Sound Blaster 16 Controller",
     /* fFlags */
-    PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_DEFAULT,
+    PDM_DEVREG_FLAGS_DEFAULT_BITS,
     /* fClass */
     PDM_DEVREG_CLASS_AUDIO,
     /* cMaxInstances */

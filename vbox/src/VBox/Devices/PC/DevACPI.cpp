@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
+/* $Id: DevACPI.cpp 12978 2008-10-03 23:28:44Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1959,7 +1959,7 @@ const PDMDEVREG g_DeviceACPI =
     /* pszDescription */
     "Advanced Configuration and Power Interface",
     /* fFlags */
-    PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_DEFAULT | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
+    PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
     /* fClass */
     PDM_DEVREG_CLASS_ACPI,
     /* cMaxInstances */

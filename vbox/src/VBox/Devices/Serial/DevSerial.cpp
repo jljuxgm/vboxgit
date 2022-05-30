@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
+/* $Id: DevSerial.cpp 12978 2008-10-03 23:28:44Z vboxsync $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -940,7 +940,7 @@ const PDMDEVREG g_DeviceSerialPort =
     /* pszDescription */
     "Serial Communication Port",
     /* fFlags */
-    PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_DEFAULT | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
+    PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
     /* fClass */
     PDM_DEVREG_CLASS_SERIAL,
     /* cMaxInstances */

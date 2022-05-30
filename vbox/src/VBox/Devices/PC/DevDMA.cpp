@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
+/* $Id: DevDMA.cpp 12978 2008-10-03 23:28:44Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -955,7 +955,7 @@ const PDMDEVREG g_DeviceDMA =
     /* pszDescription */
     "DMA Controller Device",
     /* fFlags */
-    PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_DEFAULT,
+    PDM_DEVREG_FLAGS_DEFAULT_BITS,
     /* fClass */
     PDM_DEVREG_CLASS_DMA,
     /* cMaxInstances */

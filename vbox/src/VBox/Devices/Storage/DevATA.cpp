@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
+/* $Id: DevATA.cpp 12978 2008-10-03 23:28:44Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -5881,7 +5881,7 @@ const PDMDEVREG g_DevicePIIX3IDE =
     "  LUN #3 is secondary slave.\n"
     "  LUN #999 is the LED/Status connector.",
     /* fFlags */
-    PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_DEFAULT | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
+    PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
     /* fClass */
     PDM_DEVREG_CLASS_STORAGE,
     /* cMaxInstances */
