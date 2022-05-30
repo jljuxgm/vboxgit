@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 14783 2008-11-28 14:55:59Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1086,12 +1086,8 @@ STDMETHODIMP VirtualBox::CreateHardDisk2 (INPTR BSTR aFormat,
                                           INPTR BSTR aLocation,
                                           IHardDisk2 **aHardDisk)
 {
-    if (!aFormat)
-        return E_INVALIDARG;
-    if (!aLocation)
-        return E_INVALIDARG;
-    if (!aHardDisk)
-        return E_POINTER;
+    CheckComArgStrNotEmptyOrNull (aFormat);
+    CheckComArgOutPointerValid (aHardDisk);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());

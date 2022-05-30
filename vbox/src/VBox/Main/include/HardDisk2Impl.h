@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.h 14628 2008-11-26 10:25:52Z vboxsync $ */
+/* $Id: HardDisk2Impl.h 14783 2008-11-28 14:55:59Z vboxsync $ */
 
 /** @file
  *
@@ -283,6 +283,9 @@ private:
 
         VDINTERFACE vdIfProgress;
         VDINTERFACEPROGRESS vdIfCallsProgress;
+
+        VDINTERFACE vdIfConfig;
+        VDINTERFACECONFIG vdIfCallsConfig;
 
         PVDINTERFACE vdDiskIfaces;
     };
