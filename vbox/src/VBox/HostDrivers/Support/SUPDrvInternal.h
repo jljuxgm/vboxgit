@@ -1,4 +1,4 @@
-/* $Revision: 15841 $ */
+/* $Revision: 16029 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -116,7 +116,23 @@
 #elif defined(RT_OS_OS2)
 
 #elif defined(RT_OS_FREEBSD)
+#   define memset  libkern_memset /** @todo these are just hacks to get it compiling, check out later. */
+#   define memcmp  libkern_memcmp
+#   define strchr  libkern_strchr
+#   define strrchr libkern_strrchr
+#   define ffs     libkern_ffs
+#   define ffsl    libkern_ffsl
+#   define fls     libkern_fls
+#   define flsl    libkern_flsl
 #   include <sys/libkern.h>
+#   undef  memset
+#   undef  memcmp
+#   undef  strchr
+#   undef  strrchr
+#   undef  ffs
+#   undef  ffsl
+#   undef  fls
+#   undef  flsl
 #   include <iprt/string.h>
 
 #elif defined(RT_OS_SOLARIS)
