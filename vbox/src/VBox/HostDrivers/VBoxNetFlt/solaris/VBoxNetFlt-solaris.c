@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 13076 2008-10-08 12:36:37Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 13124 2008-10-09 11:49:49Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1486,6 +1486,7 @@ static int vboxNetFltSolarisDetermineModPos(bool fAttach, vnode_t *pVNode, int *
                 {
                     LogFlow((DEVICE_NAME ":vboxNetFltSolarisDetermineModPos: Success! Found %s at %d.\n", DEVICE_NAME, i));
                     *pModPos = i;
+                    RTMemFree(StrList.sl_modlist);
                     return VINF_SUCCESS;
                 }
             }
@@ -1494,6 +1495,8 @@ static int vboxNetFltSolarisDetermineModPos(bool fAttach, vnode_t *pVNode, int *
         }
         else
             LogRel((DEVICE_NAME ":vboxNetFltSolarisDetermineModPos: failed to get module information. rc=%d\n"));
+
+        RTMemFree(StrList.sl_modlist);
     }
     else
         LogRel((DEVICE_NAME ":vboxNetFltSolarisDetermineModPos: failed to get list of modules on host interface. rc=%d\n", rc));
