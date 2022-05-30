@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14403 2008-11-20 12:14:52Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14405 2008-11-20 12:21:47Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -752,8 +752,8 @@
       </param>
       <param name="allowChange" type="boolean" dir="return">
         <desc>
-          Flag to indicate whether the callee agrees (@ true)
-          or vetoes against the change (@ false).
+          Flag to indicate whether the callee agrees (@c true)
+          or vetoes against the change (@c false).
         </desc>
       </param>
     </method>
