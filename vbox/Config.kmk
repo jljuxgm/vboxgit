@@ -1,4 +1,4 @@
-# $Id: Config.kmk 13324 2008-10-16 09:54:42Z vboxsync $
+# $Id: Config.kmk 13349 2008-10-16 15:40:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1247,6 +1247,10 @@ VBOX_PATH_AUTOIT3 ?= $(PATH_DEVTOOLS)/win.x86/autoit/v3.2.10.0
 
 # Windows install tools...
 VBOX_PATH_WIX  ?= $(PATH_DEVTOOLS)/win.x86/wix/v2.0.4611.0
+VBOX_PATH_MSITRAN ?= $(PATH_DEVTOOLS)/win.x86/sdk/200504/Bin/MsiTran.Exe
+VBOX_PATH_MSIDB ?= $(PATH_DEVTOOLS)/win.x86/sdk/200504/Bin/MsiDb.Exe
+VBOX_PATH_WISUBSTG ?= $(PATH_DEVTOOLS)/win.x86/sdk/200504/Samples/SysMgmt/Msi/Scripts/WiSubStg.vbs
+VBOX_PATH_WISUMINFO ?= $(PATH_DEVTOOLS)/win.x86/sdk/200504/Samples/SysMgmt/Msi/Scripts/WiSumInf.vbs
 VBOX_PATH_DIFX ?= $(PATH_DEVTOOLS)/win.$(KBUILD_TARGET_ARCH)/DIFx/v2.1
 
 # We need to export YASM for OSE, but since it was converted to .zip we need to
@@ -3561,7 +3565,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13324 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13349 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
