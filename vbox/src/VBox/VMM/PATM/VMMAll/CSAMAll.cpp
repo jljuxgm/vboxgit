@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 13819 2008-11-04 23:14:51Z vboxsync $ */
+/* $Id: CSAMAll.cpp 13822 2008-11-05 01:08:56Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -114,7 +114,7 @@ VMMDECL(int) CSAMMarkPage(PVM pVM, RTRCPTR pPage, bool fScanned)
 
 #ifdef LOG_ENABLED
     if (fScanned && !CSAMIsPageScanned(pVM, pPage))
-       Log(("CSAMMarkPage %VRv\n", pPage));
+       Log(("CSAMMarkPage %RRv\n", pPage));
 #endif
 
     if(!CSAMIsEnabled(pVM))
@@ -140,7 +140,7 @@ VMMDECL(int) CSAMMarkPage(PVM pVM, RTRCPTR pPage, bool fScanned)
         pVM->csam.s.pPDHCBitmapGC[pgdir] = MMHyperGC2HC(pVM, (RCPTRTYPE(void*))pVM->csam.s.pPDBitmapGC[pgdir]);
         if (!pVM->csam.s.pPDHCBitmapGC[pgdir])
         {
-            Log(("MMHyperHC2GC failed for %VRv\n", pVM->csam.s.pPDBitmapGC[pgdir]));
+            Log(("MMHyperHC2GC failed for %RRv\n", pVM->csam.s.pPDBitmapGC[pgdir]));
             return rc;
         }
 #else
