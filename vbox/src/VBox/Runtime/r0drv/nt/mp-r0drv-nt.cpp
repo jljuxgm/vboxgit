@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 13272 2008-10-15 00:23:56Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 15837 2009-01-07 15:50:58Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -111,6 +111,12 @@ RTDECL(bool) RTMpIsCpuPossible(RTCPUID idCpu)
     /** @todo online/present cpu stuff must be corrected for proper W2K8 support
      *        (KeQueryMaximumProcessorCount). */
     return RTMpIsCpuOnline(idCpu);
+}
+
+RTDECL(bool) RTMpIsCpuWorkPending()
+{
+    /** @todo (not used on non-Windows platforms yet */
+    return false;
 }
 
 
