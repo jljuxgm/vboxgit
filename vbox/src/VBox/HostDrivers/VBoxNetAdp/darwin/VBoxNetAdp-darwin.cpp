@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 16976 2009-02-20 16:58:33Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 17095 2009-02-24 20:08:20Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -39,6 +39,7 @@
 #include <iprt/initterm.h>
 #include <iprt/semaphore.h>
 #include <iprt/spinlock.h>
+#include <iprt/string.h>
 #include <iprt/uuid.h>
 
 #include <sys/systm.h>
@@ -119,13 +120,9 @@ static void vboxNetAdpDarwinComposeUUID(PVBOXNETADP pThis, PRTUUID pUuid)
  */
 DECLINLINE(ifnet_t) vboxNetAdpDarwinRetainIfNet(PVBOXNETADP pThis)
 {
-    RTSPINLOCKTMP Tmp = RTSPINLOCKTMP_INITIALIZER;
     ifnet_t pIfNet = NULL;
 
-    RTSpinlockAcquire(pThis->hSpinlock, &Tmp);
-    if (pThis->enmState >= kVBoxNetAdpState_Connected)
-        ifnet_reference(pThis->u.s.pIface);
-    RTSpinlockRelease(pThis->hSpinlock, &Tmp);
+    ifnet_reference(pThis->u.s.pIface);
 
     return pIfNet;
 }
@@ -598,6 +595,7 @@ int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMACAddress)
     mac.sdl_slen = 0;
     memcpy(LLADDR(&mac), pMACAddress->au8, mac.sdl_alen);
 
+    RTStrPrintf(pThis->szName, VBOXNETADP_MAX_NAME_LEN, "%s%d", VBOXNETADP_NAME, pThis->uUnit);
     vboxNetAdpDarwinComposeUUID(pThis, &uuid);
     Params.uniqueid = uuid.au8;
     Params.uniqueid_len = sizeof(uuid);
@@ -679,6 +677,18 @@ void vboxNetAdpOsDestroy(PVBOXNETADP pThis)
 
     RTSemEventDestroy(pThis->u.s.hEvtDetached);
     pThis->u.s.hEvtDetached = NIL_RTSEMEVENT;
+}
+
+int  vboxNetAdpOsInit(PVBOXNETADP pThis)
+{
+    /*
+     * Init the darwin specific members.
+     */
+    pThis->u.s.pIface = NULL;
+    pThis->u.s.hEvtDetached = NIL_RTSEMEVENT;
+    memset(pThis->u.s.aAttachedFamilies, 0, sizeof(pThis->u.s.aAttachedFamilies));
+
+    return VINF_SUCCESS;
 }
 
 /**
