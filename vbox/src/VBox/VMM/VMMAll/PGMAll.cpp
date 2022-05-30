@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 16626 2009-02-10 12:41:48Z vboxsync $ */
+/* $Id: PGMAll.cpp 16679 2009-02-11 16:32:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1375,7 +1375,15 @@ VMMDECL(X86PDPE) PGMGstGetPaePDPtr(PVM pVM, unsigned iPdpt)
 VMMDECL(RTHCPHYS) PGMGetHyperCR3(PVM pVM)
 {
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
-    return pVM->pgm.s.HCPhysShwCR3;
+    PGMMODE enmShadowMode = pVM->pgm.s.enmShadowMode;
+    switch (enmShadowMode)
+    {
+        case PGMMODE_EPT:
+            return pVM->pgm.s.HCPhysShwNestedRoot;
+
+        default:
+            return pVM->pgm.s.HCPhysShwCR3;
+    }
 #else
     PGMMODE enmShadowMode = pVM->pgm.s.enmShadowMode;
     switch (enmShadowMode)
