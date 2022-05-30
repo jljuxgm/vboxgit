@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13277 2008-10-15 10:02:16Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13281 2008-10-15 12:27:38Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -576,8 +576,12 @@ static int VMXR0InjectEvent(PVM pVM, CPUMCTX *pCtx, uint32_t intInfo, uint32_t c
             Log(("Triple fault -> reset the VM!\n"));
             return VINF_EM_RESET;
         }
-        if (VMX_EXIT_INTERRUPTION_INFO_TYPE(intInfo) == VMX_EXIT_INTERRUPTION_INFO_TYPE_SW)
+        if (    VMX_EXIT_INTERRUPTION_INFO_TYPE(intInfo) == VMX_EXIT_INTERRUPTION_INFO_TYPE_SW
+            ||  iGate == 3 /* Both #BP and #OF point to the instruction after. */
+            ||  iGate == 4)
+        {
             ip = pCtx->ip + cbInstr;
+        }
         else
             ip = pCtx->ip;
 
