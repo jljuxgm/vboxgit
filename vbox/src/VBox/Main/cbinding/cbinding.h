@@ -1,4 +1,4 @@
-/* $Revision: 16497 $ */
+/* $Revision: 16684 $ */
 /** @file cbinding.h
  * C binding for XPCOM.
  */
@@ -54,6 +54,10 @@ VBOXXPCOMC_DECL(const PRUnichar *) VBoxConvertAsciitoPRUnichar(char *src);
 /* Converting to and from UTF-8 and UTF-16. */
 VBOXXPCOMC_DECL(int) VBoxUtf16ToUtf8(const PRUnichar *pwszString, char **ppszString);
 VBOXXPCOMC_DECL(int) VBoxUtf8ToUtf16(const char *pszString, PRUnichar **ppwszString);
+
+/* Getting and Setting the Enviornment Variables */
+VBOXXPCOMC_DECL(const char*) VBoxGetEnv(const char *pszVar);
+VBOXXPCOMC_DECL(int) VBoxSetEnv(const char *pszVar, const char *pszValue);
 
 #ifdef __cplusplus
 }
