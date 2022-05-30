@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 14438 2008-11-20 21:39:01Z vboxsync $ */
+/* $Id: Builtins.h 14965 2008-12-03 22:49:27Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -107,6 +107,10 @@ extern const PDMDRVREG g_DrvSCSI;
 #if defined(RT_OS_LINUX)
 extern const PDMDRVREG g_DrvSCSIHost;
 #endif
+#endif
+
+#ifdef VBOX_WITH_FAULT_INJECTION
+extern const PDMDRVREG g_DrvFaultInject;
 #endif
 
 __END_DECLS

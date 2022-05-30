@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14955 2008-12-03 20:00:42Z vboxsync $
+# $Id: Makefile.kmk 14965 2008-12-03 22:49:27Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -805,6 +805,12 @@ ifdef VBOX_WITH_SCSI
  Drivers_SOURCES.linux += \
 	Storage/DrvSCSIHost.cpp
 endif # VBOX_WITH_SCSI
+
+ifdef VBOX_WITH_FAULT_INJECTION
+ Drivers_DEFS += VBOX_WITH_FAULT_INJECTION
+ Drivers_SOURCES += \
+	Storage/DrvFaultInject.cpp
+endif # VBOX_WITH_FAULT_INJECTION
 
 #
 # Ring-0 Services (library, linked into VMMR0.r0)
