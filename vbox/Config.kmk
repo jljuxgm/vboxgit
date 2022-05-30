@@ -1,4 +1,4 @@
-# $Id: Config.kmk 15311 2008-12-11 16:01:11Z vboxsync $
+# $Id: Config.kmk 15333 2008-12-11 18:56:36Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3305,11 +3305,13 @@ TEMPLATE_VBOXBLDPROG_LIBS                = socket iconv
  else ifeq ($(KBUILD_HOST),darwin)
 TEMPLATE_VBOXBLDPROG_TOOL                = GXX4MACHO
   if 0 # enable this if you have problems linking xpidl and is running 10.5 or later.
+TEMPLATE_VBOXBLDPROG_DEFS.darwin         = $(VBOX_DARWIN_DEF_SDK_10_5_DEFS)
 TEMPLATE_VBOXBLDPROG_CFLAGS.darwin       = $(VBOX_DARWIN_DEF_SDK_10_5_CFLAGS) -fno-common
 TEMPLATE_VBOXBLDPROG_CXXFLAGS.darwin     = $(VBOX_DARWIN_DEF_SDK_10_5_CXXFLAGS)
 TEMPLATE_VBOXBLDPROG_OBJCFLAGS.darwin    = $(VBOX_DARWIN_DEF_SDK_10_5_OBJCFLAGS)
 TEMPLATE_VBOXBLDPROG_LDFLAGS.darwin      = $(VBOX_DARWIN_DEF_SDK_10_5_LDFLAGS)
   else
+TEMPLATE_VBOXBLDPROG_DEFS.darwin         = $(VBOX_DARWIN_DEF_SDK_DEFS)
 TEMPLATE_VBOXBLDPROG_CFLAGS.darwin       = $(VBOX_DARWIN_DEF_SDK_CFLAGS) -fno-common
 TEMPLATE_VBOXBLDPROG_CXXFLAGS.darwin     = $(VBOX_DARWIN_DEF_SDK_CXXFLAGS)
 TEMPLATE_VBOXBLDPROG_OBJCFLAGS.darwin    = $(VBOX_DARWIN_DEF_SDK_OBJCFLAGS)
@@ -3672,7 +3674,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15311 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 15333 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
