@@ -1,4 +1,4 @@
-/* $Id: VBoxDockIconPreview.cpp 16469 2009-02-02 17:21:58Z vboxsync $ */
+/* $Id: VBoxDockIconPreview.cpp 17126 2009-02-25 13:03:29Z vboxsync $ */
 /** @file
  * Qt GUI - Realtime Dock Icon Preview
  */
@@ -251,7 +251,7 @@ void VBoxDockIconPreview::updateDockPreview (CGImageRef aVMImage)
     CGContextDrawImage (context, flipRect (iconRect), aVMImage);
 
     /* Process the content of any external OpenGL window. */
-    WindowRef w = darwinToWindowRef (mMainWnd);
+    WindowRef w = darwinToNativeWindow (mMainWnd);
     WindowGroupRef g = GetWindowGroup (w);
     WindowGroupContentOptions wgco = kWindowGroupContentsReturnWindows | kWindowGroupContentsRecurse | kWindowGroupContentsVisible;
     ItemCount c = CountWindowGroupContents (g, wgco);

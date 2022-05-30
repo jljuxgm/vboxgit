@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQuartz2D.cpp 12628 2008-09-22 09:04:57Z vboxsync $ */
+/* $Id: VBoxFBQuartz2D.cpp 17126 2009-02-25 13:03:29Z vboxsync $ */
 /** @file
  * Qt GUI (aka VirtualBox) - Quartz2D framebuffer implementation.
  */
@@ -163,7 +163,7 @@ void VBoxQuartz2DFrameBuffer::paintEvent (QPaintEvent *aEvent)
     QWidget* viewport = mView->viewport();
     Assert (VALID_PTR (viewport));
 
-    HIViewRef viewRef = ::darwinToHIViewRef (viewport);
+    HIViewRef viewRef = ::darwinToNativeView (viewport);
     Assert (VALID_PTR (viewRef));
     /* Get the dimensions of this HIView */
     HIRect viewRect;
