@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 17413 2009-03-05 15:32:19Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 17445 2009-03-06 09:59:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -421,6 +421,7 @@ void pgmMapClearShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAPPING pMap, 
 #endif
                 AssertFatal(pShw32BitPd);
 
+                Assert(!pShw32BitPd->a[iOldPDE].n.u1Present || (pShw32BitPd->a[iOldPDE].u & PGM_PDFLAGS_MAPPING));
                 pShw32BitPd->a[iOldPDE].u   = 0;
                 break;
             }
@@ -449,11 +450,13 @@ void pgmMapClearShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAPPING pMap, 
 #endif
                 AssertFatal(pShwPaePd);
 
+                Assert(!pShwPaePd->a[iPDE].n.u1Present || (pShwPaePd->a[iPDE].u & PGM_PDFLAGS_MAPPING));
                 pShwPaePd->a[iPDE].u = 0;
 
                 iPDE++;
                 AssertFatal(iPDE < 512);
 
+                Assert(!pShwPaePd->a[iPDE].n.u1Present || (pShwPaePd->a[iPDE].u & PGM_PDFLAGS_MAPPING));
                 pShwPaePd->a[iPDE].u = 0;
                 /* Clear the PGM_PDFLAGS_MAPPING flag for the page directory pointer entry. (legacy PAE guest mode) */
                 pShwPdpt->a[iPdpt].u &= ~PGM_PLXFLAGS_MAPPING;
