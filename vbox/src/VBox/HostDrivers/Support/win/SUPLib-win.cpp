@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 11725 2008-08-27 22:21:47Z vboxsync $ */
+/* $Id: SUPLib-win.cpp 13835 2008-11-05 02:34:43Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -182,7 +182,7 @@ static int suplibOsCreateService(void)
     {
         char szDriver[RTPATH_MAX];
         int rc = RTPathProgram(szDriver, sizeof(szDriver) - sizeof("\\VBoxDrv.sys"));
-        if (VBOX_SUCCESS(rc))
+        if (RT_SUCCESS(rc))
         {
             strcat(szDriver, "\\VBoxDrv.sys");
             SC_HANDLE hService = CreateService(hSMgrCreate,
@@ -333,7 +333,7 @@ static int suplibOsUpdateService(void)
         {
             char szDriver[RTPATH_MAX];
             int rc = RTPathProgram(szDriver, sizeof(szDriver) - sizeof("\\VBoxDrv.sys"));
-            if (VBOX_SUCCESS(rc))
+            if (RT_SUCCESS(rc))
             {
                 strcat(szDriver, "\\VBoxDrv.sys");
 

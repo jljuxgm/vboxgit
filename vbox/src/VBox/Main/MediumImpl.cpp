@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 13580 2008-10-27 14:04:18Z vboxsync $ */
+/* $Id: MediumImpl.cpp 13835 2008-11-05 02:34:43Z vboxsync $ */
 
 /** @file
  *
@@ -706,7 +706,7 @@ HRESULT MediumBase::setLocation (const BSTR aLocation)
     /* get the full file name */
     Utf8Str locationFull;
     int vrc = mVirtualBox->calculateFullPath (Utf8Str (aLocation), locationFull);
-    if (VBOX_FAILURE (vrc))
+    if (RT_FAILURE (vrc))
         return setError (E_FAIL,
             tr ("Invalid image file location '%ls' (%Vrc)"),
             aLocation, vrc);

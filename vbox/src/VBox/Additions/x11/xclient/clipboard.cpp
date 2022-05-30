@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 13249 2008-10-14 11:30:03Z vboxsync $ */
+/** $Id: clipboard.cpp 13835 2008-11-05 02:34:43Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -1332,7 +1332,7 @@ static int vboxClipboardThread(RTTHREAD /* ThreadSelf */, void * /* pvUser */)
             RTSemEventWait(g_ctx.terminating, RT_INDEFINITE_WAIT);
             break;
         }
-        if (VBOX_FAILURE(rc))
+        if (RT_FAILURE(rc))
         {
             /* Wait a bit before retrying. */
             if (RTSemEventWait(g_ctx.terminating, 1000) == VINF_SUCCESS)
@@ -1380,7 +1380,7 @@ int vboxClipboardConnect(void)
     RTSemEventCreate(&g_ctx.terminating);
 
     rc = VbglR3ClipboardConnect(&g_ctx.client);
-    if (VBOX_FAILURE(rc))
+    if (RT_FAILURE(rc))
     {
         LogRel(("Error connecting to host. rc=%Vrc\n", rc));
         return rc;
@@ -1469,7 +1469,7 @@ int vboxClipboardMain(void)
     LogFlowFunc(("\n"));
 
     rc = vboxClipboardCreateWindow();
-    if (VBOX_FAILURE(rc))
+    if (RT_FAILURE(rc))
         return rc;
 
     rc = RTThreadCreate(&g_ctx.thread, vboxClipboardThread, 0, 0, RTTHREADTYPE_IO,

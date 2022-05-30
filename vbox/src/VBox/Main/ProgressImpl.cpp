@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 13580 2008-10-27 14:04:18Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 13835 2008-11-05 02:34:43Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -653,7 +653,7 @@ STDMETHODIMP Progress::WaitForCompletion (LONG aTimeout)
             if (mWaitersCount == 0)
                 RTSemEventMultiReset (mCompletedSem);
 
-            if (VBOX_FAILURE (vrc) && vrc != VERR_TIMEOUT)
+            if (RT_FAILURE (vrc) && vrc != VERR_TIMEOUT)
                 break;
 
             if (!forever)
@@ -664,7 +664,7 @@ STDMETHODIMP Progress::WaitForCompletion (LONG aTimeout)
             }
         }
 
-        if (VBOX_FAILURE (vrc) && vrc != VERR_TIMEOUT)
+        if (RT_FAILURE (vrc) && vrc != VERR_TIMEOUT)
             return setError (E_FAIL,
                 tr ("Failed to wait for the task completion (%Vrc)"), vrc);
     }
@@ -721,7 +721,7 @@ STDMETHODIMP Progress::WaitForOperationCompletion (ULONG aOperation, LONG aTimeo
             if (mWaitersCount == 0)
                 RTSemEventMultiReset (mCompletedSem);
 
-            if (VBOX_FAILURE (vrc) && vrc != VERR_TIMEOUT)
+            if (RT_FAILURE (vrc) && vrc != VERR_TIMEOUT)
                 break;
 
             if (!forever)
@@ -732,7 +732,7 @@ STDMETHODIMP Progress::WaitForOperationCompletion (ULONG aOperation, LONG aTimeo
             }
         }
 
-        if (VBOX_FAILURE (vrc) && vrc != VERR_TIMEOUT)
+        if (RT_FAILURE (vrc) && vrc != VERR_TIMEOUT)
             return setError (E_FAIL,
                 tr ("Failed to wait for the operation completion (%Vrc)"), vrc);
     }

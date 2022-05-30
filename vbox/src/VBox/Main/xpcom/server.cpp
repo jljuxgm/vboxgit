@@ -1,4 +1,4 @@
-/* $Id: server.cpp 13580 2008-10-27 14:04:18Z vboxsync $ */
+/* $Id: server.cpp 13835 2008-11-05 02:34:43Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -496,11 +496,11 @@ public:
         LogFlowFunc (("\n"));
 
         /* create a critsect to protect object construction */
-        if (VBOX_FAILURE (RTCritSectInit (&sLock)))
+        if (RT_FAILURE (RTCritSectInit (&sLock)))
             return NS_ERROR_OUT_OF_MEMORY;
 
         int vrc = RTTimerLRCreateEx (&sTimer, 0, 0, ShutdownTimer, NULL);
-        if (VBOX_FAILURE (vrc))
+        if (RT_FAILURE (vrc))
         {
             LogFlowFunc (("Failed to create a timer! (vrc=%Vrc)\n", vrc));
             return NS_ERROR_FAILURE;

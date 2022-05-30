@@ -1,4 +1,4 @@
-/** $Id: tstInt.cpp 13830 2008-11-05 01:49:18Z vboxsync $ */
+/** $Id: tstInt.cpp 13835 2008-11-05 02:34:43Z vboxsync $ */
 /** @file
  * Testcase: Test the interrupt gate feature of the support library.
  */
@@ -103,7 +103,7 @@ int main(int argc, char **argv)
                 rc = SUPLowAlloc(cPages, (void **)&pVM, &pVMR0, &paPages[0]);
             else
                 rc = VERR_NO_MEMORY;
-            if (VBOX_SUCCESS(rc))
+            if (RT_SUCCESS(rc))
             {
                 pVM->pVMRC = 0;
                 pVM->pVMR3 = pVM;

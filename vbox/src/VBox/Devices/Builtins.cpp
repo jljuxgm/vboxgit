@@ -1,4 +1,4 @@
-/* $Id: Builtins.cpp 13189 2008-10-11 12:36:11Z vboxsync $ */
+/* $Id: Builtins.cpp 13835 2008-11-05 02:34:43Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -143,11 +143,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
 #endif
 #ifdef VBOX_WITH_BUSLOGIC
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceBusLogic);
-    if (VBOX_FAILURE(rc))
+    if (RT_FAILURE(rc))
         return rc;
 #endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePCIBridge);
-    if (VBOX_FAILURE(rc))
+    if (RT_FAILURE(rc))
         return rc;
 
 
@@ -267,12 +267,12 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
 #endif
 #ifdef VBOX_WITH_SCSI
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvSCSI);
-    if (VBOX_FAILURE(rc))
+    if (RT_FAILURE(rc))
         return rc;
 
 #if defined(RT_OS_LINUX)
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvSCSIHost);
-    if (VBOX_FAILURE(rc))
+    if (RT_FAILURE(rc))
         return rc;
 #endif
 #endif
