@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12447 2008-09-14 23:33:15Z vboxsync $
+# $Id: Makefile.kmk 12886 2008-10-02 00:01:43Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -47,7 +47,9 @@ else
  include $(PATH_SUB_CURRENT)/Disassembler/Makefile.kmk
  include $(PATH_SUB_CURRENT)/HostDrivers/Makefile.kmk
  include $(PATH_SUB_CURRENT)/HostServices/Makefile.kmk
- include $(PATH_SUB_CURRENT)/Debugger/Makefile.kmk
+ ifdef VBOX_WITH_DEBUGGER
+  include $(PATH_SUB_CURRENT)/Debugger/Makefile.kmk
+ endif
  include $(PATH_SUB_CURRENT)/Frontends/Makefile.kmk
  ifdef VBOX_WITH_VRDP
   include $(PATH_SUB_CURRENT)/RDP/Makefile.kmk
@@ -92,8 +94,11 @@ else  # !VBOX_ONLY_ADDITIONS && !VBOX_ONLY_DOCS
 	VMM \
 	Devices \
 	Disassembler \
-	HostServices \
-	Debugger
+	HostServices
+
+ ifdef VBOX_WITH_DEBUGGER
+  SUBDIRS += Debugger
+ endif
 
  ifdef VBOX_WITH_MAIN
   SUBDIRS += Main
