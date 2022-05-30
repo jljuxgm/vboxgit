@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 16408 2009-01-30 12:14:26Z vboxsync $ */
+/* $Id: HWACCM.cpp 16422 2009-01-30 15:21:17Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -420,11 +420,8 @@ static void hwaccmR3DisableRawMode(PVM pVM)
     /* Disable the switcher */
     VMMR3DisableSwitcher(pVM);
 
-    if (pVM->hwaccm.s.fNestedPaging)
-    {
-        /* Reinit the paging mode to force the new shadow mode. */
-        PGMR3ChangeMode(pVM, PGMMODE_REAL);
-    }
+    /* Reinit the paging mode to force the new shadow mode. */
+    PGMR3ChangeMode(pVM, PGMMODE_REAL);
 }
 
 /**
