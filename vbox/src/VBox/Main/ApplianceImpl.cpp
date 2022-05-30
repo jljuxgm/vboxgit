@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 16306 2009-01-28 13:05:58Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 16307 2009-01-28 13:21:49Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations
@@ -1221,7 +1221,7 @@ STDMETHODIMP Appliance::Interpret()
             rc = osType->COMGETTER(RecommendedRAM)(&memSizeVBox2);
             ComAssertComRCThrowRC(rc);
             /* VBox stores that in MByte */
-            ullMemSizeVBox = memSizeVBox2 * _1M;
+            ullMemSizeVBox = (uint64_t)memSizeVBox2 * _1M;
         }
         vsd->addEntry(VirtualSystemDescriptionType_Memory, "", toString<uint64_t>(vs.ullMemorySize), toString<uint64_t>(ullMemSizeVBox));
 
