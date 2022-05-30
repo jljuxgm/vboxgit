@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 11704 2008-08-27 14:52:09Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 12578 2008-09-18 14:58:57Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Gets and Sets.
  */
@@ -1802,6 +1802,30 @@ CPUMDECL(bool) CPUMIsGuestFPUStateActive(PVM pVM)
 CPUMDECL(void) CPUMDeactivateGuestFPUState(PVM pVM)
 {
     pVM->cpum.s.fUseFlags &= ~CPUM_USED_FPU;
+}
+
+
+
+/**
+ * Checks if the guest debug state is active
+ *
+ * @returns boolean
+ * @param   pVM         VM handle.
+ */
+CPUMDECL(bool) CPUMIsGuestDebugStateActive(PVM pVM)
+{
+    return (pVM->cpum.s.fUseFlags & CPUM_USE_DEBUG_REGS) != 0;
+}
+
+/**
+ * Mark the guest's debug state as inactive
+ *
+ * @returns boolean
+ * @param   pVM         VM handle.
+ */
+CPUMDECL(void) CPUMDeactivateGuestDebugtate(PVM pVM)
+{
+    pVM->cpum.s.fUseFlags &= ~CPUM_USE_DEBUG_REGS;
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 12542 2008-09-17 13:01:01Z vboxsync $ */
+/* $Id: CPUM.cpp 12578 2008-09-18 14:58:57Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -708,7 +708,7 @@ CPUMR3DECL(void) CPUMR3Reset(PVM pVM)
     pCtx->trHid.Attr.n.u4Type       = X86_SEL_TYPE_SYS_386_TSS_BUSY;
 
     pCtx->dr6                       = X86_DR6_INIT_VAL;
-    pCtx->dr7                       = 0x400;
+    pCtx->dr7                       = X86_DR7_INIT_VAL;
 
     pCtx->fpu.FTW                   = 0xff;         /* All tags are set, i.e. the regs are empty. */
     pCtx->fpu.FCW                   = 0x37f;
