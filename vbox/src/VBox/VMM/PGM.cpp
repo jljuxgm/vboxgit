@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 15151 2008-12-09 10:37:52Z vboxsync $ */
+/* $Id: PGM.cpp 15159 2008-12-09 13:01:55Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3262,7 +3262,7 @@ static PGMMODE pgmR3CalcShadowMode(PVM pVM, PGMMODE enmGuestMode, SUPPAGINGMODE 
     }
     /* Override the shadow mode is nested paging is active. */
     if (HWACCMIsNestedPagingActive(pVM))
-        enmShadowMode = HWACCMGetPagingMode(pVM);
+        enmShadowMode = HWACCMGetShwPagingMode(pVM);
 
     *penmSwitcher = enmSwitcher;
     return enmShadowMode;

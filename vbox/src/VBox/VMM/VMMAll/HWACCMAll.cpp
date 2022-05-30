@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 13898 2008-11-06 09:44:29Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 15159 2008-12-09 13:01:55Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -98,11 +98,22 @@ VMMDECL(bool) HWACCMIsNestedPagingActive(PVM pVM)
  * @returns shadow paging mode
  * @param   pVM         The VM to operate on.
  */
-VMMDECL(PGMMODE) HWACCMGetPagingMode(PVM pVM)
+VMMDECL(PGMMODE) HWACCMGetShwPagingMode(PVM pVM)
 {
     Assert(HWACCMIsNestedPagingActive(pVM));
     if (pVM->hwaccm.s.svm.fSupported)
-        return PGMMODE_NESTED;
+    {
+        PGMMODE enmShwPagingMode;
+
+#if HC_ARCH_BITS == 32 
+        if (CPUMIsGuestInLongModeEx(pCtx))
+            enmShwPagingMode = PGMMODE_AMD64_NX;
+        else
+#endif
+            enmShwPagingMode = PGMGetHostMode(pVM);
+
+        return enmShwPagingMode;
+    }
     Assert(pVM->hwaccm.s.vmx.fSupported);
     return PGMMODE_EPT;
 }
