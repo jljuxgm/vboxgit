@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12289 2008-09-09 12:53:44Z vboxsync $
+# $Id: Config.kmk 12294 2008-09-09 13:47:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -339,6 +339,8 @@ VBOX_WITH_64_BITS_GUESTS = 1
 else
 # VBOX_WITH_64_BITS_GUESTS = 1
 endif
+# Enable SMP support in guests
+VBOX_WITH_SMP_GUESTS = 0
 # Enable the host/guest information service (aka guest properties).
 VBOX_WITH_GUEST_PROPS = 1
 # Enable performance API.
@@ -949,6 +951,9 @@ ifdef VBOX_WITH_NEW_PHYS_CODE
 endif
 ifdef VBOX_WITH_64_BITS_GUESTS
  DEFS += VBOX_WITH_64_BITS_GUESTS
+endif
+ifdef VBOX_WITH_SMP_GUESTS
+ DEFS += VBOX_WITH_SMP_GUESTS
 endif
 ifdef VBOX_WITH_HARDENING
  DEFS += VBOX_WITH_HARDENING
@@ -3439,7 +3444,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12289 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12294 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
