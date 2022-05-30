@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 16673 2009-02-11 15:35:02Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 16675 2009-02-11 16:15:54Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1540,7 +1540,7 @@ static int pgmPoolCacheAlloc(PPGMPOOL pPool, RTGCPHYS GCPhys, PGMPOOLKIND enmKin
      * Look up the GCPhys in the hash.
      */
     unsigned i = pPool->aiHash[PGMPOOL_HASH(GCPhys)];
-    Log3(("pgmPoolCacheAlloc: %RGp kind %d iUser=%d iUserTable=%x SLOT=%d\n", GCPhys, enmKind, iUser, iUserTable, i));
+    Log3(("pgmPoolCacheAlloc: %RGp kind %s iUser=%d iUserTable=%x SLOT=%d\n", GCPhys, pgmPoolPoolKindToStr(enmKind), iUser, iUserTable, i));
     if (i != NIL_PGMPOOL_IDX)
     {
         do
