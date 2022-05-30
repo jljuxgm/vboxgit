@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 15818 2009-01-06 12:56:19Z vboxsync $ */
+/* $Id: vboxhgcm.c 15964 2009-01-15 12:52:20Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -905,11 +905,15 @@ void crVBoxHGCMTearDown(void)
 
     if (!g_crvboxhgcm.initialized) return;
 
-    /* Connection count would be changed while we disconnect link, also the array of connections would be shifted*/
+    /* Connection count would be changed in calls to crNetDisconnect, so we have to store original value.
+     * Walking array backwards is not a good idea as it could cause some issues if we'd disconnect clients not in the
+     * order of their connection.
+     */
     cCons = g_crvboxhgcm.num_conns;
     for (i=0; i<cCons; i++)
     {
-        crNetDisconnect(g_crvboxhgcm.conns[i]);
+        /* Note that [0] is intended, as the connections array would be shifted in each call to crNetDisconnect */
+        crNetDisconnect(g_crvboxhgcm.conns[0]);
     }
     CRASSERT(0==g_crvboxhgcm.num_conns);
 
