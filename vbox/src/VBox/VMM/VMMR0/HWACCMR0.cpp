@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 15414 2008-12-13 04:33:30Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 15439 2008-12-13 12:48:22Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1070,7 +1070,7 @@ VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
 }
 
 
-#if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
+#if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
 /**
  * Save guest FPU/XMM state (64 bits guest mode & 32 bits host only)
  *

@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 15414 2008-12-13 04:33:30Z vboxsync $ */
+/* $Id: VMMR0.cpp 15439 2008-12-13 12:48:22Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -924,7 +924,7 @@ static int vmmR0EntryExWorker(PVM pVM, VMMR0OPERATION enmOperation, PSUPVMMR0REQ
             return VINF_SUCCESS;
 
 
-#if defined(DEBUG) && HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
+#if defined(DEBUG) && HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
         case VMMR0_DO_TEST_SWITCHER3264:
             return HWACCMR0TestSwitcher3264(pVM);
 #endif
