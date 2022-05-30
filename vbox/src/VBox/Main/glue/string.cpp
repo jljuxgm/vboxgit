@@ -1,4 +1,4 @@
-/* $Id: string.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: string.cpp 14948 2008-12-03 15:06:30Z vboxsync $ */
 
 /** @file
  *
@@ -30,7 +30,7 @@ namespace com
 {
 
 /* static */
-const Bstr Bstr::Null; /* default ctor is OK */ 
+const Bstr Bstr::Null; /* default ctor is OK */
 
 /* static */
 const Utf8Str Utf8Str::Null; /* default ctor is OK */

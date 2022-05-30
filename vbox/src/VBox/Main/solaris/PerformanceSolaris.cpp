@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 12992 2008-10-06 07:57:31Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 14948 2008-12-03 15:06:30Z vboxsync $ */
 
 /** @file
  *
@@ -89,10 +89,10 @@ int CollectorSolaris::getRawHostCpuLoad(uint64_t *user, uint64_t *kernel, uint64
     uint64_t tmpUser, tmpKernel, tmpIdle;
     int cpus;
     cpu_stat_t cpu_stats;
-    
+
     if (mKC == 0)
         return VERR_INTERNAL_ERROR;
-    
+
     tmpUser = tmpKernel = tmpIdle = cpus = 0;
     for (ksp = mKC->kc_chain; ksp != NULL; ksp = ksp->ks_next) {
         if (strcmp(ksp->ks_module, "cpu_stat") == 0) {
@@ -105,9 +105,9 @@ int CollectorSolaris::getRawHostCpuLoad(uint64_t *user, uint64_t *kernel, uint64
             tmpUser   += cpu_stats.cpu_sysinfo.cpu[CPU_USER];
             tmpKernel += cpu_stats.cpu_sysinfo.cpu[CPU_KERNEL];
             tmpIdle   += cpu_stats.cpu_sysinfo.cpu[CPU_IDLE];
-        }         
+        }
     }
-    
+
     if (cpus == 0)
     {
         Log(("no cpu stats found!\n"));
@@ -164,7 +164,7 @@ int CollectorSolaris::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *avail
     int rc = VINF_SUCCESS;
 
     kstat_named_t *kn;
-    
+
     if (mKC == 0 || mSysPages == 0)
         return VERR_INTERNAL_ERROR;
 

@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 13082 2008-10-08 14:36:19Z vboxsync $ */
+/* $Id: PerformanceImpl.h 14948 2008-12-03 15:06:30Z vboxsync $ */
 
 /** @file
  *
@@ -187,7 +187,7 @@ public:
 private:
     HRESULT toIPerformanceMetric(pm::Metric *src, IPerformanceMetric **dst);
     HRESULT toIPerformanceMetric(pm::BaseMetric *src, IPerformanceMetric **dst);
-                            
+
     static void staticSamplerCallback (RTTIMERLR hTimerLR, void *pvUser, uint64_t iTick);
     void samplerCallback();
 

@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 14341 2008-11-19 09:26:58Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 14948 2008-12-03 15:06:30Z vboxsync $ */
 
 /** @file
  *
@@ -227,7 +227,7 @@ int CollectorWin::getRawHostCpuLoad(uint64_t *user, uint64_t *kernel, uint64_t *
             Log (("GetSystemTimes() -> 0x%x\n", dwError));
             return RTErrConvertFromWin32(dwError);
         }
-    
+
         *user   = FILETTIME_TO_100NS(ftUser);
         *idle   = FILETTIME_TO_100NS(ftIdle);
         *kernel = FILETTIME_TO_100NS(ftKernel) - *idle;
