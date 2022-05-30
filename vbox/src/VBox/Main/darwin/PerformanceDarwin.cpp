@@ -1,4 +1,4 @@
-/* $Id: PerformanceDarwin.cpp 12400 2008-09-11 10:34:58Z vboxsync $ */
+/* $Id: PerformanceDarwin.cpp 12678 2008-09-24 07:28:21Z vboxsync $ */
 
 /** @file
  *
@@ -148,7 +148,7 @@ static int getProcessInfo(RTPROCESS process, struct proc_taskinfo *tinfo)
         Log(("proc_pidinfo() -> %s", strerror(rc)));
         return RTErrConvertFromDarwin(rc);
     }
-    else if (nb < sizeof(*tinfo))
+    else if ((unsigned int)nb < sizeof(*tinfo))
     {
         Log(("proc_pidinfo() -> too few bytes %d", nb));
         return VERR_INTERNAL_ERROR;
