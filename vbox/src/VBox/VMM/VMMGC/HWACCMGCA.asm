@@ -1,4 +1,4 @@
-; $Id: HWACCMGCA.asm 15141 2008-12-09 09:19:20Z vboxsync $
+; $Id: HWACCMGCA.asm 15148 2008-12-09 10:06:39Z vboxsync $
 ;; @file
 ; VMXM - GC vmx helpers
 ;
@@ -464,9 +464,14 @@ ENDPROC HWACCMSaveGuestDebug64
 ; * Dummy callback handler
 ; *
 ; * @returns VBox status code
+; * @param   param1     Parameter 1 [rsp+8]
+; * @param   param2     Parameter 2 [rsp+12]
+; * @param   param3     Parameter 3 [rsp+16]
+; * @param   param4     Parameter 4 [rsp+20]
+; * @param   param5     Parameter 5 [rsp+24]
 ; * @param   pCtx       Guest context [rsi]
 ; */
 BEGINPROC HWACCMTestSwitcher64
-    mov eax, VINF_SUCCESS
+    mov eax, [rsp+8]
     ret
 ENDPROC HWACCMTestSwitcher64
