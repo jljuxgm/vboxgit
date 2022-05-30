@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 17913 2009-03-16 10:53:29Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 17929 2009-03-16 13:09:36Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -716,6 +716,8 @@ STDMETHODIMP VirtualBox::COMGETTER(GuestOSTypes) (ComSafeArrayOut (IGuestOSType 
 STDMETHODIMP
 VirtualBox::COMGETTER(SharedFolders) (ComSafeArrayOut (ISharedFolder *, aSharedFolders))
 {
+    NOREF(aSharedFoldersSize);
+
     CheckComArgOutSafeArrayPointerValid(aSharedFolders);
 
     AutoCaller autoCaller (this);

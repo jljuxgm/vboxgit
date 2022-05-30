@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17915 2009-03-16 11:01:50Z vboxsync $
+# $Id: Makefile.kmk 17929 2009-03-16 13:09:36Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -198,6 +198,8 @@ VBoxSVC_DEFS = \
 	$(if $(VBOX_WITH_PDM_ASYNC_COMPLETION),VBOX_WITH_PDM_ASYNC_COMPLETION,) \
 	$(if $(VBOX_WITH_DBUS),VBOX_WITH_DBUS,) \
 	$(if $(VBOX_USB_WITH_SYSFS),VBOX_USB_WITH_SYSFS,)
+
+VBoxSVC_CXXFLAGS = $(filter-out -Wno-unused,$(TEMPLATE_VBOXMAINEXE_CXXFLAGS))
 
 ifdef VBOX_WITH_USB
  VBoxSVC_DEFS += \

@@ -1,4 +1,4 @@
-/* $Id: server.cpp 17865 2009-03-14 10:05:29Z vboxsync $ */
+/* $Id: server.cpp 17929 2009-03-16 13:09:36Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -773,7 +773,7 @@ class ForceQuitEvent : public MyEvent
     }
 };
 
-static void signal_handler (int sig)
+static void signal_handler (int /* sig */)
 {
     if (gEventQ && gKeepRunning)
     {
