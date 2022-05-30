@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 17251 2009-03-02 13:55:31Z vboxsync $ */
+/* $Id: MM.cpp 17372 2009-03-05 02:34:09Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -884,5 +884,21 @@ VMMR3DECL(int) MMR3WriteGCVirt(PVM pVM, RTGCPTR GCPtrDst, const void *pvSrc, siz
     if (GCPtrDst - pVM->mm.s.pvHyperAreaGC < pVM->mm.s.cbHyperArea)
         return VERR_ACCESS_DENIED;
     return PGMPhysSimpleWriteGCPtr(pVM, GCPtrDst, pvSrc, cb);
+}
+
+
+/**
+ * Get the size of the base RAM.
+ * This usually means the size of the first contigous block of physical memory.
+ *
+ * @returns The guest base RAM size.
+ * @param   pVM         The VM handle.
+ * @thread  Any.
+ *
+ * @deprecated
+ */
+VMMR3DECL(uint64_t) MMR3PhysGetRamSize(PVM pVM)
+{
+    return pVM->mm.s.cbRamBase;
 }
 
