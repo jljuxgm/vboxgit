@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17868 2009-03-14 15:59:29Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17869 2009-03-14 16:20:46Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3545,7 +3545,7 @@ STDMETHODIMP Machine::Export(IAppliance *appliance)
                     lControllerVsys = lSATAControllerIndex;
                 break;
 
-                case StorageBus::SCSI:
+                case StorageBus_SCSI:
                     lChannelVsys = lChannel;        // should be between 0 and 15
                     lControllerVsys = lSCSIControllerIndex;
                 break;
