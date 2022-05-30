@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: PDMDevice.cpp 13216 2008-10-13 13:29:35Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -310,7 +310,7 @@ int pdmR3DevInit(PVM pVM)
         //pDevIns->Internal.s.pLunsR3             = NULL;
         pDevIns->Internal.s.pCfgHandle          = paDevs[i].pNode;
         //pDevIns->Internal.s.pPciDeviceR3        = NULL;
-        //pDevIns->Internal.s.pPciBusR3           = NULL; /** @todo pci bus selection. (in 2008 perhaps) */
+        //pDevIns->Internal.s.pPciBusR3           = NULL;
         //pDevIns->Internal.s.pPciDeviceR0        = 0;
         //pDevIns->Internal.s.pPciBusR0           = 0;
         //pDevIns->Internal.s.pPciDeviceRC        = 0;
