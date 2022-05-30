@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 15602 2008-12-16 18:01:38Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 15692 2008-12-19 13:52:38Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -477,6 +477,8 @@ int handleConvertFromRaw(int argc, char *argv[])
         }
     }
 
+    if (!srcfilename || !dstfilename || (fReadFromStdIn && !filesize))
+        return errorSyntax(USAGE_CONVERTFROMRAW, "Incorrect number of parameters");
     RTPrintf("Converting from raw image file=\"%s\" to file=\"%s\"...\n",
              srcfilename, dstfilename);
 
