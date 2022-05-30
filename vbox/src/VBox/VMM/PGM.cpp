@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 15436 2008-12-13 11:59:30Z vboxsync $ */
+/* $Id: PGM.cpp 15438 2008-12-13 12:39:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2470,6 +2470,20 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
         {
             AssertMsgFailed(("u32Sep=%#x (last)\n", u32Sep));
             return VERR_SSM_DATA_UNIT_FORMAT_CHANGED;
+        }
+
+        /* This is a horribly ugly hack for an 2.0 -> 2.1 incompatibility
+           in the VMMDev PCI regions. VMMDev Heap was added in 2.1 and we
+           simply skip it here if it's not in the saved state. */
+        if (    (   GCPhys != pRam->GCPhys
+                 || GCPhysLast != pRam->GCPhysLast
+                 || cb != pRam->cb
+                 || fHaveBits != !!pRam->pvR3)
+            &&  !strcmp(pRam->pszDesc, "VMMDev Heap")
+            &&  pRam->pNextR3)
+        {
+            pRam = pRam->pNextR3;
+            i++;
         }
 
         /* Match it up with the current range. */
