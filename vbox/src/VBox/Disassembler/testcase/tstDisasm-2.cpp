@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 17091 2009-02-24 19:55:23Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -818,7 +818,7 @@ int main(int argc, char **argv)
     /*
      * Parse arguments.
      */
-    static const RTOPTIONDEF g_aOptions[] =
+    static const RTGETOPTDEF g_aOptions[] =
     {
         { "--address",      'a', RTGETOPT_REQ_UINT64 },
         { "--cpumode",      'c', RTGETOPT_REQ_UINT32 },
@@ -833,9 +833,10 @@ int main(int argc, char **argv)
     };
 
     int ch;
-    int iArg = 1;
-    RTOPTIONUNION ValueUnion;
-    while ((ch = RTGetOpt(argc, argv, g_aOptions, RT_ELEMENTS(g_aOptions), &iArg, &ValueUnion)))
+    RTGETOPTUNION ValueUnion;
+    RTGETOPTSTATE GetState;
+    RTGetOptInit(&GetState, argc, argv, g_aOptions, RT_ELEMENTS(g_aOptions), 1, 0 /* fFlags */);
+    while ((ch = RTGetOpt(&GetState, &ValueUnion)))
     {
         switch (ch)
         {
@@ -912,14 +913,17 @@ int main(int argc, char **argv)
                 fHexBytes = true;
                 break;
 
+            case VINF_GETOPT_NOT_OPTION:
+                break;
+
             default:
                 RTStrmPrintf(g_pStdErr, "%s: syntax error: %Rrc\n", argv0, ch);
                 return 1;
         }
     }
+    int iArg = GetState.iNext - 1; /** @todo Not pretty, add RTGetOptInit flag for this. */
     if (iArg >= argc)
         return Usage(argv0);
-
 
     int rc = VINF_SUCCESS;
     if (fHexBytes)
