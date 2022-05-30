@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 11696 2008-08-27 12:09:59Z vboxsync $ */
+/* $Id: HWACCMInternal.h 11756 2008-08-28 12:28:57Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -254,6 +254,9 @@ typedef struct HWACCM
 
         /** Current VMX_VMCS_CTRL_PROC_EXEC_CONTROLS. */
         uint64_t                    proc_ctls;
+
+        /** Current VMX_VMCS_CTRL_PROC_EXEC_CONTROLS2. */
+        uint64_t                    proc_ctls2;
 
         /** Current CR0 mask. */
         uint64_t                    cr0_mask;
