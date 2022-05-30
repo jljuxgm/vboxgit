@@ -1,4 +1,4 @@
-/* $Id: VBoxCocoaApplication.m 16693 2009-02-11 20:26:17Z vboxsync $ */
+/* $Id: VBoxCocoaApplication.m 16699 2009-02-11 20:56:58Z vboxsync $ */
 /** @file
  * VBoxCocoaApplication - NSApplication subclass for handling -sendEvent.
  */
@@ -288,6 +288,17 @@ uint32_t VBoxCocoaApplication_getEventModifierFlagsXlated(const void *pvEvent)
     }
 
     return fCarbon;
+}
+
+
+/**
+ * Calls the + (void)setMouseCoalescingEnabled:(BOOL)flag class method.
+ *
+ * @param   fEnabled    Whether to enable or disable coalescing.
+ */
+void VBoxCocoaApplication_setMouseCoalescingEnabled(bool fEnabled)
+{
+    [NSEvent setMouseCoalescingEnabled:fEnabled];
 }
 
 
