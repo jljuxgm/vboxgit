@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 13898 2008-11-06 09:44:29Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 13921 2008-11-06 14:27:07Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -166,6 +166,8 @@ int main()
     CHECK_MEMBER_ALIGNMENT(VM, cpum.s.Host, 64);
     CHECK_MEMBER_ALIGNMENT(VM, cpum.s.Guest, 64);
     CHECK_MEMBER_ALIGNMENT(VM, cpum.s.Hyper, 64);
+    CHECK_MEMBER_ALIGNMENT(VM, cpum.s.GuestEntry, 64);
+
     CHECK_MEMBER_ALIGNMENT(VM, vmm.s.CritSectVMLock, 8);
     CHECK_MEMBER_ALIGNMENT(VM, vmm.s.CallHostR0JmpBuf, 8);
     CHECK_MEMBER_ALIGNMENT(VM, vmm.s.StatRunRC, 8);
