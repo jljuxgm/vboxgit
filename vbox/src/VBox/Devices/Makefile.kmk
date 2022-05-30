@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17440 2009-03-06 05:42:37Z vboxsync $
+# $Id: Makefile.kmk 17617 2009-03-10 11:10:12Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -389,6 +389,9 @@ PC/DevACPI.cpp_INCS     = $(PATH_DevicesR3)
 $$(PATH_DevicesR3)/vboxaml.hex: $(PATH_SUB_CURRENT)/PC/vbox.dsl | $$(dir $$@)
 	$(call MSG_TOOL,iasl,DevicesR3,$<,$@)
 	$(QUIET)$(VBOX_IASLCMD) -tc -vs -p $@ $<
+
+vboxaml.hex:: $$(PATH_DevicesR3)/vboxaml.hex
+
 
 # For finding PCIInternal.h from VBox/pci.h.
 Bus/DevPCI.cpp_INCS     = Bus
