@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15607 2008-12-16 20:59:43Z vboxsync $ */
+/* $Id: HWACCM.cpp 15609 2008-12-16 22:00:21Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1329,6 +1329,27 @@ VMMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
     }
 
     return false;
+}
+
+/**
+ * Notifcation from EM about a rescheduling into hardware assisted execution
+ * mode.
+ *
+ * @param   pVCpu       Pointer to the current virtual cpu structure.
+ */
+VMMR3DECL(void) HWACCMR3NotifyScheduled(PVMCPU pVCpu)
+{
+    pVCpu->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_ALL_GUEST;
+}
+
+/**
+ * Notifcation from EM about returning from instruction emulation (REM / EM).
+ *
+ * @param   pVCpu       Pointer to the current virtual cpu structure.
+ */
+VMMR3DECL(void) HWACCMR3NotifyEmulated(PVMCPU pVCpu)
+{
+    pVCpu->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_ALL_GUEST;
 }
 
 /**
