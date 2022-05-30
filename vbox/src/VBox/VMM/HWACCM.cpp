@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 12578 2008-09-18 14:58:57Z vboxsync $ */
+/* $Id: HWACCM.cpp 12610 2008-09-19 16:42:31Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -164,6 +164,7 @@ HWACCMR3DECL(int) HWACCMR3Init(PVM pVM)
 
     STAM_REG(pVM, &pVM->hwaccm.s.StatDRxArmed,              STAMTYPE_COUNTER, "/HWACCM/Debug/Armed",           STAMUNIT_OCCURENCES,    "Nr of occurances");
     STAM_REG(pVM, &pVM->hwaccm.s.StatDRxContextSwitch,      STAMTYPE_COUNTER, "/HWACCM/Debug/ContextSwitch",   STAMUNIT_OCCURENCES,    "Nr of occurances");
+    STAM_REG(pVM, &pVM->hwaccm.s.StatDRxIOCheck,            STAMTYPE_COUNTER, "/HWACCM/Debug/IOCheck",         STAMUNIT_OCCURENCES,    "Nr of occurances");
 
     pVM->hwaccm.s.pStatExitReason = 0;
 

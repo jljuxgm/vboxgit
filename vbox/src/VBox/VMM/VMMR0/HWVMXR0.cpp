@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 12609 2008-09-19 16:00:11Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 12610 2008-09-19 16:42:31Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2113,6 +2113,7 @@ ResumeExecution:
         /* If any IO breakpoints are armed, then we should check if a debug trap needs to be generated. */
         if (pCtx->dr[7] & X86_DR7_ENABLED_MASK)
         {
+            STAM_COUNTER_INC(&pVM->hwaccm.s.StatDRxIOCheck);
             for (unsigned i=0;i<4;i++)
             {
                 if (    pCtx->dr[i] == uPort
