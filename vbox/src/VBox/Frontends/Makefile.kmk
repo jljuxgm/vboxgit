@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12258 2008-09-09 03:01:02Z vboxsync $
+# $Id: Makefile.kmk 12260 2008-09-09 03:04:28Z vboxsync $
 ## @file
 # Top-level makefile for the VBox frontends.
 #
@@ -19,7 +19,7 @@
 # additional information or have any questions.
 #
 
-DEPTH = ../../..
+SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 # Include Sub-Makefiles
