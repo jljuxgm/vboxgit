@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 12700 2008-09-24 16:05:00Z vboxsync $ */
+/* $Id: VBoxDev.cpp 12742 2008-09-25 14:41:49Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1606,7 +1606,7 @@ static DECLCALLBACK(int) vmmdevIORAMRegionMap(PPCIDEVICE pPciDev, /*unsigned*/ i
     int rc;
 
 #ifdef VBOX_WITH_VMMDEV_HEAP
-    AssertReturn(iRegion <= 2 && enmType == PCI_ADDRESS_SPACE_MEM, VERR_INTERNAL_ERROR);
+    AssertReturn(iRegion <= 2 && enmType == PCI_ADDRESS_SPACE_MEM || enmType == PCI_ADDRESS_SPACE_MEM_PREFETCH, VERR_INTERNAL_ERROR);
 #else
     AssertReturn(iRegion <= 1 && enmType == PCI_ADDRESS_SPACE_MEM, VERR_INTERNAL_ERROR);
 #endif
@@ -2298,7 +2298,7 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     if (RT_FAILURE(rc))
         return rc;
 #ifdef VBOX_WITH_VMMDEV_HEAP
-    rc = PDMDevHlpPCIIORegionRegister(pDevIns, 2, VMMDEV_HEAP_SIZE, PCI_ADDRESS_SPACE_MEM, vmmdevIORAMRegionMap);
+    rc = PDMDevHlpPCIIORegionRegister(pDevIns, 2, VMMDEV_HEAP_SIZE, PCI_ADDRESS_SPACE_MEM_PREFETCH, vmmdevIORAMRegionMap);
     if (RT_FAILURE(rc))
         return rc;
 #endif
