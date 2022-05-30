@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 12735 2008-09-25 14:07:53Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 12971 2008-10-03 11:06:57Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1154,6 +1154,15 @@ CPUMDECL(void) CPUMSetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
                 &&  pVM->cpum.s.enmCPUVendor == CPUMCPUVENDOR_AMD)
                 pVM->cpum.s.aGuestCpuIdExt[1].edx |= X86_CPUID_AMD_FEATURE_EDX_APIC;
             LogRel(("CPUMSetGuestCpuIdFeature: Enabled APIC\n"));
+            break;
+
+       /*
+        * Set the x2APIC bit in the standard feature mask.
+         */
+        case CPUMCPUIDFEATURE_X2APIC:
+            if (pVM->cpum.s.aGuestCpuIdStd[0].eax >= 1)
+                pVM->cpum.s.aGuestCpuIdStd[1].ecx |= X86_CPUID_FEATURE_ECX_X2APIC;
+            LogRel(("CPUMSetGuestCpuIdFeature: Enabled x2APIC\n"));
             break;
 
         /*
