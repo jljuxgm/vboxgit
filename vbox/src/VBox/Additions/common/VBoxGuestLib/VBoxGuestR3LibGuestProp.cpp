@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 14352 2008-11-19 14:10:24Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 14359 2008-11-19 16:27:41Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * guest properties.
@@ -835,6 +835,7 @@ VBGLR3DECL(int) VbglR3GuestPropWait(uint32_t u32ClientId,
     GetNotification Msg;
 
     Msg.hdr.u32Timeout = u32Timeout;
+    Msg.hdr.fInterruptible = true;
     Msg.hdr.info.result = (uint32_t)VERR_WRONG_ORDER;  /** @todo drop the cast when the result type has been fixed! */
     Msg.hdr.info.u32ClientID = u32ClientId;
     Msg.hdr.info.u32Function = GET_NOTIFICATION;
