@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 14411 2008-11-20 13:26:47Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 14414 2008-11-20 13:35:21Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -779,12 +779,14 @@ VMMR0DECL(int) SVMR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     /* TSC offset. */
     if (TMCpuTickCanUseRealTSC(pVM, &pVMCB->ctrl.u64TSCOffset))
     {
-        pVMCB->ctrl.u32InterceptCtrl1 &= ~(SVM_CTRL1_INTERCEPT_RDTSC | SVM_CTRL2_INTERCEPT_RDTSCP);
+        pVMCB->ctrl.u32InterceptCtrl1 &= ~SVM_CTRL1_INTERCEPT_RDTSC;
+        pVMCB->ctrl.u32InterceptCtrl2 &= ~SVM_CTRL2_INTERCEPT_RDTSCP;
         STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatTSCOffset);
     }
     else
     {
-        pVMCB->ctrl.u32InterceptCtrl1 |= (SVM_CTRL1_INTERCEPT_RDTSC | SVM_CTRL2_INTERCEPT_RDTSCP);
+        pVMCB->ctrl.u32InterceptCtrl1 |= SVM_CTRL1_INTERCEPT_RDTSC;
+        pVMCB->ctrl.u32InterceptCtrl2 |= SVM_CTRL2_INTERCEPT_RDTSCP;
         STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatTSCIntercept);
     }
 
