@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 17186 2009-02-27 00:57:39Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 17188 2009-02-27 01:12:02Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -3111,7 +3111,7 @@ int vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis, void *pvContext)
     else
         LogRel((DEVICE_NAME ":vboxNetFltOsInitInstance failed to create mutex. rc=%Rrc\n", rc));
 
-    NOREF(pvContext)
+    NOREF(pvContext);
     return rc;
 }
 

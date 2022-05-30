@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 17186 2009-02-27 00:57:39Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 17188 2009-02-27 01:12:02Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1158,7 +1158,7 @@ int  vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis, void *pvContext)
     }
 
     Log(("vboxNetFltOsInitInstance: this=%p: Notifier installed.\n", pThis));
-    NOREF(pvContext)
+    NOREF(pvContext);
     return pThis->fDisconnectedFromHost ? VERR_INTNET_FLT_IF_FAILED : VINF_SUCCESS;
 }
 
