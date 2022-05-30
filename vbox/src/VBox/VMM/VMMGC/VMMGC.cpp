@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: VMMGC.cpp 17146 2009-02-26 09:23:27Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -172,6 +172,30 @@ VMMRCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger)
     PVM pVM = &g_VM;
     NOREF(pLogger);
     return VMMGCCallHost(pVM, VMMCALLHOST_VMM_LOGGER_FLUSH, 0);
+}
+
+
+/**
+ * Disables the GC logger temporarily
+ *
+ * @param   pVM             The VM handle.
+ */
+VMMRCDECL(void) VMMGCLogDisable(PVM pVM)
+{
+    if (pVM->vmm.s.pRCLoggerRC)
+        pVM->vmm.s.pRCLoggerRC->fFlags |= RTLOGFLAGS_DISABLED;
+}
+
+
+/**
+ * Enables the GC logger again
+ *
+ * @param   pVM             The VM handle.
+ */
+VMMRCDECL(void) VMMGCLogEnable(PVM pVM)
+{
+    if (pVM->vmm.s.pRCLoggerRC)
+        pVM->vmm.s.pRCLoggerRC->fFlags &= ~RTLOGFLAGS_DISABLED;
 }
 
 
