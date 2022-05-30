@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 12476 2008-09-15 19:19:21Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 12509 2008-09-16 17:15:22Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -648,8 +648,8 @@ int main()
     GEN_CHECK_OFF(ATADevState, cbATAPISector);
     GEN_CHECK_OFF(ATADevState, aATAPICmd);
     GEN_CHECK_OFF(ATADevState, aATAPICmd[ATAPI_PACKET_SIZE - 1]);
-    GEN_CHECK_OFF(ATADevState, uATAPISenseKey);
-    GEN_CHECK_OFF(ATADevState, uATAPIASC);
+    GEN_CHECK_OFF(ATADevState, abATAPISense);
+    GEN_CHECK_OFF(ATADevState, abATAPISense[ATAPI_SENSE_SIZE - 1]);
     GEN_CHECK_OFF(ATADevState, cNotifiedMediaChange);
     GEN_CHECK_OFF(ATADevState, Led);
     GEN_CHECK_OFF(ATADevState, cbIOBuffer);
