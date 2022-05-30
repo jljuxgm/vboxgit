@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 14153 2008-11-12 23:30:34Z vboxsync $ */
+/* $Id: PGM.cpp 14154 2008-11-12 23:34:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1904,7 +1904,7 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     /** @todo move this into shadow and guest specific relocation functions. */
     AssertMsg(pVM->pgm.s.pShw32BitPdR3, ("Init order, no relocation before paging is initialized!\n"));
     pVM->pgm.s.pShw32BitPdRC += offDelta;
-    pVM->pgm.s.pGuestPDRC    += offDelta;
+    pVM->pgm.s.pGst32BitPdRC += offDelta;
     AssertCompile(RT_ELEMENTS(pVM->pgm.s.apShwPaePDsRC) == RT_ELEMENTS(pVM->pgm.s.apGstPaePDsRC));
     for (unsigned i = 0; i < RT_ELEMENTS(pVM->pgm.s.apShwPaePDsRC); i++)
     {
@@ -2612,7 +2612,7 @@ static DECLCALLBACK(void) pgmR3InfoCr3(PVM pVM, PCDBGFINFOHLP pHlp, const char *
     /*
      * Get page directory addresses.
      */
-    PX86PD     pPDSrc = pVM->pgm.s.pGuestPDR3;
+    PX86PD     pPDSrc = pVM->pgm.s.pGst32BitPdR3;
     Assert(pPDSrc);
     Assert(PGMPhysGCPhys2HCPtrAssert(pVM, (RTGCPHYS)(CPUMGetGuestCR3(pVM) & X86_CR3_PAGE_MASK), sizeof(*pPDSrc)) == pPDSrc);
 

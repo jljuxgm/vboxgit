@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 14153 2008-11-12 23:30:34Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 14154 2008-11-12 23:34:50Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -395,11 +395,11 @@ int main()
     GEN_CHECK_OFF(PGM, GCPhysCR3);
     GEN_CHECK_OFF(PGM, GCPtrCR3Mapping);
     GEN_CHECK_OFF(PGM, GCPhysGstCR3Monitored);
-    GEN_CHECK_OFF(PGM, pGuestPDR3);
+    GEN_CHECK_OFF(PGM, pGst32BitPdR3);
 #ifndef VBOX_WITH_2X_4GB_ADDR_SPACE
-    GEN_CHECK_OFF(PGM, pGuestPDR0);
+    GEN_CHECK_OFF(PGM, pGst32BitPdR0);
 #endif
-    GEN_CHECK_OFF(PGM, pGuestPDRC);
+    GEN_CHECK_OFF(PGM, pGst32BitPdRC);
     GEN_CHECK_OFF(PGM, pGstPaePdptR3);
 #ifndef VBOX_WITH_2X_4GB_ADDR_SPACE
     GEN_CHECK_OFF(PGM, pGstPaePdptR0);
