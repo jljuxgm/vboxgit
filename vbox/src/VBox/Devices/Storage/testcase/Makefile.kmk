@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17110 2009-02-25 08:58:45Z vboxsync $
+# $Id: Makefile.kmk 17111 2009-02-25 09:04:00Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -27,10 +27,12 @@ include	$(KBUILD_PATH)/subheader.kmk
 # probably will go away soon. Testcase only now.
 #
 ifdef VBOX_WITH_TESTCASES
- PROGRAMS += vditool
-  vditool_TEMPLATE = VBOXR3TSTEXE
-  vditool_LIBS     = $(LIB_DDU) $(LIB_RUNTIME)
- vditool_SOURCES   = vditool.cpp
+ ifndef VBOX_OSE
+  PROGRAMS += vditool
+   vditool_TEMPLATE = VBOXR3TSTEXE
+   vditool_LIBS     = $(LIB_DDU) $(LIB_RUNTIME)
+   vditool_SOURCES  = vditool.cpp
+ endif
 endif
 
 
