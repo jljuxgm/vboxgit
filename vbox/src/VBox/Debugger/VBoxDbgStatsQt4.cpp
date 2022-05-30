@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.cpp 12851 2008-10-01 04:16:17Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.cpp 12852 2008-10-01 04:21:25Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -2943,20 +2943,24 @@ VBoxDbgStats::closeEvent(QCloseEvent *a_pCloseEvt)
 }
 
 
-void VBoxDbgStats::apply(const QString &Str)
+void
+VBoxDbgStats::apply(const QString &Str)
 {
     m_PatStr = Str;
     refresh();
 }
 
 
-void VBoxDbgStats::applyAll()
+void
+VBoxDbgStats::applyAll()
 {
     apply("");
 }
 
 
-void VBoxDbgStats::refresh()
+
+void
+VBoxDbgStats::refresh()
 {
     m_pView->updateStats(m_PatStr);
 }
@@ -2979,7 +2983,7 @@ VBoxDbgStats::setRefresh(int iRefresh)
 void
 VBoxDbgStats::actFocusToPat()
 {
-    if (!m_pInput->hasFocus())
+    if (!m_pPatCB->hasFocus())
         m_pPatCB->setFocus(Qt::ShortcutFocusReason);
 }
 
