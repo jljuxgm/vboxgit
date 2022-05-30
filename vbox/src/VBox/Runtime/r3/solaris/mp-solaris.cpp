@@ -1,4 +1,4 @@
-/* $Id: mp-solaris.cpp 12105 2008-09-04 19:46:14Z vboxsync $ */
+/* $Id: mp-solaris.cpp 12108 2008-09-04 20:17:24Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */
@@ -225,7 +225,8 @@ RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
 
 RTDECL(bool) RTMpIsCpuPresent(RTCPUID idCpu)
 {
-    return p_online() != -1;
+    int iStatus = p_online(idCpu, P_STATUS);
+    return iStatus != -1;
 }
 
 
