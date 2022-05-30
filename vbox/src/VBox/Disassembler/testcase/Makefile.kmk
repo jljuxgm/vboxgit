@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15301 2008-12-11 12:30:25Z vboxsync $
+# $Id: Makefile.kmk 15302 2008-12-11 12:32:27Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -216,10 +216,6 @@ OTHER_CLEAN += $(VBOX_DISAS_TEST_CLEAN)
 # (kBuild r1646)
 #
 TESTING += $(addprefix $(VBOX_DISAS_TEST_OUT_DIR)/,$(VBOX_DISAS_TESTS))
-
-# Aliases for use till kBuild gets updated.
-.PHONY: check test
-check test:: $$(TESTING)
 
 
 #
