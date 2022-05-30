@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 12063 2008-09-03 15:42:14Z vboxsync $
+; $Id: HWACCMR0A.asm 12069 2008-09-03 16:01:25Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -836,7 +836,7 @@ BEGINPROC VMXGetActivateVMCS
 %else
     vmptrst [esp+04h]
 %endif
-    xor     rAX, rAX
+    xor     eax, eax
     ret
 ENDPROC
 
