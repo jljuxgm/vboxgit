@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 14281 2008-11-18 09:50:33Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 14292 2008-11-18 12:01:42Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -4492,9 +4492,12 @@ static uint64_t vmdkGetFileSize(void *pBackendData)
             int rc = vmdkFileGetSize(pImage->pFile, &cbFile);
             if (RT_SUCCESS(rc))
                 cb += cbFile;
-            for (unsigned i = 0; i <= pImage->cExtents; i++)
+        }
+        for (unsigned i = 0; i <= pImage->cExtents; i++)
+        {
+            if (pImage->pExtents[i].pFile != NULL)
             {
-                rc = vmdkFileGetSize(pImage->pFile, &cbFile);
+                int rc = vmdkFileGetSize(pImage->pExtents[i].pFile, &cbFile);
                 if (RT_SUCCESS(rc))
                     cb += cbFile;
             }
