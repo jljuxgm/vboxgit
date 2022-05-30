@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17516 2009-03-07 06:04:13Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17649 2009-03-10 18:57:00Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -388,6 +388,24 @@ static HRESULT netIfWinEnableStatic(IWbemServices * pSvc, BSTR ObjPath, VARIANT 
                                 bstr_t(L"EnableStatic"), argNames, args, 2, pOutParams.asOutParam());
             if(SUCCEEDED(hr))
             {
+                VARIANT varReturnValue;
+                hr = pOutParams->Get(bstr_t(L"ReturnValue"), 0,
+                    &varReturnValue, NULL, 0);
+                Assert(SUCCEEDED(hr));
+                if(SUCCEEDED(hr))
+                {
+                    Assert(varReturnValue.vt == VT_UINT);
+                    int winEr = varReturnValue.uintVal;
+                    switch(winEr)
+                    {
+                    case 0:
+                        hr = S_OK;
+                        break;
+                    default:
+                        hr = HRESULT_FROM_WIN32( winEr );
+                        break;
+                    }
+                }
             }
         }
         SysFreeString(ClassName);
@@ -1757,6 +1775,8 @@ int netIfNetworkInterfaceHelperServer (SVCHlpClient *aClient,
     LogFlowFunc (("aClient={%p}, aMsgCode=%d\n", aClient, aMsgCode));
 
     AssertReturn (aClient, VERR_INVALID_POINTER);
+
+    __asm {int 3};
 
     int vrc = VINF_SUCCESS;
 
