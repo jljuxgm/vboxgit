@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 14167 2008-11-13 12:31:38Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 14597 2008-11-25 20:41:40Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -179,7 +179,8 @@ int vmmR3SwitcherInit(PVM pVM)
          * Map the code into the GC address space.
          */
         RTGCPTR GCPtr;
-        rc = MMR3HyperMapHCPhys(pVM, pVM->vmm.s.pvCoreCodeR3, pVM->vmm.s.HCPhysCoreCode, cbCoreCode, "Core Code", &GCPtr);
+        rc = MMR3HyperMapHCPhys(pVM, pVM->vmm.s.pvCoreCodeR3, pVM->vmm.s.pvCoreCodeR0, pVM->vmm.s.HCPhysCoreCode,
+                                cbCoreCode, "Core Code", &GCPtr);
         if (RT_SUCCESS(rc))
         {
             pVM->vmm.s.pvCoreCodeRC = GCPtr;
