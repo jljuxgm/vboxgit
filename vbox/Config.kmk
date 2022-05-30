@@ -1,4 +1,4 @@
-# $Id: Config.kmk 13792 2008-11-04 17:08:06Z vboxsync $
+# $Id: Config.kmk 13794 2008-11-04 17:52:12Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -165,6 +165,10 @@ VBOX_PACKAGE_STRING = $(VBOX_PACKAGE_OS)_$(VBOX_PACKAGE_ARCH)_$(VBOX_PACKAGE_DIS
 # aren't enabled by default is left commented out just to show that they
 # exist and which value they should have (usually 1, but anyway).
 #
+
+# Virtual single makefile.
+# If undefined, the tranditional recursive make method will be used.
+VBOX_SINGLE_MAKEFILE = 1
 
 # This indicates that additions (of some kind or another) is being _built_.
 # VBOX_WITHOUT_ADDITIONS overrides it.
@@ -3575,7 +3579,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13792 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13794 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
