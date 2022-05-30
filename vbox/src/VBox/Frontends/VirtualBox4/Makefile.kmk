@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12390 2008-09-11 01:22:14Z vboxsync $
+# $Id: Makefile.kmk 12397 2008-09-11 09:10:20Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -213,7 +213,7 @@ endif
 # r=bird: what is -lz doing here? it belongs in LIBS.
 VirtualBox4_LDFLAGS.darwin = -lz \
 	-framework IOKit -framework AppKit -framework ApplicationServices -framework Foundation -framework Carbon -framework QuickTime \
-	$(if $(VBOX_WITH_HARDENING),-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VirtualBox.dylib) -v -Wl,-v -Wl,-whatsloaded -Wl,-whyload 
+	$(if $(VBOX_WITH_HARDENING),-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VirtualBox.dylib)
 ifdef VBOX_WITH_ICHAT_THEATER
  VirtualBox4_LDFLAGS.darwin += -framework InstantMessage -framework QuartzCore
 endif
