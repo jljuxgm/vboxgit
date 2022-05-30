@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 13144 2008-10-09 22:44:11Z vboxsync $ */
+/* $Id: TRPM.cpp 13532 2008-10-23 12:39:48Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor
  */
@@ -1342,8 +1342,7 @@ VMMR3DECL(int) TRPMR3InjectEvent(PVM pVM, TRPMEVENT enmEvent)
     PCPUMCTX pCtx;
     int      rc;
 
-    rc = CPUMQueryGuestCtxPtr(pVM, &pCtx);
-    AssertRC(rc);
+    pCtx = CPUMQueryGuestCtxPtr(pVM);
     Assert(!PATMIsPatchGCAddr(pVM, (RTGCPTR)pCtx->eip));
     Assert(!VM_FF_ISSET(pVM, VM_FF_INHIBIT_INTERRUPTS));
 

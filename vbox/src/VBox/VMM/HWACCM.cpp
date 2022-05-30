@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 13434 2008-10-21 12:16:05Z vboxsync $ */
+/* $Id: HWACCM.cpp 13532 2008-10-23 12:39:48Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -796,7 +796,7 @@ VMMR3DECL(void) HWACCMR3PagingModeChanged(PVM pVM, PGMMODE enmShadowMode, PGMMOD
         {
             PCPUMCTX pCtx;
 
-            CPUMQueryGuestCtxPtr(pVM, &pCtx);
+            pCtx = CPUMQueryGuestCtxPtr(pVM);
 
             /* After a real mode switch to protected mode we must force
              * CPL to 0. Our real mode emulation had to set it to 3.

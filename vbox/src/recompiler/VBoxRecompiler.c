@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13375 2008-10-17 14:18:29Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 13532 2008-10-23 12:39:48Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -278,12 +278,7 @@ REMR3DECL(int) REMR3Init(PVM pVM)
 #endif
 
     /* ctx. */
-    int rc = CPUMQueryGuestCtxPtr(pVM, &pVM->rem.s.pCtx);
-    if (VBOX_FAILURE(rc))
-    {
-        AssertMsgFailed(("Failed to obtain guest ctx pointer. rc=%Vrc\n", rc));
-        return rc;
-    }
+    pVM->rem.s.pCtx = CPUMQueryGuestCtxPtr(pVM);
     AssertMsg(MMR3PhysGetRamSize(pVM) == 0, ("Init order have changed! REM depends on notification about ALL physical memory registrations\n"));
 
     /* ignore all notifications */
@@ -326,9 +321,9 @@ REMR3DECL(int) REMR3Init(PVM pVM)
     /*
      * Register the saved state data unit.
      */
-    rc = SSMR3RegisterInternal(pVM, "rem", 1, REM_SAVED_STATE_VERSION, sizeof(uint32_t) * 10,
-                               NULL, remR3Save, NULL,
-                               NULL, remR3Load, NULL);
+    int rc = SSMR3RegisterInternal(pVM, "rem", 1, REM_SAVED_STATE_VERSION, sizeof(uint32_t) * 10,
+                                   NULL, remR3Save, NULL,
+                                   NULL, remR3Load, NULL);
     if (VBOX_FAILURE(rc))
         return rc;
 

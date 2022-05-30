@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 13532 2008-10-23 12:39:48Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -451,14 +451,12 @@ VMMDECL(void) CPUMSetGuestCtxCore(PVM pVM, PCCPUMCTXCORE pCtxCore)
 /**
  * Queries the pointer to the internal CPUMCTX structure
  *
- * @returns VBox status code.
+ * @returns The CPUMCTX pointer.
  * @param   pVM         Handle to the virtual machine.
- * @param   ppCtx       Receives the CPUMCTX pointer when successful.
  */
-VMMDECL(int) CPUMQueryGuestCtxPtr(PVM pVM, PCPUMCTX *ppCtx)
+VMMDECL(PCPUMCTX) CPUMQueryGuestCtxPtr(PVM pVM)
 {
-    *ppCtx = &pVM->cpum.s.Guest;
-    return VINF_SUCCESS;
+    return &pVM->cpum.s.Guest;
 }
 
 

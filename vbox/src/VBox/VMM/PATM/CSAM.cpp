@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 13144 2008-10-09 22:44:11Z vboxsync $ */
+/* $Id: CSAM.cpp 13532 2008-10-23 12:39:48Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2404,8 +2404,7 @@ VMMR3DECL(int) CSAMR3CheckGates(PVM pVM, uint32_t iGate, uint32_t cGates)
                                                        0x2B,       /* OpenBSD 4.0 installation ISO */
                                                        0x2F};      /* OpenBSD 4.0 after install */
 
-                rc = CPUMQueryGuestCtxPtr(pVM, &pCtx);
-                AssertRC(rc);   /* can't fail */
+                pCtx = CPUMQueryGuestCtxPtr(pVM);
 
                 for (unsigned i=0;i<RT_ELEMENTS(aOpenBsdPushCSOffset);i++)
                 {

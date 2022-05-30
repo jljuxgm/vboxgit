@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 13413 2008-10-20 23:15:20Z vboxsync $ */
+/* $Id: EM.cpp 13532 2008-10-23 12:39:48Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -131,8 +131,7 @@ VMMR3DECL(int) EMR3Init(PVM pVM)
     pVM->em.s.enmState = EMSTATE_NONE;
     pVM->em.s.fForceRAW = false;
 
-    rc = CPUMQueryGuestCtxPtr(pVM, &pVM->em.s.pCtx);
-    AssertMsgRC(rc, ("CPUMQueryGuestCtxPtr -> %Vrc\n", rc));
+    pVM->em.s.pCtx = CPUMQueryGuestCtxPtr(pVM);
     pVM->em.s.pPatmGCState = PATMR3QueryGCStateHC(pVM);
     AssertMsg(pVM->em.s.pPatmGCState, ("PATMR3QueryGCStateHC failed!\n"));
 
