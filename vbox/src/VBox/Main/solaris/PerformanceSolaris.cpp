@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 12400 2008-09-11 10:34:58Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 12457 2008-09-15 11:14:35Z vboxsync $ */
 
 /** @file
  *
@@ -43,7 +43,7 @@ class CollectorSolaris : public CollectorHAL
 {
 public:
     CollectorSolaris();
-    ~CollectorSolaris();
+    virtual ~CollectorSolaris();
     virtual int getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available);
     virtual int getProcessMemoryUsage(RTPROCESS process, ULONG *used);
 

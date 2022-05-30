@@ -1,4 +1,4 @@
-/* $Id: Performance.h 12400 2008-09-11 10:34:58Z vboxsync $ */
+/* $Id: Performance.h 12457 2008-09-15 11:14:35Z vboxsync $ */
 
 /** @file
  *
@@ -136,6 +136,7 @@ namespace pm
     class CollectorHAL
     {
     public:
+        virtual ~CollectorHAL() { };
         virtual int preCollect(const CollectorHints& hints) { return VINF_SUCCESS; }
         virtual int getHostCpuLoad(ULONG *user, ULONG *kernel, ULONG *idle);
         virtual int getHostCpuMHz(ULONG *mhz);
