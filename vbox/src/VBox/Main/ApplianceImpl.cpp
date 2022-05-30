@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17576 2009-03-09 14:16:24Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17577 2009-03-09 14:17:19Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1342,7 +1342,7 @@ STDMETHODIMP Appliance::Interpret()
             /* If the there isn't any name specified create a default one out of
              * the OS type */
             Utf8Str nameVBox = vsysThis.strName;
-            if (nameVBox == "")
+            if (nameVBox.isEmpty())
                 nameVBox = strOsTypeVBox;
             searchUniqueVMName(nameVBox);
             pNewDesc->addEntry(VirtualSystemDescriptionType_Name,
