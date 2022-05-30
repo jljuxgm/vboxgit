@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 14503 2008-11-24 03:10:09Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 16019 2009-01-18 01:33:51Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -33,6 +33,21 @@
 # error Incorrect template!
 #endif
 
+#include <VBox/types.h>
+#include <iprt/assert.h>
+AssertCompileSize(uint8_t,  1);
+AssertCompileSize(uint16_t, 2);
+AssertCompileSize(uint32_t, 4);
+AssertCompileSize(uint64_t, 8);
+AssertCompileSize(RTRCPTR,  4);
+#ifdef VBOX_WITH_64_BITS_GUESTS
+AssertCompileSize(RTGCPTR,  8);
+#else
+AssertCompileSize(RTGCPTR,  8);
+#endif
+AssertCompileSize(RTGCPHYS, 8);
+AssertCompileSize(RTHCPHYS, 8);
+
 
 /*******************************************************************************
 *   Header Files                                                               *
@@ -45,25 +60,25 @@
 #include <VBox/trpm.h>
 #include <VBox/vmm.h>
 #include <VBox/stam.h>
-#include "PDMInternal.h"
+#include "../PDMInternal.h"
 #include <VBox/pdm.h>
-#include "CFGMInternal.h"
-#include "CPUMInternal.h"
-#include "MMInternal.h"
-#include "PGMInternal.h"
-#include "SELMInternal.h"
-#include "TRPMInternal.h"
-#include "TMInternal.h"
-#include "IOMInternal.h"
-#include "REMInternal.h"
-#include "HWACCMInternal.h"
-#include "PATMInternal.h"
-#include "VMMInternal.h"
-#include "DBGFInternal.h"
-#include "STAMInternal.h"
-#include "CSAMInternal.h"
-#include "EMInternal.h"
-#include "REMInternal.h"
+#include "../CFGMInternal.h"
+#include "../CPUMInternal.h"
+#include "../MMInternal.h"
+#include "../PGMInternal.h"
+#include "../SELMInternal.h"
+#include "../TRPMInternal.h"
+#include "../TMInternal.h"
+#include "../IOMInternal.h"
+#include "../REMInternal.h"
+#include "../HWACCMInternal.h"
+#include "../PATM/PATMInternal.h"
+#include "../VMMInternal.h"
+#include "../DBGFInternal.h"
+#include "../STAMInternal.h"
+#include "../PATM/CSAMInternal.h"
+#include "../EMInternal.h"
+#include "../REMInternal.h"
 #include <VBox/vm.h>
 #include <VBox/param.h>
 #include <VBox/x86.h>
