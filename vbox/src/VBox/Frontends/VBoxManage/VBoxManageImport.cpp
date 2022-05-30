@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 17291 2009-03-03 15:08:59Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 17361 2009-03-04 18:09:48Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -555,6 +555,9 @@ int handleExportAppliance(HandlerArg *a)
                     else
                         return errorSyntax(USAGE_LIST, "%Rrs", c);
             }
+
+            if (FAILED(rc))
+                break;
         }
 
         if (FAILED(rc))
