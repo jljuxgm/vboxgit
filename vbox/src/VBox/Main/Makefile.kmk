@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15372 2008-12-12 14:51:29Z vboxsync $
+# $Id: Makefile.kmk 15708 2008-12-19 18:28:27Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -55,9 +55,6 @@ ifneq ($(KBUILD_TARGET),win)
  endif
  ifneq ($(KBUILD_TARGET),os2)
   VBOX_MAIN_DEFS+= VBOX_WITH_SYS_V_IPC_SESSION_WATCHER
- endif
- ifndef VBOX_WITH_NETFLT
-  VBOX_MAIN_DEFS += VBOX_WITH_UNIXY_TAP_NETWORKING
  endif
 endif
 ifdef VBOX_WITH_NETFLT
