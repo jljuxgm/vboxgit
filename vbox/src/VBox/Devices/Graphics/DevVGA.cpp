@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 13422 2008-10-21 09:30:31Z vboxsync $ */
+/* $Id: DevVGA.cpp 13424 2008-10-21 09:45:46Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4505,7 +4505,7 @@ static DECLCALLBACK(int) vgaPortSnapshot(PPDMIDISPLAYPORT pInterface, void *pvDa
     PPDMIDISPLAYCONNECTOR   pConnector;
     PDMIDISPLAYCONNECTOR    Connector;
     int32_t                 graphic_mode;
-    uint32_t                fRenderVRAM;
+    bool                    fRenderVRAM;
     size_t                  cbRequired;
     PVGASTATE               pThis = IDISPLAYPORT_2_VGASTATE(pInterface);
     PDMDEV_ASSERT_EMT(VGASTATE2DEVINS(pThis));
