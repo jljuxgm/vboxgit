@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 15172 2008-12-09 14:02:13Z vboxsync $ */
+/* $Id: PGM.cpp 15174 2008-12-09 14:11:35Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2009,7 +2009,11 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
      * The Zero page.
      */
     pVM->pgm.s.pvZeroPgR0 = MMHyperR3ToR0(pVM, pVM->pgm.s.pvZeroPgR3);
-    AssertRelease(pVM->pgm.s.pvZeroPgR0);
+#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
+    AssertRelease(pVM->pgm.s.pvZeroPgR0 != NIL_RTR0PTR || !VMMIsHwVirtExtForced(pVM));
+#else
+    AssertRelease(pVM->pgm.s.pvZeroPgR0 != NIL_RTR0PTR);
+#endif
 
     /*
      * Physical and virtual handlers.

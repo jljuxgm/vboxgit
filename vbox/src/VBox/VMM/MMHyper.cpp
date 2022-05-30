@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 14645 2008-11-26 14:09:41Z vboxsync $ */
+/* $Id: MMHyper.cpp 15174 2008-12-09 14:11:35Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -723,7 +723,11 @@ static int mmR3HyperHeapCreate(PVM pVM, const size_t cb, PMMHYPERHEAP *ppHeap, P
     if (RT_SUCCESS(rc))
     {
         if (!VMMIsHwVirtExtForced(pVM))
+#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
+            pvR0 = NIL_RTR0PTR;
+#else
             pvR0 = (uintptr_t)pv;
+#endif
         memset(pv, 0, cbAligned);
 
         /*
@@ -732,7 +736,7 @@ static int mmR3HyperHeapCreate(PVM pVM, const size_t cb, PMMHYPERHEAP *ppHeap, P
         PMMHYPERHEAP pHeap = (PMMHYPERHEAP)pv;
         pHeap->u32Magic             = MMHYPERHEAP_MAGIC;
         pHeap->pbHeapR3             = (uint8_t *)pHeap + MMYPERHEAP_HDR_SIZE;
-        pHeap->pbHeapR0             = pvR0             + MMYPERHEAP_HDR_SIZE;
+        pHeap->pbHeapR0             = pvR0 != NIL_RTR0PTR ? pvR0 + MMYPERHEAP_HDR_SIZE : NIL_RTR0PTR;
         //pHeap->pbHeapRC           = 0; // set by mmR3HyperHeapMap()
         pHeap->pVMR3                = pVM;
         pHeap->pVMR0                = pVM->pVMR0;
@@ -776,7 +780,7 @@ static int mmR3HyperHeapMap(PVM pVM, PMMHYPERHEAP pHeap, PRTGCPTR ppHeapGC)
     Assert(pHeap->paPages);
     int rc = MMR3HyperMapPages(pVM,
                                pHeap,
-                               pHeap->pbHeapR0 - MMYPERHEAP_HDR_SIZE,
+                               pHeap->pbHeapR0 != NIL_RTR0PTR ? pHeap->pbHeapR0 - MMYPERHEAP_HDR_SIZE : NIL_RTR0PTR,
                                (pHeap->cbHeap + MMYPERHEAP_HDR_SIZE) >> PAGE_SHIFT,
                                pHeap->paPages,
                                "Heap", ppHeapGC);
@@ -883,7 +887,11 @@ VMMDECL(int) MMR3HyperAllocOnceNoRel(PVM pVM, size_t cb, unsigned uAlignment, MM
     if (RT_SUCCESS(rc))
     {
         if (!VMMIsHwVirtExtForced(pVM))
+#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
+            pvR0 = NIL_RTR0PTR;
+#else
             pvR0 = (uintptr_t)pvPages;
+#endif
         memset(pvPages, 0, cb);
 
         RTGCPTR GCPtr;
