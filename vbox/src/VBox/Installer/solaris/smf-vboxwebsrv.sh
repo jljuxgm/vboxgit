@@ -1,5 +1,5 @@
 #!/sbin/sh
-# $Id: smf-vboxwebsrv.sh 13369 2008-10-17 11:38:48Z vboxsync $
+# $Id: smf-vboxwebsrv.sh 14782 2008-11-28 14:48:29Z vboxsync $
 
 # Copyright (C) 2008 Sun Microsystems, Inc.
 #
@@ -56,7 +56,7 @@ case $VW_OPT in
         [ -z "$VW_PORT" -o "$VW_PORT" -eq 0 ] && VW_PORT=18083
         [ -z "$VW_TIMEOUT" ] && VW_TIMEOUT=20
         [ -z "$VW_CHECK_INTERVAL" ] && VW_CHECK_INTERVAL=5
-        su "$VW_USER" -c "LOGNAME=\"$VW_USER\" USER=\"$VW_USER\" /opt/VirtualBox/vboxwebsrv --background --host \"$VW_HOST\" --port \"$VW_PORT\" --timeout \"$VW_TIMEOUT\" --check-interval \"$VW_CHECK_INTERVAL\""
+        su - "$VW_USER" -c /opt/VirtualBox/vboxwebsrv --background --host \"$VW_HOST\" --port \"$VW_PORT\" --timeout \"$VW_TIMEOUT\" --check-interval \"$VW_CHECK_INTERVAL\""
 
         VW_EXIT=$?
         if [ $VW_EXIT != 0 ]; then
