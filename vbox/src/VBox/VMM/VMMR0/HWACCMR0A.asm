@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 12702 2008-09-24 16:56:02Z vboxsync $
+; $Id: HWACCMR0A.asm 13036 2008-10-07 11:05:23Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -618,7 +618,9 @@ ALIGNCODE(16)
     ;; @todo use the automatic load feature for MSRs
     LOADHOSTMSREX MSR_K8_KERNEL_GS_BASE, CPUMCTX.msrKERNELGSBASE
     LOADHOSTMSR MSR_K8_SF_MASK
+%if 0  ; not supported on Intel CPUs
     LOADHOSTMSR MSR_K8_CSTAR
+%endif
     LOADHOSTMSR MSR_K8_LSTAR
 
     ; Restore segment registers
@@ -645,7 +647,9 @@ ALIGNCODE(16)
     ;; @todo use the automatic load feature for MSRs
     LOADHOSTMSREX MSR_K8_KERNEL_GS_BASE, CPUMCTX.msrKERNELGSBASE
     LOADHOSTMSR MSR_K8_SF_MASK
+%if 0  ; not supported on Intel CPUs
     LOADHOSTMSR MSR_K8_CSTAR
+%endif
     LOADHOSTMSR MSR_K8_LSTAR
 
     ; Restore segment registers
