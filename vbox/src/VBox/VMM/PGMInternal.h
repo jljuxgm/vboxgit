@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 14301 2008-11-18 13:31:42Z vboxsync $ */
+/* $Id: PGMInternal.h 14374 2008-11-19 19:13:00Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2411,6 +2411,13 @@ typedef struct PGM
     /** Cache containing the last entries in the dynamic page mapping area.
      * The cache size is covering half of the mapping area. */
     RTHCPHYS                        aHCPhysDynPageMapCache[MM_HYPER_DYNAMIC_SIZE >> (PAGE_SHIFT + 1)];
+
+    /** The address of the ring-0 mapping cache if we're making use of it.  */
+    RTR0PTR                         pvR0DynMapUsed;
+#if HC_ARCH_BITS == 32
+    RTR0PTR                         R0PtrPadding0;  /**< Alignment. */
+#endif
+
 
     /** 4 MB page mask; 32 or 36 bits depending on PSE-36 */
     RTGCPHYS                        GCPhys4MBPSEMask;
