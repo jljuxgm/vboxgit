@@ -1,4 +1,4 @@
-# $Id: Config.kmk 13490 2008-10-22 13:27:36Z vboxsync $
+# $Id: Config.kmk 13491 2008-10-22 14:27:47Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1394,6 +1394,7 @@ else
   TOOL_VCC70_RC      := $(PATH_DEVTOOLS)/win.x86/ddk/6000/bin/x86/rc.exe
  else
   VBOX_WINDOWS_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Artwork/VirtualBox-winxp.ico
+  VBOX_NSIS_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Artwork/VirtualBox-nsis.ico
  endif
  VBOX_MACOSX_ICON_FILE  ?= $(PATH_ROOT)/src/VBox/Artwork/VirtualBox.icns
 endif
@@ -3568,7 +3569,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13490 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13491 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
