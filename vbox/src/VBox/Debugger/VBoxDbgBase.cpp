@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.cpp 12843 2008-10-01 01:00:26Z vboxsync $ */
+/* $Id: VBoxDbgBase.cpp 12878 2008-10-01 21:11:52Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base class.
  */
@@ -19,10 +19,10 @@
  * additional information or have any questions.
  */
 
-
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define LOG_GROUP LOG_GROUP_DBGG
 #include <VBox/err.h>
 #include <iprt/assert.h>
 #include "VBoxDbgBase.h"
