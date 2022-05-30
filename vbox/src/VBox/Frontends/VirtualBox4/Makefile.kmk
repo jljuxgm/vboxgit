@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12860 2008-10-01 12:39:53Z vboxsync $
+# $Id: Makefile.kmk 12861 2008-10-01 12:41:55Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -483,7 +483,7 @@ endif # win
 # If there is the accessible plugin & we are using our home-made qt put it to
 # the output dir
 # @todo: fix this &| add it to the qt4 unit
-# @todo: solaris, all linux distros where we
+# @todo: solaris, all linux distros where we distribute Qt4 on our own
 if1of ($(KBUILD_TARGET),darwin win)
 PREFIX=lib
 SUFFIX=
