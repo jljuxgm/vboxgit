@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 16004 2009-01-16 18:18:46Z vboxsync $ */
+/* $Id: Global.cpp 17580 2009-03-09 14:49:09Z vboxsync $ */
 
 /** @file
  *
@@ -28,7 +28,7 @@
 #include <iprt/assert.h>
 
 /* static */
-const Global::OSType Global::sOSTypes [SchemaDefs::OSTypeId_COUNT] =
+const Global::OSType Global::sOSTypes[SchemaDefs::OSTypeId_COUNT] =
 {
     /* NOTE1: we assume that unknown is always the first entry!
      * NOTE2: please use powers of 2 when specifying the size of harddisks since
