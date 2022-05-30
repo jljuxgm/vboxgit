@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 15108 2008-12-08 13:15:45Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 15166 2008-12-09 13:38:57Z vboxsync $ */
 
 /** @file
  *
@@ -1039,6 +1039,7 @@ Console::doGuestPropNotification (void *pvExtension, uint32_t,
 {
     using namespace guestProp;
 
+    LogFlowFunc (("pvExtension=%p, pvParms=%p, cbParms=%u\n", pvExtension, pvParms, cbParms));
     int rc = VINF_SUCCESS;
     /* No locking, as this is purely a notification which does not make any
      * changes to the object state. */
@@ -1046,6 +1047,7 @@ Console::doGuestPropNotification (void *pvExtension, uint32_t,
     AssertReturn(sizeof(HOSTCALLBACKDATA) == cbParms, VERR_INVALID_PARAMETER);
     AssertReturn(HOSTCALLBACKMAGIC == pCBData->u32Magic, VERR_INVALID_PARAMETER);
     ComObjPtr <Console> pConsole = reinterpret_cast <Console *> (pvExtension);
+    LogFlowFunc (("pCBData->pcszName=%s, pCBData->pcszValue=%s, pCBData->pcszFlags=%s\n", pCBData->pcszName, pCBData->pcszValue, pCBData->pcszFlags));
     Bstr name(pCBData->pcszName);
     Bstr value(pCBData->pcszValue);
     Bstr flags(pCBData->pcszFlags);
@@ -1068,6 +1070,7 @@ Console::doGuestPropNotification (void *pvExtension, uint32_t,
             rc = VERR_UNRESOLVED_ERROR;  /** @todo translate error code */
         }
     }
+    LogFlowFunc (("rc=%Rrc\n", rc));
     return rc;
 }
 
