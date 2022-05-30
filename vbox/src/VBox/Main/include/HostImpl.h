@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 16929 2009-02-18 19:03:16Z vboxsync $ */
+/* $Id: HostImpl.h 16967 2009-02-20 10:03:55Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -97,7 +97,6 @@ public:
     STDMETHOD(COMGETTER(UTCTime))(LONG64 *aUTCTime);
 
     // IHost methods
-    STDMETHOD(COMGETTER(TapInterfaces))(ComSafeArrayOut (IHostNetworkInterface *, aNetworkInterfaces));
 #ifdef RT_OS_WINDOWS
 
     STDMETHOD(CreateHostNetworkInterface) (IN_BSTR aName,

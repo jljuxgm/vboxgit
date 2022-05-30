@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 15570 2008-12-16 10:39:34Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 16967 2009-02-20 10:03:55Z vboxsync $ */
 
 /** @file
  *
@@ -59,9 +59,9 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init (Bstr interfaceName, Guid guid);
+    HRESULT init (Bstr interfaceName, Guid guid, BOOL aReal);
 #ifdef VBOX_WITH_HOSTNETIF_API
-    HRESULT init (Bstr aInterfaceName, struct NETIFINFO *pIfs);
+    HRESULT init (Bstr aInterfaceName, BOOL aReal, struct NETIFINFO *pIfs);
 #endif
 
     // IHostNetworkInterface properties
@@ -74,6 +74,7 @@ public:
     STDMETHOD(COMGETTER(HardwareAddress)) (BSTR *aHardwareAddress);
     STDMETHOD(COMGETTER(Type)) (HostNetworkInterfaceType_T *aType);
     STDMETHOD(COMGETTER(Status)) (HostNetworkInterfaceStatus_T *aStatus);
+    STDMETHOD(COMGETTER(Real)) (BOOL *aReal);
 
     // for VirtualBoxSupportErrorInfoImpl
     static const wchar_t *getComponentName() { return L"HostNetworkInterface"; }
@@ -81,12 +82,14 @@ public:
 private:
     const Bstr mInterfaceName;
     const Guid mGuid;
+    BOOL mReal;
+
     struct Data
     {
         Data() : IPAddress (0), networkMask (0),
             type (HostNetworkInterfaceType_Unknown),
-            status(HostNetworkInterfaceStatus_Down) {}
-        
+            status(HostNetworkInterfaceStatus_Down){}
+
         ULONG IPAddress;
         ULONG networkMask;
         Bstr IPV6Address;
