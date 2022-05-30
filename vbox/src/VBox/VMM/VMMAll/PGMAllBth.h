@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 12937 2008-10-02 13:31:24Z vboxsync $ */
+/* $Id: PGMAllBth.h 12938 2008-10-02 13:33:03Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1417,7 +1417,7 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorker)(PVM pVM, PSHWPTE pPteDst, GSTPDE P
                     PteDst.u           = (HCPhys & EPT_PTE_PG_MASK);
                     PteDst.n.u1Present = 1;
                     PteDst.n.u1Execute = 1;
-                    /* PteDst.n.u1Write = 0 */
+                    /* PteDst.n.u1Write = 0 && PteDst.n.u1Big = 0 */
 #else
                     PteDst.u = (PteSrc.u & ~(X86_PTE_PAE_PG_MASK | X86_PTE_AVL_MASK | X86_PTE_PAT | X86_PTE_PCD | X86_PTE_PWT | X86_PTE_RW))
                              | (HCPhys & X86_PTE_PAE_PG_MASK);
@@ -1464,6 +1464,7 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorker)(PVM pVM, PSHWPTE pPteDst, GSTPDE P
                     PteDst.n.u1Present = 1;
                     PteDst.n.u1Write   = 1;
                     PteDst.n.u1Execute = 1;
+                    /* PteDst.n.u1Big = 0 */
 #else
                     PteDst.u = (PteSrc.u & ~(X86_PTE_PAE_PG_MASK | X86_PTE_AVL_MASK | X86_PTE_PAT | X86_PTE_PCD | X86_PTE_PWT))
                              | (HCPhys & X86_PTE_PAE_PG_MASK);
