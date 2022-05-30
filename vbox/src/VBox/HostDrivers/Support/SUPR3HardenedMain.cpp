@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 16053 2009-01-19 18:48:32Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 16067 2009-01-20 07:52:25Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -133,7 +133,7 @@ static uid_t g_uid;
 /** The real GID at startup. */
 static gid_t g_gid;
 # ifdef RT_OS_LINUX
-static __u32 g_uCaps;
+static uint32_t g_uCaps;
 # endif
 #endif
 
