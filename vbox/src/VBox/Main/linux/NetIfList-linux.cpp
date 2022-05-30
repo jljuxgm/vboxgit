@@ -1,4 +1,4 @@
-/* $Id: NetIfList-linux.cpp 16251 2009-01-27 09:13:47Z vboxsync $ */
+/* $Id: NetIfList-linux.cpp 16968 2009-02-20 10:20:47Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -145,7 +145,7 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
                 {
                     ComObjPtr<HostNetworkInterface> IfObj;
                     IfObj.createObject();
-                    if (SUCCEEDED(IfObj->init(Bstr(pszName), &Info)))
+                    if (SUCCEEDED(IfObj->init(Bstr(pszName), TRUE, &Info)))
                         list.push_back(IfObj);
                 }
 

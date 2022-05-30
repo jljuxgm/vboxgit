@@ -1,4 +1,4 @@
-/* $Id: NetIfList-solaris.cpp 15548 2008-12-15 21:33:35Z vboxsync $ */
+/* $Id: NetIfList-solaris.cpp 16968 2009-02-20 10:20:47Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -168,7 +168,7 @@ static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNe
                     sizeof(Info.IPv6NetMask.au8));
         }
         close(Sock);
-    }   
+    }
 
     /*
      * Construct UUID with interface name and the MAC address if available.
@@ -189,7 +189,7 @@ static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNe
 
     ComObjPtr<HostNetworkInterface> IfObj;
     IfObj.createObject();
-    if (SUCCEEDED(IfObj->init(Bstr(szNICDesc), &Info)))
+    if (SUCCEEDED(IfObj->init(Bstr(szNICDesc), TRUE, &Info)))
         pList->push_back(IfObj);
 }
 

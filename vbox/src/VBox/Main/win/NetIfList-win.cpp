@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 16967 2009-02-20 10:03:55Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 16968 2009-02-20 10:20:47Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -400,7 +400,7 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
                         Log(("vboxNetWinAddComponent: collectNetIfInfo() -> %Vrc\n", rc));
                     }
 
-                    if (SUCCEEDED (iface->init (name, &Info)))
+                    if (SUCCEEDED (iface->init (name, TRUE, &Info)))
                         list.push_back (iface);
                 }
             }

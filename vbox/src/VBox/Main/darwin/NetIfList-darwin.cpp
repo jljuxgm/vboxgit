@@ -1,4 +1,4 @@
-/* $Id: NetIfList-darwin.cpp 15548 2008-12-15 21:33:35Z vboxsync $ */
+/* $Id: NetIfList-darwin.cpp 16968 2009-02-20 10:20:47Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -125,7 +125,7 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
 
         ComObjPtr<HostNetworkInterface> IfObj;
         IfObj.createObject();
-        if (SUCCEEDED(IfObj->init(Bstr(pEtherNICs->szName), pNew)))
+        if (SUCCEEDED(IfObj->init(Bstr(pEtherNICs->szName), TRUE, pNew)))
             list.push_back(IfObj);
         RTMemFree(pNew);
 
