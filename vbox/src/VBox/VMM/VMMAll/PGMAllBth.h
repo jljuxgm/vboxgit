@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: PGMAllBth.h 12994 2008-10-06 08:46:51Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2301,11 +2301,7 @@ PGM_BTH_DECL(int, SyncPT)(PVM pVM, unsigned iPDSrc, PGSTPD pPDSrc, RTGCUINTPTR G
     PX86PDPAE       pPDDst;
     PX86PDPT        pPdptDst;
     rc = PGMShwGetLongModePDPtr(pVM, GCPtrPage, &pPdptDst, &pPDDst);
-    if (rc != VINF_SUCCESS)
-    {
-        AssertRC(rc);
-        return rc;
-    }
+    AssertRCReturn(rc, rc);
     Assert(pPDDst);
 # endif
 
