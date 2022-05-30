@@ -1,5 +1,5 @@
 /*
- * $Id: picturestr.h,v 1.15 2005/12/09 18:35:21 ajax Exp $
+ * $Id: picturestr.h 17233 2009-03-02 10:37:38Z vboxsync $
  *
  * Copyright © 2000 SuSE, Inc.
  *

@@ -1,5 +1,5 @@
 /*
- * $Id$
+ * $Id: damagestr.h 17233 2009-03-02 10:37:38Z vboxsync $
  *
  * Copyright © 2003 Keith Packard
  *

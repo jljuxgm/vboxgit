@@ -1,5 +1,5 @@
 /*
- * $Id: composite.h,v 1.2 2004/07/31 06:16:50 anholt Exp $
+ * $Id: composite.h 17233 2009-03-02 10:37:38Z vboxsync $
  *
  * Copyright © 2003 Keith Packard
  *
