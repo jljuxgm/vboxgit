@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 17284 2009-03-03 14:33:35Z vboxsync $ */
+/* $Id: VMMInternal.h 17546 2009-03-09 02:29:49Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -282,7 +282,7 @@ typedef struct VMM
     /** Buffer for storing the standard assertion message for a ring-0 assertion.
      * Used for saving the assertion message text for the release log and guru
      * meditation dump. */
-    char                        szRing0AssertMsg1[256];
+    char                        szRing0AssertMsg1[512];
     /** Buffer for storing the custom message for a ring-0 assertion. */
     char                        szRing0AssertMsg2[256];
 
