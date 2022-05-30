@@ -1,4 +1,4 @@
-; $Id: AMD64andLegacy.mac 14167 2008-11-13 12:31:38Z vboxsync $
+; $Id: AMD64andLegacy.mac 14254 2008-11-17 13:44:51Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for AMD64 to PAE and 32-bit.
 ;
@@ -932,6 +932,12 @@ dq 0ffffffffffffffffh
 ALIGNCODE(16)
 GLOBALNAME HCExitTarget
     DEBUG_CHAR('9')
+
+    ; Clear high dword of the CPUM pointer
+    and     rdx, 0ffffffffh
+
+    ; Load the CPUMCPU offset.
+    mov     r8, [rdx + CPUM.ulOffCPUMCPU]
 
     ; load final cr3
     mov     rsi, [rdx + r8 + CPUMCPU.Host.cr3]
