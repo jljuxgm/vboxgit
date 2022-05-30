@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 14411 2008-11-20 13:26:47Z vboxsync $
+; $Id: CPUMInternal.mac 14785 2008-11-28 15:11:20Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -406,7 +406,7 @@ struc CPUMCPU
     .fUseFlags            resd    1
     .fChanged             resd    1
     .ulOffCPUM            resd    1
-    .uPadding             resd    1    
+    .u32RetCode           resd    1    
 endstruc
 
 

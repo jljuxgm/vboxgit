@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 14766 2008-11-28 09:44:48Z vboxsync $
+# $Id: Makefile.kmk 14785 2008-11-28 15:11:20Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -335,6 +335,7 @@ VMMGC_SOURCES   = \
 	VMMAll/CPUMAllRegs.cpp \
 	VMMAll/CPUMAllA.asm \
 	VMMAll/DBGFAll.cpp \
+	VMMGC/HWACCMGCA.asm \
 	VMMAll/IOMAll.cpp \
 	VMMAll/IOMAllMMIO.cpp \
 	VMMAll/EMAll.cpp \
