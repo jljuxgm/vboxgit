@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: USBControllerImpl.h 15157 2008-12-09 11:39:21Z vboxsync $ */
 
 /** @file
  *
@@ -115,8 +115,6 @@ public:
     bool rollback();
     void commit();
     void copyFrom (USBController *aThat);
-
-    HRESULT onMachineRegistered (BOOL aRegistered);
 
 #ifdef VBOX_WITH_USB
     HRESULT onDeviceFilterChange (USBDeviceFilter *aFilter,
