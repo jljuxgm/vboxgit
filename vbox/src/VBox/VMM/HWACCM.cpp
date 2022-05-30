@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 12061 2008-09-03 15:37:33Z vboxsync $ */
+/* $Id: HWACCM.cpp 12078 2008-09-04 08:44:04Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -509,6 +509,11 @@ HWACCMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
             LogRel(("HWACCM: MSR_IA32_VMX_CR4_FIXED0       = %VX64\n", pVM->hwaccm.s.vmx.msr.vmx_cr4_fixed0));
             LogRel(("HWACCM: MSR_IA32_VMX_CR4_FIXED1       = %VX64\n", pVM->hwaccm.s.vmx.msr.vmx_cr4_fixed1));
             LogRel(("HWACCM: MSR_IA32_VMX_VMCS_ENUM        = %VX64\n", pVM->hwaccm.s.vmx.msr.vmx_vmcs_enum));
+
+            LogRel(("HWACCM: VMCS physaddr                 = %VHp\n", pVM->hwaccm.s.vmx.pVMCSPhys));
+            LogRel(("HWACCM: Real mode TSS physaddr        = %VHp\n", pVM->hwaccm.s.vmx.pRealModeTSSPhys));
+            LogRel(("HWACCM: TPR shadow physaddr           = %VHp\n", pVM->hwaccm.s.vmx.pAPICPhys));
+            LogRel(("HWACCM: MSR bitmap physaddr           = %VHp\n", pVM->hwaccm.s.vmx.pMSRBitmapPhys));
 
             /* Only try once. */
             pVM->hwaccm.s.fInitialized = true;
