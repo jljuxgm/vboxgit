@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 17146 2009-02-26 09:23:27Z vboxsync $ */
+/* $Id: PGMAllBth.h 17206 2009-02-27 13:49:54Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -81,7 +81,7 @@ __END_DECLS
  */
 PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault)
 {
-# if defined(IN_RC) && defined(VBOX_WITH_PGMPOOL_PAGING_ONLY)
+# if defined(IN_RC) && defined(VBOX_WITH_PGMPOOL_PAGING_ONLY) && defined(VBOX_STRICT)
     PGMDynCheckLocks(pVM);
 # endif
 
