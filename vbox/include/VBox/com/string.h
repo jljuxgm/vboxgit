@@ -1,4 +1,4 @@
-/* $Id: string.h 17972 2009-03-16 19:30:47Z vboxsync $ */
+/* $Id: string.h 17973 2009-03-16 19:35:42Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -478,7 +478,7 @@ public:
         if (length() < that.length())
             return false;
 
-        int l = length() - that.length();
+        size_t l = length() - that.length();
         if (cs == CaseSensitive)
             return ::RTStrCmp(&str[l], that.str) == 0;
         else
