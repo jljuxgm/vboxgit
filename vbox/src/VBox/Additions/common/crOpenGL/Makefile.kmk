@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17751 2009-03-12 14:19:24Z vboxsync $
+# $Id: Makefile.kmk 17944 2009-03-16 15:13:52Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest OpenGL part
 #
@@ -63,6 +63,7 @@ VBoxOGL_INCS.linux     = \
 	$(VBOX_PATH_X11_ROOT)/compositeproto-0.4 \
 	$(VBOX_PATH_X11_ROOT)/fixesproto-4.0 \
 	$(VBOX_PATH_X11_ROOT)/libx11-1.1.5-other \
+    $(VBOX_PATH_X11_ROOT)/1.3/xorg \
 	$(VBOX_PATH_MESA_SOURCE) \
 	$(VBOX_PATH_MESA_SOURCE)/include \
 	$(VBOX_PATH_MESA_SOURCE)/src/mesa/ \
