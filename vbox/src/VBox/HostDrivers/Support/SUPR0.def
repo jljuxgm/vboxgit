@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 12479 2008-09-16 09:14:29Z vboxsync $
+; $Id: SUPR0.def 12492 2008-09-16 15:11:03Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Built-in exports.
 ;
@@ -114,9 +114,6 @@ EXPORTS
     RTLogPrintfV
     AssertMsg1
     AssertMsg2
-    RTStrPrintf
-    RTStrPrintfV
-    
 
     ; data
     g_SUPGlobalInfoPage DATA

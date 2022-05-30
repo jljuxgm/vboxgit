@@ -1,4 +1,4 @@
-/* $Revision: 12479 $ */
+/* $Revision: 12492 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -386,8 +386,6 @@ static SUPFUNC g_aFunctions[] =
     { "RTLogPrintfV",                           (void *)UNWIND_WRAP(RTLogPrintfV) },
     { "AssertMsg1",                             (void *)UNWIND_WRAP(AssertMsg1) },
     { "AssertMsg2",                             (void *)AssertMsg2 }, /** @todo replace this by RTAssertMsg2V */
-    { "RTStrPrintf",                            (void *)RTStrPrintf }, 
-    { "RTStrPrintfV",                           (void *)RTStrPrintfV }, 
 };
 
 
