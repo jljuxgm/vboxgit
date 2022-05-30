@@ -1,4 +1,4 @@
-# $Id: Config.kmk 13580 2008-10-27 14:04:18Z vboxsync $
+# $Id: Config.kmk 13608 2008-10-28 10:45:15Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1685,7 +1685,7 @@ if1of ($(KBUILD_TARGET), linux solaris)
 endif
 
 SDK_VBOX_FFMPEG       = .
-if1of ($(KBUILD_TARGET), win os2 darwin)
+if1of ($(KBUILD_TARGET), win os2 darwin linux)
  SDK_VBOX_FFMPEG_INCS ?= \
 	$(PATH_ROOT)/src/libs/ffmpeg-20060710/libavutil \
 	$(PATH_ROOT)/src/libs/ffmpeg-20060710/libavcodec \
@@ -3568,7 +3568,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13580 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13608 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
