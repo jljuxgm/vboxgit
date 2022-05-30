@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16875 2009-02-17 21:15:53Z vboxsync $
+# $Id: Makefile.kmk 17254 2009-03-02 15:36:48Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox HGCM Service.
 #
@@ -70,10 +70,10 @@ VBoxSharedCrOpenGL_SOURCES = \
 VBoxSharedCrOpenGL_LDFLAGS.darwin = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxSharedCrOpenGL.dylib
 VBoxSharedCrOpenGL_LIBS = \
 	$(PATH_LIB)/VBoxOGLcrserverlib$(VBOX_SUFF_LIB) \
-	$(PATH_LIB)/VBoxOGLhostcrpacker$(VBOX_SUFF_LIB) \
 	$(PATH_LIB)/VBoxOGLhostcrstate$(VBOX_SUFF_LIB) \
-	$(PATH_LIB)/VBoxOGLhostspuload$(VBOX_SUFF_LIB) \
 	$(PATH_LIB)/VBoxOGLcrunpacker$(VBOX_SUFF_LIB) \
+	$(PATH_LIB)/VBoxOGLhostcrpacker$(VBOX_SUFF_LIB) \
+	$(PATH_LIB)/VBoxOGLhostspuload$(VBOX_SUFF_LIB) \
 	$(VBOX_LIB_OGL_HOSTCRUTIL) \
 	$(LIB_RUNTIME) \
 	$(LIB_VMM)
