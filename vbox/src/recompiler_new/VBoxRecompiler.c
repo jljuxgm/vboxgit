@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 14969 2008-12-04 10:57:17Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 14974 2008-12-04 12:45:43Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -637,8 +637,7 @@ REMR3DECL(int) REMR3Step(PVM pVM)
         rc = VINF_EM_DBG_STEPPED;
     }
     else
-    {
-        AssertMsgFailed(("Damn, this shouldn't happen! cpu_exec returned %d while singlestepping\n", rc));
+    {        
         switch (rc)
         {
             case EXCP_INTERRUPT:    rc = VINF_SUCCESS; break;
@@ -1403,7 +1402,8 @@ void* remR3GCPhys2HCVirt(CPUState *env1, target_ulong physAddr, target_ulong vir
 
     if (rc == VERR_PGM_PHYS_PAGE_RESERVED)
     {
-      return (void*)-1;
+        rv = (void*)((uintptr_t)rv | 1);
+        rc = 0;
     }
     Assert (RT_SUCCESS(rc));
 
