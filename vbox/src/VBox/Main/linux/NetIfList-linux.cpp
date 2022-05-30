@@ -1,4 +1,4 @@
-/* $Id: NetIfList-linux.cpp 17275 2009-03-03 13:28:12Z vboxsync $ */
+/* $Id: NetIfList-linux.cpp 17358 2009-03-04 17:42:18Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -158,4 +158,17 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
     return rc;
 }
 
+int NetIfEnableStaticIpConfig(HostNetworkInterface * pIf, ULONG ip, ULONG mask, ULONG gw)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
 
+int NetIfEnableStaticIpConfigV6(HostNetworkInterface * pIf, IN_BSTR aIPV6Address, ULONG aIPV6MaskPrefixLength, IN_BSTR aIPV6DefaultGateway)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+int NetIfEnableDynamicIpConfig(HostNetworkInterface * pIf)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
