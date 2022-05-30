@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 14494 2008-11-23 22:49:36Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 14504 2008-11-24 03:10:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -313,9 +313,8 @@ VMMR0DECL(void) PGMR0DynMapTerm(void)
  */
 VMMR0DECL(int) PGMR0DynMapInitVM(PVM pVM)
 {
-#ifndef DEBUG_bird
-    return VINF_SUCCESS;
-#else
+    AssertMsgReturn(!pVM->pgm.s.pvR0DynMapUsed, ("%p (pThis=%p)\n", pVM->pgm.s.pvR0DynMapUsed, g_pPGMR0DynMap), VERR_WRONG_ORDER);
+
     /*
      * Initialize the auto sets.
      */
@@ -336,8 +335,6 @@ VMMR0DECL(int) PGMR0DynMapInitVM(PVM pVM)
     /*
      * Do we need the cache? Skip the last bit if we don't.
      */
-    Assert(!pVM->pgm.s.pvR0DynMapUsed);
-    pVM->pgm.s.pvR0DynMapUsed = NULL;
     if (!HWACCMIsEnabled(pVM))
         return VINF_SUCCESS;
 
@@ -362,7 +359,6 @@ VMMR0DECL(int) PGMR0DynMapInitVM(PVM pVM)
     RTSemFastMutexRelease(pThis->hInitLock);
 
     return rc;
-#endif
 }
 
 
@@ -373,7 +369,6 @@ VMMR0DECL(int) PGMR0DynMapInitVM(PVM pVM)
  */
 VMMR0DECL(void) PGMR0DynMapTermVM(PVM pVM)
 {
-#ifdef DEBUG_bird
     /*
      * Return immediately if we're not using the cache.
      */
@@ -441,7 +436,6 @@ VMMR0DECL(void) PGMR0DynMapTermVM(PVM pVM)
         AssertLogRelMsgFailed(("pvR0DynMapUsed=%p pThis=%p\n", pVM->pgm.s.pvR0DynMapUsed, pThis));
 
     RTSemFastMutexRelease(pThis->hInitLock);
-#endif
 }
 
 
