@@ -1,4 +1,4 @@
-/* $Id: DynLoadLibSolaris.h 12866 2008-10-01 13:50:12Z vboxsync $ */
+/* $Id: DynLoadLibSolaris.h 13054 2008-10-07 15:18:18Z vboxsync $ */
 /** @file
  * Dynamically loaded libraries for Solaris hosts, Internal header.
  */
@@ -24,6 +24,8 @@
 
 #define LIB_DLPI "libdlpi.so"
 #include <libdlpi.h>
+
+typedef boolean_t dlpi_walkfunc_t(const char*, void *);
 
 extern int (*g_pfnLibDlpiWalk)(dlpi_walkfunc_t *, void *, uint_t);
 
