@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 17669 2009-03-11 09:56:29Z vboxsync $ */
+/* $Id: MachineImpl.h 17673 2009-03-11 10:32:44Z vboxsync $ */
 
 /** @file
  *
@@ -569,7 +569,7 @@ public:
     STDMETHOD(SetGuestPropertyValue) (IN_BSTR aName, IN_BSTR aValue);
     STDMETHOD(EnumerateGuestProperties) (IN_BSTR aPattern, ComSafeArrayOut(BSTR, aNames), ComSafeArrayOut(BSTR, aValues), ComSafeArrayOut(ULONG64, aTimestamps), ComSafeArrayOut(BSTR, aFlags));
     STDMETHOD(GetHardDiskAttachmentsOfController)(IN_BSTR aName, ComSafeArrayOut (IHardDiskAttachment *, aAttachments));
-    STDMETHOD(AddStorageController) (IN_BSTR aName, StorageControllerType_T controllerType);
+    STDMETHOD(AddStorageController) (IN_BSTR aName, StorageBus_T aConnectionType);
     STDMETHOD(RemoveStorageController (IN_BSTR aName));
     STDMETHOD(GetStorageControllerByName (IN_BSTR aName, IStorageController **storageController));
 
