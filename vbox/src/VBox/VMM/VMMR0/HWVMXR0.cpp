@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13120 2008-10-09 11:14:16Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13123 2008-10-09 11:25:59Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1540,6 +1540,7 @@ static void VMXR0SetupTLBEPT(PVM pVM)
         Assert(!pCpu->fFlushTLB);
 
     pVM->hwaccm.s.idLastCpu = pCpu->idCpu;
+    pCpu->fFlushTLB         = false;
 
     if (pVM->hwaccm.s.fForceTLBFlush)
         VMXR0FlushEPT(pVM, pVM->hwaccm.s.vmx.enmFlushContext, 0);
