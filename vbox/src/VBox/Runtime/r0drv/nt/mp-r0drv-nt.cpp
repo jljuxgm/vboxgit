@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 9609 2008-06-11 13:05:24Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 13272 2008-10-15 00:23:56Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -86,6 +86,7 @@ RTDECL(RTCPUID) RTMpCpuIdFromSetIndex(int iCpu)
 
 RTDECL(RTCPUID) RTMpGetMaxCpuId(void)
 {
+    /** @todo use KeQueryMaximumProcessorCount on vista+ */
     return MAXIMUM_PROCESSORS - 1;
 }
 
@@ -107,21 +108,24 @@ RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
 RTDECL(bool) RTMpIsCpuPossible(RTCPUID idCpu)
 {
     /* Cannot easily distinguish between online and offline cpus. */
-    /** @todo online/present cpu stuff must be corrected for proper W2K8 support. */
+    /** @todo online/present cpu stuff must be corrected for proper W2K8 support
+     *        (KeQueryMaximumProcessorCount). */
     return RTMpIsCpuOnline(idCpu);
 }
 
 
 RTDECL(PRTCPUSET) RTMpGetSet(PRTCPUSET pSet)
 {
-    /** @todo online/present cpu stuff must be corrected for proper W2K8 support. */
+    /** @todo online/present cpu stuff must be corrected for proper W2K8 support
+     *        (KeQueryMaximumProcessorCount). */
     return RTMpGetOnlineSet(pSet);
 }
 
 
 RTDECL(RTCPUID) RTMpGetCount(void)
 {
-    /** @todo online/present cpu stuff must be corrected for proper W2K8 support. */
+    /** @todo online/present cpu stuff must be corrected for proper W2K8 support
+     *        (KeQueryMaximumProcessorCount). */
     return RTMpGetOnlineCount();
 }
 
