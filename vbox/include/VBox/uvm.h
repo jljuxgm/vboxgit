@@ -1,4 +1,4 @@
-/* $Id: uvm.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: uvm.h 13751 2008-11-03 14:53:11Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -34,6 +34,14 @@
 
 
 #include <VBox/types.h>
+
+/**
+ * Per virtual CPU ring-3 (user mode) data.
+ */
+typedef struct UVMCPU
+{
+    uint32_t     uFiller;
+} UVMCPU;
 
 /**
  * The ring-3 (user mode) VM structure.
@@ -93,6 +101,8 @@ typedef struct UVM
         uint8_t                 padding[256];
     } stam;
 
+    /* Per virtual CPU data. */
+    UVMCPU                      aCpu[1];
 } UVM;
 
 /** The UVM::u32Magic value (Brad Mehldau). */
