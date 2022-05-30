@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 15303 2008-12-11 13:31:00Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 15305 2008-12-11 15:31:29Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1943,6 +1943,16 @@ static void remUnloadLinuxObj(void)
 #endif
 
 #ifdef VBOX_USE_BITNESS_SELECTOR
+static bool isRem64Needed(PVM pVM)
+{
+    PCFGMNODE pRoot = CFGMR3GetRoot(pVM);
+    uint64_t u64Value = 0;
+
+    CFGMR3QueryIntegerDef(pRoot, "Rem64Enabled", &u64Value, 0);
+
+    return u64Value == 1;
+}
+
 /**
  * Loads real REM object, resolves all exports (imports are done by native loader).
  *
@@ -1952,15 +1962,14 @@ static int remLoadProperObj(PVM pVM)
 {
     size_t  offFilename;
     char    szPath[RTPATH_MAX];
-    bool use64 = (VMR3GetGuestBitness(pVM) == 64);
-    int rc = RTPathAppPrivateArch(szPath, sizeof(szPath) - 32);
+    int     rc = RTPathAppPrivateArch(szPath, sizeof(szPath) - 32);
     AssertRCReturn(rc, rc);
     offFilename = strlen(szPath);
 
     /*
      * Load the VBoxREM32/64 object/DLL.
      */
-    strcpy(&szPath[offFilename], use64 ? "/VBoxREM64" : "/VBoxREM32");
+    strcpy(&szPath[offFilename], isRem64Needed(pVM) ? "/VBoxREM64" : "/VBoxREM32");
     rc = RTLdrLoad(szPath, &g_ModREM2);
     if (RT_SUCCESS(rc))
     {
