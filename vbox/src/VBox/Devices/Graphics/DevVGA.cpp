@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 11536 2008-08-21 14:47:35Z vboxsync $ */
+/* $Id: DevVGA.cpp 12772 2008-09-26 16:13:09Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3215,7 +3215,7 @@ PDMBOTHCBDECL(int) vgaMMIOFill(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhys
     PVGASTATE pThis = PDMINS_2_DATA(pDevIns, PVGASTATE);
     uint32_t b;
     uint32_t write_mask, bit_mask, set_mask;
-    uint32_t aVal[4]; /** @todo r=bird: Why is this an 32-bit array? */
+    uint32_t aVal[4];
     unsigned i;
     NOREF(pvUser);
     for (i = 0; i < cbItem; i++)
