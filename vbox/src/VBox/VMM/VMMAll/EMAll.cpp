@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 15421 2008-12-13 07:23:07Z vboxsync $ */
+/* $Id: EMAll.cpp 15426 2008-12-13 09:38:42Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1354,6 +1354,17 @@ static int emInterpretStosWD(PVM pVM, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame,
     {
         if (!cTransfers)
             return VINF_SUCCESS;
+
+        /* Do *not* try emulate cross page stuff here, this also fends off big copies which
+           would kill PGMR0DynMap. */
+        if (    cbSize > PAGE_SIZE
+            ||  cTransfers > PAGE_SIZE
+            ||  (GCDest >> PAGE_SHIFT) != ((GCDest + offIncrement * cTransfers) >> PAGE_SHIFT))
+        {
+            Log(("STOSWD is crosses pages, chicken out to the recompiler; GCDest=%RGv cbSize=%#x offIncrement=%d cTransfers=%#x\n",
+                 GCDest, cbSize, offIncrement, cTransfers));
+            return VERR_EM_INTERPRETER;
+        }
 
         LogFlow(("emInterpretStosWD dest=%04X:%RGv (%RGv) cbSize=%d cTransfers=%x DF=%d\n", pRegFrame->es, GCOffset, GCDest, cbSize, cTransfers, pRegFrame->eflags.Bits.u1DF));
         /* Access verification first; we currently can't recover properly from traps inside this instruction */
