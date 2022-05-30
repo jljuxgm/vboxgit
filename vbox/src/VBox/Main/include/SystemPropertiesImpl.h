@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 14224 2008-11-14 16:17:20Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 14225 2008-11-14 17:55:28Z vboxsync $ */
 
 /** @file
  *
@@ -94,6 +94,11 @@ public:
 
     HRESULT loadSettings (const settings::Key &aGlobal);
     HRESULT saveSettings (settings::Key &aGlobal);
+
+    ComObjPtr <HardDiskFormat> hardDiskFormat (const BSTR aFormat);
+
+    // public methods for internal purposes only
+    // (ensure there is a caller and a read lock before calling them!)
 
     /** Default Machine path (as is, not full). Not thread safe (use object lock). */
     const Bstr &defaultMachineFolder() const { return mDefaultMachineFolder; }

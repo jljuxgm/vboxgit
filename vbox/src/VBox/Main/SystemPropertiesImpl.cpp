@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 14224 2008-11-14 16:17:20Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 14225 2008-11-14 17:55:28Z vboxsync $ */
 
 /** @file
  *
@@ -599,6 +599,38 @@ HRESULT SystemProperties::saveSettings (settings::Key &aGlobal)
     properties.setValue <ULONG> ("LogHistoryCount", mLogHistoryCount);
 
     return S_OK;
+}
+
+/**
+ * Rerurns a hard disk format object corresponding to the given format
+ * identifier or null if no such format.
+ *
+ * @param aFormat   Format identifier.
+ *
+ * @return ComObjPtr<HardDiskFormat>
+ */
+ComObjPtr <HardDiskFormat> SystemProperties::hardDiskFormat (const BSTR aFormat)
+{
+    ComObjPtr <HardDiskFormat> format;
+
+    AutoCaller autoCaller (this);
+    AssertComRCReturn (autoCaller.rc(), format);
+
+    AutoReadLock alock (this);
+
+    for (HardDiskFormatList::const_iterator it = mHardDiskFormats.begin();
+         it != mHardDiskFormats.end(); ++ it)
+    {
+        /* HardDiskFormat is all const, no need to lock */
+
+        if ((*it)->id() == aFormat)
+        {
+            format = *it;
+            break;
+        }
+    }
+
+    return format;
 }
 
 // private methods
