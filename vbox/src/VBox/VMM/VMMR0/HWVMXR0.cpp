@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13343 2008-10-16 15:01:44Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13351 2008-10-16 16:36:27Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2533,7 +2533,7 @@ ResumeExecution:
         case VMX_EXIT_QUALIFICATION_CRX_ACCESS_LMSW:
             Log2(("VMX: lmsw %x\n", VMX_EXIT_QUALIFICATION_CRX_LMSW_DATA(exitQualification)));
             STAM_COUNTER_INC(&pVM->hwaccm.s.StatExitLMSW);
-            rc = EMInterpretLMSW(pVM, VMX_EXIT_QUALIFICATION_CRX_LMSW_DATA(exitQualification));
+            rc = EMInterpretLMSW(pVM, CPUMCTX2CORE(pCtx), VMX_EXIT_QUALIFICATION_CRX_LMSW_DATA(exitQualification));
             pVM->hwaccm.s.fContextUseFlags |= HWACCM_CHANGED_GUEST_CR0;
             break;
         }
