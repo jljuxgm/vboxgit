@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 16592 2009-02-09 14:58:51Z vboxsync $ */
+/* $Id: PGMAllBth.h 16593 2009-02-09 15:07:28Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3274,7 +3274,7 @@ PGM_BTH_DECL(int, SyncCR3)(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bo
 
 # ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     /* Nothing to do when mappings are fixed. */
-    if (!pVM->pgm.s.fMappingsFixed)
+    if (pVM->pgm.s.fMappingsFixed)
         return VINF_SUCCESS;
 # endif
 
