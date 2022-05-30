@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 16298 2009-01-28 11:35:52Z vboxsync $ */
+/* $Id: ApplianceImpl.h 16309 2009-01-28 13:42:36Z vboxsync $ */
 
 /** @file
  *
@@ -149,8 +149,13 @@ public:
 
     /* private instance data */
 private:
-    void addEntry(VirtualSystemDescriptionType_T aType, std::string aRef, std::string aOrigValue, std::string aAutoValue, std::string aConfig = "");
-    std::list<VirtualSystemDescriptionEntry> findByType(VirtualSystemDescriptionType_T aType);
+    void addEntry(VirtualSystemDescriptionType_T aType,
+                  const std::string &aRef,
+                  const std::string &aOrigValue,
+                  const std::string &aAutoValue,
+                  const std::string &aConfig = "");
+
+    std::list<VirtualSystemDescriptionEntry*> findByType(VirtualSystemDescriptionType_T aType);
 
     struct Data;
     Data *m;
