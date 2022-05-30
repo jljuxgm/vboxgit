@@ -1,4 +1,4 @@
-/* $Id: PGMPhysRWTmpl.h 13060 2008-10-08 07:42:06Z vboxsync $ */
+/* $Id: PGMPhysRWTmpl.h 13146 2008-10-09 22:58:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Access Template.
  */
@@ -23,7 +23,7 @@
 /**
  * Read physical memory. (one byte/word/dword)
  *
- * This API respects access handlers and MMIO. Use PGMPhysReadGCPhys() if you
+ * This API respects access handlers and MMIO. Use PGMPhysSimpleReadGCPhys() if you
  * want to ignore those.
  *
  * @param   pVM             VM Handle.
@@ -64,7 +64,7 @@ VMMDECL(PGMPHYS_DATATYPE) PGMPHYSFN_READNAME(PVM pVM, RTGCPHYS GCPhys)
 /**
  * Write to physical memory. (one byte/word/dword)
  *
- * This API respects access handlers and MMIO. Use PGMPhysReadGCPhys() if you
+ * This API respects access handlers and MMIO. Use PGMPhysSimpleReadGCPhys() if you
  * want to ignore those.
  *
  * @param   pVM             VM Handle.

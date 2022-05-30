@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 13100 2008-10-08 17:33:04Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 13146 2008-10-09 22:58:12Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -897,7 +897,7 @@ DECLINLINE(int) pgmPoolAccessHandlerSTOSD(PVM pVM, PPGMPOOL pPool, PPGMPOOLPAGE 
 #ifdef IN_GC
         *(uint32_t *)pu32 = pRegFrame->eax;
 #else
-        PGMPhysWriteGCPhys(pVM, GCPhysFault, &pRegFrame->eax, 4);
+        PGMPhysSimpleWriteGCPhys(pVM, GCPhysFault, &pRegFrame->eax, 4);
 #endif
         pu32           += 4;
         GCPhysFault    += 4;

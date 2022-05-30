@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 13146 2008-10-09 22:58:12Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -257,7 +257,7 @@ DECLINLINE(int) iomRamRead(PVM pVM, void *pDest, RTGCPTR GCSrc, uint32_t cb)
 #ifdef IN_GC
     return MMGCRamReadNoTrapHandler(pDest, (void *)GCSrc, cb);
 #else
-    return PGMPhysReadGCPtrSafe(pVM, pDest, GCSrc, cb);
+    return PGMPhysReadGCPtr(pVM, pDest, GCSrc, cb);
 #endif
 }
 
@@ -268,7 +268,7 @@ DECLINLINE(int) iomRamWrite(PVM pVM, RTGCPTR GCDest, void *pSrc, uint32_t cb)
 #ifdef IN_GC
     return MMGCRamWriteNoTrapHandler((void *)GCDest, pSrc, cb);
 #else
-    return PGMPhysWriteGCPtrSafe(pVM, GCDest, pSrc, cb);
+    return PGMPhysWriteGCPtr(pVM, GCDest, pSrc, cb);
 #endif
 }
 

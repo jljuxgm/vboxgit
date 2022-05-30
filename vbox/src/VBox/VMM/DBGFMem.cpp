@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 13144 2008-10-09 22:44:11Z vboxsync $ */
+/* $Id: DBGFMem.cpp 13146 2008-10-09 22:58:12Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -144,7 +144,7 @@ static DECLCALLBACK(int) dbgfR3MemRead(PVM pVM, PCDBGFADDRESS pAddress, void *pv
     if (    enmMode == PGMMODE_REAL
         ||  enmMode == PGMMODE_PROTECTED
         ||  DBGFADDRESS_IS_PHYS(pAddress) )
-        rc = PGMPhysReadGCPhys(pVM, pvBuf, pAddress->FlatPtr, cbRead);
+        rc = PGMPhysSimpleReadGCPhys(pVM, pvBuf, pAddress->FlatPtr, cbRead);
     else
         rc = PGMPhysSimpleReadGCPtr(pVM, pvBuf, pAddress->FlatPtr, cbRead);
     return rc;
@@ -202,7 +202,7 @@ static DECLCALLBACK(int) dbgfR3MemReadString(PVM pVM, PCDBGFADDRESS pAddress, ch
     if (    enmMode == PGMMODE_REAL
         ||  enmMode == PGMMODE_PROTECTED
         ||  DBGFADDRESS_IS_PHYS(pAddress) )
-        rc = PGMPhysReadGCPhys(pVM, pszBuf, pAddress->FlatPtr, cchBuf);
+        rc = PGMPhysSimpleReadGCPhys(pVM, pszBuf, pAddress->FlatPtr, cchBuf);
     else
         rc = PGMPhysSimpleReadGCPtr(pVM, pszBuf, pAddress->FlatPtr, cchBuf);
 

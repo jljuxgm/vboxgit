@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 13107 2008-10-09 08:57:05Z vboxsync $ */
+/* $Id: PGM.cpp 13146 2008-10-09 22:58:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -228,7 +228,7 @@
  * unnecessary modifications.
  *
  * Allocation points:
- *      - PGMPhysWriteGCPhys and PGMPhysWrite.
+ *      - PGMPhysSimpleWriteGCPhys and PGMPhysWrite.
  *      - Replacing a zero page mapping at \#PF.
  *      - Replacing a shared page mapping at \#PF.
  *      - ROM registration (currently MMR3RomRegister).
