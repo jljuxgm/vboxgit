@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13909 2008-11-06 12:24:12Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13912 2008-11-06 12:37:29Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -425,10 +425,6 @@ typedef struct HWACCMCPU
         DECLR0CALLBACKMEMBER(int, pfnVMRun,(RTHCPHYS pVMCBHostPhys, RTHCPHYS pVMCBPhys, PCPUMCTX pCtx));
 
     } svm;
-
-#if HC_ARCH_BITS == 32
-    uint32_t                        Alignment;
-#endif
 
     /** Event injection state. */
     struct
