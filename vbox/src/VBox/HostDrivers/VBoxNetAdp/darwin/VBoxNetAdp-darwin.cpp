@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 16960 2009-02-19 22:13:33Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 16976 2009-02-20 16:58:33Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -597,7 +597,7 @@ int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMACAddress)
     mac.sdl_nlen = 0;
     mac.sdl_slen = 0;
     memcpy(LLADDR(&mac), pMACAddress->au8, mac.sdl_alen);
-    
+
     vboxNetAdpDarwinComposeUUID(pThis, &uuid);
     Params.uniqueid = uuid.au8;
     Params.uniqueid_len = sizeof(uuid);
@@ -612,7 +612,7 @@ int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMACAddress)
     Params.check_multi = ether_check_multi;
     Params.framer = ether_frameout;
     Params.softc = pThis;
-    Params.ioctl = ether_ioctl;
+    Params.ioctl = (ifnet_ioctl_func)ether_ioctl;
     Params.set_bpf_tap = NULL;
     Params.detach = vboxNetAdpDarwinDetach;
     Params.event = NULL;
