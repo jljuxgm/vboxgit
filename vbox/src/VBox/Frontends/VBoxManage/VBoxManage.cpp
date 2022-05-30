@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 17033 2009-02-23 20:12:10Z vboxsync $ */
+/* $Id: VBoxManage.cpp 17079 2009-02-24 16:59:51Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1815,7 +1815,7 @@ static int handleSnapshot(HandlerArg *a)
             /* get the machine of the given snapshot */
             ComPtr<IMachine> machine;
             snapshot->COMGETTER(Machine)(machine.asOutParam());
-            showVMInfo(a->virtualBox, machine, console);
+            showVMInfo(a->virtualBox, machine, VMINFO_NONE, console);
         }
         else
         {
@@ -3023,6 +3023,7 @@ int main(int argc, char *argv[])
         {
             handlerArg.argc = argc - iCmdArg;
             handlerArg.argv = &argv[iCmdArg];
+
             rc = commandHandlers[commandIndex].handler(&handlerArg);
             break;
         }
