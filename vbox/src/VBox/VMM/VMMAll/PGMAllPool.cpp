@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 16918 2009-02-18 15:58:38Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 16919 2009-02-18 16:00:29Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1990,7 +1990,7 @@ static int pgmPoolMonitorFlush(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
     return rc;
 }
 
-# ifdef PGMPOOL_WITH_MIXED_PT_CR3
+# if defined(PGMPOOL_WITH_MIXED_PT_CR3) && !defined(VBOX_WITH_PGMPOOL_PAGING_ONLY)
 
 /**
  * Set or clear the fCR3Mix attribute in a chain of monitored pages.
@@ -2111,7 +2111,7 @@ int pgmPoolMonitorUnmonitorCR3(PPGMPOOL pPool, uint16_t idxRoot)
     return rc;
 }
 
-# endif /* PGMPOOL_WITH_MIXED_PT_CR3 */
+# endif /* PGMPOOL_WITH_MIXED_PT_CR3 && !VBOX_WITH_PGMPOOL_PAGING_ONLY*/
 
 /**
  * Inserts the page into the list of modified pages.
