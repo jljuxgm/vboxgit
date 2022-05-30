@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17424 2009-03-05 21:04:23Z vboxsync $
+# $Id: Makefile.kmk 17826 2009-03-13 14:11:19Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxAdpCtl
 #
@@ -24,7 +24,7 @@
 SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
 
-PROGRAMS.darwin += VBoxNetAdpCtl
+PROGRAMS              += VBoxNetAdpCtl
 VBoxNetAdpCtl_TEMPLATE = VBOXR3EXE
 VBoxNetAdpCtl_SOURCES  = VBoxNetAdpCtl.cpp
 
