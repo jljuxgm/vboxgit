@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 14666 2008-11-26 23:03:23Z vboxsync $ */
+/* $Id: MachineImpl.cpp 14694 2008-11-27 10:17:51Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -500,8 +500,10 @@ HRESULT Machine::init (VirtualBox *aParent, const BSTR aConfigFile,
                     mUserData->mOSTypeId = aOsType->id();
 
                     /* Apply machine defaults */
-                    mHWData->mHWVirtExEnabled = aOsType->recommendedVirtEx() ?
-                                                TSBool_True : TSBool_False;
+                    if (aOsType->recommendedVirtEx())
+                        mHWData->mHWVirtExEnabled = TSBool_True;
+                    else
+                        mHWData->mHWVirtExEnabled = TSBool_False;
 
                     /* Apply BIOS defaults */
                     mBIOSSettings->applyDefaults (aOsType);
