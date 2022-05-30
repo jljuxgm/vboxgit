@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 16886 2009-02-18 10:16:59Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 16887 2009-02-18 10:42:49Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -283,8 +283,10 @@ void pgmMapSetShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
                     {
                         PX86PDPE pGstPdpe;
                         pGstPdpe = pgmGstGetPaePDPEPtr(&pVM->pgm.s, (iPdPt << X86_PDPT_SHIFT));
-                        AssertFatal(pGstPdpe);
-                        GstPdpe = *pGstPdpe;
+                        if (pGstPdpe)
+                            GstPdpe = *pGstPdpe;
+                        else
+                            GstPdpe.u  = X86_PDPE_P;   /* rw/us are reserved for PAE pdpte's; accessed bit causes invalid VT-x guest state errors */
                     }
                     int rc = pgmShwSyncPaePDPtr(pVM, (iPdPt << X86_PDPT_SHIFT), &GstPdpe, &pShwPaePd);
                     AssertFatal(RT_SUCCESS(rc));
