@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 13362 2008-10-17 07:40:20Z vboxsync $ */
+/* $Id: HWACCM.cpp 13434 2008-10-21 12:16:05Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -909,7 +909,13 @@ VMMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
                 || (pCtx->fs & X86_SEL_RPL)
                 || (pCtx->gs & X86_SEL_RPL)
                 || (pCtx->ss & X86_SEL_RPL))
+            {
+                /* Flush the translation blocks as code pages may have been
+                 * changed (Fedora4 boot image, reset, boot iso)
+                 */
+                EMFlushREMTBs(pVM);
                 return false;
+            }
         }
     }
 #else
