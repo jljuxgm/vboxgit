@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.h 12466 2008-09-15 15:22:01Z vboxsync $ */
+/* $Id: VBoxDbgGui.h 12469 2008-09-15 16:29:50Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -29,7 +29,11 @@
 # include <VirtualBox.h>
 #endif
 
-#include "VBoxDbgStats.h"
+#ifdef VBOXDBG_USE_QT4
+# include "VBoxDbgStatsQt4.h"
+#else
+# include "VBoxDbgStats.h"
+#endif
 #include "VBoxDbgConsole.h"
 
 
