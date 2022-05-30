@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 17238 2009-03-02 10:58:10Z vboxsync $ */
+/* $Id: HostImpl.h 17255 2009-03-02 15:42:10Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -81,7 +81,7 @@ public:
 
     // IHost properties
     STDMETHOD(COMGETTER(DVDDrives))(ComSafeArrayOut (IHostDVDDrive*, drives));
-    STDMETHOD(COMGETTER(FloppyDrives))(IHostFloppyDriveCollection **drives);
+    STDMETHOD(COMGETTER(FloppyDrives))(ComSafeArrayOut (IHostFloppyDrive*, drives));
     STDMETHOD(COMGETTER(USBDevices))(IHostUSBDeviceCollection **aUSBDevices);
     STDMETHOD(COMGETTER(USBDeviceFilters))(IHostUSBDeviceFilterCollection ** aUSBDeviceFilters);
     STDMETHOD(COMGETTER(NetworkInterfaces))(ComSafeArrayOut (IHostNetworkInterface *, aNetworkInterfaces));
@@ -111,6 +111,7 @@ public:
     STDMETHOD(RemoveUSBDeviceFilter) (ULONG aPosition, IHostUSBDeviceFilter **aFilter);
 
     STDMETHOD(FindHostDVDDrive) (IN_BSTR aName, IHostDVDDrive **aDrive);
+    STDMETHOD(FindHostFloppyDrive) (IN_BSTR aName, IHostFloppyDrive **aDrive);
     STDMETHOD(FindHostNetworkInterfaceByName) (IN_BSTR aName, IHostNetworkInterface **networkInterface);
     STDMETHOD(FindHostNetworkInterfaceById) (IN_GUID id, IHostNetworkInterface **networkInterface);
 

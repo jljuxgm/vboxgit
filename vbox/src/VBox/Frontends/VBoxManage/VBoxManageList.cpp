@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 17238 2009-03-02 10:58:10Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 17255 2009-03-02 15:42:10Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -263,17 +263,13 @@ int handleList(HandlerArg *a)
         {
             ComPtr<IHost> host;
             CHECK_ERROR(a->virtualBox, COMGETTER(Host)(host.asOutParam()));
-            ComPtr<IHostFloppyDriveCollection> coll;
-            ComPtr<IHostFloppyDriveEnumerator> enumerator;
-            CHECK_ERROR(host, COMGETTER(FloppyDrives)(coll.asOutParam()));
-            if (SUCCEEDED(rc) && coll)
+            com::SafeIfaceArray <IHostFloppyDrive> coll;
+            CHECK_ERROR(host, COMGETTER(FloppyDrives)(ComSafeArrayAsOutParam(coll)));
+            if (SUCCEEDED(rc))
             {
-                CHECK_ERROR(coll, Enumerate(enumerator.asOutParam()));
-                BOOL hasMore;
-                while (SUCCEEDED(enumerator->HasMore(&hasMore)) && hasMore)
+                for (size_t i = 0; i < coll.size(); ++i)
                 {
-                    ComPtr<IHostFloppyDrive> floppyDrive;
-                    CHECK_ERROR_BREAK(enumerator, GetNext(floppyDrive.asOutParam()));
+                    ComPtr<IHostFloppyDrive> floppyDrive = coll[i];
                     Bstr name;
                     floppyDrive->COMGETTER(Name)(name.asOutParam());
                     RTPrintf("Name:        %lS\n\n", name.raw());

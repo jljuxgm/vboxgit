@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 17238 2009-03-02 10:58:10Z vboxsync $ */
+/* $Id: VBoxManage.cpp 17255 2009-03-02 15:42:10Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -732,10 +732,11 @@ static int handleControlVM(HandlerArg *a)
             {
                 ComPtr<IHost> host;
                 CHECK_ERROR(a->virtualBox, COMGETTER(Host)(host.asOutParam()));
-                ComPtr<IHostFloppyDriveCollection> hostFloppies;
-                CHECK_ERROR(host, COMGETTER(FloppyDrives)(hostFloppies.asOutParam()));
+                com::SafeIfaceArray <IHostFloppyDrive> hostFloppies;
+                rc = host->COMGETTER(FloppyDrives)(ComSafeArrayAsOutParam(hostFloppies));
+				CheckComRCReturnRC (rc);
                 ComPtr<IHostFloppyDrive> hostFloppyDrive;
-                rc = hostFloppies->FindByName(Bstr(a->argv[2] + 5), hostFloppyDrive.asOutParam());
+                host->FindHostFloppyDrive(Bstr(a->argv[2] + 5), hostFloppyDrive.asOutParam());
                 if (!hostFloppyDrive)
                 {
                     errorArgument("Invalid host floppy drive name");
