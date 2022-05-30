@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16344 2009-01-28 21:23:06Z vboxsync $
+# $Id: Makefile.kmk 16559 2009-02-06 17:02:23Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -35,6 +35,9 @@ include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 include $(PATH_SUB_CURRENT)/Storage/testcase/Makefile.kmk
 ifndef VBOX_OSE
  include $(PATH_SUB_CURRENT)/Storage/VBoxHDDFormats/Makefile.kmk
+endif
+ifdef VBOX_WITH_EFI
+ include $(PATH_SUB_CURRENT)/EFI/Makefile.kmk
 endif
 ifdef VBOX_WITH_INTEL_PXE
  include $(PATH_SUB_CURRENT)/PC/PXE/Makefile.kmk
@@ -163,6 +166,9 @@ ifdef VBOX_WITH_SMC
 endif
 ifdef VBOX_WITH_LPC
  VBoxDD_DEFS           += VBOX_WITH_LPC
+endif
+ifdef VBOX_WITH_EFI
+ VBoxDD_DEFS           += VBOX_WITH_EFI
 endif
 ifdef VBOX_WITH_FAULT_INJECTION
  VBoxDD_DEFS           += VBOX_WITH_FAULT_INJECTION
@@ -349,6 +355,11 @@ endif
 ifdef VBOX_WITH_LPC
 DevicesR3_DEFS          += VBOX_WITH_LPC
 DevicesR3_SOURCES       += PC/DevLPC.cpp
+endif
+
+ifdef VBOX_WITH_EFI
+DevicesR3_DEFS          += VBOX_WITH_EFI
+DevicesR3_SOURCES       += EFI/DevEFI.cpp
 endif
 
 ifdef VBOX_WITH_USB
