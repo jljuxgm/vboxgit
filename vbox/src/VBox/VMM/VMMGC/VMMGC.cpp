@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: VMMGC.cpp 13714 2008-10-31 14:01:43Z vboxsync $ */
 /** @file
  * VMM - Guest Context.
  */
@@ -183,7 +183,7 @@ VMMRCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger)
  */
 VMMRCDECL(void) VMMGCGuestToHost(PVM pVM, int rc)
 {
-    pVM->vmm.s.pfnGCGuestToHost(rc);
+    pVM->vmm.s.pfnGuestToHostRC(rc);
 }
 
 
@@ -201,7 +201,7 @@ VMMRCDECL(int) VMMGCCallHost(PVM pVM, VMMCALLHOST enmOperation, uint64_t uArg)
     pVM->vmm.s.enmCallHostOperation = enmOperation;
     pVM->vmm.s.u64CallHostArg = uArg;
     pVM->vmm.s.rcCallHost = VERR_INTERNAL_ERROR;
-    pVM->vmm.s.pfnGCGuestToHost(VINF_VMM_CALL_HOST);
+    pVM->vmm.s.pfnGuestToHostRC(VINF_VMM_CALL_HOST);
     return pVM->vmm.s.rcCallHost;
 }
 
