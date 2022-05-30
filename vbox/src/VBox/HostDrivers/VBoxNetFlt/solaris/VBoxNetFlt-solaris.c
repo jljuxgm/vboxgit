@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 12209 2008-09-08 09:40:34Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 12229 2008-09-08 14:01:06Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -2199,6 +2199,9 @@ static int vboxNetFltSolarisRecv(PVBOXNETFLTINS pThis, vboxnetflt_stream_t *pStr
  */
 static PVBOXNETFLTINS vboxNetFltSolarisFindInstance(vboxnetflt_stream_t *pStream)
 {
+    if (!pStream)
+        return NULL;
+
     vboxnetflt_stream_t *pCur = g_VBoxNetFltSolarisState.pOpenedStreams;
     for (; pCur; pCur = pCur->pNext)
         if (pCur == pStream)
