@@ -1,4 +1,4 @@
-/* $Id: NetIfList-linux.cpp 15463 2008-12-14 14:09:06Z vboxsync $ */
+/* $Id: NetIfList-linux.cpp 15464 2008-12-14 14:17:31Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -43,6 +43,7 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <iprt/asm.h>
 
 #include "HostNetworkInterfaceImpl.h"
 #include "netif.h"
