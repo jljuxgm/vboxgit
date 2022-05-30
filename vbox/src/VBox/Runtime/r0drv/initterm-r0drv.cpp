@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv.cpp 13466 2008-10-22 08:50:45Z vboxsync $ */
+/* $Id: initterm-r0drv.cpp 13476 2008-10-22 09:40:31Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Common.
  */
@@ -84,7 +84,8 @@ RTR0DECL(int) RTR0Init(unsigned fReserved)
         {
 #ifndef IN_GUEST /* play safe for now */
             rc = rtR0MpNotificationInit();
-            rc |= rtR0PowerNotificationInit();
+            if (RT_SUCCESS(rc))
+                rc = rtR0PowerNotificationInit();
 #endif
             if (RT_SUCCESS(rc))
                 return rc;
