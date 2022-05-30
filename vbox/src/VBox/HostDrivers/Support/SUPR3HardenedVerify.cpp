@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 15353 2008-12-12 06:10:39Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 16166 2009-01-22 13:58:12Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -156,14 +156,6 @@ static SUPINSTFILE const    g_aSupInstallFiles[] =
     {   kSupIFT_Dll,  kSupID_AppPrivArch,        true, "VirtualBox" SUPLIB_DLL_SUFF },
 # if !defined(RT_OS_DARWIN) && !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2)
     {   kSupIFT_Dll,  kSupID_SharedLib,          true, "VBoxKeyboard" SUPLIB_DLL_SUFF },
-# endif
-//#endif
-
-//#ifdef VBOX_WITH_QTGUI
-    {   kSupIFT_Exe,  kSupID_AppBin,             true, "VirtualBox3" SUPLIB_EXE_SUFF },
-    {   kSupIFT_Dll,  kSupID_AppPrivArch,        true, "VirtualBox3" SUPLIB_DLL_SUFF },
-# if !defined(RT_OS_DARWIN) && !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2)
-    {   kSupIFT_Dll,  kSupID_SharedLib,          true, "VBoxKeyboard3" SUPLIB_DLL_SUFF },
 # endif
 //#endif
 

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 16001 2009-01-16 16:56:47Z vboxsync $ */
+/* $Id: MachineImpl.cpp 16166 2009-01-22 13:58:12Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3694,34 +3694,6 @@ HRESULT Machine::openRemoteSession (IInternalSessionControl *aControl,
     if (0)
         ;
 #endif /* VBOX_WITH_QT4GUI */
-
-    else
-
-    /* Qt3 is used sometimes as well, OS/2 does not have Qt4 at all */
-#ifdef VBOX_WITH_QTGUI
-    if (type == "gui" || type == "GUI/Qt3")
-    {
-# ifdef RT_OS_DARWIN /* Avoid Lanuch Services confusing this with the selector by using a helper app. */
-        const char VirtualBox_exe[] = "../Resources/VirtualBoxVM.app/Contents/MacOS/VirtualBoxVM3";
-# else
-        const char VirtualBox_exe[] = "VirtualBox3" HOSTSUFF_EXE;
-# endif
-        Assert (sz >= sizeof (VirtualBox_exe));
-        strcpy (cmd, VirtualBox_exe);
-
-        Utf8Str idStr = mData->mUuid.toString();
-# ifdef RT_OS_WINDOWS /** @todo drop this once the RTProcCreate bug has been fixed */
-        const char * args[] = {path, "-startvm", idStr, 0 };
-# else
-        Utf8Str name = mUserData->mName;
-        const char * args[] = {path, "-comment", name, "-startvm", idStr, 0 };
-# endif
-        vrc = RTProcCreate (path, args, env, 0, &pid);
-    }
-#else /* !VBOX_WITH_QTGUI */
-    if (0)
-        ;
-#endif /* !VBOX_WITH_QTGUI */
 
     else
 
