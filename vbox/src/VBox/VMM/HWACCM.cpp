@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15618 2008-12-17 07:13:25Z vboxsync $ */
+/* $Id: HWACCM.cpp 15619 2008-12-17 07:14:53Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -841,11 +841,13 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                     CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_LAHF);
                     CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_NXE);
                 }
-#endif
-                LogRel(("HWACCM: VMX enabled!\n"));
                 LogRel((pVM->hwaccm.s.fAllow64BitGuests
                         ? "HWACCM: 32-bit and 64-bit guest supported.\n"
                         : "HWACCM: 32-bit guest supported.\n"));
+#else
+                LogRel(("HWACCM: 32-bit guest supported.\n"));
+#endif
+                LogRel(("HWACCM: VMX enabled!\n"));
                 if (pVM->hwaccm.s.fNestedPaging)
                 {
                     LogRel(("HWACCM: Enabled nested paging\n"));
