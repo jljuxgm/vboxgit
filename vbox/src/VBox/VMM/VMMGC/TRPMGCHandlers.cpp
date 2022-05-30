@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 13960 2008-11-07 13:04:45Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -440,7 +440,7 @@ DECLASM(int) TRPMGCTrap07Handler(PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
     PVM pVM = TRPM2VM(pTrpm);
 
     LogFlow(("TRPMTrap07HandlerGC: eip=%08RX32\n", pRegFrame->eip));
-    return CPUMHandleLazyFPU(pVM);
+    return CPUMHandleLazyFPU(pVM, VMMGetCpu(pVM));
 }
 
 
