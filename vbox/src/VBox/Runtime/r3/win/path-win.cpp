@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 15809 2009-01-05 15:49:05Z vboxsync $ */
+/* $Id: path-win.cpp 15813 2009-01-05 16:06:55Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -98,16 +98,13 @@ RTDECL(int) RTPathReal(const char *pszPath, char *pszRealPath, size_t cchRealPat
  */
 RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, size_t cchAbsPath)
 {
-    Assert(VALID_PTR(pszPath));
-
     /*
-     * When the input path is just "", GetFullPathNameW() will return a full
-     * executable name instead of the current directory (as the POSIX sister .
-     * does). Go the POSIX way with the following workaround.
+     * Validation.
      */
-    static const char szSingleDot[] = ".";
-    if (!pszPath[0])
-        pszPath = szSingleDot;
+    AssertPtr(pszAbsPath);
+    AssertPtr(pszPath);
+    if (RT_UNLIKELY(!*pszPath))
+        return VERR_INVALID_PARAMETER;
 
     /*
      * Convert to UTF-16, call Win32 API, convert back.
