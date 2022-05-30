@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17647 2009-03-10 17:55:32Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17666 2009-03-11 09:34:10Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2647,7 +2647,7 @@ DECLCALLBACK(int) Appliance::taskThreadWriteOVF(RTTHREAD aThread, void *pvUser)
                                 // the following references the "<Disks>" XML block
                                 strHostResource = Utf8StrFmt("/disk/%s", strDiskID.c_str());
 
-                                // “controller=<index>;channel=<c>“
+                                // controller=<index>;channel=<c>
                                 size_t pos1 = desc.strExtraConfig.find("controller=");
                                 size_t pos2 = desc.strExtraConfig.find("channel=");
                                 if (pos1 != Utf8Str::npos)
@@ -2869,7 +2869,7 @@ DECLCALLBACK(int) Appliance::taskThreadWriteOVF(RTTHREAD aThread, void *pvUser)
 
             /* Advance to the next operation */
             if (!task->progress.isNull())
-                task->progress->advanceOperation(BstrFmt(tr("Importing virtual disk image '%s'"), strSrcFilePath.c_str()));
+                task->progress->advanceOperation(BstrFmt(tr("Exporting virtual disk image '%s'"), strSrcFilePath.c_str()));
 
             // now loop until the asynchronous operation completes and then
             // report its result
