@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.cpp 16560 2009-02-06 18:06:04Z vboxsync $ */
+/* $Id: HardDisk2Impl.cpp 16577 2009-02-09 11:59:11Z vboxsync $ */
 
 /** @file
  *
@@ -623,10 +623,12 @@ HRESULT HardDisk2::init (VirtualBox *aVirtualBox, CBSTR aLocation)
             Assert (!m.lastAccessError.isEmpty());
             rc = setError (E_FAIL, Utf8Str (m.lastAccessError));
         }
-
-        /* storage format must be detected by queryInfo() if the medium is
-         * accessible */
-        AssertReturn (!m.id.isEmpty() && !mm.format.isNull(), E_FAIL);
+        else
+        {
+            /* storage format must be detected by queryInfo() if the medium is
+            * accessible */
+            AssertReturn (!m.id.isEmpty() && !mm.format.isNull(), E_FAIL);
+        }
     }
 
     /* Confirm a successful initialization when it's the case */
