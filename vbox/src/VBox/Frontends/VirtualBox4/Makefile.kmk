@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12172 2008-09-06 04:23:45Z vboxsync $
+# $Id: Makefile.kmk 12231 2008-09-08 15:03:18Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -121,6 +121,7 @@ include $(PATH_SUB_CURRENT)/VBoxUI.pro
 #
 # VirtualBox4 - The GUI program.
 #
+USES += qt4
 VirtualBox4_TEMPLATE := $(if $(VBOX_WITH_HARDENING),VBOXQT4GUI,VBOXQT4GUIEXE)
 VirtualBox4_NAME = VirtualBox
 ifndef VBOX_WITH_HARDENING      # For the launch trick we need different inode numbers.
