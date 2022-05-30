@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 13861 2008-11-05 13:53:02Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 13863 2008-11-05 13:57:33Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -663,7 +663,7 @@ static int VBoxDrvSolarisIOCtl(dev_t Dev, int Cmd, intptr_t pArgs, int Mode, cre
         ||  Cmd == SUP_IOCTL_FAST_DO_HWACC_RUN
         ||  Cmd == SUP_IOCTL_FAST_DO_NOP)
     {
-        *pVal = supdrvIOCtlFast(Cmd, 0, /* @todo VMCPU id. */, &g_DevExt, pSession);
+        *pVal = supdrvIOCtlFast(Cmd, 0 /* @todo VMCPU id. */, &g_DevExt, pSession);
         return 0;
     }
 
