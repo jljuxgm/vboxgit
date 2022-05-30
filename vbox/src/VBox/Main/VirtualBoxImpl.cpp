@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 14904 2008-12-02 14:37:52Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 14922 2008-12-02 17:39:34Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -3811,7 +3811,7 @@ HRESULT VirtualBox::loadSettingsTree (settings::XmlTreeBackend &aTree,
                          tr ("Could not load the settings file '%s' (%Rrc)"),
                          aFile.uri(), err.rc());
     }
-    catch (const XmlTreeBackend::Error &err)
+    catch (const xml::RuntimeError &err)
     {
         Assert (err.what() != NULL);
 
