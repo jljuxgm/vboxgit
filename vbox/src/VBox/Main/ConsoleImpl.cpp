@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 14770 2008-11-28 11:04:41Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 14775 2008-11-28 13:05:07Z vboxsync $ */
 
 /** @file
  *
@@ -4848,7 +4848,7 @@ HRESULT Console::powerDown (Progress *aProgress /*= NULL*/)
         {
             /* bad bad bad, but what to do? */
             mpVM = pVM;
-            rc = setError (E_FAIL,
+            rc = setError (VBOX_E_VM_ERROR,
                 tr ("Could not destroy the machine.  (Error: %Rrc)"), vrc);
         }
 
@@ -4862,7 +4862,7 @@ HRESULT Console::powerDown (Progress *aProgress /*= NULL*/)
     }
     else
     {
-        rc = setError (E_FAIL,
+        rc = setError (VBOX_E_VM_ERROR,
             tr ("Could not power off the machine.  (Error: %Rrc)"), vrc);
     }
 
