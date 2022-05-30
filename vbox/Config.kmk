@@ -1,4 +1,4 @@
-# $Id: Config.kmk 16187 2009-01-22 19:27:40Z vboxsync $
+# $Id: Config.kmk 16221 2009-01-26 10:30:19Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -53,6 +53,9 @@ KBUILD_BLD_TYPES += dbgopt
 BLD_TYPE_dbgopt_EXTENDS = debug
 BLD_TYPE_dbgopt_EXTENDS_BY = appending
 
+# Temporary hack for kBuild ticket #83.
+## @todo kBuild: remove after closing ticket #83.
+PROPS_ACCUMULATE_L_LNK += INTERMEDIATES
 
 # Install paths.
 PATH_INS              = $(PATH_OUT)
@@ -3497,7 +3500,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16187 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16221 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
