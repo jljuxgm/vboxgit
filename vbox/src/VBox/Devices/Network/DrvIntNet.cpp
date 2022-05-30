@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 14457 2008-11-21 13:43:41Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 15541 2008-12-15 20:29:08Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -463,9 +463,21 @@ static int drvIntNetAsyncIoRun(PDRVINTNET pThis)
                     rc = drvIntNetAsyncIoWaitForSpace(pThis);
                     if (RT_FAILURE(rc))
                     {
-                        STAM_PROFILE_ADV_STOP(&pThis->StatReceive, a);
-                        LogFlow(("drvIntNetAsyncIoRun: returns %Rrc (wait-for-space)\n", rc));
-                        return rc;
+                        if (rc == VERR_INTERRUPTED)
+                        {
+                            /*
+                             * NIC is going down, likely because the VM is being reset. Skip the frame.
+                             */
+                            AssertMsg(pHdr->u16Type == INTNETHDR_TYPE_FRAME, ("Unknown frame type %RX16! offRead=%#x\n",
+                                                                              pHdr->u16Type, pRingBuf->offRead));
+                            INTNETRingSkipFrame(pBuf, pRingBuf);
+                        }
+                        else
+                        {
+                            STAM_PROFILE_ADV_STOP(&pThis->StatReceive, a);
+                            LogFlow(("drvIntNetAsyncIoRun: returns %Rrc (wait-for-space)\n", rc));
+                            return rc;
+                        }
                     }
                 }
             }
