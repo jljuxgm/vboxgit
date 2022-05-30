@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 17906 2009-03-16 09:21:21Z vboxsync $ */
+/* $Id: PGMInternal.h 17910 2009-03-16 10:11:26Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3727,7 +3727,7 @@ DECLINLINE(X86PDEPAE) pgmGstGetPaePDE(PPGM pPGM, RTGCPTR GCPtr)
             int rc = PGM_GCPHYS_2_PTR_BY_PGM(pPGM, pGuestPDPT->a[iPdPt].u & X86_PDPE_PG_MASK, &pPD);
             if (RT_SUCCESS(rc))
                 return pPD->a[iPD];
-            AssertMsgFailed(("Impossible! rc=%d PDPE=%#RX64\n", rc, pGuestPDPT->a[iPdPt].u));
+            AssertMsgFailed(("Impossible! rc=%d PDPE=%RX64\n", rc, pGuestPDPT->a[iPdPt].u));
         }
     }
     X86PDEPAE ZeroPde = {0};
