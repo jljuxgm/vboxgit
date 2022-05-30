@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 16376 2009-01-29 16:46:31Z vboxsync $ */
+/* $Id: PGMAllBth.h 16407 2009-01-30 09:43:23Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3211,6 +3211,8 @@ PGM_BTH_DECL(int, SyncCR3)(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bo
 {
     if (VM_FF_ISSET(pVM, VM_FF_PGM_SYNC_CR3))
         fGlobal = true; /* Change this CR3 reload to be a global one. */
+
+    LogFlow(("SyncCR3 %d\n", fGlobal));
 
 #if PGM_SHW_TYPE != PGM_TYPE_NESTED && PGM_SHW_TYPE != PGM_TYPE_EPT
     /*
