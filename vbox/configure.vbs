@@ -1,4 +1,4 @@
-' $Id: configure.vbs 17878 2009-03-14 22:03:07Z vboxsync $
+' $Id: configure.vbs 17880 2009-03-14 22:37:28Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -1300,7 +1300,7 @@ sub CheckForMidl()
       exit sub
    end if
 
-   CfgPrint "MAIN_IDL = " & strMidl
+   CfgPrint "VBOX_MAIN_IDL = " & strMidl
    PrintResult "Midl.exe", strMidl
 end sub
 
