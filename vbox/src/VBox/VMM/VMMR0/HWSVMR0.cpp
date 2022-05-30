@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 14530 2008-11-24 16:28:46Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 14580 2008-11-25 16:03:04Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2265,7 +2265,7 @@ VMMR0DECL(int) SVMR0InvalidatePhysPage(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys)
     return VINF_SUCCESS;
 }
 
-#ifdef HC_ARCH_BITS == 32
+#if HC_ARCH_BITS == 32
 /**
  * Prepares for and executes VMRUN (64 bits guests from a 32 bits hosts).
  *
