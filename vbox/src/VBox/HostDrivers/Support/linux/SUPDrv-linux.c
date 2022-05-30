@@ -1,4 +1,4 @@
-/* $Rev: 11865 $ */
+/* $Rev: 11866 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -689,7 +689,8 @@ static int VBoxDrvLinuxCreate(struct inode *pInode, struct file *pFilp)
     if (current->euid != 0 /* root */ )
     {
         Log(("VBoxDrvLinuxCreate: euid=%d, expected 0 (root)\n", current->euid));
-        return EPERM;
+        // XXX: nike for whatever reason with this check VBox doesn't work correctly
+        //return -EPERM;
     }
 #endif /* VBOX_WITH_HARDENING */
 
