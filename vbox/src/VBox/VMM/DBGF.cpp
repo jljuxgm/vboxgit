@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 13765 2008-11-03 17:20:11Z vboxsync $ */
+/* $Id: DBGF.cpp 13782 2008-11-04 12:16:30Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -610,7 +610,7 @@ static int dbgfR3VMMWait(PVM pVM)
             if (VM_FF_ISSET(pVM, VM_FF_REQUEST))
             {
                 LogFlow(("dbgfR3VMMWait: Processes requests...\n"));
-                rc = VMR3ReqProcessU(pVM->pUVM, VMREQDEST_ALL);
+                rc = VMR3ReqProcessU(pVM->pUVM, VMREQDEST_ANY);
                 LogFlow(("dbgfR3VMMWait: VMR3ReqProcess -> %Vrc rcRet=%Vrc\n", rc, rcRet));
                 if (rc >= VINF_EM_FIRST && rc <= VINF_EM_LAST)
                 {
@@ -822,7 +822,7 @@ VMMR3DECL(int) DBGFR3Attach(PVM pVM)
      * Call the VM, use EMT for serialization.
      */
     PVMREQ pReq;
-    int rc = VMR3ReqCall(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3Attach, 1, pVM);
+    int rc = VMR3ReqCall(pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3Attach, 1, pVM);
     if (RT_SUCCESS(rc))
         rc = pReq->iStatus;
     VMR3ReqFree(pReq);

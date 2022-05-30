@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 13755 2008-11-03 15:49:06Z vboxsync $ */
+/* $Id: DBGFStack.cpp 13782 2008-11-04 12:16:30Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -356,7 +356,7 @@ VMMR3DECL(int) DBGFR3StackWalkBeginGuest(PVM pVM, PDBGFSTACKFRAME pFrame)
     pFrame->pNext = NULL;
 
     PVMREQ pReq;
-    int rc = VMR3ReqCall(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3StackWalkCtxFull, 4,
+    int rc = VMR3ReqCall(pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3StackWalkCtxFull, 4,
                          pVM, pFrame, CPUMGetGuestCtxCore(pVM), true);
     if (VBOX_SUCCESS(rc))
         rc = pReq->iStatus;
@@ -387,7 +387,7 @@ VMMR3DECL(int) DBGFR3StackWalkBeginHyper(PVM pVM, PDBGFSTACKFRAME pFrame)
     pFrame->pNext = NULL;
 
     PVMREQ pReq;
-    int rc = VMR3ReqCall(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3StackWalkCtxFull, 4,
+    int rc = VMR3ReqCall(pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)dbgfR3StackWalkCtxFull, 4,
                          pVM, pFrame, CPUMGetHyperCtxCore(pVM), 4);
     if (VBOX_SUCCESS(rc))
         rc = pReq->iStatus;

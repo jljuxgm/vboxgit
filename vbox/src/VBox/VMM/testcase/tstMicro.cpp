@@ -1,4 +1,4 @@
-/* $Id: tstMicro.cpp 13755 2008-11-03 15:49:06Z vboxsync $ */
+/* $Id: tstMicro.cpp 13782 2008-11-04 12:16:30Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -353,7 +353,7 @@ int main(int argc, char **argv)
          * Do testing.
          */
         PVMREQ pReq1 = NULL;
-        rc = VMR3ReqCallVoid(pVM, VMREQDEST_ALL, &pReq1, RT_INDEFINITE_WAIT, (PFNRT)doit, 1, pVM);
+        rc = VMR3ReqCallVoid(pVM, VMREQDEST_ANY, &pReq1, RT_INDEFINITE_WAIT, (PFNRT)doit, 1, pVM);
         AssertRC(rc);
         VMR3ReqFree(pReq1);
 

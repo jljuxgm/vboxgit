@@ -1,4 +1,4 @@
-/* $Id: VMAll.cpp 13755 2008-11-03 15:49:06Z vboxsync $ */
+/* $Id: VMAll.cpp 13782 2008-11-04 12:16:30Z vboxsync $ */
 /** @file
  * VM - Virtual Machine All Contexts.
  */
@@ -81,7 +81,7 @@ VMMDECL(int) VMSetErrorV(PVM pVM, int rc, RT_SRC_POS_DECL, const char *pszFormat
     va_list va2;
     va_copy(va2, args); /* Have to make a copy here or GCC will break. */
     PVMREQ pReq;
-    VMR3ReqCall(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)vmR3SetErrorUV, 7,   /* ASSUMES 3 source pos args! */
+    VMR3ReqCall(pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)vmR3SetErrorUV, 7,   /* ASSUMES 3 source pos args! */
                 pVM->pUVM, rc, RT_SRC_POS_ARGS, pszFormat, &va2);
     VMR3ReqFree(pReq);
     va_end(va2);
@@ -259,7 +259,7 @@ VMMDECL(int) VMSetRuntimeErrorV(PVM pVM, bool fFatal, const char *pszErrorID,
     va_list va2;
     va_copy(va2, args); /* Have to make a copy here or GCC will break. */
     PVMREQ pReq;
-    VMR3ReqCall(pVM, VMREQDEST_ALL, &pReq, RT_INDEFINITE_WAIT, (PFNRT)vmR3SetRuntimeErrorV, 5,
+    VMR3ReqCall(pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)vmR3SetRuntimeErrorV, 5,
                 pVM, fFatal, pszErrorID, pszFormat, &va2);
     VMR3ReqFree(pReq);
     va_end(va2);

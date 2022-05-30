@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 13778 2008-11-04 09:45:27Z vboxsync $ */
+/* $Id: EM.cpp 13782 2008-11-04 12:16:30Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3139,7 +3139,7 @@ static int emR3ForcedActions(PVM pVM, int rc)
          */
         if (VM_FF_ISSET(pVM, VM_FF_REQUEST))
         {
-            rc2 = VMR3ReqProcessU(pVM->pUVM, VMREQDEST_ALL);
+            rc2 = VMR3ReqProcessU(pVM->pUVM, VMREQDEST_ANY);
             if (rc2 == VINF_EM_OFF || rc2 == VINF_EM_TERMINATE)
             {
                 Log2(("emR3ForcedActions: returns %Vrc\n", rc2));
