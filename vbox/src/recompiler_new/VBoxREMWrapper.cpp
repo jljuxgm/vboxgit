@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 15322 2008-12-11 17:40:47Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 15558 2008-12-16 01:07:52Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1970,9 +1970,12 @@ static int remLoadProperObj(PVM pVM)
     /*
      * Load the VBoxREM32/64 object/DLL.
      */
-    int rc = SUPR3HardenedLdrLoadAppPriv(remIs64bitEnabled(pVM) ? "VBoxREM64" : "VBoxREM32", &g_ModREM2);
+    const char *pszModule = remIs64bitEnabled(pVM) ? "VBoxREM64" : "VBoxREM32";
+    int rc = SUPR3HardenedLdrLoadAppPriv(pszModule, &g_ModREM2);
     if (RT_SUCCESS(rc))
     {
+        LogRel(("REM: %s\n", pszModule));
+
         /*
          * Resolve exports.
          */
