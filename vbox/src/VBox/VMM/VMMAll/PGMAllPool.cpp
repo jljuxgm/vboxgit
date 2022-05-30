@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17119 2009-02-25 11:05:12Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17120 2009-02-25 11:06:09Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -641,7 +641,9 @@ void pgmPoolMonitorChainChanging(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GC
                  * structure. (Invalidate here; faults later on when it tries to change the page
                  * table entries -> recheck; probably only applies to the RC case.)
                  */
+# ifndef IN_RING0
                 else
+# endif /* !IN_RING0 */
                 {
                     if (uShw.pPDPae->a[iShw].n.u1Present)
                     {
