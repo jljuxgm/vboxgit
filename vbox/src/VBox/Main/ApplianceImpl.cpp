@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17646 2009-03-10 17:47:31Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17647 2009-03-10 17:55:32Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2832,7 +2832,7 @@ DECLCALLBACK(int) Appliance::taskThreadWriteOVF(RTTHREAD aThread, void *pvUser)
 
             // source path: where the VBox image is
             const Utf8Str &strSrcFilePath = pDiskEntry->strVbox;
-            const Bstr bstrSrcFilePath(strSrcFilePath);
+            Bstr bstrSrcFilePath(strSrcFilePath);
             if (!RTPathExists(strSrcFilePath.c_str()))
                 /* This isn't allowed */
                 throw setError(VBOX_E_FILE_ERROR,
