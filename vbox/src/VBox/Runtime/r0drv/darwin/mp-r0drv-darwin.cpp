@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-darwin.cpp 16354 2009-01-28 23:52:28Z vboxsync $ */
+/* $Id: mp-r0drv-darwin.cpp 16958 2009-02-19 17:46:20Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Darwin.
  */
@@ -52,7 +52,6 @@ static int32_t volatile g_cMaxCpus = -1;
 static int rtMpDarwinInitMaxCpus(void)
 {
     int32_t cCpus = -1;
-#ifdef RT_ARCH_AMD64
     size_t  oldLen = sizeof(cCpus);
     int rc = sysctlbyname("hw.ncpu", &cCpus, &oldLen, NULL, NULL);
     if (rc)
@@ -60,9 +59,6 @@ static int rtMpDarwinInitMaxCpus(void)
         printf("IPRT: sysctlbyname(hw.ncpu) failed with rc=%d!\n", rc);
         cCpus = MY_DARWIN_MAX_CPUS;
     }
-#else
-    cCpus = ml_get_max_cpus();
-#endif
 
     ASMAtomicWriteS32(&g_cMaxCpus, cCpus);
     return cCpus;
