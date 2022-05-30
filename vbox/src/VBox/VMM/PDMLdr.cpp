@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 14595 2008-11-25 20:21:52Z vboxsync $ */
+/* $Id: PDMLdr.cpp 16933 2009-02-18 23:42:57Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -453,7 +453,7 @@ VMMR3DECL(int) PDMR3LdrLoadRC(PVM pVM, const char *pszFilename, const char *pszN
      */
     int rc = SUPR3HardenedVerifyFile(pszFilename, "PDMR3LdrLoadRC", NULL);
     if (RT_SUCCESS(rc))
-        rc = RTLdrOpen(pszFilename, &pModule->hLdrMod);
+        rc = RTLdrOpen(pszFilename, 0, RTLDRARCH_X86_32, &pModule->hLdrMod);
     if (RT_SUCCESS(rc))
     {
         /*

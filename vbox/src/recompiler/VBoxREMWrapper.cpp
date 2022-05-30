@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 15520 2008-12-15 16:58:50Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 16933 2009-02-18 23:42:57Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1840,7 +1840,7 @@ static int remLoadLinuxObj(void)
      * Load the VBoxREM2.rel object/DLL.
      */
     strcpy(&szPath[offFilename], "/VBoxREM2.rel");
-    rc = RTLdrOpen(szPath, &g_ModREM2);
+    rc = RTLdrOpen(szPath, 0, RTLDRARCH_HOST, &g_ModREM2);
     if (RT_SUCCESS(rc))
     {
         g_pvREM2 = RTMemExecAlloc(RTLdrSize(g_ModREM2));

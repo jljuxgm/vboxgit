@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 16439 2009-01-31 01:55:36Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 16933 2009-02-18 23:42:57Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -635,10 +635,29 @@ static DECLCALLBACK(int) rtkldrGetSymbolEx(PRTLDRMODINTERNAL pMod, const void *p
  *
  * @returns iprt status code.
  * @param   pReader     The loader reader instance which will provide the raw image bits.
+ * @param   fFlags      Reserved, MBZ.
+ * @param   enmArch     CPU architecture specifier for the image to be loaded.
  * @param   phLdrMod    Where to store the handle.
  */
-int rtldrkLdrOpen(PRTLDRREADER pReader, PRTLDRMOD phLdrMod)
+int rtldrkLdrOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTLDRMOD phLdrMod)
 {
+    /* Convert enmArch to k-speak. */
+    KCPUARCH enmCpuArch;
+    switch (enmArch)
+    {
+        case RTLDRARCH_WHATEVER:
+            enmCpuArch = KCPUARCH_UNKNOWN;
+            break;
+        case RTLDRARCH_X86_32:
+            enmCpuArch = KCPUARCH_X86_32;
+            break;
+        case RTLDRARCH_AMD64:
+            enmCpuArch = KCPUARCH_AMD64;
+            break;
+        default:
+            return VERR_INVALID_PARAMETER;
+    }
+
     /* Create a rtkldrRdr instance. */
     PRTKLDRRDR pRdr = (PRTKLDRRDR)RTMemAllocZ(sizeof(*pRdr));
     if (!pRdr)

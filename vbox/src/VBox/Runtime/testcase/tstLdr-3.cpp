@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 16436 2009-01-31 01:18:12Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 16933 2009-02-18 23:42:57Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -183,7 +183,7 @@ int main(int argc, char **argv)
      */
     RTUINTPTR LoadAddr = (RTUINTPTR)RTStrToUInt64(argv[1]);
     RTLDRMOD hLdrMod;
-    int rc = RTLdrOpen(argv[2], &hLdrMod);
+    int rc = RTLdrOpen(argv[2], 0, RTLDRARCH_WHATEVER, &hLdrMod);
     if (RT_FAILURE(rc))
     {
         RTPrintf("tstLdr-3: Failed to open '%s': %Rra\n", argv[2], rc);
