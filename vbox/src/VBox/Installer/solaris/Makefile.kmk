@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15316 2008-12-11 17:19:45Z vboxsync $
+# $Id: Makefile.kmk 15326 2008-12-11 18:12:17Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -93,7 +93,9 @@ SOLARIS_STRIP_BINS = \
 	VBoxDD.so \
 	VBoxDD2.so \
 	VBoxManage \
-	$(notdir $(wildcard $(PATH_BIN)/VBoxREM*.so)) \
+	VBoxREM.so \
+	$(if $(eq $(KBUILD_TARGET_ARCH),x86),VBoxREM32.so,) \
+	$(if $(eq $(KBUILD_TARGET_ARCH),x86),VBoxREM64.so,) \
 	VBoxRT.so \
 	$(if $(VBOX_WITH_VBOXSDL),VBoxSDL,) \
 	VBoxSVC \
