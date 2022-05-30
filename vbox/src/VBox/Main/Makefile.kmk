@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16166 2009-01-22 13:58:12Z vboxsync $
+# $Id: Makefile.kmk 16174 2009-01-22 15:15:31Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -174,7 +174,7 @@ VBoxSVC_DEFS = \
 	$(VBOX_MAIN_DEFS) \
 	$(if $(VBOX_WITH_VRDP),VBOX_WITH_VRDP,) \
 	$(if $(VBOX_WITH_HEADLESS),VBOX_WITH_HEADLESS,) \
-	$(if $(VBOX_WITH_QT4GUI),VBOX_WITH_QT4GUI,) \
+	$(if $(VBOX_WITH_QTGUI),VBOX_WITH_QTGUI,) \
 	$(if $(VBOX_WITH_HGCM),VBOX_WITH_HGCM,) \
 	$(if $(VBOX_MAIN_RELEASE_LOG),VBOX_MAIN_RELEASE_LOG LOG_ENABLED,) \
 	$(if $(VBOX_WITH_ALSA),VBOX_WITH_ALSA,) \
