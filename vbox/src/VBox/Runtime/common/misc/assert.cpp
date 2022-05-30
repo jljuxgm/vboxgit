@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: assert.cpp 17348 2009-03-04 15:34:40Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers.
  */
@@ -41,9 +41,9 @@
 #endif
 
 
-#if defined(IN_GUEST_R0) && (defined(RT_OS_LINUX) || defined(RT_OS_WINDOWS)) 
-/* 
- * This is legacy that should be eliminated. OS specific code deals with 
+#if defined(IN_GUEST_R0) && (defined(RT_OS_LINUX) || defined(RT_OS_WINDOWS))
+/*
+ * This is legacy that should be eliminated. OS specific code deals with
  * R0 assertions now and it will do the backdoor printfs in addition to
  * proper OS specific printfs and panics / BSODs / IPEs.
  */
@@ -133,14 +133,19 @@ RTDECL(void)    AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszF
         RTLogFlush(pLog);
     }
 
-    pLog = RTLogDefaultInstance();
-    if (pLog)
+#ifndef LOG_ENABLED
+    if (!pLog)
+#endif
     {
-        RTLogPrintf("\n!!Assertion Failed!!\n"
-                    "Expression: %s\n"
-                    "Location  : %s(%d) %s\n",
-                    pszExpr, pszFile, uLine, pszFunction);
-        RTLogFlush(pLog);
+        pLog = RTLogDefaultInstance();
+        if (pLog)
+        {
+            RTLogPrintf("\n!!Assertion Failed!!\n"
+                        "Expression: %s\n"
+                        "Location  : %s(%d) %s\n",
+                        pszExpr, pszFile, uLine, pszFunction);
+            RTLogFlush(pLog);
+        }
     }
 
 #ifdef IN_RING3
