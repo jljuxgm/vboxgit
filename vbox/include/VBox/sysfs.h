@@ -1,4 +1,4 @@
-/* $Id: sysfs.h 14711 2008-11-27 15:16:52Z vboxsync $ */
+/* $Id: sysfs.h 14982 2008-12-04 13:49:02Z vboxsync $ */
 /** @file
  * sysfs.h - convenience routines for getting values from sysfs on Linux.
  */
@@ -81,7 +81,8 @@ inline int VBoxSysfsGetString(const char *pszSysfsPath, const char *pszFile,
     }
     if (pcbBufActual != NULL && (RT_SUCCESS(rc) || rc == VERR_BUFFER_OVERFLOW))
         *pcbBufActual = cbBufActual + 1;  /* +1 for the '\0' */
-    RTStrmClose(pStream);
+    if (pStream != NULL)
+        RTStrmClose(pStream);
     return rc;
 }
 
