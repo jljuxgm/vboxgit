@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 12707 2008-09-25 09:08:00Z vboxsync $ */
+/* $Id: HWACCM.cpp 12732 2008-09-25 13:53:39Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -528,7 +528,7 @@ HWACCMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                 return rc;
 
             /* The I/O bitmap starts right after the virtual interrupt redirection bitmap. Outside the TSS on purpose; the CPU will not check it
-            * for I/O operations. */
+             * for I/O operations. (but fault (#GP) on all IO instructions instead) */
             ASMMemZero32(pVM->hwaccm.s.vmx.pRealModeTSS, sizeof(*pVM->hwaccm.s.vmx.pRealModeTSS));
             pVM->hwaccm.s.vmx.pRealModeTSS->offIoBitmap = sizeof(*pVM->hwaccm.s.vmx.pRealModeTSS);
             /* Bit set to 0 means redirection enabled. */
