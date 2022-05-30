@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 17489 2009-03-06 16:35:33Z vboxsync $ */
+/* $Id: PGMAll.cpp 17505 2009-03-06 22:35:08Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1786,7 +1786,7 @@ VMMDECL(int) PGMUpdateCR3(PVM pVM, uint64_t cr3)
     {
         pVM->pgm.s.GCPhysCR3 = GCPhysCR3;
         rc = PGM_BTH_PFN(MapCR3, pVM)(pVM, GCPhysCR3);
-        AssertRCSuccess(rc); /* Assumes VINF_PGM_SYNC_CR3 doesn't apply to nested paging. */
+        AssertRCSuccess(rc); /* Assumes VINF_PGM_SYNC_CR3 doesn't apply to nested paging. */ /** @todo this isn't true for the mac, but we need hw to test/fix this. */
     }
     return rc;
 }
