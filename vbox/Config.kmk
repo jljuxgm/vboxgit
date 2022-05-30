@@ -1,4 +1,4 @@
-# $Id: Config.kmk 16180 2009-01-22 16:29:15Z vboxsync $
+# $Id: Config.kmk 16186 2009-01-22 19:27:04Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1748,6 +1748,9 @@ else
  SDK_VBOX_FFMPEG_LIBS ?= avutil avcodec avformat
 endif
 
+SDK_VBOX_BOOST        = .
+SDK_VBOX_BOOST_INCS  ?= $(PATH_ROOT)/src/libs/boost-1.37.0/boost
+
 #
 # Special SDK for the problematic NTDLL.LIB.
 #
@@ -3494,7 +3497,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16180 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 16186 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
