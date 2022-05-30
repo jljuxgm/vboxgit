@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 15723 2008-12-23 11:05:27Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 15996 2009-01-16 15:39:41Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -433,7 +433,7 @@ static int iomInterpretMOVS(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame
                           SELMTOFLAT_FLAGS_HYPER | SELMTOFLAT_FLAGS_NO_PL,
                           (RTGCPTR *)&pu8Virt);
         if (RT_FAILURE(rc))
-            return VINF_EM_RAW_GUEST_TRAP;
+            return VINF_IOM_HC_MMIO_READ;
 
         /* Check if destination address is MMIO. */
         PIOMMMIORANGE pMMIODst;
