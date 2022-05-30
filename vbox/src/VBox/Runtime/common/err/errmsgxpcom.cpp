@@ -1,4 +1,4 @@
-/* $Id: errmsgxpcom.cpp 8702 2008-05-08 12:45:22Z vboxsync $ */
+/* $Id: errmsgxpcom.cpp 13083 2008-10-08 14:44:25Z vboxsync $ */
 /** @file
  * IPRT - Status code messages for XPCOM.
  */
@@ -142,7 +142,7 @@ RTDECL(PCRTCOMERRMSG) RTErrCOMGet(uint32_t rc)
      * Need to use the temporary stuff.
      */
     int32_t iMsg = (ASMAtomicIncU32(&g_iUnknownMsgs) - 1) % RT_ELEMENTS(g_aUnknownMsgs);
-    RTStrPrintf(&g_aszUnknownStr[iMsg][0], sizeof(g_aszUnknownStr[iMsg]), "Unknown Status 0x%X\n", rc);
+    RTStrPrintf(&g_aszUnknownStr[iMsg][0], sizeof(g_aszUnknownStr[iMsg]), "Unknown Status 0x%X", rc);
     return &g_aUnknownMsgs[iMsg];
 }
 

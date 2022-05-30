@@ -1,4 +1,4 @@
-/* $Id: errmsgwin.cpp 8402 2008-04-26 05:13:38Z vboxsync $ */
+/* $Id: errmsgwin.cpp 13083 2008-10-08 14:44:25Z vboxsync $ */
 /** @file
  * IPRT - Status code messages.
  */
@@ -85,7 +85,7 @@ RTDECL(PCRTWINERRMSG) RTErrWinGet(long rc)
      * Need to use the temporary stuff.
      */
     int32_t iMsg = (ASMAtomicIncU32(&g_iUnknownMsgs) - 1) % RT_ELEMENTS(g_aUnknownMsgs);
-    RTStrPrintf(&g_aszUnknownStr[iMsg][0], sizeof(g_aszUnknownStr[iMsg]), "Unknown Status 0x%X\n", rc);
+    RTStrPrintf(&g_aszUnknownStr[iMsg][0], sizeof(g_aszUnknownStr[iMsg]), "Unknown Status 0x%X", rc);
     return &g_aUnknownMsgs[iMsg];
 }
 
