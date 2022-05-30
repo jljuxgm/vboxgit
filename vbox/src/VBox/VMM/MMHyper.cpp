@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 12814 2008-09-29 18:14:37Z vboxsync $ */
+/* $Id: MMHyper.cpp 12940 2008-10-02 14:46:07Z vboxsync $ */
 /** @file
  * MM - Memory Monitor(/Manager) - Hypervisor Memory Area.
  */
@@ -1110,7 +1110,7 @@ static DECLCALLBACK(void) mmR3HyperInfoHma(PVM pVM, PCDBGFINFOHLP pHlp, const ch
                                 pLookup->off + pVM->mm.s.pvHyperAreaGC,
                                 pLookup->off + pVM->mm.s.pvHyperAreaGC + pLookup->cb,
                                 sizeof(RTHCPTR) * 2, "",
-                                pLookup->u.GCPhys.GCPhys, RT_ABS(sizeof(RTHCPHYS) - sizeof(RTGCPHYS)) * 2, "",
+                                pLookup->u.GCPhys.GCPhys, RT_ABS((int)(sizeof(RTHCPHYS) - sizeof(RTGCPHYS))) * 2, "",
                                 pLookup->pszDesc);
                 break;
 
@@ -1119,7 +1119,7 @@ static DECLCALLBACK(void) mmR3HyperInfoHma(PVM pVM, PCDBGFINFOHLP pHlp, const ch
                                 pLookup->off + pVM->mm.s.pvHyperAreaGC,
                                 pLookup->off + pVM->mm.s.pvHyperAreaGC + pLookup->cb,
                                 sizeof(RTHCPTR) * 2, "",
-                                pLookup->u.MMIO2.off, RT_ABS(sizeof(RTHCPHYS) - sizeof(RTGCPHYS)) * 2, "",
+                                pLookup->u.MMIO2.off, RT_ABS((int)(sizeof(RTHCPHYS) - sizeof(RTGCPHYS))) * 2, "",
                                 pLookup->pszDesc);
                 break;
 
