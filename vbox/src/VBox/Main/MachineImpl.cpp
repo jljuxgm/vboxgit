@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 15945 2009-01-14 16:52:20Z vboxsync $ */
+/* $Id: MachineImpl.cpp 15991 2009-01-16 14:02:20Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -10427,17 +10427,17 @@ HRESULT SessionMachine::setMachineState (MachineState_T aMachineState)
         }
         {
             AutoReadLock driveLock (mDVDDrive);
-            if (mDVDDrive->data()->mState == DriveState_ImageMounted)
+            if (mDVDDrive->data()->state == DriveState_ImageMounted)
             {
-                rc = mDVDDrive->data()->mImage->UnlockRead (NULL);
+                rc = mDVDDrive->data()->image->UnlockRead (NULL);
                 AssertComRC (rc);
             }
         }
         {
             AutoReadLock driveLock (mFloppyDrive);
-            if (mFloppyDrive->data()->mState == DriveState_ImageMounted)
+            if (mFloppyDrive->data()->state == DriveState_ImageMounted)
             {
-                rc = mFloppyDrive->data()->mImage->UnlockRead (NULL);
+                rc = mFloppyDrive->data()->image->UnlockRead (NULL);
                 AssertComRC (rc);
             }
         }
