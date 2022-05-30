@@ -1,4 +1,4 @@
-/* $Id: ide.h 12551 2008-09-17 18:58:37Z vboxsync $ */
+/* $Id: ide.h 12931 2008-10-02 11:46:56Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI declarations
  */
@@ -183,7 +183,7 @@ typedef enum ATACMD
 #define ATAPI_INT_REASON_TAG_MASK       0xf8
 
 #if defined(DEBUG) && defined(IN_RING3)
-const char * const ATACmdText(uint8_t uCmd);
+const char * ATACmdText(uint8_t uCmd);
 #endif
 
 #endif /* !___Storage_IDE_h */
