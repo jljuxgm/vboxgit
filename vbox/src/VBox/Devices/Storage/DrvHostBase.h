@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 15815 2009-01-05 19:42:23Z vboxsync $ */
+/* $Id: DrvHostBase.h 15831 2009-01-07 12:51:42Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -133,7 +133,7 @@ typedef struct DRVHOSTBASE
 #ifdef RT_OS_LINUX
     /** Double buffer required for ioctl with the Linux kernel as long as we use
      * remap_pfn_range() instead of vm_insert_page(). */
-    void                    *pbDoubleBuffer;
+    uint8_t                *pbDoubleBuffer;
 #endif
 
 
