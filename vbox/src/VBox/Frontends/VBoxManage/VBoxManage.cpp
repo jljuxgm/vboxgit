@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 13848 2008-11-05 10:52:54Z vboxsync $ */
+/* $Id: VBoxManage.cpp 13850 2008-11-05 11:14:11Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -2802,7 +2802,7 @@ static int handleList(int argc, char *argv[],
             CHECK_ERROR(hardDiskFormats [i],
                         COMGETTER(Id) (description.asOutParam()));
 
-            unsigned int caps;
+            ULONG caps;
             CHECK_ERROR(hardDiskFormats [i],
                         COMGETTER(Capabilities) (&caps));
 
