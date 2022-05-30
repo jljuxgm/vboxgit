@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15507 2008-12-15 14:51:45Z vboxsync $ */
+/* $Id: HWACCM.cpp 15523 2008-12-15 17:37:26Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1155,6 +1155,9 @@ VMMR3DECL(void) HWACCMR3Reset(PVM pVM)
 
         /* Reset state information for real-mode emulation in VT-x. */
         pVCpu->hwaccm.s.vmx.enmLastSeenGuestMode = PGMMODE_REAL;
+        pVCpu->hwaccm.s.vmx.enmPrevGuestMode     = PGMMODE_REAL;
+        pVCpu->hwaccm.s.vmx.enmCurrGuestMode     = PGMMODE_REAL;
+
     }
 }
 
