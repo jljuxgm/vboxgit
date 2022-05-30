@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15963 2009-01-15 12:47:03Z vboxsync $
+# $Id: Makefile.kmk 16031 2009-01-19 07:03:00Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -331,6 +331,12 @@ ifdef VBOX_WITH_HPET
 DevicesR3_DEFS          += VBOX_WITH_HPET
 DevicesR3_SOURCES       += PC/DevHPET.cpp 
 endif
+
+ifdef VBOX_WITH_SMC
+DevicesR3_DEFS          += VBOX_WITH_SMC
+DevicesR3_SOURCES       += PC/DevSMC.cpp 
+endif
+
 
 ifdef VBOX_WITH_USB
 DevicesR3_DEFS         += VBOX_WITH_USB IN_USB_R3
