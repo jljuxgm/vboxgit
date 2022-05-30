@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 17275 2009-03-03 13:28:12Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 17276 2009-03-03 13:44:25Z vboxsync $ */
 
 /** @file
  *
@@ -1326,7 +1326,7 @@ Console::COMGETTER(SharedFolders) (ComSafeArrayOut (ISharedFolder *, aSharedFold
     HRESULT rc = loadDataFromSavedState();
     CheckComRCReturnRC (rc);
 
-    SafeIfaceArray <ISharedFolder> sf;
+    SafeIfaceArray <ISharedFolder> sf (mSharedFolders);
     sf.detachTo (ComSafeArrayOutArg(aSharedFolders));
 
     return S_OK;
