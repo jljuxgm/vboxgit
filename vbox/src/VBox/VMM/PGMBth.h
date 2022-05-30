@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: PGMBth.h 13936 2008-11-06 20:44:09Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -34,7 +34,7 @@ PGM_BTH_DECL(int, SyncPage)(PVM pVM, X86PDE PdeSrc, RTGCUINTPTR GCPtrPage, unsig
 PGM_BTH_DECL(int, VerifyAccessSyncPage)(PVM pVM, RTGCUINTPTR Addr, unsigned fPage, unsigned uError);
 PGM_BTH_DECL(int, InvalidatePage)(PVM pVM, RTGCPTR GCPtrPage);
 PGM_BTH_DECL(int, PrefetchPage)(PVM pVM, RTGCUINTPTR GCPtrPage);
-PGM_BTH_DECL(unsigned, AssertCR3)(PVM pVM, uint64_t cr3, uint64_t cr4, RTGCUINTPTR GCPtr = 0, RTGCUINTPTR cb = ~(RTGCUINTPTR)0);
+PGM_BTH_DECL(unsigned, AssertCR3)(PVM pVM, uint64_t cr3, uint64_t cr4, RTGCPTR GCPtr = 0, RTGCPTR cb = ~(RTGCPTR)0);
 __END_DECLS
 
 

@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
+/* $Id: PGMHandler.cpp 13936 2008-11-06 20:44:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -322,7 +322,7 @@ VMMDECL(int) PGMR3HandlerVirtualRegisterEx(PVM pVM, PGMVIRTHANDLERTYPE enmType, 
     /*
      * Allocate and initialize a new entry.
      */
-    unsigned cPages = (RT_ALIGN((RTGCUINTPTR)GCPtrLast + 1, PAGE_SIZE) - ((RTGCUINTPTR)GCPtr & PAGE_BASE_GC_MASK)) >> PAGE_SHIFT;
+    unsigned cPages = (RT_ALIGN(GCPtrLast + 1, PAGE_SIZE) - (GCPtr & PAGE_BASE_GC_MASK)) >> PAGE_SHIFT;
     PPGMVIRTHANDLER pNew;
     int rc = MMHyperAlloc(pVM, RT_OFFSETOF(PGMVIRTHANDLER, aPhysToVirt[cPages]), 0, MM_TAG_PGM_HANDLERS, (void **)&pNew); /** @todo r=bird: incorrect member name PhysToVirt? */
     if (RT_FAILURE(rc))

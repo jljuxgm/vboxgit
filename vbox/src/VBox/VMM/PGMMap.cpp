@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 13930 2008-11-06 18:43:35Z vboxsync $ */
+/* $Id: PGMMap.cpp 13936 2008-11-06 20:44:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1158,7 +1158,7 @@ VMMR3DECL(int) PGMR3MapRead(PVM pVM, void *pvDst, RTGCPTR GCPtrSrc, size_t cb)
     PPGMMAPPING pCur = pVM->pgm.s.CTX_SUFF(pMappings);
     while (pCur)
     {
-        RTGCUINTPTR off = (RTGCUINTPTR)GCPtrSrc - (RTGCUINTPTR)pCur->GCPtr;
+        RTGCUINTPTR off = GCPtrSrc - pCur->GCPtr;
         if (off < pCur->cb)
         {
             if (off + cb > pCur->cb)
