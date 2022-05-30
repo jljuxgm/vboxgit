@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13960 2008-11-07 13:04:45Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 14091 2008-11-11 13:31:09Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1150,13 +1150,13 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
             {
                 /* Disable cr3 read/write monitoring as we don't need it for EPT. */
                 pVCpu->hwaccm.s.vmx.proc_ctls &=  ~(  VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR3_LOAD_EXIT
-                                                                | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR3_STORE_EXIT);
+                                                    | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR3_STORE_EXIT);
             }
             else
             {
                 /* Reenable cr3 read/write monitoring as our identity mapped page table is active. */
                 pVCpu->hwaccm.s.vmx.proc_ctls |=   VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR3_LOAD_EXIT
-                                                             | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR3_STORE_EXIT;
+                                                 | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_CR3_STORE_EXIT;
             }
             rc = VMXWriteVMCS(VMX_VMCS_CTRL_PROC_EXEC_CONTROLS, pVCpu->hwaccm.s.vmx.proc_ctls);
             AssertRC(rc);
