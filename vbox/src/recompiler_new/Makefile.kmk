@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15010 2008-12-04 23:33:31Z vboxsync $
+# $Id: Makefile.kmk 15011 2008-12-05 07:49:13Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -57,7 +57,7 @@ else
 
  # Unfortunately little pinguins tend to have default compilers no suitable 
  # for real compilation, so search better alternatives 
- if1of ($(KBUILD_TARGET), linux)
+ if1of ($(KBUILD_TARGET), )
   $(REM_MOD)_TOOL      = GCC3V3
   $(REM_MOD)_TEMPLATE  = DUMMY
   $(REM_MOD)_CFLAGS    = -fPIC                                          \
@@ -68,7 +68,7 @@ else
   $(REM_MOD)_CFLAGS.debug    = -g -O0
   $(REM_MOD)_CFLAGS.release += -O2
  else
-  $(REM_MOD)_TEMPLATE  = VBOXR3N
+  $(REM_MOD)_TEMPLATE  = VBOXR3NP
  endif
 
  IMPORT_LIBS          += VBoxREM
