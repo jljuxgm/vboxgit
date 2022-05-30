@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 16161 2009-01-22 12:04:46Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 16546 2009-02-06 13:07:22Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -59,6 +59,7 @@
 #include <iprt/initterm.h>
 #include <iprt/alloc.h>
 #include <iprt/string.h>
+#include <iprt/err.h>
 
 
 /*******************************************************************************
@@ -229,7 +230,7 @@ int _init(void)
                 {
                     rc = mod_install(&g_VBoxDrvSolarisModLinkage);
                     if (!rc)
-                        return 0; /* success */
+                        return rc; /* success */
 
                     ddi_soft_state_fini(&g_pVBoxDrvSolarisState);
                     LogRel((DEVICE_NAME ":mod_install failed! rc=%d\n", rc));
@@ -252,7 +253,7 @@ int _init(void)
         LogRel((DEVICE_NAME ":VBoxDrvSolarisAttach: failed to init R0Drv\n"));
     memset(&g_DevExt, 0, sizeof(g_DevExt));
 
-    return -1;
+    return RTErrConvertToErrno(rc);
 }
 
 

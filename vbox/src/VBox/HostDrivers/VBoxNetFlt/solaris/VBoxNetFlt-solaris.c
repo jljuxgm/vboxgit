@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 16082 2009-01-20 12:47:18Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 16546 2009-02-06 13:07:22Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -40,6 +40,7 @@
 #include <iprt/thread.h>
 #include <iprt/spinlock.h>
 #include <iprt/crc32.h>
+#include <iprt/err.h>
 
 #include <inet/ip.h>
 #include <net/if.h>
@@ -454,7 +455,7 @@ int _init(void)
         LogRel((DEVICE_NAME ":failed to initialize IPRT (rc=%d)\n", rc));
 
     memset(&g_VBoxNetFltSolarisGlobals, 0, sizeof(g_VBoxNetFltSolarisGlobals));
-    return -1;
+    return RTErrConvertToErrno(rc);
 }
 
 
