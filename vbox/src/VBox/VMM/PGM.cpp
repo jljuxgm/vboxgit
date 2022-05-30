@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 17492 2009-03-06 16:41:25Z vboxsync $ */
+/* $Id: PGM.cpp 17498 2009-03-06 17:09:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2228,6 +2228,10 @@ VMMR3DECL(void) PGMR3Reset(PVM pVM)
 #endif
         if (RT_SUCCESS(rc))
         {
+#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
+            /* Force a shadow mode reinit (necessary for nested paging and ept). */
+            pVM->pgm.s.enmShadowMode = PGMMODE_INVALID;
+#endif
             /*
              * Switch mode back to real mode.
              */
