@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 13577 2008-10-27 13:53:04Z vboxsync $ */
+/* $Id: SELMInternal.h 17035 2009-02-23 22:26:39Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -186,11 +186,9 @@ VMMRCDECL(int) selmRCShadowGDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCT
 VMMRCDECL(int) selmRCShadowLDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
 VMMRCDECL(int) selmRCShadowTSSWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
 
+void           selmSetRing1Stack(PVM pVM, uint32_t ss, RTGCPTR32 esp);
+
 __END_DECLS
-
-#ifdef IN_RING3
-
-#endif
 
 /** @} */
 
