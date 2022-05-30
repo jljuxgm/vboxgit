@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 16424 2009-01-30 15:51:58Z vboxsync $ */
+/* $Id: PGMAllBth.h 16582 2009-02-09 12:50:45Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4606,6 +4606,7 @@ PGM_BTH_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
         if (pVM->pgm.s.CTX_SUFF(pShwPageCR3)->enmKind != PGMPOOLKIND_FREE)
             pgmPoolFreeByPage(pPool, pVM->pgm.s.CTX_SUFF(pShwPageCR3), pVM->pgm.s.iShwUser, pVM->pgm.s.iShwUserTable);
         pVM->pgm.s.pShwPageCR3R3 = 0;
+        pVM->pgm.s.pShwPageCR3RC = 0;
         pVM->pgm.s.pShwPageCR3R0 = 0;
         pVM->pgm.s.pShwRootR3    = 0;
 #  ifndef VBOX_WITH_2X_4GB_ADDR_SPACE
@@ -4629,8 +4630,13 @@ PGM_BTH_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
     AssertRCReturn(rc, rc);
 #  ifdef IN_RING0
     pVM->pgm.s.pShwPageCR3R3 = MMHyperCCToR3(pVM, pVM->pgm.s.CTX_SUFF(pShwPageCR3));
+    pVM->pgm.s.pShwPageCR3RC = MMHyperCCToRC(pVM, pVM->pgm.s.CTX_SUFF(pShwPageCR3));
+#  elif defined(IN_RC)
+    pVM->pgm.s.pShwPageCR3R3 = MMHyperCCToR3(pVM, pVM->pgm.s.CTX_SUFF(pShwPageCR3));
+    pVM->pgm.s.pShwPageCR3R0 = MMHyperCCToR0(pVM, pVM->pgm.s.CTX_SUFF(pShwPageCR3));
 #  else
     pVM->pgm.s.pShwPageCR3R0 = MMHyperCCToR0(pVM, pVM->pgm.s.CTX_SUFF(pShwPageCR3));
+    pVM->pgm.s.pShwPageCR3RC = MMHyperCCToRC(pVM, pVM->pgm.s.CTX_SUFF(pShwPageCR3));
 #  endif
     pVM->pgm.s.pShwRootR3    = (R3PTRTYPE(void *))pVM->pgm.s.CTX_SUFF(pShwPageCR3)->pvPageR3;
     Assert(pVM->pgm.s.pShwRootR3);
