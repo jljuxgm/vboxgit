@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-nt.cpp 9959 2008-06-26 14:26:46Z vboxsync $ */
+/* $Id: timer-r0drv-nt.cpp 14298 2008-11-18 12:47:26Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, NT.
  */
@@ -74,7 +74,7 @@ typedef struct RTTIMER
      * This is RTTIMER_MAGIC, but changes to something else before the timer
      * is destroyed to indicate clearly that thread should exit. */
     uint32_t volatile       u32Magic;
-    /** Flag indicating the the timer is suspended. */
+    /** Flag indicating the timer is suspended. */
     bool volatile           fSuspended;
     /** Whether the timer must run on one specific CPU or not. */
     bool                    fSpecificCpu;

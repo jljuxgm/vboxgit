@@ -1,4 +1,4 @@
-/* $Id: tstLdr-2.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: tstLdr-2.cpp 14298 2008-11-18 12:47:26Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -84,7 +84,7 @@ static DECLCALLBACK(int) testGetImport(RTLDRMOD hLdrMod, const char *pszModule, 
 /**
  * One test iteration with one file.
  *
- * The test is very simple, we load the the file three times
+ * The test is very simple, we load the file three times
  * into two different regions. The first two into each of the
  * regions the for compare usage. The third is loaded into one
  * and then relocated between the two and other locations a few times.

@@ -1,4 +1,4 @@
-/** $Id: timerlr-generic.cpp 10972 2008-07-30 11:15:45Z vboxsync $ */
+/** $Id: timerlr-generic.cpp 14298 2008-11-18 12:47:26Z vboxsync $ */
 /** @file
  * IPRT - Low Resolution Timers, Generic.
  *
@@ -59,7 +59,7 @@ typedef struct RTTIMERLRINT
      * This is RTTIMERRT_MAGIC, but changes to something else before the timer
      * is destroyed to indicate clearly that thread should exit. */
     uint32_t volatile       u32Magic;
-    /** Flag indicating the the timer is suspended. */
+    /** Flag indicating the timer is suspended. */
     bool volatile           fSuspended;
     /** Flag indicating that the timer has been destroyed. */
     bool volatile           fDestroyed;

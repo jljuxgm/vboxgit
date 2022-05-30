@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-os2.cpp 9444 2008-06-05 18:08:17Z vboxsync $ */
+/* $Id: timer-r0drv-os2.cpp 14298 2008-11-18 12:47:26Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -59,7 +59,7 @@ typedef struct RTTIMER
     uint32_t volatile       u32Magic;
     /** The next timer in the timer list. */
     PRTTIMER                pNext;
-    /** Flag indicating the the timer is suspended. */
+    /** Flag indicating the timer is suspended. */
     uint8_t volatile        fSuspended;
     /** Cleared at the start of timer processing, set when calling pfnTimer.
      * If any timer changes occures while doing the callback this will be used to resume the cycle. */

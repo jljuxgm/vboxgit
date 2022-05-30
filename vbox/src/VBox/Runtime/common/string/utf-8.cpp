@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 14007 2008-11-10 13:06:14Z vboxsync $ */
+/* $Id: utf-8.cpp 14298 2008-11-18 12:47:26Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -770,7 +770,7 @@ RTDECL(int) RTStrCalcUtf16LenEx(const char *psz, size_t cch, size_t *pcwc)
 /**
  * Handle invalid encodings passed to RTStrGetCp() and RTStrGetCpEx().
  * @returns rc
- * @param   ppsz        The pointer to the the string position point.
+ * @param   ppsz        The pointer to the string position point.
  * @param   pCp         Where to store RTUNICP_INVALID.
  * @param   rc          The iprt error code.
  */
@@ -918,7 +918,7 @@ RTDECL(int) RTStrGetCpExInternal(const char **ppsz, PRTUNICP pCp)
 /**
  * Handle invalid encodings passed to RTStrGetCpNEx().
  * @returns rc
- * @param   ppsz        The pointer to the the string position point.
+ * @param   ppsz        The pointer to the string position point.
  * @param   pcch        Pointer to the string length.
  * @param   pCp         Where to store RTUNICP_INVALID.
  * @param   rc          The iprt error code.

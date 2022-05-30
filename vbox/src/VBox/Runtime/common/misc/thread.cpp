@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 14001 2008-11-10 12:12:55Z vboxsync $ */
+/* $Id: thread.cpp 14298 2008-11-18 12:47:26Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -1235,7 +1235,7 @@ RTDECL(void) RTThreadReadLockDec(RTTHREAD Thread)
 
 
 /**
- * Recalculates scheduling attributes for the the default process
+ * Recalculates scheduling attributes for the default process
  * priority using the specified priority type for the calling thread.
  *
  * The scheduling attributes are targeted at threads and they are protected

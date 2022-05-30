@@ -1,4 +1,4 @@
-/* $Id: tstInlineAsm.cpp 12158 2008-09-05 21:14:18Z vboxsync $ */
+/* $Id: tstInlineAsm.cpp 14298 2008-11-18 12:47:26Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -1050,11 +1050,11 @@ void tstASMMath(void)
        *
        * which is definitely greater than  0x3b9aca00.
        *
-       * bird: No, the C version does *not* crash. So, the question is whether there any
+       * bird: No, the C version does *not* crash. So, the question is whether there's any
        * code depending on it not crashing.
        *
        * Of course the assembly versions of the code crash right now for the reasons you've
-       * given, but the the 32-bit MSC version does not crash.
+       * given, but the 32-bit MSC version does not crash.
        *
        * frank: The C version does not crash but delivers incorrect results for this case.
        * The reason is
