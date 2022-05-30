@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 14524 2008-11-24 14:58:13Z vboxsync $ */
+/* $Id: HostImpl.h 14722 2008-11-27 17:11:36Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -132,7 +132,7 @@ public:
 private:
 
 #if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS)
-# ifdef VBOX_USE_LIBHAL
+# if defined(VBOX_WITH_LIBHAL) || defined(VBOX_USE_LIBHAL)
     bool getDVDInfoFromHal(std::list <ComObjPtr <HostDVDDrive> > &list);
     bool getFloppyInfoFromHal(std::list <ComObjPtr <HostFloppyDrive> > &list);
 # endif
