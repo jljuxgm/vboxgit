@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 14297 2008-11-18 12:40:43Z vboxsync $ */
+/** $Id: clipboard.cpp 17004 2009-02-23 11:07:46Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -1094,7 +1094,6 @@ static Boolean vboxClipboardConvertCText(Atom *atomTypeReturn, XtPointer *pValRe
         }
         LogRel(("vboxClipboardConvertCText: Xutf8TextListToTextProperty failed.  Reason: %s\n",
                 pcReason));
-        XFree(property.value);
         LogFlowFunc(("rc = false\n"));
         return false;
     }
