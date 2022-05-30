@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 13690 2008-10-30 21:09:50Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 13758 2008-11-03 16:05:27Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -279,6 +279,8 @@ DECLHIDDEN(int) vboxNetFltPortOsXmit(PVBOXNETFLTINS pThis, PINTNETSG pSG, uint32
  *
  * If it is, then the internal networking switch will send frames
  * heading for the wire to the host as well.
+ *
+ * @see INTNETTRUNKIFPORT::pfnIsPromiscuous for more details.
  *
  * @returns true / false accordingly.
  * @param   pThis           The instance.
