@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11919 2008-09-01 13:23:45Z vboxsync $
+# $Id: Makefile.kmk 12110 2008-09-04 21:11:15Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -194,14 +194,6 @@ VBoxDD_LDFLAGS.darwin   = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxDD.dyli
 	-framework DiskArbitration
 VBoxDD_LDFLAGS.linux    = -Wl,--no-undefined
 VBoxDD_LDFLAGS.l4       = -Wl,--no-undefined
-
-
-ifneq ($(int-ge $(KMK_REVISION),1692),1) ## @todo remove this after updating kBuild the next time.
-ifeq ($(KBUILD_TARGET),win)
-$(PATH_LIB)/VBoxDD2.lib: $(PATH_BIN)/VBoxDD2.dll
-$(PATH_LIB)/VBoxDDU.lib: $(PATH_BIN)/VBoxDDU.dll
-endif
-endif
 
 
 #
