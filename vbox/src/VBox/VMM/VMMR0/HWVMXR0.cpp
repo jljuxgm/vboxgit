@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15142 2008-12-09 09:22:03Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15144 2008-12-09 09:39:04Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3490,7 +3490,7 @@ VMMR0DECL(int) VMXR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
 
     CPUMSetHyperESP(pVM, VMMGetStackRC(pVM));
     CPUMSetHyperEIP(pVM, pfnHandler);
-    for (int i=(int)cbParam-1;i>=0;i++)
+    for (int i=(int)cbParam-1;i>=0;i--)
         CPUMPushHyper(pVM, paParam[i]);
 
     /* Call switcher. */
