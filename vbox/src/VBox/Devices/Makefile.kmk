@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13057 2008-10-07 18:05:32Z vboxsync $
+# $Id: Makefile.kmk 13375 2008-10-17 14:18:29Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -196,7 +196,8 @@ VBoxDD_LDFLAGS.l4       = -Wl,--no-undefined
 # VBoxDD2 (shared object)
 #
 VBoxDD2_TEMPLATE        = VBOXR3
-VBoxDD2_DEFS            = IN_VBOXDD2
+VBoxDD2_DEFS            = IN_VBOXDD2 \
+			  $(if $(VBOX_WITH_VMI),VBOX_WITH_VMI,)
 VBoxDD2_INCS           := \
 	$(PATH_SUB_CURRENT)
 VBoxDD2_SOURCES         = \

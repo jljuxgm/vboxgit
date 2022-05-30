@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 13185 2008-10-10 21:26:06Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 13375 2008-10-17 14:18:29Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1069,6 +1069,16 @@ REMR3DECL(int) REMR3Run(PVM pVM)
             Log2(("REMR3Run: cpu_exec -> EXCP_EXECUTE_HWACC\n"));
             rc = VINF_EM_RESCHEDULE_HWACC;
             break;
+
+#ifdef VBOX_WITH_VMI
+        /*
+         *
+         */
+        case EXCP_PARAV_CALL:
+            Log2(("REMR3Run: cpu_exec -> EXCP_PARAV_CALL\n"));
+            rc = VINF_EM_RESCHEDULE_PARAV;
+            break;
+#endif
 
         /*
          * An EM RC was raised (VMR3Reset/Suspend/PowerOff/some-fatal-error).
