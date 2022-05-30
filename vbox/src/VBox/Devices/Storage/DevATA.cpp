@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 13004 2008-10-06 12:25:56Z vboxsync $ */
+/* $Id: DevATA.cpp 13010 2008-10-06 14:27:29Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1731,7 +1731,6 @@ static bool atapiGetEventStatusNotificationSS(ATADevState *s)
 {
     uint8_t *pbBuf = s->CTX_SUFF(pbIOBuffer);
 
-    LogRel(("atapiGetEventStatusNotificationSS\n"));
     Assert(s->uTxDir == PDMBLOCKTXDIR_FROM_DEVICE);
     Assert(s->cbElementaryTransfer <= 8);
 
@@ -2496,7 +2495,6 @@ static void atapiParseCmdPassthrough(ATADevState *s)
             uTxDir = PDMBLOCKTXDIR_FROM_DEVICE;
             goto sendcmd;
         case SCSI_GET_EVENT_STATUS_NOTIFICATION:
-            LogRel(("SCSI_GET_EVENT_STATUS_NOTIFICATION\n"));
             cbTransfer = ataBE2H_U16(pbPacket + 7);
             if (ASMAtomicReadU32(&s->MediaEventStatus) != ATA_EVENT_STATUS_UNCHANGED)
             {
