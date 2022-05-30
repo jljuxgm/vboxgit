@@ -1,4 +1,4 @@
-/* $Id: PGMPhysRWTmpl.h 13146 2008-10-09 22:58:12Z vboxsync $ */
+/* $Id: PGMPhysRWTmpl.h 17534 2009-03-08 03:05:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Access Template.
  */
@@ -97,7 +97,7 @@ VMMDECL(void) PGMPHYSFN_WRITENAME(PVM pVM, RTGCPHYS GCPhys, PGMPHYS_DATATYPE val
         return;
     }
 #endif /* PGM_PHYSMEMACCESS_CACHING */
-    return PGMPhysWrite(pVM, GCPhys, &val, sizeof(val));
+    PGMPhysWrite(pVM, GCPhys, &val, sizeof(val));
 }
 
 #undef PGMPHYSFN_READNAME
