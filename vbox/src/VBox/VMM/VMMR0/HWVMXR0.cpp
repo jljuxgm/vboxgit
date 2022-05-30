@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 12749 2008-09-25 15:23:55Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 12750 2008-09-25 15:24:36Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1857,7 +1857,7 @@ ResumeExecution:
                     STAM_PROFILE_ADV_STOP(&pVM->hwaccm.s.StatExit, x);
                     goto ResumeExecution;
                 }
-                AssertMsg(rc == VERR_EM_INTERPRETER, ("Unexpected rc=%VRc\n", rc));
+                AssertMsg(rc == VERR_EM_INTERPRETER, ("Unexpected rc=%Vrc\n", rc));
                 break;
             }
 
