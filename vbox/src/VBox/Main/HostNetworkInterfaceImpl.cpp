@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 17835 2009-03-13 15:18:59Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 17865 2009-03-14 10:05:29Z vboxsync $ */
 
 /** @file
  *
@@ -378,6 +378,11 @@ STDMETHODIMP HostNetworkInterface::COMGETTER(InterfaceType) (HostNetworkInterfac
 
     return S_OK;
 
+}
+
+STDMETHODIMP HostNetworkInterface::COMGETTER(NetworkName) (BSTR *aNetworkName)
+{
+    return E_NOTIMPL;
 }
 
 STDMETHODIMP HostNetworkInterface::EnableStaticIpConfig (IN_BSTR aIPAddress, IN_BSTR aNetMask)

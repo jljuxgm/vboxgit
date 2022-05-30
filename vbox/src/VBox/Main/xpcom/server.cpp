@@ -1,4 +1,4 @@
-/* $Id: server.cpp 17684 2009-03-11 12:15:33Z vboxsync $ */
+/* $Id: server.cpp 17865 2009-03-14 10:05:29Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -110,6 +110,7 @@
 #include <SerialPortImpl.h>
 #include <ParallelPortImpl.h>
 #include <USBControllerImpl.h>
+#include "DhcpServerImpl.h"
 #ifdef VBOX_WITH_USB
 # include <HostUSBDeviceImpl.h>
 # include <USBDeviceImpl.h>
@@ -192,6 +193,9 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(HostFloppyDrive, IHostFloppyDrive)
 
 NS_DECL_CLASSINFO(HostNetworkInterface)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(HostNetworkInterface, IHostNetworkInterface)
+
+NS_DECL_CLASSINFO(DhcpServer)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(DhcpServer, IDhcpServer)
 
 NS_DECL_CLASSINFO(GuestOSType)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(GuestOSType, IGuestOSType)

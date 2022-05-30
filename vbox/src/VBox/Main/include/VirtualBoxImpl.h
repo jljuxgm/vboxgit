@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 17737 2009-03-12 12:20:25Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 17865 2009-03-14 10:05:29Z vboxsync $ */
 
 /** @file
  *
@@ -132,6 +132,7 @@ public:
     STDMETHOD(COMGETTER(GuestOSTypes)) (ComSafeArrayOut (IGuestOSType *, aGuestOSTypes));
     STDMETHOD(COMGETTER(SharedFolders)) (ComSafeArrayOut (ISharedFolder *, aSharedFolders));
     STDMETHOD(COMGETTER(PerformanceCollector)) (IPerformanceCollector **aPerformanceCollector);
+    STDMETHOD(COMGETTER(DhcpServers)) (ComSafeArrayOut (IDhcpServer *, aDhcpServers));
 
     /* IVirtualBox methods */
 
@@ -182,6 +183,12 @@ public:
 
     STDMETHOD(SaveSettings)();
     STDMETHOD(SaveSettingsWithBackup) (BSTR *aBakFileName);
+
+//    STDMETHOD(CreateDhcpServerForInterface) (/*IHostNetworkInterface * aIinterface, */IDhcpServer ** aServer);
+    STDMETHOD(CreateDhcpServer) (IN_BSTR aName, IDhcpServer ** aServer);
+//    STDMETHOD(FindDhcpServerForInterface) (IHostNetworkInterface * aIinterface, IDhcpServer ** aServer);
+    STDMETHOD(FindDhcpServerByName) (IN_BSTR aName, IDhcpServer ** aServer);
+    STDMETHOD(RemoveDhcpServer) (IDhcpServer * aServer);
 
     /* public methods only for internal purposes */
 

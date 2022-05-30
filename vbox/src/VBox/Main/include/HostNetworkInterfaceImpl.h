@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 17835 2009-03-13 15:18:59Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 17865 2009-03-14 10:05:29Z vboxsync $ */
 
 /** @file
  *
@@ -79,6 +79,7 @@ public:
     STDMETHOD(COMGETTER(MediumType)) (HostNetworkInterfaceMediumType_T *aType);
     STDMETHOD(COMGETTER(Status)) (HostNetworkInterfaceStatus_T *aStatus);
     STDMETHOD(COMGETTER(InterfaceType)) (HostNetworkInterfaceType_T *aType);
+    STDMETHOD(COMGETTER(NetworkName)) (BSTR *aNetworkName);
 
     STDMETHOD(EnableStaticIpConfig) (IN_BSTR aIPAddress, IN_BSTR aNetworkMask);
     STDMETHOD(EnableStaticIpConfigV6) (IN_BSTR aIPV6Address, ULONG aIPV6MaskPrefixLength);
