@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 17316 2009-03-03 20:04:53Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 17390 2009-03-05 11:07:12Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1478,6 +1478,7 @@ static bool pgmPoolCacheReusedByKind(PGMPOOLKIND enmKind1, PGMPOOLKIND enmKind2)
         case PGMPOOLKIND_PAE_PD2_FOR_32BIT_PD:
         case PGMPOOLKIND_PAE_PD3_FOR_32BIT_PD:
         case PGMPOOLKIND_32BIT_PD:
+        case PGMPOOLKIND_PAE_PDPT:
             switch (enmKind2)
             {
                 case PGMPOOLKIND_PAE_PD_FOR_PAE_PD:
