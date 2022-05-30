@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 13852 2008-11-05 12:50:30Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -194,6 +194,9 @@
 #include <VBox/ssm.h>
 #include <VBox/hwaccm.h>
 #include <VBox/patm.h>
+#ifdef VBOX_WITH_VMI
+# include <VBox/parav.h>
+#endif
 #include <VBox/pdm.h>
 #include <VBox/pgm.h>
 #include <VBox/iom.h>
