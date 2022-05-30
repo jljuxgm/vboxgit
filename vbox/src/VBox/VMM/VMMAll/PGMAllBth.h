@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 14755 2008-11-28 02:58:01Z vboxsync $ */
+/* $Id: PGMAllBth.h 14868 2008-12-01 15:20:06Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3232,7 +3232,7 @@ PGM_BTH_DECL(int, SyncCR3)(PVM pVM, uint64_t cr0, uint64_t cr3, uint64_t cr4, bo
 #  if PGM_SHW_TYPE == PGM_TYPE_32BIT
             Assert(pgmShwGet32BitPDEPtr(&pVM->pgm.s, (uint32_t)iPD << SHW_PD_SHIFT) == pPDEDst);
 #  elif PGM_SHW_TYPE == PGM_TYPE_PAE
-#   ifdef VBOX_STRICT
+#   if defined(VBOX_STRICT) && !defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0) /* Unfortuantely not reliable with PGMR0DynMap and multiple VMs. */
             RTGCPTR GCPtrStrict = (uint32_t)iPD << GST_PD_SHIFT;
 #    if PGM_GST_TYPE == PGM_TYPE_PAE
             GCPtrStrict |= iPdpt << X86_PDPT_SHIFT;
