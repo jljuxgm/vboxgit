@@ -1,4 +1,4 @@
-/* $Id: Guid.h 13580 2008-10-27 14:04:18Z vboxsync $ */
+/* $Id: Guid.h 13624 2008-10-28 13:15:32Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -54,7 +54,7 @@ namespace com
 {
 
 /**
- *  Helper class that represents the UUID type and hides platform-siecific
+ *  Helper class that represents the UUID type and hides platform-specific
  *  implementation details.
  */
 class Guid
