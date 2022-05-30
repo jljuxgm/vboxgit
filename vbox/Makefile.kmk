@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15825 2009-01-07 03:03:28Z vboxsync $
+# $Id: Makefile.kmk 15938 2009-01-14 12:58:42Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -874,4 +874,5 @@ snapshot:
 	    -f $(TARBALLPATH)/$(TARBALLNAME) \
 	    $(TARBALLROOT)
 	$(QUIET)$(RM) $(TARBALLPATH)/$(TARBALLROOT)
+
 
