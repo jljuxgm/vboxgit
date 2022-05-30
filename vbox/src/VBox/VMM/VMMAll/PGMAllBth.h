@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 13397 2008-10-20 14:51:23Z vboxsync $ */
+/* $Id: PGMAllBth.h 13398 2008-10-20 14:58:11Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -371,7 +371,8 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
             rc = pgmPhysGetPageEx(&pVM->pgm.s, GCPhys, &pPage);
             if (VBOX_SUCCESS(rc))
             {
-                if (PGM_PAGE_HAS_ANY_HANDLERS(pPage))
+                if (   PGM_PAGE_HAS_ACTIVE_PHYSICAL_HANDLERS(pPage)
+                    || PGM_PAGE_HAS_ACTIVE_VIRTUAL_HANDLERS(pPage))
                 {
                     if (PGM_PAGE_HAS_ANY_PHYSICAL_HANDLERS(pPage))
                     {
