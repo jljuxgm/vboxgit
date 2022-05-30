@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 14705 2008-11-27 13:55:13Z vboxsync $ */
+/* $Id: HWACCM.cpp 14758 2008-11-28 08:34:19Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -778,19 +778,6 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
         }
     }
 
-#if (HC_ARCH_BITS == 32) && defined(VBOX_ENABLE_64_BITS_GUESTS)
-    if (    pVM->fHWACCMEnabled
-        &&  CPUMGetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_LONG_MODE))
-    {
-        rc  = VMMR3InitSwitcher(pVM, VMMSWITCHER_32_TO_AMD64);
-        if (VBOX_FAILURE(rc))
-        {
-            LogRel(("WARNING: Unable to map the VM structure into the intermediate page table; disabling long mode support\n"));
-            CPUMClearGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_LONG_MODE);
-            CPUMClearGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_LAHF);
-        }
-    }
-#endif
     return VINF_SUCCESS;
 }
 
