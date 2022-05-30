@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 14591 2008-11-25 19:53:49Z vboxsync $ */
+/* $Id: MMPagePool.cpp 14602 2008-11-25 21:55:34Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -252,7 +252,7 @@ DECLINLINE(void *) mmR3PagePoolAlloc(PMMPAGEPOOL pPool)
                               &pSub->pvPages,
                               NULL,
                               paPhysPages);
-        if (RT_SUCCESS(rc))
+        if (RT_FAILURE(rc))
             rc = VMSetError(pPool->pVM, rc, RT_SRC_POS,
                             N_("Failed to lock host %zd bytes of memory (out of memory)"), (size_t)cPages << PAGE_SHIFT);
     }
