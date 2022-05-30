@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13052 2008-10-07 14:10:29Z vboxsync $
+# $Id: Makefile.kmk 13308 2008-10-15 21:22:46Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -387,7 +387,7 @@ endif # freebsd
 #
 ifeq ($(KBUILD_TARGET),solaris)
 vboxdrv_TEMPLATE      = VBOXR0DRV
-vboxdrv_DEFS          = IN_RT_R0 IN_SUP_R0
+vboxdrv_DEFS          = IN_RT_R0 IN_SUP_R0 SUPDRV_WITH_RELEASE_LOGGER
 ifdef VBOX_WITH_IDT_PATCHING
 vboxdrv_DEFS         += VBOX_WITH_IDT_PATCHING
 endif
