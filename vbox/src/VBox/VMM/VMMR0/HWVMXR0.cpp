@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15545 2008-12-15 20:52:30Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15555 2008-12-15 21:46:55Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1382,7 +1382,8 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
             {
             case PGMMODE_REAL:          /* Real mode                 -> emulated using v86 mode */
             case PGMMODE_PROTECTED:     /* Protected mode, no paging -> emulated using identity mapping. */
-            case PGMMODE_32_BIT:        /* 32-bit paging. */
+            case PGMMODE_32_BIT:        /* 32-bit paging. */                
+                val &= ~X86_CR4_PAE;
                 break;
 
             case PGMMODE_PAE:           /* PAE paging. */
