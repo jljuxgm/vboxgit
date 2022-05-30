@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 14936 2008-12-03 11:07:37Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 14937 2008-12-03 11:42:33Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -3291,7 +3291,7 @@ HRESULT VirtualBox::registerMachine (Machine *aMachine)
                 aMachine->id().raw(), m->settingsFileFull().raw());
         }
 
-        ComAssertRet (rc == E_INVALIDARG, rc);
+        ComAssertRet (rc == VBOX_E_OBJECT_NOT_FOUND, rc);
         rc = S_OK;
     }
 
