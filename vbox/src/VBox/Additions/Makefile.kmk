@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13917 2008-11-06 13:57:47Z vboxsync $
+# $Id: Makefile.kmk 14140 2008-11-12 19:08:56Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -69,13 +69,6 @@ ifeq ($(KBUILD_TARGET),solaris)
 endif
 ifeq ($(KBUILD_TARGET),win)
  include $(PATH_SUB_CURRENT)/WINNT/Makefile.kmk
-endif
-
-# @todo move crOpenGL parts into correct places in source tree
-if1of ($(KBUILD_TARGET),win linux solaris)
- ifdef VBOX_WITH_CROGL
-  include $(PATH_SUB_CURRENT)/WINNT/Graphics/crOpenGL/Makefile.kmk
- endif
 endif
 
 # The packing target rule, but only if we're on the local build box.
