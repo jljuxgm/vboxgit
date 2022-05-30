@@ -1,4 +1,4 @@
-/* $Id: VBoxIChatTheaterWrapper.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VBoxIChatTheaterWrapper.h 16469 2009-02-02 17:21:58Z vboxsync $ */
 /** @file
  * Qt GUI - iChat Theater cocoa wrapper.
  */
@@ -24,12 +24,20 @@
 
 #if defined (Q_WS_MAC) && defined (VBOX_WITH_ICHAT_THEATER)
 
-#include <Carbon/Carbon.h>
+#ifdef QT_MAC_USE_COCOA
+/** @todo Carbon -> Cocoa */
+#else
+# include <Carbon/Carbon.h>
+#endif
 
 __BEGIN_DECLS
 
 void initSharedAVManager();
+#ifdef QT_MAC_USE_COCOA
+/** @todo Carbon -> Cocoa */
+#else
 void setImageRef (CGImageRef aImage);
+#endif
 
 __END_DECLS
 
