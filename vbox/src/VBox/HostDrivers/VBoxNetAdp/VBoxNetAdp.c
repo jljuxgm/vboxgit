@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp.c 16978 2009-02-20 17:35:38Z vboxsync $ */
+/* $Id: VBoxNetAdp.c 17025 2009-02-23 15:17:24Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Common Code.
  */
@@ -34,6 +34,7 @@
 #include <iprt/spinlock.h>
 #include <iprt/uuid.h>
 
+#ifndef RT_OS_SOLARIS
 #include <net/ethernet.h>
 #include <net/if_ether.h>
 #include <net/if_types.h>
@@ -42,6 +43,7 @@
 #include <net/if_dl.h>
 #include <sys/errno.h>
 #include <sys/param.h>
+#endif
 
 
 /*******************************************************************************
