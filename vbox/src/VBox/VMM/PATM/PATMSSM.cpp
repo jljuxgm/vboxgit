@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 11983 2008-09-02 13:16:55Z vboxsync $ */
+/* $Id: PATMSSM.cpp 11984 2008-09-02 13:18:47Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -652,7 +652,7 @@ DECLCALLBACK(int) patmr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
             AssertRCReturn(rc, rc);
         }
 
-#ifdef LOG_ENABLED
+#if 0 /* can fail def LOG_ENABLED */
         if (    pPatchRec->patch.uState != PATCH_REFUSED
             &&  !(pPatchRec->patch.flags & PATMFL_INT3_REPLACEMENT))
         {
