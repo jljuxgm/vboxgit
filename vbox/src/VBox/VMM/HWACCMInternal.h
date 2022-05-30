@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13749 2008-11-03 14:30:40Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13750 2008-11-03 14:46:19Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -193,11 +193,9 @@ typedef struct HWACCM
     /** Old style FPU reporting trap mask override performed (optimization) */
     bool                        fFPUOldStyleOverride;
 
-#if 0
     /** Explicit alignment padding to make 32-bit gcc align u64RegisterMask
      *  naturally. */
     bool                        padding[1];
-#endif
 
     /** HWACCM_CHANGED_* flags. */
     RTUINT                      fContextUseFlags;
