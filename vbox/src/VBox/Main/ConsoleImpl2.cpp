@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 15593 2008-12-16 14:56:18Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 15595 2008-12-16 15:12:36Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1521,8 +1521,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                     for (size_t i = 0; i < hostNetworkInterfaces.size(); ++i)
                     {
                         Bstr name;
-                        hostNetworkInterfaces[i].COMGETTER(Name) (name.asOutParam());
-                        if (name == hostif)
+                        hostNetworkInterfaces[i]->COMGETTER(Name) (name.asOutParam());
+                        if (name == hostInterfaceName)
                         {
                             hostInterface = hostNetworkInterfaces[i];
                             break;
