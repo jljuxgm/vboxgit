@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 13124 2008-10-09 11:49:49Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 13137 2008-10-09 15:20:29Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -2360,6 +2360,9 @@ static bool vboxNetFltSolarisIsOurMBlk(PVBOXNETFLTINS pThis, vboxnetflt_promisc_
         pCur->cbPacket = 0;
         if (pPrev)
         {
+            if (!pCur->pNext)
+                pPromiscStream->pTail = pPrev;
+
             pPrev->pNext = pCur->pNext;
             pCur->pNext = pPromiscStream->pHead;
             pPromiscStream->pHead = pCur;
