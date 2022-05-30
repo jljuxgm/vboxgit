@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12540 2008-09-17 12:57:45Z vboxsync $
+# $Id: Config.kmk 12544 2008-09-17 14:28:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -446,6 +446,7 @@ VBOX_BRAND_GUI_VBOX_48PX_PNG   := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/im
 VBOX_BRAND_GUI_VBOX_64PX_PNG   := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_64px.png
 VBOX_BRAND_GUI_CUBE_42PX_PNG   := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox4/images/NonOSE/VirtualBox_cube_42px.png
 VBOX_BRAND_WIN_INST_DLGBMP     := $(PATH_ROOT)/src/VBox/Installer/win/Binary/Dialog.bmp
+VBOX_BRAND_WIN_INST_EXT        :=
 VBOX_BRAND_WIN_ADD_INST_DLGBMP := $(PATH_ROOT)/src/VBox/Additions/WINNT/Installer/welcome.bmp
 VBOX_BRAND_DARWIN_DISKIMAGE_BG := $(PATH_ROOT)/src/VBox/Installer/darwin/DiskImage/vbox_folder.tiff
 VBOX_BRAND_DARWIN_INSTALLER_BG := $(PATH_ROOT)/src/VBox/Installer/darwin/VirtualBox_mpkg/background.tif
@@ -3533,7 +3534,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12540 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12544 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
