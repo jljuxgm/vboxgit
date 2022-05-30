@@ -1,4 +1,4 @@
-/* $Id: VBoxXPCOMC.cpp 16684 2009-02-11 16:47:53Z vboxsync $ */
+/* $Id: VBoxXPCOMC.cpp 16689 2009-02-11 19:12:30Z vboxsync $ */
 /** @file VBoxXPCOMC.cpp
  * Utility functions to use with the C binding for XPCOM.
  */
@@ -78,7 +78,7 @@ VBoxSetEnv(const char *pszVar, const char *pszValue)
     return RTEnvSet(pszVar, pszValue);
 }
 
-VBOXXPCOMC_DECL(const char*)
+VBOXXPCOMC_DECL(const char *)
 VBoxGetEnv(const char *pszVar)
 {
     return RTEnvGet(pszVar);
