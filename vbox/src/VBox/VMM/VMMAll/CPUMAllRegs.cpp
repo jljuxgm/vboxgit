@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 14859 2008-12-01 14:01:55Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 14870 2008-12-01 15:28:54Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2073,33 +2073,6 @@ VMMDECL(bool) CPUMIsHostUsingSysCall(PVM pVM)
 VMMDECL(int) CPUMHandleLazyFPU(PVM pVM, PVMCPU pVCpu)
 {
     return CPUMHandleLazyFPUAsm(&pVCpu->cpum.s);
-}
-
-
-/**
- * Restore host FPU/XMM state
- *
- * @returns VBox status code.
- * @param   pVM         VM handle.
- * @param   pVCpu       VMCPU handle
- */
-VMMDECL(int) CPUMSaveGuestRestoreHostFPUState(PVM pVM, PVMCPU pVCpu)
-{
-    Assert(pVM->cpum.s.CPUFeatures.edx.u1FXSR);
-    return CPUMSaveGuestRestoreHostFPUStateAsm(&pVCpu->cpum.s);
-}
-
-/**
- * Set host FPU/XMM state
- *
- * @returns VBox status code.
- * @param   pVM         VM handle.
- * @param   pVCpu       VMCPU handle
- */
-VMMDECL(int) CPUMRestoreHostFPUState(PVM pVM, PVMCPU pVCpu)
-{
-    Assert(pVM->cpum.s.CPUFeatures.edx.u1FXSR);
-    return CPUMRestoreHostFPUStateAsm(&pVCpu->cpum.s);
 }
 
 #endif /* !IN_RING3 */
