@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 16495 2009-02-03 21:20:36Z vboxsync $ */
+/* $Id: ApplianceImpl.h 16503 2009-02-04 10:31:15Z vboxsync $ */
 
 /** @file
  *
@@ -72,14 +72,16 @@ public:
     /* IAppliance methods */
     /* void interpret (); */
     STDMETHOD(Interpret)(void);
+    STDMETHOD(ImportAppliance)(IProgress **aProgress);
 
     /* public methods only for internal purposes */
-    STDMETHOD(ImportAppliance)();
 
     /* private instance data */
 private:
     /** weak VirtualBox parent */
     const ComObjPtr <VirtualBox, ComWeakRef> mVirtualBox;
+
+    struct Task; /* Worker thread for import */
 
     struct Data;            // obscure, defined in AppliannceImpl.cpp
     Data *m;
@@ -91,6 +93,8 @@ private:
 
     HRESULT searchUniqueVMName(Utf8Str& aName) const;
     HRESULT searchUniqueDiskImageFilePath(Utf8Str& aName) const;
+
+    static DECLCALLBACK(int) taskThread(RTTHREAD thread, void *pvUser);
 };
 
 struct VirtualSystemDescriptionEntry
