@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 16132 2009-01-21 12:30:44Z vboxsync $ */
+/* $Id: EM.cpp 16632 2009-02-10 13:24:12Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2096,7 +2096,6 @@ int emR3RawPrivileged(PVM pVM)
                                 PATMTRANSSTATE  enmState;
                                 RTGCPTR         pOrgInstrGC = PATMR3PatchToGCPtr(pVM, pCtx->rip, &enmState);
 
-                                Assert(pCtx->eflags.Bits.u1IF == 0);
                                 Log(("Force recompiler switch due to cr0 (%RGp) update\n", pCtx->cr0));
                                 if (enmState == PATMTRANS_OVERWRITTEN)
                                 {
