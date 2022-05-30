@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 13991 2008-11-10 10:36:38Z vboxsync $ */
+/* $Id: PGMAll.cpp 13993 2008-11-10 10:52:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1064,7 +1064,7 @@ DECLINLINE(int) pgmShwGetEPTPDPtr(PVM pVM, RTGCPTR64 GCPtr, PEPTPDPT *ppPdpt, PE
 
     Assert(HWACCMIsNestedPagingActive(pVM));
 
-# ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_R0
+# ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
     rc = PGM_HCPHYS_2_PTR(pVM, pPGM->HCPhysNestedRoot, &pPml4);
     AssertRCReturn(rc);
 # else
