@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 13751 2008-11-03 14:53:11Z vboxsync $ */
+/* $Id: MMHyper.cpp 13767 2008-11-03 17:32:21Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -104,7 +104,7 @@ int mmR3HyperInit(PVM pVM)
         /*
          * Map the VM structure into the hypervisor space.
          */
-        AssertRelease(pVM->cbSelf == RT_OFFSETOF(VM, aCpu[pVM->cCPUs]));
+        AssertRelease(pVM->cbSelf == RT_UOFFSETOF(VM, aCpu[pVM->cCPUs]));
 
         RTGCPTR GCPtr;
         rc = MMR3HyperMapPages(pVM, pVM, pVM->pVMR0, RT_ALIGN_Z(pVM->cbSelf, PAGE_SIZE) >> PAGE_SHIFT, pVM->paVMPagesR3, "VM", &GCPtr);
