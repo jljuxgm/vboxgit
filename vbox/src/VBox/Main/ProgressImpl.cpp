@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 14715 2008-11-27 15:34:57Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -758,7 +758,7 @@ STDMETHODIMP Progress::Cancel()
 //    return S_OK;
 
     ComAssertMsgFailed (("Not implemented!"));
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 }
 
 // public methods only for internal purposes
@@ -1445,7 +1445,7 @@ STDMETHODIMP CombinedProgress::Cancel()
 //    return S_OK;
 
     ComAssertMsgFailed (("Not implemented!"));
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 }
 
 // private methods

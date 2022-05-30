@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 14627 2008-11-26 10:17:37Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 14715 2008-11-27 15:34:57Z vboxsync $ */
 
 /** @file
  *
@@ -128,7 +128,7 @@ STDMETHODIMP MachineDebugger::COMGETTER(Singlestep) (BOOL *aEnabled)
     CheckComRCReturnRC (autoCaller.rc());
 
     /** @todo */
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 }
 
 /**
@@ -143,7 +143,7 @@ STDMETHODIMP MachineDebugger::COMSETTER(Singlestep) (BOOL aEnable)
     CheckComRCReturnRC (autoCaller.rc());
 
     /** @todo */
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 }
 
 /**

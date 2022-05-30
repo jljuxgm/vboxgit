@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 14666 2008-11-26 23:03:23Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 14715 2008-11-27 15:34:57Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -745,7 +745,7 @@ VirtualBox::COMGETTER(PerformanceCollector) (IPerformanceCollector **aPerformanc
 
     return S_OK;
 #else /* !VBOX_WITH_RESOURCE_USAGE_API */
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 #endif /* !VBOX_WITH_RESOURCE_USAGE_API */
 }
 
@@ -1857,7 +1857,7 @@ STDMETHODIMP VirtualBox::UnregisterCallback (IVirtualBoxCallback *aCallback)
 STDMETHODIMP VirtualBox::WaitForPropertyChange (INPTR BSTR aWhat, ULONG aTimeout,
                                                 BSTR *aChanged, BSTR *aValues)
 {
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 }
 
 STDMETHODIMP VirtualBox::SaveSettings()

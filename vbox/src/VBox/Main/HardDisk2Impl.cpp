@@ -1,4 +1,4 @@
-/* $Id: HardDisk2Impl.cpp 14700 2008-11-27 12:23:25Z vboxsync $ */
+/* $Id: HardDisk2Impl.cpp 14715 2008-11-27 15:34:57Z vboxsync $ */
 
 /** @file
  *
@@ -1179,7 +1179,7 @@ STDMETHODIMP HardDisk2::MergeTo (INPTR GUIDPARAM aTargetId, IProgress **aProgres
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
 
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 }
 
 STDMETHODIMP HardDisk2::CloneTo (IHardDisk2 *aTarget, IProgress **aProgress)
@@ -1187,7 +1187,7 @@ STDMETHODIMP HardDisk2::CloneTo (IHardDisk2 *aTarget, IProgress **aProgress)
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
 
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 }
 
 STDMETHODIMP HardDisk2::FlattenTo (IHardDisk2 *aTarget, IProgress **aProgress)
@@ -1195,7 +1195,7 @@ STDMETHODIMP HardDisk2::FlattenTo (IHardDisk2 *aTarget, IProgress **aProgress)
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
 
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 }
 
 // public methods for internal purposes only

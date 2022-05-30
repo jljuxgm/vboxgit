@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 14715 2008-11-27 15:34:57Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -415,7 +415,7 @@ STDMETHODIMP USBController::CreateDeviceFilter (INPTR BSTR aName,
 
     return S_OK;
 #else
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 #endif
 }
 
@@ -480,7 +480,7 @@ STDMETHODIMP USBController::InsertDeviceFilter (ULONG aPosition,
 
     return S_OK;
 #else
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 #endif
 }
 
@@ -549,7 +549,7 @@ STDMETHODIMP USBController::RemoveDeviceFilter (ULONG aPosition,
 
     return S_OK;
 #else
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 #endif
 }
 

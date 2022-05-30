@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 14579 2008-11-25 15:59:35Z vboxsync $ */
+/* $Id: MediumImpl.cpp 14715 2008-11-27 15:34:57Z vboxsync $ */
 
 /** @file
  *
@@ -93,7 +93,7 @@ STDMETHODIMP MediumBase::COMSETTER(Description) (INPTR BSTR aDescription)
     /// registries of portable VMs referring to this medium), this will also
     /// require to add the mRegistered flag to data
 
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 }
 
 STDMETHODIMP MediumBase::COMGETTER(State) (MediaState_T *aState)
@@ -162,7 +162,7 @@ STDMETHODIMP MediumBase::COMSETTER(Location) (INPTR BSTR aLocation)
     /// the global registry (and local registries of portable VMs referring to
     /// this medium), this will also require to add the mRegistered flag to data
 
-    return E_NOTIMPL;
+    ReturnComNotImplemented();
 }
 
 STDMETHODIMP MediumBase::COMGETTER(Name) (BSTR *aName)
