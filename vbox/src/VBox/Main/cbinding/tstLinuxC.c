@@ -3,14 +3,30 @@
  * Demonstrator program to illustrate use of C bindings of Main API.
  * Linux only at the moment due to shared library magic in the Makefile.
  *
- * $Id: tstLinuxC.c 16406 2009-01-30 09:42:31Z vboxsync $
+ * $Id: tstLinuxC.c 16483 2009-02-03 10:52:11Z vboxsync $
+ */
+
+/*
+ * Copyright (C) 2009 Sun Microsystems, Inc.
+ *
+ * This file is part of VirtualBox Open Source Edition (OSE), as
+ * available from http://www.virtualbox.org. This file is free software;
+ * you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GPL) as published by the Free Software
+ * Foundation, in version 2 as it comes in the "COPYING" file of the
+ * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+ * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ *
+ * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
+ * Clara, CA 95054 USA or visit http://www.sun.com if you need
+ * additional information or have any questions.
  */
 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <iconv.h>
-#include "tstLinuxC.h"
+#include "cbinding.h"
 
 static char *nsIDToString(nsID *guid);
 static void listVMs(IVirtualBox *virtualBox, ISession *session);
