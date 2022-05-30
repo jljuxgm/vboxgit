@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 13796 2008-11-04 18:37:33Z vboxsync $ */
+/* $Id: MMHyper.cpp 13815 2008-11-04 22:46:38Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -109,7 +109,7 @@ int mmR3HyperInit(PVM pVM)
         rc = MMR3HyperMapPages(pVM, pVM, pVM->pVMR0, RT_ALIGN_Z(pVM->cbSelf, PAGE_SIZE) >> PAGE_SHIFT, pVM->paVMPagesR3, "VM", &GCPtr);
         if (VBOX_SUCCESS(rc))
         {
-            pVM->pVMRC = (RTGCPTR32)GCPtr;
+            pVM->pVMRC = (RTRCPTR)GCPtr;
             pVM->pVMGC = pVM->pVMRC;
             for (uint32_t i = 0; i < pVM->cCPUs; i++)
                 pVM->aCpus[i].pVMRC = pVM->pVMRC;
