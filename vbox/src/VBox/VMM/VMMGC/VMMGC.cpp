@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 17397 2009-03-05 13:34:25Z vboxsync $ */
+/* $Id: VMMGC.cpp 17399 2009-03-05 13:44:06Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -186,8 +186,9 @@ VMMRCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger)
  */
 VMMRCDECL(void) VMMGCLogFlushIfFull(PVM pVM)
 {
+
     if (    pVM->vmm.s.pRCLoggerRC
-        &&  pVM->vmm.s.pRCLoggerRC->offScratch >= sizeof(pVM->vmm.s.pRCLoggerRC->achScratch)*4/3)
+        &&  pVM->vmm.s.pRCLoggerRC->offScratch >= (sizeof(pVM->vmm.s.pRCLoggerRC->achScratch)*3/4))
     {
         VMMGCCallHost(pVM, VMMCALLHOST_VMM_LOGGER_FLUSH, 0);
     }
