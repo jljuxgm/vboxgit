@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 16173 2009-01-22 15:09:40Z vboxsync $ */
+/* $Id: DevACPI.cpp 16211 2009-01-23 19:23:27Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -185,13 +185,15 @@ struct ACPIState
     uint8_t             u8IndexShift;
     uint8_t             u8UseIOApic;
     uint8_t             u8UseFdc;
-    /* If High Precision Event Timer device should be supported */
+    /** If High Precision Event Timer device should be supported */
     uint8_t             u8UseHpet;
-    /* If System Management Controller device should be supported */
+    /** If System Management Controller device should be supported */
     uint8_t             u8UseSmc;
+/** @todo conver the above to bool where possible.  */
 
     bool                fPowerButtonHandled;
-    uint32_t            Alignment0;
+    /** Aligning IBase. */
+    bool                afAlignment[6];
 
     /** ACPI port base interface. */
     PDMIBASE            IBase;
@@ -203,8 +205,6 @@ struct ACPIState
     R3PTRTYPE(PPDMIBASE) pDrvBase;
     /** Pointer to the driver connector interface */
     R3PTRTYPE(PPDMIACPICONNECTOR) pDrv;
-
-
 };
 
 #pragma pack(1)
