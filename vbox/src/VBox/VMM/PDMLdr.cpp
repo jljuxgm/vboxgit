@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 11889 2008-08-31 18:08:32Z vboxsync $ */
+/* $Id: PDMLdr.cpp 12709 2008-09-25 09:24:33Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -295,8 +295,9 @@ int pdmR3LoadR3U(PUVM pUVM, const char *pszFilename, const char *pszName)
     }
 
     /* Something went wrong, most likely module not found. Don't consider other unlikely errors */
+    rc = VMSetError(pUVM->pVM, rc, RT_SRC_POS, N_("Unable to load R3 module %s (%s)"), pModule->szFilename, pszName);
     RTMemFree(pModule);
-    return VMSetError(pUVM->pVM, rc, RT_SRC_POS, N_("Unable to load R3 module %s"), pszFilename);
+    return rc;
 }
 
 
