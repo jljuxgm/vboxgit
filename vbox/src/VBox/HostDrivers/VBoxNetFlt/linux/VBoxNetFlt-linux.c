@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 16706 2009-02-12 13:04:31Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 17062 2009-02-24 12:55:23Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -238,7 +238,7 @@ static void vboxTapNetDevInit(struct net_device *pNetDev)
 
 static int vboxTapRegisterNetDev(void)
 {
-    int rc;
+    int rc = VINF_SUCCESS;
     struct net_device *pNetDev;
 
     /* No need for private data. */
