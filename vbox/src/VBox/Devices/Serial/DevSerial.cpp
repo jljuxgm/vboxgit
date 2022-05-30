@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 12423 2008-09-12 14:42:49Z vboxsync $ */
+/* $Id: DevSerial.cpp 12425 2008-09-12 14:46:29Z vboxsync $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -241,10 +241,6 @@ static void serial_update_parameters(SerialState *s)
     Log(("speed=%d parity=%c data=%d stop=%d\n", speed, parity, data_bits, stop_bits));
     if (RT_LIKELY(s->pDrvChar))
         s->pDrvChar->pfnSetParameters(s->pDrvChar, speed, parity, data_bits, stop_bits);
-#ifdef RT_OS_DARWIN
-    if (RT_LIKELY(s->pDrvChar))
-        s->cNsDelay = (69444 - 2000) / s->divider; /* 69444 == 1000,000,000 / (115,000 / 8); 2000 = fudge factor */
-#endif
 }
 
 #endif /* IN_RING3 */
@@ -389,13 +385,6 @@ static uint32_t serial_ioport_read(void *opaque, uint32_t addr, int *pRC)
         break;
     case 5:
         ret = s->lsr;
-#ifdef RT_OS_DARWIN
-        if (    !(ret & UART_LSR_THRE)
-            &&   pThis->HeldXmitNanoTS
-            &&  RTTimeNanoTS() - s->HeldXmitNanoTS >= s->cNsDelay) {
-            ret = s->lsr |= UART_LSR_THRE;
-        }
-#endif
         break;
     case 6:
         if (s->mcr & UART_MCR_LOOP) {
