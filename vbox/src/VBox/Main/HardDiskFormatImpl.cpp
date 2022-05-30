@@ -1,4 +1,4 @@
-/* $Id: HardDiskFormatImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
+/* $Id: HardDiskFormatImpl.cpp 15649 2008-12-18 12:37:11Z vboxsync $ */
 
 /** @file
  *
@@ -242,12 +242,11 @@ STDMETHODIMP HardDiskFormat::DescribeProperties(ComSafeArrayOut (BSTR, aNames),
                                                 ComSafeArrayOut (ULONG, aFlags),
                                                 ComSafeArrayOut (BSTR, aDefaults))
 {
-    if (ComSafeArrayOutIsNull (aNames) ||
-        ComSafeArrayOutIsNull (aDescriptions) ||
-        ComSafeArrayOutIsNull (aTypes) ||
-        ComSafeArrayOutIsNull (aFlags) ||
-        ComSafeArrayOutIsNull (aDefaults))
-        return E_POINTER;
+    CheckComArgSafeArrayNotNull(aNames);
+    CheckComArgSafeArrayNotNull(aDescriptions);
+    CheckComArgSafeArrayNotNull(aTypes);
+    CheckComArgSafeArrayNotNull(aFlags);
+    CheckComArgSafeArrayNotNull(aDefaults);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());

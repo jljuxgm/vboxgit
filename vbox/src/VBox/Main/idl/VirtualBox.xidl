@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 15582 2008-12-16 13:22:33Z vboxsync $ *
+ * $Id: VirtualBox.xidl 15649 2008-12-18 12:37:11Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -8671,8 +8671,9 @@ Snapshot 1 (B.vdi)            Snapshot 1 (B.vdi)
         property. Thus, the number of elements in each returned array is the
         same and corresponds to the number of supported properties.
 
-        The returned arrays are not empty only if the
+        The returned arrays are filled in only if the
         <link to="HardDiskFormatCapabilities_Properties"/> flag is set.
+        All arguments must be non-NULL.
 
         <see>DataType</see>
         <see>DataFlags</see>
