@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 15666 2008-12-18 15:18:39Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 15741 2008-12-24 10:43:21Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2348,8 +2348,10 @@ VMMR0DECL(int) SVMR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
     for (int i=(int)cbParam-1;i>=0;i--)
         CPUMPushHyper(pVM, paParam[i]);
 
+    STAM_PROFILE_ADV_START(&pVCpu->hwaccm.s.StatWorldSwitch3264, z);
     /* Call switcher. */
     rc = pVM->hwaccm.s.pfnHost32ToGuest64R0(pVM);
+    STAM_PROFILE_ADV_STOP(&pVCpu->hwaccm.s.StatWorldSwitch3264, z);
 
     ASMSetFlags(uFlags);
     return rc;
