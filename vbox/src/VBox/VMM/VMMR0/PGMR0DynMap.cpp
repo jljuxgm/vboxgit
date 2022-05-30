@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 14663 2008-11-26 21:08:09Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 14673 2008-11-27 00:21:25Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -1037,7 +1037,7 @@ static void pgmR0DynMapTearDown(PPGMR0DYNMAP pThis)
  */
 DECLINLINE(void) pgmR0DynMapReleasePageLocked(PPGMR0DYNMAP pThis, uint32_t iPage, int32_t cRefs)
 {
-    cRefs = ASMAtomicSubS32(&pThis->paPages[iPage].cRefs, cRefs);
+    cRefs -= ASMAtomicSubS32(&pThis->paPages[iPage].cRefs, cRefs);
     AssertMsg(cRefs >= 0, ("%d\n", cRefs));
     if (!cRefs)
         pThis->cLoad--;
