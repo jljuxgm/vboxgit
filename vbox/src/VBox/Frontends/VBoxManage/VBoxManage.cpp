@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 16960 2009-02-19 22:13:33Z vboxsync $ */
+/* $Id: VBoxManage.cpp 17033 2009-02-23 20:12:10Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -314,6 +314,12 @@ static void printUsage(USAGECATEGORY u64Cmd)
     if (u64Cmd & USAGE_IMPORTAPPLIANCE)
     {
         RTPrintf("VBoxManage import           <ovf>\n"
+                 "\n"); // @todo
+    }
+
+    if (u64Cmd & USAGE_EXPORTAPPLIANCE)
+    {
+        RTPrintf("VBoxManage export           <machines> -o <ovf>\n"
                  "\n");
     }
 
@@ -3006,6 +3012,7 @@ int main(int argc, char *argv[])
 #endif /* VBOX_WITH_GUEST_PROPS defined */
         { "metrics",          handleMetrics },
         { "import",           handleImportAppliance },
+        { "export",           handleExportAppliance },
         { NULL,               NULL }
     };
 

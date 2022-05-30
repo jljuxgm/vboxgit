@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 16932 2009-02-18 20:42:18Z vboxsync $ */
+/* $Id: ApplianceImpl.h 17033 2009-02-23 20:12:10Z vboxsync $ */
 
 /** @file
  *
@@ -76,7 +76,7 @@ public:
     STDMETHOD(Read)(IN_BSTR path);
     STDMETHOD(Interpret)(void);
     STDMETHOD(ImportMachines)(IProgress **aProgress);
-
+    STDMETHOD(Write)(IN_BSTR path);
     /* public methods only for internal purposes */
 
     /* private instance data */

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 16485 2009-02-03 13:05:35Z vboxsync $ */
+/* $Id: VBoxManage.h 17033 2009-02-23 20:12:10Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -86,6 +86,7 @@
 #define USAGE_METRICS               RT_BIT_64(42)
 #define USAGE_CONVERTHD             RT_BIT_64(43)
 #define USAGE_IMPORTAPPLIANCE       RT_BIT_64(44)
+#define USAGE_EXPORTAPPLIANCE       RT_BIT_64(45)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
@@ -169,6 +170,7 @@ int handleCloseMedium(HandlerArg *a);
 
 // VBoxManageImport.cpp
 int handleImportAppliance(HandlerArg *a);
+int handleExportAppliance(HandlerArg *a);
 
 /* VBoxManageUSB.cpp */
 /* VBoxManageTODO.cpp */
