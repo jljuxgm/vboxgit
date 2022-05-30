@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15439 2008-12-13 12:48:22Z vboxsync $ */
+/* $Id: HWACCM.cpp 15502 2008-12-15 13:10:32Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1178,7 +1178,9 @@ VMMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
             || pCtx->fs != (pCtx->fsHid.u64Base >> 4)
             || pCtx->gs != (pCtx->gsHid.u64Base >> 4)
             || pCtx->ss != (pCtx->ssHid.u64Base >> 4))
+        {
             return false;
+        }
     }
     else
     {

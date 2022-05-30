@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 15490 2008-12-15 10:06:50Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 15502 2008-12-15 13:10:32Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3105,7 +3105,7 @@ ResumeExecution:
     case VMX_EXIT_ERR_INVALID_GUEST_STATE:  /* 33 VM-entry failure due to invalid guest state. */
     {
 #ifdef VBOX_STRICT
-        RTCCUINTREG val;
+        RTCCUINTREG val = 0;
 
         Log(("VMX_EXIT_ERR_INVALID_GUEST_STATE\n"));
 
