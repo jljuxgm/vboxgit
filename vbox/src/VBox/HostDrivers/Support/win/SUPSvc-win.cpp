@@ -1,4 +1,4 @@
-/* $Id: SUPSvc-win.cpp 11725 2008-08-27 22:21:47Z vboxsync $ */
+/* $Id: SUPSvc-win.cpp 11824 2008-08-29 14:24:09Z vboxsync $ */
 /** @file
  * VirtualBox Support Service - Windows Specific Code.
  */
@@ -774,7 +774,7 @@ int main(int argc, char **argv)
     RTEnvSet("VBOX_LOG_DEST", "file=E:\\temp\\VBoxSupSvc.log");
     RTEnvSet("VBOX_LOG_FLAGS", "unbuffered thread msprog");
 #endif
-    int rc = RTR3Init(false /* fInitSUPLib */);
+    int rc = RTR3Init();
     if (RT_FAILURE(rc))
     {
         supSvcLogError("RTR3Init failed with rc=%Rrc", rc);
