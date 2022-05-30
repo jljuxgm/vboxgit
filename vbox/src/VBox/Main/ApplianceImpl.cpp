@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17756 2009-03-12 15:21:01Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17758 2009-03-12 15:37:30Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1981,7 +1981,7 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD aThread, void *pv
             std::list<VirtualSystemDescriptionEntry*> vsdeHDCSCSI = vsdescThis->findByType(VirtualSystemDescriptionType_HardDiskControllerSCSI);
             if (vsdeHDCSATA.size() > 1)
                 throw setError(VBOX_E_FILE_ERROR,
-                               tr("Too many SCSI controllers in OVF; VirtualBox only supports one"));           // @todo is that true?
+                               tr("Too many SCSI controllers in OVF; VirtualBox only supports one"));
             if (vsdeHDCSCSI.size() > 0)
             {
                 ComPtr<IStorageController> pController;
