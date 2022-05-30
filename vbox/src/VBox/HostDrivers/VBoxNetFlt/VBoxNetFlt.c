@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 13435 2008-10-21 12:21:12Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 13769 2008-11-03 19:13:51Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -739,7 +739,7 @@ DECLHIDDEN(void) vboxNetFltRetain(PVBOXNETFLTINS pThis, bool fBusy)
      * Retain the object.
      */
     cRefs = ASMAtomicIncU32(&pThis->cRefs);
-    Assert(cRefs > 0 && cRefs < UINT32_MAX / 2);
+    Assert(cRefs > 1 && cRefs < UINT32_MAX / 2);
 
     /*
      * Work the busy counter.
@@ -747,7 +747,7 @@ DECLHIDDEN(void) vboxNetFltRetain(PVBOXNETFLTINS pThis, bool fBusy)
     if (fBusy)
     {
         cRefs = ASMAtomicIncU32(&pThis->cBusy);
-        Assert(cRefs > 0 && cRefs < UINT32_MAX / 2);
+        Assert(cRefs > 1 && cRefs < UINT32_MAX / 2);
     }
 
     NOREF(cRefs);
