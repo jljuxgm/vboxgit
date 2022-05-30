@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 14954 2008-12-03 19:28:03Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 14960 2008-12-03 21:26:46Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -5393,9 +5393,5 @@ VBOXHDDBACKEND g_VmdkBackend =
     /* pfnAsyncRead */
     vmdkAsyncRead,
     /* pfnAsyncWrite */
-    vmdkAsyncWrite,
-    /* pfnComposeLocation */
-    genericFileComposeLocation,
-    /* pfnComposeName */
-    genericFileComposeName
+    vmdkAsyncWrite
 };
