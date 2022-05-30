@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 13100 2008-10-08 17:33:04Z vboxsync $ */
+/* $Id: PGMInternal.h 13235 2008-10-13 20:48:53Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2426,9 +2426,10 @@ typedef struct PGM
     STAMCOUNTER StatR3DynRamGrow;                   /**< R3: Nr of pgmr3PhysGrowRange calls. */
 
     /* RC only: */
-    STAMPROFILE StatRCInvalidatePage;               /**< RC: PGMGCInvalidatePage() profiling. */
     STAMCOUNTER StatRCDynMapCacheMisses;            /**< RC: The number of dynamic page mapping cache hits */
     STAMCOUNTER StatRCDynMapCacheHits;              /**< RC: The number of dynamic page mapping cache misses */
+    STAMCOUNTER StatRCInvlPgConflict;               /**< RC: Number of times PGMInvalidatePage() detected a mapping conflict. */
+    STAMCOUNTER StatRCInvlPgSyncMonCR3;             /**< RC: Number of times PGMInvalidatePage() ran into PGM_SYNC_MONITOR_CR3. */
 
     /* RZ only: */
     STAMPROFILE StatRZTrap0e;                       /**< RC/R0: PGMTrap0eHandler() profiling. */
