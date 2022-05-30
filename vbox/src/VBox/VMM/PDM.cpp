@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
+/* $Id: PDM.cpp 12984 2008-10-04 23:20:58Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -255,7 +255,7 @@ PDMR3DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
      * Queues.
      */
     pdmR3QueueRelocate(pVM, offDelta);
-    pVM->pdm.s.pDevHlpQueueGC = PDMQueueGCPtr(pVM->pdm.s.pDevHlpQueueHC);
+    pVM->pdm.s.pDevHlpQueueRC = PDMQueueRCPtr(pVM->pdm.s.pDevHlpQueueR3);
 
     /*
      * Critical sections.
