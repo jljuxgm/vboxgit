@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: VBoxService.cpp 16954 2009-02-19 16:55:55Z vboxsync $ */
 /** @file
  * VBoxService - The Guest Additions Helper Service.
  */
@@ -23,6 +23,7 @@
 #ifdef VBOX_WITH_GUEST_PROPS
     #include "VBoxVMInfo.h"
 #endif
+#include "VBoxTimeSync.h"
 #include "resource.h"
 
 #define VBOXSERVICE_NAME _T("VBoxService")
@@ -52,6 +53,12 @@ static VBOXSERVICEINFO vboxServiceTable[] =
         vboxVMInfoDestroy,
     },
 #endif
+    {
+        "TimeSync",
+        vboxTimeSyncInit,
+        vboxTimeSyncThread,
+        vboxTimeSyncDestroy,
+    },
     {
         NULL
     }

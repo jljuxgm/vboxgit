@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15176 2008-12-09 14:24:02Z vboxsync $
+# $Id: Makefile.kmk 16954 2009-02-19 16:55:55Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Service.
 #
@@ -32,8 +32,8 @@ VBoxService_INCS     = ../include
 VBoxService_SOURCES  = \
 	VBoxService.cpp \
 	VBoxUtils.cpp \
-	VBoxService.rc
-
+	VBoxService.rc \
+	VBoxTimeSync.cpp
 ifdef VBOX_WITH_GUEST_PROPS
  VBoxService_SOURCES += \
 	VBoxVMInfo.cpp \

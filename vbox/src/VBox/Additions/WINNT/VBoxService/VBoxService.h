@@ -1,4 +1,4 @@
-/* $Id: VBoxService.h 13462 2008-10-22 06:46:45Z vboxsync $ */
+/* $Id: VBoxService.h 16954 2009-02-19 16:55:55Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service
  */
@@ -34,8 +34,9 @@
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/initterm.h>
-#include <iprt/string.h>
 #include <iprt/log.h>
+#include <iprt/string.h>
+#include <iprt/time.h>
 
 #include <VBox/version.h>
 #include <VBox/VBoxGuest.h>
