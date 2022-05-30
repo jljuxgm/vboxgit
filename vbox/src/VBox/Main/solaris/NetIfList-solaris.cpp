@@ -1,4 +1,4 @@
-/* $Id: NetIfList-solaris.cpp 15456 2008-12-14 10:28:37Z vboxsync $ */
+/* $Id: NetIfList-solaris.cpp 15510 2008-12-15 15:32:45Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -165,7 +165,8 @@ static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNe
     if (Sock > 0)
     {
         struct lifreq IfReq;
-        strcpy(IfReq.lifr_name, szNICInstance);        if (ioctl(Sock, SIOCGLIFADDR, &IfReq) >= 0)
+        strcpy(IfReq.lifr_name, szNICInstance);
+        if (ioctl(Sock, SIOCGLIFADDR, &IfReq) >= 0)
         {
             memcpy(Info.IPv6Address.au8, ((struct sockaddr_in6 *)&IfReq.lifr_addr)->sin6_addr.s6_addr,
                     sizeof(Info.IPv6Address.au8));

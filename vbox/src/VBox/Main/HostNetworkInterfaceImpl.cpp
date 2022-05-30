@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 15442 2008-12-13 13:40:42Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 15510 2008-12-15 15:32:45Z vboxsync $ */
 
 /** @file
  *
@@ -129,8 +129,8 @@ HRESULT HostNetworkInterface::init (Bstr aInterfaceName, PNETIFINFO pIf)
     m.IPV6Address = composeIPv6Address(&pIf->IPv6Address);
     m.IPV6NetworkMask = composeIPv6Address(&pIf->IPv6NetMask);
     m.hardwareAddress = composeHardwareAddress(&pIf->MACAddress);
-    m.type = pIf->enmType;
-    m.status = pIf->enmStatus;
+    m.type = (HostNetworkInterfaceType)pIf->enmType;
+    m.status = (HostNetworkInterfaceStatus)pIf->enmStatus;
 
     /* Confirm a successful initialization */
     autoInitSpan.setSucceeded();
