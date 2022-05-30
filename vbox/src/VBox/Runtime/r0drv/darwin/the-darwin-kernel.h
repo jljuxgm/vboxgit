@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 14338 2008-11-18 23:38:52Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 16330 2009-01-28 20:22:08Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -58,7 +58,9 @@
 #include <kern/clock.h>
 #include <kern/sched_prim.h>
 #include <kern/locks.h>
-#include <i386/mp_events.h>
+#if defined(RT_ARCH_X86) && MAC_OS_X_VERSION_MIN_REQUIRED < 1060
+# include <i386/mp_events.h>
+#endif
 #include <libkern/libkern.h>
 #include <mach/thread_act.h>
 #include <mach/vm_map.h>
@@ -71,6 +73,7 @@
 #include <IOKit/IOTypes.h>
 #include <IOKit/IOLib.h>
 #include <IOKit/IOMemoryDescriptor.h>
+#include <IOKit/IOBufferMemoryDescriptor.h>
 #include <IOKit/IOMapper.h>
 
 
