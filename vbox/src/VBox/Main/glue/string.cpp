@@ -1,4 +1,4 @@
-/* $Id: string.cpp 14948 2008-12-03 15:06:30Z vboxsync $ */
+/* $Id: string.cpp 16324 2009-01-28 18:06:59Z vboxsync $ */
 
 /** @file
  *
@@ -34,6 +34,45 @@ const Bstr Bstr::Null; /* default ctor is OK */
 
 /* static */
 const Utf8Str Utf8Str::Null; /* default ctor is OK */
+
+const size_t Utf8Str::npos = (size_t)-1;
+
+Utf8Str Utf8Str::substr(size_t pos /*= 0*/, size_t n /*= npos*/) const
+{
+    Utf8Str ret;
+
+    if (n)
+    {
+        const char *psz = c_str();
+        RTUNICP cp;
+
+        // walk the UTF-8 characters until where the caller wants to start
+        size_t i = pos;
+        while (i--)
+            RTStrGetCpEx(&psz, &cp);
+
+        const char *pFirst = psz;
+
+        if (n == npos)
+            // all the rest:
+            ret = pFirst;
+        else
+        {
+            i = n;
+            while (i--)
+                RTStrGetCpEx(&psz, &cp);
+
+            size_t len = psz - pFirst;
+            char *psz = (char*)RTMemAlloc(len + 1);
+            memcpy(psz, pFirst, len);
+            psz[len] = '\0';
+            ret = psz;
+            RTMemFree(psz);
+        }
+    }
+
+    return ret;
+}
 
 struct FormatData
 {
@@ -97,5 +136,6 @@ DECLCALLBACK(size_t) Utf8StrFmt::strOutput (void *pvArg, const char *pachChars,
 
     return cbChars;
 }
+
 
 } /* namespace com */
