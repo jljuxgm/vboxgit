@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 15428 2008-12-13 10:02:55Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 17000 2009-02-23 10:01:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1725,8 +1725,6 @@ end:
     return;
 }
 
-#ifndef IN_RC /* Ring 0 & 3 only. (Just not needed in GC.) */
-
 /**
  * Read from guest physical memory by GC physical address, bypassing
  * MMIO and access handlers.
@@ -1796,6 +1794,7 @@ VMMDECL(int) PGMPhysSimpleReadGCPhys(PVM pVM, void *pvDst, RTGCPHYS GCPhysSrc, s
     /* won't ever get here. */
 }
 
+#ifndef IN_RC /* Ring 0 & 3 only. (Just not needed in GC.) */
 
 /**
  * Write to guest physical memory referenced by GC pointer.
