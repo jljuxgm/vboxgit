@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 14141 2008-11-12 19:12:30Z vboxsync $ */
+/* $Id: PGMAllShw.h 14147 2008-11-12 23:07:51Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -195,8 +195,7 @@ PGM_SHW_DECL(int, GetPage)(PVM pVM, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTHCP
     Pde = pPDDst->a[iPd];
 
 # else /* PGM_TYPE_32BIT */
-    const unsigned  iPd = (GCPtr >> X86_PD_SHIFT) & X86_PD_MASK;
-    X86PDE          Pde = CTXMID(pVM->pgm.s.p,32BitPD)->a[iPd];
+    X86PDE          Pde = pgmShwGet32BitPDE(&pVM->pgm.s, GCPtr);
 # endif
     if (!Pde.n.u1Present)
         return VERR_PAGE_TABLE_NOT_PRESENT;
@@ -332,8 +331,7 @@ PGM_SHW_DECL(int, ModifyPage)(PVM pVM, RTGCUINTPTR GCPtr, size_t cb, uint64_t fF
         Pde = pPDDst->a[iPd];
 
 # else /* PGM_TYPE_32BIT */
-        const unsigned  iPd = (GCPtr >> X86_PD_SHIFT) & X86_PD_MASK;
-        X86PDE          Pde = CTXMID(pVM->pgm.s.p,32BitPD)->a[iPd];
+        X86PDE          Pde = pgmShwGet32BitPDE(&pVM->pgm.s, GCPtr);
 # endif
         if (!Pde.n.u1Present)
             return VERR_PAGE_TABLE_NOT_PRESENT;

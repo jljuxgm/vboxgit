@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 14133 2008-11-12 16:37:47Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 14147 2008-11-12 23:07:51Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -111,7 +111,7 @@ void *pgmPoolMapPage(PVM pVM, PPGMPOOLPAGE pPage)
     switch (pPage->idx)
     {
         case PGMPOOL_IDX_PD:
-            return pVM->pgm.s.pGC32BitPD;
+            return pVM->pgm.s.pShw32BitPdRC;
         case PGMPOOL_IDX_PAE_PD:
         case PGMPOOL_IDX_PAE_PD_0:
             return pVM->pgm.s.apShwPaePDsRC[0];
