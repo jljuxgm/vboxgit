@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 17934 2009-03-16 13:59:35Z vboxsync $ */
+/* $Id: MachineImpl.cpp 17942 2009-03-16 14:54:50Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -521,12 +521,6 @@ HRESULT Machine::init (VirtualBox *aParent, CBSTR aConfigFile,
                 rc = getStorageControllerByName(Bstr("IDE"), ctl, true);
                 CheckComRCReturnRC(rc);
                 ctl->COMSETTER(ControllerType)(StorageControllerType_PIIX4);
-
-#ifdef VBOX_WITH_USB
-                /* Enable the OHCI and EHCI controller by default for new VMs. (new in 2.2) */
-                mUSBController->COMSETTER(Enabled)(TRUE);
-                mUSBController->COMSETTER(EnabledEhci)(TRUE);
-#endif
             }
 
             /* commit all changes made during the initialization */
