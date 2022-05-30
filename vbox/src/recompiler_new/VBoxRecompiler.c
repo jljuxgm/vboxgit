@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 14418 2008-11-20 14:33:41Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 14425 2008-11-20 16:32:52Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -4234,6 +4234,16 @@ void     cpu_apic_wrmsr(CPUX86State *env, uint32_t reg, uint64_t value)
     /** @todo: exception if error ? */
     LogFlow(("cpu_apic_wrmsr: rc=%Rrc\n", rc)); NOREF(rc);
 }
+
+uint64_t cpu_rdmsr(CPUX86State *env, uint32_t msr) 
+{ 
+    return CPUMGetGuestMsr(env->pVM, msr); 
+} 
+
+void cpu_wrmsr(CPUX86State *env, uint32_t msr, uint64_t val) 
+{ 
+    CPUMSetGuestMsr(env->pVM, msr, val); 
+} 
 /* -+- I/O Ports -+- */
 
 #undef LOG_GROUP
