@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 13204 2008-10-13 10:09:21Z vboxsync $ */
+/* $Id: HWACCMInternal.h 13221 2008-10-13 14:43:54Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -41,6 +41,7 @@
 
 #define HWACCM_VMX_EMULATE_REALMODE
 #define HWACCM_VTX_WITH_EPT
+#define HWACCM_VTX_WITH_VPID
 
 __BEGIN_DECLS
 
@@ -188,6 +189,8 @@ typedef struct HWACCM
 
     /** Set if nested paging is allowed. */
     bool                        fAllowNestedPaging;
+    /** Set if VT-x VPID is allowed. */
+    bool                        fAllowVPID;
 
     /** Set if we need to flush the TLB during the world switch. */
     bool                        fForceTLBFlush;
@@ -195,9 +198,11 @@ typedef struct HWACCM
     /** Old style FPU reporting trap mask override performed (optimization) */
     bool                        fFPUOldStyleOverride;
 
+#if 0
     /** Explicit alignment padding to make 32-bit gcc align u64RegisterMask
      *  naturally. */
     bool                        padding[1];
+#endif
 
     /** HWACCM_CHANGED_* flags. */
     RTUINT                      fContextUseFlags;

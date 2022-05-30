@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 13165 2008-10-10 11:27:30Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 13221 2008-10-13 14:43:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -188,6 +188,11 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     BOOL fEnableNestedPaging = false;
     hrc = pMachine->COMGETTER(HWVirtExNestedPagingEnabled)(&fEnableNestedPaging);   H();
     rc = CFGMR3InsertInteger(pRoot, "EnableNestedPaging", fEnableNestedPaging);     RC_CHECK();
+
+    /* VPID (VT-x) */
+    BOOL fEnableVPID = false;
+    hrc = pMachine->COMGETTER(HWVirtExVPIDEnabled)(&fEnableVPID);   H();
+    rc = CFGMR3InsertInteger(pRoot, "EnableVPID", fEnableVPID);     RC_CHECK();
 
     /* Physical Address Extension (PAE) */
     BOOL fEnablePAE = false;
