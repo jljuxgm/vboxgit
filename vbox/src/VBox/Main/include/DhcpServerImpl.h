@@ -1,4 +1,4 @@
-/* $Id: DhcpServerImpl.h 17881 2009-03-14 23:33:49Z vboxsync $ */
+/* $Id: DhcpServerImpl.h 17887 2009-03-15 15:27:21Z vboxsync $ */
 
 /** @file
  *
@@ -78,6 +78,9 @@ public:
     static const wchar_t *getComponentName() { return L"DhcpServer"; }
 
 private:
+    /** weak VirtualBox parent */
+    const ComObjPtr <VirtualBox, ComWeakRef> mVirtualBox;
+
     const Bstr mName;
 
     struct Data
