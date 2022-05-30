@@ -1,4 +1,4 @@
-/* $Revision: 17737 $ */
+/* $Revision: 17793 $ */
 /** @file tstLinuxC.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -25,7 +25,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/stat.h>
-#include "VirtualBox_CXPCOM.h"
+#include "VBoxCAPI_v2_2.h"
 
 PCVBOXXPCOM g_pVBoxFuncs = NULL;
 
