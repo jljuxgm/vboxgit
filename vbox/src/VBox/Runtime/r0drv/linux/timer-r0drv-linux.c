@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 12141 2008-09-05 15:49:14Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 12591 2008-09-19 08:45:10Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -397,7 +397,9 @@ static void rtTimerLinuxCallback(unsigned long ulUser)
         if (pTimer->cJiffies)
         {
             pSubTimer->ulNextJiffies += pTimer->cJiffies;
-            while (pSubTimer->ulNextJiffies < jiffies)
+            /* Prevent overflows when the jiffies counter wraps around.
+             * Special thanks to Ken Preslan for helping debugging! */
+            while (jiffies - pSubTimer->ulNextJiffies < 3600*HZ)
             {
                 pSubTimer->ulNextJiffies += pTimer->cJiffies;
                 pSubTimer->u64NextTS += pTimer->u64NanoInterval;
