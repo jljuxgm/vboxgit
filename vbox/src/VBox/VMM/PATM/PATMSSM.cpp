@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 11925 2008-09-01 15:03:24Z vboxsync $ */
+/* $Id: PATMSSM.cpp 11928 2008-09-01 15:35:24Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -591,7 +591,7 @@ DECLCALLBACK(int) patmr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
             AssertRCReturn(rc, rc);
 
             /* rec.pRelocPos now contains the relative position inside the hypervisor area. */
-            offset = (int32_t)rec.pRelocPos;
+            offset = (int32_t)(int64_t)rec.pRelocPos;
             /* Convert to HC pointer again. */
             PATM_ADD_PTR(rec.pRelocPos, pVM->patm.s.pPatchMemHC);
             pFixup = (RTRCPTR *)rec.pRelocPos;
