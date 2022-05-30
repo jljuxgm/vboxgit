@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 17251 2009-03-02 13:55:31Z vboxsync $ */
+/* $Id: MMInternal.h 17513 2009-03-07 05:44:48Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -761,10 +761,15 @@ typedef struct MM
      * @remarks Shadow ROMs will be counted twice (RAM+ROM), so it won't be 1:1 with
      *          what the guest sees. */
     uint64_t                    cBasePages;
+    /** The number of handy pages that PGM has reserved (GMM).
+     * These are kept out of cBasePages and thus out of the saved state. */
+    uint32_t                    cHandyPages;
     /** The number of shadow pages PGM has reserved (GMM). */
     uint32_t                    cShadowPages;
     /** The number of fixed pages we've reserved (GMM). */
     uint32_t                    cFixedPages;
+    /** Padding. */
+    uint32_t                    u32Padding0;
 
 #ifndef VBOX_WITH_NEW_PHYS_CODE
     /** The head of the ROM ranges. */

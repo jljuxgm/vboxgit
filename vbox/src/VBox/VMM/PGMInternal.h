@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 17511 2009-03-07 04:18:42Z vboxsync $ */
+/* $Id: PGMInternal.h 17513 2009-03-07 05:44:48Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2784,8 +2784,10 @@ typedef struct PGM
     STAMPROFILE StatR3ResolveConflict;              /**< R3: pgmR3SyncPTResolveConflict() profiling (includes the entire relocation). */
     STAMCOUNTER StatR3GuestPDWrite;                 /**< R3: The total number of times pgmHCGuestPDWriteHandler() was called. */
     STAMCOUNTER StatR3GuestPDWriteConflict;         /**< R3: The number of times GuestPDWriteContlict() detected a conflict. */
+#ifndef VBOX_WITH_NEW_PHYS_CODE
     STAMCOUNTER StatR3DynRamTotal;                  /**< R3: Allocated MBs of guest ram */
     STAMCOUNTER StatR3DynRamGrow;                   /**< R3: Nr of pgmr3PhysGrowRange calls. */
+#endif
 
     /* R0 only: */
     STAMCOUNTER StatR0DynMapMigrateInvlPg;          /**< R0: invlpg in PGMDynMapMigrateAutoSet. */
