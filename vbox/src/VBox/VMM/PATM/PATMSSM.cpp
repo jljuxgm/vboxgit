@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 14884 2008-12-02 09:29:48Z vboxsync $ */
+/* $Id: PATMSSM.cpp 14885 2008-12-02 09:33:42Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -710,8 +710,12 @@ DECLCALLBACK(int) patmr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
     if (    PATMIsEnabled(pVM)
         &&  HWACCMIsEnabled(pVM))
     {
-        VM_SET_ERROR(pVM, rc, "An active VM already uses Intel VT-x hardware acceleration. It is not "
-                              "allowed to simultaneously use software virtualization.\n");
+        if (CPUMGetCPUVendor(pVM) == CPUMCPUVENDOR_AMD)
+            VM_SET_ERROR(pVM, rc, "An active VM already uses AMD-V hardware acceleration. It is not "
+                                  "allowed to simultaneously use software virtualization.\n");
+        else
+            VM_SET_ERROR(pVM, rc, "An active VM already uses Intel VT-x hardware acceleration. It is not "
+                                  "allowed to simultaneously use software virtualization.\n");
         return VERR_ACCESS_DENIED;
     }
 
