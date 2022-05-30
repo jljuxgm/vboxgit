@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.cpp 17970 2009-03-16 19:08:16Z vboxsync $ */
+/* $Id: HardDiskImpl.cpp 17974 2009-03-16 19:53:46Z vboxsync $ */
 
 /** @file
  *
@@ -1188,7 +1188,7 @@ STDMETHODIMP HardDisk::CreateBaseStorage(ULONG64 aLogicalSize,
 
     AutoWriteLock alock (this);
 
-    aVariant &= ~HardDiskVariant_Diff;
+    aVariant = (HardDiskVariant_T)((unsigned)aVariant & (unsigned)~HardDiskVariant_Diff);
     if (    !(aVariant & HardDiskVariant_Fixed)
         &&  !(mm.formatObj->capabilities() & HardDiskFormatCapabilities_CreateDynamic))
         return setError (VBOX_E_NOT_SUPPORTED,
