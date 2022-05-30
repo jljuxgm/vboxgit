@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 13667 2008-10-29 18:27:15Z vboxsync $ */
+/* $Id: VM.cpp 13697 2008-10-30 22:13:25Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -779,7 +779,7 @@ static int vmR3InitGC(PVM pVM)
         /*
          * Call the VMMR0 component and let it do the init.
          */
-        rc = VMMR3InitGC(pVM);
+        rc = VMMR3InitRC(pVM);
     }
     else
         Log(("vmR3InitGC: skipping because of VBOX_SUPLIB_FAKE=fake\n"));
