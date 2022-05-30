@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInfoUser.cpp 13129 2008-10-09 12:22:12Z vboxsync $ */
+/* $Id: VBoxVMInfoUser.cpp 13242 2008-10-14 09:51:47Z vboxsync $ */
 /** @file
  * VBoxVMInfoUser - User information for the host.
  */
@@ -333,18 +333,18 @@ int vboxVMInfoUser(VBOXINFORMATIONCONTEXT* a_pCtx)
     /* Write information to host. */
     vboxVMInfoWriteProp(a_pCtx, "GuestInfo/OS/LoggedInUsersList", (iUserCount > 0) ? szUserList : NULL);
     vboxVMInfoWritePropInt(a_pCtx, "GuestInfo/OS/LoggedInUsers", iUserCount);
-    if (a_pCtx->iUserCount != iUserCount)
+    if (a_pCtx->cUsers != iUserCount || a_pCtx->cUsers == INT32_MAX)
     {
         /* Update this property ONLY if there is a real change from no users to
          * users or vice versa. The only exception is that the initialization
-         * of a_pCtx->iUserCount forces an update, but only once. This ensures
+         * of a_pCtx->cUsers forces an update, but only once. This ensures
          * consistent property settings even if the VM aborted previously. */
         if (iUserCount == 0)
             vboxVMInfoWriteProp(a_pCtx, "GuestInfo/OS/NoLoggedInUsers", "true");
-        else if (a_pCtx->iUserCount == 0)
+        else if (a_pCtx->cUsers == 0 || a_pCtx->cUsers == INT32_MAX)
             vboxVMInfoWriteProp(a_pCtx, "GuestInfo/OS/NoLoggedInUsers", "false");
     }
-    a_pCtx->iUserCount = iUserCount;
+    a_pCtx->cUsers = iUserCount;
 
     return ret;
 }

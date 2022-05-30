@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInfo.h 13127 2008-10-09 12:13:02Z vboxsync $ */
+/* $Id: VBoxVMInfo.h 13242 2008-10-14 09:51:47Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -31,7 +31,7 @@ typedef struct _VBOXINFORMATIONCONTEXT
     uint32_t iInfoSvcClientID;
     fnWTSGetActiveConsoleSessionId pfnWTSGetActiveConsoleSessionId;
     BOOL fFirstRun;
-    uint32_t iUserCount;
+    uint32_t cUsers;
 } VBOXINFORMATIONCONTEXT;
 
 /* Some wrappers. */
