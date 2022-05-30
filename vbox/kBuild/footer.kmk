@@ -1,4 +1,4 @@
-# $Id: footer.kmk 2243 2009-01-10 02:24:02Z bird $
+# $Id: footer.kmk 2274 2009-02-20 23:45:49Z bird $
 ## @file
 # kBuild - File included at top of makefile.
 #
@@ -1336,13 +1336,14 @@ properties_deferred   := $(PROPS_SINGLE) $(PROPS_DEFERRED)
 properties_deferred_l := $(PROPS_ACCUMULATE_L)
 properties_deferred_r := $(PROPS_ACCUMULATE_R)
 
-src_prefix := TOOL_
-load_function := def_tools_load_function
-$(foreach trg, $(addprefix TOOL_,$(_TOOLS)), $(evalval def_inherit))
-
 src_prefix := SDK_
 load_function := def_sdk_load_function
 $(foreach trg, $(addprefix SDK_,$(_SDKS)), $(evalval def_inherit))
+
+properties_deferred   := $(PROPS_SINGLE) $(PROPS_DEFERRED) $(PROPS_TOOLS_ONLY)
+src_prefix := TOOL_
+load_function := def_tools_load_function
+$(foreach trg, $(addprefix TOOL_,$(_TOOLS)), $(evalval def_inherit))
 
 # done inheriting.
 src_prefix :=
@@ -1591,21 +1592,21 @@ endif
 ## @page pg_fetches 	Fetching Tools, Sources and Similar.
 #
 # The targets listed in the the FETCHES target list have the following attributes:
-#	SOURCES
-#	INST
-#   FETCHTOOL
-#   FETCHFLAGS
-#   FETCHDIR
-#   UNPACKTOOL
-#   UNPACKFLAGS
+#       SOURCES
+#       INST
+#       FETCHTOOL
+#       FETCHFLAGS
+#       FETCHDIR
+#       UNPACKTOOL
+#       UNPACKFLAGS
 #
 # As usual the target name is an alias for 'creating' the target. Other
 # aliases are:
-#	pass_fetches
-#	fetch
-#	unfetch
-# 	download
-# 	unpack
+#       pass_fetches
+#       fetch
+#       unfetch
+#       download
+#       unpack
 #
 # @remark
 #
@@ -1637,6 +1638,7 @@ endif
 #   it makes use of includedep to avoid too many unnecessary files.
 #
 # @todo
+#   0. Move the fetches out into a unit.
 #   1. Download corruption / continuation.
 #   2. It's quite possible that there is one too many indirect dependency now...
 #
