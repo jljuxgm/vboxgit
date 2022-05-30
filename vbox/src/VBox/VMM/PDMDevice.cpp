@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 13818 2008-11-04 22:59:47Z vboxsync $ */
+/* $Id: PDMDevice.cpp 14070 2008-11-10 23:45:24Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -495,7 +495,7 @@ static int pdmR3DevLoadModules(PVM pVM)
         rc = CFGMR3GetName(pCur, &szName[0], sizeof(szName));
         if (rc == VERR_CFGM_NOT_ENOUGH_SPACE)
         {
-            AssertMsgFailed(("configuration error: The module name is too long, cchName=%d.\n", CFGMR3GetNameLen(pCur)));
+            AssertMsgFailed(("configuration error: The module name is too long, cchName=%zu.\n", CFGMR3GetNameLen(pCur)));
             return VERR_PDM_MODULE_NAME_TOO_LONG;
         }
         else if (RT_FAILURE(rc))
