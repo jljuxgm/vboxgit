@@ -1,4 +1,4 @@
-# $Id: Config.kmk 13006 2008-10-06 13:44:03Z vboxsync $
+# $Id: Config.kmk 13007 2008-10-06 13:49:21Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1067,7 +1067,9 @@ else
  endif
 endif
 ifeq ($(KBUILD_TARGET_ARCH),x86)
- VBOX_GCC_OPT <= -march=i586
+ ifneq ($(KBUILD_TARGET),darwin)
+  VBOX_GCC_OPT <= -march=i586
+ endif
 endif
 
 #
@@ -3547,7 +3549,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13006 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 13007 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
