@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 16680 2009-02-11 16:33:04Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 16683 2009-02-11 16:38:48Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2490,7 +2490,6 @@ DECLINLINE(int) pgmPoolTrackInsert(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS 
 /**
  * Adds a user reference to a page.
  *
- * This will
  * This will move the page to the head of the
  *
  * @returns VBox status code.
@@ -2505,7 +2504,7 @@ static int pgmPoolTrackAddUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, uint16_t iUse
 {
     PPGMPOOLUSER paUsers = pPool->CTX_SUFF(paUsers);
 
-    LogFlow(("pgmPoolTrackAddUser iUser %d iUserTable %d\n", iUser, iUserTable));
+    LogFlow(("pgmPoolTrackAddUser GCPhys = %RGp iUser %d iUserTable %d\n", pPage->GCPhys, iUser, iUserTable));
 #  ifdef VBOX_STRICT
     /*
      * Check that the entry doesn't already exists.
