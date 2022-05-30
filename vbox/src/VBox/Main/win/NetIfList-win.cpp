@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 17905 2009-03-16 08:12:39Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 17920 2009-03-16 11:28:04Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1494,7 +1494,7 @@ static int createNetworkInterface (SVCHlpClient *aClient,
                 /* pDriverInfoDetail->HardwareID is a MULTISZ string.  Go through the
                  * whole list and see if there is a match somewhere. */
                 t = pDriverInfoDetail->HardwareID;
-                while (t && *t && t < (TCHAR *) &detailBuf [sizeof(detailBuf) / sizeof (detailBuf[0])])
+                while (t && *t && t < (TCHAR *) &detailBuf [RT_ELEMENTS(detailBuf)])
                 {
                     if (!_tcsicmp(t, DRIVERHWID))
                         break;
@@ -1502,7 +1502,7 @@ static int createNetworkInterface (SVCHlpClient *aClient,
                     t += _tcslen(t) + 1;
                 }
 
-                if (t && *t && t < (TCHAR *) &detailBuf [sizeof(detailBuf) / sizeof (detailBuf[0])])
+                if (t && *t && t < (TCHAR *) &detailBuf [RT_ELEMENTS(detailBuf)])
                 {
                     found = TRUE;
                     break;
