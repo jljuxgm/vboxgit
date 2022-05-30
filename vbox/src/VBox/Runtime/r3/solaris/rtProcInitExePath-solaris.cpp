@@ -1,4 +1,4 @@
-/* $Id: rtProcInitExePath-solaris.cpp 11838 2008-08-29 17:14:02Z vboxsync $ */
+/* $Id: rtProcInitExePath-solaris.cpp 11840 2008-08-29 17:49:10Z vboxsync $ */
 /** @file
  * IPRT - rtProcInitName, Solaris.
  */
@@ -48,7 +48,7 @@ DECLHIDDEN(int) rtProcInitExePath(char *pszPath, size_t cchPath)
     /*
      * Read the /proc/<pid>/path/a.out link, convert to native and return it.
      */
-    char szProcFile[80]
+    char szProcFile[80];
     RTStrPrintf(szProcFile, sizeof(szProcFile), "/proc/%ld/path/a.out", (long)getpid());
     int cchLink = readlink(szProcFile, pszPath, cchPath - 1);
     if (cchLink > 0 && (size_t)cchLink <= cchPath - 1)
