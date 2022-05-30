@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 15874 2009-01-08 16:26:25Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 16181 2009-01-22 17:10:16Z vboxsync $ */
 
 /** @file
  *
@@ -1751,12 +1751,17 @@ STDMETHODIMP Display::InvalidateAndUpdate()
 
     LogFlowFunc (("Sending DPYUPDATE request\n"));
 
+    /* Have to leave the lock when calling EMT.  */
+    alock.leave ();
+
     /* pdm.h says that this has to be called from the EMT thread */
     PVMREQ pReq;
     int rcVBox = VMR3ReqCallVoid(pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT,
         (PFNRT)mpDrv->pUpPort->pfnUpdateDisplayAll, 1, mpDrv->pUpPort);
     if (RT_SUCCESS(rcVBox))
         VMR3ReqFree(pReq);
+
+    alock.enter ();
 
     if (RT_FAILURE(rcVBox))
         rc = setError (VBOX_E_IPRT_ERROR,
