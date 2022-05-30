@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-linux.c 13764 2008-11-03 16:55:07Z vboxsync $ */
+/* $Id: spinlock-r0drv-linux.c 13770 2008-11-03 19:18:27Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Linux.
  */
@@ -40,8 +40,6 @@
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #include "internal/magics.h"
-
-#include <linux/spinlock.h> /** @todo why is this here and not in the-linux-kernel.h? */
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
