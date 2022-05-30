@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 12360 2008-09-10 15:02:01Z vboxsync $ */
+/* $Id: the-linux-kernel.h 15851 2009-01-08 10:30:27Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -131,7 +131,7 @@
 #  define MAX_JIFFY_OFFSET ((~0UL >> 1)-1)
 # endif
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 4, 29) || LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0)
+# if LINUX_VERSION_CODE < KERNEL_VERSION(2, 4, 29) || LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0)
 
 DECLINLINE(unsigned int) jiffies_to_msecs(unsigned long cJiffies)
 {
