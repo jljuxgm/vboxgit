@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14996 2008-12-04 15:52:00Z vboxsync $ *
+ * $Id: VirtualBox.xidl 15027 2008-12-05 09:47:19Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -2966,9 +2966,9 @@
       <desc>
         Offset in milliseconds from the host system time. This allows for
         guests running with a different system date/time than the host.
-        It is equivalent to setting the system date/time in the BIOS other
-        than it's not an absolute value but a relative one. Guest Additions
-        time synchronization also honors this offset.
+        It is equivalent to setting the system date/time in the BIOS except
+        it is not an absolute value but a relative one. Guest Additions
+        time synchronization honors this offset.
       </desc>
     </attribute>
 
