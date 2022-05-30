@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 14040 2008-11-10 19:08:26Z vboxsync $ */
+/* $Id: PGMInternal.h 14093 2008-11-11 16:37:08Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3803,6 +3803,77 @@ DECLINLINE(PX86PDPT) pgmShwGetPaePDPTPtr(PPGM pPGM)
     return pShwPdpt;
 #else
     return pPGM->CTX_SUFF(pShwPaePdpt);
+#endif
+}
+
+
+/**
+ * Gets the shadow page directory for the specified address, PAE.
+ *
+ * @returns Pointer to the shadow PD.
+ * @param   pPGM        Pointer to the PGM instance data.
+ * @param   GCPtr       Address.
+ */
+DECLINLINE(PX86PDPAE) pgmShwGetPaePDPtr(PPGM pPGM, RTGCPTR GCPtr)
+{
+    const unsigned  iPdpt = (GCPtr >> X86_PDPT_SHIFT) & X86_PDPT_MASK_PAE;
+#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
+    PX86PDPAE       pPD;
+    int rc = PGM_HCPHYS_2_PTR(PGM2VM(pPGM), pPGM->aHCPhysPaePDs[iPdpt], &pPD);
+    AssertRCReturn(rc, 0);
+    return pPD;
+#else
+    //PX86PDPAE       pPD = pPGM->CTX_SUFF(apShwPaePDs)[iPdpt];
+    PX86PDPAE       pPD = pPGM->CTXMID(ap,PaePDs)[iPdpt];
+    Assert(pPD);
+    return pPD;
+#endif
+}
+
+
+/**
+ * Gets the shadow page directory entry, PAE.
+ *
+ * @returns PDE.
+ * @param   pPGM        Pointer to the PGM instance data.
+ * @param   GCPtr       Address.
+ */
+DECLINLINE(X86PGPAEUINT) pgmShwGetPaePDE(PPGM pPGM, RTGCPTR GCPtr)
+{
+    const unsigned  iPdpt = (GCPtr >> X86_PDPT_SHIFT)   & X86_PDPT_MASK_PAE;
+    const unsigned  iPd   = (GCPtr >> X86_PD_PAE_SHIFT) & X86_PD_PAE_MASK;
+#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
+    PCX86PDPAE      pPD;
+    int rc = PGM_HCPHYS_2_PTR(PGM2VM(pPGM), pPGM->aHCPhysPaePDs[iPdpt], &pPD);
+    AssertRCReturn(rc, 0);
+    return pPD->a[iPd].u;
+#else
+    //return pPGM->CTX_SUFF(apShwPaePDs)[iPdpt]->a[iPd].u;
+    return pPGM->CTXMID(ap,PaePDs)[iPdpt]->a[iPd].u;
+#endif
+}
+
+
+/**
+ * Gets the pointer to the shadow page directory entry for an address, PAE.
+ *
+ * @returns Pointer to the PDE.
+ * @param   pPGM        Pointer to the PGM instance data.
+ * @param   GCPtr       Address.
+ */
+DECLINLINE(PX86PDEPAE) pgmShwGetPaePDEPtr(PPGM pPGM, RTGCPTR GCPtr)
+{
+    const unsigned  iPdpt = (GCPtr >> X86_PDPT_SHIFT)   & X86_PDPT_MASK_PAE;
+    const unsigned  iPd   = (GCPtr >> X86_PD_PAE_SHIFT) & X86_PD_PAE_MASK;
+#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
+    PX86PDPAE       pPD;
+    int rc = PGM_HCPHYS_2_PTR(PGM2VM(pPGM), pPGM->aHCPhysPaePDs[iPdpt], &pPD);
+    AssertRCReturn(rc, 0);
+    return &pPD->a[iPd];
+#else
+    //Assert(pPGM->CTX_SUFF(apShwPaePDs)[iPdpt]);
+    //return &pPGM->CTX_SUFF(apShwPaePDs)[iPdpt]->a[iPd];
+    return &pPGM->CTXMID(ap,PaePDs)[iPdpt]->a[iPd];
 #endif
 }
 
