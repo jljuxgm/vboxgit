@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 16429 2009-01-30 16:50:00Z vboxsync $ */
+/* $Id: PGMInternal.h 16604 2009-02-09 16:42:08Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -4259,6 +4259,9 @@ DECLINLINE(PX86PDPAE) pgmShwGetPaePDPtr(PPGM pPGM, RTGCPTR GCPtr)
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     const unsigned  iPdpt = (GCPtr >> X86_PDPT_SHIFT) & X86_PDPT_MASK_PAE;
     PX86PDPT        pPdpt = pgmShwGetPaePDPTPtr(pPGM);
+
+    if (!pPdpt->a[iPdpt].n.u1Present)
+        return NULL;
 
     /* Fetch the pgm pool shadow descriptor. */
     PPGMPOOLPAGE    pShwPde = pgmPoolGetPageByHCPhys(PGM2VM(pPGM), pPdpt->a[iPdpt].u & X86_PDPE_PG_MASK);
