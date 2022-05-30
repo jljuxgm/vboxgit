@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 16784 2009-02-16 12:43:45Z vboxsync $ */
+/* $Id: VMMR0.cpp 16790 2009-02-16 14:05:10Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -774,6 +774,11 @@ static int vmmR0EntryExWorker(PVM pVM, VMMR0OPERATION enmOperation, PSUPVMMR0REQ
             Assert(!pVM->vmm.s.fSwitcherDisabled);
             if (RT_UNLIKELY(pVM->vmm.s.fSwitcherDisabled))
                 return VERR_NOT_SUPPORTED;
+
+#ifdef VBOX_STRICT
+            if (RT_UNLIKELY(!PGMGetHyperCR3(pVM)))
+                return VERR_NOT_SUPPORTED;
+#endif
 
             RTCCUINTREG fFlags = ASMIntDisableFlags();
             int rc = pVM->vmm.s.pfnHostToGuestR0(pVM);
