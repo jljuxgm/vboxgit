@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 13898 2008-11-06 09:44:29Z vboxsync $ */
+/* $Id: VMMAll.cpp 13972 2008-11-07 16:17:59Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -93,6 +93,18 @@ PVMCPU VMMGetCpu(PVM pVM)
 #else  /* IN_RING0 */
     return &pVM->aCpus[HWACCMGetVMCPUId(pVM)];
 #endif /* IN_RING0 */
+}
+
+/**
+ * Returns the VMCPU of the specified virtual CPU.
+ *
+ * @returns The VMCPU pointer.
+ * @param   pVM         The VM to operate on.
+ */
+VMMDECL(PVMCPU) VMMGetCpuEx(PVM pVM, RTCPUID idCpu)
+{
+    AssertReturn(idCpu < pVM->cCPUs, NULL);
+    return &pVM->aCpus[idCpu];
 }
 
 /**
