@@ -1,4 +1,4 @@
-; $Id: TRPMGCHandlersA.asm 11473 2008-08-19 07:31:58Z vboxsync $
+; $Id: TRPMGCHandlersA.asm 15416 2008-12-13 05:31:06Z vboxsync $
 ;; @file
 ; TRPM - Guest Context Trap Handlers
 ;
@@ -38,7 +38,7 @@ extern IMPNAME(g_CPUM)                  ; These IMPNAME(g_*) symbols resolve to 
 extern IMPNAME(g_TRPM)                  ; where there is a pointer to the real symbol. PE imports
 extern IMPNAME(g_VM)                    ; are a bit confusing at first... :-)
 extern NAME(CPUMGCRestoreInt)
-extern NAME(CPUMHandleLazyFPUAsm)
+extern NAME(cpumHandleLazyFPUAsm)
 extern NAME(CPUMHyperSetCtxCore)
 extern NAME(trpmGCTrapInGeneric)
 extern NAME(TRPMGCHyperTrap0bHandler)

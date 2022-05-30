@@ -1,4 +1,4 @@
-; $Id: CPUMAllA.asm 14870 2008-12-01 15:28:54Z vboxsync $
+; $Id: CPUMAllA.asm 15416 2008-12-13 05:31:06Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -58,7 +58,7 @@ BEGINCODE
 ; @param    pCPUMCPU  x86:[esp+4] GCC:rdi MSC:rcx     CPUMCPU pointer
 ;
 align 16
-BEGINPROC   CPUMHandleLazyFPUAsm
+BEGINPROC   cpumHandleLazyFPUAsm
     ;
     ; Figure out what to do.
     ;
@@ -198,6 +198,6 @@ hlfpua_action_4:
 hlfpua_to_host:
     mov     eax, VINF_EM_RAW_GUEST_TRAP
     ret
-ENDPROC     CPUMHandleLazyFPUAsm
+ENDPROC     cpumHandleLazyFPUAsm
 
 

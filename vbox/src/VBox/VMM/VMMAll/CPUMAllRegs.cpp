@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 15390 2008-12-12 17:33:23Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 15416 2008-12-13 05:31:06Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1516,7 +1516,7 @@ VMMDECL(bool) CPUMGetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
                 return !!(pVM->cpum.s.aGuestCpuIdExt[1].edx & X86_CPUID_AMD_FEATURE_EDX_LONG_MODE);
             break;
         }
-        
+
         default:
             AssertMsgFailed(("enmFeature=%d\n", enmFeature));
             break;
@@ -2082,7 +2082,7 @@ VMMDECL(bool) CPUMIsHostUsingSysCall(PVM pVM)
  */
 VMMDECL(int) CPUMHandleLazyFPU(PVM pVM, PVMCPU pVCpu)
 {
-    return CPUMHandleLazyFPUAsm(&pVCpu->cpum.s);
+    return cpumHandleLazyFPUAsm(&pVCpu->cpum.s);
 }
 
 #endif /* !IN_RING3 */

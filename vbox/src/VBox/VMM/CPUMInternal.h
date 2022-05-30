@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 15414 2008-12-13 04:33:30Z vboxsync $ */
+/* $Id: CPUMInternal.h 15416 2008-12-13 05:31:06Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -376,19 +376,19 @@ typedef CPUMCPU *PCPUMCPU;
 
 __BEGIN_DECLS
 
-DECLASM(int)      CPUMHandleLazyFPUAsm(PCPUMCPU pCPUM);
+DECLASM(int)      cpumHandleLazyFPUAsm(PCPUMCPU pCPUM);
 
 #ifdef IN_RING0
-DECLASM(int)      CPUMR0SaveGuestRestoreHostFPUState(PCPUMCPU pCPUM);
-DECLASM(int)      CPUMR0RestoreHostFPUState(PCPUMCPU pCPUM);
-DECLASM(void)     CPUMR0LoadFPU(PCPUMCTX pCtx);
-DECLASM(void)     CPUMR0SaveFPU(PCPUMCTX pCtx);
-DECLASM(void)     CPUMR0LoadXMM(PCPUMCTX pCtx);
-DECLASM(void)     CPUMR0SaveXMM(PCPUMCTX pCtx);
-DECLASM(void)     CPUMR0SetFCW(uint16_t u16FCW);
-DECLASM(uint16_t) CPUMR0GetFCW();
-DECLASM(void)     CPUMR0SetMXCSR(uint32_t u32MXCSR);
-DECLASM(uint32_t) CPUMR0GetMXCSR();
+DECLASM(int)      cpumR0SaveGuestRestoreHostFPUState(PCPUMCPU pCPUM);
+DECLASM(int)      cpumR0RestoreHostFPUState(PCPUMCPU pCPUM);
+DECLASM(void)     cpumR0LoadFPU(PCPUMCTX pCtx);
+DECLASM(void)     cpumR0SaveFPU(PCPUMCTX pCtx);
+DECLASM(void)     cpumR0LoadXMM(PCPUMCTX pCtx);
+DECLASM(void)     cpumR0SaveXMM(PCPUMCTX pCtx);
+DECLASM(void)     cpumR0SetFCW(uint16_t u16FCW);
+DECLASM(uint16_t) cpumR0GetFCW(void);
+DECLASM(void)     cpumR0SetMXCSR(uint32_t u32MXCSR);
+DECLASM(uint32_t) cpumR0GetMXCSR(void);
 #endif
 
 __END_DECLS
