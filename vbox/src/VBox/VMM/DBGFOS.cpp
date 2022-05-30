@@ -1,4 +1,4 @@
-/* $Id: DBGFOS.cpp 12677 2008-09-24 07:19:03Z vboxsync $ */
+/* $Id: DBGFOS.cpp 12898 2008-10-02 08:10:58Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest OS Diggers.
  */
@@ -46,7 +46,8 @@
 static DECLCALLBACK(int) dbgfR3OSRegister(PVM pVM, PDBGFOSREG pReg)
 {
     /* more validations. */
-    for (PDBGFOS pOS = pVM->dbgf.s.pOSHead; pOS; pOS = pOS->pNext)
+    PDBGFOS pOS;
+    for (pOS = pVM->dbgf.s.pOSHead; pOS; pOS = pOS->pNext)
         if (!strcmp(pOS->pReg->szName, pReg->szName))
         {
             Log(("dbgfR3OSRegister: %s -> VERR_ALREADY_LOADED\n", pReg->szName));
@@ -56,7 +57,7 @@ static DECLCALLBACK(int) dbgfR3OSRegister(PVM pVM, PDBGFOSREG pReg)
     /*
      * Allocate a new structure, call the constructor and link it into the list.
      */
-    PDBGFOS pOS = (PDBGFOS)MMR3HeapAllocZ(pVM, MM_TAG_DBGF_OS, RT_OFFSETOF(DBGFOS, abData[pReg->cbData]));
+    pOS = (PDBGFOS)MMR3HeapAllocZ(pVM, MM_TAG_DBGF_OS, RT_OFFSETOF(DBGFOS, abData[pReg->cbData]));
     AssertReturn(pOS, VERR_NO_MEMORY);
     pOS->pReg = pReg;
 
