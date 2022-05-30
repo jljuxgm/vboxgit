@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-freebsd.c 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: memobj-r0drv-freebsd.c 14824 2008-11-30 07:52:59Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, FreeBSD.
  */
@@ -467,8 +467,10 @@ int rtR0MemObjNativeReserveUser(PPRTR0MEMOBJINTERNAL ppMem, RTR3PTR R3PtrFixed, 
 }
 
 
-int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, void *pvFixed, size_t uAlignment, unsigned fProt)
+int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, void *pvFixed, size_t uAlignment,
+                              unsigned fProt, size_t offSub, size_t cbSub)
 {
+    AssertMsgReturn(!offSub && !cbSub, ("%#x %#x\n", offSub, cbSub), VERR_NOT_SUPPORTED);
     AssertMsgReturn(pvFixed == (void *)-1, ("%p\n", pvFixed), VERR_NOT_SUPPORTED);
 
 /* Phys: see pmap_mapdev in i386/i386/pmap.c (http://fxr.watson.org/fxr/source/i386/i386/pmap.c?v=RELENG62#L2860) */

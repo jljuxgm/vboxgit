@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 13839 2008-11-05 03:27:47Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 14824 2008-11-30 07:52:59Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -43,7 +43,7 @@
 #include <iprt/process.h>
 #include "internal/memobj.h"
 
-#define USE_VM_MAP_WIRE
+/*#define USE_VM_MAP_WIRE - may re-enable later when non-mapped allocations are added. */
 
 
 /*******************************************************************************
@@ -541,17 +541,20 @@ int rtR0MemObjNativeReserveUser(PPRTR0MEMOBJINTERNAL ppMem, RTR3PTR R3PtrFixed, 
 }
 
 
-int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, void *pvFixed, size_t uAlignment, unsigned fProt)
+int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, void *pvFixed, size_t uAlignment,
+                              unsigned fProt, size_t offSub, size_t cbSub)
 {
     /*
      * Must have a memory descriptor.
      */
     int rc = VERR_INVALID_PARAMETER;
     PRTR0MEMOBJDARWIN pMemToMapDarwin = (PRTR0MEMOBJDARWIN)pMemToMap;
+printf("rtR0MemObjNativeMapKernel: pMemDesc=%p\n", pMemToMapDarwin->pMemDesc);
     if (pMemToMapDarwin->pMemDesc)
     {
         IOMemoryMap *pMemMap = pMemToMapDarwin->pMemDesc->map(kernel_task, kIOMapAnywhere,
-                                                              kIOMapAnywhere | kIOMapDefaultCache);
+                                                              kIOMapAnywhere | kIOMapDefaultCache,
+                                                              offSub, cbSub);
         if (pMemMap)
         {
             IOVirtualAddress VirtAddr = pMemMap->getVirtualAddress();

@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 14824 2008-11-30 07:52:59Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -745,8 +745,10 @@ static int rtR0MemObjNtMap(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, voi
 }
 
 
-int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, void *pvFixed, size_t uAlignment, unsigned fProt)
+int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, void *pvFixed, size_t uAlignment,
+                              unsigned fProt, size_t offSub, size_t cbSub)
 {
+    AssertMsgReturn(!offSub && !cbSub, ("%#x %#x\n", offSub, cbSub), VERR_NOT_SUPPORTED);
     return rtR0MemObjNtMap(ppMem, pMemToMap, pvFixed, uAlignment, fProt, NIL_RTR0PROCESS);
 }
 
