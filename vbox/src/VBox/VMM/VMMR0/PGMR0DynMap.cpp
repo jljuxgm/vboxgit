@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 14748 2008-11-28 00:34:24Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 14752 2008-11-28 01:24:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -51,7 +51,7 @@
 #define PGMR0DYNMAP_PAGES_PER_CPU           64
 /** The number of guard pages. */
 #if defined(VBOX_STRICT)
-# define PGMR0DYNMAP_GUARD_PAGES            7
+# define PGMR0DYNMAP_GUARD_PAGES            4
 #else
 # define PGMR0DYNMAP_GUARD_PAGES            0
 #endif
