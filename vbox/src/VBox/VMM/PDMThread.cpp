@@ -1,4 +1,4 @@
-/* $Id: PDMThread.cpp 14299 2008-11-18 13:25:40Z vboxsync $ */
+/* $Id: PDMThread.cpp 15540 2008-12-15 20:01:28Z vboxsync $ */
 /** @file
  * PDM Thread - VM Thread Management.
  */
@@ -806,6 +806,9 @@ static DECLCALLBACK(int) pdmR3ThreadMain(RTTHREAD Thread, void *pvUser)
         if (RT_FAILURE(rc))
             break;
     }
+
+    if (RT_FAILURE(rc))
+        LogRel(("PDMThread: Thread '%s' (%RTthrd) quit unexpectedly with rc=%Rrc.\n", RTThreadGetName(Thread), Thread, rc));
 
     /*
      * Advance the state to terminating and then on to terminated.
