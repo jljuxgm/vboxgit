@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 17669 2009-03-11 09:56:29Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 17755 2009-03-12 15:03:46Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of -modifyvm command.
  */
@@ -1770,9 +1770,8 @@ int handleModifyVM(HandlerArg *a)
         {
             if (fSataEnabled)
             {
-                CHECK_ERROR(machine, AddStorageController(Bstr("SATA"), StorageBus_SATA));
                 ComPtr<IStorageController> ctl;
-                CHECK_ERROR(machine, GetStorageControllerByName(Bstr("SATA"), ctl.asOutParam()));
+                CHECK_ERROR(machine, AddStorageController(Bstr("SATA"), StorageBus_SATA, ctl.asOutParam()));
                 CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_IntelAhci));
             }
             else
@@ -1846,9 +1845,8 @@ int handleModifyVM(HandlerArg *a)
         {
             if (fLsiLogicEnabled)
             {
-                CHECK_ERROR(machine, AddStorageController(Bstr("LsiLogic"), StorageBus_SCSI));
                 ComPtr<IStorageController> ctl;
-                CHECK_ERROR(machine, GetStorageControllerByName(Bstr("LsiLogic"), ctl.asOutParam()));
+                CHECK_ERROR(machine, AddStorageController(Bstr("LsiLogic"), StorageBus_SCSI, ctl.asOutParam()));
                 CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_LsiLogic));
             }
             else
