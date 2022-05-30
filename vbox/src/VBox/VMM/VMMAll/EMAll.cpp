@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 12305 2008-09-09 15:50:15Z vboxsync $ */
+/* $Id: EMAll.cpp 12307 2008-09-09 15:57:02Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -75,6 +75,7 @@ EMDECL(EMSTATE) EMGetState(PVM pVM)
  */
 EMDECL(void) EMFlushREMTBs(PVM pVM)
 {
+    Log(("EMFlushREMTBs\n"));
     pVM->em.s.fREMFlushTBs = true;
 }
 
