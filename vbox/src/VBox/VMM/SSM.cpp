@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 12440 2008-09-12 18:40:20Z vboxsync $ */
+/* $Id: SSM.cpp 12441 2008-09-12 19:04:01Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -308,7 +308,7 @@ static DECLCALLBACK(int) ssmR3SelfLoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t u3
      * String table containg pairs of variable and value string.
      * Terminated by two empty strings.
      */
-    LogRel(("SSM: Saved state info:\n", szVar, szValue));
+    LogRel(("SSM: Saved state info:\n"));
     for (;;)
     {
         char szVar[128];
