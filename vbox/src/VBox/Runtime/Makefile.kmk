@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16999 2009-02-23 09:55:20Z vboxsync $
+# $Id: Makefile.kmk 17080 2009-02-24 17:09:08Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -811,6 +811,7 @@ $(PATH_BIN)/VBoxRT.so: $$(TARGET_VBoxRT) | $$(dir $$@)
 	$(INSTALL) $< $@
 	chcon -t texrel_shlib_t $@ || true
 
+VBoxRT:: VBoxRTDummy
   endif # chcon present.
  endif # building VBoxRT
 endif # linux
