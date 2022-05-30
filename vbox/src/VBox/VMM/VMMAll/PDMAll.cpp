@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: PDMAll.cpp 13013 2008-10-06 14:48:49Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -249,6 +249,50 @@ VMMDECL(int) PDMApicGetTPR(PVM pVM, uint8_t *pu8TPR, bool *pfPending)
         return VINF_SUCCESS;
     }
     *pu8TPR = 0;
+    return VERR_PDM_NO_APIC_INSTANCE;
+}
+
+/**
+ * WRMSR in APIC range.
+ *
+ * @returns VBox status code.
+ * @param   pVM             VM handle.
+ * @param   iCpu            Target CPU.
+ * @param   u32Reg          MSR to write.
+ * @param   u64Value        Value to write.
+ */
+VMMDECL(int) PDMApicWRMSR(PVM pVM, VMCPUID iCpu, uint32_t u32Reg, uint64_t u64Value)
+{
+    if (pVM->pdm.s.Apic.CTX_SUFF(pDevIns))
+    {
+        Assert(pVM->pdm.s.Apic.CTX_SUFF(pfnWRMSR));
+        pdmLock(pVM);
+        pVM->pdm.s.Apic.CTX_SUFF(pfnWRMSR)(pVM->pdm.s.Apic.CTX_SUFF(pDevIns), iCpu, u32Reg, u64Value);
+        pdmUnlock(pVM);
+        return VINF_SUCCESS;
+    }
+    return VERR_PDM_NO_APIC_INSTANCE;
+}
+
+/**
+ * RDMSR in APIC range.
+ *
+ * @returns VBox status code.
+ * @param   pVM             VM handle.
+ * @param   iCpu            Target CPU.
+ * @param   u32Reg          MSR to read.
+ * @param   pu64Value       Value read.
+ */
+VMMDECL(int) PDMApicRDMSR(PVM pVM, VMCPUID iCpu, uint32_t u32Reg, uint64_t *pu64Value)
+{
+    if (pVM->pdm.s.Apic.CTX_SUFF(pDevIns))
+    {
+        Assert(pVM->pdm.s.Apic.CTX_SUFF(pfnRDMSR));
+        pdmLock(pVM);
+        pVM->pdm.s.Apic.CTX_SUFF(pfnRDMSR)(pVM->pdm.s.Apic.CTX_SUFF(pDevIns), iCpu, u32Reg, pu64Value);
+        pdmUnlock(pVM);
+        return VINF_SUCCESS;
+    }
     return VERR_PDM_NO_APIC_INSTANCE;
 }
 
