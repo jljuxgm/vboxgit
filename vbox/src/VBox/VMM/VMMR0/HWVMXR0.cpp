@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 16110 2009-01-21 01:37:45Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 16645 2009-02-10 16:12:07Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1497,7 +1497,7 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     {
         if (pVM->hwaccm.s.fNestedPaging)
         {
-            AssertMsg(   PGMGetEPTCR3(pVM) == PGMGetHyperCR3(pVM)
+            AssertMsg(   PGMGetEPTCR3(pVM)
                       || VM_FF_ISPENDING(pVM, VM_FF_PGM_SYNC_CR3 | VM_FF_PGM_SYNC_CR3_NON_GLOBAL),
                       ("%RHp vs %RHp\n", PGMGetEPTCR3(pVM), PGMGetHyperCR3(pVM)));
             pVCpu->hwaccm.s.vmx.GCPhysEPTP = PGMGetEPTCR3(pVM);
