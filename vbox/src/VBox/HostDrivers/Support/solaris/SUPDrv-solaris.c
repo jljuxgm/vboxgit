@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 12691 2008-09-24 14:42:09Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 12808 2008-09-29 15:19:15Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -59,24 +59,6 @@
 #include <iprt/alloc.h>
 #include <iprt/string.h>
 
-/**
- * Drag in symbols from R0 Runtime required by VBoxNetFlt.
- */
-#ifdef VBOX_WITH_NETFLT
-# include <iprt/crc32.h>
-# include <iprt/uuid.h>
-# include <iprt/net.h>
-
-static RTR0PTR g_vboxNetFltSolarisRTR0Symbols[] =
-{
-    (void *)RTCrc32,
-    (void *)RTUuidFromStr,
-    (void *)RTUuidCompareStr,
-    (void *)RTNetIPv4UDPChecksum,
-    (void *)RTNetIPv4TCPChecksum,
-    (void *)RTNetIPv4IsHdrValid
-};
-#endif  /* VBOX_WITH_NETFLT */
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
@@ -355,7 +337,7 @@ static int VBoxDrvSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t enmCmd)
                 ddi_report_dev(pDip);
                 return DDI_SUCCESS;
             }
-            
+
             return DDI_FAILURE;
         }
 
