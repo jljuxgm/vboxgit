@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14342 2008-11-19 09:47:56Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14356 2008-11-19 16:05:04Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -10661,3 +10661,4 @@ Snapshot 1 (B.vdi)            Snapshot 1 (B.vdi)
 </library>
 
 </idl>
+<!-- vim: set shiftwidth=2 tabstop=2 expandtab: -->
