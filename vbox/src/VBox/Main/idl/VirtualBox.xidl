@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14576 2008-11-25 15:12:09Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14604 2008-11-25 22:05:30Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -47,6 +47,10 @@
  * 7. src/VBox/Installer/win32/VirtualBox_TypeLib.xsl =>
  *    out/<platform>/obj/src/VBox/Installer/win32/VirtualBox_TypeLib.wxi
  *    (Main API TypeLib block for the WiX installer)
+ *
+ * 8. src/VBox/Runtime/common/err/errmsgvboxcom.xsl =>
+ *    out/<platform>/obj/src/VBox/Runtime/errmsgvboxcomdata.h
+ *    (<result> extraction for %Rhrc the format specifier)
  *
      Copyright (C) 2006-2007 Sun Microsystems, Inc.
 
@@ -257,6 +261,12 @@
     </desc>
   </descGroup>
 
+  <!--
+    Note that src/VBox/Runtime/common/err/errmsgvboxcom.xsl will ignore
+    everything in <result>/<desc> after (and including) the first dot, so express
+    the matter of the error code in the first sentence and keep it short.
+  -->
+
   <result name="VBOX_E_OBJECT_NOT_FOUND" value="0x80BB0001">
     <desc>
        Object corresponding to the supplied arguments does not exist.
@@ -292,6 +302,12 @@
        Pluggable Device Manager error.
     </desc>
   </result>
+
+  <!--
+    Note that src/VBox/Runtime/common/err/errmsgvboxcom.xsl will ignore
+    everything in <result>/<desc> after (and including) the first dot, so express
+    the matter of the error code in the first sentence and keep it short.
+  -->
 
   <descGroup/>
 

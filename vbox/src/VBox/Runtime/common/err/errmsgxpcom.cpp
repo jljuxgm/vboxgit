@@ -1,4 +1,4 @@
-/* $Id: errmsgxpcom.cpp 13083 2008-10-08 14:44:25Z vboxsync $ */
+/* $Id: errmsgxpcom.cpp 14604 2008-11-25 22:05:30Z vboxsync $ */
 /** @file
  * IPRT - Status code messages for XPCOM.
  */
@@ -105,6 +105,8 @@ static const RTCOMERRMSG  g_aStatusMsgs[] =
     MY_ERR("NS_ERROR_FILE_DIR_NOT_EMPTY",           "NS_ERROR_FILE_DIR_NOT_EMPTY",                  UINT32_C(0x80520014)),
     MY_ERR("NS_ERROR_FILE_ACCESS_DENIED",           "NS_ERROR_FILE_ACCESS_DENIED",                  UINT32_C(0x80520015)),
     MY_ERR("NS_SUCCESS_FILE_DIRECTORY_EMPTY",       "NS_SUCCESS_FILE_DIRECTORY_EMPTY",              UINT32_C(0x00520001)),
+
+#include "errmsgvboxcomdata.h"
 
     { NULL, NULL, 0 }
 #undef MY_ERR
