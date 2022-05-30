@@ -1,4 +1,4 @@
-/* $Id: RawHDDCore.cpp 13580 2008-10-27 14:04:18Z vboxsync $ */
+/* $Id: RawHDDCore.cpp 14852 2008-12-01 11:46:18Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -1089,6 +1089,8 @@ VBOXHDDBACKEND g_RawBackend =
     s_apszRawFileExtensions,
     /* paConfigInfo */
     NULL,
+    /* hPlugin */
+    NIL_RTLDRMOD,
     /* pfnCheckIfValid */
     rawCheckIfValid,
     /* pfnOpen */
