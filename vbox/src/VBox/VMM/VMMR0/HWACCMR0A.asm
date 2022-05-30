@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 15255 2008-12-10 15:45:19Z vboxsync $
+; $Id: HWACCMR0A.asm 15395 2008-12-12 19:40:33Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -262,10 +262,10 @@ BEGINPROC VMXWriteVMCS64
     mov         ecx, [esp + 4]          ; idxField
     lea         edx, [esp + 8]          ; &u64Data
  %ifdef VBOX_WITH_HYBIRD_32BIT_KERNEL
-    cmp     byte [NAME(g_fVMXIs64bitHost)], 0
-    jz      .legacy_mode
-    db      0xea                        ; jmp far .sixtyfourbit_mode
-    dd      .sixtyfourbit_mode, NAME(SUPR0Abs64bitKernelCS)
+    cmp         byte [NAME(g_fVMXIs64bitHost)], 0
+    jz          .legacy_mode
+    db          0xea                    ; jmp far .sixtyfourbit_mode
+    dd          .sixtyfourbit_mode, NAME(SUPR0Abs64bitKernelCS)
 .legacy_mode:
  %endif ; VBOX_WITH_HYBIRD_32BIT_KERNEL
     vmwrite     ecx, [edx]              ; low dword
