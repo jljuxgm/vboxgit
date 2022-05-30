@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 14938 2008-12-03 12:10:57Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -394,8 +394,7 @@ STDMETHODIMP USBController::CreateDeviceFilter (INPTR BSTR aName,
     if (!aFilter)
         return E_POINTER;
 
-    if (!aName || *aName == 0)
-        return E_INVALIDARG;
+    CheckComArgStrNotEmptyOrNull(aName);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
