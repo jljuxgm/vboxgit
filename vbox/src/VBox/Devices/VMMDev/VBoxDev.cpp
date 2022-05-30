@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
+/* $Id: VBoxDev.cpp 13270 2008-10-14 16:20:28Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -263,6 +263,12 @@ void VMMDevNotifyGuest (VMMDevState *pVMMDevState, uint32_t u32EventMask)
     int rc;
 
     Log3(("VMMDevNotifyGuest: u32EventMask = 0x%08X.\n", u32EventMask));
+
+    /*
+     * Drop notifications if the VM is not running yet/anymore.
+     */
+    if (PDMDevHlpVMState(pDevIns) != VMSTATE_RUNNING)
+        return;
 
     /* No need to wait for the completion of this request. It is a notification
      * about something, which has already happened.
