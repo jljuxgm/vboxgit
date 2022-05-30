@@ -1,4 +1,4 @@
-/* $Id: init.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
+/* $Id: init.cpp 14832 2008-11-30 10:43:53Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -41,11 +41,12 @@
 #endif
 
 #include <iprt/initterm.h>
-#include <iprt/path.h>
+#include <iprt/asm.h>
 #include <iprt/assert.h>
-#include <iprt/log.h>
-#include <iprt/time.h>
 #include <iprt/err.h>
+#include <iprt/log.h>
+#include <iprt/path.h>
+#include <iprt/time.h>
 #include <iprt/string.h>
 #include <iprt/param.h>
 #if !defined(IN_GUEST) && !defined(RT_NO_GIP)
