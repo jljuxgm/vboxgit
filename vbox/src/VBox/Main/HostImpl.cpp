@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 12953 2008-10-02 17:56:43Z vboxsync $ */
+/* $Id: HostImpl.cpp 12954 2008-10-02 18:02:31Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -665,10 +665,7 @@ static bool vboxSolarisSameNIC(ComObjPtr <HostNetworkInterface> Iface1, ComObjPt
     Bstr Iface2Str;
     (*Iface2).COMGETTER(Name) (Iface2Str.asOutParam());
 
-    if (Iface1Str == Iface2Str)
-        return true;
-
-    return false;
+    return (Iface1Str == Iface2Str);
 }
 
 # endif /* VBOX_SOLARIS_USE_DEVINFO */
