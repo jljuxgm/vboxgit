@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 15101 2008-12-08 11:04:31Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 15260 2008-12-10 16:41:52Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1062,6 +1062,21 @@ static int VBoxNetFltSolarisModReadPut(queue_t *pQueue, mblk_t *pMsg)
                     {
                         pPromiscStream->fRawMode = true;
                         LogFlow((DEVICE_NAME ":VBoxNetFltSolarisModReadPut: Mode acknowledgement. RawMode is %s\n",
+                                pPromiscStream->fRawMode ? "ON" : "OFF"));
+                    }
+                    break;
+                }
+
+                case M_IOCNAK:
+                {
+                    /*
+                     * Swallow our fake raw/fast path mode request not acknowledged.
+                     */
+                    struct iocblk *pIOC = (struct iocblk *)pMsg->b_rptr;
+                    if (pIOC->ioc_id == pPromiscStream->ModeReqId)
+                    {
+                        pPromiscStream->fRawMode = false;
+                        LogRel((DEVICE_NAME ":VBoxNetFltSolarisModReadPut: WARNING! Mode not acknowledged. RawMode is %s\n",
                                 pPromiscStream->fRawMode ? "ON" : "OFF"));
                     }
                     break;
