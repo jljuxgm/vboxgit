@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 16000 2009-01-16 16:51:34Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 16040 2009-01-19 11:11:12Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1017,7 +1017,7 @@ STDMETHODIMP VirtualBox::FindMachine (IN_BSTR aName, IMachine **aMachine)
 
     HRESULT rc = machine
         ? S_OK
-        : setError (VBOX_E_FILE_ERROR,
+        : setError (VBOX_E_OBJECT_NOT_FOUND,
             tr ("Could not find a registered machine named '%ls'"), aName);
 
     LogFlowThisFunc (("rc=%08X\n", rc));
