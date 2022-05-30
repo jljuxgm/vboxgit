@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 11705 2008-08-27 14:53:58Z vboxsync $ */
+/* $Id: HWACCM.cpp 11764 2008-08-28 14:28:50Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -522,9 +522,6 @@ HWACCMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                 pVM->fHWACCMEnabled = true;
                 pVM->hwaccm.s.vmx.fEnabled = true;
                 hwaccmr3DisableRawMode(pVM);
-
-                /* Clear the PAT feature; see #3026. */
-                CPUMClearGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAT);
 
                 CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_SEP);
 #ifdef VBOX_ENABLE_64_BITS_GUESTS

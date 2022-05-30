@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 11748 2008-08-28 09:36:57Z vboxsync $ */
+/* $Id: EMAll.cpp 11764 2008-08-28 14:28:50Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2082,8 +2082,6 @@ EMDECL(int) EMInterpretCRxWrite(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_t DestRe
                         AssertMsgFailed(("Illegal enabling of paging with PAE disabled!!\n"));
                         return VERR_EM_INTERPRETER; /* @todo generate #GP(0) */
                     }
-
-                    CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAT);
                     msrEFER |= MSR_K6_EFER_LMA;
                 }
                 else
