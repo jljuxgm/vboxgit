@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 13095 2008-10-08 16:14:20Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 13105 2008-10-09 08:19:19Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1184,16 +1184,18 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, CPUMCTX *pCtx)
     {
         if (pVM->hwaccm.s.fNestedPaging)
         {
+            RTHCPHYS GCPhys;
+
             Assert(pVM->hwaccm.s.vmx.GCPhysEPTP == PGMGetHyperCR3(pVM));
-            val = pVM->hwaccm.s.vmx.GCPhysEPTP;
+            GCPhys = pVM->hwaccm.s.vmx.GCPhysEPTP;
 
             Assert(!(val & 0xfff));
             /** @todo Check the IA32_VMX_EPT_VPID_CAP MSR for other supported memory types. */
-            val |=   VMX_EPT_MEMTYPE_WB
-                  | (VMX_EPT_PAGE_WALK_LENGTH_DEFAULT << VMX_EPT_PAGE_WALK_LENGTH_SHIFT);
-            rc = VMXWriteVMCS(VMX_VMCS_CTRL_EPTP_FULL, val);
+            GCPhys |=   VMX_EPT_MEMTYPE_WB
+                     | (VMX_EPT_PAGE_WALK_LENGTH_DEFAULT << VMX_EPT_PAGE_WALK_LENGTH_SHIFT);
+            rc = VMXWriteVMCS(VMX_VMCS_CTRL_EPTP_FULL, GCPhys);
 #if HC_ARCH_BITS == 32
-            rc = VMXWriteVMCS(VMX_VMCS_CTRL_EPTP_HIGH, (uint32_t)(val >> 32ULL));
+            rc = VMXWriteVMCS(VMX_VMCS_CTRL_EPTP_HIGH, (uint32_t)(GCPhys >> 32ULL));
 #endif
             AssertRC(rc);
 
