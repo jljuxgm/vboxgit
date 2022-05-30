@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: path-win.cpp 14050 2008-11-10 22:48:21Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -129,7 +129,7 @@ RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, unsigned cchAbsPath
  * @param   pszPath     Buffer where to store the path.
  * @param   cchPath     Buffer size in bytes.
  */
-RTDECL(int) RTPathUserHome(char *pszPath, unsigned cchPath)
+RTDECL(int) RTPathUserHome(char *pszPath, size_t cchPath)
 {
     RTUTF16 wszPath[RTPATH_MAX];
     DWORD   dwAttr;

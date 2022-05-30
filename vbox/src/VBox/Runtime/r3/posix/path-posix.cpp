@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 11836 2008-08-29 16:52:20Z vboxsync $ */
+/* $Id: path-posix.cpp 14050 2008-11-10 22:48:21Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX.
  */
@@ -501,7 +501,7 @@ static int rtPathUserHomeByEnv(char *pszPath, size_t cchPath)
 }
 
 
-RTDECL(int) RTPathUserHome(char *pszPath, unsigned cchPath)
+RTDECL(int) RTPathUserHome(char *pszPath, size_t cchPath)
 {
     int rc;
 #ifndef RT_OS_L4
