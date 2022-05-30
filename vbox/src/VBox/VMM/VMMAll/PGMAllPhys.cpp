@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 17434 2009-03-06 03:22:21Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 17435 2009-03-06 03:23:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1898,7 +1898,7 @@ static void pgmPhysWriteHandler(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void c
     for (;;)
     {
         /*
-         * Find the closest handler above GCPhys.
+         * Find the closest handler at or above GCPhys.
          */
         if (fMoreVirt && !pVirt)
         {
