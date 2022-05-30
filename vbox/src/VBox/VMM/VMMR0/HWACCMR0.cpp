@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 14845 2008-12-01 10:12:25Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 14859 2008-12-01 14:01:55Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -997,6 +997,36 @@ VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
 #endif
     return rc;
 }
+
+
+#if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
+/**
+ * Save guest FPU/XMM state
+ *
+ * @returns VBox status code.
+ * @param   pVM         VM handle.
+ * @param   pVCpu       VMCPU handle.
+ * @param   pCtx        CPU context
+ */
+VMMR0DECL(int)   HWACCMR0SaveFPUState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
+{
+    return VINF_SUCCESS;
+}
+
+/**
+ * Save guest debug state (64 bits guest mode & 32 bits host only)
+ *
+ * @returns VBox status code.
+ * @param   pVM         VM handle.
+ * @param   pVCpu       VMCPU handle.
+ * @param   pCtx        CPU context
+ * @param   fDR6        Include DR6 or not
+ */
+VMMR0DECL(int)   HWACCMR0SaveDebugState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, bool fDR6)
+{
+    return VINF_SUCCESS;
+}
+#endif /* HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) */
 
 /**
  * Returns suspend status of the host

@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 14785 2008-11-28 15:11:20Z vboxsync $ */
+/* $Id: CPUMInternal.h 14859 2008-12-01 14:01:55Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -71,6 +71,10 @@
 #define CPUM_USE_DEBUG_REGS             RT_BIT(5)
 /** The XMM state was manually restored. (AMD only) */
 #define CPUM_MANUAL_XMM_RESTORE         RT_BIT(6)
+/** Sync the FPU state on entry (32->64 switcher only). */
+#define CPUM_SYNC_FPU_STATE             RT_BIT(7)
+/** Sync the debug state on entry (32->64 switcher only). */
+#define CPUM_SYNC_DEBUG_STATE           RT_BIT(8)
 /** @} */
 
 /* Sanity check. */
@@ -373,6 +377,7 @@ typedef CPUMCPU *PCPUMCPU;
 __BEGIN_DECLS
 
 DECLASM(int)      CPUMHandleLazyFPUAsm(PCPUMCPU pCPUM);
+DECLASM(int)      CPUMSaveGuestRestoreHostFPUStateAsm(PCPUMCPU pCPUM);
 DECLASM(int)      CPUMRestoreHostFPUStateAsm(PCPUMCPU pCPUM);
 DECLASM(void)     CPUMLoadFPUAsm(PCPUMCTX pCtx);
 DECLASM(void)     CPUMSaveFPUAsm(PCPUMCTX pCtx);
