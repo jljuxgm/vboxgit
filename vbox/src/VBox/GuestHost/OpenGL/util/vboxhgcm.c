@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 15759 2008-12-25 15:57:37Z vboxsync $ */
+/* $Id: vboxhgcm.c 15818 2009-01-06 12:56:19Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -772,7 +772,7 @@ static void crVBoxHGCMDoDisconnect( CRConnection *conn )
             g_crvboxhgcm.conns[conn->index]->index = conn->index;
         }
         else g_crvboxhgcm.conns[conn->index] = NULL;
-            
+
         conn->type = CR_NO_CONNECTION;
     }
 
@@ -909,7 +909,7 @@ void crVBoxHGCMTearDown(void)
     cCons = g_crvboxhgcm.num_conns;
     for (i=0; i<cCons; i++)
     {
-        crNetDisconnect(g_crvboxhgcm.conns[0]);
+        crNetDisconnect(g_crvboxhgcm.conns[i]);
     }
     CRASSERT(0==g_crvboxhgcm.num_conns);
 
