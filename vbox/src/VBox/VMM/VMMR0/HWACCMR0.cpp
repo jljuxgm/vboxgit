@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 14658 2008-11-26 18:09:32Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 14804 2008-11-29 03:17:08Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -163,12 +163,7 @@ VMMR0DECL(int) HWACCMR0Init(void)
     /*
      * Check for VT-x and AMD-V capabilities
      */
-#ifdef VBOX_WITH_HYBIRD_32BIT_KERNEL
-    if (    ASMHasCpuId()
-        &&  SUPR0GetPagingMode() < SUPPAGINGMODE_AMD64) /* VMON -> #UD in compatability mode; temporary hack. */
-#else
     if (ASMHasCpuId())
-#endif
     {
         uint32_t u32FeaturesECX;
         uint32_t u32Dummy;
