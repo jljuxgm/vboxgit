@@ -1,4 +1,4 @@
-/* $Id: path.cpp 11836 2008-08-29 16:52:20Z vboxsync $ */
+/* $Id: path.cpp 11839 2008-08-29 17:48:20Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation.
  */
@@ -155,7 +155,7 @@ RTDECL(size_t) RTPathParse(const char *pszPath, size_t *pcchDir, ssize_t *poffNa
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
             case ':':
                 pszName = psz + 1;
-                cchRoot = pszName - psz;
+                offRoot = pszName - psz;
                 break;
 
             case '\\':
