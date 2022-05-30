@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
+/* $Id: USBDeviceImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
@@ -63,7 +63,7 @@ public:
     void uninit();
 
     // IUSBDevice properties
-    STDMETHOD(COMGETTER(Id))(GUIDPARAMOUT aId);
+    STDMETHOD(COMGETTER(Id))(OUT_GUID aId);
     STDMETHOD(COMGETTER(VendorId))(USHORT *aVendorId);
     STDMETHOD(COMGETTER(ProductId))(USHORT *aProductId);
     STDMETHOD(COMGETTER(Revision))(USHORT *aRevision);
@@ -122,7 +122,7 @@ private:
 
 COM_DECL_READONLY_ENUM_AND_COLLECTION_EX_BEGIN (ComObjPtr <OUSBDevice>, IUSBDevice, OUSBDevice)
 
-    STDMETHOD(FindById) (INPTR GUIDPARAM aId, IUSBDevice **aDevice)
+    STDMETHOD(FindById) (IN_GUID aId, IUSBDevice **aDevice)
     {
         Guid idToFind = aId;
         if (idToFind.isEmpty())
@@ -152,7 +152,7 @@ COM_DECL_READONLY_ENUM_AND_COLLECTION_EX_BEGIN (ComObjPtr <OUSBDevice>, IUSBDevi
         return found.queryInterfaceTo (aDevice);
     }
 
-    STDMETHOD(FindByAddress) (INPTR BSTR aAddress, IUSBDevice **aDevice)
+    STDMETHOD(FindByAddress) (IN_BSTR aAddress, IUSBDevice **aDevice)
     {
         if (!aAddress)
             return E_INVALIDARG;

@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
+/* $Id: FloppyDriveImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -249,7 +249,7 @@ STDMETHODIMP FloppyDrive::COMGETTER(State) (DriveState_T *aState)
 // IFloppyDrive methods
 /////////////////////////////////////////////////////////////////////////////
 
-STDMETHODIMP FloppyDrive::MountImage (INPTR GUIDPARAM aImageId)
+STDMETHODIMP FloppyDrive::MountImage (IN_GUID aImageId)
 {
     Guid imageId = aImageId;
     if (imageId.isEmpty())

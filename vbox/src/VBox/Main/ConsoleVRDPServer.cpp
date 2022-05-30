@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 14772 2008-11-28 12:41:22Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -161,7 +161,7 @@ public:
         return S_OK;
     }
 
-    STDMETHOD(OnRuntimeError)(BOOL fatal, INPTR BSTR id, INPTR BSTR message)
+    STDMETHOD(OnRuntimeError)(BOOL fatal, IN_BSTR id, IN_BSTR message)
     {
         return S_OK;
     }

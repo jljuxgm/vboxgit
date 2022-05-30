@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 14996 2008-12-04 15:52:00Z vboxsync $ */
+/* $Id: HostImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1351,7 +1351,7 @@ struct NetworkInterfaceHelperClientData
 };
 
 STDMETHODIMP
-Host::CreateHostNetworkInterface (INPTR BSTR aName,
+Host::CreateHostNetworkInterface (IN_BSTR aName,
                                   IHostNetworkInterface **aHostNetworkInterface,
                                   IProgress **aProgress)
 {
@@ -1414,7 +1414,7 @@ Host::CreateHostNetworkInterface (INPTR BSTR aName,
 }
 
 STDMETHODIMP
-Host::RemoveHostNetworkInterface (INPTR GUIDPARAM aId,
+Host::RemoveHostNetworkInterface (IN_GUID aId,
                                   IHostNetworkInterface **aHostNetworkInterface,
                                   IProgress **aProgress)
 {
@@ -1475,7 +1475,7 @@ Host::RemoveHostNetworkInterface (INPTR GUIDPARAM aId,
 
 #endif /* RT_OS_WINDOWS */
 
-STDMETHODIMP Host::CreateUSBDeviceFilter (INPTR BSTR aName, IHostUSBDeviceFilter **aFilter)
+STDMETHODIMP Host::CreateUSBDeviceFilter (IN_BSTR aName, IHostUSBDeviceFilter **aFilter)
 {
 #ifdef VBOX_WITH_USB
     CheckComArgStrNotEmptyOrNull(aName);

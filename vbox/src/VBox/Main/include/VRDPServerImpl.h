@@ -1,4 +1,4 @@
-/* $Id: VRDPServerImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
+/* $Id: VRDPServerImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -91,7 +91,7 @@ public:
     STDMETHOD(COMGETTER(Port)) (ULONG *aPort);
     STDMETHOD(COMSETTER(Port)) (ULONG aPort);
     STDMETHOD(COMGETTER(NetAddress)) (BSTR *aAddress);
-    STDMETHOD(COMSETTER(NetAddress)) (INPTR BSTR aAddress);
+    STDMETHOD(COMSETTER(NetAddress)) (IN_BSTR aAddress);
     STDMETHOD(COMGETTER(AuthType)) (VRDPAuthType_T *aType);
     STDMETHOD(COMSETTER(AuthType)) (VRDPAuthType_T aType);
     STDMETHOD(COMGETTER(AuthTimeout)) (ULONG *aTimeout);

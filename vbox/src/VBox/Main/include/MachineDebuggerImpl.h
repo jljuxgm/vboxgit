@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -81,9 +81,9 @@ public:
     STDMETHOD(InjectNMI)();
 
     // IMachineDebugger methods
-    STDMETHOD(ResetStats (INPTR BSTR aPattern));
-    STDMETHOD(DumpStats (INPTR BSTR aPattern));
-    STDMETHOD(GetStats (INPTR BSTR aPattern, BOOL aWithDescriptions, BSTR *aStats));
+    STDMETHOD(ResetStats (IN_BSTR aPattern));
+    STDMETHOD(DumpStats (IN_BSTR aPattern));
+    STDMETHOD(GetStats (IN_BSTR aPattern, BOOL aWithDescriptions, BSTR *aStats));
 
 
     // "public-private methods"

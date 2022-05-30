@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
+/* $Id: GuestImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -257,8 +257,8 @@ STDMETHODIMP Guest::COMSETTER(StatisticsUpdateInterval) (ULONG aUpdateInterval)
     return ret;
 }
 
-STDMETHODIMP Guest::SetCredentials(INPTR BSTR aUserName, INPTR BSTR aPassword,
-                                   INPTR BSTR aDomain, BOOL aAllowInteractiveLogon)
+STDMETHODIMP Guest::SetCredentials(IN_BSTR aUserName, IN_BSTR aPassword,
+                                   IN_BSTR aDomain, BOOL aAllowInteractiveLogon)
 {
     CheckComArgNotNull(aUserName);
     CheckComArgNotNull(aPassword);

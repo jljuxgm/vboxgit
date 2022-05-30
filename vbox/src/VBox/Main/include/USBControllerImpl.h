@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
+/* $Id: USBControllerImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -101,7 +101,7 @@ public:
     STDMETHOD(COMGETTER(DeviceFilters)) (IUSBDeviceFilterCollection **aDevicesFilters);
 
     // IUSBController methods
-    STDMETHOD(CreateDeviceFilter) (INPTR BSTR aName, IUSBDeviceFilter **aFilter);
+    STDMETHOD(CreateDeviceFilter) (IN_BSTR aName, IUSBDeviceFilter **aFilter);
     STDMETHOD(InsertDeviceFilter) (ULONG aPosition, IUSBDeviceFilter *aFilter);
     STDMETHOD(RemoveDeviceFilter) (ULONG aPosition, IUSBDeviceFilter **aFilter);
 

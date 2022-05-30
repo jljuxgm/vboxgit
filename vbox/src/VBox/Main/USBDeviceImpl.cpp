@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -143,7 +143,7 @@ void OUSBDevice::uninit()
  * @returns COM status code
  * @param   aId   Address of result variable.
  */
-STDMETHODIMP OUSBDevice::COMGETTER(Id)(GUIDPARAMOUT aId)
+STDMETHODIMP OUSBDevice::COMGETTER(Id)(OUT_GUID aId)
 {
     CheckComArgOutPointerValid(aId);
 

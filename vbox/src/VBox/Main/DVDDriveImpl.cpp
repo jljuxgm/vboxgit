@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
+/* $Id: DVDDriveImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -242,7 +242,7 @@ STDMETHODIMP DVDDrive::COMSETTER(Passthrough) (BOOL aPassthrough)
 // IDVDDrive methods
 ////////////////////////////////////////////////////////////////////////////////
 
-STDMETHODIMP DVDDrive::MountImage (INPTR GUIDPARAM aImageId)
+STDMETHODIMP DVDDrive::MountImage (IN_GUID aImageId)
 {
     Guid imageId = aImageId;
     if (imageId.isEmpty())

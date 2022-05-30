@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 14972 2008-12-04 12:10:37Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -97,7 +97,7 @@ STDMETHODIMP HostNetworkInterface::COMGETTER(Name) (BSTR *aInterfaceName)
  * @returns COM status code
  * @param   aGuid address of result pointer
  */
-STDMETHODIMP HostNetworkInterface::COMGETTER(Id) (GUIDPARAMOUT aGuid)
+STDMETHODIMP HostNetworkInterface::COMGETTER(Id) (OUT_GUID aGuid)
 {
     CheckComArgOutPointerValid(aGuid);
 

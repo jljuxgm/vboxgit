@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
+/* $Id: PerformanceImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -142,23 +142,23 @@ public:
     STDMETHOD(COMGETTER(MetricNames)) (ComSafeArrayOut (BSTR, metricNames));
 
     // IPerformanceCollector methods
-    STDMETHOD(GetMetrics) (ComSafeArrayIn (INPTR BSTR, metricNames),
+    STDMETHOD(GetMetrics) (ComSafeArrayIn (IN_BSTR, metricNames),
                            ComSafeArrayIn (IUnknown *, objects),
                            ComSafeArrayOut (IPerformanceMetric *, outMetrics));
-    STDMETHOD(SetupMetrics) (ComSafeArrayIn (INPTR BSTR, metricNames),
+    STDMETHOD(SetupMetrics) (ComSafeArrayIn (IN_BSTR, metricNames),
                              ComSafeArrayIn (IUnknown *, objects),
                              ULONG aPeriod, ULONG aCount,
                              ComSafeArrayOut (IPerformanceMetric *,
                                               outMetrics));
-    STDMETHOD(EnableMetrics) (ComSafeArrayIn (INPTR BSTR, metricNames),
+    STDMETHOD(EnableMetrics) (ComSafeArrayIn (IN_BSTR, metricNames),
                               ComSafeArrayIn (IUnknown *, objects),
                               ComSafeArrayOut (IPerformanceMetric *,
                                                outMetrics));
-    STDMETHOD(DisableMetrics) (ComSafeArrayIn (INPTR BSTR, metricNames),
+    STDMETHOD(DisableMetrics) (ComSafeArrayIn (IN_BSTR, metricNames),
                                ComSafeArrayIn (IUnknown *, objects),
                                ComSafeArrayOut (IPerformanceMetric *,
                                                 outMetrics));
-    STDMETHOD(QueryMetricsData) (ComSafeArrayIn (INPTR BSTR, metricNames),
+    STDMETHOD(QueryMetricsData) (ComSafeArrayIn (IN_BSTR, metricNames),
                                  ComSafeArrayIn (IUnknown *, objects),
                                  ComSafeArrayOut (BSTR, outMetricNames),
                                  ComSafeArrayOut (IUnknown *, outObjects),

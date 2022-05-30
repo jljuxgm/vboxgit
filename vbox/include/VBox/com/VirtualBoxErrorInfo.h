@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfo.h 13580 2008-10-27 14:04:18Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfo.h 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -85,7 +85,7 @@ public:
 
     // IVirtualBoxErrorInfo properties
     STDMETHOD(COMGETTER(ResultCode)) (HRESULT *aResultCode);
-    STDMETHOD(COMGETTER(InterfaceID)) (GUIDPARAMOUT aIID);
+    STDMETHOD(COMGETTER(InterfaceID)) (OUT_GUID aIID);
     STDMETHOD(COMGETTER(Component)) (BSTR *aComponent);
     STDMETHOD(COMGETTER(Text)) (BSTR *aText);
     STDMETHOD(COMGETTER(Next)) (IVirtualBoxErrorInfo **aNext);

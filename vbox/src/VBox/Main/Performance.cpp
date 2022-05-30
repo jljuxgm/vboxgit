@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 14950 2008-12-03 15:20:54Z vboxsync $ */
+/* $Id: Performance.cpp 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -417,7 +417,7 @@ const char * AggregateMax::getName()
     return "max";
 }
 
-Filter::Filter(ComSafeArrayIn(INPTR BSTR, metricNames),
+Filter::Filter(ComSafeArrayIn(IN_BSTR, metricNames),
                ComSafeArrayIn(IUnknown *, objects))
 {
     /*
@@ -448,7 +448,7 @@ Filter::Filter(ComSafeArrayIn(INPTR BSTR, metricNames),
     }
     else
     {
-        com::SafeArray <INPTR BSTR> nameArray(ComSafeArrayInArg(metricNames));
+        com::SafeArray <IN_BSTR> nameArray(ComSafeArrayInArg(metricNames));
         if (ComSafeArrayInIsNull(objects))
         {
             com::SafeIfaceArray <IUnknown> objectArray;
@@ -465,10 +465,10 @@ Filter::Filter(ComSafeArrayIn(INPTR BSTR, metricNames),
     }
 }
 
-void Filter::init(ComSafeArrayIn(INPTR BSTR, metricNames),
+void Filter::init(ComSafeArrayIn(IN_BSTR, metricNames),
                   ComSafeArrayIn(IUnknown *, objects))
 {
-    com::SafeArray <INPTR BSTR> nameArray(ComSafeArrayInArg(metricNames));
+    com::SafeArray <IN_BSTR> nameArray(ComSafeArrayInArg(metricNames));
     com::SafeIfaceArray <IUnknown> objectArray(ComSafeArrayInArg(objects));
 
     if (!objectArray.size())

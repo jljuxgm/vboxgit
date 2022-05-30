@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
+/* $Id: FloppyDriveImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -90,7 +90,7 @@ public:
     STDMETHOD(COMGETTER(State)) (DriveState_T *aState);
 
     // IFloppyDrive methods
-    STDMETHOD(MountImage) (INPTR GUIDPARAM aImageId);
+    STDMETHOD(MountImage) (IN_GUID aImageId);
     STDMETHOD(CaptureHostDrive) (IHostFloppyDrive *aHostFloppyDrive);
     STDMETHOD(Unmount)();
     STDMETHOD(GetImage) (IFloppyImage2 **aFloppyImage);

@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
+/* $Id: DisplayImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
 
 /** @file
  *
@@ -190,7 +190,7 @@ public:
         return S_OK;
     }
 
-    STDMETHOD(OnRuntimeError)(BOOL fatal, INPTR BSTR id, INPTR BSTR message)
+    STDMETHOD(OnRuntimeError)(BOOL fatal, IN_BSTR id, IN_BSTR message)
     {
         return S_OK;
     }
