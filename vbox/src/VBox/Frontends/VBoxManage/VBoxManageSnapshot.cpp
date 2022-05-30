@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 17102 2009-02-24 22:42:29Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 17104 2009-02-24 23:18:45Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -18,8 +18,6 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
-
-#ifndef VBOX_ONLY_DOCS
 
 /*******************************************************************************
 *   Header Files                                                               *
@@ -284,4 +282,3 @@ int handleSnapshot(HandlerArg *a)
     return SUCCEEDED(rc) ? 0 : 1;
 }
 
-#endif /* !VBOX_ONLY_DOCS */
