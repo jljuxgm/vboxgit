@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 15503 2008-12-15 13:26:31Z vboxsync $ */
+/* $Id: SSM.cpp 15845 2009-01-07 19:51:29Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -337,8 +337,6 @@ static int ssmR3LazyInit(PVM pVM)
  */
 static DECLCALLBACK(int) ssmR3SelfSaveExec(PVM pVM, PSSMHANDLE pSSM)
 {
-    char szTmp[128];
-
     /*
      * String table containg pairs of variable and value string.
      * Terminated by two empty strings.

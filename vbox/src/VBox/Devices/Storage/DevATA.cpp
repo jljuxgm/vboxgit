@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 15815 2009-01-05 19:42:23Z vboxsync $ */
+/* $Id: DevATA.cpp 15845 2009-01-07 19:51:29Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1094,9 +1094,6 @@ static void ataCmdError(ATADevState *s, uint8_t uErrorCode)
 static bool ataIdentifySS(ATADevState *s)
 {
     uint16_t *p;
-    char aSerial[20];
-    int rc;
-    RTUUID Uuid;
 
     Assert(s->uTxDir == PDMBLOCKTXDIR_FROM_DEVICE);
     Assert(s->cbElementaryTransfer == 512);
@@ -1207,9 +1204,6 @@ static bool ataFlushSS(ATADevState *s)
 static bool atapiIdentifySS(ATADevState *s)
 {
     uint16_t *p;
-    char aSerial[20];
-    RTUUID Uuid;
-    int rc;
 
     Assert(s->uTxDir == PDMBLOCKTXDIR_FROM_DEVICE);
     Assert(s->cbElementaryTransfer == 512);
