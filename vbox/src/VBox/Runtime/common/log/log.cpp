@@ -1,4 +1,4 @@
-/* $Id: log.cpp 14435 2008-11-20 21:04:13Z vboxsync $ */
+/* $Id: log.cpp 17405 2009-03-05 14:54:49Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -1827,6 +1827,15 @@ static DECLCALLBACK(size_t) rtLogOutput(void *pv, const char *pachChars, size_t 
 
             /* how much */
             size_t cb = sizeof(pLogger->achScratch) - pLogger->offScratch - 1;
+
+            /*
+             * Flush the buffer if there isn't enough room.
+             */
+            if (cb < cbChars)
+            {
+                rtlogFlush(pLogger);
+                cb = sizeof(pLogger->achScratch) - pLogger->offScratch - 1;
+            }
             if (cb > cbChars)
                 cb = cbChars;
 
@@ -1843,9 +1852,6 @@ static DECLCALLBACK(size_t) rtLogOutput(void *pv, const char *pachChars, size_t 
                 return cbRet;
 
             pachChars += cb;
-
-            /* flush */
-            rtlogFlush(pLogger);
         }
 
         /* won't ever get here! */
