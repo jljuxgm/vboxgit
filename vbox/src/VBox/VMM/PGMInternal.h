@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 17489 2009-03-06 16:35:33Z vboxsync $ */
+/* $Id: PGMInternal.h 17509 2009-03-07 01:30:23Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -145,6 +145,12 @@
  */
 #ifdef VBOX_STRICT
 # define VBOX_STRICT_PGM_HANDLER_VIRTUAL
+#endif
+
+#ifdef VBOX_WITH_NEW_PHYS_CODE
+/** @def VBOX_WITH_NEW_LAZY_PAGE_ALLOC
+ * Enables the experimental lazy page allocation code. */
+/*# define VBOX_WITH_NEW_LAZY_PAGE_ALLOC */
 #endif
 /** @} */
 
@@ -3076,6 +3082,7 @@ int             pgmPoolFlushPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
 void            pgmPoolFlushAll(PVM pVM);
 void            pgmPoolClearAll(PVM pVM);
 int             pgmPoolSyncCR3(PVM pVM);
+int             pgmPoolTrackFlushGCPhys(PVM pVM, PPGMPAGE pPhysPage, bool *pfFlushTLBs);
 void            pgmPoolTrackFlushGCPhysPT(PVM pVM, PPGMPAGE pPhysPage, uint16_t iShw, uint16_t cRefs);
 void            pgmPoolTrackFlushGCPhysPTs(PVM pVM, PPGMPAGE pPhysPage, uint16_t iPhysExt);
 int             pgmPoolTrackFlushGCPhysPTsSlow(PVM pVM, PPGMPAGE pPhysPage);

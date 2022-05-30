@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 17507 2009-03-06 23:12:50Z vboxsync $ */
+/* $Id: PGMAll.cpp 17509 2009-03-07 01:30:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2089,7 +2089,7 @@ int pgmLock(PVM pVM)
     if (rc == VERR_SEM_BUSY)
         rc = VMMR0CallHost(pVM, VMMCALLHOST_PGM_LOCK, 0);
 #endif
-    AssertRC(rc);
+    AssertMsg(rc == VINF_SUCCESS, ("%Rrc\n", rc));
     return rc;
 }
 
