@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 13985 2008-11-09 14:28:38Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 14000 2008-11-10 12:10:54Z vboxsync $ */
 
 /** @file
  *
@@ -60,8 +60,6 @@
 #include "Logging.h"
 
 #include <VBox/com/array.h>
-
-#include <iprt/types.h> /* for stdint.h constants */
 
 #include <iprt/string.h>
 #include <iprt/asm.h>
