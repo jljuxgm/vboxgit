@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 13832 2008-11-05 02:01:12Z vboxsync $ */
+/* $Id: VBoxDev.cpp 13833 2008-11-05 02:15:04Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1645,7 +1645,7 @@ static DECLCALLBACK(int) vmmdevIORAMRegionMap(PPCIDEVICE pPciDev, /*unsigned*/ i
             pThis->GCPhysVMMDevHeap = GCPhysAddress;
             Assert(pThis->GCPhysVMMDevHeap == GCPhysAddress);
             rc = PDMDevHlpMMIO2Map(pPciDev->pDevIns, iRegion, GCPhysAddress);
-            if (VBOX_SUCCESS(rc))
+            if (RT_SUCCESS(rc))
                 rc = PDMDevHlpRegisterVMMDevHeap(pPciDev->pDevIns, GCPhysAddress, pThis->pVMMDevHeapR3, VMMDEV_HEAP_SIZE);
         }
         else
