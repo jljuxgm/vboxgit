@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 15366 2008-12-12 13:50:32Z vboxsync $ */
+/* $Id: VBoxManage.cpp 15408 2008-12-12 23:02:18Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1275,6 +1275,7 @@ static int handleConvertDDImage(int argc, char *argv[])
     const char *dstfilename = NULL;
     const char *filesize = NULL;
     unsigned uImageFlags = 0; /**< @todo allow creation of non-default image variants */
+    void *pvBuf = NULL;
 
     for (int i = 0; i < argc; i++)
     {
@@ -1386,7 +1387,6 @@ static int handleConvertDDImage(int argc, char *argv[])
 
     size_t cbBuffer;
     cbBuffer = _1M;
-    void *pvBuf;
     pvBuf = RTMemAlloc(cbBuffer);
     if (!pvBuf)
     {
