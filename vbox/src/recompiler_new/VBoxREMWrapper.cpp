@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 15558 2008-12-16 01:07:52Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 15764 2008-12-26 11:03:42Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1150,7 +1150,7 @@ static REMFNDESC g_aVMMImports[] =
     { "PGMR3PhysWriteU32",                      (void *)(uintptr_t)&PGMR3PhysWriteU32,              &g_aArgsPGMR3PhysWriteU32[0],               RT_ELEMENTS(g_aArgsPGMR3PhysWriteU32),                 REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
     { "PGMR3PhysWriteU64",                      (void *)(uintptr_t)&PGMR3PhysWriteU64,              &g_aArgsPGMR3PhysWriteU64[0],               RT_ELEMENTS(g_aArgsPGMR3PhysWriteU32),                 REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
     { "PGMR3DbgR3Ptr2GCPhys",                   (void *)(uintptr_t)&PGMR3DbgR3Ptr2GCPhys,           &g_aArgsPGMR3DbgR3Ptr2GCPhys[0],            RT_ELEMENTS(g_aArgsPGMR3DbgR3Ptr2GCPhys),              REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
-    { "PGMR3PhysGCPhys2Ptr",                    (void *)(uintptr_t)&PGMR3PhysTlbGCPhys2Ptr,         &g_aArgsPGMR3PhysTlbGCPhys2Ptr[0],          RT_ELEMENTS(g_aArgsPGMR3PhysTlbGCPhys2Ptr),            REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
+    { "PGMR3PhysTlbGCPhys2Ptr",                 (void *)(uintptr_t)&PGMR3PhysTlbGCPhys2Ptr,         &g_aArgsPGMR3PhysTlbGCPhys2Ptr[0],          RT_ELEMENTS(g_aArgsPGMR3PhysTlbGCPhys2Ptr),            REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
     { "SSMR3GetGCPtr",                          (void *)(uintptr_t)&SSMR3GetGCPtr,                  &g_aArgsSSMR3GetGCPtr[0],                   RT_ELEMENTS(g_aArgsSSMR3GetGCPtr),                     REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
     { "SSMR3GetMem",                            (void *)(uintptr_t)&SSMR3GetMem,                    &g_aArgsSSMR3GetMem[0],                     RT_ELEMENTS(g_aArgsSSMR3GetMem),                       REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
     { "SSMR3GetU32",                            (void *)(uintptr_t)&SSMR3GetU32,                    &g_aArgsSSMR3GetU32[0],                     RT_ELEMENTS(g_aArgsSSMR3GetU32),                       REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
