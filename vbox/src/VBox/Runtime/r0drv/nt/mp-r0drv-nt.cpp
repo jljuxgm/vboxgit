@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 15839 2009-01-07 16:07:54Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 15843 2009-01-07 18:35:24Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -113,7 +113,9 @@ RTDECL(bool) RTMpIsCpuPossible(RTCPUID idCpu)
     return RTMpIsCpuOnline(idCpu);
 }
 
-RTDECL(bool) RTMpIsCpuWorkPending()
+
+/** @todo move down after RTMpGetOnlineCount. */
+RTDECL(bool) RTMpIsCpuWorkPending(void)
 {
     RTCPUID idCpuEntry = RTMpCpuId();
 

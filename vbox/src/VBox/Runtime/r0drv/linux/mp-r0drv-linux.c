@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-linux.c 15837 2009-01-07 15:50:58Z vboxsync $ */
+/* $Id: mp-r0drv-linux.c 15843 2009-01-07 18:35:24Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Linux.
  */
@@ -132,11 +132,6 @@ RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
 #endif
 }
 
-RTDECL(bool) RTMpIsCpuWorkPending()
-{
-    /** @todo (not used on non-Windows platforms yet */
-    return false;
-}
 
 RTDECL(PRTCPUSET) RTMpGetOnlineSet(PRTCPUSET pSet)
 {
@@ -171,6 +166,13 @@ RTDECL(RTCPUID) RTMpGetOnlineCount(void)
 #else
     return 1;
 #endif
+}
+
+
+RTDECL(bool) RTMpIsCpuWorkPending(void)
+{
+    /** @todo (not used on non-Windows platforms yet). */
+    return false;
 }
 
 

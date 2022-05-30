@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-solaris.c 15837 2009-01-07 15:50:58Z vboxsync $ */
+/* $Id: mp-r0drv-solaris.c 15843 2009-01-07 18:35:24Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Solaris.
  */
@@ -123,9 +123,10 @@ RTDECL(RTCPUID) RTMpGetOnlineCount(void)
     return ncpus_online;
 }
 
-RTDECL(bool) RTMpIsCpuWorkPending()
+
+RTDECL(bool) RTMpIsCpuWorkPending(void)
 {
-    /** @todo (not used on non-Windows platforms yet */
+    /** @todo (not used on non-Windows platforms yet). */
     return false;
 }
 
