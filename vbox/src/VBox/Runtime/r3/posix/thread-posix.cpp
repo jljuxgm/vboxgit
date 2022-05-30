@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 13660 2008-10-29 15:46:17Z vboxsync $ */
+/* $Id: thread-posix.cpp 13661 2008-10-29 15:46:56Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -69,6 +69,7 @@ static pthread_key_t    g_SelfKey;
 static void *rtThreadNativeMain(void *pvArgs);
 static void rtThreadKeyDestruct(void *pvValue);
 static void rtThreadPosixPokeSignal(int iSignal);
+
 
 int rtThreadNativeInit(void)
 {
