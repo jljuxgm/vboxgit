@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 17107 2009-02-25 00:50:49Z vboxsync $ */
+/* $Id: SELM.cpp 17616 2009-03-10 11:08:39Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -495,20 +495,6 @@ VMMR3DECL(void) SELMR3Relocate(PVM pVM)
         AssertRC(rc);
 #endif
     }
-}
-
-
-/**
- * Notification callback which is called whenever there is a chance that a CR3
- * value might have changed.
- * This is called by PGM.
- *
- * @param   pVM       The VM handle
- */
-VMMR3DECL(void) SELMR3PagingModeChanged(PVM pVM)
-{
-    pVM->selm.s.Tss.cr3       = PGMGetHyperCR3(pVM);
-    pVM->selm.s.TssTrap08.cr3 = PGMGetInterRCCR3(pVM);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 17586 2009-03-09 15:28:25Z vboxsync $ */
+/* $Id: PGMAllBth.h 17616 2009-03-10 11:08:39Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4281,6 +4281,7 @@ PGM_BTH_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
 
     /* Set the current hypervisor CR3. */
     CPUMSetHyperCR3(pVM, PGMGetHyperCR3(pVM));
+    SELMShadowCR3Changed(pVM);
 
 #  ifdef IN_RC
     VMMGCLogRestore(pVM, fLog);

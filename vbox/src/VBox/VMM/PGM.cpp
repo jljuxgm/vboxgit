@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 17586 2009-03-09 15:28:25Z vboxsync $ */
+/* $Id: PGM.cpp 17616 2009-03-10 11:08:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3476,11 +3476,6 @@ VMMR3DECL(int) PGMR3ChangeMode(PVM pVM, PGMMODE enmGuestMode)
         if (RT_SUCCESS(rc)) /* no informational status codes. */
             rc = VINF_SUCCESS;
     }
-
-    /*
-     * Notify SELM so it can update the TSSes with correct CR3s.
-     */
-    SELMR3PagingModeChanged(pVM);
 
     /* Notify HWACCM as well. */
     HWACCMR3PagingModeChanged(pVM, pVM->pgm.s.enmShadowMode, pVM->pgm.s.enmGuestMode);
