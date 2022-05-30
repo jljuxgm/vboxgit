@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 16859 2009-02-17 16:19:51Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 17586 2009-03-09 15:28:25Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -715,9 +715,7 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, RTR
                     &pVM->cpum,
                     GCPtrGDT,
                     PGMGetInter32BitCR3(pVM), PGMGetInterPaeCR3(pVM), PGMGetInterAmd64CR3(pVM),
-#ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
                     /* @todo No need for three GetHyper calls; one and the same base is used */
-#endif
                     PGMGetHyper32BitCR3(pVM), PGMGetHyperPaeCR3(pVM), PGMGetHyperAmd64CR3(pVM),
                     SelCS, SelDS, SelCS64, SelTSS);
 

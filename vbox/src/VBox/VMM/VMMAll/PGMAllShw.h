@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 16465 2009-02-02 15:25:18Z vboxsync $ */
+/* $Id: PGMAllShw.h 17586 2009-03-09 15:28:25Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -109,11 +109,7 @@
 #  define SHW_PDPT_MASK         X86_PDPT_MASK_PAE
 #  define SHW_PDPE_PG_MASK      X86_PDPE_PG_MASK
 #  define SHW_TOTAL_PD_ENTRIES  (X86_PG_PAE_ENTRIES*X86_PG_PAE_PDPE_ENTRIES)
-#  ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
 #  define SHW_POOL_ROOT_IDX     PGMPOOL_IDX_PDPT
-#  else
-#  define SHW_POOL_ROOT_IDX     PGMPOOL_IDX_PAE_PD
-#  endif
 
 # endif
 #endif
