@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 15697 2008-12-19 14:26:58Z vboxsync $ */
+/* $Id: HWACCM.cpp 15700 2008-12-19 15:47:08Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1032,13 +1032,6 @@ VMMR3DECL(void) HWACCMR3Relocate(PVM pVM)
 # ifdef DEBUG
         rc = PDMR3LdrGetSymbolRC(pVM, NULL,       "HWACCMTestSwitcher64",   &pVM->hwaccm.s.pfnTest64);
         AssertReleaseMsgRC(rc, ("HWACCMTestSwitcher64 -> rc=%Rrc\n", rc));
-# endif
-
-# if 0 /*test code */
-        for (unsigned i=0;i<100;i++)
-        {
-            rc = SUPCallVMMR0Ex(pVM->pVMR0, VMMR0_DO_TEST_SWITCHER3264, 0, NULL);
-        }
 # endif
     }
 #endif
