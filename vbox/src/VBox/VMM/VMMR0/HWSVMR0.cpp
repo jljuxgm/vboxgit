@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 17528 2009-03-07 08:43:59Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 17926 2009-03-16 12:37:00Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1712,7 +1712,7 @@ ResumeExecution:
             STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatFlushTLBCRxChange);
 
             /* Must be set by PGMSyncCR3 */
-            Assert(PGMGetGuestMode(pVM) <= PGMMODE_PROTECTED || pVCpu->hwaccm.s.fForceTLBFlush);
+            Assert(rc != VINF_SUCCESS || PGMGetGuestMode(pVM) <= PGMMODE_PROTECTED || pVCpu->hwaccm.s.fForceTLBFlush);
         }
         if (rc == VINF_SUCCESS)
         {
