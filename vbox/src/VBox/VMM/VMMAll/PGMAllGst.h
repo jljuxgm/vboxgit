@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 13232 2008-10-13 20:03:48Z vboxsync $ */
+/* $Id: PGMAllGst.h 13582 2008-10-27 14:46:35Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -563,11 +563,12 @@ PGM_GST_DECL(int, UnmapCR3)(PVM pVM)
     if (!HWACCMIsNestedPagingActive(pVM))
     {
         pVM->pgm.s.pHCPaePML4    = 0;
+        pVM->pgm.s.HCPhysPaePML4 = 0;
         if (pVM->pgm.s.pHCShwAmd64CR3)
         {
             PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
             pgmPoolFreeByPage(pPool, pVM->pgm.s.pHCShwAmd64CR3, PGMPOOL_IDX_AMD64_CR3, pVM->pgm.s.pHCShwAmd64CR3->GCPhys >> PAGE_SHIFT);
-            pVM->pgm.s.pHCShwAmd64CR3 = NULL;
+            pVM->pgm.s.pHCShwAmd64CR3 = 0;
         }
     }
 
