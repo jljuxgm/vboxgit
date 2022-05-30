@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13720 2008-10-31 15:02:40Z vboxsync $
+# $Id: Makefile.kmk 13886 2008-11-05 18:16:17Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -430,13 +430,12 @@ VBoxC_DEFS = \
 	$(if $(VBOX_WITH_CROSSBOW),VBOX_WITH_CROSSBOW,) \
 	$(if $(VBOX_WITH_E1000),VBOX_WITH_E1000,) \
 	$(if $(VBOX_WITH_PDM_ASYNC_COMPLETION),VBOX_WITH_PDM_ASYNC_COMPLETION,)
-
 ifdef VBOX_WITH_USB
 VBoxC_DEFS += \
 	VBOX_WITH_USB \
 	$(if $(VBOX_WITH_EHCI),VBOX_WITH_EHCI,)
 endif
-
+VBoxC_DEFS.darwin = VBOX_WITH_2X_4GB_ADDR_SPACE
 VBoxC_DEFS.win.x86 += _WIN32_WINNT=0x0500
 VBoxC_DEFS.win.amd64 += _WIN32_WINNT=0x0510
 
