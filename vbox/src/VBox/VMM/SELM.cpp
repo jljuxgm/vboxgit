@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 13577 2008-10-27 13:53:04Z vboxsync $ */
+/* $Id: SELM.cpp 13698 2008-10-30 22:54:28Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -417,7 +417,7 @@ VMMR3DECL(void) SELMR3Relocate(PVM pVM)
     /* Current TSS */
     pVM->selm.s.Tss.cr3     = PGMGetHyperCR3(pVM);
     pVM->selm.s.Tss.ss0     = pVM->selm.s.aHyperSel[SELM_HYPER_SEL_DS];
-    pVM->selm.s.Tss.esp0    = VMMGetStackGC(pVM);
+    pVM->selm.s.Tss.esp0    = VMMGetStackRC(pVM);
     pVM->selm.s.Tss.cs      = pVM->selm.s.aHyperSel[SELM_HYPER_SEL_CS];
     pVM->selm.s.Tss.ds      = pVM->selm.s.aHyperSel[SELM_HYPER_SEL_DS];
     pVM->selm.s.Tss.es      = pVM->selm.s.aHyperSel[SELM_HYPER_SEL_DS];
@@ -427,7 +427,7 @@ VMMR3DECL(void) SELMR3Relocate(PVM pVM)
     pVM->selm.s.TssTrap08.cr3    = PGMGetInterRCCR3(pVM);                   /* this should give use better survival chances. */
     pVM->selm.s.TssTrap08.ss0    = pVM->selm.s.aHyperSel[SELM_HYPER_SEL_DS];
     pVM->selm.s.TssTrap08.ss     = pVM->selm.s.aHyperSel[SELM_HYPER_SEL_DS];
-    pVM->selm.s.TssTrap08.esp0   = VMMGetStackGC(pVM) - PAGE_SIZE / 2;  /* upper half can be analysed this way. */
+    pVM->selm.s.TssTrap08.esp0   = VMMGetStackRC(pVM) - PAGE_SIZE / 2;  /* upper half can be analysed this way. */
     pVM->selm.s.TssTrap08.esp    = pVM->selm.s.TssTrap08.esp0;
     pVM->selm.s.TssTrap08.ebp    = pVM->selm.s.TssTrap08.esp0;
     pVM->selm.s.TssTrap08.cs     = pVM->selm.s.aHyperSel[SELM_HYPER_SEL_CS];

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13565 2008-10-24 17:48:59Z vboxsync $
+# $Id: Makefile.kmk 13698 2008-10-30 22:54:28Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -91,6 +91,7 @@ VMMR3_SOURCES   = \
 	VMEmt.cpp \
 	VMReq.cpp \
 	VMM.cpp \
+	VMMGuruMeditation.cpp \
 	VMMTests.cpp \
 	HWACCM.cpp \
 	VMMAll/CPUMAllRegs.cpp \
