@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 13286 2008-10-15 13:33:59Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 13293 2008-10-15 16:19:36Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1812,9 +1812,14 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             size_t cProps = names.size();
             for (size_t i = 0; i < cProps; ++i)
             {
-                rc = CFGMR3InsertString(pValues, Utf8Str(names[i]).raw(), Utf8Str(values[i]).raw()); RC_CHECK();
-                rc = CFGMR3InsertInteger(pTimestamps, Utf8Str(names[i]).raw(), timestamps[i]);           RC_CHECK();
-                rc = CFGMR3InsertString(pFlags, Utf8Str(names[i]).raw(), Utf8Str(flags[i]).raw());   RC_CHECK();
+                rc = CFGMR3InsertString(pValues, Utf8Str(names[i]).raw(), Utf8Str(values[i]).raw());    RC_CHECK();
+                rc = CFGMR3InsertInteger(pTimestamps, Utf8Str(names[i]).raw(), timestamps[i]);          RC_CHECK();
+                uint32_t fFlags;
+                rc = guestProp::validateFlags(Utf8Str(flags[i]).raw(), &fFlags);
+                AssertLogRelRCReturn(rc, VMSetError(pVM, VERR_INVALID_PARAMETER, RT_SRC_POS,
+                    N_("Guest property '%lS' has invalid flags '%lS' in machine definition file"),
+                       names[i], flags[i]));
+                rc = CFGMR3InsertInteger(pFlags, Utf8Str(names[i]).raw(), fFlags);                      RC_CHECK();
             }
 
             /* Setup the service. */

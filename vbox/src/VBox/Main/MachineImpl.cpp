@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 13221 2008-10-13 14:43:54Z vboxsync $ */
+/* $Id: MachineImpl.cpp 13293 2008-10-15 16:19:36Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2802,12 +2802,6 @@ STDMETHODIMP Machine::SetGuestProperty (INPTR BSTR aName, INPTR BSTR aValue, INP
         return E_INVALIDARG;
     if ((aFlags != NULL) && !VALID_PTR (aFlags))
         return E_INVALIDARG;
-
-    /* For now there are no valid flags, so check this. */
-    if (aFlags != NULL)
-        for (size_t i = 0; aFlags[i] != '\0'; ++i)
-            if (aFlags[i] != ' ')
-                return E_INVALIDARG;
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
