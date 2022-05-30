@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-darwin.cpp 13314 2008-10-15 22:46:08Z vboxsync $ */
+/* $Id: assert-r0drv-darwin.cpp 14500 2008-11-24 02:22:08Z vboxsync $ */
 /** @file
  * IPRT -  Assertion Workers, Ring-0 Drivers, Darwin.
  */
@@ -58,7 +58,7 @@ RTDATADECL(uint32_t volatile)       g_u32RTAssertLine;
 RTDATADECL(const char *  volatile)  g_pszRTAssertFunction;
 
 
-RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
+RTDECL(void) RTAssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
 {
 #ifdef IN_GUEST_R0
     RTLogBackdoorPrintf("\n!!Assertion Failed!!\n"
@@ -84,26 +84,26 @@ RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile
 }
 
 
-RTDECL(void) AssertMsg2(const char *pszFormat, ...)
+RTDECL(void) RTAssertMsg2V(const char *pszFormat, va_list va)
 {
-    va_list va;
+    va_list vaCopy;
     char    szMsg[256];
 
 #ifdef IN_GUEST_R0
-    va_start(va, pszFormat);
-    RTLogBackdoorPrintfV(pszFormat, va);
-    va_end(va);
+    va_copy(vaCopy, va);
+    RTLogBackdoorPrintfV(pszFormat, vaCopy);
+    va_end(vaCopy);
 #endif
 
-    va_start(va, pszFormat);
-    RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, va);
+    va_copy(vaCopy, va);
+    RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, vaCopy);
     szMsg[sizeof(szMsg) - 1] = '\0';
-    va_end(va);
+    va_end(vaCopy);
     printf("%s", szMsg);
 
-    va_start(va, pszFormat);
-    RTStrPrintfV(g_szRTAssertMsg2, sizeof(g_szRTAssertMsg2), pszFormat, va);
-    va_end(va);
+    va_copy(vaCopy, va);
+    RTStrPrintfV(g_szRTAssertMsg2, sizeof(g_szRTAssertMsg2), pszFormat, vaCopy);
+    va_end(vaCopy);
 }
 
 
