@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
+/* $Id: PGMR0.cpp 13824 2008-11-05 01:11:24Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -81,7 +81,7 @@ VMMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PGMMODE enmShwPagingMode,
 {
     int rc;
 
-    LogFlow(("PGMTrap0eHandler: uErr=%#x pvFault=%VGp eip=%RGv\n", uErr, pvFault, (RTGCPTR)pRegFrame->rip));
+    LogFlow(("PGMTrap0eHandler: uErr=%#x pvFault=%RGp eip=%RGv\n", uErr, pvFault, (RTGCPTR)pRegFrame->rip));
     STAM_PROFILE_START(&pVM->pgm.s.StatRZTrap0e, a);
     STAM_STATS({ pVM->pgm.s.CTX_SUFF(pStatTrap0eAttribution) = NULL; } );
 

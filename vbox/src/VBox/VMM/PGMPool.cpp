@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 13819 2008-11-04 23:14:51Z vboxsync $ */
+/* $Id: PGMPool.cpp 13824 2008-11-05 01:11:24Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -528,7 +528,7 @@ static DECLCALLBACK(int) pgmR3PoolAccessHandler(PVM pVM, RTGCPHYS GCPhys, void *
     STAM_PROFILE_START(&pVM->pgm.s.pPoolR3->StatMonitorR3, a);
     PPGMPOOL pPool = pVM->pgm.s.pPoolR3;
     PPGMPOOLPAGE pPage = (PPGMPOOLPAGE)pvUser;
-    LogFlow(("pgmR3PoolAccessHandler: GCPhys=%VGp %p:{.Core=%RHp, .idx=%d, .GCPhys=%RGp, .enmType=%d}\n",
+    LogFlow(("pgmR3PoolAccessHandler: GCPhys=%RGp %p:{.Core=%RHp, .idx=%d, .GCPhys=%RGp, .enmType=%d}\n",
              GCPhys, pPage, pPage->Core.Key, pPage->idx, pPage->GCPhys, pPage->enmKind));
 
     /*

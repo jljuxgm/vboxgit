@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 13412 2008-10-20 22:23:59Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 13824 2008-11-05 01:11:24Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -250,7 +250,7 @@ static DECLCALLBACK(void) pdmR0DevHlp_ISASetIrq(PPDMDEVINS pDevIns, int iIrq, in
 static DECLCALLBACK(void) pdmR0DevHlp_PhysRead(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-    LogFlow(("pdmR0DevHlp_PhysRead: caller=%p/%d: GCPhys=%VGp pvBuf=%p cbRead=%#x\n",
+    LogFlow(("pdmR0DevHlp_PhysRead: caller=%p/%d: GCPhys=%RGp pvBuf=%p cbRead=%#x\n",
              pDevIns, pDevIns->iInstance, GCPhys, pvBuf, cbRead));
 
     PGMPhysRead(pDevIns->Internal.s.pVMR0, GCPhys, pvBuf, cbRead);
@@ -263,7 +263,7 @@ static DECLCALLBACK(void) pdmR0DevHlp_PhysRead(PPDMDEVINS pDevIns, RTGCPHYS GCPh
 static DECLCALLBACK(void) pdmR0DevHlp_PhysWrite(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, const void *pvBuf, size_t cbWrite)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-    LogFlow(("pdmR0DevHlp_PhysWrite: caller=%p/%d: GCPhys=%VGp pvBuf=%p cbWrite=%#x\n",
+    LogFlow(("pdmR0DevHlp_PhysWrite: caller=%p/%d: GCPhys=%RGp pvBuf=%p cbWrite=%#x\n",
              pDevIns, pDevIns->iInstance, GCPhys, pvBuf, cbWrite));
 
     PGMPhysWrite(pDevIns->Internal.s.pVMR0, GCPhys, pvBuf, cbWrite);

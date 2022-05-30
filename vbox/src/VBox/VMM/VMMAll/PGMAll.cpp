@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
+/* $Id: PGMAll.cpp 13824 2008-11-05 01:11:24Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1836,7 +1836,7 @@ VMMDECL(int) PGMDynMapGCPage(PVM pVM, RTGCPHYS GCPhys, void **ppv)
      * Pass it on to PGMDynMapHCPage.
      */
     RTHCPHYS HCPhys = PGM_PAGE_GET_HCPHYS(&pRam->aPages[(GCPhys - pRam->GCPhys) >> PAGE_SHIFT]);
-    //Log(("PGMDynMapGCPage: GCPhys=%VGp HCPhys=%RHp\n", GCPhys, HCPhys));
+    //Log(("PGMDynMapGCPage: GCPhys=%RGp HCPhys=%RHp\n", GCPhys, HCPhys));
     return PGMDynMapHCPage(pVM, HCPhys, ppv);
 }
 
@@ -1866,7 +1866,7 @@ VMMDECL(int) PGMDynMapGCPageOff(PVM pVM, RTGCPHYS GCPhys, void **ppv)
         pRam = pRam->CTX_SUFF(pNext);
     if (!pRam)
     {
-        AssertMsgFailed(("Invalid physical address %VGp!\n", GCPhys));
+        AssertMsgFailed(("Invalid physical address %RGp!\n", GCPhys));
         return VERR_PGM_INVALID_GC_PHYSICAL_ADDRESS;
     }
 

@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 13819 2008-11-04 23:14:51Z vboxsync $ */
+/* $Id: PDM.cpp 13824 2008-11-05 01:11:24Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1350,7 +1350,7 @@ VMMR3DECL(int) PDMR3RegisterVMMDevHeap(PVM pVM, RTGCPHYS GCPhys, RTR3PTR pvHeap,
 {
     Assert(pVM->pdm.s.pvVMMDevHeap == NULL);
 
-    Log(("PDMR3RegisterVMMDevHeap %VGp %RHv %x\n", GCPhys, pvHeap, cbSize));
+    Log(("PDMR3RegisterVMMDevHeap %RGp %RHv %x\n", GCPhys, pvHeap, cbSize));
     pVM->pdm.s.pvVMMDevHeap     = pvHeap;
     pVM->pdm.s.GCPhysVMMDevHeap = GCPhys;
     pVM->pdm.s.cbVMMDevHeap     = cbSize;
@@ -1370,7 +1370,7 @@ VMMR3DECL(int) PDMR3UnregisterVMMDevHeap(PVM pVM, RTGCPHYS GCPhys)
 {
     Assert(pVM->pdm.s.GCPhysVMMDevHeap == GCPhys);
 
-    Log(("PDMR3UnregisterVMMDevHeap %VGp\n", GCPhys));
+    Log(("PDMR3UnregisterVMMDevHeap %RGp\n", GCPhys));
     pVM->pdm.s.pvVMMDevHeap     = NULL;
     pVM->pdm.s.GCPhysVMMDevHeap = NIL_RTGCPHYS;
     pVM->pdm.s.cbVMMDevHeap     = 0;
