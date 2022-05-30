@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14858 2008-12-01 13:56:37Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14866 2008-12-01 15:05:47Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -1685,6 +1685,18 @@
         Note that the format of the location string is storage format specific.
         See <link to="IMedium::location"/>, IHardDisk2 and
         <link to="ISystemProperties::defaultHardDiskFolder"/> for more details.
+
+
+        <result name="VBOX_E_FILE_ERROR">
+          Invalid hard disk storage file location.
+        </result>
+        <result name="VBOX_E_IPRT_ERROR">
+          Could not get hard disk storage format.
+        </result>
+        <result name="E_INVALIDARG">
+          Invalid hard disk storage format.
+        </result>
+
       </desc>
       <param name="location" type="wstring" dir="in">
         <desc>
