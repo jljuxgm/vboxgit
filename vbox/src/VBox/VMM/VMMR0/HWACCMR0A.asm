@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 15249 2008-12-10 14:49:42Z vboxsync $
+; $Id: HWACCMR0A.asm 15255 2008-12-10 15:45:19Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -27,6 +27,7 @@
 %include "VBox/hwacc_vmx.mac"
 %include "VBox/cpum.mac"
 %include "VBox/x86.mac"
+%include "../HWACCMInternal.mac"
 
 %ifdef RT_OS_OS2 ;; @todo fix OMF support in yasm and kick nasm out completely.
  %macro vmwrite 2,
