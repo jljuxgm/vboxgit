@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 12657 2008-09-22 18:29:06Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 12735 2008-09-25 14:07:53Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1922,7 +1922,10 @@ CPUMDECL(uint32_t) CPUMGetGuestCPL(PVM pVM, PCPUMCTXCORE pCtxCore)
          * This only seems to apply to AMD-V; in the VT-x case we *do* need to look
          * at SS. (ACP2 regression during install after a far call to ring 2)
          */
-        cpl = pCtxCore->ssHid.Attr.n.u2Dpl;
+        if (RT_LIKELY(pVM->cpum.s.Guest.cr0 & X86_CR0_PE))
+            cpl = pCtxCore->ssHid.Attr.n.u2Dpl;
+        else
+            cpl = 0;  /* CPL set to 3 for VT-x real-mode emulation. */
     }
     else if (RT_LIKELY(pVM->cpum.s.Guest.cr0 & X86_CR0_PE))
     {
