@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16868 2009-02-17 17:11:04Z vboxsync $
+# $Id: Makefile.kmk 16877 2009-02-18 08:55:42Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -218,7 +218,7 @@ endif #ifeq ($(KBUILD_TARGET), win)
 #
 SYSMODS.win += VBoxNetAdp
 VBoxNetAdp_TEMPLATE = VBOXR0DRV
-VBoxNetAdp_INST = $(INST_VBOXNETFLT)
+#VBoxNetAdp_INST = $(INST_VBOXNETADP)
 if defined(VBOX_SIGNING_MODE)
  VBoxNetAdp_NOINST = true
 endif
