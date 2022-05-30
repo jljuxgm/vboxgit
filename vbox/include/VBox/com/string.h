@@ -1,4 +1,4 @@
-/* $Id: string.h 17955 2009-03-16 16:53:18Z vboxsync $ */
+/* $Id: string.h 17972 2009-03-16 19:30:47Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -617,7 +617,7 @@ public:
      * @returns 64-bit unsigned number on success.
      * @returns 0 on failure.
      */
-    int toInt64() const
+    int64_t toInt64() const
     {
         return RTStrToInt64(str);
     }
@@ -628,7 +628,7 @@ public:
      * @returns 64-bit unsigned number on success.
      * @returns 0 on failure.
      */
-    int toUInt64() const
+    uint64_t toUInt64() const
     {
         return RTStrToUInt64(str);
     }
