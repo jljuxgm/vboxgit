@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 13974 2008-11-07 16:28:05Z vboxsync $ */
+/* $Id: VMMAll.cpp 14875 2008-12-01 16:24:22Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -31,7 +31,6 @@
 #include <VBox/hwaccm.h>
 
 
-#ifndef IN_RING0
 /**
  * Gets the bottom of the hypervisor stack - RC Ptr.
  *
@@ -45,7 +44,6 @@ RTRCPTR VMMGetStackRC(PVM pVM)
 {
     return (RTRCPTR)pVM->vmm.s.pbEMTStackBottomRC;
 }
-#endif /* !IN_RING0 */
 
 
 /**

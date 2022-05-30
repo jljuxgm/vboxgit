@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 14870 2008-12-01 15:28:54Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 14875 2008-12-01 16:24:22Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1011,12 +1011,9 @@ VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
 VMMR0DECL(int)   HWACCMR0SaveFPUState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 {
     if (pVM->hwaccm.s.vmx.fSupported)
-    {
-    }
-    else
-    {
-    }
-    return VINF_SUCCESS;
+        return VMXR0Execute64BitsHandler(pVM, pVCpu, pCtx, pVM->hwaccm.s.pfnSaveGuestFPU64);
+
+    return SVMR0Execute64BitsHandler(pVM, pVCpu, pCtx, pVM->hwaccm.s.pfnSaveGuestFPU64);
 }
 
 /**
@@ -1026,18 +1023,15 @@ VMMR0DECL(int)   HWACCMR0SaveFPUState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
  * @param   pVM         VM handle.
  * @param   pVCpu       VMCPU handle.
  * @param   pCtx        CPU context
- * @param   fDR6        Include DR6 or not
  */
-VMMR0DECL(int)   HWACCMR0SaveDebugState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, bool fDR6)
+VMMR0DECL(int)   HWACCMR0SaveDebugState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 {
     if (pVM->hwaccm.s.vmx.fSupported)
-    {
-    }
-    else
-    {
-    }
-    return VINF_SUCCESS;
+        return VMXR0Execute64BitsHandler(pVM, pVCpu, pCtx, pVM->hwaccm.s.pfnSaveGuestDebug64);
+
+    return SVMR0Execute64BitsHandler(pVM, pVCpu, pCtx, pVM->hwaccm.s.pfnSaveGuestDebug64);
 }
+
 #endif /* HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) */
 
 /**
