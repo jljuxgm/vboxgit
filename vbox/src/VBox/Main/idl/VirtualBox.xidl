@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <!--
- * $Id: VirtualBox.xidl 14770 2008-11-28 11:04:41Z vboxsync $ *
+ * $Id: VirtualBox.xidl 14773 2008-11-28 12:44:41Z vboxsync $ *
  *
  * :tabSize=2:indentSize=2:noTabs=true:
  * :folding=explicit:collapseFolds=1:
@@ -4589,6 +4589,15 @@
         <link to="MachineState::Running"/>.
 
         <see>#powerUp</see>
+        <result name="VBOX_E_INVALID_VM_STATE">
+          Virtual machine already running.
+        </result>
+        <result name="VBOX_E_HOST_ERROR">
+          Host interface does not exist or name not set.
+        </result>
+        <result name="VBOX_E_FILE_ERROR">
+          Invalid saved state file.
+        </result>
       </desc>
       <param name="progress" type="IProgress" dir="return">
         <desc>Progress object to track the operation completion.</desc>
