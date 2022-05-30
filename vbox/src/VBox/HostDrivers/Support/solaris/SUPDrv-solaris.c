@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 16888 2009-02-18 10:49:55Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 16905 2009-02-18 14:45:18Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -67,8 +67,8 @@
 *******************************************************************************/
 /** @todo this quoting macros probably should be moved to a common place.
   * The indirection is for expanding macros passed to the first macro. */
-#define VBOXSOLQUOTE2(x)                #x
-#define VBOXSOLQUOTE(x)                 VBOXSOLQUOTE2(x)
+#define VBOXSOLQUOTE2(x)         #x
+#define VBOXSOLQUOTE(x)          VBOXSOLQUOTE2(x)
 /** The module name. */
 #define DEVICE_NAME              "vboxdrv"
 /** The module description as seen in 'modinfo'. */
