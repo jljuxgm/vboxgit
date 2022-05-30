@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16405 2009-01-30 09:19:45Z vboxsync $
+# $Id: Makefile.kmk 16406 2009-01-30 09:42:31Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -29,9 +29,7 @@ ifdef VBOX_WITH_WEBSERVICES
  include $(PATH_SUB_CURRENT)/webservice/Makefile.kmk
 endif
 include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
-ifndef VBOX_OSE
- include $(PATH_SUB_CURRENT)/cbinding/Makefile.kmk
-endif
+include $(PATH_SUB_CURRENT)/cbinding/Makefile.kmk
 
 
 #
