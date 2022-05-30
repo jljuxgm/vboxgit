@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 17078 2009-02-24 16:59:16Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 17260 2009-03-03 09:16:15Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -65,18 +65,13 @@ void showSnapshots(ComPtr<ISnapshot> rootSnapshot, VMINFO_DETAILS details, const
     }
 
     /* get the children */
-    ComPtr<ISnapshotCollection> coll;
-    rootSnapshot->COMGETTER(Children)(coll.asOutParam());
-    if (coll)
+    SafeIfaceArray <ISnapshot> coll;
+    rootSnapshot->COMGETTER(Children)(ComSafeArrayAsOutParam(coll));
+    if (!coll.isNull())
     {
-        ComPtr<ISnapshotEnumerator> enumerator;
-        coll->Enumerate(enumerator.asOutParam());
-        ULONG index = 0;
-        BOOL hasMore = FALSE;
-        while (enumerator->HasMore(&hasMore), hasMore)
+        for (size_t index = 0; index < coll.size(); ++index)
         {
-            ComPtr<ISnapshot> snapshot;
-            enumerator->GetNext(snapshot.asOutParam());
+            ComPtr<ISnapshot> snapshot = coll[index];
             if (snapshot)
             {
                 Bstr newPrefix;
@@ -87,7 +82,6 @@ void showSnapshots(ComPtr<ISnapshot> rootSnapshot, VMINFO_DETAILS details, const
                 /* recursive call */
                 showSnapshots(snapshot, details, newPrefix, level + 1);
             }
-            index++;
         }
     }
 }
