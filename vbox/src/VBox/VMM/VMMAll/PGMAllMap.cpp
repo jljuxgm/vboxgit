@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 17017 2009-02-23 13:15:27Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 17061 2009-02-24 12:48:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -538,9 +538,6 @@ VMMDECL(void) PGMMapCheck(PVM pVM)
  */
 VMMDECL(int) PGMMapActivateAll(PVM pVM)
 {
-    /* @note A log flush (in RC) can cause problems when called from MapCR3 (inconsistent state will trigger assertions). */
-    Log4(("PGMMapActivateAll fixed mappings=%d\n", pVM->pgm.s.fMappingsFixed));
-
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     /*
      * Can skip this if mappings are disabled.
@@ -553,6 +550,9 @@ VMMDECL(int) PGMMapActivateAll(PVM pVM)
     if (pVM->pgm.s.fMappingsFixed)
 #endif
         return VINF_SUCCESS;
+
+    /* @note A log flush (in RC) can cause problems when called from MapCR3 (inconsistent state will trigger assertions). */
+    Log4(("PGMMapActivateAll fixed mappings=%d\n", pVM->pgm.s.fMappingsFixed));
 
 #ifdef IN_RING0
     AssertFailed();
@@ -583,8 +583,6 @@ VMMDECL(int) PGMMapActivateAll(PVM pVM)
  */
 VMMDECL(int) PGMMapDeactivateAll(PVM pVM)
 {
-    Log(("PGMMapDeactivateAll fixed mappings=%d\n", pVM->pgm.s.fMappingsFixed));
-
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     /*
      * Can skip this if mappings are disabled.
@@ -597,6 +595,8 @@ VMMDECL(int) PGMMapDeactivateAll(PVM pVM)
     if (pVM->pgm.s.fMappingsFixed)
 #endif
         return VINF_SUCCESS;
+
+    Log(("PGMMapDeactivateAll fixed mappings=%d\n", pVM->pgm.s.fMappingsFixed));
 
 #ifdef IN_RING0
     AssertFailed();
