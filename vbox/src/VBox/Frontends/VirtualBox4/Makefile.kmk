@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 11867 2008-08-30 09:51:15Z vboxsync $
+# $Id: Makefile.kmk 11971 2008-09-02 11:33:18Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -620,7 +620,6 @@ VirtualBox4_SOURCES.win += \
 
 VirtualBox4_SOURCES.darwin = \
 	src/darwin/DarwinKeyboard.cpp \
-	src/darwin/DarwinCursor.cpp \
 	src/darwin/VBoxUtils-darwin.cpp \
 	src/VBoxFBQuartz2D.cpp
 #	src/darwin/VBoxAquaStyle.cpp
