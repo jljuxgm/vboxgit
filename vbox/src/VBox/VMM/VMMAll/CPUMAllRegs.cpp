@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 14870 2008-12-01 15:28:54Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 15390 2008-12-12 17:33:23Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1357,8 +1357,18 @@ VMMDECL(void) CPUMSetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
             if (    pVM->cpum.s.aGuestCpuIdExt[0].eax < 0x80000001
                 ||  !(ASMCpuId_EDX(0x80000001) & X86_CPUID_AMD_FEATURE_EDX_SEP))
             {
-                LogRel(("WARNING: Can't turn on SYSCALL/SYSRET when the host doesn't support it!!\n"));
-                return;
+#if HC_ARCH_BITS == 32
+                /* X86_CPUID_AMD_FEATURE_EDX_SEP not set it seems in 32 bits mode.
+                 * Even when the cpu is capable of doing so in 64 bits mode.
+                 */
+                if (    pVM->cpum.s.aGuestCpuIdExt[0].eax < 0x80000001
+                    ||  !(ASMCpuId_EDX(0x80000001) & X86_CPUID_AMD_FEATURE_EDX_LONG_MODE)
+                    ||  !(ASMCpuId_EDX(1) & X86_CPUID_FEATURE_EDX_SEP))
+#endif
+                {
+                    LogRel(("WARNING: Can't turn on SYSCALL/SYSRET when the host doesn't support it!!\n"));
+                    return;
+                }
             }
             /* Valid for both Intel and AMD CPUs, although only in 64 bits mode for Intel. */
             pVM->cpum.s.aGuestCpuIdExt[1].edx |= X86_CPUID_AMD_FEATURE_EDX_SEP;
