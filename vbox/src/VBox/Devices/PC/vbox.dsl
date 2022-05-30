@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 13002 2008-10-06 11:38:33Z vboxsync $
+// $Id: vbox.dsl 15008 2008-12-04 21:45:53Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -229,7 +229,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
             Package (0x04) {0x000FFFFF, 0x02, LNKA, 0x00,},
             Package (0x04) {0x000FFFFF, 0x03, LNKB, 0x00,},
 
-/* Disabled atm because Vista wants a reactivation
             Package (0x04) {0x0010FFFF, 0x00, LNKD, 0x00,},
             Package (0x04) {0x0010FFFF, 0x01, LNKA, 0x00,},
             Package (0x04) {0x0010FFFF, 0x02, LNKB, 0x00,},
@@ -309,7 +308,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
             Package (0x04) {0x001FFFFF, 0x01, LNKD, 0x00,},
             Package (0x04) {0x001FFFFF, 0x02, LNKA, 0x00,},
             Package (0x04) {0x001FFFFF, 0x03, LNKB, 0x00,}
-*/
         })
 
         // PCI I/O APIC IRQ Routing table
@@ -386,7 +384,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
             Package (0x04) {0x000FFFFF, 0x02, 0x00, 0x11,},
             Package (0x04) {0x000FFFFF, 0x03, 0x00, 0x12,},
 
-/* Disabled atm because Vista wants a reactivation
             Package (0x04) {0x0010FFFF, 0x00, 0x00, 0x10,},
             Package (0x04) {0x0010FFFF, 0x01, 0x00, 0x11,},
             Package (0x04) {0x0010FFFF, 0x02, 0x00, 0x12,},
@@ -466,7 +463,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
             Package (0x04) {0x001FFFFF, 0x01, 0x00, 0x10,},
             Package (0x04) {0x001FFFFF, 0x02, 0x00, 0x11,},
             Package (0x04) {0x001FFFFF, 0x03, 0x00, 0x12,}
-*/
         })
 
         // Possible resource settings for PCI link A
