@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16485 2009-02-03 13:05:35Z vboxsync $
+# $Id: Makefile.kmk 17102 2009-02-24 22:42:29Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -49,6 +49,7 @@ else # !VBOX_ONLY_DOCS
  	VBoxManageMetrics.cpp \
  	VBoxManageList.cpp \
  	VBoxManageDisk.cpp \
+ 	VBoxManageSnapshot.cpp \
  	VBoxInternalManage.cpp \
  	$(if $(VBOX_WITH_GUEST_PROPS),VBoxManageGuestProp.cpp) \
  	VBoxManageSVN.cpp

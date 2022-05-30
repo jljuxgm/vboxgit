@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 17079 2009-02-24 16:59:51Z vboxsync $ */
+/* $Id: VBoxManage.h 17102 2009-02-24 22:42:29Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -174,6 +174,9 @@ int handleCloseMedium(HandlerArg *a);
 // VBoxManageImport.cpp
 int handleImportAppliance(HandlerArg *a);
 int handleExportAppliance(HandlerArg *a);
+
+// VBoxManageSnapshot.cpp
+int handleSnapshot(HandlerArg *a);
 
 /* VBoxManageUSB.cpp */
 /* VBoxManageTODO.cpp */
