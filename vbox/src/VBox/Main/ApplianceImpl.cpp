@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17760 2009-03-12 16:00:18Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17762 2009-03-12 16:17:23Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1400,9 +1400,9 @@ STDMETHODIMP Appliance::Interpret()
                                 // @todo: figure out the IDE types
                                 /* Use PIIX4 as default */
                                 Utf8Str strType = "PIIX4";
-                                if (!hdc.strControllerType.compare("PIIX3"), Utf8Str::CaseInsensitive)
+                                if (!hdc.strControllerType.compare("PIIX3", Utf8Str::CaseInsensitive))
                                     strType = "PIIX3";
-                                else if (!hdc.strControllerType.compare("ICH6"), Utf8Str::CaseInsensitive)
+                                else if (!hdc.strControllerType.compare("ICH6", Utf8Str::CaseInsensitive))
                                     strType = "ICH6";
                                 pNewDesc->addEntry(VirtualSystemDescriptionType_HardDiskControllerIDE,
                                                    strControllerID,
@@ -2606,9 +2606,9 @@ DECLCALLBACK(int) Appliance::taskThreadWriteOVF(RTTHREAD aThread, void *pvUser)
                                 lAddress = 0;
                                 lBusNumber = 0;
 
-                                if (!desc.strVbox.compare("buslogic"), Utf8Str::CaseInsensitive)
+                                if (!desc.strVbox.compare("buslogic", Utf8Str::CaseInsensitive))
                                     strResourceSubType = "buslogic";
-                                else if (!desc.strVbox.compare("lsilogic"), Utf8Str::CaseInsensitive)
+                                else if (!desc.strVbox.compare("lsilogic", Utf8Str::CaseInsensitive))
                                     strResourceSubType = "lsilogic";
                                 else
                                     throw setError(VBOX_E_NOT_SUPPORTED,
