@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 16859 2009-02-17 16:19:51Z vboxsync $ */
+/* $Id: VMM.cpp 16860 2009-02-17 16:24:38Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1070,7 +1070,7 @@ VMMR3DECL(int) VMMR3RawRunGC(PVM pVM)
      */
     for (;;)
     {
-        Assert(CPUMGetHyperCR3(pVM) == PGMGetHyperCR3(pVM));
+        Assert(CPUMGetHyperCR3(pVM) && CPUMGetHyperCR3(pVM) == PGMGetHyperCR3(pVM));
         int rc;
         do
         {
@@ -1207,7 +1207,7 @@ VMMR3DECL(int) VMMR3CallRCV(PVM pVM, RTRCPTR RCPtrEntry, unsigned cArgs, va_list
     for (;;)
     {
         int rc;
-        Assert(CPUMGetHyperCR3(pVM) == PGMGetHyperCR3(pVM));
+        Assert(CPUMGetHyperCR3(pVM) && CPUMGetHyperCR3(pVM) == PGMGetHyperCR3(pVM));
         do
         {
 #ifdef NO_SUPCALLR0VMM
@@ -1264,7 +1264,7 @@ VMMR3DECL(int) VMMR3ResumeHyper(PVM pVM)
     for (;;)
     {
         int rc;
-        Assert(CPUMGetHyperCR3(pVM) == PGMGetHyperCR3(pVM));
+        Assert(CPUMGetHyperCR3(pVM) && CPUMGetHyperCR3(pVM) == PGMGetHyperCR3(pVM));
         do
         {
 #ifdef NO_SUPCALLR0VMM
