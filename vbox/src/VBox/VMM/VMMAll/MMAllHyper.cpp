@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 12967 2008-10-02 23:49:04Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 12968 2008-10-03 00:16:13Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -153,7 +153,7 @@ static void mmHyperHeapCheck(PMMHYPERHEAP pHeap);
 
 
 /**
- * Allocates memory in the Hypervisor (GC VMM) area.
+ * Allocates memory in the Hypervisor (RC VMM) area.
  * The returned memory is of course zeroed.
  *
  * @returns VBox status code.
