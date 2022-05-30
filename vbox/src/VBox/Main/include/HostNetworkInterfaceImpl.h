@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 15372 2008-12-12 14:51:29Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 15442 2008-12-13 13:40:42Z vboxsync $ */
 
 /** @file
  *
@@ -27,7 +27,9 @@
 #include "VirtualBoxBase.h"
 #include "Collection.h"
 #ifdef VBOX_WITH_HOSTNETIF_API
-#include "netif.h"
+/* class HostNetworkInterface; */
+/* #include "netif.h" */
+struct NETIFINFO;
 #endif
 
 class ATL_NO_VTABLE HostNetworkInterface :
@@ -59,7 +61,7 @@ public:
     // public initializer/uninitializer for internal purposes only
     HRESULT init (Bstr interfaceName, Guid guid);
 #ifdef VBOX_WITH_HOSTNETIF_API
-    HRESULT init (PNETIFINFO pIfs);
+    HRESULT init (Bstr aInterfaceName, struct NETIFINFO *pIfs);
 #endif
 
     // IHostNetworkInterface properties

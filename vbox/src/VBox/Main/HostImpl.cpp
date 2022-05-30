@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 15372 2008-12-12 14:51:29Z vboxsync $ */
+/* $Id: HostImpl.cpp 15442 2008-12-13 13:40:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -761,18 +761,10 @@ STDMETHODIMP Host::COMGETTER(NetworkInterfaces) (IHostNetworkInterfaceCollection
     std::list <ComObjPtr <HostNetworkInterface> > list;
 
 #ifdef VBOX_WITH_HOSTNETIF_API
-    PNETIFINFO pIfs = NetIfList();
-    while (pIfs)
+    int rc = NetIfList(list);
+    if (rc)
     {
-        ComObjPtr<HostNetworkInterface> IfObj;
-        IfObj.createObject();
-        if (SUCCEEDED(IfObj->init(pIfs)))
-            list.push_back(IfObj);
-
-        /* next, free current */
-        void *pvFree = pIfs;
-        pIfs = pIfs->pNext;
-        RTMemFree(pvFree);
+        Log(("Failed to get host network interface list with rc=%Vrc\n", rc));
     }
 #else
 # if defined(RT_OS_DARWIN)

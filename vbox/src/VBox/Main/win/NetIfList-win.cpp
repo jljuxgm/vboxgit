@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 15372 2008-12-12 14:51:29Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 15442 2008-12-13 13:40:42Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -36,11 +36,12 @@
 #define LOG_GROUP LOG_GROUP_MAIN
 
 #include <iprt/err.h>
+#include <list>
+
+#include "HostNetworkInterfaceImpl.h"
 #include "netif.h"
 
-
-PNETIFINFO NetIfList()
+int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
 {
-    return NULL;
+    return VERR_NOT_IMPLEMENTED;
 }
-
