@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 13256 2008-10-14 12:45:10Z vboxsync $
+# $Id: Makefile.kmk 13264 2008-10-14 13:39:28Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -51,7 +51,7 @@ ifndef VBOX_OSE
  nobin_SOURCES =
  ifdef VBOX_LICENSE_FILES
   nobin_SOURCES += \
-  	$(VBOX_BRAND_LICENSE_HTML)=>$(License-$(VBOX_LICENSE_VER).html) \
+  	$(VBOX_BRAND_LICENSE_HTML)=>License-$(VBOX_LICENSE_VER).html \
 	$(foreach f,$(VBOX_INSTALLER_ADD_LANGUAGES),$(VBOX_BRAND_$(f)_LICENSE_HTML)=>License-$(VBOX_LICENSE_VER)-$(f).html)
  endif
 endif # !OSE
