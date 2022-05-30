@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 16662 2009-02-11 13:01:48Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 16668 2009-02-11 14:12:11Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -427,7 +427,8 @@ int handleImportAppliance(HandlerArg *a)
                 if (fExecute)
                     CHECK_ERROR_BREAK(aVirtualSystemDescriptions[i],
                                       SetFinalValues(ComSafeArrayAsInParam(aEnabled),
-                                                     ComSafeArrayAsInParam(aFinalValues)));
+                                                     ComSafeArrayAsInParam(aFinalValues),
+                                                     ComSafeArrayAsInParam(aExtraConfigValues)));
 
             } // for (unsigned i = 0; i < cVirtualSystemDescriptions; ++i)
 

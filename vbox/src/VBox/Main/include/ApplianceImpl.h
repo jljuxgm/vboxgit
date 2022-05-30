@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 16662 2009-02-11 13:01:48Z vboxsync $ */
+/* $Id: ApplianceImpl.h 16668 2009-02-11 14:12:11Z vboxsync $ */
 
 /** @file
  *
@@ -154,7 +154,8 @@ public:
                               ComSafeArrayOut(BSTR, aExtraConfigValues));
 
     STDMETHOD(SetFinalValues)(ComSafeArrayIn(BOOL, aEnabled),
-                              ComSafeArrayIn(IN_BSTR, aFinalValues));
+                              ComSafeArrayIn(IN_BSTR, aConfigValues),
+                              ComSafeArrayIn(IN_BSTR, aExtraConfigValues));
 
     STDMETHOD(GetWarnings)(ComSafeArrayOut(BSTR, aWarnings));
 
