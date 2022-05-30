@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 13830 2008-11-05 01:49:18Z vboxsync $ */
+/* $Id: MMHyper.cpp 13831 2008-11-05 01:53:59Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -110,7 +110,6 @@ int mmR3HyperInit(PVM pVM)
         if (RT_SUCCESS(rc))
         {
             pVM->pVMRC = (RTRCPTR)GCPtr;
-            pVM->pVMGCUnused = pVM->pVMRC;
             for (uint32_t i = 0; i < pVM->cCPUs; i++)
                 pVM->aCpus[i].pVMRC = pVM->pVMRC;
 
@@ -287,9 +286,8 @@ static DECLCALLBACK(bool) mmR3HyperRelocateCallback(PVM pVM, RTGCPTR GCPtrOld, R
             /*
              * Relocate the VM structure and ourselves.
              */
-            RTGCINTPTR      offDelta = GCPtrNew - GCPtrOld;
+            RTGCINTPTR offDelta = GCPtrNew - GCPtrOld;
             pVM->pVMRC                          += offDelta;
-            pVM->pVMGCUnused                     = pVM->pVMRC;
             for (uint32_t i = 0; i < pVM->cCPUs; i++)
                 pVM->aCpus[i].pVMRC              = pVM->pVMRC;
 
