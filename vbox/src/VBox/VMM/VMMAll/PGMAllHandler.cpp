@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 13387 2008-10-20 11:42:28Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 13393 2008-10-20 13:26:44Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -946,6 +946,7 @@ VMMDECL(int)  PGMHandlerPhysicalPageAlias(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCP
             /* Do the actual remapping here. This page now serves as an alias for the backing memory specified. */
             pPage->HCPhys = pPageRemap->HCPhys;
 
+            LogFlow(("PGMHandlerPhysicalPageAlias %VGp -> %VGp - %VHp\n", GCPhysPage, GCPhysPageRemap, pPageRemap->HCPhys));
             PGM_PAGE_SET_HNDL_PHYS_STATE(pPage, PGM_PAGE_HNDL_PHYS_STATE_DISABLED);
 #ifndef IN_GC
             HWACCMInvalidatePhysPage(pVM, GCPhysPage);

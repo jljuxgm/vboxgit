@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 13232 2008-10-13 20:03:48Z vboxsync $ */
+/* $Id: PGMAllShw.h 13393 2008-10-20 13:26:44Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -358,7 +358,7 @@ PGM_SHW_DECL(int, ModifyPage)(PVM pVM, RTGCUINTPTR GCPtr, size_t cb, uint64_t fF
             if (pPT->a[iPTE].n.u1Present)
             {
                 pPT->a[iPTE].u = (pPT->a[iPTE].u & (fMask | SHW_PTE_PG_MASK)) | (fFlags & ~SHW_PTE_PG_MASK);
-                Assert(pPT->a[iPTE].n.u1Present);
+                Assert(pPT->a[iPTE].n.u1Present || !(fMask & X86_PTE_P));
 # if PGM_SHW_TYPE == PGM_TYPE_EPT
                 HWACCMInvalidatePhysPage(pVM, (RTGCPHYS)GCPtr);
 # else

@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 13392 2008-10-20 12:55:08Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 13393 2008-10-20 13:26:44Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1761,8 +1761,14 @@ VMMDECL(int)  IOMMMIOModifyPage(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCPhysRemappe
     int rc = PGMHandlerPhysicalPageAlias(pVM, pRange->GCPhys, GCPhys, GCPhysRemapped);
     AssertRCReturn(rc, rc);
 
+    /* Prefetch it as it's now marked as not present and our trap handler will
+     * still call the access handler.
+     */
+    rc = PGMPrefetchPage(pVM, (RTGCPTR)GCPhys);
+    AssertRC(rc);
+
     /* Mark it as writable and present so reads and writes no longer fault. */
-    rc = PGMShwSetPage(pVM, (RTGCPTR)GCPhys, PAGE_SIZE, fPageFlags);
+    rc = PGMShwModifyPage(pVM, (RTGCPTR)GCPhys, 1, fPageFlags, ~fPageFlags);
     AssertRC(rc);
 
     return VINF_SUCCESS;
@@ -1805,7 +1811,7 @@ VMMDECL(int)  IOMMMIOResetRegion(PVM pVM, RTGCPHYS GCPhys)
         AssertRC(rc);
 
         /* Mark it as not present again to intercept all read and write access. */
-        rc = PGMShwSetPage(pVM, (RTGCPTR)GCPhys, PAGE_SIZE, 0);
+        rc = PGMShwModifyPage(pVM, (RTGCPTR)GCPhys, 1, 0, ~(uint64_t)(X86_PTE_RW|X86_PTE_P));
         AssertRC(rc);
 
         cb     -= PAGE_SIZE;
