@@ -1,4 +1,4 @@
-/* $Id: server.cpp 17218 2009-02-27 18:02:48Z vboxsync $ */
+/* $Id: server.cpp 17238 2009-03-02 10:58:10Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -242,7 +242,6 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(BIOSSettings, IBIOSSettings)
 /* collections and enumerators */
 
 COM_IMPL_READONLY_ENUM_AND_COLLECTION(Snapshot)
-COM_IMPL_READONLY_ENUM_AND_COLLECTION(HostDVDDrive)
 COM_IMPL_READONLY_ENUM_AND_COLLECTION(HostFloppyDrive)
 #ifdef VBOX_WITH_USB
 COM_IMPL_READONLY_ENUM_AND_COLLECTION(HostUSBDevice)
