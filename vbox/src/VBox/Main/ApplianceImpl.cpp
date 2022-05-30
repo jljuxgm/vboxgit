@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 17746 2009-03-12 13:31:47Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 17747 2009-03-12 13:34:29Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1156,7 +1156,7 @@ STDMETHODIMP Appliance::Read(IN_BSTR path)
 
     // see if we can handle this file; for now we insist it has an ".ovf" extension
     m->strPath = path;
-    if (m->strPath.endsWith(".ovf", Utf8Str::CaseInsensitive))
+    if (!m->strPath.endsWith(".ovf", Utf8Str::CaseInsensitive))
         return setError(VBOX_E_FILE_ERROR,
                         tr("Appliance file must have .ovf extension"));
 
@@ -1616,7 +1616,7 @@ STDMETHODIMP Appliance::Write(IN_BSTR path, IProgress **aProgress)
 
     // see if we can handle this file; for now we insist it has an ".ovf" extension
     m->strPath = path;
-    if (m->strPath.endsWith(".ovf", Utf8Str::CaseInsensitive))
+    if (!m->strPath.endsWith(".ovf", Utf8Str::CaseInsensitive))
         return setError(VBOX_E_FILE_ERROR,
                         tr("Appliance file must have .ovf extension"));
 
