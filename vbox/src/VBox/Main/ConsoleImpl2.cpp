@@ -1,4 +1,4 @@
-/** $Id: ConsoleImpl2.cpp 11998 2008-09-02 17:02:03Z vboxsync $ */
+/** $Id: ConsoleImpl2.cpp 12028 2008-09-03 11:45:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -856,6 +856,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 STR_FREE();
                 rc = CFGMR3InsertString(pCfg,   "Format",           "VMDK");                RC_CHECK();
 
+#if defined(VBOX_WITH_PDM_ASYNC_COMPLETION)
                 /*
                  * Create cfgm nodes for async transport driver because VMDK is currently the only
                  * one which may support async I/O. This has to be made generic based on the capabiliy flags
@@ -864,6 +865,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 rc = CFGMR3InsertNode(pLunL1, "AttachedDriver", &pLunL2);                   RC_CHECK();
                 rc = CFGMR3InsertString(pLunL2, "Driver",      "TransportAsync");           RC_CHECK();
                 /* The async transport driver has no config options yet. */
+#endif
             }
             else if (hddType == HardDiskStorageType_CustomHardDisk)
             {
