@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 13911 2008-11-06 12:30:41Z vboxsync $ */
+/* $Id: Performance.cpp 13915 2008-11-06 13:29:32Z vboxsync $ */
 
 /** @file
  *
@@ -27,7 +27,8 @@
  * 1) Detection of erroneous metric names
  */
 
-#include <VBox/types.h>
+#include "Performance.h"
+
 #include <VBox/com/array.h>
 #include <VBox/com/ptr.h>
 #include <VBox/com/string.h>
@@ -39,7 +40,6 @@
 #include <algorithm>
 
 #include "Logging.h"
-#include "Performance.h"
 
 using namespace pm;
 

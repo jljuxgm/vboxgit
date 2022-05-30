@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 13908 2008-11-06 11:53:47Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 13915 2008-11-06 13:29:32Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -20,6 +20,8 @@
  * additional information or have any questions.
  */
 
+#include <iprt/types.h>
+
 #if defined (VBOX_WITH_XPCOM)
 #include <nsIServiceManager.h>
 #include <nsIExceptionService.h>
@@ -33,7 +35,6 @@
 
 #include "Logging.h"
 
-#include <iprt/types.h>
 #include <iprt/time.h>
 #include <iprt/semaphore.h>
 
