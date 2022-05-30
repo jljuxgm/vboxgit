@@ -1,4 +1,4 @@
-/* $Id: tstMicro.cpp 13823 2008-11-05 01:10:20Z vboxsync $ */
+/* $Id: tstMicro.cpp 13827 2008-11-05 01:31:18Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -160,8 +160,8 @@ static void SetupSelectors(PVM pVM)
     /*
      * Find the GDT - This is a HACK :-)
      */
-    RTGCPTR     GCPtr = CPUMGetHyperGDTR(pVM, NULL);
-    PX86DESC    paGDTEs = (PX86DESC)MMHyperGC2HC(pVM, GCPtr);
+    RTRCPTR     RCPtr = CPUMGetHyperGDTR(pVM, NULL);
+    PX86DESC    paGDTEs = (PX86DESC)MMHyperRCToR3(pVM, RCPtr);
 
     for (unsigned i = 0; i <= 3; i++)
     {
