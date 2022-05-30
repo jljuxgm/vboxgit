@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 13606 2008-10-28 10:36:13Z vboxsync $ */
+/* $Id: ConsoleImpl.h 13759 2008-11-03 16:13:04Z vboxsync $ */
 
 /** @file
  *
@@ -493,6 +493,11 @@ private:
 #ifdef VBOX_WITH_GUEST_PROPS
     static DECLCALLBACK(int)    doGuestPropNotification (void *pvExtension, uint32_t,
                                                          void *pvParms, uint32_t cbParms);
+    HRESULT doEnumerateGuestProperties (INPTR BSTR aPatterns,
+                                        ComSafeArrayOut(BSTR, aNames),
+                                        ComSafeArrayOut(BSTR, aValues),
+                                        ComSafeArrayOut(ULONG64, aTimestamps),
+                                        ComSafeArrayOut(BSTR, aFlags));
 #endif
 
     bool mSavedStateDataLoaded : 1;
