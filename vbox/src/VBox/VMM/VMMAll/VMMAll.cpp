@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 12573 2008-09-18 13:11:46Z vboxsync $ */
+/* $Id: VMMAll.cpp 12667 2008-09-23 11:25:46Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -66,9 +66,12 @@ RTHCPTR VMMGetHCStack(PVM pVM)
  * @param   pVM         Pointer to the shared VM handle.
  * @thread  EMT
  */
-uint32_t VMMGetCpuId(PVM pVM)
+VMCPUID VMMGetCpuId(PVM pVM)
 {
-#ifdef VBOX_WITH_GUEST_SMPT
+#ifdef VBOX_WITH_SMP_GUESTS
+    /* Only emulation thread(s) allowed to ask for CPU id */
+    VM_ASSERT_EMT(pVM);
+
 # if defined(IN_GC)
     /* There is only one CPU if we're in GC. */
     return 0;
