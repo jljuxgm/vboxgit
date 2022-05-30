@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 12977 2008-10-03 23:24:35Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 14583 2008-11-25 17:33:24Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -74,7 +74,7 @@
 /** @def FAKE_REFRESH_CLOCK
  * Define this to flip the 15usec refresh bit on every read.
  * If not defined, it will be flipped correctly. */
-//#define FAKE_REFRESH_CLOCK
+#define FAKE_REFRESH_CLOCK
 #ifdef DOXYGEN_RUNNING
 # define FAKE_REFRESH_CLOCK
 #endif
@@ -652,7 +652,7 @@ PDMBOTHCBDECL(int) pitIOPortSpeakerRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
         pThis->dummy_refresh_clock ^= 1;
         const int fRefresh = pThis->dummy_refresh_clock;
 #else
-        const int fRefresh = (u64Now / 15085) & 1;
+        const int fRefresh = (u64Now / 15085 ) & 1;
 #endif
         /* bit 2,3 NMI / parity status stuff. */
         /* bit 1 - speaker data status */
