@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 17371 2009-03-05 01:37:58Z vboxsync $ */
+/* $Id: PGMPhys.cpp 17421 2009-03-05 20:17:00Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2412,6 +2412,11 @@ VMMR3DECL(void) PGMR3PhysChunkInvalidateTLB(PVM pVM)
 VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
 {
     pgmLock(pVM);
+
+    /*
+     * Allocate more pages, noting down the index of the first new page.
+     */
+    uint32_t iClear = pVM->pgm.s.cHandyPages;
     int rc = VMMR3CallR0(pVM, VMMR0_DO_PGM_ALLOCATE_HANDY_PAGES, 0, NULL);
     if (rc == VERR_GMM_SEED_ME)
     {
@@ -2425,6 +2430,24 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
             rc = VINF_EM_NO_MEMORY;
         }
     }
+
+    /*
+     * Clear the pages.
+     */
+    if (RT_SUCCESS(rc))
+    {
+        while (iClear < pVM->pgm.s.cHandyPages)
+        {
+            PGMMPAGEDESC pPage = &pVM->pgm.s.aHandyPages[iClear];
+            void *pv;
+            rc = pgmPhysPageMapByPageID(pVM, pPage->idPage, pPage->HCPhysGCPhys, &pv);
+            AssertLogRelMsgBreak(RT_SUCCESS(rc), ("idPage=%#x HCPhysGCPhys=%RHp rc=%Rrc", pPage->idPage, pPage->HCPhysGCPhys, rc));
+            ASMMemZeroPage(pv);
+            iClear++;
+        }
+    }
+
+/** @todo Do proper VERR_EM_NO_MEMORY reporting. */
     pgmUnlock(pVM);
     Assert(rc == VINF_SUCCESS || rc == VINF_EM_NO_MEMORY);
     return rc;
