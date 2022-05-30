@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12565 2008-09-18 12:31:04Z vboxsync $
+# $Id: Config.kmk 12572 2008-09-18 13:07:03Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1026,9 +1026,6 @@ ifdef VBOX_PATH_SHARED_LIBS
 endif
 ifdef VBOX_PATH_APP_DOCS
  DEFS += RTPATH_APP_DOCS=\"$(VBOX_PATH_APP_DOCS)\"
-endif
-ifdef VBOX_WITH_SCSI # Needed to compile the BIOS if SCSI is enabled
- DEFS += VBOX_WITH_SCSI
 endif
 ## @todo eliminate these guys.
 ifdef VBOX_WITH_INTERNAL_NETWORKING
@@ -3543,7 +3540,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12565 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12572 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
