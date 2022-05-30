@@ -1,4 +1,4 @@
-/* $Id: MMAllPagePool.cpp 14155 2008-11-12 23:55:08Z vboxsync $ */
+/* $Id: MMAllPagePool.cpp 14157 2008-11-13 02:50:46Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  *
@@ -42,8 +42,7 @@
 #endif
 
 
-
-#ifndef VBOX_WITH_2X_4GB_ADDR_SPACE_R0
+#ifndef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
 
 /**
  * Converts a pool physical address to a linear address.
@@ -107,7 +106,7 @@ VMMDECL(int) MMPagePhys2PageEx(PVM pVM, RTHCPHYS HCPhysPage, void **ppvPage)
     return VINF_SUCCESS;
 }
 
-#endif /* !VBOX_WITH_2X_4GB_ADDR_SPACE_R0 */
+#endif /* !VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0 */
 #ifdef IN_RING3
 
 /**
