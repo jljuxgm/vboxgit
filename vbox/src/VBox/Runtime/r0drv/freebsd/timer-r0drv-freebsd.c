@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-freebsd.c 9444 2008-06-05 18:08:17Z vboxsync $ */
+/* $Id: timer-r0drv-freebsd.c 14318 2008-11-18 16:56:53Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -57,7 +57,7 @@ typedef struct RTTIMER
      * This is RTTIMER_MAGIC, but changes to something else before the timer
      * is destroyed to indicate clearly that thread should exit. */
     uint32_t volatile       u32Magic;
-    /** Flag indicating the the timer is suspended. */
+    /** Flag indicating that the timer is suspended. */
     uint8_t volatile        fSuspended;
     /** Whether the timer must run on a specific CPU or not. */
     uint8_t                 fSpecificCpu;

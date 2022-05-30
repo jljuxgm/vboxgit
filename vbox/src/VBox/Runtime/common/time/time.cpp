@@ -1,4 +1,4 @@
-/* $Id: time.cpp 8579 2008-05-05 13:54:26Z vboxsync $ */
+/* $Id: time.cpp 14318 2008-11-18 16:56:53Z vboxsync $ */
 /** @file
  * IPRT - Time.
  */
@@ -618,7 +618,7 @@ PRTTIME rtTimeNormalizeInternal(PRTTIME pTime)
  * Normalizes the fields of a time structure.
  *
  * It is possible to calculate year-day from month/day and vice
- * versa. If you adjust any of of these, make sure to zero the
+ * versa. If you adjust any of these, make sure to zero the
  * other so you make it clear which of the fields to use. If
  * it's ambiguous, the year-day field is used (and you get
  * assertions in debug builds).

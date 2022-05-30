@@ -1,4 +1,4 @@
-/** $Id: timer-r0drv-solaris.c 13298 2008-10-15 18:34:30Z vboxsync $ */
+/** $Id: timer-r0drv-solaris.c 14318 2008-11-18 16:56:53Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -58,7 +58,7 @@ typedef struct RTTIMER
      * This is RTTIMER_MAGIC, but changes to something else before the timer
      * is destroyed to indicate clearly that thread should exit. */
     uint32_t volatile       u32Magic;
-    /** Flag indicating the the timer is suspended. */
+    /** Flag indicating that the timer is suspended. */
     uint8_t volatile        fSuspended;
     /** Run on all CPUs if set */
     uint8_t                 fAllCpu;

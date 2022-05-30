@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 13103 2008-10-08 18:51:00Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 14318 2008-11-18 16:56:53Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -131,7 +131,7 @@ typedef struct RTTIMER
     /** Spinlock synchronizing the fSuspended and MP event handling.
      * This is NIL_RTSPINLOCK if cCpus == 1. */
     RTSPINLOCK              hSpinlock;
-    /** Flag indicating the the timer is suspended. */
+    /** Flag indicating that the timer is suspended. */
     bool volatile           fSuspended;
     /** Whether the timer must run on one specific CPU or not. */
     bool                    fSpecificCpu;

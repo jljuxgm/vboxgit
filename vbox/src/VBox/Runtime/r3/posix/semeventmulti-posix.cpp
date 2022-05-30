@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-posix.cpp 12960 2008-10-02 21:06:23Z vboxsync $ */
+/* $Id: semeventmulti-posix.cpp 14318 2008-11-18 16:56:53Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, POSIX.
  */
@@ -66,7 +66,7 @@ struct RTSEMEVENTMULTIINTERNAL
  * @{ */
 /** The object isn't initialized. */
 #define EVENTMULTI_STATE_UNINITIALIZED   0
-/** The semaphore is is signaled. */
+/** The semaphore is signaled. */
 #define EVENTMULTI_STATE_SIGNALED        0xff00ff00
 /** The semaphore is not signaled. */
 #define EVENTMULTI_STATE_NOT_SIGNALED    0x00ff00ff

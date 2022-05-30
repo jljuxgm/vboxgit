@@ -1,4 +1,4 @@
-/* $Id: heapsimple.cpp 13836 2008-11-05 02:42:54Z vboxsync $ */
+/* $Id: heapsimple.cpp 14318 2008-11-18 16:56:53Z vboxsync $ */
 /** @file
  * IPRT - A Simple Heap.
  */
@@ -62,7 +62,7 @@ typedef struct RTHEAPSIMPLEFREE *PRTHEAPSIMPLEFREE;
 
 /**
  * Structure describing a simple heap block.
- * If this block is allocated, it is followed by the user user data.
+ * If this block is allocated, it is followed by the user data.
  * If this block is free, see RTHEAPSIMPLEFREE.
  */
 typedef struct RTHEAPSIMPLEBLOCK
