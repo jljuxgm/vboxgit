@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 16052 2009-01-19 18:24:29Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 16150 2009-01-21 16:53:45Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -269,7 +269,7 @@ int handleModifyHardDisk(HandlerArg *a)
     else if (strcmp(a->argv[1], "compact") == 0)
     {
 #if 1
-        RTPrintf("Error: Shrink hard disk operation is temporarily unavailable!\n");
+        RTPrintf("Error: Shrink hard disk operation is not implemented!\n");
         return 1;
 #else
         /* the hard disk image might not be registered */
