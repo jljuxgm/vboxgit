@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 15051 2008-12-05 17:20:00Z vboxsync $ */
+/* $Id: MachineImpl.h 15582 2008-12-16 13:22:33Z vboxsync $ */
 
 /** @file
  *
@@ -249,6 +249,7 @@ public:
 
         bool operator== (const HWData &that) const;
 
+        Bstr           mHWVersion;
         ULONG          mMemorySize;
         ULONG          mMemoryBalloonSize;
         ULONG          mStatisticsUpdateInterval;
@@ -474,6 +475,8 @@ public:
     STDMETHOD(COMGETTER(Id))(OUT_GUID aId);
     STDMETHOD(COMGETTER(OSTypeId)) (BSTR *aOSTypeId);
     STDMETHOD(COMSETTER(OSTypeId)) (IN_BSTR aOSTypeId);
+    STDMETHOD(COMGETTER(HardwareVersion))(BSTR *aVersion);
+    STDMETHOD(COMSETTER(HardwareVersion))(IN_BSTR aVersion);
     STDMETHOD(COMGETTER(MemorySize))(ULONG *memorySize);
     STDMETHOD(COMSETTER(MemorySize))(ULONG memorySize);
     STDMETHOD(COMGETTER(CPUCount))(ULONG *cpuCount);
