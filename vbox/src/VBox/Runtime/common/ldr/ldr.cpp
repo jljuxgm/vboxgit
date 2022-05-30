@@ -1,4 +1,4 @@
-/* $Id: ldr.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: ldr.cpp 17010 2009-02-23 12:25:06Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader.
  */
@@ -64,6 +64,27 @@ typedef struct RTLDRREADERFILE
 *   Internal Functions                                                         *
 *******************************************************************************/
 
+RTDECL(bool) RTLdrIsLoadable(const char *pszName)
+{
+    /*
+     * Quick validation.
+     */
+    if (!pszName)
+        return false;
+
+    bool fLoadable = false;
+    RTLDRMOD hLib;
+    /*
+     * Try to load the library.
+     */
+    int rc = RTLdrLoad(pszName, &hLib);
+    if (RT_SUCCESS(rc))
+    {
+        fLoadable = true;
+        RTLdrClose(hLib);
+    }
+    return fLoadable;
+}
 
 /**
  * Gets the address of a named exported symbol.
