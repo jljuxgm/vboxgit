@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 16683 2009-02-11 16:38:48Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 16730 2009-02-13 09:36:11Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2504,7 +2504,7 @@ static int pgmPoolTrackAddUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, uint16_t iUse
 {
     PPGMPOOLUSER paUsers = pPool->CTX_SUFF(paUsers);
 
-    LogFlow(("pgmPoolTrackAddUser GCPhys = %RGp iUser %d iUserTable %d\n", pPage->GCPhys, iUser, iUserTable));
+    LogFlow(("pgmPoolTrackAddUser GCPhys = %RGp iUser %x iUserTable %x\n", pPage->GCPhys, iUser, iUserTable));
 #  ifdef VBOX_STRICT
     /*
      * Check that the entry doesn't already exists.
@@ -2571,6 +2571,7 @@ static void pgmPoolTrackFreeUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, uint16_t iU
      */
     PPGMPOOLUSER paUsers = pPool->CTX_SUFF(paUsers);
 
+    Log3(("pgmPoolTrackFreeUser %RGp %x %x\n", pPage->GCPhys, iUser, iUserTable));
     /* Special: For PAE and 32-bit paging, there is usually no more than one user. */
     uint16_t i = pPage->iUserHead;
     if (    i != NIL_PGMPOOL_USER_INDEX
