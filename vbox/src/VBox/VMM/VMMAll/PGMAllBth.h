@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 16659 2009-02-11 12:24:21Z vboxsync $ */
+/* $Id: PGMAllBth.h 16780 2009-02-16 10:42:14Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4609,7 +4609,7 @@ PGM_BTH_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
 
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     /* Update shadow paging info for guest modes with paging (32, pae, 64). */
-# if  (   (   PGM_SHW_TYPE == PGM_TYPE_32BITS \
+# if  (   (   PGM_SHW_TYPE == PGM_TYPE_32BIT \
            || PGM_SHW_TYPE == PGM_TYPE_PAE    \
            || PGM_SHW_TYPE == PGM_TYPE_AMD64) \
        && (   PGM_GST_TYPE != PGM_TYPE_REAL   \
@@ -4741,7 +4741,7 @@ PGM_BTH_DECL(int, UnmapCR3)(PVM pVM)
 
 #ifdef VBOX_WITH_PGMPOOL_PAGING_ONLY
     /* Update shadow paging info. */
-# if  (   (   PGM_SHW_TYPE == PGM_TYPE_32BITS \
+# if  (   (   PGM_SHW_TYPE == PGM_TYPE_32BIT \
            || PGM_SHW_TYPE == PGM_TYPE_PAE    \
            || PGM_SHW_TYPE == PGM_TYPE_AMD64) \
        && (   PGM_GST_TYPE != PGM_TYPE_REAL   \
