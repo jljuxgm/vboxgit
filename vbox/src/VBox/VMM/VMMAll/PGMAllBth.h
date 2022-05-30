@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 17206 2009-02-27 13:49:54Z vboxsync $ */
+/* $Id: PGMAllBth.h 17207 2009-02-27 13:52:21Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4790,7 +4790,9 @@ PGM_BTH_DECL(int, UnmapCR3)(PVM pVM)
            || PGM_SHW_TYPE == PGM_TYPE_PAE    \
            || PGM_SHW_TYPE == PGM_TYPE_AMD64))
 
+#  if PGM_GST_TYPE != PGM_TYPE_REAL
     Assert(!HWACCMIsNestedPagingActive(pVM));
+#  endif
 
 # ifndef PGM_WITHOUT_MAPPINGS
     if (pVM->pgm.s.CTX_SUFF(pShwPageCR3))
