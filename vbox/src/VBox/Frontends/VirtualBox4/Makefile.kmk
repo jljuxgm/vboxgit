@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12519 2008-09-16 22:25:59Z vboxsync $
+# $Id: Makefile.kmk 12576 2008-09-18 14:53:28Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -572,24 +572,6 @@ tstDarwinKeyboard4_LDFLAGS = -framework IOKit -framework Carbon
 tstDarwinKeyboard4_LIBS = \
 	$(LIB_RUNTIME)
 endif
-
-
-#
-# Install the license file. Belongs in the root makefile really.
-#
-# Note: I'm doing this right here because the GUI will _not_ run
-#       without that file which might be annoying for developers!
-#
-ifndef VBOX_OSE
-ifeq ($(filter-out freebsd linux netbsd openbsd solaris,$(KBUILD_TARGET)),)
-$(VBOX_LICENSE_BIN): $(VBOX_BRAND_LICENSE_HTML)
-	$(call MSG_GENERATE,,$@)
-	$(QUIET)$(CP) $< $@
-
-$(PATH_BIN)/VirtualBox: $(VBOX_LICENSE_BIN)
-endif
-endif
-
 
 
 # Unset everything that was loaded from VBoxUI.pro.

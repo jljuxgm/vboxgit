@@ -1,4 +1,4 @@
-# $Id: Config.kmk 12572 2008-09-18 13:07:03Z vboxsync $
+# $Id: Config.kmk 12576 2008-09-18 14:53:28Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3517,7 +3517,8 @@ else
 	$(QUIET)$(SED) -e "s/.*License version \([0-9.]*\),.*/VBOX_LICENSE_VER=\1/;t;d" --output $@ $(VBOX_BRAND_LICENSE_HTML)
 endif
 -include $(VBOX_LICENSE_VER_KMK)
-VBOX_LICENSE_BIN = $(PATH_BIN)/License-$(VBOX_LICENSE_VER).html
+VBOX_LICENSE_FILE = License-$(VBOX_LICENSE_VER).html
+VBOX_LICENSE_BIN = $(PATH_BIN)/$(VBOX_LICENSE_FILE)
 endif
 endif
 
@@ -3540,7 +3541,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12572 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 12576 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
