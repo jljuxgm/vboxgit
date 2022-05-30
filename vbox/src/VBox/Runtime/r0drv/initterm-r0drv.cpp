@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv.cpp 10390 2008-07-08 21:29:43Z vboxsync $ */
+/* $Id: initterm-r0drv.cpp 13466 2008-10-22 08:50:45Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Common.
  */
@@ -38,6 +38,7 @@
 #include <iprt/err.h>
 #ifndef IN_GUEST /* play safe for now */
 # include "r0drv/mp-r0drv.h"
+# include "r0drv/power-r0drv.h"
 #endif
 
 #include "internal/initterm.h"
@@ -83,6 +84,7 @@ RTR0DECL(int) RTR0Init(unsigned fReserved)
         {
 #ifndef IN_GUEST /* play safe for now */
             rc = rtR0MpNotificationInit();
+            rc |= rtR0PowerNotificationInit();
 #endif
             if (RT_SUCCESS(rc))
                 return rc;
@@ -111,6 +113,7 @@ RTR0DECL(void) RTR0Term(void)
     rtThreadTerm();
 #endif
 #ifndef IN_GUEST /* play safe for now */
+    rtR0PowerNotificationTerm();
     rtR0MpNotificationTerm();
 #endif
     rtR0TermNative();
