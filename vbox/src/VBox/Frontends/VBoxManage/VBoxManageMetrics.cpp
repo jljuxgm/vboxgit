@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMetrics.cpp 14732 2008-11-27 18:44:11Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 14734 2008-11-27 18:45:50Z vboxsync $ */
 /** @file
  * VBoxManage - Metrics handling code.
  */
@@ -28,6 +28,7 @@
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/VirtualBox.h>
 
+#include <iprt/asm.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
 #include <iprt/time.h>
