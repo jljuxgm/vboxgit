@@ -1,4 +1,4 @@
-# $Id: Config.kmk 14431 2008-11-20 17:47:03Z vboxsync $
+# $Id: Config.kmk 14451 2008-11-21 11:12:56Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -144,7 +144,6 @@ VBOX_VERSION_STRING = $(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION
 ifeq ($(int-mod $(VBOX_VERSION_BUILD),2),0)
  export VBOX_ADDITIONS_SH_MODE = release
  export VBOX_DOCUMENTATION_SH_MODE = release
- DEFS += VBOX_RELEASE_BUILD
 endif
 
 
@@ -3639,7 +3638,7 @@ makefile: | $(VBOX_VERSION_HEADER) $(VBOX_VERSION_MK) $(VBOX_PACKAGE_HEADER)
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14431 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 14451 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
