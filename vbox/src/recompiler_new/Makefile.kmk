@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 15009 2008-12-04 23:27:46Z vboxsync $
+# $Id: Makefile.kmk 15010 2008-12-04 23:33:31Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -68,7 +68,7 @@ else
   $(REM_MOD)_CFLAGS.debug    = -g -O0
   $(REM_MOD)_CFLAGS.release += -O2
  else
-  $(REM_MOD)_TEMPLATE  = VBOXR3N 
+  $(REM_MOD)_TEMPLATE  = VBOXR3N
  endif
 
  IMPORT_LIBS          += VBoxREM
