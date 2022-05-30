@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 16920 2009-02-18 16:01:31Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 17226 2009-03-02 08:31:22Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -43,7 +43,7 @@ AssertCompileSize(RTRCPTR,  4);
 #ifdef VBOX_WITH_64_BITS_GUESTS
 AssertCompileSize(RTGCPTR,  8);
 #else
-AssertCompileSize(RTGCPTR,  8);
+AssertCompileSize(RTGCPTR,  4);
 #endif
 AssertCompileSize(RTGCPHYS, 8);
 AssertCompileSize(RTHCPHYS, 8);
