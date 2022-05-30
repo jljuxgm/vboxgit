@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 16051 2009-01-19 17:50:03Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 16053 2009-01-19 18:48:32Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -674,7 +674,7 @@ static void supR3GrabOptions(void)
     /*
      * Do _not_ perform any capability-related system calls for root processes
      * (leaving g_uCaps at 0).
-     * (Hint: getuid gets the real user id, not the efficient.)
+     * (Hint: getuid gets the real user id, not the effective.)
      */
     if (getuid() != 0)
     {
