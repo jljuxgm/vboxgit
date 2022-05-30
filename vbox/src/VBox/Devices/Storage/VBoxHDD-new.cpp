@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD-new.cpp 12771 2008-09-26 15:28:42Z vboxsync $ */
+/* $Id: VBoxHDD-new.cpp 12774 2008-09-26 16:34:59Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2187,7 +2187,7 @@ movefail:
                 if (RT_FAILURE(rc))
                     break;
             }
-            if (pDstCbProgress->pfnProgress)
+            if (pDstCbProgress && pDstCbProgress->pfnProgress)
             {
                 rc = pDstCbProgress->pfnProgress(NULL /* WARNING! pVM=NULL */,
                                                  uOffset * 99 / cbSize,
@@ -2247,7 +2247,7 @@ movefail:
         if (pCbProgress && pCbProgress->pfnProgress)
             pCbProgress->pfnProgress(NULL /* WARNING! pVM=NULL */, 100,
                                      pIfProgress->pvUser);
-        if (pDstCbProgress->pfnProgress)
+        if (pDstCbProgress && pDstCbProgress->pfnProgress)
             pDstCbProgress->pfnProgress(NULL /* WARNING! pVM=NULL */, 100,
                                         pDstIfProgress->pvUser);
     }
