@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 17305 2009-03-03 18:19:29Z vboxsync $ */
+/* $Id: VMMGC.cpp 17396 2009-03-05 13:30:35Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -178,6 +178,20 @@ VMMRCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger)
     return VMMGCCallHost(pVM, VMMCALLHOST_VMM_LOGGER_FLUSH, 0);
 }
 
+
+/**
+ * Flush logger if almost full.
+ *
+ * @param   pVM             The VM handle.
+ */
+VMMRCDECL(void) VMMGCLoggerFlushFullLog(PVM pVM)
+{
+    if (    pVM->vmm.s.pRCLoggerRC
+        &&  pVM->vmm.s.pRCLoggerRC->offScratch >= sizeof(pVM->vmm.s.pRCLoggerRC->achScratch)*4/3)
+    {
+        VMMGCCallHost(pVM, VMMCALLHOST_VMM_LOGGER_FLUSH, 0);
+    }
+}
 
 /**
  * Disables the GC logger temporarily
