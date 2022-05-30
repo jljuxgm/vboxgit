@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 16560 2009-02-06 18:06:04Z vboxsync $ */
+/* $Id: ApplianceImpl.h 16568 2009-02-09 08:57:02Z vboxsync $ */
 
 /** @file
  *
@@ -154,6 +154,10 @@ public:
     STDMETHOD(DisableItem)(ULONG index);
     STDMETHOD(SetFinalValues)(ComSafeArrayIn(IN_BSTR, aFinalValues));
 
+
+
+    STDMETHOD(GetWarnings)(ComSafeArrayOut(BSTR, aWarnings));
+
     /* public methods only for internal purposes */
 
     /* private instance data */
@@ -163,6 +167,8 @@ private:
                   const Utf8Str &aOrigValue,
                   const Utf8Str &aAutoValue,
                   const Utf8Str &strExtraConfig = "");
+
+    void addWarning(const char* aWarning, ...);
 
     std::list<VirtualSystemDescriptionEntry*> findByType(VirtualSystemDescriptionType_T aType);
     const VirtualSystemDescriptionEntry* findControllerFromID(uint32_t id);
