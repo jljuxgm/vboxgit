@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 16045 2009-01-19 16:27:59Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 16047 2009-01-19 16:30:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1095,7 +1095,7 @@ bool pgmHandlerPhysicalIsAll(PVM pVM, RTGCPHYS GCPhys)
            ||   pCur->enmType == PGMPHYSHANDLERTYPE_MMIO); /* sanity */
     /* Only whole pages can be disabled. */
     Assert(   pCur->Core.Key     <= (GCPhys & ~(RTGCPHYS)PAGE_OFFSET_MASK)
-           && pCur->Core.KeyLast >= (GCPhys | PAGE_OFFSET_MASK);
+           && pCur->Core.KeyLast >= (GCPhys | PAGE_OFFSET_MASK));
     return pCur->enmType != PGMPHYSHANDLERTYPE_PHYSICAL_WRITE;
 }
 
