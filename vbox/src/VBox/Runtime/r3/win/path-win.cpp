@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 15756 2008-12-25 11:12:42Z vboxsync $ */
+/* $Id: path-win.cpp 15808 2009-01-05 15:44:53Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -481,6 +481,42 @@ RTDECL(bool) RTPathExists(const char *pszPath)
 #endif
 
     return RT_SUCCESS(rc);
+}
+
+
+RTDECL(int) RTPathGetCurrent(char *pszPath, size_t cchPath)
+{
+    int rc;
+
+    /*
+     * GetCurrentDirectory may in some cases omit the drive letter, according
+     * to MSDN, thus the GetFullPathName call.
+     */
+#ifndef RT_DONT_CONVERT_FILENAMES
+    RTUTF16 wszCurPath[RTPATH_MAX];
+    if (GetCurrentDirectoryW(RTPATH_MAX, wszCurPath))
+    {
+        RTUTF16 wszFullPath[RTPATH_MAX];
+        if (GetFullPathNameW(wszCurPath, RTPATH_MAX, wszFullPath, NULL))
+            rc = RTUtf16ToUtf8Ex(&wszFullPath[0], RTSTR_MAX, &pszPath, cchPath, NULL);
+        else
+            rc = RTErrConvertFromWin32(GetLastError());
+    }
+    else
+        rc = RTErrConvertFromWin32(GetLastError());
+#else
+    char szCurPath[RTPATH_MAX];
+    if (GetCurrentDirectory(RTPATH_MAX, szCurPath))
+    {
+        if (GetFullPathName(szCurPath, cchPath, pszPath, NULL))
+            rc = VINF_SUCCESS;
+        else
+            rc = RTErrConvertFromWin32(GetLastError());
+    }
+    else
+        rc = RTErrConvertFromWin32(GetLastError());
+#endif
+    return rc;
 }
 
 
