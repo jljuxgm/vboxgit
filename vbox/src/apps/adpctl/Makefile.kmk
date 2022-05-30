@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17826 2009-03-13 14:11:19Z vboxsync $
+# $Id: Makefile.kmk 17993 2009-03-17 07:37:15Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxAdpCtl
 #
@@ -25,7 +25,8 @@ SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS              += VBoxNetAdpCtl
-VBoxNetAdpCtl_TEMPLATE = VBOXR3EXE
+### Another template? We must *not* set RPATH!
+VBoxNetAdpCtl_TEMPLATE = VBOXR3HARDENEDEXE
 VBoxNetAdpCtl_SOURCES  = VBoxNetAdpCtl.cpp
 
 include $(KBUILD_PATH)/subfooter.kmk
