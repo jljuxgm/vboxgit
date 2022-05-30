@@ -1,4 +1,4 @@
-/* $Id: DBGFBp.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: DBGFBp.cpp 12663 2008-09-23 10:16:45Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -53,6 +53,7 @@ static int dbgfR3BpRegDisarm(PVM pVM, PDBGFBP pBp);
 static int dbgfR3BpInt3Arm(PVM pVM, PDBGFBP pBp);
 static int dbgfR3BpInt3Disarm(PVM pVM, PDBGFBP pBp);
 __END_DECLS
+
 
 
 /**

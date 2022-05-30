@@ -1,4 +1,4 @@
-/* $Id: DBGFInfo.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DBGFInfo.cpp 12663 2008-09-23 10:16:45Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Info.
  */
@@ -389,7 +389,6 @@ DBGFR3DECL(int) DBGFR3InfoRegisterInternalEx(PVM pVM, const char *pszName, const
 }
 
 
-
 /**
  * Register a info handler owned by an external component.
  *
@@ -629,6 +628,7 @@ static int dbgfR3InfoDeregister(PVM pVM, const char *pszName, DBGFINFOTYPE enmTy
     LogFlow(("dbgfR3InfoDeregister: returns %Vrc\n", rc));
     return rc;
 }
+
 
 /**
  * Deregister a info handler owned by an internal component.

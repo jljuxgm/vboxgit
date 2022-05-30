@@ -1,6 +1,8 @@
-/* $Id: DBGFR0.cpp 11311 2008-08-08 23:31:54Z vboxsync $ */
+/* $Id: DBGFR0.cpp 12663 2008-09-23 10:16:45Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, R0 part.
+ *
+ * Almost identical to DBGFGC.cpp, except for the fInHyper stuff.
  */
 
 /*

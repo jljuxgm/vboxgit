@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 9846 2008-06-20 10:04:29Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 12663 2008-09-23 10:16:45Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Disassembler.
  */
@@ -41,11 +41,8 @@
 
 
 /*******************************************************************************
-*   Internal Functions                                                         *
+*   Structures and Typedefs                                                    *
 *******************************************************************************/
-static DECLCALLBACK(int) dbgfR3DisasInstrRead(RTUINTPTR pSrc, uint8_t *pDest, uint32_t size, void *pvUserdata);
-
-
 /**
  * Structure used when disassembling and instructions in DBGF.
  * This is used so the reader function can get the stuff it needs.
@@ -77,6 +74,12 @@ typedef struct
     /** 64 bits mode or not. */
     bool            f64Bits;
 } DBGFDISASSTATE, *PDBGFDISASSTATE;
+
+
+/*******************************************************************************
+*   Internal Functions                                                         *
+*******************************************************************************/
+static DECLCALLBACK(int) dbgfR3DisasInstrRead(RTUINTPTR pSrc, uint8_t *pDest, uint32_t size, void *pvUserdata);
 
 
 

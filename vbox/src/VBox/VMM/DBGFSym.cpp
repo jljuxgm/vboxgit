@@ -1,4 +1,4 @@
-/* $Id: DBGFSym.cpp 9182 2008-05-28 01:48:19Z vboxsync $ */
+/* $Id: DBGFSym.cpp 12663 2008-09-23 10:16:45Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Symbol Management.
  */
@@ -48,7 +48,6 @@
 
 #include <stdio.h> /* for fopen(). */ /** @todo use iprt/stream.h! */
 #include <stdlib.h>
-
 
 
 /*******************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: DBGFLog.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: DBGFLog.cpp 12663 2008-09-23 10:16:45Z vboxsync $ */
 /** @file
  * VMM DBGF - Debugger Facility, Log Manager.
  */
@@ -18,7 +18,6 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
-
 
 
 /*******************************************************************************
