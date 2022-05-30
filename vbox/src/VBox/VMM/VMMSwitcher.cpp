@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 14716 2008-11-27 15:51:16Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 14739 2008-11-27 19:49:40Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -960,7 +960,7 @@ VMMR3DECL(int) VMMR3SelectSwitcher(PVM pVM, VMMSWITCHER enmSwitcher)
  */
 VMMR3DECL(int) VMMR3InitSwitcher(PVM pVM, VMMSWITCHER enmSwitcher)
 {
-    int rc;
+    int rc = VINF_SUCCESS;
 
     AssertReturn(enmSwitcher == VMMSWITCHER_32_TO_AMD64, VERR_INVALID_PARAMETER);
 
