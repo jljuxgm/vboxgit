@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 22242 2009-08-13 15:38:35Z vboxsync $ */
+/* $Id: HWACCMInternal.h 22243 2009-08-13 15:43:06Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -556,9 +556,6 @@ typedef struct HWACCMCPU
     /* Current ASID in use by the VM */
     RTUINT                      uCurrentASID;
 
-    /* Last use TSC offset value. (cached) */
-    uint64_t                    u64TSCOffset;
-
     struct
     {
         /** Physical address of the VM control structure (VMCS). */
@@ -618,6 +615,9 @@ typedef struct HWACCMCPU
         /* Number of automatically loaded/restored MSRs. */
         uint32_t                    cCachedMSRs;
         uint32_t                    uAlignement;
+
+        /* Last use TSC offset value. (cached) */
+        uint64_t                    u64TSCOffset;
 
         /** VMCS cache. */
         VMCSCACHE                   VMCSCache;
