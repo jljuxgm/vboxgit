@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 21039 2009-06-29 15:57:39Z vboxsync $ */
+/* $Id: PDMQueue.cpp 21126 2009-07-01 14:11:27Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -664,9 +664,9 @@ check_queue:
                 break;
             }
         }
-        if (VM_FF_TESTANDCLEAR(pVM, VM_FF_PDM_QUEUES))
+        if (VM_FF_TESTANDCLEAR(pVM, VM_FF_PDM_QUEUES_BIT))
             goto check_queue;
-           
+
     }
 }
 
