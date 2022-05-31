@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19994 2009-05-25 12:28:03Z vboxsync $
+# $Id: Makefile.kmk 20030 2009-05-26 12:22:31Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -789,7 +789,7 @@ VBoxRT_DEFS.$(KBUILD_TYPE)     = $(RuntimeR3_DEFS.$(KBUILD_TYPE))
 VBoxRT_SOURCES                 = \
 	VBox/VBoxRTDeps.cpp \
 	$(RuntimeR3_SOURCES)
-ifdef VBOX_WITH_LIBXML2_IN_VBOXRT
+if defined(VBOX_WITH_LIBXML2_IN_VBOXRT) && !defined(VBOX_OSE)
 VBoxRT_SOURCES                += \
 	common/misc/s3.cpp
 endif
