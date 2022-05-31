@@ -1,4 +1,4 @@
-# $Id: Config.kmk 20549 2009-06-14 01:11:33Z vboxsync $
+# $Id: Config.kmk 20558 2009-06-14 18:13:44Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1959,6 +1959,8 @@ ifeq ($(KBUILD_TARGET),solaris)
   VBOX_WITHOUT_ADDITIONS := 1
   VBOX_WITH_ADDITIONS =
  else
+  ## @todo r=bird: Why eval, and why export? Actually, since this isn't used anywhere, why not
+  # VBOX_WITH_SOLARIS_OSS := $(if-expr $(shell uname -v | cut -f2 -d'_')) >= 115,1,)
   $(eval export VBOX_SOLARIS_SNV_VERSION := $(shell uname -v | cut -f2 -d'_'))
 
   # OSS audio support for Solaris
@@ -3784,7 +3786,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 20549 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 20558 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
