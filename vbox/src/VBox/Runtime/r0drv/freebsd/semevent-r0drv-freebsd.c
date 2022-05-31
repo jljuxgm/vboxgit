@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-freebsd.c 20116 2009-05-28 13:06:04Z vboxsync $ */
+/* $Id: semevent-r0drv-freebsd.c 20208 2009-06-03 07:34:55Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, FreeBSD.
  */
@@ -185,7 +185,7 @@ static int rtSemEventWait(RTSEMEVENT EventSem, unsigned cMillies, bool fInterrup
         rc = tsleep(pEventInt,          /* block id */
                     fInterruptible ? PZERO | PCATCH : PZERO,
                     "iprtev",           /* max 6 chars */
-                    cMillis == RT_INDEFINITE_WAIT
+                    cMillies == RT_INDEFINITE_WAIT
                     ? 0
                     : tvtohz(&tv));
         mtx_lock_spin(&pEventInt->Mtx);
