@@ -1,4 +1,4 @@
-/* $Id: SUPLib-linux.cpp 22618 2009-08-31 16:37:16Z vboxsync $ */
+/* $Id: SUPLib-linux.cpp 22632 2009-09-01 07:57:32Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - GNU/Linux specific parts.
  */
@@ -280,7 +280,7 @@ int suplibOsQueryVTxSupported(void)
                 if (RT_SUCCESS(rc))
                 {
                     uint32_t uLinuxVersion = (uA << 16) + (uB << 8) + uC;
-                    if (uLinuxVersion >= (2 << 16) + (6 << 8) + 32)
+                    if (uLinuxVersion >= (2 << 16) + (6 << 8) + 13)
                         return VINF_SUCCESS;
                 }
             }
