@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 19240 2009-04-28 13:38:23Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 19246 2009-04-28 19:48:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -497,12 +497,12 @@ void pgmMapClearShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAPPING pMap, 
                 AssertFailed();
                 break;
         }
-#ifdef IN_RC
-        /* Unlock dynamic mappings again. */
-        if (pCurrentShwPdpt)
-            PGMDynUnlockHCPage(pVM, (uint8_t *)pCurrentShwPdpt);
-#endif
     }
+#ifdef IN_RC
+    /* Unlock dynamic mappings again. */
+    if (pCurrentShwPdpt)
+        PGMDynUnlockHCPage(pVM, (uint8_t *)pCurrentShwPdpt);
+#endif
 }
 #endif /* !IN_RING0 */
 
