@@ -1,4 +1,4 @@
-/* $Id: helpers.h 23845 2009-10-19 08:49:10Z vboxsync $ */
+/* $Id: helpers.h 23858 2009-10-19 12:04:39Z vboxsync $ */
 /** @file
  * helpers - Guest Additions Service helper functions header
  */
@@ -32,7 +32,6 @@
 
 void resizeRect(RECTL *paRects, unsigned nRects, unsigned iPrimary, unsigned iResized, int NewWidth, int NewHeight);
 int showBalloonTip (HINSTANCE hInst, HWND hWnd, UINT uID, const char *pszMsg, const char *pszTitle, UINT uTimeout, DWORD dwInfoFlags);
-int getAdditionsVersion(char *pszVer, size_t cbSizeVer, char *pszRev, size_t cbSizeRev);
 
 #endif /* !___VBOXTRAY_HELPERS_H */
 
