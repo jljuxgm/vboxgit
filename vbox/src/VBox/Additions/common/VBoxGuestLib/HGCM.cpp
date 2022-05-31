@@ -1,4 +1,4 @@
-/* $Revision: 21261 $ */
+/* $Revision: 21461 $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager.
  *
@@ -33,16 +33,25 @@
 
 #define VBGL_HGCM_ASSERTMsg AssertReleaseMsg
 
-int vbglHGCMInit (void)
+/**
+ * Initializes the HGCM VBGL bits.
+ *
+ * @return VBox status code.
+ */
+int vbglR0HGCMInit (void)
 {
-    RTSemFastMutexCreate(&g_vbgldata.mutexHGCMHandle);
-
-    return VINF_SUCCESS;
+    return RTSemFastMutexCreate(&g_vbgldata.mutexHGCMHandle);
 }
 
-int vbglHGCMTerminate (void)
+/**
+ * Initializes the HGCM VBGL bits.
+ *
+ * @return VBox status code.
+ */
+int vbglR0HGCMTerminate (void)
 {
     RTSemFastMutexDestroy(g_vbgldata.mutexHGCMHandle);
+    g_vbgldata.mutexHGCMHandle = NIL_RTSEMFASTMUTEX;
 
     return VINF_SUCCESS;
 }
