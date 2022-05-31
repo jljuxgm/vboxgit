@@ -1,4 +1,4 @@
-/* $Id: log.cpp 22203 2009-08-12 11:34:45Z vboxsync $ */
+/* $Id: log.cpp 22204 2009-08-12 11:35:47Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2187,7 +2187,7 @@ RT_EXPORT_SYMBOL(RTLogPrintfV);
  */
 static void rtlogFlush(PRTLOGGER pLogger)
 {
-    if (!pLogger->offScratch)
+    if (pLogger->offScratch == 0)
         return; /* nothing to flush. */
 
 #ifndef IN_RC
