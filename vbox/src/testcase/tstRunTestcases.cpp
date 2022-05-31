@@ -1,4 +1,4 @@
-/* $Id: tstRunTestcases.cpp 21298 2009-07-07 09:28:44Z vboxsync $ */
+/* $Id: tstRunTestcases.cpp 21303 2009-07-07 09:51:52Z vboxsync $ */
 /** @file
  * tstRunTescases - Driver program for running VBox testcase (tst* testcase/tst*).
  */
@@ -44,8 +44,8 @@ static unsigned     g_cPasses = 0;
 static unsigned     g_cFailures = 0;
 /** The number of skipped testcases. */
 static unsigned     g_cSkipped = 0;
-/** The exclude list. 
- * @note: Stripped extensions! */
+/** The exclude list.
+ * @note Stripped extensions! */
 static const char  *g_apszExclude[] =
 {
 #if 1 // slow stuff
