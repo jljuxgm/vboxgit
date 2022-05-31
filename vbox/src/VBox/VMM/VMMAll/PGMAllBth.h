@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 22316 2009-08-18 09:52:53Z vboxsync $ */
+/* $Id: PGMAllBth.h 22326 2009-08-18 14:44:28Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -235,7 +235,9 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
         return rc == VINF_PGM_HANDLED_DIRTY_BIT_FAULT ? VINF_SUCCESS : rc;
     }
 
+#   if 0 /* rarely useful; leave for debugging. */
     STAM_COUNTER_INC(&pVCpu->pgm.s.StatRZTrap0ePD[iPDSrc]);
+#   endif
 #  endif /* PGM_WITH_PAGING(PGM_GST_TYPE, PGM_SHW_TYPE) */
 
     /*
