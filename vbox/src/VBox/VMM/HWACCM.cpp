@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 21690 2009-07-17 13:53:54Z vboxsync $ */
+/* $Id: HWACCM.cpp 21692 2009-07-17 13:55:21Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2236,7 +2236,7 @@ static DECLCALLBACK(int) hwaccmR3Save(PVM pVM, PSSMHANDLE pSSM)
     AssertRCReturn(rc, rc);
 
     /* Store all the guest patch records too. */
-    rc = SSMR3PutU32(pSSM, &pVM->hwaccm.s.svm.cPatches);
+    rc = SSMR3PutU32(pSSM, pVM->hwaccm.s.svm.cPatches);
     AssertRCReturn(rc, rc);
 
     for (unsigned i = 0; i < pVM->hwaccm.s.svm.cPatches; i++)
