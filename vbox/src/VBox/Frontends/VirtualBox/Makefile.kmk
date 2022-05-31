@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18271 2009-03-25 18:22:31Z vboxsync $
+# $Id: Makefile.kmk 18299 2009-03-26 10:11:52Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -250,6 +250,7 @@ VirtualBox_QT_MOCHDRS = \
 	include/VBoxConsoleWnd.h \
 	include/VBoxConsoleView.h \
 	include/VBoxProblemReporter.h \
+	include/VBoxProgressDialog.h \
 	include/VBoxDownloaderWgt.h \
 	include/VBoxAboutDlg.h \
 	include/VBoxCloseVMDlg.h \
@@ -330,6 +331,7 @@ VirtualBox_SOURCES = \
 	src/VBoxGlobal.cpp \
 	src/VBoxMediaComboBox.cpp \
 	src/VBoxProblemReporter.cpp \
+	src/VBoxProgressDialog.cpp \
 	src/VBoxHelpActions.cpp \
 	src/VBoxSelectorWnd.cpp \
 	src/VBoxConsoleView.cpp \
