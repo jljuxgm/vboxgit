@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 19353 2009-05-05 08:31:39Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 19361 2009-05-05 10:19:25Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -22,6 +22,7 @@
 #ifndef ___VBoxServiceInternal_h
 #define ___VBoxServiceInternal_h
 
+#include <stdio.h>
 #ifdef RT_OS_WINDOWS
 # include <Windows.h>
 # include <tchar.h>   /**@todo just drop this, this will be compiled as UTF-8/ANSI. */

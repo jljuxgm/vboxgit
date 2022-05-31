@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19352 2009-05-05 08:01:39Z vboxsync $
+# $Id: Makefile.kmk 19361 2009-05-05 10:19:25Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -34,7 +34,7 @@ VBoxService_DEFS          = VBOXSERVICE_TIMESYNC
 VBoxService_DEFS.win     += _WIN32_WINNT=0x0501 _UNICODE UNICODE
 VBoxService_DEFS.os2      = VBOX_WITH_HGCM VBOXSERVICE_CLIPBOARD
 ifdef VBOX_WITH_GUEST_PROPS
- VBoxService_DEFS.win    += VBOX_WITH_GUEST_PROPS VBOXSERVICE_VMINFO
+ VBoxService_DEFS        += VBOX_WITH_GUEST_PROPS VBOXSERVICE_VMINFO
 endif
 VBoxService_SOURCES       = \
 	VBoxService.cpp \
