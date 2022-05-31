@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18702 2009-04-03 16:07:32Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18799 2009-04-07 09:13:50Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2663,8 +2663,8 @@ DECLCALLBACK(int) Appliance::taskThreadWriteOVF(RTTHREAD /* aThread */, void *pv
         if (pAppliance->m->virtualSystemDescriptions.size() > 1)
         {
             if (task->enFormat == TaskWriteOVF::OVF_0_9)
-                return setError(VBOX_E_FILE_ERROR,
-                                tr("Cannot export more than one virtual system with OVF 0.9, use OVF 1.0"));
+                throw setError(VBOX_E_FILE_ERROR,
+                               tr("Cannot export more than one virtual system with OVF 0.9, use OVF 1.0"));
 
             pelmToAddVirtualSystemsTo = pelmRoot->createChild("VirtualSystemCollection");
             /* xml::AttributeNode *pattrVirtualSystemCollectionId = */ pelmToAddVirtualSystemsTo->setAttribute("ovf:name", "ExportedVirtualBoxMachines");      // whatever
