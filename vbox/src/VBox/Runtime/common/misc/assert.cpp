@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: assert.cpp 21412 2009-07-08 21:18:57Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers.
  */
@@ -43,9 +43,7 @@
 #endif
 
 
-#if defined(IN_GUEST_R0) \
- && (  (defined(RT_OS_LINUX) && !defined(VBOX_WITH_COMMON_VBOXGUEST_ON_LINUX)) \
-     || defined(RT_OS_WINDOWS))
+#if defined(IN_GUEST_R0) && defined(RT_OS_WINDOWS) /** @todo remove this, see defect XYZ. */
 /*
  * This is legacy that should be eliminated. OS specific code deals with
  * R0 assertions now and it will do the backdoor printfs in addition to

@@ -1,4 +1,4 @@
-# $Id: Config.kmk 21338 2009-07-07 15:14:52Z vboxsync $
+# $Id: Config.kmk 21412 2009-07-08 21:18:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -414,7 +414,7 @@ if1of ($(KBUILD_TARGET), darwin solaris linux win freebsd)
 endif
 # Enables the Python<->XPCOM and Python<->COM bindings.
 VBOX_WITH_PYTHON ?= 1
-# Build multiple Python<->XPCOM bridges for different Python version 
+# Build multiple Python<->XPCOM bridges for different Python version
 ifn1of ($(KBUILD_TARGET), darwin)
  VBOX_WITH_MULTIVERSION_PYTHON ?= 1
 endif
@@ -3419,9 +3419,6 @@ endif
 if1of ($(KBUILD_TARGET), freebsd netbsd openbsd)
  TEMPLATE_VBOXGUESTR3EXE_LIBS     = $(TEMPLATE_VBOXR3EXE_LIBS) iconv
 endif
-ifdef VBOX_WITH_COMMON_VBOXGUEST_ON_LINUX ## tempoary, remove soon.
- TEMPLATE_VBOXGUESTR3EXE_DEFS    += VBOX_WITH_COMMON_VBOXGUEST_ON_LINUX
-endif
 
 
 #
@@ -3770,7 +3767,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 21338 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 21412 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

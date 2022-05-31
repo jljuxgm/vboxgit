@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19517 2009-05-08 11:49:52Z vboxsync $
+# $Id: Makefile.kmk 21412 2009-07-08 21:18:57Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -25,7 +25,6 @@ include	$(KBUILD_PATH)/subheader.kmk
 #
 # Include sub-makefiles.
 #
-include $(PATH_SUB_CURRENT)/module/Makefile.kmk
 include $(PATH_SUB_CURRENT)/sharedfolders/Makefile.kmk
 include $(PATH_SUB_CURRENT)/drm/Makefile.kmk
 
