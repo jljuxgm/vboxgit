@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 23799 2009-10-15 13:09:13Z vboxsync $ */
+/* $Id: CPUM.cpp 23800 2009-10-15 13:10:56Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -457,8 +457,6 @@ static int cpumR3CpuIdInit(PVM pVM)
 
         /* 0x800000008: only the max virtual and physical address size. */
         pCPUM->aGuestCpuIdExt[8].ecx = pCPUM->aGuestCpuIdExt[8].ebx = pCPUM->aGuestCpuIdExt[8].edx = 0;  /* reserved */
-
-        /** @todo fill in the rest of the cpu leaves. */
     }
 
     /*
