@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 19115 2009-04-22 17:22:45Z vboxsync $ */
+/* $Id: HostImpl.h 19116 2009-04-22 17:33:26Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -93,14 +93,11 @@ public:
     STDMETHOD(COMGETTER(UTCTime))(LONG64 *aUTCTime);
 
     // IHost methods
-#if defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX) || defined(RT_OS_DARWIN)
-
     STDMETHOD(CreateHostOnlyNetworkInterface) (IHostNetworkInterface **aHostNetworkInterface,
                                            IProgress **aProgress);
     STDMETHOD(RemoveHostOnlyNetworkInterface) (IN_GUID aId,
                                            IHostNetworkInterface **aHostNetworkInterface,
                                            IProgress **aProgress);
-#endif
     STDMETHOD(CreateUSBDeviceFilter) (IN_BSTR aName, IHostUSBDeviceFilter **aFilter);
     STDMETHOD(InsertUSBDeviceFilter) (ULONG aPosition, IHostUSBDeviceFilter *aFilter);
     STDMETHOD(RemoveUSBDeviceFilter) (ULONG aPosition, IHostUSBDeviceFilter **aFilter);

@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 19115 2009-04-22 17:22:45Z vboxsync $ */
+/* $Id: HostImpl.cpp 19116 2009-04-22 17:33:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1216,9 +1216,6 @@ STDMETHODIMP Host::COMGETTER(UTCTime)(LONG64 *aUTCTime)
 
 // IHost methods
 ////////////////////////////////////////////////////////////////////////////////
-
-#if defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX) || defined(RT_OS_DARWIN)
-
 STDMETHODIMP
 Host::CreateHostOnlyNetworkInterface (IHostNetworkInterface **aHostNetworkInterface,
                                   IProgress **aProgress)
@@ -1266,8 +1263,6 @@ Host::RemoveHostOnlyNetworkInterface (IN_GUID aId,
 
     return r == VERR_NOT_IMPLEMENTED ? E_NOTIMPL : E_FAIL;
 }
-
-#endif /* defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) */
 
 STDMETHODIMP Host::CreateUSBDeviceFilter (IN_BSTR aName, IHostUSBDeviceFilter **aFilter)
 {
