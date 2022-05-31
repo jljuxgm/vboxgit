@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 22244 2009-08-13 15:44:34Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 22257 2009-08-14 12:45:12Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1263,7 +1263,7 @@ ResumeExecution:
 #endif
     /* Possibly the last TSC value seen by the guest (too high) (only when we're in tsc offset mode). */
     if (!(pVMCB->ctrl.u32InterceptCtrl1 & SVM_CTRL1_INTERCEPT_RDTSC))
-        TMCpuTickSetLastSeen(pVCpu, ASMReadTSC() + pVMCB->ctrl.u64TSCOffset - 0x1000 /* guestimate of world switch overhead in clock ticks */);
+        TMCpuTickSetLastSeen(pVCpu, ASMReadTSC() + pVMCB->ctrl.u64TSCOffset - 0x400 /* guestimate of world switch overhead in clock ticks */);
     TMNotifyEndOfExecution(pVCpu);
     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED);
     ASMSetFlags(uOldEFlags);
