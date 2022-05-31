@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 20132 2009-05-28 19:20:26Z vboxsync $ */
+/* $Id: HWACCMInternal.h 20133 2009-05-28 19:34:10Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -237,9 +237,9 @@ typedef struct HWACCM
     /* Test handler */
     RTRCPTR                     pfnTest64;
 
-    RTRCPTR                     uAlignment[1];
-#elif defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
-    uint32_t                    u32Alignment[1];
+    RTRCPTR                     uAlignment[2];
+/*#elif defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
+    uint32_t                    u32Alignment[1]; */
 #endif
 
     struct
