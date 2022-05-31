@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 19463 2009-05-06 20:30:57Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 22105 2009-08-08 14:54:59Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -68,7 +68,7 @@ VMMR3DECL(int) DBGFR3AddrFromSelOff(PVM pVM, VMCPUID idCpu, PDBGFADDRESS pAddres
     if (Sel != DBGF_SEL_FLAT)
     {
         DBGFSELINFO SelInfo;
-        int rc = DBGFR3SelQueryInfo(pVM, idCpu, Sel, DBGFSELQI_FLAGS_DT_GUEST, &SelInfo);
+        int rc = DBGFR3SelQueryInfo(pVM, idCpu, Sel, DBGFSELQI_FLAGS_DT_GUEST | DBGFSELQI_FLAGS_DT_ADJ_64BIT_MODE, &SelInfo);
         if (RT_FAILURE(rc))
             return rc;
         if (SelInfo.fFlags & (DBGFSELINFO_FLAGS_INVALID | DBGFSELINFO_FLAGS_NOT_PRESENT))
