@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 22850 2009-09-08 23:29:03Z vboxsync $ */
 /** @file
  *
  * VBox storage drivers:
@@ -391,11 +391,6 @@ static int drvscsiProcessCDB(PDRVSCSI pThis, PPDMSCSIREQUEST pRequest, uint64_t 
                         drvscsiH2BE_U32(&aReply[4], 512);
                         drvscsiScatterGatherListCopyFromBuffer(pRequest, aReply, sizeof(aReply));
                         rc =  drvscsiCmdOk(pRequest);
-                        break;
-                    }
-                    case SCSI_SERVICE_ACTION_IN_16:
-                    {
-                        AssertMsgFailed(("Not implemented yet.\n"));
                         break;
                     }
                     case SCSI_MODE_SENSE_6:
