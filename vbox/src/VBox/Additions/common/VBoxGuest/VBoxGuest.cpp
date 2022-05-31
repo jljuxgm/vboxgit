@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 21450 2009-07-09 16:33:54Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 21456 2009-07-09 20:09:23Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1125,17 +1125,17 @@ static int VBoxGuestCommonIOCtl_HGCMCall(PVBOXGUESTDEVEXT pDevExt,
     if (f32bit)
     {
         if (fInterruptible)
-            rc = VbglR0HGCMInternalCall32(pInfo, fFlags, VBoxGuestHGCMAsyncWaitCallbackInterruptible, pDevExt, cMillies);
+            rc = VbglR0HGCMInternalCall32(pInfo, cbData - cbExtra, fFlags, VBoxGuestHGCMAsyncWaitCallbackInterruptible, pDevExt, cMillies);
         else
-            rc = VbglR0HGCMInternalCall32(pInfo, fFlags, VBoxGuestHGCMAsyncWaitCallback, pDevExt, cMillies);
+            rc = VbglR0HGCMInternalCall32(pInfo, cbData - cbExtra, fFlags, VBoxGuestHGCMAsyncWaitCallback, pDevExt, cMillies);
     }
     else
 #endif
     {
         if (fInterruptible)
-            rc = VbglR0HGCMInternalCall(pInfo, fFlags, VBoxGuestHGCMAsyncWaitCallbackInterruptible, pDevExt, cMillies);
+            rc = VbglR0HGCMInternalCall(pInfo, cbData - cbExtra, fFlags, VBoxGuestHGCMAsyncWaitCallbackInterruptible, pDevExt, cMillies);
         else
-            rc = VbglR0HGCMInternalCall(pInfo, fFlags, VBoxGuestHGCMAsyncWaitCallback, pDevExt, cMillies);
+            rc = VbglR0HGCMInternalCall(pInfo, cbData - cbExtra, fFlags, VBoxGuestHGCMAsyncWaitCallback, pDevExt, cMillies);
     }
     if (RT_SUCCESS(rc))
     {
