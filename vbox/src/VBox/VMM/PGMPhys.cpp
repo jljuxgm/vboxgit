@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 20874 2009-06-24 02:19:29Z vboxsync $ */
+/* $Id: PGMPhys.cpp 21993 2009-08-05 12:37:29Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2935,6 +2935,10 @@ int pgmR3PhysChunkMap(PVM pVM, uint32_t idChunk, PPPGMCHUNKR3MAP ppChunk)
     Req.idChunkUnmap = NIL_GMM_CHUNKID;
     if (pVM->pgm.s.ChunkR3Map.c >= pVM->pgm.s.ChunkR3Map.cMax)
         Req.idChunkUnmap = pgmR3PhysChunkFindUnmapCandidate(pVM);
+/** @todo This is wrong. Any thread in the VM process should be able to do this,
+ *        there are depenenecies on this.  What currently saves the day is that 
+ *        we don't unmap anything and that all non-zero memory will therefore
+ *        be present when non-EMTs tries to access it.  */
     rc = VMMR3CallR0(pVM, VMMR0_DO_GMM_MAP_UNMAP_CHUNK, 0, &Req.Hdr);
     if (RT_SUCCESS(rc))
     {
