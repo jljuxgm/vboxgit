@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22619 2009-08-31 16:50:36Z vboxsync $
+# $Id: Makefile.kmk 22651 2009-09-01 11:54:31Z vboxsync $
 ## @file
 # Sub-Makefile for the common HGSMI library.
 #
@@ -24,6 +24,12 @@ LIBRARIES += \
 #
 LIBRARIES += \
 	HGSMIHostR3Lib
+
+ifndef VBOX_WITH_ADDITION_DRIVERS
+ if1of ($(KBUILD_TARGET), linux l4) # All drivers are optional, can skip HGSMIGuestR0Lib.
+  LIBRARIES := $(filter-out HGSMIGuestR0Lib, $(LIBRARIES))
+ endif
+endif
 
 
 #
