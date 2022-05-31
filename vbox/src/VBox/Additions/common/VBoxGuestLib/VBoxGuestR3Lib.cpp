@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 21200 2009-07-03 13:44:51Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 21201 2009-07-03 13:49:09Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -370,7 +370,11 @@ int vbglR3DoIOCtl(unsigned iFunction, void *pvData, size_t cbData)
     Hdr.u32Padding = 0;
 # endif
 
-/** @todo test status code passing! */
+/** @todo test status code passing! Check that the kernel doesn't do any
+ *        error checks using specific errno values, and just pass an VBox
+ *        error instead of an errno.h one. Alternatively, extend/redefine the
+ *        header with an error code return field (much better alternative
+ *        actually). */
     int rc = ioctl((int)g_File, iFunction, &Hdr);
     if (rc == -1)
     {
