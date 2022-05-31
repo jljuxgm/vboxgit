@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 23569 2009-10-06 00:31:40Z vboxsync $ */
+/* $Id: VBoxManage.h 23802 2009-10-15 15:17:58Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -91,6 +91,8 @@
 #define USAGE_HOSTONLYIFS           RT_BIT_64(46)
 #define USAGE_DHCPSERVER            RT_BIT_64(47)
 #define USAGE_DUMPHDINFO            RT_BIT_64(48)
+#define USAGE_ATTACHDISK            RT_BIT_64(49)
+#define USAGE_STORAGECONTROLLER     RT_BIT_64(50)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
@@ -188,6 +190,10 @@ int handleAddiSCSIDisk(HandlerArg *a);
 int handleShowHardDiskInfo(HandlerArg *a);
 int handleOpenMedium(HandlerArg *a);
 int handleCloseMedium(HandlerArg *a);
+
+/* VBoxManageStorageController.cpp */
+int handleAttachDisk(HandlerArg *a);
+int handleStorageController(HandlerArg *a);
 
 // VBoxManageImport.cpp
 int handleImportAppliance(HandlerArg *a);

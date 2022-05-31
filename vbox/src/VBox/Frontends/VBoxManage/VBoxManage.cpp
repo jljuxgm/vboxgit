@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 23801 2009-10-15 15:00:47Z vboxsync $ */
+/* $Id: VBoxManage.cpp 23802 2009-10-15 15:17:58Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -2030,6 +2030,8 @@ int main(int argc, char *argv[])
         { "registerimage",    handleOpenMedium }, /* backward compatiblity */
         { "closemedium",      handleCloseMedium },
         { "unregisterimage",  handleCloseMedium }, /* backward compatiblity */
+        { "attachdisk",       handleAttachDisk },
+        { "storagectl",       handleStorageController },
         { "showhdinfo",       handleShowHardDiskInfo },
         { "showvdiinfo",      handleShowHardDiskInfo }, /* backward compatiblity */
         { "getextradata",     handleGetExtraData },

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 23801 2009-10-15 15:00:47Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 23802 2009-10-15 15:17:58Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -362,6 +362,30 @@ void printUsage(USAGECATEGORY u64Cmd)
     if (u64Cmd & USAGE_CLOSEMEDIUM)
     {
         RTPrintf("VBoxManage closemedium      disk|dvd|floppy <uuid>|<filename>\n"
+                 "\n");
+    }
+
+    if (u64Cmd & USAGE_ATTACHDISK)
+    {
+        RTPrintf("VBoxManage attachdisk       <uuid|vmname>\n"
+                 "                            --type <dvd|hdd|floppy>\n"
+                 "                            --file <null|none|uuid|filename|host:<drive>>\n"
+                 "                            --controller <name>\n"
+                 "                            --port <number>\n"
+                 "                            --device <number>\n"
+                 "\n");
+    }
+
+    if (u64Cmd & USAGE_STORAGECONTROLLER)
+    {
+        RTPrintf("VBoxManage storagectl       <uuid|vmname>\n"
+                 "                            --storagectl <name>\n"
+                 "                            [--add <ide/sata/scsi/floppy>]\n"
+                 "                            [--type <LsiLogic/BusLogic/IntelAhci/PIIX3/PIIX4/ICH6/I82078>]\n"
+                 "                            [--passthrough <on|off> --port <number> --device <number>]\n"
+                 "                            [--sataideemulation<1-4> <1-30>]\n"
+                 "                            [--sataportcount <1-30>]\n"
+                 "                            [--remove]\n"
                  "\n");
     }
 
