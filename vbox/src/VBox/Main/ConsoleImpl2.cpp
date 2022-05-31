@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 23107 2009-09-17 16:19:58Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 23179 2009-09-21 11:23:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -390,10 +390,20 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
      * Firmware.
      */
 #ifdef VBOX_WITH_EFI
-    /** @todo: implement appropriate getter */
     Bstr tmpStr1;
     hrc = pMachine->GetExtraData(Bstr("VBoxInternal2/UseEFI"), tmpStr1.asOutParam());    H();
     BOOL fEfiEnabled = !tmpStr1.isEmpty();
+
+    /**
+     * @todo: VBoxInternal2/UseEFI extradata will go away soon, and we'll
+     *        just use this code 
+     */
+    if (!fEfiEnabled)
+    {
+      FirmwareType_T eType =  FirmwareType_Bios;
+      hrc = pMachine->COMGETTER(FirmwareType)(&eType);                                H();
+      fEfiEnabled = (eType == FirmwareType_Efi);
+    }
 #else
     BOOL fEfiEnabled = false;
 #endif

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 22624 2009-08-31 17:32:17Z vboxsync $ */
+/* $Id: MachineImpl.h 23179 2009-09-21 11:23:12Z vboxsync $ */
 
 /** @file
  *
@@ -300,6 +300,8 @@ public:
         GuestPropertyList mGuestProperties;
         BOOL           mPropertyServiceActive;
         Bstr           mGuestPropertyNotificationPatterns;
+
+        FirmwareType_T mFirmwareType; 
     };
 
     /**
@@ -600,6 +602,8 @@ public:
     STDMETHOD(AddStorageController) (IN_BSTR aName, StorageBus_T aConnectionType, IStorageController **controller);
     STDMETHOD(RemoveStorageController (IN_BSTR aName));
     STDMETHOD(GetStorageControllerByName (IN_BSTR aName, IStorageController **storageController));
+    STDMETHOD(COMGETTER(FirmwareType)) (FirmwareType_T *aFirmware);
+    STDMETHOD(COMSETTER(FirmwareType)) (FirmwareType_T  aFirmware);
 
     // public methods only for internal purposes
 
