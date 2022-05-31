@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 19499 2009-05-07 18:10:25Z vboxsync $ */
+/* $Id: TMInternal.h 19537 2009-05-08 18:09:57Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -90,13 +90,8 @@ typedef enum TMTIMERSTATE
     /** Timer is modified and is now pending rescheduling.
      * Currently in the ScheduleTimers list and the active list. */
     TMTIMERSTATE_PENDING_RESCHEDULE,
-    /** Timer is destroyed but needs to be replaced from the
-     * active to the free list.
-     * Currently in the ScheduleTimers list and the active list. */
-    TMTIMERSTATE_PENDING_STOP_DESTROY,
-    /** Timer is destroyed but needs moving to the free list.
-     * Currently in the ScheduleTimers list. */
-    TMTIMERSTATE_PENDING_DESTROY,
+    /** Timer is being destroyed. */
+    TMTIMERSTATE_DESTROY,
     /** Timer is free. */
     TMTIMERSTATE_FREE
 } TMTIMERSTATE;

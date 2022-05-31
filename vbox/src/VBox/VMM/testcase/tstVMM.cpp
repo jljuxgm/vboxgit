@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 19500 2009-05-07 18:23:22Z vboxsync $ */
+/* $Id: tstVMM.cpp 19537 2009-05-08 18:09:57Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -107,8 +107,8 @@ DECLCALLBACK(int) tstTMWorker(PVM pVM, RTTEST hTest)
             if (    cLeft == RT_ELEMENTS(apTimers) / 2
                 &&  TMTimerIsActive(pTimer))
             {
-//                rc = TMTimerStop(pTimer);
-//                RTTEST_CHECK_MSG(hTest, RT_SUCCESS(rc), (hTest, "TMTimerStop: %Rrc\n",  rc));
+                rc = TMTimerStop(pTimer);
+                RTTEST_CHECK_MSG(hTest, RT_SUCCESS(rc), (hTest, "TMTimerStop: %Rrc\n",  rc));
             }
             else
             {
