@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 18860 2009-04-10 09:06:05Z vboxsync $ */
+/* $Id: IOM.cpp 19470 2009-05-07 09:06:57Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -156,9 +156,15 @@ VMMR3DECL(int) IOMR3Init(PVM pVM)
     pVM->iom.s.offVM = RT_OFFSETOF(VM, iom);
 
     /*
+     * Initialize the REM critical section.
+     */
+    int rc = PDMR3CritSectInit(pVM, &pVM->iom.s.EmtLock, "IOM EMT Lock");
+    AssertRCReturn(rc, rc);
+
+    /*
      * Allocate the trees structure.
      */
-    int rc = MMHyperAlloc(pVM, sizeof(*pVM->iom.s.pTreesR3), 0, MM_TAG_IOM, (void **)&pVM->iom.s.pTreesR3);
+    rc = MMHyperAlloc(pVM, sizeof(*pVM->iom.s.pTreesR3), 0, MM_TAG_IOM, (void **)&pVM->iom.s.pTreesR3);
     if (RT_SUCCESS(rc))
     {
         pVM->iom.s.pTreesRC = MMHyperR3ToRC(pVM, pVM->iom.s.pTreesR3);
