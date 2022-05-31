@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: DisplayImpl.h 23643 2009-10-09 12:23:32Z vboxsync $ */
 
 /** @file
  *
@@ -193,6 +193,11 @@ public:
     }
 
     STDMETHOD(OnVRDPServerChange)()
+    {
+        return S_OK;
+    }
+
+    STDMETHOD(OnRemoteDisplayInfoChange)()
     {
         return S_OK;
     }

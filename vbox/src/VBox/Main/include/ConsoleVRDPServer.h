@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 23643 2009-10-09 12:23:32Z vboxsync $ */
 
 /** @file
  *
@@ -184,6 +184,8 @@ private:
     IConsoleCallback *mConsoleCallback;
 
     VRDPInputSynch m_InputSynch;
+
+    int32_t mVRDPBindPort;
 #endif /* VBOX_WITH_VRDP */
 
     RTCRITSECT mCritSect;
@@ -263,6 +265,7 @@ public:
     /* IRemoteDisplayInfo properties */
     #define DECL_GETTER(_aType, _aName) STDMETHOD(COMGETTER(_aName)) (_aType *a##_aName)
         DECL_GETTER (BOOL,    Active);
+        DECL_GETTER (LONG,    Port);
         DECL_GETTER (ULONG,   NumberOfClients);
         DECL_GETTER (LONG64,  BeginTime);
         DECL_GETTER (LONG64,  EndTime);
