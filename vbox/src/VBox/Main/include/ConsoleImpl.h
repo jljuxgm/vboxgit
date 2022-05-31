@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 23703 2009-10-12 15:34:36Z vboxsync $ */
+/* $Id: ConsoleImpl.h 23720 2009-10-13 12:43:15Z vboxsync $ */
 
 /** @file
  *
@@ -470,6 +470,9 @@ private:
     static DECLCALLBACK(void)   setVMErrorCallback(PVM pVM, void *pvUser, int rc, RT_SRC_POS_DECL,
                                                    const char *pszFormat, va_list args);
 
+    static DECLCALLBACK(void) setVMRuntimeErrorCallbackF (PVM pVM, void *pvUser, uint32_t fFatal,
+                               const char *pszErrorId,
+                               const char *pszFormat, ...);
     static DECLCALLBACK(void) setVMRuntimeErrorCallback (PVM pVM, void *pvUser, uint32_t fFatal,
                                const char *pszErrorId,
                                const char *pszFormat, va_list va);
