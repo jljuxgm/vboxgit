@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 19217 2009-04-27 15:00:59Z vboxsync $ */
+/* $Id: VMReq.cpp 19265 2009-04-29 14:11:45Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -648,7 +648,7 @@ VMMR3DECL(int) VMR3ReqQueue(PVMREQ pReq, unsigned cMillies)
                  */
                 if (pUVM->pVM)
                     VMCPU_FF_SET(pVCpu, VMCPU_FF_REQUEST);
-                VMR3NotifyCpuFFU(pUVCpu, false);
+                VMR3NotifyCpuFFU(&pUVM->aCpus[i], false);
 
                 /*
                  * Wait and return.
