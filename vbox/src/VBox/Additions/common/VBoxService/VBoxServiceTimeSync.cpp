@@ -1,4 +1,4 @@
-/** $Id: VBoxServiceTimeSync.cpp 18673 2009-04-03 09:02:44Z vboxsync $ */
+/** $Id: VBoxServiceTimeSync.cpp 18679 2009-04-03 11:32:19Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -216,11 +216,13 @@ static DECLCALLBACK(int) VBoxServiceTimeSyncInit(void)
     /* Nothing to do here yet. */
 #endif
 
+#if defined(RT_OS_WINDOWS)
     if (RT_FAILURE(rc))
     {
         CloseHandle (g_hTokenProcess);
         g_hTokenProcess = NULL;
     }
+#endif
 
     return rc;
 }
