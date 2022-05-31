@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 22709 2009-09-02 11:46:18Z vboxsync $ */
+/* $Id: PGMInternal.h 22713 2009-09-02 12:14:30Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1796,6 +1796,8 @@ typedef struct PGMPOOL
     STAMPROFILE                 StatFree;
     /** Counting explicit flushes by PGMPoolFlushPage(). */
     STAMCOUNTER                 StatForceFlushPage;
+    /** Counting explicit flushes of dirty pages by PGMPoolFlushPage(). */
+    STAMCOUNTER                 StatForceFlushDirtyPage;
     /** Profiling time spent zeroing pages. */
     STAMPROFILE                 StatZeroPage;
 # ifdef PGMPOOL_WITH_USER_TRACKING
