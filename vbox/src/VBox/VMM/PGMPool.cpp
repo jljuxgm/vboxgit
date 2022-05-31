@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 20058 2009-05-27 08:29:57Z vboxsync $ */
+/* $Id: PGMPool.cpp 20764 2009-06-22 11:13:45Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -527,6 +527,8 @@ static DECLCALLBACK(int) pgmR3PoolAccessHandler(PVM pVM, RTGCPHYS GCPhys, void *
         pgmUnlock(pVM);
         return VINF_PGM_HANDLER_DO_DEFAULT;
     }
+
+    Assert(pPage->enmKind != PGMPOOLKIND_FREE);
 
     if (!pVCpu) /** @todo This shouldn't happen any longer, all access handlers will be called on an EMT. All ring-3 handlers, except MMIO, already own the PGM lock. @bugref{3170} */
     {
