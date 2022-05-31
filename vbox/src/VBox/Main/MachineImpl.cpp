@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22194 2009-08-12 08:35:51Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22197 2009-08-12 08:58:12Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -5997,6 +5997,7 @@ HRESULT Machine::saveStateSettings(int aFlags)
             mData->m_pMachineConfigFile->fCurrentStateModified = true;
 
         if (aFlags & SaveSTS_StateFilePath)
+        {
             if (mSSData->mStateFilePath)
             {
                 /* try to make the file name relative to the settings file dir */
@@ -6006,6 +6007,7 @@ HRESULT Machine::saveStateSettings(int aFlags)
             }
             else
                 mData->m_pMachineConfigFile->strStateFile.setNull();
+        }
 
         if (aFlags & SaveSTS_StateTimeStamp)
         {
