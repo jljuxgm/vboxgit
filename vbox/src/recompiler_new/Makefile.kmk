@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17897 2009-03-15 19:45:30Z vboxsync $
+# $Id: Makefile.kmk 18662 2009-04-02 18:35:32Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -283,11 +283,7 @@ $$(PATH_VBoxREMImp)/VBoxREMOS2.def: $(VBOX_PATH_RECOMPILER_SRC)/VBoxREM.def $(MA
 		$<
 
 $$(PATH_VBoxREMImp)/VBoxREMWin.def: $(VBOX_PATH_RECOMPILER_SRC)/VBoxREM.def $(MAKEFILE_CURRENT) | $$(dir $$@)
-ifdef VBOX_WITH_NEW_PHYS_CODE
-	$(SED) -e '/REMR3NotifyPhysRamChunkRegister/d'	--output $@ $<
-else
 	$(CP) -f $< $@
-endif
 
 
 #
@@ -304,3 +300,4 @@ testmath_SOURCES        = Sun/testmath.c
 
 
 include $(KBUILD_PATH)/subfooter.kmk
+
