@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 21404 2009-07-08 15:19:42Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 21639 2009-07-16 10:16:31Z vboxsync $ */
 
 /** @file
  *
@@ -658,6 +658,27 @@ int Console::VRDPClientLogon (uint32_t u32ClientId, const char *pszUser, const c
         mu32SingleRDPClientId = u32ClientId;
     }
 
+    /* Set guest properties. */
+    int rc;
+    char *pszPropertyName;
+    rc = RTStrAPrintf(&pszPropertyName, "/VirtualBox/HostInfo/VRDP/Client/%d/Name", u32ClientId);
+    if (RT_SUCCESS(rc))
+    {
+        Bstr clientName;
+        mRemoteDisplayInfo->COMGETTER(ClientName)(clientName.asOutParam());
+
+        mMachine->SetGuestPropertyValue(Bstr(pszPropertyName), clientName);
+        RTStrFree(pszPropertyName);
+    }
+
+    char *pszClientId;
+    rc = RTStrAPrintf(&pszClientId, "%d", u32ClientId);
+    if (RT_SUCCESS(rc))
+    {
+        mMachine->SetGuestPropertyValue(Bstr("/VirtualBox/HostInfo/VRDP/LastConnectedClient"), Bstr(pszClientId));
+        RTStrFree(pszClientId);
+    }
+
     return VINF_SUCCESS;
 }
 
@@ -748,6 +769,24 @@ void Console::VRDPClientDisconnect (uint32_t u32ClientId,
 
     if (authType == VRDPAuthType_External)
         mConsoleVRDPServer->AuthDisconnect (uuid, u32ClientId);
+
+    /* Reset guest properties for the client. */
+    int rc;
+    char *pszPropertyName;
+    rc = RTStrAPrintf(&pszPropertyName, "/VirtualBox/HostInfo/VRDP/Client/%d/Name", u32ClientId);
+    if (RT_SUCCESS(rc))
+    {
+        mMachine->SetGuestPropertyValue(Bstr(pszPropertyName), Bstr(""));
+        RTStrFree(pszPropertyName);
+    }
+
+    char *pszClientId;
+    rc = RTStrAPrintf(&pszClientId, "%d", u32ClientId);
+    if (RT_SUCCESS(rc))
+    {
+        mMachine->SetGuestPropertyValue(Bstr("/VirtualBox/HostInfo/VRDP/LastDisconnectedClient"), Bstr(pszClientId));
+        RTStrFree(pszClientId);
+    }
 
     LogFlowFuncLeave();
     return;
