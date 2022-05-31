@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 22406 2009-08-24 09:03:22Z vboxsync $ */
+/* $Id: DrvNAT.cpp 22410 2009-08-24 12:26:36Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -51,6 +51,8 @@
 #include <iprt/semaphore.h>
 #include <iprt/req.h>
 
+#define COUNTERS_INIT
+#include "counters.h"
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
@@ -234,12 +236,15 @@ static DECLCALLBACK(int) drvNATRecvWakeup(PPDMDRVINS pDrvIns, PPDMTHREAD pThread
 
 static DECLCALLBACK(void) drvNATRecvWorker(PDRVNAT pThis, uint8_t *pu8Buf, int cb)
 {
+    STAM_PROFILE_START(&pThis->StatNATRecv, a);
     if (RT_FAILURE(pThis->pPort->pfnWaitReceiveAvail(pThis->pPort, RT_INDEFINITE_WAIT)))
     {
         AssertMsgFailed(("NAT: No RX available even on indefinite wait"));
     }
+    STAM_PROFILE_STOP(&pThis->StatNATRecvWait, a);
     int rc = pThis->pPort->pfnReceive(pThis->pPort, pu8Buf, cb);
     RTMemFree(pu8Buf);
+    STAM_PROFILE_STOP(&pThis->StatNATRecv, a);
     AssertRC(rc);
 }
 #endif
