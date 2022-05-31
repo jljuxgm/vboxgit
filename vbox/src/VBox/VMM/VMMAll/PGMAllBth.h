@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 17667 2009-03-11 09:35:22Z vboxsync $ */
+/* $Id: PGMAllBth.h 18093 2009-03-19 13:49:14Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -839,7 +839,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame,
                          * Note: we have AVL, A, D bits desynched.
                          */
                         AssertMsg((fPageShw & ~(X86_PTE_A | X86_PTE_D | X86_PTE_AVL_MASK)) == (fPageGst & ~(X86_PTE_A | X86_PTE_D | X86_PTE_AVL_MASK)),
-                                  ("Page flags mismatch! pvFault=%RGv GCPhys=%RGp fPageShw=%08llx fPageGst=%08llx\n", pvFault, GCPhys, fPageShw, fPageGst));
+                                  ("Page flags mismatch! pvFault=%RGv uErr=%x GCPhys=%RGp fPageShw=%RX64 fPageGst=%RX64\n", pvFault, (uint32_t)uErr, GCPhys, fPageShw, fPageGst));
                     }
                     else
                         AssertMsgFailed(("PGMGstGetPage rc=%Rrc\n", rc));
