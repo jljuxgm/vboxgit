@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 20408 2009-06-08 13:50:06Z vboxsync $ */
+/* $Id: EMAll.cpp 20461 2009-06-10 11:35:43Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2782,6 +2782,14 @@ static const char *emMSRtoString(uint32_t uMsr)
         return "Unsupported MSR_IA32_PERF_STATUS";
     case MSR_IA32_PERF_CTL:
         return "Unsupported MSR_IA32_PERF_CTL";
+    case MSR_K7_PERFCTR0:
+        return "Unsupported MSR_K7_PERFCTR0";
+    case MSR_K7_PERFCTR1:
+        return "Unsupported MSR_K7_PERFCTR1";
+    case MSR_K7_PERFCTR2:
+        return "Unsupported MSR_K7_PERFCTR2";
+    case MSR_K7_PERFCTR3:
+        return "Unsupported MSR_K7_PERFCTR3";
     }
     return "Unknown MSR";
 }
