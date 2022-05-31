@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22696 2009-09-02 08:48:49Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22698 2009-09-02 09:17:59Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4709,6 +4709,8 @@ VMMDECL(void) PGMPoolFlushPage(PVM pVM, RTGCPHYS GCPhys)
 {
 #ifdef PGMPOOL_WITH_CACHE
     PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
+
+    VM_ASSERT_EMT(pVM);
 
     /*
      * Look up the GCPhys in the hash.
