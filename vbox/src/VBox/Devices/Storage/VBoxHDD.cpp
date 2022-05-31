@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 17970 2009-03-16 19:08:16Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 18150 2009-03-23 16:29:52Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2124,7 +2124,7 @@ VBOXDDU_DECL(int) VDCopy(PVBOXHDD pDiskFrom, unsigned nImage, PVBOXHDD pDiskTo,
  */
 VBOXDDU_DECL(int) VDClose(PVBOXHDD pDisk, bool fDelete)
 {
-    int rc = VINF_SUCCESS;;
+    int rc = VINF_SUCCESS;
 
     LogFlowFunc(("pDisk=%#p fDelete=%d\n", pDisk, fDelete));
     do
@@ -2134,7 +2134,11 @@ VBOXDDU_DECL(int) VDClose(PVBOXHDD pDisk, bool fDelete)
         AssertMsg(pDisk->u32Signature == VBOXHDDDISK_SIGNATURE, ("u32Signature=%08x\n", pDisk->u32Signature));
 
         PVDIMAGE pImage = pDisk->pLast;
-        AssertPtrBreakStmt(pImage, rc = VERR_VD_NOT_OPENED);
+        if (!pImage)
+        {
+            rc = VERR_VD_NOT_OPENED;
+            break;
+        }
         unsigned uOpenFlags = pImage->Backend->pfnGetOpenFlags(pImage->pvBackendData);
         /* Remove image from list of opened images. */
         vdRemoveImageFromList(pDisk, pImage);
