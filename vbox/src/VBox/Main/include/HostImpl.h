@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 17684 2009-03-11 12:15:33Z vboxsync $ */
+/* $Id: HostImpl.h 19115 2009-04-22 17:22:45Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -93,7 +93,7 @@ public:
     STDMETHOD(COMGETTER(UTCTime))(LONG64 *aUTCTime);
 
     // IHost methods
-#ifdef RT_OS_WINDOWS
+#if defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX) || defined(RT_OS_DARWIN)
 
     STDMETHOD(CreateHostOnlyNetworkInterface) (IHostNetworkInterface **aHostNetworkInterface,
                                            IProgress **aProgress);
