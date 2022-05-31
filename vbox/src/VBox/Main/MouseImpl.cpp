@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 19654 2009-05-13 12:30:58Z vboxsync $ */
+/* $Id: MouseImpl.cpp 20988 2009-06-26 16:43:16Z vboxsync $ */
 
 /** @file
  *
@@ -300,10 +300,14 @@ STDMETHODIMP Mouse::PutMouseEventAbsolute(LONG x, LONG y, LONG dz,
     /*
      * Send the absolute mouse position to the VMM device.
      */
-    int vrc = mParent->getVMMDev()->getVMMDevPort()
-        ->pfnSetAbsoluteMouse(mParent->getVMMDev()->getVMMDevPort(),
-                              mouseXAbs, mouseYAbs);
-    ComAssertRCRet (vrc, E_FAIL);
+    int vrc = 0;
+    if ((mLastAbsX != mouseXAbs) || (mLastAbsY != mouseYAbs))
+    {
+        vrc = mParent->getVMMDev()->getVMMDevPort()
+                  ->pfnSetAbsoluteMouse(mParent->getVMMDev()->getVMMDevPort(),
+                                        mouseXAbs, mouseYAbs);
+        ComAssertRCRet (vrc, E_FAIL);
+    }
 
     // Check if the guest actually wants absolute mouse positions.
     if (mouseCaps & VMMDEV_MOUSEGUESTWANTSABS)
