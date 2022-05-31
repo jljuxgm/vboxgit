@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 23569 2009-10-06 00:31:40Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 23570 2009-10-06 00:31:55Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -149,7 +149,7 @@ int handleSnapshot(HandlerArg *a)
                     if (SUCCEEDED(rc))
                         CHECK_ERROR_BREAK(console, Resume());
                     else
-                        console->Pause();
+                        console->Resume();
                 }
             }
         }
