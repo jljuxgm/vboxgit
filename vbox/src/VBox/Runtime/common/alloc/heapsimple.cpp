@@ -1,4 +1,4 @@
-/* $Id: heapsimple.cpp 14318 2008-11-18 16:56:53Z vboxsync $ */
+/* $Id: heapsimple.cpp 18428 2009-03-28 01:54:31Z vboxsync $ */
 /** @file
  * IPRT - A Simple Heap.
  */
@@ -313,7 +313,7 @@ RTDECL(int) RTHeapSimpleInit(PRTHEAPSIMPLE pHeap, void *pvMemory, size_t cbMemor
     pHeapInt = (PRTHEAPSIMPLEINTERNAL)pvMemory;
     if ((uintptr_t)pvMemory & 31)
     {
-        const unsigned off = 32 - ((uintptr_t)pvMemory & 31);
+        const uintptr_t off = 32 - ((uintptr_t)pvMemory & 31);
         cbMemory -= off;
         pHeapInt = (PRTHEAPSIMPLEINTERNAL)((uintptr_t)pvMemory + off);
     }
