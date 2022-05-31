@@ -1,4 +1,4 @@
-' $Id: configure.vbs 17880 2009-03-14 22:37:28Z vboxsync $
+' $Id: configure.vbs 20025 2009-05-26 11:28:09Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -1808,9 +1808,11 @@ function CheckForQt4Sub(strPathQt4)
     And LogFileExists(strPathQt4, "include/QtGui/QApplication") _
     And LogFileExists(strPathQt4, "include/QtNetwork/QHostAddress") _
     And (   LogFileExists(strPathQt4, "lib/QtCore4.lib") _
-         Or LogFileExists(strPathQt4, "lib/VBoxQtCore4.lib")) _
+         Or LogFileExists(strPathQt4, "lib/VBoxQtCore4.lib") _
+         Or LogFileExists(strPathQt4, "lib/QtCoreVBox4.lib")) _
     And (   LogFileExists(strPathQt4, "lib/QtNetwork4.lib") _
-         Or LogFileExists(strPathQt4, "lib/VBoxQtNetwork4.lib")) _
+         Or LogFileExists(strPathQt4, "lib/VBoxQtNetwork4.lib") _
+         Or LogFileExists(strPathQt4, "lib/QtNetworkVBox4.lib")) _
       then
          CheckForQt4Sub = True
    end if
