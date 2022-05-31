@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23928 2009-10-21 10:17:08Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23931 2009-10-21 12:55:11Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2577,6 +2577,7 @@ STDMETHODIMP Machine::MountMedium(IN_BSTR aControllerName,
                      aControllerName, aControllerPort, aDevice));
 
     CheckComArgNotNull(aControllerName);
+    CheckComArgNotNull(aId);
 
     AutoCaller autoCaller(this);
     CheckComRCReturnRC(autoCaller.rc());
