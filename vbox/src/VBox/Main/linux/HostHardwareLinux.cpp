@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 23848 2009-10-19 09:21:19Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 23855 2009-10-19 11:53:08Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1024,7 +1024,7 @@ int VBoxMainUSBDeviceInfo::UpdateDevices ()
 #if defined(RT_OS_LINUX)
 #ifdef VBOX_WITH_DBUS
         if (   RT_SUCCESS(rc)
-            && RT_SUCCESS(VBoxLoadDBusLib())
+            && RT_SUCCESS(RTDBusLoadLib())
             && (!success || testing()))
             rc = getUSBDeviceInfoFromHal(&mDeviceList, &halSuccess);
         /* Try the old API if the new one *succeeded* as only one of them will
@@ -1069,7 +1069,7 @@ VBoxMainHotplugWaiter::VBoxMainHotplugWaiter ()
     int rc = VINF_SUCCESS;
 
     mContext = new Context;
-    if (RT_SUCCESS(VBoxLoadDBusLib()))
+    if (RT_SUCCESS(RTDBusLoadLib()))
     {
         for (unsigned i = 0; RT_SUCCESS(rc) && i < 5 && !mContext->mConnection; ++i)
         {
