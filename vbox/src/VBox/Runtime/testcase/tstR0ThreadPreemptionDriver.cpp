@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemptionDriver.cpp 20606 2009-06-15 23:49:07Z vboxsync $ */
+/* $Id: tstR0ThreadPreemptionDriver.cpp 21551 2009-07-13 16:40:43Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -144,6 +144,7 @@ int main(int argc, char **argv)
     /*
      * Stay in ring-0 until preemption is pending.
      */
+RTThreadSleep(250); /** @todo fix GIP initialization? */
     RTTestSub(hTest, "Pending Preemption");
     for (int i = 0; ; i++)
     {
