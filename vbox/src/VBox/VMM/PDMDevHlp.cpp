@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 21363 2009-07-07 17:10:52Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 21789 2009-07-24 17:29:12Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1227,7 +1227,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_PDMQueueCreate(PPDMDEVINS pDevIns, RTUINT c
 
     if (pDevIns->iInstance > 0)
     {
-        pszName = MMR3HeapAPrintf(pVM, MM_TAG_PDM_DEVICE_DESC, "%s-%u", pszName, pDevIns->iInstance);
+        pszName = MMR3HeapAPrintf(pVM, MM_TAG_PDM_DEVICE_DESC, "%s_%u", pszName, pDevIns->iInstance);
         AssertLogRelReturn(pszName, VERR_NO_MEMORY);
     }
 
