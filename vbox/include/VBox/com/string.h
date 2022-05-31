@@ -1,4 +1,4 @@
-/* $Id: string.h 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: string.h 23907 2009-10-20 15:27:40Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -229,7 +229,11 @@ public:
     {
         if (pstr)
         {
-            *pstr = NULL;
+            if (*pstr)
+            {
+                ::SysFreeString (*pstr);
+                *pstr = NULL;
+            }
             raw_copy (*pstr, bstr);
         }
         return *this;
@@ -411,7 +415,11 @@ public:
     {
         if (pstr)
         {
-            *pstr = NULL;
+            if (*pstr)
+            {
+                ::SysFreeString (*pstr);
+                *pstr = NULL;
+            }
             Bstr::raw_copy(*pstr, m_psz);
         }
         return *this;
