@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 21826 2009-07-27 20:00:42Z vboxsync $ */
+/* $Id: MachineImpl.cpp 21835 2009-07-28 13:00:17Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -5798,9 +5798,12 @@ HRESULT Machine::findSnapshotNode (Snapshot *aSnapshot, settings::Key &aMachineN
  *  @param aSnapshot    where to return the found snapshot
  *  @param aSetError    true to set extended error info on failure
  */
-HRESULT Machine::findSnapshot (const Guid &aId, ComObjPtr <Snapshot> &aSnapshot,
-                               bool aSetError /* = false */)
+HRESULT Machine::findSnapshot(const Guid &aId,
+                              ComObjPtr<Snapshot> &aSnapshot,
+                              bool aSetError /* = false */)
 {
+    AutoReadLock chlock(snapshotsTreeLockHandle());
+
     if (!mData->mFirstSnapshot)
     {
         if (aSetError)
@@ -5833,10 +5836,13 @@ HRESULT Machine::findSnapshot (const Guid &aId, ComObjPtr <Snapshot> &aSnapshot,
  *  @param aSnapshot    where to return the found snapshot
  *  @param aSetError    true to set extended error info on failure
  */
-HRESULT Machine::findSnapshot (IN_BSTR aName, ComObjPtr <Snapshot> &aSnapshot,
-                               bool aSetError /* = false */)
+HRESULT Machine::findSnapshot(IN_BSTR aName,
+                              ComObjPtr<Snapshot> &aSnapshot,
+                              bool aSetError /* = false */)
 {
     AssertReturn (aName, E_INVALIDARG);
+
+    AutoReadLock chlock(snapshotsTreeLockHandle());
 
     if (!mData->mFirstSnapshot)
     {
@@ -10289,14 +10295,6 @@ void SessionMachine::discardSnapshotHandler(DiscardSnapshotTask &aTask)
         LogFlowThisFuncLeave();
         return;
     }
-
-    /* saveSettings() needs mParent lock */
-//     AutoWriteLock vboxLock (mParent);
-
-    /* @todo We don't need mParent lock so far so unlock() it. Better is to
-     * provide an AutoWriteLock argument that lets create a non-locking
-     * instance */
-//     vboxLock.unlock();
 
     /* Locking order:  */
     AutoMultiWriteLock3 alock(this->lockHandle(),
