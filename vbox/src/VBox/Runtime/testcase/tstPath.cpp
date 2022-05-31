@@ -1,4 +1,4 @@
-/* $Id: tstPath.cpp 15813 2009-01-05 16:06:55Z vboxsync $ */
+/* $Id: tstPath.cpp 19924 2009-05-22 21:52:47Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -62,12 +62,12 @@ int main()
         return 1;
 
     /*
-     * RTPathProgram, RTPathUserHome and RTProcGetExecutableName.
+     * RTPathExecDir, RTPathUserHome and RTProcGetExecutableName.
      */
     char szPath[RTPATH_MAX];
-    CHECK_RC(RTPathProgram(szPath, sizeof(szPath)));
+    CHECK_RC(RTPathExecDir(szPath, sizeof(szPath)));
     if (RT_SUCCESS(rc))
-        RTPrintf("Program={%s}\n", szPath);
+        RTPrintf("ExecDir={%s}\n", szPath);
     CHECK_RC(RTPathUserHome(szPath, sizeof(szPath)));
     if (RT_SUCCESS(rc))
         RTPrintf("UserHome={%s}\n", szPath);

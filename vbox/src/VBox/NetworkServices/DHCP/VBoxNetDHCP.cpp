@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 19454 2009-05-06 19:20:18Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 19924 2009-05-22 21:52:47Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -871,7 +871,7 @@ int VBoxNetDhcp::tryGoOnline(void)
     }
 
     char szPath[RTPATH_MAX];
-    rc = RTPathProgram(szPath, sizeof(szPath) - sizeof("/VMMR0.r0"));
+    rc = RTPathExecDir(szPath, sizeof(szPath) - sizeof("/VMMR0.r0"));
     if (RT_FAILURE(rc))
     {
         RTStrmPrintf(g_pStdErr, "VBoxNetDHCP: RTPathProgram -> %Rrc", rc);

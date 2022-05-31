@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 19433 2009-05-06 13:26:13Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 19924 2009-05-22 21:52:47Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -42,7 +42,7 @@ static int NetIfAdpCtl(const char * pcszIfName, const char *pszAddr, const char 
     const char *args[] = { NULL, pcszIfName, pszAddr, pszOption, pszMask, NULL };
 
     char szAdpCtl[RTPATH_MAX];
-    int rc = RTPathProgram(szAdpCtl, sizeof(szAdpCtl) - sizeof("/" VBOXNETADPCTL_NAME));
+    int rc = RTPathExecDir(szAdpCtl, sizeof(szAdpCtl) - sizeof("/" VBOXNETADPCTL_NAME));
     if (RT_FAILURE(rc))
     {
         LogRel(("NetIfAdpCtl: failed to get program path, rc=%Vrc.\n", rc));
@@ -150,7 +150,7 @@ int NetIfCreateHostOnlyNetworkInterface (VirtualBox *pVBox, IHostNetworkInterfac
             progress.queryInterfaceTo (aProgress);
 
             char szAdpCtl[RTPATH_MAX];
-            int rc = RTPathProgram(szAdpCtl, sizeof(szAdpCtl) - sizeof("/" VBOXNETADPCTL_NAME " add"));
+            int rc = RTPathExecDir(szAdpCtl, sizeof(szAdpCtl) - sizeof("/" VBOXNETADPCTL_NAME " add"));
             if (RT_FAILURE(rc))
             {
                 progress->notifyComplete(E_FAIL, COM_IIDOF(IHostNetworkInterface), HostNetworkInterface::getComponentName(),

@@ -1,4 +1,4 @@
-/* $Id: tstRunTestcases.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
+/* $Id: tstRunTestcases.cpp 19924 2009-05-22 21:52:47Z vboxsync $ */
 /** @file
  * tstRunTescases - Driver program for running VBox testcase (tst* testcase/tst*).
  */
@@ -263,10 +263,10 @@ int main(int argc, char **argv)
     if (argc == 1)
     {
         char szPath[RTPATH_MAX];
-        int rc = RTPathProgram(szPath, sizeof(szPath) - sizeof("/.."));
+        int rc = RTPathExecDir(szPath, sizeof(szPath) - sizeof("/.."));
         if (RT_FAILURE(rc))
         {
-            RTPrintf("fatal error: RTPathProgram -> %Rrc\n", rc);
+            RTPrintf("fatal error: RTPathExecDir -> %Rrc\n", rc);
             return 1;
         }
         rc = RTPathSetCurrent(strcat(szPath, "/.."));
