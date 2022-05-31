@@ -1,4 +1,4 @@
-/* $Id: tstStrFormat.cpp 20606 2009-06-15 23:49:07Z vboxsync $ */
+/* $Id: tstRTStrFormat.cpp 23960 2009-10-22 09:15:59Z vboxsync $ */
 /** @file
  * IPRT Testcase - String formatting.
  */
@@ -66,7 +66,7 @@ static DECLCALLBACK(size_t) TstType(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput,
 int main()
 {
     RTTEST hTest;
-    int rc = RTTestInitAndCreate("tstStrFormat", &hTest);
+    int rc = RTTestInitAndCreate("tstRTStrFormat", &hTest);
     if (rc)
         return rc;
     RTTestBanner(hTest);

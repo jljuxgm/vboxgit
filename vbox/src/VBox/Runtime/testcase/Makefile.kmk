@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23501 2009-10-02 10:59:42Z vboxsync $
+# $Id: Makefile.kmk 23960 2009-10-22 09:15:59Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -91,7 +91,7 @@ PROGRAMS += \
 	tstSems \
 	tstSemPingPong \
 	tstRTStrCache \
-	tstStrFormat \
+	tstRTStrFormat \
 	tstStrSimplePattern \
 	tstStrToNum \
 	tstSystemQueryOsInfo \
@@ -364,7 +364,7 @@ tstSems_SOURCES = tstSems.cpp
 tstRTStrCache_TEMPLATE = VBOXR3TSTEXE
 tstRTStrCache_SOURCES = tstRTStrCache.cpp
 
-tstStrFormat_SOURCES = tstStrFormat.cpp
+tstRTStrFormat_SOURCES = tstRTStrFormat.cpp
 
 tstStrSimplePattern_SOURCES = tstStrSimplePattern.cpp
 
