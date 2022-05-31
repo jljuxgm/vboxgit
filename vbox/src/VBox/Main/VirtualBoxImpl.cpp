@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 18177 2009-03-24 13:21:12Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 18208 2009-03-24 17:01:32Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -61,6 +61,7 @@
 #include "SystemPropertiesImpl.h"
 #include "GuestOSTypeImpl.h"
 #include "Version.h"
+#include "DHCPServerRunner.h"
 #include "DHCPServerImpl.h"
 
 #include "VirtualBoxXMLUtil.h"

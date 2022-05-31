@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 18023 2009-03-17 13:48:59Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 18208 2009-03-24 17:01:32Z vboxsync $ */
 
 /** @file
  *
@@ -76,6 +76,9 @@ public:
 
     STDMETHOD(SetConfiguration) (IN_BSTR aIPAddress, IN_BSTR aNetworkMask, IN_BSTR aFromIPAddress, IN_BSTR aToIPAddress);
 
+    STDMETHOD(Start) (IN_BSTR aNetworkName, IN_BSTR aTrunkName, IN_BSTR aTrunkType);
+    STDMETHOD(Stop) ();
+
     // for VirtualBoxSupportErrorInfoImpl
     static const wchar_t *getComponentName() { return L"DHCPServer"; }
 
@@ -94,6 +97,8 @@ private:
         Bstr lowerIP;
         Bstr upperIP;
         BOOL enabled;
+
+        DHCPServerRunner dhcp;
     } m;
 
 };
