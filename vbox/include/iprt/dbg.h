@@ -1,4 +1,4 @@
-/* $Id: dbg.h 19559 2009-05-10 04:36:23Z vboxsync $ */
+/* $Id: dbg.h 19561 2009-05-10 05:20:01Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -23,6 +23,7 @@
 #define ___iprt_dbg_h
 
 #include <iprt/types.h>
+#include <iprt/stdarg.h>
 
 __BEGIN_DECLS
 
