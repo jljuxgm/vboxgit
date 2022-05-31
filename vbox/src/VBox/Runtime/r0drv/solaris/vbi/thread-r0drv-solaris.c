@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 23076 2009-09-17 09:07:03Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 23216 2009-09-22 13:29:49Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -119,7 +119,7 @@ RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
 
     vbi_preempt_disable();
 
-    pState->uOldPil = splr(ipltospl(0));
+    pState->uOldPil = getpil();
     Assert(pState->uOldPil != UINT32_MAX);
     RT_ASSERT_PREEMPT_CPUID_DISABLE(pState);
 }
