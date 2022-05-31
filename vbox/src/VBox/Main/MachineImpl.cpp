@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 17942 2009-03-16 14:54:50Z vboxsync $ */
+/* $Id: MachineImpl.cpp 18115 2009-03-20 13:10:58Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -10922,6 +10922,8 @@ HRESULT SessionMachine::lockMedia()
 
             bool first = true;
 
+            /** @todo split out the media locking, and put it into
+             * HardDiskImpl.cpp, as it needs this functionality too. */
             while (!hd.isNull())
             {
                 if (first)
