@@ -1,4 +1,4 @@
-/* $Id: iprt.h 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: iprt.h 21346 2009-07-07 15:35:58Z vboxsync $ */
 /** @file
  * IPRT - Internal header for miscellaneous global defs and types.
  */
@@ -40,7 +40,7 @@
  */
 #if defined(RT_OS_LINUX) \
  && defined(IN_RING0) \
- && defined(IN_MODULE)
+ && defined(MODULE)
 # define bool linux_bool /* see r0drv/linux/the-linux-kernel.h */
 # include <linux/autoconf.h>
 # include <linux/module.h>
