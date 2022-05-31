@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 18956 2009-04-16 16:54:14Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 18974 2009-04-17 07:13:31Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -410,7 +410,9 @@ int main()
     GEN_CHECK_OFF(PGMCPU, offVM);
     GEN_CHECK_OFF(PGMCPU, offVCpu);
     GEN_CHECK_OFF(PGMCPU, offPGM);
-    GEN_CHECK_OFF(PGMCPU, AutoSet);
+#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
+    GEN_CHECK_OFF(PGM, AutoSet);
+#endif
     GEN_CHECK_OFF(PGMCPU, GCPhysA20Mask);
     GEN_CHECK_OFF(PGMCPU, fA20Enabled);
     GEN_CHECK_OFF(PGMCPU, fSyncFlags);
