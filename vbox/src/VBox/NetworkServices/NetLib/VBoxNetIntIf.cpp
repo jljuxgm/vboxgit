@@ -1,4 +1,4 @@
-/* $Id: VBoxNetIntIf.cpp 17783 2009-03-12 23:59:57Z vboxsync $ */
+/* $Id: VBoxNetIntIf.cpp 19254 2009-04-29 10:00:47Z vboxsync $ */
 /** @file
  * VBoxNetIntIf - IntNet Interface Client Routines.
  */
@@ -48,7 +48,7 @@ int VBoxNetIntIfFlush(PSUPDRVSESSION pSession, INTNETIFHANDLE hIf)
     SendReq.Hdr.cbReq    = sizeof(SendReq);
     SendReq.pSession     = pSession;
     SendReq.hIf          = hIf;
-    return SUPCallVMMR0Ex(NIL_RTR0PTR, VMMR0_DO_INTNET_IF_SEND, 0, &SendReq.Hdr);
+    return SUPCallVMMR0Ex(NIL_RTR0PTR, 0 /* VPCU 0 */, VMMR0_DO_INTNET_IF_SEND, 0, &SendReq.Hdr);
 }
 
 
