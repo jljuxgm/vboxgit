@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 21443 2009-07-09 14:04:57Z vboxsync $ */
+/* $Id: CSAM.cpp 21876 2009-07-30 12:28:10Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -337,9 +337,6 @@ VMMR3DECL(int) CSAMR3Reset(PVM pVM)
 
     return VINF_SUCCESS;
 }
-
-#define CSAM_SUBTRACT_PTR(a, b) *(uintptr_t *)&(a) = (uintptr_t)(a) - (uintptr_t)(b)
-#define CSAM_ADD_PTR(a, b)      *(uintptr_t *)&(a) = (uintptr_t)(a) + (uintptr_t)(b)
 
 
 /**
