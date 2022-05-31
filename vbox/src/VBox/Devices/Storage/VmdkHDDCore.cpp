@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 18566 2009-03-31 12:28:49Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 18822 2009-04-07 13:22:57Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -1656,8 +1656,8 @@ static int vmdkDescExtInsert(PVMDKIMAGE pImage, PVMDKDESCRIPTOR pDescriptor,
     char szExt[1024];
     ssize_t cbDiff;
 
-    Assert((int)enmAccess < RT_ELEMENTS(apszAccess));
-    Assert((int)enmType < RT_ELEMENTS(apszType));
+    Assert((unsigned)enmAccess < RT_ELEMENTS(apszAccess));
+    Assert((unsigned)enmType < RT_ELEMENTS(apszType));
 
     /* Find last entry in extent description. */
     while (uStart)
