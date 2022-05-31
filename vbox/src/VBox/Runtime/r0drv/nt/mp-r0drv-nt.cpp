@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 19826 2009-05-19 14:26:00Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 19830 2009-05-19 14:57:45Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -352,7 +352,7 @@ RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
     {
         for (unsigned i = 0; i < RT_ELEMENTS(aPokeDpcs); i++)
         {
-            KeInitializeDpc(&aPokeDpcs[i], rtmpNtDPCWrapper, NULL);
+            KeInitializeDpc(&aPokeDpcs[i], rtMpNtPokeCpuDummy, NULL);
             KeSetImportanceDpc(&aPokeDpcs[i], HighImportance);
             KeSetTargetProcessorDpc(&aPokeDpcs[i], (int)i);
         }
