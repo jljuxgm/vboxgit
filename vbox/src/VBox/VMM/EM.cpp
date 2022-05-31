@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 18928 2009-04-16 11:44:26Z vboxsync $ */
+/* $Id: EM.cpp 18930 2009-04-16 11:54:23Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1064,8 +1064,8 @@ static int emR3RawStep(PVM pVM, PVMCPU pVCpu)
     PCPUMCTX    pCtx   = pVCpu->em.s.pCtx;
     bool        fGuest = pVCpu->em.s.enmState != EMSTATE_DEBUG_HYPER;
 #ifndef DEBUG_sandervl
-    Log(("emR3RawStep: cs:eip=%RTsel:%RGr efl=%RGr\n", fGuest ? CPUMGetGuestCS(pVM) : CPUMGetHyperCS(pVCpu),
-         fGuest ? CPUMGetGuestEIP(pVCpu) : CPUMGetHyperEIP(pVM), fGuest ? CPUMGetGuestEFlags(pVCpu) : CPUMGetHyperEFlags(pVM)));
+    Log(("emR3RawStep: cs:eip=%RTsel:%RGr efl=%RGr\n", fGuest ? CPUMGetGuestCS(pVCpu) : CPUMGetHyperCS(pVCpu),
+         fGuest ? CPUMGetGuestEIP(pVCpu) : CPUMGetHyperEIP(pVCpu), fGuest ? CPUMGetGuestEFlags(pVCpu) : CPUMGetHyperEFlags(pVCpu)));
 #endif
     if (fGuest)
     {
