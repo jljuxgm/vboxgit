@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22711 2009-09-02 11:49:48Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22712 2009-09-02 11:54:07Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1620,6 +1620,8 @@ bool pgmPoolIsDirtyPage(PVM pVM, RTGCPHYS GCPhys)
     Assert(PGMIsLocked(pVM));
     if (!pPool->cDirtyPages)
         return false;
+
+    GCPhys = GCPhys & ~(RTGCPHYS)(PAGE_SIZE - 1);
 
     for (unsigned i = 0; i < RT_ELEMENTS(pPool->aIdxDirtyPages); i++)
     {
