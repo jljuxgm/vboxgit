@@ -1,4 +1,4 @@
-/* $Id: log.cpp 20859 2009-06-23 17:29:34Z vboxsync $ */
+/* $Id: log.cpp 21135 2009-07-01 16:48:21Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -574,7 +574,7 @@ RTDECL(int) RTLogDestroy(PRTLOGGER pLogger)
      * Acquire logger instance sem and disable all logging. (paranoia)
      */
     rc = rtlogLock(pLogger);
-    AssertRCReturn(rc, rc);
+    AssertMsgReturn(RT_SUCCESS(rc) || rc == VERR_PREEMPT_DISABLED, ("%Rrc\n", rc), rc);
 
     pLogger->fFlags |= RTLOGFLAGS_DISABLED;
     iGroup = pLogger->cGroups;
@@ -584,7 +584,7 @@ RTDECL(int) RTLogDestroy(PRTLOGGER pLogger)
     /*
      * Flush it.
      */
-    RTLogFlush(pLogger);
+    rtlogFlush(pLogger);
 
     /*
      * Close output stuffs.
