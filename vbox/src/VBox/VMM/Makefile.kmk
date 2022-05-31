@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22823 2009-09-07 19:52:08Z vboxsync $
+# $Id: Makefile.kmk 22906 2009-09-10 11:19:27Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -513,6 +513,10 @@ ifneq ($(filter pe lx,$(VBOX_LDR_FMT)),)
  	$(PATH_LIB)/SUPR0$(VBOX_SUFF_LIB)
 endif
 
+#
+# For vmmGetSvnRev.
+#
+VMMAll/VMMAll.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
 
 include	$(KBUILD_PATH)/subfooter.kmk
 
