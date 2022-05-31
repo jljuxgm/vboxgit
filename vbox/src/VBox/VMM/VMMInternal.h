@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 19529 2009-05-08 14:37:30Z vboxsync $ */
+/* $Id: VMMInternal.h 19575 2009-05-11 12:42:46Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -156,6 +156,10 @@ typedef struct VMMR0JMPBUF
     RTHCUINTREG                 SpCheck;
     /** The esp we should resume execution with after the restore. */
     RTHCUINTREG                 SpResume;
+    /** ESP/RSP at the time of the jump to ring 3. */
+    RTHCUINTREG                 SavedEsp;
+    /** EBP/RBP at the time of the jump to ring 3. */
+    RTHCUINTREG                 SavedEbp;
 } VMMR0JMPBUF;
 /** Pointer to a ring-0 jump buffer. */
 typedef VMMR0JMPBUF *PVMMR0JMPBUF;

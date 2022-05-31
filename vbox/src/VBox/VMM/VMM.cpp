@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 19539 2009-05-08 18:27:38Z vboxsync $ */
+/* $Id: VMM.cpp 19575 2009-05-11 12:42:46Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1277,6 +1277,31 @@ VMMR3DECL(int) VMMR3AtomicExecuteHandler(PVM pVM, PFNATOMICHANDLER pfnHandler, v
     rc = pfnHandler(pVM, pvUser);
     RTCritSectLeave(&pVM->vmm.s.CritSectSync);
     return rc;
+}
+
+
+/**
+ * Read from the ring 0 jump buffer stack
+ *
+ * @returns VBox status code.
+ *
+ * @param   pVM             Pointer to the shared VM structure.
+ * @param   idCpu           The ID of the source CPU context (for the address).
+ * @param   pAddress        Where to start reading.
+ * @param   pvBuf           Where to store the data we've read.
+ * @param   cbRead          The number of bytes to read.
+ */
+VMMR3DECL(int) VMMR3ReadR0Stack(PVM pVM, VMCPUID idCpu, RTHCUINTPTR pAddress, void *pvBuf, size_t cbRead)
+{
+    PVMCPU  pVCpu   = VMMGetCpuById(pVM, idCpu);
+    AssertReturn(pVCpu, VERR_INVALID_PARAMETER);
+
+    RTHCUINTPTR offset = pAddress - pVCpu->vmm.s.CallHostR0JmpBuf.SpCheck;
+    if (offset >= pVCpu->vmm.s.CallHostR0JmpBuf.cbSavedStack)
+        return VERR_INVALID_POINTER;
+
+    memcpy(pvBuf, pVCpu->vmm.s.pbEMTStackR3 + offset, cbRead);
+    return VINF_SUCCESS;
 }
 
 

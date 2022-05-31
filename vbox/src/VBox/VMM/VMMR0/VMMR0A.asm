@@ -1,4 +1,4 @@
-; $Id: VMMR0A.asm 18849 2009-04-08 16:34:39Z vboxsync $
+; $Id: VMMR0A.asm 19575 2009-05-11 12:42:46Z vboxsync $
 ;; @file
 ; VMM - R0 assembly routines.
 ;
@@ -407,6 +407,12 @@ BEGINPROC vmmR0CallHostLongJmp
     rep movsd
 %endif ; !VMM_R0_SWITCH_STACK
 
+    ; Save ESP & EBP to enable stack dumps
+    mov     ecx, ebp
+    mov     [edx + VMMR0JMPBUF.SavedEbp], ecx
+    sub     ecx, 4
+    mov     [edx + VMMR0JMPBUF.SavedEsp], ecx
+
     ; store the last pieces of info.
     mov     ecx, [edx + VMMR0JMPBUF.esp]
     mov     [edx + VMMR0JMPBUF.SpCheck], ecx
@@ -504,6 +510,12 @@ BEGINPROC vmmR0CallHostLongJmp
     rep movsq
 
  %endif ; !VMM_R0_SWITCH_STACK
+
+    ; Save RSP & RBP to enable stack dumps
+    mov     rcx, rbp
+    mov     [rdx + VMMR0JMPBUF.SavedEbp], rcx
+    sub     rcx, 8
+    mov     [rdx + VMMR0JMPBUF.SavedEsp], rcx
 
     ; store the last pieces of info.
     mov     rcx, [rdx + VMMR0JMPBUF.rsp]
