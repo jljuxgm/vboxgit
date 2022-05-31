@@ -1,4 +1,4 @@
-/* $Id: SSM-new.cpp 21932 2009-08-02 17:39:04Z vboxsync $ */
+/* $Id: SSM-new.cpp 21935 2009-08-02 18:21:53Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -2880,7 +2880,9 @@ VMMR3DECL(int) SSMR3Save(PVM pVM, const char *pszFilename, SSMAFTER enmAfter, PF
         {
             if (pfnProgress)
                 pfnProgress(pVM, 100, pvUser);
-            Log(("SSM: Successfully saved the vm state to '%s'.\n", pszFilename));
+            LogRel(("SSM: Successfully saved the VM state to '%s'\n"
+                    "SSM: Footer at %#llx (%lld), %u directory entries.\n",
+                    pszFilename, u.Footer.offStream, u.Footer.offStream, u.Footer.cDirEntries));
             return VINF_SUCCESS;
         }
     }

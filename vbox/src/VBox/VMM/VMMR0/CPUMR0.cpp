@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 21562 2009-07-14 08:24:42Z vboxsync $ */
+/* $Id: CPUMR0.cpp 21937 2009-08-03 08:50:47Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -85,9 +85,7 @@ VMMR0DECL(int) CPUMR0Init(PVM pVM)
             uint32_t u32 = ASMRdMsr_Low(MSR_IA32_SYSENTER_CS);
             if (u32)
             {
-                for (unsigned i=0;i<pVM->cCPUs;i++)
-                    pVM->aCpus[i].cpum.s.fUseFlags |= CPUM_USE_SYSENTER;
-
+                pVM->cpum.s.fHostUseFlags |= CPUM_USE_SYSENTER;
                 Log(("CPUMR0Init: host uses sysenter cs=%08x%08x\n", ASMRdMsr_High(MSR_IA32_SYSENTER_CS), u32));
             }
         }
