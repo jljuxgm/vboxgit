@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 23121 2009-09-18 11:12:52Z vboxsync $ */
+/* $Id: PGMInternal.h 23210 2009-09-22 11:11:36Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -68,8 +68,10 @@
 /**
  * Optimization for PAE page tables that are modified often
  */
+#if 0 /* disabled again while debugging */
 #ifndef IN_RC
 # define PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
+#endif
 #endif
 
 /**
