@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.cpp 21896 2009-07-30 15:05:50Z vboxsync $ */
+/* $Id: DVDDriveImpl.cpp 21945 2009-08-03 15:26:14Z vboxsync $ */
 
 /** @file
  *
@@ -485,7 +485,7 @@ HRESULT DVDDrive::loadSettings (const settings::Key &aMachineNode)
             /* dvd drive mapping was not found anymore - can
                happen when disabling/hiding the drive created by
                a daemon tools-like program */
-            ComAssertMsgFailedRet(("DVD drive %s does not exist!\n", src), E_FAIL);
+            ComAssertMsgFailedRet(("DVD drive %s does not exist!\n", src.raw()), E_FAIL);
         }
         else
             AssertComRC (rc);
