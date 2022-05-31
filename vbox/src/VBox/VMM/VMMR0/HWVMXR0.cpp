@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 21567 2009-07-14 10:08:27Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 21574 2009-07-14 11:17:28Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3888,7 +3888,7 @@ static void vmxR0FlushVPID(PVM pVM, PVMCPU pVCpu, VMX_FLUSH enmFlush, RTGCPTR GC
     if (   CPUMIsGuestInLongMode(pVCpu)
         && !VMX_IS_64BIT_HOST_MODE())
     {
-        pVCpu->hwaccm.s.fForceTLBFlush = true;
+        VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
     }
     else
 #endif

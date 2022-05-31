@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21568 2009-07-14 10:12:14Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21574 2009-07-14 11:17:28Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2800,7 +2800,7 @@ VMMR0DECL(int) SVMR0InvalidatePhysPage(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys)
 {
     Assert(pVM->hwaccm.s.fNestedPaging);
     /* invlpga only invalidates TLB entries for guest virtual addresses; we have no choice but to force a TLB flush here. */
-    VMCPU_FF_ISSET(pVCpu, VMCPU_FF_TLB_FLUSH);
+    VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
     STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatFlushTLBInvlpga);
     return VINF_SUCCESS;
 }
