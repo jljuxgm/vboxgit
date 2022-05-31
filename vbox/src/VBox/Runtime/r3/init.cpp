@@ -1,4 +1,4 @@
-/* $Id: init.cpp 18095 2009-03-19 16:24:23Z vboxsync $ */
+/* $Id: init.cpp 18196 2009-03-24 15:19:20Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -216,7 +216,14 @@ static int rtR3Init(bool fInitSUPLib, const char *pszProgramPath)
          * Init GIP first.
          * (The more time for updates before real use, the better.)
          */
-        SUPR3Init(NULL);
+        rc = SUPR3Init(NULL);
+        if (RT_FAILURE(rc))
+        {
+            AssertMsgFailed(("Failed to initializeble the support library, rc=%Rrc!\n", rc));
+            ASMAtomicWriteBool(&g_fInitializing, false);
+            ASMAtomicDecS32(&g_cUsers);
+            return rc;
+        }
     }
 #endif
 
