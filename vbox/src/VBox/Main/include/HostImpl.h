@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 23257 2009-09-23 13:30:15Z vboxsync $ */
+/* $Id: HostImpl.h 23259 2009-09-23 13:37:22Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -30,6 +30,7 @@ class VirtualBox;
 class SessionMachine;
 class Progress;
 class PerformanceCollector;
+class Medium;
 
 namespace settings
 {
@@ -120,12 +121,12 @@ public:
 private:
 
 #if (defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)) && defined(VBOX_USE_LIBHAL)
-    bool getDVDInfoFromHal(std::list <ComObjPtr<Medium> > &list);
-    bool getFloppyInfoFromHal(std::list <ComObjPtr<Medium> > &list);
+    bool getDVDInfoFromHal(std::list< ComObjPtr<Medium> > &list);
+    bool getFloppyInfoFromHal(std::list< ComObjPtr<Medium> > &list);
 #endif
 
 #if defined(RT_OS_SOLARIS)
-    void parseMountTable(char *mountTable, std::list <ComObjPtr<Medium> > &list);
+    void parseMountTable(char *mountTable, std::list< ComObjPtr<Medium> > &list);
     bool validateDevice(const char *deviceNode, bool isCDROM);
 #endif
 
