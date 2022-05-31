@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 19503 2009-05-07 19:37:11Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 19516 2009-05-08 09:17:47Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2053,8 +2053,8 @@ void pgmPoolClearAll(PVM pVM)
     paPhysExts[cMaxPhysExts - 1].iNext = NIL_PGMPOOL_PHYSEXT_INDEX;
 #endif
 
-
     pPool->cPresent = 0;
+    PGM_INVL_GUEST_TLBS();
     STAM_PROFILE_STOP(&pPool->StatClearAll, c);
 }
 #endif /* IN_RING3 */
