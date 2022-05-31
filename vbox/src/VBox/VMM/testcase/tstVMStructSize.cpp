@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 19366 2009-05-05 11:58:07Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 19405 2009-05-05 23:28:47Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -298,6 +298,13 @@ int main()
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, vmx.proc_ctls, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, Event.intInfo, 8);
 
+    /* Make sure the set is large enough and has the correct size. */
+    CHECK_SIZE(VMCPUSET, 32);
+    if (sizeof(VMCPUSET) * 8 < VMM_MAX_CPU_COUNT)
+    {
+        printf("error: VMCPUSET is too small for VMM_MAX_CPU_COUNT=%u!\n", VMM_MAX_CPU_COUNT);
+        rc++;
+    }
 
     /*
      * Compare HC and GC.
