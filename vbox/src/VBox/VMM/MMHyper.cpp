@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 19663 2009-05-13 15:06:00Z vboxsync $ */
+/* $Id: MMHyper.cpp 19666 2009-05-13 15:31:31Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -337,6 +337,20 @@ static DECLCALLBACK(bool) mmR3HyperRelocateCallback(PVM pVM, RTGCPTR GCPtrOld, R
     return false;
 }
 
+/**
+ * Service a VMMCALLHOST_MMHYPER_LOCK call.
+ *
+ * @returns VBox status code.
+ * @param   pVM     The VM handle.
+ */
+VMMR3DECL(int) MMR3LockCall(PVM pVM)
+{
+    PMMHYPERHEAP pHeap = pVM->mm.s.CTX_SUFF(pHyperHeap);
+
+    int rc = PDMR3CritSectEnterEx(&pHeap->Lock, true /* fHostCall */);
+    AssertRC(rc);
+    return rc;
+}
 
 /**
  * Maps contiguous HC physical memory into the hypervisor region in the GC.
