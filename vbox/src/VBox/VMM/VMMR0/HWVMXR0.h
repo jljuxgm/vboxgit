@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 15605 2008-12-16 19:54:21Z vboxsync $ */
+/* $Id: HWVMXR0.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -31,7 +31,7 @@
 #include <VBox/pgm.h>
 #include <VBox/hwacc_vmx.h>
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 /** @defgroup grp_vmx_int   Internal
  * @ingroup grp_vmx
@@ -367,7 +367,7 @@ DECLASM(int) VMXR0SwitcherStartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVMCSCACHE 
 
 /** @} */
 
-__END_DECLS
+RT_END_DECLS
 
 #endif
 

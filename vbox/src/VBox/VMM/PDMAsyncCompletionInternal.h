@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 20204 2009-06-03 06:23:13Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -28,7 +28,7 @@
 #include <VBox/cfgm.h>
 #include <VBox/pdmasynccompletion.h>
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 /**
  * Supported endpoint classes.
@@ -251,7 +251,7 @@ typedef struct PDMASYNCCOMPLETIONTASK
  */
 void pdmR3AsyncCompletionCompleteTask(PPDMASYNCCOMPLETIONTASK pTask);
 
-__END_DECLS
+RT_END_DECLS
 
 extern const PDMASYNCCOMPLETIONEPCLASSOPS g_PDMAsyncCompletionEndpointClassFile;
 

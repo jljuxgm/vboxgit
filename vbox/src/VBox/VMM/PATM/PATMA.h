@@ -1,4 +1,4 @@
-/* $Id: PATMA.h 11920 2008-09-01 13:44:18Z vboxsync $ */
+/* $Id: PATMA.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * PATM macros & definitions (identical to PATMA.mac!!)
  */
@@ -138,7 +138,7 @@ typedef struct
 } PATCHJUMPTABLE, *PPATCHJUMPTABLE;
 
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 extern PATCHASMRECORD PATMCliRecord;
 extern PATCHASMRECORD PATMStiRecord;
@@ -186,6 +186,6 @@ extern PATCHASMRECORD PATMMovFromSSRecord;
 
 extern uint32_t       PATMInterruptFlag;
 
-__END_DECLS
+RT_END_DECLS
 
 #endif

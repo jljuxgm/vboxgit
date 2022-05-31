@@ -1,4 +1,4 @@
-/* $Id: STAMInternal.h 12989 2008-10-06 02:15:39Z vboxsync $ */
+/* $Id: STAMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * STAM Internal Header.
  */
@@ -30,7 +30,7 @@
 
 
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 /** @defgroup grp_stam_int   Internals
  * @ingroup grp_stam
@@ -122,6 +122,6 @@ typedef STAMUSERPERVM *PSTAMUSERPERVM;
 
 /** @} */
 
-__END_DECLS
+RT_END_DECLS
 
 #endif

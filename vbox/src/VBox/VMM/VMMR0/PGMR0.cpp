@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 19381 2009-05-05 14:44:43Z vboxsync $ */
+/* $Id: PGMR0.cpp 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -30,7 +30,7 @@
 #include <VBox/err.h>
 #include <iprt/assert.h>
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 #define PGM_BTH_NAME(name)          PGM_BTH_NAME_32BIT_PROT(name)
 #include "PGMR0Bth.h"
 #undef PGM_BTH_NAME
@@ -47,7 +47,7 @@ __BEGIN_DECLS
 #include "PGMR0Bth.h"
 #undef PGM_BTH_NAME
 
-__END_DECLS
+RT_END_DECLS
 
 
 /**

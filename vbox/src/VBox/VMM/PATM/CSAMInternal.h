@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 13832 2008-11-05 02:01:12Z vboxsync $ */
+/* $Id: CSAMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -278,8 +278,8 @@ inline RTRCPTR CSAMResolveBranch(PDISCPUSTATE pCpu, RTRCPTR pBranchInstrGC)
 #endif
 }
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 VMMRCDECL(int) CSAMGCCodePageWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
-__END_DECLS
+RT_END_DECLS
 
 #endif

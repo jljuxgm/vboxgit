@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 19732 2009-05-15 12:29:52Z vboxsync $ */
+/* $Id: VMMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -428,7 +428,7 @@ typedef enum VMMGCOPERATION
 } VMMGCOPERATION;
 
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 #ifdef IN_RING3
 int  vmmR3SwitcherInit(PVM pVM);
@@ -551,7 +551,7 @@ DECLASM(int)    vmmGCTestTrap0e_ResumeEIP(void); /**< a label */
 
 #endif /* IN_RC */
 
-__END_DECLS
+RT_END_DECLS
 
 /** @} */
 

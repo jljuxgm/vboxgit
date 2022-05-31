@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 19665 2009-05-13 15:17:32Z vboxsync $ */
+/* $Id: MMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -769,7 +769,7 @@ typedef struct MMUSERPERVM
 typedef MMUSERPERVM *PMMUSERPERVM;
 
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 
 int  mmR3UpdateReservation(PVM pVM);
@@ -814,7 +814,7 @@ RTHCPHYS mmPagePoolPtr2Phys(PMMPAGEPOOL pPool, void *pv);
  */
 void *mmPagePoolPhys2Ptr(PMMPAGEPOOL pPool, RTHCPHYS HCPhys);
 
-__END_DECLS
+RT_END_DECLS
 
 /** @} */
 

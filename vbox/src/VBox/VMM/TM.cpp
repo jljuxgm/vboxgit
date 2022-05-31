@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 20121 2009-05-28 14:00:29Z vboxsync $ */
+/* $Id: TM.cpp 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -1781,10 +1781,10 @@ VMMR3DECL(void) TMR3TimerQueuesDo(PVM pVM)
     STAM_PROFILE_STOP(&pVM->tm.s.StatDoQueues, a);
 }
 
-//__BEGIN_DECLS
+//RT_BEGIN_DECLS
 //int     iomLock(PVM pVM);
 //void    iomUnlock(PVM pVM);
-//__END_DECLS
+//RT_END_DECLS
 
 
 /**

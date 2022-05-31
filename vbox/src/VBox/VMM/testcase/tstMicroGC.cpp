@@ -1,4 +1,4 @@
-/* $Id: tstMicroGC.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstMicroGC.cpp 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations - GC Code (hacks).
  */
@@ -37,9 +37,9 @@
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 DECLEXPORT(int) tstMicroGC(PTSTMICRO pTst, unsigned uTestcase);
-__END_DECLS
+RT_END_DECLS
 
 
 /**

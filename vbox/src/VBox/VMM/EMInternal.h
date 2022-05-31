@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 19870 2009-05-20 14:31:01Z vboxsync $ */
+/* $Id: EMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -32,7 +32,7 @@
 #include <iprt/avl.h>
 #include <setjmp.h>
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 
 /** @defgroup grp_em_int       Internal
@@ -395,7 +395,7 @@ typedef EMCPU *PEMCPU;
 
 /** @} */
 
-__END_DECLS
+RT_END_DECLS
 
 #endif
 

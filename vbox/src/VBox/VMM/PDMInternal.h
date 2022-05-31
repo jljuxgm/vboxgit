@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 20167 2009-06-01 20:25:54Z vboxsync $ */
+/* $Id: PDMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -34,7 +34,7 @@
 # include <iprt/thread.h>
 #endif
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 
 /** @defgroup grp_pdm_int       Internal
@@ -289,9 +289,9 @@ typedef struct PDMTHREADINT
 #ifdef ___VBox_pdm_h
 # error "Invalid header PDM order. Include PDMInternal.h before VBox/pdm.h!"
 #endif
-__END_DECLS
+RT_END_DECLS
 #include <VBox/pdm.h>
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 /**
  * PDM Logical Unit.
@@ -1041,6 +1041,6 @@ void        pdmUnlock(PVM pVM);
 
 /** @} */
 
-__END_DECLS
+RT_END_DECLS
 
 #endif

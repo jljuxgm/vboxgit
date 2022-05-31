@@ -1,4 +1,4 @@
-/* $Id: SSMInternal.h 13597 2008-10-27 18:57:03Z vboxsync $ */
+/* $Id: SSMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * SSM - Internal header file.
  */
@@ -26,7 +26,7 @@
 #include <VBox/types.h>
 #include <VBox/ssm.h>
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 /** @defgroup grp_ssm_int       Internals
  * @ingroup grp_ssm
@@ -178,7 +178,7 @@ typedef SSM *PSSM;
 
 /** @} */
 
-__END_DECLS
+RT_END_DECLS
 
 #endif /* !___SSMInternal_h */
 

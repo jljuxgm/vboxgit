@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 19286 2009-05-01 12:41:07Z vboxsync $ */
+/* $Id: TRPMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -35,7 +35,7 @@
 /** First interrupt handler. Used for validating input. */
 #define TRPM_HANDLER_INT_BASE  0x20
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 
 /** @defgroup grp_trpm_int   Internals
@@ -286,6 +286,6 @@ DECLASM(void) trpmR0DispatchHostInterruptSimple(RTUINT uActiveVector);
 
 /** @} */
 
-__END_DECLS
+RT_END_DECLS
 
 #endif

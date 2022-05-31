@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 20151 2009-05-29 12:40:31Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -45,7 +45,7 @@
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 static void pgmPoolFlushAllInt(PPGMPOOL pPool);
 #ifdef PGMPOOL_WITH_USER_TRACKING
 DECLINLINE(unsigned) pgmPoolTrackGetShadowEntrySize(PGMPOOLKIND enmKind);
@@ -75,7 +75,7 @@ PPGMPOOLPHYSEXT pgmPoolTrackPhysExtAlloc(PVM pVM, uint16_t *piPhysExt);
 void            pgmPoolTrackPhysExtFree(PVM pVM, uint16_t iPhysExt);
 void            pgmPoolTrackPhysExtFreeList(PVM pVM, uint16_t iPhysExt);
 
-__END_DECLS
+RT_END_DECLS
 
 
 /**

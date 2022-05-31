@@ -1,4 +1,4 @@
-/* $Id: CPUMGC.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: CPUMGC.cpp 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * CPUM - Guest Context Code.
  */
@@ -37,9 +37,9 @@
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-__BEGIN_DECLS /* addressed from asm (not called so no DECLASM). */
+RT_BEGIN_DECLS /* addressed from asm (not called so no DECLASM). */
 DECLCALLBACK(int) cpumGCHandleNPAndGP(PVM pVM, PCPUMCTXCORE pRegFrame, uintptr_t uUser);
-__END_DECLS
+RT_END_DECLS
 
 
 /**

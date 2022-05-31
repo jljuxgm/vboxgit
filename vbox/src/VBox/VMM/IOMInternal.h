@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 19716 2009-05-15 09:00:17Z vboxsync $ */
+/* $Id: IOMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -401,7 +401,7 @@ typedef struct IOM
 typedef IOM *PIOM;
 
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 #ifdef IN_RING3
 PIOMIOPORTSTATS iomR3IOPortStatsCreate(PVM pVM, RTIOPORT Port, const char *pszDesc);
@@ -534,7 +534,7 @@ void    iomUnlock(PVM pVM);
 bool    iomGetRegImmData(PDISCPUSTATE pCpu, PCOP_PARAMETER pParam, PCPUMCTXCORE pRegFrame, uint64_t *pu64Data, unsigned *pcbSize);
 bool    iomSaveDataToReg(PDISCPUSTATE pCpu, PCOP_PARAMETER pParam, PCPUMCTXCORE pRegFrame, uint64_t u32Data);
 
-__END_DECLS
+RT_END_DECLS
 
 
 #ifdef IN_RING3
