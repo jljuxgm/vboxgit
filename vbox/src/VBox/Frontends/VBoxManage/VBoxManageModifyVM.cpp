@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 23873 2009-10-19 15:10:16Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 23928 2009-10-21 10:17:08Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1011,11 +1011,7 @@ int handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_DVDPASSTHROUGH: // deprecated
             {
-                ComPtr<IMediumAttachment> dvdAttachment;
-                machine->GetMediumAttachment(Bstr("IDE Controller"), 1, 0, dvdAttachment.asOutParam());
-                ASSERT(dvdAttachment);
-
-                CHECK_ERROR (dvdAttachment, COMSETTER(Passthrough)(!strcmp(ValueUnion.psz, "on")));
+                CHECK_ERROR (machine, PassthroughDevice(Bstr("IDE Controller"), 1, 0, !strcmp(ValueUnion.psz, "on")));
                 break;
             }
 

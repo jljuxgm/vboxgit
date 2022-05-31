@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 23902 2009-10-20 14:32:19Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 23928 2009-10-21 10:17:08Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -458,11 +458,11 @@ int handleStorageAttach(HandlerArg *a)
         {
             if (!RTStrICmp(pszPassThrough, "on"))
             {
-                CHECK_ERROR (mattach, COMSETTER(Passthrough)(true));
+                CHECK_ERROR (machine, PassthroughDevice(Bstr(pszCtl), port, device, TRUE));
             }
             else if (!RTStrICmp(pszPassThrough, "off"))
             {
-                CHECK_ERROR (mattach, COMSETTER(Passthrough)(false));
+                CHECK_ERROR (machine, PassthroughDevice(Bstr(pszCtl), port, device, FALSE));
             }
             else
             {

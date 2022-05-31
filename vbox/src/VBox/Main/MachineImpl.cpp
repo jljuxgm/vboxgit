@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23921 2009-10-20 18:11:29Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23928 2009-10-21 10:17:08Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2517,6 +2517,52 @@ STDMETHODIMP Machine::DetachDevice(IN_BSTR aControllerName, LONG aControllerPort
      * a copy of the list and make this copy active, but the iterator
      * still refers to the original and is not valid for the copy */
     mMediaData->mAttachments.remove(pAttach);
+
+    return S_OK;
+}
+
+STDMETHODIMP Machine::PassthroughDevice(IN_BSTR aControllerName, LONG aControllerPort,
+                                        LONG aDevice, BOOL aPassthrough)
+{
+    CheckComArgNotNull(aControllerName);
+
+    LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%ld aDevice=%ld aPassthrough=%d\n",
+                     aControllerName, aControllerPort, aDevice, aPassthrough));
+
+    AutoCaller autoCaller(this);
+    CheckComRCReturnRC(autoCaller.rc());
+
+    AutoWriteLock alock(this);
+
+    HRESULT rc = checkStateDependency(MutableStateDep);
+    CheckComRCReturnRC(rc);
+
+    AssertReturn(mData->mMachineState != MachineState_Saved, E_FAIL);
+
+    if (Global::IsOnlineOrTransient(mData->mMachineState))
+        return setError(VBOX_E_INVALID_VM_STATE,
+                        tr("Invalid machine state: %s"),
+                        Global::stringifyMachineState(mData->mMachineState));
+
+    MediumAttachment *pAttach = findAttachment(mMediaData->mAttachments,
+                                               aControllerName,
+                                               aControllerPort,
+                                               aDevice);
+    if (!pAttach)
+        return setError(VBOX_E_OBJECT_NOT_FOUND,
+                        tr("No storage device attached to device slot %d on port %d of controller '%ls'"),
+                        aDevice, aControllerPort, aControllerName);
+
+
+    mMediaData.backup();
+
+    AutoWriteLock attLock(pAttach);
+
+    if (pAttach->type() != DeviceType_DVD)
+        return setError(E_INVALIDARG,
+                        tr("Setting passthrough rejected as the device attached to device slot %d on port %d of controller '%ls' is not a DVD"),
+                        aDevice, aControllerPort, aControllerName);
+    pAttach->updatePassthrough(aPassthrough);
 
     return S_OK;
 }
