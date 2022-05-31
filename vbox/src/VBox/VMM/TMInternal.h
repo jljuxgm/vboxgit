@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: TMInternal.h 20678 2009-06-18 09:22:30Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -506,6 +506,9 @@ typedef struct TM
     STAMPROFILE                 StatVirtualSyncFF;
     /** The timer callback. */
     STAMCOUNTER                 StatTimerCallbackSetFF;
+
+    /** Calls to TMCpuTickSet. */
+    STAMCOUNTER                 StatTSCSet;
 
     /** @name Reasons for refusing TSC offsetting in TMCpuTickCanUseRealTSC.
      * @{ */
