@@ -1,4 +1,4 @@
-# $Id: Config.kmk 19554 2009-05-08 22:10:24Z vboxsync $
+# $Id: Config.kmk 19556 2009-05-08 23:12:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1789,8 +1789,10 @@ VBOXLNX32GUEST_SUFF_LIB = .a
 SDK_VBOX_LIBXML2          = .
 #if1of ($(KBUILD_TARGET),win os2 solaris)
  SDK_VBOX_LIBXML2_INCS   ?= $(PATH_ROOT)/src/libs/libxml2-2.6.30/include
- ifndef VBOX_WITH_LIBXML2_IN_VBOXRT
-  SDK_VBOX_LIBXML2_DEFS  ?= LIBXML_STATIC
+ ifdef VBOX_WITH_LIBXML2_IN_VBOXRT
+  SDK_VBOX_LIBXML2_DEFS  ?= _REENTRANT
+ else
+  SDK_VBOX_LIBXML2_DEFS  ?= LIBXML_STATIC _REENTRANT
   SDK_VBOX_LIBXML2_LIBS  ?= $(PATH_LIB)/VBox-libxml2$(VBOX_SUFF_LIB)
  endif
  SDK_VBOX_LIBXML2_DEFS.win += WIN32 _WINDOWS _MBCS
@@ -3767,7 +3769,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 19554 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 19556 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
