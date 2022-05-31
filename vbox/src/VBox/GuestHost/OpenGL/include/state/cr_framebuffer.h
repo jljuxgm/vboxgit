@@ -1,4 +1,4 @@
-/* $Id: cr_framebuffer.h 22363 2009-08-20 09:46:01Z vboxsync $ */
+/* $Id: cr_framebuffer.h 23094 2009-09-17 13:48:46Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: FBO related state info
@@ -43,7 +43,7 @@ typedef struct {
 } CRFBOAttachmentPoint;
 
 typedef struct {
-    GLuint                  id;
+    GLuint                  id, hwid;
     CRFBOAttachmentPoint    color[CR_MAX_COLOR_ATTACHMENTS];
     CRFBOAttachmentPoint    depth;
     CRFBOAttachmentPoint    stencil;
@@ -53,7 +53,7 @@ typedef struct {
 } CRFramebufferObject;
 
 typedef struct {
-    GLuint   id;
+    GLuint   id, hwid;
     GLsizei  width, height;
     GLenum   internalformat;
     GLuint   redBits, greenBits, blueBits, alphaBits, depthBits, stencilBits;
@@ -64,11 +64,16 @@ typedef struct {
     CRRenderbufferObject    *renderbuffer;
     CRHashTable             *framebuffers;
     CRHashTable             *renderbuffers;
+
+    /* Indicates that we have to resend FBO data to GPU on first glMakeCurrent call with owning context */
+    GLboolean   bResyncNeeded;
 } CRFramebufferObjectState;
 
 DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectInit(CRContext *ctx);
 DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectDestroy(CRContext *ctx);
 DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectSwitch(CRContext *from, CRContext *to);
+DECLEXPORT(GLuint) STATE_APIENTRY crStateGetFramebufferHWID(GLuint id);
+DECLEXPORT(GLuint) STATE_APIENTRY crStateGetRenderbufferHWID(GLuint id);
 
 DECLEXPORT(void) STATE_APIENTRY crStateBindRenderbufferEXT(GLenum target, GLuint renderbuffer);
 DECLEXPORT(void) STATE_APIENTRY crStateDeleteRenderbuffersEXT(GLsizei n, const GLuint *renderbuffers);
