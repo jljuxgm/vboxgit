@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23363 2009-09-28 09:45:33Z vboxsync $
+# $Id: Makefile.kmk 23421 2009-09-29 20:40:55Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -160,6 +160,8 @@ lnx_add_inst-bin_INST = obj/Additions/Installer/linux
 lnx_add_inst-bin_MODE = a+rx,u+w
 lnx_add_inst-bin_SOURCES = \
 	../../Installer/linux/routines.sh \
+	../x11/Installer/x11config.pl \
+	../x11/Installer/x11config15.pl \
 	selinux-fedora/vbox_x11.pp
 
 
