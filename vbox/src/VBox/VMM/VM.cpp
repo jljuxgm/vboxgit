@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 20198 2009-06-02 14:45:01Z vboxsync $ */
+/* $Id: VM.cpp 20199 2009-06-02 14:51:46Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2208,7 +2208,10 @@ static DECLCALLBACK(int) vmR3Reset(PVM pVM)
     VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_ALL_MASK & ~VMCPU_FF_REQUEST);
 
     if (pVCpu->idCpu != 0)
+    {
+        CPUMR3ResetCpu(pVCpu);
         return VINF_EM_RESET;
+    }
 
     /*
      * As a safety precaution we temporarily change the state while resetting.
