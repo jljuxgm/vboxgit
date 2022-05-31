@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 23517 2009-10-02 13:50:37Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 23553 2009-10-05 11:38:47Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -189,6 +189,7 @@ VMMR0DECL(int) SVMR0InitVM(PVM pVM)
 
         pVCpu->hwaccm.s.svm.pVMCBHost     = RTR0MemObjAddress(pVCpu->hwaccm.s.svm.pMemObjVMCBHost);
         pVCpu->hwaccm.s.svm.pVMCBHostPhys = RTR0MemObjGetPagePhysAddr(pVCpu->hwaccm.s.svm.pMemObjVMCBHost, 0);
+        Assert(pVCpu->hwaccm.s.svm.pVMCBHostPhys < _4G);
         ASMMemZeroPage(pVCpu->hwaccm.s.svm.pVMCBHost);
 
         /* Allocate one page for the VM control block (VMCB). */
@@ -198,6 +199,7 @@ VMMR0DECL(int) SVMR0InitVM(PVM pVM)
 
         pVCpu->hwaccm.s.svm.pVMCB     = RTR0MemObjAddress(pVCpu->hwaccm.s.svm.pMemObjVMCB);
         pVCpu->hwaccm.s.svm.pVMCBPhys = RTR0MemObjGetPagePhysAddr(pVCpu->hwaccm.s.svm.pMemObjVMCB, 0);
+        Assert(pVCpu->hwaccm.s.svm.pVMCBPhys < _4G);
         ASMMemZeroPage(pVCpu->hwaccm.s.svm.pVMCB);
 
         /* Allocate 8 KB for the MSR bitmap (doesn't seem to be a way to convince SVM not to use it) */

@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 23476 2009-10-01 12:57:36Z vboxsync $ */
+/* $Id: HWACCM.cpp 23553 2009-10-05 11:38:47Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -432,10 +432,13 @@ VMMR3DECL(int) HWACCMR3InitCPU(PVM pVM)
         PVMCPU pVCpu = &pVM->aCpus[i];
         int    rc;
 
-        rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatSpinPoke, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL, "Profiling of VMXR0RunGuestCode entry",
+        rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatPoke, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL, "Profiling of RTMpPokeCpu",
+                             "/PROF/HWACCM/CPU%d/Poke", i);
+        AssertRC(rc);
+        rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatSpinPoke, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL, "Profiling of poke wait",
                              "/PROF/HWACCM/CPU%d/PokeWait", i);
         AssertRC(rc);
-        rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatSpinPokeFailed, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL, "Profiling of VMXR0RunGuestCode entry",
+        rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatSpinPokeFailed, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL, "Profiling of poke wait when RTMpPokeCpu fails",
                              "/PROF/HWACCM/CPU%d/PokeWaitFailed", i);
         AssertRC(rc);
         rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatEntry, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL, "Profiling of VMXR0RunGuestCode entry",

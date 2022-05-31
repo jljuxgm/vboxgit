@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 23476 2009-10-01 12:57:36Z vboxsync $ */
+/* $Id: HWACCMInternal.h 23553 2009-10-05 11:38:47Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -768,6 +768,7 @@ typedef struct HWACCMCPU
 #if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
     STAMPROFILEADV          StatWorldSwitch3264;
 #endif
+    STAMPROFILEADV          StatPoke;
     STAMPROFILEADV          StatSpinPoke;
     STAMPROFILEADV          StatSpinPokeFailed;
 
