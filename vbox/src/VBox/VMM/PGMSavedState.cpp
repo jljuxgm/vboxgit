@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 23453 2009-09-30 21:55:25Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 23456 2009-09-30 23:26:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -1201,6 +1201,8 @@ static DECLCALLBACK(int) pgmR3LiveExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uPass)
      */
     if (uPass == 0)
         rc = pgmR3SaveRomVirginPages(  pVM, pSSM, true /*fLiveSave*/);
+    else
+        rc = VINF_SUCCESS;
     if (RT_SUCCESS(rc))
         rc = pgmR3SaveShadowedRomPages(pVM, pSSM, true /*fLiveSave*/, false /*fFinalPass*/);
     if (RT_SUCCESS(rc))
@@ -2136,6 +2138,8 @@ static int pgmR3LoadMemory(PVM pVM, PSSMHANDLE pSSM, uint32_t uPass)
                         else
                             pRealPage = NULL;
                         break;
+
+                    default: AssertLogRelFailedReturn(VERR_INTERNAL_ERROR); /* shut up gcc */
                 }
                 if (!pRealPage)
                 {
