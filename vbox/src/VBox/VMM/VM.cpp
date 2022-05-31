@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 23801 2009-10-15 15:00:47Z vboxsync $ */
+/* $Id: VM.cpp 23826 2009-10-16 14:59:05Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1938,6 +1938,7 @@ static DECLCALLBACK(VBOXSTRICTRC) vmR3PowerOff(PVM pVM, PVMCPU pVCpu, void *pvUs
                                  VMSTATE_POWERING_OFF,    VMSTATE_LOAD_FAILURE,
                                  VMSTATE_POWERING_OFF,    VMSTATE_GURU_MEDITATION,
                                  VMSTATE_POWERING_OFF,    VMSTATE_FATAL_ERROR,
+                                 VMSTATE_POWERING_OFF,    VMSTATE_CREATED, /** @todo update the diagram! */
                                  VMSTATE_POWERING_OFF_LS, VMSTATE_RUNNING_LS,
                                  VMSTATE_POWERING_OFF_LS, VMSTATE_DEBUGGING_LS,
                                  VMSTATE_POWERING_OFF_LS, VMSTATE_GURU_MEDITATION_LS,
