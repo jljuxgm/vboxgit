@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-darwin.cpp 19056 2009-04-21 10:16:23Z vboxsync $ */
+/* $Id: mp-r0drv-darwin.cpp 19389 2009-05-05 17:12:48Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Darwin.
  */
@@ -272,5 +272,12 @@ RTDECL(int) RTMpOnSpecific(RTCPUID idCpu, PFNRTMPWORKER pfnWorker, void *pvUser1
     return Args.cHits == 1
          ? VINF_SUCCESS
          : VERR_CPU_NOT_FOUND;
+}
+
+
+RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
+{
+    /* no unicast IPI */
+    return VERR_NOT_SUPPORTED;
 }
 
