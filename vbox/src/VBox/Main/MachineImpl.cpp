@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 21404 2009-07-08 15:19:42Z vboxsync $ */
+/* $Id: MachineImpl.cpp 21428 2009-07-09 11:11:11Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -6974,7 +6974,7 @@ HRESULT Machine::saveHardware (settings::Key &aNode)
                                                mHWData->mGuestPropertyNotificationPatterns,
                                                emptyStr);
     }
-    catch (xml::ENoMemory e)
+    catch(std::bad_alloc &e)
     {
         return E_OUTOFMEMORY;
     }
