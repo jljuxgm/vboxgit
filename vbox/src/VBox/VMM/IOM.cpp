@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 19470 2009-05-07 09:06:57Z vboxsync $ */
+/* $Id: IOM.cpp 19682 2009-05-14 10:15:44Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1640,6 +1640,18 @@ VMMR3DECL(int)  IOMR3MMIODeregister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
 
     iomR3FlushCache(pVM);
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Release the IOM lock if owned by the current VCPU
+ *
+ * @param   pVM         The VM to operate on.
+ */
+VMMR3DECL(void) IOMR3ReleaseOwnedLocks(PVM pVM)
+{
+    if (PDMCritSectIsOwner(&pVM->iom.s.EmtLock))
+        PDMCritSectLeave(&pVM->iom.s.EmtLock);
 }
 
 

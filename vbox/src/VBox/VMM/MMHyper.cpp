@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 19666 2009-05-13 15:31:31Z vboxsync $ */
+/* $Id: MMHyper.cpp 19682 2009-05-14 10:15:44Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -1087,6 +1087,19 @@ VMMR3DECL(int) MMR3HyperReadGCVirt(PVM pVM, void *pvDst, RTGCPTR GCPtr, size_t c
     if (GCPtr - pVM->mm.s.pvHyperAreaGC >= pVM->mm.s.cbHyperArea)
         return VERR_INVALID_PARAMETER;
     return PGMR3MapRead(pVM, pvDst, GCPtr, cb);
+}
+
+/**
+ * Release the MM hypervisor heap lock if owned by the current VCPU
+ *
+ * @param   pVM         The VM to operate on.
+ */
+VMMR3DECL(void) MMR3ReleaseOwnedLocks(PVM pVM)
+{
+    PMMHYPERHEAP pHeap = pVM->mm.s.CTX_SUFF(pHyperHeap);
+
+    if (PDMCritSectIsOwner(&pHeap->Lock))
+        PDMCritSectLeave(&pHeap->Lock);
 }
 
 
