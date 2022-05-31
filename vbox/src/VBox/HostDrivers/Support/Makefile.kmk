@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17854 2009-03-13 18:16:08Z vboxsync $
+# $Id: Makefile.kmk 18181 2009-03-24 13:57:17Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -167,7 +167,8 @@ VBoxDrv_INCS         := $(PATH_SUB_CURRENT)
 VBoxDrv_SOURCES       = \
 	win/SUPDrv-win.cpp \
 	win/SUPDrvA-win.asm \
-	SUPDrv.c
+	SUPDrv.c \
+	win/VBoxDrv.rc
 VBoxDrv_LDFLAGS.x86   = -Entry:DriverEntry@8
 VBoxDrv_LDFLAGS.amd64 = -Entry:DriverEntry
 VBoxDrv_LIBS          = \
