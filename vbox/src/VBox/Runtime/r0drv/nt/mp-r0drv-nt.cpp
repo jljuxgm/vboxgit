@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 23416 2009-09-29 15:50:57Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 23506 2009-10-02 11:12:21Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -356,11 +356,7 @@ int rtMpSendIpiVista(RTCPUID idCpu)
 
 int rtMpSendIpiWin7(RTCPUID idCpu)
 {
-    return VERR_NOT_IMPLEMENTED;
-    /* bsod */
-    VOID (__stdcall *pfRequestIpi)(KAFFINITY Zero, KAFFINITY TargetSet) = (VOID (__stdcall *)(KAFFINITY, KAFFINITY))g_pfnrtNtHalRequestIpi;
-
-    pfRequestIpi(0, 1 << idCpu);
+    g_pfnrtNtHalSendSoftwareInterrupt(idCpu, DISPATCH_LEVEL);
     return VINF_SUCCESS;
 }
 #endif /* IPRT_TARGET_NT4 */
