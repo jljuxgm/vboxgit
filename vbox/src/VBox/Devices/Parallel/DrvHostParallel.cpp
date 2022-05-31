@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 11286 2008-08-08 22:33:43Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 20961 2009-06-26 08:45:18Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -235,7 +235,7 @@ static DECLCALLBACK(int) drvHostParallelMonitorThread(PPDMDRVINS pDrvIns, PPDMTH
             continue;
         }
 
-        /* Interrupt occured. */
+        /* Interrupt occurred. */
         rc = pThis->pDrvHostParallelPort->pfnNotifyInterrupt(pThis->pDrvHostParallelPort);
         AssertRC(rc);
     }

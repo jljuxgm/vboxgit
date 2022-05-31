@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 20731 2009-06-19 17:24:41Z vboxsync $ */
+/* $Id: VBoxDev.cpp 20961 2009-06-26 08:45:18Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -85,7 +85,7 @@
  *
  * There is a 32 bit event mask which will be read
  * by guest on an interrupt. A non zero bit in the mask
- * means that the specific event occured and requires
+ * means that the specific event occurred and requires
  * processing on guest side.
  *
  * After reading the event mask guest must issue a

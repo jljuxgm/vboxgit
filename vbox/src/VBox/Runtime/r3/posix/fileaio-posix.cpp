@@ -1,4 +1,4 @@
-/* $Id: fileaio-posix.cpp 19562 2009-05-10 21:44:16Z vboxsync $ */
+/* $Id: fileaio-posix.cpp 20961 2009-06-26 08:45:18Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for POSIX compliant host platforms.
  */
@@ -564,7 +564,7 @@ RTDECL(int) RTFileAioCtxSubmit(RTFILEAIOCTX hAioCtx, PRTFILEAIOREQ pahReqs, size
                         }
                         else
                         {
-                            /* An error occured. */
+                            /* An error occurred. */
                             RTFILEAIOREQ_SET_STATE(pReqInt, COMPLETED);
                             pReqInt->Rc = RTErrConvertFromErrno(rcPosix);
                             pReqInt->cbTransfered = 0;
