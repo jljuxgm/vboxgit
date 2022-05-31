@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 21652 2009-07-16 14:09:40Z vboxsync $ */
+/* $Id: HWACCMInternal.h 21709 2009-07-17 16:07:35Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -405,9 +405,8 @@ typedef struct HWACCM
         bool                        fEnabled;
         /** Set if erratum 170 affects the AMD cpu. */
         bool                        fAlwaysFlushTLB;
-        /** Explicit alignment padding to make 32-bit gcc align u64RegisterMask
-         *  naturally. */
-        bool                        padding[1];
+        /** Set when TPR patching is active. */
+        bool                        fTPRPatchingActive;
 
         /** R0 memory object for the IO bitmap (12kb). */
         RTR0MEMOBJ                  pMemObjIOBitmap;
