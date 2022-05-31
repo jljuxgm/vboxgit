@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 18108 2009-03-20 11:04:44Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 18466 2009-03-28 18:54:59Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -312,13 +312,14 @@ int handleList(HandlerArg *a)
             CHECK_ERROR(a->virtualBox, COMGETTER(Host)(host.asOutParam()));
             com::SafeIfaceArray <IHostNetworkInterface> hostNetworkInterfaces;
 #if defined(VBOX_WITH_NETFLT)
-            CHECK_ERROR(host,
-                    FindHostNetworkInterfacesOfType (
-                            command == LISTBRIDGEDIFS ? HostNetworkInterfaceType_Bridged : HostNetworkInterfaceType_HostOnly,
-                            ComSafeArrayAsOutParam (hostNetworkInterfaces)));
+            if (command == LISTBRIDGEDIFS)
+                CHECK_ERROR(host, FindHostNetworkInterfacesOfType(HostNetworkInterfaceType_Bridged,
+                                                                  ComSafeArrayAsOutParam(hostNetworkInterfaces)));
+            else
+                CHECK_ERROR(host, FindHostNetworkInterfacesOfType(HostNetworkInterfaceType_HostOnly,
+                                                                  ComSafeArrayAsOutParam(hostNetworkInterfaces)));
 #else
-            CHECK_ERROR(host,
-                        COMGETTER(NetworkInterfaces) (ComSafeArrayAsOutParam (hostNetworkInterfaces)));
+            CHECK_ERROR(host, COMGETTER(NetworkInterfaces)(ComSafeArrayAsOutParam(hostNetworkInterfaces)));
 #endif
             for (size_t i = 0; i < hostNetworkInterfaces.size(); ++i)
             {
