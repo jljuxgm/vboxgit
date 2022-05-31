@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 21336 2009-07-07 14:46:38Z vboxsync $ */
+/* $Id: DevACPI.cpp 21782 2009-07-24 11:03:05Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -704,6 +704,7 @@ static void acpiSetupFADT(ACPIState *s, RTGCPHYS32 addr_acpi1, RTGCPHYS32 addr_a
     /* Now the ACPI 1.0 version. */
     fadt.header.u32Length     = ACPITBLFADT_VERSION1_SIZE;
     fadt.u8IntModel           = INT_MODEL_DUAL_PIC;
+    fadt.header.u8Checksum    = 0;  /* Must be zeroed before recalculating checksum! */
     fadt.header.u8Checksum    = acpiChecksum((uint8_t *)&fadt, ACPITBLFADT_VERSION1_SIZE);
     acpiPhyscpy(s, addr_acpi1, &fadt, ACPITBLFADT_VERSION1_SIZE);
 }
