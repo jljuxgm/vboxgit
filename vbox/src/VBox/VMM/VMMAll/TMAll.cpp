@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 19500 2009-05-07 18:23:22Z vboxsync $ */
+/* $Id: TMAll.cpp 19502 2009-05-07 18:37:09Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -879,8 +879,6 @@ VMMDECL(int) TMTimerStop(PTMTIMER pTimer)
             case TMTIMERSTATE_PENDING_SCHEDULE:
                 if (tmTimerTry(pTimer, TMTIMERSTATE_PENDING_STOP_SCHEDULE, enmState))
                 {
-                    Assert(!pTimer->offPrev);
-                    Assert(!pTimer->offNext);
                     tmSchedule(pTimer);
                     STAM_PROFILE_STOP(&pTimer->CTX_SUFF(pVM)->tm.s.CTX_SUFF_Z(StatTimerStop), a);
                     return VINF_SUCCESS;
