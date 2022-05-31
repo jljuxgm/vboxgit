@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 21585 2009-07-14 15:21:53Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 21587 2009-07-14 15:50:00Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1510,12 +1510,17 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
             val &= ~X86_CR4_PAE;
         }
 
+        /* Turn off VME if we're in emulated real mode. */
+        if (CPUMIsGuestInRealModeEx(pCtx))
+            val &= ~X86_CR4_VME;
+
         rc |= VMXWriteVMCS64(VMX_VMCS64_GUEST_CR4,            val);
         Log2(("Guest CR4 %08x\n", val));
         /* CR4 flags owned by the host; if the guests attempts to change them, then
          * the VM will exit.
          */
         val =   0
+              | X86_CR4_VME
               | X86_CR4_PAE
               | X86_CR4_PGE
               | X86_CR4_PSE
