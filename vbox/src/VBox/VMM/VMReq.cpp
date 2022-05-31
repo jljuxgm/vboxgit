@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 23010 2009-09-14 15:55:46Z vboxsync $ */
+/* $Id: VMReq.cpp 23014 2009-09-14 16:42:51Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -212,8 +212,6 @@ VMMR3DECL(int) VMR3ReqCallEx(PVM pVM, VMCPUID idDstCpu, PVMREQ *ppReq, unsigned 
  * @param   cArgs           Number of arguments following in the ellipsis.
  *                          Not possible to pass 64-bit arguments!
  * @param   ...             Function arguments.
- *
- * @remarks Use VMR3ReqCallWaitU where possible.
  */
 VMMR3DECL(int) VMR3ReqCallWait(PVM pVM, VMCPUID idDstCpu, PFNRT pfnFunction, unsigned cArgs, ...)
 {
@@ -281,8 +279,6 @@ VMMR3DECL(int) VMR3ReqCallWaitU(PUVM pUVM, VMCPUID idDstCpu, PFNRT pfnFunction, 
  * @param   cArgs           Number of arguments following in the ellipsis.
  *                          Not possible to pass 64-bit arguments!
  * @param   ...             Function arguments.
- *
- * @remarks Use VMR3ReqCallNoWaitU where possible.
  */
 VMMR3DECL(int) VMR3ReqCallNoWait(PVM pVM, VMCPUID idDstCpu, PFNRT pfnFunction, unsigned cArgs, ...)
 {
@@ -339,8 +335,6 @@ VMMR3DECL(int) VMR3ReqCallNoWaitU(PUVM pUVM, VMCPUID idDstCpu, PFNRT pfnFunction
  * @param   cArgs           Number of arguments following in the ellipsis.
  *                          Not possible to pass 64-bit arguments!
  * @param   ...             Function arguments.
- *
- * @remarks Use VMR3ReqCallVoidWaitU where possible.
  */
 VMMR3DECL(int) VMR3ReqCallVoidWait(PVM pVM, VMCPUID idDstCpu, PFNRT pfnFunction, unsigned cArgs, ...)
 {

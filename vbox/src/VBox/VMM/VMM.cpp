@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: VMM.cpp 23011 2009-09-14 15:57:38Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1290,9 +1290,7 @@ VMMR3DECL(void) VMMR3SendSipi(PVM pVM, VMCPUID idCpu,  uint32_t uVector)
 {
     AssertReturnVoid(idCpu < pVM->cCpus);
 
-    PVMREQ pReq;
-    int rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, 0, VMREQFLAGS_NO_WAIT,
-                          (PFNRT)vmmR3SendSipi, 3, pVM, idCpu, uVector);
+    int rc = VMR3ReqCallNoWaitU(pVM->pUVM, idCpu, (PFNRT)vmmR3SendSipi, 3, pVM, idCpu, uVector);
     AssertRC(rc);
 }
 
@@ -1306,9 +1304,7 @@ VMMR3DECL(void) VMMR3SendInitIpi(PVM pVM, VMCPUID idCpu)
 {
     AssertReturnVoid(idCpu < pVM->cCpus);
 
-    PVMREQ pReq;
-    int rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, 0, VMREQFLAGS_NO_WAIT,
-                          (PFNRT)vmmR3SendInitIpi, 2, pVM, idCpu);
+    int rc = VMR3ReqCallNoWaitU(pVM->pUVM, idCpu, (PFNRT)vmmR3SendInitIpi, 2, pVM, idCpu);
     AssertRC(rc);
 }
 
@@ -1386,8 +1382,7 @@ VMMR3DECL(int) VMMR3AtomicExecuteHandler(PVM pVM, PFNATOMICHANDLER pfnHandler, v
     {
         if (idCpu != pVCpu->idCpu)
         {
-            rc = VMR3ReqCallU(pVM->pUVM, idCpu, NULL, 0, VMREQFLAGS_NO_WAIT,
-                              (PFNRT)vmmR3SyncVCpu, 1, pVM);
+            rc = VMR3ReqCallNoWaitU(pVM->pUVM, idCpu, (PFNRT)vmmR3SyncVCpu, 1, pVM);
             AssertRC(rc);
         }
     }

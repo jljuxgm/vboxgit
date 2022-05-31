@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: TM.cpp 23012 2009-09-14 16:38:13Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -2522,13 +2522,7 @@ VMMR3DECL(int) TMR3NotifyResume(PVM pVM, PVMCPU pVCpu)
  */
 VMMDECL(int) TMR3SetWarpDrive(PVM pVM, uint32_t u32Percent)
 {
-    PVMREQ pReq;
-    int rc = VMR3ReqCall(pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT,
-                         (PFNRT)tmR3SetWarpDrive, 2, pVM, u32Percent);
-    if (RT_SUCCESS(rc))
-        rc = pReq->iStatus;
-    VMR3ReqFree(pReq);
-    return rc;
+    return VMR3ReqCallWait(pVM, VMCPUID_ANY, (PFNRT)tmR3SetWarpDrive, 2, pVM, u32Percent);
 }
 
 

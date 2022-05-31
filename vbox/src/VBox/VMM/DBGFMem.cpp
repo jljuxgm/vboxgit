@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: DBGFMem.cpp 23012 2009-09-14 16:38:13Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -122,15 +122,9 @@ static DECLCALLBACK(int) dbgfR3MemScan(PVM pVM, VMCPUID idCpu, PCDBGFADDRESS pAd
 VMMR3DECL(int) DBGFR3MemScan(PVM pVM, VMCPUID idCpu, PCDBGFADDRESS pAddress, RTGCUINTPTR cbRange, const uint8_t *pabNeedle, size_t cbNeedle, PDBGFADDRESS pHitAddress)
 {
     AssertReturn(idCpu < pVM->cCpus, VERR_INVALID_PARAMETER);
+    return VMR3ReqCallWait(pVM, idCpu, (PFNRT)dbgfR3MemScan, 7,
+                           pVM, idCpu, pAddress, &cbRange, pabNeedle, cbNeedle, pHitAddress);
 
-    PVMREQ pReq;
-    int rc = VMR3ReqCall(pVM, idCpu, &pReq, RT_INDEFINITE_WAIT,
-                         (PFNRT)dbgfR3MemScan, 7, pVM, idCpu, pAddress, &cbRange, pabNeedle, cbNeedle, pHitAddress);
-    if (RT_SUCCESS(rc))
-        rc = pReq->iStatus;
-    VMR3ReqFree(pReq);
-
-    return rc;
 }
 
 
@@ -212,16 +206,7 @@ VMMR3DECL(int) DBGFR3MemRead(PVM pVM, VMCPUID idCpu, PCDBGFADDRESS pAddress, voi
         AssertCompile(sizeof(RTHCUINTPTR) <= sizeof(pAddress->FlatPtr));
         return VMMR3ReadR0Stack(pVM, idCpu, (RTHCUINTPTR)pAddress->FlatPtr, pvBuf, cbRead);
     }
-    else
-    {
-        PVMREQ pReq;
-        int rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, RT_INDEFINITE_WAIT, 0,
-                              (PFNRT)dbgfR3MemRead, 5, pVM, idCpu, pAddress, pvBuf, cbRead);
-        if (RT_SUCCESS(rc))
-            rc = pReq->iStatus;
-        VMR3ReqFree(pReq);
-        return rc;
-    }
+    return VMR3ReqCallWaitU(pVM->pUVM, idCpu, (PFNRT)dbgfR3MemRead, 5, pVM, idCpu, pAddress, pvBuf, cbRead);
 }
 
 
@@ -299,14 +284,7 @@ VMMR3DECL(int) DBGFR3MemReadString(PVM pVM, VMCPUID idCpu, PCDBGFADDRESS pAddres
     /*
      * Pass it on to the EMT.
      */
-    PVMREQ pReq;
-    int rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, RT_INDEFINITE_WAIT, 0,
-                          (PFNRT)dbgfR3MemReadString, 5, pVM, idCpu, pAddress, pszBuf, cchBuf);
-    if (RT_SUCCESS(rc))
-        rc = pReq->iStatus;
-    VMR3ReqFree(pReq);
-
-    return rc;
+    return VMR3ReqCallWaitU(pVM->pUVM, idCpu, (PFNRT)dbgfR3MemReadString, 5, pVM, idCpu, pAddress, pszBuf, cchBuf);
 }
 
 
@@ -381,15 +359,7 @@ static DECLCALLBACK(int) dbgfR3MemWrite(PVM pVM, VMCPUID idCpu, PCDBGFADDRESS pA
 VMMR3DECL(int) DBGFR3MemWrite(PVM pVM, VMCPUID idCpu, PCDBGFADDRESS pAddress, void const *pvBuf, size_t cbWrite)
 {
     AssertReturn(idCpu < pVM->cCpus, VERR_INVALID_PARAMETER);
-
-    PVMREQ pReq;
-    int rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, RT_INDEFINITE_WAIT, 0,
-                          (PFNRT)dbgfR3MemWrite, 5, pVM, idCpu, pAddress, pvBuf, cbWrite);
-    if (RT_SUCCESS(rc))
-        rc = pReq->iStatus;
-    VMR3ReqFree(pReq);
-
-    return rc;
+    return VMR3ReqCallWaitU(pVM->pUVM, idCpu, (PFNRT)dbgfR3MemWrite, 5, pVM, idCpu, pAddress, pvBuf, cbWrite);
 }
 
 
@@ -491,14 +461,7 @@ VMMR3DECL(int) DBGFR3SelQueryInfo(PVM pVM, VMCPUID idCpu, RTSEL Sel, uint32_t fF
     /*
      * Dispatch the request to a worker running on the target CPU.
      */
-    PVMREQ pReq;
-    int rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, RT_INDEFINITE_WAIT, 0,
-                          (PFNRT)dbgfR3SelQueryInfo, 5, pVM, idCpu, Sel, fFlags, pSelInfo);
-    if (RT_SUCCESS(rc))
-        rc = pReq->iStatus;
-    VMR3ReqFree(pReq);
-
-    return rc;
+    return VMR3ReqCallWaitU(pVM->pUVM, idCpu, (PFNRT)dbgfR3SelQueryInfo, 5, pVM, idCpu, Sel, fFlags, pSelInfo);
 }
 
 
