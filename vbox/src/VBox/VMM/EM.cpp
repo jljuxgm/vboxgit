@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 21222 2009-07-05 14:26:09Z vboxsync $ */
+/* $Id: EM.cpp 21251 2009-07-06 13:19:43Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -89,7 +89,6 @@ static int emR3RemStep(PVM pVM, PVMCPU pVCpu);
 static int emR3RemExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone);
 DECLINLINE(int) emR3RawExecuteInstruction(PVM pVM, PVMCPU pVCpu, const char *pszPrefix, int rcGC = VINF_SUCCESS);
 int emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, int rc);
-static int emR3SingleStepExecRem(PVM pVM, uint32_t cIterations);
 
 
 /**
@@ -1007,7 +1006,7 @@ l_REMDoForcedActions:
 
 #ifdef DEBUG
 
-static int emR3SingleStepExecRem(PVM pVM, PVMCPU pVCpu, uint32_t cIterations)
+int emR3SingleStepExecRem(PVM pVM, PVMCPU pVCpu, uint32_t cIterations)
 {
     EMSTATE  enmOldState = pVCpu->em.s.enmState;
 

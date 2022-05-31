@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 21222 2009-07-05 14:26:09Z vboxsync $ */
+/* $Id: EMInternal.h 21251 2009-07-06 13:19:43Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -418,6 +418,7 @@ int     emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, int rc);
 int     emR3RawUpdateForceFlag(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc);
 int     emR3RawResumeHyper(PVM pVM, PVMCPU pVCpu);
 int     emR3RawStep(PVM pVM, PVMCPU pVCpu);
+int     emR3SingleStepExecRem(PVM pVM, PVMCPU pVCpu, uint32_t cIterations);
 
 RT_C_DECLS_END
 
