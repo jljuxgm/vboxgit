@@ -1,4 +1,4 @@
-/* $Id: sysfs.cpp 23332 2009-09-25 13:26:57Z vboxsync $ */
+/* $Id: sysfs.cpp 23349 2009-09-25 22:35:15Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -482,15 +482,8 @@ RTDECL(ssize_t) RTLinuxFindDevicePathV(dev_t DevNum, RTFMODE fMode, char *pszBuf
          */
         RTFSOBJINFO Info;
         rc = RTPathQueryInfo(szFilename, &Info, RTFSOBJATTRADD_UNIX);
-        if (RT_FAILURE(rc))
-        {
-/**@todo r=bird: This isn't exactly "tried before searching", it's more like "tried instead of searching"... */
-            errno = rc == VERR_PATH_NOT_FOUND || rc == VERR_FILE_NOT_FOUND
-                  ? ENOENT
-                  : EIO;
-            return -1;
-        }
-        if (   Info.Attr.u.Unix.Device == DevNum
+        if (   RT_SUCCESS(rc)
+            && Info.Attr.u.Unix.Device == DevNum
             && (Info.Attr.fMode & RTFS_TYPE_MASK) == fMode)
         {
             size_t cchPath = strlen(szFilename);
