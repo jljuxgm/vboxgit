@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 23235 2009-09-22 18:15:56Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 23304 2009-09-24 17:13:41Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -64,16 +64,11 @@
 #include "DHCPServerRunner.h"
 #include "DHCPServerImpl.h"
 
-#include "VirtualBoxXMLUtil.h"
-
 #include "Logging.h"
 
 #ifdef RT_OS_WINDOWS
 # include "win/svchlp.h"
 #endif
-
-// #include <stdio.h>
-// #include <stdlib.h>
 
 // defines
 /////////////////////////////////////////////////////////////////////////////
