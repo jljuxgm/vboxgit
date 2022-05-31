@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 21649 2009-07-16 13:44:57Z vboxsync $ */
+/* $Id: HWACCMInternal.h 21652 2009-07-16 14:09:40Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -209,6 +209,10 @@ typedef struct
     uint8_t                 aOpcode[16];
     /** Instruction size. */
     uint32_t                cbOp;
+    /** Replacement opcode. */
+    uint8_t                 aNewOpcode[16];
+    /** Replacement instruction size. */
+    uint32_t                cbNewOp;
     /** Instruction type. */
     HWACCMTPRINSTR          enmType;
     /** Source operand. */
