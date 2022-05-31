@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 19974 2009-05-24 17:57:46Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 21626 2009-07-15 20:21:25Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -24,6 +24,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_HOST_BASE
+/* We need this for UINT32_C for RTSTR_VALIDATE_ENCODING_ZERO_TERMINATED */
+#include <iprt/stdint.h>
 #ifdef RT_OS_DARWIN
 # include <mach/mach.h>
 # include <Carbon/Carbon.h>
