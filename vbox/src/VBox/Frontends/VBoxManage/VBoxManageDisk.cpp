@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 18703 2009-04-03 16:19:40Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 18709 2009-04-03 18:26:21Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -987,6 +987,7 @@ int handleAddiSCSIDisk(HandlerArg *a)
 
 static const RTGETOPTDEF g_aShowHardDiskInfoOptions[] =
 {
+    { "--dummy",    '\0', RTGETOPT_REQ_NOTHING },   // placeholder for C++
 };
 
 int handleShowHardDiskInfo(HandlerArg *a)
