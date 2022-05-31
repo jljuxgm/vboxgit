@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 23568 2009-10-05 20:27:16Z vboxsync $ */
+/* $Id: DevPCNet.cpp 23933 2009-10-21 13:21:10Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4403,8 +4403,10 @@ static DECLCALLBACK(int) pcnetLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle
     /* Enable physical monitoring again (!) */
     pcnetUpdateRingHandlers(pThis);
 #endif
-    /* Indicate link down to the guest OS that all network connections have been lost. */
-    pcnetTempLinkDown(pThis);
+    /* Indicate link down to the guest OS that all network connections have
+       been lost, unless we've been teleported here. */
+    if (!PDMDevHlpVMTeleportedAndNotFullyResumedYet(pDevIns))
+        pcnetTempLinkDown(pThis);
 
     return VINF_SUCCESS;
 }
