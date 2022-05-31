@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 13865 2008-11-05 14:14:11Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 23832 2009-10-16 21:08:58Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */
@@ -175,6 +175,8 @@ int suplibOsPageAlloc(PSUPLIBDATA pThis, size_t cPages, void **ppvPages)
                      MAP_PRIVATE | MAP_ANON, -1, 0);
     if (*ppvPages != (void *)-1)
         return VINF_SUCCESS;
+    if (error == EAGAIN)
+        return VERR_NO_MEMORY;
     return RTErrConvertFromErrno(errno);
 }
 
