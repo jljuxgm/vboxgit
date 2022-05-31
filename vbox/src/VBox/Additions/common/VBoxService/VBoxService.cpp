@@ -1,4 +1,4 @@
-/** $Id: VBoxService.cpp 18642 2009-04-02 15:04:40Z vboxsync $ */
+/** $Id: VBoxService.cpp 18648 2009-04-02 16:20:02Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -278,9 +278,11 @@ int main(int argc, char **argv)
         const char *psz = argv[i];
         if(    (*psz != '-')
 #if defined(RT_OS_WINDOWS)
-            && (*psz != '/'))
+            && (*psz != '/')
 #endif
+        )
             return VBoxServiceSyntax("Unknown argument '%s'\n", psz);
+
         psz++;
 
         /* translate long argument to short */
