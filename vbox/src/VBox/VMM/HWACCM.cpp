@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 19257 2009-04-29 11:51:55Z vboxsync $ */
+/* $Id: HWACCM.cpp 19326 2009-05-04 14:05:45Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -341,7 +341,8 @@ VMMR3DECL(int) HWACCMR3InitCPU(PVM pVM)
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatNoFlushTLBWorldSwitch,  "/HWACCM/CPU%d/Flush/TLB/Skipped");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatFlushASID,              "/HWACCM/CPU%d/Flush/TLB/ASID");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatFlushTLBInvlpga,        "/HWACCM/CPU%d/Flush/TLB/PhysInvl");
-
+        HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatTlbShootdown,           "/HWACCM/CPU%d/Flush/TLB/Shootdown");
+        
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatTSCOffset,              "/HWACCM/CPU%d/TSC/Offset");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatTSCIntercept,           "/HWACCM/CPU%d/TSC/Intercept");
 
