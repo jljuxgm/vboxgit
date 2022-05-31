@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 22037 2009-08-06 15:27:25Z vboxsync $ */
+/* $Id: VM.cpp 22042 2009-08-06 16:58:57Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -593,16 +593,6 @@ static int vmR3CreateU(PUVM pUVM, uint32_t cCpus, PFNCFGMCONSTRUCTOR pfnCFGMCons
                                            cCPUsCfg, cCpus));
                     rc = VERR_INVALID_PARAMETER;
                 }
-            }
-            /*
-             * Set correct CPUID leafs limit, some guests types,
-             * notably Win NT 4.0 may wish to override this value.
-             */
-            if (RT_SUCCESS(rc))
-            {
-                 uint32_t cCpuidLeafs;
-                 rc = CFGMR3QueryU32Def(CFGMR3GetRoot(pVM), "CpuidLeafs", &cCpuidLeafs, 5);
-                 pVM->cCpuidLeafs = cCpuidLeafs;
             }
             if (RT_SUCCESS(rc))
             {
