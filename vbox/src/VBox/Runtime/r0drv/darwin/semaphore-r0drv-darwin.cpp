@@ -1,4 +1,4 @@
-/* $Id: semaphore-r0drv-darwin.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: semaphore-r0drv-darwin.cpp 19922 2009-05-22 17:47:37Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, Ring-0 Driver, Darwin.
  */
@@ -288,13 +288,13 @@ static int rtSemEventWait(RTSEMEVENT EventSem, unsigned cMillies, wait_interrupt
 
 RTDECL(int)  RTSemEventWait(RTSEMEVENT EventSem, unsigned cMillies)
 {
-    return rtSemEventWait(EventSem, cMillies, FALSE /* not interruptable */);
+    return rtSemEventWait(EventSem, cMillies, THREAD_UNINT);
 }
 
 
 RTDECL(int)  RTSemEventWaitNoResume(RTSEMEVENT EventSem, unsigned cMillies)
 {
-    return rtSemEventWait(EventSem, cMillies, TRUE /* interruptable */);
+    return rtSemEventWait(EventSem, cMillies, THREAD_ABORTSAFE);
 }
 
 
@@ -483,13 +483,13 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
 
 RTDECL(int)  RTSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies)
 {
-    return rtSemEventMultiWait(EventMultiSem, cMillies, FALSE /* not interruptable */);
+    return rtSemEventMultiWait(EventMultiSem, cMillies, THREAD_UNINT);
 }
 
 
 RTDECL(int)  RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies)
 {
-    return rtSemEventMultiWait(EventMultiSem, cMillies, TRUE /* interruptable */);
+    return rtSemEventMultiWait(EventMultiSem, cMillies, THREAD_ABORTSAFE);
 }
 
 
