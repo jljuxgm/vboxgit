@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 20875 2009-06-24 02:29:17Z vboxsync $ */
+/* $Id: VMMR0.cpp 20979 2009-06-26 14:56:03Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -607,8 +607,6 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
 #elif !defined(RT_OS_WINDOWS)
             RTCCUINTREG uFlags = ASMIntDisableFlags();
 #endif
-            ASMAtomicWriteU32(&pVCpu->idHostCpu, NIL_RTCPUID);
-
 #ifdef LOG_ENABLED
             if (pVCpu->idCpu > 0)
             {
