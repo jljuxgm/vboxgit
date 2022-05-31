@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 20871 2009-06-24 01:56:19Z vboxsync $ */
+/* $Id: EM.cpp 21144 2009-07-02 08:07:39Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3353,7 +3353,7 @@ static int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
         /*
          * Postponed reset request.
          */
-        if (VM_FF_TESTANDCLEAR(pVM, VM_FF_RESET_BIT))
+        if (VM_FF_TESTANDCLEAR(pVM, VM_FF_RESET))
         {
             rc2 = VMR3Reset(pVM);
             UPDATE_RC();
