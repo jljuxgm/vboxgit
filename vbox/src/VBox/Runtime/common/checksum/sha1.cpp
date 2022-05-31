@@ -1,4 +1,4 @@
-/* $Id: sha1.cpp 21742 2009-07-21 12:26:05Z vboxsync $ */
+/* $Id: sha1.cpp 21748 2009-07-21 13:02:31Z vboxsync $ */
 /** @file
  * IPRT - SHA1 digest creation
  */
@@ -37,10 +37,10 @@
 #include <openssl/sha.h>
 
 /*******************************************************************************
-*   Public RTSHA1Digest interface                                              *
+*   Public RTSha1Digest interface                                              *
 *******************************************************************************/
 
-RTR3DECL(int) RTSHA1Digest(const char *pszFile, char **ppszDigest)
+RTR3DECL(int) RTSha1Digest(const char *pszFile, char **ppszDigest)
 {
     /* Validate input */
     if (!pszFile || !ppszDigest)

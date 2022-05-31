@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 21746 2009-07-21 12:58:49Z vboxsync $ */
+/* $Id: manifest.cpp 21748 2009-07-21 13:02:31Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling.
  */
@@ -212,7 +212,7 @@ RTR3DECL(int) RTManifestVerifyFiles(const char *pszManifestFile, const char * co
     for (size_t i=0; i < cFiles; ++i)
     {
         char *pszDigest;
-        rc = RTSHA1Digest(papszFiles[i], &pszDigest);
+        rc = RTSha1Digest(papszFiles[i], &pszDigest);
         if (RT_FAILURE(rc))
             break;
         pFileList[i].pszTestFile = (char*)papszFiles[i];
@@ -252,7 +252,7 @@ RTR3DECL(int) RTManifestWriteFiles(const char *pszManifestFile, const char * con
     {
         /* Calculate the SHA1 digest of every file */
         char *pszDigest;
-        rc = RTSHA1Digest(papszFiles[i], &pszDigest);
+        rc = RTSha1Digest(papszFiles[i], &pszDigest);
         if (RT_FAILURE(rc))
             break;
         /* Add the entry to the manifest file */
