@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 22980 2009-09-13 21:22:43Z vboxsync $ */
+/* $Id: VMInternal.h 22986 2009-09-14 06:36:15Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -35,65 +35,6 @@
  * @internal
  * @{
  */
-
-
-/**
- * At-reset callback type.
- */
-typedef enum VMATRESETTYPE
-{
-    /** Device callback. */
-    VMATRESETTYPE_DEV = 1,
-    /** Internal callback . */
-    VMATRESETTYPE_INTERNAL,
-    /** External callback. */
-    VMATRESETTYPE_EXTERNAL
-} VMATRESETTYPE;
-
-
-/** Pointer to at-reset callback. */
-typedef struct VMATRESET *PVMATRESET;
-
-/**
- * At reset callback.
- */
-typedef struct VMATRESET
-{
-    /** Pointer to the next one in the list. */
-    PVMATRESET                      pNext;
-    /** Callback type. */
-    VMATRESETTYPE                   enmType;
-    /** User argument for the callback. */
-    void                           *pvUser;
-    /** Description. */
-    const char                     *pszDesc;
-    /** Type specific data. */
-    union
-    {
-        /** VMATRESETTYPE_DEV. */
-        struct
-        {
-            /** Callback. */
-            PFNVMATRESET            pfnCallback;
-            /** Device instance. */
-            PPDMDEVINS              pDevIns;
-        } Dev;
-
-        /** VMATRESETTYPE_INTERNAL. */
-        struct
-        {
-            /** Callback. */
-            PFNVMATRESETINT         pfnCallback;
-        } Internal;
-
-        /** VMATRESETTYPE_EXTERNAL. */
-        struct
-        {
-            /** Callback. */
-            PFNVMATRESETEXT         pfnCallback;
-        } External;
-    } u;
-} VMATRESET;
 
 
 /**
@@ -269,14 +210,8 @@ typedef struct VMINTUSERPERVM
      * If clear the VMR3Destroy() caller does so. */
     bool                            fEMTDoesTheCleanup;
 
-    /** Critical section for pAtReset and pAtState. */
+    /** Critical section for pAtState. */
     RTCRITSECT                      AtStateCritSect;
-
-    /** List of registered reset callbacks. */
-    PVMATRESET                      pAtReset;
-    /** List of registered reset callbacks. */
-    PVMATRESET                     *ppAtResetNext;
-
     /** List of registered state change callbacks. */
     PVMATSTATE                      pAtState;
     /** List of registered state change callbacks. */
