@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 23086 2009-09-17 11:41:29Z vboxsync $ */
+/* $Id: PGMAll.cpp 23087 2009-09-17 11:44:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -464,6 +464,7 @@ VMMDECL(int) PGMTrap0eHandler(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFram
         ||  rc == VERR_PAGE_MAP_LEVEL4_NOT_PRESENT)     /* precaution */
     {
         Log(("WARNING: Unexpected VERR_PAGE_TABLE_NOT_PRESENT (%d) for page fault at %RGv error code %x (rip=%RGv)\n", rc, pvFault, uErr, pRegFrame->rip));
+        /* Some kind of inconsistency in the SMP case; it's safe to just execute the instruction again; not sure about single VCPU VMs though. */
         rc = VINF_SUCCESS;
     }
 # endif
