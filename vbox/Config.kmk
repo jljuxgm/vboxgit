@@ -1,4 +1,4 @@
-# $Id: Config.kmk 18844 2009-04-08 11:30:38Z vboxsync $
+# $Id: Config.kmk 18866 2009-04-10 14:13:10Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -638,6 +638,13 @@ endif
 #
 ifdef VBOX_BRANDING_CFG
  include $(VBOX_BRANDING_CFG)
+endif
+
+#
+# Bitch about old settings.
+#
+ifdef VBOX_WITHOUT_LINUX_COMPILER_H
+ $(warning VBOX_WITHOUT_LINUX_COMPILER_H was renamed to VBOX_WITH_LINUX_COMPILER_H, the meaning is inverted.)
 endif
 
 #
@@ -3738,7 +3745,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 18844 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 18866 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
