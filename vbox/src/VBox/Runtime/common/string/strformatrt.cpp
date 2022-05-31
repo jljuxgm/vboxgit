@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 19942 2009-05-23 15:42:57Z vboxsync $ */
+/* $Id: strformatrt.cpp 21315 2009-07-07 11:32:19Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -828,7 +828,7 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
                 switch (s_aTypes[i].enmType)
                 {
                     case RTST_TIMESPEC:
-                        return RTStrFormat(pfnOutput, pvArgOutput, NULL, NULL, "%lld ns", RTTimeSpecGetNano(u.pTimeSpec));
+                        return RTStrFormat(pfnOutput, pvArgOutput, NULL, NULL, "%'lld ns", RTTimeSpecGetNano(u.pTimeSpec));
 
                     default:
                         AssertMsgFailed(("Invalid/unhandled enmType=%d\n", s_aTypes[i].enmType));
