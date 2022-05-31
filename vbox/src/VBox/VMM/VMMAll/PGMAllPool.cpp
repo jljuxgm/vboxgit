@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 23198 2009-09-21 16:07:16Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 23199 2009-09-21 16:08:03Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1176,7 +1176,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
     }
 #endif
 
-#if defined(VBOX_STRICT) && defined(PGMPOOL_WITH_OPTIMIZED_DIRTY_PT)
+#if 0 /* test code defined(VBOX_STRICT) && defined(PGMPOOL_WITH_OPTIMIZED_DIRTY_PT) */
     if (pPage->enmKind == PGMPOOLKIND_PAE_PT_FOR_PAE_PT)
     {
         void *pvShw = PGMPOOL_PAGE_2_LOCKED_PTR(pPool->CTX_SUFF(pVM), pPage);
