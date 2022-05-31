@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 21439 2009-07-09 12:58:12Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 21446 2009-07-09 15:09:57Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1939,7 +1939,7 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD /* aThread */, vo
             /* We need HWVirt & IO-APIC if more than one CPU is requested */
             if (tmpCount > 1)
             {
-                rc = pNewMachine->COMSETTER(HWVirtExEnabled)(TSBool_True);
+                rc = pNewMachine->COMSETTER(HWVirtExEnabled)(TRUE);
                 if (FAILED(rc)) throw rc;
 
                 fEnableIOApic = true;

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 21421 2009-07-09 10:00:03Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 21446 2009-07-09 15:09:57Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -236,18 +236,10 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     rc = CFGMR3InsertInteger(pRoot, "CSAMEnabled",          1);     /* boolean */   RC_CHECK();
 
     /* hardware virtualization extensions */
-    TSBool_T hwVirtExEnabled;
     BOOL fHWVirtExEnabled;
-    hrc = pMachine->COMGETTER(HWVirtExEnabled)(&hwVirtExEnabled);                   H();
-    if (hwVirtExEnabled == TSBool_Default)
-    {
-        /* check the default value */
-        hrc = systemProperties->COMGETTER(HWVirtExEnabled)(&fHWVirtExEnabled);      H();
-    }
-    else
-        fHWVirtExEnabled = (hwVirtExEnabled == TSBool_True);
+    hrc = pMachine->COMGETTER(HWVirtExEnabled)(&fHWVirtExEnabled);                  H();
     if (cCpus > 1) /** @todo SMP: This isn't nice, but things won't work on mac otherwise. */
-        fHWVirtExEnabled = TSBool_True;
+        fHWVirtExEnabled = TRUE;
 
 #ifdef RT_OS_DARWIN
     rc = CFGMR3InsertInteger(pRoot, "HwVirtExtForced",      fHWVirtExEnabled);      RC_CHECK();
