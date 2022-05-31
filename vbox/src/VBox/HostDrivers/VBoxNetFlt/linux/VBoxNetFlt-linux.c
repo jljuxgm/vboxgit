@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 20341 2009-06-05 15:03:34Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 20345 2009-06-05 15:58:07Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -28,6 +28,7 @@
 #include <linux/etherdevice.h>
 #include <linux/rtnetlink.h>
 #include <linux/miscdevice.h>
+#include <linux/ip.h>
 
 #define LOG_GROUP LOG_GROUP_NET_FLT_DRV
 #include <VBox/log.h>
