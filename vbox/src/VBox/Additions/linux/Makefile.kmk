@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17861 2009-03-13 21:57:42Z vboxsync $
+# $Id: Makefile.kmk 18377 2009-03-27 10:44:02Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -60,6 +60,12 @@ INSTALLS += GuestDrivers-src
 GuestDrivers-src_INST = bin/additions/src/
 GuestDrivers-src_MODE = a+r,u+w
 GuestDrivers-src_SOURCES = Makefile
+
+INSTALLS += AutoRun-sh
+AutoRun-sh_INST = bin/additions/
+AutoRun-sh_MODE = a+rx,u+w
+AutoRun-sh_SOURCES = $(VBOX_PATH_LINUX_ADDITION_INSTALLER)/autorun.sh
+
 
 include	$(KBUILD_PATH)/subfooter.kmk
 
