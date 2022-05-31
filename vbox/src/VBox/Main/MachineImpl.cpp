@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23769 2009-10-14 15:41:33Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23791 2009-10-15 01:03:09Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -1878,12 +1878,14 @@ Machine::COMSETTER(LiveMigrationTarget)(BOOL aEnabled)
 
     AutoWriteLock alock(this);
 
-    /* Only allow it to be set to true when PoweredOff.
+    /* Only allow it to be set to true when PoweredOff or Aborted.
        (Clearing it is always permitted.) */
     if (    aEnabled
         &&  mData->mRegistered
         &&  (   mType != IsSessionMachine
-             || mData->mMachineState > MachineState_PoweredOff)
+             || (   mData->mMachineState != MachineState_PoweredOff
+                 && mData->mMachineState != MachineState_Aborted)
+            )
        )
         return setError(VBOX_E_INVALID_VM_STATE,
                         tr("The machine is not powered off (state is %s)"),
