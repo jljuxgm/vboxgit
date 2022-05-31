@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 20691 2009-06-18 13:48:46Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 20779 2009-06-22 13:31:15Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -161,15 +161,28 @@ struct net_device_stats *vboxNetAdpLinuxGetStats(struct net_device *pNetDev)
     return &pPriv->Stats;
 }
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29)
+static const struct net_device_ops vboxNetAdpNetdevOps = {
+    .ndo_open               = vboxNetAdpLinuxOpen,
+    .ndo_stop               = vboxNetAdpLinuxStop,
+    .ndo_start_xmit         = vboxNetAdpLinuxXmit,
+    .ndo_get_stats          = vboxNetAdpLinuxGetStats
+};
+#endif
+
 static void vboxNetAdpNetDevInit(struct net_device *pNetDev)
 {
     PVBOXNETADPPRIV pPriv;
 
     ether_setup(pNetDev);
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29)
+    pNetDev->netdev_ops = &vboxNetAdpNetdevOps;
+#else /* LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 29) */
     pNetDev->open = vboxNetAdpLinuxOpen;
     pNetDev->stop = vboxNetAdpLinuxStop;
     pNetDev->hard_start_xmit = vboxNetAdpLinuxXmit;
     pNetDev->get_stats = vboxNetAdpLinuxGetStats;
+#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 29) */
 
     pPriv = netdev_priv(pNetDev);
     memset(pPriv, 0, sizeof(*pPriv));
