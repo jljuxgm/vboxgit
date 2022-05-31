@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 19624 2009-05-12 13:49:50Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 20054 2009-05-27 06:57:32Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -270,7 +270,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            acpipowerbutton|acpisleepbutton|\n"
                  "                            keyboardputscancode <hex> [<hex> ...]|\n"
                  "                            injectnmi|\n"
-                 "                            setlinkstate<1-4> on|off |\n"
+                 "                            setlinkstate<1-N> on|off |\n"
                  "                            usbattach <uuid>|<address> |\n"
                  "                            usbdetach <uuid>|<address> |\n"
                  "                            dvdattach none|<uuid>|<filename>|host:<drive> |\n"
