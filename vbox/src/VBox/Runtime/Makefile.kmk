@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20449 2009-06-09 22:23:42Z vboxsync $
+# $Id: Makefile.kmk 20740 2009-06-21 02:09:28Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -199,6 +199,7 @@ RuntimeR3_SOURCES       = \
 	common/checksum/crc64.cpp \
 	common/checksum/md5.cpp \
 	common/checksum/ipv4.cpp \
+	common/dbg/dbg.cpp \
 	common/dbg/dbgas.cpp \
 	common/dbg/dbgmod.cpp \
 	common/dbg/dbgmodcontainer.cpp \
@@ -268,6 +269,7 @@ RuntimeR3_SOURCES       = \
 	common/table/avlroogcptr.cpp \
 	common/table/avlruintptr.cpp \
 	common/table/avlu32.cpp \
+	common/table/avluintptr.cpp \
 	common/table/avlul.cpp \
 	common/table/table.cpp \
 	common/time/time.cpp \
