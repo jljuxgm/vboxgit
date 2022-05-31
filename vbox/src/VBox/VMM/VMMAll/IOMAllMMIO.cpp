@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 19993 2009-05-25 12:12:06Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 20013 2009-05-26 08:37:48Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -332,7 +332,7 @@ static int iomInterpretMOVS(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame
     if (pCpu->prefix & (PREFIX_SEG | PREFIX_REPNE))
         return VINF_IOM_HC_MMIO_READ_WRITE; /** @todo -> interpret whatever. */
 
-    PVMCPU pVCpu = VMMGetCpu(pVM)
+    PVMCPU pVCpu = VMMGetCpu(pVM);
 
     /*
      * Get bytes/words/dwords/qword count to copy.
