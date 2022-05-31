@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 19844 2009-05-19 23:12:55Z vboxsync $ */
+/* $Id: DisplayImpl.h 20021 2009-05-26 10:31:44Z vboxsync $ */
 
 /** @file
  *
@@ -113,6 +113,7 @@ public:
     // public initializer/uninitializer for internal purposes only
     HRESULT init (Console *aParent);
     void uninit();
+    int  registerSSM(PVM pVM);
 
     // public methods only for internal purposes
     int handleDisplayResize (unsigned uScreenId, uint32_t bpp, void *pvVRAM, uint32_t cbLine, int w, int h);
@@ -273,6 +274,9 @@ private:
 #ifdef VBOX_WITH_VIDEOHWACCEL
     static DECLCALLBACK(void) displayVHWACommandProcess(PPDMIDISPLAYCONNECTOR pInterface, PVBOXVHWACMD pCommand);
 #endif
+
+    static DECLCALLBACK(void)   displaySSMSave (PSSMHANDLE pSSM, void *pvUser);
+    static DECLCALLBACK(int)    displaySSMLoad (PSSMHANDLE pSSM, void *pvUser, uint32_t u32Version);
 
     const ComObjPtr <Console, ComWeakRef> mParent;
     /** Pointer to the associated display driver. */

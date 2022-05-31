@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 19750 2009-05-15 17:40:03Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 20021 2009-05-26 10:31:44Z vboxsync $ */
 
 /** @file
  *
@@ -6413,6 +6413,11 @@ DECLCALLBACK (int) Console::powerUpThread (RTTHREAD Thread, void *pvUser)
                     0 /* cbGuess */,
                     NULL, saveStateFileExec, NULL, NULL, loadStateFileExec, NULL,
                     static_cast <Console *> (console));
+                AssertRC (vrc);
+                if (VBOX_FAILURE (vrc))
+                    break;
+
+                vrc = static_cast <Console *>(console)->getDisplay()->registerSSM(pVM);
                 AssertRC (vrc);
                 if (VBOX_FAILURE (vrc))
                     break;
