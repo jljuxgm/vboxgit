@@ -1,4 +1,4 @@
-/* $Id: dbg.h 20513 2009-06-12 13:03:42Z vboxsync $ */
+/* $Id: dbg.h 20738 2009-06-20 21:35:45Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -49,14 +49,18 @@ typedef RTDBGSEGIDX        *PRTDBGSEGIDX;
 /** Pointer to a const debug segment index. */
 typedef RTDBGSEGIDX const  *PCRTDBGSEGIDX;
 /** NIL debug segment index. */
-#define NIL_RTDBGSEGIDX     UINT32_C(0xffffffff)
+#define NIL_RTDBGSEGIDX             UINT32_C(0xffffffff)
 /** The last normal segment index. */
-#define RTDBGSEGIDX_LAST    UINT32_C(0xffffffef)
+#define RTDBGSEGIDX_LAST            UINT32_C(0xffffffef)
 /** Special segment index that indicates that the offset is a relative
  * virtual address (RVA). I.e. an offset from the start of the module. */
-#define RTDBGSEGIDX_RVA     UINT32_C(0xfffffff0)
+#define RTDBGSEGIDX_RVA             UINT32_C(0xfffffff0)
 /** Special segment index that indicates that the offset is a absolute. */
-#define RTDBGSEGIDX_ABS     UINT32_C(0xfffffff1)
+#define RTDBGSEGIDX_ABS             UINT32_C(0xfffffff1)
+/** The last valid special segment index. */
+#define RTDBGSEGIDX_SPECIAL_LAST    RTDBGSEGIDX_ABS
+/** The last valid special segment index. */
+#define RTDBGSEGIDX_SPECIAL_FIRST   (RTDBGSEGIDX_LAST + 1U)
 
 /** Max length (including '\\0') of a symbol name. */
 #define RTDBG_SYMBOL_NAME_LENGTH   (512 - 8 - 4 - 4 - 4)
