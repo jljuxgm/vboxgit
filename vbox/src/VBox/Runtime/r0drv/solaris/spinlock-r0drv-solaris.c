@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
+/* $Id: spinlock-r0drv-solaris.c 22126 2009-08-10 11:38:54Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Solaris.
  */
@@ -109,9 +109,8 @@ RTDECL(void) RTSpinlockAcquireNoInts(RTSPINLOCK Spinlock, PRTSPINLOCKTMP pTmp)
     PRTSPINLOCKINTERNAL pSpinlockInt = (PRTSPINLOCKINTERNAL)Spinlock;
     AssertPtr(pSpinlockInt);
     Assert(pSpinlockInt->u32Magic == RTSPINLOCK_MAGIC);
-    NOREF(pTmp);
 
-    /** @todo r=bird: are interrupts disabled implicitly by mutex_enter?!? */
+    pTmp->uFlags = ASMIntDisableFlags();
     mutex_enter(&pSpinlockInt->Mtx);
 }
 
@@ -121,9 +120,9 @@ RTDECL(void) RTSpinlockReleaseNoInts(RTSPINLOCK Spinlock, PRTSPINLOCKTMP pTmp)
     PRTSPINLOCKINTERNAL pSpinlockInt = (PRTSPINLOCKINTERNAL)Spinlock;
     AssertPtr(pSpinlockInt);
     Assert(pSpinlockInt->u32Magic == RTSPINLOCK_MAGIC);
-    NOREF(pTmp);
 
     mutex_exit(&pSpinlockInt->Mtx);
+    ASMSetFlags(pTmp->uFlags);
 }
 
 
