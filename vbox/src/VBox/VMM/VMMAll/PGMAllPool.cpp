@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 23127 2009-09-18 12:46:26Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 23140 2009-09-18 15:18:59Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1180,9 +1180,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
      * is because we use that page to record the changes.
      */
     Assert(pPage->iMonitoredPrev == NIL_PGMPOOL_IDX);
-#ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
     Assert(!pPage->fDirty);
-#endif
 
 #ifdef IN_RING0
     /* Maximum nr of modifications depends on the page type. */
