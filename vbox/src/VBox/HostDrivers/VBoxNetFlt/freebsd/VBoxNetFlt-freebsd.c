@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-freebsd.c 22902 2009-09-10 10:36:37Z vboxsync $ */
+/* $Id: VBoxNetFlt-freebsd.c 23526 2009-10-03 17:55:49Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), FreeBSD Specific Code.
  */
@@ -145,7 +145,7 @@ static int vboxnetflt_modevent(struct module *pMod, int enmEventType, void *pvAr
             rc = RTR0Init(0);
             if (RT_FAILURE(rc))
             {
-                Log(("RTR0Init failed %d\n", rc));
+                printf("RTR0Init failed %d\n", rc);
                 return RTErrConvertToErrno(rc);
             }
 
@@ -153,7 +153,7 @@ static int vboxnetflt_modevent(struct module *pMod, int enmEventType, void *pvAr
             rc = vboxNetFltInitGlobalsAndIdc(&g_VBoxNetFltGlobals);
             if (RT_FAILURE(rc))
             {
-                Log(("vboxNetFltInitGlobalsAndIdc failed %d\n", rc));
+                printf("vboxNetFltInitGlobalsAndIdc failed %d\n", rc);
                 return RTErrConvertToErrno(rc);
             }
             /* No MODULE_VERSION in ng_ether so we can't MODULE_DEPEND it */
