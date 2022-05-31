@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 23306 2009-09-24 17:16:02Z vboxsync $ */
+/* $Id: PGMPhys.cpp 23393 2009-09-28 17:24:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -359,12 +359,11 @@ static DECLCALLBACK(int) pgmR3PhysGCPhys2CCPtrDelegated(PVM pVM, PRTGCPHYS pGCPh
             PGMPhysReleasePageMappingLock(pVM, pLock);
             rc = VERR_PGM_PHYS_PAGE_RESERVED;
         }
-        else
-        if (    PGM_PAGE_HAS_ACTIVE_HANDLERS(pPage)
+        else if (    PGM_PAGE_HAS_ACTIVE_HANDLERS(pPage)
 #ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
-            ||  pgmPoolIsDirtyPage(pVM, *pGCPhys)
+                 ||  pgmPoolIsDirtyPage(pVM, *pGCPhys)
 #endif
-           )
+                )
         {
             /* We *must* flush any corresponding pgm pool page here, otherwise we'll
              * not be informed about writes and keep bogus gst->shw mappings around.
