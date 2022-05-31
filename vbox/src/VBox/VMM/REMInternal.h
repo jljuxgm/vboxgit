@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 20428 2009-06-09 11:36:04Z vboxsync $ */
+/* $Id: REMInternal.h 20430 2009-06-09 11:47:03Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -163,6 +163,9 @@ typedef struct REM
 
     /** Number of recorded invlpg instructions. */
     uint32_t                cInvalidatedPages;
+#if HC_ARCH_BITS == 32
+    uint32_t                uPadding2;
+#endif
     /** Array of recorded invlpg instruction.
      * These instructions are replayed when entering REM. */
     RTGCPTR                 aGCPtrInvalidatedPages[48];
