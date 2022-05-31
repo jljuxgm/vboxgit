@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 19259 2009-04-29 12:45:19Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 19260 2009-04-29 12:48:15Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -34,9 +34,6 @@
 #include <VBox/log.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
-#ifndef IN_RC
-# include <iprt/thread.h>
-#endif
 #ifdef IN_RING3
 # include <iprt/semaphore.h>
 #endif
@@ -223,10 +220,6 @@ VMMDECL(bool) PDMCritSectIsOwner(PCPDMCRITSECT pCritSect)
 {
 #ifdef IN_RING3
     return RTCritSectIsOwner(&pCritSect->s.Core);
-#elif defined(IN_RING0)
-    PVM pVM = pCritSect->s.CTX_SUFF(pVM);
-    Assert(pVM);
-    return pCritSect->s.Core.NativeThreadOwner == RTThreadNativeSelf();
 #else
     PVM pVM = pCritSect->s.CTX_SUFF(pVM);
     Assert(pVM);
