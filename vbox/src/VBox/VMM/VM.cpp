@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 23151 2009-09-18 23:13:02Z vboxsync $ */
+/* $Id: VM.cpp 23152 2009-09-18 23:25:25Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1195,7 +1195,7 @@ VMMR3DECL(int) VMR3PowerOn(PVM pVM)
     VM_ASSERT_VALID_EXT_RETURN(pVM, VERR_INVALID_VM_HANDLE);
 
     /*
-     * Gather all the EMTs to reduce the init TSC drift and keep                                      .
+     * Gather all the EMTs to reduce the init TSC drift and keep
      * the state changing APIs a bit uniform.
      */
     int rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_DESCENDING | VMMEMTRENDEZVOUS_FLAGS_STOP_ON_ERROR,
