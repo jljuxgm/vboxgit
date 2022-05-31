@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 18935 2009-04-16 12:21:00Z vboxsync $ */
+/* $Id: PGMInternal.h 18936 2009-04-16 12:29:47Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2464,6 +2464,7 @@ typedef struct PGMCPU
     RTINT                           offVCpu;
     /** Offset of the PGM structure relative to VMCPU. */
     RTINT                           offPGM;
+    RTINT                           uPadding0;
 
     /** Automatically tracked physical memory mapping set.
      * Ring-0 and strict raw-mode builds. */
