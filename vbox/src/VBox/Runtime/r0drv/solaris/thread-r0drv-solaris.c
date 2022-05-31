@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 20124 2009-05-28 15:40:06Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 21536 2009-07-13 14:49:39Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -28,15 +28,16 @@
  * additional information or have any questions.
  */
 
+
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-solaris-kernel.h"
 
 #include <iprt/thread.h>
-#include <iprt/err.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 
 
 RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
@@ -104,10 +105,8 @@ RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
     Assert(hThread == NIL_RTTHREAD);
     if (curthread->t_preempt != 0)
         return false;
-#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
-    if (!(ASMGetFlags() & 0x00000200 /* X86_EFL_IF */))
+    if (!ASMIntAreEnabled())
         return false;
-#endif
     return true;
 }
 
@@ -124,6 +123,13 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
 RTDECL(bool) RTThreadPreemptIsPendingTrusty(void)
 {
     /* yes, RTThreadPreemptIsPending is reliable. */
+    return true;
+}
+
+
+RTDECL(bool) RTThreadPreemptIsPossible(void)
+{
+    /* yes, kernel preemption is possible. */
     return true;
 }
 
@@ -145,5 +151,14 @@ RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
     pState->uchDummy = 0;
 
     kpreempt_enable();
+}
+
+
+RTDECL(bool) RTThreadIsInInterrupt(RTTHREAD hThread)
+{
+    Assert(hThread == NIL_RTTHREAD); NOREF(hThread);
+    /** @todo Solaris: Implement RTThreadIsInInterrupt. Required for guest
+     *        additions! */
+    return !ASMIntAreEnabled();
 }
 

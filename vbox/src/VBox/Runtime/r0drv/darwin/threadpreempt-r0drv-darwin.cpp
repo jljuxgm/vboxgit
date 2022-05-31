@@ -1,4 +1,4 @@
-/* $Id: threadpreempt-r0drv-darwin.cpp 20124 2009-05-28 15:40:06Z vboxsync $ */
+/* $Id: threadpreempt-r0drv-darwin.cpp 21536 2009-07-13 14:49:39Z vboxsync $ */
 /** @file
  * IPRT - Thread Preemption, Ring-0 Driver, Darwin.
  */
@@ -28,16 +28,17 @@
  * additional information or have any questions.
  */
 
+
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-darwin-kernel.h"
 #include <iprt/thread.h>
 
+#include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/mp.h>
-#include <iprt/asm.h>
 
 
 /*******************************************************************************
@@ -51,7 +52,6 @@ typedef struct RTDARWINPREEMPTHACK
     uint32_t            cRecursion;
 } RTDARWINPREEMPTHACK;
 typedef RTDARWINPREEMPTHACK *PRTDARWINPREEMPTHACK;
-
 
 
 /*******************************************************************************
@@ -129,6 +129,13 @@ RTDECL(bool) RTThreadPreemptIsPendingTrusty(void)
 }
 
 
+RTDECL(bool) RTThreadPreemptIsPossible(void)
+{
+    /* yes, kernel preemption is possible. */
+    return true;
+}
+
+
 RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
 {
     AssertPtr(pState);
@@ -179,4 +186,12 @@ RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
     }
 }
 
+
+RTDECL(bool) RTThreadIsInInterrupt(RTTHREAD hThread)
+{
+    Assert(hThread == NIL_RTTHREAD); NOREF(hThread);
+    /** @todo Solaris: Implement RTThreadIsInInterrupt. Required for guest
+     *        additions! */
+    return !ASMIntAreEnabled();
+}
 
