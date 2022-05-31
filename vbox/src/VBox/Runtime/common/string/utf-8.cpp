@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 17189 2009-02-27 08:41:03Z vboxsync $ */
+/* $Id: utf-8.cpp 18528 2009-03-30 11:51:31Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -1367,5 +1367,35 @@ RTDECL(int) RTStrNICmp(const char *psz1, const char *psz2, size_t cchMax)
 
     /* Hit some bad encoding, continue in case insensitive mode. */
     return RTStrNCmp(psz1, psz2, cchMax);
+}
+
+RTDECL(char *) RTStrToLower(char *psz)
+{
+    char *pszTmp = psz;
+    while(*pszTmp)
+    {
+        /* Get the codepoints */
+        RTUNICP cp = RTStrGetCp(pszTmp);
+        /* To lower */
+        cp = RTUniCpToLower(cp);
+        /* Put the converted codepoint back */
+        pszTmp = RTStrPutCp(pszTmp, cp);
+    }
+    return psz;
+}
+
+RTDECL(char *) RTStrToUpper(char *psz)
+{
+    char *pszTmp = psz;
+    while(*pszTmp)
+    {
+        /* Get the codepoints */
+        RTUNICP cp = RTStrGetCp(pszTmp);
+        /* To lower */
+        cp = RTUniCpToUpper(cp);
+        /* Put the converted codepoint back */
+        pszTmp = RTStrPutCp(pszTmp, cp);
+    }
+    return psz;
 }
 
