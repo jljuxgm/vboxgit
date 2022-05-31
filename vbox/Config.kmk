@@ -1,4 +1,4 @@
-# $Id: Config.kmk 22386 2009-08-21 13:15:23Z vboxsync $
+# $Id: Config.kmk 22387 2009-08-21 13:27:13Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -503,7 +503,7 @@ VBOX_WITH_NEW_LIBLZF = 1
 ## For experimenting with disabling preemption instead of interrupts
 # when working VT-x/AMD-V in VMMR0.
 ## @todo os2? Reconsider perhaps windows? (see defect) This should be made the default.
-if1of ($(KBUILD_TARGET), darwin freebsd linux windows)
+if1of ($(KBUILD_TARGET), darwin freebsd linux windows solaris)
  VBOX_WITH_VMMR0_DISABLE_PREEMPTION = 1
 endif
 
@@ -3771,7 +3771,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 22386 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 22387 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
