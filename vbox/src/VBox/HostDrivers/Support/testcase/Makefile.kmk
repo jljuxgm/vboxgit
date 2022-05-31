@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19892 2009-05-21 15:29:29Z vboxsync $
+# $Id: Makefile.kmk 20903 2009-06-24 19:32:12Z vboxsync $
 ## @file
 # Sub-Makefile for the SUPLib testcases.
 #
@@ -45,7 +45,8 @@ PROGRAMS += \
 	tstPin \
 	tstGIP-2 \
 	tstGetPagingMode \
-	tstSupSem
+	tstSupSem \
+	tstSupSem-Zombie
 endif # VBOX_WITH_TESTCASES
 
 SUPInstall_TEMPLATE   = VBOXR3EXE
@@ -87,6 +88,9 @@ tstGetPagingMode_SOURCES = tstGetPagingMode.cpp
 
 tstSupSem_TEMPLATE    = VBOXR3TSTEXE
 tstSupSem_SOURCES     = tstSupSem.cpp
+
+tstSupSem-Zombie_TEMPLATE = VBOXR3TSTEXE
+tstSupSem-Zombie_SOURCES  = tstSupSem-Zombie.cpp
 
 include $(KBUILD_PATH)/subfooter.kmk
 
