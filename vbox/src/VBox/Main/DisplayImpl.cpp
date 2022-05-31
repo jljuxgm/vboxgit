@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 19588 2009-05-11 14:33:04Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 19798 2009-05-18 15:50:20Z vboxsync $ */
 
 /** @file
  *
@@ -1989,26 +1989,6 @@ DECLCALLBACK(int) Display::changeFramebuffer (Display *that, IFramebuffer *aFB,
 
     that->mInternalFramebuffer = aInternal;
     that->mSupportedAccelOps = 0;
-
-    /* determine which acceleration functions are supported by this framebuffer */
-    if (aFB && !aInternal)
-    {
-        HRESULT rc;
-        BOOL accelSupported = FALSE;
-        rc = aFB->OperationSupported (
-            FramebufferAccelerationOperation_SolidFillAcceleration, &accelSupported);
-        AssertComRC (rc);
-        if (accelSupported)
-            that->mSupportedAccelOps |=
-                FramebufferAccelerationOperation_SolidFillAcceleration;
-        accelSupported = FALSE;
-        rc = aFB->OperationSupported (
-            FramebufferAccelerationOperation_ScreenCopyAcceleration, &accelSupported);
-        AssertComRC (rc);
-        if (accelSupported)
-            that->mSupportedAccelOps |=
-                FramebufferAccelerationOperation_ScreenCopyAcceleration;
-    }
 
     that->mParent->consoleVRDPServer()->SendResize ();
 
