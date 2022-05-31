@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 20663 2009-06-17 12:47:55Z vboxsync $ */
+/* $Id: EM.cpp 20671 2009-06-17 15:23:14Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3426,9 +3426,16 @@ static int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
         /* Replay the handler notification changes. */
         if (VM_FF_IS_PENDING_EXCEPT(pVM, VM_FF_REM_HANDLER_NOTIFY, VM_FF_PGM_NO_MEMORY))
         {
-            EMRemLock(pVM);
-            REMR3ReplayHandlerNotifications(pVM);
-            EMRemUnlock(pVM);
+            /* Try not to cause deadlocks. */
+            if (    pVM->cCPUs == 1
+                ||  (   !PGMIsLockOwner(pVM)
+                     && !IOMIsLockOwner(pVM))
+               )
+            {
+                EMRemLock(pVM);
+                REMR3ReplayHandlerNotifications(pVM);
+                EMRemUnlock(pVM);
+            }
         }
 
         /* check that we got them all  */

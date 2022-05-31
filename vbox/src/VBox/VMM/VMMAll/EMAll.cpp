@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 20666 2009-06-17 13:01:56Z vboxsync $ */
+/* $Id: EMAll.cpp 20671 2009-06-17 15:23:14Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -3380,6 +3380,7 @@ VMMDECL(void) EMRemLock(PVM pVM)
     if (!PDMCritSectIsInitialized(&pVM->em.s.CritSectREM))
         return;     /* early init */
 
+    Assert(!PGMIsLockOwner(pVM) && !IOMIsLockOwner(pVM));
     int rc = PDMCritSectEnter(&pVM->em.s.CritSectREM, VERR_SEM_BUSY);
     AssertMsg(rc == VINF_SUCCESS, ("%Rrc\n", rc));
 }
