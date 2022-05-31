@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-freebsd.c 21069 2009-06-30 14:23:40Z vboxsync $ */
+/* $Id: VBoxGuest-freebsd.c 21170 2009-07-02 14:45:00Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for FreeBSD.
  */
@@ -492,7 +492,7 @@ static int VBoxGuestFreeBSDAttach(device_t pDevice)
              * Call the common device extension initializer.
              */
             rc = VBoxGuestInitDevExt(&g_DevExt, pState->uIOPortBase, pState->pMMIOBase,
-                                     pState->VMMDevMemSize, VBOXOSTYPE_FreeBSD);
+                                     pState->VMMDevMemSize, VBOXOSTYPE_FreeBSD, 0);
             if (RT_SUCCESS(rc))
             {
                 /*

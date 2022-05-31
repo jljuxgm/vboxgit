@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 21170 2009-07-02 14:45:00Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -158,10 +158,12 @@ DECLASM(int) VBoxGuestOS2Init(const char *pszArgs)
                 rc = VBoxGuestInitDevExt(&g_DevExt, g_IOPortBase,
                                          RTR0MemObjAddress(g_MemMapMMIO),
                                          RTR0MemObjSize(g_MemMapMMIO),
-                                         vboxGuestOS2DetectVersion());
+                                         vboxGuestOS2DetectVersion(),
+                                         0);
             else
                 rc = VBoxGuestInitDevExt(&g_DevExt, g_IOPortBase, NULL, 0,
-                                         vboxGuestOS2DetectVersion());
+                                         vboxGuestOS2DetectVersion(),
+                                         0);
             if (RT_SUCCESS(rc))
             {
                 /*

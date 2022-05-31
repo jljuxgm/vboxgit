@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 21118 2009-07-01 12:48:15Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 21170 2009-07-02 14:45:00Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -141,9 +141,10 @@ static int vboxGuestInitReportGuestInfo(PVBOXGUESTDEVEXT pDevExt, VBOXOSTYPE enm
  * @param   cbMMIO          The size of the MMIO memory mapping.
  *                          This is optional, pass 0 if not present.
  * @param   enmOSType       The guest OS type to report to the VMMDev.
+ * @param   fEvents         Additional requested events (like Mouse events).
  */
 int VBoxGuestInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase,
-                        void *pvMMIOBase, uint32_t cbMMIO, VBOXOSTYPE enmOSType)
+                        void *pvMMIOBase, uint32_t cbMMIO, VBOXOSTYPE enmOSType, uint32_t fEvents)
 {
     int rc, rc2;
 
@@ -214,9 +215,9 @@ int VBoxGuestInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase,
             if (RT_SUCCESS(rc))
             {
 #ifdef VBOX_WITH_HGCM
-                rc = vboxGuestInitFilterMask(pDevExt, VMMDEV_EVENT_HGCM);
+                rc = vboxGuestInitFilterMask(pDevExt, VMMDEV_EVENT_HGCM | fEvents);
 #else
-                rc = vboxGuestInitFilterMask(pDevExt, 0);
+                rc = vboxGuestInitFilterMask(pDevExt, fEvents);
 #endif
                 if (RT_SUCCESS(rc))
                 {
@@ -1433,7 +1434,7 @@ bool VBoxGuestCommonISR(PVBOXGUESTDEVEXT pDevExt)
 #endif
 
             /* VMMDEV_EVENT_MOUSE_POSITION_CHANGED can only be polled for. */
-#if defined(RT_OS_LINUX)
+#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS)
             if (fEvents & VMMDEV_EVENT_MOUSE_POSITION_CHANGED)
             {
                 pDevExt->u32MousePosChangedSeq++;
