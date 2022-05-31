@@ -1,4 +1,4 @@
-' $Id: configure.vbs 20235 2009-06-03 16:22:25Z vboxsync $
+' $Id: configure.vbs 20248 2009-06-04 07:29:44Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -2145,6 +2145,13 @@ Sub Main
    if g_blnInternalMode then
       EnvPrint "call " & g_strPathDev & "/env.cmd %1 %2 %3 %4 %5 %6 %7 %8 %9"
    end if
+
+   Print ""
+   Print "Execute env.bat once before you start to build VBox:"
+   Print ""
+   Print "  env.bat"
+   Print "  kmk"
+   Print ""
 
 End Sub
 
