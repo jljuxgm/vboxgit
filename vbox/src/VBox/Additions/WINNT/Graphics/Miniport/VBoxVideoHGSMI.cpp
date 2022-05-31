@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 22848 2009-09-08 20:55:36Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 22920 2009-09-10 15:37:08Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -1257,7 +1257,9 @@ int vboxVBVAChannelDisplayEnable(PDEVICE_EXTENSION PrimaryExtension,
 	Assert(pDispContext);
 	if(pDispContext)
 	{
+#ifdef DEBUGVHWASTRICT
 	    Assert(!pDispContext->bValid);
+#endif
 	    Assert(!pDispContext->pFirstCmd);
 	    Assert(!pDispContext->pLastCmd);
 		if(!pDispContext->bValid)
