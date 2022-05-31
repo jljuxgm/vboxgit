@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 20531 2009-06-13 20:54:43Z vboxsync $ */
+/* $Id: MMHyper.cpp 20775 2009-06-22 13:00:11Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -943,7 +943,7 @@ VMMR3DECL(int) MMR3HyperAllocOnceNoRel(PVM pVM, size_t cb, unsigned uAlignment, 
                                pvR0,
                                cPages,
                                paPages,
-                               MMR3HeapAPrintf(pVM, MM_TAG_MM, "alloc once (%s)", mmR3GetTagName(enmTag)),
+                               MMR3HeapAPrintf(pVM, MM_TAG_MM, "alloc once (%s)", mmGetTagName(enmTag)),
                                &GCPtr);
         if (RT_SUCCESS(rc))
         {
