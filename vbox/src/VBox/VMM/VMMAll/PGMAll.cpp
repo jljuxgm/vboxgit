@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 19329 2009-05-04 14:59:32Z vboxsync $ */
+/* $Id: PGMAll.cpp 19471 2009-05-07 09:07:28Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2017,6 +2017,17 @@ VMMDECL(const char *) PGMGetModeName(PGMMODE enmMode)
     }
 }
 
+
+/**
+ * Check if the PGM lock is currently taken.
+ *
+ * @returns bool locked/not locked
+ * @param   pVM         The VM to operate on.
+ */
+VMMDECL(bool) PGMIsLocked(PVM pVM)
+{
+    return PDMCritSectIsLocked(&pVM->pgm.s.CritSect);
+}
 
 /**
  * Acquire the PGM lock.
