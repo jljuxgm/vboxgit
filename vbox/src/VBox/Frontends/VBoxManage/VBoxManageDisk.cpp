@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 21806 2009-07-27 10:14:11Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -615,7 +615,7 @@ int handleCloneHardDisk(HandlerArg *a)
         if (rc == VBOX_E_FILE_ERROR)
         {
             char szFilenameAbs[RTPATH_MAX] = "";
-            int vrc = RTPathAbs(Utf8Str(src), szFilenameAbs, sizeof(szFilenameAbs));
+            int vrc = RTPathAbs(Utf8Str(src).c_str(), szFilenameAbs, sizeof(szFilenameAbs));
             if (RT_FAILURE(vrc))
             {
                 RTPrintf("Cannot convert filename \"%s\" to absolute path\n", Utf8Str(src).raw());
@@ -649,7 +649,7 @@ int handleCloneHardDisk(HandlerArg *a)
                 if (rc == VBOX_E_FILE_ERROR)
                 {
                     char szFilenameAbs[RTPATH_MAX] = "";
-                    int vrc = RTPathAbs(Utf8Str(dst), szFilenameAbs, sizeof(szFilenameAbs));
+                    int vrc = RTPathAbs(Utf8Str(dst).c_str(), szFilenameAbs, sizeof(szFilenameAbs));
                     if (RT_FAILURE(vrc))
                     {
                         RTPrintf("Cannot convert filename \"%s\" to absolute path\n", Utf8Str(dst).raw());

@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 21811 2009-07-27 13:31:47Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -420,7 +420,7 @@ HRESULT VFSExplorer::updateS3(TaskVFSExplorer *aTask)
         else
         {
             PCRTS3KEYENTRY pKeys = NULL;
-            vrc = RTS3GetBucketKeys(hS3, m->strBucket, &pKeys);
+            vrc = RTS3GetBucketKeys(hS3, m->strBucket.c_str(), &pKeys);
             if (RT_FAILURE(vrc))
                 throw setError(E_FAIL, tr ("Can't get keys for bucket (%Rrc)"), vrc);
 
@@ -622,7 +622,7 @@ STDMETHODIMP VFSExplorer::Exists(ComSafeArrayIn(IN_BSTR, aNames), ComSafeArrayOu
         const VFSExplorer::Data::DirEntry &entry = (*it);
         for (size_t a=0; a < sfaNames.size(); ++a)
         {
-            if (entry.name == RTPathFilename(Utf8Str(sfaNames[a])))
+            if (entry.name == RTPathFilename(Utf8Str(sfaNames[a]).c_str()))
             {
                 BSTR name;
                 Bstr(sfaNames[a]).cloneTo(&name);

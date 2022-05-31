@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: HostImpl.h 22173 2009-08-11 15:38:59Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -47,6 +47,11 @@ class HostDVDDrive;
 class HostFloppyDrive;
 class Progress;
 
+namespace settings
+{
+    class Host;
+}
+
 #include <list>
 
 class ATL_NO_VTABLE Host :
@@ -73,7 +78,7 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init (VirtualBox *aParent);
+    HRESULT init(VirtualBox *aParent);
     void uninit();
 
     // IHost properties
@@ -113,9 +118,8 @@ public:
     STDMETHOD(FindUSBDeviceById) (IN_BSTR aId, IHostUSBDevice **aDevice);
 
     // public methods only for internal purposes
-
-    HRESULT loadSettings (const settings::Key &aGlobal);
-    HRESULT saveSettings (settings::Key &aGlobal);
+    HRESULT loadSettings(const settings::Host &data);
+    HRESULT saveSettings(settings::Host &data);
 
 #ifdef VBOX_WITH_USB
     typedef std::list <ComObjPtr<HostUSBDeviceFilter> > USBDeviceFilterList;

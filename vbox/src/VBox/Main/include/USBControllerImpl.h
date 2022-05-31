@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: USBControllerImpl.h 22173 2009-08-11 15:38:59Z vboxsync $ */
 
 /** @file
  *
@@ -33,6 +33,11 @@
 
 class Machine;
 class HostUSBDevice;
+
+namespace settings
+{
+    class USBController;
+}
 
 /**
  *  @note we cannot use VirtualBoxBaseWithTypedChildren <USBDeviceFilter> as a
@@ -108,8 +113,8 @@ public:
 
     // public methods only for internal purposes
 
-    HRESULT loadSettings (const settings::Key &aMachineNode);
-    HRESULT saveSettings (settings::Key &aMachineNode);
+    HRESULT loadSettings(const settings::USBController &data);
+    HRESULT saveSettings(settings::USBController &data);
 
     bool isModified();
     bool isReallyModified();

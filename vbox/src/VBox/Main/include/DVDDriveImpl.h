@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: DVDDriveImpl.h 22173 2009-08-11 15:38:59Z vboxsync $ */
 
 /** @file
  *
@@ -29,6 +29,11 @@
 #include "MediumImpl.h"
 
 class Machine;
+
+namespace settings
+{
+    class DVDDrive;
+}
 
 class ATL_NO_VTABLE DVDDrive :
     public VirtualBoxBase,
@@ -99,8 +104,8 @@ public:
 
     // public methods only for internal purposes
 
-    HRESULT loadSettings (const settings::Key &aMachineNode);
-    HRESULT saveSettings (settings::Key &aMachineNode);
+    HRESULT loadSettings(const settings::DVDDrive &data);
+    HRESULT saveSettings(settings::DVDDrive &data);
 
     bool isModified() { AutoWriteLock alock (this); return m.isBackedUp(); }
     bool isReallyModified() { AutoWriteLock alock (this); return m.hasActualChanges(); }

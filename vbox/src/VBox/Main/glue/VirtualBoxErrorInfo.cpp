@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfo.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfo.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -40,9 +40,11 @@ namespace com
 /**
  * Initializes the error info object with the given error details.
  */
-HRESULT VirtualBoxErrorInfo::init (HRESULT aResultCode, const GUID *aIID,
-                                   const char *aComponent, const char *aText,
-                                   IVirtualBoxErrorInfo *aNext)
+HRESULT VirtualBoxErrorInfo::init(HRESULT aResultCode,
+                                  const GUID *aIID,
+                                  const char *aComponent,
+                                  const Utf8Str &strText,
+                                  IVirtualBoxErrorInfo *aNext)
 {
     mResultCode = aResultCode;
 
@@ -50,7 +52,7 @@ HRESULT VirtualBoxErrorInfo::init (HRESULT aResultCode, const GUID *aIID,
         mIID = *aIID;
 
     mComponent = aComponent;
-    mText = aText;
+    mText = strText;
     mNext = aNext;
 
     return S_OK;

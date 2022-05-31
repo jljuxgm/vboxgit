@@ -1,4 +1,4 @@
-/* $Id: Performance.h 19270 2009-04-29 20:40:33Z vboxsync $ */
+/* $Id: Performance.h 22173 2009-08-11 15:38:59Z vboxsync $ */
 
 /** @file
  *
@@ -32,6 +32,11 @@
 #include <list>
 #include <string>
 #include <vector>
+
+namespace com
+{
+    class Utf8Str;
+}
 
 namespace pm
 {
@@ -413,7 +418,7 @@ namespace pm
 
         ElementList mElements;
 
-        void processMetricList(const std::string &name, const ComPtr<IUnknown> object);
+        void processMetricList(const com::Utf8Str &name, const ComPtr<IUnknown> object);
     };
 }
 

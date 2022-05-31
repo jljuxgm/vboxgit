@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfo.h 21783 2009-07-24 11:44:32Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfo.h 22173 2009-08-11 15:38:59Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -79,9 +79,11 @@ public:
 
     // public initializer/uninitializer for internal purposes only
 
-    HRESULT init (HRESULT aResultCode, const GUID *aIID,
-                  const char *aComponent, const char *aText,
-                  IVirtualBoxErrorInfo *aNext = NULL);
+    HRESULT init(HRESULT aResultCode,
+                 const GUID *aIID,
+                 const char *aComponent,
+                 const Utf8Str &strText,
+                 IVirtualBoxErrorInfo *aNext = NULL);
 
     // IVirtualBoxErrorInfo properties
     STDMETHOD(COMGETTER(ResultCode)) (LONG *aResultCode);

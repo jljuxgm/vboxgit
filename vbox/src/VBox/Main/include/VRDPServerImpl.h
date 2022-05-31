@@ -1,4 +1,4 @@
-/* $Id: VRDPServerImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: VRDPServerImpl.h 22173 2009-08-11 15:38:59Z vboxsync $ */
 
 /** @file
  *
@@ -29,6 +29,11 @@
 #include <VBox/VRDPAuth.h>
 
 class Machine;
+
+namespace settings
+{
+    class VRDPSettings;
+}
 
 class ATL_NO_VTABLE VRDPServer :
     public VirtualBoxBase,
@@ -106,8 +111,8 @@ public:
 
     // public methods only for internal purposes
 
-    HRESULT loadSettings (const settings::Key &aMachineNode);
-    HRESULT saveSettings (settings::Key &aMachineNode);
+    HRESULT loadSettings(const settings::VRDPSettings &data);
+    HRESULT saveSettings(settings::VRDPSettings &data);
 
     bool isModified() { AutoWriteLock alock (this); return mData.isBackedUp(); }
     bool isReallyModified() { AutoWriteLock alock (this); return mData.hasActualChanges(); }

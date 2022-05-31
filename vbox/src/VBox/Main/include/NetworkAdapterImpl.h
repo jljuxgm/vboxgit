@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 22173 2009-08-11 15:38:59Z vboxsync $ */
 
 /** @file
  *
@@ -28,6 +28,11 @@
 
 class Machine;
 class GuestOSType;
+
+namespace settings
+{
+    class NetworkAdapter;
+}
 
 class ATL_NO_VTABLE NetworkAdapter :
     public VirtualBoxBase,
@@ -133,8 +138,8 @@ public:
 
     // public methods only for internal purposes
 
-    HRESULT loadSettings (const settings::Key &aAdapterNode);
-    HRESULT saveSettings (settings::Key &aAdapterNode);
+    HRESULT loadSettings(const settings::NetworkAdapter &data);
+    HRESULT saveSettings(settings::NetworkAdapter &data);
 
     bool isModified() { AutoWriteLock alock (this); return mData.isBackedUp(); }
     bool isReallyModified() { AutoWriteLock alock (this); return mData.hasActualChanges(); }

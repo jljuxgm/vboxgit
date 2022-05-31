@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 22173 2009-08-11 15:38:59Z vboxsync $ */
 
 /** @file
  *
@@ -27,6 +27,11 @@
 #include "VirtualBoxBase.h"
 
 class Machine;
+
+namespace settings
+{
+    class AudioAdapter;
+}
 
 class ATL_NO_VTABLE AudioAdapter :
     public VirtualBoxBase,
@@ -87,8 +92,8 @@ public:
 
     // public methods only for internal purposes
 
-    HRESULT loadSettings (const settings::Key &aMachineNode);
-    HRESULT saveSettings (settings::Key &aMachineNode);
+    HRESULT loadSettings(const settings::AudioAdapter &data);
+    HRESULT saveSettings(settings::AudioAdapter &data);
 
     bool isModified() { AutoWriteLock alock (this); return mData.isBackedUp(); }
     bool isReallyModified() { AutoWriteLock alock (this); return mData.hasActualChanges(); }
