@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 23012 2009-09-14 16:38:13Z vboxsync $ */
+/* $Id: TM.cpp 23794 2009-10-15 11:50:03Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -689,7 +689,7 @@ static bool tmR3HasFixedTSC(PVM pVM)
     {
         uint32_t uEAX, uEBX, uECX, uEDX;
 
-        if (CPUMGetCPUVendor(pVM) == CPUMCPUVENDOR_AMD)
+        if (CPUMGetHostCpuVendor(pVM) == CPUMCPUVENDOR_AMD)
         {
             /*
              * AuthenticAMD - Check for APM support and that TscInvariant is set.
@@ -709,7 +709,7 @@ static bool tmR3HasFixedTSC(PVM pVM)
                     return true;
             }
         }
-        else if (CPUMGetCPUVendor(pVM) == CPUMCPUVENDOR_INTEL)
+        else if (CPUMGetHostCpuVendor(pVM) == CPUMCPUVENDOR_INTEL)
         {
             /*
              * GenuineIntel - Check the model number.

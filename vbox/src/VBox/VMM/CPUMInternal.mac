@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 23758 2009-10-14 12:21:21Z vboxsync $
+; $Id: CPUMInternal.mac 23794 2009-10-15 11:50:03Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -63,7 +63,8 @@ struc CPUM
     .CPUFeaturesExt.edx   resd    1
     .CPUFeaturesExt.ecx   resd    1
 
-    .enmCPUVendor         resd    1
+    .enmHostCpuVendor     resd    1
+    .enmGuestCpuVendor    resd    1
 
     ; CR4 masks
     .CR4.AndMask          resd    1
