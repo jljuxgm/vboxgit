@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 23338 2009-09-25 15:26:52Z vboxsync $ */
+/* $Id: HostImpl.cpp 23339 2009-09-25 15:29:01Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -340,7 +340,8 @@ void Host::uninit()
     delete m->pHostPowerService;
 
 #ifdef VBOX_WITH_USB
-    /* uninit all USB device filters still referenced by clients */
+    /* uninit all USB device filters still referenced by clients
+     * Note! HostUSBDeviceFilter::uninit() will modify llChildren. */
     while (!m->llChildren.empty())
     {
         ComObjPtr<HostUSBDeviceFilter> pChild = m->llChildren.front();
