@@ -1,4 +1,4 @@
-/* $Id: DBGFLog.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: DBGFLog.cpp 21377 2009-07-08 01:00:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Log Manager.
  */
@@ -143,7 +143,7 @@ VMMR3DECL(int) DBGFR3LogModifyDestinations(PVM pVM, const char *pszDestSettings)
  */
 static DECLCALLBACK(int) dbgfR3LogModifyDestinations(PVM pVM, const char *pszDestSettings)
 {
-    int rc = VERR_NOT_IMPLEMENTED; //RTLogDestination(NULL, pszDestSettings);
+    int rc = RTLogDestinations(NULL, pszDestSettings);
     if (RT_SUCCESS(rc))
         rc = VMMR3UpdateLoggers(pVM);
     return rc;
