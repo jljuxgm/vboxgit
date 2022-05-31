@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 19480 2009-05-07 12:05:40Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 19586 2009-05-11 14:28:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1536,7 +1536,10 @@ VMMDECL(int) PGMPhysRead(PVM pVM, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead)
                 {
                     int rc = pgmPhysReadHandler(pVM, pPage, pRam->GCPhys + off, pvBuf, cb);
                     if (RT_FAILURE(rc))
+                    {
+                        pgmUnlock(pVM);
                         return rc;
+                    }
                 }
                 else
                 {
@@ -2019,7 +2022,10 @@ VMMDECL(int) PGMPhysWrite(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t cb
                 {
                     int rc = pgmPhysWriteHandler(pVM, pPage, pRam->GCPhys + off, pvBuf, cb);
                     if (RT_FAILURE(rc))
+                    {
+                        pgmUnlock(pVM);
                         return rc;
+                    }
                 }
                 else
                 {
