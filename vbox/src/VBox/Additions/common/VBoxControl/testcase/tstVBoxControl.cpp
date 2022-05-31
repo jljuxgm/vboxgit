@@ -1,4 +1,4 @@
-/** $Id: tstVBoxControl.cpp 14233 2008-11-17 07:32:42Z vboxsync $ */
+/** $Id: tstVBoxControl.cpp 21218 2009-07-05 13:31:56Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface, test case
  */
@@ -24,15 +24,15 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/mem.h>
-#include <iprt/string.h>
-#include <iprt/stream.h>
-#include <iprt/path.h>
-#include <iprt/initterm.h>
 #include <iprt/autores.h>
+#include <iprt/initterm.h>
+#include <iprt/mem.h>
+#include <iprt/path.h>
+#include <iprt/stream.h>
+#include <iprt/string.h>
 #include <VBox/log.h>
-#include <VBox/VBoxGuest.h>
 #include <VBox/version.h>
+#include <VBox/VBoxGuestLib.h>
 #ifdef VBOX_WITH_GUEST_PROPS
 # include <VBox/HostServices/GuestPropertySvc.h>
 #endif

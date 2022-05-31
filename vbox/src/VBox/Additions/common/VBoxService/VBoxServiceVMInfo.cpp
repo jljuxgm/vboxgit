@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 21166 2009-07-02 14:09:34Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 21218 2009-07-05 13:31:56Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -51,7 +51,7 @@
 #include <iprt/system.h>
 #include <iprt/time.h>
 #include <iprt/assert.h>
-#include <VBox/VBoxGuest.h>
+#include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
 #include "VBoxServiceUtils.h"
 
