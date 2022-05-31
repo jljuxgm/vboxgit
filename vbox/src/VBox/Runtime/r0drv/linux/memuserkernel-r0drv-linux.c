@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-linux.c 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-linux.c 21356 2009-07-07 16:15:36Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Linux.
  */
@@ -74,7 +74,7 @@ RTR0DECL(bool) RTR0MemKernelIsValidAddr(void *pv)
     return (uintptr_t)pv >= PAGE_OFFSET;
 # endif
 
-#elif RT_ARCH_AMD64
+#elif defined(RT_ARCH_AMD64)
 # ifdef KERNEL_IMAGE_START
     return (uintptr_t)pv >= KERNEL_IMAGE_START;
 # else
