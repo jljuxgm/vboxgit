@@ -1,4 +1,4 @@
-/* $Id: pack_shaders.c 20174 2009-06-02 07:35:01Z vboxsync $ */
+/* $Id: pack_shaders.c 20177 2009-06-02 07:50:55Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -14,8 +14,6 @@
 #include "packer.h"
 #include "cr_error.h"
 #include "cr_string.h"
-
-#ifdef CR_OPENGL_VERSION_2_0
 
 void PACK_APIENTRY crPackBindAttribLocation(GLuint program, GLuint index, const char *name)
 {
@@ -375,5 +373,3 @@ void PACK_APIENTRY crPackUniformMatrix4fvSWAP(GLint location, GLsizei count, GLb
     crError ("No swap version");
     (void) pc;
 }
-
-#endif /* #ifdef CR_OPENGL_VERSION_2_0 */
