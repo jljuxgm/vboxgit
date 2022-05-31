@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 19968 2009-05-24 12:14:19Z vboxsync $ */
+/* $Id: HostImpl.h 20042 2009-05-26 14:49:55Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -92,6 +92,7 @@ public:
     STDMETHOD(COMGETTER(OperatingSystem))(BSTR *os);
     STDMETHOD(COMGETTER(OSVersion))(BSTR *version);
     STDMETHOD(COMGETTER(UTCTime))(LONG64 *aUTCTime);
+    STDMETHOD(COMGETTER(Acceleration3DAvailable))(BOOL *aSupported);
 
     // IHost methods
     STDMETHOD(CreateHostOnlyNetworkInterface) (IHostNetworkInterface **aHostNetworkInterface,
@@ -173,6 +174,8 @@ private:
 #endif
     /* Features that can be queried with GetProcessorFeature */
     BOOL fVTxAMDVSupported, fLongModeSupported, fPAESupported;
+    /* 3D hardware acceleration supported? */
+    BOOL f3DAccelerationSupported;
 
     HostPowerService *mHostPowerService;
 };
