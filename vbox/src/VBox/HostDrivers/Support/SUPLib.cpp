@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 23699 2009-10-12 15:01:05Z vboxsync $ */
+/* $Id: SUPLib.cpp 23700 2009-10-12 15:12:21Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -2090,7 +2090,7 @@ SUPR3DECL(int) SUPR3QueryVTCaps(uint32_t *pCaps)
     if (RT_SUCCESS(rc))
     {
         rc = Req.Hdr.rc;
-        if (RT_SUCCESS(rc)
+        if (RT_SUCCESS(rc))
             *pCaps = Req.u.Out.Caps;
     }
     return rc;
