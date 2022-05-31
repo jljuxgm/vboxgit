@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 17513 2009-03-07 05:44:48Z vboxsync $ */
+/* $Id: MMInternal.h 18665 2009-04-02 19:44:18Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -564,39 +564,6 @@ typedef struct MMLOCKEDMEM
 typedef MMLOCKEDMEM *PMMLOCKEDMEM;
 
 
-#ifndef VBOX_WITH_NEW_PHYS_CODE
-/**
- * A registered Rom range.
- *
- * This is used to track ROM registrations both for debug reasons
- * and for resetting shadow ROM at reset.
- *
- * This is allocated of the MMR3Heap and thus only accessibel from ring-3.
- */
-typedef struct MMROMRANGE
-{
-    /** Pointer to the next */
-    struct MMROMRANGE      *pNext;
-    /** Address of the range. */
-    RTGCPHYS                GCPhys;
-    /** Size of the range. */
-    uint32_t                cbRange;
-    /** Shadow ROM? */
-    bool                    fShadow;
-    /** Is the shadow ROM currently wriable? */
-    bool                    fWritable;
-    /** The address of the virgin ROM image for shadow ROM. */
-    const void             *pvBinary;
-    /** The address of the guest RAM that's shadowing the ROM. (lazy bird) */
-    void                   *pvCopy;
-    /** The ROM description. */
-    const char             *pszDesc;
-} MMROMRANGE;
-/** Pointer to a ROM range. */
-typedef MMROMRANGE *PMMROMRANGE;
-#endif /* !VBOX_WITH_NEW_PHYS_CODE */
-
-
 /**
  * Hypervisor memory mapping type.
  */
@@ -770,11 +737,6 @@ typedef struct MM
     uint32_t                    cFixedPages;
     /** Padding. */
     uint32_t                    u32Padding0;
-
-#ifndef VBOX_WITH_NEW_PHYS_CODE
-    /** The head of the ROM ranges. */
-    R3PTRTYPE(PMMROMRANGE)      pRomHead;
-#endif
 } MM;
 /** Pointer to MM Data (part of VM). */
 typedef MM *PMM;
@@ -810,10 +772,6 @@ int  mmR3LockMem(PVM pVM, void *pv, size_t cb, MMLOCKEDTYPE eType, PMMLOCKEDMEM 
 int  mmR3MapLocked(PVM pVM, PMMLOCKEDMEM pLockedMem, RTGCPTR Addr, unsigned iPage, size_t cPages, unsigned fFlags);
 
 const char *mmR3GetTagName(MMTAG enmTag);
-
-#ifndef VBOX_WITH_NEW_PHYS_CODE
-void mmR3PhysRomReset(PVM pVM);
-#endif
 
 /**
  * Converts a pool address to a physical address.
