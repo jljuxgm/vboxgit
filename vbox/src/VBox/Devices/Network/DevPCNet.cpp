@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 15006 2008-12-04 20:08:23Z vboxsync $ */
+/* $Id: DevPCNet.cpp 18383 2009-03-27 12:24:05Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -3746,14 +3746,17 @@ static DECLCALLBACK(void) pcnetTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer)
     PCNetState *pThis = PDMINS_2_DATA(pDevIns, PCNetState *);
     int         rc;
 
-    STAM_PROFILE_ADV_START(&pThis->StatTimer, a);
-    rc = PDMCritSectEnter(&pThis->CritSect, VERR_SEM_BUSY);
-    AssertReleaseRC(rc);
-
-    pcnetPollTimer(pThis);
-
-    PDMCritSectLeave(&pThis->CritSect);
-    STAM_PROFILE_ADV_STOP(&pThis->StatTimer, a);
+    /*
+     * Don't block if we cannot enter here.
+     */
+    rc = PDMR3CritSectTryEnter(&pThis->CritSect);
+    if (RT_SUCCESS(rc))
+    {
+        STAM_PROFILE_ADV_START(&pThis->StatTimer, a);
+        pcnetPollTimer(pThis);
+        PDMCritSectLeave(&pThis->CritSect);
+        STAM_PROFILE_ADV_STOP(&pThis->StatTimer, a);
+    }
 }
 
 
