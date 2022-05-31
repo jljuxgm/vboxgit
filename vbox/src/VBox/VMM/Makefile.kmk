@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20997 2009-06-26 22:23:04Z vboxsync $
+# $Id: Makefile.kmk 20998 2009-06-26 23:01:02Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -144,6 +144,7 @@ VMMR3_SOURCES   = \
 	VMMAll/TRPMAll.cpp \
 	VMMAll/VMAll.cpp \
 	VMMAll/VMMAll.cpp \
+	VMMAll/VMMAllA.asm \
 	PATM/CSAM.cpp \
 	PATM/VMMAll/CSAMAll.cpp \
 	PATM/PATM.cpp \
@@ -370,6 +371,7 @@ VMMGC_SOURCES   = \
 	VMMAll/TRPMAll.cpp \
 	VMMAll/VMAll.cpp \
 	VMMAll/VMMAll.cpp \
+	VMMAll/VMMAllA.asm \
 	PATM/VMMGC/CSAMGC.cpp \
 	PATM/VMMAll/CSAMAll.cpp \
 	PATM/VMMGC/PATMGC.cpp \
@@ -470,7 +472,8 @@ VMMR0_SOURCES   = \
 	VMMAll/TMAllVirtual.cpp \
 	VMMAll/TRPMAll.cpp \
 	VMMAll/VMAll.cpp \
-	VMMAll/VMMAll.cpp
+	VMMAll/VMMAll.cpp \
+	VMMAll/VMMAllA.asm
 ifeq ($(VBOX_LDR_FMT),pe)
  VMMR0_SOURCES += VMMR0/VMMR0.def
 endif
