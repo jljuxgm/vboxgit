@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 18984 2009-04-17 09:00:22Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 19403 2009-05-05 22:23:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -355,7 +355,7 @@ VMMR0DECL(int) PGMR0DynMapInitVM(PVM pVM)
      * Initialize the auto sets.
      */
     VMCPUID idCpu = pVM->cCPUs;
-    AssertReturn(idCpu > 0 && idCpu <= VMCPU_MAX_CPU_COUNT, VERR_INTERNAL_ERROR);
+    AssertReturn(idCpu > 0 && idCpu <= VMM_MAX_CPU_COUNT, VERR_INTERNAL_ERROR);
     while (idCpu-- > 0)
     {
         PPGMMAPSET pSet = &pVM->aCpus[idCpu].pgm.s.AutoSet;

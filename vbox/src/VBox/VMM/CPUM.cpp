@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 19334 2009-05-04 16:03:57Z vboxsync $ */
+/* $Id: CPUM.cpp 19403 2009-05-05 22:23:42Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1022,7 +1022,7 @@ static DECLCALLBACK(int) cpumR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Versio
         }
 
         if (    !pVM->cCPUs
-            ||  pVM->cCPUs > VMCPU_MAX_CPU_COUNT
+            ||  pVM->cCPUs > VMM_MAX_CPU_COUNT
             ||  (   u32Version == CPUM_SAVED_STATE_VERSION_VER2_0
                  && pVM->cCPUs != 1))
         {
