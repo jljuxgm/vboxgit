@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18866 2009-04-10 14:13:10Z vboxsync $
+# $Id: Makefile.kmk 18883 2009-04-14 11:07:55Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -654,6 +654,21 @@ INSTALLS.win += VBoxMain-com-inst
 VBoxMain-com-inst_INST = $(INST_BIN)
 VBoxMain-com-inst_SOURCES = \
 	win/comregister.cmd
+
+
+if defined(VBOX_WITH_HARDENING) && "$(KBUILD_TARGET)" == "linux"
+ #
+ # Installs linux/hardening related things to components.
+ #
+ INSTALLS.linux += VBoxMain-hardening-inst
+ VBoxMain-hardening-inst_INST = $(INST_BIN)components/
+ VBoxMain-hardening-inst_SYMLINKS = \
+ 	VBoxDDU.so=../VBoxDDU.so \
+ 	VBoxREM.so=../VBoxREM.so \
+ 	VBoxRT.so=../VBoxRT.so \
+ 	VBoxVMM.so=../VBoxVMM.so \
+ 	VBoxXPCOM.so=../VBoxXPCOM.so
+endif
 
 
 # generate rules
