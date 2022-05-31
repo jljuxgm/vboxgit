@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 23382 2009-09-28 14:04:05Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 23385 2009-09-28 14:19:08Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1300,8 +1300,8 @@ private:
 
     /** Check whether the sysfs block entry is valid for a floppy device and
      * initialise the string data members for the object.  Since we only
-     * support floppies using the basic "floppy" driver, we just check the
-     * entry name and the bus type ("platform"). */
+     * support floppies using the basic "floppy" driver, we check the driver
+     * using the entry name and a driver-specific ioctl. */
     void validateAndInitForFloppy()
     {
         floppy_drive_name szName;
