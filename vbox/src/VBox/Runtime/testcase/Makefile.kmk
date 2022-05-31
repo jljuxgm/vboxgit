@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 20563 2009-06-14 18:43:45Z vboxsync $
+# $Id: Makefile.kmk 20647 2009-06-16 21:58:09Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
 
 #
-# Copyright (C) 2006-2007 Sun Microsystems, Inc.
+# Copyright (C) 2006-2009 Sun Microsystems, Inc.
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -85,6 +85,7 @@ PROGRAMS += \
 	tstR0ThreadPreemptionDriver \
 	tstSems \
 	tstSemPingPong \
+	tstRTStrCache \
 	tstStrFormat \
 	tstStrSimplePattern \
 	tstStrToNum \
@@ -346,6 +347,9 @@ tstSemRW_SOURCES = tstSemRW.cpp
 tstSemPingPong_SOURCES = tstSemPingPong.cpp
 
 tstSems_SOURCES = tstSems.cpp
+
+tstRTStrCache_TEMPLATE = VBOXR3TSTEXE
+tstRTStrCache_SOURCES = tstRTStrCache.cpp
 
 tstStrFormat_SOURCES = tstStrFormat.cpp
 
