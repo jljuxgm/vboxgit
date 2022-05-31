@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21963 2009-08-04 15:12:59Z vboxsync $
+# $Id: Makefile.kmk 22029 2009-08-06 12:11:58Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -107,7 +107,7 @@ VMMR3_SOURCES   = \
 	PGMPhys.cpp \
 	PGMPool.cpp \
 	SELM.cpp \
-	SSM$(if-expr defined(VBOX_WITH_NEW_SSM),-new,).cpp \
+	SSM$(if-expr defined(VBOX_WITH_OLD_SSM),,-new).cpp \
 	STAM.cpp \
 	TM.cpp \
 	TRPM.cpp \
