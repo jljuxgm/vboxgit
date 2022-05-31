@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 20928 2009-06-25 11:53:37Z vboxsync $ */
+/* $Id: MachineImpl.cpp 20931 2009-06-25 12:17:55Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -8239,12 +8239,7 @@ struct SessionMachine::DiscardCurrentStateTask : public SessionMachine::Task
 
 ////////////////////////////////////////////////////////////////////////////////
 
-SessionMachine::SessionMachine()
-    : mRemoveSavedState(true)
-{}
-
-SessionMachine::~SessionMachine()
-{}
+DEFINE_EMPTY_CTOR_DTOR (SessionMachine)
 
 HRESULT SessionMachine::FinalConstruct()
 {
@@ -8423,6 +8418,9 @@ HRESULT SessionMachine::init (Machine *aMachine)
         unconst (mNetworkAdapters [slot]).createObject();
         mNetworkAdapters [slot]->init (this, aMachine->mNetworkAdapters [slot]);
     }
+
+    /* default is to delete saved state on Saved -> PoweredOff transition */
+    mRemoveSavedState = true;
 
     /* Confirm a successful initialization when it's the case */
     autoInitSpan.setSucceeded();
