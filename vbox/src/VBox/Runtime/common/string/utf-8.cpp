@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 21744 2009-07-21 12:29:43Z vboxsync $ */
+/* $Id: utf-8.cpp 21791 2009-07-25 17:10:57Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -1117,7 +1117,7 @@ RTDECL(char *) RTStrPutCpInternal(char *psz, RTUNICP uc)
     }
     else if (uc < 0x04000000)
     {
-        *puch++ = 0xf1 | (uc >> 24);
+        *puch++ = 0xf8 | (uc >> 24);
         *puch++ = 0x80 | ((uc >> 18) & 0x3f);
         *puch++ = 0x80 | ((uc >> 12) & 0x3f);
         *puch++ = 0x80 | ((uc >> 6) & 0x3f);
@@ -1125,7 +1125,7 @@ RTDECL(char *) RTStrPutCpInternal(char *psz, RTUNICP uc)
     }
     else if (uc <= 0x7fffffff)
     {
-        *puch++ = 0xf3 | (uc >> 30);
+        *puch++ = 0xfc | (uc >> 30);
         *puch++ = 0x80 | ((uc >> 24) & 0x3f);
         *puch++ = 0x80 | ((uc >> 18) & 0x3f);
         *puch++ = 0x80 | ((uc >> 12) & 0x3f);
