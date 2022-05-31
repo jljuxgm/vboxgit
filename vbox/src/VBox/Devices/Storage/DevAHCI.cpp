@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 23066 2009-09-16 12:37:28Z vboxsync $ */
+/* $Id: DevAHCI.cpp 23149 2009-09-18 22:31:42Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -3661,7 +3661,7 @@ static int atapiParseCmdVirtualATAPI(PAHCIPort pAhciPort, PAHCIPORTTASKSTATE pAh
 
                             rc = VMR3ReqCallWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
                                                  (PFNRT)pAhciPort->pDrvMount->pfnUnmount, 2, pAhciPort->pDrvMount, false);
-                            AssertReleaseRC(rc);
+                            Assert(RT_SUCCESS(rc) || (rc == VERR_PDM_MEDIA_LOCKED));
                         }
                         break;
                     case 3: /* 11 - Load media */
