@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19954 2009-05-24 00:00:21Z vboxsync $
+# $Id: Makefile.kmk 20022 2009-05-26 10:39:21Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -129,6 +129,10 @@ PROGRAMS += \
 	tstFileAio
 endif
 
+ifdef VBOX_WITH_LIBXML2_IN_VBOXRT
+PROGRAMS += \
+	tstRTS3
+endif
 
 
 #
@@ -362,6 +366,8 @@ tstTSC_SOURCES = tstTSC.cpp
 tstTSC_CXXFLAGS.linux += -O3
 
 tstUuid_SOURCES = tstUuid.cpp
+
+tstRTS3_SOURCES = tstRTS3.cpp
 
 tstUtf8_SOURCES = tstUtf8.cpp
 
