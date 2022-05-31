@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceExec.cpp 23634 2009-10-09 07:54:09Z vboxsync $ */
+/* $Id: VBoxServiceExec.cpp 23653 2009-10-09 15:36:16Z vboxsync $ */
 /** @file
  * VBoxServiceExec - Host-driven Command Execution.
  */
@@ -136,6 +136,7 @@ static int VBoxServiceExecReadHostProp(const char *pszPropName, char **ppszValue
     size_t  cbBuf = _1K;
     void   *pvBuf = NULL;
     int     rc;
+
     *ppszValue = NULL;
 
     for (unsigned cTries = 0; cTries < 10; cTries++)
@@ -198,6 +199,7 @@ static int VBoxServiceExecReadHostProp(const char *pszPropName, char **ppszValue
             *puTimestamp = uTimestamp;
         break; /* done */
     }
+
     RTMemFree(pvBuf);
     return rc;
 }
@@ -396,11 +398,9 @@ DECLCALLBACK(int) VBoxServiceExecWorker(bool volatile *pfShutdown)
                                     /*
                                      * Store the result in Set return value so the host knows what happend.
                                      */
-                                    rc = VBoxServiceWritePropF(g_uExecGuestPropSvcClientID,
-                                                               "/VirtualBox/HostGuest/SysprepRet",
-                                                               "%d", Status.iStatus);
-                                    if (RT_FAILURE(rc))
-                                        VBoxServiceError("Exec: Failed to write SysprepRet: rc=%Rrc\n", rc);
+                                    VBoxServiceWritePropF(g_uExecGuestPropSvcClientID,
+                                                          "/VirtualBox/HostGuest/SysprepRet",
+                                                          "%d", Status.iStatus);
                                 }
                                 else
                                     VBoxServiceError("Exec: RTProcWait failed for sysprep: %Rrc\n", rc);
@@ -442,11 +442,7 @@ DECLCALLBACK(int) VBoxServiceExecWorker(bool volatile *pfShutdown)
              * value is empty/missing.
              */
             if (rc != VERR_NOT_FOUND)
-            {
-                rc = VBoxServiceWritePropF(g_uExecGuestPropSvcClientID, "/VirtualBox/HostGuest/SysprepVBoxRC", "%d", rc);
-                if (RT_FAILURE(rc))
-                    VBoxServiceError("Exec: Failed to write SysprepVBoxRC: rc=%Rrc\n", rc);
-            }
+                VBoxServiceWritePropF(g_uExecGuestPropSvcClientID, "/VirtualBox/HostGuest/SysprepVBoxRC", "%d", rc);
         }
 
 #ifdef FULL_FEATURED_EXEC
