@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 21707 2009-07-17 15:53:35Z vboxsync $ */
+/* $Id: HWACCM.cpp 21708 2009-07-17 15:57:01Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1766,8 +1766,11 @@ DECLCALLBACK(int) hwaccmR3PatchTprInstr(PVM pVM, PVMCPU pVCpu, void *pvUser)
                 aPatch[off++] = 0xD2;
                 if (pDis->param2.flags == USE_REG_GEN32)
                 {
-                    aPatch[off++] = 0x89;    /* mov eax, src_reg */
-                    aPatch[off++] = MAKE_MODRM(3, pDis->param2.base.reg_gen, USE_REG_EAX);
+                    if (pDis->param2.base.reg_gen != USE_REG_EAX)
+                    {
+                        aPatch[off++] = 0x89;    /* mov eax, src_reg */
+                        aPatch[off++] = MAKE_MODRM(3, pDis->param2.base.reg_gen, USE_REG_EAX);
+                    }
                 }
                 else
                 {
@@ -1854,7 +1857,7 @@ DECLCALLBACK(int) hwaccmR3PatchTprInstr(PVM pVM, PVMCPU pVCpu, void *pvUser)
 
                     pInstr += cb;
 
-                    if (pInstr > pVM->hwaccm.s.pFreeGuestPatchMem + off)
+                    if (pInstr >= pVM->hwaccm.s.pFreeGuestPatchMem + off)
                         break;
                 }
 #endif
