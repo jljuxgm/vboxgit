@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 20874 2009-06-24 02:19:29Z vboxsync $ */
+/* $Id: PGM.cpp 20925 2009-06-25 11:25:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2144,6 +2144,19 @@ VMMR3DECL(void) PGMR3Reset(PVM pVM)
 #endif
 
     /*
+     * Switch mode back to real mode. (before resetting the pgm pool!)
+     */
+    for (unsigned i=0;i<pVM->cCPUs;i++)
+    {
+        PVMCPU  pVCpu = &pVM->aCpus[i];
+
+        rc = PGMR3ChangeMode(pVM, pVCpu, PGMMODE_REAL);
+        AssertRC(rc);
+
+        STAM_REL_COUNTER_RESET(&pVCpu->pgm.s.cGuestModeChanges);
+    }
+
+    /*
      * Reset the shadow page pool.
      */
     pgmR3PoolReset(pVM);
@@ -2174,21 +2187,6 @@ VMMR3DECL(void) PGMR3Reset(PVM pVM)
          * Reset (zero) shadow ROM pages.
          */
         rc = pgmR3PhysRomReset(pVM);
-        if (RT_SUCCESS(rc))
-        {
-            /*
-             * Switch mode back to real mode.
-             */
-            for (unsigned i=0;i<pVM->cCPUs;i++)
-            {
-                PVMCPU  pVCpu = &pVM->aCpus[i];
-
-                rc = PGMR3ChangeMode(pVM, pVCpu, PGMMODE_REAL);
-                AssertRC(rc);
-
-                STAM_REL_COUNTER_RESET(&pVCpu->pgm.s.cGuestModeChanges);
-            }
-        }
     }
 
     pgmUnlock(pVM);
