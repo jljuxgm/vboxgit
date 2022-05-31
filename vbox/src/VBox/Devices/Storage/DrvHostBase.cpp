@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 21691 2009-07-17 13:54:24Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -2044,20 +2044,16 @@ int DRVHostBaseInitFinish(PDRVHOSTBASE pThis)
     /*
      * Check that there are no drivers below us.
      */
-    PPDMIBASE pBase;
-    int rc = pDrvIns->pDrvHlp->pfnAttach(pDrvIns, &pBase);
-    if (rc != VERR_PDM_NO_ATTACHED_DRIVER)
-    {
-        AssertMsgFailed(("Configuration error: No attached driver, please! (rc=%Rrc)\n", rc));
-        return VERR_PDM_DRVINS_NO_ATTACH;
-    }
+    AssertMsgReturn(PDMDrvHlpNoAttach(pDrvIns) == VERR_PDM_NO_ATTACHED_DRIVER, 
+                    ("Configuration error: Not possible to attach anything to this driver!\n"),
+                    VERR_PDM_DRVINS_NO_ATTACH);
 
     /*
      * Register saved state.
      */
-    rc = pDrvIns->pDrvHlp->pfnSSMRegister(pDrvIns, pDrvIns->pDrvReg->szDriverName, pDrvIns->iInstance, 1, 0,
-                                          NULL, NULL, NULL,
-                                          NULL, NULL, drvHostBaseLoadDone);
+    int rc = pDrvIns->pDrvHlp->pfnSSMRegister(pDrvIns, pDrvIns->pDrvReg->szDriverName, pDrvIns->iInstance, 1, 0,
+                                              NULL, NULL, NULL,
+                                              NULL, NULL, drvHostBaseLoadDone);
     if (RT_FAILURE(rc))
         return rc;
 

@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 21363 2009-07-07 17:10:52Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -2546,7 +2546,7 @@ static DECLCALLBACK(void) buslogicDetach(PPDMDEVINS pDevIns, unsigned iLUN, uint
 
     Log(("%s:\n", __FUNCTION__));
 
-    AssertMsg(fFlags & PDMDEVATT_FLAGS_NOT_HOT_PLUG,
+    AssertMsg(fFlags & PDM_TACH_FLAGS_NOT_HOT_PLUG,
               ("BusLogic: Device does not support hotplugging\n"));
 
     /*
@@ -2573,7 +2573,7 @@ static DECLCALLBACK(int)  buslogicAttach(PPDMDEVINS pDevIns, unsigned iLUN, uint
     PBUSLOGICDEVICE pDevice = &pThis->aDeviceStates[iLUN];
     int rc;
 
-    AssertMsgReturn(fFlags & PDMDEVATT_FLAGS_NOT_HOT_PLUG,
+    AssertMsgReturn(fFlags & PDM_TACH_FLAGS_NOT_HOT_PLUG,
                     ("BusLogic: Device does not support hotplugging\n"),
                     VERR_INVALID_PARAMETER);
 

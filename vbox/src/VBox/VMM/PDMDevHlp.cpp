@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 21789 2009-07-24 17:29:12Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -894,7 +894,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_DriverAttach(PPDMDEVINS pDevIns, RTUINT iLu
                          * Link with LUN and call the constructor.
                          */
                         pLun->pTop = pLun->pBottom = pNew;
-                        rc = pDrv->pDrvReg->pfnConstruct(pNew, pNew->pCfgHandle);
+                        rc = pDrv->pDrvReg->pfnConstruct(pNew, pNew->pCfgHandle, 0 /*fFlags*/);
                         if (RT_SUCCESS(rc))
                         {
                             MMR3HeapFree(pszName);

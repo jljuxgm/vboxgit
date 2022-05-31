@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22265 2009-08-14 15:26:04Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2772,7 +2772,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             {
                 if (fAttachDetach)
                 {
-                    rc = PDMR3DeviceAttach(pVM, pszDevice, uInstance, uLun, NULL, 0 /*fFlags*/);
+                    rc = PDMR3DeviceAttach(pVM, pszDevice, uInstance, uLun, 0 /*fFlags*/, NULL /*ppBase*/);
                     AssertRC(rc);
                 }
 
