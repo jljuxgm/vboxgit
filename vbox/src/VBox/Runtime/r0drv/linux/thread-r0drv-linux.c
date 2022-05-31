@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-linux.c 21766 2009-07-22 12:13:22Z vboxsync $ */
+/* $Id: thread-r0drv-linux.c 22057 2009-08-07 11:34:34Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Linux.
  */
@@ -105,7 +105,7 @@ RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
         return false;
 # endif
 # if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 28)
-    if (!irqs_disabled())
+    if (irqs_disabled())
         return false;
 # else
     if (!ASMIntAreEnabled())
