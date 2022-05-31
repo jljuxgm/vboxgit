@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 19682 2009-05-14 10:15:44Z vboxsync $ */
+/* $Id: PDM.cpp 19735 2009-05-15 12:50:56Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -324,7 +324,7 @@ VMMR3DECL(int) PDMR3Init(PVM pVM)
      */
     AssertRelease(!(RT_OFFSETOF(VM, pdm.s) & 31));
     AssertRelease(sizeof(pVM->pdm.s) <= sizeof(pVM->pdm.padding));
-
+    AssertCompileMemberAlignment(PDM, CritSect, sizeof(uintptr_t));
     /*
      * Init the structure.
      */

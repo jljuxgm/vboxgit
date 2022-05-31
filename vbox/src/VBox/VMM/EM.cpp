@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19719 2009-05-15 09:01:23Z vboxsync $ */
+/* $Id: EM.cpp 19735 2009-05-15 12:50:56Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -126,7 +126,7 @@ VMMR3DECL(int) EMR3Init(PVM pVM)
     AssertCompileMemberAlignment(VM, em.s, 32);
     AssertCompile(sizeof(pVM->em.s) <= sizeof(pVM->em.padding));
     AssertCompile(sizeof(pVM->aCpus[0].em.s.u.FatalLongJump) <= sizeof(pVM->aCpus[0].em.s.u.achPaddingFatalLongJump));
-    AssertCompileMemberAlignment(EM, CritSectREM, 8);
+    AssertCompileMemberAlignment(EM, CritSectREM, sizeof(uintptr_t));
 
     /*
      * Init the structure.

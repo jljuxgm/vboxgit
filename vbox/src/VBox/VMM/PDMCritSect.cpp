@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 19718 2009-05-15 09:01:04Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 19735 2009-05-15 12:50:56Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -150,7 +150,7 @@ VMMR3DECL(int) PDMR3CritSectInit(PVM pVM, PPDMCRITSECT pCritSect, const char *ps
 #if HC_ARCH_BITS == 64 && GC_ARCH_BITS == 32
     AssertCompile(sizeof(pCritSect->padding) >= sizeof(pCritSect->s));
 #endif
-    Assert(RT_ALIGN_P(pCritSect, 8) == pCritSect);
+    Assert(RT_ALIGN_P(pCritSect, sizeof(uintptr_t)) == pCritSect);
     return pdmR3CritSectInitOne(pVM, &pCritSect->s, pCritSect, pszName);
 }
 
