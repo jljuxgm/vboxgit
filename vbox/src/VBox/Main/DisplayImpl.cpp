@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 22215 2009-08-13 00:41:04Z vboxsync $ */
 
 /** @file
  *
@@ -2348,7 +2348,7 @@ void Display::handleVHWACommandProcess(PPDMIDISPLAYCONNECTOR pInterface, PVBOXVH
         HRESULT hr = pFramebuffer->ProcessVHWACommand((BYTE*)pCommand);
         if(FAILED(hr))
         {
-            rc = VERR_GENERAL_FAILURE;
+            rc = (hr == E_NOTIMPL) ? VERR_NOT_IMPLEMENTED : VERR_GENERAL_FAILURE;
         }
 
         pFramebuffer->Unlock();
@@ -2362,6 +2362,7 @@ void Display::handleVHWACommandProcess(PPDMIDISPLAYCONNECTOR pInterface, PVBOXVH
     if(RT_FAILURE(rc))
     {
         /* tell the guest the command is complete */
+        pCommand->Flags &= (~VBOXVHWACMD_FLAG_HG_ASYNCH);
         pCommand->rc = rc;
     }
 }

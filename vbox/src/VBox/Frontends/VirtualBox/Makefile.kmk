@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22099 2009-08-07 22:49:23Z vboxsync $
+# $Id: Makefile.kmk 22215 2009-08-13 00:41:04Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -202,6 +202,10 @@ VirtualBox_INCS           = \
 # Necessary for the hdd backend enumeration
 VirtualBox_LIBS = $(LIB_DDU)
 
+ifdef VBOX_WITH_VIDEOHWACCEL
+# Necessary for save state support
+VirtualBox_LIBS += $(LIB_VMM)
+endif
 ifeq ($(KBUILD_TYPE),release)
  VirtualBox_LDFLAGS.win  += /SUBSYSTEM:windows
 else
