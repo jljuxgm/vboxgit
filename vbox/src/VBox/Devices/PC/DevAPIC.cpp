@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: DevAPIC.cpp 22584 2009-08-31 06:38:57Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -149,29 +149,29 @@
 #define APIC_LVT_NB      6
 
 /* APIC delivery modes */
-#define APIC_DM_FIXED	0
-#define APIC_DM_LOWPRI	1
-#define APIC_DM_SMI	2
-#define APIC_DM_NMI	4
-#define APIC_DM_INIT	5
-#define APIC_DM_SIPI	6
-#define APIC_DM_EXTINT	7
+#define APIC_DM_FIXED   0
+#define APIC_DM_LOWPRI  1
+#define APIC_DM_SMI     2
+#define APIC_DM_NMI     4
+#define APIC_DM_INIT    5
+#define APIC_DM_SIPI    6
+#define APIC_DM_EXTINT  7
 
 /* APIC destination mode */
-#define APIC_DESTMODE_FLAT	0xf
-#define APIC_DESTMODE_CLUSTER	1
+#define APIC_DESTMODE_FLAT      0xf
+#define APIC_DESTMODE_CLUSTER   1
 
 #define APIC_TRIGGER_EDGE  0
 #define APIC_TRIGGER_LEVEL 1
 
-#define	APIC_LVT_TIMER_PERIODIC		(1<<17)
-#define	APIC_LVT_MASKED			(1<<16)
-#define	APIC_LVT_LEVEL_TRIGGER		(1<<15)
-#define	APIC_LVT_REMOTE_IRR		(1<<14)
-#define	APIC_INPUT_POLARITY		(1<<13)
-#define	APIC_SEND_PENDING		(1<<12)
+#define APIC_LVT_TIMER_PERIODIC         (1<<17)
+#define APIC_LVT_MASKED                 (1<<16)
+#define APIC_LVT_LEVEL_TRIGGER          (1<<15)
+#define APIC_LVT_REMOTE_IRR             (1<<14)
+#define APIC_INPUT_POLARITY             (1<<13)
+#define APIC_SEND_PENDING               (1<<12)
 
-#define IOAPIC_NUM_PINS			0x18
+#define IOAPIC_NUM_PINS                 0x18
 
 #define ESR_ILLEGAL_ADDRESS (1 << 7)
 
