@@ -1,4 +1,4 @@
-# $Id: Config.kmk 22185 2009-08-11 17:27:59Z vboxsync $
+# $Id: Config.kmk 22260 2009-08-14 14:16:21Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1899,7 +1899,7 @@ if1of ($(KBUILD_TARGET), linux)
    kernelpath := $(shell $(SED_EXT) -ne 's+^KERNELSRC.*= *\(.*\)+\1+p' $(VBOX_LINUX_SRC)/Makefile)
    ifeq ($(kernelpath),)
     # Linux >= 2.6.25
-    kernelpath := $(shell $(SED_EXT) -ne 's+^MAKEARGS *:= *-C *\(.*\)+\1+p' $(VBOX_LINUX_SRC)/Makefile)
+    kernelpath := $(shell $(SED_EXT) -ne 's+^MAKEARGS *:= *-C *\(\S*\).*+\1+p' $(VBOX_LINUX_SRC)/Makefile)
    endif
    ifneq ($(kernelpath),)
     # absolute path?
@@ -3766,7 +3766,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 22185 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 22260 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
