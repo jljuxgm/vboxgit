@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22738 2009-09-03 12:39:11Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22740 2009-09-03 12:41:20Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2497,8 +2497,6 @@ DECLCALLBACK(int) pgmPoolClearAll(PVM pVM, PVMCPU pVCpu, void *pvUser)
                 case PGMPOOLKIND_PAE_PT_FOR_32BIT_4MB:
                 case PGMPOOLKIND_PAE_PT_FOR_PAE_PT:
                 case PGMPOOLKIND_PAE_PT_FOR_PAE_2MB:
-                case PGMPOOLKIND_32BIT_PT_FOR_PHYS:
-                case PGMPOOLKIND_PAE_PT_FOR_PHYS:
                 {
 #ifdef PGMPOOL_WITH_USER_TRACKING
                     if (pPage->cPresent)
