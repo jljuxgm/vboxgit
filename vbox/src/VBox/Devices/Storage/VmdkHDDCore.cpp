@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 18067 2009-03-18 14:17:49Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 18141 2009-03-23 14:52:35Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -2818,6 +2818,7 @@ static int vmdkCreateExtents(PVMDKIMAGE pImage, unsigned cExtents)
             pExtents[i].pGD = NULL;
             pExtents[i].pRGD = NULL;
             pExtents[i].pDescData = NULL;
+            pExtents[i].uVersion = 1;
             pExtents[i].uCompression = VMDK_COMPRESSION_NONE;
             pExtents[i].uExtent = i;
             pExtents[i].pImage = pImage;
