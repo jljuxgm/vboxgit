@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19870 2009-05-20 14:31:01Z vboxsync $ */
+/* $Id: EM.cpp 19873 2009-05-20 15:17:26Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3969,7 +3969,6 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                  * Application processor execution halted until SIPI.
                  */
                 case EMSTATE_WAIT_SIPI:
-                    Assert(!(CPUMGetGuestEFlags(pVCpu) & X86_EFL_IF));
                     /* no break */
                 /*
                  * hlt - execution halted until interrupt.
