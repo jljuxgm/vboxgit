@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 19668 2009-05-13 15:57:19Z vboxsync $ */
+/* $Id: VMM.cpp 19692 2009-05-14 12:29:36Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1212,10 +1212,9 @@ VMMR3DECL(void) VMMR3SendSipi(PVM pVM, VMCPUID idCpu,  uint32_t uVector)
     AssertReturnVoid(idCpu < pVM->cCPUs);
 
     PVMREQ pReq;
-    int rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, RT_INDEFINITE_WAIT, 0,
+    int rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, 0, VMREQFLAGS_NO_WAIT,
                           (PFNRT)vmmR3SendSipi, 3, pVM, idCpu, uVector);
     AssertRC(rc);
-    VMR3ReqFree(pReq);
 }
 
 /**
@@ -1229,10 +1228,9 @@ VMMR3DECL(void) VMMR3SendInitIpi(PVM pVM, VMCPUID idCpu)
     AssertReturnVoid(idCpu < pVM->cCPUs);
 
     PVMREQ pReq;
-    int rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, RT_INDEFINITE_WAIT, 0,
+    int rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, 0, VMREQFLAGS_NO_WAIT,
                           (PFNRT)vmmR3SendInitIpi, 2, pVM, idCpu);
     AssertRC(rc);
-    VMR3ReqFree(pReq);
 }
 
 
