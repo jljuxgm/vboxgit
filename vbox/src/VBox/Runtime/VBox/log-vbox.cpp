@@ -1,6 +1,6 @@
-/* $Id: log-vbox.cpp 18859 2009-04-10 08:24:55Z vboxsync $ */
+/* $Id: log-vbox.cpp 19120 2009-04-22 20:34:12Z vboxsync $ */
 /** @file
- * Virtual Box Runtime - Logging configuration.
+ * VirtualBox Runtime - Logging configuration.
  */
 
 /*
