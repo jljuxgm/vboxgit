@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 18484 2009-03-29 01:29:52Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 18518 2009-03-30 08:30:03Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -96,7 +96,7 @@ static const char gDefaultGlobalConfig [] =
     "       <DHCPServers>"RTFILE_LINEFEED
     "          <DHCPServer "
 #ifdef RT_OS_WINDOWS
-                          "networkName=\"HostInterfaceNetworking-VirtualBox Host-Only Network Adapter\" "
+                          "networkName=\"HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter\" "
 #else
                           "networkName=\"HostInterfaceNetworking-vboxnet0\" "
 #endif
