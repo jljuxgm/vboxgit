@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 17860 2009-03-13 21:55:58Z vboxsync $ */
+/* $Id: vboxhgcm.c 18109 2009-03-20 11:12:16Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -975,7 +975,7 @@ void crVBoxHGCMConnection(CRConnection *conn)
     conn->allow_redir_ptr = 1;
 
     //@todo remove this crap at all later
-    conn->cbHostBufferAllocated = 1*1024;
+    conn->cbHostBufferAllocated = 2*1024;
     conn->pHostBuffer = (uint8_t*) crAlloc(conn->cbHostBufferAllocated);
     CRASSERT(conn->pHostBuffer);
     conn->cbHostBuffer = 0;
