@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 18396 2009-03-27 14:06:29Z vboxsync $ */
+/* $Id: VBoxManage.cpp 18406 2009-03-27 15:31:21Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -126,7 +126,10 @@ void showProgress(ComPtr<IProgress> progress)
                  || (ulCurrentOperationPercent != ulLastOperationPercent)
                )
             {
-                RTPrintf("(%ld/%ld) %ls %ld%% => %ld%%\n", ulOperation + 1, cOperations, bstrOperationDescription.raw(), ulCurrentOperationPercent, ulCurrentPercent);
+                LONG lSecsRem;
+                progress->COMGETTER(TimeRemaining)(&lSecsRem);
+
+                RTPrintf("(%ld/%ld) %ls %ld%% => %ld%% (%d s remaining)\n", ulOperation + 1, cOperations, bstrOperationDescription.raw(), ulCurrentOperationPercent, ulCurrentPercent, lSecsRem);
                 ulLastPercent = ulCurrentPercent;
                 ulLastOperationPercent = ulCurrentOperationPercent;
             }
