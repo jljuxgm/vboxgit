@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 18227 2009-03-24 20:57:36Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 18491 2009-03-29 01:40:31Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -587,7 +587,7 @@ static int partRead(RTFILE File, PHOSTPARTITIONS pPart)
         if (PARTTYPE_IS_EXTENDED(p[4]))
         {
             if (uExtended == (unsigned)-1)
-                uExtended = pCP - pPart->aPartitions;
+                uExtended = (unsigned)(pCP - pPart->aPartitions);
             else
             {
                 RTPrintf("More than one extended partition. Aborting\n");
