@@ -1,4 +1,4 @@
-/* $Id: fileaio-posix.cpp 20961 2009-06-26 08:45:18Z vboxsync $ */
+/* $Id: fileaio-posix.cpp 23340 2009-09-25 15:43:24Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for POSIX compliant host platforms.
  */
@@ -420,6 +420,9 @@ RTDECL(int) RTFileAioCtxCreate(PRTFILEAIOCTX phAioCtx, uint32_t cAioReqsMax)
     PRTFILEAIOCTXINTERNAL pCtxInt;
     AssertPtrReturn(phAioCtx, VERR_INVALID_POINTER);
 
+    if (cAioReqsMax == RTFILEAIO_UNLIMITED_REQS)
+        return VERR_OUT_OF_RANGE;
+
     pCtxInt = (PRTFILEAIOCTXINTERNAL)RTMemAllocZ(  sizeof(RTFILEAIOCTXINTERNAL)
                                                  + cAioReqsMax * sizeof(PRTFILEAIOREQINTERNAL));
     if (RT_UNLIKELY(!pCtxInt))
@@ -590,42 +593,49 @@ RTDECL(int) RTFileAioCtxSubmit(RTFILEAIOCTX hAioCtx, PRTFILEAIOREQ pahReqs, size
             pahReqs += cReqsSubmit;
         }
 
-        /* Check if we have a flush request now. */
+        /*
+         * Check if we have a flush request now.
+         * If not we hit the AIO_LISTIO_MAX limit
+         * and will continue submitting requests
+         * above.
+         */
         if (cReqs)
         {
             pReqInt = pahReqs[0];
             RTFILEAIOREQ_VALID_RETURN(pReqInt);
 
-            Assert(pReqInt->fFlush);
 
-            /*
-             * lio_listio does not work with flush requests so
-             * we have to use aio_fsync directly.
-             */
-            rcPosix = aio_fsync(O_SYNC, &pReqInt->AioCB);
-            if (RT_UNLIKELY(rcPosix < 0))
+            if (pReqInt->fFlush)
             {
-                rc = RTErrConvertFromErrno(errno);
-                RTFILEAIOREQ_SET_STATE(pReqInt, COMPLETED);
-                pReqInt->Rc = rc;
-                pReqInt->cbTransfered = 0;
+                /*
+                 * lio_listio does not work with flush requests so
+                 * we have to use aio_fsync directly.
+                 */
+                rcPosix = aio_fsync(O_SYNC, &pReqInt->AioCB);
+                if (RT_UNLIKELY(rcPosix < 0))
+                {
+                    rc = RTErrConvertFromErrno(errno);
+                    RTFILEAIOREQ_SET_STATE(pReqInt, COMPLETED);
+                    pReqInt->Rc = rc;
+                    pReqInt->cbTransfered = 0;
 
-                /* Unlink from the list. */
-                PRTFILEAIOREQINTERNAL pNext, pPrev;
-                pNext = pReqInt->pNext;
-                pPrev = pReqInt->pPrev;
-                if (pNext)
-                    pNext->pPrev = pPrev;
-                if (pPrev)
-                    pPrev->pNext = pNext;
-                else
-                    pHead = pNext;
-                break;
+                    /* Unlink from the list. */
+                    PRTFILEAIOREQINTERNAL pNext, pPrev;
+                    pNext = pReqInt->pNext;
+                    pPrev = pReqInt->pPrev;
+                    if (pNext)
+                        pNext->pPrev = pPrev;
+                    if (pPrev)
+                        pPrev->pNext = pNext;
+                    else
+                        pHead = pNext;
+                    break;
+                }
+
+                ASMAtomicIncS32(&pCtxInt->cRequests);
+                cReqs--;
+                pahReqs++;
             }
-
-            ASMAtomicIncS32(&pCtxInt->cRequests);
-            cReqs--;
-            pahReqs++;
         }
     } while (cReqs);
 
