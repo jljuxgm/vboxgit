@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 19495 2009-05-07 17:45:25Z vboxsync $ */
+/* $Id: VM.cpp 20158 2009-05-29 15:25:31Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -214,7 +214,7 @@ VMMR3DECL(int)   VMR3Create(uint32_t cCPUs, PFNVMATERROR pfnVMAtError, void *pvU
     /*
      * Validate input.
      */
-    AssertLogRelMsgReturn(cCPUs > 0 && cCPUs <= VMM_MAX_CPU_COUNT, ("%RU32\n", cCPUs), VERR_INVALID_PARAMETER);
+    AssertLogRelMsgReturn(cCPUs > 0 && cCPUs <= VMM_MAX_CPU_COUNT, ("%RU32\n", cCPUs), VERR_TOO_MANY_CPUS);
 
     /*
      * Create the UVM so we can register the at-error callback

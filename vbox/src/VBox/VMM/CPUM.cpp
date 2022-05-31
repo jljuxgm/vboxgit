@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 20157 2009-05-29 15:20:13Z vboxsync $ */
+/* $Id: CPUM.cpp 20158 2009-05-29 15:25:31Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -422,6 +422,7 @@ static int cpumR3CpuIdInit(PVM pVM)
 #ifdef VBOX_WITH_MULTI_CORE
     if (pVM->cpum.s.enmCPUVendor == CPUMCPUVENDOR_INTEL)
     {
+        AssertReturn(pVM->cCPUs <= 64, VERR_TOO_MANY_CPUS);
         /* One logical processor with possibly multiple cores. */
         pCPUM->aGuestCpuIdStd[4].eax |= ((pVM->cCPUs - 1) << 26);   /* 6 bits only -> 64 cores! */
     }

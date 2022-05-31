@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 20151 2009-05-29 12:40:31Z vboxsync $ */
+/* $Id: PGMInternal.h 20158 2009-05-29 15:25:31Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2221,7 +2221,7 @@ typedef struct PGM
      */
     bool                            fRamPreAlloc;
     /** Alignment padding. */
-    bool                            afAlignment0[7];
+    bool                            afAlignment0[11];
 
     /*
      * This will be redefined at least two more times before we're done, I'm sure.
