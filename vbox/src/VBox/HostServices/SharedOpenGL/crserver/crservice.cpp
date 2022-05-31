@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 21990 2009-08-05 12:28:09Z vboxsync $ */
+/* $Id: crservice.cpp 22155 2009-08-11 10:36:56Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -69,7 +69,7 @@ static ULONG64 g_winId = 0;
 #define CR_USE_HGCM
 
 static const char* gszVBoxOGLSSMMagic = "***OpenGL state data***";
-#define SHCROGL_SSM_VERSION 4
+#define SHCROGL_SSM_VERSION 5
 
 typedef struct
 {
@@ -207,8 +207,15 @@ static DECLCALLBACK(int) svcLoadState(void *, uint32_t u32ClientID, void *pvClie
     rc = SSMR3GetU32(pSSM, &ui32);
     AssertRCReturn(rc, rc);
     if ((SHCROGL_SSM_VERSION != ui32)
-        && (3 != ui32))
-        return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
+        && ((SHCROGL_SSM_VERSION!=4) || (3!=ui32)))
+    {
+        /*@todo: add some warning here*/
+        /*@todo: in many cases saved states would be made without any opengl guest app running.
+         *       that means we could safely restore the default context.
+         */
+        rc = SSMR3SkipToEndOfUnit(pSSM);
+        return rc;
+    }
 
     /* The state itself */
     rc = crVBoxServerLoadState(pSSM, ui32);
