@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19624 2009-05-12 13:49:50Z vboxsync $
+# $Id: Makefile.kmk 19839 2009-05-19 19:01:23Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -707,6 +707,7 @@ Drivers_SOURCES += $(VBOX_SLIRP_SOURCES)
 define def_vbox_slirp_cflags
   $(file)_DEFS += \
       $(if $(VBOX_WITH_SLIRP_MEMORY_CHECK),RTMEM_WRAP_TO_EF_APIS,) \
+      $(if $(VBOX_WITHOUT_SLIRP_CLIENT_ETHER),VBOX_WITHOUT_SLIRP_CLIENT_ETHER,)	\
       $(if $(VBOX_WITH_DEBUG_NAT_SOCKETS),VBOX_WITH_DEBUG_NAT_SOCKETS,)	\
       $(if $(VBOX_WITH_MULTI_DNS),VBOX_WITH_MULTI_DNS,)	\
       $(if $(VBOX_WITH_SLIRP_DNS_PROXY),VBOX_WITH_SLIRP_DNS_PROXY,)	\
