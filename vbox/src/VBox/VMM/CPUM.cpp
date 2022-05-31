@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 20032 2009-05-26 12:27:55Z vboxsync $ */
+/* $Id: CPUM.cpp 20034 2009-05-26 12:52:42Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -369,6 +369,7 @@ static int cpumR3CpuIdInit(PVM pVM)
                                        //| X86_CPUID_AMD_FEATURE_ECX_CMPL
                                        //| X86_CPUID_AMD_FEATURE_ECX_SVM    - not virtualized.
                                        //| X86_CPUID_AMD_FEATURE_ECX_EXT_APIC
+                                       /** Note: This could prevent migration from AMD to Intel CPUs! */
                                        | X86_CPUID_AMD_FEATURE_ECX_CR8L         /* expose lock mov cr0 = mov cr8 hack for guests that can use this feature to access the TPR. */
                                        //| X86_CPUID_AMD_FEATURE_ECX_ABM
                                        //| X86_CPUID_AMD_FEATURE_ECX_SSE4A
