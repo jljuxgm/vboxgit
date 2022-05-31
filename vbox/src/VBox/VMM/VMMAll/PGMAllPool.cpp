@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22529 2009-08-27 14:06:06Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22533 2009-08-27 15:31:47Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1444,7 +1444,6 @@ static void pgmPoolFlushDirtyPage(PVM pVM, PPGMPOOL pPool, unsigned idxSlot, boo
     rc = PGMHandlerPhysicalReset(pVM, pPage->GCPhys);
     Assert(rc == VINF_SUCCESS);
     pPage->fDirty         = false;
-    pPage->fZeroed        = true;
 
     /* This page is likely to be modified again, so reduce the nr of modifications just a bit here. */
     Assert(pPage->cModifications);
@@ -4283,7 +4282,7 @@ int pgmPoolFlushPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
 #endif
 
     /*
-     * Mark the page as being in need of a ASMMemZeroPage().
+     * Mark the page as being in need of an ASMMemZeroPage().
      */
     pPage->fZeroed = false;
 
