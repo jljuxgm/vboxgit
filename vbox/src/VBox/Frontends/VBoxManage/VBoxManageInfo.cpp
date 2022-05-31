@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 23643 2009-10-09 12:23:32Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 23687 2009-10-12 12:41:42Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -441,6 +441,27 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
     else
         RTPrintf("2D Video Acceleration: %s\n", accelerate2dVideo ? "on" : "off");
 #endif
+
+    BOOL liveMigrationTarget;
+    machine->COMGETTER(LiveMigrationTarget)(&liveMigrationTarget);
+    if (details == VMINFO_MACHINEREADABLE)
+        RTPrintf("livemigrationtarget=\"%s\"\n", liveMigrationTarget ? "on" : "off");
+    else
+        RTPrintf("Live Migration Target: %s\n", accelerate2dVideo ? "on" : "off");
+
+    ULONG liveMigrationPort;
+    machine->COMGETTER(LiveMigrationPort)(&liveMigrationPort);
+    if (details == VMINFO_MACHINEREADABLE)
+        RTPrintf("livemigrationport=%u\n", liveMigrationPort);
+    else
+        RTPrintf("Live Migration Port: %u\n", liveMigrationPort);
+
+    Bstr liveMigrationPassword;
+    machine->COMGETTER(LiveMigrationPassword)(liveMigrationPassword.asOutParam());
+    if (details == VMINFO_MACHINEREADABLE)
+        RTPrintf("livemigrationpassword=\"%lS\"\n", liveMigrationPassword.raw());
+    else
+        RTPrintf("Live Migration Password: %lS\n", liveMigrationPassword.raw());
 
     /*
      * Storage Controllers and their attached Mediums.
