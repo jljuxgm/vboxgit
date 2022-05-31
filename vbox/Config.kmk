@@ -1,4 +1,4 @@
-# $Id: Config.kmk 21857 2009-07-28 19:22:08Z vboxsync $
+# $Id: Config.kmk 22035 2009-08-06 13:31:01Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -412,6 +412,8 @@ VBOX_WITH_HPET = 1
 VBOX_WITH_LPC = 1
 # Enable SCSI drivers
 VBOX_WITH_SCSI = 1
+# Enable changing network attachments dynamically.
+VBOX_DYNAMIC_NET_ATTACH=1
 # Enable host network interface API.
 if1of ($(KBUILD_TARGET), darwin solaris linux win freebsd)
  VBOX_WITH_HOSTNETIF_API = 1
@@ -3769,7 +3771,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 21857 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 22035 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
