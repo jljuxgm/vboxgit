@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 18086 2009-03-19 11:29:50Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 18087 2009-03-19 11:40:27Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -50,7 +50,6 @@
  * and the GLIBC tcpip headers. They have different declarations of the 4
  * standard byte order functions. */
 #  define _LINUX_BYTEORDER_GENERIC_H
-#  include <linux/byteorder/generic.h>
 /* This is another hack for not bothering with C++ unfriendly byteswap macros. */
 /* Those macros that are needed are defined in the header below. */
 #  include "swab.h"
