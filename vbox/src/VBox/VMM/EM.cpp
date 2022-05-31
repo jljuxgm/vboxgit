@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 20399 2009-06-08 13:01:44Z vboxsync $ */
+/* $Id: EM.cpp 20406 2009-06-08 13:39:32Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2501,17 +2501,6 @@ DECLINLINE(int) emR3RawHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
          */
         case VINF_EM_RAW_RING_SWITCH:
             rc = emR3RawRingSwitch(pVM, pVCpu);
-            break;
-
-        /*
-         * REMGCNotifyInvalidatePage() failed because of overflow.
-         */
-        case VERR_REM_FLUSHED_PAGES_OVERFLOW:
-            Assert((pCtx->ss & X86_SEL_RPL) != 1);
-            EMR3RemLock(pVM);
-            REMR3ReplayInvalidatedPages(pVM, pVCpu);
-            EMR3RemUnlock(pVM);
-            rc = VINF_SUCCESS;
             break;
 
         /*

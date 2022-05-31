@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 20399 2009-06-08 13:01:44Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 20406 2009-06-08 13:39:32Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2681,41 +2681,6 @@ REMR3DECL(void) REMR3A20Set(PVM pVM, PVMCPU pVCpu, bool fEnable)
     cpu_x86_set_a20(&pVM->rem.s.Env, fEnable);
 
     pVM->rem.s.fIgnoreAll = fSaved;
-}
-
-
-/**
- * Replays the invalidated recorded pages.
- * Called in response to VERR_REM_FLUSHED_PAGES_OVERFLOW from the RAW execution loop.
- *
- * @param   pVM         VM handle.
- * @param   pVCpu       VMCPU handle.
- */
-REMR3DECL(void) REMR3ReplayInvalidatedPages(PVM pVM, PVMCPU pVCpu)
-{
-    RTUINT i;
-
-    VM_ASSERT_EMT(pVM);
-
-    /*
-     * Sync the required registers.
-     */
-    pVM->rem.s.Env.cr[0] = pVM->rem.s.pCtx->cr0;
-    pVM->rem.s.Env.cr[2] = pVM->rem.s.pCtx->cr2;
-    pVM->rem.s.Env.cr[3] = pVM->rem.s.pCtx->cr3;
-    pVM->rem.s.Env.cr[4] = pVM->rem.s.pCtx->cr4;
-
-    /*
-     * Replay the flushes.
-     */
-    pVM->rem.s.fIgnoreInvlPg = true;
-    for (i = 0; i < pVM->rem.s.cInvalidatedPages; i++)
-    {
-        Log2(("REMR3ReplayInvalidatedPages: invlpg %RGv\n", pVM->rem.s.aGCPtrInvalidatedPages[i]));
-        tlb_flush_page(&pVM->rem.s.Env, pVM->rem.s.aGCPtrInvalidatedPages[i]);
-    }
-    pVM->rem.s.fIgnoreInvlPg = false;
-    pVM->rem.s.cInvalidatedPages = 0;
 }
 
 

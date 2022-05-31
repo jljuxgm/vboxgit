@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 19479 2009-05-07 11:40:27Z vboxsync $ */
+/* $Id: REMAll.cpp 20406 2009-06-08 13:39:32Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -40,8 +40,6 @@
  * Records a invlpg instruction for replaying upon REM entry.
  *
  * @returns VINF_SUCCESS on success.
- * @returns VERR_REM_FLUSHED_PAGES_OVERFLOW if a return to HC for flushing of
- *          recorded pages is required before the call can succeed.
  * @param   pVM         The VM handle.
  * @param   GCPtrPage   The
  */

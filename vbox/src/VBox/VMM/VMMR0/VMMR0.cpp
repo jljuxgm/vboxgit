@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: VMMR0.cpp 20406 2009-06-08 13:39:32Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -432,9 +432,6 @@ static void vmmR0RecordRC(PVM pVM, PVMCPU pVCpu, int rc)
             break;
         case VINF_PATM_PENDING_IRQ_AFTER_IRET:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPatchIretIRQ);
-            break;
-        case VERR_REM_FLUSHED_PAGES_OVERFLOW:
-            STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPageOverflow);
             break;
         case VINF_EM_RESCHEDULE_REM:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetRescheduleREM);
