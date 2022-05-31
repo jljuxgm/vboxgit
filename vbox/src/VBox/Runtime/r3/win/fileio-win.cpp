@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 23047 2009-09-15 21:29:15Z vboxsync $ */
+/* $Id: fileio-win.cpp 23302 2009-09-24 17:00:38Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -125,34 +125,6 @@ DECLINLINE(bool) IsBeyondLimit(RTFILE File, uint64_t offSeek, unsigned uMethod)
     }
 
     return fIsBeyondLimit;
-}
-
-
-RTDECL(bool) RTFileExists(const char *pszPath)
-{
-    bool fRc = false;
-
-    /*
-     * Convert to UTF-16.
-     */
-    PRTUTF16 pwszString;
-    int rc = RTStrToUtf16(pszPath, &pwszString);
-    AssertRC(rc);
-    if (RT_SUCCESS(rc))
-    {
-        /*
-         * Query and check attributes.
-         */
-        DWORD dwAttr = GetFileAttributesW((LPCWSTR)pwszString);
-        fRc = dwAttr != INVALID_FILE_ATTRIBUTES
-            && !(dwAttr & (  FILE_ATTRIBUTE_DIRECTORY
-                           | FILE_ATTRIBUTE_DEVICE
-                           | FILE_ATTRIBUTE_REPARSE_POINT));
-        RTUtf16Free(pwszString);
-    }
-
-    LogFlow(("RTFileExists(%p:{%s}): returns %RTbool\n", pszPath, pszPath, fRc));
-    return fRc;
 }
 
 
