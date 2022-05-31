@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 20545 2009-06-13 23:56:48Z vboxsync $ */
+/* $Id: VMM.cpp 20566 2009-06-14 20:24:43Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -233,12 +233,15 @@ static int vmmR3InitStacks(PVM pVM)
         PVMCPU pVCpu = &pVM->aCpus[idCpu];
 
 #ifdef VBOX_STRICT_VMM_STACK
-        rc = MMR3HyperAllocOnceNoRel(pVM, VMM_STACK_SIZE + PAGE_SIZE + PAGE_SIZE, PAGE_SIZE, MM_TAG_VMM, (void **)&pVCpu->vmm.s.pbEMTStackR3);
+        rc = MMR3HyperAllocOnceNoRel(pVM, PAGE_SIZE + VMM_STACK_SIZE + PAGE_SIZE, PAGE_SIZE, MM_TAG_VMM, (void **)&pVCpu->vmm.s.pbEMTStackR3);
 #else
         rc = MMR3HyperAllocOnceNoRel(pVM, VMM_STACK_SIZE, PAGE_SIZE, MM_TAG_VMM, (void **)&pVCpu->vmm.s.pbEMTStackR3);
 #endif
         if (RT_SUCCESS(rc))
         {
+#ifdef VBOX_STRICT_VMM_STACK
+            pVCpu->vmm.s.pbEMTStackR3 += PAGE_SIZE;
+#endif
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
             /* MMHyperR3ToR0 returns R3 when not doing hardware assisted virtualization. */
             if (!VMMIsHwVirtExtForced(pVM))
