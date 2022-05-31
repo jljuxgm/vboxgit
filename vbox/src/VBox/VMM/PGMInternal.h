@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 22713 2009-09-02 12:14:30Z vboxsync $ */
+/* $Id: PGMInternal.h 22748 2009-09-03 13:32:31Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1467,6 +1467,7 @@ typedef PGMMAPSET *PPGMMAPSET;
 
 /** The NIL index for the parent chain. */
 #define NIL_PGMPOOL_USER_INDEX          ((uint16_t)0xffff)
+#define NIL_PGMPOOL_PRESENT_INDEX       ((uint16_t)0xffff)
 
 /**
  * Node in the chain linking a shadowed page to it's parent (user).
