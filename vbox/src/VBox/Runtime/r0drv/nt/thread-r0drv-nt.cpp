@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 22150 2009-08-11 09:41:58Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 22151 2009-08-11 09:46:23Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -32,13 +32,15 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-nt-kernel.h"
-
+#include "internal/iprt.h"
 #include <iprt/thread.h>
-#include <iprt/err.h>
-#include <iprt/assert.h>
-#include <iprt/asm.h>
 
+#include <iprt/asm.h>
+#include <iprt/assert.h>
+#include <iprt/err.h>
+#include <iprt/mp.h>
 #include "internal-r0drv-nt.h"
+
 
 RT_C_DECLS_BEGIN
 NTSTATUS NTAPI ZwYieldExecution(void);

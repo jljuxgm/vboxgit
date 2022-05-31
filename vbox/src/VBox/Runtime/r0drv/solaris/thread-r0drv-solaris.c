@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 22150 2009-08-11 09:41:58Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 22151 2009-08-11 09:46:23Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -39,6 +39,7 @@
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
+#include <iprt/mp.h>
 
 
 
