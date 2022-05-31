@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20940 2009-06-25 13:44:58Z vboxsync $
+# $Id: Makefile.kmk 21180 2009-07-02 17:35:36Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1456,6 +1456,21 @@ VBoxPython2_5_NAME.darwin = VBoxPython2_5
 VBoxPython2_5_INCS = \
 	python/src \
 	$(VBOX_PATH_MACOSX_SDK_10_5)/System/Library/Frameworks/Python.framework/Headers
+endif
+
+if defined(VBOX_WITH_VBOXPYTHON25_FOR_SOLARIS) && "$(KBUILD_TARGET)" == "solaris"
+# Same VBoxPython except built against the newer python version.
+DLLS += VBoxPython2_5
+VBoxPython2_5_EXTENDS = VBoxPython
+VBoxPython2_5_TEMPLATE = XPCOM
+VBoxPython2_5_NAME = VBoxPython2_5
+VBoxPython2_5_INCS = \
+	python/src \
+	/usr/include/python2.5
+VBoxPython2_5_LIBS = \
+	$(PATH_LIB)/VBoxCOM$(VBOX_SUFF_LIB) \
+	$(PATH_BIN)/VBoxXPCOM$(VBOX_SUFF_DLL) \
+	/usr/lib/$(VBOX_TMP)libpython2.5$(SUFF_DLL)
 endif
 
 # Python Client Module - the Python bits.
