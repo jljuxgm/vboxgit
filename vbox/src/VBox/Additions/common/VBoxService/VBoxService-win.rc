@@ -1,4 +1,4 @@
-/* $Id: VBoxService.rc 19374 2009-05-05 13:23:32Z vboxsync $ */
+/* $Id: VBoxService-win.rc 19376 2009-05-05 13:41:37Z vboxsync $ */
 /** @file
  * VBoxService - Resouce file containing version info and icon.
  */
@@ -21,7 +21,7 @@
 
 #include <windows.h>
 #include <VBox/version.h>
-#include "resource.h"
+#include "VBoxServiceResource-win.h"
 
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
@@ -54,5 +54,5 @@ BEGIN
    END
 END
 
-#include "VBoxService-icon.rc"
+#include "VBoxService-win-icon.rc"
 
