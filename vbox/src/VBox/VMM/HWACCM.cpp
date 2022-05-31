@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 23366 2009-09-28 12:31:50Z vboxsync $ */
+/* $Id: HWACCM.cpp 23476 2009-10-01 12:57:36Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -379,6 +379,20 @@ VMMR3DECL(int) HWACCMR3Init(PVM pVM)
     rc = CFGMR3QueryBoolDef(pHWVirtExt, "64bitEnabled", &pVM->hwaccm.s.fAllow64BitGuests, true);
     AssertLogRelRCReturn(rc, rc);
 #endif
+
+
+    /** Determine the init method for AMD-V and VT-x; either one global init for each host CPU
+     *  or local init each time we wish to execute guest code.
+     *
+     *  Default false for Mac OS X and Windows due to the higher risk of conflicts with other hypervisors.
+     */
+    rc = CFGMR3QueryBoolDef(pHWVirtExt, "EnableGlobalInit", &pVM->hwaccm.s.fGlobalInit, 
+#if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
+                            false
+#else
+                            true
+#endif
+                           );
 
     /* Max number of resume loops. */
     rc = CFGMR3QueryU32Def(pHWVirtExt, "MaxResumeLoops", &pVM->hwaccm.s.cMaxResumeLoops, 0 /* set by R0 later */);
@@ -1191,6 +1205,8 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
             }
         }
     }
+    if (pVM->fHWACCMEnabled)
+        LogRel(("HWACCM:    VT-x/AMD-V init method: %s\n", (pVM->hwaccm.s.fGlobalInit) ? "GLOBAL" : "LOCAL"));
     return VINF_SUCCESS;
 }
 
