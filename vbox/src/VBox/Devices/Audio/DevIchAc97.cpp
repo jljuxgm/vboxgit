@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 23981 2009-10-22 13:25:42Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1587,6 +1587,13 @@ static DECLCALLBACK(int) ichac97Construct (PPDMDEVINS pDevIns, int iInstance,
     int               rc;
 
     Assert(iInstance == 0);
+
+    /*
+     * Validations.
+     */
+    if (!CFGMR3AreValuesValid (pCfgHandle, "\0"))
+        return PDMDEV_SET_ERROR (pDevIns, VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES,
+                                 N_ ("Invalid configuration for the AC97 device"));
 
     /*
      * Initialize data (most of it anyway).
