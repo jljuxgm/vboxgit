@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 19593 2009-05-12 07:56:07Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 19596 2009-05-12 08:50:33Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -276,9 +276,22 @@ VMMDECL(bool) PDMCritSectIsOwner(PCPDMCRITSECT pCritSect)
 #ifdef IN_RING3
     return RTCritSectIsOwner(&pCritSect->s.Core);
 #else
-    PVM pVM = pCritSect->s.CTX_SUFF(pVM);
-    Assert(pVM); Assert(VMMGetCpu(pVM));
-    return pCritSect->s.Core.NativeThreadOwner == VMMGetCpu(pVM)->hNativeThread;
+    PVM     pVM = pCritSect->s.CTX_SUFF(pVM);
+    PVMCPU  pVCpu = VMMGetCpu(pVM);
+    Assert(pVM); Assert(pVCpu);
+    if (pCritSect->s.Core.NativeThreadOwner != pVCpu->hNativeThread)
+        return false;
+
+    /* Make sure the critical section is not scheduled to be unlocked. */
+    if (!VMCPU_FF_ISSET(pVCpu, VMCPU_FF_PDM_CRITSECT))
+        return true;
+
+    for (unsigned i = 0; i < pVCpu->pdm.s.cQueuedCritSectLeaves; i++)
+    {
+        if (pVCpu->pdm.s.apQueuedCritSectsLeaves[i] == MMHyperCCToR3(pVM, (void *)pCritSect))
+            return false;   /* scheduled for release; pretend it's not owned by us. */
+    }
+    return true;
 #endif
 }
 
