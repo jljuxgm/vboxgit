@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 19911 2009-05-22 12:46:46Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 23065 2009-09-16 12:08:42Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -228,7 +228,13 @@ static int rtMpCall(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2, RT_NT
     AssertMsg(KeGetCurrentIrql() == PASSIVE_LEVEL, ("%d != %d (PASSIVE_LEVEL)\n", KeGetCurrentIrql(), PASSIVE_LEVEL));
 #endif
 
+#ifdef IPRT_TARGET_NT4
+    KAFFINITY Mask;
+    /* g_pfnrtNt* do not present on NT anyway. */
+    return VERR_NOT_SUPPORTED;
+#else
     KAFFINITY Mask = KeQueryActiveProcessors();
+#endif
 
     /* KeFlushQueuedDpcs is not present in Windows 2000; import it dynamically so we can just fail this call. */
     if (!g_pfnrtNtKeFlushQueuedDpcs)

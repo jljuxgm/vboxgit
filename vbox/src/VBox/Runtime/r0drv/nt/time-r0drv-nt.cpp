@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-nt.cpp 9958 2008-06-26 14:25:49Z vboxsync $ */
+/* $Id: time-r0drv-nt.cpp 23065 2009-09-16 12:08:42Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Nt.
  */
@@ -39,7 +39,7 @@
 
 DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
 {
-#if 1
+#ifndef IPRT_TARGET_NT4
     ULONGLONG InterruptTime = KeQueryInterruptTime();
     return (uint64_t)InterruptTime * 100; /* The value is in 100ns, convert to ns units. */
 #else
@@ -82,7 +82,7 @@ RTDECL(uint64_t) RTTimeSystemMilliTS(void)
 RTDECL(PRTTIMESPEC) RTTimeNow(PRTTIMESPEC pTime)
 {
     LARGE_INTEGER SystemTime;
-#if 1
+#ifndef IPRT_TARGET_NT4
     KeQuerySystemTime(&SystemTime);
 #else
     do
