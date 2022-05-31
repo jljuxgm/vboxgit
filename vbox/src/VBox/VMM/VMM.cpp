@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 19476 2009-05-07 11:06:26Z vboxsync $ */
+/* $Id: VMM.cpp 19478 2009-05-07 11:31:37Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1176,9 +1176,8 @@ DECLCALLBACK(int) vmmR3SendInitIpi(PVM pVM, VMCPUID idCpu)
     PVMCPU pVCpu = VMMGetCpuById(pVM, idCpu);
     VMCPU_ASSERT_EMT(pVCpu);
 
-    /** @todo: reset CPU and halt till SIPI */
-
-    return VINF_SUCCESS;
+    CPUMR3ResetCpu(pVCpu);
+    return VINF_EM_WAIT_SIPI;
 }
 
 /**

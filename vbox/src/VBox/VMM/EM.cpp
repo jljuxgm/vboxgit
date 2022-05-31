@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19442 2009-05-06 15:34:20Z vboxsync $ */
+/* $Id: EM.cpp 19478 2009-05-07 11:31:37Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2557,6 +2557,7 @@ DECLINLINE(int) emR3RawHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VINF_EM_NO_MEMORY:
         case VINF_EM_RESCHEDULE:
         case VINF_EM_RESCHEDULE_REM:
+        case VINF_EM_WAIT_SIPI:
             break;
 
         /*
@@ -3729,6 +3730,16 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                     Log2(("EMR3ExecuteVM: VINF_EM_HALT: %d -> %d\n", pVCpu->em.s.enmState, EMSTATE_HALTED));
                     pVCpu->em.s.enmState = EMSTATE_HALTED;
                     break;
+
+                /* 
+                 * Switch to the wait for SIPI state (application processor only)
+                 */
+                case VINF_EM_WAIT_SIPI:
+                    Assert(pVCpu->idCpu != 0);
+                    Log2(("EMR3ExecuteVM: VINF_EM_WAIT_SIPI: %d -> %d\n", pVCpu->em.s.enmState, EMSTATE_WAIT_SIPI));
+                    pVCpu->em.s.enmState = EMSTATE_WAIT_SIPI;
+                    break;
+
 
                 /*
                  * Suspend.
