@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18924 2009-04-15 22:19:29Z vboxsync $
+# $Id: Makefile.kmk 19003 2009-04-17 20:04:45Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -213,6 +213,12 @@ VBoxSVC_DEFS = \
 	$(if $(VBOX_USB_WITH_SYSFS),VBOX_USB_WITH_SYSFS,)
 
 VBoxSVC_CXXFLAGS = $(filter-out -Wno-unused,$(TEMPLATE_VBOXMAINEXE_CXXFLAGS))
+
+# XXX:
+# Disable optimizations on FreeBSD. We will get strange linker errors in release
+# builds otherwise.
+# @todo: Investigate
+VBoxSVC_CXXFLAGS.freebsd = -O0
 
 ifdef VBOX_WITH_USB
  VBoxSVC_DEFS += \
