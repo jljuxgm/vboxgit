@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 18639 2009-04-02 14:06:22Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 18640 2009-04-02 14:26:00Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -21,6 +21,12 @@
 
 #ifndef ___VBoxServiceInternal_h
 #define ___VBoxServiceInternal_h
+
+#if defined(RT_OS_WINDOWS)
+    #include <windows.h>
+    #include <tchar.h>
+    #include <process.h>
+#endif
 
 /** Name of this program. */
 #if !defined(RT_OS_WINDOWS)
@@ -113,6 +119,12 @@ extern int VBoxServiceArgUInt32(int argc, char **argv, const char *psz, int *pi,
 extern VBOXSERVICE g_TimeSync;
 extern VBOXSERVICE g_Clipboard;
 extern VBOXSERVICE g_Control;
+
+/** Windows SCM stuff. */
+#if defined(RT_OS_WINDOWS)
+    extern DWORD                 g_vboxServiceStatusCode;
+    extern SERVICE_STATUS_HANDLE g_vboxServiceStatusHandle;
+#endif
 
 __END_DECLS
 
