@@ -1,4 +1,4 @@
-/* $Revision: 19728 $ */
+/* $Revision: 19743 $ */
 /** @file tstXPCOMCGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -46,6 +46,24 @@ static void startVM(IVirtualBox *virtualBox, ISession *session, PRUnichar *id, n
 static volatile int g_fStop = 0;
 
 int volatile g_refcount = 0;
+
+/* #define for printing nsID type UUID's */
+
+#define printUUID(iid) \
+{\
+    printf(#iid ": {%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x}\n",\
+           (unsigned)(iid)->m0,\
+           (unsigned)(iid)->m1,\
+           (unsigned)(iid)->m2,\
+           (unsigned)(iid)->m3[0],\
+           (unsigned)(iid)->m3[1],\
+           (unsigned)(iid)->m3[2],\
+           (unsigned)(iid)->m3[3],\
+           (unsigned)(iid)->m3[4],\
+           (unsigned)(iid)->m3[5],\
+           (unsigned)(iid)->m3[6],\
+           (unsigned)(iid)->m3[7]);\
+}\
 
 /**
  * Callback functions
@@ -245,12 +263,23 @@ static nsresult Release(nsISupports *pThis)
 static nsresult QueryInterface(nsISupports *pThis, const nsID *iid, void **resultp)
 {
     IConsoleCallback *that = (IConsoleCallback *)pThis;
+    const nsID ivirtualboxCallbackUUID = IVIRTUALBOXCALLBACK_IID;
 
     /* match iid */
-    ++g_refcount;
-    printf("QueryInterface: %d\n", g_refcount);
-    *resultp = that;
-    return NS_OK;
+    if (memcmp(iid, &ivirtualboxCallbackUUID, sizeof(nsID)) == 0)
+    {
+        ++g_refcount;
+        printf("QueryInterface: %d\n", g_refcount);
+        *resultp = that;
+        return NS_OK;
+    }
+    else
+    {
+        printf("vboxCallback QueryInterface didn't find a matching interface\n");
+        printUUID(iid);
+        printUUID(&ivirtualboxCallbackUUID);
+        return NS_NOINTERFACE;
+    }
 }
 
 /**
