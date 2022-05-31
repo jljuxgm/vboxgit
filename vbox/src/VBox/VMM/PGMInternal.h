@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 20808 2009-06-23 08:43:53Z vboxsync $ */
+/* $Id: PGMInternal.h 21164 2009-07-02 14:08:29Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2478,6 +2478,19 @@ typedef struct PGM
     STAMCOUNTER StatRCDynMapCacheHits;              /**< RC: The number of dynamic page mapping cache hits */
     STAMCOUNTER StatRCInvlPgConflict;               /**< RC: Number of times PGMInvalidatePage() detected a mapping conflict. */
     STAMCOUNTER StatRCInvlPgSyncMonCR3;             /**< RC: Number of times PGMInvalidatePage() ran into PGM_SYNC_MONITOR_CR3. */
+
+    STAMCOUNTER StatRZPhysRead;
+    STAMCOUNTER StatRZPhysReadBytes;
+    STAMCOUNTER StatRZPhysWrite;
+    STAMCOUNTER StatRZPhysWriteBytes;
+    STAMCOUNTER StatR3PhysRead;
+    STAMCOUNTER StatR3PhysReadBytes;
+    STAMCOUNTER StatR3PhysWrite;
+    STAMCOUNTER StatR3PhysWriteBytes;
+    STAMCOUNTER StatRCPhysRead;
+    STAMCOUNTER StatRCPhysReadBytes;
+    STAMCOUNTER StatRCPhysWrite;
+    STAMCOUNTER StatRCPhysWriteBytes;
 
 # ifdef PGMPOOL_WITH_GCPHYS_TRACKING
     STAMCOUNTER StatTrackVirgin;                    /**< The number of first time shadowings. */

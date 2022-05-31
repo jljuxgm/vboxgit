@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 20874 2009-06-24 02:19:29Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 21164 2009-07-02 14:08:29Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1510,6 +1510,9 @@ VMMDECL(int) PGMPhysRead(PVM pVM, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead)
     AssertMsgReturn(cbRead > 0, ("don't even think about reading zero bytes!\n"), VINF_SUCCESS);
     LogFlow(("PGMPhysRead: %RGp %d\n", GCPhys, cbRead));
 
+    STAM_COUNTER_INC(&pVM->pgm.s.CTX_MID_Z(Stat,PhysRead));
+    STAM_COUNTER_ADD(&pVM->pgm.s.CTX_MID_Z(Stat,PhysReadBytes), cbRead);
+
     pgmLock(pVM);
 
     /*
@@ -2021,6 +2024,9 @@ VMMDECL(int) PGMPhysWrite(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t cb
     AssertMsg(!pVM->pgm.s.fNoMorePhysWrites, ("Calling PGMPhysWrite after pgmR3Save()!\n"));
     AssertMsgReturn(cbWrite > 0, ("don't even think about writing zero bytes!\n"), VINF_SUCCESS);
     LogFlow(("PGMPhysWrite: %RGp %d\n", GCPhys, cbWrite));
+
+    STAM_COUNTER_INC(&pVM->pgm.s.CTX_MID_Z(Stat,PhysWrite));
+    STAM_COUNTER_ADD(&pVM->pgm.s.CTX_MID_Z(Stat,PhysWriteBytes), cbWrite);
 
     pgmLock(pVM);
 
