@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 19257 2009-04-29 11:51:55Z vboxsync $ */
+/* $Id: PDMDriver.cpp 19454 2009-05-06 19:20:18Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -948,7 +948,7 @@ static DECLCALLBACK(int) pdmR3DrvHlp_SUPCallVMMR0Ex(PPDMDRVINS pDrvIns, unsigned
     int rc;
     if (    uOperation >= VMMR0_DO_SRV_START
         &&  uOperation <  VMMR0_DO_SRV_END)
-        rc = SUPCallVMMR0Ex(pDrvIns->Internal.s.pVM->pVMR0, 0 /* idCpu not relevant */, uOperation, 0, (PSUPVMMR0REQHDR)pvArg);
+        rc = SUPCallVMMR0Ex(pDrvIns->Internal.s.pVM->pVMR0, NIL_VMCPUID, uOperation, 0, (PSUPVMMR0REQHDR)pvArg);
     else
     {
         AssertMsgFailed(("Invalid uOperation=%u\n", uOperation));

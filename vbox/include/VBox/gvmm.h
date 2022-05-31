@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 19406 2009-05-05 23:28:56Z vboxsync $ */
+/* $Id: gvmm.h 19454 2009-05-06 19:20:18Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -82,10 +82,18 @@ typedef struct GVMMSTATSSCHED
 
     /** The number of calls to GVMMR0WakeUp. */
     uint64_t        cWakeUpCalls;
-    /** The number of times the EMT thread wasn't actually halted when GVMMR0WakeUp was called. */
+    /** The number of times the EMT thread wasn't actually halted when GVMMR0WakeUp
+     *  was called. */
     uint64_t        cWakeUpNotHalted;
-    /** The number of wake ups done during GVMMR0WakeUp (not counting the explicit one). */
+    /** The number of wake ups done during GVMMR0WakeUp (not counting the explicit
+     *  one). */
     uint64_t        cWakeUpWakeUps;
+
+    /** The number of calls to GVMMR0Poke. */
+    uint64_t        cPokeCalls;
+    /** The number of times the EMT thread wasn't actually busy when
+     *  GVMMR0Poke was called. */
+    uint64_t        cPokeNotBusy;
 
     /** The number of calls to GVMMR0SchedPoll. */
     uint64_t        cPollCalls;

@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 19393 2009-05-05 17:37:27Z vboxsync $ */
+/* $Id: SUPLib.cpp 19454 2009-05-06 19:20:18Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -567,7 +567,7 @@ static int supCallVMMR0ExFake(PVMR0 pVMR0, unsigned uOperation, uint64_t u64Arg,
 }
 
 
-SUPR3DECL(int) SUPCallVMMR0Fast(PVMR0 pVMR0, unsigned uOperation, unsigned idCpu)
+SUPR3DECL(int) SUPCallVMMR0Fast(PVMR0 pVMR0, unsigned uOperation, VMCPUID idCpu)
 {
     if (RT_LIKELY(uOperation == SUP_VMMR0_DO_RAW_RUN))
         return suplibOsIOCtlFast(&g_supLibData, SUP_IOCTL_FAST_DO_RAW_RUN, idCpu);
@@ -581,7 +581,7 @@ SUPR3DECL(int) SUPCallVMMR0Fast(PVMR0 pVMR0, unsigned uOperation, unsigned idCpu
 }
 
 
-SUPR3DECL(int) SUPCallVMMR0Ex(PVMR0 pVMR0, unsigned idCpu, unsigned uOperation, uint64_t u64Arg, PSUPVMMR0REQHDR pReqHdr)
+SUPR3DECL(int) SUPCallVMMR0Ex(PVMR0 pVMR0, VMCPUID idCpu, unsigned uOperation, uint64_t u64Arg, PSUPVMMR0REQHDR pReqHdr)
 {
     /*
      * The following operations don't belong here.
@@ -644,7 +644,7 @@ SUPR3DECL(int) SUPCallVMMR0Ex(PVMR0 pVMR0, unsigned idCpu, unsigned uOperation, 
 }
 
 
-SUPR3DECL(int) SUPCallVMMR0(PVMR0 pVMR0, unsigned idCpu, unsigned uOperation, void *pvArg)
+SUPR3DECL(int) SUPCallVMMR0(PVMR0 pVMR0, VMCPUID idCpu, unsigned uOperation, void *pvArg)
 {
     /*
      * The following operations don't belong here.
