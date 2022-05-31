@@ -1,4 +1,4 @@
-/* $Id: PDMGCDevice.cpp 19437 2009-05-06 14:34:05Z vboxsync $ */
+/* $Id: PDMGCDevice.cpp 19447 2009-05-06 17:37:09Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, GC Device parts.
  */
@@ -490,12 +490,16 @@ static DECLCALLBACK(VMCPUID) pdmRCApicHlp_GetCpuId(PPDMDEVINS pDevIns)
     return VMMGetCpuId(pDevIns->Internal.s.pVMRC);
 }
 
-/** @copydoc PDMAPICHLPR3::pfnSendSipi */
+
+/** @copydoc PDMAPICHLPRC::pfnSendSipi */
 static DECLCALLBACK(void) pdmRCApicHlp_SendSipi(PPDMDEVINS pDevIns, VMCPUID idCpu, int iVector)
 {
     /* we shall never send a SIPI in raw mode */
     AssertFailed();
 }
+
+
+
 
 /** @copydoc PDMIOAPICHLPRC::pfnApicBusDeliver */
 static DECLCALLBACK(void) pdmRCIoApicHlp_ApicBusDeliver(PPDMDEVINS pDevIns, uint8_t u8Dest, uint8_t u8DestMode, uint8_t u8DeliveryMode,
