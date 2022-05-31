@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18208 2009-03-24 17:01:32Z vboxsync $
+# $Id: Makefile.kmk 18323 2009-03-26 15:29:16Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -766,7 +766,6 @@ if defined(VBOX_WITH_NETFLT)
  if defined(VBOX_NETFLT_ONDEMAND_BIND)
   Drivers_DEFS.win     += VBOX_NETFLT_ONDEMAND_BIND
  endif
- Drivers_SOURCES.win   += Network/win/DrvIntNet-win.cpp
 endif
 
 # -- features --
