@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-linux.c 19937 2009-05-23 12:43:34Z vboxsync $ */
+/* $Id: thread-r0drv-linux.c 19941 2009-05-23 14:18:51Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Linux.
  */
@@ -71,7 +71,15 @@ RTDECL(bool) RTThreadYield(void)
 RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
 {
     Assert(hThread == NIL_RTTHREAD);
-    return !in_atomic() && !irqs_disabled();
+#ifdef CONFIG_PREEMPT
+# ifdef preemptible
+    return preemptible();
+# else
+    return preempt_count() == 0 && !in_atomic() && !irqs_disabled();
+# endif
+#else
+    return false;
+#endif
 }
 
 
