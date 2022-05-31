@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 21210 2009-07-03 15:07:16Z vboxsync $ */
+/* $Id: HWACCM.cpp 21213 2009-07-03 15:16:02Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1647,12 +1647,10 @@ VMMR3DECL(int)  HWACCMR3RestartPendingIOInstr(PVM pVM, PVMCPU pVCpu, PCPUMCTX pC
     HWACCMPENDINGIO enmType = pVCpu->hwaccm.s.PendingIO.enmType;
     int rc;
 
-        return VERR_NOT_FOUND;
-
     pVCpu->hwaccm.s.PendingIO.enmType = HWACCMPENDINGIO_INVALID;
 
     if (    pVCpu->hwaccm.s.PendingIO.GCPtrRip != pCtx->rip
-        ||  pVCpu->hwaccm.s.PendingIO.enmType  == HWACCMPENDINGIO_INVALID)
+        ||  enmType  == HWACCMPENDINGIO_INVALID)
         return VERR_NOT_FOUND;
 
     switch (enmType)
