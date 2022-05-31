@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 18594 2009-04-01 12:15:40Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 18924 2009-04-15 22:19:29Z vboxsync $ */
 
 /** @file
  *
@@ -27,6 +27,9 @@
 
 #ifndef RT_OS_WINDOWS
 #include <arpa/inet.h>
+# ifdef RT_OS_FREEBSD
+#  include <netinet/in.h> /* INADDR_NONE */
+# endif
 #endif /* RT_OS_WINDOWS */
 
 // constructor / destructor
