@@ -1,7 +1,7 @@
-/* $Id: server_getshaders.c 20511 2009-06-12 13:00:53Z vboxsync $ */
+/* $Id: server_getshaders.c 22220 2009-08-13 07:46:02Z vboxsync $ */
 
 /** @file
- * VBox OpenGL DRI driver functions
+ * VBox OpenGL GLSL related functions
  */
 
 /*
