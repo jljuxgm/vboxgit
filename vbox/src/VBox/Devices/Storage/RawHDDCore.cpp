@@ -1,4 +1,4 @@
-/* $Id: RawHDDCore.cpp 22966 2009-09-11 22:41:14Z vboxsync $ */
+/* $Id: RawHDDCore.cpp 22982 2009-09-13 22:17:34Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -463,7 +463,7 @@ static int rawFlushImage(PRAWIMAGE pImage)
 
 
 /** @copydoc VBOXHDDBACKEND::pfnCheckIfValid */
-static int rawCheckIfValid(const char *pszFilename)
+static int rawCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk)
 {
     LogFlowFunc(("pszFilename=\"%s\"\n", pszFilename));
     int rc = VINF_SUCCESS;

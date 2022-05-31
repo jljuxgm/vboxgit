@@ -1,4 +1,4 @@
-/* $Id: ParallelsHDDCore.cpp 22966 2009-09-11 22:41:14Z vboxsync $ */
+/* $Id: ParallelsHDDCore.cpp 22982 2009-09-13 22:17:34Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -408,7 +408,7 @@ static void parallelsFreeImage(PPARALLELSIMAGE pImage, bool fDelete)
 }
 
 /** @copydoc VBOXHDDBACKEND::pfnCheckIfValid */
-static int parallelsCheckIfValid(const char *pszFilename)
+static int parallelsCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk)
 {
     RTFILE File;
     ParallelsHeader parallelsHeader;

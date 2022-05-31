@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 22966 2009-09-11 22:41:14Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 22982 2009-09-13 22:17:34Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -4389,7 +4389,7 @@ static int vmdkAllocGrain(PVMDKGTCACHE pCache, PVMDKEXTENT pExtent,
 
 
 /** @copydoc VBOXHDDBACKEND::pfnCheckIfValid */
-static int vmdkCheckIfValid(const char *pszFilename)
+static int vmdkCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk)
 {
     LogFlowFunc(("pszFilename=\"%s\"\n", pszFilename));
     int rc = VINF_SUCCESS;
@@ -4415,7 +4415,7 @@ static int vmdkCheckIfValid(const char *pszFilename)
     pImage->pFiles = NULL;
     pImage->pGTCache = NULL;
     pImage->pDescData = NULL;
-    pImage->pVDIfsDisk = NULL;
+    pImage->pVDIfsDisk = pVDIfsDisk;
     /** @todo speed up this test open (VD_OPEN_FLAGS_INFO) by skipping as
      * much as possible in vmdkOpenImage. */
     rc = vmdkOpenImage(pImage, VD_OPEN_FLAGS_INFO | VD_OPEN_FLAGS_READONLY);
