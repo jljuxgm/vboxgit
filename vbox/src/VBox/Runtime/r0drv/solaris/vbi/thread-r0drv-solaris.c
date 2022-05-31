@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 22427 2009-08-25 08:50:56Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 22436 2009-08-25 14:31:21Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -40,7 +40,6 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/mp.h>
-#include <sys/spl.h>
 
 
 RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
