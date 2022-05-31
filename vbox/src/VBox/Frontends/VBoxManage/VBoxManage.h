@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 21806 2009-07-27 10:14:11Z vboxsync $ */
+/* $Id: VBoxManage.h 22562 2009-08-28 17:58:24Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -213,7 +213,6 @@ int handleHostonlyIf(HandlerArg *a);
 int handleDHCPServer(HandlerArg *a);
 
 #endif /* !VBOX_ONLY_DOCS */
-unsigned long VBoxSVNRev();
 
 #endif /* !___H_VBOXMANAGE */
 

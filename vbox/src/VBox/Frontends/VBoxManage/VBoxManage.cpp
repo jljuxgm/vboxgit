@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: VBoxManage.cpp 22562 2009-08-28 17:58:24Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -39,6 +39,7 @@
 #endif /* !VBOX_ONLY_DOCS */
 
 #include <iprt/asm.h>
+#include <iprt/buildconfig.h>
 #include <iprt/cidr.h>
 #include <iprt/ctype.h>
 #include <iprt/dir.h>
@@ -1729,7 +1730,7 @@ int main(int argc, char *argv[])
                  || !strcmp(argv[i], "--version"))
         {
             /* Print version number, and do nothing else. */
-            RTPrintf("%sr%d\n", VBOX_VERSION_STRING, VBoxSVNRev ());
+            RTPrintf("%sr%d\n", VBOX_VERSION_STRING, RTBldCfgRevision());
             return 0;
         }
         else if (   !strcmp(argv[i], "--dumpopts")
