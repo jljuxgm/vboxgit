@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21209 2009-07-03 14:50:36Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21210 2009-07-03 15:07:16Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2108,7 +2108,7 @@ ResumeExecution:
                 STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitIOWrite);
                 rc = IOMIOPortWrite(pVM, IoExitInfo.n.u16Port, pCtx->eax & uAndVal, uIOSize);
                 if (rc == VINF_IOM_HC_IOPORT_WRITE)
-                    HWACCMR0SavePendingIOPortWrite(pVCpu, pCtx->rip, pVMCB->ctrl.u64ExitInfo2, IoExitInfo.n.u16Port, pCtx->eax & uAndVal, uIOSize);
+                    HWACCMR0SavePendingIOPortWrite(pVCpu, pCtx->rip, pVMCB->ctrl.u64ExitInfo2, IoExitInfo.n.u16Port, uAndVal, uIOSize);
             }
             else
             {
