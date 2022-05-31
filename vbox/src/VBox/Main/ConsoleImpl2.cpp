@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22455 2009-08-26 08:32:32Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1456,7 +1456,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
     /* the VMM device's Main driver */
     rc = CFGMR3InsertNode(pInst,    "LUN#0", &pLunL0);                              RC_CHECK();
-    rc = CFGMR3InsertString(pLunL0, "Driver",               "MainVMMDev");          RC_CHECK();
+    rc = CFGMR3InsertString(pLunL0, "Driver",               "HGCM");                RC_CHECK();
     rc = CFGMR3InsertNode(pLunL0,   "Config", &pCfg);                               RC_CHECK();
     VMMDev *pVMMDev = pConsole->mVMMDev;
     rc = CFGMR3InsertInteger(pCfg,  "Object", (uintptr_t)pVMMDev);                  RC_CHECK();

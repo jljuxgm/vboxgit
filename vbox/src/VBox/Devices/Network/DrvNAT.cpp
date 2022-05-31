@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 22459 2009-08-26 09:18:20Z vboxsync $ */
+/* $Id: DrvNAT.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -993,9 +993,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandl
              * Register a load done notification to get the MAC address into the slirp
              * engine after we loaded a guest state.
              */
-            rc2 = PDMDrvHlpSSMRegister(pDrvIns, pDrvIns->pDrvReg->szDriverName,
-                                       pDrvIns->iInstance, 0, 0,
-                                       NULL, NULL, NULL, NULL, NULL, drvNATLoadDone);
+            rc2 = PDMDrvHlpSSMRegisterLoadDone(pDrvIns, drvNATLoadDone);
             AssertRC(rc2);
             rc = RTReqCreateQueue(&pThis->pSlirpReqQueue);
             if (RT_FAILURE(rc))
