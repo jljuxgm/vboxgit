@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 23779 2009-10-14 21:59:34Z vboxsync $ */
+/* $Id: SSM.cpp 23780 2009-10-14 22:07:18Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -3415,6 +3415,18 @@ VMMR3DECL(int) SSMR3PutStructEx(PSSMHANDLE pSSM, const void *pvStruct, size_t cb
                 }
                 break;
 
+            case SSMFIELDTRANS_IGN_GCPTR:
+                AssertMsgReturn(cbField == sizeof(RTGCPTR), ("%#x (%s)\n", cbField, pCur->pszName), VERR_SSM_FIELD_INVALID_SIZE);
+                if (fFlags & SSMSTRUCT_FLAGS_DONT_IGNORE)
+                    rc = ssmR3DataWrite(pSSM, s_abZero, sizeof(RTGCPTR));
+                break;
+
+            case SSMFIELDTRANS_IGN_GCPHYS:
+                AssertMsgReturn(cbField == sizeof(RTGCPHYS), ("%#x (%s)\n", cbField, pCur->pszName), VERR_SSM_FIELD_INVALID_SIZE);
+                if (fFlags & SSMSTRUCT_FLAGS_DONT_IGNORE)
+                    rc = ssmR3DataWrite(pSSM, s_abZero, sizeof(RTGCPHYS));
+                break;
+
             case SSMFIELDTRANS_IGN_RCPTR:
                 AssertMsgReturn(cbField == sizeof(RTRCPTR), ("%#x (%s)\n", cbField, pCur->pszName), VERR_SSM_FIELD_INVALID_SIZE);
                 if (fFlags & SSMSTRUCT_FLAGS_DONT_IGNORE)
@@ -6044,6 +6056,18 @@ VMMR3DECL(int) SSMR3GetStructEx(PSSMHANDLE pSSM, void *pvStruct, size_t cbStruct
             case SSMFIELDTRANS_IGNORE:
                 if (fFlags & SSMSTRUCT_FLAGS_DONT_IGNORE)
                     rc = SSMR3Skip(pSSM, cbField);
+                break;
+
+            case SSMFIELDTRANS_IGN_GCPTR:
+                AssertMsgReturn(cbField == sizeof(RTGCPTR), ("%#x (%s)\n", cbField, pCur->pszName), VERR_SSM_FIELD_INVALID_SIZE);
+                if (fFlags & SSMSTRUCT_FLAGS_DONT_IGNORE)
+                    rc = SSMR3Skip(pSSM, pSSM->u.Read.cbGCPtr);
+                break;
+
+            case SSMFIELDTRANS_IGN_GCPHYS:
+                AssertMsgReturn(cbField == sizeof(RTGCPHYS), ("%#x (%s)\n", cbField, pCur->pszName), VERR_SSM_FIELD_INVALID_SIZE);
+                if (fFlags & SSMSTRUCT_FLAGS_DONT_IGNORE)
+                    rc = SSMR3Skip(pSSM, pSSM->u.Read.cbGCPhys);
                 break;
 
             case SSMFIELDTRANS_IGN_RCPTR:
