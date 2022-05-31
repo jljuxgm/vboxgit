@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 18642 2009-04-02 15:04:40Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 18670 2009-04-03 07:44:47Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -110,6 +110,8 @@ extern int VBoxServiceSyntax(const char *pszFormat, ...);
 extern int VBoxServiceError(const char *pszFormat, ...);
 extern void VBoxServiceVerbose(int iLevel, const char *pszFormat, ...);
 extern int VBoxServiceArgUInt32(int argc, char **argv, const char *psz, int *pi, uint32_t *pu32, uint32_t u32Min, uint32_t u32Max);
+extern int VBoxServiceStartServices(int iMain);
+extern int VBoxServiceStopServices();
 
 #if defined(RT_OS_WINDOWS)
     extern int VBoxServiceWinInstall ();
