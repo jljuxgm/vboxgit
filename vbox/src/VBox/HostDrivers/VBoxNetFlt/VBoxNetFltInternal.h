@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 17307 2009-03-03 18:25:24Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 18807 2009-04-07 11:49:19Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -210,6 +210,8 @@ typedef struct VBOXNETFLTINS
 #if defined(RT_OS_WINDOWS)
 # if defined(VBOX_NETFLT_ONDEMAND_BIND)
         uint8_t abPadding[192];
+# elif defined(VBOXNETADP)
+        uint8_t abPadding[128];
 # else
         uint8_t abPadding[1024];
 # endif
