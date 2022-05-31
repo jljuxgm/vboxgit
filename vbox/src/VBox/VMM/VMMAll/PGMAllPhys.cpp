@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 18716 2009-04-05 12:09:45Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 18880 2009-04-14 09:42:01Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -333,10 +333,11 @@ static int pgmPhysEnsureHandyPage(PVM pVM)
  *          nip back to ring-3/0 in some cases.
  *
  * @remarks This function shouldn't really fail, however if it does
- *          it probably means we've screwed up the size of the amount
- *          and/or the low-water mark of handy pages. Or, that some
- *          device I/O is causing a lot of pages to be allocated while
- *          while the host is in a low-memory condition.
+ *          it probably means we've screwed up the size of handy pages and/or
+ *          the low-water mark. Or, that some device I/O is causing a lot of
+ *          pages to be allocated while while the host is in a low-memory
+ *          condition. This latter should be handled elsewhere and in a more
+ *          controlled manner, it's on the @bugref{3170} todo list...
  */
 int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
 {
