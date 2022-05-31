@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20521 2009-06-12 15:28:26Z vboxsync $
+# $Id: Makefile.kmk 20580 2009-06-15 09:21:50Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -901,6 +901,7 @@ ifdef VBOX_WITH_USB
  Drivers_SOURCES      += \
 	USB/DrvVUSBRootHub.cpp \
 	USB/VUSBDevice.cpp \
+	USB/VUSBReadAhead.cpp \
 	USB/VUSBUrb.cpp
  ifdef VBOX_WITH_VRDP
   Drivers_DEFS        += VBOX_WITH_VRDP
