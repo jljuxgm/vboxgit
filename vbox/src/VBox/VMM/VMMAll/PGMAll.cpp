@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: PGMAll.cpp 19329 2009-05-04 14:59:32Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -958,7 +958,7 @@ DECLINLINE(int) pgmShwGetPaePoolPagePD(PPGMCPU pPGM, RTGCPTR GCPtr, PPGMPOOLPAGE
     AssertMsg(pPdpt->a[iPdPt].u & X86_PDPE_PG_MASK, ("GCPtr=%RGv\n", GCPtr));
 
     /* Fetch the pgm pool shadow descriptor. */
-    PPGMPOOLPAGE pShwPde = pgmPoolGetPageByHCPhys(PGMCPU2VM(pPGM), pPdpt->a[iPdPt].u & X86_PDPE_PG_MASK);
+    PPGMPOOLPAGE pShwPde = pgmPoolGetPage(PGMCPU2PGM(pPGM)->CTX_SUFF(pPool), pPdpt->a[iPdPt].u & X86_PDPE_PG_MASK);
     AssertReturn(pShwPde, VERR_INTERNAL_ERROR);
 
     *ppShwPde = pShwPde;
