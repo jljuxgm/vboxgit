@@ -1,4 +1,4 @@
-/* $Id: RTDirQueryInfo-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: RTDirQueryInfo-generic.cpp 23295 2009-09-24 16:27:51Z vboxsync $ */
 /** @file
  * IPRT - RTDirQueryInfo, generic implementation.
  */
@@ -55,6 +55,6 @@ RTR3DECL(int) RTDirQueryInfo(PRTDIR pDir, PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD 
      */
     if (!rtDirValidHandle(pDir))
         return VERR_INVALID_PARAMETER;
-    return RTPathQueryInfo(pDir->pszPath, pObjInfo, enmAdditionalAttribs);
+    return RTPathQueryInfoEx(pDir->pszPath, pObjInfo, enmAdditionalAttribs, RTPATH_F_FOLLOW_LINK);
 }
 
