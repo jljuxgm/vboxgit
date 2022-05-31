@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 23034 2009-09-15 15:02:01Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 23058 2009-09-16 09:43:34Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1818,7 +1818,7 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         else
         {
             /* Fall back to rdtsc emulation as we would otherwise pass decreasing tsc values to the guest. */
-            Log(("TSC %RX64 offset %RX64 time=%RX64 last=%RX64 (diff=%RX64, virt_tsc=%RX64)\n", u64CurTSC, pVCpu->hwaccm.s.vmx.u64TSCOffset, u64CurTSC + pVCpu->hwaccm.s.vmx.u64TSCOffset, TMCpuTickGetLastSeen(pVCpu), TMCpuTickGetLastSeen(pVCpu) - u64CurTSC - pVCpu->hwaccm.s.vmx.u64TSCOffset, TMCpuTickGet(pVCpu)));
+            LogFlow(("TSC %RX64 offset %RX64 time=%RX64 last=%RX64 (diff=%RX64, virt_tsc=%RX64)\n", u64CurTSC, pVCpu->hwaccm.s.vmx.u64TSCOffset, u64CurTSC + pVCpu->hwaccm.s.vmx.u64TSCOffset, TMCpuTickGetLastSeen(pVCpu), TMCpuTickGetLastSeen(pVCpu) - u64CurTSC - pVCpu->hwaccm.s.vmx.u64TSCOffset, TMCpuTickGet(pVCpu)));
             pVCpu->hwaccm.s.vmx.proc_ctls |= VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_RDTSC_EXIT;
             rc = VMXWriteVMCS(VMX_VMCS_CTRL_PROC_EXEC_CONTROLS, pVCpu->hwaccm.s.vmx.proc_ctls);
             AssertRC(rc);
