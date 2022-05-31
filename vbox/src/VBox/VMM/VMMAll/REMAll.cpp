@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 20786 2009-06-22 15:12:41Z vboxsync $ */
+/* $Id: REMAll.cpp 20787 2009-06-22 15:22:55Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -119,7 +119,6 @@ static void remNotifyHandlerInsert(PVM pVM, PREMHANDLERNOTIFICATION pRec)
             {
                 Assert(cFlushes++ != 128);
                 AssertFatal(cFlushes < _1M);
-                VM_FF_SET(pVM, VM_FF_REM_HANDLER_NOTIFY);
                 remFlushHandlerNotifications(pVM);
                 idxFree = ASMAtomicUoReadU32(&pVM->rem.s.idxFreeList);
             } while (idxFree == (uint32_t)-1);
