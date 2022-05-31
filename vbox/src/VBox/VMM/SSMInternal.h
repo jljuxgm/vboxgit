@@ -1,4 +1,4 @@
-/* $Id: SSMInternal.h 22884 2009-09-09 21:55:47Z vboxsync $ */
+/* $Id: SSMInternal.h 23709 2009-10-12 19:11:16Z vboxsync $ */
 /** @file
  * SSM - Internal header file.
  */
@@ -66,6 +66,9 @@ typedef struct SSMUNIT
      * The flag is used to determin whether there is need for a call to
      * done or not. */
     bool                    fCalled;
+    /** Finished its live part.
+     * This is used to handle VERR_SSM_VOTE_FOR_GIVING_UP.  */
+    bool                    fDoneLive;
     /** Callback interface type. */
     SSMUNITTYPE             enmType;
     /** Type specific data. */
