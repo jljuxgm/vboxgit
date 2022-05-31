@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 21788 2009-07-24 17:12:36Z vboxsync $ */
+/* $Id: PDMQueue.cpp 21847 2009-07-28 14:35:04Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -215,7 +215,7 @@ VMMR3DECL(int) PDMR3QueueCreateDevice(PVM pVM, PPDMDEVINS pDevIns, RTUINT cbItem
                                       PFNPDMQUEUEDEV pfnCallback, bool fRZEnabled, const char *pszName, PPDMQUEUE *ppQueue)
 {
     LogFlow(("PDMR3QueueCreateDevice: pDevIns=%p cbItem=%d cItems=%d cMilliesInterval=%d pfnCallback=%p fRZEnabled=%RTbool pszName=%s\n",
-             pDevIns, cbItem, cItems, cMilliesInterval, pfnCallback, fRZEnabled));
+             pDevIns, cbItem, cItems, cMilliesInterval, pfnCallback, fRZEnabled, pszName));
 
     /*
      * Validate input.
