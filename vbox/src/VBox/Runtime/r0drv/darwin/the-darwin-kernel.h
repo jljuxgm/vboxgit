@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 20525 2009-06-13 20:13:33Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -87,6 +87,7 @@
 
 
 RT_C_DECLS_BEGIN
+
 /* mach/vm_types.h */
 typedef struct pmap *pmap_t;
 
@@ -115,6 +116,9 @@ extern void mp_rendezvous_no_intrs(void (*)(void *), void *);
 
 /* osfmk/i386/cpu_number.h */
 extern int cpu_number(void);
+
+/* osfmk/vm/vm_user.c */
+extern kern_return_t vm_protect(vm_map_t, vm_offset_t, vm_size_t, boolean_t, vm_prot_t);
 
 /* i386/machine_routines.h */
 extern int ml_get_max_cpus(void);

@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-freebsd.c 19673 2009-05-13 18:40:01Z vboxsync $ */
+/* $Id: memobj-r0drv-freebsd.c 20525 2009-06-13 20:13:33Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, FreeBSD.
  */
@@ -678,6 +678,16 @@ int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, RT
         vm_object_deallocate(pObjectToMap);
 
     return VERR_NO_MEMORY;
+}
+
+
+int rtR0MemObjNativeProtect(PRTR0MEMOBJINTERNAL pMem, size_t offSub, size_t cbSub, uint32_t fProt)
+{
+    NOREF(pMem);
+    NOREF(offSub);
+    NOREF(cbSub);
+    NOREF(fProt);
+    return VERR_NOT_SUPPORTED;
 }
 
 
