@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemption.h 19935 2009-05-23 01:50:33Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.h 20364 2009-06-08 00:17:43Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, common header.
  */
@@ -29,10 +29,10 @@
  */
 
 #ifdef IN_RING0
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 DECLEXPORT(int) TSTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint32_t uOperation,
                                                    uint64_t u64Arg, PSUPR0SERVICEREQHDR pReqHdr);
-__END_DECLS
+RT_END_DECLS
 #endif
 
 typedef enum TSTR0THREADPREMEPTION

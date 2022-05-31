@@ -1,4 +1,4 @@
-/* $Id: fileaio.h 19562 2009-05-10 21:44:16Z vboxsync $ */
+/* $Id: fileaio.h 20364 2009-06-08 00:17:43Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFileAio header.
  */
@@ -108,9 +108,9 @@ typedef enum RTFILEAIOREQSTATE
     } while (0)
 
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
-__END_DECLS
+RT_END_DECLS
 
 #endif
 

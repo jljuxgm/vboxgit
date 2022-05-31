@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.h 19547 2009-05-08 20:39:39Z vboxsync $ */
+/* $Id: alloc-ef.h 20364 2009-06-08 00:17:43Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -158,11 +158,11 @@ typedef struct RTMEMBLOCK
 /*******************************************************************************
 *   Internal Functions                                                         *
 ******************************************************************************/
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 void *  rtMemAlloc(const char *pszOp, RTMEMTYPE enmType, size_t cb, void *pvCaller, unsigned iLine, const char *pszFile, const char *pszFunction);
 void *  rtMemRealloc(const char *pszOp, RTMEMTYPE enmType, void *pvOld, size_t cbNew, void *pvCaller, unsigned iLine, const char *pszFile, const char *pszFunction);
 void    rtMemFree(const char *pszOp, RTMEMTYPE enmType, void *pv, void *pvCaller, unsigned iLine, const char *pszFile, const char *pszFunction);
-__END_DECLS
+RT_END_DECLS
 
 #endif
 

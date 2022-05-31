@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 19969 2009-05-24 16:21:24Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 20364 2009-06-08 00:17:43Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -33,7 +33,7 @@
 
 #include <iprt/cpuset.h>
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
@@ -53,7 +53,7 @@ extern uint32_t                     g_cbrtNtPbQuantumEnd;
 extern uint32_t                     g_offrtNtPbDpcQueueDepth;
 
 
-__END_DECLS
+RT_END_DECLS
 
 #endif
 

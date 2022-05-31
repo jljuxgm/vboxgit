@@ -1,4 +1,4 @@
-/* $Id: fs.h 14058 2008-11-10 23:01:55Z vboxsync $ */
+/* $Id: fs.h 20364 2009-06-08 00:17:43Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFs header.
  */
@@ -36,7 +36,7 @@
 # include <sys/stat.h>
 #endif
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 RTFMODE rtFsModeFromDos(RTFMODE fMode, const char *pszName, size_t cbName);
 RTFMODE rtFsModeFromUnix(RTFMODE fMode, const char *pszName, size_t cbName);
@@ -57,6 +57,6 @@ void    rtFsConvertStatToObjInfo(PRTFSOBJINFO pObjInfo, const struct stat *pStat
 # endif
 #endif
 
-__END_DECLS
+RT_END_DECLS
 
 #endif

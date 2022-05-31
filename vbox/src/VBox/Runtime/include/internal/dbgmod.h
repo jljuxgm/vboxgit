@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 20356 2009-06-07 13:22:52Z vboxsync $ */
+/* $Id: dbgmod.h 20364 2009-06-08 00:17:43Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -26,7 +26,7 @@
 #include <iprt/critsect.h>
 #include "internal/magics.h"
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 /** @defgroup grp_rt_dbgmod     RTDbgMod - Debug Module Interperter
  * @ingroup grp_rt
@@ -247,7 +247,7 @@ int rtDbgModContainerCreate(PRTDBGMODINT pMod, RTUINTPTR cb);
 
 /** @} */
 
-__END_DECLS
+RT_END_DECLS
 
 #endif
 
