@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 22361 2009-08-20 09:24:47Z vboxsync $ */
+/* $Id: DrvNAT.cpp 22380 2009-08-21 06:20:42Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -60,9 +60,7 @@
  *        activity. This needs to be fixed properly.
  */
 #define VBOX_NAT_DELAY_HACK
-#if 0
 #define SLIRP_SPLIT_CAN_OUTPUT 1
-#endif
 
 #define GET_EXTRADATA(pthis, node, name, rc, type, type_name, var)                                  \
 do {                                                                                                \
