@@ -1,4 +1,4 @@
-/* $Id: VBoxAcpi.cpp 20679 2009-06-18 10:38:52Z vboxsync $ */
+/* $Id: VBoxAcpi.cpp 20918 2009-06-25 09:33:58Z vboxsync $ */
 /** @file
  * VBoxAcpi - VirtualBox ACPI maniputation functionality.
  */
@@ -71,10 +71,15 @@ static int patchAml(PPDMDEVINS pDevIns, uint8_t* pAml, size_t uAmlLen)
     bool fShowCpu;
     rc = CFGMR3QueryBoolDef(pDevIns->pCfgHandle, "ShowCpu", &fShowCpu, false);
     if (RT_FAILURE(rc))
-      return rc;
+        return rc;
 
     if (!fShowCpu)
-      cNumCpus = 0;
+        cNumCpus = 0;
+
+#ifdef VBOX_WITH_MULTI_CORE
+    /* One physical package with multiple cores. */
+    cNumCpus = 1;
+#endif
 
     /**
      * Now search AML for:
