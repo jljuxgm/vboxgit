@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 19744 2009-05-15 15:23:47Z vboxsync $ */
+/* $Id: DevAPIC.cpp 19787 2009-05-18 13:39:26Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -2249,6 +2249,11 @@ static DECLCALLBACK(int) apicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
                                 N_("Configuration error: Failed to query integer value \"NumCPUs\""));
 
     Log(("APIC: cCpus=%d fR0Enabled=%RTbool fGCEnabled=%RTbool fIOAPIC=%RTbool\n", cCpus, fR0Enabled, fGCEnabled, fIOAPIC));
+
+    /* TODO: Current implementation is limited to 32 CPUs due to the use of 32 bits bitmasks. */
+    if (cCpus > 32)
+        return PDMDEV_SET_ERROR(pDevIns, rc,
+                                N_("Configuration error: Invalid value for \"NumCPUs\""));
 
     /*
      * Init the data.
