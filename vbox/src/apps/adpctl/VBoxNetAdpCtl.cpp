@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 23063 2009-09-16 12:03:00Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 23064 2009-09-16 12:07:11Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -85,6 +85,7 @@ static int executeIfconfig(const char *pcszAdapterName, const char *pcszArg1,
         pcszArg5, /* [network mask] */
         NULL  /* terminator */
     };
+    char * const envp[] = { (char*)"LC_ALL=C", NULL };
     int rc = EXIT_SUCCESS;
     pid_t childPid = fork();
     switch (childPid)
@@ -94,8 +95,7 @@ static int executeIfconfig(const char *pcszAdapterName, const char *pcszArg1,
             rc = EXIT_FAILURE;
             break;
         case 0: /* Child process. */
-            /** @todo use execve like below? */
-            if (execv(VBOXADPCTL_IFCONFIG_PATH, (char * const*)argv) == -1)
+            if (execve(VBOXADPCTL_IFCONFIG_PATH, (char * const*)argv, envp) == -1)
                 rc = EXIT_FAILURE;
             break;
         default: /* Parent process. */
