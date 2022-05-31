@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 18291 2009-03-26 05:11:07Z vboxsync $ */
+/* $Id: PGMPhys.cpp 18294 2009-03-26 05:35:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -866,7 +866,7 @@ static int pgmR3PhysRegisterHighRamChunk(PVM pVM, RTGCPHYS GCPhys, uint32_t cRam
     void        *pvChunk      = NULL;
     int rc = SUPR3PageAllocEx(cChunkPages, 0 /*fFlags*/, &pvChunk,
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-                              VMMIsHwVirtExtForced(pVM) ? &pvR0 : NULL,
+                              VMMIsHwVirtExtForced(pVM) ? &R0PtrChunk : NULL,
 #else
                               NULL,
 #endif
