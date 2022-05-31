@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 21404 2009-07-08 15:19:42Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 21421 2009-07-09 10:00:03Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -159,6 +159,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
     /* lock the console because we widely use internal fields and methods */
     AutoWriteLock alock (pConsole);
+
+    /* Save the VM pointer in the machine object */
+    pConsole->mpVM = pVM;
 
     ComPtr <IMachine> pMachine = pConsole->machine();
 
@@ -2030,9 +2033,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     AssertRC (rc2);
     if (RT_SUCCESS (rc))
         rc = rc2;
-
-    /* Save the VM pointer in the machine object */
-    pConsole->mpVM = pVM;
 
     LogFlowFunc (("vrc = %Rrc\n", rc));
     LogFlowFuncLeave();
