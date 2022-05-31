@@ -1,4 +1,4 @@
-/* $Id: VBGLR3Internal.h 21227 2009-07-05 19:50:18Z vboxsync $ */
+/* $Id: VBGLR3Internal.h 22970 2009-09-12 11:53:35Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -87,7 +87,7 @@ DECLINLINE(void) VbglHGCMParmPtrSet(HGCMFunctionParameter *pParm, void *pv, uint
 
 DECLINLINE(void) VbglHGCMParmPtrSetString(HGCMFunctionParameter *pParm, const char *psz)
 {
-    pParm->type                    = VMMDevHGCMParmType_LinAddr;
+    pParm->type                    = VMMDevHGCMParmType_LinAddr_In;
     pParm->u.Pointer.size          = (uint32_t)strlen(psz) + 1;
     pParm->u.Pointer.u.linearAddr  = (uintptr_t)psz;
 }
