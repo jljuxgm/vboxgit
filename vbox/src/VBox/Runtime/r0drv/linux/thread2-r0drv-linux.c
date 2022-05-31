@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-linux.c 19907 2009-05-22 11:14:50Z vboxsync $ */
+/* $Id: thread2-r0drv-linux.c 19912 2009-05-22 14:00:33Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Linux.
  */
@@ -56,11 +56,18 @@ RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
 
 RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
 {
-# if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 4)
+    Assert(hThread == NIL_RTTHREAD);
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 4)
     return test_tsk_thread_flag(current, TIF_NEED_RESCHED);
+
+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 4, 20)
+    return need_resched();
+
+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 1, 110)
+    return current->need_resched != 0;
+
 #else
-    /** @todo get back to this if it matters. */
-    return false;
+    return need_resched != 0;
 #endif
 }
 
