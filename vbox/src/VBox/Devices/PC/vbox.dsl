@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 20592 2009-06-15 14:32:18Z vboxsync $
+// $Id: vbox.dsl 20595 2009-06-15 17:38:22Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -373,6 +373,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
             UFDC,  32,
             // @todo: maybe make it bitmask instead?
             UCP0,  32,
+            UCP1,  32, 
+            UCP2,  32, 
+            UCP3,  32, 
             MEMH,  32,
             URTC,  32,
             Offset (0x80),
