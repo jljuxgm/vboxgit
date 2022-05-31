@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 19471 2009-05-07 09:07:28Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 19590 2009-05-11 15:19:58Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -328,3 +328,14 @@ VMMDECL(bool) PDMCritSectIsInitialized(PCPDMCRITSECT pCritSect)
     return pCritSect->s.Core.u32Magic == RTCRITSECT_MAGIC;
 }
 
+
+/**
+ * Gets the recursion depth.
+ *
+ * @returns The recursion depth.
+ * @param   pCritSect   The critical section.
+ */
+VMMDECL(uint32_t) PDMCritSectGetRecursion(PCPDMCRITSECT pCritSect)
+{
+    return RTCritSectGetRecursion(&pCritSect->s.Core);
+}
