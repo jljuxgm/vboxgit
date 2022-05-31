@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 23741 2009-10-13 20:01:51Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 23748 2009-10-14 08:49:02Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -96,7 +96,7 @@ int main(int argc, char **argv)
         };
 
         RTGETOPTSTATE State;
-        int rc = RTGetOptInit(&State, argc-1, argv+1, &s_aOptionDefs[0], RT_ELEMENTS(s_aOptionDefs), 0, 0);
+        rc = RTGetOptInit(&State, argc-1, argv+1, &s_aOptionDefs[0], RT_ELEMENTS(s_aOptionDefs), 0, 0);
         AssertRCReturn(rc, 49);
 
         for (;;)
