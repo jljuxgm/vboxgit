@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 19435 2009-05-06 14:01:15Z vboxsync $ */
+/* $Id: VM.cpp 19441 2009-05-06 15:27:39Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1271,6 +1271,11 @@ static DECLCALLBACK(int) vmR3Resume(PVM pVM)
 {
     LogFlow(("vmR3Resume: pVM=%p\n", pVM));
 
+    PVMCPU pVCpu = VMMGetCpu(pVM);
+    /* Only VCPU 0 does the actual work (*before* the others wake up). */
+    if (pVCpu->idCpu != 0)
+        return VINF_EM_RESUME;
+
     /*
      * Validate input.
      */
@@ -1279,11 +1284,6 @@ static DECLCALLBACK(int) vmR3Resume(PVM pVM)
         AssertMsgFailed(("Invalid VM state %d\n", pVM->enmVMState));
         return VERR_VM_INVALID_VM_STATE;
     }
-
-    PVMCPU pVCpu = VMMGetCpu(pVM);
-    /* Only VCPU 0 does the actual work (*before* the others wake up). */
-    if (pVCpu->idCpu != 0)
-        return VINF_EM_RESUME;
 
     /*
      * Change the state, notify the components and resume the execution.
