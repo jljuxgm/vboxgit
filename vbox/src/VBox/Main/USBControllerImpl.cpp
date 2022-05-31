@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 22303 2009-08-17 15:40:24Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -624,13 +624,13 @@ HRESULT USBController::saveSettings(settings::USBController &data)
          ++it)
     {
         AutoWriteLock filterLock (*it);
-        const USBDeviceFilter::Data &data = (*it)->data();
+        const USBDeviceFilter::Data &filterData = (*it)->data();
 
         Bstr str;
 
         settings::USBDeviceFilter f;
-        f.strName = data.mName;
-        f.fActive = !!data.mActive;
+        f.strName = filterData.mName;
+        f.fActive = !!filterData.mActive;
         (*it)->COMGETTER(VendorId)(str.asOutParam());
         f.strVendorId = str;
         (*it)->COMGETTER(ProductId)(str.asOutParam());
@@ -645,8 +645,10 @@ HRESULT USBController::saveSettings(settings::USBController &data)
         f.strSerialNumber = str;
         (*it)->COMGETTER (Port) (str.asOutParam());
         f.strPort = str;
-        f.strRemote = data.mRemote.string();
-        f.ulMaskedInterfaces = data.mMaskedIfs;
+        f.strRemote = filterData.mRemote.string();
+        f.ulMaskedInterfaces = filterData.mMaskedIfs;
+
+        data.llDeviceFilters.push_back(f);
     }
 #endif /* VBOX_WITH_USB */
 
