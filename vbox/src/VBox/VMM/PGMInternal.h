@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 22926 2009-09-10 22:32:44Z vboxsync $ */
+/* $Id: PGMInternal.h 22929 2009-09-10 23:08:50Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2586,6 +2586,7 @@ typedef struct PGM
 # endif
 #endif
 } PGM;
+#ifndef IN_TSTVMSTRUCTGC /* HACK */
 AssertCompileMemberAlignment(PGM, paDynPageMap32BitPTEsGC, 8);
 AssertCompileMemberAlignment(PGM, HCPhysInterPD, 8);
 AssertCompileMemberAlignment(PGM, aHCPhysDynPageMapCache, 8);
@@ -2595,6 +2596,7 @@ AssertCompileMemberAlignment(PGM, PhysTlbHC, 8);
 AssertCompileMemberAlignment(PGM, HCPhysZeroPg, 8);
 AssertCompileMemberAlignment(PGM, aHandyPages, 8);
 AssertCompileMemberAlignment(PGM, cRelocations, 8);
+#endif /* !IN_TSTVMSTRUCTGC */
 /** Pointer to the PGM instance data. */
 typedef PGM *PPGM;
 

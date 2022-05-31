@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 22919 2009-09-10 14:53:23Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 22929 2009-09-10 23:08:50Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -52,6 +52,7 @@ AssertCompileSize(RTHCPHYS, 8);
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define IN_TSTVMSTRUCTGC 1
 #include <VBox/cfgm.h>
 #include <VBox/cpum.h>
 #include <VBox/mm.h>
