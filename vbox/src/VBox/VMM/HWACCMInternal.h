@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 20142 2009-05-29 10:14:02Z vboxsync $ */
+/* $Id: HWACCMInternal.h 20234 2009-06-03 14:54:22Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -345,13 +345,6 @@ typedef struct HWACCM
          *  naturally. */
         bool                        padding[1];
 
-        /** R0 memory object for the host VM control block (VMCB). */
-        RTR0MEMOBJ                  pMemObjVMCBHost;
-        /** Physical address of the host VM control block (VMCB). */
-        RTHCPHYS                    pVMCBHostPhys;
-        /** Virtual address of the host VM control block (VMCB). */
-        R0PTRTYPE(void *)           pVMCBHost;
-
         /** R0 memory object for the IO bitmap (12kb). */
         RTR0MEMOBJ                  pMemObjIOBitmap;
         /** Physical address of the IO bitmap (12kb). */
@@ -543,6 +536,13 @@ typedef struct HWACCMCPU
 
     struct
     {
+        /** R0 memory object for the host VM control block (VMCB). */
+        RTR0MEMOBJ                  pMemObjVMCBHost;
+        /** Physical address of the host VM control block (VMCB). */
+        RTHCPHYS                    pVMCBHostPhys;
+        /** Virtual address of the host VM control block (VMCB). */
+        R0PTRTYPE(void *)           pVMCBHost;
+
         /** R0 memory object for the VM control block (VMCB). */
         RTR0MEMOBJ                  pMemObjVMCB;
         /** Physical address of the VM control block (VMCB). */
