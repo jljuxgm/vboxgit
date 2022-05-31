@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 19221 2009-04-27 16:00:24Z vboxsync $ */
+/** $Id: clipboard.cpp 19800 2009-05-18 19:45:06Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -1035,8 +1035,8 @@ static Boolean vboxClipboardConvertCText(Atom *atomTypeReturn, XtPointer *pValRe
         LogFlowFunc(("rc = false\n"));
         return false;
     }
-    LogFlow(("vboxClipboardConvertCText: original text is %.*ls\n", cwHostText, pu16HostText));
     cwHostText = cbHostText / 2;
+    LogFlow(("vboxClipboardConvertCText: original text is %.*ls\n", cwHostText, pu16HostText));
     cwGuestText = vboxClipboardUtf16GetLinSize(pu16HostText, cwHostText);
     pu16GuestText = reinterpret_cast<PRTUTF16>(RTMemAlloc(cwGuestText * 2));
     if (pu16GuestText == 0)
