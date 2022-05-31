@@ -1,4 +1,4 @@
-/* $Id: glx_c_exports.c 18542 2009-03-30 13:04:33Z vboxsync $ */
+/* $Id: glx_c_exports.c 18545 2009-03-30 13:32:11Z vboxsync $ */
 /** @file
  *
  * VirtualBox guest OpenGL DRI GLX C stubs
@@ -20,6 +20,7 @@
  * additional information or have any questions.
  */
 
+#include "stub.h"
 #include "dri_glx.h"
 #include "fakedri_drv.h"
 
