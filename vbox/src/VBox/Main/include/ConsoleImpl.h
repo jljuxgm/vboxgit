@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 23606 2009-10-07 18:50:20Z vboxsync $ */
+/* $Id: ConsoleImpl.h 23626 2009-10-08 16:56:52Z vboxsync $ */
 
 /** @file
  *
@@ -513,7 +513,8 @@ private:
 
     /** @name Live migration support
      * @{ */
-    int migrationLoadRemote(PVM pVM, IMachine *pMachine);
+    int                         migrationLoadRemote(PVM pVM, IMachine *pMachine);
+    static DECLCALLBACK(int)    migrationServeConnection(RTSOCKET Sock, void *pvUser);
     /** @} */
 
     bool mSavedStateDataLoaded : 1;
