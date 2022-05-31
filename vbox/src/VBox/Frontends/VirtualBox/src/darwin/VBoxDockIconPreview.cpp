@@ -1,4 +1,4 @@
-/* $Id: VBoxDockIconPreview.cpp 17340 2009-03-04 12:11:33Z vboxsync $ */
+/* $Id: VBoxDockIconPreview.cpp 18689 2009-04-03 13:21:04Z vboxsync $ */
 /** @file
  * Qt GUI - Realtime Dock Icon Preview
  */
@@ -262,7 +262,7 @@ void VBoxDockIconPreview::updateDockPreviewImpl (CGContextRef aContext, CGImageR
     /* Draw the VM content */
     CGContextDrawImage (aContext, flipRect (iconRect), aVMImage);
 
-#ifndef QT_MAC_USE_COCOA
+#if 0 // ndef QT_MAC_USE_COCOA
     /* Process the content of any external OpenGL window. */
     WindowRef w = darwinToNativeWindow (mMainWnd);
     WindowGroupRef g = GetWindowGroup (w);
