@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 17004 2009-02-23 11:07:46Z vboxsync $ */
+/** $Id: clipboard.cpp 18360 2009-03-26 23:46:38Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -41,6 +41,7 @@
 #include <X11/X.h>
 #include <vector>
 
+#include "VBoxClient.h"
 #include "clipboard.h"
 
 /** The formats which we support in the guest. These can be deactivated in order to test specific code paths. */
@@ -1361,7 +1362,6 @@ void vboxClipboardDisconnect(void)
     LogFlowFunc(("returning\n"));
 }
 
-
 /**
  * Connect the guest clipboard to the host.
  *
@@ -1377,6 +1377,13 @@ int vboxClipboardConnect(void)
 
     /* Initialise the termination semaphore. */
     RTSemEventCreate(&g_ctx.terminating);
+
+    /* Initialise threading in X11 and in Xt. */
+    if (!XInitThreads() || !XtToolkitThreadInitialize())
+    {
+        LogRel(("VBoxClient: error initialising threads in X11, exiting.\n"));
+        return VERR_NOT_SUPPORTED;
+    }
 
     rc = VbglR3ClipboardConnect(&g_ctx.client);
     if (RT_FAILURE(rc))
@@ -1486,3 +1493,27 @@ int vboxClipboardMain(void)
     return rc;
 }
 
+class ClipboardService : public VBoxClient::Service
+{
+public:
+    virtual const char *getPidFilePath()
+    {
+        return ".vboxclient-clipboard.pid";
+    }
+    virtual int run()
+    {
+        int rc = vboxClipboardConnect();
+        if (RT_SUCCESS(rc))
+            rc = vboxClipboardMain();
+        return rc;
+    }
+    virtual void cleanup()
+    {
+        /* Nothing to do. */
+    }
+};
+
+VBoxClient::Service *VBoxClient::GetClipboardService()
+{
+    return new ClipboardService;
+}
