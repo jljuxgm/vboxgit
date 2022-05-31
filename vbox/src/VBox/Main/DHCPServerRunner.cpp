@@ -1,4 +1,4 @@
-/* $Id: DHCPServerRunner.cpp 21860 2009-07-29 09:39:25Z vboxsync $ */
+/* $Id: DHCPServerRunner.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -121,7 +121,7 @@ int DHCPServerRunner::start()
     args[index++] = NULL;
 
     int rc = RTProcCreate (exePath, args, RTENV_DEFAULT, 0, &mProcess);
-    if (RT_FAILURE (rc))
+    if (RT_FAILURE(rc))
         mProcess = NIL_RTPROCESS;
 
     return rc;

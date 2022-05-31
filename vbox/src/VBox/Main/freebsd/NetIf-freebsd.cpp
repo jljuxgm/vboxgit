@@ -1,4 +1,4 @@
-/* $Id: NetIf-freebsd.cpp 18971 2009-04-16 23:41:48Z vboxsync $ */
+/* $Id: NetIf-freebsd.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
 /** @file
  * Main - NetIfList, FreeBSD implementation.
  */
@@ -30,7 +30,7 @@
 #include "netif.h"
 #include "Logging.h"
 
-int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
+int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
 {
     /** @todo implement */
     return VERR_NOT_IMPLEMENTED;

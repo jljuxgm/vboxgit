@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
 
 /** @file
  *
@@ -85,7 +85,7 @@ public:
 
 private:
     /** weak VirtualBox parent */
-    const ComObjPtr <VirtualBox, ComWeakRef> mVirtualBox;
+    const ComObjPtr<VirtualBox, ComWeakRef> mVirtualBox;
 
     const Bstr mName;
 

@@ -1,4 +1,4 @@
-/* $Id: tstHostHardwareLinux.cpp 21436 2009-07-09 12:24:28Z vboxsync $ */
+/* $Id: tstHostHardwareLinux.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
 /** @file
  *
  * Test executable for quickly excercising/debugging the Linux host hardware
@@ -45,9 +45,9 @@ int main()
     VBoxMainDriveInfo driveInfo;
     g_testHostHardwareLinux = true;
     rc = driveInfo.updateFloppies();
-    if (RT_SUCCESS (rc))
+    if (RT_SUCCESS(rc))
         rc = driveInfo.updateDVDs();
-    if (RT_FAILURE (rc))
+    if (RT_FAILURE(rc))
     {
         RTPrintf("Failed to update the host drive information, error %Rrc\n",
                  rc);
@@ -78,7 +78,7 @@ int main()
 #ifdef VBOX_USB_WITH_SYSFS
     VBoxMainUSBDeviceInfo deviceInfo;
     rc = deviceInfo.UpdateDevices();
-    if (RT_FAILURE (rc))
+    if (RT_FAILURE(rc))
     {
         RTPrintf ("Failed to update the host USB device information, error %Rrc\n",
                  rc);

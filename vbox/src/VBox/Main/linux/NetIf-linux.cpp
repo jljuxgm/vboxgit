@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 20481 2009-06-11 19:30:12Z vboxsync $ */
+/* $Id: NetIf-linux.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -150,7 +150,7 @@ static int getInterfaceInfo(int iSocket, const char *pszName, PNETIFINFO pInfo)
     return VINF_SUCCESS;
 }
 
-int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
+int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
 {
     char szDefaultIface[256];
     int rc = getDefaultIfaceName(szDefaultIface);

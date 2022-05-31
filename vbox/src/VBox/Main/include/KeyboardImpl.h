@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
+/* $Id: KeyboardImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
 
 /** @file
  *
@@ -99,7 +99,7 @@ private:
     static DECLCALLBACK(int)    drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle);
     static DECLCALLBACK(void)   drvDestruct(PPDMDRVINS pDrvIns);
 
-    const ComObjPtr <Console, ComWeakRef> mParent;
+    const ComObjPtr<Console, ComWeakRef> mParent;
     /** Pointer to the associated keyboard driver. */
     struct DRVMAINKEYBOARD *mpDrv;
     /** Pointer to the device instance for the VMM Device. */

@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
+/* $Id: FloppyDriveImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
 
 /** @file
  *
@@ -56,7 +56,7 @@ public:
 
         BOOL enabled;
         ComObjPtr<FloppyImage> image;
-        ComPtr <IHostFloppyDrive> hostDrive;
+        ComPtr<IHostFloppyDrive> hostDrive;
         DriveState_T state;
     };
 
@@ -120,8 +120,8 @@ public:
 
 private:
 
-    const ComObjPtr <Machine, ComWeakRef> mParent;
-    const ComObjPtr <FloppyDrive> mPeer;
+    const ComObjPtr<Machine, ComWeakRef> mParent;
+    const ComObjPtr<FloppyDrive> mPeer;
 
     Backupable <Data> m;
 };

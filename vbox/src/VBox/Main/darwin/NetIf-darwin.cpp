@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 20475 2009-06-11 13:30:26Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -58,7 +58,7 @@
 #include "Logging.h"
 
 #if 0
-int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
+int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
 {
     int sock = socket(PF_INET, SOCK_DGRAM, IPPROTO_IP);
     if (sock < 0)
@@ -274,7 +274,7 @@ static int getDefaultIfaceIndex(unsigned short *pu16Index)
     return VERR_INTERNAL_ERROR;
 }
 
-int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
+int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
 {
     int rc = VINF_SUCCESS;
     size_t cbNeeded;

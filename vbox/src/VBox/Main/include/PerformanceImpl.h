@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
+/* $Id: PerformanceImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
 
 /** @file
  *
@@ -185,8 +185,8 @@ public:
 
     void registerBaseMetric (pm::BaseMetric *baseMetric);
     void registerMetric (pm::Metric *metric);
-    void unregisterBaseMetricsFor (const ComPtr <IUnknown> &object);
-    void unregisterMetricsFor (const ComPtr <IUnknown> &object);
+    void unregisterBaseMetricsFor (const ComPtr<IUnknown> &object);
+    void unregisterMetricsFor (const ComPtr<IUnknown> &object);
 
     void suspendSampling();
     void resumeSampling();

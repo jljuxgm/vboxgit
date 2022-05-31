@@ -1,4 +1,4 @@
-/* $Id: VRDPServerImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
+/* $Id: VRDPServerImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
 
 /** @file
  *
@@ -125,8 +125,8 @@ public:
 
 private:
 
-    const ComObjPtr <Machine, ComWeakRef> mParent;
-    const ComObjPtr <VRDPServer> mPeer;
+    const ComObjPtr<Machine, ComWeakRef> mParent;
+    const ComObjPtr<VRDPServer> mPeer;
 
     Backupable <Data> mData;
 };

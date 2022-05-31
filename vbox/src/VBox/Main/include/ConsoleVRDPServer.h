@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 21823 2009-07-27 18:46:11Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 21878 2009-07-30 12:42:08Z vboxsync $ */
 
 /** @file
  *
@@ -285,7 +285,7 @@ public:
 
 private:
 
-    const ComObjPtr <Console, ComWeakRef> mParent;
+    const ComObjPtr<Console, ComWeakRef> mParent;
 };
 
 #endif // ____H_CONSOLEVRDPSERVER
