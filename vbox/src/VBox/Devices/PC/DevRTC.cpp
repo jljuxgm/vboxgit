@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 20087 2009-05-27 14:31:18Z vboxsync $ */
+/* $Id: DevRTC.cpp 20367 2009-06-08 00:25:19Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -69,13 +69,13 @@ typedef struct RTCState RTCState;
 *   Internal Functions                                                         *
 *******************************************************************************/
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 PDMBOTHCBDECL(int) rtcIOPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t *pu32, unsigned cb);
 PDMBOTHCBDECL(int) rtcIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t u32, unsigned cb);
 PDMBOTHCBDECL(void) rtcTimerPeriodic(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser);
 PDMBOTHCBDECL(void) rtcTimerSecond(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser);
 PDMBOTHCBDECL(void) rtcTimerSecond2(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser);
-__END_DECLS
+RT_END_DECLS
 #endif /* !VBOX_DEVICE_STRUCT_TESTCASE */
 
 

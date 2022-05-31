@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 20257 2009-06-04 09:01:21Z vboxsync $ */
+/* $Id: DrvVD.cpp 20367 2009-06-08 00:25:19Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -38,11 +38,11 @@
 
 #ifdef VBOX_WITH_INIP
 /* All lwip header files are not C++ safe. So hack around this. */
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 #include <lwip/inet.h>
 #include <lwip/tcp.h>
 #include <lwip/sockets.h>
-__END_DECLS
+RT_END_DECLS
 #endif /* VBOX_WITH_INIP */
 
 #include "Builtins.h"

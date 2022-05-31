@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 20217 2009-06-03 08:18:38Z vboxsync $ */
+/* $Id: DevACPI.cpp 20367 2009-06-08 00:25:19Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -541,7 +541,7 @@ public:
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 PDMBOTHCBDECL(int) acpiPMTmrRead(       PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t *pu32, unsigned cb);
 #ifdef IN_RING3
 PDMBOTHCBDECL(int) acpiPm1aEnRead(      PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t *pu32, unsigned cb);
@@ -565,7 +565,7 @@ PDMBOTHCBDECL(int) acpiDhexWrite(       PPDMDEVINS pDevIns, void *pvUser, RTIOPO
 PDMBOTHCBDECL(int) acpiDchrWrite(       PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t u32, unsigned cb);
 # endif
 #endif /* IN_RING3 */
-__END_DECLS
+RT_END_DECLS
 
 
 #ifdef IN_RING3
@@ -1851,8 +1851,8 @@ static DECLCALLBACK(int) acpiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Failed to read \"ShowCpu\""));
 
-    /* Always show the CPU leafs when we have multiple VCPUs or when the IO-APIC is enabled. 
-     * The Windows SMP kernel needs a CPU leaf or else its idle loop will burn cpu cycles; the 
+    /* Always show the CPU leafs when we have multiple VCPUs or when the IO-APIC is enabled.
+     * The Windows SMP kernel needs a CPU leaf or else its idle loop will burn cpu cycles; the
      * intelppm driver refuses to register an idle state handler.
      */
     if (    s->cCpus > 1

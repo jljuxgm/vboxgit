@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 20197 2009-06-02 14:39:05Z vboxsync $ */
+/* $Id: DevAPIC.cpp 20367 2009-06-08 00:25:19Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -437,7 +437,7 @@ static bool apic_update_irq(APICDeviceInfo* dev, APICState *s);
 
 #ifdef VBOX
 static uint32_t apic_get_delivery_bitmask(APICDeviceInfo* dev, uint8_t dest, uint8_t dest_mode);
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 PDMBOTHCBDECL(int)  apicMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void *pv, unsigned cb);
 PDMBOTHCBDECL(int)  apicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void *pv, unsigned cb);
 PDMBOTHCBDECL(int)  apicGetInterrupt(PPDMDEVINS pDevIns);
@@ -456,7 +456,7 @@ PDMBOTHCBDECL(int)  ioapicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS G
 PDMBOTHCBDECL(void) ioapicSetIrq(PPDMDEVINS pDevIns, int iIrq, int iLevel);
 
 static void apic_update_tpr(APICDeviceInfo *dev, APICState* s, uint32_t val);
-__END_DECLS
+RT_END_DECLS
 #endif /* VBOX */
 
 #ifndef VBOX

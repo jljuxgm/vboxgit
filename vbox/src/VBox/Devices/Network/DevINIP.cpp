@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 20087 2009-05-27 14:31:18Z vboxsync $ */
+/* $Id: DevINIP.cpp 20367 2009-06-08 00:25:19Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -24,13 +24,13 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_INIP
-#include <iprt/cdefs.h>     /* include early to allow __BEGIN_DECLS hack */
+#include <iprt/cdefs.h>     /* include early to allow RT_BEGIN_DECLS hack */
 #include <iprt/mem.h>       /* include anything of ours that the lwip headers use. */
 #include <iprt/semaphore.h>
 #include <iprt/thread.h>
 #include <iprt/alloca.h>
 /* All lwip header files are not C++ safe. So hack around this. */
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 #include "lwip/sys.h"
 #include "lwip/stats.h"
 #include "lwip/mem.h"
@@ -43,7 +43,7 @@ __BEGIN_DECLS
 #include "lwip/tcpip.h"
 #include "lwip/sockets.h"
 #include "netif/etharp.h"
-__END_DECLS
+RT_END_DECLS
 #include <VBox/pdmdev.h>
 #include <VBox/tm.h>
 #include <iprt/string.h>

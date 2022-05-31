@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 20163 2009-05-29 18:51:20Z vboxsync $ */
+/* $Id: DevPCI.cpp 20367 2009-06-08 00:25:19Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -214,7 +214,7 @@ typedef PCIGLOBALS *PPCIGLOBALS;
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 PDMBOTHCBDECL(void) pciSetIrq(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, int iIrq, int iLevel);
 PDMBOTHCBDECL(void) pcibridgeSetIrq(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, int iIrq, int iLevel);
@@ -227,7 +227,7 @@ PDMBOTHCBDECL(int)  pciIOPortDataRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT
 DECLINLINE(PPCIDEVICE) pciFindBridge(PPCIBUS pBus, uint8_t iBus);
 #endif
 
-__END_DECLS
+RT_END_DECLS
 
 #define DEBUG_PCI
 
