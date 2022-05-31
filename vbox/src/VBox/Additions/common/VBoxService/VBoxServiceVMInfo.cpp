@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 21980 2009-08-05 11:19:55Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 22575 2009-08-30 20:02:08Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -33,10 +33,10 @@
 # define __STDC_LIMIT_MACROS
 # include <arpa/inet.h>
 # include <errno.h>
-# include <net/if.h>
 # include <netinet/in.h>
 # include <sys/ioctl.h>
 # include <sys/socket.h>
+# include <net/if.h>
 # include <unistd.h>
 # include <utmp.h>
 # ifdef RT_OS_SOLARIS
@@ -235,6 +235,8 @@ DECLCALLBACK(int) VBoxServiceVMInfoWorker(bool volatile *pfShutdown)
 
         ::LsaFreeReturnBuffer(pSessions);
  #endif /* TARGET_NT4 */
+#elif defined(RT_OS_FREEBSD)
+        /* TODO: Port me */
 #else
         utmp* ut_user;
         rc = utmpname(UTMP_FILE);
@@ -377,7 +379,7 @@ DECLCALLBACK(int) VBoxServiceVMInfoWorker(bool volatile *pfShutdown)
                 VBoxServiceError("Failed to ioctl(SIOCGIFBRDADDR) on socket: Error %d\n", errno);
                 return -1;
             }
- #ifdef RT_OS_SOLARIS
+ #if defined(RT_OS_SOLARIS)  || defined(RT_OS_FREEBSD)
             pAddress = (sockaddr_in *)&ifrequest[i].ifr_addr;
  #else
             pAddress = (sockaddr_in *)&ifrequest[i].ifr_netmask;
