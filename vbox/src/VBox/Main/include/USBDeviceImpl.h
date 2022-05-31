@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
+/* $Id: USBDeviceImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
 
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
@@ -50,8 +50,6 @@ public:
         COM_INTERFACE_ENTRY  (IUSBDevice)
         COM_INTERFACE_ENTRY2 (IDispatch, IUSBDevice)
     END_COM_MAP()
-
-    NS_DECL_ISUPPORTS
 
     DECLARE_EMPTY_CTOR_DTOR (OUSBDevice)
 

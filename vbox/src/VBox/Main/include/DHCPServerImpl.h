@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 22183 2009-08-11 17:00:33Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
 
 /** @file
  *
@@ -55,8 +55,6 @@ public:
         COM_INTERFACE_ENTRY (IDHCPServer)
         COM_INTERFACE_ENTRY (IDispatch)
     END_COM_MAP()
-
-    NS_DECL_ISUPPORTS
 
     DECLARE_EMPTY_CTOR_DTOR (DHCPServer)
 

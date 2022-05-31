@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
+/* $Id: VFSExplorerImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
 
 /** @file
  *
@@ -45,8 +45,6 @@ class ATL_NO_VTABLE VFSExplorer :
         COM_INTERFACE_ENTRY(IVFSExplorer)
         COM_INTERFACE_ENTRY(IDispatch)
     END_COM_MAP()
-
-    NS_DECL_ISUPPORTS
 
     DECLARE_EMPTY_CTOR_DTOR(VFSExplorer)
 

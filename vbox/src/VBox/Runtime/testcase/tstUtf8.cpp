@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 21740 2009-07-21 12:06:38Z vboxsync $ */
+/* $Id: tstUtf8.cpp 23223 2009-09-22 15:50:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -931,7 +931,7 @@ static void testStrStr(RTTEST hTest)
 
 void testMinistring(RTTEST hTest)
 {
-    RTTestSub(hTest, "class ministring");
+    RTTestSub(hTest, "class iprt::MiniString");
 
 #define CHECK(expr) \
     do { \
@@ -1005,6 +1005,16 @@ void testMinistring(RTTEST hTest)
     {
         copy2.reserve(50);      // should be ignored after 50 loops
         copy2.append("1");
+    }
+    CHECK( (copy2.length() == 100) );
+
+    copy2.setNull();
+    for (int i = 0;
+         i < 100;
+         ++i)
+    {
+        copy2.reserve(50);      // should be ignored after 50 loops
+        copy2.append('1');
     }
     CHECK( (copy2.length() == 100) );
 

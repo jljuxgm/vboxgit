@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
 
 /** @file
  *
@@ -52,8 +52,6 @@ public:
         COM_INTERFACE_ENTRY (IHostNetworkInterface)
         COM_INTERFACE_ENTRY (IDispatch)
     END_COM_MAP()
-
-    NS_DECL_ISUPPORTS
 
     DECLARE_EMPTY_CTOR_DTOR (HostNetworkInterface)
 

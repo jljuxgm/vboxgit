@@ -1,4 +1,4 @@
-/* $Id: FramebufferImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
+/* $Id: FramebufferImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
 
 /** @file
  *
@@ -46,8 +46,6 @@ public:
         COM_INTERFACE_ENTRY (IFramebuffer)
         COM_INTERFACE_ENTRY (IDispatch)
     END_COM_MAP()
-
-    NS_DECL_ISUPPORTS
 
     DECLARE_EMPTY_CTOR_DTOR (Framebuffer)
 

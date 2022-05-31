@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 23091 2009-09-17 13:09:36Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 23223 2009-09-22 15:50:03Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -117,8 +117,8 @@ public:
         return S_OK;
     }
 
-    STDMETHOD(OnMediaRegistered)(IN_BSTR mediaId,
-                                 DeviceType_T mediaType, BOOL registered)
+    STDMETHOD(OnMediumRegistered)(IN_BSTR mediaId,
+                                  DeviceType_T mediaType, BOOL registered)
     {
         NOREF(mediaId);
         NOREF(mediaType);

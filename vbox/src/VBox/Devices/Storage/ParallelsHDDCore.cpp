@@ -1,4 +1,4 @@
-/* $Id: ParallelsHDDCore.cpp 22982 2009-09-13 22:17:34Z vboxsync $ */
+/* $Id: ParallelsHDDCore.cpp 23223 2009-09-22 15:50:03Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -21,7 +21,7 @@
  */
 
 #define LOG_GROUP LOG_GROUP_VD_VMDK /** @todo: Logging group */
-#include "VBoxHDD-Internal.h"
+#include <VBox/VBoxHDD-Plugin.h>
 #include <VBox/err.h>
 
 #include <VBox/log.h>

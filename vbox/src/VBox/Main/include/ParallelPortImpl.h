@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 22183 2009-08-11 17:00:33Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -77,8 +77,6 @@ public:
         COM_INTERFACE_ENTRY  (IParallelPort)
         COM_INTERFACE_ENTRY2 (IDispatch, IParallelPort)
     END_COM_MAP()
-
-    NS_DECL_ISUPPORTS
 
     DECLARE_EMPTY_CTOR_DTOR (ParallelPort)
 

@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 22810 2009-09-07 13:41:45Z vboxsync $ */
+/* $Id: MouseImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
 
 /** @file
  *
@@ -66,8 +66,6 @@ public:
         COM_INTERFACE_ENTRY  (IMouse)
         COM_INTERFACE_ENTRY2 (IDispatch, IMouse)
     END_COM_MAP()
-
-    NS_DECL_ISUPPORTS
 
     DECLARE_EMPTY_CTOR_DTOR (Mouse)
 

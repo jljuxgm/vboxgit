@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 22277 2009-08-16 21:12:50Z vboxsync $ */
+/* $Id: KeyboardImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
 
 /** @file
  *
@@ -66,8 +66,6 @@ public:
         COM_INTERFACE_ENTRY(IKeyboard)
         COM_INTERFACE_ENTRY(IDispatch)
     END_COM_MAP()
-
-    NS_DECL_ISUPPORTS
 
     DECLARE_EMPTY_CTOR_DTOR (Keyboard)
 

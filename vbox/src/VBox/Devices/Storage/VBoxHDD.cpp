@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 23114 2009-09-18 08:14:37Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 23223 2009-09-22 15:50:03Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -39,7 +39,7 @@
 #include <iprt/path.h>
 #include <iprt/param.h>
 
-#include "VBoxHDD-Internal.h"
+#include <VBox/VBoxHDD-Plugin.h>
 
 
 #define VBOXHDDDISK_SIGNATURE 0x6f0e2a7d
