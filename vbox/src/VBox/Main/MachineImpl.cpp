@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23187 2009-09-21 12:51:05Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23188 2009-09-21 12:51:48Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -8146,7 +8146,7 @@ STDMETHODIMP SessionMachine::EndTakingSnapshot(BOOL aSuccess)
     /* set the state to the state we had when BeginTakingSnapshot() was called
      * (this is expected by Console::TakeSnapshot() and
      * Console::saveStateThread()) */
-    if (mSnapshotData.mLastState != Running) /** @todo Live Save: Quick hack. */
+    if (mSnapshotData.mLastState != MachineState_Running) /** @todo Live Save: Quick hack. */
         setMachineState(mSnapshotData.mLastState);
 
     return endTakingSnapshot(aSuccess);
