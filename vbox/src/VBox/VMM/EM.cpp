@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19873 2009-05-20 15:17:26Z vboxsync $ */
+/* $Id: EM.cpp 20008 2009-05-25 18:34:43Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3297,7 +3297,7 @@ static EMSTATE emR3Reschedule(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 static int emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
 {
     if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_PDM_CRITSECT))
-        PDMR3CritSectFF(pVCpu);
+        PDMCritSectFF(pVCpu);
 
     if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_CSAM_PENDING_ACTION))
         CSAMR3DoPendingAction(pVM, pVCpu);

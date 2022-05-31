@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 20001 2009-05-25 13:59:29Z vboxsync $ */
+/* $Id: PDMInternal.h 20008 2009-05-25 18:34:43Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -42,6 +42,13 @@ __BEGIN_DECLS
  * @internal
  * @{
  */
+
+/** @def PDM_WITH_R3R0_CRIT_SECT
+ * Enables or disabled ring-3/ring-0 critical sections. */
+#if defined(DOXYGEN_RUNNING) || 1
+# define PDM_WITH_R3R0_CRIT_SECT
+#endif
+
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
@@ -226,6 +233,10 @@ typedef struct PDMCRITSECTINT
     STAMPROFILEADV                  StatLocked;
 } PDMCRITSECTINT;
 typedef PDMCRITSECTINT *PPDMCRITSECTINT;
+
+/** Indicates that the critical section is queued for unlock.
+ * PDMCritSectIsOwner and PDMCritSectIsOwned optimizations. */
+#define PDMCRITSECT_FLAGS_PENDING_UNLOCK    RT_BIT_32(17)
 
 
 /**
@@ -804,8 +815,8 @@ typedef struct PDMASYNCCOMPLETIONMANAGER *PPDMASYNCCOMPLETIONMANAGER;
 typedef struct PDMCPU
 {
     /** The number of entries in the apQueuedCritSectsLeaves table that's currnetly in use. */
-    RTUINT                          cQueuedCritSectLeaves;
-    RTUINT                          uPadding0; /**< Alignment padding.*/
+    uint32_t                        cQueuedCritSectLeaves;
+    uint32_t                        uPadding0; /**< Alignment padding.*/
     /** Critical sections queued in RC/R0 because of contention preventing leave to complete. (R3 Ptrs)
      * We will return to Ring-3 ASAP, so this queue doesn't have to be very long. */
     R3PTRTYPE(PPDMCRITSECT)         apQueuedCritSectsLeaves[8];
@@ -906,6 +917,11 @@ typedef struct PDM
      * This is used to protect everything that deals with interrupts, i.e.
      * the PIC, APIC, IOAPIC and PCI devices pluss some PDM functions. */
     PDMCRITSECT                     CritSect;
+    /** The PDM miscellancous lock.
+     * This is used to protect things like critsect init/delete that formerly was
+     * serialized by there only being one EMT.
+     */
+    RTCRITSECT                      MiscCritSect;
 
     /** Number of times a critical section leave requesed needed to be queued for ring-3 execution. */
     STAMCOUNTER                     StatQueuedCritSectLeaves;
