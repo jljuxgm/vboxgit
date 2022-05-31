@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 23527 2009-10-03 17:56:43Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages.
 #
@@ -37,6 +37,9 @@ ifndef VBOX_ONLY_SDK
  endif
  if "$(KBUILD_TARGET)" == "win" && "$(KBUILD_HOST)" == "win"
   include $(PATH_SUB_CURRENT)/win/Makefile.kmk
+ endif
+ if "$(KBUILD_TARGET)" == "freebsd" && "$(KBUILD_HOST)" == "freebsd"
+  include $(PATH_SUB_CURRENT)/freebsd/Makefile.kmk
  endif
 endif
 
