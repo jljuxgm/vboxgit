@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21714 2009-07-17 23:22:40Z vboxsync $
+# $Id: Makefile.kmk 21725 2009-07-20 13:10:08Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -303,6 +303,7 @@ RuntimeR3_SOURCES       = \
 	generic/RTLogWriteStdErr-generic.cpp \
 	generic/RTLogWriteStdOut-generic.cpp \
 	generic/RTLogWriteUser-generic.cpp \
+	generic/RTMpGetDescription-generic.cpp \
 	generic/RTTimerLRCreate-generic.cpp \
 	generic/mempool-generic.cpp \
 	generic/semfastmutex-generic.cpp \
