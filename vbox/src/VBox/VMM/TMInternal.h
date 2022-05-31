@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 19444 2009-05-06 16:21:00Z vboxsync $ */
+/* $Id: TMInternal.h 19486 2009-05-07 12:57:32Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -521,11 +521,18 @@ typedef struct TMCPU
 /** Pointer to TM VMCPU instance data. */
 typedef TMCPU *PTMCPU;
 
+#if 0 /* enable this to rule out locking bugs on single cpu guests. */
+# define tmLock(pVM)             VINF_SUCCESS
+# define tmTryLock(pVM)          VINF_SUCCESS
+# define tmUnlock(pVM)           ((void)0)
+# define TM_ASSERT_EMT_LOCK(pVM) VM_ASSERT_EMT(pVM)
+#else
 int                     tmLock(PVM pVM);
 int                     tmTryLock(PVM pVM);
 void                    tmUnlock(PVM pVM);
 /** Checks that the caller owns the EMT lock.  */
 #define TM_ASSERT_EMT_LOCK(pVM) Assert(PDMCritSectIsOwner(&pVM->tm.s.EmtLock))
+#endif
 
 const char             *tmTimerState(TMTIMERSTATE enmState);
 void                    tmTimerQueueSchedule(PVM pVM, PTMTIMERQUEUE pQueue);
