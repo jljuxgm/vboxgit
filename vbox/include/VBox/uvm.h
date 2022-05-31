@@ -1,4 +1,4 @@
-/* $Id: uvm.h 22987 2009-09-14 06:56:54Z vboxsync $ */
+/* $Id: uvm.h 22998 2009-09-14 13:00:32Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data. (VMM)
  */
@@ -58,7 +58,7 @@ typedef struct UVMCPU
 #ifdef ___VMInternal_h
         struct VMINTUSERPERVMCPU    s;
 #endif
-        uint8_t                     padding[768];
+        uint8_t                     padding[256];
     } vm;
 } UVMCPU;
 AssertCompileMemberAlignment(UVMCPU, vm, 32);
@@ -96,7 +96,7 @@ typedef struct UVM
 #ifdef ___VMInternal_h
         struct VMINTUSERPERVM   s;
 #endif
-        uint8_t                 padding[768];
+        uint8_t                 padding[256];
     } vm;
 
     /** The MM data. */
