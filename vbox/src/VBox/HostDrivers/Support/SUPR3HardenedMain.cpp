@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 16067 2009-01-20 07:52:25Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 18242 2009-03-25 10:00:57Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -570,10 +570,10 @@ static void supR3HardenedMainOpenDevice(void)
         /** @todo better messages! */
         case VERR_VM_DRIVER_NOT_INSTALLED:
             supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc,
-                                  "VERR_VM_DRIVER_NOT_INSTALLED");
+                                  "Kernel driver not installed");
         case VERR_VM_DRIVER_NOT_ACCESSIBLE:
             supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc,
-                                  "VERR_VM_DRIVER_NOT_ACCESSIBLE");
+                                  "Kernel driver not accessible");
         case VERR_VM_DRIVER_LOAD_ERROR:
             supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc,
                                   "VERR_VM_DRIVER_LOAD_ERROR");
@@ -582,10 +582,13 @@ static void supR3HardenedMainOpenDevice(void)
                                   "VERR_VM_DRIVER_OPEN_ERROR");
         case VERR_VM_DRIVER_VERSION_MISMATCH:
             supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc,
-                                  "VERR_VM_DRIVER_VERSION_MISMATCH");
+                                  "Kernel driver version mismatch");
         case VERR_ACCESS_DENIED:
             supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc,
                                   "VERR_ACCESS_DENIED");
+        case VERR_NO_MEMORY:
+            supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc,
+                                  "Kernel memory allocation/mapping failed");
         default:
             supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc,
                                   "Unknown rc=%d", rc);
