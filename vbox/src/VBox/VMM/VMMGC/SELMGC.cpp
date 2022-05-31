@@ -1,4 +1,4 @@
-/* $Id: SELMGC.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: SELMGC.cpp 18992 2009-04-17 13:51:56Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager, Guest Context.
  */
@@ -275,7 +275,7 @@ DECLINLINE(int) selmRCReadTssBits(PVM pVM, void *pvDst, void const *pvSrc, size_
         return VINF_SUCCESS;
 
     /** @todo use different fallback?    */
-    rc = PGMPrefetchPage(pVM, pVCpu, (uintptr_t)pvSrc);
+    rc = PGMPrefetchPage(pVCpu, (uintptr_t)pvSrc);
     AssertMsg(rc == VINF_SUCCESS, ("PGMPrefetchPage %p failed with %Rrc\n", &pvSrc, rc));
     if (rc == VINF_SUCCESS)
     {

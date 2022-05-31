@@ -1,4 +1,4 @@
-/* $Id: PGMGst.h 18988 2009-04-17 13:00:59Z vboxsync $ */
+/* $Id: PGMGst.h 18992 2009-04-17 13:51:56Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
@@ -96,7 +96,7 @@ PGM_GST_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
     /*
      * Map and monitor CR3
      */
-    int rc = PGM_BTH_PFN(MapCR3, pVCpu)(pVCpu->pVMR3, pVCpu, GCPhysCR3);
+    int rc = PGM_BTH_PFN(MapCR3, pVCpu)(pVCpu, GCPhysCR3);
     return rc;
 }
 
@@ -132,7 +132,7 @@ PGM_GST_DECL(int, Exit)(PVMCPU pVCpu)
 {
     int rc;
 
-    rc = PGM_BTH_PFN(UnmapCR3, pVCpu)(pVCpu->pVMR3, pVCpu);
+    rc = PGM_BTH_PFN(UnmapCR3, pVCpu)(pVCpu);
     return rc;
 }
 

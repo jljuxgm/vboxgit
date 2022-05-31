@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 18988 2009-04-17 13:00:59Z vboxsync $ */
+/* $Id: PGMAllShw.h 18992 2009-04-17 13:51:56Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -190,7 +190,7 @@ PGM_SHW_DECL(int, GetPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, uint64_t *pfFlags, P
     PEPTPD          pPDDst;
     EPTPDE          Pde;
 
-    int rc = pgmShwGetEPTPDPtr(pVM, pVCpu, GCPtr, NULL, &pPDDst);
+    int rc = pgmShwGetEPTPDPtr(pVCpu, GCPtr, NULL, &pPDDst);
     if (rc != VINF_SUCCESS) /** @todo this function isn't expected to return informational status codes. Check callers / fix. */
     {
         AssertRC(rc);
@@ -327,7 +327,7 @@ PGM_SHW_DECL(int, ModifyPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, size_t cb, uint64
         PEPTPD          pPDDst;
         EPTPDE          Pde;
 
-        rc = pgmShwGetEPTPDPtr(pVM, pVCpu, GCPtr, NULL, &pPDDst);
+        rc = pgmShwGetEPTPDPtr(pVCpu, GCPtr, NULL, &pPDDst);
         if (rc != VINF_SUCCESS)
         {
             AssertRC(rc);

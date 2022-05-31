@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 18992 2009-04-17 13:51:56Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1454,7 +1454,7 @@ void remR3FlushPage(CPUState *env, RTGCPTR GCPtr)
      * Let PGM do the rest.
      */
     Assert(env->pVCpu);
-    rc = PGMInvalidatePage(pVM, env->pVCpu, GCPtr);
+    rc = PGMInvalidatePage(env->pVCpu, GCPtr);
     if (RT_FAILURE(rc))
     {
         AssertMsgFailed(("remR3FlushPage %RGv failed with %d!!\n", GCPtr, rc));
@@ -1570,7 +1570,7 @@ void remR3FlushTLB(CPUState *env, bool fGlobal)
      * Let PGM do the rest.
      */
     Assert(env->pVCpu);
-    PGMFlushTLB(pVM, env->pVCpu, env->cr[3], fGlobal);
+    PGMFlushTLB(env->pVCpu, env->cr[3], fGlobal);
 }
 
 
@@ -1612,7 +1612,7 @@ void remR3ChangeCpuMode(CPUState *env)
     efer = 0;
 #endif
     Assert(env->pVCpu);
-    rc = PGMChangeMode(pVM, env->pVCpu, env->cr[0], env->cr[4], efer);
+    rc = PGMChangeMode(env->pVCpu, env->cr[0], env->cr[4], efer);
     if (rc != VINF_SUCCESS)
     {
         if (rc >= VINF_EM_FIRST && rc <= VINF_EM_LAST)

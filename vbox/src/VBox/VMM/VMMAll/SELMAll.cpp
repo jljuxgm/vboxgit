@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: SELMAll.cpp 18992 2009-04-17 13:51:56Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -1023,7 +1023,7 @@ l_tryagain:
                 /* Shadow page might be out of sync. Sync and try again */
                 /** @todo might cross page boundary */
                 fTriedAlready = true;
-                rc = PGMPrefetchPage(pVM, pVCpu, (RTGCPTR)GCPtrTss);
+                rc = PGMPrefetchPage(pVCpu, (RTGCPTR)GCPtrTss);
                 if (rc != VINF_SUCCESS)
                     return rc;
                 goto l_tryagain;
