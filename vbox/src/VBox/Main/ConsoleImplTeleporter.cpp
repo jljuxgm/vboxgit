@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 23804 2009-10-15 15:45:26Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 23805 2009-10-15 15:45:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -806,7 +806,6 @@ Console::teleporterTrg(PVM pVM, IMachine *pMachine, bool fStartPaused, void *pvV
                 RTTcpServerDestroy(hServer);
                 return VERR_GENERAL_FAILURE;
             }
-/** @todo Should undo this upon return. */
         }
     }
     if (RT_FAILURE(vrc))
