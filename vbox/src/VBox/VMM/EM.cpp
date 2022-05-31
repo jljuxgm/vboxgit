@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19660 2009-05-13 14:09:15Z vboxsync $ */
+/* $Id: EM.cpp 19679 2009-05-14 08:34:39Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1615,7 +1615,7 @@ static int emR3RawGuestTrap(PVM pVM, PVMCPU pVCpu)
     /*
      * Traps can be directly forwarded in hardware accelerated mode.
      */
-    if (HWACCMR3IsActive(pVM))
+    if (HWACCMIsEnabled(pVM))
     {
 #ifdef LOGGING_ENABLED
         DBGFR3InfoLog(pVM, "cpumguest", "Guest trap");
@@ -3487,7 +3487,7 @@ static int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                  */
                 VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS);
             }
-            if (HWACCMR3IsActive(pVM))
+            if (HWACCMR3IsActive(pVCpu))
                 rc2 = VINF_EM_RESCHEDULE_HWACC;
             else
                 rc2 = PATMAreInterruptsEnabled(pVM) ? VINF_EM_RESCHEDULE_RAW : VINF_EM_RESCHEDULE_REM;
