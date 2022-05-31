@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 19757 2009-05-15 23:37:31Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 20353 2009-06-07 09:09:56Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -774,9 +774,9 @@ VMMR3DECL(int) DBGFR3AsLoadMap(PVM pVM, RTDBGAS hDbgAs, const char *pszFilename,
     Data.uSubtrahend = uSubtrahend;
     Data.fFlags = 0;
     Data.hMod = NIL_RTDBGMOD;
-    int rc = dbgfR3AsSearchEnvPath(pszFilename, "VBOXDBG_MAP_PATH", dbgfR3AsLoadImageOpen, &Data);
+    int rc = dbgfR3AsSearchEnvPath(pszFilename, "VBOXDBG_MAP_PATH", dbgfR3AsLoadMapOpen, &Data);
     if (RT_FAILURE(rc))
-        rc = dbgfR3AsSearchEnvPath(pszFilename, "VBOXDBG_PATH", dbgfR3AsLoadImageOpen, &Data);
+        rc = dbgfR3AsSearchEnvPath(pszFilename, "VBOXDBG_PATH", dbgfR3AsLoadMapOpen, &Data);
     if (RT_SUCCESS(rc))
     {
         rc = DBGFR3AsLinkModule(pVM, hRealAS, Data.hMod, pModAddress, iModSeg, 0);
