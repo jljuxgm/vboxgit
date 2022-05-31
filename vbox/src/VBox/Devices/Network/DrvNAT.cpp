@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 22202 2009-08-12 11:11:33Z vboxsync $ */
+/* $Id: DrvNAT.cpp 22205 2009-08-12 12:20:05Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -208,10 +208,12 @@ static DECLCALLBACK(int) drvNATPDMQueueFlusher(PPDMDRVINS pDrvIns, PPDMTHREAD pT
             pThis->output_flag = 0;
             goto flusher_sleeping; /*flushing won't give any results */
         }
+#if 0
         pThis->output_flag = 0;
         PDMQueueFlush(pThis->pSendQueue); 
         rc = pThis->pPort->pfnWaitReceiveAvail(pThis->pPort, 0);
         pThis->output_flag = RT_SUCCESS(rc) ? 1 : 0;
+#endif
     flusher_sleeping:
         RTSemEventWait(pThis->semPDMQueueFlusher, RT_INDEFINITE_WAIT);
 	}
