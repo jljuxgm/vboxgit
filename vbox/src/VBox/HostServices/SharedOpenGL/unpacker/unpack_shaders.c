@@ -1,4 +1,4 @@
-/* $Id: unpack_shaders.c 20175 2009-06-02 07:37:31Z vboxsync $ */
+/* $Id: unpack_shaders.c 20176 2009-06-02 07:45:36Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -17,8 +17,6 @@
 #include "cr_mem.h"
 #include "cr_string.h"
 #include "cr_version.h"
-
-#ifdef CR_OPENGL_VERSION_2_0
 
 void crUnpackExtendBindAttribLocation(void)
 {
@@ -153,5 +151,3 @@ void crUnpackExtendUniformMatrix4fv(void)
     const GLfloat *value = DATA_POINTER(16+sizeof(GLboolean), const GLfloat);
     cr_unpackDispatch.UniformMatrix4fv(location, count, transpose, value);
 }
-
-#endif /* #ifdef CR_OPENGL_VERSION_2_0 */
