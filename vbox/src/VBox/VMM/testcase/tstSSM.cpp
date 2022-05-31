@@ -1,4 +1,4 @@
-/* $Id: tstSSM.cpp 21892 2009-07-30 14:39:41Z vboxsync $ */
+/* $Id: tstSSM.cpp 21893 2009-07-30 14:41:13Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
@@ -47,7 +47,7 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-//#define TSTSSM_BIG_CONFIG   1
+#define TSTSSM_BIG_CONFIG   1
 
 #ifdef TSTSSM_BIG_CONFIG
 # define TSTSSM_ITEM_SIZE    (512*_1M)
