@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22830 2009-09-08 10:29:42Z vboxsync $
+# $Id: Makefile.kmk 22843 2009-09-08 16:51:53Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -756,6 +756,7 @@ VBOX_SLIRP_ALIAS_SOURCES = \
 	Network/slirp/libalias/alias_mod.c \
 	Network/slirp/libalias/alias_proxy.c \
 	Network/slirp/libalias/alias_ftp.c \
+	Network/slirp/libalias/alias_dns.c \
 	Network/slirp/libalias/alias_nbt.c \
 	Network/slirp/libalias/alias_util.c
 
