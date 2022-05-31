@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 22493 2009-08-26 22:22:16Z vboxsync $ */
+/* $Id: EMRaw.cpp 23372 2009-09-28 12:46:22Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -1331,7 +1331,7 @@ static int emR3RawForcedActions(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
      *
      * The CSAMR3CheckGates call in TRPMR3SyncIDT may call PGMPrefetchPage
      * and PGMShwModifyPage, so we're in for trouble if for instance a
-     * PGMSyncCR3+pgmPoolClearAll is pending.
+     * PGMSyncCR3+pgmR3PoolClearAll is pending.
      */
     if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_TRPM_SYNC_IDT))
     {
