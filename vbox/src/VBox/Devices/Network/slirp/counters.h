@@ -1,4 +1,4 @@
-/** $Id: counters.h 23141 2009-09-18 15:31:10Z vboxsync $ */
+/** $Id: counters.h 23154 2009-09-19 11:02:11Z vboxsync $ */
 /** @file
  * Counters macro invocation template.
  *
@@ -33,7 +33,7 @@
 #  define REGISTER_COUNTER(name, storage, type, units, dsc)         \
     do {                                                            \
         PDMDrvHlpSTAMRegisterF(pDrvIns,                             \
-                               &(storage)->Stat ## name,            \
+                               &(storage)->Stat ## name,   \
                                type,                                \
                                STAMVISIBILITY_ALWAYS,               \
                                units,                               \

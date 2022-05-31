@@ -1,4 +1,4 @@
-/** $Id: ext.h 22894 2009-09-10 03:33:08Z vboxsync $ */
+/** $Id: ext.h 23154 2009-09-19 11:02:11Z vboxsync $ */
 /** @file
  * some externals helpers
  */
@@ -56,6 +56,8 @@ static inline uma_zone_t slirp_zone_ext_refcnt(PNATState);
 
 #ifndef _EXT_H_
 #define _EXT_H_
+# define fprintf vbox_slirp_fprintf
+# define printf vbox_slirp_printf
 #ifndef vbox_slirp_printfV
 static void vbox_slirp_printV(char *format, va_list args)
 {
