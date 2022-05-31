@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 18533 2009-03-30 12:01:36Z vboxsync $ */
+/* $Id: PDMInternal.h 18615 2009-04-01 20:19:22Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -889,18 +889,6 @@ typedef struct PDM
     RTUINT                          cbVMMDevHeapLeft;
     /** The current mapping. NIL_RTGCPHYS if not mapped or registered. */
     RTGCPHYS                        GCPhysVMMDevHeap;
-    /** @} */
-
-    /** TEMPORARY HACKS FOR NETWORK POLLING.
-     * @todo fix NAT and kill this!
-     * @{ */
-    RTUINT                          cPollers;
-#if HC_ARCH_BITS == 64
-    RTUINT                          padding1;
-#endif
-    R3PTRTYPE(PFNPDMDRVPOLLER)      apfnPollers[16];
-    R3PTRTYPE(PPDMDRVINS)           aDrvInsPollers[16];
-    PTMTIMERR3                      pTimerPollers;
     /** @} */
 
     /** The PDM lock.
