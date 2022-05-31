@@ -1,4 +1,4 @@
-# $Id: Config.kmk 19662 2009-05-13 14:34:08Z vboxsync $
+# $Id: Config.kmk 19761 2009-05-17 19:30:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -484,7 +484,7 @@ ifdef VBOX_WITH_HARDENING
  endif
 endif
 # Use VBoxNetFlt for host interface networking.
-if1of ($(KBUILD_TARGET), darwin linux solaris win)
+if1of ($(KBUILD_TARGET), darwin linux solaris win freebsd)
  VBOX_WITH_NETFLT = 1
  VBOX_SOLARIS_NSL_RESOLVED = 1
  if1of ($(KBUILD_TARGET), darwin solaris linux)
@@ -2349,7 +2349,7 @@ define TOOL_FREEBSDKMODLD_LINK_SYSMOD_CMDS
 		| xargs -J% objcopy % $(out)
 
 ## Strip debug info (comment out if debugging or something).
-#	objcopy --strip-debug $(out)
+	objcopy --strip-debug $(out)
 endef
  else # x86
 TOOL_FREEBSDKMODLD_LINK_SYSMOD_OUTPUT = $(outbase).kld
@@ -3769,7 +3769,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 19662 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 19761 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
