@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 22473 2009-08-26 14:51:50Z vboxsync $ */
+/* $Id: PGMAllBth.h 22600 2009-08-31 12:19:56Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -837,7 +837,13 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
                     {
                        /*
                         * Page was successfully synced, return to guest.
+                        * First invalidate the page as it might be in the TLB.
                         */
+#   if PGM_SHW_TYPE == PGM_TYPE_EPT
+                        HWACCMInvalidatePhysPage(pVM, (RTGCPHYS)pvFault);
+#   else
+                        PGM_INVL_PG_ALL_VCPU(pVM, pvFault);
+#   endif
 #   ifdef VBOX_STRICT
                         RTGCPHYS GCPhys;
                         uint64_t fPageGst;
@@ -1482,7 +1488,7 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorker)(PVMCPU pVCpu, PSHWPTE pPteDst, GST
         {
             PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
             PX86PTPAE pGstPT;
-            
+
             pGstPT = (PX86PTPAE)&pPool->aDirtyPages[pShwPage->idxDirty][0];
             pGstPT->a[iPTDst].u = PteSrc.u;
         }
