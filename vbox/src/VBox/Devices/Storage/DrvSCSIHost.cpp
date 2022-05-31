@@ -1,4 +1,4 @@
-/* $Id: DrvSCSIHost.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 22278 2009-08-16 21:57:07Z vboxsync $ */
 /** @file
  *
  * VBox storage drivers:
@@ -521,6 +521,8 @@ const PDMDRVREG g_DrvSCSIHost =
     NULL,
     /* pfnSuspend */
     NULL,
+    /* pfnResume */
+    NULL,
     /* pfnAttach */
     NULL,
     /* pfnDetach */
@@ -532,3 +534,4 @@ const PDMDRVREG g_DrvSCSIHost =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
+
