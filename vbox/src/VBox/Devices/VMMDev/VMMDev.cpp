@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: VMMDev.cpp 22704 2009-09-02 10:44:27Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2499,6 +2499,8 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     AssertRCReturn(rc, rc);
     pThis->u32HGCMEnabled = 0;
 #endif /* VBOX_WITH_HGCM */
+    /* The GUI checks whether this changes in this version of VirtualBox. */
+    pThis->mouseCapabilities |= VMMDEV_MOUSE_HOST_RECHECKS_NEEDS_HOST_CURSOR;
 
     return rc;
 }
