@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23567 2009-10-05 18:24:45Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23583 2009-10-06 15:17:19Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -9500,9 +9500,10 @@ void SessionMachine::discardSnapshotHandler(DiscardSnapshotTask &aTask)
                 const Guid *pReplaceMachineId = replaceHd->getFirstMachineBackrefId();
                 Assert(pReplaceMachineId  && *pReplaceMachineId == mData->mUuid);
 
+                Guid snapshotId;
                 const Guid *pSnapshotId = replaceHd->getFirstMachineBackrefSnapshotId();
-                Assert(pSnapshotId);
-                Guid snapshotId = *pSnapshotId;
+                if (pSnapshotId)
+                    snapshotId = *pSnapshotId;
 
                 HRESULT rc2 = S_OK;
 
