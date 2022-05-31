@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 20159 2009-05-29 15:30:41Z vboxsync $ */
+/* $Id: DevPCI.cpp 20163 2009-05-29 18:51:20Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1902,7 +1902,7 @@ static DECLCALLBACK(int) pciFakePCIBIOS(PPDMDEVINS pDevIns)
     /*
      * Set the start addresses.
      */
-    pGlobals->pci_bios_io_addr  = 0xc000;
+    pGlobals->pci_bios_io_addr  = 0xd000;
     pGlobals->pci_bios_mem_addr = UINT32_C(0xf0000000);
     pGlobals->uBus = 0;
 
