@@ -1,4 +1,4 @@
-/* $Id: NetIfList-solaris.cpp 17971 2009-03-16 19:19:27Z vboxsync $ */
+/* $Id: NetIfList-solaris.cpp 18018 2009-03-17 13:00:36Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -193,7 +193,7 @@ static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNe
     Info.enmMediumType = NETIF_T_ETHERNET;
 
     HostNetworkInterfaceType_T enmType;
-    if (strncmp("vbox", szNICInstance, 4))
+    if (strncmp("vboxnet", szNICInstance, 7))
         enmType = HostNetworkInterfaceType_Bridged;
     else
         enmType = HostNetworkInterfaceType_HostOnly;

@@ -1,4 +1,4 @@
-/* $Id: NetIfList-darwin.cpp 17981 2009-03-16 21:37:19Z vboxsync $ */
+/* $Id: NetIfList-darwin.cpp 18018 2009-03-17 13:00:36Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -316,7 +316,7 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
                 pNew->enmStatus = (IfReq.ifr_flags & IFF_UP) ? NETIF_S_UP : NETIF_S_DOWN;
 
             HostNetworkInterfaceType_T enmType;
-            if (strncmp("vbox", pNew->szName, 4))
+            if (strncmp("vboxnet", pNew->szName, 7))
                 enmType = HostNetworkInterfaceType_Bridged;
             else
                 enmType = HostNetworkInterfaceType_HostOnly;
