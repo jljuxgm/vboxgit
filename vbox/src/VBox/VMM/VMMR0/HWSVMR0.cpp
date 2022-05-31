@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 19813 2009-05-19 11:57:13Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 19818 2009-05-19 12:17:57Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -843,6 +843,7 @@ VMMR0DECL(int) SVMR0RunGuestCode(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     unsigned    cResume = 0;
     uint8_t     u8LastVTPR;
     PHWACCM_CPUINFO pCpu = 0;
+    RTCCUINTREG uOldEFlags;
 #ifdef VBOX_STRICT
     RTCPUID  idCpuCheck;
 #endif
@@ -988,7 +989,7 @@ ResumeExecution:
     /* Disable interrupts to make sure a poke will interrupt execution. 
      * This must be done *before* we check for TLB flushes; TLB shootdowns rely on this.
      */
-    RTCCUINTREG uOldEFlags = ASMIntDisableFlags();
+    uOldEFlags = ASMIntDisableFlags();
     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_EXEC);
 
     pCpu = HWACCMR0GetCurrentCpu();
