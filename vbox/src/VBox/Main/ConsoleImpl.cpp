@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 21879 2009-07-30 12:48:04Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 21929 2009-08-02 17:21:25Z vboxsync $ */
 
 /** @file
  *
@@ -1058,8 +1058,7 @@ Console::loadStateFileExec (PSSMHANDLE pSSM, void *pvUser, uint32_t u32Version)
     AssertReturn(that, VERR_INVALID_PARAMETER);
 
     /* Currently, nothing to do when we've been called from VMR3Load. */
-
-    return VINF_SUCCESS;
+    return SSMR3SkipToEndOfUnit(pSSM);
 }
 
 /**
