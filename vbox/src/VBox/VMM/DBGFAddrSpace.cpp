@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 21111 2009-07-01 01:04:06Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 22108 2009-08-09 00:42:45Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -588,7 +588,7 @@ static int dbgfR3AsSearchPath(const char *pszFilename, const char *pszPath, PFND
         while (RT_C_IS_BLANK(*psz))
             psz++;
 
-        /* Fine the end of this element. */
+        /* Find the end of this element. */
         const char *pszNext;
         const char *pszEnd = strchr(psz, ';');
         if (!pszEnd)
