@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.c 21596 2009-07-15 08:06:37Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.c 21904 2009-07-30 20:04:17Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -2184,7 +2184,6 @@ DECLHIDDEN(NDIS_STATUS) vboxNetFltWinPtInitBind(PADAPT *ppAdapt, PNDIS_STRING pO
         int rc;
         PVBOXNETFLTINS pInstance;
         USHORT cbAnsiName = pBindToMiniportName->Length;/* the lenght is is bytes ; *2 ;RtlUnicodeStringToAnsiSize(pBindToMiniportName)*/
-//        char* pAnsiName = alloca(cbAnsiName);
         CREATE_INSTANCE_CONTEXT Context;
         RTSPINLOCKTMP Tmp = RTSPINLOCKTMP_INITIALIZER;
 
@@ -2197,7 +2196,7 @@ DECLHIDDEN(NDIS_STATUS) vboxNetFltWinPtInitBind(PADAPT *ppAdapt, PNDIS_STRING pO
 # endif
         Context.Status = NDIS_STATUS_SUCCESS;
 
-//        AnsiString.Buffer = pAnsiName;
+        AnsiString.Buffer = 0; /* will be allocated by RtlUnicodeStringToAnsiString */
         AnsiString.Length = 0;
         AnsiString.MaximumLength = cbAnsiName;
 
