@@ -1,4 +1,4 @@
-/* $Id: glx_c_exports.c 18548 2009-03-30 13:44:07Z vboxsync $ */
+/* $Id: glx_c_exports.c 18549 2009-03-30 14:04:20Z vboxsync $ */
 /** @file
  *
  * VirtualBox guest OpenGL DRI GLX C stubs
@@ -94,12 +94,7 @@ GLXPixmap VBOXGLXENTRYTAG(glXCreateGLXPixmapMESA)(Display *dpy, XVisualInfo *vis
 #endif
 
 /*Common glX functions*/
-void VBOXGLXENTRYTAG(glXCopyContext)( Display *dpy, GLXContext src, GLXContext dst, 
-#if defined(SunOS)
-unsigned long mask)
-#else
-unsigned long mask)
-#endif
+void VBOXGLXENTRYTAG(glXCopyContext)( Display *dpy, GLXContext src, GLXContext dst, unsigned long mask)
 {
     return glxim.CopyContext(dpy, src, dst, mask);
 }
