@@ -1,4 +1,4 @@
-/* $Id: md5.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: md5.cpp 21918 2009-07-31 15:42:31Z vboxsync $ */
 /** @file
  * MD5 message digest functions
  */
@@ -206,6 +206,16 @@ RTDECL(void) RTMd5Final(uint8_t digest[16], PRTMD5CONTEXT ctx)
 RT_EXPORT_SYMBOL(RTMd5Final);
 
 
+RTDECL(void) RTMd5(const void *pvBuf, size_t cbBuf, uint8_t pabDigest[RTMD5HASHSIZE])
+{
+    RTMD5CONTEXT Ctx;
+    RTMd5Init(&Ctx);
+    RTMd5Update(&Ctx, pvBuf, cbBuf);
+    RTMd5Final(pabDigest, &Ctx);
+}
+RT_EXPORT_SYMBOL(RTMd5);
+
+
 /* The four core functions - F1 is optimized somewhat */
 
 /* #define F1(x, y, z) (x & y | ~x & z) */
@@ -305,3 +315,6 @@ static void MD5Transform(uint32_t buf[4], uint32_t in[16])
     buf[2] += c;
     buf[3] += d;
 }
+
+
+
