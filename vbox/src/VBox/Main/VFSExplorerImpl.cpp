@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 22399 2009-08-23 20:38:03Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -625,7 +625,8 @@ STDMETHODIMP VFSExplorer::Exists(ComSafeArrayIn(IN_BSTR, aNames), ComSafeArrayOu
             if (entry.name == RTPathFilename(Utf8Str(sfaNames[a]).c_str()))
             {
                 BSTR name;
-                Bstr(sfaNames[a]).cloneTo(&name);
+                Bstr tmp(sfaNames[a]); /* gcc-3.3 cruft */
+                tmp.cloneTo(&name);
                 listExists.push_back(name);
             }
         }
