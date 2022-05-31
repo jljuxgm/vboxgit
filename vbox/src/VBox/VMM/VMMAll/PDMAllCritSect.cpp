@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 19682 2009-05-14 10:15:44Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 19720 2009-05-15 09:01:49Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -175,7 +175,7 @@ VMMR3DECL(int) PDMR3CritSectEnterEx(PPDMCRITSECT pCritSect, bool fCallHost)
         &&  pCritSect->s.Core.Strict.ThreadOwner != NIL_RTTHREAD)
     {
         RTThreadWriteLockDec(pCritSect->s.Core.Strict.ThreadOwner);
-        ASMAtomicUoWriteSize(&pCritSect->s.Core.Strict.ThreadOwner, NIL_RTTHREAD);
+        ASMAtomicXchgSize(&pCritSect->s.Core.Strict.ThreadOwner, NIL_RTTHREAD);
     }
     return rc;
 }
