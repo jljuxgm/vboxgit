@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 23618 2009-10-08 14:04:09Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -701,6 +701,18 @@ additions-packing:
 		$(VBOX_PATH_ADDITIONS)/VBoxGuestAdditions.iso
 
 
+
+#
+# Build the EFI firmware, all of it.
+#
+# Mainly hooks right now, maybe we need them later.
+#
+efi-fetch:
+
+efi-build: $(VBOX_VERSION_HEADER)
+	$(PATH_ROOT)/webtools/tinderbox/client/efi-build.sh
+
+efi-packing:
 
 #
 # Generate VirtualBox-OSE-x.x.x.tar.bz2 (OSE) tarballs for distribution
