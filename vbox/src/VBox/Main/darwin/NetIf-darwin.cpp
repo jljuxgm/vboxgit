@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 18732 2009-04-06 09:01:53Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 19233 2009-04-28 10:16:37Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -338,4 +338,10 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
     free(pBuf);
     return rc;
 }
+
+int NetIfGetConfigByName(IN_BSTR aName, NETIFINFO *pInfo)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
 #endif
