@@ -1,4 +1,4 @@
-/* $Id: Builtins.cpp 18068 2009-03-18 14:42:47Z vboxsync $ */
+/* $Id: Builtins.cpp 19183 2009-04-25 02:08:48Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -40,6 +40,9 @@
 *******************************************************************************/
 const void *g_apvVBoxDDDependencies[] =
 {
+#ifdef VBOX_WITH_EFI
+    &g_abEfiThunkBinary[0],
+#endif
     NULL,
 };
 

@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 18068 2009-03-18 14:42:47Z vboxsync $ */
+/* $Id: Builtins.h 19183 2009-04-25 02:08:48Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -30,6 +30,13 @@ __BEGIN_DECLS
 extern const unsigned char  g_abVgaDefBiosLogo[];
 /** The size of the default BIOS logo data. */
 extern const unsigned       g_cbVgaDefBiosLogo;
+#ifdef VBOX_WITH_EFI
+/** The EFI thunk binary. */
+extern const unsigned char  g_abEfiThunkBinary[];
+/** The size of the EFI thunk binary. */
+extern const unsigned       g_cbEfiThunkBinary;
+#endif
+
 
 extern const PDMDEVREG g_DevicePCI;
 extern const PDMDEVREG g_DevicePcArch;
