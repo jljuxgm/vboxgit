@@ -1,4 +1,4 @@
-/* $Id: MMRamGC.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: MMRamGC.cpp 18988 2009-04-17 13:00:59Z vboxsync $ */
 /** @file
  * MMRamGC - Guest Context Ram access Routines, pair for MMRamGCA.asm.
  */
@@ -138,7 +138,7 @@ VMMRCDECL(int) MMGCRamWrite(PVM pVM, void *pDst, void *pSrc, size_t cb)
     /*
      * And mark the relevant guest page as accessed and dirty.
      */
-    PGMGstModifyPage(pVM, VMMGetCpu0(pVM), (RTGCPTR)(RTRCUINTPTR)pDst, cb, X86_PTE_A | X86_PTE_D, ~(uint64_t)(X86_PTE_A | X86_PTE_D));
+    PGMGstModifyPage(VMMGetCpu0(pVM), (RTGCPTR)(RTRCUINTPTR)pDst, cb, X86_PTE_A | X86_PTE_D, ~(uint64_t)(X86_PTE_A | X86_PTE_D));
 
     return rc;
 }

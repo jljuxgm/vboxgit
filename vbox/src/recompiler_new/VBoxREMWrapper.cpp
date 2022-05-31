@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 18988 2009-04-17 13:00:59Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -719,7 +719,6 @@ static const REMPARMDESC g_aArgsPGMGetGuestMode[] =
 };
 static const REMPARMDESC g_aArgsPGMGstGetPage[] =
 {
-    { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU), NULL },
     { REMPARMDESC_FLAGS_GCPTR,      sizeof(RTGCPTR), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(uint64_t *), NULL },

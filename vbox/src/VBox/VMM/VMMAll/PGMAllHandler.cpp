@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 18988 2009-04-17 13:00:59Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1424,7 +1424,7 @@ static DECLCALLBACK(int) pgmHandlerVirtualVerifyOne(PAVLROGCPTRNODECORE pNode, v
 
             RTGCPHYS   GCPhysGst;
             uint64_t   fGst;
-            int rc = PGMGstGetPage(pVM, pVCpu, (RTGCPTR)GCPtr, &fGst, &GCPhysGst);
+            int rc = PGMGstGetPage(pVCpu, (RTGCPTR)GCPtr, &fGst, &GCPhysGst);
             if (    rc == VERR_PAGE_NOT_PRESENT
                 ||  rc == VERR_PAGE_TABLE_NOT_PRESENT)
             {

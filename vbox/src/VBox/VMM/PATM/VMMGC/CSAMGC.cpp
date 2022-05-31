@@ -1,4 +1,4 @@
-/* $Id: CSAMGC.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: CSAMGC.cpp 18988 2009-04-17 13:00:59Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -87,7 +87,7 @@ VMMRCDECL(int) CSAMGCCodePageWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
         /*
          * Make this particular page R/W.
          */
-        int rc = PGMShwModifyPage(pVM, pVCpu, pvFault, 1, X86_PTE_RW, ~(uint64_t)X86_PTE_RW);
+        int rc = PGMShwModifyPage(pVCpu, pvFault, 1, X86_PTE_RW, ~(uint64_t)X86_PTE_RW);
         AssertMsgRC(rc, ("PGMShwModifyPage -> rc=%Rrc\n", rc));
         ASMInvalidatePage((void *)pvFault);
         return VINF_SUCCESS;
@@ -128,7 +128,7 @@ VMMRCDECL(int) CSAMGCCodePageWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
      * Make this particular page R/W. The VM_FF_CSAM_FLUSH_DIRTY_PAGE handler will reset it to readonly again.
      */
     Log(("CSAMGCCodePageWriteHandler: enabled r/w for page %RGv\n", pvFault));
-    rc = PGMShwModifyPage(pVM, pVCpu, pvFault, 1, X86_PTE_RW, ~(uint64_t)X86_PTE_RW);
+    rc = PGMShwModifyPage(pVCpu, pvFault, 1, X86_PTE_RW, ~(uint64_t)X86_PTE_RW);
     AssertMsgRC(rc, ("PGMShwModifyPage -> rc=%Rrc\n", rc));
     ASMInvalidatePage((void *)pvFault);
 
