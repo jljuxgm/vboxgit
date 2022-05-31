@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 23598 2009-10-07 15:00:16Z vboxsync $ */
+/* $Id: VM.cpp 23668 2009-10-10 03:01:18Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1586,9 +1586,12 @@ static DECLCALLBACK(int) vmR3Save(PVM pVM, const char *pszFilename, PCSSMSTRMOPS
     /*
      * Validate input.
      */
-    AssertPtr(pszFilename);
+    AssertPtrNull(pszFilename);
+    AssertPtrNull(pStreamOps);
     AssertPtr(pVM);
-    Assert(enmAfter == SSMAFTER_DESTROY || enmAfter == SSMAFTER_CONTINUE);
+    Assert(   enmAfter == SSMAFTER_DESTROY
+           || enmAfter == SSMAFTER_CONTINUE
+           || enmAfter == SSMAFTER_MIGRATE);
     AssertPtr(ppSSM);
     *ppSSM = NULL;
 
