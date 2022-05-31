@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18564 2009-03-31 12:20:05Z vboxsync $
+# $Id: Makefile.kmk 19356 2009-05-05 09:43:35Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -44,6 +44,12 @@ if !defined(VBOX_ONLY_DOCS) && !defined(VBOX_ONLY_SDK) \
  && "$(SDK_VBOX_LIBPNG_INCS)" == "$(PATH_ROOT)/src/libs/libpng-1.2.8"
  include $(PATH_SUB_CURRENT)/libpng-1.2.8/Makefile.kmk
 endif # !VBOX_ONLY_DOCS
+
+# Libcurl for inet access
+if defined(VBOX_WITH_LIBCURL) && !defined(VBOX_ONLY_DOCS) && !defined(VBOX_ONLY_SDK) \
+ && "$(SDK_VBOX_LIBCURL_INCS)" == "$(PATH_ROOT)/src/libs/curl-7.19.4/include"
+ include $(PATH_SUB_CURRENT)/curl-7.19.4/Makefile.kmk
+endif
 
 # The kStuff lib used by IPRT and the debugger.
 ifdef IPRT_WITH_KSTUFF
