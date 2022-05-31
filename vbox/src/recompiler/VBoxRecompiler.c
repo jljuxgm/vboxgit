@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 19660 2009-05-13 14:09:15Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 19747 2009-05-15 16:05:41Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -796,10 +796,8 @@ REMR3DECL(int) REMR3Step(PVM pVM, PVMCPU pVCpu)
     rc = cpu_exec(&pVM->rem.s.Env);
     if (rc == EXCP_DEBUG)
     {
-        TMCpuTickResume(pVCpu);
-        TMCpuTickPause(pVCpu);
-        TMVirtualResume(pVM);
-        TMVirtualPause(pVM);
+        TMR3NotifyResume(pVM, pVCpu);
+        TMR3NotifySuspend(pVM, pVCpu);
         rc = VINF_EM_DBG_STEPPED;
     }
     else

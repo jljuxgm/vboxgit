@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 19717 2009-05-15 09:00:30Z vboxsync $ */
+/* $Id: TMInternal.h 19747 2009-05-15 16:05:41Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -575,6 +575,8 @@ void                    tmTimerQueuesSanityChecks(PVM pVM, const char *pszWhere)
 int                     tmCpuTickPause(PVM pVM, PVMCPU pVCpu);
 int                     tmCpuTickResume(PVM pVM, PVMCPU pVCpu);
 
+int                     tmVirtualPauseLocked(PVM pVM);
+int                     tmVirtualResumeLocked(PVM pVM);
 DECLEXPORT(void)        tmVirtualNanoTSBad(PRTTIMENANOTSDATA pData, uint64_t u64NanoTS, uint64_t u64DeltaPrev, uint64_t u64PrevNanoTS);
 DECLEXPORT(uint64_t)    tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData);
 
