@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 19211 2009-04-27 13:56:07Z vboxsync $ */
+/* $Id: dir.cpp 19212 2009-04-27 13:56:45Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation.
  */
@@ -777,5 +777,4 @@ RTDECL(int) RTDirRemoveRecursive(const char *pszPath)
     LogFlow(("RTDirRemoveRecursive(%p:{%s}): returns %Rrc\n", pszPath, pszPath, rc));
     return rc;
 }
-
 
