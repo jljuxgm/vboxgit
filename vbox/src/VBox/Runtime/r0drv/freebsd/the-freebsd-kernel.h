@@ -1,4 +1,4 @@
-/* $Id: the-freebsd-kernel.h 22819 2009-09-07 19:10:55Z vboxsync $ */
+/* $Id: the-freebsd-kernel.h 22853 2009-09-09 00:37:04Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The FreeBSD Kernel Headers.
  */
@@ -71,7 +71,7 @@
 # error "This header doesn't work for C++ code. Sorry, typical kernel crap."
 #endif*/
 
-#ifdef __FreeBSD_version >= 800026
+#if __FreeBSD_version >= 800026
 # define SLEEPQ_TIMEDWAIT(EventInt) sleepq_timedwait(EventInt, 0)
 # define SLEEPQ_TIMEDWAIT_SIG(EventInt) sleepq_timedwait_sig(EventInt, 0)
 # define SLEEPQ_WAIT(EventInt) sleepq_wait(EventInt, 0)
