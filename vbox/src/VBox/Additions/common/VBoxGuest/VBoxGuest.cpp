@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 22128 2009-08-10 11:56:08Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 23388 2009-09-28 15:18:38Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -149,7 +149,6 @@ static int vboxGuestInitFixateGuestMappings(PVBOXGUESTDEVEXT pDevExt)
             if (    uAlignment == PAGE_SIZE
                 &&  pReq->hypervisorStart & (_4M - 1))
                 pReq->hypervisorStart = RT_ALIGN_32(pReq->hypervisorStart, _4M);
-                (pReq->hypervisorStart | (_4M - 1)) + 1;
             AssertMsg(RT_ALIGN_32(pReq->hypervisorStart, _4M) == pReq->hypervisorStart, ("%#x\n", pReq->hypervisorStart));
 
             rc = VbglGRPerform(&pReq->header);
