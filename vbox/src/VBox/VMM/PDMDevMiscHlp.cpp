@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 23901 2009-10-20 14:22:03Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -139,7 +139,7 @@ const PDMPICHLPR3 g_pdmR3DevPicHlp =
 
 
 
-/** @name HC APIC Helpers
+/** @name R3 APIC Helpers
  * @{
  */
 
