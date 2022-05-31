@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 19240 2009-04-28 13:38:23Z vboxsync $ */
+/* $Id: PATM.cpp 19293 2009-05-01 16:11:18Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -5863,7 +5863,7 @@ static int patmR3HandleDirtyInstr(PVM pVM, PCPUMCTX pCtx, PPATMPATCHREC pPatch, 
 #ifdef DEBUG
         char szBuf[256];
         szBuf[0] = '\0';
-        DBGFR3DisasInstr(pVM, pVCpu, pCtx->cs, pCurPatchInstrGC, szBuf, sizeof(szBuf));
+        DBGFR3DisasInstrEx(pVM, pVCpu->idCpu, pCtx->cs, pCurPatchInstrGC, 0, szBuf, sizeof(szBuf), NULL);
         Log(("DIRTY: %s\n", szBuf));
 #endif
         /* Mark as clean; if we fail we'll let it always fault. */
@@ -5925,7 +5925,7 @@ static int patmR3HandleDirtyInstr(PVM pVM, PCPUMCTX pCtx, PPATMPATCHREC pPatch, 
 #ifdef DEBUG
                 char szBuf[256];
                 szBuf[0] = '\0';
-                DBGFR3DisasInstr(pVM, pVCpu, pCtx->cs, pCurInstrGC, szBuf, sizeof(szBuf));
+                DBGFR3DisasInstrEx(pVM, pVCpu->idCpu, pCtx->cs, pCurInstrGC, 0, szBuf, sizeof(szBuf), NULL);
                 Log(("NEW:   %s\n", szBuf));
 #endif
 
@@ -5941,7 +5941,7 @@ static int patmR3HandleDirtyInstr(PVM pVM, PCPUMCTX pCtx, PPATMPATCHREC pPatch, 
 #ifdef DEBUG
                 char szBuf[256];
                 szBuf[0] = '\0';
-                DBGFR3DisasInstr(pVM, pVCpu, pCtx->cs, pCurInstrGC, szBuf, sizeof(szBuf));
+                DBGFR3DisasInstrEx(pVM, pVCpu->idCpu, pCtx->cs, pCurInstrGC, 0, szBuf, sizeof(szBuf), NULL);
                 Log(("NEW:   %s (FAILED)\n", szBuf));
 #endif
                 /* Restore the old lookup record for the duplicated instruction. */
@@ -6139,7 +6139,7 @@ VMMR3DECL(int) PATMR3HandleTrap(PVM pVM, PCPUMCTX pCtx, RTRCPTR pEip, RTGCPTR *p
 
         char szBuf[256];
         szBuf[0] = '\0';
-        DBGFR3DisasInstr(pVM, pVCpu, pCtx->cs, pEip, szBuf, sizeof(szBuf));
+        DBGFR3DisasInstrEx(pVM, pVCpu->idCpu, pCtx->cs, pEip, 0, szBuf, sizeof(szBuf), NULL);
 
         /* Very bad. We crashed in emitted code. Probably stack? */
         if (pPatch)

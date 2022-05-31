@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 19286 2009-05-01 12:41:07Z vboxsync $ */
+/* $Id: DBGFMem.cpp 19293 2009-05-01 16:11:18Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -67,7 +67,7 @@ static DECLCALLBACK(int) dbgfR3MemScan(PVM pVM, VMCPUID idCpu, PCDBGFADDRESS pAd
      * Select DBGF worker by addressing mode.
      */
     int     rc;
-    PVMCPU  pVCpu = VMMGetCpuEx(pVM, idCpu);
+    PVMCPU  pVCpu   = VMMGetCpuById(pVM, idCpu);
     PGMMODE enmMode = PGMGetGuestMode(pVCpu);
     if (    enmMode == PGMMODE_REAL
         ||  enmMode == PGMMODE_PROTECTED
@@ -166,7 +166,7 @@ static DECLCALLBACK(int) dbgfR3MemRead(PVM pVM, VMCPUID idCpu, PCDBGFADDRESS pAd
         /*
          * Select DBGF worker by addressing mode.
          */
-        PVMCPU  pVCpu   = VMMGetCpuEx(pVM, idCpu);
+        PVMCPU  pVCpu   = VMMGetCpuById(pVM, idCpu);
         PGMMODE enmMode = PGMGetGuestMode(pVCpu);
         if (    enmMode == PGMMODE_REAL
             ||  enmMode == PGMMODE_PROTECTED
@@ -334,7 +334,7 @@ static DECLCALLBACK(int) dbgfR3MemWrite(PVM pVM, VMCPUID idCpu, PCDBGFADDRESS pA
         /*
          * Select PGM function by addressing mode.
          */
-        PVMCPU  pVCpu = VMMGetCpuEx(pVM, idCpu);
+        PVMCPU  pVCpu   = VMMGetCpuById(pVM, idCpu);
         PGMMODE enmMode = PGMGetGuestMode(pVCpu);
         if (    enmMode == PGMMODE_REAL
             ||  enmMode == PGMMODE_PROTECTED

@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 19262 2009-04-29 13:00:14Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 19293 2009-05-01 16:11:18Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -68,6 +68,7 @@ VMMDECL(int) PDMCritSectEnter(PPDMCRITSECT pCritSect, int rcBusy)
     PVM pVM = pCritSect->s.CTX_SUFF(pVM);
     Assert(pVM);
     PVMCPU pVCpu = VMMGetCpu(pVM);
+    Assert(pVCpu);
 
     /*
      * Try to take the lock.
@@ -222,7 +223,7 @@ VMMDECL(bool) PDMCritSectIsOwner(PCPDMCRITSECT pCritSect)
     return RTCritSectIsOwner(&pCritSect->s.Core);
 #else
     PVM pVM = pCritSect->s.CTX_SUFF(pVM);
-    Assert(pVM);
+    Assert(pVM); Assert(VMMGetCpu(pVM));
     return pCritSect->s.Core.NativeThreadOwner == VMMGetCpu(pVM)->hNativeThread;
 #endif
 }

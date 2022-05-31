@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 19217 2009-04-27 15:00:59Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 19293 2009-05-01 16:11:18Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -225,6 +225,7 @@ static DECLCALLBACK(void) pdmR3ApicHlp_Unlock(PPDMDEVINS pDevIns)
 static DECLCALLBACK(VMCPUID) pdmR3ApicHlp_GetCpuId(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
+    VM_ASSERT_EMT(pDevIns->Internal.s.pVMR3);
     return VMMGetCpuId(pDevIns->Internal.s.pVMR3);
 }
 

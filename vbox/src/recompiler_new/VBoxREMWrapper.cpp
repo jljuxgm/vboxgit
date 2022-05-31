@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 19293 2009-05-01 16:11:18Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -556,7 +556,7 @@ static const REMPARMDESC g_aArgsDBGCRegisterCommands[] =
 static const REMPARMDESC g_aArgsDBGFR3DisasInstrEx[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU), NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(VMCPUID), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(RTSEL), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(RTGCPTR), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(unsigned), NULL },
