@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 18396 2009-03-27 14:06:29Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 18403 2009-03-27 15:13:28Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -323,7 +323,7 @@ void printUsage(USAGECATEGORY u64Cmd)
         RTPrintf("VBoxManage createhd         --filename <filename>\n"
                  "                            --size <megabytes>\n"
                  "                            [--format VDI|VMDK|VHD] (default: VDI)\n"
-                 "                            [--variant Standard,Fixed,Diff,Split2G,Stream]\n"
+                 "                            [--variant Standard,Fixed,Split2G,StreamOptimized]\n"
                  "                            [--type normal|writethrough] (default: normal)\n"
                  "                            [--comment <comment>]\n"
                  "                            [--remember]\n"
@@ -342,7 +342,7 @@ void printUsage(USAGECATEGORY u64Cmd)
     {
         RTPrintf("VBoxManage clonehd          <uuid>|<filename> <outputfile>\n"
                  "                            [--format VDI|VMDK|VHD|RAW|<other>]\n"
-                 "                            [--variant Standard,Fixed,Diff,Split2G,Stream]\n"
+                 "                            [--variant Standard,Fixed,Split2G,StreamOptimized]\n"
                  "                            [--type normal|writethrough|immutable]\n"
                  "                            [--remember]\n"
                  "\n");
@@ -352,10 +352,10 @@ void printUsage(USAGECATEGORY u64Cmd)
     {
         RTPrintf("VBoxManage convertfromraw   <filename> <outputfile>\n"
                  "                            [--format VDI|VMDK|VHD]\n"
-                 "                            [--variant Standard,Fixed,Diff,Split2G,Stream]\n"
+                 "                            [--variant Standard,Fixed,Split2G,StreamOptimized]\n"
                  "VBoxManage convertfromraw   stdin <outputfile> <bytes>\n"
                  "                            [--format VDI|VMDK|VHD]\n"
-                 "                            [--variant Standard,Fixed,Diff,Split2G,Stream]\n"
+                 "                            [--variant Standard,Fixed,Split2G,StreamOptimized]\n"
                  "\n");
     }
 
