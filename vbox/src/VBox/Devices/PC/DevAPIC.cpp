@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 19437 2009-05-06 14:34:05Z vboxsync $ */
+/* $Id: DevAPIC.cpp 19443 2009-05-06 15:58:01Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1073,6 +1073,11 @@ static void apic_init_ipi(APICState *s)
     s->initial_count = 0;
     s->initial_count_load_time = 0;
     s->next_time = 0;
+
+#ifdef VBOX
+    /** @todo reset CPU, activate wait for sipi mode for application processors */
+    /** Must be dealt with in ring 3 */
+#endif
 }
 
 
