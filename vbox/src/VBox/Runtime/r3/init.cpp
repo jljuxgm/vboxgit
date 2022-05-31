@@ -1,4 +1,4 @@
-/* $Id: init.cpp 20821 2009-06-23 12:42:19Z vboxsync $ */
+/* $Id: init.cpp 20839 2009-06-23 14:20:17Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -33,6 +33,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_DEFAULT
+#include <iprt/types.h>                 /* darwin: UINT32_C and others. */
+
 #ifdef RT_OS_WINDOWS
 # include <process.h>
 #else
