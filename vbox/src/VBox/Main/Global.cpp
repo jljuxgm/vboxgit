@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 23648 2009-10-09 14:18:33Z vboxsync $ */
+/* $Id: Global.cpp 23675 2009-10-10 21:59:29Z vboxsync $ */
 
 /** @file
  *
@@ -198,6 +198,27 @@ Global::stringifyMachineState(MachineState_T aState)
         case MachineState_Restoring:    return "Restoring";
         case MachineState_Discarding:   return "Discarding";
         case MachineState_SettingUp:    return "SettingUp";
+        default:
+        {
+            AssertMsgFailed(("%d (%#x)\n", aState, aState));
+            static char s_szMsg[48];
+            RTStrPrintf(s_szMsg, sizeof(s_szMsg), "InvalidState-0x%08x\n", aState);
+            return s_szMsg;
+        }
+
+    }
+}
+
+/*static*/ const char *
+Global::stringifySessionState(SessionState_T aState)
+{
+    switch (aState)
+    {
+        case SessionState_Null:         return "Null";
+        case SessionState_Closed:       return "Closed";
+        case SessionState_Open:         return "Open";
+        case SessionState_Spawning:     return "Spawning";
+        case SessionState_Closing:      return "Closing";
         default:
         {
             AssertMsgFailed(("%d (%#x)\n", aState, aState));

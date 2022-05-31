@@ -1,4 +1,4 @@
-/* $Id: Global.h 23648 2009-10-09 14:18:33Z vboxsync $ */
+/* $Id: Global.h 23675 2009-10-10 21:59:29Z vboxsync $ */
 
 /** @file
  *
@@ -121,6 +121,14 @@ public:
      * @param   aState      Valid machine state.
      */
     static const char *stringifyMachineState(MachineState_T aState);
+
+    /**
+     * Stringify a session state.
+     *
+     * @returns Pointer to a read only string.
+     * @param   aState      Valid session state.
+     */
+    static const char *stringifySessionState(MachineState_T aState);
 };
 
 #endif /* !____H_GLOBAL */
