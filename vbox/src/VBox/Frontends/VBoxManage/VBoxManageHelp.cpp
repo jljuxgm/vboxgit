@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 23572 2009-10-06 06:27:55Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 23667 2009-10-10 01:23:58Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -249,7 +249,10 @@ void printUsage(USAGECATEGORY u64Cmd)
         }
         RTPrintf("                            [--usb on|off]\n"
                  "                            [--usbehci on|off]\n"
-                 "                            [--snapshotfolder default|<path>]\n");
+                 "                            [--snapshotfolder default|<path>]\n"
+                 "                            [--livemigrationtarget on|off]\n"
+                 "                            [--livemigrationport <port>]\n"
+                 "                            [--livemigrationpassword <password>]\n");
         RTPrintf("\n");
     }
 
@@ -315,9 +318,11 @@ void printUsage(USAGECATEGORY u64Cmd)
             RTPrintf("                            vrdp on|off] |\n");
             RTPrintf("                            vrdpport default|<port>] |\n");
         }
-        RTPrintf("                            setvideomodehint <xres> <yres> <bpp> [display]|\n"
+        RTPrintf("                            setvideomodehint <xres> <yres> <bpp> [display] |\n"
                  "                            setcredentials <username> <password> <domain>\n"
-                 "                                           [--allowlocallogon <yes|no>]\n"
+                 "                                           [--allowlocallogon <yes|no>] |\n"
+                 "                            migrate --hostname <name> --port <port>\n"
+                 "                                   [--password password]\n"
                  "\n");
     }
 
