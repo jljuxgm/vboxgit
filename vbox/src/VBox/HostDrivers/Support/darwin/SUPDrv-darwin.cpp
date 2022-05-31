@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 22077 2009-08-07 16:01:57Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 23491 2009-10-01 15:57:14Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -64,7 +64,7 @@
 #include <sys/proc.h>
 #include <sys/kauth.h>
 #include <IOKit/IOService.h>
-#include <IOKit/IOUserclient.h>
+#include <IOKit/IOUserClient.h>
 #include <IOKit/pwr_mgt/RootDomain.h>
 
 #ifdef VBOX_WITH_HOST_VMX
