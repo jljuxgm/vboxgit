@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 20977 2009-06-26 14:38:55Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 20978 2009-06-26 14:52:36Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1617,7 +1617,7 @@ STDMETHODIMP VirtualBox::SetExtraData (IN_BSTR aKey, IN_BSTR aValue)
     Guid emptyGuid;
     Bstr val;
     if (!aValue)
-        val = Bstr("");
+        val = (const char *)"";
     else
         val = aValue;
 
