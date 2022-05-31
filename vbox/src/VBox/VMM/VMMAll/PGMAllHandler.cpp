@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 23121 2009-09-18 11:12:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -222,7 +222,7 @@ static int pgmHandlerPhysicalSetRamFlagsAndFlushShadowPTs(PVM pVM, PPGMPHYSHANDL
         {
             PGM_PAGE_SET_HNDL_PHYS_STATE(pPage, uState);
 
-            int rc2 = pgmPoolTrackFlushGCPhys(pVM, pPage, &fFlushTLBs);
+            int rc2 = pgmPoolTrackUpdateGCPhys(pVM, pPage, false /* allow updates of PTEs (instead of flushing) */, &fFlushTLBs);
             if (rc2 != VINF_SUCCESS && rc == VINF_SUCCESS)
                 rc = rc2;
         }
