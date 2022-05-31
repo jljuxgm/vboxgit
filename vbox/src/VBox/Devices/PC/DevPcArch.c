@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.c 18101 2009-03-19 22:39:06Z vboxsync $ */
+/* $Id: DevPcArch.c 18663 2009-04-02 19:08:14Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architechture Device.
  */
@@ -250,21 +250,6 @@ static DECLCALLBACK(int)  pcarchConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
     rc = PDMDevHlpIOPortRegister(pDevIns, 0x92, 1, NULL, pcarchIOPortPS2SysControlPortAWrite, pcarchIOPortPS2SysControlPortARead, NULL, NULL, "PS/2 system control port A (A20 and more)");
     if (RT_FAILURE(rc))
         return rc;
-
-#ifndef VBOX_WITH_NEW_PHYS_CODE
-    /*
-     * Reserve ROM/MMIO areas:
-     * 1. 0x000a0000-0x000fffff
-     * 2. 0xfff80000-0xffffffff
-     * Note: This will be removed before long.
-     */
-    rc = MMR3PhysReserve(PDMDevHlpGetVM(pDevIns), 0x000a0000, 0x50000, "Low ROM Region");
-    if (RT_FAILURE(rc))
-        return rc;
-    rc = MMR3PhysReserve(PDMDevHlpGetVM(pDevIns), 0xfff80000, 0x80000, "High ROM Region");
-    if (RT_FAILURE(rc))
-        return rc;
-#endif
 
     return VINF_SUCCESS;
 }
