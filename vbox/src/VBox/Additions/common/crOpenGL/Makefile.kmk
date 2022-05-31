@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20084 2009-05-27 13:26:41Z vboxsync $
+# $Id: Makefile.kmk 20150 2009-05-29 12:32:23Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest OpenGL part
 #
@@ -338,7 +338,8 @@ VBoxOGLpackspu_DEFS          = TRACKS_STATE=1 PACKS=1
 VBoxOGLpackspu_INCS          = \
 	pack
 VBoxOGLpackspu_INTERMEDIATES = \
-	$(VBOX_PATH_CROGL_GENFILES)/packspu_proto.h
+	$(VBOX_PATH_CROGL_GENFILES)/packspu_proto.h \
+	$(VBOX_PATH_CROGL_GENFILES)/cr_packfunctions.h
 VBoxOGLpackspu_SOURCES    = \
 	pack/packspu_bufferobject.c \
 	pack/packspu_client.c \
