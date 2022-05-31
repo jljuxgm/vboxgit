@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18162 2009-03-23 19:28:13Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18177 2009-03-24 13:21:12Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2311,7 +2311,7 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD /* aThread */, vo
 
                             /* First open the existing disk image */
                             rc = pVirtualBox->OpenHardDisk(Bstr(strSrcFilePath),
-                                                           FALSE,           // read-only
+                                                           AccessMode_ReadOnly,
                                                            srcHdVBox.asOutParam());
                             if (FAILED(rc)) throw rc;
                             fSourceHdNeedsClosing = true;

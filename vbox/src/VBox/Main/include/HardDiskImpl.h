@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 18162 2009-03-23 19:28:13Z vboxsync $ */
+/* $Id: HardDiskImpl.h 18177 2009-03-24 13:21:12Z vboxsync $ */
 
 /** @file
  *
@@ -77,7 +77,9 @@ public:
     void FinalRelease();
 
     enum HDDOpenMode  { OpenReadWrite, OpenReadOnly };
-                // have to use a special enum or otherwise the overloaded init() is ambiguous
+                // have to use a special enum for the overloaded init() below;
+                // can't use AccessMode_T from XIDL because that's mapped to an int
+                // and would be ambiguous
 
     // public initializer/uninitializer for internal purposes only
     HRESULT init(VirtualBox *aVirtualBox,

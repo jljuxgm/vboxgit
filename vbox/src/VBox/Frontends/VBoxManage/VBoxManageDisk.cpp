@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 18162 2009-03-23 19:28:13Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 18177 2009-03-24 13:21:12Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -387,7 +387,7 @@ int handleModifyHardDisk(HandlerArg *a)
         /* the hard disk image might not be registered */
         if (!hardDisk)
         {
-            a->virtualBox->OpenHardDisk(Bstr(a->argv[0]), hardDisk.asOutParam());
+            a->virtualBox->OpenHardDisk(Bstr(a->argv[0]), AccessMode_ReadWrite, hardDisk.asOutParam());
             if (!hardDisk)
                 return errorArgument("Hard disk image not found");
         }
@@ -520,7 +520,7 @@ int handleCloneHardDisk(HandlerArg *a)
         /* no? well, then it's an unkwnown image */
         if (FAILED (rc))
         {
-            CHECK_ERROR(a->virtualBox, OpenHardDisk(src, TRUE /* fWrite */, srcDisk.asOutParam()));
+            CHECK_ERROR(a->virtualBox, OpenHardDisk(src, AccessMode_ReadWrite, srcDisk.asOutParam()));
             if (SUCCEEDED (rc))
             {
                 unknown = true;
@@ -942,7 +942,7 @@ int handleShowHardDiskInfo(HandlerArg *a)
         /* no? well, then it's an unkwnown image */
         if (FAILED (rc))
         {
-            CHECK_ERROR(a->virtualBox, OpenHardDisk(filepath, TRUE /* fWrite */, hardDisk.asOutParam()));
+            CHECK_ERROR(a->virtualBox, OpenHardDisk(filepath, AccessMode_ReadWrite, hardDisk.asOutParam()));
             if (SUCCEEDED (rc))
             {
                 unknown = true;
@@ -1082,7 +1082,7 @@ int handleOpenMedium(HandlerArg *a)
         }
 
         ComPtr<IHardDisk> hardDisk;
-        CHECK_ERROR(a->virtualBox, OpenHardDisk(filepath, TRUE /* fWrite */, hardDisk.asOutParam()));
+        CHECK_ERROR(a->virtualBox, OpenHardDisk(filepath, AccessMode_ReadWrite, hardDisk.asOutParam()));
         if (SUCCEEDED(rc) && hardDisk)
         {
             /* change the type if requested */

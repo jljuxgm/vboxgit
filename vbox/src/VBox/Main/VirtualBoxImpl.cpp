@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 18162 2009-03-23 19:28:13Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 18177 2009-03-24 13:21:12Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1132,7 +1132,9 @@ STDMETHODIMP VirtualBox::CreateHardDisk(IN_BSTR aFormat,
     return rc;
 }
 
-STDMETHODIMP VirtualBox::OpenHardDisk(IN_BSTR aLocation, BOOL fWrite, IHardDisk **aHardDisk)
+STDMETHODIMP VirtualBox::OpenHardDisk(IN_BSTR aLocation,
+                                      AccessMode_T accessMode,
+                                      IHardDisk **aHardDisk)
 {
     CheckComArgNotNull(aLocation);
     CheckComArgOutSafeArrayPointerValid(aHardDisk);
@@ -1148,7 +1150,7 @@ STDMETHODIMP VirtualBox::OpenHardDisk(IN_BSTR aLocation, BOOL fWrite, IHardDisk 
     hardDisk.createObject();
     rc = hardDisk->init(this,
                         aLocation,
-                        (fWrite) ? HardDisk::OpenReadWrite : HardDisk::OpenReadOnly );
+                        (accessMode == AccessMode_ReadWrite) ? HardDisk::OpenReadWrite : HardDisk::OpenReadOnly );
 
     if (SUCCEEDED (rc))
     {
