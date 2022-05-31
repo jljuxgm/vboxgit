@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 23845 2009-10-19 08:49:10Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 23848 2009-10-19 09:21:19Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -30,6 +30,9 @@
 #include <HostHardwareLinux.h>
 
 #include <VBox/log.h>
+# ifdef VBOX_WITH_DBUS
+#  include <VBox/dbus.h>
+# endif
 
 #include <iprt/dir.h>
 #include <iprt/env.h>
@@ -53,9 +56,6 @@
 # include <linux/cdrom.h>
 # include <linux/fd.h>
 # include <linux/major.h>
-# ifdef VBOX_WITH_DBUS
-#  include <vbox-dbus.h>
-# endif
 # include <errno.h>
 # include <scsi/scsi.h>
 
