@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 23381 2009-09-28 14:01:25Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 23407 2009-09-29 13:25:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -373,8 +373,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     PCFGMNODE pLunL0 = NULL;        /* /Devices/Dev/0/LUN#0/ */
     PCFGMNODE pLunL1 = NULL;        /* /Devices/Dev/0/LUN#0/AttachedDriver/ */
     PCFGMNODE pLunL2 = NULL;        /* /Devices/Dev/0/LUN#0/AttachedDriver/Config/ */
-    PCFGMNODE pIdeInst = NULL;      /* /Devices/piix3ide/0/ */
-    PCFGMNODE pSataInst = NULL;     /* /Devices/ahci/0/ */
     PCFGMNODE pBiosCfg = NULL;      /* /Devices/pcbios/0/Config/ */
 
     rc = CFGMR3InsertNode(pRoot, "Devices", &pDevices);                             RC_CHECK();
