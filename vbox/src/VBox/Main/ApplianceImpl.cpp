@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18248 2009-03-25 12:46:46Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18263 2009-03-25 16:26:37Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -20,6 +20,7 @@
  * additional information or have any questions.
  */
 
+#include <VBox/param.h>
 #include <iprt/stream.h>
 #include <iprt/path.h>
 #include <iprt/dir.h>
@@ -1297,12 +1298,12 @@ STDMETHODIMP Appliance::Interpret()
             uint64_t ullMemSizeVBox = vsysThis.ullMemorySize / _1M;
             /* Check for the constrains */
             if (ullMemSizeVBox != 0 &&
-                (ullMemSizeVBox < static_cast<uint64_t>(SchemaDefs::MinGuestRAM) ||
-                 ullMemSizeVBox > static_cast<uint64_t>(SchemaDefs::MaxGuestRAM)))
+                (ullMemSizeVBox < MM_RAM_MIN_IN_MB ||
+                 ullMemSizeVBox > MM_RAM_MAX_IN_MB))
             {
                 addWarning(tr("The virtual system \"%s\" claims support for %llu MB RAM size, but VirtualBox has support for min %u & max %u MB RAM size only."),
-                              vsysThis.strName.c_str(), ullMemSizeVBox, SchemaDefs::MinGuestRAM, SchemaDefs::MaxGuestRAM);
-                ullMemSizeVBox = RT_MIN(RT_MAX(ullMemSizeVBox, static_cast<uint64_t>(SchemaDefs::MinGuestRAM)), static_cast<uint64_t>(SchemaDefs::MaxGuestRAM));
+                              vsysThis.strName.c_str(), ullMemSizeVBox, MM_RAM_MIN_IN_MB, MM_RAM_MAX_IN_MB);
+                ullMemSizeVBox = RT_MIN(RT_MAX(ullMemSizeVBox, MM_RAM_MIN_IN_MB), MM_RAM_MAX_IN_MB);
             }
             if (vsysThis.ullMemorySize == 0)
             {

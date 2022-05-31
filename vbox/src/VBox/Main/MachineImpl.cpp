@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 18252 2009-03-25 12:59:12Z vboxsync $ */
+/* $Id: MachineImpl.cpp 18263 2009-03-25 16:26:37Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -982,11 +982,11 @@ STDMETHODIMP Machine::COMGETTER(MemorySize) (ULONG *memorySize)
 STDMETHODIMP Machine::COMSETTER(MemorySize) (ULONG memorySize)
 {
     /* check RAM limits */
-    if (memorySize < SchemaDefs::MinGuestRAM ||
-        memorySize > SchemaDefs::MaxGuestRAM)
+    if (memorySize < MM_RAM_MIN_IN_MB ||
+        memorySize > MM_RAM_MAX_IN_MB)
         return setError (E_INVALIDARG,
             tr ("Invalid RAM size: %lu MB (must be in range [%lu, %lu] MB)"),
-                memorySize, SchemaDefs::MinGuestRAM, SchemaDefs::MaxGuestRAM);
+                memorySize, MM_RAM_MIN_IN_MB, MM_RAM_MAX_IN_MB);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
