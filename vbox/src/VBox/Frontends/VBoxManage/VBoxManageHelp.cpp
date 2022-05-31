@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 23882 2009-10-19 18:36:03Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 23902 2009-10-20 14:32:19Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -348,14 +348,15 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "\n");
     }
 
-    if (u64Cmd & USAGE_ATTACHDISK)
+    if (u64Cmd & USAGE_STORAGEATTACH)
     {
-        RTPrintf("VBoxManage attachdisk       <uuid|vmname>\n"
-                 "                            --type <dvd|hdd|fdd>\n"
-                 "                            --file <null|none|uuid|filename|host:<drive>>\n"
-                 "                            --controller <name>\n"
+        RTPrintf("VBoxManage storageattach    <uuid|vmname>\n"
+                 "                            --storagectl <name>\n"
                  "                            --port <number>\n"
                  "                            --device <number>\n"
+                 "                            [--type <dvddrive|hdd|fdd>\n"
+                 "                             --medium <none|emptydrive|uuid|filename|host:<drive>>]\n"
+                 "                            [--passthrough <on|off>]\n"
                  "\n");
     }
 
@@ -365,7 +366,6 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            --name <name>\n"
                  "                            [--add <ide/sata/scsi/floppy>]\n"
                  "                            [--controller <LsiLogic/BusLogic/IntelAhci/PIIX3/PIIX4/ICH6/I82078>]\n"
-                 "                            [--passthrough <on|off> --port <number> --device <number>]\n"
                  "                            [--sataideemulation<1-4> <1-30>]\n"
                  "                            [--sataportcount <1-30>]\n"
                  "                            [--remove]\n"
