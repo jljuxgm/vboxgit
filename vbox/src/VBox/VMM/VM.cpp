@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 18104 2009-03-20 10:31:34Z vboxsync $ */
+/* $Id: VM.cpp 18105 2009-03-20 10:33:26Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -275,9 +275,9 @@ VMMR3DECL(int)   VMR3Create(uint32_t cCPUs, PFNVMATERROR pfnVMAtError, void *pvU
                     break;
 
                 case VERR_VERSION_MISMATCH:
-                    pszError = N_("VMMR0 driver version mismatch. Please terminate all VMs, make sure that not "
-                                  "VBoxNetDHCP is running and try again. If you still get this error, re-install "
-                                  "VirtualBox");
+                    pszError = N_("VMMR0 driver version mismatch. Please terminate all VMs, make sure that "
+                                  "VBoxNetDHCP is not running and try again. If you still get this error, "
+                                  "re-install VirtualBox");
                     break;
 
                 default:
