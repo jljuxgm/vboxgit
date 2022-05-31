@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23819 2009-10-16 12:24:52Z vboxsync $
+# $Id: Makefile.kmk 23845 2009-10-19 08:49:10Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -124,7 +124,8 @@ tstCollector_LDFLAGS.win     += psapi.lib powrprof.lib
 tstHostHardwareLinux_TEMPLATE  = VBOXR3TSTEXE
 tstHostHardwareLinux_SOURCES   = \
 	tstHostHardwareLinux.cpp \
-	../linux/HostHardwareLinux.cpp
+	../linux/HostHardwareLinux.cpp \
+	../linux/vbox-dbus.cpp
 tstHostHardwareLinux_INCS      = . ../include
 tstHostHardwareLinux_DEFS      = \
 	VBOX_TEST_USB_LINUX \

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23821 2009-10-16 12:30:59Z vboxsync $
+# $Id: Makefile.kmk 23845 2009-10-19 08:49:10Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -334,6 +334,10 @@ VBoxSVC_SOURCES.win = \
 
 VBoxSVC_SOURCES.linux = \
 	linux/HostHardwareLinux.cpp
+
+ifdef VBOX_WITH_DBUS
+ VBoxSVC_SOURCES.linux += linux/vbox-dbus.cpp
+endif
 
 VBoxSVC_SOURCES.solaris = \
 	linux/vbox-libhal.cpp \

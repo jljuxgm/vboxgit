@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23839 2009-10-17 08:21:39Z vboxsync $
+# $Id: Makefile.kmk 23845 2009-10-19 08:49:10Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -85,9 +85,7 @@ VBoxGuestR3Lib_SOURCES     = \
 	VBoxGuestR3LibClipboard.cpp \
 	VBoxGuestR3LibDaemonize.cpp \
 	VBoxGuestR3LibGR.cpp \
-	$(if $(VBOX_WITH_GUEST_PROPS), \
-		VBoxGuestR3LibGuestProp.cpp \
-		VBoxGuestR3LibHostVersion.cpp,) \
+	$(if $(VBOX_WITH_GUEST_PROPS),VBoxGuestR3LibGuestProp.cpp,) \
 	VBoxGuestR3LibMouse.cpp \
 	VBoxGuestR3LibMisc.cpp \
 	VBoxGuestR3LibSeamless.cpp \
@@ -97,9 +95,7 @@ ifeq ($(KBUILD_TARGET),win) ## @todo get rid of this hack (as soon as it's all i
  VBoxGuestR3Lib_SOURCES   = \
 	VBoxGuestR3Lib.cpp \
 	VBoxGuestR3LibGR.cpp \
-	$(if $(VBOX_WITH_GUEST_PROPS), \
-		VBoxGuestR3LibGuestProp.cpp \
-		VBoxGuestR3LibHostVersion.cpp,) \
+	$(if $(VBOX_WITH_GUEST_PROPS),VBoxGuestR3LibGuestProp.cpp,) \
 	VBoxGuestR3LibMisc.cpp \
 	VBoxGuestR3LibTime.cpp
 endif
