@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 22183 2009-08-11 17:00:33Z vboxsync $ */
 
 /** @file
  *
@@ -34,7 +34,7 @@
 class VirtualBox;
 namespace settings
 {
-    class SystemProperties;
+    struct SystemProperties;
 }
 
 class ATL_NO_VTABLE SystemProperties :

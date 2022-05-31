@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 22183 2009-08-11 17:00:33Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -29,7 +29,7 @@ class Machine;
 
 namespace settings
 {
-    class ParallelPort;
+    struct ParallelPort;
 }
 
 class ATL_NO_VTABLE ParallelPort :

@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 22183 2009-08-11 17:00:33Z vboxsync $ */
 
 /** @file
  *
@@ -33,7 +33,7 @@ struct NETIFINFO;
 
 namespace settings
 {
-    class DHCPServer;
+    struct DHCPServer;
 }
 
 class ATL_NO_VTABLE DHCPServer :

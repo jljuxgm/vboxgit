@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 22183 2009-08-11 17:00:33Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1975,12 +1975,12 @@ VirtualBox::SVCHelperClientThread (RTTHREAD aThread, void *aUser)
         Guid id;
         id.create();
         SVCHlpClient client;
-        vrc = client.create (Utf8StrFmt ("VirtualBox\\SVCHelper\\{%RTuuid}",
-                                         id.raw()));
+        vrc = client.create(Utf8StrFmt("VirtualBox\\SVCHelper\\{%RTuuid}",
+                                       id.raw()).c_str());
         if (RT_FAILURE(vrc))
         {
-            rc = setError (E_FAIL,
-                tr ("Could not create the communication channel (%Rrc)"), vrc);
+            rc = setError(E_FAIL,
+                          tr("Could not create the communication channel (%Rrc)"), vrc);
             break;
         }
 
@@ -2032,7 +2032,7 @@ VirtualBox::SVCHelperClientThread (RTTHREAD aThread, void *aUser)
         }
         else
         {
-            const char *args[] = { exePath, "/Helper", client.name(), 0 };
+            const char *args[] = { exePath, "/Helper", client.name().c_str(), 0 };
             vrc = RTProcCreate (exePath, args, RTENV_DEFAULT, 0, &pid);
             if (RT_FAILURE(vrc))
             {

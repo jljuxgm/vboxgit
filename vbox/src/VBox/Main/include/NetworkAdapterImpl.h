@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 22183 2009-08-11 17:00:33Z vboxsync $ */
 
 /** @file
  *
@@ -31,7 +31,7 @@ class GuestOSType;
 
 namespace settings
 {
-    class NetworkAdapter;
+    struct NetworkAdapter;
 }
 
 class ATL_NO_VTABLE NetworkAdapter :

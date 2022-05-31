@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.h 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: DVDDriveImpl.h 22183 2009-08-11 17:00:33Z vboxsync $ */
 
 /** @file
  *
@@ -32,7 +32,7 @@ class Machine;
 
 namespace settings
 {
-    class DVDDrive;
+    struct DVDDrive;
 }
 
 class ATL_NO_VTABLE DVDDrive :
