@@ -1,4 +1,4 @@
-/* $Id: PDMGCDevice.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: PDMGCDevice.cpp 19041 2009-04-21 02:03:12Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, GC Device parts.
  */
@@ -352,6 +352,7 @@ static DECLCALLBACK(PVM)  pdmGCDevHlp_GetVM(PPDMDEVINS pDevIns)
     return pDevIns->Internal.s.pVMRC;
 }
 
+
 /** @copydoc PDMDEVHLPRC::pfnGetVMCPU */
 static DECLCALLBACK(PVMCPU) pdmGCDevHlp_GetVMCPU(PPDMDEVINS pDevIns)
 {
@@ -359,6 +360,7 @@ static DECLCALLBACK(PVMCPU) pdmGCDevHlp_GetVMCPU(PPDMDEVINS pDevIns)
     LogFlow(("pdmGCDevHlp_GetVMCPU: caller='%p'/%d\n", pDevIns, pDevIns->iInstance));
     return VMMGetCpu(pDevIns->Internal.s.pVMRC);
 }
+
 
 
 
