@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 19237 2009-04-28 12:59:17Z vboxsync $ */
+/* $Id: GVMMR0.cpp 19238 2009-04-28 13:00:13Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -625,7 +625,6 @@ GVMMR0DECL(int) GVMMR0CreateVM(PSUPDRVSESSION pSession, uint32_t cCPUs, PVM *ppV
                                     {
                                         pVM->aCpus[i].pVMR0 = pVM;
                                         pVM->aCpus[i].pVMR3 = pVM->pVMR3;
-                                        pVM->aCpus[i].idCpu = i;
                                     }
 
                                     rc = RTR0MemObjMapUser(&pGVM->gvmm.s.VMPagesMapObj, pGVM->gvmm.s.VMPagesMemObj, (RTR3PTR)-1, 0,
