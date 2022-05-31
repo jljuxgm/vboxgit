@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 20829 2009-06-23 13:00:16Z vboxsync $ */
+/* $Id: DevAPIC.cpp 20830 2009-06-23 13:04:18Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -2785,6 +2785,7 @@ PDMBOTHCBDECL(int) ioapicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GC
 
 PDMBOTHCBDECL(void) ioapicSetIrq(PPDMDEVINS pDevIns, int iIrq, int iLevel)
 {
+    /* PDM lock is taken here; @todo add assertion */
     IOAPICState *pThis = PDMINS_2_DATA(pDevIns, IOAPICState *);
     STAM_COUNTER_INC(&pThis->CTXSUFF(StatSetIrq));
     LogFlow(("ioapicSetIrq: iIrq=%d iLevel=%d\n", iIrq, iLevel));
