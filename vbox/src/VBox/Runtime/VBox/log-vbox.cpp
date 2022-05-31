@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 21635 2009-07-16 09:40:30Z vboxsync $ */
+/* $Id: log-vbox.cpp 21637 2009-07-16 10:08:55Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -401,7 +401,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
          * destination is the one doing all the work. On platforms
          * that do differ (like Darwin), STDOUT is the kernel log.
          */
-# if 1 /*defined(DEBUG_bird) && !defined(IN_GUEST)*/
+# if defined(DEBUG_bird) && !defined(IN_GUEST)
         RTLogGroupSettings(pLogger, "all=~0 -default.l6.l5.l4.l3");
         RTLogFlags(pLogger, "enabled unbuffered pid tid");
 #  ifndef IN_GUEST
