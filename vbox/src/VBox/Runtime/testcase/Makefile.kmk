@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18991 2009-04-17 13:37:54Z vboxsync $
+# $Id: Makefile.kmk 18999 2009-04-17 19:54:52Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -120,6 +120,10 @@ SYSMODS += \
 if1of ($(VBOX_LDR_FMT)), lx pe)
 LIBRARIES += \
 	tstLdr-4Imp
+endif
+ifdef RT_ASYNC_IO_CODE
+PROGRAMS += \
+	tstFileAio
 endif
 
 
@@ -338,6 +342,8 @@ tstTSC_CXXFLAGS.linux += -O3
 tstUuid_SOURCES = tstUuid.cpp
 
 tstUtf8_SOURCES = tstUtf8.cpp
+
+tstFileAio_SOURCES = tstFileAio.cpp
 
 ntGetTimerResolution_SOURCES = ntGetTimerResolution.cpp
 ntGetTimerResolution_SDKS.win = WINPSDK W2K3DDK VBOX_NTDLL

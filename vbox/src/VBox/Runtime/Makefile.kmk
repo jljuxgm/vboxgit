@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18990 2009-04-17 13:16:35Z vboxsync $
+# $Id: Makefile.kmk 18999 2009-04-17 19:54:52Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -405,6 +405,10 @@ ifdef RT_NEW_LINUX_MUTEX_CODE
 else
  RuntimeR3_SOURCES.linux.amd64 += \
 	r3/posix/semmutex-posix.cpp
+endif
+ifdef RT_ASYNC_IO_CODE
+ RuntimeR3_SOURCES.linux += \
+	r3/linux/fileaio-linux.cpp
 endif
 
 RuntimeR3_SOURCES.os2   = \
