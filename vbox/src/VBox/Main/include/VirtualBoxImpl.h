@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 20598 2009-06-15 18:08:09Z vboxsync $ */
 
 /** @file
  *
@@ -179,6 +179,7 @@ public:
     STDMETHOD(RegisterCallback) (IVirtualBoxCallback *aCallback);
     STDMETHOD(UnregisterCallback) (IVirtualBoxCallback *aCallback);
 
+    STDMETHOD(WaitForEvents) (LONG aTimeout);    
     STDMETHOD(WaitForPropertyChange) (IN_BSTR aWhat, ULONG aTimeout,
                                       BSTR *aChanged, BSTR *aValues);
 

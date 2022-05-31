@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 19750 2009-05-15 17:40:03Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 20598 2009-06-15 18:08:09Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1888,6 +1888,18 @@ STDMETHODIMP VirtualBox::UnregisterCallback (IVirtualBoxCallback *aCallback)
 
     LogFlowThisFunc (("aCallback=%p, rc=%08X\n", aCallback, rc));
     return rc;
+}
+
+
+STDMETHODIMP VirtualBox::WaitForEvents(LONG aTimeout)
+{
+#ifdef RT_OS_WINDOWS
+    ReturnComNotImplemented();
+#else
+    extern nsresult XPCOM_waitForEvents(PRInt32 aTimeout);
+
+    return XPCOM_waitForEvents(aTimeout);
+#endif
 }
 
 STDMETHODIMP VirtualBox::WaitForPropertyChange (IN_BSTR /* aWhat */, ULONG /* aTimeout */,
