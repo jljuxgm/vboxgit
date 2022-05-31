@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 19142 2009-04-23 13:53:01Z vboxsync $ */
+/* $Id: PATMInternal.h 19569 2009-05-11 08:14:32Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -835,7 +835,7 @@ inline RTRCPTR PATMResolveBranch(PDISCPUSTATE pCpu, RTRCPTR pBranchInstrGC)
 
 __END_DECLS
 
-#ifdef DEBUG
+#ifdef LOG_ENABLED
 int patmr3DisasmCallback(PVM pVM, DISCPUSTATE *pCpu, RCPTRTYPE(uint8_t *) pInstrGC, RCPTRTYPE(uint8_t *) pCurInstrGC, void *pUserData);
 int patmr3DisasmCodeStream(PVM pVM, RCPTRTYPE(uint8_t *) pInstrGC, RCPTRTYPE(uint8_t *) pCurInstrGC, PFN_PATMR3ANALYSE pfnPATMR3Analyse, void *pUserData);
 #endif
