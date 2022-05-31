@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22343 2009-08-19 12:40:16Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22348 2009-08-19 14:04:03Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1146,9 +1146,9 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
 
     /* Maximum nr of modifications depends on the guest mode. */
     if (pDis->mode == CPUMODE_32BIT)
-        cMaxModifications = 32;
+        cMaxModifications = 48;
     else
-        cMaxModifications = 16;
+        cMaxModifications = 24;
 
     /*
      * Incremental page table updates should weight more than random ones.
@@ -1160,8 +1160,8 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
         &&  pvFault == (pPage->pvLastAccessHandlerFault + pDis->param1.size)
         &&  pVCpu->pgm.s.cPoolAccessHandler == (pPage->cLastAccessHandlerCount + 1))
     {
-        Log(("Possible page reuse cMods=%d -> %d\n", pPage->cModifications, (pPage->cModifications + 2) * 2));
-        pPage->cModifications           = (pPage->cModifications + 1) * 2;
+        Log(("Possible page reuse cMods=%d -> %d (locked=%d type=%s)\n", pPage->cModifications, pPage->cModifications * 2, pgmPoolIsPageLocked(&pVM->pgm.s, pPage), pgmPoolPoolKindToStr(pPage->enmKind)));
+        pPage->cModifications           = pPage->cModifications * 2;
         pPage->pvLastAccessHandlerFault = pvFault;
         pPage->cLastAccessHandlerCount  = pVCpu->pgm.s.cPoolAccessHandler;
         if (pPage->cModifications > cMaxModifications)
