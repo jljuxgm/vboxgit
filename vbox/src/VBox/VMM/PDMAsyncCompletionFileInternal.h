@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 23404 2009-09-29 10:18:37Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 23956 2009-10-21 22:18:40Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -527,7 +527,7 @@ int pdmacFileAioMgrNormal(RTTHREAD ThreadSelf, void *pvUser);
 int pdmacFileAioMgrNormalInit(PPDMACEPFILEMGR pAioMgr);
 void pdmacFileAioMgrNormalDestroy(PPDMACEPFILEMGR pAioMgr);
 
-int pdmacFileAioMgrCreate(PPDMASYNCCOMPLETIONEPCLASSFILE pEpClass, PPPDMACEPFILEMGR ppAioMgr);
+int pdmacFileAioMgrCreate(PPDMASYNCCOMPLETIONEPCLASSFILE pEpClass, PPPDMACEPFILEMGR ppAioMgr, bool fFailsafe);
 
 int pdmacFileAioMgrAddEndpoint(PPDMACEPFILEMGR pAioMgr, PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint);
 
