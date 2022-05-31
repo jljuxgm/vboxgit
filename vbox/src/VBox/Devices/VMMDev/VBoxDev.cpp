@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 19654 2009-05-13 12:30:58Z vboxsync $ */
+/* $Id: VBoxDev.cpp 20731 2009-06-19 17:24:41Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2023,7 +2023,7 @@ static DECLCALLBACK(void) vmmdevVBVAChange(PPDMIVMMDEVPORT pInterface, bool fEna
 
 
 
-#define VMMDEV_SSM_VERSION  8
+#define VMMDEV_SSM_VERSION  9
 
 /**
  * Saves a state of the VMM device.
@@ -2106,7 +2106,7 @@ static DECLCALLBACK(int) vmmdevLoadState(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHand
     }
 
 #ifdef VBOX_WITH_HGCM
-    vmmdevHGCMLoadState (pThis, pSSMHandle);
+    vmmdevHGCMLoadState (pThis, pSSMHandle, u32Version);
 #endif /* VBOX_WITH_HGCM */
 
     /*
