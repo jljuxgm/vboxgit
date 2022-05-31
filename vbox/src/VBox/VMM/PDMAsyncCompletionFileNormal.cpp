@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 23956 2009-10-21 22:18:40Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 23959 2009-10-22 08:38:31Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -879,6 +879,9 @@ int pdmacFileAioMgrNormal(RTTHREAD ThreadSelf, void *pvUser)
                         {
                             PPDMACEPFILEMGR pAioMgrFailsafe;
 
+                            LogRel(("%s: Request %#p failed with rc=%Rrc, migrating endpoint %s to failsafe manager.\n",
+                                    RTThreadGetName(pAioMgr->Thread), pTask, rcReq, pEndpoint->Core.pszUri)); 
+
                             pEndpoint->AioMgr.fMoving = true;
 
                             rc = pdmacFileAioMgrCreate((PPDMASYNCCOMPLETIONEPCLASSFILE)pEndpoint->Core.pEpClass,
@@ -886,6 +889,9 @@ int pdmacFileAioMgrNormal(RTTHREAD ThreadSelf, void *pvUser)
                             AssertRC(rc);
 
                             pEndpoint->AioMgr.pAioMgrDst = pAioMgrFailsafe;
+
+                            /* Update the flags to open the file with. Disable async I/O and enable the host cache. */
+                            pEndpoint->fFlags &= ~(RTFILE_O_ASYNC_IO | RTFILE_O_NO_CACHE);
                         }
 
                         /* If this was the last request for the endpoint migrate it to the new manager. */
@@ -973,7 +979,7 @@ int pdmacFileAioMgrNormal(RTTHREAD ThreadSelf, void *pvUser)
                             }
                             else if (RT_UNLIKELY(!pEndpoint->AioMgr.cRequestsActive && pEndpoint->AioMgr.fMoving))
                             {
-                                /* If we the endpoint is about to be migrated do it now. */
+                                /* If the endpoint is about to be migrated do it now. */
                                 bool fReqsPending = pdmacFileAioMgrNormalRemoveEndpoint(pEndpoint);
                                 Assert(!fReqsPending);
 
