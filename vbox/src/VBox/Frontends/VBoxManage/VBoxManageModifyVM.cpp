@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 23179 2009-09-21 11:23:12Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 23183 2009-09-21 11:45:15Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1073,7 +1073,7 @@ int handleModifyVM(HandlerArg *a)
             {
                 CHECK_ERROR(machine, COMSETTER(FirmwareType)(FirmwareType_Efi));
             }
-            else if (!strcmp(accelerate3d, "bios"))
+            else if (!strcmp(firmware, "bios"))
             {
                 CHECK_ERROR(machine, COMSETTER(FirmwareType)(FirmwareType_Bios));
             }
