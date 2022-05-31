@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 20762 2009-06-22 11:06:56Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 20763 2009-06-22 11:10:35Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4201,6 +4201,8 @@ void pgmPoolFree(PVM pVM, RTHCPHYS HCPhys, uint16_t iUser, uint32_t iUserTable)
 PPGMPOOLPAGE pgmPoolGetPage(PPGMPOOL pPool, RTHCPHYS HCPhys)
 {
     PVM pVM = pPool->CTX_SUFF(pVM);
+
+    Assert(PGMIsLockOwner(pVM));
 
     /*
      * Look up the page.
