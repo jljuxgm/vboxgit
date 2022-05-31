@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: CSAM.cpp 19263 2009-04-29 13:05:37Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1427,11 +1427,12 @@ static int csamFlushPage(PVM pVM, RTRCPTR addr, bool fRemovePage)
     int rc;
     RTGCPHYS GCPhys = 0;
     uint64_t fFlags = 0;
-    Assert(pVM->cCPUs == 1);
-    PVMCPU pVCpu = VMMGetCpu0(pVM);
+    Assert(pVM->cCPUs == 1 || !CSAMIsEnabled(pVM));
 
     if (!CSAMIsEnabled(pVM))
         return VINF_SUCCESS;
+
+    PVMCPU pVCpu = VMMGetCpu0(pVM);
 
     STAM_PROFILE_START(&pVM->csam.s.StatTimeFlushPage, a);
 

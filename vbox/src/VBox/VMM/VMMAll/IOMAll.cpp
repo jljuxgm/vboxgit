@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 19015 2009-04-20 07:54:29Z vboxsync $ */
+/* $Id: IOMAll.cpp 19263 2009-04-29 13:05:37Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -28,6 +28,7 @@
 #include <VBox/param.h>
 #include "IOMInternal.h"
 #include <VBox/vm.h>
+#include <VBox/vmm.h>
 #include <VBox/selm.h>
 #include <VBox/trpm.h>
 #include <VBox/pgm.h>
@@ -710,9 +711,7 @@ VMMDECL(int) IOMIOPortWriteString(PVM pVM, RTIOPORT Port, PRTGCPTR pGCPtrSrc, PR
  */
 VMMDECL(int) IOMInterpretCheckPortIOAccess(PVM pVM, PCPUMCTXCORE pCtxCore, RTIOPORT Port, unsigned cb)
 {
-    /* @todo SMP support */
-    Assert(pVM->cCPUs == 1);
-    PVMCPU pVCpu = &pVM->aCpus[0];
+    PVMCPU pVCpu = VMMGetCpu(pVM);
 
     /*
      * If this isn't ring-0, we have to check for I/O privileges.
