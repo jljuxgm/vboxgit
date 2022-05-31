@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19937 2009-05-23 12:43:34Z vboxsync $
+# $Id: Makefile.kmk 19994 2009-05-25 12:28:03Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -50,6 +50,9 @@ else ifdef VBOX_ONLY_DOCS
  #
  LIBRARIES += RuntimeR3
  DLLS += VBoxRT
+
+ # Temporary(?) hack.
+ VBOX_WITH_LIBXML2_IN_VBOXRT=
 
 else # !VBOX_ONLY_ADDITIONS && !VBOX_ONLY_DOCS
 
