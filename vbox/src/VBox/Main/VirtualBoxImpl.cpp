@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 20978 2009-06-26 14:52:36Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 21073 2009-06-30 15:01:09Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -3869,16 +3869,16 @@ HRESULT VirtualBox::updateSettings (const char *aOldPath, const char *aNewPath)
 /* static */
 HRESULT VirtualBox::ensureFilePathExists (const char *aFileName)
 {
-    Utf8Str dir = aFileName;
-    RTPathStripFilename (dir.mutableRaw());
-    if (!RTDirExists (dir))
+    Utf8Str strDir(aFileName);
+    strDir.stripFilename();
+    if (!RTDirExists(strDir))
     {
-        int vrc = RTDirCreateFullPath (dir, 0777);
+        int vrc = RTDirCreateFullPath(strDir, 0777);
         if (RT_FAILURE (vrc))
         {
             return setError (E_FAIL,
                 tr ("Could not create the directory '%s' (%Rrc)"),
-                dir.raw(), vrc);
+                strDir.c_str(), vrc);
         }
     }
 

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 20995 2009-06-26 21:49:23Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 21073 2009-06-30 15:01:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1813,10 +1813,10 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         else
         {
             /* Pull over the properties from the server. */
-            SafeArray <BSTR> namesOut;
-            SafeArray <BSTR> valuesOut;
-            SafeArray <ULONG64> timestampsOut;
-            SafeArray <BSTR> flagsOut;
+            SafeArray<BSTR> namesOut;
+            SafeArray<BSTR> valuesOut;
+            SafeArray<ULONG64> timestampsOut;
+            SafeArray<BSTR> flagsOut;
             hrc = pConsole->mControl->PullGuestProperties(ComSafeArrayAsOutParam(namesOut),
                                                 ComSafeArrayAsOutParam(valuesOut),
                                                 ComSafeArrayAsOutParam(timestampsOut),
@@ -1828,9 +1828,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                )
                 rc = VERR_INVALID_PARAMETER;
 
-            std::vector <Utf8Str> utf8Names, utf8Values, utf8Flags;
-            std::vector <char *> names, values, flags;
-            std::vector <ULONG64> timestamps;
+            std::vector<Utf8Str> utf8Names, utf8Values, utf8Flags;
+            std::vector<char *> names, values, flags;
+            std::vector<ULONG64> timestamps;
             for (unsigned i = 0; i < cProps && RT_SUCCESS(rc); ++i)
                 if (   !VALID_PTR(namesOut[i])
                     || !VALID_PTR(valuesOut[i])

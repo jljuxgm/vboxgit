@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 20082 2009-05-27 13:01:06Z vboxsync $ */
+/* $Id: ApplianceImpl.h 21073 2009-06-30 15:01:09Z vboxsync $ */
 
 /** @file
  *
@@ -91,7 +91,7 @@ private:
     /** weak VirtualBox parent */
     const ComObjPtr <VirtualBox, ComWeakRef> mVirtualBox;
 
-    struct Data;            // obscure, defined in AppliannceImpl.cpp
+    struct Data;            // opaque, defined in ApplianceImpl.cpp
     Data *m;
 
     HRESULT LoopThruSections(const char *pcszPath, const xml::ElementNode *pReferencesElem, const xml::ElementNode *pCurElem);
