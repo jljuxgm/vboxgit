@@ -1,4 +1,4 @@
-# $Id: Config.kmk 22577 2009-08-30 20:18:19Z vboxsync $
+# $Id: Config.kmk 22606 2009-08-31 13:39:44Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -356,6 +356,8 @@ endif
 if1of ($(KBUILD_TARGET),win linux solaris darwin freebsd)
  VBOX_WITH_CROGL = 1
 endif
+# Enable Host Guest Shared Memory Interface
+VBOX_WITH_HGSMI=1
 # Enable shared folders
 VBOX_WITH_SHARED_FOLDERS = 1
 # Enable shared clipboard
@@ -3784,7 +3786,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 22577 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 22606 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
