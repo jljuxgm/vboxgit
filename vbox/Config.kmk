@@ -1,4 +1,4 @@
-# $Id: Config.kmk 22509 2009-08-27 11:46:29Z vboxsync $
+# $Id: Config.kmk 22577 2009-08-30 20:18:19Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -206,7 +206,7 @@ VBOX_SINGLE_MAKEFILE = 1
 # This indicates that additions (of some kind or another) is being _built_.
 # VBOX_WITHOUT_ADDITIONS overrides it.
 #if1of ($(KBUILD_TARGET), freebsd linux os2 solaris win)
-if1of ($(KBUILD_TARGET), linux solaris win)
+if1of ($(KBUILD_TARGET), linux solaris win freebsd)
  VBOX_WITH_ADDITIONS = 1
 endif
 # Build the optional ring-0 part of the additions for syntax checking.
@@ -3539,7 +3539,8 @@ TEMPLATE_VBOXGUESTR3XORGMOD_LIBS = \
 	$(VBOX_LIB_VBGL_R3_SHARED) \
 	$(VBOX_LIB_IPRT_GUEST_R3_MINI) \
 	$(VBOX_LIB_VBGL_R3_SHARED)
-
+TEMPLATE_VBOXGUESTR3XORGMOD_LIBS.freebsd += \
+	iconv
 
 #
 # Template for guest stuff that makes use of the C++ library and features.
@@ -3783,7 +3784,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 22509 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 22577 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
