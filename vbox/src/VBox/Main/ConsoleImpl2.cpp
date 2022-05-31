@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 19118 2009-04-22 20:05:55Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 19119 2009-04-22 20:06:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2718,4 +2718,5 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
     return rc;
 }
+
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
