@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl-LiveMigration.cpp 23692 2009-10-12 13:42:13Z vboxsync $ */
+/* $Id: ConsoleImpl-LiveMigration.cpp 23698 2009-10-12 14:07:52Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Live Migration Part.
  */
@@ -628,6 +628,8 @@ Console::migrationSrcThreadWrapper(RTTHREAD hThread, void *pvUser)
                 case VMSTATE_SUSPENDING_LS:
                 case VMSTATE_SUSPENDING_EXT_LS:
                     pState->mptrConsole->setMachineState(MachineState_Paused);
+                    pState->mptrConsole->Resume(); /** @todo somehow make the VMM report back external pause even on error. */
+                    autoLock.unlock();
                     break;
             }
         }
