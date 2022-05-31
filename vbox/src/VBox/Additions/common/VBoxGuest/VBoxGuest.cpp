@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 21260 2009-07-06 15:28:14Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -215,10 +215,9 @@ int VBoxGuestInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase,
             if (RT_SUCCESS(rc))
             {
 #ifdef VBOX_WITH_HGCM
-                rc = vboxGuestInitFilterMask(pDevExt, VMMDEV_EVENT_HGCM | fEvents);
-#else
-                rc = vboxGuestInitFilterMask(pDevExt, fEvents);
+                fEvents |= VMMDEV_EVENT_HGCM;
 #endif
+                rc = vboxGuestInitFilterMask(pDevExt, fEvents);
                 if (RT_SUCCESS(rc))
                 {
                     /*

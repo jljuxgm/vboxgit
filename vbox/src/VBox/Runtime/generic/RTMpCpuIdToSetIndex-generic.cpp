@@ -1,4 +1,4 @@
-/* $Id: RTMpCpuIdToSetIndex-generic.cpp 13908 2008-11-06 11:53:47Z vboxsync $ */
+/* $Id: RTMpCpuIdToSetIndex-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpCpuIdToSetIndex.
  */
@@ -33,10 +33,12 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/mp.h>
+#include "internal/iprt.h"
 
 
 RTDECL(int) RTMpCpuIdToSetIndex(RTCPUID idCpu)
 {
     return idCpu != NIL_RTCPUID ? (int) idCpu : -1;
 }
+RT_EXPORT_SYMBOL(RTMpCpuIdToSetIndex);
 

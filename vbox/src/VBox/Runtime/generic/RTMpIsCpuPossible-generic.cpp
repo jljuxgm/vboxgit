@@ -1,4 +1,4 @@
-/* $Id: RTMpIsCpuPossible-generic.cpp 9429 2008-06-05 15:22:37Z vboxsync $ */
+/* $Id: RTMpIsCpuPossible-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpIsCpuPossible.
  */
@@ -33,10 +33,12 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/mp.h>
+#include "internal/iprt.h"
 
 
 RTDECL(bool) RTMpIsCpuPossible(RTCPUID idCpu)
 {
     return RTMpCpuId() == idCpu;
 }
+RT_EXPORT_SYMBOL(RTMpIsCpuPossible);
 

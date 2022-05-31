@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 21110 2009-07-01 01:02:58Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -28,10 +28,12 @@
  * additional information or have any questions.
  */
 
+
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/dbg.h>
+#include "internal/iprt.h"
 
 #include <iprt/avl.h>
 #include <iprt/err.h>

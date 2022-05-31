@@ -1,4 +1,4 @@
-/* $Id: fs-stubs-generic.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: fs-stubs-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - File System, Generic Stubs.
  */
@@ -33,8 +33,9 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_FS
-
 #include <iprt/fs.h>
+#include "internal/iprt.h"
+
 #include <iprt/err.h>
 #include <iprt/log.h>
 #include <iprt/assert.h>

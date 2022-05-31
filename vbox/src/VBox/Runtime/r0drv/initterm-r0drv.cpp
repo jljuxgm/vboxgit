@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv.cpp 20909 2009-06-24 23:01:08Z vboxsync $ */
+/* $Id: initterm-r0drv.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Common.
  */
@@ -33,6 +33,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/initterm.h>
+#include "internal/iprt.h"
+
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
@@ -95,6 +97,7 @@ RTR0DECL(int) RTR0Init(unsigned fReserved)
     }
     return rc;
 }
+RT_EXPORT_SYMBOL(RTR0Init);
 
 
 /**
@@ -119,4 +122,5 @@ RTR0DECL(void) RTR0Term(void)
 #endif
     rtR0TermNative();
 }
+RT_EXPORT_SYMBOL(RTR0Term);
 

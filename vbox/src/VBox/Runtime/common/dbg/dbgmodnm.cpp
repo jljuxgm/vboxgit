@@ -1,4 +1,4 @@
-/* $Id: dbgmodnm.cpp 21290 2009-07-07 07:53:03Z vboxsync $ */
+/* $Id: dbgmodnm.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - Debug Map Reader For NM Like Mapfiles.
  */
@@ -28,10 +28,12 @@
  * additional information or have any questions.
  */
 
+
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/dbg.h>
+#include "internal/iprt.h"
 
 #include <iprt/err.h>
 #include <iprt/ctype.h>

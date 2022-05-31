@@ -1,10 +1,10 @@
-/* $Id $ */
+/* $Id: iprt.h 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
- * IPRT - Time, generic RTTimeLocalNow.
+ * IPRT - Internal header for miscellaneous global defs and types.
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -28,26 +28,27 @@
  * additional information or have any questions.
  */
 
+#ifndef ___internal_iprt_h
+#define ___internal_iprt_h
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
-#include <iprt/time.h>
-#include "internal/iprt.h"
+#include <iprt/cdefs.h>
+#include <iprt/types.h>
 
+/** @def RT_EXPORT_SYMBOL
+ * This define is really here just for the linux kernel.
+ * @param   Name        The symbol name.
+ */
+#if defined(RT_OS_LINUX) \
+ && defined(IN_RING0) \
+ && defined(IN_MODULE)
+# define bool linux_bool /* see r0drv/linux/the-linux-kernel.h */
+# include <linux/autoconf.h>
+# include <linux/module.h>
+# undef bool
+# define RT_EXPORT_SYMBOL(Name) EXPORT_SYMBOL(Name)
+#else
+# define RT_EXPORT_SYMBOL(Name) extern int g_rtExportSymbolDummyVariable
+#endif
 
-RTDECL(PRTTIMESPEC) RTTimeLocalNow(PRTTIMESPEC pTime)
-{
-    int64_t i64PreDelta;
-    int64_t i64PostDelta;
-    do
-    {
-        i64PreDelta = RTTimeLocalDeltaNano();
-        RTTimeNow(pTime);
-        i64PostDelta = RTTimeLocalDeltaNano();
-    } while (i64PreDelta != i64PostDelta);
-
-    return RTTimeSpecAddNano(pTime, i64PostDelta);
-}
-RT_EXPORT_SYMBOL(RTTimeLocalNow);
+#endif
 

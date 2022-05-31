@@ -1,4 +1,4 @@
-/* $Id: RTDirQueryInfo-generic.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: RTDirQueryInfo-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - RTDirQueryInfo, generic implementation.
  */
@@ -29,7 +29,6 @@
  */
 
 
-
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
@@ -41,6 +40,8 @@
 #endif
 
 #include <iprt/dir.h>
+#include "internal/iprt.h"
+
 #include <iprt/path.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>

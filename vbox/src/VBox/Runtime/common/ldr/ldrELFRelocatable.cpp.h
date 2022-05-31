@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 19167 2009-04-24 12:15:18Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -27,6 +27,7 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
+
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *

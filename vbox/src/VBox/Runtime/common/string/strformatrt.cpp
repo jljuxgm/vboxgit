@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 21315 2009-07-07 11:32:19Z vboxsync $ */
+/* $Id: strformatrt.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -141,8 +141,10 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_STRING
-#include <iprt/log.h>
 #include <iprt/string.h>
+#include "internal/iprt.h"
+
+#include <iprt/log.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/stdarg.h>

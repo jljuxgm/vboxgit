@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 18329 2009-03-26 17:20:09Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -33,8 +33,9 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/err.h>
+#include "internal/iprt.h"
+
 #include <iprt/assert.h>
-#include <iprt/err.h>
 
 #if defined(RT_OS_DARWIN) && defined(KERNEL)
 # include <sys/errno.h>
@@ -445,4 +446,5 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
             return VERR_UNRESOLVED_ERROR;
     }
 }
+RT_EXPORT_SYMBOL(RTErrConvertFromErrno);
 

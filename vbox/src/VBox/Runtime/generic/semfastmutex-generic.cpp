@@ -1,4 +1,4 @@
-/* $Id: semfastmutex-generic.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: semfastmutex-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - Fast Mutex, Generic.
  */
@@ -33,6 +33,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/semaphore.h>
+#include "internal/iprt.h"
+
 #include <iprt/alloc.h>
 #include <iprt/err.h>
 #include <iprt/critsect.h>
@@ -49,6 +51,7 @@ RTDECL(int) RTSemFastMutexCreate(PRTSEMFASTMUTEX pMutexSem)
         *pMutexSem = (RTSEMFASTMUTEX)pCritSect;
     return rc;
 }
+RT_EXPORT_SYMBOL(RTSemFastMutexCreate);
 
 
 RTDECL(int) RTSemFastMutexDestroy(RTSEMFASTMUTEX MutexSem)
@@ -61,16 +64,19 @@ RTDECL(int) RTSemFastMutexDestroy(RTSEMFASTMUTEX MutexSem)
         RTMemFree(pCritSect);
     return rc;
 }
+RT_EXPORT_SYMBOL(RTSemFastMutexDestroy);
 
 
 RTDECL(int) RTSemFastMutexRequest(RTSEMFASTMUTEX MutexSem)
 {
     return RTCritSectEnter((PRTCRITSECT)MutexSem);
 }
+RT_EXPORT_SYMBOL(RTSemFastMutexRequest);
 
 
 RTDECL(int) RTSemFastMutexRelease(RTSEMFASTMUTEX MutexSem)
 {
     return RTCritSectLeave((PRTCRITSECT)MutexSem);
 }
+RT_EXPORT_SYMBOL(RTSemFastMutexRelease);
 

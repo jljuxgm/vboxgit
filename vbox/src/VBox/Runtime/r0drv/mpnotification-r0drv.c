@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv.c 12292 2008-09-09 13:16:16Z vboxsync $ */
+/* $Id: mpnotification-r0drv.c 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Event Notifications.
  */
@@ -28,10 +28,13 @@
  * additional information or have any questions.
  */
 
+
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/mp.h>
+#include "internal/iprt.h"
+
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
@@ -223,7 +226,7 @@ RTDECL(int) RTMpNotificationRegister(PFNRTMPNOTIFICATION pfnCallback, void *pvUs
 
     return VINF_SUCCESS;
 }
-
+RT_EXPORT_SYMBOL(RTMpNotificationRegister);
 
 
 RTDECL(int) RTMpNotificationDeregister(PFNRTMPNOTIFICATION pfnCallback, void *pvUser)
@@ -272,6 +275,7 @@ RTDECL(int) RTMpNotificationDeregister(PFNRTMPNOTIFICATION pfnCallback, void *pv
 
     return VINF_SUCCESS;
 }
+RT_EXPORT_SYMBOL(RTMpNotificationDeregister);
 
 
 int rtR0MpNotificationInit(void)
@@ -333,5 +337,4 @@ void rtR0MpNotificationTerm(void)
         }
     }
 }
-
 

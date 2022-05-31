@@ -1,4 +1,4 @@
-/* $Id: strstrip.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: strstrip.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - String Stripping and Trimming.
  */
@@ -28,10 +28,13 @@
  * additional information or have any questions.
  */
 
+
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/string.h>
+#include "internal/iprt.h"
+
 #include <iprt/ctype.h>
 #include <iprt/string.h>
 
@@ -55,6 +58,7 @@ RTDECL(char *) RTStrStrip(char *psz)
 
     return psz;
 }
+RT_EXPORT_SYMBOL(RTStrStrip);
 
 
 /**
@@ -71,6 +75,7 @@ RTDECL(char *) RTStrStripL(const char *psz)
 
     return (char *)psz;
 }
+RT_EXPORT_SYMBOL(RTStrStripL);
 
 
 /**
@@ -88,4 +93,5 @@ RTDECL(char *) RTStrStripR(char *psz)
 
     return psz;
 }
+RT_EXPORT_SYMBOL(RTStrStripR);
 

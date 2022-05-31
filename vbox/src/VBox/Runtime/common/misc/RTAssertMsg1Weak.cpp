@@ -1,4 +1,4 @@
-/* $Id: RTAssertMsg1Weak.cpp 14500 2008-11-24 02:22:08Z vboxsync $ */
+/* $Id: RTAssertMsg1Weak.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
 /** @file
  * IPRT - RTAssertMsg1Weak.
  */
@@ -33,6 +33,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/assert.h>
+#include "internal/iprt.h"
+
 #include <iprt/stdarg.h>
 
 
@@ -40,4 +42,5 @@ RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile
 {
     RTAssertMsg1(pszExpr, uLine, pszFile, pszFunction);
 }
+RT_EXPORT_SYMBOL(AssertMsg1);
 
