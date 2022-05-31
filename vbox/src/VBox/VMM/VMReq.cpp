@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: VMReq.cpp 19366 2009-05-05 11:58:07Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -787,8 +787,6 @@ VMMR3DECL(int) VMR3ReqWait(PVMREQ pReq, unsigned cMillies)
      */
     PUVM pUVM = pReq->pUVM;
     NOREF(pUVM);
-    AssertMsg(!pUVM->pVM || !VMMR3LockIsOwner(pUVM->pVM),
-              ("Waiting for EMT to process a request, but we own the global VM lock!?!?!?!\n"));
 
     /*
      * Wait on the package.

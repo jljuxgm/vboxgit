@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 18665 2009-04-02 19:44:18Z vboxsync $ */
+/* $Id: VMMInternal.h 19366 2009-05-05 11:58:07Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -248,10 +248,6 @@ typedef struct VMM
      * This may differ from cbRCLogger. */
     uint32_t                    cbRCRelLogger;
     /** @} */
-
-
-    /** Global VM critical section. */
-    RTCRITSECT                  CritSectVMLock;
 
     /** The EMT yield timer. */
     PTMTIMERR3                  pYieldTimer;
