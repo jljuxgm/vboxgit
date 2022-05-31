@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 19328 2009-05-04 14:56:39Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 19352 2009-05-05 08:01:39Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -104,6 +104,12 @@ typedef struct
     TCHAR szAuthenticationPackage [_MAX_PATH];
     TCHAR szLogonDomain [_MAX_PATH];
 } VBOXSERVICEVMINFOUSER;
+/** Structure for the file information lookup. */
+typedef struct
+{
+    TCHAR* pszFilePath;
+    TCHAR* pszFileName;
+} VBOXSERVICEVMINFOFILE;
 /** Function prototypes for dynamic loading. */
 typedef DWORD (WINAPI* fnWTSGetActiveConsoleSessionId)();
 #endif
