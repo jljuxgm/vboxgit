@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 22393 2009-08-21 17:01:35Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 22409 2009-08-24 11:06:30Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -38,6 +38,7 @@
 #include <iprt/crc32.h>
 #include <iprt/err.h>
 #include <iprt/ctype.h>
+#define VBOXNETFLT_SOLARIS_IPV6_POLLING
 #ifdef VBOXNETFLT_SOLARIS_IPV6_POLLING
 # include <iprt/timer.h>
 #endif
