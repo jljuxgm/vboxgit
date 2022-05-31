@@ -1,4 +1,4 @@
-# $Id: Config.kmk 23463 2009-10-01 07:43:10Z vboxsync $
+# $Id: Config.kmk 23533 2009-10-03 18:07:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -590,16 +590,7 @@ ifeq ($(KBUILD_TARGET),darwin)
 endif
 
 ifeq ($(KBUILD_TARGET),freebsd)
- VBOX_WITH_WEBSERVICES=
- VBOX_WITH_INSTALLER=
- VBOX_WITH_SECURELABEL=
- VBOX_WITH_VRDP_AUTHMOD=
- VBOX_WITH_VRDP_RDESKTOP=
- VBOX_WITH_TESTSUITE=
- VBOX_WITH_USB=
- VBOX_WITH_EHCI=
  VBOX_WITH_DOCS=
- VBOX_WITH_KCHMVIEWER=
 endif
 
 ifeq ($(KBUILD_TARGET),l4)
@@ -3843,7 +3834,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23463 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23533 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
