@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 22429 2009-08-25 11:54:39Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 22609 2009-08-31 14:34:02Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -602,6 +602,10 @@ VMMR0DECL(int) HWACCMR0EnableAllCpus(PVM pVM)
         {
             int     aRc[RTCPUSET_MAX_CPUS];
             RTCPUID idCpu = 0;
+
+            rc = SUPR0QueryVTxSupport();
+            if (RT_FAILURE(rc))
+                return rc;
 
             memset(aRc, 0, sizeof(aRc));
 
