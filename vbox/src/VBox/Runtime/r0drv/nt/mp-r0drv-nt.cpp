@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 19830 2009-05-19 14:57:45Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 19911 2009-05-22 12:46:46Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -368,8 +368,7 @@ RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
     /* Assuming here that high importance DPCs will be delivered immediately; or at least an IPI will be sent immediately.
      * Todo: verify!
      */
-    BOOLEAN ret = KeInsertQueueDpc(&aPokeDpcs[idCpu], 0, 0);
-    Assert(ret);
+    KeInsertQueueDpc(&aPokeDpcs[idCpu], 0, 0);
 
     KeLowerIrql(oldIrql);
     return VINF_SUCCESS;
