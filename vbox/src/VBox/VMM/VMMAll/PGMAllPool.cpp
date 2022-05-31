@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22506 2009-08-27 11:28:43Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22507 2009-08-27 11:29:17Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -64,7 +64,6 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
 #ifdef LOG_ENABLED
 static const char *pgmPoolPoolKindToStr(uint8_t enmKind);
 #endif
-static PPGMPOOLPAGE pgmPoolMonitorGetPageByGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pNewPage);
 
 void            pgmPoolTrackFlushGCPhysPT(PVM pVM, PPGMPAGE pPhysPage, uint16_t iShw, uint16_t cRefs);
 void            pgmPoolTrackFlushGCPhysPTs(PVM pVM, PPGMPAGE pPhysPage, uint16_t iPhysExt);
