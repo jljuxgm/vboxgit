@@ -1,4 +1,4 @@
-# $Id: Config.kmk 21321 2009-07-07 12:31:37Z vboxsync $
+# $Id: Config.kmk 21338 2009-07-07 15:14:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -662,7 +662,7 @@ ifdef VBOX_OSE
  VBOX_WITH_USB=
  VBOX_WITH_EHCI=
  VBOX_WITH_VMI=
- ifn1of ($(KBUILD_TARGET), darwin linux solaris)
+ ifn1of ($(KBUILD_TARGET), darwin linux solaris win)
   VBOX_WITH_NETFLT=
  endif
  VBOX_WITH_DEBUGGER=
@@ -3770,7 +3770,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 21321 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 21338 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
