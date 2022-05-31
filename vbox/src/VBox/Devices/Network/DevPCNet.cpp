@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 18383 2009-03-27 12:24:05Z vboxsync $ */
+/* $Id: DevPCNet.cpp 18414 2009-03-27 16:22:22Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -3757,6 +3757,8 @@ static DECLCALLBACK(void) pcnetTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer)
         PDMCritSectLeave(&pThis->CritSect);
         STAM_PROFILE_ADV_STOP(&pThis->StatTimer, a);
     }
+    else
+        pcnetPollTimerStart(pThis);
 }
 
 
