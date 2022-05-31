@@ -1,4 +1,4 @@
-/* $Id: tstRTR0MemUserKernelDriver.cpp 21286 2009-07-07 00:53:55Z vboxsync $ */
+/* $Id: tstRTR0MemUserKernelDriver.cpp 21287 2009-07-07 01:13:54Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -176,6 +176,25 @@ int main(int argc, char **argv)
     Req.szMsg[0] = '\0';
     RTTESTI_CHECK_RC(rc = SUPR3CallR0Service("tstRTR0MemUserKernel", sizeof("tstRTR0MemUserKernel") - 1,
                                              TSTRTR0MEMUSERKERNEL_BAD, (uintptr_t)pbPage + PAGE_SIZE, &Req.Hdr), VINF_SUCCESS);
+    if (RT_FAILURE(rc))
+        return RTTestSummaryAndDestroy(hTest);
+    if (Req.szMsg[0] == '!')
+    {
+        RTTestIFailed("%s", &Req.szMsg[1]);
+        return RTTestSummaryAndDestroy(hTest);
+    }
+    if (Req.szMsg[0])
+        RTTestIPrintf(RTTESTLVL_ALWAYS, "%s", Req.szMsg);
+
+    /*
+     * Bad buffer, bail out on failure.
+     */
+    RTTestSub(hTest, "Kernel buffer");
+    Req.Hdr.u32Magic = SUPR0SERVICEREQHDR_MAGIC;
+    Req.Hdr.cbReq = sizeof(Req);
+    Req.szMsg[0] = '\0';
+    RTTESTI_CHECK_RC(rc = SUPR3CallR0Service("tstRTR0MemUserKernel", sizeof("tstRTR0MemUserKernel") - 1,
+                                             TSTRTR0MEMUSERKERNEL_INVALID_ADDRESS, (uintptr_t)pvImageBase, &Req.Hdr), VINF_SUCCESS);
     if (RT_FAILURE(rc))
         return RTTestSummaryAndDestroy(hTest);
     if (Req.szMsg[0] == '!')
