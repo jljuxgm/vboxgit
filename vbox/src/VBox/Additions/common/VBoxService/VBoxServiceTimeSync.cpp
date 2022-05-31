@@ -1,4 +1,4 @@
-/** $Id: VBoxServiceTimeSync.cpp 21157 2009-07-02 12:58:57Z vboxsync $ */
+/** $Id: VBoxServiceTimeSync.cpp 21158 2009-07-02 13:01:16Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -354,8 +354,9 @@ DECLCALLBACK(int) VBoxServiceTimeSyncWorker(bool volatile *pfShutdown)
                         {
                             VBoxServiceVerbose(3, "Windows time adjustment: Setting system time directly.\n");
 
-
-/** @todo NT4 doesn't have GetSystemTimeAdjustment. */
+/** @todo r=bird: What about canceling any pending time adjustment? */
+/** @todo r=bird: Get current time and add the adjustment, the host time is
+ *                stale by now. */
                             FILETIME ft;
                             RTTimeSpecGetNtFileTime(&HostNow, &ft);
                             SYSTEMTIME st;
