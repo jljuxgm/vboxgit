@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 19335 2009-05-04 16:04:42Z vboxsync $ */
+/* $Id: HWACCMInternal.h 19337 2009-05-04 16:16:53Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -478,10 +478,6 @@ typedef struct HWACCMCPU
     /* Current ASID in use by the VM */
     RTUINT                      uCurrentASID;
 
-    /** To keep track of pending TLB shootdown pages. (SMP guest only) */
-    RTGCPTR                     aTlbShootdownPages[HWACCM_MAX_TLB_SHOOTDOWN_PAGES];
-    RTUINT                      cTlbShootdownPages;
-
     struct
     {
         /** R0 memory object for the VM control structure (VMCS). */
@@ -574,6 +570,11 @@ typedef struct HWACCMCPU
     /** The CPU ID of the CPU currently owning the VMCS. Set in
      * HWACCMR0Enter and cleared in HWACCMR0Leave. */
     RTCPUID                 idEnteredCpu;
+
+    /** To keep track of pending TLB shootdown pages. (SMP guest only) */
+    RTGCPTR                 aTlbShootdownPages[HWACCM_MAX_TLB_SHOOTDOWN_PAGES];
+    RTUINT                  cTlbShootdownPages;
+
     RTUINT                  padding2[1];
 
     STAMPROFILEADV          StatEntry;
