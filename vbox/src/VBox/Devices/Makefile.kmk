@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22396 2009-08-23 20:12:43Z vboxsync $
+# $Id: Makefile.kmk 22823 2009-09-07 19:52:08Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -461,12 +461,6 @@ Bus/DevPCI.cpp_INCS      = Bus
 # For finding and generating vbetables.h (see Graphics/BIOS/Makefile.kmk).
 Graphics/DevVGA.cpp_INCS = $(PATH_VgaBiosBin)
 Graphics/DevVGA.cpp_DEPS = $(PATH_VgaBiosBin)/vbetables.h
-
-# Reporting it to the guest.
-VMMDev/VMMDev.cpp_DEFS   = VBOX_SVN_REV=$(VBOX_SVN_REV)
-VMMDev/VMMDev.cpp_DEPS   = $(VBOX_SVN_REV_KMK)
-PC/DevPcBios.cpp_DEFS    = VBOX_SVN_REV=$(VBOX_SVN_REV)
-PC/DevPcBios.cpp_DEPS    = $(VBOX_SVN_REV_KMK)
 
 
 #

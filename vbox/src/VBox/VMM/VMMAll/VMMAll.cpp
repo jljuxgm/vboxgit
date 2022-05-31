@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 21649 2009-07-16 13:44:57Z vboxsync $ */
+/* $Id: VMMAll.cpp 22823 2009-09-07 19:52:08Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -30,6 +30,7 @@
 #include <VBox/vmm.h>
 #include <VBox/param.h>
 #include <VBox/hwaccm.h>
+#include <iprt/buildconfig.h>
 
 
 /**
@@ -138,7 +139,7 @@ VMMDECL(PVMCPU) VMMGetCpuById(PVM pVM, RTCPUID idCpu)
  */
 VMMDECL(uint32_t) VMMGetSvnRev(void)
 {
-    return VBOX_SVN_REV;
+    return RTBldCfgRevision();
 }
 
 

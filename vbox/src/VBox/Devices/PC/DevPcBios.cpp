@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 21889 2009-07-30 14:02:49Z vboxsync $ */
+/* $Id: DevPcBios.cpp 22823 2009-09-07 19:52:08Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -28,9 +28,9 @@
 #include <VBox/pgm.h>
 
 #include <VBox/log.h>
-#include <VBox/version.h>
 #include <iprt/assert.h>
 #include <iprt/alloc.h>
+#include <iprt/buildconfig.h>
 #include <iprt/file.h>
 #include <iprt/string.h>
 #include <iprt/uuid.h>
@@ -1150,8 +1150,8 @@ static int pcbiosPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbM
 
     char* pszVBoxVer, *pszVBoxRev;
     RTStrAPrintf(&pszVBoxVer, "vboxVer_%d.%d.%d",
-                  VBOX_VERSION_MAJOR, VBOX_VERSION_MINOR, VBOX_VERSION_BUILD);
-    RTStrAPrintf(&pszVBoxRev, "vboxRev_%ld", VBOX_SVN_REV);
+                  RTBldCfgVersionMajor(), RTBldCfgVersionMinor(), RTBldCfgVersionBuild());
+    RTStrAPrintf(&pszVBoxRev, "vboxRev_%ld", RTBldCfgRevision());
     READCFGSTR("DmiOEMVBoxVer", pszDmiOEMVBoxVer, pszVBoxVer);
     READCFGSTR("DmiOEMVBoxRev", pszDmiOEMVBoxRev, pszVBoxRev);
     SETSTRING(pOEMStrings->u8VBoxVersion, pszDmiOEMVBoxVer);
