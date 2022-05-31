@@ -1,4 +1,4 @@
-/* $Id: uvm.h 21217 2009-07-04 14:26:39Z vboxsync $ */
+/* $Id: uvm.h 21515 2009-07-12 19:37:42Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data. (VMM)
  */
@@ -58,8 +58,6 @@ typedef struct UVMCPU
         uint8_t                     padding[768];
     } vm;
 } UVMCPU;
-/** Pointer to the per virtual CPU ring-3 (user mode) data. */
-typedef UVMCPU *PUVMCPU;
 
 
 /**
