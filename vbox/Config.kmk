@@ -1,4 +1,4 @@
-# $Id: Config.kmk 21412 2009-07-08 21:18:57Z vboxsync $
+# $Id: Config.kmk 21531 2009-07-13 13:18:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -382,6 +382,8 @@ VBOX_WITH_AHCI = 1
 VBOX_WITH_PDM_ASYNC_COMPLETION = 1
 # Temporary switch for enabling / disabling the new USB code on Darwin.
 VBOX_WITH_NEW_USB_CODE_ON_DARWIN=1
+# Enable USB code that relies on USBA driver election callback & our own USB client driver on Solaris.
+#VBOX_WITH_NEW_USB_CODE_ON_SOLARIS=1
 # Enable the hal/sysfs USB code on Linux.  This depends on VBOX_WITH_DBUS.
 ifdef VBOX_WITH_DBUS
  VBOX_USB_WITH_SYSFS=1
@@ -3767,7 +3769,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 21412 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 21531 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
