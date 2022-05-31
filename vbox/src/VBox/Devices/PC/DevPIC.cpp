@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
+/* $Id: DevPIC.cpp 23986 2009-10-22 14:36:13Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -485,7 +485,7 @@ static int pic_ioport_write(void *opaque, uint32_t addr, uint32_t val)
             if (val & 0x02)
                 AssertReleaseMsgFailed(("single mode not supported"));
             if (val & 0x08)
-                AssertReleaseMsgFailed(("level sensitive irq not supported"));
+                LogRel(("level sensitive irq not supported - ignoring"));
         } else if (val & 0x08) {
             if (val & 0x04)
                 s->poll = 1;
