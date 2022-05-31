@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 18294 2009-03-26 05:35:54Z vboxsync $ */
+/* $Id: PGMPhys.cpp 18335 2009-03-26 18:06:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -417,7 +417,6 @@ static DECLCALLBACK(int) pgmR3PhysGCPhys2CCPtrDelegated(PVM pVM, PRTGCPHYS pGCPh
  */
 VMMR3DECL(int) PGMR3PhysGCPhys2CCPtrExternal(PVM pVM, RTGCPHYS GCPhys, void **ppv, PPGMPAGEMAPLOCK pLock)
 {
-    VM_ASSERT_OTHER_THREAD(pVM);
     AssertPtr(ppv);
     AssertPtr(pLock);
 
