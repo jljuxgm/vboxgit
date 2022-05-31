@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 20555 2009-06-14 17:25:25Z vboxsync $ */
+/* $Id: DrvNAT.cpp 20556 2009-06-14 17:28:17Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -60,7 +60,10 @@
 # define COUNTING_COUTER(name, dsc) \
     extern "C" void slirp_counting_counter_##name##_reset(PNATState pData); \
     extern "C" void slirp_counting_counter_##name##_inc(PNATState pData); \
-    extern "C" void slirp_counting_counter_##name##_add(PNATState pData, int val);
+    extern "C" void slirp_counting_counter_##name##_add(PNATState pData, int val); /**< @todo r=bird: COUNTING_COUTER is missing an 'N'
+                                                                                      and trailing a semicolon. The general idea is that
+                                                                                      macros functions should have a trailing semicolon to
+                                                                                      make the source easier to parse for doxygen and editors. */
 /** @todo think abaout it */
 # define PROFILE_COUNTER(name, dsc)
 # include "Network/slirp/counters.h"
