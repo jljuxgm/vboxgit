@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19988 2009-05-25 10:04:59Z vboxsync $
+# $Id: Makefile.kmk 21064 2009-06-30 10:50:58Z vboxsync $
 ## @file
 # VBox - rdesktop with VRDP enhancements sub-makefile.
 #
@@ -41,7 +41,7 @@ rdesktop-vrdp_DEFS = \
 	EGD_SOCKET=\"/var/run/egd-pool\" WITH_RDPSND=1 HAVE_DIRENT_H=1 \
 	HAVE_ICONV=1 HAVE_SYS_VFS_H=1 HAVE_SYS_STATVFS_H=1 HAVE_SYS_STATFS_H=1 \
 	HAVE_SYS_PARAM_H=1 HAVE_SYS_MOUNT_H=1 HAVE_STRUCT_STATVFS_F_NAMEMAX=1 \
-	KEYMAP_PATH=$(if $(findstring RTPATH_APP_PRIVATE,$(DEFS)),RTPATH_APP_PRIVATE,\"/opt/VirtualBox-$(VBOX_VERSION_STRING)\")\"/rdesktop-vrdp-keymaps\" \
+	KEYMAP_PATH=$(if $(findstring RTPATH_APP_PRIVATE,$(DEFS)),RTPATH_APP_PRIVATE,\"/opt/VirtualBox\")\"/rdesktop-vrdp-keymaps\" \
 	RDESKTOP=1
 
 rdesktop-vrdp_DEFS.linux = \
