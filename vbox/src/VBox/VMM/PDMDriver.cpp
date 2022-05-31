@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 20167 2009-06-01 20:25:54Z vboxsync $ */
+/* $Id: PDMDriver.cpp 20706 2009-06-19 09:51:12Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -939,6 +939,18 @@ static DECLCALLBACK(void) pdmR3DrvHlp_STAMRegisterV(PPDMDRVINS pDrvIns, void *pv
 }
 
 
+/** @copydoc PDMDRVHLP::pfnSTAMDeregister */
+static DECLCALLBACK(int) pdmR3DrvHlp_STAMDeregister(PPDMDRVINS pDrvIns, void *pvSample)
+{
+    PDMDRV_ASSERT_DRVINS(pDrvIns);
+    VM_ASSERT_EMT(pDrvIns->Internal.s.pVM);
+
+    int rc = STAMR3DeregisterU(pDrvIns->Internal.s.pVM->pUVM, pvSample);
+    AssertRC(rc);
+    return rc;
+}
+
+
 /** @copydoc PDMDRVHLP::pfnSUPCallVMMR0Ex */
 static DECLCALLBACK(int) pdmR3DrvHlp_SUPCallVMMR0Ex(PPDMDRVINS pDrvIns, unsigned uOperation, void *pvArg, unsigned cbArg)
 {
@@ -1055,6 +1067,7 @@ const PDMDRVHLP g_pdmR3DrvHlp =
     pdmR3DrvHlp_STAMRegister,
     pdmR3DrvHlp_STAMRegisterF,
     pdmR3DrvHlp_STAMRegisterV,
+    pdmR3DrvHlp_STAMDeregister,
     pdmR3DrvHlp_SUPCallVMMR0Ex,
     pdmR3DrvHlp_USBRegisterHub,
     pdmR3DrvHlp_PDMThreadCreate,
