@@ -1,4 +1,4 @@
-/* $Id: init.cpp 20911 2009-06-24 23:46:10Z vboxsync $ */
+/* $Id: init.cpp 21890 2009-07-30 14:22:17Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -122,6 +122,26 @@ RTPROCPRIORITY g_enmProcessPriority = RTPROCPRIORITY_DEFAULT;
 RTDATADECL(bool) g_fRTAlignmentChecks = false;
 #endif
 
+
+/**
+ * atexit callback.
+ *
+ * This makes sure any loggers are flushed and will later also work the
+ * termination callback chain.
+ */
+static void rtR3ExitCallback(void)
+{
+    if (g_cUsers > 0)
+    {
+        PRTLOGGER pLogger = RTLogGetDefaultInstance();
+        if (pLogger)
+            RTLogFlush(pLogger);
+
+        pLogger = RTLogRelDefaultInstance();
+        if (pLogger)
+            RTLogFlush(pLogger);
+    }
+}
 
 
 #ifndef RT_OS_WINDOWS
@@ -268,11 +288,12 @@ static int rtR3InitBody(bool fInitSUPLib, const char *pszProgramPath)
     /* Init C runtime locale. */
     setlocale(LC_CTYPE, "");
 
-    /* Fork callbacks. */
+    /* Fork and exit callbacks. */
 #if !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2)
     rc = pthread_atfork(NULL, NULL, rtR3ForkChildCallback);
     AssertMsg(rc == 0, ("%d\n", rc));
 #endif
+    atexit(rtR3ExitCallback);
 
 #ifdef IPRT_WITH_ALIGNMENT_CHECKS
     /*
