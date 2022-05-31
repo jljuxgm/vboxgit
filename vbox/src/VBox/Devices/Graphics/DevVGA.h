@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 22215 2009-08-13 00:41:04Z vboxsync $ */
+/* $Id: DevVGA.h 22274 2009-08-15 20:44:22Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -452,13 +452,15 @@ int      VBVAUpdateDisplay (PVGASTATE pVGAState);
 
 # ifdef VBOX_WITH_VIDEOHWACCEL
 int vbvaVHWACommandCompleteAsynch(PPDMDDISPLAYVBVACALLBACKS pInterface, PVBOXVHWACMD pCmd);
-
 int vbvaVHWAConstruct (PVGASTATE pVGAState);
 int vbvaVHWADisable (PVGASTATE pVGAState);
-int vbvaVHWASaveStatePrep (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
-int vbvaVHWASaveStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
-int vbvaVHWALoadStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
+
+int vboxVBVASaveStatePrep (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 # endif
+
+int vboxVBVASaveStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
+int vboxVBVALoadStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t u32Version);
+
 #endif /* VBOX_WITH_HGSMI */
 
 #ifndef VBOX
