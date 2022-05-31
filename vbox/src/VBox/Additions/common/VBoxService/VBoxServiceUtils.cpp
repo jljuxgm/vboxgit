@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceUtils.cpp 19374 2009-05-05 13:23:32Z vboxsync $ */
+/* $Id: VBoxServiceUtils.cpp 19618 2009-05-12 13:11:13Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
@@ -36,7 +36,7 @@
 #include "VBoxServiceInternal.h"
 
 
-int VboxServiceWriteProp(uint32_t uiClientID, char *pszKey, char *pszValue)
+int VboxServiceWriteProp(uint32_t uiClientID, const char *pszKey, const char *pszValue)
 {
     int rc = VINF_SUCCESS;
     Assert(pszKey);
@@ -77,7 +77,7 @@ cleanup:
 }
 
 
-int VboxServiceWritePropInt(uint32_t uiClientID, char *pszKey, int32_t iValue)
+int VboxServiceWritePropInt(uint32_t uiClientID, const char *pszKey, int32_t iValue)
 {
     Assert(pszKey);
 
