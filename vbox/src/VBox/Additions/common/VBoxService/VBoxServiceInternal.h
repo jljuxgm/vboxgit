@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 22728 2009-09-03 07:59:53Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 22744 2009-09-03 13:09:02Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -134,7 +134,7 @@ extern VBOXSERVICE g_TimeSync;
 extern VBOXSERVICE g_Clipboard;
 extern VBOXSERVICE g_Control;
 extern VBOXSERVICE g_VMInfo;
-extern VBOXSERVICE g_VMExec;
+extern VBOXSERVICE g_Exec;
 
 #ifdef RT_OS_WINDOWS
 extern DWORD g_rcWinService;
