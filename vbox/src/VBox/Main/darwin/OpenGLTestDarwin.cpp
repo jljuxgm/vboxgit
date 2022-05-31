@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestDarwin.cpp 20161 2009-05-29 16:30:42Z vboxsync $ */
+/* $Id: OpenGLTestDarwin.cpp 20162 2009-05-29 16:34:55Z vboxsync $ */
 
 /** @file
  * VBox host opengl support test
@@ -14,6 +14,7 @@
 
 #include <OpenGL/OpenGL.h>
 #include <ApplicationServices/ApplicationServices.h>
+#include <OpenGL/gl.h>
 
 bool is3DAccelerationSupported()
 {
