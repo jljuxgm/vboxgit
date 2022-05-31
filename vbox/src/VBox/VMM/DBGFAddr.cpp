@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 19334 2009-05-04 16:03:57Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 19463 2009-05-06 20:30:57Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -80,7 +80,7 @@ VMMR3DECL(int) DBGFR3AddrFromSelOff(PVM pVM, VMCPUID idCpu, PDBGFADDRESS pAddres
         /* check limit. */
         if (DBGFSelInfoIsExpandDown(&SelInfo))
         {
-            if (    !SelInfo.Raw.Gen.u1Granularity
+            if (    !SelInfo.u.Raw.Gen.u1Granularity
                 &&  off > UINT32_C(0xffff))
                 return VERR_OUT_OF_SELECTOR_BOUNDS;
             if (off <= SelInfo.cbLimit)
@@ -93,8 +93,8 @@ VMMR3DECL(int) DBGFR3AddrFromSelOff(PVM pVM, VMCPUID idCpu, PDBGFADDRESS pAddres
 
         /** @todo fix all these selector tests! */
         if (    !SelInfo.GCPtrBase
-            &&  SelInfo.Raw.Gen.u1Granularity
-            &&  SelInfo.Raw.Gen.u1DefBig)
+            &&  SelInfo.u.Raw.Gen.u1Granularity
+            &&  SelInfo.u.Raw.Gen.u1DefBig)
             pAddress->fFlags = DBGFADDRESS_FLAGS_FLAT;
         else if (SelInfo.cbLimit <= UINT32_C(0xffff))
             pAddress->fFlags = DBGFADDRESS_FLAGS_FAR16;

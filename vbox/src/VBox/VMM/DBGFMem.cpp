@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 19336 2009-05-04 16:10:40Z vboxsync $ */
+/* $Id: DBGFMem.cpp 19463 2009-05-06 20:30:57Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -470,21 +470,21 @@ VMMDECL(int) DBGFR3SelInfoValidateCS(PCDBGFSELINFO pSelInfo, RTSEL SelCPL)
     /*
      * Check if present.
      */
-    if (pSelInfo->Raw.Gen.u1Present)
+    if (pSelInfo->u.Raw.Gen.u1Present)
     {
         /*
          * Type check.
          */
-        if (    pSelInfo->Raw.Gen.u1DescType == 1
-            &&  (pSelInfo->Raw.Gen.u4Type & X86_SEL_TYPE_CODE))
+        if (    pSelInfo->u.Raw.Gen.u1DescType == 1
+            &&  (pSelInfo->u.Raw.Gen.u4Type & X86_SEL_TYPE_CODE))
         {
             /*
              * Check level.
              */
             unsigned uLevel = RT_MAX(SelCPL & X86_SEL_RPL, pSelInfo->Sel & X86_SEL_RPL);
-            if (    !(pSelInfo->Raw.Gen.u4Type & X86_SEL_TYPE_CONF)
-                ?   uLevel <= pSelInfo->Raw.Gen.u2Dpl
-                :   uLevel >= pSelInfo->Raw.Gen.u2Dpl /* hope I got this right now... */
+            if (    !(pSelInfo->u.Raw.Gen.u4Type & X86_SEL_TYPE_CONF)
+                ?   uLevel <= pSelInfo->u.Raw.Gen.u2Dpl
+                :   uLevel >= pSelInfo->u.Raw.Gen.u2Dpl /* hope I got this right now... */
                     )
                 return VINF_SUCCESS;
             return VERR_INVALID_RPL;
