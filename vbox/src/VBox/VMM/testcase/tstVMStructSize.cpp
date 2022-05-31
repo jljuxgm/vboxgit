@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 22997 2009-09-14 12:44:51Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 23056 2009-09-16 09:42:27Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -387,6 +387,8 @@ int main()
     CHECK_PADDING_UVM(32, mm);
     CHECK_PADDING_UVM(32, pdm);
     CHECK_PADDING_UVM(32, stam);
+
+    printf("struct UVMCPU: %d bytes\n", (int)sizeof(UVMCPU));
     CHECK_PADDING_UVMCPU(32, vm);
 
     /*
