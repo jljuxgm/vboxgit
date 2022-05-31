@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl-LiveMigration.cpp 23707 2009-10-12 17:26:38Z vboxsync $ */
+/* $Id: ConsoleImpl-LiveMigration.cpp 23719 2009-10-13 12:36:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Live Migration Part.
  */
@@ -965,7 +965,7 @@ Console::migrationDstServeConnection(RTSOCKET Sock, void *pvUser)
         }
         else
         {
-            LogRel(("Migration: Unknown command '%s' (%.*Rxs)\n", szCmd, strlen(szCmd), szCmd));
+            LogRel(("Migration: Unknown command '%s' (%.*Rhxs)\n", szCmd, strlen(szCmd), szCmd));
             vrc = VERR_NOT_IMPLEMENTED;
             migrationTcpWriteNACK(pState, vrc);
             break;
