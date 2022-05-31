@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 19032 2009-04-20 15:03:08Z vboxsync $ */
+/* $Id: TMInternal.h 19325 2009-05-04 13:28:52Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -309,14 +309,15 @@ typedef struct TM
      * The config variable implies fTSCVirtualized = true and fTSCUseRealTSC = false. */
     uint64_t                    cTSCTicksPerSecond;
 
-    /** Virtual time ticking enabled indicator (bool). (TMCLOCK_VIRTUAL) */
-    bool                        fVirtualTicking;
+    /** Virtual time ticking enabled indicator (counter for each VCPU). (TMCLOCK_VIRTUAL) */
+    uint32_t volatile           cVirtualTicking;
     /** Virtual time is not running at 100%. */
     bool                        fVirtualWarpDrive;
     /** Virtual timer synchronous time ticking enabled indicator (bool). (TMCLOCK_VIRTUAL_SYNC) */
     bool volatile               fVirtualSyncTicking;
     /** Virtual timer synchronous time catch-up active. */
     bool volatile               fVirtualSyncCatchUp;
+    bool                        afAlignment[5]; /**< alignment padding */
     /** WarpDrive percentage.
      * 100% is normal (fVirtualSyncNormal == true). When other than 100% we apply
      * this percentage to the raw time source for the period it's been valid in,

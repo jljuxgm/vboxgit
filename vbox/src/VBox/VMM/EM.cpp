@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19322 2009-05-04 11:54:21Z vboxsync $ */
+/* $Id: EM.cpp 19324 2009-05-04 12:51:27Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3601,8 +3601,11 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
         /*
          * Start the virtual time.
          */
-        rc = TMVirtualResume(pVM);
-        Assert(rc == VINF_SUCCESS);
+        if (pVCpu->idCpu == 0)
+        {
+            rc = TMVirtualResume(pVM);
+            Assert(rc == VINF_SUCCESS);
+        }
         rc = TMCpuTickResume(pVCpu);
         Assert(rc == VINF_SUCCESS);
 
