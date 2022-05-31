@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 23124 2009-09-18 11:52:32Z vboxsync $ */
+/* $Id: thread.cpp 23125 2009-09-18 12:34:56Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -246,7 +246,7 @@ static int rtThreadAdopt(RTTHREADTYPE enmType, unsigned fFlags, uint32_t fIntFla
      * we try inserting the thread because of locking.)
      */
     int rc = VERR_NO_MEMORY;
-    PRTTHREADINT pThread = rtThreadAlloc(enmType, fFlags, RTTHREADINT_FLAGS_ALIEN, pszName);
+    PRTTHREADINT pThread = rtThreadAlloc(enmType, fFlags, RTTHREADINT_FLAGS_ALIEN | fIntFlags, pszName);
     if (pThread)
     {
         RTNATIVETHREAD NativeThread = RTThreadNativeSelf();
@@ -254,7 +254,7 @@ static int rtThreadAdopt(RTTHREADTYPE enmType, unsigned fFlags, uint32_t fIntFla
         if (RT_SUCCESS(rc))
         {
             rtThreadInsert(pThread, NativeThread);
-            ASMAtomicWriteSize(&pThread->enmState, RTTHREADSTATE_RUNNING | fIntFlags);
+            ASMAtomicWriteSize(&pThread->enmState, RTTHREADSTATE_RUNNING);
             rtThreadRelease(pThread);
         }
     }
