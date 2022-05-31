@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22264 2009-08-14 15:23:54Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22265 2009-08-14 15:26:04Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -236,7 +236,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     rc = CFGMR3InsertInteger(pRoot, "PATMEnabled",          1);     /* boolean */   RC_CHECK();
     rc = CFGMR3InsertInteger(pRoot, "CSAMEnabled",          1);     /* boolean */   RC_CHECK();
 
-    if (osTypeId == "WindowsNT")
+    if (osTypeId == "WindowsNT4")
     {
         /*
          * We must limit CPUID count for Windows NT 4, as otherwise it stops
