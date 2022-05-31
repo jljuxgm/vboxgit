@@ -1,4 +1,4 @@
-/* $Id: MMHeap.cpp 19757 2009-05-15 23:37:31Z vboxsync $ */
+/* $Id: MMHeap.cpp 20686 2009-06-18 11:49:54Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Heap.
  */
@@ -746,10 +746,13 @@ const char *mmR3GetTagName(MMTAG enmTag)
 
         TAG2STR(PDM);
         TAG2STR(PDM_DEVICE);
+        TAG2STR(PDM_DEVICE_DESC);
         TAG2STR(PDM_DEVICE_USER);
         TAG2STR(PDM_DRIVER);
+        TAG2STR(PDM_DRIVER_DESC);
         TAG2STR(PDM_DRIVER_USER);
         TAG2STR(PDM_USB);
+        TAG2STR(PDM_USB_DESC);
         TAG2STR(PDM_USB_USER);
         TAG2STR(PDM_LUN);
         TAG2STR(PDM_QUEUE);
