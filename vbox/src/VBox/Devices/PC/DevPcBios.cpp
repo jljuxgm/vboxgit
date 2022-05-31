@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 18373 2009-03-27 06:28:50Z vboxsync $ */
+/* $Id: DevPcBios.cpp 18557 2009-03-30 17:42:47Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -409,7 +409,6 @@ static int setLogicalDiskGeometry(PPDMIBASE pBase, PPDMIBLOCKBIOS pHardDisk, PPD
     rc = pHardDisk->pfnGetLCHSGeometry(pHardDisk, &LCHSGeometry);
     if (   rc == VERR_PDM_GEOMETRY_NOT_SET
         || LCHSGeometry.cCylinders == 0
-        || LCHSGeometry.cCylinders > 1024
         || LCHSGeometry.cHeads == 0
         || LCHSGeometry.cHeads > 255
         || LCHSGeometry.cSectors == 0
