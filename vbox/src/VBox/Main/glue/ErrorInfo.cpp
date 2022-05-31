@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 16555 2009-02-06 16:21:41Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 20267 2009-06-04 11:27:27Z vboxsync $ */
 
 /** @file
  *
@@ -179,8 +179,9 @@ void ErrorInfo::init (IVirtualBoxErrorInfo *info)
     HRESULT rc = E_FAIL;
     bool gotSomething = false;
     bool gotAll = true;
+    LONG lrc;
 
-    rc = info->COMGETTER(ResultCode) (&mResultCode);
+    rc = info->COMGETTER(ResultCode) (&lrc); mResultCode = lrc;    
     gotSomething |= SUCCEEDED (rc);
     gotAll &= SUCCEEDED (rc);
 
