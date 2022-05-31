@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-freebsd.c 18972 2009-04-16 23:43:08Z vboxsync $ */
+/* $Id: semevent-r0drv-freebsd.c 19565 2009-05-10 22:32:03Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, FreeBSD.
  */
@@ -68,7 +68,7 @@ RTDECL(int)  RTSemEventCreate(PRTSEMEVENT pEventSem)
     Assert(sizeof(RTSEMEVENTINTERNAL) > sizeof(void *));
     AssertPtrReturn(pEventSem, VERR_INVALID_POINTER);
 
-    PRTSEMEVENTINTERNAL pEventInt = (PRTSEMEVENTINTERNAL)RTMemAlloc(sizeof(*pEventInt));
+    PRTSEMEVENTINTERNAL pEventInt = (PRTSEMEVENTINTERNAL)RTMemAllocZ(sizeof(*pEventInt));
     if (pEventInt)
     {
         pEventInt->u32Magic = RTSEMEVENT_MAGIC;
