@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 17375 2009-03-05 07:55:39Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 18541 2009-03-30 13:02:31Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -205,13 +205,14 @@ struct net_device_stats *vboxTapGetStats(struct net_device *pNetDev)
     return &pPriv->Stats;
 }
 
+/* Currently not referenced in vboxTapNetDevInit
 static int vboxTapValidateAddr(struct net_device *dev)
 {
     Log(("vboxTapValidateAddr: %02x:%02x:%02x:%02x:%02x:%02x\n",
          dev->dev_addr[0], dev->dev_addr[1], dev->dev_addr[2],
          dev->dev_addr[3], dev->dev_addr[4], dev->dev_addr[5]));
     return -EADDRNOTAVAIL;
-}
+} */
 
 static void vboxTapNetDevInit(struct net_device *pNetDev)
 {
