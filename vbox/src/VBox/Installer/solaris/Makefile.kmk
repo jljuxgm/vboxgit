@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19599 2009-05-12 09:48:44Z vboxsync $
+# $Id: Makefile.kmk 20264 2009-06-04 10:54:04Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -118,6 +118,7 @@ BLDDIRS += $(foreach d,\
 	platform/i86pc/kernel/drv \
 	platform/i86pc/kernel/drv/amd64 \
 ,$(SOLARIS_BASEINST_DIR)/$(d))
+
 
 PACKING          += $(PATH_BIN)/$(PKG_FILENAME).tar.gz $(PATH_BIN)/$(DBG_ARCHIVE)
 
@@ -285,6 +286,16 @@ ifdef VBOX_WITH_DOCS_PACKING
 	$(foreach f,$(VBOX_MANUAL_ADD_LANGUAGES),VirtualBox_$(f).chm UserManual_$(f).pdf)
 endif
 
+# Python XPCOM glue
+ifdef VBOX_WITH_PYTHON
+  SOLARIS_COMMON += \
+	$(foreach f,$(notdir $(wildcard $(PATH_BIN)/sdk/bindings/xpcom/python/xpcom/*.py)),sdk/bindings/xpcom/python/xpcom/$(f)) \
+	sdk/bindings/xpcom/python/xpcom/client/__init__.py \
+	sdk/installer/vboxapisetup.py \
+	sdk/installer/vboxapi/__init__.py \
+	sdk/installer/vboxapi/VirtualBox_constants.py
+endif
+
 # VRDP
 ifdef VBOX_WITH_VRDP
  SOLARIS_STRIP_BINS += \
@@ -384,6 +395,12 @@ BLDDIRS += $(foreach d,\
 	$(SOLARIS_DIR_NAME_32)/components \
 	$(SOLARIS_DIR_NAME_32)/nls \
 	$(SOLARIS_DIR_NAME_32)/accessible \
+	$(if $(VBOX_WITH_PYTHON),\
+	 sdk/ \
+	 sdk/installer \
+	 sdk/installer/vboxapi \
+	 sdk/bindings/xpcom/python/xpcom \
+	 sdk/bindings/xpcom/python/xpcom/client,) \
 ,$(SOLARIS_VBOXINST_DIR)/$(d)/)
 
 BLDDIRS += $(foreach d,\
