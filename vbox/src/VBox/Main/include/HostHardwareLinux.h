@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.h 21436 2009-07-09 12:24:28Z vboxsync $ */
+/* $Id: HostHardwareLinux.h 23522 2009-10-02 23:27:33Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -27,12 +27,6 @@
 #include <iprt/err.h>
 #include <iprt/ministring_cpp.h>
 #include <vector>
-
-/** This should only be enabled when testing.  It causes all methods to be used
- * when probing for drives instead of stopping as soon as one method is
- * successful.  This is a global instead of a define in order to keep the test
- * code closer to the real code. */
-extern bool g_testHostHardwareLinux;
 
 /**
  * Class for probing and returning information about host DVD and floppy

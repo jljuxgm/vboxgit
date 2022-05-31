@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 23522 2009-10-02 23:27:33Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -129,6 +129,7 @@ tstHostHardwareLinux_SOURCES   = \
 tstHostHardwareLinux_INCS      = . ../include
 tstHostHardwareLinux_DEFS      = \
 	VBOX_TEST_USB_LINUX \
+	TESTCASE \
 	$(if $(VBOX_WITH_LINUX_COMPILER_H),VBOX_WITH_LINUX_COMPILER_H,) \
 	$(if $(VBOX_WITH_DBUS),VBOX_WITH_DBUS,) \
 	$(if $(VBOX_USB_WITH_SYSFS),VBOX_USB_WITH_SYSFS,)

@@ -1,4 +1,4 @@
-/* $Id: tstHostHardwareLinux.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: tstHostHardwareLinux.cpp 23522 2009-10-02 23:27:33Z vboxsync $ */
 /** @file
  *
  * Test executable for quickly excercising/debugging the Linux host hardware
@@ -40,10 +40,8 @@
 int main()
 {
     RTR3Init();
-    g_testHostHardwareLinux = true;
     int rc = VINF_SUCCESS;
     VBoxMainDriveInfo driveInfo;
-    g_testHostHardwareLinux = true;
     rc = driveInfo.updateFloppies();
     if (RT_SUCCESS(rc))
         rc = driveInfo.updateDVDs();
