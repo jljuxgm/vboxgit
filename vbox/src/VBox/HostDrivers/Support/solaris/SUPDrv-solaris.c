@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 21566 2009-07-14 09:34:23Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 21604 2009-07-15 11:54:00Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -355,7 +355,7 @@ static int VBoxDrvSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t enmCmd)
             RTSemFastMutexRelease(g_DevExt.mtxGip);
 #endif
             RTPowerSignalEvent(RTPOWEREVENT_RESUME);
-            LogRel((DEVICE_NAME ":Awakened from suspend.\n"));
+            LogFlow((DEVICE_NAME ": Awakened from suspend.\n"));
             return DDI_SUCCESS;
         }
 
@@ -405,7 +405,7 @@ static int VBoxDrvSolarisDetach(dev_info_t *pDip, ddi_detach_cmd_t enmCmd)
             RTSemFastMutexRelease(g_DevExt.mtxGip);
 #endif
             RTPowerSignalEvent(RTPOWEREVENT_SUSPEND);
-            LogRel((DEVICE_NAME ":Falling to suspend mode.\n"));
+            LogFlow((DEVICE_NAME ": Falling to suspend mode.\n"));
             return DDI_SUCCESS;
 
         }
