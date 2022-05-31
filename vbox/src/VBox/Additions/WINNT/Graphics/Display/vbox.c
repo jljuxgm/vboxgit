@@ -1,4 +1,4 @@
-/* $Id: vbox.c 21596 2009-07-15 08:06:37Z vboxsync $ */
+/* $Id: vbox.c 21609 2009-07-15 14:01:56Z vboxsync $ */
 /** @file
  * Display - VirtualBox Win 2000/XP guest display driver, support functions.
  */
@@ -781,7 +781,7 @@ void vboxVHWACommandSubmitAsynchByEvent (PPDEV ppdev, VBOXVHWACMD* pCmd, PEVENT 
     pCmd->GuestVBVAReserved2 = 0;
 
     /* complete it asynchronously by setting event */
-    pCmd->Flags = VBOXVHWACMD_FLAG_ASYNCH_EVENT;
+    pCmd->Flags |= VBOXVHWACMD_FLAG_ASYNCH_EVENT;
     vboxHGSMIBufferSubmit (ppdev, pCmd);
 
     if(!(ASMAtomicReadU32((volatile uint32_t *)&pCmd->Flags)  & VBOXVHWACMD_FLAG_ASYNCH))
@@ -799,6 +799,7 @@ BOOL vboxVHWACommandSubmit (PPDEV ppdev, VBOXVHWACMD* pCmd)
 
     if(brc)
     {
+        pCmd->Flags = VBOXVHWACMD_FLAG_ASYNCH_IRQ;
         vboxVHWACommandSubmitAsynchByEvent (ppdev, pCmd, pEvent);
 
         brc = EngWaitForSingleObject(pEvent,
