@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 23399 2009-09-29 05:04:38Z vboxsync $ */
+/* $Id: state_glsl.c 23402 2009-09-29 09:53:51Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -840,7 +840,7 @@ crStateGLSLProgramCacheUniforms(GLuint program, GLsizei maxcbData, GLsizei *cbDa
 
                 if (!pIndexStr)
                 {
-                    crWarning("Array uniform name %s doesn't contain [!?");
+                    crWarning("Array uniform name %s doesn't contain [!?", name);
                 }
                 else
                 {
