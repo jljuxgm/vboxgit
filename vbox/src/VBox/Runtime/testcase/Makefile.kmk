@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19933 2009-05-23 01:44:13Z vboxsync $
+# $Id: Makefile.kmk 19945 2009-05-23 21:48:25Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -48,7 +48,7 @@ IPRT_OUT_DIR ?= $(PATH_TARGET)/Runtime
 # Target lists
 #
 PROGRAMS += \
-	tstAvl \
+	tstRTAvl \
 	tstBase64 \
 	tstBitOperations \
 	tstCidr \
@@ -135,7 +135,7 @@ endif
 # Target configs in almost alphabetical order.
 #
 
-tstAvl_SOURCES = tstAvl.cpp
+tstRTAvl_SOURCES = tstRTAvl.cpp
 
 tstBase64_TEMPLATE = VBOXR3TSTEXE
 tstBase64_SOURCES = tstBase64.cpp
