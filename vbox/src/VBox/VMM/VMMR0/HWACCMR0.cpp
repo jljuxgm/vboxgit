@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 23566 2009-10-05 16:07:34Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 23922 2009-10-20 18:52:58Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -474,6 +474,8 @@ VMMR0DECL(int) HWACCMR0Term(void)
             rc = RTPowerNotificationDeregister(hwaccmR0PowerCallback, 0);
             Assert(RT_SUCCESS(rc));
         }
+        else
+            rc = VINF_SUCCESS;
 
         /* Only disable VT-x/AMD-V on all CPUs if we enabled it before. */
         if (HWACCMR0Globals.fGlobalInit)
