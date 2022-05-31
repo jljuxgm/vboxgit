@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 20713 2009-06-19 11:43:01Z vboxsync $ */
+/* $Id: DrvNAT.cpp 20714 2009-06-19 11:55:39Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -56,16 +56,6 @@
  *        activity. This needs to be fixed properly.
  */
 #define VBOX_NAT_DELAY_HACK
-
-/** Gets the address of a statistics member in the NATState structure.
- *
- * @todo It would be *really* nice if we could dispense with this hack and
- *       just include the NATState definition here.
- *
- *       Actually, why don't we just put the 2-3 statistics in struct DRVNAT?!!
- */
-#define DRVNAT_STAT(pThis, name, type) \
-    ( (type *)((uint8_t *)(pThis->pNATState) + g_offSlirpStat##name) )
 
 
 /*******************************************************************************
