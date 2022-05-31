@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 20426 2009-06-09 11:21:44Z vboxsync $ */
+/* $Id: REMInternal.h 20428 2009-06-09 11:36:04Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -185,11 +185,9 @@ typedef struct REM
     /** Nr of pending exceptions */
     uint32_t                cPendingExceptions;
     /** Pending exception's EIP */
-    uint32_t                uPendingExcptEIP;
-    uint32_t                reserved_for_future_uPendingExcptRIP;
+    RTGCPTR                 uPendingExcptEIP;
     /** Pending exception's CR2 */
-    uint32_t                uPendingExcptCR2;
-    uint32_t                reserved_for_future_64bit_uPendingExcptCR2;
+    RTGCPTR                 uPendingExcptCR2;
 
     /** The highest known RAM address. */
     RTGCPHYS                GCPhysLastRam;
