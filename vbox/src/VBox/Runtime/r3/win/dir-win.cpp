@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 14062 2008-11-10 23:23:05Z vboxsync $ */
+/* $Id: dir-win.cpp 20066 2009-05-27 11:24:23Z vboxsync $ */
 /** @file
  * IPRT - Directory, win32.
  */
@@ -34,6 +34,7 @@
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_DIR
 #include <Windows.h>
+#include <io.h>
 
 #include <iprt/dir.h>
 #include <iprt/path.h>
@@ -124,6 +125,17 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode)
 
     LogFlow(("RTDirCreate(%p:{%s}, %RTfmode): returns %Rrc\n", pszPath, pszPath, fMode, rc));
     return rc;
+}
+
+
+RTDECL(int) RTDirCreateTemp(char *pszTemplate)
+{
+    if (!_mktemp(pszTemplate))
+    {
+        int rc = RTDirCreate(pszTemplate, 0700);
+        return rc;
+    }
+    return RTErrConvertFromWin32(GetLastError());
 }
 
 
