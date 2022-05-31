@@ -1,4 +1,4 @@
-/* $Id: glx_proto.h 18546 2009-03-30 13:33:40Z vboxsync $ */
+/* $Id: glx_proto.h 18554 2009-03-30 15:24:33Z vboxsync $ */
 /** @file
  *
  * VirtualBox guest OpenGL DRI GLX header C prototypes
@@ -25,10 +25,6 @@
 
 #include "chromium.h"
 #include "stub.h"
-
-#ifndef VBOX_OGL_GLX_USE_CSTUBS
-# error VBOX_OGL_GLX_USE_CSTUBS not defined.
-#endif
 
 #ifdef VBOXOGL_FAKEDRI
 typedef const char * (*PGLXFUNC_GetDriverConfig)(const char *driverName);
