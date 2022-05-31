@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 18437 2009-03-28 02:35:31Z vboxsync $ */
+/* $Id: DevPCNet.cpp 18573 2009-03-31 13:46:00Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -1551,14 +1551,36 @@ static void pcnetInit(PCNetState *pThis)
         RTGCPHYS32 addr = pcnetRdraAddr(pThis, i);
         /* At this time it is not guaranteed that the buffers are already initialized. */
         if (pcnetRmdLoad(pThis, &rmd, PHYSADDR(pThis, addr), false))
-            cbRxBuffers += 4096-rmd.rmd1.bcnt;
-        /* Hack: Make sure that all receive buffers are touched when the
-         * device is initialized. */
-        static char aBuf[4096];
-        RTGCPHYS32 rbadr = PHYSADDR(pThis, rmd.rmd0.rbadr);
-        /* don't change the content */
-        PDMDevHlpPhysRead(pDevIns, rbadr, aBuf, RT_MIN(sizeof(aBuf), 4096U-rmd.rmd1.bcnt));
-        PDMDevHlpPhysWrite(pDevIns, rbadr, aBuf, RT_MIN(sizeof(aBuf), 4096U-rmd.rmd1.bcnt));
+        {
+            /* Hack: Make sure that all RX buffers are touched when the
+             * device is initialized. */
+            static char aBuf[4096];
+            RTGCPHYS32 rbadr = PHYSADDR(pThis, rmd.rmd0.rbadr);
+            uint32_t cbBuf = 4096U-rmd.rmd1.bcnt;
+            /* don't change the content */
+            PDMDevHlpPhysRead(pDevIns, rbadr, aBuf, RT_MIN(sizeof(aBuf), cbBuf));
+            PDMDevHlpPhysWrite(pDevIns, rbadr, aBuf, RT_MIN(sizeof(aBuf), cbBuf));
+            cbRxBuffers += cbBuf;
+        }
+        PDMDevHlpPhysWrite(pDevIns, addr, (void*)&rmd, sizeof(rmd));
+    }
+
+    for (int i = CSR_XMTRL(pThis); i >= 1; i--)
+    {
+        TMD        tmd;
+        RTGCPHYS32 addr = pcnetRdraAddr(pThis, i);
+        if (pcnetTmdLoad(pThis, &tmd, PHYSADDR(pThis, addr), false))
+        {
+            /* Hack: Make sure that all TX buffers are touched when the
+             * device is initialized. */
+            static char aBuf[4096];
+            uint32_t cbBuf = 4096U-tmd.tmd1.bcnt;
+            RTGCPHYS32 tbadr = PHYSADDR(pThis, tmd.tmd0.tbadr);
+            /* don't change the content */
+            PDMDevHlpPhysRead(pDevIns, tbadr, aBuf, RT_MIN(sizeof(aBuf), cbBuf));
+            PDMDevHlpPhysWrite(pDevIns, tbadr, aBuf, RT_MIN(sizeof(aBuf), cbBuf));
+        }
+        PDMDevHlpPhysWrite(pDevIns, addr, (void*)&tmd, sizeof(tmd));
     }
 
     /*
