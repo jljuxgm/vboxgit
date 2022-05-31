@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19948 2009-05-23 22:14:33Z vboxsync $
+# $Id: Makefile.kmk 19950 2009-05-23 22:22:37Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -51,7 +51,7 @@ PROGRAMS += \
 	tstRTAvl \
 	tstRTBase64 \
 	tstRTBitOperations \
-	tstCidr \
+	tstRTCidr \
 	tstCritSect \
 	tstDeadlock \
 	tstDir \
@@ -149,7 +149,8 @@ tstRTBitOperationsPIC3_SOURCES = tstRTBitOperations.cpp
 tstRTBitOperationsPIC3_CXXFLAGS = -fPIC -fomit-frame-pointer -O3
 tstRTBitOperationsPIC3_DEFS = PIC
 
-tstCidr_SOURCES = tstCidr.cpp
+tstRTCidr_TEMPLATE = VBOXR3TSTEXE
+tstRTCidr_SOURCES = tstRTCidr.cpp
 
 tstCritSect_SOURCES = tstCritSect.cpp
 
