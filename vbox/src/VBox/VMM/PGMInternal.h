@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 21164 2009-07-02 14:08:29Z vboxsync $ */
+/* $Id: PGMInternal.h 21168 2009-07-02 14:28:47Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2491,6 +2491,19 @@ typedef struct PGM
     STAMCOUNTER StatRCPhysReadBytes;
     STAMCOUNTER StatRCPhysWrite;
     STAMCOUNTER StatRCPhysWriteBytes;
+
+    STAMCOUNTER StatRZPhysSimpleRead;
+    STAMCOUNTER StatRZPhysSimpleReadBytes;
+    STAMCOUNTER StatRZPhysSimpleWrite;
+    STAMCOUNTER StatRZPhysSimpleWriteBytes;
+    STAMCOUNTER StatR3PhysSimpleRead;
+    STAMCOUNTER StatR3PhysSimpleReadBytes;
+    STAMCOUNTER StatR3PhysSimpleWrite;
+    STAMCOUNTER StatR3PhysSimpleWriteBytes;
+    STAMCOUNTER StatRCPhysSimpleRead;
+    STAMCOUNTER StatRCPhysSimpleReadBytes;
+    STAMCOUNTER StatRCPhysSimpleWrite;
+    STAMCOUNTER StatRCPhysSimpleWriteBytes;
 
 # ifdef PGMPOOL_WITH_GCPHYS_TRACKING
     STAMCOUNTER StatTrackVirgin;                    /**< The number of first time shadowings. */
