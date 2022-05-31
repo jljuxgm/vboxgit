@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19839 2009-05-19 19:01:23Z vboxsync $
+# $Id: Makefile.kmk 19844 2009-05-19 23:12:55Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -573,7 +573,7 @@ ifdef VBOX_WITH_HGSMI
  VBoxDDR0_DEFS         += VBOX_WITH_HGSMI
 endif
 ifdef VBOX_WITH_VIDEOHWACCEL
- VBoxDDGC_DEFS         += VBOX_WITH_VIDEOHWACCEL
+ VBoxDDR0_DEFS         += VBOX_WITH_VIDEOHWACCEL
 endif
 
 

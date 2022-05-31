@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 19711 2009-05-14 21:24:28Z vboxsync $ */
+/* $Id: DevVGA.cpp 19844 2009-05-19 23:12:55Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4553,6 +4553,10 @@ static DECLCALLBACK(void *) vgaPortQueryInterface(PPDMIBASE pInterface, PDMINTER
             return &pThis->Base;
         case PDMINTERFACE_DISPLAY_PORT:
             return &pThis->Port;
+#if defined(VBOX_WITH_HGSMI) && defined(VBOX_WITH_VIDEOHWACCEL)
+        case PDMINTERFACE_DISPLAY_VBVA_CALLBACKS:
+            return &pThis->VBVACallbacks;
+#endif
         default:
             return NULL;
     }
@@ -5572,6 +5576,9 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     pThis->Port.pfnUpdateDisplayRect    = vgaPortUpdateDisplayRect;
     pThis->Port.pfnSetRenderVRAM        = vgaPortSetRenderVRAM;
 
+#if defined(VBOX_WITH_HGSMI) && defined(VBOX_WITH_VIDEOHWACCEL)
+    pThis->VBVACallbacks.pfnVHWACommandCompleteAsynch = vbvaVHWACommandCompleteAsynch;
+#endif
 
     /*
      * Allocate the VRAM and map the first 512KB of it into GC so we can speed up VGA support.

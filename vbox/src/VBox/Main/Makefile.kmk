@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19817 2009-05-19 12:16:28Z vboxsync $
+# $Id: Makefile.kmk 19844 2009-05-19 23:12:55Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -589,6 +589,10 @@ VBoxC_SOURCES += \
 	hgcm/HGCMObjects.cpp \
 	hgcm/HGCMThread.cpp \
 	hgcm/HGCM.cpp
+endif
+
+ifdef VBOX_WITH_VIDEOHWACCEL
+VBoxC_DEFS += VBOX_WITH_VIDEOHWACCEL
 endif
 
 ifdef VBOX_WITH_USB

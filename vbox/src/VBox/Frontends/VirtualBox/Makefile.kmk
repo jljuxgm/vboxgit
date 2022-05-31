@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19837 2009-05-19 18:54:45Z vboxsync $
+# $Id: Makefile.kmk 19844 2009-05-19 23:12:55Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -431,6 +431,10 @@ ifdef VBOX_WITH_COCOA_QT
 else
  VirtualBox_SOURCES.darwin += \
 	src/darwin/VBoxUtils-darwin-carbon.cpp
+endif
+
+ifdef VBOX_WITH_VIDEOHWACCEL
+ VirtualBox_DEFS += VBOX_WITH_VIDEOHWACCEL
 endif
 
 # The Qt modules we're using.
