@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 20008 2009-05-25 18:34:43Z vboxsync $ */
+/* $Id: thread.cpp 20273 2009-06-04 12:16:28Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -633,6 +633,16 @@ int rtThreadMain(PRTTHREADINT pThread, RTNATIVETHREAD NativeThread, const char *
      */
     ASMAtomicWriteSize(&pThread->enmState, RTTHREADSTATE_RUNNING);
     rc = pThread->pfnThread(pThread, pThread->pvUser);
+
+    /*
+     * Paranoia checks for leftover resources.
+     */
+#ifdef RTSEMRW_STRICT
+    int32_t cWrite = ASMAtomicReadS32(&pThread->cWriteLocks);
+    Assert(!cWrite);
+    int32_t cRead = ASMAtomicReadS32(&pThread->cReadLocks);
+    Assert(!cRead);
+#endif
 
     Log(("rtThreadMain: Terminating: rc=%d pThread=%p NativeThread=%RTnthrd Name=%s pfnThread=%p pvUser=%p\n",
          rc, pThread, NativeThread, pThread->szName, pThread->pfnThread, pThread->pvUser));
