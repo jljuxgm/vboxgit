@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-freebsd.c 21280 2009-07-06 23:18:22Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-freebsd.c 21282 2009-07-06 23:43:36Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, FreeBSD.
  */
@@ -65,5 +65,11 @@ RTR0DECL(bool) RTR0MemUserIsValidAddr(RTR3PTR R3Ptr)
 RTR0DECL(bool) RTR0MemKernelIsValidAddr(void *pv)
 {
     return R3Ptr >= VM_MAXUSER_ADDRESS;
+}
+
+
+RTR0DECL(bool) RTR0MemAreKernelAndUserRangesDifferent(void)
+{
+    return true;
 }
 

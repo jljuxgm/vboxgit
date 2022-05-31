@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-darwin.cpp 21274 2009-07-06 21:23:05Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-darwin.cpp 21282 2009-07-06 23:43:36Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Darwin.
  */
@@ -83,4 +83,15 @@ RTR0DECL(bool) RTR0MemKernelIsValidAddr(void *pv)
 #endif
 }
 
+
+RTR0DECL(bool) RTR0MemAreKernelAndUserRangesDifferent(void)
+{
+    /* As mentioned in RTR0MemKernelIsValidAddr, found no way of checking
+       this at compiler or runtime. */
+#ifdef RT_ARCH_X86
+    return false;
+#else
+    return true;
+#endif
+}
 

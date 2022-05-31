@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-solaris.c 21277 2009-07-06 22:23:46Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-solaris.c 21282 2009-07-06 23:43:36Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Solaris.
  */
@@ -65,5 +65,11 @@ RTR0DECL(bool) RTR0MemUserIsValidAddr(RTR3PTR R3Ptr)
 RTR0DECL(bool) RTR0MemKernelIsValidAddr(void *pv)
 {
     return (uintptr_t)pv >= kernelbase;
+}
+
+
+RTR0DECL(bool) RTR0MemAreKernelAndUserRangesDifferent(void)
+{
+    return true;
 }
 

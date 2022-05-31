@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-linux.c 21278 2009-07-06 22:49:38Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-linux.c 21282 2009-07-06 23:43:36Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Linux.
  */
@@ -76,6 +76,16 @@ RTR0DECL(bool) RTR0MemKernelIsValidAddr(void *pv)
 #else
 # error "PORT ME"
     return !access_ok(VERIFY_READ, pv, 1);
+#endif
+}
+
+
+RTR0DECL(bool) RTR0MemAreKernelAndUserRangesDifferent(void)
+{
+#if defined(RT_ARCH_X86) && defined(CONFIG_X86_HIGH_ENTRY) /* ?? */
+    return false;
+#else
+    return true;
 #endif
 }
 
