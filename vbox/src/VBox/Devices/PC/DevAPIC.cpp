@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 19512 2009-05-08 08:08:49Z vboxsync $ */
+/* $Id: DevAPIC.cpp 19615 2009-05-12 12:45:09Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -2036,7 +2036,7 @@ PDMBOTHCBDECL(int) apicMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhy
     APICDeviceInfo *dev = PDMINS_2_DATA(pDevIns, APICDeviceInfo *);
     APICState *s = getLapic(dev);
 
-    Log(("[SMP] apicMMIORead at %llx\n", (uint64_t)GCPhysAddr));
+    Log(("apicMMIORead CPU%d at %llx\n", s->id,  (uint64_t)GCPhysAddr));
 
     /** @todo: add LAPIC range validity checks (different LAPICs can theoretically have
                different physical addresses, see #3092) */
@@ -2088,7 +2088,7 @@ PDMBOTHCBDECL(int) apicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPh
     APICDeviceInfo *dev = PDMINS_2_DATA(pDevIns, APICDeviceInfo *);
     APICState *s = getLapic(dev);
 
-    Log(("[SMP] apicMMIOWrite at %llx\n", (uint64_t)GCPhysAddr));
+    Log(("apicMMIOWrite CPU%d at %llx\n", s->id, (uint64_t)GCPhysAddr));
 
     /** @todo: add LAPIC range validity checks (multiple LAPICs can theoretically have
                different physical addresses, see #3092) */
