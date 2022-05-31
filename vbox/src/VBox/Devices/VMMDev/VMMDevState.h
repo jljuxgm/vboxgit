@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 22272 2009-08-14 20:46:25Z vboxsync $ */
+/* $Id: VMMDevState.h 22433 2009-08-25 12:20:53Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -112,6 +112,9 @@ typedef struct VMMDevState
 
     /** Video acceleration status set by guest. */
     uint32_t u32VideoAccelEnabled;
+
+    /** true if the guest responded to VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST at least once */
+    bool fGuestSentChangeEventAck;
 
     /** resolution change request */
     struct
