@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 19617 2009-05-12 12:47:23Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 19619 2009-05-12 13:17:34Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -30,7 +30,7 @@
 #include <windows.h>
 #include <Ntsecapi.h>
 #else
-#define __STDC_LIMIT_MACROS
+# define __STDC_LIMIT_MACROS
 # include <arpa/inet.h>
 # include <errno.h>
 # include <net/if.h>
@@ -39,6 +39,9 @@
 # include <sys/socket.h>
 # include <unistd.h>
 # include <utmp.h>
+# ifdef RT_OS_SOLARIS
+#  include <sys/sockio.h>
+# endif
 #endif
 
 #include <iprt/mem.h>
