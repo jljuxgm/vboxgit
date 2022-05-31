@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 20559 2009-06-14 18:28:41Z vboxsync $ */
+/* $Id: DevPCNet.cpp 20578 2009-06-15 07:49:24Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4664,7 +4664,7 @@ static DECLCALLBACK(void) pcnetDetach(PPDMDEVINS pDevIns, unsigned iLUN)
     PCNetState *pThis = PDMINS_2_DATA(pDevIns, PCNetState *);
     Log(("#%d pcnetDetach:\n", PCNET_INST_NR));
 
-    AssertLogRelReturn(iLUN == 0, VERR_PDM_NO_SUCH_LUN);
+    AssertLogRelReturnVoid(iLUN == 0);
 
     PDMCritSectEnter(&pThis->CritSect, VERR_SEM_BUSY);
 
