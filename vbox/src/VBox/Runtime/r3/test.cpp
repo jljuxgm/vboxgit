@@ -1,4 +1,4 @@
-/* $Id: test.cpp 20109 2009-05-27 22:49:29Z vboxsync $ */
+/* $Id: test.cpp 20573 2009-06-15 01:27:21Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -337,6 +337,21 @@ RTR3DECL(int) RTTestDestroy(RTTEST hTest)
     return VINF_SUCCESS;
 }
 
+
+/**
+ * Changes the default test instance for the calling thread.
+ *
+ * @returns IPRT status code.
+ *
+ * @param   hNewDefaultTest The new default test. NIL_RTTEST is fine.
+ * @param   phOldTest       Where to store the old test handle. Optional.
+ */
+RTR3DECL(int) RTTestSetDefault(RTTEST hNewDefaultTest, PRTTEST phOldTest)
+{
+    if (phOldTest)
+        *phOldTest = (RTTEST)RTTlsGet(g_iTestTls);
+    return RTTlsSet(g_iTestTls, hNewDefaultTest);
+}
 
 
 /**
