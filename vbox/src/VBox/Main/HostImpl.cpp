@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 23231 2009-09-22 16:58:08Z vboxsync $ */
+/* $Id: HostImpl.cpp 23232 2009-09-22 17:03:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1799,7 +1799,7 @@ bool Host::getFloppyInfoFromHal(std::list <ComObjPtr<Medium> > &list)
 }
 #endif  /* RT_OS_SOLARIS and VBOX_USE_HAL */
 
-/** @todo get rid of dead code below - RT_OS_SOLARIS and RT_OS_LINUX are never both set
+/** @todo get rid of dead code below - RT_OS_SOLARIS and RT_OS_LINUX are never both set */
 #if defined(RT_OS_SOLARIS)
 
 /**
