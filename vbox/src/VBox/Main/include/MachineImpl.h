@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 18214 2009-03-24 18:30:04Z vboxsync $ */
+/* $Id: MachineImpl.h 18520 2009-03-30 08:45:50Z vboxsync $ */
 
 /** @file
  *
@@ -798,8 +798,10 @@ protected:
     void fixupHardDisks(bool aCommit, bool aOnline = false);
 
     HRESULT lockConfig();
+public: /* To have it available in VirtualBox::UnregisterMachine. */
     HRESULT unlockConfig();
 
+protected:
     /** @note This method is not thread safe */
     BOOL isConfigLocked()
     {

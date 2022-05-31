@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 18518 2009-03-30 08:30:03Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 18520 2009-03-30 08:45:50Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1092,6 +1092,10 @@ STDMETHODIMP VirtualBox::UnregisterMachine (IN_GUID aId,
 
     /* save the global registry */
     rc = saveSettings();
+    CheckComRCReturnRC (rc);
+
+    /* Close settings file for this machine. */
+    rc = machine->unlockConfig();
 
     /* return the unregistered machine to the caller */
     machine.queryInterfaceTo (aMachine);
