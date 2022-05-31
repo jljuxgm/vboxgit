@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 22925 2009-09-10 22:24:58Z vboxsync $ */
+/* $Id: DevATA.cpp 22934 2009-09-10 23:33:49Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -425,7 +425,6 @@ typedef struct ATACONTROLLER
 } ATACONTROLLER, *PATACONTROLLER;
 AssertCompileMemberAlignment(ATACONTROLLER, lock, 8);
 AssertCompileMemberAlignment(ATACONTROLLER, aIfs, 8);
-AssertCompileMemberAlignment(ATACONTROLLER, aIfs[1], 8);
 AssertCompileMemberAlignment(ATACONTROLLER, u64ResetTime, 8);
 AssertCompileMemberAlignment(ATACONTROLLER, StatAsyncOps, 8);
 
