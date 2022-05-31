@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 20321 2009-06-05 12:22:42Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 20322 2009-06-05 12:23:32Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1776,7 +1776,7 @@ ResumeExecution:
                             &&  cbOp == 6)
                         {
                             RTGCPTR  oldEip   = pCtx->eip;
-                            RTGCPTR  GCPtrTpr = Cpu.param1.disp32;
+                            RTGCPTR  GCPtrTpr = (uint32_t)Cpu.param1.disp32;
                             uint32_t uMmioReg = Cpu.param2.base.reg_gen;
 
                             /* Found:
@@ -1791,7 +1791,7 @@ ResumeExecution:
                                 &&  Cpu.pCurInstr->opcode == OP_MOV
                                 &&  Cpu.param1.flags == USE_REG_GEN32
                                 &&  Cpu.param2.flags == USE_DISPLACEMENT32
-                                &&  Cpu.param2.disp32 == GCPtrTpr
+                                &&  Cpu.param2.disp32 == (uint32_t)GCPtrTpr
                                 &&  cbOp == 5)
                             {
                                 /* mov new_reg, uMmioReg */
