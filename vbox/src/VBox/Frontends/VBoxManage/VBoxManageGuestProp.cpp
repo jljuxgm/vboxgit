@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 22811 2009-09-07 13:47:48Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 22911 2009-09-10 12:02:36Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -32,6 +32,7 @@
 #include <VBox/com/errorprint.h>
 
 #include <VBox/com/VirtualBox.h>
+#include <VBox/com/EventQueue.h>
 
 #include <VBox/log.h>
 #include <iprt/asm.h>
@@ -392,20 +393,6 @@ static int handleEnumGuestProperty(HandlerArg *a)
 }
 
 /**
- * Callback for processThreadEventQueue.
- *
- * @param   pvUser  Pointer to the callback object.
- *
- * @returns true if it should return or false if it should continue waiting for
- *          events.
- */
-static bool eventExitCheck(void *pvUser)
-{
-    GuestPropertyCallback const *pCallbacks = (GuestPropertyCallback const *)pvUser;
-    return pCallbacks->Signalled();
-}
-
-/**
  * Enumerates the properties in the guest property store.
  *
  * @returns 0 on success, 1 on failure
@@ -472,15 +459,14 @@ static int handleWaitGuestProperty(HandlerArg *a)
     }
     a->virtualBox->RegisterCallback(callback);
 
-    int vrc = com::EventQueue::processThreadEventQueue(cMsTimeout, eventExitCheck, (void *)cbImpl,
-                                                       1000 /*cMsPollInterval*/, false /*fReturnOnEvent*/);
-    if (   RT_FAILURE(vrc)
-        && vrc != VERR_CALLBACK_RETURN
-        && vrc != VERR_TIMEOUT)
-    {
-        RTPrintf("Error waiting for event: %Rrc\n", vrc);
-        return 1;
-    }
+    do {
+      int vrc = com::EventQueue::getMainEventQueue()->processEventQueue(1000);
+      if (RT_FAILURE(vrc) && vrc != VERR_TIMEOUT)
+      {
+          RTPrintf("Error waiting for event: %Rrc\n", vrc);
+          return 1;
+      }
+    } while  (!cbImpl->Signalled());
 
     a->virtualBox->UnregisterCallback(callback);
 
