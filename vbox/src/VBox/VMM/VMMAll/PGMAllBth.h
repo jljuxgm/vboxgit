@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: PGMAllBth.h 23097 2009-09-17 14:26:43Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -824,9 +824,9 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
 #   endif
                     /// @todo count the above case; else
                     if (uErr & X86_TRAP_PF_US)
-                        STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_MID_Z(Stat,PageOutOfSyncUser));
+                        STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_MID_Z(Stat,PageOutOfSyncUserWrite));
                     else /* supervisor */
-                        STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_MID_Z(Stat,PageOutOfSyncSupervisor));
+                        STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_MID_Z(Stat,PageOutOfSyncSupervisorWrite));
 
                     /*
                      * Note: Do NOT use PGM_SYNC_NR_PAGES here. That only works if the
