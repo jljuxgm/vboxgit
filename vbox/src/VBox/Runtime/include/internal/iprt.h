@@ -1,4 +1,4 @@
-/* $Id: iprt.h 22131 2009-08-10 13:07:43Z vboxsync $ */
+/* $Id: iprt.h 22135 2009-08-10 13:25:56Z vboxsync $ */
 /** @file
  * IPRT - Internal header for miscellaneous global defs and types.
  */
@@ -119,8 +119,8 @@
 # define RT_ASSERT_PREEMPT_CPUID_SPIN_RELEASE(pThis) \
     do \
     { \
-        idAssertCpu        = (pThis)->idCpuOwner; \
-        idAssertCpuAfter   = (pThis)->idAssertCpu; \
+        idAssertCpu          = (pThis)->idCpuOwner; \
+        idAssertCpuAfter     = (pThis)->idAssertCpu; \
         RT_ASSERT_PREEMPT_CPUID(); \
         (pThis)->idCpuOwner  = NIL_RTCPUID; \
         (pThis)->idAssertCpu = NIL_RTCPUID; \
