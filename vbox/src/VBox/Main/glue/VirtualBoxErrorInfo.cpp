@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfo.cpp 21783 2009-07-24 11:44:32Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfo.cpp 21786 2009-07-24 12:46:37Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008 Sun Microsystems, Inc.
+ * Copyright (C) 2008-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -141,7 +141,11 @@ STDMETHODIMP VirtualBoxErrorInfo::GetDescription (BSTR *description)
 
 STDMETHODIMP VirtualBoxErrorInfo::GetGUID (GUID *guid)
 {
-    return COMGETTER(InterfaceID) (guid);
+    Bstr iid;
+    HRESULT rc = COMGETTER(InterfaceID) (iid.asOutParam());
+    if (SUCCEEDED(rc))
+        *guid = Guid(iid);
+    return rc;
 }
 
 STDMETHODIMP VirtualBoxErrorInfo::GetHelpContext (DWORD *pdwHelpContext)
