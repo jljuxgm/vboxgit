@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 18208 2009-03-24 17:01:32Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 18314 2009-03-26 14:16:35Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -43,6 +43,7 @@
 #if defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT)
 # include "win/DrvIntNet-win.h"
 #endif
+
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
@@ -778,12 +779,7 @@ static DECLCALLBACK(int) drvIntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHa
                               "QuietlyIgnoreTrunkWirePromisc\0"
                               "IgnoreTrunkHostPromisc\0"
                               "QuietlyIgnoreTrunkHostPromisc\0"
-                              "IsService\0"
-                              "DhcpIPAddress\0"
-                              "DhcpNetworkMask\0"
-                              "DhcpLowerIP\0"
-                              "DhcpUpperIP\0"
-                              "DhcpMacAddress\0"))
+                              "IsService\0"))
         return VERR_PDM_DRVINS_UNKNOWN_CFG_VALUES;
 
     /*
