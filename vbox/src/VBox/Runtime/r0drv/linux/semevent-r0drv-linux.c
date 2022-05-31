@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-linux.c 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: semevent-r0drv-linux.c 21538 2009-07-13 14:50:07Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -151,7 +151,7 @@ static int rtSemEventWait(PRTSEMEVENTINTERNAL pEventInt, unsigned cMillies, bool
 #endif
     for (;;)
     {
-        /* make everything thru schedule() atomic scheduling wise. */
+        /* make everything thru schedule_timeout() atomic scheduling wise. */
         prepare_to_wait(&pEventInt->Head, &Wait, fInterruptible ? TASK_INTERRUPTIBLE : TASK_UNINTERRUPTIBLE);
 
         /* check the condition. */
