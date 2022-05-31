@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 20206 2009-06-03 07:09:35Z vboxsync $ */
+/* $Id: HostImpl.cpp 20237 2009-06-03 16:25:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1015,7 +1015,9 @@ STDMETHODIMP Host::COMGETTER(USBDevices)(ComSafeArrayOut (IHostUSBDevice *, aUSB
      * extended error info to indicate that USB is simply not available
      * (w/o treating it as a failure), for example, as in OSE. */
     NOREF(aUSBDevices);
+# ifndef RT_OS_WINDOWS
     NOREF(aUSBDevicesSize);
+# endif
     ReturnComNotImplemented();
 #endif
 }
@@ -1040,7 +1042,9 @@ STDMETHODIMP Host::COMGETTER(USBDeviceFilters) (ComSafeArrayOut (IHostUSBDeviceF
      * extended error info to indicate that USB is simply not available
      * (w/o treating it as a failure), for example, as in OSE. */
     NOREF(aUSBDeviceFilters);
+# ifndef RT_OS_WINDOWS
     NOREF(aUSBDeviceFiltersSize);
+# endif
     ReturnComNotImplemented();
 #endif
 }

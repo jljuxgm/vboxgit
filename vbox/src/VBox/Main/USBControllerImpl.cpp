@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 20206 2009-06-03 07:09:35Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 20237 2009-06-03 16:25:27Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -375,7 +375,9 @@ STDMETHODIMP USBController::COMGETTER(DeviceFilters) (ComSafeArrayOut(IUSBDevice
     return S_OK;
 #else
     NOREF(aDevicesFilters);
+# ifndef RT_OS_WINDOWS
     NOREF(aDevicesFiltersSize);
+# endif
     ReturnComNotImplemented();
 #endif
 }
