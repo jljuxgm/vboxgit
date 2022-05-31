@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 20631 2009-06-16 14:03:45Z vboxsync $ */
+/* $Id: ConsoleImpl.h 20727 2009-06-19 14:13:31Z vboxsync $ */
 
 /** @file
  *
@@ -431,8 +431,6 @@ private:
     static DECLCALLBACK(int) configConstructor(PVM pVM, void *pvConsole);
     static DECLCALLBACK(int) configNetwork(Console *pThis, const char *pszDevice,
                                            unsigned uInstance, unsigned uLun,
-                                           NetworkAttachmentType_T eAttachmentType,
-                                           NetworkAttachmentType_T *meAttachmentType,
                                            INetworkAdapter *aNetworkAdapter,
                                            PCFGMNODE pCfg, PCFGMNODE pLunL0,
                                            PCFGMNODE pInst, bool attachDetach);
@@ -448,13 +446,9 @@ private:
                                           const char *pszPath, bool fPassthrough);
 #ifdef VBOX_DYNAMIC_NET_ATTACH
     HRESULT doNetworkAdapterChange (const char *pszDevice, unsigned uInstance,
-                                    unsigned uLun, NetworkAttachmentType_T eAttachmentType,
-                                    NetworkAttachmentType_T *meAttachmentType,
-                                    INetworkAdapter *aNetworkAdapter);
+                                    unsigned uLun, INetworkAdapter *aNetworkAdapter);
     static DECLCALLBACK(int) changeNetworkAttachment (Console *pThis, const char *pszDevice,
                                                       unsigned uInstance, unsigned uLun,
-                                                      NetworkAttachmentType_T eAttachmentType,
-                                                      NetworkAttachmentType_T *meAttachmentType,
                                                       INetworkAdapter *aNetworkAdapter);
 #endif /* VBOX_DYNAMIC_NET_ATTACH */
 
