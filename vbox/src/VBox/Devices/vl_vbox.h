@@ -1,4 +1,4 @@
-/* $Id: vl_vbox.h 12910 2008-10-02 09:36:48Z vboxsync $ */
+/* $Id: vl_vbox.h 19507 2009-05-07 20:58:49Z vboxsync $ */
 /** @file
  * VBox vl.h Replacement.
  *
@@ -89,7 +89,7 @@ typedef struct TMTIMER QEMUTimer;
 #define ticks_per_sec                           TMCpuTicksPerSecond((PVM)cpu_single_env->pVM)
 #define qemu_get_clock(enmClock)                TMR3Clock((PVM)cpu_single_env->pVM, enmClock)
 #define qemu_new_timer(clock, callback, user)   (QEMUTimer *)TMR3TimerCreateExternal((PVM)cpu_single_env->pVM, clock, callback, user, __FUNCTION__ )
-#define qemu_free_timer(timer)                  TMTimerDestroy(timer)
+#define qemu_free_timer(timer)                  TMR3TimerDestroy(timer)
 #define qemu_del_timer(timer)                   TMTimerStop(timer)
 #define qemu_mod_timer(timer, expire)           TMTimerSet(timer, (uint64_t)expire)
 #define qemu_timer_pending(timer)               TMTimerIsActive(timer)

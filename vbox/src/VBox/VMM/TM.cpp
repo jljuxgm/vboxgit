@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 19500 2009-05-07 18:23:22Z vboxsync $ */
+/* $Id: TM.cpp 19507 2009-05-07 20:58:49Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -1351,7 +1351,7 @@ VMMR3DECL(int) TMR3TimerDestroyDevice(PVM pVM, PPDMDEVINS pDevIns)
         if (    pDestroy->enmType == TMTIMERTYPE_DEV
             &&  pDestroy->u.Dev.pDevIns == pDevIns)
         {
-            int rc = TMTimerDestroy(pDestroy);
+            int rc = TMR3TimerDestroy(pDestroy);
             AssertRC(rc);
         }
     }
@@ -1384,7 +1384,7 @@ VMMR3DECL(int) TMR3TimerDestroyDriver(PVM pVM, PPDMDRVINS pDrvIns)
         if (    pDestroy->enmType == TMTIMERTYPE_DRV
             &&  pDestroy->u.Drv.pDrvIns == pDrvIns)
         {
-            int rc = TMTimerDestroy(pDestroy);
+            int rc = TMR3TimerDestroy(pDestroy);
             AssertRC(rc);
         }
     }

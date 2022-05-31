@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 19502 2009-05-07 18:37:09Z vboxsync $ */
+/* $Id: TMAll.cpp 19507 2009-05-07 20:58:49Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -536,13 +536,14 @@ VMMDECL(PTMTIMERRC) TMTimerRCPtr(PTMTIMER pTimer)
 }
 
 
+#ifdef IN_RING3 /* Kept here until properly cleaned up to not use any of the local functions. */
 /**
  * Destroy a timer
  *
  * @returns VBox status.
  * @param   pTimer          Timer handle as returned by one of the create functions.
  */
-VMMDECL(int) TMTimerDestroy(PTMTIMER pTimer)
+VMMR3DECL(int) TMR3TimerDestroy(PTMTIMER pTimer)
 {
     int cRetries = 1000;
     do
@@ -631,6 +632,7 @@ VMMDECL(int) TMTimerDestroy(PTMTIMER pTimer)
     AssertMsgFailed(("Failed waiting for stable state. state=%d (%s)\n", pTimer->enmState, R3STRING(pTimer->pszDesc)));
     return VERR_INTERNAL_ERROR;
 }
+#endif /* IN_RING3 */
 
 
 /**
