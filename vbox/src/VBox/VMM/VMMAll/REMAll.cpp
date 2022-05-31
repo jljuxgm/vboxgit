@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 20787 2009-06-22 15:22:55Z vboxsync $ */
+/* $Id: REMAll.cpp 20869 2009-06-24 00:27:17Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -144,6 +144,10 @@ static void remNotifyHandlerInsert(PVM pVM, PREMHANDLERNOTIFICATION pRec)
     } while (!ASMAtomicCmpXchgU32(&pVM->rem.s.idxPendingList, idxFree, idxNext));
 
     VM_FF_SET(pVM, VM_FF_REM_HANDLER_NOTIFY);
+
+#if 0 /* Enable this to trigger odd flush bugs. */
+    remFlushHandlerNotifications(pVM);
+#endif
 }
 
 

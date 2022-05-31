@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 20754 2009-06-21 23:18:45Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 20869 2009-06-24 00:27:17Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -269,6 +269,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
         case VINF_EM_RAW_IRET_TRAP:
         case VINF_EM_DBG_HYPER_BREAKPOINT:
         case VINF_EM_DBG_HYPER_STEPPED:
+        case VERR_VMM_HYPER_CR3_MISMATCH:
         {
             /*
              * Active trap? This is only of partial interest when in hardware
