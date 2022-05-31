@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 20012 2009-05-25 19:38:47Z vboxsync $ */
+/* $Id: PGM.cpp 20277 2009-06-04 13:07:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -4059,8 +4059,6 @@ VMMR3DECL(void) PGMR3ReleaseOwnedLocks(PVM pVM)
  */
 int pgmR3ExitShadowModeBeforePoolFlush(PVM pVM, PVMCPU pVCpu)
 {
-    /** @todo Need to synchronize this across all VCPUs! */
-
     /* Unmap the old CR3 value before flushing everything. */
     int rc = PGM_BTH_PFN(UnmapCR3, pVCpu)(pVCpu);
     AssertRC(rc);
