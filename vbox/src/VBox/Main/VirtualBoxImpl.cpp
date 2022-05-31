@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 22183 2009-08-11 17:00:33Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 22187 2009-08-11 17:47:24Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -49,7 +49,6 @@
 #include <typeinfo>
 
 #include "VirtualBoxImpl.h"
-#include "VirtualBoxImplExtra.h"
 
 #include "Global.h"
 #include "MachineImpl.h"
