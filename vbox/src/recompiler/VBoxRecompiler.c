@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 19303 2009-05-03 00:58:22Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 19459 2009-05-06 19:46:00Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2193,6 +2193,7 @@ REMR3DECL(int)  REMR3State(PVM pVM, PVMCPU pVCpu)
     /*
      * We're now in REM mode.
      */
+    VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_EXEC_REM);
     pVM->rem.s.fInREM = true;
     pVM->rem.s.fInStateSync = false;
     pVM->rem.s.cCanExecuteRaw = 0;
@@ -2444,6 +2445,7 @@ REMR3DECL(int) REMR3StateBack(PVM pVM, PVMCPU pVCpu)
     /*
      * We're not longer in REM mode.
      */
+    VMCPU_CMPXCHG_STATE(pVCpu, VMCPUSTATE_STARTED, VMCPUSTATE_STARTED_EXEC_REM);
     pVM->rem.s.fInREM    = false;
     pVM->rem.s.pCtx      = NULL;
     pVM->rem.s.Env.pVCpu = NULL;
