@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 20530 2009-06-13 20:53:44Z vboxsync $ */
+/* $Id: IOMInternal.h 20700 2009-06-19 08:31:03Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -528,6 +528,7 @@ DECLINLINE(PIOMMMIORANGE) iomMMIOGetRange(PIOM pIOM, RTGCPHYS GCPhys)
  */
 DECLINLINE(PIOMMMIOSTATS) iomMMIOGetStats(PIOM pIOM, RTGCPHYS GCPhys, PIOMMMIORANGE pRange)
 {
+    Assert(IOMIsLockOwner(IOM2VM(pIOM)));
     /* For large ranges, we'll put everything on the first byte. */
     if (pRange->cb > PAGE_SIZE)
         GCPhys = pRange->GCPhys;
