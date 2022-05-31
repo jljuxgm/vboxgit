@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 19286 2009-05-01 12:41:07Z vboxsync $ */
+/* $Id: TRPM.cpp 19639 2009-05-12 15:22:14Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -1450,7 +1450,7 @@ VMMR3DECL(int) TRPMR3InjectEvent(PVM pVM, PVMCPU pVCpu, TRPMEVENT enmEvent)
 
 # ifdef LOG_ENABLED
         DBGFR3InfoLog(pVM, "cpumguest", "TRPMInject");
-        DBGFR3DisasInstrCurrentLog(pVM, "TRPMInject");
+        DBGFR3DisasInstrCurrentLog(pVCpu, "TRPMInject");
 # endif
 
         uint8_t u8Interrupt;

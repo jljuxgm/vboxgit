@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 19459 2009-05-06 19:46:00Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 19639 2009-05-12 15:22:14Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -3615,7 +3615,7 @@ bool remR3DisasInstr(CPUState *env, int f32BitCode, char *pszPrefix)
      * Disassemble to log.
      */
     if (fLog)
-        rc = DBGFR3DisasInstrCurrentLogInternal(pVM, pszPrefix);
+        rc = DBGFR3DisasInstrCurrentLogInternal(env->pVCpu, pszPrefix);
 
     return RT_SUCCESS(rc);
 }
