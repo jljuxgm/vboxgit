@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
+/* $Id: DevDMA.cpp 23940 2009-10-21 15:38:18Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -55,7 +55,6 @@
 #define LOG_GROUP LOG_GROUP_DEFAULT ///@todo LOG_GROUP_DEV_DMA
 #include <VBox/log.h>
 #include <iprt/assert.h>
-#include <iprt/uuid.h>
 #include <iprt/string.h>
 
 #include <stdio.h>
