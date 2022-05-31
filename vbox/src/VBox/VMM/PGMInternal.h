@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 19022 2009-04-20 13:11:16Z vboxsync $ */
+/* $Id: PGMInternal.h 19195 2009-04-27 08:53:12Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2448,8 +2448,8 @@ typedef struct PGM
 /// @todo    STAMCOUNTER StatR3PageHandyAllocs;              /**< R3: The number of times we've executed GMMR3AllocateHandyPages. */
 
     /* RC only: */
-    STAMCOUNTER StatRCDynMapCacheMisses;            /**< RC: The number of dynamic page mapping cache hits */
-    STAMCOUNTER StatRCDynMapCacheHits;              /**< RC: The number of dynamic page mapping cache misses */
+    STAMCOUNTER StatRCDynMapCacheMisses;            /**< RC: The number of dynamic page mapping cache misses */
+    STAMCOUNTER StatRCDynMapCacheHits;              /**< RC: The number of dynamic page mapping cache hits */
     STAMCOUNTER StatRCInvlPgConflict;               /**< RC: Number of times PGMInvalidatePage() detected a mapping conflict. */
     STAMCOUNTER StatRCInvlPgSyncMonCR3;             /**< RC: Number of times PGMInvalidatePage() ran into PGM_SYNC_MONITOR_CR3. */
 
