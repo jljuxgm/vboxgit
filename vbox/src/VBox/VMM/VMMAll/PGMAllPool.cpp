@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22772 2009-09-04 10:02:48Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22774 2009-09-04 10:20:22Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1075,6 +1075,7 @@ DECLINLINE(int) pgmPoolAccessHandlerSimple(PVM pVM, PVMCPU pVCpu, PPGMPOOL pPool
         STAM_COUNTER_INC(&pPool->CTX_MID_Z(StatMonitor,EmulateInstr));
     }
 
+#if 0 /* experimental code */
     if (rc == VINF_SUCCESS)
     {
         switch (pPage->enmKind)
@@ -1102,6 +1103,7 @@ DECLINLINE(int) pgmPoolAccessHandlerSimple(PVM pVM, PVMCPU pVCpu, PPGMPOOL pPool
         }
         }
     }
+#endif
 
 #ifdef IN_RC
     /*
