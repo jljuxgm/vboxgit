@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 22911 2009-09-10 12:02:36Z vboxsync $ */
+/* $Id: VBoxManage.h 23569 2009-10-06 00:31:40Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -139,6 +139,7 @@ extern bool g_fDetailedProgress;        // in VBoxManage.cpp
 /* VBoxManageHelp.cpp */
 void printUsage(USAGECATEGORY u64Cmd);
 int errorSyntax(USAGECATEGORY u64Cmd, const char *pszFormat, ...);
+int errorGetOpt(USAGECATEGORY u64Cmd, int rc, union RTGETOPTUNION const *pValueUnion);
 int errorArgument(const char *pszFormat, ...);
 
 void printUsageInternal(USAGECATEGORY u64Cmd);
