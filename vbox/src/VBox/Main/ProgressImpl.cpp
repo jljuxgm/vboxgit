@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 18306 2009-03-26 11:57:52Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 18394 2009-03-27 14:04:43Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -270,14 +270,19 @@ STDMETHODIMP ProgressBase::COMGETTER(Percent)(ULONG *aPercent)
         *aPercent = 100;
     else
     {
-        /* global percent =
-         *      (100 / m_cOperations) * mOperation +
-         *      ((100 / m_cOperations) / 100) * m_ulOperationPercent */
-//         *aPercent = (100 * mOperation + m_ulOperationPercent) / m_cOperations;
-
-        *aPercent = (ULONG)(    (    (double)m_ulOperationsCompletedWeight                                              // weight of operations that have been completed
-                                   + ((double)m_ulOperationPercent * (double)m_ulCurrentOperationWeight / (double)100)  // plus partial weight of the current operation
-                                ) * (double)100 / (double)m_ulTotalOperationsWeight);
+        ULONG ulPercent = (ULONG)(    (    (double)m_ulOperationsCompletedWeight                                              // weight of operations that have been completed
+                                         + ((double)m_ulOperationPercent * (double)m_ulCurrentOperationWeight / (double)100)  // plus partial weight of the current operation
+                                      ) * (double)100 / (double)m_ulTotalOperationsWeight
+                                 );
+        // do not report 100% until we're really really done with everything as the Qt GUI dismisses progress dialogs in that case
+        if (    ulPercent == 100
+             && (    m_ulOperationPercent < 100
+                  || (m_ulCurrentOperation < m_cOperations -1)
+                )
+           )
+            *aPercent = 99;
+        else
+            *aPercent = ulPercent;
     }
 
     return S_OK;
