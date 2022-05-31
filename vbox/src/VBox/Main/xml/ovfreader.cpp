@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 21599 2009-07-15 10:11:36Z vboxsync $ */
+/* $Id: ovfreader.cpp 21701 2009-07-17 14:44:43Z vboxsync $ */
 /** @file
  *
  * OVF reader declarations. Depends only on IPRT, including the iprt::MiniString
@@ -20,8 +20,6 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
-
-#include <iprt/stdint.h>
 
 #include "ovfreader.h"
 
