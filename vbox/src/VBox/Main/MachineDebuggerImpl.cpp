@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 19500 2009-05-07 18:23:22Z vboxsync $ */
 
 /** @file
  *
@@ -584,7 +584,7 @@ STDMETHODIMP MachineDebugger::COMGETTER(VirtualTimeRate) (ULONG *aPct)
     Console::SafeVMPtrQuiet pVM (mParent);
 
     if (pVM.isOk())
-        *aPct = TMVirtualGetWarpDrive (pVM);
+        *aPct = TMGetWarpDrive (pVM);
     else
         *aPct = 100;
 
@@ -617,7 +617,7 @@ STDMETHODIMP MachineDebugger::COMSETTER(VirtualTimeRate) (ULONG aPct)
     Console::SafeVMPtr pVM (mParent);
     CheckComRCReturnRC (pVM.rc());
 
-    int vrc = TMVirtualSetWarpDrive (pVM, aPct);
+    int vrc = TMR3SetWarpDrive (pVM, aPct);
     if (RT_FAILURE (vrc))
     {
         /** @todo handle error code. */

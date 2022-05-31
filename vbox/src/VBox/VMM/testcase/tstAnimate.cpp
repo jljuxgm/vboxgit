@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: tstAnimate.cpp 19500 2009-05-07 18:23:22Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -862,7 +862,7 @@ int main(int argc, char **argv)
                      */
                     if (u32WarpDrive != 100)
                     {
-                        rc = TMVirtualSetWarpDrive(pVM, u32WarpDrive);
+                        rc = TMR3SetWarpDrive(pVM, u32WarpDrive);
                         if (RT_FAILURE(rc))
                             RTPrintf("warning: TMVirtualSetWarpDrive(,%u) -> %Rrc\n", u32WarpDrive, rc);
                     }

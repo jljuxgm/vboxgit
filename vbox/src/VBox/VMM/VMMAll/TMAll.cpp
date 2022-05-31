@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 19498 2009-05-07 18:08:16Z vboxsync $ */
+/* $Id: TMAll.cpp 19500 2009-05-07 18:23:22Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -1712,4 +1712,16 @@ void tmTimerQueuesSanityChecks(PVM pVM, const char *pszWhere)
 # endif /* IN_RING3 */
 }
 #endif /* !VBOX_STRICT */
+
+
+/**
+ * Gets the current warp drive percent.
+ *
+ * @returns The warp drive percent.
+ * @param   pVM         The VM handle.
+ */
+VMMDECL(uint32_t) TMGetWarpDrive(PVM pVM)
+{
+    return pVM->tm.s.u32VirtualWarpDrivePercentage;
+}
 
