@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 18143 2009-03-23 15:10:24Z vboxsync $ */
+/* $Id: DevPcBios.cpp 18373 2009-03-27 06:28:50Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -55,7 +55,7 @@
          0x18
          0x30
          0x31
-    Amount of memory above 16M:
+    Amount of memory above 16M and below 4GB in 64KB units:
          0x34
          0x35
     Boot device (BOCHS bios specific):
@@ -90,7 +90,7 @@
          0x58 - 0x5f
     Number of CPUs:
          0x60
-    RAM above 4G (in 64KB units):
+    RAM above 4G in 64KB units:
          0x61 - 0x65
 @endverbatim
  *
