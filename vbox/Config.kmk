@@ -1,4 +1,4 @@
-# $Id: Config.kmk 19661 2009-05-13 14:11:00Z vboxsync $
+# $Id: Config.kmk 19662 2009-05-13 14:34:08Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1324,8 +1324,7 @@ else
 endif
 
 # Makeself for the linux installers.
-VBOX_MAKESELF  ?= $(PATH_DEVTOOLS)/common/makeself/v2.1.4_1/makeself.sh
-#VBOX_MAKESELF  ?= $(PATH_DEVTOOLS)/common/makeself/v2.1.5_1/makeself.sh
+VBOX_MAKESELF  ?= $(PATH_DEVTOOLS)/common/makeself/v2.1.5/makeself.sh
 
 # Microsoft HTML Help Workshop.
 VBOX_PATH_HTML_HELP_WORKSHOP ?= $(PATH_DEVTOOLS)/win.x86/HTML_Help_Workshop/v1.3/
@@ -3770,7 +3769,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 19661 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 19662 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
