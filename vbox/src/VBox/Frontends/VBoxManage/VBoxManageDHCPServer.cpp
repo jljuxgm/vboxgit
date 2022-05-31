@@ -1,6 +1,6 @@
-/* $Id: VBoxManageDHCPServer.cpp 18023 2009-03-17 13:48:59Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 18072 2009-03-18 16:58:40Z vboxsync $ */
 /** @file
- * VBoxManage - Implementation of hostonlyif command.
+ * VBoxManage - Implementation of dhcpserver command.
  */
 
 /*

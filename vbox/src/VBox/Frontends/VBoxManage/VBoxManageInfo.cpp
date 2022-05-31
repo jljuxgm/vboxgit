@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 17843 2009-03-13 15:51:55Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 18072 2009-03-18 16:58:40Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -714,6 +714,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                             strAttachment = Utf8StrFmt("Internal Network '%s'", Utf8Str(strNetwork).raw());
                         break;
                     }
+#if defined(VBOX_WITH_NETFLT)
                     case NetworkAttachmentType_HostOnly:
                     {
                         Bstr strHostonlyAdp;
@@ -727,6 +728,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                             strAttachment = Utf8StrFmt("Host-only Interface '%lS'", strHostonlyAdp.raw());
                         break;
                     }
+#endif
                     default:
                         strAttachment = "unknown";
                         break;
