@@ -1,4 +1,4 @@
-/* $Id: bin2c.c 19345 2009-05-04 23:25:10Z vboxsync $ */
+/* $Id: bin2c.c 19412 2009-05-06 08:21:39Z vboxsync $ */
 /** @file
  * bin2c - Binary 2 C Structure Converter.
  */
@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
             if (iBreakEvery <= 0 && iBreakEvery != -1)
             {
                 fprintf(stderr, "%s: -break value '%s' is not >= 1 or -1.\n",
-                        argv[0], argv[i], (unsigned)sizeof(abLine));
+                        argv[0], argv[i]);
                 return 1;
             }
         }
