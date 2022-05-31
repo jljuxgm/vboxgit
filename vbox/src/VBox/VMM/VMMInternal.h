@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 19462 2009-05-06 20:20:47Z vboxsync $ */
+/* $Id: VMMInternal.h 19529 2009-05-08 14:37:30Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -246,6 +246,11 @@ typedef struct VMM
     uint32_t                    cYieldEveryMillies;
     /** The timestamp of the previous yield. (nano) */
     uint64_t                    u64LastYield;
+
+    /** Critical section.
+     * Use for synchronizing all VCPUs
+     */
+    RTCRITSECT                 CritSectSync;
 
     /** Buffer for storing the standard assertion message for a ring-0 assertion.
      * Used for saving the assertion message text for the release log and guru
