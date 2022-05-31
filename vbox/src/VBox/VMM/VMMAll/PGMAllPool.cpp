@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22775 2009-09-04 12:26:28Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22783 2009-09-04 14:12:08Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1600,7 +1600,10 @@ void pgmPoolAddDirtyPage(PVM pVM, PPGMPOOL pPool, PPGMPOOLPAGE pPage)
     Assert(pPage->iMonitoredNext == NIL_PGMPOOL_IDX && pPage->iMonitoredPrev == NIL_PGMPOOL_IDX);
 
     if (pPool->cDirtyPages >= RT_ELEMENTS(pPool->aIdxDirtyPages))
+    {
+        STAM_COUNTER_INC(&pPool->StatDirtyPageOverFlowFlush);
         pgmPoolFlushDirtyPage(pVM, pPool, idxFree, true /* force removal */);
+    }
     Assert(pPool->cDirtyPages < RT_ELEMENTS(pPool->aIdxDirtyPages));
     AssertMsg(pPool->aIdxDirtyPages[idxFree] == NIL_PGMPOOL_IDX, ("idxFree=%d cDirtyPages=%d\n", idxFree, pPool->cDirtyPages));
 

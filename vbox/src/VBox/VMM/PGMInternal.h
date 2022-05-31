@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 22775 2009-09-04 12:26:28Z vboxsync $ */
+/* $Id: PGMInternal.h 22783 2009-09-04 14:12:08Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1863,6 +1863,8 @@ typedef struct PGMPOOL
     STAMCOUNTER                 StatDirtyPage;
     /** Times we've had to flush duplicates for dirty page management. */
     STAMCOUNTER                 StatDirtyPageDupFlush;
+    /** Times we've had to flush because of overflow. */
+    STAMCOUNTER                 StatDirtyPageOverFlowFlush;
 
     /** The high wather mark for cModifiedPages. */
     uint16_t                    cModifiedPagesHigh;
