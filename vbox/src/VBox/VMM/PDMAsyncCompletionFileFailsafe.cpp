@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileFailsafe.cpp 23956 2009-10-21 22:18:40Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileFailsafe.cpp 23978 2009-10-22 13:15:35Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Failsafe File I/O manager.
@@ -100,7 +100,7 @@ static int pdmacFileAioMgrFailsafeProcessEndpoint(PPDMASYNCCOMPLETIONENDPOINTFIL
     {
         pTasks = pdmacFileEpGetNewTasks(pEndpoint);
 
-        if (pTasks);
+        if (pTasks)
             rc = pdmacFileAioMgrFailsafeProcessEndpointTaskList(pEndpoint, pTasks);
     }
 
