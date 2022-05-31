@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 20283 2009-06-04 13:26:14Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 20304 2009-06-05 09:00:56Z vboxsync $ */
 
 /** @file
  * VBox host opengl support test
@@ -13,13 +13,21 @@
 
 #include <stdio.h>
 #include <iprt/initterm.h>
+#ifdef RT_OS_WINDOWS
+#include <windows.h>
+#endif
 
 extern "C" {
   extern void * crSPULoad(void *, int, char *, char *, void *);
   extern void crSPUUnloadChain(void *);
 }
 
+#ifndef RT_OS_WINDOWS
 int main (int argc, char **argv)
+#else
+extern "C" int WINAPI WinMain(HINSTANCE hInstance,
+    HINSTANCE /*hPrevInstance*/, LPSTR lpCmdLine, int /*nShowCmd*/)
+#endif
 {
     void *spu;
     int rc=1;
