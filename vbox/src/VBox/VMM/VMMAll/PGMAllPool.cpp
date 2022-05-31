@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22764 2009-09-04 09:02:46Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22766 2009-09-04 09:05:20Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4718,6 +4718,7 @@ PPGMPOOLPAGE pgmPoolGetPage(PPGMPOOL pPool, RTHCPHYS HCPhys)
     return pPage;
 }
 
+#ifdef IN_RING3 /* currently only used in ring 3; save some space in the R0 & GC modules */
 /**
  * Flush the specified page if present
  *
@@ -4801,6 +4802,7 @@ void pgmPoolFlushPageByGCPhys(PVM pVM, RTGCPHYS GCPhys)
 #endif
     return;
 }
+#endif /* IN_RING3 */
 
 #ifdef IN_RING3
 /**
