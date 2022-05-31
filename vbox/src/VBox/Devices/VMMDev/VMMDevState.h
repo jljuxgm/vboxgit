@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 22270 2009-08-14 20:28:17Z vboxsync $ */
+/* $Id: VMMDevState.h 22271 2009-08-14 20:39:08Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -43,6 +43,8 @@ typedef struct VMMDevState
     /** absolute mouse position in pixels */
     uint32_t mouseXAbs;
     uint32_t mouseYAbs;
+    /** Does the guest currently want the host pointer to be shown? */
+    uint32_t fHostCursorRequested;
 
     /** Pointer to device instance. */
     PPDMDEVINSR3 pDevIns;
