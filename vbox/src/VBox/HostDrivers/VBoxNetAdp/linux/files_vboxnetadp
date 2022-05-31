@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Revision: 23473 $
+# $Revision: 23961 $
 ## @files
 # Shared file between Makefile.kmk and export_modules
 #
@@ -36,6 +36,7 @@ VBOX_VBOXNETADP_SOURCES=" \
     ${PATH_ROOT}/include/iprt/mem.h=>include/iprt/mem.h \
     ${PATH_ROOT}/include/iprt/memobj.h=>include/iprt/memobj.h \
     ${PATH_ROOT}/include/iprt/mp.h=>include/iprt/mp.h \
+    ${PATH_ROOT}/include/iprt/net.h=>include/iprt/net.h \
     ${PATH_ROOT}/include/iprt/param.h=>include/iprt/param.h \
     ${PATH_ROOT}/include/iprt/power.h=>include/iprt/power.h \
     ${PATH_ROOT}/include/iprt/process.h=>include/iprt/process.h \
