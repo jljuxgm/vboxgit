@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 22242 2009-08-13 15:38:35Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 22245 2009-08-13 15:58:00Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -291,8 +291,9 @@ VMMDECL(int) TMCpuTickSetLastSeen(PVMCPU pVCpu, uint64_t u64LastSeenTick)
 {
     VMCPU_ASSERT_EMT(pVCpu);
 
-    Assert(pVCpu->tm.s.u64TSCLastSeen < u64LastSeenTick);
-    pVCpu->tm.s.u64TSCLastSeen = u64LastSeenTick;
+    LogFlow(("TMCpuTickSetLastSeen %RX64\n", u64LastSeenTick));
+    if (pVCpu->tm.s.u64TSCLastSeen < u64LastSeenTick)
+        pVCpu->tm.s.u64TSCLastSeen = u64LastSeenTick;
     return VINF_SUCCESS;
 }
 
