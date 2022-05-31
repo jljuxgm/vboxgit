@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 16933 2009-02-18 23:42:57Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 19308 2009-05-03 19:24:41Z vboxsync $ */
 /** @file
  * IPRT - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -179,7 +179,7 @@ static int testLdrOne(const char *pszFilename)
                 cErrors++;
                 break;
             }
-            DECLCALLBACKPTR(int, pfnDisasmTest1)(void) = (DECLCALLBACKPTR(int, )(void))(uintptr_t)Value; /* eeeh. */
+            DECLCALLBACKPTR(int, pfnDisasmTest1)(void) = (DECLCALLBACKPTR(int, RT_NOTHING)(void))(uintptr_t)Value; /* eeeh. */
             RTPrintf("tstLdr-4: pfnDisasmTest1=%p / add-symbol-file %s %#x\n", pfnDisasmTest1, pszFilename, aLoads[i].pvBits);
 
             /* call the test function. */
