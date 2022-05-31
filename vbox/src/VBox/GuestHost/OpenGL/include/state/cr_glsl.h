@@ -1,4 +1,4 @@
-/* $Id: cr_glsl.h 23399 2009-09-29 05:04:38Z vboxsync $ */
+/* $Id: cr_glsl.h 23403 2009-09-29 09:55:43Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: GLSL related state info
@@ -64,7 +64,7 @@ typedef struct{
     GLenum  type;
     GLvoid *data;
 #ifdef IN_GUEST
-    GLuint  location;
+    GLint  location;
 #endif
 } CRGLSLUniform;
 
