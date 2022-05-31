@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 22709 2009-09-02 11:46:18Z vboxsync $ */
+/* $Id: PGMPhys.cpp 22710 2009-09-02 11:48:57Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -376,7 +376,7 @@ static DECLCALLBACK(int) pgmR3PhysGCPhys2CCPtrDelegated(PVM pVM, PRTGCPHYS pGCPh
         else
         if (    PGM_PAGE_HAS_ACTIVE_HANDLERS(pPage)
 #ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
-            ||  pgmPoolIsDirtyPage(pVM, GCPhys)
+            ||  pgmPoolIsDirtyPage(pVM, *pGCPhys)
 #endif
            )
         {
