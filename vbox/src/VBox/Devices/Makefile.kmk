@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 23529 2009-10-03 18:02:03Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -1014,6 +1014,11 @@ ifdef VBOX_WITH_USB
  Drivers_SOURCES.solaris += \
 	USB/USBProxyDevice.cpp \
 	USB/solaris/$(if $(VBOX_WITH_NEW_USB_CODE_ON_SOLARIS),USBProxyDevice2-solaris.cpp,USBProxyDevice-solaris.cpp)
+
+ Drivers_DEFS.freebsd      += VUSB_HAVE_USBPROXY_DEVICE
+ Drivers_SOURCES.freebsd   += \
+	USB/USBProxyDevice.cpp \
+	USB/freebsd/USBProxyDevice-freebsd.cpp
 endif # VBOX_WITH_USB
 
 ifdef VBOX_WITH_PDM_ASYNC_COMPLETION

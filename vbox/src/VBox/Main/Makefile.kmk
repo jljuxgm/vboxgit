@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 23529 2009-10-03 18:02:03Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -359,6 +359,7 @@ ifdef VBOX_WITH_USB
  VBoxSVC_SOURCES.os2     +=     os2/USBProxyServiceOs2.cpp
  VBoxSVC_SOURCES.solaris += solaris/USBProxyServiceSolaris.cpp
  VBoxSVC_SOURCES.win     +=     win/USBProxyServiceWindows.cpp
+ VBoxSVC_SOURCES.freebsd += freebsd/USBProxyServiceFreeBSD.cpp
 endif
 
 ifdef VBOX_WITH_NETFLT
