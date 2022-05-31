@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 18557 2009-03-30 17:42:47Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 19034 2009-04-20 15:42:34Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2106,6 +2106,29 @@ VBOXDDU_DECL(int) VDCopy(PVBOXHDD pDiskFrom, unsigned nImage, PVBOXHDD pDiskTo,
 
     LogFlowFunc(("returns %Rrc\n", rc));
     return rc;
+}
+
+/**
+ * Optimizes the storage consumption of an image. Typically the unused blocks
+ * have to be wiped with zeroes to achieve a substantial reduced storage use.
+ * Another optimization done is reordering the image blocks, which can provide
+ * a significant performance boost, as reads and writes tend to use less random
+ * file offsets.
+ *
+ * @return  VBox status code.
+ * @return  VERR_VD_IMAGE_NOT_FOUND if image with specified number was not opened.
+ * @return  VERR_VD_IMAGE_READ_ONLY if image is not writable.
+ * @return  VERR_NOT_SUPPORTED if this kind of image cannot be compacted.
+ * @return  VERR_NOT_IMPLEMENTED if this kind of image can be compacted, but
+ *                               the code for this isn't implemented yet.
+ * @param   pDisk           Pointer to HDD container.
+ * @param   nImage          Image number, counts from 0. 0 is always base image of container.
+ * @param   pVDIfsOperation Pointer to the per-operation VD interface list.
+ */
+VBOXDDU_DECL(int) VDCompact(PVBOXHDD pDisk, unsigned nImage,
+                            PVDINTERFACE pVDIfsOperation)
+{
+    return VERR_NOT_SUPPORTED;
 }
 
 /**
