@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 23810 2009-10-15 17:00:44Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 23827 2009-10-16 15:50:35Z vboxsync $ */
 
 /** @file
  *
@@ -6761,12 +6761,8 @@ DECLCALLBACK(int) Console::powerUpThread(RTTHREAD Thread, void *pvUser)
                     }
                 }
                 else if (task->mTeleporterEnabled)
-                {
                     /* -> ConsoleImplTeleporter.cpp */
                     vrc = console->teleporterTrg(pVM, pMachine, task->mStartPaused, task->mProgress);
-                    if (RT_FAILURE(vrc))
-                        VMR3PowerOff(pVM);
-                }
                 else if (task->mStartPaused)
                     /* done */
                     console->setMachineState(MachineState_Paused);
