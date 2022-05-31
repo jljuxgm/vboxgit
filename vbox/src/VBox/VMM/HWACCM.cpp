@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 19908 2009-05-22 11:19:38Z vboxsync $ */
+/* $Id: HWACCM.cpp 20026 2009-05-26 11:41:27Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -617,6 +617,8 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
         return rc;
     }
     Assert(!pVM->fHWACCMEnabled || VMMIsHwVirtExtForced(pVM));
+
+    pVM->hwaccm.s.fHasIoApic = PDMHasIoApic(pVM);
 
     if (pVM->hwaccm.s.vmx.fSupported)
     {

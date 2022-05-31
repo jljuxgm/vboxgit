@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 20001 2009-05-25 13:59:29Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 20026 2009-05-26 11:41:27Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1451,6 +1451,47 @@ ResumeExecution:
             }
 #endif
             Assert(!pVM->hwaccm.s.fNestedPaging);
+
+#if 0
+            /* Shortcut for APIC TPR reads and writes; 32 bits guests only */
+            if (    (uFaultAddress & 0xfff) == 0x080
+                &&  pVM->hwaccm.s.fHasIoApic
+                &&  !(errCode & X86_TRAP_PF_P)  /* not present */
+                &&  !CPUMIsGuestInLongModeEx(pCtx))
+            {
+                RTGCPHYS GCPhysApicBase, GCPhys;
+                PDMApicGetBase(pVM, &GCPhysApicBase);   /* @todo cache this */
+                GCPhysApicBase &= PAGE_BASE_GC_MASK;
+
+                rc = PGMGstGetPage(pVCpu, (RTGCPTR)uFaultAddress, NULL, &GCPhys);
+                if (    rc == VINF_SUCCESS
+                    &&  GCPhys == GCPhysApicBase)
+                {
+                    Log(("Replace TPR access at %RGv\n", pCtx->rip));
+
+                    DISCPUSTATE Cpu;
+                    unsigned cbOp;
+                    rc = EMInterpretDisasOne(pVM, pVCpu, CPUMCTX2CORE(pCtx), &Cpu, &cbOp);
+                    AssertRC(rc);
+                    if (    rc == VINF_SUCCESS
+                        &&  Cpu.pCurInstr->opcode == OP_MOV
+                        &&  cbOp == 6)
+                    {
+                        if (    (errCode & X86_TRAP_PF_RW)
+                            &&  Cpu.param1.parval == uFaultAddress)
+                        {
+                            Log(("Acceptable write candidate!\n"));
+                        }
+                        else
+                        if (Cpu.param2.parval == uFaultAddress)
+                        {
+                            Log(("Acceptable read candidate!\n"));
+                        }
+                    }
+
+                }
+            }
+#endif
 
             Log2(("Page fault at %RGv cr2=%RGv error code %x\n", (RTGCPTR)pCtx->rip, uFaultAddress, errCode));
             /* Exit qualification contains the linear address of the page fault. */
