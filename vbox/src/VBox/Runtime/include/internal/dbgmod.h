@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 19509 2009-05-08 02:18:39Z vboxsync $ */
+/* $Id: dbgmod.h 19559 2009-05-10 04:36:23Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -210,7 +210,7 @@ typedef RTDBGMODVTDBG const *PCRTDBGMODVTDBG;
 /**
  * Debug module structure.
  */
-typedef struct RTDBGMOD
+typedef struct RTDBGMODINT
 {
     /** Magic value (RTDBGMOD_MAGIC). */
     uint32_t        u32Magic;
