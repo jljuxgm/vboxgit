@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22229 2009-08-13 10:30:32Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22246 2009-08-13 17:27:48Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -5829,6 +5829,8 @@ HRESULT Machine::saveHardware(settings::Hardware &data)
             s.ulSlot = slot;
             rc = mSerialPorts[slot]->saveSettings(s);
             CheckComRCReturnRC (rc);
+
+            data.llSerialPorts.push_back(s);
         }
 
         /* Parallel ports */
@@ -5841,6 +5843,8 @@ HRESULT Machine::saveHardware(settings::Hardware &data)
             p.ulSlot = slot;
             rc = mParallelPorts[slot]->saveSettings(p);
             CheckComRCReturnRC (rc);
+
+            data.llParallelPorts.push_back(p);
         }
 
         /* Audio adapter */
