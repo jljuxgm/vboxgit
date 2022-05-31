@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 22718 2009-09-02 14:20:11Z vboxsync $ */
+/* $Id: PGMPool.cpp 22719 2009-09-02 14:44:32Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -661,6 +661,17 @@ static DECLCALLBACK(int) pgmR3PoolCmdCheck(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, 
                             fFirstMsg = false;
                         }
                         pCmdHlp->pfnPrintf(pCmdHlp, NULL, "Mismatch HCPhys: rc=%d idx=%d guest %RX64 shw=%RX64 vs %RHp\n", rc, j, pGstPT->a[j].u, pShwPT->a[j].u, HCPhys);
+                    }
+                    else
+                    if (    pShwPT->a[j].n.u1Write
+                        &&  pGstPT->a[j].n.u1Write)
+                    {
+                        if (fFirstMsg)
+                        {
+                            pCmdHlp->pfnPrintf(pCmdHlp, NULL, "Check pool page %RGp\n", pPage->GCPhys);
+                            fFirstMsg = false;
+                        }
+                        pCmdHlp->pfnPrintf(pCmdHlp, NULL, "Mismatch r/w gst/shw: idx=%d guest %RX64 shw=%RX64 vs %RHp\n", j, pGstPT->a[j].u, pShwPT->a[j].u, HCPhys);
                     }
                 }
             }
