@@ -1,4 +1,4 @@
-/* $Id: tstRTS3.cpp 20108 2009-05-27 22:31:48Z vboxsync $ */
+/* $Id: tstRTS3.cpp 20110 2009-05-27 22:49:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple Storage Service (S3) Communication API
  */
@@ -195,8 +195,8 @@ int main(int argc, char **argv)
      */
     if (argc <= 2)
     {
-        RTPrintf("Syntax: %s [Access Key] [Secret Key]\n", argv[0]);
-        return 1;
+        RTTestPrintf(hTest, RTTESTLVL_ALWAYS, "Syntax: %s [Access Key] [Secret Key]\n", argv[0]);
+        return RTTestSkipAndDestroy(hTest, "Missing required arguments\n");
     }
 
     RTTestSubF(hTest, "Create S3");
