@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 20546 2009-06-14 00:25:03Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 20577 2009-06-15 07:45:29Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -241,11 +241,6 @@ static int pgmHandlerPhysicalSetRamFlagsAndFlushShadowPTs(PVM pVM, PPGMPHYSHANDL
     }
     else
     {
-#ifdef DEBUG_bird
-        Assert(!fFlushTLBs || rc == VINF_PGM_SYNC_CR3);
-#else
-        Assert(!fFlushTLBs);
-#endif
         Log(("pgmHandlerPhysicalSetRamFlagsAndFlushShadowPTs: doesn't flush guest TLBs. rc=%Rrc\n", rc));
     }
     return rc;
