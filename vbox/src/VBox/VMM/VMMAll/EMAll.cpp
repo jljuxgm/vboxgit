@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 19015 2009-04-20 07:54:29Z vboxsync $ */
+/* $Id: EMAll.cpp 19032 2009-04-20 15:03:08Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2554,7 +2554,7 @@ VMMDECL(int) EMInterpretRdtsc(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
     if (uCR4 & X86_CR4_TSD)
         return VERR_EM_INTERPRETER; /* genuine #GP */
 
-    uint64_t uTicks = TMCpuTickGet(pVM);
+    uint64_t uTicks = TMCpuTickGet(pVCpu);
 
     /* Same behaviour in 32 & 64 bits mode */
     pRegFrame->rax = (uint32_t)uTicks;
@@ -2585,7 +2585,7 @@ VMMDECL(int) EMInterpretRdtscp(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     if (uCR4 & X86_CR4_TSD)
         return VERR_EM_INTERPRETER; /* genuine #GP */
 
-    uint64_t uTicks = TMCpuTickGet(pVM);
+    uint64_t uTicks = TMCpuTickGet(pVCpu);
 
     /* Same behaviour in 32 & 64 bits mode */
     pCtx->rax = (uint32_t)uTicks;
@@ -2798,7 +2798,7 @@ VMMDECL(int) EMInterpretRdmsr(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
     switch (pRegFrame->ecx)
     {
     case MSR_IA32_TSC:
-        val = TMCpuTickGet(pVM);
+        val = TMCpuTickGet(pVCpu);
         break;
 
     case MSR_IA32_APICBASE:

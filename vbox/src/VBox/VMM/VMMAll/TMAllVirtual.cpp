@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 14299 2008-11-18 13:25:40Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 19032 2009-04-20 15:03:08Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -31,6 +31,7 @@
 #endif
 #include "TMInternal.h"
 #include <VBox/vm.h>
+#include <VBox/vmm.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <VBox/sup.h>
@@ -681,6 +682,8 @@ VMMDECL(int) TMVirtualSetWarpDrive(PVM pVM, uint32_t u32Percent)
  */
 static DECLCALLBACK(int) tmVirtualSetWarpDrive(PVM pVM, uint32_t u32Percent)
 {
+    PVMCPU pVCpu = VMMGetCpu(pVM);
+
     /*
      * Validate it.
      */
@@ -697,7 +700,7 @@ static DECLCALLBACK(int) tmVirtualSetWarpDrive(PVM pVM, uint32_t u32Percent)
     {
         int rc = TMVirtualPause(pVM);
         AssertRCReturn(rc, rc);
-        rc = TMCpuTickPause(pVM);
+        rc = TMCpuTickPause(pVCpu);
         AssertRCReturn(rc, rc);
     }
 
@@ -710,7 +713,7 @@ static DECLCALLBACK(int) tmVirtualSetWarpDrive(PVM pVM, uint32_t u32Percent)
     {
         int rc = TMVirtualResume(pVM);
         AssertRCReturn(rc, rc);
-        rc = TMCpuTickResume(pVM);
+        rc = TMCpuTickResume(pVCpu);
         AssertRCReturn(rc, rc);
     }
 
