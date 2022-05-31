@@ -1,4 +1,4 @@
-/* $Id: cr_framebuffer.h 22155 2009-08-11 10:36:56Z vboxsync $ */
+/* $Id: cr_framebuffer.h 22156 2009-08-11 10:40:41Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: FBO related state info
@@ -56,7 +56,7 @@ typedef struct {
     GLuint   id;
     GLsizei  width, height;
     GLenum   internalformat;
-  	GLuint   redBits, greenBits, blueBits, alphaBits, depthBits, stencilBits;
+    GLuint   redBits, greenBits, blueBits, alphaBits, depthBits, stencilBits;
 } CRRenderbufferObject;
 
 typedef struct {
