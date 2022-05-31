@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 21523 2009-07-13 08:54:34Z vboxsync $ */
+/* $Id: crservice.cpp 21624 2009-07-15 19:41:58Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -20,6 +20,7 @@
  * additional information or have any questions.
  */
 
+#define __STDC_CONSTANT_MACROS  /* needed for a definition in iprt/string.h */
 
 #ifdef RT_OS_WINDOWS
 #include <iprt/alloc.h>
