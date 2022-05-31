@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 19217 2009-04-27 15:00:59Z vboxsync $ */
+/* $Id: DBGF.cpp 19259 2009-04-29 12:45:19Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -385,7 +385,7 @@ static DBGFEVENTCTX dbgfR3FigureEventCtx(PVM pVM)
  */
 static int dbgfR3EventPrologue(PVM pVM, DBGFEVENTTYPE enmEvent)
 {
-    PVMCPU pVCpu = VMMGetCpu0(pVM);
+    PVMCPU pVCpu = VMMGetCpu(pVM);
 
     /*
      * Check if a debugger is attached.

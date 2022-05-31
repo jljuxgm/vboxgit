@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: PATMAll.cpp 19259 2009-04-29 12:45:19Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -298,7 +298,7 @@ VMMDECL(int) PATMSetMMIOPatchInfo(PVM pVM, RTGCPHYS GCPhys, RTRCPTR pCachedData)
  */
 VMMDECL(bool) PATMAreInterruptsEnabled(PVM pVM)
 {
-    PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(VMMGetCpu0(pVM));
+    PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(VMMGetCpu(pVM));
 
     return PATMAreInterruptsEnabledByCtxCore(pVM, CPUMCTX2CORE(pCtx));
 }
