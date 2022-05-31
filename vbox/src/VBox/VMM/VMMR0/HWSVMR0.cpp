@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 20462 2009-06-10 12:06:02Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 20491 2009-06-12 09:30:26Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1026,7 +1026,7 @@ ResumeExecution:
 #ifdef VBOX_STRICT
     idCpuCheck = RTMpCpuId();
 #endif
-#ifdef LOG_LOGGING
+#ifdef LOG_ENABLED
     VMMR0LogFlushDisable(pVCpu);
 #endif
 
@@ -1323,7 +1323,7 @@ ResumeExecution:
     }
 
     /* Note! NOW IT'S SAFE FOR LOGGING! */
-#ifdef LOG_LOGGING
+#ifdef LOG_ENABLED
     VMMR0LogFlushEnable(pVCpu);
 #endif
 
