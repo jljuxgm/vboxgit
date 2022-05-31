@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 23257 2009-09-23 13:30:15Z vboxsync $ */
+/* $Id: MediumImpl.h 23591 2009-10-07 07:57:15Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -87,11 +87,11 @@ public:
     // initializer used when loading settings
     HRESULT init(VirtualBox *aVirtualBox,
                  Medium *aParent,
-                 DeviceType_T aType,
+                 DeviceType_T aDeviceType,
                  const settings::Medium &data);
     // initializer for host floppy/DVD
     HRESULT init(VirtualBox *aVirtualBox,
-                 DeviceType_T aType,
+                 DeviceType_T aDeviceType,
                  CBSTR aLocation,
                  CBSTR aDescription = NULL);
     void uninit();
