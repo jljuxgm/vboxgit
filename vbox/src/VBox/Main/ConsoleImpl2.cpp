@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 19119 2009-04-22 20:06:54Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 19124 2009-04-22 21:57:04Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -363,7 +363,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     /** @todo: implement appropriate getter */
     Bstr tmpStr1;
     hrc = pMachine->GetExtraData(Bstr("VBoxInternal2/UseEFI"), tmpStr1.asOutParam());    H();
-    BOOL fEfiEnabled = tmpStr1 == Bstr("on");
+    BOOL fEfiEnabled = !tmpStr1.isEmpty();
 #else
     BOOL fEfiEnabled = false;
 #endif
