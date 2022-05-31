@@ -1,4 +1,4 @@
-/* $Id: string.h 18529 2009-03-30 11:54:06Z vboxsync $ */
+/* $Id: string.h 18589 2009-04-01 09:11:02Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -505,26 +505,10 @@ public:
 
     bool contains (const Utf8Str &that, CaseSensitivity cs = CaseSensitive) const
     {
-        if (isNull() || that.isNull())
-            return false;
-
-        char *pszString = ::RTStrDup(str);
-        char *pszTmp;
-
-        /* Create the generic pattern */
-        ::RTStrAPrintf(&pszTmp, "*%s*", that.str);
-        /* We have to duplicate the strings as long as there is no case
-         * insensitive version of RTStrSimplePatternMatch. */
-        if (cs == CaseInsensitive)
-        {
-            pszTmp = ::RTStrToLower(pszTmp);
-            pszString = ::RTStrToLower(pszString);
-        }
-        bool fResult = ::RTStrSimplePatternMatch(pszTmp, pszString);
-        RTStrFree(pszTmp);
-        RTStrFree(pszString);
-
-        return fResult;
+        if (cs == CaseSensitive)
+            return ::RTStrStr (str, that.str) != NULL;
+        else
+            return ::RTStrIStr (str, that.str) != NULL;
     }
 
     Utf8Str& toLower()
