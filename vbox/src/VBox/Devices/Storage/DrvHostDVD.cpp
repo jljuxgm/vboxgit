@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 18087 2009-03-19 11:40:27Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 18434 2009-03-28 02:19:08Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -398,7 +398,7 @@ DECLCALLBACK(int) drvHostDvdPoll(PDRVHOSTBASE pThis)
 
 /** @copydoc PDMIBLOCK::pfnSendCmd */
 static int drvHostDvdSendCmd(PPDMIBLOCK pInterface, const uint8_t *pbCmd,
-                             PDMBLOCKTXDIR enmTxDir, void *pvBuf, size_t *pcbBuf,
+                             PDMBLOCKTXDIR enmTxDir, void *pvBuf, uint32_t *pcbBuf,
                              uint8_t *pabSense, size_t cbSense, uint32_t cTimeoutMillies)
 {
     PDRVHOSTBASE pThis = PDMIBLOCK_2_DRVHOSTBASE(pInterface);
