@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 23252 2009-09-23 11:09:10Z vboxsync $ */
+/* $Id: PGMAllBth.h 23254 2009-09-23 12:01:35Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2371,7 +2371,6 @@ PGM_BTH_DECL(int, CheckPageFault)(PVMCPU pVCpu, uint32_t uErr, PSHWPDE pPdeDst, 
                             PPGMPAGE pPage = pgmPhysGetPage(&pVM->pgm.s, pPteSrc->u & GST_PTE_PG_MASK);
 
                             LogFlow(("DIRTY page trap addr=%RGv\n", GCPtrPage));
-
                             STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_MID_Z(Stat,DirtyPageTrap));
 
                             Assert(pPteSrc->n.u1Write);
