@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 19002 2009-04-17 20:04:12Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 19007 2009-04-18 08:07:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -479,14 +479,24 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     rc = CFGMR3InsertInteger(pInst, "PCIFunctionNo",        0);                     RC_CHECK();
     rc = CFGMR3InsertInteger(pInst, "PCIBusNo",             1);/* ->pcibridge[0] */ RC_CHECK();
 #endif
+    
+    
+    Bstr tmpStr;
+    rc = pMachine->GetExtraData(Bstr("VBoxInternal/Devices/SupportExtHwProfile"), tmpStr.asOutParam());
+
+    BOOL fExtProfile;
+
+    if (SUCCEEDED(rc))
+        fExtProfile = (tmpStr == Bstr("on"));
+    else
+        fExtProfile = false;
 
     /*
      * High Precision Event Timer (HPET)
      */
     BOOL fHpetEnabled;
-    /** @todo: implement appropriate getter */
 #ifdef VBOX_WITH_HPET
-    fHpetEnabled = true;
+    fHpetEnabled = fExtProfile;
 #else
     fHpetEnabled = false;
 #endif
@@ -502,9 +512,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
      * System Management Controller (SMC)
      */
     BOOL fSmcEnabled;
-    /** @todo: implement appropriate getter */
 #ifdef VBOX_WITH_SMC
-    fSmcEnabled = true;
+    fSmcEnabled = fExtProfile;
 #else
     fSmcEnabled = false;
 #endif
@@ -521,7 +530,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     BOOL fLpcEnabled;
     /** @todo: implement appropriate getter */
 #ifdef VBOX_WITH_LPC
-    fLpcEnabled = true;
+    fLpcEnabled = fExtProfile;
 #else
     fLpcEnabled = false;
 #endif
@@ -657,6 +666,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 #ifdef VBOX_WITH_SMC
         rc = CFGMR3InsertInteger(pCfg,  "SmcEnabled", fSmcEnabled);                 RC_CHECK();
 #endif
+        rc = CFGMR3InsertInteger(pCfg,  "ShowRtc", fExtProfile);                    RC_CHECK();      
+        rc = CFGMR3InsertInteger(pCfg,  "ShowCpu", fExtProfile);                    RC_CHECK();
         rc = CFGMR3InsertInteger(pInst, "PCIDeviceNo",          7);                 RC_CHECK();
         Assert(!afPciDeviceNo[7]);
         afPciDeviceNo[7] = true;
