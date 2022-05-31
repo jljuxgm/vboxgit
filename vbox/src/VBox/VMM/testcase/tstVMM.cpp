@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 19466 2009-05-07 00:22:56Z vboxsync $ */
+/* $Id: tstVMM.cpp 19467 2009-05-07 00:44:03Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -36,6 +36,7 @@
 #include <iprt/test.h>
 #include <iprt/getopt.h>
 #include <iprt/ctype.h>
+#include <iprt/string.h>
 
 
 /*******************************************************************************
