@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 23279 2009-09-24 10:46:57Z vboxsync $ */
+/* $Id: HostImpl.cpp 23308 2009-09-24 19:39:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1608,14 +1608,14 @@ STDMETHODIMP Host::FindUSBDeviceById(IN_BSTR aId,
 
 HRESULT Host::loadSettings(const settings::Host &data)
 {
+    HRESULT rc = S_OK;
+#ifdef VBOX_WITH_USB
     AutoCaller autoCaller(this);
     CheckComRCReturnRC(autoCaller.rc());
 
     AutoMultiWriteLock2 alock(this->lockHandle(), &m->treeLock);
 
-    HRESULT rc = S_OK;
 
-#ifdef VBOX_WITH_USB
     for (settings::USBDeviceFiltersList::const_iterator it = data.llUSBDeviceFilters.begin();
          it != data.llUSBDeviceFilters.end();
          ++it)
@@ -1639,18 +1639,17 @@ HRESULT Host::loadSettings(const settings::Host &data)
 #else
     NOREF(data);
 #endif /* VBOX_WITH_USB */
-
     return rc;
 }
 
 HRESULT Host::saveSettings(settings::Host &data)
 {
+#ifdef VBOX_WITH_USB
     AutoCaller autoCaller(this);
     CheckComRCReturnRC(autoCaller.rc());
 
     AutoReadLock alock(&m->treeLock);
 
-#ifdef VBOX_WITH_USB
     data.llUSBDeviceFilters.clear();
 
     for (USBDeviceFilterList::const_iterator it = m->llUSBDeviceFilters.begin();
