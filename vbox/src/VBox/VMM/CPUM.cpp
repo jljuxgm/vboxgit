@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 23798 2009-10-15 13:08:56Z vboxsync $ */
+/* $Id: CPUM.cpp 23799 2009-10-15 13:09:13Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -403,7 +403,6 @@ static int cpumR3CpuIdInit(PVM pVM)
                                        | 0;
 
     CFGMR3QueryBoolDef(CFGMR3GetChild(CFGMR3GetRoot(pVM), "CPUM"), "SyntheticCpu", &pCPUM->fSyntheticCpu, false);
-pCPUM->fSyntheticCpu = true;
     if (pCPUM->fSyntheticCpu)
     {
         const char szVendor[13]    = "VirtualBox  ";
