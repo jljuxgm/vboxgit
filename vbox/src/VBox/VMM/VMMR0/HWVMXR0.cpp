@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 21255 2009-07-06 14:56:22Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 21257 2009-07-06 15:11:09Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2687,6 +2687,7 @@ ResumeExecution:
                     goto ResumeExecution;
                 }
                 /* Return to ring 3 to deal with the debug exit code. */
+                Log(("Debugger hardware BP at %04x:%RGv (rc=%Rrc)\n", pCtx->cs, pCtx->rip, rc));
                 break;
             }
 
