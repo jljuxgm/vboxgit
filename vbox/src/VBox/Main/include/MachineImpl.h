@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 23727 2009-10-13 14:05:54Z vboxsync $ */
+/* $Id: MachineImpl.h 23733 2009-10-13 14:48:10Z vboxsync $ */
 
 /** @file
  *
@@ -534,12 +534,6 @@ public:
     STDMETHOD(COMGETTER(Accelerate2DVideoEnabled))(BOOL *enabled);
     STDMETHOD(COMSETTER(Accelerate2DVideoEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(BIOSSettings))(IBIOSSettings **biosSettings);
-    STDMETHOD(COMGETTER(HWVirtExEnabled))(BOOL *enabled);
-    STDMETHOD(COMSETTER(HWVirtExEnabled))(BOOL enabled);
-    STDMETHOD(COMGETTER(HWVirtExNestedPagingEnabled))(BOOL *enabled);
-    STDMETHOD(COMSETTER(HWVirtExNestedPagingEnabled))(BOOL enabled);
-    STDMETHOD(COMGETTER(HWVirtExVPIDEnabled))(BOOL *enabled);
-    STDMETHOD(COMSETTER(HWVirtExVPIDEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(PAEEnabled))(BOOL *enabled);
     STDMETHOD(COMSETTER(PAEEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(SnapshotFolder))(BSTR *aSavedStateFolder);

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 23502 2009-10-02 10:59:58Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 23733 2009-10-13 14:48:10Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1244,7 +1244,7 @@ int Appliance::importFS(TaskImportOVF *pTask)
             /* We need HWVirt & IO-APIC if more than one CPU is requested */
             if (tmpCount > 1)
             {
-                rc = pNewMachine->COMSETTER(HWVirtExEnabled)(TRUE);
+                rc = pNewMachine->SetHWVirtExProperty(HWVirtExPropertyType_Enabled, TRUE);
                 if (FAILED(rc)) throw rc;
 
                 fEnableIOApic = true;

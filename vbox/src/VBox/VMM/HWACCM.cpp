@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 23638 2009-10-09 11:20:10Z vboxsync $ */
+/* $Id: HWACCM.cpp 23733 2009-10-13 14:48:10Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -330,11 +330,11 @@ VMMR3DECL(int) HWACCMR3Init(PVM pVM)
     PCFGMNODE pRoot      = CFGMR3GetRoot(pVM);
     PCFGMNODE pHWVirtExt = CFGMR3GetChild(pRoot, "HWVirtExt/");
     /* Nested paging: disabled by default. */
-    rc = CFGMR3QueryBoolDef(pRoot, "EnableNestedPaging", &pVM->hwaccm.s.fAllowNestedPaging, false);
+    rc = CFGMR3QueryBoolDef(pHWVirtExt, "EnableNestedPaging", &pVM->hwaccm.s.fAllowNestedPaging, false);
     AssertRC(rc);
 
     /* VT-x VPID: disabled by default. */
-    rc = CFGMR3QueryBoolDef(pRoot, "EnableVPID", &pVM->hwaccm.s.vmx.fAllowVPID, false);
+    rc = CFGMR3QueryBoolDef(pHWVirtExt, "EnableVPID", &pVM->hwaccm.s.vmx.fAllowVPID, false);
     AssertRC(rc);
 
     /* HWACCM support must be explicitely enabled in the configuration file. */
@@ -386,7 +386,7 @@ VMMR3DECL(int) HWACCMR3Init(PVM pVM)
      *
      *  Default false for Mac OS X and Windows due to the higher risk of conflicts with other hypervisors.
      */
-    rc = CFGMR3QueryBoolDef(pHWVirtExt, "EnableGlobalInit", &pVM->hwaccm.s.fGlobalInit, 
+    rc = CFGMR3QueryBoolDef(pHWVirtExt, "Exclusive", &pVM->hwaccm.s.fGlobalInit, 
 #if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
                             false
 #else
