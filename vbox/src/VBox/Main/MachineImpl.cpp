@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 18162 2009-03-23 19:28:13Z vboxsync $ */
+/* $Id: MachineImpl.cpp 18173 2009-03-24 11:20:24Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -7749,27 +7749,27 @@ void Machine::rollback (bool aNotify)
         }
     }
 
-    if (mStorageControllers.isBackedUp())
-    {
-        /* unitialize all new devices (absent in the backed up list). */
-        StorageControllerList::const_iterator it = mStorageControllers->begin();
-        StorageControllerList *backedList = mStorageControllers.backedUpData();
-        while (it != mStorageControllers->end())
-        {
-            if (std::find (backedList->begin(), backedList->end(), *it ) ==
-                backedList->end())
-            {
-                (*it)->uninit();
-            }
-            ++ it;
-        }
-
-        /* restore the list */
-        mStorageControllers.rollback();
-    }
-
     if (!mStorageControllers.isNull())
     {
+        if (mStorageControllers.isBackedUp())
+        {
+            /* unitialize all new devices (absent in the backed up list). */
+            StorageControllerList::const_iterator it = mStorageControllers->begin();
+            StorageControllerList *backedList = mStorageControllers.backedUpData();
+            while (it != mStorageControllers->end())
+            {
+                if (std::find (backedList->begin(), backedList->end(), *it ) ==
+                    backedList->end())
+                {
+                    (*it)->uninit();
+                }
+                ++ it;
+            }
+
+            /* restore the list */
+            mStorageControllers.rollback();
+        }
+
         /* rollback any changes to devices after restoring the list */
         StorageControllerList::const_iterator it = mStorageControllers->begin();
         while (it != mStorageControllers->end())
@@ -7784,8 +7784,6 @@ void Machine::rollback (bool aNotify)
     mUserData.rollback();
 
     mHWData.rollback();
-
-    mStorageControllers.rollback();
 
     if (mHDData.isBackedUp())
         fixupHardDisks(false /* aCommit */);
