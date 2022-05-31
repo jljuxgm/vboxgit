@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22386 2009-08-21 13:15:23Z vboxsync $
+# $Id: Makefile.kmk 22453 2009-08-26 08:17:03Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -150,6 +150,7 @@ ifeq ($(KBUILD_TARGET).$(VBOX_WITHOUT_COMPILER_REDIST),win.)
   endif
  endif
 endif
+
 
 ifdef VBOX_WITH_QT4_SUN
 #
