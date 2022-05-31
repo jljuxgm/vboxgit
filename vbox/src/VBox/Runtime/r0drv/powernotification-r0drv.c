@@ -1,4 +1,4 @@
-/* $Id: powernotification-r0drv.c 22821 2009-09-07 19:30:59Z vboxsync $ */
+/* $Id: powernotification-r0drv.c 22877 2009-09-09 19:37:04Z vboxsync $ */
 /** @file
  * IPRT - Power Management, Ring-0 Driver, Event Notifications.
  */
@@ -308,7 +308,7 @@ void rtR0PowerNotificationTerm(void)
         if (ASMAtomicDecU32(&g_cRTPowerUsers) == 0)
         {
             PRTPOWERNOTIFYREG pHead;
-            RTSPINLOCKTMP Tmp;
+            RTSPINLOCKTMP Tmp = RTSPINLOCKTMP_INITIALIZER;
 
             /** @todo OS specific term here */
 
