@@ -1,4 +1,4 @@
-/* $Id: VBoxHostVersion.cpp 23115 2009-09-18 08:27:42Z vboxsync $ */
+/* $Id: VBoxHostVersion.cpp 23143 2009-09-18 16:05:46Z vboxsync $ */
 /** @file
  * VBoxHostVersion - Checks the host's VirtualBox version and notifies
  *                   the user in case of an update.
@@ -64,14 +64,18 @@ int VBoxCheckHostVersion ()
     if (RT_FAILURE(rc))    
     {
         if (rc == VERR_NOT_FOUND)
-            rc = VERR_NOT_SUPPORTED; /* If we don't find the value above this is not critical */
+            rc = VINF_SUCCESS; /* If we don't find the value above we do the check by default */
         else
             Log(("VBoxTray: Could not read check host version flag! rc = %d\n", rc));
     }
     else
     {
-        if (pszCheckHostVersion && atoi(pszCheckHostVersion) <= 0)
+        /* Only don't do the check if we have a valid "0" in it */
+        if (   atoi(pszCheckHostVersion) == 0
+            && strlen(pszCheckHostVersion))
+        {
             rc = VERR_NOT_SUPPORTED;
+        }
         VbglR3GuestPropReadValueFree(pszCheckHostVersion);
     }
     if (rc == VERR_NOT_SUPPORTED)            
