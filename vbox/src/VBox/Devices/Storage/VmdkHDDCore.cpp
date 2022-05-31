@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 18822 2009-04-07 13:22:57Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 18966 2009-04-16 20:34:22Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -5049,7 +5049,7 @@ static int vmdkWrite(void *pBackendData, uint64_t uOffset, const void *pvBuf,
                 {
                     uint32_t uSectorInGrain = uSectorExtentRel % pExtent->cSectorsPerGrain;
                     uSectorExtentAbs -= uSectorInGrain;
-                    uint64_t uLBA;
+                    uint64_t uLBA = uSectorExtentRel;
                     if (    pExtent->uGrainSector != uSectorExtentAbs
                         ||  pExtent->uGrainSector != pExtent->uLastGrainSector)
                     {
