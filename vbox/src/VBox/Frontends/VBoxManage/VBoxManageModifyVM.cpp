@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 19624 2009-05-12 13:49:50Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 19638 2009-05-12 15:13:50Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -678,6 +678,11 @@ int handleModifyVM(HandlerArg *a)
                     if (!strncmp(a->argv[i], "\\\\.\\pipe\\", 9))
                         return errorArgument("Uart pipe must start with \\\\.\\pipe\\");
 #endif
+                }
+                else if (!strcmp(a->argv[i], "file"))
+                {
+                    uarts_mode[n - 1] = a->argv[i];
+                    i++;
                 }
                 else
                 {
