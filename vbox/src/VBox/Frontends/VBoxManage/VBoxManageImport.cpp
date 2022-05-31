@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 18108 2009-03-20 11:04:44Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 18214 2009-03-24 18:30:04Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -604,7 +604,8 @@ int handleExportAppliance(HandlerArg *a)
              ++itM)
         {
             ComPtr<IMachine> pMachine = *itM;
-            CHECK_ERROR_BREAK(pMachine, Export(pAppliance));
+            ComPtr<IVirtualSystemDescription> pVSD;
+            CHECK_ERROR_BREAK(pMachine, Export(pAppliance, pVSD.asOutParam()));
         }
 
         if (FAILED(rc))

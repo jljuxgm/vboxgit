@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 17911 2009-03-16 10:30:55Z vboxsync $ */
+/* $Id: MachineImpl.h 18214 2009-03-24 18:30:04Z vboxsync $ */
 
 /** @file
  *
@@ -553,7 +553,7 @@ public:
     STDMETHOD(SaveSettingsWithBackup) (BSTR *aBakFileName);
     STDMETHOD(DiscardSettings)();
     STDMETHOD(DeleteSettings)();
-    STDMETHOD(Export)(IAppliance *appliance);
+    STDMETHOD(Export)(IAppliance *aAppliance, IVirtualSystemDescription **aDescription);
     STDMETHOD(GetSnapshot) (IN_GUID aId, ISnapshot **aSnapshot);
     STDMETHOD(FindSnapshot) (IN_BSTR aName, ISnapshot **aSnapshot);
     STDMETHOD(SetCurrentSnapshot) (IN_GUID aId);
