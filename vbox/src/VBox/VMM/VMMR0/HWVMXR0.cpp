@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 21259 2009-07-06 15:17:26Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 21567 2009-07-14 10:08:27Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3914,7 +3914,7 @@ static void vmxR0FlushVPID(PVM pVM, PVMCPU pVCpu, VMX_FLUSH enmFlush, RTGCPTR GC
  */
 VMMR0DECL(int) VMXR0InvalidatePage(PVM pVM, PVMCPU pVCpu, RTGCPTR GCVirt)
 {
-    bool fFlushPending = pVCpu->hwaccm.s.fForceTLBFlush;
+    bool fFlushPending = VMCPU_FF_ISSET(pVCpu, VMCPU_FF_TLB_FLUSH);
 
     Log2(("VMXR0InvalidatePage %RGv\n", GCVirt));
 
@@ -3944,7 +3944,7 @@ VMMR0DECL(int) VMXR0InvalidatePage(PVM pVM, PVMCPU pVCpu, RTGCPTR GCVirt)
  */
 VMMR0DECL(int) VMXR0InvalidatePhysPage(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys)
 {
-    bool fFlushPending = pVCpu->hwaccm.s.fForceTLBFlush;
+    bool fFlushPending = VMCPU_FF_ISSET(pVCpu, VMCPU_FF_TLB_FLUSH);
 
     Assert(pVM->hwaccm.s.fNestedPaging);
 
