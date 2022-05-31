@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22784 2009-09-04 14:25:31Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22786 2009-09-04 14:31:30Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -7924,16 +7924,24 @@ STDMETHODIMP SessionMachine::BeginTakingSnapshot(IConsole *aInitiator,
     /* saveSettings() needs mParent lock */
     AutoMultiWriteLock2 alock (mParent, this);
 
+#ifdef VBOX_WITH_LIVE_MIGRATION
     AssertReturn(    (    !Global::IsOnlineOrTransient (mData->mMachineState)
                        || mData->mMachineState == MachineState_Paused
-#ifdef VBOX_WITH_LIVE_MIGRATION
                        || mData->mMachineState == MachineState_Running
-#endif
                      )
                   && mSnapshotData.mLastState == MachineState_Null
                   && mSnapshotData.mSnapshot.isNull()
                   && mSnapshotData.mServerProgress.isNull()
                   && mSnapshotData.mCombinedProgress.isNull(), E_FAIL);
+#else
+    AssertReturn(    (    !Global::IsOnlineOrTransient (mData->mMachineState)
+                       || mData->mMachineState == MachineState_Paused
+                     )
+                  && mSnapshotData.mLastState == MachineState_Null
+                  && mSnapshotData.mSnapshot.isNull()
+                  && mSnapshotData.mServerProgress.isNull()
+                  && mSnapshotData.mCombinedProgress.isNull(), E_FAIL);
+#endif
 
     bool const fTakingSnapshotOnline = (   mData->mMachineState == MachineState_Running
                                         || mData->mMachineState == MachineState_Paused);
