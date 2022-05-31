@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 20530 2009-06-13 20:53:44Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 20567 2009-06-14 20:31:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2145,7 +2145,6 @@ VMMDECL(int) PGMPhysSimpleReadGCPhys(PVM pVM, void *pvDst, RTGCPHYS GCPhysSrc, s
     /* won't ever get here. */
 }
 
-#ifndef IN_RC /* Ring 0 & 3 only. (Just not needed in GC.) */
 
 /**
  * Write to guest physical memory referenced by GC pointer.
@@ -2617,7 +2616,6 @@ VMMDECL(int) PGMPhysWriteGCPtr(PVMCPU pVCpu, RTGCPTR GCPtrDst, const void *pvSrc
     }
 }
 
-#endif /* !IN_RC */
 
 /**
  * Performs a read of guest virtual memory for instruction emulation.
