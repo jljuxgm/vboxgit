@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 19709 2009-05-14 17:59:34Z vboxsync $ */
+/* $Id: TMInternal.h 19717 2009-05-15 09:00:30Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -431,6 +431,8 @@ typedef struct TM
     bool volatile               fRunningQueues;
     /** Indicates that the virtual sync queue is being run. */
     bool volatile               fRunningVirtualSyncQueue;
+    /* Alignment */
+    bool                        u8Alignment[2];
 
     /** Lock serializing EMT access to TM. */
     PDMCRITSECT                 EmtLock;
