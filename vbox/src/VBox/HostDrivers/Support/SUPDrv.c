@@ -1,4 +1,4 @@
-/* $Revision: 19881 $ */
+/* $Revision: 19890 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3548,7 +3548,7 @@ SUPDECL(int) SUPSemEventMultiCreate(PSUPDRVSESSION pSession, PSUPSEMEVENTMULTI p
         if (pvObj)
         {
             uint32_t h32;
-            rc = RTHandleTableAllocWithCtx(pSession->hHandleTable, pvObj, &h32, SUPDRV_HANDLE_CTX_EVENT_MULTI);
+            rc = RTHandleTableAllocWithCtx(pSession->hHandleTable, pvObj, SUPDRV_HANDLE_CTX_EVENT_MULTI, &h32);
             if (RT_SUCCESS(rc))
             {
                 *phEventMulti = (SUPSEMEVENTMULTI)(uintptr_t)h32;
