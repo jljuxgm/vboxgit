@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 23476 2009-10-01 12:57:36Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 23515 2009-10-02 13:41:20Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1125,6 +1125,10 @@ VMMR0DECL(int) HWACCMR0Leave(PVM pVM, PVMCPU pVCpu)
     {
         rc = hwaccmR0DisableCpu(idCpu);
         AssertRC(rc);
+
+        /* Reset these to force a TLB flush for the next entry. (-> EXPENSIVE) */
+        pVCpu->hwaccm.s.idLastCpu    = NIL_RTCPUID;
+        pVCpu->hwaccm.s.uCurrentASID = 0;
     }
 
     ASMAtomicWriteBool(&pCpu->fInUse, false);
