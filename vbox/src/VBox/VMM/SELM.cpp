@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 19463 2009-05-06 20:30:57Z vboxsync $ */
+/* $Id: SELM.cpp 22104 2009-08-08 13:34:25Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -2055,7 +2055,7 @@ static int selmR3GetSelectorInfo64(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PDBGFSELINF
     if (Desc.Gen.u1DescType)
     {
         if (    Desc.Gen.u1Long
-            &&  Desc.Gen.u1DefBig
+            &&  !Desc.Gen.u1DefBig
             &&  (Desc.Gen.u4Type & X86_SEL_TYPE_CODE))
         {
             /* 64-bit code selectors are wide open. It's not possible to
