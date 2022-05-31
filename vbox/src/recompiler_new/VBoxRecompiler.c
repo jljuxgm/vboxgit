@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 18595 2009-04-01 12:17:30Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 18596 2009-04-01 12:33:56Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -142,11 +142,11 @@ static STAMCOUNTER    gStatREMTRChange;
 static STAMCOUNTER    gStatSelOutOfSync[6];
 static STAMCOUNTER    gStatSelOutOfSyncStateBack[6];
 static STAMCOUNTER    gStatFlushTBs;
+#endif
 /* in exec.c */
 extern uint32_t       tlb_flush_count;
 extern uint32_t       tb_flush_count;
 extern uint32_t       tb_phys_invalidate_count;
-#endif
 
 /*
  * Global stuff.
