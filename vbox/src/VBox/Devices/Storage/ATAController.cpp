@@ -1,4 +1,4 @@
-/* $Id: ATAController.cpp 23012 2009-09-14 16:38:13Z vboxsync $ */
+/* $Id: ATAController.cpp 23020 2009-09-15 06:56:17Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller code (disk and cdrom).
  *
@@ -2252,7 +2252,6 @@ static void atapiParseCmdVirtualATAPI(AHCIATADevState *s)
                         {
                         PAHCIATACONTROLLER pCtl = ATADEVSTATE_2_CONTROLLER(s);
                         PPDMDEVINS pDevIns = ATADEVSTATE_2_DEVINS(s);
-                        PVMREQ pReq;
 
                         PDMCritSectLeave(&pCtl->lock);
                         rc = VMR3ReqCallWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,

@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 23011 2009-09-14 15:57:38Z vboxsync $ */
+/* $Id: VMMDev.cpp 23016 2009-09-14 17:05:37Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -245,14 +245,9 @@ void VMMDevCtlSetGuestFilterMask (VMMDevState *pVMMDevState,
     }
     else
     {
-        int rc;
-        PVMREQ pReq;
-
-        rc = VMR3ReqCallVoid (pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT,
-                              (PFNRT) vmmdevCtlGuestFilterMask_EMT,
-                              3, pVMMDevState, u32OrMask, u32NotMask);
+        int rc = VMR3ReqCallVoidWait (pVM, VMCPUID_ANY, (PFNRT) vmmdevCtlGuestFilterMask_EMT,
+                                      3, pVMMDevState, u32OrMask, u32NotMask);
         AssertReleaseRC (rc);
-        VMR3ReqFree (pReq);
     }
 }
 
@@ -273,8 +268,7 @@ void VMMDevNotifyGuest (VMMDevState *pVMMDevState, uint32_t u32EventMask)
     /* No need to wait for the completion of this request. It is a notification
      * about something, which has already happened.
      */
-    rc = VMR3ReqCallEx(pVM, VMCPUID_ANY, NULL /*ppReq*/, 0 /*cMillies*/, VMREQFLAGS_NO_WAIT | VMREQFLAGS_VOID,
-                       (PFNRT)vmmdevNotifyGuest_EMT, 2, pVMMDevState, u32EventMask);
+    rc = VMR3ReqCallVoidNoWait(pVM, VMCPUID_ANY, (PFNRT)vmmdevNotifyGuest_EMT, 2, pVMMDevState, u32EventMask);
     AssertRC(rc);
 }
 
