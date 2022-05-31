@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 20092 2009-05-27 15:19:32Z vboxsync $ */
+/* $Id: DevAPIC.cpp 20197 2009-06-02 14:39:05Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -2159,7 +2159,11 @@ static DECLCALLBACK(void) apicReset(PPDMDEVINS pDevIns)
 
     TMTimerStop(s->CTX_SUFF(pTimer));
 
+    /* Do not send an init ipi to the VCPU; we take
+     * care of the proper init ourselves.
     apic_init_ipi(dev, s);
+     */
+
     /* malc, I've removed the initing duplicated in apic_init_ipi(). This
      * arb_id was left over.. */
     s->arb_id = 0;
