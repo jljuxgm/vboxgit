@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 19993 2009-05-25 12:12:06Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 19995 2009-05-25 12:31:34Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2162,7 +2162,7 @@ ResumeExecution:
     /**
      * @todo reduce overhead
      */
-    if (    CPUMIsGuestInLongModeEx(pCtx)
+    if (    PDMHasIoApic(pVM)
         &&  pVM->hwaccm.s.vmx.pAPIC)
     {
         /* TPR caching in CR8 */
@@ -3423,6 +3423,7 @@ ResumeExecution:
         {
             RTGCPHYS GCPhys;
             PDMApicGetBase(pVM, &GCPhys);
+            GCPhys &= PAGE_BASE_GC_MASK;
             GCPhys += VMX_EXIT_QUALIFICATION_APIC_ACCESS_OFFSET(exitQualification);
 
             Log(("Apic access at %RGp\n", GCPhys));

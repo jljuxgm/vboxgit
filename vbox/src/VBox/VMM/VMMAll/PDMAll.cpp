@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 19785 2009-05-18 13:23:45Z vboxsync $ */
+/* $Id: PDMAll.cpp 19995 2009-05-25 12:31:34Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -142,6 +142,18 @@ VMMDECL(int) PDMIoApicSetIrq(PVM pVM, uint8_t u8Irq, uint8_t u8Level)
         return VINF_SUCCESS;
     }
     return VERR_PDM_NO_PIC_INSTANCE;
+}
+
+
+/**
+ * Returns presence of an IO-APIC
+ *
+ * @returns VBox true if IO-APIC is present
+ * @param   pVM             VM handle.
+ */
+VMMDECL(bool) PDMHasIoApic(PVM pVM)
+{
+    return pVM->pdm.s.IoApic.CTX_SUFF(pDevIns) != NULL;
 }
 
 
