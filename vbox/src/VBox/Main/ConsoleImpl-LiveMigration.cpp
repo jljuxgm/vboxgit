@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl-LiveMigration.cpp 23703 2009-10-12 15:34:36Z vboxsync $ */
+/* $Id: ConsoleImpl-LiveMigration.cpp 23707 2009-10-12 17:26:38Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Live Migration Part.
  */
@@ -542,11 +542,12 @@ Console::migrationSrc(MigrationStateSrc *pState)
 
     /* Read and check the welcome message. */
     char szLine[RT_MAX(128, sizeof(g_szWelcome))];
+    RT_ZERO(szLine);
     vrc = RTTcpRead(pState->mhSocket, szLine, sizeof(g_szWelcome) - 1, NULL);
     if (RT_FAILURE(vrc))
         return setError(E_FAIL, tr("Failed to read welcome message: %Rrc"), vrc);
     if (strcmp(szLine, g_szWelcome))
-        return setError(E_FAIL, tr("Unexpected welcome '%s'"), szLine);
+        return setError(E_FAIL, tr("Unexpected welcome %.*Rhxs"), sizeof(g_szWelcome) - 1, szLine);
 
     /* password */
     pState->mstrPassword.append('\n');
