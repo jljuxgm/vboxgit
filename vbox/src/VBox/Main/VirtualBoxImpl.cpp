@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 20630 2009-06-16 13:55:38Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 20842 2009-06-23 14:48:10Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1135,9 +1135,13 @@ STDMETHODIMP VirtualBox::CreateHardDisk(IN_BSTR aFormat,
 
 STDMETHODIMP VirtualBox::OpenHardDisk(IN_BSTR aLocation,
                                       AccessMode_T accessMode,
+                                      BOOL aSetImageId, IN_BSTR aImageId,
+                                      BOOL aSetParentId, IN_BSTR aParentId,
                                       IHardDisk **aHardDisk)
 {
     CheckComArgNotNull(aLocation);
+    CheckComArgNotNull(aImageId);
+    CheckComArgNotNull(aParentId);
     CheckComArgOutSafeArrayPointerValid(aHardDisk);
 
     AutoCaller autoCaller (this);
@@ -1149,9 +1153,20 @@ STDMETHODIMP VirtualBox::OpenHardDisk(IN_BSTR aLocation,
 
     ComObjPtr<HardDisk> hardDisk;
     hardDisk.createObject();
+    Guid imageId, parentId;
+    if (aSetImageId)
+    {
+        imageId = Guid(aImageId);
+        if (imageId.isEmpty())
+            return setError (E_INVALIDARG, tr ("Argument %s is empty"), "aImageId");
+    }
+    if (aSetParentId)
+        parentId = Guid(aParentId);
     rc = hardDisk->init(this,
                         aLocation,
-                        (accessMode == AccessMode_ReadWrite) ? HardDisk::OpenReadWrite : HardDisk::OpenReadOnly );
+                        (accessMode == AccessMode_ReadWrite) ? HardDisk::OpenReadWrite : HardDisk::OpenReadOnly,
+                        aSetImageId, imageId,
+                        aSetParentId, parentId);
 
     if (SUCCEEDED (rc))
     {

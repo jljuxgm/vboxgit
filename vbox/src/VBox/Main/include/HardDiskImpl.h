@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: HardDiskImpl.h 20842 2009-06-23 14:48:10Z vboxsync $ */
 
 /** @file
  *
@@ -89,7 +89,11 @@ public:
                  CBSTR aLocation);
     HRESULT init(VirtualBox *aVirtualBox,
                  CBSTR aLocation,
-                 HDDOpenMode enOpenMode);
+                 HDDOpenMode enOpenMode,
+                 BOOL aSetImageId,
+                 const Guid &aImageId,
+                 BOOL aSetParentId,
+                 const Guid &aParentId);
     HRESULT init(VirtualBox *aVirtualBox,
                  HardDisk *aParent,
                  const settings::Key &aNode);
@@ -293,6 +297,8 @@ private:
               logicalSize(0),
               hddOpenMode(OpenReadWrite),
               autoReset(false),
+              setImageId(false),
+              setParentId(false),
               implicit(false),
               numCreateDiffTasks(0),
               vdProgress(NULL),
@@ -308,6 +314,12 @@ private:
         HDDOpenMode hddOpenMode;
 
         BOOL autoReset : 1;
+
+        /** the following members are invalid after changing UUID on open */
+        BOOL setImageId : 1;
+        BOOL setParentId : 1;
+        const Guid imageId;
+        const Guid parentId;
 
         typedef std::map <Bstr, Bstr> PropertyMap;
         PropertyMap properties;
