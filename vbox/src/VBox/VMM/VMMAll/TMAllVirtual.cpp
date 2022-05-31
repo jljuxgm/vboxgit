@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 19803 2009-05-19 08:33:18Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 19810 2009-05-19 09:59:20Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -582,19 +582,31 @@ DECLINLINE(uint64_t) tmVirtualSyncGetEx(PVM pVM, bool fCheckTimers)
      * expired time, we can get away without locking. Try this first.
      */
     uint64_t off;
-    if (    ASMAtomicUoReadBool(&pVM->tm.s.fVirtualSyncTicking)
-        &&  !ASMAtomicUoReadBool(&pVM->tm.s.fVirtualSyncCatchUp))
+    if (ASMAtomicUoReadBool(&pVM->tm.s.fVirtualSyncTicking))
     {
-        off = ASMAtomicReadU64(&pVM->tm.s.offVirtualSync);
-        if (    ASMAtomicUoReadBool(&pVM->tm.s.fVirtualSyncTicking)
-            &&  !ASMAtomicUoReadBool(&pVM->tm.s.fVirtualSyncCatchUp)
-            &&  off == ASMAtomicReadU64(&pVM->tm.s.offVirtualSync))
+        if (!ASMAtomicUoReadBool(&pVM->tm.s.fVirtualSyncCatchUp))
         {
-            if (u64 - off < ASMAtomicReadU64(&pVM->tm.s.CTX_SUFF(paTimerQueues)[TMCLOCK_VIRTUAL_SYNC].u64Expire))
+            off = ASMAtomicReadU64(&pVM->tm.s.offVirtualSync);
+            if (RT_LIKELY(   ASMAtomicUoReadBool(&pVM->tm.s.fVirtualSyncTicking)
+                          && !ASMAtomicUoReadBool(&pVM->tm.s.fVirtualSyncCatchUp)
+                          && off == ASMAtomicReadU64(&pVM->tm.s.offVirtualSync)))
             {
-                STAM_COUNTER_INC(&pVM->tm.s.StatVirtualSyncGetLockless);
-                return u64 - off;
+                off = u64 - off;
+                if (off < ASMAtomicReadU64(&pVM->tm.s.CTX_SUFF(paTimerQueues)[TMCLOCK_VIRTUAL_SYNC].u64Expire))
+                {
+                    STAM_COUNTER_INC(&pVM->tm.s.StatVirtualSyncGetLockless);
+                    return off;
+                }
             }
+        }
+    }
+    else
+    {
+        off = ASMAtomicReadU64(&pVM->tm.s.u64VirtualSync);
+        if (RT_LIKELY(!ASMAtomicReadBool(&pVM->tm.s.fVirtualSyncTicking)))
+        {
+            STAM_COUNTER_INC(&pVM->tm.s.StatVirtualSyncGetLockless);
+            return off;
         }
     }
 
