@@ -1,10 +1,10 @@
-/* $Id: tstGetOpt.cpp 18110 2009-03-20 11:18:48Z vboxsync $ */
+/* $Id: tstGetOpt.cpp 18318 2009-03-26 14:43:40Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTGetOpt
  */
 
 /*
- * Copyright (C) 2007 Sun Microsystems, Inc.
+ * Copyright (C) 2007-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -71,7 +71,6 @@ int main()
     } while (0)
 
 
-
     /*
      * The basics.
      */
@@ -133,7 +132,7 @@ int main()
     };
     int argc2 = (int)RT_ELEMENTS(argv2) - 1;
 
-    CHECK(RT_SUCCESS(RTGetOptInit(&GetState, argc2, (char**)argv2, &s_aOpts2[0], RT_ELEMENTS(s_aOpts2), 0, 0 /* fFlags */)));
+    CHECK(RT_SUCCESS(RTGetOptInit(&GetState, argc2, (char **)argv2, &s_aOpts2[0], RT_ELEMENTS(s_aOpts2), 0, 0 /* fFlags */)));
 
     CHECK_GETOPT(RTGetOpt(&GetState, &Val), 's', 2);
     CHECK(VALID_PTR(Val.psz) && !strcmp(Val.psz, "string1"));
