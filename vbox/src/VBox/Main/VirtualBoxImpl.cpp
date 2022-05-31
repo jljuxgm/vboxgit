@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 22228 2009-08-13 10:26:00Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 22294 2009-08-17 12:19:08Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1530,7 +1530,7 @@ STDMETHODIMP VirtualBox::SetExtraData(IN_BSTR aKey,
     }
 
     bool fChanged;
-    if (fChanged = (strOldValue != strValue))
+    if ((fChanged = (strOldValue != strValue)))
     {
         // ask for permission from all listeners outside the locks;
         // onExtraDataCanChange() only briefly requests the VirtualBox

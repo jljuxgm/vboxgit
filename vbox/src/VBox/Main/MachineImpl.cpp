@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22287 2009-08-17 11:47:47Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22294 2009-08-17 12:19:08Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2667,7 +2667,7 @@ STDMETHODIMP Machine::SetExtraData(IN_BSTR aKey, IN_BSTR aValue)
     }
 
     bool fChanged;
-    if (fChanged = (strOldValue != strValue))
+    if ((fChanged = (strOldValue != strValue)))
     {
         // ask for permission from all listeners outside the locks;
         // onExtraDataCanChange() only briefly requests the VirtualBox
