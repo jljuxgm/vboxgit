@@ -1,4 +1,4 @@
-/* $Id: logo.c 18324 2009-03-26 16:01:52Z vboxsync $ */
+/* $Id: logo.c 18391 2009-03-27 13:30:25Z vboxsync $ */
 /** @file
  * Stuff for drawing the BIOS logo.
  */
@@ -270,7 +270,9 @@ void print_detected_harddisks()
     {
         device = read_byte(ebda_seg, &EbdaData->ata.hdidmap[hd_curr]);
 
+#ifdef VBOX_WITH_SCSI
         if (!VBOX_IS_SCSI_DEVICE(device))
+#endif
         {
 
             if ((device < 4) && (ide_ctrl_printed == 0))
@@ -304,6 +306,7 @@ void print_detected_harddisks()
             else
                 printf("Master");
         }
+#ifdef VBOX_WITH_SCSI
         else
         {
             if (scsi_ctrl_printed == 0)
@@ -315,6 +318,7 @@ void print_detected_harddisks()
             printf("\n    %d) Hard disk", hd_curr+1);
 
         }
+#endif
     }
 
     if (   (ide_ctrl_printed == 0)
