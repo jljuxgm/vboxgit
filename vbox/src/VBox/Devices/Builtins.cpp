@@ -1,4 +1,4 @@
-/* $Id: Builtins.cpp 19183 2009-04-25 02:08:48Z vboxsync $ */
+/* $Id: Builtins.cpp 19317 2009-05-04 03:38:31Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -222,10 +222,12 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvRawImage);
     if (RT_FAILURE(rc))
         return rc;
-#ifndef RT_OS_L4
+#if !defined(RT_OS_L4) 
+# if !defined(VBOX_WITH_NAT_SERVICE) 
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvNAT);
     if (RT_FAILURE(rc))
         return rc;
+# endif
 #endif
 #if defined(RT_OS_LINUX)
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostInterface);
