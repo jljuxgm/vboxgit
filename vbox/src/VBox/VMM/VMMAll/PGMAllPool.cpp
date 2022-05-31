@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22713 2009-09-02 12:14:30Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22714 2009-09-02 12:42:32Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1629,7 +1629,6 @@ bool pgmPoolIsDirtyPage(PVM pVM, RTGCPHYS GCPhys)
         {
             PPGMPOOLPAGE pPage;
             unsigned     idxPage = pPool->aIdxDirtyPages[i];
-            AssertRelease(idxPage != NIL_PGMPOOL_IDX);
 
             pPage = &pPool->aPages[idxPage];
             if (pPage->GCPhys == GCPhys)
