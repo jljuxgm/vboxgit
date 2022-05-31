@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: TRPMAll.cpp 20840 2009-06-23 14:44:13Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -183,7 +183,7 @@ VMMDECL(int)  TRPMAssertTrap(PVMCPU pVCpu, uint8_t u8TrapNo, TRPMEVENT enmType)
      */
     if (pVCpu->trpm.s.uActiveVector != ~0U)
     {
-        AssertMsgFailed(("Active trap %#x\n", pVCpu->trpm.s.uActiveVector));
+        AssertMsgFailed(("CPU%d: Active trap %#x\n", pVCpu->idCpu, pVCpu->trpm.s.uActiveVector));
         return VERR_TRPM_ACTIVE_TRAP;
     }
 
