@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 23464 2009-10-01 08:28:44Z vboxsync $ */
+/* $Id: PGMPool.cpp 23519 2009-10-02 15:02:12Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -484,19 +484,6 @@ VMMR3DECL(int) PGMR3PoolGrow(PVM pVM)
             return i ? VINF_SUCCESS : VERR_NO_PAGE_MEMORY;
         }
         pPage->Core.Key  = MMPage2Phys(pVM, pPage->pvPageR3);
-        if (pPage->Core.Key == 0)
-        {
-            /* Physical page 0 can trigger problems with AMD-V; allocate a new one. */
-            pPage->pvPageR3 = MMR3PageAllocLow(pVM);
-            if (!pPage->pvPageR3)
-            {
-                Log(("We're out of memory!! i=%d\n", i));
-                pgmUnlock(pVM);
-                return i ? VINF_SUCCESS : VERR_NO_PAGE_MEMORY;
-            }
-            pPage->Core.Key  = MMPage2Phys(pVM, pPage->pvPageR3);
-        }
-
         pPage->GCPhys    = NIL_RTGCPHYS;
         pPage->enmKind   = PGMPOOLKIND_FREE;
         pPage->idx       = pPage - &pPool->aPages[0];
