@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 18617 2009-04-01 22:11:29Z vboxsync $ */
+/* $Id: EM.cpp 18618 2009-04-01 22:13:19Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3254,16 +3254,6 @@ static int emR3ForcedActions(PVM pVM, int rc)
         /* check that we got them all  */
         Assert(!(VM_FF_NORMAL_PRIORITY_MASK & ~(VM_FF_REQUEST | VM_FF_PDM_QUEUES | VM_FF_PDM_DMA | VM_FF_REM_HANDLER_NOTIFY)));
     }
-
-#if 1 /** @todo this is all dead now, remove after the no-memory changes has been committed. */
-    /*
-     * Execute polling function ever so often.
-     * THIS IS A HACK, IT WILL BE *REPLACED* BY PROPER ASYNC NETWORKING "SOON"!
-     */
-    static unsigned cLast = 0;
-    if (!((++cLast) % 4))
-        PDMR3Poll(pVM);
-#endif
 
     /*
      * High priority pre execution chunk last.

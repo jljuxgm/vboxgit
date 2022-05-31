@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 18616 2009-04-01 21:08:19Z vboxsync $ */
+/* $Id: PDM.cpp 18618 2009-04-01 22:13:19Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1309,17 +1309,6 @@ VMMR3DECL(void) PDMR3DmaRun(PVM pVM)
         if (fMore)
             VM_FF_SET(pVM, VM_FF_PDM_DMA);
     }
-}
-
-
-/**
- * Call polling function.
- *
- * @param   pVM             VM handle.
- */
-VMMR3DECL(void) PDMR3Poll(PVM pVM)
-{
-    /** @todo remove after committing other EM changes. */
 }
 
 
