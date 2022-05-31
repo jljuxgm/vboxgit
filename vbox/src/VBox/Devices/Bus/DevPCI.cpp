@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 20154 2009-05-29 14:16:42Z vboxsync $ */
+/* $Id: DevPCI.cpp 20156 2009-05-29 15:08:24Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1468,6 +1468,20 @@ static void pciR3CommonRestoreConfig(PPCIDEVICE pDev, uint8_t const *pbSrcConfig
                     PCIDevSetCommand(pDev, 0); /* For remapping, see pciR3CommonLoadPrep. */
                 pDev->Int.s.pfnConfigWrite(pDev, off, u32Src, cb);
             }
+        }
+
+    /*
+     * The device dependent registers. We will not use ConfigWrite here as we
+     * have no clue about the size of the registers, so the device is
+     * responsible for correctly restoring functionality governed by these
+     * registers.
+     */
+    for (uint32_t off = 0x40; off < sizeof(pDev->config); off++)
+        if (pbDstConfig[off] != pbSrcConfig[off])
+        {
+            LogRel(("PCI: %8s/%u: register %02x: %02x -> %02x\n",
+                    pDev->name, pDev->pDevIns->iInstance, off, pbDstConfig[off], pbSrcConfig[off])); /** @todo make this Log() later. */
+            pbDstConfig[off] = pbSrcConfig[off];
         }
 }
 
