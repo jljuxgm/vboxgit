@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 22764 2009-09-04 09:02:46Z vboxsync $ */
+/* $Id: PGMInternal.h 22775 2009-09-04 12:26:28Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1822,6 +1822,8 @@ typedef struct PGMPOOL
     STAMPROFILE                 StatMonitorRZFlushPage;
     /* Times we've detected a page table reinit. */
     STAMCOUNTER                 StatMonitorRZFlushReinit;
+    /** Counting flushes for pages that are modified too often. */
+    STAMCOUNTER                 StatMonitorRZFlushModOverflow;
     /** Times we've detected fork(). */
     STAMCOUNTER                 StatMonitorRZFork;
     /** Profiling the RC/R0 access we've handled (except REP STOSD). */
@@ -1843,6 +1845,8 @@ typedef struct PGMPOOL
     STAMPROFILE                 StatMonitorR3FlushPage;
     /* Times we've detected a page table reinit. */
     STAMCOUNTER                 StatMonitorR3FlushReinit;
+    /** Counting flushes for pages that are modified too often. */
+    STAMCOUNTER                 StatMonitorR3FlushModOverflow;
     /** Times we've detected fork(). */
     STAMCOUNTER                 StatMonitorR3Fork;
     /** Profiling the R3 access we've handled (except REP STOSD). */

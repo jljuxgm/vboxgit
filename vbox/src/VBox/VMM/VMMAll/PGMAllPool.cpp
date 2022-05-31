@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22774 2009-09-04 10:20:22Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22775 2009-09-04 12:26:28Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1378,6 +1378,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
     }
 #endif /* PGMPOOL_WITH_OPTIMIZED_DIRTY_PT */
 
+    STAM_COUNTER_INC(&pPool->CTX_MID_Z(StatMonitor,FlushModOverflow));
 flushPage:
     /*
      * Not worth it, so flush it.
