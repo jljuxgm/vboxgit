@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 18023 2009-03-17 13:48:59Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 18049 2009-03-18 09:46:46Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2001,6 +2001,7 @@ HRESULT VirtualBox::removeProgress (IN_GUID aId)
 
     size_t cnt = mData.mProgressOperations.erase (aId);
     Assert (cnt == 1);
+    NOREF(cnt);
 
     return S_OK;
 }
@@ -3505,6 +3506,7 @@ HRESULT VirtualBox::unregisterHardDisk(HardDisk *aHardDisk,
 
     size_t cnt = mData.mHardDiskMap.erase (aHardDisk->id());
     Assert (cnt == 1);
+    NOREF(cnt);
 
     if (aHardDisk->parent().isNull())
     {
