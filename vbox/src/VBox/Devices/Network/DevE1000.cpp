@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 23495 2009-10-01 18:40:24Z vboxsync $ */
+/* $Id: DevE1000.cpp 23520 2009-10-02 18:13:47Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -927,6 +927,9 @@ struct E1kState_st
     E1kEEPROM   eeprom;
     /** EMT: Physical interface emulation. */
     PHY         phy;
+
+    /** Alignment padding. */
+    uint8_t                             Alignment[HC_ARCH_BITS == 64 ? 8 : 4];
 
     STAMCOUNTER                         StatReceiveBytes;
     STAMCOUNTER                         StatTransmitBytes;
