@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 23740 2009-10-13 19:54:22Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 23741 2009-10-13 20:01:51Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -26,6 +26,8 @@
 #ifdef RT_OS_WINDOWS
 #include <Windows.h>
 #endif
+
+#include <string>
 
 #ifdef VBOX_WITH_CROGL
 
