@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22048 2009-08-07 08:05:49Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22070 2009-08-07 13:34:10Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -243,12 +243,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     if (osTypeId == "WindowsNT4")
     {
         /*
-         * We must limit CPUID count for Windows NT 4,
-         * as otherwise it stops with 0x3e error
-         * (MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED).
+         * We must limit CPUID count for Windows NT 4, as otherwise it stops
+         * with error 0x3e (MULTIPROCESSOR_CONFIGURATION_NOT_SUPPORTED).
          */
         LogRel(("Limiting CPUID leaf count for NT4 guests\n"));
-        rc = CFGMR3InsertInteger(pRoot, "NT4LeafLimit", true);                          RC_CHECK();
+        PCFGMNODE pCPUM;
+        rc = CFGMR3InsertNode(pRoot, "CPUM", &pCPUM);                               RC_CHECK();
+        rc = CFGMR3InsertInteger(pCPUM, "NT4LeafLimit", true);                      RC_CHECK();
     }
 
     /* hardware virtualization extensions */
