@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 21446 2009-07-09 15:09:57Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 21734 2009-07-21 10:04:46Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -402,10 +402,8 @@ int handleList(HandlerArg *a)
                     RTPrintf("Processor#%u speed: %lu MHz\n", i, processorSpeed);
                 else
                     RTPrintf("Processor#%u speed: unknown\n", i, processorSpeed);
-#if 0 /* not yet implemented in Main */
                 CHECK_ERROR (Host, GetProcessorDescription(i, processorDescription.asOutParam()));
                 RTPrintf("Processor#%u description: %lS\n", i, processorDescription.raw());
-#endif
             }
 
             ULONG memorySize = 0;

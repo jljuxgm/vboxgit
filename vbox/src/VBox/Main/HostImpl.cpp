@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 21686 2009-07-17 13:41:39Z vboxsync $ */
+/* $Id: HostImpl.cpp 21734 2009-07-21 10:04:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -931,13 +931,18 @@ STDMETHODIMP Host::GetProcessorSpeed(ULONG aCpuId, ULONG *aSpeed)
  * @param   cpu id to get info for.
  * @param   description address of result variable, empty string if not known or aCpuId is invalid.
  */
-STDMETHODIMP Host::GetProcessorDescription(ULONG /* aCpuId */, BSTR *aDescription)
+STDMETHODIMP Host::GetProcessorDescription(ULONG aCpuId, BSTR *aDescription)
 {
     CheckComArgOutPointerValid(aDescription);
     AutoWriteLock alock (this);
     CHECK_READY();
-    /** @todo */
-    ReturnComNotImplemented();
+
+    char szCPUModel[80];
+    int vrc = RTMpGetDescription(aCpuId, szCPUModel, sizeof(szCPUModel));
+    if (RT_FAILURE(vrc))
+        return E_FAIL; /** @todo error reporting? */
+    Bstr (szCPUModel).cloneTo (aDescription);
+    return S_OK;
 }
 
 /**
