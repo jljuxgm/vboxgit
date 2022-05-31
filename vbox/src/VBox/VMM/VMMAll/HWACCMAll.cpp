@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 23366 2009-09-28 12:31:50Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 23383 2009-09-28 14:06:17Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -126,8 +126,10 @@ void hwaccmMpPokeCpu(PVMCPU pVCpu, RTCPUID idHostCpu)
     /* Not implemented on some platforms (Darwin, Linux kernel < 2.6.19); fall back to a less efficient implementation (broadcast). */
     if (rc == VERR_NOT_SUPPORTED)
     {
+        STAM_PROFILE_ADV_START(&pVCpu->hwaccm.s.StatSpinPoke, z);
         /* synchronous. */
         RTMpOnSpecific(idHostCpu, hwaccmFlushHandler, 0, 0);
+        STAM_PROFILE_ADV_STOP(&pVCpu->hwaccm.s.StatSpinPoke, z);
     }
     else
     {
