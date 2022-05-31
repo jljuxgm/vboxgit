@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 21159 2009-07-02 13:45:03Z vboxsync $ */
+/* $Id: PDMInternal.h 21161 2009-07-02 13:52:46Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -229,10 +229,8 @@ typedef struct PDMCRITSECTINT
     STAMCOUNTER                     StatContentionRZUnlock;
     /** R3 lock contention. */
     STAMCOUNTER                     StatContentionR3;
-#ifdef VBOX_WITH_STATISTICS
     /** Profiling the time the section is locked. */
     STAMPROFILEADV                  StatLocked;
-#endif
 } PDMCRITSECTINT;
 typedef PDMCRITSECTINT *PPDMCRITSECTINT;
 
