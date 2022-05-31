@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 19794 2009-05-18 15:06:31Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 19795 2009-05-18 15:18:12Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1115,6 +1115,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
     AssertRCReturn(rc, rc);
 
     pgmLock(pVM);
+    AssertMsg(PHYS_PAGE_ADDRESS(GCPhysFault) == PHYS_PAGE_ADDRESS(pPage->GCPhys), ("%RGp vs %RGp\n", PHYS_PAGE_ADDRESS(GCPhysFault), pPage->GCPhys));
 
     /*
      * Check if it's worth dealing with.
