@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 18863 2009-04-10 11:59:25Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 18864 2009-04-10 12:03:59Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -31,8 +31,10 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/ioctl.h>
-#include <sys/ioccom.h>
 #include <fcntl.h>
+#ifdef RT_OS_SOLARIS
+# include <sys/ioccom.h>
+#endif
 
 /* @todo Error codes must be moved to some header file */
 #define ADPCTLERR_NO_CTL_DEV 3
