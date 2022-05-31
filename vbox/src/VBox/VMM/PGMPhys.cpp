@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: PGMPhys.cpp 19807 2009-05-19 09:01:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1100,6 +1100,7 @@ int pgmR3PhysRamPreAllocate(PVM pVM)
  */
 int pgmR3PhysRamReset(PVM pVM)
 {
+    Assert(PGMIsLockOwner(pVM));
     /*
      * We batch up pages before freeing them.
      */

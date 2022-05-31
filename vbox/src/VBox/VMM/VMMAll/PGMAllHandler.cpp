@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 19806 2009-05-19 08:43:18Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 19807 2009-05-19 09:01:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -976,6 +976,8 @@ VMMDECL(int)  PGMHandlerPhysicalPageTempOff(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS G
  */
 VMMDECL(int)  PGMHandlerPhysicalPageAlias(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCPhysPage, RTGCPHYS GCPhysPageRemap)
 {
+///    Assert(!IOMIsLockOwner(pVM)); /* We mustn't own any other locks when calling this */
+
     /*
      * Lookup and validate the range.
      */
