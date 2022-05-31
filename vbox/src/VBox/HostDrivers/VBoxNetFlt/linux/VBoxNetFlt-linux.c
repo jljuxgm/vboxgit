@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 20077 2009-05-27 12:23:50Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 20144 2009-05-29 10:37:18Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -656,7 +656,7 @@ static void vboxNetFltLinuxForwardToIntNet(PVBOXNETFLTINS pThis, struct sk_buff 
     }
     else
     {
-        if (pBuf->ip_summed == CHECKSUM_PARTIAL)
+        if (pBuf->ip_summed == CHECKSUM_PARTIAL && pBuf->pkt_type == PACKET_OUTGOING)
             if (VBOX_SKB_CHECKSUM_HELP(pBuf))
             {
                 LogRel(("VBoxNetFlt: Failed to compute checksum, dropping the packet.\n"));
