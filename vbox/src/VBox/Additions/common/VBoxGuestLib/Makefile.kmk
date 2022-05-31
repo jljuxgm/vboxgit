@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21461 2009-07-09 22:13:37Z vboxsync $
+# $Id: Makefile.kmk 22683 2009-09-01 17:53:07Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -25,21 +25,17 @@ include	$(KBUILD_PATH)/subheader.kmk
 #
 # Target config.
 #
-LIBRARIES += \
-	VBoxGuestR0Lib \
-	VBoxGuestR0LibBase
+ifdef VBOX_WITH_ADDITION_DRIVERS
+ LIBRARIES += \
+ 	VBoxGuestR0Lib \
+ 	VBoxGuestR0LibBase
+endif
 LIBRARIES += \
 	VBoxGuestR3Lib \
 	VBoxGuestR3LibShared
 if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd)
  LIBRARIES += \
-  	VBoxGuestR3LibXFree86
-endif
-
-ifndef VBOX_WITH_ADDITION_DRIVERS
- if1of ($(KBUILD_TARGET), linux l4) # All drivers are optional, can skip RuntimeGuestR0.
-  LIBRARIES := $(filter-out VBoxGuestR0Lib VBoxGuestR0LibBase, $(LIBRARIES))
- endif
+ 	VBoxGuestR3LibXFree86
 endif
 
 
