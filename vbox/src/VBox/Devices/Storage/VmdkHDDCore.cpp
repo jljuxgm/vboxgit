@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 18149 2009-03-23 16:28:11Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 18179 2009-03-24 13:25:13Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -2904,12 +2904,24 @@ static int vmdkOpenImage(PVMDKIMAGE pImage, unsigned uOpenFlags)
         rc = vmdkReadBinaryMetaExtent(pImage, pExtent);
         if (RT_FAILURE(rc))
             goto out;
+
         /* As we're dealing with a monolithic image here, there must
          * be a descriptor embedded in the image file. */
         if (!pExtent->uDescriptorSector || !pExtent->cDescriptorSectors)
         {
             rc = vmdkError(pImage, VERR_VD_VMDK_INVALID_HEADER, RT_SRC_POS, N_("VMDK: monolithic image without descriptor in '%s'"), pImage->pszFilename);
             goto out;
+        }
+        /* HACK: extend the descriptor if it is unusually small and it fits in
+         * the unused space after the image header. Allows opening VMDK files
+         * with extremely small descriptor in read/write mode. */
+        if (    !(pImage->uOpenFlags & VD_OPEN_FLAGS_READONLY)
+            &&  pExtent->cDescriptorSectors < 3
+            &&  (int64_t)pExtent->uSectorGD - pExtent->uDescriptorSector >= 4
+            &&  (!pExtent->uSectorRGD || (int64_t)pExtent->uSectorRGD - pExtent->uDescriptorSector >= 4))
+        {
+            pExtent->cDescriptorSectors = 4;
+            pExtent->fMetaDirty = true;
         }
         /* Read the descriptor from the extent. */
         pExtent->pDescData = (char *)RTMemAllocZ(VMDK_SECTOR2BYTE(pExtent->cDescriptorSectors));
