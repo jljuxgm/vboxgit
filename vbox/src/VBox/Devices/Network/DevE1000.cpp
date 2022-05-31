@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 21363 2009-07-07 17:10:52Z vboxsync $ */
+/* $Id: DevE1000.cpp 21958 2009-08-04 14:21:46Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -5135,7 +5135,7 @@ static DECLCALLBACK(int) e1kAttach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_t f
         Phy::setLinkStatus(&pState->phy, false);
         e1kRaiseInterrupt(pState, ICR_LSC);
         /* Restore the link back in 5 second. */
-        e1kArmTimer(pState, pState->pLUTimer, 5000000);
+        e1kArmTimer(pState, pState->pLUTimer, 20000000);
     }
 
     PDMCritSectLeave(&pState->cs);

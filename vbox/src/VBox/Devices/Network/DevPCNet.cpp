@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 21522 2009-07-13 08:46:12Z vboxsync $ */
+/* $Id: DevPCNet.cpp 21958 2009-08-04 14:21:46Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4237,7 +4237,7 @@ static void pcnetTempLinkDown(PCNetState *pThis)
         pThis->cLinkDownReported = 0;
         pThis->aCSR[0] |= RT_BIT(15) | RT_BIT(13); /* ERR | CERR (this is probably wrong) */
         pThis->Led.Asserted.s.fError = pThis->Led.Actual.s.fError = 1;
-        int rc = TMTimerSetMillies(pThis->pTimerRestore, 5000);
+        int rc = TMTimerSetMillies(pThis->pTimerRestore, 20000);
         AssertRC(rc);
     }
 }
