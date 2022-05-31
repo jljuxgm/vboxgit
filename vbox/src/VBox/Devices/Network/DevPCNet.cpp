@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
+/* $Id: DevPCNet.cpp 22925 2009-09-10 22:24:58Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -328,6 +328,7 @@ struct PCNetState_st
 # endif
 #endif /* VBOX_WITH_STATISTICS */
 };
+AssertCompileMemberAlignment(PCNetState, StatReceiveBytes, 8);
 
 #define PCNETSTATE_2_DEVINS(pPCNet)            ((pPCNet)->CTX_SUFF(pDevIns))
 #define PCIDEV_2_PCNETSTATE(pPciDev)           ((PCNetState *)(pPciDev))
