@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.cpp 22125 2009-08-10 11:22:03Z vboxsync $ */
+/* $Id: alloc-r0drv.cpp 22174 2009-08-11 15:59:53Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver.
  */
@@ -272,7 +272,11 @@ RT_EXPORT_SYMBOL(RTMemFree);
 RTDECL(void *)    RTMemExecAlloc(size_t cb) RT_NO_THROW
 {
     PRTMEMHDR pHdr;
+#ifdef RT_OS_SOLARIS /** @todo figure out why */
+    RT_ASSERT_INTS_ON();
+#else
     RT_ASSERT_PREEMPTIBLE();
+#endif
 
     pHdr = rtMemAlloc(cb + RTR0MEM_FENCE_EXTRA, RTMEMHDR_FLAG_EXEC);
     if (pHdr)
