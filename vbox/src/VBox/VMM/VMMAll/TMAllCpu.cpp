@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 22245 2009-08-13 15:58:00Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 22299 2009-08-17 14:48:03Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -268,9 +268,10 @@ VMMDECL(int) TMCpuTickSet(PVM pVM, PVMCPU pVCpu, uint64_t u64Tick)
      * do all the calcuations for us. Actually, we don't need to
      * call tmCpuTickPause here since we overwrite u64TSC anyway.
      */
-    bool        fTSCTicking = pVCpu->tm.s.fTSCTicking;
-    pVCpu->tm.s.fTSCTicking = false;
-    pVCpu->tm.s.u64TSC      = u64Tick;
+    bool        fTSCTicking    = pVCpu->tm.s.fTSCTicking;
+    pVCpu->tm.s.fTSCTicking    = false;
+    pVCpu->tm.s.u64TSC         = u64Tick;
+    pVCpu->tm.s.u64TSCLastSeen = u64Tick;
     if (fTSCTicking)
         tmCpuTickResume(pVM, pVCpu);
     /** @todo Try help synchronizing it better among the virtual CPUs? */
