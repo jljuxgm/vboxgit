@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 19682 2009-05-14 10:15:44Z vboxsync $ */
+/* $Id: IOM.cpp 19716 2009-05-15 09:00:17Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -147,8 +147,9 @@ VMMR3DECL(int) IOMR3Init(PVM pVM)
     /*
      * Assert alignment and sizes.
      */
-    AssertRelease(!(RT_OFFSETOF(VM, iom.s) & 31));
-    AssertRelease(sizeof(pVM->iom.s) <= sizeof(pVM->iom.padding));
+    AssertCompileMemberAlignment(VM, iom.s, 32);
+    AssertCompile(sizeof(pVM->iom.s) <= sizeof(pVM->iom.padding));
+    AssertCompileMemberAlignment(IOM, EmtLock, 8);
 
     /*
      * Setup any fixed pointers and offsets.
