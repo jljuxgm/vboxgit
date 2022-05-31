@@ -1,4 +1,4 @@
-/* $Id: dnsproxy.c 18815 2009-04-07 12:34:27Z vboxsync $ */
+/* $Id: dnsproxy.c 19309 2009-05-03 19:39:24Z vboxsync $ */
 /*
  * Copyright (c) 2003,2004,2005 Armin Wolfermann
  *
@@ -197,7 +197,11 @@ dnsproxy_query(PNATState pData, struct socket *so, struct mbuf *m, int iphlen)
 #endif
     struct sockaddr_in addr;
     struct request *req = NULL;
+#ifndef VBOX
     struct sockaddr_in fromaddr;
+#else
+    struct sockaddr_in fromaddr = { 0, };
+#endif
     int byte = 0;
 
     ++all_queries;
