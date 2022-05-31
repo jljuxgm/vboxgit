@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 20556 2009-06-14 17:28:17Z vboxsync $ */
+/* $Id: DrvNAT.cpp 20574 2009-06-15 01:51:43Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -57,7 +57,7 @@
  */
 #define VBOX_NAT_DELAY_HACK
 #ifdef VBOX_WITH_STATISTICS
-# define COUNTING_COUTER(name, dsc) \
+# define COUNTING_COUNTER(name, dsc) \
     extern "C" void slirp_counting_counter_##name##_reset(PNATState pData); \
     extern "C" void slirp_counting_counter_##name##_inc(PNATState pData); \
     extern "C" void slirp_counting_counter_##name##_add(PNATState pData, int val); /**< @todo r=bird: COUNTING_COUTER is missing an 'N'
@@ -67,7 +67,7 @@
 /** @todo think abaout it */
 # define PROFILE_COUNTER(name, dsc)
 # include "Network/slirp/counters.h"
-# undef COUNTING_COUTER
+# undef COUNTING_COUNTER
 # undef PROFILE_COUNTER
 # define DRVNAT_COUNTER_RESET(pData, name) \
     slirp_counting_counter_##name##_reset(pData)
