@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18160 2009-03-23 18:04:28Z vboxsync $
+# $Id: Makefile.kmk 18161 2009-03-23 18:23:31Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest OpenGL part
 #
@@ -35,13 +35,15 @@ DLLS.win += \
     VBoxOGLpackspu \
     VBoxOGLfeedbackspu
 
-ifndef VBOX_OSE  ## @todo Solaris too?
+ifndef VBOX_OSE
+ if1of ($(KBUILD_TARGET),linux solaris)
 DLLS += \
     VBoxOGL \
     VBoxOGLarrayspu \
     VBoxOGLpassthroughspu \
     VBoxOGLpackspu \
     VBoxOGLfeedbackspu
+ endif
 endif
 
 if1of ($(KBUILD_TARGET),linux solaris)
