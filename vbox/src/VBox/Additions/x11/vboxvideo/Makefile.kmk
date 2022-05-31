@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22056 2009-08-07 11:33:40Z vboxsync $
+# $Id: Makefile.kmk 22058 2009-08-07 11:45:50Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -170,7 +170,7 @@ vboxvideo_drv_13_INCS = \
 	$(VBOX_PATH_X11_ROOT)/libdrm-2.3.0 \
 	$(VBOX_PATH_X11_ROOT)/xf86driproto-2.0.3
 vboxvideo_drv_13_SOURCES = \
-	vboxvideo_15.c \
+	vboxvideo_13.c \
 	vboxutils.c
 
 
@@ -192,7 +192,7 @@ vboxvideo_drv_14_INCS = \
 	$(VBOX_PATH_X11_ROOT)/libdrm-2.3.0 \
 	$(VBOX_PATH_X11_ROOT)/xf86driproto-2.0.4
 vboxvideo_drv_14_SOURCES  = \
-	vboxvideo_15.c \
+	vboxvideo_13.c \
 	vboxutils.c
 
 
