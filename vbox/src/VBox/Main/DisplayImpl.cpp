@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 19432 2009-05-06 13:24:43Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 19588 2009-05-11 14:33:04Z vboxsync $ */
 
 /** @file
  *
@@ -318,11 +318,6 @@ int Display::handleDisplayResize (unsigned uScreenId, uint32_t bpp, void *pvVRAM
         return VINF_VGA_RESIZE_IN_PROGRESS;
     }
 
-    /* The framebuffer is locked in the state.
-     * The lock is kept, because the framebuffer is in undefined state.
-     */
-    maFramebuffers[uScreenId].pFramebuffer->Lock();
-
     int rc = callFramebufferResize (maFramebuffers[uScreenId].pFramebuffer, uScreenId,
                                     pixelFormat, pvVRAM, bpp, cbLine, w, h);
     if (rc == VINF_VGA_RESIZE_IN_PROGRESS)
@@ -416,12 +411,6 @@ void Display::handleResizeCompletedEMT (void)
         /* Inform VRDP server about the change of display parameters. */
         LogFlowFunc (("Calling VRDP\n"));
         mParent->consoleVRDPServer()->SendResize();
-
-        if (!pFBInfo->pFramebuffer.isNull())
-        {
-            /* Unlock framebuffer after evrything is done. */
-            pFBInfo->pFramebuffer->Unlock();
-        }
     }
 }
 
