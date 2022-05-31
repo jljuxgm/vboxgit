@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 18977 2009-04-17 07:24:08Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 18984 2009-04-17 09:00:22Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -985,7 +985,7 @@ VMMR0DECL(int) HWACCMR0Enter(PVM pVM, PVMCPU pVCpu)
         pVCpu->hwaccm.s.idEnteredCpu = idCpu;
 
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-        PGMDynMapMigrateAutoSet(pVM);
+        PGMDynMapMigrateAutoSet(pVCpu);
 #endif
     }
     return rc;
@@ -1063,7 +1063,7 @@ VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
     Assert(ASMAtomicReadBool(&pCpu->fInUse) == true);
 
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-    PGMDynMapStartAutoSet(pVM);
+    PGMDynMapStartAutoSet(pVCpu);
 #endif
 
     pCtx = CPUMQueryGuestCtxPtr(pVCpu);
@@ -1071,7 +1071,7 @@ VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
     rc = HWACCMR0Globals.pfnRunGuestCode(pVM, pVCpu, pCtx);
 
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-    PGMDynMapReleaseAutoSet(pVM);
+    PGMDynMapReleaseAutoSet(pVCpu);
 #endif
     return rc;
 }
