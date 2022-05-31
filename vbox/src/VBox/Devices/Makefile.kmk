@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22908 2009-09-10 11:43:58Z vboxsync $
+# $Id: Makefile.kmk 22968 2009-09-11 22:47:10Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -75,6 +75,9 @@ ifdef VBOX_WITH_USB
  endif
 else
  VBoxDDU_SDKS.win        = WINPSDK
+endif
+ifdef VBOX_WITH_NEW_IO_CODE
+ VBoxDDU_DEFS           += VBOX_WITH_NEW_IO_CODE
 endif
 VBoxDDU_SOURCES          = \
 	Storage/VBoxHDD.cpp \
