@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 19680 2009-05-14 09:20:06Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 19690 2009-05-14 11:49:00Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4342,6 +4342,28 @@ void pgmPoolFree(PVM pVM, RTHCPHYS HCPhys, uint16_t iUser, uint32_t iUserTable)
     LogFlow(("pgmPoolFree: HCPhys=%RHp iUser=%#x iUserTable=%#x\n", HCPhys, iUser, iUserTable));
     PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
     pgmPoolFreeByPage(pPool, pgmPoolGetPage(pPool, HCPhys), iUser, iUserTable);
+}
+
+/**
+ * Internal worker for finding a 'in-use' shadow page give by it's physical address.
+ *
+ * @returns Pointer to the shadow page structure.
+ * @param   pPool       The pool.
+ * @param   HCPhys      The HC physical address of the shadow page.
+ */
+PPGMPOOLPAGE pgmPoolGetPage(PPGMPOOL pPool, RTHCPHYS HCPhys)
+{
+    PVM pVM = pPool->CTX_SUFF(pVM);
+
+    /*
+     * Look up the page.
+     */
+    pgmLock(pVM);
+    PPGMPOOLPAGE pPage = (PPGMPOOLPAGE)RTAvloHCPhysGet(&pPool->HCPhysTree, HCPhys & X86_PTE_PAE_PG_MASK);
+    pgmUnlock(pVM);
+
+    AssertFatalMsg(pPage && pPage->enmKind != PGMPOOLKIND_FREE, ("HCPhys=%RHp pPage=%p idx=%d\n", HCPhys, pPage, (pPage) ? pPage->idx : 0));
+    return pPage;
 }
 
 
