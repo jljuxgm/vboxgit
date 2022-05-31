@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 19810 2009-05-19 09:59:20Z vboxsync $ */
+/* $Id: TMInternal.h 19820 2009-05-19 13:14:54Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -475,15 +475,6 @@ typedef struct TM
     STAMCOUNTER                 StatPollSimple;
     STAMCOUNTER                 StatPollVirtual;
     STAMCOUNTER                 StatPollVirtualSync;
-    /** @} */
-    /** TMTimerPollGIP
-     * @{ */
-    STAMCOUNTER                 StatPollGIP;
-    STAMCOUNTER                 StatPollGIPAlreadySet;
-    STAMCOUNTER                 StatPollGIPVirtual;
-    STAMCOUNTER                 StatPollGIPVirtualSync;
-    STAMCOUNTER                 StatPollGIPMiss;
-    STAMCOUNTER                 StatPollGIPRunning;
     /** @} */
     /** TMTimerSet
      * @{ */

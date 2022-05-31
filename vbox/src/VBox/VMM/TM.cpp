@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 19810 2009-05-19 09:59:20Z vboxsync $ */
+/* $Id: TM.cpp 19820 2009-05-19 13:14:54Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -566,13 +566,6 @@ VMMR3DECL(int) TMR3Init(PVM pVM)
     STAM_REG(pVM, &pVM->tm.s.StatPollSimple,                          STAMTYPE_COUNTER, "/TM/Poll/Simple",                     STAMUNIT_OCCURENCES, "TMTimerPoll calls where we could take the simple path.");
     STAM_REG(pVM, &pVM->tm.s.StatPollVirtual,                         STAMTYPE_COUNTER, "/TM/Poll/HitsVirtual",                STAMUNIT_OCCURENCES, "The number of times TMTimerPoll found an expired TMCLOCK_VIRTUAL queue.");
     STAM_REG(pVM, &pVM->tm.s.StatPollVirtualSync,                     STAMTYPE_COUNTER, "/TM/Poll/HitsVirtualSync",            STAMUNIT_OCCURENCES, "The number of times TMTimerPoll found an expired TMCLOCK_VIRTUAL_SYNC queue.");
-
-    STAM_REG(pVM, &pVM->tm.s.StatPollGIP,                             STAMTYPE_COUNTER, "/TM/PollGIP",                         STAMUNIT_OCCURENCES, "TMTimerPollGIP calls.");
-    STAM_REG(pVM, &pVM->tm.s.StatPollGIPAlreadySet,                   STAMTYPE_COUNTER, "/TM/PollGIP/AlreadySet",              STAMUNIT_OCCURENCES, "TMTimerPollGIP calls where the FF was already set.");
-    STAM_REG(pVM, &pVM->tm.s.StatPollGIPVirtual,                      STAMTYPE_COUNTER, "/TM/PollGIP/HitsVirtual",             STAMUNIT_OCCURENCES, "The number of times TMTimerPollGIP found an expired TMCLOCK_VIRTUAL queue.");
-    STAM_REG(pVM, &pVM->tm.s.StatPollGIPVirtualSync,                  STAMTYPE_COUNTER, "/TM/PollGIP/HitsVirtualSync",         STAMUNIT_OCCURENCES, "The number of times TMTimerPollGIP found an expired TMCLOCK_VIRTUAL_SYNC queue.");
-    STAM_REG(pVM, &pVM->tm.s.StatPollGIPMiss,                         STAMTYPE_COUNTER, "/TM/PollGIP/Miss",                    STAMUNIT_OCCURENCES, "TMTimerPollGIP calls where nothing had expired.");
-    STAM_REG(pVM, &pVM->tm.s.StatPollGIPRunning,                      STAMTYPE_COUNTER, "/TM/PollGIP/Running",                 STAMUNIT_OCCURENCES, "TMTimerPollGIP calls where the queues were being run.");
 
     STAM_REG(pVM, &pVM->tm.s.StatPostponedR3,                         STAMTYPE_COUNTER, "/TM/PostponedR3",                     STAMUNIT_OCCURENCES, "Postponed due to unschedulable state, in ring-3.");
     STAM_REG(pVM, &pVM->tm.s.StatPostponedRZ,                         STAMTYPE_COUNTER, "/TM/PostponedRZ",                     STAMUNIT_OCCURENCES, "Postponed due to unschedulable state, in ring-0 / RC.");
