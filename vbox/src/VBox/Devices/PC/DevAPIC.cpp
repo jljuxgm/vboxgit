@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 19615 2009-05-12 12:45:09Z vboxsync $ */
+/* $Id: DevAPIC.cpp 19616 2009-05-12 12:45:43Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1108,7 +1108,6 @@ static void apic_startup(APICDeviceInfo* dev, APICState *s, int vector_num)
                            0xffff, 0);
     env->halted = 0;
 #else
-    /** @todo: init CPUs */
     Log(("[SMP] apic_startup: %d on CPUs %d\n", vector_num, s->id));
     cpuSendSipi(dev, s, vector_num);
 #endif
