@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: critsect-generic.cpp 19989 2009-05-25 10:39:22Z vboxsync $ */
 /** @file
  * IPRT - Critical Section, Generic.
  */
@@ -454,7 +454,7 @@ RTDECL(int) RTCritSectDelete(PRTCRITSECT pCritSect)
      * Invalidate the structure and free the mutex.
      * In case someone is waiting we'll signal the semaphore cLockers + 1 times.
      */
-    ASMAtomicXchgU32(&pCritSect->u32Magic, 0);
+    ASMAtomicWriteU32(&pCritSect->u32Magic, ~RTCRITSECT_MAGIC);
     pCritSect->fFlags           = 0;
     pCritSect->cNestings        = 0;
     pCritSect->NativeThreadOwner= NIL_RTNATIVETHREAD;
@@ -462,7 +462,7 @@ RTDECL(int) RTCritSectDelete(PRTCRITSECT pCritSect)
     pCritSect->EventSem         = NULL;
     while (pCritSect->cLockers-- >= 0)
         RTSemEventSignal(EventSem);
-    ASMAtomicXchgS32(&pCritSect->cLockers, -1);
+    ASMAtomicWriteS32(&pCritSect->cLockers, -1);
     int rc = RTSemEventDestroy(EventSem);
     AssertRC(rc);
 
