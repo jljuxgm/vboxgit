@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 20862 2009-06-23 18:25:31Z vboxsync $ */
+/* $Id: SUPLibInternal.h 20864 2009-06-23 19:19:42Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -314,8 +314,8 @@ DECLHIDDEN(void)   supR3HardenedGetPreInitData(PSUPPREINITDATA pPreInitData);
 DECLHIDDEN(int)    supR3HardenedRecvPreInitData(PCSUPPREINITDATA pPreInitData);
 
 
-int                supR3PageLock(void *pvStart, size_t cPages, PSUPPAGE paPages);
-int                supR3PageUnlock(void *pvStart);
+SUPR3DECL(int)      supR3PageLock(void *pvStart, size_t cPages, PSUPPAGE paPages);
+SUPR3DECL(int)      supR3PageUnlock(void *pvStart);
 
 RT_C_DECLS_END
 

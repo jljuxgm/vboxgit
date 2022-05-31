@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 20730 2009-06-19 15:10:42Z vboxsync $ */
+/* $Id: PGMPhys.cpp 20864 2009-06-23 19:19:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3053,12 +3053,12 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
     while (rc == VERR_GMM_SEED_ME)
     {
         void *pvChunk;
-        rcAlloc = rc = SUPPageAlloc(GMM_CHUNK_SIZE >> PAGE_SHIFT, &pvChunk);
+        rcAlloc = rc = SUPR3PageAlloc(GMM_CHUNK_SIZE >> PAGE_SHIFT, &pvChunk);
         if (RT_SUCCESS(rc))
         {
             rcSeed = rc = VMMR3CallR0(pVM, VMMR0_DO_GMM_SEED_CHUNK, (uintptr_t)pvChunk, NULL);
             if (RT_FAILURE(rc))
-                SUPPageFree(pvChunk, GMM_CHUNK_SIZE >> PAGE_SHIFT);
+                SUPR3PageFree(pvChunk, GMM_CHUNK_SIZE >> PAGE_SHIFT);
         }
         if (RT_SUCCESS(rc))
             rc = VMMR3CallR0(pVM, VMMR0_DO_PGM_ALLOCATE_HANDY_PAGES, 0, NULL);

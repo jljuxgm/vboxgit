@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 20774 2009-06-22 12:59:53Z vboxsync $ */
+/* $Id: MMInternal.h 20864 2009-06-23 19:19:42Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -525,8 +525,8 @@ typedef struct MMPAGEPOOL
     R3R0PTRTYPE(PVM)                    pVM;
 #endif
     /** Flag indicating the allocation method.
-     * Set: SUPLowAlloc().
-     * Clear: SUPPageAlloc() + SUPPageLock(). */
+     * Set: SUPR3LowAlloc().
+     * Clear: SUPR3PageAllocLockedEx(). */
     bool                                fLow;
     /** Number of subpools. */
     uint32_t                            cSubPools;
