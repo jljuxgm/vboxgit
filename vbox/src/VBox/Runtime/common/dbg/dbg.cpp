@@ -1,4 +1,4 @@
-/* $Id: dbg.cpp 20741 2009-06-21 02:13:21Z vboxsync $ */
+/* $Id: dbg.cpp 20800 2009-06-22 23:47:37Z vboxsync $ */
 /** @file
  * IPRT - Debug Misc.
  */
@@ -52,22 +52,22 @@ RTDECL(PRTDBGSYMBOL) RTDbgSymbolAlloc(void)
  *
  * @returns Pointer to duplicate on success, NULL on failure.
  *
- * @param   pSymbol         The symbol to duplicate.
+ * @param   pSymInfo        The symbol info to duplicate.
  */
-RTDECL(PRTDBGSYMBOL) RTDbgSymbolDup(PCRTDBGSYMBOL pSymbol)
+RTDECL(PRTDBGSYMBOL) RTDbgSymbolDup(PCRTDBGSYMBOL pSymInfo)
 {
-    return (PRTDBGSYMBOL)RTMemDup(pSymbol, sizeof(*pSymbol));
+    return (PRTDBGSYMBOL)RTMemDup(pSymInfo, sizeof(*pSymInfo));
 }
 
 
 /**
  * Free a symbol structure previously allocated by a RTDbg method.
  *
- * @param   pSymbol         The symbol to free. NULL is ignored.
+ * @param   pSymInfo        The symbol info to free. NULL is ignored.
  */
-RTDECL(void) RTDbgSymbolFree(PRTDBGSYMBOL pSymbol)
+RTDECL(void) RTDbgSymbolFree(PRTDBGSYMBOL pSymInfo)
 {
-    RTMemFree(pSymbol);
+    RTMemFree(pSymInfo);
 }
 
 
