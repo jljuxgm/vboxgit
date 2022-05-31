@@ -1,4 +1,4 @@
-# $Id: Config.kmk 20898 2009-06-24 15:57:09Z vboxsync $
+# $Id: Config.kmk 20917 2009-06-25 09:24:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -391,6 +391,8 @@ endif
 VBOX_WITH_SOLARIS_VBI = 1
 # Enable 64 bits guest pointers.
 VBOX_WITH_64_BITS_GUESTS = 1
+# Enable multi-core VCPUs.
+VBOX_WITH_MULTI_CORE = 1
 # Enable SMP support in guests
 ##VBOX_WITH_SMP_GUESTS = 1
 # Enable the host/guest information service (aka guest properties).
@@ -1088,6 +1090,9 @@ ifdef VBOX_WITH_64_BITS_GUESTS
 endif
 ifdef VBOX_WITH_SMP_GUESTS
  DEFS += VBOX_WITH_SMP_GUESTS
+endif
+ifdef VBOX_WITH_MULTI_CORE
+ DEFS += VBOX_WITH_MULTI_CORE
 endif
 ifdef VBOX_WITH_HARDENING
  DEFS += VBOX_WITH_HARDENING
@@ -3786,7 +3791,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 20898 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 20917 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
