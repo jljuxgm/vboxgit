@@ -1,4 +1,4 @@
-/** $Id: counters.h 22403 2009-08-24 07:12:48Z vboxsync $ */
+/** $Id: counters.h 22404 2009-08-24 07:36:24Z vboxsync $ */
 /** @file
  * Counters macro invocation template.
  *
@@ -46,6 +46,7 @@
 #  define REGISTER_COUNTER(name, type, units, dsc) do {} while (0)
 #  define DEREGISTER_COUNTER(name) do {} while (0)
 # endif
+# undef COUNTERS_INIT
 #endif
 
 #ifndef COUNTERS_INIT
@@ -123,10 +124,20 @@ PROFILE_COUNTER(IP_output, "IP::output");
 PROFILE_COUNTER(IF_encap, "IF::encap");
 PROFILE_COUNTER(ALIAS_input, "ALIAS::input");
 PROFILE_COUNTER(ALIAS_output, "ALIAS::output");
-
-# undef DRV_COUNTING_COUNTER
-# undef DRV_PROFILE_COUNTER
-
-# undef COUNTING_COUNTER
-# undef PROFILE_COUNTER
 #endif /*!COUNTERS_INIT*/
+
+#ifdef DRV_COUNTING_COUNTER
+# undef DRV_COUNTING_COUNTER
+#endif
+
+#ifdef DRV_PROFILE_COUNTER
+# undef DRV_PROFILE_COUNTER
+#endif
+
+#ifdef COUNTING_COUNTER
+# undef COUNTING_COUNTER
+#endif
+
+#ifdef PROFILE_COUNTER
+# undef PROFILE_COUNTER
+#endif
