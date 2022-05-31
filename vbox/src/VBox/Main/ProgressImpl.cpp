@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 23662 2009-10-09 18:09:15Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -746,7 +746,7 @@ STDMETHODIMP Progress::WaitForCompletion (LONG aTimeout)
     if (!mCompleted)
     {
         RTTIMESPEC time;
-        RTTimeNow (&time);
+        RTTimeNow (&time); /** @todo r=bird: Use monotonic time (RTTimeMilliTS()) here because of daylight saving and things like that. */
 
         int vrc = VINF_SUCCESS;
         bool fForever = aTimeout < 0;
