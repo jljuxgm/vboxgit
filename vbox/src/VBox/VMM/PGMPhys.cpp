@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 20071 2009-05-27 12:07:38Z vboxsync $ */
+/* $Id: PGMPhys.cpp 20076 2009-05-27 12:22:35Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1840,16 +1840,14 @@ VMMR3DECL(int) PGMR3PhysMMIO2Map(PVM pVM, PPDMDEVINS pDevIns, uint32_t iRegion, 
             AssertLogRelRCReturn(rc, rc);
         }
         GMMR3FreePagesCleanup(pReq);
-        pgmUnlock(pVM);
     }
     else
     {
         /* link in the ram range */
         pgmR3PhysLinkRamRange(pVM, &pCur->RamRange, pRamPrev);
-        pgmUnlock(pVM);
         REMR3NotifyPhysRamRegister(pVM, GCPhys, pCur->RamRange.cb, REM_NOTIFY_PHYS_RAM_FLAGS_MMIO2);
     }
-
+    pgmUnlock(pVM);
 
     return VINF_SUCCESS;
 }
