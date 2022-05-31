@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 19013 2009-04-19 19:56:43Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 19038 2009-04-20 16:22:21Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -33,6 +33,7 @@
 #include <VBox/err.h>
 #include <iprt/process.h>
 #include <iprt/initterm.h>
+#include <iprt/mem.h>
 
 /*
 #include <iprt/assert.h>
