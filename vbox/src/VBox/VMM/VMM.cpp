@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 19611 2009-05-12 12:23:08Z vboxsync $ */
+/* $Id: VMM.cpp 19621 2009-05-12 13:25:44Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1168,8 +1168,16 @@ DECLCALLBACK(int) vmmR3SendSipi(PVM pVM, VMCPUID idCpu, uint32_t uVector)
     VMCPU_ASSERT_EMT(pVCpu);
 
     /** @todo what are we supposed to do if the processor is already running? */
-    CPUMSetGuestCS(pVCpu, uVector * 0x100);
-    CPUMSetGuestEIP(pVCpu, 0);
+    if (EMGetState(pVCpu) != EMSTATE_WAIT_SIPI)
+        return VERR_ACCESS_DENIED;
+
+
+    PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(pVCpu);
+
+    pCtx->cs                        = uVector << 8;
+    pCtx->csHid.u64Base             = uVector << 12;
+    pCtx->csHid.u32Limit            = 0x0000ffff;
+    pCtx->rip                       = 0;
 
 # if 1 /* If we keep the EMSTATE_WAIT_SIPI method, then move this to EM.cpp. */
     EMSetState(pVCpu, EMSTATE_HALTED);
