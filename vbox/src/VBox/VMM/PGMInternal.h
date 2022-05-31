@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 18600 2009-04-01 14:44:36Z vboxsync $ */
+/* $Id: PGMInternal.h 18604 2009-04-01 15:53:54Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2583,7 +2583,7 @@ typedef struct PGM
      * The size of this array is important, see pgmPhysEnsureHandyPage for details.
      * (The current size of 32 pages, means 128 KB of handy memory.)
      */
-    GMMPAGEDESC                     aHandyPages[/*32*/128];
+    GMMPAGEDESC                     aHandyPages[32];
 
     /** @name Release Statistics
      * @{ */
