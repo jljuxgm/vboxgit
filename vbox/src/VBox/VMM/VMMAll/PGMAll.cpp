@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 22473 2009-08-26 14:51:50Z vboxsync $ */
+/* $Id: PGMAll.cpp 22544 2009-08-28 07:45:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1700,11 +1700,11 @@ VMMDECL(int) PGMFlushTLB(PVMCPU pVCpu, uint64_t cr3, bool fGlobal)
     }
     else
     {
-        pgmLock(pVM);
 # ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
+        pgmLock(pVM);
         pgmPoolResetDirtyPages(pVM);
-# endif
         pgmUnlock(pVM);
+# endif
         /*
          * Check if we have a pending update of the CR3 monitoring.
          */
