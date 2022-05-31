@@ -1,4 +1,4 @@
-/* $Id: SupportErrorInfo.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: SupportErrorInfo.cpp 22178 2009-08-11 16:20:17Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -191,7 +191,7 @@ HRESULT SupportErrorInfoBase::setErrorInternal(HRESULT aResultCode,
             rc = infoObj.createObject();
             CheckComRCBreakRC (rc);
 
-            rc = infoObj->init (aResultCode, aIID, aComponent, aText, curInfo);
+            rc = infoObj->init (aResultCode, aIID, aComponent, strText.c_str(), curInfo);
             CheckComRCBreakRC (rc);
 
             info = infoObj;
