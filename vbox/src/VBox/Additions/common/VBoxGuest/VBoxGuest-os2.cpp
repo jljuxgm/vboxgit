@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 21227 2009-07-05 19:50:18Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 21376 2009-07-07 22:51:24Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -606,9 +606,8 @@ DECLASM(int) VBoxGuestOS2IOCtl(uint16_t sfn, uint8_t iCat, uint8_t iFunction, vo
         /*
          * Process the IOCtl.
          */
-        size_t cbDataReturned = 0;
-        rc = VBoxGuestCommonIOCtl(iFunction, &g_DevExt, pSession,
-                                  pvParm, *pcbParm, &cbDataReturned);
+        size_t cbDataReturned;
+        rc = VBoxGuestCommonIOCtl(iFunction, &g_DevExt, pSession, pvParm, *pcbParm, &cbDataReturned);
 
         /*
          * Unlock the buffers.
