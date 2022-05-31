@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertToErrno.cpp 21542 2009-07-13 14:57:51Z vboxsync $ */
+/* $Id: RTErrConvertToErrno.cpp 23528 2009-10-03 17:57:25Z vboxsync $ */
 /** @file
  * IPRT - Convert iprt status codes to errno.
  */
@@ -42,6 +42,8 @@
 # include <sys/errno.h>
 #elif defined(RT_OS_LINUX) && defined(__KERNEL__)
 # include <linux/errno.h>
+#elif defined(RT_OS_FREEBSD) && defined(_KERNEL)
+# include <sys/errno.h>
 #else
 # include <errno.h>
 #endif
