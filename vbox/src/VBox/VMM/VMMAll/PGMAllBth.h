@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 20061 2009-05-27 09:45:10Z vboxsync $ */
+/* $Id: PGMAllBth.h 20064 2009-05-27 11:13:16Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1682,7 +1682,12 @@ PGM_BTH_DECL(int, SyncPage)(PVMCPU pVCpu, GSTPDE PdeSrc, RTGCPTR GCPtrPage, unsi
     PX86PDEPAE      pPdeDst = &pPDDst->a[iPDDst];
 # endif
     SHWPDE          PdeDst   = *pPdeDst;
-    AssertMsg(PdeDst.n.u1Present, ("%p=%llx\n", pPdeDst, (uint64_t)PdeDst.u));
+    if (!PdeDst.n.u1Present)
+    {
+        AssertMsg(pVM->cCPUs > 1, ("%Unexpected missing PDE p=%llx\n", pPdeDst, (uint64_t)PdeDst.u));
+        return VINF_SUCCESS;    /* force the instruction to be executed again. */
+    }
+
     PPGMPOOLPAGE    pShwPage = pgmPoolGetPage(pPool, PdeDst.u & SHW_PDE_PG_MASK);
 
 # if PGM_GST_TYPE == PGM_TYPE_AMD64
