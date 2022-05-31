@@ -1,4 +1,4 @@
-/* $Id: DBGFSym.cpp 19560 2009-05-10 04:43:13Z vboxsync $ */
+/* $Id: DBGFSym.cpp 19583 2009-05-11 14:07:36Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Symbol Management.
  */
@@ -384,15 +384,13 @@ int dbgfR3SymLazyInit(PVM pVM)
 static DECLCALLBACK(int) dbgfR3EnumModules(PVM pVM, const char *pszFilename, const char *pszName,
                                            RTUINTPTR ImageBase, size_t cbImage, bool fRC, void *pvArg)
 {
-    if (fRC)
-    {
-        DWORD64 LoadedImageBase = SymLoadModule64(pVM, NULL, (char *)(void *)pszFilename,
-                                                  (char *)(void *)pszName, ImageBase, (DWORD)cbImage);
-        if (!LoadedImageBase)
-            Log(("SymLoadModule64(,,%s,,) -> lasterr=%d\n", pszFilename, GetLastError()));
-        else
-            Log(("Loaded debuginfo for %s - %s %llx\n", pszName, pszFilename, LoadedImageBase));
-    }
+    DWORD64 LoadedImageBase = SymLoadModule64(pVM, NULL, (char *)(void *)pszFilename,
+                                                (char *)(void *)pszName, ImageBase, (DWORD)cbImage);
+    if (!LoadedImageBase)
+        Log(("SymLoadModule64(,,%s,,) -> lasterr=%d\n", pszFilename, GetLastError()));
+    else
+        Log(("Loaded debuginfo for %s - %s %llx\n", pszName, pszFilename, LoadedImageBase));
+
     return VINF_SUCCESS;
 }
 #endif
