@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 19623 2009-05-12 13:42:34Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 19625 2009-05-12 13:57:26Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -370,7 +370,7 @@ DECLCALLBACK(int) VBoxServiceVMInfoWorker(bool volatile *pfShutdown)
         	    return -1;
             }
  #ifdef RT_OS_SOLARIS
-            pAddress = (sockaddr_in *)&ifrequest[i].sin_addr;
+            pAddress = (sockaddr_in *)&ifrequest[i].ifr_addr;
  #else
             pAddress = (sockaddr_in *)&ifrequest[i].ifr_netmask;
  #endif
