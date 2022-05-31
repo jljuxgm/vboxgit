@@ -1,4 +1,4 @@
-/* $Id: sw_common.c 20312 2009-06-05 10:47:35Z vboxsync $ */
+/* $Id: sw_common.c 20390 2009-06-08 10:11:31Z vboxsync $ */
 
 /** @file
  * VBox D3D8/9 dll switcher
@@ -61,7 +61,7 @@ BOOL checkOptions(void)
 
     for (i=0; gsBlackList[i]; ++i)
     {
-        if (!strcmp(filename, gsBlackList[i]))
+        if (!stricmp(filename, gsBlackList[i]))
             return FALSE;
     }
 
