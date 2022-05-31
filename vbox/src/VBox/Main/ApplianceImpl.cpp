@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18273 2009-03-25 18:32:26Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18278 2009-03-25 19:54:48Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3882,6 +3882,12 @@ STDMETHODIMP Machine::Export(IAppliance *aAppliance, IVirtualSystemDescription *
             Bstr bstrName;
             rc = pHardDisk->COMGETTER(Name)(bstrName.asOutParam());
             if (FAILED(rc)) throw rc;
+
+            // force reading state, or else size will be returned as 0
+            MediaState_T ms;
+            rc = pHardDisk->COMGETTER(State)(&ms);
+            if (FAILED(rc)) throw rc;
+
             ULONG64 ullSize;
             rc = pHardDisk->COMGETTER(Size)(&ullSize);
             if (FAILED(rc)) throw rc;
