@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 21506 2009-07-10 23:54:26Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 21524 2009-07-13 09:29:24Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1335,7 +1335,8 @@ static int VBoxGuestCommonIOCtl_HGCMCall(PVBOXGUESTDEVEXT pDevExt,
         if (pcbDataReturned)
             *pcbDataReturned = cbActual;
     }
-    Log(("VBoxGuestCommonIOCtl: HGCM_CALL: Failed. rc=%Rrc.\n", rc));
+    else
+        Log(("VBoxGuestCommonIOCtl: HGCM_CALL: Failed. rc=%Rrc.\n", rc));
     return rc;
 }
 
