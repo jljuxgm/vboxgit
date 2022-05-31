@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 20902 2009-06-24 18:26:25Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 21016 2009-06-29 07:53:50Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -434,8 +434,8 @@ static DECLCALLBACK(void) pdmR0ApicHlp_SetInterruptFF(PPDMDEVINS pDevIns, PDMAPI
 
     AssertReturnVoid(idCpu < pVM->cCPUs);
 
-    LogFlow(("pdmR0ApicHlp_SetInterruptFF: caller=%p/%d: VM_FF_INTERRUPT %d -> 1\n",
-             pDevIns, pDevIns->iInstance, VMCPU_FF_ISSET(pVCpu, VMCPU_FF_INTERRUPT_APIC)));
+    LogFlow(("pdmR0ApicHlp_SetInterruptFF: CPU%d=caller=%p/%d: VM_FF_INTERRUPT %d -> 1 (CPU%d)\n",
+             VMMGetCpuId(pVM), pDevIns, pDevIns->iInstance, VMCPU_FF_ISSET(pVCpu, VMCPU_FF_INTERRUPT_APIC), idCpu));
 
     switch (enmType)
     {
