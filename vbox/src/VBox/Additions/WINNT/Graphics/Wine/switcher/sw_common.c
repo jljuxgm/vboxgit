@@ -1,4 +1,4 @@
-/* $Id: sw_common.c 20227 2009-06-03 10:25:25Z vboxsync $ */
+/* $Id: sw_common.c 20312 2009-06-05 10:47:35Z vboxsync $ */
 
 /** @file
  * VBox D3D8/9 dll switcher
@@ -13,6 +13,8 @@
 
 #include <windows.h>
 #include "switcher.h"
+
+static char* gsBlackList[] = {"Dwm.exe"/*, "taskeng.exe"*/, NULL};
 
 /* Checks if 3D is enabled for VM and it works on host machine */
 BOOL isVBox3DEnabled(void)
@@ -37,7 +39,32 @@ BOOL isVBox3DEnabled(void)
 
 BOOL checkOptions(void)
 {
-    //@todo: check some registry keys, app name etc.
+    char name[1000];
+    char *filename = name, *pName;
+    int i;
+
+	if (!GetModuleFileName(NULL, name, 1000))
+		return TRUE;
+
+    /*Extract filename*/
+    for (pName=name; *pName; ++pName)
+    {
+        switch (*pName)
+        {
+            case ':':
+            case '\\':
+            case '/':
+                filename = pName + 1;
+                break;
+        }
+    }
+
+    for (i=0; gsBlackList[i]; ++i)
+    {
+        if (!strcmp(filename, gsBlackList[i]))
+            return FALSE;
+    }
+
     return TRUE;
 }
 
