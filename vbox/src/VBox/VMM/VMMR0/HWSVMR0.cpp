@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21666 2009-07-17 09:33:05Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21667 2009-07-17 09:35:50Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -395,7 +395,7 @@ static void svmR0SetMSRPermission(PVM pVM, unsigned ulMSR, bool fRead, bool fWri
 
     if (ulMSR <= 0x00001FFF)
     {
-        /* Pentium®-compatible MSRs */
+        /* Pentium-compatible MSRs */
         ulBit    = ulMSR * 2;
     }
     else
