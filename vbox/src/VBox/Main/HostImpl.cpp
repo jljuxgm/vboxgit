@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 20977 2009-06-26 14:38:55Z vboxsync $ */
+/* $Id: HostImpl.cpp 21395 2009-07-08 13:30:34Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -255,10 +255,11 @@ HRESULT Host::init (VirtualBox *aParent)
     /* Test for 3D hardware acceleration support */
     f3DAccelerationSupported = false;
 
+#if 0
 #ifdef VBOX_WITH_CROGL
     f3DAccelerationSupported = is3DAccelerationSupported();
 #endif /* VBOX_WITH_CROGL */
-
+#endif
     setReady(true);
     return S_OK;
 }
