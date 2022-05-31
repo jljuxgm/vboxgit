@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 20814 2009-06-23 10:40:53Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 21796 2009-07-25 23:22:14Z vboxsync $ */
 
 /** @file
  *
@@ -1586,13 +1586,13 @@ STDMETHODIMP Display::TakeScreenShot (BYTE *address, ULONG width, ULONG height)
     return rc;
 }
 
-STDMETHODIMP Display::TakeScreenShotSlow (ULONG width, ULONG height, 
+STDMETHODIMP Display::TakeScreenShotSlow (ULONG width, ULONG height,
                                           ComSafeArrayOut (BYTE, aScreenData))
 {
      HRESULT rc = S_OK;
 
      rc = setError (E_NOTIMPL, tr ("This feature is not implemented"));
-     
+
      return rc;
 }
 
