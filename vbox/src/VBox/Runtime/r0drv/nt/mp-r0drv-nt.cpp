@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 23546 2009-10-05 09:35:28Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 23683 2009-10-12 11:46:00Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -350,7 +350,8 @@ static VOID rtMpNtPokeCpuDummy(IN PKDPC Dpc, IN PVOID DeferredContext, IN PVOID 
 #ifndef IPRT_TARGET_NT4
 int rtMpSendIpiVista(RTCPUID idCpu)
 {
-    g_pfnrtNtHalRequestIpi(1 << idCpu);
+    g_pfnrtKeIpiGenericCall(rtMpIpiGenericCall, 0);
+////    g_pfnrtNtHalRequestIpi(1 << idCpu);
     return VINF_SUCCESS;
 }
 
