@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22109 2009-08-09 01:18:47Z vboxsync $
+# $Id: Makefile.kmk 22308 2009-08-17 20:58:21Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -293,6 +293,7 @@ RuntimeR3_SOURCES       = \
 	common/table/avlroioport.cpp \
 	common/table/avlroogcptr.cpp \
 	common/table/avlruintptr.cpp \
+	common/table/avlrfoff.cpp \
 	common/table/avlu32.cpp \
 	common/table/avluintptr.cpp \
 	common/table/avlul.cpp \
