@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 18323 2009-03-26 15:29:16Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 18441 2009-03-28 02:58:54Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -287,7 +287,7 @@ static DECLCALLBACK(int) drvIntNetSend(PPDMINETWORKCONNECTOR pInterface, const v
     /*
      * Add the frame to the send buffer and push it onto the network.
      */
-    int rc = drvIntNetRingWriteFrame(pThis->pBuf, &pThis->pBuf->Send, pvBuf, cb);
+    int rc = drvIntNetRingWriteFrame(pThis->pBuf, &pThis->pBuf->Send, pvBuf, (uint32_t)cb);
     if (    rc == VERR_BUFFER_OVERFLOW
         &&  pThis->pBuf->cbSend < cb)
     {
@@ -298,7 +298,7 @@ static DECLCALLBACK(int) drvIntNetSend(PPDMINETWORKCONNECTOR pInterface, const v
         SendReq.hIf = pThis->hIf;
         pThis->pDrvIns->pDrvHlp->pfnSUPCallVMMR0Ex(pThis->pDrvIns, VMMR0_DO_INTNET_IF_SEND, &SendReq, sizeof(SendReq));
 
-        rc = drvIntNetRingWriteFrame(pThis->pBuf, &pThis->pBuf->Send, pvBuf, cb);
+        rc = drvIntNetRingWriteFrame(pThis->pBuf, &pThis->pBuf->Send, pvBuf, (uint32_t)cb);
     }
 
     if (RT_SUCCESS(rc))
