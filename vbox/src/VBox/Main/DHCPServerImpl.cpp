@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 22186 2009-08-11 17:44:54Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 23319 2009-09-25 09:20:29Z vboxsync $ */
 
 /** @file
  *
@@ -26,6 +26,8 @@
 #include "Logging.h"
 
 #include <VBox/settings.h>
+
+#include "VirtualBoxImpl.h"
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
