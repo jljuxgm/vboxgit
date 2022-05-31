@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 20444 2009-06-09 15:16:41Z vboxsync $ */
+/* $Id: DevVGA.cpp 20458 2009-06-10 08:17:58Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4761,13 +4761,6 @@ static DECLCALLBACK(int) vgaPortUpdateDisplay(PPDMIDISPLAYPORT pInterface)
     }
 #endif /* VBOX_WITH_HGSMI */
 
-    rc = vga_update_display(pThis, false);
-    if (rc != VINF_SUCCESS)
-    {
-        PDMCritSectLeave(&pThis->lock);
-        return rc;
-    }
-
     if (pThis->fHasDirtyBits && pThis->GCPhysVRAM && pThis->GCPhysVRAM != NIL_RTGCPHYS32)
     {
         PGMHandlerPhysicalReset(PDMDevHlpGetVM(pDevIns), pThis->GCPhysVRAM);
@@ -4777,6 +4770,13 @@ static DECLCALLBACK(int) vgaPortUpdateDisplay(PPDMIDISPLAYPORT pInterface)
     {
         IOMMMIOResetRegion(PDMDevHlpGetVM(pDevIns), 0x000a0000);
         pThis->fRemappedVGA = false;
+    }
+
+    rc = vga_update_display(pThis, false);
+    if (rc != VINF_SUCCESS)
+    {
+        PDMCritSectLeave(&pThis->lock);
+        return rc;
     }
     PDMCritSectLeave(&pThis->lock);
     return VINF_SUCCESS;
@@ -4804,10 +4804,6 @@ static DECLCALLBACK(int) vgaPortUpdateDisplayAll(PPDMIDISPLAYPORT pInterface)
     int rc = PDMCritSectEnter(&pThis->lock, VERR_SEM_BUSY);
     AssertRC(rc);
 
-    pThis->graphic_mode = -1; /* force full update */
-
-    rc = vga_update_display(pThis, true);
-
     /* The dirty bits array has been just cleared, reset handlers as well. */
     if (pThis->GCPhysVRAM && pThis->GCPhysVRAM != NIL_RTGCPHYS32)
     {
@@ -4818,6 +4814,11 @@ static DECLCALLBACK(int) vgaPortUpdateDisplayAll(PPDMIDISPLAYPORT pInterface)
         IOMMMIOResetRegion(PDMDevHlpGetVM(pDevIns), 0x000a0000);
         pThis->fRemappedVGA = false;
     }
+
+    pThis->graphic_mode = -1; /* force full update */
+
+    rc = vga_update_display(pThis, true);
+
     PDMCritSectLeave(&pThis->lock);
     return rc;
 }
