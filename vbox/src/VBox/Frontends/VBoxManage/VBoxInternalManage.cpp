@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 18177 2009-03-24 13:21:12Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 18227 2009-03-24 20:57:36Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -646,7 +646,6 @@ static int partRead(RTFILE File, PHOSTPARTITIONS pPart)
             /* Fill out partitioning location info for EBR. */
             pCP->uPartDataStart = uStart + uOffset;
             pCP->cPartDataSectors = uStartOffset;
-            RTPrintf("cPartDataSectors = %u\n", pCP->cPartDataSectors);
             p += 16;
             if (p[4] == 0)
                 uExtended = (unsigned)-1;
