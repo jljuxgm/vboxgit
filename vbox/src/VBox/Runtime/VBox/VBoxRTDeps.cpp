@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 13306 2008-10-15 21:17:04Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 19554 2009-05-08 22:10:24Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -34,6 +34,9 @@
 #include <VBox/sup.h>
 #include <iprt/system.h>
 #include <iprt/assert.h>
+#ifdef VBOX_WITH_LIBXML2_IN_VBOXRT
+# include <libxml/xmlmodule.h>
+#endif
 
 
 /*******************************************************************************
@@ -43,6 +46,9 @@ PFNRT g_VBoxRTDeps[] =
 {
     (PFNRT)SUPR3Init,
     (PFNRT)SUPPageLock,
+#ifdef VBOX_WITH_LIBXML2_IN_VBOXRT
+    (PFNRT)xmlModuleOpen,
+#endif
     (PFNRT)RTAssertShouldPanic
 };
 
