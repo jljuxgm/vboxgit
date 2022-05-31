@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 22388 2009-08-21 13:37:10Z vboxsync $ */
+/* $Id: DevVGA.h 22412 2009-08-24 13:02:40Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -452,6 +452,7 @@ static inline int c6_to_8(int v)
 int      VBVAInit       (PVGASTATE pVGAState);
 void     VBVADestroy    (PVGASTATE pVGAState);
 int      VBVAUpdateDisplay (PVGASTATE pVGAState);
+void     VBVAReset (PVGASTATE pVGAState);
 
 # ifdef VBOX_WITH_VIDEOHWACCEL
 int vbvaVHWACommandCompleteAsynch(PPDMDDISPLAYVBVACALLBACKS pInterface, PVBOXVHWACMD pCmd);

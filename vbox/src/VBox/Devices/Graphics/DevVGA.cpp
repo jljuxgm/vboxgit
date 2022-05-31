@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 22388 2009-08-21 13:37:10Z vboxsync $ */
+/* $Id: DevVGA.cpp 22412 2009-08-24 13:02:40Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5342,6 +5342,11 @@ static DECLCALLBACK(void)  vgaR3Reset(PPDMDEVINS pDevIns)
     char           *pchStart;
     char           *pchEnd;
     LogFlow(("vgaReset\n"));
+
+#ifdef VBOX_WITH_HGSMI
+    VBVAReset(pThis);
+#endif /* VBOX_WITH_HGSMI */
+
 
     /* Clear the VRAM ourselves. */
     if (pThis->vram_ptrR3 && pThis->vram_size)
