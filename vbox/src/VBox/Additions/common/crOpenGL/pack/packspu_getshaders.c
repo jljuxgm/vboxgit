@@ -1,4 +1,4 @@
-/* $Id: packspu_getshaders.c 20438 2009-06-09 13:09:55Z vboxsync $ */
+/* $Id: packspu_getshaders.c 20467 2009-06-10 16:09:27Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -92,6 +92,50 @@ void PACKSPU_APIENTRY packspu_GetAttachedShaders(GLuint program, GLsizei maxCoun
 
     if (count) *count=*pLocal;
     crMemcpy(shaders, &pLocal[1], *pLocal*sizeof(GLuint));
+    crFree(pLocal);
+}
+
+void PACKSPU_APIENTRY packspu_GetAttachedObjectsARB(GLhandleARB containerObj, GLsizei maxCount, GLsizei * count, GLhandleARB * obj)
+{
+    GET_THREAD(thread);
+    int writeback = 1;
+    GLsizei *pLocal;
+
+    if (!obj) return;
+
+    pLocal = (GLsizei*) crAlloc(maxCount*sizeof(GLhandleARB)+sizeof(GLsizei));
+    if (!pLocal) return;
+
+    crPackGetAttachedObjectsARB(containerObj, maxCount, pLocal, NULL, &writeback);
+
+    packspuFlush((void *) thread);
+    while (writeback)
+        crNetRecv();
+
+    if (count) *count=*pLocal;
+    crMemcpy(obj, &pLocal[1], *pLocal*sizeof(GLhandleARB));
+    crFree(pLocal);
+}
+
+void PACKSPU_APIENTRY packspu_GetInfoLogARB(GLhandleARB obj, GLsizei maxLength, GLsizei * length, GLcharARB * infoLog)
+{
+    GET_THREAD(thread);
+    int writeback = 1;
+    GLsizei *pLocal;
+
+    if (!infoLog) return;
+
+    pLocal = (GLsizei*) crAlloc(maxLength+sizeof(GLsizei));
+    if (!pLocal) return;
+
+    crPackGetInfoLogARB(obj, maxLength, pLocal, NULL, &writeback);
+
+    packspuFlush((void *) thread);
+    while (writeback)
+        crNetRecv();
+
+    if (length) *length=*pLocal;
+    crMemcpy(infoLog, &pLocal[1], (*pLocal)+1);
     crFree(pLocal);
 }
 

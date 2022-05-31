@@ -1,4 +1,4 @@
-/* $Id: server_getshaders.c 20437 2009-06-09 13:06:48Z vboxsync $ */
+/* $Id: server_getshaders.c 20467 2009-06-10 16:09:27Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -72,6 +72,36 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchGetAttachedShaders(GLuint program,
     }
     cr_server.head_spu->dispatch_table.GetAttachedShaders(program, maxCount, pLocal, (GLuint*)&pLocal[1]);
     crServerReturnValue(pLocal, (*pLocal)*sizeof(GLuint)+sizeof(GLsizei));
+    crFree(pLocal);
+}
+
+void SERVER_DISPATCH_APIENTRY crServerDispatchGetAttachedObjectsARB(GLhandleARB containerObj, GLsizei maxCount, GLsizei * count, GLhandleARB * obj)
+{
+    GLsizei *pLocal;
+
+    pLocal = (GLsizei*) crAlloc(maxCount*sizeof(GLhandleARB)+sizeof(GLsizei));
+    if (!pLocal)
+    {
+        GLsizei zero=0;
+        crServerReturnValue(&zero, sizeof(zero));
+    }
+    cr_server.head_spu->dispatch_table.GetAttachedObjectsARB(containerObj, maxCount, pLocal, (GLhandleARB*)&pLocal[1]);
+    crServerReturnValue(pLocal, (*pLocal)*sizeof(GLhandleARB)+sizeof(GLsizei));
+    crFree(pLocal);
+}
+
+void SERVER_DISPATCH_APIENTRY crServerDispatchGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, GLsizei * length, GLcharARB * infoLog)
+{
+    GLsizei *pLocal;
+
+    pLocal = (GLsizei*) crAlloc(maxLength+sizeof(GLsizei));
+    if (!pLocal)
+    {
+        GLsizei zero=0;
+        crServerReturnValue(&zero, sizeof(zero));
+    }
+    cr_server.head_spu->dispatch_table.GetInfoLogARB(obj, maxLength, pLocal, (char*)&pLocal[1]);
+    crServerReturnValue(pLocal, (*pLocal)+1+sizeof(GLsizei));
     crFree(pLocal);
 }
 

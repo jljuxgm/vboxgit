@@ -1,4 +1,4 @@
-/* $Id: unpack_shaders.c 20437 2009-06-09 13:06:48Z vboxsync $ */
+/* $Id: unpack_shaders.c 20467 2009-06-10 16:09:27Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -186,6 +186,24 @@ void crUnpackExtendGetAttachedShaders(void)
     SET_RETURN_PTR(16);
     SET_WRITEBACK_PTR(24);
     cr_unpackDispatch.GetAttachedShaders(program, maxCount, NULL, NULL);
+}
+
+void crUnpackExtendGetAttachedObjectsARB(void)
+{
+	GLhandleARB containerObj = READ_DATA(8, GLhandleARB);
+	GLsizei maxCount = READ_DATA(12, GLsizei);
+	SET_RETURN_PTR(16);
+	SET_WRITEBACK_PTR(24);
+	cr_unpackDispatch.GetAttachedObjectsARB(containerObj, maxCount, NULL, NULL);
+}
+
+void crUnpackExtendGetInfoLogARB(void)
+{
+	GLhandleARB obj = READ_DATA(8, GLhandleARB);
+	GLsizei maxLength = READ_DATA(12, GLsizei);
+	SET_RETURN_PTR(16);
+	SET_WRITEBACK_PTR(24);
+	cr_unpackDispatch.GetInfoLogARB(obj, maxLength, NULL, NULL);
 }
 
 void crUnpackExtendGetProgramInfoLog(void)
