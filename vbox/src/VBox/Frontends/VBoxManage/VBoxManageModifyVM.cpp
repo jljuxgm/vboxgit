@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 18177 2009-03-24 13:21:12Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 18591 2009-04-01 10:11:51Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of -modifyvm command.
  */
@@ -1491,6 +1491,10 @@ int handleModifyVM(HandlerArg *a)
                 else if (strcmp(nictype[n], "82543GC") == 0)
                 {
                     CHECK_ERROR_RET(nic, COMSETTER(AdapterType)(NetworkAdapterType_I82543GC), 1);
+                }
+                else if (strcmp(nictype[n], "82545EM") == 0)
+                {
+                    CHECK_ERROR_RET(nic, COMSETTER(AdapterType)(NetworkAdapterType_I82545EM), 1);
                 }
 #endif
                 else

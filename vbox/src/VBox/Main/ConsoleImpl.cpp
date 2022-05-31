@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 18493 2009-03-29 01:49:49Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 18591 2009-04-01 10:11:51Z vboxsync $ */
 
 /** @file
  *
@@ -3195,7 +3195,8 @@ HRESULT Console::onNetworkAdapterChange (INetworkAdapter *aNetworkAdapter)
             rc = aNetworkAdapter->COMGETTER(AdapterType)(&adapterType);
             AssertComRC(rc);
             if (adapterType == NetworkAdapterType_I82540EM ||
-                adapterType == NetworkAdapterType_I82543GC)
+                adapterType == NetworkAdapterType_I82543GC ||
+                adapterType == NetworkAdapterType_I82545EM)
                 cszAdapterName = "e1000";
 #endif
             int vrc = PDMR3QueryDeviceLun (mpVM, cszAdapterName,

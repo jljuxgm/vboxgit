@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 18405 2009-03-27 15:23:11Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 18591 2009-04-01 10:11:51Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1202,6 +1202,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 #ifdef VBOX_WITH_E1000
             case NetworkAdapterType_I82540EM:
             case NetworkAdapterType_I82543GC:
+            case NetworkAdapterType_I82545EM:
                 pDev = pDevE1000;
                 break;
 #endif
@@ -1255,6 +1256,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 break;
             case NetworkAdapterType_I82543GC:
                 rc = CFGMR3InsertInteger(pCfg, "AdapterType", 1);                   RC_CHECK();
+                break;
+            case NetworkAdapterType_I82545EM:
+                rc = CFGMR3InsertInteger(pCfg, "AdapterType", 2);                   RC_CHECK();
                 break;
         }
 
