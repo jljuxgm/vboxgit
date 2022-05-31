@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 23801 2009-10-15 15:00:47Z vboxsync $ */
+/* $Id: SSM.cpp 23816 2009-10-16 11:47:32Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -6109,7 +6109,9 @@ VMMR3DECL(int) SSMR3GetStructEx(PSSMHANDLE pSSM, void *pvStruct, size_t cbStruct
                 {
                     uint32_t u32;
                     rc = ssmR3DataRead(pSSM, &u32, sizeof(uint32_t));
-                    AssertMsgReturn(u32 == 0 || RT_FAILURE(rc), ("%#x\n", u32), VERR_SSM_FIELD_INVALID_VALUE);
+                    AssertMsgReturn(RT_FAILURE(rc) || u32 == 0 || (fFlags & SSMSTRUCT_FLAGS_SAVED_AS_MEM),
+                                    ("high=%#x low=%#x (%s)\n", u32, *(uint32_t *)pbField, pCur->pszName),
+                                    VERR_SSM_FIELD_INVALID_VALUE);
                 }
                 break;
 
