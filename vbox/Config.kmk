@@ -1,4 +1,4 @@
-# $Id: Config.kmk 23314 2009-09-25 01:16:25Z vboxsync $
+# $Id: Config.kmk 23317 2009-09-25 08:00:03Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -501,9 +501,9 @@ if1of ($(KBUILD_TARGET), darwin linux solaris win freebsd)
  endif
 endif
 # Enable the new I/O path on every host except Darwin
-if1of ($(KBUILD_TARGET), linux solaris win freebsd)
- VBOX_WITH_NEW_IO_CODE = 1
-endif
+#if1of ($(KBUILD_TARGET), linux solaris win freebsd)
+# VBOX_WITH_NEW_IO_CODE = 1
+#endif
 
 #
 # Config items for enabling work in progress.
@@ -3819,7 +3819,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23314 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23317 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
