@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 22810 2009-09-07 13:41:45Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 22864 2009-09-09 12:01:50Z vboxsync $ */
 
 /** @file
  *
@@ -1132,6 +1132,8 @@ ConsoleVRDPServer::ConsoleVRDPServer (Console *console)
     mConsoleCallback = new VRDPConsoleCallback(this);
     mConsoleCallback->AddRef();
     console->RegisterCallback(mConsoleCallback);
+
+    mConsole->machine ()->SetExtraData(Bstr("VBoxInternal2/VRDPPortRange"), Bstr(""));
 #endif /* VBOX_WITH_VRDP */
 
     mAuthLibrary = 0;
