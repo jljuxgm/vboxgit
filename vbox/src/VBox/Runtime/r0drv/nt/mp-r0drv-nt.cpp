@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 23370 2009-09-28 12:41:24Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 23376 2009-09-28 13:18:01Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -357,7 +357,7 @@ RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
               ? VERR_CPU_NOT_FOUND
               : VERR_CPU_OFFLINE;
 
-#if 1 /* experiment!! */
+#if 0 /* experiment!! */
     HalRequestIpi(1 << idCpu);
     return VINF_SUCCESS;
 #else
