@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: VMMTests.cpp 19334 2009-05-04 16:03:57Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -451,7 +451,7 @@ VMMR3DECL(int) VMMDoTest(PVM pVM)
 #define SYNC_SEL(pHyperCtx, reg)                                                        \
         if (pHyperCtx->reg)                                                             \
         {                                                                               \
-            SELMSELINFO selInfo;                                                        \
+            DBGFSELINFO selInfo;                                                        \
             int rc = SELMR3GetShadowSelectorInfo(pVM, pHyperCtx->reg, &selInfo);        \
             AssertRC(rc);                                                               \
                                                                                         \

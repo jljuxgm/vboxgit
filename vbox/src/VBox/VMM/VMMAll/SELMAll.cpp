@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 18992 2009-04-17 13:51:56Z vboxsync $ */
+/* $Id: SELMAll.cpp 19334 2009-05-04 16:03:57Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -1076,42 +1076,6 @@ VMMDECL(RTGCPTR) SELMGetGuestTSS(PVM pVM)
     return (RTGCPTR)pVM->selm.s.GCPtrGuestTss;
 }
 
-
-/**
- * Validates a CS selector.
- *
- * @returns VBox status code.
- * @param   pSelInfo    Pointer to the selector information for the CS selector.
- * @param   SelCPL      The selector defining the CPL (SS).
- */
-VMMDECL(int) SELMSelInfoValidateCS(PCSELMSELINFO pSelInfo, RTSEL SelCPL)
-{
-    /*
-     * Check if present.
-     */
-    if (pSelInfo->Raw.Gen.u1Present)
-    {
-        /*
-         * Type check.
-         */
-        if (    pSelInfo->Raw.Gen.u1DescType == 1
-            &&  (pSelInfo->Raw.Gen.u4Type & X86_SEL_TYPE_CODE))
-        {
-            /*
-             * Check level.
-             */
-            unsigned uLevel = RT_MAX(SelCPL & X86_SEL_RPL, pSelInfo->Sel & X86_SEL_RPL);
-            if (    !(pSelInfo->Raw.Gen.u4Type & X86_SEL_TYPE_CONF)
-                ?   uLevel <= pSelInfo->Raw.Gen.u2Dpl
-                :   uLevel >= pSelInfo->Raw.Gen.u2Dpl /* hope I got this right now... */
-                    )
-                return VINF_SUCCESS;
-            return VERR_INVALID_RPL;
-        }
-        return VERR_NOT_CODE_SELECTOR;
-    }
-    return VERR_SELECTOR_NOT_PRESENT;
-}
 
 #ifndef IN_RING0
 
