@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21286 2009-07-07 00:53:55Z vboxsync $
+# $Id: Makefile.kmk 21582 2009-07-14 14:50:24Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -60,6 +60,7 @@ PROGRAMS += \
 	tstEnv \
 	tstErrUnique \
 	tstFile \
+	tstFileAppend-1 \
 	tstFileLock \
 	tstFork \
 	tstGetOpt \
@@ -182,6 +183,8 @@ tstErrUnique_INCS = $(IPRT_OUT_DIR)/
 tstErrUnique.cpp_DEPS = $(IPRT_OUT_DIR)/errmsgdata.h
 
 tstFile_SOURCES = tstFile.cpp
+
+tstFileAppend-1_SOURCES = tstFileAppend-1.cpp
 
 tstFileAppendWin-1_SOURCES = tstFileAppendWin-1.cpp
 
