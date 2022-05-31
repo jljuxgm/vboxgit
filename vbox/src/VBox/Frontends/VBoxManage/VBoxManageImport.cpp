@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 18223 2009-03-24 19:39:47Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 18337 2009-03-26 18:12:06Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -292,6 +292,11 @@ int handleImportAppliance(HandlerArg *a)
                                 RTPrintf("%2d: Suggested OS type: \"%ls\""
                                         "\n    (change with \"-vsys %d -ostype <type>\"; use \"list ostypes\" to list all)\n",
                                         a, bstrFinalValue.raw(), i);
+                        break;
+
+                        case VirtualSystemDescriptionType_Description:
+                            RTPrintf("%2d: Description: \"%ls\"\n",
+                                     a, bstrFinalValue.raw());
                         break;
 
                         case VirtualSystemDescriptionType_License:
