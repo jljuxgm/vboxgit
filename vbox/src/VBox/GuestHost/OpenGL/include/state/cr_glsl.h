@@ -1,4 +1,4 @@
-/* $Id: cr_glsl.h 23403 2009-09-29 09:55:43Z vboxsync $ */
+/* $Id: cr_glsl.h 23433 2009-09-30 11:38:45Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: GLSL related state info
@@ -99,6 +99,7 @@ DECLEXPORT(GLuint) STATE_APIENTRY crStateGLSLProgramHWIDtoID(GLuint hwid);
 DECLEXPORT(GLuint) STATE_APIENTRY crStateGLSLShaderHWIDtoID(GLuint hwid);
 
 DECLEXPORT(GLint) STATE_APIENTRY crStateGetUniformSize(GLenum type);
+DECLEXPORT(GLboolean) STATE_APIENTRY crStateIsIntUniform(GLenum type);
 
 DECLEXPORT(void) STATE_APIENTRY crStateCreateShader(GLuint id, GLenum type);
 DECLEXPORT(void) STATE_APIENTRY crStateCreateProgram(GLuint id);

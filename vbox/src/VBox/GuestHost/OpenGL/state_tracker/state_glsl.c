@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 23403 2009-09-29 09:55:43Z vboxsync $ */
+/* $Id: state_glsl.c 23433 2009-09-30 11:38:45Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -662,6 +662,28 @@ DECLEXPORT(GLint) STATE_APIENTRY crStateGetUniformSize(GLenum type)
     }
 
     return size;
+}
+
+DECLEXPORT(GLboolean) STATE_APIENTRY crStateIsIntUniform(GLenum type)
+{
+    if (GL_INT==type
+        || GL_INT_VEC2==type
+        || GL_INT_VEC3==type
+        || GL_INT_VEC4==type
+        || GL_BOOL==type
+        || GL_BOOL_VEC2==type
+        || GL_BOOL_VEC3==type
+        || GL_BOOL_VEC4==type
+        || GL_SAMPLER_1D==type
+        || GL_SAMPLER_2D==type
+        || GL_SAMPLER_3D==type
+        || GL_SAMPLER_CUBE==type
+        || GL_SAMPLER_1D_SHADOW==type
+        || GL_SAMPLER_2D_SHADOW==type)
+    {
+        return GL_TRUE;
+    }
+    else return GL_FALSE;
 }
 
 DECLEXPORT(GLboolean) STATE_APIENTRY crStateIsProgramUniformsCached(GLuint program)
