@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 16867 2009-02-17 17:00:56Z vboxsync $ */
+/* $Id: MediumImpl.cpp 18275 2009-03-25 19:18:22Z vboxsync $ */
 
 /** @file
  *
@@ -114,7 +114,7 @@ STDMETHODIMP MediumBase::COMGETTER(State) (MediaState_T *aState)
         case MediaState_LockedRead:
         case MediaState_LockedWrite:
         {
-            rc = queryInfo();
+            rc = queryInfo(true /* fWrite */);
             break;
         }
         default:
@@ -714,12 +714,16 @@ HRESULT MediumBase::setLocation (CBSTR aLocation)
  * As a result of this call, the accessibility state and data members such as
  * size and description will be updated with the current information.
  *
+ * The fWrite parameter is ignored in this variant, since this always opens
+ * the medium read-only; it is however acknowledged by HardDisk::queryInfo(),
+ * which overrides this implementation for hard disk media.
+ *
  * @note This method may block during a system I/O call that checks image file
  *       accessibility.
  *
  * @note Locks this object for writing.
  */
-HRESULT MediumBase::queryInfo()
+HRESULT MediumBase::queryInfo(bool fWrite)
 {
     AutoWriteLock alock (this);
 
@@ -961,7 +965,7 @@ HRESULT ImageMediumBase::protectedInit (VirtualBox *aVirtualBox, CBSTR aLocation
     LogFlowThisFunc (("m.locationFull='%ls'\n", m.locationFull.raw()));
 
     /* get all the information about the medium from the file */
-    rc = queryInfo();
+    rc = queryInfo(true);
     if (SUCCEEDED (rc))
     {
         /* if the image file is not accessible, it's not acceptable for the

@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 18177 2009-03-24 13:21:12Z vboxsync $ */
+/* $Id: HardDiskImpl.h 18275 2009-03-25 19:18:22Z vboxsync $ */
 
 /** @file
  *
@@ -255,7 +255,7 @@ private:
     HRESULT setLocation (CBSTR aLocation);
     HRESULT setFormat (CBSTR aFormat);
 
-    HRESULT queryInfo(bool fWrite);
+    virtual HRESULT queryInfo(bool fWrite);
 
     HRESULT canClose();
     HRESULT canAttach (const Guid &aMachineId,
