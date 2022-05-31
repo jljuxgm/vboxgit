@@ -1,4 +1,4 @@
-/* $Id: semfastmutex-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: semfastmutex-generic.cpp 21533 2009-07-13 14:39:34Z vboxsync $ */
 /** @file
  * IPRT - Fast Mutex, Generic.
  */
@@ -48,7 +48,12 @@ RTDECL(int) RTSemFastMutexCreate(PRTSEMFASTMUTEX pMutexSem)
         return VERR_NO_MEMORY;
     int rc = RTCritSectInit(pCritSect);
     if (RT_SUCCESS(rc))
+    {
+        /** @todo pCritSect->fFlags |= RTCRITSECT_FLAGS_NO_NESTING; */
         *pMutexSem = (RTSEMFASTMUTEX)pCritSect;
+    }
+    else
+        RTMemFree(pCritSect);
     return rc;
 }
 RT_EXPORT_SYMBOL(RTSemFastMutexCreate);
