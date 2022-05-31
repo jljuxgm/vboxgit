@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 19752 2009-05-15 18:32:16Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 19753 2009-05-15 18:35:52Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -572,6 +572,7 @@ DECLINLINE(uint64_t) tmVirtualSyncGetEx(PVM pVM, bool fCheckTimers)
             REMR3NotifyTimerPending(pVM, pVCpuDst);
             VMR3NotifyCpuFFU(pVCpuDst->pUVCpu, VMNOTIFYFF_FLAGS_DONE_REM);
 #endif
+            STAM_COUNTER_INC(&pVM->tm.s.StatVirtualSyncGetLocked);
             STAM_COUNTER_INC(&pVM->tm.s.StatVirtualSyncGetSetFF);
             Log4(("TM: %RU64/%RU64: exp tmr=>ff\n", u64, pVM->tm.s.offVirtualSync - pVM->tm.s.offVirtualSyncGivenUp));
         }
@@ -590,7 +591,10 @@ DECLINLINE(uint64_t) tmVirtualSyncGetEx(PVM pVM, bool fCheckTimers)
             Log4(("TM: %RU64/%RU64: exp tmr (NoLock)\n", u64, pVM->tm.s.offVirtualSync - pVM->tm.s.offVirtualSyncGivenUp));
     }
     else if (RT_SUCCESS(rcLock))
+    {
         tmVirtualSyncUnlock(pVM);
+        STAM_COUNTER_INC(&pVM->tm.s.StatVirtualSyncGetLocked);
+    }
 
     return u64;
 }

@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 19752 2009-05-15 18:32:16Z vboxsync $ */
+/* $Id: TMInternal.h 19753 2009-05-15 18:35:52Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -459,6 +459,7 @@ typedef struct TM
     STAMCOUNTER                 StatVirtualSyncGet;
     STAMCOUNTER                 StatVirtualSyncGetSetFF;
     STAMCOUNTER                 StatVirtualSyncGetELoop;
+    STAMCOUNTER                 StatVirtualSyncGetLocked;
     STAMCOUNTER                 StatVirtualPause;
     STAMCOUNTER                 StatVirtualResume;
     /* @} */
