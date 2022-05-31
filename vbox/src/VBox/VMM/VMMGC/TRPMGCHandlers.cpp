@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 18723 2009-04-05 17:33:22Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 18770 2009-04-06 15:00:15Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -652,6 +652,7 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTAT
         case OP_LLDT:
         case OP_STI:
         case OP_RDTSC:  /* just in case */
+        case OP_RDPMC:
         case OP_CLTS:
         case OP_WBINVD: /* nop */
         case OP_RDMSR:
@@ -731,9 +732,10 @@ static int trpmGCTrap0dHandlerRing3(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTAT
             return trpmGCExitTrap(pVM, VINF_EM_RAW_RING_SWITCH, pRegFrame);
 
         /*
-         * Handle virtualized TSC reads, just in case.
+         * Handle virtualized TSC & PMC reads, just in case.
          */
         case OP_RDTSC:
+        case OP_RDPMC:
         {
             uint32_t cbIgnored;
             rc = EMInterpretInstructionCPU(pVM, pCpu, pRegFrame, PC, &cbIgnored);
