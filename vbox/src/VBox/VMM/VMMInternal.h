@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 20854 2009-06-23 16:32:12Z vboxsync $ */
+/* $Id: VMMInternal.h 20871 2009-06-24 01:56:19Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -253,6 +253,9 @@ typedef struct VMM
     /** Size of the allocated release logger instance (pRCRelLoggerRC/pRCRelLoggerR3).
      * This may differ from cbRCLogger. */
     uint32_t                    cbRCRelLogger;
+    /** Whether log flushing has been disabled or not. */
+    bool                        fRCLoggerFlushingDisabled;
+    bool                        afAlignment[7]; /**< Alignment padding. */
     /** @} */
 
     /** The EMT yield timer. */
@@ -396,13 +399,16 @@ typedef struct VMMCPU
     R0PTRTYPE(PVMMR0LOGGER)     pR0LoggerR0;
 #endif
 
-    /** @name CallHost
+    /** @name Call Ring-3
+     * Formerly known as host calls.
      * @{ */
+    /** The disable counter. */
+    uint32_t                    cCallRing3Disabled;
     /** The pending operation. */
     VMMCALLHOST                 enmCallHostOperation;
     /** The result of the last operation. */
     int32_t                     rcCallHost;
-#if HC_ARCH_BITS == 32
+#if HC_ARCH_BITS == 64
     uint32_t                    padding;
 #endif
     /** The argument to the operation. */

@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 20854 2009-06-23 16:32:12Z vboxsync $ */
+/* $Id: VMMR0.cpp 20871 2009-06-24 01:56:19Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -313,19 +313,12 @@ VMMR0DECL(int) VMMR0TermVM(PVM pVM, PGVM pGVM)
  * @param   pVM             The VM handle.
  * @param   enmOperation    The operation.
  * @param   uArg            The argument to the operation.
+ *
+ * @deprecated Use VMMRZCallRing3.
  */
 VMMR0DECL(int) VMMR0CallHost(PVM pVM, VMMCALLHOST enmOperation, uint64_t uArg)
 {
-    PVMCPU pVCpu = VMMGetCpu(pVM);
-
-/** @todo profile this! */
-    pVCpu->vmm.s.enmCallHostOperation = enmOperation;
-    pVCpu->vmm.s.u64CallHostArg = uArg;
-    pVCpu->vmm.s.rcCallHost = VERR_INTERNAL_ERROR;
-    int rc = vmmR0CallHostLongJmp(&pVCpu->vmm.s.CallHostR0JmpBuf, VINF_VMM_CALL_HOST);
-    if (rc == VINF_SUCCESS)
-        rc = pVCpu->vmm.s.rcCallHost;
-    return rc;
+    return VMMRZCallRing3(pVM, VMMGetCpu(pVM), enmOperation, uArg);
 }
 
 
