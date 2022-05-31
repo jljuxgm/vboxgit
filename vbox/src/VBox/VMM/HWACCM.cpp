@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 22289 2009-08-17 11:57:43Z vboxsync $ */
+/* $Id: HWACCM.cpp 22290 2009-08-17 12:00:31Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -341,7 +341,7 @@ VMMR3DECL(int) HWACCMR3Init(PVM pVM)
     AssertRC(rc);
 
     /* TPR patching for 32 bits (Windows) guests with IO-APIC: disabled by default. */
-    rc = CFGMR3QueryBoolDef(pRoot, "TPRPatchingEnabled", &pVM->hwaccm.s.fTRPPatchingAllowed, false);
+    rc = CFGMR3QueryBoolDef(pHWVirtExt, "TPRPatchingEnabled", &pVM->hwaccm.s.fTRPPatchingAllowed, false);
     AssertRC(rc);
 
 #ifdef RT_OS_DARWIN
