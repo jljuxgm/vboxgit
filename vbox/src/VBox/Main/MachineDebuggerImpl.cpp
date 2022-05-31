@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 23012 2009-09-14 16:38:13Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 23392 2009-09-28 17:21:36Z vboxsync $ */
 
 /** @file
  *
@@ -718,7 +718,7 @@ STDMETHODIMP MachineDebugger::GetStats (IN_BSTR aPattern, BOOL aWithDescriptions
  */
 STDMETHODIMP MachineDebugger::InjectNMI()
 {
-    LogFlowThisFunc((""));
+    LogFlowThisFunc(("\n"));
 
     AutoCaller autoCaller(this);
     CheckComRCReturnRC(autoCaller.rc());
