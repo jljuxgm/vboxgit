@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 21645 2009-07-16 12:05:21Z vboxsync $ */
+/* $Id: VMM.cpp 21649 2009-07-16 13:44:57Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1314,9 +1314,9 @@ VMMR3DECL(void) VMMR3SendInitIpi(PVM pVM, VMCPUID idCpu)
 VMMR3DECL(int) VMMR3RegisterPatchMemory(PVM pVM, RTGCPTR pPatchMem, unsigned cbPatchMem)
 {
     if (HWACCMIsEnabled(pVM))
-        HWACMMR3EnablePatching(pVM);
+        return HWACMMR3EnablePatching(pVM, pPatchMem, cbPatchMem);
 
-    return VERR_ACCESS_DENIED;
+    return VERR_NOT_SUPPORTED;
 }
 
 /**
@@ -1330,11 +1330,7 @@ VMMR3DECL(int) VMMR3RegisterPatchMemory(PVM pVM, RTGCPTR pPatchMem, unsigned cbP
 VMMR3DECL(int) VMMR3DeregisterPatchMemory(PVM pVM, RTGCPTR pPatchMem, unsigned cbPatchMem)
 {
     if (HWACCMIsEnabled(pVM))
-    {
-        int rc = HWACMMR3DisablePatching(pVM);
-        if (VBOX_FAILURE(rc))
-            return rc;
-    }
+        return HWACMMR3DisablePatching(pVM, pPatchMem, cbPatchMem);
 
     return VINF_SUCCESS;
 }

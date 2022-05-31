@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21620 2009-07-15 15:59:30Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21649 2009-07-16 13:44:57Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1736,12 +1736,13 @@ ResumeExecution:
         if (    (uFaultAddress & 0xfff) == 0x080
             &&  pVM->hwaccm.s.fHasIoApic
             &&  !(errCode & X86_TRAP_PF_P)  /* not present */
-            &&  CPUMGetGuestCPL(pVCpu, CPUMCTX2CORE(pCtx)) == 0
             &&  !CPUMIsGuestInLongModeEx(pCtx))
         {
             RTGCPHYS GCPhysApicBase;
             PDMApicGetBase(pVM, &GCPhysApicBase);   /* @todo cache this */
             GCPhysApicBase &= PAGE_BASE_GC_MASK;
+
+            Assert(CPUMGetGuestCPL(pVCpu, CPUMCTX2CORE(pCtx)) == 0);
 
             if (uFaultAddress == GCPhysApicBase + 0x80)
             {

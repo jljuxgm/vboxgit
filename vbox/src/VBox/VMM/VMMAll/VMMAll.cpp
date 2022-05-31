@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 19476 2009-05-07 11:06:26Z vboxsync $ */
+/* $Id: VMMAll.cpp 21649 2009-07-16 13:44:57Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -152,4 +152,3 @@ VMMDECL(VMMSWITCHER) VMMGetSwitcher(PVM pVM)
 {
     return pVM->vmm.s.enmSwitcher;
 }
-
