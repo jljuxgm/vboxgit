@@ -1,4 +1,4 @@
-/** $Id: timerlr-generic.cpp 21399 2009-07-08 14:35:30Z vboxsync $ */
+/** $Id: timerlr-generic.cpp 23619 2009-10-08 14:08:15Z vboxsync $ */
 /** @file
  * IPRT - Low Resolution Timers, Generic.
  *
@@ -198,7 +198,7 @@ RTDECL(int) RTTimerLRStart(RTTIMERLR hTimerLR, uint64_t u64First)
         return VERR_TIMER_ACTIVE;
 
     /*
-     * Calc when it should start fireing and give the thread a kick so it get going.
+     * Calc when it should start firing and give the thread a kick so it get going.
      */
     u64First += RTTimeNanoTS();
     ASMAtomicWriteU64(&pThis->iTick, 0);
