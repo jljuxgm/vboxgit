@@ -1,4 +1,4 @@
-/* $Id: VBoxFUSE.cpp 23071 2009-09-16 15:31:51Z vboxsync $ */
+/* $Id: VBoxFUSE.cpp 23072 2009-09-16 15:39:01Z vboxsync $ */
 /** @file
  * VBoxFUSE - Disk Image Flattening FUSE Program.
  */
@@ -37,8 +37,8 @@
 #ifndef EDOOFUS
 # ifdef EBADMACHO
 #  define EDOOFUS EBADMACHO
-# elif defined(RT_OS_LINUX)
-#  define EDOOFUS   0x0fad8484d
+# elif
+#  define EDOOFUS EPROTO                /* What a boring lot. */
 //# elif defined(EXYZ)
 //#  define EDOOFUS EXYZ
 # else
