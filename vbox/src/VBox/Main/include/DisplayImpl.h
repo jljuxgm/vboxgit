@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 20021 2009-05-26 10:31:44Z vboxsync $ */
+/* $Id: DisplayImpl.h 20814 2009-06-23 10:40:53Z vboxsync $ */
 
 /** @file
  *
@@ -239,6 +239,7 @@ public:
     STDMETHOD(GetFramebuffer)(ULONG aScreenId, IFramebuffer **aFramebuffer, LONG *aXOrigin, LONG *aYOrigin);
     STDMETHOD(SetVideoModeHint)(ULONG width, ULONG height, ULONG bitsPerPixel, ULONG display);
     STDMETHOD(TakeScreenShot)(BYTE *address, ULONG width, ULONG height);
+    STDMETHOD(TakeScreenShotSlow)(ULONG width, ULONG height, ComSafeArrayOut(BYTE, aScreenData));
     STDMETHOD(DrawToScreen)(BYTE *address, ULONG x, ULONG y, ULONG width, ULONG height);
     STDMETHOD(InvalidateAndUpdate)();
     STDMETHOD(ResizeCompleted)(ULONG aScreenId);
