@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 22911 2009-09-10 12:02:36Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 22913 2009-09-10 12:46:36Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -458,13 +458,21 @@ static int handleWaitGuestProperty(HandlerArg *a)
         return 1;
     }
     a->virtualBox->RegisterCallback(callback);
-
+    RTTIMESPEC tmStarted, tmNow;
+    RTTimeNow (&tmStarted);
     do {
-      int vrc = com::EventQueue::getMainEventQueue()->processEventQueue(1000);
+      int vrc = com::EventQueue::getMainEventQueue()->processEventQueue(300);
       if (RT_FAILURE(vrc) && vrc != VERR_TIMEOUT)
       {
           RTPrintf("Error waiting for event: %Rrc\n", vrc);
           return 1;
+      }
+      if (cMsTimeout != RT_INDEFINITE_WAIT)
+      {
+        RTTimeNow(&tmNow);
+        RTTimeSpecSub(&tmNow, &tmStarted);
+        if (RTTimeSpecGetMilli(&tmNow) >= cMsTimeout)
+            break;
       }
     } while  (!cbImpl->Signalled());
 
@@ -508,4 +516,3 @@ int handleGuestProperty(HandlerArg *a)
     /* default: */
     return errorSyntax(USAGE_GUESTPROPERTY, "Incorrect parameters");
 }
-
