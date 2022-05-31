@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19827 2009-05-19 14:50:28Z vboxsync $ */
+/* $Id: EM.cpp 19828 2009-05-19 14:51:51Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3450,7 +3450,7 @@ static int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
         /*
          * Requests from other threads.
          */
-        if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_REQUEST))
+        if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_REQUEST))
         {
             rc2 = VMR3ReqProcessU(pVM->pUVM, pVCpu->idCpu);
             if (rc2 == VINF_EM_OFF || rc2 == VINF_EM_TERMINATE)
