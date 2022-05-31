@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 22473 2009-08-26 14:51:50Z vboxsync $ */
+/* $Id: PGMPool.cpp 22510 2009-08-27 12:01:45Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -363,6 +363,7 @@ int pgmR3PoolInit(PVM pVM)
     STAM_REG(pVM, &pPool->cModifiedPagesHigh,           STAMTYPE_U16_RESET, "/PGM/Pool/Monitor/cModifiedPagesHigh", STAMUNIT_PAGES,          "The high watermark for cModifiedPages.");
     STAM_REG(pVM, &pPool->StatResetDirtyPages,          STAMTYPE_COUNTER,   "/PGM/Pool/Monitor/Dirty/Resets",       STAMUNIT_OCCURENCES,     "Times we've called pgmPoolResetDirtyPages (and there were dirty page).");
     STAM_REG(pVM, &pPool->StatDirtyPage,                STAMTYPE_COUNTER,   "/PGM/Pool/Monitor/Dirty/Pages",        STAMUNIT_OCCURENCES,     "Times we've called pgmPoolAddDirtyPage.");
+    STAM_REG(pVM, &pPool->StatDirtyPageDupFlush,        STAMTYPE_COUNTER,   "/PGM/Pool/Monitor/Dirty/FlushDup",     STAMUNIT_OCCURENCES,     "Times we've had to flush duplicates for dirty page management.");
     
 # endif
 # ifdef PGMPOOL_WITH_CACHE
