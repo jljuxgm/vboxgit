@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 16745 2009-02-13 15:53:00Z vboxsync $ */
+/* $Id: DevPCI.cpp 19314 2009-05-04 03:25:23Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -932,6 +932,14 @@ static void pci_bios_init_device(PPCIGLOBALS pGlobals, uint8_t uBus, uint8_t uDe
                     goto default_map;
                 /* VGA: map frame buffer to default Bochs VBE address */
                 pci_set_io_region_addr(pGlobals, uBus, uDevFn, 0, 0xE0000000);
+#ifdef VBOX_WITH_EFI
+                /* The following is necessary for the VGA check in
+                   PciVgaMiniPortDriverBindingSupported to succeed. */
+                /** @todo Seems we're missing some I/O registers or something on the VGA device... Compare real/virt hw with lspci. */
+                pci_config_writew(pGlobals, uBus, uDevFn, PCI_COMMAND,
+                                  pci_config_readw(pGlobals, uBus, uDevFn, PCI_COMMAND)
+                                  | 1 /* Enable I/O space access. */);
+#endif
                 break;
             case 0x0800:
                 /* PIC */
