@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQGL.cpp 22826 2009-09-07 21:04:49Z vboxsync $ */
+/* $Id: VBoxFBQGL.cpp 22836 2009-09-08 12:57:09Z vboxsync $ */
 /** @file
  * VBoxFBQGL Opengl-based FrameBuffer implementation
  */
@@ -78,7 +78,7 @@ STDMETHODIMP VBoxQGLFrameBuffer::NotifyUpdate (ULONG aX, ULONG aY,
                              new VBoxRepaintEvent (aX, aY, aW, aH));
 #else
     QRect r(aX, aY, aW, aH);
-    mCmdPipe.postCmd(VBOXVHWA_PIPECMD_PAINT, &r);
+    mCmdPipe.postCmd(VBOXVHWA_PIPECMD_PAINT, &r, 0);
 #endif
     return S_OK;
 }
@@ -161,7 +161,7 @@ STDMETHODIMP VBoxQGLFrameBuffer::ProcessVHWACommand(BYTE *pCommand)
     /* post the command to the GUI thread for processing */
 //    QApplication::postEvent (mView,
 //                             new VBoxVHWACommandProcessEvent (pCmd));
-    mCmdPipe.postCmd(VBOXVHWA_PIPECMD_VHWA, pCmd);
+    mCmdPipe.postCmd(VBOXVHWA_PIPECMD_VHWA, pCmd, 0);
     return S_OK;
 }
 
