@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 20222 2009-06-03 09:04:49Z vboxsync $ */
+/* $Id: CPUM.cpp 20229 2009-06-03 12:30:46Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -62,6 +62,8 @@
 #include <iprt/mp.h>
 #include <iprt/cpuset.h>
 
+/* Enable multi-core VCPUs. */
+#define VBOX_WITH_MULTI_CORE
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
