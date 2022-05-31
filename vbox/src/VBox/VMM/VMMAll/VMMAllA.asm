@@ -1,4 +1,4 @@
-; $Id: VMMAllA.asm 20998 2009-06-26 23:01:02Z vboxsync $
+; $Id: VMMAllA.asm 20999 2009-06-26 23:15:38Z vboxsync $
 ;; @file
 ; VMM - All Contexts Assembly Routines.
 ;
@@ -83,5 +83,5 @@ BEGINPROC VMMTrashVolatileXMMRegs
 %endif ; VMM_TRASH_XMM_REGS
         xor     eax, eax                ; for good measure.
         ret
-ENDPROC
+ENDPROC   VMMTrashVolatileXMMRegs
 
