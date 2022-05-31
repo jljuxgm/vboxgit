@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 22412 2009-08-24 13:02:40Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 22443 2009-08-25 16:54:53Z vboxsync $ */
 
 /** @file
  *
@@ -590,7 +590,6 @@ void Display::handleDisplayUpdate (int x, int y, int w, int h)
 #else
     if (!mfVideoAccelEnabled && !maFramebuffers[uScreenId].fVBVAEnabled)
     {
-        LogFlowFunc(("HGSMI: VRDP update without VBVA.\n"));
 #endif /* VBOX_WITH_HGSMI */
         /* When VBVA is enabled, the VRDP server is informed in the VideoAccelFlush.
          * Inform the server here only if VBVA is disabled.
