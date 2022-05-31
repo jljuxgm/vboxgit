@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 19303 2009-05-03 00:58:22Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1202,6 +1202,7 @@ static REMFNDESC g_aRTImports[] =
     { "RTLogLoggerEx",                          (void *)(uintptr_t)&RTLogLoggerEx,                  &g_aArgsRTLogLoggerEx[0],                   RT_ELEMENTS(g_aArgsRTLogLoggerEx),                     REMFNDESC_FLAGS_RET_VOID | REMFNDESC_FLAGS_ELLIPSIS, 0, NULL },
     { "RTLogLoggerExV",                         (void *)(uintptr_t)&RTLogLoggerExV,                 &g_aArgsRTLogLoggerExV[0],                  RT_ELEMENTS(g_aArgsRTLogLoggerExV),                    REMFNDESC_FLAGS_RET_VOID | REMFNDESC_FLAGS_VALIST, 0, NULL },
     { "RTLogPrintf",                            (void *)(uintptr_t)&RTLogPrintf,                    &g_aArgsRTLogPrintf[0],                     RT_ELEMENTS(g_aArgsRTLogPrintf),                       REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
+    { "RTLogRelPrintf",                         (void *)(uintptr_t)&RTLogRelPrintf,                 &g_aArgsRTLogPrintf[0],                     RT_ELEMENTS(g_aArgsRTLogPrintf),                       REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
     { "RTMemAlloc",                             (void *)(uintptr_t)&RTMemAlloc,                     &g_aArgsSIZE_T[0],                          RT_ELEMENTS(g_aArgsSIZE_T),                            REMFNDESC_FLAGS_RET_INT,    sizeof(void *),     NULL },
     { "RTMemAllocZ",                            (void *)(uintptr_t)&RTMemAllocZ,                    &g_aArgsSIZE_T[0],                          RT_ELEMENTS(g_aArgsSIZE_T),                            REMFNDESC_FLAGS_RET_INT,    sizeof(void *),     NULL },
     { "RTMemRealloc",                           (void *)(uintptr_t)&RTMemRealloc,                   &g_aArgsRTMemRealloc[0],                    RT_ELEMENTS(g_aArgsRTMemRealloc),                      REMFNDESC_FLAGS_RET_INT,    sizeof(void *),     NULL },
