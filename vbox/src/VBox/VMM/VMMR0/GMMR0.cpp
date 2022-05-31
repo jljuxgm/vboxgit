@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 20900 2009-06-24 18:05:15Z vboxsync $ */
+/* $Id: GMMR0.cpp 23610 2009-10-07 21:22:10Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3104,7 +3104,7 @@ GMMR0DECL(int) GMMR0SeedChunk(PVM pVM, VMCPUID idCpu, RTR3PTR pvR3)
      * Lock the memory before taking the semaphore.
      */
     RTR0MEMOBJ MemObj;
-    rc = RTR0MemObjLockUser(&MemObj, pvR3, GMM_CHUNK_SIZE, NIL_RTR0PROCESS);
+    rc = RTR0MemObjLockUser(&MemObj, pvR3, GMM_CHUNK_SIZE, RTMEM_PROT_READ | RTMEM_PROT_WRITE, NIL_RTR0PROCESS);
     if (RT_SUCCESS(rc))
     {
         /*

@@ -1,4 +1,4 @@
-; $Id: SUPDrvA-win.asm 22077 2009-08-07 16:01:57Z vboxsync $
+; $Id: SUPDrvA-win.asm 23610 2009-10-07 21:22:10Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Windows NT specific assembly parts.
 ;
@@ -98,7 +98,7 @@ NtWrapDyn2DrvFunctionWithAllRegParams  supdrvNtWrap, RTR0MemObjAllocPhys
 NtWrapDyn2DrvFunctionWithAllRegParams  supdrvNtWrap, RTR0MemObjAllocPhysNC
 NtWrapDyn2DrvFunctionWithAllRegParams  supdrvNtWrap, RTR0MemObjAllocCont
 NtWrapDyn2DrvFunctionWithAllRegParams  supdrvNtWrap, RTR0MemObjEnterPhys
-NtWrapDyn2DrvFunctionWithAllRegParams  supdrvNtWrap, RTR0MemObjLockUser
+NtWrapDyn2DrvFunctionWith5Params       supdrvNtWrap, RTR0MemObjLockUser
 NtWrapDyn2DrvFunctionWith5Params       supdrvNtWrap, RTR0MemObjMapKernel
 NtWrapDyn2DrvFunctionWith7Params       supdrvNtWrap, RTR0MemObjMapKernelEx
 NtWrapDyn2DrvFunctionWith6Params       supdrvNtWrap, RTR0MemObjMapUser
