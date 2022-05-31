@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 23835 2009-10-16 22:24:40Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 23836 2009-10-16 22:36:52Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -25,11 +25,6 @@
 *******************************************************************************/
 #include <iprt/mem.h>
 #include <VBox/log.h>
-#ifdef RT_OS_WINDOWS
- #define WIN32_LEAN_AND_MEAN
- #include <windows.h>
-#endif
-
 #include "VBGLR3Internal.h"
 
 
@@ -232,8 +227,9 @@ VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
     if (RT_SUCCESS(rc))
     {
         /* Version. */
-        dwSize = 32;
-        pszVer = (char*)RTMemAlloc(dwSize);
+        DWORD dwType;
+        DWORD dwSize = 32;
+        ppszVer = (char*)RTMemAlloc(dwSize);
         rc = RegQueryValueEx(hKey, "Version", NULL, &dwType, (BYTE*)(LPCTSTR)*ppszVer, &dwSize);
         /* Revision. */
         if (ppszRev)
