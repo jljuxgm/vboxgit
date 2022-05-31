@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23552 2009-10-05 11:29:58Z vboxsync $
+# $Id: Makefile.kmk 23554 2009-10-05 11:41:39Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -344,7 +344,7 @@ ifdef VBOX_ONLY_SDK
 
 define find_java_files
  $(shell find $(1) -name \*.java)
-endef # def_vbox_disas_binary
+endef
 
 
  VBOX_JAXWS_LIBDIR             = $(VBOX_PATH_WEBSERVICE)/jaxlibs
