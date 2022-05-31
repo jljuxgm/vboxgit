@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18833 2009-04-07 16:08:36Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18838 2009-04-07 17:51:39Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2815,7 +2815,7 @@ DECLCALLBACK(int) Appliance::taskThreadWriteOVF(RTTHREAD /* aThread */, void *pv
             pelmOperatingSystemSection->setAttribute("ovf:id", llOS.front()->strOvf);
             pelmOperatingSystemSection->createChild("Info")->addContent("The kind of installed guest operating system");
             Utf8Str strOSDesc;
-            convertCIMOSType2VBoxOSType(strOSDesc, llOS.front()->strOvf.toInt32(), "");
+            convertCIMOSType2VBoxOSType(strOSDesc, (CIMOSType_T)llOS.front()->strOvf.toInt32(), "");
             pelmOperatingSystemSection->createChild("Description")->addContent(strOSDesc);
 
             // <VirtualHardwareSection ovf:id="hw1" ovf:transport="iso">
