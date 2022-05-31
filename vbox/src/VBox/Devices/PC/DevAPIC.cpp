@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 20572 2009-06-14 21:29:23Z vboxsync $ */
+/* $Id: DevAPIC.cpp 20666 2009-06-17 13:01:56Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -680,16 +680,16 @@ PDMBOTHCBDECL(void) apicSetTPR(PPDMDEVINS pDevIns, VMCPUID idCpu, uint8_t val)
 {
     APICDeviceInfo *dev = PDMINS_2_DATA(pDevIns, APICDeviceInfo *);
     APICState *s = getLapicById(dev, idCpu);
-    LogFlow(("apicSetTPR: val=%#x (trp %#x -> %#x)\n", val, s->tpr, (val & 0x0f) << 4));
-    apic_update_tpr(dev, s, (val & 0x0f) << 4);
+    LogFlow(("apicSetTPR: val=%#x (trp %#x -> %#x)\n", val, s->tpr, val));
+    apic_update_tpr(dev, s, val);
 }
 
 PDMBOTHCBDECL(uint8_t) apicGetTPR(PPDMDEVINS pDevIns, VMCPUID idCpu)
 {
     APICDeviceInfo *dev = PDMINS_2_DATA(pDevIns, APICDeviceInfo *);
     APICState *s = getLapicById(dev, idCpu);
-    Log2(("apicGetTPR: returns %#x\n", s->tpr >> 4));
-    return s->tpr >> 4;
+    Log2(("apicGetTPR: returns %#x\n", s->tpr));
+    return s->tpr;
 }
 
 PDMBOTHCBDECL(int) apicWriteMSR(PPDMDEVINS pDevIns, VMCPUID idCpu, uint32_t u32Reg, uint64_t u64Value)
