@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20521 2009-06-12 15:28:26Z vboxsync $
+# $Id: Makefile.kmk 22145 2009-08-10 20:02:17Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -51,6 +51,9 @@ ifdef VBOX_DYNAMIC_NET_ATTACH
 endif
 ifdef VBOX_WITH_NETFLT
  VBoxManage_DEFS += VBOX_WITH_NETFLT
+endif
+ifdef VBOX_WITH_VIDEOHWACCEL
+ VBoxManage_DEFS += VBOX_WITH_VIDEOHWACCEL
 endif
  VBoxManage_SOURCES = \
  	VBoxManage.cpp \

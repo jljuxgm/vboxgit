@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 21446 2009-07-09 15:09:57Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 22145 2009-08-10 20:02:17Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -428,6 +428,15 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
         RTPrintf("accelerate3d=\"%s\"\n", accelerate3d ? "on" : "off");
     else
         RTPrintf("3D Acceleration: %s\n", accelerate3d ? "on" : "off");
+
+#ifdef VBOX_WITH_VIDEOHWACCEL
+    BOOL accelerate2dVideo;
+    machine->COMGETTER(Accelerate2DVideoEnabled)(&accelerate2dVideo);
+    if (details == VMINFO_MACHINEREADABLE)
+        RTPrintf("accelerate2dvideo=\"%s\"\n", accelerate2dVideo ? "on" : "off");
+    else
+        RTPrintf("2D Video Acceleration: %s\n", accelerate2dVideo ? "on" : "off");
+#endif
 
     ComPtr<IFloppyDrive> floppyDrive;
     rc = machine->COMGETTER(FloppyDrive)(floppyDrive.asOutParam());
