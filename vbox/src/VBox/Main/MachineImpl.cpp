@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 20978 2009-06-26 14:52:36Z vboxsync $ */
+/* $Id: MachineImpl.cpp 21002 2009-06-26 23:38:15Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -11128,7 +11128,7 @@ HRESULT SessionMachine::lockMedia()
             rc = (*it)->COMGETTER(LastAccessError) (error.asOutParam());
             CheckComRCThrowRC (rc);
 
-            if (!error.isNull())
+            if (!error.isEmpty())
             {
                 Bstr loc;
                 rc = (*it)->COMGETTER(Location) (loc.asOutParam());
