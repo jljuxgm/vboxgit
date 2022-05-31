@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 18954 2009-04-16 15:13:11Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 18955 2009-04-16 15:14:04Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -1899,7 +1899,7 @@ int pgmR0DynMapHCPageCommon(PVM pVM, PPGMMAPSET pSet, RTHCPHYS HCPhys, void **pp
             if (pSet->iSubset < pSet->cEntries)
             {
                 STAM_COUNTER_INC(&pVCpu->pgm.s.StatR0DynMapSetSearchFlushes);
-                STAM_COUNTER_INC(&pVM->pgm.s.aStatR0DynMapSetSize[(pSet->cEntries * 10 / RT_ELEMENTS(pSet->aEntries)) % 11]);
+                STAM_COUNTER_INC(&pVCpu->pgm.s.aStatR0DynMapSetSize[(pSet->cEntries * 10 / RT_ELEMENTS(pSet->aEntries)) % 11]);
                 AssertMsg(pSet->cEntries < PGMMAPSET_MAX_FILL, ("%u\n", pSet->cEntries));
                 pgmDynMapFlushSubset(pSet);
             }
