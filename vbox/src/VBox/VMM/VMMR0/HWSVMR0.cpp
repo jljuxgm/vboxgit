@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 19976 2009-05-24 20:16:26Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 19992 2009-05-25 11:31:23Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -768,7 +768,7 @@ VMMR0DECL(int) SVMR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     pVMCB->guest.u64EFER   = pCtx->msrEFER | MSR_K6_EFER_SVME;
 
     /* 64 bits guest mode? */
-    if (pCtx->msrEFER & MSR_K6_EFER_LMA)
+    if (CPUMIsGuestInLongModeEx(pCtx))
     {
 #if !defined(VBOX_ENABLE_64_BITS_GUESTS)
         return VERR_PGM_UNSUPPORTED_SHADOW_PAGING_MODE;
@@ -941,7 +941,7 @@ ResumeExecution:
     /* TPR caching using CR8 is only available in 64 bits mode */
     /* Note the 32 bits exception for AMD (X86_CPUID_AMD_FEATURE_ECX_CR8L), but that appears missing in Intel CPUs */
     /* Note: we can't do this in LoadGuestState as PDMApicGetTPR can jump back to ring 3 (lock)!!!!!!!! */
-    if (pCtx->msrEFER & MSR_K6_EFER_LMA)
+    if (CPUMIsGuestInLongModeEx(pCtx))
     {
         bool fPending;
 

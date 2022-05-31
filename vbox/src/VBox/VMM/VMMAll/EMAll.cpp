@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 19808 2009-05-19 09:23:34Z vboxsync $ */
+/* $Id: EMAll.cpp 19992 2009-05-25 11:31:23Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2902,7 +2902,7 @@ VMMDECL(int) EMInterpretRdmsr(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
         if ((pRegFrame->ecx >= MSR_IA32_APIC_START) && (pRegFrame->ecx < MSR_IA32_APIC_END))
             rc = PDMApicReadMSR(pVM, pVCpu->idCpu, pRegFrame->ecx, &val);
         else
-            /* We should actually trigger a #GP here, but don't as that might cause more trouble. */
+            /* We should actually trigger a #GP here, but don't as that will cause more trouble. */
             val = 0;
         break;
     }
