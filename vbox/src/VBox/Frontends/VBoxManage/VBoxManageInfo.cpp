@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 23249 2009-09-23 09:57:11Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 23391 2009-09-28 15:45:35Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -665,7 +665,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
         if (details == VMINFO_MACHINEREADABLE)
             RTPrintf("dvd=\"none\"\n");
         else
-            RTPrintf("DVD:             empty");
+            RTPrintf("DVD:             empty\n");
     }
 
     /* get the maximum amount of NICS */
