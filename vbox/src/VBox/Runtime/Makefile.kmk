@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21914 2009-07-31 12:09:58Z vboxsync $
+# $Id: Makefile.kmk 21920 2009-07-31 15:44:32Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -201,7 +201,7 @@ RuntimeR3_SOURCES       = \
 	common/alloc/alloc.cpp \
 	common/alloc/heapsimple.cpp \
 	common/checksum/adler32.cpp \
-	common/checksum/crc32.cpp \
+	common/checksum/crc32-zlib.cpp \
 	common/checksum/crc64.cpp \
 	common/checksum/md5.cpp \
 	common/checksum/ipv4.cpp \
