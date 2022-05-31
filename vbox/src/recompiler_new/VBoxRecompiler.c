@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 18596 2009-04-01 12:33:56Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 18597 2009-04-01 13:34:19Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -389,6 +389,8 @@ REMR3DECL(int) REMR3Init(PVM pVM)
     STAM_REG(pVM, &gStatSelOutOfSyncStateBack[3],   STAMTYPE_COUNTER,   "/REM/StateBack/SelOutOfSync/DS",   STAMUNIT_OCCURENCES, "DS out of sync");
     STAM_REG(pVM, &gStatSelOutOfSyncStateBack[4],   STAMTYPE_COUNTER,   "/REM/StateBack/SelOutOfSync/FS",   STAMUNIT_OCCURENCES, "FS out of sync");
     STAM_REG(pVM, &gStatSelOutOfSyncStateBack[5],   STAMTYPE_COUNTER,   "/REM/StateBack/SelOutOfSync/GS",   STAMUNIT_OCCURENCES, "GS out of sync");
+
+    STAM_REG(pVM, &pVM->rem.s.Env.StatTbFlush,      STAMTYPE_PROFILE,   "/REM/TbFlush",     STAMUNIT_TICKS_PER_CALL, "profiling tb_flush().");
 #endif /* VBOX_WITH_STATISTICS */
 
     STAM_REL_REG(pVM, &tb_flush_count,              STAMTYPE_U32_RESET, "/REM/TbFlushCount",                STAMUNIT_OCCURENCES, "tb_flush() calls");
