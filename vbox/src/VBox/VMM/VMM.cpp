@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 19575 2009-05-11 12:42:46Z vboxsync $ */
+/* $Id: VMM.cpp 19580 2009-05-11 13:02:45Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1296,7 +1296,7 @@ VMMR3DECL(int) VMMR3ReadR0Stack(PVM pVM, VMCPUID idCpu, RTHCUINTPTR pAddress, vo
     PVMCPU  pVCpu   = VMMGetCpuById(pVM, idCpu);
     AssertReturn(pVCpu, VERR_INVALID_PARAMETER);
 
-    RTHCUINTPTR offset = pAddress - pVCpu->vmm.s.CallHostR0JmpBuf.SpCheck;
+    RTHCUINTPTR offset = pVCpu->vmm.s.CallHostR0JmpBuf.SpCheck - pAddress;
     if (offset >= pVCpu->vmm.s.CallHostR0JmpBuf.cbSavedStack)
         return VERR_INVALID_POINTER;
 

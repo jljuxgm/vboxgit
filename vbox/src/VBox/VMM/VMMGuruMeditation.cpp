@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 19578 2009-05-11 12:50:53Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 19580 2009-05-11 13:02:45Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -294,14 +294,14 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
 
                 eip.fFlags   = DBGFADDRESS_FLAGS_RING0 | DBGFADDRESS_FLAGS_VALID;
 #if HC_ARCH_BITS == 64
-                eip.FlatPtr = pVCpu->vmm.s.CallHostR0JmpBuf.rip;
+                eip.FlatPtr = eip.off = pVCpu->vmm.s.CallHostR0JmpBuf.rip;
 #else
-                eip.FlatPtr = pVCpu->vmm.s.CallHostR0JmpBuf.eip;
+                eip.FlatPtr = eip.off = pVCpu->vmm.s.CallHostR0JmpBuf.eip;
 #endif
                 ebp.fFlags   = DBGFADDRESS_FLAGS_RING0 | DBGFADDRESS_FLAGS_VALID;
-                ebp.FlatPtr = pVCpu->vmm.s.CallHostR0JmpBuf.SavedEbp;
+                ebp.FlatPtr  = ebp.off = pVCpu->vmm.s.CallHostR0JmpBuf.SavedEbp;
                 esp.fFlags   = DBGFADDRESS_FLAGS_RING0 | DBGFADDRESS_FLAGS_VALID;
-                esp.FlatPtr = pVCpu->vmm.s.CallHostR0JmpBuf.SavedEsp;
+                esp.FlatPtr  = esp.off = pVCpu->vmm.s.CallHostR0JmpBuf.SavedEsp;
 
                 rc2 = DBGFR3StackWalkBeginEx(pVM, pVCpu->idCpu, DBGFCODETYPE_RING0, &ebp, &esp, &eip,
                                              DBGFRETURNTYPE_INVALID, &pFirstFrame);
