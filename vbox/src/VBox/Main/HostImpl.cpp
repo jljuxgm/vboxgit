@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 20237 2009-06-03 16:25:27Z vboxsync $ */
+/* $Id: HostImpl.cpp 20283 2009-06-04 13:26:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -111,14 +111,7 @@ extern "C" char *getfullrawname(char *);
 #endif
 
 #ifdef VBOX_WITH_CROGL
-# ifndef RT_OS_DARWIN
-   extern "C" {
-    extern void * crSPULoad(void *, int, char *, char *, void *);
-    extern void crSPUUnloadChain(void *);
-   }
-# else
-   extern bool is3DAccelerationSupported();
-# endif
+extern bool is3DAccelerationSupported();
 #endif /* VBOX_WITH_CROGL */
 
 #include <iprt/asm.h>
@@ -263,17 +256,7 @@ HRESULT Host::init (VirtualBox *aParent)
     f3DAccelerationSupported = false;
 
 #ifdef VBOX_WITH_CROGL
-#ifdef RT_OS_DARWIN
     f3DAccelerationSupported = is3DAccelerationSupported();
-#else
-    void *spu;
-    spu = crSPULoad(NULL, 0, "render", NULL, NULL);
-    if (spu)
-    {
-        crSPUUnloadChain(spu);
-        f3DAccelerationSupported = true;
-    }
-#endif
 #endif /* VBOX_WITH_CROGL */
 
     setReady(true);
