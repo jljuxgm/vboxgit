@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 19401 2009-05-05 22:05:50Z vboxsync $ */
+/* $Id: VMInternal.h 19435 2009-05-06 14:01:15Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -448,9 +448,6 @@ typedef struct VMINTUSERPERVMCPU
     STAMPROFILE                     StatHaltTimers;
     STAMPROFILE                     StatHaltPoll;
     /** @} */
-
-    /** vmR3EmulationThread longjmp buffer. Must be last in the structure. */
-    jmp_buf                         emtJumpEnv;
 } VMINTUSERPERVMCPU;
 
 /** Pointer to the VM internal data kept in the UVM. */
