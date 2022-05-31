@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 21146 2009-07-02 08:15:23Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 22112 2009-08-09 20:14:32Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -3845,10 +3845,12 @@ void target_disas(FILE *phFile, target_ulong uCode, target_ulong cb, int fFlags)
  */
 const char *lookup_symbol(target_ulong orig_addr)
 {
-    RTGCINTPTR off = 0;
-    DBGFSYMBOL Sym;
-    PVM pVM = cpu_single_env->pVM;
-    int rc = DBGFR3SymbolByAddr(pVM, orig_addr, &off, &Sym);
+    PVM         pVM = cpu_single_env->pVM;
+    RTGCINTPTR  off = 0;
+    RTDBGSYMBOL Sym;
+    DBGFADDRESS Addr;
+
+    int rc = DBGFR3AsSymbolByAddr(pVM, DBGF_AS_GLOBAL, DBGFR3AddrFromFlat(pVM, &Addr, orig_addr), &off, &Sym, NULL /*phMod*/);
     if (RT_SUCCESS(rc))
     {
         static char szSym[sizeof(Sym.szName) + 48];
