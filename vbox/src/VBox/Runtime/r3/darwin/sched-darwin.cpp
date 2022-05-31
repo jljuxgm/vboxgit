@@ -1,4 +1,4 @@
-/* $Id: sched-darwin.cpp 15881 2009-01-08 18:46:52Z vboxsync $ */
+/* $Id: sched-darwin.cpp 22532 2009-08-27 15:31:46Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, Darwin.
  */
@@ -243,6 +243,9 @@ int rtSchedNativeCalcDefaultPriority(RTTHREADTYPE enmType)
         const PROCPRIORITY *pProcessPriority = &g_aDefaultPriority;
         for (unsigned i = 0; i < RT_ELEMENTS(g_aPriorities); i++)
         {
+            /* @todo r=poetzsch: gcc warns here. iBasePriority in RT_ABS is the
+             * one which should be initialized not the one from line 234. So I
+             * guess gcc is right. */
             int iBasePriority = RT_ABS(g_aPriorities[i].aTypes[enmType].iBasePriority - iBasePriority);
             if (iBasePriority < iCurDiff)
             {
