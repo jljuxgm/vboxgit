@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 20220 2009-06-03 08:40:29Z vboxsync $ */
+/* $Id: VBoxManage.cpp 20294 2009-06-04 16:24:07Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1506,7 +1506,7 @@ static int handleVMStatistics(HandlerArg *a)
     /* try to find the given machine */
     ComPtr <IMachine> machine;
     Bstr uuid (a->argv[0]);
-    if (!uuid.isEmpty())
+    if (!Guid (a->argv[0]).isEmpty())
         CHECK_ERROR(a->virtualBox, GetMachine(uuid, machine.asOutParam()));
     else
     {

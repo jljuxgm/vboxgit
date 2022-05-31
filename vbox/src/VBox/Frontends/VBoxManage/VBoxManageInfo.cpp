@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 20289 2009-06-04 14:44:43Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 20294 2009-06-04 16:24:07Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1992,10 +1992,10 @@ int handleShowVMInfo(HandlerArg *a)
 
     /* try to find the given machine */
     ComPtr <IMachine> machine;
-    Bstr uuid;
-    if (!Guid(VMNameOrUuid).isEmpty())
+    Bstr uuid (VMNameOrUuid);
+    if (!Guid (VMNameOrUuid).isEmpty())
     {
-        CHECK_ERROR (a->virtualBox, GetMachine (Bstr(VMNameOrUuid), machine.asOutParam()));
+        CHECK_ERROR (a->virtualBox, GetMachine (uuid, machine.asOutParam()));
     }
     else
     {
