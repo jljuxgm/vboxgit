@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22336 2009-08-19 08:14:20Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22337 2009-08-19 09:41:13Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1491,6 +1491,8 @@ static int pgmPoolCacheAlloc(PPGMPOOL pPool, RTGCPHYS GCPhys, PGMPOOLKIND enmKin
                     {
                         Assert((PGMPOOLKIND)pPage->enmKind == enmKind);
                         *ppPage = pPage;
+                        if (pPage->cModifications)
+                            pPage->cModifications = 1; /* reset counter (can't use 0, or else it will be reinserted in the modified list) */
                         STAM_COUNTER_INC(&pPool->StatCacheHits);
                         return VINF_PGM_CACHED_PAGE;
                     }
