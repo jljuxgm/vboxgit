@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 19769 2009-05-18 09:55:58Z vboxsync $ */
+/* $Id: PGMAllBth.h 19770 2009-05-18 09:57:59Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3160,6 +3160,7 @@ PGM_BTH_DECL(int, VerifyAccessSyncPage)(PVMCPU pVCpu, RTGCPTR GCPtrPage, unsigne
     rc = pgmShwSyncPaePDPtr(pVCpu, GCPtrPage, &PdpeSrc, &pPDDst);
     if (rc != VINF_SUCCESS)
     {
+        pgmUnlock(pVM);
         AssertRC(rc);
         return rc;
     }
@@ -3185,6 +3186,7 @@ PGM_BTH_DECL(int, VerifyAccessSyncPage)(PVMCPU pVCpu, RTGCPTR GCPtrPage, unsigne
     rc = pgmShwSyncLongModePDPtr(pVCpu, GCPtrPage, pPml4eSrc, &PdpeSrc, &pPDDst);
     if (rc != VINF_SUCCESS)
     {
+        pgmUnlock(pVM);
         AssertRC(rc);
         return rc;
     }
