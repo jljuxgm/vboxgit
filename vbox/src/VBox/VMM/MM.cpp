@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: MM.cpp 18928 2009-04-16 11:44:26Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -349,7 +349,7 @@ VMMR3DECL(int) MMR3InitPaging(PVM pVM)
      * Specifies the policy to use when reserving memory for this VM. The recognized
      * value is 'no overcommitment' (default). See GMMPOLICY.
      */
-    GMMOCPOLICY enmOcPolicy;
+    GMMOCPOLICY enmOcPolicy = GMMOCPOLICY_NO_OC;
     char sz[64];
     rc = CFGMR3QueryString(CFGMR3GetRoot(pVM), "Policy", sz, sizeof(sz));
     if (RT_SUCCESS(rc))

@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: EM.cpp 18928 2009-04-16 11:44:26Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -522,7 +522,7 @@ static DECLCALLBACK(int) emR3Save(PVM pVM, PSSMHANDLE pSSM)
  */
 static DECLCALLBACK(int) emR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
 {
-    int rc;
+    int rc = VINF_SUCCESS;
 
     /*
      * Validate version.
