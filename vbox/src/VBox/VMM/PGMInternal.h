@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 18604 2009-04-01 15:53:54Z vboxsync $ */
+/* $Id: PGMInternal.h 18617 2009-04-01 22:11:29Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2565,7 +2565,7 @@ typedef struct PGM
     /** The ring-0 mapping of the zero page. */
     RTR0PTR                         pvZeroPgR0;
     /** The GC mapping of the zero page. */
-    RTGCPTR                         pvZeroPgGC;
+    RTGCPTR                         pvZeroPgRC;
 #if GC_ARCH_BITS != 32
     uint32_t                        u32ZeroAlignment; /**< Alignment padding. */
 #endif
@@ -2583,7 +2583,16 @@ typedef struct PGM
      * The size of this array is important, see pgmPhysEnsureHandyPage for details.
      * (The current size of 32 pages, means 128 KB of handy memory.)
      */
-    GMMPAGEDESC                     aHandyPages[32];
+    GMMPAGEDESC                     aHandyPages[PGM_HANDY_PAGES];
+
+    /** @name   Error injection.
+     * @{ */
+    /** Inject handy page allocation errors pretending we're completely out of
+     * memory. */
+    bool volatile                   fErrInjHandyPages;
+    /** Padding. */
+    bool                            afReserved[7];
+    /** @} */
 
     /** @name Release Statistics
      * @{ */

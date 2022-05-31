@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 18369 2009-03-27 03:24:07Z vboxsync $ */
+/* $Id: GMMR0.cpp 18617 2009-04-01 22:11:29Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -1465,6 +1465,8 @@ static int gmmR0AllocateOneChunk(PGMM pGMM, PGMMCHUNKFREESET pSet)
         if (RT_FAILURE(rc))
             RTR0MemObjFree(MemObj, false /* fFreeMappings */);
     }
+    /** @todo Check that RTR0MemObjAllocPhysNC always returns VERR_NO_MEMORY on
+     *        allocation failure. */
     return rc;
 }
 

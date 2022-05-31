@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 17924 2009-03-16 12:18:08Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 18617 2009-04-01 22:11:29Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2074,11 +2074,11 @@ ResumeExecution:
     }
 
     /* Check for pending actions that force us to go back to ring 3. */
-    if (VM_FF_ISPENDING(pVM, VM_FF_TO_R3 | VM_FF_TIMER | VM_FF_PGM_NEED_HANDY_PAGES))
+    if (VM_FF_ISPENDING(pVM, VM_FF_HWACCM_TO_R3_MASK))
     {
         VM_FF_CLEAR(pVM, VM_FF_TO_R3);
         STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatSwitchToR3);
-        rc = VINF_EM_RAW_TO_R3;
+        rc = RT_UNLIKELY(VM_FF_ISPENDING(pVM, VM_FF_PGM_NO_MEMORY)) ? VINF_EM_NO_MEMORY : VINF_EM_RAW_TO_R3;
         goto end;
     }
     /* Pending request packets might contain actions that need immediate attention, such as pending hardware interrupts. */
