@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 20237 2009-06-03 16:25:27Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 20976 2009-06-26 14:17:49Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -1203,7 +1203,6 @@ bool USBController::hasMatchingFilter (IUSBDevice *aUSBDevice, ULONG *aMaskedIfs
     USHORT productId = 0;
     rc = aUSBDevice->COMGETTER(ProductId) (&productId);
     ComAssertComRCRet (rc, false);
-    ComAssertRet (productId, false);
     vrc = USBFilterSetNumExact (&dev, USBFILTERIDX_PRODUCT_ID, productId, true); AssertRC(vrc);
 
     USHORT revision;

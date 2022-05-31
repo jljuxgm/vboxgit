@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 20976 2009-06-26 14:17:49Z vboxsync $ */
 
 /** @file
  *
@@ -64,7 +64,6 @@ HRESULT OUSBDevice::init(IUSBDevice *aUSBDevice)
 
     hrc = aUSBDevice->COMGETTER(ProductId)(&unconst (mData.productId));
     ComAssertComRCRet (hrc, hrc);
-    ComAssertRet (mData.productId, E_INVALIDARG);
 
     hrc = aUSBDevice->COMGETTER(Revision)(&unconst (mData.revision));
     ComAssertComRCRet (hrc, hrc);
