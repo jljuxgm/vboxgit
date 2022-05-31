@@ -1,4 +1,4 @@
-/* $Id: path.cpp 20018 2009-05-26 09:37:49Z vboxsync $ */
+/* $Id: path.cpp 20019 2009-05-26 09:40:16Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation.
  */
@@ -972,7 +972,6 @@ RTDECL(int) RTPathAppDocs(char *pszPath, size_t cchPath)
  */
 RTDECL(int) RTPathTemp(char *pszPath, size_t cchPath)
 {
-    char *pszResult;
     int rc;
     const char *pszTmpEnv = RTEnvGet("TMP");
     if (!pszTmpEnv)
