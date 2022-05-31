@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 23904 2009-10-20 15:01:56Z vboxsync $ */
+/* $Id: VM.cpp 23915 2009-10-20 17:06:58Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1345,6 +1345,7 @@ static DECLCALLBACK(VBOXSTRICTRC) vmR3Resume(PVM pVM, PVMCPU pVCpu, void *pvUser
     {
         PDMR3Resume(pVM);
         vmR3SetState(pVM, VMSTATE_RUNNING, VMSTATE_RESUMING);
+        pVM->vm.s.fTeleportedAndNotFullyResumedYet = false;
     }
 
     return VINF_EM_RESUME;
@@ -1611,6 +1612,8 @@ static DECLCALLBACK(int) vmR3Save(PVM pVM, const char *pszFilename, PCSSMSTRMOPS
     }
     else if (rc == 2 || enmAfter == SSMAFTER_TELEPORT)
     {
+        if (enmAfter == SSMAFTER_TELEPORT)
+            pVM->vm.s.fTeleportedAndNotFullyResumedYet = true;
         rc = SSMR3LiveSave(pVM, pszFilename, pStreamOps, pvStreamOpsUser,
                            enmAfter, pfnProgress, pvProgressUser, ppSSM);
         /* (We're not subject to cancellation just yet.) */
@@ -3175,6 +3178,20 @@ void vmR3SetGuruMeditation(PVM pVM)
     }
 
     RTCritSectLeave(&pUVM->vm.s.AtStateCritSect);
+}
+
+
+/**
+ * Checks if the VM was teleported and hasn't been fully resumed yet.
+ *
+ * @returns true / false.
+ * @param   pVM                 The VM handle.
+ * @thread  Any thread.
+ */
+VMMR3DECL(bool) VMR3TeleportedAndNotFullyResumedYet(PVM pVM)
+{
+    VM_ASSERT_VALID_EXT_RETURN(pVM, false);
+    return pVM->vm.s.fTeleportedAndNotFullyResumedYet;
 }
 
 
