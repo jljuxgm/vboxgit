@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp.c 18973 2009-04-17 06:59:16Z vboxsync $ */
+/* $Id: VBoxNetAdp.c 23068 2009-09-16 12:59:18Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Common Code.
  */
@@ -1231,9 +1231,9 @@ PVBOXNETADP vboxNetAdpFindByName(const char *pszName)
     {
         PVBOXNETADP pThis = &g_aAdapters[i];
         Log2(("VBoxNetAdp: Scanning entry: state=%d name=%s\n", pThis->enmState, pThis->szName));
-        if (strncmp(pThis->szName, pszName, VBOXNETADP_MAX_NAME_LEN) == 0)
-            if (ASMAtomicReadU32((uint32_t volatile *)&pThis->enmState) == kVBoxNetAdpState_Active)
-                return pThis;
+        if (   strcmp(pThis->szName, pszName) == 0
+            && ASMAtomicReadU32((uint32_t volatile *)&pThis->enmState) == kVBoxNetAdpState_Active)
+            return pThis;
     }
     return NULL;
 }
