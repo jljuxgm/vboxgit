@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 19519 2009-05-08 12:38:07Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 19681 2009-05-14 10:02:13Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1538,8 +1538,11 @@ STDMETHODIMP Appliance::Interpret()
                             nwAdapterVBox = NetworkAdapterType_Am79C970A;
                     }
 #ifdef VBOX_WITH_E1000
-                    else if (!ea.strAdapterType.compare("E1000", Utf8Str::CaseInsensitive) ||
-                             !ea.strAdapterType.compare("E10000", Utf8Str::CaseInsensitive)) // VMWare accidentally write this with VirtualCenter 3.5
+                    /* VMWare accidentally write this with VirtualCenter 3.5,
+                       so make sure in this case always to use the VMWare one */
+                    else if (!ea.strAdapterType.compare("E10000", Utf8Str::CaseInsensitive))
+                        nwAdapterVBox = NetworkAdapterType_I82545EM;
+                    else if (!ea.strAdapterType.compare("E1000", Utf8Str::CaseInsensitive))
                     {
                         /* Check if this OVF was written by VirtualBox */
                         if (vsysThis.strVirtualSystemType.contains("virtualbox", Utf8Str::CaseInsensitive))
