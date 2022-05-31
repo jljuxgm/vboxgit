@@ -1,4 +1,4 @@
-/* $Id: fileaio-posix.cpp 23340 2009-09-25 15:43:24Z vboxsync $ */
+/* $Id: fileaio-posix.cpp 23342 2009-09-25 16:28:23Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for POSIX compliant host platforms.
  */
@@ -557,7 +557,10 @@ RTDECL(int) RTFileAioCtxSubmit(RTFILEAIOCTX hAioCtx, PRTFILEAIOREQ pahReqs, size
                 for (i = 0; i < cReqs; i++)
                 {
                     pReqInt = pahReqs[i];
+
                     rcPosix = aio_error(&pReqInt->AioCB);
+                    Assert(rcPosix != 0);
+
                     if (rcPosix != EINPROGRESS)
                     {
                         if (rcPosix == EINVAL)
@@ -569,7 +572,18 @@ RTDECL(int) RTFileAioCtxSubmit(RTFILEAIOCTX hAioCtx, PRTFILEAIOREQ pahReqs, size
                         {
                             /* An error occurred. */
                             RTFILEAIOREQ_SET_STATE(pReqInt, COMPLETED);
+
+                            /*
+                             * Looks like Apple and glibc interpret the standard in different ways.
+                             * glibc returns the error code which would be in errno but Apple returns
+                             * -1 and sets errno to the appropriate value
+                             */
+#if defined(RT_OS_DARWIN)
+                            Assert(rcPosix == -1)
+                            pReqInt->Rc = RTErrConvertFromErrno(errno);
+#elif defined(RT_OS_LINUX)
                             pReqInt->Rc = RTErrConvertFromErrno(rcPosix);
+#endif
                             pReqInt->cbTransfered = 0;
                         }
                         /* Unlink from the list. */
