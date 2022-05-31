@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22503 2009-08-27 10:13:42Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1887,6 +1887,19 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             parms[1].type = VBOX_HGCM_SVC_PARM_PTR;
             parms[1].u.pointer.addr = (void *)VBoxSVNRevString();
             parms[1].u.pointer.size = strlen(VBoxSVNRevString()) + 1;
+            parms[2].type = VBOX_HGCM_SVC_PARM_PTR;
+            parms[2].u.pointer.addr = (void *)"TRANSIENT, RDONLYGUEST";
+            parms[2].u.pointer.size = sizeof("TRANSIENT, RDONLYGUEST");
+            pConsole->mVMMDev->hgcmHostCall ("VBoxGuestPropSvc", guestProp::SET_PROP_HOST, 3, &parms[0]);
+
+            /* Initialize the remote execution properties for ready-on access by the guest */
+            Utf8Str utf8ValEmpty = "";
+            parms[0].type = VBOX_HGCM_SVC_PARM_PTR;
+            parms[0].u.pointer.addr = (void *)"/VirtualBox/HostGuest/SysprepArgs";
+            parms[0].u.pointer.size = sizeof("/VirtualBox/HostGuest/SysprepArgs");
+            parms[1].type = VBOX_HGCM_SVC_PARM_PTR;
+            parms[1].u.pointer.addr = (void*)utf8ValEmpty.c_str();
+            parms[1].u.pointer.size = (uint32_t)utf8ValEmpty.length() + 1;
             parms[2].type = VBOX_HGCM_SVC_PARM_PTR;
             parms[2].u.pointer.addr = (void *)"TRANSIENT, RDONLYGUEST";
             parms[2].u.pointer.size = sizeof("TRANSIENT, RDONLYGUEST");
