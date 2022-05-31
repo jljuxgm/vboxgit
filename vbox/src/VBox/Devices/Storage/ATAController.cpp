@@ -1,4 +1,4 @@
-/* $Id: ATAController.cpp 23020 2009-09-15 06:56:17Z vboxsync $ */
+/* $Id: ATAController.cpp 23417 2009-09-29 16:17:21Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller code (disk and cdrom).
  *
@@ -2743,6 +2743,8 @@ static DECLCALLBACK(void) ataMountNotify(PPDMIMOUNTNOTIFY pInterface)
     /* Ignore the call if we're called while being attached. */
     if (!pIf->pDrvBlock)
         return;
+
+    LogRel(("ATA: LUN#%d: CD/DVD, total number of sectors %Ld, passthrough unchanged\n", pIf->iLUN, pIf->cTotalSectors));
 
     if (pIf->fATAPI)
         pIf->cTotalSectors = pIf->pDrvBlock->pfnGetSize(pIf->pDrvBlock) / 2048;

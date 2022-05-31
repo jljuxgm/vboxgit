@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 23149 2009-09-18 22:31:42Z vboxsync $ */
+/* $Id: DevATA.cpp 23417 2009-09-29 16:17:21Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -3400,6 +3400,8 @@ static DECLCALLBACK(void) ataMountNotify(PPDMIMOUNTNOTIFY pInterface)
         pIf->cTotalSectors = pIf->pDrvBlock->pfnGetSize(pIf->pDrvBlock) / 2048;
     else
         pIf->cTotalSectors = pIf->pDrvBlock->pfnGetSize(pIf->pDrvBlock) / 512;
+
+    LogRel(("PIIX3 ATA: LUN#%d: CD/DVD, total number of sectors %Ld, passthrough unchanged\n", pIf->iLUN, pIf->cTotalSectors));
 
     /* Report media changed in TEST UNIT and other (probably incorrect) places. */
     if (pIf->cNotifiedMediaChange < 2)
