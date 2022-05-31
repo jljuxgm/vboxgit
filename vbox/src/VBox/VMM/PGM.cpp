@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 18880 2009-04-14 09:42:01Z vboxsync $ */
+/* $Id: PGM.cpp 18889 2009-04-14 12:33:29Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1208,7 +1208,13 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
         pVM->pgm.s.aGCPhysGstPaePDsMonitored[i] = NIL_RTGCPHYS;
     }
 
-    rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "RamPreAlloc", &pVM->pgm.s.fRamPreAlloc, false);
+    rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "RamPreAlloc", &pVM->pgm.s.fRamPreAlloc,
+#ifdef VBOX_WITH_PREALLOC_RAM_BY_DEFAULT
+                            true
+#else
+                            false
+#endif
+                           );
     AssertLogRelRCReturn(rc, rc);
 
 #if HC_ARCH_BITS == 64 || 1 /** @todo 4GB/32-bit: remove || 1 later and adjust the limit. */
