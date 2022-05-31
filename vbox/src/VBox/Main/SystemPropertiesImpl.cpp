@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 23257 2009-09-23 13:30:15Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 23560 2009-10-05 12:45:09Z vboxsync $ */
 
 /** @file
  *
@@ -459,6 +459,32 @@ STDMETHODIMP SystemProperties::GetMaxPortCountForStorageBus (StorageBus_T aBus, 
         case StorageBus_Floppy:
         {
             *aMaxPortCount = 1;
+            break;
+        }
+        default:
+            AssertMsgFailed(("Invalid bus type %d\n", aBus));
+    }
+
+    return S_OK;
+}
+
+STDMETHODIMP SystemProperties::GetMaxInstancesOfStorageBus(StorageBus_T aBus, ULONG *aMaxInstances)
+{
+    CheckComArgOutPointerValid(aMaxInstances);
+
+    AutoCaller autoCaller(this);
+    CheckComRCReturnRC(autoCaller.rc());
+
+    /* no need to lock, this is const */
+    switch (aBus)
+    {
+        case StorageBus_SATA:
+        case StorageBus_SCSI:
+        case StorageBus_IDE:
+        case StorageBus_Floppy:
+        {
+            /** @todo raise the limits ASAP, per bus type */
+            *aMaxInstances = 1;
             break;
         }
         default:
