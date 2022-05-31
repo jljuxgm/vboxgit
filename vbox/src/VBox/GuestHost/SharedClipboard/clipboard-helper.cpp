@@ -1,4 +1,4 @@
-/* $Id: clipboard-helper.cpp 8280 2008-04-22 12:28:31Z vboxsync $ */
+/* $Id: clipboard-helper.cpp 18398 2009-03-27 14:21:19Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -19,9 +19,9 @@
  * additional information or have any questions.
  */
 
-#include "clipboard-helper.h"
-#include "VBox/log.h"
 #include <iprt/assert.h>
+#include <VBox/log.h>
+#include <VBox/GuestHost/clipboard-helper.h>
 
 /** @todo use const where appropriate; delinuxifiy the code (*Lin* -> *Host*); use AssertLogRel*. */
 
