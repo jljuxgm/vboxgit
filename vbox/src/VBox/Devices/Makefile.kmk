@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18323 2009-03-26 15:29:16Z vboxsync $
+# $Id: Makefile.kmk 18795 2009-04-07 01:49:55Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -656,6 +656,8 @@ VBOX_SLIRP_SOURCES = \
 	Network/slirp/tcp_timer.c \
 	Network/slirp/tftp.c \
 	Network/slirp/udp.c
+
+VBOX_WITH_SLIRP_DNS_PROXY=1 
 
 ifdef VBOX_WITH_SLIRP_DNS_PROXY
 VBOX_SLIRP_SOURCES += \
