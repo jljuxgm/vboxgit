@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 23033 2009-09-15 14:37:54Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2596,7 +2596,7 @@ ResumeExecution:
     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED);
     Assert(!(ASMGetFlags() & X86_EFL_IF));
     ASMSetFlags(uOldEFlags);
-#ifndef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
+#ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
     uOldEFlags = ~(RTCCUINTREG)0;
 #endif
 
