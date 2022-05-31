@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 19735 2009-05-15 12:50:56Z vboxsync $ */
+/* $Id: IOM.cpp 19793 2009-05-18 14:30:15Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1651,7 +1651,7 @@ VMMR3DECL(int)  IOMR3MMIODeregister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
  */
 VMMR3DECL(void) IOMR3ReleaseOwnedLocks(PVM pVM)
 {
-    if (PDMCritSectIsOwner(&pVM->iom.s.EmtLock))
+    while (PDMCritSectIsOwner(&pVM->iom.s.EmtLock))
         PDMCritSectLeave(&pVM->iom.s.EmtLock);
 }
 

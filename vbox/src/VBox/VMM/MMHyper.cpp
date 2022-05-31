@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 19682 2009-05-14 10:15:44Z vboxsync $ */
+/* $Id: MMHyper.cpp 19793 2009-05-18 14:30:15Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -1098,7 +1098,7 @@ VMMR3DECL(void) MMR3ReleaseOwnedLocks(PVM pVM)
 {
     PMMHYPERHEAP pHeap = pVM->mm.s.CTX_SUFF(pHyperHeap);
 
-    if (PDMCritSectIsOwner(&pHeap->Lock))
+    while (pHeap && PDMCritSectIsOwner(&pHeap->Lock))
         PDMCritSectLeave(&pHeap->Lock);
 }
 

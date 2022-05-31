@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19749 2009-05-15 16:13:17Z vboxsync $ */
+/* $Id: EM.cpp 19793 2009-05-18 14:30:15Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3611,7 +3611,7 @@ static int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
  */
 VMMR3DECL(void) EMR3ReleaseOwnedLocks(PVM pVM)
 {
-    if (PDMCritSectIsOwner(&pVM->em.s.CritSectREM))
+    while (PDMCritSectIsOwner(&pVM->em.s.CritSectREM))
         PDMCritSectLeave(&pVM->em.s.CritSectREM);
 }
 

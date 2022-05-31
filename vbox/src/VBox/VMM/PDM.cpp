@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 19735 2009-05-15 12:50:56Z vboxsync $ */
+/* $Id: PDM.cpp 19793 2009-05-18 14:30:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1448,6 +1448,6 @@ VMMR3DECL(int) PDMR3VMMDevHeapFree(PVM pVM, RTR3PTR pv)
  */
 VMMR3DECL(void) PDMR3ReleaseOwnedLocks(PVM pVM)
 {
-    if (PDMCritSectIsOwner(&pVM->pdm.s.CritSect))
+    while (PDMCritSectIsOwner(&pVM->pdm.s.CritSect))
         PDMCritSectLeave(&pVM->pdm.s.CritSect);
 }

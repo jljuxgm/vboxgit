@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 19780 2009-05-18 11:54:56Z vboxsync $ */
+/* $Id: PGM.cpp 19793 2009-05-18 14:30:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -4062,7 +4062,7 @@ VMMR3DECL(int) PGMR3ChangeMode(PVM pVM, PVMCPU pVCpu, PGMMODE enmGuestMode)
  */
 VMMR3DECL(void) PGMR3ReleaseOwnedLocks(PVM pVM)
 {
-    if (PDMCritSectIsOwner(&pVM->pgm.s.CritSect))
+    while (PDMCritSectIsOwner(&pVM->pgm.s.CritSect))
         PDMCritSectLeave(&pVM->pgm.s.CritSect);
 }
 
