@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 21257 2009-07-06 15:11:09Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 21258 2009-07-06 15:15:27Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1131,7 +1131,8 @@ static void vmxR0UpdateExceptionBitmap(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 
 #ifdef DEBUG /* till after branching, enable it by default then. */
     /* Intercept X86_XCPT_DB if stepping is enabled */
-    if (DBGFIsStepping(pVCpu))
+    if (    DBGFIsStepping(pVCpu)
+        ||  CPUMIsHyperDebugStateActive(pVCpu))
         u32TrapMask |= RT_BIT(X86_XCPT_DB);
     /** @todo Don't trap it unless the debugger has armed breakpoints.  */
     u32TrapMask |= RT_BIT(X86_XCPT_BP);
