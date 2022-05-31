@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 19604 2009-05-12 10:54:38Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 19640 2009-05-12 15:23:21Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1456,8 +1456,8 @@ static int vboxNetFltSolarisAttachReq(ldi_handle_t hDevice, int PPA)
                 }
                 else                                            /* Garbled reply */
                 {
-                    LogRel((DEVICE_NAME ":vboxNetFltSolarisAttachReq ldi_getmsg succeeded, but invalid op. expected %s recvd %s\n",
-                        dl_primstr(DL_OK_ACK), dl_primstr(AckPrim)));
+                    LogRel((DEVICE_NAME ":vboxNetFltSolarisAttachReq ldi_getmsg succeeded, but invalid op. expected %d recvd %d\n",
+                        DL_OK_ACK, AckPrim));
                     rc = VERR_INVALID_FUNCTION;
                 }
             }
