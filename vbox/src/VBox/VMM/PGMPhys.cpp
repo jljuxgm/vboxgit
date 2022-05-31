@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 23488 2009-10-01 15:38:06Z vboxsync $ */
+/* $Id: PGMPhys.cpp 23831 2009-10-16 21:08:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3113,7 +3113,8 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
                 pVM->pgm.s.cSharedPages,
                 pVM->pgm.s.cZeroPages));
         if (    rc != VERR_NO_MEMORY
-            &&  rc != VERR_LOCK_FAILED)
+            &&  rc != VERR_LOCK_FAILED
+            &&  rc != VERR_TRY_AGAIN)
         {
             for (uint32_t i = 0; i < RT_ELEMENTS(pVM->pgm.s.aHandyPages); i++)
             {
@@ -3141,7 +3142,8 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
         VM_FF_SET(pVM, VM_FF_PGM_NEED_HANDY_PAGES);
         VM_FF_SET(pVM, VM_FF_PGM_NO_MEMORY);
         if (    rc == VERR_NO_MEMORY
-            ||  rc == VERR_LOCK_FAILED)
+            ||  rc == VERR_LOCK_FAILED
+            ||  rc == VERR_TRY_AGAIN)
             rc = VINF_EM_NO_MEMORY;
     }
 
