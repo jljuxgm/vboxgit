@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_dri.c 20550 2009-06-14 16:25:49Z vboxsync $
+/** @file $Id: vboxvideo_dri.c 20657 2009-06-17 10:30:08Z vboxsync $
  *
  * VirtualBox X11 Additions graphics driver, DRI support
  */
@@ -258,7 +258,7 @@ Bool VBOXDRIScreenInit(int scrnIndex, ScreenPtr pScreen, VBOXPtr pVBox)
         pDRIInfo->ddxDriverPatchVersion = 0;
         pDRIInfo->ddxDrawableTableEntry = VBOX_MAX_DRAWABLES;
         pDRIInfo->maxDrawableTableEntry = VBOX_MAX_DRAWABLES;
-        pDRIInfo->frameBufferPhysicalAddress = pVBox->base;
+        pDRIInfo->frameBufferPhysicalAddress = pVBox->mapPhys;
         pDRIInfo->frameBufferSize = pVBox->mapSize;
         pDRIInfo->frameBufferStride =   pScrn->displayWidth
                                       * pScrn->bitsPerPixel / 8;
