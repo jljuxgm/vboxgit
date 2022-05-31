@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 21779 2009-07-24 10:13:27Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 21787 2009-07-24 12:51:44Z vboxsync $ */
 
 /** @file
  *
@@ -4727,14 +4727,14 @@ HRESULT Console::powerUp (IProgress **aProgress, bool aPaused)
     Bstr savedStateFile;
 
     /*
-     * Saved VMs will have to prove that their saved states are kosher.
+     * Saved VMs will have to prove that their saved states seem kosher.
      */
     if (mMachineState == MachineState_Saved)
     {
         rc = mMachine->COMGETTER(StateFilePath) (savedStateFile.asOutParam());
         CheckComRCReturnRC (rc);
         ComAssertRet (!!savedStateFile, E_FAIL);
-        int vrc = SSMR3ValidateFile (Utf8Str (savedStateFile));
+        int vrc = SSMR3ValidateFile (Utf8Str (savedStateFile), false /* fChecksumIt */);
         if (VBOX_FAILURE (vrc))
             return setError (VBOX_E_FILE_ERROR,
                 tr ("VM cannot start because the saved state file '%ls' is invalid (%Rrc). "
