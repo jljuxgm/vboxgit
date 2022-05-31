@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18542 2009-03-30 13:04:33Z vboxsync $
+# $Id: Makefile.kmk 18653 2009-04-02 16:34:28Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest OpenGL part
 #
@@ -48,7 +48,9 @@ endif
 
 if1of ($(KBUILD_TARGET),linux solaris)
  #VBoxOGL_DRI = 1
- VBoxOGL_FAKEDRI = 1
+ ifneq ($(KBUILD_TARGET),solaris)   # No DRI on Solaris yet
+  VBoxOGL_FAKEDRI = 1
+ endif
  VBOX_PATH_MESA_SOURCE = $(VBOX_PATH_X11_ROOT)/mesa-7.2
 
  # Only Solaris right now needs C stubs because I can't figure out how to
