@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 21582 2009-07-14 14:50:24Z vboxsync $ */
+/* $Id: fileio-win.cpp 21616 2009-07-15 15:27:07Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -205,14 +205,14 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
             dwDesiredAccess = FILE_GENERIC_READ; /* RTFILE_O_APPEND is ignored. */
             break;
         case RTFILE_O_WRITE:
-            dwDesiredAccess = (fOpen & RTFILE_O_APPEND)?
-                                  FILE_GENERIC_WRITE & ~FILE_WRITE_DATA:
-                                  FILE_GENERIC_WRITE;
+            dwDesiredAccess = fOpen & RTFILE_O_APPEND
+                            ? FILE_GENERIC_WRITE & ~FILE_WRITE_DATA
+                            : FILE_GENERIC_WRITE;
             break;
         case RTFILE_O_READWRITE:
-            dwDesiredAccess = (fOpen & RTFILE_O_APPEND)?
-                                  FILE_GENERIC_READ | (FILE_GENERIC_WRITE & ~FILE_WRITE_DATA):
-                                  FILE_GENERIC_READ | FILE_GENERIC_WRITE;
+            dwDesiredAccess = fOpen & RTFILE_O_APPEND
+                            ? FILE_GENERIC_READ | (FILE_GENERIC_WRITE & ~FILE_WRITE_DATA)
+                            : FILE_GENERIC_READ | FILE_GENERIC_WRITE;
             break;
         default:
             AssertMsgFailed(("Impossible fOpen=%#x\n", fOpen));
@@ -222,16 +222,16 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
     /* RTFileSetMode needs following rights as well. */
     switch (fOpen & RTFILE_O_ACCESS_ATTR_MASK)
     {
-        case RTFILE_O_ACCESS_ATTR_READ:      dwDesiredAccess |= FILE_READ_ATTRIBUTES | SYNCHRONIZE; break;
+        case RTFILE_O_ACCESS_ATTR_READ:      dwDesiredAccess |= FILE_READ_ATTRIBUTES  | SYNCHRONIZE; break;
         case RTFILE_O_ACCESS_ATTR_WRITE:     dwDesiredAccess |= FILE_WRITE_ATTRIBUTES | SYNCHRONIZE; break;
         case RTFILE_O_ACCESS_ATTR_READWRITE: dwDesiredAccess |= FILE_READ_ATTRIBUTES | FILE_WRITE_ATTRIBUTES | SYNCHRONIZE; break;
         default:
             /* Attributes access is the same as the file access. */
             switch (fOpen & RTFILE_O_ACCESS_MASK)
             {
-                case RTFILE_O_READ:      dwDesiredAccess |= FILE_READ_ATTRIBUTES | SYNCHRONIZE; break;
-                case RTFILE_O_WRITE:     dwDesiredAccess |= FILE_WRITE_ATTRIBUTES | SYNCHRONIZE; break;
-                case RTFILE_O_READWRITE: dwDesiredAccess |= FILE_READ_ATTRIBUTES | FILE_WRITE_ATTRIBUTES | SYNCHRONIZE; break;
+                case RTFILE_O_READ:          dwDesiredAccess |= FILE_READ_ATTRIBUTES  | SYNCHRONIZE; break;
+                case RTFILE_O_WRITE:         dwDesiredAccess |= FILE_WRITE_ATTRIBUTES | SYNCHRONIZE; break;
+                case RTFILE_O_READWRITE:     dwDesiredAccess |= FILE_READ_ATTRIBUTES | FILE_WRITE_ATTRIBUTES | SYNCHRONIZE; break;
                 default:
                     AssertMsgFailed(("Impossible fOpen=%#x\n", fOpen));
                     return VERR_INVALID_PARAMETER;

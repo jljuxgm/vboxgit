@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 21582 2009-07-14 14:50:24Z vboxsync $ */
+/* $Id: fileio-posix.cpp 21616 2009-07-15 15:27:07Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -170,10 +170,10 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
             fOpenMode |= O_RDONLY; /* RTFILE_O_APPEND is ignored. */
             break;
         case RTFILE_O_WRITE:
-            fOpenMode |= (fOpen & RTFILE_O_APPEND)? O_APPEND | O_WRONLY: O_WRONLY;
+            fOpenMode |= fOpen & RTFILE_O_APPEND ? O_APPEND | O_WRONLY : O_WRONLY;
             break;
         case RTFILE_O_READWRITE:
-            fOpenMode |= (fOpen & RTFILE_O_APPEND)? O_APPEND | O_RDWR: O_RDWR;
+            fOpenMode |= fOpen & RTFILE_O_APPEND ? O_APPEND | O_RDWR   : O_RDWR;
             break;
         default:
             AssertMsgFailed(("RTFileOpen received an invalid RW value, fOpen=%#x\n", fOpen));
