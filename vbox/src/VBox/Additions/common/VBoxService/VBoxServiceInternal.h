@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 19031 2009-04-20 14:48:09Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 19321 2009-05-04 11:49:30Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -129,6 +129,7 @@ extern int VBoxServiceWinUninstall(void);
 extern VBOXSERVICE g_TimeSync;
 extern VBOXSERVICE g_Clipboard;
 extern VBOXSERVICE g_Control;
+extern VBOXSERVICE g_VMInfo;
 
 __END_DECLS
 
