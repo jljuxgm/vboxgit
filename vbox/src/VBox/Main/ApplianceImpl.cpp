@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18340 2009-03-26 18:24:01Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18350 2009-03-26 20:11:02Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -799,6 +799,7 @@ HRESULT Appliance::HandleVirtualSystemContent(const char *pcszPath,
                         HardDiskController hdc;
                         hdc.system = HardDiskController::IDE;
                         hdc.idController = i.ulInstanceID;
+                        hdc.strControllerType = i.strResourceSubType;
                         hdc.strAddress = i.strAddress;
                         hdc.ulBusNumber = i.ulBusNumber;
 
@@ -2628,6 +2629,7 @@ DECLCALLBACK(int) Appliance::taskThreadWriteOVF(RTTHREAD /* aThread */, void *pv
                             {
                                 strDescription = "IDE Controller";
                                 type = OVFResourceType_IDEController; // 5
+                                strResourceSubType = desc.strVbox;
                                 // it seems that OVFTool always writes these two, and since we can only
                                 // have one IDE controller, we'll use this as well
                                 lAddress = 1;
