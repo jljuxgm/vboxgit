@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 20728 2009-06-19 14:14:13Z vboxsync $ */
+/* $Id: IOM.cpp 20776 2009-06-22 13:09:03Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1661,12 +1661,14 @@ VMMR3DECL(int)  IOMR3MMIODeregister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
             iomUnlock(pVM);
             return VERR_IOM_MMIO_RANGE_NOT_FOUND;
         }
-        AssertMsgReturn(pRange->pDevInsR3 == pDevIns,
-                        ("Not owner! GCPhys=%RGp %RGp LB%#x %s\n", GCPhys, GCPhysStart, cbRange, pRange->pszDesc),
-                        VERR_IOM_NOT_MMIO_RANGE_OWNER);
-        AssertMsgReturn(pRange->Core.KeyLast <= GCPhysLast,
-                        ("Incomplete R3 range! GCPhys=%RGp %RGp LB%#x %s\n", GCPhys, GCPhysStart, cbRange, pRange->pszDesc),
-                        VERR_IOM_INCOMPLETE_MMIO_RANGE);
+        AssertMsgReturnStmt(pRange->pDevInsR3 == pDevIns,
+                            ("Not owner! GCPhys=%RGp %RGp LB%#x %s\n", GCPhys, GCPhysStart, cbRange, pRange->pszDesc),
+                            iomUnlock(pVM),
+                            VERR_IOM_NOT_MMIO_RANGE_OWNER);
+        AssertMsgReturnStmt(pRange->Core.KeyLast <= GCPhysLast,
+                            ("Incomplete R3 range! GCPhys=%RGp %RGp LB%#x %s\n", GCPhys, GCPhysStart, cbRange, pRange->pszDesc),
+                            iomUnlock(pVM),
+                            VERR_IOM_INCOMPLETE_MMIO_RANGE);
 
         /* next */
         Assert(GCPhys <= pRange->Core.KeyLast);
@@ -1698,8 +1700,8 @@ VMMR3DECL(int)  IOMR3MMIODeregister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
             MMR3HeapFree((void *)pRange->pszDesc);
         MMHyperFree(pVM, pRange);
     }
-    iomUnlock(pVM);
 
+    iomUnlock(pVM);
     return VINF_SUCCESS;
 }
 
