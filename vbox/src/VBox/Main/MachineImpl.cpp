@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23914 2009-10-20 16:31:36Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23920 2009-10-20 17:52:29Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -8520,7 +8520,7 @@ STDMETHODIMP SessionMachine::BeginTakingSnapshot(IConsole *aInitiator,
         rc = createImplicitDiffs(mUserData->mSnapshotFolderFull,
                                  aConsoleProgress,
                                  1,            // operation weight; must be the same as in Console::TakeSnapshot()
-                                 fTakingSnapshotOnline);
+                                 !!fTakingSnapshotOnline);
 
         if (SUCCEEDED(rc) && mSnapshotData.mLastState == MachineState_Saved)
         {
@@ -8553,10 +8553,11 @@ STDMETHODIMP SessionMachine::BeginTakingSnapshot(IConsole *aInitiator,
                                vrc);
         }
     }
-    catch (HRESULT rc)
+    catch (HRESULT hrc)
     {
         pSnapshot->uninit();
         pSnapshot.setNull();
+        rc = hrc;
     }
 
     if (fTakingSnapshotOnline)
