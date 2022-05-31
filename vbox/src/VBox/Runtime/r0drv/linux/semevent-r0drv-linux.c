@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-linux.c 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: semevent-r0drv-linux.c 19887 2009-05-21 15:23:49Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -66,6 +66,7 @@ RTDECL(int)  RTSemEventCreate(PRTSEMEVENT pEventSem)
     if (pEventInt)
     {
         pEventInt->u32Magic = RTSEMEVENT_MAGIC;
+        pEventInt->fState   = 0;
         init_waitqueue_head(&pEventInt->Head);
         *pEventSem = pEventInt;
         return VINF_SUCCESS;
