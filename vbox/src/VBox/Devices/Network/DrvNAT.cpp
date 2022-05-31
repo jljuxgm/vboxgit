@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 22201 2009-08-12 11:10:15Z vboxsync $ */
+/* $Id: DrvNAT.cpp 22202 2009-08-12 11:11:33Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -537,7 +537,9 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
         }
 # endif
 #endif /* RT_OS_WINDOWS */
+#ifdef SLIRP_SPLIT_CAN_OUTPUT
         drvNATPDMQueueFlusherWakeup(pThis->pDrvIns, pThis->pPDMQueueFlusher); 
+#endif
     }
 
     return VINF_SUCCESS;
