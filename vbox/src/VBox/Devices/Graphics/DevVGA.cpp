@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 18728 2009-04-06 08:10:45Z vboxsync $ */
+/* $Id: DevVGA.cpp 18769 2009-04-06 14:54:59Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4172,10 +4172,17 @@ static void vbeShowBitmap(uint16_t cBits, uint16_t xLogo, uint16_t yLogo, uint16
                     pix = (c & 1) ? 0xFF : 0;
                     c >>= 1;
 
-                    *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
-                    *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
-                    *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
-                    *pu8TmpPtr++;
+                    if (pix)
+                    {
+                        *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
+                        *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
+                        *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
+                        *pu8TmpPtr++;
+                    }
+                    else
+                    {
+                        pu8TmpPtr += 4;
+                    }
 
                     j = (j + 1) % 8;
                     break;
