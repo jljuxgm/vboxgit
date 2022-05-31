@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 20211 2009-06-03 08:04:57Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 20212 2009-06-03 08:09:42Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3999,7 +3999,7 @@ void Appliance::waitForAsyncProgress(ComObjPtr<Progress> &pProgressThis,
         if (FAILED(rc)) throw rc;
     }
     // report result of asynchronous operation
-    LONG iRc;
+    ULONG iRc;
     rc = pProgressAsync->COMGETTER(ResultCode)(&iRc);
     if (FAILED(rc)) throw rc;
 
