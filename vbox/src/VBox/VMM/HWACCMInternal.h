@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 22263 2009-08-14 15:10:12Z vboxsync $ */
+/* $Id: HWACCMInternal.h 22291 2009-08-17 12:04:56Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -143,7 +143,7 @@ RT_C_DECLS_BEGIN
 #define HWACCM_VTX_TOTAL_DEVHEAP_MEM        (HWACCM_EPT_IDENTITY_PG_TABLE_SIZE + HWACCM_VTX_TSS_SIZE)
 
 /* Enable for TPR guest patching. */
-//#define VBOX_HWACCM_WITH_GUEST_PATCHING
+#define VBOX_HWACCM_WITH_GUEST_PATCHING
 
 /** HWACCM SSM version
  */
