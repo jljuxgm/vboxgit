@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 21686 2009-07-17 13:41:39Z vboxsync $ */
 
 /** @file
  *
@@ -34,9 +34,9 @@
 class VirtualBox;
 
 class ATL_NO_VTABLE SystemProperties :
-    public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<SystemProperties, ISystemProperties>,
-    public VirtualBoxSupportTranslation<SystemProperties>,
+    public VirtualBoxBaseNEXT,
+    public VirtualBoxSupportErrorInfoImpl <SystemProperties, ISystemProperties>,
+    public VirtualBoxSupportTranslation <SystemProperties>,
     VBOX_SCRIPTABLE_IMPL(ISystemProperties)
 {
 public:

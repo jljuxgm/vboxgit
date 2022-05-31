@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 21622 2009-07-15 19:04:07Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 21686 2009-07-17 13:41:39Z vboxsync $ */
 
 /** @file
  *
@@ -232,9 +232,9 @@ private:
 class Console;
 
 class ATL_NO_VTABLE RemoteDisplayInfo :
-    public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<RemoteDisplayInfo, IRemoteDisplayInfo>,
-    public VirtualBoxSupportTranslation<RemoteDisplayInfo>,
+    public VirtualBoxBaseNEXT,
+    public VirtualBoxSupportErrorInfoImpl <RemoteDisplayInfo, IRemoteDisplayInfo>,
+    public VirtualBoxSupportTranslation <RemoteDisplayInfo>,
     VBOX_SCRIPTABLE_IMPL(IRemoteDisplayInfo)
 {
 public:

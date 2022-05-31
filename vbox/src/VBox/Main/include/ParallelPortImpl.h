@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 21686 2009-07-17 13:41:39Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -28,9 +28,9 @@
 class Machine;
 
 class ATL_NO_VTABLE ParallelPort :
-    public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<ParallelPort, IParallelPort>,
-    public VirtualBoxSupportTranslation<ParallelPort>,
+    public VirtualBoxBaseNEXT,
+    public VirtualBoxSupportErrorInfoImpl <ParallelPort, IParallelPort>,
+    public VirtualBoxSupportTranslation <ParallelPort>,
     VBOX_SCRIPTABLE_IMPL(IParallelPort)
 {
 public:

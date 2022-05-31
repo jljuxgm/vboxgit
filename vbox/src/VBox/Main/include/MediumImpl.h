@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
+/* $Id: MediumImpl.h 21686 2009-07-17 13:41:39Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -46,7 +46,7 @@ class VirtualBox;
 class ATL_NO_VTABLE MediumBase :
     virtual public VirtualBoxBaseProto,
     public com::SupportErrorInfoBase,
-    public VirtualBoxSupportTranslation<MediumBase>,
+    public VirtualBoxSupportTranslation <MediumBase>,
     VBOX_SCRIPTABLE_IMPL(IMedium)
 {
 public:
@@ -211,7 +211,7 @@ protected:
  */
 class ATL_NO_VTABLE ImageMediumBase
     : public MediumBase
-    , public VirtualBoxBase
+    , public VirtualBoxBaseNEXT
 {
 public:
 
@@ -292,8 +292,8 @@ private:
  * The FloppyImage component class implements the IFloppyImage interface.
  */
 class ATL_NO_VTABLE FloppyImage
-    : public com::SupportErrorInfoDerived<ImageMediumBase, FloppyImage, IFloppyImage>
-    , public VirtualBoxSupportTranslation<FloppyImage>
+    : public com::SupportErrorInfoDerived <ImageMediumBase, FloppyImage, IFloppyImage>
+    , public VirtualBoxSupportTranslation <FloppyImage>
     , VBOX_SCRIPTABLE_IMPL(IFloppyImage)
 {
 public:

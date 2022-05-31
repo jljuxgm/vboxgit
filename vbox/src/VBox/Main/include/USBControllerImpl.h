@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
+/* $Id: USBControllerImpl.h 21686 2009-07-17 13:41:39Z vboxsync $ */
 
 /** @file
  *
@@ -43,8 +43,8 @@ class HostUSBDevice;
 
 class ATL_NO_VTABLE USBController :
     public VirtualBoxBaseWithChildrenNEXT,
-    public VirtualBoxSupportErrorInfoImpl<USBController, IUSBController>,
-    public VirtualBoxSupportTranslation<USBController>,
+    public VirtualBoxSupportErrorInfoImpl <USBController, IUSBController>,
+    public VirtualBoxSupportTranslation <USBController>,
     VBOX_SCRIPTABLE_IMPL(IUSBController)
 {
 private:

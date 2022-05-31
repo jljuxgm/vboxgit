@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
+/* $Id: VFSExplorerImpl.h 21686 2009-07-17 13:41:39Z vboxsync $ */
 
 /** @file
  *
@@ -29,9 +29,9 @@
 class VirtualBox;
 
 class ATL_NO_VTABLE VFSExplorer :
-    public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<VFSExplorer, IVFSExplorer>,
-    public VirtualBoxSupportTranslation<VFSExplorer>,
+    public VirtualBoxBaseNEXT,
+    public VirtualBoxSupportErrorInfoImpl <VFSExplorer, IVFSExplorer>,
+    public VirtualBoxSupportTranslation <VFSExplorer>,
     VBOX_SCRIPTABLE_IMPL(IVFSExplorer)
 {
     VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (VFSExplorer)

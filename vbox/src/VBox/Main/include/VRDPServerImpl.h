@@ -1,4 +1,4 @@
-/* $Id: VRDPServerImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
+/* $Id: VRDPServerImpl.h 21686 2009-07-17 13:41:39Z vboxsync $ */
 
 /** @file
  *
@@ -31,9 +31,9 @@
 class Machine;
 
 class ATL_NO_VTABLE VRDPServer :
-    public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<VRDPServer, IVRDPServer>,
-    public VirtualBoxSupportTranslation<VRDPServer>,
+    public VirtualBoxBaseNEXT,
+    public VirtualBoxSupportErrorInfoImpl <VRDPServer, IVRDPServer>,
+    public VirtualBoxSupportTranslation <VRDPServer>,
     VBOX_SCRIPTABLE_IMPL(IVRDPServer)
 {
 public:

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 21622 2009-07-15 19:04:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 21686 2009-07-17 13:41:39Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -5124,14 +5124,9 @@ HRESULT Machine::loadSnapshot (const settings::Key &aNode,
         }
 
         /* initialize the snapshot */
-        rc = snapshot->init(mParent, // VirtualBox object
-                            uuid,
-                            name,
-                            description,
-                            timeStamp,
-                            snapshotMachine,
-                            aParentSnapshot);
-        CheckComRCReturnRC(rc);
+        rc = snapshot->init (uuid, name, description, timeStamp,
+                             snapshotMachine, aParentSnapshot);
+        CheckComRCReturnRC (rc);
     }
 
     /* memorize the first snapshot if necessary */
@@ -9203,13 +9198,9 @@ STDMETHODIMP SessionMachine::BeginTakingSnapshot (
     RTTIMESPEC time;
     ComObjPtr <Snapshot> snapshot;
     snapshot.createObject();
-    rc = snapshot->init(mParent,
-                        snapshotId,
-                        aName,
-                        aDescription,
-                        *RTTimeNow(&time),
-                        snapshotMachine,
-                        mData->mCurrentSnapshot);
+    rc = snapshot->init (snapshotId, aName, aDescription,
+                         *RTTimeNow (&time), snapshotMachine,
+                         mData->mCurrentSnapshot);
     AssertComRCReturnRC (rc);
 
     /* create and start the task on a separate thread (note that it will not

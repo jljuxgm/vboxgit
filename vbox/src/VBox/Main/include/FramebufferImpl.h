@@ -1,4 +1,4 @@
-/* $Id: FramebufferImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
+/* $Id: FramebufferImpl.h 21686 2009-07-17 13:41:39Z vboxsync $ */
 
 /** @file
  *
@@ -28,9 +28,9 @@
 #include "VirtualBoxImpl.h"
 
 class ATL_NO_VTABLE Framebuffer :
-    public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<Framebuffer, IFramebuffer>,
-    public VirtualBoxSupportTranslation<Framebuffer>,
+    public VirtualBoxBaseNEXT,
+    public VirtualBoxSupportErrorInfoImpl <Framebuffer, IFramebuffer>,
+    public VirtualBoxSupportTranslation <Framebuffer>,
     VBOX_SCRIPTABLE_IMPL(IFramebuffer)
 {
 public:
@@ -75,8 +75,8 @@ public:
     STDMETHOD(VideoModeSupported) (ULONG aWidth, ULONG aHeight, ULONG aBPP,
                                    BOOL *aSupported) = 0;
 
-    STDMETHOD(GetVisibleRegion)(BYTE *aRectangles, ULONG aCount,
-                               ULONG *aCountCopied) = 0;
+    STDMETHOD(GetVisibleRegion)(BYTE *aRectangles, ULONG aCount, 
+                               ULONG *aCountCopied) = 0; 
     STDMETHOD(SetVisibleRegion)(BYTE *aRectangles, ULONG aCount) = 0;
 
     STDMETHOD(ProcessVHWACommand)(BYTE *pCommand) = 0;
