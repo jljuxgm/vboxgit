@@ -1,4 +1,4 @@
-/* $Id: tstCompressionBenchmark.cpp 21815 2009-07-27 14:46:17Z vboxsync $ */
+/* $Id: tstCompressionBenchmark.cpp 21816 2009-07-27 14:46:32Z vboxsync $ */
 /** @file
  * Compression Benchmark for SSM.
  */
@@ -242,7 +242,7 @@ int main(int argc, char **argv)
 //        { 0, 0, 0, 0, false, RTZIPTYPE_ZLIB,  RTZIPLEVEL_DEFAULT, "RTZip/zlib"  }, - slow plus it randomly hits VERR_GENERAL_FAILURE atm.
         { 0, 0, 0, 0, true, RTZIPTYPE_STORE,  RTZIPLEVEL_DEFAULT, "RTZipBlock/Store" },
         { 0, 0, 0, 0, true, RTZIPTYPE_LZF,    RTZIPLEVEL_DEFAULT, "RTZipBlock/LZF" },
-        { 0, 0, 0, 0, true, RTZIPTYPE_LZJB,   RTZIPLEVEL_DEFAULT, "RTZipBlock/LZJB" },
+//        { 0, 0, 0, 0, true, RTZIPTYPE_LZJB,   RTZIPLEVEL_DEFAULT, "RTZipBlock/LZJB" },
     };
     RTPrintf("tstCompressionBenchmark: TESTING..");
     for (uint32_t i = 0; i < cIterations; i++)
