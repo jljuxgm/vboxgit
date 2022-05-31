@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 18388 2009-03-27 13:11:42Z vboxsync $ */
+/* $Id: HardDiskImpl.h 19036 2009-04-20 15:55:29Z vboxsync $ */
 
 /** @file
  *
@@ -55,7 +55,7 @@ public:
         List;
 
     class MergeChain;
-    class CloneChain;
+    class ImageChain;
 
     VIRTUALBOXSUPPORTTRANSLATION_OVERRIDE (HardDisk)
 
