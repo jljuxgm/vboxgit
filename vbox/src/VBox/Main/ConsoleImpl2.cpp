@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22292 2009-08-17 12:06:30Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22293 2009-08-17 12:18:38Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -305,10 +305,10 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         /* @todo Not exactly pretty to check strings; VBOXOSTYPE would be better, but that requires quite a bit of API change in Main. */
         if (    !fIs64BitGuest
             &&  fIOAPIC
-            &&  (   osTypeId == "WindowsNT"
-                 || osTypeId == "Windows 2000"
+            &&  (   osTypeId == "WindowsNT4"
+                 || osTypeId == "Windows2000"
                  || osTypeId == "WindowsXP"
-                 || osTypeId == "Windows 2003"))
+                 || osTypeId == "Windows2003"))
         {
             /* Only allow TPR patching for NT, Win2k, XP and Windows Server 2003. (32 bits mode)
              * We may want to consider adding more guest OSes (Solaris) later on.
