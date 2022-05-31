@@ -1,4 +1,4 @@
-/* $Id: s3.cpp 21743 2009-07-21 12:27:03Z vboxsync $ */
+/* $Id: s3.cpp 22735 2009-09-03 11:30:35Z vboxsync $ */
 /** @file
  * IPRT - S3 communication API.
  */
@@ -252,7 +252,11 @@ static int rtS3Perform(PRTS3INTERNAL pS3Int)
         {
             case CURLE_URL_MALFORMAT:
             case CURLE_COULDNT_RESOLVE_HOST:
+#if defined(CURLE_REMOTE_FILE_NOT_FOUND)
             case CURLE_REMOTE_FILE_NOT_FOUND: rc = VERR_S3_NOT_FOUND; break;
+#elif defined(CURLE_FILE_COULDNT_READ_FILE)
+            case CURLE_FILE_COULDNT_READ_FILE: rc = VERR_S3_NOT_FOUND; break;
+#endif
 #if defined(CURLE_REMOTE_ACCESS_DENIED)
             case CURLE_REMOTE_ACCESS_DENIED: rc = VERR_S3_ACCESS_DENIED; break;
 #elif defined(CURLE_FTP_ACCESS_DENIED)
