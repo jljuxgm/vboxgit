@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 23770 2009-10-14 15:47:54Z vboxsync $ */
+/* $Id: CSAM.cpp 23772 2009-10-14 17:10:48Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -192,11 +192,8 @@ static const SSMFIELD g_aCsamPageRecFields[] =
     SSMFIELD_ENTRY_IGNORE(      CSAMPAGEREC, Core.uchHeight),
     SSMFIELD_ENTRY_PAD_HC_AUTO( 3, 7),
     SSMFIELD_ENTRY_RCPTR(       CSAMPAGEREC, page.pPageGC),
-#ifdef _MSC_VER /** @todo check/fix this! */
-    SSMFIELD_ENTRY_PAD_HC_AUTO( 4, 4),
-#else
     SSMFIELD_ENTRY_PAD_HC_AUTO( 0, 4),
-#endif
+    SSMFIELD_ENTRY_PAD_MSC32_AUTO( 4),
     SSMFIELD_ENTRY_GCPHYS(      CSAMPAGEREC, page.GCPhys),
     SSMFIELD_ENTRY(             CSAMPAGEREC, page.fFlags),
     SSMFIELD_ENTRY(             CSAMPAGEREC, page.uSize),
