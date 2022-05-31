@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 18859 2009-04-10 08:24:55Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 18863 2009-04-10 11:59:25Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -31,6 +31,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/ioctl.h>
+#include <sys/ioccom.h>
 #include <fcntl.h>
 
 /* @todo Error codes must be moved to some header file */
