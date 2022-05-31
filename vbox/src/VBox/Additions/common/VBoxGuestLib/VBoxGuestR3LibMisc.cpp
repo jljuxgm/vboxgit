@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 23839 2009-10-17 08:21:39Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 23843 2009-10-19 07:37:36Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -203,25 +203,25 @@ VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
 
     /* Check the new path first. */
     r = RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SOFTWARE\\Sun\\VirtualBox Guest Additions", 0, KEY_READ, &hKey);
-#ifdef RT_ARCH_AMD64
+# ifdef RT_ARCH_AMD64
     if (r != ERROR_SUCCESS)
     {
         /* Check Wow6432Node (for new entries). */
         r = RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SOFTWARE\\Wow6432Node\\Sun\\VirtualBox Guest Additions", 0, KEY_READ, &hKey);
     }
-#endif
+# endif
 
     /* Still no luck? Then try the old xVM paths ... */
     if (FAILED(r))
     {
         r = RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SOFTWARE\\Sun\\xVM VirtualBox Guest Additions", 0, KEY_READ, &hKey);
-#ifdef RT_ARCH_AMD64
+# ifdef RT_ARCH_AMD64
         if (r != ERROR_SUCCESS)
         {
             /* Check Wow6432Node (for new entries). */
             r = RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SOFTWARE\\Wow6432Node\\Sun\\xVM VirtualBox Guest Additions", 0, KEY_READ, &hKey);
         }
-#endif
+# endif
     }
 
     /* Did we get something worth looking at? */
@@ -250,6 +250,7 @@ VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
     if (NULL != hKey)
         RegCloseKey(hKey);
 #else
+    rc = VERR_NOT_IMPLEMENTED;
 #endif /* RT_OS_WINDOWS */
     return rc;
 }
