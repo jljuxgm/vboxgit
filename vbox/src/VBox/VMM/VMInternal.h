@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 22924 2009-09-10 22:00:36Z vboxsync $ */
+/* $Id: VMInternal.h 22937 2009-09-10 23:46:15Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -454,9 +454,11 @@ typedef struct VMINTUSERPERVMCPU
     STAMPROFILE                     StatHaltPoll;
     /** @} */
 } VMINTUSERPERVMCPU;
+#ifdef IN_RING3
 AssertCompileMemberAlignment(VMINTUSERPERVMCPU, u64HaltsStartTS, 8);
 AssertCompileMemberAlignment(VMINTUSERPERVMCPU, Halt.Method12.cNSBlockedTooLongAvg, 8);
 AssertCompileMemberAlignment(VMINTUSERPERVMCPU, StatHaltYield, 8);
+#endif
 
 /** Pointer to the VM internal data kept in the UVM. */
 typedef VMINTUSERPERVMCPU *PVMINTUSERPERVMCPU;
