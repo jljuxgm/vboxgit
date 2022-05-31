@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 19462 2009-05-06 20:20:47Z vboxsync $ */
+/* $Id: VMMR0.cpp 19592 2009-05-11 23:21:13Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -618,7 +618,7 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
 
             STAM_COUNTER_INC(&pVM->vmm.s.StatRunRC);
 
-#ifndef RT_OS_WINDOWS /** @todo check other hosts */
+#if !defined(RT_OS_WINDOWS) && !defined(RT_OS_FREEBSD) /** @todo check other hosts */
             RTCCUINTREG uFlags = ASMIntDisableFlags();
 #endif
             ASMAtomicWriteU32(&pVCpu->idHostCpu, NIL_RTCPUID);
@@ -641,7 +641,7 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
             pVCpu->vmm.s.iLastGZRc = rc;
 
             ASMAtomicWriteU32(&pVCpu->idHostCpu, NIL_RTCPUID);
-#ifndef RT_OS_WINDOWS /** @todo check other hosts */
+#if !defined(RT_OS_WINDOWS) && !defined(RT_OS_FREEBSD) /** @todo check other hosts */
             ASMSetFlags(uFlags);
 #endif
 
