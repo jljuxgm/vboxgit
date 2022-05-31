@@ -1,4 +1,4 @@
-/* $Id: test.cpp 18847 2009-04-08 16:22:27Z vboxsync $ */
+/* $Id: test.cpp 19939 2009-05-23 13:41:28Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -698,12 +698,12 @@ static int rtTestSubTestReport(PRTTESTINT pTest)
         pTest->fSubTestReported = true;
         uint32_t cErrors = ASMAtomicUoReadU32(&pTest->cErrors) - pTest->cSubTestAtErrors;
         if (!cErrors)
-            cch += RTTestPrintf(pTest, RTTESTLVL_SUB_TEST, "%-50s: PASSED\n", pTest->pszSubTest);
+            cch += RTTestPrintfNl(pTest, RTTESTLVL_SUB_TEST, "%-50s: PASSED\n", pTest->pszSubTest);
         else
         {
             pTest->cSubTestsFailed++;
-            cch += RTTestPrintf(pTest, RTTESTLVL_SUB_TEST, "%-50s: FAILED (%u errors)\n",
-                                pTest->pszSubTest, cErrors);
+            cch += RTTestPrintfNl(pTest, RTTESTLVL_SUB_TEST, "%-50s: FAILED (%u errors)\n",
+                                  pTest->pszSubTest, cErrors);
         }
     }
     return cch;
