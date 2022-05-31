@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21129 2009-07-01 14:49:43Z vboxsync $
+# $Id: Makefile.kmk 23052 2009-09-16 08:28:05Z vboxsync $
 ## @file
 # Sub-Makefile for the VBoxFUSE Program.
 #
@@ -53,6 +53,7 @@ VBoxFUSE_LIBS = \
 	$(LIB_DDU) \
 	$(LIB_RUNTIME)
 VBoxFUSE_LIBS.darwin = fuse
+VBoxFUSE_LIBS.linux = fuse
 VBoxFUSE_LIBPATHS.darwin = /usr/local/lib
 
 include $(KBUILD_PATH)/subfooter.kmk
