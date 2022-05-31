@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 23147 2009-09-18 21:33:35Z vboxsync $ */
+/* $Id: VMMInternal.h 23487 2009-10-01 14:57:14Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -138,7 +138,7 @@ typedef struct VMMR0JMPBUF
     uint32_t                    ebp;
     uint32_t                    esp;
     uint32_t                    eip;
-    uint32_t                    u32Padding;
+    uint32_t                    eflags;
 #endif
 #if HC_ARCH_BITS == 64
     uint64_t                    rbx;
@@ -165,6 +165,7 @@ typedef struct VMMR0JMPBUF
     uint128_t                   xmm14;
     uint128_t                   xmm15;
 # endif
+    uint64_t                    rflags;
 #endif
     /** @} */
 
