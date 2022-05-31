@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 22368 2009-08-20 12:45:58Z vboxsync $
+# $Id: vboxconfig.sh 22376 2009-08-20 13:55:28Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -672,8 +672,6 @@ do
             ISIPS="$IPSOP"
             ;;
         *)
-            errorprint "Invalid arguments"
-            exit 1
             break
             ;;
     esac
