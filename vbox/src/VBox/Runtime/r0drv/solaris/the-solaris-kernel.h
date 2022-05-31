@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 20793 2009-06-22 17:05:03Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 21275 2009-07-06 21:58:45Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
@@ -63,6 +63,7 @@
 
 RT_C_DECLS_BEGIN
 extern struct ddi_dma_attr g_SolarisX86PhysMemLimits;
+extern uintptr_t kernelbase;
 RT_C_DECLS_END
 
 #endif
