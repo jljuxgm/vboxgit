@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: HWACCMInternal.h 18932 2009-04-16 11:56:30Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -661,7 +661,7 @@ VMMR0DECL(PHWACCM_CPUINFO) HWACCMR0GetCurrentCpuEx(RTCPUID idCpu);
 VMMR0DECL(void) HWACCMDumpRegs(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx);
 VMMR0DECL(void) HWACCMR0DumpDescriptor(PX86DESCHC  Desc, RTSEL Sel, const char *pszMsg);
 #else
-#define HWACCMDumpRegs(a, b)                do { } while (0)
+#define HWACCMDumpRegs(a, b ,c)             do { } while (0)
 #define HWACCMR0DumpDescriptor(a, b, c)     do { } while (0)
 #endif
 
