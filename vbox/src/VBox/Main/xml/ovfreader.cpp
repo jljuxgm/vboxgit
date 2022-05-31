@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 21588 2009-07-14 16:22:06Z vboxsync $ */
+/* $Id: ovfreader.cpp 21599 2009-07-15 10:11:36Z vboxsync $ */
 /** @file
  *
  * OVF reader declarations. Depends only on IPRT, including the iprt::MiniString
@@ -670,6 +670,7 @@ void OVFReader::HandleVirtualSystemContent(const xml::ElementNode *pelmVirtualSy
                         vsys.mapVirtualDisks[vd.strDiskId] = vd;
                     }
                     break;
+                    default: break;
                 }
             }
         }
