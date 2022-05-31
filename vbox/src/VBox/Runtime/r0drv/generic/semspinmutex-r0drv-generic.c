@@ -1,4 +1,4 @@
-/* $Id: semspinmutex-r0drv-generic.c 21540 2009-07-13 14:51:23Z vboxsync $ */
+/* $Id: semspinmutex-r0drv-generic.c 21543 2009-07-13 15:18:20Z vboxsync $ */
 /** @file
  * IPRT - Spinning Mutex Semaphores, Ring-0 Driver, Generic.
  */
@@ -170,10 +170,10 @@ static int rtSemSpinMutexEnter(RTSEMSPINMUTEXSTATE *pState, RTSEMSPINMUTEXINTERN
         return VERR_SEM_BAD_CONTEXT;
 
     if (pState->PreemptState.uchOldIrql >= DISPATCH_LEVEL)
-        pThis->fSpin = true;
+        pState->fSpin = true;
     else
     {
-        pThis->fSpin = false;
+        pState->fSpin = false;
         KeRaiseIrql(DISPATCH_LEVEL, &pState->PreemptState.uchOldIrql);
         Assert(pState->PreemptState.uchOldIrql < DISPATCH_LEVEL);
     }
@@ -234,7 +234,7 @@ DECL_FORCE_INLINE(void) rtSemSpinMutexLeave(RTSEMSPINMUTEXSTATE *pState)
      * NT: Lower the IRQL if we raised it.
      */
     if (pState->PreemptState.uchOldIrql < DISPATCH_LEVEL)
-        KeLowerIrql(PreemptState.uchOldIrql);
+        KeLowerIrql(pState->PreemptState.uchOldIrql);
 #else
     /*
      * Default: Restore preemption.
