@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 20406 2009-06-08 13:39:32Z vboxsync $ */
+/* $Id: VMMInternal.h 20533 2009-06-13 20:56:16Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -55,6 +55,12 @@
  */
 #if defined(DEBUG_sandervl) || defined(DEBUG_frank) || defined(DOXYGEN_RUNNING)
 # define VBOX_WITH_R0_LOGGING
+#endif
+
+/** @def VBOX_STRICT_VMM_STACK
+ * Enables VMM stack guard pages to catch stack over- and underruns. */
+#if defined(VBOX_STRICT) || defined(DOXYGEN_RUNNING)
+# define VBOX_STRICT_VMM_STACK
 #endif
 
 
