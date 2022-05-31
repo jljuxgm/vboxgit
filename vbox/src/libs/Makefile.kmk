@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19356 2009-05-05 09:43:35Z vboxsync $
+# $Id: Makefile.kmk 19656 2009-05-13 12:31:53Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -85,7 +85,7 @@ if defined(VBOX_WITH_MAIN) && !defined(VBOX_ONLY_DOCS)
 
 endif # VBOX_WITH_MAIN && !VBOX_ONLY_DOCS
 
-if defined(VBOX_WITH_CROGL) && !defined(VBOX_OSE)
+if defined(VBOX_WITH_CROGL) && !defined(VBOX_OSE) && !defined(VBOX_ONLY_DOCS)
  ifeq ($(KBUILD_TARGET),linux)
   include $(PATH_SUB_CURRENT)/mesa-7.2/Makefile.kmk
  endif
