@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 20046 2009-05-26 15:44:43Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 20056 2009-05-27 07:33:15Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -945,7 +945,7 @@ ResumeExecution:
         bool fPending;
 
         /* TPR caching in CR8 */
-        int rc = PDMApicGetTPREx(pVCpu, &u8LastVTPR, pVM->hwaccm.s.svm.fTPRPatching, &fPending);
+        int rc = PDMApicGetTPR(pVCpu, &u8LastVTPR, &fPending);
         AssertRC(rc);
         pVMCB->ctrl.IntCtrl.n.u8VTPR = u8LastVTPR;
 
@@ -1336,7 +1336,7 @@ ResumeExecution:
 
     if (fSyncTPR)
     {
-        rc = PDMApicSetTPREx(pVCpu, pVMCB->ctrl.IntCtrl.n.u8VTPR, pVM->hwaccm.s.svm.fTPRPatching);
+        rc = PDMApicSetTPR(pVCpu, pVMCB->ctrl.IntCtrl.n.u8VTPR);
         AssertRC(rc);
     }
 
