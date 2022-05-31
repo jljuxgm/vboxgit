@@ -1,4 +1,4 @@
-/* $Id: VBoxDMG.cpp 21405 2009-07-08 15:27:38Z vboxsync $ */
+/* $Id: VBoxDMG.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * VBoxDMG - Intepreter for Apple Disk Images (DMG).
  */
@@ -1034,7 +1034,7 @@ static DECLCALLBACK(int) vboxdmgCheckIfValid(const char *pszFilename)
      * Open the file and read the footer.
      */
     RTFILE hFile;
-    int rc = RTFileOpen(&hFile, pszFilename, RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_DENY_WRITE);
+    int rc = RTFileOpen(&hFile, pszFilename, RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_WRITE);
     if (RT_FAILURE(rc))
         return rc;
 

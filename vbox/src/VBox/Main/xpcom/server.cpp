@@ -1,4 +1,4 @@
-/* $Id: server.cpp 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: server.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -1062,7 +1062,7 @@ int main (int argc, char **argv)
         {
             char szBuf[32];
             const char *lf = "\n";
-            RTFileOpen(&pidFile, pszPidFile, RTFILE_O_WRITE | RTFILE_O_CREATE_REPLACE);
+            RTFileOpen(&pidFile, pszPidFile, RTFILE_O_WRITE | RTFILE_O_CREATE_REPLACE | RTFILE_O_DENY_NONE);
             RTStrFormatNumber(szBuf, getpid(), 10, 0, 0, 0);
             RTFileWrite(pidFile, szBuf, strlen(szBuf), NULL);
             RTFileWrite(pidFile, lf, strlen(lf), NULL);

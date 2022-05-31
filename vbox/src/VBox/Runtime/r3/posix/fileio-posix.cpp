@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 22516 2009-08-27 12:42:16Z vboxsync $ */
+/* $Id: fileio-posix.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -108,22 +108,14 @@ RTDECL(bool) RTFileExists(const char *pszPath)
 }
 
 
-RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen)
+RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint32_t fOpen)
 {
     /*
      * Validate input.
      */
-    if (!VALID_PTR(pFile))
-    {
-        AssertMsgFailed(("Invalid pFile %p\n", pFile));
-        return VERR_INVALID_PARAMETER;
-    }
+    AssertPtrReturn(pFile, VERR_INVALID_POINTER);
     *pFile = NIL_RTFILE;
-    if (!VALID_PTR(pszFilename))
-    {
-        AssertMsgFailed(("Invalid pszFilename %p\n", pszFilename));
-        return VERR_INVALID_PARAMETER;
-    }
+    AssertPtrReturn(pszFilename, VERR_INVALID_POINTER);
 
     /*
      * Merge forced open flags and validate them.

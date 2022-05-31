@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -824,7 +824,7 @@ int handleConvertFromRaw(int argc, char *argv[])
     if (fReadFromStdIn)
         File = 0;
     else
-        rc = RTFileOpen(&File, srcfilename, RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_DENY_WRITE);
+        rc = RTFileOpen(&File, srcfilename, RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_WRITE);
     if (RT_FAILURE(rc))
     {
         RTPrintf("File=\"%s\" open error: %Rrf\n", srcfilename, rc);

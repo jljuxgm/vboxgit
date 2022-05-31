@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 23302 2009-09-24 17:00:38Z vboxsync $ */
+/* $Id: fileio-win.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -150,7 +150,7 @@ RTR3DECL(RTHCINTPTR) RTFileToNative(RTFILE File)
 }
 
 
-RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen)
+RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint32_t fOpen)
 {
     /*
      * Validate input.

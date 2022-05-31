@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 23947 2009-10-21 17:32:21Z vboxsync $ */
+/* $Id: MediumImpl.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 
 /** @file
  *
@@ -3455,7 +3455,7 @@ HRESULT Medium::setLocation(const Utf8Str &aLocation, const Utf8Str &aFormat)
             /* is it a file? */
             {
                 RTFILE file;
-                vrc = RTFileOpen(&file, locationFull.c_str(), RTFILE_O_READ);
+                vrc = RTFileOpen(&file, locationFull.c_str(), RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
                 if (RT_SUCCESS(vrc))
                     RTFileClose(file);
             }

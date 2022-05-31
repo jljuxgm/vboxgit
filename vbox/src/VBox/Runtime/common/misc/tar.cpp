@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 21859 2009-07-29 08:06:03Z vboxsync $ */
+/* $Id: tar.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -323,7 +323,7 @@ RTR3DECL(int) RTTarQueryFileExists(const char *pszTarFile, const char *pszFile)
 
     /* Open the tar file */
     RTFILE hFile;
-    int rc = RTFileOpen(&hFile, pszTarFile, RTFILE_O_READ);
+    int rc = RTFileOpen(&hFile, pszTarFile, RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
     if (RT_FAILURE(rc))
         return rc;
 
@@ -382,7 +382,7 @@ RTR3DECL(int) RTTarList(const char *pszTarFile, char ***ppapszFiles, size_t *pcF
 
     /* Open the tar file */
     RTFILE hFile;
-    int rc = RTFileOpen(&hFile, pszTarFile, RTFILE_O_READ);
+    int rc = RTFileOpen(&hFile, pszTarFile, RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
     if (RT_FAILURE(rc))
         return rc;
 
@@ -472,7 +472,7 @@ RTR3DECL(int) RTTarExtractFiles(const char *pszTarFile, const char *pszOutputDir
 
     /* Open the tar file */
     RTFILE hFile;
-    int rc = RTFileOpen(&hFile, pszTarFile, RTFILE_O_READ);
+    int rc = RTFileOpen(&hFile, pszTarFile, RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
     if (RT_FAILURE(rc))
         return rc;
 
@@ -566,7 +566,7 @@ RTR3DECL(int) RTTarExtractByIndex(const char *pszTarFile, const char *pszOutputD
 
     /* Open the tar file */
     RTFILE hFile;
-    int rc = RTFileOpen(&hFile, pszTarFile, RTFILE_O_READ);
+    int rc = RTFileOpen(&hFile, pszTarFile, RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
     if (RT_FAILURE(rc))
         return rc;
 

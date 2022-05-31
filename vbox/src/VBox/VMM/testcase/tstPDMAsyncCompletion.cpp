@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletion.cpp 23404 2009-09-29 10:18:37Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletion.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Testcase.
  *
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
 
         /* Create the destination as the async completion API can't do this. */
         RTFILE FileTmp;
-        rc = RTFileOpen(&FileTmp, argv[2], RTFILE_O_READWRITE | RTFILE_O_OPEN_CREATE);
+        rc = RTFileOpen(&FileTmp, argv[2], RTFILE_O_READWRITE | RTFILE_O_OPEN_CREATE | RTFILE_O_DENY_NONE);
         if (RT_FAILURE(rc))
         {
             RTPrintf(TESTCASE ": Error while creating the destination!! rc=%d\n", rc);

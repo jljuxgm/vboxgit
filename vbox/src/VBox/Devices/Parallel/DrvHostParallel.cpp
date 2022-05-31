@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -259,7 +259,7 @@ static DECLCALLBACK(int) drvHostParallelWakeupMonitorThread(PPDMDRVINS pDrvIns, 
 
 /**
  * Construct a host parallel driver instance.
- *  
+ *
  * @copydoc FNPDMDRVCONSTRUCT
  */
 static DECLCALLBACK(int) drvHostParallelConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, uint32_t fFlags)
@@ -302,7 +302,7 @@ static DECLCALLBACK(int) drvHostParallelConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     /*
      * Open the device
      */
-    rc = RTFileOpen(&pThis->FileDevice, pThis->pszDevicePath, RTFILE_O_OPEN | RTFILE_O_READWRITE);
+    rc = RTFileOpen(&pThis->FileDevice, pThis->pszDevicePath, RTFILE_O_READWRITE | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
     if (RT_FAILURE(rc))
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS, N_("Parallel#%d could not open '%s'"),
                                    pDrvIns->iInstance, pThis->pszDevicePath);
@@ -432,9 +432,9 @@ const PDMDRVREG g_DrvHostParallel =
     /* pfnAttach */
     NULL,
     /* pfnDetach */
-    NULL, 
+    NULL,
     /* pfnPowerOff */
-    NULL, 
+    NULL,
     /* pfnSoftReset */
     NULL,
     /* u32EndVersion */

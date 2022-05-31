@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -737,20 +737,20 @@ static int vdAsyncIOOpen(void *pvUser, const char *pszLocation, unsigned uOpenFl
 
     pStorage->pfnCompleted = pfnCompleted;
 
-    unsigned uFlags = 0;
+    uint32_t fOpen = 0;
 
     if (uOpenFlags & VD_INTERFACEASYNCIO_OPEN_FLAGS_READONLY)
-        uFlags |= RTFILE_O_READ | RTFILE_O_DENY_NONE;
+        fOpen |= RTFILE_O_READ      | RTFILE_O_DENY_NONE;
     else
-        uFlags |= RTFILE_O_READWRITE | RTFILE_O_DENY_WRITE;
+        fOpen |= RTFILE_O_READWRITE | RTFILE_O_DENY_WRITE;
 
     if (uOpenFlags & VD_INTERFACEASYNCIO_OPEN_FLAGS_CREATE)
-        uFlags |= RTFILE_O_CREATE;
+        fOpen |= RTFILE_O_CREATE;
     else
-        uFlags |= RTFILE_O_OPEN;
+        fOpen |= RTFILE_O_OPEN;
 
     /* Open the file. */
-    int rc = RTFileOpen(&pStorage->File, pszLocation, uFlags);
+    int rc = RTFileOpen(&pStorage->File, pszLocation, fOpen);
     if (RT_SUCCESS(rc))
     {
         *ppStorage = pStorage;

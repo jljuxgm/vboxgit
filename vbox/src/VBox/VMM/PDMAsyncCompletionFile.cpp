@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 23959 2009-10-22 08:38:31Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -577,7 +577,7 @@ static int pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
          */
         RTFILE File = NIL_RTFILE;
 
-        rc = RTFileOpen(&File, pszUri, RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_DENY_NONE);
+        rc = RTFileOpen(&File, pszUri, RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
         if (RT_SUCCESS(rc))
         {
             uint64_t cbSize;

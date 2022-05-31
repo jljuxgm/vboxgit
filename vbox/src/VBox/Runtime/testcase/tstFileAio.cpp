@@ -1,4 +1,4 @@
-/* $Id: tstFileAio.cpp 19562 2009-05-10 21:44:16Z vboxsync $ */
+/* $Id: tstFileAio.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * IPRT Testcase - File Async I/O.
  */
@@ -273,7 +273,7 @@ int main()
     tstFileAioTestReadWriteBasic(File, true, pvTestBuf, 64*_1K, 100*_1M, cReqsMax);
     /* Reopen the file. */
     RTFileClose(File);
-    rc = RTFileOpen(&File, "tstFileAio#1.tst", RTFILE_O_READWRITE | RTFILE_O_DENY_NONE | RTFILE_O_ASYNC_IO);
+    rc = RTFileOpen(&File, "tstFileAio#1.tst", RTFILE_O_READWRITE | RTFILE_O_OPEN | RTFILE_O_DENY_NONE | RTFILE_O_ASYNC_IO);
     if (RT_SUCCESS(rc))
     {
         tstFileAioTestReadWriteBasic(File, false, pvTestBuf, 64*_1K, 100*_1M, cReqsMax);

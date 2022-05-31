@@ -1,4 +1,4 @@
-/* $Id: HostHardwareFreeBSD.cpp 23855 2009-10-19 11:53:08Z vboxsync $ */
+/* $Id: HostHardwareFreeBSD.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under FreeBSD.
  */
@@ -168,7 +168,7 @@ static int getDVDInfoFromCAM(DriveInfoList *pList, bool *pfSuccess)
     int rc = VINF_SUCCESS;
     RTFILE FileXpt;
 
-    rc = RTFileOpen(&FileXpt, "/dev/xpt0", RTFILE_O_READWRITE);
+    rc = RTFileOpen(&FileXpt, "/dev/xpt0", RTFILE_O_READWRITE | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
     if (RT_SUCCESS(rc))
     {
         union ccb DeviceCCB;

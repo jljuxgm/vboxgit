@@ -1,4 +1,4 @@
-/* $Id: DrvSCSIHost.cpp 23970 2009-10-22 11:24:08Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
 /** @file
  *
  * VBox storage drivers:
@@ -477,7 +477,7 @@ static DECLCALLBACK(int) drvscsihostConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
         return PDMDRV_SET_ERROR(pDrvIns, rc,
                                 N_("Configuration error: Failed to get the \"DevicePath\" value"));
 
-    rc = RTFileOpen(&pThis->DeviceFile, pThis->pszDevicePath, RTFILE_O_OPEN | RTFILE_O_READWRITE);
+    rc = RTFileOpen(&pThis->DeviceFile, pThis->pszDevicePath, RTFILE_O_READWRITE | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
     if (RT_FAILURE(rc))
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
                                    N_("DrvSCSIHost#%d: Failed to open device '%s'"), pDrvIns->iInstance, pThis->pszDevicePath);
