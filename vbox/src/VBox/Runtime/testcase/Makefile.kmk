@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20647 2009-06-16 21:58:09Z vboxsync $
+# $Id: Makefile.kmk 21082 2009-06-30 16:40:53Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -83,6 +83,7 @@ PROGRAMS += \
 	tstRand \
 	tstRTFsQueries \
 	tstR0ThreadPreemptionDriver \
+	tstRTS3 \
 	tstSems \
 	tstSemPingPong \
 	tstRTStrCache \
@@ -132,11 +133,6 @@ endif
 ifdef RT_ASYNC_IO_CODE
 PROGRAMS += \
 	tstFileAio
-endif
-
-if defined(VBOX_WITH_LIBXML2_IN_VBOXRT)
-PROGRAMS += \
-	tstRTS3
 endif
 
 
