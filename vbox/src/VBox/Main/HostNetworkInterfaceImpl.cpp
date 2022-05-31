@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 18385 2009-03-27 12:34:27Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 18389 2009-03-27 13:13:31Z vboxsync $ */
 
 /** @file
  *
@@ -567,7 +567,7 @@ HRESULT HostNetworkInterface::setVirtualBox(VirtualBox *pVBox)
         {
             hrc = mVBox->GetExtraData(Bstr(Utf8StrFmt("HostOnly/%ls/IPV6PrefixLen", mInterfaceName.raw())), tmpPrefixLen.asOutParam());
             if (SUCCEEDED(hrc) && !tmpPrefixLen.isEmpty())
-                m.IPV6NetworkMaskPrefixLength = atol(Utf8Str(tmpPrefixLen).raw());
+                m.IPV6NetworkMaskPrefixLength = Utf8Str(tmpPrefixLen).toUInt32();
             else
                 m.IPV6NetworkMaskPrefixLength = 64;
         }
