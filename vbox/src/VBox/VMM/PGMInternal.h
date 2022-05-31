@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 23306 2009-09-24 17:16:02Z vboxsync $ */
+/* $Id: PGMInternal.h 23307 2009-09-24 17:33:56Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3143,7 +3143,7 @@ void            pgmHandlerVirtualDumpPhysPages(PVM pVM);
 # define pgmHandlerVirtualDumpPhysPages(a) do { } while (0)
 #endif
 DECLCALLBACK(void) pgmR3InfoHandlers(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
-
+int             pgmR3InitSavedState(PVM pVM, uint64_t cbRam);
 
 int             pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys);
 int             pgmPhysPageLoadIntoTlb(PPGM pPGM, RTGCPHYS GCPhys);
