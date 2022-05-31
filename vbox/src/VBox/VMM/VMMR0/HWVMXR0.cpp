@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 20981 2009-06-26 15:03:24Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 20997 2009-06-26 22:23:04Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2333,7 +2333,11 @@ ResumeExecution:
 #endif
 
     TMNotifyStartOfExecution(pVCpu);
+#ifdef VBOX_WITH_KERNEL_USING_XMM
+    rc = hwaccmR0VMXStartVMWrapperXMM(pVCpu->hwaccm.s.fResumeVM, pCtx, &pVCpu->hwaccm.s.vmx.VMCSCache, pVM, pVCpu, pVCpu->hwaccm.s.vmx.pfnStartVM);
+#else
     rc = pVCpu->hwaccm.s.vmx.pfnStartVM(pVCpu->hwaccm.s.fResumeVM, pCtx, &pVCpu->hwaccm.s.vmx.VMCSCache, pVM, pVCpu);
+#endif
     TMNotifyEndOfExecution(pVCpu);
     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED);
     Assert(!(ASMGetFlags() & X86_EFL_IF));

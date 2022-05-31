@@ -1,4 +1,4 @@
-; $Id: CPUMR0A.asm 20540 2009-06-13 21:23:51Z vboxsync $
+; $Id: CPUMR0A.asm 20997 2009-06-26 22:23:04Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -33,6 +33,13 @@
 %ifdef IN_RING3
  %error "The jump table doesn't link on leopard."
 %endif
+
+;*******************************************************************************
+;*      Defined Constants And Macros                                           *
+;*******************************************************************************
+;; The offset of the XMM registers in X86FXSTATE.
+; Use define because I'm too lazy to convert the struct.
+%define XMM_OFF_IN_X86FXSTATE   160
 
 
 ;*******************************************************************************
@@ -102,6 +109,21 @@ BEGINPROC cpumR0SaveHostRestoreGuestFPUState
 
     fxsave  [xDX + CPUMCPU.Host.fpu]    ; ASSUMES that all VT-x/AMD-V boxes sports fxsave/fxrstor (safe assumption)
     fxrstor [xDX + CPUMCPU.Guest.fpu]
+
+%ifdef VBOX_WITH_KERNEL_USING_XMM
+    ; Restore the non-volatile xmm registers. ASSUMING 64-bit windows
+    lea     r11, [xDX + CPUMCPU.Host.fpu + XMM_OFF_IN_X86FXSTATE]
+    movdqa  xmm6,  [r11 + 060h]
+    movdqa  xmm7,  [r11 + 070h]
+    movdqa  xmm8,  [r11 + 080h]
+    movdqa  xmm9,  [r11 + 090h]
+    movdqa  xmm10, [r11 + 0a0h]
+    movdqa  xmm11, [r11 + 0b0h]
+    movdqa  xmm12, [r11 + 0c0h]
+    movdqa  xmm13, [r11 + 0d0h]
+    movdqa  xmm14, [r11 + 0e0h]
+    movdqa  xmm15, [r11 + 0f0h]
+%endif
 
 .done:
     mov     cr0, xCX                    ; and restore old CR0 again ;; @todo optimize this.
