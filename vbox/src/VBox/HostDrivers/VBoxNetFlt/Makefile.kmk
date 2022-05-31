@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 16878 2009-02-18 09:06:13Z vboxsync $
+# $Id: Makefile.kmk 18064 2009-03-18 12:52:38Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -230,7 +230,7 @@ VBoxNetAdp_SOURCES = \
 	win/VBoxNetFlt-win.c \
 	win/VBoxNetFltMp-win.c \
 	win/VBoxNetFlt-win.rc
-VBoxNetAdp_DEFS += VBOXNETFLT_STATIC_CONFIG VBOX_TAPMINIPORT
+VBoxNetAdp_DEFS += VBOXNETFLT_STATIC_CONFIG VBOXNETADP
 VBoxNetAdp_LDFLAGS.win.x86 = -Entry:DriverEntry@8
 VBoxNetAdp_LDFLAGS.win.amd64 = -Entry:DriverEntry
 VBoxNetAdp_SOURCES.win.amd64 += win/VBoxNetFltA-win.asm

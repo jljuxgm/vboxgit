@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 18053 2009-03-18 10:50:02Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 18064 2009-03-18 12:52:38Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -1108,7 +1108,7 @@ static DECLCALLBACK(int) vboxNetFltFactoryCreateAndConnect(PINTNETTRUNKFACTORY p
     rc = RTSemFastMutexRequest(pGlobals->hFastMtx);
     AssertRCReturn(rc, rc);
 
-//#if defined(VBOX_TAPMINIPORT) && defined(RT_OS_WINDOWS)
+//#if defined(VBOXNETADP) && defined(RT_OS_WINDOWS)
 //    /* temporary hack to pick up the first adapter */
 //    pCur = pGlobals->pInstanceHead; /** @todo Don't for get to remove this temporary hack... :-) */
 //#else
@@ -1367,7 +1367,7 @@ DECLHIDDEN(int) vboxNetFltInitGlobals(PVBOXNETFLTGLOBALS pGlobals)
 
         pGlobals->TrunkFactory.pfnRelease = vboxNetFltFactoryRelease;
         pGlobals->TrunkFactory.pfnCreateAndConnect = vboxNetFltFactoryCreateAndConnect;
-#if defined(RT_OS_WINDOWS) && defined(VBOX_TAPMINIPORT)
+#if defined(RT_OS_WINDOWS) && defined(VBOXNETADP)
         strcpy(pGlobals->SupDrvFactory.szName, "VBoxNetAdp");
 #else
         strcpy(pGlobals->SupDrvFactory.szName, "VBoxNetFlt");
