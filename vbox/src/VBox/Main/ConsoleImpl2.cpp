@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22338 2009-08-19 09:54:32Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22345 2009-08-19 13:01:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2694,8 +2694,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
             const char *pszTrunk = szTrunkName;
 
-
-            /* TODO: set the proper Trunk and Network values, currently the driver uses the first adapter instance */
             rc = CFGMR3InsertInteger(pCfg, "TrunkType", kIntNetTrunkType_NetAdp);   RC_CHECK();
             rc = CFGMR3InsertString(pCfg, "Trunk", pszTrunk);                       RC_CHECK();
             rc = CFGMR3InsertString(pCfg, "Network", szNetwork);                    RC_CHECK();
