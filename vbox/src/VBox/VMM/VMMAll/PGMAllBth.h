@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 19833 2009-05-19 15:12:25Z vboxsync $ */
+/* $Id: PGMAllBth.h 19835 2009-05-19 15:20:37Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -921,6 +921,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
  *          trouble.
  * @remark  No TLB shootdown is done on any other VCPU as we assume that
  *          invlpg emulation is the *only* reason for calling this function.
+ *          (The guest has to shoot down TLB entries on other CPUs itself)
  *          Currently true, but keep in mind!
  *
  * @todo    Flush page or page directory only if necessary!
