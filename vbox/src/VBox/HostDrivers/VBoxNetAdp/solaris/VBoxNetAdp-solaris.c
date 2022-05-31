@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-solaris.c 17803 2009-03-13 10:39:08Z vboxsync $ */
+/* $Id: VBoxNetAdp-solaris.c 21909 2009-07-31 09:51:33Z vboxsync $ */
 /** @file
  * VBoxNetAdapter - Network Adapter Driver (Host), Solaris Specific Code.
  */
@@ -22,10 +22,6 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#if defined(DEBUG_ramshankar) && !defined(LOG_ENABLED)
-# define LOG_ENABLED
-#endif
-
 #define LOG_GROUP LOG_GROUP_NET_ADP_DRV
 #include <VBox/log.h>
 #include <VBox/err.h>
@@ -62,6 +58,13 @@
 /** The module descriptions as seen in 'modinfo'. */
 #define DEVICE_DESC_DRV          "VirtualBox NetAdp"
 #define VBOXNETADP_MTU           1500
+
+#if defined(DEBUG_ramshankar)
+# undef Log
+# define Log        LogRel
+# undef LogFlow
+# define LogFlow    LogRel
+#endif
 
 static int VBoxNetAdpSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t enmCmd);
 static int VBoxNetAdpSolarisDetach(dev_info_t *pDip, ddi_detach_cmd_t enmCmd);
@@ -230,11 +233,23 @@ int _init(void)
     int rc = RTR0Init(0);
     if (RT_SUCCESS(rc))
     {
+        /*
+         * Create the release logger instance.
+         */
+        static const char *const s_apszGroups[] = VBOX_LOGGROUP_NAMES;
+        PRTLOGGER pRelLogger;
+        rc = RTLogCreate(&pRelLogger, 0 /* fFlags */, "all", "VBOX_RELEASE_LOG", RT_ELEMENTS(s_apszGroups), s_apszGroups,
+                        RTLOGDEST_STDOUT | RTLOGDEST_DEBUGGER, NULL);
+        if (RT_SUCCESS(rc))
+            RTLogRelSetDefaultInstance(pRelLogger);
+
         rc = mod_install(&g_VBoxNetAdpSolarisModLinkage);
         if (!rc)
             return rc;
 
         LogRel((DEVICE_NAME ":mod_install failed. rc=%d\n", rc));
+        RTLogDestroy(RTLogRelSetDefaultInstance(NULL));
+        RTLogDestroy(RTLogSetDefaultInstance(NULL));
         RTR0Term();
     }
     else
@@ -252,6 +267,8 @@ int _fini(void)
     /*
      * Undo the work done during start (in reverse order).
      */
+    RTLogDestroy(RTLogRelSetDefaultInstance(NULL));
+    RTLogDestroy(RTLogSetDefaultInstance(NULL));
     RTR0Term();
 
     return mod_remove(&g_VBoxNetAdpSolarisModLinkage);
