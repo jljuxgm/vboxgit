@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 23408 2009-09-29 14:48:42Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 23410 2009-09-29 14:54:48Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1057,7 +1057,7 @@ static int drvHostBaseOpen(PDRVHOSTBASE pThis, PRTFILE pFileBlockDevice, PRTFILE
         RTFileClose(*pFileBlockDevice);
     }
     else
-        LogRel(("DVD: failed to open device %s rc=%Rrc\n", pThis->pszRawDeviceOpen, rc));
+        LogRel(("DVD: failed to open device %s rc=%Rrc\n", pThis->pszDeviceOpen, rc));
     return rc;
 }
 #endif  /* RT_OS_SOLARIS */
