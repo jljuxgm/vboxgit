@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 20801 2009-06-23 00:10:32Z vboxsync $ */
+/* $Id: dbgmod.h 21046 2009-06-30 01:11:28Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -399,8 +399,8 @@ typedef struct RTDBGMODINT
 typedef RTDBGMODINT *PRTDBGMODINT;
 
 
-extern DECLHIDDEN(RTSTRCACHE) g_hDbgModStrCache;
-
+extern DECLHIDDEN(RTSTRCACHE)           g_hDbgModStrCache;
+extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgNm;
 
 int rtDbgModContainerCreate(PRTDBGMODINT pMod, RTUINTPTR cbSeg);
 
