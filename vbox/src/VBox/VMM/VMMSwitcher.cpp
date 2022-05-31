@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 20479 2009-06-11 19:06:40Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -988,7 +988,7 @@ VMMR3DECL(RTR0PTR) VMMR3GetHostToGuestSwitcher(PVM pVM, VMMSWITCHER enmSwitcher)
         ||  enmSwitcher >= VMMSWITCHER_MAX)
     {
         AssertMsgFailed(("Invalid input enmSwitcher=%d\n", enmSwitcher));
-        return VERR_INVALID_PARAMETER;
+        return (RTR0PTR)0;
     }
 
     /*
