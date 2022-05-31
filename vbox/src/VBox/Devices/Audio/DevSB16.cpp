@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 12978 2008-10-03 23:28:44Z vboxsync $ */
+/* $Id: DevSB16.cpp 18497 2009-03-29 02:20:28Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1360,10 +1360,11 @@ static int write_audio (SB16State *s, int nchan, int dma_pos,
         int left = dma_len - dma_pos;
 #ifndef VBOX
         int copied;
+        size_t to_copy;
 #else
         uint32_t copied;
+        uint32_t to_copy;
 #endif
-        size_t to_copy;
 
         to_copy = audio_MIN (temp, left);
         if (to_copy > sizeof (tmpbuf)) {
