@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 19400 2009-05-05 21:49:16Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 19415 2009-05-06 08:39:40Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -608,7 +608,7 @@ VMMDECL(int) TMVirtualResume(PVM pVM)
         pVM->tm.s.fVirtualSyncTicking       = true;
         return VINF_SUCCESS;
     }
-    AssertReturn(pVM->tm.s.cVirtualTicking < pVM->cCPUs, VERR_INTERNAL_ERROR);
+    AssertMsgReturn(pVM->tm.s.cVirtualTicking <= pVM->cCPUs, ("%d vs %d\n", pVM->tm.s.cVirtualTicking, pVM->cCPUs), VERR_INTERNAL_ERROR);
     return VINF_SUCCESS;
 }
 
@@ -632,7 +632,7 @@ VMMDECL(int) TMVirtualPause(PVM pVM)
         pVM->tm.s.fVirtualSyncTicking   = false;
         return VINF_SUCCESS;
     }
-    AssertReturn(pVM->tm.s.cVirtualTicking < pVM->cCPUs, VERR_INTERNAL_ERROR);
+    AssertMsgReturn(pVM->tm.s.cVirtualTicking <= pVM->cCPUs, ("%d vs %d\n", pVM->tm.s.cVirtualTicking, pVM->cCPUs), VERR_INTERNAL_ERROR);
     return VINF_SUCCESS;
 }
 
