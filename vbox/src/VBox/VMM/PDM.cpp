@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: PDM.cpp 23145 2009-09-18 20:58:30Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1023,10 +1023,12 @@ VMMR3DECL(void) PDMR3Reset(PVM pVM)
  * attached drivers about the VM now being reset.
  *
  * @param   pVM     VM Handle.
+ * @thread  EMT(0)
  */
 VMMR3DECL(void) PDMR3Suspend(PVM pVM)
 {
     LogFlow(("PDMR3Suspend:\n"));
+    VM_ASSERT_EMT0(pVM);
 
     /*
      * Iterate the device instances.

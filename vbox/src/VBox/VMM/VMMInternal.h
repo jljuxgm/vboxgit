@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 21653 2009-07-16 15:18:07Z vboxsync $ */
+/* $Id: VMMInternal.h 23145 2009-09-18 20:58:30Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -287,6 +287,8 @@ typedef struct VMM
 
     /** @name EMT Rendezvous
      * @{ */
+    /** Semaphore to wait on upon entering ordered execution. */
+    R3PTRTYPE(PRTSEMEVENT)      pahEvtRendezvousEnterOrdered;
     /** Semaphore to wait on upon entering for one-by-one execution. */
     RTSEMEVENT                  hEvtRendezvousEnterOneByOne;
     /** Semaphore to wait on upon entering for all-at-once execution. */
