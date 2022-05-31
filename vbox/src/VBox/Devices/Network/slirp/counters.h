@@ -1,4 +1,4 @@
-/** $Id: counters.h 22400 2009-08-24 05:23:05Z vboxsync $ */
+/** $Id: counters.h 22401 2009-08-24 05:56:23Z vboxsync $ */
 /** @file
  * Counters macro invocation template.
  *
@@ -23,10 +23,10 @@
  * additional information or have any questions.
  */
 
-#if !defined(PROFILE_COUNTER) && !(DRV_PROFILE_COUNTER)
+#if !defined(PROFILE_COUNTER) && !defined(DRV_PROFILE_COUNTER)
 # error (DRV_)PROFILE_COUNTER is not defied
 #endif
-#if !defined(COUNTING_COUNTER) && !(DRV_COUNTING_COUNTER)
+#if !defined(COUNTING_COUNTER) && !defined(DRV_COUNTING_COUNTER)
 # error (DRV_)COUNTING_COUNTER is not defined
 #endif
 
