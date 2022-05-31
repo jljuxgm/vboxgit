@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 18450 2009-03-28 03:38:02Z vboxsync $ */
+/* $Id: SUPLib.cpp 18761 2009-04-06 14:11:49Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -359,7 +359,6 @@ SUPR3DECL(int) SUPR3Init(PSUPDRVSESSION *ppSession)
 
         suplibOsTerm(&g_supLibData);
     }
-    AssertMsgFailed(("SUPR3Init() failed rc=%Rrc\n", rc));
     g_cInits--;
 
     return rc;
