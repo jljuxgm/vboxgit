@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21090 2009-06-30 17:49:55Z vboxsync $
+# $Id: Makefile.kmk 21138 2009-07-01 17:20:15Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -112,7 +112,7 @@ endif # xpcom
 # Strip documentation from source XIDL so that we don't get a full
 # recompile every time a comma in the documentation is changed.
 #
-$(VBOX_XIDL_FILE).ts |+ $(VBOX_XIDL_FILE): \
+$(VBOX_XIDL_FILE).ts +| $(VBOX_XIDL_FILE): \
 		$(VBOX_XIDL_FILE_SRC) \
 		$(VBOX_PATH_MAIN_SRC)/idl/docstrip.xsl \
 		| $$(dir $$@)
