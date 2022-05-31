@@ -1,4 +1,4 @@
-/* $Id: semspinmutex-r0drv-generic.c 21548 2009-07-13 16:27:56Z vboxsync $ */
+/* $Id: semspinmutex-r0drv-generic.c 21554 2009-07-13 16:50:08Z vboxsync $ */
 /** @file
  * IPRT - Spinning Mutex Semaphores, Ring-0 Driver, Generic.
  */
@@ -400,7 +400,7 @@ RTDECL(int) RTSemSpinMutexRelease(RTSEMSPINMUTEX hSpinMtx)
 
     cLockers = ASMAtomicDecS32(&pThis->cLockers);
     rtSemSpinMutexLeave(&State);
-    if (cLockers > 0)
+    if (cLockers >= 0)
     {
         int rc = RTSemEventSignal(pThis->hEventSem);
         AssertReleaseMsg(RT_SUCCESS(rc), ("RTSemEventSignal -> %Rrc\n", rc));
