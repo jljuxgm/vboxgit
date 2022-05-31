@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemption.cpp 19970 2009-05-24 16:22:00Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.cpp 21541 2009-07-13 14:51:42Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -37,7 +37,6 @@
 #include <iprt/time.h>
 #include <iprt/string.h>
 #include <VBox/sup.h>
-#include <VBox/x86.h>
 #include "tstR0ThreadPreemption.h"
 
 
@@ -83,7 +82,7 @@ DECLEXPORT(int) TSTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint
             RTThreadPreemptDisable(&State);
             if (RTThreadPreemptIsEnabled(NIL_RTTHREAD))
                 RTStrPrintf(pszErr, cchErr, "!RTThreadPreemptIsEnabled returns true after RTThreadPreemptDisable");
-            else if (!(ASMGetFlags() & X86_EFL_IF))
+            else if (!ASMIntAreEnabled())
                 RTStrPrintf(pszErr, cchErr, "!Interrupts disabled");
             RTThreadPreemptRestore(&State);
             break;
@@ -95,7 +94,7 @@ DECLEXPORT(int) TSTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint
             RTThreadPreemptDisable(&State);
             if (!RTThreadPreemptIsEnabled(NIL_RTTHREAD))
             {
-                if (ASMGetFlags() & X86_EFL_IF)
+                if (ASMIntAreEnabled())
                 {
                     uint64_t    u64StartSysTS = RTTimeSystemNanoTS();
                     uint64_t    u64StartTS    = RTTimeNanoTS();
