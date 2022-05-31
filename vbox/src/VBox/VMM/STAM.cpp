@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 19707 2009-05-14 17:36:11Z vboxsync $ */
+/* $Id: STAM.cpp 20681 2009-06-18 11:07:17Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -1794,6 +1794,7 @@ VMMR3DECL(const char *) STAMR3GetUnit(STAMUNIT enmUnit)
         case STAMUNIT_PAGES:                return "pages";
         case STAMUNIT_ERRORS:               return "errors";
         case STAMUNIT_OCCURENCES:           return "times";
+        case STAMUNIT_TICKS:                return "ticks";
         case STAMUNIT_TICKS_PER_CALL:       return "ticks/call";
         case STAMUNIT_TICKS_PER_OCCURENCE:  return "ticks/time";
         case STAMUNIT_GOOD_BAD:             return "good:bad";
