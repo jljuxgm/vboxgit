@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 18337 2009-03-26 18:12:06Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 18396 2009-03-27 14:06:29Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -103,6 +103,8 @@ int handleImportAppliance(HandlerArg *a)
              || (strThisArg == "-n")
            )
             fExecute = false;
+        else if (strThisArg == "--detailed-progress")
+            g_fDetailedProgress = true;
         else if (strThisArg == "-vsys")
         {
             if (++i < a->argc)
