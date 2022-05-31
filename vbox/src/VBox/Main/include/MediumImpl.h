@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 18275 2009-03-25 19:18:22Z vboxsync $ */
+/* $Id: MediumImpl.h 18313 2009-03-26 13:59:14Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -142,7 +142,7 @@ protected:
     virtual Utf8Str name();
 
     virtual HRESULT setLocation (CBSTR aLocation);
-    virtual HRESULT queryInfo(bool fWrite);
+    virtual HRESULT queryInfo();
 
     /**
      * Performs extra checks if the medium can be closed and returns S_OK in
