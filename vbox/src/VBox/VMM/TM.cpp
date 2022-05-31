@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 19660 2009-05-13 14:09:15Z vboxsync $ */
+/* $Id: TM.cpp 19669 2009-05-13 17:25:52Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -1652,8 +1652,6 @@ static DECLCALLBACK(void) tmR3TimerCallback(PRTTIMER pTimer, void *pvUser, uint6
 {
     PVM     pVM      = (PVM)pvUser;
     PVMCPU  pVCpuDst = &pVM->aCpus[pVM->tm.s.idTimerCpu];
-
-RTLogFlush(NULL);
 
     AssertCompile(TMCLOCK_MAX == 4);
 #ifdef DEBUG_Sander /* very annoying, keep it private. */
