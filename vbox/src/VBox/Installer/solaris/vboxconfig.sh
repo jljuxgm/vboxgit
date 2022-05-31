@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 22123 2009-08-10 09:55:47Z vboxsync $
+# $Id: vboxconfig.sh 22227 2009-08-13 10:02:08Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -130,7 +130,7 @@ check_root()
 {
     idbin=/usr/xpg4/bin/id
     if test ! -x "$idbin"; then
-        found=`which id`
+        found=`which id 2> /dev/null`
         if test ! -x "$found"; then
             errorprint "Failed to find a suitable user id executable."
             exit 1
