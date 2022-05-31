@@ -1,4 +1,4 @@
-/* $Rev: 21408 $ */
+/* $Rev: 21613 $ */
 /** @file
  * VBoxGuest - Inter Driver Communcation, unix implementation.
  *
@@ -22,6 +22,12 @@
  * Some lines of code to disable the local APIC on x86_64 machines taken
  * from a Mandriva patch by Gwenole Beauchesne <gbeauchesne@mandriva.com>.
  */
+
+
+/** @todo Use some header that we have in common with VBoxGuestLib.h... */
+DECLVBGL(void *) VBoxGuestIDCOpen(uint32_t *pu32Version);
+DECLVBGL(int) VBoxGuestIDCClose(void *pvSession);
+DECLVBGL(int) VBoxGuestIDCCall(void *pvSession, unsigned iCmd, void *pvData, size_t cbData, size_t *pcbDataReturned);
 
 
 /**
