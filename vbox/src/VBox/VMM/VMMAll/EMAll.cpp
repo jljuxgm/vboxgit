@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 21174 2009-07-02 15:45:46Z vboxsync $ */
+/* $Id: EMAll.cpp 22037 2009-08-06 15:27:25Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1984,7 +1984,7 @@ VMMDECL(int) EMInterpretCpuId(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
     /* cpuid clears the high dwords of the affected 64 bits registers. */
     pRegFrame->rax = 0;
     pRegFrame->rbx = 0;
-    pRegFrame->rcx = 0;
+    pRegFrame->rcx &= UINT64_C(0x00000000ffffffff);
     pRegFrame->rdx = 0;
 
     /* Note: operates the same in 64 and non-64 bits mode. */
