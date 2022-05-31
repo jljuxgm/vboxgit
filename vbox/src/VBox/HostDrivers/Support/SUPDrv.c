@@ -1,4 +1,4 @@
-/* $Revision: 20860 $ */
+/* $Revision: 20982 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -979,7 +979,7 @@ static DECLCALLBACK(int) supdrvSessionObjHandleRetain(RTHANDLETABLE hHandleTable
 {
     NOREF(pvCtx);
     NOREF(hHandleTable);
-    return SUPR0ObjAddRef(pvObj, (PSUPDRVSESSION)pvUser);
+    return SUPR0ObjAddRefEx(pvObj, (PSUPDRVSESSION)pvUser, true /*fNoBlocking*/);
 }
 
 
