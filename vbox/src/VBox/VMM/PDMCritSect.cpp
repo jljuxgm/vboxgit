@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 18532 2009-03-30 12:01:20Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 19439 2009-05-06 15:04:30Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -311,21 +311,6 @@ VMMR3DECL(void) PDMR3CritSectFF(PVM pVM)
 
     pVM->pdm.s.cQueuedCritSectLeaves = 0;
     VM_FF_CLEAR(pVM, VM_FF_PDM_CRITSECT);
-}
-
-
-/**
- * Try enter a critical section.
- *
- * @returns VINF_SUCCESS on success.
- * @returns VERR_SEM_BUSY if the critsect was owned.
- * @returns VERR_SEM_NESTED if nested enter on a no nesting section. (Asserted.)
- * @returns VERR_SEM_DESTROYED if RTCritSectDelete was called while waiting.
- * @param   pCritSect   The critical section.
- */
-VMMR3DECL(int) PDMR3CritSectTryEnter(PPDMCRITSECT pCritSect)
-{
-    return RTCritSectTryEnter(&pCritSect->s.Core);
 }
 
 
