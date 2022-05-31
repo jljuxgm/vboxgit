@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22533 2009-08-27 15:31:47Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22537 2009-08-27 16:23:10Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2723,6 +2723,11 @@ static int pgmPoolTrackAddUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, uint16_t iUse
     paUsers[i].iUser = iUser;
     paUsers[i].iUserTable = iUserTable;
     pPage->iUserHead = i;
+
+#  ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
+    if (pPage->fDirty)
+        pgmPoolFlushDirtyPage(pPool->CTX_SUFF(pVM), pPool, pPage->idxDirty, true /* force removal */);
+#  endif
 
 #  ifdef PGMPOOL_WITH_CACHE
     /*
