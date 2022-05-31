@@ -1,4 +1,4 @@
-/* $Id: vbox.c 22548 2009-08-28 11:10:39Z vboxsync $ */
+/* $Id: vbox.c 22592 2009-08-31 11:03:56Z vboxsync $ */
 /** @file
  * Display - VirtualBox Win 2000/XP guest display driver, support functions.
  */
@@ -369,12 +369,20 @@ static BOOL vboxVBVAInformHost (PPDEV ppdev, BOOL bEnable)
 
             pEnable->u32Flags  = bEnable? VBVA_F_ENABLE: VBVA_F_DISABLE;
             pEnable->u32Offset = ppdev->layout.offVBVABuffer;
+            pEnable->i32Result = VERR_NOT_SUPPORTED;
 
             vboxHGSMIBufferSubmit (ppdev, p);
 
-            HGSMIHeapFree (&ppdev->hgsmiDisplayHeap, p);
+            if (bEnable)
+            {
+                bRc = RT_SUCCESS(pEnable->i32Result);
+            }
+            else
+            {
+                bRc = TRUE;
+            }
 
-            bRc = TRUE;
+            HGSMIHeapFree (&ppdev->hgsmiDisplayHeap, p);
         }
     }
 
