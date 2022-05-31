@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 21533 2009-07-13 14:39:34Z vboxsync $ */
+/* $Id: critsect-generic.cpp 23718 2009-10-13 12:36:13Z vboxsync $ */
 /** @file
  * IPRT - Critical Section, Generic.
  */
@@ -314,12 +314,10 @@ RTDECL(int) RTCritSectEnterDebug(PRTCRITSECT pCritSect, const char *pszFile, uns
                 pCritSect->cNestings++;
                 return VINF_SUCCESS;
             }
-            else
-            {
-                AssertMsgFailed(("Nested entry of critsect %p\n", pCritSect));
-                ASMAtomicDecS32(&pCritSect->cLockers);
-                return VERR_SEM_NESTED;
-            }
+
+            AssertBreakpoint(); /* don't do normal assertion here, the logger uses this code too. */
+            ASMAtomicDecS32(&pCritSect->cLockers);
+            return VERR_SEM_NESTED;
         }
 
         for (;;)
