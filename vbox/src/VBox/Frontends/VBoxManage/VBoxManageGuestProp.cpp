@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 22913 2009-09-10 12:46:36Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 22914 2009-09-10 13:04:42Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -458,8 +458,7 @@ static int handleWaitGuestProperty(HandlerArg *a)
         return 1;
     }
     a->virtualBox->RegisterCallback(callback);
-    RTTIMESPEC tmStarted, tmNow;
-    RTTimeNow (&tmStarted);
+    uint64_t u64Started = RTTimeMilliTS();
     do {
       int vrc = com::EventQueue::getMainEventQueue()->processEventQueue(300);
       if (RT_FAILURE(vrc) && vrc != VERR_TIMEOUT)
@@ -467,13 +466,9 @@ static int handleWaitGuestProperty(HandlerArg *a)
           RTPrintf("Error waiting for event: %Rrc\n", vrc);
           return 1;
       }
-      if (cMsTimeout != RT_INDEFINITE_WAIT)
-      {
-        RTTimeNow(&tmNow);
-        RTTimeSpecSub(&tmNow, &tmStarted);
-        if (RTTimeSpecGetMilli(&tmNow) >= cMsTimeout)
+      if (cMsTimeout != RT_INDEFINITE_WAIT &&
+          RTTimeMilliTS() - u64Started >= cMsTimeout)
             break;
-      }
     } while  (!cbImpl->Signalled());
 
     a->virtualBox->UnregisterCallback(callback);
