@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 23053 2009-09-16 08:42:56Z vboxsync $ */
+/* $Id: VBoxTray.h 23055 2009-09-16 09:30:30Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -39,6 +39,7 @@
 #define WM_VBOX_RESTORED                WM_APP + 1
 #define WM_VBOX_CHECK_VRDP              WM_APP + 2
 #define WM_VBOX_CHECK_HOSTVERSION       WM_APP + 3
+#define WM_VBOX_TRAY                    WM_APP + 4
 
 #define ID_TRAYICON                     2000
 
