@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22683 2009-09-01 17:53:07Z vboxsync $
+# $Id: Makefile.kmk 22777 2009-09-04 13:10:12Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -186,13 +186,8 @@ endif
 RuntimeR3_INCS          = \
 	include \
 	$(SDK_VBOX_ZLIB_INCS)
-ifdef VBOX_WITH_NEW_LIBLZF
 RuntimeR3_INCS         += \
 	$(PATH_ROOT)/src/libs/liblzf-3.4
-else
-RuntimeR3_INCS         += \
-	$(PATH_ROOT)/src/libs/liblzf-1.51
-endif
 ifdef IPRT_WITH_KSTUFF
  RuntimeR3_INCS        += \
 	$(PATH_ROOT)/src/libs/kStuff/kStuff/include

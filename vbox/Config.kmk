@@ -1,4 +1,4 @@
-# $Id: Config.kmk 22630 2009-09-01 07:52:33Z vboxsync $
+# $Id: Config.kmk 22777 2009-09-04 13:10:12Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -503,8 +503,6 @@ if1of ($(KBUILD_TARGET), darwin linux solaris win)
   VBOX_WITH_NETADP = 1
  endif
 endif
-# Use the new version of liblzf. Remove with the old liblzf.
-VBOX_WITH_NEW_LIBLZF = 1
 
 ## For experimenting with disabling preemption instead of interrupts
 # when working VT-x/AMD-V in VMMR0.
@@ -3790,7 +3788,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 22630 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 22777 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
