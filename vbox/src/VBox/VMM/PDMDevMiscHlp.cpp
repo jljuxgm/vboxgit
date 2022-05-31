@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 20835 2009-06-23 13:55:08Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 20876 2009-06-24 06:23:02Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -165,6 +165,10 @@ static DECLCALLBACK(void) pdmR3ApicHlp_SetInterruptFF(PPDMDEVINS pDevIns, PDMAPI
         break;
     case PDMAPICIRQ_SMI:
         VMCPU_FF_SET(pVCpu, VMCPU_FF_INTERRUPT_SMI);
+        break;
+    case PDMAPICIRQ_INVALID:
+    case PDMAPICIRQ_32BIT_HACK:
+        AssertFailed();
         break;
     }
     REMR3NotifyInterruptSet(pVM, pVCpu);
