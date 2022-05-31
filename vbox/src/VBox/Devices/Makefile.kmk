@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20580 2009-06-15 09:21:50Z vboxsync $
+# $Id: Makefile.kmk 20958 2009-06-26 05:32:39Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -675,9 +675,7 @@ ifdef VBOX_WITH_FAULT_INJECTION
 Drivers_DEFS      += VBOX_WITH_FAULT_INJECTION
 endif
 
-ifndef VBOX_OSE
 VBOX_WITH_SLIRP_ALIAS=1
-endif
 Drivers_INCS      := \
 	$(PATH_SUB_CURRENT) \
 	Network/slirp
