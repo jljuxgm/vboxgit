@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 22052 2009-08-07 09:45:48Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 22069 2009-08-07 13:18:04Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -618,7 +618,11 @@ int rtR0MemObjNativeEnterPhys(PPRTR0MEMOBJINTERNAL ppMem, RTHCPHYS Phys, size_t 
                                                                              kIODirectionInOut, NULL /*task*/);
         if (pMemDesc)
         {
-            Assert(Phys == pMemDesc->getPhysicalAddress());
+#ifdef __LP64__ /* Grumble! */
+            Assert(Phys == pMemDesc->getPhysicalSegment(0, 0));
+#else
+            Assert(Phys == pMemDesc->getPhysicalSegment64(0, 0));
+#endif
 
             /*
              * Create the IPRT memory object.
