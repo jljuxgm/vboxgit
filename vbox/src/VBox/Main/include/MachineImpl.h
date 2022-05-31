@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: MachineImpl.h 23599 2009-10-07 17:24:18Z vboxsync $ */
 
 /** @file
  *
@@ -232,7 +232,10 @@ public:
                     mNameSync == that.mNameSync &&
                     mDescription == that.mDescription &&
                     mOSTypeId == that.mOSTypeId &&
-                    mSnapshotFolderFull == that.mSnapshotFolderFull);
+                    mSnapshotFolderFull == that.mSnapshotFolderFull &&
+                    mLiveMigrationTarget == that.mLiveMigrationTarget &&
+                    mLiveMigrationPort == that.mLiveMigrationPort &&
+                    mLiveMigrationPassword == that.mLiveMigrationPassword);
         }
 
         Bstr    mName;
@@ -241,6 +244,9 @@ public:
         Bstr    mOSTypeId;
         Bstr    mSnapshotFolder;
         Bstr    mSnapshotFolderFull;
+        BOOL    mLiveMigrationTarget;
+        ULONG   mLiveMigrationPort;
+        Bstr    mLiveMigrationPassword;
     };
 
     /**
@@ -559,6 +565,12 @@ public:
     STDMETHOD(COMGETTER(GuestPropertyNotificationPatterns))(BSTR *aPattern);
     STDMETHOD(COMSETTER(GuestPropertyNotificationPatterns))(IN_BSTR aPattern);
     STDMETHOD(COMGETTER(StorageControllers))(ComSafeArrayOut(IStorageController *, aStorageControllers));
+    STDMETHOD(COMGETTER(LiveMigrationTarget))(BOOL *aEnabled);
+    STDMETHOD(COMSETTER(LiveMigrationTarget))(BOOL aEnabled);
+    STDMETHOD(COMGETTER(LiveMigrationPort))(ULONG *aPort);
+    STDMETHOD(COMSETTER(LiveMigrationPort))(ULONG aPort);
+    STDMETHOD(COMGETTER(LiveMigrationPassword))(BSTR *aPassword);
+    STDMETHOD(COMSETTER(LiveMigrationPassword))(IN_BSTR aPassword);
 
     // IMachine methods
     STDMETHOD(SetBootOrder)(ULONG aPosition, DeviceType_T aDevice);
