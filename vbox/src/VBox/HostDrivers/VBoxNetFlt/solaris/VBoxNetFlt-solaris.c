@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 19640 2009-05-12 15:23:21Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 19884 2009-05-21 15:03:12Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1216,7 +1216,7 @@ static int vboxNetFltSolarisSetFastMode(queue_t *pQueue)
  * @param   fPromisc        Whether to enable promiscous mode or not.
  * @param   PromiscLevel    Promiscous level; DL_PROMISC_PHYS/SAP/MULTI.
  *
- * @returns VBox error code.
+ * @returns VBox status code.
  */
 static int vboxNetFltSolarisPromiscReq(queue_t *pQueue, bool fPromisc)
 {
