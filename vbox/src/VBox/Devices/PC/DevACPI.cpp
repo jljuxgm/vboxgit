@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 19007 2009-04-18 08:07:59Z vboxsync $ */
+/* $Id: DevACPI.cpp 19606 2009-05-12 11:11:55Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1854,6 +1854,10 @@ static DECLCALLBACK(int) acpiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Failed to read \"ShowCpu\""));
+
+    /* Always show the CPU leafs when we have multiple VCPUs. */
+    if (s->cCpus > 1)
+        s->fShowCpu = true;
 
     rc = CFGMR3QueryBool(pCfgHandle, "GCEnabled", &fGCEnabled);
     if (rc == VERR_CFGM_VALUE_NOT_FOUND)
