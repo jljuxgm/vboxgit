@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 20102 2009-05-27 17:11:01Z vboxsync $ */
+/* $Id: dir-posix.cpp 20111 2009-05-28 00:34:52Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -106,15 +106,6 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode)
     }
     LogFlow(("RTDirCreate(%p={%s}, %RTfmode): returns %Rrc\n", pszPath, pszPath, fMode, rc));
     return rc;
-}
-
-
-RTDECL(int) RTDirCreateTemp(char *pszTemplate)
-{
-    if (mkdtemp(pszTemplate))
-        return VINF_SUCCESS;
-
-    return RTErrConvertFromErrno(errno);
 }
 
 
