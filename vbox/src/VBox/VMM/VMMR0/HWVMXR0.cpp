@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 18770 2009-04-06 15:00:15Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 18781 2009-04-06 15:51:30Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2932,7 +2932,6 @@ ResumeExecution:
             pCtx->rip += cbInstr;
             goto ResumeExecution;
         }
-        AssertMsgFailed(("EMU: rdpmc failed with %Rrc\n", rc));
         rc = VINF_EM_RAW_EMULATE_INSTR;
         break;
     }
@@ -2949,7 +2948,6 @@ ResumeExecution:
             pCtx->rip += cbInstr;
             goto ResumeExecution;
         }
-        AssertMsgFailed(("EMU: rdtsc failed with %Rrc\n", rc));
         rc = VINF_EM_RAW_EMULATE_INSTR;
         break;
     }
