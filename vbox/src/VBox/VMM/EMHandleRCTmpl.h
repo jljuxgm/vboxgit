@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 21222 2009-07-05 14:26:09Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 21653 2009-07-16 15:18:07Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hwaccm]HandleRC template.
  */
@@ -218,6 +218,10 @@ int emR3HwaccmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
          */
         case VINF_EM_RAW_EMULATE_IO_BLOCK:
             rc = HWACCMR3EmulateIoBlock(pVM, pCtx);
+            break;
+
+        case VINF_EM_HWACCM_PATCH_TPR_INSTR:
+            rc = HWACCMR3PatchTprInstr(pVM, pVCpu, pCtx);
             break;
 #endif
 

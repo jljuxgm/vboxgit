@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 21196 2009-07-03 12:57:21Z vboxsync $ */
+/* $Id: VMMR0.cpp 21653 2009-07-16 15:18:07Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -466,6 +466,9 @@ static void vmmR0RecordRC(PVM pVM, PVMCPU pVCpu, int rc)
             break;
         case VINF_EM_PENDING_REQUEST:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPendingRequest);
+            break;
+        case VINF_EM_HWACCM_PATCH_TPR_INSTR:
+            STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPatchTPR);
             break;
         default:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetMisc);
