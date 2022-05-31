@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 20747 2009-06-21 20:23:22Z vboxsync $ */
+/* $Id: REMAll.cpp 20749 2009-06-21 20:57:37Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -46,20 +46,32 @@
  */
 VMMDECL(int) REMNotifyInvalidatePage(PVM pVM, RTGCPTR GCPtrPage)
 {
-    if (    pVM->rem.s.cInvalidatedPages < RT_ELEMENTS(pVM->rem.s.aGCPtrInvalidatedPages)
-        &&  EMTryEnterRemLock(pVM) == VINF_SUCCESS) /* if this fails, then we'll just flush the tlb as we don't want to waste time here. */
+    /*
+     * Try take the REM lock and push the address onto the array.
+     */
+    if (   pVM->rem.s.cInvalidatedPages < RT_ELEMENTS(pVM->rem.s.aGCPtrInvalidatedPages)
+        && EMTryEnterRemLock(pVM) == VINF_SUCCESS)
     {
-        /*
-         * We sync them back in REMR3State.
-         */
-        pVM->rem.s.aGCPtrInvalidatedPages[pVM->rem.s.cInvalidatedPages++] = GCPtrPage;
+        uint32_t iPage = pVM->rem.s.cInvalidatedPages;
+        if (iPage < RT_ELEMENTS(pVM->rem.s.aGCPtrInvalidatedPages))
+        {
+            ASMAtomicWriteU32(&pVM->rem.s.cInvalidatedPages, iPage + 1);
+            pVM->rem.s.aGCPtrInvalidatedPages[iPage] = GCPtrPage;
+
+            EMRemUnlock(pVM);
+            return VINF_SUCCESS;
+        }
+
+        CPUMSetChangedFlags(VMMGetCpu(pVM), CPUM_CHANGED_GLOBAL_TLB_FLUSH); /** @todo this should be flagged globally, not locally! ... this array should be per-cpu technically speaking. */
+        ASMAtomicWriteU32(&pVM->rem.s.cInvalidatedPages, 0); /** @todo leave this alone? Optimize this code? */
+
         EMRemUnlock(pVM);
     }
     else
     {
-        /* Tell the recompiler to flush its TLB. */
+        /* Fallback: Simply tell the recompiler to flush its TLB. */
         CPUMSetChangedFlags(VMMGetCpu(pVM), CPUM_CHANGED_GLOBAL_TLB_FLUSH);
-        pVM->rem.s.cInvalidatedPages = 0;
+        ASMAtomicWriteU32(&pVM->rem.s.cInvalidatedPages, 0); /** @todo leave this alone?! Optimize this code? */
     }
 
     return VINF_SUCCESS;

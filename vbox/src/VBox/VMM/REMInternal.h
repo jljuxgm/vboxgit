@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 20747 2009-06-21 20:23:22Z vboxsync $ */
+/* $Id: REMInternal.h 20749 2009-06-21 20:57:37Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -164,7 +164,7 @@ typedef struct REM
     uint32_t                u32PendingInterrupt;
 
     /** Number of recorded invlpg instructions. */
-    uint32_t                cInvalidatedPages;
+    uint32_t volatile       cInvalidatedPages;
 #if HC_ARCH_BITS == 32
     uint32_t                uPadding2;
 #endif
