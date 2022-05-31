@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 20096 2009-05-27 15:36:30Z vboxsync $ */
+/* $Id: PDMDriver.cpp 20167 2009-06-01 20:25:54Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1012,14 +1012,15 @@ static DECLCALLBACK(VMSTATE) pdmR3DrvHlp_VMState(PPDMDRVINS pDrvIns)
 #ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
 /** @copydoc PDMDRVHLP::pfnPDMAsyncCompletionTemplateCreate */
 static DECLCALLBACK(int) pdmR3DrvHlp_PDMAsyncCompletionTemplateCreate(PPDMDRVINS pDrvIns, PPPDMASYNCCOMPLETIONTEMPLATE ppTemplate,
-                                                                      PFNPDMASYNCCOMPLETEDRV pfnCompleted, const char *pszDesc)
+                                                                      PFNPDMASYNCCOMPLETEDRV pfnCompleted, void *pvTemplateUser,
+                                                                      const char *pszDesc)
 {
     PDMDRV_ASSERT_DRVINS(pDrvIns);
     VM_ASSERT_EMT(pDrvIns->Internal.s.pVM);
     LogFlow(("pdmR3DrvHlp_PDMAsyncCompletionTemplateCreate: caller='%s'/%d: ppTemplate=%p pfnCompleted=%p pszDesc=%p:{%s}\n",
              pDrvIns->pDrvReg->szDriverName, pDrvIns->iInstance, ppTemplate, pfnCompleted, pszDesc, pszDesc));
 
-    int rc = PDMR3AsyncCompletionTemplateCreateDriver(pDrvIns->Internal.s.pVM, pDrvIns, ppTemplate, pfnCompleted, pszDesc);
+    int rc = PDMR3AsyncCompletionTemplateCreateDriver(pDrvIns->Internal.s.pVM, pDrvIns, ppTemplate, pfnCompleted, pvTemplateUser, pszDesc);
 
     LogFlow(("pdmR3DrvHlp_PDMAsyncCompletionTemplateCreate: caller='%s'/%d: returns %Rrc *ppThread=%p\n", pDrvIns->pDrvReg->szDriverName,
              pDrvIns->iInstance, rc, *ppTemplate));

@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 19624 2009-05-12 13:49:50Z vboxsync $ */
+/* $Id: Builtins.h 20167 2009-06-01 20:25:54Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -119,20 +119,11 @@ extern const PDMDRVREG g_DrvHostSerial;
 extern const PDMUSBREG g_UsbDevProxy;
 #endif
 
-#ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
-extern const PDMDRVREG g_DrvRawImageAsync;
-extern const PDMDRVREG g_DrvTransportAsync;
-#endif
-
 #ifdef VBOX_WITH_SCSI
 extern const PDMDRVREG g_DrvSCSI;
 #if defined(RT_OS_LINUX)
 extern const PDMDRVREG g_DrvSCSIHost;
 #endif
-#endif
-
-#ifdef VBOX_WITH_FAULT_INJECTION
-extern const PDMDRVREG g_DrvFaultInject;
 #endif
 
 __END_DECLS

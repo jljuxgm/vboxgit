@@ -1,4 +1,4 @@
-/* $Id: Builtins.cpp 19968 2009-05-24 12:14:19Z vboxsync $ */
+/* $Id: Builtins.cpp 20167 2009-06-01 20:25:54Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -275,15 +275,6 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
         return rc;
 #endif
 
-#if defined(VBOX_WITH_PDM_ASYNC_COMPLETION)
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvRawImageAsync);
-    if (RT_FAILURE(rc))
-        return rc;
-
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvTransportAsync);
-    if (RT_FAILURE(rc))
-        return rc;
-#endif
 #ifdef VBOX_WITH_SCSI
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvSCSI);
     if (RT_FAILURE(rc))
@@ -294,12 +285,6 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (RT_FAILURE(rc))
         return rc;
 #endif
-#endif
-
-#ifdef VBOX_WITH_FAULT_INJECTION
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvFaultInject);
-    if (RT_FAILURE(rc))
-        return rc;
 #endif
 
     return VINF_SUCCESS;
