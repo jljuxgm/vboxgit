@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 20167 2009-06-01 20:25:54Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 20639 2009-06-16 16:02:57Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -4503,6 +4503,10 @@ static int vmdkCreate(const char *pszFilename, uint64_t cbSize,
         || strchr(pszFilename, '"')
         || !VALID_PTR(pPCHSGeometry)
         || !VALID_PTR(pLCHSGeometry)
+#ifndef VBOX_WITH_VMDK_ESX
+        || (    uImageFlags & VD_VMDK_IMAGE_FLAGS_ESX
+            &&  !(uImageFlags & VD_IMAGE_FLAGS_FIXED))
+#endif
         || (   (uImageFlags & VD_VMDK_IMAGE_FLAGS_STREAM_OPTIMIZED)
             && (uImageFlags & ~(VD_VMDK_IMAGE_FLAGS_STREAM_OPTIMIZED | VD_IMAGE_FLAGS_DIFF))))
     {
