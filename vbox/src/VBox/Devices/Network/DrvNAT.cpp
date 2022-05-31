@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 22250 2009-08-14 02:08:14Z vboxsync $ */
+/* $Id: DrvNAT.cpp 22251 2009-08-14 02:14:56Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -969,7 +969,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandl
                               " queue", "/Drivers/NAT%u/QueuePacketDropped", pDrvIns->iInstance);
         PDMDrvHlpSTAMRegisterF(pDrvIns, &pThis->StatConsumerFalse, STAMTYPE_COUNTER,
                               STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "counting PDM consumer false"
-                              " queue", "/Drivers/NAT%u/QueuePacketDropped", pDrvIns->iInstance);
+                              " queue", "/Drivers/NAT%u/PDMConsumerFalse", pDrvIns->iInstance);
 #endif
 
         int rc2 = drvNATConstructRedir(pDrvIns->iInstance, pThis, pCfgHandle, Network);
