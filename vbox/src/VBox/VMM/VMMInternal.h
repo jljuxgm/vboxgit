@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 20533 2009-06-13 20:56:16Z vboxsync $ */
+/* $Id: VMMInternal.h 20545 2009-06-13 23:56:48Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -169,6 +169,15 @@ typedef struct VMMR0JMPBUF
     RTHCUINTREG                 SavedEsp;
     /** EBP/RBP at the time of the jump to ring 3. */
     RTHCUINTREG                 SavedEbp;
+
+    /** Stats: Max amount of stack used. */
+    uint32_t                    cbUsedMax;
+    /** Stats: Average stack usage. (Avg = cbUsedTotal / cUsedTotal) */
+    uint32_t                    cbUsedAvg;
+    /** Stats: Total amount of stack used. */
+    uint64_t                    cbUsedTotal;
+    /** Stats: Number of stack usages. */
+    uint64_t                    cUsedTotal;
 } VMMR0JMPBUF;
 /** Pointer to a ring-0 jump buffer. */
 typedef VMMR0JMPBUF *PVMMR0JMPBUF;
