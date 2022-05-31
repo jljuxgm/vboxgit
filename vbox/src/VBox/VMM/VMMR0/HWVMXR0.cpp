@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 22050 2009-08-07 08:16:30Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 22051 2009-08-07 09:24:09Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1425,7 +1425,6 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         VMX_WRITE_SELREG(DS, ds);
         AssertRC(rc);
 
-        /* The base values in the hidden fs & gs registers are not in sync with the msrs; they are cut to 32 bits. */
         VMX_WRITE_SELREG(FS, fs);
         AssertRC(rc);
 
