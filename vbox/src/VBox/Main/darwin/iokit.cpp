@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 16401 2009-01-30 00:54:43Z vboxsync $ */
+/* $Id: iokit.cpp 18260 2009-03-25 14:04:13Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -762,7 +762,7 @@ static bool darwinIsMassStorageInterfaceInUse(io_object_t MSDObj, io_name_t pszN
  * @param   USBDevice   The USB device object.
  * @param   PropsRef    The USB device properties.
  */
-static void darwinDeterminUSBDeviceState(PUSBDEVICE pCur, io_object_t USBDevice, CFMutableDictionaryRef PropsRef)
+static void darwinDeterminUSBDeviceState(PUSBDEVICE pCur, io_object_t USBDevice, CFMutableDictionaryRef /* PropsRef */)
 {
     /*
      * Iterate the interfaces (among the children of the IOUSBDevice object).
