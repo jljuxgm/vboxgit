@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 18719 2009-04-05 13:48:16Z vboxsync $ */
+/* $Id: MMHyper.cpp 18800 2009-04-07 10:16:27Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -86,12 +86,14 @@ int mmR3HyperInit(PVM pVM)
            of safe with existing configs here (HMA size must not change)... */
         uint64_t cbRam;
         CFGMR3QueryU64Def(CFGMR3GetRoot(pVM), "RamSize", &cbRam, 0);
+#if 0 /* MMUkHeap takes care of this now...*/
         if (cbRam > _2G)
         {
             cbRam = RT_MIN(cbRam, _1T);
             cbHyperHeap += (cbRam - _1G) / _1M * 128; /* 128 is a quick guess */
             cbHyperHeap = RT_ALIGN_32(cbHyperHeap, _64K);
         }
+#endif
     }
     else
         AssertLogRelRCReturn(rc, rc);
