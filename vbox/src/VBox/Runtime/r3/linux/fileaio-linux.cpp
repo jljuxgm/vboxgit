@@ -1,4 +1,4 @@
-/* $Id: fileaio-linux.cpp 19185 2009-04-26 09:04:33Z vboxsync $ */
+/* $Id: fileaio-linux.cpp 19346 2009-05-05 00:39:14Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Linux host platform.
  */
@@ -501,7 +501,7 @@ RTDECL(uint32_t) RTFileAioCtxGetMaxReqCount(RTFILEAIOCTX hAioCtx)
     return pCtxInt->cRequestsMax;
 }
 
-RTDECL(int) RTFileAioCtxAssociateWithFile(RTFILEAIOCTS hAioCtx, RTFILE hFile)
+RTDECL(int) RTFileAioCtxAssociateWithFile(RTFILEAIOCTX hAioCtx, RTFILE hFile)
 {
     /* Nothing to do. */
     return VINF_SUCCESS;
