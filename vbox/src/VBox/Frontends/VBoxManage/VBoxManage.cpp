@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 20294 2009-06-04 16:24:07Z vboxsync $ */
+/* $Id: VBoxManage.cpp 20313 2009-06-05 11:00:32Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -461,10 +461,16 @@ static int handleStartVM(HandlerArg *a)
                     sessionType = "vrdp";
                 }
 #endif
+#ifdef VBOX_WITH_HEADLESS
                 else if (!RTStrICmp(ValueUnion.psz, "capture"))
                 {
                     sessionType = "capture";
                 }
+                else if (!RTStrICmp(ValueUnion.psz, "headless"))
+                {
+                    sessionType = "headless";
+                }
+#endif
                 else
                     return errorArgument("Invalid session type '%s'", ValueUnion.psz);
                 break;

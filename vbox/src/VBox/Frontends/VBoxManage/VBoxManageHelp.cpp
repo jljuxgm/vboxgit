@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 20054 2009-05-27 06:57:32Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 20313 2009-06-05 11:00:32Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -258,8 +258,10 @@ void printUsage(USAGECATEGORY u64Cmd)
     if (u64Cmd & USAGE_STARTVM)
     {
         RTPrintf("VBoxManage startvm          <uuid>|<name>\n");
+        RTPrintf("                            [--type gui");
         if (fVRDP)
-            RTPrintf("                            [--type gui|vrdp]\n");
+            RTPrintf(                         "|vrdp");
+        RTPrintf(                             "|headless]\n");
         RTPrintf("\n");
     }
 
