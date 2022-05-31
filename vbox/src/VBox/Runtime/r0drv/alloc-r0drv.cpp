@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.cpp 22052 2009-08-07 09:45:48Z vboxsync $ */
+/* $Id: alloc-r0drv.cpp 22125 2009-08-10 11:22:03Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver.
  */
@@ -128,7 +128,7 @@ RT_EXPORT_SYMBOL(RTMemTmpFree);
 RTDECL(void *)  RTMemAlloc(size_t cb) RT_NO_THROW
 {
     PRTMEMHDR pHdr;
-    RT_ASSERT_PREEMPTIBLE();
+    RT_ASSERT_INTS_ON();
 
     pHdr = rtMemAlloc(cb + RTR0MEM_FENCE_EXTRA, 0);
     if (pHdr)
@@ -158,7 +158,7 @@ RT_EXPORT_SYMBOL(RTMemAlloc);
 RTDECL(void *)  RTMemAllocZ(size_t cb) RT_NO_THROW
 {
     PRTMEMHDR pHdr;
-    RT_ASSERT_PREEMPTIBLE();
+    RT_ASSERT_INTS_ON();
 
     pHdr = rtMemAlloc(cb + RTR0MEM_FENCE_EXTRA, RTMEMHDR_FLAG_ZEROED);
     if (pHdr)
@@ -273,7 +273,7 @@ RTDECL(void *)    RTMemExecAlloc(size_t cb) RT_NO_THROW
 {
     PRTMEMHDR pHdr;
     RT_ASSERT_PREEMPTIBLE();
-        
+
     pHdr = rtMemAlloc(cb + RTR0MEM_FENCE_EXTRA, RTMEMHDR_FLAG_EXEC);
     if (pHdr)
     {
