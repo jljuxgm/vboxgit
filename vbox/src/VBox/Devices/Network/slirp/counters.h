@@ -1,4 +1,4 @@
-/** $Id: counters.h 20453 2009-06-10 01:41:54Z vboxsync $ */
+/** $Id: counters.h 20454 2009-06-10 03:59:34Z vboxsync $ */
 /** @file
  * Counters definitions and declarations
  */
@@ -68,3 +68,6 @@ COUNTING_COUTER(IOSBAppendSB_w_alter, "SB: AppendSB (altering of sb_wptr)");
 
 PROFILE_COUNTER(TCP_reassamble, "TCP::reasamble");
 PROFILE_COUNTER(TCP_input, "TCP::input");
+
+COUNTING_COUTER(DrvNAT_package_sent, "counting package sent via PDM queue");
+COUNTING_COUTER(DrvNAT_package_drop, "counting package drops by PDM queue");
