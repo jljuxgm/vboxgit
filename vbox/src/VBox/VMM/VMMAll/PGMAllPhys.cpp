@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 19180 2009-04-24 18:34:55Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -178,13 +178,13 @@ VMMDECL(bool) PGMPhysIsGCPhysNormal(PVM pVM, RTGCPHYS GCPhys)
  */
 VMMDECL(int) PGMPhysGCPhys2HCPhys(PVM pVM, RTGCPHYS GCPhys, PRTHCPHYS pHCPhys)
 {
+    pgmLock(pVM);
     PPGMPAGE pPage;
     int rc = pgmPhysGetPageEx(&pVM->pgm.s, GCPhys, &pPage);
-    if (RT_FAILURE(rc))
-        return rc;
-
-    *pHCPhys = PGM_PAGE_GET_HCPHYS(pPage) | (GCPhys & PAGE_OFFSET_MASK);
-    return VINF_SUCCESS;
+    if (RT_SUCCESS(rc))
+        *pHCPhys = PGM_PAGE_GET_HCPHYS(pPage) | (GCPhys & PAGE_OFFSET_MASK);
+    pgmUnlock(pVM);
+    return rc;
 }
 
 
