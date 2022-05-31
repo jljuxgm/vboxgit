@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 19910 2009-05-22 12:31:50Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 19913 2009-05-22 14:38:45Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2890,7 +2890,7 @@ ResumeExecution:
         if (exitQualification & VMX_EXIT_QUALIFICATION_EPT_ENTRY_PRESENT)
             errCode |= X86_TRAP_PF_P;
 
-        Log(("EPT Page fault %x at %RGp error code %x\n", (uint32_t)exitQualification, GCPhys, errCode));
+        LogFlow(("EPT Page fault %x at %RGp error code %x\n", (uint32_t)exitQualification, GCPhys, errCode));
 
         /* GCPhys contains the guest physical address of the page fault. */
         TRPMAssertTrap(pVCpu, X86_XCPT_PF, TRPM_TRAP);
