@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 19682 2009-05-14 10:15:44Z vboxsync $ */
+/* $Id: PGMAll.cpp 19790 2009-05-18 14:10:49Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -727,7 +727,9 @@ VMMDECL(int) PGMInvalidatePage(PVMCPU pVCpu, RTGCPTR GCPtrPage)
      * Call paging mode specific worker.
      */
     STAM_PROFILE_START(&pVCpu->pgm.s.CTX_MID_Z(Stat,InvalidatePage), a);
+    pgmLock(pVM);
     rc = PGM_BTH_PFN(InvalidatePage, pVCpu)(pVCpu, GCPtrPage);
+    pgmUnlock(pVM);
     STAM_PROFILE_STOP(&pVCpu->pgm.s.CTX_MID_Z(Stat,InvalidatePage), a);
 
 #ifdef IN_RING3

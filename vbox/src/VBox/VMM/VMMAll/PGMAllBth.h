@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 19789 2009-05-18 14:04:07Z vboxsync $ */
+/* $Id: PGMAllBth.h 19790 2009-05-18 14:10:49Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -931,6 +931,8 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
     int rc;
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
+
+    Assert(PGMIsLockOwner(pVM));
 
     LogFlow(("InvalidatePage %RGv\n", GCPtrPage));
     /*
