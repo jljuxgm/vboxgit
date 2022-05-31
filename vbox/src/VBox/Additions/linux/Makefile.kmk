@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23006 2009-09-14 14:08:16Z vboxsync $
+# $Id: Makefile.kmk 23043 2009-09-15 20:23:44Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -71,7 +71,7 @@ VBOX_LNX_ADD_STRIP_BIN = \
 	vboxvideo_drv_15.so \
 	vboxvideo_drv_16.so \
 	vboxvideo_drv_17.so \
-	mountvboxsf \
+	mount.vboxsf \
 	VBoxOGLarrayspu.so \
 	VBoxOGLcrutil.so \
 	VBoxOGLerrorspu.so \

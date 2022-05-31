@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21412 2009-07-08 21:18:57Z vboxsync $
+# $Id: Makefile.kmk 23043 2009-09-15 20:23:44Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxvfs (linux shared folders module).
 #
@@ -22,7 +22,7 @@
 SUB_DEPTH = ../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
 
-PROGRAMS += mountvboxsf
+PROGRAMS += mount.vboxsf
 INSTALLS += vboxvfs-mod vboxvfs-sh
 ifdef VBOX_WITH_ADDITION_DRIVERS
  SYSMODS += vboxvfs
@@ -86,9 +86,9 @@ vboxvfs_DEFS           += $(foreach inc,$(VBOX_LINUX_INCS),\
 #
 # The mount util.
 #
-mountvboxsf_TEMPLATE    = VBOXGUESTR3EXE
-mountvboxsf_DEFS        = _GNU_SOURCE
-mountvboxsf_SOURCES     = \
+mount.vboxsf_TEMPLATE    = VBOXGUESTR3EXE
+mount.vboxsf_DEFS        = _GNU_SOURCE
+mount.vboxsf_SOURCES     = \
 	mount.vboxsf.c
 
 
