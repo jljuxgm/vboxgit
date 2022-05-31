@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 18291 2009-03-26 05:11:07Z vboxsync $ */
+/* $Id: PGMMap.cpp 18747 2009-04-06 11:21:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -689,6 +689,7 @@ VMMR3DECL(int) PGMR3MappingsUnfix(PVM pVM)
     pVM->pgm.s.fMappingsFixed    = false;
     pVM->pgm.s.GCPtrMappingFixed = 0;
     pVM->pgm.s.cbMappingFixed    = 0;
+    VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
     return VINF_SUCCESS;
 }
 
