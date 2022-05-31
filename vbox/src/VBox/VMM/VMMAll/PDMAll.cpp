@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 20056 2009-05-27 07:33:15Z vboxsync $ */
+/* $Id: PDMAll.cpp 20654 2009-06-17 09:31:56Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -257,11 +257,12 @@ VMMDECL(int) PDMApicGetTPR(PVMCPU pVCpu, uint8_t *pu8TPR, bool *pfPending)
     if (pVM->pdm.s.Apic.CTX_SUFF(pDevIns))
     {
         Assert(pVM->pdm.s.Apic.CTX_SUFF(pfnGetTPR));
-        pdmLock(pVM);
+        /* We don't acquire the PDM lock here as we're just reading information. Doing so causes massive
+         * contention as this function is called very often by each and every VCPU. 
+         */
         *pu8TPR = pVM->pdm.s.Apic.CTX_SUFF(pfnGetTPR)(pVM->pdm.s.Apic.CTX_SUFF(pDevIns), pVCpu->idCpu);
         if (pfPending)
             *pfPending = pVM->pdm.s.Apic.CTX_SUFF(pfnHasPendingIrq)(pVM->pdm.s.Apic.CTX_SUFF(pDevIns));
-        pdmUnlock(pVM);
         return VINF_SUCCESS;
     }
     *pu8TPR = 0;
