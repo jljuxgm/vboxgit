@@ -1,4 +1,4 @@
-/* $Id: process.cpp 18989 2009-04-17 13:01:30Z vboxsync $ */
+/* $Id: process.cpp 18997 2009-04-17 15:22:25Z vboxsync $ */
 /** @file
  * IPRT - Process, Common.
  */
@@ -46,17 +46,6 @@
 # include <unistd.h>
 #endif
 
-#if !defined (RT_OS_OS2) && !defined(RT_OS_WINDOWS)
-# include <pthread.h>
-#endif
-
-#if !defined (RT_OS_OS2) && !defined(RT_OS_WINDOWS)
-/** Update the cached pid on fork on posix systems */
-static void rtProcPThreadAtFork(void)
-{
-    g_ProcessSelf = getpid();
-}
-#endif
 
 /**
  * Get the identifier for the current process.
@@ -70,11 +59,6 @@ RTDECL(RTPROCESS) RTProcSelf(void)
         return Self;
 
     /* lazy init. */
-#if !defined (RT_OS_OS2) && !defined(RT_OS_WINDOWS)
-    /* Update the cached pid on fork on posix systems */
-    if (pthread_atfork(NULL, NULL, rtProcPThreadAtFork) != 0)
-        return 0;
-#endif
 #ifdef _MSC_VER
     Self = _getpid(); /* crappy ansi compiler */
 #else
