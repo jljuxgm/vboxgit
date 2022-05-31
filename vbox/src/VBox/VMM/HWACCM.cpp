@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 23553 2009-10-05 11:38:47Z vboxsync $ */
+/* $Id: HWACCM.cpp 23638 2009-10-09 11:20:10Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1166,6 +1166,8 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                 LogRel(("HWACCM:    AMD_CPUID_SVM_FEATURE_EDX_NRIP_SAVE\n"));
             if (pVM->hwaccm.s.svm.u32Features & AMD_CPUID_SVM_FEATURE_EDX_SSE_3_5_DISABLE)
                 LogRel(("HWACCM:    AMD_CPUID_SVM_FEATURE_EDX_SSE_3_5_DISABLE\n"));
+            if (pVM->hwaccm.s.svm.u32Features & AMD_CPUID_SVM_FEATURE_EDX_PAUSE_FILTER)
+                LogRel(("HWACCM:    AMD_CPUID_SVM_FEATURE_EDX_PAUSE_FILTER\n"));           
 
             /* Only try once. */
             pVM->hwaccm.s.fInitialized = true;
