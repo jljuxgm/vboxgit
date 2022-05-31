@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 23515 2009-10-02 13:41:20Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 23566 2009-10-05 16:07:34Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -745,7 +745,7 @@ static int hwaccmR0DisableCpu(RTCPUID idCpu)
     Assert(!pCpu->fConfigured || pCpu->pMemObj);
 
     if (!pCpu->pMemObj)
-        return VERR_NO_MEMORY;
+        return (pCpu->fConfigured) ? VERR_NO_MEMORY : VINF_SUCCESS /* not initialized. */;
 
     pvPageCpu    = RTR0MemObjAddress(pCpu->pMemObj);
     pPageCpuPhys = RTR0MemObjGetPagePhysAddr(pCpu->pMemObj, 0);
