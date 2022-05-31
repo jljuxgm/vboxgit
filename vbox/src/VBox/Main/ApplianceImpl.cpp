@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 21438 2009-07-09 12:35:16Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 21439 2009-07-09 12:58:12Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1097,6 +1097,8 @@ HRESULT Appliance::HandleVirtualSystemContent(const char *pcszPath,
                         // 123456789012345
                         if (i.strHostResource.substr(0, 11) == "ovf://disk/")
                             vd.strDiskId = i.strHostResource.substr(11);
+                        else if (i.strHostResource.substr(0, 10) == "ovf:/disk/")
+                            vd.strDiskId = i.strHostResource.substr(10);
                         else if (i.strHostResource.substr(0, 6) == "/disk/")
                             vd.strDiskId = i.strHostResource.substr(6);
 
