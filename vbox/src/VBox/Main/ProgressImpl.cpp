@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 18277 2009-03-25 19:40:58Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 18306 2009-03-26 11:57:52Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -858,7 +858,7 @@ HRESULT Progress::setNextOperation(CBSTR bstrNextOperationDescription, ULONG ulN
     m_ulCurrentOperationWeight = ulNextOperationsWeight;
     m_ulOperationPercent = 0;
 
-    Log(("Progress::setNextOperation(%ls): ulNextOperationsWeight = %d; m_ulCurrentOperation is now %d, m_ulOperationsCompletedWeightis now %d\n",
+    Log(("Progress::setNextOperation(%ls): ulNextOperationsWeight = %d; m_ulCurrentOperation is now %d, m_ulOperationsCompletedWeight is now %d\n",
          m_bstrOperationDescription.raw(), ulNextOperationsWeight, m_ulCurrentOperation, m_ulOperationsCompletedWeight));
 
     /* wake up all waiting threads */
