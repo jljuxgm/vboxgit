@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 20871 2009-06-24 01:56:19Z vboxsync $ */
+/* $Id: VMMRZ.cpp 20872 2009-06-24 01:58:42Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -126,11 +126,15 @@ VMMRZDECL(void) VMMRZCallRing3Disable(PVMCPU pVCpu)
     Assert(pVCpu->vmm.s.cCallRing3Disabled < 16);
     if (++pVCpu->vmm.s.cCallRing3Disabled == 1)
     {
+        /** @todo it might make more sense to just disable logging here, then we
+         * won't flush away important bits... but that goes both ways really. */
 #ifdef IN_RC
         pVCpu->pVMRC->vmm.s.fRCLoggerFlushingDisabled = true;
 #else
+# ifdef LOG_ENABLED
         if (pVCpu->vmm.s.pR0LoggerR0)
             pVCpu->vmm.s.pR0LoggerR0->fFlushingDisabled = true;
+# endif
 #endif
     }
 }
@@ -151,8 +155,10 @@ VMMRZDECL(void) VMMRZCallRing3Enable(PVMCPU pVCpu)
 #ifdef IN_RC
         pVCpu->pVMRC->vmm.s.fRCLoggerFlushingDisabled = false;
 #else
+# ifdef LOG_ENABLED
         if (pVCpu->vmm.s.pR0LoggerR0)
             pVCpu->vmm.s.pR0LoggerR0->fFlushingDisabled = false;
+# endif
 #endif
     }
 }
