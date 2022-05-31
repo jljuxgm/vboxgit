@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 20337 2009-06-05 14:23:07Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 20514 2009-06-12 13:27:04Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -4508,8 +4508,10 @@ STDMETHODIMP Machine::Export(IAppliance *aAppliance, IVirtualSystemDescription *
 
         // this is more tricky so use the COM method
         rc = COMGETTER(USBController)(pUsbController.asOutParam());
-        if (FAILED(rc)) throw rc;
-        rc = pUsbController->COMGETTER(Enabled)(&fUSBEnabled);
+        if (FAILED(rc))
+            fUSBEnabled = false;
+        else
+            rc = pUsbController->COMGETTER(Enabled)(&fUSBEnabled);
 
         pAudioAdapter = mAudioAdapter;
         rc = pAudioAdapter->COMGETTER(Enabled)(&fAudioEnabled);
