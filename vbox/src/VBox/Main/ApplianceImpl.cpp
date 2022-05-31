@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 22317 2009-08-18 10:29:29Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2440,7 +2440,7 @@ int Appliance::writeFS(TaskExportOVF *pTask)
                                 strDescription = "Number of virtual CPUs";
                                 type = OVFResourceType_Processor; // 3
                                 desc.strVbox.toInt(uTemp);
-                                lVirtualQuantity = uTemp;
+                                lVirtualQuantity = (int32_t)uTemp;
                                 strCaption = Utf8StrFmt("%d virtual CPU", lVirtualQuantity);     // without this ovftool won't eat the item
                             }
                         break;

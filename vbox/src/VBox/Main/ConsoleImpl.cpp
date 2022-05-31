@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 22317 2009-08-18 10:29:29Z vboxsync $ */
 
 /** @file
  *
@@ -4016,7 +4016,7 @@ HRESULT Console::getGuestProperty (IN_BSTR aName, BSTR *aValue,
             rc = setError (E_UNEXPECTED,
                 tr ("The service call failed with the error %Rrc"), vrc);
     }
-    catch(std::bad_alloc &e)
+    catch(std::bad_alloc & /*e*/)
     {
         rc = E_OUTOFMEMORY;
     }
