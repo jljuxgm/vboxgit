@@ -1,4 +1,4 @@
-/* $Id: cr_framebuffer.h 22156 2009-08-11 10:40:41Z vboxsync $ */
+/* $Id: cr_framebuffer.h 22363 2009-08-20 09:46:01Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: FBO related state info
@@ -68,6 +68,7 @@ typedef struct {
 
 DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectInit(CRContext *ctx);
 DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectDestroy(CRContext *ctx);
+DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectSwitch(CRContext *from, CRContext *to);
 
 DECLEXPORT(void) STATE_APIENTRY crStateBindRenderbufferEXT(GLenum target, GLuint renderbuffer);
 DECLEXPORT(void) STATE_APIENTRY crStateDeleteRenderbuffersEXT(GLsizei n, const GLuint *renderbuffers);

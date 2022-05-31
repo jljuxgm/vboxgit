@@ -1,4 +1,4 @@
-/* $Id: state_framebuffer.c 22155 2009-08-11 10:36:56Z vboxsync $ */
+/* $Id: state_framebuffer.c 22363 2009-08-20 09:46:01Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: EXT_framebuffer_object state tracking
@@ -513,4 +513,14 @@ DECLEXPORT(void) STATE_APIENTRY
 crStateGenerateMipmapEXT(GLenum target)
 {
     /*@todo*/
+}
+
+DECLEXPORT(void) STATE_APIENTRY
+crStateFramebufferObjectSwitch(CRContext *from, CRContext *to)
+{
+    if (to->framebufferobject.framebuffer!=from->framebufferobject.framebuffer)
+    {
+        diff_api.BindFramebufferEXT(GL_FRAMEBUFFER_EXT, to->framebufferobject.framebuffer?
+            to->framebufferobject.framebuffer->id:0);
+    }
 }
