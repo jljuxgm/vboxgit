@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 22989 2009-09-14 08:57:00Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 23062 2009-09-16 11:59:55Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1425,19 +1425,39 @@ static int vboxNetFltSolarisOpenDev(char *pszDev, vnode_t **ppVNode, vnode_t **p
     int rc;
     vnode_t *pVNodeHeld = NULL;
     rc = lookupname(pszDev, UIO_SYSSPACE, FOLLOW, NULLVPP, &pVNodeHeld);
-    if (!rc)
+    if (   !rc
+        && pVNodeHeld)
     {
         TIUSER *pUser;
         rc = t_kopen((file_t *)NULL, pVNodeHeld->v_rdev, FREAD | FWRITE, &pUser, kcred);
         if (!rc)
         {
-            *ppVNode = pUser->fp->f_vnode;
-            *ppVNodeHeld = pVNodeHeld;
-            *ppUser = pUser;
-            return VINF_SUCCESS;
+            if (   pUser
+                && pUser->fp
+                && pUser->fp->f_vnode)
+            {
+                *ppVNode = pUser->fp->f_vnode;
+                *ppVNodeHeld = pVNodeHeld;
+                *ppUser = pUser;
+                return VINF_SUCCESS;
+            }
+            else
+            {
+                LogRel((DEVICE_NAME ":vboxNetFltSolarisOpenDev failed. pUser=%p fp=%p f_vnode=%p\n", pUser, pUser ? pUser->fp : NULL,
+                                    pUser && pUser->fp ? pUser->fp->f_vnode : NULL));
+            }
+
+            if (pUser)
+                t_kclose(pUser, 0);
         }
+        else
+            LogRel((DEVICE_NAME ":vboxNetFltSolarisOpenDev t_kopen failed. rc=%d\n", rc));
+
         VN_RELE(pVNodeHeld);
     }
+    else
+        LogRel((DEVICE_NAME ":vboxNetFltSolarisOpenDev lookupname failed. rc=%d pVNodeHeld=%p\n", rc, pVNodeHeld));
+
     return VERR_PATH_NOT_FOUND;
 }
 
