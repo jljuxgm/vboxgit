@@ -1,4 +1,4 @@
-/* $Id: semspinmutex-r0drv-generic.c 21554 2009-07-13 16:50:08Z vboxsync $ */
+/* $Id: semspinmutex-r0drv-generic.c 21555 2009-07-13 16:51:25Z vboxsync $ */
 /** @file
  * IPRT - Spinning Mutex Semaphores, Ring-0 Driver, Generic.
  */
@@ -78,7 +78,7 @@ typedef struct RTSEMSPINMUTEXINTERNAL
     /** The owner thread.
      * This is NIL if the semaphore is not owned by anyone. */
     RTNATIVETHREAD volatile hOwner;
-    /** Number of threads waiting for the lock. */
+    /** Number of threads that are fighting for the lock. */
     int32_t volatile        cLockers;
     /** The semaphore to block on. */
     RTSEMEVENT              hEventSem;
@@ -125,7 +125,7 @@ RTDECL(int) RTSemSpinMutexCreate(PRTSEMSPINMUTEX phSpinMtx, uint32_t fFlags)
     pThis->u32Magic  = RTSEMSPINMUTEX_MAGIC;
     pThis->fFlags    = fFlags;
     pThis->hOwner    = NIL_RTNATIVETHREAD;
-    pThis->cLockers  = -1;
+    pThis->cLockers  = 0;
     rc = RTSemEventCreate(&pThis->hEventSem);
     if (RT_SUCCESS(rc))
     {
@@ -400,7 +400,7 @@ RTDECL(int) RTSemSpinMutexRelease(RTSEMSPINMUTEX hSpinMtx)
 
     cLockers = ASMAtomicDecS32(&pThis->cLockers);
     rtSemSpinMutexLeave(&State);
-    if (cLockers >= 0)
+    if (cLockers > 0)
     {
         int rc = RTSemEventSignal(pThis->hEventSem);
         AssertReleaseMsg(RT_SUCCESS(rc), ("RTSemEventSignal -> %Rrc\n", rc));
@@ -422,7 +422,7 @@ RTDECL(int) RTSemSpinMutexDestroy(RTSEMSPINMUTEX hSpinMtx)
     RTSEMSPINMUTEX_VALIDATE_RETURN(pThis);
 
     /* No destruction races allowed! */
-    AssertMsg(   pThis->cLockers  == -1
+    AssertMsg(   pThis->cLockers  == 0
               && pThis->hOwner    == NIL_RTNATIVETHREAD,
               ("pThis=%p cLockers=%d hOwner=%p\n", pThis, pThis->cLockers, pThis->hOwner));
 
