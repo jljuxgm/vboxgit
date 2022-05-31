@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 22169 2009-08-11 14:58:45Z vboxsync $ */
+/* $Id: PGMAllBth.h 22316 2009-08-18 09:52:53Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -799,6 +799,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
                             return VINF_EM_NO_MEMORY;
                     }
 
+#   if PGM_WITH_PAGING(PGM_GST_TYPE, PGM_SHW_TYPE)
                     /* Check to see if we need to emulate the instruction as X86_CR0_WP has been cleared. */
                     if (    CPUMGetGuestCPL(pVCpu, pRegFrame) == 0
                         &&  ((CPUMGetGuestCR0(pVCpu) & (X86_CR0_WP | X86_CR0_PG)) == X86_CR0_PG))
@@ -818,7 +819,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
                         }
                         AssertMsg(RT_SUCCESS(rc), ("Unexpected r/w page %RGv flag=%x rc=%Rrc\n", pvFault, (uint32_t)fPageGst, rc));
                     }
-
+#   endif
                     /// @todo count the above case; else
                     if (uErr & X86_TRAP_PF_US)
                         STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_MID_Z(Stat,PageOutOfSyncUser));
