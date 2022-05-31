@@ -1,4 +1,4 @@
-# $Id: Config.kmk 19761 2009-05-17 19:30:52Z vboxsync $
+# $Id: Config.kmk 19955 2009-05-24 00:44:48Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -935,6 +935,7 @@ ifndef VBOX_GCC_TOOL
  else ifeq ($(KBUILD_TARGET),solaris)
   VBOX_GCC_TOOL := GXX3PLAIN
   VBOX_GCC32_TOOL := GXX3PLAIN
+  TOOL_GXX3PLAIN_LD_SYSMOD ?= /usr/ccs/bin/ld
  else
   VBOX_GCC_TOOL := GXX3
   ifeq ($(KBUILD_TARGET_ARCH).$(KBUILD_HOST_ARCH),x86.amd64) ## @todo mixing target/host here!
@@ -3769,7 +3770,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 19761 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 19955 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
