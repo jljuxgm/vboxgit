@@ -1,4 +1,4 @@
-/* $Id: iprt.h 22052 2009-08-07 09:45:48Z vboxsync $ */
+/* $Id: iprt.h 22071 2009-08-07 14:10:54Z vboxsync $ */
 /** @file
  * IPRT - Internal header for miscellaneous global defs and types.
  */
@@ -51,6 +51,12 @@
 # define RT_EXPORT_SYMBOL(Name) extern int g_rtExportSymbolDummyVariable
 #endif
 
+
+/** @def RT_MORE_STRICT
+ * Enables more assertions in IPRT.  */
+#if !defined(RT_MORE_STRICT) && (defined(DEBUG) || defined(RT_STRICT) || defined(DOXYGEN_RUNNING))
+# define RT_MORE_STRICT
+#endif 
 
 /** @def RT_ASSERT_PREEMPT_CPUID_VAR
  * Partner to RT_ASSERT_PREEMPT_CPUID_VAR. Declares and initializes a variable 
