@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 19648 2009-05-13 09:05:14Z vboxsync $ */
 
 /** @file
  *
@@ -4270,13 +4270,17 @@ HRESULT Console::consoleInitReleaseLog (const ComPtr <IMachine> aMachine)
         if (RT_SUCCESS(vrc) || vrc == VERR_BUFFER_OVERFLOW)
             RTLogRelLogger(loggerRelease, 0, ~0U, "OS Service Pack: %s\n", szTmp);
         /* the package type is interesting for Linux distributions */
+        char szExecName[RTPATH_MAX];
+        char *pszExecName = RTProcGetExecutableName(szExecName, sizeof(szExecName));
         RTLogRelLogger(loggerRelease, 0, ~0U,
+                       "Executable: %s\n"
                        "Process ID: %u\n"
                        "Package type: %s"
 #ifdef VBOX_OSE
                        " (OSE)"
 #endif
                        "\n",
+                       pszExecName ? pszExecName : "unknown",
                        RTProcSelf(),
                        VBOX_PACKAGE_STRING);
 
