@@ -1,4 +1,4 @@
-/* $Id: tstVMMR0CallHost-1.cpp 18848 2009-04-08 16:28:35Z vboxsync $ */
+/* $Id: tstVMMR0CallHost-1.cpp 20543 2009-06-13 22:09:32Z vboxsync $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
@@ -38,8 +38,8 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-#ifdef RT_OS_DARWIN
-# define VMM_R0_SWITCH_STACK
+#if !defined(VMM_R0_SWITCH_STACK) && !defined(VMM_R0_NO_SWITCH_STACK)
+# error "VMM_R0_SWITCH_STACK or VMM_R0_NO_SWITCH_STACK has to be defined.
 #endif
 
 
