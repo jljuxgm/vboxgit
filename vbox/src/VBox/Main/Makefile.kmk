@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18681 2009-04-03 11:45:29Z vboxsync $
+# $Id: Makefile.kmk 18683 2009-04-03 12:12:27Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -728,7 +728,7 @@ $(VBOX_PATH_SDK)/bindings/mscom/python/samples/shellcommon.py $(VBOX_PATH_SDK)/b
            $(PATH_ROOT)/src/VBox/Frontends/VBoxShell/mscom/vboxshell.py
 	$(MKDIR) -p $(VBOX_PATH_SDK)/bindings/mscom/python/samples
 	$(CP) $(PATH_ROOT)/src/VBox/Frontends/VBoxShell/shellcommon.py $(VBOX_PATH_SDK)/bindings/mscom/python/samples/shellcommon.py
-	$(CP) $(PATH_ROOT)/src/VBox/Frontends/VBoxShell/mscom/vboxshell.py $(VBOX_PATH_SDK)/bindings/mscom/python/samples/shellcommon.py
+	$(CP) $(PATH_ROOT)/src/VBox/Frontends/VBoxShell/mscom/vboxshell.py $(VBOX_PATH_SDK)/bindings/mscom/python/samples/vboxshell.py
 
 #
 # Translation stuff
