@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 21227 2009-07-05 19:50:18Z vboxsync $ */
+/* $Id: VBoxTray.h 21229 2009-07-05 19:59:14Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -33,6 +33,8 @@
 
 #include <VBox/version.h>
 #include <VBox/Log.h>
+#include <VBox/VBoxGuest.h> /** @todo use the VbglR3 interface! */
+#include <VBox/VBoxGuestLib.h>
 
 #define WM_VBOX_RESTORED                     0x2005
 #define WM_VBOX_CHECK_VRDP                   0x2006
