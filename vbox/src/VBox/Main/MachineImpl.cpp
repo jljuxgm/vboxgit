@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22183 2009-08-11 17:00:33Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22186 2009-08-11 17:44:54Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -8455,7 +8455,7 @@ STDMETHODIMP SessionMachine::PushGuestProperty(IN_BSTR aName,
                                            aValue,
                                            aFlags);
     }
-    catch(std::bad_alloc &e)
+    catch(std::bad_alloc &)
     {
         return E_OUTOFMEMORY;
     }

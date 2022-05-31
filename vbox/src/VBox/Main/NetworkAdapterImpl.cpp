@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 22186 2009-08-11 17:44:54Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -992,7 +992,7 @@ HRESULT NetworkAdapter::saveSettings(settings::NetworkAdapter &data)
 
     data.ulLineSpeed = mData->mLineSpeed;
 
-    data.fTraceEnabled = mData->mTraceEnabled;
+    data.fTraceEnabled = !!mData->mTraceEnabled;
 
     data.strTraceFile = mData->mTraceFile;
 

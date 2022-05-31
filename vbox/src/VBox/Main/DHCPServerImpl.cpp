@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 22186 2009-08-11 17:44:54Z vboxsync $ */
 
 /** @file
  *
@@ -119,7 +119,7 @@ HRESULT DHCPServer::saveSettings(settings::DHCPServer &data)
     data.strNetworkName = mName;
     data.strIPAddress = m.IPAddress;
     data.strIPNetworkMask = m.networkMask;
-    data.fEnabled = m.enabled;
+    data.fEnabled = !!m.enabled;
     data.strIPLower = m.lowerIP;
     data.strIPUpper = m.upperIP;
 

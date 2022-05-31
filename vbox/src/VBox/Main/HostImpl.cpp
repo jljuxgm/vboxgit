@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: HostImpl.cpp 22186 2009-08-11 17:44:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -427,7 +427,7 @@ STDMETHODIMP Host::COMGETTER(DVDDrives) (ComSafeArrayOut(IHostDVDDrive *, aDrive
         SafeIfaceArray<IHostDVDDrive> array (list);
         array.detachTo(ComSafeArrayOutArg(aDrives));
     }
-    catch(std::bad_alloc &e)
+    catch(std::bad_alloc &)
     {
         rc = E_OUTOFMEMORY;
     }
@@ -497,7 +497,7 @@ STDMETHODIMP Host::COMGETTER(FloppyDrives) (ComSafeArrayOut(IHostFloppyDrive *, 
         SafeIfaceArray<IHostFloppyDrive> collection (list);
         collection.detachTo(ComSafeArrayOutArg(aDrives));
     }
-    catch(std::bad_alloc &e)
+    catch(std::bad_alloc &)
     {
         rc = E_OUTOFMEMORY;
     }
