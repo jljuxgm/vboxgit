@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18015 2009-03-17 12:17:09Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18024 2009-03-17 14:00:08Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3307,6 +3307,69 @@ STDMETHODIMP VirtualSystemDescription::GetDescription(ComSafeArrayOut(VirtualSys
         bstr.cloneTo(&sfaVboxValues[i]);
 
         bstr = vsde.strExtraConfig;
+        bstr.cloneTo(&sfaExtraConfigValues[i]);
+    }
+
+    sfaTypes.detachTo(ComSafeArrayOutArg(aTypes));
+    sfaRefs.detachTo(ComSafeArrayOutArg(aRefs));
+    sfaOrigValues.detachTo(ComSafeArrayOutArg(aOrigValues));
+    sfaVboxValues.detachTo(ComSafeArrayOutArg(aVboxValues));
+    sfaExtraConfigValues.detachTo(ComSafeArrayOutArg(aExtraConfigValues));
+
+    return S_OK;
+}
+
+/**
+ * Public method implementation.
+ * @return
+ */
+STDMETHODIMP VirtualSystemDescription::GetDescriptionByType(VirtualSystemDescriptionType_T aType,
+                                                            ComSafeArrayOut(VirtualSystemDescriptionType_T, aTypes),
+                                                            ComSafeArrayOut(BSTR, aRefs),
+                                                            ComSafeArrayOut(BSTR, aOrigValues),
+                                                            ComSafeArrayOut(BSTR, aVboxValues),
+                                                            ComSafeArrayOut(BSTR, aExtraConfigValues))
+{
+    if (ComSafeArrayOutIsNull(aTypes) ||
+        ComSafeArrayOutIsNull(aRefs) ||
+        ComSafeArrayOutIsNull(aOrigValues) ||
+        ComSafeArrayOutIsNull(aVboxValues) ||
+        ComSafeArrayOutIsNull(aExtraConfigValues))
+        return E_POINTER;
+
+    AutoCaller autoCaller(this);
+    CheckComRCReturnRC(autoCaller.rc());
+
+    AutoReadLock alock(this);
+
+    std::list<VirtualSystemDescriptionEntry*> vsd = findByType (aType);
+    ULONG c = (ULONG)vsd.size();
+    com::SafeArray<VirtualSystemDescriptionType_T> sfaTypes(c);
+    com::SafeArray<BSTR> sfaRefs(c);
+    com::SafeArray<BSTR> sfaOrigValues(c);
+    com::SafeArray<BSTR> sfaVboxValues(c);
+    com::SafeArray<BSTR> sfaExtraConfigValues(c);
+
+    list<VirtualSystemDescriptionEntry*>::const_iterator it;
+    size_t i = 0;
+    for (it = vsd.begin();
+         it != vsd.end();
+         ++it, ++i)
+    {
+        const VirtualSystemDescriptionEntry *vsde = (*it);
+
+        sfaTypes[i] = vsde->type;
+
+        Bstr bstr = vsde->strRef;
+        bstr.cloneTo(&sfaRefs[i]);
+
+        bstr = vsde->strOvf;
+        bstr.cloneTo(&sfaOrigValues[i]);
+
+        bstr = vsde->strVbox;
+        bstr.cloneTo(&sfaVboxValues[i]);
+
+        bstr = vsde->strExtraConfig;
         bstr.cloneTo(&sfaExtraConfigValues[i]);
     }
 
