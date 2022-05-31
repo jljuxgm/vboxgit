@@ -1,4 +1,4 @@
-/* $Id: alignmentchecks.h 20837 2009-06-23 13:58:21Z vboxsync $ */
+/* $Id: alignmentchecks.h 20848 2009-06-23 15:04:14Z vboxsync $ */
 /** @file
  * IPRT - Internal header for hacking alignment checks on x86 and AMD64.
  */
@@ -45,7 +45,6 @@
 
 #if defined(DEBUG) || defined(DOXYGEN_RUNNING)
 # include <iprt/asm.h>
-# include <iprt/stdint.h>
 
 RT_C_DECLS_BEGIN
 extern RTDATADECL(bool) g_fRTAlignmentChecks;
