@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 20875 2009-06-24 02:29:17Z vboxsync $ */
+/* $Id: VMMInternal.h 20992 2009-06-26 18:20:27Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -153,6 +153,18 @@ typedef struct VMMR0JMPBUF
     uint64_t                    r15;
     uint64_t                    rsp;
     uint64_t                    rip;
+# ifdef RT_OS_WINDOWS
+    uint128_t                   xmm6;
+    uint128_t                   xmm7;
+    uint128_t                   xmm8;
+    uint128_t                   xmm9;
+    uint128_t                   xmm10;
+    uint128_t                   xmm11;
+    uint128_t                   xmm12;
+    uint128_t                   xmm13;
+    uint128_t                   xmm14;
+    uint128_t                   xmm15;
+# endif
 #endif
     /** @} */
 
