@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 21037 2009-06-29 15:51:24Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 21038 2009-06-29 15:57:12Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -537,10 +537,12 @@ int handleCloneHardDisk(HandlerArg *a)
                 break;
 
             case 'F':   // --static
+            {
                 unsigned uDiskVariant = (unsigned)DiskVariant;
                 uDiskVariant |= HardDiskVariant_Fixed;
                 DiskVariant = (HardDiskVariant_T)uDiskVariant;
                 break;
+            }
 
             case 'E':   // --existing
                 fExisting = true;
