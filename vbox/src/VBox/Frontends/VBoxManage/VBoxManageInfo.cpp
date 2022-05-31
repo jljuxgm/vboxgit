@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 23559 2009-10-05 12:27:39Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 23561 2009-10-05 12:57:13Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -443,7 +443,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
 #endif
 
     /*
-     * Floppy.
+     * Storage Controllers and their attached Mediums.
      */
     com::SafeIfaceArray<IStorageController> storageCtls;
     CHECK_ERROR(machine, COMGETTER(StorageControllers)(ComSafeArrayAsOutParam (storageCtls)));
