@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 20021 2009-05-26 10:31:44Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 20134 2009-05-29 00:18:51Z vboxsync $ */
 
 /** @file
  *
@@ -6794,6 +6794,10 @@ static DECLCALLBACK(int) reconfigureHardDisks(PVM pVM, ULONG lInstance,
          * to be made generic based on the capabiliy flags when the new
          * HardDisk interface is merged.
          */
+        pLunL2 = CFGMR3GetChild(pLunL1, "AttachedDriver");
+        AssertReturn(pLunL2, VERR_INTERNAL_ERROR);
+
+        CFGMR3RemoveNode(pLunL2);
         rc = CFGMR3InsertNode (pLunL1, "AttachedDriver", &pLunL2);      RC_CHECK();
         rc = CFGMR3InsertString (pLunL2, "Driver", "TransportAsync");   RC_CHECK();
         /* The async transport driver has no config options yet. */
