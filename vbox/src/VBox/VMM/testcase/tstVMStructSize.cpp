@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 23056 2009-09-16 09:42:27Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 23366 2009-09-28 12:31:50Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -364,6 +364,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(HWACCM, vmx.msr.feature_ctrl, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCM, StatTPRPatchSuccess, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, StatEntry, 8);
+    CHECK_MEMBER_ALIGNMENT(HWACCMCPU, vmx.pVMCSPhys, sizeof(RTHCPHYS));
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, vmx.proc_ctls, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, Event.intInfo, 8);
 
