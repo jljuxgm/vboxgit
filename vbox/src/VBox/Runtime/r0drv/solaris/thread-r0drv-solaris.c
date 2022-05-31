@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 22150 2009-08-11 09:41:58Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -141,18 +141,20 @@ RTDECL(bool) RTThreadPreemptIsPossible(void)
 RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
 {
     AssertPtr(pState);
-    Assert(pState->uchDummy != 42);
-    pState->uchDummy = 42;
+    Assert(pState->u32Reserved == 0);
+    pState->u32Reserved = 42;
 
     kpreempt_disable();
+    RT_ASSERT_PREEMPT_CPUID_DISABLE(pState);
 }
 
 
 RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
 {
     AssertPtr(pState);
-    Assert(pState->uchDummy == 42);
-    pState->uchDummy = 0;
+    Assert(pState->u32Reserved == 42);
+    pState->u32Reserved = 0;
+    RT_ASSERT_PREEMPT_CPUID_RESTORE(pState);
 
     kpreempt_enable();
 }

@@ -1,4 +1,4 @@
-/* $Id: RTThreadPreemptDisable-r0drv-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: RTThreadPreemptDisable-r0drv-generic.cpp 22150 2009-08-11 09:41:58Z vboxsync $ */
 /** @file
  * IPRT - RTThreadPreemptDisable, Generic ring-0 driver implementation.
  */
@@ -41,8 +41,8 @@
 RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
 {
     AssertPtr(pState);
-    Assert(pState->uchDummy != 42);
-    pState->uchDummy = 42;
+    Assert(pState->u32Reserved == 0);
+    pState->u32Reserved = 42;
 }
 RT_EXPORT_SYMBOL(RTThreadPreemptDisable);
 

@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 21536 2009-07-13 14:49:39Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 22150 2009-08-11 09:41:58Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -168,6 +168,7 @@ RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
     Assert(KeGetCurrentIrql() <= DISPATCH_LEVEL);
 
     KeRaiseIrql(DISPATCH_LEVEL, &pState->uchOldIrql);
+    RT_ASSERT_PREEMPT_CPUID_DISABLE(pState);
 }
 
 
@@ -175,6 +176,7 @@ RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
 {
     AssertPtr(pState);
 
+    RT_ASSERT_PREEMPT_CPUID_RESTORE(pState);
     KeLowerIrql(pState->uchOldIrql);
     pState->uchOldIrql = 255;
 }

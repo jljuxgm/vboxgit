@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-freebsd.c 21536 2009-07-13 14:49:39Z vboxsync $ */
+/* $Id: thread-r0drv-freebsd.c 22150 2009-08-11 09:41:58Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 1), Ring-0 Driver, FreeBSD.
  */
@@ -142,19 +142,21 @@ RTDECL(bool) RTThreadPreemptIsPossible(void)
 RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
 {
     AssertPtr(pState);
-    Assert(pState->uchDummy != 42);
-    pState->uchDummy = 42;
+    Assert(pState->u32Reserved == 0);
+    pState->u32Reserved = 42;
 
     critical_enter();
+    RT_ASSERT_PREEMPT_CPUID_DISABLE(pState);
 }
 
 
 RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
 {
     AssertPtr(pState);
-    Assert(pState->uchDummy == 42);
-    pState->uchDummy = 0;
+    Assert(pState->u32Reserved == 42);
+    pState->u32Reserved = 0;
 
+    RT_ASSERT_PREEMPT_CPUID_RESTORE(pState);
     critical_exit();
 }
 
