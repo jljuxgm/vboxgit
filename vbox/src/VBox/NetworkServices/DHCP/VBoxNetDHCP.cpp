@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 18036 2009-03-17 16:01:25Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 18282 2009-03-25 21:03:41Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -732,7 +732,9 @@ int VBoxNetDhcp::parseArgs(int argc, char **argv)
                 m_TrunkName = Val.psz;
                 break;
             case 'T':
-                if (!strcmp(Val.psz, "whatever"))
+                if (!strcmp(Val.psz, "none"))
+                    m_enmTrunkType = kIntNetTrunkType_None;
+                else if (!strcmp(Val.psz, "whatever"))
                     m_enmTrunkType = kIntNetTrunkType_WhateverNone;
                 else if (!strcmp(Val.psz, "netflt"))
                     m_enmTrunkType = kIntNetTrunkType_NetFlt;
