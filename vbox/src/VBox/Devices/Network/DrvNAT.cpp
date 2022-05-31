@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: DrvNAT.cpp 22827 2009-09-08 08:24:04Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -62,7 +62,7 @@
  * @todo: This is a bad hack to prevent freezing the guest during high network
  *        activity. This needs to be fixed properly.
  */
-#define VBOX_NAT_DELAY_HACK
+//#define VBOX_NAT_DELAY_HACK
 #define SLIRP_SPLIT_CAN_OUTPUT 1
 
 #define GET_EXTRADATA(pthis, node, name, rc, type, type_name, var)                                  \
