@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 19485 2009-05-07 12:56:53Z vboxsync $ */
+/* $Id: TM.cpp 19491 2009-05-07 15:46:54Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -109,6 +109,8 @@
  *    - Poll the virtual clocks and calculate first timeout from the halt loop.
  *    - Employ a thread which periodically (100Hz) polls all the timer queues.
  *
+ *
+ * @image html TMTIMER-Statechart-Diagram.gif
  *
  * @section sec_tm_timer    Logging
  *
