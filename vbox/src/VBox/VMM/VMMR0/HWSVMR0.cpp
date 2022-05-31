@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21971 2009-08-05 09:17:24Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21972 2009-08-05 09:27:37Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2346,9 +2346,18 @@ ResumeExecution:
             &&  pVMCB->ctrl.u64ExitInfo1 == 1 /* wrmsr */
             &&  (pCtx->eax & 0xff) != u8LastTPR)
         {
+            Log(("SVM: Faulting MSR_K8_LSTAR write with new TPR value %x\n", pCtx->eax & 0xff));
+
             /* Our patch code uses LSTAR for TPR caching. */
             rc = PDMApicSetTPR(pVCpu, pCtx->eax & 0xff);
             AssertRC(rc);
+
+            /* Skip the instruction and continue. */
+            pCtx->rip += 2;     /* wrmsr = [0F 30] */
+
+            /* Only resume if successful. */
+            STAM_PROFILE_ADV_STOP(&pVCpu->hwaccm.s.StatExit1, x);
+            goto ResumeExecution;
         }
 
         /* Note: the intel manual claims there's a REX version of RDMSR that's slightly different, so we play safe by completely disassembling the instruction. */
