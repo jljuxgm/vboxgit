@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 20008 2009-05-25 18:34:43Z vboxsync $ */
+/* $Id: EM.cpp 20040 2009-05-26 13:40:35Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3656,7 +3656,7 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
     LogFlow(("EMR3ExecuteVM: pVM=%p enmVMState=%d  enmState=%d (%s) fForceRAW=%d\n", pVM, pVM->enmVMState,
              pVCpu->em.s.enmState, EMR3GetStateName(pVCpu->em.s.enmState), pVCpu->em.s.fForceRAW));
     VM_ASSERT_EMT(pVM);
-    Assert(pVCpu->em.s.enmState == EMSTATE_NONE || pVCpu->em.s.enmState == EMSTATE_WAIT_SIPI || pVCpu->em.s.enmState == EMSTATE_SUSPENDED);
+    Assert(pVCpu->em.s.enmState == EMSTATE_NONE || pVCpu->em.s.enmState == EMSTATE_WAIT_SIPI || pVCpu->em.s.enmState == EMSTATE_SUSPENDED || pVCpu->em.s.enmState == EMSTATE_HALTED);
 
     int rc = setjmp(pVCpu->em.s.u.FatalLongJump);
     if (rc == 0)
