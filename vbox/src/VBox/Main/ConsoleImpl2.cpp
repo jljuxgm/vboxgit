@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 20977 2009-06-26 14:38:55Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 20995 2009-06-26 21:49:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1921,7 +1921,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                                                 strExtraDataValue.asOutParam());
 
         /* stop if for some reason there's nothing more to request */
-        if (FAILED(hrc) || !strNextExtraDataKey)
+        if (FAILED(hrc) || strNextExtraDataKey.isEmpty())
         {
             /* if we're out of global keys, continue with machine, otherwise we're done */
             if (fGlobalExtraData)
