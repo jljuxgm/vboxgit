@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 20521 2009-06-12 15:28:26Z vboxsync $ */
+/* $Id: ConsoleImpl.h 20522 2009-06-12 16:14:29Z vboxsync $ */
 
 /** @file
  *
@@ -566,7 +566,7 @@ private:
     PPDMLED     mapIDELeds[4];
     PPDMLED     mapSATALeds[30];
     PPDMLED     mapSCSILeds[16];
-    PPDMLED     mapNetworkLeds[8];
+    PPDMLED     mapNetworkLeds[SchemaDefs::NetworkAdapterCount];
     PPDMLED     mapSharedFolderLed;
     PPDMLED     mapUSBLed[2];
 #if !defined(VBOX_WITH_NETFLT) && defined(RT_OS_LINUX)
