@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 17441 2009-03-06 07:05:58Z vboxsync $ */
+/* $Id: getopt.cpp 18100 2009-03-19 17:22:58Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -275,7 +275,7 @@ RTDECL(int) RTGetOpt(PRTGETOPTSTATE pState, PRTGETOPTUNION pValueUnion)
         pszArgThis = pState->argv[iThis];
 
         /*
-         * Do a long option search first and the a short option one.
+         * Do a long option search first and then a short option one.
          * This way we can make sure single dash long options doesn't
          * get mixed up with short ones.
          */
