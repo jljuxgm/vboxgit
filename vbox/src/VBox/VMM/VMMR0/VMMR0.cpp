@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 20984 2009-06-26 15:21:07Z vboxsync $ */
+/* $Id: VMMR0.cpp 21196 2009-07-03 12:57:21Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -338,9 +338,6 @@ static void vmmR0RecordRC(PVM pVM, PVMCPU pVCpu, int rc)
         case VINF_EM_RAW_RING_SWITCH_INT:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetRingSwitchInt);
             break;
-        case VINF_EM_RAW_EXCEPTION_PRIVILEGED:
-            STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetExceptionPrivilege);
-            break;
         case VINF_EM_RAW_STALE_SELECTOR:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetStaleSelector);
             break;
@@ -466,9 +463,6 @@ static void vmmR0RecordRC(PVM pVM, PVMCPU pVCpu, int rc)
             break;
         case VINF_PGM_CHANGE_MODE:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPGMChangeMode);
-            break;
-        case VINF_EM_RAW_EMULATE_INSTR_HLT:
-            STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetEmulHlt);
             break;
         case VINF_EM_PENDING_REQUEST:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPendingRequest);

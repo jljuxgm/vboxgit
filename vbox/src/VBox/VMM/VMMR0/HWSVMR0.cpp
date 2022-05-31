@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21144 2009-07-02 08:07:39Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21196 2009-07-03 12:57:21Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2285,7 +2285,7 @@ ResumeExecution:
     case SVM_EXIT_PAUSE:
     case SVM_EXIT_MWAIT_ARMED:
     case SVM_EXIT_TASK_SWITCH:          /* can change CR3; emulate */
-        rc = VINF_EM_RAW_EXCEPTION_PRIVILEGED;
+        rc = VERR_EM_INTERPRETER;
         break;
 
     case SVM_EXIT_SHUTDOWN:

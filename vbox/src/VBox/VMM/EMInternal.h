@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 20530 2009-06-13 20:53:44Z vboxsync $ */
+/* $Id: EMInternal.h 21196 2009-07-03 12:57:21Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -405,6 +405,18 @@ typedef struct EMCPU
 typedef EMCPU *PEMCPU;
 
 /** @} */
+
+
+int     emR3HwAccExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone);
+int     emR3RawExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone);
+int     emR3RawHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc);
+int     emR3HwaccmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc);
+EMSTATE emR3Reschedule(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx);
+int     emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc);
+int     emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, int rc);
+int     emR3RawUpdateForceFlag(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc);
+int     emR3RawResumeHyper(PVM pVM, PVMCPU pVCpu);
+int     emR3RawStep(PVM pVM, PVMCPU pVCpu);
 
 RT_C_DECLS_END
 
