@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 22885 2009-09-09 21:58:49Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 22963 2009-09-11 17:19:00Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and GC uses the same
@@ -140,8 +140,8 @@
                    (unsigned)RT_OFFSETOF(strct, member), \
                    (unsigned)RT_OFFSETOF(strct, member), \
                    (unsigned)(align), \
-                   (unsigned)((align) - RT_OFFSETOF(strct, member) & ((align) - 1)), \
-                   (unsigned)((align) - RT_OFFSETOF(strct, member) & ((align) - 1)) ); \
+                   (unsigned)(((align) - RT_OFFSETOF(strct, member)) & ((align) - 1)), \
+                   (unsigned)(((align) - RT_OFFSETOF(strct, member)) & ((align) - 1)) ); \
             rc++; \
         } \
     } while (0)
