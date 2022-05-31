@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 21961 2009-08-04 14:59:48Z vboxsync $ */
+/* $Id: MachineImpl.h 22143 2009-08-10 19:12:18Z vboxsync $ */
 
 /** @file
  *
@@ -270,6 +270,7 @@ public:
         BOOL           mHWVirtExNestedPagingEnabled;
         BOOL           mHWVirtExVPIDEnabled;
         BOOL           mAccelerate3DEnabled;
+        BOOL           mAccelerate2DVideoEnabled;
         BOOL           mPAEEnabled;
         ULONG          mCPUCount;
 
@@ -503,6 +504,8 @@ public:
     STDMETHOD(COMSETTER(MonitorCount))(ULONG monitorCount);
     STDMETHOD(COMGETTER(Accelerate3DEnabled))(BOOL *enabled);
     STDMETHOD(COMSETTER(Accelerate3DEnabled))(BOOL enabled);
+    STDMETHOD(COMGETTER(Accelerate2DVideoEnabled))(BOOL *enabled);
+    STDMETHOD(COMSETTER(Accelerate2DVideoEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(BIOSSettings))(IBIOSSettings **biosSettings);
     STDMETHOD(COMGETTER(HWVirtExEnabled))(BOOL *enabled);
     STDMETHOD(COMSETTER(HWVirtExEnabled))(BOOL enabled);
