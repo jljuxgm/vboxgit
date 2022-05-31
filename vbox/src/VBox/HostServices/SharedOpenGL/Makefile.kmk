@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20253 2009-06-04 08:15:52Z vboxsync $
+# $Id: Makefile.kmk 20451 2009-06-09 23:25:48Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox HGCM Service.
 #
@@ -227,6 +227,7 @@ VBoxOGLrenderspu_SOURCES = \
 VBoxOGLrenderspu_SOURCES.win     = render/renderspu_wgl.c render/render.def
 VBoxOGLrenderspu_SOURCES.linux   = render/renderspu_glx.c
 VBoxOGLrenderspu_SOURCES.solaris = render/renderspu_glx.c
+VBoxOGLrenderspu_SOURCES.freebsd = render/renderspu_glx.c
 VBoxOGLrenderspu_SOURCES.darwin  = render/renderspu_agl.c
 VBoxOGLrenderspu_LDFLAGS.darwin += -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxOGLrenderspu.dylib
 VBoxOGLrenderspu_LIBS = \

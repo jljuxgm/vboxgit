@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20450 2009-06-09 23:06:02Z vboxsync $
+# $Id: Makefile.kmk 20451 2009-06-09 23:25:48Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host Services.
 #
@@ -26,7 +26,7 @@ include	$(KBUILD_PATH)/subheader.kmk
 ifdef VBOX_WITH_SHARED_FOLDERS
  include $(PATH_SUB_CURRENT)/SharedFolders/Makefile.kmk
 endif
-if1of ($(KBUILD_TARGET), win linux solaris darwin)
+if1of ($(KBUILD_TARGET), win linux solaris darwin freebsd)
  ifdef VBOX_WITH_CROGL
   include $(PATH_SUB_CURRENT)/SharedOpenGL/Makefile.kmk
  endif
