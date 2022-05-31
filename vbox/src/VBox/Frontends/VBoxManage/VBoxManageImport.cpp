@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 20928 2009-06-25 11:53:37Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 21360 2009-07-07 16:33:26Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -201,7 +201,7 @@ int handleImportAppliance(HandlerArg *a)
                 break;
 
             case VINF_GETOPT_NOT_OPTION:
-                if (!strOvfFilename)
+                if (strOvfFilename.isEmpty())
                     strOvfFilename = ValueUnion.psz;
                 else
                     return errorSyntax(USAGE_IMPORTAPPLIANCE, "Invalid parameter '%s'", ValueUnion.psz);
@@ -224,7 +224,7 @@ int handleImportAppliance(HandlerArg *a)
         }
     }
 
-    if (!strOvfFilename)
+    if (strOvfFilename.isEmpty())
         return errorSyntax(USAGE_IMPORTAPPLIANCE, "Not enough arguments for \"import\" command.");
 
     do
