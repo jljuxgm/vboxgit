@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22695 2009-09-02 08:41:52Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22696 2009-09-02 08:48:49Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1419,26 +1419,6 @@ DECLINLINE(void) pgmPoolTrackCheckPTPaePae(PPGMPOOL pPool, PPGMPOOLPAGE pPage, P
         }
     }
     Assert(!cErrors);
-}
-
-void pgmPoolTrackCheckAllPTPaePae(pVM)
-{
-    PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
-
-    for (unsigned i = 0; i < pPool->cCurPages; i++)
-    {
-        PPGMPOOLPAGE pPage = &pPool->aPages[i];
-
-        if (    pPage->enmKind == PGMPOOLKIND_PAE_PT_FOR_PAE_PT
-            &&  !pPage->fDirty)
-        {
-            void *pvShw = PGMPOOL_PAGE_2_LOCKED_PTR(pPool->CTX_SUFF(pVM), pPage);
-            void *pvGst;
-            int rc = PGM_GCPHYS_2_PTR(pPool->CTX_SUFF(pVM), pPage->GCPhys, &pvGst); AssertReleaseRC(rc);
-
-            pgmPoolTrackCheckPTPaePae(pPool, pPage, (PX86PTPAE)pvShw, (PCX86PTPAE)pvGst);
-        }
-    }
 }
 
 /**
