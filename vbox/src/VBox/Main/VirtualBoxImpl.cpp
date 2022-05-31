@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 23327 2009-09-25 11:36:00Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 23909 2009-10-20 15:50:06Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1606,15 +1606,15 @@ STDMETHODIMP VirtualBox::GetExtraData(IN_BSTR aKey,
     CheckComRCReturnRC(autoCaller.rc());
 
     /* start with nothing found */
-    Bstr("").cloneTo(aValue);
+    Utf8Str strResult;
 
     settings::ExtraDataItemsMap::const_iterator it = m->pMainConfigFile->mapExtraDataItems.find(Utf8Str(aKey));
     if (it != m->pMainConfigFile->mapExtraDataItems.end())
-    {
         // found:
-        const Utf8Str &strValue = it->second;
-        strValue.cloneTo(aValue);
-    }
+        strResult = it->second;
+
+    /* return the result to caller (may be empty) */
+    strResult.cloneTo(aValue);
 
     return S_OK;
 }
