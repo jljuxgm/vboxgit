@@ -1,4 +1,4 @@
-# $Id: Config.kmk 23204 2009-09-22 09:22:27Z vboxsync $
+# $Id: Config.kmk 23268 2009-09-23 16:39:44Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1429,7 +1429,7 @@ ifeq ($(KBUILD_TARGET),darwin)
  ifeq ($(KBUILD_TARGET_ARCH),x86)
   ifdef VBOX_WITH_COCOA_QT
    VBOX_DEF_MACOSX_VERSION_MIN ?= 10.5
-   VBOX_DARWIN_NO_COMPACT_LINKEDIT ?= $(VBOX_LD_no_compact_linkedit)
+   VBOX_DARWIN_NO_COMPACT_LINKEDIT ?= $$(VBOX_LD_no_compact_linkedit)
   else
    VBOX_DEF_MACOSX_VERSION_MIN ?= 10.4
    VBOX_DARWIN_NO_COMPACT_LINKEDIT ?=
@@ -3815,7 +3815,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23204 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23268 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
