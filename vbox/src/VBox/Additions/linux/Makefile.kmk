@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23421 2009-09-29 20:40:55Z vboxsync $
+# $Id: Makefile.kmk 23445 2009-09-30 16:04:34Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -149,8 +149,6 @@ lnx_add_inst-nobin_SOURCES = \
 		../x11/Installer/vboxclient.desktop \
 		installer/vboxadd.sh \
 		../x11/Installer/vboxvideo.ids \
-		../x11/Installer/x11config.pl \
-		../x11/Installer/x11config15.pl \
 		../x11/Installer/linux_xorg_suse11.conf \
 		installer/90-vboxguest.fdi
 
