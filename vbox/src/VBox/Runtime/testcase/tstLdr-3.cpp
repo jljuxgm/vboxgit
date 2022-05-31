@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 16933 2009-02-18 23:42:57Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 18357 2009-03-26 23:02:07Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -213,7 +213,7 @@ int main(int argc, char **argv)
                     {
                         DISCPUSTATE Cpu;
                         memset(&Cpu, 0, sizeof(Cpu));
-#if 1
+#ifdef RT_ARCH_X86 /** @todo select according to the module type. */
                         Cpu.mode = CPUMODE_32BIT;
 #else
                         Cpu.mode = CPUMODE_64BIT;
