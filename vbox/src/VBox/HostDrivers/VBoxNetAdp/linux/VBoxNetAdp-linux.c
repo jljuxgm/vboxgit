@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 19038 2009-04-20 16:22:21Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 20691 2009-06-18 13:48:46Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -281,14 +281,14 @@ static int VBoxNetAdpLinuxIOCtl(struct inode *pInode, struct file *pFilp, unsign
                 {
                     if (cbReq < sizeof(VBOXNETADPREQ))
                     {
-                        printk(KERN_ERR "VBoxNetAdpLinuxIOCtl: param len %#x < req size %#x; uCmd=%#x\n", cbReq, sizeof(VBOXNETADPREQ), uCmd);
+                        printk(KERN_ERR "VBoxNetAdpLinuxIOCtl: param len %#x < req size %#lx; uCmd=%#x\n", cbReq, sizeof(VBOXNETADPREQ), uCmd);
                         return -EINVAL;
                     }
                     strncpy(Req.szName, pAdp->szName, sizeof(Req.szName));
                     if (RT_UNLIKELY(copy_to_user((void *)ulArg, &Req, sizeof(Req))))
                     {
                         /* this is really bad! */
-                        printk(KERN_ERR "VBoxNetAdpLinuxIOCtl: copy_to_user(%#lx,,%#x); uCmd=%#x!\n", ulArg, sizeof(Req), uCmd);
+                        printk(KERN_ERR "VBoxNetAdpLinuxIOCtl: copy_to_user(%#lx,,%#lx); uCmd=%#x!\n", ulArg, sizeof(Req), uCmd);
                         rc = -EFAULT;
                     }
                 }
