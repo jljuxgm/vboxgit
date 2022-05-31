@@ -1,4 +1,4 @@
-/* $Id: tstCompressionBenchmark.cpp 23508 2009-10-02 12:03:06Z vboxsync $ */
+/* $Id: tstCompressionBenchmark.cpp 23509 2009-10-02 12:07:17Z vboxsync $ */
 /** @file
  * Compression Benchmark for SSM.
  */
@@ -138,7 +138,7 @@ static void tstBenchmarkCRCs(uint8_t const *pabSrc, size_t cbSrc)
     RTSha256(pabSrc, cbSrc, abSha256Hash);
     NanoTS = RTTimeNanoTS() - NanoTS;
     uSpeed = (unsigned)(cbSrc / (long double)NanoTS * 1000000000.0 / 1024);
-    RTSha1ToString(abSha1Hash, szDigest, sizeof(szDigest));
+    RTSha256ToString(abSha1Hash, szDigest, sizeof(szDigest));
     RTPrintf("SHA256    %'9u KB/s  %'14llu ns - %s\n", uSpeed, NanoTS, szDigest);
 
     NanoTS = RTTimeNanoTS();
@@ -146,7 +146,7 @@ static void tstBenchmarkCRCs(uint8_t const *pabSrc, size_t cbSrc)
     RTSha512(pabSrc, cbSrc, abSha512Hash);
     NanoTS = RTTimeNanoTS() - NanoTS;
     uSpeed = (unsigned)(cbSrc / (long double)NanoTS * 1000000000.0 / 1024);
-    RTSha1ToString(abSha1Hash, szDigest, sizeof(szDigest));
+    RTSha512ToString(abSha1Hash, szDigest, sizeof(szDigest));
     RTPrintf("SHA512    %'9u KB/s  %'14llu ns - %s\n", uSpeed, NanoTS, szDigest);
 }
 
