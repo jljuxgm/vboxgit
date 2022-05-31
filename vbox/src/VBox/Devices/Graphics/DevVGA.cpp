@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
+/* $Id: DevVGA.cpp 22388 2009-08-21 13:37:10Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5676,6 +5676,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
      * Validate configuration.
      */
     if (!CFGMR3AreValuesValid(pCfgHandle, "VRamSize\0"
+                                          "MonitorCount\0"
                                           "GCEnabled\0"
                                           "R0Enabled\0"
                                           "FadeIn\0"
@@ -5715,6 +5716,9 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     if (pThis->vram_size < VGA_VRAM_MIN)
         return PDMDevHlpVMSetError(pDevIns, VERR_INVALID_PARAMETER, RT_SRC_POS,
                                    "VRamSize is too small, %#x, max %#x", pThis->vram_size, VGA_VRAM_MIN);
+
+    rc = CFGMR3QueryU32Def(pCfgHandle, "MonitorCount", &pThis->cMonitors, 1);
+    AssertLogRelRCReturn(rc, rc);
 
     rc = CFGMR3QueryBoolDef(pCfgHandle, "GCEnabled", &pThis->fGCEnabled, true);
     AssertLogRelRCReturn(rc, rc);
