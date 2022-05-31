@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 18978 2009-04-17 07:33:19Z vboxsync $ */
+/* $Id: PGMInternal.h 18980 2009-04-17 08:07:08Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3235,7 +3235,7 @@ DECLINLINE(int) pgmR0DynMapHCPageInlined(PPGM pPGM, RTHCPHYS HCPhys, void **ppv)
     }
     else
     {
-        STAM_COUNTER_INC(&pPGMCPU->StatR0DynMapHCPageInlMisses);
+        STAM_COUNTER_INC(&pPGM->StatR0DynMapHCPageInlMisses);
         pgmR0DynMapHCPageCommon(pVM, pSet, HCPhys, ppv);
     }
 
