@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 21096 2009-06-30 18:55:45Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 21530 2009-07-13 12:12:48Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -2892,7 +2892,7 @@ static int vboxNetFltSolarisRecv(PVBOXNETFLTINS pThis, vboxnetflt_stream_t *pStr
     /*
      * Paranoia...
      */
-    if (MBLKL(pMsg) < sizeof(RTNETETHERHDR))
+    if (RT_UNLIKELY(MBLKL(pMsg) < sizeof(RTNETETHERHDR)))
     {
         size_t cbMsg = msgdsize(pMsg);
         if (cbMsg < sizeof(RTNETETHERHDR))
