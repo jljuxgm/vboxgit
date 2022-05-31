@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 20185 2009-06-02 12:04:10Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 20215 2009-06-03 08:17:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -718,7 +718,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     rc = CFGMR3InsertInteger(pCfg,  "IOAPIC", fIOAPIC);                             RC_CHECK();
     rc = CFGMR3InsertInteger(pCfg,  "NumCPUs", cCpus);                              RC_CHECK();
 
-    /* SMP: @todo: IOAPIC may be required for SMP configs */
     if (fIOAPIC)
     {
         /*

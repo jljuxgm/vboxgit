@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.cpp 20099 2009-05-27 16:04:48Z vboxsync $ */
+/* $Id: HardDiskImpl.cpp 20215 2009-06-03 08:17:06Z vboxsync $ */
 
 /** @file
  *
@@ -4439,7 +4439,7 @@ DECLCALLBACK(int) HardDisk::taskThread (RTTHREAD thread, void *pvUser)
              * as the task destruction also destroys the source chain. */
 
             /* Make sure the source chain is released early. It could happen
-             * that we get a death lock in Appliance::Import when Medium::Close
+             * that we get a deadlock in Appliance::Import when Medium::Close
              * is called & the source chain is released at the same time. */
             task->d.source.reset();
             break;
