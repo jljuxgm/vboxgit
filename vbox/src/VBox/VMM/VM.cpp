@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 18757 2009-04-06 13:58:57Z vboxsync $ */
+/* $Id: VM.cpp 18767 2009-04-06 14:44:05Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -185,14 +185,13 @@ VMMR3DECL(int)   VMR3GlobalInit(void)
  *                              errors. This was added as an implicit call to
  *                              VMR3AtErrorRegister() since there is no way the
  *                              caller can get to the VM handle early enough to
- *                              do this on its now.
+ *                              do this on its own.
  *                              This is called in the context of an EMT.
  * @param   pvUserVM            The user argument passed to pfnVMAtError.
  * @param   pfnCFGMConstructor  Pointer to callback function for constructing the VM configuration tree.
  *                              This is called in the context of an EMT0.
  * @param   pvUserCFGM          The user argument passed to pfnCFGMConstructor.
  * @param   ppVM                Where to store the 'handle' of the created VM.
- *
  */
 VMMR3DECL(int)   VMR3Create(uint32_t cCPUs, PFNVMATERROR pfnVMAtError, void *pvUserVM, PFNCFGMCONSTRUCTOR pfnCFGMConstructor, void *pvUserCFGM, PVM *ppVM)
 {
