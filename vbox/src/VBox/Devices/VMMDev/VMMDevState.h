@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 22995 2009-09-14 12:11:27Z vboxsync $ */
+/* $Id: VMMDevState.h 22996 2009-09-14 12:26:37Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -191,7 +191,7 @@ typedef struct VMMDevState
         /** Partner of ILeds. */
         R3PTRTYPE(PPDMILEDCONNECTORS)       pLedsConnector;
     } SharedFolders;
-#ifdef HC_ARCH_BITS == 32
+#if HC_ARCH_BITS == 32
     uint32_t    uAlignment;
 #endif
     /** The critical section for this device. */
