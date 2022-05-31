@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 23409 2009-09-29 14:51:26Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 23739 2009-10-13 18:33:06Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -341,7 +341,7 @@ DECLCALLBACK(int) drvHostDvdPoll(PDRVHOSTBASE pThis)
     {
         fMediaPresent = false;
         fMediaChanged = true;
-        /** @todo check this media chance stuff on Darwin. */
+        /** @todo check this media change stuff on Darwin. */
     }
 
 #elif defined(RT_OS_LINUX)
