@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: MouseImpl.h 19614 2009-05-12 12:27:21Z vboxsync $ */
 
 /** @file
  *
@@ -105,6 +105,8 @@ private:
     struct DRVMAINMOUSE    *mpDrv;
 
     LONG uHostCaps;
+    uint32_t mLastAbsX;
+    uint32_t mLastAbsY;
 };
 
 #endif // ____H_MOUSEIMPL
