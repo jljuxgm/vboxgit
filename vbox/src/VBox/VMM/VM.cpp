@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 22121 2009-08-10 09:53:53Z vboxsync $ */
+/* $Id: VM.cpp 22122 2009-08-10 09:55:05Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -221,7 +221,7 @@ VMMR3DECL(int)   VMR3Create(uint32_t cCPUs, PFNVMATERROR pfnVMAtError, void *pvU
      * Create the UVM so we can register the at-error callback
      * and consoliate a bit of cleanup code.
      */
-    PUVM pUVM;
+    PUVM pUVM = NULL;                   /* shuts up gcc */
     int rc = vmR3CreateUVM(cCPUs, &pUVM);
     if (RT_FAILURE(rc))
         return rc;
@@ -491,7 +491,6 @@ static int vmR3CreateUVM(uint32_t cCpus, PUVM *ppUVM)
         RTTlsFree(pUVM->vm.s.idxTLS);
     }
     RTMemFree(pUVM);
-    *ppUVM = NULL; /* shuts up gcc */
     return rc;
 }
 
