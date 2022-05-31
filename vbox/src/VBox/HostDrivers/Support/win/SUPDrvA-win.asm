@@ -1,4 +1,4 @@
-; $Id$
+; $Id: SUPDrvA-win.asm 22077 2009-08-07 16:01:57Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Windows NT specific assembly parts.
 ;

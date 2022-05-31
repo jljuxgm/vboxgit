@@ -1,8 +1,6 @@
-/* $Id: SUPDrv-darwin.cpp 22053 2009-08-07 10:06:15Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 22077 2009-08-07 16:01:57Z vboxsync $ */
 /** @file
- *
- * VBox host drivers - Ring-0 support drivers - Darwin host:
- * Darwin driver C code
+ * VirtualBox Support Driver - Darwin Specific Code.
  */
 
 /*
