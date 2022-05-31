@@ -1,4 +1,4 @@
-# $Revision: 18356 $
+# $Revision: 18527 $
 ## @file makefile.tstLinuxC
 # Makefile for sample program illustrating use of C binding for XPCOM.
 #
@@ -40,5 +40,5 @@ tstXPCOMCGlue.o: tstXPCOMCGlue.c
 	$(CC) $(CFLAGS) $(INCS_XPCOM) $(GLUE_INC) -o $@ -c $<
 
 VBoxXPCOMCGlue.o: $(GLUE_DIR)/VBoxXPCOMCGlue.c
-	$(CC) $(CFLAGS) -DVBOX_WITH_XPCOM $(INCS_XPCOM) $(GLUE_INC) -o $@ -c $<
+	$(CC) $(CFLAGS) $(INCS_XPCOM) $(GLUE_INC) -o $@ -c $<
 
