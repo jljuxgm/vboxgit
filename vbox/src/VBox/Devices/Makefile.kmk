@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21231 2009-07-05 20:04:13Z vboxsync $
+# $Id: Makefile.kmk 21372 2009-07-07 21:08:40Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -82,6 +82,7 @@ VBoxDDU_SOURCES          = \
 	Storage/VHDHDDCore.cpp \
 	Storage/VmdkHDDCore.cpp \
 	Storage/RawHDDCore.cpp \
+	Storage/ParallelsHDDCore.cpp \
 	VBoxDDUDeps.cpp
 ifdef VBOX_WITH_USB
  VBoxDDU_INCS.os2       += \
