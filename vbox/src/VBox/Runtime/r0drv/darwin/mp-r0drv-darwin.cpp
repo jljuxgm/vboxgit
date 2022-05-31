@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-darwin.cpp 16958 2009-02-19 17:46:20Z vboxsync $ */
+/* $Id: mp-r0drv-darwin.cpp 19056 2009-04-21 10:16:23Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Darwin.
  */
@@ -234,7 +234,7 @@ RTDECL(int) RTMpOnOthers(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)
     Args.pfnWorker = pfnWorker;
     Args.pvUser1 = pvUser1;
     Args.pvUser2 = pvUser2;
-    Args.idCpu = NIL_RTCPUID;
+    Args.idCpu = RTMpCpuId();
     Args.cHits = 0;
     mp_rendezvous_no_intrs(rtmpOnOthersDarwinWrapper, &Args);
     return VINF_SUCCESS;
