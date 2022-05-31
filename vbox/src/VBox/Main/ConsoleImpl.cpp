@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 19648 2009-05-13 09:05:14Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 19750 2009-05-15 17:40:03Z vboxsync $ */
 
 /** @file
  *
@@ -2494,6 +2494,14 @@ STDMETHODIMP Console::RegisterCallback (IConsoleCallback *aCallback)
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
+
+#if 0 /** @todo r=bird,r=pritesh: must check that the interface id match correct or we might screw up with old code! */
+    void *dummy;
+    HRESULT hrc = aCallback->QueryInterface(NS_GET_IID(IConsoleCallback), &dummy);
+    if (FAILED(hrc))
+        return hrc;
+    aCallback->Release();
+#endif
 
     AutoWriteLock alock (this);
 
