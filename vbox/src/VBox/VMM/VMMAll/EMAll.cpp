@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 18082 2009-03-19 08:58:55Z vboxsync $ */
+/* $Id: EMAll.cpp 18338 2009-03-26 18:15:06Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -142,6 +142,10 @@ DECLINLINE(int) emDisCoreOne(PVM pVM, DISCPUSTATE *pCpu, RTGCUINTPTR InstrGC, ui
 /**
  * Disassembles one instruction.
  *
+ * @returns VBox status code, see SELMToFlatEx and EMInterpretDisasOneEx for
+ *          details.
+ * @retval  VERR_INTERNAL_ERROR on DISCoreOneEx failure.
+ *
  * @param   pVM             The VM handle.
  * @param   pCtxCore        The context core (used for both the mode and instruction).
  * @param   pCpu            Where to return the parsed instruction info.
@@ -165,6 +169,9 @@ VMMDECL(int) EMInterpretDisasOne(PVM pVM, PCCPUMCTXCORE pCtxCore, PDISCPUSTATE p
  * Disassembles one instruction.
  *
  * This is used by internally by the interpreter and by trap/access handlers.
+ *
+ * @returns VBox status code.
+ * @retval  VERR_INTERNAL_ERROR on DISCoreOneEx failure.
  *
  * @param   pVM             The VM handle.
  * @param   GCPtrInstr      The flat address of the instruction.
