@@ -1,4 +1,4 @@
-# $Id: Config.kmk 20501 2009-06-12 11:31:37Z vboxsync $
+# $Id: Config.kmk 20502 2009-06-12 11:32:35Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1950,7 +1950,7 @@ ifeq ($(KBUILD_TARGET),solaris)
   $(eval export VBOX_SOLARIS_SNV_VERSION := $(shell uname -v | cut -f2 -d'_'))
 
   # OSS audio support for Solaris
- VBOX_WITH_SOLARIS_OSS := $(if-expr $(VBOX_SOLARIS_SNV_VERSION) >= 115,1,)
+#VBOX_WITH_SOLARIS_OSS := $(if-expr $(VBOX_SOLARIS_SNV_VERSION) >= 115,1,)
  endif
 endif
 
@@ -3776,7 +3776,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 20501 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 20502 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
