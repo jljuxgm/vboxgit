@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 23704 2009-10-12 15:45:34Z vboxsync $ */
+/* $Id: SUPLib.cpp 23725 2009-10-13 13:44:46Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -2066,11 +2066,12 @@ SUPR3DECL(int) SUPR3QueryVTxSupported(void)
 #endif
 }
 
-SUPR3DECL(int) SUPR3QueryVTCaps(uint32_t *pCaps)
-{
-    AssertPtrReturn(pCaps, VERR_INVALID_POINTER);
 
-    *pCaps = 0;
+SUPR3DECL(int) SUPR3QueryVTCaps(uint32_t *pfCaps)
+{
+    AssertPtrReturn(pfCaps, VERR_INVALID_POINTER);
+
+    *pfCaps = 0;
 
     /* fake */
     if (RT_UNLIKELY(g_u32FakeMode))
@@ -2092,7 +2093,7 @@ SUPR3DECL(int) SUPR3QueryVTCaps(uint32_t *pCaps)
     {
         rc = Req.Hdr.rc;
         if (RT_SUCCESS(rc))
-            *pCaps = Req.u.Out.Caps;
+            *pfCaps = Req.u.Out.Caps;
     }
     return rc;
 }

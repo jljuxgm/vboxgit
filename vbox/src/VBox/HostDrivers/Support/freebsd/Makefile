@@ -1,4 +1,4 @@
-# $Id: Makefile 23526 2009-10-03 17:55:49Z vboxsync $
+# $Id: Makefile 23725 2009-10-13 13:44:46Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -42,6 +42,7 @@ CFLAGS += -DRT_OS_FREEBSD -DIN_RING0 -DIN_RT_R0 -DIN_SUP_R0 -DVBOX -DRT_WITH_VBO
 SRCS = \
 	freebsd/SUPDrv-freebsd.c \
 	SUPDrv.c \
+	SUPDrvAgnostic.c \
 	alloc/heapsimple.c \
 	common/err/RTErrConvertFromErrno.c \
 	common/err/RTErrConvertToErrno.c \
