@@ -1,4 +1,4 @@
-/* $Id: string.cpp 21404 2009-07-08 15:19:42Z vboxsync $ */
+/* $Id: string.cpp 21529 2009-07-13 11:57:28Z vboxsync $ */
 
 /** @file
  *
@@ -87,6 +87,7 @@ Utf8Str Utf8Str::substr(size_t pos /*= 0*/, size_t n /*= npos*/)
                 size_t cbCopy = psz - pFirst;
                 ret.reserve(cbCopy + 1);
                 memcpy(ret.m_psz, pFirst, cbCopy);
+                ret.m_cbLength = cbCopy;
                 ret.m_psz[cbCopy] = '\0';
             }
         }
