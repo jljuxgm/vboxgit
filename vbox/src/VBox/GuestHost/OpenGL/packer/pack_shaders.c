@@ -1,4 +1,4 @@
-/* $Id: pack_shaders.c 20183 2009-06-02 10:38:57Z vboxsync $ */
+/* $Id: pack_shaders.c 20327 2009-06-05 13:07:20Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -248,6 +248,20 @@ void PACK_APIENTRY crPackUniformMatrix4fv(GLint location, GLsizei count, GLboole
     WRITE_OPCODE(pc, CR_EXTEND_OPCODE);
 }
 
+void PACK_APIENTRY crPackDrawBuffers(GLsizei n, const GLenum *bufs)
+{
+    GET_PACKER_CONTEXT(pc);
+    unsigned char *data_ptr;
+    int packet_length = sizeof(int)+sizeof(GLenum)+sizeof(n) + n*sizeof(*bufs);
+
+    GET_BUFFERED_POINTER(pc, packet_length);
+    WRITE_DATA_AI(int, packet_length);
+    WRITE_DATA_AI(GLenum, CR_DRAWBUFFERS_EXTEND_OPCODE);
+    WRITE_DATA_AI(GLsizei, n);
+    crMemcpy(data_ptr, bufs, n*sizeof(*bufs));
+    WRITE_OPCODE(pc, CR_EXTEND_OPCODE);
+}
+
 void PACK_APIENTRY crPackBindAttribLocationSWAP(GLuint program, GLuint index, const char *name)
 {
     GET_PACKER_CONTEXT(pc);
@@ -379,6 +393,15 @@ void PACK_APIENTRY crPackUniformMatrix4fvSWAP(GLint location, GLsizei count, GLb
     (void)count;
     (void)transpose;
     (void)value;
+    crError ("No swap version");
+    (void) pc;
+}
+
+void PACK_APIENTRY crPackDrawBuffersSWAP(GLsizei n, const GLenum *bufs)
+{
+    GET_PACKER_CONTEXT(pc);
+    (void)n;
+    (void)bufs;
     crError ("No swap version");
     (void) pc;
 }

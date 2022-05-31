@@ -1,4 +1,4 @@
-/* $Id: unpack_shaders.c 20176 2009-06-02 07:45:36Z vboxsync $ */
+/* $Id: unpack_shaders.c 20327 2009-06-05 13:07:20Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -150,4 +150,11 @@ void crUnpackExtendUniformMatrix4fv(void)
     GLboolean transpose = READ_DATA(16, GLboolean);
     const GLfloat *value = DATA_POINTER(16+sizeof(GLboolean), const GLfloat);
     cr_unpackDispatch.UniformMatrix4fv(location, count, transpose, value);
+}
+
+void crUnpackExtendDrawBuffers(void)
+{
+    GLsizei n = READ_DATA(8, GLsizei);
+    const GLenum *bufs = DATA_POINTER(8+sizeof(GLsizei), const GLenum);
+    cr_unpackDispatch.DrawBuffers(n, bufs);
 }
