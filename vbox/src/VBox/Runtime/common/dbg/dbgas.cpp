@@ -1,4 +1,4 @@
-/* $Id: dbgas.cpp 19757 2009-05-15 23:37:31Z vboxsync $ */
+/* $Id: dbgas.cpp 20355 2009-06-07 09:11:41Z vboxsync $ */
 /** @file
  * IPRT - Debug Address Space.
  */
@@ -129,7 +129,7 @@ typedef RTDBGASINT *PRTDBGASINT;
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-/** Validates a context handle and returns rc if not valid. */
+/** Validates an address space handle and returns rc if not valid. */
 #define RTDBGAS_VALID_RETURN_RC(pDbgAs, rc) \
     do { \
         AssertPtrReturn((pDbgAs), (rc)); \
@@ -336,7 +336,7 @@ static void rtDbgAsDestroy(PRTDBGASINT pDbgAs)
 
 
 /**
- * Retains a reference to the address space.
+ * Retains another reference to the address space.
  *
  * @returns New reference count, UINT32_MAX on invalid handle (asserted).
  *
