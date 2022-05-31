@@ -1,4 +1,4 @@
-/* $Id: path.cpp 21673 2009-07-17 12:10:10Z vboxsync $ */
+/* $Id: path.cpp 21677 2009-07-17 12:22:35Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation.
  */
@@ -38,6 +38,7 @@
 #include <iprt/err.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
+#include "internal/path.h"
 #include "internal/process.h"
 
 
