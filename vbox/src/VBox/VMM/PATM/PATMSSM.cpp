@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 23784 2009-10-14 23:21:50Z vboxsync $ */
+/* $Id: PATMSSM.cpp 23788 2009-10-15 00:22:23Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -109,6 +109,7 @@ static SSMFIELD const g_aPatmFields[] =
     SSMFIELD_ENTRY_IGN_RCPTR(       PATM, mmio.Alignment0),
     SSMFIELD_ENTRY_IGN_HCPTR(       PATM, savedstate.pSSM),
     SSMFIELD_ENTRY(                 PATM, savedstate.cPatches),
+    SSMFIELD_ENTRY_IGNORE(          PATM, savedstate.Alignment0),
     SSMFIELD_ENTRY_IGNORE(          PATM, StatNrOpcodeRead),
     SSMFIELD_ENTRY_IGNORE(          PATM, StatDisabled),
     SSMFIELD_ENTRY_IGNORE(          PATM, StatUnusable),
