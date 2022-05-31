@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 23553 2009-10-05 11:38:47Z vboxsync $ */
+/* $Id: HWACCMInternal.h 23699 2009-10-12 15:01:05Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -177,17 +177,6 @@ typedef struct
     volatile bool       fInUse;
 } HWACCM_CPUINFO;
 typedef HWACCM_CPUINFO *PHWACCM_CPUINFO;
-
-/* VT-x capability qword. */
-typedef union
-{
-    struct
-    {
-        uint32_t        disallowed0;
-        uint32_t        allowed1;
-    } n;
-    uint64_t            u;
-} VMX_CAPABILITY;
 
 typedef enum
 {
