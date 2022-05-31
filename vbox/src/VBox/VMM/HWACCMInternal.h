@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 21208 2009-07-03 14:38:58Z vboxsync $ */
+/* $Id: HWACCMInternal.h 21209 2009-07-03 14:50:36Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -598,23 +598,23 @@ typedef struct HWACCMCPU
         /* Pending IO operation type. */
         HWACCMPENDINGIO         enmType;
         uint32_t                uPadding;
+        RTGCPTR                 GCPtrRip;
+        RTGCPTR                 GCPtrRipNext;
         union
         {
             struct
             {
-                RTGCPTR         rip;
                 unsigned        uPort;
                 unsigned        uAndVal;
                 unsigned        cbSize;
             } Read;
             struct
             {
-                RTGCPTR         rip;
                 unsigned        uPort;
                 unsigned        uValue;
                 unsigned        cbSize;
             } Write;
-            uint64_t            aRaw[4];
+            uint64_t            aRaw[2];
         } Port;
     } PendingIO;
 
