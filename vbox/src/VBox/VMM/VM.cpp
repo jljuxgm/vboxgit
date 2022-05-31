@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 23593 2009-10-07 12:59:56Z vboxsync $ */
+/* $Id: VM.cpp 23595 2009-10-07 13:49:38Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1600,7 +1600,8 @@ static DECLCALLBACK(int) vmR3Save(PVM pVM, const char *pszFilename, SSMAFTER enm
     }
     else if (rc == 2)
     {
-        rc = SSMR3LiveToFile(pVM, pszFilename, enmAfter, pfnProgress, pvUser, ppSSM);
+        rc = SSMR3LiveSave(pVM, pszFilename, NULL /*pStreamOps*/, NULL /*pvStreamOpsUser*/,
+                           enmAfter, pfnProgress, pvUser, ppSSM);
         /* (We're not subject to cancellation just yet.) */
     }
     else
