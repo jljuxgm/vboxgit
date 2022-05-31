@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 22288 2009-08-17 11:54:34Z vboxsync $ */
+/* $Id: HWACCM.cpp 22289 2009-08-17 11:57:43Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1156,6 +1156,8 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                 LogRel((pVM->hwaccm.s.fAllow64BitGuests
                         ? "HWACCM:    32-bit and 64-bit guest supported.\n"
                         : "HWACCM:    32-bit guest supported.\n"));
+
+                LogRel(("HWACCM:    TPR Patching %s.\n", (pVM->hwaccm.s.fTRPPatchingAllowed) ? "enabled" : "disabled"));
             }
             else
             {
