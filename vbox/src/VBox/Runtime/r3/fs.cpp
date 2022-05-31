@@ -1,4 +1,4 @@
-/* $Id: fs.cpp 14058 2008-11-10 23:01:55Z vboxsync $ */
+/* $Id: fs.cpp 18903 2009-04-15 12:30:57Z vboxsync $ */
 /** @file
  * IPRT - File System.
  */
@@ -85,6 +85,11 @@ RTFMODE rtFsModeFromDos(RTFMODE fMode, const char *pszName, size_t cbName)
                )
                 fMode |= RTFS_UNIX_IXUSR | RTFS_UNIX_IXGRP | RTFS_UNIX_IXOTH;
         }
+#ifdef RT_OS_WINDOWS
+        /** @todo this is a very ugly hack to work around guest additions in
+         * linux/solaris VMs on windows host not showing execute permission. */
+        fMode |= RTFS_UNIX_IXUSR | RTFS_UNIX_IXGRP | RTFS_UNIX_IXOTH;
+#endif
     }
     /* writable? */
     if (!(fMode & RTFS_DOS_READONLY))
