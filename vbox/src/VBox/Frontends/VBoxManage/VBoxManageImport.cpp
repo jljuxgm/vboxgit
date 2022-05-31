@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 20221 2009-06-03 08:54:39Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -646,7 +646,11 @@ int handleImportAppliance(HandlerArg *a)
                 showProgress(progress);
 
                 if (SUCCEEDED(rc))
-                    progress->COMGETTER(ResultCode)(&rc);
+                {
+                    LONG iRc;
+                    progress->COMGETTER(ResultCode)(&iRc);
+                    rc = iRc;
+                }
 
                 if (FAILED(rc))
                 {
@@ -891,7 +895,11 @@ int handleExportAppliance(HandlerArg *a)
         showProgress(progress);
 
         if (SUCCEEDED(rc))
-            progress->COMGETTER(ResultCode)(&rc);
+        {
+            LONG iRc;
+            progress->COMGETTER(ResultCode)(&iRc);
+            rc = iRc;
+        }
 
         if (FAILED(rc))
         {

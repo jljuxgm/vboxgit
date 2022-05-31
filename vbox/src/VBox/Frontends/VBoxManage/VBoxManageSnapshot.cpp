@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 20221 2009-06-03 08:54:39Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -93,7 +93,9 @@ int handleSnapshot(HandlerArg *a)
             CHECK_ERROR_BREAK(console, TakeSnapshot(name, desc, progress.asOutParam()));
 
             showProgress(progress);
-            progress->COMGETTER(ResultCode)(&rc);
+            LONG iRc;
+            progress->COMGETTER(ResultCode)(&iRc);
+            rc = iRc;
             if (FAILED(rc))
             {
                 com::ProgressErrorInfo info(progress);
@@ -133,7 +135,9 @@ int handleSnapshot(HandlerArg *a)
             CHECK_ERROR_BREAK(console, DiscardSnapshot(guid, progress.asOutParam()));
 
             showProgress(progress);
-            progress->COMGETTER(ResultCode)(&rc);
+            LONG iRc;
+            progress->COMGETTER(ResultCode)(&iRc);
+            rc = iRc;
             if (FAILED(rc))
             {
                 com::ProgressErrorInfo info(progress);
@@ -172,7 +176,9 @@ int handleSnapshot(HandlerArg *a)
             }
 
             showProgress(progress);
-            progress->COMGETTER(ResultCode)(&rc);
+            LONG iRc;
+            progress->COMGETTER(ResultCode)(&iRc);
+            rc = iRc;
             if (FAILED(rc))
             {
                 com::ProgressErrorInfo info(progress);
