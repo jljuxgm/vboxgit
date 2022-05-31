@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 23048 2009-09-15 23:21:32Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 23049 2009-09-15 23:26:11Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -114,7 +114,7 @@ static bool removeAddresses(char *pszAdapterName)
     char aszAddresses[MAX_ADDRESSES][MAX_ADDRLEN];
     int rc;
     int fds[2];
-    char * const argv[] = { pszAdapterName, NULL };
+    char * const argv[] = { VBOXADPCTL_IFCONFIG_PATH, pszAdapterName, NULL };
     char * const envp[] = { (char*)"LC_ALL=C", NULL };
 
     memset(aszAddresses, 0, sizeof(aszAddresses));
