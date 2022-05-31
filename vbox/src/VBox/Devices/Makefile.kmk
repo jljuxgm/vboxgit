@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20484 2009-06-12 01:11:54Z vboxsync $
+# $Id: Makefile.kmk 20485 2009-06-12 01:14:54Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -668,7 +668,7 @@ VBOX_WITH_SLIRP_ALIAS=1
 endif
 Drivers_INCS      := \
 	$(PATH_SUB_CURRENT) \
-	Device/Network
+	Network/slirp
 Drivers_SOURCES    = \
 	Audio/audio.c \
 	Audio/audiosniffer.c \
