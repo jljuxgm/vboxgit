@@ -1,4 +1,4 @@
-/* $Id: dnsproxy.c 19309 2009-05-03 19:39:24Z vboxsync $ */
+/* $Id: dnsproxy.c 19688 2009-05-14 11:45:54Z vboxsync $ */
 /*
  * Copyright (c) 2003,2004,2005 Armin Wolfermann
  *
@@ -268,10 +268,21 @@ dnsproxy_query(PNATState pData, struct socket *so, struct mbuf *m, int iphlen)
         req->id = QUERYID;
         memcpy(&req->client, &fromaddr, sizeof(struct sockaddr_in));
         memcpy(&req->clientid, &buf[0], 2);
+        req->dns_server = LIST_FIRST(&pData->dns_list_head);
+        if (req->dns_server == NULL)
+        {
+            static int fail_counter = 0;
+            RTMemFree(req);
+            if (fail_counter == 0)
+                LogRel(("NAT/dnsproxy: Empty DNS entry (suppressed 100 times)\n"));
+            else 
+                fail_counter = (fail_counter == 100 ? 0 : fail_counter++);
+            return;
+            
+        }
+        retransmit = 0;
         so->so_timeout = timeout;
         so->so_timeout_arg = req;
-        retransmit = 0;
-        req->dns_server = LIST_FIRST(&pData->dns_list_head);
         req->nbyte = byte;
         memcpy(req->byte, buf, byte); /* copying original request */
     } 
