@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 19402 2009-05-05 22:12:34Z vboxsync $ */
+/* $Id: VMReq.cpp 19420 2009-05-06 11:07:11Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -836,6 +836,9 @@ VMMR3DECL(int) VMR3ReqProcessU(PUVM pUVM, VMCPUID idDstCpu)
      *
      * We do not repeat the outer loop if we've got an informational status code
      * since that code needs processing by our caller.
+     */
+    /**
+     * @note SMP safe (multiple EMTs trying to satisfy VM_FF_REQUESTs)
      */
     int rc = VINF_SUCCESS;
     while (rc <= VINF_SUCCESS)

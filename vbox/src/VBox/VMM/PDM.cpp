@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: PDM.cpp 19420 2009-05-06 11:07:11Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1329,12 +1329,18 @@ VMMR3DECL(int) PDMR3QueryLun(PVM pVM, const char *pszDevice, unsigned iInstance,
  */
 VMMR3DECL(void) PDMR3DmaRun(PVM pVM)
 {
-    VM_FF_CLEAR(pVM, VM_FF_PDM_DMA);
-    if (pVM->pdm.s.pDmac)
+    /** @note Not really SMP safe; restrict it to VCPU 0? */
+    if (VMMGetCpuId(pVM) != 0)
+        return;
+
+    if (VM_FF_TESTANDCLEAR(pVM, VM_FF_PDM_DMA_BIT))
     {
-        bool fMore = pVM->pdm.s.pDmac->Reg.pfnRun(pVM->pdm.s.pDmac->pDevIns);
-        if (fMore)
-            VM_FF_SET(pVM, VM_FF_PDM_DMA);
+        if (pVM->pdm.s.pDmac)
+        {
+            bool fMore = pVM->pdm.s.pDmac->Reg.pfnRun(pVM->pdm.s.pDmac->pDevIns);
+            if (fMore)
+                VM_FF_SET(pVM, VM_FF_PDM_DMA);
+        }
     }
 }
 
