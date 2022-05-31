@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 20212 2009-06-03 08:09:42Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 20216 2009-06-03 08:18:23Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -1591,10 +1591,12 @@ HRESULT CombinedProgress::checkProgress()
             if (FAILED (rc))
                 return rc;
 
-            rc = progress->COMGETTER(ResultCode) (&mResultCode);
+            ULONG iRc;
+            rc = progress->COMGETTER(ResultCode) (&iRc);
             if (FAILED (rc))
                 return rc;
 
+            mResultCode = iRc;
             if (FAILED (mResultCode))
             {
                 rc = progress->COMGETTER(ErrorInfo) (mErrorInfo.asOutParam());
