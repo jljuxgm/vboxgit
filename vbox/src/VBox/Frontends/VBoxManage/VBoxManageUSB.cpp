@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUSB.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: VBoxManageUSB.cpp 20834 2009-06-23 13:38:22Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -557,8 +557,12 @@ int handleUSBFilter (HandlerArg *a)
 
     if (cmd.mMachine)
     {
-        /* commit and close the session */
-        CHECK_ERROR(cmd.mMachine, SaveSettings());
+        if (SUCCEEDED (rc))
+        {
+            /* commit the session */
+            CHECK_ERROR(cmd.mMachine, SaveSettings());
+        }
+        /* close the session */
         a->session->Close();
     }
 
