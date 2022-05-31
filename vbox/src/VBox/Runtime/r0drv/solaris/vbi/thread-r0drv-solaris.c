@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 22436 2009-08-25 14:31:21Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 22477 2009-08-26 16:23:23Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -119,7 +119,8 @@ RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
     vbi_preempt_disable();
 /// @todo check out splr and splx on S10!
 //    if (ASMIntAreEnabled())
-        pState->uOldPil = splr(ipltospl(DISP_LEVEL));
+        //pState->uOldPil = splr(ipltospl(DISP_LEVEL));
+        pState->uOldPil = splr(ipltospl(LOCK_LEVEL - 1));  //temporary
 //    else
 //    {
 //        /* splr doesn't restore the interrupt flag on S10. */
