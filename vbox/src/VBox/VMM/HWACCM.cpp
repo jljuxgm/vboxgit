@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 20864 2009-06-23 19:19:42Z vboxsync $ */
+/* $Id: HWACCM.cpp 21125 2009-07-01 13:57:35Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -527,10 +527,12 @@ VMMR3DECL(int) HWACCMR3InitCPU(PVM pVM)
             const char * const *papszDesc = ASMIsIntelCpu() ? &g_apszVTxExitReasons[0] : &g_apszAmdVExitReasons[0];
             for (int j=0;j<MAX_EXITREASON_STAT;j++)
             {
-                rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.paStatExitReason[j], STAMTYPE_COUNTER, STAMVISIBILITY_USED, STAMUNIT_OCCURENCES,
-                                     papszDesc[j] ? papszDesc[j] : "Exit reason",
-                                     "/HWACCM/CPU%d/Exit/Reason/%02x", i, j);
-                AssertRC(rc);
+                if (papszDesc[j])
+                {
+                    rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.paStatExitReason[j], STAMTYPE_COUNTER, STAMVISIBILITY_USED, STAMUNIT_OCCURENCES,
+                                        papszDesc[j], "/HWACCM/CPU%d/Exit/Reason/%02x", i, j);
+                    AssertRC(rc);
+                }
             }
             rc = STAMR3RegisterF(pVM, &pVCpu->hwaccm.s.StatExitReasonNPF, STAMTYPE_COUNTER, STAMVISIBILITY_USED, STAMUNIT_OCCURENCES, "Nested page fault", "/HWACCM/CPU%d/Exit/Reason/#NPF", i);
             AssertRC(rc);
