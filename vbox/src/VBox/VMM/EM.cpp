@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19735 2009-05-15 12:50:56Z vboxsync $ */
+/* $Id: EM.cpp 19746 2009-05-15 15:58:19Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -947,7 +947,12 @@ static int emR3RemExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
 
     /* Flush the recompiler TLB if the VCPU has changed. */
     if (pVM->em.s.idLastRemCpu != pVCpu->idCpu)
+    {
         REMFlushTBs(pVM);
+        /* Also sync the entire state. */
+        CPUMSetChangedFlags(pVCpu, CPUM_CHANGED_ALL);
+    }
+
     pVM->em.s.idLastRemCpu = pVCpu->idCpu;
 
     for (;;)
