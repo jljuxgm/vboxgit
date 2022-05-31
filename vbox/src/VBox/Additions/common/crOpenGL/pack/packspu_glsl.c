@@ -1,4 +1,4 @@
-/* $Id: packspu_glsl.c 23400 2009-09-29 09:02:40Z vboxsync $ */
+/* $Id: packspu_glsl.c 23437 2009-09-30 12:33:25Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related functions
@@ -121,6 +121,18 @@ void PACKSPU_APIENTRY packspu_DeleteProgram(GLuint program)
 {
     crStateDeleteProgram(program);
     crPackDeleteProgram(program);
+}
+
+void PACK_APIENTRY packspu_DeleteObjectARB(GLhandleARB obj)
+{
+    GLuint hwid = crStateGetProgramHWID(obj);
+
+    if (hwid)
+    {
+        crStateDeleteProgram(obj);
+    }
+
+    crPackDeleteObjectARB(obj);
 }
 
 void PACKSPU_APIENTRY packspu_LinkProgram(GLuint program)

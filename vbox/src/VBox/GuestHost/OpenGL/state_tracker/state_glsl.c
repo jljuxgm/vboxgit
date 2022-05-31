@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 23433 2009-09-30 11:38:45Z vboxsync $ */
+/* $Id: state_glsl.c 23437 2009-09-30 12:33:25Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -273,7 +273,13 @@ DECLEXPORT(void) STATE_APIENTRY crStateCreateProgram(GLuint id)
     CRGLSLProgram *pProgram;
     CRContext *g = GetCurrentContext();
 
-    CRASSERT(!crStateGetProgramObj(id));
+    pProgram = crStateGetProgramObj(id);
+    if (!pProgram)
+    {
+        crWarning("Program object %d already exists!", id);
+        crStateDeleteProgram(id);
+        CRASSERT(!crStateGetProgramObj(id));
+    }
 
     pProgram = (CRGLSLProgram *) crAlloc(sizeof(*pProgram));
     if (!pProgram)
