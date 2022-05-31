@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 18864 2009-04-10 12:03:59Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 23036 2009-09-15 19:31:47Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -216,7 +216,7 @@ int main(int argc, char *argv[])
             pszAddress = argv[2];
             if (strcmp("remove", pszAddress) == 0)
             {
-                strncpy(Req.szName, pszAdapterName, sizeof(Req.szName));
+                snprintf(Req.szName, sizeof(Req.szName), "%s", pszAdapterName);
                 return doIOCtl(VBOXNETADP_CTL_REMOVE, &Req);
             }
             break;
