@@ -1,4 +1,4 @@
-/* $Id: tstPath.cpp 19926 2009-05-22 23:37:39Z vboxsync $ */
+/* $Id: tstPath.cpp 19929 2009-05-23 00:15:49Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -268,6 +268,7 @@ int main()
         "dir//",                "/file",                "dir/file",
         "dir//",                "//file",               "dir/file",
         "dir///",               "///file",              "dir/file",
+        "/bin/testcase",        "foo.r0",               "/bin/testcase/foo.r0",
 #if defined (RT_OS_OS2) || defined (RT_OS_WINDOWS)
         "/",                    "\\",                   "/",
         "\\",                   "/",                    "\\",
@@ -281,6 +282,7 @@ int main()
         "C:",                   "\\autoexec.bat",       "C:\\autoexec.bat",
         "C:\\",                 "/autoexec.bat",        "C:\\autoexec.bat",
         "C:\\\\",               "autoexec.bat",         "C:\\autoexec.bat",
+        "E:\\bin\\testcase",    "foo.r0",               "E:\\bin\\testcase/foo.r0",
 #endif
     };
     for (unsigned i = 0; i < RT_ELEMENTS(s_apszAppendTests); i += 3)

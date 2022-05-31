@@ -1,4 +1,4 @@
-/* $Id: path.cpp 19928 2009-05-22 23:47:35Z vboxsync $ */
+/* $Id: path.cpp 19929 2009-05-23 00:15:49Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation.
  */
@@ -758,7 +758,8 @@ RTDECL(int) RTPathAppend(char *pszPath, size_t cbPathDst, const char *pszAppend)
         if (!RTPATH_IS_SLASH(pszAppend[0]))
         {
 #if defined (RT_OS_OS2) || defined (RT_OS_WINDOWS)
-            if (    pszPath[1] == ':'
+            if (    (size_t)(pszPathEnd - pszPath) == 2
+                &&  pszPath[1] == ':'
                 &&  RT_C_IS_ALPHA(pszPath[0]))
             {
                 if ((size_t)(pszPathEnd - pszPath) + cchAppend >= cbPathDst)
