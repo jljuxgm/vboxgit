@@ -1,4 +1,4 @@
-/* $Id: heapsimple.cpp 22273 2009-08-14 23:00:51Z vboxsync $ */
+/* $Id: heapsimple.cpp 22281 2009-08-17 08:04:06Z vboxsync $ */
 /** @file
  * IPRT - A Simple Heap.
  */
@@ -387,7 +387,7 @@ RTDECL(int) RTHeapSimpleRelocate(RTHEAPSIMPLE hHeap, uintptr_t offDelta)
     /*
      * Walk the heap blocks.
      */
-    for (pCur = PRTHEAPSIMPLEFREE(pHeapInt + 1); 
+    for (pCur = (PRTHEAPSIMPLEFREE)(pHeapInt + 1); 
          pCur && (uintptr_t)pCur < (uintptr_t)pHeapInt->pvEnd; 
          pCur = (PRTHEAPSIMPLEFREE)pCur->Core.pNext)
     {
