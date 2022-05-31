@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 23499 2009-10-02 07:58:09Z vboxsync $ */
+/* $Id: manifest.cpp 23501 2009-10-02 10:59:42Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling.
  */
@@ -39,7 +39,7 @@
 #include <iprt/file.h>
 #include <iprt/mem.h>
 #include <iprt/path.h>
-#include <iprt/sha1.h>
+#include <iprt/sha.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
 
