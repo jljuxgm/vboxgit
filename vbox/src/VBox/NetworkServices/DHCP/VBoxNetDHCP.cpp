@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 20864 2009-06-23 19:19:42Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 22254 2009-08-14 10:59:09Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -652,7 +652,7 @@ void VBoxNetDhcp::explodeConfig(void)
 
         /* Expand the IP lease range. */
         uint32_t const uEnd = RT_N2H_U32(pCfg->m_UpperAddr.u);
-        for (uint32_t i = RT_N2H_U32(pCfg->m_LowerAddr.u); i < uEnd; i++)
+        for (uint32_t i = RT_N2H_U32(pCfg->m_LowerAddr.u); i <= uEnd; i++)
         {
             RTNETADDRIPV4 IPv4Addr;
             IPv4Addr.u = RT_H2N_U32(i);
