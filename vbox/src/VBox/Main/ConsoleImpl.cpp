@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 23606 2009-10-07 18:50:20Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 23624 2009-10-08 16:23:30Z vboxsync $ */
 
 /** @file
  *
@@ -2976,7 +2976,7 @@ DECLCALLBACK(int) Console::changeDrive(Console *pThis, const char *pszDevice, un
         {
             rc = CFGMR3InsertString(pLunL0, "Driver",       !strcmp(pszDevice, "i82078") ? "HostFloppy" : "HostDVD");   RC_CHECK();
             rc = CFGMR3InsertNode(pLunL0,   "Config",       &pCfg);     RC_CHECK();
-            Assert(!pszPath && !*pszPath);
+            Assert(pszPath && *pszPath);
             rc = CFGMR3InsertString(pCfg,   "Path",         pszPath);   RC_CHECK();
             if (strcmp(pszDevice, "i82078"))
             {
