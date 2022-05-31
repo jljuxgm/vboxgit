@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 22008 2009-08-05 18:52:05Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 22009 2009-08-05 18:54:42Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -91,8 +91,7 @@
 #define DEVICE_DESC_DRV          "VirtualBox NetDrv"
 #define DEVICE_DESC_MOD          "VirtualBox NetMod"
 
-/** @todo Remove the below hackery once done! */
-#if defined(DEBUG_ramshankar) && defined(LOG_ENABLED)
+#if defined(DEBUG_ramshankar)
 # undef Log
 # define Log        LogRel
 # undef LogFlow
