@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: VMMAll.cpp 19227 2009-04-28 08:50:31Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -72,7 +72,7 @@ VMMDECL(VMCPUID) VMMGetCpuId(PVM pVM)
     return VMR3GetVMCPUId(pVM);
 
 #else  /* IN_RING0 */
-    return HWACCMGetVMCPUId(pVM);
+    return HWACCMR0GetVMCPUId(pVM);
 #endif /* IN_RING0 */
 }
 
@@ -100,7 +100,7 @@ VMMDECL(PVMCPU) VMMGetCpu(PVM pVM)
     return &pVM->aCpus[VMR3GetVMCPUId(pVM)];
 
 #else  /* IN_RING0 */
-    return &pVM->aCpus[HWACCMGetVMCPUId(pVM)];
+    return HWACCMR0GetVMCPU(pVM);
 #endif /* IN_RING0 */
 }
 
