@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 23251 2009-09-23 10:55:46Z vboxsync $ */
+/* $Id: PGMAllBth.h 23252 2009-09-23 11:09:10Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2380,7 +2380,7 @@ PGM_BTH_DECL(int, CheckPageFault)(PVMCPU pVCpu, uint32_t uErr, PSHWPDE pPdeDst, 
                              *       fault again and take this path to only invalidate the entry.
                              */
                             if (    pPage
-                                &&  PGM_PAGE_HAS_ACTIVE_PHYSICAL_HANDLERS(pPage))
+                                &&  PGM_PAGE_HAS_ACTIVE_HANDLERS(pPage))
                             {
                                 /* Assuming write handlers here as the PTE is present (otherwise we wouldn't be here). */
                                 pPteDst->n.u1Write    = 0;
