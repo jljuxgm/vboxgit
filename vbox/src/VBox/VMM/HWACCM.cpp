@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 21695 2009-07-17 14:07:46Z vboxsync $ */
+/* $Id: HWACCM.cpp 21700 2009-07-17 14:35:06Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1385,6 +1385,7 @@ VMMR3DECL(void) HWACCMR3Reset(PVM pVM)
     pVM->hwaccm.s.pFreeGuestPatchMem  = 0;
     pVM->hwaccm.s.cbGuestPatchMem     = 0;
     pVM->hwaccm.s.svm.cPatches        = 0;
+    pVM->hwaccm.s.svm.PatchTree       = 0;
     ASMMemZero32(pVM->hwaccm.s.svm.aPatches, sizeof(pVM->hwaccm.s.svm.aPatches));
 }
 
