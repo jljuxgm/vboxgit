@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 48532 2009-06-13 20:53:44Z bird $ */
+/* $Id: EMHandleRCTmpl.h 21221 2009-07-05 14:21:16Z vboxsync $ */
 /** @file
  * EM - emR3RawHandleRC template
  */
