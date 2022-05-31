@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQGL.cpp 22675 2009-09-01 14:50:32Z vboxsync $ */
+/* $Id: VBoxFBQGL.cpp 22751 2009-09-03 13:57:52Z vboxsync $ */
 /** @file
  * VBoxFBQGL Opengl-based FrameBuffer implementation
  */
@@ -973,7 +973,7 @@ int VBoxVHWAGlShader::init()
  //   int length = program.length();
     QByteArray asciiStr = program.toAscii();
     const char * contents = asciiStr.constData();
-    GLint length = (GLint)strlen(contents) + 1;
+    GLint length = (GLint)strlen(contents);
 
     VBOXQGL_CHECKERR(
             vboxglShaderSource(mShader, 1, &contents, &length);
