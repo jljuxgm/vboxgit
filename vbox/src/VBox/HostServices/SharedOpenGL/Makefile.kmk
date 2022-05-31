@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22284 2009-08-17 08:44:47Z vboxsync $
+# $Id: Makefile.kmk 22335 2009-08-18 23:01:56Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox HGCM Service.
 #
@@ -51,6 +51,7 @@ endif # darwin
 VBoxSharedCrOpenGL_TEMPLATE = VBOXCROGLR3HOSTDLL
 ifdef VBOX_WITH_XPCOM
  VBoxSharedCrOpenGL_DEFS = VBOX_WITH_XPCOM
+ VBoxSharedCrOpenGL_CXXFLAGS = -Wno-non-virtual-dtor
 endif
 VBoxSharedCrOpenGL_INTERMEDIATES = \
 	$(TEMPLATE_VBOXMAINEXE_INTERMEDIATES)
