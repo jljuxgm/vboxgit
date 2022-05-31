@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 23285 2009-09-24 14:56:59Z vboxsync $ */
+/* $Id: VBoxManage.cpp 23286 2009-09-24 15:01:36Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -524,12 +524,11 @@ static int handleStartVM(HandlerArg *a)
         /* make sure the VM process will start on the same display as VBoxManage */
         Utf8Str str;
         const char *pszDisplay = RTEnvGet("DISPLAY");
-        if (pszDisplay)
-            str.append(Utf8StrFmt("DISPLAY=%s\n", pszDisplay));
+        str = Utf8StrFmt("DISPLAY=%s\n", pszDisplay);
         const char *pszXAuth = RTEnvGet("XAUTHORITY");
         if (pszXAuth)
             str.append(Utf8StrFmt("XAUTHORITY=%s\n", pszXAuth));
-        env = Bstr(str);
+        env = str;
 #endif
         ComPtr<IProgress> progress;
         CHECK_ERROR_RET(a->virtualBox, OpenRemoteSession(a->session, uuid, sessionType,
