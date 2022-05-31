@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 18829 2009-04-07 15:42:32Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 19002 2009-04-17 20:04:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2270,6 +2270,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             case AudioDriverType_CoreAudio:
             {
                 rc = CFGMR3InsertString(pCfg, "AudioDriver", "coreaudio");          RC_CHECK();
+                break;
+            }
+#endif
+#ifdef RT_OS_FREEBSD
+            case AudioDriverType_OSS:
+            {
+                rc = CFGMR3InsertString(pCfg, "AudioDriver", "oss");                RC_CHECK();
                 break;
             }
 #endif
