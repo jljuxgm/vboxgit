@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 17796 2009-03-13 09:37:44Z vboxsync $ */
+/* $Id: DrvVD.cpp 18127 2009-03-23 09:20:31Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1009,13 +1009,23 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
         }
 
         if (RT_SUCCESS(rc))
+        {
             Log(("%s: %d - Opened '%s' in %s mode\n", __FUNCTION__,
                  iLevel, pszName,
                  VDIsReadOnly(pThis->pDisk) ? "read-only" : "read-write"));
+            if (   VDIsReadOnly(pThis->pDisk)
+                && !fReadOnly)
+            {
+                rc = PDMDrvHlpVMSetError(pDrvIns, VERR_VD_IMAGE_READ_ONLY, RT_SRC_POS,
+                                         N_("Failed to open image '%s' for writing due to wrong "
+                                            "permissions"), pszName);
+                break;
+            }
+        }
         else
         {
            rc = PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
-                                    N_("Failed to open image '%s' in %s mode rc=%Rrc\n"), pszName,
+                                    N_("Failed to open image '%s' in %s mode rc=%Rrc"), pszName,
                                     (uOpenFlags & VD_OPEN_FLAGS_READONLY) ? "readonly" : "read-write", rc);
            break;
         }
