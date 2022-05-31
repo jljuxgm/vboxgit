@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 23128 2009-09-18 12:50:55Z vboxsync $ */
+/* $Id: initterm.cpp 23175 2009-09-21 09:54:42Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -332,8 +332,11 @@ HRESULT Initialize()
      * Note! CoInitializeEx and CoUninitialize does it's own reference
      *       counting, so this exercise is entirely for the EventQueue init. */
     bool fRc;
-    RTTHREAD hSelf = RTThreadSelf (); Assert (hSelf != NIL_RTTHREAD);
-    ASMAtomicCmpXchgHandle (&gCOMMainThread, hSelf, NIL_RTTHREAD, fRc);
+    RTTHREAD hSelf = RTThreadSelf ();
+    if (hSelf != NIL_RTTHREAD)
+        ASMAtomicCmpXchgHandle (&gCOMMainThread, hSelf, NIL_RTTHREAD, fRc);
+    else
+        fRc = false;
     if (!fRc)
     {
         if (   gCOMMainThread == hSelf
