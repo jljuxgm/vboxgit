@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 18782 2009-04-06 15:58:23Z vboxsync $ */
+/* $Id: VBoxManage.cpp 18783 2009-04-06 15:59:53Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -211,8 +211,8 @@ static int handleRegisterVM(HandlerArg *a)
 
 static const RTGETOPTDEF g_aUnregisterVMOptions[] =
 {
-    { "--delete",       'd', RTGETOPT_REQ_STRING },
-    { "-delete",        'd', RTGETOPT_REQ_STRING },     // deprecated
+    { "--delete",       'd', RTGETOPT_REQ_NOTHING },
+    { "-delete",        'd', RTGETOPT_REQ_NOTHING },    // deprecated
 };
 
 static int handleUnregisterVM(HandlerArg *a)
