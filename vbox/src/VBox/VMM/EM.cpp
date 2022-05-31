@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19440 2009-05-06 15:19:56Z vboxsync $ */
+/* $Id: EM.cpp 19442 2009-05-06 15:34:20Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3705,6 +3705,10 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                  */
                 case VINF_EM_RESUME:
                     Log2(("EMR3ExecuteVM: VINF_EM_RESUME: %d -> VINF_EM_RESCHEDULE\n", pVCpu->em.s.enmState));
+                    /* Don't reschedule in the halted or wait for SIPI case. */
+                    if (    pVCpu->em.s.enmPrevState == EMSTATE_WAIT_SIPI
+                        ||  pVCpu->em.s.enmPrevState == EMSTATE_HALTED)
+                        break;
                     /* fall through and get scheduled. */
 
                 /*
