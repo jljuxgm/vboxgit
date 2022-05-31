@@ -1,4 +1,4 @@
-/* $Id: vbox.c 21227 2009-07-05 19:50:18Z vboxsync $ */
+/* $Id: vbox.c 21553 2009-07-13 16:48:21Z vboxsync $ */
 /** @file
  * Display - VirtualBox Win 2000/XP guest display driver, support functions.
  */
@@ -901,13 +901,13 @@ int vboxVHWAInitHostInfo1(PPDEV ppdev)
     }
 
     ppdev->vhwaInfo.caps = pInfo->caps;
+    ppdev->vhwaInfo.caps2 = pInfo->caps2;
     ppdev->vhwaInfo.colorKeyCaps = pInfo->colorKeyCaps;
     ppdev->vhwaInfo.stretchCaps = pInfo->stretchCaps;
     ppdev->vhwaInfo.surfaceCaps = pInfo->surfaceCaps;
     ppdev->vhwaInfo.numOverlays = pInfo->numOverlays;
     ppdev->vhwaInfo.numFourCC = pInfo->numFourCC;
     ppdev->vhwaInfo.bVHWAEnabled = (pInfo->cfgFlags & VBOXVHWA_CFG_ENABLED);
-
     vboxVHWAFreeHostInfo1(ppdev, pInfo);
     return VINF_SUCCESS;
 }
