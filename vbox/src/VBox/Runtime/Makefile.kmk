@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22777 2009-09-04 13:10:12Z vboxsync $
+# $Id: Makefile.kmk 22959 2009-09-11 13:45:44Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -182,6 +182,9 @@ ifdef IPRT_WITH_LZJB
 endif
 ifdef IPRT_WITH_LZO
  RuntimeR3_DEFS         += RTZIP_USE_LZO
+endif
+ifdef IPRT_WITH_FUTEX_BASED_SEMS
+ RuntimeR3_DEFS.linux   += IPRT_WITH_FUTEX_BASED_SEMS
 endif
 RuntimeR3_INCS          = \
 	include \
@@ -444,19 +447,26 @@ RuntimeR3_SOURCES.linux = \
 	r3/posix/timer-posix.cpp \
 	r3/posix/tls-posix.cpp \
 	r3/posix/utf8-posix.cpp
-RuntimeR3_SOURCES.linux.x86 += \
-	r3/posix/semevent-posix.cpp \
-	r3/posix/semeventmulti-posix.cpp \
-	r3/posix/semmutex-posix.cpp
-RuntimeR3_SOURCES.linux.amd64 += \
-	r3/linux/semevent-linux.cpp \
-	r3/linux/semeventmulti-linux.cpp
-ifdef RT_NEW_LINUX_MUTEX_CODE
- RuntimeR3_SOURCES.linux.amd64 += \
-	r3/linux/semmutex-linux.cpp
+ifdef IPRT_WITH_FUTEX_BASED_SEMS
+ RuntimeR3_SOURCES.linux += \
+ 	r3/linux/semevent-linux.cpp \
+ 	r3/linux/semeventmulti-linux.cpp \
+ 	r3/linux/semmutex-linux.cpp
 else
+ RuntimeR3_SOURCES.linux.x86 += \
+ 	r3/posix/semevent-posix.cpp \
+ 	r3/posix/semeventmulti-posix.cpp \
+ 	r3/posix/semmutex-posix.cpp
  RuntimeR3_SOURCES.linux.amd64 += \
-	r3/posix/semmutex-posix.cpp
+ 	r3/linux/semevent-linux.cpp \
+ 	r3/linux/semeventmulti-linux.cpp
+ ifdef RT_NEW_LINUX_MUTEX_CODE
+  RuntimeR3_SOURCES.linux.amd64 += \
+ 	r3/linux/semmutex-linux.cpp
+ else
+  RuntimeR3_SOURCES.linux.amd64 += \
+ 	r3/posix/semmutex-posix.cpp
+ endif
 endif
 
 RuntimeR3_SOURCES.os2   = \

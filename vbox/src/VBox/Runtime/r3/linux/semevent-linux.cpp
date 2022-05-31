@@ -1,4 +1,4 @@
-/* $Id: semevent-linux.cpp 22956 2009-09-11 12:55:18Z vboxsync $ */
+/* $Id: semevent-linux.cpp 22959 2009-09-11 13:45:44Z vboxsync $ */
 /** @file
  * IPRT - Event Semaphore, Linux (2.6.x+).
  */
@@ -29,7 +29,7 @@
  */
 
 #include <features.h>
-#if __GLIBC_PREREQ(2,6)
+#if __GLIBC_PREREQ(2,6) && !defined(IPRT_WITH_FUTEX_BASED_SEMS)
 
 /*
  * glibc 2.6 fixed a serious bug in the mutex implementation. We wrote this
@@ -82,7 +82,7 @@ struct RTSEMEVENTINTERNAL
     intptr_t volatile   iMagic;
     /** The futex state variable.
      * 0 means not signalled.
-     * 1 means signalled */
+       1 means signalled. */
     uint32_t volatile   fSignalled;
     /** The number of waiting threads */
     int32_t volatile    cWaiters;
@@ -194,13 +194,15 @@ static int rtSemEventWait(RTSEMEVENT EventSem, unsigned cMillies, bool fAutoResu
         return VINF_SUCCESS;
 
     /*
-     * Convert timeout value.
+     * Convert the timeout value.
      */
     struct timespec ts;
     struct timespec *pTimeout = NULL;
     uint64_t u64End = 0; /* shut up gcc */
     if (cMillies != RT_INDEFINITE_WAIT)
     {
+        if (!cMillies)
+            return VERR_TIMEOUT;
         ts.tv_sec  = cMillies / 1000;
         ts.tv_nsec = (cMillies % 1000) * 1000000;
         u64End = RTTimeSystemNanoTS() + cMillies * 1000000;
@@ -251,14 +253,14 @@ static int rtSemEventWait(RTSEMEVENT EventSem, unsigned cMillies, bool fAutoResu
         /* adjust the relative timeout */
         if (pTimeout)
         {
-            int64_t u64Diff = u64End - RTTimeSystemNanoTS();
-            if (u64Diff < 1000)
+            int64_t i64Diff = u64End - RTTimeSystemNanoTS();
+            if (i64Diff < 1000)
             {
                 rc = VERR_TIMEOUT;
                 break;
             }
-            ts.tv_sec  = u64Diff / 1000000000;
-            ts.tv_nsec = u64Diff % 1000000000;
+            ts.tv_sec  = i64Diff / 1000000000;
+            ts.tv_nsec = i64Diff % 1000000000;
         }
     }
 
@@ -281,4 +283,5 @@ RTDECL(int)  RTSemEventWaitNoResume(RTSEMEVENT EventSem, unsigned cMillies)
     return rtSemEventWait(EventSem, cMillies, false);
 }
 
-#endif /* glibc < 2.6 */
+#endif /* glibc < 2.6 || IPRT_WITH_FUTEX_BASED_SEMS */
+
