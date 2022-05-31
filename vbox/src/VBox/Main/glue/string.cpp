@@ -1,4 +1,4 @@
-/* $Id: string.cpp 21393 2009-07-08 13:02:09Z vboxsync $ */
+/* $Id: string.cpp 21394 2009-07-08 13:06:27Z vboxsync $ */
 
 /** @file
  *
@@ -138,14 +138,14 @@ bool Utf8Str::contains(const Utf8Str &that, CaseSensitivity cs /*= CaseSensitive
 
 Utf8Str& Utf8Str::toLower()
 {
-    if (length())
+    if (!isEmpty())
         ::RTStrToLower(m_psz);
     return *this;
 }
 
 Utf8Str& Utf8Str::toUpper()
 {
-    if (length())
+    if (!isEmpty())
         ::RTStrToUpper(m_psz);
     return *this;
 }

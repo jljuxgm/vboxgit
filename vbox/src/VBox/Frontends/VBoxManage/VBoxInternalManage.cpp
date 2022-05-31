@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 21393 2009-07-08 13:02:09Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 21394 2009-07-08 13:06:27Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -749,7 +749,7 @@ static int CmdListPartitions(int argc, char **argv, ComPtr<IVirtualBox> aVirtual
         }
     }
 
-    if (!rawdisk.length())
+    if (rawdisk.isEmpty())
         return errorSyntax(USAGE_LISTPARTITIONS, "Mandatory parameter -rawdisk missing");
 
     RTFILE RawFile;
@@ -864,7 +864,7 @@ static int CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aVirtualB
 
     if (filename.isEmpty())
         return errorSyntax(USAGE_CREATERAWVMDK, "Mandatory parameter -filename missing");
-    if (!rawdisk.length())
+    if (rawdisk.isEmpty())
         return errorSyntax(USAGE_CREATERAWVMDK, "Mandatory parameter -rawdisk missing");
     if (!pszPartitions && pszMBRFilename)
         return errorSyntax(USAGE_CREATERAWVMDK, "The parameter -mbr is only valid when the parameter -partitions is also present");
