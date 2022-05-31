@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 21363 2009-07-07 17:10:52Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 21367 2009-07-07 17:44:52Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -101,6 +101,7 @@ VMMDECL(void) PDMQueueInsert(PPDMQUEUE pQueue, PPDMQUEUEITEMCORE pItem)
 #endif
     }
     STAM_REL_COUNTER_INC(&pQueue->StatInsert);
+    STAM_STATS({ ASMAtomicIncU32(&pQueue->cStatPending); });
 }
 
 

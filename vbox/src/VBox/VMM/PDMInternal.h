@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 21363 2009-07-07 17:10:52Z vboxsync $ */
+/* $Id: PDMInternal.h 21367 2009-07-07 17:44:52Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -725,6 +725,9 @@ typedef struct PDMQUEUE
 #ifdef VBOX_WITH_STATISTICS
     /** State: Profiling the flushing. */
     STAMPROFILE                     StatFlushPrf;
+    /** State: Pending items. */
+    uint32_t volatile               cStatPending;
+    uint32_t volatile               cAlignment;
 #endif
 
     /** Array of pointers to free items. Variable size. */
