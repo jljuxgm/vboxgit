@@ -1,4 +1,4 @@
-/* $Id: com.cpp 22702 2009-09-02 10:16:24Z vboxsync $ */
+/* $Id: com.cpp 22708 2009-09-02 11:40:56Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer
@@ -50,14 +50,13 @@
 
 #include <VBox/err.h>
 
-#include <Logging.h>
-
 #ifdef RT_OS_DARWIN
 #define VBOX_USER_HOME_SUFFIX   "Library/VirtualBox"
 #else
 #define VBOX_USER_HOME_SUFFIX   ".VirtualBox"
 #endif
 
+#include "Logging.h"
 
 namespace com
 {
