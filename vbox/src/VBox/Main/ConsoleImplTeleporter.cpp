@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 23805 2009-10-15 15:45:46Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 23806 2009-10-15 15:54:34Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -560,7 +560,9 @@ Console::teleporterSrc(TeleporterStateSrc *pState)
     /*
      * Do compatability checks of the VM config and the host hardware.
      */
-    /** @todo later */
+    /** @todo later
+     * Update: As much as possible will be taken care of by the first snapshot
+     *         pass. */
 
     /*
      * Start loading the state.
