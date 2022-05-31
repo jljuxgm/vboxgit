@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 19358 2009-05-05 10:08:35Z vboxsync $ */
+/* $Id: VMMAll.cpp 19434 2009-05-06 13:58:35Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -27,6 +27,7 @@
 #include <VBox/vmm.h>
 #include "VMMInternal.h"
 #include <VBox/vm.h>
+#include <VBox/vmm.h>
 #include <VBox/param.h>
 #include <VBox/hwaccm.h>
 
@@ -42,7 +43,10 @@
  */
 VMMDECL(RTRCPTR) VMMGetStackRC(PVM pVM)
 {
-    return (RTRCPTR)pVM->vmm.s.pbEMTStackBottomRC;
+    PVMCPU pVCpu = VMMGetCpu(pVM);
+    Assert(pVCpu);
+
+    return (RTRCPTR)pVCpu->vmm.s.pbEMTStackBottomRC;
 }
 
 

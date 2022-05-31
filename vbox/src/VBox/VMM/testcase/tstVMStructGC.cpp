@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 19366 2009-05-05 11:58:07Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 19434 2009-05-06 13:58:35Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -872,9 +872,9 @@ int main()
     GEN_CHECK_OFF(VMM, pfnCPUMRCResumeGuest);
     GEN_CHECK_OFF(VMM, pfnCPUMRCResumeGuestV86);
     GEN_CHECK_OFF(VMM, iLastGZRc);
-    GEN_CHECK_OFF(VMM, pbEMTStackR3);
-    GEN_CHECK_OFF(VMM, pbEMTStackRC);
-    GEN_CHECK_OFF(VMM, pbEMTStackBottomRC);
+    GEN_CHECK_OFF(VMMCPU, pbEMTStackR3);
+    GEN_CHECK_OFF(VMMCPU, pbEMTStackRC);
+    GEN_CHECK_OFF(VMMCPU, pbEMTStackBottomRC);
     GEN_CHECK_OFF(VMM, pRCLoggerRC);
     GEN_CHECK_OFF(VMM, pRCLoggerR3);
     GEN_CHECK_OFF(VMM, pR0LoggerR0);
@@ -883,12 +883,12 @@ int main()
     GEN_CHECK_OFF(VMM, pYieldTimer);
     GEN_CHECK_OFF(VMM, cYieldResumeMillies);
     GEN_CHECK_OFF(VMM, cYieldEveryMillies);
-    GEN_CHECK_OFF(VMM, enmCallHostOperation);
-    GEN_CHECK_OFF(VMM, rcCallHost);
-    GEN_CHECK_OFF(VMM, u64CallHostArg);
-    GEN_CHECK_OFF(VMM, CallHostR0JmpBuf);
-    GEN_CHECK_OFF(VMM, CallHostR0JmpBuf.SpCheck);
-    GEN_CHECK_OFF(VMM, CallHostR0JmpBuf.SpResume);
+    GEN_CHECK_OFF(VMMCPU, enmCallHostOperation);
+    GEN_CHECK_OFF(VMMCPU, rcCallHost);
+    GEN_CHECK_OFF(VMMCPU, u64CallHostArg);
+    GEN_CHECK_OFF(VMMCPU, CallHostR0JmpBuf);
+    GEN_CHECK_OFF(VMMCPU, CallHostR0JmpBuf.SpCheck);
+    GEN_CHECK_OFF(VMMCPU, CallHostR0JmpBuf.SpResume);
     GEN_CHECK_OFF(VMM, StatRunRC);
     GEN_CHECK_OFF(VMM, StatRZCallPGMLock);
 
