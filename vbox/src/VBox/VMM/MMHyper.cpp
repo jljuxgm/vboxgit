@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 20858 2009-06-23 16:56:15Z vboxsync $ */
+/* $Id: MMHyper.cpp 20868 2009-06-24 00:10:55Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -1187,7 +1187,7 @@ VMMR3DECL(int)   MMR3HyperHCPhys2HCVirtEx(PVM pVM, RTHCPHYS HCPhys, void **ppv)
 VMMR3DECL(int) MMR3HyperReadGCVirt(PVM pVM, void *pvDst, RTGCPTR GCPtr, size_t cb)
 {
     if (GCPtr - pVM->mm.s.pvHyperAreaGC >= pVM->mm.s.cbHyperArea)
-        return VERR_INVALID_PARAMETER;
+        return VERR_INVALID_POINTER;
     return PGMR3MapRead(pVM, pvDst, GCPtr, cb);
 }
 

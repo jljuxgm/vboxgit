@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 19576 2009-05-11 12:43:48Z vboxsync $ */
+/* $Id: DBGFMem.cpp 20868 2009-06-24 00:10:55Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -161,7 +161,10 @@ static DECLCALLBACK(int) dbgfR3MemRead(PVM pVM, VMCPUID idCpu, PCDBGFADDRESS pAd
     int rc;
     if (DBGFADDRESS_IS_HMA(pAddress))
     {
-        rc = VERR_INVALID_POINTER;
+        if (DBGFADDRESS_IS_PHYS(pAddress))
+            rc = VERR_INVALID_POINTER;
+        else
+            rc = MMR3HyperReadGCVirt(pVM, pvBuf, pAddress->FlatPtr, cbRead);
     }
     else
     {
