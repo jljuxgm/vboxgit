@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 19690 2009-05-14 11:49:00Z vboxsync $ */
+/* $Id: PGMPool.cpp 19708 2009-05-14 17:58:19Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -532,7 +532,7 @@ static DECLCALLBACK(int) pgmR3PoolAccessHandler(PVM pVM, RTGCPHYS GCPhys, void *
      * We cannot flush a page if we're in an async thread because of REM notifications.
      */
     pgmLock(pVM);
-    if (!pVCpu)
+    if (!pVCpu) /** @todo This shouldn't happen any longer, all access handlers will be called on an EMT. All ring-3 handlers, except MMIO, already owns the PGM lock. @bugref{3170} */
     {
         Log(("pgmR3PoolAccessHandler: async thread, requesting EMT to flush the page: %p:{.Core=%RHp, .idx=%d, .GCPhys=%RGp, .enmType=%d}\n",
              pPage, pPage->Core.Key, pPage->idx, pPage->GCPhys, pPage->enmKind));
