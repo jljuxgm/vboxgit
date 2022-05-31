@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 18072 2009-03-18 16:58:40Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 18162 2009-03-23 19:28:13Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of -modifyvm command.
  */
@@ -1053,7 +1053,7 @@ int handleModifyVM(HandlerArg *a)
                     if (FAILED(rc))
                     {
                         /* open the new hard disk object */
-                        CHECK_ERROR(a->virtualBox, OpenHardDisk(Bstr(hdds[0]), hardDisk.asOutParam()));
+                        CHECK_ERROR(a->virtualBox, OpenHardDisk(Bstr(hdds[0]), TRUE /* fWrite */, hardDisk.asOutParam()));
                     }
                 }
                 if (hardDisk)
@@ -1086,7 +1086,7 @@ int handleModifyVM(HandlerArg *a)
                     if (FAILED(rc))
                     {
                         /* open the new hard disk object */
-                        CHECK_ERROR(a->virtualBox, OpenHardDisk(Bstr(hdds[1]), hardDisk.asOutParam()));
+                        CHECK_ERROR(a->virtualBox, OpenHardDisk(Bstr(hdds[1]), TRUE /* fWrite */, hardDisk.asOutParam()));
                     }
                 }
                 if (hardDisk)
@@ -1119,7 +1119,7 @@ int handleModifyVM(HandlerArg *a)
                     if (FAILED(rc))
                     {
                         /* open the new hard disk object */
-                        CHECK_ERROR(a->virtualBox, OpenHardDisk(Bstr(hdds[2]), hardDisk.asOutParam()));
+                        CHECK_ERROR(a->virtualBox, OpenHardDisk(Bstr(hdds[2]), TRUE /* fWrite */, hardDisk.asOutParam()));
                     }
                 }
                 if (hardDisk)
@@ -1832,7 +1832,7 @@ int handleModifyVM(HandlerArg *a)
                         if (FAILED(rc))
                         {
                             /* open the new hard disk object */
-                            CHECK_ERROR(a->virtualBox, OpenHardDisk(Bstr(hdds[i]), hardDisk.asOutParam()));
+                            CHECK_ERROR(a->virtualBox, OpenHardDisk(Bstr(hdds[i]), TRUE /* fWrite */, hardDisk.asOutParam()));
                         }
                     }
                     if (hardDisk)
@@ -1921,7 +1921,7 @@ int handleModifyVM(HandlerArg *a)
                         if (FAILED(rc))
                         {
                             /* open the new hard disk object */
-                            CHECK_ERROR(a->virtualBox, OpenHardDisk(Bstr(hdds[i]), hardDisk.asOutParam()));
+                            CHECK_ERROR(a->virtualBox, OpenHardDisk(Bstr(hdds[i]), TRUE /* fWrite */, hardDisk.asOutParam()));
                         }
                     }
                     if (hardDisk)

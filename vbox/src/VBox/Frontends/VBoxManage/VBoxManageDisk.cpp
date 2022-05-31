@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 18108 2009-03-20 11:04:44Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 18162 2009-03-23 19:28:13Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -520,7 +520,7 @@ int handleCloneHardDisk(HandlerArg *a)
         /* no? well, then it's an unkwnown image */
         if (FAILED (rc))
         {
-            CHECK_ERROR(a->virtualBox, OpenHardDisk(src, srcDisk.asOutParam()));
+            CHECK_ERROR(a->virtualBox, OpenHardDisk(src, TRUE /* fWrite */, srcDisk.asOutParam()));
             if (SUCCEEDED (rc))
             {
                 unknown = true;
@@ -942,7 +942,7 @@ int handleShowHardDiskInfo(HandlerArg *a)
         /* no? well, then it's an unkwnown image */
         if (FAILED (rc))
         {
-            CHECK_ERROR(a->virtualBox, OpenHardDisk(filepath, hardDisk.asOutParam()));
+            CHECK_ERROR(a->virtualBox, OpenHardDisk(filepath, TRUE /* fWrite */, hardDisk.asOutParam()));
             if (SUCCEEDED (rc))
             {
                 unknown = true;
@@ -1082,7 +1082,7 @@ int handleOpenMedium(HandlerArg *a)
         }
 
         ComPtr<IHardDisk> hardDisk;
-        CHECK_ERROR(a->virtualBox, OpenHardDisk(filepath, hardDisk.asOutParam()));
+        CHECK_ERROR(a->virtualBox, OpenHardDisk(filepath, TRUE /* fWrite */, hardDisk.asOutParam()));
         if (SUCCEEDED(rc) && hardDisk)
         {
             /* change the type if requested */

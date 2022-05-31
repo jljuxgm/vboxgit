@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 18023 2009-03-17 13:48:59Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 18162 2009-03-23 19:28:13Z vboxsync $ */
 
 /** @file
  *
@@ -150,7 +150,7 @@ public:
 
     STDMETHOD(CreateHardDisk)(IN_BSTR aFormat, IN_BSTR aLocation,
                                IHardDisk **aHardDisk);
-    STDMETHOD(OpenHardDisk) (IN_BSTR aLocation, IHardDisk **aHardDisk);
+    STDMETHOD(OpenHardDisk) (IN_BSTR aLocation, BOOL fWrite, IHardDisk **aHardDisk);
     STDMETHOD(GetHardDisk) (IN_GUID aId, IHardDisk **aHardDisk);
     STDMETHOD(FindHardDisk) (IN_BSTR aLocation, IHardDisk **aHardDisk);
 

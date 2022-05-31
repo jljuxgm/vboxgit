@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 18158 2009-03-23 17:36:37Z vboxsync $ */
+/* $Id: MachineImpl.cpp 18162 2009-03-23 19:28:13Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2151,9 +2151,10 @@ STDMETHODIMP Machine::AttachHardDisk(IN_GUID aId,
 
         ComObjPtr<HardDisk> diff;
         diff.createObject();
-        rc = diff->init (mParent, hd->preferredDiffFormat(),
-                         BstrFmt ("%ls"RTPATH_SLASH_STR,
-                                  mUserData->mSnapshotFolderFull.raw()));
+        rc = diff->init(mParent,
+                        hd->preferredDiffFormat(),
+                        BstrFmt ("%ls"RTPATH_SLASH_STR,
+                                 mUserData->mSnapshotFolderFull.raw()));
         CheckComRCReturnRC (rc);
 
         /* make sure the hard disk is not modified before createDiffStorage() */
