@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23529 2009-10-03 18:02:03Z vboxsync $
+# $Id: Makefile.kmk 23537 2009-10-04 14:21:08Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -344,7 +344,7 @@ VBoxSVC_SOURCES.solaris = \
 	solaris/DynLoadLibSolaris.cpp
 
 VBoxSVC_SOURCES.freebsd = \
-	linux/vbox-libhal.cpp
+	freebsd/HostHardwareFreeBSD.cpp
 
 ifdef VBOX_WITH_USB
  ifdef VBOX_WITH_SYSFS_BY_DEFAULT
