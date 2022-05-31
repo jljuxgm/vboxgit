@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.h 22441 2009-08-25 15:38:53Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.h 22599 2009-08-31 12:10:12Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -231,6 +231,7 @@ DECLINLINE(void) vboxNetFltWinPutTail(PSINGLE_LIST pList, PSINGLE_LIST_ENTRY pEn
 {
     pList->pTail->Next = pEntry;
     pList->pTail = pEntry;
+    pEntry->Next = NULL;
 }
 
 DECLINLINE(PSINGLE_LIST_ENTRY) vboxNetFltWinGetHead(PSINGLE_LIST pList)
