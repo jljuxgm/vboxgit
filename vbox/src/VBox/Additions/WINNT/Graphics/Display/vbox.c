@@ -1,4 +1,4 @@
-/* $Id: vbox.c 22189 2009-08-11 19:28:42Z vboxsync $ */
+/* $Id: vbox.c 22247 2009-08-13 21:04:28Z vboxsync $ */
 /** @file
  * Display - VirtualBox Win 2000/XP guest display driver, support functions.
  */
@@ -910,7 +910,7 @@ VBOXVHWACMD_QUERYINFO1* vboxVHWAQueryHostInfo1(PPDEV ppdev)
 
 VBOXVHWACMD_QUERYINFO2* vboxVHWAQueryHostInfo2(PPDEV ppdev, uint32_t numFourCC)
 {
-    VBOXVHWACMD* pCmd = vboxVHWACommandCreate (ppdev, VBOXVHWACMD_TYPE_QUERY_INFO2, sizeof(VBOXVHWACMD_QUERYINFO2));
+    VBOXVHWACMD* pCmd = vboxVHWACommandCreate (ppdev, VBOXVHWACMD_TYPE_QUERY_INFO2, VBOXVHWAINFO2_SIZE(numFourCC));
     VBOXVHWACMD_QUERYINFO2 *pInfo2;
     if (!pCmd)
     {
