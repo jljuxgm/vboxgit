@@ -1,4 +1,4 @@
-/* $Id: sha1.cpp 21748 2009-07-21 13:02:31Z vboxsync $ */
+/* $Id: sha1.cpp 21749 2009-07-21 13:06:29Z vboxsync $ */
 /** @file
  * IPRT - SHA1 digest creation
  */
@@ -93,7 +93,7 @@ RTR3DECL(int) RTSha1Digest(const char *pszFile, char **ppszDigest)
                              pucDig[5] , pucDig[6] , pucDig[7] , pucDig[8] , pucDig[9],
                              pucDig[10], pucDig[11], pucDig[12], pucDig[13], pucDig[14],
                              pucDig[15], pucDig[16], pucDig[17], pucDig[18], pucDig[19]);
-    if (cbRet == -1)
+    if (RT_UNLIKELY(cbRet == -1))
         rc = VERR_INTERNAL_ERROR;
 
     return rc;

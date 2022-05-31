@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 21748 2009-07-21 13:02:31Z vboxsync $ */
+/* $Id: manifest.cpp 21749 2009-07-21 13:06:29Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling.
  */
@@ -258,7 +258,7 @@ RTR3DECL(int) RTManifestWriteFiles(const char *pszManifestFile, const char * con
         /* Add the entry to the manifest file */
         int cbRet = RTStrmPrintf(pStream, "SHA1 (%s)= %s\n", RTPathFilename(papszFiles[i]), pszDigest);
         RTStrFree(pszDigest);
-        if (cbRet < 0)
+        if (RT_UNLIKELY(cbRet < 0))
         {
             rc = VERR_INTERNAL_ERROR;
             break;
