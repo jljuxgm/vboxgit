@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 19488 2009-05-07 13:54:51Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 19503 2009-05-07 19:37:11Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2080,7 +2080,7 @@ int pgmPoolSyncCR3(PVM pVM)
      * sometimes refered to as a 'lightweight flush'.
      */
 # ifdef IN_RING3 /* Don't flush in ring-0 or raw mode, it's taking too long. */
-    if (ASMBitTestAndClear(&pVM->pgm.s.fGlobalSyncFlags, PGM_GLOBAL_SYNC_CLEAR_PGM_POOL))
+    if (ASMBitTestAndClear(&pVM->pgm.s.fGlobalSyncFlags, PGM_GLOBAL_SYNC_CLEAR_PGM_POOL_BIT))
     {
         /** @todo SMP support! */
         Assert(pVM->cCPUs == 1);
