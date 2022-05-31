@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 22565 2009-08-28 18:03:42Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 22566 2009-08-28 18:25:32Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -40,6 +40,7 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/mp.h>
+
 
 
 RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
@@ -114,22 +115,9 @@ RTDECL(bool) RTThreadPreemptIsPossible(void)
 RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
 {
     AssertPtr(pState);
-//    Assert(pState->uOldPil == UINT32_MAX);
-
+    Assert(pState->u32Reserved == 0);
+    pState->u32Reserved = 42;
     vbi_preempt_disable();
-/// @todo check out splr and splx on S10!
-//    if (ASMIntAreEnabled())
-        //pState->uOldPil = splr(ipltospl(DISP_LEVEL));
-//        pState->uOldPil = splr(ipltospl(LOCK_LEVEL - 1));  //temporary
-//    else
-//    {
-//        /* splr doesn't restore the interrupt flag on S10. */
-//        pState->uOldPil = getpil();
-//        if (pState->uOldPil < DISP_LEVEL)
-//            pState->uOldPil = splx(DISP_LEVEL);
-//    }
-
-//    Assert(pState->uOldPil != UINT32_MAX);
     RT_ASSERT_PREEMPT_CPUID_DISABLE(pState);
 }
 
@@ -137,13 +125,10 @@ RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
 RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
 {
     AssertPtr(pState);
-//    Assert(pState->uOldPil != UINT32_MAX);
+    Assert(pState->u32Reserved == 42);
+    pState->u32Reserved = 0;
     RT_ASSERT_PREEMPT_CPUID_RESTORE(pState);
-
     vbi_preempt_enable();
-//    splx(pState->uOldPil);
-
-//    pState->uOldPil = UINT32_MAX;
 }
 
 
