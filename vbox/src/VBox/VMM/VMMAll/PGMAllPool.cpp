@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22710 2009-09-02 11:48:57Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22711 2009-09-02 11:49:48Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1617,6 +1617,7 @@ void pgmPoolAddDirtyPage(PVM pVM, PPGMPOOL pPool, PPGMPOOLPAGE pPage)
 bool pgmPoolIsDirtyPage(PVM pVM, RTGCPHYS GCPhys)
 {
     PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
+    Assert(PGMIsLocked(pVM));
     if (!pPool->cDirtyPages)
         return false;
 
