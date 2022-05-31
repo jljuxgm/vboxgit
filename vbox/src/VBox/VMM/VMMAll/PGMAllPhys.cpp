@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 19586 2009-05-11 14:28:13Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 19808 2009-05-19 09:23:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -343,6 +343,7 @@ static int pgmPhysEnsureHandyPage(PVM pVM)
  */
 int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
 {
+    PVMCPU pVCpu = VMMGetCpu(pVM);
     LogFlow(("pgmPhysAllocPage: %R[pgmpage] %RGp\n", pPage, GCPhys));
 
     /*
@@ -368,7 +369,7 @@ int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
     if (RT_FAILURE(rc2))
     {
         if (fFlushTLBs)
-            PGM_INVL_GUEST_TLBS();
+            PGM_INVL_GUEST_TLBS(pVCpu);
         Assert(rc2 == VERR_EM_NO_MEMORY);
         return rc2;
     }
@@ -423,7 +424,7 @@ int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
 
     if (    fFlushTLBs
         &&  rc != VINF_PGM_GCPHYS_ALIASED)
-        PGM_INVL_GUEST_TLBS();
+        PGM_INVL_GUEST_TLBS(pVCpu);
     return rc;
 }
 

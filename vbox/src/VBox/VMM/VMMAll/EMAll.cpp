@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 19725 2009-05-15 09:48:06Z vboxsync $ */
+/* $Id: EMAll.cpp 19808 2009-05-19 09:23:34Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -3010,7 +3010,7 @@ VMMDECL(int) EMInterpretWrmsr(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
 
         /* AMD64 Architecture Programmer's Manual: 15.15 TLB Control; flush the TLB if MSR_K6_EFER_NXE, MSR_K6_EFER_LME or MSR_K6_EFER_LMA are changed. */
         if ((oldval & (MSR_K6_EFER_NXE|MSR_K6_EFER_LME|MSR_K6_EFER_LMA)) != (pCtx->msrEFER & (MSR_K6_EFER_NXE|MSR_K6_EFER_LME|MSR_K6_EFER_LMA)))
-            HWACCMFlushTLB(pVM);
+            HWACCMFlushTLB(pVCpu);
 
         break;
     }

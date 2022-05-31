@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 19807 2009-05-19 09:01:05Z vboxsync $ */
+/* $Id: PGMPhys.cpp 19808 2009-05-19 09:23:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2619,9 +2619,11 @@ VMMR3DECL(int) PGMR3PhysRomProtect(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb, PGMROM
     /*
      * Process the request.
      */
+    pgmLock(pVM);
     int  rc = VINF_SUCCESS;
     bool fFlushTLB = false;
     for (PPGMROMRANGE pRom = pVM->pgm.s.pRomRangesR3; pRom; pRom = pRom->pNextR3)
+    {
         if (    GCPhys     <= pRom->GCPhysLast
             &&  GCPhysLast >= pRom->GCPhys
             &&  (pRom->fFlags & PGMPHYS_ROM_FLAGS_SHADOWED))
@@ -2665,15 +2667,22 @@ VMMR3DECL(int) PGMR3PhysRomProtect(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb, PGMROM
             if (fChanges)
             {
                 int rc = PGMHandlerPhysicalReset(pVM, pRom->GCPhys);
-                AssertRCReturn(rc, rc);
+                if (RT_FAILURE(rc))
+                {
+                    pgmUnlock(pVM);
+                    AssertRC(rc);
+                    return rc;
+                }
             }
 
             /* Advance - cb isn't updated. */
             GCPhys = pRom->GCPhys + (cPages << PAGE_SHIFT);
         }
-
+    }
+    pgmUnlock(pVM);
     if (fFlushTLB)
-        PGM_INVL_GUEST_TLBS();
+        PGM_INVL_GUEST_TLBS(VMMGetCpu(pVM));
+
     return rc;
 }
 
