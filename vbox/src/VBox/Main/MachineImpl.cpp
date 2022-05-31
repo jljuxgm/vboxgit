@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22625 2009-08-31 17:42:43Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22762 2009-09-04 08:52:31Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3117,9 +3117,6 @@ STDMETHODIMP Machine::SetGuestProperty(IN_BSTR aName,
             bool found = false;
             HWData::GuestProperty property;
             property.mFlags = NILFLAG;
-            if (fFlags & TRANSIENT)
-                rc = setError(VBOX_E_INVALID_OBJECT_STATE,
-                              tr("Cannot set a transient property when the machine is not running"));
 
             if (SUCCEEDED(rc))
             {
