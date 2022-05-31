@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 23388 2009-09-28 15:18:38Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 23916 2009-10-20 17:14:40Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1003,6 +1003,13 @@ static int VBoxGuestCommonIOCtl_VMMRequest(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTS
              cbData, cbReq, enmType));
         return VERR_INVALID_PARAMETER;
     }
+    int rc = VbglGRVerify(pReqHdr, cbData);
+    if (RT_FAILURE(rc))
+    {
+        Log(("VBoxGuestCommonIOCtl: VMMREQUEST: invalid header: size %#x, expected >= %#x (hdr); type=%#x; rc %d!!\n",
+             cbData, cbReq, enmType, rc));
+        return rc;
+    }
 
     /*
      * Make a copy of the request in the physical memory heap so
@@ -1012,7 +1019,7 @@ static int VBoxGuestCommonIOCtl_VMMRequest(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTS
      * it does makes things a bit simpler wrt to phys address.)
      */
     VMMDevRequestHeader *pReqCopy;
-    int rc = VbglGRAlloc(&pReqCopy, cbReq, enmType);
+    rc = VbglGRAlloc(&pReqCopy, cbReq, enmType);
     if (RT_FAILURE(rc))
     {
         Log(("VBoxGuestCommonIOCtl: VMMREQUEST: failed to allocate %u (%#x) bytes to cache the request. rc=%d!!\n",
