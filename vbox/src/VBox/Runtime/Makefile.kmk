@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21279 2009-07-06 23:10:08Z vboxsync $
+# $Id: Makefile.kmk 21280 2009-07-06 23:18:22Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1286,6 +1286,7 @@ RuntimeR0Drv_SOURCES.freebsd = \
 	r0drv/freebsd/assert-r0drv-freebsd.c \
 	r0drv/freebsd/initterm-r0drv-freebsd.c \
 	r0drv/freebsd/memobj-r0drv-freebsd.c \
+	r0drv/freebsd/memuserkernel-r0drv-freebsd.c \
 	r0drv/freebsd/process-r0drv-freebsd.c \
 	r0drv/freebsd/semevent-r0drv-freebsd.c \
 	r0drv/freebsd/semeventmulti-r0drv-freebsd.c \
