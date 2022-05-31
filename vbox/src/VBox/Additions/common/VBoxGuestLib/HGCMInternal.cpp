@@ -1,4 +1,4 @@
-/* $Revision: 21456 $ */
+/* $Revision: 21458 $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -184,11 +184,6 @@ DECLR0VBGL(int) VbglR0HGCMInternalCall (VBoxGuestHGCMCallInfo *pCallInfo, uint32
                 {
                 case VMMDevHGCMParmType_32bit:
                 case VMMDevHGCMParmType_64bit:
-                    break;
-
-                case VMMDevHGCMParmType_PhysAddr:
-                    if ((fFlags & VBGLR0_HGCMCALL_F_MODE_MASK) == VBGLR0_HGCMCALL_F_USER)
-                        rc = VERR_INVALID_PARAMETER;
                     break;
 
                 case VMMDevHGCMParmType_LinAddr_Locked_In:
@@ -388,11 +383,6 @@ DECLR0VBGL(int) VbglR0HGCMInternalCall32 (VBoxGuestHGCMCallInfo *pCallInfo, uint
                 {
                 case VMMDevHGCMParmType_32bit:
                 case VMMDevHGCMParmType_64bit:
-                    break;
-
-                case VMMDevHGCMParmType_PhysAddr:
-                    if ((fFlags & VBGLR0_HGCMCALL_F_MODE_MASK) == VBGLR0_HGCMCALL_F_USER)
-                        rc = VERR_INVALID_PARAMETER;
                     break;
 
                 case VMMDevHGCMParmType_LinAddr_Locked_In:
