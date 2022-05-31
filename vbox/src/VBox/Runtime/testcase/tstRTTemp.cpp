@@ -1,4 +1,4 @@
-/* $Id: tstRTTemp.cpp 20111 2009-05-28 00:34:52Z vboxsync $ */
+/* $Id: tstRTTemp.cpp 20606 2009-06-15 23:49:07Z vboxsync $ */
 /** @file
  * IPRT Testcase - Temporary files and directories.
  */
@@ -99,13 +99,10 @@ static void tstDirCreateTemp(const char *pszSubTest, const char *pszTemplate, un
 
 int main()
 {
-    int rc = RTR3Init();
-    if (RT_FAILURE(rc))
-        return 1;
     RTTEST hTest;
-    rc = RTTestCreate("tstRTTemp", &hTest);
-    if (RT_FAILURE(rc))
-        return 1;
+    int rc = RTTestInitAndCreate("tstRTTemp", &hTest);
+    if (rc)
+        return rc;
     RTTestBanner(hTest);
 
     /*

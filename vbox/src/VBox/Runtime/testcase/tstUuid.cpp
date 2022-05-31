@@ -1,4 +1,4 @@
-/* $Id: tstUuid.cpp 19205 2009-04-27 10:03:40Z vboxsync $ */
+/* $Id: tstUuid.cpp 20606 2009-06-15 23:49:07Z vboxsync $ */
 /** @file
  * IPRT Testcase - UUID.
  */
@@ -42,14 +42,10 @@
 
 int main(int argc, char **argv)
 {
-    int rc;
     RTTEST hTest;
-    if (    RT_FAILURE(rc = RTR3Init())
-        ||  RT_FAILURE(rc = RTTestCreate("tstUuid", &hTest)))
-    {
-        RTPrintf("tstUuid: RTR3Init or RTTestCreate failed: %Rrc\n", rc);
-        return 1;
-    }
+    int rc = RTTestInitAndCreate("tstUuid", &hTest);
+    if (rc)
+        return rc;
     RTTestBanner(hTest);
 
 

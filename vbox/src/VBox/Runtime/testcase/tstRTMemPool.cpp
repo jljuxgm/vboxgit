@@ -1,4 +1,4 @@
-/* $Id: tstRTMemPool.cpp 20575 2009-06-15 01:52:07Z vboxsync $ */
+/* $Id: tstRTMemPool.cpp 20606 2009-06-15 23:49:07Z vboxsync $ */
 /** @file
  * IPRT Testcase - MemPool.
  */
@@ -298,15 +298,12 @@ static void tst4(void)
 
 int main()
 {
-    int rc = RTR3Init();
-    if (RT_FAILURE(rc))
-        return 1;
     RTTEST hTest;
-    rc = RTTestCreate("tstRTMemPool", &hTest);
-    if (RT_FAILURE(rc))
-        return 1;
-    g_hTest = hTest;
+    int rc = RTTestInitAndCreate("tstRTMemPool", &hTest);
+    if (rc)
+        return rc;
     RTTestBanner(hTest);
+    g_hTest = hTest;
 
     /*
      * Smoke tests using first the default and then a custom pool.

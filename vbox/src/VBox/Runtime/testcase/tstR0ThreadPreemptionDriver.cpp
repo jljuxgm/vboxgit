@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemptionDriver.cpp 19970 2009-05-24 16:22:00Z vboxsync $ */
+/* $Id: tstR0ThreadPreemptionDriver.cpp 20606 2009-06-15 23:49:07Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -55,20 +55,10 @@ int main(int argc, char **argv)
     /*
      * Init.
      */
-    int rc = RTR3InitAndSUPLib();
-    if (RT_FAILURE(rc))
-    {
-        RTPrintf("tstR0ThreadPreemption: fatal error: RTR3InitAndSUPLib failed with rc=%Rrc\n", rc);
-        return 1;
-    }
-
     RTTEST hTest;
-    rc = RTTestCreate("tstR0ThreadPreemption", &hTest);
-    if (RT_FAILURE(rc))
-    {
-        RTPrintf("tstR0ThreadPreemption: fatal error: RTTestCreate failed with rc=%Rrc\n", rc);
-        return 1;
-    }
+    int rc = RTTestInitAndCreate("tstR0ThreadPreemption", &hTest);
+    if (rc)
+        return rc;
     RTTestBanner(hTest);
 
     PSUPDRVSESSION pSession;

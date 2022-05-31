@@ -1,4 +1,4 @@
-/* $Id: tstRTBase64.cpp 19947 2009-05-23 22:09:23Z vboxsync $ */
+/* $Id: tstRTBase64.cpp 20606 2009-06-15 23:49:07Z vboxsync $ */
 /** @file
  * IPRT Testcase - Base64.
  */
@@ -110,13 +110,10 @@ static void tstBase64(const void *pvData, size_t cbData,
 
 int main()
 {
-    int rc = RTR3Init();
-    if (RT_FAILURE(rc))
-        return 1;
     RTTEST hTest;
-    rc = RTTestCreate("tstRTBase64", &hTest);
-    if (RT_FAILURE(rc))
-        return 1;
+    int rc = RTTestInitAndCreate("tstRTBase64", &hTest);
+    if (rc)
+        return rc;
     RTTestBanner(hTest);
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: tstRTBitOperations.cpp 19948 2009-05-23 22:14:33Z vboxsync $ */
+/* $Id: tstRTBitOperations.cpp 20606 2009-06-15 23:49:07Z vboxsync $ */
 /** @file
  * IPRT Testcase - Inlined Bit Operations.
  */
@@ -129,12 +129,9 @@ int main()
      * Init the runtime and stuff.
      */
     RTTEST hTest;
-    if (    RT_FAILURE(RTR3Init())
-        ||  RT_FAILURE(RTTestCreate("tstRTBitOperations", &hTest)))
-    {
-        RTPrintf("tstRTBitOperations: fatal initialization error\n");
-        return 1;
-    }
+    int rc = RTTestInitAndCreate("tstRTBitOperations", &hTest);
+    if (rc)
+        return rc;
     RTTestBanner(hTest);
 
     int rcRet = 0;

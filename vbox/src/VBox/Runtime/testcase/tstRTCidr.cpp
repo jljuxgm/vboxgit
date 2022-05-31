@@ -1,4 +1,4 @@
-/* $Id: tstRTCidr.cpp 19950 2009-05-23 22:22:37Z vboxsync $ */
+/* $Id: tstRTCidr.cpp 20606 2009-06-15 23:49:07Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPv4.
  */
@@ -64,13 +64,10 @@
 
 int main()
 {
-    int rc = RTR3Init();
-    if (RT_FAILURE(rc))
-        return 1;
     RTTEST hTest;
-    rc = RTTestCreate("tstRTCidr", &hTest);
-    if (RT_FAILURE(rc))
-        return 1;
+    int rc = RTTestInitAndCreate("tstRTCidr", &hTest);
+    if (rc)
+        return rc;
     RTTestBanner(hTest);
 
     CHECKNETWORK("10.0.0/24",                VINF_SUCCESS, 0x0A000000, 0xFFFFFF00);
