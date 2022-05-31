@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 23034 2009-09-15 15:02:01Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2780,6 +2780,7 @@ VMMR0DECL(int) SVMR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
     AssertReturn(pVM->cCpus == 1, VERR_TOO_MANY_CPUS);
     Assert(pfnHandler);
 
+    /* Disable interrupts. */
     uOldEFlags = ASMIntDisableFlags();
 
     CPUMSetHyperESP(pVCpu, VMMGetStackRC(pVM));
