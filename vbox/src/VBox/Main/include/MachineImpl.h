@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: MachineImpl.h 19610 2009-05-12 12:10:14Z vboxsync $ */
 
 /** @file
  *
@@ -792,6 +792,8 @@ protected:
                                 settings::Key &aNode);
 
     HRESULT saveStateSettings (int aFlags);
+
+    HRESULT getExtraData(const Utf8Str &aKey, Utf8Str &aValue);
 
     HRESULT createImplicitDiffs (const Bstr &aFolder,
                                  ComObjPtr <Progress> &aProgress,
