@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 19529 2009-05-08 14:37:30Z vboxsync $ */
+/* $Id: VMM.cpp 19539 2009-05-08 18:27:38Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -958,6 +958,7 @@ VMMR3DECL(int) VMMR3GetImportRC(PVM pVM, const char *pszSymbol, PRTRCPTR pRCPtrV
  */
 VMMR3DECL(void) VMMR3YieldSuspend(PVM pVM)
 {
+    VMCPU_ASSERT_EMT(&pVM->aCpus[0]);
     if (!pVM->vmm.s.cYieldResumeMillies)
     {
         uint64_t u64Now = TMTimerGet(pVM->vmm.s.pYieldTimer);
