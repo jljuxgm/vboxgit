@@ -1,4 +1,4 @@
-/* $Id: NetAdpUninstall.cpp 22485 2009-08-26 18:57:05Z vboxsync $ */
+/* $Id: NetAdpUninstall.cpp 22491 2009-08-26 21:44:20Z vboxsync $ */
 /** @file
  * NetAdpUninstall - VBoxNetAdp uninstaller command line tool
  */
@@ -43,7 +43,7 @@ static int UninstallNetAdp()
         hr = VBoxNetCfgWinRemoveAllNetDevicesOfId(L"sun_VBoxNetAdp");
         if(hr == S_OK)
         {
-            hr = VBoxNetCfgWinUninstallInfs (&GUID_DEVCLASS_NET, L"sun_VBoxNetAdp");
+            hr = VBoxNetCfgWinUninstallInfs (&GUID_DEVCLASS_NET, L"sun_VBoxNetAdp", 0/* could be SUOI_FORCEDELETE */);
             if(hr == S_OK)
             {
                 printf("uninstalled successfully\n");
