@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 20181 2009-06-02 09:32:51Z vboxsync $ */
+/* $Id: DrvVD.cpp 20257 2009-06-04 09:01:21Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1207,7 +1207,6 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
  */
 static DECLCALLBACK(void) drvvdDestruct(PPDMDRVINS pDrvIns)
 {
-    int rc;
     PVBOXDISK pThis = PDMINS_2_DATA(pDrvIns, PVBOXDISK);
     LogFlow(("%s:\n", __FUNCTION__));
 
