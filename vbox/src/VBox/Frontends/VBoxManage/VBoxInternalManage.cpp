@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 18491 2009-03-29 01:40:31Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -413,7 +413,7 @@ static int CmdLoadSyms(int argc, char **argv, ComPtr<IVirtualBox> aVirtualBox, C
      */
     ComPtr<IMachine> machine;
     /* assume it's a UUID */
-    rc = aVirtualBox->GetMachine(Guid(argv[0]), machine.asOutParam());
+    rc = aVirtualBox->GetMachine(Bstr(argv[0]), machine.asOutParam());
     if (FAILED(rc) || !machine)
     {
         /* must be a name */

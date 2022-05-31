@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
+/* $Id: DisplayImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
 
 /** @file
  *
@@ -100,6 +100,7 @@ public:
     BEGIN_COM_MAP(Display)
         COM_INTERFACE_ENTRY(ISupportErrorInfo)
         COM_INTERFACE_ENTRY(IDisplay)
+        COM_INTERFACE_ENTRY2(IDispatch,IDisplay)
     END_COM_MAP()
 
     NS_DECL_ISUPPORTS

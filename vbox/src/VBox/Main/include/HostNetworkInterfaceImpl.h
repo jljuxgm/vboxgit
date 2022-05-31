@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
 
 /** @file
  *
@@ -50,6 +50,7 @@ public:
     BEGIN_COM_MAP (HostNetworkInterface)
         COM_INTERFACE_ENTRY (ISupportErrorInfo)
         COM_INTERFACE_ENTRY (IHostNetworkInterface)
+        COM_INTERFACE_ENTRY (IDispatch)
     END_COM_MAP()
 
     NS_DECL_ISUPPORTS
@@ -68,7 +69,7 @@ public:
 
     // IHostNetworkInterface properties
     STDMETHOD(COMGETTER(Name)) (BSTR *aInterfaceName);
-    STDMETHOD(COMGETTER(Id)) (OUT_GUID aGuid);
+    STDMETHOD(COMGETTER(Id)) (BSTR *aGuid);
     STDMETHOD(COMGETTER(DhcpEnabled)) (BOOL *aDhcpEnabled);
     STDMETHOD(COMGETTER(IPAddress)) (BSTR *aIPAddress);
     STDMETHOD(COMGETTER(NetworkMask)) (BSTR *aNetworkMask);

@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.cpp 19108 2009-04-22 11:29:25Z vboxsync $ */
+/* $Id: HardDiskImpl.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
 
 /** @file
  *
@@ -1537,7 +1537,7 @@ STDMETHODIMP HardDisk::CreateDiffStorage (IHardDisk *aTarget,
     return rc;
 }
 
-STDMETHODIMP HardDisk::MergeTo (IN_GUID /* aTargetId */, IProgress ** /* aProgress */)
+STDMETHODIMP HardDisk::MergeTo (IN_BSTR /* aTargetId */, IProgress ** /* aProgress */)
 {
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());

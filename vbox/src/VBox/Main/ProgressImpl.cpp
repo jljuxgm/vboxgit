@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 18643 2009-04-02 15:28:09Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -199,7 +199,7 @@ void ProgressBase::protectedUninit (AutoUninitSpan &aAutoUninitSpan)
 // IProgress properties
 /////////////////////////////////////////////////////////////////////////////
 
-STDMETHODIMP ProgressBase::COMGETTER(Id) (OUT_GUID aId)
+STDMETHODIMP ProgressBase::COMGETTER(Id) (BSTR *aId)
 {
     CheckComArgOutPointerValid(aId);
 
@@ -207,7 +207,7 @@ STDMETHODIMP ProgressBase::COMGETTER(Id) (OUT_GUID aId)
     CheckComRCReturnRC(autoCaller.rc());
 
     /* mId is constant during life time, no need to lock */
-    mId.cloneTo (aId);
+    mId.toUtf16().cloneTo (aId);
 
     return S_OK;
 }

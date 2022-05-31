@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 19134 2009-04-23 09:21:43Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 19239 2009-04-28 13:19:14Z vboxsync $ */
 
 /** @file
  *
@@ -248,6 +248,7 @@ public:
     BEGIN_COM_MAP(RemoteDisplayInfo)
         COM_INTERFACE_ENTRY(ISupportErrorInfo)
         COM_INTERFACE_ENTRY(IRemoteDisplayInfo)
+        COM_INTERFACE_ENTRY(IDispatch)
     END_COM_MAP()
 
     NS_DECL_ISUPPORTS

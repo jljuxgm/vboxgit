@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 19130 2009-04-23 08:19:03Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
 
 /** @file
  *
@@ -179,14 +179,14 @@ STDMETHODIMP HostNetworkInterface::COMGETTER(Name) (BSTR *aInterfaceName)
  * @returns COM status code
  * @param   aGuid address of result pointer
  */
-STDMETHODIMP HostNetworkInterface::COMGETTER(Id) (OUT_GUID aGuid)
+STDMETHODIMP HostNetworkInterface::COMGETTER(Id) (BSTR *aGuid)
 {
     CheckComArgOutPointerValid(aGuid);
 
     AutoCaller autoCaller (this);
     CheckComRCReturnRC (autoCaller.rc());
 
-    mGuid.cloneTo (aGuid);
+    mGuid.toUtf16().cloneTo (aGuid);
 
     return S_OK;
 }

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 18777 2009-04-06 15:33:13Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -46,7 +46,7 @@ int handleSnapshot(HandlerArg *a)
     /* the first argument must be the VM */
     ComPtr<IMachine> machine;
     /* assume it's a UUID */
-    rc = a->virtualBox->GetMachine(Guid(a->argv[0]), machine.asOutParam());
+    rc = a->virtualBox->GetMachine(Bstr(a->argv[0]), machine.asOutParam());
     if (FAILED(rc) || !machine)
     {
         /* must be a name */
@@ -54,7 +54,7 @@ int handleSnapshot(HandlerArg *a)
     }
     if (!machine)
         return 1;
-    Guid guid;
+    Bstr guid;
     machine->COMGETTER(Id)(guid.asOutParam());
 
     do
@@ -116,7 +116,7 @@ int handleSnapshot(HandlerArg *a)
             ComPtr<ISnapshot> snapshot;
 
             /* assume it's a UUID */
-            Guid guid(a->argv[2]);
+            Bstr guid(a->argv[2]);
             if (!guid.isEmpty())
             {
                 CHECK_ERROR_BREAK(machine, GetSnapshot(guid, snapshot.asOutParam()));
@@ -202,7 +202,7 @@ int handleSnapshot(HandlerArg *a)
             else
             {
                 /* assume it's a UUID */
-                Guid guid(a->argv[2]);
+                Bstr guid(a->argv[2]);
                 if (!guid.isEmpty())
                 {
                     CHECK_ERROR_BREAK(machine, GetSnapshot(guid, snapshot.asOutParam()));
@@ -265,7 +265,7 @@ int handleSnapshot(HandlerArg *a)
             ComPtr<ISnapshot> snapshot;
 
             /* assume it's a UUID */
-            Guid guid(a->argv[2]);
+            Bstr guid(a->argv[2]);
             if (!guid.isEmpty())
             {
                 CHECK_ERROR_BREAK(machine, GetSnapshot(guid, snapshot.asOutParam()));

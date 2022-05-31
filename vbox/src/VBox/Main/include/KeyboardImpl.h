@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
+/* $Id: KeyboardImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
 
 /** @file
  *
@@ -64,6 +64,7 @@ public:
     BEGIN_COM_MAP(Keyboard)
         COM_INTERFACE_ENTRY(ISupportErrorInfo)
         COM_INTERFACE_ENTRY(IKeyboard)
+        COM_INTERFACE_ENTRY(IDispatch)
     END_COM_MAP()
 
     NS_DECL_ISUPPORTS

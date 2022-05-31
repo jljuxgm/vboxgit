@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 18809 2009-04-07 11:57:07Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -766,7 +766,7 @@ int handleExportAppliance(HandlerArg *a)
                     // must be machine: try UUID or name
                     ComPtr<IMachine> machine;
                     /* assume it's a UUID */
-                    rc = a->virtualBox->GetMachine(Guid(strMachine), machine.asOutParam());
+                    rc = a->virtualBox->GetMachine(Bstr(strMachine), machine.asOutParam());
                     if (FAILED(rc) || !machine)
                     {
                         /* must be a name */

@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -68,8 +68,9 @@ public:
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
     BEGIN_COM_MAP(ParallelPort)
-        COM_INTERFACE_ENTRY(ISupportErrorInfo)
-        COM_INTERFACE_ENTRY(IParallelPort)
+        COM_INTERFACE_ENTRY  (ISupportErrorInfo)
+        COM_INTERFACE_ENTRY  (IParallelPort)
+        COM_INTERFACE_ENTRY2 (IDispatch, IParallelPort)
     END_COM_MAP()
 
     NS_DECL_ISUPPORTS
