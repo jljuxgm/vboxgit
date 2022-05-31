@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19122 2009-04-22 21:01:16Z vboxsync $
+# $Id: Makefile.kmk 19127 2009-04-23 00:39:16Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -366,6 +366,9 @@ endif
 
 ifdef VBOX_WITH_EFI
 DevicesR3_DEFS          += VBOX_WITH_EFI
+ ifdef VBOX_WITH_ALT_EFITHUNK
+  DevicesR3_DEFS        += VBOX_WITH_ALT_EFITHUNK
+ endif
 DevicesR3_SOURCES       += EFI/DevEFI.cpp
 
 EFI/DevEFI.cpp_INCS       += EFI/tools/include
