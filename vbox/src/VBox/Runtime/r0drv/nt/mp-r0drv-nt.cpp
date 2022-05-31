@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 23367 2009-09-28 12:34:40Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 23370 2009-09-28 12:41:24Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -231,7 +231,7 @@ static int rtMpCall(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2, RT_NT
 
 #ifdef IPRT_TARGET_NT4
     KAFFINITY Mask;
-    /* g_pfnrtNt* do not present on NT anyway. */
+    /* g_pfnrtNt* are not present on NT anyway. */
     return VERR_NOT_SUPPORTED;
 #else
     KAFFINITY Mask = KeQueryActiveProcessors();
@@ -348,7 +348,7 @@ static VOID rtMpNtPokeCpuDummy(IN PKDPC Dpc, IN PVOID DeferredContext, IN PVOID 
 }
 
 
-extern "C" HalRequestIpi(KAFFINITY TargetSet);
+extern "C" void HalRequestIpi(KAFFINITY TargetSet);
 
 RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
 {
