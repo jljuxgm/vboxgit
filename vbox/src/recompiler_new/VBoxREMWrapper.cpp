@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 19032 2009-04-20 15:03:08Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 19076 2009-04-21 13:20:48Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -509,7 +509,7 @@ static const REMPARMDESC g_aArgsCPUMSetGuestMsr[] =
 
 static const REMPARMDESC g_aArgsCPUMGetGuestCpuId[] =
 {
-    { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(uint32_t), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(uint32_t *), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(uint32_t *), NULL },
