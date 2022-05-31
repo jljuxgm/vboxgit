@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 19421 2009-05-06 11:08:07Z vboxsync $ */
+/* $Id: PDM.cpp 19451 2009-05-06 18:09:29Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -684,7 +684,7 @@ static DECLCALLBACK(int) pdmR3LoadPrep(PVM pVM, PSSMHANDLE pSSM)
     for (unsigned idCpu=0;idCpu<pVM->cCPUs;idCpu++)
     {
         PVMCPU pVCpu = &pVM->aCpus[idCpu];
-        LogFlow(("pdmR3LoadPrep: VCPU %d %s%s%s%s\n", idCpu, 
+        LogFlow(("pdmR3LoadPrep: VCPU %d %s%s%s%s\n", idCpu,
                 VMCPU_FF_ISSET(pVCpu, VMCPU_FF_INTERRUPT_APIC) ? " VMCPU_FF_INTERRUPT_APIC" : "",
                 VMCPU_FF_ISSET(pVCpu, VMCPU_FF_INTERRUPT_PIC)  ? " VMCPU_FF_INTERRUPT_PIC" : ""
                 ));
@@ -1329,7 +1329,7 @@ VMMR3DECL(int) PDMR3QueryLun(PVM pVM, const char *pszDevice, unsigned iInstance,
  */
 VMMR3DECL(void) PDMR3DmaRun(PVM pVM)
 {
-    /** @note Not really SMP safe; restrict it to VCPU 0. */
+    /* Note! Not really SMP safe; restrict it to VCPU 0. */
     if (VMMGetCpuId(pVM) != 0)
         return;
 
