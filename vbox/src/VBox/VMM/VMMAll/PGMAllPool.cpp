@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 19674 2009-05-14 07:57:59Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 19675 2009-05-14 08:08:42Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1117,6 +1117,8 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
     int rc = EMInterpretDisasOne(pVM, pVCpu, pRegFrame, &Cpu, NULL);
     AssertRCReturn(rc, rc);
 
+    pgmLock(pVM);
+
     /*
      * Check if it's worth dealing with.
      */
@@ -1134,6 +1136,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
         {
              rc = pgmPoolAccessHandlerSimple(pVM, pVCpu, pPool, pPage, &Cpu, pRegFrame, GCPhysFault, pvFault);
              STAM_PROFILE_STOP_EX(&pVM->pgm.s.CTX_SUFF(pPool)->CTX_SUFF_Z(StatMonitor), &pPool->CTX_MID_Z(StatMonitor,Handled), a);
+             pgmUnlock(pVM);
              return rc;
         }
 
@@ -1156,6 +1159,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
         {
              rc = pgmPoolAccessHandlerSTOSD(pVM, pPool, pPage, &Cpu, pRegFrame, GCPhysFault, pvFault);
              STAM_PROFILE_STOP_EX(&pVM->pgm.s.CTX_SUFF(pPool)->CTX_SUFF_Z(StatMonitor), &pPool->CTX_MID_Z(StatMonitor,RepStosd), a);
+             pgmUnlock(pVM);
              return rc;
         }
 
@@ -1177,6 +1181,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
     if (rc == VINF_EM_RAW_EMULATE_INSTR && fReused)
         rc = VINF_SUCCESS;
     STAM_PROFILE_STOP_EX(&pVM->pgm.s.CTX_SUFF(pPool)->CTX_SUFF_Z(StatMonitor), &pPool->CTX_MID_Z(StatMonitor,FlushPage), a);
+    pgmUnlock(pVM);
     return rc;
 }
 
