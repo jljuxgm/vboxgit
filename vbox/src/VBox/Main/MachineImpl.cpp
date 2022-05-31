@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23304 2009-09-24 17:13:41Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23328 2009-09-25 11:48:22Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2142,7 +2142,9 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
                     uint32_t level = 0;
                     MediumAttachment *pAttach = *it;
                     ComObjPtr<Medium> pMedium = pAttach->medium();
-                    Assert(!pMedium.isNull());
+                    Assert(!pMedium.isNull() || pAttach->type() != DeviceType_HardDisk);
+                    if (pMedium.isNull())
+                        continue;
 
                     if (pMedium->base(&level).equalsTo(medium))
                     {
@@ -2207,8 +2209,14 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
                      it != snapAtts.end();
                      ++it)
                 {
+                    MediumAttachment *pAttach = *it;
+                    ComObjPtr<Medium> pMedium = pAttach->medium();
+                    Assert(!pMedium.isNull() || pAttach->type() != DeviceType_HardDisk);
+                    if (pMedium.isNull())
+                        continue;
+
                     uint32_t level = 0;
-                    if ((*it)->medium()->base(&level).equalsTo(medium))
+                    if (pMedium->base(&level).equalsTo(medium))
                     {
                         /* matched device, channel and bus (i.e. attached to the
                          * same place) will win and immediately stop the search;
