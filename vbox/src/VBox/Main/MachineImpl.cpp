@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22304 2009-08-17 15:55:30Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22318 2009-08-18 10:56:49Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -1418,10 +1418,6 @@ STDMETHODIMP Machine::COMSETTER(Accelerate2DVideoEnabled)(BOOL enable)
 
     mHWData.backup();
     mHWData->mAccelerate2DVideoEnabled = enable;
-
-    // this feature may require an XML version bump
-    if (enable)
-        mData->m_pMachineConfigFile->setRequiredSettingsVersion(SettingsVersion_v1_8);
 
     return S_OK;
 }
