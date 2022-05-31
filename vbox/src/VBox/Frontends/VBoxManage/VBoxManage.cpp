@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 21446 2009-07-09 15:09:57Z vboxsync $ */
+/* $Id: VBoxManage.cpp 21612 2009-07-15 15:00:34Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -86,7 +86,7 @@ typedef int (*PFNHANDLER)(HandlerArg *a);
 /**
  * Print out progress on the console
  */
-void showProgress(ComPtr<IProgress> progress)
+LONG showProgress(ComPtr<IProgress> progress)
 {
     BOOL fCompleted;
     ULONG ulCurrentPercent;
@@ -172,6 +172,7 @@ void showProgress(ComPtr<IProgress> progress)
     else
         RTPrintf("\n");
     RTStrmFlush(g_pStdOut);
+    return iRc;
 }
 #endif /* !VBOX_ONLY_DOCS */
 

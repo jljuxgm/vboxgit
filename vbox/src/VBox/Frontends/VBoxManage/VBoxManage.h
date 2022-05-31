@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 18703 2009-04-03 16:19:40Z vboxsync $ */
+/* $Id: VBoxManage.h 21612 2009-07-15 15:00:34Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -151,7 +151,7 @@ int errorArgument(const char *pszFormat, ...);
 void printUsageInternal(USAGECATEGORY u64Cmd);
 
 #ifndef VBOX_ONLY_DOCS
-void showProgress(ComPtr<IProgress> progress);
+LONG showProgress(ComPtr<IProgress> progress);
 #endif
 
 /* VBoxManage.cpp */
