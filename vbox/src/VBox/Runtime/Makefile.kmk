@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23819 2009-10-16 12:24:52Z vboxsync $
+# $Id: Makefile.kmk 23824 2009-10-16 14:21:57Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -371,7 +371,7 @@ ifneq ($(KBUILD_TARGET),win)
 RuntimeR3_SOURCES += \
 	common/err/errmsgxpcom.cpp
 endif
-ifeq ($(KBUILD_TARGET),linux)
+if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris)
 RuntimeR3_SOURCES += \
 	$(if $(VBOX_WITH_DBUS),VBox/dbus.cpp,)
 endif
