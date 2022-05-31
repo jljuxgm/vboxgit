@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 20552 2009-06-14 16:34:30Z vboxsync $ */
+/** $Id: clipboard.cpp 21043 2009-06-29 18:54:53Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -183,7 +183,7 @@ void ClipCompleteDataRequestFromX11(VBOXCLIPBOARDCONTEXT *pCtx, int rc,
  */
 int vboxClipboardConnect(void)
 {
-    int rc;
+    int rc = VINF_SUCCESS;
     LogFlowFunc(("\n"));
 
     /* Sanity */
