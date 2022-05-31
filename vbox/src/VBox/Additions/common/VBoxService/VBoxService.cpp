@@ -1,4 +1,4 @@
-/** $Id: VBoxService.cpp 18670 2009-04-03 07:44:47Z vboxsync $ */
+/** $Id: VBoxService.cpp 18672 2009-04-03 08:48:45Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -35,7 +35,7 @@
 #include <iprt/initterm.h>
 #include <iprt/asm.h>
 #include <iprt/path.h>
-#include <VBox/Log.h>
+#include <VBox/log.h>
 #include <VBox/VBoxGuest.h>
 #include "VBoxServiceInternal.h"
 
@@ -43,7 +43,7 @@
 *   Global Variables                                                           *
 *******************************************************************************/
 /** The program name (derived from argv[0]). */
-char *g_pszProgName = "";
+char *g_pszProgName;
 /** The current verbosity level. */
 int g_cVerbosity = 0;
 /** The default service interval (the -i | --interval) option). */
@@ -367,8 +367,9 @@ int main(int argc, char **argv)
         const char *psz = argv[i];
         if(    (*psz != '-')
 #if defined(RT_OS_WINDOWS)
-            && (*psz != '/'))
+            && (*psz != '/')
 #endif
+          )
             return VBoxServiceSyntax("Unknown argument '%s'\n", psz);
         psz++;
 
