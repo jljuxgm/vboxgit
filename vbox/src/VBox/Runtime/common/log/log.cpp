@@ -1,4 +1,4 @@
-/* $Id: log.cpp 21549 2009-07-13 16:28:52Z vboxsync $ */
+/* $Id: log.cpp 22203 2009-08-12 11:34:45Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2187,6 +2187,9 @@ RT_EXPORT_SYMBOL(RTLogPrintfV);
  */
 static void rtlogFlush(PRTLOGGER pLogger)
 {
+    if (!pLogger->offScratch)
+        return; /* nothing to flush. */
+
 #ifndef IN_RC
     if (pLogger->fDestFlags & RTLOGDEST_USER)
         RTLogWriteUser(pLogger->achScratch, pLogger->offScratch);
