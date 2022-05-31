@@ -1,4 +1,4 @@
-/* $Revision: 21510 $ */
+/* $Revision: 21577 $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -530,6 +530,7 @@ static void vbglR0HGCMInternalInitCall(VMMDevHGCMCall *pHGCMCall, VBoxGuestHGCMC
                 if (!VBGLR0_CAN_USE_PHYS_PAGE_LIST())
                 {
                     *pDstParm = *pSrcParm;
+                    pDstParm->type = vbglR0HGCMInternalConvertLinAddrType(pSrcParm->type);
                     break;
                 }
                 /* fall thru */
