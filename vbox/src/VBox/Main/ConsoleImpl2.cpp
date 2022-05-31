@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 18014 2009-03-17 11:59:31Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 18016 2009-03-17 12:19:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1805,7 +1805,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 rc = CFGMR3InsertInteger(pCfg, "TrunkType", kIntNetTrunkType_NetFlt); RC_CHECK();
                 networkName = Bstr("HostInterfaceNetworking-vboxnet0");
 #endif
-#ifndef RT_OS_WINDOWS
+#if !defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT)
                 Bstr HifName;
                 hrc = networkAdapter->COMGETTER(HostInterface)(HifName.asOutParam());
                 if(FAILED(hrc))
