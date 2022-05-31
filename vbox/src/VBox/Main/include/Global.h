@@ -1,4 +1,4 @@
-/* $Id: Global.h 15762 2008-12-25 23:53:50Z vboxsync $ */
+/* $Id: Global.h 21607 2009-07-15 13:00:21Z vboxsync $ */
 
 /** @file
  *
@@ -60,6 +60,7 @@ public:
         const uint32_t              recommendedVRAM;
         const uint32_t              recommendedHDD;
         const NetworkAdapterType_T  networkAdapterType;
+        const uint32_t              numSerialEnabled;
     };
 
     static const OSType sOSTypes [SchemaDefs::OSTypeId_COUNT];

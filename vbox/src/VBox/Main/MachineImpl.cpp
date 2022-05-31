@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 21446 2009-07-09 15:09:57Z vboxsync $ */
+/* $Id: MachineImpl.cpp 21607 2009-07-15 13:00:21Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -506,6 +506,10 @@ HRESULT Machine::init (VirtualBox *aParent, CBSTR aConfigFile,
                     /* Apply network adapters defaults */
                     for (ULONG slot = 0; slot < RT_ELEMENTS (mNetworkAdapters); ++ slot)
                         mNetworkAdapters [slot]->applyDefaults (aOsType);
+
+                    /* Apply serial port defaults */
+                    for (ULONG slot = 0; slot < RT_ELEMENTS (mSerialPorts); ++ slot)
+                        mSerialPorts [slot]->applyDefaults (aOsType);
                 }
 
                 /* The default is that the VM has at least one IDE controller

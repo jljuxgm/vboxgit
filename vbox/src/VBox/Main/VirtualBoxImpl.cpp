@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 21404 2009-07-08 15:19:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 21607 2009-07-15 13:00:21Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -288,7 +288,8 @@ HRESULT VirtualBox::init()
                                                Global::sOSTypes [i].recommendedRAM,
                                                Global::sOSTypes [i].recommendedVRAM,
                                                Global::sOSTypes [i].recommendedHDD,
-                                               Global::sOSTypes [i].networkAdapterType);
+                                               Global::sOSTypes [i].networkAdapterType,
+                                               Global::sOSTypes [i].numSerialEnabled);
                     if (SUCCEEDED (rc))
                         mData.mGuestOSTypes.push_back (guestOSTypeObj);
                 }
