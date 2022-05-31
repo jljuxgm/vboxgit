@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 20631 2009-06-16 14:03:45Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 20690 2009-06-18 12:35:14Z vboxsync $ */
 
 /** @file
  *
@@ -3315,7 +3315,7 @@ HRESULT Console::doNetworkAdapterChange (const char *pszDevice, unsigned uInstan
      * here to make requests from under the lock in order to serialize them.
      */
     PVMREQ pReq;
-    int vrc = VMR3ReqCall (mpVM, VMCPUID_ANY, &pReq, 0 /* no wait! */,
+    int vrc = VMR3ReqCall (mpVM, 0, &pReq, 0 /* no wait! */,
                            (PFNRT) Console::changeNetworkAttachment, 7,
                            this, pszDevice, uInstance, uLun, eAttachmentType,
                            meAttachmentType, aNetworkAdapter);
