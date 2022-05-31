@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.cpp 18162 2009-03-23 19:28:13Z vboxsync $ */
+/* $Id: HardDiskImpl.cpp 18269 2009-03-25 18:01:07Z vboxsync $ */
 
 /** @file
  *
@@ -2097,8 +2097,8 @@ HRESULT HardDisk::discard (ComObjPtr <Progress> &aProgress, MergeChain *aChain)
         AutoCaller autoCaller (this);
         AssertComRCReturnRC (autoCaller.rc());
 
-        aProgress->advanceOperation (BstrFmt (
-            tr ("Discarding hard disk '%s'"), name().raw()));
+        aProgress->setNextOperation(BstrFmt(tr("Discarding hard disk '%s'"), name().raw()),
+                                    1);        // weight
 
         if (aChain == NULL)
         {
@@ -3439,7 +3439,7 @@ DECLCALLBACK(int) HardDisk::vdProgressCall(PVM /* pVM */, unsigned uPercent,
     {
         /* update the progress object, capping it at 99% as the final percent
          * is used for additional operations like setting the UUIDs and similar. */
-        HRESULT rc = that->mm.vdProgress->notifyProgress (uPercent * 99 / 100);
+        HRESULT rc = that->mm.vdProgress->setCurrentOperationProgress(uPercent * 99 / 100);
         if (FAILED(rc))
         {
             if (rc == E_FAIL)
