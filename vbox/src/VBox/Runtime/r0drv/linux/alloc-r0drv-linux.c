@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 22355 2009-08-19 20:09:45Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -238,9 +238,12 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
     cb = RT_ALIGN_Z(cb, PAGE_SIZE);
     cPages = cb >> PAGE_SHIFT;
     cOrder = CalcPowerOf2Order(cPages);
-#ifdef RT_ARCH_AMD64 /** @todo check out if there is a correct way of getting memory below 4GB (physically). */
+#ifdef RT_ARCH_AMD64
+    /** @todo check out if there is a correct way of getting memory below 4GB (physically).
+     * GFP_DMA32 is available since Linux 2.6.15 */
     paPages = alloc_pages(GFP_DMA, cOrder);
 #else
+    /** XXX Wrong: GFP_USER can return page frames above 4GB! */
     paPages = alloc_pages(GFP_USER, cOrder);
 #endif
     if (paPages)
