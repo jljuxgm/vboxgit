@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 22267 2009-08-14 15:55:13Z vboxsync $ */
+/* $Id: HWACCM.cpp 22286 2009-08-17 11:45:04Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1734,14 +1734,17 @@ DECLCALLBACK(int) hwaccmR3PatchTprInstr(PVM pVM, PVMCPU pVCpu, void *pvUser)
     if (pVCpu->idCpu != idCpu)
         return VINF_SUCCESS;
 
-    Log(("hwaccmR3PatchTprInstr %RGv\n", pCtx->rip));
-
     Assert(pVM->hwaccm.s.svm.cPatches < RT_ELEMENTS(pVM->hwaccm.s.svm.aPatches));
 
     /* Two or more VCPUs were racing to patch this instruction. */
     PHWACCMTPRPATCH pPatch = (PHWACCMTPRPATCH)RTAvloU32Get(&pVM->hwaccm.s.svm.PatchTree, (AVLOU32KEY)pCtx->eip);
     if (pPatch)
+    {
+        Log(("hwaccmR3PatchTprInstr: already patched %RGv\n", pCtx->rip));
         return VINF_SUCCESS;
+    }
+
+    Log(("hwaccmR3PatchTprInstr %RGv\n", pCtx->rip));
 
     rc = EMInterpretDisasOne(pVM, pVCpu, CPUMCTX2CORE(pCtx), pDis, &cbOp);
     AssertRC(rc);
