@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 23226 2009-09-22 16:08:37Z vboxsync $ */
+/* $Id: HWACCM.cpp 23244 2009-09-23 08:11:50Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2500,9 +2500,6 @@ static DECLCALLBACK(int) hwaccmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersio
         rc = SSMR3GetU32(pSSM, &pVM->hwaccm.s.svm.cPatches);
         AssertRCReturn(rc, rc);
 
-        if (pVM->hwaccm.s.svm.cPatches)
-            pVM->hwaccm.s.svm.fTPRPatchingActive = true;
-
         for (unsigned i = 0; i < pVM->hwaccm.s.svm.cPatches; i++)
         {
             PHWACCMTPRPATCH pPatch = &pVM->hwaccm.s.svm.aPatches[i];
@@ -2524,6 +2521,11 @@ static DECLCALLBACK(int) hwaccmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersio
 
             rc = SSMR3GetU32(pSSM, (uint32_t *)&pPatch->enmType);
             AssertRCReturn(rc, rc);
+
+            if (pPatch->enmType == HWACCMTPRINSTR_JUMP_REPLACEMENT)
+                pVM->hwaccm.s.svm.fTPRPatchingActive = true;
+
+            Assert(pPatch->enmType == HWACCMTPRINSTR_JUMP_REPLACEMENT || pVM->hwaccm.s.svm.fTPRPatchingActive == false);
 
             rc = SSMR3GetU32(pSSM, &pPatch->uSrcOperand);
             AssertRCReturn(rc, rc);
