@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23909 2009-10-20 15:50:06Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23911 2009-10-20 15:56:43Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2742,17 +2742,17 @@ STDMETHODIMP Machine::GetExtraData(IN_BSTR aKey,
     CheckComRCReturnRC (autoCaller.rc());
 
     /* start with nothing found */
-    Utf8Str strResult;
+    Bstr bstrResult("");
 
     AutoReadLock alock (this);
 
     settings::ExtraDataItemsMap::const_iterator it = mData->m_pMachineConfigFile->mapExtraDataItems.find(Utf8Str(aKey));
     if (it != mData->m_pMachineConfigFile->mapExtraDataItems.end())
         // found:
-        strResult = it->second;
+        bstrResult = it->second; // source is a Utf8Str
 
     /* return the result to caller (may be empty) */
-    strResult.cloneTo(aValue);
+    bstrResult.cloneTo(aValue);
 
     return S_OK;
 }
