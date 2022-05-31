@@ -1,4 +1,4 @@
-# $Id: Config.kmk 19957 2009-05-24 02:47:43Z vboxsync $
+# $Id: Config.kmk 19987 2009-05-25 09:48:43Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -494,7 +494,7 @@ endif
 ## Use the new version of liblzf. Remove with the old liblzf.
 #VBOX_WITH_NEW_LIBLZF = 1
 ## For experimenting with linking libxml2 into VBoxRT.
-#VBOX_WITH_LIBXML2_IN_VBOXRT = 1
+VBOX_WITH_LIBXML2_IN_VBOXRT = 1
 
 ## For experimenting with disabling preemption instead of interrupts
 # when working VT-x/AMD-V in VMMR0.
@@ -3777,7 +3777,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 19957 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 19987 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
