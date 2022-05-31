@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 19914 2009-05-22 15:10:44Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 19915 2009-05-22 15:28:19Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -87,35 +87,32 @@ RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
 }
 
 
-#if 0
 RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
 {
     Assert(hThread == NIL_RTTHREAD);
 
-    KeRaiseIrql
-    RTCCUINTREG       fSavedFlags  = ASMIntDisableFlags();
-    PKPCR             pPcr         = KeGetPcr();
     uint8_t volatile *pbQuantumEnd;
+    RTCCUINTREG       fSavedFlags  = ASMIntDisableFlags();
 
 #if   defined(RT_ARCH_X86)
     /* HACK ALERT! The offset is from ks386.inc. */
-    pbQuantumEnd = (uint8_t volatile *)pPcr->Prcb + 0x3375;
-
+    PKPCR pPcr = (PKPCR)__readfsdword(RT_OFFSETOF(KPCR,SelfPcr));
+    pbQuantumEnd = (uint8_t volatile *)pPcr->Prcb + 0x1a41;
 
 #elif defined(RT_ARCH_AMD64)
     /* HACK ALERT! The offset is from windbg/vista64. */
+    PKPCR pPcr = (PKPCR)__readgsqword(RT_OFFSETOF(KPCR,Self));
     pbQuantumEnd = (uint8_t volatile *)pPcr->CurrentPrcb + 0x3375;
 
 #else
 # error "port me"
 #endif
-
-    bool fResult = *pbQuantumEnd != FALSE;
+    uint8_t QuantumEnd = *pbQuantumEnd;
     ASMSetFlags(fSavedFlags);
 
-    return fResult;
+    AssertMsg(QuantumEnd == FALSE || QuantumEnd == TRUE, ("%x\n", QuantumEnd));
+    return QuantumEnd == TRUE;
 }
-#endif
 
 
 RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
