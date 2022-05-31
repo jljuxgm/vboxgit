@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 21094 2009-06-30 18:53:15Z vboxsync $ */
+/* $Id: MMHyper.cpp 21992 2009-08-05 12:29:09Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -1099,11 +1099,9 @@ VMMR3DECL(int) MMR3HyperSetGuard(PVM pVM, void *pvStart, size_t cb, bool fSet)
      *       protection stuff isn't possible to implement on all platforms.
      */
     uint8_t    *pbR3  = (uint8_t *)pLookup->u.Locked.pvR3;
-#ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-    RTR0PTR     R0Ptr = VMMIsHwVirtExtForced(pVM) ? pLookup->u.Locked.pvR0 : NIL_RTR0PTR;
-#else
-    RTR0PTR     R0Ptr = NIL_RTR0PTR; /* ring-0 and ring-3 uses the same mapping. */
-#endif
+    RTR0PTR     R0Ptr = pLookup->u.Locked.pvR0 != (uintptr_t)pLookup->u.Locked.pvR3
+                      ? pLookup->u.Locked.pvR0
+                      : NIL_RTR0PTR;
     uint32_t    off   = (uint32_t)((uint8_t *)pvStart - pbR3);
     int         rc;
     if (fSet)
