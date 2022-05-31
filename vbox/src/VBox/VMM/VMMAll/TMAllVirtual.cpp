@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 19660 2009-05-13 14:09:15Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 19709 2009-05-14 17:59:34Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -451,7 +451,7 @@ DECLINLINE(uint64_t) tmVirtualSyncGetEx(PVM pVM, bool fCheckTimers)
         uint64_t off = pVM->tm.s.offVirtualSync;
         if (pVM->tm.s.fVirtualSyncCatchUp)
         {
-            int rc = tmTryLock(pVM); /** @todo SMP: Here be dragons... Need to get back to this later. */
+            int rc = tmVirtualSyncTryLock(pVM); /** @todo SMP: Here be dragons... Need to get back to this later. */
 
             const uint64_t u64Prev = pVM->tm.s.u64VirtualSyncCatchUpPrev;
             uint64_t u64Delta = u64 - u64Prev;
@@ -485,7 +485,7 @@ DECLINLINE(uint64_t) tmVirtualSyncGetEx(PVM pVM, bool fCheckTimers)
             }
 
             if (RT_SUCCESS(rc))
-                tmUnlock(pVM);
+                tmVirtualSyncUnlock(pVM);
         }
 
         /*
@@ -498,13 +498,13 @@ DECLINLINE(uint64_t) tmVirtualSyncGetEx(PVM pVM, bool fCheckTimers)
         if (u64 >= u64Expire)
         {
             u64 = u64Expire;
-            int rc = tmTryLock(pVM); /** @todo SMP: Here be dragons... Need to get back to this later. FIXME */
+            int rc = tmVirtualSyncTryLock(pVM); /** @todo SMP: Here be dragons... Need to get back to this later. FIXME */
             if (RT_SUCCESS(rc))
             {
                 ASMAtomicXchgU64(&pVM->tm.s.u64VirtualSync, u64);
                 ASMAtomicXchgBool(&pVM->tm.s.fVirtualSyncTicking, false);
                 VM_FF_SET(pVM, VM_FF_TM_VIRTUAL_SYNC);
-                tmUnlock(pVM);
+                tmVirtualSyncUnlock(pVM);
             }
             if (    fCheckTimers
                 &&  !VMCPU_FF_ISSET(pVCpuDst, VMCPU_FF_TIMER))
