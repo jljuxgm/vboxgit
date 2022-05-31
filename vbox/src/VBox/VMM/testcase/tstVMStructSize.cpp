@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 22887 2009-09-09 22:23:58Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 22888 2009-09-09 22:36:03Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -111,7 +111,7 @@ int main()
 #define PRINT_OFFSET(strct, member) \
     do \
     { \
-        printf("%s::%s offset %#x (%d) sizeof %d\n",  #strct, #member, (int)RT_OFFSETOF(strct, member), (int)RT_OFFSETOF(strct, member), (int)RT_SIZEOFMEMB(strct, member)); \
+        printf("info: %s::%s offset %#x (%d) sizeof %d\n",  #strct, #member, (int)RT_OFFSETOF(strct, member), (int)RT_OFFSETOF(strct, member), (int)RT_SIZEOFMEMB(strct, member)); \
     } while (0)
 
 
