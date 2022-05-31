@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 23875 2009-10-19 16:22:27Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -309,7 +309,7 @@ static int handleSetGuestProperty(HandlerArg *a)
         a->session->COMGETTER(Machine)(machine.asOutParam());
 
         if (!pszValue && !pszFlags)
-            CHECK_ERROR(machine, SetGuestPropertyValue(Bstr(pszName), NULL));
+            CHECK_ERROR(machine, SetGuestPropertyValue(Bstr(pszName), Bstr()));
         else if (!pszFlags)
             CHECK_ERROR(machine, SetGuestPropertyValue(Bstr(pszName), Bstr(pszValue)));
         else
