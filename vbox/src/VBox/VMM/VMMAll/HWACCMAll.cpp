@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 19812 2009-05-19 11:54:55Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 19815 2009-05-19 12:06:05Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -96,6 +96,9 @@ VMMDECL(int) HWACCMFlushAllTLBs(PVM pVM)
     for (unsigned idCpu = 0; idCpu < pVM->cCPUs; idCpu++)
     {
         PVMCPU pVCpu = &pVM->aCpus[idCpu];
+
+        if (VMCPU_FF_ISSET(pVCpu, VMCPU_FF_TLB_FLUSH))
+            continue;
 
         VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
         if (idThisCpu == idCpu)
