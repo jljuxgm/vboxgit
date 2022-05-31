@@ -1,4 +1,4 @@
-/* $Id: s3.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: s3.h 21754 2009-07-21 15:18:06Z vboxsync $ */
 /** @file
  * IPRT - Simple Storage Service (S3) Communication API.
  */
@@ -35,7 +35,7 @@
 
 RT_C_DECLS_BEGIN
 
-/** @group grp_rt_s3    RTS3 - Simple Storage Service (S3) Communication API
+/** @defgroup grp_rt_s3    RTS3 - Simple Storage Service (S3) Communication API
  * @ingroup grp_rt
  * @{
  */
