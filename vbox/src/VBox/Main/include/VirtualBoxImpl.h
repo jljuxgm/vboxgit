@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 18177 2009-03-24 13:21:12Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 19236 2009-04-28 12:58:25Z vboxsync $ */
 
 /** @file
  *
@@ -421,6 +421,8 @@ private:
 
             const Bstr mName;
             RTFILE mHandle;
+            /** Flag indicating that the config file is read-only. */
+            BOOL mReadonly;
         };
 
         // const data members not requiring locking

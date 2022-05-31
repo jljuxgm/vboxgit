@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
+/* $Id: MachineImpl.h 19236 2009-04-28 12:58:25Z vboxsync $ */
 
 /** @file
  *
@@ -151,6 +151,8 @@ public:
         const Guid mUuid;
         BOOL mRegistered;
 
+        /** Flag indicating that the config file is read-only. */
+        BOOL mConfigFileReadonly;
         Bstr mConfigFile;
         Bstr mConfigFileFull;
 
