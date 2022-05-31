@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 23757 2009-10-14 12:05:46Z vboxsync $ */
+/* $Id: DevE1000.cpp 23867 2009-10-19 12:59:42Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -1881,7 +1881,10 @@ static int e1kHandleRxPacket(E1KSTATE* pState, const void *pvBuf, size_t cb, E1K
     memcpy(rxPacket, pvBuf, cb);
     /* Pad short packets */
     if (cb < 60)
+    {
+        memset(rxPacket + cb, 0, 60 - cb);
         cb = 60;
+    }
     if (!(RCTL & RCTL_SECRC))
     {
         /* Add FCS if CRC stripping is not enabled */
