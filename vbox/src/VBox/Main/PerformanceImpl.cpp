@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 18252 2009-03-25 12:59:12Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 18487 2009-03-29 01:35:27Z vboxsync $ */
 
 /** @file
  *
@@ -438,7 +438,7 @@ PerformanceCollector::QueryMetricsData (ComSafeArrayIn (IN_BSTR, metricNames),
         retScales[i] = (*it)->getScale();
         retSequenceNumbers[i] = sequenceNumber;
         retLengths[i] = length;
-        retIndices[i] = flatIndex;
+        retIndices[i] = (ULONG)flatIndex;
         flatIndex += length;
     }
 
