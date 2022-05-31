@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 20087 2009-05-27 14:31:18Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 20094 2009-05-27 15:24:37Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -392,16 +392,6 @@ static DECLCALLBACK(int) pdmR3DevHlp_TMTimerCreate(PPDMDEVINS pDevIns, TMCLOCK e
 
     LogFlow(("pdmR3DevHlp_TMTimerCreate: caller='%s'/%d: returns %Rrc\n", pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, rc));
     return rc;
-}
-
-
-/** @copydoc PDMDEVHLPR3::pfnTMTimerCreateExternal */
-static DECLCALLBACK(PTMTIMERR3) pdmR3DevHlp_TMTimerCreateExternal(PPDMDEVINS pDevIns, TMCLOCK enmClock, PFNTMTIMEREXT pfnCallback, void *pvUser, const char *pszDesc)
-{
-    PDMDEV_ASSERT_DEVINS(pDevIns);
-    VM_ASSERT_EMT(pDevIns->Internal.s.pVMR3);
-
-    return TMR3TimerCreateExternal(pDevIns->Internal.s.pVMR3, enmClock, pfnCallback, pvUser, pszDesc);
 }
 
 
@@ -2677,7 +2667,6 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_ROMRegister,
     pdmR3DevHlp_SSMRegister,
     pdmR3DevHlp_TMTimerCreate,
-    pdmR3DevHlp_TMTimerCreateExternal,
     pdmR3DevHlp_PCIRegister,
     pdmR3DevHlp_PCIIORegionRegister,
     pdmR3DevHlp_PCISetConfigCallbacks,
@@ -3139,7 +3128,6 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_ROMRegister,
     pdmR3DevHlp_SSMRegister,
     pdmR3DevHlp_TMTimerCreate,
-    pdmR3DevHlp_TMTimerCreateExternal,
     pdmR3DevHlp_PCIRegister,
     pdmR3DevHlp_PCIIORegionRegister,
     pdmR3DevHlp_PCISetConfigCallbacks,
