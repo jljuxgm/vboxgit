@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 22562 2009-08-28 17:58:24Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 22624 2009-08-31 17:32:17Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -4279,7 +4279,7 @@ HRESULT VirtualBox::registerDHCPServer(DHCPServer *aDHCPServer,
  * @note Locks this object for writing and @a aHardDisk for reading.
  */
 HRESULT VirtualBox::unregisterDHCPServer(DHCPServer *aDHCPServer,
-                                       bool aSaveRegistry /*= true*/)
+                                         bool aSaveRegistry /*= true*/)
 {
     AssertReturn(aDHCPServer != NULL, E_INVALIDARG);
 

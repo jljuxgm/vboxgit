@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 22183 2009-08-11 17:00:33Z vboxsync $ */
+/* $Id: MachineImpl.h 22624 2009-08-31 17:32:17Z vboxsync $ */
 
 /** @file
  *
@@ -916,7 +916,7 @@ public:
 
     NS_DECL_ISUPPORTS
 
-    DECLARE_EMPTY_CTOR_DTOR (SessionMachine)
+    DECLARE_EMPTY_CTOR_DTOR(SessionMachine)
 
     HRESULT FinalConstruct();
     void FinalRelease();

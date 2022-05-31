@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: MediumImpl.cpp 22624 2009-08-31 17:32:17Z vboxsync $ */
 
 /** @file
  *
@@ -395,7 +395,7 @@ STDMETHODIMP MediumBase::UnlockRead (MediaState_T *aState)
  * @note @a aState may be NULL if the state value is not needed (only for
  *       in-process calls).
  */
-STDMETHODIMP MediumBase::LockWrite (MediaState_T *aState)
+STDMETHODIMP MediumBase::LockWrite(MediaState_T *aState)
 {
     AutoCaller autoCaller(this);
     CheckComRCReturnRC(autoCaller.rc());
