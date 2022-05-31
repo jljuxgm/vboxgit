@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 23205 2009-09-22 09:36:23Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -89,6 +89,14 @@ typedef struct DRVINTNET
     /** Set if data transmission should start immediately and deactivate
      * as late as possible. */
     bool                    fActivateEarlyDeactivateLate;
+    bool                    bAlignment[6];
+
+#ifdef LOG_ENABLED
+    /** The nano ts of the last transfer. */
+    uint64_t                u64LastTransferTS;
+    /** The nano ts of the last receive. */
+    uint64_t                u64LastReceiveTS;
+#endif
 
 #ifdef VBOX_WITH_STATISTICS
     /** Profiling packet transmit runs. */
@@ -97,12 +105,6 @@ typedef struct DRVINTNET
     STAMPROFILEADV          StatReceive;
 #endif /* VBOX_WITH_STATISTICS */
 
-#ifdef LOG_ENABLED
-    /** The nano ts of the last transfer. */
-    uint64_t                u64LastTransferTS;
-    /** The nano ts of the last receive. */
-    uint64_t                u64LastReceiveTS;
-#endif
     /** The network name. */
     char                    szNetwork[INTNET_MAX_NETWORK_NAME];
 } DRVINTNET, *PDRVINTNET;
