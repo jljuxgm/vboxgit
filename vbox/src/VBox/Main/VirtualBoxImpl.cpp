@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 22188 2009-08-11 18:06:11Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 22209 2009-08-12 13:48:35Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -168,28 +168,21 @@ HRESULT VirtualBox::init()
     try
     {
         // load and parse VirtualBox.xml; this will throw on XML or logic errors
-        m_pMainConfigFile = new settings::MainConfigFile(&m_strSettingsFilePath);
-    }
-    catch (xml::EIPRTFailure &e)
-    {
-        // this is thrown by the XML backend if the RTOpen() call fails;
-        // only if the main settings file does not exist, create it,
-        // if there's something more serious, then do fail!
-        if (e.rc() == VERR_FILE_NOT_FOUND)
-            fCreate = true;
-    }
-    catch (HRESULT err)
-    {
-        /* we assume that error info is set by the thrower */
-        rc = err;
-    }
-    catch (...)
-    {
-        rc = VirtualBox::handleUnexpectedExceptions(RT_SRC_POS);
-    }
+        try
+        {
+            m_pMainConfigFile = new settings::MainConfigFile(&m_strSettingsFilePath);
+        }
+        catch (xml::EIPRTFailure &e)
+        {
+            // this is thrown by the XML backend if the RTOpen() call fails;
+            // only if the main settings file does not exist, create it,
+            // if there's something more serious, then do fail!
+            if (e.rc() == VERR_FILE_NOT_FOUND)
+                fCreate = true;
+            else
+                throw;
+        }
 
-    try
-    {
         if (fCreate)
             m_pMainConfigFile = new settings::MainConfigFile(NULL);
 
