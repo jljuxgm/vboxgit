@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemption.h 19933 2009-05-23 01:44:13Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.h 19934 2009-05-23 01:44:51Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, common header.
  */
@@ -35,7 +35,7 @@ DECLEXPORT(int) TSTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint
 __END_DECLS
 #endif
 
-enum TSTR0THREADPREMEPTION
+typedef enum TSTR0THREADPREMEPTION
 {
     TSTR0THREADPREMEPTION_SANITY_OK = 1,
     TSTR0THREADPREMEPTION_SANITY_FAILURE,
