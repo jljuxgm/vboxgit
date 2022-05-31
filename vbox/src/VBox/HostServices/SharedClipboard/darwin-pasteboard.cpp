@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 21293 2009-07-07 08:01:25Z vboxsync $ */
+/* $Id: darwin-pasteboard.cpp 21627 2009-07-15 20:33:02Z vboxsync $ */
 /** @file
  * Shared Clipboard: Mac OS X host implementation.
  */
@@ -18,6 +18,8 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
+
+#include <iprt/stdint.h>
 
 #include <Carbon/Carbon.h>
 
