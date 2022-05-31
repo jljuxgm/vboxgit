@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 18665 2009-04-02 19:44:18Z vboxsync $ */
+/* $Id: PGMInternal.h 18724 2009-04-05 17:36:54Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1609,6 +1609,8 @@ typedef struct PGMPOOLPAGE
     /** Used to indicate that this page can't be flushed. Important for cr3 root pages or shadow pae pd pages). */
     bool                fLocked;
 } PGMPOOLPAGE, *PPGMPOOLPAGE, **PPPGMPOOLPAGE;
+/** Pointer to a const pool page. */
+typedef PGMPOOLPAGE const *PCPGMPOOLPAGE;
 
 
 #ifdef PGMPOOL_WITH_CACHE
