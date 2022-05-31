@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemption.h 19934 2009-05-23 01:44:51Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.h 19935 2009-05-23 01:50:33Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, common header.
  */
@@ -41,5 +41,6 @@ typedef enum TSTR0THREADPREMEPTION
     TSTR0THREADPREMEPTION_SANITY_FAILURE,
     TSTR0THREADPREMEPTION_BASIC,
     TSTR0THREADPREMEPTION_IS_PENDING,
+    TSTR0THREADPREMEPTION_NESTED
 } TSTR0THREADPREMEPTION;
 
