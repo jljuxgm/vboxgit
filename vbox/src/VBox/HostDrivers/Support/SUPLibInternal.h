@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 19924 2009-05-22 21:52:47Z vboxsync $ */
+/* $Id: SUPLibInternal.h 20366 2009-06-08 00:21:10Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -241,7 +241,7 @@ extern DECLHIDDEN(SUPLIBDATA)   g_supLibData;
 /*******************************************************************************
 *   OS Specific Function                                                       *
 *******************************************************************************/
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 int     suplibOsInstall(void);
 int     suplibOsUninstall(void);
 int     suplibOsInit(PSUPLIBDATA pThis, bool fPreInited);
@@ -314,7 +314,7 @@ DECLHIDDEN(void)   supR3HardenedGetPreInitData(PSUPPREINITDATA pPreInitData);
 DECLHIDDEN(int)    supR3HardenedRecvPreInitData(PCSUPPREINITDATA pPreInitData);
 
 
-__END_DECLS
+RT_END_DECLS
 
 
 #endif

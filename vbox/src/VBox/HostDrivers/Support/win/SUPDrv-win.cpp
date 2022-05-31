@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 19957 2009-05-24 02:47:43Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 20366 2009-06-08 00:21:10Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -90,9 +90,9 @@ DECLASM(int)   UNWIND_WRAP(RTPowerSignalEvent)(RTPOWEREVENT enmEvent);
 /*******************************************************************************
 *   Exported Functions                                                         *
 *******************************************************************************/
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 ULONG _stdcall DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath);
-__END_DECLS
+RT_END_DECLS
 
 
 /**

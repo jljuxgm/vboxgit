@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 18810 2009-04-07 12:02:39Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 20366 2009-06-08 00:21:10Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -28,7 +28,7 @@
 #include <iprt/assert.h>
 
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 /** Pointer to the globals. */
 typedef struct VBOXNETFLTGLOBALS *PVBOXNETFLTGLOBALS;
@@ -418,7 +418,7 @@ DECLHIDDEN(int) vboxNetFltOsPreInitInstance(PVBOXNETFLTINS pThis);
 /** @} */
 
 
-__END_DECLS
+RT_END_DECLS
 
 #endif
 
