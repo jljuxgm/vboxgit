@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: VMReq.cpp 19146 2009-04-23 14:59:10Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -647,7 +647,7 @@ VMMR3DECL(int) VMR3ReqQueue(PVMREQ pReq, unsigned cMillies)
                  * Notify EMT.
                  */
                 if (pUVM->pVM)
-                    VMCPU_FF_SET(pVCpu, VM_FF_REQUEST);
+                    VMCPU_FF_SET(pVCpu, VMCPU_FF_REQUEST);
                 /* @todo: VMR3NotifyFFU*/
                 AssertFailed();
                 VMR3NotifyFFU(pUVM, false);
@@ -693,7 +693,7 @@ VMMR3DECL(int) VMR3ReqQueue(PVMREQ pReq, unsigned cMillies)
          * Notify EMT.
          */
         if (pUVM->pVM)
-            VMCPU_FF_SET(pVCpu, VM_FF_REQUEST);
+            VMCPU_FF_SET(pVCpu, VMCPU_FF_REQUEST);
         /* @todo: VMR3NotifyFFU*/
         AssertFailed();
         VMR3NotifyFFU(pUVM, false);
@@ -856,7 +856,7 @@ VMMR3DECL(int) VMR3ReqProcessU(PUVM pUVM, VMREQDEST enmDest)
             {
                 PVMCPU pVCpu = &pUVM->pVM->aCpus[enmDest];
 
-                VMCPU_FF_CLEAR(pVCpu, VM_FF_REQUEST);
+                VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_REQUEST);
             }
         }
 
