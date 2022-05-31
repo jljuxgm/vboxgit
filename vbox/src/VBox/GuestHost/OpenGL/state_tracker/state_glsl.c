@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 23274 2009-09-24 09:31:32Z vboxsync $ */
+/* $Id: state_glsl.c 23276 2009-09-24 09:36:54Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -798,7 +798,6 @@ static void crStateGLSLCreateProgramCB(unsigned long key, void *data1, void *dat
 
 DECLEXPORT(void) STATE_APIENTRY crStateGLSLSwitch(CRContext *from, CRContext *to)
 {
-    /*@todo*/
     if (to->glsl.bResyncNeeded)
     {
         to->glsl.bResyncNeeded = GL_FALSE;
