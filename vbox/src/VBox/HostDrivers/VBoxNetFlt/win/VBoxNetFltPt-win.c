@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltPt-win.c 21343 2009-07-07 15:30:08Z vboxsync $ */
+/* $Id: VBoxNetFltPt-win.c 22389 2009-08-21 15:11:58Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Protocol edge of ndis filter driver
  */
@@ -969,16 +969,6 @@ vboxNetFltWinPtQueueReceivedPacket(
     do{
         RTSpinlockAcquire(pNetFlt->hSpinlock, &Tmp);
 
-        if(vboxNetFltWinGetPowerState(&pAdapt->PTState) != NdisDeviceStateD0
-                || vboxNetFltWinGetPowerState(&pAdapt->MPState) != NdisDeviceStateD0
-                || vboxNetFltWinGetOpState(&pAdapt->PTState) > kVBoxNetDevOpState_Initialized
-                || vboxNetFltWinGetOpState(&pAdapt->MPState) > kVBoxNetDevOpState_Initialized)
-        {
-            RTSpinlockRelease(pNetFlt->hSpinlock, &Tmp);
-            bReturn = true;
-            break;
-        }
-
         Assert(pAdapt->cReceivedPacketCount < MAX_RECEIVE_PACKET_ARRAY_SIZE);
 
         /*
@@ -989,12 +979,22 @@ vboxNetFltWinPtQueueReceivedPacket(
         pAdapt->aReceivedPackets[pAdapt->cReceivedPacketCount] = Packet;
         pAdapt->cReceivedPacketCount++;
 
+        /* check the device state */
+        if(vboxNetFltWinGetPowerState(&pAdapt->PTState) != NdisDeviceStateD0
+                || vboxNetFltWinGetPowerState(&pAdapt->MPState) != NdisDeviceStateD0
+                || vboxNetFltWinGetOpState(&pAdapt->PTState) > kVBoxNetDevOpState_Initialized
+                || vboxNetFltWinGetOpState(&pAdapt->MPState) > kVBoxNetDevOpState_Initialized)
+        {
+            /* we need to return all packets */
+            bReturn = true;
+        }
+
         /*
          *  If our receive packet array is full, or the miniport below indicated the packets
          *  with resources, do the indicatin now.
          */
 
-        if ((pAdapt->cReceivedPacketCount == MAX_RECEIVE_PACKET_ARRAY_SIZE) || DoIndicate)
+        if ((pAdapt->cReceivedPacketCount == MAX_RECEIVE_PACKET_ARRAY_SIZE) || DoIndicate || bReturn)
         {
             NdisMoveMemory(PacketArray,
                            pAdapt->aReceivedPackets,
@@ -1005,7 +1005,11 @@ vboxNetFltWinPtQueueReceivedPacket(
              * So other thread can queue the received packets
              */
             pAdapt->cReceivedPacketCount = 0;
-            DoIndicate = TRUE;
+
+            if(!bReturn)
+            {
+                DoIndicate = TRUE;
+            }
         }
         RTSpinlockRelease(pNetFlt->hSpinlock, &Tmp);
     } while(0);
