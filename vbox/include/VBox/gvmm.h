@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 19381 2009-05-05 14:44:43Z vboxsync $ */
+/* $Id: gvmm.h 19382 2009-05-05 14:56:15Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -129,6 +129,7 @@ GVMMR0DECL(int)     GVMMR0InitVM(PVM pVM);
 GVMMR0DECL(void)    GVMMR0DoneInitVM(PVM pVM);
 GVMMR0DECL(bool)    GVMMR0DoingTermVM(PVM pVM, PGVM pGVM);
 GVMMR0DECL(int)     GVMMR0DestroyVM(PVM pVM);
+GVMMR0DECL(int)     GVMMR0RegisterVCpu(PVM pVM, unsigned idCpu);
 GVMMR0DECL(PGVM)    GVMMR0ByHandle(uint32_t hGVM);
 GVMMR0DECL(PGVM)    GVMMR0ByVM(PVM pVM);
 GVMMR0DECL(int)     GVMMR0ByVMAndEMT(PVM pVM, unsigned idCpu, PGVM *ppGVM);

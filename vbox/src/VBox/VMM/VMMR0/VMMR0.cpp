@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 19381 2009-05-05 14:44:43Z vboxsync $ */
+/* $Id: VMMR0.cpp 19382 2009-05-05 14:56:15Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -741,6 +741,11 @@ static int vmmR0EntryExWorker(PVM pVM, unsigned idCpu, VMMR0OPERATION enmOperati
             if (pReqHdr || u64Arg)
                 return VERR_INVALID_PARAMETER;
             return GVMMR0DestroyVM(pVM);
+
+        case VMMR0_DO_GVMM_REGISTER_VMCPU:
+            if (!pVM)
+                return VERR_INVALID_PARAMETER;
+            return GVMMR0RegisterVCpu(pVM, idCpu);
 
         case VMMR0_DO_GVMM_SCHED_HALT:
             if (pReqHdr)
