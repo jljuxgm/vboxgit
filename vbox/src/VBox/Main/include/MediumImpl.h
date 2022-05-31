@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: MediumImpl.h 23235 2009-09-22 18:15:56Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -80,6 +80,7 @@ public:
     HRESULT init(VirtualBox *aVirtualBox,
                  CBSTR aLocation,
                  HDDOpenMode enOpenMode,
+                 DeviceType_T aDeviceType,
                  BOOL aSetImageId,
                  const Guid &aImageId,
                  BOOL aSetParentId,
@@ -315,7 +316,7 @@ protected:
 
 private:
 
-    HRESULT setLocation(const Utf8Str &aLocation);
+    HRESULT setLocation(const Utf8Str &aLocation, const Utf8Str &aFormat = Utf8Str());
     HRESULT setFormat(CBSTR aFormat);
 
     Utf8Str vdError(int aVRC);
