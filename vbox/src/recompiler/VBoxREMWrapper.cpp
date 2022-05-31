@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 20071 2009-05-27 12:07:38Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 20402 2009-06-08 13:09:23Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1108,6 +1108,7 @@ static REMFNDESC g_aVMMImports[] =
     { "EMR3FatalError",                         (void *)(uintptr_t)&EMR3FatalError,                 &g_aArgsEMR3FatalError[0],                  RT_ELEMENTS(g_aArgsEMR3FatalError),                    REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
     { "EMR3RemLock",                            (void *)(uintptr_t)&EMR3RemLock,                    &g_aArgsVM[0],                              RT_ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
     { "EMR3RemUnlock",                          (void *)(uintptr_t)&EMR3RemUnlock,                  &g_aArgsVM[0],                              RT_ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
+    { "EMR3RemIsLockOwner",                     (void *)(uintptr_t)&EMR3RemIsLockOwner,             &g_aArgsVM[0],                              RT_ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_VOID,   sizeof(bool),       NULL },
     { "HWACCMR3CanExecuteGuest",                (void *)(uintptr_t)&HWACCMR3CanExecuteGuest,        &g_aArgsHWACCMR3CanExecuteGuest[0],         RT_ELEMENTS(g_aArgsHWACCMR3CanExecuteGuest),           REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
     { "IOMIOPortRead",                          (void *)(uintptr_t)&IOMIOPortRead,                  &g_aArgsIOMIOPortRead[0],                   RT_ELEMENTS(g_aArgsIOMIOPortRead),                     REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
     { "IOMIOPortWrite",                         (void *)(uintptr_t)&IOMIOPortWrite,                 &g_aArgsIOMIOPortWrite[0],                  RT_ELEMENTS(g_aArgsIOMIOPortWrite),                    REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
