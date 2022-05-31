@@ -1,4 +1,4 @@
-# $Id: Config.kmk 23317 2009-09-25 08:00:03Z vboxsync $
+# $Id: Config.kmk 23318 2009-09-25 08:36:10Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1474,7 +1474,7 @@ ifeq ($(KBUILD_TARGET),darwin)
  VBOX_DARWIN_DEF_SDK_CFLAGS    := -mmacosx-version-min=$(VBOX_DEF_MACOSX_VERSION_MIN) -isysroot $(VBOX_PATH_MACOSX_SDK)
  VBOX_DARWIN_DEF_SDK_CXXFLAGS  := -mmacosx-version-min=$(VBOX_DEF_MACOSX_VERSION_MIN) -isysroot $(VBOX_PATH_MACOSX_SDK)
  VBOX_DARWIN_DEF_SDK_OBJCFLAGS := -mmacosx-version-min=$(VBOX_DEF_MACOSX_VERSION_MIN) -isysroot $(VBOX_PATH_MACOSX_SDK)
- VBOX_DARWIN_DEF_SDK_LDFLAGS    = -mmacosx-version-min=$(VBOX_DEF_MACOSX_VERSION_MIN) $(VBOX_DARWIN_NO_COMPACT_LINKEDIT) -Wl,-syslibroot,$(VBOX_PATH_MACOSX_SDK) $(VBOX_DARWIN_CLASSIC_LINKER)
+ VBOX_DARWIN_DEF_SDK_LDFLAGS    = -mmacosx-version-min=$(VBOX_DEF_MACOSX_VERSION_MIN) $(VBOX_DARWIN_NO_COMPACT_LINKEDIT) -Wl,-syslibroot,$(VBOX_PATH_MACOSX_SDK) -Wl,-headerpad_max_install_names $(VBOX_DARWIN_CLASSIC_LINKER)
 
  # specific versions.
  VBOX_PATH_MACOSX_SDK_10_4          ?= /Developer/SDKs/MacOSX10.4u.sdk
@@ -3819,7 +3819,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23317 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23318 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
