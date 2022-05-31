@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 20770 2009-06-22 12:32:53Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 20873 2009-06-24 02:08:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -270,10 +270,8 @@ static int pgmPhysEnsureHandyPage(PVM pVM)
                  pVM->pgm.s.cHandyPages, RT_ELEMENTS(pVM->pgm.s.aHandyPages), VM_FF_ISSET(pVM, VM_FF_PGM_NO_MEMORY) ));
 #ifdef IN_RING3
             int rc = PGMR3PhysAllocateHandyPages(pVM);
-#elif defined(IN_RING0)
-            int rc = VMMR0CallHost(pVM, VMMCALLHOST_PGM_ALLOCATE_HANDY_PAGES, 0);
 #else
-            int rc = VMMGCCallHost(pVM, VMMCALLHOST_PGM_ALLOCATE_HANDY_PAGES, 0);
+            int rc = VMMRZCallRing3NoCpu(pVM, VMMCALLHOST_PGM_ALLOCATE_HANDY_PAGES, 0);
 #endif
             if (RT_UNLIKELY(rc != VINF_SUCCESS))
             {

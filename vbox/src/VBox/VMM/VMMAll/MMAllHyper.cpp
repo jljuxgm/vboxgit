@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 20864 2009-06-23 19:19:42Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 20873 2009-06-24 02:08:38Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -168,12 +168,9 @@ static int mmHyperLock(PVM pVM)
     Assert(PDMCritSectIsInitialized(&pHeap->Lock));
 #endif
     int rc = PDMCritSectEnter(&pHeap->Lock, VERR_SEM_BUSY);
-#ifdef IN_RC
+#if defined(IN_RC) || defined(IN_RING0)
     if (rc == VERR_SEM_BUSY)
-        rc = VMMGCCallHost(pVM, VMMCALLHOST_MMHYPER_LOCK, 0);
-#elif defined(IN_RING0)
-    if (rc == VERR_SEM_BUSY)
-        rc = VMMR0CallHost(pVM, VMMCALLHOST_MMHYPER_LOCK, 0);
+        rc = VMMRZCallRing3NoCpu(pVM, VMMCALLHOST_MMHYPER_LOCK, 0);
 #endif
     AssertRC(rc);
     return rc;
