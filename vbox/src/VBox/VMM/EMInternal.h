@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 19440 2009-05-06 15:19:56Z vboxsync $ */
+/* $Id: EMInternal.h 19870 2009-05-20 14:31:01Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -42,7 +42,8 @@ __BEGIN_DECLS
  */
 
 /** The saved state version. */
-#define EM_SAVED_STATE_VERSION                      2
+#define EM_SAVED_STATE_VERSION                          3
+#define EM_SAVED_STATE_VERSION_PRE_SMP                  2
 
 /**
  * Cli node structure
