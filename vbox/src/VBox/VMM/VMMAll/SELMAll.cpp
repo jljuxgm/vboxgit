@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 23300 2009-09-24 16:47:59Z vboxsync $ */
+/* $Id: SELMAll.cpp 23303 2009-09-24 17:12:44Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -332,7 +332,7 @@ VMMDECL(int) SELMToFlatEx(PVM pVM, DIS_SELREG SelReg, PCCPUMCTXCORE pCtxCore, RT
         pvFlat = (RTGCPTR)((RTGCUINTPTR)Addr + X86DESC_BASE(Desc));
 
         /* Cut the address to 32 bits. */
-        Assert(!CPUMIsGuestInLongMode(pVCpu))
+        Assert(!CPUMIsGuestInLongMode(pVCpu));
         pvFlat &= 0xffffffff;
 
         u1Present     = Desc.Gen.u1Present;
@@ -543,7 +543,7 @@ VMMDECL(int) SELMToFlatBySelEx(PVM pVM, X86EFLAGS eflags, RTSEL Sel, RTGCPTR Add
         pvFlat = (RTGCPTR)((RTGCUINTPTR)Addr + X86DESC_BASE(Desc));
 
         /* Cut the address to 32 bits. */
-        Assert(!CPUMIsGuestInLongMode(pVCpu))
+        Assert(!CPUMIsGuestInLongMode(pVCpu));
         pvFlat &= 0xffffffff;
 
         u1Present     = Desc.Gen.u1Present;
@@ -745,7 +745,6 @@ DECLINLINE(int) selmValidateAndConvertCSAddrStd(PVM pVM, RTSEL SelCPL, RTSEL Sel
                 {
                     *ppvFlat = (RTGCPTR)((RTGCUINTPTR)Addr + X86DESC_BASE(Desc));
                     /* Cut the address to 32 bits. */
-                    Assert(!CPUMIsGuestInLongMode(pVCpu))
                     *ppvFlat &= 0xffffffff;
 
                     if (pcBits)
