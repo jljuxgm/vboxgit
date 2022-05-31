@@ -1,4 +1,4 @@
-/* $Id: tstSSM.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
+/* $Id: tstSSM.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
@@ -653,7 +653,7 @@ static int createFakeVM(PVM *ppVM)
                     pVM->enmVMState = VMSTATE_CREATED;
                     pVM->pVMR3 = pVM;
                     pVM->pUVM = pUVM;
-                    pVM->cCPUs = 1;
+                    pVM->cCpus = 1;
                     pVM->aCpus[0].pVMR3 = pVM;
                     pVM->aCpus[0].hNativeThread = RTThreadNativeSelf();
 

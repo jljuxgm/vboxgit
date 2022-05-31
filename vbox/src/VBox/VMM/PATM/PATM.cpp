@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: PATM.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -6004,7 +6004,7 @@ VMMR3DECL(int) PATMR3HandleTrap(PVM pVM, PCPUMCTX pCtx, RTRCPTR pEip, RTGCPTR *p
     PRECPATCHTOGUEST pPatchToGuestRec = 0;
     PVMCPU           pVCpu = VMMGetCpu0(pVM);
 
-    Assert(pVM->cCPUs == 1);
+    Assert(pVM->cCpus == 1);
 
     pNewEip   = 0;
     *ppNewEip = 0;

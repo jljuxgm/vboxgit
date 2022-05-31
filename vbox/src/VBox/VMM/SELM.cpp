@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
+/* $Id: SELM.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -397,7 +397,7 @@ VMMR3DECL(void) SELMR3Relocate(PVM pVM)
     PX86DESC paGdt = pVM->selm.s.paGdtR3;
     LogFlow(("SELMR3Relocate\n"));
 
-    for (unsigned i=0;i<pVM->cCPUs;i++)
+    for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
         PVMCPU pVCpu = &pVM->aCpus[i];
 

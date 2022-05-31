@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 22723 2009-09-02 15:14:30Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -2354,7 +2354,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_VMSuspend(PPDMDEVINS pDevIns)
     LogFlow(("pdmR3DevHlp_VMSuspend: caller='%s'/%d:\n",
              pDevIns->pDevReg->szDeviceName, pDevIns->iInstance));
 
-    if (pVM->cCPUs > 1)
+    if (pVM->cCpus > 1)
     {
         /* We own the IOM lock here and could cause a deadlock by waiting for a VCPU that is blocking on the IOM lock. */
         PVMREQ pReq;
@@ -2381,7 +2381,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_VMPowerOff(PPDMDEVINS pDevIns)
     LogFlow(("pdmR3DevHlp_VMPowerOff: caller='%s'/%d:\n",
              pDevIns->pDevReg->szDeviceName, pDevIns->iInstance));
 
-    if (pVM->cCPUs > 1)
+    if (pVM->cCpus > 1)
     {
         /* We own the IOM lock here and could cause a deadlock by waiting for a VCPU that is blocking on the IOM lock. */
         PVMREQ pReq;

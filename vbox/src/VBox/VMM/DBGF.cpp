@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 21144 2009-07-02 08:07:39Z vboxsync $ */
+/* $Id: DBGF.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -1074,7 +1074,7 @@ VMMR3DECL(int) DBGFR3Step(PVM pVM, VMCPUID idCpu)
      */
     AssertReturn(pVM->dbgf.s.fAttached, VERR_DBGF_NOT_ATTACHED);
     AssertReturn(RTSemPongIsSpeaker(&pVM->dbgf.s.PingPong), VERR_SEM_OUT_OF_TURN);
-    AssertReturn(idCpu < pVM->cCPUs, VERR_INVALID_PARAMETER);
+    AssertReturn(idCpu < pVM->cCpus, VERR_INVALID_PARAMETER);
 
     /*
      * Send the ping back to the emulation thread telling it to run.

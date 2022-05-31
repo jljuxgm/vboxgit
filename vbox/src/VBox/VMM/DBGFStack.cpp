@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 22112 2009-08-09 20:14:32Z vboxsync $ */
+/* $Id: DBGFStack.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -432,7 +432,7 @@ static int dbgfR3StackWalkBeginCommon(PVM pVM,
      */
     *ppFirstFrame = NULL;
     VM_ASSERT_VALID_EXT_RETURN(pVM, VERR_INVALID_VM_HANDLE);
-    AssertReturn(idCpu < pVM->cCPUs, VERR_INVALID_CPU_ID);
+    AssertReturn(idCpu < pVM->cCpus, VERR_INVALID_CPU_ID);
     if (pAddrFrame)
         AssertReturn(DBGFR3AddrIsValid(pVM, pAddrFrame), VERR_INVALID_PARAMETER);
     if (pAddrStack)

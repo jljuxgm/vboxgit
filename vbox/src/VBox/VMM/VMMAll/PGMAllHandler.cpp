@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 22756 2009-09-03 16:12:44Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1541,7 +1541,7 @@ static DECLCALLBACK(int) pgmHandlerVirtualVerifyOne(PAVLROGCPTRNODECORE pNode, v
     RTGCUINTPTR   GCPtr = (RTGCUINTPTR)pVirt->Core.Key;
     for (unsigned iPage = 0; iPage < pVirt->cPages; iPage++, GCPtr += PAGE_SIZE)
     {
-        for (unsigned i=0;i<pVM->cCPUs;i++)
+        for (VMCPUID i = 0; i < pVM->cCpus; i++)
         {
             PVMCPU pVCpu = &pVM->aCpus[i];
 

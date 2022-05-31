@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 22493 2009-08-26 22:22:16Z vboxsync $ */
+/* $Id: IOMAll.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -49,7 +49,7 @@
  */
 int iomLock(PVM pVM)
 {
-    Assert(pVM->cCPUs == 1 || !PGMIsLockOwner(pVM));
+    Assert(pVM->cCpus == 1 || !PGMIsLockOwner(pVM));
     int rc = PDMCritSectEnter(&pVM->iom.s.EmtLock, VERR_SEM_BUSY);
     return rc;
 }

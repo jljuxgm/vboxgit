@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 22545 2009-08-28 07:47:27Z vboxsync $ */
+/* $Id: PGMAll.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -459,7 +459,7 @@ VMMDECL(int) PGMTrap0eHandler(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFram
 
 # ifdef IN_RING0
     /* Note: hack alert for difficult to reproduce problem. */
-    if (    pVM->cCPUs > 1
+    if (    pVM->cCpus > 1
         &&  rc == VERR_PAGE_TABLE_NOT_PRESENT)
     {
         Log(("WARNING: Unexpected VERR_PAGE_TABLE_NOT_PRESENT for page fault at %RGv error code %x (rip=%RGv)\n", pvFault, uErr, pRegFrame->rip));
@@ -2517,7 +2517,7 @@ VMMDECL(unsigned) PGMAssertNoMappingConflicts(PVM pVM)
     unsigned cErrors = 0;
 
     /* Only applies to raw mode -> 1 VPCU */
-    Assert(pVM->cCPUs == 1);
+    Assert(pVM->cCpus == 1);
     PVMCPU pVCpu = &pVM->aCpus[0];
 
     /*

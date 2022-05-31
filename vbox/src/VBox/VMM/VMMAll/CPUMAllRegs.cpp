@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 22070 2009-08-07 13:34:10Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1072,7 +1072,7 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t iLeaf, uint32_t *pEax, ui
     *pEdx = pCpuId->edx;
 
     if (    iLeaf == 1
-        &&  pVM->cCPUs > 1)
+        &&  pVM->cCpus > 1)
     {
         /* Bits 31-24: Initial APIC ID */
         Assert(pVCpu->idCpu <= 255);
@@ -1310,10 +1310,9 @@ VMMDECL(void) CPUMSetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
             AssertMsgFailed(("enmFeature=%d\n", enmFeature));
             break;
     }
-    for (unsigned i=0;i<pVM->cCPUs;i++)
+    for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
         PVMCPU pVCpu = &pVM->aCpus[i];
-
         pVCpu->cpum.s.fChanged |= CPUM_CHANGED_CPUID;
     }
 }
@@ -1430,10 +1429,9 @@ VMMDECL(void) CPUMClearGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
             AssertMsgFailed(("enmFeature=%d\n", enmFeature));
             break;
     }
-    for (unsigned i=0;i<pVM->cCPUs;i++)
+    for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
         PVMCPU pVCpu = &pVM->aCpus[i];
-
         pVCpu->cpum.s.fChanged |= CPUM_CHANGED_CPUID;
     }
 }
