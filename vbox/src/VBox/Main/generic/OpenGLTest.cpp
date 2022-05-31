@@ -1,4 +1,4 @@
-/* $Id: OpenGLTest.cpp 20515 2009-06-12 13:36:57Z vboxsync $ */
+/* $Id: OpenGLTest.cpp 24005 2009-10-23 06:58:55Z vboxsync $ */
 /** @file
  * VBox host opengl support test - generic implementation.
  */
@@ -32,7 +32,7 @@
 bool is3DAccelerationSupported()
 {
     static char pszVBoxPath[RTPATH_MAX];
-    const char *papszArgs[3] = { NULL, "-test", NULL};
+    const char *papszArgs[4] = { NULL, "-test", "3D", NULL};
     int rc;
     RTPROCESS Process;
     RTPROCSTATUS ProcStatus;

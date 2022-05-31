@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 24004 2009-10-23 06:39:42Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 24005 2009-10-23 06:58:55Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -133,9 +133,9 @@ int main(int argc, char **argv)
                              "(C) 2009 Sun Microsystems, Inc.\n"
                              "All rights reserved.\n"
                              "\n"
-                             "Usage:\n"
-                             "\n"
-                             "  VBoxTestOGL [ --test 2D|3D]\n"
+                             "Parameters:\n"
+                             "  --test 2D      test for 2D (video) OpenGL capabilities\n"
+                             "  --test 3D      test for 3D OpenGL capabilities\n"
                              "\n",
                             RTBldCfgVersionMajor(), RTBldCfgVersionMinor(), RTBldCfgVersionBuild());
                     break;
