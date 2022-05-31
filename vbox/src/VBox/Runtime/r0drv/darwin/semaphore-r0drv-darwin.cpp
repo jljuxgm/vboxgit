@@ -1,4 +1,4 @@
-/* $Id: semaphore-r0drv-darwin.cpp 20355 2009-06-07 09:11:41Z vboxsync $ */
+/* $Id: semaphore-r0drv-darwin.cpp 21537 2009-07-13 14:49:54Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, Ring-0 Driver, Darwin.
  */
@@ -27,7 +27,6 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
-
 
 
 /*******************************************************************************
@@ -179,6 +178,8 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT EventSem)
                     ("pEventInt=%p u32Magic=%#x\n", pEventInt, pEventInt->u32Magic),
                     VERR_INVALID_HANDLE);
 
+    /** @todo should probably disable interrupts here... update
+     *        semspinmutex-r0drv-generic.c when done. */
     lck_spin_lock(pEventInt->pSpinlock);
 
     if (pEventInt->cWaiters > 0)
@@ -188,7 +189,7 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT EventSem)
         thread_wakeup_prim((event_t)pEventInt, TRUE /* one thread */, THREAD_AWAKENED);
 		/** @todo this isn't safe. a scheduling interrupt on the other cpu while we're in here
          * could cause the thread to be timed out before we manage to wake it up and the event
-         * ends up in the wrong state. ditto for posix signals. 
+         * ends up in the wrong state. ditto for posix signals.
 		 * Update: check the return code; it will return KERN_NOT_WAITING if no one is around. */
     }
     else
