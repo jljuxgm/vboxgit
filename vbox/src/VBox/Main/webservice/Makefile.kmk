@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23890 2009-10-19 21:10:42Z vboxsync $
+# $Id: Makefile.kmk 23896 2009-10-20 10:10:07Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -469,7 +469,7 @@ $(VBOXWEB_WS_PERL): $(VBOXWEB_WSDL) $(VBOXWEBSERVICE_WSDL)
 	$(QUIET)$(MV) $(VBOXWEB_WS_PERL).tmp $(VBOXWEB_WS_PERL)
 	$(QUIET)$(APPEND) $@ ''
 
-$(VBOXWEB_WS_PHP): $(VBOXWEB_IDL_SRC) $(VBOXWEBSERVICE_WSDL) $(VBOX_PATH_WEBSERVICE)/websrv-php.xsl
+$(VBOXWEB_WS_PHP): $(VBOXWEB_IDL_SRC) $(VBOX_PATH_WEBSERVICE)/websrv-php.xsl
 	$(call MSG_GENERATE,,$@,$(VBOXWEB_IDL_SRC) using websrv-php.xsl)
 	$(QUIET)$(MKDIR) -p $(@D)
 	$(QUIET)$(VBOX_XSLTPROC) $(VBOXWEB_XSLTPROC_VERBOSE) -o $@ $(VBOX_PATH_WEBSERVICE)/websrv-php.xsl $<
