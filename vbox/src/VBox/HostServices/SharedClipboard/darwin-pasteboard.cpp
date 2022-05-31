@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 18398 2009-03-27 14:21:19Z vboxsync $ */
+/* $Id: darwin-pasteboard.cpp 21293 2009-07-07 08:01:25Z vboxsync $ */
 /** @file
  * Shared Clipboard: Mac OS X host implementation.
  */
