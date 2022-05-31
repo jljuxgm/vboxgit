@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 19037 2009-04-20 15:56:10Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 19172 2009-04-24 15:51:32Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -463,16 +463,19 @@ int handleModifyHardDisk(HandlerArg *a)
         {
             ComPtr<IProgress> progress;
             CHECK_ERROR(hardDisk, Compact(progress.asOutParam()));
-            showProgress(progress);
-            progress->COMGETTER(ResultCode)(&rc);
+            if (SUCCEEDED(rc))
+            {
+                showProgress(progress);
+                progress->COMGETTER(ResultCode)(&rc);
+            }
             if (FAILED(rc))
             {
-                if (rc == VBOX_E_NOT_SUPPORTED)
+                if (rc == E_NOTIMPL)
                 {
                     RTPrintf("Error: Compact hard disk operation is not implemented!\n");
                     RTPrintf("The functionality will be restored later.\n");
                 }
-                else if (rc == E_NOTIMPL)
+                else if (rc == VBOX_E_NOT_SUPPORTED)
                 {
                     RTPrintf("Error: Compact hard disk operation for this format is not implemented yet!\n");
                 }
