@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 22000 2009-08-05 14:16:26Z vboxsync $ */
+/* $Id: HWACCM.cpp 22001 2009-08-05 14:33:38Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -258,7 +258,7 @@ static const char * const g_apszAmdVExitReasons[MAX_EXITREASON_STAT] =
     EXIT_REASON(SVM_EXIT_TASK_MONITOR               ,138, "MONITOR instruction."),
     EXIT_REASON(SVM_EXIT_MWAIT_UNCOND               ,139, "MWAIT instruction unconditional."),
     EXIT_REASON(SVM_EXIT_MWAIT_ARMED                ,140, "MWAIT instruction when armed."),
-    EXIT_REASON(SVM_EXIT_MWAIT_NPF                  ,1024, "Nested paging: host-level page fault occurred (EXITINFO1 contains fault errorcode; EXITINFO2 contains the guest physical address causing the fault)."),
+    EXIT_REASON(SVM_EXIT_NPF                        ,1024, "Nested paging: host-level page fault occurred (EXITINFO1 contains fault errorcode; EXITINFO2 contains the guest physical address causing the fault)."),
     EXIT_REASON_NIL()
 };
 # undef EXIT_REASON
