@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 19660 2009-05-13 14:09:15Z vboxsync $ */
+/* $Id: VMM.cpp 19663 2009-05-13 15:06:00Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1577,6 +1577,15 @@ static int vmmR3ServiceCallHostRequest(PVM pVM, PVMCPU pVCpu)
         case VMMCALLHOST_PGM_LOCK:
         {
             pVCpu->vmm.s.rcCallHost = PGMR3LockCall(pVM);
+            break;
+        }
+
+        /*
+         * Acquire the MM hypervisor heap lock.
+         */
+        case VMMCALLHOST_MMHYPER_LOCK:
+        {
+            pVCpu->vmm.s.rcCallHost = MMHyperLock(pVM);
             break;
         }
 

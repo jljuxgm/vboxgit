@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 19042 2009-04-21 02:07:18Z vboxsync $ */
+/* $Id: MM.cpp 19663 2009-05-13 15:06:00Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -445,6 +445,9 @@ VMMR3DECL(int) MMR3Term(PVM pVM)
      * Destroy the page pool. (first as it used the hyper heap)
      */
     mmR3PagePoolTerm(pVM);
+
+    /* Clean up the hypervisor heap. */
+    mmR3HyperTerm(pVM);
 
     /*
      * Zero stuff to detect after termination use of the MM interface
