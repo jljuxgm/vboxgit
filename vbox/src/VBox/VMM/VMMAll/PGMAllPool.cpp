@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22741 2009-09-03 12:46:00Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22742 2009-09-03 12:46:28Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2523,6 +2523,9 @@ DECLCALLBACK(int) pgmPoolClearAll(PVM pVM, PVMCPU pVCpu, void *pvUser)
                 /* fall thru */
 
                 default:
+#ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
+                    Assert(!pPage->fDirty);
+#endif
                     Assert(!pPage->cModifications || ++cModifiedPages);
                     Assert(pPage->iModifiedNext == NIL_PGMPOOL_IDX || pPage->cModifications);
                     Assert(pPage->iModifiedPrev == NIL_PGMPOOL_IDX || pPage->cModifications);
