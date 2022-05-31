@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20203 2009-06-03 04:36:35Z vboxsync $
+# $Id: Makefile.kmk 20295 2009-06-05 00:41:03Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -644,6 +644,10 @@ Drivers_DEFS      += VBOX_WITH_NETFLT
 endif
 ifdef VBOX_WITH_FAULT_INJECTION
 Drivers_DEFS      += VBOX_WITH_FAULT_INJECTION
+endif
+
+ifndef VBOX_OSE
+VBOX_WITH_SLIRP_ALIAS=1
 endif
 Drivers_INCS      := \
 	$(PATH_SUB_CURRENT) \
