@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 23167 2009-09-21 08:35:19Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -161,6 +161,10 @@ VMMDECL(int) HWACCMFlushTLBOnAllVCpus(PVM pVM)
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
         PVMCPU pVCpu = &pVM->aCpus[idCpu];
+
+        /* Nothing to do if a TLB flush is already pending; the VCPU should have already been poked if it were active */
+        if (VMCPU_FF_ISSET(pVCpu, VMCPU_FF_TLB_FLUSH))
+            continue;
 
         VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
         if (idThisCpu == idCpu)
