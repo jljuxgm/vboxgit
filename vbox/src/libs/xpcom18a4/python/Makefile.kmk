@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21239 2009-07-06 08:23:55Z vboxsync $
+# $Id: Makefile.kmk 21240 2009-07-06 08:35:59Z vboxsync $
 ## @file
 # Sub-Makefile for Python bindings
 #
@@ -115,7 +115,11 @@ endif
 VBoxPython26_EXTENDS    = VBoxPythonBase
 VBoxPython26_EXTENDS_BY = appending
 VBoxPython26_NAME       = VBoxPython2_6
-VBoxPython26_TEMPLATE   = XPCOM
+if "$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)" == "darwin.x86"
+ VBoxPython26_TEMPLATE   = XPCOMOSX105
+else
+ VBoxPython26_TEMPLATE   = XPCOM
+endif
 
 VBoxPython26_DEFS       = VBOX_PYXPCOM_VERSIONED
 VBoxPython26_INCS       = $(VBOX_PYTHON26_INC)
