@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23335 2009-09-25 14:58:47Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23378 2009-09-28 13:36:59Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -9858,7 +9858,7 @@ void SessionMachine::discardCurrentStateHandler (DiscardCurrentStateTask &aTask)
 
             /* while the hard disk is attached, the number of children or the
              * parent cannot change, so no lock */
-            if (!hd->parent().isNull() && hd->children().size() == 0)
+            if (!hd.isNull() && !hd->parent().isNull() && hd->children().size() == 0)
                 diffs.push_back (hd);
         }
 
