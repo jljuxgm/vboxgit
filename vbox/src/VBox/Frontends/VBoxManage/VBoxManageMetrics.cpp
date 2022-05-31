@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMetrics.cpp 18776 2009-04-06 15:19:35Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 19653 2009-05-13 12:20:49Z vboxsync $ */
 /** @file
  * VBoxManage - The 'metrics' command.
  */
@@ -521,6 +521,7 @@ static int handleMetricsCollect(int argc, char *argv[],
             }
             RTPrintf("\n");
         }
+        RTStrmFlush(g_pStdOut);
     }
 
 #ifdef RT_OS_WINDOWS
