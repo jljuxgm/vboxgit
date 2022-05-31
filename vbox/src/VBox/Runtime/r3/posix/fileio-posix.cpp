@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 21616 2009-07-15 15:27:07Z vboxsync $ */
+/* $Id: fileio-posix.cpp 22516 2009-08-27 12:42:16Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -87,6 +87,25 @@ extern int futimes(int __fd, __const struct timeval __tvp[2]) __THROW;
 #else
 # define RT_FILE_PERMISSION  (00600)
 #endif
+
+
+RTDECL(bool) RTFileExists(const char *pszPath)
+{
+    bool fRc = false;
+    char *pszNativePath;
+    int rc = rtPathToNative(&pszNativePath, pszPath);
+    if (RT_SUCCESS(rc))
+    {
+        struct stat s;
+        fRc = !stat(pszNativePath, &s)
+            && S_ISREG(s.st_mode);
+
+        rtPathFreeNative(pszNativePath);
+    }
+
+    LogFlow(("RTFileExists(%p={%s}): returns %RTbool\n", pszPath, pszPath, fRc));
+    return fRc;
+}
 
 
 RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen)
