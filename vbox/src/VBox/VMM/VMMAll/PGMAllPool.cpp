@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22510 2009-08-27 12:01:45Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22512 2009-08-27 12:31:19Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2099,8 +2099,8 @@ static int pgmPoolMonitorInsert(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
     {
         Assert(pPageHead != pPage); Assert(pPageHead->iMonitoredNext != pPage->idx);
         Assert(pPageHead->iMonitoredPrev != pPage->idx);
-        Assert(pPageHead->iMonitoredPrev == NIL_PGMPOOL_IDX || pPool->aPages[pPageHead->iMonitoredPrev].GCPhys == pPage->GCPhys);
-        Assert(pPageHead->iMonitoredNext == NIL_PGMPOOL_IDX || pPool->aPages[pPageHead->iMonitoredNext].GCPhys == pPage->GCPhys);
+        AssertMsg(pPageHead->iMonitoredPrev == NIL_PGMPOOL_IDX || pPool->aPages[pPageHead->iMonitoredPrev].GCPhys == pPage->GCPhys, ("%RGp vs %RGp\n", pPool->aPages[pPageHead->iMonitoredPrev].GCPhys, pPage->GCPhys);
+        AssertMsg(pPageHead->iMonitoredNext == NIL_PGMPOOL_IDX || pPool->aPages[pPageHead->iMonitoredNext].GCPhys == pPage->GCPhys, ("%RGp vs %RGp\n", pPool->aPages[pPageHead->iMonitoredNext].GCPhys, pPage->GCPhys);
 
 #ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
         if (pPageHead->fDirty)
