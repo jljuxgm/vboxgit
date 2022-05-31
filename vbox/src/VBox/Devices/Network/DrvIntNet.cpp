@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 23206 2009-09-22 09:41:07Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 23208 2009-09-22 09:45:30Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -64,13 +64,6 @@ typedef enum ASYNCSTATE
  */
 typedef struct DRVINTNET
 {
-#ifdef VBOX_WITH_STATISTICS
-    /** Profiling packet transmit runs. */
-    STAMPROFILE             StatTransmit;
-    /** Profiling packet receive runs. */
-    STAMPROFILEADV          StatReceive;
-#endif /* VBOX_WITH_STATISTICS */
-
     /** The network interface. */
     PDMINETWORKCONNECTOR    INetworkConnector;
     /** The network interface. */
@@ -103,6 +96,13 @@ typedef struct DRVINTNET
     /** The nano ts of the last receive. */
     uint64_t                u64LastReceiveTS;
 #endif
+
+#ifdef VBOX_WITH_STATISTICS
+    /** Profiling packet transmit runs. */
+    STAMPROFILE             StatTransmit;
+    /** Profiling packet receive runs. */
+    STAMPROFILEADV          StatReceive;
+#endif /* VBOX_WITH_STATISTICS */
 
     /** The network name. */
     char                    szNetwork[INTNET_MAX_NETWORK_NAME];
