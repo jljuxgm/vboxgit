@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 21604 2009-07-15 11:54:00Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 21605 2009-07-15 12:28:10Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -392,6 +392,7 @@ static int VBoxDrvSolarisDetach(dev_info_t *pDip, ddi_detach_cmd_t enmCmd)
             ddi_remove_minor_node(pDip, NULL);
             ddi_soft_state_free(g_pVBoxDrvSolarisState, instance);
 #endif
+            ddi_prop_remove_all(pDip);
             return DDI_SUCCESS;
         }
 
