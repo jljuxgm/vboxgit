@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 18841 2009-04-07 22:44:38Z vboxsync $ */
+/* $Id: DevE1000.cpp 19840 2009-05-19 19:05:34Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -1581,6 +1581,8 @@ PDMBOTHCBDECL(void) e1kHardReset(E1KSTATE *pState)
     STATUS = 0x0081;    /* SPEED=10b (1000 Mb/s), FD=1b (Full Duplex) */
     EECD   = 0x0100;    /* EE_PRES=1b (EEPROM present) */
     CTRL   = 0x0a09;    /* FRCSPD=1b SPEED=10b LRST=1b FD=1b */
+    Assert(GET_BITS(RCTL, BSIZE) == 0);
+    pState->u16RxBSize = 2048;
 }
 
 /**
