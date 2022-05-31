@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 18943 2009-04-16 13:35:36Z vboxsync $ */
+/* $Id: PGMAll.cpp 18949 2009-04-16 14:19:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1185,7 +1185,7 @@ int pgmShwGetEPTPDPtr(PVM pVM, PVMCPU pVCpu, RTGCPTR64 GCPtr, PEPTPDPT *ppPdpt, 
 
     Assert(HWACCMIsNestedPagingActive(pVM));
 
-    pPml4 = (PEPTPML4)PGMPOOL_PAGE_2_PTR_BY_PGM(pPGM, pPGM->CTX_SUFF(pShwPageCR3));
+    pPml4 = (PEPTPML4)PGMPOOL_PAGE_2_PTR_BY_PGMCPU(pPGM, pPGM->CTX_SUFF(pShwPageCR3));
     Assert(pPml4);
 
     /* Allocate page directory pointer table if not present. */
