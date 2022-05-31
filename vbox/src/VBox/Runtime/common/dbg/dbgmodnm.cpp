@@ -1,4 +1,4 @@
-/* $Id: dbgmodnm.cpp 21107 2009-06-30 22:58:49Z vboxsync $ */
+/* $Id: dbgmodnm.cpp 21290 2009-07-07 07:53:03Z vboxsync $ */
 /** @file
  * IPRT - Debug Map Reader For NM Like Mapfiles.
  */
@@ -275,7 +275,7 @@ static int rtDbgModNmScanFile(PRTDBGMODNM pThis, PRTSTREAM pStrm, bool fAddSymbo
             /*
              * Did the module change? Then update the symbol prefix.
              */
-            if (    cchMod != pszModNameEnd - pszModName
+            if (    cchMod != (size_t)(pszModNameEnd - pszModName)
                 ||  memcmp(pszModName, szSym, cchMod))
             {
                 cchMod = pszModNameEnd - pszModName;
