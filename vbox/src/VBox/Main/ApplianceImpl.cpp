@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 20212 2009-06-03 08:09:42Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 20219 2009-06-03 08:35:18Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1443,11 +1443,11 @@ STDMETHODIMP Appliance::Interpret()
             /* CPU count */
             ULONG cpuCountVBox = vsysThis.cCPUs;
             /* Check for the constrains */
-            if (cpuCountVBox > 1) //SchemaDefs::MaxCPUCount)
+            if (cpuCountVBox > SchemaDefs::MaxCPUCount)
             {
                 addWarning(tr("The virtual system \"%s\" claims support for %u CPU's, but VirtualBox has support for max %u CPU's only."),
-                           vsysThis.strName.c_str(), cpuCountVBox, 1); //SchemaDefs::MaxCPUCount);
-                cpuCountVBox = 1; //SchemaDefs::MaxCPUCount;
+                           vsysThis.strName.c_str(), cpuCountVBox, SchemaDefs::MaxCPUCount);
+                cpuCountVBox = SchemaDefs::MaxCPUCount;
             }
             if (vsysThis.cCPUs == 0)
                 cpuCountVBox = 1;
