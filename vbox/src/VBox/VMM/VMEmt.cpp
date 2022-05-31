@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 19682 2009-05-14 10:15:44Z vboxsync $ */
+/* $Id: VMEmt.cpp 19699 2009-05-14 14:48:19Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -228,6 +228,7 @@ int vmR3EmulationThreadWithId(RTTHREAD ThreadSelf, PUVMCPU pUVCpu, VMCPUID idCpu
                 if (   EMGetState(pVCpu) == EMSTATE_GURU_MEDITATION
                     && pVM->enmVMState == VMSTATE_RUNNING)
                 {
+                    Log(("Release locks owned by this EMT\n"));
                     /* Release owned locks to make sure other VCPUs can continue in case they were waiting for one. */
                     MMR3ReleaseOwnedLocks(pVM);
                     PGMR3ReleaseOwnedLocks(pVM);
