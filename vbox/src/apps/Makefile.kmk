@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17855 2009-03-13 18:28:26Z vboxsync $
+# $Id: Makefile.kmk 22875 2009-09-09 19:21:32Z vboxsync $
 ## @file
 # Sub-Makefile for the external apps.
 #
@@ -32,7 +32,7 @@ ifeq ($(KBUILD_TARGET),linux)
   include $(PATH_SUB_CURRENT)/tunctl/Makefile.kmk
  endif
 endif
-if1of ($(KBUILD_TARGET),darwin solaris linux)
+if1of ($(KBUILD_TARGET),darwin solaris linux freebsd)
  ifneq ($(wildcard $(PATH_SUB_CURRENT)/adpctl),)
   include $(PATH_SUB_CURRENT)/adpctl/Makefile.kmk
  endif

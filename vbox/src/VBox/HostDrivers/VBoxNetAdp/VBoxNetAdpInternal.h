@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInternal.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: VBoxNetAdpInternal.h 22875 2009-09-09 19:21:32Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Network Filter Driver (Host), Internal Header.
  */
@@ -146,6 +146,11 @@ struct VBoxNetAdapter
              * @{ */
             /** Pointer to Linux network device structure. */
             struct net_device *pNetDev;
+            /** @} */
+# elif defined(RT_OS_FREEBSD)
+            /** @name FreeBSD instance data.
+             * @{ */
+            struct ifnet *ifp;
             /** @} */
 # else
 # error PORTME

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 22791 2009-09-04 17:46:20Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 22875 2009-09-09 19:21:32Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -192,6 +192,22 @@ typedef struct VBOXNETFLTINS
             RTSEMFASTMUTEX hFastMtx;
             /** Mutex protection used for dynamic IPv6 attaches. */
             RTSEMFASTMUTEX hPollMtx;
+            /** @} */
+# elif defined(RT_OS_FREEBSD)
+            /** @name FreeBSD instance data.
+             * @{ */
+            /** Interface handle */
+            struct ifnet *ifp;
+            /** Netgraph node handle */
+            node_p node;
+            /** Input hook */
+            hook_p input;
+            /** Output hook */
+            hook_p output;
+            /** Original interface flags */
+            unsigned int flags;
+            /** The MAC address of the interface. */
+            RTMAC Mac;
             /** @} */
 # elif defined(RT_OS_WINDOWS)
             /** @name Windows instance data.

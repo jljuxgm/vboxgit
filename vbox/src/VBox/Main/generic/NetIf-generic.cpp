@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 22211 2009-08-12 16:05:19Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 22875 2009-09-09 19:21:32Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -132,7 +132,7 @@ int NetIfEnableDynamicIpConfig(VirtualBox * /* vBox */, HostNetworkInterface * /
 
 int NetIfCreateHostOnlyNetworkInterface (VirtualBox *pVBox, IHostNetworkInterface **aHostNetworkInterface, IProgress **aProgress)
 {
-#if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN)
+#if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD)
     /* create a progress object */
     ComObjPtr<Progress> progress;
     progress.createObject();
@@ -217,7 +217,7 @@ int NetIfCreateHostOnlyNetworkInterface (VirtualBox *pVBox, IHostNetworkInterfac
 int NetIfRemoveHostOnlyNetworkInterface (VirtualBox *pVBox, IN_GUID aId,
                                          IProgress **aProgress)
 {
-#if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN)
+#if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD)
     /* create a progress object */
     ComObjPtr<Progress> progress;
     progress.createObject();

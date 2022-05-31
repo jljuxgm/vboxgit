@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22867 2009-09-09 15:26:10Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22875 2009-09-09 19:21:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -76,6 +76,14 @@
 # include <linux/types.h>
 # include <linux/if.h>
 # include <linux/wireless.h>
+#endif
+
+#if defined(RT_OS_FREEBSD) && defined(VBOX_WITH_NETFLT)
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/ioctl.h>
+# include <sys/socket.h>
+# include <net/if.h>
 #endif
 
 #if defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT)
@@ -2308,7 +2316,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             const char *pszTrunk = szTrunkName;
             /* we're not releasing the INetCfg stuff here since we use it later to figure out whether it is wireless */
 
-# elif defined(RT_OS_LINUX)
+# elif defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
             /** @todo Check for malformed names. */
             const char *pszTrunk = pszHifName;
 
