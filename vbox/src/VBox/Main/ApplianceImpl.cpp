@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 22317 2009-08-18 10:29:29Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 22487 2009-08-26 20:55:09Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -988,7 +988,7 @@ int Appliance::readS3(TaskImportOVF *pTask)
         /* We need a temporary directory which we can put the OVF file & all
          * disk images in */
         vrc = RTDirCreateTemp(pszTmpDir);
-        if (RT_FAILURE(rc))
+        if (RT_FAILURE(vrc))
             throw setError(VBOX_E_FILE_ERROR,
                            tr("Cannot create temporary directory '%s'"), pszTmpDir);
 
@@ -1859,7 +1859,7 @@ int Appliance::importS3(TaskImportOVF *pTask)
         /* We need a temporary directory which we can put the all disk images
          * in */
         vrc = RTDirCreateTemp(pszTmpDir);
-        if (RT_FAILURE(rc))
+        if (RT_FAILURE(vrc))
             throw setError(VBOX_E_FILE_ERROR,
                            tr("Cannot create temporary directory '%s'"), pszTmpDir);
 
@@ -2969,7 +2969,7 @@ int Appliance::writeS3(TaskExportOVF *pTask)
         /* We need a temporary directory which we can put the OVF file & all
          * disk images in */
         vrc = RTDirCreateTemp(pszTmpDir);
-        if (RT_FAILURE(rc))
+        if (RT_FAILURE(vrc))
             throw setError(VBOX_E_FILE_ERROR,
                            tr("Cannot create temporary directory '%s'"), pszTmpDir);
 
