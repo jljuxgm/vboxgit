@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 20185 2009-06-02 12:04:10Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 20187 2009-06-02 12:39:15Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -731,9 +731,11 @@ int pdmR3AsyncCompletionTerm(PVM pVM)
 {
     LogFlowFunc((": pVM=%p\n", pVM));
 
-    pdmR3AsyncCompletionEpClassTerminate(pVM->pdm.s.papAsyncCompletionEndpointClass[PDMASYNCCOMPLETIONEPCLASSTYPE_FILE]);
-
-    MMR3HeapFree(pVM->pdm.s.papAsyncCompletionEndpointClass);
+    if (pVM->pdm.s.papAsyncCompletionEndpointClass)
+    {
+        pdmR3AsyncCompletionEpClassTerminate(pVM->pdm.s.papAsyncCompletionEndpointClass[PDMASYNCCOMPLETIONEPCLASSTYPE_FILE]);
+        MMR3HeapFree(pVM->pdm.s.papAsyncCompletionEndpointClass);
+    }
     return VINF_SUCCESS;
 }
 
