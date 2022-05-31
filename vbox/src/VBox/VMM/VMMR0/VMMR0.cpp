@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 19957 2009-05-24 02:47:43Z vboxsync $ */
+/* $Id: VMMR0.cpp 19958 2009-05-24 03:05:50Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -668,7 +668,7 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
             ASMAtomicWriteU32(&pVCpu->idHostCpu, NIL_RTCPUID);
 #ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
             RTThreadPreemptRestore(&PreemptState);
-#else !defined(RT_OS_WINDOWS)
+#elif !defined(RT_OS_WINDOWS)
             ASMSetFlags(uFlags);
 #endif
 
