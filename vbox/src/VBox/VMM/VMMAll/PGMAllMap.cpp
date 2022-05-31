@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 19329 2009-05-04 14:59:32Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 19628 2009-05-12 14:16:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -576,7 +576,7 @@ static void pgmMapCheckShadowPDEs(PVM pVM, PVMCPU pVCpu, PPGMPOOLPAGE pShwPageCR
 
                 PCPGMPOOLPAGE   pPoolPagePd = pgmPoolGetPage(pPool, pShwPdpt->a[iPdpt].u & X86_PDPE_PG_MASK);
                 AssertFatal(pPoolPagePd);
-                AssertMsg(pPoolPagePd->fLocked, (".idx=%d .type=%d\n", pPoolPagePd->idx, pPoolPagePd->enmKind));
+                AssertMsg(pPoolPagePd->cLocked, (".idx=%d .type=%d\n", pPoolPagePd->idx, pPoolPagePd->enmKind));
                 break;
             }
 
