@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 18115 2009-03-20 13:10:58Z vboxsync $ */
+/* $Id: MachineImpl.cpp 18158 2009-03-23 17:36:37Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -7767,14 +7767,17 @@ void Machine::rollback (bool aNotify)
         mStorageControllers.rollback();
     }
 
-    /* rollback any changes to devices after restoring the list */
-    StorageControllerList::const_iterator it = mStorageControllers->begin();
-    while (it != mStorageControllers->end())
+    if (!mStorageControllers.isNull())
     {
-        if ((*it)->isModified())
-            (*it)->rollback();
+        /* rollback any changes to devices after restoring the list */
+        StorageControllerList::const_iterator it = mStorageControllers->begin();
+        while (it != mStorageControllers->end())
+        {
+            if ((*it)->isModified())
+                (*it)->rollback();
 
-        ++ it;
+            ++ it;
+        }
     }
 
     mUserData.rollback();
