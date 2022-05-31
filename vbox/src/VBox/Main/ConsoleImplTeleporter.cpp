@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 23801 2009-10-15 15:00:47Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 23804 2009-10-15 15:45:26Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -766,6 +766,7 @@ Console::teleporterTrg(PVM pVM, IMachine *pMachine, bool fStartPaused, void *pvV
     HRESULT hrc = pMachine->COMGETTER(TeleporterPort)(&uPort);
     if (FAILED(hrc))
         return VERR_GENERAL_FAILURE;
+    ULONG const uPortOrg = uPort;
 
     Bstr bstrAddress;
     hrc = pMachine->COMGETTER(TeleporterAddress)(bstrAddress.asOutParam());
@@ -848,6 +849,13 @@ Console::teleporterTrg(PVM pVM, IMachine *pMachine, bool fStartPaused, void *pvV
         RTTimerLRDestroy(hTimerLR);
     }
     RTTcpServerDestroy(hServer);
+
+    /*
+     * If we change TeleporterPort above, set it back to it's original
+     * value before returning.
+     */
+    if (uPortOrg != uPort)
+        pMachine->COMSETTER(TeleporterPort)(uPortOrg);
 
     return vrc;
 }
