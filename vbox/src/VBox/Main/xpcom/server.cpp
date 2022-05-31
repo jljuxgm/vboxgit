@@ -1,4 +1,4 @@
-/* $Id: server.cpp 20044 2009-05-26 15:38:55Z vboxsync $ */
+/* $Id: server.cpp 20045 2009-05-26 15:44:07Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -73,7 +73,6 @@
 #include <VirtualBox_XPCOM.h>
 #include <VirtualBoxImpl.h>
 #include <MachineImpl.h>
-#include <VFSExplorerImpl.h>
 #include <ApplianceImpl.h>
 #include <SnapshotImpl.h>
 #include <MediumImpl.h>
@@ -110,9 +109,6 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(VirtualBox, IVirtualBox)
 
 NS_DECL_CLASSINFO(Machine)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(Machine, IMachine)
-
-NS_DECL_CLASSINFO(VFSExplorer)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(VFSExplorer, IVFSExplorer)
 
 NS_DECL_CLASSINFO(Appliance)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(Appliance, IAppliance)

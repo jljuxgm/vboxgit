@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 20044 2009-05-26 15:38:55Z vboxsync $ */
+/* $Id: ApplianceImpl.h 20045 2009-05-26 15:44:07Z vboxsync $ */
 
 /** @file
  *
@@ -74,14 +74,10 @@ public:
     STDMETHOD(COMGETTER(VirtualSystemDescriptions))(ComSafeArrayOut(IVirtualSystemDescription*, aVirtualSystemDescriptions));
 
     /* IAppliance methods */
-    /* Import methods */
     STDMETHOD(Read)(IN_BSTR path);
     STDMETHOD(Interpret)(void);
     STDMETHOD(ImportMachines)(IProgress **aProgress);
-    /* Export methods */
-    STDMETHOD(CreateVFSExplorer)(IN_BSTR aURI, IVFSExplorer **aExplorer);
     STDMETHOD(Write)(IN_BSTR format, IN_BSTR path, IProgress **aProgress);
-
     STDMETHOD(GetWarnings)(ComSafeArrayOut(BSTR, aWarnings));
 
     /* public methods only for internal purposes */
@@ -102,21 +98,14 @@ private:
     HRESULT searchUniqueVMName(Utf8Str& aName) const;
     HRESULT searchUniqueDiskImageFilePath(Utf8Str& aName) const;
     HRESULT setUpProgress(ComObjPtr<Progress> &pProgress, const Bstr &bstrDescription);
-    HRESULT setUpProgressUpload(ComObjPtr<Progress> &pProgress, const Bstr &bstrDescription);
     void waitForAsyncProgress(ComObjPtr<Progress> &pProgressThis, ComPtr<IProgress> &pProgressAsync);
     void addWarning(const char* aWarning, ...);
-
-    void parseURI(Utf8Str strUri, const Utf8Str &strProtocol, Utf8Str &strFilepath, Utf8Str &strHostname, Utf8Str &strUsername, Utf8Str &strPassword);
-    HRESULT writeImpl(int aFormat, Utf8Str aPath, ComObjPtr<Progress> &aProgress);
 
     struct TaskImportMachines;  /* Worker thread for import */
     static DECLCALLBACK(int) taskThreadImportMachines(RTTHREAD thread, void *pvUser);
 
-    struct TaskWriteOVF;        /* Worker threads for export */
-    static DECLCALLBACK(int) taskThreadWriteOVF(RTTHREAD aThread, void *pvUser);
-
-    int writeFS(TaskWriteOVF *pTask);
-    int writeS3(TaskWriteOVF *pTask);
+    struct TaskWriteOVF;       /* Worker thread for export */
+    static DECLCALLBACK(int) taskThreadWriteOVF(RTTHREAD thread, void *pvUser);
 
     friend class Machine;
 };
