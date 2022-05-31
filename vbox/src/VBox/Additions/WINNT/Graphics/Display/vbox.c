@@ -1,4 +1,4 @@
-/* $Id: vbox.c 22475 2009-08-26 15:12:21Z vboxsync $ */
+/* $Id: vbox.c 22548 2009-08-28 11:10:39Z vboxsync $ */
 /** @file
  * Display - VirtualBox Win 2000/XP guest display driver, support functions.
  */
@@ -346,7 +346,7 @@ static void vboxHGSMIBufferSubmit (PPDEV ppdev, void *p)
 
     DISPDBG((0, "VBoxDISP::vboxHGSMIBufferSubmit: offset 0x%x\n", offBuffer));
 
-    ppdev->pfnHGSMIGHCommandPost(ppdev->hMpHGSMI, offBuffer);
+    ASMOutU32(ppdev->IOPortGuestCommand, offBuffer);
 }
 
 static BOOL vboxVBVAInformHost (PPDEV ppdev, BOOL bEnable)
