@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 17865 2009-03-14 10:05:29Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 18594 2009-04-01 12:15:40Z vboxsync $ */
 
 /** @file
  *
@@ -107,6 +107,10 @@ private:
         ULONG networkMask;
         Bstr IPV6Address;
         ULONG IPV6NetworkMaskPrefixLength;
+        ULONG realIPAddress;
+        ULONG realNetworkMask;
+        Bstr  realIPV6Address;
+        ULONG realIPV6PrefixLength;
         BOOL dhcpEnabled;
         Bstr hardwareAddress;
         HostNetworkInterfaceMediumType_T mediumType;
