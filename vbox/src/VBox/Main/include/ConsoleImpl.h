@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 18348 2009-03-26 19:35:20Z vboxsync $ */
+/* $Id: ConsoleImpl.h 18645 2009-04-02 15:38:31Z vboxsync $ */
 
 /** @file
  *
@@ -457,9 +457,9 @@ private:
                         const char *pszFormat, va_list args);
 
     static DECLCALLBACK(void)
-    setVMRuntimeErrorCallback (PVM pVM, void *pvUser, bool fFatal,
-                               const char *pszErrorID,
-                               const char *pszFormat, va_list args);
+    setVMRuntimeErrorCallback (PVM pVM, void *pvUser, uint32_t fFatal,
+                               const char *pszErrorId,
+                               const char *pszFormat, va_list va);
 
     HRESULT                     captureUSBDevices (PVM pVM);
     void                        detachAllUSBDevices (bool aDone);

@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 18440 2009-03-28 02:57:12Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 18645 2009-04-02 15:38:31Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1972,8 +1972,8 @@ int DRVHostBaseInitFinish(PDRVHOSTBASE pThis)
             {
                 if (pThis->fAttachFailError)
                     return rc;
-                int erc = PDMDrvHlpVMSetRuntimeError(pDrvIns,
-                                                     false, "DrvHost_MOUNTFAIL",
+                int erc = PDMDrvHlpVMSetRuntimeError(pDrvIns, 0 /*fFlags*/,
+                                                     "DrvHost_MOUNTFAIL",
                                                      N_("Cannot attach to host device '%s'"), pszDevice);
                 AssertRC(erc);
                 src = rc;

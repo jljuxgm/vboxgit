@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 18617 2009-04-01 22:11:29Z vboxsync $ */
+/* $Id: VMM.cpp 18645 2009-04-02 15:38:31Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1457,8 +1457,7 @@ static int vmmR3ServiceCallHostRequest(PVM pVM)
          * Set the VM runtime error message.
          */
         case VMMCALLHOST_VM_SET_RUNTIME_ERROR:
-            VMR3SetRuntimeErrorWorker(pVM);
-            pVM->vmm.s.rcCallHost = VINF_SUCCESS;
+            pVM->vmm.s.rcCallHost = VMR3SetRuntimeErrorWorker(pVM);
             break;
 
         /*
