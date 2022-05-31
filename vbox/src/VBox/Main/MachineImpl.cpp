@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: MachineImpl.cpp 19280 2009-04-30 19:04:23Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -8301,7 +8301,12 @@ HRESULT SessionMachine::init (Machine *aMachine)
                      E_FAIL);
 #elif defined(VBOX_WITH_SYS_V_IPC_SESSION_WATCHER)
 # ifdef VBOX_WITH_NEW_SYS_V_KEYGEN
+#  if defined(RT_OS_FREEBSD) && (HC_ARCH_BITS == 64)
+    /** @todo Check that this still works correctly. */
+    AssertCompileSize(key_t, 8);
+#  else
     AssertCompileSize(key_t, 4);
+#  endif
     key_t key;
     mIPCSem = -1;
     mIPCKey = "0";
