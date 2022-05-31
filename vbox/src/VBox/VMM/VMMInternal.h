@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 23145 2009-09-18 20:58:30Z vboxsync $ */
+/* $Id: VMMInternal.h 23147 2009-09-18 21:33:35Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -314,6 +314,10 @@ typedef struct VMM
     /** Spin lock. */
     volatile uint32_t           u32RendezvousLock;
     /** @} */
+
+#if HC_ARCH_BITS == 32
+    uint32_t                    u32Alignment; /**< Alignment padding. */
+#endif
 
     /** Buffer for storing the standard assertion message for a ring-0 assertion.
      * Used for saving the assertion message text for the release log and guru
