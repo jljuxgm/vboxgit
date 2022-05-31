@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22771 2009-09-04 09:56:20Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22772 2009-09-04 10:02:48Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -911,9 +911,6 @@ DECLINLINE(bool) pgmPoolMonitorIsReused(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pReg
 static int pgmPoolAccessHandlerFlush(PVM pVM, PVMCPU pVCpu, PPGMPOOL pPool, PPGMPOOLPAGE pPage, PDISCPUSTATE pDis,
                                      PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFault, RTGCPTR pvFault)
 {
-#ifdef IN_RING0
-    int rc = pgmPoolMonitorChainFlush(pPool, pPage);
-#else
     /*
      * First, do the flushing.
      */
@@ -948,7 +945,6 @@ static int pgmPoolAccessHandlerFlush(PVM pVM, PVMCPU pVCpu, PPGMPOOL pPool, PPGM
 
     /* See use in pgmPoolAccessHandlerSimple(). */
     PGM_INVL_VCPU_TLBS(pVCpu);
-#endif
     LogFlow(("pgmPoolAccessHandlerPT: returns %Rrc (flushed)\n", rc));
     return rc;
 }
