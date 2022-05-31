@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 18100 2009-03-19 17:22:58Z vboxsync $ */
+/* $Id: getopt.cpp 18744 2009-04-06 11:08:34Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -52,6 +52,7 @@ RTDECL(int) RTGetOptInit(PRTGETOPTSTATE pState, int argc, char **argv,
     pState->cOptions     = cOptions;
     pState->iNext        = iFirst;
     pState->pszNextShort = NULL;
+    pState->pDef         = NULL;
 
     /* validate the options. */
     for (size_t i = 0; i < cOptions; i++)
@@ -228,6 +229,7 @@ static PCRTGETOPTDEF rtGetOptSearchShort(int chOption, PCRTGETOPTDEF paOptions, 
 
 RTDECL(int) RTGetOpt(PRTGETOPTSTATE pState, PRTGETOPTUNION pValueUnion)
 {
+    pState->pDef = NULL;
     /*
      * Make sure the union is completely cleared out, whatever happens below.
      */
@@ -465,6 +467,7 @@ RTDECL(int) RTGetOpt(PRTGETOPTSTATE pState, PRTGETOPTUNION pValueUnion)
             }
         }
 
+        pState->pDef = pOpt;
         return pOpt->iShort;
     }
 
