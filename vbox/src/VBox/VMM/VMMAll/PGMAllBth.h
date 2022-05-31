@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 18666 2009-04-02 23:10:12Z vboxsync $ */
+/* $Id: PGMAllBth.h 18790 2009-04-06 18:38:57Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3762,7 +3762,7 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVM pVM, uint64_t cr3, uint64_t cr4, RTGCPTR G
                             rc = PGMPhysGCPhys2HCPhys(pVM, GCPhysGst, &HCPhys);
                             if (RT_FAILURE(rc))
                             {
-                                if (HCPhysShw != MMR3PageDummyHCPhys(pVM))
+                                if (HCPhysShw != MMR3PageDummyHCPhys(pVM)) /** @todo this is wrong. */
                                 {
                                     AssertMsgFailed(("Cannot find guest physical address %RGp at %RGv! PteSrc=%#RX64 PteDst=%#RX64\n",
                                                     GCPhysGst, GCPtr + off, (uint64_t)PteSrc.u, (uint64_t)PteDst.u));
@@ -3783,7 +3783,7 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVM pVM, uint64_t cr3, uint64_t cr4, RTGCPTR G
                             if (!pPhysPage)
                             {
 # ifdef IN_RING3 /** @todo make MMR3PageDummyHCPhys an 'All' function! */
-                                if (HCPhysShw != MMR3PageDummyHCPhys(pVM))
+                                if (HCPhysShw != MMR3PageDummyHCPhys(pVM))  /** @todo this is wrong. */
                                 {
                                     AssertMsgFailed(("Cannot find guest physical address %RGp at %RGv! PteSrc=%#RX64 PteDst=%#RX64\n",
                                                     GCPhysGst, GCPtr + off, (uint64_t)PteSrc.u, (uint64_t)PteDst.u));
@@ -3992,7 +3992,7 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVM pVM, uint64_t cr3, uint64_t cr4, RTGCPTR G
                             rc = PGMPhysGCPhys2HCPhys(pVM, GCPhysGst, &HCPhys);
                             if (RT_FAILURE(rc))
                             {
-                                if (HCPhysShw != MMR3PageDummyHCPhys(pVM))
+                                if (HCPhysShw != MMR3PageDummyHCPhys(pVM))  /** @todo this is wrong. */
                                 {
                                     AssertMsgFailed(("Cannot find guest physical address %RGp at %RGv! PdeSrc=%#RX64 PteDst=%#RX64\n",
                                                     GCPhysGst, GCPtr + off, (uint64_t)PdeSrc.u, (uint64_t)PteDst.u));
@@ -4011,7 +4011,7 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVM pVM, uint64_t cr3, uint64_t cr4, RTGCPTR G
                             if (!pPhysPage)
                             {
 # ifdef IN_RING3 /** @todo make MMR3PageDummyHCPhys an 'All' function! */
-                                if (HCPhysShw != MMR3PageDummyHCPhys(pVM))
+                                if (HCPhysShw != MMR3PageDummyHCPhys(pVM))  /** @todo this is wrong. */
                                 {
                                     AssertMsgFailed(("Cannot find guest physical address %RGp at %RGv! PdeSrc=%#RX64 PteDst=%#RX64\n",
                                                     GCPhysGst, GCPtr + off, (uint64_t)PdeSrc.u, (uint64_t)PteDst.u));
