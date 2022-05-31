@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22624 2009-08-31 17:32:17Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22625 2009-08-31 17:42:43Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -6174,6 +6174,18 @@ HRESULT Machine::createImplicitDiffs (const Bstr &aFolder,
             rc = hd->createDiffStorageAndWait(diff,
                                               HardDiskVariant_Standard,
                                               &aProgress);
+
+            // at this point, the old image is still locked for writing, but instead
+            // we need the new diff image locked for writing and lock the previously
+            // current one for reading only
+            if (aOnline)
+            {
+                diff->LockWrite(NULL);
+                mData->mSession.mLockedMedia.push_back(Data::Session::LockedMedia::value_type(ComPtr<IHardDisk>(diff), true));
+                hd->UnlockWrite(NULL);
+                hd->LockRead(NULL);
+                mData->mSession.mLockedMedia.push_back(Data::Session::LockedMedia::value_type(ComPtr<IHardDisk>(hd), false));
+            }
 
             alock.enter();
 
