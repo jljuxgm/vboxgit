@@ -1,4 +1,4 @@
-# $Id: Config.kmk 23533 2009-10-03 18:07:41Z vboxsync $
+# $Id: Config.kmk 23592 2009-10-07 09:58:54Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -419,6 +419,10 @@ VBOX_WITH_HPET = 1
 VBOX_WITH_LPC = 1
 # Enable EFI support
 VBOX_WITH_EFI = 1
+# Fetch EFI firmware image from the build server  
+# VBOX_WITH_EFI_FIRMWARE_SERVER = 1
+# Revision of EFI firmware to use, need VBOX_WITH_EFI_FIRMWARE_SERVER enabled
+# VBOX_EFI_FW_REV=9330
 # Enable SCSI drivers
 VBOX_WITH_SCSI = 1
 # Enable changing network attachments dynamically.
@@ -3834,7 +3838,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23533 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23592 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
