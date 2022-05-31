@@ -1,4 +1,4 @@
-/* $Revision: 20124 $ */
+/* $Revision: 20315 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -399,9 +399,9 @@ static SUPFUNC g_aFunctions[] =
     { "RTSpinlockAcquireNoInts",                (void *)UNWIND_WRAP(RTSpinlockAcquireNoInts) },
     { "RTSpinlockReleaseNoInts",                (void *)UNWIND_WRAP(RTSpinlockReleaseNoInts) },
     { "RTTimeNanoTS",                           (void *)RTTimeNanoTS },
-    { "RTTimeMillieTS",                         (void *)RTTimeMilliTS },
+    { "RTTimeMilliTS",                          (void *)RTTimeMilliTS },
     { "RTTimeSystemNanoTS",                     (void *)RTTimeSystemNanoTS },
-    { "RTTimeSystemMillieTS",                   (void *)RTTimeSystemMilliTS },
+    { "RTTimeSystemMilliTS",                    (void *)RTTimeSystemMilliTS },
     { "RTThreadNativeSelf",                     (void *)RTThreadNativeSelf },
     { "RTThreadSleep",                          (void *)UNWIND_WRAP(RTThreadSleep) },
     { "RTThreadYield",                          (void *)UNWIND_WRAP(RTThreadYield) },

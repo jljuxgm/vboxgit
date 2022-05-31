@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 19932 2009-05-23 01:42:49Z vboxsync $
+; $Id: SUPR0.def 20315 2009-06-05 12:10:39Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Built-in exports.
 ;
@@ -111,9 +111,9 @@ EXPORTS
     RTSpinlockAcquireNoInts
     RTSpinlockReleaseNoInts
     RTTimeNanoTS
-    RTTimeMillieTS
+    RTTimeMilliTS
     RTTimeSystemNanoTS
-    RTTimeSystemMillieTS
+    RTTimeSystemMilliTS
     RTThreadSelf
     RTThreadNativeSelf
     RTThreadSleep
