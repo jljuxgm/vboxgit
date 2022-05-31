@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 19233 2009-04-28 10:16:37Z vboxsync $ */
+/* $Id: NetIf-linux.cpp 19433 2009-05-06 13:26:13Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -167,13 +167,13 @@ int NetIfList(std::list <ComObjPtr <HostNetworkInterface> > &list)
     return rc;
 }
 
-int NetIfGetConfigByName(IN_BSTR aName, NETIFINFO *pInfo)
+int NetIfGetConfigByName(PNETIFINFO pInfo)
 {
     int rc = VINF_SUCCESS;
     int sock = socket(AF_INET, SOCK_DGRAM, 0);
     if (sock < 0)
         return VERR_NOT_IMPLEMENTED;
-    rc = getInterfaceInfo(sock, Utf8Str(aName).c_str(), pInfo);
+    rc = getInterfaceInfo(sock, pInfo->szShortName, pInfo);
     close(sock);
     return rc;
 }

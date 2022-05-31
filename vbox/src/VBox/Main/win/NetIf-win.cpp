@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: NetIf-win.cpp 19433 2009-05-06 13:26:13Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1040,7 +1040,7 @@ int NetIfGetConfig(HostNetworkInterface * pIf, NETIFINFO *pInfo)
 #endif
 }
 
-int NetIfGetConfigByName(IN_BSTR /* aName */, NETIFINFO *)
+int NetIfGetConfigByName(PNETIFINFO)
 {
     return VERR_NOT_IMPLEMENTED;
 }
