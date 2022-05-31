@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 18173 2009-03-24 11:20:24Z vboxsync $ */
+/* $Id: MachineImpl.cpp 18252 2009-03-25 12:59:12Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -56,6 +56,7 @@
 #include "VirtualBoxXMLUtil.h"
 
 #include "Logging.h"
+#include "Performance.h"
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 17911 2009-03-16 10:30:55Z vboxsync $ */
+/* $Id: HostImpl.cpp 18252 2009-03-25 12:59:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -95,6 +95,7 @@ extern "C" char *getfullrawname(char *);
 #include "VirtualBoxImpl.h"
 #include "MachineImpl.h"
 #include "Logging.h"
+#include "Performance.h"
 
 #ifdef RT_OS_DARWIN
 # include "darwin/iokit.h"

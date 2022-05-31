@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 17911 2009-03-16 10:30:55Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 18252 2009-03-25 12:59:12Z vboxsync $ */
 
 /** @file
  *
@@ -33,6 +33,8 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
+
+#include "Performance.h"
 
 static Bstr gMetricNames[] =
 {
