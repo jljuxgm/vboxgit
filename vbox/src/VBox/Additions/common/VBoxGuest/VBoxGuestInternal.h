@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 21069 2009-06-30 14:23:40Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -160,6 +160,14 @@ void VBoxGuestCloseSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession)
 int  VBoxGuestCommonIOCtlFast(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession);
 int  VBoxGuestCommonIOCtl(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession,
                           void *pvData, size_t cbData, size_t *pcbDataReturned);
+
+#if defined(RT_OS_SOLARIS) \
+ || defined(RT_OS_FREEBSD) \
+ || defined(RT_OS_LINUX)
+DECLVBGL(void *) VBoxGuestNativeServiceOpen(uint32_t *pu32Version);
+DECLVBGL(void)   VBoxGuestNativeServiceClose(void *pvOpaque);
+DECLVBGL(int)    VBoxGuestNativeServiceCall(void *pvOpaque, unsigned int iCmd, void *pvData, size_t cbSize, size_t *pcbReturn);
+#endif
 
 RT_C_DECLS_END
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 21023 2009-06-29 13:35:52Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 21069 2009-06-30 14:23:40Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -1449,4 +1449,5 @@ bool VBoxGuestCommonISR(PVBOXGUESTDEVEXT pDevExt)
 
     return fOurIrq;
 }
+
 
