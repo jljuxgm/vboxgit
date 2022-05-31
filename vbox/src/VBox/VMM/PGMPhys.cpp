@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 23471 2009-10-01 11:47:11Z vboxsync $ */
+/* $Id: PGMPhys.cpp 23478 2009-10-01 13:12:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3326,6 +3326,4 @@ VMMR3DECL(int) PGMR3PhysTlbGCPhys2Ptr(PVM pVM, RTGCPHYS GCPhys, bool fWritable, 
     pgmUnlock(pVM);
     return rc;
 }
-
-
 
