@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 21079 2009-06-30 15:59:22Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 21188 2009-07-03 09:57:07Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2101,7 +2101,7 @@ DECLCALLBACK(int)  Console::configNetwork(Console *pThis, const char *pszDevice,
 
         if (attachDetach)
         {
-            rc = PDMR3DeviceDetach (pVM, pszDevice, uInstance, uLun);
+            rc = PDMR3DeviceDetach (pVM, pszDevice, uInstance, uLun, PDMDEVATT_FLAGS_NOT_HOT_PLUG);
             if (rc == VINF_PDM_NO_DRIVER_ATTACHED_TO_LUN)
                 rc = VINF_SUCCESS;
             AssertRC (rc);
@@ -2841,7 +2841,7 @@ DECLCALLBACK(int)  Console::configNetwork(Console *pThis, const char *pszDevice,
                 {
                     if (attachDetach)
                     {
-                        rc = PDMR3DeviceAttach (pVM, pszDevice, uInstance, uLun, NULL);
+                        rc = PDMR3DeviceAttach (pVM, pszDevice, uInstance, uLun, NULL, PDMDEVATT_FLAGS_NOT_HOT_PLUG);
                         AssertRC (rc);
                     }
 

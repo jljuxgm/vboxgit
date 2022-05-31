@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 20961 2009-06-26 08:45:18Z vboxsync $ */
+/* $Id: DevPCNet.cpp 21188 2009-07-03 09:57:07Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4677,8 +4677,9 @@ static DECLCALLBACK(void) pcnetPowerOff(PPDMDEVINS pDevIns)
  *
  * @param   pDevIns     The device instance.
  * @param   iLUN        The logical unit which is being detached.
+ * @param   fFlags      Flags, combination of the PDMDEVATT_FLAGS_* \#defines.
  */
-static DECLCALLBACK(void) pcnetDetach(PPDMDEVINS pDevIns, unsigned iLUN)
+static DECLCALLBACK(void) pcnetDetach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_t fFlags)
 {
     PCNetState *pThis = PDMINS_2_DATA(pDevIns, PCNetState *);
     Log(("#%d pcnetDetach:\n", PCNET_INST_NR));
@@ -4709,10 +4710,11 @@ static DECLCALLBACK(void) pcnetDetach(PPDMDEVINS pDevIns, unsigned iLUN)
  * @returns VBox status code.
  * @param   pDevIns     The device instance.
  * @param   iLUN        The logical unit which is being attached.
+ * @param   fFlags      Flags, combination of the PDMDEVATT_FLAGS_* \#defines.
  *
  * @remarks This code path is not used during construction.
  */
-static DECLCALLBACK(int) pcnetAttach(PPDMDEVINS pDevIns, unsigned iLUN)
+static DECLCALLBACK(int) pcnetAttach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_t fFlags)
 {
     PCNetState *pThis = PDMINS_2_DATA(pDevIns, PCNetState *);
     LogFlow(("#%d pcnetAttach:\n", PCNET_INST_NR));
