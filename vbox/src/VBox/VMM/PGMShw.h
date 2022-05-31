@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 20125 2009-05-28 15:44:30Z vboxsync $ */
+/* $Id: PGMShw.h 20129 2009-05-28 15:55:42Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -179,7 +179,7 @@ PGM_SHW_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
 PGM_SHW_DECL(int, Enter)(PVMCPU pVCpu)
 {
 #if PGM_SHW_TYPE == PGM_TYPE_NESTED || PGM_SHW_TYPE == PGM_TYPE_EPT
-    RTGCPHYS     GCPhysCR3 = PGMPOOL_PHYS_NON_PAGED;
+    RTGCPHYS     GCPhysCR3 = RT_BIT_64(63);
     PPGMPOOLPAGE pNewShwPageCR3;
     PVM          pVM       = pVCpu->pVMR3;
     PPGMPOOL     pPool     = pVM->pgm.s.CTX_SUFF(pPool);

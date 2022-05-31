@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 20125 2009-05-28 15:44:30Z vboxsync $ */
+/* $Id: PGMInternal.h 20129 2009-05-28 15:55:42Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -185,15 +185,6 @@
 #define PGM_PTFLAGS_CSAM_VALIDATED      RT_BIT_64(11)
 #endif
 
-/** @} */
-
-/** @name PGM pool physical address flags
- *
- * These are bit markers for PGM pool physical addresses.
- * @{ */
-#define PGMPOOL_PHYS_NON_PAGED          RT_BIT_64(63)
-#define PGMPOOL_PHYS_ACCESS_USER        RT_BIT_64(62)       /* set = user, cleared = supervisor */
-#define PGMPOOL_PHYS_ACCESS_RW          RT_BIT_64(61)       /* set = read/write, cleared = read-only. */
 /** @} */
 
 /** @name Defines used to indicate the shadow and guest paging in the templates.
