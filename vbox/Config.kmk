@@ -1,4 +1,4 @@
-# $Id: Config.kmk 18559 2009-03-31 07:10:17Z vboxsync $
+# $Id: Config.kmk 18667 2009-04-02 23:26:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -490,8 +490,6 @@ if1of ($(KBUILD_TARGET), darwin linux solaris win)
   VBOX_WITH_NETADP = 1
  endif
 endif
-# Use the new physical memory management code in the VMM.
-VBOX_WITH_NEW_PHYS_CODE = 1
 ## Use the new version of liblzf. Remove with the old liblzf.
 #VBOX_WITH_NEW_LIBLZF = 1
 
@@ -1068,9 +1066,6 @@ ifdef LOG_ENABLED
 endif
 ifdef VBOX_OSE
  DEFS += VBOX_OSE
-endif
-ifdef VBOX_WITH_NEW_PHYS_CODE
- DEFS += VBOX_WITH_NEW_PHYS_CODE
 endif
 ifdef VBOX_WITH_64_BITS_GUESTS
  DEFS += VBOX_WITH_64_BITS_GUESTS
@@ -3747,7 +3742,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 18559 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 18667 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
