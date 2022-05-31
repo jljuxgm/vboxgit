@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 18291 2009-03-26 05:11:07Z vboxsync $ */
+/* $Id: PGMInternal.h 18293 2009-03-26 05:23:46Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1048,8 +1048,12 @@ typedef struct PGMRAMRANGE
     /** Pointer to self - RC pointer. */
     RCPTRTYPE(struct PGMRAMRANGE *)     pSelfRC;
     /** Padding to make aPage aligned on sizeof(PGMPAGE). */
-#if HC_ARCH_BITS == (defined(VBOX_WITH_NEW_PHYS_CODE) ? 64 : 32)
+#ifdef VBOX_WITH_NEW_PHYS_CODE
+    uint32_t                            au32Alignment2[HC_ARCH_BITS == 32 ? 2 : 1];
+#else
+# if HC_ARCH_BITS == 32
     uint32_t                            u32Alignment2;
+# endif
 #endif
     /** Array of physical guest page tracking structures. */
     PGMPAGE                             aPages[1];
