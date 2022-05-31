@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 19690 2009-05-14 11:49:00Z vboxsync $ */
+/* $Id: PGMInternal.h 19696 2009-05-14 13:51:38Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2960,9 +2960,6 @@ PX86PD          pgmGstLazyMap32BitPD(PPGMCPU pPGM);
 PX86PDPT        pgmGstLazyMapPaePDPT(PPGMCPU pPGM);
 PX86PDPAE       pgmGstLazyMapPaePD(PPGMCPU pPGM, uint32_t iPdpt);
 PX86PML4        pgmGstLazyMapPml4(PPGMCPU pPGM);
-
-/* Forward decl */
-DECLINLINE(PPGMPOOLPAGE) pgmPoolGetPage(PPGMPOOL pPool, RTHCPHYS HCPhys);
 
 __END_DECLS
 
