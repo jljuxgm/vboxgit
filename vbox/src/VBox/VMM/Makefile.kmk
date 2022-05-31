@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19297 2009-05-01 17:03:40Z vboxsync $
+# $Id: Makefile.kmk 19757 2009-05-15 23:37:31Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -52,6 +52,7 @@ VMMR3_SOURCES   = \
 	CPUM.cpp \
 	DBGF.cpp \
 	DBGFAddr.cpp \
+	DBGFAddrSpace.cpp \
 	DBGFBp.cpp \
 	DBGFDisas.cpp \
 	DBGFInfo.cpp \

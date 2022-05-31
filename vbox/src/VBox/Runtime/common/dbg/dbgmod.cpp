@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 19566 2009-05-11 07:38:25Z vboxsync $ */
+/* $Id: dbgmod.cpp 19757 2009-05-15 23:37:31Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -44,7 +44,17 @@
 #include "internal/magics.h"
 
 
-RTDECL(int)         RTDbgModCreate(PRTDBGMOD phDbgMod, const char *pszName, const char *pszImgFile, const char *pszDbgFile)
+RTDECL(int)         RTDbgModCreate(PRTDBGMOD phDbgMod, const char *pszName, RTUINTPTR cb, uint32_t fFlags)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+RTDECL(int)         RTDbgModCreateFromImage(PRTDBGMOD phDbgMod, const char *pszFilename, const char *pszName, uint32_t fFlags)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+RTDECL(int)         RTDbgModCreateFromMap(PRTDBGMOD phDbgMod, const char *pszFilename, const char *pszName, RTUINTPTR uSubtrahend, uint32_t fFlags)
 {
     return VERR_NOT_IMPLEMENTED;
 }

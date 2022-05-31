@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 19423 2009-05-06 11:46:43Z vboxsync $ */
+/* $Id: DBGF.cpp 19757 2009-05-15 23:37:31Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -138,6 +138,8 @@ VMMR3DECL(int) DBGFR3Init(PVM pVM)
 {
     int rc = dbgfR3InfoInit(pVM);
     if (RT_SUCCESS(rc))
+        rc = dbgfR3AsInit(pVM);
+    if (RT_SUCCESS(rc))
         rc = dbgfR3SymInit(pVM);
     if (RT_SUCCESS(rc))
         rc = dbgfR3BpInit(pVM);
@@ -207,6 +209,7 @@ VMMR3DECL(int) DBGFR3Term(PVM pVM)
      * Terminate the other bits.
      */
     dbgfR3OSTerm(pVM);
+    dbgfR3AsTerm(pVM);
     dbgfR3InfoTerm(pVM);
     return VINF_SUCCESS;
 }
@@ -222,6 +225,7 @@ VMMR3DECL(int) DBGFR3Term(PVM pVM)
  */
 VMMR3DECL(void) DBGFR3Relocate(PVM pVM, RTGCINTPTR offDelta)
 {
+    dbgfR3AsRelocate(pVM, offDelta);
 }
 
 
