@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 19233 2009-04-28 10:16:37Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 19235 2009-04-28 12:46:45Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -25,6 +25,10 @@
 #include <iprt/env.h>
 #include <iprt/path.h>
 #include <iprt/param.h>
+
+#if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN)
+# include <cstdio>
+#endif
 
 #include "HostNetworkInterfaceImpl.h"
 #include "ProgressImpl.h"
