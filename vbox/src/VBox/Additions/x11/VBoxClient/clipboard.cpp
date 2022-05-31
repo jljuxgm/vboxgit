@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 19150 2009-04-23 19:01:05Z vboxsync $ */
+/** $Id: clipboard.cpp 19220 2009-04-27 15:54:13Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -389,6 +389,13 @@ static void vboxClipboardGetCText(XtPointer pValue, size_t cbSourceLen)
     LogFlowFunc(("\n"));
     LogFlow(("vboxClipboardGetCText: converting compound text to Utf-16LE. Original is %.*s\n",
            cbSourceLen, pValue));
+    /* Quick fix for 2.2. */
+    if (cbSourceLen == 0)
+    {
+        XtFree(reinterpret_cast<char *>(pValue));
+        vboxClipboardSendData(VBOX_SHARED_CLIPBOARD_FMT_UNICODETEXT,
+                              NULL, 0);        
+    }
     /* First convert the compound text to Utf8 */
     property.value = reinterpret_cast<unsigned char *>(pValue);
     property.encoding = g_ctx.atomCText;
