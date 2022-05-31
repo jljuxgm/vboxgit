@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 18770 2009-04-06 15:00:15Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 18876 2009-04-14 08:11:45Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -467,8 +467,9 @@ DECLASM(int) TRPMGCTrap07Handler(PTRPM pTrpm, PCPUMCTXCORE pRegFrame)
     PVM pVM = TRPM2VM(pTrpm);
 
     int rc = CPUMHandleLazyFPU(pVM, VMMGetCpu(pVM));
+    rc = trpmGCExitTrap(pVM, rc, pRegFrame);
     Log6(("TRPMGC07: %Rrc (%04x:%08x)\n", rc, pRegFrame->cs, pRegFrame->eip));
-    return rc; /** @todo call trpmGCExitTrap! (after 2.2.0) */
+    return rc;
 }
 
 
