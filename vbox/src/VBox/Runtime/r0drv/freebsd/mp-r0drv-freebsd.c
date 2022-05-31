@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-freebsd.c 19057 2009-04-21 10:54:07Z vboxsync $ */
+/* $Id: mp-r0drv-freebsd.c 19264 2009-04-29 13:22:56Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, FreeBSD.
  */
@@ -223,7 +223,7 @@ RTDECL(int) RTMpOnSpecific(RTCPUID idCpu, PFNRTMPWORKER pfnWorker, void *pvUser1
     Args.cHits = 0;
 #if __FreeBSD_version >= 700000
     Mask = (cpumask_t)1 << idCpu;
-    smp_rendezvous_smp(Mask, NULL, rtmpOnSpecificFreeBSDWrapper, NULL, &Args);
+    smp_rendezvous_cpus(Mask, NULL, rtmpOnSpecificFreeBSDWrapper, NULL, &Args);
 #else
     smp_rendezvous(NULL, rtmpOnSpecificFreeBSDWrapper, NULL, &Args);
 #endif
