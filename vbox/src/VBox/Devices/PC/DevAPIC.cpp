@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 19632 2009-05-12 14:37:26Z vboxsync $ */
+/* $Id: DevAPIC.cpp 19650 2009-05-13 10:11:08Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1062,8 +1062,8 @@ static uint32_t apic_get_delivery_bitmask(APICDeviceInfo *dev, uint8_t dest, uin
                     mask |= (1 << i);
                 }
             }
+            apic++;
         }
-        apic++;
     }
 
     return mask;
@@ -1125,7 +1125,7 @@ static int  apic_deliver(APICDeviceInfo* dev, APICState *s,
     APICState *apic_iter;
 #endif /* !VBOX */
 
-    LogFlow(("apic_deliver dest=%x dest_mode=%x delivery_mode=%x vector_num=%x polarity=%x trigger_mode=%x\n", dest, dest_mode, delivery_mode, vector_num, polarity, trigger_mode));
+    LogFlow(("apic_deliver dest=%x dest_mode=%x dest_shorthand=%x delivery_mode=%x vector_num=%x polarity=%x trigger_mode=%x\n", dest, dest_mode, dest_shorthand, delivery_mode, vector_num, polarity, trigger_mode));
 
     switch (dest_shorthand) {
         case 0:
