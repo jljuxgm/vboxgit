@@ -1,4 +1,4 @@
-/* $Id: hardenedmain.cpp 17863 2009-03-13 22:52:20Z vboxsync $ */
+/* $Id: hardenedmain.cpp 18789 2009-04-06 18:08:04Z vboxsync $ */
 /** @file
  * VirtualBox - Hardened main().
  */
@@ -19,6 +19,7 @@
  * additional information or have any questions.
  */
 
+#include <string.h>
 #include <VBox/sup.h>
 
 
@@ -29,15 +30,8 @@ int main(int argc, char **argv, char **envp)
      */
     uint32_t fFlags = SUPSECMAIN_FLAGS_DONT_OPEN_DEV;
     for (int i = 1; i < argc; i++)
-        if (   argv[i][0] == '-'
-            && argv[i][1] == 's'
-            && argv[i][2] == 't'
-            && argv[i][3] == 'a'
-            && argv[i][4] == 'r'
-            && argv[i][5] == 't'
-            && argv[i][6] == 'v'
-            && argv[i][7] == 'm'
-            && argv[i][8] == '\0')
+        if (    !strcmp(argv[i], "--startvm")
+            ||  !strcmp(argv[i], "-startvm"))
         {
             fFlags &= ~SUPSECMAIN_FLAGS_DONT_OPEN_DEV;
             break;
