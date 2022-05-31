@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: HardDiskImpl.cpp 22194 2009-08-12 08:35:51Z vboxsync $ */
 
 /** @file
  *
@@ -2336,7 +2336,7 @@ void HardDisk::cancelDiscard (MergeChain *aChain)
 Bstr HardDisk::preferredDiffFormat()
 {
     AutoCaller autoCaller(this);
-    AssertReturn(autoCaller.rc(), "");
+    AssertReturn(!autoCaller.rc(), "");
 
     /* mm.format is const, no need to lock */
     Bstr bstrFormat = mm.format;

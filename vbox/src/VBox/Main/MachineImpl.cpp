@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22186 2009-08-11 17:44:54Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22194 2009-08-12 08:35:51Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -8926,7 +8926,8 @@ HRESULT SessionMachine::endTakingSnapshot (BOOL aSuccess)
     AutoCaller autoCaller(this);
     AssertComRCReturn (autoCaller.rc(), autoCaller.rc());
 
-    AutoWriteLock alock(this);
+    AutoMultiWriteLock2 alock(mParent, this);
+            // saveSettings needs VirtualBox lock
 
     AssertReturn(!mSnapshotData.mSnapshot.isNull(), E_FAIL);
 
