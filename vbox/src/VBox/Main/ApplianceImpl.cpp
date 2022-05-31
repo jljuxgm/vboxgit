@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18799 2009-04-07 09:13:50Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18816 2009-04-07 12:37:00Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1526,7 +1526,8 @@ STDMETHODIMP Appliance::Interpret()
                             nwAdapterVBox = NetworkAdapterType_Am79C970A;
                     }
 #ifdef VBOX_WITH_E1000
-                    else if (!ea.strAdapterType.compare("E1000", Utf8Str::CaseInsensitive))
+                    else if (!ea.strAdapterType.compare("E1000", Utf8Str::CaseInsensitive) ||
+                             !ea.strAdapterType.compare("E10000", Utf8Str::CaseInsensitive)) // VMWare accidentally write this with VirtualCenter 3.5
                     {
                         /* If the default adapter is already one of the three
                          * E1000 adapters use the default one. If not use the
