@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 21188 2009-07-03 09:57:07Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 21219 2009-07-05 13:44:53Z vboxsync $ */
 
 /** @file
  *
@@ -81,7 +81,7 @@
 #   include <VBox/pdmusb.h>
 #endif
 
-#include <VBox/VBoxDev.h>
+#include <VBox/VMMDev.h>
 
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #ifdef VBOX_WITH_GUEST_PROPS

@@ -1,7 +1,6 @@
+/* $Id: VBoxVRDP.cpp 21219 2009-07-05 13:44:53Z vboxsync $ */
 /** @file
- *
  * VBoxVRDP - VBox VRDP connection notification
- *
  */
 
 /*
@@ -25,7 +24,7 @@
 #include <windows.h>
 #include "VBoxTray.h"
 #include "VBoxVRDP.h"
-#include <VBox/VBoxDev.h>
+#include <VBox/VMMDev.h>
 #include <VBoxGuestInternal.h>
 #include <iprt/assert.h>
 #include "helpers.h"

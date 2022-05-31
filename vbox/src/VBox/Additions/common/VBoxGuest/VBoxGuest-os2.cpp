@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 21170 2009-07-02 14:45:00Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 21219 2009-07-05 13:44:53Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -54,8 +54,8 @@
 #include <os2ddk/bsekee.h>
 
 #include "VBoxGuestInternal.h"
+#include <VBox/VMMDev.h>                /* VMMDEV_RAM_SIZE */
 #include <VBox/VBoxGuest.h>
-#include <VBox/VBoxDev.h>               /* VMMDEV_RAM_SIZE */
 #include <VBox/version.h>
 #include <iprt/initterm.h>
 #include <iprt/string.h>

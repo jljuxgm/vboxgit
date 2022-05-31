@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 21062 2009-06-30 10:14:10Z vboxsync $ */
+/* $Id: VBoxDev.cpp 21219 2009-07-05 13:44:53Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -27,7 +27,7 @@
 /* Enable dev_vmm Log3 statements to get IRQ-related logging. */
 
 #define LOG_GROUP LOG_GROUP_DEV_VMM
-#include <VBox/VBoxDev.h>
+#include <VBox/VMMDev.h>
 #include <VBox/VBoxGuest.h>
 #include <VBox/log.h>
 #include <VBox/param.h>
