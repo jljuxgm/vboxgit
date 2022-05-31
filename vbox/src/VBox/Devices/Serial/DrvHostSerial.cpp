@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 19809 2009-05-19 09:32:03Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 22072 2009-08-07 14:50:32Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -356,11 +356,7 @@ static DECLCALLBACK(int) drvHostSerialSetParameters(PPDMICHAR pInterface, unsign
     }
 
     /* set serial port to raw input */
-    termiosSetup->c_lflag = ~(ICANON | ECHO | ECHOE | ISIG);
-#ifdef RT_OS_SOLARIS
-    /* turn off other extended special characters in line mode */
-    termiosSetup->c_lflag &= ~(IEXTEN);
-#endif
+    termiosSetup->c_lflag &= ~(ICANON | ECHO | ECHOE | ECHONL | ECHOK | ISIG | IEXTEN);
 
     tcsetattr(pThis->DeviceFile, TCSANOW, termiosSetup);
     RTMemTmpFree(termiosSetup);
