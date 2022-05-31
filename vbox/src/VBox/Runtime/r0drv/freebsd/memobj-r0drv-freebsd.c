@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-freebsd.c 21658 2009-07-16 21:50:36Z vboxsync $ */
+/* $Id: memobj-r0drv-freebsd.c 22574 2009-08-30 19:57:03Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, FreeBSD.
  */
@@ -469,7 +469,7 @@ static int rtR0MemObjNativeReserveInMap(PPRTR0MEMOBJINTERNAL ppMem, void *pvFixe
         vm_offset_t MapAddress = pvFixed != (void *)-1
                                ? (vm_offset_t)pvFixed
                                : vm_map_min(pMap);
-        if (pvFixed)
+        if (pvFixed != (void *)-1)
             vm_map_remove(pMap,
                           MapAddress,
                           MapAddress + cb);
