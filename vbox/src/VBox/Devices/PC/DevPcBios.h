@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.h 21869 2009-07-30 09:03:19Z vboxsync $ */
+/* $Id: DevPcBios.h 21874 2009-07-30 12:12:23Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device, header shared with the BIOS code.
  */
@@ -25,7 +25,7 @@
 /** @def VBOX_DMI_TABLE_BASE */
 #define VBOX_DMI_TABLE_BASE          0xe1000
 #define VBOX_DMI_TABLE_VER           0x25
-#define VBOX_DMI_TABLE_ENTR          4
+#define VBOX_DMI_TABLE_ENTR          5
 #define VBOX_DMI_TABLE_SIZE          0x100
 
 
