@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: DBGF.cpp 19306 2009-05-03 01:22:07Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -628,10 +628,13 @@ static int dbgfR3VMMWait(PVM pVM)
                 return rc;
             }
 
-            if (VM_FF_ISSET(pVM, VM_FF_REQUEST))
+            if (    VM_FF_ISSET(pVM, VM_FF_REQUEST)
+                ||  VMCPU_FF_ISSET(pVCpu, VMCPU_FF_REQUEST))
             {
                 LogFlow(("dbgfR3VMMWait: Processes requests...\n"));
                 rc = VMR3ReqProcessU(pVM->pUVM, VMCPUID_ANY);
+                if (rc == VINF_SUCCESS)
+                    rc = VMR3ReqProcessU(pVM->pUVM, pVCpu->idCpu);
                 LogFlow(("dbgfR3VMMWait: VMR3ReqProcess -> %Rrc rcRet=%Rrc\n", rc, rcRet));
                 if (rc >= VINF_EM_FIRST && rc <= VINF_EM_LAST)
                 {
