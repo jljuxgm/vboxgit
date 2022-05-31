@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 22207 2009-08-12 13:47:06Z vboxsync $ */
+/* $Id: DrvNAT.cpp 22216 2009-08-13 03:29:56Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -62,8 +62,8 @@
 #define VBOX_NAT_DELAY_HACK
 #if 0
 #define SLIRP_CAN_SAND_IN_PDM 1
-#define SLIRP_SPLIT_CAN_OUTPUT 1
 #endif
+#define SLIRP_SPLIT_CAN_OUTPUT 1
 
 #define GET_EXTRADATA(pthis, node, name, rc, type, type_name, var)                                  \
 do {                                                                                                \
