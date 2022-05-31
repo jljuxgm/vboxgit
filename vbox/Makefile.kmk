@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19275 2009-04-30 14:39:39Z vboxsync $
+# $Id: Makefile.kmk 19594 2009-05-12 08:16:13Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -744,7 +744,7 @@ snapshot-ose:
 #
 # Generate VirtualBox-x.x.x.tar.bz2 (PUEL) zip archives for internal use only
 # - includes kBuild
-# - must be executed on an OSE checkout
+# - must be executed on an PUEL checkout
 #
 
 # the path where to store the zip archive
