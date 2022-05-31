@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 13519 2008-10-23 08:58:37Z vboxsync $ */
+/* $Id: PDMInternal.h 18533 2009-03-30 12:01:36Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -208,11 +208,14 @@ typedef struct PDMCRITSECTINT
     /** Pointer to the VM - GCPtr. */
     PVMRC                           pVMRC;
 #if HC_ARCH_BITS == 64
-    RTRCPTR                         padding;
+    /** Alignment padding. */
+    uint32_t                        padding;
 #endif
     /** Event semaphore that is scheduled to be signaled upon leaving the
      * critical section. This is Ring-3 only of course. */
     RTSEMEVENT                      EventToSignal;
+    /** The lock name. */
+    R3PTRTYPE(const char *)         pszName;
     /** R0/RC lock contention. */
     STAMCOUNTER                     StatContentionRZLock;
     /** R0/RC unlock contention. */
