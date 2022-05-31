@@ -1,4 +1,4 @@
-/* $Id: server_getshaders.c 23274 2009-09-24 09:31:32Z vboxsync $ */
+/* $Id: server_getshaders.c 23275 2009-09-24 09:34:18Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related get functions
@@ -239,27 +239,27 @@ GLuint SERVER_DISPATCH_APIENTRY crServerDispatchCreateShader(GLenum type)
 
 GLuint SERVER_DISPATCH_APIENTRY crServerDispatchCreateProgram(void)
 {
-	GLuint retval;
-	retval = cr_server.head_spu->dispatch_table.CreateProgram();
+    GLuint retval;
+    retval = cr_server.head_spu->dispatch_table.CreateProgram();
     crStateCreateProgram(retval);
-	crServerReturnValue(&retval, sizeof(retval));
-	return retval; /* ignored */
+    crServerReturnValue(&retval, sizeof(retval));
+    return retval; /* ignored */
 }
 
 GLboolean SERVER_DISPATCH_APIENTRY crServerDispatchIsShader(GLuint shader)
 {
-	GLboolean retval;
-	retval = cr_server.head_spu->dispatch_table.IsShader(crStateGetShaderHWID(shader));
-	crServerReturnValue(&retval, sizeof(retval));
-	return retval; /* ignored */
+    GLboolean retval;
+    retval = cr_server.head_spu->dispatch_table.IsShader(crStateGetShaderHWID(shader));
+    crServerReturnValue(&retval, sizeof(retval));
+    return retval; /* ignored */
 }
 
 GLboolean SERVER_DISPATCH_APIENTRY crServerDispatchIsProgram(GLuint program)
 {
-	GLboolean retval;
-	retval = cr_server.head_spu->dispatch_table.IsProgram(crStateGetProgramHWID(program));
-	crServerReturnValue(&retval, sizeof(retval));
-	return retval; /* ignored */
+    GLboolean retval;
+    retval = cr_server.head_spu->dispatch_table.IsProgram(crStateGetProgramHWID(program));
+    crServerReturnValue(&retval, sizeof(retval));
+    return retval; /* ignored */
 }
 
 #endif /* #ifdef CR_OPENGL_VERSION_2_0 */
