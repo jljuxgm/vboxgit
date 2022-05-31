@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 19312 2009-05-03 19:58:15Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 20928 2009-06-25 11:53:37Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -29,7 +29,7 @@
 #include <VBox/com/Guid.h>
 #include <VBox/com/array.h>
 #include <VBox/com/ErrorInfo.h>
-#include <VBox/com/errorprint2.h>
+#include <VBox/com/errorprint.h>
 
 #include <VBox/com/VirtualBox.h>
 

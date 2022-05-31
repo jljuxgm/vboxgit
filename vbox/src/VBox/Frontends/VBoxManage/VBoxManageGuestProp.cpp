@@ -1,10 +1,10 @@
-/* $Id: VBoxManageGuestProp.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 20928 2009-06-25 11:53:37Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
 
 /*
- * Copyright (C) 2006-2008 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -29,7 +29,7 @@
 #include <VBox/com/string.h>
 #include <VBox/com/array.h>
 #include <VBox/com/ErrorInfo.h>
-#include <VBox/com/errorprint2.h>
+#include <VBox/com/errorprint.h>
 
 #include <VBox/com/VirtualBox.h>
 
@@ -48,7 +48,7 @@ using namespace com;
  * IVirtualBoxCallback implementation for handling the GuestPropertyCallback in
  * relation to the "guestproperty wait" command.
  */
-class GuestPropertyCallback : 
+class GuestPropertyCallback :
   VBOX_SCRIPTABLE_IMPL(IVirtualBoxCallback)
 {
 public:

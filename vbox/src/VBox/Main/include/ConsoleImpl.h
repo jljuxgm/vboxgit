@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 20727 2009-06-19 14:13:31Z vboxsync $ */
+/* $Id: ConsoleImpl.h 20928 2009-06-25 11:53:37Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2008 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -124,8 +124,7 @@ public:
     // IConsole methods
     STDMETHOD(PowerUp) (IProgress **aProgress);
     STDMETHOD(PowerUpPaused) (IProgress **aProgress);
-    STDMETHOD(PowerDown)();
-    STDMETHOD(PowerDownAsync) (IProgress **aProgress);
+    STDMETHOD(PowerDown) (IProgress **aProgress);
     STDMETHOD(Reset)();
     STDMETHOD(Pause)();
     STDMETHOD(Resume)();
@@ -135,7 +134,7 @@ public:
     STDMETHOD(GetGuestEnteredACPIMode)(BOOL *aEntered);
     STDMETHOD(SaveState) (IProgress **aProgress);
     STDMETHOD(AdoptSavedState) (IN_BSTR aSavedStateFile);
-    STDMETHOD(DiscardSavedState)();
+    STDMETHOD(ForgetSavedState)(BOOL aRemove);
     STDMETHOD(GetDeviceActivity) (DeviceType_T aDeviceType,
                                  DeviceActivity_T *aDeviceActivity);
     STDMETHOD(AttachUSBDevice) (IN_BSTR aId);

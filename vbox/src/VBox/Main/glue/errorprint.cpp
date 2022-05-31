@@ -1,8 +1,8 @@
-/* $Id: errorprint2.cpp 16580 2009-02-09 12:07:53Z vboxsync $ */
+/* $Id: errorprint.cpp 20928 2009-06-25 11:53:37Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
- * Error info print helpers. This implements the shared code from the macros from errorprint2.h.
+ * Error info print helpers. This implements the shared code from the macros from errorprint.h.
  */
 
 /*
@@ -23,7 +23,7 @@
 
 
 #include <VBox/com/ErrorInfo.h>
-#include <VBox/com/errorprint2.h>
+#include <VBox/com/errorprint.h>
 #include <VBox/log.h>
 
 #include <iprt/stream.h>
