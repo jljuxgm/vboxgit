@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 23080 2009-09-17 10:08:00Z vboxsync $ */
+/* $Id: VMReq.cpp 23191 2009-09-21 14:22:37Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1055,6 +1055,9 @@ VMMR3DECL(int) VMR3ReqProcessU(PUVM pUVM, VMCPUID idDstCpu)
                 &&  (   rc == VINF_SUCCESS
                      || rc2 < rc) )
                 rc = rc2;
+            /** @todo may have to abort processing to propagate EM scheduling status codes
+             *        up to the caller... See the ugly hacks after VMMR3EmtRendezvousFF
+             *        and VMR3ReqProcessU in EM.cpp. */
         }
     }
 
