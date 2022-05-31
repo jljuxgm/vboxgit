@@ -1,4 +1,4 @@
-/* $Id: RTPathAppend.cpp 21673 2009-07-17 12:10:10Z vboxsync $ */
+/* $Id: RTPathAppend.cpp 21676 2009-07-17 12:21:49Z vboxsync $ */
 /** @file
  * IPRT - RTPathAppend
  */
@@ -35,6 +35,7 @@
 #include "internal/iprt.h"
 #include <iprt/path.h>
 #include <iprt/assert.h>
+#include <iprt/ctype.h>
 #include <iprt/err.h>
 #include <iprt/string.h>
 

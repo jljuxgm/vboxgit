@@ -1,4 +1,4 @@
-/* $Id: comparepaths.cpp 21673 2009-07-17 12:10:10Z vboxsync $ */
+/* $Id: comparepaths.cpp 21676 2009-07-17 12:21:49Z vboxsync $ */
 /** @file
  * IPRT - Path Comparison.
  */
@@ -36,6 +36,7 @@
 #include <iprt/path.h>
 #include <iprt/err.h>
 #include <iprt/string.h>
+#include <iprt/uni.h>
 
 
 /**

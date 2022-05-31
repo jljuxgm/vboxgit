@@ -1,4 +1,4 @@
-/* $Id: RTPathStripFilename.cpp 21673 2009-07-17 12:10:10Z vboxsync $ */
+/* $Id: RTPathStripFilename.cpp 21676 2009-07-17 12:21:49Z vboxsync $ */
 /** @file
  * IPRT - RTPathStripFilename
  */
@@ -34,6 +34,7 @@
 *******************************************************************************/
 #include "internal/iprt.h"
 #include <iprt/path.h>
+#include <iprt/ctype.h>
 
 
 /**
