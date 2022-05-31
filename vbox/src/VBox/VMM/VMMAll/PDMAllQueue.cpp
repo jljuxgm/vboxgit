@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 21128 2009-07-01 14:46:19Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 21363 2009-07-07 17:10:52Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -57,7 +57,10 @@ VMMDECL(PPDMQUEUEITEMCORE) PDMQueueAlloc(PPDMQUEUE pQueue)
     {
         i = pQueue->iFreeTail;
         if (i == pQueue->iFreeHead)
+        {
+            STAM_REL_COUNTER_INC(&pQueue->StatAllocFailures);
             return NULL;
+        }
         pNew = pQueue->aFreeItems[i].CTX_SUFF(pItem);
         iNext = (i + 1) % (pQueue->cItems + PDMQUEUE_FREE_SLACK);
     } while (!ASMAtomicCmpXchgU32(&pQueue->iFreeTail, iNext, i));
@@ -97,6 +100,7 @@ VMMDECL(void) PDMQueueInsert(PPDMQUEUE pQueue, PPDMQUEUEITEMCORE pItem)
         VMR3NotifyGlobalFFU(pVM->pUVM, VMNOTIFYFF_FLAGS_DONE_REM);
 #endif
     }
+    STAM_REL_COUNTER_INC(&pQueue->StatInsert);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 21321 2009-07-07 12:31:37Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 21363 2009-07-07 17:10:52Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -5299,7 +5299,7 @@ static DECLCALLBACK(int) lsilogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
 
     /* Intialize task queue. */
     rc = PDMDevHlpPDMQueueCreate(pDevIns, sizeof(PDMQUEUEITEMCORE), 2, 0,
-                                 lsilogicNotifyQueueConsumer, true, &pThis->pNotificationQueueR3);
+                                 lsilogicNotifyQueueConsumer, true, "LsiLogic-Task", &pThis->pNotificationQueueR3);
     if (RT_FAILURE(rc))
         return rc;
     pThis->pNotificationQueueR0 = PDMQueueR0Ptr(pThis->pNotificationQueueR3);
