@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17451 2009-03-06 10:28:41Z vboxsync $
+# $Id: Makefile.kmk 18295 2009-03-26 09:47:39Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -234,7 +234,8 @@ vboxvideo_drv_16_INCS = \
 	$(VBOX_PATH_X11_ROOT)/xorg-server-1.6.0-local
 vboxvideo_drv_16_SOURCES  = \
 	vboxvideo_15.c \
-	vboxutils.c
+	vboxutils.c \
+	vboxvideo_dri.c
 
 
 include	$(KBUILD_PATH)/subfooter.kmk
