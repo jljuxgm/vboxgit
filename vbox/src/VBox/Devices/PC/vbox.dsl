@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 20595 2009-06-15 17:38:22Z vboxsync $
+// $Id: vbox.dsl 20679 2009-06-18 10:38:52Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -133,7 +133,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                    0x0   /* Processor IO ports range length */
                    )
         {
-           Method (_STA) { Return(\_SB.UCP0) }
         }
         Processor (CPU1, /* Name */
                    0x01, /* Id */
