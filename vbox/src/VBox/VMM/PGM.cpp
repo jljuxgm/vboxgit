@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: PGM.cpp 18950 2009-04-16 14:33:08Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1183,8 +1183,8 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
     /*
      * Init the structure.
      */
-    pVM->pgm.s.offVM            = RT_OFFSETOF(VM, pgm.s);
-    pVM->pgm.s.offVCpu          = RT_OFFSETOF(VMCPU, pgm.s);
+    pVM->pgm.s.offVM       = RT_OFFSETOF(VM, pgm.s);
+    pVM->pgm.s.offVCpuPGM  = RT_OFFSETOF(VMCPU, pgm.s);
 
     /* Init the per-CPU part. */
     for (unsigned i=0;i<pVM->cCPUs;i++)
