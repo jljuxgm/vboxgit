@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 22770 2009-09-04 09:51:34Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, Ring-0 Driver, Solaris.
  */
@@ -138,7 +138,18 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT EventSem)
                     VERR_INVALID_HANDLE);
     RT_ASSERT_INTS_ON();
 
-    mutex_enter(&pEventInt->Mtx);
+    /*
+     * If we're in interrupt context we need to unpin the underlying current
+     * thread as this could lead to a deadlock (see #4259 for the full explanation)
+     */
+    int fAcquired = mutex_tryenter(&pEventInt->Mtx);
+    if (!fAcquired)
+    {
+        if (curthread->t_intr && getpil() < DISP_LEVEL)
+            swtch();
+
+        mutex_enter(&pEventInt->Mtx);
+    }
 
     if (pEventInt->cWaiters > 0)
     {
