@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 20167 2009-06-01 20:25:54Z vboxsync $ */
+/* $Id: DrvVD.cpp 20181 2009-06-02 09:32:51Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -202,6 +202,8 @@ static void drvvdFreeImages(PVBOXDISK pThis)
 *   VD Async I/O interface implementation                                      *
 *******************************************************************************/
 
+#ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
+
 static DECLCALLBACK(void) drvvdAsyncTaskCompleted(PPDMDRVINS pDrvIns, void *pvTemplateUser, void *pvUser)
 {
     PVBOXDISK pThis = PDMINS_2_DATA(pDrvIns, PVBOXDISK);
@@ -398,6 +400,8 @@ static DECLCALLBACK(int) drvvdAsyncIOFlushAsync(void *pvUser, void *pStorage,
     return PDMR3AsyncCompletionEpFlush(pStorageBackend->pEndpoint, pvCompletion,
                                        (PPPDMASYNCCOMPLETIONTASK)ppTask);
 }
+
+#endif /* VBOX_WITH_PDM_ASYNC_COMPLETION */
 
 
 /*******************************************************************************
@@ -838,6 +842,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
                         &pThis->VDIErrorCallbacks, pDrvIns, &pThis->pVDIfsDisk);
     AssertRC(rc);
 
+#ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
     pThis->VDIAsyncIOCallbacks.cbSize                  = sizeof(VDINTERFACEASYNCIO);
     pThis->VDIAsyncIOCallbacks.enmInterface            = VDINTERFACETYPE_ASYNCIO;
     pThis->VDIAsyncIOCallbacks.pfnOpen                 = drvvdAsyncIOOpen;
@@ -853,6 +858,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
     rc = VDInterfaceAdd(&pThis->VDIAsyncIO, "DrvVD_AsyncIO", VDINTERFACETYPE_ASYNCIO,
                         &pThis->VDIAsyncIOCallbacks, pThis, &pThis->pVDIfsDisk);
     AssertRC(rc);
+#endif
 
     /* This is just prepared here, the actual interface is per-image, so it's
      * added later. No need to have separate callback tables. */
