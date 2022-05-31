@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 19633 2009-05-12 14:43:09Z vboxsync $ */
+/* $Id: CPUM.cpp 19636 2009-05-12 14:51:11Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2392,7 +2392,7 @@ VMMR3DECL(int) CPUMR3DisasmInstrCPU(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, RTGCPT
     {
         /* log it */
         if (pszPrefix)
-            Log(("%s: %s", pszPrefix, szOutput));
+            Log(("%s-CPU%d: %s", pszPrefix, pVCpu->idCpu, szOutput));
         else
             Log(("%s", szOutput));
 #endif
