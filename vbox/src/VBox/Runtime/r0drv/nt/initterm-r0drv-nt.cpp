@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 19983 2009-05-25 08:49:30Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 19990 2009-05-25 10:40:06Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -131,7 +131,8 @@ int rtR0InitNative(void)
         }
         /* WindowsVista.6002.090410-1830.x86fre.Symbols.exe
            WindowsVista.6002.090410-1830.x86chk.Symbols.exe
-           WindowsVista.6002.090130-1715.x86fre.Symbols.exe */
+           WindowsVista.6002.090130-1715.x86fre.Symbols.exe
+           WindowsVista.6002.090130-1715.x86chk.Symbols.exe */
         else if (   BuildNumber == 6002
                  && !memcmp(&pbPrcb[0x1c2c], &u.szVendor[0], 4*3))
         {
@@ -161,7 +162,9 @@ int rtR0InitNative(void)
             g_cbrtNtPbQuantumEnd     = 1;
             g_offrtNtPbDpcQueueDepth = 0x3300 + 0x18;
         }
-        /* WindowsVista.6002.090410-1830.amd64fre.Symbols */
+        /* WindowsVista.6002.090410-1830.amd64fre.Symbols
+           WindowsVista.6002.090130-1715.amd64fre.Symbols
+           WindowsVista.6002.090410-1830.amd64chk.Symbols */
         else if (   BuildNumber == 6002
                  && !memcmp(&pbPrcb[0x399c], &u.szVendor[0], 4*3))
         {
