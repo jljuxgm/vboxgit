@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22042 2009-08-06 16:58:57Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22048 2009-08-07 08:05:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2080,6 +2080,11 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
  *  @param   uInstance           The PDM device instance.
  *  @param   uLun                The PDM LUN number of the drive.
  *  @param   aNetworkAdapter     The network adapter whose attachment needs to be changed
+ *  @param   pCfg                Configuration node for the device
+ *  @param   pLunL0              To store the pointer to the LUN#0.
+ *  @param   pInst               The instance CFGM node
+ *  @param   attachDetach        To determine if the network attachment should be attached/detached
+ *                               after/before configuration.
  *
  *  @note Locks the Console object for writing.
  */
