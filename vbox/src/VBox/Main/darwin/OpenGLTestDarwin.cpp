@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestDarwin.cpp 20160 2009-05-29 16:23:25Z vboxsync $ */
+/* $Id: OpenGLTestDarwin.cpp 20161 2009-05-29 16:30:42Z vboxsync $ */
 
 /** @file
  * VBox host opengl support test
@@ -20,7 +20,7 @@ bool is3DAccelerationSupported()
     CGDirectDisplayID   display = CGMainDisplayID ();
     CGOpenGLDisplayMask cglDisplayMask = CGDisplayIDToOpenGLDisplayMask (display);
     CGLPixelFormatObj   pixelFormat = NULL;
-    long numPixelFormats = 0;
+    GLint numPixelFormats = 0;
 
     CGLPixelFormatAttribute attribs[] = {
         kCGLPFADisplayMask,
