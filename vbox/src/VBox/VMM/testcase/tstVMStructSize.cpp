@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 20747 2009-06-21 20:23:22Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 20784 2009-06-22 14:37:39Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -296,7 +296,7 @@ int main()
 #endif
 
     /* TM */
-    CHECK_MEMBER_ALIGNMENT(TM, EmtLock, sizeof(uintptr_t));
+    CHECK_MEMBER_ALIGNMENT(TM, TimerCritSect, sizeof(uintptr_t));
     CHECK_MEMBER_ALIGNMENT(TM, VirtualSyncLock, sizeof(uintptr_t));
 
     CHECK_MEMBER_ALIGNMENT(IOM, EmtLock, sizeof(uintptr_t));
