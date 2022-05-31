@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 19580 2009-05-11 13:02:45Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 19581 2009-05-11 13:04:20Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -298,9 +298,12 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
 #else
                 eip.FlatPtr = eip.off = pVCpu->vmm.s.CallHostR0JmpBuf.eip;
 #endif
+                eip.Sel      = DBGF_SEL_FLAT;
                 ebp.fFlags   = DBGFADDRESS_FLAGS_RING0 | DBGFADDRESS_FLAGS_VALID;
                 ebp.FlatPtr  = ebp.off = pVCpu->vmm.s.CallHostR0JmpBuf.SavedEbp;
+                ebp.Sel      = DBGF_SEL_FLAT;
                 esp.fFlags   = DBGFADDRESS_FLAGS_RING0 | DBGFADDRESS_FLAGS_VALID;
+                esp.Sel      = DBGF_SEL_FLAT;
                 esp.FlatPtr  = esp.off = pVCpu->vmm.s.CallHostR0JmpBuf.SavedEsp;
 
                 rc2 = DBGFR3StackWalkBeginEx(pVM, pVCpu->idCpu, DBGFCODETYPE_RING0, &ebp, &esp, &eip,
