@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 20979 2009-06-26 14:56:03Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 20981 2009-06-26 15:03:24Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -130,7 +130,7 @@ VMMDECL(int) HWACCMInvalidatePageOnAllVCpus(PVM pVM, RTGCPTR GCPtr)
             {
                 STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatTlbShootdown);
 #ifdef IN_RING0
-                RTCPUID idHostCpu = pVCpu->idHostCpu;
+                RTCPUID idHostCpu = pVCpu->hwaccm.s.idEnteredCpu;
                 if (idHostCpu != NIL_RTCPUID)
                     RTMpPokeCpu(idHostCpu);
 #else
@@ -170,7 +170,7 @@ VMMDECL(int) HWACCMFlushTLBOnAllVCpus(PVM pVM)
         {
             STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatTlbShootdownFlush);
 #ifdef IN_RING0
-            RTCPUID idHostCpu = pVCpu->idHostCpu;
+            RTCPUID idHostCpu = pVCpu->hwaccm.s.idEnteredCpu;
             if (idHostCpu != NIL_RTCPUID)
                 RTMpPokeCpu(idHostCpu);
 #else
@@ -245,7 +245,7 @@ VMMDECL(int) HWACCMInvalidatePhysPage(PVM pVM, RTGCPHYS GCPhys)
             {
                 STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatTlbShootdownFlush);
     #ifdef IN_RING0
-                RTCPUID idHostCpu = pVCpu->idHostCpu;
+                RTCPUID idHostCpu = pVCpu->hwaccm.s.idEnteredCpu;
                 if (idHostCpu != NIL_RTCPUID)
                     RTMpPokeCpu(idHostCpu);
     #else

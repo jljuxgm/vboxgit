@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 20979 2009-06-26 14:56:03Z vboxsync $ */
+/* $Id: HWACCMInternal.h 20981 2009-06-26 15:03:24Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -574,6 +574,10 @@ typedef struct HWACCMCPU
 
     /** Currenty shadow paging mode. */
     PGMMODE                 enmShadowMode;
+
+    /** The CPU ID of the CPU currently owning the VMCS. Set in
+     * HWACCMR0Enter and cleared in HWACCMR0Leave. */
+    RTCPUID                 idEnteredCpu;
 
     /** To keep track of pending TLB shootdown pages. (SMP guest only) */
     struct
