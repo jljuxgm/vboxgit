@@ -1,4 +1,4 @@
-/* $Revision: 21285 $ */
+/* $Revision: 21546 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -430,8 +430,10 @@ static SUPFUNC g_aFunctions[] =
     { "RTThreadPreemptIsEnabled",               (void *)RTThreadPreemptIsEnabled },
     { "RTThreadPreemptIsPending",               (void *)RTThreadPreemptIsPending },
     { "RTThreadPreemptIsPendingTrusty",         (void *)RTThreadPreemptIsPendingTrusty },
+    { "RTThreadPreemptIsPossible",              (void *)RTThreadPreemptIsPossible },
     { "RTThreadPreemptDisable",                 (void *)RTThreadPreemptDisable },
     { "RTThreadPreemptRestore",                 (void *)UNWIND_WRAP(RTThreadPreemptRestore) },
+    { "RTThreadIsInInterrupt",                  (void *)RTThreadIsInInterrupt },
 
     { "RTLogDefaultInstance",                   (void *)RTLogDefaultInstance },
     { "RTMpCpuId",                              (void *)RTMpCpuId },
