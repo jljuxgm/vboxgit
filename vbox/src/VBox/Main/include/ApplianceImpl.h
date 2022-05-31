@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 18304 2009-03-26 11:27:20Z vboxsync $ */
+/* $Id: ApplianceImpl.h 18623 2009-04-02 10:00:48Z vboxsync $ */
 
 /** @file
  *
@@ -76,7 +76,7 @@ public:
     STDMETHOD(Read)(IN_BSTR path);
     STDMETHOD(Interpret)(void);
     STDMETHOD(ImportMachines)(IProgress **aProgress);
-    STDMETHOD(Write)(IN_BSTR path, IProgress **aProgress);
+    STDMETHOD(Write)(IN_BSTR format, IN_BSTR path, IProgress **aProgress);
     STDMETHOD(GetWarnings)(ComSafeArrayOut(BSTR, aWarnings));
 
     /* public methods only for internal purposes */

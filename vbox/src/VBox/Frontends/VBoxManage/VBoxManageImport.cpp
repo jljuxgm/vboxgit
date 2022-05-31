@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 18490 2009-03-29 01:39:06Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 18623 2009-04-02 10:00:48Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -655,7 +655,7 @@ int handleExportAppliance(HandlerArg *a)
             break;
 
         ComPtr<IProgress> progress;
-        CHECK_ERROR_BREAK(pAppliance, Write(Bstr(strOutputFile), progress.asOutParam()));
+        CHECK_ERROR_BREAK(pAppliance, Write(Bstr("ovf-0.9"), Bstr(strOutputFile), progress.asOutParam()));
 
         showProgress(progress);
 
