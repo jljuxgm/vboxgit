@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-freebsd.c 18972 2009-04-16 23:43:08Z vboxsync $ */
+/* $Id: thread-r0drv-freebsd.c 20449 2009-06-09 22:23:42Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 1), Ring-0 Driver, FreeBSD.
  */
@@ -104,5 +104,45 @@ RTDECL(bool) RTThreadYield(void)
 {
     uio_yield();
     return false; /** @todo figure this one ... */
+}
+
+RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
+{
+    Assert(hThread == NIL_RTTHREAD);
+
+    return curthread->td_critnest == 0;
+}
+
+
+RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
+{
+    Assert(hThread == NIL_RTTHREAD);
+
+    return curthread->td_owepreempt == 1;
+}
+
+RTDECL(bool) RTThreadPreemptIsPendingTrusty(void)
+{
+    /* yes, RTThreadPreemptIsPending is reliable. */
+    return true;
+}
+
+RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
+{
+    AssertPtr(pState);
+    Assert(pState->uchDummy != 42);
+    pState->uchDummy = 42;
+
+    critical_enter();
+}
+
+
+RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
+{
+    AssertPtr(pState);
+    Assert(pState->uchDummy == 42);
+    pState->uchDummy = 0;
+
+    critical_exit();
 }
 
