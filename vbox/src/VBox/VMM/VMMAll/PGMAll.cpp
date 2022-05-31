@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: PGMAll.cpp 18943 2009-04-16 13:35:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1482,7 +1482,7 @@ PX86PML4 pgmGstLazyMapPml4(PPGMCPU pPGM)
     PVM pVM = PGMCPU2VM(pPGM);
     pgmLock(pVM);
 
-    PPGMPAGE    pPage = pgmPhysGetPage(pPGM, pPGM->GCPhysCR3);
+    PPGMPAGE    pPage = pgmPhysGetPage(&pVM->pgm.s, pPGM->GCPhysCR3);
     AssertReturn(pPage, NULL);
 
     RTHCPTR     HCPtrGuestCR3;
