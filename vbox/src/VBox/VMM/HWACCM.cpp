@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 21679 2009-07-17 13:00:04Z vboxsync $ */
+/* $Id: HWACCM.cpp 21689 2009-07-17 13:51:51Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2258,7 +2258,7 @@ static DECLCALLBACK(int) hwaccmR3Save(PVM pVM, PSSMHANDLE pSSM)
         rc = SSMR3PutU32(pSSM, pPatch->cbNewOp);
         AssertRCReturn(rc, rc);
 
-        AssertCompileSize(HWACCMTPRINSTR == 4);
+        AssertCompileSize(HWACCMTPRINSTR, 4);
         rc = SSMR3PutU32(pSSM, (uint32_t)&pPatch->enmType);
         AssertRCReturn(rc, rc);
 
