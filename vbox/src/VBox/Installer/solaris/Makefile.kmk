@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22082 2009-08-07 17:57:05Z vboxsync $
+# $Id: Makefile.kmk 22185 2009-08-11 17:27:59Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -225,7 +225,6 @@ SOLARIS_STRIP_BINS = \
 	  VBoxOGLhosterrorspu.so \
 	  VBoxOGLrenderspu.so \
 	  VBoxSharedCrOpenGL.so) \
-	VBoxSettings.so \
 	components/VBoxC.so \
 	components/VBoxSVCM.so \
 	components/VBoxXPCOMIPCC.so
