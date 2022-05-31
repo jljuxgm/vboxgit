@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20658 2009-06-17 10:32:00Z vboxsync $
+# $Id: Makefile.kmk 21311 2009-07-07 11:04:25Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host OpenGL part
 #
@@ -124,6 +124,7 @@ VBoxOGLcrpacker_INTERMEDIATES = \
 	$(VBOX_PATH_CROGL_GENFILES)/cr_packfunctions.h \
 	$(VBOX_PATH_CROGL_GENFILES)/cr_opcodes.h \
 	$(VBOX_PATH_CROGL_GENFILES)/state/cr_currentpointers.h \
+	$(VBOX_PATH_CROGL_GENFILES)/state/cr_statefuncs.h \
 	$(VBOX_PATH_CROGL_GENFILES)/spu_dispatch_table.h
 VBoxOGLcrpacker_SOURCES = \
 	packer/pack_arrays.c \
