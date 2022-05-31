@@ -1,4 +1,4 @@
-/* $Id: solaudio.c 8345 2008-04-24 07:08:53Z vboxsync $ */
+/* $Id: solaudio.c 21602 2009-07-15 11:28:30Z vboxsync $ */
 /** @file
  * VirtualBox Audio Driver - Solaris host.
  */
@@ -32,7 +32,6 @@
 #include <sys/mixer.h>
 
 #define LOG_GROUP LOG_GROUP_DEV_AUDIO
-#define LOG_ENABLED
 #include <VBox/log.h>
 #include <iprt/env.h>
 
