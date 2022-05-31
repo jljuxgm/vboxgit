@@ -1,4 +1,4 @@
-/* $Id: DevEEPROM.h 15955 2009-01-14 20:14:36Z vboxsync $ */
+/* $Id: DevEEPROM.h 23966 2009-10-22 09:56:44Z vboxsync $ */
 /** @file
  * DevEEPROM - Microware-compatible 64x16-bit 93C46 EEPROM Emulation, Header.
  */
@@ -68,7 +68,7 @@ struct EEPROM93C46 {
     };
 
 
-    /* @todo save and load methods */
+    /** @todo save and load methods */
 
     /** Actual content of EEPROM */
     uint16_t m_au16Data[SIZE];
