@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 18230 2009-03-25 01:13:09Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 18234 2009-03-25 01:29:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -986,7 +986,7 @@ VMMDECL(int)  PGMHandlerPhysicalPageTempOff(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS G
 /**
  * Replaces an MMIO page with an MMIO2 page.
  *
- * This is a worker for IOMMMIOModifyPage that works in a similar way to
+ * This is a worker for IOMMMIOMapMMIO2Page that works in a similar way to
  * PGMHandlerPhysicalPageTempOff but for an MMIO page. Since an MMIO page has no
  * backing, the caller must provide a replacement page. For various reasons the
  * replacement page must be an MMIO2 page.

@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 18232 2009-03-25 01:15:31Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 18234 2009-03-25 01:29:51Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1777,7 +1777,7 @@ VMMDECL(int) IOMInterpretOUTS(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu
  */
 VMMDECL(int) IOMMMIOMapMMIO2Page(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCPhysRemapped, uint64_t fPageFlags)
 {
-    Log(("IOMMMIOModifyPage %RGp -> %RGp flags=%RX64\n", GCPhys, GCPhysRemapped, fPageFlags));
+    Log(("IOMMMIOMapMMIO2Page %RGp -> %RGp flags=%RX64\n", GCPhys, GCPhysRemapped, fPageFlags));
 
     AssertReturn(fPageFlags == (X86_PTE_RW | X86_PTE_P), VERR_INVALID_PARAMETER);
 
