@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 23879 2009-10-19 17:26:44Z vboxsync $ */
+/* $Id: MachineImpl.h 23882 2009-10-19 18:36:03Z vboxsync $ */
 
 /** @file
  *
@@ -1036,7 +1036,7 @@ private:
 
     typedef std::map<ComObjPtr<Machine>, MachineState_T> AffectedMachines;
 
-    void discardSnapshotHandler(DeleteSnapshotTask &aTask);
+    void deleteSnapshotHandler(DeleteSnapshotTask &aTask);
     void restoreSnapshotHandler(RestoreSnapshotTask &aTask);
 
     HRESULT lockMedia();

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 23847 2009-10-19 09:15:32Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 23882 2009-10-19 18:36:03Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -326,8 +326,8 @@ void printUsage(USAGECATEGORY u64Cmd)
     {
         RTPrintf("VBoxManage snapshot         <uuid>|<name>\n"
                  "                            take <name> [--description <desc>] [--pause] |\n"
-                 "                            discard <uuid>|<name> |\n"
-                 "                            discardcurrent --state|--all |\n"
+                 "                            delete <uuid>|<name> |\n"
+                 "                            restore <uuid>|<name> |\n"
                  "                            edit <uuid>|<name>|--current\n"
                  "                                 [--name <name>]\n"
                  "                                 [--description <desc>] |\n"
