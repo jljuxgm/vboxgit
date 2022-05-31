@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22518 2009-08-27 12:47:12Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22529 2009-08-27 14:06:06Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1381,7 +1381,7 @@ DECLINLINE(unsigned) pgmPoolTrackFlushPTPaePae(PPGMPOOL pPool, PPGMPOOLPAGE pPag
 #ifdef VBOX_STRICT
                 RTHCPHYS HCPhys = -1;
                 int rc = PGMPhysGCPhys2HCPhys(pPool->CTX_SUFF(pVM), pGstPT->a[i].u & X86_PTE_PAE_PG_MASK, &HCPhys);
-                AssertMsg(rc == VINF_SUCCESS && (pShwPT->a[i].u & X86_PTE_PAE_PG_MASK) == HCPhys, ("rc=%d guest %RGp %RHp vs %RHp\n", rc, pGstPT->a[i].u & X86_PTE_PAE_PG_MASK, (pShwPT->a[i].u & X86_PTE_PAE_PG_MASK), HCPhys));
+                AssertMsg(rc == VINF_SUCCESS && (pShwPT->a[i].u & X86_PTE_PAE_PG_MASK) == HCPhys, ("rc=%d guest %RX64 old %RX64 shw=%RX64 vs %RHp\n", rc, pGstPT->a[i].u, pOldGstPT->a[i].u, pShwPT->a[i].u, HCPhys));
 #endif
                 uint64_t uHostAttr  = pShwPT->a[i].u & (X86_PTE_P | X86_PTE_US | X86_PTE_A | X86_PTE_D | X86_PTE_G | X86_PTE_PAE_NX);
                 bool     fHostRW    = !!(pShwPT->a[i].u & X86_PTE_RW);
