@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 18940 2009-04-16 13:23:22Z vboxsync $ */
+/* $Id: HWACCM.cpp 18941 2009-04-16 13:24:42Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -144,7 +144,7 @@ VMMR3DECL(int) HWACCMR3Init(PVM pVM)
     /*
      * Assert alignment and sizes.
      */
-    AssertCompileMemberAlignment(VM, hwaccm.s, 32));
+    AssertCompileMemberAlignment(VM, hwaccm.s, 32);
     AssertCompile(sizeof(pVM->hwaccm.s) <= sizeof(pVM->hwaccm.padding));
 
     /* Some structure checks. */
