@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21270 2009-07-06 20:41:57Z vboxsync $
+# $Id: Makefile.kmk 21271 2009-07-06 20:44:27Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -52,6 +52,7 @@ VBoxGuestR0Lib_INCS         = \
 	$(PATH_VBoxGuestR0Lib)
 VBoxGuestR0Lib_SOURCES      = \
 	GenericRequest.cpp \
+	SysHlp.cpp \
 	PhysHeap.cpp \
 	Init.cpp \
 	VMMDev.cpp \
