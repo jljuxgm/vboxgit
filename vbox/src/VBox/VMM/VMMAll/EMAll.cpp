@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 19693 2009-05-14 13:16:59Z vboxsync $ */
+/* $Id: EMAll.cpp 19725 2009-05-15 09:48:06Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -125,7 +125,7 @@ DECLCALLBACK(int) EMReadBytes(RTUINTPTR pSrc, uint8_t *pDest, unsigned cb, void 
 
 # ifdef IN_RING0
     int rc = PGMPhysSimpleReadGCPtr(pVCpu, pDest, pSrc, cb);
-    AssertMsgRC(rc, ("PGMPhysSimpleReadGCPtr failed for pSrc=%RGv cb=%x\n", pSrc, cb));
+    AssertMsgRC(rc, ("PGMPhysSimpleReadGCPtr failed for pSrc=%RGv cb=%x rc=%d\n", pSrc, cb, rc));
 # else /* IN_RING3 */
     if (!PATMIsPatchGCAddr(pVM, pSrc))
     {
