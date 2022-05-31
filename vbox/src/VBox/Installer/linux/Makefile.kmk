@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20340 2009-06-05 14:43:08Z vboxsync $
+# $Id: Makefile.kmk 20946 2009-06-25 15:09:03Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -125,7 +125,7 @@ VBOX_LNX_STRIP_BIN = \
 		VBoxOGLrenderspu.so \
 		VBoxTestOGL \
 		VBoxSharedCrOpenGL.so,) \
-	$(if $(VBOX_WITH_PYTHON),VBoxPython.so,) \
+	$(if $(VBOX_WITH_PYTHON),$(notdir $(wildcard $(PATH_BIN)/VBoxPython*.so)),) \
 	VBoxTunctl
 
 # Do not remove relocation information of these binaries
