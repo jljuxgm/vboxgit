@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 20750 2009-06-21 21:14:52Z vboxsync $ */
+/* $Id: TMAll.cpp 20751 2009-06-21 21:20:14Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -1047,7 +1047,7 @@ VMMDECL(int) TMTimerSetRelative(PTMTIMER pTimer, uint64_t cTicksToNext, uint64_t
         switch (enmState)
         {
             case TMTIMERSTATE_STOPPED:
-                if (tmClock == TMCLOCK_VIRTUAL_SYNC)
+                if (enmClock == TMCLOCK_VIRTUAL_SYNC)
                 {
                     /** @todo To fix assertion in tmR3TimerQueueRunVirtualSync:
                      *              Figure a safe way of activating this timer while the queue is
