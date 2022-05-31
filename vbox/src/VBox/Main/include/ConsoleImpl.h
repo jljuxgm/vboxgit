@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 21817 2009-07-27 14:52:56Z vboxsync $ */
+/* $Id: ConsoleImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
 
 /** @file
  *
@@ -78,8 +78,8 @@ typedef struct VUSBIRHCONFIG *PVUSBIRHCONFIG;
 /** IConsole implementation class */
 class ATL_NO_VTABLE Console :
     public VirtualBoxBaseWithChildrenNEXT,
-    public VirtualBoxSupportErrorInfoImpl <Console, IConsole>,
-    public VirtualBoxSupportTranslation <Console>,
+    public VirtualBoxSupportErrorInfoImpl<Console, IConsole>,
+    public VirtualBoxSupportTranslation<Console>,
     VBOX_SCRIPTABLE_IMPL(IConsole)
 {
     Q_OBJECT

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 21686 2009-07-17 13:41:39Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
 
 /** @file
  *
@@ -63,8 +63,8 @@ struct VMClientWatcherData;
 
 class ATL_NO_VTABLE VirtualBox :
     public VirtualBoxBaseWithChildrenNEXT,
-    public VirtualBoxSupportErrorInfoImpl <VirtualBox, IVirtualBox>,
-    public VirtualBoxSupportTranslation <VirtualBox>,
+    public VirtualBoxSupportErrorInfoImpl<VirtualBox, IVirtualBox>,
+    public VirtualBoxSupportTranslation<VirtualBox>,
     VBOX_SCRIPTABLE_IMPL(IVirtualBox)
 #ifdef RT_OS_WINDOWS
     , public CComCoClass<VirtualBox, &CLSID_VirtualBox>

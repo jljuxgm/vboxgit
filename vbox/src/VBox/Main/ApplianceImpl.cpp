@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 21759 2009-07-22 09:32:11Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 21823 2009-07-27 18:46:11Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -347,6 +347,11 @@ HRESULT Appliance::init(VirtualBox *aVirtualBox)
  */
 void Appliance::uninit()
 {
+    /* Enclose the state transition Ready->InUninit->NotReady */
+    AutoUninitSpan autoUninitSpan (this);
+    if (autoUninitSpan.uninitDone())
+        return;
+
     delete m;
     m = NULL;
 }

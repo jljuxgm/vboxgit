@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.h 21686 2009-07-17 13:41:39Z vboxsync $ */
+/* $Id: FloppyDriveImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
 
 /** @file
  *
@@ -31,9 +31,9 @@
 class Machine;
 
 class ATL_NO_VTABLE FloppyDrive :
-    public VirtualBoxBaseNEXT,
-    public VirtualBoxSupportErrorInfoImpl <FloppyDrive, IFloppyDrive>,
-    public VirtualBoxSupportTranslation <FloppyDrive>,
+    public VirtualBoxBase,
+    public VirtualBoxSupportErrorInfoImpl<FloppyDrive, IFloppyDrive>,
+    public VirtualBoxSupportTranslation<FloppyDrive>,
     VBOX_SCRIPTABLE_IMPL(IFloppyDrive)
 {
 public:

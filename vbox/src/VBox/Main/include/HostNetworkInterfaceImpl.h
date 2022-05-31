@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 21686 2009-07-17 13:41:39Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
 
 /** @file
  *
@@ -34,9 +34,9 @@ struct NETIFINFO;
 #endif
 
 class ATL_NO_VTABLE HostNetworkInterface :
-    public VirtualBoxBaseNEXT,
-    public VirtualBoxSupportErrorInfoImpl <HostNetworkInterface, IHostNetworkInterface>,
-    public VirtualBoxSupportTranslation <HostNetworkInterface>,
+    public VirtualBoxBase,
+    public VirtualBoxSupportErrorInfoImpl<HostNetworkInterface, IHostNetworkInterface>,
+    public VirtualBoxSupportTranslation<HostNetworkInterface>,
     VBOX_SCRIPTABLE_IMPL(IHostNetworkInterface)
 {
 public:
