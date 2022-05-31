@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18376 2009-03-27 10:43:29Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18388 2009-03-27 13:11:42Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2180,7 +2180,7 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD /* aThread */, vo
                             rc = pVirtualBox->CreateHardDisk(srcFormat, Bstr(pcszDstFilePath), dstHdVBox.asOutParam());
                             if (FAILED(rc)) throw rc;
                             /* Clone the source disk image */
-                            rc = srcHdVBox->CloneTo(dstHdVBox, HardDiskVariant_Standard, pProgress2.asOutParam());
+                            rc = srcHdVBox->CloneTo(dstHdVBox, HardDiskVariant_Standard, NULL, pProgress2.asOutParam());
                             if (FAILED(rc)) throw rc;
 
                             /* Advance to the next operation */
@@ -3070,7 +3070,7 @@ DECLCALLBACK(int) Appliance::taskThreadWriteOVF(RTTHREAD /* aThread */, void *pv
             try
             {
                 // create a flat copy of the source disk image
-                rc = pSourceDisk->FlattenTo(pTargetDisk, HardDiskVariant_VmdkStreamOptimized, pProgress2.asOutParam());
+                rc = pSourceDisk->CloneTo(pTargetDisk, HardDiskVariant_VmdkStreamOptimized, NULL, pProgress2.asOutParam());
                 if (FAILED(rc)) throw rc;
 
                 // advance to the next operation

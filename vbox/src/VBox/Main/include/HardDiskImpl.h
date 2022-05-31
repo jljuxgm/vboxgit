@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 18313 2009-03-26 13:59:14Z vboxsync $ */
+/* $Id: HardDiskImpl.h 18388 2009-03-27 13:11:42Z vboxsync $ */
 
 /** @file
  *
@@ -125,9 +125,7 @@ public:
                                   IProgress **aProgress);
     STDMETHOD(MergeTo) (IN_GUID aTargetId, IProgress **aProgress);
     STDMETHOD(CloneTo) (IHardDisk *aTarget, HardDiskVariant_T aVariant,
-                        IProgress **aProgress);
-    STDMETHOD(FlattenTo) (IHardDisk *aTarget, HardDiskVariant_T aVariant,
-                          IProgress **aProgress);
+                        IHardDisk *aParent, IProgress **aProgress);
     STDMETHOD(Compact) (IProgress **aProgress);
     STDMETHOD(Reset) (IProgress **aProgress);
 
