@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 23257 2009-09-23 13:30:15Z vboxsync $ */
+/* $Id: MediumImpl.cpp 23327 2009-09-25 11:36:00Z vboxsync $ */
 
 /** @file
  *
@@ -3306,7 +3306,7 @@ MediumType_T Medium::type() const
  */
 RWLockHandle* Medium::treeLock()
 {
-    return mVirtualBox->hardDiskTreeLockHandle();
+    return &mVirtualBox->hardDiskTreeLockHandle();
 }
 
 // protected methods
