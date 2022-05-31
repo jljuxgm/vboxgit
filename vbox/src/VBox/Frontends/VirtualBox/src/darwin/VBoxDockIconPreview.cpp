@@ -1,4 +1,4 @@
-/* $Id: VBoxDockIconPreview.cpp 23703 2009-10-12 15:34:36Z vboxsync $ */
+/* $Id: VBoxDockIconPreview.cpp 23801 2009-10-15 15:00:47Z vboxsync $ */
 /** @file
  * Qt GUI - Realtime Dock Icon Preview
  */
@@ -119,7 +119,7 @@ CGImageRef VBoxDockIconPreview::stateImage() const
     if (mMainWnd->machineState() == KMachineState_Paused)
         img = mStatePaused;
     else if (   mMainWnd->machineState() == KMachineState_Restoring
-             || mMainWnd->machineState() == KMachineState_MigratingFrom)
+             || mMainWnd->machineState() == KMachineState_TeleportingFrom)
         img = mStateRestoring;
     else if (mMainWnd->machineState() == KMachineState_Saving)
         img = mStateSaving;

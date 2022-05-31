@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 23730 2009-10-13 14:33:08Z vboxsync $ */
+/* $Id: VMM.cpp 23801 2009-10-15 15:00:47Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -100,7 +100,7 @@
 *******************************************************************************/
 /** The saved state version. */
 #define VMM_SAVED_STATE_VERSION     4
-/** The saved state version used by v3.0 and earlier. (Live migration.) */
+/** The saved state version used by v3.0 and earlier. (Teleportation) */
 #define VMM_SAVED_STATE_VERSION_3_0 3
 
 

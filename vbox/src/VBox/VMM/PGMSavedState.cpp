@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 23565 2009-10-05 15:47:04Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 23801 2009-10-15 15:00:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -48,7 +48,7 @@
 *******************************************************************************/
 /** Saved state data unit version. */
 #define PGM_SAVED_STATE_VERSION                 10
-/** Saved state data unit version for 3.0. (pre live migration) */
+/** Saved state data unit version for 3.0 (pre teleportation). */
 #define PGM_SAVED_STATE_VERSION_3_0_0           9
 /** Saved state data unit version for 2.2.2 and later. */
 #define PGM_SAVED_STATE_VERSION_2_2_2           8
