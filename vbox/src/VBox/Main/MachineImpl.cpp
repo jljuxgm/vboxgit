@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23599 2009-10-07 17:24:18Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23600 2009-10-07 17:49:26Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -5031,7 +5031,11 @@ HRESULT Machine::loadSettings(bool aRegistered)
 
         mData->mLastStateChange = mData->m_pMachineConfigFile->timeLastStateChange;
 
-/** @todo LiveMigration: Load LiveMigration properties here. */
+        /* Live migration */
+        mUserData->mLiveMigrationTarget = mData->m_pMachineConfigFile->fLiveMigrationTarget;
+        mUserData->mLiveMigrationPort = mData->m_pMachineConfigFile->uLiveMigrationPort;
+        mUserData->mLiveMigrationPassword = mData->m_pMachineConfigFile->strLiveMigrationPassword;
+
         /*
          *  note: all mUserData members must be assigned prior this point because
          *  we need to commit changes in order to let mUserData be shared by all
@@ -6021,7 +6025,10 @@ HRESULT Machine::saveSettings(int aFlags /*= 0*/)
         mData->m_pMachineConfigFile->fCurrentStateModified = !!currentStateModified;
         mData->m_pMachineConfigFile->timeLastStateChange = mData->mLastStateChange;
         mData->m_pMachineConfigFile->fAborted = (mData->mMachineState == MachineState_Aborted);
-/** @todo LiveMigration: Save LiveMigration properties here. */
+
+        mData->m_pMachineConfigFile->fLiveMigrationTarget = !!mUserData->mLiveMigrationTarget;
+        mData->m_pMachineConfigFile->uLiveMigrationPort = mUserData->mLiveMigrationPort;
+        mData->m_pMachineConfigFile->strLiveMigrationPassword = mUserData->mLiveMigrationPassword;
 
         rc = saveHardware(mData->m_pMachineConfigFile->hardwareMachine);
         CheckComRCThrowRC(rc);
