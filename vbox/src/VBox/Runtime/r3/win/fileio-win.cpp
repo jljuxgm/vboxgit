@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 22516 2009-08-27 12:42:16Z vboxsync $ */
+/* $Id: fileio-win.cpp 23047 2009-09-15 21:29:15Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -301,7 +301,10 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
     if (fOpen & RTFILE_O_ASYNC_IO)
         dwFlagsAndAttributes |= FILE_FLAG_OVERLAPPED;
     if (fOpen & RTFILE_O_NO_CACHE)
+    {
         dwFlagsAndAttributes |= FILE_FLAG_NO_BUFFERING;
+        dwDesiredAccess &= ~FILE_APPEND_DATA;
+    }
 
     /*
      * Open/Create the file.
