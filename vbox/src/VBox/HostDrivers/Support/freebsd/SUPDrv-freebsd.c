@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 19671 2009-05-13 18:28:58Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 19745 2009-05-15 15:32:16Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -99,7 +99,11 @@ MODULE_VERSION(vboxdrv, 1);
 static struct cdevsw        g_VBoxDrvFreeBSDChrDevSW =
 {
     .d_version =        D_VERSION,
+#if __FreeBSD_version > 800061
+    .d_flags =          D_PSEUDO | D_TRACKCLOSE | D_NEEDMINOR,
+#else
     .d_flags =          D_PSEUDO | D_TRACKCLOSE,
+#endif
     .d_fdopen =         VBoxDrvFreeBSDOpen,
     .d_close =          VBoxDrvFreeBSDClose,
     .d_ioctl =          VBoxDrvFreeBSDIOCtl,
