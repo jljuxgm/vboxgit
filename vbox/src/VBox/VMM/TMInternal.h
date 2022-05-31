@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 20784 2009-06-22 14:37:39Z vboxsync $ */
+/* $Id: TMInternal.h 22242 2009-08-13 15:38:35Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -545,6 +545,7 @@ typedef struct TM
     STAMCOUNTER                 StatTSCCatchupLE100;
     STAMCOUNTER                 StatTSCCatchupOther;
     STAMCOUNTER                 StatTSCWarp;
+    STAMCOUNTER                 StatTSCUnderflow;
     STAMCOUNTER                 StatTSCSyncNotTicking;
     /** @} */
 } TM;
@@ -572,6 +573,8 @@ typedef struct TMCPU
     /** The guest TSC when fTicking is cleared. */
     uint64_t                    u64TSC;
 
+    /** The last seen TSC by the guest. */
+    uint64_t                    u64TSCLastSeen;
 } TMCPU;
 /** Pointer to TM VMCPU instance data. */
 typedef TMCPU *PTMCPU;

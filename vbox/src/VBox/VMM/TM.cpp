@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 21606 2009-07-15 12:48:19Z vboxsync $ */
+/* $Id: TM.cpp 22242 2009-08-13 15:38:35Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -622,6 +622,7 @@ VMMR3DECL(int) TMR3Init(PVM pVM)
     STAM_REG(pVM, &pVM->tm.s.StatTSCSyncNotTicking,                   STAMTYPE_COUNTER, "/TM/TSC/Intercept/SyncNotTicking",    STAMUNIT_OCCURENCES, "VirtualSync isn't ticking.");
     STAM_REG(pVM, &pVM->tm.s.StatTSCWarp,                             STAMTYPE_COUNTER, "/TM/TSC/Intercept/Warp",              STAMUNIT_OCCURENCES, "Warpdrive is active.");
     STAM_REG(pVM, &pVM->tm.s.StatTSCSet,                              STAMTYPE_COUNTER, "/TM/TSC/Sets",                        STAMUNIT_OCCURENCES, "Calls to TMCpuTickSet.");
+    STAM_REG(pVM, &pVM->tm.s.StatTSCUnderflow,                        STAMTYPE_COUNTER, "/TM/TSC/Underflow",                   STAMUNIT_OCCURENCES, "TSC underflow; corrected with last seen value .");
 #endif /* VBOX_WITH_STATISTICS */
 
     for (VMCPUID i = 0; i < pVM->cCPUs; i++)

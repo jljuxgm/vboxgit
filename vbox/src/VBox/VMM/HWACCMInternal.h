@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 22241 2009-08-13 15:05:24Z vboxsync $ */
+/* $Id: HWACCMInternal.h 22242 2009-08-13 15:38:35Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -556,8 +556,6 @@ typedef struct HWACCMCPU
     /* Current ASID in use by the VM */
     RTUINT                      uCurrentASID;
 
-    /* Last seen TSC by the guest when in offsetted mode. */
-    uint64_t                    u64LastTSC;
     /* Last use TSC offset value. (cached) */
     uint64_t                    u64TSCOffset;
 
@@ -818,7 +816,6 @@ typedef struct HWACCMCPU
 
     STAMCOUNTER             StatTSCOffset;
     STAMCOUNTER             StatTSCIntercept;
-    STAMCOUNTER             StatTSCOverFlow;
     STAMCOUNTER             StatTSCInterceptOverFlow;
 
     STAMCOUNTER             StatExitReasonNPF;
