@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 23224 2009-09-22 15:57:05Z vboxsync $ */
+/* $Id: HWACCM.cpp 23226 2009-09-22 16:08:37Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2499,6 +2499,9 @@ static DECLCALLBACK(int) hwaccmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersio
         /* Fetch all TPR patch records. */
         rc = SSMR3GetU32(pSSM, &pVM->hwaccm.s.svm.cPatches);
         AssertRCReturn(rc, rc);
+
+        if (pVM->hwaccm.s.svm.cPatches)
+            pVM->hwaccm.s.svm.fTPRPatchingActive = true;
 
         for (unsigned i = 0; i < pVM->hwaccm.s.svm.cPatches; i++)
         {
