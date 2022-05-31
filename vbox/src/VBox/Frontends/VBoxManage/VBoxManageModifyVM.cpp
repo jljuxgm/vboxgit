@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 23706 2009-10-12 16:31:28Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 23731 2009-10-13 14:39:30Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -252,12 +252,6 @@ int handleModifyVM(HandlerArg *a)
     while (   SUCCEEDED (rc)
            && (c = RTGetOpt(&pGetState, &pValueUnion)))
     {
-#if 0
-        RTPrintf("Arguments(%d) '%s' : '%lu' :'%s - %u'\n", c,
-                 pGetState.pDef ? pGetState.pDef->pszLong : "NULL",
-                 pGetState.uIndex, pValueUnion.psz, pValueUnion.u32);
-#endif
-
         switch (c)
         {
             case MODIFYVMNAME:
