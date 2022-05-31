@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22298 2009-08-17 14:41:04Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22300 2009-08-17 15:11:30Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -8096,8 +8096,8 @@ STDMETHODIMP SessionMachine::DiscardSnapshot(IConsole *aInitiator,
     size_t childrenCount = snapshot->getChildrenCount();
     if (childrenCount > 1)
         return setError(VBOX_E_INVALID_OBJECT_STATE,
-                        tr("Snapshot '%ls' of the machine '%ls' has more than one child snapshot (%d)"),
-                        snapshot->getName().raw(),
+                        tr("Snapshot '%s' of the machine '%ls' has more than one child snapshot (%d)"),
+                        snapshot->getName().c_str(),
                         mUserData->mName.raw(),
                         childrenCount);
 
@@ -8119,8 +8119,8 @@ STDMETHODIMP SessionMachine::DiscardSnapshot(IConsole *aInitiator,
     ComObjPtr<Progress> progress;
     progress.createObject();
     rc = progress->init (mParent, aInitiator,
-                         Bstr(Utf8StrFmt(tr("Discarding snapshot '%ls'"),
-                                            snapshot->getName().raw())),
+                         Bstr(Utf8StrFmt(tr("Discarding snapshot '%s'"),
+                                            snapshot->getName().c_str())),
                          FALSE /* aCancelable */,
                          1 + (ULONG)snapshot->getSnapshotMachine()->mHDData->mAttachments.size() +
                          (snapshot->stateFilePath().isNull() ? 0 : 1),
