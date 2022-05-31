@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUSB.cpp 21520 2009-07-13 08:18:44Z vboxsync $ */
+/* $Id: VBoxManageUSB.cpp 22211 2009-08-12 16:05:19Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -546,7 +546,7 @@ int handleUSBFilter (HandlerArg *a)
             if (cmd.mGlobal)
             {
                 ComPtr <IHostUSBDeviceFilter> flt;
-                CHECK_ERROR_BREAK (host, RemoveUSBDeviceFilter (cmd.mIndex, flt.asOutParam()));
+                CHECK_ERROR_BREAK (host, RemoveUSBDeviceFilter (cmd.mIndex));
             }
             else
             {

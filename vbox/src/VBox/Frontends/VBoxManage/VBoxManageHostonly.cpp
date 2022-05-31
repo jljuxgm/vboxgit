@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 20928 2009-06-25 11:53:37Z vboxsync $ */
+/* $Id: VBoxManageHostonly.cpp 22211 2009-08-12 16:05:19Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -117,7 +117,7 @@ static int handleRemove(HandlerArg *a, int iStart, int *pcProcessed)
     CHECK_ERROR(hif, COMGETTER(Id)(guid.asOutParam()));
 
     ComPtr<IProgress> progress;
-    CHECK_ERROR(host, RemoveHostOnlyNetworkInterface (guid, hif.asOutParam(),progress.asOutParam()));
+    CHECK_ERROR(host, RemoveHostOnlyNetworkInterface (guid, progress.asOutParam()));
 
     showProgress(progress);
 

@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 22183 2009-08-11 17:00:33Z vboxsync $ */
+/* $Id: HostImpl.h 22211 2009-08-12 16:05:19Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -101,13 +101,11 @@ public:
 
     // IHost methods
     STDMETHOD(CreateHostOnlyNetworkInterface) (IHostNetworkInterface **aHostNetworkInterface,
-                                           IProgress **aProgress);
-    STDMETHOD(RemoveHostOnlyNetworkInterface) (IN_BSTR aId,
-                                           IHostNetworkInterface **aHostNetworkInterface,
-                                           IProgress **aProgress);
+                                               IProgress **aProgress);
+    STDMETHOD(RemoveHostOnlyNetworkInterface) (IN_BSTR aId, IProgress **aProgress);
     STDMETHOD(CreateUSBDeviceFilter) (IN_BSTR aName, IHostUSBDeviceFilter **aFilter);
     STDMETHOD(InsertUSBDeviceFilter) (ULONG aPosition, IHostUSBDeviceFilter *aFilter);
-    STDMETHOD(RemoveUSBDeviceFilter) (ULONG aPosition, IHostUSBDeviceFilter **aFilter);
+    STDMETHOD(RemoveUSBDeviceFilter) (ULONG aPosition);
 
     STDMETHOD(FindHostDVDDrive) (IN_BSTR aName, IHostDVDDrive **aDrive);
     STDMETHOD(FindHostFloppyDrive) (IN_BSTR aName, IHostFloppyDrive **aDrive);
