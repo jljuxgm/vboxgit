@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 18179 2009-03-24 13:25:13Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 18327 2009-03-26 16:27:39Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -182,7 +182,7 @@ typedef struct COWDisk_Header
 
 
 /** Convert sector number/size to byte offset/size. */
-#define VMDK_SECTOR2BYTE(u) ((u) << 9)
+#define VMDK_SECTOR2BYTE(u) ((uint64_t)(u) << 9)
 
 /** Convert byte offset/size to sector number/size. */
 #define VMDK_BYTE2SECTOR(u) ((u) >> 9)
