@@ -1,9 +1,9 @@
-/* $Id: VBoxServiceExec.cpp 22728 2009-09-03 07:59:53Z vboxsync $ */
+/* $Id: VBoxServiceExec.cpp 22733 2009-09-03 10:00:08Z vboxsync $ */
 /** @file
  * VBoxServiceExec - In-VM Command Execution Service.
  */
 /** @todo r=bird: Why is this called VMExec while the filename is VBoxServiceExec.cpp? See VMInfo... */
-/** @todo r=bird: Use svn-ps.[sh|cmd] -a when adding new files, please. Then the EOLs and $Id: VBoxServiceExec.cpp 22728 2009-09-03 07:59:53Z vboxsync $ won't be messed up all the time. */
+/** @todo r=bird: Use svn-ps.[sh|cmd] -a when adding new files, please. Then the EOLs and $Id: VBoxServiceExec.cpp 22733 2009-09-03 10:00:08Z vboxsync $ won't be messed up all the time. */
 
 /*
  * Copyright (C) 2009 Sun Microsystems, Inc.
@@ -113,15 +113,17 @@ static DECLCALLBACK(int) VBoxServiceExecInit(void)
  */
 bool VBoxServiceExecValidateFlags(char* pszFlags)
 {
-    if (pszFlags == NULL)
-        return false;
+    bool ret = false;
 
     if (   (NULL != RTStrStr(pszFlags, "TRANSIENT"))
         && (NULL != RTStrStr(pszFlags, "RDONLYGUEST")))
     {
-        return true;
+        ret = true;
     }
-    return false;
+    VBoxServiceVerbose(3, "Validating flags %s = %s\n", 
+                       ((pszFlags == NULL) || (RTStrICmp(pszFlags, "") == 0)) ? "<NULL>" : pszFlags, 
+                       ret ? "true" : "false");
+    return ret;
 }
 
 
@@ -185,7 +187,7 @@ DECLCALLBACK(int) VBoxServiceExecWorker(bool volatile *pfShutdown)
                 }
                 else
                 {
-                    !VBoxServiceExecValidateFlags(pszSysprepCmdFlags) ? rc = rc : rc = VERR_ACCESS_DENIED;
+                    VBoxServiceExecValidateFlags(pszSysprepCmdFlags) ? rc = rc : rc = VERR_ACCESS_DENIED;
                     if (RT_SUCCESS(rc))
                     {
                         if (RTStrNLen(pszSysprepCmdValue, _MAX_PATH) <= 0)
@@ -231,7 +233,7 @@ DECLCALLBACK(int) VBoxServiceExecWorker(bool volatile *pfShutdown)
                 }
                 else
                 {
-                    !VBoxServiceExecValidateFlags(pszSysprepArgsFlags) ? rc = rc : rc = VERR_ACCESS_DENIED;
+                    VBoxServiceExecValidateFlags(pszSysprepArgsFlags) ? rc = rc : rc = VERR_ACCESS_DENIED;
                     if (RT_SUCCESS(rc))
                     {
                         if (RTStrNLen(pszSysprepArgsValue, EXEC_MAX_ARGS) <= 0)
