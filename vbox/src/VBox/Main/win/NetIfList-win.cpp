@@ -1,4 +1,4 @@
-/* $Id: NetIfList-win.cpp 18676 2009-04-03 10:13:21Z vboxsync $ */
+/* $Id: NetIfList-win.cpp 18704 2009-04-03 16:59:22Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1406,7 +1406,7 @@ static HRESULT netIfNetworkInterfaceHelperClient (SVCHlpClient *aClient,
 }
 
 
-/* The original source of the VBoxTAP adapter creation/destruction code has the following copyright */
+/* The original source of the VBoxNetAdp adapter creation/destruction code has the following copyright */
 /*
    Copyright 2004 by the Massachusetts Institute of Technology
 
@@ -1473,7 +1473,7 @@ static int createNetworkInterface (SVCHlpClient *aClient,
         PSP_DRVINFO_DETAIL_DATA pDriverInfoDetail;
         /* for our purposes, 2k buffer is more
          * than enough to obtain the hardware ID
-         * of the VBoxTAP driver. */
+         * of the VBoxNetAdp driver. */
         DWORD detailBuf [2048];
 
         HKEY hkey = NULL;
