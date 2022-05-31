@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 20356 2009-06-07 13:22:52Z vboxsync $ */
+/* $Id: dbgmod.cpp 20360 2009-06-08 00:04:31Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -141,6 +141,18 @@ DECLINLINE(int) rtDbgModLazyInit(void)
 }
 
 
+/**
+ * Creates a module based on the default debug info container.
+ *
+ * This can be used to manually load a module and its symbol.
+ *
+ * @returns IPRT status code.
+ *
+ * @param   phDbgMod        Where to return the module handle.
+ * @param   pszName         The name of the module (mandatory).
+ * @param   cb              The size of the module. Must be greater than zero.
+ * @param   fFlags          Flags reserved for future extensions, MBZ for now.
+ */
 RTDECL(int)  RTDbgModCreate(PRTDBGMOD phDbgMod, const char *pszName, RTUINTPTR cb, uint32_t fFlags)
 {
     /*
