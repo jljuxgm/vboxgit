@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 19537 2009-05-08 18:09:57Z vboxsync $ */
+/* $Id: TMInternal.h 19660 2009-05-13 14:09:15Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -304,7 +304,9 @@ typedef struct TM
     /** Modifier for fTSCTiedToExecution which pauses the TSC while halting if true.
      * Config variable: TSCNotTiedToHalt (bool) */
     bool                        fTSCNotTiedToHalt;
-    bool                        afAlignment0[6]; /**< alignment padding */
+    bool                        afAlignment0[2]; /**< alignment padding */
+    /** The ID of the virtual CPU that normally runs the timers. */
+    VMCPUID                     idTimerCpu;
     /** The number of CPU clock ticks per second (TMCLOCK_TSC).
      * Config variable: TSCTicksPerSecond (64-bit unsigned int)
      * The config variable implies fTSCVirtualized = true and fTSCUseRealTSC = false. */
@@ -450,10 +452,21 @@ typedef struct TM
     /* @} */
     /** TMTimerPoll
      * @{ */
+    STAMCOUNTER                 StatPoll;
     STAMCOUNTER                 StatPollAlreadySet;
     STAMCOUNTER                 StatPollVirtual;
     STAMCOUNTER                 StatPollVirtualSync;
     STAMCOUNTER                 StatPollMiss;
+    STAMCOUNTER                 StatPollRunning;
+    /** @} */
+    /** TMTimerPollGIP
+     * @{ */
+    STAMCOUNTER                 StatPollGIP;
+    STAMCOUNTER                 StatPollGIPAlreadySet;
+    STAMCOUNTER                 StatPollGIPVirtual;
+    STAMCOUNTER                 StatPollGIPVirtualSync;
+    STAMCOUNTER                 StatPollGIPMiss;
+    STAMCOUNTER                 StatPollGIPRunning;
     /** @} */
     /** TMTimerSet
      * @{ */

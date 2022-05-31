@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 19297 2009-05-01 17:03:40Z vboxsync $ */
+/* $Id: REMInternal.h 19660 2009-05-13 14:09:15Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -131,7 +131,7 @@ typedef struct REM
 
     /** In REM mode.
      * I.e. the correct CPU state and some other bits are with REM. */
-    bool                    fInREM;
+    bool volatile           fInREM;
     /** In REMR3State. */
     bool                    fInStateSync;
 
@@ -275,8 +275,8 @@ void remR3ProfileStart(int statcode);
 void remR3ProfileStop(int statcode);
 
 #else  /* !VBOX_WITH_STATISTICS */
-# define remR3ProfileStart(c)
-# define remR3ProfileStop(c)
+# define remR3ProfileStart(c)   do { } while (0)
+# define remR3ProfileStop(c)    do { } while (0)
 #endif /* !VBOX_WITH_STATISTICS */
 
 /** @} */

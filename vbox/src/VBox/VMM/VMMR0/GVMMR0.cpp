@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 19657 2009-05-13 12:40:19Z vboxsync $ */
+/* $Id: GVMMR0.cpp 19660 2009-05-13 14:09:15Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1660,6 +1660,7 @@ GVMMR0DECL(int) GVMMR0SchedWakeUpEx(PVM pVM, VMCPUID idCpu, bool fTakeUsedLock)
     LogFlow(("GVMMR0SchedWakeUp: returns %Rrc\n", rc));
     return rc;
 }
+
 
 /**
  * Wakes up the halted EMT thread so it can service a pending request.
