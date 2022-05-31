@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 21252 2009-07-06 14:11:25Z vboxsync $ */
+/* $Id: CPUMInternal.h 23758 2009-10-14 12:21:21Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -297,7 +297,9 @@ typedef struct CPUM
 
     /** Have we entered rawmode? */
     bool                    fRawEntered;
-    uint8_t                 abPadding[3 + (HC_ARCH_BITS == 64) * 4];
+    /** Synthetic CPU type? */
+    bool                    fSyntheticCpu;
+    uint8_t                 abPadding[2 + (HC_ARCH_BITS == 64) * 4];
 
     /** The standard set of CpuId leafs. */
     CPUMCPUID               aGuestCpuIdStd[6];
