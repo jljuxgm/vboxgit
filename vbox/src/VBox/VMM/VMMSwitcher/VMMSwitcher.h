@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.h 16859 2009-02-17 16:19:51Z vboxsync $ */
+/* $Id: VMMSwitcher.h 18927 2009-04-16 11:41:38Z vboxsync $ */
 /** @file
  * VMM - World Switchers.
  */
@@ -61,6 +61,7 @@
 #define FIX_GC_APIC_BASE_32BIT  34
 #define FIX_HC_64BIT_NOCHECK    35
 #define FIX_GC_64_BIT_CPUM_OFF  36
+#define FIX_GC_CPUMCPU_OFF      37
 #define FIX_THE_END             255
 /** @} */
 

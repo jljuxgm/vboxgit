@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 15827 2009-01-07 10:22:15Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
 
 /** @file
  *
@@ -557,7 +557,7 @@ STDMETHODIMP MachineDebugger::COMGETTER(PAEEnabled) (BOOL *aEnabled)
 
     if (pVM.isOk())
     {
-        uint64_t cr4 = CPUMGetGuestCR4 (pVM.raw());
+        uint64_t cr4 = CPUMGetGuestCR4 (VMMGetCpu0(pVM.raw()));
         *aEnabled = !!(cr4 & X86_CR4_PAE);
     }
     else

@@ -1,4 +1,4 @@
-; $Id: TRPMGCHandlersA.asm 15416 2008-12-13 05:31:06Z vboxsync $
+; $Id: TRPMGCHandlersA.asm 18927 2009-04-16 11:41:38Z vboxsync $
 ;; @file
 ; TRPM - Guest Context Trap Handlers
 ;
@@ -548,7 +548,9 @@ gt_InHypervisor:
     ; tell cpum about the context core.
     xchg    esi, eax                    ; save pTRPM - @todo reallocate this variable to esi, edi, or ebx
     push    esp                         ; Param 2 - The new CPUMCTXCORE pointer.
-    push    IMP(g_VM)                   ; Param 1 - Pointer to the VM.
+    mov     eax, IMP(g_VM)              ; Param 1 - Pointer to the VMCPU.
+    add     eax, [eax + VM.offVMCPU]
+    push    eax
     call    NAME(CPUMHyperSetCtxCore)
     add     esp, byte 8                 ; stack cleanup (cdecl)
     xchg    eax, esi                    ; restore pTRPM
@@ -625,7 +627,9 @@ gt_Hyper_Continue:
 %endif
     ; tell CPUM to use the default CPUMCTXCORE.
     push    byte 0                      ; Param 2 - NULL indicating use default context core.
-    push    IMP(g_VM)                   ; Param 1 - The VM pointer.
+    mov     eax, IMP(g_VM)              ; Param 1 - Pointer to the VMCPU.
+    add     eax, [eax + VM.offVMCPU]
+    push    eax
     call    NAME(CPUMHyperSetCtxCore)
     add     esp, byte 8                 ; stack cleanup (cdecl)
 

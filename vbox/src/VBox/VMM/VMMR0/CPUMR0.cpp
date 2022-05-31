@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 16776 2009-02-15 10:28:09Z vboxsync $ */
+/* $Id: CPUMR0.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -221,7 +221,7 @@ VMMR0DECL(int) CPUMR0LoadGuestFPU(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         }
 
         /* If we sync the FPU/XMM state on-demand, then we can continue execution as if nothing has happened. */
-        int rc = CPUMHandleLazyFPU(pVM, pVCpu);
+        int rc = CPUMHandleLazyFPU(pVCpu);
         AssertRC(rc);
         Assert(CPUMIsGuestFPUStateActive(pVCpu));
 

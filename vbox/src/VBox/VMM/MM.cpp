@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 18880 2009-04-14 09:42:01Z vboxsync $ */
+/* $Id: MM.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -783,45 +783,6 @@ VMMR3DECL(int) MMR3HCPhys2HCVirt(PVM pVM, RTHCPHYS HCPhys, void **ppv)
     return VERR_INVALID_POINTER;
 }
 
-
-/**
- * Read memory from GC virtual address using the current guest CR3.
- *
- * @returns VBox status.
- * @param   pVM         VM handle.
- * @param   pvDst       Destination address (HC of course).
- * @param   GCPtr       GC virtual address.
- * @param   cb          Number of bytes to read.
- *
- * @remarks Intended for the debugger facility only.
- * @todo    Move to DBGF, it's only selecting which functions to use!
- */
-VMMR3DECL(int) MMR3ReadGCVirt(PVM pVM, void *pvDst, RTGCPTR GCPtr, size_t cb)
-{
-    if (GCPtr - pVM->mm.s.pvHyperAreaGC < pVM->mm.s.cbHyperArea)
-        return MMR3HyperReadGCVirt(pVM, pvDst, GCPtr, cb);
-    return PGMPhysSimpleReadGCPtr(pVM, pvDst, GCPtr, cb);
-}
-
-
-/**
- * Write to memory at GC virtual address translated using the current guest CR3.
- *
- * @returns VBox status.
- * @param   pVM         VM handle.
- * @param   GCPtrDst    GC virtual address.
- * @param   pvSrc       The source address (HC of course).
- * @param   cb          Number of bytes to read.
- *
- * @remarks Intended for the debugger facility only.
- * @todo    Move to DBGF, it's only selecting which functions to use!
- */
-VMMR3DECL(int) MMR3WriteGCVirt(PVM pVM, RTGCPTR GCPtrDst, const void *pvSrc, size_t cb)
-{
-    if (GCPtrDst - pVM->mm.s.pvHyperAreaGC < pVM->mm.s.cbHyperArea)
-        return VERR_ACCESS_DENIED;
-    return PGMPhysSimpleWriteGCPtr(pVM, GCPtrDst, pvSrc, cb);
-}
 
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 18770 2009-04-06 15:00:15Z vboxsync $ */
+/* $Id: EMInternal.h 18927 2009-04-16 11:41:38Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -288,6 +288,19 @@ typedef struct EM
     /** Offset to the VM structure.
      * See EM2VM(). */
     RTUINT                  offVM;
+} EM;
+/** Pointer to EM VM instance data. */
+typedef EM *PEM;
+
+
+/**
+ * EM VMCPU Instance data.
+ */
+typedef struct EMCPU
+{
+    /** Offset to the VM structure.
+     * See EMCPU2VM(). */
+    RTUINT                  offVMCPU;
 
     /** Execution Manager State. */
     EMSTATE volatile        enmState;
@@ -372,20 +385,6 @@ typedef struct EM
     /** 64-bit Visual C++ rounds the struct size up to 16 byte. */
     uint64_t                padding1;
 #endif
-
-} EM;
-/** Pointer to EM VM instance data. */
-typedef EM *PEM;
-
-
-/**
- * EM VMCPU Instance data.
- */
-typedef struct EMCPU
-{
-    /** Offset to the VM structure.
-     * See EMCPU2VM(). */
-    RTUINT                  offVMCPU;
 } EMCPU;
 /** Pointer to EM VM instance data. */
 typedef EMCPU *PEMCPU;

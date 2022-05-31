@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 13816 2008-11-04 22:52:12Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -62,8 +62,11 @@ VMMR3DECL(int) DBGFR3AddrFromSelOff(PVM pVM, PDBGFADDRESS pAddress, RTSEL Sel, R
     pAddress->off = off;
     if (Sel != DBGF_SEL_FLAT)
     {
+        /* @todo SMP support!! */
+        PVMCPU pVCpu = &pVM->aCpus[0];
+
         SELMSELINFO SelInfo;
-        int rc = SELMR3GetSelectorInfo(pVM, Sel, &SelInfo);
+        int rc = SELMR3GetSelectorInfo(pVM, pVCpu, Sel, &SelInfo);
         if (RT_FAILURE(rc))
             return rc;
 

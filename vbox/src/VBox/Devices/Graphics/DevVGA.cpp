@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 18769 2009-04-06 14:54:59Z vboxsync $ */
+/* $Id: DevVGA.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3719,7 +3719,7 @@ static int vgaLFBAccess(PVM pVM, PVGASTATE pThis, RTGCPHYS GCPhys, RTGCPTR GCPtr
     if (RT_SUCCESS(rc))
     {
 #ifndef IN_RING3
-        rc = PGMShwModifyPage(pVM, GCPtr, 1, X86_PTE_RW, ~(uint64_t)X86_PTE_RW);
+        rc = PGMShwModifyPage(pVM, PDMDevHlpGetVMCPU(pThis->CTX_SUFF(pDevIns)), GCPtr, 1, X86_PTE_RW, ~(uint64_t)X86_PTE_RW);
         if (RT_SUCCESS(rc))
             return VINF_SUCCESS;
         else

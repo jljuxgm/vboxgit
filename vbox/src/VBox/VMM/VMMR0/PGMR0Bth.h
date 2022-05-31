@@ -1,4 +1,4 @@
-/* $Id: PGMR0Bth.h 8977 2008-05-20 19:23:25Z vboxsync $ */
+/* $Id: PGMR0Bth.h 18927 2009-04-16 11:41:38Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -24,7 +24,7 @@
 *   Internal Functions                                                         *
 *******************************************************************************/
 __BEGIN_DECLS
-PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault);
+PGM_BTH_DECL(int, Trap0eHandler)(PVM pVM, PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault);
 __END_DECLS
 
 

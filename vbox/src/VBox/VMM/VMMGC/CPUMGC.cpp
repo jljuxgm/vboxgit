@@ -1,4 +1,4 @@
-/* $Id: CPUMGC.cpp 13960 2008-11-07 13:04:45Z vboxsync $ */
+/* $Id: CPUMGC.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
 /** @file
  * CPUM - Guest Context Code.
  */
@@ -58,12 +58,14 @@ DECLCALLBACK(int) cpumGCHandleNPAndGP(PVM pVM, PCPUMCTXCORE pRegFrame, uintptr_t
     Log(("cpumGCHandleNPAndGP: eip=%RX32 uUser=%#x\n", pRegFrame->eip, uUser));
     Log(("********************************************************\n"));
 
+    PVMCPU pVCpu = VMMGetCpu0(pVM);
+
     /*
      * Update the guest cpu state.
      */
     if (uUser & CPUM_HANDLER_CTXCORE_IN_EBP)
     {
-        PCPUMCTXCORE  pGstCtxCore = (PCPUMCTXCORE)CPUMGetGuestCtxCore(pVM);
+        PCPUMCTXCORE  pGstCtxCore = (PCPUMCTXCORE)CPUMGetGuestCtxCore(pVCpu);
         PCCPUMCTXCORE pGstCtxCoreSrc = (PCPUMCTXCORE)pRegFrame->ebp;
         *pGstCtxCore = *pGstCtxCoreSrc;
     }
@@ -89,7 +91,7 @@ DECLCALLBACK(int) cpumGCHandleNPAndGP(PVM pVM, PCPUMCTXCORE pRegFrame, uintptr_t
         /* Make sure we restore the guest context from the interrupt stack frame. */
         case CPUM_HANDLER_IRET:
         {
-            PCPUMCTXCORE  pGstCtxCore = (PCPUMCTXCORE)CPUMGetGuestCtxCore(pVM);
+            PCPUMCTXCORE  pGstCtxCore = (PCPUMCTXCORE)CPUMGetGuestCtxCore(pVCpu);
             uint32_t     *pEsp = (uint32_t *)pRegFrame->esp;
 
             /* Sync general purpose registers */

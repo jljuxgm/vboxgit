@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 13832 2008-11-05 02:01:12Z vboxsync $ */
+/* $Id: PATMInternal.h 18927 2009-04-16 11:41:38Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -703,12 +703,12 @@ inline bool PATMR3DISInstr(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu, RTRCPT
                            uint32_t fReadFlags = PATMREAD_ORGCODE)
 {
     PATMDISASM disinfo;
-    disinfo.pVM    = pVM;
-    disinfo.pPatchInfo = pPatch;
-    disinfo.pInstrHC = InstrHC;
-    disinfo.pInstrGC = InstrGC;
-    disinfo.fReadFlags = fReadFlags;
-    (pCpu)->pfnReadBytes  = patmReadBytes;
+    disinfo.pVM         = pVM;
+    disinfo.pPatchInfo  = pPatch;
+    disinfo.pInstrHC    = InstrHC;
+    disinfo.pInstrGC    = InstrGC;
+    disinfo.fReadFlags  = fReadFlags;
+    (pCpu)->pfnReadBytes = patmReadBytes;
     (pCpu)->apvUserData[0] = &disinfo;
     return RT_SUCCESS(DISInstr(pCpu, InstrGC, 0, pOpsize, pszOutput));
 }
