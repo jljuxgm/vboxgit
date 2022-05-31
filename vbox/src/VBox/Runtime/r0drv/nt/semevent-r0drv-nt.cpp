@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-nt.cpp 20912 2009-06-24 23:51:48Z vboxsync $ */
+/* $Id: semevent-r0drv-nt.cpp 20913 2009-06-25 01:08:32Z vboxsync $ */
 /** @file
  * IPRT -  Single Release Event Semaphores, Ring-0 Driver, NT.
  */
@@ -142,14 +142,13 @@ static int rtSemEventWait(RTSEMEVENT EventSem, unsigned cMillies, bool fInterrup
      */
     NTSTATUS        rcNt;
     KPROCESSOR_MODE WaitMode   = fInterruptible ? UserMode : KernelMode;
-    KWAIT_REASON    WaitReason = Executive; /*fInterruptible ? Executive : UserRequest; ?*/
     if (cMillies == RT_INDEFINITE_WAIT)
-        rcNt = KeWaitForSingleObject(&pEventInt->Event, WaitReason, WaitMode, fInterruptible, NULL);
+        rcNt = KeWaitForSingleObject(&pEventInt->Event, Executive, WaitMode, fInterruptible, NULL);
     else
     {
         LARGE_INTEGER Timeout;
         Timeout.QuadPart = -(int64_t)cMillies * 10000;
-        rcNt = KeWaitForSingleObject(&pEventInt->Event, WaitReason, WaitMode, fInterruptible, &Timeout);
+        rcNt = KeWaitForSingleObject(&pEventInt->Event, Executive, WaitMode, fInterruptible, &Timeout);
     }
 #else
     /*
