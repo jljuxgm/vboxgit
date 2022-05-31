@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 21594 2009-07-15 00:08:20Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 21595 2009-07-15 00:19:29Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -158,6 +158,6 @@ RTDECL(bool) RTThreadIsInInterrupt(RTTHREAD hThread)
 {
     /* This is the best we currently can do here. :-( */
     return !RTThreadPreemptIsEnabled(hThread)
-        && getpil() > 0
+        && getpil() > 0;
 }
 
