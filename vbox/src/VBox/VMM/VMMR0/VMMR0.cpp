@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 19382 2009-05-05 14:56:15Z vboxsync $ */
+/* $Id: VMMR0.cpp 19406 2009-05-05 23:28:56Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -756,6 +756,16 @@ static int vmmR0EntryExWorker(PVM pVM, unsigned idCpu, VMMR0OPERATION enmOperati
             if (pReqHdr || u64Arg)
                 return VERR_INVALID_PARAMETER;
             return GVMMR0SchedWakeUp(pVM, idCpu);
+
+        case VMMR0_DO_GVMM_SCHED_POKE:
+            if (pReqHdr || u64Arg)
+                return VERR_INVALID_PARAMETER;
+            return GVMMR0SchedPoke(pVM, idCpu);
+
+        case VMMR0_DO_GVMM_SCHED_WAKE_UP_AND_POKE_CPUS:
+            if (u64Arg)
+                return VERR_INVALID_PARAMETER;
+            return GVMMR0SchedWakeUpAndPokeCpusReq(pVM, (PGVMMSCHEDWAKEUPANDPOKECPUSREQ)pReqHdr);
 
         case VMMR0_DO_GVMM_SCHED_POLL:
             if (pReqHdr || u64Arg > 1)
