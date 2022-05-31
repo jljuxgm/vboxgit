@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 18809 2009-04-07 11:57:07Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 19176 2009-04-24 18:19:57Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -344,9 +344,7 @@ void printUsage(USAGECATEGORY u64Cmd)
         RTPrintf("VBoxManage modifyhd         <uuid>|<filename>\n"
                  "                            [--type normal|writethrough|immutable]\n"
                  "                            [--autoreset on|off]\n"
-#if 0
                  "                            [--compact]\n"
-#endif
                  "\n");
     }
 
