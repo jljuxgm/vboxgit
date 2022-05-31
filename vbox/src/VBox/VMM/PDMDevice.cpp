@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 22344 2009-08-19 12:57:32Z vboxsync $ */
+/* $Id: PDMDevice.cpp 23077 2009-09-17 09:26:32Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -996,7 +996,7 @@ VMMR3DECL(int) PDMR3DriverDetach(PVM pVM, const char *pszDevice, unsigned iDevIn
             rc = VINF_PDM_NO_DRIVER_ATTACHED_TO_LUN;
     }
 
-    LogFlow(("PDMR3DeviceDetach: returns %Rrc\n", rc));
+    LogFlow(("PDMR3DriverDetach: returns %Rrc\n", rc));
     return rc;
 }
 
