@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 20249 2009-06-04 07:30:05Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 20250 2009-06-04 07:40:38Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -262,7 +262,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
     for (ULONG i = 1; i <= maxBootPosition; i++)
     {
         ULONG bootOrder;
-        machine->COMGETTER(BootOrder)(i, &bootOrder);
+        machine->GetBootOrder(i, &bootOrder);
         if (bootOrder == DeviceType_Floppy)
         {
             if (details == VMINFO_MACHINEREADABLE)
