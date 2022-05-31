@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 22575 2009-08-30 20:02:08Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 22728 2009-09-03 07:59:53Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -114,7 +114,7 @@ static DECLCALLBACK(int) VBoxServiceVMInfoInit(void)
 
 #ifdef RT_OS_WINDOWS
     /* Get function pointers. */
-    HMODULE hKernel32 = LoadLibrary(_T("kernel32"));
+    HMODULE hKernel32 = LoadLibrary("kernel32");
     if (NULL != hKernel32)
     {
         g_pfnWTSGetActiveConsoleSessionId = (fnWTSGetActiveConsoleSessionId)GetProcAddress(hKernel32, "WTSGetActiveConsoleSessionId");

@@ -1,4 +1,4 @@
-/* $Id: VBoxService-win.cpp 21247 2009-07-06 11:30:33Z vboxsync $ */
+/* $Id: VBoxService-win.cpp 22728 2009-09-03 07:59:53Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton, Windows Specific Parts.
  */
@@ -194,7 +194,7 @@ int VBoxServiceWinUninstall ()
     else
     {
         HKEY hKey = NULL;
-        if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T("SYSTEM\\CurrentControlSet\\Services\\EventLog\\System"), 0, KEY_ALL_ACCESS, &hKey) == ERROR_SUCCESS) {
+        if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SYSTEM\\CurrentControlSet\\Services\\EventLog\\System", 0, KEY_ALL_ACCESS, &hKey) == ERROR_SUCCESS) {
             RegDeleteKey(hKey, VBOXSERVICE_NAME);
             RegCloseKey(hKey);
         }
