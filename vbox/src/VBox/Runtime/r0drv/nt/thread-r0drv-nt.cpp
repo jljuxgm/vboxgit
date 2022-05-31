@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 23173 2009-09-21 09:53:51Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 23174 2009-09-21 09:54:25Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -102,6 +102,7 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
     uint32_t const offDpcQueueDepth  = g_offrtNtPbDpcQueueDepth;
     if (!offQuantumEnd && !cbQuantumEnd && !offDpcQueueDepth)
     {
+        /* Remove any pending poke DPC from the queue, so another call to RTMpPokeCpu will send an IPI */
         rtMpPokeCpuClear();
         return false;
     }
