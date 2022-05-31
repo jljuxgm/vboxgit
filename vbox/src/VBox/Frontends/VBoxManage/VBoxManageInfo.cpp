@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 23689 2009-10-12 13:06:05Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 23703 2009-10-12 15:34:36Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -396,6 +396,12 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
             break;
         case MachineState_Restoring:
             pszState = "restoring";
+            break;
+        case MachineState_MigratingFrom:
+            if (details == VMINFO_MACHINEREADABLE)
+                pszState = "migratingfrom";
+            else
+                pszState = "migrating from";
             break;
         default:
             pszState = "unknown";

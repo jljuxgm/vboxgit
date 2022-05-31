@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 23669 2009-10-10 03:02:01Z vboxsync $ */
+/* $Id: ConsoleImpl.h 23703 2009-10-12 15:34:36Z vboxsync $ */
 
 /** @file
  *
@@ -517,7 +517,7 @@ private:
      * @{ */
     static DECLCALLBACK(int)    migrationSrcThreadWrapper(RTTHREAD hThread, void *pvUser);
     HRESULT                     migrationSrc(MigrationStateSrc *pState);
-    HRESULT                     migrationSrcReadACK(MigrationStateSrc *pState, const char *pszNAckMsg = NULL);
+    HRESULT                     migrationSrcReadACK(MigrationStateSrc *pState, const char *pszWhich, const char *pszNAckMsg = NULL);
     HRESULT                     migrationSrcSubmitCommand(MigrationStateSrc *pState, const char *pszCommand);
     int                         migrationDst(PVM pVM, IMachine *pMachine, bool fStartPaused, void *pvVMCallbackTask);
     static DECLCALLBACK(int)    migrationDstServeConnection(RTSOCKET Sock, void *pvUser);

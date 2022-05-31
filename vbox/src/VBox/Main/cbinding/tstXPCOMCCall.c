@@ -1,4 +1,4 @@
-/* $Revision: 23330 $ */
+/* $Revision: 23703 $ */
 /** @file tstXPCOMCGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -83,6 +83,7 @@ static const char *GetStateName(PRUint32 machineState)
         case MachineState_Stopping:            return "Stopping";
         case MachineState_Saving:              return "Saving";
         case MachineState_Restoring:           return "Restoring";
+        case MachineState_MigratingFrom:       return "MigratingFrom";
         case MachineState_Discarding:          return "Discarding";
         case MachineState_SettingUp:           return "SettingUp";
         default:                               return "no idea";
