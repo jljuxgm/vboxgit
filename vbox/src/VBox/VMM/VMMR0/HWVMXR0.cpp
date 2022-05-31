@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 21196 2009-07-03 12:57:21Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 21208 2009-07-03 14:38:58Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3390,6 +3390,8 @@ ResumeExecution:
             {
                 STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitIOWrite);
                 rc = IOMIOPortWrite(pVM, uPort, pCtx->eax & uAndVal, cbSize);
+                if (rc == VINF_IOM_HC_IOPORT_WRITE)
+                    HWACCMR0SavePendingIOPortWrite(pVCpu, pCtx->rip, uPort, pCtx->eax & uAndVal, cbSize);
             }
             else
             {
@@ -3402,6 +3404,9 @@ ResumeExecution:
                     /* Write back to the EAX register. */
                     pCtx->eax = (pCtx->eax & ~uAndVal) | (u32Val & uAndVal);
                 }
+                else
+                if (rc == VINF_IOM_HC_IOPORT_READ)
+                    HWACCMR0SavePendingIOPortRead(pVCpu, pCtx->rip, uPort, uAndVal, cbSize);
             }
         }
         /*

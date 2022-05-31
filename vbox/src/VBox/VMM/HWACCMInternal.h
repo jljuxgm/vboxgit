@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 21001 2009-06-26 23:18:11Z vboxsync $ */
+/* $Id: HWACCMInternal.h 21208 2009-07-03 14:38:58Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -167,6 +167,17 @@ typedef union
     } n;
     uint64_t            u;
 } VMX_CAPABILITY;
+
+typedef enum
+{
+    HWACCMPENDINGIO_INVALID = 0,
+    HWACCMPENDINGIO_PORT_READ,
+    HWACCMPENDINGIO_PORT_WRITE,
+    HWACCMPENDINGIO_STRING_READ,
+    HWACCMPENDINGIO_STRING_WRITE,
+    /** The usual 32-bit paranoia. */
+    HWACCMPENDINGIO_32BIT_HACK   = 0x7fffffff
+} HWACCMPENDINGIO;
 
 /**
  * Switcher function, HC to RC.
@@ -581,6 +592,31 @@ typedef struct HWACCMCPU
 
         uint64_t                cr0;
     } EmulateIoBlock;
+
+    struct
+    {
+        /* Pending IO operation type. */
+        HWACCMPENDINGIO         enmType;
+        uint32_t                uPadding;
+        union
+        {
+            struct
+            {
+                RTGCPTR         rip;
+                unsigned        uPort;
+                unsigned        uAndVal;
+                unsigned        cbSize;
+            } Read;
+            struct
+            {
+                RTGCPTR         rip;
+                unsigned        uPort;
+                unsigned        uValue;
+                unsigned        cbSize;
+            } Write;
+            uint64_t            aRaw[4];
+        } Port;
+    } PendingIO;
 
     /** Currenty shadow paging mode. */
     PGMMODE                 enmShadowMode;
