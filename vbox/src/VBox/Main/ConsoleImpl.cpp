@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 20690 2009-06-18 12:35:14Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 20719 2009-06-19 12:08:16Z vboxsync $ */
 
 /** @file
  *
@@ -3209,7 +3209,7 @@ HRESULT Console::onNetworkAdapterChange (INetworkAdapter *aNetworkAdapter)
              * the link state.
              */
             PPDMIBASE pBase;
-            const char *cszAdapterName = "pcnet";
+            const char *pszAdapterName = "pcnet";
 #ifdef VBOX_WITH_E1000
             /*
              * Perhaps it would be much wiser to wrap both 'pcnet' and 'e1000'
@@ -3221,9 +3221,9 @@ HRESULT Console::onNetworkAdapterChange (INetworkAdapter *aNetworkAdapter)
             if (adapterType == NetworkAdapterType_I82540EM ||
                 adapterType == NetworkAdapterType_I82543GC ||
                 adapterType == NetworkAdapterType_I82545EM)
-                cszAdapterName = "e1000";
+                pszAdapterName = "e1000";
 #endif
-            int vrc = PDMR3QueryDeviceLun (mpVM, cszAdapterName,
+            int vrc = PDMR3QueryDeviceLun (mpVM, pszAdapterName,
                                            (unsigned) ulInstance, 0, &pBase);
             ComAssertRC (vrc);
             if (VBOX_SUCCESS (vrc))
@@ -3248,7 +3248,7 @@ HRESULT Console::onNetworkAdapterChange (INetworkAdapter *aNetworkAdapter)
                   (eAttachmentType == NetworkAttachmentType_Null &&
                    meAttachmentType[ulInstance] == NetworkAttachmentType_Null)))
             {
-                rc = doNetworkAdapterChange(cszAdapterName,
+                rc = doNetworkAdapterChange(pszAdapterName,
                                             ulInstance, 0,
                                             eAttachmentType,
                                             &meAttachmentType[ulInstance],
