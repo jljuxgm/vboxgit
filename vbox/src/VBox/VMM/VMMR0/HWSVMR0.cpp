@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21972 2009-08-05 09:27:37Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21988 2009-08-05 12:16:49Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1627,7 +1627,8 @@ ResumeExecution:
                 &&  pVM->hwaccm.s.fHasIoApic
                 &&  !(errCode & X86_TRAP_PF_P)  /* not present */
                 &&  CPUMGetGuestCPL(pVCpu, CPUMCTX2CORE(pCtx)) == 0
-                &&  !CPUMIsGuestInLongModeEx(pCtx))
+                &&  !CPUMIsGuestInLongModeEx(pCtx)
+                &&  pVM->hwaccm.s.svm.cPatches < RT_ELEMENTS(pVM->hwaccm.s.svm.aPatches))
             {
                 RTGCPHYS GCPhysApicBase, GCPhys;
                 PDMApicGetBase(pVM, &GCPhysApicBase);   /* @todo cache this */
@@ -1637,8 +1638,13 @@ ResumeExecution:
                 if (    rc == VINF_SUCCESS
                     &&  GCPhys == GCPhysApicBase)
                 {
-                    rc = VINF_EM_HWACCM_PATCH_TPR_INSTR;
-                    break;
+                    /* Only attempt to patch the instruction once. */
+                    PHWACCMTPRPATCH pPatch = (PHWACCMTPRPATCH)RTAvloU32Get(&pVM->hwaccm.s.svm.PatchTree, (AVLOU32KEY)pCtx->eip);
+                    if (!pPatch)
+                    {
+                        rc = VINF_EM_HWACCM_PATCH_TPR_INSTR;
+                        break;
+                    }
                 }
             }
 #endif
@@ -1789,7 +1795,8 @@ ResumeExecution:
             &&  pVM->hwaccm.s.fHasIoApic
             &&  !(errCode & X86_TRAP_PF_P)  /* not present */
             &&  CPUMGetGuestCPL(pVCpu, CPUMCTX2CORE(pCtx)) == 0
-            &&  !CPUMIsGuestInLongModeEx(pCtx))
+            &&  !CPUMIsGuestInLongModeEx(pCtx)
+            &&  pVM->hwaccm.s.svm.cPatches < RT_ELEMENTS(pVM->hwaccm.s.svm.aPatches))
         {
             RTGCPHYS GCPhysApicBase;
             PDMApicGetBase(pVM, &GCPhysApicBase);   /* @todo cache this */
@@ -1797,8 +1804,13 @@ ResumeExecution:
 
             if (uFaultAddress == GCPhysApicBase + 0x80)
             {
-                rc = VINF_EM_HWACCM_PATCH_TPR_INSTR;
-                break;
+                /* Only attempt to patch the instruction once. */
+                PHWACCMTPRPATCH pPatch = (PHWACCMTPRPATCH)RTAvloU32Get(&pVM->hwaccm.s.svm.PatchTree, (AVLOU32KEY)pCtx->eip);
+                if (!pPatch)
+                {
+                    rc = VINF_EM_HWACCM_PATCH_TPR_INSTR;
+                    break;
+                }
             }
         }
 #endif
@@ -2343,14 +2355,16 @@ ResumeExecution:
         /* When an interrupt is pending, we'll let MSR_K8_LSTAR writes fault in our TPR patch code. */
         if (    pVM->hwaccm.s.svm.fTPRPatchingActive
             &&  pCtx->ecx == MSR_K8_LSTAR
-            &&  pVMCB->ctrl.u64ExitInfo1 == 1 /* wrmsr */
-            &&  (pCtx->eax & 0xff) != u8LastTPR)
+            &&  pVMCB->ctrl.u64ExitInfo1 == 1 /* wrmsr */)
         {
-            Log(("SVM: Faulting MSR_K8_LSTAR write with new TPR value %x\n", pCtx->eax & 0xff));
+            if ((pCtx->eax & 0xff) != u8LastTPR)
+            {
+                Log(("SVM: Faulting MSR_K8_LSTAR write with new TPR value %x\n", pCtx->eax & 0xff));
 
-            /* Our patch code uses LSTAR for TPR caching. */
-            rc = PDMApicSetTPR(pVCpu, pCtx->eax & 0xff);
-            AssertRC(rc);
+                /* Our patch code uses LSTAR for TPR caching. */
+                rc = PDMApicSetTPR(pVCpu, pCtx->eax & 0xff);
+                AssertRC(rc);
+            }
 
             /* Skip the instruction and continue. */
             pCtx->rip += 2;     /* wrmsr = [0F 30] */
