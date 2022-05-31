@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 19486 2009-05-07 12:57:32Z vboxsync $ */
+/* $Id: TMAll.cpp 19492 2009-05-07 15:52:44Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -1640,6 +1640,7 @@ void tmTimerQueuesSanityChecks(PVM pVM, const char *pszWhere)
                 case TMTIMERSTATE_PENDING_STOP:
                 case TMTIMERSTATE_PENDING_STOP_DESTROY:
                 case TMTIMERSTATE_PENDING_RESCHEDULE:
+                case TMTIMERSTATE_PENDING_RESCHEDULE_SET_EXPIRE:
                     break;
                 default:
                     AssertMsgFailed(("%s: Invalid state enmState=%d %s\n", pszWhere, enmState, tmTimerState(enmState)));
