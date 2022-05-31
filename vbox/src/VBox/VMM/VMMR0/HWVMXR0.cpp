@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 19812 2009-05-19 11:54:55Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 19813 2009-05-19 11:57:13Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2194,7 +2194,7 @@ ResumeExecution:
     /* Disable interrupts to make sure a poke will interrupt execution. 
      * This must be done *before* we check for TLB flushes; TLB shootdowns rely on this.
      */
-    RTCCUINTREG uFlags = ASMIntDisableFlags();
+    RTCCUINTREG uOldEFlags = ASMIntDisableFlags();
     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_EXEC);
 
     /* Deal with tagged TLB setup and invalidation. */
@@ -2235,7 +2235,7 @@ ResumeExecution:
     rc = pVCpu->hwaccm.s.vmx.pfnStartVM(pVCpu->hwaccm.s.fResumeVM, pCtx, &pVCpu->hwaccm.s.vmx.VMCSCache, pVM, pVCpu);
     TMNotifyEndOfExecution(pVCpu);
     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED);
-    ASMSetFlags(uFlags);
+    ASMSetFlags(uOldEFlags);
 
     AssertMsg(!pVCpu->hwaccm.s.vmx.VMCSCache.Write.cValidEntries, ("pVCpu->hwaccm.s.vmx.VMCSCache.Write.cValidEntries=%d\n", pVCpu->hwaccm.s.vmx.VMCSCache.Write.cValidEntries));
 
