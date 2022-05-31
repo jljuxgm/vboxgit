@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 19624 2009-05-12 13:49:50Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 19643 2009-05-12 15:27:39Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -971,8 +971,14 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                 RTPrintf("audio=\"none\"\n");
         }
         else
-            RTPrintf("Audio:           %s (Driver: %s, Controller: %s)\n",
-                    fEnabled ? "enabled" : "disabled", pszDrv, pszCtrl);
+        {
+            RTPrintf("Audio:           %s",
+                    fEnabled ? "enabled" : "disabled");
+            if (fEnabled)
+                RTPrintf(" (Driver: %s, Controller: %s)",
+                    pszDrv, pszCtrl);
+            RTPrintf("\n");
+        }
     }
 
     /* Shared clipboard */
