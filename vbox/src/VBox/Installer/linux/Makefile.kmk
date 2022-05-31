@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20332 2009-06-05 13:32:27Z vboxsync $
+# $Id: Makefile.kmk 20340 2009-06-05 14:43:08Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -123,6 +123,7 @@ VBOX_LNX_STRIP_BIN = \
 		VBoxOGLhostcrutil.so \
 		VBoxOGLhosterrorspu.so \
 		VBoxOGLrenderspu.so \
+		VBoxTestOGL \
 		VBoxSharedCrOpenGL.so,) \
 	$(if $(VBOX_WITH_PYTHON),VBoxPython.so,) \
 	VBoxTunctl
