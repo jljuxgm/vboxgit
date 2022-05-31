@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 21139 2009-07-01 18:23:59Z vboxsync $ */
+/* $Id: VBoxService.cpp 21165 2009-07-02 14:08:37Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -283,7 +283,8 @@ int VBoxServiceStartServices(unsigned iMain)
             rc = g_aServices[j].pDesc->pfnInit();
             if (RT_FAILURE(rc))
             {
-                VBoxServiceError("Service '%s' failed pre-init: %Rrc\n", g_aServices[j].pDesc->pszName);
+                VBoxServiceError("Service '%s' failed to initialize: %Rrc\n",
+                                 g_aServices[j].pDesc->pszName, rc);
                 return rc;
             }
         }
