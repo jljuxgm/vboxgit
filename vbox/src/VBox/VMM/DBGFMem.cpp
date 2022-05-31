@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 19575 2009-05-11 12:42:46Z vboxsync $ */
+/* $Id: DBGFMem.cpp 19576 2009-05-11 12:43:48Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -206,7 +206,7 @@ VMMR3DECL(int) DBGFR3MemRead(PVM pVM, VMCPUID idCpu, PCDBGFADDRESS pAddress, voi
     AssertReturn(idCpu < pVM->cCPUs, VERR_INVALID_PARAMETER);
     if ((pAddress->fFlags & DBGFADDRESS_FLAGS_TYPE_MASK) == DBGFADDRESS_FLAGS_RING0)
     {
-        AssertCompile(sizeof(RTHCUINTPTR) == sizeof(pAddress->FlatPtr));
+        AssertCompile(sizeof(RTHCUINTPTR) <= sizeof(pAddress->FlatPtr));
         return VMMR3ReadR0Stack(pVM, idCpu, (RTHCUINTPTR)pAddress->FlatPtr, pvBuf, cbRead);
     }
     else
