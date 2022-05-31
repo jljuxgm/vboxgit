@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 21837 2009-07-28 13:12:23Z vboxsync $ */
+/* $Id: DevACPI.cpp 21838 2009-07-28 13:13:56Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -230,7 +230,7 @@ typedef struct ACPIState
     /** Flag whether the R0 part of the device is enabled. */
     bool                fR0Enabled;
     /** Aligning IBase. */
-    bool                afAlignment[2];
+    bool                afAlignment[4];
 
     /** ACPI port base interface. */
     PDMIBASE            IBase;
