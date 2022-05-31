@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 20471 2009-06-10 17:11:49Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 20477 2009-06-11 16:24:59Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -133,7 +133,7 @@ int rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecut
     /* Allocate physically low page-aligned memory. */
     caddr_t virtAddr;
     uint64_t phys = (unsigned)0xffffffff;
-    virtAddr = vbi_lowmem_alloc(&phys, cb);
+    virtAddr = vbi_lowmem_alloc(phys, cb);
     if (virtAddr == NULL)
     {
         rtR0MemObjDelete(&pMemSolaris->Core);
