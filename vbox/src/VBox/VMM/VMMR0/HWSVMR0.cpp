@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 20322 2009-06-05 12:23:32Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 20324 2009-06-05 12:54:51Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1796,7 +1796,7 @@ ResumeExecution:
                             {
                                 /* mov new_reg, uMmioReg */
                                 szInstr[0] = 0x89;
-                                szInstr[1] = MAKE_MODRM(3, uMmioReg, Cpu.param2.base.reg_gen);
+                                szInstr[1] = MAKE_MODRM(3, uMmioReg, Cpu.param1.base.reg_gen);
                                 szInstr[2] = 4;
 
                                 /* Let's hope the guest won't mind us trashing the source register...
