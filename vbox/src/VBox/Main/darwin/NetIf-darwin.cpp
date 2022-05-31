@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 22815 2009-09-07 16:45:27Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -271,7 +271,7 @@ static int getDefaultIfaceIndex(unsigned short *pu16Index)
         }
     }
     free(pBuf);
-    return VERR_INTERNAL_ERROR;
+    return 0; /* Failed to find default interface, take the first one in the list. */
 }
 
 int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
