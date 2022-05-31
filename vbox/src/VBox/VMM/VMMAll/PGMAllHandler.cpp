@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 20765 2009-06-22 11:36:57Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 20767 2009-06-22 12:02:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1617,6 +1617,8 @@ VMMDECL(unsigned) PGMAssertHandlerAndFlagsInSync(PVM pVM)
     State.uVirtStateFound = 0;
     State.cErrors = 0;
     State.pVM = pVM;
+
+    Assert(PGMIsLockOwner(pVM));
 
     /*
      * Check the RAM flags against the handlers.
