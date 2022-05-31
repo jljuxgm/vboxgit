@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 22764 2009-09-04 09:02:46Z vboxsync $ */
+/* $Id: PGMPhys.cpp 22947 2009-09-11 09:39:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3112,7 +3112,7 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
         /* Report the failure. */
         LogRel(("PGM: Failed to procure handy pages; rc=%Rrc rcAlloc=%Rrc rcSeed=%Rrc cHandyPages=%#x\n"
                 "     cAllPages=%#x cPrivatePages=%#x cSharedPages=%#x cZeroPages=%#x\n",
-                rc, rcSeed, rcAlloc,
+                rc, rcAlloc, rcSeed,
                 pVM->pgm.s.cHandyPages,
                 pVM->pgm.s.cAllPages,
                 pVM->pgm.s.cPrivatePages,
