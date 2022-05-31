@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19478 2009-05-07 11:31:37Z vboxsync $ */
+/* $Id: EM.cpp 19481 2009-05-07 12:17:06Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3067,7 +3067,8 @@ static int emR3HwAccExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
 #ifdef VBOX_HIGH_RES_TIMERS_HACK
         TMTimerPoll(pVM);
 #endif
-        if (VM_FF_ISPENDING(pVM, VM_FF_ALL_MASK))
+        if (    VM_FF_ISPENDING(pVM, VM_FF_ALL_MASK)
+            ||  VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_ALL_MASK))
         {
             rc = emR3ForcedActions(pVM, pVCpu, rc);
             if (    rc != VINF_SUCCESS
