@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-nt.cpp 21283 2009-07-06 23:45:50Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-nt.cpp 21284 2009-07-07 00:30:00Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, NT.
  */
@@ -90,7 +90,7 @@ RTR0DECL(bool) RTR0MemKernelIsValidAddr(void *pv)
 }
 
 
-RTR0DECL(bool) RTR0MemAreKernelAndUserRangesDifferent(void)
+RTR0DECL(bool) RTR0MemAreKrnlAndUsrDifferent(void)
 {
     return true;
 }
