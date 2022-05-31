@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19423 2009-05-06 11:46:43Z vboxsync $ */
+/* $Id: EM.cpp 19424 2009-05-06 11:47:55Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3329,7 +3329,6 @@ static int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
         {
             rc2 = VMR3Reset(pVM);
             UPDATE_RC();
-            VM_FF_CLEAR(pVM, VM_FF_RESET);
         }
 
         /*
