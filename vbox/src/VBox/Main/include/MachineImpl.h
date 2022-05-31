@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 18520 2009-03-30 08:45:50Z vboxsync $ */
+/* $Id: MachineImpl.h 19017 2009-04-20 08:12:58Z vboxsync $ */
 
 /** @file
  *
@@ -798,10 +798,8 @@ protected:
     void fixupHardDisks(bool aCommit, bool aOnline = false);
 
     HRESULT lockConfig();
-public: /* To have it available in VirtualBox::UnregisterMachine. */
     HRESULT unlockConfig();
 
-protected:
     /** @note This method is not thread safe */
     BOOL isConfigLocked()
     {
@@ -1115,6 +1113,7 @@ inline Machine *Machine::machine()
         return mPeer;
     return this;
 }
+
 
 #endif // ____H_MACHINEIMPL
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
