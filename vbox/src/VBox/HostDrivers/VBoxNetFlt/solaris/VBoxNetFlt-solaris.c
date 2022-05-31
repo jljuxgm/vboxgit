@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 22918 2009-09-10 14:29:19Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 22989 2009-09-14 08:57:00Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -3057,7 +3057,10 @@ static int vboxNetFltSolarisRecv(PVBOXNETFLTINS pThis, vboxnetflt_stream_t *pStr
     {
         size_t cbMsg = msgdsize(pMsg);
         if (cbMsg < sizeof(RTNETETHERHDR))
+        {
+            LogRel((DEVICE_NAME ":vboxNetFltSolarisRecv %s: packet too small. Dropping packet.\n", pThis->szName));
             return VINF_SUCCESS;
+        }
 
         mblk_t *pFullMsg = msgpullup(pMsg, -1 /* all data blocks */);
         if (pFullMsg)
@@ -3578,7 +3581,7 @@ int vboxNetFltPortOsXmit(PVBOXNETFLTINS pThis, PINTNETSG pSG, uint32_t fDst)
             else
             {
                 LogRel((DEVICE_NAME ":vboxNetFltPortOsXmit vboxNetFltSolarisMBlkFromSG failed.\n"));
-                rc = VERR_NO_MEMORY;
+                return VERR_NO_MEMORY;
             }
         }
 #endif
@@ -3590,7 +3593,7 @@ int vboxNetFltPortOsXmit(PVBOXNETFLTINS pThis, PINTNETSG pSG, uint32_t fDst)
          * For unplumbed interfaces we would not be bound to IP or ARP.
          * We either bind to both or neither; so atomic reading one should be sufficient.
          */
-        vboxnetflt_stream_t *pIp4Stream  = ASMAtomicUoReadPtr((void * volatile *)&pThis->u.s.pvIp4Stream);
+        vboxnetflt_stream_t *pIp4Stream = ASMAtomicUoReadPtr((void * volatile *)&pThis->u.s.pvIp4Stream);
         if (!pIp4Stream)
             return rc;
 
