@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 23067 2009-09-16 12:54:52Z vboxsync $ */
+/* $Id: PGMInternal.h 23093 2009-09-17 13:46:30Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -82,8 +82,19 @@
  *
  * When PGMPOOL_WITH_GCPHYS_TRACKING is enabled using high values here
  * causes a lot of unnecessary extents and also is slower than taking more \#PFs.
+ *
+ * Note that \#PFs are much more expensive in the VT-x/AMD-V case due to
+ * world switch overhead, so let's sync more.
  */
-#define PGM_SYNC_NR_PAGES               8
+# ifdef IN_RING0
+/* Chose 32 based on the compile test in #4219; 64 shows worse stats. 
+ * 32 again shows better results than 16; slightly more overhead in the \#PF handler,
+ * but ~5% fewer faults.
+ */
+# define PGM_SYNC_NR_PAGES               32
+#else
+# define PGM_SYNC_NR_PAGES               8
+#endif
 
 /**
  * Number of PGMPhysRead/Write cache entries (must be <= sizeof(uint64_t))
