@@ -1,4 +1,4 @@
-/* $Revision: 23725 $ */
+/* $Revision: 23726 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -320,6 +320,17 @@ RT_C_DECLS_END
 /** Handle context value for multiple release event handles.  */
 #define SUPDRV_HANDLE_CTX_EVENT_MULTI   ((void *)(uintptr_t)(SUPDRVOBJTYPE_SEM_EVENT_MULTI))
 /** @} */
+
+
+/**
+ * Validates a session pointer.
+ *
+ * @returns true/false accordingly.
+ * @param   pSession    The session.
+ */
+#define SUP_IS_SESSION_VALID(pSession)  \
+    (   VALID_PTR(pSession) \
+     && pSession->u32Cookie == BIRD_INV)
 
 
 /*******************************************************************************
@@ -659,7 +670,7 @@ void VBOXCALL   supdrvGipUpdatePerCpu(PSUPGLOBALINFOPAGE pGip, uint64_t u64NanoT
 bool VBOXCALL   supdrvDetermineAsyncTsc(uint64_t *pu64DiffCores);
 
 /* SUPDrvAgnostic.c */
-int  VBOXCALL   supR0QueryVTCaps(uint32_t *pfCaps);
+SUPGIPMODE VBOXCALL supdrvGipDeterminTscMode(PSUPDRVDEVEXT pDevExt);
 
 RT_C_DECLS_END
 
