@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 19596 2009-05-12 08:50:33Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 19597 2009-05-12 08:58:48Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -283,7 +283,8 @@ VMMDECL(bool) PDMCritSectIsOwner(PCPDMCRITSECT pCritSect)
         return false;
 
     /* Make sure the critical section is not scheduled to be unlocked. */
-    if (!VMCPU_FF_ISSET(pVCpu, VMCPU_FF_PDM_CRITSECT))
+    if (    !VMCPU_FF_ISSET(pVCpu, VMCPU_FF_PDM_CRITSECT)
+        ||  RTCritSectGetRecursion(&pCritSect->s.Core) > 1)
         return true;
 
     for (unsigned i = 0; i < pVCpu->pdm.s.cQueuedCritSectLeaves; i++)
