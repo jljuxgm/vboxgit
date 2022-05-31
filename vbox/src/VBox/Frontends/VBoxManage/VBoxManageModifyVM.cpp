@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 23750 2009-10-14 09:26:48Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 23754 2009-10-14 11:29:45Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1078,7 +1078,8 @@ int handleModifyVM(HandlerArg *a)
                 /** @todo generalize this, allow arbitrary number of DVD drives
                  * and as a consequence multiple attachments and different
                  * storage controllers. */
-                dvdMedium->COMGETTER(Id)(uuid.asOutParam());
+                if (dvdMedium)
+                    dvdMedium->COMGETTER(Id)(uuid.asOutParam());
                 CHECK_ERROR (machine, MountMedium(Bstr("IDE Controller"), 1, 0, uuid));
                 break;
             }
