@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 20135 2009-05-29 07:44:12Z vboxsync $ */
+/* $Id: PGMPhys.cpp 20404 2009-06-08 13:31:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1840,14 +1840,18 @@ VMMR3DECL(int) PGMR3PhysMMIO2Map(PVM pVM, PPDMDEVINS pDevIns, uint32_t iRegion, 
             AssertLogRelRCReturn(rc, rc);
         }
         GMMR3FreePagesCleanup(pReq);
+        pgmUnlock(pVM);
     }
     else
     {
+        RTGCPHYS cb = pCur->RamRange.cb;
+
         /* link in the ram range */
         pgmR3PhysLinkRamRange(pVM, &pCur->RamRange, pRamPrev);
-        REMR3NotifyPhysRamRegister(pVM, GCPhys, pCur->RamRange.cb, REM_NOTIFY_PHYS_RAM_FLAGS_MMIO2);
+        pgmUnlock(pVM);
+
+        REMR3NotifyPhysRamRegister(pVM, GCPhys, cb, REM_NOTIFY_PHYS_RAM_FLAGS_MMIO2);
     }
-    pgmUnlock(pVM);
 
     return VINF_SUCCESS;
 }
@@ -1862,6 +1866,10 @@ VMMR3DECL(int) PGMR3PhysMMIO2Map(PVM pVM, PPDMDEVINS pDevIns, uint32_t iRegion, 
  */
 VMMR3DECL(int) PGMR3PhysMMIO2Unmap(PVM pVM, PPDMDEVINS pDevIns, uint32_t iRegion, RTGCPHYS GCPhys)
 {
+    bool        fInformREM = false;
+    RTGCPHYS    GCPhysRangeREM;
+    RTGCPHYS    cbRangeREM;
+
     /*
      * Validate input
      */
@@ -1910,7 +1918,10 @@ VMMR3DECL(int) PGMR3PhysMMIO2Unmap(PVM pVM, PPDMDEVINS pDevIns, uint32_t iRegion
     }
     else
     {
-        REMR3NotifyPhysRamDeregister(pVM, pCur->RamRange.GCPhys, pCur->RamRange.cb);
+        GCPhysRangeREM = pCur->RamRange.GCPhys;
+        cbRangeREM     = pCur->RamRange.cb;
+        fInformREM     = true;
+
         pgmR3PhysUnlinkRamRange(pVM, &pCur->RamRange);
     }
 
@@ -1920,6 +1931,9 @@ VMMR3DECL(int) PGMR3PhysMMIO2Unmap(PVM pVM, PPDMDEVINS pDevIns, uint32_t iRegion
     pCur->fMapped = false;
 
     pgmUnlock(pVM);
+
+    if (fInformREM)
+        REMR3NotifyPhysRamDeregister(pVM, GCPhysRangeREM, cbRangeREM);
 
     return VINF_SUCCESS;
 }
