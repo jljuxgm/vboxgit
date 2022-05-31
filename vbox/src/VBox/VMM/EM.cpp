@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 20671 2009-06-17 15:23:14Z vboxsync $ */
+/* $Id: EM.cpp 20838 2009-06-23 14:15:46Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3514,7 +3514,7 @@ static int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
             &&  (!rc || rc >= VINF_EM_RESCHEDULE_HWACC)
             &&  !TRPMHasTrap(pVCpu) /* an interrupt could already be scheduled for dispatching in the recompiler. */
             &&  PATMAreInterruptsEnabled(pVM)
-            &&  !HWACCMR3IsEventPending(pVM))
+            &&  !HWACCMR3IsEventPending(pVCpu))
         {
             Assert(pVCpu->em.s.enmState != EMSTATE_WAIT_SIPI);
             if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC))

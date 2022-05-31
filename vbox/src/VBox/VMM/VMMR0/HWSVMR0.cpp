@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 20769 2009-06-22 12:32:11Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 20838 2009-06-23 14:15:46Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -425,19 +425,21 @@ static int SVMR0CheckPendingInterrupt(PVM pVM, PVMCPU pVCpu, SVM_VMCB *pVMCB, CP
         return VINF_SUCCESS;
     }
 
-    if (pVM->hwaccm.s.fInjectNMI)
+    if (VMCPU_FF_TESTANDCLEAR(pVCpu, VMCPU_FF_INTERRUPT_NMI_BIT))
     {
         SVM_EVENT Event;
 
+        Log(("CPU%d: injecting #NMI\n", pVCpu->idCpu));
         Event.n.u8Vector     = X86_XCPT_NMI;
         Event.n.u1Valid      = 1;
         Event.n.u32ErrorCode = 0;
         Event.n.u3Type       = SVM_EVENT_NMI;
 
         SVMR0InjectEvent(pVCpu, pVMCB, pCtx, &Event);
-        pVM->hwaccm.s.fInjectNMI = false;
         return VINF_SUCCESS;
     }
+
+    /* @todo SMI interrupts. */
 
     /* When external interrupts are pending, we should exit the VM when IF is set. */
     if (    !TRPMHasTrap(pVCpu)

@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 20530 2009-06-13 20:53:44Z vboxsync $ */
+/* $Id: HWACCMInternal.h 20838 2009-06-23 14:15:46Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -196,9 +196,6 @@ typedef struct HWACCM
     /** Set if nested paging is allowed. */
     bool                        fAllowNestedPaging;
 
-    /** Set if we're supposed to inject an NMI. */
-    bool                        fInjectNMI;
-
     /** Set if we can support 64-bit guests or not. */
     bool                        fAllow64BitGuests;
 
@@ -207,7 +204,7 @@ typedef struct HWACCM
 
     /** Explicit alignment padding to make 32-bit gcc align u64RegisterMask
      *  naturally. */
-    bool                        padding[1];
+    bool                        padding[2];
 
     /** And mask for copying register contents. */
     uint64_t                    u64RegisterMask;
