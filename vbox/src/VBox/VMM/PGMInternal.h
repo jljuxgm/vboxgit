@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 22933 2009-09-10 23:30:17Z vboxsync $ */
+/* $Id: PGMInternal.h 22936 2009-09-10 23:45:20Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3562,7 +3562,7 @@ DECLINLINE(void *) pgmDynMapHCPageOff(PPGM pPGM, RTHCPHYS HCPhys)
 # else
     PGMDynMapHCPage(PGM2VM(pPGM), HCPhys & ~(RTHCPHYS)PAGE_OFFSET_MASK, &pv);
 # endif
-    pv = (void *)((uintptr_t)pv | (HCPhys & PAGE_OFFSET_MASK));
+    pv = (void *)((uintptr_t)pv | ((uintptr_t)HCPhys & PAGE_OFFSET_MASK));
     return pv;
 }
 
