@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20147 2009-05-29 11:21:57Z vboxsync $
+# $Id: Makefile.kmk 20174 2009-06-02 07:35:01Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox HGCM Service.
 #
@@ -190,6 +190,7 @@ VBoxOGLcrunpacker_SOURCES  = \
 	unpacker/unpack_texture.c \
 	unpacker/unpack_writeback.c \
 	unpacker/unpack_visibleregion.c \
+	unpacker/unpack_shaders.c \
 	$(VBOX_PATH_CROGL_GENFILES)/unpack.c
 VBoxOGLcrunpacker_CLEAN = \
 	$(VBOX_PATH_CROGL_GENFILES)/unpack.c \

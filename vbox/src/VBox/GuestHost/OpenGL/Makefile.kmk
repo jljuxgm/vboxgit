@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20150 2009-05-29 12:32:23Z vboxsync $
+# $Id: Makefile.kmk 20174 2009-06-02 07:35:01Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host OpenGL part
 #
@@ -156,6 +156,7 @@ VBoxOGLcrpacker_SOURCES = \
 	packer/pack_texture.c \
 	packer/pack_swap_texture.c \
 	packer/pack_visibleregion.c \
+	packer/pack_shaders.c \
 	$(VBOX_PATH_CROGL_GENFILES)/pack_arrays_swap.c \
 	$(VBOX_PATH_CROGL_GENFILES)/pack_bounds_swap.c \
 	$(VBOX_PATH_CROGL_GENFILES)/pack_bufferobject_swap.c \
