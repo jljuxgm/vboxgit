@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 21188 2009-07-03 09:57:07Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 21190 2009-07-03 10:14:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1112,8 +1112,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             SafeArray <BSTR> names;
             SafeArray <BSTR> values;
             hrc = hardDisk->GetProperties (NULL,
-                                            ComSafeArrayAsOutParam (names),
-                                            ComSafeArrayAsOutParam (values));    H();
+                                           ComSafeArrayAsOutParam (names),
+                                           ComSafeArrayAsOutParam (values));    H();
 
             if (names.size() != 0)
             {
@@ -1121,7 +1121,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 rc = CFGMR3InsertNode (pCfg, "VDConfig", &pVDC);                RC_CHECK();
                 for (size_t ii = 0; ii < names.size(); ++ ii)
                 {
-                    if (values [ii])
+                    if (values[ii] && *values[ii])
                     {
                         Utf8Str name = names [ii];
                         Utf8Str value = values [ii];
