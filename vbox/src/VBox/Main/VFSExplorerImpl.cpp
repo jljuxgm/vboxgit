@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 20206 2009-06-03 07:09:35Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 20963 2009-06-26 09:35:27Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -553,6 +553,21 @@ STDMETHODIMP VFSExplorer::Update(IProgress **aProgress)
         progress.queryInterfaceTo(aProgress);
 
     return rc;
+}
+
+STDMETHODIMP VFSExplorer::Cd(IN_BSTR aDir, IProgress **aProgress)
+{
+    CheckComArgNotNull(aDir);
+    CheckComArgOutPointerValid(aProgress);
+
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP VFSExplorer::CdUp(IProgress **aProgress)
+{
+    CheckComArgOutPointerValid(aProgress);
+
+    return E_NOTIMPL;
 }
 
 STDMETHODIMP VFSExplorer::EntryList(ComSafeArrayOut(BSTR, aNames), ComSafeArrayOut(VFSFileType_T, aTypes))
