@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 23083 2009-09-17 11:12:44Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 23091 2009-09-17 13:09:36Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -469,7 +469,7 @@ static int handleWaitGuestProperty(HandlerArg *a)
             uint64_t cMsElapsed = RTTimeMilliTS() - u64Started;
             if (cMsElapsed >= cMsTimeout)
                 break; /* timed out */
-            cMsWait = RT_MIN(1000, (uint32_t)cMsTimeout - cMsElapsed);
+            cMsWait = RT_MIN(1000, cMsTimeout - (uint32_t)cMsElapsed);
         }
         int vrc = com::EventQueue::getMainEventQueue()->processEventQueue(cMsWait);
         if (    RT_FAILURE(vrc)
