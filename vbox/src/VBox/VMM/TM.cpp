@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 19324 2009-05-04 12:51:27Z vboxsync $ */
+/* $Id: TM.cpp 19399 2009-05-05 21:11:43Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -1491,11 +1491,18 @@ static DECLCALLBACK(void) tmR3TimerCallback(PRTTIMER pTimer, void *pvUser, uint6
  * This is normally called from a forced action handler in EMT.
  *
  * @param   pVM             The VM to run the timers for.
+ *
+ * @thread  EMT (actually EMT0, but we fend off the others)
  */
 VMMR3DECL(void) TMR3TimerQueuesDo(PVM pVM)
 {
     STAM_PROFILE_START(&pVM->tm.s.StatDoQueues, a);
     Log2(("TMR3TimerQueuesDo:\n"));
+
+    /* SMP: quick hack to fend of the wildlife... */ /** @todo SMP */
+    if (    pVM->cCPUs > 1
+        &&  VMMGetCpuId(pVM) != 0)
+        return;
 
     /*
      * Process the queues.
@@ -2119,11 +2126,11 @@ static DECLCALLBACK(void) tmR3InfoClocks(PVM pVM, PCDBGFINFOHLP pHlp, const char
     const uint64_t u64VirtualSync = TMVirtualSyncGet(pVM);
     const uint64_t u64Real = TMRealGet(pVM);
 
-    for (unsigned i=0;i<pVM->cCPUs;i++)
+    for (unsigned i = 0; i < pVM->cCPUs; i++)
     {
-        PVMCPU pVCpu = &pVM->aCpus[i];
-
+        PVMCPU   pVCpu  = &pVM->aCpus[i];
         uint64_t u64TSC = TMCpuTickGet(pVCpu);
+
         /*
          * TSC
          */
