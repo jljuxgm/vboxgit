@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23763 2009-10-14 14:39:02Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23769 2009-10-14 15:41:33Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -5583,10 +5583,13 @@ HRESULT Machine::loadStorageDevices(StorageController *aStorageController,
         CheckComRCBreakRC(rc);
 
         /* associate the medium with this machine and snapshot */
-        if (mType == IsSnapshotMachine)
-            rc = medium->attachTo(mData->mUuid, *aSnapshotId);
-        else
-            rc = medium->attachTo(mData->mUuid);
+        if (!medium.isNull())
+        {
+            if (mType == IsSnapshotMachine)
+                rc = medium->attachTo(mData->mUuid, *aSnapshotId);
+            else
+                rc = medium->attachTo(mData->mUuid);
+        }
         AssertComRCBreakRC (rc);
 
         /* backup mMediaData to let registeredInit() properly rollback on failure
