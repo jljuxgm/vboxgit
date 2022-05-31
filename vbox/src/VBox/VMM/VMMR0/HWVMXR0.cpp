@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 19818 2009-05-19 12:17:57Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 19829 2009-05-19 14:56:03Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1795,7 +1795,9 @@ DECLINLINE(int) VMXR0SaveGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 static void vmxR0SetupTLBDummy(PVM pVM, PVMCPU pVCpu)
 {
     NOREF(pVM);
-    NOREF(pVCpu);
+    VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_TLB_FLUSH);
+    VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_TLB_SHOOTDOWN);
+    pVCpu->hwaccm.s.cTlbShootdownPages = 0;
     return;
 }
 
