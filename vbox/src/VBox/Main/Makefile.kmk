@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22866 2009-09-09 14:39:46Z vboxsync $
+# $Id: Makefile.kmk 23102 2009-09-17 15:26:32Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -351,6 +351,9 @@ VBoxSVC_SOURCES.freebsd = \
 	linux/vbox-libhal.cpp
 
 ifdef VBOX_WITH_USB
+ ifdef VBOX_USB_SYSFS_BY_DEFAULT
+  linux/USBProxyServiceLinux.cpp_DEFS += VBOX_USB_SYSFS_BY_DEFAULT
+ endif
  VBoxSVC_SOURCES  += \
  	USBDeviceFilterImpl.cpp \
  	USBProxyService.cpp \
