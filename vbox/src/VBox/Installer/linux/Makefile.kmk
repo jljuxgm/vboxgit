@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23623 2009-10-08 15:22:18Z vboxsync $
+# $Id: Makefile.kmk 23651 2009-10-09 14:58:49Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -234,6 +234,12 @@ ifdef VBOX_WITH_WEBSERVICES
  VBOX_LNX_STRIP_BIN += \
 	vboxwebsrv \
 	webtest
+endif
+
+# EFI firmware
+ifdef VBOX_WITH_EFIFW_FROM_BUILD_SERVER
+  VBOX_LNX_NO_STRIP += \
+	vboxefi.fv
 endif
 
 #
