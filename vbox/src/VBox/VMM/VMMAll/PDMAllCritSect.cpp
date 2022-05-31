@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 20008 2009-05-25 18:34:43Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 20010 2009-05-25 18:41:29Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -317,7 +317,7 @@ VMMDECL(void) PDMCritSectLeave(PPDMCRITSECT pCritSect)
         return;
     }
 
-#if defined(IN_RING3) /// @todo enable this later - || defined(IN_RING0)
+#if defined(IN_RING3) || defined(IN_RING0)
     /*
      * Leave for real.
      */
