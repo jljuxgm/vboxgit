@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 23517 2009-10-02 13:50:37Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 23641 2009-10-09 12:01:29Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3844,8 +3844,7 @@ ResumeExecution:
             rc = TRPMAssertTrap(pVCpu, VMX_EXIT_INTERRUPTION_INFO_VECTOR(pVCpu->hwaccm.s.Event.intInfo), TRPM_HARDWARE_INT);
             AssertRC(rc);
         }
-        else
-            /* Exceptions and software interrupts can just be restarted. */
+        /* else Exceptions and software interrupts can just be restarted. */
         rc = VERR_EM_INTERPRETER;
         break;
 
