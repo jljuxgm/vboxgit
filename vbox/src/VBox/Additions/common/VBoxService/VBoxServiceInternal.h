@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 19644 2009-05-12 15:29:22Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 20369 2009-06-08 00:26:50Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -115,7 +115,7 @@ typedef struct
 typedef DWORD (WINAPI* fnWTSGetActiveConsoleSessionId)();
 #endif
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 extern char *g_pszProgName;
 extern int g_cVerbosity;
@@ -154,7 +154,7 @@ extern DWORD VboxServiceVMInfoWinGetLUIDsFromProcesses(PLUID *ppLuid);
 #endif /* VBOX_WITH_GUEST_PROPS */
 #endif /* RT_OS_WINDOWS */
 
-__END_DECLS
+RT_END_DECLS
 
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 11820 2008-08-29 14:09:39Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 20369 2009-06-08 00:26:50Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -146,7 +146,7 @@ typedef struct VBOXGUESTSESSION
 } VBOXGUESTSESSION;
 
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 int  VBoxGuestInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase, void *pvMMIOBase, uint32_t cbMMIO, VBOXOSTYPE enmOSType);
 void VBoxGuestDeleteDevExt(PVBOXGUESTDEVEXT pDevExt);
@@ -161,7 +161,7 @@ int  VBoxGuestCommonIOCtlFast(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBO
 int  VBoxGuestCommonIOCtl(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession,
                           void *pvData, size_t cbData, size_t *pcbDataReturned);
 
-__END_DECLS
+RT_END_DECLS
 
 #endif
 
