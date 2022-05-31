@@ -1,11 +1,11 @@
-/* $Id: MachineImpl.cpp 18263 2009-03-25 16:26:37Z vboxsync $ */
+/* $Id: MachineImpl.cpp 18265 2009-03-25 17:09:08Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -103,7 +103,7 @@
 static const char gDefaultMachineConfig[] =
 {
     "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" RTFILE_LINEFEED
-    "<!-- Sun xVM VirtualBox Machine Configuration -->" RTFILE_LINEFEED
+    "<!-- Sun VirtualBox Machine Configuration -->" RTFILE_LINEFEED
     "<VirtualBox xmlns=\"" VBOX_XML_NAMESPACE "\" "
         "version=\"" VBOX_XML_VERSION_FULL "\">" RTFILE_LINEFEED
     "</VirtualBox>" RTFILE_LINEFEED

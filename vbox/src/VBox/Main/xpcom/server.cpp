@@ -1,4 +1,4 @@
-/* $Id: server.cpp 18208 2009-03-24 17:01:32Z vboxsync $ */
+/* $Id: server.cpp 18265 2009-03-25 17:09:08Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -1111,7 +1111,7 @@ int main (int argc, char **argv)
             int  iSize;
 
             iSize = snprintf (szBuf, sizeof(szBuf),
-                              "Sun xVM VirtualBox XPCOM Server Version "
+                              "Sun VirtualBox XPCOM Server Version "
                               VBOX_VERSION_STRING);
             for (int i=iSize; i>0; i--)
                 putchar('*');

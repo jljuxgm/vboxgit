@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 18208 2009-03-24 17:01:32Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 18265 2009-03-25 17:09:08Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -86,7 +86,7 @@
 static const char gDefaultGlobalConfig [] =
 {
     "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>" RTFILE_LINEFEED
-    "<!-- Sun xVM VirtualBox Global Configuration -->" RTFILE_LINEFEED
+    "<!-- Sun VirtualBox Global Configuration -->" RTFILE_LINEFEED
     "<VirtualBox xmlns=\"" VBOX_XML_NAMESPACE "\" "
         "version=\"" VBOX_XML_VERSION_FULL "\">" RTFILE_LINEFEED
     "  <Global>"RTFILE_LINEFEED
