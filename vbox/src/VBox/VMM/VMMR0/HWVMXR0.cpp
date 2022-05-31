@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 21574 2009-07-14 11:17:28Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 21585 2009-07-14 15:21:53Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2744,6 +2744,10 @@ ResumeExecution:
 
                     case OP_STI:
                         pCtx->eflags.Bits.u1IF = 1;
+                        EMSetInhibitInterruptsPC(pVCpu, pCtx->rip + pDis->opsize);
+                        Assert(VMCPU_FF_ISSET(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS));
+                        rc = VMXWriteVMCS(VMX_VMCS32_GUEST_INTERRUPTIBILITY_STATE, VMX_VMCS_GUEST_INTERRUPTIBILITY_STATE_BLOCK_STI);
+                        AssertRC(rc);
                         STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitSti);
                         break;
 
