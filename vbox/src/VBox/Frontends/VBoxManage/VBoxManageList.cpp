@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 18023 2009-03-17 13:48:59Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 18108 2009-03-20 11:04:44Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -38,6 +38,7 @@
 #include <iprt/string.h>
 #include <iprt/time.h>
 #include <iprt/getopt.h>
+#include <iprt/ctype.h>
 
 #include "VBoxManage.h"
 using namespace com;
@@ -161,7 +162,14 @@ int handleList(HandlerArg *a)
 
             default:
                 if (c > 0)
-                    return errorSyntax(USAGE_LIST, "missing case: %c\n", c);
+                {
+                    if (RT_C_IS_GRAPH(c))
+                        return errorSyntax(USAGE_LIST, "unhandled option: -%c", c);
+                    else
+                        return errorSyntax(USAGE_LIST, "unhandled option: %i", c);
+                }
+                else if (c == VERR_GETOPT_UNKNOWN_OPTION)
+                    return errorSyntax(USAGE_LIST, "unknown option: %s", ValueUnion.psz);
                 else if (ValueUnion.pDef)
                     return errorSyntax(USAGE_LIST, "%s: %Rrs", ValueUnion.pDef->pszLong, c);
                 else
