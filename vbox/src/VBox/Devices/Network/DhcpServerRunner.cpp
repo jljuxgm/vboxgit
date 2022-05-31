@@ -1,4 +1,4 @@
-/* $Id: DhcpServerRunner.cpp 17958 2009-03-16 17:03:12Z vboxsync $ */
+/* $Id: DhcpServerRunner.cpp 18021 2009-03-17 13:21:01Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -36,19 +36,19 @@ struct ARGDEF
 #endif
 
 static const ARGDEF g_aArgDefs[] = {
-        {DHCPCFG_NAME, "--name "},
-        {DHCPCFG_NETNAME, "--network "},
-        {DHCPCFG_TRUNKTYPE, "--trunk-type "},
-        {DHCPCFG_TRUNKNAME, "--trunk-name "},
-        {DHCPCFG_MACADDRESS, "--mac-address "},
-        {DHCPCFG_IPADDRESS, "--ip-address "},
+        {DHCPCFG_NAME, "--name"},
+        {DHCPCFG_NETNAME, "--network"},
+        {DHCPCFG_TRUNKTYPE, "--trunk-type"},
+        {DHCPCFG_TRUNKNAME, "--trunk-name"},
+        {DHCPCFG_MACADDRESS, "--mac-address"},
+        {DHCPCFG_IPADDRESS, "--ip-address"},
         {DHCPCFG_LEASEDB, "--lease-db"},
         {DHCPCFG_VERBOSE, "--verbose"},
         {DHCPCFG_BEGINCONFIG, "--begin-config"},
-        {DHCPCFG_GATEWAY, "--gateway "},
-        {DHCPCFG_LOWERIP, "--lower-ip "},
-        {DHCPCFG_UPPERIP, "--upper-ip "},
-        {DHCPCFG_NETMASK, "--netmask "},
+        {DHCPCFG_GATEWAY, "--gateway"},
+        {DHCPCFG_LOWERIP, "--lower-ip"},
+        {DHCPCFG_UPPERIP, "--upper-ip"},
+        {DHCPCFG_NETMASK, "--netmask"},
         {DHCPCFG_HELP, "--help"},
         {DHCPCFG_VERSION, "--version"}
 };
