@@ -1,4 +1,4 @@
-/* $Id: logbackdoor.cpp 10479 2008-07-10 16:25:23Z vboxsync $ */
+/* $Id: logbackdoor.cpp 18536 2009-03-30 12:26:37Z vboxsync $ */
 /** @file
  * Virtual Box Runtime - Guest Backdoor Logging.
  */
@@ -86,19 +86,11 @@ RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
 
 RTDECL(void) RTLogWriteUser(const char *pch, size_t cb)
 {
-    const uint8_t *pu8;
-    for (pu8 = (const uint8_t *)pch; cb-- > 0; pu8++)
+    const uint8_t *pau8 = (const uint8_t *)pch;
+    if (cb > 1)
+        ASMOutStrU8(RTLOG_DEBUG_PORT, pau8, cb);
+    else if (cb)
         ASMOutU8(RTLOG_DEBUG_PORT, *pu8);
-    /** @todo a rep outs could be more efficient, I don't know...
-     * @code
-     * __asm {
-     *      mov     ecx, [cb]
-     *      mov     esi, [pch]
-     *      mov     dx, RTLOG_DEFAULT_PORT
-     *      rep outsb
-     * }
-     * @endcode
-     */
 }
 
 # if defined(RT_OS_LINUX) && defined(IN_MODULE)
