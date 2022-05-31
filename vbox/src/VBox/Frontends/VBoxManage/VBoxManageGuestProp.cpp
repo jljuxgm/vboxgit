@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 22722 2009-09-02 15:05:57Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 22730 2009-09-03 09:43:15Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -301,7 +301,7 @@ static int handleSetGuestProperty(HandlerArg *a)
     {
         pszValue = a->argv[2];
         if (   !strcmp(a->argv[3], "--flags")
-            || !strcmp(a->argv[3], "-flags"))
+            && !strcmp(a->argv[3], "-flags"))
             usageOK = false;
         pszFlags = a->argv[4];
     }
