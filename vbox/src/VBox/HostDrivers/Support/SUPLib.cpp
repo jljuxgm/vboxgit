@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 20791 2009-06-22 16:22:26Z vboxsync $ */
+/* $Id: SUPLib.cpp 20860 2009-06-23 17:31:45Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -124,20 +124,20 @@ static PSUPGLOBALINFOPAGE       g_pSUPGlobalInfoPageR0;
 static RTHCPHYS                 g_HCPhysSUPGlobalInfoPage = NIL_RTHCPHYS;
 
 /** The negotiated cookie. */
-uint32_t            g_u32Cookie = 0;
+uint32_t                        g_u32Cookie = 0;
 /** The negotiated session cookie. */
-uint32_t            g_u32SessionCookie;
+uint32_t                        g_u32SessionCookie;
 /** Session handle. */
-PSUPDRVSESSION      g_pSession;
+PSUPDRVSESSION                  g_pSession;
 /** R0 SUP Functions used for resolving referenced to the SUPR0 module. */
-static PSUPQUERYFUNCS g_pFunctions;
+static PSUPQUERYFUNCS           g_pFunctions;
 
 /** VMMR0 Load Address. */
-static RTR0PTR      g_pvVMMR0 = NIL_RTR0PTR;
+static RTR0PTR                  g_pvVMMR0 = NIL_RTR0PTR;
 /** PAGE_ALLOC_EX sans kernel mapping support indicator. */
-static bool         g_fSupportsPageAllocNoKernel = true;
+static bool                     g_fSupportsPageAllocNoKernel = true;
 /** Fake mode indicator. (~0 at first, 0 or 1 after first test) */
-static uint32_t     g_u32FakeMode = ~0;
+static uint32_t                 g_u32FakeMode = ~0;
 
 
 /*******************************************************************************
