@@ -1,4 +1,4 @@
-/* $Id: DHCPServerRunner.cpp 21394 2009-07-08 13:06:27Z vboxsync $ */
+/* $Id: DHCPServerRunner.cpp 21404 2009-07-08 15:19:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -96,14 +96,11 @@ int DHCPServerRunner::start()
 
     for (unsigned i = 0; i < DHCPCFG_NOTOPT_MAXVAL; i++)
     {
-        if (!mOptions[i].isNull())
+        if (mOptions[i].length())
         {
             const ARGDEF * pArgDef = getArgDef((DHCPCFG)i);
-            args[index++] = pArgDef->Name;
-            if (!mOptions[i].isEmpty())
-            {
-                args[index++] = mOptions[i].raw();
-            }
+            args[index++] = pArgDef->Name;      // e.g. "--network"
+            args[index++] = mOptions[i].raw();  // value
         }
     }
 

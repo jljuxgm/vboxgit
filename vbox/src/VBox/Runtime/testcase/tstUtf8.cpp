@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 21394 2009-07-08 13:06:27Z vboxsync $ */
+/* $Id: tstUtf8.cpp 21404 2009-07-08 15:19:42Z vboxsync $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -986,10 +986,10 @@ void testMinistring(RTTEST hTest)
     CHECK( (copy1 == copy2) );
 
     copy1 = NULL;
-    CHECK( (copy1.isNull()) );
+    CHECK( (copy1.length() == 0) );
 
     copy1 = "";
-    CHECK( (copy1.isEmpty()) );
+    CHECK( (copy1.length() == 0) );
 
     CHECK( (ministring("abc") < ministring("def")) );
     CHECK( (ministring("abc") != ministring("def")) );

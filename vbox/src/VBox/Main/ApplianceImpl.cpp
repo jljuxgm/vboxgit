@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 21394 2009-07-08 13:06:27Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 21404 2009-07-08 15:19:42Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1474,7 +1474,7 @@ STDMETHODIMP Appliance::Interpret()
                                Utf8StrFmt("%RI64", (uint64_t)ullMemSizeVBox));
 
             /* Audio */
-            if (!vsysThis.strSoundCardType.isNull())
+            if (!vsysThis.strSoundCardType.isEmpty())
                 /* Currently we set the AC97 always.
                    @todo: figure out the hardware which could be possible */
                 pNewDesc->addEntry(VirtualSystemDescriptionType_SoundCard,
