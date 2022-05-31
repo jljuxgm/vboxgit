@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23747 2009-10-14 08:45:37Z vboxsync $
+# $Id: Makefile.kmk 23980 2009-10-22 13:24:01Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -250,6 +250,7 @@ endif
 if defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_GUI_USE_QGL)
  VirtualBox_LIBS.win     += $(PATH_SDK_WINPSDK_LIB)/Opengl32.lib
  VirtualBox_LIBS.solaris += GL
+ VirtualBox_LIBS.linux   += GL
 endif
 
 # Headers containing definitions of classes that use the Q_OBJECT macro.
