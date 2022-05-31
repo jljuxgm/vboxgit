@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 21758 2009-07-22 09:15:32Z vboxsync $ */
+/* $Id: ApplianceImpl.h 21790 2009-07-25 16:10:18Z vboxsync $ */
 
 /** @file
  *
@@ -159,6 +159,7 @@ public:
     BEGIN_COM_MAP(VirtualSystemDescription)
         COM_INTERFACE_ENTRY(ISupportErrorInfo)
         COM_INTERFACE_ENTRY(IVirtualSystemDescription)
+        COM_INTERFACE_ENTRY(IDispatch)
     END_COM_MAP()
 
     NS_DECL_ISUPPORTS
