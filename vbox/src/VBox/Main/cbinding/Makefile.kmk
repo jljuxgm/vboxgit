@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18895 2009-04-14 15:46:23Z vboxsync $
+# $Id: Makefile.kmk 18998 2009-04-17 16:27:28Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -33,6 +33,7 @@ XpComCSamples_INST = \
 	$(INST_SDK)bindings/xpcom/cbinding/samples/
 XpComCSamples_SOURCES = \
 	tstXPCOMCGlue.c \
+	tstXPCOMCCall.c \
 	makefile.tstXPCOMCGlue=>Makefile
 
 INSTALLS += XpComCGlue
