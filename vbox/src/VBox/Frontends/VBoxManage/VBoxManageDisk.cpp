@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 18709 2009-04-03 18:26:21Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 18759 2009-04-06 14:04:41Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -118,6 +118,7 @@ static int parseDiskType(const char *psz, HardDiskType_T *pDiskType)
     return rc;
 }
 
+/** @todo move this into getopt, as getting bool values is generic */
 static int parseBool(const char *psz, bool *pb)
 {
     int rc = VINF_SUCCESS;
