@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 18930 2009-04-16 11:54:23Z vboxsync $ */
+/* $Id: EM.cpp 18931 2009-04-16 11:54:46Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1099,8 +1099,8 @@ static int emR3RawStep(PVM pVM, PVMCPU pVCpu)
         else
             rc = VMMR3RawRunGC(pVM, pVCpu);
 #ifndef DEBUG_sandervl
-        Log(("emR3RawStep: cs:eip=%RTsel:%RGr efl=%RGr - GC rc %Rrc\n", fGuest ? CPUMGetGuestCS(pVM) : CPUMGetHyperCS(pVCpu),
-             fGuest ? CPUMGetGuestEIP(pVCpu) : CPUMGetHyperEIP(pVM), fGuest ? CPUMGetGuestEFlags(pVCpu) : CPUMGetHyperEFlags(pVM), rc));
+        Log(("emR3RawStep: cs:eip=%RTsel:%RGr efl=%RGr - GC rc %Rrc\n", fGuest ? CPUMGetGuestCS(pVCpu) : CPUMGetHyperCS(pVCpu),
+             fGuest ? CPUMGetGuestEIP(pVCpu) : CPUMGetHyperEIP(pVCpu), fGuest ? CPUMGetGuestEFlags(pVCpu) : CPUMGetHyperEFlags(pVCpu), rc));
 #endif
     } while (   rc == VINF_SUCCESS
              || rc == VINF_EM_RAW_INTERRUPT);
