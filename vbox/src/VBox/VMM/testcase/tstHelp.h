@@ -1,4 +1,4 @@
-/* $Id: tstHelp.h 22885 2009-09-09 21:58:49Z vboxsync $ */
+/* $Id: tstHelp.h 22945 2009-09-11 09:04:24Z vboxsync $ */
 /** @file
  * VMM testcase - Helper stuff.
  */
@@ -76,8 +76,8 @@ RT_C_DECLS_END
                    (unsigned)RT_OFFSETOF(strct, member), \
                    (unsigned)RT_OFFSETOF(strct, member), \
                    (unsigned)(align), \
-                   (unsigned)((align) - RT_OFFSETOF(strct, member) & ((align) - 1)), \
-                   (unsigned)((align) - RT_OFFSETOF(strct, member) & ((align) - 1)) ); \
+                   (unsigned)(((align) - RT_OFFSETOF(strct, member)) & ((align) - 1)), \
+                   (unsigned)(((align) - RT_OFFSETOF(strct, member)) & ((align) - 1)) ); \
             rc++; \
         } \
     } while (0)
