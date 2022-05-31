@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 23672 2009-10-10 21:26:05Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -48,6 +48,7 @@ endif # VBOX_WITH_TESTCASES
 
 ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
  PROGRAMS  += tstPDMAsyncCompletion
+ PROGRAMS  += tstPDMAsyncCompletionStress
 endif
 
 # Where we put our temporary files (just for simplicity)
@@ -221,6 +222,10 @@ ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
 tstPDMAsyncCompletion_TEMPLATE         = VBOXR3EXE
 tstPDMAsyncCompletion_SOURCES          = tstPDMAsyncCompletion.cpp
 tstPDMAsyncCompletion_LIBS             = $(LIB_VMM) $(LIB_REM) $(LIB_RUNTIME)
+
+tstPDMAsyncCompletionStress_TEMPLATE         = VBOXR3EXE
+tstPDMAsyncCompletionStress_SOURCES          = tstPDMAsyncCompletionStress.cpp
+tstPDMAsyncCompletionStress_LIBS             = $(LIB_VMM) $(LIB_REM) $(LIB_RUNTIME)
 endif
 
 include	$(KBUILD_PATH)/subfooter.kmk
