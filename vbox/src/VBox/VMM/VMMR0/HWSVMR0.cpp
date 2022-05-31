@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21252 2009-07-06 14:11:25Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21255 2009-07-06 14:56:22Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1988,7 +1988,8 @@ ResumeExecution:
         Log2(("SVM: %RGv mov dr%d, x\n", (RTGCPTR)pCtx->rip, exitCode - SVM_EXIT_WRITE_DR0));
         STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitDRxWrite);
 
-        if (!DBGFIsStepping(pVCpu))
+        if (    !DBGFIsStepping(pVCpu)
+            &&  !CPUMIsHyperDebugStateActive(pVCpu))
         {
             STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatDRxContextSwitch);
 

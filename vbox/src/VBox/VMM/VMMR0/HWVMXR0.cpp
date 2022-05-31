@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 21252 2009-07-06 14:11:25Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 21255 2009-07-06 14:56:22Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3290,7 +3290,8 @@ ResumeExecution:
 
     case VMX_EXIT_DRX_MOVE:             /* 29 Debug-register accesses. */
     {
-        if (!DBGFIsStepping(pVCpu))
+        if (    !DBGFIsStepping(pVCpu)
+            &&  !CPUMIsHyperDebugStateActive(pVCpu))
         {
             /* Disable drx move intercepts. */
             pVCpu->hwaccm.s.vmx.proc_ctls &= ~VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_MOV_DR_EXIT;
