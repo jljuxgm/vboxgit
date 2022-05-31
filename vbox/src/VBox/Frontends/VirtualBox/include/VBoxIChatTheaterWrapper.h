@@ -1,4 +1,4 @@
-/* $Id: VBoxIChatTheaterWrapper.h 17349 2009-03-04 15:40:25Z vboxsync $ */
+/* $Id: VBoxIChatTheaterWrapper.h 20368 2009-06-08 00:26:11Z vboxsync $ */
 /** @file
  * Qt GUI - iChat Theater cocoa wrapper.
  */
@@ -26,12 +26,12 @@
 
 # include <ApplicationServices/ApplicationServices.h>
 
-__BEGIN_DECLS
+RT_BEGIN_DECLS
 
 void initSharedAVManager();
 void setImageRef (CGImageRef aImage);
 
-__END_DECLS
+RT_END_DECLS
 
 #endif
 
