@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 19697 2009-05-14 14:00:44Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 19698 2009-05-14 14:36:50Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -782,7 +782,7 @@ static int VMXR0CheckPendingInterrupt(PVM pVM, PVMCPU pVCpu, CPUMCTX *pCtx)
     }
 #endif
 
-    if (    pCtx->eflags.u32 & X86_EFL_IF
+    if (    (pCtx->eflags.u32 & X86_EFL_IF)
         && (!VMCPU_FF_ISSET(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS))
         && TRPMHasTrap(pVCpu)
        )
