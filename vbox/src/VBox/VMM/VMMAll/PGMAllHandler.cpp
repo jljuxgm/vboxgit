@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 19999 2009-05-25 13:39:18Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 20063 2009-05-27 10:06:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1120,7 +1120,7 @@ VMMDECL(int)  PGMHandlerPhysicalPageAliasHC(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS G
              * Do the actual remapping here.
              * This page now serves as an alias for the backing memory specified.
              */
-            LogFlow(("PGMHandlerPhysicalPageAlias: %RGp (%R[pgmpage]) alias for %HGp\n",
+            LogFlow(("PGMHandlerPhysicalPageAlias: %RGp (%R[pgmpage]) alias for %RHp\n",
                      GCPhysPage, pPage, HCPhysPageRemap));
             PGM_PAGE_SET_HCPHYS(pPage, HCPhysPageRemap);
             PGM_PAGE_SET_TYPE(pPage, PGMPAGETYPE_MMIO2_ALIAS_MMIO);
