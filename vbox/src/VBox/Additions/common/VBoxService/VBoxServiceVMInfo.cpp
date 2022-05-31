@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 21941 2009-08-03 14:38:55Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 21980 2009-08-05 11:19:55Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -177,8 +177,8 @@ DECLCALLBACK(int) VBoxServiceVMInfoWorker(bool volatile *pfShutdown)
     /* VboxServiceGetAddsVersion !RT_OS_WINDOWS */
     VboxServiceWriteProp(g_VMInfoGuestPropSvcClientID, "GuestAdd/Version", VBOX_VERSION_STRING);
 
-    char szRevision[32] = {0};
-    RTStrPrintf(szRevision, sizeof(szRevision), "%lu", VBOX_SVN_REV);
+    char szRevision[32];
+    RTStrPrintf(szRevision, sizeof(szRevision), "%u", VBOX_SVN_REV);
     VboxServiceWriteProp(g_VMInfoGuestPropSvcClientID, "GuestAdd/Revision", szRevision);
 #endif
 
