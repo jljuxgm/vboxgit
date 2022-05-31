@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 21519 2009-07-13 08:17:29Z vboxsync $ */
+/* $Id: REMAll.cpp 22707 2009-09-02 11:02:48Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -213,7 +213,7 @@ VMMDECL(void) REMNotifyHandlerPhysicalFlushIfAlmostFull(PVM pVM, PVMCPU pVCpu)
     Assert(pVM->cCPUs == 1);
 
     /*
-     * Less than 20 items means we should flush.
+     * Less than 48 items means we should flush.
      */
     uint32_t cFree = 0;
     for (uint32_t idx = pVM->rem.s.idxFreeList;
@@ -221,7 +221,7 @@ VMMDECL(void) REMNotifyHandlerPhysicalFlushIfAlmostFull(PVM pVM, PVMCPU pVCpu)
          idx = pVM->rem.s.aHandlerNotifications[idx].idxNext)
     {
         Assert(idx < RT_ELEMENTS(pVM->rem.s.aHandlerNotifications));
-        if (++cFree > 20)
+        if (++cFree >= 48)
             return;
     }
 
