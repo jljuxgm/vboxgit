@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 18388 2009-03-27 13:11:42Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 18566 2009-03-31 12:28:49Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -84,6 +84,8 @@ static int parseDiskVariant(const char *psz, HardDiskVariant_T *pDiskVariant)
             else if (   !RTStrNICmp(psz, "stream", len)
                      || !RTStrNICmp(psz, "streamoptimized", len))
                 DiskVariant |= HardDiskVariant_VmdkStreamOptimized;
+            else if (!RTStrNICmp(psz, "esx", len))
+                DiskVariant |= HardDiskVariant_VmdkESX;
             else
                 rc = VERR_PARSE_ERROR;
         }
