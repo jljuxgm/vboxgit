@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 18396 2009-03-27 14:06:29Z vboxsync $ */
+/* $Id: VBoxManage.h 18703 2009-04-03 16:19:40Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -55,8 +55,8 @@
 #define USAGE_CONTROLVM             RT_BIT_64(7)
 #define USAGE_DISCARDSTATE          RT_BIT_64(8)
 #define USAGE_SNAPSHOT              RT_BIT_64(9)
-#define USAGE_REGISTERIMAGE         RT_BIT_64(10)
-#define USAGE_UNREGISTERIMAGE       RT_BIT_64(11)
+#define USAGE_OPENMEDIUM            RT_BIT_64(10)
+#define USAGE_CLOSEMEDIUM           RT_BIT_64(11)
 #define USAGE_SHOWHDINFO            RT_BIT_64(12)
 #define USAGE_CREATEHD              RT_BIT_64(13)
 #define USAGE_MODIFYHD              RT_BIT_64(14)

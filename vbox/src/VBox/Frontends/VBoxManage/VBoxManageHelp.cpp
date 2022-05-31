@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 18591 2009-04-01 10:11:51Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 18703 2009-04-03 16:19:40Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -299,14 +299,14 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "\n");
     }
 
-    if (u64Cmd & USAGE_REGISTERIMAGE)
+    if (u64Cmd & USAGE_OPENMEDIUM)
     {
         RTPrintf("VBoxManage openmedium       disk|dvd|floppy <filename>\n"
-                 "                            [-type normal|immutable|writethrough] (disk only)\n"
+                 "                            [--type normal|immutable|writethrough] (disk only)\n"
                  "\n");
     }
 
-    if (u64Cmd & USAGE_UNREGISTERIMAGE)
+    if (u64Cmd & USAGE_CLOSEMEDIUM)
     {
         RTPrintf("VBoxManage closemedium      disk|dvd|floppy <uuid>|<filename>\n"
                  "\n");
@@ -333,8 +333,11 @@ void printUsage(USAGECATEGORY u64Cmd)
     if (u64Cmd & USAGE_MODIFYHD)
     {
         RTPrintf("VBoxManage modifyhd         <uuid>|<filename>\n"
-                 "                            settype normal|writethrough|immutable |\n"
-                 "                            autoreset on|off\n"
+                 "                            [--type normal|writethrough|immutable]\n"
+                 "                            [--autoreset on|off]\n"
+#if 0
+                 "                            [--compact]\n"
+#endif
                  "\n");
     }
 
@@ -361,15 +364,16 @@ void printUsage(USAGECATEGORY u64Cmd)
 
     if (u64Cmd & USAGE_ADDISCSIDISK)
     {
-        RTPrintf("VBoxManage addiscsidisk     -server <name>|<ip>\n"
-                 "                            -target <target>\n"
-                 "                            [-port <port>]\n"
-                 "                            [-lun <lun>]\n"
-                 "                            [-encodedlun <lun>]\n"
-                 "                            [-username <username>]\n"
-                 "                            [-password <password>]\n"
-                 "                            [-comment <comment>]\n"
-                 "                            [-intnet]\n"
+        RTPrintf("VBoxManage addiscsidisk     --server <name>|<ip>\n"
+                 "                            --target <target>\n"
+                 "                            [--port <port>]\n"
+                 "                            [--lun <lun>]\n"
+                 "                            [--encodedlun <lun>]\n"
+                 "                            [--username <username>]\n"
+                 "                            [--password <password>]\n"
+                 "                            [--type normal|writethrough|immutable]\n"
+                 "                            [--comment <comment>]\n"
+                 "                            [--intnet]\n"
                  "\n");
     }
 
