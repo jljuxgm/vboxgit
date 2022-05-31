@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 22484 2009-08-26 17:41:05Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 22525 2009-08-27 13:48:28Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -918,6 +918,7 @@ static REMFNDESC g_SSMIntLoadExecCallback =
 {
     "SSMIntLoadExecCallback", NULL, &g_aArgsSSMIntLoadExecCallback[0], RT_ELEMENTS(g_aArgsSSMIntLoadExecCallback), REMFNDESC_FLAGS_RET_INT, sizeof(int),  NULL
 };
+/* Note: don't forget about the handwritten assembly wrapper when changing this! */
 static const REMPARMDESC g_aArgsSSMR3RegisterInternal[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
