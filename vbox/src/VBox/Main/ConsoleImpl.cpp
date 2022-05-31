@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 20213 2009-06-03 08:11:42Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 20220 2009-06-03 08:40:29Z vboxsync $ */
 
 /** @file
  *
@@ -6917,7 +6917,7 @@ DECLCALLBACK (int) Console::saveStateThread (RTTHREAD Thread, void *pvUser)
         rc = task->mServerProgress->WaitForCompletion (-1);
         if (SUCCEEDED (rc))
         {
-            ULONG iRc = S_OK;
+            LONG iRc = S_OK;
             rc = task->mServerProgress->COMGETTER(ResultCode) (&iRc);
             if (SUCCEEDED (rc))
                 rc = iRc;

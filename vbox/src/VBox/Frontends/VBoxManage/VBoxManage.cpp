@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 20212 2009-06-03 08:09:42Z vboxsync $ */
+/* $Id: VBoxManage.cpp 20220 2009-06-03 08:40:29Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -161,7 +161,7 @@ void showProgress(ComPtr<IProgress> progress)
     }
 
     /* complete the line. */
-    ULONG iRc;
+    LONG iRc;
     if (SUCCEEDED(progress->COMGETTER(ResultCode)(&iRc)))
     {
         if (SUCCEEDED(iRc))
@@ -530,7 +530,7 @@ static int handleStartVM(HandlerArg *a)
         CHECK_ERROR_RET(progress, COMGETTER(Completed)(&completed), rc);
         ASSERT(completed);
 
-        ULONG iRc;
+        LONG iRc;
         CHECK_ERROR_RET(progress, COMGETTER(ResultCode)(&iRc), rc);
         if (FAILED(iRc))
         {
@@ -610,7 +610,7 @@ static int handleControlVM(HandlerArg *a)
 
             showProgress(progress);
 
-            ULONG iRc;
+            LONG iRc;
             progress->COMGETTER(ResultCode)(&iRc);
             if (FAILED(iRc))
             {

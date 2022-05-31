@@ -1,4 +1,4 @@
-/* $Revision: 20218 $ */
+/* $Revision: 20220 $ */
 /** @file tstXPCOMCGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -606,7 +606,7 @@ static void startVM(IVirtualBox *virtualBox, ISession *session, PRUnichar *id, n
     else
     {
         PRBool completed;
-        PRUint32 resultCode;
+        PRInt32 resultCode;
 
         printf("Waiting for the remote session to open...\n");
         progress->vtbl->WaitForCompletion(progress, -1);
