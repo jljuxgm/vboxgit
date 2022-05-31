@@ -1,4 +1,4 @@
-/* $Id: DBGFSym.cpp 19466 2009-05-07 00:22:56Z vboxsync $ */
+/* $Id: DBGFSym.cpp 19560 2009-05-10 04:43:13Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Symbol Management.
  */
@@ -657,7 +657,7 @@ VMMR3DECL(int) DBGFR3ModuleLoad(PVM pVM, const char *pszFilename, RTGCUINTPTR Ad
     /*
      * Open the load file.
      */
-    FILE *pFile;
+    FILE *pFile = NULL;
     char szFoundFile[RTPATH_MAX];
     int rc = dbgfR3ModuleLocateAndOpen(pVM, pszFilename, szFoundFile, sizeof(szFoundFile), &pFile);
     if (pFile)
