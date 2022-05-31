@@ -1,4 +1,4 @@
-/* $Id: s3.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: s3.cpp 21743 2009-07-21 12:27:03Z vboxsync $ */
 /** @file
  * IPRT - S3 communication API.
  */
@@ -908,6 +908,10 @@ RTR3DECL(int) RTS3GetKey(RTS3 hS3, const char* pszBucketName, const char* pszKey
 
     /* Close the open file */
     RTFileClose(hFile);
+
+    /* If there was an error delete the newly created file */
+    if (RT_FAILURE(rc))
+        RTFileDelete(pszFileName);
 
     return rc;
 }
