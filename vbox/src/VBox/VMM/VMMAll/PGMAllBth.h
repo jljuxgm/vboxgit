@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 21116 2009-07-01 12:40:43Z vboxsync $ */
+/* $Id: PGMAllBth.h 21123 2009-07-01 13:48:28Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -796,9 +796,9 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
 
                     /* Check to see if we need to emulate the instruction as X86_CR0_WP has been cleared. */
                     if (    CPUMGetGuestCPL(pVCpu, pRegFrame) == 0
-                        &&  ((CPUMGetGuestCR0(pVCpu) & (X86_CR0_WP | X86_CR0_PG)) == X86_CR0_PG)
-                        &&  (uErr & (X86_TRAP_PF_RW | X86_TRAP_PF_P)) == (X86_TRAP_PF_RW | X86_TRAP_PF_P))
+                        &&  ((CPUMGetGuestCR0(pVCpu) & (X86_CR0_WP | X86_CR0_PG)) == X86_CR0_PG))
                     {
+                        Assert((uErr & (X86_TRAP_PF_RW | X86_TRAP_PF_P)) == (X86_TRAP_PF_RW | X86_TRAP_PF_P));
                         uint64_t fPageGst;
                         rc = PGMGstGetPage(pVCpu, pvFault, &fPageGst, NULL);
                         if (    RT_SUCCESS(rc)
