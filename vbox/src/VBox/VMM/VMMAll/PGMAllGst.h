@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: PGMAllGst.h 18987 2009-04-17 12:14:26Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -506,7 +506,7 @@ PGM_GST_DECL(bool, HandlerVirtualUpdate)(PVM pVM, uint32_t cr4)
     if (fTodo & PGM_SYNC_UPDATE_PAGE_BIT_VIRTUAL)
     {
         STAM_PROFILE_START(&pVM->pgm.s.CTX_MID_Z(Stat,SyncCR3HandlerVirtualReset), b);
-        Log(("pgmR3VirtualHandlersUpdate: resets bits\n"));
+        Log(("HandlerVirtualUpdate: resets bits\n"));
         RTAvlroGCPtrDoWithAll(&pVM->pgm.s.CTX_SUFF(pTrees)->VirtHandlers, true, pgmHandlerVirtualResetOne, pVM);
 
         for (unsigned i=0;i<pVM->cCPUs;i++)
