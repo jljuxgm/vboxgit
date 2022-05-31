@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-linux.c 19941 2009-05-23 14:18:51Z vboxsync $ */
+/* $Id: thread-r0drv-linux.c 20124 2009-05-28 15:40:06Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Linux.
  */
@@ -98,6 +98,13 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
 #else
     return need_resched != 0;
 #endif
+}
+
+
+RTDECL(bool) RTThreadPreemptIsPendingTrusty(void)
+{
+    /* yes, RTThreadPreemptIsPending is reliable. */
+    return true;
 }
 
 

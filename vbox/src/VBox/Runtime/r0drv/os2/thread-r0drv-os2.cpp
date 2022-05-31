@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-os2.cpp 19920 2009-05-22 17:14:11Z vboxsync $ */
+/* $Id: thread-r0drv-os2.cpp 20124 2009-05-28 15:40:06Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 1), Ring-0 Driver, OS/2.
  */
@@ -78,6 +78,13 @@ RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
 {
     Assert(hThread == NIL_RTTHREAD);
     return false;
+}
+
+
+RTDECL(bool) RTThreadPreemptIsPendingTrusty(void)
+{
+    /* yes, RTThreadPreemptIsPending is reliable. */
+    return true;
 }
 
 

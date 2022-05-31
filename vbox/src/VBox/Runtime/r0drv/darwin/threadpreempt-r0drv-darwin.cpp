@@ -1,4 +1,4 @@
-/* $Id: threadpreempt-r0drv-darwin.cpp 19919 2009-05-22 17:02:55Z vboxsync $ */
+/* $Id: threadpreempt-r0drv-darwin.cpp 20124 2009-05-28 15:40:06Z vboxsync $ */
 /** @file
  * IPRT - Thread Preemption, Ring-0 Driver, Darwin.
  */
@@ -119,6 +119,13 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
 #endif
     AssertMsg(!(ast_pending & UINT32_C(0xfffff000)),("%#x\n", ast_pending));
     return (ast_pending & (AST_PREEMPT | AST_URGENT)) != 0;
+}
+
+
+RTDECL(bool) RTThreadPreemptIsPendingTrusty(void)
+{
+    /* yes, we think thaat RTThreadPreemptIsPending is reliable... */
+    return true;
 }
 
 
