@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: REMAll.cpp 19395 2009-05-05 20:28:42Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -57,7 +57,9 @@ VMMDECL(int) REMNotifyInvalidatePage(PVM pVM, RTGCPTR GCPtrPage)
     else
     {
         /* Tell the recompiler to flush its TLB. */
+#ifndef DEBUG_bird /* temporary */
         Assert(pVM->cCPUs == 1); /* @todo SMP */
+#endif
         CPUMSetChangedFlags(VMMGetCpu(pVM), CPUM_CHANGED_GLOBAL_TLB_FLUSH);
         pVM->rem.s.cInvalidatedPages = 0;
     }
