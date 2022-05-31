@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 23200 2009-09-21 16:13:38Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 23201 2009-09-21 16:24:25Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -120,9 +120,7 @@ static DECLCALLBACK(void) hwaccmFlushHandler(RTCPUID idCpu, void *pvUser1, void 
 void hwaccmMpPokeCpu(RTCPUID idHostCpu)
 {
     int rc = RTMpPokeCpu(idHostCpu);
-# ifdef RT_OS_WINDOWS
-    AssertRC(rc);
-# else
+# ifndef RT_OS_WINDOWS
     /* Not implemented on some platforms (Darwin, Linux kernel < 2.6.19); fall back to a less efficient implementation (broadcast). */
     if (rc == VERR_NOT_SUPPORTED)
         RTMpOnSpecific(idHostCpu, hwaccmFlushHandler, 0, 0);
