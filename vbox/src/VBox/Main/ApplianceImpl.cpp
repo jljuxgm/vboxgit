@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 19310 2009-05-03 19:51:06Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3569,19 +3569,19 @@ void Appliance::waitForAsyncProgress(ComObjPtr<Progress> &pProgressThis,
         if (FAILED(rc)) throw rc;
     }
     // report result of asynchronous operation
-    HRESULT vrc;
-    rc = pProgressAsync->COMGETTER(ResultCode)(&vrc);
+    LONG iRc;
+    rc = pProgressAsync->COMGETTER(ResultCode)(&iRc);
     if (FAILED(rc)) throw rc;
 
 
     // if the thread of the progress object has an error, then
     // retrieve the error info from there, or it'll be lost
-    if (FAILED(vrc))
+    if (FAILED(iRc))
     {
         ProgressErrorInfo info(pProgressAsync);
         Utf8Str str(info.getText());
         const char *pcsz = str.c_str();
-        HRESULT rc2 = setError(vrc, pcsz);
+        HRESULT rc2 = setError(iRc, pcsz);
         throw rc2;
     }
 }
