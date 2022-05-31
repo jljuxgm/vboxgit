@@ -1,4 +1,4 @@
-/* $Id: DHCPServerRunner.h 18023 2009-03-17 13:48:59Z vboxsync $ */
+/* $Id: DHCPServerRunner.h 18039 2009-03-17 16:43:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -307,7 +307,7 @@ public:
             return VERR_INVALID_STATE;
 
 #ifdef RT_OS_WINDOWS
-        if(val)
+        if(val && strlen(val))
         {
             mOptions[opt] = "\"";
             mOptions[opt].append(val);
