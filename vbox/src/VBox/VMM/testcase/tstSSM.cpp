@@ -1,4 +1,4 @@
-/* $Id: tstSSM.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: tstSSM.cpp 23593 2009-10-07 12:59:56Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
@@ -770,7 +770,8 @@ int main(int argc, char **argv)
      * Attempt a load.
      */
     u64Start = RTTimeNanoTS();
-    rc = SSMR3Load(pVM, pszFilename, SSMAFTER_RESUME, NULL, NULL);
+    rc = SSMR3Load(pVM, pszFilename, NULL /*pStreamOps*/, NULL /*pStreamOpsUser*/,
+                   SSMAFTER_RESUME, NULL /*pfnProgress*/, NULL /*pvProgressUser*/);
     if (RT_FAILURE(rc))
     {
         RTPrintf("SSMR3Load #1 -> %Rrc\n", rc);
