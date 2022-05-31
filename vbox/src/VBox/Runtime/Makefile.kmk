@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19496 2009-05-07 17:52:01Z vboxsync $
+# $Id: Makefile.kmk 19523 2009-05-08 13:25:34Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -298,6 +298,10 @@ RuntimeR3_SOURCES       = \
 #else
  RuntimeR3_SOURCES += common/time/timesupref.cpp
 #endif
+
+# Some versions of GCC might require this.
+RuntimeR3_SOURCES.x86 += \
+	common/asm/ASMAtomicCmpXchgU64.asm
 
 ifdef IPRT_WITH_KSTUFF
  RuntimeR3_SOURCES += \
