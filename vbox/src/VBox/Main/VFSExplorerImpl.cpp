@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 21394 2009-07-08 13:06:27Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 21811 2009-07-27 13:31:47Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -345,7 +345,7 @@ HRESULT VFSExplorer::deleteFS(TaskVFSExplorer *aTask)
 
     HRESULT rc = S_OK;
 
-    float fPercentStep = 100.0 / aTask->filenames.size();
+    float fPercentStep = 100.0f / aTask->filenames.size();
     try
     {
         char szPath[RTPATH_MAX];
@@ -469,7 +469,7 @@ HRESULT VFSExplorer::deleteS3(TaskVFSExplorer *aTask)
     HRESULT rc = S_OK;
 
     RTS3 hS3 = NULL;
-    float fPercentStep = 100.0 / aTask->filenames.size();
+    float fPercentStep = 100.0f / aTask->filenames.size();
     try
     {
         int vrc = RTS3Create(&hS3, m->strUsername.c_str(), m->strPassword.c_str(), m->strHostname.c_str(), "virtualbox-agent/"VBOX_VERSION_STRING);
@@ -605,7 +605,6 @@ STDMETHODIMP VFSExplorer::EntryList(ComSafeArrayOut(BSTR, aNames), ComSafeArrayO
 STDMETHODIMP VFSExplorer::Exists(ComSafeArrayIn(IN_BSTR, aNames), ComSafeArrayOut(BSTR, aExists))
 {
     CheckComArgSafeArrayNotNull(aNames);
-    CheckComArgSafeArrayNotNull(aExists);
 
     AutoCaller autoCaller(this);
     CheckComRCReturnRC(autoCaller.rc());
