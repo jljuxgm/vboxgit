@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20033 2009-05-26 12:40:07Z vboxsync $
+# $Id: Makefile.kmk 20051 2009-05-26 18:31:50Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -130,7 +130,7 @@ PROGRAMS += \
 	tstFileAio
 endif
 
-if defined(VBOX_WITH_LIBXML2_IN_VBOXRT) && !defined(VBOX_OSE)
+if defined(VBOX_WITH_LIBXML2_IN_VBOXRT)
 PROGRAMS += \
 	tstRTS3
 endif
