@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 19808 2009-05-19 09:23:34Z vboxsync $ */
+/* $Id: PGMPhys.cpp 19833 2009-05-19 15:12:25Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2681,7 +2681,7 @@ VMMR3DECL(int) PGMR3PhysRomProtect(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb, PGMROM
     }
     pgmUnlock(pVM);
     if (fFlushTLB)
-        PGM_INVL_GUEST_TLBS(VMMGetCpu(pVM));
+        PGM_INVL_VCPU_TLBS(VMMGetCpu(pVM));
 
     return rc;
 }
