@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 23061 2009-09-16 11:57:32Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 23222 2009-09-22 15:48:26Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -638,7 +638,7 @@ STDMETHODIMP NetworkAdapter::COMSETTER(TraceEnabled) (BOOL aEnabled)
         /* leave the lock before informing callbacks */
         alock.unlock();
 
-        mParent->onNetworkAdapterChange (this, FALSE);
+        mParent->onNetworkAdapterChange (this, TRUE);
     }
 
     return S_OK;
