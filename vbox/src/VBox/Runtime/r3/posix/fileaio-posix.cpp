@@ -1,4 +1,4 @@
-/* $Id: fileaio-posix.cpp 23405 2009-09-29 10:46:21Z vboxsync $ */
+/* $Id: fileaio-posix.cpp 23406 2009-09-29 11:24:55Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for POSIX compliant host platforms.
  */
@@ -927,14 +927,16 @@ RTDECL(int) RTFileAioCtxWait(RTFILEAIOCTX hAioCtx, size_t cMinReqs, unsigned cMi
                     iReqCurr++;
             }
 
-            AssertMsg(   (cDone <= cMinReqs)
-                      && (cDone <= cReqs), ("Overflow cReqs=%u cMinReqs=%u cDone=%u\n",
-                                            cReqs, cMinReqs, cDone));
+            AssertMsg((cDone <= cReqs), ("Overflow cReqs=%u cMinReqs=%u cDone=%u\n",
+                                         cReqs, cDone));
             cReqs    -= cDone;
-            cMinReqs -= cDone;
+            cMinReqs  = RT_MAX(cMinReqs, cDone) - cDone;
             ASMAtomicSubS32(&pCtxInt->cRequests, cDone);
 
-            if ((cMillisTimeout != RT_INDEFINITE_WAIT) && (cMinReqs > 0))
+            if (!cMinReqs)
+                break;
+
+            if (cMillisTimeout != RT_INDEFINITE_WAIT)
             {
                 uint64_t TimeDiff;
 
