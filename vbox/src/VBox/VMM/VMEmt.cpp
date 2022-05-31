@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 19226 2009-04-28 07:19:13Z vboxsync $ */
+/* $Id: VMEmt.cpp 19229 2009-04-28 09:44:36Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -94,7 +94,8 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
                 break;
             }
 
-            if (pUVM->vm.s.pReqs)
+            if (    pUVM->vm.s.pReqs
+                &&  pUVCpu->idCpu == 0 /* Only the first VCPU may initialize the VM during early init */)
             {
                 /*
                  * Service execute in EMT request.
