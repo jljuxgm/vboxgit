@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 20864 2009-06-23 19:19:42Z vboxsync $ */
+/* $Id: VMEmt.cpp 20880 2009-06-24 08:10:25Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -136,7 +136,7 @@ int vmR3EmulationThreadWithId(RTTHREAD ThreadSelf, PUVMCPU pUVCpu, VMCPUID idCpu
                 rc = VMR3WaitU(pUVCpu);
                 if (RT_FAILURE(rc))
                 {
-                    AssertFailed();
+                    AssertMsgFailed(("VMR3WaitU failed with %Rrc\n", rc));
                     break;
                 }
             }
@@ -200,7 +200,7 @@ int vmR3EmulationThreadWithId(RTTHREAD ThreadSelf, PUVMCPU pUVCpu, VMCPUID idCpu
                 rc = VMR3WaitU(pUVCpu);
                 if (RT_FAILURE(rc))
                 {
-                    AssertFailed();
+                    AssertMsgFailed(("VMR3WaitU failed with %Rrc\n", rc));
                     break;
                 }
             }
