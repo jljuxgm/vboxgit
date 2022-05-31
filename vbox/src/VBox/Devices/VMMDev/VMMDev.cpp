@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 21458 2009-07-09 21:03:40Z vboxsync $ */
+/* $Id: VMMDev.cpp 21460 2009-07-09 22:01:49Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1563,7 +1563,7 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
          */
         case VMMDevReq_GetHostVersion:
         {
-            AssertMsgBreakStmt(pRequestHeader->size == sizeof(VMMDevReqLogString),
+            AssertMsgBreakStmt(pRequestHeader->size == sizeof(VMMDevReqHostVersion),
                                ("%#x < %#x\n", pRequestHeader->size, sizeof(VMMDevReqLogString)),
                                pRequestHeader->rc = VERR_INVALID_PARAMETER);
             VMMDevReqHostVersion *pReqHostVer = (VMMDevReqHostVersion*)pRequestHeader;
