@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 18992 2009-04-17 13:51:56Z vboxsync $ */
+/* $Id: PGMR0.cpp 19262 2009-04-29 13:00:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -58,13 +58,14 @@ __END_DECLS
  * @retval  VINF_EM_NO_MEMORY if we're out of memory. The FF is set in this case.
  *
  * @param   pVM         The VM handle.
+ * @param   pVCpu       The VMCPU handle.
  *
  * @remarks Must be called from within the PGM critical section. The caller
  *          must clear the new pages.
  */
-VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM)
+VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM, PVMCPU pVCpu)
 {
-    Assert(PDMCritSectIsOwner(&pVM->pgm.s.CritSect));
+    Assert(PDMCritSectIsOwnerEx(&pVM->pgm.s.CritSect, pVCpu->idCpu));
 
     /*
      * Check for error injection.

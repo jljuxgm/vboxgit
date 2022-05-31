@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 19260 2009-04-29 12:48:15Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 19262 2009-04-29 13:00:14Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -224,6 +224,27 @@ VMMDECL(bool) PDMCritSectIsOwner(PCPDMCRITSECT pCritSect)
     PVM pVM = pCritSect->s.CTX_SUFF(pVM);
     Assert(pVM);
     return pCritSect->s.Core.NativeThreadOwner == VMMGetCpu(pVM)->hNativeThread;
+#endif
+}
+
+/**
+ * Checks the specified VCPU is the owner of the critical section.
+ *
+ * @returns true if owner.
+ * @returns false if not owner.
+ * @param   pCritSect   The critical section.
+ * @param   idCpu       VCPU id
+ */
+VMMDECL(bool) PDMCritSectIsOwnerEx(PCPDMCRITSECT pCritSect, VMCPUID idCpu)
+{
+#ifdef IN_RING3
+    NOREF(idCpu);
+    return RTCritSectIsOwner(&pCritSect->s.Core);
+#else
+    PVM pVM = pCritSect->s.CTX_SUFF(pVM);
+    Assert(pVM);
+    Assert(idCpu < pVM->cCPUs);
+    return pCritSect->s.Core.NativeThreadOwner == pVM->aCpus[idCpu].hNativeThread;
 #endif
 }
 
