@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-solaris.c 22770 2009-09-04 09:51:34Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-solaris.c 22773 2009-09-04 10:14:17Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -140,6 +140,8 @@ RTDECL(int)  RTSemEventMultiSignal(RTSEMEVENTMULTI EventMultiSem)
     /*
      * If we're in interrupt context we need to unpin the underlying current
      * thread as this could lead to a deadlock (see #4259 for the full explanation)
+     *
+     * Note! See remarks about preemption in RTSemEventSignal.
      */
     int fAcquired = mutex_tryenter(&pThis->Mtx);
     if (!fAcquired)
@@ -176,7 +178,21 @@ RTDECL(int)  RTSemEventMultiReset(RTSEMEVENTMULTI EventMultiSem)
                     VERR_INVALID_HANDLE);
     RT_ASSERT_INTS_ON();
 
-    mutex_enter(&pThis->Mtx);
+    /*
+     * If we're in interrupt context we need to unpin the underlying current
+     * thread as this could lead to a deadlock (see #4259 for the full explanation)
+     *
+     * Note! See remarks about preemption in RTSemEventSignal.
+     */
+    int fAcquired = mutex_tryenter(&pThis->Mtx);
+    if (!fAcquired)
+    {
+        if (curthread->t_intr && getpil() < DISP_LEVEL)
+            swtch();
+
+        mutex_enter(&pThis->Mtx);
+    }
+
     ASMAtomicXchgU8(&pThis->fSignaled, false);
     mutex_exit(&pThis->Mtx);
 

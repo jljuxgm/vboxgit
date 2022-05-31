@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 22770 2009-09-04 09:51:34Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 22773 2009-09-04 10:14:17Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, Ring-0 Driver, Solaris.
  */
@@ -141,6 +141,14 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT EventSem)
     /*
      * If we're in interrupt context we need to unpin the underlying current
      * thread as this could lead to a deadlock (see #4259 for the full explanation)
+     *
+     * Note! This assumes nobody is using the RTThreadPreemptDisable in an
+     *       interrupt context and expects it to work right.  The swtch will
+     *       result in a voluntary preemption.  To fix this, we would have to
+     *       do our own counting in RTThreadPreemptDisable/Restore like we do
+     *       on systems which doesn't do preemption (OS/2, linux, ...) and
+     *       check whether preemption was disabled via RTThreadPreemptDisable
+     *       or not and only call swtch if RTThreadPreemptDisable wasn't called.
      */
     int fAcquired = mutex_tryenter(&pEventInt->Mtx);
     if (!fAcquired)
