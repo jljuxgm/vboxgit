@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17748 2009-03-12 13:41:28Z vboxsync $
+# $Id: Makefile.kmk 18364 2009-03-27 02:03:20Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -289,6 +289,7 @@ RuntimeR3_SOURCES       = \
 	r3/path.cpp \
 	r3/process.cpp \
 	r3/stream.cpp \
+	r3/test.cpp \
 	r3/tcp.cpp
 
 #if1of ($(KBUILD_TARGET_ARCH),amd64 x86)
