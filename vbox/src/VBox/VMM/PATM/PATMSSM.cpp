@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 18267 2009-03-25 17:50:29Z vboxsync $ */
+/* $Id: PATMSSM.cpp 18272 2009-03-25 18:28:33Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -616,7 +616,7 @@ DECLCALLBACK(int) patmr3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version)
                     /** @todo This will fail & crash in patmCorrectFixup if the page isn't present
                      *        when we restore. Happens with my XP image here
                      *        (pPrivInstrGC=0x8069e051). */
-                    AssertLogRelMsg(pPatchRec->patch.pPrivInstrHC, ("%RRv rc=%Rrc\n", pPatchRec->patch.pPrivInstrGC, rc2));
+                    AssertLogRelMsg(pPatchRec->patch.pPrivInstrHC, ("%RRv rc=%Rrc uState=%u\n", pPatchRec->patch.pPrivInstrGC, rc2, pPatchRec->patch.uState));
                     rec.pRelocPos = pPatchRec->patch.pPrivInstrHC + offset;
                     pFixup        = (RTRCPTR *)rec.pRelocPos;
                 }
