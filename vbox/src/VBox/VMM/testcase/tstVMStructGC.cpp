@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 19702 2009-05-14 15:41:49Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 19714 2009-05-15 08:24:51Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -824,6 +824,8 @@ int main()
     GEN_CHECK_OFF(TM, paTimerQueuesR3);
     GEN_CHECK_OFF(TM, paTimerQueuesR0);
     GEN_CHECK_OFF(TM, paTimerQueuesRC);
+    GEN_CHECK_OFF(TM, EmtLock);
+    GEN_CHECK_OFF(TM, VirtualSyncLock);
     GEN_CHECK_OFF(TM, StatDoQueues);
     GEN_CHECK_OFF(TM, StatTimerCallbackSetFF);
     GEN_CHECK_SIZE(TMTIMER);
