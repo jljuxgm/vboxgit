@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 19407 2009-05-05 23:38:19Z vboxsync $ */
+/* $Id: VMEmt.cpp 19422 2009-05-06 11:39:20Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -186,7 +186,7 @@ int vmR3EmulationThreadWithId(RTTHREAD ThreadSelf, PUVMCPU pUVCpu, VMCPUID idCpu
                 rc = DBGFR3VMMForcedAction(pVM);
                 Log(("vmR3EmulationThread: Dbg rc=%Rrc, VM state %d -> %d\n", rc, enmBefore, pVM->enmVMState));
             }
-            else if (VM_FF_ISSET(pVM, VM_FF_RESET))
+            else if (VM_FF_TESTANDCLEAR(pVM, VM_FF_RESET_BIT))
             {
                 /*
                  * Service a delayed reset request.
