@@ -1,4 +1,4 @@
-/* $Id: DrvSCSIHost.cpp 22278 2009-08-16 21:57:07Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 23970 2009-10-22 11:24:08Z vboxsync $ */
 /** @file
  *
  * VBox storage drivers:
@@ -453,7 +453,7 @@ static DECLCALLBACK(int) drvscsihostConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
      */
     if (!CFGMR3AreValuesValid(pCfgHandle, "DevicePath\0"))
         return PDMDRV_SET_ERROR(pDrvIns, VERR_PDM_DRVINS_UNKNOWN_CFG_VALUES,
-                                N_("Invalid configuraton for host scsi access driver"));
+                                N_("Invalid configuration for host scsi access driver"));
 
     /*
      * Initialize interfaces.
@@ -526,9 +526,9 @@ const PDMDRVREG g_DrvSCSIHost =
     /* pfnAttach */
     NULL,
     /* pfnDetach */
-    NULL, 
+    NULL,
     /* pfnPowerOff */
-    NULL, 
+    NULL,
     /* pfnSoftReset */
     NULL,
     /* u32EndVersion */

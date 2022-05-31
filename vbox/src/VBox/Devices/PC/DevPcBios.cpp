@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 23942 2009-10-21 15:41:50Z vboxsync $ */
+/* $Id: DevPcBios.cpp 23970 2009-10-22 11:24:08Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1525,7 +1525,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
 #endif
                               ))
         return PDMDEV_SET_ERROR(pDevIns, VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES,
-                                N_("Invalid configuraton for  device pcbios device"));
+                                N_("Invalid configuration for device pcbios device"));
 
     /*
      * Init the data.

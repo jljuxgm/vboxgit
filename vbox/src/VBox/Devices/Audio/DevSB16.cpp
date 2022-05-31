@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
+/* $Id: DevSB16.cpp 23970 2009-10-22 11:24:08Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1738,7 +1738,7 @@ static DECLCALLBACK(int) sb16Construct (PPDMDEVINS pDevIns, int iInstance, PCFGM
                               "Port\0"
                               "Version\0"))
         return PDMDEV_SET_ERROR(pDevIns, VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES,
-                                N_("Invalid configuraton for sb16 device"));
+                                N_("Invalid configuration for sb16 device"));
 
     /*
      * Read config data.
