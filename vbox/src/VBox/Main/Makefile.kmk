@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22213 2009-08-12 17:00:56Z vboxsync $
+# $Id: Makefile.kmk 22305 2009-08-17 17:37:41Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -589,6 +589,7 @@ VBoxC_SOURCES = \
 	ProgressImpl.cpp \
 	SharedFolderImpl.cpp \
 	SessionImpl.cpp \
+	VirtualBoxCallbackImpl.cpp \
 	ConsoleImpl.cpp \
 	ConsoleImpl2.cpp \
 	ConsoleVRDPServer.cpp \
