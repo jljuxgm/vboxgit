@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 23274 2009-09-24 09:31:32Z vboxsync $ */
+/* $Id: state_snapshot.c 23399 2009-09-29 05:04:38Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -732,6 +732,7 @@ static void crStateSaveGLSLProgramCB(unsigned long key, void *data1, void *data2
             diff_api.GetActiveUniform(pProgram->hwid, i, maxUniformLen, NULL, &size, &type, name);
 
             /*@todo check if we'd reference all array elements or not*/
+            /*crap it fails as expected*/
             if (size!=1) crWarning("@todo");
 
             rc = SSMR3PutMem(pSSM, &type, sizeof(type));
