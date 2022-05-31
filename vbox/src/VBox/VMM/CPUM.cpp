@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 20463 2009-06-10 12:25:23Z vboxsync $ */
+/* $Id: CPUM.cpp 20532 2009-06-13 20:55:29Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -62,12 +62,13 @@
 #include <iprt/mp.h>
 #include <iprt/cpuset.h>
 
-/* Enable multi-core VCPUs. */
-#define VBOX_WITH_MULTI_CORE
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
+/** Enable multi-core VCPUs. */
+#define VBOX_WITH_MULTI_CORE
+
 /** The saved state version. */
 #define CPUM_SAVED_STATE_VERSION                10
 /** The saved state version for the 2.1 trunk before the MSR changes. */
