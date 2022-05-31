@@ -1,4 +1,4 @@
-/* $Id: tstLdr.cpp 16933 2009-02-18 23:42:57Z vboxsync $ */
+/* $Id: tstLdr.cpp 18454 2009-03-28 04:42:26Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*.
  */
@@ -340,7 +340,7 @@ int main(int argc, char **argv)
         else if (!strcmp(argv[argi], "-64"))
             g_cBits = 64;
         else if (!strcmp(argv[argi], "-kernel"))
-            g_fKernel = 64;
+            g_fKernel = true;
         else
         {
             RTPrintf("tstLdr: TESTING '%s'...\n", argv[argi]);
