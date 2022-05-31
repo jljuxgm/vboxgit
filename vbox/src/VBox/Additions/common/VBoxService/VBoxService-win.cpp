@@ -1,4 +1,4 @@
-/* $Id: VBoxService-win.cpp 21227 2009-07-05 19:50:18Z vboxsync $ */
+/* $Id: VBoxService-win.cpp 21230 2009-07-05 20:01:45Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton, Windows Specific Parts.
  */
@@ -24,6 +24,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
 
