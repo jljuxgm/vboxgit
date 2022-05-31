@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 19593 2009-05-12 07:56:07Z vboxsync $ */
+/* $Id: PDMInternal.h 19784 2009-05-18 13:15:46Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -612,8 +612,10 @@ typedef PDMMOD *PPDMMOD;
  */
 typedef enum PDMQUEUETYPE
 {
+    /** Uninitialized. */
+    PDMQUEUETYPE_UNINIT = 0,
     /** Device consumer. */
-    PDMQUEUETYPE_DEV = 1,
+    PDMQUEUETYPE_DEV,
     /** Driver consumer. */
     PDMQUEUETYPE_DRV,
     /** Internal consumer. */
@@ -1019,7 +1021,7 @@ int         pdmR3AsyncCompletionTerm(PVM pVM);
 void        pdmLock(PVM pVM);
 int         pdmLockEx(PVM pVM, int rc);
 void        pdmUnlock(PVM pVM);
-
+bool        pdmIsLockOwner(PVM pVM);
 /** @} */
 
 __END_DECLS

@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: PDMAll.cpp 19784 2009-05-18 13:15:46Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -346,6 +346,17 @@ int pdmLockEx(PVM pVM, int rc)
 void pdmUnlock(PVM pVM)
 {
     PDMCritSectLeave(&pVM->pdm.s.CritSect);
+}
+
+/**
+ * Check if this VCPU currently owns the PDM lock.
+ *
+ * @returns bool owner/not owner
+ * @param   pVM         The VM to operate on.
+ */
+bool pdmIsLockOwner(PVM pVM)
+{
+    return PDMCritSectIsOwner(&pVM->pdm.s.CritSect);
 }
 
 
