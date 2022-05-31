@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 19293 2009-05-01 16:11:18Z vboxsync $ */
+/* $Id: DBGFStack.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -399,7 +399,7 @@ static int dbgfR3StackWalkBeginCommon(PVM pVM,
                              ? CPUMGetGuestCtxCore(VMMGetCpuById(pVM, idCpu))
                              : CPUMGetHyperCtxCore(VMMGetCpuById(pVM, idCpu));
     PVMREQ          pReq;
-    int rc = VMR3ReqCall(pVM, VMREQDEST_FROM_ID(idCpu), &pReq, RT_INDEFINITE_WAIT,
+    int rc = VMR3ReqCall(pVM, idCpu, &pReq, RT_INDEFINITE_WAIT,
                          (PFNRT)dbgfR3StackWalkCtxFull, 9,
                          pVM, idCpu, pCtxCore, fGuest,
                          pAddrFrame, pAddrStack, pAddrPC, enmReturnType, ppFirstFrame);

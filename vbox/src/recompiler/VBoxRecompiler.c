@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 19293 2009-05-01 16:11:18Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 19300 2009-05-01 18:06:59Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -3540,7 +3540,7 @@ REMR3DECL(int) REMR3DisasEnableStepping(PVM pVM, bool fEnable)
     if (VM_IS_EMT(pVM))
         return remR3DisasEnableStepping(pVM, fEnable);
 
-    rc = VMR3ReqCall(pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)remR3DisasEnableStepping, 2, pVM, fEnable);
+    rc = VMR3ReqCall(pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)remR3DisasEnableStepping, 2, pVM, fEnable);
     AssertRC(rc);
     if (RT_SUCCESS(rc))
         rc = pReq->iStatus;

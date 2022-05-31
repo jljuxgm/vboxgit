@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 18435 2009-03-28 02:26:25Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -1137,7 +1137,7 @@ DECLCALLBACK(void) hgcmCompleted (PPDMIHGCMPORT pInterface, int32_t result, PVBO
     VMMDevState *pVMMDevState = PDMIHGCMPORT_2_VMMDEVSTATE(pInterface);
 
     /* Not safe to execute asynchroneously; forward to EMT */
-    int rc = VMR3ReqCallEx(PDMDevHlpGetVM(pVMMDevState->pDevIns), VMREQDEST_ANY, NULL, 0, VMREQFLAGS_NO_WAIT | VMREQFLAGS_VOID,
+    int rc = VMR3ReqCallEx(PDMDevHlpGetVM(pVMMDevState->pDevIns), VMCPUID_ANY, NULL, 0, VMREQFLAGS_NO_WAIT | VMREQFLAGS_VOID,
                            (PFNRT)hgcmCompletedWorker, 3, pInterface, result, pCmd);
     AssertRC(rc);
 }

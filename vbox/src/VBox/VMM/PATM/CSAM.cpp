@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 19263 2009-04-29 13:05:37Z vboxsync $ */
+/* $Id: CSAM.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1978,7 +1978,7 @@ static DECLCALLBACK(int) CSAMCodePageWriteHandler(PVM pVM, RTGCPTR GCPtr, void *
          */
         Log(("CSAMCodePageWriteHandler: delayed write!\n"));
         AssertCompileSize(RTRCPTR, 4);
-        rc = VMR3ReqCallEx(pVM, VMREQDEST_ANY, NULL, 0, VMREQFLAGS_NO_WAIT | VMREQFLAGS_VOID,
+        rc = VMR3ReqCallEx(pVM, VMCPUID_ANY, NULL, 0, VMREQFLAGS_NO_WAIT | VMREQFLAGS_VOID,
                            (PFNRT)CSAMDelayedWriteHandler, 3, pVM, (RTRCPTR)GCPtr, cbBuf);
     }
     AssertRC(rc);

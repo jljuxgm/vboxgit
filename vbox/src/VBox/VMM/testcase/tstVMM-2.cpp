@@ -1,4 +1,4 @@
-/* $Id: tstVMM-2.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
+/* $Id: tstVMM-2.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
 /** @file
  * VMM Testcase - no. 2.
  */
@@ -362,7 +362,7 @@ int main(int argc, char **argv)
         if (fPowerOn)
         {
             PVMREQ pReq;
-            rc = VMR3ReqCall(pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)VMR3PowerOn, 1, pVM);
+            rc = VMR3ReqCall(pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)VMR3PowerOn, 1, pVM);
             if (RT_SUCCESS(rc))
             {
                 rc = pReq->iStatus;
@@ -377,7 +377,7 @@ int main(int argc, char **argv)
                     /*
                      * Power Off the VM.
                      */
-                    rc = VMR3ReqCall(pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)VMR3PowerOff, 1, pVM);
+                    rc = VMR3ReqCall(pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)VMR3PowerOff, 1, pVM);
                     if (RT_SUCCESS(rc))
                     {
                         rc = pReq->iStatus;

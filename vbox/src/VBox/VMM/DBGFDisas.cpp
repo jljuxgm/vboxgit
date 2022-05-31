@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 19294 2009-05-01 16:18:59Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -551,7 +551,7 @@ VMMR3DECL(int) DBGFR3DisasInstrEx(PVM pVM, VMCPUID idCpu, RTSEL Sel, RTGCPTR GCP
     else
     {
         PVMREQ pReq = NULL;
-        rc = VMR3ReqCall(pVM, VMREQDEST_FROM_ID(idCpu), &pReq, RT_INDEFINITE_WAIT,
+        rc = VMR3ReqCall(pVM, idCpu, &pReq, RT_INDEFINITE_WAIT,
                          (PFNRT)dbgfR3DisasInstrExOnVCpu, 8,
                          pVM, VMMGetCpuById(pVM, idCpu), Sel, &GCPtr, fFlags, pszOutput, cchOutput, pcbInstr);
         if (RT_SUCCESS(rc))

@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 19217 2009-04-27 15:00:59Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -191,7 +191,7 @@ VMMDECL(void) PDMQueueFlush(PPDMQUEUE pQueue)
 
 #else /* IN_RING3: */
     PVMREQ pReq;
-    VMR3ReqCall(pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)PDMR3QueueFlushWorker, 2, pVM, pQueue);
+    VMR3ReqCall(pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)PDMR3QueueFlushWorker, 2, pVM, pQueue);
     VMR3ReqFree(pReq);
 #endif
 }

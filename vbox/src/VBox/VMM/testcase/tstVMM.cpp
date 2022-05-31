@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 17364 2009-03-04 19:39:28Z vboxsync $ */
+/* $Id: tstVMM.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -75,7 +75,7 @@ int main(int argc, char **argv)
          */
         RTPrintf(TESTCASE ": Testing...\n");
         PVMREQ pReq1 = NULL;
-        rc = VMR3ReqCall(pVM, VMREQDEST_ANY, &pReq1, RT_INDEFINITE_WAIT, (PFNRT)VMMDoTest, 1, pVM);
+        rc = VMR3ReqCall(pVM, VMCPUID_ANY, &pReq1, RT_INDEFINITE_WAIT, (PFNRT)VMMDoTest, 1, pVM);
         AssertRC(rc);
         VMR3ReqFree(pReq1);
 

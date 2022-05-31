@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 19217 2009-04-27 15:00:59Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -660,7 +660,7 @@ VMMDECL(int) TMVirtualSetWarpDrive(PVM pVM, uint32_t u32Percent)
  * should affect the TMR3UCTNow as well! */
 #ifdef IN_RING3
     PVMREQ pReq;
-    int rc = VMR3ReqCall(pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)tmVirtualSetWarpDrive, 2, pVM, u32Percent);
+    int rc = VMR3ReqCall(pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)tmVirtualSetWarpDrive, 2, pVM, u32Percent);
     if (RT_SUCCESS(rc))
         rc = pReq->iStatus;
     VMR3ReqFree(pReq);

@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 18668 2009-04-03 00:12:30Z vboxsync $ */
+/* $Id: VBoxDev.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -248,7 +248,7 @@ void VMMDevCtlSetGuestFilterMask (VMMDevState *pVMMDevState,
         int rc;
         PVMREQ pReq;
 
-        rc = VMR3ReqCallVoid (pVM, VMREQDEST_ANY, &pReq, RT_INDEFINITE_WAIT,
+        rc = VMR3ReqCallVoid (pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT,
                               (PFNRT) vmmdevCtlGuestFilterMask_EMT,
                               3, pVMMDevState, u32OrMask, u32NotMask);
         AssertReleaseRC (rc);
@@ -273,7 +273,7 @@ void VMMDevNotifyGuest (VMMDevState *pVMMDevState, uint32_t u32EventMask)
     /* No need to wait for the completion of this request. It is a notification
      * about something, which has already happened.
      */
-    rc = VMR3ReqCallEx(pVM, VMREQDEST_ANY, NULL, 0, VMREQFLAGS_NO_WAIT | VMREQFLAGS_VOID,
+    rc = VMR3ReqCallEx(pVM, VMCPUID_ANY, NULL, 0, VMREQFLAGS_NO_WAIT | VMREQFLAGS_VOID,
                        (PFNRT) vmmdevNotifyGuest_EMT,
                        2, pVMMDevState, u32EventMask);
     AssertRC(rc);
