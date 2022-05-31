@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 23415 2009-09-29 15:40:39Z vboxsync $ */
+/* $Id: PGMPhys.cpp 23443 2009-09-30 14:53:21Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1585,6 +1585,7 @@ VMMR3DECL(int) PGMR3PhysMMIO2Register(PVM pVM, PPDMDEVINS pDevIns, uint32_t iReg
                 //pNew->fMapped             = false;
                 //pNew->fOverlapping        = false;
                 pNew->iRegion               = iRegion;
+                pNew->idSavedState          = UINT8_MAX;
                 pNew->RamRange.pSelfR0      = MMHyperCCToR0(pVM, &pNew->RamRange);
                 pNew->RamRange.pSelfRC      = MMHyperCCToRC(pVM, &pNew->RamRange);
                 pNew->RamRange.GCPhys       = NIL_RTGCPHYS;
@@ -2346,6 +2347,7 @@ VMMR3DECL(int) PGMR3PhysRomRegister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
                     pRomNew->GCPhysLast = GCPhysLast;
                     pRomNew->cb = cb;
                     pRomNew->fFlags = fFlags;
+                    pRomNew->idSavedState = UINT8_MAX;
                     pRomNew->pvOriginal = fFlags & PGMPHYS_ROM_FLAGS_PERMANENT_BINARY ? pvBinary : NULL;
                     pRomNew->pszDesc = pszDesc;
 
