@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23324 2009-09-25 10:19:14Z vboxsync $
+# $Id: Makefile.kmk 23351 2009-09-26 17:58:54Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1495,7 +1495,7 @@ else
  endif
 
  if !defined(VBOX_WITHOUT_VBOXPYTHON_FOR_OSX_10_6) \
-  && "$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)" == "darwin" \
+  && "$(KBUILD_TARGET)" == "darwin" \
   && "$(VBOX_DEF_MACOSX_VERSION_MIN)" != "10.6"
   # Same as VBoxPython except built against the Mac OS X 10.6 SDK.
   DLLS += VBoxPython2_6
