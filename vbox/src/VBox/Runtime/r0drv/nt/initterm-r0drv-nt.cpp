@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 23412 2009-09-29 15:24:43Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 23413 2009-09-29 15:26:17Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -127,6 +127,7 @@ int rtR0InitNative(void)
             /* Windows 7 or Windows Server 2008 R2 */
             g_pfnrtSendIpi = rtMpSendIpiWin7;
         }
+        /* Windows XP should send always send an IPI -> VERIFY */
     }
 #endif
     KIRQL OldIrql;
