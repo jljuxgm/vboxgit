@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 20726 2009-06-19 13:50:56Z vboxsync $ */
+/* $Id: IOM.cpp 20728 2009-06-19 14:14:13Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -945,6 +945,8 @@ VMMR3DECL(int)  IOMR3IOPortDeregister(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT Port
                 pRangeNew->Port         = PortLast;
                 pRangeNew->cPorts       = pRangeNew->Core.KeyLast - PortLast + 1;
 
+                LogFlow(("IOMR3IOPortDeregister (rc): split the range; new %x\n", pRangeNew->Core.Key));
+
                 /* adjust head */
                 pRange->Core.KeyLast  = Port - 1;
                 pRange->cPorts        = Port - pRange->Port;
@@ -1027,6 +1029,8 @@ VMMR3DECL(int)  IOMR3IOPortDeregister(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT Port
                 pRangeNew->Port         = PortLast;
                 pRangeNew->cPorts       = pRangeNew->Core.KeyLast - PortLast + 1;
 
+                LogFlow(("IOMR3IOPortDeregister (r0): split the range; new %x\n", pRangeNew->Core.Key));
+
                 /* adjust head */
                 pRange->Core.KeyLast  = Port - 1;
                 pRange->cPorts        = Port - pRange->Port;
@@ -1106,6 +1110,8 @@ VMMR3DECL(int)  IOMR3IOPortDeregister(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT Port
                 pRangeNew->Core.Key     = PortLast;
                 pRangeNew->Port         = PortLast;
                 pRangeNew->cPorts       = pRangeNew->Core.KeyLast - PortLast + 1;
+
+                LogFlow(("IOMR3IOPortDeregister (r3): split the range; new %x\n", pRangeNew->Core.Key));
 
                 /* adjust head */
                 pRange->Core.KeyLast  = Port - 1;
