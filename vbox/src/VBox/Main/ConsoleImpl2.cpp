@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 19379 2009-05-05 14:01:12Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 19410 2009-05-06 03:06:45Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -438,9 +438,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         /*
          * EFI.
          */
-        rc = CFGMR3InsertNode(pDevices, "efi", &pDev);                       RC_CHECK();
-        rc = CFGMR3InsertNode(pDev,     "0", &pInst);                        RC_CHECK();
-        rc = CFGMR3InsertInteger(pInst, "Trusted",   1);     /* boolean */   RC_CHECK();
+        rc = CFGMR3InsertNode(pDevices, "efi", &pDev);                              RC_CHECK();
+        rc = CFGMR3InsertNode(pDev,     "0", &pInst);                               RC_CHECK();
+        rc = CFGMR3InsertInteger(pInst, "Trusted", 1);              /* boolean */   RC_CHECK();
+        rc = CFGMR3InsertNode(pInst,    "Config", &pCfg);                           RC_CHECK();
+        rc = CFGMR3InsertInteger(pCfg,  "RamSize",          cbRam);                 RC_CHECK();
+        rc = CFGMR3InsertInteger(pCfg,  "RamHoleSize",      cbRamHole);             RC_CHECK();
+        rc = CFGMR3InsertInteger(pCfg,  "NumCPUs",          cCpus);                 RC_CHECK();
     }
 
     /*
