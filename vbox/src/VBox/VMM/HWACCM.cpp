@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 22286 2009-08-17 11:45:04Z vboxsync $ */
+/* $Id: HWACCM.cpp 22288 2009-08-17 11:54:34Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -652,7 +652,7 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
     /* No TPR patching is required when the IO-APIC is not enabled for this VM. (Main should have taken care of this already) */
     if (!pVM->hwaccm.s.fHasIoApic)
     {
-        Assert(pVM->hwaccm.s.fTRPPatchingAllowed); /* paranoia */
+        Assert(!pVM->hwaccm.s.fTRPPatchingAllowed); /* paranoia */
         pVM->hwaccm.s.fTRPPatchingAllowed = false;
     }
 
