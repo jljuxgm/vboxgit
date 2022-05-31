@@ -1,4 +1,4 @@
-/** $Id: counters.h 22013 2009-08-06 03:23:44Z vboxsync $ */
+/** $Id: counters.h 22249 2009-08-14 01:50:13Z vboxsync $ */
 /** @file
  * Counters macro invocation template.
  *
@@ -70,6 +70,8 @@ COUNTING_COUNTER(IOSBAppendSB, "SB: AppendSB total");
 COUNTING_COUNTER(IOSBAppendSB_w_l_r, "SB: AppendSB (sb_wptr < sb_rptr)");
 COUNTING_COUNTER(IOSBAppendSB_w_ge_r, "SB: AppendSB (sb_wptr >= sb_rptr)");
 COUNTING_COUNTER(IOSBAppendSB_w_alter, "SB: AppendSB (altering of sb_wptr)");
+
+COUNTING_COUNTER(TCP_retransmit, "TCP::retransmit");
 
 PROFILE_COUNTER(TCP_reassamble, "TCP::reasamble");
 PROFILE_COUNTER(TCP_input, "TCP::input");
