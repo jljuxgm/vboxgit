@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 22784 2009-09-04 14:25:31Z vboxsync $ */
+/* $Id: VM.cpp 22792 2009-09-04 18:38:32Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1472,8 +1472,9 @@ static DECLCALLBACK(int) vmR3Save(PVM pVM, const char *pszFilename, SSMAFTER enm
     /*
      * Change the state and perform the save.
      */
+    bool fLive = pVM->enmVMState == VMSTATE_RUNNING;
     vmR3SetState(pVM, VMSTATE_SAVING); /** @todo Should probably use a different state for live snapshots and/or live migration. Will fix the state machine later. */
-    int rc = SSMR3Save(pVM, pszFilename, enmAfter, pfnProgress,  pvUser);
+    int rc = SSMR3Save(pVM, pszFilename, enmAfter, pfnProgress, pvUser);
     vmR3SetState(pVM, VMSTATE_SUSPENDED);
 
     return rc;
