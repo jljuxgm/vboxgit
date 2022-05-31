@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 9149 2008-05-27 09:27:29Z vboxsync $ */
+/* $Id: alloc-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -33,12 +33,14 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-solaris-kernel.h"
+#include "internal/iprt.h"
+#include <iprt/mem.h>
 
-#include <iprt/alloc.h>
 #include <iprt/assert.h>
-#include <iprt/types.h>
 #include <iprt/param.h>
+#include <iprt/thread.h>
 #include "r0drv/alloc-r0drv.h"
+
 
 
 /**
@@ -92,6 +94,7 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
 {
     AssertPtr(pPhys);
     Assert(cb > 0);
+    RT_ASSERT_PREEMPTIBLE();
 
     /* Allocate physically contiguous page-aligned memory. */
     caddr_t virtAddr;
@@ -110,6 +113,7 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
 
 RTR0DECL(void) RTMemContFree(void *pv, size_t cb)
 {
+    RT_ASSERT_PREEMPTIBLE();
     if (pv)
         vbi_contig_free(pv, cb);
 }

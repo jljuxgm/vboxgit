@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-solaris.c 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: initterm-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Solaris.
  */
@@ -33,14 +33,11 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-solaris-kernel.h"
+#include "internal/iprt.h"
+
 #include <iprt/err.h>
-#include <iprt/assert.h>
 #include "internal/initterm.h"
 
-
-/*******************************************************************************
-*   Internal Functions                                                         *
-*******************************************************************************/
 
 
 int rtR0InitNative(void)
@@ -52,3 +49,4 @@ int rtR0InitNative(void)
 void rtR0TermNative(void)
 {
 }
+

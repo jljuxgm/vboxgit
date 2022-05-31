@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: RTLogWriteDebugger-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
 /** @file
  * IPRT - Log To Debugger, Ring-0 Driver, Solaris.
  */
@@ -28,8 +28,13 @@
  * additional information or have any questions.
  */
 
+
+/*******************************************************************************
+*   Header Files                                                               *
+*******************************************************************************/
 #include "the-solaris-kernel.h"
 #include <iprt/log.h>
+
 #include <iprt/assert.h>
 
 

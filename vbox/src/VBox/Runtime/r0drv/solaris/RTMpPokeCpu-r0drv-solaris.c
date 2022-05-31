@@ -1,4 +1,4 @@
-/* $Id: RTMpPokeCpu-r0drv-solaris.c 19501 2009-05-07 18:30:22Z vboxsync $ */
+/* $Id: RTMpPokeCpu-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
 /** @file
  * IPRT - RTMpPokeCpu, Solaris Implementation.
  */
@@ -33,13 +33,17 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-solaris-kernel.h"
+#include "internal/iprt.h"
 #include <iprt/mp.h>
+
+#include <iprt/asm.h>
 #include <iprt/err.h>
 
 
 
 RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
 {
+    RT_ASSERT_INTS_ON();
     if (idCpu >= RTMpGetCount())
         return VERR_CPU_NOT_FOUND;
     poke_cpu(idCpu);

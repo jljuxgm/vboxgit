@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-solaris.c 19355 2009-05-05 08:59:24Z vboxsync $ */
+/* $Id: thread2-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Solaris.
  */
@@ -28,17 +28,20 @@
  * additional information or have any questions.
  */
 
+
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-solaris-kernel.h"
+#include "internal/iprt.h"
+#include <iprt/thread.h>
 
 #include <iprt/assert.h>
 #include <iprt/err.h>
-#include <iprt/thread.h>
 #include <iprt/process.h>
-
 #include "internal/thread.h"
+
+
 
 int rtThreadNativeInit(void)
 {
@@ -101,15 +104,17 @@ static void rtThreadNativeMain(void *pvThreadInt)
 
 int rtThreadNativeCreate(PRTTHREADINT pThreadInt, PRTNATIVETHREAD pNativeThread)
 {
-    int rc;
-    kthread_t* pKernThread = thread_create(NULL, NULL, rtThreadNativeMain, pThreadInt, 0,
-                                           (void *)RTR0ProcHandleSelf(), TS_RUN, minclsyspri);
+    kthread_t *pKernThread;
+    RT_ASSERT_PREEMPTIBLE();
+
+    pKernThread = thread_create(NULL, NULL, rtThreadNativeMain, pThreadInt, 0,
+                                (void *)RTR0ProcHandleSelf(), TS_RUN, minclsyspri);
     if (pKernThread)
     {
-        *pNativeThread = (RTNATIVETHREAD)pKernThread;
+        *pNativeThread = (RTNATIVETHREAD)pvKernThread;
         return VINF_SUCCESS;
     }
 
-    return RTErrConvertFromErrno(rc);
+    return VERR_OUT_OF_RESOURCES;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-solaris.c 11982 2008-09-02 13:09:44Z vboxsync $ */
+/* $Id: mpnotification-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Solaris.
  */
@@ -32,10 +32,17 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-solaris-kernel.h"
+#include "internal/iprt.h"
 
-#include <iprt/mp.h>
 #include <iprt/err.h>
+#include <iprt/mp.h>
 #include "r0drv/mp-r0drv.h"
+
+
+/*******************************************************************************
+*   Global Variables                                                           *
+*******************************************************************************/
+static vbi_cpu_watch_t *g_hVbiCpuWatch = NULL;
 
 
 static void rtMpNotificationSolarisCallback(void *pvUser, int iCpu, int online)
@@ -49,23 +56,22 @@ static void rtMpNotificationSolarisCallback(void *pvUser, int iCpu, int online)
         rtMpNotificationDoCallbacks(RTMPEVENT_OFFLINE, iCpu);
 }
 
-static vbi_cpu_watch_t *watch_handle = NULL;
 
 int rtR0MpNotificationNativeInit(void)
 {
     if (vbi_revision_level < 2)
         return VERR_NOT_SUPPORTED;
-    if (watch_handle != NULL)
-        return VERR_INVALID_PARAMETER;
-    watch_handle = vbi_watch_cpus(rtMpNotificationSolarisCallback, NULL, 0);
+    if (g_hVbiCpuWatch != NULL)
+        return VERR_WRONG_ORDER;
+    g_hVbiCpuWatch = vbi_watch_cpus(rtMpNotificationSolarisCallback, NULL, 0);
     return VINF_SUCCESS;
 }
 
 
 void rtR0MpNotificationNativeTerm(void)
 {
-    if (vbi_revision_level >= 2 && watch_handle != NULL)
-        vbi_ignore_cpus(watch_handle);
-    watch_handle = NULL;
+    if (vbi_revision_level >= 2 && g_hVbiCpuWatch != NULL)
+        vbi_ignore_cpus(g_hVbiCpuWatch);
+    g_hVbiCpuWatch = NULL;
 }
 

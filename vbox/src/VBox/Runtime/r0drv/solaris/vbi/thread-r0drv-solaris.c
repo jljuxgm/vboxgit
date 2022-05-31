@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 21595 2009-07-15 00:19:29Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -33,11 +33,13 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-solaris-kernel.h"
-
+#include "internal/iprt.h"
 #include <iprt/thread.h>
+
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
+
 
 
 RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
@@ -50,6 +52,7 @@ RTDECL(int) RTThreadSleep(unsigned cMillies)
 {
     clock_t cTicks;
     unsigned long timeout;
+    RT_ASSERT_PREEMPTIBLE();
 
     if (!cMillies)
     {
@@ -95,6 +98,7 @@ RTDECL(int) RTThreadSleep(unsigned cMillies)
 
 RTDECL(bool) RTThreadYield(void)
 {
+    RT_ASSERT_PREEMPTIBLE();
     return vbi_yield();
 }
 

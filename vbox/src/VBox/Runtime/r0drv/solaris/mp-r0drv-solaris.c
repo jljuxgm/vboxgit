@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-solaris.c 19391 2009-05-05 17:26:18Z vboxsync $ */
+/* $Id: mp-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Solaris.
  */
@@ -33,12 +33,14 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-solaris-kernel.h"
-
+#include "internal/iprt.h"
 #include <iprt/mp.h>
+
+#include <iprt/asm.h>
 #include <iprt/cpuset.h>
 #include <iprt/err.h>
-#include <iprt/asm.h>
 #include "r0drv/mp-r0drv.h"
+
 
 
 RTDECL(RTCPUID) RTMpCpuId(void)
@@ -155,6 +157,7 @@ RTDECL(int) RTMpOnAll(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)
 {
     cpuset_t Set;
     RTMPARGS Args;
+    RT_ASSERT_INTS_ON();
 
     Args.pfnWorker = pfnWorker;
     Args.pvUser1 = pvUser1;
@@ -200,8 +203,9 @@ RTDECL(int) RTMpOnOthers(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)
     int rc;
     cpuset_t Set;
     RTMPARGS Args;
+    RT_ASSERT_INTS_ON();
 
-    /* The caller should disable preemption, but take no chances.*/
+    /* The caller should disable preemption, but take no chances. */
     kpreempt_disable();
 
     Args.pfnWorker = pfnWorker;
@@ -248,6 +252,7 @@ RTDECL(int) RTMpOnSpecific(RTCPUID idCpu, PFNRTMPWORKER pfnWorker, void *pvUser1
     int rc;
     cpuset_t Set;
     RTMPARGS Args;
+    RT_ASSERT_INTS_ON();
 
     if (idCpu >= NCPU)
         return VERR_CPU_NOT_FOUND;
