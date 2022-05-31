@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17917 2009-03-16 11:08:13Z vboxsync $
+# $Id: Makefile.kmk 18159 2009-03-23 17:50:13Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -134,7 +134,7 @@ SOLARIS_STRIP_EXES = \
 	$(if $(VBOX_WITH_VBOXSDL),VBoxSDL,) \
 	$(if $(VBOX_WITH_USB),VBoxUSBHelper,) \
 	$(if $(VBOX_WITH_NETADP),VBoxNetAdpCtl,) \
-	$(if $(VBOX_WITH_NETADP),VBoxNetDHCP,) \
+	VBoxNetDHCP \
 	VBoxSVC \
 	VBoxXPCOMIPCD \
 	kchmviewer
