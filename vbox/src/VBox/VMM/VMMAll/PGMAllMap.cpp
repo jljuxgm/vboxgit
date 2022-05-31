@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 18992 2009-04-17 13:51:56Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 19175 2009-04-24 17:23:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -400,7 +400,13 @@ void pgmMapClearShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAPPING pMap, 
     PX86PDPT pCurrentShwPdpt = NULL;
     if (    PGMGetGuestMode(pVCpu) >= PGMMODE_PAE
         &&  pShwPageCR3 != pVCpu->pgm.s.CTX_SUFF(pShwPageCR3))
+    {
         pCurrentShwPdpt = pgmShwGetPaePDPTPtr(&pVCpu->pgm.s);
+#ifdef IN_RC    /* Lock mapping to prevent it from being reused (currently not possible). */
+        if (pCurrentShwPdpt)
+            PGMDynLockHCPage(pVM, (uint8_t *)pCurrentShwPdpt);
+#endif
+    }
 
     unsigned i = pMap->cPTs;
     PGMMODE  enmShadowMode = PGMGetShadowMode(pVCpu);
@@ -490,6 +496,11 @@ void pgmMapClearShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAPPING pMap, 
                 AssertFailed();
                 break;
         }
+#ifdef IN_RC
+        /* Unlock dynamic mappings again. */
+        if (pCurrentShwPdpt)
+            PGMDynUnlockHCPage(pVM, (uint8_t *)pCurrentShwPdpt);
+#endif
     }
 }
 #endif /* !IN_RING0 */
