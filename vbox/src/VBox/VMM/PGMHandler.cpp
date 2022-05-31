@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 20151 2009-05-29 12:40:31Z vboxsync $ */
+/* $Id: PGMHandler.cpp 20808 2009-06-23 08:43:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -388,8 +388,6 @@ VMMDECL(int) PGMR3HandlerVirtualRegisterEx(PVM pVM, PGMVIRTHANDLERTYPE enmType, 
         if (enmType != PGMVIRTHANDLERTYPE_HYPERVISOR)
         {
             PVMCPU pVCpu = VMMGetCpu(pVM);
-
-            pVM->pgm.s.fPhysCacheFlushPending = true;
 
             pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_UPDATE_PAGE_BIT_VIRTUAL | PGM_SYNC_CLEAR_PGM_POOL;
             VMCPU_FF_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3);

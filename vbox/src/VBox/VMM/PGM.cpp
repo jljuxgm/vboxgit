@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 20277 2009-06-04 13:07:50Z vboxsync $ */
+/* $Id: PGM.cpp 20808 2009-06-23 08:43:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3030,7 +3030,6 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t u32Version
             pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_UPDATE_PAGE_BIT_VIRTUAL;
         }
 
-        pPGM->fPhysCacheFlushPending = true;
         pgmR3HandlerPhysicalUpdateAll(pVM);
 
         for (unsigned i=0;i<pVM->cCPUs;i++)
