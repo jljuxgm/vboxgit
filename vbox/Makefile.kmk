@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19154 2009-04-24 07:50:19Z vboxsync $
+# $Id: Makefile.kmk 19155 2009-04-24 07:53:58Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -746,7 +746,7 @@ snapshot-ose snapshot-puel:
 	    --exclude=$(TARBALLROOT)/doc/Devices \
 	    --exclude=$(TARBALLROOT)/doc/manual/de_DE \
 	    --exclude=$(TARBALLROOT)/doc/manual/fr_FR \
-	    --exclude=$(TARBALLROOT)/doc/l4vm \
+	    --exclude=$(TARBALLROOT)/doc/L4VM \
 	    --exclude=$(TARBALLROOT)/src/tests \
 	    --exclude=$(TARBALLROOT)/src/VBox/Installer/AMI \
 	    --exclude=$(TARBALLROOT)/src/VBox/Installer/Avanquest \
