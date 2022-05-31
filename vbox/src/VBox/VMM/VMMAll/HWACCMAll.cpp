@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 19831 2009-05-19 15:03:08Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 19848 2009-05-20 08:57:55Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -105,7 +105,9 @@ VMMDECL(int) HWACCMFlushAllTLBs(PVM pVM)
         {
             STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatTlbShootdownFlush);
 #ifdef IN_RING0
-            RTMpPokeCpu(idCpu);
+            RTCPUID idHostCpu = pVCpu->hwaccm.s.idEnteredCpu;
+            if (idHostCpu != NIL_RTCPUID)
+                RTMpPokeCpu(idHostCpu);
 #else
             VMR3NotifyCpuFFU(pVCpu->pUVCpu, VMNOTIFYFF_FLAGS_POKE);
 #endif
