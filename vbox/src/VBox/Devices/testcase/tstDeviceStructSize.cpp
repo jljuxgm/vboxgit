@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 16170 2009-01-22 14:40:08Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 21232 2009-07-05 20:04:56Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and GC uses the same
@@ -54,7 +54,7 @@
 # include "../USB/DevEHCI.cpp"
 #endif
 #undef LOG_GROUP
-#include "../VMMDev/VBoxDev.cpp"
+#include "../VMMDev/VMMDev.cpp"
 #undef LOG_GROUP
 #include "../Parallel/DevParallel.cpp"
 #undef LOG_GROUP
