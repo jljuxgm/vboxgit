@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 17633 2009-03-10 14:46:33Z vboxsync $
+// $Id: vbox.dsl 18151 2009-03-23 16:40:47Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -950,6 +950,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
          // High Precision Event Timer
         Device(HPET) {
             Name(_HID,  EISAID("PNP0103"))
+            Name (_CID, 0x010CD041)
             Name(_UID, 0)
             Method (_STA, 0, NotSerialized) {
                     Return(UHPT)
@@ -966,6 +967,21 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                 )
             })
         }
+
+        Device (RTC)
+                {
+                    Name (_HID, EisaId ("PNP0B00"))
+                    Name (_CRS, ResourceTemplate ()
+                    {
+                        IO (Decode16,
+                            0x0070,             // Range Minimum
+                            0x0070,             // Range Maximum
+                            0x01,               // Alignment
+                            0x08,               // Length
+                            )
+                    })
+                }
+
 
        // System Management Controller
        Device (SMC)
