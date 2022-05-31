@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 19834 2009-05-19 15:16:08Z vboxsync $ */
+/* $Id: PGMInternal.h 19860 2009-05-20 11:55:12Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -360,6 +360,17 @@
 # define PGM_INVL_VCPU_TLBS(pVCpu)             HWACCMFlushTLB(pVCpu)
 #else
 # define PGM_INVL_VCPU_TLBS(pVCpu)             HWACCMFlushTLB(pVCpu)
+#endif
+
+/** @def PGM_INVL_ALL_VCPU_TLBS()
+ * Invalidates the TLBs of all VCPUs
+ */
+#ifdef IN_RC
+# define PGM_INVL_ALL_VCPU_TLBS(pVM)            ASMReloadCR3()
+#elif defined(IN_RING0)
+# define PGM_INVL_ALL_VCPU_TLBS(pVM)            HWACCMFlushAllTLBs(pVM)
+#else
+# define PGM_INVL_ALL_VCPU_TLBS(pVM)            HWACCMFlushAllTLBs(pVM)
 #endif
 
 /** Size of the GCPtrConflict array in PGMMAPPING.
