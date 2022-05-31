@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 17991 2009-03-17 01:06:01Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 18013 2009-03-17 11:55:13Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -99,8 +99,8 @@ static const char gDefaultGlobalConfig [] =
 #else
                           "networkName=\"HostInterfaceNetworking-vboxnet0\" "
 #endif
-                          "IPAddress=\"192.168.56.2\" networkMask=\"255.255.255.0\" "
-                          "lowerIP=\"192.168.56.3\" upperIP=\"192.168.56.255\" "
+                          "IPAddress=\"192.168.56.100\" networkMask=\"255.255.255.0\" "
+                          "lowerIP=\"192.168.56.101\" upperIP=\"192.168.56.254\" "
                           "enabled=\"1\"/>"RTFILE_LINEFEED
     "       </DhcpServers>"RTFILE_LINEFEED
     "    </NetserviceRegistry>"RTFILE_LINEFEED
