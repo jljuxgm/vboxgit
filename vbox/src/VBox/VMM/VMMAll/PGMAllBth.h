@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 21175 2009-07-02 15:59:21Z vboxsync $ */
+/* $Id: PGMAllBth.h 21966 2009-08-04 16:47:38Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4416,7 +4416,8 @@ PGM_BTH_DECL(int, MapCR3)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
 #  endif
 
     /* Clean up the old CR3 root. */
-    if (pOldShwPageCR3)
+    if (    pOldShwPageCR3 
+        &&  pOldShwPageCR3 != pNewShwPageCR3    /* @todo can happen due to incorrect syncing between REM & PGM; find the real cause */)
     {
         Assert(pOldShwPageCR3->enmKind != PGMPOOLKIND_FREE);
 #  ifndef PGM_WITHOUT_MAPPINGS
