@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 22982 2009-09-13 22:17:34Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 23114 2009-09-18 08:14:37Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1282,7 +1282,7 @@ VBOXDDU_DECL(int) VDOpen(PVBOXHDD pDisk, const char *pszBackend,
             if (RT_FAILURE(rc))
             {
                 rc = vdError(pDisk, rc, RT_SRC_POS,
-                             N_("VD: error opening image file '%s'"), pszFilename);
+                             N_("VD: error %d opening image file '%s'"), rc, pszFilename);
                 break;
             }
         }
