@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21207 2009-07-03 14:22:16Z vboxsync $
+# $Id: Makefile.kmk 21922 2009-07-31 18:01:58Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -57,7 +57,7 @@ ifdef VBOX_X11_SEAMLESS_GUEST
 	seamless-host.cpp \
 	seamless-x11.cpp \
 	thread.cpp \
-	autoresize.cpp
+	display.cpp
  VBoxClient_LIBS += \
 	Xext Xmu
 endif
