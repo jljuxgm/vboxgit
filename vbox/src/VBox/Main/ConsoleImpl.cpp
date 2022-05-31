@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 22317 2009-08-18 10:29:29Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 22338 2009-08-19 09:54:32Z vboxsync $ */
 
 /** @file
  *
@@ -7622,10 +7622,5 @@ const PDMDRVREG Console::DrvStatusReg =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
-
-/**
- * Initializing the attachment type for the network adapters
- */
-NetworkAttachmentType_T Console::meAttachmentType[] = {};
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

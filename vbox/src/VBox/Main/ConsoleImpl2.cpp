@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22317 2009-08-18 10:29:29Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22338 2009-08-19 09:54:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2818,8 +2818,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             AssertMsgFailed(("should not get here!\n"));
             break;
     }
-
-    meAttachmentType[uInstance] = eAttachmentType;
 
 #undef STR_FREE
 #undef H

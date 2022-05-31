@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 22277 2009-08-16 21:12:50Z vboxsync $ */
+/* $Id: ConsoleImpl.h 22338 2009-08-19 09:54:32Z vboxsync $ */
 
 /** @file
  *
@@ -555,13 +555,6 @@ private:
     /** The current Floppy drive state in the VM.
      * This does not have to match the state maintained in the Floppy. */
     DriveState_T meFloppyState;
-
-    /** The current network attachment type in the VM.
-     * This doesn't have to match the network attachment type
-     * maintained in the NetworkAdapter. This is needed to
-     * change the network attachment dynamically.
-     */
-    static NetworkAttachmentType_T meAttachmentType[SchemaDefs::NetworkAdapterCount];
 
     VMMDev * const mVMMDev;
     AudioSniffer * const mAudioSniffer;
