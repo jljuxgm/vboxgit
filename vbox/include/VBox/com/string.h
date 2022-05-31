@@ -1,4 +1,4 @@
-/* $Id: string.h 21409 2009-07-08 15:36:59Z vboxsync $ */
+/* $Id: string.h 21435 2009-07-09 12:23:15Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -90,7 +90,7 @@ public:
     }
 #endif
 
-    Bstr (const Utf8Str &that);
+    Bstr (const iprt::MiniString &that);
     Bstr (const char *that);
 
     /** Shortcut that calls #alloc(aSize) right after object creation. */
@@ -600,19 +600,28 @@ WORKAROUND_MSVC7_ERROR_C2593_FOR_BOOL_OP (Bstr)
 
 // inlined Bstr members that depend on Utf8Str
 
-inline Bstr::Bstr (const Utf8Str &that) : bstr (NULL) { raw_copy (bstr, that); }
-inline Bstr::Bstr (const char *that) : bstr (NULL) { raw_copy (bstr, that); }
+inline Bstr::Bstr(const iprt::MiniString &that)
+    : bstr(NULL)
+{
+    raw_copy(bstr, that.c_str());
+}
 
-inline Bstr &Bstr::operator = (const Utf8Str &that)
+inline Bstr::Bstr(const char *that)
+    : bstr(NULL)
+{
+    raw_copy(bstr, that);
+}
+
+inline Bstr &Bstr::operator=(const Utf8Str &that)
 {
     setNull();
-    raw_copy (bstr, that);
+    raw_copy(bstr, that);
     return *this;
 }
-inline Bstr &Bstr::operator = (const char *that)
+inline Bstr &Bstr::operator=(const char *that)
 {
     setNull();
-    raw_copy (bstr, that);
+    raw_copy(bstr, that);
     return *this;
 }
 
