@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 21151 2009-07-02 11:47:24Z vboxsync $ */
+/* $Id: PDMQueue.cpp 21152 2009-07-02 11:49:05Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -827,7 +827,7 @@ VMMR3DECL(void) PDMR3QueueFlushWorker(PVM pVM, PPDMQUEUE pQueue)
     VM_ASSERT_EMT(pVM);
 
     /** @todo This will clash with PDMR3QueueFlushAll (guest SMP)! */
-    Assert(!(pVM->pdm.s.fQueueFlushing & PDM_QUEUE_FLUSH_FLAG_ACTIVE_BIT));
+    Assert(!(pVM->pdm.s.fQueueFlushing & PDM_QUEUE_FLUSH_FLAG_ACTIVE));
 
     /*
      * Flush the queue.
