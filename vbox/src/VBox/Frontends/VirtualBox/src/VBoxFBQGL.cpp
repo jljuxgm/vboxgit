@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQGL.cpp 22846 2009-09-08 19:33:55Z vboxsync $ */
+/* $Id: VBoxFBQGL.cpp 22852 2009-09-09 00:09:13Z vboxsync $ */
 /** @file
  * VBoxFBQGL Opengl-based FrameBuffer implementation
  */
@@ -129,9 +129,7 @@ void VBoxQGLFrameBuffer::paintEvent (QPaintEvent *pe)
         pw->vboxDoUpdateViewport(vp);
     }
 
-    pw->performDisplay(true);
-
-    pw->swapBuffers();
+    pw->performDisplayAndSwap(true);
 }
 
 void VBoxQGLFrameBuffer::resizeEvent (VBoxResizeEvent *re)
