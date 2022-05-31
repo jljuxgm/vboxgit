@@ -1,4 +1,4 @@
-/* $Id: uvm.h 22928 2009-09-10 23:00:29Z vboxsync $ */
+/* $Id: uvm.h 22930 2009-09-10 23:10:50Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data. (VMM)
  */
@@ -90,7 +90,7 @@ typedef struct UVM
     struct UVM     *pNext;
 
     /** Align the next member on a 32 byte boundrary. */
-    uint8_t         abAlignment0[HC_ARCH_BITS == 32 ? 16 : 0];
+    uint8_t         abAlignment0[HC_ARCH_BITS == 32 ? 16 : 8];
 
     /** The VM internal data. */
     union
