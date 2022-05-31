@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 21019 2009-06-29 10:26:11Z vboxsync $ */
+/* $Id: DrvNAT.cpp 21048 2009-06-30 04:01:35Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -729,7 +729,7 @@ static int drvNATConstructRedir(unsigned iInstance, PDRVNAT pThis, PCFGMNODE pCf
         /* guest address */
         struct in_addr GuestIP;
         /* @todo (vvl) use CTL_* */
-        GETIP_DEF(rc, pThis, pNode, GuestIP, htonl(ntohl(Network) | 15));
+        GETIP_DEF(rc, pThis, pNode, GuestIP, htonl(Network | 15));
 
         /*
          * Call slirp about it.
