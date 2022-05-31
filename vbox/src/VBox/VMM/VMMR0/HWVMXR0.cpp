@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 20132 2009-05-28 19:20:26Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 20142 2009-05-29 10:14:02Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -626,6 +626,10 @@ static int VMXR0InjectEvent(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, uint32_t intIn
 {
     int         rc;
     uint32_t    iGate = VMX_EXIT_INTERRUPTION_INFO_VECTOR(intInfo);
+
+#ifdef VBOX_WITH_STATISTICS
+    STAM_COUNTER_INC(&pVCpu->hwaccm.s.paStatInjectedIrqsR0[iGate & MASK_INJECT_IRQ_STAT]);
+#endif
 
 #ifdef VBOX_STRICT
     if (iGate == 0xE)

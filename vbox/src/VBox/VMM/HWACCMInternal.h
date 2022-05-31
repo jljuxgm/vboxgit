@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 20133 2009-05-28 19:34:10Z vboxsync $ */
+/* $Id: HWACCMInternal.h 20142 2009-05-29 10:14:02Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -57,6 +57,7 @@ __BEGIN_DECLS
 /** Maximum number of exit reason statistics counters. */
 #define MAX_EXITREASON_STAT        0x100
 #define MASK_EXITREASON_STAT       0xff
+#define MASK_INJECT_IRQ_STAT       0xff
 
 /** @name Changed flags
  * These flags are used to keep track of which important registers that
@@ -672,8 +673,12 @@ typedef struct HWACCMCPU
     STAMCOUNTER             StatDRxIOCheck;
 
 
+#ifdef VBOX_WITH_STATISTICS
     R3PTRTYPE(PSTAMCOUNTER) paStatExitReason;
     R0PTRTYPE(PSTAMCOUNTER) paStatExitReasonR0;
+    R3PTRTYPE(PSTAMCOUNTER) paStatInjectedIrqs;
+    R0PTRTYPE(PSTAMCOUNTER) paStatInjectedIrqsR0;
+#endif
 } HWACCMCPU;
 /** Pointer to HWACCM VM instance data. */
 typedef HWACCMCPU *PHWACCMCPU;
