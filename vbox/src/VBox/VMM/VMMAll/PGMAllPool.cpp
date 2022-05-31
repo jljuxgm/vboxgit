@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 23199 2009-09-21 16:08:03Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 23250 2009-09-23 10:00:46Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3196,6 +3196,9 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
                 {
                     Log4(("pgmPoolTrackFlushGCPhysPTs: i=%d pte=%RX32 cRefs=%#x\n", i, pPT->a[i], cRefs));
                     pPT->a[i].u = (pPT->a[i].u & u32AndMask) | u32OrMask;
+                    if (pPT->a[i].u & PGM_PTFLAGS_TRACK_DIRTY)
+                        pPT->a[i].n.u1Write = 0;    /* need to disallow writes when dirty bit tracking is still active. */
+
                     cRefs--;
                     if (!cRefs)
                         return bRet;
@@ -3256,6 +3259,9 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
                 {
                     Log4(("pgmPoolTrackFlushGCPhysPTs: i=%d pte=%RX64 cRefs=%#x\n", i, pPT->a[i], cRefs));
                     pPT->a[i].u = (pPT->a[i].u & u64AndMask) | u64OrMask;
+                    if (pPT->a[i].u & PGM_PTFLAGS_TRACK_DIRTY)
+                        pPT->a[i].n.u1Write = 0;    /* need to disallow writes when dirty bit tracking is still active. */
+
                     cRefs--;
                     if (!cRefs)
                         return bRet;
