@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 18814 2009-04-07 12:31:20Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 18836 2009-04-07 16:35:48Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -925,10 +925,20 @@ int handleAddiSCSIDisk(HandlerArg *a)
          * from the disk backends to construct the location properly. Also do
          * not use slashes to separate the parts, as otherwise only the last
          * element comtaining information will be shown. */
-        CHECK_ERROR_BREAK (a->virtualBox,
-            CreateHardDisk(Bstr ("iSCSI"),
-                           BstrFmt ("%ls|%ls|%ls", server.raw(), target.raw(), lun.raw()),
-                           hardDisk.asOutParam()));
+        if (lun.isEmpty() || lun == "0" || lun == "enc0")
+        {
+            CHECK_ERROR_BREAK (a->virtualBox,
+                CreateHardDisk(Bstr ("iSCSI"),
+                               BstrFmt ("%ls|%ls", server.raw(), target.raw()),
+                               hardDisk.asOutParam()));
+        }
+        else
+        {
+            CHECK_ERROR_BREAK (a->virtualBox,
+                CreateHardDisk(Bstr ("iSCSI"),
+                               BstrFmt ("%ls|%ls|%ls", server.raw(), target.raw(), lun.raw()),
+                               hardDisk.asOutParam()));
+        }
         CheckComRCBreakRC (rc);
 
         if (!comment.isNull())
