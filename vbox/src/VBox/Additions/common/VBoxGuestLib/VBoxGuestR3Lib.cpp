@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 18157 2009-03-23 17:34:49Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 18452 2009-03-28 04:05:10Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -332,7 +332,7 @@ int vbglR3DoIOCtl(unsigned iFunction, void *pvData, size_t cbData)
 {
 #if defined(RT_OS_WINDOWS)
     DWORD cbReturned = 0;
-    if (!DeviceIoControl(g_hFile, iFunction, pvData, cbData, pvData, cbData, &cbReturned, NULL))
+    if (!DeviceIoControl(g_hFile, iFunction, pvData, (DWORD)cbData, pvData, (DWORD)cbData, &cbReturned, NULL))
     {
 /** @todo The passing of error codes needs to be tested and fixed (as does *all* the other hosts except for
  * OS/2).  The idea is that the VBox status codes in ring-0 should be transfered without loss down to
