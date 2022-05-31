@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 21536 2009-07-13 14:49:39Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 21594 2009-07-15 00:08:20Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -150,9 +150,8 @@ RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
 
 RTDECL(bool) RTThreadIsInInterrupt(RTTHREAD hThread)
 {
-    Assert(hThread == NIL_RTTHREAD); NOREF(hThread);
-    /** @todo Solaris: Implement RTThreadIsInInterrupt. Required for guest
-     *        additions! */
-    return !ASMIntAreEnabled();
+    /* This is the best we currently can do here. :-( */
+    return !RTThreadPreemptIsEnabled(hThread)
+        && getpil() > 0
 }
 
