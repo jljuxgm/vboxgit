@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 18072 2009-03-18 16:58:40Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 18113 2009-03-20 12:54:04Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1651,10 +1651,13 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
             ULONG statVal;
 
             rc = guest->GetStatistic(0, GuestStatisticType_SampleNumber, &statVal);
-            if (details == VMINFO_MACHINEREADABLE)
-                RTPrintf("StatGuestSample=%d\n", statVal);
-            else
-                RTPrintf("Guest statistics for sample %d:\n\n", statVal);
+            if (SUCCEEDED(rc))
+            {
+                if (details == VMINFO_MACHINEREADABLE)
+                    RTPrintf("StatGuestSample=%d\n", statVal);
+                else
+                    RTPrintf("Guest statistics for sample %d:\n\n", statVal);
+            }
 
             rc = guest->GetStatistic(0, GuestStatisticType_CPULoad_Idle, &statVal);
             if (SUCCEEDED(rc))
