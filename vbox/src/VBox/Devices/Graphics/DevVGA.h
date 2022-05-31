@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 22470 2009-08-26 13:21:31Z vboxsync $ */
+/* $Id: DevVGA.h 22483 2009-08-26 17:29:20Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -469,6 +469,7 @@ int vboxVBVASaveStatePrep (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 
 int vboxVBVASaveStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 int vboxVBVALoadStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t u32Version);
+int vboxVBVALoadStateDone (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 
 #endif /* VBOX_WITH_HGSMI */
 
