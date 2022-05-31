@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 20071 2009-05-27 12:07:38Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 20073 2009-05-27 12:14:57Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2996,7 +2996,8 @@ REMR3DECL(void) REMR3NotifyHandlerPhysicalDeregister(PVM pVM, PGMPHYSHANDLERTYPE
     Log(("REMR3NotifyHandlerPhysicalDeregister: enmType=%d GCPhys=%RGp cb=%RGp fHasHCHandler=%RTbool fRestoreAsRAM=%RTbool RAM=%08x\n",
           enmType, GCPhys, cb, fHasHCHandler, fRestoreAsRAM, MMR3PhysGetRamSize(pVM)));
     VM_ASSERT_EMT(pVM);
-    Assert(!PGMIsLockOwner(pVM));
+/* Locked during termination */
+//    Assert(!PGMIsLockOwner(pVM));
 
     EMR3RemLock(pVM);
 
