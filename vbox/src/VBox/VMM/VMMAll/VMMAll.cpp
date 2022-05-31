@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 19434 2009-05-06 13:58:35Z vboxsync $ */
+/* $Id: VMMAll.cpp 19437 2009-05-06 14:34:05Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -72,6 +72,22 @@ VMMDECL(VMCPUID) VMMGetCpuId(PVM pVM)
 #endif
 }
 
+
+/**
+ * Sends SIPI to the virtual CPU by setting CS:EIP into vector-dependent state
+ * and unhalting processor
+ *
+ * @param   pVM         The VM to operate on.
+ * @param   idCpu       Virtual CPU to perform SIPI on
+ * @param   iVector     SIPI vector
+ */
+VMMDECL(void) VMMSendSipi(PVM pVM, VMCPUID idCpu, int iVector)
+{
+    PVMCPU pCpu = VMMGetCpuById(pVM, idCpu);
+    CPUMSetGuestCS(pCpu, iVector * 0x100);
+    CPUMSetGuestEIP(pCpu, 0);
+    /** @todo: how do I unhalt VCPU? */
+}
 
 /**
  * Returns the VMCPU of the calling EMT.

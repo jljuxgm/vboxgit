@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 17968 2009-03-16 19:02:29Z vboxsync $ */
+/* $Id: DevAPIC.cpp 19437 2009-05-06 14:34:05Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -362,6 +362,16 @@ DECLINLINE(void) cpuClearInterrupt(APICDeviceInfo* dev, APICState *s)
     dev->CTX_SUFF(pApicHlp)->pfnClearInterruptFF(dev->CTX_SUFF(pDevIns),
                                                  getCpuFromLapic(dev, s));
 }
+
+DECLINLINE(void) cpuSendSipi(APICDeviceInfo* dev, APICState *s, int vector)
+{
+    Log2(("apic: send SIPI vector=%d\n", vector));
+    dev->CTX_SUFF(pApicHlp)->pfnSendSipi(dev->CTX_SUFF(pDevIns),
+                                         getCpuFromLapic(dev, s),
+                                         vector);
+}
+
+
 
 DECLINLINE(uint32_t) getApicEnableBits(APICDeviceInfo* dev)
 {
@@ -1080,6 +1090,7 @@ static void apic_startup(APICDeviceInfo* dev, APICState *s, int vector_num)
 #else
     /** @todo: init CPUs */
     LogRel(("[SMP] apic_startup: %d on CPUs %d\n", vector_num, s->id));
+    cpuSendSipi(dev, s, vector_num);
 #endif
 }
 static void apic_deliver(APICDeviceInfo* dev, APICState *s,
