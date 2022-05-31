@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 22866 2009-09-09 14:39:46Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 22915 2009-09-10 13:43:25Z vboxsync $ */
 
 /** @file
  *
@@ -5797,6 +5797,25 @@ Console::vmstateChangeCallback (PVM aVM, VMSTATE aState, VMSTATE aOldState,
             break;
         }
 
+        case VMSTATE_FATAL_ERROR:
+        {
+            AutoWriteLock alock(that);
+
+            if (that->mVMStateChangeCallbackDisabled)
+                break;
+
+            /* Fatal errors are only for running VMs. */
+            Assert(Global::IsOnline(that->mMachineState));
+
+            /* Note! 'Pause' is used here in want of something better.  There
+             *       are currently only two places where fatal errors might be
+             *       raised, so it is not worth adding a new externally
+             *       visible state for this yet.  */
+            that->setMachineState(MachineState_Paused);
+
+            break;
+        }
+
         case VMSTATE_GURU_MEDITATION:
         {
             AutoWriteLock alock(that);
@@ -5804,7 +5823,7 @@ Console::vmstateChangeCallback (PVM aVM, VMSTATE aState, VMSTATE aOldState,
             if (that->mVMStateChangeCallbackDisabled)
                 break;
 
-            /* Guru respects only running VMs */
+            /* Guru are only for running VMs */
             Assert (Global::IsOnline (that->mMachineState));
 
             that->setMachineState (MachineState_Stuck);
