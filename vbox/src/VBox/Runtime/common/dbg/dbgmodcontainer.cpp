@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 22111 2009-08-09 20:12:09Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -414,7 +414,7 @@ static DECLCALLBACK(int) rtDbgModContainer_SymbolAdd(PRTDBGMODINT pMod, const ch
                                        : &pThis->paSegs[iSeg].SymAddrTree;
             if (RTAvlrUIntPtrInsert(pAddrTree, &pSymbol->AddrCore))
             {
-                if (RTAvlU32Insert(&pThis->LineOrdinalTree, &pSymbol->OrdinalCore))
+                if (RTAvlU32Insert(&pThis->SymbolOrdinalTree, &pSymbol->OrdinalCore))
                 {
                     if (piOrdinal)
                         *piOrdinal = pThis->iNextSymbolOrdinal;
