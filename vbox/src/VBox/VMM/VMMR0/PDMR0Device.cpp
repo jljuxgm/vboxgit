@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 19764 2009-05-18 09:04:08Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 19766 2009-05-18 09:09:13Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -451,7 +451,7 @@ static DECLCALLBACK(void) pdmR0ApicHlp_SetInterruptFF(PPDMDEVINS pDevIns, VMCPUI
                 GVMMR0SchedWakeUpEx(pVM, pVCpu->idCpu, false /* don't take the used lock */);
                 break;
             default:
-                AssertFailed();
+                break;
         }
     }
 }
