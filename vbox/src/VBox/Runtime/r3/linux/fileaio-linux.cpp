@@ -1,4 +1,4 @@
-/* $Id: fileaio-linux.cpp 21505 2009-07-10 21:54:21Z vboxsync $ */
+/* $Id: fileaio-linux.cpp 22969 2009-09-11 23:00:59Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Linux host platform.
  */
@@ -725,7 +725,7 @@ RTDECL(int) RTFileAioCtxWait(RTFILEAIOCTX hAioCtx, size_t cMinReqs, unsigned cMi
              *  purpose for it yet.
              */
             if (RT_UNLIKELY(aPortEvents[i].rc < 0))
-                pReqInt->Rc = RTErrConvertFromErrno(aPortEvents[i].rc);
+                pReqInt->Rc = RTErrConvertFromErrno(-aPortEvents[i].rc); /* Convert to positive value. */
             else
             {
                 pReqInt->Rc = VINF_SUCCESS;
