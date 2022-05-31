@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 23765 2009-10-14 14:48:30Z vboxsync $ */
+/* $Id: CSAM.cpp 23768 2009-10-14 15:39:56Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -128,7 +128,7 @@ static const SSMFIELD g_aCsamFields[] =
     SSMFIELD_ENTRY(             CSAM, iCallInstruction),
     SSMFIELD_ENTRY(             CSAM, fScanningStarted),
     SSMFIELD_ENTRY(             CSAM, fGatesChecked),
-    SSMFIELD_ENTRY_PAD_HC(      CSAM, Alignment1, 4, 2),
+    SSMFIELD_ENTRY_PAD_HC(      CSAM, Alignment1, 4, 4),
     SSMFIELD_ENTRY_IGNORE(      CSAM, StatNrTraps),
     SSMFIELD_ENTRY_IGNORE(      CSAM, StatNrPages),
     SSMFIELD_ENTRY_IGNORE(      CSAM, StatNrPagesInv),
