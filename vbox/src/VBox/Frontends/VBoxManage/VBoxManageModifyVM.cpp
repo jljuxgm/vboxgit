@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 23738 2009-10-13 15:49:19Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 23750 2009-10-14 09:26:48Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -64,6 +64,7 @@ enum enOptionCodes
     MODIFYVMACPI,
     MODIFYVMIOAPIC,
     MODIFYVMPAE,
+    MODIFYVMSYNTHCPU,
     MODIFYVMHWVIRTEX,
     MODIFYVMHWVIRTEXEXCLUSIVE,
     MODIFYVMNESTEDPAGING,
@@ -136,6 +137,7 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--acpi",                    MODIFYVMACPI,                    RTGETOPT_REQ_STRING },
     { "--ioapic",                  MODIFYVMIOAPIC,                  RTGETOPT_REQ_STRING },
     { "--pae",                     MODIFYVMPAE,                     RTGETOPT_REQ_STRING },
+    { "--synthcpu",                MODIFYVMSYNTHCPU,                RTGETOPT_REQ_STRING },
     { "--hwvirtex",                MODIFYVMHWVIRTEX,                RTGETOPT_REQ_STRING },
     { "--hwvirtexexcl",            MODIFYVMHWVIRTEXEXCLUSIVE,       RTGETOPT_REQ_STRING },
     { "--nestedpaging",            MODIFYVMNESTEDPAGING,            RTGETOPT_REQ_STRING },
@@ -362,15 +364,36 @@ int handleModifyVM(HandlerArg *a)
                 {
                     if (!strcmp(pValueUnion.psz, "on"))
                     {
-                        CHECK_ERROR (machine, COMSETTER(PAEEnabled)(true));
+                        CHECK_ERROR (machine, SetCpuProperty(CpuPropertyType_PAE, true));
                     }
                     else if (!strcmp(pValueUnion.psz, "off"))
                     {
-                        CHECK_ERROR (machine, COMSETTER(PAEEnabled)(false));
+                        CHECK_ERROR (machine, SetCpuProperty(CpuPropertyType_PAE, false));
                     }
                     else
                     {
                         errorArgument("Invalid --pae argument '%s'", pValueUnion.psz);
+                        rc = E_FAIL;
+                    }
+                }
+                break;
+            }
+
+            case MODIFYVMSYNTHCPU:
+            {
+                if (pValueUnion.psz)
+                {
+                    if (!strcmp(pValueUnion.psz, "on"))
+                    {
+                        CHECK_ERROR (machine, SetCpuProperty(CpuPropertyType_Synthetic, true));
+                    }
+                    else if (!strcmp(pValueUnion.psz, "off"))
+                    {
+                        CHECK_ERROR (machine, SetCpuProperty(CpuPropertyType_Synthetic, false));
+                    }
+                    else
+                    {
+                        errorArgument("Invalid --synthcpu argument '%s'", pValueUnion.psz);
                         rc = E_FAIL;
                     }
                 }
@@ -425,11 +448,11 @@ int handleModifyVM(HandlerArg *a)
                 {
                     if (!strcmp(pValueUnion.psz, "on"))
                     {
-                        CHECK_ERROR (machine, SetHWVirtExProperty(HWVirtExPropertyType_NestedPagingEnabled, TRUE));
+                        CHECK_ERROR (machine, SetHWVirtExProperty(HWVirtExPropertyType_NestedPaging, TRUE));
                     }
                     else if (!strcmp(pValueUnion.psz, "off"))
                     {
-                        CHECK_ERROR (machine, SetHWVirtExProperty(HWVirtExPropertyType_NestedPagingEnabled, FALSE));
+                        CHECK_ERROR (machine, SetHWVirtExProperty(HWVirtExPropertyType_NestedPaging, FALSE));
                     }
                     else
                     {
@@ -446,11 +469,11 @@ int handleModifyVM(HandlerArg *a)
                 {
                     if (!strcmp(pValueUnion.psz, "on"))
                     {
-                        CHECK_ERROR (machine, SetHWVirtExProperty(HWVirtExPropertyType_VPIDEnabled, TRUE));
+                        CHECK_ERROR (machine, SetHWVirtExProperty(HWVirtExPropertyType_VPID, TRUE));
                     }
                     else if (!strcmp(pValueUnion.psz, "off"))
                     {
-                        CHECK_ERROR (machine, SetHWVirtExProperty(HWVirtExPropertyType_VPIDEnabled, FALSE));
+                        CHECK_ERROR (machine, SetHWVirtExProperty(HWVirtExPropertyType_VPID, FALSE));
                     }
                     else
                     {
