@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 20663 2009-06-17 12:47:55Z vboxsync $ */
+/* $Id: VMM.cpp 20792 2009-06-22 16:48:12Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -676,8 +676,8 @@ VMMR3DECL(int) VMMR3Term(PVM pVM)
      */
     for (VMCPUID i = 0; i < pVM->cCPUs; i++)
     {
-        RTMemProtect(pVM->aCpus[i].vmm.s.pbEMTStackR3 - PAGE_SIZE,      PAGE_SIZE, RTMEM_PROT_READ | RTMEM_PROT_WRITE);
-        RTMemProtect(pVM->aCpus[i].vmm.s.pbEMTStackR3 + VMM_STACK_SIZE, PAGE_SIZE, RTMEM_PROT_READ | RTMEM_PROT_WRITE);
+        MMR3HyperSetGuard(pVM, pVM->aCpus[i].vmm.s.pbEMTStackR3 - PAGE_SIZE,      PAGE_SIZE, false /*fSet*/);
+        MMR3HyperSetGuard(pVM, pVM->aCpus[i].vmm.s.pbEMTStackR3 + VMM_STACK_SIZE, PAGE_SIZE, false /*fSet*/);
     }
 #endif
     return rc;
