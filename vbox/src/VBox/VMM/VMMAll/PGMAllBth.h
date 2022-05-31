@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 20069 2009-05-27 11:37:03Z vboxsync $ */
+/* $Id: PGMAllBth.h 20125 2009-05-28 15:44:30Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2584,6 +2584,12 @@ PGM_BTH_DECL(int, SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RTGCPTR 
             /* Select the right PDE as we're emulating a 4kb page table with 2 shadow page tables. */
             GCPhys |= (iPDDst & 1) * (PAGE_SIZE / 2);
 # endif
+            /* Modify the physical address to distinguish between different access types to prevent incorrect reuse of cached entries. */
+            if (PdeSrc.n.u1Write)
+                GCPhys |= PGMPOOL_PHYS_ACCESS_RW;
+            if (PdeSrc.n.u1User)
+                GCPhys |= PGMPOOL_PHYS_ACCESS_USER;
+
             rc = pgmPoolAlloc(pVM, GCPhys, BTH_PGMPOOLKIND_PT_FOR_PT, pShwPde->idx,      iPDDst, &pShwPage);
         }
         else
