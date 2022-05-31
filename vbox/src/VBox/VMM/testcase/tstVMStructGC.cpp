@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 20087 2009-05-27 14:31:18Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 20135 2009-05-29 07:44:12Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -648,7 +648,7 @@ int main()
     GEN_CHECK_OFF(PGMPOOLPAGE, GCPhys);
     GEN_CHECK_OFF(PGMPOOLPAGE, pvPageR3);
     GEN_CHECK_OFF(PGMPOOLPAGE, enmKind);
-    GEN_CHECK_OFF(PGMPOOLPAGE, bPadding);
+    GEN_CHECK_OFF(PGMPOOLPAGE, enmAccess);
     GEN_CHECK_OFF(PGMPOOLPAGE, idx);
     GEN_CHECK_OFF(PGMPOOLPAGE, iNext);
 #ifdef PGMPOOL_WITH_USER_TRACKING
