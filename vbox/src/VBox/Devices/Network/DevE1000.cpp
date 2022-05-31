@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 18118 2009-03-20 13:43:11Z vboxsync $ */
+/* $Id: DevE1000.cpp 18439 2009-03-28 02:40:42Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -1733,7 +1733,7 @@ static DECLCALLBACK(void) e1kStoreRxFragment(E1KSTATE *pState, E1KRXDESC *pDesc,
     STAM_PROFILE_ADV_START(&pState->StatReceiveStore, a);
     E1kLog2(("%s e1kStoreRxFragment: store fragment of %04X at %016LX, EOP=%d\n", pState->szInstance, cb, pDesc->u64BufAddr, pDesc->status.fEOP));
     PDMDevHlpPhysWrite(pState->CTX_SUFF(pDevIns), pDesc->u64BufAddr, pvBuf, cb);
-    pDesc->u16Length = cb;
+    pDesc->u16Length = (uint16_t)cb;                        Assert(pDesc->u16Length == cb);
     /* Write back the descriptor */
     PDMDevHlpPhysWrite(pState->CTX_SUFF(pDevIns), e1kDescAddr(RDBAH, RDBAL, RDH), pDesc, sizeof(E1KRXDESC));
     e1kPrintRDesc(pState, pDesc);
@@ -2005,7 +2005,7 @@ static int e1kRegWriteCTRL(E1KSTATE* pState, uint32_t offset, uint32_t index, ui
             {
                 E1kLog(("%s e1kRegWriteCTRL: Phy::writeMDIO(%d)\n", INSTANCE(pState), !!(value & CTRL_MDIO)));
                 /* MDIO direction pin is set to output and MDC is high, write MDIO pin value to PHY */
-                Phy::writeMDIO(&pState->phy, value & CTRL_MDIO);
+                Phy::writeMDIO(&pState->phy, !!(value & CTRL_MDIO));
             }
             else
             {
