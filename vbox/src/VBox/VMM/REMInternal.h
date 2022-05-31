@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 20746 2009-06-21 19:53:12Z vboxsync $ */
+/* $Id: REMInternal.h 20747 2009-06-21 20:23:22Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -109,7 +109,9 @@ typedef struct REMHANDLERNOTIFICATION
     } u;
     uint32_t                    idxSelf;
     uint32_t volatile           idxNext;
-} REMHANDLERNOTIFICATION, *PREMHANDLERNOTIFICATION;
+} REMHANDLERNOTIFICATION;
+/** Pointer to a handler notification record. */
+typedef REMHANDLERNOTIFICATION *PREMHANDLERNOTIFICATION;
 
 /**
  * Converts a REM pointer into a VM pointer.

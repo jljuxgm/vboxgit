@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 20689 2009-06-18 12:13:14Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 20747 2009-06-21 20:23:22Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -737,6 +737,27 @@ int main()
     GEN_CHECK_OFF(REM, rc);
     GEN_CHECK_OFF(REM, StatsInQEMU);
     GEN_CHECK_OFF(REM, Env);
+
+    GEN_CHECK_SIZE(REMHANDLERNOTIFICATION);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, enmKind);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalRegister.GCPhys);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalRegister.cb);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalRegister.enmType);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalRegister.fHasHCHandler);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalDeregister.GCPhys);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalDeregister.cb);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalDeregister.enmType);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalDeregister.fHasHCHandler);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalDeregister.fRestoreAsRAM);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalModify.GCPhysOld);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalModify.GCPhysNew);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalModify.cb);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalModify.enmType);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalModify.fHasHCHandler);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, u.PhysicalModify.fRestoreAsRAM);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, idxSelf);
+    GEN_CHECK_OFF(REMHANDLERNOTIFICATION, idxNext);
 
     GEN_CHECK_SIZE(SELM);
     GEN_CHECK_OFF(SELM, offVM);
