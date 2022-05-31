@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 18230 2009-03-25 01:13:09Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 18232 2009-03-25 01:15:31Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1775,7 +1775,7 @@ VMMDECL(int) IOMInterpretOUTS(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu
  * @param   fPageFlags      Page flags to set. Must be (X86_PTE_RW | X86_PTE_P)
  *                          for the time being.
  */
-VMMDECL(int) IOMMMIOModifyPage(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCPhysRemapped, uint64_t fPageFlags)
+VMMDECL(int) IOMMMIOMapMMIO2Page(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCPhysRemapped, uint64_t fPageFlags)
 {
     Log(("IOMMMIOModifyPage %RGp -> %RGp flags=%RX64\n", GCPhys, GCPhysRemapped, fPageFlags));
 
