@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21077 2009-06-30 15:19:12Z vboxsync $
+# $Id: Makefile.kmk 21079 2009-06-30 15:59:22Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -518,7 +518,6 @@ VBoxSettings_DEFS       = IN_VBOXXML_R3
 VBoxSettings_INCS       = \
 	include
 VBoxSettings_SOURCES    = \
-	xml/xml.cpp \
 	xml/Settings.cpp
 VBoxSettings_LDFLAGS.darwin = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/$(notdir $(LIB_SETTINGS)) -Wl,-x # no debug info please.
 

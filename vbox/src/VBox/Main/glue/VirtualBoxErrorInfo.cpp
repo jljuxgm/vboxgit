@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfo.cpp 21077 2009-06-30 15:19:12Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfo.cpp 21079 2009-06-30 15:59:22Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -178,7 +178,8 @@ HRESULT VirtualBoxErrorInfo::init (nsIException *aInfo)
     rc = aInfo->GetResult (&mResultCode);
     AssertComRC (rc);
     Utf8Str message;
-    rc = aInfo->GetMessage (message.asOutParam());
+    rc = aInfo->GetMessage(message.asOutParam());
+    message.jolt();
     AssertComRC (rc);
     mText = message;
 

@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 21077 2009-06-30 15:19:12Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 21079 2009-06-30 15:59:22Z vboxsync $ */
 
 /** @file
  *
@@ -117,7 +117,8 @@ void ErrorInfo::init (bool aKeepObj /* = false */)
                     gotSomething |= NS_SUCCEEDED (rc);
 
                     Utf8Str message;
-                    rc = ex->GetMessage (message.asOutParam());
+                    rc = ex->GetMessage(message.asOutParam());
+                    message.jolt();
                     gotSomething |= NS_SUCCEEDED (rc);
                     if (NS_SUCCEEDED (rc))
                         mText = message;
