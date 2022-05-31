@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 20124 2009-05-28 15:40:06Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 20130 2009-05-28 15:55:42Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -150,9 +150,9 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
 RTDECL(bool) RTThreadPreemptIsPendingTrusty(void)
 {
     /* RTThreadPreemptIsPending is only reliable of we've got both offsets and size. */
-    return offQuantumEnd    != 0
-        && cbQuantumEnd     != 0
-        && offDpcQueueDepth != 0;
+    return g_offrtNtPbQuantumEnd    != 0
+        && g_cbrtNtPbQuantumEnd     != 0
+        && g_offrtNtPbDpcQueueDepth != 0;
 }
 
 
