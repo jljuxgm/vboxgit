@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 23119 2009-09-18 09:59:36Z vboxsync $ */
+/* $Id: DevEFI.cpp 23353 2009-09-26 19:37:53Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -622,8 +622,8 @@ static int efiParseFirmware(PDEVEFI pThis)
      * Ffs files are stored one by one, so to find SECURITY_CORE we've to
      * search thru every one on the way.
      */
-    uint32_t                    cbFfsFile;
-    EFI_FFS_FILE_HEADER const  *pFfsFile = (EFI_FFS_FILE_HEADER const *)(pThis->pu8EfiRom + pFwVolHdr->HeaderLength);
+    uint32_t                    cbFfsFile = 0;  /* shut up gcc */
+    EFI_FFS_FILE_HEADER const  *pFfsFile  = (EFI_FFS_FILE_HEADER const *)(pThis->pu8EfiRom + pFwVolHdr->HeaderLength);
     pFfsFile = efiFwVolFindFileByType(pFfsFile, pbFwVolEnd, EFI_FV_FILETYPE_SECURITY_CORE, &cbFfsFile);
     AssertLogRelMsgReturn(pFfsFile, ("No SECURITY_CORE found in the firmware volume\n"), VERR_FILE_NOT_FOUND);
 
