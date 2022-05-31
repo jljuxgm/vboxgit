@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 22799 2009-09-07 10:08:54Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 22918 2009-09-10 14:29:19Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -2526,7 +2526,7 @@ static int vboxNetFltSolarisAttachToInterface(PVBOXNETFLTINS pThis)
  */
 static mblk_t *vboxNetFltSolarisMBlkFromSG(PVBOXNETFLTINS pThis, PINTNETSG pSG, uint32_t fDst)
 {
-    LogFlow((DEVICE_NAME ":vboxNetFltSolarisMBlkFromSG pThis=%p pSG=%p\n"));
+    LogFlow((DEVICE_NAME ":vboxNetFltSolarisMBlkFromSG pThis=%p pSG=%p\n", pThis, pSG));
 
     mblk_t *pMsg = allocb(pSG->cbTotal, BPRI_MED);
     if (RT_UNLIKELY(!pMsg))
