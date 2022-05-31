@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 18974 2009-04-17 07:13:31Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 18979 2009-04-17 07:35:08Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -1737,7 +1737,7 @@ VMMDECL(void) PGMDynMapPopAutoSubset(PVM pVM, uint32_t iPrevSubset)
     uint32_t        cEntries = pSet->cEntries;
     AssertReturnVoid(cEntries != PGMMAPSET_CLOSED);
     AssertReturnVoid(pSet->iSubset <= iPrevSubset || iPrevSubset == UINT32_MAX);
-Assert(iPrevSubset == UINT32_MAX);
+    Assert(iPrevSubset == UINT32_MAX);
     STAM_COUNTER_INC(&pVM->pgm.s.aStatR0DynMapSetSize[(cEntries * 10 / RT_ELEMENTS(pSet->aEntries)) % 11]);
     if (    cEntries >= RT_ELEMENTS(pSet->aEntries) * 40 / 100
         &&  cEntries != pSet->iSubset)
