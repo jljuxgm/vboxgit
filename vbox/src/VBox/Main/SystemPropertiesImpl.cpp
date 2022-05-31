@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 22595 2009-08-31 11:54:30Z vboxsync $ */
 
 /** @file
  *
@@ -199,7 +199,16 @@ STDMETHODIMP SystemProperties::COMGETTER(MaxGuestRAM)(ULONG *maxRAM)
 
     /* no need to lock, this is const */
     AssertCompile(MM_RAM_MAX_IN_MB <= SchemaDefs::MaxGuestRAM);
-    *maxRAM = MM_RAM_MAX_IN_MB;
+    ULONG maxRAMSys = MM_RAM_MAX_IN_MB;
+    ULONG maxRAMArch = maxRAMSys;
+#if HC_ARCH_BITS == 32 && !defined(RT_OS_DARWIN)
+# ifdef RT_OS_WINDOWS
+    maxRAMArch = UINT32_C(1500);
+# else
+    maxRAMArch = UINT32_C(2560);
+# endif
+#endif
+    *maxRAM = RT_MIN(maxRAMSys, maxRAMArch);
 
     return S_OK;
 }
