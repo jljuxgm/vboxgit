@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibSeamless.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSeamless.cpp 21211 2009-07-03 15:12:24Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Seamless mode.
  */
@@ -26,11 +26,11 @@
 #include <iprt/assert.h>
 #include <iprt/string.h>
 
-#include <VBox/VBoxGuest.h>
 #include <VBox/VBoxDev.h>
 #include <VBox/log.h>
 
 #include "VBGLR3Internal.h"
+
 
 /**
  * Tell the host that we support (or no longer support) seamless mode.
@@ -50,7 +50,7 @@ VBGLR3DECL(int) VbglR3SeamlessSetCap(bool fState)
     vmmdevInitRequest(&vmmreqGuestCaps.header, VMMDevReq_ReportGuestCapabilities);
     vmmreqGuestCaps.caps = fState ? VMMDEV_GUEST_SUPPORTS_SEAMLESS : 0;
     rc = vbglR3GRPerform(&vmmreqGuestCaps.header);
-#ifdef DEBUG
+#ifdef DEBUG /** @todo r=bird: Why the LogRel here? */
     if (RT_SUCCESS(rc))
         LogRel(("Successfully set the seamless capability on the host.\n"));
     else

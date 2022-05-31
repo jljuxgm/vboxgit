@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 10638 2008-07-15 10:01:32Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 21211 2009-07-03 15:12:24Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -27,6 +27,7 @@
 #include <VBox/log.h>
 
 #include "VBGLR3Internal.h"
+
 
 /**
  * Cause any pending WaitEvent calls (VBOXGUEST_IOCTL_WAITEVENT) to return

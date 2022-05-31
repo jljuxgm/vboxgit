@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibDaemonize.cpp 18526 2009-03-30 11:47:27Z vboxsync $ */
+/** $Id: VBoxGuestR3LibDaemonize.cpp 21211 2009-07-03 15:12:24Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, daemonize a process.
  */
@@ -48,10 +48,10 @@
 # include <errno.h>
 #endif
 
-#include <iprt/string.h>
 #include <iprt/file.h>
 #include <iprt/process.h>
-#include <VBox/VBoxGuest.h>
+#include <iprt/string.h>
+#include "VBGLR3Internal.h"
 
 
 /**

@@ -1,7 +1,6 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 21198 2009-07-03 13:21:08Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 21211 2009-07-03 15:12:24Z vboxsync $ */
 /** @file
- * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
- * guest properties.
+ * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
 
 /*
@@ -41,6 +40,8 @@
 /**
  * Structure containing information needed to enumerate through guest
  * properties.
+ *
+ * @remarks typedef in VBoxGuestLib.h.
  */
 struct VBGLR3GUESTPROPENUM
 {

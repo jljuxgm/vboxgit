@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18068 2009-03-18 14:42:47Z vboxsync $
+# $Id: Makefile.kmk 21211 2009-07-03 15:12:24Z vboxsync $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -45,7 +45,7 @@ hdrs := $(filter-out \
 	VBox/usblib-solaris.h, \
 	$(wildcard VBox/*.h iprt/*.h))
 
-hdrs.r3 := $(filter-out VBox/VBoxGuestLib.h, $(hdrs))
+hdrs.r3 := $(filter-out , $(hdrs))
 hdrs.r0 := $(filter-out $(cpp_hdrs) $(r3_only_hdrs), $(hdrs))
 hdrs.gc := $(filter-out \
 	VBox/VBoxGuestLib.h \

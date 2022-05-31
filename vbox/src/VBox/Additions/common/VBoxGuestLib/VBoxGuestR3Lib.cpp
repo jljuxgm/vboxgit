@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 21201 2009-07-03 13:49:09Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 21211 2009-07-03 15:12:24Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -43,13 +43,12 @@
 # include <unistd.h>
 #endif
 
-#include <iprt/time.h>
-#include <iprt/asm.h>
-#include <iprt/string.h>
-#include <iprt/file.h>
 #include <iprt/assert.h>
+#include <iprt/asm.h>
+#include <iprt/file.h>
+#include <iprt/time.h>
+#include <iprt/string.h>
 #include <iprt/thread.h>
-#include <VBox/VBoxGuest.h>
 #include <VBox/log.h>
 #include "VBGLR3Internal.h"
 
