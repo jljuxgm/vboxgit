@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 22866 2009-09-09 14:39:46Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 23168 2009-09-21 08:59:07Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -407,10 +407,14 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
     RTTimeSpecSetMilli(&timeSpec, stateSince);
     char pszTime[30] = {0};
     RTTimeSpecToString(&timeSpec, pszTime, sizeof(pszTime));
+    Bstr stateFile;
+    machine->COMGETTER(StateFilePath)(stateFile.asOutParam());
     if (details == VMINFO_MACHINEREADABLE)
     {
         RTPrintf("VMState=\"%s\"\n", pszState);
         RTPrintf("VMStateChangeTime=\"%s\"\n", pszTime);
+        if (!stateFile.isEmpty())
+            RTPrintf("VMStateFile=\"%lS\"\n", stateFile.raw());
     }
     else
         RTPrintf("State:           %s (since %s)\n", pszState, pszTime);
