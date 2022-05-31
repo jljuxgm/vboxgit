@@ -1,4 +1,4 @@
-/* $Id: RawHDDCore.cpp 18066 2009-03-18 14:16:06Z vboxsync $ */
+/* $Id: RawHDDCore.cpp 21806 2009-07-27 10:14:11Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -986,7 +986,7 @@ static void rawDump(void *pBackendData)
     Assert(pImage);
     if (pImage)
     {
-        RTLogPrintf("Header: Geometry PCHS=%u/%u/%u LCHS=%u/%u/%u cbSector=%llu\n",
+        pImage->pInterfaceErrorCallbacks->pfnMessage(pImage->pInterfaceError->pvUser, "Header: Geometry PCHS=%u/%u/%u LCHS=%u/%u/%u cbSector=%llu\n",
                     pImage->PCHSGeometry.cCylinders, pImage->PCHSGeometry.cHeads, pImage->PCHSGeometry.cSectors,
                     pImage->LCHSGeometry.cCylinders, pImage->LCHSGeometry.cHeads, pImage->LCHSGeometry.cSectors,
                     pImage->cbSize / 512);

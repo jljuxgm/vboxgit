@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 21038 2009-06-29 15:57:12Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 21806 2009-07-27 10:14:11Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -813,6 +813,7 @@ int handleConvertFromRaw(int argc, char *argv[])
     vdInterfaceErrorCallbacks.cbSize       = sizeof(VDINTERFACEERROR);
     vdInterfaceErrorCallbacks.enmInterface = VDINTERFACETYPE_ERROR;
     vdInterfaceErrorCallbacks.pfnError     = handleVDError;
+    vdInterfaceErrorCallbacks.pfnMessage   = NULL;
 
     rc = VDInterfaceAdd(&vdInterfaceError, "VBoxManage_IError", VDINTERFACETYPE_ERROR,
                         &vdInterfaceErrorCallbacks, NULL, &pVDIfs);

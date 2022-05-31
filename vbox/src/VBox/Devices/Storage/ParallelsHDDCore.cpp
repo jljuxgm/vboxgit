@@ -1,4 +1,4 @@
-/* $Id: ParallelsHDDCore.cpp 21373 2009-07-07 21:16:05Z vboxsync $ */
+/* $Id: ParallelsHDDCore.cpp 21806 2009-07-27 10:14:11Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -959,7 +959,7 @@ static void parallelsDump(void *pBackendData)
     Assert(pImage);
     if (pImage)
     {
-        RTLogPrintf("Header: Geometry PCHS=%u/%u/%u LCHS=%u/%u/%u\n",
+        pImage->pInterfaceErrorCallbacks->pfnMessage(pImage->pInterfaceError->pvUser, "Header: Geometry PCHS=%u/%u/%u LCHS=%u/%u/%u\n",
                     pImage->PCHSGeometry.cCylinders, pImage->PCHSGeometry.cHeads, pImage->PCHSGeometry.cSectors,
                     pImage->LCHSGeometry.cCylinders, pImage->LCHSGeometry.cHeads, pImage->LCHSGeometry.cSectors);
     }
