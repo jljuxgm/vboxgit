@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 20092 2009-05-27 15:19:32Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 20734 2009-06-20 18:28:44Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -589,19 +589,23 @@ int main()
     GEN_CHECK_OFF(APICState, pTimerR3);
     GEN_CHECK_OFF(APICState, pTimerR0);
     GEN_CHECK_OFF(APICState, pTimerRC);
+    GEN_CHECK_OFF(APICState, fTimerArmed);
+    GEN_CHECK_OFF(APICState, pszDesc);
+    GEN_CHECK_OFF(APICState, StatTimerSetInitialCount);
+    GEN_CHECK_OFF(APICState, StatTimerSetLvtNoRelevantChange);
 
     GEN_CHECK_SIZE(APICDeviceInfo);
     GEN_CHECK_OFF(APICDeviceInfo, pDevInsR3);
     GEN_CHECK_OFF(APICDeviceInfo, pApicHlpR3);
-    GEN_CHECK_OFF(APICDeviceInfo, pLapicsR3);
+    GEN_CHECK_OFF(APICDeviceInfo, paLapicsR3);
     GEN_CHECK_OFF(APICDeviceInfo, pCritSectR3);
     GEN_CHECK_OFF(APICDeviceInfo, pDevInsR0);
     GEN_CHECK_OFF(APICDeviceInfo, pApicHlpR0);
-    GEN_CHECK_OFF(APICDeviceInfo, pLapicsR0);
+    GEN_CHECK_OFF(APICDeviceInfo, paLapicsR0);
     GEN_CHECK_OFF(APICDeviceInfo, pCritSectR0);
     GEN_CHECK_OFF(APICDeviceInfo, pDevInsRC);
     GEN_CHECK_OFF(APICDeviceInfo, pApicHlpRC);
-    GEN_CHECK_OFF(APICDeviceInfo, pLapicsRC);
+    GEN_CHECK_OFF(APICDeviceInfo, paLapicsRC);
     GEN_CHECK_OFF(APICDeviceInfo, pCritSectRC);
     GEN_CHECK_OFF(APICDeviceInfo, enmVersion);
     GEN_CHECK_OFF(APICDeviceInfo, cTPRPatchAttempts);
