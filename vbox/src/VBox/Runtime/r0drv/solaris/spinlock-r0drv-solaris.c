@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-solaris.c 22134 2009-08-10 13:23:41Z vboxsync $ */
+/* $Id: spinlock-r0drv-solaris.c 22139 2009-08-10 14:18:37Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Solaris.
  */
@@ -140,7 +140,7 @@ RTDECL(void) RTSpinlockReleaseNoInts(RTSPINLOCK Spinlock, PRTSPINLOCKTMP pTmp)
     mutex_exit(&pThis->Mtx);
     ASMSetFlags(pTmp->uFlags);
 
-    RT_ASSERT_PREEMPT_CPUID_SPIN_RELEASED();
+    RT_ASSERT_PREEMPT_CPUID();
 }
 
 
@@ -170,6 +170,6 @@ RTDECL(void) RTSpinlockRelease(RTSPINLOCK Spinlock, PRTSPINLOCKTMP pTmp)
 
     mutex_exit(&pThis->Mtx);
 
-    RT_ASSERT_PREEMPT_CPUID_SPIN_RELEASED();
+    RT_ASSERT_PREEMPT_CPUID();
 }
 
