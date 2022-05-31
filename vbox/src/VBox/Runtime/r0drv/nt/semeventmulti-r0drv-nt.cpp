@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-nt.cpp 20883 2009-06-24 09:08:48Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-nt.cpp 20884 2009-06-24 09:09:46Z vboxsync $ */
 /** @file
  * IPRT -  Multiple Release Event Semaphores, Ring-0 Driver, NT.
  */
@@ -144,6 +144,9 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
 
     /*
      * Wait for it.
+     *
+     * We default to UserMode here as the waits might be aborted due to process termination. 
+     * @todo As far as I can tell this is currently safe as all calls are made on behalf of user threads.
      */
     NTSTATUS rcNt;
     if (cMillies == RT_INDEFINITE_WAIT)
