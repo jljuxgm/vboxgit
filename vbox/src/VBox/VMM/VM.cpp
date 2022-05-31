@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 20199 2009-06-02 14:51:46Z vboxsync $ */
+/* $Id: VM.cpp 20432 2009-06-09 12:01:08Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -283,6 +283,15 @@ VMMR3DECL(int)   VMR3Create(uint32_t cCPUs, PFNVMATERROR pfnVMAtError, void *pvU
                                   "VBoxNetDHCP is not running and try again. If you still get this error, "
                                   "re-install VirtualBox");
                     break;
+
+#ifdef RT_OS_LINUX
+                case VERR_SUPDRV_COMPONENT_NOT_FOUND:
+                    pszError = N_("One of the kernel modules was not successfully loaded. Make sure "
+                                  "that no kernel modules from an older version of VirtualBox exist. "
+                                  "Then try to recompile and reload the kernel modules by executing "
+                                  "'/etc/init.d/vboxdrv setup' as root");
+                    break;
+#endif
 
                 default:
                     pszError = N_("Unknown error creating VM");
