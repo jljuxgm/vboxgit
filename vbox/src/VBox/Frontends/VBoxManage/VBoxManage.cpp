@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 18406 2009-03-27 15:31:21Z vboxsync $ */
+/* $Id: VBoxManage.cpp 18516 2009-03-29 18:37:55Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -91,7 +91,7 @@ void showProgress(ComPtr<IProgress> progress)
     ULONG ulLastPercent = 0;
 
     ULONG ulCurrentOperationPercent;
-    ULONG ulLastOperationPercent;
+    ULONG ulLastOperationPercent = (ULONG)-1;
 
     ULONG ulLastOperation = (ULONG)-1;
     Bstr bstrOperationDescription;
