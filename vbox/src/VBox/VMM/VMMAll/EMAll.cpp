@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 19992 2009-05-25 11:31:23Z vboxsync $ */
+/* $Id: EMAll.cpp 20001 2009-05-25 13:59:29Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1993,7 +1993,7 @@ VMMDECL(int) EMInterpretCRxRead(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, u
     if (SrcRegCrx == USE_REG_CR8)
     {
         val64 = 0;
-        rc = PDMApicGetTPR(pVM, (uint8_t *)&val64, NULL);
+        rc = PDMApicGetTPR(pVCpu, (uint8_t *)&val64, NULL);
         AssertMsgRCReturn(rc, ("PDMApicGetTPR failed\n"), VERR_EM_INTERPRETER);
     }
     else
@@ -2170,7 +2170,7 @@ static int emUpdateCRx(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, uint32_t D
         return rc2 == VINF_SUCCESS ? rc : rc2;
 
     case USE_REG_CR8:
-        return PDMApicSetTPR(pVM, val);
+        return PDMApicSetTPR(pVCpu, val);
 
     default:
         AssertFailed();

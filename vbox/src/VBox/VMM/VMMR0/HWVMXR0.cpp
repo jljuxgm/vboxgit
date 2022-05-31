@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 20000 2009-05-25 13:45:56Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 20001 2009-05-25 13:59:29Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2180,7 +2180,7 @@ ResumeExecution:
         uint8_t u8TPR;
         bool    fPending;
 
-        int rc = PDMApicGetTPR(pVM, &u8TPR, &fPending);
+        int rc = PDMApicGetTPR(pVCpu, &u8TPR, &fPending);
         AssertRC(rc);
         /* The TPR can be found at offset 0x80 in the APIC mmio page. */
         pVCpu->hwaccm.s.vmx.pVAPIC[0x80] = u8TPR << 4; /* bits 7-4 contain the task priority */
@@ -2383,7 +2383,7 @@ ResumeExecution:
 
     if (fSyncTPR)
     {
-        rc = PDMApicSetTPR(pVM, pVCpu->hwaccm.s.vmx.pVAPIC[0x80] >> 4);
+        rc = PDMApicSetTPR(pVCpu, pVCpu->hwaccm.s.vmx.pVAPIC[0x80] >> 4);
         AssertRC(rc);
     }
 
