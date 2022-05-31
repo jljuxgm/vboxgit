@@ -1,5 +1,5 @@
 #!/sbin/sh
-# $Id: smf-vboxwebsrv.sh 19200 2009-04-27 09:44:37Z vboxsync $
+# $Id: smf-vboxwebsrv.sh 19201 2009-04-27 09:48:40Z vboxsync $
 
 # Copyright (C) 2008 Sun Microsystems, Inc.
 #
@@ -90,7 +90,7 @@ case $VW_OPT in
             fi
         else
             echo "Failed to find prctl to bump VBoxSVC semaphore id limit."
-            echo "As a result, not more than 99 VMs can be started."
+            echo "As a result, not more than 100 VMs can be started."
         fi
     ;;
     stop)
