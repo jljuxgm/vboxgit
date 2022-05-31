@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 21493 2009-07-10 19:58:31Z vboxsync $ */
+/* $Id: fileio-posix.cpp 21499 2009-07-10 20:34:48Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -212,7 +212,7 @@ RTR3DECL(int)  RTFileOpen(PRTFILE pFile, const char *pszFilename, unsigned fOpen
             iErr = 0;
             /* Switch direct I/O on now if requested */
             if (fOpen & RTFILE_O_NO_CACHE)
-# if defined(RT_OS_SOLARIS)
+# if defined(RT_OS_SOLARIS) && !defined(IN_GUEST)
                 iErr = directio(fh, DIRECTIO_ON);
 # elif defined(RT_OS_DARWIN)
                 iErr = fcntl(fh, F_NOCACHE);
