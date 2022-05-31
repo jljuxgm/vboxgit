@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 21823 2009-07-27 18:46:11Z vboxsync $ */
+/* $Id: ApplianceImpl.h 21827 2009-07-28 09:20:30Z vboxsync $ */
 
 /** @file
  *
@@ -32,7 +32,7 @@ class VirtualBox;
 class Progress;
 
 class ATL_NO_VTABLE Appliance :
-    public VirtualBoxBaseWithChildrenNEXT,
+    public VirtualBoxBase,
     public VirtualBoxSupportErrorInfoImpl<Appliance, IAppliance>,
     public VirtualBoxSupportTranslation<Appliance>,
     VBOX_SCRIPTABLE_IMPL(IAppliance)
@@ -142,7 +142,7 @@ struct VirtualSystemDescriptionEntry
 };
 
 class ATL_NO_VTABLE VirtualSystemDescription :
-    public VirtualBoxBaseWithChildren,
+    public VirtualBoxBase,
     public VirtualBoxSupportErrorInfoImpl<VirtualSystemDescription, IVirtualSystemDescription>,
     public VirtualBoxSupportTranslation<VirtualSystemDescription>,
     VBOX_SCRIPTABLE_IMPL(IVirtualSystemDescription)
