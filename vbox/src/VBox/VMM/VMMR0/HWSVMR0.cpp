@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 20328 2009-06-05 13:23:52Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 20330 2009-06-05 13:25:55Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1721,7 +1721,10 @@ ResumeExecution:
 
                 rc = IOMMMIOPhysHandler(pVM, errCode, CPUMCTX2CORE(pCtx), uFaultAddress);
                 if (rc == VINF_SUCCESS)
+                {
+                    STAM_PROFILE_ADV_STOP(&pVCpu->hwaccm.s.StatExit1, x);
                     goto ResumeExecution;   /* rip already updated */
+                }
             }
         }
 #endif
