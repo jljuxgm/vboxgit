@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21100 2009-06-30 19:18:35Z vboxsync $
+# $Id: Makefile.kmk 21103 2009-06-30 20:51:27Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -38,6 +38,9 @@ if1of ($(KBUILD_TARGET), \
  VBoxGuest_NAME.solaris  = vboxguest
  VBoxGuest_NOINST.linux  = true
  VBoxGuest_DEFS.linux    = KBUILD_MODNAME=KBUILD_STR\(vboxguest\) KBUILD_BASENAME=KBUILD_STR\(vboxguest\)
+ ifdef VBOX_LINUX_VERSION_2_4
+  VBoxGuest_DEFS.linux  += EXPORT_SYMTAB
+ endif
  VBoxGuest_DEFS.solaris  = VBOX_SVN_REV=$(VBOX_SVN_REV)
  VBoxGuest_DEPS.solaris += $(VBOX_SVN_REV_KMK)
  VBoxGuest_DEFS          = VBGL_VBOXGUEST VBOX_WITH_HGCM
