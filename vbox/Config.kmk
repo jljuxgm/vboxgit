@@ -1,4 +1,4 @@
-# $Id: Config.kmk 21140 2009-07-01 18:24:30Z vboxsync $
+# $Id: Config.kmk 21237 2009-07-06 07:54:28Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -414,6 +414,8 @@ if1of ($(KBUILD_TARGET), darwin solaris linux win freebsd)
 endif
 # Enables the Python<->XPCOM and Python<->COM bindings.
 VBOX_WITH_PYTHON ?= 1
+# Build multiple Python<->XPCOM bridges for different Python version 
+VBOX_WITH_MULTIVERSION_PYTHON ?= 1
 # Enables hardening.
 # Most developers will want to disable this in their LocalConfig.kmk.
 ifn1of ($(KBUILD_TARGET), win)
@@ -3770,7 +3772,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 21140 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 21237 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
