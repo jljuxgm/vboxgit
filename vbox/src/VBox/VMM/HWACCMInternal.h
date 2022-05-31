@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
+/* $Id: HWACCMInternal.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -44,7 +44,7 @@
 #define HWACCM_VTX_WITH_EPT
 #define HWACCM_VTX_WITH_VPID
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 
 /** @defgroup grp_hwaccm_int       Internal
@@ -730,7 +730,7 @@ DECLASM(uint64_t) hwaccmR0Get64bitCR3(void);
 
 /** @} */
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
+/* $Id: PGMInternal.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2916,7 +2916,7 @@ typedef PGMCPU *PPGMCPU;
 /** @} */
 
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 int             pgmLock(PVM pVM);
 void            pgmUnlock(PVM pVM);
@@ -3006,7 +3006,7 @@ PX86PDPT        pgmGstLazyMapPaePDPT(PPGMCPU pPGM);
 PX86PDPAE       pgmGstLazyMapPaePD(PPGMCPU pPGM, uint32_t iPdpt);
 PX86PML4        pgmGstLazyMapPml4(PPGMCPU pPGM);
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 
 /**

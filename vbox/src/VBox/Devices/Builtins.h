@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 20367 2009-06-08 00:25:19Z vboxsync $ */
+/* $Id: Builtins.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -24,7 +24,7 @@
 
 #include <VBox/pdm.h>
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 /** The default BIOS logo data. */
 extern const unsigned char  g_abVgaDefBiosLogo[];
@@ -126,6 +126,6 @@ extern const PDMDRVREG g_DrvSCSIHost;
 #endif
 #endif
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif

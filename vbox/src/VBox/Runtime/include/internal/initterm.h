@@ -1,4 +1,4 @@
-/* $Id: initterm.h 20364 2009-06-08 00:17:43Z vboxsync $ */
+/* $Id: initterm.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination.
  */
@@ -33,7 +33,7 @@
 
 #include <iprt/cdefs.h>
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 #ifdef IN_RING0
 
@@ -51,7 +51,7 @@ void rtR0TermNative(void);
 
 #endif /* IN_RING0 */
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif
 

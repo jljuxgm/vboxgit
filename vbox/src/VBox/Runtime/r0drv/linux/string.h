@@ -1,4 +1,4 @@
-/* $Id: string.h 20364 2009-06-08 00:17:43Z vboxsync $ */
+/* $Id: string.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * IPRT - wrapper for the linux kernel asm/string.h.
  */
@@ -33,7 +33,7 @@
 
 #include <iprt/cdefs.h>
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 #ifndef bool /* Linux 2.6.19 C++ nightmare */
 #define bool bool_type
 #define true true_type
@@ -55,7 +55,7 @@ char *strpbrk(const char *pszStr, const char *pszChars)
 #endif
     ;
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif
 

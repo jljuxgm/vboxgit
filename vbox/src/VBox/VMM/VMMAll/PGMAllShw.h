@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 20365 2009-06-08 00:19:18Z vboxsync $ */
+/* $Id: PGMAllShw.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -119,10 +119,10 @@
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 PGM_SHW_DECL(int, GetPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, uint64_t *pfFlags, PRTHCPHYS pHCPhys);
 PGM_SHW_DECL(int, ModifyPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, size_t cbPages, uint64_t fFlags, uint64_t fMask);
-RT_END_DECLS
+RT_C_DECLS_END
 
 
 

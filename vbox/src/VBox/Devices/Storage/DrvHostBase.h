@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 20367 2009-06-08 00:25:19Z vboxsync $ */
+/* $Id: DrvHostBase.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -24,7 +24,7 @@
 
 #include <VBox/cdefs.h>
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 
 /** Pointer to host base drive access driver instance data. */
@@ -197,6 +197,6 @@ DECLCALLBACK(int) DRVHostBaseScsiCmd(PDRVHOSTBASE pThis, const uint8_t *pbCmd, s
 /** Makes a PDRVHOSTBASE out of a PPDMIBLOCK. */
 #define PDMIBLOCK_2_DRVHOSTBASE(pInterface)        ( (PDRVHOSTBASE)((uintptr_t)pInterface - RT_OFFSETOF(DRVHOSTBASE, IBlock)) )
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif

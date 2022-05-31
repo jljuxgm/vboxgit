@@ -1,4 +1,4 @@
-/* $Id: PDMGCDevice.cpp 20365 2009-06-08 00:19:18Z vboxsync $ */
+/* $Id: PDMGCDevice.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, GC Device parts.
  */
@@ -42,13 +42,13 @@
 /*******************************************************************************
 *   Global Variables                                                           *
 *******************************************************************************/
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 extern DECLEXPORT(const PDMDEVHLPRC)    g_pdmRCDevHlp;
 extern DECLEXPORT(const PDMPICHLPRC)    g_pdmRCPicHlp;
 extern DECLEXPORT(const PDMAPICHLPRC)   g_pdmRCApicHlp;
 extern DECLEXPORT(const PDMIOAPICHLPRC) g_pdmRCIoApicHlp;
 extern DECLEXPORT(const PDMPCIHLPRC)    g_pdmRCPciHlp;
-RT_END_DECLS
+RT_C_DECLS_END
 
 
 /*******************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: VBoxCocoaApplication.h 20368 2009-06-08 00:26:11Z vboxsync $ */
+/* $Id: VBoxCocoaApplication.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * VBoxCocoaApplication - NSApplication subclass for handling -sendEvent.
  */
@@ -28,7 +28,7 @@
 #endif
 #include <Carbon/Carbon.h>
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 /** Event handler callback.
  * @returns true if handled, false if not.
@@ -93,7 +93,7 @@ const char *VBoxCocoaApplication_eventTypeName(unsigned long eEvtType);
 void VBoxCocoaApplication_printEvent(const char *pszPrefix, const void *pvEvent);
 /** @} */
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif
 

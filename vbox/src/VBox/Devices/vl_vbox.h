@@ -1,4 +1,4 @@
-/* $Id: vl_vbox.h 20371 2009-06-08 00:28:49Z vboxsync $ */
+/* $Id: vl_vbox.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * VBox vl.h Replacement.
  *
@@ -40,7 +40,7 @@
 
 #include "Builtins.h"
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 /*
  * Misc macros.
@@ -371,6 +371,6 @@ CPU_CONVERT(le, 64, uint64_t)
 
 /* end of bswap.h */
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif /* __vl_vbox_h__ */

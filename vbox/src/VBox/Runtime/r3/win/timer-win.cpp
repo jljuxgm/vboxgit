@@ -1,4 +1,4 @@
-/* $Id: timer-win.cpp 20364 2009-06-08 00:17:43Z vboxsync $ */
+/* $Id: timer-win.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * IPRT - Timer.
  */
@@ -74,11 +74,11 @@
 #include <iprt/err.h>
 #include "internal/magics.h"
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 /* from sysinternals. */
 NTSYSAPI LONG NTAPI NtSetTimerResolution(IN ULONG DesiredResolution, IN BOOLEAN SetResolution, OUT PULONG CurrentResolution);
 NTSYSAPI LONG NTAPI NtQueryTimerResolution(OUT PULONG MaximumResolution, OUT PULONG MinimumResolution, OUT PULONG CurrentResolution);
-RT_END_DECLS
+RT_C_DECLS_END
 
 
 /*******************************************************************************

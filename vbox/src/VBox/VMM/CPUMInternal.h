@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 20365 2009-06-08 00:19:18Z vboxsync $ */
+/* $Id: CPUMInternal.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -383,7 +383,7 @@ typedef struct CPUMCPU
 /** Pointer to the CPUMCPU instance data residing in the shared VMCPU structure. */
 typedef CPUMCPU *PCPUMCPU;
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 DECLASM(int)      cpumHandleLazyFPUAsm(PCPUMCPU pCPUM);
 
@@ -404,7 +404,7 @@ DECLASM(void)     cpumR0LoadDRx(uint64_t const *pa4Regs);
 DECLASM(void)     cpumR0SaveDRx(uint64_t *pa4Regs);
 #endif
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 /** @} */
 

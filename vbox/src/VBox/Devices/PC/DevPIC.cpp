@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 20367 2009-06-08 00:25:19Z vboxsync $ */
+/* $Id: DevPIC.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -52,7 +52,7 @@
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 PDMBOTHCBDECL(void) picSetIrq(PPDMDEVINS pDevIns, int iIrq, int iLevel);
 PDMBOTHCBDECL(int) picGetInterrupt(PPDMDEVINS pDevIns);
@@ -61,7 +61,7 @@ PDMBOTHCBDECL(int) picIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Por
 PDMBOTHCBDECL(int) picIOPortElcrRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t *pu32, unsigned cb);
 PDMBOTHCBDECL(int) picIOPortElcrWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t u32, unsigned cb);
 
-RT_END_DECLS
+RT_C_DECLS_END
 #endif /* !VBOX_DEVICE_STRUCT_TESTCASE */
 
 

@@ -1,4 +1,4 @@
-/* $Id: thread.h 20364 2009-06-08 00:17:43Z vboxsync $ */
+/* $Id: thread.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -40,7 +40,7 @@
 #endif
 #include "internal/magics.h"
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 
 
@@ -207,6 +207,6 @@ void rtThreadClearTlsEntry(RTTLS iTls);
 void rtThreadTlsDestruction(PRTTHREADINT pThread); /* in tls-generic.cpp */
 #endif
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif

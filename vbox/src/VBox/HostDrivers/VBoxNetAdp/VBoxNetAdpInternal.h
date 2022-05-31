@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInternal.h 20366 2009-06-08 00:21:10Z vboxsync $ */
+/* $Id: VBoxNetAdpInternal.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Network Filter Driver (Host), Internal Header.
  */
@@ -28,7 +28,7 @@
 #include <iprt/assert.h>
 
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 /** Pointer to the globals. */
 typedef struct VBOXNETADPGLOBALS *PVBOXNETADPGLOBALS;
@@ -337,7 +337,7 @@ DECLHIDDEN(int) vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMac);
 
 
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif
 

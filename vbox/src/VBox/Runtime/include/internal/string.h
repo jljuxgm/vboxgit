@@ -1,4 +1,4 @@
-/* $Id: string.h 20364 2009-06-08 00:17:43Z vboxsync $ */
+/* $Id: string.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * IPRT - Internal RTStr header.
  */
@@ -33,7 +33,7 @@
 
 #include <iprt/string.h>
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 /** @def RTSTR_STRICT
  * Enables strict assertions on bad string encodings.
@@ -57,7 +57,7 @@ size_t rtstrFormatVBox(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char *
 size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **ppszFormat, va_list *pArgs, int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize);
 size_t rtstrFormatType(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **ppszFormat, va_list *pArgs, int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize);
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif
 

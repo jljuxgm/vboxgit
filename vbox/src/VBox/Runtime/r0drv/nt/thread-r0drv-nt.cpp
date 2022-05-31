@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 20364 2009-06-08 00:17:43Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -40,9 +40,9 @@
 
 #include "internal-r0drv-nt.h"
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 NTSTATUS NTAPI ZwYieldExecution(void);
-RT_END_DECLS
+RT_C_DECLS_END
 
 
 RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)

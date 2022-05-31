@@ -1,4 +1,4 @@
-/* $Id: dbg.h 20362 2009-06-08 00:14:32Z vboxsync $ */
+/* $Id: dbg.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -25,7 +25,7 @@
 #include <iprt/types.h>
 #include <iprt/stdarg.h>
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 /** @defgroup grp_rt_dbg    RTDbg - Debugging Routines
  * @ingroup grp_rt
@@ -474,7 +474,7 @@ RTDECL(int)         RTDbgModLineByAddrA(RTDBGMOD hDbgMod, RTDBGSEGIDX iSeg, RTUI
 
 /** @} */
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif
 

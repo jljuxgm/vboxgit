@@ -1,4 +1,4 @@
-/** $Id: VBoxSFInit.cpp 20371 2009-06-08 00:28:49Z vboxsync $ */
+/** $Id: VBoxSFInit.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, Initialization.
  */
@@ -45,14 +45,14 @@
 /*******************************************************************************
 *   Global Variables                                                           *
 *******************************************************************************/
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 /* from VBoxSFA.asm */
 extern RTFAR16 g_fpfnDevHlp;
 extern VBOXGUESTOS2IDCCONNECT g_VBoxGuestIDC;
 extern uint32_t g_u32Info;
 /* from sys0.asm and the linker/end.lib. */
 extern char _text, _etext, _data, _end;
-RT_END_DECLS
+RT_C_DECLS_END
 
 
 

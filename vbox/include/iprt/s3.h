@@ -1,4 +1,4 @@
-/* $Id: s3.h 20362 2009-06-08 00:14:32Z vboxsync $ */
+/* $Id: s3.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * IPRT - Simple Storage Service (S3) Communication API.
  */
@@ -33,7 +33,7 @@
 
 #include <iprt/types.h>
 
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 /** @group grp_rt_s3    RTS3 - Simple Storage Service (S3) Communication API
  * @ingroup grp_rt
@@ -268,7 +268,7 @@ RTR3DECL(int) RTS3PutKey(RTS3 hS3, const char *pszBucketName, const char *pszKey
 
 /** @} */
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif
 

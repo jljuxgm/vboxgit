@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-os2.cpp 20364 2009-06-08 00:17:43Z vboxsync $ */
+/* $Id: timer-r0drv-os2.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -100,11 +100,11 @@ static uint32_t volatile    g_u32ChangeNo;
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 DECLASM(void) rtTimerOs2Tick(void);
 DECLASM(int) rtTimerOs2Arm(void);
 DECLASM(int) rtTimerOs2Dearm(void);
-RT_END_DECLS
+RT_C_DECLS_END
 
 
 

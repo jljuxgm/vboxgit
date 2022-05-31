@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 20367 2009-06-08 00:25:19Z vboxsync $ */
+/* $Id: VDICore.h 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -642,7 +642,7 @@ struct VDIDISK
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 
 #ifndef VBOX_VDICORE_VD
 VBOXDDU_DECL(void) vdiInitVDIDisk(PVDIDISK pDisk);
@@ -650,6 +650,6 @@ VBOXDDU_DECL(void) VDIFlushImage(PVDIIMAGEDESC pImage);
 VBOXDDU_DECL(int)  vdiChangeImageMode(PVDIIMAGEDESC pImage, bool fReadOnly);
 #endif /* !VBOX_VDICORE_VD */
 
-RT_END_DECLS
+RT_C_DECLS_END
 
 #endif

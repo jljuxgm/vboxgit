@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 20365 2009-06-08 00:19:18Z vboxsync $ */
+/* $Id: VMMR0.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -58,10 +58,10 @@
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-RT_BEGIN_DECLS
+RT_C_DECLS_BEGIN
 VMMR0DECL(int) ModuleInit(void);
 VMMR0DECL(void) ModuleTerm(void);
-RT_END_DECLS
+RT_C_DECLS_END
 
 
 /*******************************************************************************
