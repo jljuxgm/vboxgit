@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 18640 2009-04-02 14:26:00Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 18642 2009-04-02 15:04:40Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -124,6 +124,7 @@ extern VBOXSERVICE g_Control;
 #if defined(RT_OS_WINDOWS)
     extern DWORD                 g_vboxServiceStatusCode;
     extern SERVICE_STATUS_HANDLE g_vboxServiceStatusHandle;
+    extern SERVICE_TABLE_ENTRY const gs_serviceTable[];
 #endif
 
 __END_DECLS
