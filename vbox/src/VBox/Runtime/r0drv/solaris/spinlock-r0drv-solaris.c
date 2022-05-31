@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-solaris.c 22131 2009-08-10 13:07:43Z vboxsync $ */
+/* $Id: spinlock-r0drv-solaris.c 22132 2009-08-10 13:19:49Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Solaris.
  */
@@ -123,7 +123,7 @@ RTDECL(void) RTSpinlockAcquireNoInts(RTSPINLOCK Spinlock, PRTSPINLOCKTMP pTmp)
     pTmp->uFlags = ASMIntDisableFlags();
     mutex_enter(&pThis->Mtx);
 
-    RT_ASSERT_PREEMPT_CPUID_SPIN_ACQUIRED()
+    RT_ASSERT_PREEMPT_CPUID_SPIN_ACQUIRED();
 }
 
 
@@ -154,7 +154,7 @@ RTDECL(void) RTSpinlockAcquire(RTSPINLOCK Spinlock, PRTSPINLOCKTMP pTmp)
 
     mutex_enter(&pThis->Mtx);
 
-    RT_ASSERT_PREEMPT_CPUID_SPIN_ACQUIRED()
+    RT_ASSERT_PREEMPT_CPUID_SPIN_ACQUIRED();
 }
 
 
