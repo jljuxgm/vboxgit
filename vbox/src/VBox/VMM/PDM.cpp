@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 19451 2009-05-06 18:09:29Z vboxsync $ */
+/* $Id: PDM.cpp 19493 2009-05-07 17:37:36Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1409,7 +1409,12 @@ VMMR3DECL(int) PDMR3UnregisterVMMDevHeap(PVM pVM, RTGCPHYS GCPhys)
  */
 VMMR3DECL(int) PDMR3VMMDevHeapAlloc(PVM pVM, unsigned cbSize, RTR3PTR *ppv)
 {
+#ifdef DEBUG_bird
+    if (cbSize && cbSize <= pVM->pdm.s.cbVMMDevHeapLeft)
+        return VERR_NO_MEMORY;
+#else
     AssertReturn(cbSize && cbSize <= pVM->pdm.s.cbVMMDevHeapLeft, VERR_NO_MEMORY);
+#endif
 
     Log(("PDMR3VMMDevHeapAlloc %x\n", cbSize));
 
