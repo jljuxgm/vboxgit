@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 23733 2009-10-13 14:48:10Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 23738 2009-10-13 15:49:19Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -238,8 +238,6 @@ int handleModifyVM(HandlerArg *a)
         CHECK_ERROR_RET (a->virtualBox, FindMachine(Bstr(a->argv[0]), machine.asOutParam()), 1);
         machine->COMGETTER(Id)(machineuuid.asOutParam());
     }
-    if (FAILED (rc))
-        return 1;
 
     /* open a session for the VM */
     CHECK_ERROR_RET (a->virtualBox, OpenSession(a->session, machineuuid), 1);
