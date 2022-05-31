@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 20026 2009-05-26 11:41:27Z vboxsync $ */
+/* $Id: HWACCMInternal.h 20035 2009-05-26 12:56:35Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -134,7 +134,8 @@ __BEGIN_DECLS
 
 /** HWACCM SSM version
  */
-#define HWACCM_SSM_VERSION                  4
+#define HWACCM_SSM_VERSION_3_0_X            5
+#define HWACCM_SSM_VERSION_2_2_X            4
 #define HWACCM_SSM_VERSION_2_0_X            3
 
 /* Per-cpu information. (host) */
@@ -339,9 +340,8 @@ typedef struct HWACCM
         bool                        fEnabled;
         /** Set if erratum 170 affects the AMD cpu. */
         bool                        fAlwaysFlushTLB;
-        /** Explicit alignment padding to make 32-bit gcc align u64RegisterMask
-         *  naturally. */
-        bool                        padding[1];
+        /** Set if we're patching 32 bits guests to get rid of TPR access overhead. */
+        bool                        fTPRPatching;
 
         /** R0 memory object for the host VM control block (VMCB). */
         RTR0MEMOBJ                  pMemObjVMCBHost;
