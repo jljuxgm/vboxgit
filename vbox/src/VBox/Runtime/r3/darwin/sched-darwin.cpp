@@ -1,4 +1,4 @@
-/* $Id: sched-darwin.cpp 22532 2009-08-27 15:31:46Z vboxsync $ */
+/* $Id: sched-darwin.cpp 22553 2009-08-28 14:10:04Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, Darwin.
  */
@@ -237,22 +237,19 @@ int rtSchedNativeCalcDefaultPriority(RTTHREADTYPE enmType)
     /*
      * If it doesn't match the default, select the closest one from the table.
      */
-    int iCurDiff = RT_ABS(g_pProcessPriority->aTypes[enmType].iBasePriority - iBasePriority);
-    if (iCurDiff)
+    int offBest = RT_ABS(g_pProcessPriority->aTypes[enmType].iBasePriority - iBasePriority);
+    if (offBest)
     {
         const PROCPRIORITY *pProcessPriority = &g_aDefaultPriority;
         for (unsigned i = 0; i < RT_ELEMENTS(g_aPriorities); i++)
         {
-            /* @todo r=poetzsch: gcc warns here. iBasePriority in RT_ABS is the
-             * one which should be initialized not the one from line 234. So I
-             * guess gcc is right. */
-            int iBasePriority = RT_ABS(g_aPriorities[i].aTypes[enmType].iBasePriority - iBasePriority);
-            if (iBasePriority < iCurDiff)
+            int off = RT_ABS(g_aPriorities[i].aTypes[enmType].iBasePriority - iBasePriority);
+            if (off < offBest)
             {
                 g_pProcessPriority = &g_aPriorities[i];
-                if (!iCurDiff)
+                if (!off)
                     break;
-                iCurDiff = iBasePriority;
+                offBest = off;
             }
         }
     }
