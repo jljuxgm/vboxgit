@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
+/* $Id: ConsoleImpl.h 21647 2009-07-16 12:46:21Z vboxsync $ */
 
 /** @file
  *
@@ -507,6 +507,10 @@ private:
                                         ComSafeArrayOut(BSTR, aValues),
                                         ComSafeArrayOut(ULONG64, aTimestamps),
                                         ComSafeArrayOut(BSTR, aFlags));
+
+    bool enabledGuestPropertiesVRDP (void);
+    void updateGuestPropertiesVRDPLogon (uint32_t u32ClientId, const char *pszUser, const char *pszDomain);
+    void updateGuestPropertiesVRDPDisconnect (uint32_t u32ClientId);
 #endif
 
     bool mSavedStateDataLoaded : 1;
