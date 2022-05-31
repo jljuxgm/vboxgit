@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 20752 2009-06-21 22:14:58Z vboxsync $ */
+/* $Id: TMAll.cpp 20778 2009-06-22 13:26:25Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -1234,7 +1234,7 @@ VMMDECL(int) TMTimerSetRelative(PTMTIMER pTimer, uint64_t cTicksToNext, uint64_t
             tmTimerSetRelativeNowWorker(pVM, enmClock, pu64Now);
             break;
         }
-        if (cRetries > 0)
+        if (cRetries <= 0)
         {
             AssertMsgFailed(("Failed waiting for stable state. state=%d (%s)\n", pTimer->enmState, R3STRING(pTimer->pszDesc)));
             rc = VERR_INTERNAL_ERROR;
