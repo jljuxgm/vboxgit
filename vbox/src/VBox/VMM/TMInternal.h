@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 20733 2009-06-20 18:25:43Z vboxsync $ */
+/* $Id: TMInternal.h 20750 2009-06-21 21:14:52Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -486,8 +486,19 @@ typedef struct TM
     /** @} */
     /** TMTimerSetRelative
      * @{ */
+    STAMCOUNTER                 StatTimerSetRelative;
     STAMPROFILE                 StatTimerSetRelativeRZ;
     STAMPROFILE                 StatTimerSetRelativeR3;
+    STAMCOUNTER                 StatTimerSetRelativeOpt;
+    STAMCOUNTER                 StatTimerSetRelativeRacyVirtSync;
+    STAMCOUNTER                 StatTimerSetRelativeStStopped;
+    STAMCOUNTER                 StatTimerSetRelativeStExpDeliver;
+    STAMCOUNTER                 StatTimerSetRelativeStActive;
+    STAMCOUNTER                 StatTimerSetRelativeStPendStop;
+    STAMCOUNTER                 StatTimerSetRelativeStPendStopSched;
+    STAMCOUNTER                 StatTimerSetRelativeStPendSched;
+    STAMCOUNTER                 StatTimerSetRelativeStPendResched;
+    STAMCOUNTER                 StatTimerSetRelativeStOther;
     /** @} */
     /** TMTimerStop
      * @{ */
