@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 21213 2009-07-03 15:16:02Z vboxsync $ */
+/* $Id: HWACCM.cpp 21645 2009-07-16 12:05:21Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1379,6 +1379,28 @@ VMMR3DECL(void) HWACCMR3Reset(PVM pVM)
         pCache->uMagic = UINT64_C(0xDEADBEEFDEADBEEF);
 #endif
     }
+}
+
+/**
+ * Enable patching in a VT-x/AMD-V guest
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+VMMR3DECL(int)  HWACMMR3EnablePatching(PVM pVM)
+{
+    return VINF_SUCCESS;
+}
+
+/**
+ * Disable patching in a VT-x/AMD-V guest
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM to operate on.
+ */
+VMMR3DECL(int)  HWACMMR3DisablePatching(PVM pVM)
+{
+    return VINF_SUCCESS;
 }
 
 /**
