@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: VBoxDev.cpp 19654 2009-05-13 12:30:58Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -656,6 +656,10 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                     pThis->mouseCapabilities |= VMMDEV_MOUSEGUESTNEEDSHOSTCUR;
                 else
                     pThis->mouseCapabilities &= ~VMMDEV_MOUSEGUESTNEEDSHOSTCUR;
+                if (mouseStatus->mouseFeatures & VBOXGUEST_MOUSE_GUEST_USES_VMMDEV)
+                    pThis->mouseCapabilities |= VMMDEV_MOUSEGUESTUSESVMMDEV;
+                else
+                    pThis->mouseCapabilities &= ~VMMDEV_MOUSEGUESTUSESVMMDEV;
 
                 /*
                  * Notify connector if something has changed
