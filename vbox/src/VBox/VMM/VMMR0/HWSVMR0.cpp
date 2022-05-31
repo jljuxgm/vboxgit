@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21258 2009-07-06 15:15:27Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21259 2009-07-06 15:17:26Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1435,7 +1435,7 @@ ResumeExecution:
             STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitGuestDB);
 
             /* Note that we don't support guest and host-initiated debugging at the same time. */
-            Assert(DBGFIsStepping(pVCpu));
+            Assert(DBGFIsStepping(pVCpu) || CPUMIsHyperDebugStateActive(pVCpu));
 
             rc = DBGFRZTrap01Handler(pVM, pVCpu, CPUMCTX2CORE(pCtx), pCtx->dr[6]);
             if (rc == VINF_EM_RAW_GUEST_TRAP)
