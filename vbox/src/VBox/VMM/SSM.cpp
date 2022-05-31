@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 23872 2009-10-19 14:49:13Z vboxsync $ */
+/* $Id: SSM.cpp 23895 2009-10-20 09:34:01Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -3950,7 +3950,7 @@ VMMR3DECL(int) SSMR3PutStrZ(PSSMHANDLE pSSM, const char *psz)
     size_t cch = strlen(psz);
     if (cch > _1M)
     {
-        AssertMsgFailed(("a %d byte long string, what's this!?!\n"));
+        AssertMsgFailed(("a %zu byte long string, what's this!?!\n", cch));
         return VERR_TOO_MUCH_DATA;
     }
     uint32_t u32 = (uint32_t)cch;
