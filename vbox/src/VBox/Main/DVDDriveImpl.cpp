@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.cpp 18194 2009-03-24 15:04:37Z vboxsync $ */
+/* $Id: DVDDriveImpl.cpp 18206 2009-03-24 16:44:37Z vboxsync $ */
 
 /** @file
  *
@@ -586,6 +586,20 @@ bool DVDDrive::rollback()
                     AssertComRC (rc);
                 }
             }
+
+            if (!oldData->image.isNull() &&
+                !oldData->image.equalsTo (m->image))
+            {
+                /* Reattach from the old image. */
+                HRESULT rc = oldData->image->attachTo(mParent->id(), mParent->snapshotId());
+                AssertComRC (rc);
+                if (Global::IsOnline (adep.machineState()))
+                {
+                    /* Lock from the old image. */
+                    rc = oldData->image->LockRead (NULL);
+                    AssertComRC (rc);
+                }
+            }
         }
 
         m.rollback();
@@ -670,7 +684,7 @@ HRESULT DVDDrive::unmount()
 
     /* we need adep for the state check */
     Machine::AutoAnyStateDependency adep (mParent);
-    AssertComRCReturn (adep.rc(), false);
+    AssertComRCReturn (adep.rc(), E_FAIL);
 
     if (!m->image.isNull())
     {
