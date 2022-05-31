@@ -1,4 +1,4 @@
-/* $Id: VBoxIChatTheaterWrapper.m 8170 2008-04-18 17:52:25Z vboxsync $ */
+/* $Id: VBoxIChatTheaterWrapper.m 23463 2009-10-01 07:43:10Z vboxsync $ */
 /** @file
  * Qt GUI - iChat Theater cocoa wrapper.
  */
@@ -13,6 +13,10 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ *
+ * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
+ * Clara, CA 95054 USA or visit http://www.sun.com if you need
+ * additional information or have any questions.
  */
 
 #ifdef VBOX_WITH_ICHAT_THEATER

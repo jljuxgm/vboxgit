@@ -1,4 +1,4 @@
-# $Id: Config.kmk 23362 2009-09-28 09:39:21Z vboxsync $
+# $Id: Config.kmk 23463 2009-10-01 07:43:10Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -12,10 +12,14 @@
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
 # you can redistribute it and/or modify it under the terms of the GNU
-# General Public License as published by the Free Software Foundation,
-# in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
-# distribution. VirtualBox OSE is distributed in the hope that it will
-# be useful, but WITHOUT ANY WARRANTY of any kind.
+# General Public License (GPL) as published by the Free Software
+# Foundation, in version 2 as it comes in the "COPYING" file of the
+# VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+# hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+#
+# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
+# Clara, CA 95054 USA or visit http://www.sun.com if you need
+# additional information or have any questions.
 #
 
 # Marker.
@@ -3839,7 +3843,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23362 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23463 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
