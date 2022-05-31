@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 20135 2009-05-29 07:44:12Z vboxsync $ */
+/* $Id: PGMAllBth.h 20228 2009-06-03 12:05:11Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -812,7 +812,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
                         RTGCPHYS GCPhys;
                         uint64_t fPageGst;
                         rc = PGMGstGetPage(pVCpu, pvFault, &fPageGst, &GCPhys);
-                        Assert(RT_SUCCESS(rc) && fPageGst & X86_PTE_RW);
+                        Assert(RT_SUCCESS(rc) && (fPageGst & X86_PTE_RW));
                         LogFlow(("Obsolete physical monitor page out of sync %RGv - phys %RGp flags=%08llx\n", pvFault, GCPhys, (uint64_t)fPageGst));
 
                         uint64_t fPageShw;

@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 20145 2009-05-29 11:10:37Z vboxsync $ */
+/* $Id: HWACCM.cpp 20228 2009-06-03 12:05:11Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1160,9 +1160,10 @@ VMMR3DECL(void) HWACCMR3Relocate(PVM pVM)
         for (unsigned i=0;i<pVM->cCPUs;i++)
         {
             PVMCPU pVCpu = &pVM->aCpus[i];
-            /* @todo SMP */
+
             pVCpu->hwaccm.s.enmShadowMode            = PGMGetShadowMode(pVCpu);
-            pVCpu->hwaccm.s.vmx.enmLastSeenGuestMode = PGMGetGuestMode(pVCpu);
+            Assert(pVCpu->hwaccm.s.vmx.enmCurrGuestMode == PGMGetGuestMode(pVCpu));
+            pVCpu->hwaccm.s.vmx.enmCurrGuestMode     = PGMGetGuestMode(pVCpu);
         }
     }
 #if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
