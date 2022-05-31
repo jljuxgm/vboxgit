@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 18266 2009-03-25 17:25:53Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 18279 2009-03-25 20:06:01Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1195,8 +1195,7 @@ VMMDECL(int) PGMPhysGCPtr2CCPtr(PVM pVM, RTGCPTR GCPtr, void **ppv, PPGMPAGEMAPL
  */
 VMMDECL(int) PGMPhysGCPtr2CCPtrReadOnly(PVM pVM, RTGCPTR GCPtr, void const **ppv, PPGMPAGEMAPLOCK pLock)
 {
-    /* Debugger uses this API too */
-    //VM_ASSERT_EMT(pVM);
+    VM_ASSERT_EMT(pVM);
     RTGCPHYS GCPhys;
     int rc = PGMPhysGCPtr2GCPhys(pVM, GCPtr, &GCPhys);
     if (RT_SUCCESS(rc))
