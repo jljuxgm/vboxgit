@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 23249 2009-09-23 09:57:11Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 23502 2009-10-02 10:59:58Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -25,7 +25,7 @@
 #include <iprt/dir.h>
 #include <iprt/file.h>
 #include <iprt/s3.h>
-#include <iprt/sha1.h>
+#include <iprt/sha.h>
 #include <iprt/manifest.h>
 
 #include "ovfreader.h"
