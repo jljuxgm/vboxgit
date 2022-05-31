@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22804 2009-09-07 11:06:33Z vboxsync $
+# $Id: Makefile.kmk 23030 2009-09-15 12:54:57Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -799,7 +799,7 @@ snapshot-puel:
 	    -x!$(ZIPROOT)/doc/manual/de_DE \
 	    -x!$(ZIPROOT)/doc/manual/fr_FR \
 	    -x!$(ZIPROOT)/src/tests \
-	    -x!$(ZIPROOT)/src/VBox/Artwork \
+	    -x!$(ZIPROOT)/src/VBox/Artwork/2008-\* \
 	    -x!$(ZIPROOT)/src/VBox/Installer/AMI \
 	    -x!$(ZIPROOT)/src/VBox/Installer/Avanquest \
 	    -x!$(ZIPROOT)/src/VBox/Installer/Encore \

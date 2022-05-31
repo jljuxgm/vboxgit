@@ -1,4 +1,4 @@
-/* $Id: the-freebsd-kernel.h 22853 2009-09-09 00:37:04Z vboxsync $ */
+/* $Id: the-freebsd-kernel.h 23032 2009-09-15 13:38:28Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The FreeBSD Kernel Headers.
  */
@@ -76,7 +76,7 @@
 # define SLEEPQ_TIMEDWAIT_SIG(EventInt) sleepq_timedwait_sig(EventInt, 0)
 # define SLEEPQ_WAIT(EventInt) sleepq_wait(EventInt, 0)
 # define SLEEPQ_WAIT_SIG(EventInt) sleepq_wait_sig(EventInt, 0)
-#elif
+#else
 # define SLEEPQ_TIMEDWAIT(EventInt) sleepq_timedwait(EventInt)
 # define SLEEPQ_TIMEDWAIT_SIG(EventInt) sleepq_timedwait_sig(EventInt)
 # define SLEEPQ_WAIT(EventInt) sleepq_wait(EventInt)
