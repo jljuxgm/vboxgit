@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 19454 2009-05-06 19:20:18Z vboxsync $ */
+/* $Id: STAM.cpp 19707 2009-05-14 17:36:11Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -215,6 +215,7 @@ static const STAMR0SAMPLE g_aGVMMStats[] =
     { RT_UOFFSETOF(GVMMSTATS, SchedSum.cPollWakeUps),     STAMTYPE_U64_RESET, STAMUNIT_CALLS, "/GVMM/Sum/PollWakeUps", "The number of wake ups done during GVMMR0SchedPoll." },
 
     { RT_UOFFSETOF(GVMMSTATS, cVMs),                      STAMTYPE_U32,       STAMUNIT_CALLS, "/GVMM/VMs", "The number of VMs accessible to the caller." },
+    { RT_UOFFSETOF(GVMMSTATS, cEMTs),                     STAMTYPE_U32,       STAMUNIT_CALLS, "/GVMM/EMTs", "The number of emulation threads." },
 };
 
 
