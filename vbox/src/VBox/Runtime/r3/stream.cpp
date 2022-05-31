@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 17008 2009-02-23 12:23:01Z vboxsync $ */
+/* $Id: stream.cpp 18808 2009-04-07 11:51:54Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -516,7 +516,10 @@ RTR3DECL(int) RTStrmGetLine(PRTSTREAM pStream, char *pszString, size_t cchString
                         #else
                         if (feof(pStream->pFile))
                         #endif
+                        {
+                            rc = VERR_EOF;
                             break;
+                        }
                         #ifdef HAVE_FWRITE_UNLOCKED
                         if (ferror_unlocked(pStream->pFile))
                         #else
