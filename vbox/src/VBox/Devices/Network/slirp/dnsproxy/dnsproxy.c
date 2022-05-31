@@ -1,4 +1,4 @@
-/* $Id: dnsproxy.c 19688 2009-05-14 11:45:54Z vboxsync $ */
+/* $Id: dnsproxy.c 19700 2009-05-14 15:19:48Z vboxsync $ */
 /*
  * Copyright (c) 2003,2004,2005 Armin Wolfermann
  *
@@ -276,7 +276,7 @@ dnsproxy_query(PNATState pData, struct socket *so, struct mbuf *m, int iphlen)
             if (fail_counter == 0)
                 LogRel(("NAT/dnsproxy: Empty DNS entry (suppressed 100 times)\n"));
             else 
-                fail_counter = (fail_counter == 100 ? 0 : fail_counter++);
+                fail_counter = (fail_counter == 100 ? 0 : fail_counter + 1);
             return;
             
         }
