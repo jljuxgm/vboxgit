@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 19808 2009-05-19 09:23:34Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 19812 2009-05-19 11:54:55Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -78,6 +78,44 @@ VMMDECL(int) HWACCMFlushTLB(PVMCPU pVCpu)
     STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatFlushTLBManual);
     return VINF_SUCCESS;
 }
+
+#ifndef IN_RC
+/**
+ * Flush the TLBs of all VCPUs
+ *
+ * @returns VBox status code.
+ * @param   pVM       The VM to operate on.
+ */
+VMMDECL(int) HWACCMFlushAllTLBs(PVM pVM)
+{
+    if (pVM->cCPUs == 1)
+        return HWACCMFlushTLB(&pVM->aCpus[0]);
+
+    VMCPUID idThisCpu = VMMGetCpuId(pVM);
+
+    for (unsigned idCpu = 0; idCpu < pVM->cCPUs; idCpu++)
+    {
+        PVMCPU pVCpu = &pVM->aCpus[idCpu];
+
+        VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
+        if (idThisCpu == idCpu)
+            continue;
+
+        if (VMCPU_GET_STATE(pVCpu) == VMCPUSTATE_STARTED_EXEC)
+        {
+            STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatTlbShootdownFlush);
+#ifdef IN_RING0
+            RTMpPokeCpu(idCpu);
+#else
+            VMR3NotifyCpuFFU(pVCpu->pUVCpu, VMNOTIFYFF_FLAGS_POKE);
+#endif
+        }
+        else
+            STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatFlushTLBManual);
+    }
+    return VINF_SUCCESS;
+}
+#endif
 
 /**
  * Checks if nested paging is enabled
