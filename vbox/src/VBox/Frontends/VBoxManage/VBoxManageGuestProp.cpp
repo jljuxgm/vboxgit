@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 22690 2009-09-02 01:46:58Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 22693 2009-09-02 07:12:20Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -168,7 +168,6 @@ public:
                                      IN_BSTR name, IN_BSTR value,
                                      IN_BSTR flags)
     {
-RTPrintf("OnGuestPropertyChange:\n");
         Utf8Str utf8Name(name);
         Guid uuid(machineId);
         if (   uuid == mUuid
