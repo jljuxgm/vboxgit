@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21121 2009-07-01 13:26:06Z vboxsync $
+# $Id: Makefile.kmk 21307 2009-07-07 10:35:01Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -345,6 +345,7 @@ VirtualBox_SOURCES = \
 	src/QIMainDialog.cpp \
 	src/QILineEdit.cpp \
 	src/QIHelpButton.cpp \
+	src/VBoxGuestRAMSlider.cpp \
 	src/VBoxFilePathSelectorWidget.cpp \
 	src/VBoxOSTypeSelectorButton.cpp \
 	src/VBoxOSTypeSelectorWidget.cpp \
