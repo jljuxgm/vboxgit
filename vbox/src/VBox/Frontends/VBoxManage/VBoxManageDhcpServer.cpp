@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDhcpServer.cpp 17892 2009-03-15 17:30:53Z vboxsync $ */
+/* $Id: VBoxManageDhcpServer.cpp 18011 2009-03-17 10:32:56Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -252,9 +252,12 @@ static int handleOp(HandlerArg *a, OPCODE enmCode, int iStart, int *pcProcessed)
 
     if(enmCode != OP_REMOVE)
     {
-        CHECK_ERROR(svr, SetConfiguration (Bstr(pIp).mutableRaw(), Bstr(pNetmask).mutableRaw(), Bstr(pLowerIp).mutableRaw(), Bstr(pUpperIp).mutableRaw()));
-        if(FAILED(rc))
-            return errorArgument("failed to set configuration");
+        if (pIp || pNetmask || pLowerIp || pUpperIp)
+        {
+            CHECK_ERROR(svr, SetConfiguration (Bstr(pIp).mutableRaw(), Bstr(pNetmask).mutableRaw(), Bstr(pLowerIp).mutableRaw(), Bstr(pUpperIp).mutableRaw()));
+            if(FAILED(rc))
+                return errorArgument("failed to set configuration");
+        }
 
         if(enable >= 0)
         {
