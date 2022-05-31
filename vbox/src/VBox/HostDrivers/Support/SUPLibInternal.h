@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 16335 2009-01-28 20:41:30Z vboxsync $ */
+/* $Id: SUPLibInternal.h 19892 2009-05-21 15:29:29Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -93,17 +93,6 @@
 # define supR3HardenedRecvPreInitData      supR3HardenedStaticRecvPreInitData
 /** @} */
 #endif /* IN_SUP_HARDENED_R3 */
-
-
-/*******************************************************************************
-*   Global Variables                                                           *
-*******************************************************************************/
-/** The negotiated interrupt number. */
-extern DECLHIDDEN(uint8_t)        g_uchInterruptNo;
-/** The negotiated cookie. */
-extern DECLHIDDEN(uint32_t)       g_u32Cookie;
-/** The negotiated cookie. */
-extern DECLHIDDEN(uint32_t)       g_u32CookieSession;
 
 
 /*******************************************************************************
@@ -239,6 +228,14 @@ typedef SUPPREINITDATA const *PCSUPPREINITDATA;
 typedef DECLCALLBACK(int) FNSUPR3PREINIT(PSUPPREINITDATA pPreInitData, uint32_t fFlags);
 /** Pointer to supR3PreInit. */
 typedef FNSUPR3PREINIT *PFNSUPR3PREINIT;
+
+
+/*******************************************************************************
+*   Global Variables                                                           *
+*******************************************************************************/
+extern DECLHIDDEN(uint32_t)     g_u32Cookie;
+extern DECLHIDDEN(uint32_t)     g_u32SessionCookie;
+extern DECLHIDDEN(SUPLIBDATA)   g_supLibData;
 
 
 /*******************************************************************************

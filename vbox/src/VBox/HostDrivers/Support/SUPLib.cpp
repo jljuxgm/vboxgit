@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 19454 2009-05-06 19:20:18Z vboxsync $ */
+/* $Id: SUPLib.cpp 19892 2009-05-21 15:29:29Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -99,7 +99,7 @@ static bool                     g_fPreInited = false;
 /** The SUPLib instance data.
  * Well, at least parts of it, specificly the parts that are being handed over
  * via the pre-init mechanism from the hardened executable stub.  */
-static SUPLIBDATA               g_supLibData =
+SUPLIBDATA                      g_supLibData =
 {
     NIL_RTFILE
 #if   defined(RT_OS_DARWIN)
