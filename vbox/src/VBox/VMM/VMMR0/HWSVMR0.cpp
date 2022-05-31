@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21259 2009-07-06 15:17:26Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21565 2009-07-14 09:28:39Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2772,8 +2772,7 @@ VMMR0DECL(int) SVMR0InvalidatePage(PVM pVM, PVMCPU pVCpu, RTGCPTR GCVirt)
         AssertReturn(pVM, VERR_INVALID_PARAMETER);
         Assert(pVM->hwaccm.s.svm.fSupported);
 
-        /* @todo SMP */
-        pVMCB = (SVM_VMCB *)pVM->aCpus[0].hwaccm.s.svm.pVMCB;
+        pVMCB = (SVM_VMCB *)pVCpu->hwaccm.s.svm.pVMCB;
         AssertMsgReturn(pVMCB, ("Invalid pVMCB\n"), VERR_EM_INTERNAL_ERROR);
 
 #if HC_ARCH_BITS == 32
