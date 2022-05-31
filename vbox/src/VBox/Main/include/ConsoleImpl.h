@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 22162 2009-08-11 12:03:47Z vboxsync $ */
+/* $Id: ConsoleImpl.h 22166 2009-08-11 13:56:40Z vboxsync $ */
 
 /** @file
  *
@@ -428,11 +428,11 @@ private:
     HRESULT removeSharedFolder (CBSTR aName);
 
     static DECLCALLBACK(int) configConstructor(PVM pVM, void *pvConsole);
-    static DECLCALLBACK(int) configNetwork(Console *pThis, const char *pszDevice,
-                                           unsigned uInstance, unsigned uLun,
-                                           INetworkAdapter *aNetworkAdapter,
-                                           PCFGMNODE pCfg, PCFGMNODE pLunL0,
-                                           PCFGMNODE pInst, bool fAttachDetach);
+    static int configNetwork(Console *pThis, const char *pszDevice,
+                             unsigned uInstance, unsigned uLun,
+                             INetworkAdapter *aNetworkAdapter,
+                             PCFGMNODE pCfg, PCFGMNODE pLunL0,
+                             PCFGMNODE pInst, bool fAttachDetach);
     static DECLCALLBACK(void) vmstateChangeCallback(PVM aVM, VMSTATE aState,
                                                     VMSTATE aOldState, void *aUser);
     HRESULT doDriveChange (const char *pszDevice, unsigned uInstance,
