@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 21881 2009-07-30 12:57:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -190,6 +190,7 @@ int NetIfCreateHostOnlyNetworkInterface (VirtualBox *pVBox, IHostNetworkInterfac
                             ComObjPtr<HostNetworkInterface> iface;
                             iface.createObject();
                             iface->init(IfName, HostNetworkInterfaceType_HostOnly, pInfo);
+                            iface->setVirtualBox(pVBox);
                             iface.queryInterfaceTo(aHostNetworkInterface);
                         }
                         RTMemFree(pInfo);
