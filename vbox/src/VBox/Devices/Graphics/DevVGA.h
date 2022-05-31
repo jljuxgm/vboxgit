@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 22483 2009-08-26 17:29:20Z vboxsync $ */
+/* $Id: DevVGA.h 22837 2009-09-08 13:11:53Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -285,13 +285,13 @@ typedef struct VGAState {
     bool                        padding9[2];
 
     uint32_t                    cMonitors;
-    uint32_t                    padding10;
 
 #ifdef VBOX_WITH_HGSMI
     R3PTRTYPE(PHGSMIINSTANCE)   pHGSMI;
 #endif /* VBOX_WITH_HGSMI */
 
     /** Current refresh timer interval. */
+    uint32_t                    padding10;
     uint32_t                    cMilliesRefreshInterval;
     /** Refresh timer handle - HC. */
     PTMTIMERR3                  RefreshTimer;
