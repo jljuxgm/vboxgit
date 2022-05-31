@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22246 2009-08-13 17:27:48Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22287 2009-08-17 11:47:47Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -5862,6 +5862,8 @@ HRESULT Machine::saveHardware(settings::Hardware &data)
             sf.strName = pFolder->name();
             sf.strHostPath = pFolder->hostPath();
             sf.fWritable = !!pFolder->writable();
+
+            data.llSharedFolders.push_back(sf);
         }
 
         // clipboard
