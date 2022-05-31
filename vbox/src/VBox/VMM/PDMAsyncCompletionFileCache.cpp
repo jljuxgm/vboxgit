@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileCache.cpp 23615 2009-10-08 11:36:04Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileCache.cpp 23673 2009-10-10 21:26:43Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * File data cache.
@@ -24,7 +24,7 @@
  * This component implements an I/O cache for file endpoints based on the ARC algorithm.
  * http://en.wikipedia.org/wiki/Adaptive_Replacement_Cache
  *
- * The algorithm uses for LRU (Least frequently used) lists to store data in the cache.
+ * The algorithm uses four LRU (Least frequently used) lists to store data in the cache.
  * Two of them contain data where one stores entries which were accessed recently and one
  * which is used for frequently accessed data.
  * The other two lists are called ghost lists and store information about the accessed range
