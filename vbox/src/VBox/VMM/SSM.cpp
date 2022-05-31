@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 23596 2009-10-07 14:43:08Z vboxsync $ */
+/* $Id: SSM.cpp 23649 2009-10-09 14:26:02Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -7465,7 +7465,7 @@ static int ssmR3FileSeekSubV2(PSSMHANDLE pSSM, PSSMFILEDIR pDir, size_t cbDir, u
     {
         if (    pDir->aEntries[i].u32NameCRC  == u32NameCRC
             &&  pDir->aEntries[i].u32Instance == iInstance
-            &&  pDir->aEntries[i].u32Instance != 0 /* bug in unreleased code */
+            &&  pDir->aEntries[i].off != 0 /* bug in unreleased code */
            )
         {
             /*
