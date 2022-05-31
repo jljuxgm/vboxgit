@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21588 2009-07-14 16:22:06Z vboxsync $
+# $Id: Makefile.kmk 21614 2009-07-15 15:19:04Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -994,6 +994,7 @@ RuntimeR0_SOURCES       = \
 	common/table/avlroioport.cpp \
 	common/table/avlroogcptr.cpp \
 	common/table/avlu32.cpp \
+	common/table/avlou32.cpp \
 	common/time/timesup.cpp \
 	generic/RTAssertShouldPanic-generic.cpp \
 	VBox/strformat-vbox.cpp \
