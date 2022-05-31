@@ -1,4 +1,4 @@
-/** $Id: counters.h 22401 2009-08-24 05:56:23Z vboxsync $ */
+/** $Id: counters.h 22402 2009-08-24 06:02:00Z vboxsync $ */
 /** @file
  * Counters macro invocation template.
  *
@@ -38,7 +38,7 @@
 #endif
 #ifdef DRV_COUNTING_COUNTER
 # define COUNTING_COUNTER(name, dsc) do {} while (0)
-#endif 
+#endif
 
 #ifdef PROFILE_COUNTER
 # define DRV_PROFILE_COUNTER(name, dsc) do {} while (0)
@@ -98,3 +98,8 @@ PROFILE_COUNTER(IF_encap, "IF::encap");
 PROFILE_COUNTER(ALIAS_input, "ALIAS::input");
 PROFILE_COUNTER(ALIAS_output, "ALIAS::output");
 
+#undef DRV_COUNTING_COUNTER
+#undef DRV_PROFILE_COUNTER
+
+#undef COUNTING_COUNTER
+#undef PROFILE_COUNTER
