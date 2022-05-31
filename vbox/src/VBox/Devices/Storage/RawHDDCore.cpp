@@ -1,4 +1,4 @@
-/* $Id: RawHDDCore.cpp 17970 2009-03-16 19:08:16Z vboxsync $ */
+/* $Id: RawHDDCore.cpp 18066 2009-03-18 14:16:06Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -274,10 +274,10 @@ static void rawFreeImage(PRAWIMAGE pImage, bool fDelete)
 {
     Assert(pImage);
 
-    if (!(pImage->uOpenFlags & VD_OPEN_FLAGS_READONLY))
-        rawFlushImage(pImage);
     if (pImage->File != NIL_RTFILE)
     {
+        if (!(pImage->uOpenFlags & VD_OPEN_FLAGS_READONLY))
+            rawFlushImage(pImage);
         RTFileClose(pImage->File);
         pImage->File = NIL_RTFILE;
     }
