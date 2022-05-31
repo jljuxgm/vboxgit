@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 20838 2009-06-23 14:15:46Z vboxsync $ */
+/* $Id: PDM.cpp 20874 2009-06-24 02:19:29Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1379,7 +1379,7 @@ VMMR3DECL(void) PDMR3DmaRun(PVM pVM)
 
 
 /**
- * Service a VMMCALLHOST_PDM_LOCK call.
+ * Service a VMMCALLRING3_PDM_LOCK call.
  *
  * @returns VBox status code.
  * @param   pVM     The VM handle.

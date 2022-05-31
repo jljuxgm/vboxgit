@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 20873 2009-06-24 02:08:38Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 20874 2009-06-24 02:19:29Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4008,7 +4008,7 @@ static int pgmPoolMakeMoreFreePages(PPGMPOOL pPool, PGMPOOLKIND enmKind, uint16_
 #ifdef IN_RING3
         int rc = PGMR3PoolGrow(pVM);
 #else
-        int rc = VMMRZCallRing3NoCpu(pVM, VMMCALLHOST_PGM_POOL_GROW, 0);
+        int rc = VMMRZCallRing3NoCpu(pVM, VMMCALLRING3_PGM_POOL_GROW, 0);
 #endif
         if (RT_FAILURE(rc))
             return rc;

@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 20868 2009-06-24 00:10:55Z vboxsync $ */
+/* $Id: MMHyper.cpp 20874 2009-06-24 02:19:29Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -343,7 +343,7 @@ static DECLCALLBACK(bool) mmR3HyperRelocateCallback(PVM pVM, RTGCPTR GCPtrOld, R
 }
 
 /**
- * Service a VMMCALLHOST_MMHYPER_LOCK call.
+ * Service a VMMCALLRING3_MMHYPER_LOCK call.
  *
  * @returns VBox status code.
  * @param   pVM     The VM handle.

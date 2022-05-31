@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 20864 2009-06-23 19:19:42Z vboxsync $ */
+/* $Id: PGM.cpp 20874 2009-06-24 02:19:29Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3196,7 +3196,7 @@ static DECLCALLBACK(void) pgmR3InfoCr3(PVM pVM, PCDBGFINFOHLP pHlp, const char *
 
 
 /**
- * Service a VMMCALLHOST_PGM_LOCK call.
+ * Service a VMMCALLRING3_PGM_LOCK call.
  *
  * @returns VBox status code.
  * @param   pVM     The VM handle.

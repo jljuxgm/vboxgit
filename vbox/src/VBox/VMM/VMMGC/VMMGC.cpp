@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 20873 2009-06-24 02:08:38Z vboxsync $ */
+/* $Id: VMMGC.cpp 20874 2009-06-24 02:19:29Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -177,7 +177,7 @@ VMMRCDECL(int) vmmGCLoggerFlush(PRTLOGGERRC pLogger)
     NOREF(pLogger);
     if (pVM->vmm.s.fRCLoggerFlushingDisabled)
         return VINF_SUCCESS; /* fail quietly. */
-    return VMMRZCallRing3NoCpu(pVM, VMMCALLHOST_VMM_LOGGER_FLUSH, 0);
+    return VMMRZCallRing3NoCpu(pVM, VMMCALLRING3_VMM_LOGGER_FLUSH, 0);
 }
 
 
@@ -193,7 +193,7 @@ VMMRCDECL(void) VMMGCLogFlushIfFull(PVM pVM)
     {
         if (pVM->vmm.s.fRCLoggerFlushingDisabled)
             return; /* fail quietly. */
-        VMMRZCallRing3NoCpu(pVM, VMMCALLHOST_VMM_LOGGER_FLUSH, 0);
+        VMMRZCallRing3NoCpu(pVM, VMMCALLRING3_VMM_LOGGER_FLUSH, 0);
     }
 }
 
