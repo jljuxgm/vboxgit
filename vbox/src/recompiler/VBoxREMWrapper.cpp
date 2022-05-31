@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 22484 2009-08-26 17:41:05Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -894,7 +894,7 @@ static const REMPARMDESC g_aArgsSSMIntLiveVoteCallback[] =
 };
 static REMFNDESC g_SSMIntLiveVoteCallback =
 {
-    "SSMIntLiveVoteCallback", NULL, &g_aArgsSSMIntLiveVoteCallback[0], RT_ELEMENTS(g_aArgsSSMIntLiveVotecCallback), REMFNDESC_FLAGS_RET_INT, sizeof(bool),  NULL
+    "SSMIntLiveVoteCallback", NULL, &g_aArgsSSMIntLiveVoteCallback[0], RT_ELEMENTS(g_aArgsSSMIntLiveVoteCallback), REMFNDESC_FLAGS_RET_INT, sizeof(bool),  NULL
 };
 
 static const REMPARMDESC g_aArgsSSMIntCallback[] =
