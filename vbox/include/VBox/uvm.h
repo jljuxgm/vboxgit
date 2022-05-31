@@ -1,4 +1,4 @@
-/* $Id: uvm.h 19095 2009-04-22 08:19:56Z vboxsync $ */
+/* $Id: uvm.h 19101 2009-04-22 10:09:18Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -70,7 +70,8 @@ typedef struct UVM
 {
     /** Magic / eye-catcher (UVM_MAGIC). */
     uint32_t        u32Magic;
-    uint32_t        uReserved;          /**< alignment */
+    /** The number of virtual CPUs. */
+    uint32_t        cCpus;
     /** The ring-3 mapping of the shared VM structure. */
     PVM             pVM;
     /** Pointer to the next VM.
