@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-freebsd.c 19341 2009-05-04 21:25:26Z vboxsync $ */
+/* $Id: memobj-r0drv-freebsd.c 19563 2009-05-10 21:49:07Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, FreeBSD.
  */
@@ -617,7 +617,7 @@ int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, RT
             {
                 vm_page_t Page = PHYS_TO_VM_PAGE(vtophys(AddrToMap));
 
-#if __FreeBSD_version >= 800002
+#if __FreeBSD_version >= 701105
                 pmap_enter(pPhysicalMap, AddrR3Dst, VM_PROT_NONE, Page, ProtectionFlags, TRUE);
 #else
                 pmap_enter(pPhysicalMap, AddrR3Dst, Page, ProtectionFlags, TRUE);
