@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 18870 2009-04-11 21:15:59Z vboxsync $ */
+/* $Id: GMMR0.cpp 19360 2009-05-05 10:14:15Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -724,7 +724,6 @@ static DECLCALLBACK(int) gmmR0TermDestroyChunk(PAVLU32NODECORE pNode, void *pvGM
 GMMR0DECL(void) GMMR0InitPerVMData(PGVM pGVM)
 {
     AssertCompile(RT_SIZEOFMEMB(GVM,gmm.s) <= RT_SIZEOFMEMB(GVM,gmm.padding));
-    AssertRelease(RT_SIZEOFMEMB(GVM,gmm.s) <= RT_SIZEOFMEMB(GVM,gmm.padding));
 
     pGVM->gmm.s.enmPolicy = GMMOCPOLICY_INVALID;
     pGVM->gmm.s.enmPriority = GMMPRIORITY_INVALID;

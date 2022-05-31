@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 19227 2009-04-28 08:50:31Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 19360 2009-05-05 10:14:15Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1191,8 +1191,7 @@ VMMR0DECL(PVMCPU)  HWACCMR0GetVMCPU(PVM pVM)
         if (pVCpu->hwaccm.s.idEnteredCpu == idHostCpu)
             return pVCpu;
     }
-    AssertReleaseFailed();
-    return 0;
+    return NULL;
 }
 
 /**
@@ -1206,7 +1205,6 @@ VMMR0DECL(VMCPUID) HWACCMR0GetVMCPUId(PVM pVM)
     if (pVCpu)
         return pVCpu->idCpu;
 
-    AssertReleaseFailed();
     return 0;
 }
 
