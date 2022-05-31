@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 21035 2009-06-29 15:45:43Z vboxsync $ */
+/* $Id: PDMQueue.cpp 21039 2009-06-29 15:57:39Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -628,6 +628,7 @@ VMMR3DECL(void) PDMR3QueueFlushAll(PVM pVM)
 
     VM_FF_CLEAR(pVM, VM_FF_PDM_QUEUES);
 
+check_queue:
     /* Prevent other VCPUs from flushing queues at the same time; we'll never flush an item twice, but the order might change. */
     if (ASMAtomicCmpXchgU32(&pVM->pdm.s.fQueueFlushing, 1, 0))
     {
@@ -663,6 +664,9 @@ VMMR3DECL(void) PDMR3QueueFlushAll(PVM pVM)
                 break;
             }
         }
+        if (VM_FF_TESTANDCLEAR(pVM, VM_FF_PDM_QUEUES))
+            goto check_queue;
+           
     }
 }
 
