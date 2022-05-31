@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 19708 2009-05-14 17:58:19Z vboxsync $ */
+/* $Id: PGMPool.cpp 19872 2009-05-20 15:05:53Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -399,18 +399,6 @@ void pgmR3PoolRelocate(PVM pVM)
         AssertReleaseRC(rc);
     }
 #endif
-}
-
-
-/**
- * Reset notification.
- *
- * This will flush the pool.
- * @param   pVM     The VM handle.
- */
-void pgmR3PoolReset(PVM pVM)
-{
-    pgmPoolFlushAll(pVM);
 }
 
 
