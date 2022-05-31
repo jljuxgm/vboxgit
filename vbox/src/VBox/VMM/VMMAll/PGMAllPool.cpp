@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 20764 2009-06-22 11:13:45Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 20773 2009-06-22 12:54:03Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1101,14 +1101,14 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
 
     LogFlow(("pgmPoolAccessHandler: pvFault=%RGv pPage=%p:{.idx=%d} GCPhysFault=%RGp\n", pvFault, pPage, pPage->idx, GCPhysFault));
 
+    pgmLock(pVM);
+
     /*
      * Disassemble the faulting instruction.
      */
     PDISCPUSTATE pDis = &pVCpu->pgm.s.DisState;
     int rc = EMInterpretDisasOne(pVM, pVCpu, pRegFrame, pDis, NULL);
-    AssertRCReturn(rc, rc);
-
-    pgmLock(pVM);
+    AssertReturnStmt(rc == VINF_SUCCESS, pgmUnlock(pVM), rc);
 
     if (PHYS_PAGE_ADDRESS(GCPhysFault) != PHYS_PAGE_ADDRESS(pPage->GCPhys))
     {
