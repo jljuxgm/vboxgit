@@ -1,4 +1,4 @@
-/* $Id: VBoxDev.cpp 20961 2009-06-26 08:45:18Z vboxsync $ */
+/* $Id: VBoxDev.cpp 20991 2009-06-26 17:09:26Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1790,6 +1790,8 @@ static DECLCALLBACK(int) vmmdevQueryAbsoluteMouse(PPDMIVMMDEVPORT pInterface, ui
 static DECLCALLBACK(int) vmmdevSetAbsoluteMouse(PPDMIVMMDEVPORT pInterface, uint32_t absX, uint32_t absY)
 {
     VMMDevState *pThis = IVMMDEVPORT_2_VMMDEVSTATE(pInterface);
+    if ((pThis->mouseXAbs == absX) && (pThis->mouseYAbs == absY))
+        return VINF_SUCCESS;
     Log2(("vmmdevSetAbsoluteMouse: settings absolute position to x = %d, y = %d\n", absX, absY));
     pThis->mouseXAbs = absX;
     pThis->mouseYAbs = absY;
