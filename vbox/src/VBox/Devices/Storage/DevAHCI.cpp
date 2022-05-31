@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 23012 2009-09-14 16:38:13Z vboxsync $ */
+/* $Id: DevAHCI.cpp 23066 2009-09-16 12:37:28Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -547,6 +547,9 @@ typedef struct AHCI
     /** Needed values for the emulated ide channels. */
     AHCIATACONTROLLER               aCts[2];
 
+    /** The critical section. */
+    PDMCRITSECT                     lock;
+
     /** Bitmask of ports which asserted an interrupt. */
     uint32_t                        u32PortsInterrupted;
     /** Device is in a reset state. */
@@ -559,8 +562,6 @@ typedef struct AHCI
     bool                            fR0Enabled;
     /** If the new async interface is used if available. */
     bool                            fUseAsyncInterfaceIfAvailable;
-    /** The critical section. */
-    PDMCRITSECT                     lock;
 
     /** Number of usable ports on this controller. */
     uint32_t                        cPortsImpl;
