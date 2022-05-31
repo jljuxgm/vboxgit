@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 19395 2009-05-05 20:28:42Z vboxsync $ */
+/* $Id: GVMMR0.cpp 19396 2009-05-05 20:29:42Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1251,15 +1251,7 @@ static int gvmmR0ByVMAndEMT(PVM pVM, VMCPUID idCpu, PGVM *ppGVM, PGVMM *ppGVMM)
     AssertReturn(pGVM->pVM == pVM, VERR_INTERNAL_ERROR);
     RTNATIVETHREAD hAllegedEMT = RTThreadNativeSelf();
     AssertReturn(idCpu < pGVM->cCpus, VERR_INVALID_CPU_ID);
-#ifdef DEBUG_bird /* did bad stuff to my box just now, take it easy. */
-    if (RT_UNLIKELY(pGVM->aCpus[idCpu].hEMT != hAllegedEMT))
-    {
-        SUPR0Printf("gvmmR0ByVMAndEMT: %x != %x idCpu=%u\n", pGVM->aCpus[idCpu].hEMT, hAllegedEMT, idCpu);
-        return VERR_INTERNAL_ERROR;
-    }
-#else
     AssertReturn(pGVM->aCpus[idCpu].hEMT == hAllegedEMT, VERR_INTERNAL_ERROR);
-#endif
 
     *ppGVM = pGVM;
     *ppGVMM = pGVMM;
