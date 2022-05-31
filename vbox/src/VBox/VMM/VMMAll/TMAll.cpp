@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 19217 2009-04-27 15:00:59Z vboxsync $ */
+/* $Id: TMAll.cpp 19400 2009-05-05 21:49:16Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -145,7 +145,7 @@ DECLINLINE(void) tmSchedule(PTMTIMER pTimer)
         VM_FF_SET(pVM, VM_FF_TIMER);
 #ifdef IN_RING3
         REMR3NotifyTimerPending(pVM);
-        VMR3NotifyGlobalFF(pVM, true);
+        VMR3NotifyGlobalFFU(pVM->pUVM, VMNOTIFYFF_FLAGS_DONE_REM);
 #endif
     }
 }

@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 19366 2009-05-05 11:58:07Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 19400 2009-05-05 21:49:16Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -2449,7 +2449,7 @@ static DECLCALLBACK(void) pdmR3DevHlp_DMASchedule(PPDMDEVINS pDevIns)
     AssertMsg(pVM->pdm.s.pDmac, ("Configuration error: No DMAC controller available. This could be related to init order too!\n"));
     VM_FF_SET(pVM, VM_FF_PDM_DMA);
     REMR3NotifyDmaPending(pVM);
-    VMR3NotifyGlobalFF(pVM, true);
+    VMR3NotifyGlobalFFU(pVM->pUVM, VMNOTIFYFF_FLAGS_DONE_REM);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 19395 2009-05-05 20:28:42Z vboxsync $ */
+/* $Id: VMReq.cpp 19400 2009-05-05 21:49:16Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -696,7 +696,7 @@ VMMR3DECL(int) VMR3ReqQueue(PVMREQ pReq, unsigned cMillies)
          */
         if (pUVM->pVM)
             VMCPU_FF_SET(pVCpu, VMCPU_FF_REQUEST);
-        VMR3NotifyCpuFFU(pUVCpu, false /*fNotifiedREM*/);
+        VMR3NotifyCpuFFU(pUVCpu, 0);
 
         /*
          * Wait and return.
@@ -726,7 +726,7 @@ VMMR3DECL(int) VMR3ReqQueue(PVMREQ pReq, unsigned cMillies)
          */
         if (pUVM->pVM)
             VM_FF_SET(pUVM->pVM, VM_FF_REQUEST);
-        VMR3NotifyGlobalFFU(pUVM, false  /*fNotifiedREM*/);
+        VMR3NotifyGlobalFFU(pUVM, 0);
 
         /*
          * Wait and return.

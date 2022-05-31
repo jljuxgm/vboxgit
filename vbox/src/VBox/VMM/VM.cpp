@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 19395 2009-05-05 20:28:42Z vboxsync $ */
+/* $Id: VM.cpp 19400 2009-05-05 21:49:16Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1868,7 +1868,7 @@ static void vmR3DestroyUVM(PUVM pUVM, uint32_t cMilliesEMTWait)
         ASMAtomicUoWriteBool(&pUVM->aCpus[i].vm.s.fTerminateEMT, true);
         if (pUVM->pVM)
             VM_FF_SET(pUVM->pVM, VM_FF_TERMINATE);
-        VMR3NotifyGlobalFFU(pUVM, true /* fNotifiedREM */);
+        VMR3NotifyGlobalFFU(pUVM, VMNOTIFYFF_FLAGS_DONE_REM);
         RTSemEventSignal(pUVM->aCpus[i].vm.s.EventSemWait);
     }
 
