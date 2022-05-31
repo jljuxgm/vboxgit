@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22910 2009-09-10 11:54:11Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 23008 2009-09-14 14:55:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2329,7 +2329,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             rc = CFGMR3InsertString(pCfg, "Trunk", pszTrunk);                       RC_CHECK();
             rc = CFGMR3InsertInteger(pCfg, "TrunkType", kIntNetTrunkType_NetFlt);
             RC_CHECK();
-            char szNetwork[80];
+            char szNetwork[INTNET_MAX_NETWORK_NAME];
             RTStrPrintf(szNetwork, sizeof(szNetwork), "HostInterfaceNetworking-%s", pszHifName);
             rc = CFGMR3InsertString(pCfg, "Network", szNetwork);                    RC_CHECK();
             networkName = Bstr(szNetwork);
@@ -2527,7 +2527,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                                   HifName.raw());
             }
 
-            char szNetwork[80];
+            char szNetwork[INTNET_MAX_NETWORK_NAME];
             RTStrPrintf(szNetwork, sizeof(szNetwork), "HostInterfaceNetworking-%s", pszHifName);
 
 #if defined(RT_OS_WINDOWS)
