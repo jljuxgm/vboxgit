@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22348 2009-08-19 14:04:03Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22349 2009-08-19 14:16:10Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1195,6 +1195,9 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
                  pPage->pvLastAccessHandlerFault = pvFault;
                  pPage->cLastAccessHandlerCount  = pVCpu->pgm.s.cPoolAccessHandler;
                  pPage->pvLastAccessHandlerRip   = pRegFrame->rip;
+                 /* Make sure we don't kick out a page too quickly. */
+                 if (pPage->cModifications > 8)
+                     pPage->cModifications = 2;
              }
              else
              if (pPage->pvLastAccessHandlerFault == pvFault)
