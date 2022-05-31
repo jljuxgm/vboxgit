@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 23080 2009-09-17 10:08:00Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 23084 2009-09-17 11:13:06Z vboxsync $ */
 
 /** @file
  *
@@ -3551,11 +3551,6 @@ DECLCALLBACK(int) Console::changeNetworkAttachment (Console *pThis,
     PCFGMNODE pInst = CFGMR3GetChildF (CFGMR3GetRoot (pVM), "Devices/%s/%d/", pszDevice, uInstance);
     AssertRelease (pInst);
 
-    /** @todo pritesh: Need to store the previous network configuration
-     * and restore it if configNetwork fails, currently not sure if the
-     * previous atachment will also cleanly reattach with the later one
-     * failing to attach.
-     */
     rcRet = configNetwork(pThis, pszDevice, uInstance, uLun, aNetworkAdapter, pCfg, pLunL0, pInst, true);
 
     /*
