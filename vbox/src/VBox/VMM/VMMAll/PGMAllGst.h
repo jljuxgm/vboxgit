@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 23844 2009-10-19 08:21:09Z vboxsync $ */
+/* $Id: PGMAllGst.h 23851 2009-10-19 10:14:02Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -61,8 +61,6 @@ PGM_GST_DECL(int, GetPage)(PVMCPU pVCpu, RTGCPTR GCPtr, uint64_t *pfFlags, PRTGC
     return VINF_SUCCESS;
 
 #elif PGM_GST_TYPE == PGM_TYPE_32BIT || PGM_GST_TYPE == PGM_TYPE_PAE || PGM_GST_TYPE == PGM_TYPE_AMD64
-
-    Assert((GCPtr & PAGE_OFFSET_MASK) == 0);
 
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     /*
