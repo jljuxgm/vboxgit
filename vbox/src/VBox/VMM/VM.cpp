@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 17900 2009-03-15 21:43:18Z vboxsync $ */
+/* $Id: VM.cpp 18104 2009-03-20 10:31:34Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -272,6 +272,12 @@ VMMR3DECL(int)   VMR3Create(uint32_t cCPUs, PFNVMATERROR pfnVMAtError, void *pvU
 #else
                     pszError = N_("VirtualBox can't operate in VMX root mode. Please close all other virtualization programs.");
 #endif
+                    break;
+
+                case VERR_VERSION_MISMATCH:
+                    pszError = N_("VMMR0 driver version mismatch. Please terminate all VMs, make sure that not "
+                                  "VBoxNetDHCP is running and try again. If you still get this error, re-install "
+                                  "VirtualBox");
                     break;
 
                 default:
