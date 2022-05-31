@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 19817 2009-05-19 12:16:28Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -802,7 +802,7 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char **envp)
 #endif
     if (!gConsole->initialized())
         goto leave;
-    gDisplay->RegisterExternalFramebuffer(gFramebuffer);
+    gDisplay->SetFramebuffer(0, gFramebuffer);
 
     /* start with something in the titlebar */
     gConsole->updateTitlebar();
