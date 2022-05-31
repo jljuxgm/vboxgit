@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22487 2009-08-26 20:55:09Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22560 2009-08-28 17:17:17Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -8331,8 +8331,14 @@ STDMETHODIMP SessionMachine::PullGuestProperties(ComSafeArrayOut(BSTR, aNames),
         it->strName.cloneTo(&names[i]);
         it->strValue.cloneTo(&values[i]);
         timestamps[i] = it->mTimestamp;
-        writeFlags(it->mFlags, szFlags);
-        Bstr(szFlags).cloneTo(&flags[i]);
+        /* If it is NULL, keep it NULL. */
+        if (it->mFlags)
+        {
+            writeFlags(it->mFlags, szFlags);
+            Bstr(szFlags).cloneTo(&flags[i]);
+        }
+        else
+            flags[i] = NULL;
         ++i;
     }
     names.detachTo(ComSafeArrayOutArg(aNames));
