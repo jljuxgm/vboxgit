@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 18486 2009-03-29 01:34:31Z vboxsync $ */
+/* $Id: MachineImpl.cpp 18572 2009-03-31 13:29:31Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2741,6 +2741,7 @@ STDMETHODIMP Machine::DeleteSettings()
             tr ("Cannot delete settings of a registered machine"));
 
     /* delete the settings only when the file actually exists */
+    lockConfig();
     if (isConfigLocked())
     {
         unlockConfig();
