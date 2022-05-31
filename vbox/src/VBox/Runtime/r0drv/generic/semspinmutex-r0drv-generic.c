@@ -1,4 +1,4 @@
-/* $Id: semspinmutex-r0drv-generic.c 21543 2009-07-13 15:18:20Z vboxsync $ */
+/* $Id: semspinmutex-r0drv-generic.c 21545 2009-07-13 15:30:00Z vboxsync $ */
 /** @file
  * IPRT - Spinning Mutex Semaphores, Ring-0 Driver, Generic.
  */
@@ -389,7 +389,7 @@ RTDECL(int) RTSemSpinMutexRelease(RTSEMSPINMUTEX hSpinMtx)
      */
     State = pThis->SavedState;
     ASMCompilerBarrier();
-    ASMAtomicCmpXchgHandle(&pThis->hOwner, hSelf, NIL_RTNATIVETHREAD, fRc);
+    ASMAtomicCmpXchgHandle(&pThis->hOwner, NIL_RTNATIVETHREAD, hSelf, fRc);
     AssertReturn(fRc, VERR_NOT_OWNER);
 
     cLockers = ASMAtomicDecS32(&pThis->cLockers);
