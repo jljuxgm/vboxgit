@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 19797 2009-05-18 15:28:49Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 20753 2009-06-21 23:11:24Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -25,6 +25,7 @@
 #define LOG_GROUP LOG_GROUP_VMM
 #include <VBox/vmm.h>
 #include <VBox/pdmapi.h>
+#include <VBox/pdmcritsect.h>
 #include <VBox/trpm.h>
 #include <VBox/dbgf.h>
 #include "VMMInternal.h"
@@ -212,11 +213,15 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
     vmmR3FatalDumpInfoHlpInit(&Hlp);
 
     /* Release owned locks to make sure other VCPUs can continue in case they were waiting for one. */
+#if 1
+    PDMR3CritSectLeaveAll(pVM);
+#else
     MMR3ReleaseOwnedLocks(pVM);
     PGMR3ReleaseOwnedLocks(pVM);
     PDMR3ReleaseOwnedLocks(pVM);
     IOMR3ReleaseOwnedLocks(pVM);
     EMR3ReleaseOwnedLocks(pVM);
+#endif
 
     /*
      * Header.
