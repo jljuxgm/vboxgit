@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 19199 2009-04-27 09:39:51Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 20418 2009-06-09 08:04:46Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1258,7 +1258,6 @@ VBOXDDU_DECL(int) VDCreateBase(PVBOXHDD pDisk, const char *pszBackend,
                            rc = VERR_INVALID_PARAMETER);
         /* The PCHS geometry fields may be 0 to leave it for later. */
         AssertMsgBreakStmt(   VALID_PTR(pPCHSGeometry)
-                           && pPCHSGeometry->cCylinders <= 16383
                            && pPCHSGeometry->cHeads <= 16
                            && pPCHSGeometry->cSectors <= 63,
                            ("pPCHSGeometry=%#p PCHS=%u/%u/%u\n", pPCHSGeometry,
@@ -2665,7 +2664,6 @@ VBOXDDU_DECL(int) VDSetPCHSGeometry(PVBOXHDD pDisk, unsigned nImage,
 
         /* Check arguments. */
         AssertMsgBreakStmt(   VALID_PTR(pPCHSGeometry)
-                           && pPCHSGeometry->cCylinders <= 16383
                            && pPCHSGeometry->cHeads <= 16
                            && pPCHSGeometry->cSectors <= 63,
                            ("pPCHSGeometry=%#p PCHS=%u/%u/%u\n", pPCHSGeometry,
