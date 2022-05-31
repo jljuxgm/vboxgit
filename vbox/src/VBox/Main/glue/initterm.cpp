@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 22847 2009-09-08 20:37:54Z vboxsync $ */
+/* $Id: initterm.cpp 23092 2009-09-17 13:20:18Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -497,7 +497,11 @@ HRESULT Initialize()
 
     AssertComRC (rc);
 
-    EventQueue::init();
+    /*
+     * Init the main event queue (ASSUMES it cannot fail).
+     */
+    if (SUCCEEDED(rc))
+        EventQueue::init();
 
     return rc;
 }
@@ -506,7 +510,7 @@ HRESULT Shutdown()
 {
     HRESULT rc = S_OK;
 
-    EventQueue::deinit();
+    EventQueue::uninit();
 
 #if !defined (VBOX_WITH_XPCOM)
 
