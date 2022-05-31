@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 19457 2009-05-06 19:33:30Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 19460 2009-05-06 19:46:33Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2130,7 +2130,7 @@ end:
         rc = VINF_EM_RAW_EMULATE_INSTR;
 
     /* Just set the correct state here instead of trying to catch every goto above. */
-    VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED);
+    VMCPU_CMPXCHG_STATE(pVCpu, VMCPUSTATE_STARTED, VMCPUSTATE_STARTED_EXEC);
 
     STAM_PROFILE_ADV_STOP(&pVCpu->hwaccm.s.StatExit1, x);
     return rc;
