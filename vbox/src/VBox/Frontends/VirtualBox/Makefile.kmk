@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22948 2009-09-11 10:10:35Z vboxsync $
+# $Id: Makefile.kmk 22960 2009-09-11 16:01:10Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -310,7 +310,6 @@ VirtualBox_QT_MOCHDRS = \
 	include/VBoxVMSettingsFD.h \
 	include/VBoxVMSettingsAudio.h \
 	include/VBoxVMSettingsNetwork.h \
-	include/VBoxVMSettingsNetworkDetails.h \
 	include/VBoxVMSettingsSerial.h \
 	include/VBoxVMSettingsParallel.h \
 	include/VBoxVMSettingsUSB.h \
@@ -410,7 +409,6 @@ VirtualBox_SOURCES = \
 	src/VBoxVMSettingsFD.cpp \
 	src/VBoxVMSettingsAudio.cpp \
 	src/VBoxVMSettingsNetwork.cpp \
-	src/VBoxVMSettingsNetworkDetails.cpp \
 	src/VBoxVMSettingsSerial.cpp \
 	src/VBoxVMSettingsParallel.cpp \
 	src/VBoxVMSettingsUSB.cpp \
