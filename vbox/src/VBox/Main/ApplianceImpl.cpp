@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18214 2009-03-24 18:30:04Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18220 2009-03-24 19:20:37Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -693,7 +693,9 @@ HRESULT Appliance::HandleVirtualSystemContent(const char *pcszPath,
         const xml::AttributeNode *pTypeAttr = pelmThis->findAttribute("type");
         const char *pcszTypeAttr = (pTypeAttr) ? pTypeAttr->getValue() : "";
 
-        if (!strcmp(pcszElemName, "EulaSection"))
+        if (    (!strcmp(pcszElemName, "EulaSection"))
+             || (!strcmp(pcszTypeAttr, "ovf:EulaSection_Type"))
+           )
         {
          /* <EulaSection>
                 <Info ovf:msgid="6">License agreement for the Virtual System.</Info>
