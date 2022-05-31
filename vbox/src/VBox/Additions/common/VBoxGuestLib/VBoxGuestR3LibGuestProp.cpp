@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 22730 2009-09-03 09:43:15Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 22758 2009-09-04 07:37:29Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -213,7 +213,7 @@ VBGLR3DECL(int) VbglR3GuestPropWriteValueV(uint32_t u32ClientId, const char *psz
      */
     int rc = VERR_NO_STR_MEMORY;
     char *pszValue;
-    if (RTStrAPrintfV(&pszValue, pszValueFormat, va) < 0)
+    if (RTStrAPrintfV(&pszValue, pszValueFormat, va) > 0)
     {
         rc = VbglR3GuestPropWriteValue(u32ClientId, pszName, pszValue);
         RTStrFree(pszValue);
