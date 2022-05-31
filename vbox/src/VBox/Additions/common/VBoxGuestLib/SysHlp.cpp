@@ -1,4 +1,4 @@
-/* $Revision: 23610 $ */
+/* $Revision: 23612 $ */
 /** @file
  * VBoxGuestLibR0 - IDC with VBoxGuest and HGCM helpers.
  */
@@ -31,6 +31,7 @@
 
 #if !defined (RT_OS_WINDOWS)
 # include <iprt/memobj.h>
+# include <iprt/mem.h>
 #endif
 
 
