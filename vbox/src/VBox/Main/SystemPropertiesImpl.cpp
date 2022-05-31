@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 23257 2009-09-23 13:30:15Z vboxsync $ */
 
 /** @file
  *
@@ -37,6 +37,7 @@
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <VBox/settings.h>
+#include <VBox/VBoxHDD.h>
 
 // defines
 /////////////////////////////////////////////////////////////////////////////
