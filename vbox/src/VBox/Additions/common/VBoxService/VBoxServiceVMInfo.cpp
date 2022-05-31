@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 19619 2009-05-12 13:17:34Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 19623 2009-05-12 13:42:34Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -369,7 +369,12 @@ DECLCALLBACK(int) VBoxServiceVMInfoWorker(bool volatile *pfShutdown)
                 VBoxServiceError("Failed to ioctl(SIOCGIFBRDADDR) on socket: Error %d\n", errno);
         	    return -1;
             }
+ #ifdef RT_OS_SOLARIS
+            pAddress = (sockaddr_in *)&ifrequest[i].sin_addr;
+ #else
             pAddress = (sockaddr_in *)&ifrequest[i].ifr_netmask;
+ #endif
+
 #endif
             RTStrPrintf(szPropPath, sizeof(szPropPath), "GuestInfo/Net/%d/V4/Netmask", iCurIface);
             VboxServiceWriteProp(g_VMInfoGuestPropSvcClientID, szPropPath, inet_ntoa(pAddress->sin_addr));
