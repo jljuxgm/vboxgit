@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 19639 2009-05-12 15:22:14Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 19641 2009-05-12 15:25:49Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -610,7 +610,7 @@ VMMR3DECL(int) DBGFR3DisasInstrCurrentLogInternal(PVMCPU pVCpu, const char *pszP
     if (RT_FAILURE(rc))
         RTStrPrintf(szBuf, sizeof(szBuf), "DBGFR3DisasInstrCurrentLog failed with rc=%Rrc\n", rc);
     if (pszPrefix && *pszPrefix)
-        RTLogPrintf("%s: %s\n", pszPrefix, szBuf);
+        RTLogPrintf("%s-CPU%d: %s\n", pVCpu->idCpu, pszPrefix, szBuf);
     else
         RTLogPrintf("%s\n", szBuf);
     return rc;
