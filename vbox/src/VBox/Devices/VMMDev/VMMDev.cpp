@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 21506 2009-07-10 23:54:26Z vboxsync $ */
+/* $Id: VMMDev.cpp 21644 2009-07-16 11:54:31Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -806,6 +806,38 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                                 pRequestHeader->rc));
                     }
                 }
+            }
+            break;
+        }
+
+        case VMMDevReq_SetPatchMemory:
+        {
+            if (pRequestHeader->size != sizeof(VMMDevReqPatchMemory))
+            {
+                AssertMsgFailed(("VMMDevReq_SetPatchMemory structure has invalid size!\n"));
+                pRequestHeader->rc = VERR_INVALID_PARAMETER;
+            }
+            else
+            {
+                VMMDevReqPatchMemory *pPatchRequest = (VMMDevReqPatchMemory*)pRequestHeader;
+
+                pRequestHeader->rc = VMMR3SetPatchMemory(PDMDevHlpGetVM(pDevIns), pPatchRequest->pPatchMem, pPatchRequest->cbPatchMem);
+            }
+            break;
+        }
+
+        case VMMDevReq_ClearPatchMemory:
+        {
+            if (pRequestHeader->size != sizeof(VMMDevReqPatchMemory))
+            {
+                AssertMsgFailed(("VMMDevReq_ClearPatchMemory structure has invalid size!\n"));
+                pRequestHeader->rc = VERR_INVALID_PARAMETER;
+            }
+            else
+            {
+                VMMDevReqPatchMemory *pPatchRequest = (VMMDevReqPatchMemory*)pRequestHeader;
+
+                pRequestHeader->rc = VMMR3ClearPatchMemory(PDMDevHlpGetVM(pDevIns), pPatchRequest->pPatchMem, pPatchRequest->cbPatchMem);
             }
             break;
         }

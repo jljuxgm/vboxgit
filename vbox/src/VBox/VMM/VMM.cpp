@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 21196 2009-07-03 12:57:21Z vboxsync $ */
+/* $Id: VMM.cpp 21644 2009-07-16 11:54:31Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1301,6 +1301,30 @@ VMMR3DECL(void) VMMR3SendInitIpi(PVM pVM, VMCPUID idCpu)
     int rc = VMR3ReqCallU(pVM->pUVM, idCpu, &pReq, 0, VMREQFLAGS_NO_WAIT,
                           (PFNRT)vmmR3SendInitIpi, 2, pVM, idCpu);
     AssertRC(rc);
+}
+
+/**
+ * Sets the guest memory range that can be used for patching
+ *
+ * @param   pVM         The VM to operate on.
+ * @param   pPatchMem   Patch memory range
+ * @param   cbPatchMem  Size of the memory range
+ */
+VMMR3DECL(int) VMMR3SetPatchMemory(PVM pVM, RTGCPTR pPatchPage, unsigned cbPatch)
+{
+    return VERR_ACCESS_DENIED;
+}
+
+/**
+ * Clears the guest memory range that can be used for patching
+ *
+ * @param   pVM         The VM to operate on.
+ * @param   pPatchMem   Patch memory range
+ * @param   cbPatchMem  Size of the memory range
+ */
+VMMR3DECL(int) VMMR3ClearPatchMemory(PVM pVM, RTGCPTR pPatchPage, unsigned cbPatch)
+{
+    return VINF_SUCCESS;
 }
 
 
