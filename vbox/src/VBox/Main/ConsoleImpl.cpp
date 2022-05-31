@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 20727 2009-06-19 14:13:31Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 20729 2009-06-19 14:35:30Z vboxsync $ */
 
 /** @file
  *
@@ -6926,7 +6926,6 @@ static DECLCALLBACK(int) reconfigureHardDisks(PVM pVM, ULONG lInstance,
      */
     PCFGMNODE pCfg;
     PCFGMNODE pLunL1;
-    PCFGMNODE pLunL2;
 
     /* SCSI has an extra driver between the device and the block driver. */
     if (fSCSI)
