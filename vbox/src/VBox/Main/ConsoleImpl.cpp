@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 23420 2009-09-29 18:28:50Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 23567 2009-10-05 18:24:45Z vboxsync $ */
 
 /** @file
  *
@@ -2490,14 +2490,6 @@ STDMETHODIMP Console::TakeSnapshot(IN_BSTR aName,
         /* memorize the current machine state */
         pTask->lastMachineState = mMachineState;
         pTask->fTakingSnapshotOnline = fTakingSnapshotOnline;
-
-#ifndef VBOX_WITH_LIVE_MIGRATION /** @todo update the API docs. */
-        if (mMachineState == MachineState_Running)
-        {
-            rc = Pause();
-            if (FAILED(rc)) throw rc;
-        }
-#endif
 
         int vrc = RTThreadCreate(NULL,
                                  Console::fntTakeSnapshotWorker,
