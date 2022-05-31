@@ -1,4 +1,4 @@
-/* $Revision: 21577 $ */
+/* $Revision: 21778 $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -40,7 +40,7 @@
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
 /** The max parameter buffer size for a user request. */
-#define VBGLR0_MAX_HGCM_USER_PARM       _1M
+#define VBGLR0_MAX_HGCM_USER_PARM       (16*_1M)
 /** The max parameter buffer size for a kernel request. */
 #define VBGLR0_MAX_HGCM_KERNEL_PARM     (16*_1M)
 #ifdef RT_OS_LINUX
