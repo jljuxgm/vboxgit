@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 19360 2009-05-05 10:14:15Z vboxsync $ */
+/* $Id: gvmm.h 19381 2009-05-05 14:44:43Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -131,12 +131,12 @@ GVMMR0DECL(bool)    GVMMR0DoingTermVM(PVM pVM, PGVM pGVM);
 GVMMR0DECL(int)     GVMMR0DestroyVM(PVM pVM);
 GVMMR0DECL(PGVM)    GVMMR0ByHandle(uint32_t hGVM);
 GVMMR0DECL(PGVM)    GVMMR0ByVM(PVM pVM);
-GVMMR0DECL(int)     GVMMR0ByVMAndEMT(PVM pVM, PGVM *ppGVM);
+GVMMR0DECL(int)     GVMMR0ByVMAndEMT(PVM pVM, unsigned idCpu, PGVM *ppGVM);
 GVMMR0DECL(PVM)     GVMMR0GetVMByHandle(uint32_t hGVM);
 GVMMR0DECL(PVM)     GVMMR0GetVMByEMT(RTNATIVETHREAD hEMT);
 GVMMR0DECL(int)     GVMMR0SchedHalt(PVM pVM, unsigned idCpu, uint64_t u64ExpireGipTime);
 GVMMR0DECL(int)     GVMMR0SchedWakeUp(PVM pVM, unsigned idCpu);
-GVMMR0DECL(int)     GVMMR0SchedPoll(PVM pVM, bool fYield);
+GVMMR0DECL(int)     GVMMR0SchedPoll(PVM pVM, unsigned idCpu, bool fYield);
 GVMMR0DECL(int)     GVMMR0QueryStatistics(PGVMMSTATS pStats, PSUPDRVSESSION pSession, PVM pVM);
 GVMMR0DECL(int)     GVMMR0ResetStatistics(PCGVMMSTATS pStats, PSUPDRVSESSION pSession, PVM pVM);
 
