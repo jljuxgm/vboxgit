@@ -1,4 +1,4 @@
-/* $Id: string.h 21079 2009-06-30 15:59:22Z vboxsync $ */
+/* $Id: string.h 21369 2009-07-07 18:52:12Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -595,7 +595,6 @@ protected:
 
 // work around error C2593 of the stupid MSVC 7.x ambiguity resolver
 WORKAROUND_MSVC7_ERROR_C2593_FOR_BOOL_OP (Bstr)
-WORKAROUND_MSVC7_ERROR_C2593_FOR_BOOL_OP (Utf8Str)
 
 ////////////////////////////////////////////////////////////////////////////////
 

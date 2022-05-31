@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 21362 2009-07-07 16:38:46Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 21369 2009-07-07 18:52:12Z vboxsync $ */
 
 /** @file
  *
@@ -6665,7 +6665,7 @@ DECLCALLBACK (int) Console::powerUpThread (RTTHREAD Thread, void *pvUser)
                 alock.leave();
 
                 /* Load saved state? */
-                if (!!task->mSavedStateFile)
+                if (!task->mSavedStateFile.isEmpty())
                 {
                     LogFlowFunc (("Restoring saved state from '%s'...\n",
                                   task->mSavedStateFile.raw()));
