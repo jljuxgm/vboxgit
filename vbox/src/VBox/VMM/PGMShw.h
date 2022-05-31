@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 20278 2009-06-04 13:14:37Z vboxsync $ */
+/* $Id: PGMShw.h 20280 2009-06-04 13:19:11Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -230,7 +230,8 @@ PGM_SHW_DECL(int, Exit)(PVMCPU pVCpu)
 {
     PVM pVM = pVCpu->pVMR3;
 
-    if (    HWACCMIsNestedPagingActive(pVM)
+    if (    (   pVCpu->pgm.s.enmShadowMode == PGMMODE_NESTED 
+             || pVCpu->pgm.s.enmShadowMode == PGMMODE_EPT)
         &&  pVCpu->pgm.s.CTX_SUFF(pShwPageCR3))
     {
         PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
