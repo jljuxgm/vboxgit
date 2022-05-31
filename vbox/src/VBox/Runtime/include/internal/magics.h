@@ -1,4 +1,4 @@
-/* $Id: magics.h 18364 2009-03-27 02:03:20Z vboxsync $ */
+/* $Id: magics.h 19040 2009-04-21 02:02:36Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -40,6 +40,12 @@
 #define RTDIR_MAGIC                 0x19291112
 /** The value of RTDIR::u32Magic after RTDirClose().  */
 #define RTDIR_MAGIC_DEAD            0x19950829
+/** The value of RTFILEAIOCTXINT::u32Magic. (Howard Phillips Lovecraft) */
+#define RTFILEAIOCTX_MAGIC          0x18900820
+/** The value of RTFILEAIOCTXINT::u32Magic after RTFileAioCtxDestroy(). */
+#define RTFILEAIOCTX_MAGIC_DEAD     0x19370315
+/** The value of RTFILEAIOREQINT::u32Magic. (Stephen Edwin King)  */
+#define RTFILEAIOREQ_MAGIC          0x19470921
 /** Magic number for RTHANDLETABLEINT::u32Magic. (Hitomi Kanehara) */
 #define RTHANDLETABLE_MAGIC         0x19830808
 /** Magic number for RTHEAPSIMPLEINTERNAL::u32Magic. (Kyoichi Katayama) */
