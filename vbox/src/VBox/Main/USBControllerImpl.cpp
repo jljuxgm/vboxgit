@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 21622 2009-07-15 19:04:07Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 21660 2009-07-16 21:54:10Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -315,7 +315,7 @@ STDMETHODIMP USBController::COMGETTER(USBStandard) (USHORT *aUSBStandard)
  * We need an empty collection & enum for deviceFilters, that's all.
  */
 class ATL_NO_VTABLE USBDeviceFilter :
-    public VirtualBoxBaseNEXT,
+    public VirtualBoxBase,
     public VirtualBoxSupportErrorInfoImpl<USBDeviceFilter, IUSBDeviceFilter>,
     public VirtualBoxSupportTranslation<USBDeviceFilter>,
     public IUSBDeviceFilter
