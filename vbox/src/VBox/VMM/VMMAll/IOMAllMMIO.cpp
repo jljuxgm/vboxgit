@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 20013 2009-05-26 08:37:48Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 20014 2009-05-26 08:42:06Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -455,7 +455,7 @@ static int iomInterpretMOVS(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame
         /* Check if destination address is MMIO. */
         PIOMMMIORANGE pMMIODst;
         RTGCPHYS PhysDst;
-        rc = PGMGstGetPage((RTGCPTR)pu8Virt, NULL, &PhysDst);
+        rc = PGMGstGetPage(pVCpu, (RTGCPTR)pu8Virt, NULL, &PhysDst);
         PhysDst |= (RTGCUINTPTR)pu8Virt & PAGE_OFFSET_MASK;
         if (    RT_SUCCESS(rc)
             &&  (pMMIODst = iomMMIOGetRange(&pVM->iom.s, PhysDst)))
