@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 18024 2009-03-17 14:00:08Z vboxsync $ */
+/* $Id: ApplianceImpl.h 18201 2009-03-24 15:55:12Z vboxsync $ */
 
 /** @file
  *
@@ -167,6 +167,10 @@ public:
                                     ComSafeArrayOut(BSTR, aOvfValues),
                                     ComSafeArrayOut(BSTR, aVboxValues),
                                     ComSafeArrayOut(BSTR, aExtraConfigValues));
+
+    STDMETHOD(GetValuesByType)(VirtualSystemDescriptionType_T aType,
+                               VirtualSystemDescriptionValueType_T aWhich,
+                               ComSafeArrayOut(BSTR, aValues));
 
     STDMETHOD(SetFinalValues)(ComSafeArrayIn(BOOL, aEnabled),
                               ComSafeArrayIn(IN_BSTR, aVboxValues),
