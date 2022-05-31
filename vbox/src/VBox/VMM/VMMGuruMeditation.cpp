@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 20753 2009-06-21 23:11:24Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 20754 2009-06-21 23:18:45Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -525,5 +525,11 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
      * Delete the output instance (flushing and restoring of flags).
      */
     vmmR3FatalDumpInfoHlpDelete(&Hlp);
+
+    /*
+     * Reset the ring-0 long jump buffer and stack.
+     */
+    /** @todo reset the R0 for the calling virtual cpu. We'll assert (luckily) in
+     *        PGMPhys.cpp otherwise. */
 }
 
