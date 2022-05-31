@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 19663 2009-05-13 15:06:00Z vboxsync $ */
+/* $Id: MMInternal.h 19665 2009-05-13 15:17:32Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -323,10 +323,10 @@ typedef struct MMHYPERHEAP
 {
     /** The typical magic (MMHYPERHEAP_MAGIC). */
     uint32_t                u32Magic;
-    /** Lock protecting the heap. */
-    PDMCRITSECT             Lock;
     /** The heap size. (This structure is not included!) */
     uint32_t                cbHeap;
+    /** Lock protecting the heap. */
+    PDMCRITSECT             Lock;
     /** The HC ring-3 address of the heap. */
     R3PTRTYPE(uint8_t *)    pbHeapR3;
     /** The HC ring-3 address of the shared VM strcture. */
