@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 23145 2009-09-18 20:58:30Z vboxsync $ */
+/* $Id: HWACCM.cpp 23224 2009-09-22 15:57:05Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2534,6 +2534,15 @@ static DECLCALLBACK(int) hwaccmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersio
             rc = SSMR3GetU32(pSSM, &pPatch->pJumpTarget);
             AssertRCReturn(rc, rc);
 
+            Log(("hwaccmR3Load: patch %d\n", i));
+            Log(("Key       = %x\n", pPatch->Core.Key));
+            Log(("cbOp      = %d\n", pPatch->cbOp));
+            Log(("cbNewOp   = %d\n", pPatch->cbNewOp));
+            Log(("type      = %d\n", pPatch->enmType));
+            Log(("srcop     = %d\n", pPatch->uSrcOperand));
+            Log(("dstop     = %d\n", pPatch->uDstOperand));
+            Log(("cFaults   = %d\n", pPatch->cFaults));
+            Log(("target    = %x\n", pPatch->pJumpTarget));
             rc = RTAvloU32Insert(&pVM->hwaccm.s.svm.PatchTree, &pPatch->Core);
             AssertRC(rc);
         }
