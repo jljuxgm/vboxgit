@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 20081 2009-05-27 12:55:11Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 20206 2009-06-03 07:09:35Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -252,6 +252,7 @@ VFSFileType_T VFSExplorer::RTToVFSFileType(int aType) const
     VFSFileType_T t;
     switch(aType)
     {
+        default:
         case RTDIRENTRYTYPE_UNKNOWN: t = VFSFileType_Unknown; break;
         case RTDIRENTRYTYPE_FIFO: t = VFSFileType_Fifo; break;
         case RTDIRENTRYTYPE_DEV_CHAR: t = VFSFileType_DevChar; break;
