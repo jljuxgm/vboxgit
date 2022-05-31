@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.cpp 18388 2009-03-27 13:11:42Z vboxsync $ */
+/* $Id: HardDiskImpl.cpp 18485 2009-03-29 01:31:02Z vboxsync $ */
 
 /** @file
  *
@@ -3858,9 +3858,9 @@ DECLCALLBACK(int) HardDisk::taskThread (RTTHREAD thread, void *pvUser)
                     that->mm.vdProgress = task->progress;
 
                     unsigned start = chain->isForward() ?
-                        0 : chain->size() - 1;
+                        0 : (unsigned)chain->size() - 1;
                     unsigned end = chain->isForward() ?
-                        chain->size() - 1 : 0;
+                        (unsigned)chain->size() - 1 : 0;
 #if 0
                     LogFlow (("*** MERGE from %d to %d\n", start, end));
 #endif
