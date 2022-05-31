@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 18265 2009-03-25 17:09:08Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 18484 2009-03-29 01:29:52Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -4174,7 +4174,7 @@ DECLCALLBACK(int) VirtualBox::ClientWatcher (RTTHREAD /* thread */, void *pvUser
             /* release the caller to let uninit() ever proceed */
             autoCaller.release();
 
-            DWORD rc = ::WaitForMultipleObjects (1 + cnt + cntSpawned,
+            DWORD rc = ::WaitForMultipleObjects ((DWORD)(1 + cnt + cntSpawned),
                                                  handles, FALSE, INFINITE);
 
             /* Restore the caller before using VirtualBox. If it fails, this
