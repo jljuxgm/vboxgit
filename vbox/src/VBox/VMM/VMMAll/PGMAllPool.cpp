@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 19903 2009-05-22 09:41:32Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 20058 2009-05-27 08:29:57Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1115,7 +1115,14 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
     AssertRCReturn(rc, rc);
 
     pgmLock(pVM);
-    AssertMsg(PHYS_PAGE_ADDRESS(GCPhysFault) == PHYS_PAGE_ADDRESS(pPage->GCPhys), ("%RGp vs %RGp\n", PHYS_PAGE_ADDRESS(GCPhysFault), pPage->GCPhys));
+    if (PHYS_PAGE_ADDRESS(GCPhysFault) != PHYS_PAGE_ADDRESS(pPage->GCPhys))
+    {
+        /* Pool page changed while we were waiting for the lock; ignore. */
+        Log(("CPU%d: pgmPoolAccessHandler pgm pool page for %RGp changed (to %RGp) while waiting!\n", pVCpu->idCpu, PHYS_PAGE_ADDRESS(GCPhysFault), PHYS_PAGE_ADDRESS(pPage->GCPhys)));
+        STAM_PROFILE_STOP_EX(&pVM->pgm.s.CTX_SUFF(pPool)->CTX_SUFF_Z(StatMonitor), &pPool->CTX_MID_Z(StatMonitor,Handled), a);
+        pgmUnlock(pVM);
+        return VINF_SUCCESS;
+    }
 
     /*
      * Check if it's worth dealing with.
