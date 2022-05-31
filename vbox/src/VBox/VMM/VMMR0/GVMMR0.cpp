@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 19707 2009-05-14 17:36:11Z vboxsync $ */
+/* $Id: GVMMR0.cpp 21915 2009-07-31 13:11:55Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -971,7 +971,7 @@ static DECLCALLBACK(void) gvmmR0HandleObjDestructor(void *pvObj, void *pvGVMM, v
         {
             if (RT_UNLIKELY(iPrev >= RT_ELEMENTS(pGVMM->aHandles)))
             {
-                SUPR0Printf("GVM: used list index %d is out of range!\n");
+                SUPR0Printf("GVM: used list index %d is out of range!\n", iPrev);
                 gvmmR0UsedUnlock(pGVMM);
                 gvmmR0CreateDestroyUnlock(pGVMM);
                 return;
