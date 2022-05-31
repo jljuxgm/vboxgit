@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22959 2009-09-11 13:45:44Z vboxsync $
+# $Id: Makefile.kmk 23298 2009-09-24 16:38:05Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -370,6 +370,7 @@ RuntimeR3_SOURCES += \
 endif
 
 RuntimeR3_SOURCES.win = \
+	generic/RTDirExists-generic.cpp \
 	generic/RTDirQueryInfo-generic.cpp \
 	generic/RTDirSetTimes-generic.cpp \
 	generic/RTMpGetCurFrequency-generic.cpp \
