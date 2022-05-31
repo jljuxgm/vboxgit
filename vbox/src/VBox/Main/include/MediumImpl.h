@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 23591 2009-10-07 07:57:15Z vboxsync $ */
+/* $Id: MediumImpl.h 23823 2009-10-16 14:15:04Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -104,6 +104,7 @@ public:
     STDMETHOD(COMGETTER(Location))(BSTR *aLocation);
     STDMETHOD(COMSETTER(Location))(IN_BSTR aLocation);
     STDMETHOD(COMGETTER(Name))(BSTR *aName);
+    STDMETHOD(COMGETTER(DeviceType))(DeviceType_T *aDeviceType);
     STDMETHOD(COMGETTER(HostDrive))(BOOL *aHostDrive);
     STDMETHOD(COMGETTER(Size))(ULONG64 *aSize);
     STDMETHOD(COMGETTER(Format))(BSTR *aFormat);
