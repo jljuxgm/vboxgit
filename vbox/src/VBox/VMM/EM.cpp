@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 18770 2009-04-06 15:00:15Z vboxsync $ */
+/* $Id: EM.cpp 18825 2009-04-07 14:04:33Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2690,7 +2690,10 @@ static int emR3RawExecute(PVM pVM, bool *pfFFDone)
             {
                 rc = emR3RawForcedActions(pVM, pCtx);
                 if (rc != VINF_SUCCESS)
+                {
+                    rc = CPUMRawLeave(pVM, NULL, rc);
                     break;
+                }
             }
         }
 
