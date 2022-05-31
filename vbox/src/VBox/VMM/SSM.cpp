@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 23541 2009-10-04 21:00:51Z vboxsync $ */
+/* $Id: SSM.cpp 23542 2009-10-04 21:01:36Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -319,6 +319,9 @@ AssertCompile(SSM_ZIP_BLOCK_SIZE / _1K * _1K == SSM_ZIP_BLOCK_SIZE);
         } \
     } while (0)
 
+/**
+ * Asserts that the handle is somewhat valid.  No returns as this is just a
+ * simple safeguard for catching bad API calls. */
 #define SSM_ASSERT_VALID_HANDLE(pSSM) \
     do \
     { \
