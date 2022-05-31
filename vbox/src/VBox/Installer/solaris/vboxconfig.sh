@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 22227 2009-08-13 10:02:08Z vboxsync $
+# $Id: vboxconfig.sh 22350 2009-08-19 15:06:56Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -500,6 +500,18 @@ cleanup_install()
         $BIN_IFCONFIG vboxnet0 unplumb
         if test "$?" -ne 0; then
             errorprint "VirtualBox NetAdapter 'vboxnet0' couldn't be unplumbed (probably in use)."
+            if test "$fatal" = "$FATALOP"; then
+                exit 1
+            fi
+        fi
+    fi
+
+    # unplumb vboxnet0 ipv6
+    vboxnetup=`$BIN_IFCONFIG vboxnet0 inet6 >/dev/null 2>&1`
+    if test "$?" -eq 0; then
+        $BIN_IFCONFIG vboxnet0 inet6 unplumb
+        if test "$?" -ne 0; then
+            errorprint "VirtualBox NetAdapter 'vboxnet0' IPv6 couldn't be unplumbed (probably in use)."
             if test "$fatal" = "$FATALOP"; then
                 exit 1
             fi
