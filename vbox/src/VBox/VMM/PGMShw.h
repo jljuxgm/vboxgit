@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: PGMShw.h 20810 2009-06-23 09:27:38Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -187,11 +187,8 @@ PGM_SHW_DECL(int, Enter)(PVMCPU pVCpu)
     Assert(HWACCMIsNestedPagingActive(pVM));
     Assert(!pVCpu->pgm.s.pShwPageCR3R3);
 
-    int rc = pgmPoolAlloc(pVM, GCPhysCR3, PGMPOOLKIND_ROOT_NESTED, PGMPOOL_IDX_NESTED_ROOT, GCPhysCR3 >> PAGE_SHIFT, &pNewShwPageCR3);
+    int rc = pgmPoolAlloc(pVM, GCPhysCR3, PGMPOOLKIND_ROOT_NESTED, PGMPOOL_IDX_NESTED_ROOT, GCPhysCR3 >> PAGE_SHIFT, &pNewShwPageCR3, true /* lock page */);
     AssertFatalRC(rc);
-
-    /* Mark the page as locked; disallow flushing. */
-    pgmPoolLockPage(pPool, pNewShwPageCR3);
 
     pVCpu->pgm.s.iShwUser      = PGMPOOL_IDX_NESTED_ROOT;
     pVCpu->pgm.s.iShwUserTable = GCPhysCR3 >> PAGE_SHIFT;
