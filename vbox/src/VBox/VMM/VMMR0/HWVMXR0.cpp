@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 23366 2009-09-28 12:31:50Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 23517 2009-10-02 13:50:37Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2502,12 +2502,12 @@ ResumeExecution:
             ||  pVCpu->hwaccm.s.cTLBFlushes != pCpu->cTLBFlushes)
         {
             if (pVCpu->hwaccm.s.idLastCpu != pCpu->idCpu)
-                Log(("Force TLB flush due to rescheduling to a different cpu (%d vs %d)\n", pVCpu->hwaccm.s.idLastCpu, pCpu->idCpu));
+                LogFlow(("Force TLB flush due to rescheduling to a different cpu (%d vs %d)\n", pVCpu->hwaccm.s.idLastCpu, pCpu->idCpu));
             else
-                Log(("Force TLB flush due to changed TLB flush count (%x vs %x)\n", pVCpu->hwaccm.s.cTLBFlushes, pCpu->cTLBFlushes));
+                LogFlow(("Force TLB flush due to changed TLB flush count (%x vs %x)\n", pVCpu->hwaccm.s.cTLBFlushes, pCpu->cTLBFlushes));
         }
         if (pCpu->fFlushTLB)
-            Log(("Force TLB flush: first time cpu %d is used -> flush\n", pCpu->idCpu));
+            LogFlow(("Force TLB flush: first time cpu %d is used -> flush\n", pCpu->idCpu));
         else
         if (pVCpu->hwaccm.s.fForceTLBFlush)
             LogFlow(("Manual TLB flush\n"));
