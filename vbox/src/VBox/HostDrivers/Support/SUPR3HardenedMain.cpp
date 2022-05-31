@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 18242 2009-03-25 10:00:57Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 18499 2009-03-29 02:26:30Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -393,7 +393,7 @@ DECLHIDDEN(int) supR3HardenedPathProgram(char *pszPath, size_t cchPath)
     /*
      * Calc the length and check if there is space before copying.
      */
-    unsigned cch = strlen(g_szSupLibHardenedDirPath) + 1;
+    size_t cch = strlen(g_szSupLibHardenedDirPath) + 1;
     if (cch <= cchPath)
     {
         memcpy(pszPath, g_szSupLibHardenedDirPath, cch + 1);
