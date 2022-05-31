@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 23393 2009-09-28 17:24:02Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 23398 2009-09-29 00:57:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -97,12 +97,14 @@ VMMDECL(int) pgmPhysRomWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE p
         }
 
         case PGMROMPROT_READ_RAM_WRITE_RAM:
+            pRom->aPages[iPage].LiveSave.fWrittenTo = true;
             rc = PGMHandlerPhysicalPageTempOff(pVM, pRom->GCPhys, GCPhysFault & X86_PTE_PG_MASK);
             AssertRC(rc);
             break; /** @todo Must edit the shadow PT and restart the instruction, not use the interpreter! */
 
         case PGMROMPROT_READ_ROM_WRITE_RAM:
             /* Handle it in ring-3 because it's *way* easier there. */
+            pRom->aPages[iPage].LiveSave.fWrittenTo = true;
             break;
 
         default:

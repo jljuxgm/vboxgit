@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 23393 2009-09-28 17:24:02Z vboxsync $ */
+/* $Id: PGMPhys.cpp 23398 2009-09-29 00:57:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2487,6 +2487,7 @@ static DECLCALLBACK(int) pgmR3PhysRomWriteHandler(PVM pVM, RTGCPHYS GCPhys, void
                     AssertLogRelReturn(pShadowPage, VERR_INTERNAL_ERROR);
                 }
 
+                pRomPage->LiveSave.fWrittenTo = true;
                 if (RT_UNLIKELY(PGM_PAGE_GET_STATE(pShadowPage) != PGM_PAGE_STATE_ALLOCATED))
                 {
                     rc = pgmPhysPageMakeWritable(pVM, pShadowPage, GCPhys);
