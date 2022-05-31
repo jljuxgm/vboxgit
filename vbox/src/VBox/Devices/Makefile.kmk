@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22854 2009-09-09 05:53:52Z vboxsync $
+# $Id: Makefile.kmk 22866 2009-09-09 14:39:46Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -146,6 +146,9 @@ ifdef VBOX_WITH_ISCSI
 endif
 ifdef VBOX_WITH_E1000
  VBoxDD_DEFS           += VBOX_WITH_E1000
+endif
+ifdef VBOX_WITH_VIRTIO
+ VBoxDD_DEFS           += VBOX_WITH_VIRTIO
 endif
 ifdef VBOX_WITH_BUSLOGIC
  VBoxDD_DEFS           += VBOX_WITH_BUSLOGIC
@@ -305,6 +308,12 @@ ifdef VBOX_WITH_E1000
 	Network/DevE1000.cpp \
 	Network/DevE1000Phy.cpp \
 	Network/DevEEPROM.cpp
+endif
+
+ifdef VBOX_WITH_VIRTIO
+ DevicesR3_DEFS        += VBOX_WITH_VIRTIO
+ DevicesR3_SOURCES     += \
+	Network/DevVirtioNet.cpp
 endif
 
 ifdef VBOX_WITH_HGSMI
@@ -498,6 +507,12 @@ ifdef VBOX_WITH_E1000
 	Network/DevE1000Phy.cpp
 endif
 
+ifdef VBOX_WITH_VIRTIO
+ VBoxDDGC_DEFS         += VBOX_WITH_VIRTIO
+ VBoxDDGC_SOURCES      += \
+	Network/DevVirtioNet.cpp
+endif
+
 ifdef VBOX_WITH_HGSMI
  VBoxDDGC_DEFS         += VBOX_WITH_HGSMI
 endif
@@ -587,6 +602,12 @@ ifdef VBOX_WITH_E1000
  VBoxDDR0_SOURCES      += \
 	Network/DevE1000.cpp \
 	Network/DevE1000Phy.cpp
+endif
+
+ifdef VBOX_WITH_VIRTIO
+ VBoxDDR0_DEFS         += VBOX_WITH_VIRTIO
+ VBoxDDR0_SOURCES      += \
+	Network/DevVirtioNet.cpp
 endif
 
 ifdef VBOX_WITH_HGSMI

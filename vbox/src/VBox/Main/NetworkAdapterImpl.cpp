@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 22186 2009-08-11 17:44:54Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 22866 2009-09-09 14:39:46Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -210,6 +210,9 @@ STDMETHODIMP NetworkAdapter::COMSETTER(AdapterType) (NetworkAdapterType_T aAdapt
         case NetworkAdapterType_I82543GC:
         case NetworkAdapterType_I82545EM:
 #endif
+#ifdef VBOX_WITH_VIRTIO
+        case NetworkAdapterType_Virtio:
+#endif /* VBOX_WITH_VIRTIO */
             break;
         default:
             return setError (E_FAIL,

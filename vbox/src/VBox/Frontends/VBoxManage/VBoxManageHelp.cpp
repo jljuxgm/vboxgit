@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 22145 2009-08-10 20:02:17Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 22866 2009-09-09 14:39:46Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -173,6 +173,9 @@ void printUsage(USAGECATEGORY u64Cmd)
 #ifdef VBOX_WITH_E1000
               "|\n                                            82540EM|82543GC|82545EM"
 #endif
+#ifdef VBOX_WITH_VIRTIO
+              "|\n                                            virtio"
+#endif /* VBOX_WITH_VIRTIO */
                  "]\n"
                  "                            [--cableconnected<1-N> on|off]\n"
                  "                            [--nictrace<1-N> on|off]\n"

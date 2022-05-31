@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 22145 2009-08-10 20:02:17Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 22866 2009-09-09 14:39:46Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -830,6 +830,11 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                     strNICType = "82545EM";
                     break;
 #endif
+#ifdef VBOX_WITH_VIRTIO
+                case NetworkAdapterType_Virtio:
+                    strNICType = "virtio";
+                    break;
+#endif /* VBOX_WITH_VIRTIO */
                 default:
                     strNICType = "unknown";
                     break;

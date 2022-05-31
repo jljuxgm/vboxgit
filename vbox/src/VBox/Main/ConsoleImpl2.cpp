@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22763 2009-09-04 08:53:23Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22866 2009-09-09 14:39:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1195,6 +1195,10 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     PCFGMNODE pDevE1000 = NULL;          /* E1000-type devices */
     rc = CFGMR3InsertNode(pDevices, "e1000", &pDevE1000);                           RC_CHECK();
 #endif
+#ifdef VBOX_WITH_VIRTIO
+    PCFGMNODE pDevVirtioNet = NULL;          /* Virtio network devices */
+    rc = CFGMR3InsertNode(pDevices, "virtio-net", &pDevVirtioNet);                           RC_CHECK();
+#endif /* VBOX_WITH_VIRTIO */
     for (ULONG ulInstance = 0; ulInstance < SchemaDefs::NetworkAdapterCount; ulInstance++)
     {
         ComPtr<INetworkAdapter> networkAdapter;
@@ -1224,6 +1228,12 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 pszAdapterName = "e1000";
                 break;
 #endif
+#ifdef VBOX_WITH_VIRTIO
+            case NetworkAdapterType_Virtio:
+                pDev = pDevVirtioNet;
+                pszAdapterName = "virtio";
+                break;
+#endif /* VBOX_WITH_VIRTIO */
             default:
                 AssertMsgFailed(("Invalid network adapter type '%d' for slot '%d'",
                                  adapterType, ulInstance));
