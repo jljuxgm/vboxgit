@@ -1,4 +1,4 @@
-/* $Id: TRPMGC.cpp 19015 2009-04-20 07:54:29Z vboxsync $ */
+/* $Id: TRPMGC.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -149,7 +149,7 @@ VMMRCDECL(int) trpmRCGuestIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
     Log(("trpmRCGuestIDTWriteHandler: eip=%RGv write to gate %x offset %x\n", pRegFrame->eip, iGate, offRange));
 
     /** @todo Check which IDT entry and keep the update cost low in TRPMR3SyncIDT() and CSAMCheckGates(). */
-    VM_FF_SET(pVM, VM_FF_TRPM_SYNC_IDT);
+    VMCPU_FF_SET(pVCpu, VMCPU_FF_TRPM_SYNC_IDT);
 
     STAM_COUNTER_INC(&pVM->trpm.s.StatRCWriteGuestIDTFault);
     return VINF_EM_RAW_EMULATE_INSTR_IDT_FAULT;

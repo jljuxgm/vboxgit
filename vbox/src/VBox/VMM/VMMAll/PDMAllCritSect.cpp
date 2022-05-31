@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 18532 2009-03-30 12:01:20Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -202,7 +202,7 @@ VMMDECL(void) PDMCritSectLeave(PPDMCRITSECT pCritSect)
     AssertFatal(i < RT_ELEMENTS(pVM->pdm.s.apQueuedCritSectsLeaves));
     pVM->pdm.s.apQueuedCritSectsLeaves[i] = MMHyperCCToR3(pVM, pCritSect);
     VM_FF_SET(pVM, VM_FF_PDM_CRITSECT);
-    VM_FF_SET(pVM, VM_FF_TO_R3);
+    VMCPU_FF_SET(pVCpu, VMCPU_FF_TO_R3);
     STAM_REL_COUNTER_INC(&pVM->pdm.s.StatQueuedCritSectLeaves);
     STAM_REL_COUNTER_INC(&pCritSect->s.StatContentionRZUnlock);
 #endif /* !IN_RING3 */

@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: PATMAll.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -190,7 +190,7 @@ VMMDECL(void) PATMRawLeave(PVM pVM, PCPUMCTXCORE pCtxCore, int rawRC)
     {
         if (CTXSUFF(pVM->patm.s.pGCState)->GCPtrInhibitInterrupts == (RTRCPTR)pCtxCore->eip)
         {
-            EMSetInhibitInterruptsPC(pVM, VMMGetCpu0(pVM), pCtxCore->eip);
+            EMSetInhibitInterruptsPC(VMMGetCpu0(pVM), pCtxCore->eip);
         }
         CTXSUFF(pVM->patm.s.pGCState)->GCPtrInhibitInterrupts = 0;
 

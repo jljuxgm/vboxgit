@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: DBGF.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -295,7 +295,7 @@ VMMR3DECL(int) DBGFR3VMMForcedAction(PVM pVM)
     /*
      * Clear the FF DBGF request flag.
      */
-    Assert(pVM->fForcedActions & VM_FF_DBGF);
+    Assert(pVM->fGlobalForcedActions & VM_FF_DBGF);
     VM_FF_CLEAR(pVM, VM_FF_DBGF);
 
     /*
