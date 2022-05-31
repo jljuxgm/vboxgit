@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 19997 2009-05-25 12:57:14Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 20000 2009-05-25 13:45:56Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2008,12 +2008,12 @@ VMMR0DECL(int) VMXR0RunGuestCode(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     bool fStatExit2Started = false;
 #endif
 
+    Assert(pVCpu->hwaccm.s.vmx.pVAPIC && pVM->hwaccm.s.vmx.pAPIC);
+
     /* Check if we need to use TPR shadowing. */
-    if (    pVM->hwaccm.s.vmx.pAPIC
-        &&  (   CPUMIsGuestInLongModeEx(pCtx)
-             || (   (pVM->hwaccm.s.vmx.msr.vmx_proc_ctls2.n.allowed1 & VMX_VMCS_CTRL_PROC_EXEC2_VIRT_APIC)
-                 && PDMHasIoApic(pVM))
-            )
+    if (    CPUMIsGuestInLongModeEx(pCtx)
+        || (   (pVM->hwaccm.s.vmx.msr.vmx_proc_ctls2.n.allowed1 & VMX_VMCS_CTRL_PROC_EXEC2_VIRT_APIC)
+            && PDMHasIoApic(pVM))
        )
     {
         fSetupTPRCaching = true;
