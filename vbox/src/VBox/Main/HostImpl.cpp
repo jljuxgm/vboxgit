@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 23339 2009-09-25 15:29:01Z vboxsync $ */
+/* $Id: HostImpl.cpp 23341 2009-09-25 15:43:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -344,8 +344,7 @@ void Host::uninit()
      * Note! HostUSBDeviceFilter::uninit() will modify llChildren. */
     while (!m->llChildren.empty())
     {
-        ComObjPtr<HostUSBDeviceFilter> pChild = m->llChildren.front();
-        m->llChildren.pop_front();
+        ComObjPtr<HostUSBDeviceFilter> &pChild = m->llChildren.front();
         pChild->uninit();
     }
 

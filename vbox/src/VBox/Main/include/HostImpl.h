@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 23279 2009-09-24 10:46:57Z vboxsync $ */
+/* $Id: HostImpl.h 23341 2009-09-25 15:43:46Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -131,11 +131,6 @@ private:
     void parseMountTable(char *mountTable, std::list< ComObjPtr<Medium> > &list);
     bool validateDevice(const char *deviceNode, bool isCDROM);
 #endif
-
-#ifdef VBOX_WITH_USB
-    /** specialization for IHostUSBDeviceFilter */
-//     ComObjPtr<HostUSBDeviceFilter> getDependentChild(IHostUSBDeviceFilter *aFilter);
-#endif /* VBOX_WITH_USB */
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
     void registerMetrics (PerformanceCollector *aCollector);
