@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20936 2009-06-25 12:58:12Z vboxsync $
+# $Id: Makefile.kmk 20944 2009-06-25 14:28:28Z vboxsync $
 ## @file
 # Sub-Makefile for Python bindings
 #
@@ -93,7 +93,7 @@ VBoxPython25_TEMPLATE   = XPCOM
 
 VBoxPython25_DEFS       = VBOX_PYXPCOM_VERSIONED
 VBoxPython25_INCS       = $(VBOX_PYTHON25_INC)
-VBoxPython25_LIBS       = $(VBOX_PYTHON25_INC)
+VBoxPython25_LIBS       = $(VBOX_PYTHON25_LIB)
 
 ifdef VBOX_PYTHON25_INC
  KNOWN_GLUE += VBoxPython25
