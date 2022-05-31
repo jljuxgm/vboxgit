@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-darwin.cpp 21273 2009-07-06 21:22:38Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-darwin.cpp 21274 2009-07-06 21:23:05Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Darwin.
  */
@@ -60,9 +60,9 @@ RTR0DECL(bool) RTR0MemUserIsValidAddr(RTR3PTR R3Ptr)
 {
     /* the commpage is above this. */
 #ifdef RT_ARCH_X86
-    return (R3Ptr) < VM_MAX_ADDRESS;
+    return R3Ptr < VM_MAX_ADDRESS;
 #else
-    return (R3Ptr) < VM_MAX_PAGE_ADDRESS;
+    return R3Ptr < VM_MAX_PAGE_ADDRESS;
 #endif
 }
 
