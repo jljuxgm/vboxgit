@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: PGMHandler.cpp 20151 2009-05-29 12:40:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -387,15 +387,12 @@ VMMDECL(int) PGMR3HandlerVirtualRegisterEx(PVM pVM, PGMVIRTHANDLERTYPE enmType, 
     {
         if (enmType != PGMVIRTHANDLERTYPE_HYPERVISOR)
         {
-            pVM->pgm.s.fPhysCacheFlushPending = true;
-            for (unsigned i=0;i<pVM->cCPUs;i++)
-            {
-                PVMCPU pVCpu = &pVM->aCpus[i];
+            PVMCPU pVCpu = VMMGetCpu(pVM);
 
-                pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_UPDATE_PAGE_BIT_VIRTUAL;
-                VMCPU_FF_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3);
-            }
-            pVM->pgm.s.fGlobalSyncFlags |= PGM_GLOBAL_SYNC_CLEAR_PGM_POOL;
+            pVM->pgm.s.fPhysCacheFlushPending = true;
+
+            pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_UPDATE_PAGE_BIT_VIRTUAL | PGM_SYNC_CLEAR_PGM_POOL;
+            VMCPU_FF_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3);
         }
         pgmUnlock(pVM);
 
@@ -474,14 +471,10 @@ VMMDECL(int) PGMHandlerVirtualDeregister(PVM pVM, RTGCPTR GCPtr)
         /*
          * Schedule CR3 sync.
          */
-        for (unsigned i=0;i<pVM->cCPUs;i++)
-        {
-            PVMCPU pVCpu = &pVM->aCpus[i];
+        PVMCPU pVCpu = VMMGetCpu(pVM);
 
-            pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_UPDATE_PAGE_BIT_VIRTUAL;
-            VMCPU_FF_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3);
-        }
-        pVM->pgm.s.fGlobalSyncFlags |= PGM_GLOBAL_SYNC_CLEAR_PGM_POOL;
+        pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_UPDATE_PAGE_BIT_VIRTUAL | PGM_SYNC_CLEAR_PGM_POOL;
+        VMCPU_FF_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3);
     }
     else
     {
