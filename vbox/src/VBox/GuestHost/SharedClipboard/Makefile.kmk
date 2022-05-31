@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21093 2009-06-30 18:51:02Z vboxsync $
+# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
 ## @file
 # Sub-Makefile for the shared clipboard code for both host and guest.
 #

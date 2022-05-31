@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18422 2009-03-28 00:04:43Z vboxsync $
+# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Info Services Host Service.
 #

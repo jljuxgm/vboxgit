@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12196 2008-09-08 02:23:00Z vboxsync $
+# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
 ## @file
 # Sub-Makefile for libpng.
 #

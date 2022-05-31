@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21997 2009-08-05 13:23:17Z vboxsync $
+# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
 ## @file
 # VGA BIOS Sub-Makefile
 #

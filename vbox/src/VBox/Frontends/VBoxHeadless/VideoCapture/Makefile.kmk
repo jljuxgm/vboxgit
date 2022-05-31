@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 12258 2008-09-09 03:01:02Z vboxsync $
+# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
 ## @file
 # Sub-Makefile for the ffmpeg frame buffer module.
 #
