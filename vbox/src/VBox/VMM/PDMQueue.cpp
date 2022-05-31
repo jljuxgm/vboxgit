@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 19786 2009-05-18 13:25:20Z vboxsync $ */
+/* $Id: PDMQueue.cpp 20088 2009-05-27 14:39:42Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -519,7 +519,7 @@ VMMR3DECL(int) PDMR3QueueDestroyDriver(PVM pVM, PPDMDRVINS pDrvIns)
      */
     if (!pDrvIns)
         return VERR_INVALID_PARAMETER;
-    VMCPU_ASSERT_EMT(&pVM->aCpus[0]);
+    VMCPU_ASSERT_EMT(&pVM->aCpus[0]); /** @todo fix this using the "Misc" critical section. */
 
     /*
      * Unlink it.
@@ -651,7 +651,7 @@ static bool pdmR3QueueFlush(PPDMQUEUE pQueue)
     RTRCPTR           pItemsRC = ASMAtomicXchgRCPtr(&pQueue->pPendingRC, NIL_RTRCPTR);
     RTR0PTR           pItemsR0 = ASMAtomicXchgR0Ptr(&pQueue->pPendingR0, NIL_RTR0PTR);
 
-    if (    !pItems 
+    if (    !pItems
         &&  !pItemsRC
         &&  !pItemsR0)
         /* Somebody was racing us. */
