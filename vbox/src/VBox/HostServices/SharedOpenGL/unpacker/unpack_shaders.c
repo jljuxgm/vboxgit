@@ -1,4 +1,4 @@
-/* $Id: unpack_shaders.c 20511 2009-06-12 13:00:53Z vboxsync $ */
+/* $Id: unpack_shaders.c 22535 2009-08-27 16:03:29Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -43,7 +43,7 @@ void crUnpackExtendShaderSource(void)
     GLsizei count = READ_DATA(12, GLsizei);
     GLint hasNonLocalLen = READ_DATA(16, GLsizei);
     GLint *pLocalLength = DATA_POINTER(20, GLint);
-    char **ppStrings = NULL;
+    const char **ppStrings = NULL;
     GLsizei i;
     int pos=20+count*sizeof(*pLocalLength);
 
