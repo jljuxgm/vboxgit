@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 22343 2009-08-19 12:40:16Z vboxsync $ */
+/* $Id: PGMPool.cpp 22473 2009-08-26 14:51:50Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -361,6 +361,9 @@ int pgmR3PoolInit(PVM pVM)
     STAM_REG(pVM, &pPool->StatMonitorR3Async,           STAMTYPE_COUNTER,   "/PGM/Pool/Monitor/R3/Async",           STAMUNIT_OCCURENCES,     "Times we're called in an async thread and need to flush.");
     STAM_REG(pVM, &pPool->cModifiedPages,               STAMTYPE_U16,       "/PGM/Pool/Monitor/cModifiedPages",     STAMUNIT_PAGES,          "The current cModifiedPages value.");
     STAM_REG(pVM, &pPool->cModifiedPagesHigh,           STAMTYPE_U16_RESET, "/PGM/Pool/Monitor/cModifiedPagesHigh", STAMUNIT_PAGES,          "The high watermark for cModifiedPages.");
+    STAM_REG(pVM, &pPool->StatResetDirtyPages,          STAMTYPE_COUNTER,   "/PGM/Pool/Monitor/Dirty/Resets",       STAMUNIT_OCCURENCES,     "Times we've called pgmPoolResetDirtyPages (and there were dirty page).");
+    STAM_REG(pVM, &pPool->StatDirtyPage,                STAMTYPE_COUNTER,   "/PGM/Pool/Monitor/Dirty/Pages",        STAMUNIT_OCCURENCES,     "Times we've called pgmPoolAddDirtyPage.");
+    
 # endif
 # ifdef PGMPOOL_WITH_CACHE
     STAM_REG(pVM, &pPool->StatCacheHits,                STAMTYPE_COUNTER,   "/PGM/Pool/Cache/Hits",                 STAMUNIT_OCCURENCES, "The number of pgmPoolAlloc calls satisfied by the cache.");

@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 21059 2009-06-30 09:24:20Z vboxsync $ */
+/* $Id: PGMAll.cpp 22473 2009-08-26 14:51:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -402,7 +402,7 @@ VMMDECL(int) PGMTrap0eHandler(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFram
 {
     PVM pVM = pVCpu->CTX_SUFF(pVM);
 
-    LogFlow(("PGMTrap0eHandler: uErr=%RGu pvFault=%RGv eip=%04x:%RGv\n", uErr, pvFault, pRegFrame->cs, (RTGCPTR)pRegFrame->rip));
+    Log(("PGMTrap0eHandler: uErr=%RGu pvFault=%RGv eip=%04x:%RGv\n", uErr, pvFault, pRegFrame->cs, (RTGCPTR)pRegFrame->rip));
     STAM_PROFILE_START(&pVCpu->pgm.s.StatRZTrap0e, a);
     STAM_STATS({ pVCpu->pgm.s.CTX_SUFF(pStatTrap0eAttribution) = NULL; } );
 
@@ -1700,6 +1700,11 @@ VMMDECL(int) PGMFlushTLB(PVMCPU pVCpu, uint64_t cr3, bool fGlobal)
     }
     else
     {
+        pgmLock(pVM);
+# ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
+        pgmPoolResetDirtyPages(pVM);
+# endif
+        pgmUnlock(pVM);
         /*
          * Check if we have a pending update of the CR3 monitoring.
          */
