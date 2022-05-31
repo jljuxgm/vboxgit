@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFlt.c 17307 2009-03-03 18:25:24Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 18053 2009-03-18 10:50:02Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
 
 /*
- * Copyright (C) 2008 Sun Microsystems, Inc.
+ * Copyright (C) 2008-2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -663,6 +663,9 @@ static bool vboxNetFltDestroyInstance(PVBOXNETFLTINS pThis)
     RTSpinlockDestroy(pThis->hSpinlock);
     pThis->hSpinlock = NIL_RTSPINLOCK;
     RTMemFree(pThis);
+
+    NOREF(cRefs);
+
     return true;
 }
 
