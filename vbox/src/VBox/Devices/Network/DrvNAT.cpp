@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 21363 2009-07-07 17:10:52Z vboxsync $ */
+/* $Id: DrvNAT.cpp 21659 2009-07-16 21:52:27Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -44,6 +44,9 @@
 # include <fcntl.h>
 # include <poll.h>
 # include <errno.h>
+#endif
+#ifdef RT_OS_FREEBSD
+# include <netinet/in.h>
 #endif
 #include <iprt/semaphore.h>
 #include <iprt/req.h>
