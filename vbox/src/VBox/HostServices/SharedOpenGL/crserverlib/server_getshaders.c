@@ -1,4 +1,4 @@
-/* $Id: server_getshaders.c 20147 2009-05-29 11:21:57Z vboxsync $ */
+/* $Id: server_getshaders.c 20179 2009-06-02 08:40:38Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -27,6 +27,10 @@ typedef struct _crGetActive_t
     GLint   size;
     GLenum  type;
 } crGetActive_t;
+
+/*@todo: most of those functions would fail. Either need to support more than 1 cr_server.return_ptr(s) or 
+ *       change pack_spu to pack output args into single buffer.
+ */
 
 void SERVER_DISPATCH_APIENTRY crServerDispatchGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, char *name)
 {
