@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 23232 2009-09-22 17:03:09Z vboxsync $ */
+/* $Id: HostImpl.cpp 23236 2009-09-22 18:54:10Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -407,7 +407,7 @@ STDMETHODIMP Host::COMGETTER(DVDDrives)(ComSafeArrayOut(IMedium *, aDrives))
         {
             ComObjPtr<Medium> hostDVDDriveObj;
             hostDVDDriveObj.createObject();
-            hostDVDDriveObj->init(Bstr(cur->szName));
+            hostDVDDriveObj->init(mParent, DeviceType_DVD, Bstr(cur->szName));
             list.push_back(hostDVDDriveObj);
 
             /* next */
