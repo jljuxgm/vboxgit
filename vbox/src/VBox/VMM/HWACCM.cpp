@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 21705 2009-07-17 15:28:03Z vboxsync $ */
+/* $Id: HWACCM.cpp 21706 2009-07-17 15:34:37Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1406,11 +1406,12 @@ DECLCALLBACK(int) hwaccmR3RemovePatches(PVM pVM, PVMCPU pVCpu, void *pvUser)
         uint8_t         szInstr[15];
         PHWACCMTPRPATCH pPatch = &pVM->hwaccm.s.svm.aPatches[i];
         RTGCPTR         pInstrGC = (RTGCPTR)pPatch->Core.Key;
+        int             rc;
 
 #ifdef LOG_ENABLED
         char            szOutput[256];
 
-        int rc = DBGFR3DisasInstrEx(pVM, pVCpu->idCpu, CPUMGetGuestCS(pVCpu), pInstrGC, 0, szOutput, sizeof(szOutput), 0);
+        rc = DBGFR3DisasInstrEx(pVM, pVCpu->idCpu, CPUMGetGuestCS(pVCpu), pInstrGC, 0, szOutput, sizeof(szOutput), 0);
         if (VBOX_SUCCESS(rc))
             Log(("Patched instr: %s\n", szOutput));
 #endif
