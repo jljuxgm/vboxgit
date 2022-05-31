@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1458,10 +1458,10 @@ static DECLCALLBACK(int) ichac97SaveExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSMHan
  * @param   pDevIns     The device instance.
  * @param   pSSMHandle  The handle to the saved state.
  * @param   uVersion    The data unit version number.
- * @param   uPhase      The data phase.
+ * @param   uPass       The data pass.
  */
 static DECLCALLBACK(int) ichac97LoadExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle,
-                                          uint32_t uVersion, uint32_t uPhase)
+                                          uint32_t uVersion, uint32_t uPass)
 {
     PCIAC97LinkState *pThis = PDMINS_2_DATA(pDevIns, PCIAC97LinkState *);
     AC97LinkState *s = &pThis->ac97;
@@ -1469,7 +1469,7 @@ static DECLCALLBACK(int) ichac97LoadExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSMHan
     size_t  i;
 
     AssertMsgReturn (uVersion == AC97_SSM_VERSION, ("%d\n", uVersion), VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION);
-    Assert (uPhase == SSM_PHASE_FINAL); NOREF (uPhase);
+    Assert (uPass == SSM_PASS_FINAL); NOREF(uPass);
 
     SSMR3GetU32 (pSSMHandle, &s->glob_cnt);
     SSMR3GetU32 (pSSMHandle, &s->glob_sta);

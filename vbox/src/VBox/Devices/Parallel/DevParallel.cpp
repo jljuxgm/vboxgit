@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: DevParallel.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -587,17 +587,17 @@ static DECLCALLBACK(int) parallelSaveExec(PPDMDEVINS pDevIns,
  * @param   pDevIns     The device instance.
  * @param   pSSMHandle  The handle to the saved state.
  * @param   uVersion    The data unit version number.
- * @param   uPhase      The data phase.
+ * @param   uPass       The data pass.
  */
 static DECLCALLBACK(int) parallelLoadExec(PPDMDEVINS pDevIns,
                                           PSSMHANDLE pSSMHandle,
                                           uint32_t uVersion,
-                                          uint32_t uPhase)
+                                          uint32_t uPass)
 {
     ParallelState *pThis = PDMINS_2_DATA(pDevIns, ParallelState *);
 
     AssertMsgReturn(uVersion == PARALLEL_SAVED_STATE_VERSION, ("%d\n", uVersion), VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION);
-    Assert(uPhase == SSM_PHASE_FINAL); NOREF(uPhase);
+    Assert(uPass == SSM_PASS_FINAL); NOREF(uPass);
 
     SSMR3GetU8(pSSMHandle, &pThis->reg_data);
     SSMR3GetU8(pSSMHandle, &pThis->reg_status);

@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 22587 2009-08-31 06:57:39Z vboxsync $ */
+/* $Id: DevE1000.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4475,13 +4475,13 @@ static DECLCALLBACK(int) e1kLoadPrep(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle)
  * @param   pDevIns     The device instance.
  * @param   pSSMHandle  The handle to the saved state.
  * @param   uVersion    The data unit version number.
- * @param   uPhase      The data phase.
+ * @param   uPass           The data pass.
  */
-static DECLCALLBACK(int) e1kLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle, uint32_t uVersion, uint32_t uPhase)
+static DECLCALLBACK(int) e1kLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle, uint32_t uVersion, uint32_t uPass)
 {
     if (uVersion != E1K_SAVEDSTATE_VERSION)
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
-    Assert(uPhase == SSM_PHASE_FINAL); NOREF(uPhase);
+    Assert(uPass == SSM_PASS_FINAL); NOREF(uPass);
 
     E1KSTATE* pState = PDMINS_2_DATA(pDevIns, E1KSTATE*);
     SSMR3GetMem(pSSMHandle, &pState->auRegs, sizeof(pState->auRegs));

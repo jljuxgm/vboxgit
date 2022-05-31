@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 22585 2009-08-31 06:41:32Z vboxsync $ */
+/* $Id: DevPCNet.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4330,16 +4330,16 @@ static DECLCALLBACK(int) pcnetLoadPrep(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle
  * @param   pDevIns     The device instance.
  * @param   pSSMHandle  The handle to the saved state.
  * @param   uVersion  The data unit version number.
- * @param   uPhase      The data phase.
+ * @param   uPass       The data pass.
  */
-static DECLCALLBACK(int) pcnetLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle, uint32_t uVersion, uint32_t uPhase)
+static DECLCALLBACK(int) pcnetLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle, uint32_t uVersion, uint32_t uPass)
 {
     PCNetState *pThis = PDMINS_2_DATA(pDevIns, PCNetState *);
     RTMAC       Mac;
     if (   SSM_VERSION_MAJOR_CHANGED(uVersion, PCNET_SAVEDSTATE_VERSION)
         || SSM_VERSION_MINOR(uVersion) < 7)
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
-    Assert(uPhase == SSM_PHASE_FINAL); NOREF(uPhase);
+    Assert(uPass == SSM_PASS_FINAL); NOREF(uPass);
 
     /* restore data */
     SSMR3GetBool(pSSMHandle, &pThis->fLinkUp);

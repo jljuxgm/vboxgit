@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 22793 2009-09-05 01:29:24Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -87,7 +87,7 @@ unsigned long get_phys_page_offset(target_ulong addr);
 *   Internal Functions                                                         *
 *******************************************************************************/
 static DECLCALLBACK(int) remR3Save(PVM pVM, PSSMHANDLE pSSM);
-static DECLCALLBACK(int) remR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPhase);
+static DECLCALLBACK(int) remR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass);
 static void     remR3StateUpdate(PVM pVM, PVMCPU pVCpu);
 static int      remR3InitPhysRamSizeAndDirtyMap(PVM pVM, bool fGuarded);
 
@@ -660,9 +660,9 @@ static DECLCALLBACK(int) remR3Save(PVM pVM, PSSMHANDLE pSSM)
  * @param   pVM             VM Handle.
  * @param   pSSM            SSM operation handle.
  * @param   uVersion        Data layout version.
- * @param   uPhase          The data phase.
+ * @param   uPass           The data pass.
  */
-static DECLCALLBACK(int) remR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPhase)
+static DECLCALLBACK(int) remR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass)
 {
     uint32_t u32Dummy;
     uint32_t fRawRing0 = false;
@@ -672,7 +672,7 @@ static DECLCALLBACK(int) remR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, 
     PREM pRem;
 
     LogFlow(("remR3Load:\n"));
-    Assert(uPhase == SSM_PHASE_FINAL); NOREF(uPhase);
+    Assert(uPass == SSM_PASS_FINAL); NOREF(uPass);
 
     /*
      * Validate version.

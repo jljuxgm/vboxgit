@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 22560 2009-08-28 17:17:17Z vboxsync $ */
+/* $Id: ConsoleImpl.h 22793 2009-09-05 01:29:24Z vboxsync $ */
 
 /** @file
  *
@@ -500,7 +500,7 @@ private:
     int loadStateFileExecInternal (PSSMHANDLE pSSM, uint32_t u32Version);
 
     static DECLCALLBACK(void)   saveStateFileExec (PSSMHANDLE pSSM, void *pvUser);
-    static DECLCALLBACK(int)    loadStateFileExec (PSSMHANDLE pSSM, void *pvUser, uint32_t uVersion, uint32_t uPhase);
+    static DECLCALLBACK(int)    loadStateFileExec (PSSMHANDLE pSSM, void *pvUser, uint32_t uVersion, uint32_t uPass);
 
 #ifdef VBOX_WITH_GUEST_PROPS
     static DECLCALLBACK(int)    doGuestPropNotification (void *pvExtension, uint32_t,

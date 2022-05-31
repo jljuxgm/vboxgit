@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
 
 /** @file
  *
@@ -129,12 +129,13 @@ Display::displaySSMSave(PSSMHANDLE pSSM, void *pvUser)
 }
 
 DECLCALLBACK(int)
-Display::displaySSMLoad(PSSMHANDLE pSSM, void *pvUser, uint32_t uVersion, uint32_t uPhase)
+Display::displaySSMLoad(PSSMHANDLE pSSM, void *pvUser, uint32_t uVersion, uint32_t uPass)
 {
     Display *that = static_cast<Display*>(pvUser);
 
     if (uVersion != sSSMDisplayVer)
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
+    Assert(uPass == SSM_PASS_FINAL); NOREF(uPass);
 
     uint32_t cMonitors;
     int rc = SSMR3GetU32(pSSM, &cMonitors);

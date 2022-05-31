@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: DevACPI.cpp 22793 2009-09-05 01:29:24Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1773,12 +1773,12 @@ static DECLCALLBACK(int) acpi_save_state(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHand
 }
 
 static DECLCALLBACK(int) acpi_load_state(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle,
-                                         uint32_t uVersion, uint32_t uPhase)
+                                         uint32_t uVersion, uint32_t uPass)
 {
     ACPIState *s = PDMINS_2_DATA(pDevIns, ACPIState *);
 
-    Assert(uPhase == SSM_PHASE_FINAL); NOREF(uPhase);
 
+    Assert(uPass == SSM_PASS_FINAL); NOREF(uPass);
     /*
      * Unregister PM handlers, will register with actual base
      * after state successfully loaded.
