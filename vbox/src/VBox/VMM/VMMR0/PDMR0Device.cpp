@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 19475 2009-05-07 10:55:17Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 19484 2009-05-07 12:33:20Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -501,6 +501,10 @@ static DECLCALLBACK(VMCPUID) pdmR0ApicHlp_GetCpuId(PPDMDEVINS pDevIns)
     PDMDEV_ASSERT_DEVINS(pDevIns);
     return VMMGetCpuId(pDevIns->Internal.s.pVMR0);
 }
+
+
+
+
 
 /** @copydoc PDMIOAPICHLPR0::pfnApicBusDeliver */
 static DECLCALLBACK(int) pdmR0IoApicHlp_ApicBusDeliver(PPDMDEVINS pDevIns, uint8_t u8Dest, uint8_t u8DestMode, uint8_t u8DeliveryMode,
