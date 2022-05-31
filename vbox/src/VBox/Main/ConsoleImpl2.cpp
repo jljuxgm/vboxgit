@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 19410 2009-05-06 03:06:45Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 19624 2009-05-12 13:49:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2103,6 +2103,14 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 rc = CFGMR3InsertString(pLunL0,  "Driver", "Host Serial");          RC_CHECK();
                 rc = CFGMR3InsertNode(pLunL0,    "Config", &pLunL1);                RC_CHECK();
                 rc = CFGMR3InsertString(pLunL1,  "DevicePath", Utf8Str(path));      RC_CHECK();
+            }
+            else if (HostMode == PortMode_RawFile)
+            {
+                rc = CFGMR3InsertString(pLunL0,  "Driver", "Char");                 RC_CHECK();
+                rc = CFGMR3InsertNode(pLunL0,    "AttachedDriver", &pLunL1);        RC_CHECK();
+                rc = CFGMR3InsertString(pLunL1,  "Driver", "RawFile");              RC_CHECK();
+                rc = CFGMR3InsertNode(pLunL1,    "Config", &pLunL2);                RC_CHECK();
+                rc = CFGMR3InsertString(pLunL2,  "Location", Utf8Str(path));        RC_CHECK();
             }
         }
     }

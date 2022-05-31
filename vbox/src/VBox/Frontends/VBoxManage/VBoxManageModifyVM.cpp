@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 19377 2009-05-05 13:46:25Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 19624 2009-05-12 13:49:50Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1730,6 +1730,10 @@ int handleModifyVM(HandlerArg *a)
                     {
                         CHECK_ERROR_RET(uart, COMSETTER(HostMode) (PortMode_HostPipe), 1);
                         CHECK_ERROR_RET(uart, COMSETTER(Server) (FALSE), 1);
+                    }
+                    else if (!strcmp(uarts_mode[n], "file"))
+                    {
+                        CHECK_ERROR_RET(uart, COMSETTER(HostMode) (PortMode_RawFile), 1);
                     }
                     else
                     {

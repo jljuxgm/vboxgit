@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 19622 2009-05-12 13:41:57Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 19624 2009-05-12 13:49:50Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -847,6 +847,14 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                             RTPrintf("uartmode%d=\"disconnected\"\n", currentUART + 1);
                         else
                             RTPrintf(", disconnected\n");
+                        break;
+                    case PortMode_RawFile:
+                        if (details == VMINFO_MACHINEREADABLE)
+                            RTPrintf("uartmode%d=\"%lS\"\n", currentUART + 1,
+                                     path.raw());
+                        else
+                            RTPrintf(", attached to raw file '%lS'\n",
+                                     path.raw());
                         break;
                     case PortMode_HostPipe:
                         if (details == VMINFO_MACHINEREADABLE)

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19464 2009-05-06 21:12:09Z vboxsync $
+# $Id: Makefile.kmk 19624 2009-05-12 13:49:50Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -659,6 +659,7 @@ Drivers_SOURCES    = \
 	PC/DrvACPI.cpp \
 	Serial/DrvChar.cpp \
 	Serial/DrvNamedPipe.cpp \
+	Serial/DrvRawFile.cpp \
 	Storage/DrvBlock.cpp \
 	Storage/DrvHostBase.cpp \
 	Storage/DrvHostDVD.cpp \

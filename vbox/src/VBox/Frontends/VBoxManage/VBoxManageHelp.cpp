@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 19377 2009-05-05 13:46:25Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 19624 2009-05-12 13:49:50Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -180,6 +180,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--uartmode<1-N> disconnected|\n"
                  "                                             server <pipe>|\n"
                  "                                             client <pipe>|\n"
+                 "                                             file <file>|\n"
                  "                                             <devicename>]\n"
 #ifdef VBOX_WITH_MEM_BALLOONING
                  "                            [--guestmemoryballoon <balloonsize in MB>]\n"
