@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 19437 2009-05-06 14:34:05Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 19446 2009-05-06 17:35:01Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -390,7 +390,7 @@ static DECLCALLBACK(void) pdmR0PicHlp_SetInterruptFF(PPDMDEVINS pDevIns)
 
     LogFlow(("pdmR0PicHlp_SetInterruptFF: caller=%p/%d: VMCPU_FF_INTERRUPT_PIC %d -> 1\n",
              pDevIns, pDevIns->iInstance, VMCPU_FF_ISSET(pVCpu, VMCPU_FF_INTERRUPT_PIC)));
-    
+
     VMCPU_FF_SET(pVCpu, VMCPU_FF_INTERRUPT_PIC);
 }
 
@@ -504,12 +504,17 @@ static DECLCALLBACK(VMCPUID) pdmR0ApicHlp_GetCpuId(PPDMDEVINS pDevIns)
     return VMMGetCpuId(pDevIns->Internal.s.pVMR0);
 }
 
+
 /** @copydoc PDMAPICHLPR0::pfnSendSipi */
 static DECLCALLBACK(void) pdmR0ApicHlp_SendSipi(PPDMDEVINS pDevIns, VMCPUID idCpu, int iVector)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     return VMMSendSipi(pDevIns->Internal.s.pVMR0, idCpu, iVector);
 }
+
+
+
+
 
 /** @copydoc PDMIOAPICHLPR0::pfnApicBusDeliver */
 static DECLCALLBACK(void) pdmR0IoApicHlp_ApicBusDeliver(PPDMDEVINS pDevIns, uint8_t u8Dest, uint8_t u8DestMode, uint8_t u8DeliveryMode,
