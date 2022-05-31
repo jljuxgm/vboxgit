@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 20024 2009-05-26 11:04:52Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -616,7 +616,7 @@ int vmmdevHGCMCall (VMMDevState *pVMMDevState, VMMDevHGCMCall *pHGCMCall, RTGCPH
 
                          if (size == 0)
                          {
-                             pHostParm->u.pointer.addr = (void *) 0xfeeddead;
+                             pHostParm->u.pointer.addr = NULL;
                          }
                          else
                          {
@@ -718,7 +718,7 @@ int vmmdevHGCMCall (VMMDevState *pVMMDevState, VMMDevHGCMCall *pHGCMCall, RTGCPH
 
                          if (size == 0)
                          {
-                             pHostParm->u.pointer.addr = (void *) 0xfeeddead;
+                             pHostParm->u.pointer.addr = NULL;
                          }
                          else
                          {
