@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletion.cpp 20429 2009-06-09 11:45:08Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletion.cpp 23404 2009-09-29 10:18:37Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Testcase.
  *
@@ -54,7 +54,7 @@
  * Number of simultaneous active tasks.
  */
 #define NR_TASKS      80
-#define BUFFER_SIZE 4096 /* 4K */
+#define BUFFER_SIZE (64*_1K)
 
 /* Buffers to store data in .*/
 uint8_t                *g_AsyncCompletionTasksBuffer[NR_TASKS];

@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 22851 2009-09-08 23:38:47Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 23404 2009-09-29 10:18:37Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -330,6 +330,8 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSFILE
     RTR3UINTPTR                         uBitmaskAlignment;
     /** Global cache data. */
     PDMACFILECACHEGLOBAL                Cache;
+    /** Flag whether the out of resources warning was printed already. */
+    bool                                fOutOfResourcesWarningPrinted;
 } PDMASYNCCOMPLETIONEPCLASSFILE;
 /** Pointer to the endpoint class data. */
 typedef PDMASYNCCOMPLETIONEPCLASSFILE *PPDMASYNCCOMPLETIONEPCLASSFILE;
