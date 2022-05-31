@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19842 2009-05-19 21:40:24Z vboxsync $
+# $Id: Makefile.kmk 20450 2009-06-09 23:06:02Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service.
 #
@@ -55,7 +55,7 @@ VBoxSharedClipboard_LIBS = \
 	$(LIB_VMM) \
 	$(LIB_RUNTIME) \
 	$(LIB_REM)
-if1of ($(KBUILD_TARGET), linux solaris)
+if1of ($(KBUILD_TARGET), linux solaris freebsd)
  ifndef VBOX_HEADLESS
   VBoxSharedClipboard_LIBPATH = \
 	$(VBOX_LIBPATH_X11)
