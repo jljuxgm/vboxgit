@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 21491 2009-07-10 17:29:54Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 21498 2009-07-10 20:26:23Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -87,6 +87,8 @@ typedef struct VBOXGUESTDEVEXT
     VMMDevMemory volatile      *pVMMDevMemory;
     /** Events we won't permit anyone to filter out. */
     uint32_t                    fFixedEvents;
+    /** The memory object reserving space for the guest mappings. */
+    RTR0MEMOBJ                  hGuestMappings;
 
     /** Spinlock protecting the signaling and resetting of the wait-for-event
      * semaphores as well as the event acking in the ISR. */
