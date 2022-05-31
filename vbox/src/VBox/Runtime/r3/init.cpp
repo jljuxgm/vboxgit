@@ -1,4 +1,4 @@
-/* $Id: init.cpp 14856 2008-12-01 13:41:12Z vboxsync $ */
+/* $Id: init.cpp 18055 2009-03-18 12:01:51Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -54,6 +54,9 @@
 # include <VBox/sup.h>
 # include <stdlib.h>
 #endif
+
+#include <locale.h>
+
 #include "internal/path.h"
 #include "internal/process.h"
 #include "internal/thread.h"
@@ -258,6 +261,11 @@ static int rtR3Init(bool fInitSUPLib, const char *pszProgramPath)
     g_u64ProgramStartNanoTS = RTTimeNanoTS();
     g_u64ProgramStartMicroTS = g_u64ProgramStartNanoTS / 1000;
     g_u64ProgramStartMilliTS = g_u64ProgramStartNanoTS / 1000000;
+
+    /**
+     * Init C runtime locale
+     */
+    char *pcDummy = setlocale(LC_CTYPE, "");
 
     /*
      * More stuff to come?
