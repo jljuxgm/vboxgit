@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 22967 2009-09-11 22:41:38Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 22977 2009-09-13 13:00:19Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -418,7 +418,7 @@ static int pdmacFileAioMgrNormalProcessTaskList(PPDMACTASKFILE pTaskHead,
                     pCurr->fBounceBuffer = false;
 
                 AssertMsg((pEpClassFile->uBitmaskAlignment & (RTR3UINTPTR)pvBuf) == (RTR3UINTPTR)pvBuf,
-                            ("AIO: Alignment restrictions not met!\n"));
+                          ("AIO: Alignment restrictions not met! pvBuf=%p uBitmaskAlignment=%p\n", pvBuf, pEpClassFile->uBitmaskAlignment));
 
                 if (enmTransferType == PDMACTASKFILETRANSFER_WRITE)
                 {

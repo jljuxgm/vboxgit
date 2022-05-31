@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 22967 2009-09-11 22:41:38Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 22977 2009-09-13 13:00:19Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -510,7 +510,7 @@ static int pdmacFileInitialize(PPDMASYNCCOMPLETIONEPCLASS pClassGlobals, PCFGMNO
     }
     else
     {
-        pEpClassFile->uBitmaskAlignment   = ~((RTR3UINTPTR)AioLimits.cbBufferAlignment - 1);
+        pEpClassFile->uBitmaskAlignment   = AioLimits.cbBufferAlignment ? ~((RTR3UINTPTR)AioLimits.cbBufferAlignment - 1) : RTR3UINTPTR_MAX;
         pEpClassFile->cReqsOutstandingMax = AioLimits.cReqsOutstandingMax;
         pEpClassFile->fFailsafe = false;
     }
