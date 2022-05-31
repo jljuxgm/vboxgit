@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 23801 2009-10-15 15:00:47Z vboxsync $ */
+/* $Id: ConsoleImpl.h 23810 2009-10-15 17:00:44Z vboxsync $ */
 
 /** @file
  *
@@ -522,7 +522,7 @@ private:
     HRESULT                     teleporterSrc(TeleporterStateSrc *pState);
     HRESULT                     teleporterSrcReadACK(TeleporterStateSrc *pState, const char *pszWhich, const char *pszNAckMsg = NULL);
     HRESULT                     teleporterSrcSubmitCommand(TeleporterStateSrc *pState, const char *pszCommand);
-    int                         teleporterTrg(PVM pVM, IMachine *pMachine, bool fStartPaused, void *pvVMCallbackTask);
+    int                         teleporterTrg(PVM pVM, IMachine *pMachine, bool fStartPaused, Progress *pProgress);
     static DECLCALLBACK(int)    teleporterTrgServeConnection(RTSOCKET Sock, void *pvUser);
     /** @} */
 

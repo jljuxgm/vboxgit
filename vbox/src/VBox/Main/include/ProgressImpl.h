@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: ProgressImpl.h 23810 2009-10-15 17:00:44Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -85,6 +85,8 @@ public:
     // public methods only for internal purposes
 
     static HRESULT setErrorInfoOnThread (IProgress *aProgress);
+    void setCancelCallback(void (*pfnCallback)(void *), void *pvUser);
+
 
     // unsafe inline public methods for internal purposes only (ensure there is
     // a caller and a read lock before calling them!)
@@ -106,6 +108,9 @@ protected:
     const Bstr mDescription;
 
     uint64_t m_ullTimestamp;                        // progress object creation timestamp, for ETA computation
+
+    void (*m_pfnCancelCallback)(void *);
+    void *m_pvCancelUserArg;
 
     /* The fields below are to be properly initalized by subclasses */
 

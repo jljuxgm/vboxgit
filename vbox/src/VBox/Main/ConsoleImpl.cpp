@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 23801 2009-10-15 15:00:47Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 23810 2009-10-15 17:00:44Z vboxsync $ */
 
 /** @file
  *
@@ -4634,7 +4634,8 @@ HRESULT Console::powerUp(IProgress **aProgress, bool aPaused)
     else
         progressDesc = tr("Starting virtual machine");
     rc = powerupProgress->init(static_cast<IConsole *>(this),
-                               progressDesc, FALSE /* aCancelable */);
+                               progressDesc,
+                               fTeleporterEnabled /* aCancelable */);
     CheckComRCReturnRC(rc);
 
     /* setup task object and thread to carry out the operation
@@ -6762,8 +6763,7 @@ DECLCALLBACK(int) Console::powerUpThread(RTTHREAD Thread, void *pvUser)
                 else if (task->mTeleporterEnabled)
                 {
                     /* -> ConsoleImplTeleporter.cpp */
-                    vrc = console->teleporterTrg(pVM, pMachine, task->mStartPaused,
-                                                 static_cast<VMProgressTask*>(task.get()));
+                    vrc = console->teleporterTrg(pVM, pMachine, task->mStartPaused, task->mProgress);
                     if (RT_FAILURE(vrc))
                         VMR3PowerOff(pVM);
                 }
