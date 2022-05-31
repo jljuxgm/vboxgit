@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 19388 2009-05-05 16:28:07Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 19483 2009-05-07 12:21:38Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -130,20 +130,6 @@ static int VBoxNetFltSolarisModOpen(queue_t *pQueue, dev_t *pDev, int fFile, int
 static int VBoxNetFltSolarisModClose(queue_t *pQueue, int fFile, cred_t *pCred);
 static int VBoxNetFltSolarisModReadPut(queue_t *pQueue, mblk_t *pMsg);
 static int VBoxNetFltSolarisModWritePut(queue_t *pQueue, mblk_t *pMsg);
-
-/**
- * OS specific hooks invoked from common VBoxNetFlt ring-0.
- */
-/** @todo r=bird: What are these doing here? */
-bool vboxNetFltPortOsIsPromiscuous(PVBOXNETFLTINS pThis);
-void vboxNetFltPortOsGetMacAddress(PVBOXNETFLTINS pThis, PRTMAC pMac);
-bool vboxNetFltPortOsIsHostMac(PVBOXNETFLTINS pThis, PCRTMAC pMac);
-void vboxNetFltPortOsSetActive(PVBOXNETFLTINS pThis, bool fActive);
-int vboxNetFltOsDisconnectIt(PVBOXNETFLTINS pThis);
-int vboxNetFltOsConnectIt(PVBOXNETFLTINS pThis);
-void vboxNetFltOsDeleteInstance(PVBOXNETFLTINS pThis);
-int vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis, void *pvContext);
-int vboxNetFltOsPreInitInstance(PVBOXNETFLTINS pThis);
 
 
 /*******************************************************************************
