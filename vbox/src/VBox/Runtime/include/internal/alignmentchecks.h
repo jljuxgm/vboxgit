@@ -1,4 +1,4 @@
-/* $Id: alignmentchecks.h 20910 2009-06-24 23:42:46Z vboxsync $ */
+/* $Id: alignmentchecks.h 20911 2009-06-24 23:46:10Z vboxsync $ */
 /** @file
  * IPRT - Internal header for hacking alignment checks on x86 and AMD64.
  */
@@ -32,6 +32,15 @@
 #ifndef ___internal_alignmentchecks_h
 #define ___internal_alignmentchecks_h
 
+/** @def IPRT_WITH_ALIGNMENT_CHECKS
+ * Enables or disables the alignment check feature and related hacks. */
+
+#ifndef IPRT_WITH_ALIGNMENT_CHECKS
+# if ( defined(DEBUG) && !defined(IN_GUEST) ) || defined(DOXYGEN_RUNNING)
+#  define IPRT_WITH_ALIGNMENT_CHECKS 1
+# endif
+#endif
+
 /** @def IPRT_ALIGNMENT_CHECKS_DISABLE
  * Disables alignment checks.
  * Typically used before calling problematic library functions.
@@ -43,7 +52,7 @@
  * them for the first time.
  */
 
-#if ( defined(DEBUG) && !defined(IN_GUEST) ) || defined(DOXYGEN_RUNNING)
+#ifdef IPRT_WITH_ALIGNMENT_CHECKS
 # include <iprt/asm.h>
 
 RT_C_DECLS_BEGIN
