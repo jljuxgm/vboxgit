@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 20409 2009-06-08 13:57:52Z vboxsync $ */
+/* $Id: REMAll.cpp 20410 2009-06-08 14:11:14Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -46,8 +46,8 @@
  */
 VMMDECL(int) REMNotifyInvalidatePage(PVM pVM, RTGCPTR GCPtrPage)
 {
-    if (    EMTryEnterRemLock(pVM) == VINF_SUCCESS  /* if this fails, then we'll just flush the tlb as we don't want to waste time here. */
-        &&  pVM->rem.s.cInvalidatedPages < RT_ELEMENTS(pVM->rem.s.aGCPtrInvalidatedPages))
+    if (    pVM->rem.s.cInvalidatedPages < RT_ELEMENTS(pVM->rem.s.aGCPtrInvalidatedPages)
+        &&  EMTryEnterRemLock(pVM) == VINF_SUCCESS) /* if this fails, then we'll just flush the tlb as we don't want to waste time here. */
     {
         /*
          * We sync them back in REMR3State.
