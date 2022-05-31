@@ -1,4 +1,4 @@
-/* $Id: tstSSM.cpp 21893 2009-07-30 14:41:13Z vboxsync $ */
+/* $Id: tstSSM.cpp 22025 2009-08-06 11:36:08Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
@@ -90,6 +90,10 @@ void initBigMem(void)
         RTStrPrintf(szTmp, sizeof(szTmp), "aaaa%08Xzzzz", (uint32_t)(uintptr_t)pb);
         memcpy(pb, szTmp, 16);
     }
+
+    /* add some zero pages */
+    memset(&gabBigMem[sizeof(gabBigMem) / 4],     0, PAGE_SIZE * 4);
+    memset(&gabBigMem[sizeof(gabBigMem) / 4 * 3], 0, PAGE_SIZE * 4);
 #endif
 }
 
