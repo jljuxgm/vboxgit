@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21709 2009-07-17 16:07:35Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21710 2009-07-17 16:13:04Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1080,6 +1080,17 @@ ResumeExecution:
         {
             /* Our patch code uses LSTAR for TPR caching. */
             pCtx->msrLSTAR = u8LastTPR;
+
+            if (fPending)
+            {
+                /* A TPR change could activate a pending interrupt, so catch lstar writes. */
+                svmR0SetMSRPermission(pVM, MSR_K8_LSTAR, true, false);
+            }
+            else
+                /* No interrupts are pending, so we don't need to be explicitely notified.
+                * There are enough world switches for detecting pending interrupts.
+                */
+                svmR0SetMSRPermission(pVM, MSR_K8_LSTAR, true, true);
         }
         else
         {
