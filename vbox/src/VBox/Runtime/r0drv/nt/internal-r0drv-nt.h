@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 23412 2009-09-29 15:24:43Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -40,6 +40,8 @@ RT_C_DECLS_BEGIN
 *******************************************************************************/
 typedef ULONG (__stdcall *PFNMYEXSETTIMERRESOLUTION)(ULONG, BOOLEAN);
 typedef VOID (__stdcall *PFNMYKEFLUSHQUEUEDDPCS)(VOID);
+typedef VOID (__stdcall *PFNHALREQUESTIPI)(KAFFINITY TargetSet);
+typedef int (__stdcall *PFNRTSENDIPI)(RTCPUID idCpu);
 
 
 /*******************************************************************************
@@ -48,10 +50,16 @@ typedef VOID (__stdcall *PFNMYKEFLUSHQUEUEDDPCS)(VOID);
 extern RTCPUSET                     g_rtMpNtCpuSet;
 extern PFNMYEXSETTIMERRESOLUTION    g_pfnrtNtExSetTimerResolution;
 extern PFNMYKEFLUSHQUEUEDDPCS       g_pfnrtNtKeFlushQueuedDpcs;
+extern PFNHALREQUESTIPI             g_pfnrtNtHalRequestIpi;
+extern PFNRTSENDIPI                 g_pfnrtSendIpi;
 extern uint32_t                     g_offrtNtPbQuantumEnd;
 extern uint32_t                     g_cbrtNtPbQuantumEnd;
 extern uint32_t                     g_offrtNtPbDpcQueueDepth;
 
+
+int rtMpSendIpiVista(RTCPUID idCpu);
+int rtMpSendIpiWin7(RTCPUID idCpu);
+int rtMpSendIpiDummy(RTCPUID idCpu);
 
 RT_C_DECLS_END
 
