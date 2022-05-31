@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 22757 2009-09-03 17:22:53Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 22851 2009-09-08 23:38:47Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -496,6 +496,10 @@ typedef struct PDMACTASKFILE
     bool                                 fBounceBuffer;
     /** Pointer to the used bounce buffer if any. */
     void                                *pvBounceBuffer;
+    /** Start offset in the bounce buffer to copy from. */
+    uint32_t                             uBounceBufOffset;
+    /** Flag whether this is a prefetch request. */
+    bool                                 fPrefetch;
     /** Completion function to call on completion. */
     PFNPDMACTASKCOMPLETED                pfnCompleted;
     /** User data */
