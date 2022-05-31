@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 18615 2009-04-01 20:19:22Z vboxsync $ */
+/* $Id: PDM.cpp 18616 2009-04-01 21:08:19Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -334,7 +334,7 @@ VMMR3DECL(int) PDMR3Init(PVM pVM)
     /*
      * Initialize sub compontents.
      */
-    rc = pdmR3CritSectInit(pVM);
+    int rc = pdmR3CritSectInit(pVM);
     if (RT_SUCCESS(rc))
     {
         rc = PDMR3CritSectInit(pVM, &pVM->pdm.s.CritSect, "PDM");
