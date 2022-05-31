@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 18730 2009-04-06 08:21:45Z vboxsync $ */
+/* $Id: PGMInternal.h 18746 2009-04-06 11:20:27Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2798,7 +2798,8 @@ typedef PGMCPU *PPGMCPU;
 #define PGM_SYNC_UPDATE_PAGE_BIT_VIRTUAL        RT_BIT(0)
 /** Always sync CR3. */
 #define PGM_SYNC_ALWAYS                         RT_BIT(1)
-/** Check monitoring on next CR3 (re)load and invalidate page. */
+/** Check monitoring on next CR3 (re)load and invalidate page.
+ * @todo This is obsolete now. Remove after 2.2.0 is branched off. */
 #define PGM_SYNC_MONITOR_CR3                    RT_BIT(2)
 /** Check guest mapping in SyncCR3. */
 #define PGM_SYNC_MAP_CR3                        RT_BIT(3)
