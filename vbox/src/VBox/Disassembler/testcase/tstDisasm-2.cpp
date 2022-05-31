@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 17091 2009-02-24 19:55:23Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 18458 2009-03-28 04:50:55Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -560,7 +560,7 @@ static DECLCALLBACK(int) MyDisasInstrRead(RTUINTPTR uSrcAddr, uint8_t *pbDst, ui
                 {
                     memcpy(pbDst, pState->pbNext, pState->cbLeft);
                     pbDst += pState->cbLeft;
-                    cbRead -= pState->cbLeft;
+                    cbRead -= (uint32_t)pState->cbLeft;
                     pState->pbNext += pState->cbLeft;
                     pState->uNextAddr += pState->cbLeft;
                     pState->cbLeft = 0;
