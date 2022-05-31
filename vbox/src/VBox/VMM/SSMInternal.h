@@ -1,4 +1,4 @@
-/* $Id: SSMInternal.h 22480 2009-08-26 17:14:13Z vboxsync $ */
+/* $Id: SSMInternal.h 22884 2009-09-09 21:55:47Z vboxsync $ */
 /** @file
  * SSM - Internal header file.
  */
@@ -25,6 +25,7 @@
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
 #include <VBox/ssm.h>
+#include <iprt/critsect.h>
 
 RT_C_DECLS_BEGIN
 
@@ -265,6 +266,11 @@ typedef struct SSM
     uint32_t                cUnits;
     /** For lazy init. */
     bool                    fInitialized;
+    /** Critical section for serializing cancellation. */
+    RTCRITSECT              CancelCritSect;
+    /** The handle of the current save or load operation.
+     * This is used by SSMR3Cancel.  */
+    PSSMHANDLE volatile     pSSM;
 } SSM;
 /** Pointer to SSM VM instance data. */
 typedef SSM *PSSM;
