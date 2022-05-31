@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 21528 2009-07-13 11:52:24Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 21941 2009-08-03 14:38:55Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -51,6 +51,7 @@
 #include <iprt/system.h>
 #include <iprt/time.h>
 #include <iprt/assert.h>
+#include <VBox/version.h>
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
 #include "VBoxServiceUtils.h"
@@ -173,7 +174,12 @@ DECLCALLBACK(int) VBoxServiceVMInfoWorker(bool volatile *pfShutdown)
     rc = VboxServiceWinGetAddsVersion(g_VMInfoGuestPropSvcClientID);
     rc = VboxServiceWinGetComponentVersions(g_VMInfoGuestPropSvcClientID);
 #else
-    /** @todo */
+    /* VboxServiceGetAddsVersion !RT_OS_WINDOWS */
+    VboxServiceWriteProp(g_VMInfoGuestPropSvcClientID, "GuestAdd/Version", VBOX_VERSION_STRING);
+
+    char szRevision[32] = {0};
+    RTStrPrintf(szRevision, sizeof(szRevision), "%lu", VBOX_SVN_REV);
+    VboxServiceWriteProp(g_VMInfoGuestPropSvcClientID, "GuestAdd/Revision", szRevision);
 #endif
 
     /* Now enter the loop retrieving runtime data continuously. */
