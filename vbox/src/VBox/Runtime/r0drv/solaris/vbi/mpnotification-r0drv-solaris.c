@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-solaris.c 22347 2009-08-19 14:02:05Z vboxsync $ */
+/* $Id: mpnotification-r0drv-solaris.c 22366 2009-08-20 10:58:25Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Solaris.
  */
@@ -77,12 +77,12 @@ int rtR0MpNotificationNativeInit(void)
      */
     RTCpuSetEmpty(&g_rtMpSolarisCpuSet);
 
-    g_hVbiCpuWatch = vbi_watch_cpus(rtMpNotificationSolarisCallback, NULL, 0);
+    g_hVbiCpuWatch = vbi_watch_cpus(rtMpNotificationSolarisCallback, NULL, 1 /* watch current CPU too */);
 
     RTCPUID idCpu = RTMpGetMaxCpuId();
     do
     {
-        /** @todo vbi_cpu_online() should do boundary check "idCpu" rather than hang the system. */
+        /** @todo vbi_cpu_online() should boundary check "idCpu" rather than hang the system. */
         if (   RTMpIsCpuPossible(idCpu)
             && vbi_cpu_online(idCpu))
         {
