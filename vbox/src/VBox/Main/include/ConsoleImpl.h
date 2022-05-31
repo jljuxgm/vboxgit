@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 22396 2009-08-23 20:12:43Z vboxsync $ */
+/* $Id: ConsoleImpl.h 22455 2009-08-26 08:32:32Z vboxsync $ */
 
 /** @file
  *
@@ -563,7 +563,7 @@ private:
      * maintained in the NetworkAdapter. This is needed to
      * change the network attachment dynamically.
      */
-    static NetworkAttachmentType_T meAttachmentType[SchemaDefs::NetworkAdapterCount];
+    NetworkAttachmentType_T meAttachmentType[SchemaDefs::NetworkAdapterCount];
 
     VMMDev * const mVMMDev;
     AudioSniffer * const mAudioSniffer;

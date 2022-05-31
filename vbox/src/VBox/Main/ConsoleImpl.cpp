@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 22434 2009-08-25 14:26:49Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 22455 2009-08-26 08:32:32Z vboxsync $ */
 
 /** @file
  *
@@ -242,7 +242,10 @@ Console::Console()
     , mAudioSniffer (NULL)
     , mVMStateChangeCallbackDisabled (false)
     , mMachineState (MachineState_PoweredOff)
-{}
+{
+    for (ULONG slot = 0; slot < SchemaDefs::NetworkAdapterCount; slot ++)
+        meAttachmentType[slot] = NetworkAttachmentType_Null;
+}
 
 Console::~Console()
 {}
@@ -7678,10 +7681,5 @@ const PDMDRVREG Console::DrvStatusReg =
     /* u32EndVersion */
     PDM_DRVREG_VERSION
 };
-
-/**
- * Initializing the attachment type for the network adapters
- */
-NetworkAttachmentType_T Console::meAttachmentType[] = {};
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
