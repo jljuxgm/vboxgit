@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 22387 2009-08-21 13:27:13Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 22438 2009-08-25 14:34:22Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -46,7 +46,6 @@
 #include <sys/sunddi.h>
 #include <sys/file.h>
 #include <sys/priv_names.h>
-#include <sys/spl.h>
 #undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
 
 #include "../SUPDrvInternal.h"
@@ -677,9 +676,7 @@ static int VBoxDrvSolarisIOCtl(dev_t Dev, int Cmd, intptr_t pArgs, int Mode, cre
         ||  Cmd == SUP_IOCTL_FAST_DO_HWACC_RUN
         ||  Cmd == SUP_IOCTL_FAST_DO_NOP)
     {
-        int SavePil = splr(ipltospl(DISP_LEVEL));
         *pVal = supdrvIOCtlFast(Cmd, pArgs, &g_DevExt, pSession);
-        splx(SavePil);
         return 0;
     }
 
@@ -710,7 +707,7 @@ static int VBoxDrvSolarisIOCtlSlow(PSUPDRVSESSION pSession, int iCmd, int Mode, 
 {
     int         rc;
     uint32_t    cbBuf = 0;
-    union 
+    union
     {
         SUPREQHDR   Hdr;
         uint8_t     abBuf[64];
@@ -773,7 +770,7 @@ static int VBoxDrvSolarisIOCtlSlow(PSUPDRVSESSION pSession, int iCmd, int Mode, 
      * Process the IOCtl.
      */
     rc = supdrvIOCtl(iCmd, &g_DevExt, pSession, pHdr);
-    
+
     /*
      * Copy ioctl data and output buffer back to user space.
      */
