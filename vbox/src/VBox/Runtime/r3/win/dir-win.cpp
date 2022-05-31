@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 20070 2009-05-27 11:45:17Z vboxsync $ */
+/* $Id: dir-win.cpp 20103 2009-05-27 17:11:22Z vboxsync $ */
 /** @file
  * IPRT - Directory, win32.
  */
@@ -130,12 +130,14 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode)
 
 RTDECL(int) RTDirCreateTemp(char *pszTemplate)
 {
+    /** @todo r=bird: this doesn't work for more than 26 calls and it's racy:
+     *        http://msdn.microsoft.com/en-us/library/34wc6k1f(VS.80).aspx */
     if (_mktemp(pszTemplate))
     {
         int rc = RTDirCreate(pszTemplate, 0700);
         return rc;
     }
-    return RTErrConvertFromWin32(GetLastError());
+    return RTErrConvertFromErrno(errno);
 }
 
 
