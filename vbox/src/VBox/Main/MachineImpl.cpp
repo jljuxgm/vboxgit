@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23670 2009-10-10 03:08:58Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23674 2009-10-10 21:44:27Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3033,8 +3033,8 @@ STDMETHODIMP Machine::CanShowConsoleWindow (BOOL *aCanShow)
 
         if (mData->mSession.mState != SessionState_Open)
             return setError(VBOX_E_INVALID_VM_STATE,
-                            tr("Machine session is not open (session state: %s)"),
-                            Global::stringifyMachineState(mData->mSession.mState));
+                            tr("Machine session is not open (session state: %d)"),
+                            mData->mSession.mState);
 
         directControl = mData->mSession.mDirectControl;
     }
