@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: CSAMAll.cpp 20011 2009-05-25 19:31:11Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -134,7 +134,7 @@ VMMDECL(int) CSAMMarkPage(PVM pVM, RTRCPTR pPage, bool fScanned)
         int rc = MMHyperAlloc(pVM, CSAM_PAGE_BITMAP_SIZE, 0, MM_TAG_CSAM, (void **)&pVM->csam.s.CTXSUFF(pPDBitmap)[pgdir]);
         if (RT_FAILURE(rc))
         {
-            Log(("MMR3HyperAlloc failed with %d\n", rc));
+            Log(("MMHyperAlloc failed with %Rrc\n", rc));
             return rc;
         }
 #ifdef IN_RC
