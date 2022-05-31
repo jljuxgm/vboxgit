@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUSB.cpp 20928 2009-06-25 11:53:37Z vboxsync $ */
+/* $Id: VBoxManageUSB.cpp 21520 2009-07-13 08:18:44Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -78,6 +78,10 @@ public:
         Guid guid(iid);
         if (guid == Guid(NS_GET_IID(IUnknown)))
             *ppvObject = (IUnknown *)this;
+#ifdef RT_OS_WINDOWS
+        else if (guid == Guid(NS_GET_IID(IDispatch)))
+            *ppvObject = (IDispatch *)this;
+#endif
         else if (guid == Guid(NS_GET_IID(IUSBDevice)))
             *ppvObject = (IUSBDevice *)this;
         else

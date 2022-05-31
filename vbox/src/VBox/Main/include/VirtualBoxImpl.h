@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 20842 2009-06-23 14:48:10Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 21520 2009-07-13 08:18:44Z vboxsync $ */
 
 /** @file
  *
@@ -65,12 +65,9 @@ class ATL_NO_VTABLE VirtualBox :
     public VirtualBoxBaseWithChildrenNEXT,
     public VirtualBoxSupportErrorInfoImpl <VirtualBox, IVirtualBox>,
     public VirtualBoxSupportTranslation <VirtualBox>,
+    VBOX_SCRIPTABLE_IMPL(IVirtualBox)
 #ifdef RT_OS_WINDOWS
-    public IDispatchImpl<IVirtualBox, &IID_IVirtualBox, &LIBID_VirtualBox,
-                         kTypeLibraryMajorVersion, kTypeLibraryMinorVersion>,
-    public CComCoClass<VirtualBox, &CLSID_VirtualBox>
-#else
-    public IVirtualBox
+    , public CComCoClass<VirtualBox, &CLSID_VirtualBox>
 #endif
 {
 
