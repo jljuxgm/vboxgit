@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceUtils.cpp 19618 2009-05-12 13:11:13Z vboxsync $ */
+/* $Id: VBoxServiceUtils.cpp 19644 2009-05-12 15:29:22Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
@@ -36,6 +36,7 @@
 #include "VBoxServiceInternal.h"
 
 
+#ifdef VBOX_WITH_GUEST_PROPS
 int VboxServiceWriteProp(uint32_t uiClientID, const char *pszKey, const char *pszValue)
 {
     int rc = VINF_SUCCESS;
@@ -85,6 +86,7 @@ int VboxServiceWritePropInt(uint32_t uiClientID, const char *pszKey, int32_t iVa
     RTStrPrintf(szBuffer, sizeof(szBuffer), "%ld", iValue);
     return VboxServiceWriteProp(uiClientID, pszKey, szBuffer);
 }
+#endif /* VBOX_WITH_GUEST_PROPS */
 
 
 #ifdef RT_OS_WINDOWS

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 19374 2009-05-05 13:23:32Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 19644 2009-05-12 15:29:22Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -143,6 +143,7 @@ extern SERVICE_TABLE_ENTRY const g_aServiceTable[];     /** @todo generate on th
 extern int VBoxServiceWinInstall(void);
 /** Uninstalls the service from the registry. */
 extern int VBoxServiceWinUninstall(void);
+#ifdef VBOX_WITH_GUEST_PROPS
 /** Detects wheter a user is logged on based on the enumerated processes. */
 extern BOOL VboxServiceVMInfoWinIsLoggedIn(VBOXSERVICEVMINFOUSER* a_pUserInfo,
                                            PLUID a_pSession,
@@ -150,7 +151,8 @@ extern BOOL VboxServiceVMInfoWinIsLoggedIn(VBOXSERVICEVMINFOUSER* a_pUserInfo,
                                            DWORD a_dwNumOfProcLUIDs);
 /** Gets logon user IDs from enumerated processes. */
 extern DWORD VboxServiceVMInfoWinGetLUIDsFromProcesses(PLUID *ppLuid);
-#endif
+#endif /* VBOX_WITH_GUEST_PROPS */
+#endif /* RT_OS_WINDOWS */
 
 __END_DECLS
 
