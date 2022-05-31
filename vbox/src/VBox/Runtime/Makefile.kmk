@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23507 2009-10-02 12:02:02Z vboxsync $
+# $Id: Makefile.kmk 23819 2009-10-16 12:24:52Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -370,6 +370,10 @@ RuntimeR3_SOURCES += \
 ifneq ($(KBUILD_TARGET),win)
 RuntimeR3_SOURCES += \
 	common/err/errmsgxpcom.cpp
+endif
+ifeq ($(KBUILD_TARGET),linux)
+RuntimeR3_SOURCES += \
+	$(if $(VBOX_WITH_DBUS),VBox/dbus.cpp,)
 endif
 
 RuntimeR3_SOURCES.win = \
