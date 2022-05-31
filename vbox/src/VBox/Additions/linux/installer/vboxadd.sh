@@ -1,6 +1,6 @@
 #! /bin/sh
 # Sun VirtualBox
-# Linux Additions kernel module init script ($Revision: 21412 $)
+# Linux Additions kernel module init script ($Revision: 22314 $)
 #
 
 #
@@ -256,7 +256,7 @@ start()
 stop()
 {
     begin "Stopping VirtualBox Additions ";
-    if !umount -a -t vboxsf 2>/dev/null; then
+    if ! umount -a -t vboxsf 2>/dev/null; then
         fail "Cannot unmount vboxsf folders"
     fi
     if [ -n "$BUILDVBOXVFS" ]; then
