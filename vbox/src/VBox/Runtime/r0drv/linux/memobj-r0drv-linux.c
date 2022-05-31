@@ -1,4 +1,4 @@
-/* $Revision: 18250 $ */
+/* $Revision: 18522 $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -42,6 +42,10 @@
 #include <iprt/process.h>
 #include "internal/memobj.h"
 
+
+/*******************************************************************************
+*   Defined Constants And Macros                                               *
+*******************************************************************************/
 /* early 2.6 kernels */
 #ifndef PAGE_SHARED_EXEC
 # define PAGE_SHARED_EXEC PAGE_SHARED
@@ -58,6 +62,7 @@
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 23)
 # define VBOX_USE_INSERT_PAGE
 #endif
+
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
