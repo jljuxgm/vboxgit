@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 19333 2009-05-04 15:57:43Z vboxsync $ */
+/* $Id: PGMPool.cpp 19631 2009-05-12 14:23:36Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -128,6 +128,8 @@ static DECLCALLBACK(int) pgmR3PoolAccessHandler(PVM pVM, RTGCPHYS GCPhys, void *
 int pgmR3PoolInit(PVM pVM)
 {
     AssertCompile(NIL_PGMPOOL_IDX == 0);
+    /* pPage->cLocked is an unsigned byte. */
+    AssertCompile(VMM_MAX_CPU_COUNT <= 255);
 
     /*
      * Query Pool config.
