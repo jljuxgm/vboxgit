@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 20679 2009-06-18 10:38:52Z vboxsync $ */
+/* $Id: DevACPI.cpp 21249 2009-07-06 13:07:39Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -796,6 +796,7 @@ static void acpiSetupMADT(ACPIState *s, RTGCPHYS32 addr)
 
     ioapic->u8Type     = 1;
     ioapic->u8Length   = sizeof(ACPITBLIOAPIC);
+    /** @todo is this the right id? */
     ioapic->u8IOApicId = cpus;
     ioapic->u8Reserved = 0;
     ioapic->u32Address = RT_H2LE_U32(0xfec00000);
