@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.cpp 23575 2009-10-06 08:23:38Z vboxsync $ */
+/* $Id: VBoxServiceUtils.cpp 23576 2009-10-06 08:25:06Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
@@ -48,7 +48,7 @@ int VBoxServiceWritePropF(uint32_t u32ClientId, const char *pszName, const char 
             va_start(va, pszValueFormat);
             VBoxServiceVerbose(3, "Writing guest property \"%s\"=\"%s\"\n", pszNameUTF8, pszValueFormat);
             rc = VbglR3GuestPropWriteValueV(u32ClientId, pszNameUTF8, pszValueFormat, va);
-            if(RT_FAILURE(rc))
+            if (RT_FAILURE(rc))
                  VBoxServiceError("Error writing guest property \"%s\"=\"%s\" (rc=%Rrc)\n", pszNameUTF8, pszValueFormat, rc);
             va_end(va);
         }
