@@ -1,4 +1,4 @@
-/* $Id: RTDirExists-generic.cpp 23298 2009-09-24 16:38:05Z vboxsync $ */
+/* $Id: RTDirExists-generic.cpp 23299 2009-09-24 16:39:55Z vboxsync $ */
 /** @file
  * IPRT - RTDirExists, generic implementation.
  */
@@ -35,9 +35,10 @@
 #define LOG_GROUP RTLOGGROUP_DIR
 #include "internal/iprt.h"
 
-#include <iprt/path.h>
-#include <iprt/log.h>
+#include <iprt/dir.h>
 #include <iprt/err.h>
+#include <iprt/log.h>
+#include <iprt/path.h>
 
 
 RTDECL(bool) RTDirExists(const char *pszPath)
