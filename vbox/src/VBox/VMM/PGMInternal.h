@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 19833 2009-05-19 15:12:25Z vboxsync $ */
+/* $Id: PGMInternal.h 19834 2009-05-19 15:16:08Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -352,7 +352,7 @@
 #endif
 
 /** @def PGM_INVL_VCPU_TLBS()
- * Invalidates all guest TLBs.
+ * Invalidates the TLBs of the specified VCPU
  */
 #ifdef IN_RC
 # define PGM_INVL_VCPU_TLBS(pVCpu)             ASMReloadCR3()
