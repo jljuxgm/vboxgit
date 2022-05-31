@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 19784 2009-05-18 13:15:46Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 19785 2009-05-18 13:23:45Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -46,8 +46,6 @@
  * @returns NULL on failure. The queue is exhausted.
  * @param   pQueue      The queue handle.
  * @thread  Any thread.
- *
- * Note: SMP safe
  */
 VMMDECL(PPDMQUEUEITEMCORE) PDMQueueAlloc(PPDMQUEUE pQueue)
 {
@@ -75,8 +73,6 @@ VMMDECL(PPDMQUEUEITEMCORE) PDMQueueAlloc(PPDMQUEUE pQueue)
  * @param   pQueue      The queue handle.
  * @param   pItem       The item to insert.
  * @thread  Any thread.
- *
- * Note: SMP safe
  */
 VMMDECL(void) PDMQueueInsert(PPDMQUEUE pQueue, PPDMQUEUEITEMCORE pItem)
 {
@@ -195,7 +191,6 @@ VMMDECL(void) PDMQueueFlush(PPDMQUEUE pQueue)
 
 #else /* IN_RING3: */
     PVMREQ pReq;
-    Assert(!pdmIsLockOwner(pVM));
     VMR3ReqCall(pVM, VMCPUID_ANY, &pReq, RT_INDEFINITE_WAIT, (PFNRT)PDMR3QueueFlushWorker, 2, pVM, pQueue);
     VMR3ReqFree(pReq);
 #endif
