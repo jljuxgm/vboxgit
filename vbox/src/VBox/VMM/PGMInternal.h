@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 19903 2009-05-22 09:41:32Z vboxsync $ */
+/* $Id: PGMInternal.h 20060 2009-05-27 09:38:46Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -37,6 +37,7 @@
 #include <VBox/gmm.h>
 #include <VBox/hwaccm.h>
 #include <iprt/avl.h>
+#include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/critsect.h>
 
@@ -1643,8 +1644,10 @@ typedef struct PGMPOOLPAGE
     /** This is used by the R3 access handlers when invoked by an async thread.
      * It's a hack required because of REMR3NotifyHandlerPhysicalDeregister. */
     bool volatile       fReusedFlushPending;
+    bool                bPadding1;
+
     /** Used to indicate that this page can't be flushed. Important for cr3 root pages or shadow pae pd pages). */
-    uint8_t             cLocked;
+    uint32_t            cLocked;
 } PGMPOOLPAGE, *PPGMPOOLPAGE, **PPPGMPOOLPAGE;
 /** Pointer to a const pool page. */
 typedef PGMPOOLPAGE const *PCPGMPOOLPAGE;
@@ -4444,7 +4447,7 @@ DECLINLINE(void) pgmPoolCacheUsed(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
  */
 DECLINLINE(void) pgmPoolLockPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
 {
-    pPage->cLocked++;
+    ASMAtomicIncU32(&pPage->cLocked);
 }
 
 
@@ -4457,7 +4460,7 @@ DECLINLINE(void) pgmPoolLockPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
 DECLINLINE(void) pgmPoolUnlockPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
 {
     Assert(pPage->cLocked);
-    pPage->cLocked--;
+    ASMAtomicDecU32(&pPage->cLocked);
 }
 
 
