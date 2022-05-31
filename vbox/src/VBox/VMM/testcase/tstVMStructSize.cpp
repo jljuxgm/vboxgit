@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 19735 2009-05-15 12:50:56Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 20530 2009-06-13 20:53:44Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -308,6 +308,12 @@ int main()
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, StatEntry, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, vmx.proc_ctls, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, Event.intInfo, 8);
+
+    /* The various disassembler state members.  */
+    CHECK_PADDING3(EMCPU, DisState, abDisStatePadding);
+    CHECK_PADDING3(HWACCMCPU, DisState, abDisStatePadding);
+    CHECK_PADDING3(IOMCPU, DisState, abDisStatePadding);
+    CHECK_PADDING3(PGMCPU, DisState, abDisStatePadding);
 
     /* Make sure the set is large enough and has the correct size. */
     CHECK_SIZE(VMCPUSET, 32);

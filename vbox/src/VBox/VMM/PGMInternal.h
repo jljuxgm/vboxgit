@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: PGMInternal.h 20530 2009-06-13 20:53:44Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2700,6 +2700,17 @@ typedef struct PGMCPU
     RTRCPTR                         alignment2; /**< structure size alignment. */
 #endif
     /** @} */
+
+    /** For saving stack space, the disassembler state is allocated here instead of
+     * on the stack.
+     * @note The DISCPUSTATE structure is not R3/R0/RZ clean!  */
+    union
+    {
+        /** The disassembler scratch space. */
+        DISCPUSTATE                 DisState;
+        /** Padding. */
+        uint8_t                     abDisStatePadding[DISCPUSTATE_PADDING_SIZE];
+    };
 
     /** @name Release Statistics
      * @{ */

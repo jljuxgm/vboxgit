@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 20426 2009-06-09 11:21:44Z vboxsync $ */
+/* $Id: EMInternal.h 20530 2009-06-13 20:53:44Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -345,6 +345,17 @@ typedef struct EMCPU
         jmp_buf             FatalLongJump;
 #endif
     } u;
+
+    /** For saving stack space, the disassembler state is allocated here instead of
+     * on the stack.
+     * @note The DISCPUSTATE structure is not R3/R0/RZ clean!  */
+    union
+    {
+        /** The disassembler scratch space. */
+        DISCPUSTATE         DisState;
+        /** Padding. */
+        uint8_t             abDisStatePadding[DISCPUSTATE_PADDING_SIZE];
+    };
 
     /** @name Execution profiling.
      * @{ */
