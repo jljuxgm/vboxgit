@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-freebsd.c 22650 2009-09-01 11:54:15Z vboxsync $ */
+/* $Id: spinlock-r0drv-freebsd.c 22677 2009-09-01 15:10:42Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, FreeBSD.
  */
@@ -172,7 +172,7 @@ RTDECL(void) RTSpinlockAcquire(RTSPINLOCK Spinlock, PRTSPINLOCKTMP pTmp)
     Assert(pThis->u32Magic == RTSPINLOCK_MAGIC);
 #ifdef RT_STRICT
     Assert(pTmp->uFlags == 0);
-    pTmp->uFlags = 0;
+    pTmp->uFlags = 42;
 #endif
 
     NOREF(pTmp);
