@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22866 2009-09-09 14:39:46Z vboxsync $
+# $Id: Makefile.kmk 22876 2009-09-09 19:34:07Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -857,7 +857,8 @@ ifeq ($(KBUILD_TARGET),freebsd)
 Drivers_SOURCES      := $(filter-out \
 	Storage/DrvHostFloppy% \
 	, $(Drivers_SOURCES)) \
-	Audio/ossaudio.c
+	Audio/ossaudio.c \
+	Serial/DrvHostSerial.cpp
 Drivers_SOURCES.freebsd = \
 	Network/DrvTAP.cpp
 endif # freebsd
