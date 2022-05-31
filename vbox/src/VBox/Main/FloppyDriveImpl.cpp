@@ -1,4 +1,4 @@
-/* $Id: FloppyDriveImpl.cpp 19242 2009-04-28 14:10:45Z vboxsync $ */
+/* $Id: FloppyDriveImpl.cpp 19511 2009-05-08 07:02:41Z vboxsync $ */
 
 /** @file
  *
@@ -369,7 +369,9 @@ STDMETHODIMP FloppyDrive::Unmount()
             /* leave the lock before informing callbacks */
             alock.unlock();
 
-            mParent->onFloppyDriveChange();
+            rc = mParent->onFloppyDriveChange();
+            if (FAILED (rc))
+                rollback();
         }
     }
 

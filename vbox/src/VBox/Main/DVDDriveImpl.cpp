@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: DVDDriveImpl.cpp 19511 2009-05-08 07:02:41Z vboxsync $ */
 
 /** @file
  *
@@ -362,7 +362,9 @@ STDMETHODIMP DVDDrive::Unmount()
             /* leave the lock before informing callbacks */
             alock.unlock();
 
-            mParent->onDVDDriveChange();
+            rc = mParent->onDVDDriveChange();
+            if (FAILED (rc))
+                rollback();
         }
     }
 
