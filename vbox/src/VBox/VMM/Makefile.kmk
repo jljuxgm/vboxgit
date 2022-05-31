@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21196 2009-07-03 12:57:21Z vboxsync $
+# $Id: Makefile.kmk 21496 2009-07-10 20:16:09Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -166,7 +166,9 @@ endif
 ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
  VMMR3_SOURCES += \
  	PDMAsyncCompletion.cpp \
- 	PDMAsyncCompletionFile.cpp
+ 	PDMAsyncCompletionFile.cpp \
+ 	PDMAsyncCompletionFileFailsafe.cpp \
+ 	PDMAsyncCompletionFileNormal.cpp
 endif
 
 VMMR3_SOURCES.x86 += \

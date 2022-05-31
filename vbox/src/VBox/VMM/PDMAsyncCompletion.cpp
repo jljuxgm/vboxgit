@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 20187 2009-06-02 12:39:15Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 21496 2009-07-10 20:16:09Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -752,7 +752,8 @@ static PPDMASYNCCOMPLETIONTASK pdmR3AsyncCompletionGetTask(PPDMASYNCCOMPLETIONEN
     PPDMASYNCCOMPLETIONTASK pTask = NULL;
 
     /* Try the small per endpoint cache first. */
-    if (pEndpoint->pTasksFreeHead == pEndpoint->pTasksFreeTail)
+    uint32_t cTasksCached = ASMAtomicReadU32(&pEndpoint->cTasksCached);
+    if (cTasksCached == 0)
     {
         /* Try the bigger per endpoint class cache. */
         PPDMASYNCCOMPLETIONEPCLASS pEndpointClass = pEndpoint->pEpClass;
