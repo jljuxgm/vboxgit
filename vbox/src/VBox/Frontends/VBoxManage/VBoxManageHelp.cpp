@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 23569 2009-10-06 00:31:40Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 23572 2009-10-06 06:27:55Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -20,6 +20,7 @@
  */
 
 #include <iprt/ctype.h>
+#include <iprt/err.h>
 #include <iprt/getopt.h>
 #include <iprt/stream.h>
 
