@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 20928 2009-06-25 11:53:37Z vboxsync $ */
+/* $Id: VBoxManage.cpp 20977 2009-06-26 14:38:55Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1270,15 +1270,15 @@ static int handleGetExtraData(HandlerArg *a)
                                                                     nextExtraDataValue.asOutParam());
                 extraDataKey = nextExtraDataKey;
 
-                if (SUCCEEDED(rcEnum) && extraDataKey)
+                if (SUCCEEDED(rcEnum) && !extraDataKey.isEmpty())
                     RTPrintf("Key: %lS, Value: %lS\n", nextExtraDataKey.raw(), nextExtraDataValue.raw());
-            } while (extraDataKey);
+            } while (!extraDataKey.isEmpty());
         }
         else
         {
             Bstr value;
             CHECK_ERROR(a->virtualBox, GetExtraData(Bstr(a->argv[1]), value.asOutParam()));
-            if (value)
+            if (!value.isEmpty())
                 RTPrintf("Value: %lS\n", value.raw());
             else
                 RTPrintf("No value set!\n");
@@ -1309,17 +1309,17 @@ static int handleGetExtraData(HandlerArg *a)
                                                                   nextExtraDataValue.asOutParam());
                     extraDataKey = nextExtraDataKey;
 
-                    if (SUCCEEDED(rcEnum) && extraDataKey)
+                    if (SUCCEEDED(rcEnum) && !extraDataKey.isEmpty())
                     {
                         RTPrintf("Key: %lS, Value: %lS\n", nextExtraDataKey.raw(), nextExtraDataValue.raw());
                     }
-                } while (extraDataKey);
+                } while (!extraDataKey.isEmpty());
             }
             else
             {
                 Bstr value;
                 CHECK_ERROR(machine, GetExtraData(Bstr(a->argv[1]), value.asOutParam()));
-                if (value)
+                if (!value.isEmpty())
                     RTPrintf("Value: %lS\n", value.raw());
                 else
                     RTPrintf("No value set!\n");

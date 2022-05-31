@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 20283 2009-06-04 13:26:14Z vboxsync $ */
+/* $Id: HostImpl.cpp 20977 2009-06-26 14:38:55Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1082,7 +1082,7 @@ STDMETHODIMP Host::GetProcessorSpeed(ULONG aCpuId, ULONG *aSpeed)
  *
  * @returns COM status code
  * @param   cpu id to get info for.
- * @param   description address of result variable, NULL if known or aCpuId is invalid.
+ * @param   description address of result variable, empty string if not known or aCpuId is invalid.
  */
 STDMETHODIMP Host::GetProcessorDescription(ULONG /* aCpuId */, BSTR *aDescription)
 {
