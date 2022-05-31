@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 20008 2009-05-25 18:34:43Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 20087 2009-05-27 14:31:18Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -346,6 +346,22 @@ VMMR3DECL(int) PDMR3CritSectDelete(PPDMCRITSECT pCritSect)
     RTCritSectLeave(&pVM->pdm.s.MiscCritSect);
     AssertReleaseMsgFailed(("pCritSect=%p wasn't found!\n", pCritSect));
     return VERR_INTERNAL_ERROR;
+}
+
+
+/**
+ * Gets the name of the critical section.
+ *
+ *
+ * @returns Pointer to the critical section name (read only) on success,
+ *          NULL on failure (invalid critical section).
+ * @param   pCritSect           The critical section.
+ */
+VMMR3DECL(const char *) PDMR3CritSectName(PCPDMCRITSECT pCritSect)
+{
+    AssertPtrReturn(pCritSect, NULL);
+    AssertReturn(pCritSect->s.Core.u32Magic == RTCRITSECT_MAGIC, NULL);
+    return pCritSect->s.pszName;
 }
 
 

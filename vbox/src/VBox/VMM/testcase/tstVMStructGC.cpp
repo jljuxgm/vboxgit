@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 20060 2009-05-27 09:38:46Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 20087 2009-05-27 14:31:18Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -838,13 +838,13 @@ int main()
     GEN_CHECK_OFF(TMTIMER, u.Drv.pfnTimer);
     GEN_CHECK_OFF(TMTIMER, u.Drv.pDrvIns);
     GEN_CHECK_OFF(TMTIMER, u.Internal.pfnTimer);
-    GEN_CHECK_OFF(TMTIMER, u.Internal.pvUser);
     GEN_CHECK_OFF(TMTIMER, u.External.pfnTimer);
-    GEN_CHECK_OFF(TMTIMER, u.External.pvUser);
     GEN_CHECK_OFF(TMTIMER, enmState);
     GEN_CHECK_OFF(TMTIMER, offScheduleNext);
     GEN_CHECK_OFF(TMTIMER, offNext);
     GEN_CHECK_OFF(TMTIMER, offPrev);
+    GEN_CHECK_OFF(TMTIMER, pvUser);
+    GEN_CHECK_OFF(TMTIMER, pCritSect);
     GEN_CHECK_OFF(TMTIMER, pBigNext);
     GEN_CHECK_OFF(TMTIMER, pBigPrev);
     GEN_CHECK_OFF(TMTIMER, pszDesc);

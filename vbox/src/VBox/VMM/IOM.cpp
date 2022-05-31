@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 19793 2009-05-18 14:30:15Z vboxsync $ */
+/* $Id: IOM.cpp 20087 2009-05-27 14:31:18Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1653,6 +1653,18 @@ VMMR3DECL(void) IOMR3ReleaseOwnedLocks(PVM pVM)
 {
     while (PDMCritSectIsOwner(&pVM->iom.s.EmtLock))
         PDMCritSectLeave(&pVM->iom.s.EmtLock);
+}
+
+
+/**
+ * For TM only!
+ *
+ * @returns Pointer to the critical section.
+ * @param   pVM                 The VM handle.
+ */
+VMMR3DECL(PPDMCRITSECT) IOMR3GetCritSect(PVM pVM)
+{
+    return &pVM->iom.s.EmtLock;
 }
 
 
