@@ -1,4 +1,4 @@
-; $Id: VMMGC.def 20737 2009-06-20 20:57:15Z vboxsync $
+; $Id: VMMGC.def 20824 2009-06-23 12:52:41Z vboxsync $
 ;; @file
 ; VMM Raw-mode Context DLL - Definition file.
 
@@ -27,6 +27,7 @@ EXPORTS
     CPUMGCResumeGuestV86
     PDMCritSectEnter
     PDMCritSectLeave
+    PDMCritSectIsOwner
     PDMQueueAlloc
     PDMQueueFlush
     PDMQueueInsert
