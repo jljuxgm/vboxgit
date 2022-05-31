@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22309 2009-08-17 20:59:28Z vboxsync $
+# $Id: Makefile.kmk 22781 2009-09-04 13:56:49Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -186,6 +186,11 @@ VMMR3_SOURCES.amd64 = \
 VMMR3_SOURCES.darwin.x86 += \
 	VMMSwitcher/AMD64ToPAE.asm
 
+# SSM wish to know the build type, host os and arch.
+SSM.cpp_DEFS +=	\
+	KBUILD_TYPE=\"$(KBUILD_TYPE)\" \
+	KBUILD_TARGET=\"$(KBUILD_TARGET)\" \
+	KBUILD_TARGET_ARCH=\"$(KBUILD_TARGET_ARCH)\"
 
 #
 # The VMM DLL.

@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 22780 2009-09-04 13:50:57Z vboxsync $ */
+/* $Id: SSM.cpp 22781 2009-09-04 13:56:49Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -837,13 +837,10 @@ static DECLCALLBACK(int) ssmR3SelfSaveExec(PVM pVM, PSSMHANDLE pSSM)
      * String table containg pairs of variable and value string.
      * Terminated by two empty strings.
      */
-#ifdef DEBUG
     SSMR3PutStrZ(pSSM, "Build Type");
-    SSMR3PutStrZ(pSSM, "debug");
-#elif defined(VBOX_STRICT)
-    SSMR3PutStrZ(pSSM, "Build Type");
-    SSMR3PutStrZ(pSSM, "strict");
-#endif
+    SSMR3PutStrZ(pSSM, KBUILD_TYPE);
+    SSMR3PutStrZ(pSSM, "Host OS");
+    SSMR3PutStrZ(pSSM, KBUILD_TARGET "." KBUILD_TARGET_ARCH);
 #ifdef VBOX_OSE
     SSMR3PutStrZ(pSSM, "OSE");
     SSMR3PutStrZ(pSSM, "true");
