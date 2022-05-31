@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 21686 2009-07-17 13:41:39Z vboxsync $ */
+/* $Id: ApplianceImpl.h 21758 2009-07-22 09:15:32Z vboxsync $ */
 
 /** @file
  *
@@ -103,6 +103,7 @@ private:
     struct LocationInfo;
     void parseURI(Utf8Str strUri, LocationInfo &locInfo) const;
     void parseBucket(Utf8Str &aPath, Utf8Str &aBucket) const;
+    Utf8Str manifestFileName(Utf8Str aPath) const;
 
     HRESULT readImpl(const LocationInfo &aLocInfo, ComObjPtr<Progress> &aProgress);
     HRESULT importImpl(const LocationInfo &aLocInfo, ComObjPtr<Progress> &aProgress);
