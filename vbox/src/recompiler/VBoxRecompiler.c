@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 20427 2009-06-09 11:27:36Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 20668 2009-06-17 13:46:05Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -4158,7 +4158,7 @@ uint64_t cpu_get_apic_base(CPUX86State *env)
 
 void cpu_set_apic_tpr(CPUX86State *env, uint8_t val)
 {
-    int rc = PDMApicSetTPR(env->pVCpu, val);
+    int rc = PDMApicSetTPR(env->pVCpu, val << 4);       /* cr8 bits 3-0 correspond to bits 7-4 of the task priority mmio register. */
     LogFlow(("cpu_set_apic_tpr: val=%#x rc=%Rrc\n", val, rc)); NOREF(rc);
 }
 
@@ -4169,7 +4169,7 @@ uint8_t cpu_get_apic_tpr(CPUX86State *env)
     if (RT_SUCCESS(rc))
     {
         LogFlow(("cpu_get_apic_tpr: returns %#x\n", u8));
-        return u8;
+        return u8 >> 4;     /* cr8 bits 3-0 correspond to bits 7-4 of the task priority mmio register. */
     }
     LogFlow(("cpu_get_apic_tpr: returns 0 (rc=%Rrc)\n", rc));
     return 0;
