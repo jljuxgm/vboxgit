@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23931 2009-10-21 12:55:11Z vboxsync $ */
+/* $Id: MachineImpl.cpp 23945 2009-10-21 16:58:31Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2048,8 +2048,11 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
                                    DeviceType_T aType,
                                    IN_BSTR aId)
 {
-    LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%d aDevice=%d\n",
-                     aControllerName, aControllerPort, aDevice));
+    LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%d aDevice=%d aType=%d aId=\"%ls\"\n",
+                     aControllerName, aControllerPort, aDevice, aType, aId));
+
+    CheckComArgNotNull(aControllerName);
+    CheckComArgNotNull(aId);
 
     AutoCaller autoCaller(this);
     CheckComRCReturnRC(autoCaller.rc());
