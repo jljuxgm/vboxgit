@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 23838 2009-10-16 22:55:57Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 23839 2009-10-17 08:21:39Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -234,15 +234,15 @@ VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
         if (pszVer)
         {
             if (ERROR_SUCCESS == RegQueryValueEx(hKey, "Version", NULL, &dwType, (BYTE*)(LPCTSTR)pszVer, &dwSize))
-                ppszVer = pszVer;
+                *ppszVer = pszVer;
         }
         /* Revision. */
         if (ppszRev)
         {
             dwSize = 32;
-            char pszRev = (char*)RTMemAlloc(dwSize);
+            char *pszRev = (char*)RTMemAlloc(dwSize);
             if (ERROR_SUCCESS == RegQueryValueEx(hKey, "Revision", NULL, &dwType, (BYTE*)(LPCTSTR)pszRev, &dwSize))
-                ppszRev = pszRev;
+                *ppszRev = pszRev;
         }
     }
     rc = RTErrConvertFromWin32(r);
