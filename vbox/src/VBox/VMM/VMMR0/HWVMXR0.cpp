@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 23944 2009-10-21 15:54:04Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 23976 2009-10-22 12:57:29Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2135,7 +2135,7 @@ static void vmxR0SetupTLBEPT(PVM pVM, PVMCPU pVCpu)
         for (unsigned i=0;i<pVCpu->hwaccm.s.TlbShootdown.cPages;i++)
         {
             /* aTlbShootdownPages contains physical addresses in this case. */
-            vmxR0FlushEPT(pVM, pVCpu, pVM->hwaccm.s.vmx.enmFlushContext, pVCpu->hwaccm.s.TlbShootdown.aPages[i]);
+            vmxR0FlushEPT(pVM, pVCpu, pVM->hwaccm.s.vmx.enmFlushPage, pVCpu->hwaccm.s.TlbShootdown.aPages[i]);
         }
     }
     pVCpu->hwaccm.s.TlbShootdown.cPages= 0;
@@ -2213,7 +2213,7 @@ static void vmxR0SetupTLBVPID(PVM pVM, PVMCPU pVCpu)
             /* Deal with pending TLB shootdown actions which were queued when we were not executing code. */
             STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatTlbShootdown);
             for (unsigned i=0;i<pVCpu->hwaccm.s.TlbShootdown.cPages;i++)
-                vmxR0FlushVPID(pVM, pVCpu, pVM->hwaccm.s.vmx.enmFlushContext, pVCpu->hwaccm.s.TlbShootdown.aPages[i]);
+                vmxR0FlushVPID(pVM, pVCpu, pVM->hwaccm.s.vmx.enmFlushPage, pVCpu->hwaccm.s.TlbShootdown.aPages[i]);
         }
     }
     pVCpu->hwaccm.s.TlbShootdown.cPages = 0;
