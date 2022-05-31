@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 22243 2009-08-13 15:43:06Z vboxsync $ */
+/* $Id: HWACCMInternal.h 22263 2009-08-14 15:10:12Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -273,9 +273,12 @@ typedef struct HWACCM
     /** Set if an IO-APIC is configured for this VM. */
     bool                        fHasIoApic;
 
+    /** Set when TPR patching is allowed. */
+    bool                        fTRPPatchingAllowed;
+
     /** Explicit alignment padding to make 32-bit gcc align u64RegisterMask
      *  naturally. */
-    bool                        padding[2];
+    bool                        padding[1];
 
     /** And mask for copying register contents. */
     uint64_t                    u64RegisterMask;
