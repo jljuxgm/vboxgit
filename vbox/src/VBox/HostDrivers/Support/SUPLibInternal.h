@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 20864 2009-06-23 19:19:42Z vboxsync $ */
+/* $Id: SUPLibInternal.h 22615 2009-08-31 15:59:02Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -250,6 +250,7 @@ int     suplibOsIOCtl(PSUPLIBDATA pThis, uintptr_t uFunction, void *pvReq, size_
 int     suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction, uintptr_t idCpu);
 int     suplibOsPageAlloc(PSUPLIBDATA pThis, size_t cPages, void **ppvPages);
 int     suplibOsPageFree(PSUPLIBDATA pThis, void *pvPages, size_t cPages);
+int     suplibOsQueryVTxSupported(void);
 
 
 /**

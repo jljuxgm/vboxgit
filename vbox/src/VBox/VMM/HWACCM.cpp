@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 22493 2009-08-26 22:22:16Z vboxsync $ */
+/* $Id: HWACCM.cpp 22615 2009-08-31 15:59:02Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -635,6 +635,20 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
         if (VMMIsHwVirtExtForced(pVM))
             return VM_SET_ERROR(pVM, VERR_VMX_NO_VMX, "VT-x is not available.");
         return VINF_SUCCESS;
+    }
+
+    if (pVM->hwaccm.s.vmx.fSupported)
+    {
+        rc = SUPR3QueryVTxSupported();
+        if (RT_FAILURE(rc))
+        {
+#ifdef RT_OS_LINUX
+            LogRel(("HWACCM: The host kernel does not support VT-x -- Linux 2.6.13 or newer required!\n"));
+#else
+            LogRel(("HWACCM: The host kernel does not support VT-x!\n"));
+#endif
+            return VINF_SUCCESS;
+        }
     }
 
     if (!pVM->hwaccm.s.fAllowed)
