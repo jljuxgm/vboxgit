@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 19312 2009-05-03 19:58:15Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -337,7 +337,7 @@ int handleList(HandlerArg *a)
                 RTPrintf("Name:            %lS\n", interfaceName.raw());
                 Bstr interfaceGuid;
                 networkInterface->COMGETTER(Id)(interfaceGuid.asOutParam());
-                RTPrintf("GUID:            %lS\n", interfaceGuid);
+                RTPrintf("GUID:            %lS\n", interfaceGuid.raw());
                 BOOL bDhcpEnabled;
                 networkInterface->COMGETTER(DhcpEnabled)(&bDhcpEnabled);
                 RTPrintf("Dhcp:            %s\n", bDhcpEnabled ? "Enabled" : "Disabled");
