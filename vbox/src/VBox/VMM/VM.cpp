@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 22042 2009-08-06 16:58:57Z vboxsync $ */
+/* $Id: VM.cpp 22121 2009-08-10 09:53:53Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -491,6 +491,7 @@ static int vmR3CreateUVM(uint32_t cCpus, PUVM *ppUVM)
         RTTlsFree(pUVM->vm.s.idxTLS);
     }
     RTMemFree(pUVM);
+    *ppUVM = NULL; /* shuts up gcc */
     return rc;
 }
 

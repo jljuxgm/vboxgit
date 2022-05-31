@@ -1,4 +1,4 @@
-/* $Id: SSM-new.cpp 22100 2009-08-07 23:52:52Z vboxsync $ */
+/* $Id: SSM-new.cpp 22121 2009-08-10 09:53:53Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -6356,6 +6356,7 @@ VMMR3DECL(SSMAFTER) SSMR3HandleGetAfter(PSSMHANDLE pSSM)
  */
 VMMR3DECL(uint64_t) SSMR3HandleGetUnitOffset(PSSMHANDLE pSSM)
 {
+    AssertMsgFailed(("/** @todo this isn't correct any longer. */"));
     return pSSM->offUnit;
 }
 
