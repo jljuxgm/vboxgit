@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 19747 2009-05-15 16:05:41Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 20002 2009-05-25 14:06:09Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -4078,14 +4078,14 @@ uint64_t cpu_get_apic_base(CPUX86State *env)
 
 void cpu_set_apic_tpr(CPUX86State *env, uint8_t val)
 {
-    int rc = PDMApicSetTPR(env->pVM, val);
+    int rc = PDMApicSetTPR(env->pVCpu, val);
     LogFlow(("cpu_set_apic_tpr: val=%#x rc=%Rrc\n", val, rc)); NOREF(rc);
 }
 
 uint8_t cpu_get_apic_tpr(CPUX86State *env)
 {
     uint8_t u8;
-    int rc = PDMApicGetTPR(env->pVM, &u8, NULL);
+    int rc = PDMApicGetTPR(env->pVCpu, &u8, NULL);
     if (RT_SUCCESS(rc))
     {
         LogFlow(("cpu_get_apic_tpr: returns %#x\n", u8));
