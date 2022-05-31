@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 19176 2009-04-24 18:19:57Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 19377 2009-05-05 13:46:25Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -127,6 +127,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--hwvirtex on|off|default]\n"
                  "                            [--nestedpaging on|off]\n"
                  "                            [--vtxvpid on|off]\n"
+                 "                            [--cpus <number>]\n"
                  "                            [--monitorcount <number>]\n"
                  "                            [--accelerate3d <on|off>]\n"
                  "                            [--bioslogofadein on|off]\n"
