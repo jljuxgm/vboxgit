@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 21057 2009-06-30 09:21:30Z vboxsync $ */
+/* $Id: PGMAll.cpp 21059 2009-06-30 09:24:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -462,7 +462,7 @@ VMMDECL(int) PGMTrap0eHandler(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFram
     if (    pVM->cCPUs > 1
         &&  rc == VERR_PAGE_TABLE_NOT_PRESENT)
     {
-        LogRel(("WARNING: Unexpected VERR_PAGE_TABLE_NOT_PRESENT for page fault at %RGv error code %x (rip=%RGv)\n", pvFault, uErr, pRegFrame->rip));
+        Log(("WARNING: Unexpected VERR_PAGE_TABLE_NOT_PRESENT for page fault at %RGv error code %x (rip=%RGv)\n", pvFault, uErr, pRegFrame->rip));
         rc = VINF_SUCCESS;
     }
 # endif
