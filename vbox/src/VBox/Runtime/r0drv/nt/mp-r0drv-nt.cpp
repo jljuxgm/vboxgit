@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 23684 2009-10-12 11:57:44Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 23861 2009-10-19 12:14:56Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -417,6 +417,9 @@ RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
 
 void rtMpPokeCpuClear()
 {
+    if (!fPokeDPCsInitialized)
+        return;
+
     RTCPUID idCpu = RTMpCpuId();
 
     /* Remove any pending poke DPC from the queue, so another call to RTMpPokeCpu will send an IPI */
