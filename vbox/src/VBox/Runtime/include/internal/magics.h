@@ -1,4 +1,4 @@
-/* $Id: magics.h 19040 2009-04-21 02:02:36Z vboxsync $ */
+/* $Id: magics.h 19368 2009-05-05 12:15:28Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -94,6 +94,10 @@
 #define RTTIMER_MAGIC               0x19370910
 /** Magic number for timer low resolution handles. (Saki Hiwatari) */
 #define RTTIMERLR_MAGIC             0x19610715
+/** The value of RTS3::u32Magic. (Edgar Wallace) */
+#define RTS3_MAGIC                 0x18750401
+/** The value of RTS3::u32Magic after RTS3Destroy().  */
+#define RTS3_MAGIC_DEAD            0x19320210
 
 /** @} */
 
