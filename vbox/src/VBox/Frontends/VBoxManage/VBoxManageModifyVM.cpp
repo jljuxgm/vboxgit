@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 23754 2009-10-14 11:29:45Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 23790 2009-10-15 01:01:56Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -178,7 +178,7 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--hostonlyadapter",         MODIFYVMHOSTONLYADAPTER,         RTGETOPT_REQ_STRING | RTGETOPT_FLAG_INDEX },
     { "--intnet",                  MODIFYVMINTNET,                  RTGETOPT_REQ_STRING | RTGETOPT_FLAG_INDEX },
     { "--natnet",                  MODIFYVMNATNET,                  RTGETOPT_REQ_STRING | RTGETOPT_FLAG_INDEX },
-    { "--macaddress",              MODIFYVMMACADDRESS,              RTGETOPT_REQ_MACADDR | RTGETOPT_FLAG_INDEX },
+    { "--macaddress",              MODIFYVMMACADDRESS,              RTGETOPT_REQ_STRING | RTGETOPT_FLAG_INDEX },
     { "--uartmode",                MODIFYVMUARTMODE,                RTGETOPT_REQ_STRING | RTGETOPT_FLAG_INDEX },
     { "--uart",                    MODIFYVMUART,                    RTGETOPT_REQ_STRING | RTGETOPT_FLAG_INDEX },
     { "--gueststatisticsinterval", MODIFYVMGUESTSTATISTICSINTERVAL, RTGETOPT_REQ_UINT32 },
