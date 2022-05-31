@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 18125 2009-03-22 16:52:36Z vboxsync $ */
+/* $Id: PGMAllBth.h 18192 2009-03-24 14:40:03Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4294,7 +4294,7 @@ PGM_BTH_DECL(int, MapCR3)(PVM pVM, RTGCPHYS GCPhysCR3)
 #  endif
 
 #  ifndef PGM_WITHOUT_MAPPINGS
-    /* 
+    /*
      * Apply all hypervisor mappings to the new CR3.
      * Note that SyncCR3 will be executed in case CR3 is changed in a guest paging mode; this will
      * make sure we check for conflicts in the new CR3 root.
