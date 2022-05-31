@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 15655 2008-12-18 13:28:02Z vboxsync $ */
+/* $Id: tcp.cpp 23613 2009-10-08 10:10:06Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -402,7 +402,7 @@ RTR3DECL(int) RTTcpServerCreateEx(const char *pszAddress, uint32_t uPort, PPRTTC
                     /*
                      * Create the server handle.
                      */
-                    PRTTCPSERVER    pServer = (PRTTCPSERVER)RTMemAllocZ(sizeof(*pServer));
+                    PRTTCPSERVER pServer = (PRTTCPSERVER)RTMemAllocZ(sizeof(*pServer));
                     if (pServer)
                     {
                         pServer->SockServer = WaitSock;
@@ -412,8 +412,9 @@ RTR3DECL(int) RTTcpServerCreateEx(const char *pszAddress, uint32_t uPort, PPRTTC
                         *ppServer = pServer;
                         return VINF_SUCCESS;
                     }
-                    else
-                        rc = VERR_NO_MEMORY;
+
+                    /* bail out */
+                    rc = VERR_NO_MEMORY;
                 }
                 else
                 {
