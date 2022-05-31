@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 20011 2009-05-25 19:31:11Z vboxsync $ */
+/* $Id: PATM.cpp 22147 2009-08-11 09:00:08Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -6145,7 +6145,7 @@ VMMR3DECL(int) PATMR3HandleTrap(PVM pVM, PCPUMCTX pCtx, RTRCPTR pEip, RTGCPTR *p
         if (pPatch)
         {
             AssertReleaseMsg(pVM->patm.s.pGCStateHC->fPIF == 1,
-                            ("Crash in patch code %RRv (%RRv) esp=%RX32\nPatch state=%x flags=%x fDirty=%d\n%s\n", pEip, pNewEip, CPUMGetGuestESP(pVCpu), pPatch->patch.uState, pPatch->patch.flags, pPatchToGuestRec->fDirty, szBuf));
+                            ("Crash in patch code %RRv (%RRv) esp=%RX32\nPatch state=%x flags=%RX64 fDirty=%d\n%s\n", pEip, pNewEip, CPUMGetGuestESP(pVCpu), pPatch->patch.uState, pPatch->patch.flags, pPatchToGuestRec->fDirty, szBuf));
         }
         else
             AssertReleaseMsg(pVM->patm.s.pGCStateHC->fPIF == 1,
