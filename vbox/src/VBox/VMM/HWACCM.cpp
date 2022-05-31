@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 22615 2009-08-31 15:59:02Z vboxsync $ */
+/* $Id: HWACCM.cpp 22635 2009-09-01 08:38:46Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -647,6 +647,10 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
 #else
             LogRel(("HWACCM: The host kernel does not support VT-x!\n"));
 #endif
+            if (pVM->cCPUs > 1)
+                return rc;
+
+            /* silently fall back to raw mode */
             return VINF_SUCCESS;
         }
     }
