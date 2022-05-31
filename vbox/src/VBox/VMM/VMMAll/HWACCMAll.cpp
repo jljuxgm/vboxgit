@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 19910 2009-05-22 12:31:50Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 19916 2009-05-22 15:32:09Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -52,8 +52,6 @@
  */
 void hwaccmQueueInvlPage(PVMCPU pVCpu, RTGCPTR GCVirt)
 {
-    Assert(HWACCMIsEnabled(pVCpu->CTX_SUFF(pVM)));
-
     /* Nothing to do if a TLB flush is already pending */
     if (VMCPU_FF_ISSET(pVCpu, VMCPU_FF_TLB_FLUSH))
         return;
