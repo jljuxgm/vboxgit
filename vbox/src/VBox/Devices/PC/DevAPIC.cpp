@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 22925 2009-09-10 22:24:58Z vboxsync $ */
+/* $Id: DevAPIC.cpp 22938 2009-09-10 23:51:06Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -337,9 +337,10 @@ typedef struct
 
     /** Number of CPUs on the system (same as LAPIC count). */
     uint32_t                cCpus;
+    /** Struct size and statistics alignment padding. */
+    uint32_t                u32Alignment0;
 
 # ifdef VBOX_WITH_STATISTICS
-    uint32_t                u32Alignment0;
     STAMCOUNTER             StatMMIOReadGC;
     STAMCOUNTER             StatMMIOReadHC;
     STAMCOUNTER             StatMMIOWriteGC;
