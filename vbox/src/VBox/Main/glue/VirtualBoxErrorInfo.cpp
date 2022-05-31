@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfo.cpp 21079 2009-06-30 15:59:22Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfo.cpp 21783 2009-07-24 11:44:32Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -68,12 +68,12 @@ STDMETHODIMP VirtualBoxErrorInfo::COMGETTER(ResultCode) (LONG *aResultCode)
     return S_OK;
 }
 
-STDMETHODIMP VirtualBoxErrorInfo::COMGETTER(InterfaceID) (OUT_GUID aIID)
+STDMETHODIMP VirtualBoxErrorInfo::COMGETTER(InterfaceID) (BSTR *aIID)
 {
     if (!aIID)
         return E_POINTER;
 
-    mIID.cloneTo (aIID);
+    mIID.toUtf16().cloneTo (aIID);
     return S_OK;
 }
 

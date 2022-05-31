@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 21079 2009-06-30 15:59:22Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 21783 2009-07-24 11:44:32Z vboxsync $ */
 
 /** @file
  *
@@ -182,15 +182,19 @@ void ErrorInfo::init (IVirtualBoxErrorInfo *info)
     bool gotAll = true;
     LONG lrc;
 
-    rc = info->COMGETTER(ResultCode) (&lrc); mResultCode = lrc;    
+    rc = info->COMGETTER(ResultCode) (&lrc); mResultCode = lrc;
     gotSomething |= SUCCEEDED (rc);
     gotAll &= SUCCEEDED (rc);
 
-    rc = info->COMGETTER(InterfaceID) (mInterfaceID.asOutParam());
+    Bstr iid;
+    rc = info->COMGETTER(InterfaceID) (iid.asOutParam());
     gotSomething |= SUCCEEDED (rc);
     gotAll &= SUCCEEDED (rc);
     if (SUCCEEDED (rc))
+    {
+        mInterfaceID = iid;
         GetInterfaceNameByIID (mInterfaceID, mInterfaceName.asOutParam());
+    }
 
     rc = info->COMGETTER(Component) (mComponent.asOutParam());
     gotSomething |= SUCCEEDED (rc);
