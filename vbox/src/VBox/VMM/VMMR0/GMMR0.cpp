@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 18617 2009-04-01 22:11:29Z vboxsync $ */
+/* $Id: GMMR0.cpp 18647 2009-04-02 16:03:29Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -741,7 +741,7 @@ GMMR0DECL(void) GMMR0CleanupVM(PGVM pGVM)
      * request has been serviced.
      */
     if (    pGVM->gmm.s.enmPolicy > GMMOCPOLICY_INVALID
-        ||  pGVM->gmm.s.enmPolicy < GMMOCPOLICY_END)
+        &&  pGVM->gmm.s.enmPolicy < GMMOCPOLICY_END)
     {
         /*
          * If it's the last VM around, we can skip walking all the chunk looking
