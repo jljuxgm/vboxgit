@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 19924 2009-05-22 21:52:47Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 20354 2009-06-07 09:11:03Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -1166,14 +1166,13 @@ bool VBoxNetDhcp::handleDhcpReqRequest(PCRTNETBOOTP pDhcpMsg, size_t cb)
     {
         if (pLease->isBeingOffered())
         {
-            fAckIt = true;
             if (pLease->m_xid == pDhcpMsg->bp_xid)
                 debugPrint(2, true, "REQUEST for offered lease.");
             else
                 debugPrint(2, true, "REQUEST for offered lease, xid mismatch. Expected %#x, got %#x.",
                            pLease->m_xid, pDhcpMsg->bp_xid);
-            pLease->m_xid = pDhcpMsg->bp_xid; /* update xid */
-            pLease->activate();
+            pLease->activate(pDhcpMsg->bp_xid);
+            fAckIt = true;
         }
         else if (!pLease->isInCurrentConfig())
             debugPrint(1, true, "REQUEST for obsolete lease -> NAK");
