@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 18552 2009-03-30 14:46:47Z vboxsync $ */
+/* $Id: utf-8.cpp 18562 2009-03-31 11:02:14Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -1379,7 +1379,7 @@ RTDECL(char *) RTStrStr(const char *pszHaystack, const char *pszNeedle)
         return NULL;
 
     /* The rest is CRT. */
-    return strstr(pszHaystack, pszNeedle);
+    return (char *)strstr(pszHaystack, pszNeedle);
 }
 
 
