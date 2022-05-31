@@ -1,4 +1,4 @@
-/* $Id: TRPMR0.cpp 15414 2008-12-13 04:33:30Z vboxsync $ */
+/* $Id: TRPMR0.cpp 19015 2009-04-20 07:54:29Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor - HC Ring 0
  */
@@ -27,6 +27,7 @@
 #include <VBox/trpm.h>
 #include "TRPMInternal.h"
 #include <VBox/vm.h>
+#include <VBox/vmm.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
@@ -41,8 +42,10 @@
  */
 VMMR0DECL(void) TRPMR0DispatchHostInterrupt(PVM pVM)
 {
-    RTUINT uActiveVector = pVM->trpm.s.uActiveVector;
-    pVM->trpm.s.uActiveVector = ~0;
+    PVMCPU pVCpu = VMMGetCpu0(pVM);
+    RTUINT uActiveVector = pVCpu->trpm.s.uActiveVector;
+
+    pVCpu->trpm.s.uActiveVector = ~0;
     AssertMsgReturnVoid(uActiveVector < 256, ("uActiveVector=%#x is invalid! (More assertions to come, please enjoy!)\n", uActiveVector));
 
 #ifdef VBOX_WITH_HYBRID_32BIT_KERNEL

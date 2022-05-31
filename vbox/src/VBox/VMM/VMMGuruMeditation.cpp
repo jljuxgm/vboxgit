@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 19015 2009-04-20 07:54:29Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -264,7 +264,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
             uint8_t         u8TrapNo   =       0xce;
             RTGCUINT        uErrorCode = 0xdeadface;
             RTGCUINTPTR     uCR2       = 0xdeadface;
-            int rc2 = TRPMQueryTrapAll(pVM, &u8TrapNo, &enmType, &uErrorCode, &uCR2);
+            int rc2 = TRPMQueryTrapAll(pVCpu, &u8TrapNo, &enmType, &uErrorCode, &uCR2);
             if (!HWACCMR3IsActive(pVM))
             {
                 if (RT_SUCCESS(rc2))

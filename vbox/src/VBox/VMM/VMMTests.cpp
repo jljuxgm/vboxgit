@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 18992 2009-04-17 13:51:56Z vboxsync $ */
+/* $Id: VMMTests.cpp 19015 2009-04-20 07:54:29Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -126,9 +126,9 @@ static int vmmR3DoTrapTest(PVM pVM, uint8_t u8Trap, unsigned uVariation, int rcE
              &&  u8Trap != 8 /* double fault doesn't dare set TrapNo. */
              &&  u8Trap != 3 /* guest only, we're not in guest. */
              &&  u8Trap != 1 /* guest only, we're not in guest. */
-             &&  u8Trap != TRPMGetTrapNo(pVM))
+             &&  u8Trap != TRPMGetTrapNo(pVCpu))
     {
-        RTPrintf("VMM: FAILURE - Trap %#x expected %#x\n", TRPMGetTrapNo(pVM), u8Trap);
+        RTPrintf("VMM: FAILURE - Trap %#x expected %#x\n", TRPMGetTrapNo(pVCpu), u8Trap);
         fDump = true;
     }
     else if (pszFaultEIP)

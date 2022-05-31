@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 18992 2009-04-17 13:51:56Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 19015 2009-04-20 07:54:29Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -909,24 +909,24 @@ static const REMPARMDESC g_aArgsSTAMR3Deregister[] =
 };
 static const REMPARMDESC g_aArgsTRPMAssertTrap[] =
 {
-    { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(uint8_t), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(TRPMEVENT), NULL }
 };
 static const REMPARMDESC g_aArgsTRPMQueryTrap[] =
 {
-    { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(uint8_t *), NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(TRPMEVENT *), NULL }
 };
 static const REMPARMDESC g_aArgsTRPMSetErrorCode[] =
 {
-    { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU), NULL },
     { REMPARMDESC_FLAGS_GCPTR,      sizeof(RTGCUINT), NULL }
 };
 static const REMPARMDESC g_aArgsTRPMSetFaultAddress[] =
 {
-    { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU), NULL },
     { REMPARMDESC_FLAGS_GCPTR,      sizeof(RTGCUINT), NULL }
 };
 static const REMPARMDESC g_aArgsVMR3ReqCall[] =
