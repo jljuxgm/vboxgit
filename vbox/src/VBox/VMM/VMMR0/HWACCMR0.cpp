@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 23258 2009-09-23 13:32:59Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1064,9 +1064,9 @@ VMMR0DECL(int) HWACCMR0Leave(PVM pVM, PVMCPU pVCpu)
 VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
 {
     CPUMCTX *pCtx;
-    RTCPUID  idCpu = RTMpCpuId(); NOREF(idCpu);
     int      rc;
 #ifdef VBOX_STRICT
+    RTCPUID  idCpu = RTMpCpuId(); NOREF(idCpu);
     PHWACCM_CPUINFO pCpu = &HWACCMR0Globals.aCpuInfo[idCpu];
 #endif
 
