@@ -1,6 +1,6 @@
-/* $Id: VBoxTray.h 10801 2008-07-22 09:00:44Z vboxsync $ */
+/* $Id: VBoxTray.h 21227 2009-07-05 19:50:18Z vboxsync $ */
 /** @file
- * VBoxService - Guest Additions Service, Internal Header.
+ * VBoxTray - Guest Additions Tray, Internal Header.
  */
 
 /*
@@ -32,7 +32,6 @@
 #include <iprt/string.h>
 
 #include <VBox/version.h>
-#include <VBox/VBoxGuest.h>
 #include <VBox/Log.h>
 
 #define WM_VBOX_RESTORED                     0x2005

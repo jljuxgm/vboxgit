@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 21150 2009-07-02 10:16:15Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 21227 2009-07-05 19:50:18Z vboxsync $ */
 /** @file
  * VBoxVMInfo-win - Virtual machine (guest) information for the host.
  */
@@ -20,7 +20,6 @@
  */
 
 
-
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
@@ -36,7 +35,7 @@
 #include <iprt/semaphore.h>
 #include <iprt/system.h>
 #include <iprt/time.h>
-#include <VBox/VBoxGuest.h>
+#include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
 #include "VBoxServiceUtils.h"
 
@@ -339,7 +338,7 @@ int VboxServiceWinGetAddsVersion(uint32_t uiClientID)
     /* Check the new path first. */
     rc = RegOpenKeyExA (HKEY_LOCAL_MACHINE, "SOFTWARE\\Sun\\VirtualBox Guest Additions", 0, KEY_READ, &hKey);
     if ((rc != ERROR_SUCCESS) && (rc != ERROR_FILE_NOT_FOUND))
-    {  
+    {
         /* New path does not exist, check the old one ... */
         rc = RegOpenKeyExA (HKEY_LOCAL_MACHINE, "SOFTWARE\\Sun\\xVM VirtualBox Guest Additions", 0, KEY_READ, &hKey);
         if ((rc != ERROR_SUCCESS) && (rc != ERROR_FILE_NOT_FOUND))

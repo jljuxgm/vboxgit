@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 21188 2009-07-03 09:57:07Z vboxsync $ */
+/* $Id: DevVGA.cpp 21227 2009-07-05 19:50:18Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -130,7 +130,7 @@
 #include <iprt/time.h>
 #include <iprt/string.h>
 
-#include <VBox/VBoxGuest.h>
+#include <VBox/VMMDev.h>
 #include <VBox/VBoxVideo.h>
 #include <VBox/bioslogo.h>
 

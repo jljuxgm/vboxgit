@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 21225 2009-07-05 15:20:41Z vboxsync $ */
+/* $Id: vboxhgcm.c 21227 2009-07-05 19:50:18Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -40,7 +40,11 @@
 #include "cr_threads.h"
 #include "net_internals.h"
 
-#include <VBox/VBoxGuest.h>
+#if 1 /** @todo Try use the Vbgl interface instead of talking directly to the driver? */
+# include <VBox/VBoxGuest.h>
+#else
+# include <VBox/VBoxGuestLib.h>
+#endif
 #include <VBox/HostServices/VBoxCrOpenGLSvc.h>
 
 typedef struct {
@@ -146,7 +150,7 @@ static bool _crVBoxHGCMWriteBytes(CRConnection *conn, const void *buf, uint32_t 
  * @param   pvData      Data pointer
  * @param   cbData      Data size
  */
-/*@todo use vbglR3DoIOCtl here instead */
+/** @todo use vbglR3DoIOCtl here instead */
 static int crVBoxHGCMCall(void *pvData, unsigned cbData)
 {
 #ifdef IN_GUEST

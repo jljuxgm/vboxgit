@@ -1,4 +1,4 @@
-/** $Id: VBoxSFInit.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: VBoxSFInit.cpp 21227 2009-07-05 19:50:18Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, Initialization.
  */
@@ -35,7 +35,6 @@
 #define LOG_GROUP LOG_GROUP_DEFAULT
 #include "VBoxSFInternal.h"
 
-#include <VBox/VBoxGuest.h>
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>

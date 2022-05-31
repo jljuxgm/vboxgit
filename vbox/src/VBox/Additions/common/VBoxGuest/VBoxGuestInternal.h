@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 21170 2009-07-02 14:45:00Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 21227 2009-07-05 19:50:18Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -25,6 +25,7 @@
 #include <iprt/types.h>
 #include <iprt/semaphore.h>
 #include <iprt/spinlock.h>
+#include <VBox/VMMDev.h>
 #include <VBox/VBoxGuest.h>
 #include <VBox/VBoxGuestLib.h>
 
