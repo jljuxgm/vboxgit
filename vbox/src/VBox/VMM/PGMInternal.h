@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 19330 2009-05-04 15:19:23Z vboxsync $ */
+/* $Id: PGMInternal.h 19488 2009-05-07 13:54:51Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2938,7 +2938,6 @@ void            pgmPoolTrackPhysExtDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPoo
 void            pgmPoolMonitorChainChanging(PVMCPU pVCpu, PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GCPhysFault, CTXTYPE(RTGCPTR, RTHCPTR, RTGCPTR) pvAddress, PDISCPUSTATE pCpu);
 int             pgmPoolMonitorChainFlush(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
 void            pgmPoolMonitorModifiedInsert(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
-void            pgmPoolMonitorModifiedClearAll(PVM pVM);
 #endif
 
 int             pgmR3ExitShadowModeBeforePoolFlush(PVM pVM, PVMCPU pVCpu);
