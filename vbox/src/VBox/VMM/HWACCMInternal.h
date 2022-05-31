@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 23366 2009-09-28 12:31:50Z vboxsync $ */
+/* $Id: HWACCMInternal.h 23371 2009-09-28 12:43:58Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -565,6 +565,7 @@ typedef struct HWACCMCPU
 
     /** World switch exit counter. */ 
     volatile uint32_t           cWorldSwitchExit;
+    uint32_t                    u32Alignment;
 
     struct
     {
