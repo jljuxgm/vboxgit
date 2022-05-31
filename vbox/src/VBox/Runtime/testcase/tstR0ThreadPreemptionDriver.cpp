@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemptionDriver.cpp 19936 2009-05-23 01:58:13Z vboxsync $ */
+/* $Id: tstR0ThreadPreemptionDriver.cpp 19940 2009-05-23 14:17:33Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -143,9 +143,11 @@ int main(int argc, char **argv)
                                              TSTR0THREADPREMEPTION_BASIC, 0, &Req.Hdr), VINF_SUCCESS);
     if (RT_FAILURE(rc))
         return RTTestSummaryAndDestroy(hTest);
-    RTTESTI_CHECK_MSG(Req.szMsg[0] == '\0', ("%s", Req.szMsg));
     if (Req.szMsg[0] == '!')
+    {    
+        RTTestIFailed("%s", &Req.szMsg[1]);
         return RTTestSummaryAndDestroy(hTest);
+    }
     if (Req.szMsg[0])
         RTTestIPrintf(RTTESTLVL_ALWAYS, "%s", Req.szMsg);
 
@@ -163,8 +165,9 @@ int main(int argc, char **argv)
         if (    strcmp(Req.szMsg, "cLoops=0\n")
             ||  i >= 64)
         {
-            RTTESTI_CHECK_MSG(Req.szMsg[0] != '!', ("%s", Req.szMsg));
-            if (Req.szMsg[0])
+            if (Req.szMsg[0] == '!')
+                RTTestIFailed("%s", &Req.szMsg[1]);
+            else if (Req.szMsg[0])
                 RTTestIPrintf(RTTESTLVL_ALWAYS, "%s", Req.szMsg);
             break;
         }
@@ -181,11 +184,10 @@ int main(int argc, char **argv)
     Req.szMsg[0] = '\0';
     RTTESTI_CHECK_RC(rc = SUPR3CallR0Service("tstR0ThreadPreemption", sizeof("tstR0ThreadPreemption") - 1,
                                              TSTR0THREADPREMEPTION_NESTED, 0, &Req.Hdr), VINF_SUCCESS);
-    RTTESTI_CHECK_MSG(Req.szMsg[0] != '!', ("%s", Req.szMsg));
-    if (Req.szMsg[0])
+    if (Req.szMsg[0] == '!')
+        RTTestIFailed("%s", &Req.szMsg[1]);
+    else if (Req.szMsg[0])
         RTTestIPrintf(RTTESTLVL_ALWAYS, "%s", Req.szMsg);
-
-
 
     /*
      * Done.
@@ -193,3 +195,4 @@ int main(int argc, char **argv)
     return RTTestSummaryAndDestroy(hTest);
 #endif
 }
+
