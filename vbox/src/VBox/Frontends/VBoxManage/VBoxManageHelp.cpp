@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 21013 2009-06-29 07:09:04Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 21032 2009-06-29 15:27:38Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -379,7 +379,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--format VDI|VMDK|VHD|RAW|<other>]\n"
                  "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
                  "                            [--type normal|writethrough|immutable]\n"
-                 "                            [--remember]\n"
+                 "                            [--remember] [--existing]\n"
                  "\n");
     }
 
