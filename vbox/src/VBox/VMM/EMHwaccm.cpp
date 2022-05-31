@@ -1,4 +1,4 @@
-/* $Id: EMHwaccm.cpp 21241 2009-07-06 08:41:39Z vboxsync $ */
+/* $Id: EMHwaccm.cpp 22476 2009-08-26 15:24:06Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -301,7 +301,7 @@ static int emR3ExecuteIOInstruction(PVM pVM, PVMCPU pVCpu)
 
     /* Try to restart the io instruction that was refused in ring-0. */
     rc = HWACCMR3RestartPendingIOInstr(pVM, pVCpu, pCtx);
-    if (rc == VINF_SUCCESS)
+    if (rc == VINF_SUCCESS || rc == VINF_EM_OFF)
     {
         STAM_COUNTER_INC(&pVCpu->em.s.CTX_SUFF(pStats)->StatIoRestarted);
         STAM_PROFILE_STOP(&pVCpu->em.s.StatIOEmu, a);
