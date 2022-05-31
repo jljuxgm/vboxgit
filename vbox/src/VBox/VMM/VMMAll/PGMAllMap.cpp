@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 20281 2009-06-04 13:20:55Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 20865 2009-06-23 19:27:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -610,11 +610,13 @@ VMMDECL(void) PGMMapCheck(PVM pVM)
     /*
      * Iterate mappings.
      */
+    pgmLock(pVM);                           /* to avoid assertions */
     for (PPGMMAPPING pCur = pVM->pgm.s.CTX_SUFF(pMappings); pCur; pCur = pCur->CTX_SUFF(pNext))
     {
         unsigned iPDE = pCur->GCPtr >> X86_PD_SHIFT;
         pgmMapCheckShadowPDEs(pVM, pVCpu, pVCpu->pgm.s.CTX_SUFF(pShwPageCR3), pCur, iPDE);
     }
+    pgmUnlock(pVM);
 }
 #endif /* defined(VBOX_STRICT) && !defined(IN_RING0) */
 
