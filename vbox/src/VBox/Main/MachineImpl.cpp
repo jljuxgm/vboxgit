@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 22300 2009-08-17 15:11:30Z vboxsync $ */
+/* $Id: MachineImpl.cpp 22304 2009-08-17 15:55:30Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2704,7 +2704,10 @@ STDMETHODIMP Machine::SetExtraData(IN_BSTR aKey, IN_BSTR aValue)
             CheckComRCReturnRC (rc);
         }
 
-        mData->m_pMachineConfigFile->mapExtraDataItems[strKey] = strValue;
+        if (strValue.isEmpty())
+            mData->m_pMachineConfigFile->mapExtraDataItems.erase(strKey);
+        else
+            mData->m_pMachineConfigFile->mapExtraDataItems[strKey] = strValue;
                 // creates a new key if needed
 
         /* save settings on success */
