@@ -1,4 +1,4 @@
-/* $Id: icd_drv.c 22417 2009-08-24 14:44:39Z vboxsync $ */
+/* $Id: icd_drv.c 23274 2009-09-24 09:31:32Z vboxsync $ */
 
 /** @file
  * VBox OpenGL windows ICD driver functions
@@ -260,7 +260,7 @@ int APIENTRY DrvDescribePixelFormat(HDC hdc, int iPixelFormat, UINT nBytes, LPPI
 
 BOOL APIENTRY DrvDeleteContext(HGLRC hglrc)
 {
-    crDebug( "DrvDeleteContext(0x%x) called", hglrc );
+    /*crDebug( "DrvDeleteContext(0x%x) called", hglrc );*/
     stubDestroyContext( (unsigned long) hglrc );
     return 1;
 }
