@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 22562 2009-08-28 17:58:24Z vboxsync $ */
+/* $Id: VBoxManage.h 22686 2009-09-01 22:09:14Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -107,7 +107,7 @@ struct HandlerArg
     int argc;
     char **argv;
 
-#ifdef USE_XPCOM_QUEUE
+#ifdef VBOX_WITH_XPCOM
     nsCOMPtr<nsIEventQueue> eventQ;
 #endif
 #ifndef VBOX_ONLY_DOCS
