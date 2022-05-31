@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 20430 2009-06-09 11:47:03Z vboxsync $ */
+/* $Id: REMInternal.h 20746 2009-06-21 19:53:12Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -108,7 +108,7 @@ typedef struct REMHANDLERNOTIFICATION
         uint64_t                padding[5];
     } u;
     uint32_t                    idxSelf;
-    uint32_t                    idxNext;
+    uint32_t volatile           idxNext;
 } REMHANDLERNOTIFICATION, *PREMHANDLERNOTIFICATION;
 
 /**
