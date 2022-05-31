@@ -1,4 +1,4 @@
-# $Id: Config.kmk 21531 2009-07-13 13:18:25Z vboxsync $
+# $Id: Config.kmk 21578 2009-07-14 13:07:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -250,6 +250,8 @@ VBOX_WITH_DOCS = 1
 #VBOX_WITH_DOCS_FROM_BUILD_SERVER = 1
 # Include documentation in the package
 VBOX_WITH_DOCS_PACKING = 1
+# Include CHM when building docs (unset in LocalConfig.kmk to suppress CHM)
+VBOX_WITH_DOCS_CHM = 1
 # Don't bother with documentation, overrides VBOX_WITH_DOCS.
 # This is not used by makefiles, only Config.kmk, see below.
 #VBOX_WITHOUT_DOCS = 1
@@ -3769,7 +3771,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 21531 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 21578 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
