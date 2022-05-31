@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 21376 2009-07-07 22:51:24Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 21450 2009-07-09 16:33:54Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1477,7 +1477,8 @@ bool VBoxGuestCommonISR(PVBOXGUESTDEVEXT pDevExt)
              */
             fEvents |= pDevExt->f32PendingEvents;
             for (pWait = pDevExt->WaitList.pHead; pWait; pWait = pWait->pNext)
-                if (!pWait->fResEvents)
+                if (    (pWait->fReqEvents & fEvents)
+                    &&  !pWait->fResEvents)
                 {
                     pWait->fResEvents = pWait->fReqEvents & fEvents;
                     fEvents &= ~pWait->fResEvents;
