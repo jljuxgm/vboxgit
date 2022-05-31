@@ -1,4 +1,4 @@
-/* $Id: DhcpServerRunner.h 17995 2009-03-17 07:51:22Z vboxsync $ */
+/* $Id: DHCPServerRunner.h 18023 2009-03-17 13:48:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -293,11 +293,11 @@ protected:
 
 };
 
-class DhcpServerRunner
+class DHCPServerRunner
 {
 public:
-    DhcpServerRunner() : mProcess (NIL_RTPROCESS) {}
-    ~DhcpServerRunner() { stop(); /* don't leave abandoned servers */}
+    DHCPServerRunner() : mProcess (NIL_RTPROCESS) {}
+    ~DHCPServerRunner() { stop(); /* don't leave abandoned servers */}
 
     int setOption(DHCPCFG opt, const char *val)
     {

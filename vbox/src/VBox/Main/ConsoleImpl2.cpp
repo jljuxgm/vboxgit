@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 18016 2009-03-17 12:19:31Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 18023 2009-03-17 13:48:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1854,8 +1854,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
         if(!networkName.isNull())
         {
-            ComPtr<IDhcpServer> dhcpServer;
-            hrc = virtualBox->FindDhcpServerByName(networkName.mutableRaw(), dhcpServer.asOutParam());
+            ComPtr<IDHCPServer> dhcpServer;
+            hrc = virtualBox->FindDHCPServerByNetworkName(networkName.mutableRaw(), dhcpServer.asOutParam());
             if(SUCCEEDED(hrc))
             {
                 /* there is a DHCP server available for this network */

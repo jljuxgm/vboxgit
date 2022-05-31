@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 17995 2009-03-17 07:51:22Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 18023 2009-03-17 13:48:59Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -44,7 +44,7 @@
 # include "win/DrvIntNet-win.h"
 #endif
 
-#include "DhcpServerRunner.h"
+#include "DHCPServerRunner.h"
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
@@ -1101,7 +1101,7 @@ static DECLCALLBACK(int) drvIntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHa
                                     N_("Configuration error: Failed to get the \"DhcpMacAddress\" value"));
 
 
-            DhcpServerRunner dhcp;
+            DHCPServerRunner dhcp;
             dhcp.setOption(DHCPCFG_NETNAME, OpenReq.szNetwork);
             dhcp.setOption(DHCPCFG_TRUNKNAME, OpenReq.szTrunk);
             switch(OpenReq.enmTrunkType)
