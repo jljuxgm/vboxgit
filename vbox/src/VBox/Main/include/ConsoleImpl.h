@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 23599 2009-10-07 17:24:18Z vboxsync $ */
+/* $Id: ConsoleImpl.h 23606 2009-10-07 18:50:20Z vboxsync $ */
 
 /** @file
  *
@@ -510,6 +510,11 @@ private:
     void updateGuestPropertiesVRDPLogon (uint32_t u32ClientId, const char *pszUser, const char *pszDomain);
     void updateGuestPropertiesVRDPDisconnect (uint32_t u32ClientId);
 #endif
+
+    /** @name Live migration support
+     * @{ */
+    int migrationLoadRemote(PVM pVM, IMachine *pMachine);
+    /** @} */
 
     bool mSavedStateDataLoaded : 1;
 
