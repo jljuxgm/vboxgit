@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 22757 2009-09-03 17:22:53Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 22967 2009-09-11 22:41:38Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -220,6 +220,7 @@ static int pdmacFileAioMgrWaitForBlockingEvent(PPDMACEPFILEMGR pAioMgr, PDMACEPF
     int rc = VINF_SUCCESS;
 
     ASMAtomicWriteU32((volatile uint32_t *)&pAioMgr->enmBlockingEvent, enmEvent);
+    Assert(!pAioMgr->fBlockingEventPending);
     ASMAtomicXchgBool(&pAioMgr->fBlockingEventPending, true);
 
     /* Wakeup the async I/O manager */
