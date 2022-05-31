@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 20215 2009-06-03 08:17:06Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 20501 2009-06-12 11:31:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2278,7 +2278,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             }
 # endif
 #endif /* RT_OS_LINUX */
-#if defined (RT_OS_LINUX) || defined (RT_OS_FREEBSD)
+#if defined (RT_OS_LINUX) || defined (RT_OS_FREEBSD) || defined(VBOX_WITH_SOLARIS_OSS)
             case AudioDriverType_OSS:
             {
                 rc = CFGMR3InsertString(pCfg, "AudioDriver", "oss");                RC_CHECK();

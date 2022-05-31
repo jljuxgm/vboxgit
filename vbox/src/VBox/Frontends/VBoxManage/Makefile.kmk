@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 20318 2009-06-05 12:20:59Z vboxsync $
+# $Id: Makefile.kmk 20501 2009-06-12 11:31:37Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -38,6 +38,7 @@ else # !VBOX_ONLY_DOCS
  	$(if $(VBOX_WITH_VRDP), VBOX_WITH_VRDP) \
  	$(if $(VBOX_WITH_HEADLESS), VBOX_WITH_HEADLESS) \
  	$(if $(VBOX_WITH_ALSA), VBOX_WITH_ALSA) \
+ 	$(if $(VBOX_WITH_SOLARIS_OSS), VBOX_WITH_SOLARIS_OSS) \
  	$(if $(VBOX_WITH_PULSE),VBOX_WITH_PULSE) \
  	$(if $(VBOX_WITH_E1000),VBOX_WITH_E1000) \
  	$(if $(VBOX_WITH_AHCI), VBOX_WITH_AHCI) \

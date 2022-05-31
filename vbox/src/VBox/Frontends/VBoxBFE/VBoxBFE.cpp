@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 19817 2009-05-19 12:16:28Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 20501 2009-06-12 11:31:37Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -1949,6 +1949,12 @@ static DECLCALLBACK(int) vboxbfeConfigConstructor(PVM pVM, void *pvUser)
         rc = CFGMR3InsertString(pCfg, "AudioDriver",      "coreaudio");             UPDATE_RC();
 #elif defined(RT_OS_LINUX)
         rc = CFGMR3InsertString(pCfg, "AudioDriver",      "oss");                   UPDATE_RC();
+#elif defined(RT_OS_SOLARIS)
+# ifdef VBOX_WITH_SOLARIS_OSS
+        rc = CFGMR3InsertString(pCfg, "AudioDriver",      "oss");                   UPDATE_RC();
+# else
+        rc = CFGMR3InsertString(pCfg, "AudioDriver",      "solaudio");              UPDATE_RC();
+# endif
 #elif defined(RT_OS_L4)
         rc = CFGMR3InsertString(pCfg, "AudioDriver",      "oss");                   UPDATE_RC();
 #else /* portme */

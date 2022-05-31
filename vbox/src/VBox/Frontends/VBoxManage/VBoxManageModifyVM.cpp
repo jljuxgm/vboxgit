@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 20474 2009-06-11 10:20:05Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 20501 2009-06-12 11:31:37Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1440,6 +1440,14 @@ int handleModifyVM(HandlerArg *a)
                     CHECK_ERROR(audioAdapter, COMSETTER(AudioDriver)(AudioDriverType_SolAudio));
                     CHECK_ERROR(audioAdapter, COMSETTER(Enabled)(true));
                 }
+
+# ifdef VBOX_WITH_SOLARIS_OSS
+                else if (!strcmp(audio, "oss"))
+                {
+                    CHECK_ERROR(audioAdapter, COMSETTER(AudioDriver)(AudioDriverType_OSS));
+                    CHECK_ERROR(audioAdapter, COMSETTER(Enabled)(true));
+                }
+# endif
 
 #endif /* !RT_OS_SOLARIS */
 #ifdef RT_OS_DARWIN

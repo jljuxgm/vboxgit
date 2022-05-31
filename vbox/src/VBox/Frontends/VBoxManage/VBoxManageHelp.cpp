@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 20313 2009-06-05 11:00:32Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 20501 2009-06-12 11:31:37Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -198,7 +198,11 @@ void printUsage(USAGECATEGORY u64Cmd)
         }
         if (fSolaris)
         {
-            RTPrintf(                        "|solaudio");
+            RTPrintf(                        "|solaudio"
+#ifdef VBOX_WITH_SOLARIS_OSS
+                                             "|oss"
+#endif
+                                              );
         }
         if (fLinux)
         {
