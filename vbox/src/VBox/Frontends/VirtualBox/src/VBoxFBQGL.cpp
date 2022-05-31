@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQGL.cpp 22822 2009-09-07 19:33:48Z vboxsync $ */
+/* $Id: VBoxFBQGL.cpp 22826 2009-09-07 21:04:49Z vboxsync $ */
 /** @file
  * VBoxFBQGL Opengl-based FrameBuffer implementation
  */
@@ -119,6 +119,7 @@ VBoxGLWidget* VBoxQGLFrameBuffer::vboxWidget()
 
 void VBoxQGLFrameBuffer::paintEvent (QPaintEvent *pe)
 {
+    Q_UNUSED(pe);
     VBoxGLWidget * pw = vboxWidget();
     pw->makeCurrent();
 
@@ -144,6 +145,7 @@ void VBoxQGLFrameBuffer::resizeEvent (VBoxResizeEvent *re)
 /* processing the VHWA command, called from the GUI thread */
 void VBoxQGLFrameBuffer::doProcessVHWACommand(QEvent * pEvent)
 {
+    Q_UNUSED(pEvent);
     vboxWidget()->vboxProcessVHWACommands(&mCmdPipe);
 }
 
