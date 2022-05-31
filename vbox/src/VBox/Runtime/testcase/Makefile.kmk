@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 21582 2009-07-14 14:50:24Z vboxsync $
+# $Id: Makefile.kmk 23359 2009-09-28 09:28:57Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -60,6 +60,7 @@ PROGRAMS += \
 	tstEnv \
 	tstErrUnique \
 	tstFile \
+	tstFileAio \
 	tstFileAppend-1 \
 	tstFileLock \
 	tstFork \
@@ -132,10 +133,6 @@ SYSMODS += \
 if1of ($(VBOX_LDR_FMT)), lx pe)
 LIBRARIES += \
 	tstLdr-4Imp
-endif
-ifdef RT_ASYNC_IO_CODE
-PROGRAMS += \
-	tstFileAio
 endif
 
 
