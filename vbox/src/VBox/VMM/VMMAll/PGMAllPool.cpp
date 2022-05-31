@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 22473 2009-08-26 14:51:50Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 22474 2009-08-26 14:55:40Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -51,9 +51,6 @@ static void pgmPoolFlushAllInt(PPGMPOOL pPool);
 DECLINLINE(unsigned) pgmPoolTrackGetShadowEntrySize(PGMPOOLKIND enmKind);
 DECLINLINE(unsigned) pgmPoolTrackGetGuestEntrySize(PGMPOOLKIND enmKind);
 static void pgmPoolTrackDeref(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
-#endif
-#ifdef PGMPOOL_WITH_GCPHYS_TRACKING
-static void pgmPoolTracDerefGCPhysHint(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTHCPHYS HCPhys, RTGCPHYS GCPhysHint);
 #endif
 #ifdef PGMPOOL_WITH_CACHE
 static int pgmPoolTrackAddUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, uint16_t iUser, uint32_t iUserTable);
@@ -3717,7 +3714,7 @@ Log2(("pgmPoolTracDerefGCPhys %RHp vs %RHp\n", HCPhysPage, HCPhys));
  * @param   HCPhys      The host physical address corresponding to the guest page.
  * @param   GCPhysHint  The guest physical address which may corresponding to HCPhys.
  */
-static void pgmPoolTracDerefGCPhysHint(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTHCPHYS HCPhys, RTGCPHYS GCPhysHint)
+void pgmPoolTracDerefGCPhysHint(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTHCPHYS HCPhys, RTGCPHYS GCPhysHint)
 {
     Log4(("pgmPoolTracDerefGCPhysHint %RHp %RGp\n", HCPhys, GCPhysHint));
 
