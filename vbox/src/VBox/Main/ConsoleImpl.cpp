@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 19242 2009-04-28 14:10:45Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 19269 2009-04-29 19:53:46Z vboxsync $ */
 
 /** @file
  *
@@ -4270,11 +4270,14 @@ HRESULT Console::consoleInitReleaseLog (const ComPtr <IMachine> aMachine)
         if (RT_SUCCESS(vrc) || vrc == VERR_BUFFER_OVERFLOW)
             RTLogRelLogger(loggerRelease, 0, ~0U, "OS Service Pack: %s\n", szTmp);
         /* the package type is interesting for Linux distributions */
-        RTLogRelLogger    (loggerRelease, 0, ~0U, "Package type: %s"
+        RTLogRelLogger    (loggerRelease, 0, ~0U, 
+                          "Process ID: %u\n"
+                          "Package type: %s"
 #ifdef VBOX_OSE
                        " (OSE)"
 #endif
                        "\n",
+                       RTProcSelf(),
                        VBOX_PACKAGE_STRING);
 
         /* register this logger as the release logger */
