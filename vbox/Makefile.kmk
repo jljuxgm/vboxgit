@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22383 2009-08-21 12:39:36Z vboxsync $
+# $Id: Makefile.kmk 22386 2009-08-21 13:15:23Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -149,11 +149,6 @@ ifeq ($(KBUILD_TARGET).$(VBOX_WITHOUT_COMPILER_REDIST),win.)
 	$(DLL_TOOL_VCC70_MSVCRT)=>testcase/msvcrt.dll
   endif
  endif
-endif
-
-ifdef VBOX_WITH_VIDEOHWACCEL
-# QGL framebuffer is required
- VBOX_GUI_USE_QGL=1
 endif
 
 ifdef VBOX_WITH_QT4_SUN
