@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18395 2009-03-27 14:05:37Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18400 2009-03-27 14:24:11Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1613,12 +1613,12 @@ STDMETHODIMP Appliance::Interpret()
                                                   pController->ulIndex,
                                                   hd.ulAddressOnParent);
                         ULONG ulSize = 0;
-                        if (di.iPopulatedSize != -1)
+                        if (di.iCapacity != -1)
+                            ulSize = (ULONG)(di.iCapacity / _1M);
+                        else if (di.iPopulatedSize != -1)
                             ulSize = (ULONG)(di.iPopulatedSize / _1M);
                         else if (di.iSize != -1)
                             ulSize = (ULONG)(di.iSize / _1M);
-                        else if (di.iCapacity != -1)
-                            ulSize = (ULONG)(di.iCapacity / _1M);
                         if (ulSize == 0)
                             ulSize = 10000;         // assume 10 GB, this is for the progress bar only anyway
                         pNewDesc->addEntry(VirtualSystemDescriptionType_HardDiskImage,
