@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: EMAll.cpp 19611 2009-05-12 12:23:08Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -84,11 +84,25 @@ DECLINLINE(int) emInterpretInstructionCPU(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pD
  * Get the current execution manager status.
  *
  * @returns Current status.
+ * @param   pVCpu         The VMCPU to operate on.
  */
 VMMDECL(EMSTATE) EMGetState(PVMCPU pVCpu)
 {
     return pVCpu->em.s.enmState;
 }
+
+/**
+ * Sets the current execution manager status. (use only when you know what you're doing!)
+ *
+ * @param   pVCpu         The VMCPU to operate on.
+ */
+VMMDECL(void)    EMSetState(PVMCPU pVCpu, EMSTATE enmNewState)
+{
+    /* Only allowed combination: */
+    Assert(pVCpu->em.s.enmState == EMSTATE_WAIT_SIPI && enmNewState == EMSTATE_HALTED);
+    pVCpu->em.s.enmState = enmNewState;
+}
+
 
 #ifndef IN_RC
 
