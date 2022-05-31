@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 22938 2009-09-10 23:51:06Z vboxsync $ */
+/* $Id: DevAPIC.cpp 23900 2009-10-20 14:21:52Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -2596,12 +2596,12 @@ static DECLCALLBACK(int) apicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     PDMDevHlpGetCpuId(pDevIns, 0, &u32Eax, &u32Ebx, &u32Ecx, &u32Edx);
     if (u32Eax >= 1) {
         if (   fIOAPIC                       /* If IOAPIC is enabled, enable Local APIC in any case */
-               || (   u32Ebx == X86_CPUID_VENDOR_INTEL_EBX
-                      && u32Ecx == X86_CPUID_VENDOR_INTEL_ECX
-                      && u32Edx == X86_CPUID_VENDOR_INTEL_EDX /* GenuineIntel */)
-               || (   u32Ebx == X86_CPUID_VENDOR_AMD_EBX
-                      && u32Ecx == X86_CPUID_VENDOR_AMD_ECX
-                      && u32Edx == X86_CPUID_VENDOR_AMD_EDX   /* AuthenticAMD */)) {
+            || (   u32Ebx == X86_CPUID_VENDOR_INTEL_EBX
+                && u32Ecx == X86_CPUID_VENDOR_INTEL_ECX
+                && u32Edx == X86_CPUID_VENDOR_INTEL_EDX /* GenuineIntel */)
+            || (   u32Ebx == X86_CPUID_VENDOR_AMD_EBX
+                && u32Ecx == X86_CPUID_VENDOR_AMD_ECX
+                && u32Edx == X86_CPUID_VENDOR_AMD_EDX   /* AuthenticAMD */)) {
             LogRel(("Activating Local APIC\n"));
             pThis->pApicHlpR3->pfnChangeFeature(pDevIns, pThis->enmVersion);
         }
