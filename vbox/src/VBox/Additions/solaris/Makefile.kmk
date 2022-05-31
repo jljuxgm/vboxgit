@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 17698 2009-03-11 15:02:54Z vboxsync $
+# $Id: Makefile.kmk 18085 2009-03-19 10:32:58Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -28,6 +28,7 @@ endif
 
 ifeq ($(KBUILD_HOST),solaris)
  include $(PATH_SUB_CURRENT)/SharedFolders/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/DRM/Makefile.kmk
 endif
 
 PKGFILENAME           := VBoxSolarisAdditions.pkg
