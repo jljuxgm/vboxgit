@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 21115 2009-07-01 12:37:04Z vboxsync $ */
+/* $Id: PGMAllBth.h 21116 2009-07-01 12:40:43Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -811,7 +811,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
                                 STAM_COUNTER_INC(&pVCpu->pgm.s.StatRZTrap0eWPEmulToR3);
                             return rc;
                         }
-                        AssertMsgFailed(("Unexpected r/w page %RGv flag=%x rc=%Rrc\n", pvFault, (uint32_t)fPageGst, rc));
+                        AssertMsg(RT_SUCCESS(rc), ("Unexpected r/w page %RGv flag=%x rc=%Rrc\n", pvFault, (uint32_t)fPageGst, rc));
                     }
 
                     /// @todo count the above case; else
