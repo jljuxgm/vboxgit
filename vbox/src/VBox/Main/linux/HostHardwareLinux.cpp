@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 23385 2009-09-28 14:19:08Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 23386 2009-09-28 14:27:00Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1314,7 +1314,7 @@ private:
             return;
         RTFILE file;
         int rc = RTFileOpen(&file, mszNode, RTFILE_O_READ);
-        /** @note the next line can produce a warning, as the ioctl request
+        /** @todo The next line can produce a warning, as the ioctl request
          * field is defined as signed, but the Linux ioctl definition macros
          * produce unsigned constants. */
         rc = RTFileIoCtl(file, FDGETDRVTYP, szName, 0, &rcIoCtl);
