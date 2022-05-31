@@ -1,0 +1,343 @@
+; $Id: VMMR0JmpA-amd64.asm 20541 2009-06-13 21:31:22Z vboxsync $
+;; @file
+; VMM - R0 SetJmp / LongJmp routines for AMD64.
+;
+
+;
+; Copyright (C) 2006-2009 Sun Microsystems, Inc.
+;
+; This file is part of VirtualBox Open Source Edition (OSE), as
+; available from http://www.virtualbox.org. This file is free software;
+; you can redistribute it and/or modify it under the terms of the GNU
+; General Public License (GPL) as published by the Free Software
+; Foundation, in version 2 as it comes in the "COPYING" file of the
+; VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+; hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+;
+; Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
+; Clara, CA 95054 USA or visit http://www.sun.com if you need
+; additional information or have any questions.
+;
+
+;*******************************************************************************
+;* Header Files                                                                *
+;*******************************************************************************
+%include "VBox/asmdefs.mac"
+%include "VMMInternal.mac"
+%include "iprt/err.mac"
+
+%ifdef RT_OS_DARWIN
+ %define VMM_R0_SWITCH_STACK
+%endif
+
+
+BEGINCODE
+
+
+;;
+; The setjmp variant used for calling Ring-3.
+;
+; This differs from the normal setjmp in that it will resume VMMR0CallHost if we're
+; in the middle of a ring-3 call. Another differences is the function pointer and
+; argument. This has to do with resuming code and the stack frame of the caller.
+;
+; @returns  VINF_SUCCESS on success or whatever is passed to vmmR0CallHostLongJmp.
+; @param    pJmpBuf msc:rcx gcc:rdi x86:[esp+0x04]     Our jmp_buf.
+; @param    pfn     msc:rdx gcc:rsi x86:[esp+0x08]     The function to be called when not resuming.
+; @param    pvUser1 msc:r8  gcc:rdx x86:[esp+0x0c]     The argument of that function.
+; @param    pvUser2 msc:r9  gcc:rcx x86:[esp+0x10]     The argument of that function.
+;
+BEGINPROC vmmR0CallHostSetJmp
+GLOBALNAME vmmR0CallHostSetJmpEx
+    ;
+    ; Save the registers.
+    ;
+    push    rbp
+    mov     rbp, rsp
+ %ifdef ASM_CALL64_MSC
+    sub     rsp, 30h
+    mov     r11, rdx                    ; pfn
+    mov     rdx, rcx                    ; pJmpBuf;
+ %else
+    sub     rsp, 10h
+    mov     r8, rdx                     ; pvUser1 (save it like MSC)
+    mov     r9, rcx                     ; pvUser2 (save it like MSC)
+    mov     r11, rsi                    ; pfn
+    mov     rdx, rdi                    ; pJmpBuf
+ %endif
+    mov     [rdx + VMMR0JMPBUF.rbx], rbx
+ %ifdef ASM_CALL64_MSC
+    mov     [rdx + VMMR0JMPBUF.rsi], rsi
+    mov     [rdx + VMMR0JMPBUF.rdi], rdi
+ %endif
+    mov     r10, [rbp]
+    mov     [rdx + VMMR0JMPBUF.rbp], r10
+    mov     [rdx + VMMR0JMPBUF.r12], r12
+    mov     [rdx + VMMR0JMPBUF.r13], r13
+    mov     [rdx + VMMR0JMPBUF.r14], r14
+    mov     [rdx + VMMR0JMPBUF.r15], r15
+    mov     rax, [rbp + 8]
+    mov     [rdx + VMMR0JMPBUF.rip], rax
+    lea     r10, [rbp + 10h]            ; (used in resume)
+    mov     [rdx + VMMR0JMPBUF.rsp], r10
+
+    ;
+    ; If we're not in a ring-3 call, call pfn and return.
+    ;
+    test    byte [rdx + VMMR0JMPBUF.fInRing3Call], 1
+    jnz     .resume
+
+ %ifdef VMM_R0_SWITCH_STACK
+    mov     r15, [rdx + VMMR0JMPBUF.pvSavedStack]
+    test    r15, r15
+    jz      .entry_error
+  %ifdef VBOX_STRICT
+    cmp     dword [r15], 0h
+    jne     .entry_error
+    mov     rdi, r15
+    mov     rcx, 1024
+    mov     rax, 00eeeeeeeffeeeeeeeh
+    repne stosq
+    mov     [rdi - 10h], rbx
+  %endif
+    lea     r15, [r15 + 8192 - 40h]
+    mov     rsp, r15                    ; Switch stack!
+ %endif ; VMM_R0_SWITCH_STACK
+
+    mov     r12, rdx                    ; Save pJmpBuf.
+ %ifdef ASM_CALL64_MSC
+    mov     rcx, r8                     ; pvUser -> arg0
+    mov     rdx, r9
+ %else
+    mov     rdi, r8                     ; pvUser -> arg0
+    mov     rsi, r9
+ %endif
+    call    r11
+    mov     rdx, r12                    ; Restore pJmpBuf
+
+ %ifdef VMM_R0_SWITCH_STACK
+  %ifdef VBOX_STRICT
+    mov     r15, [rdx + VMMR0JMPBUF.pvSavedStack]
+    mov     dword [r15], 0h             ; Reset the marker
+  %endif
+ %endif
+
+    ;
+    ; Return like in the long jump but clear eip, no short cuts here.
+    ;
+.proper_return:
+    mov     rbx, [rdx + VMMR0JMPBUF.rbx]
+ %ifdef ASM_CALL64_MSC
+    mov     rsi, [rdx + VMMR0JMPBUF.rsi]
+    mov     rdi, [rdx + VMMR0JMPBUF.rdi]
+ %endif
+    mov     r12, [rdx + VMMR0JMPBUF.r12]
+    mov     r13, [rdx + VMMR0JMPBUF.r13]
+    mov     r14, [rdx + VMMR0JMPBUF.r14]
+    mov     r15, [rdx + VMMR0JMPBUF.r15]
+    mov     rbp, [rdx + VMMR0JMPBUF.rbp]
+    mov     rcx, [rdx + VMMR0JMPBUF.rip]
+    and     qword [rdx + VMMR0JMPBUF.rip], byte 0 ; used for valid check.
+    mov     rsp, [rdx + VMMR0JMPBUF.rsp]
+    jmp     rcx
+
+.entry_error:
+    mov     eax, VERR_INTERNAL_ERROR_2
+    jmp     .proper_return
+
+    ;
+    ; Resume VMMR0CallHost the call.
+    ;
+.resume:
+ %ifdef VMM_R0_SWITCH_STACK
+    ; Switch stack.
+    mov     rsp, [rdx + VMMR0JMPBUF.SpResume]
+ %else  ; !VMM_R0_SWITCH_STACK
+    ; Sanity checks.
+    cmp     r10, [rdx + VMMR0JMPBUF.SpCheck]
+    je      .rspCheck_ok
+.bad:
+    and     qword [rdx + VMMR0JMPBUF.rip], byte 0 ; used for valid check.
+    mov     rbx, [rdx + VMMR0JMPBUF.rbx]
+  %ifdef ASM_CALL64_MSC
+    mov     rsi, [rdx + VMMR0JMPBUF.rsi]
+    mov     rdi, [rdx + VMMR0JMPBUF.rdi]
+  %endif
+    mov     r12, [rdx + VMMR0JMPBUF.r12]
+    mov     r13, [rdx + VMMR0JMPBUF.r13]
+    mov     r14, [rdx + VMMR0JMPBUF.r14]
+    mov     r15, [rdx + VMMR0JMPBUF.r15]
+    mov     eax, VERR_INTERNAL_ERROR_2
+    leave
+    ret
+
+.rspCheck_ok:
+    mov     ecx, [rdx + VMMR0JMPBUF.cbSavedStack]
+    cmp     rcx, 8192
+    ja      .bad
+    test    rcx, 3
+    jnz     .bad
+    mov     rdi, [rdx + VMMR0JMPBUF.rsp]
+    sub     rdi, [rdx + VMMR0JMPBUF.SpResume]
+    cmp     rcx, rdi
+    jne     .bad
+
+    ;
+    ; Restore the stack.
+    ;
+    mov     ecx, [rdx + VMMR0JMPBUF.cbSavedStack]
+    shr     ecx, 3
+    mov     rsi, [rdx + VMMR0JMPBUF.pvSavedStack]
+    mov     rdi, [rdx + VMMR0JMPBUF.SpResume]
+    mov     rsp, rdi
+    rep movsq
+ %endif ; !VMM_R0_SWITCH_STACK
+    mov     byte [rdx + VMMR0JMPBUF.fInRing3Call], 0
+
+    ;
+    ; Continue where we left off.
+    ;
+    popf
+    pop     rbx
+ %ifdef ASM_CALL64_MSC
+    pop     rsi
+    pop     rdi
+ %endif
+    pop     r12
+    pop     r13
+    pop     r14
+    pop     r15
+    pop     rbp
+    xor     eax, eax                    ; VINF_SUCCESS
+    ret
+ENDPROC vmmR0CallHostSetJmp
+
+
+;;
+; Worker for VMMR0CallHost.
+; This will save the stack and registers.
+;
+; @param    pJmpBuf msc:rcx gcc:rdi x86:[ebp+8]     Pointer to the jump buffer.
+; @param    rc      msc:rdx gcc:rsi x86:[ebp+c]     The return code.
+;
+BEGINPROC vmmR0CallHostLongJmp
+    ;
+    ; Save the registers on the stack.
+    ;
+    push    rbp
+    mov     rbp, rsp
+    push    r15
+    push    r14
+    push    r13
+    push    r12
+ %ifdef ASM_CALL64_MSC
+    push    rdi
+    push    rsi
+ %endif
+    push    rbx
+    pushf
+
+    ;
+    ; Normalize the parameters.
+    ;
+ %ifdef ASM_CALL64_MSC
+    mov     eax, edx                    ; rc
+    mov     rdx, rcx                    ; pJmpBuf
+ %else
+    mov     rdx, rdi                    ; pJmpBuf
+    mov     eax, esi                    ; rc
+ %endif
+
+    ;
+    ; Is the jump buffer armed?
+    ;
+    cmp     qword [rdx + VMMR0JMPBUF.rip], byte 0
+    je      .nok
+
+    ;
+    ; Sanity checks.
+    ;
+    mov     rdi, [rdx + VMMR0JMPBUF.pvSavedStack]
+    test    rdi, rdi                    ; darwin may set this to 0.
+    jz      .nok
+    mov     [rdx + VMMR0JMPBUF.SpResume], rsp
+ %ifndef VMM_R0_SWITCH_STACK
+    mov     rsi, rsp
+    mov     rcx, [rdx + VMMR0JMPBUF.rsp]
+    sub     rcx, rsi
+
+    ; two sanity checks on the size.
+    cmp     rcx, 8192                   ; check max size.
+    jnbe    .nok
+
+    ;
+    ; Copy the stack
+    ;
+    test    ecx, 7                      ; check alignment
+    jnz     .nok
+    mov     [rdx + VMMR0JMPBUF.cbSavedStack], ecx
+    shr     ecx, 3
+    rep movsq
+
+ %endif ; !VMM_R0_SWITCH_STACK
+
+    ; Save RSP & RBP to enable stack dumps
+    mov     rcx, rbp
+    mov     [rdx + VMMR0JMPBUF.SavedEbp], rcx
+    sub     rcx, 8
+    mov     [rdx + VMMR0JMPBUF.SavedEsp], rcx
+
+    ; store the last pieces of info.
+    mov     rcx, [rdx + VMMR0JMPBUF.rsp]
+    mov     [rdx + VMMR0JMPBUF.SpCheck], rcx
+    mov     byte [rdx + VMMR0JMPBUF.fInRing3Call], 1
+
+    ;
+    ; Do the long jump.
+    ;
+    mov     rbx, [rdx + VMMR0JMPBUF.rbx]
+ %ifdef ASM_CALL64_MSC
+    mov     rsi, [rdx + VMMR0JMPBUF.rsi]
+    mov     rdi, [rdx + VMMR0JMPBUF.rdi]
+ %endif
+    mov     r12, [rdx + VMMR0JMPBUF.r12]
+    mov     r13, [rdx + VMMR0JMPBUF.r13]
+    mov     r14, [rdx + VMMR0JMPBUF.r14]
+    mov     r15, [rdx + VMMR0JMPBUF.r15]
+    mov     rbp, [rdx + VMMR0JMPBUF.rbp]
+    mov     rcx, [rdx + VMMR0JMPBUF.rip]
+    mov     rsp, [rdx + VMMR0JMPBUF.rsp]
+    jmp     rcx
+
+    ;
+    ; Failure
+    ;
+.nok:
+    mov     eax, VERR_INTERNAL_ERROR_4
+    popf
+    pop     rbx
+ %ifdef ASM_CALL64_MSC
+    pop     rsi
+    pop     rdi
+ %endif
+    pop     r12
+    pop     r13
+    pop     r14
+    pop     r15
+    leave
+    ret
+ENDPROC vmmR0CallHostLongJmp
+
+
+;;
+; Internal R0 logger worker: Logger wrapper.
+;
+; @cproto VMMR0DECL(void) vmmR0LoggerWrapper(const char *pszFormat, ...)
+;
+EXPORTEDNAME vmmR0LoggerWrapper
+    int3
+    int3
+    int3
+    ret
+ENDPROC vmmR0LoggerWrapper
+

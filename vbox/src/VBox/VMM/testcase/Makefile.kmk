@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19490 2009-05-07 15:03:22Z vboxsync $
+# $Id: Makefile.kmk 20541 2009-06-13 21:31:22Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -160,8 +160,11 @@ tstVMMFork_LIBS         = $(LIB_VMM) $(LIB_REM) $(LIB_RUNTIME)
 tstVMMR0CallHost-1_TEMPLATE = VBOXR3EXE
 tstVMMR0CallHost-1_INCS  = $(VBOX_PATH_VMM_SRC)
 tstVMMR0CallHost-1_SOURCES = \
-	tstVMMR0CallHost-1.cpp \
-	$(VBOX_PATH_VMM_SRC)/VMMR0/VMMR0A.asm
+	tstVMMR0CallHost-1.cpp
+tstVMMR0CallHost-1_SOURCES.amd64 = \
+	$(VBOX_PATH_VMM_SRC)/VMMR0/VMMR0JmpA-amd64.asm
+tstVMMR0CallHost-1_SOURCES.x86 = \
+	$(VBOX_PATH_VMM_SRC)/VMMR0/VMMR0JmpA-x86.asm
 tstVMMR0CallHost-1_LIBS  = $(LIB_VMM) $(LIB_REM) $(LIB_RUNTIME)
 
 tstVMREQ_TEMPLATE       = VBOXR3EXE
