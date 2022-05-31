@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 19903 2009-05-22 09:41:32Z vboxsync $ */
+/* $Id: PGMAllShw.h 20068 2009-05-27 11:32:49Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -144,6 +144,8 @@ PGM_SHW_DECL(int, GetPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, uint64_t *pfFlags, P
 
 #else /* PGM_SHW_TYPE != PGM_TYPE_NESTED && PGM_SHW_TYPE != PGM_TYPE_EPT */
     PVM pVM = pVCpu->CTX_SUFF(pVM);
+
+    Assert(PGMIsLockOwner(pVM));
 
     /*
      * Get the PDE.

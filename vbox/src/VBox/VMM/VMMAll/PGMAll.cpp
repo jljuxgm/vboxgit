@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 20008 2009-05-25 18:34:43Z vboxsync $ */
+/* $Id: PGMAll.cpp 20068 2009-05-27 11:32:49Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -789,7 +789,10 @@ VMMDECL(int) PGMInterpretInstruction(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFra
  */
 VMMDECL(int) PGMShwGetPage(PVMCPU pVCpu, RTGCPTR GCPtr, uint64_t *pfFlags, PRTHCPHYS pHCPhys)
 {
-    return PGM_SHW_PFN(GetPage, pVCpu)(pVCpu, GCPtr, pfFlags, pHCPhys);
+    pgmLock(pVCpu->CTX_SUFF(pVM));
+    int rc = PGM_SHW_PFN(GetPage, pVCpu)(pVCpu, GCPtr, pfFlags, pHCPhys);
+    pgmUnlock(pVCpu->CTX_SUFF(pVM));
+    return rc;
 }
 
 
