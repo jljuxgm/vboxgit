@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 20037 2009-05-26 13:25:48Z vboxsync $ */
+/* $Id: DevAPIC.cpp 20039 2009-05-26 13:33:46Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1317,6 +1317,16 @@ static DECLCALLBACK(void) apicTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer)
 {
     APICDeviceInfo *dev = PDMINS_2_DATA(pDevIns, APICDeviceInfo *);
     APICState *s = getLapic(dev);
+    if (s->pTimerR3 != pTimer)
+    {
+        for (uint32_t iCpu = 0; iCpu < dev->cCpus; iCpu++)
+        {
+            s = getLapicById(dev, iCpu);
+            if (s->pTimerR3 == pTimer)
+                break;
+        }
+        Assert(s->pTimerR3 == pTimer);
+    }
 
     APIC_LOCK_VOID(dev, VERR_INTERNAL_ERROR);
 #endif /* VBOX */
