@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 16933 2009-02-18 23:42:57Z vboxsync $ */
+/* $Id: SUPLib.cpp 18169 2009-03-24 10:19:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -322,7 +322,7 @@ SUPR3DECL(int) SUPR3Init(PSUPDRVSESSION *ppSession)
                                 ASMAtomicCmpXchgPtr((void * volatile *)&g_pSUPGlobalInfoPageR0, (void *)GipMapReq.u.Out.pGipR0, NULL);
                             }
                         }
-                        return VINF_SUCCESS;
+                        return rc;
                     }
 
                     /* bailout */
