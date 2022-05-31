@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 20525 2009-06-13 20:13:33Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 21497 2009-07-10 20:24:18Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -755,6 +755,12 @@ int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, 
     AssertReturn(pvFixed == (void *)-1, VERR_NOT_SUPPORTED);
 
     /*
+     * Check that the specified alignment is supported.
+     */
+    if (uAlignment > PAGE_SIZE)
+        return VERR_NOT_SUPPORTED;
+
+    /*
      * Must have a memory descriptor that we can map.
      */
     int rc = VERR_INVALID_PARAMETER;
@@ -850,7 +856,12 @@ int rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, 
 
 int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, RTR3PTR R3PtrFixed, size_t uAlignment, unsigned fProt, RTR0PROCESS R0Process)
 {
+    /*
+     * Check for unsupported things.
+     */
     AssertReturn(R3PtrFixed == (RTR3PTR)-1, VERR_NOT_SUPPORTED);
+    if (uAlignment > PAGE_SIZE)
+        return VERR_NOT_SUPPORTED;
 
     /*
      * Must have a memory descriptor.
