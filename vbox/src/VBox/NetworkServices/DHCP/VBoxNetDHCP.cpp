@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 18013 2009-03-17 11:55:13Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 18026 2009-03-17 14:09:37Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -823,6 +823,11 @@ int VBoxNetDhcp::parseArgs(int argc, char **argv)
                          VBOX_VERSION_STRING);
                 for (size_t i = 0; i < RT_ELEMENTS(s_aOptionDefs); i++)
                     RTPrintf("    -%c, %s\n", s_aOptionDefs[i].iShort, s_aOptionDefs[i].pszLong);
+                return 1;
+
+            case VERR_GETOPT_UNKNOWN_OPTION:
+            case VINF_GETOPT_NOT_OPTION:
+                RTPrintf("Unknown option '%s'. Use --help for more information.\n", Val.psz);
                 return 1;
 
             default:
