@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 22292 2009-08-17 12:06:30Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -306,7 +306,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         if (    !fIs64BitGuest
             &&  fIOAPIC
             &&  (   osTypeId == "WindowsNT"
-                 || osTypeId == "Windows"
                  || osTypeId == "Windows 2000"
                  || osTypeId == "WindowsXP"
                  || osTypeId == "Windows 2003"))
