@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19217 2009-04-27 15:00:59Z vboxsync $ */
+/* $Id: EM.cpp 19226 2009-04-28 07:19:13Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3390,7 +3390,7 @@ static int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
      * (Executed in ascending priority order.)
      */
     if (    VM_FF_ISPENDING(pVM, VM_FF_HIGH_PRIORITY_PRE_MASK)
-        ||  VMCPU_FF_ISPENDING(pVCpu, VM_FF_HIGH_PRIORITY_PRE_MASK))
+        ||  VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_HIGH_PRIORITY_PRE_MASK))
     {
         /*
          * Timers before interrupts.
@@ -3577,7 +3577,8 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
             if (   !fFFDone
                 && rc != VINF_EM_TERMINATE
                 && rc != VINF_EM_OFF
-                && VM_FF_ISPENDING(pVM, VM_FF_ALL_BUT_RAW_MASK))
+                && (   VM_FF_ISPENDING(pVM, VM_FF_ALL_BUT_RAW_MASK)
+                    || VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_ALL_BUT_RAW_MASK)))
             {
                 rc = emR3ForcedActions(pVM, pVCpu, rc);
                 if (    (   rc == VINF_EM_RESCHEDULE_REM
