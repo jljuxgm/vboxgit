@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 18866 2009-04-10 14:13:10Z vboxsync $
+# $Id: Makefile.kmk 19988 2009-05-25 10:04:59Z vboxsync $
 ## @file
 # VBox - rdesktop with VRDP enhancements sub-makefile.
 #
@@ -100,7 +100,8 @@ rdesktop-vrdp_LIBPATH = \
 	/usr/lib \
 	$(VBOX_LIBPATH_X11)
 rdesktop-vrdp_LIBS = \
-	X11
+	X11 \
+	$(LIB_RUNTIME)
 rdesktop-vrdp_LIBS.solaris = \
 	nsl
 
