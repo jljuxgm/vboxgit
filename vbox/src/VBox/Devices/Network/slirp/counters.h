@@ -1,4 +1,4 @@
-/** $Id: counters.h 23154 2009-09-19 11:02:11Z vboxsync $ */
+/** $Id: counters.h 23462 2009-10-01 05:42:19Z vboxsync $ */
 /** @file
  * Counters macro invocation template.
  *
@@ -103,6 +103,7 @@ COUNTING_COUNTER(IOSBAppendSB, "SB: AppendSB total");
 COUNTING_COUNTER(IOSBAppendSB_w_l_r, "SB: AppendSB (sb_wptr < sb_rptr)");
 COUNTING_COUNTER(IOSBAppendSB_w_ge_r, "SB: AppendSB (sb_wptr >= sb_rptr)");
 COUNTING_COUNTER(IOSBAppendSB_w_alter, "SB: AppendSB (altering of sb_wptr)");
+COUNTING_COUNTER(MBufAllocation,"MBUF::shows number of mbufs in used list");
 
 COUNTING_COUNTER(TCP_retransmit, "TCP::retransmit");
 
