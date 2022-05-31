@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 18724 2009-04-05 17:36:54Z vboxsync $ */
+/* $Id: PGMInternal.h 18730 2009-04-06 08:21:45Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -4326,7 +4326,6 @@ DECLINLINE(void) pgmTrackDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPoolPage, PPG
  *
  * @param   pPool       The pool.
  * @param   pPage       The cached page.
- * @todo inline in PGMInternal.h!
  */
 DECLINLINE(void) pgmPoolCacheUsed(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
 {
