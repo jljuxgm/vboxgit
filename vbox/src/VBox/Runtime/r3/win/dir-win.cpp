@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 20066 2009-05-27 11:24:23Z vboxsync $ */
+/* $Id: dir-win.cpp 20070 2009-05-27 11:45:17Z vboxsync $ */
 /** @file
  * IPRT - Directory, win32.
  */
@@ -130,7 +130,7 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode)
 
 RTDECL(int) RTDirCreateTemp(char *pszTemplate)
 {
-    if (!_mktemp(pszTemplate))
+    if (_mktemp(pszTemplate))
     {
         int rc = RTDirCreate(pszTemplate, 0700);
         return rc;
