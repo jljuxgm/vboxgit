@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
 
 /** @file
  *
@@ -34,9 +34,9 @@ struct NETIFINFO;
 #endif
 
 class ATL_NO_VTABLE DHCPServer :
-    public VirtualBoxBaseNEXT,
-    public VirtualBoxSupportErrorInfoImpl <DHCPServer, IDHCPServer>,
-    public VirtualBoxSupportTranslation <DHCPServer>,
+    public VirtualBoxBase,
+    public VirtualBoxSupportErrorInfoImpl<DHCPServer, IDHCPServer>,
+    public VirtualBoxSupportTranslation<DHCPServer>,
     VBOX_SCRIPTABLE_IMPL(IDHCPServer)
 {
 public:

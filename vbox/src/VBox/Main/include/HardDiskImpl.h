@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 20842 2009-06-23 14:48:10Z vboxsync $ */
+/* $Id: HardDiskImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
 
 /** @file
  *
@@ -45,14 +45,13 @@ class Progress;
  */
 class ATL_NO_VTABLE HardDisk
     : public com::SupportErrorInfoDerived<MediumBase, HardDisk, IHardDisk>
-    , public VirtualBoxBaseWithTypedChildrenNEXT<HardDisk>
+    , public VirtualBoxBaseWithTypedChildren<HardDisk>
     , public VirtualBoxSupportTranslation<HardDisk>
     , VBOX_SCRIPTABLE_IMPL(IHardDisk)
 {
 public:
 
-    typedef VirtualBoxBaseWithTypedChildrenNEXT <HardDisk>::DependentChildren
-        List;
+    typedef VirtualBoxBaseWithTypedChildren<HardDisk>::DependentChildren List;
 
     class MergeChain;
     class ImageChain;

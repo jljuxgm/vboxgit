@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
 
 /** @file
  *
@@ -31,9 +31,9 @@ struct _VRDPUSBDEVICEDESC;
 typedef _VRDPUSBDEVICEDESC VRDPUSBDEVICEDESC;
 
 class ATL_NO_VTABLE RemoteUSBDevice :
-    public VirtualBoxBaseNEXT,
-    public VirtualBoxSupportErrorInfoImpl <RemoteUSBDevice, IHostUSBDevice>,
-    public VirtualBoxSupportTranslation <RemoteUSBDevice>,
+    public VirtualBoxBase,
+    public VirtualBoxSupportErrorInfoImpl<RemoteUSBDevice, IHostUSBDevice>,
+    public VirtualBoxSupportTranslation<RemoteUSBDevice>,
     VBOX_SCRIPTABLE_IMPL(IHostUSBDevice)
 {
 public:

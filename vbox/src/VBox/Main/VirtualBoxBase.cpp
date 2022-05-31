@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 17911 2009-03-16 10:30:55Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 21622 2009-07-15 19:04:07Z vboxsync $ */
 
 /** @file
  *
@@ -1152,8 +1152,7 @@ void VirtualBoxBaseWithChildrenNEXT::uninitDependentChildren()
  *
  * @note Locks #childrenLock() for reading.
  */
-VirtualBoxBaseNEXT *
-VirtualBoxBaseWithChildrenNEXT::getDependentChild (const ComPtr <IUnknown> &aUnk)
+VirtualBoxBase* VirtualBoxBaseWithChildrenNEXT::getDependentChild(const ComPtr<IUnknown> &aUnk)
 {
     AssertReturn (!aUnk.isNull(), NULL);
 
@@ -1173,8 +1172,8 @@ VirtualBoxBaseWithChildrenNEXT::getDependentChild (const ComPtr <IUnknown> &aUnk
 }
 
 /** Helper for addDependentChild(). */
-void VirtualBoxBaseWithChildrenNEXT::doAddDependentChild (
-    IUnknown *aUnk, VirtualBoxBaseNEXT *aChild)
+void VirtualBoxBaseWithChildrenNEXT::doAddDependentChild(IUnknown *aUnk,
+                                                         VirtualBoxBase *aChild)
 {
     AssertReturnVoid (aUnk != NULL);
     AssertReturnVoid (aChild != NULL);

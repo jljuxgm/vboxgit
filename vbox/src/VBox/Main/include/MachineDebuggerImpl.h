@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
 
 /** @file
  *
@@ -29,9 +29,9 @@
 class Console;
 
 class ATL_NO_VTABLE MachineDebugger :
-    public VirtualBoxBaseNEXT,
-    public VirtualBoxSupportErrorInfoImpl <MachineDebugger, IMachineDebugger>,
-    public VirtualBoxSupportTranslation <MachineDebugger>,
+    public VirtualBoxBase,
+    public VirtualBoxSupportErrorInfoImpl<MachineDebugger, IMachineDebugger>,
+    public VirtualBoxSupportTranslation<MachineDebugger>,
     VBOX_SCRIPTABLE_IMPL(IMachineDebugger)
 {
 public:

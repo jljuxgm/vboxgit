@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
 
 /** @file
  *
@@ -30,9 +30,9 @@ class Machine;
 class GuestOSType;
 
 class ATL_NO_VTABLE NetworkAdapter :
-    public VirtualBoxBaseNEXT,
-    public VirtualBoxSupportErrorInfoImpl <NetworkAdapter, INetworkAdapter>,
-    public VirtualBoxSupportTranslation <NetworkAdapter>,
+    public VirtualBoxBase,
+    public VirtualBoxSupportErrorInfoImpl<NetworkAdapter, INetworkAdapter>,
+    public VirtualBoxSupportTranslation<NetworkAdapter>,
     VBOX_SCRIPTABLE_IMPL(INetworkAdapter)
 {
 public:

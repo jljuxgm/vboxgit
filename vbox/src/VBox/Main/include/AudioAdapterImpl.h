@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
 
 /** @file
  *
@@ -29,9 +29,9 @@
 class Machine;
 
 class ATL_NO_VTABLE AudioAdapter :
-    public VirtualBoxBaseNEXT,
-    public VirtualBoxSupportErrorInfoImpl <AudioAdapter, IAudioAdapter>,
-    public VirtualBoxSupportTranslation <AudioAdapter>,
+    public VirtualBoxBase,
+    public VirtualBoxSupportErrorInfoImpl<AudioAdapter, IAudioAdapter>,
+    public VirtualBoxSupportTranslation<AudioAdapter>,
     VBOX_SCRIPTABLE_IMPL(IAudioAdapter)
 {
 public:

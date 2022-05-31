@@ -1,4 +1,4 @@
-/* $Id: DVDDriveImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: DVDDriveImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
 
 /** @file
  *
@@ -31,9 +31,9 @@
 class Machine;
 
 class ATL_NO_VTABLE DVDDrive :
-    public VirtualBoxBaseNEXT,
-    public VirtualBoxSupportErrorInfoImpl <DVDDrive, IDVDDrive>,
-    public VirtualBoxSupportTranslation <DVDDrive>,
+    public VirtualBoxBase,
+    public VirtualBoxSupportErrorInfoImpl<DVDDrive, IDVDDrive>,
+    public VirtualBoxSupportTranslation<DVDDrive>,
     VBOX_SCRIPTABLE_IMPL(IDVDDrive)
 {
 public:

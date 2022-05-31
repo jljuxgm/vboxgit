@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: KeyboardImpl.h 21622 2009-07-15 19:04:07Z vboxsync $ */
 
 /** @file
  *
@@ -47,9 +47,9 @@ typedef ConsoleEventBuffer<KeyboardEvent> KeyboardEventBuffer;
 class Console;
 
 class ATL_NO_VTABLE Keyboard :
-    public VirtualBoxBaseNEXT,
-    public VirtualBoxSupportErrorInfoImpl <Keyboard, IKeyboard>,
-    public VirtualBoxSupportTranslation <Keyboard>,
+    public VirtualBoxBase,
+    public VirtualBoxSupportErrorInfoImpl<Keyboard, IKeyboard>,
+    public VirtualBoxSupportTranslation<Keyboard>,
     VBOX_SCRIPTABLE_IMPL(IKeyboard)
 {
 
