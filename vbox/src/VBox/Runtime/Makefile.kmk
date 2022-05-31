@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19346 2009-05-05 00:39:14Z vboxsync $
+# $Id: Makefile.kmk 19387 2009-05-05 16:27:12Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1042,6 +1042,7 @@ RuntimeR0Drv_SOURCES    = \
 	common/string/strformattype.cpp \
 	common/string/strprintf.cpp \
 	common/string/strtonum.cpp \
+	common/string/string.cpp \
 	common/table/avlpv.cpp \
 	generic/RTLogWriteStdErr-stub-generic.cpp \
 	generic/RTLogWriteUser-generic.cpp \
