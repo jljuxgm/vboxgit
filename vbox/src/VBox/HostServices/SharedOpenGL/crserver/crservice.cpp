@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 17021 2009-02-23 14:06:14Z vboxsync $ */
+/* $Id: crservice.cpp 18637 2009-04-02 13:49:59Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -409,6 +409,29 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                     rc = VINF_SUCCESS;
                 }
             }
+            break;
+        }
+        case SHCRGL_HOST_FN_SET_VISIBLE_REGION:
+        {
+            Log(("svcCall: SHCRGL_HOST_FN_SET_VISIBLE_REGION\n"));
+
+            if (cParms != SHCRGL_CPARMS_SET_VISIBLE_REGION)
+            {
+                rc = VERR_INVALID_PARAMETER;
+                break;
+            }
+
+            if (    paParms[0].type != VBOX_HGCM_SVC_PARM_PTR     /* pRects */
+                 || paParms[1].type != VBOX_HGCM_SVC_PARM_32BIT   /* cRects */
+               )
+            {
+                rc = VERR_INVALID_PARAMETER;
+                break;
+            }
+
+            Assert(sizeof(RTRECT)==4*sizeof(GLint));
+
+            renderspuSetRootVisibleRegion(paParms[1].u.uint32, (GLint*)paParms[0].u.pointer.addr);
             break;
         }
         default:
