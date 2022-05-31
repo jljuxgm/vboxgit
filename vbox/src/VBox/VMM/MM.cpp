@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 18718 2009-04-05 13:47:09Z vboxsync $ */
+/* $Id: MM.cpp 18787 2009-04-06 16:33:58Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -377,7 +377,7 @@ VMMR3DECL(int) MMR3InitPaging(PVM pVM)
     else if (rc == VERR_CFGM_VALUE_NOT_FOUND)
         enmPriority = GMMPRIORITY_NORMAL;
     else
-        AssertMsgRCReturn(rc, ("Configuration error: Failed to query string \"MM/Priority\", rc=%Rrc.\n", rc), rc);
+        AssertMsgFailedReturn(("Configuration error: Failed to query string \"MM/Priority\", rc=%Rrc.\n", rc), rc);
 
     /*
      * Make the initial memory reservation with GMM.
