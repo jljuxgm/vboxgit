@@ -1,4 +1,4 @@
-# $Id: Config.kmk 23957 2009-10-21 22:20:17Z vboxsync $
+# $Id: Config.kmk 23996 2009-10-22 16:19:35Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -317,6 +317,8 @@ VBOX_WITH_ISCSI = 1
 VBOX_WITH_INIP = 1
 # Enable the E1000 feature.
 VBOX_WITH_E1000 = 1
+# Enable the Virtio feature.
+VBOX_WITH_VIRTIO = 1
 # Enable ALSA support for Linux.
 VBOX_WITH_ALSA = 1
 # Enable Pulse support for Linux.
@@ -3837,7 +3839,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23957 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 23996 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
