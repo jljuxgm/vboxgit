@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 23956 2009-10-21 22:18:40Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 23958 2009-10-22 06:19:07Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -598,6 +598,8 @@ static int pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
     rc = RTFileOpen(&pEpFile->File, pszUri, fFileFlags);
     if ((rc == VERR_INVALID_FUNCTION) || (rc == VERR_INVALID_PARAMETER))
     {
+        LogRel(("pdmacFileEpInitialize: RTFileOpen %s / %08x failed with %Rrc\n",
+               pszUri, fFileFlags, rc));
         /*
          * Solaris doesn't support directio on ZFS so far. :-\
          * Trying to enable it returns VERR_INVALID_FUNCTION
@@ -615,6 +617,12 @@ static int pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
 
         /* Open again. */
         rc = RTFileOpen(&pEpFile->File, pszUri, fFileFlags);
+
+        if (RT_FAILURE(rc))
+        {
+            LogRel(("pdmacFileEpInitialize: RTFileOpen %s / %08x failed AGAIN(!) with %Rrc\n",
+                        pszUri, fFileFlags, rc));
+        }
     }
 
     if (RT_SUCCESS(rc))
