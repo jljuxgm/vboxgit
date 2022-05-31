@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 23837 2009-10-16 22:54:47Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 23838 2009-10-16 22:55:57Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -201,7 +201,7 @@ VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
     HKEY hKey;
     LONG r;
 
-	/* Check the new path first. */
+    /* Check the new path first. */
     r = RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SOFTWARE\\Sun\\VirtualBox Guest Additions", 0, KEY_READ, &hKey);
 #ifdef RT_ARCH_AMD64
     if (r != ERROR_SUCCESS)
@@ -233,19 +233,19 @@ VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
         char *pszVer = (char*)RTMemAlloc(dwSize);
         if (pszVer)
         {
-			if (ERROR_SUCCESS == RegQueryValueEx(hKey, "Version", NULL, &dwType, (BYTE*)(LPCTSTR)pszVer, &dwSize))
-				ppszVer = pszVer;
-		}
+            if (ERROR_SUCCESS == RegQueryValueEx(hKey, "Version", NULL, &dwType, (BYTE*)(LPCTSTR)pszVer, &dwSize))
+                ppszVer = pszVer;
+        }
         /* Revision. */
         if (ppszRev)
         {
-			dwSize = 32;
-			char pszRev = (char*)RTMemAlloc(dwSize);
-			if (ERROR_SUCCESS == RegQueryValueEx(hKey, "Revision", NULL, &dwType, (BYTE*)(LPCTSTR)pszRev, &dwSize))
-				ppszRev = pszRev;
-		}
+            dwSize = 32;
+            char pszRev = (char*)RTMemAlloc(dwSize);
+            if (ERROR_SUCCESS == RegQueryValueEx(hKey, "Revision", NULL, &dwType, (BYTE*)(LPCTSTR)pszRev, &dwSize))
+                ppszRev = pszRev;
+        }
     }
-	rc = RTErrConvertFromWin32(r);
+    rc = RTErrConvertFromWin32(r);
 
     if (NULL != hKey)
         RegCloseKey(hKey);
