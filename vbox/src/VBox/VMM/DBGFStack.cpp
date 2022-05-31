@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 19575 2009-05-11 12:42:46Z vboxsync $ */
+/* $Id: DBGFStack.cpp 19687 2009-05-14 10:27:03Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -418,6 +418,8 @@ static int dbgfR3StackWalkBeginCommon(PVM pVM,
     case DBGFCODETYPE_RING0:
         pCtxCore = NULL;    /* No valid context present. */
         break;
+    default:
+        AssertFailed();
     }
     PVMREQ pReq;
     int rc = VMR3ReqCall(pVM, idCpu, &pReq, RT_INDEFINITE_WAIT,
