@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 19239 2009-04-28 13:19:14Z vboxsync $ */
+/* $Id: HostImpl.h 19968 2009-05-24 12:14:19Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -132,11 +132,12 @@ public:
 
 private:
 
-#if defined(RT_OS_SOLARIS)
-# if defined(VBOX_USE_LIBHAL)
+#if (defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)) && defined(VBOX_USE_LIBHAL)
     bool getDVDInfoFromHal(std::list <ComObjPtr <HostDVDDrive> > &list);
     bool getFloppyInfoFromHal(std::list <ComObjPtr <HostFloppyDrive> > &list);
-# endif
+#endif
+
+#if defined(RT_OS_SOLARIS)
     void parseMountTable(char *mountTable, std::list <ComObjPtr <HostDVDDrive> > &list);
     bool validateDevice(const char *deviceNode, bool isCDROM);
 #endif
