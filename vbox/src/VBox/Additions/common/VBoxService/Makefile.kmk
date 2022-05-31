@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19372 2009-05-05 13:07:32Z vboxsync $
+# $Id: Makefile.kmk 19374 2009-05-05 13:23:32Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
