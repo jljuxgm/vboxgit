@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 23835 2009-10-16 22:24:40Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -85,7 +85,9 @@ VBoxGuestR3Lib_SOURCES     = \
 	VBoxGuestR3LibClipboard.cpp \
 	VBoxGuestR3LibDaemonize.cpp \
 	VBoxGuestR3LibGR.cpp \
-	$(if $(VBOX_WITH_GUEST_PROPS),VBoxGuestR3LibGuestProp.cpp,) \
+	$(if $(VBOX_WITH_GUEST_PROPS), \
+		VBoxGuestR3LibGuestProp.cpp \
+		VBoxGuestR3LibHostVersion.cpp,) \
 	VBoxGuestR3LibMouse.cpp \
 	VBoxGuestR3LibMisc.cpp \
 	VBoxGuestR3LibSeamless.cpp \
