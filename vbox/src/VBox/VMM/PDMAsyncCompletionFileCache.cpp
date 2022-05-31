@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileCache.cpp 23673 2009-10-10 21:26:43Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileCache.cpp 23712 2009-10-12 20:53:32Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * File data cache.
@@ -591,7 +591,7 @@ int pdmacFileCacheInit(PPDMASYNCCOMPLETIONEPCLASSFILE pClassFile, PCFGMNODE pCfg
 
     pCache->cbCached  = 0;
     pCache->uAdaptVal = 0;
-    LogFlowFunc((": Maximum number of bytes cached %u\n", pCache->cbCached));
+    LogFlowFunc((": Maximum number of bytes cached %u\n", pCache->cbMax));
 
     STAMR3Register(pClassFile->Core.pVM, &pCache->cbMax,
                    STAMTYPE_U32, STAMVISIBILITY_ALWAYS,

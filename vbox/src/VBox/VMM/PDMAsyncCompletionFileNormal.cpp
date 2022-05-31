@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 23603 2009-10-07 18:30:27Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 23712 2009-10-12 20:53:32Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -848,7 +848,7 @@ int pdmacFileAioMgrNormal(RTTHREAD ThreadSelf, void *pvUser)
                     AssertMsg(   RT_SUCCESS(rcReq)
                               && (   (cbTransfered == pTask->DataSeg.cbSeg)
                                   || (pTask->fBounceBuffer)),
-                              ("Task didn't completed successfully (rc=%Rrc) or was incomplete (cbTransfered=%u)\n", rc, cbTransfered));
+                              ("Task didn't completed successfully (rc=%Rrc) or was incomplete (cbTransfered=%u)\n", rcReq, cbTransfered));
 
                     if (pTask->fPrefetch)
                     {
