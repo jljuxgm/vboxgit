@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 18436 2009-03-28 02:32:20Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 18440 2009-03-28 02:57:12Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -149,7 +149,7 @@ static DECLCALLBACK(int) drvHostBaseRead(PPDMIBLOCK pInterface, uint64_t off, vo
          */
         const uint32_t  LBA       = off / pThis->cbBlock;
         AssertReturn(!(off % pThis->cbBlock), VERR_INVALID_PARAMETER);
-        const uint32_t  cbRead32  = (uint32_t)cbRead32;
+        uint32_t        cbRead32  = (uint32_t)cbRead32;
         const uint32_t  cBlocks   = cbRead32 / pThis->cbBlock;
         AssertReturn(!(cbRead % pThis->cbBlock), VERR_INVALID_PARAMETER);
         uint8_t         abCmd[16] =
