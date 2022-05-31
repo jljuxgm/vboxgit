@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 17106 2009-02-25 00:35:15Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 18082 2009-03-19 08:58:55Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -33,6 +33,7 @@
 #include <VBox/err.h>
 #include <VBox/dis.h>
 #include <VBox/log.h>
+#include <VBox/tm.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #ifdef IN_RING3
@@ -809,6 +810,10 @@ VMMDECL(uint64_t)  CPUMGetGuestMsr(PVM pVM, unsigned idMsr)
 
     switch (idMsr)
     {
+        case MSR_IA32_TSC:
+            u64 = TMCpuTickGet(pVM);
+            break;
+
         case MSR_IA32_CR_PAT:
             u64 = pCpumCpu->Guest.msrPAT;
             break;

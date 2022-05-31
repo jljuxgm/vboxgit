@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 18078 2009-03-18 21:03:31Z vboxsync $ */
+/* $Id: EMAll.cpp 18082 2009-03-19 08:58:55Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2741,7 +2741,8 @@ VMMDECL(int) EMInterpretRdmsr(PVM pVM, PCPUMCTXCORE pRegFrame)
     switch (pRegFrame->ecx)
     {
     case MSR_IA32_TSC:
-        return EMInterpretRdtsc(pVM, pRegFrame);
+        val = TMCpuTickGet(pVM);
+        break;
 
     case MSR_IA32_APICBASE:
         rc = PDMApicGetBase(pVM, &val);
