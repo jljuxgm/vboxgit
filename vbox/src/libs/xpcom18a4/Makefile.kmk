@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22607 2009-08-31 13:57:34Z vboxsync $
+# $Id: Makefile.kmk 22631 2009-09-01 07:54:33Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1395,13 +1395,6 @@ else
   DLLS += VBoxPython
  endif
  INSTALLS += VBoxPython-inst-py-xpcom
-
- # Kind of hack: we don't want to limit VBoxPython.so to single Python version
- # on Linux, where we can avoid putting explicit libpythonX.Y.so dependency
- # to VBoxPython.so
- if "$(KBUILD_TARGET)" == "linux"
-  VBOX_LIB_PYTHON=
- endif
 
 # Python Client Module - the C++/XPCOM bits.
 VBoxPython_TEMPLATE = XPCOM
