@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.cpp 15955 2009-01-14 20:14:36Z vboxsync $ */
+/** $Id: DevE1000Phy.cpp 18437 2009-03-28 02:35:31Z vboxsync $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation.
  *
@@ -497,7 +497,7 @@ bool Phy::readMDIO(PPHY pPhy)
             break;
         case MDIO_READ:
             /* Bits are shifted out in MSB to LSB order */
-            fPin = pPhy->u16Acc & 0x8000;
+            fPin = !!(pPhy->u16Acc & 0x8000);
             pPhy->u16Acc <<= 1;
             if (--pPhy->u16Cnt == 0)
                 pPhy->u16State = MDIO_IDLE;
