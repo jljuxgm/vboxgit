@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: DBGF.cpp 19217 2009-04-27 15:00:59Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -122,7 +122,7 @@ DECLINLINE(DBGFCMD) dbgfR3SetCmd(PVM pVM, DBGFCMD enmCmd)
         AssertMsg(pVM->dbgf.s.enmVMMCmd == DBGFCMD_NO_COMMAND, ("enmCmd=%d enmVMMCmd=%d\n", enmCmd, pVM->dbgf.s.enmVMMCmd));
         rc = (DBGFCMD)ASMAtomicXchgU32((uint32_t volatile *)(void *)&pVM->dbgf.s.enmVMMCmd, enmCmd);
         VM_FF_SET(pVM, VM_FF_DBGF);
-        VMR3NotifyFF(pVM, false /* didn't notify REM */);
+        VMR3NotifyGlobalFF(pVM, false /* didn't notify REM */);
     }
     return rc;
 }

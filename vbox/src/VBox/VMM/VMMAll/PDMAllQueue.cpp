@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 19217 2009-04-27 15:00:59Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -93,7 +93,7 @@ VMMDECL(void) PDMQueueInsert(PPDMQUEUE pQueue, PPDMQUEUEITEMCORE pItem)
         VM_FF_SET(pVM, VM_FF_PDM_QUEUES);
 #ifdef IN_RING3
         REMR3NotifyQueuePending(pVM); /** @todo r=bird: we can remove REMR3NotifyQueuePending and let VMR3NotifyFF do the work. */
-        VMR3NotifyFF(pVM, true);
+        VMR3NotifyGlobalFF(pVM, true);
 #endif
     }
 }

@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 19217 2009-04-27 15:00:59Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -54,7 +54,7 @@ static DECLCALLBACK(void) pdmR3PicHlp_SetInterruptFF(PPDMDEVINS pDevIns)
 
     VMCPU_FF_SET(pVCpu, VMCPU_FF_INTERRUPT_PIC);
     REMR3NotifyInterruptSet(pVM, pVCpu);
-    VMR3NotifyFF(pVM, true); /** @todo SMP: notify the right cpu. */
+    VMR3NotifyCpuFF(pVCpu, true);
 }
 
 
@@ -157,7 +157,7 @@ static DECLCALLBACK(void) pdmR3ApicHlp_SetInterruptFF(PPDMDEVINS pDevIns, VMCPUI
 
     VMCPU_FF_SET(pVCpu, VMCPU_FF_INTERRUPT_APIC);
     REMR3NotifyInterruptSet(pVM, pVCpu);
-    VMR3NotifyFF(pVM, true);  /** @todo SMP: notify the right cpu. */
+    VMR3NotifyCpuFF(pVCpu, true);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 19032 2009-04-20 15:03:08Z vboxsync $ */
+/* $Id: TM.cpp 19217 2009-04-27 15:00:59Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -1479,7 +1479,7 @@ static DECLCALLBACK(void) tmR3TimerCallback(PRTTIMER pTimer, void *pvUser, uint6
     {
         VM_FF_SET(pVM, VM_FF_TIMER);
         REMR3NotifyTimerPending(pVM);
-        VMR3NotifyFF(pVM, true);
+        VMR3NotifyGlobalFF(pVM, true);
         STAM_COUNTER_INC(&pVM->tm.s.StatTimerCallbackSetFF);
     }
 }
