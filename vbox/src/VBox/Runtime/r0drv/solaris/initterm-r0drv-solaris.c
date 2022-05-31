@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-solaris.c 22073 2009-08-07 15:26:56Z vboxsync $ */
+/* $Id: initterm-r0drv-solaris.c 22556 2009-08-28 16:20:45Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Solaris.
  */
@@ -36,12 +36,33 @@
 #include "internal/iprt.h"
 
 #include <iprt/err.h>
+#include <iprt/asm.h>
 #include "internal/initterm.h"
 
+
+/*******************************************************************************
+*   Global Variables                                                           *
+*******************************************************************************/
+/** Indicates that the spl routines (and therefore a bunch of other ones too)
+ * will set EFLAGS::IF and break code that disables interrupts.  */
+bool g_frtSolarisSplSetsEIF = false;
 
 
 int rtR0InitNative(void)
 {
+    /*
+     * Detech whether spl*() is preserving the interrupt flag or not.
+     * This is a problem on S10.
+     */
+    RTCCUINTREG uOldFlags = ASMIntDisableFlags();
+    int iOld = splr(DISP_LEVEL);
+    if (ASMIntAreEnabled())
+        g_frtSolarisSplSetsEIF = true;
+    splx(iOld);
+    if (ASMIntAreEnabled())
+        g_frtSolarisSplSetsEIF = true;
+    ASMSetFlags(uOldFlags);
+
     return VINF_SUCCESS;
 }
 

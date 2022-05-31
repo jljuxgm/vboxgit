@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 22435 2009-08-25 14:30:41Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 22556 2009-08-28 16:20:45Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
@@ -56,5 +56,9 @@
 #undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
 
 #include <iprt/cdefs.h>
+
+RT_C_DECLS_BEGIN
+extern bool                 g_frtSolarisSplSetsEIF;
+RT_C_DECLS_END
 
 #endif
