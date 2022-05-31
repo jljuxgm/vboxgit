@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 23408 2009-09-29 14:48:42Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 23409 2009-09-29 14:51:26Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -361,8 +361,6 @@ DECLCALLBACK(int) drvHostDvdPoll(PDRVHOSTBASE pThis)
         if (PreviousState != s_DeviceState)
             fMediaChanged = true;
     }
-    else
-        fMediaPresent = false;
 
 #else
 # error "Unsupported platform."
