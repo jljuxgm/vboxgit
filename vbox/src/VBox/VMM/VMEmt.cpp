@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 19821 2009-05-19 13:28:56Z vboxsync $ */
+/* $Id: VMEmt.cpp 20593 2009-06-15 14:39:04Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -201,8 +201,9 @@ int vmR3EmulationThreadWithId(RTTHREAD ThreadSelf, PUVMCPU pUVCpu, VMCPUID idCpu
              * Check for termination requests, these have extremely high priority.
              */
             if (    rc == VINF_EM_TERMINATE
-                ||  VM_FF_ISSET(pVM, VM_FF_TERMINATE)
-                ||  pUVM->vm.s.fTerminateEMT)
+                ||  pUVM->vm.s.fTerminateEMT
+                ||  (   pUVM->pVM
+                     && VM_FF_ISSET(pUVM->pVM, VM_FF_TERMINATE)))
                 break;
         }
 
