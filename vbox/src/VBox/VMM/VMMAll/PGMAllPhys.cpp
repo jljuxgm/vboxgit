@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 18230 2009-03-25 01:13:09Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 18266 2009-03-25 17:25:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -381,19 +381,7 @@ int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
      */
     bool fFlushTLBs = false;
     int rc = pgmPoolTrackFlushGCPhys(pVM, pPage, &fFlushTLBs);
-    if (rc == VINF_SUCCESS)
-        /* nothing */;
-    else if (rc == VINF_PGM_GCPHYS_ALIASED)
-    {
-        pVM->pgm.s.fSyncFlags |= PGM_SYNC_CLEAR_PGM_POOL;
-        VM_FF_SET(pVM, VM_FF_PGM_SYNC_CR3);
-        rc = VINF_PGM_SYNC_CR3;
-    }
-    else
-    {
-        AssertRCReturn(rc, rc);
-        AssertMsgFailedReturn(("%Rrc\n", rc), VERR_INTERNAL_ERROR);
-    }
+    AssertMsgReturn(rc == VINF_SUCCESS || rc == VINF_PGM_GCPHYS_ALIASED, ("%Rrc\n", rc), RT_FAILURE(rc) ? rc : VERR_INTERNAL_ERROR);
 
     /*
      * Ensure that we've got a page handy, take it and use it.
