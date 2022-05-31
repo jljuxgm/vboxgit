@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 16674 2009-02-11 16:05:15Z vboxsync $ */
+/* $Id: initterm.cpp 18831 2009-04-07 15:45:35Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -367,6 +367,11 @@ HRESULT Initialize()
 #ifdef RT_OS_LINUX
         "/usr/lib/virtualbox",
         "/opt/VirtualBox",
+#elif RT_OS_SOLARIS
+        "/opt/VirtualBox/amd64",
+        "/opt/VirtualBox/i386",
+#elif RT_OS_DARWIN
+        "/Application/VirtualBox.app/Contents/MacOS",
 #endif
     };
 
