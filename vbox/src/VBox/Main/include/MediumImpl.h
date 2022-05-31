@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 23823 2009-10-16 14:15:04Z vboxsync $ */
+/* $Id: MediumImpl.h 23947 2009-10-21 17:32:21Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -146,6 +146,7 @@ public:
     STDMETHOD(CloneTo)(IMedium *aTarget, MediumVariant_T aVariant,
                         IMedium *aParent, IProgress **aProgress);
     STDMETHOD(Compact)(IProgress **aProgress);
+    STDMETHOD(Resize)(ULONG64 aLogicalSize, IProgress **aProgress);
     STDMETHOD(Reset)(IProgress **aProgress);
 
     // public methods for internal purposes only

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 23823 2009-10-16 14:15:04Z vboxsync $ */
+/* $Id: MediumImpl.cpp 23947 2009-10-21 17:32:21Z vboxsync $ */
 
 /** @file
  *
@@ -2487,6 +2487,18 @@ STDMETHODIMP Medium::Compact(IProgress **aProgress)
     }
 
     return rc;
+}
+
+STDMETHODIMP Medium::Resize(ULONG64 aLogicalSize, IProgress **aProgress)
+{
+    CheckComArgOutPointerValid(aProgress);
+
+    AutoCaller autoCaller(this);
+    CheckComRCReturnRC(autoCaller.rc());
+
+    NOREF(aLogicalSize);
+    NOREF(aProgress);
+    ReturnComNotImplemented();
 }
 
 STDMETHODIMP Medium::Reset(IProgress **aProgress)
