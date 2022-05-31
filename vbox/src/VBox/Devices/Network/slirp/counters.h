@@ -1,4 +1,4 @@
-/** $Id: counters.h 22410 2009-08-24 12:26:36Z vboxsync $ */
+/** $Id: counters.h 22413 2009-08-24 13:53:08Z vboxsync $ */
 /** @file
  * Counters macro invocation template.
  *
@@ -46,7 +46,6 @@
 #  define REGISTER_COUNTER(name, storage, type, units, dsc) do {} while (0)
 #  define DEREGISTER_COUNTER(name, storage) do {} while (0)
 # endif
-#else
 # undef COUNTERS_INIT
 #endif
 
@@ -118,8 +117,6 @@ PROFILE_COUNTER(ALIAS_output, "ALIAS::output");
 /*DrvNAT.cpp*/
 #  ifdef SLIRP_SPLIT_CAN_OUTPUT
 DRV_COUNTING_COUNTER(NATRecvWakeups, "counting wakeups of NAT RX thread");
-DRV_PROFILE_COUNTER(NATRecv,"Time spent in NATRecv worker");
-DRV_PROFILE_COUNTER(NATRecvWait,"Time spent in NATRecv worker in waiting of free RX buffers");
 #  endif
 DRV_COUNTING_COUNTER(QueuePktSent, "counting packet sent via PDM Queue");       /**< counting packet sent via PDM queue */
 DRV_COUNTING_COUNTER(QueuePktDropped, "counting packet drops by PDM Queue");    /**< counting packet drops by PDM queue */
