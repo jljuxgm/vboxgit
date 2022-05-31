@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 17684 2009-03-11 12:15:33Z vboxsync $ */
+/* $Id: ConsoleImpl.h 18348 2009-03-26 19:35:20Z vboxsync $ */
 
 /** @file
  *
@@ -544,6 +544,7 @@ private:
     PPDMLED     mapFDLeds[2];
     PPDMLED     mapIDELeds[4];
     PPDMLED     mapSATALeds[30];
+    PPDMLED     mapSCSILeds[16];
     PPDMLED     mapNetworkLeds[8];
     PPDMLED     mapSharedFolderLed;
     PPDMLED     mapUSBLed[2];
