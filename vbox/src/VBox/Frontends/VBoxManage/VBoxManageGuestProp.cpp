@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 20928 2009-06-25 11:53:37Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 21393 2009-07-08 13:02:09Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -166,10 +166,8 @@ public:
                                      IN_BSTR flags)
     {
         HRESULT rc = S_OK;
-        Utf8Str utf8Name (name);
+        Utf8Str utf8Name(name);
         Guid uuid(machineId);
-        if (utf8Name.isNull())
-            rc = E_OUTOFMEMORY;
         if (   SUCCEEDED (rc)
             && uuid == mUuid
             && RTStrSimplePatternMultiMatch(mPatterns, RTSTR_MAX,

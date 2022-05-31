@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.h 17688 2009-03-11 12:38:18Z vboxsync $ */
+/* $Id: HostHardwareLinux.h 21393 2009-07-08 13:02:09Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -65,7 +65,7 @@ public:
             : mDevice (aDevice), mUdi (aUdi != NULL ? aUdi : std::string ()),
             mDescription (aDescription != NULL ? aDescription : std::string ()) {}
     };
-    
+
     /** List (resp vector) holding drive information */
     typedef std::vector <DriveInfo> DriveInfoList;
 
@@ -143,7 +143,7 @@ public:
             : mDevice (aDevice), mSysfsPath (aSysfsPath) {}
         USBDeviceInfo () {}
     };
-    
+
     /** List (resp vector) holding drive information */
     typedef std::vector <USBDeviceInfo> DeviceInfoList;
 

@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 21068 2009-06-30 14:06:33Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 21393 2009-07-08 13:02:09Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -402,7 +402,7 @@ HRESULT VFSExplorer::updateS3(TaskVFSExplorer *aTask)
 
         RTS3SetProgressCallback(hS3, VFSExplorer::TaskVFSExplorer::uploadProgress, &aTask);
         /* Do we need the list of buckets or keys? */
-        if (m->strBucket.isEmpty())
+        if (!m->strBucket.length())
         {
             PCRTS3BUCKETENTRY pBuckets = NULL;
             vrc = RTS3GetBuckets(hS3, &pBuckets);
