@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 21694 2009-07-17 14:07:33Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 21696 2009-07-17 14:10:34Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2491,8 +2491,7 @@ static int svmR0EmulateTprVMMCall(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
             pCtx->rip += pPatch->cbOp;
             break;
         default:
-            AssertFailed();
-            break;
+            AssertFailedReturn(VERR_INTERNAL_ERROR);
         }
     }
     return VINF_SUCCESS;
