@@ -1,4 +1,4 @@
-/* $Id: SUPLib-linux.cpp 22615 2009-08-31 15:59:02Z vboxsync $ */
+/* $Id: SUPLib-linux.cpp 22618 2009-08-31 16:37:16Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - GNU/Linux specific parts.
  */
@@ -252,8 +252,6 @@ int suplibOsPageFree(PSUPLIBDATA pThis, void *pvPages, size_t cPages)
     return VINF_SUCCESS;
 }
 
-#endif /* !IN_SUP_HARDENED_R3 */
-
 
 /** Check if the host kernel supports VT-x or not.
  *
@@ -291,3 +289,6 @@ int suplibOsQueryVTxSupported(void)
 
     return VERR_SUPDRV_KERNEL_TOO_OLD_FOR_VTX;
 }
+
+#endif /* !IN_SUP_HARDENED_R3 */
+
