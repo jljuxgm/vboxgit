@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 20518 2009-06-12 14:43:25Z vboxsync $ */
+/* $Id: PGMAllBth.h 20519 2009-06-12 14:48:22Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -811,10 +811,12 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
 #   ifdef VBOX_STRICT
                         RTGCPHYS GCPhys;
                         uint64_t fPageGst;
-                        rc = PGMGstGetPage(pVCpu, pvFault, &fPageGst, &GCPhys);
-                        AssertMsg(RT_SUCCESS(rc) && (fPageGst & X86_PTE_RW), ("rc=%d fPageGst=%RX64\n"));
-                        LogFlow(("Obsolete physical monitor page out of sync %RGv - phys %RGp flags=%08llx\n", pvFault, GCPhys, (uint64_t)fPageGst));
-
+                        if (!HWACCMIsNestedPagingActive(pVM))
+                        {
+                            rc = PGMGstGetPage(pVCpu, pvFault, &fPageGst, &GCPhys);
+                            AssertMsg(RT_SUCCESS(rc) && (fPageGst & X86_PTE_RW), ("rc=%d fPageGst=%RX64\n"));
+                            LogFlow(("Obsolete physical monitor page out of sync %RGv - phys %RGp flags=%08llx\n", pvFault, GCPhys, (uint64_t)fPageGst));
+                        }
                         uint64_t fPageShw;
                         rc = PGMShwGetPage(pVCpu, pvFault, &fPageShw, NULL);
                         AssertMsg((RT_SUCCESS(rc) && ((fPageShw & X86_PTE_RW) || pVM->cCPUs > 1 /* new monitor can be installed during trap e execution */)), ("rc=%Rrc fPageShw=%RX64\n", rc, fPageShw));
