@@ -1,4 +1,4 @@
-/* $Id: VBox-MakefileGuidelines.cpp 19010 2009-04-19 16:07:51Z vboxsync $ */
+/* $Id: VBox-MakefileGuidelines.cpp 19033 2009-04-20 15:39:13Z vboxsync $ */
 /** @file
  * VBox - Makefile Guidelines.
  */
@@ -161,6 +161,11 @@
  *
  *      - Inserting blank lines between target properties is all right if the
  *        target definition is long and/or crooked.
+ *
+ *      - if1of and ifn1of shall always have a space after the comma, while ifeq
+ *        and ifneq shall not. That way they are easier to tell apart.
+ *
+ *      - Do a svn diff before committing makefile changes.
  *
  *
  * @section sec_vbox_makefile_guidelines_reminders      Helpful reminders
