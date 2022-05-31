@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 19086 2009-04-21 15:32:05Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 19230 2009-04-28 09:52:17Z vboxsync $ */
 
 /** @file
  *
@@ -6357,10 +6357,9 @@ DECLCALLBACK (int) Console::powerUpThread (RTTHREAD Thread, void *pvUser)
 
 #endif /* VBOX_WITH_VRDP */
 
+        ComPtr <IMachine> pMachine = console->machine();
         ULONG cCpus = 1;
-#ifdef VBOX_WITH_SMP_GUESTS
         pMachine->COMGETTER(CPUCount)(&cCpus);
-#endif
 
         /*
          * Create the VM

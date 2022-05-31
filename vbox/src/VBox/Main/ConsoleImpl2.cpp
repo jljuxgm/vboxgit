@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 19124 2009-04-22 21:57:04Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 19230 2009-04-28 09:52:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -204,9 +204,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     uint32_t const cbRamHole = MM_RAM_HOLE_SIZE_DEFAULT;
 
     ULONG cCpus = 1;
-#ifdef VBOX_WITH_SMP_GUESTS
     hrc = pMachine->COMGETTER(CPUCount)(&cCpus);                                    H();
-#endif
 
     /*
      * Get root node first.
