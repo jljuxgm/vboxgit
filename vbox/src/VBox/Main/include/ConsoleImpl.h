@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 18645 2009-04-02 15:38:31Z vboxsync $ */
+/* $Id: ConsoleImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
 
 /** @file
  *
@@ -79,7 +79,7 @@ class ATL_NO_VTABLE Console :
     public VirtualBoxBaseWithChildrenNEXT,
     public VirtualBoxSupportErrorInfoImpl <Console, IConsole>,
     public VirtualBoxSupportTranslation <Console>,
-    public IConsole
+    VBOX_SCRIPTABLE_IMPL(IConsole)
 {
     Q_OBJECT
 

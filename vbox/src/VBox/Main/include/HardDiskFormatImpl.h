@@ -1,4 +1,4 @@
-/* $Id: HardDiskFormatImpl.h 16867 2009-02-17 17:00:56Z vboxsync $ */
+/* $Id: HardDiskFormatImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
 
 /** @file
  *
@@ -45,7 +45,7 @@ class ATL_NO_VTABLE HardDiskFormat :
     public VirtualBoxBaseNEXT,
     public VirtualBoxSupportErrorInfoImpl <HardDiskFormat, IHardDiskFormat>,
     public VirtualBoxSupportTranslation <HardDiskFormat>,
-    public IHardDiskFormat
+    VBOX_SCRIPTABLE_IMPL(IHardDiskFormat)
 {
 public:
 

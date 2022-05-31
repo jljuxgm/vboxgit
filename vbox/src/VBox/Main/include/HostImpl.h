@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 19116 2009-04-22 17:33:26Z vboxsync $ */
+/* $Id: HostImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -53,7 +53,7 @@ class ATL_NO_VTABLE Host :
     public VirtualBoxBaseWithChildren,
     public VirtualBoxSupportErrorInfoImpl <Host, IHost>,
     public VirtualBoxSupportTranslation <Host>,
-    public IHost
+    VBOX_SCRIPTABLE_IMPL(IHost)
 {
 public:
 

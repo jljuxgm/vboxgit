@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 18594 2009-04-01 12:15:40Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
 
 /** @file
  *
@@ -37,7 +37,7 @@ class ATL_NO_VTABLE HostNetworkInterface :
     public VirtualBoxBaseNEXT,
     public VirtualBoxSupportErrorInfoImpl <HostNetworkInterface, IHostNetworkInterface>,
     public VirtualBoxSupportTranslation <HostNetworkInterface>,
-    public IHostNetworkInterface
+    VBOX_SCRIPTABLE_IMPL(IHostNetworkInterface)
 {
 public:
 

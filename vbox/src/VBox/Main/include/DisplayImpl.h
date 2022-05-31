@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 17669 2009-03-11 09:56:29Z vboxsync $ */
+/* $Id: DisplayImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
 
 /** @file
  *
@@ -83,10 +83,10 @@ typedef struct _DISPLAYFBINFO
 
 class ATL_NO_VTABLE Display :
     public VirtualBoxBaseNEXT,
-    public IConsoleCallback,
+    VBOX_SCRIPTABLE_IMPL(IConsoleCallback),
     public VirtualBoxSupportErrorInfoImpl <Display, IDisplay>,
     public VirtualBoxSupportTranslation <Display>,
-    public IDisplay
+    VBOX_SCRIPTABLE_IMPL(IDisplay)
 {
 
 public:

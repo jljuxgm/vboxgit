@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 18406 2009-03-27 15:31:21Z vboxsync $ */
+/* $Id: ProgressImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -42,7 +42,7 @@ class ATL_NO_VTABLE ProgressBase :
     public VirtualBoxBaseNEXT,
     public com::SupportErrorInfoBase,
     public VirtualBoxSupportTranslation <ProgressBase>,
-    public IProgress
+    VBOX_SCRIPTABLE_IMPL(IProgress)
 {
 protected:
 

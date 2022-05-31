@@ -1,4 +1,4 @@
-/* $Id: HardDiskImpl.h 19036 2009-04-20 15:55:29Z vboxsync $ */
+/* $Id: HardDiskImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
 
 /** @file
  *
@@ -47,7 +47,7 @@ class ATL_NO_VTABLE HardDisk
     : public com::SupportErrorInfoDerived<MediumBase, HardDisk, IHardDisk>
     , public VirtualBoxBaseWithTypedChildrenNEXT<HardDisk>
     , public VirtualBoxSupportTranslation<HardDisk>
-    , public IHardDisk
+    , VBOX_SCRIPTABLE_IMPL(IHardDisk)
 {
 public:
 

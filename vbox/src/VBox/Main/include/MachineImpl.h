@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 19017 2009-04-20 08:12:58Z vboxsync $ */
+/* $Id: MachineImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
 
 /** @file
  *
@@ -79,7 +79,7 @@ class ATL_NO_VTABLE Machine :
     public VirtualBoxBaseWithChildrenNEXT,
     public VirtualBoxSupportErrorInfoImpl <Machine, IMachine>,
     public VirtualBoxSupportTranslation <Machine>,
-    public IMachine
+    VBOX_SCRIPTABLE_IMPL(IMachine)
 {
     Q_OBJECT
 
@@ -869,7 +869,7 @@ protected:
 class ATL_NO_VTABLE SessionMachine :
     public VirtualBoxSupportTranslation <SessionMachine>,
     public Machine,
-    public IInternalMachineControl
+    VBOX_SCRIPTABLE_IMPL(IInternalMachineControl)
 {
 public:
 

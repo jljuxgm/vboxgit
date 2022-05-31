@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 14949 2008-12-03 15:17:16Z vboxsync $ */
+/* $Id: KeyboardImpl.h 19134 2009-04-23 09:21:43Z vboxsync $ */
 
 /** @file
  *
@@ -50,7 +50,7 @@ class ATL_NO_VTABLE Keyboard :
     public VirtualBoxBaseNEXT,
     public VirtualBoxSupportErrorInfoImpl <Keyboard, IKeyboard>,
     public VirtualBoxSupportTranslation <Keyboard>,
-    public IKeyboard
+    VBOX_SCRIPTABLE_IMPL(IKeyboard)
 {
 
 public:

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 18772 2009-04-06 15:09:26Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 19134 2009-04-23 09:21:43Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -48,7 +48,8 @@ using namespace com;
  * IVirtualBoxCallback implementation for handling the GuestPropertyCallback in
  * relation to the "guestproperty wait" command.
  */
-class GuestPropertyCallback : public IVirtualBoxCallback
+class GuestPropertyCallback : 
+  VBOX_SCRIPTABLE_IMPL(IVirtualBoxCallback)
 {
 public:
     GuestPropertyCallback(const char *pszPatterns, Guid aUuid)
