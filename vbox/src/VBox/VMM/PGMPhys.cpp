@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 20404 2009-06-08 13:31:53Z vboxsync $ */
+/* $Id: PGMPhys.cpp 20687 2009-06-18 11:52:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1544,7 +1544,7 @@ VMMR3DECL(int) PGMR3PhysMMIO2Register(PVM pVM, PPDMDEVINS pDevIns, uint32_t iReg
     /*
      * For the 2nd+ instance, mangle the description string so it's unique.
      */
-    if (pDevIns->iInstance > 0)
+    if (pDevIns->iInstance > 0) /** @todo Move to PDMDevHlp.cpp and use a real string cache. */
     {
         pszDesc = MMR3HeapAPrintf(pVM, MM_TAG_PGM_PHYS, "%s [%u]", pszDesc, pDevIns->iInstance);
         if (!pszDesc)
