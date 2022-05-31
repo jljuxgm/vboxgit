@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 19403 2009-05-05 22:23:42Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 19727 2009-05-15 11:01:41Z vboxsync $ */
 
 /** @file
  *
@@ -220,7 +220,7 @@ STDMETHODIMP SystemProperties::COMGETTER(MaxGuestCPUCount)(ULONG *maxCPUCount)
     CheckComRCReturnRC (autoCaller.rc());
 
     /* no need to lock, this is const */
-    *maxCPUCount = 1; // SchemaDefs::MaxCPUCount; // VMM_MAX_CPU_COUNT
+    *maxCPUCount = SchemaDefs::MaxCPUCount; // VMM_MAX_CPU_COUNT
 
     return S_OK;
 }
