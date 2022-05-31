@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 22866 2009-09-09 14:39:46Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 23129 2009-09-18 12:57:37Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -307,6 +307,7 @@ void printUsage(USAGECATEGORY u64Cmd)
         if (fVRDP)
         {
             RTPrintf("                            vrdp on|off] |\n");
+            RTPrintf("                            vrdpport default|<port>] |\n");
         }
         RTPrintf("                            setvideomodehint <xres> <yres> <bpp> [display]|\n"
                  "                            setcredentials <username> <password> <domain>\n"
