@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 18266 2009-03-25 17:25:53Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 18290 2009-03-26 05:07:48Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4327,8 +4327,10 @@ PPGMPOOLPAGE pgmPoolGetPageByHCPhys(PVM pVM, RTHCPHYS HCPhys)
     /** @todo profile this! */
     PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
     PPGMPOOLPAGE pPage = pgmPoolGetPage(pPool, HCPhys);
-    Log4(("pgmPoolGetPageByHCPhys: HCPhys=%RHp -> %p:{.idx=%d .GCPhys=%RGp .enmKind=%s}\n",
+#ifndef DEBUG_bird /* extremely noisy */
+    Log5(("pgmPoolGetPageByHCPhys: HCPhys=%RHp -> %p:{.idx=%d .GCPhys=%RGp .enmKind=%s}\n",
           HCPhys, pPage, pPage->idx, pPage->GCPhys, pgmPoolPoolKindToStr(pPage->enmKind)));
+#endif
     return pPage;
 }
 
