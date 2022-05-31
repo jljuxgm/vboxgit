@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19853 2009-05-20 10:42:58Z vboxsync $
+# $Id: Makefile.kmk 19963 2009-05-24 03:18:51Z vboxsync $
 ## @file
 # Top-level makefile for the VBox frontends.
 #
@@ -44,7 +44,7 @@ ifndef VBOX_ONLY_DOCS
  endif
 endif # !VBOX_ONLY_DOCS
 
-# @todo: include Python shell into binary delivery?
+## @todo Include Python shell into binary delivery?
 ifdef VBOX_ONLY_SDK
  include $(PATH_SUB_CURRENT)/VBoxShell/Makefile.kmk
 endif
