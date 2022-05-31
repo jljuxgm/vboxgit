@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemption.cpp 19965 2009-05-24 06:05:16Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.cpp 19966 2009-05-24 06:38:04Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -108,7 +108,7 @@ DECLEXPORT(int) TSTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint
                         cLoops++;
                     } while (   !fPending
                              && cNanosElapsed < UINT64_C(2)*1000U*1000U*1000U
-                             && cLoops < 10U*_1M);
+                             && cLoops < 100U*_1M);
                     if (!fPending)
                         RTStrPrintf(pszErr, cchErr, "!Preempt not pending after %'llu loops / %'llu ns",
                                     cLoops, cNanosElapsed);
