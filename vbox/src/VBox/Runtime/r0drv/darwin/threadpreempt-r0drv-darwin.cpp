@@ -1,4 +1,4 @@
-/* $Id: threadpreempt-r0drv-darwin.cpp 21536 2009-07-13 14:49:39Z vboxsync $ */
+/* $Id: threadpreempt-r0drv-darwin.cpp 22052 2009-08-07 09:45:48Z vboxsync $ */
 /** @file
  * IPRT - Thread Preemption, Ring-0 Driver, Darwin.
  */
@@ -33,6 +33,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-darwin-kernel.h"
+#include "internal/iprt.h"
 #include <iprt/thread.h>
 
 #include <iprt/asm.h>
@@ -190,7 +191,7 @@ RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
 RTDECL(bool) RTThreadIsInInterrupt(RTTHREAD hThread)
 {
     Assert(hThread == NIL_RTTHREAD); NOREF(hThread);
-    /** @todo Solaris: Implement RTThreadIsInInterrupt. Required for guest
+    /** @todo Darwin: Implement RTThreadIsInInterrupt. Required for guest
      *        additions! */
     return !ASMIntAreEnabled();
 }

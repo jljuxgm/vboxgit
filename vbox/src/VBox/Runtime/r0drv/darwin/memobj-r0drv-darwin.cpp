@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 21497 2009-07-10 20:24:18Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 22052 2009-08-07 09:45:48Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -33,7 +33,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-darwin-kernel.h"
-
+#include "internal/iprt.h"
 #include <iprt/memobj.h>
 
 #include <iprt/alloc.h>
@@ -44,7 +44,6 @@
 #include <iprt/process.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>
-
 #include "internal/memobj.h"
 
 /*#define USE_VM_MAP_WIRE - may re-enable later when non-mapped allocations are added. */
