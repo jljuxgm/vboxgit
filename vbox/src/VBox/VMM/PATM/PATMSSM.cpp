@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: PATMSSM.cpp 19144 2009-04-23 14:05:09Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -937,7 +937,7 @@ static void patmCorrectFixup(PVM pVM, unsigned ulSSMVersion, PATM &patmInfo, PPA
             RTRCPTR oldFixup = *pFixup;
 #endif
             /* Core.Key abused to store the type of fixup */
-            switch ((uint32_t)pRec->Core.Key)
+            switch ((uintptr_t)pRec->Core.Key)
             {
             case PATM_FIXUP_CPU_FF_ACTION:
                 *pFixup = pVM->pVMRC + RT_OFFSETOF(VM, aCpus[0].fLocalForcedActions);
