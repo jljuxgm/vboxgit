@@ -1,4 +1,4 @@
-/* $Id: sw_common.c 20508 2009-06-12 12:48:23Z vboxsync $ */
+/* $Id: sw_common.c 23098 2009-09-17 14:38:23Z vboxsync $ */
 
 /** @file
  * VBox D3D8/9 dll switcher
@@ -23,7 +23,7 @@
 #include <windows.h>
 #include "switcher.h"
 
-static char* gsBlackList[] = {"Dwm.exe"/*, "taskeng.exe"*/, NULL};
+static char* gsBlackList[] = {"Dwm.exe", "java.exe", "javaw.exe"/*, "taskeng.exe"*/, NULL};
 
 /* Checks if 3D is enabled for VM and it works on host machine */
 BOOL isVBox3DEnabled(void)
