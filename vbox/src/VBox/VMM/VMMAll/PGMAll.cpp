@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 18651 2009-04-02 16:27:19Z vboxsync $ */
+/* $Id: PGMAll.cpp 18666 2009-04-02 23:10:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1309,7 +1309,6 @@ VMMDECL(int)  PGMGstModifyPage(PVM pVM, RTGCPTR GCPtr, size_t cb, uint64_t fFlag
     return rc;
 }
 
-#ifdef VBOX_WITH_NEW_PHYS_CODE
 #ifdef IN_RING3
 
 /**
@@ -1466,7 +1465,6 @@ PX86PML4 pgmGstLazyMapPml4(PPGM pPGM)
 }
 #endif /* VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R3 */
 
-#endif /* VBOX_WITH_NEW_PHYS_CODE */
 
 /**
  * Gets the specified page directory pointer table entry.
