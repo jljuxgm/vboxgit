@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 17684 2009-03-11 12:15:33Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 18116 2009-03-20 13:20:45Z vboxsync $ */
 
 /** @file
  *
@@ -1612,7 +1612,8 @@ STDMETHODIMP Console::GetGuestEnteredACPIMode(BOOL *aEntered)
 
     if (mMachineState != MachineState_Running)
         return setError (VBOX_E_INVALID_VM_STATE,
-            tr ("Invalid machine state: %d)"), mMachineState);
+            tr ("Invalid machine state %d when checking if the guest entered "
+                "the ACPI mode)"), mMachineState);
 
     /* protect mpVM */
     AutoVMCaller autoVMCaller (this);
