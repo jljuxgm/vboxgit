@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 21947 2009-08-03 16:45:36Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 21951 2009-08-04 09:03:29Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2240,7 +2240,7 @@ ResumeExecution:
 
     /* TPR caching using CR8 is only available in 64 bits mode */
     /* Note the 32 bits exception for AMD (X86_CPUID_AMD_FEATURE_ECX_CR8L), but that appears missing in Intel CPUs */
-    /* Note: we can't do this in LoadGuestState as PDMApicGetTPR can jump back to ring 3 (lock)!!!!! */
+    /* Note: we can't do this in LoadGuestState as PDMApicGetTPR can jump back to ring 3 (lock)!!!!! (no longer true) */
     /**
      * @todo query and update the TPR only when it could have been changed (mmio access & wrmsr (x2apic))
      */
