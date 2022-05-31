@@ -1,4 +1,4 @@
-/* $Id: iokit.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: iokit.h 23134 2009-09-18 14:19:02Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  */
@@ -50,7 +50,7 @@ typedef struct DARWINETHERNIC
     /** Pointer to the next NIC. */
     struct DARWINETHERNIC *pNext;
     /** The BSD name. (like en0)*/
-    char szBSDName[8];
+    char szBSDName[16];
     /** The fake unique identifier. */
     RTUUID Uuid;
     /** The MAC address. */
