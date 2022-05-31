@@ -1,4 +1,4 @@
-/* $Id: SSM-new.cpp 22034 2009-08-06 12:38:19Z vboxsync $ */
+/* $Id: SSM-new.cpp 22100 2009-08-07 23:52:52Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -6050,7 +6050,8 @@ VMMR3DECL(int) SSMR3SetGCPtrSize(PSSMHANDLE pSSM, unsigned cbGCPtr)
         pSSM->u.Read.fFixedGCPtrSize = true;
     }
     else if (   pSSM->u.Read.cbGCPtr != cbGCPtr
-             && pSSM->u.Read.cbFileHdr == sizeof(SSMFILEHDRV11))
+             && pSSM->u.Read.uFmtVerMajor == 1
+             && pSSM->u.Read.uFmtVerMinor == 1)
         AssertMsgFailed(("SSMR3SetGCPtrSize: already fixed at %u bytes; requested %u bytes\n", pSSM->u.Read.cbGCPtr, cbGCPtr));
 
     return VINF_SUCCESS;
