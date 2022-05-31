@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 19930 2009-05-23 00:24:51Z vboxsync $
+# $Id: Makefile.kmk 19937 2009-05-23 12:43:34Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1121,8 +1121,6 @@ RuntimeR0Drv_SOURCES.linux = \
 	r0drv/linux/mpnotification-r0drv-linux.c \
 	r0drv/linux/process-r0drv-linux.c \
 	r0drv/linux/RTLogWriteDebugger-r0drv-linux.c \
-	r0drv/linux/RTThreadPreemptDisable-r0drv-linux.c \
-	r0drv/linux/RTThreadPreemptRestore-r0drv-linux.c \
 	r0drv/linux/semevent-r0drv-linux.c \
 	r0drv/linux/semeventmulti-r0drv-linux.c \
 	r0drv/linux/semfastmutex-r0drv-linux.c \
