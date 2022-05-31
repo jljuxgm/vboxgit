@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 19820 2009-05-19 13:14:54Z vboxsync $ */
+/* $Id: TMInternal.h 20050 2009-05-26 17:12:12Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -69,8 +69,10 @@ typedef enum TMTIMERSTATE
     TMTIMERSTATE_STOPPED = 1,
     /** Timer is active. */
     TMTIMERSTATE_ACTIVE,
-    /** Timer is expired, is being delivered. */
-    TMTIMERSTATE_EXPIRED,
+    /** Timer is expired, getting expire and unlinking. */
+    TMTIMERSTATE_EXPIRED_GET_UNLINK,
+    /** Timer is expired and is being delivered. */
+    TMTIMERSTATE_EXPIRED_DELIVER,
 
     /** Timer is stopped but still in the active list.
      * Currently in the ScheduleTimers list. */
