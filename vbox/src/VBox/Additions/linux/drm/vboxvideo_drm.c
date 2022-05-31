@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drm.c 17938 2009-03-16 14:23:42Z vboxsync $
+/** @file $Id: vboxvideo_drm.c 22588 2009-08-31 09:30:13Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -66,8 +66,18 @@ static struct pci_device_id pciidlist[] = {
 	vboxvideo_PCI_IDS
 };
 
+int vboxvideo_driver_load(struct drm_device * dev, unsigned long flags)
+{
+# if LINUX_VERSION_CODE >= KERNEL_VERSION (2, 6, 28)
+	return drm_vblank_init(dev, 1);
+#else
+    return 0;
+#endif
+}
+
 static struct drm_driver driver = {
 	/* .driver_features = DRIVER_USE_MTRR, */
+	.load = vboxvideo_driver_load,
 	.reclaim_buffers = drm_core_reclaim_buffers,
 	.get_map_ofs = drm_core_get_map_ofs,
 	.get_reg_ofs = drm_core_get_reg_ofs,
