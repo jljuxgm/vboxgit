@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 19434 2009-05-06 13:58:35Z vboxsync $ */
+/* $Id: VMMInternal.h 19438 2009-05-06 14:35:58Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -330,6 +330,7 @@ typedef struct VMMCPU
     /** Offset to the VMCPU structure.
      * See VMM2VMCPU(). */
     RTINT                       offVMCPU;
+    RTINT                       offDummy;
 
     /** VMM stack, pointer to the top of the stack in R3.
      * Stack is allocated from the hypervisor heap and is page aligned
