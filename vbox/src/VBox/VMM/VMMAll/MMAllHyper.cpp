@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 19667 2009-05-13 15:49:38Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 20774 2009-06-22 12:59:53Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -334,6 +334,8 @@ VMMDECL(int) MMHyperAlloc(PVM pVM, size_t cb, unsigned uAlignment, MMTAG enmTag,
 
     rc = mmHyperLock(pVM);
     AssertRCReturn(rc, rc);
+
+    LogFlow(("MMHyperAlloc %x align=%x tag=%s\n", cb, uAlignment, mmGetTagName(enmTag)));
 
     rc = mmHyperAllocInternal(pVM, cb, uAlignment, enmTag, ppv);
 
@@ -738,7 +740,7 @@ static void mmR3HyperStatRegisterOne(PVM pVM, PMMHYPERSTAT pStat)
 {
     if (pStat->fRegistered)
         return;
-    const char *pszTag = mmR3GetTagName((MMTAG)pStat->Core.Key);
+    const char *pszTag = mmGetTagName((MMTAG)pStat->Core.Key);
     STAMR3RegisterF(pVM, &pStat->cbCurAllocated, STAMTYPE_U32, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES, "Number of bytes currently allocated.",           "/MM/HyperHeap/%s", pszTag);
     STAMR3RegisterF(pVM, &pStat->cAllocations,   STAMTYPE_U64, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Number of alloc calls.",                         "/MM/HyperHeap/%s/cAllocations", pszTag);
     STAMR3RegisterF(pVM, &pStat->cFrees,         STAMTYPE_U64, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Number of free calls.",                          "/MM/HyperHeap/%s/cFrees", pszTag);
@@ -914,6 +916,8 @@ VMMDECL(int) MMHyperFree(PVM pVM, void *pv)
 
     rc = mmHyperLock(pVM);
     AssertRCReturn(rc, rc);
+
+    LogFlow(("MMHyperFree %p\n", pv));
 
     rc = mmHyperFreeInternal(pVM, pv);
 
@@ -1106,7 +1110,7 @@ static void mmHyperHeapDumpOne(PMMHYPERHEAP pHeap, PMMHYPERCHUNKFREE pCur)
             Log(("%p  %06x USED offNext=%06x offPrev=-%06x %s%s\n",
                  pCur, (uintptr_t)pCur - (uintptr_t)pHeap->CTX_SUFF(pbHeap),
                  pCur->core.offNext, -MMHYPERCHUNK_GET_OFFPREV(&pCur->core),
-                 mmR3GetTagName((MMTAG)pStat->Core.Key), pszSelf));
+                 mmGetTagName((MMTAG)pStat->Core.Key), pszSelf));
 #else
             Log(("%p  %06x USED offNext=%06x offPrev=-%06x %d%s\n",
                  pCur, (uintptr_t)pCur - (uintptr_t)pHeap->CTX_SUFF(pbHeap),

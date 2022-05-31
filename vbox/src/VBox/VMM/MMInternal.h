@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: MMInternal.h 20774 2009-06-22 12:59:53Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -788,7 +788,7 @@ int  mmR3HyperInit(PVM pVM);
 int  mmR3HyperTerm(PVM pVM);
 int  mmR3HyperInitPaging(PVM pVM);
 
-const char *mmR3GetTagName(MMTAG enmTag);
+const char *mmGetTagName(MMTAG enmTag);
 
 /**
  * Converts a pool address to a physical address.
