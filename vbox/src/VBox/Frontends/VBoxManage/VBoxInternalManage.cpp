@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 20289 2009-06-04 14:44:43Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 20290 2009-06-04 14:45:44Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -956,9 +956,8 @@ static int CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aVirtualB
     else
     {
         RTPrintf("File '%s' is no block device\n", rawdisk.raw());
-        vrc = RTFileGetSize(RawFile, &cbSize);
-        //vrc = VERR_INVALID_PARAMETER;
-        //goto out;
+        vrc = VERR_INVALID_PARAMETER;
+        goto out;
     }
 #elif defined(RT_OS_DARWIN)
     struct stat DevStat;
