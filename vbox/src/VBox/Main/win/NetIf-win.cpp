@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 19160 2009-04-24 09:04:38Z vboxsync $ */
+/* $Id: NetIf-win.cpp 19218 2009-04-27 15:34:27Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -165,8 +165,11 @@ static int collectNetIfInfo(Bstr &strName, Guid &guid, PNETIFINFO pInfo)
         HRESULT hr = VBoxNetCfgWinGetAdapterSettings((const GUID *)guid.raw(), &Settings);
         if(hr == S_OK)
         {
-            pInfo->IPAddress.u = Settings.ip;
-            pInfo->IPNetMask.u = Settings.mask;
+            if(Settings.ip)
+            {
+                pInfo->IPAddress.u = Settings.ip;
+                pInfo->IPNetMask.u = Settings.mask;
+            }
             pInfo->bDhcpEnabled = Settings.bDhcp;
         }
         else
