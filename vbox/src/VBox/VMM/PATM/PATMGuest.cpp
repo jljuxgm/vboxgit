@@ -1,4 +1,4 @@
-/* $Id: PATMGuest.cpp 18927 2009-04-16 11:41:38Z vboxsync $ */
+/* $Id: PATMGuest.cpp 19418 2009-05-06 09:51:55Z vboxsync $ */
 /** @file
  * PATMGuest - Guest OS Patching Manager (non-generic)
  */
@@ -159,7 +159,7 @@ int PATMPatchSysenterXP(PVM pVM, RTGCPTR32 pInstrGC, PPATMPATCHREC pPatchRec)
         return VERR_PATCHING_REFUSED;
     }
 
-#ifdef DEBUG
+#ifdef LOG_ENABLED
     Log(("Sysenter Patch code ----------------------------------------------------------\n"));
     patmr3DisasmCodeStream(pVM, pInstrGC, pInstrGC, patmr3DisasmCallback, pPatch);
     Log(("Sysenter Patch code ends -----------------------------------------------------\n"));
