@@ -1,4 +1,4 @@
-/** $Id: counters.h 21698 2009-07-17 14:17:21Z vboxsync $ */
+/** $Id: counters.h 22013 2009-08-06 03:23:44Z vboxsync $ */
 /** @file
  * Counters macro invocation template.
  *
@@ -76,8 +76,6 @@ PROFILE_COUNTER(TCP_input, "TCP::input");
 PROFILE_COUNTER(IP_input, "IP::input");
 PROFILE_COUNTER(IP_output, "IP::output");
 PROFILE_COUNTER(IF_encap, "IF::encap");
-#ifdef VBOX_WITH_SLIRP_ALIAS
 PROFILE_COUNTER(ALIAS_input, "ALIAS::input");
 PROFILE_COUNTER(ALIAS_output, "ALIAS::output");
-#endif
 
