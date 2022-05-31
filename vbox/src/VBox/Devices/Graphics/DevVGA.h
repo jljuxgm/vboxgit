@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 19844 2009-05-19 23:12:55Z vboxsync $ */
+/* $Id: DevVGA.h 20444 2009-06-09 15:16:41Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -303,6 +303,9 @@ typedef struct VGAState {
     PPDMDEVINSR3                pDevInsR3;
     /** Pointer to the device instance - R0 Ptr. */
     PPDMDEVINSR0                pDevInsR0;
+
+    /** The critical section. */
+    PDMCRITSECT                 lock;
 
     /** The display port base interface. */
     PDMIBASE                    Base;
