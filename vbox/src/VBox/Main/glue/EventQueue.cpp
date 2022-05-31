@@ -1,4 +1,4 @@
-/* $Id: EventQueue.cpp 23096 2009-09-17 13:57:50Z vboxsync $ */
+/* $Id: EventQueue.cpp 23128 2009-09-18 12:50:55Z vboxsync $ */
 
 /** @file
  *
@@ -175,6 +175,7 @@ EventQueue::~EventQueue()
 EventQueue::init()
 {
     Assert(mMainQueue == NULL);
+    Assert(RTThreadIsMain(RTThreadSelf()));
     mMainQueue = new EventQueue();
 
 #if defined (VBOX_WITH_XPCOM)
@@ -201,6 +202,7 @@ EventQueue::init()
 /* static */ int
 EventQueue::uninit()
 {
+    Assert(mMainQueue);
     delete mMainQueue;
     mMainQueue = NULL;
     return VINF_SUCCESS;
