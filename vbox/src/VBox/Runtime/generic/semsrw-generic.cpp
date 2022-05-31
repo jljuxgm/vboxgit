@@ -1,4 +1,4 @@
-/* $Id: semsrw-generic.cpp 20601 2009-06-15 19:08:29Z vboxsync $ */
+/* $Id: semsrw-generic.cpp 20603 2009-06-15 19:14:51Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, Generic.
  *
@@ -543,7 +543,7 @@ RTDECL(bool) RTSemRWIsWriteOwner(RTSEMRW RWSem)
     if (!rtsemRWValid(pThis))
     {
         AssertMsgFailed(("Invalid handle %p!\n", RWSem));
-        return VERR_INVALID_HANDLE;
+        return false;
     }
 
     /*
@@ -565,7 +565,7 @@ RTDECL(uint32_t) RTSemRWGetWriteRecursion(RTSEMRW RWSem)
     if (!rtsemRWValid(pThis))
     {
         AssertMsgFailed(("Invalid handle %p!\n", RWSem));
-        return VERR_INVALID_HANDLE;
+        return 0;
     }
 
     /*
@@ -584,7 +584,7 @@ RTDECL(uint32_t) RTSemRWGetWriterReadRecursion(RTSEMRW RWSem)
     if (!rtsemRWValid(pThis))
     {
         AssertMsgFailed(("Invalid handle %p!\n", RWSem));
-        return VERR_INVALID_HANDLE;
+        return 0;
     }
 
     /*
