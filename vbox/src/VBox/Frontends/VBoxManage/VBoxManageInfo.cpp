@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 18774 2009-04-06 15:18:17Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 18826 2009-04-07 14:55:12Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -693,7 +693,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                     case NetworkAttachmentType_Bridged:
                     {
                         Bstr strBridgeAdp;
-                        nic->COMGETTER(HostInterface)(strBridgeAdp.asOutParam());
+                        nic->COMGETTER(BridgedInterface)(strBridgeAdp.asOutParam());
                         if (details == VMINFO_MACHINEREADABLE)
                         {
                             RTPrintf("bridgeadapter%d=\"%lS\"\n", currentNIC + 1, strBridgeAdp.raw());
@@ -720,7 +720,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                     case NetworkAttachmentType_HostOnly:
                     {
                         Bstr strHostonlyAdp;
-                        nic->COMGETTER(HostInterface)(strHostonlyAdp.asOutParam());
+                        nic->COMGETTER(HostOnlyInterface)(strHostonlyAdp.asOutParam());
                         if (details == VMINFO_MACHINEREADABLE)
                         {
                             RTPrintf("hostonlyadapter%d=\"%lS\"\n", currentNIC + 1, strHostonlyAdp.raw());

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 18817 2009-04-07 12:38:35Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 18826 2009-04-07 14:55:12Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2035,7 +2035,7 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD /* aThread */, vo
                                 rc = nwInterfaces[i]->COMGETTER(Name)(name.asOutParam());
                                 if (FAILED(rc)) throw rc;
                                 /* Set the interface name to attach to */
-                                pNetworkAdapter->COMSETTER(HostInterface)(name);
+                                pNetworkAdapter->COMSETTER(BridgedInterface)(name);
                                 if (FAILED(rc)) throw rc;
                                 break;
                             }
@@ -2066,7 +2066,7 @@ DECLCALLBACK(int) Appliance::taskThreadImportMachines(RTTHREAD /* aThread */, vo
                                 rc = nwInterfaces[i]->COMGETTER(Name)(name.asOutParam());
                                 if (FAILED(rc)) throw rc;
                                 /* Set the interface name to attach to */
-                                pNetworkAdapter->COMSETTER(HostInterface)(name);
+                                pNetworkAdapter->COMSETTER(HostOnlyInterface)(name);
                                 if (FAILED(rc)) throw rc;
                                 break;
                             }
