@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 21367 2009-07-07 17:44:52Z vboxsync $ */
+/* $Id: PDMQueue.cpp 21788 2009-07-24 17:12:36Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -464,11 +464,13 @@ VMMR3DECL(int) PDMR3QueueDestroy(PPDMQUEUE pQueue)
      */
     STAMR3Deregister(pVM, &pQueue->cbItem);
     STAMR3Deregister(pVM, &pQueue->cbItem);
+    STAMR3Deregister(pVM, &pQueue->StatAllocFailures);
     STAMR3Deregister(pVM, &pQueue->StatInsert);
     STAMR3Deregister(pVM, &pQueue->StatFlush);
     STAMR3Deregister(pVM, &pQueue->StatFlushLeftovers);
 #ifdef VBOX_WITH_STATISTICS
     STAMR3Deregister(pVM, &pQueue->StatFlushPrf);
+    STAMR3Deregister(pVM, (void *)&pQueue->cStatPending);
 #endif
 
     /*
