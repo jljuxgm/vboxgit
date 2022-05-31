@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 19300 2009-05-01 18:06:59Z vboxsync $ */
+/* $Id: EM.cpp 19322 2009-05-04 11:54:21Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -3728,9 +3728,17 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                  */
                 case VINF_EM_RESET:
                 {
-                    EMSTATE enmState = emR3Reschedule(pVM, pVCpu, pVCpu->em.s.pCtx);
-                    Log2(("EMR3ExecuteVM: VINF_EM_RESET: %d -> %d (%s)\n", pVCpu->em.s.enmState, enmState, EMR3GetStateName(enmState)));
-                    pVCpu->em.s.enmState = enmState;
+                    if (pVCpu->idCpu == 0)
+                    {
+                        EMSTATE enmState = emR3Reschedule(pVM, pVCpu, pVCpu->em.s.pCtx);
+                        Log2(("EMR3ExecuteVM: VINF_EM_RESET: %d -> %d (%s)\n", pVCpu->em.s.enmState, enmState, EMR3GetStateName(enmState)));
+                        pVCpu->em.s.enmState = enmState;
+                    }
+                    else
+                    {
+                        /* All other VCPUs go into the halted state until woken up again. */
+                        pVCpu->em.s.enmState = EMSTATE_HALTED;
+                    }
                     break;
                 }
 
