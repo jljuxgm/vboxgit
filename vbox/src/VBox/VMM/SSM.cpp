@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 22140 2009-08-10 14:24:56Z vboxsync $ */
+/* $Id: SSM.cpp 22255 2009-08-14 12:04:14Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -6276,7 +6276,7 @@ VMMR3DECL(int) SSMR3SkipToEndOfUnit(PSSMHANDLE pSSM)
                 while (pSSM->u.Read.cbRecLeft)
                 {
                     uint8_t abBuf[8192];
-                    size_t  cbToRead = RT_MIN(sizeof(pSSM->u.Read.cbRecLeft), sizeof(abBuf));
+                    size_t  cbToRead = RT_MIN(pSSM->u.Read.cbRecLeft, sizeof(abBuf));
                     int rc = ssmR3DataReadV2Raw(pSSM, abBuf, cbToRead);
                     if (RT_FAILURE(rc))
                         return pSSM->rc = rc;
