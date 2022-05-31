@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 20793 2009-06-22 17:05:03Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
@@ -55,6 +55,7 @@
 #include <vm/seg_kmem.h>
 #include <sys/ddi.h>
 #include <sys/sunddi.h>
+#include <sys/spl.h>
 
 #undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
 
