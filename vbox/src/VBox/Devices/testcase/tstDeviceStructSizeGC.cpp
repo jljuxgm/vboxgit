@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 22835 2009-09-08 12:56:26Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 22838 2009-09-08 13:20:18Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -282,6 +282,9 @@ int main()
     GEN_CHECK_OFF(VGASTATE, StatR3MemoryRead);
     GEN_CHECK_OFF(VGASTATE, StatRZMemoryWrite);
     GEN_CHECK_OFF(VGASTATE, StatR3MemoryWrite);
+/* hardcoded at DevVGA.cpp */
+#define VBE_NEW_DYN_LIST
+#define VBE_BYTEWISE_IO
 #ifdef VBE_BYTEWISE_IO
     GEN_CHECK_OFF(VGASTATE, fReadVBEData);
     GEN_CHECK_OFF(VGASTATE, fWriteVBEData);
