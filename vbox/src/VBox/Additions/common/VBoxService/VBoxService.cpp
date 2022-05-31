@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 19521 2009-05-08 13:19:31Z vboxsync $ */
+/* $Id: VBoxService.cpp 19526 2009-05-08 14:06:35Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -395,12 +395,9 @@ int main(int argc, char **argv)
     for (int i = 1; i < argc; i++)
     {
         const char *psz = argv[i];
-        if (*psz != '-')
-            return VBoxServiceSyntax("Unknown argument '%s'\n", psz);
-        psz++;
 
-        /* translate long argument to short */
-        if (*psz == '-')
+        /* Translate long argument to short. */
+        if (*psz+1 == '-')
         {
             psz++;
             size_t cch = strlen(psz);
@@ -443,59 +440,68 @@ int main(int argc, char **argv)
                     for (unsigned j = 0; !fFound && j < RT_ELEMENTS(g_aServices); j++)
                     {
                         rc = g_aServices[j].pDesc->pfnOption(NULL, argc, argv, &i);
-                        if (rc != 0)
+                        fFound = rc == 0;
+                        if (fFound)
+                            break;
+                        if (rc != -1)
                             return rc;
                     }
                 continue;
             }
 #undef MATCHES
         }
-
-        /* handle the string of short options. */
-        do
+        else if (*psz == '-')
         {
-            switch (*psz)
+            /* Handle the string of short options. */
+            do
             {
-                case 'i':
-                    rc = VBoxServiceArgUInt32(argc, argv, psz + 1, &i,
-                                              &g_DefaultInterval, 1, (UINT32_MAX / 1000) - 1);
-                    if (rc)
-                        return rc;
-                    psz = NULL;
-                    break;
-
-                case 'f':
-                    fDaemonize = false;
-                    break;
-
-                case 'v':
-                    g_cVerbosity++;
-                    break;
-
-                case 'h':
-                case '?':
-                    return VBoxServiceUsage();
-
-#ifdef RT_OS_WINDOWS
-                case 'r':
-                    return VBoxServiceWinInstall();
-
-                case 'u':
-                    return VBoxServiceWinUninstall();
-#endif
-
-                default:
+                switch (*psz)
                 {
-                    for (unsigned j = 0; j < RT_ELEMENTS(g_aServices); j++)
-                    {
-                        rc = g_aServices[j].pDesc->pfnOption(&psz, argc, argv, &i);
-                        if (rc != 0)
+                    case 'i':
+                        rc = VBoxServiceArgUInt32(argc, argv, psz + 1, &i,
+                                                  &g_DefaultInterval, 1, (UINT32_MAX / 1000) - 1);
+                        if (rc)
                             return rc;
+                        psz = NULL;
+                        break;
+
+                    case 'f':
+                        fDaemonize = false;
+                        break;
+
+                    case 'v':
+                        g_cVerbosity++;
+                        break;
+
+                    case 'h':
+                    case '?':
+                        return VBoxServiceUsage();
+
+    #ifdef RT_OS_WINDOWS
+                    case 'r':
+                        return VBoxServiceWinInstall();
+
+                    case 'u':
+                        return VBoxServiceWinUninstall();
+    #endif
+
+                    default:
+                    {
+                        bool fFound = false;
+                        for (unsigned j = 0; j < RT_ELEMENTS(g_aServices); j++)
+                        {
+                            rc = g_aServices[j].pDesc->pfnOption(&psz, argc, argv, &i);
+                            fFound = rc == 0;
+                            if (fFound)
+                                break;
+                            if (rc != -1)
+                                return rc;
+                        }
+                        break;
                     }
-                    break;
                 }
-            }
-        } while (psz && *++psz);
+            } while (psz && *++psz);
+        }
     }
 
     /*
