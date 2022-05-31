@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 22557 2009-08-28 16:32:46Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 22991 2009-09-14 10:16:08Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
@@ -48,6 +48,7 @@
 #include <sys/cyclic.h>
 #include <sys/class.h>
 #include <sys/cpuvar.h>
+#include <sys/archsystm.h>
 #include <sys/x_call.h> /* in platform dir */
 #include <sys/x86_archext.h>
 #include <vm/hat.h>

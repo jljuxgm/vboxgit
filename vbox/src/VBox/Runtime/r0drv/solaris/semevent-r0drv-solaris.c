@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 22773 2009-09-04 10:14:17Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 22991 2009-09-14 10:16:08Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, Ring-0 Driver, Solaris.
  */
@@ -154,8 +154,12 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT EventSem)
     if (!fAcquired)
     {
         if (curthread->t_intr && getpil() < DISP_LEVEL)
-            swtch();
-
+        {
+            RTTHREADPREEMPTSTATE PreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;
+            RTThreadPreemptDisable(&PreemptState);
+            preempt();
+            RTThreadPreemptRestore(&PreemptState);
+        }
         mutex_enter(&pEventInt->Mtx);
     }
 
