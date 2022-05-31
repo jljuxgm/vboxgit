@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 22509 2009-08-27 11:46:29Z vboxsync $
+# $Id: Makefile.kmk 23133 2009-09-18 14:11:55Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox HGCM Service.
 #
@@ -237,7 +237,6 @@ ifdef VBOX_WITH_COCOA_QT
  VBoxOGLrenderspu_SOURCES.darwin = \
     render/renderspu_cocoa.c \
     render/renderspu_cocoa_helper.m
- VBoxOGLrenderspu_LDFLAGS.darwin += -framework AppKit
 else
  VBoxOGLrenderspu_SOURCES.darwin = render/renderspu_agl.c
 endif
