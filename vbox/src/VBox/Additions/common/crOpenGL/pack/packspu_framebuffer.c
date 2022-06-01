@@ -1,4 +1,4 @@
-/* $Id: packspu_framebuffer.c 23694 2009-10-12 13:46:26Z vboxsync $ */
+/* $Id: packspu_framebuffer.c 28552 2010-04-21 09:33:25Z vboxsync $ */
 
 /** @file
  * VBox OpenGL FBO related functions
@@ -72,6 +72,13 @@ packspu_FramebufferRenderbufferEXT(GLenum target, GLenum attachment, GLenum rend
 {
 	crStateFramebufferRenderbufferEXT(target, attachment, renderbuffertarget, renderbuffer);
     crPackFramebufferRenderbufferEXT(target, attachment, renderbuffertarget, renderbuffer);
+}
+
+void PACKSPU_APIENTRY
+packspu_BindRenderbufferEXT(GLenum target, GLuint renderbuffer)
+{
+    crStateBindRenderbufferEXT(target, renderbuffer);
+    crPackBindRenderbufferEXT(target, renderbuffer);
 }
 
 GLenum PACKSPU_APIENTRY
