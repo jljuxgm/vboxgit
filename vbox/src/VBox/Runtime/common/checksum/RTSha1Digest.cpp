@@ -1,4 +1,4 @@
-/* $Id: RTSha1Digest.cpp 29778 2010-05-25 11:56:36Z vboxsync $ */
+/* $Id: RTSha1Digest.cpp 29819 2010-05-26 14:05:27Z vboxsync $ */
 /** @file
  * IPRT - SHA1 digest creation
  */
@@ -89,10 +89,16 @@ RTR3DECL(int) RTSha1Digest(const char *pszFile, char **ppszDigest)
     if (!SHA1_Final(auchDig, &ctx))
         return VERR_INTERNAL_ERROR;
 
-    *ppszDigest = (char*)RTMemAlloc(41);
-    rc = RTSha1ToString(auchDig, *ppszDigest, 41);
-    if (RT_FAILURE(rc))
-        RTStrFree(*ppszDigest);
+    char *pszDigest;
+    rc = RTStrAllocEx(&pszDigest, RTSHA1_DIGEST_LEN + 1);
+    if (RT_SUCCESS(rc))
+    {
+        rc = RTSha1ToString(auchDig, pszDigest, RTSHA1_DIGEST_LEN + 1);
+        if (RT_SUCCESS(rc))
+            *ppszDigest = pszDigest;
+        else
+            RTStrFree(pszDigest);
+    }
 
     return rc;
 }
