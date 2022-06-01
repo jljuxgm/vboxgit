@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 27469 2010-03-18 09:39:23Z vboxsync $ */
+/* $Id: DevPcBios.cpp 27470 2010-03-18 09:51:21Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -231,7 +231,7 @@ static int biosGuessDiskLCHS(PPDMIBLOCK pBlock, PPDMMEDIAGEOMETRY pLCHSGeometry)
  */
 static void pcbiosCmosWrite(PPDMDEVINS pDevIns, int off, uint32_t u32Val)
 {
-    Assert(off < 128);
+    Assert(off < 256);
     Assert(u32Val < 256);
 
 #if 1
