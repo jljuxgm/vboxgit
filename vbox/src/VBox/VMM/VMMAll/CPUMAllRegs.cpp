@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 26649 2010-02-19 13:16:11Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 26673 2010-02-22 09:26:43Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1121,7 +1121,7 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t iLeaf, uint32_t *pEax, ui
             case 2:
                 level = 2;
                 type = 3;
-                sharing = cores; /* our L2 cache is modelled as shared between all cores */ 
+                sharing = cores; /* our L2 cache is modelled as shared between all cores */
                 linesize = 64;
                 associativity = 24;
                 sets = 4096;
@@ -1720,10 +1720,7 @@ VMMDECL(bool) CPUMIsGuestNXEnabled(PVMCPU pVCpu)
 VMMDECL(bool) CPUMIsGuestPageSizeExtEnabled(PVMCPU pVCpu)
 {
     /* PAE or AMD64 implies support for big pages regardless of CR4.PSE */
-    if (pVCpu->cpum.s.Guest.cr4 & X86_CR4_PAE)
-        return true;
-
-    return !!(pVCpu->cpum.s.Guest.cr4 & X86_CR4_PSE);
+    return !!(pVCpu->cpum.s.Guest.cr4 & (X86_CR4_PSE | X86_CR4_PAE));
 }
 
 
