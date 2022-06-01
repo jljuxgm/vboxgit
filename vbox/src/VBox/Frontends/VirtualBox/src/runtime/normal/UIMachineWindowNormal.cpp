@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 28994 2010-05-04 08:23:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -555,8 +555,10 @@ void UIMachineWindowNormal::loadWindowSettings()
     /* Load availability settings: */
     {
         /* USB Stuff: */
-        CUSBController usbController = machine.GetUSBController();
-        if (usbController.isNull())
+        const CUSBController &usbController = machine.GetUSBController();
+        if (    usbController.isNull()
+            || !usbController.GetEnabled()
+            || !usbController.GetProxyAvailable())
         {
             /* Hide USB Menu: */
             indicatorsPool()->indicator(UIIndicatorIndex_USBDevices)->setHidden(true);

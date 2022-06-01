@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 28963 2010-05-03 09:16:28Z vboxsync $ */
+/* $Id: UISession.cpp 28994 2010-05-04 08:23:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1476,13 +1476,14 @@ void UISession::setPointerShape(const uchar *pShapeData, bool fHasAlpha,
 void UISession::reinitMenuPool()
 {
     /* Get uisession machine: */
-    CMachine machine = session().GetConsole().GetMachine();
+    const CMachine &machine = session().GetConsole().GetMachine();
 
     /* Availability settings: */
     {
         /* USB Stuff: */
-        CUSBController usbController = machine.GetUSBController();
+        const CUSBController &usbController = machine.GetUSBController();
         if (   usbController.isNull()
+            || !usbController.GetEnabled()
             || !usbController.GetProxyAvailable())
         {
             /* Hide USB menu if controller is NULL or no USB proxy available: */
