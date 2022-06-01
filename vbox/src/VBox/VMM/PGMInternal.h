@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 28639 2010-04-23 12:46:38Z vboxsync $ */
+/* $Id: PGMInternal.h 28656 2010-04-23 14:43:35Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3425,7 +3425,7 @@ PPGMPOOLPAGE    pgmPoolGetPage(PPGMPOOL pPool, RTHCPHYS HCPhys);
 int             pgmPoolSyncCR3(PVMCPU pVCpu);
 bool            pgmPoolIsDirtyPage(PVM pVM, RTGCPHYS GCPhys);
 int             pgmPoolTrackUpdateGCPhys(PVM pVM, RTGCPHYS GCPhysPage, PPGMPAGE pPhysPage, bool fFlushPTEs, bool *pfFlushTLBs);
-void            pgmPoolTracDerefGCPhysHint(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTHCPHYS HCPhys, RTGCPHYS GCPhysHint);
+void            pgmPoolTracDerefGCPhysHint(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTHCPHYS HCPhys, RTGCPHYS GCPhysHint, uint16_t iPte);
 void            pgmPoolInvalidateDirtyPage(PVM pVM, RTGCPHYS GCPhysPT);
 DECLINLINE(int) pgmPoolTrackFlushGCPhys(PVM pVM, RTGCPHYS GCPhysPage, PPGMPAGE pPhysPage, bool *pfFlushTLBs)
 {
@@ -3433,7 +3433,7 @@ DECLINLINE(int) pgmPoolTrackFlushGCPhys(PVM pVM, RTGCPHYS GCPhysPage, PPGMPAGE p
 }
 
 uint16_t        pgmPoolTrackPhysExtAddref(PVM pVM, PPGMPAGE pPhysPage, uint16_t u16, uint16_t iShwPT, uint16_t iPte);
-void            pgmPoolTrackPhysExtDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPoolPage, PPGMPAGE pPhysPage);
+void            pgmPoolTrackPhysExtDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPoolPage, PPGMPAGE pPhysPage, uint16_t iPte);
 void            pgmPoolMonitorChainChanging(PVMCPU pVCpu, PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTGCPHYS GCPhysFault, CTXTYPE(RTGCPTR, RTHCPTR, RTGCPTR) pvAddress, unsigned cbWrite);
 int             pgmPoolMonitorChainFlush(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
 void            pgmPoolMonitorModifiedInsert(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
