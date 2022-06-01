@@ -1,6 +1,6 @@
-/* $Id: tstDeadlock.cpp 25604 2009-12-31 02:25:17Z vboxsync $ */
+/* $Id: tstRTLockValidator.cpp 25605 2009-12-31 02:30:48Z vboxsync $ */
 /** @file
- * IPRT Testcase - Deadlock detection.
+ * IPRT Testcase - RTLockValidator.
  */
 
 /*
@@ -177,7 +177,7 @@ int main()
     /*
      * Init.
      */
-    int rc = RTTestInitAndCreate("tstRTDeadlock", &g_hTest);
+    int rc = RTTestInitAndCreate("tstRTLockValidator", &g_hTest);
     if (rc)
         return rc;
     RTTestBanner(g_hTest);
