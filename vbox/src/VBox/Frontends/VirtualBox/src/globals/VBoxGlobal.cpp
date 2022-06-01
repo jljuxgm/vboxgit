@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 29607 2010-05-18 09:44:38Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 29736 2010-05-21 14:06:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1509,8 +1509,7 @@ QString VBoxGlobal::toString (StorageSlot aSlot) const
         }
         case KStorageBus_SAS:
         {
-            /* TODO: change this index to 6 after 3.2 */
-            result = mSlotTemplates [5].arg (aSlot.port);
+            result = mSlotTemplates [6].arg (aSlot.port);
             break;
         }
         case KStorageBus_Floppy:
