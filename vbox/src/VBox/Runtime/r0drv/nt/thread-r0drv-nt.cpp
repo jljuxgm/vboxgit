@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 24021 2009-10-23 11:29:18Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 24034 2009-10-23 13:04:13Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -169,12 +169,7 @@ RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
     Assert(pState->uchOldIrql == 255);
     Assert(KeGetCurrentIrql() <= DISPATCH_LEVEL);
 
-#ifndef IPRT_TARGET_NT4
-    Assert(g_pfnrtKeSetSystemAffinityThread);
-    g_pfnrtKeSetSystemAffinityThread((KAFFINITY)1 << KeGetCurrentProcessorNumber());
-#else
     KeRaiseIrql(DISPATCH_LEVEL, &pState->uchOldIrql);
-#endif
     RT_ASSERT_PREEMPT_CPUID_DISABLE(pState);
 }
 
@@ -184,12 +179,7 @@ RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
     AssertPtr(pState);
 
     RT_ASSERT_PREEMPT_CPUID_RESTORE(pState);
-#ifndef IPRT_TARGET_NT4
-    Assert(g_pfnrtKeSetSystemAffinityThread);
-    g_pfnrtKeSetSystemAffinityThread(KeQueryActiveProcessors());
-#else
     KeLowerIrql(pState->uchOldIrql);
-#endif
     pState->uchOldIrql = 255;
 }
 
