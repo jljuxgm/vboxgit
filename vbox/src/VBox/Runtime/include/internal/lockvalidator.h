@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.h 25406 2009-12-15 14:23:53Z vboxsync $ */
+/* $Id: lockvalidator.h 25436 2009-12-16 15:22:40Z vboxsync $ */
 /** @file
  * IPRT - Internal RTLockValidator header.
  */
@@ -61,6 +61,10 @@ typedef struct RTLOCKVALIDATORPERTHREAD
     /** Number of registered read locks that this thread owns, nesting included. */
     int32_t volatile        cReadLocks;
 } RTLOCKVALIDATORPERTHREAD;
+
+
+DECLHIDDEN(void)    rtLockValidatorSerializeDestructEnter(void);
+DECLHIDDEN(void)    rtLockValidatorSerializeDestructLeave(void);
 
 RT_C_DECLS_END
 

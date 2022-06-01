@@ -1,4 +1,4 @@
-/* $Id: tstRTSemXRoads.cpp 25431 2009-12-16 14:15:11Z vboxsync $ */
+/* $Id: tstRTSemXRoads.cpp 25436 2009-12-16 15:22:40Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSemXRoads.
  */
@@ -78,6 +78,7 @@ static int tstTrafficThreadCommon(uintptr_t iThread, bool fNS)
     }
     return VINF_SUCCESS;
 }
+
 
 static DECLCALLBACK(int) tstTrafficNSThread(RTTHREAD hSelf, void *pvUser)
 {
