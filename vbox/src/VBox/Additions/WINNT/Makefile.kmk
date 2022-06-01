@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24399 2009-11-05 16:47:30Z vboxsync $
+# $Id: Makefile.kmk 25807 2010-01-13 15:43:54Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows NT++ Guest Additions.
 #
@@ -28,9 +28,7 @@ include $(PATH_SUB_CURRENT)/MouseFilter/Makefile.kmk
 include $(PATH_SUB_CURRENT)/VBoxGuest/Makefile.kmk
 include $(PATH_SUB_CURRENT)/VBoxTray/Makefile.kmk
 include $(PATH_SUB_CURRENT)/VBoxGINA/Makefile.kmk
-ifndef VBOX_OSE
- include $(PATH_SUB_CURRENT)/VBoxCredProv/Makefile.kmk
-endif
+include $(PATH_SUB_CURRENT)/VBoxCredProv/Makefile.kmk
 include $(PATH_SUB_CURRENT)/VBoxHook/Makefile.kmk
 ifndef VBOX_OSE
  include $(PATH_SUB_CURRENT)/Network/Makefile.kmk
