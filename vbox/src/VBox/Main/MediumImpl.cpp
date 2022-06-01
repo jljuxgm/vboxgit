@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 27803 2010-03-29 20:10:35Z vboxsync $ */
+/* $Id: MediumImpl.cpp 27811 2010-03-30 07:10:52Z vboxsync $ */
 
 /** @file
  *
@@ -191,10 +191,10 @@ public:
     Task(Medium *aMedium, Progress *aProgress)
         : mMedium(aMedium),
           mMediumCaller(aMedium),
-          mThread(NIL_RTTHREAD),
-          mProgress(aProgress),
+          m_pfNeedsSaveSettings(NULL),
           mVDOperationIfaces(NULL),
-          m_pfNeedsSaveSettings(NULL)
+          mThread(NIL_RTTHREAD),
+          mProgress(aProgress)
     {
         AssertReturnVoidStmt(aMedium, mRC = E_FAIL);
         mRC = mMediumCaller.rc();
@@ -281,8 +281,8 @@ public:
                    MediumVariant_T aVariant)
         : Medium::Task(aMedium, aProgress),
           mTarget(aTarget),
-          mTargetCaller(aTarget),
-          mVariant(aVariant)
+          mVariant(aVariant),
+          mTargetCaller(aTarget)
     {
         AssertReturnVoidStmt(aTarget != NULL, mRC = E_FAIL);
         mRC = mTargetCaller.rc();
@@ -311,12 +311,12 @@ public:
               MediumVariant_T aVariant)
         : Medium::Task(aMedium, aProgress),
           mTarget(aTarget),
-          mTargetCaller(aTarget),
           mParent(aParent),
-          mParentCaller(aParent),
           mSourceChain(aSourceChain),
           mParentChain(aParentChain),
-          mVariant(aVariant)
+          mVariant(aVariant),
+          mTargetCaller(aTarget),
+          mParentCaller(aParent)
     {
         AssertReturnVoidStmt(aTarget != NULL, mRC = E_FAIL);
         mRC = mTargetCaller.rc();
