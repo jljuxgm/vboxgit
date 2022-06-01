@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 29540 2010-05-17 12:37:33Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 30377 2010-06-22 14:01:01Z vboxsync $ */
 
 /** @file
  *
@@ -1529,7 +1529,8 @@ STDMETHODIMP SessionMachine::EndTakingSnapshot(BOOL aSuccess)
     mSnapshotData.mLastState = MachineState_Null;
     mSnapshotData.mSnapshot.setNull();
 
-    // save VirtualBox.xml (media registry most probably changed with diff image)
+    // save VirtualBox.xml (media registry most probably changed with diff image);
+    // for that we should hold only the VirtualBox lock
     machineLock.release();
     AutoWriteLock vboxLock(mParent COMMA_LOCKVAL_SRC_POS);
     mParent->saveSettings();
