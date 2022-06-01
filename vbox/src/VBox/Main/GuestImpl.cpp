@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28803 2010-04-27 09:53:43Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28816 2010-04-27 13:08:46Z vboxsync $ */
 
 /** @file
  *
@@ -973,6 +973,10 @@ STDMETHODIMP Guest::GetProcessOutput(ULONG aPID, ULONG aFlags, ULONG aTimeoutMS,
 
     try
     {
+        /* Adjust timeout */
+        if (aTimeoutMS == 0)
+            aTimeoutMS = UINT32_MAX;
+
         /* Search for existing PID. */
         PHOSTEXECOUTCALLBACKDATA pData = (HOSTEXECOUTCALLBACKDATA*)RTMemAlloc(sizeof(HOSTEXECOUTCALLBACKDATA));
         AssertReturn(pData, VBOX_E_IPRT_ERROR);
