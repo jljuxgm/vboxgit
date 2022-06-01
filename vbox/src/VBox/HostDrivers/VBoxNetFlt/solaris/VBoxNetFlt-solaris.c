@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 30112 2010-06-09 12:31:50Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 30115 2010-06-09 12:45:54Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -943,10 +943,10 @@ static int VBoxNetFltSolarisModClose(queue_t *pQueue, int fOpenMode, cred_t *pCr
      */
     switch (pStream->Type)
     {
-        case kIp4Stream:        ASMAtomicUoWriteNullPtr(pStream->pThis->u.s.pvIp4Stream);     break;
-        case kIp6Stream:        ASMAtomicUoWriteNullPtr(pStream->pThis->u.s.pvIp6Stream);     break;
-        case kArpStream:        ASMAtomicUoWriteNullPtr(pStream->pThis->u.s.pvArpStream);     break;
-        case kPromiscStream:    ASMAtomicUoWriteNullPtr(pStream->pThis->u.s.pvPromiscStream); break;
+        case kIp4Stream:        ASMAtomicUoWriteNullPtr(&pStream->pThis->u.s.pvIp4Stream);     break;
+        case kIp6Stream:        ASMAtomicUoWriteNullPtr(&pStream->pThis->u.s.pvIp6Stream);     break;
+        case kArpStream:        ASMAtomicUoWriteNullPtr(&pStream->pThis->u.s.pvArpStream);     break;
+        case kPromiscStream:    ASMAtomicUoWriteNullPtr(&pStream->pThis->u.s.pvPromiscStream); break;
         default:    /* Heh. */
         {
             AssertRelease(pStream->Type);
