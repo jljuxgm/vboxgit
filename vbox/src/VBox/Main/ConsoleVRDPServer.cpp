@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 25310 2009-12-10 17:06:44Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 25632 2010-01-04 09:44:32Z vboxsync $ */
 
 /** @file
  *
@@ -1435,7 +1435,11 @@ VRDPAuthResult ConsoleVRDPServer::Authenticate (const Guid &uuid, VRDPAuthGuestJ
 
         LogRel(("VRDPAUTH: ConsoleVRDPServer::Authenticate: loading external authentication library '%ls'\n", authLibrary.raw()));
 
+#ifdef RT_OS_DARWIN
+        int rc = RTLdrLoadAppPriv (filename.raw(), &mAuthLibrary);
+#else /* RT_OS_DARWIN */
         int rc = RTLdrLoad (filename.raw(), &mAuthLibrary);
+#endif /* RT_OS_DARWIN */
         if (RT_FAILURE(rc))
             LogRel(("VRDPAUTH: Failed to load external authentication library. Error code: %Rrc\n", rc));
 
