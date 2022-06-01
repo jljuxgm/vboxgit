@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 24047 2009-10-23 17:52:58Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 24059 2009-10-25 12:51:12Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -724,6 +724,8 @@ static int pdmacFileEpClose(PPDMASYNCCOMPLETIONENDPOINT pEndpoint)
     /* Free the cached data. */
     if (pEpFile->fCaching)
         pdmacFileEpCacheDestroy(pEpFile);
+
+    RTFileClose(pEpFile->File);
 
     return VINF_SUCCESS;
 }
