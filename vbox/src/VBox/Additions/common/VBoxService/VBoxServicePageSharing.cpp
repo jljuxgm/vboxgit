@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29955 2010-06-01 15:15:45Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 29956 2010-06-01 15:20:11Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -357,7 +357,7 @@ void VBoxServicePageSharingInspectGuest()
     /* Check all loaded kernel modules. */
     if (ZwQuerySystemInformation)
     {
-        ULONG                cbBuffer;
+        ULONG                cbBuffer = 0;
         PVOID                pBuffer = NULL;
         PRTL_PROCESS_MODULES pSystemModules;
     
