@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 28106 2010-04-08 16:45:59Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 28139 2010-04-09 12:05:43Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1255,7 +1255,12 @@ int handleModifyVM(HandlerArg *a)
                 ASSERT(nic);
 
                 CHECK_ERROR(nic, COMGETTER(NatDriver)(driver.asOutParam()));
-                CHECK_ERROR(driver, COMSETTER(Network)(Bstr(ValueUnion.psz)));
+
+                const char *psz = ValueUnion.psz;
+                if (!strcmp("default", psz))
+                    psz = "";
+
+                CHECK_ERROR(driver, COMSETTER(Network)(Bstr(psz)));
                 break;
             }
 
