@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 24757 2009-11-18 12:55:18Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 24834 2009-11-20 20:51:12Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -1335,7 +1335,6 @@ int main()
 
 #ifdef VBOX_WITH_VIRTIO
     GEN_CHECK_OFF(VPCISTATE, cs);
-    GEN_CHECK_OFF(VPCISTATE, enmDevType);
     GEN_CHECK_OFF(VPCISTATE, szInstance);
     GEN_CHECK_OFF(VPCISTATE, IBase);
     GEN_CHECK_OFF(VPCISTATE, ILeds);
