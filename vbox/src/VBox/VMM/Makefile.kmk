@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26526 2010-02-15 03:36:01Z vboxsync $
+# $Id: Makefile.kmk 26693 2010-02-23 09:08:49Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -205,12 +205,6 @@ SSM.cpp_DEFS +=	\
 	KBUILD_TYPE=\"$(KBUILD_TYPE)\" \
 	KBUILD_TARGET=\"$(KBUILD_TARGET)\" \
 	KBUILD_TARGET_ARCH=\"$(KBUILD_TARGET_ARCH)\"
-
-# access to pPool->aPages
-ifneq ($(KBUILD_TARGET),win)
-PGMPool.cpp_CXXFLAGS += \
-	$(VBOX_GCC_Wno-array_bounds)
-endif
 
 #
 # The VMM DLL.
@@ -531,6 +525,7 @@ VMMR0_SOURCES.darwin.x86 = \
 	VMMR0/PGMR0DynMap.cpp
 
 # disable annoying warnings about array subscript above array bounds in aPages[]
+PGMPool.cpp_CXXFLAGS = $(if-expr $(KBUILD_TARGET) == "win",,$(VBOX_GCC_Wno-array_bounds))
 VMMAll/PGMAllPool.cpp_CXXFLAGS = $(if-expr $(KBUILD_TARGET) == "win",,$(VBOX_GCC_Wno-array_bounds))
 
 
