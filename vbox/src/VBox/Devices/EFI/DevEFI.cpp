@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
+/* $Id: DevEFI.cpp 25790 2010-01-12 19:52:31Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -948,7 +948,7 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         if (!pThis->pszEfiRomFile)
             return VERR_NO_MEMORY;
 
-        int rc = RTPathAppPrivateArch(pThis->pszEfiRomFile, RTPATH_MAX - 32);
+        rc = RTPathAppPrivateArch(pThis->pszEfiRomFile, RTPATH_MAX - 32);
         AssertRCReturn(rc, rc);
 
         size_t offFilename = strlen(pThis->pszEfiRomFile);

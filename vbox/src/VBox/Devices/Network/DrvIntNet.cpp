@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 23918 2009-10-20 17:25:29Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 25790 2010-01-12 19:52:31Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -447,7 +447,7 @@ static int drvIntNetAsyncIoRun(PDRVINTNET pThis)
                           "%.*Rhxd\n",
                           cbFrame, cbFrame, INTNETHdrGetFramePtr(pHdr, pBuf)));
 #endif
-                    int rc = pThis->pPort->pfnReceive(pThis->pPort, INTNETHdrGetFramePtr(pHdr, pBuf), cbFrame);
+                    rc = pThis->pPort->pfnReceive(pThis->pPort, INTNETHdrGetFramePtr(pHdr, pBuf), cbFrame);
                     AssertRC(rc);
 
                     /* skip to the next frame. */
