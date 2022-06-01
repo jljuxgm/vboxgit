@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 27557 2010-03-20 21:14:43Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 27656 2010-03-23 23:32:48Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -806,6 +806,11 @@ static int pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
             {
                 /* Downgrade to the buffered backend */
                 enmEpBackend = PDMACFILEEPBACKEND_BUFFERED;
+
+#ifdef RT_OS_LINUX
+                fFileFlags &= ~RTFILE_O_ASYNC_IO;
+                enmMgrType   = PDMACEPFILEMGRTYPE_SIMPLE;
+#endif
             }
             RTFileClose(File);
         }
