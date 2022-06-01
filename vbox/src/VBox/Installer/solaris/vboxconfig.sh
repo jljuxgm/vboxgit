@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 27260 2010-03-10 19:07:13Z vboxsync $
+# $Id: vboxconfig.sh 27317 2010-03-12 10:15:45Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -616,7 +616,7 @@ postinstall()
                     echo "VirtualBox_SectionStart_DoNotEdit" >> $nmaskbackupfile
                     echo "192.168.$networkn.0 255.255.255.0" >> $nmaskbackupfile
                     echo "VirtualBox_SectionEnd_DoNotEdit" >> $nmaskbackupfile
-                    mv -f $netmasksbackupfile $netmasksfile
+                    mv -f $nmaskbackupfile $nmaskfile
                 fi
             else
                 # Should this be fatal?
