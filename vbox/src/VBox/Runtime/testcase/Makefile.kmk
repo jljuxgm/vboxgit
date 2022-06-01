@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25426 2009-12-16 12:36:52Z vboxsync $
+# $Id: Makefile.kmk 25508 2009-12-18 21:42:04Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -92,6 +92,7 @@ PROGRAMS += \
 	tstSemEvent \
 	tstSemMutex \
 	tstSemPingPong \
+	tstSemRW \
 	tstSems \
 	tstRTSemXRoads \
 	tstRTStrCache \
@@ -124,8 +125,7 @@ PROGRAMS.linux += \
 	tstRTProcIsRunningByName \
 	tstRTBitOperationsPIC3 \
 	tstInlineAsmPIC \
-	tstInlineAsmPIC3 \
-	tstSemRW
+	tstInlineAsmPIC3
 PROGRAMS.l4 += \
 	tstIoCtl
 PROGRAMS.darwin += \
