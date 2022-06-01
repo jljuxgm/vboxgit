@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28426 2010-04-16 18:06:58Z vboxsync $
+# $Id: Makefile.kmk 28791 2010-04-27 07:17:38Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -59,6 +59,9 @@ ifdef VBOX_WITH_LIVE_MIGRATION
 endif
 ifdef VBOX_WITH_RAW_MODE
  VMMR3_DEFS    += VBOX_WITH_RAW_MODE
+endif
+ifdef VBOX_WITH_PAGE_SHARING
+ VMMR3_DEFS    += VBOX_WITH_PAGE_SHARING
 endif
 VMMR3_DEFS.darwin = VMM_R0_SWITCH_STACK
 VMMR3_DEFS.darwin.x86 = \
@@ -452,6 +455,9 @@ ifdef VBOX_WITH_MULTI_CORE
 endif
 ifdef VBOX_WITH_RAW_MODE
  VMMR0_DEFS    += VBOX_WITH_RAW_MODE
+endif
+ifdef VBOX_WITH_PAGE_SHARING
+ VMMR0_DEFS    += VBOX_WITH_PAGE_SHARING
 endif
 VMMR0_DEFS.darwin = VMM_R0_SWITCH_STACK
 VMMR0_DEFS.darwin.x86 = \
