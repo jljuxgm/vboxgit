@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 26980 2010-03-02 23:30:00Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 27315 2010-03-12 09:49:22Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of VMMDev: driver interface to VMM device
@@ -107,24 +107,6 @@ PPDMIVMMDEVPORT VMMDev::getVMMDevPort()
 {
     Assert(mpDrv);
     return mpDrv->pUpPort;
-}
-
-int VMMDev::SetMouseCapabilities(uint32_t mouseCaps)
-{
-    return mpDrv->pUpPort->pfnSetMouseCapabilities(mpDrv->pUpPort, mouseCaps);
-}
-
-
-int VMMDev::SetAbsoluteMouse(uint32_t mouseXAbs, uint32_t mouseYAbs)
-{
-    return mpDrv->pUpPort->pfnSetAbsoluteMouse(mpDrv->pUpPort, mouseXAbs, mouseYAbs);
-}
-
-void VMMDev::QueryMouseCapabilities(uint32_t *pMouseCaps)
-{
-
-    Assert(mpDrv);
-    mpDrv->pUpPort->pfnQueryMouseCapabilities(mpDrv->pUpPort, pMouseCaps);
 }
 
 

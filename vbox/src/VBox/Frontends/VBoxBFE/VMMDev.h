@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 26980 2010-03-02 23:30:00Z vboxsync $ */
+/* $Id: VMMDev.h 27315 2010-03-12 09:49:22Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Declaration of VMMDev: driver interface to VMM device
@@ -42,10 +42,6 @@ public:
     }
 
     PPDMIVMMDEVPORT getVMMDevPort();
-
-    void QueryMouseCapabilities(uint32_t *pMouseCaps);
-    int  SetMouseCapabilities(uint32_t mouseCaps);
-    int  SetAbsoluteMouse(uint32_t mouseXAbs, uint32_t mouseYAbs);
 
     int hgcmLoadService (const char *pszServiceLibrary, const char *pszServiceName);
     int hgcmHostCall (const char *pszServiceName, uint32_t u32Function, uint32_t cParms, PVBOXHGCMSVCPARM paParms);
