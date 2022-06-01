@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 26587 2010-02-16 16:57:09Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 26603 2010-02-17 12:24:34Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -311,7 +311,7 @@ STDMETHODIMP NetworkAdapter::COMGETTER(MACAddress)(BSTR *aMACAddress)
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    ComAssertRet(!mData->mMACAddress.isEmpty(), E_FAIL);
+    ComAssertRet(!!mData->mMACAddress, E_FAIL);
 
     mData->mMACAddress.cloneTo(aMACAddress);
 
@@ -1025,6 +1025,8 @@ HRESULT NetworkAdapter::loadSettings(const settings::NetworkAdapter &data)
     {
         case NetworkAttachmentType_NAT:
             mData->mNATNetwork = data.strName;
+            if (mData->mNATNetwork.isNull())
+                mData->mNATNetwork = "";
             rc = AttachToNAT();
             if (FAILED(rc)) return rc;
         break;
@@ -1038,7 +1040,7 @@ HRESULT NetworkAdapter::loadSettings(const settings::NetworkAdapter &data)
 
         case NetworkAttachmentType_Internal:
             mData->mInternalNetwork = data.strName;
-            Assert(!mData->mInternalNetwork.isEmpty());
+            Assert(!mData->mInternalNetwork.isNull());
 
             rc = AttachToInternalNetwork();
             if (FAILED(rc)) return rc;

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 26587 2010-02-16 16:57:09Z vboxsync $ */
+/* $Id: ApplianceImpl.h 26603 2010-02-17 12:24:34Z vboxsync $ */
 
 /** @file
  *
@@ -95,9 +95,9 @@ private:
     void addWarning(const char* aWarning, ...);
 
     void disksWeight(uint32_t &ulTotalMB, uint32_t &cDisks) const;
-    HRESULT setUpProgressFS(ComObjPtr<Progress> &pProgress, const Utf8Str &strDescription);
-    HRESULT setUpProgressImportS3(ComObjPtr<Progress> &pProgress, const Utf8Str &strDescription);
-    HRESULT setUpProgressWriteS3(ComObjPtr<Progress> &pProgress, const Utf8Str &strDescription);
+    HRESULT setUpProgressFS(ComObjPtr<Progress> &pProgress, const Bstr &bstrDescription);
+    HRESULT setUpProgressImportS3(ComObjPtr<Progress> &pProgress, const Bstr &bstrDescription);
+    HRESULT setUpProgressWriteS3(ComObjPtr<Progress> &pProgress, const Bstr &bstrDescription);
 
     struct LocationInfo;
     void parseURI(Utf8Str strUri, LocationInfo &locInfo) const;

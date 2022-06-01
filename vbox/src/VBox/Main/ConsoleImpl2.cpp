@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26587 2010-02-16 16:57:09Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 26603 2010-02-17 12:24:34Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -760,7 +760,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     rc = CFGMR3InsertInteger(pCfg,  "LogoTime", logoDisplayTime);                   RC_CHECK();
     Bstr logoImagePath;
     hrc = biosSettings->COMGETTER(LogoImagePath)(logoImagePath.asOutParam());       H();
-    rc = CFGMR3InsertString(pCfg,   "LogoFile", Utf8Str(logoImagePath).c_str());    RC_CHECK();
+    rc = CFGMR3InsertString(pCfg,   "LogoFile", logoImagePath ? Utf8Str(logoImagePath).c_str() : ""); RC_CHECK();
 
     /*
      * Boot menu
@@ -1486,7 +1486,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
          */
         Bstr macAddr;
         hrc = networkAdapter->COMGETTER(MACAddress)(macAddr.asOutParam());          H();
-        Assert(!macAddr.isEmpty());
+        Assert(macAddr);
         Utf8Str macAddrUtf8 = macAddr;
         char *macStr = (char*)macAddrUtf8.raw();
         Assert(strlen(macStr) == 12);
@@ -3154,14 +3154,14 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                     /* Stop the hostonly DHCP Server */
                 }
 
-                if (!networkName.isEmpty())
+                if (!networkName.isNull())
                 {
                     /*
                      * Until we implement service reference counters DHCP Server will be stopped
                      * by DHCPServerRunner destructor.
                      */
                     ComPtr<IDHCPServer> dhcpServer;
-                    hrc = virtualBox->FindDHCPServerByNetworkName(networkName, dhcpServer.asOutParam());
+                    hrc = virtualBox->FindDHCPServerByNetworkName(networkName.mutableRaw(), dhcpServer.asOutParam());
                     if (SUCCEEDED(hrc))
                     {
                         /* there is a DHCP server available for this network */
