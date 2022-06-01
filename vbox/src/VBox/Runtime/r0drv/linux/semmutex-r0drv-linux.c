@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-linux.c 24956 2009-11-25 14:26:50Z vboxsync $ */
+/* $Id: semmutex-r0drv-linux.c 25378 2009-12-14 19:30:31Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Linux.
  */
@@ -61,6 +61,10 @@ typedef struct RTSEMMUTEXINTERNAL
     void * volatile     pOwner;
 } RTSEMMUTEXINTERNAL, *PRTSEMMUTEXINTERNAL;
 
+
+/* Undefine debug mappings. */
+#undef RTSemMutexRequest
+#undef RTSemMutexRequestNoResume
 
 
 RTDECL(int)  RTSemMutexCreate(PRTSEMMUTEX pMutexSem)

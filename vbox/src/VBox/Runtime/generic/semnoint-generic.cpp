@@ -1,4 +1,4 @@
-/* $Id: semnoint-generic.cpp 25373 2009-12-14 19:20:27Z vboxsync $ */
+/* $Id: semnoint-generic.cpp 25378 2009-12-14 19:30:31Z vboxsync $ */
 /** @file
  * IPRT - Generic Non-Interruptable Wait and Request Functions.
  */
@@ -98,6 +98,7 @@ RTDECL(int) RTSemEventMultiWait(RTSEMEVENTMULTI EventSem, unsigned cMillies)
 RT_EXPORT_SYMBOL(RTSemEventMultiWait);
 
 
+#undef RTSemMutexRequest                /* undo debug mapping */
 RTDECL(int) RTSemMutexRequest(RTSEMMUTEX Mutex, unsigned cMillies)
 {
     int rc;

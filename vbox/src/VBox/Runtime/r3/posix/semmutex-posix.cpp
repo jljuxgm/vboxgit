@@ -1,4 +1,4 @@
-/* $Id: semmutex-posix.cpp 25373 2009-12-14 19:20:27Z vboxsync $ */
+/* $Id: semmutex-posix.cpp 25378 2009-12-14 19:30:31Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphore, POSIX.
  */
@@ -69,6 +69,10 @@ struct RTSEMMUTEXINTERNAL
 #endif
 };
 
+
+/* Undefine debug mappings. */
+#undef RTSemMutexRequest
+#undef RTSemMutexRequestNoResume
 
 
 RTDECL(int)  RTSemMutexCreate(PRTSEMMUTEX pMutexSem)

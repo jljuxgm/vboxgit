@@ -1,4 +1,4 @@
-/* $Id: sems-win.cpp 25373 2009-12-14 19:20:27Z vboxsync $ */
+/* $Id: sems-win.cpp 25378 2009-12-14 19:30:31Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, implementation for Windows host platform.
  */
@@ -48,6 +48,10 @@
 /** Converts semaphore to win32 handle. */
 #define SEM2HND(Sem) ((HANDLE)(uintptr_t)Sem)
 
+
+/* Undefine debug mappings. */
+#undef RTSemMutexRequest
+#undef RTSemMutexRequestNoResume
 
 
 RTDECL(int)   RTSemEventCreate(PRTSEMEVENT pEventSem)

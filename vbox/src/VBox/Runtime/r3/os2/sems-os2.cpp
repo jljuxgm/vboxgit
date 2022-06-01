@@ -1,4 +1,4 @@
-/* $Id: sems-os2.cpp 10839 2008-07-23 19:48:51Z vboxsync $ */
+/* $Id: sems-os2.cpp 25378 2009-12-14 19:30:31Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, OS/2.
  */
@@ -44,6 +44,11 @@
 
 /** Converts semaphore to OS/2 handle. */
 #define SEM2HND(Sem) ((LHANDLE)(uintptr_t)Sem)
+
+
+/* Undefine debug mappings. */
+#undef RTSemMutexRequest
+#undef RTSemMutexRequestNoResume
 
 
 RTDECL(int)   RTSemEventCreate(PRTSEMEVENT pEventSem)
