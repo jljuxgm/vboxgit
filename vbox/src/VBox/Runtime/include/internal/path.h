@@ -1,4 +1,4 @@
-/* $Id: path.h 21675 2009-07-17 12:18:30Z vboxsync $ */
+/* $Id: path.h 26476 2010-02-13 02:06:41Z vboxsync $ */
 /** @file
  * IPRT - RTPath Internal header.
  */
@@ -42,9 +42,10 @@ RT_C_DECLS_BEGIN
 #endif
 
 
-size_t  rtPathVolumeSpecLen(const char *pszPath);
-int     rtPathPosixRename(const char *pszSrc, const char *pszDst, unsigned fRename, RTFMODE fFileType);
-int     rtPathWin32MoveRename(const char *pszSrc, const char *pszDst, uint32_t fFlags, RTFMODE fFileType);
+DECLHIDDEN(size_t)  rtPathRootSpecLen(const char *pszPath);
+DECLHIDDEN(size_t)  rtPathVolumeSpecLen(const char *pszPath);
+DECLHIDDEN(int)     rtPathPosixRename(const char *pszSrc, const char *pszDst, unsigned fRename, RTFMODE fFileType);
+DECLHIDDEN(int)     rtPathWin32MoveRename(const char *pszSrc, const char *pszDst, uint32_t fFlags, RTFMODE fFileType);
 
 
 /**

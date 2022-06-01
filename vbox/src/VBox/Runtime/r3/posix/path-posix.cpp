@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 25898 2010-01-18 15:33:54Z vboxsync $ */
+/* $Id: path-posix.cpp 26476 2010-02-13 02:06:41Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX.
  */
@@ -661,7 +661,7 @@ static bool rtPathSame(const char *pszNativeSrc, const char *pszNativeDst)
  *                      source is a directory. If Its RTFS_TYPE_FILE we'll check that it's
  *                      not a directory (we are NOT checking whether it's a file).
  */
-int rtPathPosixRename(const char *pszSrc, const char *pszDst, unsigned fRename, RTFMODE fFileType)
+DECLHIDDEN(int) rtPathPosixRename(const char *pszSrc, const char *pszDst, unsigned fRename, RTFMODE fFileType)
 {
     /*
      * Convert the paths.
