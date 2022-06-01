@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27027 2010-03-04 13:55:05Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27039 2010-03-04 14:49:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -174,7 +174,6 @@ void UIMachineWindowSeamless::prepareSeamless()
 
     /* Perform these events: */
     qApp->processEvents();
-
 }
 
 #ifdef Q_WS_MAC
@@ -206,7 +205,7 @@ void UIMachineWindowSeamless::prepareMachineView()
                                            , m_uScreenId);
 
     /* Add machine view into layout: */
-    m_pMachineViewContainer->addWidget(m_pMachineView, 1, 1);
+    m_pMachineViewContainer->addWidget(m_pMachineView, 1, 1, Qt::AlignVCenter | Qt::AlignHCenter);
 
     /* This might be required to correctly mask: */
     centralWidget()->setAutoFillBackground(false);
