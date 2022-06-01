@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: fs-posix.cpp 28877 2010-04-28 19:10:47Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -80,7 +80,7 @@ RTR3DECL(int) RTFsQuerySizes(const char *pszFsPath, RTFOFF *pcbTotal, RTFOFF *pc
         }
         else
             rc = RTErrConvertFromErrno(errno);
-        rtPathFreeNative(pszNativeFsPath);
+        rtPathFreeNative(pszNativeFsPath, pszFsPath);
     }
 
     LogFlow(("RTFsQuerySizes(%p:{%s}, %p:{%RTfoff}, %p:{%RTfoff}, %p:{%RX32}, %p:{%RX32}): returns %Rrc\n",
@@ -114,7 +114,7 @@ RTR3DECL(int) RTFsQuerySerial(const char *pszFsPath, uint32_t *pu32Serial)
         }
         else
             rc = RTErrConvertFromErrno(errno);
-        rtPathFreeNative(pszNativeFsPath);
+        rtPathFreeNative(pszNativeFsPath, pszFsPath);
     }
     LogFlow(("RTFsQuerySerial(%p:{%s}, %p:{%RX32}: returns %Rrc\n",
              pszFsPath, pszFsPath, pu32Serial, pu32Serial ? *pu32Serial : 0, rc));
@@ -154,7 +154,7 @@ RTR3DECL(int) RTFsQueryProperties(const char *pszFsPath, PRTFSPROPERTIES pProper
         }
         else
             rc = RTErrConvertFromErrno(errno);
-        rtPathFreeNative(pszNativeFsPath);
+        rtPathFreeNative(pszNativeFsPath, pszFsPath);
     }
 
     LogFlow(("RTFsQueryProperties(%p:{%s}, %p:{.cbMaxComponent=%u, .fCaseSensitive=%RTbool}): returns %Rrc\n",
