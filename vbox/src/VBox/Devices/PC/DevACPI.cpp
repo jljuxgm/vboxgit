@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DevACPI.cpp 26056 2010-01-27 00:26:22Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1537,6 +1537,7 @@ PDMBOTHCBDECL(int) acpiSysInfoDataWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
                     s->idCpuLockCheck = u32;
                 else
                     LogRel(("ACPI: CPU %u does not exist\n", u32));
+                break;
             case SYSTEM_INFO_INDEX_CPU_LOCKED:
                 if (u32 < s->cCpus)
                     VMCPUSET_DEL(&s->CpuSetLocked, u32); /* Unlock the CPU */
