@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25758 2010-01-12 12:54:21Z vboxsync $
+# $Id: Makefile.kmk 25761 2010-01-12 13:40:24Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -287,6 +287,9 @@ endif
  webtest_TEMPLATE = VBOXR3EXE
  ifdef VBOX_USE_VCC80
   webtest_CXXFLAGS.win += -bigobj
+ endif
+ ifn1of ($(KBUILD_TARGET), win)
+  vboxtest_CXXFLAGS += -Wno-shadow
  endif
  webtest_INCS := \
  	$(VBOX_GSOAP_INCS) \
