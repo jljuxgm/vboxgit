@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24825 2009-11-20 14:41:05Z vboxsync $
+# $Id: Makefile.kmk 25059 2009-11-27 18:17:44Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -204,6 +204,7 @@ RuntimeR3_INCS.l4       = \
 RuntimeR3_SOURCES       = \
 	common/alloc/alloc.cpp \
 	common/alloc/heapsimple.cpp \
+	common/alloc/heapoffset.cpp \
 	common/checksum/adler32.cpp \
 	common/checksum/crc32-zlib.cpp \
 	common/checksum/crc64.cpp \
@@ -1143,6 +1144,7 @@ RuntimeR0Drv_INCS.solaris = \
 RuntimeR0Drv_SOURCES    = \
 	common/alloc/alloc.cpp \
 	common/alloc/heapsimple.cpp \
+	common/alloc/heapoffset.cpp \
 	common/misc/RTAssertMsg2.cpp \
 	common/checksum/crc32.cpp \
 	common/checksum/crc64.cpp \

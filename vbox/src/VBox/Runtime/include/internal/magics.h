@@ -1,4 +1,4 @@
-/* $Id: magics.h 23625 2009-10-08 16:56:22Z vboxsync $ */
+/* $Id: magics.h 25059 2009-11-27 18:17:44Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -56,7 +56,9 @@
 #define RTENV_MAGIC                 0x19571010
 /** Magic number for RTHANDLETABLEINT::u32Magic. (Hitomi Kanehara) */
 #define RTHANDLETABLE_MAGIC         0x19830808
-/** Magic number for RTHEAPSIMPLEINTERNAL::u32Magic. (Kyoichi Katayama) */
+/** Magic number for RTHEAPOFFSETINTERNAL::u32Magic. (Neal Town Stephenson) */
+#define RTHEAPOFFSET_MAGIC          0x19591031
+/** Magic number for RTHEAPSIMPLEINTERNAL::uMagic. (Kyoichi Katayama) */
 #define RTHEAPSIMPLE_MAGIC          0x19590105
 /** The magic value for RTLDRMODINTERNAL::u32Magic. (Alan Moore) */
 #define RTLDRMOD_MAGIC              0x19531118
