@@ -1,4 +1,4 @@
-/* $Id: strspace.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: strspace.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Unique String Spaces.
  */
@@ -238,5 +238,4 @@ RTDECL(int) RTStrSpaceDestroy(PRTSTRSPACE pStrSpace, PFNRTSTRSPACECALLBACK pfnCa
     return KAVL_FN(Destroy)(pStrSpace, pfnCallback, pvUser);
 }
 RT_EXPORT_SYMBOL(RTStrSpaceDestroy);
-
 

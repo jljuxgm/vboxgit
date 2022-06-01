@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 25645 2010-01-05 09:29:31Z vboxsync $ */
+/* $Id: dbgmod.h 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -412,5 +412,4 @@ int rtDbgModContainerCreate(PRTDBGMODINT pMod, RTUINTPTR cbSeg);
 RT_C_DECLS_END
 
 #endif
-
 

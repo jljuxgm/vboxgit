@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-os2.cpp 24287 2009-11-03 12:34:11Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-os2.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, OS/2.
  */
@@ -67,7 +67,7 @@ RTR0DECL(bool) RTR0MemUserIsValidAddr(RTR3PTR R3Ptr)
 
 
 RTR0DECL(bool) RTR0MemKernelIsValidAddr(void *pv)
-{                                   
+{
     /** @todo this is all wrong, see RTR0MemUserIsValidAddr. */
     return (uintptr_t)pv >= UINT32_C(0x20000000); /* 512MB */
 }

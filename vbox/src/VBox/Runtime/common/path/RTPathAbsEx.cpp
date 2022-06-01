@@ -1,4 +1,4 @@
-/* $Id: RTPathAbsEx.cpp 24221 2009-10-30 22:20:40Z vboxsync $ */
+/* $Id: RTPathAbsEx.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - RTPathAbsEx
  */
@@ -56,8 +56,8 @@
  */
 RTDECL(int) RTPathAbsEx(const char *pszBase, const char *pszPath, char *pszAbsPath, size_t cchAbsPath)
 {
-    if (    pszBase 
-        &&  pszPath 
+    if (    pszBase
+        &&  pszPath
         &&  !rtPathVolumeSpecLen(pszPath)
        )
     {

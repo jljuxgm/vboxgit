@@ -1,4 +1,4 @@
-/* $Id: heapoffset.cpp 25066 2009-11-28 02:30:08Z vboxsync $ */
+/* $Id: heapoffset.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - An Offset Based Heap.
  */
@@ -505,7 +505,7 @@ RT_EXPORT_SYMBOL(RTHeapOffsetAllocZ);
  * @returns NULL on failure.
  *
  * @param   pHeapInt    The heap.
- * @param   cb     	Size of the memory block to allocate.
+ * @param   cb          Size of the memory block to allocate.
  * @param   uAlignment  The alignment specifications for the allocated block.
  */
 static PRTHEAPOFFSETBLOCK rtHeapOffsetAllocBlock(PRTHEAPOFFSETINTERNAL pHeapInt, size_t cb, size_t uAlignment)

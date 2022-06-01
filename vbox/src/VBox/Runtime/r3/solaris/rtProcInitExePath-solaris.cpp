@@ -1,4 +1,4 @@
-/* $Id: rtProcInitExePath-solaris.cpp 11840 2008-08-29 17:49:10Z vboxsync $ */
+/* $Id: rtProcInitExePath-solaris.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - rtProcInitName, Solaris.
  */
@@ -73,5 +73,4 @@ DECLHIDDEN(int) rtProcInitExePath(char *pszPath, size_t cchPath)
     AssertMsgFailed(("rc=%Rrc err=%d cchLink=%d\n", rc, err, cchLink));
     return rc;
 }
-
 

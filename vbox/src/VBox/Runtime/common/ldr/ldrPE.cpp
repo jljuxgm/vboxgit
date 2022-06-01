@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 25342 2009-12-12 02:48:07Z vboxsync $ */
+/* $Id: ldrPE.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -1595,6 +1595,4 @@ int rtldrPEOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, RTFOFF
     RTMemFree(paSections);
     return rc;
 }
-
-
 

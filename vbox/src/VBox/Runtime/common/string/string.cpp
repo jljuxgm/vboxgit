@@ -1,4 +1,4 @@
-/* $Id: string.cpp 22736 2009-09-03 11:32:59Z vboxsync $ */
+/* $Id: string.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - String Manipulation.
  */
@@ -122,6 +122,4 @@ RTDECL(char *) RTStrDupN(const char *pszString, size_t cchMax)
     return pszDst;
 }
 RT_EXPORT_SYMBOL(RTStrDupN);
-
-
 

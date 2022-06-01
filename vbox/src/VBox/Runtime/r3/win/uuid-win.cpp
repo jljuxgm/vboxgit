@@ -1,4 +1,4 @@
-/* $Id: uuid-win.cpp 25961 2010-01-21 14:19:12Z vboxsync $ */
+/* $Id: uuid-win.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - UUID, Windows implementation.
  */
@@ -186,5 +186,4 @@ RTDECL(int)  RTUuidFromStr(PRTUUID pUuid, const char *pszString)
 
     return RTErrConvertFromWin32(rc);
 }
-
 

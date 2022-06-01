@@ -1,4 +1,4 @@
-/* $Id: tstSystemQueryOsInfo.cpp 11822 2008-08-29 14:21:03Z vboxsync $ */
+/* $Id: tstSystemQueryOsInfo.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSystemQueryOSInfo.
  */
@@ -125,5 +125,4 @@ int main()
         RTPrintf("tstSystemQueryOsInfo: FAILED - %d errors\n", g_cErrors);
     return !!g_cErrors;
 }
-
 

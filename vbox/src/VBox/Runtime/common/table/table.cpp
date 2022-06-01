@@ -1,4 +1,4 @@
-/* $Id: table.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: table.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - AVL tree, RTHCPHYS, unique keys.
  */
@@ -36,6 +36,4 @@ static const char szFileId[] = "Id: kAVLULInt.c,v 1.4 2003/02/13 02:02:38 bird E
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/table.h>
-
-
 

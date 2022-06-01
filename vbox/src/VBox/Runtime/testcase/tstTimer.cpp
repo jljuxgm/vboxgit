@@ -1,4 +1,4 @@
-/* $Id: tstTimer.cpp 25000 2009-11-26 14:22:44Z vboxsync $ */
+/* $Id: tstTimer.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Timers.
  */
@@ -226,6 +226,4 @@ int main()
         RTPrintf("tstTimer: FAILURE %d errors\n", cErrors);
     return !!cErrors;
 }
-
-
 

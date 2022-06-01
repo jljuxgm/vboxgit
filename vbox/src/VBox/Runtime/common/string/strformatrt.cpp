@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 25713 2010-01-11 12:39:10Z vboxsync $ */
+/* $Id: strformatrt.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -955,5 +955,4 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
     NOREF(pszFormatOrg);
     return 0;
 }
-
 

@@ -1,4 +1,4 @@
-/* $Id: tstRTSemXRoads.cpp 25613 2010-01-01 13:47:28Z vboxsync $ */
+/* $Id: tstRTSemXRoads.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSemXRoads.
  */
@@ -205,5 +205,4 @@ int main()
 
     return RTTestSummaryAndDestroy(g_hTest);
 }
-
 

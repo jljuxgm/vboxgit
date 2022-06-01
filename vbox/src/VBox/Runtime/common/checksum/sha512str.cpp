@@ -1,4 +1,4 @@
-/* $Id: sha512str.cpp 23507 2009-10-02 12:02:02Z vboxsync $ */
+/* $Id: sha512str.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - SHA-512 string functions.
  */
@@ -50,6 +50,4 @@ RTDECL(int) RTSha512FromString(char const *pszDigest, uint8_t pabDigest[RTSHA512
 {
     return RTStrConvertHexBytes(RTStrStripL(pszDigest), &pabDigest[0], RTSHA512_HASH_SIZE, 0 /*fFlags*/);
 }
-
-
 

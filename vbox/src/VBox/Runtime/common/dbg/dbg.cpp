@@ -1,4 +1,4 @@
-/* $Id: dbg.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: dbg.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Debug Misc.
  */
@@ -112,5 +112,4 @@ RTDECL(void) RTDbgLineFree(PRTDBGLINE pLine)
     RTMemFree(pLine);
 }
 RT_EXPORT_SYMBOL(RTDbgLineFree);
-
 

@@ -1,4 +1,4 @@
-/* $Id: avl_Destroy.cpp.h 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: avl_Destroy.cpp.h 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * kAVLDestroy - Walk the tree calling a callback to destroy all the nodes.
  */
@@ -111,5 +111,4 @@ RTDECL(int) KAVL_FN(Destroy)(PPKAVLNODECORE ppTree, PKAVLCALLBACK pfnCallBack, v
 }
 
 #endif
-
 

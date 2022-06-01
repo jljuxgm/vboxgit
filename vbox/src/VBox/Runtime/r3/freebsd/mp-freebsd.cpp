@@ -1,4 +1,4 @@
-/* $Id: mp-freebsd.cpp 20449 2009-06-09 22:23:42Z vboxsync $ */
+/* $Id: mp-freebsd.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, FreeBSD.
  */
@@ -101,5 +101,4 @@ RTDECL(RTCPUID) RTMpGetOnlineCount(void)
      */
     return sysconf(_SC_NPROCESSORS_ONLN);
 }
-
 

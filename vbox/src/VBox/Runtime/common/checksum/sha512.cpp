@@ -1,4 +1,4 @@
-/* $Id: sha512.cpp 23501 2009-10-02 10:59:42Z vboxsync $ */
+/* $Id: sha512.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - SHA-512 hash functions.
  */
@@ -73,5 +73,4 @@ RTDECL(void) RTSha512Final(PRTSHA512CONTEXT pCtx, uint8_t pabDigest[32])
     SHA512_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
 }
 RT_EXPORT_SYMBOL(RTSha512Final);
-
 

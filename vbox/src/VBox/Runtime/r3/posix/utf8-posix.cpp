@@ -1,4 +1,4 @@
-/* $Id: utf8-posix.cpp 20822 2009-06-23 12:44:05Z vboxsync $ */
+/* $Id: utf8-posix.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 helpers, POSIX.
  */
@@ -231,5 +231,4 @@ RTR3DECL(int)  RTStrCurrentCPToUtf8(char **ppszString, const char *pszString)
     }
     return rtstrConvert(pszString, cch, "", (void **)ppszString, 0, "UTF-8", 2);
 }
-
 

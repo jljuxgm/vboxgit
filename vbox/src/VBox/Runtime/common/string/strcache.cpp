@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 23038 2009-09-15 20:01:09Z vboxsync $ */
+/* $Id: strcache.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -47,9 +47,9 @@
 *   Structures and Typedefs                                                    *
 *******************************************************************************/
 /**
- * String cache entry. 
- *  
- * Each entry is  
+ * String cache entry.
+ *
+ * Each entry is
  */
 typedef struct RTSTRCACHEENTRY
 {
@@ -63,7 +63,7 @@ typedef struct RTSTRCACHEENTRY
     uint32_t            uHash1;
     /** The string. */
     char                szString[16];
-} RTSTRCACHEENTRY;                  
+} RTSTRCACHEENTRY;
 AssertCompileSize(RTSTRCACHEENTRY, 32);
 /** Pointer to a string cache entry. */
 typedef RTSTRCACHEENTRY *PRTSTRCACHEENTRY;
@@ -194,5 +194,4 @@ RTDECL(size_t) RTStrCacheLength(const char *psz)
     return strlen(psz);
 }
 RT_EXPORT_SYMBOL(RTStrCacheLength);
-
 

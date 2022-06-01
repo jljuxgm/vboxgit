@@ -1,4 +1,4 @@
-/* $Id: filelock-posix.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: filelock-posix.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - File Locking, POSIX.
  */
@@ -140,5 +140,4 @@ RTR3DECL(int)  RTFileUnlock(RTFILE File, int64_t offLock, uint64_t cbLock)
 
     return RTErrConvertFromErrno(iErr);
 }
-
 

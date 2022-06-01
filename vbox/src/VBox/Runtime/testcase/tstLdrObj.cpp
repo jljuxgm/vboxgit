@@ -1,4 +1,4 @@
-/* $Id: tstLdrObj.cpp 26267 2010-02-05 03:36:34Z vboxsync $ */
+/* $Id: tstLdrObj.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -111,5 +111,4 @@ extern "C" DECLEXPORT(uintptr_t) SomeExportFunction5(void)
     return (uintptr_t)SomeExportFunction3(NULL) + (uintptr_t)SomeExportFunction2(NULL)
          + (uintptr_t)SomeExportFunction1(NULL) + (uintptr_t)&SomeExportFunction4;
 }
-
 

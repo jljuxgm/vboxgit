@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 11725 2008-08-27 22:21:47Z vboxsync $ */
+/* $Id: localipc-win.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -635,5 +635,4 @@ RTDECL(int) RTLocalIpcSessionQueryGroupId(RTLOCALIPCSESSION hSession, PRTUID pUi
 {
     return VERR_NOT_SUPPORTED;
 }
-
 

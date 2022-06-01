@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteDebugger-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: RTLogWriteDebugger-generic.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Log To Debugger, Generic Dummy.
  */
@@ -43,5 +43,4 @@ RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
     return;
 }
 RT_EXPORT_SYMBOL(RTLogWriteDebugger);
-
 

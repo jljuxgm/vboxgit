@@ -1,4 +1,4 @@
-/* $Id: heapsimple.cpp 25055 2009-11-27 15:45:49Z vboxsync $ */
+/* $Id: heapsimple.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - A Simple Heap.
  */
@@ -474,7 +474,7 @@ RT_EXPORT_SYMBOL(RTHeapSimpleAllocZ);
  * @returns NULL on failure.
  *
  * @param   pHeapInt    The heap.
- * @param   cb     	Size of the memory block to allocate.
+ * @param   cb          Size of the memory block to allocate.
  * @param   uAlignment  The alignment specifications for the allocated block.
  */
 static PRTHEAPSIMPLEBLOCK rtHeapSimpleAllocBlock(PRTHEAPSIMPLEINTERNAL pHeapInt, size_t cb, size_t uAlignment)

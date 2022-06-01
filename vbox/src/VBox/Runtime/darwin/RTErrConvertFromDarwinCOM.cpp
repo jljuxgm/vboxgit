@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromDarwinCOM.cpp 15459 2008-12-14 11:23:14Z vboxsync $ */
+/* $Id: RTErrConvertFromDarwinCOM.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Convert Darwin COM returns codes to iprt status codes.
  */
@@ -63,5 +63,4 @@ RTDECL(int) RTErrConvertFromDarwinCOM(int32_t iNativeCode)
     AssertMsgFailed(("Unhandled error %#x\n", iNativeCode));
     return VERR_UNRESOLVED_ERROR;
 }
-
 

@@ -1,4 +1,4 @@
-/* $Id: alloc.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: alloc.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation.
  */
@@ -78,5 +78,4 @@ RTDECL(void *) RTMemDupEx(const void *pvSrc, size_t cbSrc, size_t cbExtra) RT_NO
     return pvDst;
 }
 RT_EXPORT_SYMBOL(RTMemDupEx);
-
 

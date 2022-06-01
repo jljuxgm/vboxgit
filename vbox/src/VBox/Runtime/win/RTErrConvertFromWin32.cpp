@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 26343 2010-02-09 03:37:33Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -405,5 +405,4 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
 #endif
     return VERR_UNRESOLVED_ERROR;
 }
-
 

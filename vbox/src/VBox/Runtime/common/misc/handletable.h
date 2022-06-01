@@ -1,4 +1,4 @@
-/* $Id: handletable.h 10789 2008-07-21 17:22:32Z vboxsync $ */
+/* $Id: handletable.h 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Handle Tables, internal header.
  */
@@ -246,5 +246,4 @@ DECLINLINE(void) rtHandleTableUnlock(PRTHANDLETABLEINT pThis, PRTSPINLOCKTMP pTm
     if (pThis->hSpinlock != NIL_RTSPINLOCK)
         RTSpinlockRelease(pThis->hSpinlock, pTmp);
 }
-
 

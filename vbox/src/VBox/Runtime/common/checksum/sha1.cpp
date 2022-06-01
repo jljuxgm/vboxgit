@@ -1,4 +1,4 @@
-/* $Id: sha1.cpp 23503 2009-10-02 11:03:24Z vboxsync $ */
+/* $Id: sha1.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - SHA-1 hash functions.
  */
@@ -73,5 +73,4 @@ RTDECL(void) RTSha1Final(PRTSHA1CONTEXT pCtx, uint8_t pabDigest[32])
     SHA1_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
 }
 RT_EXPORT_SYMBOL(RTSha1Final);
-
 

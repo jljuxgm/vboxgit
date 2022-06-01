@@ -1,4 +1,4 @@
-/* $Id: tstRTTemp.cpp 20606 2009-06-15 23:49:07Z vboxsync $ */
+/* $Id: tstRTTemp.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Temporary files and directories.
  */
@@ -130,5 +130,4 @@ int main()
      */
     return RTTestSummaryAndDestroy(hTest);
 }
-
 

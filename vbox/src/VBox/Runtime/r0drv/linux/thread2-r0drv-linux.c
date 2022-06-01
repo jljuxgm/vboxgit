@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-linux.c 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: thread2-r0drv-linux.c 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Linux.
  */
@@ -47,6 +47,4 @@ RTDECL(RTTHREAD) RTThreadSelf(void)
     return rtThreadGetByNative((RTNATIVETHREAD)current);
 }
 */
-
-
 

@@ -1,4 +1,4 @@
-/* $Id: buildconfig.cpp 22561 2009-08-28 17:57:05Z vboxsync $ */
+/* $Id: buildconfig.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Build Configuration Information.
  */
@@ -81,5 +81,4 @@ RTDECL(uint32_t) RTBldCfgVersionBuild(void)
     return IPRT_BLDCFG_VERSION_BUILD;
 }
 #endif
-
 

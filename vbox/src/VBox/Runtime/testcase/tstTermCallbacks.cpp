@@ -1,4 +1,4 @@
-/* $Id: tstTermCallbacks.cpp 20606 2009-06-15 23:49:07Z vboxsync $ */
+/* $Id: tstTermCallbacks.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Termination Callbacks.
  */
@@ -148,5 +148,4 @@ int main(int argc, char **argv)
      */
     return RTTestSummaryAndDestroy(hTest);
 }
-
 

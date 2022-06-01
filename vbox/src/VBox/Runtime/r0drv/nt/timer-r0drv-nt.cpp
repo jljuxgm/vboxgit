@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-nt.cpp 25645 2010-01-05 09:29:31Z vboxsync $ */
+/* $Id: timer-r0drv-nt.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, NT.
  */
@@ -447,5 +447,4 @@ RTDECL(int) RTTimerReleaseSystemGranularity(uint32_t u32Granted)
     NOREF(u32Granted);
     return VINF_SUCCESS;
 }
-
 
