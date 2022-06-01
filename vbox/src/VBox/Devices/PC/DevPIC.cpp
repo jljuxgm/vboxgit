@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 23987 2009-10-22 14:39:51Z vboxsync $ */
+/* $Id: DevPIC.cpp 24012 2009-10-23 08:32:55Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -751,7 +751,6 @@ PDMBOTHCBDECL(int) picIOPortElcrWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT
 
 #ifdef IN_RING3
 
-#ifdef DEBUG
 /**
  * PIC status info callback.
  *
@@ -787,7 +786,6 @@ static DECLCALLBACK(void) picInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const 
         pHlp->pfnPrintf(pHlp, "  elcr_mask                 = %02x\n", pThis->aPics[i].elcr_mask);
     }
 }
-#endif /* DEBUG */
 
 /**
  * Saves a state of the programmable interrupt controller device.
@@ -1047,12 +1045,10 @@ static DECLCALLBACK(int)  picConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         return rc;
 
 
-#ifdef DEBUG
     /*
      * Register the info item.
      */
     PDMDevHlpDBGFInfoRegister(pDevIns, "pic", "PIC info.", picInfo);
-#endif
 
     /*
      * Initialize the device state.
