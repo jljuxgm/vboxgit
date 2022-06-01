@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 24614 2009-11-12 17:09:46Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 24617 2009-11-12 17:51:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -1282,7 +1282,6 @@ Console::teleporterTrgServeConnection(RTSOCKET Sock, void *pvUser)
             LogRel(("Teleporter: Unknown command '%s' (%.*Rhxs)\n", szCmd, strlen(szCmd), szCmd));
             vrc = VERR_NOT_IMPLEMENTED;
             teleporterTcpWriteNACK(pState, vrc);
-            break;
         }
 
         if (RT_FAILURE(vrc))
