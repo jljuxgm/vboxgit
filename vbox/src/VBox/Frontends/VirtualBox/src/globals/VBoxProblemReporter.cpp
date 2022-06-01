@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 26872 2010-02-26 17:10:39Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 26873 2010-02-26 17:12:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -26,7 +26,6 @@
 #include "VBoxGlobal.h"
 #include "VBoxSelectorWnd.h"
 #include "VBoxConsoleWnd.h"
-#include "../runtime/UIMachine.h"
 #include "VBoxProgressDialog.h"
 #ifdef VBOX_WITH_NEW_RUNTIME_CORE
 #include "UIMachine.h"
