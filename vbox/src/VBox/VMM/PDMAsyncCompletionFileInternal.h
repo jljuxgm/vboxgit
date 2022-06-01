@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 25147 2009-12-02 13:42:32Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 26334 2010-02-08 18:58:55Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -224,7 +224,7 @@ typedef struct PDMACFILECACHEENTRY
     /** Endpoint the entry belongs to. */
     PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint;
     /** Flags for this entry. Combinations of PDMACFILECACHE_* #defines */
-    uint32_t                        fFlags;
+    volatile uint32_t               fFlags;
     /** Reference counter. Prevents eviction of the entry if > 0. */
     volatile uint32_t               cRefs;
     /** Size of the entry. */
