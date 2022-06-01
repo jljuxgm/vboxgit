@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 27349 2010-03-14 18:37:17Z vboxsync $ */
+/* $Id: process-posix.cpp 27452 2010-03-17 15:19:40Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -69,14 +69,14 @@ RTR3DECL(int)   RTProcCreate(const char *pszExec, const char * const *papszArgs,
 {
     return RTProcCreateEx(pszExec, papszArgs, Env, fFlags,
                           NULL, NULL, NULL,  /* standard handles */
-                          NULL /*pszAsUser*/,
+                          NULL /*pszAsUser*/, NULL /* pszPassword*/,
                           pProcess);
 }
 
 
 RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArgs, RTENV hEnv, uint32_t fFlags,
                                PCRTHANDLE phStdIn, PCRTHANDLE phStdOut, PCRTHANDLE phStdErr, const char *pszAsUser,
-                               PRTPROCESS phProcess)
+                               const char *pszPassword, PRTPROCESS phProcess)
 {
     int rc;
 
