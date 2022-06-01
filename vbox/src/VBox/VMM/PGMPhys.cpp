@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 29293 2010-05-10 11:14:48Z vboxsync $ */
+/* $Id: PGMPhys.cpp 29294 2010-05-10 11:23:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1594,7 +1594,7 @@ VMMR3DECL(int) PGMR3PhysMMIORegister(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb,
         /** todo; not entirely SMP safe; assuming for now the guest takes care of this internally (not touch mapped mmio while changing the mapping). */
         PVMCPU pVCpu = VMMGetCpu(pVM);
         pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_CLEAR_PGM_POOL;
-        VMCPU_FF_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3);
+        pgmPoolSyncCR3(pVCpu);
     }
     else
     {
@@ -1769,7 +1769,7 @@ VMMR3DECL(int) PGMR3PhysMMIODeregister(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb)
     /** todo; not entirely SMP safe; assuming for now the guest takes care of this internally (not touch mapped mmio while changing the mapping). */
     PVMCPU pVCpu = VMMGetCpu(pVM);
     pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_CLEAR_PGM_POOL;
-    VMCPU_FF_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3);
+    pgmPoolSyncCR3(pVCpu);
 
     PGMPhysInvalidatePageMapTLB(pVM);
     return rc;
