@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28481 2010-04-19 16:44:20Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28529 2010-04-20 14:34:16Z vboxsync $ */
 
 /** @file
  *
@@ -222,6 +222,8 @@ STDMETHODIMP Guest::COMSETTER(MemoryBalloonSize) (ULONG aMemoryBalloonSize)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
+    /* We must be 100% sure that IMachine::COMSETTER(MemoryBalloonSize)
+     * does not call us back in any way! */
     HRESULT ret = mParent->machine()->COMSETTER(MemoryBalloonSize)(aMemoryBalloonSize);
     if (ret == S_OK)
     {

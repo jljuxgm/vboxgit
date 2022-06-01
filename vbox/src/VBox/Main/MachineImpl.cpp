@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 28527 2010-04-20 14:14:41Z vboxsync $ */
+/* $Id: MachineImpl.cpp 28529 2010-04-20 14:34:16Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -1440,6 +1440,12 @@ STDMETHODIMP Machine::COMGETTER(MemoryBalloonSize)(ULONG *memoryBalloonSize)
     return S_OK;
 }
 
+/**
+ * Set the memory balloon size.
+ *
+ * This method is also called from IGuest::COMSETTER(MemoryBalloonSize) so
+ * we have to make sure that we never call IGuest from here.
+ */
 STDMETHODIMP Machine::COMSETTER(MemoryBalloonSize)(ULONG memoryBalloonSize)
 {
     /* check limits */
