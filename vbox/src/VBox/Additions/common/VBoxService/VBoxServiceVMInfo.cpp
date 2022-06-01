@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 24287 2009-11-03 12:34:11Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 24370 2009-11-05 09:38:24Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -244,7 +244,7 @@ DECLCALLBACK(int) VBoxServiceVMInfoWorker(bool volatile *pfShutdown)
         rc = utmpname(UTMP_FILE);
         if (rc != 0)
         {
-            VBoxServiceError("Could not set  UTMP file! Error: %ld", errno);
+            VBoxServiceError("Could not set UTMP file! Error: %ld", errno);
         }
         setutent();
         while ((ut_user=getutent()))
