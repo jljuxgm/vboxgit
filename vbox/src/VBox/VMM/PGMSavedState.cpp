@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 27182 2010-03-08 17:28:01Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 27183 2010-03-08 17:33:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -144,7 +144,6 @@ static const SSMFIELD s_aPGMFieldsPreBalloon[] =
     SSMFIELD_ENTRY(         PGM, fMappingsFixed),
     SSMFIELD_ENTRY_GCPTR(   PGM, GCPtrMappingFixed),
     SSMFIELD_ENTRY(         PGM, cbMappingFixed),
-    SSMFIELD_ENTRY(         PGM, cBalloonedPages),
     SSMFIELD_ENTRY_TERM()
 };
 
