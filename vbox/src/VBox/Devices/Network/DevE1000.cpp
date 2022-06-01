@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 24430 2009-11-06 09:38:12Z vboxsync $ */
+/* $Id: DevE1000.cpp 24533 2009-11-10 08:23:13Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -101,6 +101,7 @@
 
 #define INSTANCE(pState) pState->szInstance
 #define IFACE_TO_STATE(pIface, ifaceName) ((E1KSTATE *)((char*)pIface - RT_OFFSETOF(E1KSTATE, ifaceName)))
+#define STATE_TO_DEVINS(pState)           (((E1KSTATE *)pState)->CTX_SUFF(pDevIns))
 #define E1K_RELOCATE(p, o) *(RTHCUINTPTR *)&p += o
 
 #define E1K_INC_CNT32(cnt) \
@@ -4257,6 +4258,17 @@ static DECLCALLBACK(int) e1kReceive(PPDMINETWORKPORT pInterface, const void *pvB
 {
     E1KSTATE *pState = IFACE_TO_STATE(pInterface, INetworkPort);
     int       rc = VINF_SUCCESS;
+
+    /*
+     * Drop packets if the VM is not running yet/anymore.
+     */
+    VMSTATE enmVMState = PDMDevHlpVMState(STATE_TO_DEVINS(pState));
+    if (    enmVMState != VMSTATE_RUNNING
+        &&  enmVMState != VMSTATE_RUNNING_LS)
+    {
+        E1kLog(("%s Dropping incoming packet as VM is not running.\n", INSTANCE(pState)));
+        return VINF_SUCCESS;
+    }
 
     /* Discard incoming packets in locked state */
     if (!(RCTL & RCTL_EN) || pState->fLocked || !(STATUS & STATUS_LU))
