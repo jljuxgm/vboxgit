@@ -1,4 +1,4 @@
-/* $Id: FramebufferVNC.cpp 28217 2010-04-12 15:48:45Z vboxsync $ */
+/* $Id: FramebufferVNC.cpp 28767 2010-04-26 16:34:05Z vboxsync $ */
 /** @file
  * VBoxHeadless - VNC server implementation for VirtualBox.
  *
@@ -6,9 +6,9 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
- *
  * Contributed by Ivo Smits <Ivo@UFO-Net.nl>
+ *
+ * Copyright (C) 2006-2007 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
