@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 25825 2010-01-14 10:39:12Z vboxsync $ */
+/* $Id: TRPM.cpp 26263 2010-02-05 02:24:13Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -593,9 +593,9 @@ VMMR3DECL(void) TRPMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
      * would make init order impossible if we should assert the presence of these
      * exports in TRPMR3Init().
      */
-    RTRCPTR aRCPtrs[TRPM_HANDLER_MAX] = {0};
-    int rc;
-    rc = PDMR3LdrGetSymbolRC(pVM, VMMGC_MAIN_MODULE_NAME, "TRPMGCHandlerInterupt", &aRCPtrs[TRPM_HANDLER_INT]);
+    RTRCPTR aRCPtrs[TRPM_HANDLER_MAX];
+    RT_ZERO(aRCPtrs);
+    int rc = PDMR3LdrGetSymbolRC(pVM, VMMGC_MAIN_MODULE_NAME, "TRPMGCHandlerInterupt", &aRCPtrs[TRPM_HANDLER_INT]);
     AssertReleaseMsgRC(rc, ("Couldn't find TRPMGCHandlerInterupt in VMMGC.gc!\n"));
 
     rc = PDMR3LdrGetSymbolRC(pVM, VMMGC_MAIN_MODULE_NAME, "TRPMGCHandlerGeneric",  &aRCPtrs[TRPM_HANDLER_TRAP]);
