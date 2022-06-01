@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 27769 2010-03-29 09:30:48Z vboxsync $ */
+/* $Id: UIMachineView.cpp 27839 2010-03-30 20:31:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -496,7 +496,7 @@ void UIMachineView::prepareFrameBuffer()
                 {
                     /* these two additional template args is a workaround to this [VBox|UI] duplication
                      * @todo: they are to be removed once VBox stuff is gone */
-                    pFramebuffer = new VBoxOverlayFrameBuffer<UIFrameBufferQImage, UIMachineView, UIResizeEvent>(this, &machineWindowWrapper()->session());
+                    pFramebuffer = new VBoxOverlayFrameBuffer<UIFrameBufferQImage, UIMachineView, UIResizeEvent>(this, &machineWindowWrapper()->session(), (uint32_t)screenId());
                     uisession()->setFrameBuffer(screenId(), pFramebuffer);
                 }
                 m_pFrameBuffer = pFramebuffer;
@@ -535,7 +535,7 @@ void UIMachineView::prepareFrameBuffer()
                 {
                     /* these two additional template args is a workaround to this [VBox|UI] duplication
                      * @todo: they are to be removed once VBox stuff is gone */
-                    pFramebuffer = new VBoxOverlayFrameBuffer<UIFrameBufferSDL, UIMachineView, UIResizeEvent>(this, &machineWindowWrapper()->session());
+                    pFramebuffer = new VBoxOverlayFrameBuffer<UIFrameBufferSDL, UIMachineView, UIResizeEvent>(this, &machineWindowWrapper()->session(), (uint32_t)screenId());
                     uisession()->setFrameBuffer(screenId(), pFramebuffer);
                 }
                 m_pFrameBuffer = pFramebuffer;
@@ -578,7 +578,7 @@ void UIMachineView::prepareFrameBuffer()
                 {
                     /* these two additional template args is a workaround to this [VBox|UI] duplication
                      * @todo: they are to be removed once VBox stuff is gone */
-                    pFramebuffer = new VBoxOverlayFrameBuffer<UIFrameBufferQuartz2D, UIMachineView, UIResizeEvent>(this, &machineWindowWrapper()->session());
+                    pFramebuffer = new VBoxOverlayFrameBuffer<UIFrameBufferQuartz2D, UIMachineView, UIResizeEvent>(this, &machineWindowWrapper()->session(), (uint32_t)screenId());
                     uisession()->setFrameBuffer(screenId(), pFramebuffer);
                 }
                 m_pFrameBuffer = pFramebuffer;

@@ -1,4 +1,4 @@
-/* $Id: vhwa.c 26667 2010-02-19 17:49:14Z vboxsync $ */
+/* $Id: vhwa.c 27839 2010-03-30 20:31:42Z vboxsync $ */
 /** @file
  * VBoxGuest -- VirtualBox Win 2000/XP guest display driver
  *
@@ -137,14 +137,6 @@ void vboxVHWASurfDescFree(PVBOXVHWASURFDESC pDesc)
         | VBOXVHWA_OVER_KEYSRCOVERRIDE \
         | VBOXVHWA_OVER_SHOW \
         )
-
-void vboxVHWAInit()
-{
-}
-
-void vboxVHWATerm()
-{
-}
 
 uint32_t vboxVHWAUnsupportedDDCAPS(uint32_t caps)
 {

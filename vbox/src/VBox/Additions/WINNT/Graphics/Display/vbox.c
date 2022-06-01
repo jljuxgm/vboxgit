@@ -1,4 +1,4 @@
-/* $Id: vbox.c 26505 2010-02-14 09:17:44Z vboxsync $ */
+/* $Id: vbox.c 27839 2010-03-30 20:31:42Z vboxsync $ */
 /** @file
  * Display - VirtualBox Win 2000/XP guest display driver, support functions.
  */
@@ -1062,6 +1062,31 @@ int vboxVHWADisable(PPDEV ppdev)
     vboxVHWACommandCheckHostCmds(ppdev);
 
     return rc;
+}
+
+void vboxVHWAInit(PPDEV ppdev)
+{
+    VHWAQUERYINFO info;
+    DWORD returnedDataLength;
+    DWORD err;
+
+    memset(&info, 0, sizeof (info));
+
+    err = EngDeviceIoControl(ppdev->hDriver,
+            IOCTL_VIDEO_VHWA_QUERY_INFO,
+            NULL,
+            0,
+            &info,
+            sizeof(info),
+            &returnedDataLength);
+    Assert(!err);
+    if(!err)
+    {
+        ppdev->vhwaInfo.offVramBase = info.offVramBase;
+        ppdev->vhwaInfo.bVHWAInited = TRUE;
+    }
+    else
+        ppdev->vhwaInfo.bVHWAInited = FALSE;
 }
 
 # endif
