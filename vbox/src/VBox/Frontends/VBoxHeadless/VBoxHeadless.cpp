@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 29518 2010-05-17 10:06:22Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 30109 2010-06-09 11:58:29Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -657,7 +657,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         OPT_NO_PATM,
         OPT_CSAM,
         OPT_NO_CSAM,
-        OPT_COMMENT,
+        OPT_COMMENT
     };
 
     static const RTGETOPTDEF s_aOptions[] =

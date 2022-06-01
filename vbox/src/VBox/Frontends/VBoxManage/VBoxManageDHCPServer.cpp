@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 30109 2010-06-09 11:58:29Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -51,7 +51,7 @@ typedef enum enMainOpCodes
 {
     OP_ADD = 1000,
     OP_REMOVE,
-    OP_MODIFY,
+    OP_MODIFY
 } OPCODE;
 
 static const RTGETOPTDEF g_aDHCPIPOptions[]
