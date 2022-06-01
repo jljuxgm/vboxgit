@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 28834 2010-04-27 14:44:55Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -362,7 +362,8 @@ VMMR0DECL(int) SVMR0SetupVM(PVM pVM)
         pVMCB->ctrl.TLBCtrl.n.u32ASID = 1;
 
         /** Setup the PAT msr (nested paging only) */
-        pVMCB->guest.u64GPAT = 0x0007040600070406ULL;
+        /* The default value should be 0x0007040600070406ULL, but we want to treat all guest memory as WB, so choose type 6 for all PAT slots. */
+        pVMCB->guest.u64GPAT = 0x0006060606060606ULL;
 
         /* The following MSRs are saved automatically by vmload/vmsave, so we allow the guest
          * to modify them directly.
