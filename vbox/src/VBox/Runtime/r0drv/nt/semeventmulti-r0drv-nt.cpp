@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-nt.cpp 25720 2010-01-11 13:57:09Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-nt.cpp 25722 2010-01-11 14:22:03Z vboxsync $ */
 /** @file
  * IPRT -  Multiple Release Event Semaphores, Ring-0 Driver, NT.
  */
@@ -75,7 +75,7 @@ RTDECL(int)  RTSemEventMultiCreateEx(PRTSEMEVENTMULTI phEventMultiSem, uint32_t 
         pThis->u32Magic = RTSEMEVENTMULTI_MAGIC;
         KeInitializeEvent(&pThis->Event, NotificationEvent, FALSE /* not signalled */);
 
-        *phEventSem = pThis;
+        *phEventMultiSem = pThis;
         return VINF_SUCCESS;
     }
     return VERR_NO_MEMORY;
