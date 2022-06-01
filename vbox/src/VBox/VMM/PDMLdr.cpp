@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 26155 2010-02-02 16:20:05Z vboxsync $ */
+/* $Id: PDMLdr.cpp 26220 2010-02-03 21:40:52Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -1249,7 +1249,7 @@ VMMR3DECL(int) PDMR3LdrGetInterfaceSymbols(PVM pVM, void *pvInterface, size_t cb
     /*
      * Find the module.
      */
-    int rc;
+    int     rc      = VINF_SUCCESS;
     PPDMMOD pModule = pdmR3LdrFindModule(pVM->pUVM,
                                          pszModule ? pszModule : fRing0OrRC ? "VMMR0.r0" : "VMMGC.gc",
                                          fRing0OrRC ? PDMMOD_TYPE_R0 : PDMMOD_TYPE_RC,
