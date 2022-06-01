@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 23537 2009-10-04 14:21:08Z vboxsync $ */
+/* $Id: HostImpl.h 24403 2009-11-05 17:12:55Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -75,6 +75,7 @@ public:
     STDMETHOD(GetProcessorSpeed)(ULONG cpuId, ULONG *speed);
     STDMETHOD(GetProcessorDescription)(ULONG cpuId, BSTR *description);
     STDMETHOD(GetProcessorFeature) (ProcessorFeature_T feature, BOOL *supported);
+    STDMETHOD(GetProcessorCpuIdLeaf)(ULONG aCpuId, ULONG aLeaf, ULONG aSubLeaf, ULONG *aValEAX, ULONG *aValEBX, ULONG *aValECX, ULONG *aValEDX);
     STDMETHOD(COMGETTER(MemorySize))(ULONG *size);
     STDMETHOD(COMGETTER(MemoryAvailable))(ULONG *available);
     STDMETHOD(COMGETTER(OperatingSystem))(BSTR *os);
