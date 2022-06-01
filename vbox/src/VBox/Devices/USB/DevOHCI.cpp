@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 26970 2010-03-02 20:43:37Z vboxsync $ */
+/* $Id: DevOHCI.cpp 27290 2010-03-11 16:40:10Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -4755,7 +4755,7 @@ ohciR3Map(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS GCPhysAddress, uint32_t cb, 
     if (RT_FAILURE(rc))
         return rc;
 
-# if 1 /* this enabled / disabled GC stuff */
+# if 1 /* this enabled / disabled GC/R0 stuff */
     rc = PDMDevHlpMMIORegisterRC(pOhci->CTX_SUFF(pDevIns),
                                  GCPhysAddress,
                                  cb,
@@ -4765,8 +4765,18 @@ ohciR3Map(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS GCPhysAddress, uint32_t cb, 
                                  NULL);
     if (RT_FAILURE(rc))
         return rc;
+
+    rc = PDMDevHlpMMIORegisterR0(pOhci->CTX_SUFF(pDevIns),
+                                 GCPhysAddress,
+                                 cb,
+                                 0,
+                                 "ohciWrite",
+                                 "ohciRead",
+                                 NULL);
+    if (RT_FAILURE(rc))
+        return rc;
+
 # endif
-/** @todo OHCI should register R0 MMIO! (See defect #1626 comment 4.) */
 
     pOhci->MMIOBase = GCPhysAddress;
     return VINF_SUCCESS;
@@ -5397,7 +5407,7 @@ const PDMDEVREG g_DeviceOHCI =
     /* pszDescription */
     "OHCI USB controller.\n",
     /* fFlags */
-    PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC, /** @todo port OHCI to Ring-0 */
+    PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
     /* fClass */
     PDM_DEVREG_CLASS_BUS_USB,
     /* cMaxInstances */
