@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 27651 2010-03-23 23:10:53Z vboxsync $ */
+/* $Id: strformatrt.cpp 27652 2010-03-23 23:18:58Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -1035,6 +1035,7 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
                 break;
             }
 
+#ifdef IN_RING3
             /*
              * Group 5, XML / HTML escapers.
              */
@@ -1114,6 +1115,7 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
                 }
                 break;
             }
+#endif /* IN_RING3 */
 
             /*
              * Invalid/Unknown. Bitch about it.
