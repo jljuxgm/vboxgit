@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 25589 2009-12-28 21:40:51Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 25698 2010-01-08 23:23:51Z vboxsync $ */
 
 /** @file
  *
@@ -6190,7 +6190,7 @@ Console::usbDetachCallback(Console *that, USBDeviceList::iterator *aIt, PCRTUUID
 }
 
 #endif /* VBOX_WITH_USB */
-#if (defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)) && !defined(VBOX_WITH_NETFLT)
+#if ((defined(RT_OS_LINUX) && !defined(VBOX_WITH_NETFLT)) || defined(RT_OS_FREEBSD))
 
 /**
  * Helper function to handle host interface device creation and attachment.
