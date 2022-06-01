@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 27873 2010-03-31 10:04:15Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 28389 2010-04-15 20:13:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -439,6 +439,15 @@ void UIMachineWindow::updateAppearanceOf(int iElement)
         machineWindow()->setWindowTitle(strMachineName);
     }
 }
+
+#ifdef VBOX_WITH_DEBUGGER_GUI
+void UIMachineWindow::updateDbgWindows()
+{
+    /* The debugger windows are bind to the main VM window. */
+    if (m_uScreenId == 0)
+        machineLogic()->dbgAdjustRelativePos();
+}
+#endif /* VBOX_WITH_DEBUGGER_GUI */
 
 void UIMachineWindow::sltMachineStateChanged()
 {

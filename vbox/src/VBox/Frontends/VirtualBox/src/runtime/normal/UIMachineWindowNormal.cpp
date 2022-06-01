@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 28239 2010-04-13 09:54:22Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 28389 2010-04-15 20:13:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -280,8 +280,8 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
             {
                 m_normalGeometry.setSize(pResizeEvent->size());
 #ifdef VBOX_WITH_DEBUGGER_GUI
-                // TODO: Update debugger window size!
-                //dbgAdjustRelativePos();
+                /* Update debugger window position */
+                updateDbgWindows();
 #endif
             }
             break;
@@ -292,8 +292,8 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
             {
                 m_normalGeometry.moveTo(geometry().x(), geometry().y());
 #ifdef VBOX_WITH_DEBUGGER_GUI
-                // TODO: Update debugger window position!
-                //dbgAdjustRelativePos();
+                /* Update debugger window position */
+                updateDbgWindows();
 #endif
             }
             break;
