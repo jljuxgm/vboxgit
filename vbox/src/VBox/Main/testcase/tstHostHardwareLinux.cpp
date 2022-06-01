@@ -1,4 +1,4 @@
-/* $Id: tstHostHardwareLinux.cpp 28553 2010-04-21 10:16:57Z vboxsync $ */
+/* $Id: tstHostHardwareLinux.cpp 28617 2010-04-22 21:31:39Z vboxsync $ */
 /** @file
  *
  * Test executable for quickly excercising/debugging the Linux host hardware
@@ -49,7 +49,7 @@ void doHotplugEvent(VBoxMainHotplugWaiter *waiter, RTMSINTERVAL cMillies)
             continue;
         }
         if (rc == VERR_TIMEOUT)
-            continue;
+            break;
         if (RT_FAILURE(rc))
         {
             RTPrintf("Failed!\n");
