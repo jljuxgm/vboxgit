@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 28399 2010-04-16 08:50:37Z vboxsync $ */
+/* $Id: DevSerial.cpp 28400 2010-04-16 08:51:53Z vboxsync $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -525,6 +525,7 @@ static DECLCALLBACK(int) serialNotifyStatusLinesChanged(PPDMICHARPORT pInterface
 
 static DECLCALLBACK(int) serialNotifyBufferFull(PPDMICHARPORT pInterface, bool fFull)
 {
+#if 0
     SerialState *pThis = PDMICHARPORT_2_SERIALSTATE(pInterface);
     PDMCritSectEnter(&pThis->CritSect, VERR_PERMISSION_DENIED);
     if (fFull)
@@ -539,6 +540,7 @@ static DECLCALLBACK(int) serialNotifyBufferFull(PPDMICHARPORT pInterface, bool f
     }
     serial_update_irq(pThis);
     PDMCritSectLeave(&pThis->CritSect);
+#endif
     return VINF_SUCCESS;
 }
 
