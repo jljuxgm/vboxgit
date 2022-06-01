@@ -1,7 +1,5 @@
-/* $Id: MachineImpl.h 29363 2010-05-11 15:12:07Z vboxsync $ */
-
+/* $Id: MachineImpl.h 29385 2010-05-11 18:05:44Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM class implementation
  */
 
@@ -743,7 +741,7 @@ protected:
         /* flags for #saveStateSettings() */
         SaveSTS_CurStateModified = 0x20,
         SaveSTS_StateFilePath = 0x40,
-        SaveSTS_StateTimeStamp = 0x80,
+        SaveSTS_StateTimeStamp = 0x80
     };
 
     HRESULT prepareSaveSettings(bool *pfNeedsGlobalSaveSettings);

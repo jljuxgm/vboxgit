@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: HostImpl.cpp 29385 2010-05-11 18:05:44Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -2316,6 +2316,7 @@ HRESULT Host::checkUSBProxyService()
 #endif /* VBOX_WITH_USB */
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
+
 void Host::registerMetrics(PerformanceCollector *aCollector)
 {
     pm::CollectorHAL *hal = aCollector->getHAL();
@@ -2434,13 +2435,14 @@ void Host::registerMetrics(PerformanceCollector *aCollector)
                                               new pm::AggregateMin()));
     aCollector->registerMetric(new pm::Metric(ramUsage, ramVMMBallooned,
                                               new pm::AggregateMax()));
-};
+}
 
 void Host::unregisterMetrics (PerformanceCollector *aCollector)
 {
     aCollector->unregisterMetricsFor(this);
     aCollector->unregisterBaseMetricsFor(this);
-};
+}
+
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

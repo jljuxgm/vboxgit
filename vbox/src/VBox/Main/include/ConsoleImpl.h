@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 29363 2010-05-11 15:12:07Z vboxsync $ */
+/* $Id: ConsoleImpl.h 29385 2010-05-11 18:05:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -633,7 +633,7 @@ private:
         cLedScsi    = 16,
         iLedSas     = iLedScsi + cLedScsi,
         cLedSas     = 8,
-        cLedStorage = cLedFloppy + cLedIde + cLedSata + cLedScsi + cLedSas,
+        cLedStorage = cLedFloppy + cLedIde + cLedSata + cLedScsi + cLedSas
     };
     DeviceType_T maStorageDevType[cLedStorage];
     PPDMLED      mapStorageLeds[cLedStorage];
