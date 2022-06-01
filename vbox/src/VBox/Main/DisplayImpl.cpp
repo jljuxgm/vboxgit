@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 28282 2010-04-14 07:23:28Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 28308 2010-04-14 15:17:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -23,6 +23,7 @@
 #include "ConsoleImpl.h"
 #include "ConsoleVRDPServer.h"
 #include "VMMDev.h"
+#include <iprt/stream.h>
 
 #include "AutoCaller.h"
 #include "Logging.h"
@@ -2287,7 +2288,7 @@ static int displayTakeScreenshot(PVM pVM, struct DRVMAINDISPLAY *pDrv, BYTE *add
                               pDrv->pUpPort, &pu8Data, &cbData, &cx, &cy);
 #endif /* !VBOX_WITH_OLD_VBVA_LOCK */
 
-    if (RT_SUCCESS(vrc))
+    if (RT_SUCCESS(vrc) && pu8Data)
     {
         if (cx == width && cy == height)
         {
