@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 27050 2010-03-04 17:52:44Z vboxsync $ */
+/* $Id: alloc-r0drv-solaris.c 28298 2010-04-14 12:20:39Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -47,7 +47,7 @@
 /**
  * OS specific allocation function.
  */
-PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
+PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
 {
     size_t cbAllocated = cb;
     PRTMEMHDR pHdr;
@@ -79,7 +79,7 @@ PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
 /**
  * OS specific free function.
  */
-void rtMemFree(PRTMEMHDR pHdr)
+void rtR0MemFree(PRTMEMHDR pHdr)
 {
     pHdr->u32Magic += 1;
 #ifdef RT_ARCH_AMD64

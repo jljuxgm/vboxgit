@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-darwin.cpp 22052 2009-08-07 09:45:48Z vboxsync $ */
+/* $Id: alloc-r0drv-darwin.cpp 28298 2010-04-14 12:20:39Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Darwin.
  */
@@ -44,7 +44,7 @@
 /**
  * OS specific allocation function.
  */
-PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
+PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
 {
     PRTMEMHDR pHdr = (PRTMEMHDR)IOMalloc(cb + sizeof(*pHdr));
     if (pHdr)
@@ -63,7 +63,7 @@ PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
 /**
  * OS specific free function.
  */
-void rtMemFree(PRTMEMHDR pHdr)
+void rtR0MemFree(PRTMEMHDR pHdr)
 {
     pHdr->u32Magic += 1;
     IOFree(pHdr, pHdr->cb + sizeof(*pHdr));

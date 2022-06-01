@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 25642 2010-01-05 08:19:10Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 28298 2010-04-14 12:20:39Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -114,7 +114,7 @@ RT_EXPORT_SYMBOL(RTR0MemExecDonate);
 /**
  * OS specific allocation function.
  */
-PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
+PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
 {
     /*
      * Allocate.
@@ -172,7 +172,7 @@ PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
 /**
  * OS specific free function.
  */
-void rtMemFree(PRTMEMHDR pHdr)
+void rtR0MemFree(PRTMEMHDR pHdr)
 {
     pHdr->u32Magic += 1;
     if (pHdr->fFlags & RTMEMHDR_FLAG_KMALLOC)

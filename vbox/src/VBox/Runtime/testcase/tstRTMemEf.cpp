@@ -1,4 +1,4 @@
-/* $Id: tstRTMemEf.cpp 27283 2010-03-11 13:42:56Z vboxsync $ */
+/* $Id: tstRTMemEf.cpp 28298 2010-04-14 12:20:39Z vboxsync $ */
 /** @file
  * IPRT - Testcase for the RTMemEf* functions.
  */
@@ -50,7 +50,7 @@ static int tstMemAllocEfAccess()
     /* Trivial alloc fence test - allocate a single word and access both
      * the word after the allocated block and the word before. One of them
      * will crash no matter whether the fence is at the bottom or on top. */
-    int32_t *p = (int32_t *)RTMemEfAlloc(sizeof(int32_t));
+    int32_t *p = (int32_t *)RTMemEfAllocNP(sizeof(int32_t));
     RTPrintf("tstRTMemAllocEfAccess: allocated int32_t at %#p\n", p);
     RTPrintf("tstRTMemAllocEfAccess: triggering buffer overrun...\n");
     ASMProbeReadByte(p + 1);
