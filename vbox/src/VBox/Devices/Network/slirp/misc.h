@@ -1,4 +1,4 @@
-/* $Id: misc.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: misc.h 30016 2010-06-03 18:31:14Z vboxsync $ */
 /** @file
  * NAT - helpers (declarations/defines).
  */
@@ -33,7 +33,6 @@ void slirp_insque  (PNATState, void *, void *);
 void slirp_remque  (PNATState, void *);
 void fd_nonblock (int);
 
-#ifdef VBOX_WITH_SLIRP_BSD_MBUF
 /* UVM interface */
 #define UMA_ALIGN_PTR       (1 << 0)
 #define UMA_ZONE_REFCNT     (1 << 1)
@@ -67,6 +66,5 @@ void zone_drain(uma_zone_t);
 
 void slirp_null_arg_free(void *, void *);
 void m_fini(PNATState pData);
-#endif /* VBOX_WITH_SLIRP_BSD_MBUF */
 
 #endif

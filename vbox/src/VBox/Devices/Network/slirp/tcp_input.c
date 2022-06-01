@@ -1,4 +1,4 @@
-/* $Id: tcp_input.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tcp_input.c 30016 2010-06-03 18:31:14Z vboxsync $ */
 /** @file
  * NAT - TCP input.
  */
@@ -358,11 +358,7 @@ tcp_input(PNATState pData, register struct mbuf *m, int iphlen, struct socket *i
      * (vvl) ip_input substracts IP header length from ip->ip_len value.
      * here we do the test the same as input method of UDP protocol.
      */
-#ifdef VBOX_WITH_SLIRP_BSD_MBUF
     Assert((ip->ip_len + iphlen == m_length(m, NULL)));
-#else
-    Assert((ip->ip_len  + iphlen == m->m_len));
-#endif
     save_ip = *ip;
     save_ip.ip_len+= iphlen;
 
