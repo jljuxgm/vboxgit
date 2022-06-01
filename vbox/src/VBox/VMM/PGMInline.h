@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 26150 2010-02-02 15:52:54Z vboxsync $ */
+/* $Id: PGMInline.h 28639 2010-04-23 12:46:38Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1510,6 +1510,7 @@ DECLINLINE(void) pgmTrackDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPoolPage, PPG
     if (cRefs == 1)
     {
         Assert(pPoolPage->idx == PGM_PAGE_GET_TD_IDX(pPhysPage));
+        /* Invalidate the tracking data. */
         PGM_PAGE_SET_TRACKING(pPhysPage, 0);
     }
     else
