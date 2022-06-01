@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 28844 2010-04-27 16:07:10Z vboxsync $ */
+/* $Id: UIMachine.cpp 29700 2010-05-20 14:48:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -16,6 +16,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+/* Global includes */
+#include <QTimer>
 
 /* Local includes */
 #include "VBoxGlobal.h"
@@ -164,6 +167,7 @@ public:
         {
             pActionFullscreen->blockSignals(true);
             pActionFullscreen->setChecked(true);
+            QTimer::singleShot(0, pActionFullscreen, SLOT(sltUpdateAppearance()));
             pActionFullscreen->blockSignals(false);
         }
     }
@@ -177,6 +181,7 @@ public:
         {
             pActionFullscreen->blockSignals(true);
             pActionFullscreen->setChecked(false);
+            QTimer::singleShot(0, pActionFullscreen, SLOT(sltUpdateAppearance()));
             pActionFullscreen->blockSignals(false);
         }
     }
@@ -226,6 +231,7 @@ public:
         {
             pActionSeamless->blockSignals(true);
             pActionSeamless->setChecked(true);
+            QTimer::singleShot(0, pActionSeamless, SLOT(sltUpdateAppearance()));
             pActionSeamless->blockSignals(false);
         }
     }
@@ -239,6 +245,7 @@ public:
         {
             pActionSeamless->blockSignals(true);
             pActionSeamless->setChecked(false);
+            QTimer::singleShot(0, pActionSeamless, SLOT(sltUpdateAppearance()));
             pActionSeamless->blockSignals(false);
         }
     }

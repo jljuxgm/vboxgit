@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 29694 2010-05-20 12:58:32Z vboxsync $ */
+/* $Id: UISession.cpp 29700 2010-05-20 14:48:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1199,9 +1199,7 @@ void UISession::loadSessionSettings()
         /* Should guest autoresize? */
         strSettings = machine.GetExtraData(VBoxDefs::GUI_AutoresizeGuest);
         QAction *pGuestAutoresizeSwitch = uimachine()->actionsPool()->action(UIActionIndex_Toggle_GuestAutoresize);
-        pGuestAutoresizeSwitch->blockSignals(true);
         pGuestAutoresizeSwitch->setChecked(strSettings != "off");
-        pGuestAutoresizeSwitch->blockSignals(false);
     }
 }
 
