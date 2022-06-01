@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 27857 2010-03-31 09:02:32Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 27876 2010-03-31 10:19:06Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1322,7 +1322,7 @@ int handleModifyVM(HandlerArg *a)
                     strGuestIp = ch;                
                     ITERATE_TO_NEXT_TERM(ch);
                     strGuestPort = ch;
-                    uint32_t proto;
+                    NATProtocol_T proto;
                     if (RTStrICmp(strProto, "udp") == 0)
                         proto = NATProtocol_UDP;
                     else if (RTStrICmp(strProto, "tcp") == 0)
