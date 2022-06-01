@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.h 25607 2009-12-31 13:21:39Z vboxsync $ */
+/* $Id: lockvalidator.h 25609 2009-12-31 13:41:35Z vboxsync $ */
 /** @file
  * IPRT - Internal RTLockValidator header.
  */
@@ -45,7 +45,7 @@ typedef union RTLOCKVALRECUNION
     RTLOCKVALRECCORE      Core;
     RTLOCKVALRECEXCL      Excl;
     RTLOCKVALRECSHRD      Shared;
-    RTLOCKVALRECSHRDOWN   SharedOwn;
+    RTLOCKVALRECSHRDOWN   ShrdOwner;
 } RTLOCKVALRECUNION;
 
 
