@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 25995 2010-01-25 11:33:03Z vboxsync $ */
+/* $Id: PDMInternal.h 26112 2010-02-01 01:44:02Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -376,7 +376,7 @@ typedef struct PDMDEV
     /** Registration structure. */
     R3PTRTYPE(const struct PDMDEVREG *) pDevReg;
     /** Number of instances. */
-    RTUINT                          cInstances;
+    uint32_t                        cInstances;
     /** Pointer to chain of instances (R3 Ptr). */
     PPDMDEVINSR3                    pInstances;
 } PDMDEV;
@@ -394,7 +394,7 @@ typedef struct PDMUSB
     /** Registration structure. */
     R3PTRTYPE(const struct PDMUSBREG *) pUsbReg;
     /** Next instance number. */
-    RTUINT                          iNextInstance;
+    uint32_t                        iNextInstance;
     /** Pointer to chain of instances (R3 Ptr). */
     R3PTRTYPE(PPDMUSBINS)           pInstances;
 } PDMUSB;

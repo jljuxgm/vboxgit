@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 26112 2010-02-01 01:44:02Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -824,6 +824,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_DriverAttach(PPDMDEVINS pDevIns, RTUINT iLu
         pLun->pTop      = NULL;
         pLun->pBottom   = NULL;
         pLun->pDevIns   = pDevIns;
+        pLun->pUsbIns   = NULL;
         pLun->pszDesc   = pszDesc;
         pLun->pBase     = pBaseInterface;
         if (!pLunPrev)
