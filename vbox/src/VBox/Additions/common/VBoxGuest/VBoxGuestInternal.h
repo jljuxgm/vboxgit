@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 26934 2010-03-02 10:26:08Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 26999 2010-03-03 17:00:05Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -139,7 +139,7 @@ typedef struct VBOXGUESTDEVEXT
      * For implementing the VBOXGUEST_IOCTL_CLIPBOARD_CONNECT interface. */
     uint32_t                    u32ClipboardClientId;
 
-    /* Memory balloon information. */
+    /* Memory balloon information for RTR0MemObjAllocPhysNC(). */
     VBOXGUESTMEMBALLOON         MemBalloon;
 
 } VBOXGUESTDEVEXT;
@@ -182,6 +182,9 @@ typedef struct VBOXGUESTSESSION
     /** The last consumed VMMDEV_EVENT_MOUSE_POSITION_CHANGED sequence number.
      * Used to implement polling.  */
     uint32_t volatile           u32MousePosChangedSeq;
+
+    /* Memory ballooning information if userland provides the balloon memory. */
+    VBOXGUESTMEMBALLOON         MemBalloon;
 } VBOXGUESTSESSION;
 
 RT_C_DECLS_BEGIN

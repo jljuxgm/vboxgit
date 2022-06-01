@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 26493 2010-02-14 07:50:58Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 26999 2010-03-03 17:00:05Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -239,7 +239,19 @@ VBGLR3DECL(int) VbglR3StatReport(VMMDevReportGuestStats *pReq)
  */
 VBGLR3DECL(int) VbglR3MemBalloonRefresh(uint32_t *pu32Size)
 {
-    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_CTL_CHECK_BALLOON_MASK, pu32Size, sizeof(*pu32Size));
+    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_CHECK_BALLOON, pu32Size, sizeof(*pu32Size));
+}
+
+
+/**
+ *
+ */
+VBGLR3DECL(int) VbglR3MemBalloonChange(void *pv, bool fInflate)
+{
+    VBoxGuestChangeBalloonInfo Info;
+    Info.u64ChunkAddr = (uint64_t)pv;
+    Info.fInflate = fInflate;
+    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_CHANGE_BALLOON, &Info, sizeof(Info));
 }
 
 
