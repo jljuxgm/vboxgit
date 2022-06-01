@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 24200 2009-10-30 14:44:50Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 24239 2009-11-01 11:29:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -707,7 +707,6 @@ static int pgmR3LoadMmio2Ranges(PVM pVM, PSSMHANDLE pSSM)
             if (cb > pMmio2->RamRange.cb) /* bad idea? */
                 return VERR_SSM_LOAD_CONFIG_MISMATCH;
         }
-
     } /* forever */
 }
 
