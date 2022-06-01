@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 26796 2010-02-25 13:40:52Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 26863 2010-02-26 15:20:49Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -1916,7 +1916,7 @@ private:
     bool mAllowDoneCurrent;
 };
 
-VBoxGLWidget::VBoxGLWidget (CConsole& console, QWidget *aParent, VBoxVHWASettings *aSettings)
+VBoxGLWidget::VBoxGLWidget (CConsole console, QWidget *aParent, VBoxVHWASettings *aSettings)
     : QGLWidget (new VBoxGLContext(VBoxGLWidget::vboxGLFormat()), aParent),
     mSurfHandleTable(128), /* 128 should be enough */
     mpfnOp(NULL),
