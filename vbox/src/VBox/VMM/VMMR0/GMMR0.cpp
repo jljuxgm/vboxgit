@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 27116 2010-03-05 17:16:36Z vboxsync $ */
+/* $Id: GMMR0.cpp 27117 2010-03-05 17:20:07Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2926,8 +2926,8 @@ GMMR0DECL(int) GMMR0BalloonedPages(PVM pVM, VMCPUID idCpu, GMMBALLOONACTION enmA
                     if (pGVM->gmm.s.cReqDeflatePages)
                     {
                         AssertFailed(); /* This is path is for later. */
-                        Log(("GMMR0BalloonedPages: -%#x - Global=%#llx / VM: Total=%#llx Req=%#llx\n", cPages,
-                             pGMM->cBalloonedPages, pGVM->gmm.s.cBalloonedPages, pGVM->gmm.s.cReqDeflatePages));
+                        Log(("GMMR0BalloonedPages: -%#x - Global=%#llx / VM: Total=%#llx Req=%#llx\n",
+                             cBalloonedPages, pGMM->cBalloonedPages, pGVM->gmm.s.cBalloonedPages, pGVM->gmm.s.cReqDeflatePages));
 
                         /*
                          * Anything we need to do here now when the request has been completed?
@@ -2935,8 +2935,8 @@ GMMR0DECL(int) GMMR0BalloonedPages(PVM pVM, VMCPUID idCpu, GMMBALLOONACTION enmA
                         pGVM->gmm.s.cReqDeflatePages = 0;
                     }
                     else
-                        Log(("GMMR0BalloonedPages: -%#x - Global=%#llx / VM: Total=%#llx (user)\n", cPages,
-                             pGMM->cBalloonedPages, pGVM->gmm.s.cBalloonedPages));
+                        Log(("GMMR0BalloonedPages: -%#x - Global=%#llx / VM: Total=%#llx (user)\n",
+                             cBalloonedPages, pGMM->cBalloonedPages, pGVM->gmm.s.cBalloonedPages));
                 }
                 else
                     rc = VERR_GMM_ATTEMPT_TO_DEFLATE_TOO_MUCH;
