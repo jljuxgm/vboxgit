@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 27236 2010-03-09 22:48:51Z vboxsync $ */
+/* $Id: UIMachineView.cpp 27237 2010-03-10 00:11:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -339,32 +339,6 @@ void UIMachineView::setDesktopGeometry(DesktopGeo geometry, int aWidth, int aHei
 void UIMachineView::storeConsoleSize(int iWidth, int iHeight)
 {
     m_storedConsoleSize = QSize(iWidth, iHeight);
-}
-
-void UIMachineView::calculateDesktopGeometry()
-{
-    /* This method should not get called until we have initially set up the m_desktopGeometryType: */
-    Assert((m_desktopGeometryType != DesktopGeo_Invalid));
-    /* If we are not doing automatic geometry calculation then there is nothing to do: */
-    if (DesktopGeo_Automatic == m_desktopGeometryType)
-    {
-        /* Available geometry of the desktop.  If the desktop is a single
-         * screen, this will exclude space taken up by desktop taskbars
-         * and things, but this is unfortunately not true for the more
-         * complex case of a desktop spanning multiple screens: */
-        QRect desktop = availableGeometry();
-        /* The area taken up by the machine window on the desktop,
-         * including window frame, title and menu bar and whatnot: */
-        QRect frame = machineWindowWrapper()->machineWindow()->frameGeometry();
-        /* The area taken up by the machine view, so excluding all decorations: */
-        QRect window = geometry();
-        /* To work out how big we can make the console window while still
-         * fitting on the desktop, we calculate desktop - frame + window.
-         * This works because the difference between frame and window
-         * (or at least its width and height) is a constant. */
-        m_desktopGeometry = QSize(desktop.width() - frame.width() + window.width(),
-                                  desktop.height() - frame.height() + window.height());
-    }
 }
 
 void UIMachineView::updateMouseCursorShape()

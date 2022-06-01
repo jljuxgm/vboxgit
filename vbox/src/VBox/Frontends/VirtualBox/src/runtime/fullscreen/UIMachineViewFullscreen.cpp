@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 27236 2010-03-09 22:48:51Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 27237 2010-03-10 00:11:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -264,6 +264,17 @@ void UIMachineViewFullscreen::setGuestAutoresizeEnabled(bool fEnabled)
 QRect UIMachineViewFullscreen::availableGeometry()
 {
     return QApplication::desktop()->screenGeometry(this);
+}
+
+void UIMachineViewFullscreen::calculateDesktopGeometry()
+{
+    /* This method should not get called until we have initially set up the desktop geometry type: */
+    Assert((desktopGeometryType() != DesktopGeo_Invalid));
+    /* If we are not doing automatic geometry calculation then there is nothing to do: */
+    if (desktopGeometryType() == DesktopGeo_Automatic)
+    {
+        m_desktopGeometry = QSize(availableGeometry().width(), availableGeometry().height());
+    }
 }
 
 void UIMachineViewFullscreen::maybeRestrictMinimumSize()

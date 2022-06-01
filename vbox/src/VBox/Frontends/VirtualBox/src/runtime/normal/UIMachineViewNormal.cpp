@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 27236 2010-03-09 22:48:51Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 27237 2010-03-10 00:11:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -319,6 +319,27 @@ void UIMachineViewNormal::normalizeGeometry(bool bAdjustPosition)
 QRect UIMachineViewNormal::availableGeometry()
 {
     return QApplication::desktop()->availableGeometry(this);
+}
+
+void UIMachineViewNormal::calculateDesktopGeometry()
+{
+    /* This method should not get called until we have initially set up the desktop geometry type: */
+    Assert((desktopGeometryType() != DesktopGeo_Invalid));
+    /* If we are not doing automatic geometry calculation then there is nothing to do: */
+    if (desktopGeometryType() == DesktopGeo_Automatic)
+    {
+        /* The area taken up by the machine window on the desktop,
+         * including window frame, title, menu bar and status bar: */
+        QRect windowGeo = machineWindowWrapper()->machineWindow()->frameGeometry();
+        /* The area taken up by the machine central widget, so excluding all decorations: */
+        QRect centralWidgetGeo = static_cast<QIMainDialog*>(machineWindowWrapper()->machineWindow())->centralWidget()->geometry();
+        /* To work out how big we can make the console window while still fitting on the desktop,
+         * we calculate availableGeometry() - (windowGeo - centralWidgetGeo).
+         * This works because the difference between machine window and machine central widget
+         * (or at least its width and height) is a constant. */
+        m_desktopGeometry = QSize(availableGeometry().width() - (windowGeo.width() - centralWidgetGeo.width()),
+                                  availableGeometry().height() - (windowGeo.height() - centralWidgetGeo.height()));
+    }
 }
 
 void UIMachineViewNormal::maybeRestrictMinimumSize()
