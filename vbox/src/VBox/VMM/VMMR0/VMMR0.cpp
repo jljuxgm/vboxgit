@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 29424 2010-05-12 15:11:09Z vboxsync $ */
+/* $Id: VMMR0.cpp 29457 2010-05-14 10:10:34Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -968,7 +968,7 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
             /* Select a valid VCPU context. */
             ASMAtomicWriteU32(&pVCpu->idHostCpu, RTMpCpuId());
 
-            int rc = GMMR0CheckSharedModules(pVM, idCpu);
+            int rc = vmmR0CallRing3SetJmp(&pVCpu->vmm.s.CallRing3JmpBufR0, GMMR0CheckSharedModules, pVM, pVCpu); /* this may resume code. */
 
             /* Clear the VCPU context. */
             ASMAtomicWriteU32(&pVCpu->idHostCpu, NIL_RTCPUID);
