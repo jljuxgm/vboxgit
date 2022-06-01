@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29759 2010-05-24 09:22:00Z vboxsync $
+# $Id: Makefile.kmk 29770 2010-05-25 08:36:24Z vboxsync $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -212,7 +212,7 @@ endif # VBOX_WITH_JAVA_SUPPORT_IN_XPIDL
 $(VBOX_JXPCOM_GEN)/jxpcomglue.list:  \
 		$(VBOX_XIDL_FILE)    \
                 $(VBOX_GLUE_XSLT_DIR)/glue-java.xsl \
-                $$(TARGET_filesplitter) \
+                $(VBOX_FILESPLIT)    \
 		| $(VBOX_JXPCOM_GEN)/java/glue/
 	$(call MSG_L1,Generating Java glue files from XIDL)
 	$(QUIET)$(RM) -f $(wildcard $(VBOX_JXPCOM_GEN)/java/glue/*.java)
