@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 26685 2010-02-22 17:48:23Z vboxsync $ */
+/* $Id: PGMAll.cpp 27369 2010-03-15 15:42:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1874,16 +1874,17 @@ VMMDECL(int) PGMSyncCR3(PVMCPU pVCpu, uint64_t cr0, uint64_t cr3, uint64_t cr4, 
             pVCpu->pgm.s.GCPhysCR3 = GCPhysCR3;
             rc = PGM_BTH_PFN(MapCR3, pVCpu)(pVCpu, GCPhysCR3);
         }
+        /* Make sure we check for pending pgm pool syncs as we clear VMCPU_FF_PGM_SYNC_CR3 later on! */
+        if (    rc == VINF_PGM_SYNC_CR3
+            ||  (pVCpu->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL))
+        {
 #ifdef IN_RING3
-        if (rc == VINF_PGM_SYNC_CR3)
             rc = pgmPoolSyncCR3(pVCpu);
 #else
-        if (rc == VINF_PGM_SYNC_CR3)
-        {
             pVCpu->pgm.s.GCPhysCR3 = GCPhysCR3Old;
-            return rc;
-        }
+            return VINF_PGM_SYNC_CR3;
 #endif
+        }
         AssertRCReturn(rc, rc);
         AssertRCSuccessReturn(rc, VERR_INTERNAL_ERROR);
     }
