@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 27827 2010-03-30 13:54:01Z vboxsync $ */
+/* $Id: DrvNAT.cpp 27842 2010-03-30 21:01:26Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -454,6 +454,16 @@ static DECLCALLBACK(int) drvNATNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, siz
     pSgBuf->cSegs       = 1;
 
     *ppSgBuf = pSgBuf;
+    return VINF_SUCCESS;
+}
+
+/**
+ * @interface_method_impl{PDMINETWORKUP,pfnFreeBuf}
+ */
+static DECLCALLBACK(int) drvNATNetworkUp_FreeBuf(PPDMINETWORKUP pInterface, PPDMSCATTERGATHER pSgBuf)
+{
+    PDRVNAT pThis = RT_FROM_MEMBER(pInterface, DRVNAT, INetworkUp);
+    drvNATFreeSgBuf(pThis, pSgBuf);
     return VINF_SUCCESS;
 }
 
@@ -1043,6 +1053,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
     pDrvIns->IBase.pfnQueryInterface    = drvNATQueryInterface;
     /* INetwork */
     pThis->INetworkUp.pfnAllocBuf           = drvNATNetworkUp_AllocBuf;
+    pThis->INetworkUp.pfnFreeBuf            = drvNATNetworkUp_FreeBuf;
     pThis->INetworkUp.pfnSendBuf            = drvNATNetworkUp_SendBuf;
     pThis->INetworkUp.pfnSendDeprecated     = drvNATNetworkUp_SendDeprecated;
     pThis->INetworkUp.pfnSetPromiscuousMode = drvNATNetworkUp_SetPromiscuousMode;
