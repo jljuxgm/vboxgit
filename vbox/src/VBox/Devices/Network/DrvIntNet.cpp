@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 28720 2010-04-25 21:35:30Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 28721 2010-04-25 21:36:26Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -48,8 +48,12 @@
 
 #include "../Builtins.h"
 
-// To play with R0 drivers.
-//#define VBOX_WITH_DRVINTNET_IN_R0
+
+/*******************************************************************************
+*   Defined Constants And Macros                                               *
+*******************************************************************************/
+/** Enables the ring-0 part. */
+#define VBOX_WITH_DRVINTNET_IN_R0
 
 
 /*******************************************************************************
