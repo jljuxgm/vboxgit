@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: ministring.cpp 30318 2010-06-21 07:49:28Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -49,6 +49,27 @@ MiniString &MiniString::append(const MiniString &that)
 
         memcpy(m_psz + lenThis, that.m_psz, lenThat);
         m_psz[lenThis + lenThat] = '\0';
+        m_cbLength = cbBoth - 1;
+    }
+    return *this;
+}
+
+MiniString &MiniString::append(const char *pszThat)
+{
+    size_t cchThat = strlen(pszThat);
+    if (cchThat)
+    {
+        size_t cchThis = length();
+        size_t cbBoth = cchThis + cchThat + 1;
+
+        reserve(cbBoth);
+            // calls realloc(cbBoth) and sets m_cbAllocated; may throw bad_alloc.
+#ifndef RT_EXCEPTIONS_ENABLED
+        AssertRelease(capacity() >= cbBoth);
+#endif
+
+        memcpy(m_psz + cchThis, pszThat, cchThat);
+        m_psz[cbBoth - 1] = '\0';
         m_cbLength = cbBoth - 1;
     }
     return *this;
