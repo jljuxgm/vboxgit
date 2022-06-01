@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 24608 2009-11-12 13:49:39Z vboxsync $ */
+/* $Id: HWACCM.cpp 24813 2009-11-20 08:44:56Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1192,6 +1192,7 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
             LogRel(("HWACCM: AMD-V revision                    = %X\n", pVM->hwaccm.s.svm.u32Rev));
             LogRel(("HWACCM: AMD-V max ASID                    = %d\n", pVM->hwaccm.s.uMaxASID));
             LogRel(("HWACCM: AMD-V features                    = %X\n", pVM->hwaccm.s.svm.u32Features));
+            LogRel(("HWACCM: AMD HWCR MSR                      = %RX64\n", pVM->hwaccm.s.svm.msrHWCR));
 
             if (pVM->hwaccm.s.svm.u32Features & AMD_CPUID_SVM_FEATURE_EDX_NESTED_PAGING)
                 LogRel(("HWACCM:    AMD_CPUID_SVM_FEATURE_EDX_NESTED_PAGING\n"));
