@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23960 2009-10-22 09:15:59Z vboxsync $
+# $Id: Makefile.kmk 24352 2009-11-04 18:49:05Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -89,6 +89,7 @@ PROGRAMS += \
 	tstR0ThreadPreemptionDriver \
 	tstRTS3 \
 	tstSems \
+	tstSemEvent \
 	tstSemPingPong \
 	tstRTStrCache \
 	tstRTStrFormat \
@@ -354,6 +355,8 @@ tstRTProcIsRunningByName_SOURCES = tstRTProcIsRunningByName.cpp
 tstRTS3_SOURCES = tstRTS3.cpp
 
 tstSemMutex_SOURCES = tstSemMutex.cpp
+
+tstSemEvent_SOURCES = tstSemEvent.cpp
 
 tstSemRW_SOURCES = tstSemRW.cpp
 
