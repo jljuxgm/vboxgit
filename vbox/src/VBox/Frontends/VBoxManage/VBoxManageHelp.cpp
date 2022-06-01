@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 24404 2009-11-05 17:14:23Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 24504 2009-11-09 13:35:37Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -360,6 +360,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--type <dvddrive|hdd|fdd>\n"
                  "                             --medium <none|emptydrive|uuid|filename|host:<drive>>]\n"
                  "                            [--passthrough <on|off>]\n"
+                 "                            [--forceunmount <on|off>]\n"
                  "\n");
     }
 
