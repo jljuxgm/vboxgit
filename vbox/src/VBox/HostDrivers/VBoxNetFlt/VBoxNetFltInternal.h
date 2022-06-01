@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 28868 2010-04-28 14:01:56Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 29108 2010-05-05 20:17:42Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -246,9 +246,10 @@ typedef struct VBOXNETFLTINS
 
             volatile uint32_t cModeNetFltRefs;
             volatile uint32_t cModePassThruRefs;
-
+#ifndef VBOXNETFLT_NO_PACKET_QUEUE
             /** Packet worker thread info */
             PACKET_QUEUE_WORKER PacketQueueWorker;
+#endif
             /** The MAC address of the interface. Caching MAC for performance reasons. */
             RTMAC MacAddr;
             /** mutex used to synchronize ADAPT init/deinit */
