@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 27462 2010-03-17 20:31:05Z vboxsync $ */
+/* $Id: UISession.cpp 27478 2010-03-18 13:28:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -613,11 +613,19 @@ void UISession::powerUp()
         return;
     }
 
+    /* Guard progressbar warnings from auto-closing: */
+    if (uimachine()->machineLogic())
+        uimachine()->machineLogic()->setPreventAutoClose(true);
+
     /* Show "Starting/Restoring" progress dialog: */
     if (isSaved())
         vboxProblem().showModalProgressDialog(progress, machine.GetName(), mainMachineWindow(), 0);
     else
         vboxProblem().showModalProgressDialog(progress, machine.GetName(), mainMachineWindow());
+
+    /* Allow further auto-closing: */
+    if (uimachine()->machineLogic())
+        uimachine()->machineLogic()->setPreventAutoClose(false);
 
     /* Check for a progress failure: */
     if (progress.GetResultCode() != 0)
