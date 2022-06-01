@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 25412 2009-12-15 15:42:05Z vboxsync $ */
+/* $Id: HostImpl.cpp 25414 2009-12-15 16:27:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -426,8 +426,9 @@ STDMETHODIMP Host::COMGETTER(DVDDrives)(ComSafeArrayOut(IMedium *, aDrives))
             {
                 char *cdromEnv = strdup(RTEnvGet("VBOX_CDROM"));
                 char *saveStr = NULL;
-                char *cdromDrive;
-                cdromDrive = strtok_r(cdromEnv, ":", &saveStr);
+                char *cdromDrive = NULL;
+                if (cdromEnv)
+                    cdromDrive = strtok_r(cdromEnv, ":", &saveStr);
                 while (cdromDrive)
                 {
                     if (validateDevice(cdromDrive, true))
