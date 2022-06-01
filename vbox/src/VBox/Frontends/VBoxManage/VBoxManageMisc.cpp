@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 25377 2009-12-14 19:28:05Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 26323 2010-02-08 11:13:28Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -377,8 +377,8 @@ int handleStartVM(HandlerArg *a)
         ComPtr<IProgress> progress;
         CHECK_ERROR_RET(a->virtualBox, OpenRemoteSession(a->session, uuid, sessionType,
                                                          env, progress.asOutParam()), rc);
-        RTPrintf("Waiting for the remote session to open...\n");
-        CHECK_ERROR_RET(progress, WaitForCompletion (-1), 1);
+        RTPrintf("Waiting for the VM to power on...\n");
+        CHECK_ERROR_RET(progress, WaitForCompletion(-1), 1);
 
         BOOL completed;
         CHECK_ERROR_RET(progress, COMGETTER(Completed)(&completed), rc);
@@ -395,7 +395,7 @@ int handleStartVM(HandlerArg *a)
         }
         else
         {
-            RTPrintf("Remote session has been successfully opened.\n");
+            RTPrintf("VM has been successfully started.\n");
         }
     }
 

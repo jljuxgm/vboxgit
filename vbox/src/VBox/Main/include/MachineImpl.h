@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 26295 2010-02-05 14:36:51Z vboxsync $ */
+/* $Id: MachineImpl.h 26323 2010-02-08 11:13:28Z vboxsync $ */
 
 /** @file
  *
@@ -828,6 +828,7 @@ public:
     STDMETHOD(SetRemoveSavedState)(BOOL aRemove);
     STDMETHOD(UpdateState)(MachineState_T machineState);
     STDMETHOD(GetIPCId)(BSTR *id);
+    STDMETHOD(SetPowerUpInfo)(IVirtualBoxErrorInfo *aError);
     STDMETHOD(RunUSBDeviceFilters)(IUSBDevice *aUSBDevice, BOOL *aMatched, ULONG *aMaskedIfs);
     STDMETHOD(CaptureUSBDevice)(IN_BSTR aId);
     STDMETHOD(DetachUSBDevice)(IN_BSTR aId, BOOL aDone);
