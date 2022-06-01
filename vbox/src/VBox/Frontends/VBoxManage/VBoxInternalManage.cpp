@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 26288 2010-02-05 14:03:39Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 27133 2010-03-06 17:01:36Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -54,7 +54,8 @@
 #ifdef RT_OS_WINDOWS
 # include <windows.h>
 # include <winioctl.h>
-#elif defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS)
+#elif defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) \
+    || defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)
 # include <errno.h>
 # include <sys/ioctl.h>
 # include <sys/types.h>
@@ -76,6 +77,9 @@
 # include <sys/dkio.h>
 # include <sys/vtoc.h>
 #endif /* RT_OS_SOLARIS */
+#ifdef RT_OS_FREEBSD
+# include <sys/disk.h>
+#endif /* RT_OS_FREEBSD */
 
 using namespace com;
 
@@ -1080,6 +1084,28 @@ static int CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aVirtualB
     else
     {
         RTPrintf("File '%s' is no block or char device\n", rawdisk.raw());
+        vrc = VERR_INVALID_PARAMETER;
+        goto out;
+    }
+#elif defined(RT_OS_FREEBSD)
+    struct stat DevStat;
+    if (!fstat(RawFile, &DevStat) && S_ISCHR(DevStat.st_mode))
+    {
+        off_t cbMedia = 0;
+        if (!ioctl(RawFile, DIOCGMEDIASIZE, &cbMedia))
+        {
+            cbSize = cbMedia;
+        }
+        else
+        {
+            vrc = RTErrConvertFromErrno(errno);
+            RTPrintf("Cannot get the block count for file '%s': %Rrc", rawdisk.raw(), vrc);
+            goto out;
+        }
+    }
+    else
+    {
+        RTPrintf("File '%s' is no character device\n", rawdisk.raw());
         vrc = VERR_INVALID_PARAMETER;
         goto out;
     }
