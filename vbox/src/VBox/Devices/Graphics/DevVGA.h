@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 27754 2010-03-26 16:43:43Z vboxsync $ */
+/* $Id: DevVGA.h 28210 2010-04-12 14:41:42Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -46,8 +46,8 @@
 #ifdef VBOX
 /** The default amount of VRAM. */
 # define VGA_VRAM_DEFAULT    (_4M)
-/** The maximum amount of VRAM. */
-# define VGA_VRAM_MAX        (128 * _1M)
+/** The maximum amount of VRAM. Limited by VBOX_MAX_ALLOC_PAGE_COUNT. */
+# define VGA_VRAM_MAX        (256 * _1M)
 /** The minimum amount of VRAM. */
 # define VGA_VRAM_MIN        (_1M)
 #endif
