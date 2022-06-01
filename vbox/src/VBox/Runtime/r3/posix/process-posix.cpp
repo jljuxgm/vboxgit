@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 26316 2010-02-07 21:30:39Z vboxsync $ */
+/* $Id: process-posix.cpp 26317 2010-02-07 21:35:45Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -367,6 +367,7 @@ RTR3DECL(int)   RTProcDaemonize(bool fNoChDir, bool fNoClose, const char *pszPid
     pid = fork();
     if (pid == -1)
         return RTErrConvertFromErrno(errno);
+
     if (pid != 0)
     {
         /* Write the pid file, this is done in the parent, before exiting. */
@@ -376,12 +377,10 @@ RTR3DECL(int)   RTProcDaemonize(bool fNoChDir, bool fNoClose, const char *pszPid
             size_t cbPid = RTStrPrintf(szBuf, sizeof(szBuf), "%d\n", pid);
             int rcWrite = write(fdPidfile, szBuf, cbPid);
             close(fdPidfile);
-	    if (rcWrite < 0)
-                return RTErrConvertFromErrno(errno)
         }
         exit(0);
     }
 
-    return VINF_SUCCESS;
+    return rc;
 }
 
