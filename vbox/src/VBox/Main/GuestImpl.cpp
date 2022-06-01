@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 29584 2010-05-17 19:43:35Z vboxsync $ */
+/* $Id: GuestImpl.cpp 29589 2010-05-18 06:55:00Z vboxsync $ */
 
 /** @file
  *
@@ -82,6 +82,13 @@ HRESULT Guest::init (Console *aParent)
         mMemoryBalloonSize = aMemoryBalloonSize;
     else
         mMemoryBalloonSize = 0;                     /* Default is no ballooning */
+
+    BOOL fPageFusionEnabled;
+    ret = mParent->machine()->COMGETTER(PageFusionEnabled)(&fPageFusionEnabled);
+    if (ret == S_OK)
+        mfPageFusionEnabled = fPageFusionEnabled;
+    else
+        mfPageFusionEnabled = false;                /* Default is no page fusion*/
 
     mStatUpdateInterval = 0;                    /* Default is not to report guest statistics at all */
 
@@ -203,6 +210,20 @@ STDMETHODIMP Guest::COMGETTER(SupportsGraphics) (BOOL *aSupportsGraphics)
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     *aSupportsGraphics = mData.mSupportsGraphics;
+
+    return S_OK;
+}
+
+STDMETHODIMP Guest::COMGETTER(PageFusionEnabled) (BOOL *aPageFusionEnabled)
+{
+    CheckComArgOutPointerValid(aPageFusionEnabled);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *aPageFusionEnabled = mfPageFusionEnabled;
 
     return S_OK;
 }
