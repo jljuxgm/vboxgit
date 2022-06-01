@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 29627 2010-05-18 12:47:35Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 29762 2010-05-24 16:21:41Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -252,9 +252,6 @@ static int VBoxServiceControlExecProcLoop(PVBOXSERVICECTRLTHREAD pThread,
     bool                        fProcessAlive       = true;
     bool                        fProcessTimedOut    = false;
     uint64_t                    MsProcessKilled     = UINT64_MAX;
-    bool const                  fHavePipes          = hStdInW    != NIL_RTPIPE
-                                                      || hStdOutR   != NIL_RTPIPE
-                                                      || hStdErrR   != NIL_RTPIPE;
     RTMSINTERVAL const          cMsPollBase         = hStdInW != NIL_RTPIPE
                                                       ? 100   /* need to poll for input */
                                                       : 1000; /* need only poll for process exit and aborts */
