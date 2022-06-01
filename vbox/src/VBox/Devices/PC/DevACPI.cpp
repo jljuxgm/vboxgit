@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DevACPI.cpp 25987 2010-01-24 13:50:26Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -2397,6 +2397,13 @@ static DECLCALLBACK(int) acpiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
 
     /* Set default port base */
     s->uPmIoPortBase = PM_PORT_BASE;
+
+    /* 
+     * FDC and SMC try to use the same non-shareable interrupt (6), 
+     * enable only one device.
+     */
+    if (s->fUseSmc)
+        s->fUseFdc = false;
 
     /* */
     uint32_t rsdp_addr = find_rsdp_space();
