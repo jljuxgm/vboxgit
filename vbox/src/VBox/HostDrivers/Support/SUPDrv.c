@@ -1,4 +1,4 @@
-/* $Revision: 25429 $ */
+/* $Revision: 25430 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -803,6 +803,7 @@ void VBOXCALL supdrvCleanupSession(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSessio
             RTMemFree(pvFree);
         }
     }
+    /* Calling supdrvLdrUnlock when the above lock failed raises a fatal exception in Windows. */
     if (rcLock == VINF_SUCCESS)
         supdrvLdrUnlock(pDevExt);
     Log2(("freeing images - done\n"));
