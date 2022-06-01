@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 24686 2009-11-16 10:14:48Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 25983 2010-01-22 22:15:13Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -38,7 +38,9 @@
 # include <sys/socket.h>
 # include <net/if.h>
 # include <unistd.h>
-# include <utmp.h>
+# ifndef RT_OS_FREEBSD /* The header does not exist anymore since FreeBSD 9-current */
+#  include <utmp.h>
+# endif
 # ifdef RT_OS_SOLARIS
 #  include <sys/sockio.h>
 # endif
