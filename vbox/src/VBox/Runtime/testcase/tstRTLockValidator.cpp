@@ -1,4 +1,4 @@
-/* $Id: tstRTLockValidator.cpp 25748 2010-01-12 10:27:27Z vboxsync $ */
+/* $Id: tstRTLockValidator.cpp 25759 2010-01-12 13:06:06Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTLockValidator.
  */
@@ -342,8 +342,10 @@ static void testIt(uint32_t cThreads, uint32_t cSecs, bool fLoops, PFNRTTHREAD p
     {
         RTTEST_CHECK_RC_RETV(g_hTest, RTCritSectInitEx(&g_aCritSects[i], 0 /*fFlags*/, NIL_RTLOCKVALCLASS,
                                                        RTLOCKVAL_SUB_CLASS_ANY, "RTCritSect"), VINF_SUCCESS);
-        RTTEST_CHECK_RC_RETV(g_hTest, RTSemRWCreate(&g_ahSemRWs[i]), VINF_SUCCESS);
-        RTTEST_CHECK_RC_RETV(g_hTest, RTSemMutexCreate(&g_ahSemMtxes[i]), VINF_SUCCESS);
+        RTTEST_CHECK_RC_RETV(g_hTest, RTSemRWCreateEx(&g_ahSemRWs[i], 0 /*fFlags*/, NIL_RTLOCKVALCLASS,
+                                                       RTLOCKVAL_SUB_CLASS_ANY, "RTSemRW"), VINF_SUCCESS);
+        RTTEST_CHECK_RC_RETV(g_hTest, RTSemMutexCreateEx(&g_ahSemMtxes[i], 0 /*fFlags*/, NIL_RTLOCKVALCLASS,
+                                                         RTLOCKVAL_SUB_CLASS_ANY, "RTSemMutex"), VINF_SUCCESS);
     }
     RTTEST_CHECK_RC_RETV(g_hTest, RTSemEventCreate(&g_hSemEvt), VINF_SUCCESS);
     RTTEST_CHECK_RC_RETV(g_hTest, RTSemEventMultiCreate(&g_hSemEvtMulti), VINF_SUCCESS);

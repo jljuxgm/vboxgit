@@ -1,4 +1,4 @@
-/* $Id: semspinmutex-r0drv-generic.c 22038 2009-08-06 16:27:13Z vboxsync $ */
+/* $Id: semspinmutex-r0drv-generic.c 25759 2010-01-12 13:06:06Z vboxsync $ */
 /** @file
  * IPRT - Spinning Mutex Semaphores, Ring-0 Driver, Generic.
  */
@@ -126,7 +126,7 @@ RTDECL(int) RTSemSpinMutexCreate(PRTSEMSPINMUTEX phSpinMtx, uint32_t fFlags)
     pThis->fFlags     = fFlags;
     pThis->hOwner     = NIL_RTNATIVETHREAD;
     pThis->cLockers   = 0;
-    rc = RTSemEventCreate(&pThis->hEventSem);
+    rc = RTSemEventCreateEx(&pThis->hEventSem, RTSEMEVENT_FLAGS_NO_LOCK_VAL, NIL_RTLOCKVALCLASS, NULL);
     if (RT_SUCCESS(rc))
     {
         *phSpinMtx = pThis;
