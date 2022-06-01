@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 26548 2010-02-15 15:26:04Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -238,6 +238,13 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
         RTPrintf("vram=%u\n", vramSize);
     else
         RTPrintf("VRAM size:       %uMB\n", vramSize);
+
+    BOOL fHpetEnabled;
+    machine->COMGETTER(HpetEnabled)(&fHpetEnabled);
+    if (details == VMINFO_MACHINEREADABLE)
+        RTPrintf("hpet=\"%s\"\n", fHpetEnabled ? "on" : "off");
+    else
+        RTPrintf("HPET:   %s\n", fHpetEnabled ? "on" : "off");
 
     ULONG numCpus;
     rc = machine->COMGETTER(CPUCount)(&numCpus);

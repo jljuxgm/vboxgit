@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 25376 2009-12-14 19:27:44Z vboxsync $ */
+/* $Id: VBoxManage.cpp 26548 2010-02-15 15:26:04Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -434,4 +434,3 @@ int main(int argc, char *argv[])
 
     return rc != 0;
 }
-
