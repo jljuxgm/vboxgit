@@ -1,4 +1,4 @@
-/* $Id: VBoxCocoaApplication.m 25211 2009-12-07 14:47:25Z vboxsync $ */
+/* $Id: VBoxCocoaApplication.m 25297 2009-12-10 13:26:23Z vboxsync $ */
 /** @file
  * VBoxCocoaApplication - NSApplication subclass for handling -sendEvent.
  */
@@ -359,15 +359,15 @@ bool VBoxCocoaApplication_isApplicationCommand(const void *pvEvent)
         {
             NSUInteger fEvtMask = [pEvent modifierFlags];
             unsigned short KeyCode = [pEvent keyCode];
-            if (   fEvtMask & (NX_NONCOALSESCEDMASK | NX_COMMANDMASK | NX_DEVICELCMDKEYMASK)  // L+CMD
-                || fEvtMask & (NX_NONCOALSESCEDMASK | NX_COMMANDMASK | NX_DEVICERCMDKEYMASK)) // R+CMD
+            if (   ((fEvtMask & (NX_NONCOALSESCEDMASK | NX_COMMANDMASK | NX_DEVICELCMDKEYMASK)) == (NX_NONCOALSESCEDMASK | NX_COMMANDMASK | NX_DEVICELCMDKEYMASK))  // L+CMD
+                || ((fEvtMask & (NX_NONCOALSESCEDMASK | NX_COMMANDMASK | NX_DEVICERCMDKEYMASK)) == (NX_NONCOALSESCEDMASK | NX_COMMANDMASK | NX_DEVICERCMDKEYMASK))) // R+CMD
             {
                 if (   KeyCode == 0x0c  // CMD+Q (Quit)
                     || KeyCode == 0x04) // CMD+H (Hide)
                     fGlobalHotkey = true;
             } 
-            else if (   fEvtMask & (NX_NONCOALSESCEDMASK | NX_ALTERNATEMASK | NX_DEVICELALTKEYMASK | NX_COMMANDMASK | NX_DEVICELCMDKEYMASK)  // L+ALT+CMD
-                     || fEvtMask & (NX_NONCOALSESCEDMASK | NX_ALTERNATEMASK | NX_DEVICERCMDKEYMASK | NX_COMMANDMASK | NX_DEVICERCMDKEYMASK)) // R+ALT+CMD
+            else if (   ((fEvtMask & (NX_NONCOALSESCEDMASK | NX_ALTERNATEMASK | NX_DEVICELALTKEYMASK | NX_COMMANDMASK | NX_DEVICELCMDKEYMASK)) == (NX_NONCOALSESCEDMASK | NX_ALTERNATEMASK | NX_DEVICELALTKEYMASK | NX_COMMANDMASK | NX_DEVICELCMDKEYMASK)) // L+ALT+CMD
+                     || ((fEvtMask & (NX_NONCOALSESCEDMASK | NX_ALTERNATEMASK | NX_DEVICERCMDKEYMASK | NX_COMMANDMASK | NX_DEVICERCMDKEYMASK)) == (NX_NONCOALSESCEDMASK | NX_ALTERNATEMASK | NX_DEVICERCMDKEYMASK | NX_COMMANDMASK | NX_DEVICERCMDKEYMASK))) // R+ALT+CMD
             {
                 if (KeyCode == 0x04)    // ALT+CMD+H (Hide-Others)
                     fGlobalHotkey = true;
