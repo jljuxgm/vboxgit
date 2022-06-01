@@ -1,4 +1,4 @@
-/* $Id: VBoxObjectBase.java 29231 2010-05-07 19:42:03Z vboxsync $ */
+/* $Id: VBoxObjectBase.java 29233 2010-05-07 19:52:15Z vboxsync $ */
 /*
  * Copyright (C) 2010 Oracle Corporation
  *
@@ -10,6 +10,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+import org.mozilla.interfaces.nsISupports;
 
 public abstract class VBoxObjectBase implements nsISupports
 {
