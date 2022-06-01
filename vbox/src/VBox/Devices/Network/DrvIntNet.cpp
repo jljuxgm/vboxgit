@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 28037 2010-04-07 09:56:45Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 28060 2010-04-07 18:45:45Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -505,9 +505,11 @@ static int drvR3IntNetAsyncIoRun(PDRVINTNET pThis)
                          * This is where we do the offloading since we don't
                          * emulate any NICs with large receive offload (LRO).
                          */
-                        PCPDMNETWORKGSO     pGso = INTNETHdrGetGsoContext(pHdr, pBuf);
+                        PCPDMNETWORKGSO pGso = INTNETHdrGetGsoContext(pHdr, pBuf);
                         if (PDMNetGsoIsValid(pGso, cbFrame, cbFrame - sizeof(PDMNETWORKGSO)))
                         {
+                            cbFrame -= sizeof(PDMNETWORKGSO);
+
                             uint8_t         abHdrScratch[256];
                             uint32_t const  cSegs = PDMNetGsoCalcSegmentCount(pGso, cbFrame);
 #ifdef LOG_ENABLED
