@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 27275 2010-03-11 12:08:18Z vboxsync $ */
+/* $Id: DevAHCI.cpp 27276 2010-03-11 12:11:14Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -6533,7 +6533,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     pThis->pDevInsRC = PDMDEVINS_2_RCPTR(pDevIns);
 
     PCIDevSetVendorId    (&pThis->dev, 0x8086); /* Intel */
-    PCIDevSetDeviceId    (&pThis->dev, 0x27C5); /* ICH-8M */
+    PCIDevSetDeviceId    (&pThis->dev, 0x2829); /* ICH-8M */
     PCIDevSetCommand     (&pThis->dev, 0x0000);
     PCIDevSetRevisionId  (&pThis->dev, 0x02);
     PCIDevSetClassProg   (&pThis->dev, 0x01);
