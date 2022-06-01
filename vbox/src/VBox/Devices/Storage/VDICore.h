@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 27808 2010-03-29 20:52:56Z vboxsync $ */
+/* $Id: VDICore.h 28620 2010-04-22 22:43:37Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -585,6 +585,8 @@ typedef struct VDIIMAGEDESC
     PDMMEDIAGEOMETRY        PCHSGeometry;
     /** Pointer to the per-disk VD interface list. */
     PVDINTERFACE            pVDIfsDisk;
+    /** Pointer to the per-image VD interface list. */
+    PVDINTERFACE            pVDIfsImage;
     /** Error interface. */
     PVDINTERFACE            pInterfaceError;
     /** Error interface callback table. */

@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 28524 2010-04-20 13:44:48Z vboxsync $ */
+/* $Id: DevAHCI.cpp 28620 2010-04-22 22:43:37Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -4854,7 +4854,8 @@ static int ahciScatterGatherListCopyFromBuffer(PAHCIPORTTASKSTATE pAhciPortTaskS
 static int ahciTransferComplete(PAHCIPort pAhciPort, PAHCIPORTTASKSTATE pAhciPortTaskState)
 {
     /* Free system resources occupied by the scatter gather list. */
-    ahciScatterGatherListDestroy(pAhciPort, pAhciPortTaskState);
+    if (pAhciPortTaskState->enmTxDir != AHCITXDIR_FLUSH)
+        ahciScatterGatherListDestroy(pAhciPort, pAhciPortTaskState);
 
     pAhciPortTaskState->cmdHdr.u32PRDBC = pAhciPortTaskState->cbTransfer;
 
@@ -5289,6 +5290,8 @@ static DECLCALLBACK(bool) ahciNotifyQueueConsumer(PPDMDEVINS pDevIns, PPDMQUEUEI
 
         if (enmTxDir != AHCITXDIR_NONE)
         {
+            pAhciPortTaskState->enmTxDir = enmTxDir;
+
             if (pAhciPortTaskState->fQueued)
             {
                 ahciLog(("%s: Before increment uActTasksActive=%u\n", __FUNCTION__, pAhciPort->uActTasksActive));
