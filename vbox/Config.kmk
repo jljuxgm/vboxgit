@@ -1,4 +1,4 @@
-# $Id: Config.kmk 27351 2010-03-14 23:07:48Z vboxsync $
+# $Id: Config.kmk 27602 2010-03-22 16:30:29Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1667,7 +1667,6 @@ endif
 # The X11 headers.
 #
 VBOX_PATH_X11_ROOT      = $(PATH_ROOT)/src/VBox/Additions/x11/x11include
-VBOX_PATH_X11_XFREE_4_2 = $(VBOX_PATH_X11_ROOT)/4.2
 VBOX_PATH_X11_XFREE_4_3 = $(VBOX_PATH_X11_ROOT)/4.3
 VBOX_PATH_X11_XORG_7_0  = $(VBOX_PATH_X11_ROOT)/7.0
 VBOX_PATH_X11_XORG_7_1  = $(VBOX_PATH_X11_ROOT)/7.1
@@ -4065,7 +4064,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 27351 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 27602 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
