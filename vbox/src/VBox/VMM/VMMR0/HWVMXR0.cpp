@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 23983 2009-10-22 13:49:41Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 24027 2009-10-23 12:17:23Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -122,6 +122,9 @@ VMMR0DECL(int) VMXR0EnableCpu(PHWACCM_CPUINFO pCpu, PVM pVM, void *pvPageCpu, RT
     /** @todo we should unmap the two pages from the virtual address space in order to prevent accidental corruption.
      * (which can have very bad consequences!!!)
      */
+
+    if (ASMGetCR4() & X86_CR4_VMXE))
+        return VERR_VMX_IN_VMX_ROOT_MODE;
 
     /* Make sure the VMX instructions don't cause #UD faults. */
     ASMSetCR4(ASMGetCR4() | X86_CR4_VMXE);
