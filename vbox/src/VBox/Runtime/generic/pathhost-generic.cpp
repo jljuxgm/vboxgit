@@ -1,4 +1,4 @@
-/* $Id: pathhost-generic.cpp 28916 2010-04-29 18:13:54Z vboxsync $ */
+/* $Id: pathhost-generic.cpp 28919 2010-04-29 18:34:08Z vboxsync $ */
 /** @file
  * IPRT - Path Convertions, generic pass through.
  */
@@ -56,6 +56,8 @@ int rtPathFromNative(const char **ppszPath, const char *pszNativePath, const cha
     int rc = RTStrValidateEncodingEx(pszNativePath, RTSTR_MAX, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
         *ppszPath = pszNativePath;
+    else
+        *ppszPath = NULL;
     NOREF(pszBasePath); /* We don't query the FS for codeset preferences. */
     return rc;
 }

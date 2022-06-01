@@ -1,4 +1,4 @@
-/* $Id: pathhost-darwin.cpp 28915 2010-04-29 18:12:35Z vboxsync $ */
+/* $Id: pathhost-darwin.cpp 28919 2010-04-29 18:34:08Z vboxsync $ */
 /** @file
  * IPRT - Path Convertions, Darwin.
  *
@@ -66,6 +66,8 @@ int rtPathFromNative(char const **ppszPath, const char *pszNativePath, const cha
     int rc = RTStrValidateEncodingEx(pszNativePath, RTSTR_MAX, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
         *ppszPath = pszNativePath;
+    else
+        *ppszPath = NULL;
     NOREF(pszBasePath); /* We don't query the FS for codeset preferences. */
     return rc;
 }
