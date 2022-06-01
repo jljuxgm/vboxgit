@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 28162 2010-04-11 12:44:21Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 28165 2010-04-11 19:15:06Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -558,6 +558,25 @@ HRESULT Appliance::searchUniqueDiskImageFilePath(Utf8Str& aName) const
     }
     aName = tmpName;
     RTStrFree(tmpName);
+
+    return S_OK;
+}
+
+/**
+ * Little shortcut to SystemProperties::DefaultHardDiskFolder.
+ * @param str
+ * @return
+ */
+HRESULT Appliance::getDefaultHardDiskFolder(Utf8Str &str) const
+{
+    /* We need the default path for storing disk images */
+    ComPtr<ISystemProperties> systemProps;
+    HRESULT rc = mVirtualBox->COMGETTER(SystemProperties)(systemProps.asOutParam());
+    if (FAILED(rc)) return rc;
+    Bstr bstrDefaultHardDiskFolder;
+    rc = systemProps->COMGETTER(DefaultHardDiskFolder)(bstrDefaultHardDiskFolder.asOutParam());
+    if (FAILED(rc)) return rc;
+    str = bstrDefaultHardDiskFolder;
 
     return S_OK;
 }
