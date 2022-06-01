@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 24924 2009-11-24 20:11:58Z vboxsync $ */
+/* $Id: DisplayImpl.h 24931 2009-11-25 10:19:40Z vboxsync $ */
 
 /** @file
  *
@@ -350,6 +350,9 @@ public:
     static int displayTakeScreenshotEMT(Display *pDisplay, uint8_t **ppu8Data, size_t *pcbData, uint32_t *pu32Width, uint32_t *pu32Height);
 
 private:
+    static void InvalidateAndUpdateEMT(Display *pDisplay);
+    static int DrawToScreenEMT(Display *pDisplay, BYTE *address, ULONG x, ULONG y, ULONG width, ULONG height);
+
     int videoAccelRefreshProcess(void);
 
     /* Functions run under VBVA lock. */
