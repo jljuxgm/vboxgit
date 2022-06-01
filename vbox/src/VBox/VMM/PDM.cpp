@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 23716 2009-10-13 09:38:42Z vboxsync $ */
+/* $Id: PDM.cpp 24125 2009-10-28 09:58:41Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -423,6 +423,7 @@ VMMR3DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
         pVM->pdm.s.Apic.pfnSetTPRRC         += offDelta;
         pVM->pdm.s.Apic.pfnGetTPRRC         += offDelta;
         pVM->pdm.s.Apic.pfnBusDeliverRC     += offDelta;
+        pVM->pdm.s.Apic.pfnLocalInterruptRC += offDelta;
         pVM->pdm.s.Apic.pfnWriteMSRRC       += offDelta;
         pVM->pdm.s.Apic.pfnReadMSRRC        += offDelta;
     }
