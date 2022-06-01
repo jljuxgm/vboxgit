@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24107 2009-10-27 09:08:43Z vboxsync $
+# $Id: Makefile.kmk 24108 2009-10-27 09:26:34Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -477,7 +477,7 @@ ifdef VBOX_WITH_COCOA_QT
  	src/darwin/VBoxCocoaApplication.m \
  	src/darwin/VBoxUtils-darwin-cocoa.mm \
 	src/darwin/VBoxCocoaSpecialControls.mm \
-	src/darwin/VBoxDockIconPreview-cocoa.m
+	src/darwin/VBoxDockIconPreview-cocoa.mm
  VirtualBox_QT_MOCHDRS.darwin = \
 	include/VBoxCocoaSpecialControls.h
 
