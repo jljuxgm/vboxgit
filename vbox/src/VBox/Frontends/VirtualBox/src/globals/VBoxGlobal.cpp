@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 28888 2010-04-29 11:50:05Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 28931 2010-04-30 12:04:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -422,7 +422,7 @@ public:
         Q_UNUSED (id);
         Q_UNUSED (type);
         Q_UNUSED (registered);
-        return S_OK;
+        return VBOX_E_DONT_CALL_AGAIN;
     }
 
     STDMETHOD(OnMachineRegistered) (IN_BSTR id, BOOL registered)
@@ -468,7 +468,7 @@ public:
                                       IN_BSTR /* value */,
                                       IN_BSTR /* flags */)
     {
-        return S_OK;
+        return VBOX_E_DONT_CALL_AGAIN;
     }
 
 private:
