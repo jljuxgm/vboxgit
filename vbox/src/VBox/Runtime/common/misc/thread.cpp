@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 25611 2009-12-31 14:54:25Z vboxsync $ */
+/* $Id: thread.cpp 25618 2010-01-02 12:00:33Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -195,18 +195,6 @@ void rtThreadTerm(void)
 #endif
 }
 
-
-/**
- * Sets the thread state.
- *
- * @param   pThread             The thread.
- * @param   enmNewState         The new thread state.
- */
-DECLINLINE(void) rtThreadSetState(PRTTHREADINT pThread, RTTHREADSTATE enmNewState)
-{
-    AssertCompile(sizeof(pThread->enmState) == sizeof(uint32_t));
-    ASMAtomicWriteU32((uint32_t volatile *)&pThread->enmState, enmNewState);
-}
 
 #ifdef IN_RING3
 

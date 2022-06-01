@@ -1,4 +1,4 @@
-/* $Id: semmutex-posix.cpp 25614 2010-01-01 14:19:06Z vboxsync $ */
+/* $Id: semmutex-posix.cpp 25618 2010-01-02 12:00:33Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphore, POSIX.
  */
@@ -187,13 +187,13 @@ DECL_FORCE_INLINE(int) rtSemMutexRequest(RTSEMMUTEX MutexSem, unsigned cMillies,
     {
 #ifdef RTSEMMUTEX_STRICT
         hThreadSelf = RTThreadSelfAutoAdopt();
-        int rc9 = RTLockValidatorRecExclCheckOrderAndBlocking(&pThis->ValidatorRec, hThreadSelf, pSrcPos, true);
+        int rc9 = RTLockValidatorRecExclCheckOrderAndBlocking(&pThis->ValidatorRec, hThreadSelf, pSrcPos, true, RTTHREADSTATE_MUTEX);
         if (RT_FAILURE(rc9))
             return rc9;
 #else
         hThreadSelf = RTThreadSelf();
-#endif
         RTThreadBlocking(hThreadSelf, RTTHREADSTATE_MUTEX);
+#endif
     }
 
     if (cMillies == RT_INDEFINITE_WAIT)

@@ -1,4 +1,4 @@
-/* $Id: semrw-generic.cpp 25616 2010-01-02 00:13:19Z vboxsync $ */
+/* $Id: semrw-generic.cpp 25618 2010-01-02 12:00:33Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, Generic.
  *
@@ -319,12 +319,12 @@ RTDECL(int) RTSemRWRequestRead(RTSEMRW RWSem, unsigned cMillies)
             }
         }
 #ifdef RTSEMRW_STRICT
-        rc = RTLockValidatorRecSharedCheckBlocking(&pThis->ValidatorRead, hThreadSelf, pSrcPos, true);
+        rc = RTLockValidatorRecSharedCheckBlocking(&pThis->ValidatorRead, hThreadSelf, pSrcPos, true, RTTHREADSTATE_RW_READ);
         if (RT_FAILURE(rc))
             break;
-#endif
+#else
         RTThreadBlocking(hThreadSelf, RTTHREADSTATE_RW_READ);
-
+#endif
         int rcWait = rc = RTSemEventMultiWait(pThis->ReadEvent, cMillies);
         RTThreadUnblocked(hThreadSelf, RTTHREADSTATE_RW_READ);
         if (RT_FAILURE(rc) && rc != VERR_TIMEOUT) /* handle timeout below */
@@ -571,12 +571,14 @@ RTDECL(int) RTSemRWRequestWrite(RTSEMRW RWSem, unsigned cMillies)
                     cMilliesInitial = 1;
             }
         }
+
 #ifdef RTSEMRW_STRICT
-        rc = RTLockValidatorRecExclCheckBlocking(&pThis->ValidatorWrite, hThreadSelf, pSrcPos, true);
+        rc = RTLockValidatorRecExclCheckBlocking(&pThis->ValidatorWrite, hThreadSelf, pSrcPos, true, RTTHREADSTATE_RW_WRITE);
         if (RT_FAILURE(rc))
             break;
-#endif
+#else
         RTThreadBlocking(hThreadSelf, RTTHREADSTATE_RW_WRITE);
+#endif
         int rcWait = rc = RTSemEventWait(pThis->WriteEvent, cMillies);
         RTThreadUnblocked(hThreadSelf, RTTHREADSTATE_RW_WRITE);
         if (RT_UNLIKELY(RT_FAILURE_NP(rc) && rc != VERR_TIMEOUT)) /* timeouts are handled below */

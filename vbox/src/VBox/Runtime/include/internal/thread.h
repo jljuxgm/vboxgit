@@ -1,4 +1,4 @@
-/* $Id: thread.h 25611 2009-12-31 14:54:25Z vboxsync $ */
+/* $Id: thread.h 25618 2010-01-02 12:00:33Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -195,6 +195,8 @@ void rtThreadClearTlsEntry(RTTLS iTls);
 void rtThreadTlsDestruction(PRTTHREADINT pThread); /* in tls-generic.cpp */
 #endif
 
+#ifdef ___iprt_asm_h
+
 /**
  * Gets the thread state.
  *
@@ -205,6 +207,20 @@ DECLINLINE(RTTHREADSTATE) rtThreadGetState(PRTTHREADINT pThread)
 {
     return pThread->enmState;
 }
+
+/**
+ * Sets the thread state.
+ *
+ * @param   pThread             The thread.
+ * @param   enmNewState         The new thread state.
+ */
+DECLINLINE(void) rtThreadSetState(PRTTHREADINT pThread, RTTHREADSTATE enmNewState)
+{
+    AssertCompile(sizeof(pThread->enmState) == sizeof(uint32_t));
+    ASMAtomicWriteU32((uint32_t volatile *)&pThread->enmState, enmNewState);
+}
+
+#endif
 
 RT_C_DECLS_END
 

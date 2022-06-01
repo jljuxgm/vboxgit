@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 25614 2010-01-01 14:19:06Z vboxsync $ */
+/* $Id: critsect-generic.cpp 25618 2010-01-02 12:00:33Z vboxsync $ */
 /** @file
  * IPRT - Critical Section, Generic.
  */
@@ -208,15 +208,16 @@ DECL_FORCE_INLINE(int) rtCritSectEnter(PRTCRITSECT pCritSect, PCRTLOCKVALSRCPOS 
         {
 #ifdef RTCRITSECT_STRICT
             int rc9 = RTLockValidatorRecExclCheckBlocking(pCritSect->pValidatorRec, hThreadSelf, pSrcPos,
-                                                          !(pCritSect->fFlags & RTCRITSECT_FLAGS_NO_NESTING));
+                                                          !(pCritSect->fFlags & RTCRITSECT_FLAGS_NO_NESTING),
+                                                          RTTHREADSTATE_CRITSECT);
             if (RT_FAILURE(rc9))
             {
                 ASMAtomicDecS32(&pCritSect->cLockers);
                 return rc9;
             }
-#endif
-
+#else
             RTThreadBlocking(hThreadSelf, RTTHREADSTATE_CRITSECT);
+#endif
             int rc = RTSemEventWait(pCritSect->EventSem, RT_INDEFINITE_WAIT);
             RTThreadUnblocked(hThreadSelf, RTTHREADSTATE_CRITSECT);
 
