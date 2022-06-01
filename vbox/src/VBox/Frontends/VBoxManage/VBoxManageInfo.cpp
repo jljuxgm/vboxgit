@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 28215 2010-04-12 15:31:54Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 28269 2010-04-13 17:17:36Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1917,6 +1917,9 @@ int handleShowVMInfo(HandlerArg *a)
         ULONG cbLogData;
         while (true)
         {
+            /* Reset the array */
+            aLogData.setNull();
+            /* Fetch a chunk of the log file */
             CHECK_ERROR_BREAK(machine, ReadLog(uLogIdx, uOffset, _1M,
                                                ComSafeArrayAsOutParam(aLogData)));
             cbLogData = aLogData.size();
