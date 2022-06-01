@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 27256 2010-03-10 16:50:08Z vboxsync $ */
+/* $Id: MediumImpl.cpp 27279 2010-03-11 12:37:52Z vboxsync $ */
 
 /** @file
  *
@@ -2073,7 +2073,7 @@ STDMETHODIMP Medium::Close()
 
     if (fNeedsSaveSettings)
     {
-        AutoWriteLock vboxlock(m->pVirtualBox COMMA_LOCKVAL_SRC_POS);
+        AutoWriteLock vboxlock(pVirtualBox COMMA_LOCKVAL_SRC_POS);
         pVirtualBox->saveSettings();
     }
 
