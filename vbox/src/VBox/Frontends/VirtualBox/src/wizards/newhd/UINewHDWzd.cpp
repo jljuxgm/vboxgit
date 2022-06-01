@@ -1,4 +1,4 @@
-/* $Id: UINewHDWzd.cpp 28644 2010-04-23 13:13:40Z vboxsync $ */
+/* $Id: UINewHDWzd.cpp 28732 2010-04-26 08:14:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -219,7 +219,7 @@ UINewHDWzdPage3::UINewHDWzdPage3()
     m_iSliderScale = qMax(m_iSliderScale, 8);
 
     /* Setup size-editor field */
-    m_pSizeEditor->setFixedWidthByText("88888.88 MB");
+    m_pSizeEditor->setFixedWidthByText("88888.88 MiB");
     m_pSizeEditor->setAlignment(Qt::AlignRight);
     m_pSizeEditor->setValidator(new QRegExpValidator(QRegExp(vboxGlobal().sizeRegexp()), this));
 
