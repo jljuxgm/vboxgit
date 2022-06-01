@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 29422 2010-05-12 14:08:52Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 29777 2010-05-25 11:55:41Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1047,13 +1047,6 @@ HRESULT Appliance::manifestVerify(const LocationInfo &locInfo,
                                filesList.size() + 1,
                                &cIndexOnError);
 
-        // clean up
-        for (size_t j = 1;
-             j < filesList.size();
-             ++j)
-            RTStrFree(pTestList[j].pszTestDigest);
-        RTMemFree(pTestList);
-
         if (vrc == VERR_MANIFEST_DIGEST_MISMATCH)
             rc = setError(VBOX_E_FILE_ERROR,
                           tr("The SHA1 digest of '%s' does not match the one in '%s'"),
@@ -1064,6 +1057,13 @@ HRESULT Appliance::manifestVerify(const LocationInfo &locInfo,
                           tr("Could not verify the content of '%s' against the available files (%Rrc)"),
                           RTPathFilename(strMfFile.c_str()),
                           vrc);
+
+        // clean up
+        for (size_t j = 1;
+             j < filesList.size();
+             ++j)
+            RTStrFree(pTestList[j].pszTestDigest);
+        RTMemFree(pTestList);
     }
 
     return rc;
