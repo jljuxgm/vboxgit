@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27014 2010-03-04 11:59:54Z vboxsync $
+# $Id: Makefile.kmk 27033 2010-03-04 14:36:45Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -47,6 +47,7 @@ else ifdef VBOX_ONLY_TESTSUITE
  # Only build the testsuite.
  #
  LIBRARIES += RuntimeGuestR3 RuntimeGuestR3Shared RuntimeR3 RuntimeR0
+ LIBRARIES.win += RuntimeR0Stub
 
 else ifdef VBOX_ONLY_DOCS
  #
