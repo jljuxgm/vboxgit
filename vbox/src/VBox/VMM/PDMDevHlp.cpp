@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 24282 2009-11-03 10:14:35Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 24289 2009-11-03 13:52:35Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1915,14 +1915,6 @@ static DECLCALLBACK(int) pdmR3DevHlp_APICRegister(PPDMDEVINS pDevIns, PPDMAPICRE
     pVM->pdm.s.Apic.pfnBusDeliverR3     = pApicReg->pfnBusDeliverR3;
     pVM->pdm.s.Apic.pfnLocalInterruptR3 = pApicReg->pfnLocalInterruptR3;
     Log(("PDM: Registered APIC device '%s'/%d pDevIns=%p\n", pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, pDevIns));
-
-
-#if 1
-    /* Disable the APIC fix due to Linux SMP regressions. */
-    pVM->pdm.s.Apic.pfnLocalInterruptR3 = 0;
-    pVM->pdm.s.Apic.pfnLocalInterruptR0 = 0;
-    pVM->pdm.s.Apic.pfnLocalInterruptRC = 0;
-#endif
 
     /* set the helper pointer and return. */
     *ppApicHlpR3 = &g_pdmR3DevApicHlp;
