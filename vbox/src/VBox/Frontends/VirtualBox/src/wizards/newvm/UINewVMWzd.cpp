@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 27480 2010-03-18 13:49:30Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 27537 2010-03-19 14:04:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -681,7 +681,7 @@ bool UINewVMWzdPage5::constructMachine()
     ctr.SetControllerType(storageControllerType);
 
     // Turn on PAE, if recommended
-    m_Machine.SetCpuProperty(KCpuPropertyType_PAE, type.GetRecommendedPae());
+    m_Machine.SetCPUProperty(KCPUPropertyType_PAE, type.GetRecommendedPae());
 
     // Set recommended firmware type
     KFirmwareType fwType = type.GetRecommendedFirmware();
@@ -691,7 +691,7 @@ bool UINewVMWzdPage5::constructMachine()
     if (type.GetRecommendedUsbHid())
     {
         m_Machine.SetKeyboardHidType(KKeyboardHidType_USBKeyboard);
-        m_Machine.SetPointingHidType(type.GetRecommendedUsbTablet()  ? 
+        m_Machine.SetPointingHidType(type.GetRecommendedUsbTablet()  ?
                                      KPointingHidType_USBTablet : KPointingHidType_USBMouse);
         if (!usbController.isNull())
             usbController.SetEnabled(true);
