@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 26488 2010-02-14 07:08:38Z vboxsync $ */
+/* $Id: scm.cpp 26496 2010-02-14 08:00:21Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2035,7 +2035,7 @@ static int scmSettingsAddPair(PSCMSETTINGS pSettings, const char *pchLine, size_
     while (cchOptions > 0 && RT_C_IS_SPACE(pchOptions[cchOptions - 1]))
         cchOptions--;
     while (cchOptions > 0 && RT_C_IS_SPACE(*pchOptions))
-        cchOptions--, cchOptions++;
+        cchOptions--, pchOptions++;
 
     /* Quietly ignore empty patterns and empty options. */
     if (!cchOptions || !cchPattern)
@@ -3193,7 +3193,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 26488 $";
+                static const char s_szRev[] = "$Revision: 26496 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
