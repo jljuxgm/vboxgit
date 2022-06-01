@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 28257 2010-04-13 14:43:35Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 28261 2010-04-13 15:02:46Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2387,11 +2387,13 @@ static int pgmPoolMonitorFlush(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
         case PGMPOOLKIND_PAE_PDPT_PHYS:
         case PGMPOOLKIND_32BIT_PD_PHYS:
             /* Nothing to monitor here. */
+            Assert(!pPage->fMonitored);
             return VINF_SUCCESS;
 
         default:
             AssertFatalMsgFailed(("This can't happen! enmKind=%d\n", pPage->enmKind));
     }
+    Assert(pPage->fMonitored);
 
     /*
      * Remove the page from the monitored list or uninstall it if last.
