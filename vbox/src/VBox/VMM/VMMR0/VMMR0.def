@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 28439 2010-04-18 19:45:20Z vboxsync $
+; $Id: VMMR0.def 28711 2010-04-25 19:01:24Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -65,6 +65,17 @@ EXPORTS
     vmmR0LoggerWrapper
     VMSetError
     VMSetErrorV
+
+    ; Internal Networking
+    IntNetR0Open
+    IntNetR0IfClose
+    IntNetR0IfGetRing0Buffer
+    IntNetR0IfGetRing3Buffer
+    IntNetR0IfSetPromiscuousMode
+    IntNetR0IfSetMacAddress
+    IntNetR0IfSetActive
+    IntNetR0IfSend
+    IntNetR0IfWait
 
     ; runtime
     RTAssertMsg1Weak

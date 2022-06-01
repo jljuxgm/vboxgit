@@ -1,4 +1,4 @@
-/* $Id: tstIntNetR0.cpp 28706 2010-04-25 15:10:30Z vboxsync $ */
+/* $Id: tstIntNetR0.cpp 28711 2010-04-25 19:01:24Z vboxsync $ */
 /** @file
  * Internal networking - Usermode testcase for the kernel mode bits.
  *
@@ -409,7 +409,7 @@ static int tstOpenInterfaces(PTSTSTATE pThis, const char *pszNetwork, uint32_t c
     RTTESTI_CHECK_RC_OK_RET(IntNetR0Open(g_pSession, pszNetwork, kIntNetTrunkType_None, "",
                                          0/*fFlags*/, cbSend, cbRecv, &pThis->hIf0), rcCheck);
     RTTESTI_CHECK_RET(pThis->hIf0 != INTNET_HANDLE_INVALID, VERR_INTERNAL_ERROR);
-    RTTESTI_CHECK_RC_RET(IntNetR0IfGetRing0Buffer(pThis->hIf0, g_pSession, &pThis->pBuf0), VINF_SUCCESS, rcCheck);
+    RTTESTI_CHECK_RC_RET(IntNetR0IfGetBufferPtrs(pThis->hIf0, g_pSession, &pThis->pBuf0, NULL), VINF_SUCCESS, rcCheck);
     RTTESTI_CHECK_RET(pThis->pBuf0, VERR_INTERNAL_ERROR);
 
 
@@ -417,7 +417,7 @@ static int tstOpenInterfaces(PTSTSTATE pThis, const char *pszNetwork, uint32_t c
     RTTESTI_CHECK_RC_OK_RET(IntNetR0Open(g_pSession, pszNetwork, kIntNetTrunkType_None, "",
                                          0/*fFlags*/, cbSend, cbRecv, &pThis->hIf1), rcCheck);
     RTTESTI_CHECK_RET(pThis->hIf1 != INTNET_HANDLE_INVALID, VERR_INTERNAL_ERROR);
-    RTTESTI_CHECK_RC_RET(IntNetR0IfGetRing0Buffer(pThis->hIf1, g_pSession, &pThis->pBuf1), VINF_SUCCESS, rcCheck);
+    RTTESTI_CHECK_RC_RET(IntNetR0IfGetBufferPtrs(pThis->hIf1, g_pSession, &pThis->pBuf1, NULL), VINF_SUCCESS, rcCheck);
     RTTESTI_CHECK_RET(pThis->pBuf1, VERR_INTERNAL_ERROR);
 
     return VINF_SUCCESS;
