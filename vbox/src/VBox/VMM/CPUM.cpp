@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 24327 2009-11-04 13:19:32Z vboxsync $ */
+/* $Id: CPUM.cpp 24328 2009-11-04 13:22:47Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -706,6 +706,7 @@ static int cpumR3CpuIdInit(PVM pVM)
 
     /*
      * Load CPUID overrides from configuration.
+     * @note Kind of redundant now, but allows unchanged overrides
      */
     /** @cfgm{CPUM/CPUID/[000000xx|800000xx|c000000x]/[eax|ebx|ecx|edx],32-bit}
      * Overloads the CPUID leaf values. */
