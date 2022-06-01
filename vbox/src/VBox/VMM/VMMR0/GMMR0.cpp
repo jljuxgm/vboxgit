@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 26411 2010-02-10 14:54:14Z vboxsync $ */
+/* $Id: GMMR0.cpp 26412 2010-02-10 14:55:29Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -1663,7 +1663,7 @@ static int gmmR0AllocateMoreChunks(PGMM pGMM, PGVM pGVM, PGMMCHUNKFREESET pSet, 
         while (pSet->cFreePages < cPages)
         {
             RTSemFastMutexRelease(pGMM->Mtx);
-            int rc = gmmR0AllocateOneChunk(pGMM, pSet, hGVM);
+            int rc = gmmR0AllocateOneChunk(pGMM, pSet, pGVM->hSelf);
             int rc2 = RTSemFastMutexRequest(pGMM->Mtx);
             AssertRCReturn(rc2, rc2);
             if (RT_FAILURE(rc))
