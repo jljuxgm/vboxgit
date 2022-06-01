@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 25048 2009-11-27 12:37:09Z vboxsync $ */
+/* $Id: DevPcBios.cpp 25219 2009-12-07 18:04:10Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1363,4 +1363,3 @@ const PDMDEVREG g_DevicePcBios =
     /* u32VersionEnd */
     PDM_DEVREG_VERSION
 };
-
