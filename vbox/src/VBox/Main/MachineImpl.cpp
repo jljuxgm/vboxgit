@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 27677 2010-03-24 17:21:51Z vboxsync $ */
+/* $Id: MachineImpl.cpp 27680 2010-03-24 18:28:43Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -349,13 +349,16 @@ HRESULT Machine::init(VirtualBox *aParent,
             /* check for the file existence */
             RTFILE f = NIL_RTFILE;
             int vrc = RTFileOpen(&f, mData->m_strConfigFileFull.c_str(), RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
-            if (    (RT_SUCCESS(vrc) && !aOverride)
+            if (    RT_SUCCESS(vrc)
                  || vrc == VERR_SHARING_VIOLATION
                )
             {
-                rc = setError(VBOX_E_FILE_ERROR,
-                              tr("Machine settings file '%s' already exists"),
-                              mData->m_strConfigFileFull.raw());
+                if (!aOverride)
+                {
+                    rc = setError(VBOX_E_FILE_ERROR,
+                                  tr("Machine settings file '%s' already exists"),
+                                  mData->m_strConfigFileFull.raw());
+                }
                 if (RT_SUCCESS(vrc))
                     RTFileClose(f);
             }
