@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 29951 2010-06-01 13:27:25Z vboxsync $ */
+/* $Id: tcp.cpp 30270 2010-06-17 06:56:26Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -1011,5 +1011,11 @@ RTR3DECL(int) RTTcpGetLocalAddress(RTSOCKET Sock, PRTNETADDR pAddr)
 RTR3DECL(int) RTTcpGetPeerAddress(RTSOCKET Sock, PRTNETADDR pAddr)
 {
     return RTSocketGetPeerAddress(Sock, pAddr);
+}
+
+
+RTR3DECL(int)  RTTcpSgWrite(RTSOCKET Sock, PCRTSGBUF pSgBuf)
+{
+    return RTSocketSgWrite(Sock, pSgBuf);
 }
 
