@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 28448 2010-04-19 09:17:37Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 28463 2010-04-19 14:04:12Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -283,7 +283,7 @@ static int handleExecProgram(HandlerArg *a)
 
                 /* Wait for process to exit ... */
                 ASSERT(progress);
-                rc = progress->WaitForCompletion(uTimeoutMS == 0 ? -1 /* Wait forever */ : uTimeoutMS);
+                rc = progress->WaitForCompletion(uTimeoutMS == 0 ? -1 /* Wait forever */ : (uTimeoutMS + 5000));
                 if (FAILED(rc))
                 {
                     if (uTimeoutMS)
@@ -299,9 +299,18 @@ static int handleExecProgram(HandlerArg *a)
 
                     LONG iRc;
                     CHECK_ERROR_RET(progress, COMGETTER(ResultCode)(&iRc), rc);
-
-                    if (verbose)
-                        RTPrintf("Process completed.\n");
+                    if (FAILED(iRc))
+                    {
+                        ComPtr<IVirtualBoxErrorInfo> execError;
+                        rc = progress->COMGETTER(ErrorInfo)(execError.asOutParam());
+                        com::ErrorInfo info (execError);
+                        GluePrintErrorInfo(info);
+                    }
+                    else
+                    {   
+                        if (verbose)
+                            RTPrintf("Process completed.\n");
+                    }
 
                     /* Print output if wanted. */
                     if (   waitForStdOut

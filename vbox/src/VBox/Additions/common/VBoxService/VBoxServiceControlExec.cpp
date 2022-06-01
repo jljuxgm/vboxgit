@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 28463 2010-04-19 14:04:12Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -362,6 +362,8 @@ static int VBoxServiceControlExecProcLoop(PVBOXSERVICECTRLTHREAD pThread,
             uint64_t cMsElapsed = u64Now - MsStart;
             if (cMsElapsed >= cMillies)
             {
+                VBoxServiceVerbose(3, "Control: Process timed out (%ums elapsed > %ums timeout), killing ...", cMsElapsed, cMillies);
+
                 fProcessTimedOut = true;
                 if (    MsProcessKilled == UINT64_MAX
                     ||  u64Now - MsProcessKilled > 1000)
