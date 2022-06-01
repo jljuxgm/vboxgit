@@ -1,4 +1,4 @@
-/* $Id: VSCSIDevice.cpp 27653 2010-03-23 23:28:26Z vboxsync $ */
+/* $Id: VSCSIDevice.cpp 27658 2010-03-24 09:56:26Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Device handling
  */
@@ -102,7 +102,7 @@ static bool vscsiDeviceReqProcess(PVSCSIDEVICEINT pVScsiDevice, PVSCSIREQINT pVS
         }
         case SCSI_TEST_UNIT_READY:
         {
-            vscsiReqSenseOkSet(pVScsiReq);
+            rcReq = vscsiReqSenseOkSet(pVScsiReq);
             break;
         }
         default:
