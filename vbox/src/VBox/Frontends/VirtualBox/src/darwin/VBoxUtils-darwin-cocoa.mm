@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 26716 2010-02-23 16:03:46Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 27534 2010-03-19 13:31:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -184,8 +184,23 @@ int darwinWindowToolBarHeight (NativeWindowRef aWindow)
     return toolbarHeight;
 }
 
+bool darwinIsWindowMaximized(NativeWindowRef aWindow)
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    bool fResult = [aWindow isZoomed];
+
+    [pool release];
+    return fResult;
+}
+
 float darwinSmallFontSize()
 {
-    return [NSFont systemFontSizeForControlSize: NSSmallControlSize];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+    float size = [NSFont systemFontSizeForControlSize: NSSmallControlSize];
+
+    [pool release];
+    return size;
 }
 

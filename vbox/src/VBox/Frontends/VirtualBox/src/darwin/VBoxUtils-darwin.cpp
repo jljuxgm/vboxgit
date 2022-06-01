@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 26699 2010-02-23 11:24:40Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 27534 2010-03-19 13:31:05Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -104,6 +104,17 @@ void darwinWindowInvalidateShadow (QWidget *aWidget)
 void darwinSetShowsResizeIndicator (QWidget *aWidget, bool aEnabled)
 {
     ::darwinSetShowsResizeIndicatorImpl (::darwinToNativeWindow (aWidget), aEnabled);
+}
+
+bool darwinIsWindowMaximized(QWidget *aWidget)
+{
+#ifdef QT_MAC_USE_COCOA
+    /* Currently only necessary in the Cocoa version */
+    return ::darwinIsWindowMaximized(::darwinToNativeWindow(aWidget));
+#else /* QT_MAC_USE_COCOA */
+    NOREF (aWidget);
+    return false;
+#endif /* !QT_MAC_USE_COCOA */
 }
 
 QString darwinSystemLanguage (void)
