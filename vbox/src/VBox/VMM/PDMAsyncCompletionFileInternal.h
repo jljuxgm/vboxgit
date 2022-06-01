@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 29323 2010-05-11 10:04:23Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 29466 2010-05-14 12:03:58Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -668,6 +668,11 @@ typedef struct PDMACTASKFILE
     uint32_t                             offBounceBuffer;
     /** Flag whether this is a prefetch request. */
     bool                                 fPrefetch;
+    /** Already prepared native I/O request.
+     * Used if the request is prepared already but
+     * was not queued because the host has not enough
+     * resources. */
+    RTFILEAIOREQ                         hReq;
     /** Completion function to call on completion. */
     PFNPDMACTASKCOMPLETED                pfnCompleted;
     /** User data */
