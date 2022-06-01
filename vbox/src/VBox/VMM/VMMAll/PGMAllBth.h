@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 25537 2009-12-21 12:33:02Z vboxsync $ */
+/* $Id: PGMAllBth.h 25578 2009-12-23 16:59:37Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -838,7 +838,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
 #   if PGM_SHW_TYPE == PGM_TYPE_EPT
                         HWACCMInvalidatePhysPage(pVM, (RTGCPHYS)pvFault);
 #   else
-                        PGM_INVL_PG_ALL_VCPU(pVM, pvFault);
+                        PGM_INVL_PG(pVM, pvFault);
 #   endif
 #   ifdef VBOX_STRICT
                         RTGCPHYS GCPhys2;
