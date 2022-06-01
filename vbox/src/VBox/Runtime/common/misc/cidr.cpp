@@ -1,4 +1,4 @@
-/* $Id: cidr.cpp 29837 2010-05-27 10:01:51Z vboxsync $ */
+/* $Id: cidr.cpp 29840 2010-05-27 10:19:59Z vboxsync $ */
 /** @file
  * IPRT - IPv4 address parsing.
  */
@@ -89,6 +89,11 @@ RTDECL(int) RTCidrStrToIPv4(const char *pszAddress, PRTIPV4ADDR pNetwork, PRTIPV
             break;
         else 
             return VERR_INVALID_PARAMETER;
+
+        if(cDelimiter > 3)
+            /* no more than four octets */
+            return VERR_INVALID_PARAMETER;
+
         rc = RTStrToUInt8Ex(pszNext + 1, &pszNext, 10, &addr[cDelimiter]);
         if (rc == VWRN_NUMBER_TOO_BIG)
             break;
