@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 27062 2010-03-05 09:30:34Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 27166 2010-03-08 14:16:00Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -164,6 +164,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--hpet on|off]\n"
                  "                            [--hwvirtex on|off]\n"
                  "                            [--nestedpaging on|off]\n"
+                 "                            [--largepages on|off]\n"
                  "                            [--vtxvpid on|off]\n"
                  "                            [--cpuidset <leaf> <eax> <ebx> <ecx> <edx>]\n"
                  "                            [--cpuidremove <leaf>]\n"

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 26951 2010-03-02 15:16:23Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 27166 2010-03-08 14:16:00Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -431,6 +431,13 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
         RTPrintf("nestedpaging=\"%s\"\n", HWVirtExNestedPagingEnabled ? "on" : "off");
     else
         RTPrintf("Nested Paging:   %s\n", HWVirtExNestedPagingEnabled ? "on" : "off");
+
+    BOOL HWVirtExLargePagesEnabled;
+    machine->GetHWVirtExProperty(HWVirtExPropertyType_LargePages, &HWVirtExLargePagesEnabled);
+    if (details == VMINFO_MACHINEREADABLE)
+        RTPrintf("largepages=\"%s\"\n", HWVirtExLargePagesEnabled ? "on" : "off");
+    else
+        RTPrintf("Large Pages:   %s\n", HWVirtExLargePagesEnabled ? "on" : "off");
 
     BOOL HWVirtExVPIDEnabled;
     machine->GetHWVirtExProperty(HWVirtExPropertyType_VPID, &HWVirtExVPIDEnabled);

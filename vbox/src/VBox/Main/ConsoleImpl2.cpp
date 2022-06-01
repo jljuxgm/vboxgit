@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 27045 2010-03-04 16:12:51Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 27166 2010-03-08 14:16:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -479,6 +479,11 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     BOOL fEnableNestedPaging = false;
     hrc = pMachine->GetHWVirtExProperty(HWVirtExPropertyType_NestedPaging, &fEnableNestedPaging);   H();
     rc = CFGMR3InsertInteger(pHWVirtExt, "EnableNestedPaging", fEnableNestedPaging);     RC_CHECK();
+
+    /* Large pages; requires nested paging */
+    BOOL fEnableLargePages = false;
+    hrc = pMachine->GetHWVirtExProperty(HWVirtExPropertyType_LargePages, &fEnableLargePages);   H();
+    rc = CFGMR3InsertInteger(pHWVirtExt, "EnableLargePages", fEnableLargePages);     RC_CHECK();
 
     /* VPID (VT-x) */
     BOOL fEnableVPID = false;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 26971 2010-03-02 20:45:15Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 27166 2010-03-08 14:16:00Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -68,6 +68,7 @@ enum
     MODIFYVM_HWVIRTEX,
     MODIFYVM_HWVIRTEXEXCLUSIVE,
     MODIFYVM_NESTEDPAGING,
+    MODIFYVM_LARGEPAGES,
     MODIFYVM_VTXVPID,
     MODIFYVM_CPUS,
     MODIFYVM_CPUHOTPLUG,
@@ -157,6 +158,7 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--hwvirtex",                 MODIFYVM_HWVIRTEX,                  RTGETOPT_REQ_BOOL_ONOFF },
     { "--hwvirtexexcl",             MODIFYVM_HWVIRTEXEXCLUSIVE,         RTGETOPT_REQ_BOOL_ONOFF },
     { "--nestedpaging",             MODIFYVM_NESTEDPAGING,              RTGETOPT_REQ_BOOL_ONOFF },
+    { "--largepages",               MODIFYVM_LARGEPAGES,                RTGETOPT_REQ_BOOL_ONOFF },
     { "--vtxvpid",                  MODIFYVM_VTXVPID,                   RTGETOPT_REQ_BOOL_ONOFF },
     { "--cpuidset",                 MODIFYVM_SETCPUID,                  RTGETOPT_REQ_UINT32 | RTGETOPT_FLAG_HEX},
     { "--cpuidremove",              MODIFYVM_DELCPUID,                  RTGETOPT_REQ_UINT32 | RTGETOPT_FLAG_HEX},
@@ -421,6 +423,12 @@ int handleModifyVM(HandlerArg *a)
             case MODIFYVM_NESTEDPAGING:
             {
                 CHECK_ERROR(machine, SetHWVirtExProperty(HWVirtExPropertyType_NestedPaging, ValueUnion.f));
+                break;
+            }
+
+            case MODIFYVM_LARGEPAGES:
+            {
+                CHECK_ERROR(machine, SetHWVirtExProperty(HWVirtExPropertyType_LargePages, ValueUnion.f));
                 break;
             }
 
