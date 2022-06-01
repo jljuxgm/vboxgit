@@ -1,4 +1,4 @@
-/* $Id: display.cpp 22706 2009-09-02 10:46:57Z vboxsync $ */
+/* $Id: display.cpp 24069 2009-10-26 12:38:01Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -103,6 +103,7 @@ static int x11ConnectionMonitor(RTTHREAD, void *)
     Display *pDisplay = XOpenDisplay(NULL);
     while (true)
         XNextEvent(pDisplay, &ev);
+    return 0;
 }
 
 /**
@@ -177,7 +178,7 @@ public:
     {
         return ".vboxclient-display.pid";
     }
-    virtual int run()
+    virtual int run(bool fDaemonised /* = false */)
     {
         int rc = initDisplay();
         if (RT_SUCCESS(rc))

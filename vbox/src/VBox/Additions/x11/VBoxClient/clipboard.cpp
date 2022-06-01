@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 21651 2009-07-16 13:57:25Z vboxsync $ */
+/** $Id: clipboard.cpp 24069 2009-10-26 12:38:01Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -289,7 +289,7 @@ public:
     {
         return ".vboxclient-clipboard.pid";
     }
-    virtual int run()
+    virtual int run(bool fDaemonised /* = false */)
     {
         int rc = vboxClipboardConnect();
         if (RT_SUCCESS(rc))
