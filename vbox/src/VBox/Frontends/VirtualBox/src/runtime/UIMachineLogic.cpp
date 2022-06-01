@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 29806 2010-05-26 10:12:58Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 29915 2010-05-31 15:26:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1356,6 +1356,7 @@ void UIMachineLogic::sltPrepareUSBMenu()
 
             /* Set USB attach data: */
             attachUSBAction->setData(QVariant::fromValue(USBTarget(!attachUSBAction->isChecked(), device.GetId())));
+            attachUSBAction->setToolTip(vboxGlobal().toolTip(device));
         }
     }
 }

@@ -1,4 +1,4 @@
-/* $Id: UIActionsPool.cpp 29734 2010-05-21 13:56:57Z vboxsync $ */
+/* $Id: UIActionsPool.cpp 29915 2010-05-31 15:26:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -19,6 +19,7 @@
 
 /* Global includes */
 #include <QtGlobal>
+#include <QToolTip>
 
 /* Local includes */
 #include "UIActionsPool.h"
@@ -599,6 +600,14 @@ protected:
     void retranslateUi()
     {
         menu()->setTitle(QApplication::translate("UIActionsPool", "&USB Devices"));
+        connect(menu(), SIGNAL(hovered(QAction*)), this, SLOT(sltPopupToolTip(QAction*)));
+    }
+
+private slots:
+
+    void sltPopupToolTip(QAction *pAction)
+    {
+        QToolTip::showText(QCursor::pos(), pAction->toolTip());
     }
 };
 
