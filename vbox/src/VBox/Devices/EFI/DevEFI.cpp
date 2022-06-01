@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 24822 2009-11-20 13:34:44Z vboxsync $ */
+/* $Id: DevEFI.cpp 24862 2009-11-23 10:43:00Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -940,7 +940,7 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         AssertRCReturn(rc, rc);
 
         size_t offFilename = strlen(pThis->pszEfiRomFile);
-        strcpy(pThis->pszEfiRomFile+offFilename, "/vboxefi.fv");
+        strcpy(pThis->pszEfiRomFile+offFilename, "/VBoxEFI32.fd");
         rc = VINF_SUCCESS;
     }
     else if (RT_FAILURE(rc))
