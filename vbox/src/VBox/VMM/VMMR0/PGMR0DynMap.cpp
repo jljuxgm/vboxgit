@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 27630 2010-03-23 13:48:50Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 28122 2010-04-09 07:58:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -1300,8 +1300,8 @@ DECLINLINE(uint32_t) pgmR0DynMapPage(PPGMR0DYNMAP pThis, RTHCPHYS HCPhys, int32_
      * down to a page index, collisions are handled by linear searching.
      * Optimized for a hit in the first 3 pages.
      *
-     * To the cheap hits here and defer the tedious searching and inserting
-     * to a helper function.
+     * Field easy hits here and defer the tedious searching and inserting
+     * to pgmR0DynMapPageSlow().
      */
     uint32_t const      cPages  = pThis->cPages;
     uint32_t            iPage   = (HCPhys >> PAGE_SHIFT) % cPages;
