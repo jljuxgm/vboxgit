@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltPt-win.c 24190 2009-10-30 14:03:30Z vboxsync $ */
+/* $Id: VBoxNetFltPt-win.c 24203 2009-10-30 15:14:39Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Protocol edge of ndis filter driver
  */
@@ -972,7 +972,7 @@ static bool vboxNetFltWinPtTransferDataCompleteActive(IN PADAPT pAdapt,
                 if(!vboxNetFltWinLbIsFromIntNet(pLb))
                 {
                     /* the packet is not from int net, need to pass it up to the host */
-                    vboxNetFltWinPtQueueReceivedPacket(pAdapt, pPacket, true);
+                    vboxNetFltWinPtQueueReceivedPacket(pAdapt, pPacket, FALSE);
                     /* dereference NetFlt, pAdapt will be dereferenced on Packet return */
                     vboxNetFltWinDereferenceNetFlt(pNetFltIf);
                     break;
@@ -1353,7 +1353,7 @@ vboxNetFltWinPtReceiveActive(
                         false); /* bool bCopyMemory */
                     if(pMyPacket)
                     {
-                        vboxNetFltWinPtQueueReceivedPacket(pAdapt, pMyPacket, true);
+                        vboxNetFltWinPtQueueReceivedPacket(pAdapt, pMyPacket, FALSE);
                         /* dereference the NetFlt here & indicate SUCCESS, which would mean the caller would not do a dereference
                          * the pAdapt dereference will be done on packet return */
                         vboxNetFltWinDereferenceNetFlt(pNetFlt);
