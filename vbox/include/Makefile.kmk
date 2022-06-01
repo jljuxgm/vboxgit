@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28025 2010-04-07 06:37:43Z vboxsync $
+# $Id: Makefile.kmk 28153 2010-04-09 17:58:51Z vboxsync $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -97,7 +97,7 @@ $$(PATH_TARGET)/$(flatname)-cpp.cpp: $$(PATH_TARGET)/
 	$(QUIET)$$(APPEND) -t -n $$@ '#include <$(hdr)>' 'int main(int argc, char **argv) {(void)argc; (void)argv; return 0;}'
 
 $$(PATH_TARGET)/$(flatname)-c.c: $(VBOX_ROOT_INCLUDE_MAKEFILE)  | $$(PATH_TARGET)/
-ifn1of ($(hdr), $(cpp_hdrs) VBox/pdmnetinline.h)
+ifn1of ($(hdr), $(cpp_hdrs) )
 	$(QUIET)$$(APPEND) -t -n $$@ '#include <$(hdr)>' 'int main(int argc, char **argv) {(void)argc; (void)argv; return 0;}'
 else
 	$(QUIET)$$(APPEND) -t -n $$@ 'int main(int argc, char **argv) {(void)argc; (void)argv; return 0;}'
