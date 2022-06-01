@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 27302 2010-03-11 20:11:17Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 27672 2010-03-24 15:46:26Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -1438,7 +1438,7 @@ static int lsilogicScatterGatherListAllocate(PLSILOGICTASKSTATE pTaskState, uint
 
         Log(("%s: Allocating buffer for unaligned segments cbUnaligned=%u\n", __FUNCTION__, cbUnaligned));
 
-        pTaskState->pvBufferUnaligned = RTMemAllocZ(cbUnaligned);
+        pTaskState->pvBufferUnaligned = RTMemPageAlloc(cbUnaligned);
         if (!pTaskState->pvBufferUnaligned)
             return VERR_NO_MEMORY;
 
