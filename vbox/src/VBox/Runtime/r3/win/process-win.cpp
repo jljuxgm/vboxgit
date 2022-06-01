@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 29717 2010-05-21 08:43:01Z vboxsync $ */
+/* $Id: process-win.cpp 29718 2010-05-21 08:45:15Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -322,7 +322,7 @@ static int rtProcCreateAsUserHlp(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTUT
          * - If valid get the correct VBoxTray instance corresponding to that
          *   user. This of course is only possible if that user is logged in (over
          *   physical console or terminal services).
-         * - We we found the user's VBoxTray app, use and modify the token to
+         * - If we found the user's VBoxTray app, use and modify the token to
          *   use it in order to allow the newly started process acess the user's
          *   desktop. If there's no VBoxTray app we cannot display the started
          *   process (but run it without UI).
