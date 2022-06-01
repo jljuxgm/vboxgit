@@ -1,4 +1,4 @@
-# $Id: Config.kmk 28019 2010-04-06 17:12:04Z vboxsync $
+# $Id: Config.kmk 28083 2010-04-08 11:01:50Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -330,7 +330,7 @@ if1of ($(KBUILD_TARGET), linux solaris)
  VBOX_WITH_DBUS = 1
 endif
 # Enable building PAM modules
-if1of ($(KBUILD_TARGET), linux)
+if1of ($(KBUILD_TARGET), linux solaris)
  VBOX_WITH_PAM = 1
 endif
 # Disable WINMM support for Windows (not implemented).
@@ -4071,7 +4071,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28019 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28083 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
