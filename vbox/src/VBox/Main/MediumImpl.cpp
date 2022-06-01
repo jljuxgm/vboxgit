@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 29028 2010-05-04 14:33:45Z vboxsync $ */
+/* $Id: MediumImpl.cpp 29149 2010-05-06 12:55:49Z vboxsync $ */
 
 /** @file
  *
@@ -3907,13 +3907,23 @@ HRESULT Medium::deleteStorage(ComObjPtr<Progress> *aProgress,
         }
 
         /* try to remove from the list of known hard disks before performing
-         * actual deletion (we favor the consistency of the media registry in
-         * the first place which would have been broken if
-         * unregisterWithVirtualBox() failed after we successfully deleted the
-         * storage) */
-        rc = unregisterWithVirtualBox(pfNeedsSaveSettings);
+         * actual deletion (we favor the consistency of the media registry
+         * which would have been broken if unregisterWithVirtualBox() failed
+         * after we successfully deleted the storage) */
+        bool fNeedsSaveSettings = false;
+        rc = unregisterWithVirtualBox(&fNeedsSaveSettings);
         if (FAILED(rc))
             throw rc;
+        // no longer need lock, and below we might need the VirtualBox lock.
+        multilock.release();
+        if (fNeedsSaveSettings)
+        {
+            AutoWriteLock vboxlock(m->pVirtualBox COMMA_LOCKVAL_SRC_POS);
+            m->pVirtualBox->saveSettings();
+        }
+        // always set it to false because the medium registry is up to date
+        if (pfNeedsSaveSettings)
+            *pfNeedsSaveSettings = false;
 
         if (aProgress != NULL)
         {
