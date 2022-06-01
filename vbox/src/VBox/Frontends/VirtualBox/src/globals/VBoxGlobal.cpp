@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 28294 2010-04-14 11:33:35Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 28406 2010-04-16 10:45:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2154,6 +2154,11 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
                 else if (type == KNetworkAttachmentType_HostOnly)
                     attType = attType.arg (tr ("Host-only adapter, '%1'",
                         "details report (network)").arg (adapter.GetHostInterface()));
+#ifdef VBOX_WITH_VDE
+                else if (type == KNetworkAttachmentType_VDE)
+                    attType = attType.arg (tr ("VDE network, '%1'",
+                        "details report (network)").arg (adapter.GetVDENetwork()));
+#endif
                 else
                     attType = attType.arg (vboxGlobal().toString (type));
 
@@ -3112,6 +3117,10 @@ void VBoxGlobal::retranslateUi()
         tr ("Internal Network", "NetworkAttachmentType");
     mNetworkAttachmentTypes [KNetworkAttachmentType_HostOnly] =
         tr ("Host-only Adapter", "NetworkAttachmentType");
+#ifdef VBOX_WITH_VDE
+    mNetworkAttachmentTypes [KNetworkAttachmentType_VDE] =
+        tr ("VDE Adapter", "NetworkAttachmentType");
+#endif
 
     mClipboardTypes [KClipboardMode_Disabled] =
         tr ("Disabled", "ClipboardType");
