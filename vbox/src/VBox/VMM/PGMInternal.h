@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 26277 2010-02-05 04:44:42Z vboxsync $ */
+/* $Id: PGMInternal.h 26364 2010-02-09 13:31:20Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3302,6 +3302,7 @@ void            pgmR3PoolRelocate(PVM pVM);
 void            pgmR3PoolResetUnpluggedCpu(PVM pVM, PVMCPU pVCpu);
 void            pgmR3PoolReset(PVM pVM);
 void            pgmR3PoolClearAll(PVM pVM);
+DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, void *pvUser);
 
 #endif /* IN_RING3 */
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0

@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 26348 2010-02-09 08:56:37Z vboxsync $ */
+/* $Id: PGMPhys.cpp 26364 2010-02-09 13:31:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -829,6 +829,9 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysFreeRamPagesRendezvous(PVM pVM, PVMCP
         }
     }
     GMMR3FreePagesCleanup(pReq);
+
+    /* Flush the PGM pool cache as we might have stale references to pages that we just freed. */
+    pgmR3PoolClearAllRendezvous(pVM, pVCpu, NULL);
 
     pgmUnlock(pVM);
     return rc;

@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 26261 2010-02-05 01:45:28Z vboxsync $ */
+/* $Id: PGMPool.cpp 26364 2010-02-09 13:31:20Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -597,7 +597,7 @@ static DECLCALLBACK(int) pgmR3PoolAccessHandler(PVM pVM, RTGCPHYS GCPhys, void *
  * @param   pvUser  Unused parameter.
  *
  */
-static DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, void *pvUser)
+DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, void *pvUser)
 {
     PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
     STAM_PROFILE_START(&pPool->StatClearAll, c);
