@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 25834 2010-01-14 16:21:05Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 25903 2010-01-18 18:15:43Z vboxsync $ */
 
 /** @file
  *
@@ -273,11 +273,11 @@ public:
     int calculateFullPath(const Utf8Str &strPath, Utf8Str &aResult);
     void calculateRelativePath(const Utf8Str &strPath, Utf8Str &aResult);
 
-    HRESULT registerHardDisk(Medium *aHardDisk, bool aSaveRegistry = true);
-    HRESULT unregisterHardDisk(Medium *aHardDisk, bool aSaveRegistry = true);
+    HRESULT registerHardDisk(Medium *aHardDisk, bool *pfNeedsSaveSettings);
+    HRESULT unregisterHardDisk(Medium *aHardDisk, bool *pfNeedsSaveSettings);
 
-    HRESULT registerImage(Medium *aImage, DeviceType_T argType, bool aSaveRegistry = true);
-    HRESULT unregisterImage(Medium *aImage, DeviceType_T argType, bool aSaveRegistry = true);
+    HRESULT registerImage(Medium *aImage, DeviceType_T argType, bool *pfNeedsSaveSettings);
+    HRESULT unregisterImage(Medium *aImage, DeviceType_T argType, bool *pfNeedsSaveSettings);
 
     HRESULT saveSettings();
     HRESULT updateSettings(const char *aOldPath, const char *aNewPath);
@@ -288,7 +288,7 @@ public:
 
     const Utf8Str& settingsFilePath();
 
-    RWLockHandle& hardDiskTreeLockHandle();
+    RWLockHandle& getMediaTreeLockHandle();
 
     /* for VirtualBoxSupportErrorInfoImpl */
     static const wchar_t *getComponentName() { return L"VirtualBox"; }

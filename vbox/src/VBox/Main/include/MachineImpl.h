@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 25901 2010-01-18 16:52:21Z vboxsync $ */
+/* $Id: MachineImpl.h 25903 2010-01-18 18:15:43Z vboxsync $ */
 
 /** @file
  *
@@ -888,8 +888,9 @@ protected:
     HRESULT createImplicitDiffs(const Bstr &aFolder,
                                 IProgress *aProgress,
                                 ULONG aWeight,
-                                bool aOnline);
-    HRESULT deleteImplicitDiffs();
+                                bool aOnline,
+                                bool *pfNeedsSaveSettings);
+    HRESULT deleteImplicitDiffs(bool *pfNeedsSaveSettings);
 
     MediumAttachment* findAttachment(const MediaData::AttachmentList &ll,
                                      IN_BSTR aControllerName,
@@ -900,7 +901,8 @@ protected:
     MediumAttachment* findAttachment(const MediaData::AttachmentList &ll,
                                      Guid &id);
 
-    void fixupMedia(bool aCommit, bool aOnline = false);
+    void commitMedia(bool aOnline = false);
+    void rollbackMedia();
 
     bool isInOwnDir(Utf8Str *aSettingsDir = NULL);
 
@@ -1087,7 +1089,6 @@ private:
     void uninit(Uninit::Reason aReason);
 
     HRESULT endSavingState(BOOL aSuccess);
-    HRESULT endTakingSnapshot(BOOL aSuccess);
 
     typedef std::map<ComObjPtr<Machine>, MachineState_T> AffectedMachines;
 

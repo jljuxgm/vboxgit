@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 25902 2010-01-18 17:16:40Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 25903 2010-01-18 18:15:43Z vboxsync $ */
 
 /** @file
  *
@@ -1751,7 +1751,7 @@ HRESULT Console::doCPURemove(ULONG aCpu)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    AutoWriteLock alock(this);
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     if (   mMachineState != MachineState_Running
         && mMachineState != MachineState_Teleporting
@@ -1904,7 +1904,7 @@ HRESULT Console::doCPUAdd(ULONG aCpu)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    AutoWriteLock alock(this);
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     if (   mMachineState != MachineState_Running
         && mMachineState != MachineState_Teleporting
