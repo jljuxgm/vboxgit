@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSeamless.cpp 27309 2010-03-11 23:19:50Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSeamless.cpp 27318 2010-03-12 10:27:04Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Seamless mode.
  */
@@ -57,9 +57,9 @@ VBGLR3DECL(int) VbglR3SeamlessSetCap(bool fState)
 /**
  * Wait for a seamless mode change event.
  *
- * @returns IPRT status value
- * @retval  pMode on success, the seamless mode to switch into (i.e. disabled, visible region
- *                or host window)
+ * @returns IPRT status value.
+ * @param[out] pMode    On success, the seamless mode to switch into (i.e.
+ *                      disabled, visible region or host window).
  */
 VBGLR3DECL(int) VbglR3SeamlessWaitEvent(VMMDevSeamlessMode *pMode)
 {
@@ -83,6 +83,7 @@ VBGLR3DECL(int) VbglR3SeamlessWaitEvent(VMMDevSeamlessMode *pMode)
 
             /* get the seamless change request */
             vmmdevInitRequest(&seamlessChangeRequest.header, VMMDevReq_GetSeamlessChangeRequest);
+            seamlessChangeRequest.mode = (VMMDevSeamlessMode)-1;
             seamlessChangeRequest.eventAck = VMMDEV_EVENT_SEAMLESS_MODE_CHANGE_REQUEST;
             rc = vbglR3GRPerform(&seamlessChangeRequest.header);
             if (RT_SUCCESS(rc))
@@ -100,21 +101,22 @@ VBGLR3DECL(int) VbglR3SeamlessWaitEvent(VMMDevSeamlessMode *pMode)
 /**
  * Request the last seamless mode switch from the host again.
  *
- * @returns IPRT status value
- * @retval  pMode on success, the seamless mode that was switched into (i.e.
- *          disabled, visible region or host window)
+ * @returns IPRT status value.
+ * @param[out] pMode    On success, the seamless mode that was switched
+ *                      into (i.e. disabled, visible region or host window).
  */
 VBGLR3DECL(int) VbglR3SeamlessGetLastEvent(VMMDevSeamlessMode *pMode)
 {
+    VMMDevSeamlessChangeRequest seamlessChangeRequest;
     int rc;
 
 #if !defined(VBOX_VBGLR3_XFREE86)
     AssertPtrReturn(pMode, VERR_INVALID_PARAMETER);
 #endif
-    VMMDevSeamlessChangeRequest seamlessChangeRequest;
 
     /* get the seamless change request */
     vmmdevInitRequest(&seamlessChangeRequest.header, VMMDevReq_GetSeamlessChangeRequest);
+    seamlessChangeRequest.mode = (VMMDevSeamlessMode)-1;
     seamlessChangeRequest.eventAck = VMMDEV_EVENT_SEAMLESS_MODE_CHANGE_REQUEST;
     rc = vbglR3GRPerform(&seamlessChangeRequest.header);
     if (RT_SUCCESS(rc))
