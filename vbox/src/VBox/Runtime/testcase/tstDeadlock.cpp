@@ -1,4 +1,4 @@
-/* $Id: tstDeadlock.cpp 25368 2009-12-14 16:31:40Z vboxsync $ */
+/* $Id: tstDeadlock.cpp 25406 2009-12-15 14:23:53Z vboxsync $ */
 /** @file
  * IPRT Testcase - deadlock detection. Will never really "work".
  */
@@ -34,6 +34,7 @@
 *******************************************************************************/
 #include <iprt/asm.h>                   /* for return addresses */
 #include <iprt/critsect.h>
+#include <iprt/lockvalidator.h>
 
 #include <iprt/err.h>
 #include <iprt/initterm.h>

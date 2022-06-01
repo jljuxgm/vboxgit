@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 25401 2009-12-15 13:12:54Z vboxsync $ */
+/* $Id: PDMInternal.h 25406 2009-12-15 14:23:53Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -52,7 +52,7 @@ RT_C_DECLS_BEGIN
 
 /** @def PDMCRITSECT_STRICT
  * Enables/disables PDM critsect strictness like deadlock detection. */
-#if defined(VBOX_STRICT) || defined(DOXYGEN_RUNNING)
+#if (defined(VBOX_STRICT) && defined(IN_RING3)) || defined(DOXYGEN_RUNNING)
 # define PDMCRITSECT_STRICT
 #endif
 
