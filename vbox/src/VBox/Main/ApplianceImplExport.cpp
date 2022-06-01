@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 28150 2010-04-09 15:58:10Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 28162 2010-04-11 12:44:21Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -609,11 +609,7 @@ HRESULT Appliance::writeImpl(OVFFormat aFormat, const LocationInfo &aLocInfo, Co
         Bstr progressDesc = BstrFmt(tr("Export appliance '%s'"),
                                     aLocInfo.strPath.c_str());
 
-        /* todo: This progress init stuff should be done a little bit more generic */
-        if (aLocInfo.storageType == VFSType_File)
-            rc = setUpProgressFS(aProgress, progressDesc);
-        else
-            rc = setUpProgressWriteS3(aProgress, progressDesc);
+        rc = setUpProgress(aProgress, progressDesc, (aLocInfo.storageType == VFSType_File) ? Regular : WriteS3);
 
         /* Initialize our worker task */
         std::auto_ptr<TaskOVF> task(new TaskOVF(this, TaskOVF::Write, aLocInfo, aProgress));
