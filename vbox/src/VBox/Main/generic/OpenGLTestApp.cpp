@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 24696 2009-11-16 14:52:07Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 24836 2009-11-21 08:31:17Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -245,7 +245,7 @@ int main(int argc, char **argv)
 #ifdef VBOXGLTEST_WITH_LOGGING
         bool bLog = false;
         bool bLogSuffix = false;
-        const char * pLog;
+        const char * pLog = NULL;
 #endif
 
         for (;;)
