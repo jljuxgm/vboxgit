@@ -1,4 +1,4 @@
-/* $Id: semevent-linux.cpp 25651 2010-01-05 14:44:52Z vboxsync $ */
+/* $Id: semevent-linux.cpp 25682 2010-01-07 15:23:30Z vboxsync $ */
 /** @file
  * IPRT - Event Semaphore, Linux (2.6.x+).
  */
@@ -129,7 +129,7 @@ RTDECL(int)  RTSemEventCreate(PRTSEMEVENT pEventSem)
         pThis->fSignalled = 0;
 #ifdef RTSEMEVENT_STRICT
         RTLockValidatorRecSharedInit(&pThis->Signallers,
-                                     NIL_RTLOCKVALIDATORCLASS, RTLOCKVALIDATOR_SUB_CLASS_ANY,
+                                     NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_ANY,
                                      "RTSemEvent", pThis, true /*fSignaller*/);
         pThis->fEverHadSignallers = false;
 #endif

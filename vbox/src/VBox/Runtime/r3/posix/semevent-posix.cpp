@@ -1,4 +1,4 @@
-/* $Id: semevent-posix.cpp 25661 2010-01-06 01:19:02Z vboxsync $ */
+/* $Id: semevent-posix.cpp 25682 2010-01-07 15:23:30Z vboxsync $ */
 /** @file
  * IPRT - Event Semaphore, POSIX.
  */
@@ -132,7 +132,7 @@ RTDECL(int)  RTSemEventCreate(PRTSEMEVENT pEventSem)
                         ASMAtomicXchgU32(&pThis->cWaiters, 0);
 #ifdef RTSEMEVENT_STRICT
                         RTLockValidatorRecSharedInit(&pThis->Signallers,
-                                                     NIL_RTLOCKVALIDATORCLASS, RTLOCKVALIDATOR_SUB_CLASS_ANY,
+                                                     NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_ANY,
                                                      "RTSemEvent", pThis, true /*fSignaller*/);
                         pThis->fEverHadSignallers = false;
 #endif

@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-win.cpp 25659 2010-01-05 16:11:33Z vboxsync $ */
+/* $Id: semeventmulti-win.cpp 25682 2010-01-07 15:23:30Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Windows.
  *
@@ -90,7 +90,7 @@ RTDECL(int)  RTSemEventMultiCreate(PRTSEMEVENTMULTI pEventMultiSem)
         pThis->u32Magic = RTSEMEVENTMULTI_MAGIC;
 #ifdef RTSEMEVENT_STRICT
         RTLockValidatorRecSharedInit(&pThis->Signallers,
-                                     NIL_RTLOCKVALIDATORCLASS, RTLOCKVALIDATOR_SUB_CLASS_ANY,
+                                     NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_ANY,
                                      "RTSemEvent", pThis, true /*fSignaller*/);
         pThis->fEverHadSignallers = false;
 #endif
