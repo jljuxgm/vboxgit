@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 30165 2010-06-11 14:17:46Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2866,7 +2866,7 @@ VMMR0DECL(int) SVMR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
     /* Disable interrupts. */
     uOldEFlags = ASMIntDisableFlags();
 
-    CPUMSetHyperESP(pVCpu, VMMGetStackRC(pVM));
+    CPUMSetHyperESP(pVCpu, VMMGetStackRC(pVCpu));
     CPUMSetHyperEIP(pVCpu, pfnHandler);
     for (int i=(int)cbParam-1;i>=0;i--)
         CPUMPushHyper(pVCpu, paParam[i]);
