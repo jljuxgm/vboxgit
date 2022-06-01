@@ -1,4 +1,4 @@
-/* $Id: log.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: log.cpp 29263 2010-05-09 19:52:03Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2367,7 +2367,11 @@ static DECLCALLBACK(size_t) rtLogOutputPrefixed(void *pv, const char *pachChars,
                 }
                 if (pLogger->fFlags & RTLOGFLAGS_PREFIX_TSC)
                 {
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
                     uint64_t     u64    = ASMReadTSC();
+#else
+                    uint64_t     u64    = RTTimeNanoTS();
+#endif
                     int          iBase  = 16;
                     unsigned int fFlags = RTSTR_F_ZEROPAD;
                     if (pLogger->fFlags & RTLOGFLAGS_DECIMAL_TS)
