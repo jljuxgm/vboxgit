@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 27084 2010-03-05 13:08:58Z vboxsync $ */
+/* $Id: VMMR0.cpp 27999 2010-04-06 12:24:02Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -913,6 +913,11 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
             if (u64Arg)
                 return VERR_INVALID_PARAMETER;
             return GMMR0BalloonedPagesReq(pVM, idCpu, (PGMMBALLOONEDPAGESREQ)pReqHdr);
+
+        case VMMR0_DO_GMM_QUERY_TOTAL_BALLOON_SIZE:
+            if (u64Arg)
+                return VERR_INVALID_PARAMETER;
+            return GMMR0QueryTotalBalloonSizeReq(pVM, (PGMMBALLOONQUERYREQ)pReqHdr);
 
         case VMMR0_DO_GMM_MAP_UNMAP_CHUNK:
             if (u64Arg)
