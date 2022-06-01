@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 28841 2010-04-27 16:00:16Z vboxsync $ */
+/* $Id: UIMachine.cpp 28844 2010-04-27 16:07:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -423,7 +423,6 @@ void UIMachine::loadMachineSettings()
         {
             /* Test 'seamless' flag: */
             QString strSeamlessSettings = machine.GetExtraData(VBoxDefs::GUI_Seamless);
-            printf ("%s\n", qPrintable(strSeamlessSettings));
             if (strSeamlessSettings == "on")
             {
                 fIsSomeExtendedModeChosen = true;
