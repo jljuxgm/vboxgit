@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 25504 2009-12-18 17:46:47Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 25506 2009-12-18 17:58:31Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1953,7 +1953,12 @@ static int pgmPoolCacheFreeOne(PPGMPOOL pPool, uint16_t iUser)
     /*
      * Found a usable page, flush it and return.
      */   
-    return pgmPoolFlushPage(pPool, pPage);  
+    int rc = pgmPoolFlushPage(pPool, pPage);  
+    /* This flush was initiated by us and not the guest, so explicitly flush the TLB. */  
+    /* todo: find out why this is necessary; pgmPoolFlushPage should trigger a flush if one is really needed. */
+    if (rc == VINF_SUCCESS)
+        PGM_INVL_ALL_VCPU_TLBS(pVM);  
+    return rc;
 }
 
 
