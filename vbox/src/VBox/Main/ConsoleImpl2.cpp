@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26957 2010-03-02 16:43:53Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 27045 2010-03-04 16:12:51Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2965,7 +2965,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
             Utf8Str HifNameUtf8(HifName);
             const char *pszHifName = HifNameUtf8.raw();
-            LogRel(("NetworkAttachmentType_HostOnly: COMGETTER(HostInterface): %s\n", pszHifName));
             ComPtr<IHostNetworkInterface> hostInterface;
             rc = host->FindHostNetworkInterfaceByName(HifName, hostInterface.asOutParam());
             if (!SUCCEEDED(rc))
