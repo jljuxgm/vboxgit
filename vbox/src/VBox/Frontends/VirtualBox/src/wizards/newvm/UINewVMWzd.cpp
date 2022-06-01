@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 28825 2010-04-27 13:50:46Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 28898 2010-04-29 13:00:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -100,8 +100,8 @@ static const osTypePattern gs_OSTypePattern[] =
     { QRegExp("Ub", Qt::CaseInsensitive), "Ubuntu" },
     { QRegExp("Xa.*64", Qt::CaseInsensitive), "Xandros_64" },
     { QRegExp("Xa", Qt::CaseInsensitive), "Xandros" },
-    { QRegExp("Or.*64", Qt::CaseInsensitive), "Oracle_64" },
-    { QRegExp("Or", Qt::CaseInsensitive), "Oracle" },
+    { QRegExp("((Or)|(oel)).*64", Qt::CaseInsensitive), "Oracle_64" },
+    { QRegExp("(Or)|(oel)", Qt::CaseInsensitive), "Oracle" },
     { QRegExp("((Li)|(lnx)).*2.?2", Qt::CaseInsensitive), "Linux22" },
     { QRegExp("((Li)|(lnx)).*2.?4.*64", Qt::CaseInsensitive), "Linux24_64" },
     { QRegExp("((Li)|(lnx)).*2.?4", Qt::CaseInsensitive), "Linux24" },
