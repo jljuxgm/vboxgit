@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 27928 2010-04-01 09:27:31Z vboxsync $ */
+/* $Id: PDM.cpp 27936 2010-04-01 13:03:49Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1715,7 +1715,7 @@ DECLINLINE(void) pdmR3PowerOffDev(PPDMDEVINS pDevIns, unsigned *pcAsync)
     if (!(pDevIns->Internal.s.fIntFlags & PDMDEVINSINT_FLAGS_SUSPENDED))
     {
         pDevIns->Internal.s.fIntFlags |= PDMDEVINSINT_FLAGS_SUSPENDED;
-        if (pDevIns->pReg->pfnSuspend)
+        if (pDevIns->pReg->pfnPowerOff)
         {
             if (!pDevIns->Internal.s.pfnAsyncNotify)
             {
