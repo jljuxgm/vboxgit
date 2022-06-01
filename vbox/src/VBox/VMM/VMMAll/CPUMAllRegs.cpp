@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 26635 2010-02-18 18:24:40Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 26648 2010-02-19 13:10:03Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1078,8 +1078,7 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t iLeaf, uint32_t *pEax, ui
     *pEcx = pCpuId->ecx;
     *pEdx = pCpuId->edx;
 
-    if (    iLeaf == 1
-        &&  pVM->cCpus > 1)
+    if (    iLeaf == 1)
     {
         /* Bits 31-24: Initial APIC ID */
         Assert(pVCpu->idCpu <= 255);
@@ -1122,7 +1121,7 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t iLeaf, uint32_t *pEax, ui
             case 2:
                 level = 2;
                 type = 3;
-                sharing = 2;
+                sharing = 1;
                 linesize = 64;
                 associativity = 24;
                 sets = 4096;
