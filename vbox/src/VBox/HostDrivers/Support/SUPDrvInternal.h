@@ -1,4 +1,4 @@
-/* $Revision: 25258 $ */
+/* $Revision: 25260 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -427,7 +427,7 @@ typedef struct SUPDRVLDRIMAGE
     uint32_t                        uState;
     /** Usage count. */
     uint32_t volatile               cUsage;
-#ifdef SUPDRV_USE_NATIVE_LOADER
+#ifdef VBOX_WITH_NATIVE_R0_LOADER
     /** Whether it's loaded by the native loader or not. */
     bool                            fNative;
 #endif
@@ -661,7 +661,7 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
 bool VBOXCALL   supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt);
 int  VBOXCALL   supdrvOSEnableVTx(bool fEnabled);
 
-#ifdef SUPDRV_USE_NATIVE_LOADER
+#ifdef VBOX_WITH_NATIVE_R0_LOADER
 
 /**
  * Try open the image using the native loader.
@@ -712,7 +712,7 @@ int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
  */
 void VBOXCALL   supdrvOSLdrUnload(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage);
 
-#endif /* SUPDRV_USE_NATIVE_LOADER */
+#endif /* VBOX_WITH_NATIVE_R0_LOADER */
 
 /*******************************************************************************
 *   Shared Functions                                                           *

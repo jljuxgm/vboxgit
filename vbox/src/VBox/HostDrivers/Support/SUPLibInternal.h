@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 25258 2009-12-09 01:52:52Z vboxsync $ */
+/* $Id: SUPLibInternal.h 25260 2009-12-09 02:07:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -30,8 +30,6 @@
 
 #ifndef ___SUPLibInternal_h___
 #define ___SUPLibInternal_h___
-
-/*#define SUPDRV_USE_NATIVE_LOADER*/
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
