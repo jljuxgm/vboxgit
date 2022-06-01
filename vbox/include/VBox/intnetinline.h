@@ -1,4 +1,4 @@
-/* $Id: intnetinline.h 28071 2010-04-07 23:20:54Z vboxsync $ */
+/* $Id: intnetinline.h 28075 2010-04-07 23:42:21Z vboxsync $ */
 /** @file
  * INTNET - Internal Networking, Inlined Code. (DEV,++)
  *
@@ -578,7 +578,8 @@ DECLINLINE(void) INTNETRingCommitFrame(PINTNETRINGBUF pRingBuf, PINTNETHDR pHdr)
  * @param   pRingBuf            The ring buffer.
  * @param   pHdr                The frame header returned by
  *                              INTNETRingAllocateFrame.
- * @param   cbUsed              The amount of space actually used.
+ * @param   cbUsed              The amount of space actually used.  This does
+ *                              not include the GSO part.
  */
 DECLINLINE(void) INTNETRingCommitFrameEx(PINTNETRINGBUF pRingBuf, PINTNETHDR pHdr, size_t cbUsed)
 {
@@ -588,6 +589,9 @@ DECLINLINE(void) INTNETRingCommitFrameEx(PINTNETRINGBUF pRingBuf, PINTNETHDR pHd
     INTNETRINGBUF_ASSERT_SANITY(pRingBuf);
     INTNETHDR_ASSERT_SANITY(pHdr, pRingBuf);
     Assert(pRingBuf->offWriteCom == ((uintptr_t)pHdr - (uintptr_t)pRingBuf));
+
+    if (pHdr->u16Type == INTNETHDR_TYPE_GSO)
+        cbUsed += sizeof(PDMNETWORKGSO);
 
     /*
      * Calc the new write commit offset.

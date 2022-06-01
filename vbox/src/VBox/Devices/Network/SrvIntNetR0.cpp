@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 28068 2010-04-07 22:37:08Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 28075 2010-04-07 23:42:21Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -458,39 +458,6 @@ DECLINLINE(bool) intnetR0SgReadPart(PCINTNETSG pSG, uint32_t off, uint32_t cb, v
     }
     return intnetR0SgReadPartSlow(pSG, off, cb, pvBuf);
 }
-
-
-/**
- * Reads an entire SG into a fittingly size buffer.
- *
- * @param   pSG         The SG list to read.
- * @param   pvBuf       The buffer to read into (at least pSG->cbTotal in size).
- */
-DECLINLINE(void) intnetR0SgRead(PCINTNETSG pSG, void *pvBuf)
-{
-    if (pSG->cSegsUsed == 1)
-    {
-        Assert(pSG->cbTotal == pSG->aSegs[0].cb);
-        memcpy(pvBuf, pSG->aSegs[0].pv, pSG->cbTotal);
-    }
-    else
-    {
-        uint8_t       *pbDst = (uint8_t *)pvBuf;
-        unsigned const cSegs = pSG->cSegsUsed; Assert(cSegs == pSG->cSegsUsed);
-        for (unsigned iSeg = 0; iSeg < cSegs; iSeg++)
-        {
-            uint32_t cbSeg = pSG->aSegs[iSeg].cb;
-            Assert(cbSeg <= pSG->cbTotal && (uintptr_t)(pbDst - (uint8_t *)pvBuf) + cbSeg <= pSG->cbTotal);
-            memcpy(pbDst, pSG->aSegs[iSeg].pv, cbSeg);
-            pbDst += cbSeg;
-        }
-    }
-}
-
-
-
-
-
 
 
 /**
@@ -1525,7 +1492,7 @@ static int intnetR0RingWriteFrame(PINTNETRINGBUF pRingBuf, PCINTNETSG pSG, PCRTM
         rc = INTNETRingAllocateGsoFrame(pRingBuf, pSG->cbTotal, &pSG->GsoCtx, &pHdr, &pvDst);
     if (RT_SUCCESS(rc))
     {
-        intnetR0SgRead(pSG, pvDst);
+        INTNETSgRead(pSG, pvDst);
         if (pNewDstMac)
             ((PRTNETETHERHDR)pvDst)->DstMac = *pNewDstMac;
 
@@ -2436,7 +2403,7 @@ INTNETR0DECL(int) INTNETR0IfSend(PINTNET pIntNet, INTNETIFHANDLE hIf, PSUPDRVSES
                 void       *pvCurFrame = pGso + 1;
                 INTNETSgInitTempGso(&Sg, pvCurFrame, cbFrame, pGso);
                 if (pNetwork->fFlags & INTNET_OPEN_FLAGS_SHARED_MAC_ON_WIRE)
-                    intnetR0IfSnoopAddr(pIf, (uint8_t *)pvCurFrame, pHdr->cbFrame, true /*fGso*/, (uint16_t *)&Sg.fFlags);
+                    intnetR0IfSnoopAddr(pIf, (uint8_t *)pvCurFrame, cbFrame, true /*fGso*/, (uint16_t *)&Sg.fFlags);
                 intnetR0NetworkSend(pNetwork, pIf, 0, &Sg, !!pTrunkIf);
             }
             else
