@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-nt.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-nt.cpp 29703 2010-05-20 15:38:42Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, NT.
  */
@@ -66,7 +66,7 @@ RTR0DECL(int) RTR0MemUserCopyTo(RTR3PTR R3PtrDst, void const *pvSrc, size_t cb)
 
 RTR0DECL(bool) RTR0MemUserIsValidAddr(RTR3PTR R3Ptr)
 {
-#ifdef TARGET_NT4
+#ifdef IPRT_TARGET_NT4
     /* Play safe+wrong... it used to be a constant, but in w2k+ is a variable. */
     return R3Ptr < _2G;
 #else
@@ -77,7 +77,7 @@ RTR0DECL(bool) RTR0MemUserIsValidAddr(RTR3PTR R3Ptr)
 
 RTR0DECL(bool) RTR0MemKernelIsValidAddr(void *pv)
 {
-#ifdef TARGET_NT4
+#ifdef IPRT_TARGET_NT4
     /* Play safe+wrong... it used to be a constant, but in w2k+ is a variable. */
     return (uintptr_t) >= _2G;
 #else
