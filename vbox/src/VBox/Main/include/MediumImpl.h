@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 26984 2010-03-03 13:07:00Z vboxsync $ */
+/* $Id: MediumImpl.h 27232 2010-03-09 21:05:57Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -26,7 +26,6 @@
 #include "VirtualBoxBase.h"
 
 class Progress;
-struct VM;
 
 namespace settings
 {
@@ -294,8 +293,7 @@ private:
     static DECLCALLBACK(void) vdErrorCall(void *pvUser, int rc, RT_SRC_POS_DECL,
                                           const char *pszFormat, va_list va);
 
-    static DECLCALLBACK(int) vdProgressCall(VM* /* pVM */, unsigned uPercent,
-                                            void *pvUser);
+    static DECLCALLBACK(int) vdProgressCall(void *pvUser, unsigned uPercent);
 
     static DECLCALLBACK(bool) vdConfigAreKeysValid(void *pvUser,
                                                    const char *pszzValid);

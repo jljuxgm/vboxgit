@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 27200 2010-03-09 10:10:52Z vboxsync $ */
+/* $Id: MediumImpl.cpp 27232 2010-03-09 21:05:57Z vboxsync $ */
 
 /** @file
  *
@@ -4784,14 +4784,13 @@ DECLCALLBACK(void) Medium::vdErrorCall(void *pvUser, int rc, RT_SRC_POS_DECL,
 }
 
 /**
- * PFNVMPROGRESS callback handler for Task operations.
+ * PFNVDPROGRESS callback handler for Task operations.
  *
- * @param uPercent    Completetion precentage (0-100).
  * @param pvUser      Pointer to the Progress instance.
+ * @param uPercent    Completetion precentage (0-100).
  */
 /*static*/
-DECLCALLBACK(int) Medium::vdProgressCall(PVM /* pVM */, unsigned uPercent,
-                                         void *pvUser)
+DECLCALLBACK(int) Medium::vdProgressCall(void *pvUser, unsigned uPercent)
 {
     Progress *that = static_cast<Progress *>(pvUser);
 
