@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
+/* $Id: MediumImpl.cpp 27663 2010-03-24 11:27:02Z vboxsync $ */
 
 /** @file
  *
@@ -1243,7 +1243,7 @@ HRESULT Medium::init(VirtualBox *aVirtualBox,
                        med);              // child data
         if (FAILED(rc)) break;
 
-        rc = m->pVirtualBox->registerHardDisk(pHD, false /* aSaveRegistry */);
+        rc = m->pVirtualBox->registerHardDisk(pHD, NULL /*pfNeedsSaveSettings*/);
         if (FAILED(rc)) break;
     }
 
