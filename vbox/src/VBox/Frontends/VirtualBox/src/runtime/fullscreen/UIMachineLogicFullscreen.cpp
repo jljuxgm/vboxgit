@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 27310 2010-03-12 01:29:09Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 27311 2010-03-12 02:09:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -58,6 +58,10 @@ UIMachineLogicFullscreen::~UIMachineLogicFullscreen()
 
 bool UIMachineLogicFullscreen::checkAvailability()
 {
+    /* Base class availability: */
+    if (!UIMachineLogic::checkAvailability())
+        return false;
+
     /* Temporary get a machine object: */
     const CMachine &machine = uisession()->session().GetMachine();
     const CConsole &console = uisession()->session().GetConsole();
@@ -125,45 +129,41 @@ bool UIMachineLogicFullscreen::checkAvailability()
 
 void UIMachineLogicFullscreen::initialize()
 {
-    /* Check the status of required features: */
+    /* Prepare required features: */
     prepareRequiredFeatures();
 
-    /* If required features are ready: */
-    if (!isPreventAutoStart())
-    {
 #ifdef Q_WS_MAC
-        /* Prepare common connections: */
-        prepareCommonConnections();
+    /* Prepare common connections: */
+    prepareCommonConnections();
 #endif /* Q_WS_MAC */
 
-        /* Prepare console connections: */
-        prepareSessionConnections();
+    /* Prepare console connections: */
+    prepareSessionConnections();
 
-        /* Prepare action connections: */
-        prepareActionConnections();
+    /* Prepare action connections: */
+    prepareActionConnections();
 
-        /* Prepare action groups: */
-        prepareActionGroups();
+    /* Prepare action groups: */
+    prepareActionGroups();
 
-        /* Prepare machine window: */
-        prepareMachineWindows();
+    /* Prepare machine window: */
+    prepareMachineWindows();
 
 #ifdef Q_WS_MAC
-        /* Prepare dock: */
-        prepareDock();
+    /* Prepare dock: */
+    prepareDock();
 #endif /* Q_WS_MAC */
 
-        /* Power up machine: */
-        uisession()->powerUp();
+    /* Power up machine: */
+    uisession()->powerUp();
 
-        /* Initialization: */
-        sltMachineStateChanged();
-        sltAdditionsStateChanged();
-        sltMouseCapabilityChanged();
+    /* Initialization: */
+    sltMachineStateChanged();
+    sltAdditionsStateChanged();
+    sltMouseCapabilityChanged();
 
-        /* Retranslate logic part: */
-        retranslateUi();
-    }
+    /* Retranslate logic part: */
+    retranslateUi();
 }
 
 #ifdef Q_WS_MAC

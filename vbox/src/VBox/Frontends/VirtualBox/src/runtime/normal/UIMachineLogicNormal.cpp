@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 27310 2010-03-12 01:29:09Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 27311 2010-03-12 02:09:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -50,40 +50,36 @@ UIMachineLogicNormal::~UIMachineLogicNormal()
 
 void UIMachineLogicNormal::initialize()
 {
-    /* Check the status of required features: */
+    /* Prepare required features: */
     prepareRequiredFeatures();
 
-    /* If required features are ready: */
-    if (!isPreventAutoStart())
-    {
-        /* Prepare session connections: */
-        prepareSessionConnections();
+    /* Prepare session connections: */
+    prepareSessionConnections();
 
-        /* Prepare action connections: */
-        prepareActionConnections();
+    /* Prepare action connections: */
+    prepareActionConnections();
 
-        /* Prepare action groups: */
-        prepareActionGroups();
+    /* Prepare action groups: */
+    prepareActionGroups();
 
-        /* Prepare normal machine window: */
-        prepareMachineWindows();
+    /* Prepare normal machine window: */
+    prepareMachineWindows();
 
 #ifdef Q_WS_MAC
-        /* Prepare dock: */
-        prepareDock();
+    /* Prepare dock: */
+    prepareDock();
 #endif /* Q_WS_MAC */
 
-        /* Power up machine: */
-        uisession()->powerUp();
+    /* Power up machine: */
+    uisession()->powerUp();
 
-        /* Initialization: */
-        sltMachineStateChanged();
-        sltAdditionsStateChanged();
-        sltMouseCapabilityChanged();
+    /* Initialization: */
+    sltMachineStateChanged();
+    sltAdditionsStateChanged();
+    sltMouseCapabilityChanged();
 
-        /* Retranslate logic part: */
-        retranslateUi();
-    }
+    /* Retranslate logic part: */
+    retranslateUi();
 }
 
 void UIMachineLogicNormal::sltPrepareNetworkAdaptersMenu()
