@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 27331 2010-03-12 14:12:55Z vboxsync $ */
+/* $Id: EMAll.cpp 27372 2010-03-15 16:09:02Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2187,7 +2187,7 @@ static int emUpdateCRx(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, uint32_t D
         {
             /* flush */
             rc = PGMFlushTLB(pVCpu, val, !(CPUMGetGuestCR4(pVCpu) & X86_CR4_PGE));
-            AssertRCReturn(rc, rc);
+            AssertRC(rc);
         }
         return rc;
 
