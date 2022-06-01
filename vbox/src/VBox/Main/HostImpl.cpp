@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 26550 2010-02-15 17:14:18Z vboxsync $ */
+/* $Id: HostImpl.cpp 26553 2010-02-15 17:34:29Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1289,7 +1289,7 @@ STDMETHODIMP Host::RemoveUSBDeviceFilter(ULONG aPosition)
 
 STDMETHODIMP Host::FindHostDVDDrive(IN_BSTR aName, IMedium **aDrive)
 {
-    CheckComArgStrNotEmptyOrNull(aName);
+    CheckComArgNotNull(aName);
     CheckComArgOutPointerValid(aDrive);
 
     *aDrive = NULL;
@@ -1316,7 +1316,7 @@ STDMETHODIMP Host::FindHostDVDDrive(IN_BSTR aName, IMedium **aDrive)
 
 STDMETHODIMP Host::FindHostFloppyDrive(IN_BSTR aName, IMedium **aDrive)
 {
-    CheckComArgStrNotEmptyOrNull(aName);
+    CheckComArgNotNull(aName);
     CheckComArgOutPointerValid(aDrive);
 
     *aDrive = NULL;
@@ -1450,7 +1450,7 @@ STDMETHODIMP Host::FindUSBDeviceByAddress(IN_BSTR aAddress,
                                           IHostUSBDevice **aDevice)
 {
 #ifdef VBOX_WITH_USB
-    CheckComArgStrNotEmptyOrNull(aAddress);
+    CheckComArgNotNull(aAddress);
     CheckComArgOutPointerValid(aDevice);
 
     *aDevice = NULL;

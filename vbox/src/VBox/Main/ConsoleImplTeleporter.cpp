@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 26550 2010-02-15 17:14:18Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 26553 2010-02-15 17:34:29Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -893,11 +893,8 @@ Console::teleporterSrcThreadWrapper(RTTHREAD hThread, void *pvUser)
  * @param   aMaxDowntime    Max allowed "downtime" in milliseconds.
  * @param   aProgress       Where to return the progress object.
  */
-STDMETHODIMP Console::Teleport(IN_BSTR aHostname,
-                               ULONG aPort,
-                               IN_BSTR aPassword,
-                               ULONG aMaxDowntime,
-                               IProgress **aProgress)
+STDMETHODIMP
+Console::Teleport(IN_BSTR aHostname, ULONG aPort, IN_BSTR aPassword, ULONG aMaxDowntime, IProgress **aProgress)
 {
     /*
      * Validate parameters, check+hold object status, write lock the object
@@ -905,6 +902,7 @@ STDMETHODIMP Console::Teleport(IN_BSTR aHostname,
      */
     CheckComArgOutPointerValid(aProgress);
     CheckComArgStrNotEmptyOrNull(aHostname);
+    CheckComArgNotNull(aHostname);
     CheckComArgExprMsg(aPort, aPort > 0 && aPort <= 65535, ("is %u", aPort));
     CheckComArgExprMsg(aMaxDowntime, aMaxDowntime > 0, ("is %u", aMaxDowntime));
 

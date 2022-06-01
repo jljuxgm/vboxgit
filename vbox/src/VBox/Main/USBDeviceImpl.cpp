@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 26550 2010-02-15 17:14:18Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 26553 2010-02-15 17:34:29Z vboxsync $ */
 
 /** @file
  *
@@ -154,7 +154,7 @@ STDMETHODIMP OUSBDevice::COMGETTER(Id)(BSTR *aId)
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     /* this is const, no need to lock */
-    Guid(mData.id).toUtf16().cloneTo(aId);
+    Guid(mData.id).toString().cloneTo(aId);
 
     return S_OK;
 }

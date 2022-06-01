@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 26550 2010-02-15 17:14:18Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 26553 2010-02-15 17:34:29Z vboxsync $ */
 
 /** @file
  *
@@ -169,7 +169,7 @@ void ErrorInfo::init (IUnknown *aI, const GUID &aIID, bool aKeepObj /* = false *
     if (mIsBasicAvailable)
     {
         mCalleeIID = aIID;
-        GetInterfaceNameByIID(aIID, mCalleeName.asOutParam());
+        GetInterfaceNameByIID (aIID, mCalleeName.asOutParam());
     }
 }
 

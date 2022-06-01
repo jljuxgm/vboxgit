@@ -1,4 +1,4 @@
-/* $Id: Guid.h 26550 2010-02-15 17:14:18Z vboxsync $ */
+/* $Id: Guid.h 26553 2010-02-15 17:34:29Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -96,7 +96,7 @@ public:
     Guid(const Bstr &that)
     {
         ::RTUuidClear (&uuid);
-        if (!that.isEmpty())
+        if (!that.isNull())
            ::RTUuidFromUtf16(&uuid, that.raw());
         refresh();
     }
@@ -144,7 +144,7 @@ public:
         return Utf8Str(buf);
     }
 
-    Bstr toUtf16() const
+    Bstr toUtf16 () const
     {
         if (isEmpty())
           return Bstr();
