@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25825 2010-01-14 10:39:12Z vboxsync $
+# $Id: Makefile.kmk 25838 2010-01-14 16:55:55Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -469,22 +469,6 @@ else  # !VBOX_WITH_DYNAMIC_DSDT
 	$(QUIET)$(VBOX_IASLCMD) -tc -vs -p $@ $<
 
  vboxaml.hex:: $$(PATH_DevicesR3)/vboxaml.hex
-
- # CPU hot-plug version
- DevicesR3_CLEAN        += $(PATH_DevicesR3)/vboxaml-cpuhotplug.hex $(PATH_DevicesR3)/vboxaml-cpuhotplug.hex.tmp $(PATH_DevicesR3)/vboxaml-cpuhotplug.aml
- PC/ACPI/VBoxAcpi.cpp_DEPS += $(PATH_DevicesR3)/vboxaml-cpuhotplug.hex
-
- $$(PATH_DevicesR3)/vboxaml-cpuhotplug.hex: $(PATH_SUB_CURRENT)/PC/vbox-cpuhotplug.dsl | $$(dir $$@)
-	$(call MSG_TOOL,iasl,DevicesR3,$<,$@)
-	$(QUIET)$(RM) -f $@ $@.tmp
-	$(QUIET)$(VBOX_IASLCMD) -tc -vs -p $@ $<
-	$(QUIET)$(MV) -f $@ $@.tmp
-	$(QUIET)$(SED) -e 's/AmlCode/AmlCodeCpuHotplug/' \
-		--output $@ $@.tmp
-	$(QUIET)$(RM) -f $@.tmp
-
-
- vboxaml-cpuhotplug.hex:: $$(PATH_DevicesR3)/vboxaml-cpuhotplug.hex
 
 endif # !VBOX_WITH_DYNAMIC_DSDT
 PC/ACPI/VBoxAcpi.cpp_INCS = $(PATH_DevicesR3)
