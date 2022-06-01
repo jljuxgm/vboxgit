@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: ldrPE.cpp 25259 2009-12-09 02:07:06Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -1118,7 +1118,11 @@ static int rtldrPEValidateOptionalHeader(const IMAGE_OPTIONAL_HEADER64 *pOptHdr,
                 cb = (size_t)cbRawImage; Assert((RTFOFF)cb == cbRawImage);
                 Log(("rtldrPEOpen: %s: dir no. %d (SECURITY) VirtualAddress=%#x Size=%#x is not supported!!!\n",
                      pszLogName, i, pDir->VirtualAddress, pDir->Size));
+#if 0 /** @todo correctly validate this! Ignoring it for the present. */
                 return VERR_LDRPE_SECURITY;
+#else
+                break;
+#endif
 
             case IMAGE_DIRECTORY_ENTRY_GLOBALPTR:     // 8   /* (MIPS GP) */
                 Log(("rtldrPEOpen: %s: dir no. %d (GLOBALPTR) VirtualAddress=%#x Size=%#x is not supported!!!\n",
