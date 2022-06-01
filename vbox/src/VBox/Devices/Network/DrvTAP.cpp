@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: DrvTAP.cpp 26300 2010-02-05 16:02:55Z vboxsync $ */
 /** @file
  * DrvTAP - Universial TAP network transport driver.
  */
@@ -25,6 +25,7 @@
 #define LOG_GROUP LOG_GROUP_DRV_TUN
 #include <VBox/log.h>
 #include <VBox/pdmdrv.h>
+#include <VBox/pdmnetifs.h>
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>

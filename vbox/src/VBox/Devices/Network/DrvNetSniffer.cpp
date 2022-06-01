@@ -1,4 +1,4 @@
-/* $Id: DrvNetSniffer.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: DrvNetSniffer.cpp 26300 2010-02-05 16:02:55Z vboxsync $ */
 /** @file
  * DrvNetSniffer - Network sniffer filter driver.
  */
@@ -25,6 +25,7 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_NAT
 #include <VBox/pdmdrv.h>
+#include <VBox/pdmnetifs.h>
 
 #include <VBox/log.h>
 #include <iprt/assert.h>

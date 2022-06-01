@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 26300 2010-02-05 16:02:55Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -24,6 +24,7 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_INTNET
 #include <VBox/pdmdrv.h>
+#include <VBox/pdmnetifs.h>
 #include <VBox/cfgm.h>
 #include <VBox/intnet.h>
 #include <VBox/vmm.h>

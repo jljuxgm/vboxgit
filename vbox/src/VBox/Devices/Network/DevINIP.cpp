@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: DevINIP.cpp 26300 2010-02-05 16:02:55Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -45,6 +45,7 @@ RT_C_DECLS_BEGIN
 #include "netif/etharp.h"
 RT_C_DECLS_END
 #include <VBox/pdmdev.h>
+#include <VBox/pdmnetifs.h>
 #include <VBox/tm.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

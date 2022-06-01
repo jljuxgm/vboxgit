@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 26287 2010-02-05 13:52:15Z vboxsync $ */
+/* $Id: DrvNAT.cpp 26300 2010-02-05 16:02:55Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -29,6 +29,7 @@
 #include "slirp/libslirp.h"
 #include "slirp/ctl.h"
 #include <VBox/pdmdrv.h>
+#include <VBox/pdmnetifs.h>
 #include <iprt/assert.h>
 #include <iprt/file.h>
 #include <iprt/mem.h>

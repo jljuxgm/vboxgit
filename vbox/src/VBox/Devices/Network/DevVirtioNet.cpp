@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 26177 2010-02-02 22:29:01Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 26300 2010-02-05 16:02:55Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -24,6 +24,7 @@
 #define VNET_GC_SUPPORT
 
 #include <VBox/pdmdev.h>
+#include <VBox/pdmnetifs.h>
 #include <iprt/semaphore.h>
 #ifdef IN_RING3
 # include <iprt/mem.h>
