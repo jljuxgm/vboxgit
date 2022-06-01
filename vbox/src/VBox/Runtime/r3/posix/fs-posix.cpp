@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 30254 2010-06-16 14:37:24Z vboxsync $ */
+/* $Id: fs-posix.cpp 30281 2010-06-17 10:25:10Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -34,6 +34,9 @@
 #include <stdio.h>
 #ifdef RT_OS_LINUX
 # include <mntent.h>
+#endif
+#ifdef RT_OS_DARWIN
+# include <sys/mount.h>
 #endif
 
 #include <iprt/fs.h>
@@ -227,6 +230,24 @@ RTR3DECL(int) RTFsQueryType(const char *pszFsPath, uint32_t *pu32Type)
 #elif defined(RT_OS_SOLARIS)
             if (!strcmp("zfs", Stat.st_fstype))
                 *pu32Type = RTFS_FS_TYPE_ZFS;
+#elif defined(RT_OS_DARWIN)
+            struct statfs statfsBuf;
+            if (!statfs(pszNativeFsPath, &statfsBuf))
+            {
+                if (!strcmp("hfs", statfsBuf.f_fstypename))
+                    *pu32Type = RTFS_FS_TYPE_HFS;
+                else if (   !strcmp("fat", statfsBuf.f_fstypename)
+                         || !strcmp("msdos", statfsBuf.f_fstypename))
+                    *pu32Type = RTFS_FS_TYPE_FAT;
+                else if (!strcmp("ntfs", statfsBuf.f_fstypename))
+                    *pu32Type = RTFS_FS_TYPE_NTFS;
+                else if (!strcmp("autofs", statfsBuf.f_fstypename))
+                    *pu32Type = RTFS_FS_TYPE_AUTOFS;
+                else if (!strcmp("devfs", statfsBuf.f_fstypename))
+                    *pu32Type = RTFS_FS_TYPE_DEVFS;
+                else if (!strcmp("nfs", statfsBuf.f_fstypename))
+                    *pu32Type = RTFS_FS_TYPE_NFS;
+            }
 #endif
         }
         else

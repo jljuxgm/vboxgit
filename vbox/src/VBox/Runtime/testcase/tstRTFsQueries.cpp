@@ -1,4 +1,4 @@
-/* $Id: tstRTFsQueries.cpp 30274 2010-06-17 08:19:58Z vboxsync $ */
+/* $Id: tstRTFsQueries.cpp 30281 2010-06-17 10:25:10Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTFs Queries..
  */
@@ -98,7 +98,11 @@ int main(int argc, char **argv)
                 "hfs",
                 "cifs",
                 "fat",
-                "ntfs"
+                "ntfs",
+                "zfs",
+                "xfs",
+                "autofs",
+                "devfs"
             };
 
             if (u32Type < RT_ELEMENTS(s_apszType))
