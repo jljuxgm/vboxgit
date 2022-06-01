@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 26161 2010-02-02 18:47:03Z vboxsync $ */
+/* $Id: PDMInternal.h 26162 2010-02-02 18:49:21Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -392,7 +392,7 @@ typedef struct PDMUSB
     /** Device name length. (search optimization) */
     RTUINT                          cchName;
     /** Registration structure. */
-    R3PTRTYPE(const struct PDMUSBREG *) pUsbReg;
+    R3PTRTYPE(const struct PDMUSBREG *) pReg;
     /** Next instance number. */
     uint32_t                        iNextInstance;
     /** Pointer to chain of instances (R3 Ptr). */
