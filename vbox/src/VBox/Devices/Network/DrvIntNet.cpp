@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 28259 2010-04-13 14:52:53Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 28275 2010-04-13 19:40:10Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -199,7 +199,7 @@ static int drvR3IntNetSetActive(PDRVINTNET pThis, bool fActive)
 /**
  * @interface_method_impl{PDMINETWORKUP,pfnBeginXmit}
  */
-static DECLCALLBACK(int) drvR3IntNetUp_BeginXmit(PPDMINETWORKUP pInterface)
+static DECLCALLBACK(int) drvR3IntNetUp_BeginXmit(PPDMINETWORKUP pInterface, bool fOnWorkerThread)
 {
     PDRVINTNET pThis = RT_FROM_MEMBER(pInterface, DRVINTNET, INetworkUpR3);
     int rc = PDMCritSectTryEnter(&pThis->XmitLock);
@@ -218,7 +218,7 @@ static DECLCALLBACK(int) drvR3IntNetUp_AllocBuf(PPDMINETWORKUP pInterface, size_
     PDRVINTNET  pThis = RT_FROM_MEMBER(pInterface, DRVINTNET, INetworkUpR3);
     int         rc    = VINF_SUCCESS;
     Assert(cbMin < UINT32_MAX / 2);
-//    Assert(PDMCritSectIsOwner(&pThis->XmitLock));
+    Assert(PDMCritSectIsOwner(&pThis->XmitLock));
 
     /*
      * Allocate a S/G buffer.
@@ -295,7 +295,7 @@ static DECLCALLBACK(int) drvR3IntNetUp_FreeBuf(PPDMINETWORKUP pInterface, PPDMSC
     Assert(pSgBuf->cbUsed <= pSgBuf->cbAvailable);
     Assert(   pHdr->u16Type == INTNETHDR_TYPE_FRAME
            || pHdr->u16Type == INTNETHDR_TYPE_GSO);
-//    Assert(PDMCritSectIsOwner(&pThis->XmitLock));
+    Assert(PDMCritSectIsOwner(&pThis->XmitLock));
 
     /** @todo LATER: try unalloc the frame. */
     pHdr->u16Type = INTNETHDR_TYPE_PADDING;
@@ -317,7 +317,7 @@ static DECLCALLBACK(int) drvR3IntNetUp_SendBuf(PPDMINETWORKUP pInterface, PPDMSC
     AssertPtr(pSgBuf);
     Assert(pSgBuf->fFlags == (PDMSCATTERGATHER_FLAGS_MAGIC | PDMSCATTERGATHER_FLAGS_OWNER_1));
     Assert(pSgBuf->cbUsed <= pSgBuf->cbAvailable);
-//    Assert(PDMCritSectIsOwner(&pThis->XmitLock));
+    Assert(PDMCritSectIsOwner(&pThis->XmitLock));
 
     if (pSgBuf->pvUser)
         STAM_COUNTER_INC(&pThis->StatSentGso);
