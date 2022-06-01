@@ -1,4 +1,4 @@
-/* $Id: VBoxSpecialControls.cpp 30188 2010-06-15 09:06:21Z vboxsync $ */
+/* $Id: VBoxSpecialControls.cpp 30189 2010-06-15 09:19:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -85,7 +85,7 @@ VBoxHelpButton::VBoxHelpButton (QWidget *aParent /* = 0 */)
  *
  ********************************************************************************/
 VBoxSegmentedButton::VBoxSegmentedButton (int aCount, QWidget *aParent /* = 0 */)
-  : UICocoaSegmentedButton (aCount, UICocoaSegmentedButton::TexturedRoundedSegment, aParent)
+  : UICocoaSegmentedButton (aCount, UICocoaSegmentedButton::RoundRectSegment, aParent)
 {
 }
 /********************************************************************************
