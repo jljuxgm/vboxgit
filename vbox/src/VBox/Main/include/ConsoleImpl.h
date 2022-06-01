@@ -1,10 +1,10 @@
-/* $Id: ConsoleImpl.h 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: ConsoleImpl.h 26067 2010-01-27 13:33:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
 
 /*
- * Copyright (C) 2006-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -102,7 +102,8 @@ public:
     void FinalRelease();
 
     // public initializers/uninitializers for internal purposes only
-    HRESULT init (IMachine *aMachine, IInternalMachineControl *aControl);
+    HRESULT init (IMachine *aMachine, IInternalMachineControl *aControl,
+                  bool aFullConsole);
     void uninit();
 
     // IConsole properties
