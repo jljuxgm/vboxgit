@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 30008 2010-06-03 11:50:39Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 30157 2010-06-10 20:11:14Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1179,9 +1179,8 @@ HRESULT Appliance::importFS(const LocationInfo &locInfo,
             const Utf8Str &memoryVBox = vsdeRAM.front()->strVboxCurrent;
             stack.ulMemorySizeMB = (uint32_t)RTStrToUInt64(memoryVBox.c_str());
 
-            // USB controller
 #ifdef VBOX_WITH_USB
-            /* USB Controller */
+            // USB controller
             std::list<VirtualSystemDescriptionEntry*> vsdeUSBController = vsdescThis->findByType(VirtualSystemDescriptionType_USBController);
             // USB support is enabled if there's at least one such entry; to disable USB support,
             // the type of the USB item would have been changed to "ignore"
