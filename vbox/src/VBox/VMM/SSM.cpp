@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 24917 2009-11-24 15:45:00Z vboxsync $ */
+/* $Id: SSM.cpp 25235 2009-12-08 12:11:25Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -2131,7 +2131,7 @@ static int ssmR3StrmWriteBuffers(PSSMSTRM pStrm)
         pHead = pCur->pNext;
 
         /* flush */
-        int rc = pStrm->pOps->pfnIsOk(pStrm->pvUser);
+        rc = pStrm->pOps->pfnIsOk(pStrm->pvUser);
         if (RT_SUCCESS(rc))
             rc = pStrm->pOps->pfnWrite(pStrm->pvUser, pCur->offStream, &pCur->abData[0], pCur->cb);
         if (    RT_FAILURE(rc)
@@ -2502,7 +2502,7 @@ static int ssmR3StrmRead(PSSMSTRM pStrm, void *pvBuf, size_t cbToRead)
          * Flush the current buffer and get the next one.
          */
         ssmR3StrmFlushCurBuf(pStrm);
-        PSSMSTRMBUF pBuf = ssmR3StrmGetBuf(pStrm);
+        pBuf = ssmR3StrmGetBuf(pStrm);
         if (!pBuf)
         {
             rc = pStrm->rc;
@@ -5571,7 +5571,7 @@ static int ssmR3DataReadRecHdrV2(PSSMHANDLE pSSM)
         /* get the rest */
         uint32_t    u32StreamCRC = ssmR3StrmFinalCRC(&pSSM->Strm);
         SSMRECTERM  TermRec;
-        int rc = ssmR3DataReadV2Raw(pSSM, (uint8_t *)&TermRec + 2, sizeof(SSMRECTERM) - 2);
+        rc = ssmR3DataReadV2Raw(pSSM, (uint8_t *)&TermRec + 2, sizeof(SSMRECTERM) - 2);
         if (RT_FAILURE(rc))
             return rc;
 
