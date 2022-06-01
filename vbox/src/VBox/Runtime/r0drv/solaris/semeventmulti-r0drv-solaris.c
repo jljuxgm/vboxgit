@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-solaris.c 25724 2010-01-11 14:45:34Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-solaris.c 28655 2010-04-23 14:41:28Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -264,7 +264,10 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMil
         {
             /* Retured due to call to cv_signal() or cv_broadcast() */
             if (RT_LIKELY(pThis->u32Magic == RTSEMEVENTMULTI_MAGIC))
+            {
                 rc = VINF_SUCCESS;
+                ASMAtomicDecU32(&pThis->cWaking);
+            }
             else
             {
                 rc = VERR_SEM_DESTROYED;
@@ -277,7 +280,6 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMil
                     return rc;
                 }
             }
-            ASMAtomicDecU32(&pThis->cWaking);
         }
         else if (rc == -1)
         {
