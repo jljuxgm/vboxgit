@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.h 25436 2009-12-16 15:22:40Z vboxsync $ */
+/* $Id: lockvalidator.h 25478 2009-12-18 12:58:10Z vboxsync $ */
 /** @file
  * IPRT - Internal RTLockValidator header.
  */
@@ -47,15 +47,8 @@ typedef struct RTLOCKVALIDATORPERTHREAD
 {
     /** What we're blocking on. */
     PRTLOCKVALIDATORREC     pRec;
-    /** Where we're blocking. */
-    const char volatile    *pszBlockFunction;
-    /** Where we're blocking. */
-    const char volatile    *pszBlockFile;
-    /** Where we're blocking. */
-    uint32_t volatile       uBlockLine;
-    /** Where we're blocking. */
-    RTHCUINTPTR volatile    uBlockId;
-
+    /** Where we are blocking. */
+    RTLOCKVALIDATORSRCPOS   SrcPos;
     /** Number of registered write locks, mutexes and critsects that this thread owns. */
     int32_t volatile        cWriteLocks;
     /** Number of registered read locks that this thread owns, nesting included. */
