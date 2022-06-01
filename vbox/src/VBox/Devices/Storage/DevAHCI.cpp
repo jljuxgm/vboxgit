@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 28705 2010-04-25 12:39:42Z vboxsync $ */
+/* $Id: DevAHCI.cpp 28784 2010-04-26 23:59:42Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -4919,8 +4919,9 @@ static int ahciTransferComplete(PAHCIPort pAhciPort, PAHCIPORTTASKSTATE pAhciPor
  * @returns VBox status code.
  * @param   pInterface   Pointer to the interface.
  * @param   pvUser       User data.
+ * @param   rcReq        IPRT Status code of the completed request.
  */
-static DECLCALLBACK(int) ahciTransferCompleteNotify(PPDMIBLOCKASYNCPORT pInterface, void *pvUser)
+static DECLCALLBACK(int) ahciTransferCompleteNotify(PPDMIBLOCKASYNCPORT pInterface, void *pvUser, int rcReq)
 {
     PAHCIPort pAhciPort = PDMIBLOCKASYNCPORT_2_PAHCIPORT(pInterface);
     PAHCIPORTTASKSTATE pAhciPortTaskState = (PAHCIPORTTASKSTATE)pvUser;

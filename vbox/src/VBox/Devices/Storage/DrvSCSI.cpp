@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 28383 2010-04-15 18:07:21Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 28784 2010-04-26 23:59:42Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -190,7 +190,7 @@ static int drvscsiGetSize(VSCSILUN hVScsiLun, void *pvScsiLunUser, uint64_t *pcb
     return VINF_SUCCESS;
 }
 
-static int drvscsiTransferCompleteNotify(PPDMIBLOCKASYNCPORT pInterface, void *pvUser)
+static int drvscsiTransferCompleteNotify(PPDMIBLOCKASYNCPORT pInterface, void *pvUser, int rc)
 {
     PDRVSCSI pThis = PDMIBLOCKASYNCPORT_2_DRVSCSI(pInterface);
     VSCSIIOREQ hVScsiIoReq = (VSCSIIOREQ)pvUser;
@@ -206,7 +206,7 @@ static int drvscsiTransferCompleteNotify(PPDMIBLOCKASYNCPORT pInterface, void *p
         AssertMsgFailed(("Invalid transfer direction %u\n", enmTxDir));
 
     ASMAtomicDecU32(&pThis->StatIoDepth);
-    VSCSIIoReqCompleted(hVScsiIoReq, VINF_SUCCESS);
+    VSCSIIoReqCompleted(hVScsiIoReq, rc);
 
     return VINF_SUCCESS;
 }

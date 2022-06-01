@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 28387 2010-04-15 19:30:56Z vboxsync $ */
+/* $Id: DrvBlock.cpp 28784 2010-04-26 23:59:42Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -355,11 +355,11 @@ static DECLCALLBACK(int) drvblockAsyncFlushStart(PPDMIBLOCKASYNC pInterface, voi
 /** Makes a PDRVBLOCKASYNC out of a PPDMIMEDIAASYNCPORT. */
 #define PDMIMEDIAASYNCPORT_2_DRVBLOCK(pInterface)    ( (PDRVBLOCK((uintptr_t)pInterface - RT_OFFSETOF(DRVBLOCK, IMediaAsyncPort))) )
 
-static DECLCALLBACK(int) drvblockAsyncTransferCompleteNotify(PPDMIMEDIAASYNCPORT pInterface, void *pvUser)
+static DECLCALLBACK(int) drvblockAsyncTransferCompleteNotify(PPDMIMEDIAASYNCPORT pInterface, void *pvUser, int rcReq)
 {
     PDRVBLOCK pThis = PDMIMEDIAASYNCPORT_2_DRVBLOCK(pInterface);
 
-    return pThis->pDrvBlockAsyncPort->pfnTransferCompleteNotify(pThis->pDrvBlockAsyncPort, pvUser);
+    return pThis->pDrvBlockAsyncPort->pfnTransferCompleteNotify(pThis->pDrvBlockAsyncPort, pvUser, rcReq);
 }
 
 /* -=-=-=-=- IBlockBios -=-=-=-=- */
