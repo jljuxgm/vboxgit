@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 25702 2010-01-10 11:21:38Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 25755 2010-01-12 11:59:39Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -355,6 +355,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            take <name> [--description <desc>] [--pause] |\n"
                  "                            delete <uuid>|<name> |\n"
                  "                            restore <uuid>|<name> |\n"
+                 "                            restorecurrent |\n"
                  "                            edit <uuid>|<name>|--current\n"
                  "                                 [--name <name>]\n"
                  "                                 [--description <desc>] |\n"
