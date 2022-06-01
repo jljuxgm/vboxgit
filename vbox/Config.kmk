@@ -1,4 +1,4 @@
-# $Id: Config.kmk 29107 2010-05-05 20:10:16Z vboxsync $
+# $Id: Config.kmk 29122 2010-05-06 09:13:22Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -597,6 +597,9 @@ if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  if1of ($(KBUILD_TARGET), darwin freebsd linux solaris)
   VBOX_WITH_NETADP = 1
  endif
+endif
+if1of ($(KBUILD_TARGET), freebsd linux)
+ VBOX_WITH_VDE = 1
 endif
 ## @}
 
@@ -4083,7 +4086,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29107 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29122 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
