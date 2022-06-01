@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileCache.cpp 27522 2010-03-19 11:06:40Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileCache.cpp 27523 2010-03-19 11:10:06Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * File data cache.
@@ -1846,7 +1846,7 @@ int pdmacFileEpCacheRead(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint, PPDMASYNCCOM
         }
         else
         {
-#ifndef VBOX_WITH_IO_READ_CACHE
+#ifdef VBOX_WITH_IO_READ_CACHE
             /* No entry found for this offset. Create a new entry and fetch the data to the cache. */
             PPDMACFILECACHEENTRY pEntryNew = pdmacFileEpCacheEntryCreate(pEndpoint,
                                                                          pEndpointCache,
