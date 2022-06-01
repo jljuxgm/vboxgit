@@ -1,4 +1,4 @@
-/* $Revision: 25307 $ */
+/* $Revision: 25308 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -434,6 +434,8 @@ typedef struct SUPDRVLDRIMAGE
 #ifdef RT_OS_WINDOWS
     /** The section object for the loaded image (fNative=true). */
     void                           *pvNtSectionObj;
+    /** Lock object. */
+    RTR0MEMOBJ                      hMemLock;
 #endif
     /** Whether it's loaded by the native loader or not. */
     bool                            fNative;
