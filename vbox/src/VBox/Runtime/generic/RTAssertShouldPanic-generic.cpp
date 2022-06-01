@@ -1,4 +1,4 @@
-/* $Id: RTAssertShouldPanic-generic.cpp 22133 2009-08-10 13:23:25Z vboxsync $ */
+/* $Id: RTAssertShouldPanic-generic.cpp 25520 2009-12-20 16:41:28Z vboxsync $ */
 /** @file
  * IPRT - Assertions, generic RTAssertShouldPanic.
  */
@@ -41,7 +41,7 @@ RTDECL(bool) RTAssertShouldPanic(void)
 #if 0 /* Enable this to not panic on assertions. (Make sure this code is used!) */
     return false;
 #else
-    return true;
+    return RTAssertMayPanic();
 #endif
 }
 RT_EXPORT_SYMBOL(RTAssertShouldPanic);
