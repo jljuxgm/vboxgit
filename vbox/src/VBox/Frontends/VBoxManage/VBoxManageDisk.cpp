@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 24184 2009-10-30 11:11:45Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -253,8 +253,23 @@ int handleCreateHardDisk(HandlerArg *a)
     }
 
     /* check the outcome */
-    if (!filename || (sizeMB == 0))
+    if (   !filename
+        || sizeMB == 0)
         return errorSyntax(USAGE_CREATEHD, "Parameters --filename and --size are required");
+
+    /* check for filename extension */
+    Utf8Str strName(filename);
+    if (!RTPathHaveExt(strName.c_str()))
+    {
+        Utf8Str strFormat(format);
+        if (strFormat.compare("vmdk", iprt::MiniString::CaseInsensitive) == 0)
+            strName.append(".vmdk");
+        else if (strFormat.compare("vhd", iprt::MiniString::CaseInsensitive) == 0)
+            strName.append(".vhd");
+        else
+            strName.append(".vdi");
+        filename = Bstr(strName);
+    }
 
     ComPtr<IMedium> hardDisk;
     CHECK_ERROR(a->virtualBox, CreateHardDisk(format, filename, hardDisk.asOutParam()));
