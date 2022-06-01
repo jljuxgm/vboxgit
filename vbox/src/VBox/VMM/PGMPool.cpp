@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 27272 2010-03-11 11:09:33Z vboxsync $ */
+/* $Id: PGMPool.cpp 27277 2010-03-11 12:29:09Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -650,7 +650,7 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                             case PGMPOOLKIND_PAE_PT_FOR_PHYS:
                             {
                                 bool fFoundFirst = false;
-                                PX86PT pPT = (PX86PT)pvShw;
+                                PX86PTPAE pPT = (PX86PTPAE)pvShw;
                                 for (unsigned ptIndex = 0; ptIndex < RT_ELEMENTS(pPT->a); ptIndex++) 
                                 {
                                     if (pPT->a[ptIndex].u) 
