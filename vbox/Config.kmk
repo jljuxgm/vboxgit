@@ -1,4 +1,4 @@
-# $Id: Config.kmk 29759 2010-05-24 09:22:00Z vboxsync $
+# $Id: Config.kmk 29768 2010-05-24 19:18:22Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1782,7 +1782,7 @@ ifdef VBOX_WITH_CROGL
   VBOX_LIB_OGL_HOSTCRUTIL = $(PATH_BIN)/VBoxOGLhostcrutil$(VBOX_SUFF_DLL)
  endif
 
- if1of ($(KBUILD_TARGET), linux solaris)
+ if1of ($(KBUILD_TARGET), linux solaris freebsd)
  # VBOX_PATH_MESA_SOURCE = $(PATH_ROOT)/src/libs/mesa-7.2
   VBOX_PATH_MESA_SOURCE = $(VBOX_PATH_X11_ROOT)/mesa-7.2
   VBOX_MESA_INCS = \
@@ -4223,7 +4223,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29759 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29768 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
