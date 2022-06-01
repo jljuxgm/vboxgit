@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleView.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxConsoleView.cpp 28849 2010-04-27 17:23:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -4282,7 +4282,9 @@ void VBoxConsoleView::updateDockOverlay()
          mLastState == KMachineState_Restoring ||
          mLastState == KMachineState_TeleportingPausedVM ||
          mLastState == KMachineState_TeleportingIn ||
-         mLastState == KMachineState_Saving))
+         mLastState == KMachineState_Saving ||
+         mLastState == KMachineState_DeletingSnapshotOnline ||
+         mLastState == KMachineState_DeletingSnapshotPaused))
         updateDockIcon();
     else
         mDockIconPreview->updateDockOverlay();

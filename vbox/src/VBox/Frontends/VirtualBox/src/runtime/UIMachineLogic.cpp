@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 28849 2010-04-27 17:23:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -403,7 +403,9 @@ void UIMachineLogic::updateDockOverlay()
          state == KMachineState_Restoring ||
          state == KMachineState_TeleportingPausedVM ||
          state == KMachineState_TeleportingIn ||
-         state == KMachineState_Saving))
+         state == KMachineState_Saving ||
+         state == KMachineState_DeletingSnapshotOnline ||
+         state == KMachineState_DeletingSnapshotPaused))
         updateDockIcon();
     else if (m_pDockIconPreview)
         m_pDockIconPreview->updateDockOverlay();
