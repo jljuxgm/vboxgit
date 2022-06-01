@@ -1,4 +1,4 @@
-/* $Id: ATAController.cpp 29758 2010-05-24 08:38:48Z vboxsync $ */
+/* $Id: ATAController.cpp 29941 2010-06-01 11:49:49Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller code (disk and cdrom).
  *
@@ -5131,8 +5131,8 @@ static int ataConfigLun(PPDMDEVINS pDevIns, AHCIATADevState *pIf)
  */
 int  ataControllerAttach(PAHCIATACONTROLLER pCtl, PPDMIBASE pDrvBase, bool fMaster)
 {
-    AHCIATADevState    *pIf;
-    int             rc;
+    AHCIATADevState *pIf;
+    int              rc = VINF_SUCCESS;
 
     /*
      * Locate the controller and stuff.
@@ -5153,15 +5153,15 @@ int  ataControllerAttach(PAHCIATACONTROLLER pCtl, PPDMIBASE pDrvBase, bool fMast
     if (pDrvBase)
     {
         rc = ataConfigLun(pCtl->pDevInsR3, pIf);
-    }
-    else
-        AssertMsgFailed(("Failed to attach LUN#%d. rc=%Rrc\n", pIf->iLUN, rc));
+        AssertRC(rc);
 
-    if (RT_FAILURE(rc))
-    {
-        pIf->pDrvBase = NULL;
-        pIf->pDrvBlock = NULL;
+        if (RT_FAILURE(rc))
+        {
+            pIf->pDrvBase = NULL;
+            pIf->pDrvBlock = NULL;
+        }
     }
+
     return rc;
 }
 
