@@ -1,4 +1,4 @@
-/* $Id: poll-posix.cpp 26824 2010-02-26 10:36:08Z vboxsync $ */
+/* $Id: poll-posix.cpp 26827 2010-02-26 10:59:04Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, POSIX Implementation.
  */
@@ -463,7 +463,7 @@ RTDECL(int) RTPollSetQueryHandle(RTPOLLSET hPollSet, uint32_t id, PRTHANDLE pHan
 }
 
 
-RTDECL(uint32_t) RTPollSetCount(RTPOLLSET hPollSet)
+RTDECL(uint32_t) RTPollGetCount(RTPOLLSET hPollSet)
 {
     /*
      * Validate the input.
