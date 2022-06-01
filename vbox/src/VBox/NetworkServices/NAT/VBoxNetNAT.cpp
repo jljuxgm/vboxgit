@@ -1,4 +1,4 @@
-/* $Id: VBoxNetNAT.cpp 28364 2010-04-15 14:31:05Z vboxsync $ */
+/* $Id: VBoxNetNAT.cpp 28371 2010-04-15 15:02:36Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -335,13 +335,16 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     Log2(("NAT: main\n"));
     g_pNAT = new VBoxNetNAT();
     Log2(("NAT: parsing command line\n"));
-    g_pNAT->parseArgs(argc - 1, argv + 1);
-    Log2(("NAT: initialization\n"));
-    g_pNAT->init();
-    Log2(("NAT: try go online\n"));
-    g_pNAT->tryGoOnline();
-    Log2(("NAT: main loop\n"));
-    g_pNAT->run();
+    int rc = g_pNAT->parseArgs(argc - 1, argv + 1);
+    if (!rc)
+    {
+        Log2(("NAT: initialization\n"));
+        g_pNAT->init();
+        Log2(("NAT: try go online\n"));
+        g_pNAT->tryGoOnline();
+        Log2(("NAT: main loop\n"));
+        g_pNAT->run();
+    }
     delete g_pNAT;
     return 0;
 }

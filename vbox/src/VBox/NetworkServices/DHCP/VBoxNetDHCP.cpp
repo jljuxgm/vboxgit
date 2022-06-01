@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 26574 2010-02-16 12:44:10Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 28371 2010-04-15 15:02:36Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -44,6 +44,7 @@
 #include <VBox/intnet.h>
 #include <VBox/intnetinline.h>
 #include <VBox/vmm.h>
+#include <VBox/version.h>
 
 #include "../NetLib/VBoxNetLib.h"
 
@@ -819,8 +820,8 @@ int VBoxNetDhcp::parseArgs(int argc, char **argv)
 
             case 'h':
                 RTPrintf("VBoxNetDHCP Version %s\n"
-                         "(C) 2009 Sun Microsystems, Inc.\n"
-                         "All rights reserved\n"
+                         "(C) 2009-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
+                         "All rights reserved.\n"
                          "\n"
                          "Usage: VBoxNetDHCP <options>\n"
                          "\n"
