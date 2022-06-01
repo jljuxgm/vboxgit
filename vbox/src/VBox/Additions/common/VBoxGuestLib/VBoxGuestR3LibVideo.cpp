@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 26562 2010-02-16 01:05:49Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 27508 2010-03-18 22:44:16Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -148,7 +148,7 @@ VBGLR3DECL(int) VbglR3SetPointerShapeReq(VMMDevReqMousePointer *pReq)
  */
 VBGLR3DECL(int) VbglR3GetDisplayChangeRequest(uint32_t *pcx, uint32_t *pcy, uint32_t *pcBits, uint32_t *piDisplay, bool fAck)
 {
-    VMMDevDisplayChangeRequest2 Req = { { 0 } };
+    VMMDevDisplayChangeRequest2 Req;
 
 #ifndef VBOX_VBGLR3_XFREE86
     AssertPtrReturn(pcx, VERR_INVALID_PARAMETER);
@@ -156,6 +156,7 @@ VBGLR3DECL(int) VbglR3GetDisplayChangeRequest(uint32_t *pcx, uint32_t *pcy, uint
     AssertPtrReturn(pcBits, VERR_INVALID_PARAMETER);
     AssertPtrReturn(piDisplay, VERR_INVALID_PARAMETER);
 #endif
+    RT_ZERO(Req);
     vmmdevInitRequest(&Req.header, VMMDevReq_GetDisplayChangeRequest2);
     if (fAck)
         Req.eventAck = VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST;
