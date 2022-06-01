@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 27427 2010-03-16 21:28:13Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 27455 2010-03-17 16:09:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -181,14 +181,12 @@ bool UIMachineViewSeamless::event(QEvent *pEvent)
         }
 
         case VBoxDefs::ResizeEventType:
-        case VBoxDefs::RepaintEventType:
         {
-            /* Unlock on guest resize & repaint events: */
+            /* Unlock after processing guest resize event: */
             bool fResult = UIMachineView::event(pEvent);
             if (m_pSyncBlocker && m_pSyncBlocker->isRunning())
                 m_pSyncBlocker->quit();
             return fResult;
-            break;
         }
 
         default:

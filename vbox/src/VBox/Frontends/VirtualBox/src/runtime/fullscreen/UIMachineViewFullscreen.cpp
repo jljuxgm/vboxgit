@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 27453 2010-03-17 15:32:00Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 27455 2010-03-17 16:09:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -169,9 +169,8 @@ bool UIMachineViewFullscreen::event(QEvent *pEvent)
         }
 
         case VBoxDefs::ResizeEventType:
-        case VBoxDefs::RepaintEventType:
         {
-            /* Unlock on guest resize & repaint events: */
+            /* Unlock after processing guest resize event: */
             bool fResult = UIMachineView::event(pEvent);
             if (m_pSyncBlocker && m_pSyncBlocker->isRunning())
                 m_pSyncBlocker->quit();
