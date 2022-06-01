@@ -1,4 +1,4 @@
-/* $Id: Performance.h 26122 2010-02-01 14:23:08Z vboxsync $ */
+/* $Id: Performance.h 26126 2010-02-01 14:32:38Z vboxsync $ */
 
 /** @file
  *
@@ -29,6 +29,7 @@
 #include <iprt/types.h>
 #include <iprt/err.h>
 
+#include <algorithm>
 #include <list>
 #include <vector>
 
