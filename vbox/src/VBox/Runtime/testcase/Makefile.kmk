@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27439 2010-03-17 12:06:53Z vboxsync $
+# $Id: Makefile.kmk 27576 2010-03-22 09:39:11Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -393,7 +393,6 @@ tstRTFsQueries_SOURCES = tstRTFsQueries.cpp
 
 tstRTProcCreateEx_TEMPLATE = VBOXR3TSTEXE
 tstRTProcCreateEx_SOURCES = tstRTProcCreateEx.cpp
-tstRTProcCreateEx_LIBS.win += Secur32.lib
 
 tstRTProcWait_SOURCES = tstRTProcWait.cpp
 
