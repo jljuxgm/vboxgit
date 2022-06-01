@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26693 2010-02-23 09:08:49Z vboxsync $
+# $Id: Makefile.kmk 26951 2010-03-02 15:16:23Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -44,7 +44,7 @@ endif
 ifdef VBOX_WITH_MULTI_CORE
  VMMR3_DEFS    += VBOX_WITH_MULTI_CORE
 endif
-ifdef VBOX_WITH_USB
+ifdef VBOX_WITH_VUSB
  VMMR3_DEFS    += VBOX_WITH_USB
 endif
 ifdef VBOX_WITH_VMI
@@ -169,7 +169,7 @@ ifdef VBOX_WITH_VMI
  	PARAV/PARAV.cpp \
  	PARAV/PARAVAll.cpp
 endif
-ifdef VBOX_WITH_USB
+ifdef VBOX_WITH_VUSB
  VMMR3_SOURCES += PDMUsb.cpp
 endif
 ifdef VBOX_WITH_PDM_ASYNC_COMPLETION

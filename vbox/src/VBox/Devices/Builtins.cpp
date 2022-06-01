@@ -1,4 +1,4 @@
-/* $Id: Builtins.cpp 26473 2010-02-12 17:37:46Z vboxsync $ */
+/* $Id: Builtins.cpp 26951 2010-03-02 15:16:23Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -137,7 +137,7 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceAudioSniffer);
     if (RT_FAILURE(rc))
         return rc;
-#ifdef VBOX_WITH_USB
+#ifdef VBOX_WITH_VUSB
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceOHCI);
     if (RT_FAILURE(rc))
         return rc;
@@ -253,7 +253,7 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (RT_FAILURE(rc))
         return rc;
 
-#ifdef VBOX_WITH_USB
+#ifdef VBOX_WITH_VUSB
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvVUSBRootHub);
     if (RT_FAILURE(rc))
         return rc;
@@ -299,7 +299,6 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
 }
 
 
-#ifdef VBOX_WITH_USB
 /**
  * Register builtin USB device.
  *
@@ -309,7 +308,10 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
  */
 extern "C" DECLEXPORT(int) VBoxUsbRegister(PCPDMUSBREGCB pCallbacks, uint32_t u32Version)
 {
-    int rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbDevProxy);
+    int rc = VINF_SUCCESS;
+
+#ifdef VBOX_WITH_USB
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbDevProxy);
     if (RT_FAILURE(rc))
         return rc;
 
@@ -318,7 +320,9 @@ extern "C" DECLEXPORT(int) VBoxUsbRegister(PCPDMUSBREGCB pCallbacks, uint32_t u3
     if (RT_FAILURE(rc))
         return rc;
 # endif
+#endif
 
+#ifdef VBOX_WITH_VUSB
     rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbHidKbd);
     if (RT_FAILURE(rc))
         return rc;
@@ -326,8 +330,8 @@ extern "C" DECLEXPORT(int) VBoxUsbRegister(PCPDMUSBREGCB pCallbacks, uint32_t u3
     rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbHidMou);
     if (RT_FAILURE(rc))
         return rc;
-
-    return VINF_SUCCESS;
-}
 #endif
+
+    return rc;
+}
 
