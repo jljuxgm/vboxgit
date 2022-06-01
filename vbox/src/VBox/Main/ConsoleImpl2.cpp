@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 29226 2010-05-07 16:08:21Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 29227 2010-05-07 16:18:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2424,7 +2424,9 @@ int Console::configMedium(PCFGMNODE pLunL0,
         }
 
         if (    pMedium
-             && enmType == DeviceType_DVD)
+             && (    enmType == DeviceType_DVD
+                  || enmType == DeviceType_Floppy
+           ))
         {
             // if this medium represents an ISO image and this image is inaccessible,
             // the ignore it instead of causing a failure; this can happen when we
