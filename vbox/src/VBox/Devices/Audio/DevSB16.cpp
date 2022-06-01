@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DevSB16.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1911,7 +1911,7 @@ const PDMDEVREG g_DeviceSB16 =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "sb16",
     /* szRCMod */
     "",

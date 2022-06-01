@@ -1,4 +1,4 @@
-/* $Id: audiosniffer.c 26160 2010-02-02 18:23:29Z vboxsync $ */
+/* $Id: audiosniffer.c 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * VBox audio device: Audio sniffer device
  */
@@ -196,7 +196,7 @@ static DECLCALLBACK(int) audioSnifferR3Construct(PPDMDEVINS pDevIns, int iInstan
     }
     else if (rc == VERR_PDM_NO_ATTACHED_DRIVER)
     {
-        Log(("%s/%d: warning: no driver attached to LUN #0.\n", pDevIns->pReg->szDeviceName, pDevIns->iInstance));
+        Log(("%s/%d: warning: no driver attached to LUN #0.\n", pDevIns->pReg->szName, pDevIns->iInstance));
         rc = VINF_SUCCESS;
     }
     else
@@ -225,7 +225,7 @@ const PDMDEVREG g_DeviceAudioSniffer =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "AudioSniffer",
     /* szRCMod */
     "",

@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 26160 2010-02-02 18:23:29Z vboxsync $ */
+/* $Id: DevPCNet.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -5299,7 +5299,7 @@ const PDMDEVREG g_DevicePCNet =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "pcnet",
     /* szRCMod */
 #ifdef PCNET_GC_ENABLED

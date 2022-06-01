@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.c 26164 2010-02-02 19:44:51Z vboxsync $ */
+/* $Id: DevPcArch.c 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architechture Device.
  */
@@ -254,7 +254,7 @@ const PDMDEVREG g_DevicePcArch =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "pcarch",
     /* szRCMod */
     "",

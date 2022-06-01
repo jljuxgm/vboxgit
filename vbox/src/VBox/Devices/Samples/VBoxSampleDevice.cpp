@@ -1,4 +1,4 @@
-/* $Id: VBoxSampleDevice.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
+/* $Id: VBoxSampleDevice.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * VBox Sample Device.
  */
@@ -97,7 +97,7 @@ static const PDMDEVREG g_DeviceSample =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "sample",
     /* szRCMod */
     "",

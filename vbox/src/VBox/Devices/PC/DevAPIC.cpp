@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
+/* $Id: DevAPIC.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -2993,7 +2993,7 @@ const PDMDEVREG g_DeviceAPIC =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "apic",
     /* szRCMod */
     "VBoxDD2GC.gc",
@@ -3314,7 +3314,7 @@ const PDMDEVREG g_DeviceIOAPIC =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "ioapic",
     /* szRCMod */
     "VBoxDD2GC.gc",

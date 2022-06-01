@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 26160 2010-02-02 18:23:29Z vboxsync $ */
+/* $Id: DevSerial.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -974,7 +974,7 @@ const PDMDEVREG g_DeviceSerialPort =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "serial",
     /* szRCMod */
     "VBoxDDGC.gc",

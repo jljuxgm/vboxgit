@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -4654,7 +4654,7 @@ const PDMDEVREG g_DeviceLsiLogicSCSI =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "lsilogicscsi",
     /* szRCMod */
     "VBoxDDGC.gc",

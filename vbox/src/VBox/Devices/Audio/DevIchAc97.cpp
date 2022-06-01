@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 26160 2010-02-02 18:23:29Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1685,7 +1685,7 @@ const PDMDEVREG g_DeviceICHAC97 =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "ichac97",
     /* szRCMod */
     "",

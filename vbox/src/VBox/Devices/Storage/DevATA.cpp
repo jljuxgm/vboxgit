@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 26160 2010-02-02 18:23:29Z vboxsync $ */
+/* $Id: DevATA.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -6982,7 +6982,7 @@ const PDMDEVREG g_DevicePIIX3IDE =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "piix3ide",
     /* szRCMod */
     "VBoxDDGC.gc",

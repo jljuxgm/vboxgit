@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 26163 2010-02-02 18:58:33Z vboxsync $ */
+/* $Id: PDMDriver.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -501,7 +501,7 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                             Log(("PDM: Attached driver %p:'%s'/%d to LUN#%d on device '%s'/%d, pDrvAbove=%p:'%s'/%d\n",
                                  pNew, pDrv->pReg->szDriverName, pNew->iInstance,
                                  pLun->iLun,
-                                 pLun->pDevIns ? pLun->pDevIns->pReg->szDeviceName : pLun->pUsbIns->pReg->szDeviceName,
+                                 pLun->pDevIns ? pLun->pDevIns->pReg->szName : pLun->pUsbIns->pReg->szName,
                                  pLun->pDevIns ? pLun->pDevIns->iInstance             : pLun->pUsbIns->iInstance,
                                  pDrvAbove, pDrvAbove ? pDrvAbove->pReg->szDriverName : "", pDrvAbove ? pDrvAbove->iInstance : -1));
                         else

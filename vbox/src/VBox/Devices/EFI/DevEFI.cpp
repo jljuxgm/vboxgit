@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 26160 2010-02-02 18:23:29Z vboxsync $ */
+/* $Id: DevEFI.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1034,7 +1034,7 @@ const PDMDEVREG g_DeviceEFI =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "efi",
     /* szRCMod */
     "",

@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 26160 2010-02-02 18:23:29Z vboxsync $ */
+/* $Id: DevACPI.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -2483,7 +2483,7 @@ static DECLCALLBACK(int) acpiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
    else if (rc == VERR_PDM_NO_ATTACHED_DRIVER)
    {
        Log(("acpi: %s/%d: warning: no driver attached to LUN #0!\n",
-            pDevIns->pReg->szDeviceName, pDevIns->iInstance));
+            pDevIns->pReg->szName, pDevIns->iInstance));
        rc = VINF_SUCCESS;
    }
    else
@@ -2499,7 +2499,7 @@ const PDMDEVREG g_DeviceACPI =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "acpi",
     /* szRCMod */
     "VBoxDDGC.gc",

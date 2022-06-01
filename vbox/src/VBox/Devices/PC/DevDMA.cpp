@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 26160 2010-02-02 18:23:29Z vboxsync $ */
+/* $Id: DevDMA.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -933,7 +933,7 @@ const PDMDEVREG g_DeviceDMA =
 {
     /* u32Version */
     PDM_DEVREG_VERSION,
-    /* szDeviceName */
+    /* szName */
     "8237A",
     /* szRCMod */
     "",
