@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 26868 2010-02-26 16:48:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -785,15 +785,15 @@ VBoxConsoleWnd &VBoxGlobal::consoleWnd()
 }
 
 #ifdef VBOX_WITH_NEW_RUNTIME_CORE
-UIMachine& VBoxGlobal::virtualMachine(const CSession &session /* = CSession() */)
+UIMachine* VBoxGlobal::virtualMachine(const CSession &session /* = CSession() */)
 {
-    if (!m_pVirtualMachine)
+    if (!m_pVirtualMachine && !session.isNull())
     {
         UIMachine *pVirtualMachine = new UIMachine(&m_pVirtualMachine, session);
         Assert(pVirtualMachine == m_pVirtualMachine);
         NOREF(pVirtualMachine);
     }
-    return *m_pVirtualMachine;
+    return m_pVirtualMachine;
 }
 #endif
 
