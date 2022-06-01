@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 26815 2010-02-26 02:43:37Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 26820 2010-02-26 09:42:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -514,6 +514,25 @@ void UIMachineLogic::prepareActionConnections()
     connect(actionsPool()->action(UIActionIndex_Toggle_Logging), SIGNAL(toggled(bool)),
             this, SLOT(sltLoggingToggled(bool)));
 #endif
+
+    /* "Help" actions connections: */
+    connect(actionsPool()->action(UIActionIndex_Simple_Help), SIGNAL(triggered()),
+            &vboxProblem(), SLOT(showHelpHelpDialog()));
+    connect(actionsPool()->action(UIActionIndex_Simple_Web), SIGNAL(triggered()),
+            &vboxProblem(), SLOT(showHelpWebDialog()));
+    connect(actionsPool()->action(UIActionIndex_Simple_ResetWarnings), SIGNAL(triggered()),
+            &vboxProblem(), SLOT(resetSuppressedMessages()));
+    connect(actionsPool()->action(UIActionIndex_Simple_Register), SIGNAL(triggered()),
+            &vboxGlobal(), SLOT(showRegistrationDialog()));
+    connect(actionsPool()->action(UIActionIndex_Simple_Update), SIGNAL(triggered()),
+            &vboxGlobal(), SLOT(showUpdateDialog()));
+    connect(actionsPool()->action(UIActionIndex_Simple_About), SIGNAL(triggered()),
+            &vboxProblem(), SLOT(showHelpAboutDialog()));
+
+    connect(&vboxGlobal(), SIGNAL (canShowRegDlg (bool)),
+            actionsPool()->action(UIActionIndex_Simple_Register), SLOT(setEnabled(bool)));
+    connect(&vboxGlobal(), SIGNAL (canShowUpdDlg (bool)),
+            actionsPool()->action(UIActionIndex_Simple_Update), SLOT(setEnabled(bool)));
 }
 
 void UIMachineLogic::prepareRequiredFeatures()

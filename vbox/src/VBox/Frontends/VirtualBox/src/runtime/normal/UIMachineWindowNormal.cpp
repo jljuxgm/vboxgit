@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 26815 2010-02-26 02:43:37Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 26820 2010-02-26 09:42:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -356,6 +356,11 @@ void UIMachineWindowNormal::prepareMenu()
         menuBar()->addMenu(pMenuDebug);
     }
 #endif
+
+    /* Help submenu: */
+    QMenu *pMenuHelp = machineLogic()->actionsPool()->action(UIActionIndex_Menu_Help)->menu();
+    prepareMenuHelp();
+    menuBar()->addMenu(pMenuHelp);
 }
 
 void UIMachineWindowNormal::prepareStatusBar()
