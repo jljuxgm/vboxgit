@@ -1,4 +1,4 @@
-/* $Id: tstRTFsQueries.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstRTFsQueries.cpp 30274 2010-06-17 08:19:58Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTFs Queries..
  */
@@ -74,6 +74,37 @@ int main(int argc, char **argv)
         {
             RTPrintf("tstRTFsQueries: RTFsQuerySizes(nop) failed, rc=%Rrc\n", rc);
             cErrors++;
+        }
+
+        uint32_t u32Type;
+        rc = RTFsQueryType(argv[i], &u32Type);
+        if (RT_FAILURE(rc))
+        {
+            RTPrintf("tstRTFsQueries: RTFsQueryType failed, rc=%Rrc\n", rc);
+            cErrors++;
+        }
+        else
+        {
+            static const char *s_apszType[] =
+            {
+                "unknown",
+                "ext",
+                "ext2",
+                "ext3",
+                "ext4",
+                "tmpfs",
+                "jfs",
+                "nfs",
+                "hfs",
+                "cifs",
+                "fat",
+                "ntfs"
+            };
+
+            if (u32Type < RT_ELEMENTS(s_apszType))
+                RTPrintf("tstRTFsQueries: file system type is '%s'\n", s_apszType[u32Type]);
+            else
+                RTPrintf("tstRTFsQueries: unknown file system type %d\n", u32Type);
         }
 
         RTFSPROPERTIES Props;
