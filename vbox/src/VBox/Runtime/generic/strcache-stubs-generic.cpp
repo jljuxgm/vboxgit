@@ -1,4 +1,4 @@
-/* $Id: strcache-stubs-generic.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: strcache-stubs-generic.cpp 30253 2010-06-16 14:18:53Z vboxsync $ */
 /** @file
  * IPRT - String Cache, stub implementation.
  */
@@ -42,8 +42,8 @@
 RTDECL(int) RTStrCacheCreate(PRTSTRCACHE phStrCache, const char *pszName)
 {
     AssertCompile(sizeof(RTSTRCACHE) == sizeof(RTMEMPOOL));
-    AssertCompile(NIL_RTSTRCACHE == (RTSTRCACHE)NIL_RTMEMPOOL);
-    AssertCompile(RTSTRCACHE_DEFAULT == (RTSTRCACHE)RTMEMPOOL_DEFAULT);
+    AssertCompileNS(NIL_RTSTRCACHE     == (RTSTRCACHE)NIL_RTMEMPOOL);
+    AssertCompileNS(RTSTRCACHE_DEFAULT == (RTSTRCACHE)RTMEMPOOL_DEFAULT);
     return RTMemPoolCreate((PRTMEMPOOL)phStrCache, pszName);
 }
 RT_EXPORT_SYMBOL(RTStrCacheCreate);
