@@ -1,4 +1,4 @@
-/* $Id: RTMpCpuId-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: RTMpCpuId-generic.cpp 27800 2010-03-29 19:56:26Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpCpuId.
  */
@@ -40,7 +40,7 @@
 
 RTDECL(RTCPUID) RTMpCpuId(void)
 {
-#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
+#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64) || defined(RT_ARCH_SPARC) || defined(RT_ARCH_SPARC64)
     return ASMGetApicId();
 #else
 # error "Not ported to this architecture."

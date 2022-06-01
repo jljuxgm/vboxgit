@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 26694 2010-02-23 09:15:48Z vboxsync $ */
+/* $Id: getopt.cpp 27800 2010-03-29 19:56:26Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -459,7 +459,7 @@ RTDECL(int) RTGetOpt(PRTGETOPTSTATE pState, PRTGETOPTUNION pValueUnion)
     /*
      * Make sure the union is completely cleared out, whatever happens below.
      */
-    pValueUnion->u64 = 0;
+    pValueUnion->u64.value = 0;
     pValueUnion->pDef = NULL;
 
     /*
@@ -729,7 +729,7 @@ RTDECL(int) RTGetOptFetchValue(PRTGETOPTSTATE pState, PRTGETOPTUNION pValueUnion
     /*
      * Make sure the union is completely cleared out, whatever happens below.
      */
-    pValueUnion->u64 = 0;
+    pValueUnion->u64.value = 0;
     pValueUnion->pDef = NULL;
 
     /*
