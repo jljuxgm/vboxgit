@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 26577 2010-02-16 12:57:58Z vboxsync $ */
+/* $Id: GMM.cpp 26606 2010-02-17 12:40:42Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -310,25 +310,6 @@ GMMR3DECL(int)  GMMR3MapUnmapChunk(PVM pVM, uint32_t idChunkMap, uint32_t idChun
     int rc = VMMR3CallR0(pVM, VMMR0_DO_GMM_MAP_UNMAP_CHUNK, 0, &Req.Hdr);
     if (RT_SUCCESS(rc) && ppvR3)
         *ppvR3 = Req.pvR3;
-    return rc;
-}
-
-/**
- * @see GMMR0AllocateLargePage
- */
-GMMR3DECL(int)  GMMR3AllocateLargePage(PVM pVM,  uint32_t cbPage, uint32_t *pidPage, RTHCPHYS *pHCPhys)
-{
-    GMMALLOCLARGEPAGEREQ Req;
-    Req.Hdr.u32Magic = SUPVMMR0REQHDR_MAGIC;
-    Req.Hdr.cbReq = sizeof(Req);
-    Req.cbPage = cbPage;
-    Req.idPage = NIL_GMM_PAGEID;
-    int rc = VMMR3CallR0(pVM, VMMR0_DO_GMM_ALLOC_LARGE_PAGE, 0, &Req.Hdr);
-    if (RT_SUCCESS(rc) && pidPage)
-        *pidPage = Req.idPage;
-    
-    if (RT_SUCCESS(rc) && pHCPhys)
-        *pHCPhys = Req.HCPhys;
     return rc;
 }
 

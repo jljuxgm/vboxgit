@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 26233 2010-02-04 13:38:27Z vboxsync $ */
+/* $Id: PGMR0.cpp 26606 2010-02-17 12:40:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -163,6 +163,30 @@ VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM, PVMCPU pVCpu)
     return rc;
 }
 
+/**
+ * Worker function for PGMR3PhysAllocateLargeHandyPage
+ *
+ * @returns The following VBox status codes.
+ * @retval  VINF_SUCCESS on success.
+ * @retval  VINF_EM_NO_MEMORY if we're out of memory.
+ *
+ * @param   pVM         The VM handle.
+ * @param   pVCpu       The VMCPU handle.
+ *
+ * @remarks Must be called from within the PGM critical section. The caller
+ *          must clear the new pages.
+ */
+VMMR0DECL(int) PGMR0PhysAllocateLargeHandyPage(PVM pVM, PVMCPU pVCpu)
+{
+    Assert(PDMCritSectIsOwnerEx(&pVM->pgm.s.CritSect, pVCpu->idCpu));
+
+    Assert(!pVM->pgm.s.cLargeHandyPages);
+    int rc = GMMR0AllocateLargePage(pVM, pVCpu->idCpu, _2M, &pVM->pgm.s.aLargeHandyPage[0].idPage, &pVM->pgm.s.aLargeHandyPage[0].HCPhysGCPhys);
+    if (RT_SUCCESS(rc))
+        pVM->pgm.s.cLargeHandyPages = 1;
+
+    return rc;
+}
 
 /**
  * #PF Handler for nested paging.
