@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 30345 2010-06-21 16:49:59Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 30358 2010-06-22 09:14:21Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -535,9 +535,12 @@ HRESULT VirtualBox::init()
         }
 
         /* events */
+#if 0
+        // disabled for now
         if (SUCCEEDED(rc = unconst(m->pEventSource).createObject()))
             rc = m->pEventSource->init(this);
         if (FAILED(rc)) throw rc;
+#endif
 
     }
     catch (HRESULT err)
