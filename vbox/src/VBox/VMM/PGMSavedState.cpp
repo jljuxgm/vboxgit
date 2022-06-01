@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 24520 2009-11-09 16:41:30Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 24769 2009-11-18 17:51:30Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -1786,7 +1786,11 @@ static DECLCALLBACK(int)  pgmR3LiveVote(PVM pVM, PSSMHANDLE pSSM)
     if (      pVM->pgm.s.LiveSave.Rom.cDirtyPages
            +  pVM->pgm.s.LiveSave.Mmio2.cDirtyPages
            +  pVM->pgm.s.LiveSave.Ram.cDirtyPages
-        <  256)                         /* semi random numbers. */
+# if 0
+        <  256)                         /* semi random number. */
+# else
+        <  4096)                        /* too high number */
+# endif
         return VINF_SUCCESS;
 #endif
     return VINF_SSM_VOTE_FOR_ANOTHER_PASS;
