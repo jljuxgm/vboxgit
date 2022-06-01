@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29546 2010-05-17 14:05:42Z vboxsync $ */
+/* $Id: GMMR0.cpp 29548 2010-05-17 14:07:25Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3850,6 +3850,7 @@ new_shared_page:
                 /* Get the virtual address of the physical page; map the chunk into the VM process if not already done. */
                 if (!gmmR0IsChunkMapped(pGVM, pChunk, (PRTR3PTR)&pbChunk))
                 {
+                    Log(("Map chunk into process!\n"));
                     rc = gmmR0MapChunk(pGMM, pGVM, pChunk, (PRTR3PTR)&pbChunk);
                     if (rc != VINF_SUCCESS)
                     {
