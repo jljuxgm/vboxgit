@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 24068 2009-10-26 11:15:49Z vboxsync $ */
+/* $Id: DevAHCI.cpp 24072 2009-10-26 12:45:22Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -5905,7 +5905,7 @@ static bool ahciWaitForAllAsyncIOIsFinished(PPDMDEVINS pDevIns, unsigned cMillie
             break;
 
         /* Sleep a bit. */
-        RTThreadSleep(100);
+        RTThreadSleep(100); /** @todo wait on something which can be woken up. 100ms is too long for teleporting VMs! */
     }
     return fAllFinished;
 }

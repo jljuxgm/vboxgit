@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 24052 2009-10-23 18:21:13Z vboxsync $ */
+/* $Id: DevATA.cpp 24072 2009-10-26 12:45:22Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -5608,7 +5608,7 @@ static bool ataWaitForAllAsyncIOIsIdle(PPDMDEVINS pDevIns, unsigned cMillies)
             break;
 
         /* Sleep for a bit. */
-        RTThreadSleep(100);
+        RTThreadSleep(100); /** @todo wait on something which can be woken up. 100ms is too long for teleporting VMs! */
     }
 
     if (!fAllIdle)
