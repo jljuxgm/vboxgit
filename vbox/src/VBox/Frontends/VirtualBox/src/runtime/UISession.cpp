@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 29545 2010-05-17 14:04:53Z vboxsync $ */
+/* $Id: UISession.cpp 29692 2010-05-20 12:38:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1214,9 +1214,6 @@ void UISession::saveSessionSettings()
         machine.SetExtraData(VBoxDefs::GUI_AutoresizeGuest,
                              uimachine()->actionsPool()->action(UIActionIndex_Toggle_GuestAutoresize)->isChecked() ?
                              QString() : "off");
-
-        // TODO: Move to fullscreen/seamless logic:
-        //machine.SetExtraData(VBoxDefs::GUI_MiniToolBarAutoHide, mMiniToolBar->isAutoHide() ? "on" : "off");
     }
 }
 
