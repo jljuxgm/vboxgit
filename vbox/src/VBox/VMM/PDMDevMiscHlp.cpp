@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 26376 2010-02-09 14:25:28Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -563,25 +563,6 @@ static DECLCALLBACK(int) pdmR3HpetHlp_SetLegacyMode(PPDMDEVINS pDevIns, bool fAc
     return 0;
 }
 
-
-/** @interface_method_impl{PDMHPETHLPR3,pfnLock} */
-static DECLCALLBACK(int) pdmR3HpetHlp_Lock(PPDMDEVINS pDevIns, int rc)
-{
-    PDMDEV_ASSERT_DEVINS(pDevIns);
-    LogFlow(("pdmR3HpetHlp_Lock: caller='%s'/%d: rc=%Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
-    return pdmLockEx(pDevIns->Internal.s.pVMR3, rc);
-}
-
-
-/** @interface_method_impl{PDMHPETHLPR3,pfnUnlock} */
-static DECLCALLBACK(void) pdmR3HpetHlp_Unlock(PPDMDEVINS pDevIns)
-{
-    PDMDEV_ASSERT_DEVINS(pDevIns);
-    LogFlow(("pdmR3HpetHlp_Unlock: caller='%s'/%d:\n", pDevIns->pReg->szName, pDevIns->iInstance));
-    pdmUnlock(pDevIns->Internal.s.pVMR3);
-}
-
-
 /** @interface_method_impl{PDMHPETHLPR3,pfnGetRCHelpers} */
 static DECLCALLBACK(PCPDMHPETHLPRC) pdmR3HpetHlp_GetRCHelpers(PPDMDEVINS pDevIns)
 {
@@ -619,8 +600,6 @@ const PDMHPETHLPR3 g_pdmR3DevHpetHlp =
 {
     PDM_HPETHLPR3_VERSION,
     pdmR3HpetHlp_SetLegacyMode,
-    pdmR3HpetHlp_Lock,
-    pdmR3HpetHlp_Unlock,
     pdmR3HpetHlp_GetRCHelpers,
     pdmR3HpetHlp_GetR0Helpers,
     PDM_HPETHLPR3_VERSION, /* the end */
