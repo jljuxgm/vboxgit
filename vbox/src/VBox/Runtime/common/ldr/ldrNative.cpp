@@ -1,4 +1,4 @@
-/* $Id: ldrNative.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: ldrNative.cpp 25631 2010-01-04 09:43:04Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Native interface.
  */
@@ -164,7 +164,7 @@ RTDECL(int) RTLdrLoadAppPriv(const char *pszFilename, PRTLDRMOD phLdrMod)
      * Check the filename.
      */
     size_t cchFilename = strlen(pszFilename);
-    AssertMsgReturn(cchFilename > (RTPATH_MAX / 4) * 3, ("%zu\n", cchFilename), VERR_INVALID_PARAMETER);
+    AssertMsgReturn(cchFilename < (RTPATH_MAX / 4) * 3, ("%zu\n", cchFilename), VERR_INVALID_PARAMETER);
 
     const char *pszExt = "";
     size_t cchExt = 0;
