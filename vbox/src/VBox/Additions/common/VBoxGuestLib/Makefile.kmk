@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27014 2010-03-04 11:59:54Z vboxsync $
+# $Id: Makefile.kmk 27083 2010-03-05 13:05:51Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -93,12 +93,17 @@ VBoxGuestR3Lib_DEFS        = \
 	$(if $(VBOX_WITH_GUEST_PROPS),VBOX_WITH_GUEST_PROPS,)
 VBoxGuestR3Lib_SOURCES     = \
 	VBoxGuestR3Lib.cpp \
+	VBoxGuestR3LibAdditions.cpp \
+	VBoxGuestR3LibBalloon.cpp \
 	VBoxGuestR3LibClipboard.cpp \
+	VBoxGuestR3LibCpuHotPlug.cpp \
 	VBoxGuestR3LibCredentials.cpp \
+	VBoxGuestR3LibEvent.cpp \
 	VBoxGuestR3LibGR.cpp \
-	VBoxGuestR3LibTime.cpp \
+	VBoxGuestR3LibLog.cpp \
 	VBoxGuestR3LibMisc.cpp \
-	VBoxGuestR3LibCpuHotPlug.cpp
+	VBoxGuestR3LibStat.cpp \
+	VBoxGuestR3LibTime.cpp
 ifneq ($(KBUILD_TARGET),win) ## @todo get rid of this hack (as soon as it's all implemented / #defined).
  VBoxGuestR3Lib_SOURCES   += \
 	VBoxGuestR3LibDaemonize.cpp \
@@ -116,8 +121,7 @@ ifdef VBOX_WITH_GUEST_CONTROL
 	VBoxGuestR3LibGuestCtrl.cpp
 endif
 
-VBoxGuestR3LibMisc.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
-VBoxGuestR3LibMisc.cpp_DEPS = $(VBOX_SVN_REV_KMK)
+VBoxGuestR3LibAdditions.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
 
 #
 # VBoxGuestR3LibShared - a PIC variant of VBoxGuestR3Lib for linking into .so/.dll/.dylib.

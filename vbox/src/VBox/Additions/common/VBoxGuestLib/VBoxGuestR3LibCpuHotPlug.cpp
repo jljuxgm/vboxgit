@@ -1,6 +1,6 @@
-/* $Id: VBoxGuestR3LibCpuHotPlug.cpp 26425 2010-02-11 11:37:08Z vboxsync $ */
+/* $Id: VBoxGuestR3LibCpuHotPlug.cpp 27083 2010-03-05 13:05:51Z vboxsync $ */
 /** @file
- * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, CPU hotplug.
+ * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, CPU Hot Plugging.
  */
 
 /*
