@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 24959 2009-11-25 15:31:10Z vboxsync $ */
+/* $Id: CPUM.cpp 24999 2009-11-26 13:36:37Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1035,9 +1035,9 @@ static int cpumR3LoadCpuId(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion)
             char *pszMsg = RTStrAPrintf2 fmt; /* lack of variadict macros sucks */ \
             if (fStrictCpuIdChecks) \
             { \
-                int rc = SSMR3SetLoadError(pSSM, VERR_SSM_LOAD_CPUID_MISMATCH, RT_SRC_POS, "%s", pszMsg); \
+                int rcCpuid = SSMR3SetLoadError(pSSM, VERR_SSM_LOAD_CPUID_MISMATCH, RT_SRC_POS, "%s", pszMsg); \
                 RTStrFree(pszMsg); \
-                return rc; \
+                return rcCpuid; \
             } \
             LogRel(("CPUM: %s\n", pszMsg)); \
             RTStrFree(pszMsg); \
