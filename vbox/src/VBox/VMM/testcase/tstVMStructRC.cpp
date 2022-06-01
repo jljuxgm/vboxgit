@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 25946 2010-01-20 23:52:24Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 26107 2010-01-30 14:18:03Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -613,6 +613,12 @@ int main()
     GEN_CHECK_OFF(PGM, cPrivatePages);
     GEN_CHECK_OFF(PGM, cSharedPages);
     GEN_CHECK_OFF(PGM, cZeroPages);
+    GEN_CHECK_OFF(PGM, cPureMmioPages);
+    GEN_CHECK_OFF(PGM, cMonitoredPages);
+    GEN_CHECK_OFF(PGM, cWrittenToPages);
+    GEN_CHECK_OFF(PGM, cWriteLockedPages);
+    GEN_CHECK_OFF(PGM, cReadLockedPages);
+    GEN_CHECK_OFF(PGM, cRelocations);
 
     GEN_CHECK_SIZE(PGMMAPPING);
     GEN_CHECK_OFF(PGMMAPPING, pNextR3);
