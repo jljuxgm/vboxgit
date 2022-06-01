@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 24780 2009-11-19 10:14:17Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 25324 2009-12-11 12:28:58Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -714,16 +714,6 @@ int handleStorageController(HandlerArg *a)
 
             case 'e':   // sataideemulation
             {
-                if ((GetState.uIndex < 1) && (GetState.uIndex > 4))
-                    return errorSyntax(USAGE_STORAGECONTROLLER,
-                                       "Missing or Invalid SATA boot slot number in '%s'",
-                                       GetState.pDef->pszLong);
-
-                if ((ValueUnion.u32 < 1) && (ValueUnion.u32 > 30))
-                    return errorSyntax(USAGE_STORAGECONTROLLER,
-                                       "Missing or Invalid SATA port number in '%s'",
-                                       GetState.pDef->pszLong);
-
                 satabootdev = GetState.uIndex;
                 sataidedev = ValueUnion.u32;
                 break;
