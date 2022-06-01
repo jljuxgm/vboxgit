@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxService.cpp 28887 2010-04-29 11:19:17Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -297,7 +297,6 @@ unsigned VBoxServiceGetStartedServices(void)
 int VBoxServiceStartServices(unsigned iMain)
 {
     int rc;
-
     /*
      * Initialize the services.
      */
@@ -313,7 +312,6 @@ int VBoxServiceStartServices(unsigned iMain)
                 return rc;
             }
         }
-
     /*
      * Start the service(s).
      */

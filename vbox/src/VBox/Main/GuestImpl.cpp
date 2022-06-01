@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28837 2010-04-27 15:10:35Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28887 2010-04-29 11:19:17Z vboxsync $ */
 
 /** @file
  *
@@ -838,15 +838,15 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
                     {
                         unsigned cMsWait;
                         if (aTimeoutMS == RT_INDEFINITE_WAIT)
-                            cMsWait = 1000;
+                            cMsWait = 10;
                         else
                         {
                             uint64_t cMsElapsed = RTTimeMilliTS() - u64Started;
                             if (cMsElapsed >= aTimeoutMS)
                                 break; /* Timed out. */
-                            cMsWait = RT_MIN(1000, aTimeoutMS - (uint32_t)cMsElapsed);
+                            cMsWait = RT_MIN(10, aTimeoutMS - (uint32_t)cMsElapsed);
                         }
-                        RTThreadYield();
+                        RTThreadSleep(cMsWait);
                     }
                 }
 
@@ -1034,15 +1034,15 @@ STDMETHODIMP Guest::GetProcessOutput(ULONG aPID, ULONG aFlags, ULONG aTimeoutMS,
                 {
                     unsigned cMsWait;
                     if (aTimeoutMS == RT_INDEFINITE_WAIT)
-                        cMsWait = 1000;
+                        cMsWait = 10;
                     else
                     {
                         uint64_t cMsElapsed = RTTimeMilliTS() - u64Started;
                         if (cMsElapsed >= aTimeoutMS)
                             break; /* timed out */
-                        cMsWait = RT_MIN(1000, aTimeoutMS - (uint32_t)cMsElapsed);
+                        cMsWait = RT_MIN(10, aTimeoutMS - (uint32_t)cMsElapsed);
                     }
-                    RTThreadYield();
+                    RTThreadSleep(cMsWait);
                 } 
     
                 if (it->bCalled)
