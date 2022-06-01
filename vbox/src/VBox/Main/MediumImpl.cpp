@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 24509 2009-11-09 14:59:05Z vboxsync $ */
+/* $Id: MediumImpl.cpp 24563 2009-11-10 19:07:00Z vboxsync $ */
 
 /** @file
  *
@@ -2868,18 +2868,6 @@ const Guid* Medium::getFirstMachineBackrefSnapshotId() const
         return NULL;
 
     return &ref.llSnapshotIds.front();
-}
-
-/**
- * Internal method to check whether the medium is attached to the given machine. Must have caller + locking!
- * @return
- */
-bool Medium::isAttachedTo(const Guid &aMachineId)
-{
-    BackRefList::iterator it =
-        std::find_if(m->backRefs.begin(), m->backRefs.end(),
-                        BackRef::EqualsTo(aMachineId));
-    return it != m->backRefs.end() && it->fInCurState;
 }
 
 /**

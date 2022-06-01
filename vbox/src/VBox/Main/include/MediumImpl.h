@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 24345 2009-11-04 16:50:07Z vboxsync $ */
+/* $Id: MediumImpl.h 24563 2009-11-10 19:07:00Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -174,8 +174,6 @@ public:
 
     const Guid* getFirstMachineBackrefId() const;
     const Guid* getFirstMachineBackrefSnapshotId() const;
-
-    bool isAttachedTo(const Guid &aMachineId);
 
     /**
      * Shortcut to VirtualBoxBaseWithTypedChildrenNEXT::dependentChildren().
