@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxManager.java 29185 2010-05-07 09:03:34Z vboxsync $ */
+/* $Id: VirtualBoxManager.java 29212 2010-05-07 13:31:09Z vboxsync $ */
 /*
  * Copyright (C) 2010 Oracle Corporation
  *
@@ -110,7 +110,6 @@ public class VirtualBoxManager
         IProgress p = vbox.openRemoteSession(session, mid, type, "");
         progressBar(p, timeout);
         session.close();
-
         return true;
     }
 
