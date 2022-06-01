@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 25152 2009-12-02 17:37:39Z vboxsync $ */
+/* $Id: MediumImpl.h 25200 2009-12-04 18:19:05Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -24,8 +24,6 @@
 #define ____H_MEDIUMIMPL
 
 #include "VirtualBoxBase.h"
-
-#include <VBox/com/SupportErrorInfo.h>
 
 class VirtualBox;
 class Progress;
