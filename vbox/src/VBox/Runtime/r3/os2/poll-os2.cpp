@@ -1,4 +1,4 @@
-/* $Id: poll-os2.cpp 26786 2010-02-25 12:04:05Z vboxsync $ */
+/* $Id: poll-os2.cpp 26788 2010-02-25 12:05:10Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, OS/2 Implementation.
  */
@@ -32,7 +32,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/pipe.h>
+#include <iprt/poll.h>
 #include "internal/iprt.h"
 
 #include <iprt/assert.h>
