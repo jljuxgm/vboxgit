@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 25052 2009-11-27 15:01:37Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 25054 2009-11-27 15:30:05Z vboxsync $ */
 
 /** @file
  *
@@ -613,6 +613,7 @@ HRESULT Display::init (Console *aParent)
         maFramebuffers[ul].fVBVAEnabled = false;
         maFramebuffers[ul].cVBVASkipUpdate = 0;
         memset (&maFramebuffers[ul].vbvaSkippedRect, 0, sizeof (maFramebuffers[ul].vbvaSkippedRect));
+        maFramebuffers[ul].pVBVAHostFlags = NULL;
 #endif /* VBOX_WITH_HGSMI */
     }
 
@@ -3171,6 +3172,7 @@ DECLCALLBACK(void) Display::displayVBVADisable(PPDMIDISPLAYCONNECTOR pInterface,
     Display *pThis = pDrv->pDisplay;
 
     pThis->maFramebuffers[uScreenId].fVBVAEnabled = false;
+    pThis->maFramebuffers[uScreenId].pVBVAHostFlags = NULL;
 }
 
 DECLCALLBACK(void) Display::displayVBVAUpdateBegin(PPDMIDISPLAYCONNECTOR pInterface, unsigned uScreenId)
