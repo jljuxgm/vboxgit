@@ -1,4 +1,4 @@
-/* $Id: semspinmutex-r3-generic.cpp 21540 2009-07-13 14:51:23Z vboxsync $ */
+/* $Id: semspinmutex-r3-generic.cpp 25685 2010-01-07 22:03:06Z vboxsync $ */
 /** @file
  * IPRT - Spinning Mutex Semaphores, Ring-3, Generic.
  */
@@ -50,12 +50,10 @@ RTDECL(int) RTSemSpinMutexCreate(PRTSEMSPINMUTEX phSpinMtx, uint32_t fFlags)
     PRTCRITSECT pCritSect = (PRTCRITSECT)RTMemAlloc(sizeof(RTCRITSECT));
     if (!pCritSect)
         return VERR_NO_MEMORY;
-    int rc = RTCritSectInit(pCritSect);
+    int rc = RTCritSectInitEx(pCritSect, RTCRITSECT_FLAGS_NO_NESTING | RTCRITSECT_FLAGS_NO_LOCK_VAL,
+                              NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, "RTSemSpinMutex");
     if (RT_SUCCESS(rc))
-    {
-        pCritSect->fFlags |= RTCRITSECT_FLAGS_NO_NESTING;
         *phSpinMtx = (RTSEMSPINMUTEX)pCritSect;
-    }
     else
         RTMemFree(pCritSect);
     return rc;
