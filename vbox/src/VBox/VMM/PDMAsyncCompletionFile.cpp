@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 26745 2010-02-24 13:27:31Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 26812 2010-02-25 20:55:08Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -646,7 +646,6 @@ static int pdmacFileInitialize(PPDMASYNCCOMPLETIONEPCLASS pClassGlobals, PCFGMNO
             rc = pdmacFileCacheInit(pEpClassFile, pCfgNode);
             if (RT_FAILURE(rc))
             {
-                RTCritSectDelete(&pEpClassFile->CritSect);
                 pEpClassFile->fCacheEnabled = false;
                 LogRel(("AIOMgr: Failed to initialise the cache (rc=%Rrc), disabled caching\n"));
             }
