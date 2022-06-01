@@ -1,4 +1,4 @@
-/* $Id: tftp.c 30016 2010-06-03 18:31:14Z vboxsync $ */
+/* $Id: tftp.c 30363 2010-06-22 11:21:22Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -180,7 +180,7 @@ static int tftp_send_error(PNATState pData,
     struct tftp_t *tp;
     int nobytes;
 
-    if ((m = m_getcl(pData, M_DONTWAIT, MT_HEADER, M_PKTHDR)) == NULL)
+    m = m_getcl(pData, M_DONTWAIT, MT_HEADER, M_PKTHDR);
     if (!m)
         return -1;
 
@@ -228,7 +228,7 @@ static int tftp_send_data(PNATState pData,
     if (block_nr < 1)
         return -1;
 
-    if ((m = m_getcl(pData, M_DONTWAIT, MT_HEADER, M_PKTHDR)) == NULL)
+    m = m_getcl(pData, M_DONTWAIT, MT_HEADER, M_PKTHDR);
     if (!m)
         return -1;
 
