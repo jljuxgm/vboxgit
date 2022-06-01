@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 24810 2009-11-19 19:17:02Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 24872 2009-11-23 14:35:55Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -4474,7 +4474,7 @@ STDMETHODIMP Machine::Export(IAppliance *aAppliance, IVirtualSystemDescription *
                            strCpuCount);
 
         /* Memory */
-        Utf8Str strMemory = Utf8StrFmt("%RI32", (uint64_t)ulMemSizeMB * _1M);
+        Utf8Str strMemory = Utf8StrFmt("%RI64", (uint64_t)ulMemSizeMB * _1M);
         pNewDesc->addEntry(VirtualSystemDescriptionType_Memory,
                            "",
                            strMemory,
