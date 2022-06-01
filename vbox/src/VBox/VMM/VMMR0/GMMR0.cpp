@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 26412 2010-02-10 14:55:29Z vboxsync $ */
+/* $Id: GMMR0.cpp 26413 2010-02-10 15:21:55Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -663,10 +663,16 @@ GMMR0DECL(int) GMMR0Init(void)
 #else
 # ifdef RT_OS_WINDOWS
         pGMM->fLegacyAllocationMode = false;
+#  if ARCH_BITS == 32
+        /* Don't reuse possibly partial chunks because of the virtual address space limitation. */
+        pGMM->fBoundMemoryMode = true;
+#  else
+        pGMM->fBoundMemoryMode = false;
+#  endif
 # else
         pGMM->fLegacyAllocationMode = true;
-# endif
         pGMM->fBoundMemoryMode = true;
+# endif
 #endif
 
         /*
