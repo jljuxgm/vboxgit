@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 25503 2009-12-18 17:46:19Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 25504 2009-12-18 17:46:47Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4575,7 +4575,7 @@ int pgmPoolFlushPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage, bool fFlush)
     if (    fFlushRequired
         &&  fFlush)
     {
-        PGM_INVL_ALL_VCPU_TLBS();
+        PGM_INVL_ALL_VCPU_TLBS(pVM);
     }
 
     pgmUnlock(pVM);
