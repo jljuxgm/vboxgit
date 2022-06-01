@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: tar.cpp 25329 2009-12-11 13:49:59Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -296,7 +296,7 @@ static int rtTarCopyFileTo(RTFILE hFile, const char *pszSrcName)
             /* Make sure the called doesn't mix truncated tar files with the
              * official end indicated by rtTarCalcChkSum. */
             if (rc == VERR_EOF)
-                rc == VERR_FILE_IO_ERROR;
+                rc = VERR_FILE_IO_ERROR;
         }
     }
 
