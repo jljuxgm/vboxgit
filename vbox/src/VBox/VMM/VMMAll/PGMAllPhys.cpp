@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 27488 2010-03-18 16:12:49Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 27540 2010-03-19 15:24:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -672,6 +672,10 @@ int pgmPhysPageMakeWritable(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
             /* fall thru */
         case PGM_PAGE_STATE_SHARED:
             return pgmPhysAllocPage(pVM, pPage, GCPhys);
+
+        /* Not allowed to write to ballooned pages. */
+        case PGM_PAGE_STATE_BALLOONED:
+            return VERR_PGM_PHYS_PAGE_BALLOONED;
     }
 }
 
@@ -1008,7 +1012,8 @@ int pgmPhysPageLoadIntoTlb(PPGM pPGM, RTGCPHYS GCPhys)
      */
     PPGMPAGE pPage = &pRam->aPages[off >> PAGE_SHIFT];
     PPGMPAGEMAPTLBE pTlbe = &pPGM->CTXSUFF(PhysTlb).aEntries[PGM_PAGEMAPTLB_IDX(GCPhys)];
-    if (!PGM_PAGE_IS_ZERO(pPage))
+    if (    !PGM_PAGE_IS_ZERO(pPage)
+        &&  !PGM_PAGE_IS_BALLOONED(pPage))
     {
         void *pv;
         PPGMPAGEMAP pMap;
@@ -1057,7 +1062,8 @@ int pgmPhysPageLoadIntoTlbWithPage(PPGM pPGM, PPGMPAGE pPage, RTGCPHYS GCPhys)
      * Make a special case for the zero page as it is kind of special.
      */
     PPGMPAGEMAPTLBE pTlbe = &pPGM->CTXSUFF(PhysTlb).aEntries[PGM_PAGEMAPTLB_IDX(GCPhys)];
-    if (!PGM_PAGE_IS_ZERO(pPage))
+    if (    !PGM_PAGE_IS_ZERO(pPage)
+        &&  !PGM_PAGE_IS_BALLOONED(pPage))
     {
         void *pv;
         PPGMPAGEMAP pMap;

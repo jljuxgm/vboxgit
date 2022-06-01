@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 27465 2010-03-17 23:00:24Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 27540 2010-03-19 15:24:22Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3380,7 +3380,8 @@ int pgmPoolTrackUpdateGCPhys(PVM pVM, RTGCPHYS GCPhysPage, PPGMPAGE pPhysPage, b
          * is defined, zero pages won't normally be mapped. Some kind of solution
          * will be needed for this problem of course, but it will have to wait...
          */
-        if (PGM_PAGE_IS_ZERO(pPhysPage))
+        if (    PGM_PAGE_IS_ZERO(pPhysPage)
+            ||  PGM_PAGE_IS_BALLOONED(pPhysPage))
             rc = VINF_PGM_GCPHYS_ALIASED;
         else
         {
