@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 29638 2010-05-18 13:53:07Z vboxsync $ */
+/* $Id: GuestImpl.cpp 29641 2010-05-18 14:35:34Z vboxsync $ */
 
 /** @file
  *
@@ -1244,7 +1244,7 @@ STDMETHODIMP Guest::GetProcessOutput(ULONG aPID, ULONG aFlags, ULONG aTimeoutMS,
                     else if (vrc == VERR_CANCELLED)
                     {
                         rc = setError(VBOX_E_IPRT_ERROR,
-                                      tr("The operation was canceled."));
+                                      tr("The operation was canceled"));
                     }
                     else
                     {
