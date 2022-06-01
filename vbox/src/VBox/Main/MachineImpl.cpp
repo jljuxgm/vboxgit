@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 24759 2009-11-18 14:55:20Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24765 2009-11-18 17:01:37Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2461,7 +2461,7 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
 
     do
     {
-        if (mMediaData.isBackedUp())
+        if (aType == DeviceType_HardDisk && mMediaData.isBackedUp())
         {
             const MediaData::AttachmentList &oldAtts = mMediaData.backedUpData()->mAttachments;
 
