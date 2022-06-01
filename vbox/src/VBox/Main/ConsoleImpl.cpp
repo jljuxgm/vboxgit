@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 28766 2010-04-26 16:22:46Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 28795 2010-04-27 07:36:47Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5156,11 +5156,11 @@ HRESULT Console::powerDown(Progress *aProgress /*= NULL*/)
      * that need it) may be called after this point
      * ---------------------------------------------------------------------- */
 
+    /* go to the destroying state to prevent from adding new callers */
+    mVMDestroying = true;
+
     if (mVMCallers > 0)
     {
-        /* go to the destroying state to prevent from adding new callers */
-        mVMDestroying = true;
-
         /* lazy creation */
         if (mVMZeroCallersSem == NIL_RTSEMEVENT)
             RTSemEventCreate(&mVMZeroCallersSem);
