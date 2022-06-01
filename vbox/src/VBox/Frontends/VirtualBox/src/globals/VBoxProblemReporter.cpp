@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 29794 2010-05-25 16:06:59Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 29795 2010-05-25 16:13:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2224,7 +2224,7 @@ void VBoxProblemReporter::cannotImportAppliance (CAppliance *aAppliance, QWidget
 
 void VBoxProblemReporter::cannotImportAppliance (const CProgress &aProgress, CAppliance* aAppliance, QWidget *aParent /* = NULL */) const
 {
-//    AssertWrapperOk (aProgress);
+    AssertWrapperOk (aProgress);
 
     message (aParent ? aParent : mainWindowShown(),
              Error,
