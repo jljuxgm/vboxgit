@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26603 2010-02-17 12:24:34Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 26609 2010-02-17 13:45:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -953,6 +953,12 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         rc = CFGMR3InsertInteger(pCfg,  "GopMode", u32GopMode);    RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "UgaHorizontalResolution", u32UgaHorisontal);    RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "UgaVerticalResolution", u32UgaVertical);    RC_CHECK();
+
+        /* For OS X guests we'll force passing host's DMI info to the guest */
+        if (fExtProfile)
+        {
+            rc = CFGMR3InsertInteger(pCfg,  "DmiUseHostInfo", 1);  RC_CHECK();
+        }
     }
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 26601 2010-02-17 11:25:00Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 26609 2010-02-17 13:45:33Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -430,7 +430,7 @@ int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, P
 #endif
 
     uint8_t fDmiUseHostInfo;
-    int rc = CFGMR3QueryU8Def(pCfg, "DmiUseHostInfo", &fDmiUseHostInfo, 1);
+    int rc = CFGMR3QueryU8Def(pCfg, "DmiUseHostInfo", &fDmiUseHostInfo, 0);
     if (RT_FAILURE (rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Failed to read \"DmiUseHostInfo\""));
