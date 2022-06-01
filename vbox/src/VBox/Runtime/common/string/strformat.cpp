@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 29683 2010-05-20 11:29:21Z vboxsync $ */
+/* $Id: strformat.cpp 29783 2010-05-25 13:13:35Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -272,7 +272,7 @@ static int rtStrFormatNumber(char *psz, KSIZE64 ullValue, unsigned int uiBase, s
      * precision
      */
     while (--cchPrecision >= cchValue)
-        *psz++ = ' ';
+        *psz++ = '0';
 
     /*
      * write number - not good enough but it works
@@ -351,7 +351,7 @@ static int rtStrFormatNumber(char *psz, KSIZE64 ullValue, unsigned int uiBase, s
  * @param   pszFormat   Format string.
  * @param   InArgs      Argument list.
  */
-RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRFORMAT pfnFormat, void *pvArgFormat, 
+RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRFORMAT pfnFormat, void *pvArgFormat,
                             const char *pszFormat, va_list InArgs)
 {
     va_list     args;
