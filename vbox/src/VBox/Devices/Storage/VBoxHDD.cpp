@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 28784 2010-04-26 23:59:42Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 28785 2010-04-27 00:05:16Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -605,6 +605,7 @@ DECLINLINE(PVDIOCTX) vdIoCtxAlloc(PVBOXHDD pDisk, VDIOCTXTXDIR enmTxDir,
         pIoCtx->pvAllocation          = pvAllocation;
         pIoCtx->pfnIoCtxTransfer      = pfnIoCtxTransfer;
         pIoCtx->pfnIoCtxTransferNext  = NULL;
+        pIoCtx->rcReq                 = VINF_SUCCESS;
 
         RTSgBufInit(&pIoCtx->SgBuf, pcaSeg, cSeg);
     }
