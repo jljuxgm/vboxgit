@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23632 2009-10-08 21:00:20Z vboxsync $
+# $Id: Makefile.kmk 24818 2009-11-20 10:14:25Z vboxsync $
 ## @file
 # Makefile for the FreeBSD installer.
 #
@@ -129,6 +129,13 @@ VBOX_FBSD_NO_STRIP = \
 	  components/VBoxXPCOMBase.xpt \
 	  components/VirtualBox_XPCOM.xpt) \
 	vboxdrv.tar.gz
+
+# EFI firmware
+ifdef VBOX_WITH_EFIFW_PACKING
+  VBOX_FBSD_NO_STRIP += \
+	vboxefi.fv \
+        vboxefi64.fv
+endif
 
 # Symlinks residing in bin/
 VBOX_FBSD_SYMLINKS = \
