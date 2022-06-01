@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 29595 2010-05-18 08:05:46Z vboxsync $ */
+/* $Id: Global.cpp 29675 2010-05-20 09:37:32Z vboxsync $ */
 
 /** @file
  *
@@ -172,11 +172,11 @@ const Global::OSType Global::sOSTypes[SchemaDefs::OSTypeId_COUNT] =
        384,  12,  8 * _1K, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA  },
     { "Linux",   "Linux",             SchemaDefs_OSTypeId_RedHat,          "Red Hat",
-      VBOXOSTYPE_RedHat,          VBOXOSHINT_RTCUTC,
+      VBOXOSTYPE_RedHat,          VBOXOSHINT_RTCUTC | VBOXOSHINT_PAE,
        384,  12,  8 * _1K, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA  },
     { "Linux",   "Linux",             SchemaDefs_OSTypeId_RedHat_64,       "Red Hat (64 bit)",
-      VBOXOSTYPE_RedHat_x64,      VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_RTCUTC,
+      VBOXOSTYPE_RedHat_x64,      VBOXOSHINT_64BIT | VBOXOSHINT_PAE | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_RTCUTC,
        384,  12,  8 * _1K, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA  },
     { "Linux",   "Linux",             SchemaDefs_OSTypeId_Turbolinux,      "Turbolinux",
