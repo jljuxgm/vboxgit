@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibDaemonize.cpp 26425 2010-02-11 11:37:08Z vboxsync $ */
+/** $Id: VBoxGuestR3LibDaemonize.cpp 27748 2010-03-26 14:57:42Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, daemonize a process.
  */
@@ -72,6 +72,8 @@
  *
  * @param   fNoChDir    Pass false to change working directory to root.
  * @param   fNoClose    Pass false to redirect standard file streams to /dev/null.
+ *
+ * @todo    Use RTProcDaemonize instead of this.
  */
 VBGLR3DECL(int) VbglR3Daemonize(bool fNoChDir, bool fNoClose)
 {
