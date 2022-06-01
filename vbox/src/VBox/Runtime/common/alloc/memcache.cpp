@@ -1,4 +1,4 @@
-/* $Id: memcache.cpp 26417 2010-02-10 17:07:21Z vboxsync $ */
+/* $Id: memcache.cpp 26418 2010-02-10 17:11:46Z vboxsync $ */
 /** @file
  * IPRT - Memory Object Allocation Cache.
  */
@@ -303,7 +303,7 @@ RTDECL(int) RTMemCacheAllocEx(RTMEMCACHE hMemCache, void **ppvObj)
 {
     RTMEMCACHEINT *pThis = hMemCache;
     AssertPtrReturn(pThis, VERR_INVALID_PARAMETER);
-    AssertReturn(pThis->u32Magic == RTMEMCACHE_MAGIC, NULL);
+    AssertReturn(pThis->u32Magic == RTMEMCACHE_MAGIC, VERR_INVALID_PARAMETER);
 
     /*
      * Try grab a free object at the cache level.
