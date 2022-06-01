@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 29080 2010-05-05 13:22:44Z vboxsync $ */
+/* $Id: DevAHCI.cpp 29137 2010-05-06 11:46:31Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -6522,6 +6522,8 @@ static DECLCALLBACK(void) ahciR3Detach(PPDMDEVINS pDevIns, unsigned iLUN, uint32
         rc = PDMR3ThreadDestroy(pAhciPort->pAsyncIOThread, &rcThread);
         if (RT_FAILURE(rc) || RT_FAILURE(rcThread))
             AssertMsgFailed(("%s Failed to destroy async IO thread rc=%Rrc rcThread=%Rrc\n", __FUNCTION__, rc, rcThread));
+
+        pAhciPort->pAsyncIOThread = NULL;
 
         rc = RTSemEventDestroy(pAhciPort->AsyncIORequestSem);
         if (RT_FAILURE(rc))
