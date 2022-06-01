@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 24601 2009-11-11 19:33:28Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 25099 2009-11-30 10:02:27Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -221,7 +221,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
     Bstr strHardwareUuid;
     rc = machine->COMGETTER(HardwareUUID)(strHardwareUuid.asOutParam());
     if (details == VMINFO_MACHINEREADABLE)
-        RTPrintf("HardwareUUID=\"%s\"\n", strHardwareUuid.raw());
+        RTPrintf("hardwareuuid=\"%lS\"\n", strHardwareUuid.raw());
     else
         RTPrintf("Hardware UUID:   %lS\n", strHardwareUuid.raw());
 
@@ -675,6 +675,13 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                             RTPrintf(" (passthrough enabled)");
                         RTPrintf("\n");
                     }
+                }
+                else if (SUCCEEDED(rc))
+                {
+                    if (details == VMINFO_MACHINEREADABLE)
+                        RTPrintf("\"%lS-%d-%d\"=\"emptydrive\"\n", storageCtlName.raw(), i, k);
+                    else
+                        RTPrintf("%lS (%d, %d): Empty\n", storageCtlName.raw(), i, k);
                 }
                 else
                 {
