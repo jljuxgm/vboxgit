@@ -1,4 +1,4 @@
-/* $Id: semmutex-linux.cpp 25478 2009-12-18 12:58:10Z vboxsync $ */
+/* $Id: semmutex-linux.cpp 25491 2009-12-18 15:20:48Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphore, Linux  (2.6.x+).
  */
@@ -119,7 +119,7 @@ RTDECL(int)  RTSemMutexCreate(PRTSEMMUTEX pMutexSem)
         pThis->Owner    = (pthread_t)~0;
         pThis->cNesting = 0;
 #ifdef RTSEMMUTEX_STRICT
-        RTLockValidatorInit(&pThis->ValidatorRec, NIL_RTLOCKVALIDATORCLASS, RTLOCKVALIDATOR_SUB_CLASS_NONE, NULL, pThis);
+        RTLockValidatorRecInit(&pThis->ValidatorRec, NIL_RTLOCKVALIDATORCLASS, RTLOCKVALIDATOR_SUB_CLASS_NONE, NULL, pThis);
 #endif
 
         *pMutexSem = pThis;
@@ -155,7 +155,7 @@ RTDECL(int)  RTSemMutexDestroy(RTSEMMUTEX MutexSem)
     pThis->Owner    = (pthread_t)~0;
     pThis->cNesting = 0;
 #ifdef RTSEMMUTEX_STRICT
-    RTLockValidatorDelete(&pThis->ValidatorRec);
+    RTLockValidatorRecDelete(&pThis->ValidatorRec);
 #endif
 
     /*
