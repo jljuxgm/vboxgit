@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 27918 2010-03-31 17:10:40Z vboxsync $ */
+/* $Id: ApplianceImpl.h 28098 2010-04-08 15:35:38Z vboxsync $ */
 
 /** @file
  *
@@ -34,6 +34,7 @@ class VirtualSystemDescription;
 namespace ovf
 {
     struct HardDiskController;
+    struct VirtualSystem;
     class OVFReader;
 }
 
@@ -145,6 +146,14 @@ private:
     HRESULT importImpl(const LocationInfo &aLocInfo, ComObjPtr<Progress> &aProgress);
 
     HRESULT importFS(const LocationInfo &locInfo, ComObjPtr<Progress> &aProgress);
+    struct ImportStack;
+    void importVBoxMachine(const settings::MachineConfigFile &config,
+                           ComPtr<IMachine> &pNewMachine,
+                           ImportStack &stack);
+    void importMachineGeneric(const ovf::VirtualSystem &vsysThis,
+                              ComObjPtr<VirtualSystemDescription> &vsdescThis,
+                              ComPtr<IMachine> &pNewMachine,
+                              ImportStack &stack);
     HRESULT importS3(TaskOVF *pTask);
 
     HRESULT writeImpl(OVFFormat aFormat, const LocationInfo &aLocInfo, ComObjPtr<Progress> &aProgress);

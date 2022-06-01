@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 28091 2010-04-08 13:38:46Z vboxsync $ */
+/* $Id: MachineImpl.cpp 28098 2010-04-08 15:35:38Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -7499,7 +7499,15 @@ HRESULT Machine::saveSettings(bool *pfNeedsGlobalSaveSettings,
  * settings::MachineConfigFile instance. This copies machine extradata
  * from the previous machine config file in the instance data, if any.
  *
- * This fills all the fields in there, including snapshots, *except*
+ * This gets called from two locations:
+ *
+ *  --  Machine::saveSettings(), during the regular XML writing;
+ *
+ *  --  Appliance::buildXMLForOneVirtualSystem(), when a machine gets
+ *      exported to OVF and we write the VirtualBox proprietary XML
+ *      into a <vbox:Machine> tag.
+ *
+ * This routine fills all the fields in there, including snapshots, *except*
  * for the following:
  *
  * -- fCurrentStateModified. There is some special logic associated with that.

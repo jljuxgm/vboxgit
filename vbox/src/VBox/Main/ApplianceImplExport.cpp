@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 27908 2010-03-31 14:32:46Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 28098 2010-04-08 15:35:38Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1227,7 +1227,8 @@ void Appliance::buildXMLForOneVirtualSystem(xml::ElementNode &elmToAddVirtualSys
     {
         AutoWriteLock machineLock(vsdescThis->m->pMachine COMMA_LOCKVAL_SRC_POS);
         vsdescThis->m->pMachine->copyMachineDataToSettings(*pConfig);
-        pConfig->buildMachineXML(*pelmVBoxMachine);
+        pConfig->buildMachineXML(*pelmVBoxMachine,
+                                 false /* fIncludeSnapshots */);
         delete pConfig;
     }
     catch (...)
