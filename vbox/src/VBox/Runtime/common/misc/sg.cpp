@@ -1,4 +1,4 @@
-/* $Id: sg.cpp 28113 2010-04-08 20:11:33Z vboxsync $ */
+/* $Id: sg.cpp 28116 2010-04-08 21:11:06Z vboxsync $ */
 /** @file
  * IPRT - S/G buffer handling.
  */
@@ -165,7 +165,7 @@ RTDECL(int) RTSgBufCmp(PCRTSGBUF pSgBuf1, PCRTSGBUF pSgBuf2, size_t cbCmp)
         pvBuf2 = sgBufGet(&SgBuf2, &cbTmp);
         Assert(cbTmp == cbThisCmp);
 
-        int rc = memcmp(pvBuf1, pvBuf1, cbThisCmp);
+        int rc = memcmp(pvBuf1, pvBuf2, cbThisCmp);
         if (rc)
             return rc;
 
