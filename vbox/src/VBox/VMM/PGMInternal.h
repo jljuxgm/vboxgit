@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 26718 2010-02-23 16:12:09Z vboxsync $ */
+/* $Id: PGMInternal.h 26947 2010-03-02 14:11:43Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -840,6 +840,8 @@ typedef PPGMPAGE *PPPGMPAGE;
 #define PGM_PAGE_PDE_TYPE_PT                   1
 /** Can use a page directory entry to map the continous range. */
 #define PGM_PAGE_PDE_TYPE_PDE                  2
+/** Can use a page directory entry to map the continous range - temporarily disabled (by page monitoring). */
+#define PGM_PAGE_PDE_TYPE_PDE_DISABLED         3
 /** @} */
 
 /**
