@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 30397 2010-06-23 15:29:56Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 30398 2010-06-23 15:33:48Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -1895,7 +1895,7 @@ static DECLCALLBACK(int)  pgmR3LiveVote(PVM pVM, PSSMHANDLE pSSM, uint32_t uPass
      * dirty page (long term) vs. total pages ratio + some pass trickery.
      */
     unsigned uPctDirty = (unsigned)(  (long double)cDirtyPagesLong
-                                    / (pVM->pgm.s.cAllPages - pVM->pgm.s.LiveSave.cIgnoredPages - pVM->pgm.s.cZeroPages);
+                                    / (pVM->pgm.s.cAllPages - pVM->pgm.s.LiveSave.cIgnoredPages - pVM->pgm.s.cZeroPages) );
     if (uPctDirty <= 100)
         SSMR3HandleReportLivePercent(pSSM, RT_MIN(100 - uPctDirty, uPass * 2));
     else
