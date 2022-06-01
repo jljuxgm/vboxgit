@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 26822 2010-02-26 10:11:50Z vboxsync $ */
+/* $Id: UIMachineView.cpp 26823 2010-02-26 10:35:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -33,6 +33,7 @@
 #include "VBoxProblemReporter.h"
 #include "UIFrameBuffer.h"
 #include "UIFrameBufferQGL.h"
+#include "UIFrameBufferQImage.h"
 #include "UIFrameBufferQuartz2D.h"
 #include "UIFrameBufferSDL.h"
 #include "UISession.h"
