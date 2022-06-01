@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 28066 2010-04-07 20:58:11Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 28108 2010-04-08 17:10:51Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1688,6 +1688,7 @@ static int vdIOReadUserAsync(void *pvUser, PVDIOSTORAGE pIoStorage,
         }
 
         uOffset += cbTaskRead;
+        cbRead  -= cbTaskRead;
     }
 
     return rc;
@@ -1735,6 +1736,7 @@ static int vdIOWriteUserAsync(void *pvUser, PVDIOSTORAGE pIoStorage,
         }
 
         uOffset += cbTaskWrite;
+        cbWrite -= cbTaskWrite;
     }
 
     return rc;
