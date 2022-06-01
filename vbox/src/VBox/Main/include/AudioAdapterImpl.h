@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 26088 2010-01-28 16:50:32Z vboxsync $ */
 
 /** @file
  *
@@ -74,28 +74,28 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init (Machine *aParent);
-    HRESULT init (Machine *aParent, AudioAdapter *aThat);
-    HRESULT initCopy (Machine *aParent, AudioAdapter *aThat);
+    HRESULT init(Machine *aParent);
+    HRESULT init(Machine *aParent, AudioAdapter *aThat);
+    HRESULT initCopy(Machine *aParent, AudioAdapter *aThat);
     void uninit();
 
     STDMETHOD(COMGETTER(Enabled))(BOOL *aEnabled);
     STDMETHOD(COMSETTER(Enabled))(BOOL aEnabled);
-    STDMETHOD(COMGETTER(AudioDriver)) (AudioDriverType_T *aAudioDriverType);
-    STDMETHOD(COMSETTER(AudioDriver)) (AudioDriverType_T aAudioDriverType);
-    STDMETHOD(COMGETTER(AudioController)) (AudioControllerType_T *aAudioControllerType);
-    STDMETHOD(COMSETTER(AudioController)) (AudioControllerType_T aAudioControllerType);
+    STDMETHOD(COMGETTER(AudioDriver))(AudioDriverType_T *aAudioDriverType);
+    STDMETHOD(COMSETTER(AudioDriver))(AudioDriverType_T aAudioDriverType);
+    STDMETHOD(COMGETTER(AudioController))(AudioControllerType_T *aAudioControllerType);
+    STDMETHOD(COMSETTER(AudioController))(AudioControllerType_T aAudioControllerType);
 
     // public methods only for internal purposes
 
     HRESULT loadSettings(const settings::AudioAdapter &data);
     HRESULT saveSettings(settings::AudioAdapter &data);
 
-    bool isModified() { AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS); return mData.isBackedUp(); }
-    bool isReallyModified() { AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS); return mData.hasActualChanges(); }
+    bool isModified();
+    bool isReallyModified();
     bool rollback();
     void commit();
-    void copyFrom (AudioAdapter *aThat);
+    void copyFrom(AudioAdapter *aThat);
 
     // for VirtualBoxSupportErrorInfoImpl
     static const wchar_t *getComponentName() { return L"AudioAdapter"; }
