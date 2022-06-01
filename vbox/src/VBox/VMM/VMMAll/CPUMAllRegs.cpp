@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 25866 2010-01-15 14:26:49Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 26026 2010-01-25 16:44:01Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1117,6 +1117,8 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t iLeaf, uint32_t *pEax, ui
                 associativity = 8;
                 sets = 64;
                 break;
+            default:            /* shut up gcc.*/
+                AssertFailed();
             case 2:
                 level = 2;
                 type = 3;
