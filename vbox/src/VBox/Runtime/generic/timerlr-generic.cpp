@@ -1,4 +1,4 @@
-/** $Id: timerlr-generic.cpp 23619 2009-10-08 14:08:15Z vboxsync $ */
+/* $Id: timerlr-generic.cpp 25641 2010-01-05 08:08:44Z vboxsync $ */
 /** @file
  * IPRT - Low Resolution Timers, Generic.
  *
