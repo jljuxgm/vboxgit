@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 26535 2010-02-15 12:56:24Z vboxsync $ */
+/* $Id: PGM.cpp 26622 2010-02-17 16:50:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1611,6 +1611,9 @@ static void pgmR3InitStats(PVM pVM)
 # define PGM_REG_PROFILE(a, b, c) \
         rc = STAMR3RegisterF(pVM, a, STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_TICKS_PER_CALL, c, b); \
         AssertRC(rc);
+
+    PGM_REG_COUNTER(&pPGM->StatLargePageUsed,                 "/PGM/LargePage/Alloc",               "The number of large pages we've used.");
+    PGM_REG_COUNTER(&pPGM->StatLargePageRefused,              "/PGM/LargePage/Refused",             "The number of times we couldn't use a large page.");
 
     PGM_REG_COUNTER(&pPGM->StatR3DetectedConflicts,           "/PGM/R3/DetectedConflicts",          "The number of times PGMR3CheckMappingConflicts() detected a conflict.");
     PGM_REG_PROFILE(&pPGM->StatR3ResolveConflict,             "/PGM/R3/ResolveConflict",            "pgmR3SyncPTResolveConflict() profiling (includes the entire relocation).");
