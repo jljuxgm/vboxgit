@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 25867 2010-01-15 14:46:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -105,6 +105,8 @@
 #include "DHCPServerRunner.h"
 
 #include <VBox/param.h>
+
+#undef PVM
 
 /* Comment out the following line to remove VMWare compatibility hack. */
 #define VMWARE_NET_IN_SLOT_11
