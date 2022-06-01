@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: USBControllerImpl.h 24989 2009-11-26 11:31:46Z vboxsync $ */
 
 /** @file
  *
@@ -136,7 +136,7 @@ public:
     /** @note this doesn't require a read lock since mParent is constant. */
     const ComObjPtr<Machine, ComWeakRef> &parent() { return mParent; };
 
-    const Backupable<Data> &data() { return mData; }
+    const Backupable<Data>& getData() { return mData; }
 
     // for VirtualBoxSupportErrorInfoImpl
     static const wchar_t *getComponentName() { return L"USBController"; }
@@ -161,7 +161,7 @@ private:
     /** Peer object. */
     const ComObjPtr<USBController> mPeer;
     /** Data. */
-    Backupable <Data> mData;
+    Backupable<Data> mData;
 
 #ifdef VBOX_WITH_USB
     // the following fields need special backup/rollback/commit handling,

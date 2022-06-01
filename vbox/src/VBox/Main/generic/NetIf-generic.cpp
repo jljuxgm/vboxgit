@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 22875 2009-09-09 19:21:32Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 24989 2009-11-26 11:31:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -138,15 +138,14 @@ int NetIfCreateHostOnlyNetworkInterface (VirtualBox *pVBox, IHostNetworkInterfac
     progress.createObject();
 
     ComPtr<IHost> host;
-    HRESULT rc = pVBox->COMGETTER(Host)(host.asOutParam());
-    if(SUCCEEDED(rc))
+    HRESULT hrc = pVBox->COMGETTER(Host)(host.asOutParam());
+    if (SUCCEEDED(hrc))
     {
-        rc = progress->init (pVBox, host,
+        hrc = progress->init(pVBox, host,
                              Bstr ("Creating host only network interface"),
                              FALSE /* aCancelable */);
-        if(SUCCEEDED(rc))
+        if (SUCCEEDED(hrc))
         {
-            CheckComRCReturnRC(rc);
             progress.queryInterfaceTo(aProgress);
 
             char szAdpCtl[RTPATH_MAX];
@@ -207,7 +206,7 @@ int NetIfCreateHostOnlyNetworkInterface (VirtualBox *pVBox, IHostNetworkInterfac
         }
     }
 
-    return rc;
+    return hrc;
 
 #else
     return VERR_NOT_IMPLEMENTED;

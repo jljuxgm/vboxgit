@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 24989 2009-11-26 11:31:46Z vboxsync $ */
 
 /** @file
  *
@@ -99,11 +99,6 @@ public:
     void commit();
     void copyFrom (AudioAdapter *aThat);
 
-    // public methods for internal purposes only
-    // (ensure there is a caller and a read lock before calling them!)
-
-    const Backupable <Data> &data() const { return mData; }
-
     // for VirtualBoxSupportErrorInfoImpl
     static const wchar_t *getComponentName() { return L"AudioAdapter"; }
 
@@ -112,7 +107,7 @@ private:
     const ComObjPtr<Machine, ComWeakRef> mParent;
     const ComObjPtr<AudioAdapter> mPeer;
 
-    Backupable <Data> mData;
+    Backupable<Data> mData;
 };
 
 #endif // ____H_AUDIOADAPTER

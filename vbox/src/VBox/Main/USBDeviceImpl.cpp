@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 24989 2009-11-26 11:31:46Z vboxsync $ */
 
 /** @file
  *
@@ -92,10 +92,10 @@ HRESULT OUSBDevice::init(IUSBDevice *aUSBDevice)
     hrc = aUSBDevice->COMGETTER(Remote)(&unconst(mData.remote));
     ComAssertComRCRet (hrc, hrc);
 
-    Bstr id;
-    hrc = aUSBDevice->COMGETTER(Id)(id.asOutParam());
-    ComAssertComRCRet (hrc, hrc);
-    unconst(mData.id) = Guid(id);
+    Bstr uuid;
+    hrc = aUSBDevice->COMGETTER(Id)(uuid.asOutParam());
+    ComAssertComRCRet(hrc, hrc);
+    unconst(mData.id) = Guid(uuid);
 
     /* Confirm a successful initialization */
     autoInitSpan.setSucceeded();

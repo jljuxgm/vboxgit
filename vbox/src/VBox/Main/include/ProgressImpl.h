@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 24969 2009-11-25 16:56:40Z vboxsync $ */
+/* $Id: ProgressImpl.h 24989 2009-11-26 11:31:46Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -93,8 +93,8 @@ public:
     // unsafe inline public methods for internal purposes only (ensure there is
     // a caller and a read lock before calling them!)
 
-    BOOL completed() const { return mCompleted; }
-    HRESULT resultCode() const { return mResultCode; }
+    BOOL getCompleted() const { return mCompleted; }
+    HRESULT getResultCode() const { return mResultCode; }
     double calcTotalPercent();
 
 protected:

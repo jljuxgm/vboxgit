@@ -1,4 +1,4 @@
-/* $Id: server.cpp 24830 2009-11-20 15:05:10Z vboxsync $ */
+/* $Id: server.cpp 24989 2009-11-26 11:31:46Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -676,11 +676,11 @@ NS_NewGenericFactoryEx(nsIGenericFactory **result,
  */
 static nsresult
 RegisterSelfComponents(nsIComponentRegistrar *registrar,
-                       const nsModuleComponentInfoEx *components,
+                       const nsModuleComponentInfoEx *aComponents,
                        PRUint32 count)
 {
     nsresult rc = NS_OK;
-    const nsModuleComponentInfoEx *info = components;
+    const nsModuleComponentInfoEx *info = aComponents;
     for (PRUint32 i = 0; i < count && NS_SUCCEEDED(rc); i++, info++)
     {
         /* skip components w/o a constructor */

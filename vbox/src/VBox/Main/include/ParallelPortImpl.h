@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 24989 2009-11-26 11:31:46Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -124,7 +124,7 @@ private:
     const ComObjPtr<Machine, ComWeakRef> mParent;
     const ComObjPtr<ParallelPort> mPeer;
 
-    Backupable <Data> mData;
+    Backupable<Data> mData;
 };
 
 #endif // ____H_FLOPPYDRIVEIMPL
