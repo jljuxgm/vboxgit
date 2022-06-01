@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 24207 2009-10-30 16:21:35Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 24216 2009-10-30 18:35:43Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1862,19 +1862,6 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     }
 
     vmxR0UpdateExceptionBitmap(pVM, pVCpu, pCtx);
-
-    /* Check if we need to intercept invlpg; we catch all page table updates, so there's no need unless there are dirty (unmonitored) pages. */
-    val = pVCpu->hwaccm.s.vmx.proc_ctls;
-    if (PGMHasDirtyPages(pVM))
-        pVCpu->hwaccm.s.vmx.proc_ctls |= VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_INVLPG_EXIT;
-    else
-        pVCpu->hwaccm.s.vmx.proc_ctls &= ~VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_INVLPG_EXIT;
-
-    if (val != pVCpu->hwaccm.s.vmx.proc_ctls)
-    {
-        rc = VMXWriteVMCS(VMX_VMCS_CTRL_PROC_EXEC_CONTROLS, pVCpu->hwaccm.s.vmx.proc_ctls);
-        AssertRC(rc);
-    }
 
 #ifdef VBOX_WITH_AUTO_MSR_LOAD_RESTORE
     /* Store all guest MSRs in the VM-Entry load area, so they will be loaded during the world switch. */
