@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 26422 2010-02-11 08:32:55Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -1553,7 +1553,7 @@ static int buslogicRegisterWrite(PBUSLOGIC pBusLogic, unsigned iRegister, uint8_
         case BUSLOGIC_REGISTER_COMMAND:
         {
             /* Fast path for mailbox execution command. */
-            if ((uVal == BUSLOGICCOMMAND_EXECUTE_MAILBOX_COMMAND) && (pBusLogic->uOperationCode = 0xff))
+            if ((uVal == BUSLOGICCOMMAND_EXECUTE_MAILBOX_COMMAND) && (pBusLogic->uOperationCode == 0xff))
             {
                 ASMAtomicIncU32(&pBusLogic->cMailboxesReady);
                 if (!ASMAtomicXchgBool(&pBusLogic->fNotificationSend, true))
