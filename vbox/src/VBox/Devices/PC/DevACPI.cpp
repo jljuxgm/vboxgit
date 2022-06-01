@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 25854 2010-01-15 11:07:26Z vboxsync $ */
+/* $Id: DevACPI.cpp 25855 2010-01-15 11:08:58Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -2102,6 +2102,7 @@ static DECLCALLBACK(int) acpiAttach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_t 
     AssertMsgReturn(!(fFlags & PDM_TACH_FLAGS_NOT_HOT_PLUG),
                     ("Hot-plug flag is not set\n"),
                     VERR_NOT_SUPPORTED);
+    AssertReturn(iLUN < VMM_MAX_CPU_COUNT, VERR_PDM_NO_SUCH_LUN);
 
     /* Check if it was already attached */
     if (VMCPUSET_IS_PRESENT(&s->CpuSetAttached, iLUN))
