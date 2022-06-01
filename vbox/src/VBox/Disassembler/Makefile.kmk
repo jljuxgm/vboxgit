@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25946 2010-01-20 23:52:24Z vboxsync $
+# $Id: Makefile.kmk 26218 2010-02-03 21:24:13Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -61,7 +61,7 @@ ifdef VBOX_WITH_RAW_MODE
 endif # VBOX_WITH_RAW_MODE
 
 LIBRARIES              += DisasmR0
-DisasmR0_TEMPLATE       = VBOXR0
+DisasmR0_TEMPLATE       = VBoxR0
 DisasmR0_DEFS           = IN_DIS IN_RT_R0 DIS_CORE_ONLY
 DisasmR0_SOURCES        = \
 	DisasmCore.cpp \
