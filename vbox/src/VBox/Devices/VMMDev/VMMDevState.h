@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 27049 2010-03-04 17:36:41Z vboxsync $ */
+/* $Id: VMMDevState.h 27891 2010-03-31 13:02:04Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -27,6 +27,33 @@
 #include <VBox/pdmifs.h>
 
 #define TIMESYNC_BACKDOOR
+
+typedef struct DISPLAYCHANGEINFO
+{
+    uint32_t xres;
+    uint32_t yres;
+    uint32_t bpp;
+    uint32_t display;
+} DISPLAYCHANGEINFO;
+
+typedef struct DISPLAYCHANGEREQUEST
+{
+    bool fPending;
+    DISPLAYCHANGEINFO displayChangeRequest;
+    DISPLAYCHANGEINFO lastReadDisplayChangeRequest;
+} DISPLAYCHANGEREQUEST;
+
+typedef struct DISPLAYCHANGEDATA
+{
+    /* Which monitor is being reported to the guest. */
+    int iCurrentMonitor;
+
+    /** true if the guest responded to VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST at least once */
+    bool fGuestSentChangeEventAck;
+
+    DISPLAYCHANGEREQUEST aRequests[64]; // @todo maxMonitors
+} DISPLAYCHANGEDATA;
+
 
 /** device structure containing all state information */
 typedef struct VMMDevState
@@ -116,18 +143,7 @@ typedef struct VMMDevState
     /** Video acceleration status set by guest. */
     uint32_t u32VideoAccelEnabled;
 
-    /** true if the guest responded to VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST at least once */
-    bool fGuestSentChangeEventAck;
-
-    /** resolution change request */
-    struct
-    {
-        uint32_t xres;
-        uint32_t yres;
-        uint32_t bpp;
-        uint32_t display;
-    } displayChangeRequest,
-      lastReadDisplayChangeRequest;
+    DISPLAYCHANGEDATA displayChangeData;
 
     /** credentials for guest logon purposes */
     struct
