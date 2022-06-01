@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 26437 2010-02-11 15:06:15Z vboxsync $ */
+/* $Id: PDMLdr.cpp 26461 2010-02-12 13:46:53Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -837,7 +837,7 @@ VMMR3DECL(int) PDMR3LdrGetSymbolRC(PVM pVM, const char *pszModule, const char *p
  */
 VMMR3DECL(int) PDMR3LdrGetSymbolRCLazy(PVM pVM, const char *pszModule, const char *pszSymbol, PRTRCPTR pRCPtrValue)
 {
-#if defined(PDMLDR_FAKE_MODE) || !defined(PDMR3LdrLoadRC)
+#if defined(PDMLDR_FAKE_MODE) || !defined(VBOX_WITH_RAW_MODE)
     *pRCPtrValue = 0xfeedf00d;
     return VINF_SUCCESS;
 
