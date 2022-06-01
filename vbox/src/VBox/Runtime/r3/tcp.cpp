@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 24218 2009-10-30 21:19:50Z vboxsync $ */
+/* $Id: tcp.cpp 24219 2009-10-30 21:52:35Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -34,6 +34,7 @@
 *******************************************************************************/
 #ifdef RT_OS_WINDOWS
 # include <winsock.h>
+# include <limits.h>
 #else /* !RT_OS_WINDOWS */
 # include <errno.h>
 # include <sys/stat.h>
