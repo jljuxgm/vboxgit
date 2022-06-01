@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 25584 2009-12-26 10:42:47Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 25585 2009-12-26 11:22:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -875,6 +875,7 @@ int pgmPhysPageLoadIntoTlb(PPGM pPGM, RTGCPHYS GCPhys)
     /* REM already has a TLB of its own; no point in having two
      * and keeping both in sync will eliminate any benefit there might be.
      */
+    pTlbe->GCPhys = NIL_RTGCPHYS;
 #endif
     pTlbe->pPage  = pPage;
     return VINF_SUCCESS;
@@ -925,6 +926,7 @@ int pgmPhysPageLoadIntoTlbWithPage(PPGM pPGM, PPGMPAGE pPage, RTGCPHYS GCPhys)
     /* REM already has a TLB of its own; no point in having two
      * and keeping both in sync will eliminate any benefit there might be.
      */
+    pTlbe->GCPhys = NIL_RTGCPHYS;
 #endif
     pTlbe->pPage = pPage;
     return VINF_SUCCESS;
