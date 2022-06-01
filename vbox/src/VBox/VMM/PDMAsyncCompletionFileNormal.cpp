@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 24530 2009-11-09 23:16:52Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 26147 2010-02-02 13:55:20Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -20,7 +20,6 @@
  * additional information or have any questions.
  */
 #define LOG_GROUP LOG_GROUP_PDM_ASYNC_COMPLETION
-#define RT_STRICT
 #include <iprt/types.h>
 #include <iprt/asm.h>
 #include <iprt/file.h>
