@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26392 2010-02-09 17:04:42Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 26459 2010-02-12 11:42:36Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -593,8 +593,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
      */
     BOOL fHpetEnabled;
 #ifdef VBOX_WITH_HPET
-    /* Need ability to allow enabling HPET in other profiles too */
-    fHpetEnabled = fExtProfile;
+    hrc = pMachine->COMGETTER(HpetEnabled)(&fHpetEnabled);                          H();
+    /* Always enable HPET in extended profile */
+    fHpetEnabled |= fExtProfile;
 #else
     fHpetEnabled = false;
 #endif
