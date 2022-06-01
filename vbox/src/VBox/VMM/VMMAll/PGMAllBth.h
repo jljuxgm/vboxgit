@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 24041 2009-10-23 14:55:05Z vboxsync $ */
+/* $Id: PGMAllBth.h 24207 2009-10-30 16:21:35Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -977,6 +977,13 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
         pgmPoolResetDirtyPages(pVM);
 # endif
 
+# ifdef IN_RING0
+    /* No need to do anything else here as we monitor all page tables and invalidate on demand.
+     * This also applies to RC, but let's first eliminate it for VT-x/AMD-V only.
+     */
+    return VINF_SUCCESS;
+# else
+
     /*
      * Get the shadow PD entry and skip out if this PD isn't present.
      * (Guessing that it is frequent for a shadow PDE to not be present, do this first.)
@@ -1359,6 +1366,7 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
     PGMDynUnlockHCPage(pVM, (uint8_t *)pPdeDst);
 # endif
     return rc;
+# endif /* !IN_RING0 */
 
 #else /* guest real and protected mode */
     /* There's no such thing as InvalidatePage when paging is disabled, so just ignore. */
