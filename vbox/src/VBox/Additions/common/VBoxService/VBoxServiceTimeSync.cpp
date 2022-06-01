@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 25563 2009-12-22 12:59:20Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 26074 2010-01-27 15:40:29Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -596,6 +596,7 @@ DECLCALLBACK(int) VBoxServiceTimeSyncWorker(bool volatile *pfShutdown)
         }
     }
 
+    VBoxServiceTimeSyncCancelAdjust();
     RTSemEventMultiDestroy(g_TimeSyncEvent);
     g_TimeSyncEvent = NIL_RTSEMEVENTMULTI;
     return rc;
