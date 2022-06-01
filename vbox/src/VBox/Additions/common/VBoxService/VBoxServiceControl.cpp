@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControl.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 28014 2010-04-06 15:20:35Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -124,7 +124,8 @@ static int VBoxServiceControlHandleCmdExec(uint32_t u32ClientId, uint32_t uNumPa
         /* Prepare argument list. */
         char **ppaArg;
         int iArgs;
-        rc = RTGetOptArgvFromString(&ppaArg, &iArgs, execData.szArgs, NULL);
+        rc = RTGetOptArgvFromString(&ppaArg, &iArgs, 
+                                    execData.uNumArgs ? execData.szArgs : "", NULL);
         Assert(execData.uNumArgs == iArgs);
         if (RT_SUCCESS(rc))
         {

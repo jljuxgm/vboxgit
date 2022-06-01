@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 28014 2010-04-06 15:20:35Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -180,6 +180,11 @@ VBGLR3DECL(int) VbglR3GuestCtrlGetHostCmdExec(uint32_t u32ClientId, uint32_t uNu
     if (RT_SUCCESS(rc))
     {
         rc = Msg.hdr.result;
+
+        Msg.flags.GetUInt32(puFlags);
+        Msg.num_args.GetUInt32(puNumArgs);
+        Msg.num_env.GetUInt32(puNumEnvVars);
+        Msg.timeout.GetUInt32(puTimeLimit);
     }
     return rc;
 }
