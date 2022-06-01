@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 26603 2010-02-17 12:24:34Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 27179 2010-03-08 17:06:00Z vboxsync $ */
 
 /** @file
  *
@@ -278,7 +278,7 @@ public:
     HRESULT unregisterImage(Medium *aImage, DeviceType_T argType, bool *pfNeedsSaveSettings);
 
     HRESULT saveSettings();
-    HRESULT updateSettings(const char *aOldPath, const char *aNewPath);
+    HRESULT updatePathInMediaRegistry(const char *aOldPath, const char *aNewPath);
 
     static HRESULT ensureFilePathExists(const Utf8Str &strFileName);
 

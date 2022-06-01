@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 27176 2010-03-08 16:11:46Z vboxsync $ */
+/* $Id: MachineImpl.cpp 27179 2010-03-08 17:06:00Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -6949,7 +6949,7 @@ HRESULT Machine::prepareSaveSettings(bool &aRenamed,
             /* last, try to update the global settings with the new path */
             if (mData->mRegistered)
             {
-                rc = mParent->updateSettings(configDir.c_str(), newConfigDir.c_str());
+                rc = mParent->updatePathInMediaRegistry(configDir.c_str(), newConfigDir.c_str());
                 if (FAILED(rc))
                 {
                     /* revert to old values */
