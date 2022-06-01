@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29367 2010-05-11 15:27:59Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 29420 2010-05-12 13:07:46Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -242,9 +242,8 @@ void VBoxServicePageSharingInspectModules(DWORD dwProcessId, PAVLPVNODECORE *ppN
                 pModule->Info     = ModuleInfo;
                 pModule->Core.Key = ModuleInfo.modBaseAddr;
                 pModule->hModule  = LoadLibraryEx(ModuleInfo.szExePath, 0, DONT_RESOLVE_DLL_REFERENCES);
-                Assert(pModule->hModule);
-
-                VBoxServicePageSharingRegisterModule(hProcess, pModule);
+                if (pModule->hModule)
+                    VBoxServicePageSharingRegisterModule(hProcess, pModule);
 
                 pRec = &pModule->Core;
             }
