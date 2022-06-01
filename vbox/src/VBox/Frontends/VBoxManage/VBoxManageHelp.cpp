@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 23998 2009-10-22 18:34:15Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 24136 2009-10-28 12:48:41Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -236,7 +236,9 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--teleporterenabled on|off]\n"
                  "                            [--teleporterport <port>]\n"
                  "                            [--teleporteraddress <address|empty>\n"
-                 "                            [--teleporterpassword <password>]\n");
+                 "                            [--teleporterpassword <password>]\n"
+                 "                            [--hardwareuuid <uuid>]\n"
+                );
         RTPrintf("\n");
     }
 
