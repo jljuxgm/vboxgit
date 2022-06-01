@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 27543 2010-03-19 15:47:14Z vboxsync $ */
+/* $Id: PGMInternal.h 27544 2010-03-19 15:47:56Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -633,7 +633,7 @@ typedef struct PGMPAGE
      */
     RTUINT16U   u16MiscY;
     /** The page state.
-     * Only 2 bits are really needed for this. */
+     * Only 3 bits are really needed for this. */
     uint8_t     uStateY;
     /** The page type (PGMPAGETYPE).
      * Only 3 bits are really needed for this. */
