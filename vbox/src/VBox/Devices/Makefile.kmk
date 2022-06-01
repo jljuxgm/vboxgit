@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28338 2010-04-14 22:13:58Z vboxsync $
+# $Id: Makefile.kmk 28340 2010-04-14 22:21:12Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -765,7 +765,7 @@ endif
 if1of ($(VBOX_LDR_FMT), pe lx)
 VBoxDDR0_LIBS           = \
 	$(PATH_LIB)/VMMR0Imp$(VBOX_SUFF_LIB) \
-	$(PATH_LIB)/SUP0$(VBOX_SUFF_LIB)
+	$(PATH_LIB)/SUPR0$(VBOX_SUFF_LIB)
 endif
 
 
