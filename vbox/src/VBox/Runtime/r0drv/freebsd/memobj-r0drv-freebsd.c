@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-freebsd.c 29714 2010-05-20 21:22:44Z vboxsync $ */
+/* $Id: memobj-r0drv-freebsd.c 29739 2010-05-21 14:27:34Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, FreeBSD.
  */
@@ -57,9 +57,9 @@
 /**
  * Check whether we can use kmem_alloc_attr for low allocs.
  */
-#if    (__FreeBSD_version >= 900000 && __FreeBSD_version >= 900011) \
-    || (__FreeBSD_version >= 800000 && __FreeBSD_version >= 800505) \
-    || (__FreeBSD_version >= 700000 && __FreeBSD_version >= 703101)
+#if    (__FreeBSD_version >= 900011) \
+    || (__FreeBSD_version < 900000 && __FreeBSD_version >= 800505) \
+    || (__FreeBSD_version < 800000 && __FreeBSD_version >= 703101)
 # define USE_KMEM_ALLOC_ATTR
 #endif
 
