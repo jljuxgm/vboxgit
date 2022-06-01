@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 30207 2010-06-15 15:49:27Z vboxsync $ */
+/* $Id: ConsoleImpl.h 30289 2010-06-17 16:38:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -629,6 +629,8 @@ private:
     bool mVMPoweredOff : 1;
     /** true when vmstateChangeCallback shouldn't initiate a power down.  */
     bool mVMIsAlreadyPoweringOff : 1;
+    /** true if we already showed the snapshot folder warning. */
+    bool mfSnapshotFolderWarningShown : 1;
 
     /** The current network attachment type in the VM.
      * This doesn't have to match the network attachment type

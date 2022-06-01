@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 30209 2010-06-15 16:10:29Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 30289 2010-06-17 16:38:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -474,6 +474,7 @@ Console::Console()
     , mVMDestroying(false)
     , mVMPoweredOff(false)
     , mVMIsAlreadyPoweringOff(false)
+    , mfSnapshotFolderWarningShown(false)
     , mVMMDev(NULL)
     , mAudioSniffer(NULL)
     , mVMStateChangeCallbackDisabled(false)
