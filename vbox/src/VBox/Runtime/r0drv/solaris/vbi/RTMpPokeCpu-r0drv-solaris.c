@@ -1,4 +1,4 @@
-/* $Id: RTMpPokeCpu-r0drv-solaris.c 29284 2010-05-10 00:22:16Z vboxsync $ */
+/* $Id: RTMpPokeCpu-r0drv-solaris.c 29300 2010-05-10 12:30:43Z vboxsync $ */
 /** @file
  * IPRT - RTMpPokeCpu, Solaris Implementation.
  */
@@ -35,6 +35,7 @@
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 # include <iprt/asm-amd64-x86.h>
 #endif
+#include <iprt/assert.h>
 #include <iprt/err.h>
 
 
