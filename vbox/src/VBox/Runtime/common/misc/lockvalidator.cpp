@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 25692 2010-01-08 15:59:45Z vboxsync $ */
+/* $Id: lockvalidator.cpp 25694 2010-01-08 16:43:29Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -381,7 +381,11 @@ static void rtLockValComplain(RT_SRC_POS_DECL, const char *pszWhat, ...)
  */
 static void rtLockValComplainAboutClass(const char *pszPrefix, RTLOCKVALCLASSINT *pClass, uint32_t uSubClass, bool fVerbose)
 {
+    if (   VALID_PTR(pClass)
+        && pClass->u32Magic == RTLOCKVALCLASS_MAGIC)
+    {
 
+    }
 }
 
 
