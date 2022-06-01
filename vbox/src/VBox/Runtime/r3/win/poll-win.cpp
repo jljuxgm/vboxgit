@@ -1,4 +1,4 @@
-/* $Id: poll-win.cpp 26827 2010-02-26 10:59:04Z vboxsync $ */
+/* $Id: poll-win.cpp 26844 2010-02-26 13:03:11Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows Implementation.
  */
@@ -82,7 +82,7 @@ RTDECL(int) RTPollSetQueryHandle(RTPOLLSET hPollSet, uint32_t id, PRTHANDLE pHan
 }
 
 
-RTDECL(uint32_t) RTPollGetCount(RTPOLLSET hPollSet)
+RTDECL(uint32_t) RTPollSetCount(RTPOLLSET hPollSet)
 {
     return UINT32_MAX;
 }
