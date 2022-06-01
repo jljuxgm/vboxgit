@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 25540 2009-12-21 14:02:28Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 25547 2009-12-21 16:38:13Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -907,8 +907,10 @@ static int pgmPoolAccessHandlerFlush(PVM pVM, PVMCPU pVCpu, PPGMPOOL pPool, PPGM
     else
         rc = rc2;
 
+#ifdef IN_RC
     /* See use in pgmPoolAccessHandlerSimple(). */
     PGM_INVL_VCPU_TLBS(pVCpu);
+#endif
     LogFlow(("pgmPoolAccessHandlerPT: returns %Rrc (flushed)\n", rc));
     return rc;
 }
