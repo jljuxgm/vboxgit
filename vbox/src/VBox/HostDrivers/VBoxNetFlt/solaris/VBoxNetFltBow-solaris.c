@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 30116 2010-06-09 12:47:39Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 30336 2010-06-21 14:38:52Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1106,7 +1106,7 @@ int vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis, void *pvContext)
         mac_close(hInterface);
     }
     else
-        LogRel((DEVICE_NAME ":vboxNetFltOsInitInstance failed to open link '%s'! rc=%d\n", pThis->szName));
+        LogRel((DEVICE_NAME ":vboxNetFltOsInitInstance failed to open link '%s'! rc=%d\n", pThis->szName, rc));
 
     return RTErrConvertFromErrno(rc);
 }
