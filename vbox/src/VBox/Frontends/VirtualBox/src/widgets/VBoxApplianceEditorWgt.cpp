@@ -1,3 +1,4 @@
+/* $Id: VBoxApplianceEditorWgt.cpp 26715 2010-02-23 15:39:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
