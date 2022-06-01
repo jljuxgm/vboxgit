@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 27231 2010-03-09 20:16:59Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 27520 2010-03-19 10:48:32Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1800,6 +1800,7 @@ ResumeExecution:
         }
 
 #ifdef VBOX_STRICT
+        case X86_XCPT_BP:   /* Breakpoint. */
         case X86_XCPT_GP:   /* General protection failure exception.*/
         case X86_XCPT_UD:   /* Unknown opcode exception. */
         case X86_XCPT_DE:   /* Divide error. */
@@ -1817,6 +1818,8 @@ ResumeExecution:
                 STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitGuestGP);
                 Event.n.u1ErrorCodeValid    = 1;
                 Event.n.u32ErrorCode        = pVMCB->ctrl.u64ExitInfo1; /* EXITINFO1 = error code */
+                break;
+            case X86_XCPT_BP:
                 break;
             case X86_XCPT_DE:
                 STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitGuestDE);
