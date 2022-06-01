@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-freebsd.c 28497 2010-04-19 20:49:00Z vboxsync $ */
+/* $Id: semmutex-r0drv-freebsd.c 28499 2010-04-19 21:03:13Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, FreeBSD.
  */
@@ -70,7 +70,7 @@ RTDECL(int)  RTSemMutexCreate(PRTSEMMUTEX phMutexSem)
     if (pThis)
     {
         pThis->u32Magic = RTSEMMUTEX_MAGIC;
-        sx_init_flags(&pThis->SxLock, "IPRT Mutex Semaphore", SX_LOCK_RECURSED);
+        sx_init_flags(&pThis->SxLock, "IPRT Mutex Semaphore", SX_RECURSE);
 
         *phMutexSem = pThis;
         return VINF_SUCCESS;
