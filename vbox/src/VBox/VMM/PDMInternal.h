@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 28265 2010-04-13 16:02:10Z vboxsync $ */
+/* $Id: PDMInternal.h 28266 2010-04-13 16:02:57Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1020,9 +1020,11 @@ typedef struct PDMUSERPERVM
 {
     /** @todo move more stuff over here. */
 
-    /** Linked list of timer driven PDM queues. */
+    /** Linked list of timer driven PDM queues.
+     * Currently serialized by PDM::CritSect.  */
     R3PTRTYPE(struct PDMQUEUE *)    pQueuesTimer;
-    /** Linked list of force action driven PDM queues. */
+    /** Linked list of force action driven PDM queues.
+     * Currently serialized by PDM::CritSect. */
     R3PTRTYPE(struct PDMQUEUE *)    pQueuesForced;
 
     /** Lock protecting the lists below it. */
