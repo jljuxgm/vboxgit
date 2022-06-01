@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 29480 2010-05-14 15:24:19Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 29486 2010-05-14 16:31:34Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -430,8 +430,9 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            --storagectl <name>\n"
                  "                            --port <number>\n"
                  "                            --device <number>\n"
-                 "                            [--type dvddrive|hdd|fdd\n"
-                 "                             --medium none|emptydrive|uuid|filename|host:<drive>]\n"
+                 "                            [--type dvddrive|hdd|fdd]\n"
+                 "                            [--medium none|emptydrive|\n"
+                 "                                      <uuid>|<filename>|host:<drive>]\n"
                  "                            [--passthrough on|off]\n"
                  "                            [--forceunmount]\n"
                  "\n");
