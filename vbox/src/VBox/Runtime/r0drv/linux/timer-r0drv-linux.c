@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 27194 2010-03-09 09:13:35Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 27196 2010-03-09 09:26:48Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -420,9 +420,11 @@ static void rtTimerLinuxCallback(unsigned long ulUser)
             pSubTimer->ulNextJiffies = jiffies + rtTimerLnxNanoToJiffies(pSubTimer->u64NextTS - u64NanoTS);
         }
 
+# ifdef CONFIG_SMP
         if (pTimer->fSpecificCpu || pTimer->fAllCpus)
             mod_timer_pinned(&pSubTimer->LnxTimer, pSubTimer->ulNextJiffies);
         else
+# endif
             mod_timer(&pSubTimer->LnxTimer, pSubTimer->ulNextJiffies);
 #endif
 
