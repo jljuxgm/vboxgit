@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 26437 2010-02-11 15:06:15Z vboxsync $ */
+/* $Id: PGM.cpp 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -4488,5 +4488,4 @@ VMMR3DECL(int) PGMR3CheckIntegrity(PVM pVM)
 
     return !cErrors ? VINF_SUCCESS : VERR_INTERNAL_ERROR;
 }
-
 

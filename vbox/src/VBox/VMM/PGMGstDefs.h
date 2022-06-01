@@ -1,4 +1,4 @@
-/* $Id: PGMGstDefs.h 17215 2009-02-27 16:33:19Z vboxsync $ */
+/* $Id: PGMGstDefs.h 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -131,5 +131,4 @@
 # define GST_PT_SHIFT               X86_PT_PAE_SHIFT
 # define GST_PT_MASK                X86_PT_PAE_MASK
 #endif
-
 

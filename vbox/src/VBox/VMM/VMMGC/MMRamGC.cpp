@@ -1,4 +1,4 @@
-/* $Id: MMRamGC.cpp 19015 2009-04-20 07:54:29Z vboxsync $ */
+/* $Id: MMRamGC.cpp 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * MMRamGC - Guest Context Ram access Routines, pair for MMRamGCA.asm.
  */
@@ -262,5 +262,4 @@ DECLCALLBACK(int) mmGCRamTrap0eHandler(PVM pVM, PCPUMCTXCORE pRegFrame)
      */
     return VERR_INTERNAL_ERROR;
 }
-
 

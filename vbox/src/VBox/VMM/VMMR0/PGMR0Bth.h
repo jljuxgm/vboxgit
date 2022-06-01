@@ -1,4 +1,4 @@
-/* $Id: PGMR0Bth.h 26234 2010-02-04 13:40:06Z vboxsync $ */
+/* $Id: PGMR0Bth.h 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -26,5 +26,4 @@
 RT_C_DECLS_BEGIN
 PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, bool *pfLockTaken);
 RT_C_DECLS_END
-
 

@@ -1,4 +1,4 @@
-/* $Id: PGMGCBth.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: PGMGCBth.h 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - Guest Context.
  */
@@ -25,5 +25,4 @@
 *******************************************************************************/
 RT_C_DECLS_BEGIN
 RT_C_DECLS_END
-
 

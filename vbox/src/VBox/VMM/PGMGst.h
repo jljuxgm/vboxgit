@@ -1,4 +1,4 @@
-/* $Id: PGMGst.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: PGMGst.h 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
@@ -135,5 +135,4 @@ PGM_GST_DECL(int, Exit)(PVMCPU pVCpu)
     rc = PGM_BTH_PFN(UnmapCR3, pVCpu)(pVCpu);
     return rc;
 }
-
 

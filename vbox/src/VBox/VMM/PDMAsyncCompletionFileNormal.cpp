@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 26479 2010-02-13 12:36:53Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -1099,7 +1099,7 @@ int pdmacFileAioMgrNormal(RTTHREAD ThreadSelf, void *pvUser)
                             PPDMACEPFILEMGR pAioMgrFailsafe;
 
                             LogRel(("%s: Request %#p failed with rc=%Rrc, migrating endpoint %s to failsafe manager.\n",
-                                    RTThreadGetName(pAioMgr->Thread), pTask, rcReq, pEndpoint->Core.pszUri)); 
+                                    RTThreadGetName(pAioMgr->Thread), pTask, rcReq, pEndpoint->Core.pszUri));
 
                             pEndpoint->AioMgr.fMoving = true;
 

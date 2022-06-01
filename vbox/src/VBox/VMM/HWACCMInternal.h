@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 26103 2010-01-29 15:14:22Z vboxsync $ */
+/* $Id: HWACCMInternal.h 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -571,7 +571,7 @@ typedef struct HWACCMCPU
     /** Current ASID in use by the VM */
     RTUINT                      uCurrentASID;
 
-    /** World switch exit counter. */ 
+    /** World switch exit counter. */
     volatile uint32_t           cWorldSwitchExit;
     uint32_t                    u32Alignment;
 

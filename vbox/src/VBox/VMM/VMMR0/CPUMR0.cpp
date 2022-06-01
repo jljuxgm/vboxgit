@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: CPUMR0.cpp 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -592,5 +592,4 @@ VMMR0DECL(int) CPUMR0LoadHyperDebugState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, b
     pVCpu->cpum.s.fUseFlags |= CPUM_USE_DEBUG_REGS_HYPER;
     return VINF_SUCCESS;
 }
-
 

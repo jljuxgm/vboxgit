@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 24077 2009-10-26 14:08:59Z vboxsync $ */
+/* $Id: PGMShw.h 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -264,6 +264,4 @@ PGM_SHW_DECL(int, Exit)(PVMCPU pVCpu)
     }
     return VINF_SUCCESS;
 }
-
-
 

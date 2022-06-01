@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 25647 2010-01-05 09:59:19Z vboxsync $ */
+/* $Id: DBGFMem.cpp 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -507,5 +507,4 @@ VMMDECL(int) DBGFR3SelInfoValidateCS(PCDBGFSELINFO pSelInfo, RTSEL SelCPL)
     }
     return VERR_SELECTOR_NOT_PRESENT;
 }
-
 

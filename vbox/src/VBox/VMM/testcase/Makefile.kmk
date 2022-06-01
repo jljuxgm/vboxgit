@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26224 2010-02-03 22:03:01Z vboxsync $
+# $Id: Makefile.kmk 26491 2010-02-14 07:47:12Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -390,5 +390,4 @@ $(VBOX_VMM_TESTCASE_OUT_DIR)/tstVMStructSize.run: $$(INSTARGET_tstVMStructSize) 
 
 # alias for the two struct tests.
 run-struct-tests: $(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructs.run $(VBOX_VMM_TESTCASE_OUT_DIR)/tstVMStructSize.run
-
 

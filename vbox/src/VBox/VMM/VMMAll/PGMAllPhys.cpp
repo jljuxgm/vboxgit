@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 26262 2010-02-05 02:11:21Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 26491 2010-02-14 07:47:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3423,5 +3423,4 @@ VMMDECL(int) PGMPhysInterpretedWriteNoHandlers(PVMCPU pVCpu, PCPUMCTXCORE pCtxCo
     Log(("PGMPhysInterpretedWriteNoHandlers: GCPtrDst=%RGv cb=%#x -> #PF(%#x) [!raised]\n", GCPtrDst, cb, uErr));
     return rc;
 }
-
 
