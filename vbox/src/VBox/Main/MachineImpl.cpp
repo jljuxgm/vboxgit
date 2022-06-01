@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 27610 2010-03-22 18:53:22Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -9604,7 +9604,8 @@ STDMETHODIMP SessionMachine::OnSessionEnd(ISession *aSession,
         Assert(mData->mSession.mProgress.isNull());
         ComObjPtr<Progress> progress;
         progress.createObject();
-        progress->init(mParent, mPeer,
+        ComPtr<IUnknown> pPeer(mPeer);
+        progress->init(mParent, pPeer,
                        Bstr(tr("Closing session")), FALSE /* aCancelable */);
         progress.queryInterfaceTo(aProgress);
         mData->mSession.mProgress = progress;
