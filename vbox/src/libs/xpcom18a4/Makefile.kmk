@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29075 2010-05-05 12:59:24Z vboxsync $
+# $Id: Makefile.kmk 29103 2010-05-05 18:45:27Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1129,17 +1129,18 @@ endif
 
 
 #
-# Python<->XPCOM bridge.
+# Include sub-makefiles for the Python<->XPCOM and Java<->XPCOM bridges.
 #
 
 # Find the Python headers for the Python<->XPCOM bridge if enabled.
 ifdef VBOX_WITH_PYTHON
-  include $(PATH_SUB_CURRENT)/python/Makefile.kmk
-endif # VBOX_WITH_PYTHON
+ include $(PATH_SUB_CURRENT)/python/Makefile.kmk
+endif
 
 ifdef VBOX_WITH_JXPCOM
-  include $(PATH_SUB_CURRENT)/java/Makefile.kmk
-endif # VBOX_WITH_JXPCOM
+ include $(PATH_SUB_CURRENT)/java/Makefile.kmk
+endif
+
 
 #
 # testcases
