@@ -1,4 +1,4 @@
-/* $Id: tstMicroRC.cpp 26223 2010-02-03 21:58:26Z vboxsync $ */
+/* $Id: tstMicroRC.cpp 26268 2010-02-05 03:37:15Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations - GC Code (hacks).
  */
@@ -127,7 +127,7 @@ void idtInstall(PTSTMICRO pTst, int iIDT)
 DECLASM(void) idtOnly42(PTSTMICRO pTst)
 {
     if (pTst->OriginalIDTR.pIdt)
-        memcpy(&pTst->aIDT[0], (void *)pTst->OriginalIDTR.pIdt, sizeof(VBOXIDTE) * 32);
+        memcpy(&pTst->aIDT[0], (void *)(uintptr_t)pTst->OriginalIDTR.pIdt, sizeof(VBOXIDTE) * 32);
 }
 
 
