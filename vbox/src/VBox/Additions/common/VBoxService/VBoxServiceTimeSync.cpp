@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 24540 2009-11-10 12:10:25Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 25159 2009-12-03 10:49:02Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -270,6 +270,9 @@ static bool VBoxServiceTimeSyncAdjust(PCRTTIMESPEC pDrift)
 {
 #ifdef RT_OS_WINDOWS
 /** @todo r=bird: NT4 doesn't have GetSystemTimeAdjustment. */
+    if (g_hTokenProcess == NULL) /* Is the token already closed when shutting down? */
+        return false;
+
     DWORD dwWinTimeAdjustment, dwWinNewTimeAdjustment, dwWinTimeIncrement;
     BOOL  fWinTimeAdjustmentDisabled;
     if (GetSystemTimeAdjustment(&dwWinTimeAdjustment, &dwWinTimeIncrement, &fWinTimeAdjustmentDisabled))
