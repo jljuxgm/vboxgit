@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 24933 2009-11-25 10:50:21Z vboxsync $ */
+/* $Id: MediumImpl.cpp 24954 2009-11-25 14:01:57Z vboxsync $ */
 
 /** @file
  *
@@ -1102,7 +1102,9 @@ HRESULT Medium::init(VirtualBox *aVirtualBox,
         CheckComRCReturnRC(rc);
     }
 
-    /* optional, only for diffs, default is false */
+    /* optional, only for diffs, default is false;
+     * we can only auto-reset diff images, so they
+     * must not have a parent */
     if (aParent != NULL)
         m->autoReset = data.fAutoReset;
     else
@@ -2521,6 +2523,8 @@ STDMETHODIMP Medium::Reset(IProgress **aProgress)
 
     AutoWriteLock alock(this);
 
+    LogFlowThisFunc(("ENTER for medium %s\n", m->strLocationFull.c_str()));
+
     if (mParent.isNull())
         return setError(VBOX_E_NOT_SUPPORTED,
                         tr ("Hard disk '%s' is not differencing"),
@@ -2546,7 +2550,7 @@ STDMETHODIMP Medium::Reset(IProgress **aProgress)
         /* setup task object and thread to carry out the operation
          * asynchronously */
 
-        std::auto_ptr <Task> task(new Task(this, progress, Task::Reset));
+        std::auto_ptr<Task> task(new Task(this, progress, Task::Reset));
         AssertComRCThrowRC(task->autoCaller.rc());
 
         rc = task->startThread();
@@ -2571,6 +2575,8 @@ STDMETHODIMP Medium::Reset(IProgress **aProgress)
         /* return progress to the caller */
         progress.queryInterfaceTo(aProgress);
     }
+
+    LogFlowThisFunc(("LEAVE, rc=%Rhrc\n", rc));
 
     return rc;
 }
