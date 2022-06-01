@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 24965 2009-11-25 16:46:30Z vboxsync $ */
+/* $Id: PGMAllBth.h 24966 2009-11-25 16:47:00Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1087,8 +1087,6 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
 # else
     const bool      fIsBigPage  = PdeSrc.b.u1Size && (CPUMGetGuestCR4(pVCpu) & X86_CR4_PSE);
 # endif
-
-    Log(("InvalidatePage %RGv (%RGp big=%d)\n", GCPtrPage, PdeSrc.u & GST_PDE_PG_MASK, fIsBigPage));
 
 # ifdef IN_RING3
     /*
