@@ -1,4 +1,4 @@
-/* $Id: sysfs.h 26163 2010-02-02 18:58:33Z vboxsync $ */
+/* $Id: sysfs.h 26608 2010-02-17 12:48:33Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -97,6 +97,18 @@ RTDECL(void) RTLinuxSysFsClose(int fd);
  * @param   cchBuf      The size of the buffer. Must be at least 2 bytes.
  */
 RTDECL(ssize_t) RTLinuxSysFsReadStr(int fd, char *pszBuf, size_t cchBuf);
+
+/**
+ * Reads the remainder of a file opened with RTLinuxSysFsOpen or
+ * RTLinuxSysFsOpenV.
+ *
+ * @returns IPRT status code.
+ * @param   fd          The file descriptor returned by RTLinuxSysFsOpen or RTLinuxSysFsOpenV.
+ * @param   pvBuf       Where to store the bits from the file.
+ * @param   cbBuf       The size of the buffer.
+ * @param   pcbRead     Where to return the number of bytes read.  Optional.
+ */
+RTDECL(int) RTLinuxSysFsReadFile(int fd, void *pvBuf, size_t cbBuf, size_t *pcbRead);
 
 /**
  * Reads a number from a sysfs file.

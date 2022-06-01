@@ -1,4 +1,4 @@
-/* $Id: sysfs.cpp 26253 2010-02-05 00:35:01Z vboxsync $ */
+/* $Id: sysfs.cpp 26608 2010-02-17 12:48:33Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -207,6 +207,39 @@ RTDECL(ssize_t) RTLinuxSysFsReadStr(int fd, char *pszBuf, size_t cchBuf)
     ssize_t cchRead = read(fd, pszBuf, cchBuf - 1);
     pszBuf[cchRead >= 0 ? cchRead : 0] = '\0';
     return cchRead;
+}
+
+
+RTDECL(int) RTLinuxSysFsReadFile(int fd, void *pvBuf, size_t cbBuf, size_t *pcbRead)
+{
+    int     rc;
+    ssize_t cbRead = read(fd, pvBuf, cbBuf);
+    if (cbRead >= 0)
+    {
+        if (pcbRead)
+            *pcbRead = cbRead;
+        if ((size_t)cbRead < cbBuf)
+            rc = VINF_SUCCESS;
+        else
+        {
+            /* Check for EOF */
+            char    ch;
+            off_t   off     = lseek(fd, 0, SEEK_CUR);
+            ssize_t cbRead2 = read(fd, &ch, 1);
+            if (cbRead2 == 0)
+                rc = VINF_SUCCESS;
+            else if (cbRead2 > 0)
+            {
+                lseek(fd, off, SEEK_SET);
+                rc = VERR_BUFFER_OVERFLOW;
+            }
+            else
+                rc = RTErrConvertFromErrno(errno);
+        }
+    }
+    else
+        rc = RTErrConvertFromErrno(errno);
+    return rc;
 }
 
 
