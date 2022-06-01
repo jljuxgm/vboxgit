@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 29891 2010-05-31 10:23:34Z vboxsync $ */
+/* $Id: DevSerial.cpp 29892 2010-05-31 10:33:53Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  * (taken from hw/serial.c 2010/05/15 with modifications)
@@ -217,7 +217,7 @@ struct SerialState
     bool                            fYieldOnLSRRead;
     bool volatile                   fRecvWaiting;
     bool                            f16550AEnabled;
-    bool                            Alignment3[3];
+    bool                            Alignment3[2];
     /** Time it takes to transmit a character */
     uint64_t                        char_transmit_time;
 
