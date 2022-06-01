@@ -1,4 +1,4 @@
-/* $Id: gctrl.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
+/* $Id: gctrl.cpp 28185 2010-04-12 09:05:04Z vboxsync $ */
 /** @file
  * Guest Control Service: Internal function used by service, Main and testcase.
  */
@@ -110,7 +110,7 @@ int gctrlPrepareExecArgv(char *pszArgs, void **ppvList, uint32_t *pcbList, uint3
  * @todo
  *
  */
-int gctrlAddToExecEnvv(char *pszEnv, void **ppvList, uint32_t *pcbList, uint32_t *pcEnv)
+int gctrlAddToExecEnvv(const char *pszEnv, void **ppvList, uint32_t *pcbList, uint32_t *pcEnv)
 {
     int rc = VINF_SUCCESS;
     uint32_t cbLen = strlen(pszEnv);
