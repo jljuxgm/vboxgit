@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25674 2010-01-06 22:11:44Z vboxsync $
+# $Id: Makefile.kmk 25813 2010-01-13 17:24:35Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -282,7 +282,6 @@ VBoxSVC_INTERMEDIATES = \
 VBoxSVC_SOURCES = \
 	Global.cpp \
 	Logging.cpp \
-	AutoLock.cpp \
 	Matching.cpp \
 	xml/Settings.cpp \
 	VirtualBoxBase.cpp \
@@ -609,7 +608,6 @@ VBoxC_INTERMEDIATES = \
 VBoxC_SOURCES = \
 	Global.cpp \
 	Logging.cpp \
-	AutoLock.cpp \
 	VBoxDll.cpp \
 	USBDeviceImpl.cpp \
 	RemoteUSBDeviceImpl.cpp \
@@ -686,6 +684,7 @@ VBoxCOM_SOURCES         = \
 	glue/com.cpp \
 	glue/initterm.cpp \
 	glue/string.cpp \
+	glue/AutoLock.cpp \
 	glue/EventQueue.cpp \
 	glue/ErrorInfo.cpp \
 	glue/errorprint.cpp \

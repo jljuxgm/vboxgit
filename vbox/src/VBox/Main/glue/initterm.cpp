@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 25812 2010-01-13 17:18:52Z vboxsync $ */
+/* $Id: initterm.cpp 25813 2010-01-13 17:24:35Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -53,6 +53,7 @@
 #include "VBox/com/com.h"
 #include "VBox/com/assert.h"
 #include "VBox/com/EventQueue.h"
+#include "VBox/com/AutoLock.h"
 
 #include "../include/Logging.h"
 
@@ -537,6 +538,11 @@ HRESULT Initialize()
     }
 
 #endif /* !defined (VBOX_WITH_XPCOM) */
+
+    // for both COM and XPCOM, we only get here if this is the main thread;
+    // only then initialize the autolock system (AutoLock.cpp)
+    Assert(RTThreadIsMain(RTThreadSelf()));
+    util::InitAutoLockSystem();
 
     AssertComRC (rc);
 
