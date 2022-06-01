@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltCommon-win.h 24217 2009-10-30 20:24:36Z vboxsync $ */
+/* $Id: VBoxNetFltCommon-win.h 25582 2009-12-25 10:25:46Z vboxsync $ */
 /** @file
  * VBoxNetFltCommon.h - Network Filter Driver (Host), Windows Specific Code. Common headeer with commonly used defines and decls
  */
@@ -26,15 +26,7 @@
 #ifndef ___VBoxNetFltCommon_win_h___
 #define ___VBoxNetFltCommon_win_h___
 
-#ifndef VBOX_NETFLT_ONDEMAND_BIND
-# define NDIS_MINIPORT_DRIVER
-# define NDIS50_MINIPORT 1
-#endif
-
-#define BINARY_COMPATIBLE 0
-#define NDIS_WDM 0
-#define NDIS50 1
-#define NTSTRSAFE_LIB
+//#define NTSTRSAFE_LIB
 
 #ifdef DEBUG
 //# define DEBUG_NETFLT_PACKETS
