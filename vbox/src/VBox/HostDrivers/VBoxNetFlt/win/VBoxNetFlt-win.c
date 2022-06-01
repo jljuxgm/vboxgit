@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.c 24217 2009-10-30 20:24:36Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.c 24758 2009-11-18 12:57:48Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -1960,30 +1960,25 @@ DriverEntry(
 {
     NDIS_STATUS                        Status = NDIS_STATUS_SUCCESS;
     int rc;
+#ifdef VBOX_LOOPBACK_USEFLAGS
+    ULONG MjVersion;
+    ULONG MnVersion;
+#endif
 
     NdisAllocateSpinLock(&g_GlobalLock);
-
-    do
-    {
-#ifdef VBOX_LOOPBACK_USEFLAGS
-        ULONG MjVersion;
-        ULONG MnVersion;
-#endif
 
 #ifdef VBOX_NETFLT_ONDEMAND_BIND
         /* we are registering in the DriverEntry only when we are working as a protocol
          * since in this case our driver is loaded after the VBoxDrv*/
-        rc = vboxNetFltWinInitNetFlt();
+    rc = vboxNetFltWinInitNetFlt();
 #else
         /* the idc registration is initiated via IOCTL since our driver
          * can be loaded when the VBoxDrv is not in case we are a Ndis IM driver */
-        rc = vboxNetFltWinInitNetFltBase();
+    rc = vboxNetFltWinInitNetFltBase();
 #endif
-        if(!RT_SUCCESS(rc))
-        {
-            Status = NDIS_STATUS_FAILURE;
-            break;
-        }
+    AssertRC(rc);
+    if(RT_SUCCESS(rc))
+    {
 #ifdef VBOX_LOOPBACK_USEFLAGS
         PsGetVersion(&MjVersion, &MnVersion,
           NULL, /* PULONG  BuildNumber  OPTIONAL */
@@ -2001,46 +1996,48 @@ DriverEntry(
         g_fPacketIsLoopedBack = NDIS_FLAGS_IS_LOOPBACK_PACKET;
 #endif
 
-#ifndef VBOX_NETFLT_ONDEMAND_BIND
-        Status = vboxNetFltWinMpRegister(DriverObject, RegistryPath);
-        if (Status != NDIS_STATUS_SUCCESS)
-        {
-            vboxNetFltWinFiniNetFlt();
-            break;
-        }
-#endif
-#ifndef VBOXNETADP
-        Status = vboxNetFltWinPtRegister(DriverObject, RegistryPath);
-        if (Status != NDIS_STATUS_SUCCESS)
-        {
-#ifndef VBOX_NETFLT_ONDEMAND_BIND
-            vboxNetFltWinMpDeregister();
-#endif
-            vboxNetFltWinFiniNetFlt();
-            break;
-        }
-#endif
-
         Status = vboxNetFltWinJobInitQueue(&g_JobQueue);
-        if(Status != STATUS_SUCCESS)
+        Assert(Status == STATUS_SUCCESS);
+        if(Status == STATUS_SUCCESS)
         {
-#ifndef VBOXNETADP
-            vboxNetFltWinPtDeregister();
-#endif
+            /* note: we do it after we initialize the Job Queue */
+            vboxNetFltWinStartInitIdcProbing();
+
 #ifndef VBOX_NETFLT_ONDEMAND_BIND
-            vboxNetFltWinMpDeregister();
+            Status = vboxNetFltWinMpRegister(DriverObject, RegistryPath);
+            Assert(Status == STATUS_SUCCESS);
+            if (Status == NDIS_STATUS_SUCCESS)
 #endif
-            vboxNetFltWinFiniNetFlt();
-            break;
-        }
-
-        /* note: we do it after we initialize the Job Queue */
-        vboxNetFltWinStartInitIdcProbing();
-
+            {
+#ifndef VBOXNETADP
+                Status = vboxNetFltWinPtRegister(DriverObject, RegistryPath);
+                Assert(Status == STATUS_SUCCESS);
+                if (Status == NDIS_STATUS_SUCCESS)
+#endif
+                {
 #if !defined(VBOX_NETFLT_ONDEMAND_BIND) && !defined(VBOXNETADP)
-        vboxNetFltWinAssociateMiniportProtocol();
+                    vboxNetFltWinAssociateMiniportProtocol();
 #endif
-    } while (FALSE);
+                    return STATUS_SUCCESS;
+
+//#ifndef VBOXNETADP
+//                vboxNetFltWinPtDeregister();
+//#endif
+                }
+#ifndef VBOX_NETFLT_ONDEMAND_BIND
+                vboxNetFltWinMpDeregister();
+#endif
+            }
+            vboxNetFltWinJobFiniQueue(&g_JobQueue);
+        }
+        vboxNetFltWinFiniNetFlt();
+    }
+    else
+    {
+        Status = NDIS_STATUS_FAILURE;
+    }
+
+    NdisFreeSpinLock(&g_GlobalLock);
 
     return(Status);
 }
