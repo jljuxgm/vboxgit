@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 25672 2010-01-06 21:23:07Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 25819 2010-01-13 23:09:52Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1345,6 +1345,20 @@ int handleModifyVM(HandlerArg *a)
                     CHECK_ERROR(audioAdapter, COMSETTER(Enabled)(true));
                 }
 #endif /* !RT_OS_SOLARIS */
+#ifdef RT_OS_FREEBSD
+                else if (!strcmp(ValueUnion.psz, "oss"))
+                {
+                    CHECK_ERROR(audioAdapter, COMSETTER(AudioDriver)(AudioDriverType_OSS));
+                    CHECK_ERROR(audioAdapter, COMSETTER(Enabled)(true));
+                }
+# ifdef VBOX_WITH_PULSE
+                else if (!strcmp(ValueUnion.psz, "pulse"))
+                {
+                    CHECK_ERROR(audioAdapter, COMSETTER(AudioDriver)(AudioDriverType_Pulse));
+                    CHECK_ERROR(audioAdapter, COMSETTER(Enabled)(true));
+                }
+# endif
+#endif /* !RT_OS_FREEBSD */
 #ifdef RT_OS_DARWIN
                 else if (!strcmp(ValueUnion.psz, "coreaudio"))
                 {

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25818 2010-01-13 22:18:30Z vboxsync $
+# $Id: Makefile.kmk 25819 2010-01-13 23:09:52Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -983,6 +983,10 @@ endif
 ifdef VBOX_WITH_PULSE
  Drivers_DEFS.linux   += VBOX_WITH_PULSE
  Drivers_SOURCES.linux+= \
+	Audio/pulseaudio.c \
+	Audio/pulse_stubs.c
+ Drivers_DEFS.freebsd += VBOX_WITH_PULSE
+ Drivers_SOURCES.freebsd+= \
 	Audio/pulseaudio.c \
 	Audio/pulse_stubs.c
 endif
