@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 26632 2010-02-18 16:44:13Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 27047 2010-03-04 16:36:08Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -671,7 +671,7 @@ static int VBoxGuestSolarisIOCtl(dev_t Dev, int Cmd, intptr_t pArg, int Mode, cr
     else
     {
         if (rc != VERR_INTERRUPTED)
-            LogRel((DEVICE_NAME "::IOCtl: VBoxGuestCommonIOCtl failed. rc=%d\n", rc));
+            LogRel((DEVICE_NAME "::IOCtl: VBoxGuestCommonIOCtl failed. Cmd=%#x rc=%d\n", Cmd, rc));
         else
             Log((DEVICE_NAME "::IOCtl: VBoxGuestCommonIOCtl failed. rc=%d\n", rc));
         rc = RTErrConvertToErrno(rc);
