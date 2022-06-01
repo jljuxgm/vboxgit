@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 22438 2009-08-25 14:34:22Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 24179 2009-10-30 10:26:43Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -241,7 +241,7 @@ int _init(void)
         }
         else
             LogRel((DEVICE_NAME ":VBoxDrvSolarisAttach: supdrvInitDevExt failed\n"));
-        RTR0Term();
+        RTR0TermForced();
     }
     else
         LogRel((DEVICE_NAME ":VBoxDrvSolarisAttach: failed to init R0Drv\n"));
@@ -268,7 +268,7 @@ int _fini(void)
     AssertRC(rc);
     g_Spinlock = NIL_RTSPINLOCK;
 
-    RTR0Term();
+    RTR0TermForced();
 
     memset(&g_DevExt, 0, sizeof(g_DevExt));
 
