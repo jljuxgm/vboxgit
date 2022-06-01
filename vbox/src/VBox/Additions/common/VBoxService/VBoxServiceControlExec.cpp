@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 29830 2010-05-26 19:56:05Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 29842 2010-05-27 10:53:19Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -752,31 +752,29 @@ int VBoxServiceControlExecCreateProcess(const char *pszExec, const char * const 
 {
     int  rc = VINF_SUCCESS;
 #ifdef RT_OS_WINDOWS
-    /* Get the predefined path of sysprep.exe (depending on Windows OS). */
-    char szSysprepCmd[RTPATH_MAX] = "C:\\sysprep\\sysprep.exe";
-    OSVERSIONINFOEX OSInfoEx;
-    RT_ZERO(OSInfoEx);
-    OSInfoEx.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-    if (    GetVersionEx((LPOSVERSIONINFO) &OSInfoEx)
-        &&  OSInfoEx.dwPlatformId == VER_PLATFORM_WIN32_NT
-        &&  OSInfoEx.dwMajorVersion >= 6 /* Vista or later */)
-    {
-        rc = RTEnvGetEx(RTENV_DEFAULT, "windir", szSysprepCmd, sizeof(szSysprepCmd), NULL);
-        if (RT_SUCCESS(rc))
-            rc = RTPathAppend(szSysprepCmd, sizeof(szSysprepCmd), "system32\\sysprep\\sysprep.exe");
-    }
-
     /* 
      * If sysprep should be executed do this in the context of VBoxService, which
      * (usually, if started by SCM) has administrator rights. Because of that a UI
      * won't be shown (doesn't have a desktop).
      */
-    if (   RT_SUCCESS(rc) 
-        && stricmp(pszExec, szSysprepCmd) == 0)
+    if (stricmp(pszExec, "sysprep") == 0)
     {
-         rc = RTProcCreateEx(pszExec, papszArgs, hEnv, 0 /* fFlags */,
-                             phStdIn, phStdOut, phStdErr, NULL /* pszAsUser */,
-                             NULL /* pszPassword */, phProcess);
+        /* Get the predefined path of sysprep.exe (depending on Windows OS). */
+        char szSysprepCmd[RTPATH_MAX] = "C:\\sysprep\\sysprep.exe";
+        OSVERSIONINFOEX OSInfoEx;
+        RT_ZERO(OSInfoEx);
+        OSInfoEx.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
+        if (    GetVersionEx((LPOSVERSIONINFO) &OSInfoEx)
+            &&  OSInfoEx.dwPlatformId == VER_PLATFORM_WIN32_NT
+            &&  OSInfoEx.dwMajorVersion >= 6 /* Vista or later */)
+        {
+            rc = RTEnvGetEx(RTENV_DEFAULT, "windir", szSysprepCmd, sizeof(szSysprepCmd), NULL);
+            if (RT_SUCCESS(rc))
+                rc = RTPathAppend(szSysprepCmd, sizeof(szSysprepCmd), "system32\\sysprep\\sysprep.exe");
+        }
+        rc = RTProcCreateEx(szSysprepCmd, papszArgs, hEnv, 0 /* fFlags */,
+                            phStdIn, phStdOut, phStdErr, NULL /* pszAsUser */,
+                            NULL /* pszPassword */, phProcess);
     }
     else
     {
