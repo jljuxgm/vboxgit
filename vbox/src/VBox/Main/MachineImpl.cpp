@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 29225 2010-05-07 16:01:34Z vboxsync $ */
+/* $Id: MachineImpl.cpp 29309 2010-05-10 15:44:55Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -1463,12 +1463,12 @@ STDMETHODIMP Machine::COMSETTER(MemoryBalloonSize)(ULONG memoryBalloonSize)
 #endif
 }
 
-STDMETHODIMP Machine::COMGETTER(SharedPagingEnabled) (BOOL *enabled)
+STDMETHODIMP Machine::COMGETTER(PageFusionEnabled) (BOOL *enabled)
 {
     return E_NOTIMPL;
 }
 
-STDMETHODIMP Machine::COMSETTER(SharedPagingEnabled) (BOOL enabled)
+STDMETHODIMP Machine::COMSETTER(PageFusionEnabled) (BOOL enabled)
 {
     return E_NOTIMPL;
 }

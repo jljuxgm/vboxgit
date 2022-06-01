@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 29299 2010-05-10 12:20:08Z vboxsync $ */
+/* $Id: GuestImpl.cpp 29309 2010-05-10 15:44:55Z vboxsync $ */
 
 /** @file
  *
@@ -207,12 +207,12 @@ STDMETHODIMP Guest::COMGETTER(SupportsGraphics) (BOOL *aSupportsGraphics)
     return S_OK;
 }
 
-STDMETHODIMP Guest::COMGETTER(SharedPagingEnabled) (BOOL *enabled)
+STDMETHODIMP Guest::COMGETTER(PageFusionEnabled) (BOOL *enabled)
 {
     return E_NOTIMPL;
 }
 
-STDMETHODIMP Guest::COMSETTER(SharedPagingEnabled) (BOOL enabled)
+STDMETHODIMP Guest::COMSETTER(PageFusionEnabled) (BOOL enabled)
 {
     return E_NOTIMPL;
 }
