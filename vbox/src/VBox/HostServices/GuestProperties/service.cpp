@@ -1,4 +1,4 @@
-/* $Id: service.cpp 25355 2009-12-14 10:17:49Z vboxsync $ */
+/* $Id: service.cpp 25417 2009-12-15 22:21:39Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1307,7 +1307,7 @@ int Service::hostCall (uint32_t eFunction, uint32_t cParms, VBOXHGCMSVCPARM paPa
                 rc = enumProps(cParms, paParms);
                 break;
 
-            /* The host wishes to flush all pending notification */
+            /* The host wishes to set global flags for the service */
             case SET_GLOBAL_FLAGS_HOST:
                 LogFlowFunc(("SET_GLOBAL_FLAGS_HOST\n"));
                 if (cParms == 1)
