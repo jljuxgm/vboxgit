@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 29435 2010-05-12 20:55:39Z vboxsync $ */
+/* $Id: DevE1000.cpp 29439 2010-05-13 00:32:18Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2578,15 +2578,17 @@ static int e1kRegWriteRCTL(E1KSTATE* pState, uint32_t offset, uint32_t index, ui
             pState->pDrvR3->pfnSetPromiscuousMode(pState->pDrvR3, fBecomePromiscous);
 #endif
     }
+
     /* Adjust receive buffer size */
-    if (GET_BITS(RCTL, BSIZE) != GET_BITS_V(value, RCTL, BSIZE))
-    {
-        pState->u16RxBSize = 2048 >> GET_BITS(RCTL, BSIZE);
-        if (RCTL & RCTL_BSEX)
-            pState->u16RxBSize *= 16;
-        E1kLog2(("%s e1kRegWriteRCTL: Setting receive buffer size to %d\n",
-                 INSTANCE(pState), pState->u16RxBSize));
-    }
+    unsigned cbRxBuf = 2048 >> GET_BITS_V(value, RCTL, BSIZE);
+    if (value & RCTL_BSEX)
+        cbRxBuf *= 16;
+    if (cbRxBuf != pState->u16RxBSize)
+        E1kLog2(("%s e1kRegWriteRCTL: Setting receive buffer size to %d (old %d)\n",
+                 INSTANCE(pState), cbRxBuf, pState->u16RxBSize));
+    pState->u16RxBSize = cbRxBuf;
+
+    /* Update the register */
     e1kRegWriteDefault(pState, offset, index, value);
 
     return VINF_SUCCESS;
