@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 29204 2010-05-07 12:44:33Z vboxsync $ */
+/* $Id: MediumImpl.cpp 29207 2010-05-07 13:02:08Z vboxsync $ */
 
 /** @file
  *
@@ -3923,10 +3923,6 @@ HRESULT Medium::deleteStorage(ComObjPtr<Progress> *aProgress,
             throw rc;
         // no longer need lock
         multilock.release();
-
-        // always set it to false because the medium registry is up to date
-        if (pfNeedsSaveSettings)
-            *pfNeedsSaveSettings = false;
 
         if (aProgress != NULL)
         {
