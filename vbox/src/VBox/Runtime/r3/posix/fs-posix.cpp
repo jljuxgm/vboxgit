@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 30281 2010-06-17 10:25:10Z vboxsync $ */
+/* $Id: fs-posix.cpp 30282 2010-06-17 10:27:45Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -216,6 +216,8 @@ RTR3DECL(int) RTFsQueryType(const char *pszFsPath, uint32_t *pu32Type)
                                 *pu32Type = RTFS_FS_TYPE_FAT;
                             else if (!strcmp("tmpfs", mntEnt.mnt_type))
                                 *pu32Type = RTFS_FS_TYPE_TMPFS;
+                            else if (!strcmp("hfsplus", mntEnt.mnt_type))
+                                *pu32Type = RTFS_FS_TYPE_HFS;
                             else
                             {
                                 /* sometimes there are more than one entry for the same partition */
