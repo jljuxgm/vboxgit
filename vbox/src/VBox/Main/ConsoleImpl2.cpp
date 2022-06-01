@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 27537 2010-03-19 14:04:54Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 27692 2010-03-25 10:32:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1540,13 +1540,12 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             {
                 PCFGMNODE   pNetBtDevCfg;
                 char        achBootIdx[] = "0";
-                uint16_t    u16BusDevFn;
 
                 achBootIdx[0] = '0' + uBootIdx;     /* Boot device order. */
                 rc = CFGMR3InsertNode(pNetBootCfg, achBootIdx, &pNetBtDevCfg);      RC_CHECK();
                 rc = CFGMR3InsertInteger(pNetBtDevCfg, "NIC", ulInstance);          RC_CHECK();
-                u16BusDevFn = iPciDeviceNo << 3;
-                rc = CFGMR3InsertInteger(pNetBtDevCfg, "BusDevFn", u16BusDevFn);    RC_CHECK();
+                rc = CFGMR3InsertInteger(pNetBtDevCfg, "PCIDeviceNo", iPciDeviceNo);RC_CHECK();
+                rc = CFGMR3InsertInteger(pNetBtDevCfg, "PCIFunctionNo", 0);         RC_CHECK();
             }
         }
 
