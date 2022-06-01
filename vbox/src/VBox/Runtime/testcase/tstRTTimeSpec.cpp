@@ -1,4 +1,4 @@
-/* $Id: tstTimeSpec.cpp 25856 2010-01-15 13:16:29Z vboxsync $ */
+/* $Id: tstRTTimeSpec.cpp 25865 2010-01-15 14:09:02Z vboxsync $ */
 /** @file
  * IPRT - RTTimeSpec and PRTTIME tests.
  */
@@ -35,6 +35,7 @@
 # define RTTIME_INCL_TIMEVAL
 # define RTTIME_INCL_TIMESPEC
 # include <time.h>
+# include <sys/time.h>
 #endif
 #include <iprt/time.h>
 
