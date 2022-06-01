@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 24364 2009-11-05 02:18:31Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24460 2009-11-06 16:18:05Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -164,7 +164,11 @@ Machine::HWData::HWData()
     mHWVirtExNestedPagingEnabled = false;
     mHWVirtExVPIDEnabled = false;
     mHWVirtExExclusive = true;
+#if HC_ARCH_BITS == 64 || defined(RT_OS_WINDOWS) || defined(RT_OS_DARWIN)
+    mPAEEnabled = true;
+#else
     mPAEEnabled = false;
+#endif
     mSyntheticCpu = false;
     mPropertyServiceActive = false;
 
