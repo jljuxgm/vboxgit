@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 28597 2010-04-22 14:07:51Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 28612 2010-04-22 18:29:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -544,8 +544,13 @@ void UIMachineWindowNormal::loadWindowSettings()
         }
 
         /* Normalize view to the optimal size: */
+#ifdef Q_WS_MAC
+        if (machineView())
+            machineView()->normalizeGeometry(true);
+#else /* Q_WS_MAC */
         if (machineView())
             QTimer::singleShot(0, machineView(), SLOT(sltNormalizeGeometry()));
+#endif /* Q_WS_MAC */
     }
 
     /* Load availability settings: */
