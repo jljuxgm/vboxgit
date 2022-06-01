@@ -1,4 +1,4 @@
-/* $Id: VBoxTakeSnapshotDlg.cpp 28934 2010-04-30 12:59:02Z vboxsync $ */
+/* $Id: VBoxTakeSnapshotDlg.cpp 28935 2010-04-30 13:14:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -27,9 +27,11 @@
 #include "VBoxTakeSnapshotDlg.h"
 #include "VBoxProblemReporter.h"
 #include "VBoxUtils.h"
-# ifdef VBOX_WITH_NEW_RUNTIME_CORE
-#  include "UIMachineWindowNormal.h"
-#  include "VBoxSnapshotsWgt.h"
+# ifdef Q_WS_MAC
+#  ifdef VBOX_WITH_NEW_RUNTIME_CORE
+#   include "UIMachineWindowNormal.h"
+#   include "VBoxSnapshotsWgt.h"
+#  endif /* !VBOX_WITH_NEW_RUNTIME_CORE */
 # endif /* !VBOX_WITH_NEW_RUNTIME_CORE */
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
