@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 24210 2009-10-30 16:30:19Z vboxsync $ */
+/* $Id: MediumImpl.h 24258 2009-11-02 14:38:50Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -121,6 +121,7 @@ public:
     STDMETHOD(COMGETTER(MachineIds))(ComSafeArrayOut(BSTR, aMachineIds));
 
     // IMedium methods
+    STDMETHOD(RefreshState)(MediumState_T *aState);
     STDMETHOD(GetSnapshotIds)(IN_BSTR aMachineId,
                               ComSafeArrayOut(BSTR, aSnapshotIds));
     STDMETHOD(LockRead)(MediumState_T *aState);

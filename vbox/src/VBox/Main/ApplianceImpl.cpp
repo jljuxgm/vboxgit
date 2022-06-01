@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 24048 2009-10-23 17:53:21Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 24258 2009-11-02 14:38:50Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -4476,7 +4476,7 @@ STDMETHODIMP Machine::Export(IAppliance *aAppliance, IVirtualSystemDescription *
 
                 // force reading state, or else size will be returned as 0
                 MediumState_T ms;
-                rc = pMedium->COMGETTER(State)(&ms);
+                rc = pMedium->RefreshState(&ms);
                 if (FAILED(rc)) throw rc;
 
                 ULONG64 ullSize;

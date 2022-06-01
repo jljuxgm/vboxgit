@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 24253 2009-11-02 13:38:21Z vboxsync $ */
+/* $Id: MediumImpl.cpp 24258 2009-11-02 14:38:50Z vboxsync $ */
 
 /** @file
  *
@@ -416,7 +416,7 @@ public:
         /* We have to fetch the state with the COM method, cause it's possible
            that the medium isn't fully initialized yet. */
         MediumState_T m;
-        rc = aMedium->COMGETTER(State)(&m);
+        rc = aMedium->RefreshState(&m);
         CheckComRCReturnRC(rc);
         /* go to Deleting */
         switch (m)
@@ -677,7 +677,7 @@ public:
 
             if (mediaState == MediumState_Inaccessible)
             {
-                rc = (*it)->COMGETTER(State)(&mediaState);
+                rc = (*it)->RefreshState(&mediaState);
                 CheckComRCReturnRC(rc);
                 Assert(mediaState == MediumState_LockedRead);
 
@@ -734,7 +734,7 @@ public:
 
             if (mediaState == MediumState_Inaccessible)
             {
-                rc = (*it)->COMGETTER(State)(&mediaState);
+                rc = (*it)->RefreshState(&mediaState);
                 CheckComRCReturnRC(rc);
                 if (it == last)
                     Assert(mediaState == MediumState_LockedWrite);
@@ -1370,29 +1370,12 @@ STDMETHODIMP Medium::COMGETTER(State)(MediumState_T *aState)
     AutoCaller autoCaller(this);
     CheckComRCReturnRC(autoCaller.rc());
 
-    /* queryInfo() locks this for writing. */
-    AutoWriteLock alock(this);
-
-    HRESULT rc = S_OK;
-
-    switch (m->state)
-    {
-        case MediumState_Created:
-        case MediumState_Inaccessible:
-        case MediumState_LockedRead:
-        case MediumState_LockedWrite:
-        {
-            rc = queryInfo();
-            break;
-        }
-        default:
-            break;
-    }
-
+    AutoReadLock alock(this);
     *aState = m->state;
 
-    return rc;
+    return S_OK;
 }
+
 
 STDMETHODIMP Medium::COMGETTER(Location)(BSTR *aLocation)
 {
@@ -1755,6 +1738,36 @@ STDMETHODIMP Medium::COMGETTER(MachineIds)(ComSafeArrayOut(BSTR,aMachineIds))
     machineIds.detachTo(ComSafeArrayOutArg(aMachineIds));
 
     return S_OK;
+}
+
+STDMETHODIMP Medium::RefreshState(MediumState_T *aState)
+{
+    CheckComArgOutPointerValid(aState);
+
+    AutoCaller autoCaller(this);
+    CheckComRCReturnRC(autoCaller.rc());
+
+    /* queryInfo() locks this for writing. */
+    AutoWriteLock alock(this);
+
+    HRESULT rc = S_OK;
+
+    switch (m->state)
+    {
+        case MediumState_Created:
+        case MediumState_Inaccessible:
+        case MediumState_LockedRead:
+        {
+            rc = queryInfo();
+            break;
+        }
+        default:
+            break;
+    }
+
+    *aState = m->state;
+
+    return rc;
 }
 
 STDMETHODIMP Medium::GetSnapshotIds(IN_BSTR aMachineId,
