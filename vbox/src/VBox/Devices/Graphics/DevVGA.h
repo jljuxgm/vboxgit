@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 24053 2009-10-23 18:54:16Z vboxsync $ */
+/* $Id: DevVGA.h 24373 2009-11-05 09:51:34Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -309,6 +309,9 @@ typedef struct VGAState {
     PDMIBASE                    Base;
     /** The display port interface. */
     PDMIDISPLAYPORT             Port;
+# if HC_ARCH_BITS == 32
+    uint32_t                    Padding8;
+# endif
 #if defined(VBOX_WITH_HGSMI) && defined(VBOX_WITH_VIDEOHWACCEL)
     /** VBVA callbacks interface */
     PDMDDISPLAYVBVACALLBACKS    VBVACallbacks;

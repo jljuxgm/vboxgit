@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23848 2009-10-19 09:21:19Z vboxsync $
+# $Id: Makefile.kmk 24373 2009-11-05 09:51:34Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -614,6 +614,7 @@ VBoxC_SOURCES = \
 	KeyboardImpl.cpp \
 	MouseImpl.cpp \
 	DisplayImpl.cpp \
+	DisplayResampleImage.cpp \
 	MachineDebuggerImpl.cpp \
 	VBoxDriversRegister.cpp \
 	AudioSnifferInterface.cpp \

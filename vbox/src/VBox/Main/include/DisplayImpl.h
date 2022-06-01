@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 23643 2009-10-09 12:23:32Z vboxsync $ */
+/* $Id: DisplayImpl.h 24373 2009-11-05 09:51:34Z vboxsync $ */
 
 /** @file
  *
@@ -337,6 +337,12 @@ private:
 
     void handleResizeCompletedEMT (void);
 };
+
+void gdImageCopyResampled (uint8_t *dst, uint8_t *src,
+                           int dstX, int dstY,
+                           int srcX, int srcY,
+                           int dstW, int dstH, int srcW, int srcH);
+
 
 #endif // ____H_DISPLAYIMPL
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
