@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 28182 2010-04-12 08:40:29Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 28209 2010-04-12 14:10:58Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -89,7 +89,7 @@ static int handleExecProgram(HandlerArg *a)
     Utf8Str Utf8StdErr;
     Utf8Str Utf8UserName;
     Utf8Str Utf8Password;
-    uint32_t uTimeoutMS = 0;
+    uint32_t uTimeoutMS = RT_INDEFINITE_WAIT;
     bool waitForOutput = false;
 
     /* Iterate through all possible commands (if available). */
