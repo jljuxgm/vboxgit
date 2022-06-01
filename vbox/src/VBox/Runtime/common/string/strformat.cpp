@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 29660 2010-05-19 14:29:22Z vboxsync $ */
+/* $Id: strformat.cpp 29683 2010-05-20 11:29:21Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -351,7 +351,8 @@ static int rtStrFormatNumber(char *psz, KSIZE64 ullValue, unsigned int uiBase, s
  * @param   pszFormat   Format string.
  * @param   InArgs      Argument list.
  */
-RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRFORMAT pfnFormat, void *pvArgFormat, const char *pszFormat, va_list InArgs)
+RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRFORMAT pfnFormat, void *pvArgFormat, 
+                            const char *pszFormat, va_list InArgs)
 {
     va_list     args;
     KSIZE       cch = 0;
@@ -832,12 +833,12 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
                         if (*pszFormat != '[')
                         {
                             pszFormat--;
-                            cch += rtstrFormatRt(pfnOutput, pvArgOutput, &pszFormat, &args, cchPrecision, cchWidth, fFlags, chArgSize);
+                            cch += rtstrFormatRt(pfnOutput, pvArgOutput, &pszFormat, &args, cchWidth, cchPrecision, fFlags, chArgSize);
                         }
                         else
                         {
                             pszFormat--;
-                            cch += rtstrFormatType(pfnOutput, pvArgOutput, &pszFormat, &args, cchPrecision, cchWidth, fFlags, chArgSize);
+                            cch += rtstrFormatType(pfnOutput, pvArgOutput, &pszFormat, &args, cchWidth, cchPrecision, fFlags, chArgSize);
                         }
                         break;
                     }
@@ -850,7 +851,7 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
                         if (pfnFormat)
                         {
                             pszFormat--;
-                            cch += pfnFormat(pvArgFormat, pfnOutput, pvArgOutput, &pszFormat, &args, cchPrecision, cchWidth, fFlags, chArgSize);
+                            cch += pfnFormat(pvArgFormat, pfnOutput, pvArgOutput, &pszFormat, &args, cchWidth, cchPrecision, fFlags, chArgSize);
                         }
                         break;
                     }
