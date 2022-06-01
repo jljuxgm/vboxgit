@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 24793 2009-11-19 14:53:59Z vboxsync $ */
+/* $Id: PGM.cpp 24797 2009-11-19 15:22:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1186,6 +1186,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
      * Assert alignment and sizes.
      */
     AssertCompile(sizeof(pVM->pgm.s) <= sizeof(pVM->pgm.padding));
+    AssertCompile(sizeof(pVM->aCpus[0].pgm.s) <= sizeof(pVM->aCpus[0].pgm.padding));
     AssertCompileMemberAlignment(PGM, CritSect, sizeof(uintptr_t));
 
     /*
