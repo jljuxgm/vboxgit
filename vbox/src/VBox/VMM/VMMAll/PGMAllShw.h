@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 22600 2009-08-31 12:19:56Z vboxsync $ */
+/* $Id: PGMAllShw.h 25244 2009-12-08 13:53:28Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -215,9 +215,9 @@ PGM_SHW_DECL(int, GetPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, uint64_t *pfFlags, P
     PSHWPT          pPT;
     if (!(Pde.u & PGM_PDFLAGS_MAPPING))
     {
-        int rc = PGM_HCPHYS_2_PTR(pVM, Pde.u & SHW_PDE_PG_MASK, &pPT);
-        if (RT_FAILURE(rc))
-            return rc;
+        int rc2 = PGM_HCPHYS_2_PTR(pVM, Pde.u & SHW_PDE_PG_MASK, &pPT);
+        if (RT_FAILURE(rc2))
+            return rc2;
     }
     else /* mapping: */
     {
