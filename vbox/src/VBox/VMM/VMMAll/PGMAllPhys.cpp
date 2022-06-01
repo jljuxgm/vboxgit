@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 24701 2009-11-16 15:24:00Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 24702 2009-11-16 15:30:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -821,7 +821,9 @@ int pgmPhysPageLoadIntoTlb(PPGM pPGM, RTGCPHYS GCPhys)
         pTlbe->pMap = NULL;
         pTlbe->pv = pPGM->CTXALLSUFF(pvZeroPg);
     }
+#if 0 /* broken */
     pTlbe->GCPhys = (GCPhys & X86_PTE_PAE_PG_MASK);
+#endif
     pTlbe->pPage  = pPage;
     return VINF_SUCCESS;
 }
@@ -865,7 +867,9 @@ int pgmPhysPageLoadIntoTlbWithPage(PPGM pPGM, PPGMPAGE pPage, RTGCPHYS GCPhys)
         pTlbe->pMap = NULL;
         pTlbe->pv = pPGM->CTXALLSUFF(pvZeroPg);
     }
+#if 0 /* broken */
     pTlbe->GCPhys = (GCPhys & X86_PTE_PAE_PG_MASK);
+#endif
     pTlbe->pPage = pPage;
     return VINF_SUCCESS;
 }
