@@ -1,4 +1,4 @@
-/* $Id: fileaio-posix.cpp 23602 2009-10-07 18:29:34Z vboxsync $ */
+/* $Id: fileaio-posix.cpp 24226 2009-10-30 22:42:53Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for POSIX compliant host platforms.
  */
@@ -825,10 +825,10 @@ RTDECL(int) RTFileAioCtxWait(RTFILEAIOCTX hAioCtx, size_t cMinReqs, unsigned cMi
 
     int32_t cRequestsWaiting = ASMAtomicReadS32(&pCtxInt->cRequests);
 
-    if (RT_UNLIKELY(cRequestsWaiting == 0))
+    if (RT_UNLIKELY(cRequestsWaiting <= 0))
         return VERR_FILE_AIO_NO_REQUEST;
 
-    if (RT_UNLIKELY(cMinReqs > cRequestsWaiting))
+    if (RT_UNLIKELY(cMinReqs > (uint32_t)cRequestsWaiting))
         return VERR_INVALID_PARAMETER;
 
     if (cMillisTimeout != RT_INDEFINITE_WAIT)
