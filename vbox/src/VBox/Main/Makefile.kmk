@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24577 2009-11-11 10:31:52Z vboxsync $
+# $Id: Makefile.kmk 24694 2009-11-16 14:06:46Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -475,7 +475,9 @@ if defined(VBOX_WITH_CROGL) || defined(VBOX_WITH_VIDEOHWACCEL)
   	$(LIB_RUNTIME)
   VBoxTestOGL_DEFS += \
     $(if $(VBOX_WITH_CROGL), VBOX_WITH_CROGL,) \
-    $(if $(VBOX_WITH_VIDEOHWACCEL), VBOX_WITH_VIDEOHWACCEL,)
+    $(if $(VBOX_WITH_VIDEOHWACCEL), VBOX_WITH_VIDEOHWACCEL,) \
+	VBOX_BUILD_TARGET=\"$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)\" \
+	$(if $(VBOX_BLEEDING_EDGE),VBOX_BLEEDING_EDGE=\"$(VBOX_BLEEDING_EDGE)\",)
   ifdef VBOX_WITH_VIDEOHWACCEL
    VBoxTestOGL_QT_MODULES += Core Gui OpenGL
    VBoxTestOGL_LDFLAGS.darwin += -framework OpenGL
