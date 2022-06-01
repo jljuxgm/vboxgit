@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 26294 2010-02-05 14:35:26Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -268,7 +268,7 @@ int handleModifyVM(HandlerArg *a)
     machine->COMGETTER(BIOSSettings)(biosSettings.asOutParam());
 
     RTGetOptInit(&GetOptState, a->argc, a->argv, g_aModifyVMOptions,
-                 RT_ELEMENTS(g_aModifyVMOptions), 1, 0 /* fFlags */);
+                 RT_ELEMENTS(g_aModifyVMOptions), 1, RTGETOPTINIT_FLAGS_NO_STD_OPTS);
 
     while (   SUCCEEDED (rc)
            && (c = RTGetOpt(&GetOptState, &ValueUnion)))

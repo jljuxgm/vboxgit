@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 24879 2009-11-23 16:34:12Z vboxsync $ */
+/* $Id: VBoxManageHostonly.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -172,7 +172,7 @@ static int handleIpconfig(HandlerArg *a, int iStart, int *pcProcessed)
                  g_aHostOnlyIPOptions,
                  RT_ELEMENTS(g_aHostOnlyIPOptions),
                  index,
-                 0 /* fFlags */);
+                 RTGETOPTINIT_FLAGS_NO_STD_OPTS);
     while ((c = RTGetOpt(&GetState, &ValueUnion)))
     {
         switch (c)

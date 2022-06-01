@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 20864 2009-06-23 19:19:42Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -683,8 +683,6 @@ int main(int argc, char **argv)
         { "--text-file",    't', RTGETOPT_REQ_STRING },
         { "--xmit-test",    'x', RTGETOPT_REQ_NOTHING },
         { "--ping-test",    'P', RTGETOPT_REQ_NOTHING },
-        { "--help",         'h', RTGETOPT_REQ_NOTHING },
-        { "--?",            '?', RTGETOPT_REQ_NOTHING },
     };
 
     uint32_t    cMillies = 1000;
@@ -804,7 +802,6 @@ int main(int argc, char **argv)
                 fPingTest = true;
                 break;
 
-            case '?':
             case 'h':
                 RTPrintf("syntax: tstIntNet-1 <options>\n"
                          "\n"
@@ -817,18 +814,12 @@ int main(int argc, char **argv)
                          "    tstIntNet-1 -n VBoxNetDhcp -r 4096 -s 4096 -i \"\" -xS\n");
                 return 1;
 
-            case VINF_GETOPT_NOT_OPTION:
-                RTPrintf("tstIntNetR0: invalid argument: %s\n", Value.psz);
-                return 1;
+            case 'V':
+                RTPrintf("$Revision: 26517 $\n");
+                return 0;
 
             default:
-                if (RT_SUCCESS(ch))
-                    RTPrintf("tstIntNetR0: invalid argument (%#x): %s\n", ch, Value.psz);
-                else if (Value.pDef)
-                    RTPrintf("tstIntNetR0: invalid argument: %Rrc - %s\n", ch, Value.pDef->pszLong);
-                else
-                    RTPrintf("tstIntNetR0: invalid argument: %Rrc - %s\n", ch, argv[iArg]);
-                return 1;
+                return RTGetOptPrintError(ch, &Value);
         }
 
     RTPrintf("tstIntNet-1: TESTING...\n");

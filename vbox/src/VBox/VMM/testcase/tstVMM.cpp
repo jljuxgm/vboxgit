@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 26153 2010-02-02 16:06:07Z vboxsync $ */
+/* $Id: tstVMM.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -204,7 +204,6 @@ int main(int argc, char **argv)
     {
         { "--cpus",          'c', RTGETOPT_REQ_UINT8 },
         { "--test",          't', RTGETOPT_REQ_STRING },
-        { "--help",          'h', 0 },
     };
     enum
     {
@@ -240,25 +239,12 @@ int main(int argc, char **argv)
                 RTPrintf("usage: tstVMM [--cpus|-c cpus] [--test <vmm|tm>]\n");
                 return 1;
 
-            case VINF_GETOPT_NOT_OPTION:
-                RTPrintf("tstVMM: syntax error: non option '%s'\n", ValueUnion.psz);
-                break;
+            case 'V':
+                RTPrintf("$Revision: $\n");
+                return 0;
 
             default:
-                if (ch > 0)
-                {
-                    if (RT_C_IS_GRAPH(ch))
-                        RTPrintf("tstVMM: unhandled option: -%c\n", ch);
-                    else
-                        RTPrintf("tstVMM: unhandled option: %i\n", ch);
-                }
-                else if (ch == VERR_GETOPT_UNKNOWN_OPTION)
-                    RTPrintf("tstVMM: unknown option: %s\n", ValueUnion.psz);
-                else if (ValueUnion.pDef)
-                    RTPrintf("tstVMM: %s: %Rrs\n", ValueUnion.pDef->pszLong, ch);
-                else
-                    RTPrintf("tstVMM: %Rrs\n", ch);
-                return 1;
+                return RTGetOptPrintError(ch, &ValueUnion);
         }
     }
 

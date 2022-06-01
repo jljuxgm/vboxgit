@@ -1,4 +1,4 @@
-/* $Id: tstSupLoadModule.cpp 26498 2010-02-14 08:18:26Z vboxsync $ */
+/* $Id: tstSupLoadModule.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
 /** @file
  * SUP Testcase - Test SUPR3LoadModule.
  */
@@ -60,7 +60,7 @@ int main(int argc, char **argv)
      */
     static const RTGETOPTDEF s_aOptions[] =
     {
-        { "--help",             'h', 0 }
+        { "--help",             'h', RTGETOPT_REQ_NOTHING } /* (dummy entry) */
     };
 
     int ch;
@@ -94,6 +94,10 @@ int main(int argc, char **argv)
             case 'h':
                 RTPrintf("%s [mod1 [mod2...]]\n");
                 return 1;
+
+            case 'V':
+                RTPrintf("$Revision: 26517 $\n");
+                return 0;
 
             default:
                 return RTGetOptPrintError(ch, &ValueUnion);

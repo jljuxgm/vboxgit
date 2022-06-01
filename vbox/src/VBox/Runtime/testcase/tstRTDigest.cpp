@@ -1,4 +1,4 @@
-/* $Id: tstRTDigest.cpp 23507 2009-10-02 12:02:02Z vboxsync $ */
+/* $Id: tstRTDigest.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSha*, RTMd5, RTCrc*.
  */
@@ -299,20 +299,7 @@ int main(int argc, char **argv)
              }
 
              default:
-                 if (ch > 0)
-                 {
-                     if (RT_C_IS_GRAPH(ch))
-                         Error("unhandled option: -%c\n", ch);
-                     else
-                         Error("unhandled option: %i\n", ch);
-                 }
-                 else if (ch == VERR_GETOPT_UNKNOWN_OPTION)
-                     Error("unknown option: %s\n", ValueUnion.psz);
-                 else if (ValueUnion.pDef)
-                     Error("%s: %Rrs\n", ValueUnion.pDef->pszLong, ch);
-                 else
-                     Error("%Rrs\n", ch);
-                 return 1;
+                return RTGetOptPrintError(ch, &ValueUnion);
          }
      }
 

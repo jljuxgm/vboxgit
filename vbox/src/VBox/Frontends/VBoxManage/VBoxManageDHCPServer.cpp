@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 26163 2010-02-02 18:58:33Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -106,9 +106,9 @@ static int handleOp(HandlerArg *a, OPCODE enmCode, int iStart, int *pcProcessed)
                  a->argc,
                  a->argv,
                  g_aDHCPIPOptions,
-                 enmCode != OP_REMOVE ? RT_ELEMENTS(g_aDHCPIPOptions): 4, /* we use only --netname and --ifname for remove*/
+                 enmCode != OP_REMOVE ? RT_ELEMENTS(g_aDHCPIPOptions) : 4, /* we use only --netname and --ifname for remove*/
                  index,
-                 0 /* fFlags */);
+                 RTGETOPTINIT_FLAGS_NO_STD_OPTS);
     while ((c = RTGetOpt(&GetState, &ValueUnion)))
     {
         switch (c)

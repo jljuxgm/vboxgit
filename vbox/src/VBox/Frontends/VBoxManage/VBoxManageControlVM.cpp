@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 26371 2010-02-09 13:57:59Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -882,7 +882,7 @@ int handleControlVM(HandlerArg *a)
                 { "--timeout",     't', RTGETOPT_REQ_UINT32 }
             };
             RTGETOPTSTATE GetOptState;
-            RTGetOptInit(&GetOptState, a->argc, a->argv, s_aTeleportOptions, RT_ELEMENTS(s_aTeleportOptions), 2, 0 /*fFlags*/);
+            RTGetOptInit(&GetOptState, a->argc, a->argv, s_aTeleportOptions, RT_ELEMENTS(s_aTeleportOptions), 2, RTGETOPTINIT_FLAGS_NO_STD_OPTS);
             int ch;
             RTGETOPTUNION Value;
             while (   SUCCEEDED(rc)

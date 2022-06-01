@@ -1,4 +1,4 @@
-/* $Id: tstHandleTable.cpp 17093 2009-02-24 19:58:09Z vboxsync $ */
+/* $Id: tstHandleTable.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
 /** @file
  * IPRT Testcase - Handle Tables.
  */
@@ -459,8 +459,6 @@ int main(int argc, char **argv)
         { "--base",         'b', RTGETOPT_REQ_UINT32 },
         { "--max",          'm', RTGETOPT_REQ_UINT32 },
         { "--threads",      't', RTGETOPT_REQ_UINT32 },
-        { "--help",         'h', RTGETOPT_REQ_NOTHING },
-        { "--?",            '?', RTGETOPT_REQ_NOTHING },
     };
 
     uint32_t uBase    = 0;
@@ -488,21 +486,16 @@ int main(int argc, char **argv)
                     cThreads = 1;
                 break;
 
-            case '?':
             case 'h':
                 RTPrintf("syntax: tstHandleTable [-b <base>] [-m <max>] [-t <threads>]\n");
                 return 1;
 
-            case VINF_GETOPT_NOT_OPTION:
-                RTPrintf("tstHandleTable: unexpected non-option: %s\n", Value.psz);
-                break;
+            case 'V':
+                RTPrintf("$Revision: $\n");
+                return 0;
 
             default:
-                if (RT_SUCCESS(ch))
-                    RTPrintf("tstHandleTable: invalid argument (%#x): %s\n", ch, Value.psz);
-                else
-                    RTPrintf("tstHandleTable: invalid argument: %Rrc - \n", ch, Value.pDef->pszLong);
-                return 1;
+                return RTGetOptPrintError(ch, &Value);
         }
 
     /*

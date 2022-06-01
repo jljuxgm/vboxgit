@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 26163 2010-02-02 18:58:33Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -278,7 +278,8 @@ int handleSnapshot(HandlerArg *a)
                 { "--pause",       'p', RTGETOPT_REQ_NOTHING }
             };
             RTGETOPTSTATE GetOptState;
-            RTGetOptInit(&GetOptState, a->argc, a->argv, s_aTakeOptions, RT_ELEMENTS(s_aTakeOptions), 3, 0 /*fFlags*/);
+            RTGetOptInit(&GetOptState, a->argc, a->argv, s_aTakeOptions, RT_ELEMENTS(s_aTakeOptions),
+                         3, RTGETOPTINIT_FLAGS_NO_STD_OPTS);
             int ch;
             RTGETOPTUNION Value;
             while (   SUCCEEDED(rc)

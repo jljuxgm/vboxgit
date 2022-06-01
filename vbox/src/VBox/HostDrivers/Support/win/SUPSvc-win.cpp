@@ -1,4 +1,4 @@
-/* $Id: SUPSvc-win.cpp 22077 2009-08-07 16:01:57Z vboxsync $ */
+/* $Id: SUPSvc-win.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
 /** @file
  * VirtualBox Support Service - Windows Specific Code.
  */
@@ -269,7 +269,7 @@ static int supSvcWinDelete(int argc, char **argv)
     int ch;
     RTGETOPTUNION Value;
     RTGETOPTSTATE GetState;
-    RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 0, 0 /* fFlags*/);
+    RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 0, RTGETOPTINIT_FLAGS_NO_STD_OPTS);
     while ((ch = RTGetOpt(&GetState, &Value)))
         switch (ch)
         {
