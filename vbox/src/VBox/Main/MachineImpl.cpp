@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 26459 2010-02-12 11:42:36Z vboxsync $ */
+/* $Id: MachineImpl.cpp 26511 2010-02-14 09:39:55Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -9016,7 +9016,7 @@ void SessionMachine::uninit(Uninit::Reason aReason)
     {
         if (aReason == Uninit::Normal)
             mData->mSession.mProgress->notifyComplete(S_OK);
-	else
+        else
             mData->mSession.mProgress->notifyComplete(E_FAIL,
                                                       COM_IIDOF(ISession),
                                                       getComponentName(),

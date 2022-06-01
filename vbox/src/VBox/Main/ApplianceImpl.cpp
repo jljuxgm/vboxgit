@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 25927 2010-01-20 11:38:03Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 26511 2010-02-14 09:39:55Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3367,10 +3367,10 @@ STDMETHODIMP Appliance::Read(IN_BSTR path, IProgress **aProgress)
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     if (m->pReader)
- 	{
- 	    delete m->pReader;
- 	    m->pReader = NULL;
- 	}
+    {
+        delete m->pReader;
+        m->pReader = NULL;
+    }
 
     // see if we can handle this file; for now we insist it has an ".ovf" extension
     Utf8Str strPath (path);

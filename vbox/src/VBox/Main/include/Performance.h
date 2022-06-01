@@ -1,4 +1,4 @@
-/* $Id: Performance.h 26128 2010-02-01 14:48:59Z vboxsync $ */
+/* $Id: Performance.h 26511 2010-02-14 09:39:55Z vboxsync $ */
 
 /** @file
  *
@@ -121,8 +121,8 @@ namespace pm
         {
             ProcessList::iterator it;
             for (it = mProcesses.begin(); it != mProcesses.end(); it++)
-		if (it->first == process)
-		    return *it;
+                if (it->first == process)
+                    return *it;
 
             /* Not found -- add new */
             mProcesses.push_back(ProcessFlagsPair(process, COLLECT_NONE));

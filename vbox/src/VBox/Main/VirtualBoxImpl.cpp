@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 26389 2010-02-09 16:28:52Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 26511 2010-02-14 09:39:55Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2590,7 +2590,7 @@ struct SnapshotEvent : public VirtualBox::CallbackEvent
     void handleCallback (const ComPtr<IVirtualBoxCallback> &aCallback)
     {
         Bstr mid = machineId.toUtf16();
-	Bstr sid = snapshotId.toUtf16();
+        Bstr sid = snapshotId.toUtf16();
 
         switch (what)
         {
