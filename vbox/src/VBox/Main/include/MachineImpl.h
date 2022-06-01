@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 27818 2010-03-30 11:50:21Z vboxsync $ */
+/* $Id: MachineImpl.h 27823 2010-03-30 13:11:16Z vboxsync $ */
 
 /** @file
  *
@@ -272,7 +272,6 @@ public:
         Guid                 mHardwareUUID;   /**< If Null, use mData.mUuid. */
         ULONG                mMemorySize;
         ULONG                mMemoryBalloonSize;
-        ULONG                mStatisticsUpdateInterval;
         ULONG                mVRAMSize;
         ULONG                mMonitorCount;
         BOOL                 mHWVirtExEnabled;
@@ -391,8 +390,6 @@ public:
     STDMETHOD(COMSETTER(HpetEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(MemoryBalloonSize))(ULONG *memoryBalloonSize);
     STDMETHOD(COMSETTER(MemoryBalloonSize))(ULONG memoryBalloonSize);
-    STDMETHOD(COMGETTER(StatisticsUpdateInterval))(ULONG *statisticsUpdateInterval);
-    STDMETHOD(COMSETTER(StatisticsUpdateInterval))(ULONG statisticsUpdateInterval);
     STDMETHOD(COMGETTER(VRAMSize))(ULONG *memorySize);
     STDMETHOD(COMSETTER(VRAMSize))(ULONG memorySize);
     STDMETHOD(COMGETTER(MonitorCount))(ULONG *monitorCount);
