@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 24258 2009-11-02 14:38:50Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 24301 2009-11-03 22:07:55Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -229,7 +229,10 @@ int handleList(HandlerArg *a)
                             switch (machineState)
                             {
                                 case MachineState_Running:
+                                case MachineState_Teleporting:
+                                case MachineState_LiveSnapshotting:
                                 case MachineState_Paused:
+                                case MachineState_TeleportingPausedVM:
                                     rc = showVMInfo(a->virtualBox,
                                                     machines[i],
                                                     (fOptLong) ? VMINFO_STANDARD : VMINFO_COMPACT);

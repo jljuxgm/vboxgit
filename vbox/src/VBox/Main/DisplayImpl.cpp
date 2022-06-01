@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 24265 2009-11-02 15:21:30Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 24301 2009-11-03 22:07:55Z vboxsync $ */
 
 /** @file
  *
@@ -280,9 +280,12 @@ int Display::registerSSM(PVM pVM)
 // IConsoleCallback method
 STDMETHODIMP Display::OnStateChange(MachineState_T machineState)
 {
-    if (machineState == MachineState_Running)
+    if (   machineState == MachineState_Running
+        || machineState == MachineState_Teleporting
+        || machineState == MachineState_LiveSnapshotting
+       )
     {
-        LogFlowFunc (("Machine is running.\n"));
+        LogFlowFunc(("Machine is running.\n"));
 
         mfMachineRunning = true;
     }

@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 24000 2009-10-22 19:14:58Z vboxsync $ */
+/* $Id: Global.cpp 24301 2009-11-03 22:07:55Z vboxsync $ */
 
 /** @file
  *
@@ -188,15 +188,19 @@ Global::stringifyMachineState(MachineState_T aState)
         case MachineState_Null:                 return "Null";
         case MachineState_PoweredOff:           return "PoweredOff";
         case MachineState_Saved:                return "Saved";
+        case MachineState_Teleported:           return "Teleported";
         case MachineState_Aborted:              return "Aborted";
         case MachineState_Running:              return "Running";
+        case MachineState_Teleporting:          return "Teleporting";
+        case MachineState_LiveSnapshotting:     return "LiveSnapshotting";
         case MachineState_Paused:               return "Paused";
         case MachineState_Stuck:                return "GuruMeditation";
         case MachineState_Starting:             return "Starting";
         case MachineState_Stopping:             return "Stopping";
         case MachineState_Saving:               return "Saving";
         case MachineState_Restoring:            return "Restoring";
-        case MachineState_TeleportingFrom:      return "TeleportingFrom";
+        case MachineState_TeleportingPausedVM:  return "TeleportingPausedVM";
+        case MachineState_TeleportingIn:        return "TeleportingIn";
         case MachineState_RestoringSnapshot:    return "RestoringSnapshot";
         case MachineState_DeletingSnapshot:     return "DeletingSnapshot";
         case MachineState_SettingUp:            return "SettingUp";
