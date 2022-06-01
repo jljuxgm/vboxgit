@@ -1,4 +1,4 @@
-/* $Id: magics.h 25682 2010-01-07 15:23:30Z vboxsync $ */
+/* $Id: magics.h 25690 2010-01-08 13:20:15Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -82,6 +82,10 @@
 #define RTLOCKVALRECSHRDOWN_MAGIC       UINT32_C(0x19201009)
 /** The magic value for RTLOCKVALRECSHRDOWN::u32Magic after deletion. */
 #define RTLOCKVALRECSHRDOWN_MAGIC_DEAD  UINT32_C(0x19760509)
+/** The magic value for RTLOCKVALRECNEST::u32Magic. (Anne Desclos) */
+#define RTLOCKVALRECNEST_MAGIC          UINT32_C(0x19071123)
+/** The magic value for RTLOCKVALRECNEST::u32Magic after deletion. */
+#define RTLOCKVALRECNEST_MAGIC_DEAD     UINT32_C(0x19980427)
 /** Magic number for RTMEMCACHEINT::u32Magic. (Joseph Weizenbaum) */
 #define RTMEMCACHE_MAGIC                UINT32_C(0x19230108)
 /** Dead magic number for RTMEMCACHEINT::u32Magic. */
