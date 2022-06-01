@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 26852 2010-02-26 13:52:34Z vboxsync $
+# $Id: vboxconfig.sh 27216 2010-03-09 14:46:14Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -672,7 +672,7 @@ postinstall()
 
         return 0
     else
-        errorprint "Failed to update boot-archive"
+        errorprint "Failed to install drivers"
         exit 666
     fi
     return 1
