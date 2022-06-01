@@ -1,4 +1,4 @@
-# $Id: Config.kmk 25302 2009-12-10 14:57:29Z vboxsync $
+# $Id: Config.kmk 25333 2009-12-11 15:21:29Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -411,6 +411,8 @@ VBOX_WITH_64_BITS_GUESTS = 1
 VBOX_WITH_MULTI_CORE = 1
 # Enable the host/guest information service (aka guest properties).
 VBOX_WITH_GUEST_PROPS = 1
+# Enable this to prevent the guest from writing guest properties
+VBOX_WITH_GUEST_PROPS_RDONLY_GUEST =
 # Enable performance API.
 VBOX_WITH_RESOURCE_USAGE_API = 1
 # Enables all the doxgen bits.
@@ -3881,7 +3883,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25302 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25333 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
