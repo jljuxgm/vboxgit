@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 28025 2010-04-07 06:37:43Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 28037 2010-04-07 09:56:45Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -517,10 +517,10 @@ static int drvR3IntNetAsyncIoRun(PDRVINTNET pThis)
                                 LogFlow(("drvR3IntNetAsyncIoRun: %-4d bytes at %llu ns  deltas: r=%llu t=%llu; GSO - %u segs\n",
                                          cbFrame, u64Now, u64Now - pThis->u64LastReceiveTS, u64Now - pThis->u64LastTransferTS, cSegs));
                                 pThis->u64LastReceiveTS = u64Now;
-                                Log2(("drvR3IntNetAsyncIoRun: cbFrame=%#x type=%d cbHdrs=%#x Hdr1=%#x/%#x Hdr2=%#x/%#x MMS=%#x\n"
+                                Log2(("drvR3IntNetAsyncIoRun: cbFrame=%#x type=%d cbHdrs=%#x Hdr1=%#x Hdr2=%#x MMS=%#x\n"
                                       "%.*Rhxd\n",
-                                      cbFrame, pGso->u8Type, pGso->cbHdrs, pGso->offHdr1, pGso->cbHdr1, pGso->offHdr2, pGso->cbHdr2,
-                                      pGso->cbMaxSeg, cbFrame - sizeof(*pGso), pGso + 1));
+                                      cbFrame, pGso->u8Type, pGso->cbHdrs, pGso->offHdr1, pGso->offHdr2, pGso->cbMaxSeg,
+                                      cbFrame - sizeof(*pGso), pGso + 1));
                             }
 #endif
                             for (size_t iSeg = 0; iSeg < cSegs; iSeg++)
@@ -540,8 +540,8 @@ static int drvR3IntNetAsyncIoRun(PDRVINTNET pThis)
                         }
                         else
                         {
-                            AssertMsgFailed(("cbFrame=%#x type=%d cbHdrs=%#x Hdr1=%#x/%#x Hdr2=%#x/%#x MMS=%#x\n",
-                                             cbFrame, pGso->u8Type, pGso->cbHdrs, pGso->offHdr1, pGso->cbHdr1, pGso->offHdr2, pGso->cbHdr2, pGso->cbMaxSeg));
+                            AssertMsgFailed(("cbFrame=%#x type=%d cbHdrs=%#x Hdr1=%#x Hdr2=%#x MMS=%#x\n",
+                                             cbFrame, pGso->u8Type, pGso->cbHdrs, pGso->offHdr1, pGso->offHdr2, pGso->cbMaxSeg));
                             STAM_REL_COUNTER_INC(&pBuf->cStatBadFrames);
                         }
 
