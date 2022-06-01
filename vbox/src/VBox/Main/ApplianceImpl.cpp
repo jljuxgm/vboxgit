@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 24990 2009-11-26 11:33:37Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 25142 2009-12-02 12:02:25Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1234,7 +1234,7 @@ int Appliance::importFS(TaskImportOVF *pTask)
             }
 
             /* CPU count */
-            std::list<VirtualSystemDescriptionEntry*> vsdeCPU = vsdescThis->findByType (VirtualSystemDescriptionType_CPU);
+            std::list<VirtualSystemDescriptionEntry*> vsdeCPU = vsdescThis->findByType(VirtualSystemDescriptionType_CPU);
             ComAssertMsgThrow(vsdeCPU.size() == 1, ("CPU count missing"), E_FAIL);
             const Utf8Str &cpuVBox = vsdeCPU.front()->strVbox;
             ULONG tmpCount = (ULONG)RTStrToUInt64(cpuVBox.c_str());
