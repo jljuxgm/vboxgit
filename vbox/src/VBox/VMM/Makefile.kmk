@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24574 2009-11-11 09:44:52Z vboxsync $
+# $Id: Makefile.kmk 24577 2009-11-11 10:31:52Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -236,7 +236,7 @@ VBoxVMM_LDFLAGS.solaris = -mimpure-text
 #
 LIBRARIES += SSMStandalone
 SSMStandalone_TEMPLATE  = VBOXR3EXE
-SSMStandalone_DEFS      = IN_VMM_R3 SSM_STANDALONE
+SSMStandalone_DEFS      = IN_VMM_R3 IN_VMM_STATIC SSM_STANDALONE
 SSMStandalone_SOURCES   = SSM.cpp
 
 
