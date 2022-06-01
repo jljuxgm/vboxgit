@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 29087 2010-05-05 14:20:30Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 29088 2010-05-05 14:37:26Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1038,11 +1038,13 @@ void Appliance::buildXMLForOneVirtualSystem(xml::ElementNode &elmToAddVirtualSys
                         lBusNumber = 0;
 
                         if (    desc.strVbox.isEmpty()      // LsiLogic is the default in VirtualBox
-                                || (!desc.strVbox.compare("lsilogic", Utf8Str::CaseInsensitive))
+                             || (!desc.strVbox.compare("lsilogic", Utf8Str::CaseInsensitive))
                             )
                             strResourceSubType = "lsilogic";
                         else if (!desc.strVbox.compare("buslogic", Utf8Str::CaseInsensitive))
                             strResourceSubType = "buslogic";
+                        else if (!desc.strVbox.compare("lsilogicsas", Utf8Str::CaseInsensitive))
+                            strResourceSubType = "lsilogicsas";
                         else
                             throw setError(VBOX_E_NOT_SUPPORTED,
                                             tr("Invalid config string \"%s\" in SCSI controller"), desc.strVbox.c_str());
