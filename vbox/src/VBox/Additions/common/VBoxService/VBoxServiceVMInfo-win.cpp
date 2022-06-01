@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 29858 2010-05-28 12:54:03Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 29860 2010-05-28 13:17:54Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -503,6 +503,7 @@ int VBoxServiceVMInfoWinWriteUsers(char **ppszUserList, uint32_t *pcUsersInList)
         VBoxServiceVMInfoWinProcessesFree(paProcs);
     }
     LsaFreeReturnBuffer(paSessions);
+    return rc;
 }
 
 #endif /* TARGET_NT4 */
