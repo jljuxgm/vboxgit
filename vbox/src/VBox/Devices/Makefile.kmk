@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25162 2009-12-03 12:54:05Z vboxsync $
+# $Id: Makefile.kmk 25336 2009-12-11 17:09:23Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -1047,11 +1047,6 @@ ServicesR0_TEMPLATE  = VBOXR0
 ServicesR0_DEFS      = IN_INTNET_R0 IN_RT_R0
 ServicesR0_SOURCES   = \
 	Network/SrvIntNetR0.cpp
-
-if defined(VBOX_WITH_NETFLT)
- ServicesR0_SOURCES.win.amd64 += Network/win/SrvIntNetR0A-win.asm
- ServicesR0_DEFS.win.amd64    += RT_WITH_W64_UNWIND_HACK
-endif
 
 
 #
