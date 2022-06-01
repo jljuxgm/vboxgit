@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 23485 2009-10-01 14:14:29Z vboxsync $ */
+/* $Id: PGMAllBth.h 24041 2009-10-23 14:55:05Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4571,6 +4571,11 @@ PGM_BTH_DECL(int, UnmapCR3)(PVMCPU pVCpu)
         PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
 
         Assert(pVCpu->pgm.s.iShwUser != PGMPOOL_IDX_NESTED_ROOT);
+
+# ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
+        if (pPool->cDirtyPages)
+            pgmPoolResetDirtyPages(pVM);
+# endif
 
         /* Mark the page as unlocked; allow flushing again. */
         pgmPoolUnlockPage(pPool, pVCpu->pgm.s.CTX_SUFF(pShwPageCR3));
