@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 29803 2010-05-26 09:36:14Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 30022 2010-06-04 08:35:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1068,7 +1068,7 @@ bool VBoxProblemReporter::confirmMachineDeletion (const CMachine &machine)
     }
     else
     {
-        /* this should be in sync with VBoxVMListBoxItem::recache() */
+        /* this should be in sync with UIVMListBoxItem::recache() */
         QFileInfo fi (machine.GetSettingsFilePath());
         name = fi.suffix().toLower() == "xml" ?
                fi.completeBaseName() : fi.fileName();

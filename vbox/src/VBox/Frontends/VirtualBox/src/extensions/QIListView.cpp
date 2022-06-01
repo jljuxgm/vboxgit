@@ -1,4 +1,4 @@
-/* $Id: QIListView.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: QIListView.cpp 30022 2010-06-04 08:35:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -28,7 +28,7 @@
 #endif /* MAC_LEOPARD_STYLE */
 
 
-/* VBoxVMListView class */
+/* QIListView class */
 
 QIListView::QIListView (QWidget *aParent /* = 0 */)
     :QListView (aParent)
@@ -63,7 +63,7 @@ void QIListView::focusChanged (QWidget * /* aOld */, QWidget *aNow)
 #endif /* MAC_LEOPARD_STYLE */
 }
 
-/* VBoxVMItemPainter class */
+/* QIItemDelegate class */
 
 void QIItemDelegate::drawBackground (QPainter *aPainter, const QStyleOptionViewItem &aOption,
                                         const QModelIndex &aIndex) const

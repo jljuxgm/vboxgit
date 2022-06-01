@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 30022 2010-06-04 08:35:03Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -16,14 +16,17 @@
  */
 
 #include "VBoxUtils-darwin.h"
+#include "VBoxCocoaApplication.h"
 
 #include <iprt/mem.h>
 
+#include <QMainWindow>
 #include <QApplication>
 #include <QWidget>
 #include <QToolBar>
 #include <QPainter>
 #include <QPixmap>
+#include <QContextMenuEvent>
 
 #include <Carbon/Carbon.h>
 
@@ -156,6 +159,16 @@ int darwinWindowToolBarHeight (QWidget *aWidget)
 #endif /* QT_MAC_USE_COCOA */
 }
 
+bool darwinIsToolbarVisible(QToolBar *pToolBar)
+{
+    bool fResult = false;
+    QWidget *pParent = pToolBar->parentWidget();
+    if (pParent)
+        fResult = ::darwinIsToolbarVisible(::darwinToNativeWindow(pParent));
+    return fResult;
+}
+
+
 bool darwinSetFrontMostProcess()
 {
     ProcessSerialNumber psn = { 0, kCurrentProcess };
@@ -286,6 +299,24 @@ CGImageRef darwinToCGImageRef (const char *aSource)
     QPixmap qpm (QString(":/") + aSource);
     Assert (!qpm.isNull());
     return ::darwinToCGImageRef (&qpm);
+}
+
+void darwinRegisterForUnifiedToolbarContextMenuEvents(QMainWindow *pWindow)
+{
+    ::VBoxCocoaApplication_setCallback(UINT32_MAX, ::darwinUnifiedToolbarEvents, pWindow);
+}
+
+void darwinUnregisterForUnifiedToolbarContextMenuEvents(QMainWindow *pWindow)
+{
+    ::VBoxCocoaApplication_unsetCallback(UINT32_MAX, ::darwinUnifiedToolbarEvents, pWindow);
+}
+
+void darwinCreateContextMenuEvent(void *pvUser, int x, int y)
+{
+    QWidget *pWin = static_cast<QWidget*>(pvUser);
+    QPoint global(x, y);
+    QPoint local = pWin->mapFromGlobal(global);
+    qApp->postEvent(pWin, new QContextMenuEvent(QContextMenuEvent::Mouse, local, global));
 }
 
 /********************************************************************************
