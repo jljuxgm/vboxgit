@@ -1,4 +1,4 @@
-/* $Id: intnetinline.h 28025 2010-04-07 06:37:43Z vboxsync $ */
+/* $Id: intnetinline.h 28027 2010-04-07 06:45:43Z vboxsync $ */
 /** @file
  * INTNET - Internal Networking, Inlined Code. (DEV,++)
  *
@@ -430,7 +430,7 @@ DECLINLINE(int) INTNETRingAllocateFrame(PINTNETRINGBUF pRingBuf, uint32_t cbFram
 DECLINLINE(int) INTNETRingAllocateGsoFrame(PINTNETRINGBUF pRingBuf, uint32_t cbFrame, PCPDMNETWORKGSO pGso,
                                            PINTNETHDR *ppHdr, void **ppvFrame)
 {
-    void *pvFrame;
+    void *pvFrame = NULL; /* gcc maybe used uninitialized */
     int rc = intnetRingAllocateFrameInternal(pRingBuf, cbFrame + sizeof(*pGso), INTNETHDR_TYPE_GSO, ppHdr, &pvFrame);
     if (RT_SUCCESS(rc))
     {
