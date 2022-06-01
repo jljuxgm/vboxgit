@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 27668 2010-03-24 14:45:55Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -237,14 +237,14 @@ int handleCreateVM(HandlerArg *a)
     if (!name)
         return errorSyntax(USAGE_CREATEVM, "Parameter --name is required");
 
-    if (!!baseFolder && !!settingsFile)
-        return errorSyntax(USAGE_CREATEVM, "Either --basefolder or --settingsfile must be specified");
+    if (!baseFolder.isEmpty() && !settingsFile.isEmpty())
+        return errorSyntax(USAGE_CREATEVM, "Cannot specify both --basefolder and --settingsfile together");
 
     do
     {
         ComPtr<IMachine> machine;
 
-        if (!settingsFile)
+        if (settingsFile.isEmpty())
             CHECK_ERROR_BREAK(a->virtualBox,
                 CreateMachine(name, osTypeId, baseFolder, Guid(id).toUtf16(), machine.asOutParam()));
         else

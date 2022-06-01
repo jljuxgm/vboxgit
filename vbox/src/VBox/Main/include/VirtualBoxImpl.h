@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 27256 2010-03-10 16:50:08Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 27668 2010-03-24 14:45:55Z vboxsync $ */
 
 /** @file
  *
@@ -252,7 +252,7 @@ public:
     HRESULT findFloppyImage(const Guid *aId, CBSTR aLocation,
                             bool aSetError, ComObjPtr<Medium> *aImage = NULL);
 
-    HRESULT findGuestOSType(CBSTR bstrOSType,
+    HRESULT findGuestOSType(const Bstr &bstrOSType,
                             GuestOSType*& pGuestOSType);
 
     const ComObjPtr<Host>& host() const;
