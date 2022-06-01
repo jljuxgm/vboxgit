@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 30013 2010-06-03 14:40:59Z vboxsync $ */
+/* $Id: DevE1000.cpp 30333 2010-06-21 14:10:36Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4984,7 +4984,9 @@ static DECLCALLBACK(int) e1kSetLinkState(PPDMINETWORKCONFIG pInterface, PDMNETWO
     bool fOldUp = !!(STATUS & STATUS_LU);
     bool fNewUp = enmState == PDMNETWORKLINKSTATE_UP;
 
-    if (fNewUp != fOldUp)
+    if (   fNewUp != fOldUp
+        || (!fNewUp && pState->fCableConnected)) /* old state was connected but STATUS not
+                                                  * yet written by guest */
     {
         if (fNewUp)
         {
