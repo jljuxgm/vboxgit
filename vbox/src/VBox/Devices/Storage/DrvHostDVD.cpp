@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 23739 2009-10-13 18:33:06Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 24015 2009-10-23 08:36:58Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -64,7 +64,6 @@
 #elif defined(RT_OS_SOLARIS)
 # include <stropts.h>
 # include <fcntl.h>
-# include <ctype.h>
 # include <errno.h>
 # include <pwd.h>
 # include <unistd.h>
@@ -857,9 +856,9 @@ const PDMDRVREG g_DrvHostDVD =
     /* pfnAttach */
     NULL,
     /* pfnDetach */
-    NULL, 
+    NULL,
     /* pfnPowerOff */
-    NULL, 
+    NULL,
     /* pfnSoftReset */
     NULL,
     /* u32EndVersion */
