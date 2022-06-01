@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 24546 2009-11-10 13:24:50Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 24552 2009-11-10 14:20:40Z vboxsync $ */
 
 /** @file
  *
@@ -3336,9 +3336,12 @@ DECLCALLBACK(int) Console::changeNetworkAttachment(Console *pThis,
 
     AssertReturn(pThis, VERR_INVALID_PARAMETER);
 
-    AssertMsg(   (!strcmp(pszDevice, "pcnet") && uLun == 0 && uInstance < SchemaDefs::NetworkAdapterCount)
-               || (!strcmp(pszDevice, "e1000") && uLun == 0 && uInstance < SchemaDefs::NetworkAdapterCount),
-               ("pszDevice=%s uLun=%d uInstance=%d\n", pszDevice, uLun, uInstance));
+    AssertMsg(   (   !strcmp(pszDevice, "pcnet")
+                  || !strcmp(pszDevice, "e1000")
+                  || !strcmp(pszDevice, "virtio-net"))
+              && (uLun == 0)
+              && (uInstance < SchemaDefs::NetworkAdapterCount),
+              ("pszDevice=%s uLun=%d uInstance=%d\n", pszDevice, uLun, uInstance));
     Log(("pszDevice=%s uLun=%d uInstance=%d\n", pszDevice, uLun, uInstance));
 
     AutoCaller autoCaller(pThis);
