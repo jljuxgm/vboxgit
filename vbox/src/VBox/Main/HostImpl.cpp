@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 29385 2010-05-11 18:05:44Z vboxsync $ */
+/* $Id: HostImpl.cpp 29615 2010-05-18 11:54:24Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -764,6 +764,20 @@ STDMETHODIMP Host::COMGETTER(ProcessorOnlineCount)(ULONG *aCount)
 
     *aCount = RTMpGetOnlineCount();
     return S_OK;
+}
+
+/**
+ * Returns the number of installed physical processor cores.
+ *
+ * @returns COM status code
+ * @param   count address of result variable
+ */
+STDMETHODIMP Host::COMGETTER(ProcessorCoreCount)(ULONG *aCount)
+{
+    CheckComArgOutPointerValid(aCount);
+    // no locking required
+
+    return E_NOTIMPL;
 }
 
 /**
