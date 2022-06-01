@@ -1,4 +1,4 @@
-/* $Id: sched-posix.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: sched-posix.cpp 25642 2010-01-05 08:19:10Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, POSIX.
  */
@@ -46,7 +46,7 @@
  * Be very careful with enabling this, it may cause deadlocks when combined
  * with the 'thread' logging prefix.
  */
-#ifdef __DOXYGEN__
+#ifdef DOXYGEN_RUNNING
 #define THREAD_LOGGING
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 24892 2009-11-24 12:02:04Z vboxsync $ */
+/* $Id: fileio-win.cpp 25642 2010-01-05 08:19:10Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -51,7 +51,7 @@
 *******************************************************************************/
 /** @def RT_DONT_CONVERT_FILENAMES
  * Define this to pass UTF-8 unconverted to the kernel. */
-#ifdef __DOXYGEN__
+#ifdef DOXYGEN_RUNNING
 # define RT_DONT_CONVERT_FILENAMES 1
 #endif
 

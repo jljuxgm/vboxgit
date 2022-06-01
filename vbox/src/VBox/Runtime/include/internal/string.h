@@ -1,4 +1,4 @@
-/* $Id: string.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: string.h 25642 2010-01-05 08:19:10Z vboxsync $ */
 /** @file
  * IPRT - Internal RTStr header.
  */
@@ -38,7 +38,7 @@ RT_C_DECLS_BEGIN
 /** @def RTSTR_STRICT
  * Enables strict assertions on bad string encodings.
  */
-#ifdef __DOXYGEN__
+#ifdef DOXYGEN_RUNNING
 # define RTSTR_STRICT
 #endif
 /*#define RTSTR_STRICT*/

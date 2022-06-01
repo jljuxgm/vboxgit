@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 25076 2009-11-28 22:55:30Z vboxsync $ */
+/* $Id: fileio-posix.cpp 25642 2010-01-05 08:19:10Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -80,7 +80,7 @@ extern int futimes(int __fd, __const struct timeval __tvp[2]) __THROW;
 *******************************************************************************/
 /** @def RT_DONT_CONVERT_FILENAMES
  * Define this to pass UTF-8 unconverted to the kernel. */
-#ifdef __DOXYGEN__
+#ifdef DOXYGEN_RUNNING
 #define RT_DONT_CONVERT_FILENAMES 1
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 22531 2009-08-27 15:17:53Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 25642 2010-01-05 08:19:10Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -39,7 +39,7 @@
 #include <iprt/assert.h>
 #include "r0drv/alloc-r0drv.h"
 
-#if defined(RT_ARCH_AMD64) || defined(__DOXYGEN__)
+#if defined(RT_ARCH_AMD64) || defined(DOXYGEN_RUNNING)
 /**
  * We need memory in the module range (~2GB to ~0) this can only be obtained
  * thru APIs that are not exported (see module_alloc()).

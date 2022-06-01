@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 25642 2010-01-05 08:19:10Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -159,7 +159,7 @@
  * Define USE_REM_STUBS to stub the entire REM stuff. This is useful during
  * early porting (before we start running stuff).
  */
-#if defined(__DOXYGEN__)
+#if defined(DOXYGEN_RUNNING)
 # define USE_REM_STUBS
 #endif
 
@@ -167,7 +167,7 @@
  * Define USE_REM_CALLING_CONVENTION_GLUE for platforms where it's necessary to
  * use calling convention wrappers.
  */
-#if (defined(RT_ARCH_AMD64) && defined(RT_OS_WINDOWS)) || defined(__DOXYGEN__)
+#if (defined(RT_ARCH_AMD64) && defined(RT_OS_WINDOWS)) || defined(DOXYGEN_RUNNING)
 # define USE_REM_CALLING_CONVENTION_GLUE
 #endif
 
@@ -175,7 +175,7 @@
  * Define USE_REM_IMPORT_JUMP_GLUE for platforms where we need to
  * emit some jump glue to deal with big addresses.
  */
-#if (defined(RT_ARCH_AMD64) && !defined(USE_REM_CALLING_CONVENTION_GLUE) && !defined(RT_OS_DARWIN)) || defined(__DOXYGEN__)
+#if (defined(RT_ARCH_AMD64) && !defined(USE_REM_CALLING_CONVENTION_GLUE) && !defined(RT_OS_DARWIN)) || defined(DOXYGEN_RUNNING)
 # define USE_REM_IMPORT_JUMP_GLUE
 #endif
 
