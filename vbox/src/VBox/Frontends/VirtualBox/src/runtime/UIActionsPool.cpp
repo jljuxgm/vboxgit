@@ -1,4 +1,4 @@
-/* $Id: UIActionsPool.cpp 27132 2010-03-06 13:33:12Z vboxsync $ */
+/* $Id: UIActionsPool.cpp 27143 2010-03-07 16:47:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1170,7 +1170,7 @@ bool UIActionsPool::processHotKey(const QKeySequence &key)
         if (pAction->type() == UIActionType_Menu || pAction->type() == UIActionType_Separator)
             continue;
         QString hotkey = VBoxGlobal::extractKeyFromActionText(pAction->text());
-        if (pAction->isEnabled() && !hotkey.isEmpty())
+        if (pAction->isEnabled() && pAction->isVisible() && !hotkey.isEmpty())
         {
             if (key.matches(QKeySequence(hotkey)) == QKeySequence::ExactMatch)
             {
