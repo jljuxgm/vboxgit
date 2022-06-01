@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibModule.cpp 29307 2010-05-10 15:18:22Z vboxsync $ */
+/* $Id: VBoxGuestR3LibModule.cpp 29395 2010-05-12 07:33:28Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared modules.
  */
@@ -57,6 +57,7 @@ VBGLR3DECL(int) VbglR3RegisterSharedModule(char *pszModuleName, char *pszVersion
     AssertReturn(pReq, VERR_NO_MEMORY);
 
     vmmdevInitRequest(&pReq->header, VMMDevReq_RegisterSharedModule);
+    pReq->header.size   = RT_OFFSETOF(VMMDevSharedModuleRegistrationRequest, aRegions[cRegions]);
     pReq->GCBaseAddr    = GCBaseAddr;
     pReq->cbModule      = cbModule;
     pReq->cRegions      = cRegions;
