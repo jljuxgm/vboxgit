@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 24094 2009-10-26 21:39:34Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 24097 2009-10-26 22:35:32Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -1103,6 +1103,7 @@ int main()
     GEN_CHECK_OFF(AHCIATACONTROLLER, AsyncIORequestMutex);
     GEN_CHECK_OFF(AHCIATACONTROLLER, SuspendIOSem);
     GEN_CHECK_OFF(AHCIATACONTROLLER, DelayIRQMillies);
+    GEN_CHECK_OFF(AHCIATACONTROLLER, fSignalIdle);
     GEN_CHECK_OFF(AHCIATACONTROLLER, StatAsyncOps);
     GEN_CHECK_OFF(AHCIATACONTROLLER, StatAsyncMinWait);
     GEN_CHECK_OFF(AHCIATACONTROLLER, StatAsyncMaxWait);
@@ -1218,12 +1219,14 @@ int main()
     GEN_CHECK_OFF(AHCI, ahciPort[AHCI_MAX_NR_PORTS_IMPL-1]);
     GEN_CHECK_OFF(AHCI, aCts);
     GEN_CHECK_OFF(AHCI, aCts[1]);
+    GEN_CHECK_OFF(AHCI, lock);
+    GEN_CHECK_OFF(AHCI, hEvtIdle);
     GEN_CHECK_OFF(AHCI, u32PortsInterrupted);
     GEN_CHECK_OFF(AHCI, fReset);
     GEN_CHECK_OFF(AHCI, f64BitAddr);
     GEN_CHECK_OFF(AHCI, fGCEnabled);
     GEN_CHECK_OFF(AHCI, fR0Enabled);
-    GEN_CHECK_OFF(AHCI, lock);
+    GEN_CHECK_OFF(AHCI, fSignalIdle);
     GEN_CHECK_OFF(AHCI, cPortsImpl);
     GEN_CHECK_OFF(AHCI, f8ByteMMIO4BytesWrittenSuccessfully);
     GEN_CHECK_OFF(AHCI, cHighIOThreshold);
