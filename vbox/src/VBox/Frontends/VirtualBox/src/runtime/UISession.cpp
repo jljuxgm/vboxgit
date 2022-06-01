@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 27478 2010-03-18 13:28:01Z vboxsync $ */
+/* $Id: UISession.cpp 27483 2010-03-18 14:58:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -37,10 +37,10 @@
 #include "UIFirstRunWzd.h"
 
 #ifdef Q_WS_X11
-# include <QX11Info>
 # ifndef VBOX_WITHOUT_XCURSOR
 #  include <X11/Xcursor/Xcursor.h>
 # endif
+# include <QX11Info>
 #endif
 
 #if defined (Q_WS_MAC)
