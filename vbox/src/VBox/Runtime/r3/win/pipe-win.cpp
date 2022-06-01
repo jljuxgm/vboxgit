@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 27511 2010-03-19 01:37:26Z vboxsync $ */
+/* $Id: pipe-win.cpp 27553 2010-03-20 15:01:03Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
@@ -664,7 +664,7 @@ RTDECL(int) RTPipeWrite(RTPIPE hPipe, const void *pvBuf, size_t cbToWrite, size_
                     }
                     else if (GetLastError() == ERROR_IO_PENDING)
                     {
-                        *pcbWritten = cbWritten;
+                        *pcbWritten = cbToWrite;
                         pThis->fIOPending = true;
                         rc = VINF_SUCCESS;
                     }
