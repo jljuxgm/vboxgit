@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 28192 2010-04-12 09:55:15Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 28211 2010-04-12 14:53:30Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1910,18 +1910,18 @@ int handleShowVMInfo(HandlerArg *a)
 
     /* try to find the given machine */
     ComPtr <IMachine> machine;
-    Bstr uuid (VMNameOrUuid);
-    if (!Guid (VMNameOrUuid).isEmpty())
+    Bstr uuid(VMNameOrUuid);
+    if (!Guid(VMNameOrUuid).isEmpty())
     {
-        CHECK_ERROR (a->virtualBox, GetMachine (uuid, machine.asOutParam()));
+        CHECK_ERROR(a->virtualBox, GetMachine(uuid, machine.asOutParam()));
     }
     else
     {
-        CHECK_ERROR (a->virtualBox, FindMachine (Bstr(VMNameOrUuid), machine.asOutParam()));
-        if (SUCCEEDED (rc))
-            machine->COMGETTER(Id) (uuid.asOutParam());
+        CHECK_ERROR(a->virtualBox, FindMachine(Bstr(VMNameOrUuid), machine.asOutParam()));
+        if (SUCCEEDED(rc))
+            machine->COMGETTER(Id)(uuid.asOutParam());
     }
-    if (FAILED (rc))
+    if (FAILED(rc))
         return 1;
 
     /* Printing the log is exclusive. */
@@ -1931,7 +1931,6 @@ int handleShowVMInfo(HandlerArg *a)
     if (fLog)
     {
         ULONG64 uOffset = 0;
-        Bstr uuid;
         SafeArray<BYTE> aLogData;
         ULONG cbLogData;
         while (true)
@@ -1976,7 +1975,7 @@ int handleShowVMInfo(HandlerArg *a)
         ComPtr <IConsole> console;
 
         /* open an existing session for the VM */
-        rc = a->virtualBox->OpenExistingSession (a->session, uuid);
+        rc = a->virtualBox->OpenExistingSession(a->session, uuid);
         if (SUCCEEDED(rc))
             /* get the session machine */
             rc = a->session->COMGETTER(Machine)(machine.asOutParam());
@@ -1990,7 +1989,7 @@ int handleShowVMInfo(HandlerArg *a)
             a->session->Close();
     }
 
-    return SUCCEEDED (rc) ? 0 : 1;
+    return SUCCEEDED(rc) ? 0 : 1;
 }
 
 #endif /* !VBOX_ONLY_DOCS */
