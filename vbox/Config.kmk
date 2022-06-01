@@ -1,4 +1,4 @@
-# $Id: Config.kmk 29280 2010-05-09 23:29:45Z vboxsync $
+# $Id: Config.kmk 29314 2010-05-11 07:27:24Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -460,7 +460,7 @@ VBOX_WITH_VBOXBFE = 1
 #VBOX_WITH_VBOXFB = 1
 # Enables the Python<->XPCOM and Python<->COM bindings.
 VBOX_WITH_PYTHON ?= 1
-if1of ($(KBUILD_TARGET), darwin)
+if1of ($(KBUILD_TARGET), )
  # Enable Java<->XPCOM bridge
  VBOX_WITH_JXPCOM ?= 1
 endif
@@ -4143,7 +4143,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29280 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29314 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
