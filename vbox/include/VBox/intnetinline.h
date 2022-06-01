@@ -1,4 +1,4 @@
-/* $Id: intnetinline.h 27840 2010-03-30 21:00:51Z vboxsync $ */
+/* $Id: intnetinline.h 27845 2010-03-30 21:09:26Z vboxsync $ */
 /** @file
  * INTNET - Internal Networking, Inlined Code. (DEV,++)
  *
@@ -330,9 +330,9 @@ DECLINLINE(void) INTNETRingCommitFrameEx(PINTNETRINGBUF pRingBuf, PINTNETHDR pHd
         /** @todo Later: Try unallocate the extra memory.  */
         PINTNETHDR pHdrPadding = (PINTNETHDR)((uint8_t *)pHdr + pHdr->offFrame + cbAlignedUsed);
         pHdrPadding->u16Type  = INTNETHDR_TYPE_PADDING;
-        pHdrPadding->cbFrame  = cbAlignedFrame - cbAlignedUsed - sizeof(INTNETHDR);
+        pHdrPadding->cbFrame  = (uint16_t)(cbAlignedFrame - cbAlignedUsed - sizeof(INTNETHDR));
         pHdrPadding->offFrame = sizeof(INTNETHDR);
-        pHdr->cbFrame = cbUsed;
+        pHdr->cbFrame = (uint16_t)cbUsed;
     }
 
     Log2(("INTNETRingCommitFrame:   offWriteCom: %#x -> %#x (offRead=%#x)\n", pRingBuf->offWriteCom, offWriteCom, pRingBuf->offReadX));
