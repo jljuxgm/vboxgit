@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltMp-win.c 23927 2009-10-21 09:18:34Z vboxsync $ */
+/* $Id: VBoxNetFltMp-win.c 24190 2009-10-30 14:03:30Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Miniport edge of ndis filter driver
  */
@@ -478,6 +478,7 @@ DECLHIDDEN(NDIS_STATUS) vboxNetFltWinMpDoDeinitialization(PADAPT pAdapt)
     PVBOXNETFLTINS pNetFlt = PADAPT_2_PVBOXNETFLTINS(pAdapt);
     RTSPINLOCKTMP Tmp = RTSPINLOCKTMP_INITIALIZER;
     uint64_t NanoTS = RTTimeSystemNanoTS();
+    int cPPUsage;
 
     Assert(vboxNetFltWinGetOpState(&pAdapt->MPState) == kVBoxNetDevOpState_Initialized);
     /*
@@ -495,6 +496,12 @@ DECLHIDDEN(NDIS_STATUS) vboxNetFltWinMpDoDeinitialization(PADAPT pAdapt)
     RTSpinlockRelease(pNetFlt->hSpinlock, &Tmp);
 
     vboxNetFltWinWaitDereference(&pAdapt->MPState);
+
+    /* check packet pool is empty */
+    cPPUsage = NdisPacketPoolUsage(pAdapt->hRecvPacketPoolHandle);
+    Assert(cPPUsage == 0);
+    /* for debugging only, ignore the err in release */
+    NOREF(cPPUsage);
 
     vboxNetFltWinSetOpState(&pAdapt->MPState, kVBoxNetDevOpState_Deinitialized);
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.h 23927 2009-10-21 09:18:34Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.h 24190 2009-10-30 14:03:30Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -997,11 +997,18 @@ DECLINLINE(bool) vboxNetFltWinIsLoopedBackPacket(PNDIS_PACKET pPacket)
 }
 #endif
 
-#if !defined(VBOX_NETFLT_ONDEMAND_BIND) && !defined(VBOXNETADP)
-
 /**************************************************************
  * utility methofs for ndis packet creation/initialization    *
  **************************************************************/
+
+#define VBOXNETFLT_OOB_INIT(_p) \
+    { \
+        NdisZeroMemory(NDIS_OOB_DATA_FROM_PACKET(_p), sizeof(NDIS_PACKET_OOB_DATA)); \
+        NDIS_SET_PACKET_HEADER_SIZE(_p, ETH_HEADER_SIZE); \
+    }
+
+#if !defined(VBOX_NETFLT_ONDEMAND_BIND) && !defined(VBOXNETADP)
+
 DECLINLINE(NDIS_STATUS) vboxNetFltWinCopyPacketInfoOnRecv(PNDIS_PACKET pDstPacket, PNDIS_PACKET pSrcPacket)
 {
     NDIS_STATUS fStatus;

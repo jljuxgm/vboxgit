@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.c 23927 2009-10-21 09:18:34Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.c 24190 2009-10-30 14:03:30Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -1714,6 +1714,11 @@ DECLHIDDEN(PNDIS_PACKET) vboxNetFltWinNdisPacketFromSG(PADAPT pAdapt, PINTNETSG 
     {
         PNDIS_BUFFER pBuffer;
         PVOID pMemBuf;
+
+        /* @todo: generally we do not always need to zero-initialize the complete OOB data here, reinitialize only when/what we need,
+         * however we DO need to reset the status for the packets we indicate via NdisMIndicateReceivePacket to avoid packet loss
+         * in case the status contains NDIS_STATUS_RESOURCES */
+        VBOXNETFLT_OOB_INIT(pPacket);
 
         if(bCopyMemory)
         {
