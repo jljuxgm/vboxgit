@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 24326 2009-11-04 13:09:55Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 24329 2009-11-04 13:30:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -254,9 +254,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             rc = CFGMR3InsertNodeF(pRoot, &pLeaf, "CPUM/CPUID/%x", leaf);               RC_CHECK();
 
             rc = CFGMR3InsertInteger(pLeaf, "eax", ulEax);                      RC_CHECK();
-            rc = CFGMR3InsertInteger(pLeaf, "ebx", ulEax);                      RC_CHECK();
-            rc = CFGMR3InsertInteger(pLeaf, "ecx", ulEax);                      RC_CHECK();
-            rc = CFGMR3InsertInteger(pLeaf, "edx", ulEax);                      RC_CHECK();
+            rc = CFGMR3InsertInteger(pLeaf, "ebx", ulEbx);                      RC_CHECK();
+            rc = CFGMR3InsertInteger(pLeaf, "ecx", ulEcx);                      RC_CHECK();
+            rc = CFGMR3InsertInteger(pLeaf, "edx", ulEdx);                      RC_CHECK();
         }
     }
 
@@ -270,9 +270,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             rc = CFGMR3InsertNodeF(pRoot, &pLeaf, "CPUM/CPUID/%x", leaf);               RC_CHECK();
 
             rc = CFGMR3InsertInteger(pLeaf, "eax", ulEax);                      RC_CHECK();
-            rc = CFGMR3InsertInteger(pLeaf, "ebx", ulEax);                      RC_CHECK();
-            rc = CFGMR3InsertInteger(pLeaf, "ecx", ulEax);                      RC_CHECK();
-            rc = CFGMR3InsertInteger(pLeaf, "edx", ulEax);                      RC_CHECK();
+            rc = CFGMR3InsertInteger(pLeaf, "ebx", ulEbx);                      RC_CHECK();
+            rc = CFGMR3InsertInteger(pLeaf, "ecx", ulEcx);                      RC_CHECK();
+            rc = CFGMR3InsertInteger(pLeaf, "edx", ulEdx);                      RC_CHECK();
         }
     }
 
