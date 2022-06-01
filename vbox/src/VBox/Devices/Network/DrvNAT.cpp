@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 26574 2010-02-16 12:44:10Z vboxsync $ */
+/* $Id: DrvNAT.cpp 27565 2010-03-21 23:26:10Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -987,14 +987,17 @@ static DECLCALLBACK(void) drvNATDestruct(PPDMDRVINS pDrvIns)
     LogFlow(("drvNATDestruct:\n"));
     PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
 
-    slirp_term(pThis->pNATState);
-    slirp_deregister_statistics(pThis->pNATState, pDrvIns);
-    pThis->pNATState = NULL;
+    if (pThis->pNATState)
+    {
+        slirp_term(pThis->pNATState);
+        slirp_deregister_statistics(pThis->pNATState, pDrvIns);
 #ifdef VBOX_WITH_STATISTICS
 # define DRV_PROFILE_COUNTER(name, dsc)     DEREGISTER_COUNTER(name, pThis)
 # define DRV_COUNTING_COUNTER(name, dsc)    DEREGISTER_COUNTER(name, pThis)
 # include "counters.h"
 #endif
+        pThis->pNATState = NULL;
+    }
 }
 
 
