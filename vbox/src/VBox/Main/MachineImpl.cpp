@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 24727 2009-11-17 16:02:49Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24759 2009-11-18 14:55:20Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -7704,7 +7704,7 @@ void Machine::fixupMedia(bool aCommit, bool aOnline /*= false*/)
                      oldIt != oldAtts.end();
                      ++oldIt)
                 {
-                    MediumAttachment *pOldAttach = *it;
+                    MediumAttachment *pOldAttach = *oldIt;
                     if (pOldAttach->medium().equalsTo(pMedium))
                     {
                         LogFlowThisFunc(("--> medium '%s' was attached before, will not remove\n", pMedium->name().raw()));
