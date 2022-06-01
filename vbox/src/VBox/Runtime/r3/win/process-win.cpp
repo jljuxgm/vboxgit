@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 27385 2010-03-15 22:14:14Z vboxsync $ */
+/* $Id: process-win.cpp 27387 2010-03-15 22:40:34Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -295,9 +295,13 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
                     if (fRc)
                     {
                         CloseHandle(ProcInfo.hThread);
-                        CloseHandle(ProcInfo.hProcess);
                         if (phProcess)
+                        {
+                            /** @todo Remember the process handle and pick it up in RTProcWait. */
                             *phProcess = ProcInfo.dwProcessId;
+                        }
+                        else
+                            CloseHandle(ProcInfo.hProcess);
                         rc = VINF_SUCCESS;
                     }
                     else
