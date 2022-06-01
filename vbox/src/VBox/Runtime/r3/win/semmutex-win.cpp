@@ -1,4 +1,4 @@
-/* $Id: semmutex-win.cpp 25382 2009-12-15 00:30:34Z vboxsync $ */
+/* $Id: semmutex-win.cpp 25398 2009-12-15 12:58:08Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Windows.
  */
@@ -161,11 +161,11 @@ DECL_FORCE_INLINE(int) rtSemMutexRequestNoResume(RTSEMMUTEX MutexSem, unsigned c
      * Lock mutex semaphore.
      */
     if (cMillies > 0)
-        RTThreadBlocking(hThreadSelf, RTTHREADSTATE_MUTEX, RTSEMMUTEX_STRICT_BLOCK_ARGS(&pThis->ValidatorRec));
+        RTSEMMUTEX_STRICT_BLOCK(hThreadSelf, &pThis->ValidatorRec);
     int rc = WaitForSingleObjectEx(pThis->hMtx,
                                    cMillies == RT_INDEFINITE_WAIT ? INFINITE : cMillies,
                                    TRUE /*bAlertable*/);
-    RTThreadUnblocked(hThreadSelf, RTTHREADSTATE_MUTEX);
+    RTSEMMUTEX_STRICT_UNBLOCK(hThreadSelf);
     switch (rc)
     {
         case WAIT_OBJECT_0:

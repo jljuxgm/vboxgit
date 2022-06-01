@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 25373 2009-12-14 19:20:27Z vboxsync $ */
+/* $Id: critsect-generic.cpp 25398 2009-12-15 12:58:08Z vboxsync $ */
 /** @file
  * IPRT - Critical Section, Generic.
  */
@@ -320,9 +320,9 @@ RTDECL(int) RTCritSectEnter(PRTCRITSECT pCritSect)
 #endif
         for (;;)
         {
-            RTThreadBlocking(hThreadSelf, RTTHREADSTATE_CRITSECT, RTCRITSECT_STRICT_BLOCK_ARGS(pCritSect->pValidatorRec));
+            RTCRITSECT_STRICT_BLOCK(hThreadSelf, pCritSect->pValidatorRec, !(pCritSect->fFlags & RTCRITSECT_FLAGS_NO_NESTING));
             int rc = RTSemEventWait(pCritSect->EventSem, RT_INDEFINITE_WAIT);
-            RTThreadUnblocked(hThreadSelf, RTTHREADSTATE_CRITSECT);
+            RTCRITSECT_STRICT_UNBLOCK(hThreadSelf);
             if (pCritSect->u32Magic != RTCRITSECT_MAGIC)
                 return VERR_SEM_DESTROYED;
             if (rc == VINF_SUCCESS)
