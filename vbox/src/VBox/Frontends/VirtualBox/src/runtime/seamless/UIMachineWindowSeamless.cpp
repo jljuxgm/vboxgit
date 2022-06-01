@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27039 2010-03-04 14:49:40Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27052 2010-03-04 18:44:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -77,7 +77,7 @@ UIMachineWindowSeamless::UIMachineWindowSeamless(UIMachineLogic *pMachineLogic, 
     updateAppearanceOf(UIVisualElement_AllStuff);
 
     /* Show window: */
-    show();
+    showMaximized();
 }
 
 UIMachineWindowSeamless::~UIMachineWindowSeamless()
@@ -156,13 +156,9 @@ void UIMachineWindowSeamless::closeEvent(QCloseEvent *pEvent)
 
 void UIMachineWindowSeamless::prepareSeamless()
 {
-    /* Move & resize seamless frameless window: */
-    QRect geometry = QApplication::desktop()->availableGeometry();
 #ifdef Q_WS_WIN
-    m_prevRegion = geometry;
+    m_prevRegion = QApplication::desktop()->availableGeometry();
 #endif
-    move(geometry.topLeft());
-    resize(geometry.size());
 
 #ifdef Q_WS_MAC
     /* Please note: All the stuff below has to be done after the window has
@@ -171,9 +167,6 @@ void UIMachineWindowSeamless::prepareSeamless()
      * careful on rearrangement of the method calls. */
     ::darwinSetShowsWindowTransparent(this, true);
 #endif
-
-    /* Perform these events: */
-    qApp->processEvents();
 }
 
 #ifdef Q_WS_MAC
