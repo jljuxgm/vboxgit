@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 23975 2009-10-22 12:54:52Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 24278 2009-11-02 20:26:07Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -307,6 +307,11 @@ typedef struct PDMACFILEENDPOINTCACHE
     RTSEMRW               SemRWEntries;
     /** Pointer to the gobal cache data */
     PPDMACFILECACHEGLOBAL pCache;
+
+#ifdef VBOX_WITH_STATISTICS
+    /** Number of times a write was deferred because the cache entry was still in progress */
+    STAMCOUNTER           StatWriteDeferred;
+#endif
 } PDMACFILEENDPOINTCACHE, *PPDMACFILEENDPOINTCACHE;
 
 /**
@@ -422,6 +427,14 @@ typedef struct PDMASYNCCOMPLETIONENDPOINTFILE
     bool                                   fBlockingEventPending;
     /** Blocking event type */
     PDMACEPFILEBLOCKINGEVENT               enmBlockingEvent;
+
+#ifdef VBOX_WITH_STATISTICS
+    /** Time spend in a read. */
+    STAMPROFILEADV                         StatRead;
+    /** Time spend in a write. */
+    STAMPROFILEADV                         StatWrite;
+#endif
+
     /** Additional data needed for the event types. */
     union
     {
