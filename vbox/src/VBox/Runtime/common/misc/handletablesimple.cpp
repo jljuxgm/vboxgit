@@ -1,4 +1,4 @@
-/* $Id: handletablesimple.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: handletablesimple.cpp 24181 2009-10-30 10:51:56Z vboxsync $ */
 /** @file
  * IPRT - Handle Tables.
  */
@@ -60,7 +60,7 @@ RTDECL(int)     RTHandleTableAlloc(RTHANDLETABLE hHandleTable, void *pvObj, uint
     /*
      * Allocation loop.
      */
-    RTSPINLOCKTMP Tmp;
+    RTSPINLOCKTMP Tmp /*= no init */;
     rtHandleTableLock(pThis, &Tmp);
 
     int rc;
@@ -216,7 +216,7 @@ RTDECL(void *)  RTHandleTableLookup(RTHANDLETABLE hHandleTable, uint32_t h)
     void *pvObj = NULL;
 
     /* acquire the lock */
-    RTSPINLOCKTMP Tmp;
+    RTSPINLOCKTMP Tmp /*= no init */;
     rtHandleTableLock(pThis, &Tmp);
 
     /*
@@ -257,7 +257,7 @@ RTDECL(void *)  RTHandleTableFree(RTHANDLETABLE hHandleTable, uint32_t h)
     void *pvObj = NULL;
 
     /* acquire the lock */
-    RTSPINLOCKTMP Tmp;
+    RTSPINLOCKTMP Tmp /*= no init */;
     rtHandleTableLock(pThis, &Tmp);
 
     /*

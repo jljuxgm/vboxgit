@@ -1,4 +1,4 @@
-/* $Id: cache.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: cache.cpp 24181 2009-10-30 10:51:56Z vboxsync $ */
 /** @file
  * IPRT - Object cache
  */
@@ -194,7 +194,7 @@ RT_EXPORT_SYMBOL(RTCacheDestroy);
  */
 RTDECL(int) RTCacheRequest(PRTOBJCACHE pCache, void **ppObj)
 {
-    RTSPINLOCKTMP spinlockTmp;
+    RTSPINLOCKTMP spinlockTmp = RTSPINLOCKTMP_INITIALIZER;
 
     if (pCache->SpinlockRequest != NIL_RTSPINLOCK)
         RTSpinlockAcquire(pCache->SpinlockRequest, &spinlockTmp);
@@ -263,7 +263,7 @@ RT_EXPORT_SYMBOL(RTCacheRequest);
  */
 RTDECL(int) RTCacheInsert(PRTOBJCACHE pCache, void *pObj)
 {
-    RTSPINLOCKTMP spinlockTmp;
+    RTSPINLOCKTMP spinlockTmp = RTSPINLOCKTMP_INITIALIZER;
     int rc = VINF_SUCCESS;
 
     if (pCache->SpinlockInsert != NIL_RTSPINLOCK)

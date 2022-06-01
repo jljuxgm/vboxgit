@@ -1,4 +1,4 @@
-/* $Id: handletablectx.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: handletablectx.cpp 24181 2009-10-30 10:51:56Z vboxsync $ */
 /** @file
  * IPRT - Handle Tables.
  */
@@ -49,7 +49,7 @@
 RTDECL(int)     RTHandleTableAllocWithCtx(RTHANDLETABLE hHandleTable, void *pvObj, void *pvCtx, uint32_t *ph)
 {
     PRTHANDLETABLEINT   pThis;
-    RTSPINLOCKTMP       Tmp;
+    RTSPINLOCKTMP       Tmp /*= no init */;
     int                 rc;
 
     /* validate the input */
@@ -226,7 +226,7 @@ RTDECL(void *)  RTHandleTableLookupWithCtx(RTHANDLETABLE hHandleTable, uint32_t 
     void               *pvObj = NULL;
     PRTHTENTRYCTX       pEntry;
     PRTHANDLETABLEINT   pThis;
-    RTSPINLOCKTMP       Tmp;
+    RTSPINLOCKTMP       Tmp /*= no init */;
 
     /* validate the input */
     pThis = (PRTHANDLETABLEINT)hHandleTable;
@@ -270,7 +270,7 @@ RTDECL(void *)  RTHandleTableFreeWithCtx(RTHANDLETABLE hHandleTable, uint32_t h,
     void               *pvObj = NULL;
     PRTHTENTRYCTX       pEntry;
     PRTHANDLETABLEINT   pThis;
-    RTSPINLOCKTMP       Tmp;
+    RTSPINLOCKTMP       Tmp /*= no init */;
 
     /* validate the input */
     pThis = (PRTHANDLETABLEINT)hHandleTable;

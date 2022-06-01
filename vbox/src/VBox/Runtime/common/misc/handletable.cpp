@@ -1,4 +1,4 @@
-/* $Id: handletable.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: handletable.cpp 24181 2009-10-30 10:51:56Z vboxsync $ */
 /** @file
  * IPRT - Handle Tables.
  */
@@ -130,7 +130,7 @@ RT_EXPORT_SYMBOL(RTHandleTableCreate);
 RTDECL(int) RTHandleTableDestroy(RTHANDLETABLE hHandleTable, PFNRTHANDLETABLEDELETE pfnDelete, void *pvUser)
 {
     PRTHANDLETABLEINT   pThis;
-    RTSPINLOCKTMP       Tmp;
+    RTSPINLOCKTMP       Tmp = RTSPINLOCKTMP_INITIALIZER;
     uint32_t            i1;
     uint32_t            i;
 
