@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27135 2010-03-06 17:54:54Z vboxsync $
+# $Id: Makefile.kmk 27136 2010-03-06 18:41:23Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -57,10 +57,12 @@ ifdef VBOX_WITH_TESTCASES
   tstVD_TEMPLATE = VBOXLNXHOSTR3EXE
   tstVD-2_TEMPLATE = VBOXLNXHOSTR3EXE
   tstVDCopy_TEMPLATE = VBOXLNXHOSTR3EXE
+  tstVDSnap_TEMPLATE = VBOXLNXHOSTR3EXE
  else
   tstVD_TEMPLATE = VBOXR3TSTEXE
   tstVD-2_TEMPLATE = VBOXR3TSTEXE
   tstVDCopy_TEMPLATE = VBOXR3TSTEXE
+  tstVDSnap_TEMPLATE = VBOXR3TSTEXE
  endif
  tstVD_LIBS     = $(LIB_DDU) $(LIB_RUNTIME)
  tstVD-2_LIBS   = $(LIB_DDU) $(LIB_RUNTIME)
