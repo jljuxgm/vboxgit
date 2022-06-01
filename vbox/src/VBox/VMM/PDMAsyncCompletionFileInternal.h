@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 24442 2009-11-06 13:49:49Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 24517 2009-11-09 16:03:09Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -248,7 +248,7 @@ typedef struct PDMACFILECACHEENTRY
  */
 #define PDMACFILECACHE_ENTRY_IS_DEPRECATED  RT_BIT(3)
 /** Entry is not evictable. */
-#define PDMACFILECACHE_NOT_EVICTABLE  (PDMACFILECACHE_ENTRY_LOCKED | PDMACFILECACHE_IO_IN_PROGRESS)
+#define PDMACFILECACHE_NOT_EVICTABLE  (PDMACFILECACHE_ENTRY_LOCKED | PDMACFILECACHE_IO_IN_PROGRESS | PDMACFILECACHE_ENTRY_IS_DEPRECATED)
 
 /**
  * LRU list data
@@ -301,6 +301,8 @@ typedef struct PDMACFILECACHEGLOBAL
     STAMPROFILEADV   StatTreeInsert;
     /** Time spend to remove an entry in the AVL tree. */
     STAMPROFILEADV   StatTreeRemove;
+    /** Number of times a buffer could be reused. */
+    STAMCOUNTER      StatBuffersReused;
 #endif
 } PDMACFILECACHEGLOBAL;
 
