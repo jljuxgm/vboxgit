@@ -1,4 +1,4 @@
-/* $Id: semevent-linux.cpp 25638 2010-01-04 16:08:04Z vboxsync $ */
+/* $Id: semevent-linux.cpp 25639 2010-01-04 16:19:05Z vboxsync $ */
 /** @file
  * IPRT - Event Semaphore, Linux (2.6.x+).
  */
@@ -29,7 +29,7 @@
  */
 
 #include <features.h>
-#if __GLIBC_PREREQ(2,6) && !defined(IPRT_WITH_FUTEX_BASED_SEMS)  && !defined(DEBUG_bird) //// testing 1 2 3
+#if __GLIBC_PREREQ(2,6) && !defined(IPRT_WITH_FUTEX_BASED_SEMS)
 
 /*
  * glibc 2.6 fixed a serious bug in the mutex implementation. We wrote this
