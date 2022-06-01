@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: fileio.cpp 24650 2009-11-13 17:39:27Z vboxsync $ */
 /** @file
  * IPRT - File I/O.
  */
@@ -149,7 +149,9 @@ int rtFileRecalcAndValidateFlags(uint32_t *pfOpen)
     switch (fOpen & RTFILE_O_ACTION_MASK)
     {
         case 0: /* temporarily */
+#ifdef DEBUG_bird
             AssertMsgFailed(("Missing RTFILE_O_OPEN/CREATE*! (continuable assertion)\n"));
+#endif
             fOpen |= RTFILE_O_OPEN;
             break;
         case RTFILE_O_OPEN:
@@ -166,7 +168,9 @@ int rtFileRecalcAndValidateFlags(uint32_t *pfOpen)
     switch (fOpen & RTFILE_O_DENY_MASK)
     {
         case 0: /* temporarily */
+#ifdef DEBUG_bird
             AssertMsgFailed(("Missing RTFILE_O_DENY_*! (continuable assertion)\n"));
+#endif
             fOpen |= RTFILE_O_DENY_NONE;
             break;
         case RTFILE_O_DENY_NONE:
