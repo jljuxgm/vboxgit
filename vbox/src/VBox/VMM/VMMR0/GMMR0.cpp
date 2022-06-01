@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 27102 2010-03-05 15:21:24Z vboxsync $ */
+/* $Id: GMMR0.cpp 27103 2010-03-05 15:24:16Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2934,6 +2934,10 @@ GMMR0DECL(int) GMMR0BalloonedPages(PVM pVM, VMCPUID idCpu, GMMBALLOONACTION enmA
                 pGVM->gmm.s.cBalloonedPages -= 0;
                 break;
             }
+
+            default:
+                rc = VERR_INVALID_PARAMETER;
+                break;
         }
         GMM_CHECK_SANITY_UPON_LEAVING(pGMM);
     }
