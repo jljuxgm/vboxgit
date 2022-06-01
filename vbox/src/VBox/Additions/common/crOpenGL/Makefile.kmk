@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25595 2009-12-30 16:42:33Z vboxsync $
+# $Id: Makefile.kmk 25941 2010-01-20 17:17:27Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest OpenGL part
 #
@@ -198,7 +198,10 @@ VBoxOGL_LIBS = \
 	$(PATH_LIB)/additions/VBoxOGLspuload$(VBOX_SUFF_LIB)
 if1of ($(KBUILD_TARGET), linux solaris freebsd)
  VBoxOGL_LIBS += \
- 	$(PATH_LIB)/libXcomposite.so
+ 	$(PATH_LIB)/libXcomposite.so \
+ 	$(PATH_LIB)/libXdamage.so \
+ 	$(PATH_LIB)/libXext.so \
+ 	$(PATH_LIB)/libXfixes.so
  ifdef VBoxOGL_FAKEDRI
   VBoxOGL_LIBS += \
   	dl
