@@ -1,4 +1,4 @@
-/* $Id: Builtins.cpp 27559 2010-03-20 22:00:53Z vboxsync $ */
+/* $Id: Builtins.cpp 28287 2010-04-14 10:10:40Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -237,6 +237,13 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (RT_FAILURE(rc))
         return rc;
 #endif
+               /* ENABLE VDE */
+#if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvVDE);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+               /* /ENABLE VDE */
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvIntNet);
     if (RT_FAILURE(rc))
         return rc;
