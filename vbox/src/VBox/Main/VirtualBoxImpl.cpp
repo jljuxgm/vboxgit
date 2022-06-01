@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 26946 2010-03-02 13:59:52Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1380,7 +1380,10 @@ STDMETHODIMP VirtualBox::OpenHardDisk(IN_BSTR aLocation,
     if (SUCCEEDED(rc))
     {
         bool fNeedsSaveSettings = false;
-        rc = registerHardDisk(hardDisk, &fNeedsSaveSettings);
+        {
+            AutoWriteLock treeLock(getMediaTreeLockHandle() COMMA_LOCKVAL_SRC_POS);
+            rc = registerHardDisk(hardDisk, &fNeedsSaveSettings);
+        }
 
         /* Note that it's important to call uninit() on failure to register
          * because the differencing hard disk would have been already associated
