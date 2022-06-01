@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 27885 2010-03-31 12:16:27Z vboxsync $ */
+/* $Id: MachineImpl.cpp 27893 2010-03-31 13:21:11Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -237,7 +237,7 @@ Machine::MediaData::~MediaData()
 /////////////////////////////////////////////////////////////////////////////
 
 Machine::Machine()
-    : mPeer(NULL), mParent(NULL)
+    : mPeer(NULL), mParent(NULL), mGuestHAL(NULL)
 {}
 
 Machine::~Machine()
