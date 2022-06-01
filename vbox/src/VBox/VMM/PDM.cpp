@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 24630 2009-11-13 10:15:33Z vboxsync $ */
+/* $Id: PDM.cpp 24692 2009-11-16 14:02:28Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1050,7 +1050,7 @@ VMMR3DECL(void) PDMR3Reset(PVM pVM)
 
 /**
  * This function will notify all the devices and their
- * attached drivers about the VM now being reset.
+ * attached drivers about the VM now being suspended.
  *
  * @param   pVM     VM Handle.
  * @thread  EMT(0)
