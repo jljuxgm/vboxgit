@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 24749 2009-11-18 00:32:14Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 24757 2009-11-18 12:55:18Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -1361,11 +1361,17 @@ int main()
     GEN_CHECK_OFF(VNETSTATE, pCanRxQueueRC);
     GEN_CHECK_OFF(VNETSTATE, pTxBuf);
     GEN_CHECK_OFF(VNETSTATE, pLinkUpTimer);
+#ifdef VNET_TX_DELAY
+    GEN_CHECK_OFF(VNETSTATE, pTxTimerR3);
+    GEN_CHECK_OFF(VNETSTATE, pTxTimerR0);
+    GEN_CHECK_OFF(VNETSTATE, pTxTimerRC);
+#endif /* VNET_TX_DELAY */
     GEN_CHECK_OFF(VNETSTATE, config);
     GEN_CHECK_OFF(VNETSTATE, macConfigured);
     GEN_CHECK_OFF(VNETSTATE, fCableConnected);
     GEN_CHECK_OFF(VNETSTATE, u32PktNo);
-    GEN_CHECK_OFF(VNETSTATE, fLocked);
+    GEN_CHECK_OFF(VNETSTATE, fPromiscuous);
+    GEN_CHECK_OFF(VNETSTATE, fAllMulti);
     GEN_CHECK_OFF(VNETSTATE, pRxQueue);
     GEN_CHECK_OFF(VNETSTATE, pTxQueue);
     GEN_CHECK_OFF(VNETSTATE, pCtlQueue);
