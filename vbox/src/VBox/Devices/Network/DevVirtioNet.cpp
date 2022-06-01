@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 30219 2010-06-16 01:47:40Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -711,7 +711,7 @@ static int vnetHandleRxPacket(PVNETSTATE pState, const void *pvBuf, size_t cb)
 
         while (nSeg < elem.nIn && uOffset < cb)
         {
-            unsigned int uSize = RT_MIN(elem.aSegsIn[nSeg].cb, cb - uOffset);
+            unsigned int uSize = (unsigned int)RT_MIN(elem.aSegsIn[nSeg].cb, cb - uOffset);
             elem.aSegsIn[nSeg++].pv = (uint8_t*)pvBuf + uOffset;
             uOffset += uSize;
             uElemSize += uSize;
