@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 25472 2009-12-17 21:48:33Z vboxsync $ */
+/* $Id: log-vbox.cpp 25474 2009-12-17 21:56:29Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -393,7 +393,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
             if (pszArgFileBuf)
             {
                 /* Retrieve the argument list */
-                rcBSD = sysctl(aiName, RT_ELEMENTS(aiName), NULL, &cchArgs, NULL, 0);
+                rcBSD = sysctl(aiName, RT_ELEMENTS(aiName), pszArgFileBuf, &cchArgs, NULL, 0);
                 if (!rcBSD)
                 {
                     /*
