@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 29918 2010-05-31 16:12:02Z vboxsync $ */
+/* $Id: UIMachineView.cpp 29982 2010-06-02 12:12:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1078,7 +1078,12 @@ bool UIMachineView::eventFilter(QObject *pWatched, QEvent *pEvent)
                         return true;
                     }
                 }
-                /* Else this event will be processed using next 'case': */
+
+                /* Check if we should activate window under cursor: */
+                if (machineWindowWrapper()->machineWindow() != QApplication::activeWindow())
+                    machineWindowWrapper()->machineWindow()->activateWindow();
+
+                /* This event should be also processed using next 'case': */
             }
             case QEvent::MouseButtonPress:
             case QEvent::MouseButtonDblClick:
