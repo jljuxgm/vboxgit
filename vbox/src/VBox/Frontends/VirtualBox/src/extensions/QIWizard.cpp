@@ -1,4 +1,4 @@
-/* $Id: QIWizard.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
+/* $Id: QIWizard.cpp 28761 2010-04-26 15:49:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -192,8 +192,8 @@ QString QIWizardPage::standardHelpText() const
               "<b>%2</b> button to return to the previous page. "
               "You can also press <b>%3</b> if you want to cancel the execution "
               "of this wizard.</p>")
-        .arg(VBoxGlobal::replaceHtmlEntities(VBoxGlobal::removeAccelMark(wizard()->buttonText(QWizard::NextButton))))
-        .arg(VBoxGlobal::replaceHtmlEntities(VBoxGlobal::removeAccelMark(wizard()->buttonText(QWizard::BackButton))))
+        .arg(VBoxGlobal::replaceHtmlEntities(VBoxGlobal::removeAccelMark(wizard()->buttonText(QWizard::NextButton).remove(" >"))))
+        .arg(VBoxGlobal::replaceHtmlEntities(VBoxGlobal::removeAccelMark(wizard()->buttonText(QWizard::BackButton).remove("< "))))
 #ifdef Q_WS_MAC
         .arg(QKeySequence("ESC").toString()); /* There is no button shown on Mac OS X, so just say the key sequence. */
 #else /* Q_WS_MAC */
