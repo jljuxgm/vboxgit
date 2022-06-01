@@ -1,6 +1,6 @@
 #! /bin/sh
 # Sun VirtualBox
-# Linux Additions kernel module init script ($Revision: 28998 $)
+# Linux Additions kernel module init script ($Revision: 29016 $)
 #
 
 #
@@ -271,7 +271,8 @@ start()
 
     # Mount all shared folders from /etc/fstab. Normally this is done by some
     # other startup script but this requires the vboxdrv kernel module loaded.
-    mount -a -t vboxsf
+    # This isn't necessary anymore as the vboxsf module is autoloaded.
+    # mount -a -t vboxsf
 
     succ_msg
     return 0
