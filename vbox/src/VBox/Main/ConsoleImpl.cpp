@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 24366 2009-11-05 03:08:48Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 24441 2009-11-06 13:39:28Z vboxsync $ */
 
 /** @file
  *
@@ -3148,7 +3148,7 @@ HRESULT Console::onNetworkAdapterChange(INetworkAdapter *aNetworkAdapter, BOOL c
             {
                 case NetworkAdapterType_Am79C970A:
                 case NetworkAdapterType_Am79C973:
-                    pszAdapterName = "e1000";
+                    pszAdapterName = "pcnet";
                     break;
 #ifdef VBOX_WITH_E1000
                 case NetworkAdapterType_I82540EM:
