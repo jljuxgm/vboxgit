@@ -1,4 +1,4 @@
-/* $Id: VRDPServerImpl.h 26156 2010-02-02 16:30:28Z vboxsync $ */
+/* $Id: VRDPServerImpl.h 26167 2010-02-02 19:59:09Z vboxsync $ */
 
 /** @file
  *
@@ -110,7 +110,6 @@ public:
     HRESULT loadSettings(const settings::VRDPSettings &data);
     HRESULT saveSettings(settings::VRDPSettings &data);
 
-    bool isModified() { AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS); return mData.isBackedUp(); }
     bool rollback();
     void commit();
     void copyFrom (VRDPServer *aThat);
