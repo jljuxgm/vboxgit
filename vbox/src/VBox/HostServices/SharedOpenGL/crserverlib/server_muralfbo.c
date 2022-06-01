@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 28198 2010-04-12 12:02:48Z vboxsync $ */
+/* $Id: server_muralfbo.c 28223 2010-04-12 19:34:30Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -320,7 +320,7 @@ void crServerPresentFBO(CRMuralInfo *mural)
                 pDst += rowsize;
             }
 
-            cr_server.pfnPresentFBO(tmppixels, i, rect.x1, rect.y1, rect.x2-rect.x1, height);
+            cr_server.pfnPresentFBO(tmppixels, i, rect.x1-cr_server.screen[i].x, rect.y1-cr_server.screen[i].y, rect.x2-rect.x1, height);
 
             crFree(tmppixels);
         }
