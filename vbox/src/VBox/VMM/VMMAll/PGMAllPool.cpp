@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 27775 2010-03-29 11:05:29Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 28123 2010-04-09 08:02:25Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1149,7 +1149,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
 #endif
 
     /*
-     * Incremental page table updates should weight more than random ones.
+     * Incremental page table updates should weigh more than random ones.
      * (Only applies when started from offset 0)
      */
     pVCpu->pgm.s.cPoolAccessHandler++;
