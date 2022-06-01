@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 26991 2010-03-03 14:19:00Z vboxsync $ */
+/* $Id: CPUM.cpp 26992 2010-03-03 14:21:20Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -563,7 +563,8 @@ static int cpumR3CpuIdInit(PVM pVM)
      */
     pCPUM->aGuestCpuIdStd[1].ebx &= 0x0000ffff;
 #ifdef VBOX_WITH_MULTI_CORE
-    if (pCPUM->enmGuestCpuVendor != CPUMCPUVENDOR_SYNTHETIC && pVM->cCpus > 1)
+    if (    pCPUM->enmGuestCpuVendor != CPUMCPUVENDOR_SYNTHETIC
+        &&  pVM->cCpus > 1)
     {
         /* If CPUID Fn0000_0001_EDX[HTT] = 1 then LogicalProcessorCount is the number of threads per CPU core times the number of CPU cores per processor */
         pCPUM->aGuestCpuIdStd[1].ebx |= (pVM->cCpus << 16);
