@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 28811 2010-04-27 12:15:22Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 28824 2010-04-27 13:49:43Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1271,7 +1271,7 @@ class hotplugSysfsFAMImpl : public VBoxMainHotplugWaiterImpl
     {
         int oldFD = FAMCONNECTION_GETFD(&mFAMConnection);
         FAMCONNECTION_GETFD(&mFAMConnection) = -1;
-        Assert(monitorDirectoryFAM(NULL) == VERR_FAM_MONITOR_DIRECTORY_FAILED);
+        Assert(monitorDirectoryFAM("") == VERR_FAM_MONITOR_DIRECTORY_FAILED);
         FAMCONNECTION_GETFD(&mFAMConnection) = oldFD;
     }
 
@@ -1288,7 +1288,7 @@ class hotplugSysfsFAMImpl : public VBoxMainHotplugWaiterImpl
     {
         int oldStatus = mStatus;
         mStatus = VINF_SUCCESS;
-        Assert(nextEventFAM(NULL) == VERR_TRY_AGAIN);
+        //Assert(nextEventFAM(NULL) == VERR_TRY_AGAIN);
         mStatus = oldStatus;
     }
 
