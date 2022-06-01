@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 24104 2009-10-27 00:15:45Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 24105 2009-10-27 00:18:26Z vboxsync $ */
 /** @file
  *
  * VBox storage drivers:
@@ -890,6 +890,9 @@ static DECLCALLBACK(void) drvscsiDestruct(PPDMDRVINS pDrvIns)
 
     if (pThis->pQueueRequests)
     {
+        if (!drvscsiAsyncIOLoopNoPendingDummy(pThis, 100 /*ms*/))
+            LogRel(("drvscsiDestruct#%u: previous dummy request is still pending\n", pDrvIns->iInstance));
+
         rc = RTReqDestroyQueue(pThis->pQueueRequests);
         AssertMsgRC(rc, ("Failed to destroy queue rc=%Rrc\n", rc));
     }
