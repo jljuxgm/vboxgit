@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 28711 2010-04-25 19:01:24Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 28717 2010-04-25 20:21:32Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -263,7 +263,7 @@ int VBoxNetBaseService::tryGoOnline(void)
     /*
      * Get the ring-3 address of the shared interface buffer.
      */
-    GetRing3BufferReq GetBufferPtrsReq;
+    INTNETIFGETBUFFERPTRSREQ GetBufferPtrsReq;
     GetBufferPtrsReq.Hdr.u32Magic = SUPVMMR0REQHDR_MAGIC;
     GetBufferPtrsReq.Hdr.cbReq = sizeof(GetBufferPtrsReq);
     GetBufferPtrsReq.pSession = m_pSession;
