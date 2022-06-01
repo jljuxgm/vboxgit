@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 24030 2009-10-23 12:39:10Z vboxsync $ */
+/* $Id: VM.cpp 24037 2009-10-23 13:45:15Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -279,6 +279,7 @@ VMMR3DECL(int)   VMR3Create(uint32_t cCpus, PFNVMATERROR pfnVMAtError, void *pvU
 #else
                     pszError = N_("VirtualBox can't enable the AMD-V extension. Please close all other virtualization programs.");
 #endif
+                    break;
 
                 case VERR_VERSION_MISMATCH:
                     pszError = N_("VMMR0 driver version mismatch. Please terminate all VMs, make sure that "
