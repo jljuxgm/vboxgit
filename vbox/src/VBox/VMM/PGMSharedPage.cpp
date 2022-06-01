@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 29397 2010-05-12 08:23:18Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 29401 2010-05-12 10:03:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -108,7 +108,7 @@ static DECLCALLBACK(void) pgmR3SharedModuleRegisterHelper(PVM pVM, PGMMREGISTERS
     if (rc == VINF_SUCCESS)
     {
         pReq->Hdr.u32Magic = SUPVMMR0REQHDR_MAGIC;
-        pReq->Hdr.cbReq = sizeof(*pReq);
+        pReq->Hdr.cbReq = RT_OFFSETOF(GMMREGISTERSHAREDMODULEREQ, aRegions[pReq->cRegions]);
 
         /* We must stall other VCPUs as we'd otherwise have to send IPI flush commands for every single change we make. */
         rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ONCE, pgmR3SharedModuleRegRendezvous, pReq);
