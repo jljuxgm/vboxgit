@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29144 2010-05-06 12:12:00Z vboxsync $
+# $Id: Makefile.kmk 29164 2010-05-06 15:21:19Z vboxsync $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -113,6 +113,7 @@ if 1
 	         -framework Foundation     \
 		 -framework AppKit         \
                  -framework Carbon
+ TEMPLATE_XPCOMEXEBLD_LDFLAGS.linux     = '$(VBOX_GCC_RPATH_OPT)$$(VBOX_ORIGIN)'
 
  ifeq ($(KBUILD_TARGET),darwin)
   define preprocess_exebld
