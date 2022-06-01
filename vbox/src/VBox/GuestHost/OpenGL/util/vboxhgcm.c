@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 21776 2009-07-23 14:13:41Z vboxsync $ */
+/* $Id: vboxhgcm.c 25595 2009-12-30 16:42:33Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -171,7 +171,7 @@ static int crVBoxHGCMCall(void *pvData, unsigned cbData)
     return VERR_NOT_SUPPORTED;
 # else
     int rc;
-#  ifdef RT_OS_SOLARIS
+#  if defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)
     VBGLBIGREQ Hdr;
     Hdr.u32Magic = VBGLBIGREQ_MAGIC;
     Hdr.cbData = cbData;
@@ -766,7 +766,7 @@ static int crVBoxHGCMDoConnect( CRConnection *conn )
                         &info, sizeof (info),
                         &cbReturned,
                         NULL))
-#elif defined(RT_OS_SOLARIS)
+#elif defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)
     VBGLBIGREQ Hdr;
     Hdr.u32Magic = VBGLBIGREQ_MAGIC;
     Hdr.cbData = sizeof(info);
@@ -866,7 +866,7 @@ static void crVBoxHGCMDoDisconnect( CRConnection *conn )
         {
             crDebug("Disconnect failed with %x\n", GetLastError());
         }
-# elif defined(RT_OS_SOLARIS)
+# elif defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)
         VBGLBIGREQ Hdr;
         Hdr.u32Magic = VBGLBIGREQ_MAGIC;
         Hdr.cbData = sizeof(info);
