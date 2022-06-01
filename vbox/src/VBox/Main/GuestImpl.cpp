@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
+/* $Id: GuestImpl.cpp 27190 2010-03-09 00:04:26Z vboxsync $ */
 
 /** @file
  *
@@ -319,6 +319,10 @@ void Guest::setAdditionsVersion(Bstr aVersion, VBOXOSTYPE aOsType)
 
     mData.mAdditionsVersion = aVersion;
     mData.mAdditionsActive = !aVersion.isEmpty();
+    /* Older Additions didn't have this finer grained capability bit,
+     * so enable it by default.  Newer Additions will disable it immediately
+     * if relevant. */
+    mData.mSupportsGraphics = mData.mAdditionsActive;
 
     mData.mOSTypeId = Global::OSTypeId (aOsType);
 }
