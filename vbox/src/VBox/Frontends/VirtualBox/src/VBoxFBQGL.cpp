@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQGL.cpp 22852 2009-09-09 00:09:13Z vboxsync $ */
+/* $Id: VBoxFBQGL.cpp 25526 2009-12-20 21:33:05Z vboxsync $ */
 /** @file
  * VBoxFBQGL Opengl-based FrameBuffer implementation
  */
@@ -20,6 +20,9 @@
  */
 #if defined (VBOX_GUI_USE_QGL)
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include "precomp.h"
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 #define LOG_GROUP LOG_GROUP_GUI
 
 #include "VBoxFrameBuffer.h"
@@ -42,6 +45,7 @@
 //
 //#include <QFile>
 //#include <QTextStream>
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
 /** @class VBoxQGLFrameBuffer

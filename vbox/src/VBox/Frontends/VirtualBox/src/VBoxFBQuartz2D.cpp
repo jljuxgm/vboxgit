@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQuartz2D.cpp 23899 2009-10-20 11:42:26Z vboxsync $ */
+/* $Id: VBoxFBQuartz2D.cpp 25526 2009-12-20 21:33:05Z vboxsync $ */
 /** @file
  * Qt GUI (aka VirtualBox) - Quartz2D framebuffer implementation.
  */
@@ -21,6 +21,9 @@
 
 #if defined (VBOX_GUI_USE_QUARTZ2D)
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include "precomp.h"
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 #include <iprt/asm.h>
 
 /* VBox includes */
@@ -36,6 +39,7 @@
 #include <QDesktopWidget>
 
 #include "iprt/system.h"
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 //#define COMP_WITH_SHADOW
 //#define OVERLAY_CLIPRECTS
