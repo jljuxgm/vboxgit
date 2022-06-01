@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 29863 2010-05-28 13:33:59Z vboxsync $ */
+/* $Id: ProgressImpl.h 29916 2010-05-31 15:26:56Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -70,7 +70,7 @@ public:
     STDMETHOD(COMGETTER(ResultCode)) (LONG *aResultCode);
     STDMETHOD(COMGETTER(ErrorInfo)) (IVirtualBoxErrorInfo **aErrorInfo);
     STDMETHOD(COMGETTER(OperationCount)) (ULONG *aOperationCount);
-    STDMETHOD(COMGETTER(Operation)) (ULONG *aCount);
+    STDMETHOD(COMGETTER(Operation)) (ULONG *aOperation);
     STDMETHOD(COMGETTER(OperationDescription)) (BSTR *aOperationDescription);
     STDMETHOD(COMGETTER(OperationPercent)) (ULONG *aOperationPercent);
     STDMETHOD(COMSETTER(Timeout)) (ULONG aTimeout);
