@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 29091 2010-05-05 16:12:10Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 29201 2010-05-07 12:24:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -209,22 +209,6 @@ VMMR3DECL(int) PGMR3SharedModuleUnregister(PVM pVM, char *pszModuleName, char *p
     }
     /* Queue the actual registration as we are under the IOM lock right now. Perform this operation on the way out. */
     return VMR3ReqCallNoWait(pVM, VMMGetCpuId(pVM), (PFNRT)pgmR3SharedModuleUnregisterHelper, 2, pVM, pReq);
-#else 
-    return VERR_NOT_IMPLEMENTED;
-#endif
-}
-
-
-/**
- * Checks regsitered modules for shared pages
- *
- * @returns VBox status code.
- * @param   pVM                 VM handle
- */
-VMMR3DECL(int) PGMR3SharedModuleCheck(PVM pVM)
-{
-#ifdef VBOX_WITH_PAGE_SHARING
-    return GMMR3CheckSharedModules(pVM);
 #else 
     return VERR_NOT_IMPLEMENTED;
 #endif

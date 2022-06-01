@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 29086 2010-05-05 14:05:17Z vboxsync $ */
+/* $Id: GMM.cpp 29201 2010-05-07 12:24:54Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -398,9 +398,9 @@ GMMR3DECL(int) GMMR3UnregisterSharedModule(PVM pVM, PGMMREGISTERSHAREDMODULEREQ 
 }
 
 /**
- * @see GMMR0CheckSharedModules
+ * @see GMMR0ResetSharedModules
  */
-GMMR3DECL(int) GMMR3CheckSharedModules(PVM pVM)
+GMMR3DECL(int) GMMR3ResetSharedModules(PVM pVM)
 {
-    return VMMR3CallR0(pVM, VMMR0_DO_GMM_CHECK_SHARED_MODULES, 0, NULL);
+    return VMMR3CallR0(pVM, VMMR0_DO_GMM_RESET_SHARED_MODULES, 0, NULL);
 }
