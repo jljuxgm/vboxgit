@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 26782 2010-02-25 11:17:30Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 27258 2010-03-10 18:40:02Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -583,21 +583,21 @@ void Console::updateGuestPropertiesVRDPDisconnect(uint32_t u32ClientId)
     rc = RTStrAPrintf(&pszPropertyName, "/VirtualBox/HostInfo/VRDP/Client/%u/Name", u32ClientId);
     if (RT_SUCCESS(rc))
     {
-        mMachine->SetGuestProperty(Bstr(pszPropertyName), NULL, bstrReadOnlyGuest);
+        mMachine->SetGuestProperty(Bstr(pszPropertyName), Bstr(""), bstrReadOnlyGuest);
         RTStrFree(pszPropertyName);
     }
 
     rc = RTStrAPrintf(&pszPropertyName, "/VirtualBox/HostInfo/VRDP/Client/%u/User", u32ClientId);
     if (RT_SUCCESS(rc))
     {
-        mMachine->SetGuestProperty(Bstr(pszPropertyName), NULL, bstrReadOnlyGuest);
+        mMachine->SetGuestProperty(Bstr(pszPropertyName), Bstr(""), bstrReadOnlyGuest);
         RTStrFree(pszPropertyName);
     }
 
     rc = RTStrAPrintf(&pszPropertyName, "/VirtualBox/HostInfo/VRDP/Client/%u/Domain", u32ClientId);
     if (RT_SUCCESS(rc))
     {
-        mMachine->SetGuestProperty(Bstr(pszPropertyName), NULL, bstrReadOnlyGuest);
+        mMachine->SetGuestProperty(Bstr(pszPropertyName), Bstr(""), bstrReadOnlyGuest);
         RTStrFree(pszPropertyName);
     }
 
