@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 25279 2009-12-09 17:50:26Z vboxsync $ */
 
 /** @file
  *
@@ -3216,7 +3216,7 @@ DECLCALLBACK(int) Console::changeDrive(Console *pThis, const char *pszDevice, un
        Unlock before resuming because the vmstateChangeCallback problem
        described above.
      */
-    alock.unlock();
+    alock.release();
 
     /*
      * Resume the VM if necessary.

@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.cpp 25203 2009-12-04 19:30:50Z vboxsync $ */
+/* $Id: ParallelPortImpl.cpp 25279 2009-12-09 17:50:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -229,7 +229,7 @@ STDMETHODIMP ParallelPort::COMSETTER(Enabled) (BOOL aEnabled)
         m->bd->fEnabled = aEnabled;
 
         /* leave the lock before informing callbacks */
-        alock.unlock();
+        alock.release();
 
         m->pMachine->onParallelPortChange (this);
     }
@@ -297,7 +297,7 @@ STDMETHODIMP ParallelPort::COMSETTER(IRQ)(ULONG aIRQ)
     if (emitChangeEvent)
     {
         /* leave the lock before informing callbacks */
-        alock.unlock();
+        alock.release();
 
         m->pMachine->onParallelPortChange (this);
     }
@@ -351,7 +351,7 @@ STDMETHODIMP ParallelPort::COMSETTER(IOBase)(ULONG aIOBase)
     if (emitChangeEvent)
     {
         /* leave the lock before informing callbacks */
-        alock.unlock();
+        alock.release();
 
         m->pMachine->onParallelPortChange (this);
     }
@@ -394,7 +394,7 @@ STDMETHODIMP ParallelPort::COMSETTER(Path) (IN_BSTR aPath)
         m->bd->strPath = str;
 
         /* leave the lock before informing callbacks */
-        alock.unlock();
+        alock.release();
 
         return m->pMachine->onParallelPortChange(this);
     }
