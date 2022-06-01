@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 30197 2010-06-15 13:29:42Z vboxsync $ */
+/* $Id: UISession.cpp 30198 2010-06-15 14:00:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -749,10 +749,12 @@ void UISession::powerUp()
 # endif
 #endif
 
+#ifdef VBOX_WITH_VIDEOHWACCEL
     LogRel(("2D video acceleration is %s.\n",
            machine.GetAccelerate2DVideoEnabled() && VBoxGlobal::isAcceleration2DVideoAvailable()
                  ? "enabled"
                  : "disabled"));
+#endif
 
     /* Warn listeners about machine was started: */
     emit sigMachineStarted();
