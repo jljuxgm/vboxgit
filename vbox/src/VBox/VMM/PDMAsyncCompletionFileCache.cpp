@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileCache.cpp 27524 2010-03-19 11:22:40Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileCache.cpp 27526 2010-03-19 11:30:26Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * File data cache.
@@ -1898,6 +1898,8 @@ int pdmacFileEpCacheRead(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint, PPDMASYNCCOM
 
                 pdmacFileEpCacheEntryRelease(pEntryAbove);
             }
+            else
+                cbToRead = cbRead;
 
             cbRead -= cbToRead;
             pdmacFileEpCacheRequestPassthrough(pEndpoint, pTask,
