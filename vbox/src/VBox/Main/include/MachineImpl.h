@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 29218 2010-05-07 14:52:27Z vboxsync $ */
+/* $Id: MachineImpl.h 29225 2010-05-07 16:01:34Z vboxsync $ */
 
 /** @file
  *
@@ -392,6 +392,8 @@ public:
     STDMETHOD(COMSETTER(HpetEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(MemoryBalloonSize))(ULONG *memoryBalloonSize);
     STDMETHOD(COMSETTER(MemoryBalloonSize))(ULONG memoryBalloonSize);
+    STDMETHOD(COMGETTER(SharedPagingEnabled))(BOOL *enabled);
+    STDMETHOD(COMSETTER(SharedPagingEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(VRAMSize))(ULONG *memorySize);
     STDMETHOD(COMSETTER(VRAMSize))(ULONG memorySize);
     STDMETHOD(COMGETTER(MonitorCount))(ULONG *monitorCount);

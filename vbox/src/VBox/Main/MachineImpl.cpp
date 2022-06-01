@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 29224 2010-05-07 15:49:10Z vboxsync $ */
+/* $Id: MachineImpl.cpp 29225 2010-05-07 16:01:34Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -1461,6 +1461,16 @@ STDMETHODIMP Machine::COMSETTER(MemoryBalloonSize)(ULONG memoryBalloonSize)
     NOREF(memoryBalloonSize);
     return setError(E_NOTIMPL, tr("Memory ballooning is only supported on 64-bit hosts"));
 #endif
+}
+
+STDMETHODIMP Machine::COMGETTER(SharedPagingEnabled) (BOOL *enabled)
+{
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP Machine::COMSETTER(SharedPagingEnabled) (BOOL enabled)
+{
+    return E_NOTIMPL;
 }
 
 STDMETHODIMP Machine::COMGETTER(Accelerate3DEnabled)(BOOL *enabled)
