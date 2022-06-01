@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 25278 2009-12-09 16:37:00Z vboxsync $
+; $Id: SUPR0.def 25291 2009-12-10 10:16:54Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Exports.
 ;
@@ -152,5 +152,6 @@ EXPORTS
     AssertMsg2
 
     ; data
-    g_pSUPGlobalInfoPage DATA
+    g_pSUPGlobalInfoPage DATA ; NT
+    g_SUPGlobalInfoPage  DATA ; OS2
 
