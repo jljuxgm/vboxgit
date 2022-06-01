@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.h 26512 2010-02-14 09:47:37Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.h 28668 2010-04-23 17:47:06Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -426,13 +426,13 @@ extern RTMAC g_vboxNetFltWinVerifyMACGuest;
 # define VBOXNETFLT_LBVERIFY(_pnf, _p) \
     do { \
         Assert(!vboxNetFltWinCheckMACs(_p, NULL, &g_vboxNetFltWinVerifyMACGuest)); \
-        Assert(!vboxNetFltWinCheckMACs(_p, NULL, &(_pnf)->u.s.Mac)); \
+        Assert(!vboxNetFltWinCheckMACs(_p, NULL, &(_pnf)->u.s.MacAddr)); \
     } while(0)
 
 # define VBOXNETFLT_LBVERIFYSG(_pnf, _p) \
     do { \
         Assert(!vboxNetFltWinCheckMACsSG(_p, NULL, &g_vboxNetFltWinVerifyMACGuest)); \
-        Assert(!vboxNetFltWinCheckMACsSG(_p, NULL, &(_pnf)->u.s.Mac)); \
+        Assert(!vboxNetFltWinCheckMACsSG(_p, NULL, &(_pnf)->u.s.MacAddr)); \
     } while(0)
 
 #else
