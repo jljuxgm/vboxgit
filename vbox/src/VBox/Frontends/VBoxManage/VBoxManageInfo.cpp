@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 27166 2010-03-08 14:16:00Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 27255 2010-03-10 15:40:24Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -244,7 +244,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
     if (details == VMINFO_MACHINEREADABLE)
         RTPrintf("hpet=\"%s\"\n", fHpetEnabled ? "on" : "off");
     else
-        RTPrintf("HPET:   %s\n", fHpetEnabled ? "on" : "off");
+        RTPrintf("HPET:            %s\n", fHpetEnabled ? "on" : "off");
 
     ULONG numCpus;
     rc = machine->COMGETTER(CPUCount)(&numCpus);
@@ -437,7 +437,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
     if (details == VMINFO_MACHINEREADABLE)
         RTPrintf("largepages=\"%s\"\n", HWVirtExLargePagesEnabled ? "on" : "off");
     else
-        RTPrintf("Large Pages:   %s\n", HWVirtExLargePagesEnabled ? "on" : "off");
+        RTPrintf("Large Pages:     %s\n", HWVirtExLargePagesEnabled ? "on" : "off");
 
     BOOL HWVirtExVPIDEnabled;
     machine->GetHWVirtExProperty(HWVirtExPropertyType_VPID, &HWVirtExVPIDEnabled);
