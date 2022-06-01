@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 27422 2010-03-16 18:20:53Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 27423 2010-03-16 18:51:35Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2172,7 +2172,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         rc = CFGMR3InsertInteger(pCfg,  "FdcEnabled", fFdcEnabled);                 RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "HpetEnabled", fHpetEnabled);               RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "SmcEnabled", fSmcEnabled);                 RC_CHECK();
-        rc = CFGMR3InsertInteger(pCfg,  "ShowRtc",    true);                        RC_CHECK();
+        rc = CFGMR3InsertInteger(pCfg,  "ShowRtc",    fExtProfile);                 RC_CHECK();
 
         rc = CFGMR3InsertInteger(pCfg,  "ShowCpu", fShowCpu);                       RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "CpuHotPlug", fCpuHotPlug);                 RC_CHECK();
