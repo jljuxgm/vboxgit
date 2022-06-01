@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 27335 2010-03-12 16:20:29Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 27599 2010-03-22 15:48:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -220,15 +220,19 @@ void UIMachineMenuBar::prepareMenuHelp(QMenu *pMenu, UIActionsPool *pActionsPool
                             &vboxProblem(), SLOT(showHelpWebDialog()));
         VBoxGlobal::connect(pActionsPool->action(UIActionIndex_Simple_ResetWarnings), SIGNAL(triggered()),
                             &vboxProblem(), SLOT(resetSuppressedMessages()));
+#ifdef VBOX_WITH_REGISTRATION
         VBoxGlobal::connect(pActionsPool->action(UIActionIndex_Simple_Register), SIGNAL(triggered()),
                             &vboxGlobal(), SLOT(showRegistrationDialog()));
+#endif /* VBOX_WITH_REGISTRATION */
         VBoxGlobal::connect(pActionsPool->action(UIActionIndex_Simple_Update), SIGNAL(triggered()),
                             &vboxGlobal(), SLOT(showUpdateDialog()));
         VBoxGlobal::connect(pActionsPool->action(UIActionIndex_Simple_About), SIGNAL(triggered()),
                             &vboxProblem(), SLOT(showHelpAboutDialog()));
 
+#ifdef VBOX_WITH_REGISTRATION
         VBoxGlobal::connect(&vboxGlobal(), SIGNAL (canShowRegDlg (bool)),
                             pActionsPool->action(UIActionIndex_Simple_Register), SLOT(setEnabled(bool)));
+#endif /* VBOX_WITH_REGISTRATION */
         VBoxGlobal::connect(&vboxGlobal(), SIGNAL (canShowUpdDlg (bool)),
                             pActionsPool->action(UIActionIndex_Simple_Update), SLOT(setEnabled(bool)));
 
