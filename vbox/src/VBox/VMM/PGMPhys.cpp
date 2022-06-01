@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 26364 2010-02-09 13:31:20Z vboxsync $ */
+/* $Id: PGMPhys.cpp 26577 2010-02-16 12:57:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3160,6 +3160,37 @@ VMMR3DECL(void) PGMR3PhysChunkInvalidateTLB(PVM pVM)
     /* The page map TLB references chunks, so invalidate that one too. */
     PGMPhysInvalidatePageMapTLB(pVM);
     pgmUnlock(pVM);
+}
+
+
+/**
+ * Response to VMMCALLRING3_PGM_ALLOCATE_LARGE_PAGE to allocate a large (2MB) page 
+ * for use with a nested paging PDE.
+ *
+ * @returns The following VBox status codes.
+ * @retval  VINF_SUCCESS on success. 
+ * @retval  VINF_EM_NO_MEMORY if we're out of memory. 
+ *
+ * @param   pVM         The VM handle.
+ */
+VMMR3DECL(int) PGMR3PhysAllocateLargePage(PVM pVM)
+{
+    int      rc = VINF_SUCCESS;
+    uint32_t idPage;
+    RTHCPHYS HCPhys;
+    void    *pvDummy;
+
+    pgmLock(pVM);
+
+    rc = GMMR3AllocateLargePage(pVM, _2M, &idPage, &HCPhys);
+    if (RT_SUCCESS(rc))
+    {
+        /* Map the large page into our address space. */
+        rc = pgmPhysPageMapByPageID(pVM, idPage, HCPhys, &pvDummy);
+    }
+
+    pgmUnlock(pVM);
+    return rc;
 }
 
 

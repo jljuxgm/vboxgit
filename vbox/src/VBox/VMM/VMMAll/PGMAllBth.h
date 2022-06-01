@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 26570 2010-02-16 12:15:32Z vboxsync $ */
+/* $Id: PGMAllBth.h 26577 2010-02-16 12:57:58Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2935,6 +2935,10 @@ PGM_BTH_DECL(int, SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RTGCPTR 
 
     Assert(!(PdeDst.u & PGM_PDFLAGS_MAPPING));
     Assert(!PdeDst.n.u1Present); /* We're only supposed to call SyncPT on PDE!P and conflicts.*/
+
+# if PGM_SHW_TYPE == PGM_TYPE_EPT
+
+# endif
 
     GSTPDE PdeSrc;
     PdeSrc.au32[0]      = 0; /* faked so we don't have to #ifdef everything */
