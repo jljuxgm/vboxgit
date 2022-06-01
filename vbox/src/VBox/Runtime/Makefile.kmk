@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24386 2009-11-05 14:17:10Z vboxsync $
+# $Id: Makefile.kmk 24662 2009-11-14 23:41:50Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -281,6 +281,7 @@ RuntimeR3_SOURCES       = \
 	common/string/strspace.cpp \
 	common/string/strstrip.cpp \
 	common/string/strtonum.cpp \
+	common/string/strversion.cpp \
 	common/string/uni.cpp \
 	common/string/unidata.cpp \
 	common/string/utf-16.cpp \
