@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 27282 2010-03-11 13:42:03Z vboxsync $ */
+/* $Id: PGM.cpp 27543 2010-03-19 15:47:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -4267,7 +4267,8 @@ static DECLCALLBACK(int) pgmR3CmdPhysToFile(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp,
         PCPGMPAGE pPage = &pRam->aPages[0];
         while (GCPhys < pRam->GCPhysLast && RT_SUCCESS(rc))
         {
-            if (PGM_PAGE_IS_ZERO(pPage))
+            if (    PGM_PAGE_IS_ZERO(pPage)
+                ||  PGM_PAGE_IS_BALLOONED(pPage))
             {
                 if (fIncZeroPgs)
                 {
