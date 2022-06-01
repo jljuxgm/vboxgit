@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-darwin.cpp 26807 2010-02-25 16:44:20Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-darwin.cpp 26808 2010-02-25 16:46:56Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, darwin ring-3.
  */
@@ -39,7 +39,6 @@
 #include <iprt/assert.h>
 #include <iprt/string.h>
 
-#include <stdio.h>
 #include <mach/mach_port.h>
 #include <IOKit/IOKitLib.h>
 
