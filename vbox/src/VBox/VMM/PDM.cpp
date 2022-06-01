@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 26944 2010-03-02 13:42:41Z vboxsync $ */
+/* $Id: PDM.cpp 27928 2010-04-01 09:27:31Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1640,7 +1640,7 @@ DECLINLINE(bool) pdmR3PowerOffDrv(PPDMDRVINS pDrvIns, unsigned *pcAsync,
     if (!pDrvIns->Internal.s.fVMSuspended)
     {
         pDrvIns->Internal.s.fVMSuspended = true;
-        if (pDrvIns->pReg->pfnSuspend)
+        if (pDrvIns->pReg->pfnPowerOff)
         {
             if (!pDrvIns->Internal.s.pfnAsyncNotify)
             {
