@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 30332 2010-06-21 13:55:54Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 30372 2010-06-22 12:46:15Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2560,7 +2560,7 @@ static void pgmPoolMonitorModifiedClearAll(PVM pVM)
 int pgmPoolSyncCR3(PVMCPU pVCpu)
 {
     PVM pVM = pVCpu->CTX_SUFF(pVM);
-    LogFlow(("pgmPoolSyncCR3\n"));
+    LogFlow(("pgmPoolSyncCR3 fSyncFlags=%x\n", pVCpu->pgm.s.fSyncFlags));
 
     /*
      * When monitoring shadowed pages, we reset the modification counters on CR3 sync.
