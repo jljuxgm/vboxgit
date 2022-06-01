@@ -1,4 +1,4 @@
-/* $Id: VBoxNetNAT.cpp 28147 2010-04-09 14:24:34Z vboxsync $ */
+/* $Id: VBoxNetNAT.cpp 28364 2010-04-15 14:31:05Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -224,7 +224,7 @@ void VBoxNetNAT::run()
         WaitReq.pSession = m_pSession;
         WaitReq.hIf = m_hIf;
         WaitReq.cMillies = 2000; /* 2 secs - the sleep is for some reason uninterruptible... */  /** @todo fix interruptability in SrvIntNet! */
-#if 0
+#if 1
         RTReqProcess(m_pSendQueue, 0);
         RTReqProcess(m_pUrgSendQueue, 0);
 #endif
