@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceBalloon.cpp 27111 2010-03-05 16:10:42Z vboxsync $ */
+/* $Id: VBoxServiceBalloon.cpp 27119 2010-03-05 17:43:04Z vboxsync $ */
 /** @file
  * VBoxService - Memory Ballooning.
  */
@@ -71,7 +71,8 @@ static int VBoxServiceBalloonSetUser(uint32_t cNewChunks)
         {
 /** @todo r=bird: this isn't safe on linux. See suplibOsPageAlloc in
  *        SUPLib-linux.cpp. We should probably just fail outright here if
- *        linux, just in case... */
+ *        linux, just in case...
+ *        frank: To be more specific, the problem is fork(). */
             void *pv = RTMemPageAlloc(VMMDEV_MEMORY_BALLOON_CHUNK_SIZE);
             rc = VbglR3MemBalloonChange(pv, /* inflate=*/ true);
             if (RT_SUCCESS(rc))
