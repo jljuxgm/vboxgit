@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 26643 2010-02-19 10:17:48Z vboxsync $ */
+/* $Id: alloc-r0drv-solaris.c 26666 2010-02-19 15:47:06Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -103,7 +103,7 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
     virtAddr = vbi_contig_alloc(&phys, cb);
     if (virtAddr == NULL)
     {
-        cmn_err("vbi_contig_alloc for %u failed\n", cb);
+        cmn_err(CE_NOTE, "vbi_contig_alloc for %u failed\n", cb);
         return NULL;
     }
 
