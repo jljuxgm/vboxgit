@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 28959 2010-05-02 19:36:11Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 28977 2010-05-03 13:45:07Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4854,6 +4854,7 @@ HRESULT Console::onShowWindow(BOOL aCheck, BOOL *aCanShow, ULONG64 *aWinId)
                 if (*aWinId == 0)
                     *aWinId = winId;
             }
+            ++it;
         }
     }
 
