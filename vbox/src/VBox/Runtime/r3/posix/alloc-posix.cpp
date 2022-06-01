@@ -1,4 +1,4 @@
-/* $Id: alloc-posix.cpp 27492 2010-03-18 16:56:32Z vboxsync $ */
+/* $Id: alloc-posix.cpp 28311 2010-04-14 15:46:45Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, POSIX.
  */
@@ -188,7 +188,7 @@ RTDECL(void *) RTMemPageAllocZ(size_t cb) RT_NO_THROW
     int rc = posix_memalign(&pv, PAGE_SIZE, RT_ALIGN_Z(cb, PAGE_SIZE));
     if (!rc)
     {
-        bzero(pv, RT_ALIGN_Z(cb, PAGE_SIZE));
+        RT_BZERO(pv, RT_ALIGN_Z(cb, PAGE_SIZE));
         return pv;
     }
     return NULL;
