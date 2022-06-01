@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 25838 2010-01-14 16:55:55Z vboxsync $ */
+/* $Id: VM.cpp 25935 2010-01-20 14:43:56Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1018,7 +1018,7 @@ static int vmR3InitRing0(PVM pVM)
     if (RT_SUCCESS(rc))
         rc = vmR3InitDoCompleted(pVM, VMINITCOMPLETED_RING0);
 
-    /** todo: move this to the VMINITCOMPLETED_RING0 notification handler once implemented */
+    /** @todo Move this to the VMINITCOMPLETED_RING0 notification handler. */
     if (RT_SUCCESS(rc))
         rc = HWACCMR3InitFinalizeR0(pVM);
 

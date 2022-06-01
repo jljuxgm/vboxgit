@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 23794 2009-10-15 11:50:03Z vboxsync $ */
+/* $Id: CPUMInternal.h 25935 2010-01-20 14:43:56Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -301,7 +301,10 @@ typedef struct CPUM
     bool                    fRawEntered;
     /** Synthetic CPU type? */
     bool                    fSyntheticCpu;
-    uint8_t                 abPadding[2 + (HC_ARCH_BITS == 64) * 4];
+    /** Indiciates that a state restore is pending.
+     * This is used to verify load order dependencies (PGM). */
+    bool                    fPendingRestore;
+    uint8_t                 abPadding[1 + (HC_ARCH_BITS == 64) * 4];
 
     /** The standard set of CpuId leafs. */
     CPUMCPUID               aGuestCpuIdStd[6];
