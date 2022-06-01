@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 25887 2010-01-18 11:58:58Z vboxsync $ */
+/* $Id: MediumImpl.h 25888 2010-01-18 12:16:07Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -312,6 +312,9 @@ private:
     HRESULT taskThreadCreateDiff(Task &task, void *pvdOperationIfaces, bool fIsAsync);
     HRESULT taskThreadMerge(Task &task, void *pvdOperationIfaces, bool fIsAsync);
     HRESULT taskThreadClone(Task &task, void *pvdOperationIfaces);
+    HRESULT taskThreadDelete();
+    HRESULT taskThreadReset(void *pvdOperationIfaces, bool fIsAsync);
+    HRESULT taskThreadCompact(Task &task, void *pvdOperationIfaces);
 
     static DECLCALLBACK(int) taskThread(RTTHREAD thread, void *pvUser);
 
