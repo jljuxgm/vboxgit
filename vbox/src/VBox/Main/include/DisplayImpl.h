@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 28220 2010-04-12 17:04:54Z vboxsync $ */
+/* $Id: DisplayImpl.h 28245 2010-04-13 12:25:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -349,7 +349,7 @@ private:
     void vbvaUnlock(void);
 
 public:
-    static int displayTakeScreenshotEMT(Display *pDisplay, uint8_t **ppu8Data, size_t *pcbData, uint32_t *pu32Width, uint32_t *pu32Height);
+    static int displayTakeScreenshotEMT(Display *pDisplay, ULONG aScreenId, uint8_t **ppu8Data, size_t *pcbData, uint32_t *pu32Width, uint32_t *pu32Height);
 
 private:
     static void InvalidateAndUpdateEMT(Display *pDisplay);
