@@ -1,4 +1,4 @@
-/* $Id: tstInlineAsm.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: tstInlineAsm.cpp 29271 2010-05-09 21:25:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -31,6 +31,8 @@
 #include <iprt/asm-math.h>
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 # include <iprt/asm-amd64-x86.h>
+#else
+# include <iprt/time.h>
 #endif
 #include <iprt/stream.h>
 #include <iprt/string.h>
