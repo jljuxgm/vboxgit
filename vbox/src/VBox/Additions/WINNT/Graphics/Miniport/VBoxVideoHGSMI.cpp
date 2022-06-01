@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 29798 2010-05-25 17:26:57Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 29883 2010-05-30 19:27:02Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -1047,7 +1047,7 @@ VOID VBoxSetupDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension,
 #ifdef VBOXWDDM
 int VBoxFreeDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension)
 {
-    int rc;
+    int rc = VINF_SUCCESS;
     for (int i = PrimaryExtension->cSources-1; i >= 0; --i)
     {
         rc = vboxVbvaDisable(PrimaryExtension, &PrimaryExtension->aSources[i].Vbva);
@@ -1056,35 +1056,37 @@ int VBoxFreeDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension)
         {
             rc = vboxVbvaDestroy(PrimaryExtension, &PrimaryExtension->aSources[i].Vbva);
             AssertRC(rc);
-            if (RT_SUCCESS(rc))
+            if (RT_FAILURE(rc))
             {
-                rc = vboxVdmaDisable(PrimaryExtension, &PrimaryExtension->u.primary.Vdma);
+                /* @todo: */
+            }
+        }
+    }
+
+    rc = vboxVdmaDisable(PrimaryExtension, &PrimaryExtension->u.primary.Vdma);
+    AssertRC(rc);
+    if (RT_SUCCESS(rc))
+    {
+        rc = vboxVdmaDestroy(PrimaryExtension, &PrimaryExtension->u.primary.Vdma);
+        AssertRC(rc);
+        if (RT_SUCCESS(rc))
+        {
+            /*rc = */VBoxUnmapAdapterMemory(PrimaryExtension, &PrimaryExtension->u.primary.pvMiniportHeap, PrimaryExtension->u.primary.cbMiniportHeap);
+/*
+            AssertRC(rc);
+            if (RT_SUCCESS(rc))
+*/
+            {
+                HGSMIHeapDestroy(&PrimaryExtension->u.primary.hgsmiAdapterHeap);
+
+                /* Map the adapter information. It will be needed for HGSMI IO. */
+                /*rc = */VBoxUnmapAdapterMemory(PrimaryExtension, &PrimaryExtension->u.primary.pvAdapterInformation, VBVA_ADAPTER_INFORMATION_SIZE);
+/*
                 AssertRC(rc);
-                if (RT_SUCCESS(rc))
-                {
-                    rc = vboxVdmaDestroy(PrimaryExtension, &PrimaryExtension->u.primary.Vdma);
-                    AssertRC(rc);
-                    if (RT_SUCCESS(rc))
-                    {
-                        /*rc = */VBoxUnmapAdapterMemory(PrimaryExtension, &PrimaryExtension->u.primary.pvMiniportHeap, PrimaryExtension->u.primary.cbMiniportHeap);
-/*
-                        AssertRC(rc);
-                        if (RT_SUCCESS(rc))
-*/
-                        {
-                            HGSMIHeapDestroy(&PrimaryExtension->u.primary.hgsmiAdapterHeap);
-
-                            /* Map the adapter information. It will be needed for HGSMI IO. */
-                            /*rc = */VBoxUnmapAdapterMemory(PrimaryExtension, &PrimaryExtension->u.primary.pvAdapterInformation, VBVA_ADAPTER_INFORMATION_SIZE);
-/*
-                            AssertRC(rc);
-                            if (RT_FAILURE(rc))
-                                drprintf((__FUNCTION__"VBoxUnmapAdapterMemory PrimaryExtension->u.primary.pvAdapterInformation failed, rc(%d)\n", rc));
+                if (RT_FAILURE(rc))
+                    drprintf((__FUNCTION__"VBoxUnmapAdapterMemory PrimaryExtension->u.primary.pvAdapterInformation failed, rc(%d)\n", rc));
 */
 
-                        }
-                    }
-                }
             }
         }
     }
