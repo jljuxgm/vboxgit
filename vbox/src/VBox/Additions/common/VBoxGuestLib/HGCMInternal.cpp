@@ -1,4 +1,4 @@
-/* $Revision: 29658 $ */
+/* $Revision: 29680 $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -770,7 +770,7 @@ static int vbglR0HGCMInternalCopyBackResult(VBoxGuestHGCMCallInfo *pCallInfo, VM
     /*
      * Copy back parameters.
      */
-    for (iParm = 0; iParm < pCallInfo->cParms; iParm++, pSrcParm++, pDstParm++)
+    for (iParm = 0; iParm < cParms; iParm++, pSrcParm++, pDstParm++)
     {
         switch (pDstParm->type)
         {
