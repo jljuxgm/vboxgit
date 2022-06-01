@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 23357 2009-09-28 08:26:26Z vboxsync $
+# $Id: vboxconfig.sh 24389 2009-11-05 14:35:33Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -50,8 +50,9 @@ DESC_VBOXNET="NetAdapter"
 MOD_VBOXFLT=vboxflt
 DESC_VBOXFLT="NetFilter"
 
-MOD_VBI=vbi
-DESC_VBI="Kernel Interface"
+# No Separate VBI since (3.1)
+#MOD_VBI=vbi
+#DESC_VBI="Kernel Interface"
 
 MOD_VBOXUSBMON=vboxusbmon
 DESC_VBOXUSBMON="USBMonitor"
@@ -441,7 +442,8 @@ remove_drivers()
     unload_module "$MOD_VBOXDRV" "$DESC_VBOXDRV" "$fatal"
     rem_driver "$MOD_VBOXDRV" "$DESC_VBOXDRV" "$fatal"
 
-    unload_module "$MOD_VBI" "$DESC_VBI" "$fatal"
+# No separate VBI since 3.1
+#    unload_module "$MOD_VBI" "$DESC_VBI" "$fatal"
 
     # remove devlinks
     if test -h "/dev/vboxdrv" || test -f "/dev/vboxdrv"; then
