@@ -1,4 +1,4 @@
-/* $Id: semrw-posix.cpp 25602 2009-12-31 01:18:00Z vboxsync $ */
+/* $Id: semrw-posix.cpp 25604 2009-12-31 02:25:17Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, POSIX.
  */
@@ -118,8 +118,8 @@ RTDECL(int) RTSemRWCreate(PRTSEMRW pRWSem)
                 pThis->cWriterReads = 0;
                 pThis->Writer       = (pthread_t)-1;
 #ifdef RTSEMRW_STRICT
-                RTLockValidatorRecInit(&pThis->ValidatorWrite, NIL_RTLOCKVALIDATORCLASS, RTLOCKVALIDATOR_SUB_CLASS_NONE, NULL, pThis);
-                RTLockValidatorSharedRecInit(&pThis->ValidatorRead,  NIL_RTLOCKVALIDATORCLASS, RTLOCKVALIDATOR_SUB_CLASS_NONE, NULL, pThis);
+                RTLockValidatorRecInit(&pThis->ValidatorWrite, NIL_RTLOCKVALIDATORCLASS, RTLOCKVALIDATOR_SUB_CLASS_NONE, "RTSemRW", pThis);
+                RTLockValidatorSharedRecInit(&pThis->ValidatorRead,  NIL_RTLOCKVALIDATORCLASS, RTLOCKVALIDATOR_SUB_CLASS_NONE, "RTSemRW", pThis);
                 RTLockValidatorMakeSiblings(&pThis->ValidatorWrite.Core, &pThis->ValidatorRead.Core);
 #endif
                 *pRWSem = pThis;

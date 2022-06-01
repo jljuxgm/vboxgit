@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 25491 2009-12-18 15:20:48Z vboxsync $ */
+/* $Id: critsect-generic.cpp 25604 2009-12-31 02:25:17Z vboxsync $ */
 /** @file
  * IPRT - Critical Section, Generic.
  */
@@ -68,7 +68,7 @@ RTDECL(int) RTCritSectInitEx(PRTCRITSECT pCritSect, uint32_t fFlags)
     pCritSect->cNestings            = 0;
     pCritSect->cLockers             = -1;
     pCritSect->NativeThreadOwner    = NIL_RTNATIVETHREAD;
-    int rc = RTLockValidatorRecCreate(&pCritSect->pValidatorRec, NIL_RTLOCKVALIDATORCLASS, 0, NULL, pCritSect);
+    int rc = RTLockValidatorRecCreate(&pCritSect->pValidatorRec, NIL_RTLOCKVALIDATORCLASS, 0, "RTCritSect", pCritSect);
     if (RT_SUCCESS(rc))
     {
         rc = RTSemEventCreate(&pCritSect->EventSem);
