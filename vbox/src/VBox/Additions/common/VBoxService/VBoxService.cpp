@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 29316 2010-05-11 08:12:08Z vboxsync $ */
+/* $Id: VBoxService.cpp 29343 2010-05-11 11:48:11Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -95,6 +95,9 @@ static struct
     { &g_MemBalloon, NIL_RTTHREAD, false, false, false, true },
 # endif
     { &g_VMStatistics, NIL_RTTHREAD, false, false, false, true },
+#endif
+#ifdef VBOX_WITH_PAGE_SHARING
+    { &g_PageSharing, NIL_RTTHREAD, false, false, false, true },
 #endif
 };
 
