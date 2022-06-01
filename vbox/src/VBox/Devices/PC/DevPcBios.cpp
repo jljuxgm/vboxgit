@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
+/* $Id: DevPcBios.cpp 28203 2010-04-12 12:58:12Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -768,8 +768,7 @@ static DECLCALLBACK(void) pcbiosReset(PPDMDEVINS pDevIns)
     LogFlow(("pcbiosReset:\n"));
 
     if (pThis->u8IOAPIC)
-        FwCommonPlantMpsTable(pDevIns, pThis->au8DMIPage + VBOX_DMI_TABLE_SIZE,
-                              _4K - VBOX_DMI_TABLE_SIZE, pThis->cCpus);
+        FwCommonPlantMpsFloatPtr(pDevIns);
 
     /*
      * Re-shadow the LAN ROM image and make it RAM/RAM.

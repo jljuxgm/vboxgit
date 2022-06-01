@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.h 26728 2010-02-24 10:22:51Z vboxsync $ */
+/* $Id: DevFwCommon.h 28203 2010-04-12 12:58:12Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code, header.
  */
@@ -36,5 +36,6 @@ int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, P
 
 /* Plant MPS table */
 void FwCommonPlantMpsTable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, uint16_t cCpus);
+void FwCommonPlantMpsFloatPtr(PPDMDEVINS pDevIns);
 
 #endif
