@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 28585 2010-04-22 10:16:57Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 28607 2010-04-22 17:13:45Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -227,9 +227,6 @@ struct VMPowerUpTask : public VMProgressTask
     Console::SharedFolderDataMap mSharedFolders;
     bool mStartPaused;
     BOOL mTeleporterEnabled;
-
-    typedef std::list< ComPtr<IMedium> > HardDiskList;
-    HardDiskList hardDisks;
 
     /* array of progress objects for hard disk reset operations */
     typedef std::list< ComPtr<IProgress> > ProgressList;
@@ -5086,9 +5083,6 @@ HRESULT Console::powerUp(IProgress **aProgress, bool aPaused)
                 ComPtr<IMedium> medium;
                 rc = atts[i]->COMGETTER(Medium)(medium.asOutParam());
                 if (FAILED(rc)) return rc;
-
-                /* save for later use on the powerup thread */
-                task->hardDisks.push_back(medium);
 
                 /* needs autoreset? */
                 BOOL autoReset = FALSE;
