@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25171 2009-12-03 15:53:14Z vboxsync $
+# $Id: Makefile.kmk 25213 2009-12-07 15:41:35Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -240,6 +240,11 @@ else
   VirtualBox_LDFLAGS.win += /SUBSYSTEM:console
  endif
 endif
+
+if defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_GUI_USE_QGL)
+ VirtualBox_LDFLAGS.win += /DelayLoad:QtOpenGLVBox4.dll /DelayLoad:OPENGL32.dll
+endif
+
 # r=bird: what is -lz doing here? it belongs in LIBS.
 VirtualBox_LDFLAGS.darwin = -lz \
 	-framework IOKit -framework AppKit -framework ApplicationServices -framework Foundation -framework Carbon \
