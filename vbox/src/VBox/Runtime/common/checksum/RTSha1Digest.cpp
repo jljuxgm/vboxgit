@@ -1,4 +1,4 @@
-/* $Id: RTSha1Digest.cpp 30079 2010-06-07 14:57:44Z vboxsync $ */
+/* $Id: RTSha1Digest.cpp 30080 2010-06-07 15:18:21Z vboxsync $ */
 /** @file
  * IPRT - SHA1 digest creation
  */
@@ -40,7 +40,7 @@
 #include <openssl/sha.h>
 
 
-RTR3DECL(int) RTSha1Digest(const char *pszFile, char **ppszDigest, FNRTPROGRESS pfnProgressCallback, void *pvUser)
+RTR3DECL(int) RTSha1Digest(const char *pszFile, char **ppszDigest, PFNRTPROGRESS pfnProgressCallback, void *pvUser)
 {
     /* Validate input */
     AssertPtrReturn(pszFile, VERR_INVALID_POINTER);
