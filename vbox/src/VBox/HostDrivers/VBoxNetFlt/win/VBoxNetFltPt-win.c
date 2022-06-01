@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltPt-win.c 24203 2009-10-30 15:14:39Z vboxsync $ */
+/* $Id: VBoxNetFltPt-win.c 24212 2009-10-30 16:59:59Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Protocol edge of ndis filter driver
  */
@@ -967,8 +967,10 @@ static bool vboxNetFltWinPtTransferDataCompleteActive(IN PADAPT pAdapt,
             PNDIS_PACKET pLb = vboxNetFltWinLbSearchLoopBack(pAdapt, pPacket, false);
             if(pLb)
             {
+#ifndef DEBUG_NETFLT_RECV_TRANSFERDATA
                 /* should not be here */
                 Assert(0);
+#endif
                 if(!vboxNetFltWinLbIsFromIntNet(pLb))
                 {
                     /* the packet is not from int net, need to pass it up to the host */
