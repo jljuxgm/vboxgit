@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24449 2009-11-06 15:31:27Z vboxsync $
+# $Id: Makefile.kmk 24492 2009-11-09 11:34:43Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -340,7 +340,6 @@ ifndef VBOX_OSE
  LnxAdd-scripts_MODE    = a+r,u+wx
  LnxAdd-scripts_SOURCES = \
 	$(VBOX_REL_LNX_INST_SRC)routines.sh \
-	$(VBOX_REL_LNX_ADD_INST)uninstall.sh \
 	$(VBOX_REL_LNX_ADD_INST)vboxadd.sh=>vboxadd \
 	$(VBOX_REL_LNX_ADD_INST)vboxadd-service.sh=>vboxadd-service \
 	$(VBOX_REL_LNX_ADD_INST)vboxadd-x11.sh=>vboxadd-x11 \
