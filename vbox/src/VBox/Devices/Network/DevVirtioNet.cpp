@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 24705 2009-11-16 17:13:52Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 24712 2009-11-17 10:36:11Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  *
@@ -1679,6 +1679,13 @@ static DECLCALLBACK(int) vnetReceive(PPDMINETWORKPORT pInterface, const void *pv
     rc = vnetCanReceive(pState);
     if (RT_FAILURE(rc))
         return rc;
+
+    /* Drop packets if VM is not running or cable is disconnected. */
+    VMSTATE enmVMState = PDMDevHlpVMState(pState->VPCI.CTX_SUFF(pDevIns));
+    if ((   enmVMState != VMSTATE_RUNNING
+         && enmVMState != VMSTATE_RUNNING_LS)
+        || !(STATUS & VNET_S_LINK_UP))
+        return VINF_SUCCESS;
 
     STAM_PROFILE_ADV_START(&pState->StatReceive, a);
     vpciSetReadLed(&pState->VPCI, true);
