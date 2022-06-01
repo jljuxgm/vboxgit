@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 28836 2010-04-27 15:08:21Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -284,7 +284,9 @@ void printUsage(USAGECATEGORY u64Cmd)
                      "                            [--vrdpaddress <host>]\n"
                      "                            [--vrdpauthtype null|external|guest]\n"
                      "                            [--vrdpmulticon on|off]\n"
-                     "                            [--vrdpreusecon on|off]\n");
+                     "                            [--vrdpreusecon on|off]\n"
+                     "                            [--vrdpvideochannel on|off]\n"
+                     "                            [--vrdpvideochannelquality <percents>]\n");
         }
         RTPrintf("                            [--usb on|off]\n"
                  "                            [--usbehci on|off]\n"
