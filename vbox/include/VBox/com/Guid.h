@@ -1,4 +1,4 @@
-/* $Id: Guid.h 25346 2009-12-13 16:21:19Z vboxsync $ */
+/* $Id: Guid.h 26177 2010-02-02 22:29:01Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -177,7 +177,7 @@ public:
         return *(GUID *) &uuid;
     }
 
-    /* to directly pass instances to RTPrintf("%Vuuid") */
+    /* to directly pass instances to RTPrintf("%RTuuid") */
     PRTUUID ptr()
     {
         return &uuid;

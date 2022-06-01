@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
+/* $Id: Virtio.cpp 26177 2010-02-02 22:29:01Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -219,7 +219,7 @@ void vqueueNotify(PVPCISTATE pState, PVQUEUE pQueue)
     {
         int rc = vpciRaiseInterrupt(pState, VERR_INTERNAL_ERROR, VPCI_ISR_QUEUE);
         if (RT_FAILURE(rc))
-            Log(("%s vqueueNotify: Failed to raise an interrupt (%Vrc).\n", INSTANCE(pState), rc));
+            Log(("%s vqueueNotify: Failed to raise an interrupt (%Rrc).\n", INSTANCE(pState), rc));
     }
     else
     {

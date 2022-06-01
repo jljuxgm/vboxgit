@@ -1,4 +1,4 @@
-/* $Id: SupportErrorInfo.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
+/* $Id: SupportErrorInfo.cpp 26177 2010-02-02 22:29:01Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -107,7 +107,7 @@ HRESULT SupportErrorInfoBase::setErrorInternal(HRESULT aResultCode,
     /* whether multi-error mode is turned on */
     bool preserve = ((uintptr_t) RTTlsGet (MultiResult::sCounter)) > 0;
 
-    LogRel(("ERROR [COM]: aRC=%#08x aIID={%Vuuid} aComponent={%s} aText={%s} aWarning=%RTbool, aInfo=%p, preserve=%RTbool\n",
+    LogRel(("ERROR [COM]: aRC=%#08x aIID={%RTuuid} aComponent={%s} aText={%s} aWarning=%RTbool, aInfo=%p, preserve=%RTbool\n",
             aResultCode,
             aIID,
             aComponent,

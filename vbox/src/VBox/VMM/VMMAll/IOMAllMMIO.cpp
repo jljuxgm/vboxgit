@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 25940 2010-01-20 16:02:11Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 26177 2010-02-02 22:29:01Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1014,10 +1014,10 @@ static int iomInterpretXCHG(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFaul
                 AssertMsg(fRc, ("Failed to store register value!\n")); NOREF(fRc);
             }
             else
-                AssertMsg(rc == VINF_IOM_HC_MMIO_READ_WRITE || rc == VINF_IOM_HC_MMIO_WRITE || rc == VINF_PATM_HC_MMIO_PATCH_WRITE, ("rc=%Vrc\n", rc));
+                AssertMsg(rc == VINF_IOM_HC_MMIO_READ_WRITE || rc == VINF_IOM_HC_MMIO_WRITE || rc == VINF_PATM_HC_MMIO_PATCH_WRITE, ("rc=%Rrc\n", rc));
         }
         else
-            AssertMsg(rc == VINF_IOM_HC_MMIO_READ_WRITE || rc == VINF_IOM_HC_MMIO_READ || rc == VINF_PATM_HC_MMIO_PATCH_READ, ("rc=%Vrc\n", rc));
+            AssertMsg(rc == VINF_IOM_HC_MMIO_READ_WRITE || rc == VINF_IOM_HC_MMIO_READ || rc == VINF_PATM_HC_MMIO_PATCH_READ, ("rc=%Rrc\n", rc));
     }
     else
     {

@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 26177 2010-02-02 22:29:01Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -539,7 +539,7 @@ static int vnetCanReceive(VNETSTATE *pState)
         rc = VINF_SUCCESS;
     }
 
-    LogFlow(("%s vnetCanReceive -> %Vrc\n", INSTANCE(pState), rc));
+    LogFlow(("%s vnetCanReceive -> %Rrc\n", INSTANCE(pState), rc));
     vnetCsRxLeave(pState);
     return rc;
 }

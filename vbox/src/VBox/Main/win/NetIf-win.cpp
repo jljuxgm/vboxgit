@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 26163 2010-02-02 18:58:33Z vboxsync $ */
+/* $Id: NetIf-win.cpp 26177 2010-02-02 22:29:01Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -922,7 +922,7 @@ static int vboxNetWinAddComponent(std::list <ComObjPtr<HostNetworkInterface> > *
             rc = collectNetIfInfo(name, Guid(IfGuid), &Info);
             if (RT_FAILURE(rc))
             {
-                Log(("vboxNetWinAddComponent: collectNetIfInfo() -> %Vrc\n", rc));
+                Log(("vboxNetWinAddComponent: collectNetIfInfo() -> %Rrc\n", rc));
             }
             /* create a new object and add it to the list */
             ComObjPtr<HostNetworkInterface> iface;

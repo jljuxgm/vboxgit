@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 26176 2010-02-02 22:20:13Z vboxsync $ */
+/* $Id: HostImpl.cpp 26177 2010-02-02 22:29:01Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -504,7 +504,7 @@ STDMETHODIMP Host::COMGETTER(NetworkInterfaces)(ComSafeArrayOut(IHostNetworkInte
     int rc = NetIfList(list);
     if (rc)
     {
-        Log(("Failed to get host network interface list with rc=%Vrc\n", rc));
+        Log(("Failed to get host network interface list with rc=%Rrc\n", rc));
     }
 # else
 
@@ -1355,7 +1355,7 @@ STDMETHODIMP Host::FindHostNetworkInterfaceByName(IN_BSTR name, IHostNetworkInte
     int rc = NetIfList(list);
     if (RT_FAILURE(rc))
     {
-        Log(("Failed to get host network interface list with rc=%Vrc\n", rc));
+        Log(("Failed to get host network interface list with rc=%Rrc\n", rc));
         return E_FAIL;
     }
     std::list <ComObjPtr<HostNetworkInterface> >::iterator it;
@@ -1393,7 +1393,7 @@ STDMETHODIMP Host::FindHostNetworkInterfaceById(IN_BSTR id, IHostNetworkInterfac
     int rc = NetIfList(list);
     if (RT_FAILURE(rc))
     {
-        Log(("Failed to get host network interface list with rc=%Vrc\n", rc));
+        Log(("Failed to get host network interface list with rc=%Rrc\n", rc));
         return E_FAIL;
     }
     std::list <ComObjPtr<HostNetworkInterface> >::iterator it;

@@ -1,4 +1,4 @@
-/* $Id: tstRTStrFormat.cpp 25872 2010-01-15 17:27:40Z vboxsync $ */
+/* $Id: tstRTStrFormat.cpp 26177 2010-02-02 22:29:01Z vboxsync $ */
 /** @file
  * IPRT Testcase - String formatting.
  */
@@ -154,7 +154,7 @@ int main()
     RTUuidCreate(&Uuid);
     char szCorrect[RTUUID_STR_LENGTH];
     RTUuidToStr(&Uuid, szCorrect, sizeof(szCorrect));
-    cch = RTStrPrintf(pszBuf, BUF_SIZE, "%Vuuid", &Uuid);
+    cch = RTStrPrintf(pszBuf, BUF_SIZE, "%RTuuid", &Uuid);
     if (strcmp(pszBuf, szCorrect))
         RTTestIFailed("error:    '%s'\n"
                       "expected: '%s'\n",
