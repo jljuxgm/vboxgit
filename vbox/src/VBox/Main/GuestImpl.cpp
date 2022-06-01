@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28305 2010-04-14 14:43:38Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28306 2010-04-14 14:45:08Z vboxsync $ */
 
 /** @file
  *
@@ -741,7 +741,7 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
                     else if (vrc == VERR_TIMEOUT)
                     {
                         rc = setError(VBOX_E_IPRT_ERROR, 
-                                      tr("The guest guest did not respond within time (%ums)"), aTimeoutMS);
+                                      tr("The guest did not respond within time (%ums)"), aTimeoutMS);
                     }
                     else
                     {
