@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 28666 2010-04-23 17:25:58Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 28681 2010-04-23 19:13:19Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1385,7 +1385,7 @@ static void vboxNetFltSolarisCachePhysAddr(PVBOXNETFLTINS pThis, mblk_t *pMsg)
         bcopy(pMsg->b_rptr + pPhysAddrAck->dl_addr_offset, &pThis->u.s.MacAddr, sizeof(pThis->u.s.MacAddr));
 
         LogFlow((DEVICE_NAME ":vboxNetFltSolarisCachePhysAddr: DL_PHYS_ADDR_ACK: Mac=%.*Rhxs\n",
-                 sizeof(pThis->u.s.MacAddr), &pThis->u.s.Mac));
+                 sizeof(pThis->u.s.MacAddr), &pThis->u.s.MacAddr));
 
         vboxNetFltRetain(pThis, true /*fBusy*/);
         Assert(pThis->pSwitchPort);
