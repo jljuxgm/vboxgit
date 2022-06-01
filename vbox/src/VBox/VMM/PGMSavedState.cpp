@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 24794 2009-11-19 14:57:48Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 24795 2009-11-19 14:58:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -1749,7 +1749,6 @@ static DECLCALLBACK(int) pgmR3LiveExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uPass)
     return rc;
 }
 
-//#include <iprt/stream.h>
 
 /**
  * Votes on whether the live save phase is done or not.
