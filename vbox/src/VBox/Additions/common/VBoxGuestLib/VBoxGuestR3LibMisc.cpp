@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 24688 2009-11-16 10:20:20Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 24742 2009-11-17 21:58:02Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -412,7 +412,7 @@ VBGLR3DECL(int) VbglR3GetAdditionsInstallationPath(char **ppszPath)
                 if (RT_SUCCESS(rc))
                 {
                     /* Flip slashes. */
-                    for (char* pszTmp2 = ppszPath[0]; ppszPath; ++ppszPath)
+                    for (char *pszTmp2 = ppszPath[0]; *pszTmp2; ++pszTmp2)
                         if (*pszTmp2 == '\\')
                             *pszTmp2 = '/';
                 }
