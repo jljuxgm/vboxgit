@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 24370 2009-11-05 09:38:24Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 24383 2009-11-05 14:04:31Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -332,7 +332,6 @@ DECLCALLBACK(int) VBoxServiceVMInfoWorker(bool volatile *pfShutdown)
         nNumInterfaces = ifcfg.ifc_len / sizeof(ifreq);
 #endif
         char szPropPath [FILENAME_MAX];
-        char szTemp [FILENAME_MAX];
         int iCurIface = 0;
 
         VBoxServiceWritePropF(g_VMInfoGuestPropSvcClientID, "/VirtualBox/GuestInfo/Net/Count", "%d",
