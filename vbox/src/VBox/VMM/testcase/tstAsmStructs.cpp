@@ -1,4 +1,4 @@
-/* $Id: tstAsmStructs.cpp 15236 2008-12-10 09:50:10Z vboxsync $ */
+/* $Id: tstAsmStructs.cpp 25947 2010-01-21 00:00:36Z vboxsync $ */
 /** @file
  * Testcase for checking offsets in the assembly structures shared with C/C++.
  */
@@ -43,7 +43,7 @@ int main()
 #ifdef IN_RING3
 # include "tstAsmStructsHC.h"
 #else
-# include "tstAsmStructsGC.h"
+# include "tstAsmStructsRC.h"
 #endif
 
     if (rc)
