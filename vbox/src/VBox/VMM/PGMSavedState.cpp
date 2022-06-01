@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 30301 2010-06-18 08:39:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -1547,7 +1547,7 @@ static int pgmR3SaveRamPages(PVM pVM, PSSMHANDLE pSSM, bool fLiveSave, uint32_t 
                             continue;
                         if (paLSPages[iPage].fIgnore)
                             continue;
-                        if (PGM_PAGE_GET_TYPE(&pCur->aPages[iPage]) != PGMPAGETYPE_RAM) /* in case of recent ramppings */
+                        if (PGM_PAGE_GET_TYPE(&pCur->aPages[iPage]) != PGMPAGETYPE_RAM) /* in case of recent remappings */
                             continue;
                         if (    PGM_PAGE_GET_STATE(&pCur->aPages[iPage])
                             !=  (  paLSPages[iPage].fZero
@@ -1774,7 +1774,7 @@ static DECLCALLBACK(int) pgmR3LiveExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uPass)
     pgmR3ScanRomPages(pVM);
     pgmR3ScanMmio2Pages(pVM, uPass);
     pgmR3ScanRamPages(pVM, false /*fFinalPass*/);
-    pgmR3PoolClearAll(pVM); /** @todo this could perhaps be optimized a bit. */
+    pgmR3PoolClearAll(pVM, true /*fFlushRemTlb*/); /** @todo this could perhaps be optimized a bit. */
 
     /*
      * Save the pages.

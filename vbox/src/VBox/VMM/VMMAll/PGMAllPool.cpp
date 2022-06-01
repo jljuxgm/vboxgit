@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 29702 2010-05-20 15:06:55Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 30301 2010-06-18 08:39:09Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2570,7 +2570,7 @@ int pgmPoolSyncCR3(PVMCPU pVCpu)
      */
 # ifdef IN_RING3 /* Don't flush in ring-0 or raw mode, it's taking too long. */
     if (pVCpu->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL)
-        pgmR3PoolClearAll(pVM);
+        pgmR3PoolClearAll(pVM, false /*fFlushRemTlb*/);
 # else  /* !IN_RING3 */
     if (pVCpu->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL)
     {
