@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 28820 2010-04-27 13:18:03Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -4833,6 +4833,7 @@ static int vmdkCreate(const char *pszFilename, uint64_t cbSize,
     pImage->pGTCache = NULL;
     pImage->pDescData = NULL;
     pImage->pVDIfsDisk = pVDIfsDisk;
+    pImage->pVDIfsImage = pVDIfsImage;
     /* Descriptors for split images can be pretty large, especially if the
      * filename is long. So prepare for the worst, and allocate quite some
      * memory for the descriptor in this case. */
