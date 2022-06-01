@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 26996 2010-03-03 15:58:40Z vboxsync $ */
+/* $Id: UISession.cpp 26997 2010-03-03 16:06:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -501,7 +501,7 @@ public:
         }
 #else
         /* Return the ID of the top-level console window. */
-        *puWinId = m_pEventHandler->winId();
+        *puWinId = (ULONG64)m_pEventHandler->winId();
 #endif
 
         return S_OK;
