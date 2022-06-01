@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 23068 2009-09-16 12:59:18Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 25465 2009-12-17 14:49:34Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -52,9 +52,6 @@
 *******************************************************************************/
 #define VBOXNETADP_LINUX_NAME      "vboxnet%d"
 #define VBOXNETADP_CTL_DEV_NAME    "vboxnetctl"
-
-/* debug printf */
-#define OSDBGPRINT(a) printk a
 
 #define VBOXNETADP_FROM_IFACE(iface) ((PVBOXNETADP) ifnet_softc(iface))
 

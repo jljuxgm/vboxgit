@@ -1,4 +1,4 @@
-# $Revision: 25097 $
+# $Revision: 25465 $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -76,7 +76,7 @@ override MODULE = vboxdrv
 OBJS   = \
 	linux/SUPDrv-linux.o \
 	SUPDrv.o \
-	SUPDrvAgnostic.o \
+	SUPDrvSem.o \
 	r0drv/alloc-r0drv.o \
 	r0drv/initterm-r0drv.o \
 	r0drv/memobj-r0drv.o \

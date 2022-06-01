@@ -1,4 +1,4 @@
-# $Id: Makefile 24886 2009-11-23 21:03:00Z vboxsync $
+# $Id: Makefile 25465 2009-12-17 14:49:34Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -41,7 +41,7 @@ CFLAGS += -DRT_OS_FREEBSD -DIN_RING0 -DIN_RT_R0 -DIN_SUP_R0 -DVBOX -DRT_WITH_VBO
 
 SRCS = \
 	SUPDrv.c \
-	SUPDrvAgnostic.c \
+	SUPDrvSem.c \
 
 # Include needed interface headers so they are created during build
 SRCS += \

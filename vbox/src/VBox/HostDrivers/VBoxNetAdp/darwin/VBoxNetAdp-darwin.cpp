@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 24228 2009-10-30 22:52:32Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 25465 2009-12-17 14:49:34Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -74,23 +74,6 @@ RT_C_DECLS_END
 #define VBOXNETADP_DARWIN_DETACH_TIMEOUT 500
 
 #define VBOXNETADP_FROM_IFACE(iface) ((PVBOXNETADP) ifnet_softc(iface))
-
-/* debug printf */
-#if defined(RT_OS_WINDOWS)
-# define OSDBGPRINT(a) DbgPrint a
-#elif defined(RT_OS_LINUX)
-# define OSDBGPRINT(a) printk a
-#elif defined(RT_OS_DARWIN)
-# define OSDBGPRINT(a) printf a
-#elif defined(RT_OS_OS2)
-# define OSDBGPRINT(a) SUPR0Printf a
-#elif defined(RT_OS_FREEBSD)
-# define OSDBGPRINT(a) printf a
-#elif defined(RT_OS_SOLARIS)
-# define OSDBGPRINT(a) SUPR0Printf a
-#else
-# define OSDBGPRINT(a)
-#endif
 
 /*******************************************************************************
 *   Internal Functions                                                         *
@@ -224,7 +207,7 @@ int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMACAddress)
     rc = RTSemEventCreate(&pThis->u.s.hEvtDetached);
     if (RT_FAILURE(rc))
     {
-        OSDBGPRINT(("vboxNetAdpOsCreate: failed to create semaphore (rc=%d).\n", rc));
+        printf("vboxNetAdpOsCreate: failed to create semaphore (rc=%d).\n", rc);
         return rc;
     }
 
@@ -400,7 +383,7 @@ static int VBoxNetAdpDarwinIOCtl(dev_t Dev, u_long iCmd, caddr_t pData, int fFla
         }
 
         default:
-            OSDBGPRINT(("VBoxNetAdpDarwinIOCtl: unknown command %lx.\n", IOCBASECMD(iCmd)));
+            printf("VBoxNetAdpDarwinIOCtl: unknown command %lx.\n", IOCBASECMD(iCmd));
             return EINVAL;
     }
 
