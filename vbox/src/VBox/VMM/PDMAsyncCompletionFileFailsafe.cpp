@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileFailsafe.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileFailsafe.cpp 30131 2010-06-09 17:49:04Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Simple File I/O manager.
@@ -208,6 +208,9 @@ int pdmacFileAioMgrFailsafe(RTTHREAD ThreadSelf, void *pvUser)
                 default:
                     AssertMsgFailed(("Invalid event type %d\n", pAioMgr->enmBlockingEvent));
             }
+
+            ASMAtomicWriteBool(&pAioMgr->fBlockingEventPending, false);
+            pAioMgr->enmBlockingEvent = PDMACEPFILEAIOMGRBLOCKINGEVENT_INVALID;
 
             /* Release the waiting thread. */
             rc = RTSemEventSignal(pAioMgr->EventSemBlock);
