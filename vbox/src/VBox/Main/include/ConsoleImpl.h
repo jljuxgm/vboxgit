@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 26314 2010-02-05 23:26:54Z vboxsync $ */
+/* $Id: ConsoleImpl.h 26782 2010-02-25 11:17:30Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -203,7 +203,7 @@ public:
                                    uint32_t xHot, uint32_t yHot,
                                    uint32_t width, uint32_t height,
                                    void *pShape);
-    void onMouseCapabilityChange (BOOL supportsAbsolute, BOOL needsHostCursor);
+    void onMouseCapabilityChange (BOOL supportsAbsolute, BOOL supportsRelative, BOOL needsHostCursor);
     void onStateChange (MachineState_T aMachineState);
     void onAdditionsStateChange();
     void onAdditionsOutdated();
@@ -639,6 +639,7 @@ private:
         {
             bool valid;
             BOOL supportsAbsolute;
+            BOOL supportsRelative;
             BOOL needsHostCursor;
         }
         mcc;

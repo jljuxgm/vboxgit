@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 26350 2010-02-09 09:21:38Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 26782 2010-02-25 11:17:30Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -23,6 +23,7 @@
 #include "ConsoleImpl.h"
 #include "DisplayImpl.h"
 #include "GuestImpl.h"
+#include "MouseImpl.h"
 
 #include "Logging.h"
 
@@ -252,8 +253,12 @@ DECLCALLBACK(void) vmmdevUpdateMouseCapabilities(PPDMIVMMDEVCONNECTOR pInterface
      * Tell the console interface about the event
      * so that it can notify its consumers.
      */
-    pDrv->pVMMDev->getParent()->onMouseCapabilityChange(BOOL (newCapabilities & VMMDEV_MOUSE_GUEST_CAN_ABSOLUTE),
-                                                        BOOL (newCapabilities & VMMDEV_MOUSE_GUEST_NEEDS_HOST_CURSOR));
+    Mouse *pMouse = pDrv->pVMMDev->getParent()->getMouse();
+    if (pMouse)  /** @todo and if not?  Can that actually happen? */
+    {
+        pMouse->onVMMDevCanAbsChange(BOOL (newCapabilities & VMMDEV_MOUSE_GUEST_CAN_ABSOLUTE));
+        pMouse->onVMMDevNeedsHostChange(BOOL (newCapabilities & VMMDEV_MOUSE_GUEST_NEEDS_HOST_CURSOR));
+    }
 }
 
 

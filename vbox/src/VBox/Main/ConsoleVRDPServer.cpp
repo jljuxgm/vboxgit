@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 26782 2010-02-25 11:17:30Z vboxsync $ */
 
 /** @file
  *
@@ -89,7 +89,7 @@ public:
     STDMETHOD(OnMousePointerShapeChange)(BOOL visible, BOOL alpha, ULONG xHot, ULONG yHot,
                                          ULONG width, ULONG height, BYTE *shape);
 
-    STDMETHOD(OnMouseCapabilityChange)(BOOL supportsAbsolute, BOOL needsHostCursor)
+    STDMETHOD(OnMouseCapabilityChange)(BOOL supportsAbsolute, BOOL supportsRelative, BOOL needsHostCursor)
     {
         if (m_server)
         {

@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: DisplayImpl.h 26782 2010-02-25 11:17:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -149,7 +149,7 @@ public:
         return S_OK;
     }
 
-    STDMETHOD(OnMouseCapabilityChange)(BOOL supportsAbsolute, BOOL needsHostCursor)
+    STDMETHOD(OnMouseCapabilityChange)(BOOL supportsAbsolute, BOOL supportsRelative, BOOL needsHostCursor)
     {
         return S_OK;
     }
