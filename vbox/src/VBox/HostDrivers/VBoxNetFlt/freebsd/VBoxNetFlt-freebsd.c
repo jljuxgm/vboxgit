@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-freebsd.c 29713 2010-05-20 21:12:53Z vboxsync $ */
+/* $Id: VBoxNetFlt-freebsd.c 29747 2010-05-21 21:20:04Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), FreeBSD Specific Code.
  */
@@ -472,7 +472,7 @@ static void vboxNetFltFreeBSDoutput(void *arg, int pending)
         /* Create a copy and deliver to the virtual switch */
         pSG = RTMemTmpAlloc(RT_OFFSETOF(INTNETSG, aSegs[cSegs]));
         vboxNetFltFreeBSDMBufToSG(pThis, m, pSG, cSegs, 0);
-        fDropIt = pThis->pSwitchPort->pfnRecv(pThis->pSwitchPort, pSG, INTNETTRUNKDIR_HOST);
+        fDropIt = pThis->pSwitchPort->pfnRecv(pThis->pSwitchPort, NULL /* pvIf */, pSG, INTNETTRUNKDIR_HOST);
         RTMemTmpFree(pSG);
 
         if (fDropIt)
