@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 24876 2009-11-23 16:07:22Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 25231 2009-12-08 11:13:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -815,14 +815,13 @@ static void pgmR3ScanMmio2Pages(PVM pVM, uint32_t uPass)
     for (PPGMMMIO2RANGE pMmio2 = pVM->pgm.s.pMmio2RangesR3; pMmio2; pMmio2 = pMmio2->pNextR3)
     {
         PPGMLIVESAVEMMIO2PAGE paLSPages = pMmio2->paLSPages;
-        uint8_t const  *pbPage = (uint8_t const *)pMmio2->RamRange.pvR3;
-        uint32_t        cPages = pMmio2->RamRange.cb >> PAGE_SHIFT;
+        uint32_t              cPages    = pMmio2->RamRange.cb >> PAGE_SHIFT;
         pgmUnlock(pVM);
 
-        for (uint32_t iPage = 0; iPage < cPages; iPage++, pbPage += PAGE_SIZE)
+        for (uint32_t iPage = 0; iPage < cPages; iPage++)
         {
             uint8_t const *pbPage = (uint8_t const *)pMmio2->pvR3 + iPage * PAGE_SIZE;
-            pgmR3ScanMmio2Page(pVM,pbPage, &paLSPages[iPage]);
+            pgmR3ScanMmio2Page(pVM, pbPage, &paLSPages[iPage]);
         }
 
         pgmLock(pVM);
