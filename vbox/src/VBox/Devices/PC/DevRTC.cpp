@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
+/* $Id: DevRTC.cpp 26158 2010-02-02 18:05:43Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -796,7 +796,7 @@ static DECLCALLBACK(int)  rtcInitComplete(PPDMDEVINS pDevIns)
      * Set the CMOS date/time.
      */
     RTTIMESPEC  Now;
-    PDMDevHlpUTCNow(pDevIns, &Now);
+    PDMDevHlpTMUtcNow(pDevIns, &Now);
     RTTIME Time;
     if (pThis->fUTC)
         RTTimeExplode(&Time, &Now);
