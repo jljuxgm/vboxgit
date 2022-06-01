@@ -1,11 +1,11 @@
 #!/bin/bash
-# $Id: load.sh 28800 2010-04-27 08:22:32Z vboxsync $
+# $Id: load.sh 29844 2010-05-27 11:25:52Z vboxsync $
 ## @file
 # For development.
 #
 
 #
-# Copyright (C) 2006-2007 Oracle Corporation
+# Copyright (C) 2006-2010 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -26,11 +26,7 @@
 #
 
 XNU_VERSION=`LC_ALL=C uname -r | LC_ALL=C cut -d . -f 1`
-if [ "$XNU_VERSION" -ge "9" ]; then
-  DRVNAME="VBoxDrv.kext"
-else
-  DRVNAME="VBoxDrvTiger.kext"
-fi
+DRVNAME="VBoxDrv.kext"
 BUNDLE="org.virtualbox.kext.VBoxDrv"
 
 DIR=`dirname "$0"`

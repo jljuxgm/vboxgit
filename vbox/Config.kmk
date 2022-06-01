@@ -1,4 +1,4 @@
-# $Id: Config.kmk 29788 2010-05-25 14:18:41Z vboxsync $
+# $Id: Config.kmk 29844 2010-05-27 11:25:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -71,11 +71,9 @@ ifeq ($(KBUILD_TARGET),darwin)
  # the bundles
  INST_VIRTUALBOX      = $(INST_DIST)VirtualBox.app/
  INST_VBOXDRV         = $(INST_DIST)VBoxDrv.kext/
- INST_VBOXDRV_TIGER   = $(INST_DIST)VBoxDrvTiger.kext/
  INST_VBOXNETFLT      = $(INST_DIST)VBoxNetFlt.kext/
  INST_VBOXNETADP      = $(INST_DIST)VBoxNetAdp.kext/
  INST_VBOXUSB         = $(INST_DIST)VBoxUSB.kext/
- INST_VBOXUSB_TIGER   = $(INST_DIST)VBoxUSBTiger.kext/
 
  # put everything in the VirtualBox app bundle.
  INST_BIN             = $(INST_VIRTUALBOX)Contents/MacOS/
@@ -4227,7 +4225,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29788 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29844 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
