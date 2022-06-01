@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25074 2009-11-28 21:47:49Z vboxsync $
+# $Id: Makefile.kmk 25117 2009-11-30 22:47:54Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -1060,5 +1060,4 @@ sdk:
 
 sdk-fetch:
 	+ $(KMK) KBUILD_TARGET=win  KBUILD_TARGET_ARCH=x86  -C tools fetch
-
 
