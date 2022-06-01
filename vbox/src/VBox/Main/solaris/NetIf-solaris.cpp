@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 28033 2010-04-07 08:28:41Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 28742 2010-04-26 11:11:04Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -80,6 +80,7 @@ static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNe
         SolarisNICMap.insert(NICPair("eri", "eri Fast Ethernet"));
         SolarisNICMap.insert(NICPair("ge", "GEM Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("hme", "SUNW,hme Fast-Ethernet"));
+        SolarisNICMap.insert(NICPair("hxge", "Sun Blade 10 Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("ipge", "PCI-E Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("iprb", "Intel 82557/58/59 Ethernet"));
         SolarisNICMap.insert(NICPair("mxfe", "Macronix 98715 Fast Ethernet"));
