@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PGM.cpp 29576 2010-05-17 16:31:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1563,6 +1563,7 @@ static void pgmR3InitStats(PVM pVM)
     STAM_REL_REG(pVM, &pPGM->cAllPages,                          STAMTYPE_U32,     "/PGM/Page/cAllPages",                STAMUNIT_COUNT,     "The total number of pages.");
     STAM_REL_REG(pVM, &pPGM->cPrivatePages,                      STAMTYPE_U32,     "/PGM/Page/cPrivatePages",            STAMUNIT_COUNT,     "The number of private pages.");
     STAM_REL_REG(pVM, &pPGM->cSharedPages,                       STAMTYPE_U32,     "/PGM/Page/cSharedPages",             STAMUNIT_COUNT,     "The number of shared pages.");
+    STAM_REL_REG(pVM, &pPGM->cReusedSharedPages,                 STAMTYPE_U32,     "/PGM/Page/cReusedSharedPages",       STAMUNIT_COUNT,     "The number of reused shared pages.");
     STAM_REL_REG(pVM, &pPGM->cZeroPages,                         STAMTYPE_U32,     "/PGM/Page/cZeroPages",               STAMUNIT_COUNT,     "The number of zero backed pages.");
     STAM_REL_REG(pVM, &pPGM->cPureMmioPages,                     STAMTYPE_U32,     "/PGM/Page/cPureMmioPages",           STAMUNIT_COUNT,     "The number of pure MMIO pages.");
     STAM_REL_REG(pVM, &pPGM->cMonitoredPages,                    STAMTYPE_U32,     "/PGM/Page/cMonitoredPages",          STAMUNIT_COUNT,     "The number of write monitored pages.");
