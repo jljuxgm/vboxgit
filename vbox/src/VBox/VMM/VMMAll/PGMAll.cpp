@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 27778 2010-03-29 11:24:13Z vboxsync $ */
+/* $Id: PGMAll.cpp 27784 2010-03-29 12:18:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1815,6 +1815,12 @@ VMMDECL(int) PGMSyncCR3(PVMCPU pVCpu, uint64_t cr0, uint64_t cr3, uint64_t cr4, 
     int rc;
 
     pgmLock(pVM);
+
+# ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
+    PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
+    if (pPool->cDirtyPages)
+        pgmPoolResetDirtyPages(pVM);
+# endif
 
     /*
      * The pool may have pending stuff and even require a return to ring-3 to
