@@ -1,4 +1,4 @@
-/* $Id: semrw-posix.cpp 25615 2010-01-01 14:40:48Z vboxsync $ */
+/* $Id: semrw-posix.cpp 25616 2010-01-02 00:13:19Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, POSIX.
  */
@@ -589,3 +589,22 @@ RTDECL(uint32_t) RTSemRWGetWriterReadRecursion(RTSEMRW RWSem)
      */
     return pThis->cWriterReads;
 }
+
+
+RTDECL(uint32_t) RTSemRWGetReadCount(RTSEMRW RWSem)
+{
+    /*
+     * Validate input.
+     */
+    struct RTSEMRWINTERNAL *pThis = RWSem;
+    AssertPtrReturn(pThis, 0);
+    AssertMsgReturn(pThis->u32Magic == RTSEMRW_MAGIC,
+                    ("pThis=%p u32Magic=%#x\n", pThis, pThis->u32Magic),
+                    0);
+
+    /*
+     * Return the requested data.
+     */
+    return pThis->cReaders;
+}
+
