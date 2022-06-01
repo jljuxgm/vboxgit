@@ -1,6 +1,6 @@
 #! /bin/sh
 # Sun VirtualBox
-# Linux Additions X11 setup init script ($Revision: 25084 $)
+# Linux Additions X11 setup init script ($Revision: 25100 $)
 #
 
 #
@@ -46,7 +46,11 @@ case "$cpu" in
     ;;
   x86_64|amd64)
     cpu="amd64"
-    LIB="/usr/lib64"
+    if test -d "/usr/lib64"; then
+      LIB="/usr/lib64"
+    else
+      LIB="/usr/lib"
+    fi
     ;;
 esac
 
