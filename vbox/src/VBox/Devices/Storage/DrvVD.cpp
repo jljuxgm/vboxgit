@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 27809 2010-03-29 20:55:16Z vboxsync $ */
+/* $Id: DrvVD.cpp 27810 2010-03-29 20:57:16Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -997,7 +997,7 @@ static DECLCALLBACK(int) drvvdGetUuid(PPDMIMEDIA pInterface, PRTUUID pUuid)
 
 static void drvvdAsyncReqComplete(void *pvUser1, void *pvUser2)
 {
-    PVBOXDISK pThis = (PVBOXDISK)pThis;
+    PVBOXDISK pThis = (PVBOXDISK)pvUser1;
 
     int rc = pThis->pDrvMediaAsyncPort->pfnTransferCompleteNotify(pThis->pDrvMediaAsyncPort,
                                                                   pvUser2);
