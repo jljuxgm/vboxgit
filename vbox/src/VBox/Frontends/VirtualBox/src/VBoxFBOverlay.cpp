@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 29794 2010-05-25 16:06:59Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -22,9 +22,7 @@
 #define LOG_GROUP LOG_GROUP_GUI
 
 #include "VBoxFBOverlay.h"
-#include "VBoxFrameBuffer.h"
 
-#include "VBoxConsoleView.h"
 #include "VBoxProblemReporter.h"
 #include "VBoxGlobal.h"
 
