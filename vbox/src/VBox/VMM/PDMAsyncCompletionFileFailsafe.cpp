@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileFailsafe.cpp 24121 2009-10-28 01:48:25Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileFailsafe.cpp 24222 2009-10-30 22:22:17Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Failsafe File I/O manager.
@@ -57,7 +57,7 @@ static int pdmacFileAioMgrFailsafeProcessEndpointTaskList(PPDMASYNCCOMPLETIONEND
                 }
                 else
                 {
-                    if (RT_UNLIKELY((pCurr->Off + pCurr->DataSeg.cbSeg) > pEndpoint->cbFile))
+                    if (RT_UNLIKELY(pCurr->Off + pCurr->DataSeg.cbSeg > (RTFOFF)pEndpoint->cbFile))
                     {
                         ASMAtomicWriteU64(&pEndpoint->cbFile, pCurr->Off + pCurr->DataSeg.cbSeg);
                         RTFileSetSize(pEndpoint->File, pCurr->Off + pCurr->DataSeg.cbSeg);
@@ -66,7 +66,7 @@ static int pdmacFileAioMgrFailsafeProcessEndpointTaskList(PPDMASYNCCOMPLETIONEND
                     rc = RTFileWriteAt(pEndpoint->File, pCurr->Off,
                                        pCurr->DataSeg.pvSeg,
                                        pCurr->DataSeg.cbSeg,
-                                        NULL);
+                                       NULL);
                 }
 
                 break;
