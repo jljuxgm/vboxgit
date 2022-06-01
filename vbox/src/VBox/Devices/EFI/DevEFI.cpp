@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 24862 2009-11-23 10:43:00Z vboxsync $ */
+/* $Id: DevEFI.cpp 24951 2009-11-25 12:39:24Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -774,7 +774,7 @@ static int efiLoadThunk(PDEVEFI pThis, PCFGMNODE pCfgHandle)
      * Make a copy of the page and set the values of the DEVEFIINFO structure
      * found at the beginning of it.
      */
-    
+
     if (f64BitEntry)
         LogRel(("Using 64-bit EFI firmware\n"));
 
