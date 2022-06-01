@@ -1,4 +1,4 @@
-# $Id: Config.kmk 29469 2010-05-14 12:30:51Z vboxsync $
+# $Id: Config.kmk 29517 2010-05-17 09:59:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2201,12 +2201,12 @@ if1of ($(KBUILD_TARGET), linux)
  endif
  # Since Linux 2.6.15, <linux/autoconf.h> is included like this. It cannot hurt to do the
  # same for older Linux kernels
- ifneq ($(wildcard $(VBOX_LINUX_SRC)/include/linux/autoconf.h),)
-  # Linux < 2.6.33
-  export VBOX_LINUX_INCLUDE := -include $(VBOX_LINUX_SRC)/include/linux/autoconf.h
- else ifneq ($(wildcard $(VBOX_LINUX_SRC)/include/generated/autoconf.h),)
+ ifneq ($(wildcard $(VBOX_LINUX_SRC)/include/generated/autoconf.h),)
   # Linux >= 2.6.33
   export VBOX_LINUX_INCLUDE := -include $(VBOX_LINUX_SRC)/include/generated/autoconf.h
+ else ifneq ($(wildcard $(VBOX_LINUX_SRC)/include/linux/autoconf.h),)
+  # Linux < 2.6.33
+  export VBOX_LINUX_INCLUDE := -include $(VBOX_LINUX_SRC)/include/linux/autoconf.h
  endif
 endif
 
@@ -4211,7 +4211,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29469 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29517 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
