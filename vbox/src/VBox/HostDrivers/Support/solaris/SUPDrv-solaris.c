@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 25260 2009-12-09 02:07:44Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 25262 2009-12-09 04:20:18Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -900,6 +900,8 @@ bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
 
 int  VBOXCALL   supdrvOSLdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const char *pszFilename)
 {
+    /** @todo This is something that shouldn't be impossible to implement
+     *  here and would make a few people happy. */
     NOREF(pDevExt); NOREF(pImage); NOREF(pszFilename);
     return VERR_NOT_SUPPORTED;
 }
