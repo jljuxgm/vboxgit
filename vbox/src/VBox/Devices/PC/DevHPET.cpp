@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 27627 2010-03-23 13:36:42Z vboxsync $ */
+/* $Id: DevHPET.cpp 28486 2010-04-19 17:58:07Z vboxsync $ */
 /** @file
  * HPET virtual device - high precision event timer emulation
  */
@@ -259,7 +259,7 @@ static bool hpetBitJustSet(uint64_t u64OldValue,
                            uint64_t u64NewValue,
                            uint64_t u64Mask)
 {
-    return (!(u64OldValue & u64Mask) && (u64NewValue & u64Mask));
+    return (!(u64OldValue & u64Mask) && !!(u64NewValue & u64Mask));
 }
 
 static bool hpetBitJustCleared(uint64_t u64OldValue,
