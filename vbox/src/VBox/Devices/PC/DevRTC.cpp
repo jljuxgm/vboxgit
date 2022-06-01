@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
+/* $Id: DevRTC.cpp 26169 2010-02-02 20:19:15Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -971,7 +971,7 @@ static DECLCALLBACK(int)  rtcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     /*
      * Register ourselves as the RTC/CMOS with PDM.
      */
-    rc = pDevIns->pDevHlpR3->pfnRTCRegister(pDevIns, &pThis->RtcReg, &pThis->pRtcHlpR3);
+    rc = PDMDevHlpRTCRegister(pDevIns, &pThis->RtcReg, &pThis->pRtcHlpR3);
     if (RT_FAILURE(rc))
         return rc;
 

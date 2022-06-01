@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
+/* $Id: DevDMA.cpp 26169 2010-02-02 20:19:15Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -913,8 +913,7 @@ static DECLCALLBACK(int) dmaConstruct(PPDMDEVINS pDevIns,
     reg.pfnSetDREQ        = set_DREQ_wrapper;
     reg.pfnGetChannelMode = get_mode_wrapper;
 
-    Assert(pDevIns->pDevHlpR3->pfnDMARegister);
-    rc = pDevIns->pDevHlpR3->pfnDMACRegister (pDevIns, &reg, &s->pHlp);
+    rc = PDMDevHlpDMACRegister (pDevIns, &reg, &s->pHlp);
     if (RT_FAILURE (rc)) {
         return rc;
     }
