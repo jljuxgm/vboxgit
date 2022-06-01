@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24024 2009-10-23 11:53:22Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3362,9 +3362,9 @@ STDMETHODIMP Machine::SetGuestProperty(IN_BSTR aName,
             if (!directControl)
                 rc = E_FAIL;
             else
-                rc = directControl->AccessGuestProperty(aName, aValue, aFlags,
-                                                        true /* isSetter */,
-                                                        &dummy, &dummy64, &dummy);
+                rc = directControl->AccessGuestProperty
+                             (aName, *aValue ? aValue : NULL, aFlags,
+                              true /* isSetter */, &dummy, &dummy64, &dummy);
         }
     }
     catch (std::bad_alloc &)
