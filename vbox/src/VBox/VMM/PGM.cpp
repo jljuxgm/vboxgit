@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 26491 2010-02-14 07:47:12Z vboxsync $ */
+/* $Id: PGM.cpp 26535 2010-02-15 12:56:24Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2294,7 +2294,6 @@ VMMR3DECL(void) PGMR3Reset(PVM pVM)
     }
 
     pgmUnlock(pVM);
-    //return rc;
     AssertReleaseRC(rc);
 }
 
