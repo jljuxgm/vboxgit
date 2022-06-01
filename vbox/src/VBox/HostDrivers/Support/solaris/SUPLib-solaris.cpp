@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 26402 2010-02-10 08:06:45Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 26403 2010-02-10 08:22:37Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */
@@ -90,7 +90,7 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited)
         int hDummy = open("/dev/null", O_RDWR, 0);
         if (hDummy >= 0)
         {
-            if (fcntl(ahDummy, F_SETFD, FD_CLOEXEC) == 0)
+            if (fcntl(hDummy, F_SETFD, FD_CLOEXEC) == 0)
                 pThis->ahDummy[i] = hDummy;
             else
             {
