@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 26940 2010-03-02 12:22:30Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 27363 2010-03-15 14:41:18Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -142,6 +142,23 @@ typedef struct DMISYSTEMINF
     uint8_t         u8Family;
 } *PDMISYSTEMINF;
 AssertCompileSize(DMISYSTEMINF, 0x1b);
+
+/** DMI board (or module) information (Type 2) */
+typedef struct DMIBOARDINF
+{
+    DMIHDR          header;
+    uint8_t         u8Manufacturer;
+    uint8_t         u8Product;
+    uint8_t         u8Version;
+    uint8_t         u8SerialNumber;
+    uint8_t         u8AssetTag;
+    uint8_t         u8FeatureFlags;
+    uint8_t         u8LocationInChassis;
+    uint16_t        u16ChassisHandle;
+    uint8_t         u8BoardType;
+    uint8_t         u8cObjectHandles;
+} *PDMIBOARDINF;
+AssertCompileSize(DMIBOARDINF, 0x0f);
 
 /** DMI system enclosure or chassis type (Type 3) */
 typedef struct DMICHASSIS
