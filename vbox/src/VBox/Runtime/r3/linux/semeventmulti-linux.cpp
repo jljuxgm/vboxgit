@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-linux.cpp 25688 2010-01-08 10:35:40Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 25704 2010-01-10 20:12:30Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
@@ -131,7 +131,7 @@ RTDECL(int)  RTSemEventMultiCreate(PRTSEMEVENTMULTI pEventMultiSem)
 #ifdef RTSEMEVENTMULTI_STRICT
         RTLockValidatorRecSharedInit(&pThis->Signallers,
                                      NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_ANY,
-                                     "RTSemEventMulti", pThis, true /*fSignaller*/, true);
+                                     pThis, true /*fSignaller*/, true /*fEnabled*/, "RTSemEvent");
         pThis->fEverHadSignallers = false;
 #endif
         *pEventMultiSem = pThis;

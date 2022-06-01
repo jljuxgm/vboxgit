@@ -1,4 +1,4 @@
-/* $Id: semmutex-win.cpp 25685 2010-01-07 22:03:06Z vboxsync $ */
+/* $Id: semmutex-win.cpp 25704 2010-01-10 20:12:30Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Windows.
  */
@@ -92,7 +92,8 @@ RTDECL(int)  RTSemMutexCreate(PRTSEMMUTEX pMutexSem)
             pThis->hNativeOwner = NIL_RTNATIVETHREAD;
             pThis->cRecursions  = 0;
 #ifdef RTSEMMUTEX_STRICT
-            RTLockValidatorRecExclInit(&pThis->ValidatorRec, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, "RTSemMutex", pThis, true);
+            RTLockValidatorRecExclInit(&pThis->ValidatorRec, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, pThis,
+                                       true /*fEnabled*/, "RTSemMutex");
 #endif
             *pMutexSem = pThis;
             return VINF_SUCCESS;

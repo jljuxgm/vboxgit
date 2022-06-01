@@ -1,4 +1,4 @@
-/* $Id: semevent-win.cpp 25685 2010-01-07 22:03:06Z vboxsync $ */
+/* $Id: semevent-win.cpp 25704 2010-01-10 20:12:30Z vboxsync $ */
 /** @file
  * IPRT - Event Sempahore, Windows.
  */
@@ -88,7 +88,7 @@ RTDECL(int)   RTSemEventCreate(PRTSEMEVENT pEventSem)
 #ifdef RTSEMEVENT_STRICT
         RTLockValidatorRecSharedInit(&pThis->Signallers,
                                      NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_ANY,
-                                     "RTSemEvent", pThis, true /*fSignaller*/, true);
+                                     pThis, true /*fSignaller*/, true /*fEnabled*/, "RTSemEvent");
         pThis->fEverHadSignallers = false;
 #endif
 
