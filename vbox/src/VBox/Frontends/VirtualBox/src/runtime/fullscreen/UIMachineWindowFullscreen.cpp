@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 26889 2010-02-28 14:57:36Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 26891 2010-02-28 15:30:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -356,7 +356,9 @@ void UIMachineWindowFullscreen::saveWindowSettings()
     {
     }
 
+#ifdef Q_WS_MAC
     setPresentationModeEnabled(false);
+#endif/* Q_WS_MAC */
 }
 
 void UIMachineWindowFullscreen::cleanupMachineView()
