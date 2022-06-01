@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 29794 2010-05-25 16:06:59Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 29803 2010-05-26 09:36:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -726,11 +726,8 @@ bool VBoxGlobal::setSettings (const VBoxGlobalSettings &gs)
  */
 VBoxSelectorWnd &VBoxGlobal::selectorWnd()
 {
-#if defined (VBOX_GUI_SEPARATE_VM_PROCESS)
     AssertMsg (!vboxGlobal().isVMConsoleProcess(),
                ("Must NOT be a VM console process"));
-#endif
-
     Assert (mValid);
 
     if (!mSelectorWnd)
