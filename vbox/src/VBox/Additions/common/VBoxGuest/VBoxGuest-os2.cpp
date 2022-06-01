@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 28777 2010-04-26 19:45:16Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -13,10 +13,6 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- *
- * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
- * Clara, CA 95054 USA or visit http://www.sun.com if you need
- * additional information or have any questions.
  * --------------------------------------------------------------------
  *
  * This code is based on:
