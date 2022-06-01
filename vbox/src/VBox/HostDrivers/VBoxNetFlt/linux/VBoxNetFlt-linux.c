@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 28161 2010-04-11 09:36:19Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 28202 2010-04-12 12:52:20Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -532,15 +532,15 @@ static struct sk_buff *vboxNetFltLinuxSkBufFromSG(PVBOXNETFLTINS pThis, PINTNETS
         pShInfo->gso_size = pSG->GsoCtx.cbMaxSeg;
         pShInfo->gso_segs = PDMNetGsoCalcSegmentCount(&pSG->GsoCtx, pSG->cbTotal);
 
-        /** @todo figure out the checksum bit... We're checksumming way too much here
-         *        I hope.  */
         if (fDstWire)
         {
-            /** @todo check skb_partial_csum_set status code.  */
+            Assert(skb_headlen(pPkt) >= pSG->GsoCtx.cbHdrs);
+            pPkt->ip_summed  = CHECKSUM_PARTIAL;
+            pPkt->csum_start = skb_headroom(pPkt) + pSG->GsoCtx.offHdr2;
             if (fGsoType & (SKB_GSO_TCPV4 | SKB_GSO_TCPV6))
-                skb_partial_csum_set(pPkt, pSG->GsoCtx.offHdr2, RT_OFFSETOF(RTNETTCP, th_sum));
+                pPkt->csum_offset = RT_OFFSETOF(RTNETTCP, th_sum);
             else
-                skb_partial_csum_set(pPkt, pSG->GsoCtx.offHdr2, RT_OFFSETOF(RTNETUDP, uh_sum));
+                pPkt->csum_offset = RT_OFFSETOF(RTNETUDP, uh_sum);
         }
         else
         {
