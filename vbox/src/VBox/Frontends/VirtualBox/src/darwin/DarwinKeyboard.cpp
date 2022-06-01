@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 30114 2010-06-09 12:40:16Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 30122 2010-06-09 13:50:26Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -44,7 +44,7 @@
 #include <Carbon/Carbon.h>
 
 #ifndef USE_HID_FOR_MODIFIERS
-# include "VBoxUtils-darwin.h"
+# include "CocoaEventHelper.h"
 #endif
 
 
