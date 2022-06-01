@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 29411 2010-05-12 12:18:51Z vboxsync $ */
+/* $Id: PGMR0.cpp 29417 2010-05-12 12:56:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -430,6 +430,7 @@ VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PVMCPU pVCpu, PGMMREGISTERSHAREDM
                     }
                     /* else nothing changed (== this page is now a shared page), so no need to flush anything. */
 
+                    pVM->pgm.s.cSharedPages++;
                     PGM_PAGE_SET_STATE(pPage, PGM_PAGE_STATE_SHARED);
                 }
             }

@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29416 2010-05-12 12:42:49Z vboxsync $ */
+/* $Id: GMMR0.cpp 29417 2010-05-12 12:56:33Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3861,6 +3861,8 @@ GMMR0DECL(int) GMMR0SharedModuleCheckRange(PVM pVM, VMCPUID idCpu, PGMMREGISTERS
                     if (memcmp(pbSharedPage, pbLocalPage, PAGE_SIZE))
                     {
                         Log(("Unexpected differences found between local and shared page; skip\n"));
+                        /* Signal to the caller that this one hasn't changed. */
+                        paPageDesc[i].uHCPhysPageId = NIL_GMM_PAGEID;
                         continue;
                     }
 
