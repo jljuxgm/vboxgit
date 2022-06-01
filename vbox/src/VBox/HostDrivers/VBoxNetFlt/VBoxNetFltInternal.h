@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 28832 2010-04-27 14:17:33Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 28868 2010-04-28 14:01:56Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -202,6 +202,8 @@ typedef struct VBOXNETFLTINS
             void volatile *pvPromiscStream;
             /** Whether we are attaching to IPv6 stream dynamically now. */
             bool volatile fAttaching;
+            /** Whether this is a VLAN interface or not. */
+            bool volatile fVLAN;
             /** Layered device handle to the interface. */
             ldi_handle_t hIface;
             /** The MAC address of the interface. */
