@@ -1,4 +1,4 @@
-/* $Id: poll-posix.cpp 26844 2010-02-26 13:03:11Z vboxsync $ */
+/* $Id: poll-posix.cpp 27501 2010-03-18 20:05:45Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, POSIX Implementation.
  */
@@ -302,10 +302,10 @@ RTDECL(int) RTPollSetAdd(RTPOLLSET hPollSet, PCRTHANDLE pHandle, uint32_t fEvent
                 fd = RTPipeToNative(pHandle->u.hPipe);
             break;
 
-        case RTHANDLETYPE_SOCKET:
-            if (pHandle->u.hSocket != NIL_RTSOCKET)
-                fd = (int)pHandle->u.hSocket; //fd = RTTcpToNative(pHandle->u.hSocket);
-            break;
+        //case RTHANDLETYPE_SOCKET:
+        //    if (pHandle->u.hSocket != NIL_RTSOCKET)
+       //         fd = (int)pHandle->u.hSocket; //fd = RTTcpToNative(pHandle->u.hSocket);
+       //     break;
 
         case RTHANDLETYPE_FILE:
             AssertMsgFailed(("Files are always ready for reading/writing and thus not pollable. Use native APIs for special devices.\n"));
