@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 24201 2009-10-30 14:45:39Z vboxsync $ */
+/* $Id: PGMAll.cpp 24206 2009-10-30 16:09:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2065,7 +2065,6 @@ VMMDECL(const char *) PGMGetModeName(PGMMODE enmMode)
 }
 
 
-#ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
 /**
  * Check if any pgm pool pages are marked dirty (not monitored)
  *
@@ -2076,7 +2075,6 @@ VMMDECL(bool) PGMHasDirtyPages(PVM pVM)
 {
     return pVM->pgm.s.CTX_SUFF(pPool)->cDirtyPages != 0;
 }
-#endif
 
 /**
  * Check if the PGM lock is currently taken.
