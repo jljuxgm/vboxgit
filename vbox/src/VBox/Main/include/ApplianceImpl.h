@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 29422 2010-05-12 14:08:52Z vboxsync $ */
+/* $Id: ApplianceImpl.h 29873 2010-05-28 17:14:53Z vboxsync $ */
 
 /** @file
  *
@@ -167,6 +167,7 @@ private:
 
     struct XMLStack;
     void buildXMLForOneVirtualSystem(xml::ElementNode &elmToAddVirtualSystemsTo,
+                                     std::list<xml::ElementNode*> *pllElementsWithUuidAttributes,
                                      ComObjPtr<VirtualSystemDescription> &vsdescThis,
                                      OVFFormat enFormat,
                                      XMLStack &stack);
