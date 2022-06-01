@@ -1,4 +1,4 @@
-/* $Id: strtonum.cpp 24639 2009-11-13 16:09:36Z vboxsync $ */
+/* $Id: strtonum.cpp 24645 2009-11-13 16:33:57Z vboxsync $ */
 /** @file
  * IPRT - String To Number Convertion.
  */
@@ -107,7 +107,7 @@ int main()
  * @param   pszValue    Pointer to the string value.
  * @param   pu32        Where to store the converted number.
  */
-int RTStrVersionToUInt32(const char *pszVer, uint32_t *pu32)
+RTDECL(int) RTStrVersionToUInt32(const char *pszVer, uint32_t *pu32)
 {
     const char *str = pszVer;
     AssertPtr(pu32);
