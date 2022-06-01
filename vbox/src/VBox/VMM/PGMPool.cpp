@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 26364 2010-02-09 13:31:20Z vboxsync $ */
+/* $Id: PGMPool.cpp 27271 2010-03-11 11:08:29Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -640,6 +640,43 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                     {
                         void *pvShw = PGMPOOL_PAGE_2_PTR(pPool->CTX_SUFF(pVM), pPage);
                         STAM_PROFILE_START(&pPool->StatZeroPage, z);
+#ifdef DEBUG_sandervl
+                        switch (pPage->enmKind)
+                        {
+                            case PGMPOOLKIND_PAE_PT_FOR_32BIT_PT:
+                            case PGMPOOLKIND_PAE_PT_FOR_32BIT_4MB:
+                            case PGMPOOLKIND_PAE_PT_FOR_PAE_PT:
+                            case PGMPOOLKIND_PAE_PT_FOR_PAE_2MB:
+                            case PGMPOOLKIND_PAE_PT_FOR_PHYS:
+                            {
+                                bool fFoundFirst = false;
+                                PX86PT pPT = (PX86PT)pvShw;
+                                for (unsigned ptIndex = 0; ptIndex < RT_ELEMENTS(pPT->a); ptIndex++) 
+                                {
+                                    if (pPT->a[ptIndex].u) 
+                                    {
+                                        if (!fFoundFirst) 
+                                        {
+                                            AssertFatalMsg(pPage->iFirstPresent <= ptIndex, ("ptIndex = %d first present = %d\n", ptIndex, pPage->iFirstPresent));
+                                            if (pPage->iFirstPresent != ptIndex) 
+                                                Log(("ptIndex = %d first present = %d\n", ptIndex, pPage->iFirstPresent));
+                                            fFoundFirst = true;
+                                        }
+                                        if (pPT->a[ptIndex].n.u1Present) 
+                                        {
+                                            pgmPoolTracDerefGCPhysHint(pPool, pPage, pPT->a[ptIndex].u & X86_PTE_PAE_PG_MASK, NIL_RTGCPHYS);
+                                            if (pPage->iFirstPresent == ptIndex) 
+                                                pPage->iFirstPresent = NIL_PGMPOOL_PRESENT_INDEX;
+                                        }
+                                    }
+                                }
+                                AssertFatalMsg(pPage->cPresent == 0, ("cPresent = %d pPage = 0x%x\n", pPage->cPresent, (uint32_t) pPage));
+                                break;
+                            }
+                            default:
+                                break;
+                        }
+#endif
                         ASMMemZeroPage(pvShw);
                         STAM_PROFILE_STOP(&pPool->StatZeroPage, z);
                         pPage->cPresent = 0;
