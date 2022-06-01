@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 26815 2010-02-26 02:43:37Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 26893 2010-02-28 17:43:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -43,25 +43,29 @@
 UIMachineLogicNormal::UIMachineLogicNormal(QObject *pParent, UISession *pSession, UIActionsPool *pActionsPool)
     : UIMachineLogic(pParent, pSession, pActionsPool, UIVisualStateType_Normal)
 {
-    /* Prepare console connections: */
-    prepareConsoleConnections();
-
-    /* Prepare action groups: */
-    prepareActionGroups();
-
-    /* Prepare action connections: */
-    prepareActionConnections();
-
     /* Check the status of required features: */
     prepareRequiredFeatures();
 
-    /* Prepare normal machine window: */
-    prepareMachineWindow();
+    /* If required features are ready: */
+    if (!isPreventAutoStart())
+    {
+        /* Prepare console connections: */
+        prepareConsoleConnections();
 
-    /* Initialization: */
-    sltMachineStateChanged();
-    sltAdditionsStateChanged();
-    sltMouseCapabilityChanged();
+        /* Prepare action groups: */
+        prepareActionGroups();
+
+        /* Prepare action connections: */
+        prepareActionConnections();
+
+        /* Prepare normal machine window: */
+        prepareMachineWindow();
+
+        /* Initialization: */
+        sltMachineStateChanged();
+        sltAdditionsStateChanged();
+        sltMouseCapabilityChanged();
+    }
 }
 
 UIMachineLogicNormal::~UIMachineLogicNormal()
