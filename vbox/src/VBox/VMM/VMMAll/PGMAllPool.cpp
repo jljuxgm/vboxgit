@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 27202 2010-03-09 10:39:16Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 27204 2010-03-09 11:11:22Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3230,6 +3230,10 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
 static void pgmPoolTrackFlushGCPhysPT(PVM pVM, PPGMPAGE pPhysPage, bool fFlushPTEs, uint16_t iShw, uint16_t cRefs)
 {
     PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool); NOREF(pPool);
+
+    /* We should only come here with when there's only one reference in this physical page. */
+    Assert(PGMPOOL_TD_GET_CREFS(PGM_PAGE_GET_TRACKING(pPhysPage)) == 1);
+    Assert(cRefs == 1);
 
     Log2(("pgmPoolTrackFlushGCPhysPT: pPhysPage=%RHp iShw=%d cRefs=%d\n", PGM_PAGE_GET_HCPHYS(pPhysPage), iShw, cRefs));
     STAM_PROFILE_START(&pPool->StatTrackFlushGCPhysPT, f);
