@@ -1,4 +1,4 @@
-# $Id: Config.kmk 29771 2010-05-25 08:44:41Z vboxsync $
+# $Id: Config.kmk 29788 2010-05-25 14:18:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4227,7 +4227,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29771 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29788 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -4292,14 +4292,22 @@ ifeq ($(KBUILD_TARGET), darwin)
  VBOX_JAVAH = $(VBOX_JAVA_HOME)/Commands/javah
  VBOX_JAR   = $(VBOX_JAVA_HOME)/Commands/jar
  VBOX_JAVA_INC = $(VBOX_JAVA_HOME)/Headers
+
 else
- ifeq ($(KBUILD_TARGET), linux)
-  VBOX_JAVA_HOME ?= /usr/lib/jvm/java-6-sun
- endif
- ifeq ($(KBUILD_TARGET), solaris)
+
+ifeq ($(KBUILD_TARGET), linux)
+ VBOX_JAVA_HOME ?= /usr/lib/jvm/java-6-sun
+endif
+
+ifeq ($(KBUILD_TARGET), solaris)
  # VBOX_JAVA_HOME ?= /usr/jdk/jdk1.6.0
    VBOX_JAVA_HOME ?= /usr/java
- endif
+endif
+
+ifeq ($(KBUILD_TARGET), win)
+ VBOX_JAVA_HOME ?= c:/jdk
+endif
+
  VBOX_JAVAC = $(VBOX_JAVA_HOME)/bin/javac
  VBOX_JAVAH = $(VBOX_JAVA_HOME)/bin/javah
  VBOX_JAR   = $(VBOX_JAVA_HOME)/bin/jar
