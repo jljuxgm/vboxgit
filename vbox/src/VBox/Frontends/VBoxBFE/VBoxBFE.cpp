@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 23598 2009-10-07 15:00:16Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 24018 2009-10-23 09:29:25Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -661,10 +661,10 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char **envp)
                 return SyntaxError("The network MAC address has an invalid length: %s (%s)\n", pszMac, pszArg);
             for (unsigned j = 0; j < RT_ELEMENTS(g_aNetDevs[i].Mac.au8); j++)
             {
-                char c1 = toupper(*pszMac++) - '0';
+                char c1 = RT_C_TO_UPPER(*pszMac++) - '0';
                 if (c1 > 9)
                     c1 -= 7;
-                char c2 = toupper(*pszMac++) - '0';
+                char c2 = RT_C_TO_UPPER(*pszMac++) - '0';
                 if (c2 > 9)
                     c2 -= 7;
                 if (c2 > 16 || c1 > 16)
