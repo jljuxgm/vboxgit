@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27436 2010-03-17 11:28:09Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27446 2010-03-17 13:24:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -364,11 +364,23 @@ void UIMachineWindowSeamless::setMask(const QRegion &constRegion)
     region.translate(mMaskShift.width(), mMaskShift.height());
 #endif
 
-    /* Including mini tool-bar area: */
+    /* Mini tool-bar: */
     if (m_pMiniToolBar)
     {
+        /* Get mini-toolbar mask: */
         QRegion toolBarRegion(m_pMiniToolBar->mask());
+
+        /* Shift mask according global position: */
         toolBarRegion.translate(m_pMiniToolBar->mapToGlobal(toolBarRegion.boundingRect().topLeft()) - QPoint(1, 0));
+
+        /* Shift mask according available geometry: */
+        int iScreen = static_cast<UIMachineLogicSeamless*>(machineLogic())->hostScreenForGuestScreen(m_uScreenId);
+        QRect screenArea = QApplication::desktop()->screenGeometry(iScreen);
+        QRect workingArea = vboxGlobal().availableGeometry(iScreen);
+        QPoint workingAreaOffset(screenArea.topLeft() - workingArea.topLeft());
+        toolBarRegion.translate(workingAreaOffset);
+
+        /* Including mini tool-bar mask: */
         region += toolBarRegion;
     }
 
