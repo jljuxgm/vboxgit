@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25771 2010-01-12 16:20:35Z vboxsync $
+# $Id: Makefile.kmk 25806 2010-01-13 14:44:56Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox HGCM Service.
 #
@@ -208,10 +208,6 @@ VBoxOGLcrunpacker_SOURCES  = \
 VBoxOGLcrunpacker_CLEAN = \
 	$(VBOX_PATH_CROGL_GENFILES)/unpack.c \
 	$(VBOX_PATH_CROGL_GENFILES)/unpack_extend.h
-
-ifn1of ($(KBUILD_TARGET), win)
-$(VBOX_PATH_CROGL_GENFILES)/unpack.c_CFLAGS = -Wno-shadow
-endif
 
 #
 # Generate files for VBoxOGLcrunpacker.
