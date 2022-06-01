@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 26061 2010-01-27 10:18:30Z vboxsync $ */
+/* $Id: VBoxService.cpp 26136 2010-02-01 17:45:40Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -362,7 +362,7 @@ int VBoxServiceStopServices(void)
             {
                 int rc;
                 VBoxServiceVerbose(2, "Waiting for service '%s' to stop ...\n", g_aServices[j].pDesc->pszName);
-                for (int i=0; i<30; i++) /* Wait 30 seconds in total */
+                for (int i = 0; i < 30; i++) /* Wait 30 seconds in total */
                 {
                     rc = RTThreadWait(g_aServices[j].Thread, 1000 /* Wait 1 second */, NULL);
                     if (RT_SUCCESS(rc))

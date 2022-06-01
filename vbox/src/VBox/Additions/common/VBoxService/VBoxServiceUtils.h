@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.h 25390 2009-12-15 11:16:26Z vboxsync $ */
+/* $Id: VBoxServiceUtils.h 26136 2010-02-01 17:45:40Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Guest Additions Services (Utilities).
  */
@@ -25,16 +25,13 @@
 #include "VBoxServiceInternal.h"
 
 #ifdef VBOX_WITH_GUEST_PROPS
-/** Reads a guest property. */
 int VBoxServiceReadProp(uint32_t u32ClientId, const char *pszPropName, char **ppszValue, char **ppszFlags, uint64_t *puTimestamp);
-/** Reads a guest property as a 32-bit value. */
 int VBoxServiceReadPropUInt32(uint32_t u32ClientId, const char *pszPropName, uint32_t *pu32, uint32_t u32Min, uint32_t u32Max);
-/** Wrapper around VbglR3GuestPropWriteValue that does value formatting and logging. */
 int VBoxServiceWritePropF(uint32_t u32ClientId, const char *pszName, const char *pszValueFormat, ...);
 #endif
+
 #ifdef RT_OS_WINDOWS
-/** Gets a pre-formatted version string from the VS_FIXEDFILEINFO table. */
-BOOL VBoxServiceGetFileVersionString(const char* pszPath, const char* pszFileName, char* pszVersion, UINT uiSize);
+int VBoxServiceGetFileVersionString(const char *pszPath, const char *pszFileName, char *pszVersion, size_t cbVersion);
 #endif
 
 #endif
