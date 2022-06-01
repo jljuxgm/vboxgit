@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 25930 2010-01-20 12:59:47Z vboxsync $ */
 
 /** @file
  *
@@ -1012,7 +1012,7 @@ void VirtualBoxBaseWithChildrenNEXT::uninitDependentChildren()
          * deleted from the list by removeDependentChild() called from there.
          * Do some checks to avoid endless loops when the user is forgetful */
         -- count;
-        Assert (count == mDependentChildren.size());
+        Assert(count == mDependentChildren.size());
         if (count != mDependentChildren.size())
             mDependentChildren.erase (it);
 
