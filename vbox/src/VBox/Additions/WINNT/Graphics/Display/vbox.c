@@ -1,4 +1,4 @@
-/* $Id: vbox.c 25129 2009-12-01 15:43:17Z vboxsync $ */
+/* $Id: vbox.c 26505 2010-02-14 09:17:44Z vboxsync $ */
 /** @file
  * Display - VirtualBox Win 2000/XP guest display driver, support functions.
  */
@@ -769,7 +769,7 @@ static void vboxVBVAHostCommandHanlder(PPDEV ppdev, VBVAHOSTCMD * pCmd)
 # endif
         default:
         {
-        	Assert(0);
+            Assert(0);
             vboxVBVAHostCommandComplete(ppdev, pCmd);
         }
     }
@@ -784,7 +784,7 @@ void vboxVHWACommandCheckHostCmds(PPDEV ppdev)
     {
         for(;pCmd; pCmd = pNextCmd)
         {
-        	pNextCmd = pCmd->u.pNext;
+            pNextCmd = pCmd->u.pNext;
             vboxVBVAHostCommandHanlder(ppdev, pCmd);
         }
     }

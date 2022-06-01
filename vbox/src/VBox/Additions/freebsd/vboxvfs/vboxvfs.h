@@ -1,4 +1,4 @@
-/* $Id: vboxvfs.h 8250 2008-04-21 18:42:58Z vboxsync $ */
+/* $Id: vboxvfs.h 26505 2010-02-14 09:17:44Z vboxsync $ */
 /** @file
  * Description.
  */
@@ -22,7 +22,7 @@
 #ifndef ___VBOXVFS_H___
 #define ___VBOXVFS_H___
 
-#define	VBOXVFS_VFSNAME	"vboxvfs"
+#define VBOXVFS_VFSNAME "vboxvfs"
 #define VBOXVFS_VERSION 1
 
 #define MAX_HOST_NAME 256
@@ -90,7 +90,7 @@ struct sf_reg_info {
     SHFLHANDLE handle;
 };
 
-#endif	/* KERNEL */
+#endif  /* KERNEL */
 
 #endif /* !___VBOXVFS_H___ */
 
