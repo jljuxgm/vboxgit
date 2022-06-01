@@ -1,4 +1,4 @@
-; $Id: EfiThunk.asm 24798 2009-11-19 15:34:31Z vboxsync $
+; $Id: EfiThunk.asm 24839 2009-11-21 09:50:32Z vboxsync $
 ;; @file
 ; 16-bit EFI Thunk - 16-bit code executed immediately after CPU startup/reset,
 ;                    performs minimal setup, switches CPU to 32-bit mode
@@ -199,7 +199,7 @@ code_32:
         ;
         ; Switch stack, have it start at the last page before 2M
         ;
-        mov     esp,  0x200000 - 0x10
+        mov     esp,  0xfffff000;
 
         ;
         ; Jump to 32-bit entry point of the firmware, interrupts still disabled.
