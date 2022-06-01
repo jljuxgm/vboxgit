@@ -1,4 +1,4 @@
-; $Id: setjmp.asm 8259 2008-04-21 21:01:41Z vboxsync $
+; $Id: setjmp.asm 25565 2009-12-22 13:21:59Z vboxsync $
 ;; @file
 ; IPRT - No-CRT setjmp & longjmp - AMD64 & X86.
 ;
@@ -36,6 +36,9 @@ BEGINCODE
 
 BEGINPROC RT_NOCRT(setjmp)
 %ifdef RT_ARCH_AMD64
+ %ifdef ASM_CALL64_MSC
+  %error "port me"
+ %endif
         mov     rax, [rsp]
         mov     [rdi + 00h], rax        ; rip
         lea     rcx, [rsp + 8]
@@ -46,6 +49,7 @@ BEGINPROC RT_NOCRT(setjmp)
         mov     [rdi + 28h], r13
         mov     [rdi + 30h], r12
         mov     [rdi + 38h], rbx
+        ;; @todo Must save XMM registers ... can ignore in RC/R0?
 %else
         mov     edx, [esp + 4h]
         mov     eax, [esp]
@@ -64,6 +68,9 @@ ENDPROC RT_NOCRT(setjmp)
 
 BEGINPROC RT_NOCRT(longjmp)
 %ifdef RT_ARCH_AMD64
+ %ifdef ASM_CALL64_MSC
+  %error "port me"
+ %endif
         mov     rbx, [rdi + 38h]
         mov     r12, [rdi + 30h]
         mov     r13, [rdi + 28h]
