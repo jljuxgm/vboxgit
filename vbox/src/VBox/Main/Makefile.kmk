@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24373 2009-11-05 09:51:34Z vboxsync $
+# $Id: Makefile.kmk 24457 2009-11-06 15:53:06Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -524,6 +524,7 @@ endif # VBOX_WITH_XPCOM
 #
 DLLS += VBoxC
 VBoxC_TEMPLATE = VBOXMAINCOMP
+VBoxC_SDKS =  VBOX_LIBPNG VBOX_ZLIB
 VBoxC_DEFS = \
 	IN_RING3 \
 	$(VBOX_MAIN_DEFS) \
