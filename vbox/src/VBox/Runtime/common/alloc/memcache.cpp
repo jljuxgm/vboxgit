@@ -1,4 +1,4 @@
-/* $Id: memcache.cpp 26416 2010-02-10 16:32:22Z vboxsync $ */
+/* $Id: memcache.cpp 26417 2010-02-10 17:07:21Z vboxsync $ */
 /** @file
  * IPRT - Memory Object Allocation Cache.
  */
@@ -302,7 +302,7 @@ DECL_FORCE_INLINE(int32_t) rtMemCacheGrabObj(PRTMEMCACHEPAGE pPage)
 RTDECL(int) RTMemCacheAllocEx(RTMEMCACHE hMemCache, void **ppvObj)
 {
     RTMEMCACHEINT *pThis = hMemCache;
-    AssertPtrReturn(pThis, NULL);
+    AssertPtrReturn(pThis, VERR_INVALID_PARAMETER);
     AssertReturn(pThis->u32Magic == RTMEMCACHE_MAGIC, NULL);
 
     /*
