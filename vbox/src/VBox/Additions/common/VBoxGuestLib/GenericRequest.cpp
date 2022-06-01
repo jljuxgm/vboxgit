@@ -1,4 +1,4 @@
-/* $Revision: 28800 $ */
+/* $Revision: 29250 $ */
 /** @file
  * VBoxGuestLibR0 - Generic VMMDev request management.
  */
@@ -26,6 +26,7 @@
 
 #include "VBGLInternal.h"
 #include <iprt/asm.h>
+#include <iprt/asm-amd64-x86.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 

@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 28924 2010-04-30 09:08:17Z vboxsync $ */
+/* $Id: HostImpl.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -105,7 +105,7 @@ extern "C" char *getfullrawname(char *);
 extern bool is3DAccelerationSupported();
 #endif /* VBOX_WITH_CROGL */
 
-#include <iprt/asm.h>
+#include <iprt/asm-amd64-x86.h>
 #include <iprt/string.h>
 #include <iprt/mp.h>
 #include <iprt/time.h>
@@ -118,7 +118,7 @@ extern bool is3DAccelerationSupported();
 # include <iprt/ctype.h>
 #endif
 #ifdef VBOX_WITH_HOSTNETIF_API
-#include "netif.h"
+# include "netif.h"
 #endif
 
 /* XXX Solaris: definitions in /usr/include/sys/regset.h clash with hwacc_svm.h */

@@ -1,4 +1,4 @@
-/* $Id: spinlock-generic.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: spinlock-generic.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
 /** @file
  * IPRT - Spinlock, generic implementation.
  */
@@ -42,6 +42,7 @@
 
 #include <iprt/alloc.h>
 #include <iprt/asm.h>
+#include <iprt/asm-amd64-x86.h>
 #include <iprt/err.h>
 #include <iprt/assert.h>
 #if RT_CFG_SPINLOCK_GENERIC_DO_SLEEP

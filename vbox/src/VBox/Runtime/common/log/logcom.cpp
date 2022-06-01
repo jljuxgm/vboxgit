@@ -1,4 +1,4 @@
-/* $Id: logcom.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: logcom.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
 /** @file
  * IPRT - Logging to Serial Port.
  */
@@ -48,6 +48,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/asm.h>
+#include <iprt/asm-amd64-x86.h>
 #include <iprt/stdarg.h>
 #include <iprt/string.h>
 

@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: EMRaw.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -63,8 +63,10 @@
 #include <VBox/dbgf.h>
 
 #include <VBox/log.h>
+#include <iprt/asm.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>
+
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
