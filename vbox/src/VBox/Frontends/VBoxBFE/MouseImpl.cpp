@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 25969 2010-01-22 12:22:38Z vboxsync $ */
+/* $Id: MouseImpl.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of Mouse class
@@ -261,7 +261,7 @@ const PDMDRVREG Mouse::DrvReg =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "MainMouse",
     /* szRCMod */
     "",

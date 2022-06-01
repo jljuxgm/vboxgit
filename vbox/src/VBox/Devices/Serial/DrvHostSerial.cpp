@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -1458,7 +1458,7 @@ const PDMDRVREG g_DrvHostSerial =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "Host Serial",
         /* szRCMod */
     "",

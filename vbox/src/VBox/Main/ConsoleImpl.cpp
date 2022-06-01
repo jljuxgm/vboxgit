@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 26068 2010-01-27 14:05:30Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8237,7 +8237,7 @@ const PDMDRVREG Console::DrvStatusReg =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "MainStatus",
     /* szRCMod */
     "",

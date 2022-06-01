@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DrvChar.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Generic char driver
  */
@@ -409,7 +409,7 @@ const PDMDRVREG g_DrvChar =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "Char",
     /* szRCMod */
     "",

@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 26163 2010-02-02 18:58:33Z vboxsync $ */
+/* $Id: DrvRawFile.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -211,7 +211,7 @@ const PDMDRVREG g_DrvRawFile =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "RawFile",
     /* szRCMod */
     "",

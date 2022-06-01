@@ -1,4 +1,4 @@
-/* $Id: DrvMediaISO.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DrvMediaISO.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VBox storage devices: ISO image media driver
  */
@@ -292,7 +292,7 @@ const PDMDRVREG g_DrvMediaISO =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "MediaISO",
     /* szRCMod */
     "",

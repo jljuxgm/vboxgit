@@ -1,4 +1,4 @@
-/* $Id: StatusImpl.cpp 25984 2010-01-23 00:19:47Z vboxsync $ */
+/* $Id: StatusImpl.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of VMStatus class
@@ -196,7 +196,7 @@ const PDMDRVREG VMStatus::DrvReg =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "MainStatus",
     /* szRCMod */
     "",

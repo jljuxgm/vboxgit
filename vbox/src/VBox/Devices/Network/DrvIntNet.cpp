@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 26137 2010-02-01 21:13:44Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1172,7 +1172,7 @@ const PDMDRVREG g_DrvIntNet =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "IntNet",
     /* szRCMod */
     "VBoxDD",

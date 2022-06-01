@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DrvTAP.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * DrvTAP - Universial TAP network transport driver.
  */
@@ -1060,7 +1060,7 @@ const PDMDRVREG g_DrvHostInterface =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "HostInterface",
     /* szRCMod */
     "",

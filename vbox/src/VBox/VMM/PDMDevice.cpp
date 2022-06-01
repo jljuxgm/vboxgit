@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
+/* $Id: PDMDevice.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -937,7 +937,7 @@ VMMR3DECL(int) PDMR3DriverDetach(PVM pVM, const char *pszDevice, unsigned iDevIn
             {
                 while (pDrvIns)
                 {
-                    if (!strcmp(pDrvIns->pReg->szDriverName, pszDriver))
+                    if (!strcmp(pDrvIns->pReg->szName, pszDriver))
                     {
                         if (iOccurance == 0)
                             break;

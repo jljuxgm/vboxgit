@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DrvBlock.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -898,7 +898,7 @@ const PDMDRVREG g_DrvBlock =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "Block",
     /* szRCMod */
     "",

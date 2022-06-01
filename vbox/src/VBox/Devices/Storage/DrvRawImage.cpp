@@ -1,4 +1,4 @@
-/* $Id: DrvRawImage.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DrvRawImage.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VBox storage devices: Raw image driver
  */
@@ -344,7 +344,7 @@ const PDMDRVREG g_DrvRawImage =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "RawImage",
     /* szRCMod */
     "",

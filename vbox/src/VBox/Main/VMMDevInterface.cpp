@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -818,7 +818,7 @@ const PDMDRVREG VMMDev::DrvReg =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "HGCM",
     /* szRCMod */
     "",

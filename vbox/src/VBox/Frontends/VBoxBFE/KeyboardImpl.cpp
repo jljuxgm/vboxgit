@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 25971 2010-01-22 12:54:19Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of Keyboard class and related things
@@ -256,7 +256,7 @@ const PDMDRVREG Keyboard::DrvReg =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "MainKeyboard",
     /* szRCMod */
     "",

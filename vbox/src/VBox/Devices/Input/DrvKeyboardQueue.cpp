@@ -1,4 +1,4 @@
-/* $Id: DrvKeyboardQueue.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DrvKeyboardQueue.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
 /** @file
  * VBox input devices: Keyboard queue driver
  */
@@ -324,7 +324,7 @@ const PDMDRVREG g_DrvKeyboardQueue =
 {
     /* u32Version */
     PDM_DRVREG_VERSION,
-    /* szDriverName */
+    /* szName */
     "KeyboardQueue",
     /* szRCMod */
     "",
