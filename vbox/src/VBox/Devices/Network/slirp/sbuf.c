@@ -1,4 +1,4 @@
-/* $Id: sbuf.c 28449 2010-04-19 09:52:59Z vboxsync $ */
+/* $Id: sbuf.c 28510 2010-04-20 10:25:22Z vboxsync $ */
 /** @file
  * NAT - sbuf implemenation.
  */
@@ -42,14 +42,19 @@ void
 sbfree(struct sbuf *sb)
 {
     /*
-     * vvl: This assert to catch double frees. tcp_close filter out 
-     * listening sockets which pass NULLs here.   
+     * Catch double frees. Actually tcp_close() already filters out listening sockets
+     * passing NULL.
      */
     Assert((sb->sb_data));
-    RTMemFree(sb->sb_data);
-    /** @todo bird: I'm seeing double frees here sometimes.  This NULL'ing is just a
-       workaround for that, it doesn't actually fix anything.  */
-    sb->sb_data = NULL;
+
+    /*
+     * Don't call RTMemFree() for an already freed buffer, the EFence could complain
+     */
+    if (sb->sb_data)
+    {
+        RTMemFree(sb->sb_data);
+        sb->sb_data = NULL;
+    }
 }
 
 void
