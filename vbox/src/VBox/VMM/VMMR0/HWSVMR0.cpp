@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 24994 2009-11-26 12:09:48Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 25914 2010-01-19 15:28:19Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2677,12 +2677,8 @@ static int svmR0InterpretInvlPg(PVMCPU pVCpu, PDISCPUSTATE pCpu, PCPUMCTXCORE pR
      */
     rc = PGMInvalidatePage(pVCpu, addr);
     if (RT_SUCCESS(rc))
-    {
-        /* Manually invalidate the page for the VM's TLB. */
-        Log(("SVMR0InvlpgA %RGv ASID=%d\n", addr, uASID));
-        SVMR0InvlpgA(addr, uASID);
         return VINF_SUCCESS;
-    }
+
     AssertRC(rc);
     return rc;
 }
@@ -2724,9 +2720,8 @@ static int svmR0InterpretInvpg(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, ui
                 Assert(cbOp == pDis->opsize);
                 rc = svmR0InterpretInvlPg(pVCpu, pDis, pRegFrame, uASID);
                 if (RT_SUCCESS(rc))
-                {
                     pRegFrame->rip += cbOp; /* Move on to the next instruction. */
-                }
+
                 return rc;
             }
         }
