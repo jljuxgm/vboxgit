@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 25645 2010-01-05 09:29:31Z vboxsync $ */
+/* $Id: strformatrt.cpp 25713 2010-01-11 12:39:10Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -112,8 +112,6 @@
  *                            full description of the specified status code.
  *      - \%Rra             - Takes an integer iprt status code as argument. Will insert the
  *                            status code define + full description.
- *      - \%Rt              - Current thread (RTThreadSelf()), no arguments.
- *
  *      - \%Rwc             - Takes a long Windows error code as argument. Will insert the status
  *                            code define corresponding to the Windows error code.
  *      - \%Rwf             - Takes a long Windows error code as argument. Will insert the

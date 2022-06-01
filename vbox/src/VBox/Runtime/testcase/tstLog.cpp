@@ -1,4 +1,4 @@
-/* $Id: tstLog.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
+/* $Id: tstLog.cpp 25713 2010-01-11 12:39:10Z vboxsync $ */
 /** @file
  * IPRT Testcase - Log Formatting.
  */
@@ -45,8 +45,6 @@ int main()
     RTLogPrintf("%%Rrs %d: %Rrs\n", VERR_INVALID_PARAMETER, VERR_INVALID_PARAMETER);
     RTLogPrintf("%%Rrf %d: %Rrf\n", VERR_INVALID_PARAMETER, VERR_INVALID_PARAMETER);
     RTLogPrintf("%%Rra %d: %Rra\n", VERR_INVALID_PARAMETER, VERR_INVALID_PARAMETER);
-
-    RTLogPrintf("%%Rt: %Rt\n");
 
     static uint8_t au8Hex[256];
     for (unsigned iHex = 0; iHex < sizeof(au8Hex); iHex++)
