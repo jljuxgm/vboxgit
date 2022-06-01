@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 28308 2010-04-14 15:17:04Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 28310 2010-04-14 15:32:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -23,7 +23,6 @@
 #include "ConsoleImpl.h"
 #include "ConsoleVRDPServer.h"
 #include "VMMDev.h"
-#include <iprt/stream.h>
 
 #include "AutoCaller.h"
 #include "Logging.h"
