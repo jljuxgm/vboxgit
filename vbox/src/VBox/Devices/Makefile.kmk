@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26560 2010-02-16 00:46:50Z vboxsync $
+# $Id: Makefile.kmk 26593 2010-02-17 01:16:10Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -479,7 +479,8 @@ else  # !VBOX_WITH_DYNAMIC_DSDT
 	$(PATH_DevicesR3)/vboxssdt-standard.aml.tmp \
 	$(PATH_DevicesR3)/vboxssdt-cpuhotplug.hex \
 	$(PATH_DevicesR3)/vboxssdt-cpuhotplug.aml \
-	$(PATH_DevicesR3)/vboxssdt-cpuhotplug.aml.tmp
+	$(PATH_DevicesR3)/vboxssdt-cpuhotplug.aml.tmp \
+	$(PATH_DevicesR3)/vboxssdt-cpuhotplug.aml.pre
  PC/ACPI/VBoxAcpi.cpp_DEPS = \
 	$(PATH_DevicesR3)/vboxaml.hex \
 	$(PATH_DevicesR3)/vboxssdt-standard.hex \
@@ -505,12 +506,13 @@ else  # !VBOX_WITH_DYNAMIC_DSDT
 
  $$(PATH_DevicesR3)/vboxssdt-cpuhotplug.hex: $(PATH_SUB_CURRENT)/PC/vbox-cpuhotplug.dsl | $$(dir $$@)
 	$(call MSG_TOOL,iasl,DevicesR3,$<,$@)
-	$(QUIET)$(RM) -f $@ $@.tmp
-	$(QUIET)$(VBOX_IASLCMD) -tc -vs -p $@ $<
+	$(QUIET)$(RM) -f $@ $@.tmp $@.pre
+	$(QUIET)$(TOOL_$(VBOX_GCC_TOOL)_CC) -E -P -x c -o $@.pre $<
+	$(QUIET)$(VBOX_IASLCMD) -tc -vs -p $@ $@.pre
 	$(QUIET)$(MV) -f $@ $@.tmp
 	$(QUIET)$(SED) "s/AmlCode/AmlCodeSsdtCpuHotPlug/g" \
 		--output $@ $@.tmp
-	$(QUIET)$(RM) -f $@.tmp
+	$(QUIET)$(RM) -f $@.tmp $@.pre
 
 
  vboxssdt-cpuhotplug.hex:: $$(PATH_DevicesR3)/vboxssdt-cpuhotplug.hex
