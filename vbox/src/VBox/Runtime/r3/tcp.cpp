@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 27506 2010-03-18 21:25:08Z vboxsync $ */
+/* $Id: tcp.cpp 27759 2010-03-26 19:37:48Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -34,13 +34,21 @@
 *******************************************************************************/
 #ifdef RT_OS_WINDOWS
 # include <winsock2.h>
-#else /* !RT_OS_WINDOWS */
+#elif defined(RT_OS_FREEBSD)
+# include <sys/types.h>
+# include <sys/socket.h>
 # include <errno.h>
 # include <netinet/in.h>
 # include <netinet/tcp.h>
 # include <arpa/inet.h>
 # include <netdb.h>
-#endif /* !RT_OS_WINDOWS */
+#else /* !RT_OS_FREEBSD */
+# include <errno.h>
+# include <netinet/in.h>
+# include <netinet/tcp.h>
+# include <arpa/inet.h>
+# include <netdb.h>
+#endif /* !RT_OS_FREEBSD */
 #include <limits.h>
 
 #include "internal/iprt.h"
