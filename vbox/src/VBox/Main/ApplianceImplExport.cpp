@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 28596 2010-04-22 14:02:59Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 28689 2010-04-24 18:23:57Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1547,7 +1547,7 @@ HRESULT Appliance::writeFS(const LocationInfo &locInfo, const OVFFormat enFormat
 
         // now go write the XML
         xml::XmlFileWriter writer(doc);
-        writer.write(locInfo.strPath.c_str());
+        writer.write(locInfo.strPath.c_str(), false /*fSafe*/);
 
         /* Create & write the manifest file */
         const char** ppManifestFiles = (const char**)RTMemAlloc(sizeof(char*)*diskList.size() + 1);
