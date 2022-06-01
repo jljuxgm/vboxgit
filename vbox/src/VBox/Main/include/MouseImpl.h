@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 27060 2010-03-04 21:44:59Z vboxsync $ */
+/* $Id: MouseImpl.h 27061 2010-03-04 23:37:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -104,9 +104,8 @@ public:
     }
 
     // for VMMDevInterface
-    void onVMMDevCanAbsChange(bool canAbs)
+    void onVMMDevCanAbsChange(bool)
     {
-        fVMMDevCanAbs = canAbs;
         sendMouseCapsNotifications();
     }
 
