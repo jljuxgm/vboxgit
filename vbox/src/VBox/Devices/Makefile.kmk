@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25336 2009-12-11 17:09:23Z vboxsync $
+# $Id: Makefile.kmk 25770 2010-01-12 16:17:04Z vboxsync $
 ## @file
 # Top-level makefile for the devices, drivers and services.
 #
@@ -230,6 +230,7 @@ VBoxDD_LIBS.darwin     += \
 
 VBoxDD_LDFLAGS.darwin   = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxDD.dylib \
 	-framework CoreAudio \
+	-framework AudioUnit \
 	-framework IOKit \
 	-framework Carbon \
 	-framework DiskArbitration
