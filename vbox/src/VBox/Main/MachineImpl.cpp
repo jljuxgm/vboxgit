@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 28850 2010-04-27 17:28:30Z vboxsync $ */
+/* $Id: MachineImpl.cpp 28851 2010-04-27 17:41:05Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -10285,7 +10285,6 @@ STDMETHODIMP SessionMachine::PushGuestProperty(IN_BSTR aName,
             case MachineState_LiveSnapshotting:
             case MachineState_DeletingSnapshotOnline:
             case MachineState_DeletingSnapshotPaused:
-            case MachineState_LiveSnapshotting:
             case MachineState_Saving:
                 break;
 
