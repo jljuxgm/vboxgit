@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 27849 2010-03-31 07:33:59Z vboxsync $ */
+/* $Id: Performance.cpp 27858 2010-03-31 09:08:23Z vboxsync $ */
 
 /** @file
  *
@@ -65,12 +65,12 @@ int CollectorHAL::getRawProcessCpuLoad(RTPROCESS  /* process */, uint64_t * /* u
     return E_NOTIMPL;
 }
 
-int CollectorHAL::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available)
+int CollectorHAL::getHostMemoryUsage(ULONG * /* total */, ULONG * /* used */, ULONG * /* available */)
 {
     return E_NOTIMPL;
 }
 
-int CollectorHAL::getProcessMemoryUsage(RTPROCESS process, ULONG *used)
+int CollectorHAL::getProcessMemoryUsage(RTPROCESS /* process */, ULONG * /* used */)
 {
     return E_NOTIMPL;
 }
@@ -339,7 +339,7 @@ void GuestCpuLoad::init(ULONG period, ULONG length)
     mIdle->init(mLength);
 }
 
-void GuestCpuLoad::preCollect(CollectorHints& hints)
+void GuestCpuLoad::preCollect(CollectorHints& /* hints */)
 {
 }
 
@@ -383,7 +383,7 @@ void GuestRamUsage::init(ULONG period, ULONG length)
     mPagedFree->init(mLength);
 }
 
-void GuestRamUsage::preCollect(CollectorHints& hints)
+void GuestRamUsage::preCollect(CollectorHints& /* hints */)
 {
 }
 
@@ -406,7 +406,7 @@ void GuestSystemUsage::init(ULONG period, ULONG length)
     mProcesses->init(mLength);
 }
 
-void GuestSystemUsage::preCollect(CollectorHints& hints)
+void GuestSystemUsage::preCollect(CollectorHints& /* hints */)
 {
 }
 
