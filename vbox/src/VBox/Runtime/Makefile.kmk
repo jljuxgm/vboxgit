@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26476 2010-02-13 02:06:41Z vboxsync $
+# $Id: Makefile.kmk 26480 2010-02-13 23:08:49Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -302,7 +302,7 @@ RuntimeR3_SOURCES       = \
 	common/string/strformat.cpp \
 	common/string/strformatrt.cpp \
 	common/string/strformattype.cpp \
-	common/string/string.cpp \
+	common/string/stringalloc.cpp \
 	common/string/strprintf.cpp \
 	common/string/strspace.cpp \
 	common/string/strstrip.cpp \
@@ -856,7 +856,7 @@ RuntimeGuestR3Mini_SOURCES = \
 	common/string/strformat.cpp \
 	common/string/strformatrt.cpp \
 	common/string/strformattype.cpp \
-	common/string/string.cpp \
+	common/string/stringalloc.cpp \
 	common/string/strprintf.cpp \
 	common/string/strtonum.cpp \
 	common/string/unidata.cpp \
@@ -1268,7 +1268,7 @@ RuntimeR0Drv_SOURCES    = \
 	common/string/strformattype.cpp \
 	common/string/strprintf.cpp \
 	common/string/strtonum.cpp \
-	common/string/string.cpp \
+	common/string/stringalloc.cpp \
 	common/string/utf-16.cpp \
 	common/string/utf-8.cpp \
 	common/table/avlpv.cpp \
