@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 27791 2010-03-29 12:59:29Z vboxsync $ */
+/* $Id: socket.cpp 28535 2010-04-20 20:39:10Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -262,6 +262,17 @@ int rtSocketCreateForNative(RTSOCKETINT **ppSocket, RTSOCKETNATIVE hNative)
 #endif
     *ppSocket = pThis;
     return VINF_SUCCESS;
+}
+
+
+RTDECL(int) RTSocketFromNative(PRTSOCKET phSocket, RTHCINTPTR uNative)
+{
+    AssertReturn(uNative != NIL_RTSOCKETNATIVE, VERR_INVALID_PARAMETER);
+#ifndef RT_OS_WINDOWS
+    AssertReturn(uNative >= 0, VERR_INVALID_PARAMETER);
+#endif
+    AssertPtrReturn(phSocket, VERR_INVALID_POINTER);
+    return rtSocketCreateForNative(phSocket, uNative);
 }
 
 
