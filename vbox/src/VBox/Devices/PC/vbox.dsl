@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 26594 2010-02-17 01:48:11Z vboxsync $
+// $Id: vbox.dsl 26884 2010-02-27 15:59:25Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -718,7 +718,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                             {0}
                       IRQNoFlags ()
                             {8}
-                      Memory32Fixed (ReadOnly,
+                      Memory32Fixed (ReadWrite,
                             0xFED00000,         // Address Base
                             0x00000400         // Address Length
                             )
