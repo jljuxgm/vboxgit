@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 28296 2010-04-14 12:11:07Z vboxsync $ */
+/* $Id: HostImpl.cpp 28451 2010-04-19 11:25:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -127,6 +127,7 @@ extern bool is3DAccelerationSupported();
 
 #include <VBox/usb.h>
 #include <VBox/x86.h>
+#include <VBox/hwaccm.h>
 #include <VBox/err.h>
 #include <VBox/settings.h>
 #include <VBox/sup.h>
@@ -293,7 +294,16 @@ HRESULT Host::init(VirtualBox *aParent)
                 && (u32FeaturesEDX & X86_CPUID_FEATURE_EDX_MSR)
                 && (u32FeaturesEDX & X86_CPUID_FEATURE_EDX_FXSR)
                )
+            {
+                uint32_t u32SVMFeatureEDX;
+
                 m->fVTSupported = true;
+
+                /* Query AMD features. */
+                ASMCpuId(0x8000000A, &u32Dummy, &u32Dummy, &u32Dummy, &u32SVMFeatureEDX);
+                if (u32SVMFeatureEDX & AMD_CPUID_SVM_FEATURE_EDX_NESTED_PAGING)
+                    m->fNestedPagingSupported = true;
+            }
         }
     }
 
