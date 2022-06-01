@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 27758 2010-03-26 18:51:00Z vboxsync $ */
+/* $Id: UIMachineView.cpp 27760 2010-03-26 20:04:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -598,8 +598,22 @@ void UIMachineView::prepareFrameBuffer()
     }
     if (m_pFrameBuffer)
     {
-        m_pFrameBuffer->AddRef();
-        display.SetFramebuffer(m_uScreenId, CFramebuffer(m_pFrameBuffer));
+#ifdef VBOX_WITH_VIDEOHWACCEL
+        CFramebuffer fb(NULL);
+        if (m_fAccelerate2DVideo)
+        {
+            LONG XOrigin, YOrigin;
+            /* check if the framebuffer is already assigned
+             * in this case we do not need to re-assign it
+             * neither do we need to AddRef */
+            display.GetFramebuffer(m_uScreenId, fb, XOrigin, YOrigin);
+        }
+        if (fb.raw() != m_pFrameBuffer) /* <-this will evaluate to true iff m_fAccelerate2DVideo is disabled or iff no framebuffer is yet assigned */
+#endif
+        {
+            m_pFrameBuffer->AddRef();
+            display.SetFramebuffer(m_uScreenId, CFramebuffer(m_pFrameBuffer));
+        }
     }
 }
 
@@ -735,15 +749,15 @@ void UIMachineView::cleanupFrameBuffer()
         else
 #endif
         {
-        /* Warn framebuffer about its no more necessary: */
-        m_pFrameBuffer->setDeleted(true);
-        /* Detach framebuffer from Display: */
-        CDisplay display = session().GetConsole().GetDisplay();
-        display.SetFramebuffer(m_uScreenId, CFramebuffer(NULL));
-        /* Release the reference: */
-        m_pFrameBuffer->Release();
-//        delete m_pFrameBuffer; // TODO_NEW_CORE: possibly necessary to really cleanup
-        m_pFrameBuffer = NULL;
+            /* Warn framebuffer about its no more necessary: */
+            m_pFrameBuffer->setDeleted(true);
+            /* Detach framebuffer from Display: */
+            CDisplay display = session().GetConsole().GetDisplay();
+            display.SetFramebuffer(m_uScreenId, CFramebuffer(NULL));
+            /* Release the reference: */
+            m_pFrameBuffer->Release();
+//          delete m_pFrameBuffer; // TODO_NEW_CORE: possibly necessary to really cleanup
+            m_pFrameBuffer = NULL;
         }
     }
 }

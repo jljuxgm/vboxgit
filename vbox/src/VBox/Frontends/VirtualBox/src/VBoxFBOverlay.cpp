@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 27757 2010-03-26 17:59:29Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 27760 2010-03-26 20:04:25Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -4707,11 +4707,15 @@ VBoxVHWACommandElementProcessor::~VBoxVHWACommandElementProcessor()
     RTCritSectDelete(&mCritSect);
 }
 
-void VBoxVHWACommandElementProcessor::completeCurrentEvent()
+bool VBoxVHWACommandElementProcessor::completeCurrentEvent()
 {
+    bool bActive = true;
     RTCritSectEnter(&mCritSect);
     mbNewEvent = true;
+    if (!m_pNotifyObject)
+        bActive = false;
     RTCritSectLeave(&mCritSect);
+    return bActive;
 }
 
 void VBoxVHWACommandElementProcessor::postCmd(VBOXVHWA_PIPECMD_TYPE aType, void * pvData, uint32_t flags)
