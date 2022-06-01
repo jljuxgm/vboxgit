@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQGL.cpp 25526 2009-12-20 21:33:05Z vboxsync $ */
+/* $Id: VBoxFBQGL.cpp 26509 2010-02-14 09:35:03Z vboxsync $ */
 /** @file
  * VBoxFBQGL Opengl-based FrameBuffer implementation
  */
@@ -93,8 +93,8 @@ STDMETHODIMP VBoxQGLFrameBuffer::RequestResize (ULONG aScreenId, ULONG aPixelFor
                               ULONG aWidth, ULONG aHeight,
                               BOOL *aFinished)
 {
-	aWidth = VBOXQGL_PROF_WIDTH;
-	aHeight = VBOXQGL_PROF_HEIGHT;
+    aWidth = VBOXQGL_PROF_WIDTH;
+    aHeight = VBOXQGL_PROF_HEIGHT;
     VBoxFrameBuffer::RequestResize (aScreenId, aPixelFormat,
             aVRAM, aBitsPerPixel, aBytesPerLine,
             aWidth, aHeight,
