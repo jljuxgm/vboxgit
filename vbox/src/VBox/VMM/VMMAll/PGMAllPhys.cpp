@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 26685 2010-02-22 17:48:23Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 26686 2010-02-22 18:02:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -367,7 +367,8 @@ int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
     AssertMsg(PGM_PAGE_IS_ZERO(pPage) || PGM_PAGE_IS_SHARED(pPage), ("%R[pgmpage] %RGp\n", pPage, GCPhys));
     Assert(!PGM_PAGE_IS_MMIO(pPage));
 
-    if (PGMIsUsingLargePages(pVM))
+    if (    PGMIsUsingLargePages(pVM)
+        &&  PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_RAM)
     {
         RTHCPHYS HCPhysDummy;
 
