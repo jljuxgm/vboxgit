@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26662 2010-02-19 15:11:13Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 26681 2010-02-22 16:38:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1924,15 +1924,23 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             rc = CFGMR3InsertString(pCfg,   "Format", "VDI");                       RC_CHECK();
 # endif
 
-            /* Virtual USB Mouse*/
+            /* Virtual USB Mouse/Tablet */
             PointingHidType_T aPointingHid;
             hrc = pMachine->COMGETTER(PointingHidType)(&aPointingHid);               H();
-            if (aPointingHid == PointingHidType_USBMouse)
+            if (aPointingHid == PointingHidType_USBMouse || aPointingHid == PointingHidType_USBTablet)
             {
                 rc = CFGMR3InsertNode(pUsbDevices, "HidMouse", &pDev);               RC_CHECK();
                 rc = CFGMR3InsertNode(pDev,     "0", &pInst);                        RC_CHECK();
                 rc = CFGMR3InsertNode(pInst,    "Config", &pCfg);                    RC_CHECK();
 
+                if (aPointingHid == PointingHidType_USBTablet)
+                {
+                    rc = CFGMR3InsertInteger(pCfg, "Absolute", 1);                   RC_CHECK();
+                }
+                else
+                {
+                    rc = CFGMR3InsertInteger(pCfg, "Absolute", 0);                   RC_CHECK();
+                }
                 rc = CFGMR3InsertNode(pInst,    "LUN#0", &pLunL0);                   RC_CHECK();
                 rc = CFGMR3InsertString(pLunL0, "Driver",        "MouseQueue");      RC_CHECK();
                 rc = CFGMR3InsertNode(pLunL0,   "Config", &pCfg);                    RC_CHECK();
