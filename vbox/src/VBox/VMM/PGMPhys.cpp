@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 25542 2009-12-21 14:35:34Z vboxsync $ */
+/* $Id: PGMPhys.cpp 25544 2009-12-21 15:04:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3015,6 +3015,8 @@ int pgmR3PhysChunkMap(PVM pVM, uint32_t idChunk, PPPGMCHUNKR3MAP ppChunk)
 #endif
             pVM->pgm.s.ChunkR3Map.c--;
         }
+        /* Chunk removed, so clear the page map TBL as well (might still be referenced). */
+        PGMPhysInvalidatePageMapTLB(pVM);
     }
     else
     {
