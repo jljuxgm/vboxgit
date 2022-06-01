@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-nt.cpp 28517 2010-04-20 12:30:12Z vboxsync $ */
+/* $Id: semmutex-r0drv-nt.cpp 28519 2010-04-20 12:58:35Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, NT.
  */
@@ -231,7 +231,7 @@ RTDECL(bool) RTSemMutexIsOwned(RTSEMMUTEX hMutexSem)
 #ifdef RT_USE_FAST_MUTEX
     return pThis->Mutex && pThis->Mutex->Owner != NULL;
 #else
-    return KeReadStateMutex(pThis->Mutex) == 1);
+    return KeReadStateMutex(&pThis->Mutex) == 1;
 #endif
 }
 
