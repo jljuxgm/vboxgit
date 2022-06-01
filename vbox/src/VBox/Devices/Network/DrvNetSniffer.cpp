@@ -1,4 +1,4 @@
-/* $Id: DrvNetSniffer.cpp 27843 2010-03-30 21:02:01Z vboxsync $ */
+/* $Id: DrvNetSniffer.cpp 27973 2010-04-04 00:33:03Z vboxsync $ */
 /** @file
  * DrvNetSniffer - Network sniffer filter driver.
  */
@@ -84,12 +84,13 @@ typedef struct DRVNETSNIFFER
 /**
  * @interface_method_impl{PDMINETWORKUP,pfnAllocBuf}
  */
-static DECLCALLBACK(int) drvNetSnifferUp_AllocBuf(PPDMINETWORKUP pInterface, size_t cbMin, PPPDMSCATTERGATHER ppSgBuf)
+static DECLCALLBACK(int) drvNetSnifferUp_AllocBuf(PPDMINETWORKUP pInterface, size_t cbMin,
+                                                  PCPDMNETWORKGSO pGso, PPPDMSCATTERGATHER ppSgBuf)
 {
     PDRVNETSNIFFER pThis = RT_FROM_MEMBER(pInterface, DRVNETSNIFFER, INetworkUp);
     if (RT_UNLIKELY(!pThis->pIBelowNet))
         return VERR_NET_DOWN;
-    return pThis->pIBelowNet->pfnAllocBuf(pThis->pIBelowNet, cbMin, ppSgBuf);
+    return pThis->pIBelowNet->pfnAllocBuf(pThis->pIBelowNet, cbMin, pGso, ppSgBuf);
 }
 
 
@@ -116,6 +117,7 @@ static DECLCALLBACK(int) drvNetSnifferUp_SendBuf(PPDMINETWORKUP pInterface, PPDM
 
     /* output to sniffer */
     RTCritSectEnter(&pThis->Lock);
+    /** @todo Deal with GSO here. */
     PcapFileFrame(pThis->File, pThis->StartNanoTS,
                   pSgBuf->aSegs[0].pvSeg,
                   pSgBuf->cbUsed,

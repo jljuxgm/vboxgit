@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 26932 2010-03-02 10:10:59Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 27973 2010-04-04 00:33:03Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -387,6 +387,7 @@ PDMBOTHCBDECL(void) vnetReset(void *pvState)
 }
 
 #ifdef IN_RING3
+
 /**
  * Wakeup the RX thread.
  */

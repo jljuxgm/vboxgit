@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 27844 2010-03-30 21:02:49Z vboxsync $ */
+/* $Id: DevPCNet.cpp 27973 2010-04-04 00:33:03Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -2109,7 +2109,7 @@ DECLINLINE(int) pcnetXmitAllocBuf(PCNetState *pThis, size_t cbMin, bool fLoopbac
         PPDMINETWORKUP pDrv = pThis->pDrvR3;
         if (RT_LIKELY(pDrv))
         {
-            rc = pDrv->pfnAllocBuf(pDrv, cbMin, ppSgBuf);
+            rc = pDrv->pfnAllocBuf(pDrv, cbMin, NULL /*pGso*/, ppSgBuf);
             AssertMsg(rc == VINF_SUCCESS || rc == VERR_TRY_AGAIN || rc == VERR_NET_DOWN || rc == VERR_NO_MEMORY, ("%Rrc\n", rc));
             if (RT_FAILURE(rc))
                 *ppSgBuf = NULL;
