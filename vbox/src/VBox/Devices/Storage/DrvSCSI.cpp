@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 24105 2009-10-27 00:18:26Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 24124 2009-10-28 09:53:49Z vboxsync $ */
 /** @file
  *
  * VBox storage drivers:
@@ -911,10 +911,12 @@ static DECLCALLBACK(int) drvscsiConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHand
     LogFlowFunc(("pDrvIns=%#p pCfgHandle=%#p\n", pDrvIns, pCfgHandle));
 
     /*
-     * Initialize interfaces.
+     * Initialize the instance data.
      */
-    pDrvIns->IBase.pfnQueryInterface                    = drvscsiQueryInterface;
-    pThis->ISCSIConnector.pfnSCSIRequestSend            = drvscsiRequestSend;
+    pThis->pDrvIns                           = pDrvIns;
+    pThis->ISCSIConnector.pfnSCSIRequestSend = drvscsiRequestSend;
+
+    pDrvIns->IBase.pfnQueryInterface         = drvscsiQueryInterface;
 
     /*
      * Try attach driver below and query it's block interface.
