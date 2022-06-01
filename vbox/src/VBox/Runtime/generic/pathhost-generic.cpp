@@ -1,4 +1,4 @@
-/* $Id: pathhost-generic.cpp 28877 2010-04-28 19:10:47Z vboxsync $ */
+/* $Id: pathhost-generic.cpp 28880 2010-04-28 20:36:16Z vboxsync $ */
 /** @file
  * IPRT - Path Convertions, generic.
  */
@@ -53,15 +53,15 @@ void rtPathFreeNative(char *pszNativePath, const char *pszPath)
 }
 
 
-int rtPathFromNative(char **pszPath, const char *pszNativePath)
+int rtPathFromNative(char **ppszPath, const char *pszNativePath)
 {
-    return RTStrCurrentCPToUtf8(pszPath, pszNativePath);
+    return RTStrCurrentCPToUtf8(ppszPath, pszNativePath);
 }
 
 
-int rtPathFromNativeEx(char **pszPath, const char *pszNativePath, const char *pszBasePath)
+int rtPathFromNativeEx(char **ppszPath, const char *pszNativePath, const char *pszBasePath)
 {
     NOREF(pszBasePath);
-    return RTStrCurrentCPToUtf8(pszPath, pszNativePath);
+    return RTStrCurrentCPToUtf8(ppszPath, pszNativePath);
 }
 
