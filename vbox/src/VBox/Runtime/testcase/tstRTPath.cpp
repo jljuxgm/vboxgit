@@ -1,4 +1,4 @@
-/* $Id: tstPath.cpp 25923 2010-01-20 11:06:27Z vboxsync $ */
+/* $Id: tstRTPath.cpp 25924 2010-01-20 11:08:40Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -50,7 +50,7 @@ int main()
      * Init RT+Test.
      */
     RTTEST hTest;
-    int rc = RTTestInitAndCreate("tstPath", &hTest);
+    int rc = RTTestInitAndCreate("tstRTPath", &hTest);
     if (rc)
         return rc;
     RTTestBanner(hTest);
