@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 27203 2010-03-09 10:48:40Z vboxsync $ */
+/* $Id: PGMAllBth.h 27209 2010-03-09 12:33:17Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1302,6 +1302,12 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorkerTrackDeref)(PVMCPU pVCpu, PPGMPOOLPA
             if (PGM_PAGE_GET_HCPHYS(&pRam->aPages[iPage]) == HCPhys)
             {
                 PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
+
+                Assert(pShwPage->cPresent);
+                Assert(pPool->cPresent);
+                pShwPage->cPresent--;
+                pPool->cPresent--;
+
                 pgmTrackDerefGCPhys(pPool, pShwPage, &pRam->aPages[iPage]);
                 STAM_PROFILE_STOP(&pVM->pgm.s.StatTrackDeref, a);
                 return;
