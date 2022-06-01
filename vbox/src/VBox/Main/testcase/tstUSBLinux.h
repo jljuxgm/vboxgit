@@ -1,4 +1,4 @@
-/* $Id $ */
+/* $Id: tstUSBLinux.h 30269 2010-06-17 06:54:58Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service class, test version for Linux hosts.
  */
