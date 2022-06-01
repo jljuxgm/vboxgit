@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 30151 2010-06-10 16:12:33Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 30155 2010-06-10 16:53:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -54,9 +54,9 @@ NativeNSViewRef darwinToNativeViewImpl(NativeNSWindowRef pWindow)
 NativeNSImageRef darwinToNSImageRef(const CGImageRef pImage)
 {
     /* Create a bitmap rep from the image. */
-    NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithCGImage:pImage];
+    NSBitmapImageRep *bitmapRep = [[[NSBitmapImageRep alloc] initWithCGImage:pImage] autorelease];
     /* Create an NSImage and add the bitmap rep to it */
-    NSImage *image = [[[NSImage alloc] init] autorelease];
+    NSImage *image = [[NSImage alloc] init];
     [image addRepresentation:bitmapRep];
     return image;
 }
