@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27857 2010-03-31 09:02:32Z vboxsync $
+# $Id: Makefile.kmk 27882 2010-03-31 11:52:27Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -291,6 +291,7 @@ VBoxSVC_SOURCES = \
 	VirtualBoxImpl.cpp \
 	ApplianceImpl.cpp \
 	ApplianceImplExport.cpp \
+	ApplianceImplImport.cpp \
 	xml/ovfreader.cpp \
 	VFSExplorerImpl.cpp \
 	MachineImpl.cpp \
