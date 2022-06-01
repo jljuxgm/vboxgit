@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 25159 2009-12-03 10:49:02Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 25166 2009-12-03 13:35:13Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -146,7 +146,7 @@ extern int VBoxServiceWinInstall(void);
 /** Uninstalls the service from the registry. */
 extern int VBoxServiceWinUninstall(void);
 /** Reports our current status to the SCM. */
-extern BOOL VBoxServiceWinSetStatus (DWORD dwStatus, DWORD dwCheckPoint = 0);
+extern BOOL VBoxServiceWinSetStatus(DWORD dwStatus, DWORD dwCheckPoint);
 #ifdef VBOX_WITH_GUEST_PROPS
 /** Detects wheter a user is logged on based on the enumerated processes. */
 extern BOOL VBoxServiceVMInfoWinIsLoggedIn(VBOXSERVICEVMINFOUSER* a_pUserInfo,
