@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileCache.cpp 24356 2009-11-04 20:32:13Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileCache.cpp 24359 2009-11-04 22:28:48Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * File data cache.
@@ -680,6 +680,10 @@ int pdmacFileCacheInit(PPDMASYNCCOMPLETIONEPCLASSFILE pClassFile, PCFGMNODE pCfg
 
     /* Initialize the critical section */
     rc = RTCritSectInit(&pCache->CritSect);
+
+    if (RT_SUCCESS(rc))
+        LogRel(("AIOMgr: Cache successfully initialised. Cache size is %u bytes\n", pCache->cbMax));
+
     return rc;
 }
 
