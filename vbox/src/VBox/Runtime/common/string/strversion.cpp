@@ -1,4 +1,4 @@
-/* $Id: strversion.cpp 24893 2009-11-24 12:09:03Z vboxsync $ */
+/* $Id: strversion.cpp 24894 2009-11-24 12:15:56Z vboxsync $ */
 /** @file
  * IPRT - Version String Parsing.
  */
@@ -131,9 +131,8 @@ static int RTStrVersionGetUInt32(const char *pszVer, uint16_t u16Block, uint32_t
  * @retval  VERR_NO_MEMORY
  * @retval  VERR_NO_DIGITS
  *
- * @todo    Deal with prefixes and suffixes!
  * @param   pszVer1     First version string to compare.
- * @param   pszVer2     First version string to compare.*
+ * @param   pszVer2     First version string to compare.
  * @param   pui8Res     Pointer uint8_t value where to store the comparison result:
  *                      0 if equal, 1 if pszVer1 is greater, 2 if pszVer2 is greater.
  */
