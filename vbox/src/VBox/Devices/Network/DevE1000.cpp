@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 27002 2010-03-03 18:34:42Z vboxsync $ */
+/* $Id: DevE1000.cpp 27298 2010-03-11 18:57:24Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2115,6 +2115,11 @@ static int e1kRegWriteCTRL(E1KSTATE* pState, uint32_t offset, uint32_t index, ui
             /* The driver indicates that we should bring up the link */
             /* Do so in 5 seconds. */
             e1kArmTimer(pState, pState->CTX_SUFF(pLUTimer), 5000000);
+            /*
+             * Change the status (but not PHY status) anyway as Windows expects
+             * it for 82543GC.
+             */
+            STATUS |= STATUS_LU;
         }
         if (value & CTRL_VME)
         {
