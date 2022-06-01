@@ -1,4 +1,4 @@
-/* $Id: alloc.cpp 24958 2009-11-25 15:02:04Z vboxsync $ */
+/* $Id: alloc.cpp 28271 2010-04-13 19:29:42Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation.
  */
@@ -27,6 +27,15 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
+
+
+/*******************************************************************************
+*   Defined Constants And Macros                                               *
+*******************************************************************************/
+#ifdef RTMEM_WRAP_TO_EF_APIS
+# undef RTMEM_WRAP_TO_EF_APIS
+# define RTALLOC_USE_EFENCE 1
+#endif
 
 
 /*******************************************************************************
@@ -102,13 +111,10 @@ RTDECL(void *)  RTMemAlloc(size_t cb) RT_NO_THROW
     AssertMsg(cb, ("Allocating ZERO bytes is really not a good idea! Good luck with the next assertion!\n"));
     void *pv = malloc(cb);
     AssertMsg(pv, ("malloc(%#zx) failed!!!\n", cb));
-#ifdef RT_OS_OS2 /* temporary workaround until libc062. */
-    AssertMsg(   cb < 32
-              || !((uintptr_t)pv & (RTMEM_ALIGNMENT - 1)), ("pv=%p RTMEM_ALIGNMENT=%#x\n", pv, RTMEM_ALIGNMENT));
-#else
     AssertMsg(   cb < RTMEM_ALIGNMENT
-              || !((uintptr_t)pv & (RTMEM_ALIGNMENT - 1)), ("pv=%p RTMEM_ALIGNMENT=%#x\n", pv, RTMEM_ALIGNMENT));
-#endif
+              || !((uintptr_t)pv & (RTMEM_ALIGNMENT - 1))
+              || ( (cb & RTMEM_ALIGNMENT) + ((uintptr_t)pv & RTMEM_ALIGNMENT)) == RTMEM_ALIGNMENT
+              , ("pv=%p RTMEM_ALIGNMENT=%#x\n", pv, RTMEM_ALIGNMENT));
 #endif /* !RTALLOC_USE_EFENCE */
     return pv;
 }
@@ -136,13 +142,10 @@ RTDECL(void *)  RTMemAllocZ(size_t cb) RT_NO_THROW
 
     void *pv = calloc(1, cb);
     AssertMsg(pv, ("calloc(1,%#zx) failed!!!\n", cb));
-#ifdef RT_OS_OS2 /* temporary workaround until libc062. */
-    AssertMsg(   cb < 32
-              || !((uintptr_t)pv & (RTMEM_ALIGNMENT - 1)), ("pv=%p RTMEM_ALIGNMENT=%#x\n", pv, RTMEM_ALIGNMENT));
-#else
     AssertMsg(   cb < RTMEM_ALIGNMENT
-              || !((uintptr_t)pv & (RTMEM_ALIGNMENT - 1)), ("pv=%p RTMEM_ALIGNMENT=%#x\n", pv, RTMEM_ALIGNMENT));
-#endif
+              || !((uintptr_t)pv & (RTMEM_ALIGNMENT - 1))
+              || ( (cb & RTMEM_ALIGNMENT) + ((uintptr_t)pv & RTMEM_ALIGNMENT)) == RTMEM_ALIGNMENT
+              , ("pv=%p RTMEM_ALIGNMENT=%#x\n", pv, RTMEM_ALIGNMENT));
 #endif /* !RTALLOC_USE_EFENCE */
     return pv;
 }
@@ -165,13 +168,10 @@ RTDECL(void *)  RTMemRealloc(void *pvOld, size_t cbNew) RT_NO_THROW
 
     void *pv = realloc(pvOld, cbNew);
     AssertMsg(pv && cbNew, ("realloc(%p, %#zx) failed!!!\n", pvOld, cbNew));
-#ifdef RT_OS_OS2 /* temporary workaround until libc062. */
-    AssertMsg(   cbNew < 32
-              || !((uintptr_t)pv & (RTMEM_ALIGNMENT - 1)), ("pv=%p RTMEM_ALIGNMENT=%#x\n", pv, RTMEM_ALIGNMENT));
-#else
     AssertMsg(   cbNew < RTMEM_ALIGNMENT
-              || !((uintptr_t)pv & (RTMEM_ALIGNMENT - 1)), ("pv=%p RTMEM_ALIGNMENT=%#x\n", pv, RTMEM_ALIGNMENT));
-#endif
+              || !((uintptr_t)pv & (RTMEM_ALIGNMENT - 1))
+              || ( (cbNew & RTMEM_ALIGNMENT) + ((uintptr_t)pv & RTMEM_ALIGNMENT)) == RTMEM_ALIGNMENT
+              , ("pv=%p RTMEM_ALIGNMENT=%#x\n", pv, RTMEM_ALIGNMENT));
 #endif  /* !RTALLOC_USE_EFENCE */
     return pv;
 }

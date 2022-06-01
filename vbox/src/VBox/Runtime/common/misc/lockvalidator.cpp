@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 28267 2010-04-13 17:11:44Z vboxsync $ */
+/* $Id: lockvalidator.cpp 28271 2010-04-13 19:29:42Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -1071,7 +1071,7 @@ RTDECL(int) RTLockValidatorClassCreateExV(PRTLOCKVALCLASS phClass, PCRTLOCKVALSR
      */
     size_t const       cbFile   = pSrcPos->pszFile ? strlen(pSrcPos->pszFile) + 1 : 0;
     size_t const     cbFunction = pSrcPos->pszFile ? strlen(pSrcPos->pszFunction) + 1 : 0;
-    RTLOCKVALCLASSINT *pThis    = (RTLOCKVALCLASSINT *)RTMemAlloc(sizeof(*pThis) + cbFile + cbFunction + cbName);
+    RTLOCKVALCLASSINT *pThis    = (RTLOCKVALCLASSINT *)RTMemAllocVar(sizeof(*pThis) + cbFile + cbFunction + cbName);
     if (!pThis)
         return VERR_NO_MEMORY;
 

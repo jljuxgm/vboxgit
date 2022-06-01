@@ -1,10 +1,10 @@
-/* $Id: alloc-ef-cpp.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: alloc-ef-cpp.cpp 28271 2010-04-13 19:29:42Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, C++ electric fence.
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -33,7 +33,8 @@
 *******************************************************************************/
 #include "alloc-ef.h"
 
-#ifdef RTALLOC_EFENCE_CPP /* rest of the file */
+
+#if defined(RTALLOC_EFENCE_CPP) || defined(RTMEM_WRAP_TO_EF_APIS) /* rest of the file */
 
 #include <new>
 
@@ -121,4 +122,4 @@ void RT_EF_CDECL operator delete[](void *pv, const std::nothrow_t &) throw()
     rtMemFree("delete[] nothrow", RTMEMTYPE_DELETE_ARRAY, pv, ((void **)&pv)[-1], 0, NULL, NULL);
 }
 
-#endif /* RTALLOC_EFENCE_CPP */
+#endif /* RTALLOC_EFENCE_CPP || RTMEM_WRAP_TO_EF_APIS */
