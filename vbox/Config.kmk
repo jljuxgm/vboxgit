@@ -1,4 +1,4 @@
-# $Id: Config.kmk 26951 2010-03-02 15:16:23Z vboxsync $
+# $Id: Config.kmk 27041 2010-03-04 14:59:28Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2462,7 +2462,7 @@ TEMPLATE_VBOXR0DRV_LDFLAGS.amd64       = -64
 TEMPLATE_VBOXR0DRV_CFLAGS              = -Wpointer-arith -Winline $(VBOX_GCC_Wno-pointer-sign) \
 	-Wmissing-prototypes -Wstrict-prototypes -Wnested-externs \
 	-Wshadow -Wuninitialized -Wunused-function -Wunused-label -Wunused-value -Wunused-variable \
-	-Wformat  -Wimplicit-int -Wimplicit-function-declaration \
+	-Wformat  -Wimplicit-int -Wimplicit-function-declaration -Wparentheses \
 	-O2 -fno-omit-frame-pointer -ffreestanding -nodefaultlibs -fno-strict-aliasing -fno-common -std=c99
 TEMPLATE_VBOXR0DRV_CFLAGS.x86          = -m32 -mno-sse -mno-mmx -mno-sse2 -mno-3dnow
 TEMPLATE_VBOXR0DRV_CFLAGS.amd64        = -m64 -mno-sse -mno-mmx -mno-sse2 -mno-3dnow $(if $(VBOX_SOLARIS_10),,-msave-args) -mno-red-zone -mcmodel=kernel \
@@ -4040,7 +4040,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 26951 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 27041 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
