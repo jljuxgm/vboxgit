@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 24347 2009-11-04 17:13:50Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 24381 2009-11-05 13:29:47Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -199,6 +199,23 @@ int handleStorageAttach(HandlerArg *a)
     {
         errorSyntax(USAGE_STORAGEATTACH, "Couldn't find the controller with the name: '%s'\n", pszCtl);
         goto leave;
+    }
+
+    /* for sata controller check if the port count is big enough
+     * to accomodate the current port which is being assigned
+     * else just increase the port count
+     */
+    {
+        ULONG ulPortCount = 0;
+        ULONG ulMaxPortCount = 0;
+
+        CHECK_ERROR(storageCtl, COMGETTER(MaxPortCount)(&ulMaxPortCount));
+        CHECK_ERROR(storageCtl, COMGETTER(PortCount)(&ulPortCount));
+
+        if (   (ulPortCount != ulMaxPortCount)
+            && (port >= ulPortCount)
+            && (port < ulMaxPortCount))
+            CHECK_ERROR(storageCtl, COMSETTER(PortCount)(port + 1));
     }
 
     if (!RTStrICmp(pszMedium, "none"))
