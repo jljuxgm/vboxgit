@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 23012 2009-09-14 16:38:13Z vboxsync $ */
+/* $Id: tstVMM.cpp 25255 2009-12-08 18:29:06Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -86,8 +86,8 @@ DECLCALLBACK(int) tstTMWorker(PVM pVM, RTTEST hTest)
     PTMTIMER apTimers[5];
     for (size_t i = 0; i < RT_ELEMENTS(apTimers); i++)
     {
-        int rc = TMR3TimerCreateInternal(pVM, i & 1 ? TMCLOCK_VIRTUAL :  TMCLOCK_VIRTUAL_SYNC,
-                                         tstTMDummyCallback, NULL, "test timer",  &apTimers[i]);
+        rc = TMR3TimerCreateInternal(pVM, i & 1 ? TMCLOCK_VIRTUAL :  TMCLOCK_VIRTUAL_SYNC,
+                                     tstTMDummyCallback, NULL, "test timer",  &apTimers[i]);
         RTTEST_CHECK_RET(hTest, RT_SUCCESS(rc), rc);
     }
 
