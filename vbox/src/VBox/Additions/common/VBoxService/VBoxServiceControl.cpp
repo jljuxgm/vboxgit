@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 29438 2010-05-12 21:50:16Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 29515 2010-05-17 09:53:05Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -251,7 +251,7 @@ DECLCALLBACK(int) VBoxServiceControlWorker(bool volatile *pfShutdown)
         {
             if (rc == VERR_TOO_MUCH_DATA)
             {
-                VBoxServiceVerbose(3, "Control: Message requires %ld parameters, but only 2 supplied -- retrying request ...\n", uNumParms);
+                VBoxServiceVerbose(4, "Control: Message requires %ld parameters, but only 2 supplied -- retrying request (no error!)...\n", uNumParms);
                 rc = VINF_SUCCESS; /* Try to get "real" message in next block below. */
             }
             else
