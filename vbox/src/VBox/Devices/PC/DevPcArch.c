@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.c 26169 2010-02-02 20:19:15Z vboxsync $ */
+/* $Id: DevPcArch.c 26173 2010-02-02 21:11:09Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architechture Device.
  */
@@ -216,7 +216,7 @@ static DECLCALLBACK(int) pcarchIOPortPS2SysControlPortAWrite(PPDMDEVINS pDevIns,
 /**
  * @interface_method_impl{PDMDEVREG,pfnConstruct}
  */
-static DECLCALLBACK(int)  pcarchConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfgHandle)
+static DECLCALLBACK(int)  pcarchConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
     PDEVPCARCH  pThis = PDMINS_2_DATA(pDevIns, PDEVPCARCH);
     int         rc;
@@ -225,7 +225,7 @@ static DECLCALLBACK(int)  pcarchConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
     /*
      * Validate configuration.
      */
-    if (!CFGMR3AreValuesValid(pCfgHandle, "\0"))
+    if (!CFGMR3AreValuesValid(pCfg, "\0"))
         return VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES;
 
     /*

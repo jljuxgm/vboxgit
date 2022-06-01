@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 26169 2010-02-02 20:19:15Z vboxsync $ */
+/* $Id: DevDMA.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -878,7 +878,7 @@ static DECLCALLBACK(int) dmaLoadExec (PPDMDEVINS pDevIns,
  */
 static DECLCALLBACK(int) dmaConstruct(PPDMDEVINS pDevIns,
                                       int iInstance,
-                                      PCFGMNODE pCfgHandle)
+                                      PCFGMNODE pCfg)
 {
     DMAState *s = PDMINS_2_DATA (pDevIns, DMAState *);
     bool high_page_enable = 0;
@@ -890,11 +890,11 @@ static DECLCALLBACK(int) dmaConstruct(PPDMDEVINS pDevIns,
     /*
      * Validate configuration.
      */
-    if (!CFGMR3AreValuesValid(pCfgHandle, "\0")) /* "HighPageEnable\0")) */
+    if (!CFGMR3AreValuesValid(pCfg, "\0")) /* "HighPageEnable\0")) */
         return VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES;
 
 #if 0
-    rc = CFGMR3QueryBool (pCfgHandle, "HighPageEnable", &high_page_enable);
+    rc = CFGMR3QueryBool (pCfg, "HighPageEnable", &high_page_enable);
     if (RT_FAILURE (rc)) {
         return rc;
     }

@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 26160 2010-02-02 18:23:29Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -1620,7 +1620,7 @@ static DECLCALLBACK(int) vnetDestruct(PPDMDEVINS pDevIns)
 /**
  * @interface_method_impl{PDMDEVREG,pfnConstruct}
  */
-static DECLCALLBACK(int) vnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfgHandle)
+static DECLCALLBACK(int) vnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
     VNETSTATE* pState = PDMINS_2_DATA(pDevIns, VNETSTATE*);
     int        rc;
@@ -1642,17 +1642,17 @@ static DECLCALLBACK(int) vnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     /*
      * Validate configuration.
      */
-    if (!CFGMR3AreValuesValid(pCfgHandle, "MAC\0" "CableConnected\0" "LineSpeed\0"))
+    if (!CFGMR3AreValuesValid(pCfg, "MAC\0" "CableConnected\0" "LineSpeed\0"))
                     return PDMDEV_SET_ERROR(pDevIns, VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES,
                                             N_("Invalid configuration for VirtioNet device"));
 
     /* Get config params */
-    rc = CFGMR3QueryBytes(pCfgHandle, "MAC", pState->macConfigured.au8,
+    rc = CFGMR3QueryBytes(pCfg, "MAC", pState->macConfigured.au8,
                           sizeof(pState->macConfigured));
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Failed to get MAC address"));
-    rc = CFGMR3QueryBool(pCfgHandle, "CableConnected", &pState->fCableConnected);
+    rc = CFGMR3QueryBool(pCfg, "CableConnected", &pState->fCableConnected);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Failed to get the value of 'CableConnected'"));

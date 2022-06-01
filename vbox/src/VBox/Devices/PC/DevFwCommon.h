@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.h 25058 2009-11-27 17:55:17Z vboxsync $ */
+/* $Id: DevFwCommon.h 26173 2010-02-02 21:11:09Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code, header.
  */
@@ -31,7 +31,7 @@
 #define VBOX_MPS_TABLE_BASE          (VBOX_DMI_TABLE_BASE+VBOX_DMI_TABLE_SIZE)
 
 /* Plant DMI table */
-int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, PCRTUUID pUuid, PCFGMNODE pCfgHandle, bool fPutSmbiosHeaders);
+int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, PCRTUUID pUuid, PCFGMNODE pCfg, bool fPutSmbiosHeaders);
 
 /* Plant MPS table */
 void FwCommonPlantMpsTable(PPDMDEVINS pDevIns, uint8_t *pTable, uint16_t cCpus);

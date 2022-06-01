@@ -1,4 +1,4 @@
-/* $Id: VBoxSampleDevice.cpp 26169 2010-02-02 20:19:15Z vboxsync $ */
+/* $Id: VBoxSampleDevice.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
 /** @file
  * VBox Sample Device.
  */
@@ -63,7 +63,7 @@ static DECLCALLBACK(int) devSampleDestruct(PPDMDEVINS pDevIns)
 }
 
 
-static DECLCALLBACK(int) devSampleConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfgHandle)
+static DECLCALLBACK(int) devSampleConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
     /*
      * Check that the device instance and device helper structures are compatible.
@@ -80,7 +80,7 @@ static DECLCALLBACK(int) devSampleConstruct(PPDMDEVINS pDevIns, int iInstance, P
     /*
      * Validate and read the configuration.
      */
-    if (!CFGMR3AreValuesValid(pCfgHandle,
+    if (!CFGMR3AreValuesValid(pCfg,
                               "Whatever1\0"
                               "Whatever2\0"))
         return VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES;

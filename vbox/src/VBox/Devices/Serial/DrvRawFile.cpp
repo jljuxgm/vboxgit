@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
+/* $Id: DrvRawFile.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -162,7 +162,7 @@ static DECLCALLBACK(void) drvRawFileDestruct(PPDMDRVINS pDrvIns)
  *
  * @copydoc FNPDMDRVCONSTRUCT
  */
-static DECLCALLBACK(int) drvRawFileConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, uint32_t fFlags)
+static DECLCALLBACK(int) drvRawFileConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
     PDRVRAWFILE pThis = PDMINS_2_DATA(pDrvIns, PDRVRAWFILE);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
@@ -181,10 +181,10 @@ static DECLCALLBACK(int) drvRawFileConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgH
     /*
      * Read the configuration.
      */
-    if (!CFGMR3AreValuesValid(pCfgHandle, "Location\0"))
+    if (!CFGMR3AreValuesValid(pCfg, "Location\0"))
         AssertFailedReturn(VERR_PDM_DRVINS_UNKNOWN_CFG_VALUES);
 
-    int rc = CFGMR3QueryStringAlloc(pCfgHandle, "Location", &pThis->pszLocation);
+    int rc = CFGMR3QueryStringAlloc(pCfg, "Location", &pThis->pszLocation);
     if (RT_FAILURE(rc))
         AssertMsgFailedReturn(("Configuration error: query \"Location\" resulted in %Rrc.\n", rc), rc);
 

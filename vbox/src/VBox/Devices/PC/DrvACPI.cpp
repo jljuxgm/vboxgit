@@ -1,4 +1,4 @@
-/* $Id: DrvACPI.cpp 26166 2010-02-02 19:54:23Z vboxsync $ */
+/* $Id: DrvACPI.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
@@ -719,7 +719,7 @@ static DECLCALLBACK(void) drvACPIDestruct(PPDMDRVINS pDrvIns)
  *
  * @copydoc FNPDMDRVCONSTRUCT
  */
-static DECLCALLBACK(int) drvACPIConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, uint32_t fFlags)
+static DECLCALLBACK(int) drvACPIConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
     PDRVACPI pThis = PDMINS_2_DATA(pDrvIns, PDRVACPI);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
@@ -737,7 +737,7 @@ static DECLCALLBACK(int) drvACPIConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHand
     /*
      * Validate the config.
      */
-    if (!CFGMR3AreValuesValid(pCfgHandle, "\0"))
+    if (!CFGMR3AreValuesValid(pCfg, "\0"))
         return VERR_PDM_DRVINS_UNKNOWN_CFG_VALUES;
 
     /*

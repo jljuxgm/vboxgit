@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DrvHostBase.h 26173 2010-02-02 21:11:09Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -184,7 +184,7 @@ typedef struct DRVHOSTBASE
 } DRVHOSTBASE;
 
 
-int DRVHostBaseInitData(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, PDMBLOCKTYPE enmType);
+int DRVHostBaseInitData(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, PDMBLOCKTYPE enmType);
 int DRVHostBaseInitFinish(PDRVHOSTBASE pThis);
 int DRVHostBaseMediaPresent(PDRVHOSTBASE pThis);
 void DRVHostBaseMediaNotPresent(PDRVHOSTBASE pThis);

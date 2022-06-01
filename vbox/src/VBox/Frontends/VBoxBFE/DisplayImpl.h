@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DisplayImpl.h 26173 2010-02-02 21:11:09Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Declaration of VMDisplay class
@@ -68,7 +68,7 @@ private:
     void updateDisplayData();
 
     static DECLCALLBACK(void*) drvQueryInterface(PPDMIBASE pInterface, const char *pszIID);
-    static DECLCALLBACK(int)   drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, uint32_t fFlags);
+    static DECLCALLBACK(int)   drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(int)   displayResizeCallback(PPDMIDISPLAYCONNECTOR pInterface, uint32_t bpp, void *pvVRAM, uint32_t cbLine, uint32_t cx, uint32_t cy);
     static DECLCALLBACK(void)  displayUpdateCallback(PPDMIDISPLAYCONNECTOR pInterface,
                                                      uint32_t x, uint32_t y, uint32_t cx, uint32_t cy);
