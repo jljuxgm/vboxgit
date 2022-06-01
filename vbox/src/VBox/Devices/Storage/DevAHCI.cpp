@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 27274 2010-03-11 11:58:05Z vboxsync $ */
+/* $Id: DevAHCI.cpp 27275 2010-03-11 12:08:18Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -4258,7 +4258,7 @@ static int ahciScatterGatherListCreate(PAHCIPort pAhciPort, PAHCIPORTTASKSTATE p
      * Create a safe mapping when doing post processing because the size of the
      * data to transfer and the amount of guest memory reserved can differ
      */
-    if (pAhciPortTaskState->pfnPostProcess || true)
+    if (pAhciPortTaskState->pfnPostProcess)
     {
         ahciLog(("%s: Request with post processing.\n"));
 
