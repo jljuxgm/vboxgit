@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25965 2010-01-22 11:10:45Z vboxsync $
+# $Id: Makefile.kmk 27812 2010-03-30 08:13:29Z vboxsync $
 ## @file
 # Sub-Makefile for the X11 linker stub (import) libraries.
 #
@@ -50,7 +50,8 @@ IMPORT_LIBS += libXfixes
 libXfixes_TEMPLATE   = VBOXR3
 libXfixes_INST       = $(INST_LIB)
 # This may need fixing later.
-libXfixes_SONAME     = libXfixes.so.3
+libXfixes_SONAME.linux      = libXfixes.so.3
+libXfixes_SONAME.solaris    = libXfixes.so.1
 libXfixes_SOURCES    = libXfixes-3.1.0/libXfixes.c
 
 #
@@ -60,7 +61,8 @@ IMPORT_LIBS += libXext
 libXext_TEMPLATE   = VBOXR3
 libXext_INST       = $(INST_LIB)
 # This may need fixing later.
-libXext_SONAME     = libXext.so.6
+libXext_SONAME.linux       = libXext.so.6
+libXext_SONAME.solaris     = libXext.so.0
 libXext_SOURCES    = libXext-6.4.0/libXext.c
 
 include $(KBUILD_PATH)/subfooter.kmk
