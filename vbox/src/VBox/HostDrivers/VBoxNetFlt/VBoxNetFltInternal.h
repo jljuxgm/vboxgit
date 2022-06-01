@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 30117 2010-06-09 12:53:55Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 30119 2010-06-09 13:15:34Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -191,7 +191,7 @@ typedef struct VBOXNETFLTINS
             bool fReportedInfo;
 #  else
             /** Pointer to the bound IPv4 stream. */
-            struct vboxnetflt_stream_t * volatile pvIp4Stream;
+            struct vboxnetflt_stream_t * volatile pIp4Stream;
             /** Pointer to the bound IPv6 stream. */
             struct vboxnetflt_stream_t * volatile pIp6Stream;
             /** Pointer to the bound ARP stream. */
