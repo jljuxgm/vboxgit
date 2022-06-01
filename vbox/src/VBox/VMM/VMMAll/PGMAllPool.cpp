@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 24960 2009-11-25 15:58:56Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 24962 2009-11-25 16:21:46Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1647,7 +1647,7 @@ static void pgmPoolFlushDirtyPage(PVM pVM, PPGMPOOL pPool, unsigned idxSlot, boo
         STAM_COUNTER_INC(&pPool->StatForceFlushReused);
     }
     else
-        Log(("Removed dirty page %RGp cMods=%d\n", pPage->GCPhys, pPage->cModifications));
+        Log(("Removed dirty page %RGp cMods=%d cChanges=%d\n", pPage->GCPhys, pPage->cModifications, cChanges));
 }
 
 # ifndef IN_RING3
