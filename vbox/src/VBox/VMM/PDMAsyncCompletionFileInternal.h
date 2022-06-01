@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 27299 2010-03-11 19:19:59Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 27557 2010-03-20 21:14:43Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -517,8 +517,15 @@ typedef struct PDMASYNCCOMPLETIONENDPOINTFILE
     unsigned                               fFlags;
     /** File handle. */
     RTFILE                                 File;
-    /** Size of the underlying file.
-     * Updated while data is appended. */
+    /** Size of the endpoint.
+     * Updated while data is appended even if it is
+     * only in the cache yet and not written to the file.
+     */
+    volatile uint64_t                      cbEndpoint;
+    /**
+     * Real size of the file. Only updated if
+     * data is appended.
+     */
     volatile uint64_t                      cbFile;
     /** Flag whether caching is enabled for this file. */
     bool                                   fCaching;

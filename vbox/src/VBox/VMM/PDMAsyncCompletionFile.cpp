@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 27495 2010-03-18 18:55:59Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 27557 2010-03-20 21:14:43Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -867,6 +867,7 @@ static int pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
             {
                 PPDMACEPFILEMGR pAioMgr = NULL;
 
+                pEpFile->cbEndpoint     = pEpFile->cbFile;
                 pEpFile->pTasksFreeTail = pEpFile->pTasksFreeHead;
                 pEpFile->cTasksCached   = 0;
                 pEpFile->pBwMgr         = pEpClassFile->pBwMgr;
@@ -969,6 +970,10 @@ static int pdmacFileEpClose(PPDMASYNCCOMPLETIONENDPOINT pEndpoint)
     int rc = pdmacFileAioMgrCloseEndpoint(pEpFile->pAioMgr, pEpFile);
     AssertRC(rc);
 
+    /* endpoint and real file size should better be equal now. */
+    AssertMsg(pEpFile->cbFile == pEpFile->cbEndpoint,
+              ("Endpoint and real file size should match now!\n"));
+
     /*
      * If the async I/O manager is in failsafe mode this is the only endpoint
      * he processes and thus can be destroyed now.
@@ -1050,6 +1055,11 @@ static int pdmacFileEpWrite(PPDMASYNCCOMPLETIONTASK pTask,
 
     STAM_PROFILE_ADV_STOP(&pEpFile->StatWrite, Write);
 
+    /* Increase endpoint size. */
+    if (   RT_SUCCESS(rc)
+        && ((uint64_t)off + cbWrite) > pEpFile->cbEndpoint)
+        ASMAtomicWriteU64(&pEpFile->cbEndpoint, (uint64_t)off + cbWrite);
+
     return rc;
 }
 
@@ -1087,7 +1097,7 @@ static int pdmacFileEpGetSize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint, uint64_t *p
 {
     PPDMASYNCCOMPLETIONENDPOINTFILE pEpFile = (PPDMASYNCCOMPLETIONENDPOINTFILE)pEndpoint;
 
-    *pcbSize = ASMAtomicReadU64(&pEpFile->cbFile);
+    *pcbSize = ASMAtomicReadU64(&pEpFile->cbEndpoint);
 
     return VINF_SUCCESS;
 }
