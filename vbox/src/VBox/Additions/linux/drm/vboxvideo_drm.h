@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drm.h 28278 2010-04-13 21:00:38Z vboxsync $
+/** @file $Id: vboxvideo_drm.h 28283 2010-04-14 09:29:53Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -56,11 +56,13 @@
 /* General customization:
  */
 
-#define DRIVER_AUTHOR       "Oracle Corporation"
+#include "product-generated.h"
 
-#define DRIVER_NAME     "vboxvideo"
-#define DRIVER_DESC     "VirtualBox Graphics Card"
-#define DRIVER_DATE     "20090303"
+#define DRIVER_AUTHOR       VBOX_VENDOR
+
+#define DRIVER_NAME         "vboxvideo"
+#define DRIVER_DESC         VBOX_PRODUCT " Graphics Card"
+#define DRIVER_DATE         "20090303"
 
 #define DRIVER_MAJOR        1
 #define DRIVER_MINOR        0
@@ -71,4 +73,3 @@
     {0, 0, 0}
 
 #endif
-

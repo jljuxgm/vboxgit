@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drm.c 27248 2010-03-10 12:59:29Z vboxsync $
+/** @file $Id: vboxvideo_drm.c 28283 2010-04-14 09:29:53Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -58,6 +58,7 @@
 #endif
 #include <linux/version.h>
 #include <linux/module.h>
+#include "version-generated.h"
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27)
 
@@ -129,4 +130,7 @@ MODULE_DESCRIPTION(DRIVER_DESC);
 
 #endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27) */
 
+#ifdef MODULE_VERSION
+MODULE_VERSION(VBOX_VERSION_STRING);
+#endif
 MODULE_LICENSE("GPL and additional rights");
