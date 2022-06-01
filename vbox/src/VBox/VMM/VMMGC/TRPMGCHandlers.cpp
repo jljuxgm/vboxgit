@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 22493 2009-08-26 22:22:16Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 25252 2009-12-08 18:19:39Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -910,7 +910,7 @@ static int trpmGCTrap0dHandler(PVM pVM, PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFram
     {
         Assert(eflags.Bits.u2IOPL == 0);
 
-        int rc = TRPMForwardTrap(pVCpu, pRegFrame, 0xD, 0, TRPM_TRAP_HAS_ERRORCODE, TRPM_TRAP, 0xd);
+        rc = TRPMForwardTrap(pVCpu, pRegFrame, 0xD, 0, TRPM_TRAP_HAS_ERRORCODE, TRPM_TRAP, 0xd);
         Assert(rc == VINF_EM_RAW_GUEST_TRAP);
         return trpmGCExitTrap(pVM, pVCpu, rc, pRegFrame);
     }
