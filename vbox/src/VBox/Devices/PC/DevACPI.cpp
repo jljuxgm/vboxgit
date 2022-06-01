@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 27666 2010-03-24 13:15:14Z vboxsync $ */
+/* $Id: DevACPI.cpp 27795 2010-03-29 16:02:41Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -795,7 +795,8 @@ static void acpiSetupFADT(ACPIState *s, RTGCPHYS32 GCPhysAcpi1, RTGCPHYS32 GCPhy
     /** @note WBINVD is required for ACPI versions newer than 1.0 */
     fadt.u32Flags             = RT_H2LE_U32(  FADT_FL_WBINVD
                                             | FADT_FL_FIX_RTC
-                                            | FADT_FL_TMR_VAL_EXT);
+                                            | FADT_FL_TMR_VAL_EXT
+                                            | FADT_FL_RESET_REG_SUP);
 
     /* We have to force physical APIC mode or Linux can't use more than 8 CPUs */
     if (s->fCpuHotPlug)
