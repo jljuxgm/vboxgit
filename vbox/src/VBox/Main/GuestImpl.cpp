@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28772 2010-04-26 17:13:39Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28780 2010-04-26 20:26:03Z vboxsync $ */
 
 /** @file
  *
@@ -528,18 +528,18 @@ int Guest::notifyCtrlExec(uint32_t              u32Function,
         {
             /* Not found, add to list. */
             GuestProcess p;
-            p.mPID = pCBData->u32PID;
+            p.mPID = pCBData->u32PID;            
             p.mStatus = pCBData->u32Status;
-            //p.mReason = pCBData->u32Reason;
             p.mExitCode = pCBData->u32Flags; /* Contains exit code. */
+            p.mFlags = 0;
             
             mGuestProcessList.push_back(p);
         }
         else /* Update list. */
         {
             it_proc->mStatus = pCBData->u32Status;
-            //it_proc->mReason = pCBData->u32Reason;
             it_proc->mExitCode = pCBData->u32Flags; /* Contains exit code. */
+            it_proc->mFlags = 0;
         }
 
         if (   !it->pProgress.isNull()
@@ -1067,7 +1067,7 @@ STDMETHODIMP Guest::GetProcessOutput(ULONG aPID, ULONG aFlags, ULONG aTimeoutMS,
 #endif
 }
 
-STDMETHODIMP Guest::GetProcessStatus(ULONG aPID, ULONG *aReason, ULONG *aExitCode, ULONG *aStatus)
+STDMETHODIMP Guest::GetProcessStatus(ULONG aPID, ULONG *aExitCode, ULONG *aFlags, ULONG *aStatus)
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();
@@ -1087,8 +1087,8 @@ STDMETHODIMP Guest::GetProcessStatus(ULONG aPID, ULONG *aReason, ULONG *aExitCod
 
     if (it != mGuestProcessList.end())
     {
-        *aReason = it->mReason;
         *aExitCode = it->mExitCode;
+        *aFlags = it->mFlags;
         *aStatus = it->mStatus;
     }
     else
