@@ -1,10 +1,10 @@
-/* $Id: tstPath.cpp 25000 2009-11-26 14:22:44Z vboxsync $ */
+/* $Id: tstPath.cpp 25923 2010-01-20 11:06:27Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -329,7 +329,48 @@ int main()
         }
     }
 
+    /*
+     * RTPathStripTrailingSlash
+     */
+    static const char *s_apszStripTrailingSlash[] =
+    {
+     /* input                   result */
+        "/",                    "/",
+        "//",                   "/",
+        "////////////////////", "/",
+        "/tmp",                 "/tmp",
+        "/tmp////////////////", "/tmp",
+        "tmp",                  "tmp",
+        "tmp////////////////",  "tmp",
+        "./",                   ".",
+#if defined (RT_OS_OS2) || defined (RT_OS_WINDOWS)
+        "////////////////////", "/",
+        "D:",                   "D:",
+        "D:/",                  "D:/",
+        "D:\\",                 "D:\\",
+        "D:\\/\\",              "D:\\",
+        "D:/\\/\\",             "D:/",
+        "C:/Temp",              "D:/Temp",
+        "C:/Temp/",             "D:/Temp/",
+        "C:/Temp\\/",           "D:/Temp",
+#endif
+    };
+    for (unsigned i = 0; i < RT_ELEMENTS(s_apszStripTrailingSlash); i += 2)
+    {
+        const char *pszInput  = s_apszStripTrailingSlash[i];
+        const char *pszExpect = s_apszStripTrailingSlash[i + 1];
 
+        strcpy(szPath, pszInput);
+        cch = RTPathStripTrailingSlash(szPath);
+        if (strcmp(szPath, pszExpect))
+            RTTestIFailed("Unexpected result\n"
+                          "   input: '%s'\n"
+                          "  output: '%s'\n"
+                          "expected: '%s'",
+                          pszInput, szPath, pszExpect);
+        else
+            RTTESTI_CHECK(cch == strlen(szPath));
+    }
 
     /*
      * Summary.
