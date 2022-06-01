@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 26969 2010-03-02 20:28:01Z vboxsync $ */
+/* $Id: DevVGA.h 27339 2010-03-12 17:44:11Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -491,10 +491,11 @@ int vboxVBVALoadStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t u32Vers
 int vboxVBVALoadStateDone (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 
 # ifdef VBOXVDMA
-int vboxVDMAConstruct(PVGASTATE pVGAState, struct VBOXVDMAHOST *pVdma);
-int vboxVDMADestruct(PVGASTATE pVGAState, struct VBOXVDMAHOST *pVdma);
-void vboxVDMAControl(PVGASTATE pVGAState, struct VBOXVDMAHOST *pVdma, PVBOXVDMA_CTL pCmd);
-void vboxVDMACommand(PVGASTATE pVGAState, struct VBOXVDMAHOST *pVdma, PVBOXVDMACBUF_DR pCmd);
+typedef struct VBOXVDMAHOST *PVBOXVDMAHOST;
+int vboxVDMAConstruct(PVGASTATE pVGAState, struct VBOXVDMAHOST **ppVdma, uint32_t cPipeElements);
+int vboxVDMADestruct(PVBOXVDMAHOST pVdma);
+void vboxVDMAControl(PVBOXVDMAHOST pVdma, PVBOXVDMA_CTL pCmd);
+void vboxVDMACommand(PVBOXVDMAHOST pVdma, PVBOXVDMACBUF_DR pCmd);
 # endif /* VBOXVDMA */
 
 #endif /* VBOX_WITH_HGSMI */

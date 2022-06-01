@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 26969 2010-03-02 20:28:01Z vboxsync $ */
+/* $Id: DevVGA.cpp 27339 2010-03-12 17:44:11Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6575,6 +6575,15 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     VBVAInit (pThis);
 #endif /* VBOX_WITH_HGSMI */
 
+#ifdef VBOXVDMA
+    if(rc == VINF_SUCCESS)
+    {
+        /* @todo: perhaps this should be done from some guest->host callback,
+        * that would as well specify the cmd pool size */
+        rc = vboxVDMAConstruct(pThis, &pThis->pVdma, 1024);
+        AssertRC(rc);
+    }
+#endif
     /*
      * Statistics.
      */
