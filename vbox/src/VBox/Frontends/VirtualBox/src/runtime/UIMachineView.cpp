@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 27697 2010-03-25 11:57:38Z vboxsync $ */
+/* $Id: UIMachineView.cpp 27725 2010-03-26 10:42:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -489,6 +489,7 @@ void UIMachineView::prepareFrameBuffer()
 # ifdef VBOX_WITH_VIDEOHWACCEL
             if (m_fAccelerate2DVideo)
             {
+                Assert(0);
                 class VBoxQGLOverlay* pOverlay = uisession()->overlayForScreen(screenId());
                 pOverlay->updateAttachment(viewport(), this);
                 /* these two additional template args is a workaround to this [VBox|UI] duplication
