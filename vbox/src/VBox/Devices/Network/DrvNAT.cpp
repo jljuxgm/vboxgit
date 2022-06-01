@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 24058 2009-10-25 05:36:56Z vboxsync $ */
+/* $Id: DrvNAT.cpp 24635 2009-11-13 12:55:35Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -739,7 +739,6 @@ void slirp_urg_output(void *pvUser, void *pvArg, const uint8_t *pu8Buf, int cb)
 {
     PDRVNAT pThis = (PDRVNAT)pvUser;
     Assert(pThis);
-    ASMAtomicIncU32(&pThis->cUrgPkt);
 
     PRTREQ pReq = NULL;
 
@@ -749,6 +748,7 @@ void slirp_urg_output(void *pvUser, void *pvArg, const uint8_t *pu8Buf, int cb)
 
     int rc = RTReqAlloc(pThis->pUrgRecvReqQueue, &pReq, RTREQTYPE_INTERNAL);
     AssertReleaseRC(rc);
+    ASMAtomicIncU32(&pThis->cUrgPkt);
     pReq->u.Internal.pfn      = (PFNRT)drvNATUrgRecvWorker;
     pReq->u.Internal.cArgs    = 4;
     pReq->u.Internal.aArgs[0] = (uintptr_t)pThis;
