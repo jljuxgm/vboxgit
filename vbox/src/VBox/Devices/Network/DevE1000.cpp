@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 26305 2010-02-05 19:00:45Z vboxsync $ */
+/* $Id: DevE1000.cpp 26307 2010-02-05 19:14:22Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -848,6 +848,9 @@ struct E1kState_st
     R3PTRTYPE(PPDMIBASE)    pDrvBase;                 /**< Attached network driver. */
     R3PTRTYPE(PPDMINETWORKUP) pDrv;    /**< Connector of attached network driver. */
     R3PTRTYPE(PPDMILEDCONNECTORS)    pLedsConnector;
+#if HC_ARCH_BITS == 32
+    uint32_t                u32Padding;
+#endif
 
     PPDMDEVINSR3            pDevInsR3;                   /**< Device instance - R3. */
     R3PTRTYPE(PPDMQUEUE)    pTxQueueR3;                   /**< Transmit queue - R3. */
