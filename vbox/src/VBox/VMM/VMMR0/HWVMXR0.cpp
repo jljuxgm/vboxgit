@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 30089 2010-06-08 13:40:27Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 30091 2010-06-08 13:49:56Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -146,6 +146,10 @@ VMMR0DECL(int) VMXR0DisableCpu(PHWACCM_CPUINFO pCpu, void *pvPageCpu, RTHCPHYS p
 {
     AssertReturn(pPageCpuPhys, VERR_INVALID_PARAMETER);
     AssertReturn(pvPageCpu, VERR_INVALID_PARAMETER);
+
+    /* If we're somehow not in VMX root mode, then we shouldn't dare leaving it. */
+    if (!(ASMGetCR4() & X86_CR4_VMXE))
+        return VERR_VMX_NOT_IN_VMX_ROOT_MODE;
 
     /* Leave VMX Root Mode. */
     VMXDisable();
