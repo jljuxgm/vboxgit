@@ -1,4 +1,4 @@
-/* $Id: pathhost-posix.cpp 28916 2010-04-29 18:13:54Z vboxsync $ */
+/* $Id: pathhost-posix.cpp 30303 2010-06-18 10:02:50Z vboxsync $ */
 /** @file
  * IPRT - Path Convertions, POSIX.
  */
@@ -238,7 +238,7 @@ int rtPathFromNative(const char **ppszPath, const char *pszNativePath, const cha
 void rtPathFreeIprt(const char *pszPath, const char *pszNativePath)
 {
     if (   pszPath != pszNativePath
-        && !pszPath)
+        && pszPath)
         RTStrFree((char *)pszPath);
 }
 
