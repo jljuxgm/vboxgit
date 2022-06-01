@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 29550 2010-05-17 14:13:14Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 29580 2010-05-17 18:23:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -440,7 +440,7 @@ HRESULT Console::init(IMachine *aMachine, IInternalMachineControl *aControl)
     unconst(mMachine) = aMachine;
     unconst(mControl) = aControl;
 
-    memset(&mCallbackData, 0, sizeof(mCallbackData));
+    mCallbackData.clear();
 
     /* Cache essential properties and objects */
 
@@ -5641,12 +5641,7 @@ HRESULT Console::powerDown(Progress *aProgress /*= NULL*/)
         mVMDestroying = false;
 
     if (SUCCEEDED(rc))
-    {
-        /* uninit dynamically allocated members of mCallbackData */
-        if (mCallbackData.mpsc.valid)
-            mCallbackData.mpsc.shape.setNull();
-        memset(&mCallbackData, 0, sizeof(mCallbackData));
-    }
+        mCallbackData.clear();
 
     /* complete the progress */
     if (aProgress)
