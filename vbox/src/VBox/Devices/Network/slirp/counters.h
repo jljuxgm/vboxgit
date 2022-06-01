@@ -1,4 +1,4 @@
-/** $Id: counters.h 23462 2009-10-01 05:42:19Z vboxsync $ */
+/** $Id: counters.h 28449 2010-04-19 09:52:59Z vboxsync $ */
 /** @file
  * Counters macro invocation template.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2007-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2007-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
