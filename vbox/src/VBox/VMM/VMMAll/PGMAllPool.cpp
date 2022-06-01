@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 25539 2009-12-21 13:36:47Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 25540 2009-12-21 14:02:28Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1125,6 +1125,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
     if (pPage->fDirty)
     {
         Assert(VMCPU_FF_ISSET(pVCpu, VMCPU_FF_TLB_FLUSH));
+        pgmUnlock(pVM);
         return VINF_SUCCESS;    /* SMP guest case where we were blocking on the pgm lock while the same page was being marked dirty. */
     }
 #endif
