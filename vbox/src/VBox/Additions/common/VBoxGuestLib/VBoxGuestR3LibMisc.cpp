@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 24384 2009-11-05 14:06:22Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 24390 2009-11-05 14:44:51Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -237,7 +237,7 @@ static int vbglR3GetAdditionsCompileTimeVersion(char **ppszVer, char **ppszRev)
  */
 VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
 {
-# ifdef RT_OS_WINDOWS
+#ifdef RT_OS_WINDOWS
     /*
      * Try get the *installed* version first.
      */
@@ -268,7 +268,7 @@ VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
     }
 
     /* Did we get something worth looking at? */
-    int rc;
+    int rc = VINF_SUCCESS;
     if (r == ERROR_SUCCESS)
     {
         /* Version. */
@@ -320,6 +320,12 @@ VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
             }
             else
                 rc = VERR_NO_MEMORY;
+
+            if (RT_FAILURE(rc) && ppszVer)
+            {
+                RTStrFree(*ppszVer);
+                *ppszVer = NULL;
+            }
         }
         if (hKey != NULL)
             RegCloseKey(hKey);
@@ -334,10 +340,11 @@ VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
     }
     return rc;
 
-# else /* !RT_OS_WINDOWS */
+#else  /* !RT_OS_WINDOWS */
     /*
      * On non-Windows platforms just return the compile-time version string.
      */
     return vbglR3GetAdditionsCompileTimeVersion(ppszVer, ppszRev);
-# endif /* !RT_OS_WINDOWS */
+#endif /* !RT_OS_WINDOWS */
 }
+
