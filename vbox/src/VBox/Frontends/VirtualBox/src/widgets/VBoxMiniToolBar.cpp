@@ -1,4 +1,4 @@
-/* $Id: VBoxMiniToolBar.cpp 27427 2010-03-16 21:28:13Z vboxsync $ */
+/* $Id: VBoxMiniToolBar.cpp 27435 2010-03-17 11:26:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -106,6 +106,8 @@ VBoxMiniToolBar::VBoxMiniToolBar (QWidget *aParent, Alignment aAlignment, bool a
 
     /* Right margin of tool-bar */
     mMargins << widgetForAction (addWidget (new QWidget (this)));
+
+    aParent->installEventFilter(this);
 }
 
 VBoxMiniToolBar& VBoxMiniToolBar::operator<< (QList <QMenu*> aMenus)
@@ -414,5 +416,15 @@ QPoint VBoxMiniToolBar::mapFromScreen (const QPoint &aPoint)
                                  QApplication::desktop()->screenGeometry (window());
     QPoint shiftToReal (realArea.topLeft() - fullArea.topLeft());
     return globalPosition + shiftToReal;
+}
+
+bool VBoxMiniToolBar::eventFilter(QObject *pObj, QEvent *pEvent)
+{
+    if (pEvent->type() == QEvent::Resize)
+    {
+        moveToBase();
+        return true;
+    }
+    return VBoxToolBar::eventFilter(pObj, pEvent);
 }
 
