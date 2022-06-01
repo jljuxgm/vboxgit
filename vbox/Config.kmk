@@ -1,4 +1,4 @@
-# $Id: Config.kmk 29151 2010-05-06 13:20:49Z vboxsync $
+# $Id: Config.kmk 29170 2010-05-06 16:38:20Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -463,7 +463,9 @@ VBOX_WITH_PYTHON ?= 1
 if1of ($(KBUILD_TARGET), darwin)
  # Enable Java<->XPCOM bridge
  VBOX_WITH_JXPCOM ?= 1
-endif 
+ # Use XPIDL instead of genjifaces.
+ VBOX_WITH_JAVA_SUPPORT_IN_XPIDL ?= 1
+endif
 # Build against multiple Python versions present in the system
 VBOX_WITH_MULTIVERSION_PYTHON ?= 1
 # Enable the kchmviewer.
@@ -4098,7 +4100,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29151 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29170 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
