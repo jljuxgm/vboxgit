@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 27611 2010-03-22 19:43:22Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 27624 2010-03-23 12:09:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -308,7 +308,6 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                             /* Discard the current state if requested: */
                             if (dlg.mCbDiscardCurState->isChecked() && dlg.mCbDiscardCurState->isVisibleTo(&dlg))
                             {
-                                success = false;
                                 CSnapshot snapshot = machine.GetCurrentSnapshot();
                                 CProgress progress = console.RestoreSnapshot(snapshot);
                                 if (!console.isOk())
@@ -319,8 +318,6 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                                     vboxProblem().showModalProgressDialog(progress, machine.GetName(), 0);
                                     if (progress.GetResultCode() != 0)
                                         vboxProblem().cannotRestoreSnapshot(progress, snapshot.GetName());
-                                    else
-                                        success = true;
                                 }
                             }
                         }
@@ -347,7 +344,6 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                         if (dlg.mCbDiscardCurState->isChecked())
                             (lastAction += ",") += strDiscardCurState;
                         machine.SetExtraData(VBoxDefs::GUI_LastCloseAction, lastAction);
-                        AssertWrapperOk(machine);
                     }
                 }
 
