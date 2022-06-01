@@ -1,4 +1,4 @@
-/* $Id: alloc-darwin.cpp 21292 2009-07-07 08:00:14Z vboxsync $ */
+/* $Id: alloc-darwin.cpp 27492 2010-03-18 16:56:32Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, POSIX.
  */
@@ -42,8 +42,6 @@
 #include <errno.h>
 #include <sys/mman.h>
 
-
-#ifdef IN_RING3
 
 /**
  * Allocates memory which may contain code.
@@ -197,5 +195,3 @@ RTDECL(int) RTMemProtect(void *pv, size_t cb, unsigned fProtect) RT_NO_THROW
         return rc;
     return RTErrConvertFromErrno(errno);
 }
-
-#endif
