@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 28233 2010-04-13 08:23:52Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 28236 2010-04-13 09:03:43Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -451,6 +451,8 @@ static int VBoxServiceControlExecProcLoop(uint32_t uClientID, RTPROCESS hProcess
                                              NULL /* pvData */, 0 /* cbData */);
     }
     RTMemFree(StdInBuf.pch);
+
+    VBoxServiceVerbose(3, "Control: Process loop ended with rc=%Rrc\n", rc);
     return rc;
 }
 
@@ -687,7 +689,6 @@ DECLCALLBACK(int) VBoxServiceControlExecProcessWorker(PVBOXSERVICECTRLTHREADDATA
                                     rc = VBoxServiceControlExecProcLoop(u32ClientID,
                                                                         hProcess, pData->uTimeLimitMS, hPollSet,
                                                                         hStdInW, hStdOutR, hStdErrR);
-                                    VBoxServiceVerbose(3, "Control: Process loop ended with rc=%Rrc\n", rc);
 
                                     /*
                                      * The handles that are no longer in the set have
