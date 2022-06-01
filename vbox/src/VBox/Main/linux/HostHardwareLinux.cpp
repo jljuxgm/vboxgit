@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 28576 2010-04-21 21:12:39Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 28616 2010-04-22 21:15:03Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1356,7 +1356,9 @@ static int sysfsGetStatusForFAMCode(FAMCodes enmCode)
 int hotplugSysfsFAMImpl::drainWakeupPipe(void)
 {
     char szBuf[sizeof(SYSFS_WAKEUP_STRING)];
-    int rc = RTPipeRead(mhWakeupPipeR, szBuf, sizeof(szBuf), NULL);
+    size_t cbDummy;
+
+    int rc = RTPipeRead(mhWakeupPipeR, szBuf, sizeof(szBuf), &cbDummy);
     AssertRC(rc);
     return VINF_SUCCESS;
 }
