@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 24193 2009-10-30 14:27:04Z vboxsync $ */
+/* $Id: DevPcBios.cpp 24194 2009-10-30 14:28:35Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1316,7 +1316,7 @@ static void pcbiosPlantMpsTable(PPDMDEVINS pDevIns, uint8_t *pTable, uint16_t nu
     floatPtr.u8SpecRev             = 4; /* MPS revision 1.4 */
     floatPtr.u8Checksum            = 0;
     floatPtr.au8Feature[0]         = 0;
-    floatPtr.au8Feature[1]         = 0x80;
+    floatPtr.au8Feature[1]         = 0;
     floatPtr.au8Feature[2]         = 0;
     floatPtr.au8Feature[3]         = 0;
     floatPtr.au8Feature[4]         = 0;
