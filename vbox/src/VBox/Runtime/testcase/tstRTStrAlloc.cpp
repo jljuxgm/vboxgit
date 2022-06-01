@@ -1,4 +1,4 @@
-/* $Id: tstRTStrAlloc.cpp 26481 2010-02-14 01:00:49Z vboxsync $ */
+/* $Id: tstRTStrAlloc.cpp 26482 2010-02-14 01:38:44Z vboxsync $ */
 /** @file
  * IPRT Testcase - String allocation APIs and related manimuplators.
  */
@@ -202,6 +202,34 @@ static void tst1(void)
     RTTESTI_CHECK_RC(RTStrAAppendExN(&psz, 1, "-", 1), VINF_SUCCESS);
     RTTESTI_CHECK(!RTStrCmp(psz, "abcdefghijklmnopqrstuvwxyz-"));
     RTStrFree(psz);
+
+    /* RTStrATruncate */
+    psz = NULL;
+    RTTESTI_CHECK_RC(RTStrATruncate(&psz, 0), VINF_SUCCESS);
+    RTTESTI_CHECK(!psz);
+
+    RTTESTI_CHECK(psz = RTStrDup(""));
+    RTTESTI_CHECK_RC(RTStrATruncate(&psz, 0), VINF_SUCCESS);
+    RTStrFree(psz);
+
+    RTTESTI_CHECK(psz = RTStrDup("1234567890"));
+    RTTESTI_CHECK_RC(RTStrATruncate(&psz, 5), VINF_SUCCESS);
+    RTTESTI_CHECK(!RTStrCmp(psz, "12345"));
+    RTStrFree(psz);
+
+    psz = NULL;
+    for (uint32_t i = 0; i < 128; i++)
+        RTTESTI_CHECK_RC_RETV(RTStrAAppend(&psz, "abcdefghijklmnopqrstuvwxyz"), VINF_SUCCESS);
+    RTTESTI_CHECK_RC(RTStrATruncate(&psz, sizeof("abcdefghijklmnopqrstuvwxyz") - 1), VINF_SUCCESS);
+    RTTESTI_CHECK(!RTStrCmp(psz, "abcdefghijklmnopqrstuvwxyz"));
+    RTTESTI_CHECK_RC(RTStrATruncate(&psz, 6), VINF_SUCCESS);
+    RTTESTI_CHECK(!RTStrCmp(psz, "abcdef"));
+    RTTESTI_CHECK_RC(RTStrATruncate(&psz, 1), VINF_SUCCESS);
+    RTTESTI_CHECK(!RTStrCmp(psz, "a"));
+    RTTESTI_CHECK_RC(RTStrATruncate(&psz, 0), VINF_SUCCESS);
+    RTTESTI_CHECK(!RTStrCmp(psz, ""));
+    RTStrFree(psz);
+
 }
 
 
