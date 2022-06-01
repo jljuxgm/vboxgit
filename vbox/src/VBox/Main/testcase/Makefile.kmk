@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30266 2010-06-17 06:28:23Z vboxsync $
+# $Id: Makefile.kmk 30267 2010-06-17 06:47:39Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -82,7 +82,7 @@ ifdef VBOX_WITH_RESOURCE_USAGE_API
 tstOVF_DEFS += VBOX_WITH_RESOURCE_USAGE_API
 endif
 
-INSTALLS += ovfdummy ovfjoomla09
+INSTALLS += $(if $(VBOX_OSE),,ovfdummy ovfjoomla09)
 
 ovfdummy_MODE = a+r,u+w
 ovfdummy_INST = bin/ovf-testcases
