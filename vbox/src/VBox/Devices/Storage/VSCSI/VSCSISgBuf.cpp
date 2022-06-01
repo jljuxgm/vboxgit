@@ -1,4 +1,4 @@
-/* $Id: VSCSISgBuf.cpp 27653 2010-03-23 23:28:26Z vboxsync $ */
+/* $Id: VSCSISgBuf.cpp 27657 2010-03-24 06:59:39Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: S/G list handling
  */
@@ -34,7 +34,7 @@ void vscsiIoMemCtxInit(PVSCSIIOMEMCTX pIoMemCtx, PCPDMDATASEG paDataSeg, size_t 
         pIoMemCtx->cSegments = 0;
         pIoMemCtx->iSegIdx   = 0;
         pIoMemCtx->pbBuf     = NULL;
-        pIoMemCtx->cbBufLeft = NULL;
+        pIoMemCtx->cbBufLeft = 0;
     }
     else
     {
