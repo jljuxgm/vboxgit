@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 24265 2009-11-02 15:21:30Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 24290 2009-11-03 14:37:59Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -2714,7 +2714,7 @@ static int pgmR3LoadFinalLocked(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion)
                 &&  !strcmp(pMapping->pszDesc, szDesc))
                 break;
         if (!pMapping)
-            return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Couldn't find mapping: cPTs=%#x szDesc=%s (GCPtr=%RGv)"),
+            return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Couldn't find mapping: cPTs=%x szDesc=%s (GCPtr=%RGv)"),
                                     cPTs, szDesc, GCPtr);
 
         /* relocate it. */
