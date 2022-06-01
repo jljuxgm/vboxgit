@@ -1,4 +1,4 @@
-/* $Id: tstRTSemRW.cpp 25521 2009-12-20 16:41:50Z vboxsync $ */
+/* $Id: tstRTSemRW.cpp 25523 2009-12-20 16:45:30Z vboxsync $ */
 /** @file
  * IPRT Testcase - Reader/Writer Semaphore.
  */
@@ -61,7 +61,10 @@ static uint32_t volatile    g_cConcurrentReaders;
 
 static DECLCALLBACK(int) Test4Thread(RTTHREAD ThreadSelf, void *pvUser)
 {
-    // Use randomization to get a little more variation of the sync pattern
+    /* Use randomization to get a little more variation of the sync pattern.
+       We use a pseudo random generator here so that we don't end up testing
+       the speed of the /dev/urandom implementation, but rather the read-write
+       semaphores. */
     int rc;
     RTRAND hRand;
     RTTEST_CHECK_RC_OK_RET(g_hTest, rc = RTRandAdvCreateParkMiller(&hRand), rc);
