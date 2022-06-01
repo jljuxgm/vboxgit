@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 28585 2010-04-22 10:16:57Z vboxsync $ */
+/* $Id: MediumImpl.cpp 28587 2010-04-22 11:38:59Z vboxsync $ */
 
 /** @file
  *
@@ -4488,8 +4488,8 @@ HRESULT Medium::prepareMergeTo(const ComObjPtr<Medium> &pTarget,
  *       for writing.
  */
 HRESULT Medium::mergeTo(const ComObjPtr<Medium> &pTarget,
-                        bool &fMergeForward,
-                        ComObjPtr<Medium> pParentForTarget,
+                        bool fMergeForward,
+                        const ComObjPtr<Medium> &pParentForTarget,
                         const MediaList &aChildrenToReparent,
                         MediumLockList *aMediumLockList,
                         ComObjPtr <Progress> *aProgress,

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 28585 2010-04-22 10:16:57Z vboxsync $ */
+/* $Id: MediumImpl.h 28587 2010-04-22 11:38:59Z vboxsync $ */
 
 /** @file
  *
@@ -210,8 +210,8 @@ public:
                            MediaList &aChildrenToReparent,
                            MediumLockList * &aMediumLockList);
     HRESULT mergeTo(const ComObjPtr<Medium> &pTarget,
-                    bool &fMergeForward,
-                    ComObjPtr<Medium> pParentForTarget,
+                    bool fMergeForward,
+                    const ComObjPtr<Medium> &pParentForTarget,
                     const MediaList &aChildrenToReparent,
                     MediumLockList *aMediumLockList,
                     ComObjPtr<Progress> *aProgress,
