@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 26594 2010-02-17 01:48:11Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 27002 2010-03-03 18:34:42Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -1296,7 +1296,9 @@ int main()
     GEN_CHECK_OFF(E1KSTATE, pIntTimerR3);
     GEN_CHECK_OFF(E1KSTATE, pIntTimerR0);
     GEN_CHECK_OFF(E1KSTATE, pIntTimerRC);
-    GEN_CHECK_OFF(E1KSTATE, pLUTimer);
+    GEN_CHECK_OFF(E1KSTATE, pLUTimerR3);
+    GEN_CHECK_OFF(E1KSTATE, pLUTimerR0);
+    GEN_CHECK_OFF(E1KSTATE, pLUTimerRC);
     GEN_CHECK_OFF(E1KSTATE, pTxThread);
     GEN_CHECK_OFF(E1KSTATE, cs);
 #ifndef E1K_GLOBAL_MUTEX
