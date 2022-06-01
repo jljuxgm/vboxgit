@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 27614 2010-03-23 01:29:07Z vboxsync $ */
+/* $Id: pipe-win.cpp 27637 2010-03-23 15:14:08Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
@@ -1223,13 +1223,13 @@ static uint32_t rtPipePollCheck(RTPIPEINTERNAL *pThis, uint32_t fEvents)
 
                 /* Check if there is available buffer space. */
                 if (   !fRetEvents
+                    && (fEvents & RTPOLL_EVT_WRITE)
                     && (   Info.WriteQuotaAvailable > 0
                         || Info.OutboundQuota == 0)
                     )
                     fRetEvents |= RTPOLL_EVT_WRITE;
             }
-            else if (   !fRetEvents
-                && (fEvents & RTPOLL_EVT_WRITE))
+            else if (fEvents & RTPOLL_EVT_WRITE)
                 fRetEvents |= RTPOLL_EVT_WRITE;
         }
     }
