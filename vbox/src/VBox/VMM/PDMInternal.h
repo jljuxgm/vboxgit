@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 26112 2010-02-01 01:44:02Z vboxsync $ */
+/* $Id: PDMInternal.h 26160 2010-02-02 18:23:29Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -374,7 +374,7 @@ typedef struct PDMDEV
     /** Device name length. (search optimization) */
     RTUINT                          cchName;
     /** Registration structure. */
-    R3PTRTYPE(const struct PDMDEVREG *) pDevReg;
+    R3PTRTYPE(const struct PDMDEVREG *) pReg;
     /** Number of instances. */
     uint32_t                        cInstances;
     /** Pointer to chain of instances (R3 Ptr). */
