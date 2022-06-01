@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 29401 2010-05-12 10:03:13Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 29411 2010-05-12 12:18:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -84,7 +84,7 @@ static DECLCALLBACK(void) pgmR3SharedModuleRegisterHelper(PVM pVM, PGMMREGISTERS
                 RTGCPHYS GCPhys;
                 uint64_t fFlags;
 
-                rc = PGMGstGetPage(pVCpu, GCRegion, &GCPhys, &fFlags);
+                rc = PGMGstGetPage(pVCpu, GCRegion, &fFlags, &GCPhys);
                 if (    rc == VINF_SUCCESS
                     &&  !(fFlags & X86_PTE_RW))
                 {

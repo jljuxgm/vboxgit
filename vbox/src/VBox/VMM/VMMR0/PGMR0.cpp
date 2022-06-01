@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 29408 2010-05-12 11:10:07Z vboxsync $ */
+/* $Id: PGMR0.cpp 29411 2010-05-12 12:18:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -358,7 +358,7 @@ VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PVMCPU pVCpu, PGMMREGISTERSHAREDM
             RTGCPHYS GCPhys;
             uint64_t fFlags;
 
-            rc = PGMGstGetPage(pVCpu, GCRegion, &GCPhys, &fFlags);
+            rc = PGMGstGetPage(pVCpu, GCRegion, &fFlags, &GCPhys);
             if (    rc == VINF_SUCCESS
                 &&  !(fFlags & X86_PTE_RW)) /* important as we make assumptions about this below! */
             {
