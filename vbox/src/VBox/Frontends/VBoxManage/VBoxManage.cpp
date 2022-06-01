@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 24907 2009-11-24 14:22:47Z vboxsync $ */
+/* $Id: VBoxManage.cpp 24912 2009-11-24 14:35:31Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -115,7 +115,7 @@ HRESULT showProgress(ComPtr<IProgress> progress)
         else
         {
             /* did we cross a 10% mark? */
-            if (((ulCurrentPercent / 10) > (ulLastPercent / 10)))
+            if (ulCurrentPercent / 10  >  ulLastPercent / 10)
             {
                 /* make sure to also print out missed steps */
                 for (ULONG curVal = (ulLastPercent / 10) * 10 + 10; curVal <= (ulCurrentPercent / 10) * 10; curVal += 10)
