@@ -1,4 +1,4 @@
-/* $Id: tstVBoxControl.cpp 22562 2009-08-28 17:58:24Z vboxsync $ */
+/* $Id: tstVBoxControl.cpp 25347 2009-12-13 17:09:31Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface, test case
  */
@@ -24,7 +24,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/autores.h>
+#include <iprt/cpp/autores.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>
 #include <iprt/path.h>

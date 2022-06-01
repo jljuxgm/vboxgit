@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 24322 2009-11-04 12:21:25Z vboxsync $ */
+/* $Id: VBoxControl.cpp 25347 2009-12-13 17:09:31Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -23,7 +23,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/alloca.h>
-#include <iprt/autores.h>
+#include <iprt/cpp/autores.h>
 #include <iprt/buildconfig.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>
