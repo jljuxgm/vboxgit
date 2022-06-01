@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 27589 2010-03-22 13:26:37Z vboxsync $ */
+/* $Id: PGMPhys.cpp 27590 2010-03-22 13:52:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -860,11 +860,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysChangeMemBalloonRendezvous(PVM pVM, P
 
     /* Flush the recompiler's TLB as well. */
     for (unsigned i = 0; i < pVM->cCpus; i++)
-    {
-        PVMCPU pVCpu = &pVM->aCpus[i];
-
-        CPUMSetChangedFlags(pVCpu, CPUM_CHANGED_GLOBAL_TLB_FLUSH);
-    }
+        CPUMSetChangedFlags(&pVM->aCpus[i], CPUM_CHANGED_GLOBAL_TLB_FLUSH);
 
     AssertLogRelRC(rc);
     return rc;
