@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24890 2009-11-24 11:28:44Z vboxsync $
+# $Id: Makefile.kmk 25033 2009-11-27 01:35:26Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -456,10 +456,11 @@ $(VBOX_XML_SCHEMADEFS_CPP): $(VBOX_XML_SCHEMADEFS_XSL) $(VBOX_XML_SCHEMA.$(KBUIL
 OTHER_CLEAN += $(VBOX_XML_SCHEMADEFS_H) $(VBOX_XML_SCHEMADEFS_CPP)
 
 
-if defined(VBOX_WITH_CROGL) || defined(VBOX_WITH_VIDEOHWACCEL)
+if (defined(VBOX_WITH_CROGL) || defined(VBOX_WITH_VIDEOHWACCEL)) && !defined(VBOX_WITH_DEBUG_VCC_CRT)
  ifneq ($(KBUILD_TARGET),darwin)
   #
   # VBoxTestOGL - OpenGL support test app.
+  # Note! Doesn't link with VBOX_WITH_DEBUG_VCC_CRT defined because it uses Qt.
   #
   ifdef VBOX_WITH_VIDEOHWACCEL
    USES += qt4
