@@ -1,4 +1,4 @@
-/* $Id: tcp_input.c 30045 2010-06-04 20:38:56Z vboxsync $ */
+/* $Id: tcp_input.c 30350 2010-06-22 02:39:23Z vboxsync $ */
 /** @file
  * NAT - TCP input.
  */
@@ -797,7 +797,6 @@ findso:
                     tp->t_socket->so_m = NULL;
                 }
                 tp = tcp_close(pData, tp);
-                m_freem(pData, m);
             }
             else
             {

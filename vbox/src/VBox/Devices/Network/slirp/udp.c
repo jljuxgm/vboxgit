@@ -1,4 +1,4 @@
-/* $Id: udp.c 30016 2010-06-03 18:31:14Z vboxsync $ */
+/* $Id: udp.c 30350 2010-06-22 02:39:23Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -189,12 +189,14 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
         src.sin_port = uh->uh_dport;
         dst.sin_addr.s_addr = ip->ip_src.s_addr;
         dst.sin_port = uh->uh_sport;
-        /* udp_output2 will do opposite operations on mbuf*/
+
+        /* udp_output2 expects pointer on the body of UDP packet. */
 
         m->m_data += sizeof(struct udpiphdr);
         m->m_len -= sizeof(struct udpiphdr);
         udp_output2(pData, NULL, m, &src, &dst, IPTOS_LOWDELAY);
-        goto done;
+        /* we shouldn't free this mbuf*/
+        return;
     }
     /*
      *  handle TFTP
