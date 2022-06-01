@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 28220 2010-04-12 17:04:54Z vboxsync $ */
+/* $Id: DevVGA.cpp 28235 2010-04-13 08:48:47Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5394,7 +5394,7 @@ static DECLCALLBACK(int) vgaPortCopyRect (PPDMIDISPLAYPORT pInterface,
     if (   xDst < 0
         || yDst < 0
         || xDst + wCorrected > u32DstWidth
-        || yDst + hCorrected > u32SrcHeight)
+        || yDst + hCorrected > u32DstHeight)
     {
         return VERR_INVALID_PARAMETER;
     }

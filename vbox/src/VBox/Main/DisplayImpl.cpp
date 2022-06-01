@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 28220 2010-04-12 17:04:54Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 28235 2010-04-13 08:48:47Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2417,6 +2417,10 @@ int Display::drawToScreenEMT(Display *pDisplay, ULONG aScreenId, BYTE *address, 
                                                    xDst, yDst,
                                                    u32DstWidth, u32DstHeight,
                                                    u32DstLineSize, u32DstBitsPerPixel);
+        if (RT_SUCCESS(rc))
+        {
+            pDisplay->handleDisplayUpdate(x + pFBInfo->xOrigin, y + pFBInfo->yOrigin, width, height);
+        }
     }
     else
     {
