@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 29925 2010-05-31 18:33:15Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 30207 2010-06-15 15:49:27Z vboxsync $ */
 
 /** @file
  *
@@ -95,6 +95,8 @@ public:
     BEGIN_CONNECTION_POINT_MAP(VirtualBox)
          CONNECTION_POINT_ENTRY(IID_IVirtualBoxCallback)
     END_CONNECTION_POINT_MAP()
+   
+    typedef CComDynamicUnkArray EventListenersList;
 #endif
 
     // to postpone generation of the default ctor/dtor

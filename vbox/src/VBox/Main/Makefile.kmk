@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30156 2010-06-10 17:54:11Z vboxsync $
+# $Id: Makefile.kmk 30207 2010-06-15 15:49:27Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -648,7 +648,9 @@ VBoxC_SOURCES = \
 VBoxC_SOURCES.win = \
 	win/dllmain.cpp \
 	win/VBoxC.def \
-	win/VBoxC.rc
+	win/VBoxC.rc \
+	win/VBoxComEvents.cpp
+
 
 ifdef VBOX_WITH_XPCOM
 VBoxC_SOURCES += \
