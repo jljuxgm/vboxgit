@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 25052 2009-11-27 15:01:37Z vboxsync $ */
+/* $Id: DisplayImpl.h 25069 2009-11-28 10:17:22Z vboxsync $ */
 
 /** @file
  *
@@ -360,6 +360,10 @@ private:
     int videoAccelEnable (bool fEnable, VBVAMEMORY *pVbvaMemory);
     void videoAccelFlush (void);
 #endif /* VBOX_WITH_OLD_VBVA_LOCK */
+
+#ifdef VBOX_WITH_HGSMI
+    volatile uint32_t mu32UpdateVBVAFlags;
+#endif
 };
 
 void gdImageCopyResampled (uint8_t *dst, uint8_t *src,
