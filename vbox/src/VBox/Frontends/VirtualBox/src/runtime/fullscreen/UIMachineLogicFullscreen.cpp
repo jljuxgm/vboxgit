@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 27142 2010-03-07 16:35:37Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 27144 2010-03-07 16:48:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -174,7 +174,6 @@ void UIMachineLogicFullscreen::prepareActionGroups()
     UIMachineLogic::prepareActionGroups();
 
     /* Adjust-window action isn't allowed in fullscreen: */
-    actionsPool()->action(UIActionIndex_Simple_AdjustWindow)->setEnabled(false);
     actionsPool()->action(UIActionIndex_Simple_AdjustWindow)->setVisible(false);
 }
 
@@ -317,7 +316,6 @@ void UIMachineLogicFullscreen::cleanupMachineWindows()
 void UIMachineLogicFullscreen::cleanupActionGroups()
 {
     /* Reenable adjust-window action: */
-    actionsPool()->action(UIActionIndex_Simple_AdjustWindow)->setEnabled(true);
     actionsPool()->action(UIActionIndex_Simple_AdjustWindow)->setVisible(true);
 }
 
