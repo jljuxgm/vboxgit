@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: DevPCI.cpp 30130 2010-06-09 16:22:21Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1689,13 +1689,11 @@ static int pciRegisterInternal(PPCIBUS pBus, int iDev, PPCIDEVICE pPciDev, const
         if (    !strcmp(pszName, "piix3ide")
             &&  !pBus->devices[9])
             iDev = 9;
-#ifdef VBOX_WITH_LPC
         /* LPC bus expected to be there by some guests, better make an additional argument to PDM
            device helpers, but requires significant rewrite */
         else if (!strcmp(pszName, "lpc")
              &&  !pBus->devices[0xf8])
             iDev = 0xf8;
-#endif
         else
         {
             Assert(!(pBus->iDevSearch % 8));
