@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 24999 2009-11-26 13:36:37Z vboxsync $ */
+/* $Id: EMRaw.cpp 26260 2010-02-05 01:37:57Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -143,7 +143,7 @@ static void emR3RecordCli(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtrInstr)
 {
     PCLISTAT pRec;
 
-    pRec = (PCLISTAT)RTAvlPVGet(&pVCpu->em.s.pCliStatTree, (AVLPVKEY)GCPtrInstr);
+    pRec = (PCLISTAT)RTAvlGCPtrGet(&pVCpu->em.s.pCliStatTree, GCPtrInstr);
     if (!pRec)
     {
         /* New cli instruction; insert into the tree. */
@@ -151,13 +151,13 @@ static void emR3RecordCli(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtrInstr)
         Assert(pRec);
         if (!pRec)
             return;
-        pRec->Core.Key = (AVLPVKEY)GCPtrInstr;
+        pRec->Core.Key = GCPtrInstr;
 
         char szCliStatName[32];
         RTStrPrintf(szCliStatName, sizeof(szCliStatName), "/EM/Cli/0x%RGv", GCPtrInstr);
         STAM_REG(pVM, &pRec->Counter, STAMTYPE_COUNTER, szCliStatName, STAMUNIT_OCCURENCES, "Number of times cli was executed.");
 
-        bool fRc = RTAvlPVInsert(&pVCpu->em.s.pCliStatTree, &pRec->Core);
+        bool fRc = RTAvlGCPtrInsert(&pVCpu->em.s.pCliStatTree, &pRec->Core);
         Assert(fRc); NOREF(fRc);
     }
     STAM_COUNTER_INC(&pRec->Counter);
