@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.h 29616 2010-05-18 11:55:55Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.h 29643 2010-05-18 15:26:50Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -29,10 +29,8 @@
 /** global lock */
 extern NDIS_SPIN_LOCK     g_GlobalLock;
 
-#ifdef VBOX_LOOPBACK_USEFLAGS
 extern UINT g_fPacketDontLoopBack;
 extern UINT g_fPacketIsLoopedBack;
-#endif
 
 /*
  * Debug Print API
