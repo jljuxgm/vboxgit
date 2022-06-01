@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 24343 2009-11-04 16:33:12Z vboxsync $ */
+/* $Id: REMAll.cpp 25576 2009-12-23 14:41:41Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -232,6 +232,7 @@ VMMDECL(void) REMNotifyHandlerPhysicalFlushIfAlmostFull(PVM pVM, PVMCPU pVCpu)
     VMMRZCallRing3NoCpu(pVM, VMMCALLRING3_REM_REPLAY_HANDLER_NOTIFICATIONS, 0);
 
     AssertRelease(pVM->rem.s.idxPendingList == UINT32_MAX);
+    AssertRelease(pVM->rem.s.idxFreeList != UINT32_MAX);
 }
 #endif /* IN_RC */
 
