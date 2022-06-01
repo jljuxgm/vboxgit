@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 27325 2010-03-12 11:26:36Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 27519 2010-03-19 10:21:57Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1702,7 +1702,7 @@ int handleModifyVM(HandlerArg *a)
             {
                 if (!strcmp(ValueUnion.psz, "buffered"))
                     CHECK_ERROR(machine, COMSETTER(IoBackend)(IoBackendType_Buffered));
-                else if (!strcmp(ValueUnion.psz, "async"))
+                else if (!strcmp(ValueUnion.psz, "unbuffered"))
                     CHECK_ERROR(machine, COMSETTER(IoBackend)(IoBackendType_Unbuffered));
                 else
                 {
