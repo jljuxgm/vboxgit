@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 26496 2010-02-14 08:00:21Z vboxsync $ */
+/* $Id: scm.cpp 26500 2010-02-14 08:25:22Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -400,6 +400,14 @@ static PFNSCMREWRITER const g_aRewritersFor_C_and_CPP[] =
     rewrite_C_and_CPP
 };
 
+static PFNSCMREWRITER const g_aRewritersFor_RC[] =
+{
+    rewrite_ForceNativeEol,
+    rewrite_ExpandTabs,
+    rewrite_StripTrailingBlanks,
+    rewrite_AdjustTrailingLines
+};
+
 static PFNSCMREWRITER const g_aRewritersFor_ShellScripts[] =
 {
     rewrite_ForceLF,
@@ -419,6 +427,7 @@ static SCMCFGENTRY const g_aConfigs[] =
     { RT_ELEMENTS(g_aRewritersFor_Makefile_kup), &g_aRewritersFor_Makefile_kup[0], "Makefile.kup" },
     { RT_ELEMENTS(g_aRewritersFor_Makefile_kmk), &g_aRewritersFor_Makefile_kmk[0], "Makefile.kmk" },
     { RT_ELEMENTS(g_aRewritersFor_C_and_CPP),    &g_aRewritersFor_C_and_CPP[0],    "*.c|*.h|*.cpp|*.hpp|*.C|*.CPP|*.cxx|*.cc" },
+    { RT_ELEMENTS(g_aRewritersFor_RC),           &g_aRewritersFor_RC[0],           "*.rc" },
     { RT_ELEMENTS(g_aRewritersFor_ShellScripts), &g_aRewritersFor_ShellScripts[0], "*.sh|configure" },
     { RT_ELEMENTS(g_aRewritersFor_BatchFiles),   &g_aRewritersFor_BatchFiles[0],   "*.bat|*.cmd|*.btm|*.vbs|*.ps1" },
 };
@@ -3193,7 +3202,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 26496 $";
+                static const char s_szRev[] = "$Revision: 26500 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
