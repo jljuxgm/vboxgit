@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 24714 2009-11-17 10:45:20Z vboxsync $ */
+/* $Id: DevVGA.h 24926 2009-11-25 08:34:23Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -462,7 +462,10 @@ int      VBVAInit       (PVGASTATE pVGAState);
 void     VBVADestroy    (PVGASTATE pVGAState);
 int      VBVAUpdateDisplay (PVGASTATE pVGAState);
 void     VBVAReset (PVGASTATE pVGAState);
-void     HGSMIReset (PHGSMIINSTANCE pIns);
+/* @return host-guest flags that were set on reset
+ * this allows the caller to make further cleaning when needed,
+ * e.g. reset the IRQ */
+uint32_t HGSMIReset (PHGSMIINSTANCE pIns);
 
 # ifdef VBOX_WITH_VIDEOHWACCEL
 int vbvaVHWACommandCompleteAsynch(PPDMDDISPLAYVBVACALLBACKS pInterface, PVBOXVHWACMD pCmd);
