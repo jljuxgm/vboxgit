@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 25336 2009-12-11 17:09:23Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 25339 2009-12-11 17:19:13Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -3408,10 +3408,6 @@ static int intnetR0NetworkCreateIf(PINTNETNETWORK pNetwork, PSUPDRVSESSION pSess
     return rc;
 }
 
-
-#  define static DECLCALLBACK(_t) static DECLCALLBACK(_t)
-#  define INTNET_CALLBACK(_n) _n
-#endif
 
 /** @copydoc INTNETTRUNKSWPORT::pfnSetSGPhys */
 static DECLCALLBACK(bool) intnetR0TrunkIfPortSetSGPhys(PINTNETTRUNKSWPORT pSwitchPort, bool fEnable)
