@@ -1,4 +1,4 @@
-/* $Id: AudioSnifferInterface.cpp 25984 2010-01-23 00:19:47Z vboxsync $ */
+/* $Id: AudioSnifferInterface.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to Audio Sniffer device
  */
@@ -123,8 +123,7 @@ DECLCALLBACK(void *) AudioSniffer::drvQueryInterface(PPDMIBASE pInterface, const
 {
     PPDMDRVINS pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
     PDRVAUDIOSNIFFER pDrv = PDMINS_2_DATA(pDrvIns, PDRVAUDIOSNIFFER);
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIAUDIOSNIFFERCONNECTOR, &pDrv->Connector);
     return NULL;
 }

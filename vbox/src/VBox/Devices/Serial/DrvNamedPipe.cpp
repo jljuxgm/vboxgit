@@ -1,4 +1,4 @@
-/* $Id: DrvNamedPipe.cpp 25974 2010-01-22 14:49:05Z vboxsync $ */
+/* $Id: DrvNamedPipe.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * VBox stream drivers: Named pipe stream
  */
@@ -286,8 +286,7 @@ static DECLCALLBACK(void *) drvNamedPipeQueryInterface(PPDMIBASE pInterface, con
 {
     PPDMDRVINS      pDrvIns = PDMIBASE_2_DRVINS(pInterface);
     PDRVNAMEDPIPE   pThis   = PDMINS_2_DATA(pDrvIns, PDRVNAMEDPIPE);
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMISTREAM, &pThis->IStream);
     return NULL;
 }

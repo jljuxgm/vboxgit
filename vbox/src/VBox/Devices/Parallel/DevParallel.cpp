@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 25984 2010-01-23 00:19:47Z vboxsync $ */
+/* $Id: DevParallel.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -655,8 +655,7 @@ static DECLCALLBACK(void) parallelRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDel
 static DECLCALLBACK(void *) parallelQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
     ParallelState *pThis = PDMIBASE_2_PARALLELSTATE(pInterface);
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pThis->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pThis->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIHOSTPARALLELPORT, &pThis->IHostParallelPort);
     return NULL;
 }

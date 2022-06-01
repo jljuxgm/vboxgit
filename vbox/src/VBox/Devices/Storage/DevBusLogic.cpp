@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 25984 2010-01-23 00:19:47Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -2354,8 +2354,7 @@ static DECLCALLBACK(int) buslogicDeviceQueryStatusLed(PPDMILEDPORTS pInterface, 
 static DECLCALLBACK(void *) buslogicDeviceQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
     PBUSLOGICDEVICE pDevice = PDMIBASE_2_PBUSLOGICDEVICE(pInterface);
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDevice->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDevice->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMISCSIPORT, &pDevice->ISCSIPort);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMILEDPORTS, &pDevice->ILed);
     return NULL;
@@ -2387,8 +2386,7 @@ static DECLCALLBACK(int) buslogicStatusQueryStatusLed(PPDMILEDPORTS pInterface, 
 static DECLCALLBACK(void *) buslogicStatusQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
     PBUSLOGIC pThis = PDMIBASE_2_PBUSLOGIC(pInterface);
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pThis->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pThis->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMILEDPORTS, &pThis->ILeds);
     return NULL;
 }

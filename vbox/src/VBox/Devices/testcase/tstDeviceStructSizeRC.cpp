@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 25946 2010-01-20 23:52:24Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -274,10 +274,10 @@ int main()
     GEN_CHECK_OFF(VGASTATE, pDevInsR3);
     GEN_CHECK_OFF(VGASTATE, pDevInsR0);
     GEN_CHECK_OFF(VGASTATE, lock);
-    GEN_CHECK_OFF(VGASTATE, Base);
-    GEN_CHECK_OFF(VGASTATE, Port);
+    GEN_CHECK_OFF(VGASTATE, IBase);
+    GEN_CHECK_OFF(VGASTATE, IPort);
 #if defined(VBOX_WITH_HGSMI) && defined(VBOX_WITH_VIDEOHWACCEL)
-    GEN_CHECK_OFF(VGASTATE, VBVACallbacks);
+    GEN_CHECK_OFF(VGASTATE, IVBVACallbacks);
 #endif
     GEN_CHECK_OFF(VGASTATE, pDrvBase);
     GEN_CHECK_OFF(VGASTATE, pDrv);
@@ -346,12 +346,12 @@ int main()
     GEN_CHECK_OFF(KBDState, pDevInsR3);
     GEN_CHECK_OFF(KBDState, pDevInsR0);
     GEN_CHECK_OFF(KBDState, pDevInsRC);
-    GEN_CHECK_OFF(KBDState, Keyboard.Base);
-    GEN_CHECK_OFF(KBDState, Keyboard.Port);
+    GEN_CHECK_OFF(KBDState, Keyboard.IBase);
+    GEN_CHECK_OFF(KBDState, Keyboard.IPort);
     GEN_CHECK_OFF(KBDState, Keyboard.pDrvBase);
     GEN_CHECK_OFF(KBDState, Keyboard.pDrv);
-    GEN_CHECK_OFF(KBDState, Mouse.Base);
-    GEN_CHECK_OFF(KBDState, Mouse.Port);
+    GEN_CHECK_OFF(KBDState, Mouse.IBase);
+    GEN_CHECK_OFF(KBDState, Mouse.IPort);
     GEN_CHECK_OFF(KBDState, Mouse.pDrvBase);
     GEN_CHECK_OFF(KBDState, Mouse.pDrv);
 

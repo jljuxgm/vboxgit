@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 25971 2010-01-22 12:54:19Z vboxsync $ */
+/* $Id: DevSerial.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -737,10 +737,8 @@ static DECLCALLBACK(int) serialIOPortRegionMap(PPCIDEVICE pPciDev, /* unsigned *
 static DECLCALLBACK(void *) serialQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
     SerialState *pThis = PDMIBASE_2_SERIALSTATE(pInterface);
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pThis->IBase;
-    if (RTUuidCompare2Strs(pszIID, PDMICHARPORT_IID) == 0)
-        return &pThis->ICharPort;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pThis->IBase);
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMICHARPORT, &pThis->ICharPort);
     return NULL;
 }
 

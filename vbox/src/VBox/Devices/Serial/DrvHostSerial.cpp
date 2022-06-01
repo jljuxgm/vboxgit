@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 25971 2010-01-22 12:54:19Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -178,10 +178,8 @@ static DECLCALLBACK(void *) drvHostSerialQueryInterface(PPDMIBASE pInterface, co
     PPDMDRVINS      pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
     PDRVHOSTSERIAL  pThis   = PDMINS_2_DATA(pDrvIns, PDRVHOSTSERIAL);
 
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
-    if (RTUuidCompare2Strs(pszIID, PDMICHARCONNECTOR_IID) == 0)
-        return &pThis->ICharConnector;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMICHARCONNECTOR, &pThis->ICharConnector);
     return NULL;
 }
 

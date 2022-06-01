@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1545,8 +1545,7 @@ static DECLCALLBACK(void *) ichac97QueryInterface (struct PDMIBASE *pInterface,
     PCIAC97LinkState *pThis = RT_FROM_MEMBER(pInterface, PCIAC97LinkState, ac97.IBase);
     Assert(&pThis->ac97.IBase == pInterface);
 
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pThis->ac97.IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pThis->ac97.IBase);
     return NULL;
 }
 

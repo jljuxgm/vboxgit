@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 25984 2010-01-23 00:19:47Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -90,8 +90,7 @@ static DECLCALLBACK(void *) drvHostParallelQueryInterface(PPDMIBASE pInterface, 
     PPDMDRVINS          pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
     PDRVHOSTPARALLEL    pThis   = PDMINS_2_DATA(pDrvIns, PDRVHOSTPARALLEL);
 
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIHOSTPARALLELCONNECTOR, &pThis->IHostParallelConnector);
     return NULL;
 }

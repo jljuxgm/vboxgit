@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 25778 2010-01-12 16:58:20Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -1736,7 +1736,7 @@ static int vmmdevHGCMCmdVerify (PVBOXHGCMCMD pCmd, VMMDevHGCMRequestHeader *pHea
     return VERR_INVALID_PARAMETER;
 }
 
-#define PDMIHGCMPORT_2_VMMDEVSTATE(pInterface) ( (VMMDevState *) ((uintptr_t)pInterface - RT_OFFSETOF(VMMDevState, HGCMPort)) )
+#define PDMIHGCMPORT_2_VMMDEVSTATE(pInterface) ( (VMMDevState *) ((uintptr_t)pInterface - RT_OFFSETOF(VMMDevState, IHGCMPort)) )
 
 DECLCALLBACK(void) hgcmCompletedWorker (PPDMIHGCMPORT pInterface, int32_t result, PVBOXHGCMCMD pCmd)
 {

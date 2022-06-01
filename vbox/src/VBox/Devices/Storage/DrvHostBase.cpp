@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 25974 2010-01-22 14:49:05Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -570,8 +570,7 @@ static DECLCALLBACK(void *)  drvHostBaseQueryInterface(PPDMIBASE pInterface, con
     PPDMDRVINS   pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
     PDRVHOSTBASE pThis   = PDMINS_2_DATA(pDrvIns, PDRVHOSTBASE);
 
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBLOCK, &pThis->IBlock);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBLOCKBIOS, pThis->fBiosVisible ? &pThis->IBlockBios : NULL);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIMOUNT, &pThis->IMount);
@@ -720,7 +719,7 @@ static int drvHostBaseObtainExclusiveAccess(PDRVHOSTBASE pThis, io_object_t DVDS
                         Log(("%s-%d: calling DADiskUnmount on '%s'.\n", pDrvIns->pDrvReg->szDriverName, pDrvIns->iInstance, szName));
                         rcDA = -2;
                         DADiskUnmount(pThis->pDADisk, kDADiskUnmountOptionWhole, drvHostBaseDADoneCallback, &rcDA);
-                        SInt32 rc32 = CFRunLoopRunInMode(MY_RUN_LOOP_MODE, 120.0, FALSE);
+                        rc32 = CFRunLoopRunInMode(MY_RUN_LOOP_MODE, 120.0, FALSE);
                         AssertMsg(rc32 == kCFRunLoopRunStopped, ("rc32=%RI32 (%RX32)\n", rc32, rc32));
                         if (    rc32 == kCFRunLoopRunStopped
                             &&  !rcDA)

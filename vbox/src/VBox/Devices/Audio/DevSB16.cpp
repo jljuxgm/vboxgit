@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DevSB16.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1780,8 +1780,7 @@ static DECLCALLBACK(void *) sb16QueryInterface (struct PDMIBASE *pInterface,
     SB16State *pThis = RT_FROM_MEMBER(pInterface, SB16State, IBase);
     Assert(&pThis->IBase == pInterface);
 
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pThis->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pThis->IBase);
     return NULL;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 25984 2010-01-23 00:19:47Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8129,8 +8129,7 @@ DECLCALLBACK(void *)  Console::drvStatus_QueryInterface(PPDMIBASE pInterface, co
 {
     PPDMDRVINS pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
     PDRVMAINSTATUS pThis = PDMINS_2_DATA(pDrvIns, PDRVMAINSTATUS);
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMILEDCONNECTORS, &pThis->ILedConnectors);
     return NULL;
 }

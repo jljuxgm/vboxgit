@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 25981 2010-01-22 18:42:01Z vboxsync $ */
+/* $Id: DrvTAP.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * DrvTAP - Universial TAP network transport driver.
  */
@@ -783,8 +783,7 @@ static DECLCALLBACK(void *) drvTAPQueryInterface(PPDMIBASE pInterface, const cha
     PPDMDRVINS  pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
     PDRVTAP     pThis   = PDMINS_2_DATA(pDrvIns, PDRVTAP);
 
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMINETWORKCONNECTOR, &pThis->INetworkConnector);
     return NULL;
 }

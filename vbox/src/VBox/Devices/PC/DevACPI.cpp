@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 25984 2010-01-23 00:19:47Z vboxsync $ */
+/* $Id: DevACPI.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1940,8 +1940,7 @@ static DECLCALLBACK(int) acpi_load_state(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHand
 static DECLCALLBACK(void *) acpiQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
     ACPIState *pThis = RT_FROM_MEMBER(pInterface, ACPIState, IBase);
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pThis->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pThis->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIACPIPORT, &pThis->IACPIPort);
     return NULL;
 }

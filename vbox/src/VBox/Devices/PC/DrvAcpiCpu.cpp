@@ -1,4 +1,4 @@
-/* $Id: DrvAcpiCpu.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DrvAcpiCpu.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
 /** @file
  * DrvAcpiCpu - ACPI CPU dummy driver for hotplugging.
  */
@@ -39,8 +39,7 @@
 static DECLCALLBACK(void *) drvACPICpuQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
     PPDMDRVINS pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
-    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
-        return &pDrvIns->IBase;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     return NULL;
 }
 
