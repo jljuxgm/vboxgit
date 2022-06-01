@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 28693 2010-04-24 19:14:43Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 28704 2010-04-25 12:38:12Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -743,7 +743,7 @@ static int vdIoCtxProcess(PVDIOCTX pIoCtx)
     int rc = VINF_SUCCESS;
     PVBOXHDD pDisk = pIoCtx->pDisk;
 
-    LogFlowFunc(("pIoCtx=%#p\n"));
+    LogFlowFunc(("pIoCtx=%#p\n", pIoCtx));
 
     if (   !pIoCtx->cbTransferLeft
         && !pIoCtx->cMetaTransfersPending
@@ -5909,8 +5909,9 @@ VBOXDDU_DECL(int) VDAsyncRead(PVBOXHDD pDisk, uint64_t uOffset, size_t cbRead,
     bool fLockRead = false;
     PVDIOCTX pIoCtx = NULL;
 
-    LogFlowFunc(("pDisk=%#p uOffset=%llu paSeg=%p cSeg=%u cbRead=%zu\n",
-                 pDisk, uOffset, paSeg, cSeg, cbRead));
+    LogFlowFunc(("pDisk=%#p uOffset=%llu paSeg=%p cSeg=%u cbRead=%zu pvUser1=%#p pvUser2=%#p\n",
+                 pDisk, uOffset, paSeg, cSeg, cbRead, pvUser1, pvUser2));
+
     do
     {
         /* sanity check */
@@ -5984,8 +5985,8 @@ VBOXDDU_DECL(int) VDAsyncWrite(PVBOXHDD pDisk, uint64_t uOffset, size_t cbWrite,
     bool fLockWrite = false;
     PVDIOCTX pIoCtx = NULL;
 
-    LogFlowFunc(("pDisk=%#p uOffset=%llu paSeg=%p cSeg=%u cbWrite=%zu\n",
-                 pDisk, uOffset, paSeg, cSeg, cbWrite));
+    LogFlowFunc(("pDisk=%#p uOffset=%llu paSeg=%p cSeg=%u cbWrite=%zu pvUser1=%#p pvUser2=%#p\n",
+                 pDisk, uOffset, paSeg, cSeg, cbWrite, pvUser1, pvUser2));
     do
     {
         /* sanity check */
