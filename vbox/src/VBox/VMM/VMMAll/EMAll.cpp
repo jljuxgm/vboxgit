@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 28030 2010-04-07 07:53:12Z vboxsync $ */
+/* $Id: EMAll.cpp 28563 2010-04-21 13:09:08Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -475,7 +475,7 @@ static const char *emGetMnemonic(PDISCPUSTATE pDis)
         case OP_MOV_DR:     return "MovDRx";
         case OP_LLDT:       return "LLdt";
         case OP_LGDT:       return "LGdt";
-        case OP_LIDT:       return "LGdt";
+        case OP_LIDT:       return "LIdt";
         case OP_CLTS:       return "Clts";
         case OP_MONITOR:    return "Monitor";
         case OP_MWAIT:      return "MWait";
