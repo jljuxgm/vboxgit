@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3384,6 +3384,8 @@ DECLCALLBACK(void) Display::drvDestruct(PPDMDRVINS pDrvIns)
 {
     PDRVMAINDISPLAY pData = PDMINS_2_DATA(pDrvIns, PDRVMAINDISPLAY);
     LogFlowFunc (("iInstance=%d\n", pDrvIns->iInstance));
+    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
+
     if (pData->pDisplay)
     {
         AutoWriteLock displayLock(pData->pDisplay COMMA_LOCKVAL_SRC_POS);
@@ -3407,6 +3409,7 @@ DECLCALLBACK(int) Display::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle
 {
     PDRVMAINDISPLAY pData = PDMINS_2_DATA(pDrvIns, PDRVMAINDISPLAY);
     LogFlowFunc (("iInstance=%d\n", pDrvIns->iInstance));
+    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
     /*
      * Validate configuration.

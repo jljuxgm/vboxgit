@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DrvNAT.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -946,8 +946,8 @@ static int drvNATConstructRedir(unsigned iInstance, PDRVNAT pThis, PCFGMNODE pCf
 static DECLCALLBACK(void) drvNATDestruct(PPDMDRVINS pDrvIns)
 {
     PDRVNAT pThis = PDMINS_2_DATA(pDrvIns, PDRVNAT);
-
     LogFlow(("drvNATDestruct:\n"));
+    PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
 
     slirp_term(pThis->pNATState);
     slirp_deregister_statistics(pThis->pNATState, pDrvIns);
@@ -968,8 +968,8 @@ static DECLCALLBACK(void) drvNATDestruct(PPDMDRVINS pDrvIns)
 static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, uint32_t fFlags)
 {
     PDRVNAT pThis = PDMINS_2_DATA(pDrvIns, PDRVNAT);
-
     LogFlow(("drvNATConstruct:\n"));
+    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
     /*
      * Validate the config.

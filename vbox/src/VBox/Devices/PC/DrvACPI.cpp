@@ -1,4 +1,4 @@
-/* $Id: DrvACPI.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DrvACPI.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
@@ -711,6 +711,7 @@ static DECLCALLBACK(int) drvACPIQueryBatteryStatus(PPDMIACPICONNECTOR pInterface
 static DECLCALLBACK(void) drvACPIDestruct(PPDMDRVINS pDrvIns)
 {
     LogFlow(("drvACPIDestruct\n"));
+    PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
 }
 
 /**
@@ -721,6 +722,7 @@ static DECLCALLBACK(void) drvACPIDestruct(PPDMDRVINS pDrvIns)
 static DECLCALLBACK(int) drvACPIConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, uint32_t fFlags)
 {
     PDRVACPI pThis = PDMINS_2_DATA(pDrvIns, PDRVACPI);
+    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
     /*
      * Init the static parts.

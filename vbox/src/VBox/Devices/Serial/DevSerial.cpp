@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DevSerial.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -754,6 +754,7 @@ static DECLCALLBACK(void *) serialQueryInterface(PPDMIBASE pInterface, const cha
 static DECLCALLBACK(int) serialDestruct(PPDMDEVINS pDevIns)
 {
     SerialState *pThis = PDMINS_2_DATA(pDevIns, SerialState *);
+    PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns);
 
     RTSemEventDestroy(pThis->ReceiveSem);
     pThis->ReceiveSem = NIL_RTSEMEVENT;
@@ -786,6 +787,7 @@ static DECLCALLBACK(int) serialConstruct(PPDMDEVINS pDevIns,
     uint8_t        irq_lvl;
 
     Assert(iInstance < 4);
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
 
     /*
      * Initialize the instance data.

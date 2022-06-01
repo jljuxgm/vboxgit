@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -4353,7 +4353,7 @@ static DECLCALLBACK(void) lsilogicRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDel
 static DECLCALLBACK(int) lsilogicDestruct(PPDMDEVINS pDevIns)
 {
     PLSILOGICSCSI pThis = PDMINS_2_DATA(pDevIns, PLSILOGICSCSI);
-    int rc = VINF_SUCCESS;
+    PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns);
 
     PDMR3CritSectDelete(&pThis->ReplyFreeQueueCritSect);
     PDMR3CritSectDelete(&pThis->ReplyPostQueueCritSect);
@@ -4362,6 +4362,7 @@ static DECLCALLBACK(int) lsilogicDestruct(PPDMDEVINS pDevIns)
         RTMemFree(pThis->paDeviceStates);
 
     /* Destroy task cache. */
+    int rc = VINF_SUCCESS;
     if (pThis->pTaskCache)
         rc = RTCacheDestroy(pThis->pTaskCache);
 
@@ -4379,6 +4380,7 @@ static DECLCALLBACK(int) lsilogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
     int rc = VINF_SUCCESS;
     char *pszCtrlType = NULL;
     PVM pVM = PDMDevHlpGetVM(pDevIns);
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
 
     /*
      * Validate and read configuration.

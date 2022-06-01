@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DevParallel.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -672,6 +672,7 @@ static DECLCALLBACK(void *) parallelQueryInterface(PPDMIBASE pInterface, const c
 static DECLCALLBACK(int) parallelDestruct(PPDMDEVINS pDevIns)
 {
     ParallelState *pThis = PDMINS_2_DATA(pDevIns, ParallelState *);
+    PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns);
 
     PDMR3CritSectDelete(&pThis->CritSect);
     RTSemEventDestroy(pThis->ReceiveSem);
@@ -701,6 +702,7 @@ static DECLCALLBACK(int) parallelConstruct(PPDMDEVINS pDevIns,
     ParallelState *pThis = PDMINS_2_DATA(pDevIns, ParallelState*);
 
     Assert(iInstance < 4);
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
 
     /*
      * Init the data so parallelDestruct doesn't choke.

@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DrvMouseQueue.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -226,6 +226,7 @@ static DECLCALLBACK(int) drvMouseQueueConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
 {
     PDRVMOUSEQUEUE pDrv = PDMINS_2_DATA(pDrvIns, PDRVMOUSEQUEUE);
     LogFlow(("drvMouseQueueConstruct: iInstance=%d\n", pDrvIns->iInstance));
+    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
     /*
      * Validate configuration.

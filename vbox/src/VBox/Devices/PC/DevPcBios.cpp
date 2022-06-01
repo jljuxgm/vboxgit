@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 25974 2010-01-22 14:49:05Z vboxsync $ */
+/* $Id: DevPcBios.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -796,6 +796,7 @@ static DECLCALLBACK(int) pcbiosDestruct(PPDMDEVINS pDevIns)
 {
     PDEVPCBIOS  pThis = PDMINS_2_DATA(pDevIns, PDEVPCBIOS);
     LogFlow(("pcbiosDestruct:\n"));
+    PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns);
 
     /*
      * Free MM heap pointers.
@@ -886,6 +887,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
     int         cb;
 
     Assert(iInstance == 0);
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
 
     /*
      * Validate configuration.

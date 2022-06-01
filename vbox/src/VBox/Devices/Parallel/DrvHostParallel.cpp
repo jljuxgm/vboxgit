@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -248,6 +248,42 @@ static DECLCALLBACK(int) drvHostParallelWakeupMonitorThread(PPDMDRVINS pDrvIns, 
 }
 
 /**
+ * Destruct a host parallel driver instance.
+ *
+ * Most VM resources are freed by the VM. This callback is provided so that
+ * any non-VM resources can be freed correctly.
+ *
+ * @param   pDrvIns     The driver instance data.
+ */
+static DECLCALLBACK(void) drvHostParallelDestruct(PPDMDRVINS pDrvIns)
+{
+    PDRVHOSTPARALLEL pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTPARALLEL);
+    LogFlow(("%s: iInstance=%d\n", __FUNCTION__, pDrvIns->iInstance));
+    PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
+
+    ioctl(pThis->FileDevice, PPRELEASE);
+
+    if (pThis->WakeupPipeW != NIL_RTFILE)
+    {
+        int rc = RTFileClose(pThis->WakeupPipeW);
+        AssertRC(rc);
+        pThis->WakeupPipeW = NIL_RTFILE;
+    }
+    if (pThis->WakeupPipeR != NIL_RTFILE)
+    {
+        int rc = RTFileClose(pThis->WakeupPipeR);
+        AssertRC(rc);
+        pThis->WakeupPipeR = NIL_RTFILE;
+    }
+    if (pThis->FileDevice != NIL_RTFILE)
+    {
+        int rc = RTFileClose(pThis->FileDevice);
+        AssertRC(rc);
+        pThis->FileDevice = NIL_RTFILE;
+    }
+}
+
+/**
  * Construct a host parallel driver instance.
  *
  * @copydoc FNPDMDRVCONSTRUCT
@@ -256,6 +292,7 @@ static DECLCALLBACK(int) drvHostParallelConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
 {
     PDRVHOSTPARALLEL pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTPARALLEL);
     LogFlow(("%s: iInstance=%d\n", __FUNCTION__, pDrvIns->iInstance));
+    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
     /*
      * Validate the config.
@@ -347,43 +384,6 @@ static DECLCALLBACK(int) drvHostParallelConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS, N_("HostParallel#%d cannot create monitor thread"), pDrvIns->iInstance);
 
     return VINF_SUCCESS;
-}
-
-
-/**
- * Destruct a host parallel driver instance.
- *
- * Most VM resources are freed by the VM. This callback is provided so that
- * any non-VM resources can be freed correctly.
- *
- * @param   pDrvIns     The driver instance data.
- */
-static DECLCALLBACK(void) drvHostParallelDestruct(PPDMDRVINS pDrvIns)
-{
-    PDRVHOSTPARALLEL pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTPARALLEL);
-
-    LogFlow(("%s: iInstance=%d\n", __FUNCTION__, pDrvIns->iInstance));
-
-    ioctl(pThis->FileDevice, PPRELEASE);
-
-    if (pThis->WakeupPipeW != NIL_RTFILE)
-    {
-        int rc = RTFileClose(pThis->WakeupPipeW);
-        AssertRC(rc);
-        pThis->WakeupPipeW = NIL_RTFILE;
-    }
-    if (pThis->WakeupPipeR != NIL_RTFILE)
-    {
-        int rc = RTFileClose(pThis->WakeupPipeR);
-        AssertRC(rc);
-        pThis->WakeupPipeR = NIL_RTFILE;
-    }
-    if (pThis->FileDevice != NIL_RTFILE)
-    {
-        int rc = RTFileClose(pThis->FileDevice);
-        AssertRC(rc);
-        pThis->FileDevice = NIL_RTFILE;
-    }
 }
 
 /**

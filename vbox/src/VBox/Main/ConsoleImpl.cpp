@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8145,6 +8145,8 @@ DECLCALLBACK(void) Console::drvStatus_Destruct(PPDMDRVINS pDrvIns)
 {
     PDRVMAINSTATUS pData = PDMINS_2_DATA(pDrvIns, PDRVMAINSTATUS);
     LogFlowFunc(("iInstance=%d\n", pDrvIns->iInstance));
+    PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
+
     if (pData->papLeds)
     {
         unsigned iLed = pData->iLastLUN - pData->iFirstLUN + 1;
@@ -8163,6 +8165,7 @@ DECLCALLBACK(int) Console::drvStatus_Construct(PPDMDRVINS pDrvIns, PCFGMNODE pCf
 {
     PDRVMAINSTATUS pData = PDMINS_2_DATA(pDrvIns, PDRVMAINSTATUS);
     LogFlowFunc(("iInstance=%d\n", pDrvIns->iInstance));
+    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
     /*
      * Validate configuration.

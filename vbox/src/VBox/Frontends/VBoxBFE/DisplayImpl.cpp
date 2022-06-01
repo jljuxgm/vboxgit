@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 25971 2010-01-22 12:54:19Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of VMDisplay class
@@ -1170,7 +1170,7 @@ DECLCALLBACK(int) VMDisplay::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHand
 {
     PDRVMAINDISPLAY pData = PDMINS_2_DATA(pDrvIns, PDRVMAINDISPLAY);
     LogFlow(("VMDisplay::drvConstruct: iInstance=%d\n", pDrvIns->iInstance));
-
+    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
     /*
      * Validate configuration.

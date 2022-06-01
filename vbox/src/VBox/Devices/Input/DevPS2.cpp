@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DevPS2.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1571,6 +1571,8 @@ static DECLCALLBACK(void) kdbRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
 static DECLCALLBACK(int) kbdDestruct(PPDMDEVINS pDevIns)
 {
     KBDState   *pThis = PDMINS_2_DATA(pDevIns, KBDState *);
+    PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns);
+
     PDMR3CritSectDelete(&pThis->CritSect);
 
     return VINF_SUCCESS;
@@ -1597,6 +1599,8 @@ static DECLCALLBACK(int) kbdConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
     bool        fGCEnabled;
     bool        fR0Enabled;
     Assert(iInstance == 0);
+
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
 
     /*
      * Validate and read the configuration.

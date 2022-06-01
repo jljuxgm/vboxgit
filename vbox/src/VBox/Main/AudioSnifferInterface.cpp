@@ -1,4 +1,4 @@
-/* $Id: AudioSnifferInterface.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: AudioSnifferInterface.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to Audio Sniffer device
  */
@@ -139,6 +139,8 @@ DECLCALLBACK(void) AudioSniffer::drvDestruct(PPDMDRVINS pDrvIns)
 {
     PDRVAUDIOSNIFFER pThis = PDMINS_2_DATA(pDrvIns, PDRVAUDIOSNIFFER);
     LogFlow(("AudioSniffer::drvDestruct: iInstance=%d\n", pDrvIns->iInstance));
+    PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
+
     if (pThis->pAudioSniffer)
     {
         pThis->pAudioSniffer->mpDrv = NULL;
@@ -156,6 +158,7 @@ DECLCALLBACK(int) AudioSniffer::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgH
     PDRVAUDIOSNIFFER pThis = PDMINS_2_DATA(pDrvIns, PDRVAUDIOSNIFFER);
 
     LogFlow(("AudioSniffer::drvConstruct: iInstance=%d\n", pDrvIns->iInstance));
+    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
     /*
      * Validate configuration.
