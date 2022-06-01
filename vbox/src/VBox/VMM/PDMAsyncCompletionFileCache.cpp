@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileCache.cpp 26240 2010-02-04 15:35:02Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileCache.cpp 26242 2010-02-04 16:17:05Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * File data cache.
@@ -1412,7 +1412,7 @@ int pdmacFileEpCacheRead(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint, PPDMASYNCCOM
 
             cbToRead = RT_MIN(pEntry->cbData - OffDiff, cbRead);
 
-            AssertMsg(off + cbToRead <= pEntry->Core.Key + pEntry->Core.KeyLast,
+            AssertMsg(off + (RTFOFF)cbToRead <= pEntry->Core.Key + pEntry->Core.KeyLast,
                       ("Buffer of cache entry exceeded off=%RTfoff cbToRead=%z\n",
                        off, cbToRead));
 
@@ -1602,7 +1602,7 @@ int pdmacFileEpCacheRead(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint, PPDMASYNCCOM
                 pdmacFileEpCacheInsertEntry(pEndpointCache, pEntryNew);
 
                 AssertMsg(   (off >= pEntryNew->Core.Key)
-                          && (off + cbToRead <= pEntryNew->Core.Key + pEntryNew->Core.KeyLast),
+                          && (off + (RTFOFF)cbToRead <= pEntryNew->Core.Key + pEntryNew->Core.KeyLast),
                           ("Overflow in calculation off=%RTfoff OffsetAligned=%RTfoff\n",
                            off, pEntry->Core.Key));
 
