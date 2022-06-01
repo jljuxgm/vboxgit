@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28634 2010-04-23 09:38:12Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28638 2010-04-23 12:24:59Z vboxsync $ */
 
 /** @file
  *
@@ -513,9 +513,10 @@ int Guest::notifyCtrlExec(uint32_t              u32Function,
 
     AssertPtr(pData);
     CallbackListIter it = getCtrlCallbackContextByID(pData->hdr.u32ContextID);
+
+    /* Callback can be called several times. */
     if (it != mCallbackList.end())
     {
-        Assert(!it->bCalled);
         PHOSTEXECCALLBACKDATA pCBData = (HOSTEXECCALLBACKDATA*)it->pvData;
         AssertPtr(pCBData);
 
