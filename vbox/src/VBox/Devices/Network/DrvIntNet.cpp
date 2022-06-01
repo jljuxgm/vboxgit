@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 28320 2010-04-14 18:26:24Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 28325 2010-04-14 18:44:41Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -121,7 +121,7 @@ typedef struct DRVINTNET
      * as late as possible. */
     bool                            fActivateEarlyDeactivateLate;
     /** Padding. */
-    bool                            afReserved[2+4];
+    bool                            afReserved[HC_ARCH_BITS == 64 ? 2+4 : 2];
     /** The network name. */
     char                            szNetwork[INTNET_MAX_NETWORK_NAME];
 
