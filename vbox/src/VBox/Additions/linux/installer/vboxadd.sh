@@ -1,6 +1,6 @@
 #! /bin/sh
 # Sun VirtualBox
-# Linux Additions kernel module init script ($Revision: 24444 $)
+# Linux Additions kernel module init script ($Revision: 24478 $)
 #
 
 #
@@ -372,7 +372,7 @@ setup()
     fi
 
     # Put mount.vboxsf in the right place
-    ln -s /usr/lib/$PACKAGE/mount.vboxsf /sbin
+    ln -sf /usr/lib/$PACKAGE/mount.vboxsf /sbin
 
     succ_msg
     start
