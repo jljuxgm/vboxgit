@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 30036 2010-06-04 13:27:42Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 30037 2010-06-04 13:36:41Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -425,8 +425,6 @@ void VBoxServicePageSharingInspectGuest()
                     char *lpPath = strchr(&pSystemModules->Modules[i].FullPathName[1], '\\');
                     if (!lpPath)
                     {
-                        VBoxServiceVerbose(1, "Unexpected kernel module name %s\n", pSystemModules->Modules[i].FullPathName);
-
                         /* Seen just file names in XP; try to locate the file in the system32 and system32\drivers directories. */
                         strcat(szFullFilePath, "\\");
                         strcat(szFullFilePath, pSystemModules->Modules[i].FullPathName);
