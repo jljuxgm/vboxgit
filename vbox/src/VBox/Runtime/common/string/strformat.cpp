@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: strformat.cpp 25805 2010-01-13 14:30:45Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -824,6 +824,7 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
                         va_copy(ArgsNested, *pArgsNested);
                         Assert(pszFormatNested);
                         cch += RTStrFormatV(pfnOutput, pvArgOutput, pfnFormat, pvArgFormat, pszFormatNested, ArgsNested);
+                        va_end(ArgsNested);
                         break;
                     }
 
