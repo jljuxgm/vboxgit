@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-posix.cpp 14318 2008-11-18 16:56:53Z vboxsync $ */
+/* $Id: semeventmulti-posix.cpp 25636 2010-01-04 15:38:55Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, POSIX.
  */
@@ -412,7 +412,6 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
             /* check state. */
             if (pThis->u32State == EVENTMULTI_STATE_SIGNALED)
             {
-                ASMAtomicXchgU32(&pThis->u32State, EVENTMULTI_STATE_NOT_SIGNALED);
                 ASMAtomicDecU32(&pThis->cWaiters);
                 rc = pthread_mutex_unlock(&pThis->Mutex);
                 AssertMsg(!rc, ("Failed to unlock event multi sem %p, rc=%d.\n", EventMultiSem, rc)); NOREF(rc);
