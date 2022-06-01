@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 29422 2010-05-12 14:08:52Z vboxsync $ */
+/* $Id: ovfreader.cpp 29876 2010-05-28 19:17:22Z vboxsync $ */
 /** @file
  *
  * OVF reader declarations. Depends only on IPRT, including the iprt::MiniString
@@ -85,7 +85,9 @@ void OVFReader::LoopThruSections(const xml::ElementNode *pReferencesElem,
         const char *pcszElemName = pElem->getName();
         const char *pcszTypeAttr = "";
         const xml::AttributeNode *pTypeAttr;
-        if ((pTypeAttr = pElem->findAttribute("type")))
+        if (    ((pTypeAttr = pElem->findAttribute("xsi:type")))
+             || ((pTypeAttr = pElem->findAttribute("type")))
+           )
             pcszTypeAttr = pTypeAttr->getValue();
 
         if (    (!strcmp(pcszElemName, "DiskSection"))
@@ -96,7 +98,7 @@ void OVFReader::LoopThruSections(const xml::ElementNode *pReferencesElem,
         {
             HandleDiskSection(pReferencesElem, pElem);
         }
-       else if (    (!strcmp(pcszElemName, "NetworkSection"))
+        else if (    (!strcmp(pcszElemName, "NetworkSection"))
                   || (    (!strcmp(pcszElemName, "Section"))
                        && (!strcmp(pcszTypeAttr, "ovf:NetworkSection_Type"))
                      )
