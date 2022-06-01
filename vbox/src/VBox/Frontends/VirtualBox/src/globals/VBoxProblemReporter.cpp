@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 27695 2010-03-25 11:47:45Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 27732 2010-03-26 11:29:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -283,13 +283,13 @@ QWidget* VBoxProblemReporter::mainWindowShown() const
     }
     else
     {
-        if (vboxGlobal().vmWindow() && vboxGlobal().selectorWnd().isVisible()) /* VM selector is visible */
+        if (vboxGlobal().selectorWnd().isVisible()) /* VM selector is visible */
             return &vboxGlobal().selectorWnd(); /* return that window */
     }
 #else
     if (vboxGlobal().vmWindow() && vboxGlobal().vmWindow().isVisible()) /* VM window is visible */
         return &vboxGlobal().vmWindow(); /* return that window */
-    if (vboxGlobal().vmWindow() && vboxGlobal().selectorWnd().isVisible()) /* VM selector is visible */
+    if (vboxGlobal().selectorWnd().isVisible()) /* VM selector is visible */
         return &vboxGlobal().selectorWnd(); /* return that window */
 #endif
 
