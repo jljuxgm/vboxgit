@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 26728 2010-02-24 10:22:51Z vboxsync $ */
+/* $Id: DevEFI.cpp 27122 2010-03-05 18:14:34Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -273,7 +273,7 @@ static DECLCALLBACK(int) efiIOPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPOR
 #ifdef IN_RING3
            LogRel(("Panic port read!\n"));
            /* Insert special code here on panic reads */
-           return VINF_SUCCESS;
+           return PDMDevHlpDBGFStop(pDevIns, RT_SRC_POS, "EFI Panic: panic port read!\n");
 #else
            /* Reschedule to R3 */
            return VINF_IOM_HC_IOPORT_READ;
