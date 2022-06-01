@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 30207 2010-06-15 15:49:27Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 30345 2010-06-21 16:49:59Z vboxsync $ */
 
 /** @file
  *
@@ -95,7 +95,7 @@ public:
     BEGIN_CONNECTION_POINT_MAP(VirtualBox)
          CONNECTION_POINT_ENTRY(IID_IVirtualBoxCallback)
     END_CONNECTION_POINT_MAP()
-   
+
     typedef CComDynamicUnkArray EventListenersList;
 #endif
 
@@ -129,6 +129,7 @@ public:
     STDMETHOD(COMGETTER(SharedFolders)) (ComSafeArrayOut (ISharedFolder *, aSharedFolders));
     STDMETHOD(COMGETTER(PerformanceCollector)) (IPerformanceCollector **aPerformanceCollector);
     STDMETHOD(COMGETTER(DHCPServers)) (ComSafeArrayOut (IDHCPServer *, aDHCPServers));
+    STDMETHOD(COMGETTER(EventSource)) (IEventSource ** aEventSource);
 
     /* IVirtualBox methods */
 
