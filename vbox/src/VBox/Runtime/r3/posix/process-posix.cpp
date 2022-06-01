@@ -1,10 +1,10 @@
-/* $Id: process-posix.cpp 26824 2010-02-26 10:36:08Z vboxsync $ */
+/* $Id: process-posix.cpp 27287 2010-03-11 16:36:28Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -226,7 +226,7 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
             }
 
             if (!rc)
-                rc = posix_spawn(&pid, pszExec, NULL, &Attr, (char * const *)papszArgs,
+                rc = posix_spawn(&pid, pszExec, pFileActions, &Attr, (char * const *)papszArgs,
                                  (char * const *)papszEnv);
 
             /* cleanup */
