@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 27099 2010-03-05 14:54:32Z vboxsync $ */
+/* $Id: HWACCM.cpp 27167 2010-03-08 14:19:31Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -323,6 +323,7 @@ VMMR3DECL(int) HWACCMR3Init(PVM pVM)
     pVM->hwaccm.s.svm.fEnabled   = false;
 
     pVM->hwaccm.s.fNestedPaging  = false;
+    pVM->hwaccm.s.fLargePages    = false;
 
     /* Disabled by default. */
     pVM->fHWACCMEnabled = false;
@@ -334,6 +335,10 @@ VMMR3DECL(int) HWACCMR3Init(PVM pVM)
     PCFGMNODE pHWVirtExt = CFGMR3GetChild(pRoot, "HWVirtExt/");
     /* Nested paging: disabled by default. */
     rc = CFGMR3QueryBoolDef(pHWVirtExt, "EnableNestedPaging", &pVM->hwaccm.s.fAllowNestedPaging, false);
+    AssertRC(rc);
+
+    /* Large pages: disabled by default. */
+    rc = CFGMR3QueryBoolDef(pHWVirtExt, "EnableLargePages", &pVM->hwaccm.s.fLargePages, false);
     AssertRC(rc);
 
     /* VT-x VPID: disabled by default. */
@@ -1157,9 +1162,13 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                     if (pVM->hwaccm.s.vmx.fUnrestrictedGuest)
                         LogRel(("HWACCM: Unrestricted guest execution enabled!\n"));
 
-#ifdef DEBUG_sandervl
-                    /* Use large (2 MB) pages for our EPT PDEs where possible. */
-                    PGMSetLargePageUsage(pVM, true);
+#if HC_ARCH_BITS == 64
+                    if (pVM->hwaccm.s.fLargePages)
+                    {
+                        /* Use large (2 MB) pages for our EPT PDEs where possible. */
+                        PGMSetLargePageUsage(pVM, true);
+                        LogRel(("HWACCM: Large page support enabled!\n"));
+                    }
 #endif
                 }
                 else
@@ -1280,9 +1289,13 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
 
                 if (pVM->hwaccm.s.fNestedPaging)
                 {
-#ifdef DEBUG_sandervl
-                    /* Use large (2 MB) pages for our EPT PDEs where possible. */
-                    PGMSetLargePageUsage(pVM, true);
+#if HC_ARCH_BITS == 64
+                    if (pVM->hwaccm.s.fLargePages)
+                    {
+                        /* Use large (2 MB) pages for our EPT PDEs where possible. */
+                        PGMSetLargePageUsage(pVM, true);
+                        LogRel(("HWACCM: Large page support enabled!\n"));
+                    }
 #endif
                     LogRel(("HWACCM:    Enabled nested paging\n"));
                 }
