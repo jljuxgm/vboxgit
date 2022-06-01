@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 28061 2010-04-07 18:45:51Z vboxsync $ */
+/* $Id: DevE1000.cpp 28073 2010-04-07 23:22:53Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2902,7 +2902,6 @@ DECLINLINE(void) e1kSetupGsoCtx(PPDMNETWORKGSO pGso, E1KTXCTX const *pCtx)
  */
 DECLINLINE(bool) e1kCanDoGso(PCPDMNETWORKGSO pGso, E1KTXDAT const *pData)
 {
-//return false; /** @todo remove this before comitting */
     if (!pData->cmd.fTSE)
         return false;
     if (pData->cmd.fVLE) /** @todo VLAN tagging. */
@@ -2989,7 +2988,7 @@ DECLINLINE(int) e1kXmitAllocBuf(E1KSTATE *pState, size_t cbMin, bool fExactSize,
     Assert(pState->pTxSgR3 == NULL);
 
     /*
-     * Allocate the buffe.r
+     * Allocate the buffer.
      */
     PPDMSCATTERGATHER pSg;
     if (RT_LIKELY(GET_BITS(RCTL, LBM) != RCTL_LBM_TCVR))
