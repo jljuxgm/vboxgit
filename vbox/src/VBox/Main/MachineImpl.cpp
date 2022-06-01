@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 27792 2010-03-29 13:08:44Z vboxsync $ */
+/* $Id: MachineImpl.cpp 27793 2010-03-29 13:16:54Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -135,6 +135,7 @@ Machine::UserData::UserData()
     mNameSync = TRUE;
     mTeleporterEnabled = FALSE;
     mTeleporterPort = 0;
+    mRTCUseUTC = FALSE;
 
     /* mName, mOSTypeId, mSnapshotFolder, mSnapshotFolderFull are initialized in
      * Machine::init() */
