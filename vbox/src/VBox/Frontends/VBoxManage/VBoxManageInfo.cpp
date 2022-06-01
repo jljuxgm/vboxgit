@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 24301 2009-11-03 22:07:55Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 24375 2009-11-05 10:55:31Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -536,17 +536,16 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
         ComPtr<IStorageController> storageCtl = storageCtls[i];
         StorageControllerType_T    enmCtlType = StorageControllerType_Null;
         const char *pszCtl = NULL;
+        ULONG ulValue = 0;
         Bstr storageCtlName;
 
         storageCtl->COMGETTER(Name)(storageCtlName.asOutParam());
-
         if (details == VMINFO_MACHINEREADABLE)
-            RTPrintf("storagecontroller%u:\"%lS\"\n", i, storageCtlName.raw());
+            RTPrintf("storagecontrollername%u:\"%lS\"\n", i, storageCtlName.raw());
         else
-            RTPrintf("Storage Controller      (%u): %lS\n", i, storageCtlName.raw());
+            RTPrintf("Storage Controller Name (%u):            %lS\n", i, storageCtlName.raw());
 
         storageCtl->COMGETTER(ControllerType)(&enmCtlType);
-
         switch (enmCtlType)
         {
             case StorageControllerType_LsiLogic:
@@ -577,7 +576,25 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
         if (details == VMINFO_MACHINEREADABLE)
             RTPrintf("storagecontrollertype%u:=\"%s\"\n", i, pszCtl);
         else
-            RTPrintf("Storage Controller Type (%u): %s\n", i, pszCtl);
+            RTPrintf("Storage Controller Type (%u):            %s\n", i, pszCtl);
+
+        storageCtl->COMGETTER(Instance)(&ulValue);
+        if (details == VMINFO_MACHINEREADABLE)
+            RTPrintf("storagecontrollerinstance%u:\"%lu\"\n", i, ulValue);
+        else
+            RTPrintf("Storage Controller Instance Number (%u): %lu\n", i, ulValue);
+
+        storageCtl->COMGETTER(MaxPortCount)(&ulValue);
+        if (details == VMINFO_MACHINEREADABLE)
+            RTPrintf("storagecontrollermaxportcount%u:\"%lu\"\n", i, ulValue);
+        else
+            RTPrintf("Storage Controller Max Port Count (%u):  %lu\n", i, ulValue);
+
+        storageCtl->COMGETTER(PortCount)(&ulValue);
+        if (details == VMINFO_MACHINEREADABLE)
+            RTPrintf("storagecontrollerportcount%u:\"%lu\"\n", i, ulValue);
+        else
+            RTPrintf("Storage Controller Port Count (%u):      %lu\n", i, ulValue);
     }
 
     for (size_t j = 0; j < storageCtls.size(); ++ j)
