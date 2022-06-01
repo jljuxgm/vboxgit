@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 28610 2010-04-22 18:26:03Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 28613 2010-04-22 18:44:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -985,6 +985,12 @@ void UIMachineLogic::sltReset()
     /* Confirm/Reset current console: */
     if (vboxProblem().confirmVMReset(0))
         session().GetConsole().Reset();
+
+    /* TODO_NEW_CORE: On reset the additional screens didn't get a display
+       update. Emulate this for now until it get fixed. */
+    ulong uMonitorCount = session().GetMachine().GetMonitorCount();
+    for (ulong uScreenId = 1; uScreenId < uMonitorCount; ++uScreenId)
+        machineWindows().at(uScreenId)->machineWindow()->update();
 }
 
 void UIMachineLogic::sltPause(bool fOn)
