@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsDisplay.cpp 29679 2010-05-20 10:08:26Z vboxsync $ */
+/* $Id: VBoxVMSettingsDisplay.cpp 29947 2010-06-01 12:54:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -148,7 +148,8 @@ void VBoxVMSettingsDisplay::getFrom (const CMachine &aMachine)
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
     mCb2DVideo->setEnabled (VBoxGlobal::isAcceleration2DVideoAvailable());
-    mCb2DVideo->setChecked (mMachine.GetAccelerate2DVideoEnabled());
+    mCb2DVideo->setChecked (   mMachine.GetAccelerate2DVideoEnabled()
+                            && VBoxGlobal::isAcceleration2DVideoAvailable());
 #endif
 
     /* VRDP Settings */
