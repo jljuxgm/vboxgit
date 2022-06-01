@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 25197 2009-12-04 17:32:03Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 25286 2009-12-09 23:50:02Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -1030,7 +1030,8 @@ void USBController::copyFrom (USBController *aThat)
 
     /* peer is not modified, lock it for reading (aThat is "master" so locked
      * first) */
-    AutoMultiLock2 alock (aThat->rlock(), this->wlock());
+    AutoReadLock rl(aThat);
+    AutoWriteLock wl(this);
 
     /* this will back up current data */
     m->bd.assignCopy(aThat->m->bd);

@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 25199 2009-12-04 17:57:40Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 25286 2009-12-09 23:50:02Z vboxsync $ */
 
 /** @file
  *
@@ -771,7 +771,8 @@ void StorageController::unshare()
 
     /* peer is not modified, lock it for reading (m->pPeer is "master" so locked
      * first) */
-    AutoMultiLock2 alock (m->pPeer->rlock(), this->wlock());
+    AutoReadLock rl(m->pPeer);
+    AutoWriteLock wl(this);
 
     if (m->bd.isShared())
     {

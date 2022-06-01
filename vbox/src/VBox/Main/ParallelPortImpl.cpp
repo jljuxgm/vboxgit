@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.cpp 25279 2009-12-09 17:50:26Z vboxsync $ */
+/* $Id: ParallelPortImpl.cpp 25286 2009-12-09 23:50:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -531,7 +531,8 @@ void ParallelPort::copyFrom(ParallelPort *aThat)
 
     /* peer is not modified, lock it for reading (aThat is "master" so locked
      * first) */
-    AutoMultiLock2 alock (aThat->rlock(), this->wlock());
+    AutoReadLock rl(aThat);
+    AutoWriteLock wl(this);
 
     /* this will back up current data */
     m->bd.assignCopy(aThat->m->bd);
