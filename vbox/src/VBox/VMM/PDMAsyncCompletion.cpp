@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 28853 2010-04-27 19:20:58Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -229,7 +229,6 @@ VMMR3DECL(int) PDMR3AsyncCompletionTemplateCreateDriver(PVM pVM, PPDMDRVINS pDrv
     /*
      * Validate input.
      */
-    VM_ASSERT_EMT(pVM);
     if (!pfnCompleted)
     {
         AssertMsgFailed(("No completion callback!\n"));
