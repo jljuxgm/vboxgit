@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 26977 2010-03-02 21:33:25Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 27382 2010-03-15 21:19:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -691,7 +691,8 @@ bool UINewVMWzdPage5::constructMachine()
     if (type.GetRecommendedUsbHid())
     {
         m_Machine.SetKeyboardHidType(KKeyboardHidType_USBKeyboard);
-        m_Machine.SetPointingHidType(KPointingHidType_USBMouse);
+        m_Machine.SetPointingHidType(type.GetRecommendedUsbTablet()  ? 
+                                     KPointingHidType_USBTablet : KPointingHidType_USBMouse);
         if (!usbController.isNull())
             usbController.SetEnabled(true);
     }
