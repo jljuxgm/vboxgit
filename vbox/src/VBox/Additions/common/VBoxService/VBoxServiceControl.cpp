@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControl.cpp 27926 2010-04-01 08:58:39Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 27945 2010-04-01 15:20:08Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -111,7 +111,11 @@ static int VBoxServiceControlHandleCmdExec(uint32_t u32ClientId, uint32_t uNumPa
                                            execData.szUser, sizeof(execData.szUser),
                                            execData.szPassword, sizeof(execData.szPassword),
                                            &execData.uTimeLimitMS);
-    if (RT_SUCCESS(rc))
+    if (RT_FAILURE(rc))
+    {
+        VBoxServiceError("Control: Failed to retrieve execution command! Error: %Rrc\n", rc);
+    }
+    else
     {
         /* Adjust time limit value. */
         execData.uTimeLimitMS = UINT32_MAX ? 
