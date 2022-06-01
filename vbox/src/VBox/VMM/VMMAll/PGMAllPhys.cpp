@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 26678 2010-02-22 16:21:50Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 26679 2010-02-22 16:29:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -463,7 +463,7 @@ int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
  */
 int pgmPhysAllocLargePage(PVM pVM, RTGCPHYS GCPhys, RTHCPHYS *pHCPhys)
 {
-    RTGCPHYS GCPhysBase = GCPhys & X86_PDE_PAE_PG_MASK_FULL;
+    RTGCPHYS GCPhysBase = GCPhys & X86_PDE2M_PAE_PG_MASK;
     LogFlow(("pgmPhysAllocLargePage: %RGp base %RGp\n", GCPhys, GCPhysBase));
 
     /*
