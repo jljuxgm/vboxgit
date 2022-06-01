@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 27724 2010-03-26 10:22:13Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 27751 2010-03-26 15:28:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -629,6 +629,10 @@ HRESULT Display::init (Console *aParent)
 
         maFramebuffers[ul].w = 0;
         maFramebuffers[ul].h = 0;
+
+        maFramebuffers[ul].u16BitsPerPixel = 0;
+        maFramebuffers[ul].pu8FramebufferVRAM = NULL;
+        maFramebuffers[ul].u32LineSize = 0;
 
         maFramebuffers[ul].pHostEvents = NULL;
 
@@ -3373,6 +3377,18 @@ DECLCALLBACK(int) Display::displayVBVAResize(PPDMIDISPLAYCONNECTOR pInterface, c
 
     DISPLAYFBINFO *pFBInfo = &pThis->maFramebuffers[pScreen->u32ViewIndex];
 
+    /* Check if this is a real resize or a notification about the screen origin.
+     * The guest uses this VBVAResize call for both.
+     */
+    bool fResize =    pFBInfo->u16BitsPerPixel != pScreen->u16BitsPerPixel
+                   || pFBInfo->pu8FramebufferVRAM != (uint8_t *)pvVRAM + pScreen->u32StartOffset
+                   || pFBInfo->u32LineSize != pScreen->u32LineSize
+                   || pFBInfo->w != pScreen->u32Width
+                   || pFBInfo->h != pScreen->u32Height;
+
+    bool fNewOrigin =    pFBInfo->xOrigin != pScreen->i32OriginX
+                      || pFBInfo->yOrigin != pScreen->i32OriginY;
+
     pFBInfo->u32Offset = pView->u32ViewOffset; /* Not used in HGSMI. */
     pFBInfo->u32MaxFramebufferSize = pView->u32MaxScreenSize; /* Not used in HGSMI. */
     pFBInfo->u32InformationSize = 0; /* Not used in HGSMI. */
@@ -3382,6 +3398,21 @@ DECLCALLBACK(int) Display::displayVBVAResize(PPDMIDISPLAYCONNECTOR pInterface, c
 
     pFBInfo->w = pScreen->u32Width;
     pFBInfo->h = pScreen->u32Height;
+
+    pFBInfo->u16BitsPerPixel = pScreen->u16BitsPerPixel;
+    pFBInfo->pu8FramebufferVRAM = (uint8_t *)pvVRAM + pScreen->u32StartOffset;
+    pFBInfo->u32LineSize = pScreen->u32LineSize;
+
+    if (fNewOrigin)
+    {
+        /* @todo May be framebuffer/display should be notified in this case. */
+    }
+
+    if (!fResize)
+    {
+        /* No paramaters of the framebuffer have actually changed. */
+        return VINF_SUCCESS;
+    }
 
     return pThis->handleDisplayResize(pScreen->u32ViewIndex, pScreen->u16BitsPerPixel,
                                       (uint8_t *)pvVRAM + pScreen->u32StartOffset,

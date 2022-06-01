@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 27607 2010-03-22 18:13:07Z vboxsync $ */
+/* $Id: DisplayImpl.h 27751 2010-03-26 15:28:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -51,6 +51,10 @@ typedef struct _DISPLAYFBINFO
 
     ULONG w;
     ULONG h;
+
+    uint16_t u16BitsPerPixel;
+    uint8_t *pu8FramebufferVRAM;
+    uint32_t u32LineSize;
 
     VBOXVIDEOINFOHOSTEVENTS *pHostEvents;
 
