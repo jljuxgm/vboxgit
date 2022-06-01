@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27013 2010-03-04 11:55:54Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27016 2010-03-04 12:33:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -32,6 +32,7 @@
 
 #ifdef Q_WS_MAC
 # include "UISession.h"
+# include "VBoxUtils.h"
 #endif /* Q_WS_MAC */
 #include "UIMachineLogic.h"
 #include "UIMachineView.h"
@@ -254,7 +255,7 @@ void UIMachineWindowSeamless::setMask(const QRegion &constRegion)
         /* If we are using the Quartz2D backend we have to trigger
          * an repaint only. All the magic clipping stuff is done
          * in the paint engine. */
-        ::darwinWindowInvalidateShape (mConsole->viewport());
+        ::darwinWindowInvalidateShape(m_pMachineView->viewport());
     }
     else
 # endif
@@ -275,7 +276,7 @@ void UIMachineWindowSeamless::setMask(const QRegion &constRegion)
         // qApp->processEvents();
         // /* Now force the reshaping of the window. This is definitly necessary. */
         // ReshapeCustomWindow (reinterpret_cast <WindowPtr> (winId()));
-        QMainWindow::setMask (region);
+        QMainWindow::setMask(region);
         // HIWindowInvalidateShadow (::darwinToWindowRef (mConsole->viewport()));
     }
 #else
