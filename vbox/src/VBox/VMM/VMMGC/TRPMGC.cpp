@@ -1,4 +1,4 @@
-/* $Id: TRPMGC.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: TRPMGC.cpp 30263 2010-06-16 18:31:42Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -174,7 +174,8 @@ VMMRCDECL(int) trpmRCShadowIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCT
      * to simply ignore the writes and pretend success.
      */
     RTGCPTR PC;
-    int rc = SELMValidateAndConvertCSAddr(pVM, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid, (RTGCPTR)pRegFrame->eip, &PC);
+    int rc = SELMValidateAndConvertCSAddr(pVM, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid,
+                                          (RTGCPTR)pRegFrame->eip, &PC);
     if (rc == VINF_SUCCESS)
     {
         DISCPUSTATE Cpu;

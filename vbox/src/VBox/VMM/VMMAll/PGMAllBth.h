@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 29676 2010-05-20 09:54:57Z vboxsync $ */
+/* $Id: PGMAllBth.h 30263 2010-06-16 18:31:42Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -772,7 +772,8 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
                              * Decode the instruction.
                              */
                             RTGCPTR PC;
-                            rc = SELMValidateAndConvertCSAddr(pVM, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid, (RTGCPTR)pRegFrame->eip, &PC);
+                            rc = SELMValidateAndConvertCSAddr(pVM, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs,
+                                                              &pRegFrame->csHid, (RTGCPTR)pRegFrame->eip, &PC);
                             if (rc == VINF_SUCCESS)
                             {
                                 PDISCPUSTATE pDis = &pVCpu->pgm.s.DisState;
