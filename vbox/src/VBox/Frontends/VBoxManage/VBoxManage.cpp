@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 23935 2009-10-21 14:18:11Z vboxsync $ */
+/* $Id: VBoxManage.cpp 24397 2009-11-05 16:20:44Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1316,7 +1316,7 @@ static int handleControlVM(HandlerArg *a)
                     case 'p': uPort         = Value.u32; break;
                     case 'P': bstrPassword  = Value.psz; break;
                     default:
-                        errorGetOpt(USAGE_SNAPSHOT, ch, &Value);
+                        errorGetOpt(USAGE_CONTROLVM, ch, &Value);
                         rc = E_FAIL;
                         break;
                 }
