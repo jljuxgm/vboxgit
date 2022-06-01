@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-solaris.c 22347 2009-08-19 14:02:05Z vboxsync $ */
+/* $Id: mp-r0drv-solaris.c 24386 2009-11-05 14:17:10Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Solaris.
  */
@@ -32,13 +32,13 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "the-solaris-kernel.h"
+#include "../the-solaris-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/mp.h>
+#include <iprt/cpuset.h>
 
 #include <iprt/asm.h>
 #include <iprt/err.h>
-#include "internal-r0drv-solaris.h"
 #include "r0drv/mp-r0drv.h"
 
 

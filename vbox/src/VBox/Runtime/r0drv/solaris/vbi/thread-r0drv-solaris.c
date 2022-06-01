@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 23505 2009-10-02 11:05:03Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 24386 2009-11-05 14:17:10Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -32,7 +32,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "the-solaris-kernel.h"
+#include "../the-solaris-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/thread.h>
 
