@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 25845 2010-01-14 19:50:48Z vboxsync $ */
+/* $Id: DevACPI.cpp 25854 2010-01-15 11:07:26Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1426,9 +1426,9 @@ PDMBOTHCBDECL(int) acpiSysInfoDataRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPOR
 
                 case SYSTEM_INFO_INDEX_CPU_LOCKED:
                 {
-                    if (s->idCpuLockCheck != UINT32_C(0xffffffff))
+                    if (s->idCpuLockCheck < VMM_MAX_CPU_COUNT)
                     {
-                        *pu32 = VMCPUSET_IS_PRESENT(&s->CpuSetLocked, s->idCpuLockCheck) ? 1 : 0;
+                        *pu32 = VMCPUSET_IS_PRESENT(&s->CpuSetLocked, s->idCpuLockCheck);
                         s->idCpuLockCheck = UINT32_C(0xffffffff); /* Make the entry invalid */
                     }
                     else
