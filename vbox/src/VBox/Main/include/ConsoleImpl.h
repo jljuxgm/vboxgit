@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 29580 2010-05-17 18:23:00Z vboxsync $ */
+/* $Id: ConsoleImpl.h 29957 2010-06-01 15:21:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -572,7 +572,8 @@ private:
     HRESULT                     teleporterSrc(TeleporterStateSrc *pState);
     HRESULT                     teleporterSrcReadACK(TeleporterStateSrc *pState, const char *pszWhich, const char *pszNAckMsg = NULL);
     HRESULT                     teleporterSrcSubmitCommand(TeleporterStateSrc *pState, const char *pszCommand, bool fWaitForAck = true);
-    int                         teleporterTrg(PVM pVM, IMachine *pMachine, bool fStartPaused, Progress *pProgress);
+    HRESULT                     teleporterTrg(PVM pVM, IMachine *pMachine, Utf8Str *pErrorMsg, bool fStartPaused,
+                                              Progress *pProgress, bool *pfPowerOffOnFailure);
     static DECLCALLBACK(int)    teleporterTrgServeConnection(RTSOCKET Sock, void *pvUser);
     /** @} */
 

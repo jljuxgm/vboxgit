@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 29927 2010-05-31 18:40:56Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 29957 2010-06-01 15:21:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7406,9 +7406,15 @@ DECLCALLBACK(int) Console::powerUpThread(RTTHREAD Thread, void *pvUser)
                 else if (task->mTeleporterEnabled)
                 {
                     /* -> ConsoleImplTeleporter.cpp */
-                    vrc = console->teleporterTrg(pVM, pMachine, task->mStartPaused, task->mProgress);
-                    if (RT_FAILURE(vrc) && !task->mErrorMsg.length())
-                        rc = E_FAIL;    /* Avoid the "Missing error message..." assertion. */
+                    bool fPowerOffOnFailure;
+                    rc = console->teleporterTrg(pVM, pMachine, &task->mErrorMsg, task->mStartPaused,
+                                                task->mProgress, &fPowerOffOnFailure);
+                    if (FAILED(rc) && fPowerOffOnFailure)
+                    {
+                        ErrorInfoKeeper eik;
+                        int vrc2 = VMR3PowerOff(pVM);
+                        AssertRC(vrc2);
+                    }
                 }
                 else if (task->mStartPaused)
                     /* done */
