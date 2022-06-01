@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26332 2010-02-08 16:58:53Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 26335 2010-02-08 19:08:02Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -160,11 +160,11 @@ int DarwinSmcKey(char* aKey, uint32_t iKeySize)
             aKey[j + i*32] = outputStruct.data[j];
     }
 
+    IOServiceClose(port);
+
     aKey[64] = 0;
     
-    //fprintf(stderr, "osk=%s\n", aKey)
-
-    return rc;
+    return VINF_SUCCESS;
 }
 
 #endif
