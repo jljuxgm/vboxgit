@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 28678 2010-04-23 18:21:55Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 28735 2010-04-26 09:16:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -521,12 +521,16 @@ public:
         if (console.isNull())
             return;
 
-        bool bVirtEnabled = console.GetDebugger().GetHWVirtExEnabled();
+        const CMachineDebugger &debugger = console.GetDebugger();
+        if (debugger.isNull())
+            return;
+
+        bool bVirtEnabled = debugger.GetHWVirtExEnabled();
         QString virtualization = bVirtEnabled ?
             VBoxGlobal::tr("Enabled", "details report (VT-x/AMD-V)") :
             VBoxGlobal::tr("Disabled", "details report (VT-x/AMD-V)");
 
-        bool bNestEnabled = console.GetDebugger().GetHWVirtExNestedPagingEnabled();
+        bool bNestEnabled = debugger.GetHWVirtExNestedPagingEnabled();
         QString nestedPaging = bNestEnabled ?
             VBoxGlobal::tr("Enabled", "nested paging") :
             VBoxGlobal::tr("Disabled", "nested paging");
