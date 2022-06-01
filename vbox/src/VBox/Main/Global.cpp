@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 29128 2010-05-06 10:21:46Z vboxsync $ */
+/* $Id: Global.cpp 29161 2010-05-06 15:06:13Z vboxsync $ */
 
 /** @file
  *
@@ -241,7 +241,7 @@ const Global::OSType Global::sOSTypes[SchemaDefs::OSTypeId_COUNT] =
         StorageControllerType_PIIX4, StorageBus_IDE  },
     { "BSD",     "BSD",               SchemaDefs_OSTypeId_OpenBSD,         "OpenBSD",
       VBOXOSTYPE_OpenBSD,         VBOXOSHINT_HWVIRTEX,
-        64,   4,  2 * _1K, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+        64,   4,  2 * _1K, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_PIIX4, StorageBus_IDE  },
     { "BSD",     "BSD",               SchemaDefs_OSTypeId_OpenBSD_64,      "OpenBSD (64 bit)",
       VBOXOSTYPE_OpenBSD_x64,     VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC,
@@ -249,7 +249,7 @@ const Global::OSType Global::sOSTypes[SchemaDefs::OSTypeId_COUNT] =
         StorageControllerType_PIIX4, StorageBus_IDE  },
     { "BSD",     "BSD",               SchemaDefs_OSTypeId_NetBSD,          "NetBSD",
       VBOXOSTYPE_NetBSD,          VBOXOSHINT_NONE,
-        64,   4,  2 * _1K, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+        64,   4,  2 * _1K, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_PIIX4, StorageBus_IDE  },
     { "BSD",     "BSD",               SchemaDefs_OSTypeId_NetBSD_64,       "NetBSD (64 bit)",
       VBOXOSTYPE_NetBSD_x64,      VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC,
