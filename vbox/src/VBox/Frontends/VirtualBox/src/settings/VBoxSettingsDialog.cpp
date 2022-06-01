@@ -1,4 +1,4 @@
-/* $Id: VBoxSettingsDialog.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxSettingsDialog.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,6 +24,7 @@
 #include "VBoxSettingsSelector.h"
 #include "VBoxSettingsPage.h"
 #include "VBoxToolBar.h"
+#include "UIIconPool.h"
 
 #ifdef Q_WS_MAC
 # include "VBoxUtils.h"
@@ -103,8 +104,8 @@ VBoxSettingsDialog::VBoxSettingsDialog (QWidget *aParent /* = NULL */)
 
     /* Setup error & warning stuff */
     mButtonBox->addExtraWidget (mIconLabel);
-    mErrorIcon = vboxGlobal().standardIcon (QStyle::SP_MessageBoxCritical, this).pixmap (16, 16);
-    mWarnIcon = vboxGlobal().standardIcon (QStyle::SP_MessageBoxWarning, this).pixmap (16, 16);
+    mErrorIcon = UIIconPool::defaultIcon(UIIconPool::MessageBoxCriticalIcon, this).pixmap (16, 16);
+    mWarnIcon = UIIconPool::defaultIcon(UIIconPool::MessageBoxWarningIcon, this).pixmap (16, 16);
 
     /* Set the default button */
     mButtonBox->button (QDialogButtonBox::Ok)->setDefault (true);

@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonPress.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: QIArrowButtonPress.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -18,8 +18,8 @@
  */
 
 /* VBox includes */
-#include "VBoxGlobal.h"
 #include "QIArrowButtonPress.h"
+#include "UIIconPool.h"
 
 /* Qt includes */
 #include <QKeyEvent>
@@ -48,8 +48,8 @@ QIArrowButtonPress::QIArrowButtonPress (bool aNext, const QString &aName, QWidge
 
 void QIArrowButtonPress::updateIcon()
 {
-    mButton->setIcon (VBoxGlobal::iconSet (mNext ?
-                      ":/arrow_right_10px.png" : ":/arrow_left_10px.png"));
+    mButton->setIcon(UIIconPool::iconSet(mNext ?
+                                         ":/arrow_right_10px.png" : ":/arrow_left_10px.png"));
 }
 
 bool QIArrowButtonPress::eventFilter (QObject *aObject, QEvent *aEvent)

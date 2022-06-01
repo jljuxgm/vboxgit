@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonSwitch.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: QIArrowButtonSwitch.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -18,8 +18,8 @@
  */
 
 /* VBox includes */
-#include "VBoxGlobal.h"
 #include "QIArrowButtonSwitch.h"
+#include "UIIconPool.h"
 
 /* Qt includes */
 #include <QKeyEvent>
@@ -55,8 +55,8 @@ void QIArrowButtonSwitch::buttonClicked()
 
 void QIArrowButtonSwitch::updateIcon()
 {
-    mButton->setIcon (VBoxGlobal::iconSet (mIsExpanded ?
-                      ":/arrow_down_10px.png" : ":/arrow_right_10px.png"));
+    mButton->setIcon(UIIconPool::iconSet(mIsExpanded ?
+                                         ":/arrow_down_10px.png" : ":/arrow_right_10px.png"));
 }
 
 bool QIArrowButtonSwitch::eventFilter (QObject *aObject, QEvent *aEvent)

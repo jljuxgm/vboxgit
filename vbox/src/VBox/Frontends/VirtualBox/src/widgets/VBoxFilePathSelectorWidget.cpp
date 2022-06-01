@@ -1,4 +1,4 @@
-/* $Id: VBoxFilePathSelectorWidget.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxFilePathSelectorWidget.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,20 +17,22 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* VBox includes */
-#include "VBoxFilePathSelectorWidget.h"
-#include "VBoxGlobal.h"
+/* Local includes */
 #include "QIFileDialog.h"
 #include "QILabel.h"
 #include "QILineEdit.h"
+#include "UIIconPool.h"
+#include "VBoxFilePathSelectorWidget.h"
 
-/* Qt includes */
+/* Global includes */
+#include <iprt/assert.h>
 #include <QAction>
 #include <QApplication>
 #include <QClipboard>
 #include <QDir>
 #include <QFileIconProvider>
 #include <QFocusEvent>
+#include <QHBoxLayout>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QTimer>
@@ -78,8 +80,8 @@ VBoxFilePathSelectorWidget::VBoxFilePathSelectorWidget (QWidget *aParent)
     insertItem (ResetId, "");
 
     /* Attaching known icons */
-    setItemIcon (SelectId, VBoxGlobal::iconSet (":/select_file_16px.png"));
-    setItemIcon (ResetId, VBoxGlobal::iconSet (":/eraser_16px.png"));
+    setItemIcon(SelectId, UIIconPool::iconSet(":/select_file_16px.png"));
+    setItemIcon(ResetId, UIIconPool::iconSet(":/eraser_16px.png"));
 
     /* Setup context menu */
     addAction (mCopyAction);
@@ -155,7 +157,7 @@ void VBoxFilePathSelectorWidget::setResetEnabled (bool aEnabled)
     else if (aEnabled && count() - 1 == ResetId - 1)
     {
         insertItem (ResetId, "");
-        setItemIcon (ResetId, VBoxGlobal::iconSet (":/eraser_16px.png"));
+        setItemIcon(ResetId, UIIconPool::iconSet(":/eraser_16px.png"));
     }
     retranslateUi();
 }

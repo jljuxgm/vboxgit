@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 30179 2010-06-14 11:56:32Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -18,11 +18,11 @@
  */
 
 /* Local includes */
-#include "UINewVMWzd.h"
+#include "UIIconPool.h"
 #include "UINewHDWzd.h"
-#include "VBoxGlobal.h"
-#include "VBoxProblemReporter.h"
+#include "UINewVMWzd.h"
 #include "VBoxMediaManagerDlg.h"
+#include "VBoxProblemReporter.h"
 #include "VBoxVMSettingsHD.h"
 
 /* Globals */
@@ -348,7 +348,8 @@ UINewVMWzdPage4::UINewVMWzdPage4()
     m_pDiskSelector->repopulate();
 
     /* Setup medium-manager button */
-    m_pVMMButton->setIcon(VBoxGlobal::iconSet(":/select_file_16px.png", ":/select_file_dis_16px.png"));
+    m_pVMMButton->setIcon(UIIconPool::iconSet(":/select_file_16px.png",
+                                              ":/select_file_dis_16px.png"));
 
     /* Setup page connections */
     connect(m_pBootHDCnt, SIGNAL(toggled(bool)), this, SLOT(hardDiskSourceChanged()));

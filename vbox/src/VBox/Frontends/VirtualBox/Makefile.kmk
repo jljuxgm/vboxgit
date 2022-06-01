@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30188 2010-06-15 09:06:21Z vboxsync $
+# $Id: Makefile.kmk 30192 2010-06-15 12:35:56Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -389,6 +389,7 @@ VirtualBox_SOURCES = \
 	src/globals/VBoxDefs.cpp \
 	src/globals/VBoxGlobal.cpp \
 	src/globals/VBoxProblemReporter.cpp \
+	src/globals/UIIconPool.cpp \
 	src/extensions/QIAdvancedSlider.cpp \
 	src/extensions/QIArrowButtonPress.cpp \
 	src/extensions/QIArrowButtonSwitch.cpp \

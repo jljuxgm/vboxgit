@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSettingsNetwork.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxGLSettingsNetwork.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,10 +17,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/* Local includes */
 #include "QIWidgetValidator.h"
-#include "VBoxGlobal.h"
+#include "UIIconPool.h"
 #include "VBoxGLSettingsNetwork.h"
 #include "VBoxGLSettingsNetworkDetails.h"
+#include "VBoxGlobal.h"
 #include "VBoxProblemReporter.h"
 
 /* Qt includes */
@@ -277,12 +279,12 @@ VBoxGLSettingsNetwork::VBoxGLSettingsNetwork()
                                   << QKeySequence ("Space")
                                   << QKeySequence ("F2"));
 
-    mAddInterface->setIcon (VBoxGlobal::iconSet (":/add_host_iface_16px.png",
-                                                 ":/add_host_iface_disabled_16px.png"));
-    mRemInterface->setIcon (VBoxGlobal::iconSet (":/remove_host_iface_16px.png",
-                                                 ":/remove_host_iface_disabled_16px.png"));
-    mEditInterface->setIcon (VBoxGlobal::iconSet (":/guesttools_16px.png",
-                                                  ":/guesttools_disabled_16px.png"));
+    mAddInterface->setIcon(UIIconPool::iconSet(":/add_host_iface_16px.png",
+                                               ":/add_host_iface_disabled_16px.png"));
+    mRemInterface->setIcon(UIIconPool::iconSet(":/remove_host_iface_16px.png",
+                                               ":/remove_host_iface_disabled_16px.png"));
+    mEditInterface->setIcon(UIIconPool::iconSet(":/guesttools_16px.png",
+                                                ":/guesttools_disabled_16px.png"));
 
     mTbActions->setUsesTextLabel (false);
     mTbActions->setIconSize (QSize (16, 16));
