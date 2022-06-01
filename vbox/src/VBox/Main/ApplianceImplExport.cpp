@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 28957 2010-05-02 18:42:58Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 28958 2010-05-02 18:58:46Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1258,10 +1258,11 @@ void Appliance::buildXMLForOneVirtualSystem(xml::ElementNode &elmToAddVirtualSys
                 if (ulParent)
                     pItem->createChild("rasd:Parent")->addContent(Utf8StrFmt("%d", ulParent));
 
-                // <rasd:ResourceType>3</rasd:ResourceType>
-                pItem->createChild("rasd:ResourceType")->addContent(Utf8StrFmt("%d", type));
                 if (!strResourceSubType.isEmpty())
                     pItem->createChild("rasd:ResourceSubType")->addContent(strResourceSubType);
+
+                // <rasd:ResourceType>3</rasd:ResourceType>
+                pItem->createChild("rasd:ResourceType")->addContent(Utf8StrFmt("%d", type));
 
                 // <rasd:VirtualQuantity>1</rasd:VirtualQuantity>
                 if (lVirtualQuantity != -1)
