@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 27110 2010-03-05 16:06:06Z vboxsync $ */
+/* $Id: PGMAllBth.h 27112 2010-03-05 16:13:57Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3010,6 +3010,8 @@ PGM_BTH_DECL(int, SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RTGCPTR 
                 PdeDst.n.u1Execute   = 1;
                 PdeDst.b.u1IgnorePAT = 1;
                 PdeDst.b.u3EMT       = VMX_EPT_MEMTYPE_WB;
+#  else
+                PdeDst.n.u1User      = 1;
 #  endif
                 ASMAtomicWriteSize(pPdeDst, PdeDst.u);
 
