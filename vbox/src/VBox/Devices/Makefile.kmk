@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28406 2010-04-16 10:45:18Z vboxsync $
+# $Id: Makefile.kmk 28415 2010-04-16 12:59:40Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -191,6 +191,9 @@ ifdef VBOX_WITH_EFI
 endif
 ifdef VBOX_WITH_DRV_DISK_INTEGRITY
  VBoxDD_DEFS           += VBOX_WITH_DRV_DISK_INTEGRITY
+endif
+ifdef VBOX_WITH_PAGE_SHARING
+  VBoxDD_DEFS          += VBOX_WITH_PAGE_SHARING
 endif
 ifdef VBOX_WITH_VDE
  VBoxDD_DEFS           += VBOX_WITH_VDE

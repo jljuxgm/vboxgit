@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26951 2010-03-02 15:16:23Z vboxsync $
+# $Id: Makefile.kmk 28415 2010-04-16 12:59:40Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -114,6 +114,7 @@ VMMR3_SOURCES   = \
 	PGMPhys.cpp \
 	PGMPool.cpp \
 	PGMSavedState.cpp \
+	PGMSharedPage.cpp \
 	SELM.cpp \
 	SSM.cpp \
 	STAM.cpp \
