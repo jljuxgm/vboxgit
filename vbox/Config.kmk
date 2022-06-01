@@ -1,4 +1,4 @@
-# $Id: Config.kmk 27826 2010-03-30 13:41:53Z vboxsync $
+# $Id: Config.kmk 27832 2010-03-30 15:19:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -168,6 +168,10 @@ endif
 VBOX_VENDOR = Oracle Corporation
 VBOX_VENDOR_SHORT = Oracle
 VBOX_PRODUCT = Oracle VM VirtualBox
+# Not all could be done automatically. Here is a list of known places which
+# have to be updated manually. Please keep the list up to date.
+# src/VBox/Devices/PC/PXE/client/uinit.asm
+
 # maybe we want set this manually
 VBOX_C_YEAR = $(date-utc %Y)
 
@@ -4064,7 +4068,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 27826 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 27832 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
