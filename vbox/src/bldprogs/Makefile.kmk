@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26340 2010-02-09 03:12:44Z vboxsync $
+# $Id: Makefile.kmk 26345 2010-02-09 03:40:02Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -31,7 +31,7 @@ biossums_TEMPLATE = VBOXBLDPROG
 biossums_SOURCES = biossums.c
 
 PROGRAMS += scm
-scm_TEMPLATE = VBoxR3Static
+scm_TEMPLATE = VBOXR3EXE
 scm_SOURCES = scm.cpp
 scm_LIBS = \
 	$(LIB_RUNTIME)
