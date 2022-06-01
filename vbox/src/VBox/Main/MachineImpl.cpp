@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 29620 2010-05-18 12:15:55Z vboxsync $ */
+/* $Id: MachineImpl.cpp 29799 2010-05-25 18:18:13Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4965,8 +4965,9 @@ STDMETHODIMP Machine::QueryLogFilename(ULONG aIdx, BSTR *aName)
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     Utf8Str log = queryLogFilename(aIdx);
-    if (RTFileExists(log.c_str()))
-        log.cloneTo(aName);
+    if (!RTFileExists(log.c_str()))
+        log.setNull();
+    log.cloneTo(aName);
 
     return S_OK;
 }
