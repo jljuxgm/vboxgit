@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 28585 2010-04-22 10:16:57Z vboxsync $ */
+/* $Id: MachineImpl.cpp 28669 2010-04-23 17:53:01Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -4019,7 +4019,7 @@ STDMETHODIMP Machine::ShowConsoleWindow(ULONG64 *aWinId)
 HRESULT Machine::getGuestPropertyFromService(IN_BSTR aName,
                                              BSTR *aValue,
                                              ULONG64 *aTimestamp,
-                                             BSTR *aFlags)
+                                             BSTR *aFlags) const
 {
     using namespace guestProp;
 
@@ -4052,7 +4052,7 @@ HRESULT Machine::getGuestPropertyFromService(IN_BSTR aName,
 HRESULT Machine::getGuestPropertyFromVM(IN_BSTR aName,
                                         BSTR *aValue,
                                         ULONG64 *aTimestamp,
-                                        BSTR *aFlags)
+                                        BSTR *aFlags) const
 {
     HRESULT rc;
     ComPtr<IInternalSessionControl> directControl;

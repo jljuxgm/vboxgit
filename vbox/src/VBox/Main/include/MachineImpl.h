@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 28585 2010-04-22 10:16:57Z vboxsync $ */
+/* $Id: MachineImpl.h 28669 2010-04-23 17:53:01Z vboxsync $ */
 
 /** @file
  *
@@ -791,9 +791,9 @@ protected:
 
 #ifdef VBOX_WITH_GUEST_PROPS
     HRESULT getGuestPropertyFromService(IN_BSTR aName, BSTR *aValue,
-                                        ULONG64 *aTimestamp, BSTR *aFlags);
+                                        ULONG64 *aTimestamp, BSTR *aFlags) const;
     HRESULT getGuestPropertyFromVM(IN_BSTR aName, BSTR *aValue,
-                                   ULONG64 *aTimestamp, BSTR *aFlags);
+                                   ULONG64 *aTimestamp, BSTR *aFlags) const;
     HRESULT setGuestPropertyToService(IN_BSTR aName, IN_BSTR aValue,
                                       IN_BSTR aFlags);
     HRESULT setGuestPropertyToVM(IN_BSTR aName, IN_BSTR aValue,
