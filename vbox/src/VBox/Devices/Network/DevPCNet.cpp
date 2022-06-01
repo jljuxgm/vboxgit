@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 28333 2010-04-14 21:57:15Z vboxsync $ */
+/* $Id: DevPCNet.cpp 28336 2010-04-14 22:02:46Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -2258,7 +2258,7 @@ static void pcnetXmitReadMoreSlow(PCNetState *pThis, RTGCPHYS32 GCPhysFrame, uns
     {
         Assert(iSeg < pSgBuf->cSegs);
 
-        size_t cbRead = RT_MIN(pSgBuf->aSegs[iSeg].cbSeg, cbFrame);
+        uint32_t cbRead = (uint32_t)RT_MIN(pSgBuf->aSegs[iSeg].cbSeg, cbFrame);
         PDMDevHlpPhysRead(pThis->CTX_SUFF(pDevIns), GCPhysFrame, pSgBuf->aSegs[iSeg].pvSeg, cbRead);
         cbFrame -= cbRead;
         if (!cbFrame)
