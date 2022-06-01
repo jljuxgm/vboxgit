@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 29334 2010-05-11 10:29:44Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 29437 2010-05-12 21:40:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1899,7 +1899,7 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
     static const char *sSectionItemTpl1 =
         "<tr><td width=40%><nobr><i>%1</i></nobr></td><td/><td/></tr>";
     static const char *sSectionItemTpl2 =
-        "<tr><td width=40%><nobr>%1</nobr></td><td/><td>%2</td></tr>";
+        "<tr><td width=40%><nobr>%1:</nobr></td><td/><td>%2</td></tr>";
     static const char *sSectionItemTpl3 =
         "<tr><td width=40%><nobr>%1</nobr></td><td/><td/></tr>";
 
