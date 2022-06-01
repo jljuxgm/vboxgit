@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.h 25602 2009-12-31 01:18:00Z vboxsync $ */
+/* $Id: lockvalidator.h 25607 2009-12-31 13:21:39Z vboxsync $ */
 /** @file
  * IPRT - Internal RTLockValidator header.
  */
@@ -40,13 +40,13 @@ RT_C_DECLS_BEGIN
 /**
  * Record union for simplifying internal processing.
  */
-typedef union RTLOCKVALIDATORRECUNION
+typedef union RTLOCKVALRECUNION
 {
-    RTLOCKVALIDATORRECCORE      Core;
-    RTLOCKVALIDATORREC          Excl;
-    RTLOCKVALIDATORSHARED       Shared;
-    RTLOCKVALIDATORSHAREDONE    SharedOne;
-} RTLOCKVALIDATORRECUNION;
+    RTLOCKVALRECCORE      Core;
+    RTLOCKVALRECEXCL      Excl;
+    RTLOCKVALRECSHRD      Shared;
+    RTLOCKVALRECSHRDOWN   SharedOwn;
+} RTLOCKVALRECUNION;
 
 
 /**
@@ -57,13 +57,13 @@ typedef union RTLOCKVALIDATORRECUNION
 typedef struct RTLOCKVALIDATORPERTHREAD
 {
     /** What we're blocking on. */
-    PRTLOCKVALIDATORRECUNION volatile   pRec;
+    PRTLOCKVALRECUNION volatile     pRec;
     /** Where we are blocking. */
-    RTLOCKVALIDATORSRCPOS               SrcPos;
+    RTLOCKVALSRCPOS                 SrcPos;
     /** Number of registered write locks, mutexes and critsects that this thread owns. */
-    int32_t volatile                    cWriteLocks;
+    int32_t volatile                cWriteLocks;
     /** Number of registered read locks that this thread owns, nesting included. */
-    int32_t volatile                    cReadLocks;
+    int32_t volatile                cReadLocks;
 } RTLOCKVALIDATORPERTHREAD;
 
 

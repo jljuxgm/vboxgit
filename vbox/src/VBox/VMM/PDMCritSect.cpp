@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 25491 2009-12-18 15:20:48Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 25607 2009-12-31 13:21:39Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -126,7 +126,7 @@ static int pdmR3CritSectInitOne(PVM pVM, PPDMCRITSECTINT pCritSect, void *pvKey,
     int rc = SUPSemEventCreate(pVM->pSession, (PSUPSEMEVENT)&pCritSect->Core.EventSem);
     if (RT_SUCCESS(rc))
     {
-        rc = RTLockValidatorRecCreate(&pCritSect->Core.pValidatorRec, NIL_RTLOCKVALIDATORCLASS, 0, pszName, pCritSect);
+        rc = RTLockValidatorRecExclCreate(&pCritSect->Core.pValidatorRec, NIL_RTLOCKVALIDATORCLASS, 0, pszName, pCritSect);
         if (RT_SUCCESS(rc))
         {
             /*
@@ -244,7 +244,7 @@ static int pdmR3CritSectDeleteOne(PVM pVM, PPDMCRITSECTINT pCritSect, PPDMCRITSE
     ASMAtomicWriteS32(&pCritSect->Core.cLockers, -1);
     int rc = SUPSemEventClose(pVM->pSession, hEvent);
     AssertRC(rc);
-    RTLockValidatorRecDestroy(&pCritSect->Core.pValidatorRec);
+    RTLockValidatorRecExclDestroy(&pCritSect->Core.pValidatorRec);
     pCritSect->pNext   = NULL;
     pCritSect->pvKey   = NULL;
     pCritSect->pVMR3   = NULL;
@@ -395,7 +395,7 @@ VMMR3DECL(bool) PDMR3CritSectYield(PPDMCRITSECT pCritSect)
         return false;
 
 #ifdef PDMCRITSECT_STRICT
-    RTLOCKVALIDATORSRCPOS const SrcPos = pCritSect->s.Core.pValidatorRec->SrcPos;
+    RTLOCKVALSRCPOS const SrcPos = pCritSect->s.Core.pValidatorRec->SrcPos;
 #endif
     PDMCritSectLeave(pCritSect);
 
