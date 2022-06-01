@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28457 2010-04-19 12:36:06Z vboxsync $
+# $Id: Makefile.kmk 28498 2010-04-19 20:49:38Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -257,6 +257,7 @@ VirtualBox_LIBS = $(LIB_DDU)
 # This library is required for multi-monitor support
 VirtualBox_LIBS.linux += Xinerama
 VirtualBox_LIBS.solaris += Xinerama
+VirtualBox_LIBS.freebsd += Xinerama
 
 ifdef VBOX_WITH_VIDEOHWACCEL
 # Necessary for save state support
