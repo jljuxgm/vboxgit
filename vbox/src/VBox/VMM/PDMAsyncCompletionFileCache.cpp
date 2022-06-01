@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileCache.cpp 24621 2009-11-12 19:05:01Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileCache.cpp 24622 2009-11-12 19:15:22Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * File data cache.
@@ -795,11 +795,13 @@ int pdmacFileCacheInit(PPDMASYNCCOMPLETIONEPCLASSFILE pClassFile, PCFGMNODE pCfg
                    STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS,
                    "/PDM/AsyncCompletion/File/CacheBuffersReused",
                    STAMUNIT_COUNT, "Number of times a buffer could be reused");
+#ifndef VBOX_WITH_2Q_CACHE
     STAMR3Register(pClassFile->Core.pVM, &pCache->uAdaptVal,
                    STAMTYPE_U32, STAMVISIBILITY_ALWAYS,
                    "/PDM/AsyncCompletion/File/CacheAdaptValue",
                    STAMUNIT_COUNT,
                    "Adaption value of the cache");
+#endif
 #endif
 
     /* Initialize the critical section */
