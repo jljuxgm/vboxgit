@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 24966 2009-11-25 16:47:00Z vboxsync $ */
+/* $Id: PGMAllBth.h 24978 2009-11-26 08:20:35Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1255,7 +1255,8 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
 
 # ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
             /* Reset the modification counter (OpenSolaris trashes tlb entries very often) */
-            pShwPage->cModifications = 1;
+            if (pShwPage->cModifications)
+                pShwPage->cModifications = 1;
 # endif
 
 # if PGM_SHW_TYPE == PGM_TYPE_PAE && PGM_GST_TYPE == PGM_TYPE_32BIT
