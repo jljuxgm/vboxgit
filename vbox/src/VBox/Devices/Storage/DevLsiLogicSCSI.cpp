@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 25675 2010-01-07 01:11:59Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 25677 2010-01-07 01:20:36Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -146,6 +146,11 @@ typedef struct LSILOGICSCSI
 
     /** Number of device states allocated. */
     uint32_t                   cDeviceStates;
+
+#if HC_ARCH_BITS == 64
+    uint32_t             Alignment2;
+#endif
+
     /** States for attached devices. */
     R3PTRTYPE(PLSILOGICDEVICE) paDeviceStates;
 
@@ -198,7 +203,7 @@ typedef struct LSILOGICSCSI
     /** Number entries allocated for the outstanding request queue. */
     uint32_t              cRequestQueueEntries;
 
-    uint32_t              Alignment2;
+    uint32_t              Alignment3;
 
     /** Critical section protecting the reply post queue. */
     PDMCRITSECT           ReplyPostQueueCritSect;
@@ -246,11 +251,15 @@ typedef struct LSILOGICSCSI
     /** Handle counter */
     uint16_t                       u16NextHandle;
 
-    uint16_t                       u16Alignment3;
-    uint32_t                       u32Alignment4;
+    uint16_t                       u16Alignment4;
+    uint32_t                       u32Alignment5;
 
     /** Number of ports this controller has. */
     uint8_t                        cPorts;
+
+#if HC_ARCH_BITS == 64
+    uint32_t                       Alignment6;
+#endif
 
     /** BIOS emulation. */
     VBOXSCSI                       VBoxSCSI;
