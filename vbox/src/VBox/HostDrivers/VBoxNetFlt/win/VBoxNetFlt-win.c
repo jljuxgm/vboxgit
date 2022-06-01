@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.c 29464 2010-05-14 11:46:15Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.c 29491 2010-05-14 17:46:22Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -3773,6 +3773,25 @@ int vboxNetFltOsPreInitInstance(PVBOXNETFLTINS pThis)
 #ifndef VBOXNETADP
     vboxNetFltWinSetOpState(&pAdapt->PTState, kVBoxNetDevOpState_Deinitialized);
 #endif
+    return VINF_SUCCESS;
+}
+
+void vboxNetFltPortOsNotifyMacAddress(PVBOXNETFLTINS pThis, INTNETIFHANDLE hIf, PCRTMAC pMac)
+{
+    NOREF(pThis); NOREF(hIf); NOREF(pMac);
+}
+
+int vboxNetFltPortOsConnectInterface(PVBOXNETFLTINS pThis, INTNETIFHANDLE hIf)
+{
+    /* Nothing to do */
+    NOREF(pThis); NOREF(hIf);
+    return VINF_SUCCESS;
+}
+
+int vboxNetFltPortOsDisconnectInterface(PVBOXNETFLTINS pThis, INTNETIFHANDLE hIf)
+{
+    /* Nothing to do */
+    NOREF(pThis); NOREF(hIf);
     return VINF_SUCCESS;
 }
 
