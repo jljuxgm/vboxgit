@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 24224 2009-10-30 22:40:19Z vboxsync $
 ## @file
 # Sub-Makefile for the libxslt library.
 #
@@ -23,7 +23,7 @@ SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 LIBRARIES += VBox-libxslt
-VBox-libxslt_TEMPLATE       = VBOXR3
+VBox-libxslt_TEMPLATE       = VBOXR3NP
 VBox-libxslt_SDKS           = VBOX_LIBXML2 VBOX_ZLIB
 VBox-libxslt_DEFS.win       = WIN32 _WINDOWS _MBCS _REENTRANT
 VBox-libxslt_CFLAGS.win.amd64 = -wd4267
