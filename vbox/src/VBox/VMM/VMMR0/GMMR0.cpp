@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 30237 2010-06-16 11:14:20Z vboxsync $ */
+/* $Id: GMMR0.cpp 30285 2010-06-17 14:25:11Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -894,6 +894,10 @@ GMMR0DECL(void) GMMR0CleanupVM(PGVM pGVM)
                 SUPR0Printf("GMMR0CleanupVM: hGVM=%#x left %#x shared pages behind!\n", pGVM->hSelf, pGVM->gmm.s.cSharedPages);
                 pGMM->cLeftBehindSharedPages += pGVM->gmm.s.cSharedPages;
             }
+
+            /* Clean up balloon statistics in case the VM process crashed. */
+            Assert(pGMM->cBalloonedPages >= pGVM->gmm.s.cBalloonedPages);
+            pGMM->cBalloonedPages -= pGVM->gmm.s.cBalloonedPages;
 
             /*
              * Update the over-commitment management statistics.
