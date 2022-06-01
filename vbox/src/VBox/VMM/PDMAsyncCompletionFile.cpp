@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 27323 2010-03-12 11:19:34Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 27474 2010-03-18 11:01:13Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -944,6 +944,9 @@ static int pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
                        "/PDM/AsyncCompletion/File/%s/Write", RTPathFilename(pEpFile->Core.pszUri));
     }
 #endif
+
+    if (RT_SUCCESS(rc))
+        LogRel(("AIOMgr: Endpoint for file '%s' (flags %08x) created successfully\n", pszUri, pEpFile->fFlags));
 
     return rc;
 }
