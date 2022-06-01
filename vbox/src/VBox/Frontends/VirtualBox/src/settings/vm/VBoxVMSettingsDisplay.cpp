@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsDisplay.cpp 26921 2010-03-01 16:09:27Z vboxsync $ */
+/* $Id: VBoxVMSettingsDisplay.cpp 27406 2010-03-16 13:56:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -154,6 +154,8 @@ void VBoxVMSettingsDisplay::getFrom (const CMachine &aMachine)
         vboxProblem().cannotLoadMachineSettings (mMachine, false /* strict */);
         mTwDisplay->setTabEnabled (1, false);
     }
+
+    checkMultiMonitorReqs();
 }
 
 void VBoxVMSettingsDisplay::putBackTo()
@@ -285,9 +287,27 @@ void VBoxVMSettingsDisplay::textChangedVRAM (const QString &aText)
 void VBoxVMSettingsDisplay::valueChangedMonitors (int aVal)
 {
     mLeMonitors->setText (QString().setNum (aVal));
+    checkMultiMonitorReqs();
 }
 
 void VBoxVMSettingsDisplay::textChangedMonitors (const QString &aText)
 {
     mSlMonitors->setValue (aText.toInt());
 }
+
+void VBoxVMSettingsDisplay::checkMultiMonitorReqs()
+{
+    int cVal = mSlMonitors->value();
+    if (cVal > 1)
+    {
+#ifdef VBOX_WITH_VIDEOHWACCEL
+        mCb2DVideo->setChecked(false);
+#endif /* VBOX_WITH_VIDEOHWACCEL */
+        mCb3D->setChecked(false);
+    }
+#ifdef VBOX_WITH_VIDEOHWACCEL
+    mCb2DVideo->setEnabled(cVal == 1 && VBoxGlobal::isAcceleration2DVideoAvailable());
+#endif /* VBOX_WITH_VIDEOHWACCEL */
+    mCb3D->setEnabled(cVal == 1 && vboxGlobal().virtualBox().GetHost().GetAcceleration3DAvailable());
+}
+
