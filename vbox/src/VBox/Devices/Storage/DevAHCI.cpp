@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 30224 2010-06-16 01:55:46Z vboxsync $ */
+/* $Id: DevAHCI.cpp 30382 2010-06-23 09:23:34Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -4939,8 +4939,11 @@ static int ahciTransferComplete(PAHCIPort pAhciPort, PAHCIPORTTASKSTATE pAhciPor
         AssertMsg(fXchg, ("Task is not active\n"));
 #endif
 
-        if (!cOutstandingTasks)
-            ahciSendSDBFis(pAhciPort, 0, true);
+        /* Always raise an interrupt after task completion; delaying
+         * this (interrupt coalescing) increases latency and has a significant
+         * impact on performance (see #5071)
+         */
+        ahciSendSDBFis(pAhciPort, 0, true);
     }
     else
     {
