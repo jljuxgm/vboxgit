@@ -1,4 +1,4 @@
-/** $Id: DrvTAP.cpp 25823 2010-01-14 09:10:56Z vboxsync $ */
+/** $Id: DrvTAP.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 /** @file
  * Universial TAP network transport driver.
  */
@@ -1066,6 +1066,10 @@ const PDMDRVREG g_DrvHostInterface =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "HostInterface",
+    /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
     /* pszDescription */
     "TAP Network Transport Driver",
     /* fFlags */
@@ -1080,6 +1084,8 @@ const PDMDRVREG g_DrvHostInterface =
     drvTAPConstruct,
     /* pfnDestruct */
     drvTAPDestruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */

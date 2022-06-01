@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 24382 2009-11-05 14:02:08Z vboxsync $ */
+/* $Id: DrvRawFile.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -218,6 +218,10 @@ const PDMDRVREG g_DrvRawFile =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "RawFile",
+    /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
     /* pszDescription */
     "RawFile stream driver.",
     /* fFlags */
@@ -232,6 +236,8 @@ const PDMDRVREG g_DrvRawFile =
     drvRawFileConstruct,
     /* pfnDestruct */
     drvRawFileDestruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */

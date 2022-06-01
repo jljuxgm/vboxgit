@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
+/* $Id: MouseImpl.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 
 /** @file
  *
@@ -458,6 +458,10 @@ const PDMDRVREG Mouse::DrvReg =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "MainMouse",
+    /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
     /* pszDescription */
     "Main mouse driver (Main as in the API).",
     /* fFlags */
@@ -472,6 +476,8 @@ const PDMDRVREG Mouse::DrvReg =
     Mouse::drvConstruct,
     /* pfnDestruct */
     Mouse::drvDestruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */

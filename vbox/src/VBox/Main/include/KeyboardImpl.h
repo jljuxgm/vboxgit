@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: KeyboardImpl.h 25893 2010-01-18 14:08:39Z vboxsync $ */
 
 /** @file
  *
@@ -106,5 +106,5 @@ private:
     bool                    mfVMMDevInited;
 };
 
-#endif // ____H_KEYBOARDIMPL
+#endif // !____H_KEYBOARDIMPL
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

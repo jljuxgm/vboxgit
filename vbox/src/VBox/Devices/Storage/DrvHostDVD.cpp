@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 24015 2009-10-23 08:36:58Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -829,6 +829,10 @@ const PDMDRVREG g_DrvHostDVD =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "HostDVD",
+    /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
     /* pszDescription */
     "Host DVD Block Driver.",
     /* fFlags */
@@ -843,6 +847,8 @@ const PDMDRVREG g_DrvHostDVD =
     drvHostDvdConstruct,
     /* pfnDestruct */
     drvHostDvdDestruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */

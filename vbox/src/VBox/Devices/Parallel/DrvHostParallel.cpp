@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 25823 2010-01-14 09:10:56Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -405,6 +405,10 @@ const PDMDRVREG g_DrvHostParallel =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "HostParallel",
+    /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
     /* pszDescription */
     "Parallel host driver.",
     /* fFlags */
@@ -419,6 +423,8 @@ const PDMDRVREG g_DrvHostParallel =
     drvHostParallelConstruct,
     /* pfnDestruct */
     drvHostParallelDestruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */

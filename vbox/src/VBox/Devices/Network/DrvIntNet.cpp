@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 25891 2010-01-18 13:07:21Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1136,6 +1136,10 @@ const PDMDRVREG g_DrvIntNet =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "IntNet",
+    /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
     /* pszDescription */
     "Internal Networking Transport Driver",
     /* fFlags */
@@ -1150,6 +1154,8 @@ const PDMDRVREG g_DrvIntNet =
     drvIntNetConstruct,
     /* pfnDestruct */
     drvIntNetDestruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */

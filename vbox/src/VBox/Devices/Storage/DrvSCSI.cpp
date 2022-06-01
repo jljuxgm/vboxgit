@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 24751 2009-11-18 01:13:11Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 /** @file
  *
  * VBox storage drivers:
@@ -1027,6 +1027,10 @@ const PDMDRVREG g_DrvSCSI =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "SCSI",
+    /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
     /* pszDescription */
     "Generic SCSI driver.",
     /* fFlags */
@@ -1041,6 +1045,8 @@ const PDMDRVREG g_DrvSCSI =
     drvscsiConstruct,
     /* pfnDestruct */
     drvscsiDestruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */

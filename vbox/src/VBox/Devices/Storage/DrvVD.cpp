@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 25891 2010-01-18 13:07:21Z vboxsync $ */
+/* $Id: DrvVD.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1317,6 +1317,10 @@ const PDMDRVREG g_DrvVD =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "VD",
+    /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
     /* pszDescription */
     "Generic VBox disk media driver.",
     /* fFlags */
@@ -1331,6 +1335,8 @@ const PDMDRVREG g_DrvVD =
     drvvdConstruct,
     /* pfnDestruct */
     drvvdDestruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */

@@ -1,4 +1,4 @@
-/* $Id: DrvACPI.cpp 22277 2009-08-16 21:12:50Z vboxsync $ */
+/* $Id: DrvACPI.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
@@ -748,7 +748,7 @@ static DECLCALLBACK(int) drvACPIConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHand
     /*
      * Check that no-one is attached to us.
      */
-    AssertMsgReturn(PDMDrvHlpNoAttach(pDrvIns) == VERR_PDM_NO_ATTACHED_DRIVER, 
+    AssertMsgReturn(PDMDrvHlpNoAttach(pDrvIns) == VERR_PDM_NO_ATTACHED_DRIVER,
                     ("Configuration error: Not possible to attach anything to this driver!\n"),
                     VERR_PDM_DRVINS_NO_ATTACH);
 
@@ -776,6 +776,10 @@ const PDMDRVREG g_DrvACPI =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "ACPIHost",
+    /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
     /* pszDescription */
     "ACPI Host Driver",
     /* fFlags */
@@ -790,6 +794,8 @@ const PDMDRVREG g_DrvACPI =
     drvACPIConstruct,
     /* pfnDestruct */
     drvACPIDestruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */
@@ -803,9 +809,9 @@ const PDMDRVREG g_DrvACPI =
     /* pfnAttach */
     NULL,
     /* pfnDetach */
-    NULL, 
+    NULL,
     /* pfnPowerOff */
-    NULL, 
+    NULL,
     /* pfnSoftReset */
     NULL,
     /* u32EndVersion */

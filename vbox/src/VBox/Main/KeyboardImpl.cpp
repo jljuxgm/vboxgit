@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 
 /** @file
  *
@@ -331,6 +331,10 @@ const PDMDRVREG Keyboard::DrvReg =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "MainKeyboard",
+    /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
     /* pszDescription */
     "Main keyboard driver (Main as in the API).",
     /* fFlags */
@@ -345,6 +349,8 @@ const PDMDRVREG Keyboard::DrvReg =
     Keyboard::drvConstruct,
     /* pfnDestruct */
     Keyboard::drvDestruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */

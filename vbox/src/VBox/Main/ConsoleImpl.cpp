@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 
 /** @file
  *
@@ -7975,6 +7975,10 @@ const PDMDRVREG Console::DrvStatusReg =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "MainStatus",
+    /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
     /* pszDescription */
     "Main status driver (Main as in the API).",
     /* fFlags */
@@ -7989,6 +7993,8 @@ const PDMDRVREG Console::DrvStatusReg =
     Console::drvStatus_Construct,
     /* pfnDestruct */
     Console::drvStatus_Destruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */

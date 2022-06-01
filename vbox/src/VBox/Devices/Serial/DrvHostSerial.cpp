@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 25823 2010-01-14 09:10:56Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  *
@@ -1467,7 +1467,11 @@ const PDMDRVREG g_DrvHostSerial =
     PDM_DRVREG_VERSION,
     /* szDriverName */
     "Host Serial",
-    /* pszDescription */
+        /* szRCMod */
+    "",
+    /* szR0Mod */
+    "",
+/* pszDescription */
     "Host serial driver.",
     /* fFlags */
     PDM_DRVREG_FLAGS_HOST_BITS_DEFAULT,
@@ -1481,6 +1485,8 @@ const PDMDRVREG g_DrvHostSerial =
     drvHostSerialConstruct,
     /* pfnDestruct */
     drvHostSerialDestruct,
+    /* pfnRelocate */
+    NULL,
     /* pfnIOCtl */
     NULL,
     /* pfnPowerOn */
