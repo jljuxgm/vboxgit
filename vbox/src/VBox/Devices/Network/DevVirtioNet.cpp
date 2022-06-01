@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 24641 2009-11-13 16:20:15Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 24652 2009-11-13 20:21:26Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  *
@@ -205,9 +205,9 @@ struct VPCIState_st
     uint8_t                uStatus; /**< Device Status (bits are device-specific). */
     uint8_t                uISR;                   /**< Interrupt Status Register. */
 
-// #if HC_ARCH_BITS == 64
-//     uint32_t               padding3;
-// #endif
+#if HC_ARCH_BITS != 64
+    uint32_t               padding3;
+#endif
 
     uint32_t               nQueues;       /**< Actual number of queues used. */
     VQUEUE                 Queues[VIRTIO_MAX_NQUEUES];
