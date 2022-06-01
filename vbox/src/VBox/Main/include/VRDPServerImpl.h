@@ -1,4 +1,4 @@
-/* $Id: VRDPServerImpl.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VRDPServerImpl.h 28802 2010-04-27 09:23:16Z vboxsync $ */
 
 /** @file
  *
@@ -46,6 +46,8 @@ public:
         ULONG mAuthTimeout;
         BOOL mAllowMultiConnection;
         BOOL mReuseSingleConnection;
+        BOOL mVideoChannel;
+        ULONG mVideoChannelQuality;
     };
 
     VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (VRDPServer)
@@ -86,6 +88,10 @@ public:
     STDMETHOD(COMSETTER(AllowMultiConnection)) (BOOL aAllowMultiConnection);
     STDMETHOD(COMGETTER(ReuseSingleConnection)) (BOOL *aReuseSingleConnection);
     STDMETHOD(COMSETTER(ReuseSingleConnection)) (BOOL aReuseSingleConnection);
+    STDMETHOD(COMGETTER(VideoChannel)) (BOOL *aVideoChannel);
+    STDMETHOD(COMSETTER(VideoChannel)) (BOOL aVideoChannel);
+    STDMETHOD(COMGETTER(VideoChannelQuality)) (ULONG *aVideoChannelQuality);
+    STDMETHOD(COMSETTER(VideoChannelQuality)) (ULONG aVideoChannelQuality);
 
     // IVRDPServer methods
 

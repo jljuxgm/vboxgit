@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28800 2010-04-27 08:22:32Z vboxsync $
+# $Id: Makefile.kmk 28802 2010-04-27 09:23:16Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -546,6 +546,7 @@ VBoxC_DEFS = \
 	$(VBOX_MAIN_DEFS) \
 	VBOX_COM_INPROC \
 	$(if $(VBOX_WITH_VRDP),VBOX_WITH_VRDP,) \
+	$(if $(VBOX_WITH_VRDP_VIDEO_CHANNEL),VBOX_WITH_VRDP_VIDEO_CHANNEL,) \
 	$(if $(VBOX_WITH_HGCM),VBOX_WITH_HGCM,) \
 	$(if $(VBOX_MAIN_RELEASE_LOG),VBOX_MAIN_RELEASE_LOG LOG_ENABLED,) \
 	$(if $(VBOX_WITH_ALSA),VBOX_WITH_ALSA,) \
