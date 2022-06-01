@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 26136 2010-02-01 17:45:40Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 26144 2010-02-02 13:02:38Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -256,7 +256,7 @@ DECLCALLBACK(int) VBoxServiceVMInfoWorker(bool volatile *pfShutdown)
             {
                 VBOXSERVICEVMINFOUSER UserInfo;
                 if (   VBoxServiceVMInfoWinIsLoggedIn(&UserInfo, &paSessions[i])
-                    && VBoxServiceVMInfoWinSessionHasProcesses(&paSessions[i], paProcs, cProcs) > 0)
+                    && VBoxServiceVMInfoWinSessionHasProcesses(&paSessions[i], paProcs, cProcs))
                 {
                     if (cUsersInList > 0)
                         strcat(szUserList, ",");
