@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 27141 2010-03-07 16:30:12Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 27155 2010-03-08 11:05:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -147,9 +147,8 @@ void UIMachineWindowFullscreen::prepareMenu()
 {
 #ifdef Q_WS_MAC
     setMenuBar(uisession()->newMenuBar());
-#else /* To NaN: Please uncomment below for mac too and test! */
-    m_pMainMenu = uisession()->newMenu();
 #endif /* Q_WS_MAC */
+    m_pMainMenu = uisession()->newMenu();
 }
 
 void UIMachineWindowFullscreen::prepareMachineView()
