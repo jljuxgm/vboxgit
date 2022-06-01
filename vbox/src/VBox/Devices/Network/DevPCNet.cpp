@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 28336 2010-04-14 22:02:46Z vboxsync $ */
+/* $Id: DevPCNet.cpp 28393 2010-04-16 06:30:17Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4843,8 +4843,8 @@ static DECLCALLBACK(void) pcnetDetach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_
      */
     pThis->pDrvBase = NULL;
     pThis->pDrvR3 = NULL;
-    pThis->pDrvR0 = NULL;
-    pThis->pDrvRC = NULL;
+    pThis->pDrvR0 = (PPDMINETWORKUPR0)NULL;
+    pThis->pDrvRC = (PPDMINETWORKUPRC)NULL;
 
     PDMCritSectLeave(&pThis->CritSect);
 }
