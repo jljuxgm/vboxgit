@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 23880 2009-10-19 17:48:04Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 24088 2009-10-26 16:08:22Z vboxsync $ */
 
 /** @file
  *
@@ -1314,6 +1314,10 @@ STDMETHODIMP Console::COMGETTER(Machine)(IMachine **aMachine)
 
     /* mMachine is constant during life time, no need to lock */
     mMachine.queryInterfaceTo(aMachine);
+
+    /* callers expect to get a valid reference, better fail than crash them */
+    if (mMachine.isNull())
+        return E_FAIL;
 
     return S_OK;
 }
