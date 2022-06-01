@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceBalloon.cpp 26562 2010-02-16 01:05:49Z vboxsync $ */
+/* $Id: VBoxServiceBalloon.cpp 26904 2010-03-01 10:38:22Z vboxsync $ */
 /** @file
  * VBoxMemBalloon - Memory balloon notification.
  */
@@ -70,7 +70,9 @@ static DECLCALLBACK(int) VBoxServiceBalloonInit(void)
     else
         VBoxServiceVerbose(3, "VBoxMemBalloonInit: VbglR3MemBalloonRefresh failed with %d\n", rc);
 
-    return rc;
+    /* We shouldn't fail here if ballooning isn't available. This can have several reasons,
+     * for instance, host too old  (which is not that fatal). */
+    return VINF_SUCCESS;
 }
 
 
