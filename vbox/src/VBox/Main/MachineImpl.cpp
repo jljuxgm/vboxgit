@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
+/* $Id: MachineImpl.cpp 25880 2010-01-18 11:26:35Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -96,7 +96,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 Machine::Data::Data()
-    : mSnapshotsTreeLockHandle(LOCKCLASS_MACHINELIST)
+    : mSnapshotsTreeLockHandle(LOCKCLASS_LISTOFSNAPSHOTS)
 {
     mRegistered = FALSE;
     mAccessible = FALSE;
@@ -6131,11 +6131,6 @@ HRESULT Machine::loadStorageControllers(const settings::Storage &data,
     AssertReturn(getClassID() == clsidMachine || getClassID() == clsidSnapshotMachine, E_FAIL);
 
     HRESULT rc = S_OK;
-
-    /* Make sure the attached hard disks don't get unregistered until we
-     * associate them with tis machine (important for VMs loaded (opened) after
-     * VirtualBox startup) */
-    AutoReadLock vboxLock(mParent COMMA_LOCKVAL_SRC_POS);
 
     for (settings::StorageControllersList::const_iterator it = data.llStorageControllers.begin();
          it != data.llStorageControllers.end();
