@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 28996 2010-05-04 09:41:41Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 29001 2010-05-04 10:07:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -744,7 +744,7 @@ bool UINewVMWzdPage5::constructMachine()
         {
             CMachine m = session.GetMachine();
 
-            /* Boot hard disk (IDE Primary Master) */
+            /* Boot hard disk */
             if (!field("hardDiskId").toString().isNull())
             {
                 m.AttachDevice(ctrHdName, 0, 0, KDeviceType_HardDisk, field("hardDiskId").toString());
