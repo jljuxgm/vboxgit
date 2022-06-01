@@ -1,4 +1,4 @@
-/* $Id: semevent-linux.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
+/* $Id: semevent-linux.cpp 25831 2010-01-14 15:12:53Z vboxsync $ */
 /** @file
  * IPRT - Event Semaphore, Linux (2.6.x+).
  */
@@ -136,12 +136,22 @@ RTDECL(int)  RTSemEventCreateEx(PRTSEMEVENT phEventSem, uint32_t fFlags, RTLOCKV
         pThis->cWaiters = 0;
         pThis->fSignalled = 0;
 #ifdef RTSEMEVENT_STRICT
-        va_list va;
-        va_start(va, pszNameFmt);
-        RTLockValidatorRecSharedInitV(&pThis->Signallers, hClass, RTLOCKVAL_SUB_CLASS_ANY, pThis,
-                                      true /*fSignaller*/, !(fFlags & RTSEMEVENT_FLAGS_NO_LOCK_VAL),
-                                      pszNameFmt, va);
-        va_end(va);
+        if (!pszNameFmt)
+        {
+            static uint32_t volatile s_iSemEventAnon = 0;
+            RTLockValidatorRecSharedInit(&pThis->Signallers, hClass, RTLOCKVAL_SUB_CLASS_ANY, pThis,
+                                         true /*fSignaller*/, !(fFlags & RTSEMEVENT_FLAGS_NO_LOCK_VAL),
+                                         "RTSemEvent-%u", ASMAtomicIncU32(&s_iSemEventAnon) - 1);
+        }
+        else
+        {
+            va_list va;
+            va_start(va, pszNameFmt);
+            RTLockValidatorRecSharedInitV(&pThis->Signallers, hClass, RTLOCKVAL_SUB_CLASS_ANY, pThis,
+                                          true /*fSignaller*/, !(fFlags & RTSEMEVENT_FLAGS_NO_LOCK_VAL),
+                                          pszNameFmt, va);
+            va_end(va);
+        }
         pThis->fEverHadSignallers = false;
 #endif
 

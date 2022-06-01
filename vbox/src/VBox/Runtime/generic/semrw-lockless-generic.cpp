@@ -1,4 +1,4 @@
-/* $Id: semrw-lockless-generic.cpp 25793 2010-01-13 03:03:45Z vboxsync $ */
+/* $Id: semrw-lockless-generic.cpp 25831 2010-01-14 15:12:53Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSemXRoads, generic implementation.
  */
@@ -144,14 +144,27 @@ RTDECL(int) RTSemRWCreateEx(PRTSEMRW phRWSem, uint32_t fFlags,
             pThis->fNeedReset           = false;
 #ifdef RTSEMRW_STRICT
             bool const fLVEnabled = !(fFlags & RTSEMRW_FLAGS_NO_LOCK_VAL);
-            va_list va;
-            va_start(va, pszNameFmt);
-            RTLockValidatorRecExclInitV(&pThis->ValidatorWrite, hClass, uSubClass, pThis, fLVEnabled, pszNameFmt, va);
-            va_end(va);
-            va_start(va, pszNameFmt);
-            RTLockValidatorRecSharedInitV(&pThis->ValidatorRead, hClass, uSubClass, pThis, false /*fSignaller*/,
-                                          fLVEnabled, pszNameFmt, va);
-            va_end(va);
+            if (!pszNameFmt)
+            {
+                static uint32_t volatile s_iSemRWAnon = 0;
+                uint32_t i = ASMAtomicIncU32(&s_iSemRWAnon) - 1;
+                RTLockValidatorRecExclInit(&pThis->ValidatorWrite, hClass, uSubClass, pThis,
+                                           fLVEnabled, "RTSemRW-%u", i);
+                RTLockValidatorRecSharedInit(&pThis->ValidatorRead, hClass, uSubClass, pThis,
+                                             false /*fSignaller*/, fLVEnabled, "RTSemRW-%u", i);
+            }
+            else
+            {
+                va_list va;
+                va_start(va, pszNameFmt);
+                RTLockValidatorRecExclInitV(&pThis->ValidatorWrite, hClass, uSubClass, pThis,
+                                            fLVEnabled, pszNameFmt, va);
+                va_end(va);
+                va_start(va, pszNameFmt);
+                RTLockValidatorRecSharedInitV(&pThis->ValidatorRead, hClass, uSubClass, pThis,
+                                              false /*fSignaller*/, fLVEnabled, pszNameFmt, va);
+                va_end(va);
+            }
             RTLockValidatorRecMakeSiblings(&pThis->ValidatorWrite.Core, &pThis->ValidatorRead.Core);
 #endif
 

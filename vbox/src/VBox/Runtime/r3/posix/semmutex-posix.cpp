@@ -1,4 +1,4 @@
-/* $Id: semmutex-posix.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
+/* $Id: semmutex-posix.cpp 25831 2010-01-14 15:12:53Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphore, POSIX.
  */
@@ -105,11 +105,21 @@ RTDECL(int) RTSemMutexCreateEx(PRTSEMMUTEX phMutexSem, uint32_t fFlags,
                 pThis->cNesting = 0;
                 pThis->u32Magic = RTSEMMUTEX_MAGIC;
 #ifdef RTSEMMUTEX_STRICT
-                va_list va;
-                va_start(va, pszNameFmt);
-                RTLockValidatorRecExclInitV(&pThis->ValidatorRec, hClass, uSubClass, pThis,
-                                            !(fFlags & RTSEMMUTEX_FLAGS_NO_LOCK_VAL), pszNameFmt, va);
-                va_end(va);
+                if (!pszNameFmt)
+                {
+                    static uint32_t volatile s_iMutexAnon = 0;
+                    RTLockValidatorRecExclInit(&pThis->ValidatorRec, hClass, uSubClass, pThis,
+                                               !(fFlags & RTSEMMUTEX_FLAGS_NO_LOCK_VAL),
+                                               "RTSemMutex-%u", ASMAtomicIncU32(&s_iMutexAnon) - 1);
+                }
+                else
+                {
+                    va_list va;
+                    va_start(va, pszNameFmt);
+                    RTLockValidatorRecExclInitV(&pThis->ValidatorRec, hClass, uSubClass, pThis,
+                                                !(fFlags & RTSEMMUTEX_FLAGS_NO_LOCK_VAL), pszNameFmt, va);
+                    va_end(va);
+                }
 #endif
 
                 *phMutexSem = pThis;

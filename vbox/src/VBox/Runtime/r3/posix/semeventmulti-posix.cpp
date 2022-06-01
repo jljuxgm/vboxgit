@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-posix.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
+/* $Id: semeventmulti-posix.cpp 25831 2010-01-14 15:12:53Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, POSIX.
  */
@@ -129,12 +129,22 @@ RTDECL(int)  RTSemEventMultiCreateEx(PRTSEMEVENTMULTI phEventMultiSem, uint32_t 
                         ASMAtomicXchgU32(&pThis->u32State, EVENTMULTI_STATE_NOT_SIGNALED);
                         ASMAtomicXchgU32(&pThis->cWaiters, 0);
 #ifdef RTSEMEVENTMULTI_STRICT
-                        va_list va;
-                        va_start(va, pszNameFmt);
-                        RTLockValidatorRecSharedInitV(&pThis->Signallers, hClass, RTLOCKVAL_SUB_CLASS_ANY, pThis,
-                                                      true /*fSignaller*/, !(fFlags & RTSEMEVENTMULTI_FLAGS_NO_LOCK_VAL),
-                                                      pszNameFmt, va);
-                        va_end(va);
+                        if (!pszNameFmt)
+                        {
+                            static uint32_t volatile s_iSemEventMultiAnon = 0;
+                            RTLockValidatorRecSharedInit(&pThis->Signallers, hClass, RTLOCKVAL_SUB_CLASS_ANY, pThis,
+                                                         true /*fSignaller*/, !(fFlags & RTSEMEVENTMULTI_FLAGS_NO_LOCK_VAL),
+                                                         "RTSemEventMulti-%u", ASMAtomicIncU32(&s_iSemEventMultiAnon) - 1);
+                        }
+                        else
+                        {
+                            va_list va;
+                            va_start(va, pszNameFmt);
+                            RTLockValidatorRecSharedInitV(&pThis->Signallers, hClass, RTLOCKVAL_SUB_CLASS_ANY, pThis,
+                                                          true /*fSignaller*/, !(fFlags & RTSEMEVENTMULTI_FLAGS_NO_LOCK_VAL),
+                                                          pszNameFmt, va);
+                            va_end(va);
+                        }
                         pThis->fEverHadSignallers = false;
 #endif
 
