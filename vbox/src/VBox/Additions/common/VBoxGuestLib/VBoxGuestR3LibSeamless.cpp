@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSeamless.cpp 21219 2009-07-05 13:44:53Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSeamless.cpp 24320 2009-11-04 11:38:15Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Seamless mode.
  */
@@ -46,7 +46,7 @@ VBGLR3DECL(int) VbglR3SeamlessSetCap(bool fState)
     VMMDevReqGuestCapabilities vmmreqGuestCaps;
     int rc = VINF_SUCCESS;
 
-    memset(&vmmreqGuestCaps, 0, sizeof(vmmreqGuestCaps));
+    RT_ZERO(vmmreqGuestCaps);
     vmmdevInitRequest(&vmmreqGuestCaps.header, VMMDevReq_ReportGuestCapabilities);
     vmmreqGuestCaps.caps = fState ? VMMDEV_GUEST_SUPPORTS_SEAMLESS : 0;
     rc = vbglR3GRPerform(&vmmreqGuestCaps.header);

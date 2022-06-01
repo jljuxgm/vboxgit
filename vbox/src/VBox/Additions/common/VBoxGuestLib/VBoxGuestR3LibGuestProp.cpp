@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 22761 2009-09-04 08:45:31Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 24320 2009-11-04 11:38:15Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -68,7 +68,7 @@ VBGLR3DECL(int) VbglR3GuestPropConnect(uint32_t *pu32ClientId)
     VBoxGuestHGCMConnectInfo Info;
     Info.result = VERR_WRONG_ORDER;
     Info.Loc.type = VMMDevHGCMLoc_LocalHost_Existing;
-    memset(&Info.Loc.u, 0, sizeof(Info.Loc.u));
+    RT_ZERO(Info.Loc.u);
     strcpy(Info.Loc.u.host.achName, "VBoxGuestPropSvc");
     Info.u32ClientID = UINT32_MAX;  /* try make valgrid shut up. */
 

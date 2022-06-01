@@ -1,4 +1,4 @@
-/* $Revision: 21461 $ */
+/* $Revision: 24320 $ */
 /** @file
  * VBoxGuestLibR0 - Library initialization.
  */
@@ -137,7 +137,7 @@ int vbglInitCommon (void)
 {
     int rc = VINF_SUCCESS;
 
-    memset(&g_vbgldata, 0, sizeof (VBGLDATA));
+    RT_ZERO(g_vbgldata);
 
     g_vbgldata.status = VbglStatusInitializing;
 
@@ -158,7 +158,7 @@ DECLVBGL(void) vbglTerminateCommon (void)
 {
     VbglPhysHeapTerminate ();
 
-    memset(&g_vbgldata, 0, sizeof (VBGLDATA));
+    RT_ZERO(g_vbgldata);
 
     return;
 }

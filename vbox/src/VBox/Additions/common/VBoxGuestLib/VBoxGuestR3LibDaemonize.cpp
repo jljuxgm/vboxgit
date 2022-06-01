@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibDaemonize.cpp 21211 2009-07-03 15:12:24Z vboxsync $ */
+/** $Id: VBoxGuestR3LibDaemonize.cpp 24320 2009-11-04 11:38:15Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, daemonize a process.
  */
@@ -146,7 +146,7 @@ VBGLR3DECL(int) VbglR3Daemonize(bool fNoChDir, bool fNoClose)
 
     struct sigaction OldSigAct;
     struct sigaction SigAct;
-    memset(&SigAct, 0, sizeof(SigAct));
+    RT_ZERO(SigAct);
     SigAct.sa_handler = SIG_IGN;
     int rcSigAct = sigaction(SIGHUP, &SigAct, &OldSigAct);
 
