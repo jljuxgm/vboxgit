@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 26773 2010-02-25 01:53:19Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 26799 2010-02-25 14:26:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -438,7 +438,7 @@ void UIMachineWindow::sltMachineStateChanged(KMachineState /* machineState */)
     updateAppearanceOf(UIVisualElement_WindowCaption);
 }
 
-void UIMachineWindow::sltPrepareMenuMachine()
+void UIMachineWindow::prepareMenuMachine()
 {
     QMenu *menu = machineLogic()->actionsPool()->action(UIActionIndex_Menu_Machine)->menu();
 
@@ -469,7 +469,7 @@ void UIMachineWindow::sltPrepareMenuMachine()
     menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_Close));
 }
 
-void UIMachineWindow::sltPrepareMenuDevices()
+void UIMachineWindow::prepareMenuDevices()
 {
     QMenu *menu = machineLogic()->actionsPool()->action(UIActionIndex_Menu_Devices)->menu();
 
@@ -488,7 +488,7 @@ void UIMachineWindow::sltPrepareMenuDevices()
 }
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
-void UIMachineWindow::sltPrepareMenuDebug()
+void UIMachineWindow::prepareMenuDebug()
 {
     QMenu *menu = machineLogic()->actionsPool()->action(UIActionIndex_Menu_Debug)->menu();
 

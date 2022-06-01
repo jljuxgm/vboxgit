@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 26773 2010-02-25 01:53:19Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 26799 2010-02-25 14:26:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -127,23 +127,6 @@ void UIMachineWindowNormal::sltSharedFolderChange()
 {
     updateAppearanceOf(UIVisualElement_SharedFolderStuff);
 }
-
-void UIMachineWindowNormal::sltPrepareMenuMachine()
-{
-    UIMachineWindow::sltPrepareMenuMachine();
-}
-
-void UIMachineWindowNormal::sltPrepareMenuDevices()
-{
-    UIMachineWindow::sltPrepareMenuDevices();
-}
-
-#ifdef VBOX_WITH_DEBUGGER_GUI
-void UIMachineWindowNormal::sltPrepareMenuDebug()
-{
-    UIMachineWindow::sltPrepareMenuDebug();
-}
-#endif
 
 void UIMachineWindowNormal::sltTryClose()
 {
@@ -359,20 +342,20 @@ void UIMachineWindowNormal::prepareMenu()
 {
     /* Machine submenu: */
     QMenu *pMenuMachine = machineLogic()->actionsPool()->action(UIActionIndex_Menu_Machine)->menu();
+    UIMachineWindow::prepareMenuMachine();
     menuBar()->addMenu(pMenuMachine);
-    connect(pMenuMachine, SIGNAL(aboutToShow()), this, SLOT(sltPrepareMenuMachine()));
 
     /* Devices submenu: */
     QMenu *pMenuDevices = machineLogic()->actionsPool()->action(UIActionIndex_Menu_Devices)->menu();
+    UIMachineWindow::prepareMenuDevices();
     menuBar()->addMenu(pMenuDevices);
-    connect(pMenuDevices, SIGNAL(aboutToShow()), this, SLOT(sltPrepareMenuDevices()));
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
     if (vboxGlobal().isDebuggerEnabled())
     {
         QMenu *pMenuDebug = machineLogic()->actionsPool()->action(UIActionIndex_Menu_Debug)->menu();
+        UIMachineWindow::prepareMenuDebug();
         menuBar()->addMenu(pMenuDebug);
-        connect(pMenuDebug, SIGNAL(aboutToShow()), this, SLOT(sltPrepareMenuDebug()));
     }
 #endif
 }
