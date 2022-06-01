@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 28012 2010-04-06 14:52:25Z vboxsync $ */
+/* $Id: PGMPhys.cpp 28036 2010-04-07 09:47:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -957,21 +957,28 @@ VMMR3DECL(int) PGMR3PhysChangeMemBalloon(PVM pVM, bool fInflate, unsigned cPages
  *
  * @returns VBox status code.
  * @param   pVM                 The VM handle.
- * @param   puTotalFreeSize     Pointer to total free (allocated but not used yet) memory inside VMMR0 (in megabytes)
+ * @param   puTotalAllocSize    Pointer to total allocated  memory inside VMMR0 (in bytes)
+ * @param   puTotalFreeSize     Pointer to total free (allocated but not used yet) memory inside VMMR0 (in bytes)
+ * @param   puTotalBalloonSize  Pointer to total ballooned memory inside VMMR0 (in bytes)
  */
-VMMR3DECL(int) PGMR3QueryFreeMemory(PVM pVM, unsigned *puTotalFreeSize)
+VMMR3DECL(int) PGMR3QueryVMMMemoryStats(PVM pVM, uint64_t *puTotalAllocSize, uint64_t *puTotalFreeSize, uint64_t *puTotalBalloonSize)
 {
-    int rc = VINF_SUCCESS;
+    int rc;
+
+    uint64_t cAllocPages = 0, cFreePages = 0, cBalloonPages = 0;
+    rc = GMMR3QueryVMMMemoryStats(pVM, &cAllocPages, &cFreePages, &cBalloonPages);
+    AssertRCReturn(rc, rc);
+
+    if (puTotalAllocSize)
+        *puTotalAllocSize = cAllocPages * _4K;
 
     if (puTotalFreeSize)
-    {
-        uint64_t cPages = 0;
-        rc = GMMR3QueryTotalFreePages(pVM, &cPages);
-        AssertRC(rc);
-        *puTotalFreeSize = (unsigned) (cPages * _4K / _1M);
-    }
+        *puTotalFreeSize = cFreePages * _4K;
 
-    return rc;
+    if (puTotalBalloonSize)
+        *puTotalBalloonSize = cBalloonPages * _4K;
+
+    return VINF_SUCCESS;
 }
 
 /**

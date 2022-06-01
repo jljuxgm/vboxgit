@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 28012 2010-04-06 14:52:25Z vboxsync $ */
+/* $Id: GMMR0.cpp 28036 2010-04-07 09:47:43Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2997,15 +2997,15 @@ GMMR0DECL(int) GMMR0BalloonedPagesReq(PVM pVM, VMCPUID idCpu, PGMMBALLOONEDPAGES
  * @param   pVM             Pointer to the shared VM structure.
  * @param   pReq            The request packet.
  */
-GMMR0DECL(int) GMMR0QueryTotalFreePagesReq(PVM pVM, PGMMFREEQUERYREQ pReq)
+GMMR0DECL(int) GMMR0QueryVMMMemoryStatsReq(PVM pVM, PGMMMEMSTATSREQ pReq)
 {
     /*
      * Validate input and pass it on.
      */
     AssertPtrReturn(pVM, VERR_INVALID_POINTER);
     AssertPtrReturn(pReq, VERR_INVALID_POINTER);
-    AssertMsgReturn(pReq->Hdr.cbReq == sizeof(GMMFREEQUERYREQ),
-                    ("%#x < %#x\n", pReq->Hdr.cbReq, sizeof(GMMFREEQUERYREQ)),
+    AssertMsgReturn(pReq->Hdr.cbReq == sizeof(GMMMEMSTATSREQ),
+                    ("%#x < %#x\n", pReq->Hdr.cbReq, sizeof(GMMMEMSTATSREQ)),
                     VERR_INVALID_PARAMETER);
 
     /*
@@ -3013,7 +3013,9 @@ GMMR0DECL(int) GMMR0QueryTotalFreePagesReq(PVM pVM, PGMMFREEQUERYREQ pReq)
      */
     PGMM pGMM;
     GMM_GET_VALID_INSTANCE(pGMM, VERR_INTERNAL_ERROR);
-    pReq->cFreePages = (pGMM->cChunks << GMM_CHUNK_SHIFT) - pGMM->cAllocatedPages; 
+    pReq->cAllocPages     = pGMM->cAllocatedPages; 
+    pReq->cFreePages      = (pGMM->cChunks << GMM_CHUNK_SHIFT) - pGMM->cAllocatedPages; 
+    pReq->cBalloonedPages = pGMM->cBalloonedPages; 
     GMM_CHECK_SANITY_UPON_LEAVING(pGMM);
 
     return VINF_SUCCESS;
