@@ -1,4 +1,4 @@
-/* $Id: SUPLib-freebsd.cpp 22077 2009-08-07 16:01:57Z vboxsync $ */
+/* $Id: SUPLib-freebsd.cpp 28317 2010-04-14 18:06:05Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - FreeBSD specific parts.
  */
@@ -185,10 +185,10 @@ int suplibOsPageAlloc(PSUPLIBDATA pThis, size_t cPages, void **ppvPages)
 }
 
 
-int suplibOsPageFree(PSUPLIBDATA pThis, void *pvPages, size_t /* cPages */)
+int suplibOsPageFree(PSUPLIBDATA pThis, void *pvPages, size_t cPages)
 {
     NOREF(pThis);
-    RTMemPageFree(pvPages);
+    RTMemPageFree(pvPages, cPages * PAGE_SIZE);
     return VINF_SUCCESS;
 }
 

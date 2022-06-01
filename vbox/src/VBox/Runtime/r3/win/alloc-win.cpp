@@ -1,4 +1,4 @@
-/* $Id: alloc-win.cpp 21872 2009-07-30 09:30:56Z vboxsync $ */
+/* $Id: alloc-win.cpp 28317 2010-04-14 18:06:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Win32.
  */
@@ -147,7 +147,7 @@ RTDECL(void *) RTMemPageAllocZ(size_t cb) RT_NO_THROW
  * @param   pv      Pointer to the block as it was returned by the allocation function.
  *                  NULL will be ignored.
  */
-RTDECL(void) RTMemPageFree(void *pv) RT_NO_THROW
+RTDECL(void) RTMemPageFree(void *pv, size_t cb) RT_NO_THROW
 {
     if (pv)
     {

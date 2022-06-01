@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceBalloon.cpp 28048 2010-04-07 13:14:34Z vboxsync $ */
+/* $Id: VBoxServiceBalloon.cpp 28317 2010-04-14 18:06:05Z vboxsync $ */
 /** @file
  * VBoxService - Memory Ballooning.
  */
@@ -68,7 +68,7 @@ static void VBoxServiceBalloonInitMadvise(void)
 #ifdef RT_OS_LINUX
     void *pv = RTMemPageAlloc(PAGE_SIZE);
     g_fSysMadviseWorks = madvise(pv, PAGE_SIZE, MADV_DONTFORK) == 0;
-    RTMemPageFree(pv);
+    RTMemPageFree(pv, PAGE_SIZE);
 #endif
 }
 
@@ -147,7 +147,7 @@ static void VBoxServiceBalloonFreeChunk(void *pv)
 
 #else
 
-    RTMemPageFree(pu8);
+    RTMemPageFree(pu8, cb);
 
 #endif
 }

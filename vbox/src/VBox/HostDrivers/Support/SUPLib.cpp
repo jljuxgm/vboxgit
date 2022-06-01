@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 26430 2010-02-11 14:23:01Z vboxsync $ */
+/* $Id: SUPLib.cpp 28317 2010-04-14 18:06:05Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1183,12 +1183,12 @@ SUPR3DECL(int) SUPR3PageFreeEx(void *pvPages, size_t cPages)
     /* fake */
     if (RT_UNLIKELY(g_u32FakeMode))
     {
-        RTMemPageFree(pvPages);
+        RTMemPageFree(pvPages, cPages * PAGE_SIZE);
         return VINF_SUCCESS;
     }
 
     /*
-     * Try normal free first, then if it fails check if we're using the fallback                                            .
+     * Try normal free first, then if it fails check if we're using the fallback
      * for the allocations without kernel mappings and attempt unlocking it.
      */
     NOREF(cPages);
@@ -1281,7 +1281,7 @@ SUPR3DECL(int) SUPR3ContFree(void *pv, size_t cPages)
     /* fake */
     if (RT_UNLIKELY(g_u32FakeMode))
     {
-        RTMemPageFree(pv);
+        RTMemPageFree(pv, cPages * PAGE_SIZE);
         return VINF_SUCCESS;
     }
 
@@ -1384,7 +1384,7 @@ SUPR3DECL(int) SUPR3LowFree(void *pv, size_t cPages)
     /* fake */
     if (RT_UNLIKELY(g_u32FakeMode))
     {
-        RTMemPageFree(pv);
+        RTMemPageFree(pv, cPages * PAGE_SIZE);
         return VINF_SUCCESS;
     }
 

@@ -1,4 +1,4 @@
-/* $Id: tstFileAio.cpp 25000 2009-11-26 14:22:44Z vboxsync $ */
+/* $Id: tstFileAio.cpp 28317 2010-04-14 18:06:05Z vboxsync $ */
 /** @file
  * IPRT Testcase - File Async I/O.
  */
@@ -171,7 +171,7 @@ void tstFileAioTestReadWriteBasic(RTFILE File, bool fWrite, void *pvTestBuf, siz
 
                         /* Free buffers. */
                         for (unsigned i = 0; i < cMaxReqsInFlight; i++)
-                            RTMemPageFree(papvBuf[i]);
+                            RTMemPageFree(papvBuf[i], cbTestBuf);
 
                         /* Free requests. */
                         for (unsigned i = 0; i < cMaxReqsInFlight; i++)

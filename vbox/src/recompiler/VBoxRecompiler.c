@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 27254 2010-03-10 15:03:11Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 28317 2010-04-14 18:06:05Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -512,7 +512,7 @@ static int remR3InitPhysRamSizeAndDirtyMap(PVM pVM, bool fGuarded)
         rc = RTMemProtect(phys_ram_dirty + cbBitmapAligned, cbBitmapFull - cbBitmapAligned, RTMEM_PROT_NONE);
         if (RT_FAILURE(rc))
         {
-            RTMemPageFree(phys_ram_dirty);
+            RTMemPageFree(phys_ram_dirty, cbBitmapFull);
             AssertLogRelRCReturn(rc, rc);
         }
 

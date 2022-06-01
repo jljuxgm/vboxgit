@@ -1,4 +1,4 @@
-/* $Id: memcache.cpp 26525 2010-02-15 03:33:33Z vboxsync $ */
+/* $Id: memcache.cpp 28317 2010-04-14 18:06:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Object Allocation Cache.
  */
@@ -251,7 +251,7 @@ RTDECL(int) RTMemCacheDestroy(RTMEMCACHE hMemCache)
                     pThis->pfnDtor(hMemCache, pPage->pbObjects + iObj * pThis->cbObject, pThis->pvUser);
         }
 
-        RTMemPageFree(pPage);
+        RTMemPageFree(pPage, PAGE_SIZE);
     }
 
     RTMemFree(pThis);

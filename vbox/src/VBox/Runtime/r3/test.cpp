@@ -1,4 +1,4 @@
-/* $Id: test.cpp 27649 2010-03-23 22:43:29Z vboxsync $ */
+/* $Id: test.cpp 28317 2010-04-14 18:06:05Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -528,7 +528,7 @@ RTR3DECL(int) RTTestGuardedAlloc(RTTEST hTest, size_t cb, uint32_t cbAlign, bool
                 RTMemProtect(pMem->aGuards[0].pv, pMem->aGuards[0].cb, RTMEM_PROT_WRITE | RTMEM_PROT_READ);
             }
 
-            RTMemPageFree(pMem->pvAlloc);
+            RTMemPageFree(pMem->pvAlloc, pMem->cbAlloc);
         }
         RTMemFree(pMem);
     }
@@ -586,7 +586,7 @@ static void rtTestGuardedFreeOne(PRTTESTGUARDEDMEM pMem)
     int rc;
     rc = RTMemProtect(pMem->aGuards[0].pv, pMem->aGuards[0].cb, RTMEM_PROT_WRITE | RTMEM_PROT_READ); AssertRC(rc);
     rc = RTMemProtect(pMem->aGuards[1].pv, pMem->aGuards[1].cb, RTMEM_PROT_WRITE | RTMEM_PROT_READ); AssertRC(rc);
-    RTMemPageFree(pMem->pvAlloc);
+    RTMemPageFree(pMem->pvAlloc, pMem->cbAlloc);
     RTMemFree(pMem);
 }
 

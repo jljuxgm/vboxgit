@@ -1,4 +1,4 @@
-/* $Id: alloc-freebsd.cpp 21292 2009-07-07 08:00:14Z vboxsync $ */
+/* $Id: alloc-freebsd.cpp 28317 2010-04-14 18:06:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, POSIX.
  */
@@ -83,7 +83,8 @@ RTDECL(void *) RTMemExecAlloc(size_t cb) RT_NO_THROW
  */
 RTDECL(void)    RTMemExecFree(void *pv) RT_NO_THROW
 {
-    return RTMemPageFree(pv);
+    if (pv)
+        free(pv);
 }
 
 
@@ -128,7 +129,7 @@ RTDECL(void *) RTMemPageAllocZ(size_t cb) RT_NO_THROW
  * @param   pv      Pointer to the block as it was returned by the allocation function.
  *                  NULL will be ignored.
  */
-RTDECL(void) RTMemPageFree(void *pv) RT_NO_THROW
+RTDECL(void) RTMemPageFree(void *pv, size_t cb) RT_NO_THROW
 {
     if (pv)
         free(pv);

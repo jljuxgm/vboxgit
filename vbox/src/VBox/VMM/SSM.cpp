@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 26526 2010-02-15 03:36:01Z vboxsync $ */
+/* $Id: SSM.cpp 28317 2010-04-14 18:06:05Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -1674,7 +1674,7 @@ static void ssmR3StrmDestroyBufList(PSSMSTRMBUF pHead)
         PSSMSTRMBUF pCur = pHead;
         pHead = pCur->pNext;
         pCur->pNext = NULL;
-        RTMemPageFree(pCur);
+        RTMemPageFree(pCur, sizeof(*pCur));
     }
 }
 
@@ -1687,7 +1687,7 @@ static void ssmR3StrmDestroyBufList(PSSMSTRMBUF pHead)
  */
 static void ssmR3StrmDelete(PSSMSTRM pStrm)
 {
-    RTMemPageFree(pStrm->pCur);
+    RTMemPageFree(pStrm->pCur, sizeof(*pStrm->pCur));
     pStrm->pCur = NULL;
     ssmR3StrmDestroyBufList(pStrm->pHead);
     pStrm->pHead = NULL;
