@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 25618 2010-01-02 12:00:33Z vboxsync $ */
+/* $Id: thread.cpp 25622 2010-01-03 13:56:34Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -1304,7 +1304,7 @@ RTDECL(void) RTThreadBlocking(RTTHREAD hThread, RTTHREADSTATE enmState)
 {
     Assert(RTTHREAD_IS_SLEEPING(enmState));
     PRTTHREADINT pThread = hThread;
-    if (hThread && rtThreadGetState(pThread) == RTTHREADSTATE_RUNNING)
+    if (pThread && rtThreadGetState(pThread) == RTTHREADSTATE_RUNNING)
         rtThreadSetState(pThread, enmState);
 }
 RT_EXPORT_SYMBOL(RTThreadBlocking);
