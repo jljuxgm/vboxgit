@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 28120 2010-04-09 07:58:01Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 28156 2010-04-10 01:14:10Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1640,7 +1640,7 @@ DECLINLINE(bool) intnetR0TrunkIfCanHandleGsoFrame(PINTNETTRUNKIF pThis, PINTNETS
         return !!(pThis->fGsoCapabilitesHost & fMask);
     if (fDst == INTNETTRUNKDIR_WIRE)
         return !!(pThis->fGsoCapabilitesWire & fMask);
-    Assert(fDst == (INTNETTRUNKDIR_WIRE == INTNETTRUNKDIR_HOST));
+    Assert(fDst == (INTNETTRUNKDIR_WIRE | INTNETTRUNKDIR_HOST));
     return !!(pThis->fGsoCapabilitesHost & pThis->fGsoCapabilitesWire & fMask);
 }
 
@@ -3317,7 +3317,7 @@ static DECLCALLBACK(void) intnetR0TrunkIfPortReportGsoCapabilities(PINTNETTRUNKS
 
     for (unsigned iBit = PDMNETWORKGSOTYPE_END; iBit < 32; iBit++)
         Assert(!(fGsoCapabilities & RT_BIT_32(iBit)));
-    Assert(fDst & ~INTNETTRUNKDIR_VALID_MASK);
+    Assert(!(fDst & ~INTNETTRUNKDIR_VALID_MASK));
     Assert(fDst);
 
     if (fDst & INTNETTRUNKDIR_HOST)

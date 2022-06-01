@@ -1,4 +1,4 @@
-# $Revision: 26180 $
+# $Revision: 28156 $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -99,6 +99,8 @@ OBJS   = \
 	r0drv/linux/time-r0drv-linux.o \
 	r0drv/linux/timer-r0drv-linux.o \
 	r0drv/generic/semspinmutex-r0drv-generic.o \
+	common/checksum/ipv4.o \
+	common/checksum/ipv6.o \
 	common/err/RTErrConvertFromErrno.o \
 	common/err/RTErrConvertToErrno.o \
 	common/log/log.o \
