@@ -1,4 +1,4 @@
-# $Id: Config.kmk 30229 2010-06-16 02:34:24Z vboxsync $
+# $Id: Config.kmk 30337 2010-06-21 14:39:44Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3691,7 +3691,7 @@ ifeq ($(KBUILD_HOST),win)
   TEMPLATE_VBOXBLDPROG_TOOL            := VCC70
   TEMPLATE_VBOXBLDPROG_SDKS            := WIN32SDK
  else if1of ($(KBUILD_HOST_ARCH), amd64)
-  TEMPLATE_VBOXBLDPROG_TOOL            := VCC80
+  TEMPLATE_VBOXBLDPROG_TOOL            := VCC80AMD64
   TEMPLATE_VBOXBLDPROG_SDKS            := WIN64SDK
  else
   $(error KBUILD_HOST_ARCH=$(KBUILD_HOST_ARCH))
@@ -4271,7 +4271,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 30229 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 30337 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
