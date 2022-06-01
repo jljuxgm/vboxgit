@@ -1,4 +1,4 @@
-/* $Id: semrw-posix.cpp 25831 2010-01-14 15:12:53Z vboxsync $ */
+/* $Id: semrw-posix.cpp 25908 2010-01-18 22:07:28Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, POSIX.
  */
@@ -635,6 +635,47 @@ RTDECL(bool) RTSemRWIsWriteOwner(RTSEMRW hRWSem)
     ATOMIC_GET_PTHREAD_T(&pThis->Writer, &Writer);
     return Writer == Self;
 }
+
+
+RTDECL(bool)  RTSemRWIsReadOwner(RTSEMRW hRWSem, bool fWannaHear)
+{
+    /*
+     * Validate handle.
+     */
+    struct RTSEMRWINTERNAL *pThis = hRWSem;
+    AssertPtrReturn(pThis, false);
+    AssertReturn(pThis->u32Magic == RTSEMRW_MAGIC, false);
+
+    /*
+     * Check write ownership.  The writer is also a valid reader.
+     */
+    pthread_t Self = pthread_self();
+    pthread_t Writer;
+    ATOMIC_GET_PTHREAD_T(&pThis->Writer, &Writer);
+    if (Writer == Self)
+        return true;
+    if (Writer != (pthread_t)-1)
+        return false;
+
+    /*
+     * If there are no readers, we cannot be one of them, can we?
+     */
+    if (ASMAtomicReadU32(&pThis->cReaders) == 0)
+        return false;
+
+#ifdef RTSEMRW_STRICT
+    /*
+     * Ask the lock validator.
+     */
+    return RTLockValidatorRecSharedIsOwner(&pThis->ValidatorRead, NIL_RTTHREAD);
+#else
+    /*
+     * Just tell the caller what he want to hear.
+     */
+    return fWannaHear;
+#endif
+}
+RT_EXPORT_SYMBOL(RTSemRWIsReadOwner);
 
 
 RTDECL(uint32_t) RTSemRWGetWriteRecursion(RTSEMRW hRWSem)
