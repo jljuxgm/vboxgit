@@ -1,4 +1,4 @@
-/* $Id: service.cpp 25417 2009-12-15 22:21:39Z vboxsync $ */
+/* $Id: service.cpp 25601 2009-12-31 00:40:25Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -614,7 +614,9 @@ int Service::setProperty(uint32_t cParms, VBOXHGCMSVCPARM paParms[], bool isGues
     const char *pcszName = NULL;        /* shut up gcc */
     const char *pcszValue = NULL;       /* ditto */
     const char *pcszFlags = NULL;
-    uint32_t cchName, cchValue, cchFlags = 0;
+    uint32_t cchName = 0;               /* ditto */
+    uint32_t cchValue = 0;              /* ditto */
+    uint32_t cchFlags = 0;
     uint32_t fFlags = NILFLAG;
     RTTIMESPEC time;
     uint64_t u64TimeNano = RTTimeSpecGetNano(RTTimeNow(&time));
