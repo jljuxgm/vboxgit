@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 25144 2009-12-02 12:31:08Z vboxsync $ */
+/* $Id: state_glsl.c 26031 2010-01-25 19:40:40Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -984,7 +984,7 @@ static void crStateGLSLSyncShadersCB(unsigned long key, void *data1, void *data2
 
     if (pShader->source)
     {
-        diff_api.ShaderSource(pShader->hwid, 1, &pShader->source, NULL);
+        diff_api.ShaderSource(pShader->hwid, 1, (const char**)&pShader->source, NULL);
         if (pShader->compiled)
             diff_api.CompileShader(pShader->hwid);
         crFree(pShader->source);
@@ -1003,7 +1003,7 @@ static void crStateAttachShaderCB(unsigned long key, void *data1, void *data2)
     
     if (pShader->source)
     {
-        diff_api.ShaderSource(pShader->hwid, 1, &pShader->source, NULL);
+        diff_api.ShaderSource(pShader->hwid, 1, (const char**)&pShader->source, NULL);
         if (pShader->compiled)
             diff_api.CompileShader(pShader->hwid);
     }
