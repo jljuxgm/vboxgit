@@ -1,4 +1,4 @@
-/* $Id: UIActionsPool.cpp 30206 2010-06-15 15:41:05Z vboxsync $ */
+/* $Id: UIActionsPool.cpp 30343 2010-06-21 16:32:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -91,6 +91,8 @@ UIAction::UIAction(QObject *pParent, UIActionType type)
     : QIWithRetranslateUI3<QAction>(pParent)
     , m_type(type)
 {
+    /* Default is no specific menu role. We will set them explicit later. */
+    setMenuRole(QAction::NoRole);
 }
 
 UIActionType UIAction::type() const
