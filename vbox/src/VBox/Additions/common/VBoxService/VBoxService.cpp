@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 29775 2010-05-25 11:37:55Z vboxsync $ */
+/* $Id: VBoxService.cpp 29776 2010-05-25 11:38:17Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -466,9 +466,9 @@ static void VBoxServiceWaitSignal(void)
         rc = sigwait(&signalMask, &iSignal);
     }
     while (   rc == EINTR
-#ifdef ERESTART
+# ifdef ERESTART
            || rc == ERESTART
-#endif
+# endif
           );
 
     VBoxServiceVerbose(3, "VBoxServiceWaitSignal: Received signal %d (rc=%d)\n", iSignal, rc);
