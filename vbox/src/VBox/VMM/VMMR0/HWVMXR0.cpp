@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 25389 2009-12-15 10:55:31Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 25392 2009-12-15 12:06:59Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -466,6 +466,9 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
 
             if (pVM->hwaccm.s.fHasIoApic)
                 val |= VMX_VMCS_CTRL_PROC_EXEC2_VIRT_APIC;
+
+            if (pVM->hwaccm.s.vmx.fUnrestrictedGuest)
+                val |= VMX_VMCS_CTRL_PROC_EXEC2_REAL_MODE;
 
             /* Mask away the bits that the CPU doesn't support */
             /** @todo make sure they don't conflict with the above requirements. */
