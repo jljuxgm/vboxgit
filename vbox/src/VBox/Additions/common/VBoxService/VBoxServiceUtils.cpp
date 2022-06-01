@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.cpp 25390 2009-12-15 11:16:26Z vboxsync $ */
+/* $Id: VBoxServiceUtils.cpp 25476 2009-12-18 11:00:22Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
@@ -137,8 +137,8 @@ int VBoxServiceReadPropUInt32(uint32_t u32ClientId, const char *pszPropName, uin
         if (   RT_SUCCESS(rc)
             && (*pu32 < u32Min || *pu32 > u32Max))
         {
-            VBoxServiceError("The guest property value %s = %RU32 is out of range [%RU32..%RU32].\n",
-                             pszPropName, *pu32, u32Min, u32Max);
+            rc = VBoxServiceError("The guest property value %s = %RU32 is out of range [%RU32..%RU32].\n",
+                                  pszPropName, *pu32, u32Min, u32Max);
         }
         RTStrFree(pszValue);
     }
