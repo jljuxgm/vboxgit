@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 27231 2010-03-09 20:16:59Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 27438 2010-03-17 12:02:53Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -1280,15 +1280,6 @@ static void vmxR0UpdateExceptionBitmap(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         u32TrapMask |= RT_BIT(X86_XCPT_MF);
         pVCpu->hwaccm.s.fFPUOldStyleOverride = true;
     }
-
-#ifdef DEBUG /* till after branching, enable it by default then. */
-    /* Intercept X86_XCPT_DB if stepping is enabled */
-    if (    DBGFIsStepping(pVCpu)
-        ||  CPUMIsHyperDebugStateActive(pVCpu))
-        u32TrapMask |= RT_BIT(X86_XCPT_DB);
-    /** @todo Don't trap it unless the debugger has armed breakpoints.  */
-    u32TrapMask |= RT_BIT(X86_XCPT_BP);
-#endif
 
 #ifdef VBOX_STRICT
     Assert(u32TrapMask & RT_BIT(X86_XCPT_GP));
@@ -3000,7 +2991,6 @@ ResumeExecution:
                 STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitGuestDB);
 
                 /* Note that we don't support guest and host-initiated debugging at the same time. */
-                Assert(DBGFIsStepping(pVCpu) || CPUMIsGuestInRealModeEx(pCtx) || CPUMIsHyperDebugStateActive(pVCpu));
 
                 uDR6  = X86_DR6_INIT_VAL;
                 uDR6 |= (exitQualification & (X86_DR6_B0|X86_DR6_B1|X86_DR6_B2|X86_DR6_B3|X86_DR6_BD|X86_DR6_BS));
@@ -3388,7 +3378,8 @@ ResumeExecution:
         {
             errCode |= X86_TRAP_PF_P;
         }
-        else {
+        else 
+        {
             /* Shortcut for APIC TPR reads and writes. */
             if (    (GCPhys & 0xfff) == 0x080
                 &&  GCPhys > 0x1000000   /* to skip VGA frame buffer accesses */
