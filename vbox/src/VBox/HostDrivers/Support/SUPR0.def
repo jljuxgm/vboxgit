@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 23171 2009-09-21 09:34:32Z vboxsync $
+; $Id: SUPR0.def 25263 2009-12-09 05:16:39Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Built-in exports.
 ;
@@ -29,6 +29,7 @@
 ;
 
 LIBRARY SUPR0.dll
+;LIBRARY VBoxDrv.sys - @todo VBOX_WITH_NATIVE_R0_LOADER
 
 EXPORTS
     SUPR0AbsIs64bit

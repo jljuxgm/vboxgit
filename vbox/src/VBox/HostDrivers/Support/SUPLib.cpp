@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 25260 2009-12-09 02:07:44Z vboxsync $ */
+/* $Id: SUPLib.cpp 25263 2009-12-09 05:16:39Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1497,7 +1497,11 @@ static DECLCALLBACK(int) supLoadModuleResolveImport(RTLDRMOD hLdrMod, const char
      */
     if (    pszModule
         &&  *pszModule
+#if defined(VBOX_WITH_NATIVE_R0_LOADER) && defined(RT_OS_WINDOWS)
+        &&  strcmp(pszModule, "VBoxDrv.sys")
+#else
         &&  strcmp(pszModule, "SUPR0.dll")
+#endif
         &&  strcmp(pszModule, "VMMR0.r0"))
     {
         AssertMsgFailed(("%s is importing from %s! (expected 'SUPR0.dll' or 'VMMR0.r0', case-sensitiv)\n", pvUser, pszModule));
