@@ -1,4 +1,4 @@
-/* $Id: UIFirstRunWzd.cpp 29722 2010-05-21 11:50:41Z vboxsync $ */
+/* $Id: UIFirstRunWzd.cpp 29730 2010-05-21 12:48:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -131,6 +131,8 @@ void UIFirstRunWzdPage1::retranslateUi()
 
 void UIFirstRunWzdPage1::initializePage()
 {
+    /* Fill and translate */
+    retranslateUi();
 }
 
 UIFirstRunWzdPage2::UIFirstRunWzdPage2()
@@ -178,6 +180,9 @@ void UIFirstRunWzdPage2::retranslateUi()
 
 void UIFirstRunWzdPage2::initializePage()
 {
+    /* Fill and translate */
+    retranslateUi();
+
     /* Initial choice */
     m_pMediaSelector->setCurrentIndex(0);
     sltMediumChanged();
@@ -268,6 +273,9 @@ void UIFirstRunWzdPage3::retranslateUi()
 
 void UIFirstRunWzdPage3::initializePage()
 {
+    /* Fill and translate */
+    retranslateUi();
+
     /* Summary should initially have focus */
     m_pSummaryText->setFocus();
 }

@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 29722 2010-05-21 11:50:41Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 29730 2010-05-21 12:48:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -185,6 +185,8 @@ void UINewVMWzdPage1::retranslateUi()
 
 void UINewVMWzdPage1::initializePage()
 {
+    /* Fill and translate */
+    retranslateUi();
 }
 
 UINewVMWzdPage2::UINewVMWzdPage2()
@@ -216,6 +218,9 @@ void UINewVMWzdPage2::retranslateUi()
 
 void UINewVMWzdPage2::initializePage()
 {
+    /* Fill and translate */
+    retranslateUi();
+
     /* 'Name' field should have focus initially */
     m_pNameEditor->setFocus();
 }
@@ -283,6 +288,9 @@ void UINewVMWzdPage3::retranslateUi()
 
 void UINewVMWzdPage3::initializePage()
 {
+    /* Fill and translate */
+    retranslateUi();
+
     /* Assign recommended 'ram' field value */
     CGuestOSType type = field("type").value<CGuestOSType>();
     ramSliderValueChanged(type.GetRecommendedRAM());
@@ -369,6 +377,9 @@ void UINewVMWzdPage4::retranslateUi()
 
 void UINewVMWzdPage4::initializePage()
 {
+    /* Fill and translate */
+    retranslateUi();
+
     /* Prepare initial choice */
     m_pBootHDCnt->setChecked(true);
     m_pDiskSelector->setCurrentIndex(0);
@@ -599,6 +610,9 @@ void UINewVMWzdPage5::retranslateUi()
 
 void UINewVMWzdPage5::initializePage()
 {
+    /* Fill and translate */
+    retranslateUi();
+
     /* Summary should have focus initially */
     m_pSummaryText->setFocus();
 }

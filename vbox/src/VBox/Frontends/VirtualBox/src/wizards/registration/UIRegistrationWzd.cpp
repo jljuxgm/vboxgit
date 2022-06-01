@@ -1,4 +1,4 @@
-/* $Id: UIRegistrationWzd.cpp 29722 2010-05-21 11:50:41Z vboxsync $ */
+/* $Id: UIRegistrationWzd.cpp 29730 2010-05-21 12:48:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -525,6 +525,9 @@ UIRegistrationWzdPage1::UIRegistrationWzdPage1()
     RegistrationData data(vboxGlobal().virtualBox().GetExtraData(VBoxDefs::GUI_RegistrationData), false);
     m_pLeOldEmail->setText(data.account());
     m_pLeOldEmail->setFocus();
+
+    /* Fill and translate */
+    retranslateUi();
 }
 
 void UIRegistrationWzdPage1::retranslateUi()
