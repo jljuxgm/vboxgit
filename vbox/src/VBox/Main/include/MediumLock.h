@@ -1,4 +1,4 @@
-/* $Id: MediumLock.h 28556 2010-04-21 11:09:34Z vboxsync $ */
+/* $Id: MediumLock.h 28582 2010-04-22 08:09:21Z vboxsync $ */
 
 /** @file
  *
@@ -73,9 +73,9 @@ public:
     MediumLock(const MediumLock &aMediumLock);
 
     /**
-     * Update a medium lock description
+     * Update a medium lock description.
      *
-     * @note May be only used in unlocked state.
+     * @note May be used in locked state.
      *
      * @return COM status code
      * @param aLockWrite    @c true means a write lock should be taken
@@ -189,7 +189,7 @@ public:
     HRESULT RemoveByIterator(Base::iterator &aIt);
 
     /**
-     * Clear all medium lock declaration.
+     * Clear all medium lock declarations.
      *
      * @note Implicitly unlocks all locks.
      *
