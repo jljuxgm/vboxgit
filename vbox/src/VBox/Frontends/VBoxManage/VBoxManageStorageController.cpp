@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 24346 2009-11-04 17:04:00Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 24347 2009-11-04 17:13:50Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -358,7 +358,7 @@ int handleStorageAttach(HandlerArg *a)
 
         /* check if the device type is supported by the controller */
         {
-            ULONG storageBus = StorageBus_Null;
+            StorageBus_T storageBus = StorageBus_Null;
             com::SafeArray <DeviceType_T> saDeviceTypes;
 
             CHECK_ERROR(storageCtl, COMGETTER(Bus)(&storageBus));
