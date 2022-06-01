@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: VMMDevState.h 27049 2010-03-04 17:36:41Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -206,6 +206,8 @@ typedef struct VMMDevState
     uint32_t             idCpuCore;
     /** Package id of the CPU to changhe */
     uint32_t             idCpuPackage;
+
+    uint32_t             StatMemBalloonChunks;
 } VMMDevState;
 AssertCompileMemberAlignment(VMMDevState, CritSect, 8);
 
