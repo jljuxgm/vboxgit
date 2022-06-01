@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27025 2010-03-04 13:47:10Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27027 2010-03-04 13:55:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -182,7 +182,7 @@ void UIMachineWindowSeamless::prepareMenu()
 {
     setMenuBar(uisession()->newMenuBar());
 }
-#endif
+#endif /* Q_WS_MAC */
 
 void UIMachineWindowSeamless::prepareMachineView()
 {

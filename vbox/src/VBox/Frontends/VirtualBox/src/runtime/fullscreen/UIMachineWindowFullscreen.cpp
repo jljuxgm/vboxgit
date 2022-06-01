@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 27018 2010-03-04 12:39:01Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 27027 2010-03-04 13:55:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -49,8 +49,10 @@ UIMachineWindowFullscreen::UIMachineWindowFullscreen(UIMachineLogic *pMachineLog
     /* Prepare console connections: */
     prepareConsoleConnections();
 
+#ifdef Q_WS_MAC
     /* Prepare menu: */
     prepareMenu();
+#endif /* Q_WS_MAC */
 
     /* Retranslate normal window finally: */
     retranslateUi();
@@ -130,12 +132,12 @@ void UIMachineWindowFullscreen::closeEvent(QCloseEvent *pEvent)
     return UIMachineWindow::closeEvent(pEvent);
 }
 
+#ifdef Q_WS_MAC
 void UIMachineWindowFullscreen::prepareMenu()
 {
     setMenuBar(uisession()->newMenuBar());
-    /* Menubar is always hidden in fullscreen */
-    menuBar()->hide();
 }
+#endif /* Q_WS_MAC */
 
 void UIMachineWindowFullscreen::prepareMachineView()
 {
