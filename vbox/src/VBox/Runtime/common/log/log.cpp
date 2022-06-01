@@ -1,4 +1,4 @@
-/* $Id: log.cpp 24986 2009-11-26 10:59:03Z vboxsync $ */
+/* $Id: log.cpp 24987 2009-11-26 11:00:33Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -302,7 +302,7 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, uint32_t fFlags, const char *psz
         if (pu8Code)
         {
             pLogger->pfnLogger = *(PFNRTLOGGER*)&pu8Code;
-#if defined(RT_ARCH_AMD64) || defined(RT_LOG_
+#if defined(RT_ARCH_AMD64) || (defined(LOG_USE_C99) && defined(RT_WITHOUT_EXEC_ALLOC))
             /* this wrapper will not be used on AMD64, we will be requiring C99 compilers there. */
             *pu8Code++ = 0xcc;
 #else
