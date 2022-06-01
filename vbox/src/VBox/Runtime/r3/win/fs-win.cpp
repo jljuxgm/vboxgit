@@ -1,4 +1,4 @@
-/* $Id: fs-win.cpp 30276 2010-06-17 08:56:53Z vboxsync $ */
+/* $Id: fs-win.cpp 30279 2010-06-17 09:16:23Z vboxsync $ */
 /** @file
  * IPRT - File System, Win32.
  */
@@ -39,7 +39,6 @@
 #include <iprt/log.h>
 #include <iprt/assert.h>
 #include "internal/fs.h"
-#include <iprt/stream.h>
 
 /* from ntdef.h */
 typedef LONG NTSTATUS;
