@@ -1,4 +1,4 @@
-# $Id: Config.kmk 25779 2010-01-12 17:02:20Z vboxsync $
+# $Id: Config.kmk 25781 2010-01-12 17:03:31Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1161,12 +1161,8 @@ endif
 # Compiler optimization flags.
 #
 VBOX_GCC_WARN     ?= -Wall $(VBOX_GCC_Wextra) $(VBOX_GCC_Wno-missing-field-initializers) -Wno-unused -Wno-trigraphs
-VBOX_GCC_PEDANTIC_CXX ?= -pedantic $(VBOX_GCC_WARN) -Wno-long-long
-VBOX_GCC_PEDANTIC_C   ?= -pedantic $(VBOX_GCC_WARN) -Wno-long-long -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations
-ifdef VBOX_WITH_GCC_Wshadow # Note! This will become defaults once we've cleaned up the warnings.
- VBOX_GCC_PEDANTIC_CXX += -Wshadow
- VBOX_GCC_PEDANTIC_C   += -Wshadow
-endif
+VBOX_GCC_PEDANTIC_CXX ?= -pedantic -Wshadow $(VBOX_GCC_WARN) -Wno-long-long
+VBOX_GCC_PEDANTIC_C   ?= -pedantic -Wshadow $(VBOX_GCC_WARN) -Wno-long-long -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations
 ifeq ($(KBUILD_TYPE),debug)
  VBOX_GCC_FP     ?= -fno-omit-frame-pointer
  VBOX_GCC_OPT    ?= -O0
@@ -3909,7 +3905,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25779 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25781 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
