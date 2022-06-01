@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 27104 2010-03-05 15:31:40Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 27330 2010-03-12 14:07:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -403,9 +403,6 @@ void UIMachineWindow::updateAppearanceOf(int iElement)
         if (machine.GetMonitorCount() > 1)
             strMachineName += QString(" : %1").arg(m_uScreenId + 1);
         machineWindow()->setWindowTitle(strMachineName);
-
-        // TODO: Move that to fullscreen/seamless update routine:
-        //mMiniToolBar->setDisplayText(machine.GetName() + strSnapshotName);
     }
 }
 
