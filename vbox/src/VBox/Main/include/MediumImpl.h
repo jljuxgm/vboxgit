@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 25256 2009-12-08 21:18:38Z vboxsync $ */
+/* $Id: MediumImpl.h 25882 2010-01-18 11:29:39Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -305,10 +305,12 @@ private:
     static DECLCALLBACK(int) vdConfigQuery(void *pvUser, const char *pszName,
                                            char *pszValue, size_t cchValue);
 
-    static DECLCALLBACK(int) taskThread(RTTHREAD thread, void *pvUser);
-
     struct Task;
     friend struct Task;
+
+    HRESULT taskThreadCreateBase(Task &task, void *pvdOperationIfaces);
+
+    static DECLCALLBACK(int) taskThread(RTTHREAD thread, void *pvUser);
 
     struct Data;            // opaque data struct, defined in MediumImpl.cpp
     Data *m;
