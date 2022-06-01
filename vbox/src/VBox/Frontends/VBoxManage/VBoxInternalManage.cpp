@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 30319 2010-06-21 08:29:08Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 30321 2010-06-21 09:01:48Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1961,7 +1961,7 @@ int CmdDebugLog(int argc, char **argv, ComPtr<IVirtualBox> aVirtualBox, ComPtr<I
         RTPrintf("WARNING: One or more of the requested features are not implemented! Feel free to do this... :-)\n");
 
     if (fEnablePresent && fEnable)
-        CHECK_ERROR_RET(ptrDebugger, COMSETTER(LogEnabled)(FALSE), 1);
+        CHECK_ERROR_RET(ptrDebugger, COMSETTER(LogEnabled)(TRUE), 1);
     return 0;
 }
 
