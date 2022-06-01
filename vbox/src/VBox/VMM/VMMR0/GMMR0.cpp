@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29482 2010-05-14 15:43:21Z vboxsync $ */
+/* $Id: GMMR0.cpp 29483 2010-05-14 15:53:32Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3544,6 +3544,9 @@ GMMR0DECL(int) GMMR0RegisterSharedModule(PVM pVM, VMCPUID idCpu, VBOXOSFAMILY en
             pRecVM->fCollision    = false;
             pGlobalModule->cUsers++;
             rc = VINF_SUCCESS;
+
+            bool ret = RTAvlGCPtrInsert(&pGMM->pGlobalSharedModuleTree, &pGlobalModule->Core);
+            Assert(ret);
 
             Log(("GMMR0RegisterSharedModule: new global module %s\n", pszModuleName));
         }
