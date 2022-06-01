@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 27046 2010-03-04 16:28:31Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 27098 2010-03-05 14:44:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -81,7 +81,7 @@ UIMachineWindowNormal::UIMachineWindowNormal(UIMachineLogic *pMachineLogic, ulon
     updateAppearanceOf(UIVisualElement_AllStuff);
 
     /* Show window: */
-    show();
+    showSimple();
 }
 
 UIMachineWindowNormal::~UIMachineWindowNormal()
@@ -572,5 +572,14 @@ void UIMachineWindowNormal::cleanupStatusBar()
     /* Stop LED-update timer: */
     m_pIdleTimer->stop();
     m_pIdleTimer->disconnect(SIGNAL(timeout()), this, SLOT(sltUpdateIndicators()));
+}
+
+void UIMachineWindowNormal::showSimple()
+{
+    /* Diable auto centering: */
+    setAutoCenteringEnabled(false);
+
+    /* Just show window: */
+    show();
 }
 
