@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 29734 2010-05-21 13:56:57Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 29806 2010-05-26 10:12:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1043,7 +1043,6 @@ void UIMachineLogic::sltACPIShutdown()
 
 void UIMachineLogic::sltClose()
 {
-    printf("clvse called\n");
     /* Do not process if window(s) missed! */
     if (!isMachineWindowsCreated())
         return;
