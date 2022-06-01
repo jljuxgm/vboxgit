@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 28368 2010-04-15 14:46:06Z vboxsync $ */
+/* $Id: DisplayImpl.h 28602 2010-04-22 15:45:36Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -270,7 +270,7 @@ public:
 
 private:
 
-    void updateDisplayData (bool aCheckParams = false);
+    void updateDisplayData(void);
 
     static DECLCALLBACK(int)   changeFramebuffer(Display *that, IFramebuffer *aFB, unsigned uScreenId);
 
