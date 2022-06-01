@@ -1,4 +1,4 @@
-/* $Id: VBoxSettingsDialogSpecific.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
+/* $Id: VBoxSettingsDialogSpecific.cpp 26977 2010-03-02 21:33:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -596,7 +596,8 @@ bool VBoxVMSettingsDlg::isAvailable (VMSettingsPageIds aId)
                 vboxProblem().cannotAccessUSB (mMachine);
 
             /* Check if USB is implemented */
-            if (ctl.isNull())
+            if (   ctl.isNull()
+                || !ctl.GetProxyAvailable())
                 return false;
 
             /* Break to common result */

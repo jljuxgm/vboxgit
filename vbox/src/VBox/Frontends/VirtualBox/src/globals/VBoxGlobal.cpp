@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 26908 2010-03-01 12:49:28Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 26977 2010-03-02 21:33:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1997,7 +1997,8 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
         QString item;
 
         CUSBController ctl = aMachine.GetUSBController();
-        if (!ctl.isNull())
+        if (   !ctl.isNull()
+            && ctl.GetProxyAvailable())
         {
             /* the USB controller may be unavailable (i.e. in VirtualBox OSE) */
 
