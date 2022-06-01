@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DevINIP.cpp 25981 2010-01-22 18:42:01Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -398,8 +398,7 @@ static DECLCALLBACK(void *) devINIPQueryInterface(PPDMIBASE pInterface,
     PDEVINTNETIP pThis = RT_FROM_MEMBER(pInterface, DEVINTNETIP, IBase);
     if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
         return &pThis->IBase;
-    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_NETWORK_PORT) == 0)
-        return &pThis->INetworkPort;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMINETWORKPORT, &pThis->INetworkPort);
     return NULL;
 }
 
@@ -529,7 +528,7 @@ static DECLCALLBACK(int) devINIPConstruct(PPDMDEVINS pDevIns, int iInstance,
     }
     else
     {
-        pThis->pDrv = (PPDMINETWORKCONNECTOR)pThis->pDrvBase->pfnQueryInterface(pThis->pDrvBase, PDMINTERFACE_NETWORK_CONNECTOR);
+        pThis->pDrv = PDMIBASE_QUERY_INTERFACE(pThis->pDrvBase, PDMINETWORKCONNECTOR);
         if (!pThis->pDrv)
         {
             AssertMsgFailed(("Failed to obtain the PDMINTERFACE_NETWORK_CONNECTOR interface!\n"));

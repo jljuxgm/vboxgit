@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DrvTAP.cpp 25981 2010-01-22 18:42:01Z vboxsync $ */
 /** @file
  * DrvTAP - Universial TAP network transport driver.
  */
@@ -785,8 +785,7 @@ static DECLCALLBACK(void *) drvTAPQueryInterface(PPDMIBASE pInterface, const cha
 
     if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
         return &pDrvIns->IBase;
-    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_NETWORK_CONNECTOR) == 0)
-        return &pThis->INetworkConnector;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMINETWORKCONNECTOR, &pThis->INetworkConnector);
     return NULL;
 }
 
@@ -921,7 +920,7 @@ static DECLCALLBACK(int) drvTAPConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandl
     /*
      * Query the network port interface.
      */
-    pThis->pPort = (PPDMINETWORKPORT)pDrvIns->pUpBase->pfnQueryInterface(pDrvIns->pUpBase, PDMINTERFACE_NETWORK_PORT);
+    pThis->pPort = PDMIBASE_QUERY_INTERFACE(pDrvIns->pUpBase, PDMINETWORKPORT);
     if (!pThis->pPort)
         return PDMDRV_SET_ERROR(pDrvIns, VERR_PDM_MISSING_INTERFACE_ABOVE,
                                 N_("Configuration error: The above device/driver didn't export the network port interface"));
