@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 24338 2009-11-04 15:05:17Z vboxsync $ */
+/* $Id: fileio-win.cpp 24341 2009-11-04 15:23:59Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -219,7 +219,7 @@ RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint32_t fOpen)
             return VERR_INVALID_PARAMETER;
     }
     if (dwCreationDisposition == TRUNCATE_EXISTING)
-        /* The calling process must open the file with the GENERIC_WRITE bit set as part of the dwDesiredAccess parameter. */
+        /* Required for truncating the file (see MSDN), it is *NOT* part of FILE_GENERIC_WRITE. */
         dwDesiredAccess |= GENERIC_WRITE;
 
     /* RTFileSetMode needs following rights as well. */
