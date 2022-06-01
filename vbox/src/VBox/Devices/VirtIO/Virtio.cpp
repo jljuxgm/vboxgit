@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: Virtio.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -377,7 +377,7 @@ int vpciIOPortIn(PPDMDEVINS         pDevIns,
             else
             {
                 *pu32 = 0xFFFFFFFF;
-                rc = PDMDeviceDBGFStop(pDevIns, RT_SRC_POS, "%s vpciIOPortIn: "
+                rc = PDMDevHlpDBGFStop(pDevIns, RT_SRC_POS, "%s vpciIOPortIn: "
                                        "no valid port at offset port=%RTiop "
                                        "cb=%08x\n", szInst, port, cb);
             }
@@ -512,7 +512,7 @@ int vpciIOPortOut(PPDMDEVINS                pDevIns,
             if (port >= VPCI_CONFIG)
                 rc = pfnSetConfig(pState, port - VPCI_CONFIG, cb, &u32);
             else
-                rc = PDMDeviceDBGFStop(pDevIns, RT_SRC_POS, "%s vpciIOPortOut: no valid port at offset port=%RTiop cb=%08x\n", szInst, port, cb);
+                rc = PDMDevHlpDBGFStop(pDevIns, RT_SRC_POS, "%s vpciIOPortOut: no valid port at offset port=%RTiop cb=%08x\n", szInst, port, cb);
             break;
     }
 

@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DevParallel.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -790,7 +790,7 @@ static DECLCALLBACK(int) parallelConstruct(PPDMDEVINS pDevIns,
 
     if (pThis->fGCEnabled)
     {
-        rc = PDMDevHlpIOPortRegisterGC(pDevIns, io_base, 8, 0, "parallelIOPortWrite",
+        rc = PDMDevHlpIOPortRegisterRC(pDevIns, io_base, 8, 0, "parallelIOPortWrite",
                                       "parallelIOPortRead", NULL, NULL, "Parallel");
         if (RT_FAILURE(rc))
             return rc;

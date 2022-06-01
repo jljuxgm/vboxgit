@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 25127 2009-12-01 13:17:23Z vboxsync $ */
+/* $Id: DevRTC.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device.
  */
@@ -961,7 +961,7 @@ static DECLCALLBACK(int)  rtcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         return rc;
     if (fGCEnabled)
     {
-        rc = PDMDevHlpIOPortRegisterGC(pDevIns, pThis->IOPortBase, 2, 0,
+        rc = PDMDevHlpIOPortRegisterRC(pDevIns, pThis->IOPortBase, 2, 0,
                                        "rtcIOPortWrite", "rtcIOPortRead", NULL, NULL, "MC146818 RTC/CMOS");
         if (RT_FAILURE(rc))
             return rc;

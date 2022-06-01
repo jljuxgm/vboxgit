@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 25780 2010-01-12 17:02:35Z vboxsync $ */
+/* $Id: DevPCI.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -2104,10 +2104,10 @@ static DECLCALLBACK(int)   pciConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
         return rc;
     if (fGCEnabled)
     {
-        rc = PDMDevHlpIOPortRegisterGC(pDevIns, 0x0cf8, 1, NIL_RTGCPTR, "pciIOPortAddressWrite", "pciIOPortAddressRead", NULL, NULL, "i440FX (PCI)");
+        rc = PDMDevHlpIOPortRegisterRC(pDevIns, 0x0cf8, 1, NIL_RTGCPTR, "pciIOPortAddressWrite", "pciIOPortAddressRead", NULL, NULL, "i440FX (PCI)");
         if (RT_FAILURE(rc))
             return rc;
-        rc = PDMDevHlpIOPortRegisterGC(pDevIns, 0x0cfc, 4, NIL_RTGCPTR, "pciIOPortDataWrite", "pciIOPortDataRead", NULL, NULL, "i440FX (PCI)");
+        rc = PDMDevHlpIOPortRegisterRC(pDevIns, 0x0cfc, 4, NIL_RTGCPTR, "pciIOPortDataWrite", "pciIOPortDataRead", NULL, NULL, "i440FX (PCI)");
         if (RT_FAILURE(rc))
             return rc;
     }

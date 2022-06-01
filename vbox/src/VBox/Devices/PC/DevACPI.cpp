@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 26115 2010-02-01 11:19:57Z vboxsync $ */
+/* $Id: DevACPI.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -470,7 +470,7 @@ struct ACPITBLHPET
                                                      [15]    legacy replacement IRQ routing capable
                                                      [14]    reserved
                                                      [13]    COUNT_SIZE_CAP counter size
-                                                     [12:8]  number of comparators in first timer block 
+                                                     [12:8]  number of comparators in first timer block
                                                      [7:0]   hardware rev ID */
     ACPIGENADDR   HpetAddr;                     /**< lower 32-bit base address */
     uint8_t       u32Number;                    /**< sequence number starting at 0 */
@@ -1789,10 +1789,10 @@ static int acpiRegisterPmHandlers(ACPIState*  pThis)
 #undef L
 #undef R
 
-    /* register GC stuff */
+    /* register RC stuff */
     if (pThis->fGCEnabled)
     {
-        rc = PDMDevHlpIOPortRegisterGC(pThis->pDevIns, acpiPmPort(pThis, PM_TMR_OFFSET),
+        rc = PDMDevHlpIOPortRegisterRC(pThis->pDevIns, acpiPmPort(pThis, PM_TMR_OFFSET),
                                        1, 0, NULL, "acpiPMTmrRead",
                                        NULL, NULL, "ACPI PM Timer");
         AssertRCReturn(rc, rc);

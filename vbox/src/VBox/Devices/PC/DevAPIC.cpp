@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 25058 2009-11-27 17:55:17Z vboxsync $ */
+/* $Id: DevAPIC.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -2913,7 +2913,7 @@ static DECLCALLBACK(int) apicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         pThis->pApicHlpRC  = pThis->pApicHlpR3->pfnGetRCHelpers(pDevIns);
         pThis->pCritSectRC = pThis->pApicHlpR3->pfnGetRCCritSect(pDevIns);
 
-        rc = PDMDevHlpMMIORegisterGC(pDevIns, ApicBase, 0x1000, 0,
+        rc = PDMDevHlpMMIORegisterRC(pDevIns, ApicBase, 0x1000, 0,
                                      "apicMMIOWrite", "apicMMIORead", NULL);
         if (RT_FAILURE(rc))
             return rc;
@@ -3268,7 +3268,7 @@ static DECLCALLBACK(int) ioapicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     if (fGCEnabled) {
         s->pIoApicHlpRC = s->pIoApicHlpR3->pfnGetRCHelpers(pDevIns);
 
-        rc = PDMDevHlpMMIORegisterGC(pDevIns, 0xfec00000, 0x1000, 0,
+        rc = PDMDevHlpMMIORegisterRC(pDevIns, 0xfec00000, 0x1000, 0,
                                      "ioapicMMIOWrite", "ioapicMMIORead", NULL);
         if (RT_FAILURE(rc))
             return rc;

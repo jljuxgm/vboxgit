@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DevPS2.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1646,10 +1646,10 @@ static DECLCALLBACK(int) kbdConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
         return rc;
     if (fGCEnabled)
     {
-        rc = PDMDevHlpIOPortRegisterGC(pDevIns, 0x60, 1, 0, "kbdIOPortDataWrite",    "kbdIOPortDataRead", NULL, NULL,   "PC Keyboard - Data");
+        rc = PDMDevHlpIOPortRegisterRC(pDevIns, 0x60, 1, 0, "kbdIOPortDataWrite",    "kbdIOPortDataRead", NULL, NULL,   "PC Keyboard - Data");
         if (RT_FAILURE(rc))
             return rc;
-        rc = PDMDevHlpIOPortRegisterGC(pDevIns, 0x64, 1, 0, "kbdIOPortCommandWrite", "kbdIOPortStatusRead", NULL, NULL, "PC Keyboard - Command / Status");
+        rc = PDMDevHlpIOPortRegisterRC(pDevIns, 0x64, 1, 0, "kbdIOPortCommandWrite", "kbdIOPortStatusRead", NULL, NULL, "PC Keyboard - Command / Status");
         if (RT_FAILURE(rc))
             return rc;
     }

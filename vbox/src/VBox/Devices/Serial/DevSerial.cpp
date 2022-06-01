@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DevSerial.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -921,7 +921,7 @@ static DECLCALLBACK(int) serialConstruct(PPDMDEVINS pDevIns,
 
     if (pThis->fGCEnabled)
     {
-        rc = PDMDevHlpIOPortRegisterGC(pDevIns, io_base, 8, 0, "serialIOPortWrite",
+        rc = PDMDevHlpIOPortRegisterRC(pDevIns, io_base, 8, 0, "serialIOPortWrite",
                                       "serialIOPortRead", NULL, NULL, "Serial");
         if (RT_FAILURE(rc))
             return rc;

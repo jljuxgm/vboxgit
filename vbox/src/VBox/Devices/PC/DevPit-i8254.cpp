@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 24265 2009-11-02 15:21:30Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 26157 2010-02-02 18:02:15Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -1051,7 +1051,7 @@ static DECLCALLBACK(int)  pitConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         return rc;
     if (fGCEnabled)
     {
-        rc = PDMDevHlpIOPortRegisterGC(pDevIns, u16Base, 4, 0, "pitIOPortWrite", "pitIOPortRead", NULL, NULL, "i8254 Programmable Interval Timer");
+        rc = PDMDevHlpIOPortRegisterRC(pDevIns, u16Base, 4, 0, "pitIOPortWrite", "pitIOPortRead", NULL, NULL, "i8254 Programmable Interval Timer");
         if (RT_FAILURE(rc))
             return rc;
     }
@@ -1069,7 +1069,7 @@ static DECLCALLBACK(int)  pitConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
             return rc;
         if (fGCEnabled)
         {
-            rc = PDMDevHlpIOPortRegisterGC(pDevIns, 0x61, 1, 0, NULL, "pitIOPortSpeakerRead", NULL, NULL, "PC Speaker");
+            rc = PDMDevHlpIOPortRegisterRC(pDevIns, 0x61, 1, 0, NULL, "pitIOPortSpeakerRead", NULL, NULL, "PC Speaker");
             if (RT_FAILURE(rc))
                 return rc;
         }
