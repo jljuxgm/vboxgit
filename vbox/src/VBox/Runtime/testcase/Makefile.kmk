@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24352 2009-11-04 18:49:05Z vboxsync $
+# $Id: Makefile.kmk 24633 2009-11-13 10:35:01Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -95,6 +95,7 @@ PROGRAMS += \
 	tstRTStrFormat \
 	tstStrSimplePattern \
 	tstStrToNum \
+	tstStrToVer \
 	tstSystemQueryOsInfo \
 	tstRTTemp \
 	tstTermCallbacks \
@@ -372,6 +373,8 @@ tstRTStrFormat_SOURCES = tstRTStrFormat.cpp
 tstStrSimplePattern_SOURCES = tstStrSimplePattern.cpp
 
 tstStrToNum_SOURCES = tstStrToNum.cpp
+
+tstStrToVer_SOURCES = tstStrToVer.cpp
 
 tstSystemQueryOsInfo_SOURCES = tstSystemQueryOsInfo.cpp
 
