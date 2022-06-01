@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25716 2010-01-11 13:02:23Z vboxsync $
+# $Id: Makefile.kmk 25719 2010-01-11 13:35:00Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -212,7 +212,7 @@ endif
 ifdef VBOX_WITH_COMBINED_SOLARIS_GUEST_PACKAGE
   SOLARIS_ARCH_ADD_DEPFILES = \
    $(addprefix $(SOLARIS_VBOXADDINST_DIR_64)/,$(SOLARIS_ADD_STRIP_BINS)) \
-	$(addprefix $(SOLARIS_ADD_SYSLIBINST_DIR_32)/,$(SOLARIS_ADD_SYSLIBS)) \	
+	$(addprefix $(SOLARIS_ADD_SYSLIBINST_DIR_32)/,$(SOLARIS_ADD_SYSLIBS)) \
 	$(addprefix $(SOLARIS_ADD_DRIVERINST_DIR_64)/,$(SOLARIS_ADD_DRIVERS)) \
 	$(addprefix $(SOLARIS_VBOXADDINST_DIR_64)/,$(SOLARIS_ADD_XORG_DRIVERS)) \
 	$(addprefix $(SOLARIS_VBOXADDINST_DIR_32)/,$(SOLARIS_ADD_STRIP_BINS)) \
