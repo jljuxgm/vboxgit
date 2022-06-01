@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 25368 2009-12-14 16:31:40Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 26315 2010-02-07 20:57:39Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -74,6 +74,7 @@ DECLEXPORT(uint64_t) tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData)
     //PVM pVM = (PVM)((uint8_t *)pData - RT_OFFSETOF(VM, CTXALLSUFF(s.tm.VirtualGetRawData)));
     PSUPGLOBALINFOPAGE pGip = g_pSUPGlobalInfoPage;
     AssertFatalMsgFailed(("pGip=%p u32Magic=%#x\n", pGip, VALID_PTR(pGip) ? pGip->u32Magic : 0));
+    return 0; /* gcc false positive warning */
 }
 
 
