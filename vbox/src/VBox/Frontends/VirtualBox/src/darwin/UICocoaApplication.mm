@@ -1,4 +1,4 @@
-/* $Id: UICocoaApplication.mm 30114 2010-06-09 12:40:16Z vboxsync $ */
+/* $Id: UICocoaApplication.mm 30154 2010-06-10 16:28:15Z vboxsync $ */
 /** @file
  * UICocoaApplication - C++ interface to NSApplication for handling -sendEvent.
  */
@@ -23,6 +23,7 @@
 #import <AppKit/NSEvent.h>
 #import <AppKit/NSApplication.h>
 #import <Foundation/NSArray.h>
+#import <AppKit/NSWindow.h>
 
 #include <iprt/assert.h>
 
