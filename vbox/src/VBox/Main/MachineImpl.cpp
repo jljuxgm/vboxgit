@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 26768 2010-02-24 20:23:33Z vboxsync $ */
+/* $Id: MachineImpl.cpp 26908 2010-03-01 12:49:28Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -4936,10 +4936,10 @@ HRESULT Machine::openRemoteSession(IInternalSessionControl *aControl,
 
         Utf8Str idStr = mData->mUuid.toString();
 # ifdef RT_OS_WINDOWS /** @todo drop this once the RTProcCreate bug has been fixed */
-        const char * args[] = {szPath, "--startvm", idStr.c_str(), 0 };
+        const char * args[] = {szPath, "--startvm", idStr.c_str(), "--no-startvm-errormsgbox", 0 };
 # else
         Utf8Str strName = mUserData->mName;
-        const char * args[] = {szPath, "--comment", strName.c_str(), "--startvm", idStr.c_str(), 0 };
+        const char * args[] = {szPath, "--comment", strName.c_str(), "--startvm", idStr.c_str(), "--no-startvm-errormsgbox", 0 };
 # endif
         vrc = RTProcCreate(szPath, args, env, 0, &pid);
     }

@@ -1,4 +1,4 @@
-/* $Id: main.cpp 26729 2010-02-24 10:46:58Z vboxsync $ */
+/* $Id: main.cpp 26908 2010-03-01 12:49:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -270,6 +270,7 @@ static void showHelp()
             "  --no-debug                 disable the GUI debug menu and debug windows\n"
             "  --start-paused             start the VM in the paused state\n"
             "  --start-running            start the VM running (for overriding --debug*)\n"
+            "  --no-startvm-errormsgbox   do not show a message box for VM start errors\n"
             "\n"
             "The following environment variables are evaluated:\n"
             "  VBOX_GUI_DBG_ENABLED       enable the GUI debug menu if set\n"
