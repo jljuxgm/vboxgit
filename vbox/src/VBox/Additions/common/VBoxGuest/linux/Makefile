@@ -1,4 +1,4 @@
-# $Revision: 21549 $
+# $Revision: 25097 $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -268,7 +268,7 @@ endif
 install: $(MODULE)
 	@mkdir -p $(MODULE_DIR); \
 	install -m 0664 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR); \
-	PATH="$(PATH):/bin:/sbin" depmod -ae;
+	PATH="$(PATH):/bin:/sbin" depmod -a;
 
 endif # eq($(MAKECMDGOALS),clean)
 
