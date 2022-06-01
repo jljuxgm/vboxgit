@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 28810 2010-04-27 11:56:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -3401,8 +3401,13 @@ QString VBoxGlobal::helpFile() const
     const QString name = "UserManual";
     const QString suffix = "pdf";
 #elif defined (Q_WS_X11)
+# if defined VBOX_OSE
     const QString name = "UserManual";
     const QString suffix = "pdf";
+# else
+    const QString name = "VirtualBox";
+    const QString suffix = "chm";
+# endif
 #endif
     /* Where are the docs located? */
     char szDocsPath[RTPATH_MAX];
