@@ -1,4 +1,4 @@
-/* $Id: vbox.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: vbox.c 29260 2010-05-09 18:51:24Z vboxsync $ */
 /** @file
  * Display - VirtualBox Win 2000/XP guest display driver, support functions.
  */
@@ -21,6 +21,7 @@
 #include <VBox/VBoxGuest.h>
 #include <VBox/err.h>
 #include <iprt/asm.h>
+#include <iprt/asm-amd64-x86.h>
 
 /*
  * There is a hardware ring buffer in the VBox VMMDev PCI memory space.
