@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 29492 2010-05-14 17:58:54Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 29635 2010-05-18 13:42:54Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -557,8 +557,8 @@ static DECLCALLBACK(void) vboxNetFltPortNotifyMacAddress(PINTNETTRUNKIFPORT pIfP
  */
 static DECLCALLBACK(int) vboxNetFltPortConnectInterface(PINTNETTRUNKIFPORT pIfPort,  INTNETIFHANDLE hIf)
 {
-    PVBOXNETFLTINS pThis = IFPORT_2_VBOXNETFLTINS(pIfPort);
-    int rc = VINF_SUCCESS;
+    PVBOXNETFLTINS  pThis = IFPORT_2_VBOXNETFLTINS(pIfPort);
+    int             rc;
 
     /*
      * Input validation.
@@ -577,10 +577,10 @@ static DECLCALLBACK(int) vboxNetFltPortConnectInterface(PINTNETTRUNKIFPORT pIfPo
 /**
  * @copydoc INTNETTRUNKIFPORT::pfnDisconnectInterface
  */
-static DECLCALLBACK(int) vboxNetFltPortDisconnectInterface(PINTNETTRUNKIFPORT pIfPort, INTNETIFHANDLE hIf)
+static DECLCALLBACK(void) vboxNetFltPortDisconnectInterface(PINTNETTRUNKIFPORT pIfPort, INTNETIFHANDLE hIf)
 {
-    PVBOXNETFLTINS pThis = IFPORT_2_VBOXNETFLTINS(pIfPort);
-    int rc = VINF_SUCCESS;
+    PVBOXNETFLTINS  pThis = IFPORT_2_VBOXNETFLTINS(pIfPort);
+    int             rc;
 
     /*
      * Input validation.
@@ -591,8 +591,7 @@ static DECLCALLBACK(int) vboxNetFltPortDisconnectInterface(PINTNETTRUNKIFPORT pI
     vboxNetFltRetain(pThis, false /* fBusy */);
     rc = vboxNetFltPortOsDisconnectInterface(pThis, hIf);
     vboxNetFltRelease(pThis, false /* fBusy */);
-
-    return rc;
+    AssertRC(rc); /** @todo fix vboxNetFltPortOsDisconnectInterface. */
 }
 
 
@@ -997,7 +996,7 @@ static int vboxNetFltNewInstance(PVBOXNETFLTGLOBALS pGlobals, const char *pszNam
     pNew->MyPort.pfnXmit                = vboxNetFltPortXmit;
     pNew->MyPort.pfnNotifyMacAddress    = vboxNetFltPortNotifyMacAddress;
     pNew->MyPort.pfnConnectInterface    = vboxNetFltPortConnectInterface;
-    pNew->MyPort.pfnDisconnectInterface = vboxNetFltPortDisconnectInterface;    
+    pNew->MyPort.pfnDisconnectInterface = vboxNetFltPortDisconnectInterface;
     pNew->MyPort.u32VersionEnd          = INTNETTRUNKIFPORT_VERSION;
     pNew->pSwitchPort                   = pSwitchPort;
     pNew->pGlobals                      = pGlobals;
