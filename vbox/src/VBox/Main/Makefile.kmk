@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29859 2010-05-28 13:17:24Z vboxsync $
+# $Id: Makefile.kmk 30156 2010-06-10 17:54:11Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -337,7 +337,8 @@ VBoxSVC_SOURCES.win = \
 	win/svcmain.cpp \
 	win/svchlp.cpp \
 	win/HostPowerWin.cpp \
-	win/VBoxSVC.rc
+	win/VBoxSVC.rc \
+        win/VBoxComEvents.cpp
 
 VBoxSVC_SOURCES.linux = \
 	linux/HostHardwareLinux.cpp
