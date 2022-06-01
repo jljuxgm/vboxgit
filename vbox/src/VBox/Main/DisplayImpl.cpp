@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 26002 2010-01-25 14:24:39Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 26004 2010-01-25 14:36:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -216,6 +216,7 @@ static void PNGAPI png_write_data_fn(png_structp png_ptr, png_bytep p, png_size_
         if (pCtx->cbAllocated - pCtx->cbPNG < cb)
         {
             uint32_t cbNew = pCtx->cbPNG + (uint32_t)cb;
+            AssertReturnVoidStmt(cbNew > pCtx->cbPNG && cbNew <= _1G, pCtx->rc = VERR_TOO_MUCH_DATA);
             cbNew = RT_ALIGN_32(cbNew, 4096) + 4096;
 
             void *pNew = RTMemRealloc(pCtx->pu8PNG, cbNew);
@@ -230,7 +231,7 @@ static void PNGAPI png_write_data_fn(png_structp png_ptr, png_bytep p, png_size_
         }
 
         memcpy(pCtx->pu8PNG + pCtx->cbPNG, p, cb);
-        pCtx->cbPNG += cb;
+        pCtx->cbPNG += (uint32_t)cb;
     }
 }
 
