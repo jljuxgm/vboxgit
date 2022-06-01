@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 22112 2009-08-09 20:14:32Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 25942 2010-01-20 17:26:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -642,10 +642,16 @@ static int dbgfR3AsSearchPath(const char *pszFilename, const char *pszPath, PFND
  */
 static int dbgfR3AsSearchEnvPath(const char *pszFilename, const char *pszEnvVar, PFNDBGFR3ASSEARCHOPEN pfnOpen, void *pvUser)
 {
-    const char *pszPath = RTEnvGet(pszEnvVar);
-    if (!pszPath)
-        pszPath = ".";
-    return dbgfR3AsSearchPath(pszFilename, pszPath, pfnOpen, pvUser);
+    int     rc;
+    char   *pszPath = RTEnvDupEx(RTENV_DEFAULT, pszEnvVar);
+    if (pszPath)
+    {
+        rc = dbgfR3AsSearchPath(pszFilename, pszPath, pfnOpen, pvUser);
+        RTStrFree(pszPath);
+    }
+    else
+        rc = dbgfR3AsSearchPath(pszFilename, ".", pfnOpen, pvUser);
+    return rc;
 }
 
 

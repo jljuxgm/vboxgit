@@ -1,4 +1,4 @@
-/* $Id: DBGFSym.cpp 25015 2009-11-26 15:27:42Z vboxsync $ */
+/* $Id: DBGFSym.cpp 25942 2010-01-20 17:26:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Symbol Management.
  */
@@ -583,9 +583,8 @@ int dbgfR3ModuleLocateAndOpen(PVM pVM, const char *pszFilename, char *pszFound, 
     /*
      * Walk the search path.
      */
-    const char *psz = RTEnvGet("VBOXDBG_IMAGE_PATH");
-    if (!psz)
-        psz = ".";                      /* default */
+    char *pszFreeMe = RTEnvDupEx(RTENV_DEFAULT, "VBOXDBG_IMAGE_PATH");
+    const char *psz = pszFreeMe ? pszFreeMe : ".";
     while (*psz)
     {
         /* Skip leading blanks - no directories with leading spaces, thank you. */
@@ -611,7 +610,10 @@ int dbgfR3ModuleLocateAndOpen(PVM pVM, const char *pszFilename, char *pszFound, 
                 memcpy(pszFound + cch + 1, pszName, cchName + 1);
                 *ppFile = pFile = fopen(pszFound, "rb");
                 if (pFile)
+                {
+                    RTStrFree(pszFreeMe);
                     return VINF_SUCCESS;
+                }
             }
 
             /** @todo do a depth search using the specified path. */
@@ -622,6 +624,7 @@ int dbgfR3ModuleLocateAndOpen(PVM pVM, const char *pszFilename, char *pszFound, 
     }
 
     /* not found */
+    RTStrFree(pszFreeMe);
     return VERR_OPEN_FAILED;
 }
 

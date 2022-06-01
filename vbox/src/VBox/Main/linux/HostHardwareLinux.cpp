@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 25942 2010-01-20 17:26:22Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -580,10 +580,11 @@ int getDriveInfoFromEnv(const char *pcszVar, DriveInfoList *pList,
                  pList, isDVD, pfSuccess));
     int rc = VINF_SUCCESS;
     bool success = false;
+    char *pszFreeMe = RTEnvDupEx(RTENV_DEFAULT, pcszVar);
 
     try
     {
-        const char *pcszCurrent = RTEnvGet (pcszVar);
+        const char *pcszCurrent = pszFreeMe;
         while (pcszCurrent && *pcszCurrent != '\0')
         {
             const char *pcszNext = strchr(pcszCurrent, ':');
@@ -610,7 +611,8 @@ int getDriveInfoFromEnv(const char *pcszVar, DriveInfoList *pList,
     {
         rc = VERR_NO_MEMORY;
     }
-    LogFlowFunc (("rc=%Rrc, success=%d\n", rc, success));
+    RTStrFree(pszFreeMe);
+    LogFlowFunc(("rc=%Rrc, success=%d\n", rc, success));
     return rc;
 }
 

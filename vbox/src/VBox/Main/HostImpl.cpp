@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
+/* $Id: HostImpl.cpp 25942 2010-01-20 17:26:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -429,9 +429,9 @@ STDMETHODIMP Host::COMGETTER(DVDDrives)(ComSafeArrayOut(IMedium *, aDrives))
         // Not all Solaris versions ship with libhal.
         // So use a fallback approach similar to Linux.
         {
-            if (RTEnvGet("VBOX_CDROM"))
+            if (RTEnvExistEx(RTENV_DEFAULT, "VBOX_CDROM"))
             {
-                char *cdromEnv = strdup(RTEnvGet("VBOX_CDROM"));
+                char *cdromEnv = RTEnvDupEx(RTENV_DEFAULT, "VBOX_CDROM");
                 char *saveStr = NULL;
                 char *cdromDrive = NULL;
                 if (cdromEnv)
@@ -447,7 +447,7 @@ STDMETHODIMP Host::COMGETTER(DVDDrives)(ComSafeArrayOut(IMedium *, aDrives))
                     }
                     cdromDrive = strtok_r(NULL, ":", &saveStr);
                 }
-                free(cdromEnv);
+                RTStrFree(cdromEnv);
             }
             else
             {
