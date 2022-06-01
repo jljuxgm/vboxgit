@@ -1,4 +1,4 @@
-/* $Id: string.h 26753 2010-02-24 16:24:33Z vboxsync $ */
+/* $Id: string.h 28316 2010-04-14 18:01:39Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -546,18 +546,6 @@ public:
     int toUInt32() const
     {
         return RTStrToUInt32(m_psz);
-    }
-
-    /**
-     * Intended to pass instances as out (|char **|) parameters to methods. Takes
-     * the ownership of the returned data.
-     *
-     * @remarks    See ministring::jolt().
-     */
-    char **asOutParam()
-    {
-        cleanup();
-        return &m_psz;
     }
 
     /**
