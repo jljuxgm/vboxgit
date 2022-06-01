@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 24989 2009-11-26 11:31:46Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 24990 2009-11-26 11:33:37Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1104,7 +1104,7 @@ int Appliance::importFS(TaskImportOVF *pTask)
     rc = session.createInprocObject(CLSID_Session);
     CheckComRCReturnRC(rc);
 
-    const OVFReader reader = *m->pReader;
+    const OVFReader &reader = *m->pReader;
     // this is safe to access because this thread only gets started
     // if pReader != NULL
 
