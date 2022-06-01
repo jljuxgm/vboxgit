@@ -1,4 +1,4 @@
-# $Id: Config.kmk 28176 2010-04-12 08:04:24Z vboxsync $
+# $Id: Config.kmk 28272 2010-04-13 19:38:24Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1393,7 +1393,7 @@ ifeq ($(KBUILD_TYPE),kprofile)
 endif
 
 ## Enable C++ electric fence heap. (Warning: will easily run out of virtual memory / kernel stuff on Linux/Windows.)
-#LIB_RUNTIME += $(LIB_RUNTIME_EF) $(LIB_RUNTIME)
+#LIB_RUNTIME := $(LIB_RUNTIME_EF) $(LIB_RUNTIME)
 
 # Overridable libraries (unix).
 LIB_PTHREAD      ?= pthread
@@ -4073,7 +4073,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28176 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28272 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
