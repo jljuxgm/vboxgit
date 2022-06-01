@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 24790 2009-11-19 14:21:54Z vboxsync $ */
+/* $Id: DevEFI.h 24798 2009-11-19 15:34:31Z vboxsync $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -134,7 +134,7 @@ typedef DEVEFIINFO const *PCDEVEFIINFO;
 
 /** The physical address where DEVEFIINFO can be found. */
 #define DEVEFI_INFO_PHYS_ADDR   (0xfffff000)
-#define DEVEFI_INFO_FLAGS_X64   RT_BIT(0)
+#define DEVEFI_INFO_FLAGS_AMD64   RT_BIT(0)
 
 /** @} */
 

@@ -1,4 +1,4 @@
-; $Id: EfiThunk.asm 24790 2009-11-19 14:21:54Z vboxsync $
+; $Id: EfiThunk.asm 24798 2009-11-19 15:34:31Z vboxsync $
 ;; @file
 ; 16-bit EFI Thunk - 16-bit code executed immediately after CPU startup/reset,
 ;                    performs minimal setup, switches CPU to 32-bit mode
@@ -209,7 +209,7 @@ code_32:
         ; around all it wants for all we care.
         ;
         mov     eax,[0xfffff000 + DEVEFIINFO.fFlags]
-        and      eax, DEVEFI_INFO_FLAGS_X64
+        and      eax, DEVEFI_INFO_FLAGS_AMD64
         jnz trampoline_64
         mov     ebp, [0xfffff000 + DEVEFIINFO.PhysFwVol]
         mov     esi, [0xfffff000 + DEVEFIINFO.pfnFirmwareEP]

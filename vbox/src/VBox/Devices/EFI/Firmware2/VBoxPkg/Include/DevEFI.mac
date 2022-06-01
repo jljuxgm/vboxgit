@@ -1,4 +1,4 @@
-; $Id: DevEFI.mac 24790 2009-11-19 14:21:54Z vboxsync $
+; $Id: DevEFI.mac 24798 2009-11-19 15:34:31Z vboxsync $
 ;; @file
 ; DevEFI Interface Definitions, Assembly (Yasm) Variant.
 ;
@@ -54,7 +54,7 @@ struc DEVEFIINFO
 endstruc
 
 %define DEVEFI_INFO_PHYS_ADDR   (0xfffff000)
-%define DEVEFI_INFO_FLAGS_X64   RT_BIT(0)
+%define DEVEFI_INFO_FLAGS_AMD64   RT_BIT(0)
 
 %endif
 
