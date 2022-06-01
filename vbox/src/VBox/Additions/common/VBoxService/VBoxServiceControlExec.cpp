@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 29583 2010-05-17 19:41:27Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 29627 2010-05-18 12:47:35Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -825,16 +825,8 @@ DECLCALLBACK(int) VBoxServiceControlExecProcessWorker(PVBOXSERVICECTRLTHREAD pTh
                                 RTPROCESS hProcess;
                                 rc = RTProcCreateEx(pData->pszCmd, pData->papszArgs, hEnv, RTPROC_FLAGS_SERVICE,
                                                     phStdIn, phStdOut, phStdErr,
-                            #if defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX)
                                                     strlen(pData->pszUser) ? pData->pszUser : NULL,
                                                     strlen(pData->pszUser) && strlen(pData->pszPassword) ? pData->pszPassword : NULL,
-                            #else
-                                                    /*
-                                                     * Never specify a user name and password until RTProcCreateEx supports
-                                                     * that for non-Windows (POSIX) platforms.
-                                                     */
-                                                    NULL, NULL,
-                            #endif
                                                     &hProcess);
                                 if (RT_SUCCESS(rc))
                                 {
