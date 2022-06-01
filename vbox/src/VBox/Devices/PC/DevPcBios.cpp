@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 23970 2009-10-22 11:24:08Z vboxsync $ */
+/* $Id: DevPcBios.cpp 24091 2009-10-26 16:18:06Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1221,7 +1221,7 @@ static uint8_t pcbiosChecksum(const uint8_t * const au8Data, uint32_t u32Length)
  * @param   pDevIns    The device instance data.
  * @param   addr       physical address in guest memory.
  */
-static void pcbiosPlantMPStable(PPDMDEVINS pDevIns, uint8_t *pTable, uint16_t numCpus)
+static void pcbiosPlantMpsTable(PPDMDEVINS pDevIns, uint8_t *pTable, uint16_t numCpus)
 {
     /* configuration table */
     PMPSCFGTBLHEADER pCfgTab      = (MPSCFGTBLHEADER*)pTable;
@@ -1337,7 +1337,7 @@ static DECLCALLBACK(void) pcbiosReset(PPDMDEVINS pDevIns)
     LogFlow(("pcbiosReset:\n"));
 
     if (pThis->u8IOAPIC)
-        pcbiosPlantMPStable(pDevIns, pThis->au8DMIPage + VBOX_DMI_TABLE_SIZE, pThis->cCpus);
+        pcbiosPlantMpsTable(pDevIns, pThis->au8DMIPage + VBOX_DMI_TABLE_SIZE, pThis->cCpus);
 
     /*
      * Re-shadow the LAN ROM image and make it RAM/RAM.
