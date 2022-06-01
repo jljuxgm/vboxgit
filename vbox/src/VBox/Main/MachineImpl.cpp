@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 26440 2010-02-11 16:18:31Z vboxsync $ */
+/* $Id: MachineImpl.cpp 26443 2010-02-11 16:42:07Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -4141,9 +4141,12 @@ static int readSavedDisplayScreenshot(Utf8Str *pStateFilePath, uint32_t u32Type,
                     }
                     else
                     {
+                        /* displaySSMSaveScreenshot did not write any data, if
+                         * cbBlock was == 2 * sizeof (uint32_t).
+                         */
                         if (cbBlock > 2 * sizeof (uint32_t))
                         {
-                            rc = SSMR3Skip(pSSM, cbBlock - 2 * sizeof (uint32_t));
+                            rc = SSMR3Skip(pSSM, cbBlock);
                             AssertRCBreak(rc);
                         }
                     }
