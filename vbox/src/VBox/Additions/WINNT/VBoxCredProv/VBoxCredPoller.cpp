@@ -1,4 +1,4 @@
-/* $Id: VBoxCredPoller.cpp 26374 2010-02-09 14:21:31Z vboxsync $ */
+/* $Id: VBoxCredPoller.cpp 26380 2010-02-09 14:32:55Z vboxsync $ */
 /** @file
  * VBoxCredPoller - Thread for retrieving user credentials.
  */
@@ -216,7 +216,7 @@ DECLCALLBACK(int) VBoxCredPoller::threadPoller(RTTHREAD ThreadSelf, void *pvUser
     do
     {
         int rc;
-        rc = VbglR3CredentialsAreAvailable();
+        rc = VbglR3CredentialsQueryAvailability();
         if (RT_FAILURE(rc))
         {
             if (rc == VERR_NOT_FOUND)
