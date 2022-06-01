@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 30245 2010-06-16 13:05:30Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 30335 2010-06-21 14:31:13Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -797,7 +797,7 @@ DECLCALLBACK(int)  ConsoleVRDPServer::VRDPCallbackQueryProperty(void *pvCallback
 
         case VRDP_QP_VIDEO_CHANNEL_SUNFLSH:
         {
-            ULONG ulSunFlsh = 0;
+            ULONG ulSunFlsh = 1;
 
             com::Bstr bstr;
             HRESULT hrc = server->mConsole->machine ()->GetExtraData(Bstr("VRDP/SunFlsh"), bstr.asOutParam());
