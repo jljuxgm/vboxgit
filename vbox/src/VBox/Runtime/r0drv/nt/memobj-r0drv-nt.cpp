@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 26840 2010-02-26 12:46:58Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 26847 2010-02-26 13:19:14Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -400,8 +400,8 @@ int rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS Ph
      * If the allocation is big, the chances are *probably* not very good. The
      * current limit is kind of random...
      */
-    if (cb < _128K
-        && (uAlignment == 0 || uAlignment == PAGE_SIZE))
+    if (   cb < _128K
+        && uAlignment == PAGE_SIZE)
 
     {
         PHYSICAL_ADDRESS Zero;
