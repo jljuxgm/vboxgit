@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 28297 2010-04-14 12:17:11Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 28347 2010-04-15 07:49:38Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -677,7 +677,8 @@ DECLCALLBACK(int) VBoxServiceControlExecProcessWorker(PVBOXSERVICECTRLTHREADDATA
                                 RTPROCESS hProcess;
                                 rc = RTProcCreateEx(pData->pszCmd, pData->papszArgs, hEnv, pData->uFlags,
                                                     phStdIn, phStdOut, phStdErr,
-                                                    /*pszUsername, pszPassword,*/ NULL, NULL,
+                                                    strlen(pData->pszUser) ? pData->pszUser : NULL, 
+                                                    strlen(pData->pszUser) && strlen(pData->pszPassword) ? pData->pszPassword : NULL, 
                                                     &hProcess);
                                 if (RT_SUCCESS(rc))
                                 {

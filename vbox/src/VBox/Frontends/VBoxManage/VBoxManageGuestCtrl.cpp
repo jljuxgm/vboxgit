@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 28248 2010-04-13 12:52:38Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 28347 2010-04-15 07:49:38Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -248,7 +248,7 @@ static int handleExecProgram(HandlerArg *a)
                                                     Bstr(Utf8StdIn), Bstr(Utf8StdOut), Bstr(Utf8StdErr),
                                                     Bstr(Utf8UserName), Bstr(Utf8Password), uTimeoutMS,
                                                     &uPID, progress.asOutParam()));
-            if (verbose) RTPrintf("Process \"%s\" (PID: %u) started.\n", Utf8Cmd.raw(), uPID);
+            if (verbose) RTPrintf("Process '%s' (PID: %u) started.\n", Utf8Cmd.raw(), uPID);
             if (waitForOutput)
             {
                 if (verbose) RTPrintf("Waiting for output ...\n");
