@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 26278 2010-02-05 04:53:34Z vboxsync $ */
+/* $Id: PGMAllBth.h 26303 2010-02-05 18:41:12Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3475,9 +3475,9 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVMCPU pVCpu, uint64_t cr3, uint64_t cr4, RTGC
                     false);
 # if !defined(IN_RING0) && PGM_GST_TYPE != PGM_TYPE_AMD64
 #  if PGM_GST_TYPE == PGM_TYPE_32BIT
-    rc = PGMShwGetPage(pVCpu, (RTGCPTR)pPGM->pGst32BitPdRC, NULL, &HCPhysShw);
+    rc = PGMShwGetPage(pVCpu, (RTRCUINTPTR)pPGM->pGst32BitPdRC, NULL, &HCPhysShw);
 #  else
-    rc = PGMShwGetPage(pVCpu, (RTGCPTR)pPGM->pGstPaePdptRC, NULL, &HCPhysShw);
+    rc = PGMShwGetPage(pVCpu, (RTRCUINTPTR)pPGM->pGstPaePdptRC, NULL, &HCPhysShw);
 #  endif
     AssertRCReturn(rc, 1);
     HCPhys = NIL_RTHCPHYS;
