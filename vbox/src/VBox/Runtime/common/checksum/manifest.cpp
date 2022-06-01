@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 29901 2010-05-31 12:53:25Z vboxsync $ */
+/* $Id: manifest.cpp 29904 2010-05-31 12:57:38Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling.
  */
@@ -61,8 +61,8 @@ typedef struct RTMANIFESTCALLBACKDATA
 {
     PFNRTMANIFESTPROGRESS pfnProgressCallback;
     void *pvUser;
-    uint32_t cMaxFiles;
-    uint32_t cCurrentFile;
+    size_t cMaxFiles;
+    size_t cCurrentFile;
 } RTMANIFESTCALLBACKDATA;
 typedef RTMANIFESTCALLBACKDATA* PRTMANIFESTCALLBACKDATA;
 
