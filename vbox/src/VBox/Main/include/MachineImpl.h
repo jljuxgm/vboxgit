@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 24539 2009-11-10 11:59:03Z vboxsync $ */
+/* $Id: MachineImpl.h 24558 2009-11-10 15:59:07Z vboxsync $ */
 
 /** @file
  *
@@ -997,7 +997,8 @@ public:
               ComSafeArrayIn(ULONG64, aTimestamps), ComSafeArrayIn(IN_BSTR, aFlags));
     STDMETHOD(PushGuestProperty)(IN_BSTR aName, IN_BSTR aValue,
                                   ULONG64 aTimestamp, IN_BSTR aFlags);
-    STDMETHOD(LockMedia)() { return lockMedia(); }
+    STDMETHOD(LockMedia)()   { return lockMedia(); }
+    STDMETHOD(UnlockMedia)() { unlockMedia(); return S_OK; }
 
     // public methods only for internal purposes
 
