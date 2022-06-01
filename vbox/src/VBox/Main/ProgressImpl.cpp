@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 29914 2010-05-31 14:53:33Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 29924 2010-05-31 18:30:29Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -1008,7 +1008,9 @@ STDMETHODIMP Progress::SetNextOperation(IN_BSTR bstrNextOperationDescription, UL
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    AssertReturn(!mCompleted && !mCanceled, E_FAIL);
+    if (mCanceled)
+        return E_FAIL;
+    AssertReturn(!mCompleted, E_FAIL);
     AssertReturn(m_ulCurrentOperation + 1 < m_cOperations, E_FAIL);
 
     ++m_ulCurrentOperation;
