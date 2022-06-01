@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 25158 2009-12-03 09:43:03Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 25169 2009-12-03 15:20:54Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  *
@@ -846,10 +846,13 @@ static DECLCALLBACK(void) vnetTransmitPendingPackets(PVNETSTATE pState, PVQUEUE 
                                   pState->pTxBuf + uOffset, uSize);
                 uOffset += uSize;
             }
-            STAM_PROFILE_START(&pState->StatTransmitSend, a);
-            int rc = pState->pDrv->pfnSend(pState->pDrv, pState->pTxBuf, uOffset);
-            STAM_PROFILE_STOP(&pState->StatTransmitSend, a);
-            STAM_REL_COUNTER_ADD(&pState->StatTransmitBytes, uOffset);
+            if (pState->pDrv)
+            {
+                STAM_PROFILE_START(&pState->StatTransmitSend, a);
+                int rc = pState->pDrv->pfnSend(pState->pDrv, pState->pTxBuf, uOffset);
+                STAM_PROFILE_STOP(&pState->StatTransmitSend, a);
+                STAM_REL_COUNTER_ADD(&pState->StatTransmitBytes, uOffset);
+            }
         }
         vqueuePut(&pState->VPCI, pQueue, &elem, sizeof(VNETHDR) + uOffset);
         vqueueSync(&pState->VPCI, pQueue);
