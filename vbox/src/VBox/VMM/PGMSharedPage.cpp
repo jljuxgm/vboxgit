@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 28421 2010-04-16 14:01:27Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 28422 2010-04-16 15:47:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -51,7 +51,7 @@
 VMMR3DECL(int) PGMR3SharedModuleRegister(PVM pVM, char *pszModuleName, char *pszVersion, RTGCPTR GCBaseAddr, uint32_t cbModule, 
                                          unsigned cRegions, VMMDEVSHAREDREGIONDESC *pRegions)
 {
-    return VERR_NOT_IMPLEMENTED;
+    return GMMR3RegisterSharedModule(pVM, pszModuleName, pszVersion, GCBaseAddr, cbModule, cRegions, pRegions);
 }
 
 
@@ -67,7 +67,7 @@ VMMR3DECL(int) PGMR3SharedModuleRegister(PVM pVM, char *pszModuleName, char *psz
  */
 VMMR3DECL(int) PGMR3SharedModuleUnregister(PVM pVM, char *pszModuleName, char *pszVersion, RTGCPTR GCBaseAddr, uint32_t cbModule)
 {
-    return VERR_NOT_IMPLEMENTED;
+    return GMMR3UnregisterSharedModule(pVM, pszModuleName, pszVersion, GCBaseAddr, cbModule);
 }
 
 
@@ -79,5 +79,5 @@ VMMR3DECL(int) PGMR3SharedModuleUnregister(PVM pVM, char *pszModuleName, char *p
  */
 VMMR3DECL(int) PGMR3SharedModuleCheck(PVM pVM)
 {
-    return VERR_NOT_IMPLEMENTED;
+    return GMMR3CheckSharedModules(pVM);
 }
