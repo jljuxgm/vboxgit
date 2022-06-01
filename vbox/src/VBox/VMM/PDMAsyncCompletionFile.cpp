@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 24443 2009-11-06 13:52:43Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 25147 2009-12-02 13:42:32Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -849,6 +849,7 @@ static int pdmacFileEpWrite(PPDMASYNCCOMPLETIONTASK pTask,
 static int pdmacFileEpFlush(PPDMASYNCCOMPLETIONTASK pTask,
                             PPDMASYNCCOMPLETIONENDPOINT pEndpoint)
 {
+    int rc = VINF_SUCCESS;
     PPDMASYNCCOMPLETIONENDPOINTFILE pEpFile = (PPDMASYNCCOMPLETIONENDPOINTFILE)pEndpoint;
     PPDMASYNCCOMPLETIONTASKFILE pTaskFile = (PPDMASYNCCOMPLETIONTASKFILE)pTask;
 
@@ -857,16 +858,21 @@ static int pdmacFileEpFlush(PPDMASYNCCOMPLETIONTASK pTask,
 
     pTaskFile->cbTransferLeft = 0;
 
-    PPDMACTASKFILE pIoTask = pdmacFileTaskAlloc(pEpFile);
-    AssertPtr(pIoTask);
+    if (pEpFile->fCaching)
+        rc = pdmacFileEpCacheFlush(pEpFile, pTaskFile);
+    else
+    {
+        PPDMACTASKFILE pIoTask = pdmacFileTaskAlloc(pEpFile);
+        AssertPtr(pIoTask);
 
-    pIoTask->pEndpoint       = pEpFile;
-    pIoTask->enmTransferType = PDMACTASKFILETRANSFER_FLUSH;
-    pIoTask->pvUser          = pTaskFile;
-    pIoTask->pfnCompleted    = pdmacFileEpTaskCompleted;
-    pdmacFileEpAddTask(pEpFile, pIoTask);
+        pIoTask->pEndpoint       = pEpFile;
+        pIoTask->enmTransferType = PDMACTASKFILETRANSFER_FLUSH;
+        pIoTask->pvUser          = pTaskFile;
+        pIoTask->pfnCompleted    = pdmacFileEpTaskCompleted;
+        pdmacFileEpAddTask(pEpFile, pIoTask);
+    }
 
-    return VINF_SUCCESS;
+    return rc;
 }
 
 static int pdmacFileEpGetSize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint, uint64_t *pcbSize)
