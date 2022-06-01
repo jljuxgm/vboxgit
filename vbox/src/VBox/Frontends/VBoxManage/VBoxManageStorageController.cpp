@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 25324 2009-12-11 12:28:58Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 25589 2009-12-28 21:40:51Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -814,6 +814,10 @@ int handleStorageController(HandlerArg *a)
             {
                 CHECK_ERROR(machine, AddStorageController(Bstr(pszCtl), StorageBus_Floppy, ctl.asOutParam()));
             }
+            else if (!RTStrICmp(pszBusType, "sas"))
+            {
+                CHECK_ERROR(machine, AddStorageController(Bstr(pszCtl), StorageBus_SAS, ctl.asOutParam()));
+            }
             else
             {
                 errorArgument("Invalid --add argument '%s'", pszBusType);
@@ -857,6 +861,10 @@ int handleStorageController(HandlerArg *a)
                 else if (!RTStrICmp(pszCtlType, "i82078"))
                 {
                     CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_I82078));
+                }
+                if (!RTStrICmp(pszCtlType, "lsilogicsas"))
+                {
+                    CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_LsiLogicSas));
                 }
                 else
                 {
