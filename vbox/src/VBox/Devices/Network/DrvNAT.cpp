@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 28396 2010-04-16 07:37:03Z vboxsync $ */
+/* $Id: DrvNAT.cpp 28440 2010-04-18 19:57:56Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -666,7 +666,6 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
 {
     PDRVNAT pThis = PDMINS_2_DATA(pDrvIns, PDRVNAT);
     int     nFDs = -1;
-    int     ms;
 #ifdef RT_OS_WINDOWS
     HANDLE  *phEvents = slirp_get_events(pThis->pNATState);
     unsigned int cBreak = 0;
