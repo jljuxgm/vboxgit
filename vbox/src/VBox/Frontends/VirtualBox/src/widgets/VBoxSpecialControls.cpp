@@ -1,4 +1,4 @@
-/* $Id: VBoxSpecialControls.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
+/* $Id: VBoxSpecialControls.cpp 30204 2010-06-15 15:26:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -118,11 +118,7 @@ VBoxMiniCancelButton::VBoxMiniCancelButton (QWidget *aParent /* = 0 */)
     setAutoRaise (true);
     setFocusPolicy (Qt::TabFocus);
     setShortcut (QKeySequence (Qt::Key_Escape));
-    QIcon cancelIcon = style()->standardIcon (QStyle::SP_DialogCancelButton);
-    if (cancelIcon.isNull())
-        cancelIcon = UIIconPool::iconSet(":/delete_16px.png",
-                                         ":/delete_dis_16px.png");
-    setIcon (cancelIcon);
+    setIcon(UIIconPool::defaultIcon(UIIconPool::DialogCancelIcon));
 }
 
 void VBoxMiniCancelButton::removeBorder()

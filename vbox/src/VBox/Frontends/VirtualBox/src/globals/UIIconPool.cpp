@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
+/* $Id: UIIconPool.cpp 30204 2010-06-15 15:26:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -153,6 +153,14 @@ QIcon UIIconPool::defaultIcon(UIDefaultIcon def, const QWidget *pWidget /* = 0 *
         case MessageBoxCriticalIcon:
         {
             icon = pStyle->standardIcon(QStyle::SP_MessageBoxCritical, 0, pWidget);
+            break;
+        }
+        case DialogCancelIcon:
+        {
+            icon = pStyle->standardIcon(QStyle::SP_DialogCancelButton, 0, pWidget);
+            if (icon.isNull())
+                icon = iconSet(":/delete_16px.png",
+                               ":/delete_dis_16px.png");
             break;
         }
         case ArrowBackIcon:
