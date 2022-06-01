@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26060 2010-01-27 10:09:43Z vboxsync $
+# $Id: Makefile.kmk 26116 2010-02-01 13:03:53Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -775,8 +775,9 @@ RuntimeGuestR3_SOURCES                  := $(filter-out \
 RuntimeGuestR3_SOURCES              += \
 	common/time/timesysalias.cpp \
 	VBox/logbackdoor.cpp
-RuntimeGuestR3_SOURCES.$(KBUILD_TARGET)  := $(RuntimeR3_SOURCES.$(KBUILD_TARGET))
-RuntimeGuestR3_SOURCES.$(KBUILD_HOST)    := $(RuntimeR3_SOURCES.$(KBUILD_HOST))
+RuntimeGuestR3_SOURCES.$(KBUILD_TARGET)      := $(RuntimeR3_SOURCES.$(KBUILD_TARGET))
+RuntimeGuestR3_SOURCES.$(KBUILD_HOST)        := $(RuntimeR3_SOURCES.$(KBUILD_HOST))
+RuntimeGuestR3_SOURCES.$(KBUILD_TARGET_ARCH) := $(RuntimeR3_SOURCES.$(KBUILD_TARGET_ARCH))
 RuntimeGuestR3_SOURCES.$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH) := $(RuntimeR3_SOURCES.$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH))
 RuntimeGuestR3_SOURCES.$(KBUILD_HOST).$(KBUILD_TARGET_ARCH)   := $(RuntimeR3_SOURCES.$(KBUILD_HOST).$(KBUILD_TARGET_ARCH))
 
