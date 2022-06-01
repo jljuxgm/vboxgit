@@ -1,7 +1,8 @@
+/* $Id: DockIconPreview.h 25171 2009-12-03 15:53:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
- * VBoxOSTypeSelectorButton class declaration
+ * VBoxDockIconPreview class declaration
  */
 
 /*
@@ -20,40 +21,30 @@
  * additional information or have any questions.
  */
 
-#ifndef __VBoxOSTypeSelectorButton_h__
-#define __VBoxOSTypeSelectorButton_h__
+#ifndef ___VBoxDockIconPreview_h___
+#define ___VBoxDockIconPreview_h___
 
-/* VBox includes */
-#include "QIWithRetranslateUI.h"
+#ifdef QT_MAC_USE_COCOA
 
-/* Qt includes */
-#include <QPushButton>
-
-class QSignalMapper;
-
-class VBoxOSTypeSelectorButton: public QIWithRetranslateUI<QPushButton>
+#include "CocoaDockIconPreview.h"
+class VBoxDockIconPreview: public CocoaDockIconPreview
 {
-    Q_OBJECT;
-
 public:
-    VBoxOSTypeSelectorButton (QWidget *aParent);
-    QString osTypeId() const { return mOSTypeId; }
-
-    bool isMenuShown() const;
-
-    void retranslateUi();
-
-public slots:
-    void setOSTypeId (const QString& aOSTypeId);
-
-private:
-    void populateMenu();
-
-    /* Private member vars */
-    QString mOSTypeId;
-    QMenu *mMainMenu;
-    QSignalMapper *mSignalMapper;
+    VBoxDockIconPreview (VBoxConsoleWnd *aMainWnd, const QPixmap& aOverlayImage)
+      : CocoaDockIconPreview (aMainWnd, aOverlayImage) {}
 };
 
-#endif /* __VBoxOSTypeSelectorButton_h__ */
+#else /* QT_MAC_USE_COCOA */
+
+#include "CarbonDockIconPreview.h"
+class VBoxDockIconPreview: public CarbonDockIconPreview
+{
+public:
+    VBoxDockIconPreview (VBoxConsoleWnd *aMainWnd, const QPixmap& aOverlayImage)
+      : CarbonDockIconPreview (aMainWnd, aOverlayImage) {}
+};
+
+#endif /* QT_MAC_USE_COCOA */
+
+#endif /* !___VBoxDockIconPreview_h___ */
 
