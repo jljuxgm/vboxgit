@@ -1,4 +1,4 @@
-/* $Id: DrvMediaISO.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DrvMediaISO.cpp 25974 2010-01-22 14:49:05Z vboxsync $ */
 /** @file
  * VBox storage devices: ISO image media driver
  */
@@ -294,8 +294,7 @@ static DECLCALLBACK(void *) drvMediaISOQueryInterface(PPDMIBASE pInterface, cons
     PDRVMEDIAISO pThis = PDMINS_2_DATA(pDrvIns, PDRVMEDIAISO);
     if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
         return &pDrvIns->IBase;
-    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_MEDIA) == 0)
-        return &pThis->IMedia;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIMEDIA, &pThis->IMedia);
     return NULL;
 }
 

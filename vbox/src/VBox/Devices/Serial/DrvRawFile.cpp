@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DrvRawFile.cpp 25974 2010-01-22 14:49:05Z vboxsync $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -104,8 +104,7 @@ static DECLCALLBACK(void *) drvRawFileQueryInterface(PPDMIBASE pInterface, const
 
     if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
         return &pDrvIns->IBase;
-    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_STREAM) == 0)
-        return &pThis->IStream;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMISTREAM, &pThis->IStream);
     return NULL;
 }
 
