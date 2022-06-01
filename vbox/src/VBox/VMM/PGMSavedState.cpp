@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 24796 2009-11-19 15:15:06Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 24808 2009-11-19 18:19:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -1802,12 +1802,22 @@ static DECLCALLBACK(int)  pgmR3LiveVote(PVM pVM, PSSMHANDLE pSSM, uint32_t uPass
         if (    cDirtyPagesShort <= 128
             &&  cDirtyPagesLong  <= 1024)
             return VINF_SUCCESS;
-
         if (cDirtyPagesLong  <= 256)
             return VINF_SUCCESS;
-
         /* !! hack !! */
-        if (    cDirtyPagesLong < 4096
+        if (    cDirtyPagesShort <= 512
+            &&  cDirtyPagesLong  <= 640
+            &&  uPass >= 1024)
+            return VINF_SUCCESS;
+        if (    cDirtyPagesShort <= 896
+            &&  cDirtyPagesLong  <= 1024
+            &&  uPass >= 2048)
+            return VINF_SUCCESS;
+        if (    cDirtyPagesShort <= 1512
+            &&  cDirtyPagesLong  <= 1536
+            &&  uPass >= 4096)
+            return VINF_SUCCESS;
+        if (    cDirtyPagesLong  <= 4096
             &&  uPass >= 8192)
             return VINF_SUCCESS;
     }
