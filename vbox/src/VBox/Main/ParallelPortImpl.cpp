@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.cpp 26046 2010-01-26 14:06:05Z vboxsync $ */
+/* $Id: ParallelPortImpl.cpp 26156 2010-02-02 16:30:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -455,12 +455,6 @@ bool ParallelPort::isModified()
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
     return m->bd.isBackedUp();
-}
-
-bool ParallelPort::isReallyModified()
-{
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-    return m->bd.hasActualChanges();
 }
 
 /**

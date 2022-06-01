@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
+/* $Id: USBControllerImpl.h 26156 2010-02-02 16:30:28Z vboxsync $ */
 
 /** @file
  *
@@ -83,7 +83,6 @@ public:
     HRESULT saveSettings(settings::USBController &data);
 
     bool isModified();
-    bool isReallyModified();
     bool rollback();
     void commit();
     void copyFrom (USBController *aThat);

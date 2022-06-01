@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
+/* $Id: StorageControllerImpl.h 26156 2010-02-02 16:30:28Z vboxsync $ */
 
 /** @file
  *
@@ -89,7 +89,6 @@ public:
     ULONG getInstance() const;
 
     bool isModified();
-    bool isReallyModified();
     bool rollback();
     void commit();
 

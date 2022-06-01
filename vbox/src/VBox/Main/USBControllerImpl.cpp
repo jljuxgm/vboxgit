@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 26084 2010-01-28 13:59:20Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 26156 2010-02-02 16:30:28Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -732,71 +732,6 @@ bool USBController::isModified()
         if ((*it)->isModified())
             return true;
     }
-#endif /* VBOX_WITH_USB */
-
-    return false;
-}
-
-/** @note Locks objects for reading! */
-bool USBController::isReallyModified()
-{
-    AutoCaller autoCaller(this);
-    AssertComRCReturn (autoCaller.rc(), false);
-
-    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
-
-    if (m->bd.hasActualChanges())
-        return true;
-
-#ifdef VBOX_WITH_USB
-    if (!m->llDeviceFilters.isBackedUp())
-    {
-        /* see whether any of filters has changed its data */
-        for (DeviceFilterList::const_iterator
-             it = m->llDeviceFilters->begin();
-             it != m->llDeviceFilters->end();
-             ++ it)
-        {
-            if ((*it)->isReallyModified())
-                return true;
-        }
-
-        return false;
-    }
-
-    if (m->llDeviceFilters->size() != m->llDeviceFilters.backedUpData()->size())
-        return true;
-
-    if (m->llDeviceFilters->size() == 0)
-        return false;
-
-    /* Make copies to speed up comparison */
-    DeviceFilterList devices = *m->llDeviceFilters.data();
-    DeviceFilterList backDevices = *m->llDeviceFilters.backedUpData();
-
-    DeviceFilterList::iterator it = devices.begin();
-    while (it != devices.end())
-    {
-        bool found = false;
-        DeviceFilterList::iterator thatIt = backDevices.begin();
-        while (thatIt != backDevices.end())
-        {
-            if ((*it)->getData() == (*thatIt)->getData())
-            {
-                backDevices.erase (thatIt);
-                found = true;
-                break;
-            }
-            else
-                ++ thatIt;
-        }
-        if (found)
-            it = devices.erase (it);
-        else
-            return false;
-    }
-
-    Assert (devices.size() == 0 && backDevices.size() == 0);
 #endif /* VBOX_WITH_USB */
 
     return false;

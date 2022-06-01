@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 26088 2010-01-28 16:50:32Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 26156 2010-02-02 16:30:28Z vboxsync $ */
 
 /** @file
  *
@@ -92,7 +92,6 @@ public:
     HRESULT saveSettings(settings::AudioAdapter &data);
 
     bool isModified();
-    bool isReallyModified();
     bool rollback();
     void commit();
     void copyFrom(AudioAdapter *aThat);

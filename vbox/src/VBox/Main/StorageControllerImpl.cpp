@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 26046 2010-01-26 14:06:05Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 26156 2010-02-02 16:30:28Z vboxsync $ */
 
 /** @file
  *
@@ -718,12 +718,6 @@ bool StorageController::isModified()
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
     return m->bd.isBackedUp();
-}
-
-bool StorageController::isReallyModified()
-{
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-    return m->bd.hasActualChanges();
 }
 
 /** @note Locks objects for writing! */

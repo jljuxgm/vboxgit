@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 26156 2010-02-02 16:30:28Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -78,7 +78,6 @@ public:
     HRESULT saveSettings(settings::ParallelPort &data);
 
     bool isModified();
-    bool isReallyModified();
     bool rollback();
     void commit();
     void copyFrom(ParallelPort *aThat);

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 26046 2010-01-26 14:06:05Z vboxsync $ */
+/* $Id: MachineImpl.h 26156 2010-02-02 16:30:28Z vboxsync $ */
 
 /** @file
  *
@@ -745,7 +745,6 @@ protected:
     bool isInOwnDir(Utf8Str *aSettingsDir = NULL);
 
     bool isModified();
-    bool isReallyModified(bool aIgnoreUserData = false);
     void rollback(bool aNotify);
     void commit();
     void copyFrom(Machine *aThat);

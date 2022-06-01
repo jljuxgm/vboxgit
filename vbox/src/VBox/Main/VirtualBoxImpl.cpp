@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 26042 2010-01-26 11:14:03Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 26156 2010-02-02 16:30:28Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -47,6 +47,7 @@
 
 #include <algorithm>
 #include <set>
+#include <vector>
 #include <memory> // for auto_ptr
 
 #include <typeinfo>
