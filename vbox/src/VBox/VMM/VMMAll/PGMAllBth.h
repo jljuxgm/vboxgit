@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 26841 2010-02-26 12:49:11Z vboxsync $ */
+/* $Id: PGMAllBth.h 26849 2010-02-26 13:30:58Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2957,12 +2957,12 @@ PGM_BTH_DECL(int, SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RTGCPTR 
 # if (HC_ARCH_BITS == 64) && (PGM_SHW_TYPE != PGM_TYPE_32BIT && PGM_SHW_TYPE != PGM_TYPE_PAE)
 #  if  (PGM_SHW_TYPE != PGM_TYPE_EPT)   /* PGM_TYPE_EPT implies nested paging */
     if (HWACCMIsNestedPagingActive(pVM))
-#  endif 
+#  endif
     {
         PPGMPAGE pPage;
 
         /* Check if we allocated a big page before for this 2 MB range. */
-        int rc = pgmPhysGetPageEx(&pVM->pgm.s, GCPtrPage & X86_PDE2M_PAE_PG_MASK, &pPage);
+        rc = pgmPhysGetPageEx(&pVM->pgm.s, GCPtrPage & X86_PDE2M_PAE_PG_MASK, &pPage);
         if (RT_SUCCESS(rc))
         {
             RTHCPHYS HCPhys = NIL_RTHCPHYS;
@@ -4573,4 +4573,3 @@ PGM_BTH_DECL(int, UnmapCR3)(PVMCPU pVCpu)
 
     return rc;
 }
-
