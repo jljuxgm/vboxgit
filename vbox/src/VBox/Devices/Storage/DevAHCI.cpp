@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 24174 2009-10-29 17:57:55Z vboxsync $ */
+/* $Id: DevAHCI.cpp 24176 2009-10-29 18:45:23Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -439,7 +439,7 @@ typedef struct AHCIPort
      */
     R3PTRTYPE(PAHCIPORTTASKSTATE)   aCachedTasks[AHCI_NR_COMMAND_SLOTS];
 
-    uint32_t                        u32Alignment5[2];
+    uint32_t                        u32Alignment5[3];
 
     /** Release statistics: number of DMA commands. */
     STAMCOUNTER                     StatDMA;
