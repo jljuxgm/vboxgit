@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25645 2010-01-05 09:29:31Z vboxsync $
+# $Id: Makefile.kmk 25665 2010-01-06 04:19:49Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -373,8 +373,11 @@ endif
 
 # Some versions of GCC might require this.
 RuntimeR3_SOURCES.x86 += \
+	common/asm/ASMAtomicXchgU64.asm \
 	common/asm/ASMAtomicCmpXchgU64.asm \
-	common/asm/ASMAtomicReadU64.asm
+	common/asm/ASMAtomicCmpXchgExU64.asm \
+	common/asm/ASMAtomicReadU64.asm	\
+	common/asm/ASMAtomicUoReadU64.asm
 
 ifdef IPRT_WITH_KSTUFF
  RuntimeR3_SOURCES += \
