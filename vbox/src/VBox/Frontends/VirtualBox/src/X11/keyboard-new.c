@@ -1,4 +1,4 @@
-/* $Id: keyboard-new.c 29374 2010-05-11 16:16:40Z vboxsync $ */
+/* $Id: keyboard-new.c 29423 2010-05-12 14:44:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -530,7 +530,7 @@ X11DRV_InitKeyboardByType(Display *display)
                                 / sizeof(main_keyboard_type_list[0]));
     if (cMap >= 0)
     {
-        memcpy(keyc2scan, main_keyboard_type_scans[cMap - 1], KEYC2SCAN_SIZE);
+        memcpy(keyc2scan, main_keyboard_type_scans[cMap], KEYC2SCAN_SIZE);
         return 1;
     }
     return 0;
