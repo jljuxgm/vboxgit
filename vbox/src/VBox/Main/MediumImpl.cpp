@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 30377 2010-06-22 14:01:01Z vboxsync $ */
+/* $Id: MediumImpl.cpp 30380 2010-06-22 16:28:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2865,9 +2865,10 @@ HRESULT Medium::updatePath(const char *aOldPath, const char *aNewPath)
         Utf8Str newPath = Utf8StrFmt("%s%s",
                                      aNewPath,
                                      pcszMediumPath + strlen(aOldPath));
-        Utf8Str path = newPath;
-        m->pVirtualBox->calculateRelativePath(path, path);
         unconst(m->strLocationFull) = newPath;
+
+        Utf8Str path;
+        m->pVirtualBox->copyPathRelativeToConfig(newPath, path);
         unconst(m->strLocation) = path;
 
         LogFlowThisFunc(("locationFull.after='%s'\n", m->strLocationFull.raw()));

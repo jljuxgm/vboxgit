@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 29864 2010-05-28 13:34:53Z vboxsync $ */
+/* $Id: MachineImpl.h 30380 2010-06-22 16:28:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -614,7 +614,7 @@ public:
     HRESULT saveRegistryEntry(settings::MachineRegistryEntry &data);
 
     int calculateFullPath(const Utf8Str &strPath, Utf8Str &aResult);
-    void calculateRelativePath(const Utf8Str &strPath, Utf8Str &aResult);
+    void copyPathRelativeToMachine(const Utf8Str &strSource, Utf8Str &strTarget);
 
     void getLogFolder(Utf8Str &aLogFolder);
     Utf8Str queryLogFilename(ULONG idx);

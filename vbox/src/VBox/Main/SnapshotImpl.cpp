@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 30377 2010-06-22 14:01:01Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 30380 2010-06-22 16:28:14Z vboxsync $ */
 
 /** @file
  *
@@ -761,8 +761,7 @@ HRESULT Snapshot::saveSnapshotImpl(settings::Snapshot &data, bool aAttrsOnly)
 
     /* stateFile (optional) */
     if (!stateFilePath().isEmpty())
-        /* try to make the file name relative to the settings file dir */
-        m->pMachine->calculateRelativePath(stateFilePath(), data.strStateFile);
+        m->pMachine->copyPathRelativeToMachine(stateFilePath(), data.strStateFile);
     else
         data.strStateFile.setNull();
 

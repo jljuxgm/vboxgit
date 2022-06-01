@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 30345 2010-06-21 16:49:59Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 30380 2010-06-22 16:28:14Z vboxsync $ */
 
 /** @file
  *
@@ -281,7 +281,7 @@ public:
     const Utf8Str& homeDir() const;
 
     int calculateFullPath(const Utf8Str &strPath, Utf8Str &aResult);
-    void calculateRelativePath(const Utf8Str &strPath, Utf8Str &aResult);
+    void copyPathRelativeToConfig(const Utf8Str &strSource, Utf8Str &strTarget);
 
     HRESULT registerHardDisk(Medium *aHardDisk, bool *pfNeedsSaveSettings);
     HRESULT unregisterHardDisk(Medium *aHardDisk, bool *pfNeedsSaveSettings);
