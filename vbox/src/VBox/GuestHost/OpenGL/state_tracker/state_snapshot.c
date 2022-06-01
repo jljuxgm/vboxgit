@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 25303 2009-12-10 15:05:55Z vboxsync $ */
+/* $Id: state_snapshot.c 26670 2010-02-21 11:14:58Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -141,6 +141,7 @@ static int32_t crStateSaveTextureObjData(CRTextureObj *pTexture, PSSMHANDLE pSSM
                          and width or height <=2.
                  */
                 if (i<4 || (ptl->width>2 && ptl->height>2))
+                {
                     if (!ptl->compressed)
                     {
                         diff_api.GetTexImage(target, i, ptl->format, ptl->type, pImg);
@@ -149,6 +150,7 @@ static int32_t crStateSaveTextureObjData(CRTextureObj *pTexture, PSSMHANDLE pSSM
                     {
                         diff_api.GetCompressedTexImageARB(target, i, pImg);
                     }
+                }
 
 #ifdef DEBUG
                 if (*(int*)((char*)pImg+ptl->bytes) != 0xDEADDEAD)
