@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 29521 2010-05-17 10:14:22Z vboxsync $ */
+/* $Id: PDMDriver.cpp 30217 2010-06-16 01:43:23Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -108,7 +108,8 @@ int pdmR3DrvInit(PVM pVM)
     LogFlow(("pdmR3DrvInit:\n"));
 
     AssertRelease(!(RT_OFFSETOF(PDMDRVINS, achInstanceData) & 15));
-    PPDMDRVINS pDrvInsAssert;
+    PPDMDRVINS pDrvInsAssert; NOREF(pDrvInsAssert);
+    AssertCompile(sizeof(pDrvInsAssert->Internal.s) <= sizeof(pDrvInsAssert->Internal.padding));
     AssertRelease(sizeof(pDrvInsAssert->Internal.s) <= sizeof(pDrvInsAssert->Internal.padding));
 
     /*

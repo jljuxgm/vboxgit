@@ -1,4 +1,4 @@
-/* $Id: tstHelp.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstHelp.h 30217 2010-06-16 01:43:23Z vboxsync $ */
 /** @file
  * VMM testcase - Helper stuff.
  */
@@ -102,7 +102,7 @@ RT_C_DECLS_END
 #define CHECK_PADDING(strct, member, align) \
     do \
     { \
-        strct *p; \
+        strct *p = NULL; NOREF(p); \
         if (sizeof(p->member.s) > sizeof(p->member.padding)) \
         { \
             printf("error! padding of %s::%s is too small, padding=%d struct=%d correct=%d\n", #strct, #member, \
@@ -123,7 +123,7 @@ RT_C_DECLS_END
 #define CHECK_PADDING2(strct) \
     do \
     { \
-        strct *p; \
+        strct *p = NULL; NOREF(p); \
         if (sizeof(p->s) > sizeof(p->padding)) \
         { \
             printf("error! padding of %s is too small, padding=%d struct=%d correct=%d\n", #strct, \
@@ -138,7 +138,7 @@ RT_C_DECLS_END
 #define CHECK_PADDING3(strct, member, pad_member) \
     do \
     { \
-        strct *p; \
+        strct *p = NULL; NOREF(p); \
         if (sizeof(p->member) > sizeof(p->pad_member)) \
         { \
             printf("error! padding of %s::%s is too small, padding=%d struct=%d\n", #strct, #member, \
