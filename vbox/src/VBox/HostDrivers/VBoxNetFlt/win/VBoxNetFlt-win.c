@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.c 24190 2009-10-30 14:03:30Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.c 24217 2009-10-30 20:24:36Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -2364,7 +2364,7 @@ DECLHIDDEN(NDIS_STATUS) vboxNetFltWinPtInitPADAPT(IN  PADAPT pAdapt)
                                    &pAdapt->hSendPacketPoolHandle,
                                    MIN_PACKET_POOL_SIZE,
                                    MAX_PACKET_POOL_SIZE - MIN_PACKET_POOL_SIZE,
-                                   sizeof(PT_RSVD));
+                                   sizeof(SEND_RSVD));
 
         if (Status != NDIS_STATUS_SUCCESS)
         {
