@@ -1,4 +1,4 @@
-/* $Id: straprintf.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: straprintf.cpp 24427 2009-11-06 08:52:12Z vboxsync $ */
 /** @file
  * IPRT - Allocating String Formatters.
  */
@@ -192,4 +192,27 @@ RTDECL(int) RTStrAPrintf(char **ppszBuffer, const char *pszFormat, ...)
     return cbRet;
 }
 RT_EXPORT_SYMBOL(RTStrAPrintf);
+
+
+RTDECL(char *) RTStrAPrintf2V(const char *pszFormat, va_list args)
+{
+    char *pszBuffer;
+    RTStrAPrintfV(&pszBuffer, pszFormat, args);
+    return pszBuffer;
+}
+RT_EXPORT_SYMBOL(RTStrAPrintf2V);
+
+
+RTDECL(char *) RTStrAPrintf2(const char *pszFormat, ...)
+{
+    va_list va;
+    char   *pszBuffer;
+
+    va_start(va, pszFormat);
+    RTStrAPrintfV(&pszBuffer, pszFormat, va);
+    va_end(va);
+
+    return pszBuffer;
+}
+RT_EXPORT_SYMBOL(RTStrAPrintf2);
 
