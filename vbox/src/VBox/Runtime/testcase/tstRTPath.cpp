@@ -1,4 +1,4 @@
-/* $Id: tstRTPath.cpp 26824 2010-02-26 10:36:08Z vboxsync $ */
+/* $Id: tstRTPath.cpp 28151 2010-04-09 16:05:26Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -494,6 +494,38 @@ int main()
             RTTESTI_CHECK_RC(RTPathCopyComponents(szPath, strlen(pszResult), pszInput, cComponents), VERR_BUFFER_OVERFLOW);
         }
     }
+
+
+    /*
+     * RTPathStripExt
+     */
+    RTTestSub(hTest, "RTPathStripExt");
+    struct
+    {
+        const char *pszSrc;
+        const char *pszResult;
+    } s_aStripExt[] =
+    {
+        { "filename.ext",               "filename" },
+        { "filename.ext1.ext2.ext3",    "filename.ext1.ext2" },
+        { "filename..ext",              "filename." },
+        { "filename.ext.",              "filename.ext" }, /** @todo This is a bit weird/wrong, but not half as weird as the way Windows+OS/2 deals with a trailing dots. */
+    };
+    for (unsigned i = 0; i < RT_ELEMENTS(s_aStripExt); i++)
+    {
+        const char *pszInput    = s_aStripExt[i].pszSrc;
+        const char *pszResult   = s_aStripExt[i].pszResult;
+
+        strcpy(szPath, pszInput);
+        RTPathStripExt(szPath);
+        if (strcmp(szPath, pszResult))
+            RTTestIFailed("Unexpected result\n"
+                          "   input: '%s'\n"
+                          "  output: '%s'\n"
+                          "expected: '%s'",
+                          pszInput, szPath, pszResult);
+    }
+
 
     /*
      * Summary.
