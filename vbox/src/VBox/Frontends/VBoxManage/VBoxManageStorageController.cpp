@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 25589 2009-12-28 21:40:51Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 25676 2010-01-07 01:13:26Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -862,7 +862,7 @@ int handleStorageController(HandlerArg *a)
                 {
                     CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_I82078));
                 }
-                if (!RTStrICmp(pszCtlType, "lsilogicsas"))
+                else if (!RTStrICmp(pszCtlType, "lsilogicsas"))
                 {
                     CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_LsiLogicSas));
                 }
