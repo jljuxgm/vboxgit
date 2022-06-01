@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 25298 2009-12-10 13:33:12Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 25311 2009-12-10 17:16:42Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4569,6 +4569,12 @@ int pgmPoolFlushPage(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
     pPage->fReusedFlushPending = false;
 
     pPool->cUsedPages--;
+
+    /* REMOVE ME: experiment */
+    if (pVM->cCpus > 1)
+        PGM_INVL_ALL_VCPU_TLBS(pVM);
+    /* end experiment */
+
     pgmUnlock(pVM);
     STAM_PROFILE_STOP(&pPool->StatFlushPage, f);
     return rc;
