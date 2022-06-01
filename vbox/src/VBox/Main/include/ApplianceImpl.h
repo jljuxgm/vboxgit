@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 27607 2010-03-22 18:13:07Z vboxsync $ */
+/* $Id: ApplianceImpl.h 27779 2010-03-29 11:28:45Z vboxsync $ */
 
 /** @file
  *
@@ -88,6 +88,8 @@ private:
 
     struct Data;            // opaque, defined in ApplianceImpl.cpp
     Data *m;
+
+    bool isApplianceIdle() const;
 
     HRESULT searchUniqueVMName(Utf8Str& aName) const;
     HRESULT searchUniqueDiskImageFilePath(Utf8Str& aName) const;
