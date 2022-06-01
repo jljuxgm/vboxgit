@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 27754 2010-03-26 16:43:43Z vboxsync $ */
+/* $Id: DevVGA.cpp 28129 2010-04-09 09:20:03Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5249,6 +5249,7 @@ static DECLCALLBACK(void) vgaPortUpdateDisplayRect (PPDMIDISPLAYPORT pInterface,
              * by Display because VBVA buffer is being flushed.
              * Nothing to do, just return.
              */
+            PDMCritSectLeave(&s->lock);
             return;
         case 8:
             v = VGA_DRAW_LINE8;
@@ -5395,6 +5396,7 @@ static DECLCALLBACK(void) vgaPortUpdateDisplayRectEx (PPDMIDISPLAYPORT pInterfac
         default:
         case 0:
             /* Nothing to do, just return. */
+            PDMCritSectLeave(&s->lock);
             return;
         case 8:
             v = VGA_DRAW_LINE8;
