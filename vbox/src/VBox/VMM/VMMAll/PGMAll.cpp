@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 27370 2010-03-15 15:45:18Z vboxsync $ */
+/* $Id: PGMAll.cpp 27371 2010-03-15 15:48:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1882,7 +1882,8 @@ VMMDECL(int) PGMSyncCR3(PVMCPU pVCpu, uint64_t cr0, uint64_t cr3, uint64_t cr4, 
 #ifdef IN_RING3
             rc = pgmPoolSyncCR3(pVCpu);
 #else
-            pVCpu->pgm.s.GCPhysCR3 = GCPhysCR3Old;
+            if (rc == VINF_PGM_SYNC_CR3)
+                pVCpu->pgm.s.GCPhysCR3 = GCPhysCR3Old;
             return VINF_PGM_SYNC_CR3;
 #endif
         }
