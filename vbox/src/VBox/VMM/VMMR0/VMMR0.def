@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 20825 2009-06-23 12:55:36Z vboxsync $
+; $Id: VMMR0.def 25372 2009-12-14 19:12:04Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -24,6 +24,7 @@ EXPORTS
 
     ; code
     PDMCritSectEnter
+    PDMCritSectEnterDebug
     PDMCritSectIsOwner
     PDMCritSectLeave
     PDMQueueAlloc
