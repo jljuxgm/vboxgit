@@ -1,4 +1,4 @@
-# $Id: Config.kmk 27833 2010-03-30 15:37:25Z vboxsync $
+# $Id: Config.kmk 27880 2010-03-31 10:56:24Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -172,6 +172,7 @@ VBOX_PRODUCT = Oracle VM VirtualBox
 # have to be updated manually. Please keep the list up to date.
 # src/VBox/Devices/PC/PXE/client/uinit.asm
 # src/VBox/RDP/webclient/flash/com/sun/network/rdp/Version.as
+# src/VBox/Frontends/VirtualBox/nls/*.ts
 
 # maybe we want set this manually
 VBOX_C_YEAR = $(date-utc %Y)
@@ -4069,7 +4070,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 27833 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 27880 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
