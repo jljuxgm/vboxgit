@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 29087 2010-05-05 14:20:30Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 29102 2010-05-05 18:17:19Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1674,7 +1674,7 @@ void Appliance::importMachineGeneric(const ovf::VirtualSystem &vsysThis,
             // OVF treats LsiLogicSas as a SCSI controller but VBox considers it a class of its own
             bstrName = L"SAS Controller";
             busType = StorageBus_SAS;
-            controllerType = StorageControllerType_LsiLogic;
+            controllerType = StorageControllerType_LsiLogicSas;
         }
         else if (hdcVBox == "BusLogic")
             controllerType = StorageControllerType_BusLogic;
