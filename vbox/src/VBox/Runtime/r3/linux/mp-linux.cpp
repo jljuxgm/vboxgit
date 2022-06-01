@@ -1,4 +1,4 @@
-/* $Id: mp-linux.cpp 15399 2008-12-12 22:02:14Z vboxsync $ */
+/* $Id: mp-linux.cpp 26254 2010-02-05 00:35:03Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Linux.
  */
@@ -120,7 +120,7 @@ static uint32_t rtMpLinuxGetFrequency(RTCPUID idCpu)
 
 RTDECL(int) RTMpCpuIdToSetIndex(RTCPUID idCpu)
 {
-    return idCpu < rtMpLinuxMaxCpus() ? idCpu : -1;
+    return idCpu < rtMpLinuxMaxCpus() ? (int)idCpu : -1;
 }
 
 
