@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 28036 2010-04-07 09:47:43Z vboxsync $ */
+/* $Id: GMMR0.cpp 28043 2010-04-07 11:14:19Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3014,7 +3014,7 @@ GMMR0DECL(int) GMMR0QueryVMMMemoryStatsReq(PVM pVM, PGMMMEMSTATSREQ pReq)
     PGMM pGMM;
     GMM_GET_VALID_INSTANCE(pGMM, VERR_INTERNAL_ERROR);
     pReq->cAllocPages     = pGMM->cAllocatedPages; 
-    pReq->cFreePages      = (pGMM->cChunks << GMM_CHUNK_SHIFT) - pGMM->cAllocatedPages; 
+    pReq->cFreePages      = (pGMM->cChunks << (GMM_CHUNK_SHIFT- PAGE_SHIFT)) - pGMM->cAllocatedPages; 
     pReq->cBalloonedPages = pGMM->cBalloonedPages; 
     GMM_CHECK_SANITY_UPON_LEAVING(pGMM);
 
