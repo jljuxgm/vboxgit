@@ -1,4 +1,4 @@
-/* $Id: fs.cpp 24006 2009-10-23 08:02:13Z vboxsync $ */
+/* $Id: fs.cpp 24287 2009-11-03 12:34:11Z vboxsync $ */
 /** @file
  * IPRT - File System.
  */
@@ -36,6 +36,10 @@
 # define RTTIME_INCL_TIMESPEC
 # include <sys/time.h>
 # include <sys/param.h>
+# ifndef DEV_BSIZE
+#  include <sys/stat.h>
+#  define DEV_BSIZE S_BLKSIZE /** @todo bird: add DEV_BSIZE to sys/param.h on OS/2. */
+# endif
 #endif
 
 #include <iprt/fs.h>

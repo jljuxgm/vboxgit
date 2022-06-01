@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-os2.cpp 21284 2009-07-07 00:30:00Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-os2.cpp 24287 2009-11-03 12:34:11Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, OS/2.
  */
@@ -40,7 +40,7 @@
 
 RTR0DECL(int) RTR0MemUserCopyFrom(void *pvDst, RTR3PTR R3PtrSrc, size_t cb)
 {
-    int rc = KernCopyIn(pvDst, (const user_addr_t)R3PtrSrc, cb);
+    int rc = KernCopyIn(pvDst, (void *)R3PtrSrc, cb);
     if (RT_LIKELY(rc == 0))
         return VINF_SUCCESS;
     return VERR_ACCESS_DENIED;
@@ -49,7 +49,7 @@ RTR0DECL(int) RTR0MemUserCopyFrom(void *pvDst, RTR3PTR R3PtrSrc, size_t cb)
 
 RTR0DECL(int) RTR0MemUserCopyTo(RTR3PTR R3PtrDst, void const *pvSrc, size_t cb)
 {
-    int rc = KernCopyOut(R3PtrDst, pvSrc, cb);
+    int rc = KernCopyOut((void *)R3PtrDst, pvSrc, cb);
     if (RT_LIKELY(rc == 0))
         return VINF_SUCCESS;
     return VERR_ACCESS_DENIED;
@@ -67,9 +67,9 @@ RTR0DECL(bool) RTR0MemUserIsValidAddr(RTR3PTR R3Ptr)
 
 
 RTR0DECL(bool) RTR0MemKernelIsValidAddr(void *pv)
-{
+{                                   
     /** @todo this is all wrong, see RTR0MemUserIsValidAddr. */
-    return R3Ptr >= UINT32_C(0x20000000); /* 512MB */
+    return (uintptr_t)pv >= UINT32_C(0x20000000); /* 512MB */
 }
 
 

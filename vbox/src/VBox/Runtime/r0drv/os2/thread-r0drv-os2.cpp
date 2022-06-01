@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-os2.cpp 22151 2009-08-11 09:46:23Z vboxsync $ */
+/* $Id: thread-r0drv-os2.cpp 24287 2009-11-03 12:34:11Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 1), Ring-0 Driver, OS/2.
  */
@@ -172,6 +172,6 @@ RTDECL(bool) RTThreadIsInInterrupt(RTTHREAD hThread)
     int rc = RTR0Os2DHQueryDOSVar(DHGETDOSV_INTERRUPTLEV, 0, &u.fp);
     AssertReturn(rc == 0, true);
 
-    return cInterruptLevel > 0;
+    return u.cInterruptLevel > 0;
 }
 

@@ -1,4 +1,4 @@
-/* $Revision: 23612 $ */
+/* $Revision: 24287 $ */
 /** @file
  * VBoxGuestLibR0 - IDC with VBoxGuest and HGCM helpers.
  */
@@ -142,6 +142,7 @@ void vbglUnlockLinear (void *pvCtx, void *pv, uint32_t u32Size)
 #else  /* !VBGL_VBOXGUEST */
 
 # ifdef RT_OS_OS2
+#  include <VBox/VBoxGuest.h> /* for VBOXGUESTOS2IDCCONNECT */
 RT_C_DECLS_BEGIN
 /*
  * On OS/2 we'll do the connecting in the assembly code of the
