@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 30105 2010-06-09 11:03:37Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1233,6 +1233,7 @@ VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
  */
 VMMR0DECL(int)   HWACCMR0SaveFPUState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 {
+    STAM_COUNTER_INC(&pVCpu->StatFpu64SwitchBack);
     if (pVM->hwaccm.s.vmx.fSupported)
         return VMXR0Execute64BitsHandler(pVM, pVCpu, pCtx, pVM->hwaccm.s.pfnSaveGuestFPU64, 0, NULL);
 
@@ -1249,6 +1250,7 @@ VMMR0DECL(int)   HWACCMR0SaveFPUState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
  */
 VMMR0DECL(int)   HWACCMR0SaveDebugState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 {
+    STAM_COUNTER_INC(&pVCpu->StatDebug64SwitchBack);
     if (pVM->hwaccm.s.vmx.fSupported)
         return VMXR0Execute64BitsHandler(pVM, pVCpu, pCtx, pVM->hwaccm.s.pfnSaveGuestDebug64, 0, NULL);
 
