@@ -1,4 +1,4 @@
-/* $Id: WinNetConfig.cpp 25385 2009-12-15 09:43:23Z vboxsync $ */
+/* $Id: WinNetConfig.cpp 25439 2009-12-16 16:53:43Z vboxsync $ */
 /** @file
  * VBoxNetCfgWin - Briefly describe this file, optionally with a longer description in a separate paragraph.
  */
@@ -1057,6 +1057,11 @@ static HRESULT vboxNetCfgWinCopyInf(IN LPCWSTR pInfFullPath)
     }
 
     return hr;
+}
+
+VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinInstallInf(IN LPCWSTR pInfFullPath)
+{
+    return vboxNetCfgWinCopyInf(pInfFullPath);
 }
 
 /**
@@ -2833,8 +2838,6 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinCreateHostOnlyNetworkInterface (LPCWSTR
     /* return the network connection GUID on success */
     if (SUCCEEDED(hrc))
     {
-//        Bstr str(DevName);
-//        str.detachTo(pName);
         WCHAR ConnectoinName[128];
         ULONG cbName = sizeof(ConnectoinName);
 
