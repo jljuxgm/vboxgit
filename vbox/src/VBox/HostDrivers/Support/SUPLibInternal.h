@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 25260 2009-12-09 02:07:44Z vboxsync $ */
+/* $Id: SUPLibInternal.h 26362 2010-02-09 13:20:03Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -49,6 +49,11 @@
 # define SUPLIB_DLL_SUFF    ".dll"
 #else
 # define SUPLIB_DLL_SUFF    ".so"
+#endif
+
+#ifdef RT_OS_SOLARIS
+/** Number of dummy files to open (2:ip4, 1:ip6, 1:extra) see #4650 */
+#define SUPLIB_FLT_DUMMYFILES 4
 #endif
 
 /** @def SUPLIB_EXE_SUFF
@@ -187,6 +192,9 @@ typedef struct SUPLIBDATA
 #elif defined(RT_OS_LINUX)
     /** Indicates whether madvise(,,MADV_DONTFORK) works. */
     bool                fSysMadviseWorks;
+#elif defined(RT_OS_SOLARIS)
+    /** Extra dummy file descriptors to prevent growing file-descriptor table on clean up (see #4650) */
+    int                 hDummy[SUPLIB_FLT_DUMMYFILES];
 #elif defined(RT_OS_WINDOWS)
 #endif
 } SUPLIBDATA;
