@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 28949 2010-04-30 22:11:17Z vboxsync $ */
+/* $Id: MachineImpl.cpp 29192 2010-05-07 09:54:07Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -7331,8 +7331,22 @@ HRESULT Machine::getMediumAttachmentsOfController(CBSTR aName,
          it != mMediaData->mAttachments.end();
          ++it)
     {
-        if ((*it)->getControllerName() == aName)
-            atts.push_back(*it);
+        const ComObjPtr<MediumAttachment> &pAtt = *it;
+
+        // should never happen, but deal with NULL pointers in the list.
+        AssertStmt(!pAtt.isNull(), continue);
+
+        // getControllerName() needs caller+read lock
+        AutoCaller autoAttCaller(pAtt);
+        if (FAILED(autoAttCaller.rc()))
+        {
+            atts.clear();
+            return autoAttCaller.rc();
+        }
+        AutoReadLock attLock(pAtt COMMA_LOCKVAL_SRC_POS);
+
+        if (pAtt->getControllerName() == aName)
+            atts.push_back(pAtt);
     }
 
     return S_OK;
