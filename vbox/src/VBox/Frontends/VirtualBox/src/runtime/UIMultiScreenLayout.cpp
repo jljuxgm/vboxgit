@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 29076 2010-05-05 13:03:29Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 29078 2010-05-05 13:17:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -101,8 +101,7 @@ void UIMultiScreenLayout::update()
              * seamless/fullscreen also. */
             QString strTest1 = machine.GetExtraData(VBoxDefs::GUI_LastWindowPosition + (i > 0 ? QString::number(i): ""));
             QRegExp posParser("(-?\\d+),(-?\\d+),(-?\\d+),(-?\\d+)");
-            if (   posParser.exactMatch(strTest1)
-                && posParser.captureCount() == 4)
+            if (posParser.exactMatch(strTest1))
             {
                 /* If parsing was successfully, convert it to a position. */
                 bool fOk1, fOk2;
