@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 28516 2010-04-20 11:52:06Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 28777 2010-04-26 19:45:16Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -124,7 +124,7 @@ static int vboxGuestInitFixateGuestMappings(PVBOXGUESTDEVEXT pDevExt)
             {
                 if (hFictive == NIL_RTR0MEMOBJ)
                 {
-                    rc = RTR0MemObjEnterPhys(&hObj, VBOXGUEST_HYPERVISOR_PHYSICAL_START, cbHypervisor + _4M);
+                    rc = RTR0MemObjEnterPhys(&hObj, VBOXGUEST_HYPERVISOR_PHYSICAL_START, cbHypervisor + _4M, RTMEM_CACHE_POLICY_DONT_CARE);
                     if (RT_FAILURE(rc))
                         break;
                     hFictive = hObj;

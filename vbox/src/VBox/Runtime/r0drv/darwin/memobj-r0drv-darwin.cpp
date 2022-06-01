@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 26847 2010-02-26 13:19:14Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 28777 2010-04-26 19:45:16Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -607,8 +607,10 @@ int rtR0MemObjNativeAllocPhysNC(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS 
 }
 
 
-int rtR0MemObjNativeEnterPhys(PPRTR0MEMOBJINTERNAL ppMem, RTHCPHYS Phys, size_t cb)
+int rtR0MemObjNativeEnterPhys(PPRTR0MEMOBJINTERNAL ppMem, RTHCPHYS Phys, size_t cb, unsigned CachePolicy)
 {
+    AssertReturn(CachePolicy == RTMEM_CACHE_POLICY_DONT_CARE, VERR_NOT_IMPLEMENTED);
+
     /*
      * Create a descriptor for it (the validation is always true on intel macs, but
      * as it doesn't harm us keep it in).

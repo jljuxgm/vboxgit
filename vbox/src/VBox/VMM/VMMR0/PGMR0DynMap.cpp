@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 28122 2010-04-09 07:58:50Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 28777 2010-04-26 19:45:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -724,7 +724,7 @@ static int pgmR0DynMapPagingArrayMapPte(PPGMR0DYNMAP pThis, PPGMR0DYNMAPPGLVL pP
                 pPgLvl->a[i].hMemObj = pPgLvl->a[i].hMapObj = NIL_RTR0MEMOBJ;
             }
 
-            int rc = RTR0MemObjEnterPhys(&pPgLvl->a[i].hMemObj, HCPhys, PAGE_SIZE);
+            int rc = RTR0MemObjEnterPhys(&pPgLvl->a[i].hMemObj, HCPhys, PAGE_SIZE, RTMEM_CACHE_POLICY_DONT_CARE);
             if (RT_SUCCESS(rc))
             {
                 rc = RTR0MemObjMapKernel(&pPgLvl->a[i].hMapObj, pPgLvl->a[i].hMemObj,
