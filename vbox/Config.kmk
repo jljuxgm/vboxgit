@@ -1,4 +1,4 @@
-# $Id: Config.kmk 28467 2010-04-19 14:28:37Z vboxsync $
+# $Id: Config.kmk 28500 2010-04-19 23:06:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -476,7 +476,7 @@ VBOX_WITH_GUEST_PROPS = 1
 # Enable this to prevent the guest from writing guest properties.
 VBOX_WITH_GUEST_PROPS_RDONLY_GUEST =
 # Enable the guest control service.
-if1of ($(KBUILD_TARGET), linux solaris win)
+if1of ($(KBUILD_TARGET), linux solaris win darwin)
  VBOX_WITH_GUEST_CONTROL = 1
 endif
 # Enable crOpenGL service
@@ -4073,7 +4073,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28467 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28500 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
