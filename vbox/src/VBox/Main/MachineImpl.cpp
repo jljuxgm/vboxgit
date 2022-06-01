@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 24490 2009-11-09 11:23:35Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24493 2009-11-09 11:59:49Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2796,11 +2796,12 @@ STDMETHODIMP Machine::PassthroughDevice(IN_BSTR aControllerName, LONG aControlle
 STDMETHODIMP Machine::MountMedium(IN_BSTR aControllerName,
                                   LONG aControllerPort,
                                   LONG aDevice,
-                                  IN_BSTR aId)
+                                  IN_BSTR aId,
+                                  BOOL aForce)
 {
     int rc = S_OK;
-    LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%ld aDevice=%ld\n",
-                     aControllerName, aControllerPort, aDevice));
+    LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%ld aDevice=%ld aForce=%d\n",
+                     aControllerName, aControllerPort, aDevice, aForce));
 
     CheckComArgNotNull(aControllerName);
     CheckComArgNotNull(aId);
@@ -2896,7 +2897,7 @@ STDMETHODIMP Machine::MountMedium(IN_BSTR aControllerName,
     }
 
     alock.unlock();
-    onMediumChange(pAttach);
+    onMediumChange(pAttach, aForce);
 
     return rc;
 }
@@ -9213,7 +9214,7 @@ HRESULT SessionMachine::onStorageControllerChange ()
 /**
  *  @note Locks this object for reading.
  */
-HRESULT SessionMachine::onMediumChange(IMediumAttachment *aAttachment)
+HRESULT SessionMachine::onMediumChange(IMediumAttachment *aAttachment, BOOL aForce)
 {
     LogFlowThisFunc(("\n"));
 
@@ -9230,7 +9231,7 @@ HRESULT SessionMachine::onMediumChange(IMediumAttachment *aAttachment)
     if (!directControl)
         return S_OK;
 
-    return directControl->OnMediumChange(aAttachment);
+    return directControl->OnMediumChange(aAttachment, aForce);
 }
 
 /**

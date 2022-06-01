@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 24321 2009-11-04 12:18:09Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 24493 2009-11-09 11:59:49Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -909,7 +909,7 @@ int handleModifyVM(HandlerArg *a)
                  * storage controllers. */
                 if (dvdMedium)
                     dvdMedium->COMGETTER(Id)(uuid.asOutParam());
-                CHECK_ERROR(machine, MountMedium(Bstr("IDE Controller"), 1, 0, uuid));
+                CHECK_ERROR(machine, MountMedium(Bstr("IDE Controller"), 1, 0, uuid, FALSE /* aForce */));
                 break;
             }
 
@@ -977,7 +977,7 @@ int handleModifyVM(HandlerArg *a)
                         }
                     }
                     floppyMedium->COMGETTER(Id)(uuid.asOutParam());
-                    CHECK_ERROR(machine, MountMedium(Bstr("Floppy Controller"), 0, 0, uuid));
+                    CHECK_ERROR(machine, MountMedium(Bstr("Floppy Controller"), 0, 0, uuid, FALSE /* aForce */));
                 }
                 break;
             }
