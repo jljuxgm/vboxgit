@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 24458 2009-11-06 16:02:24Z vboxsync $ */
+/* $Id: MediumImpl.cpp 24462 2009-11-06 16:20:13Z vboxsync $ */
 
 /** @file
  *
@@ -3306,6 +3306,11 @@ HRESULT Medium::discard(ComObjPtr<Progress> &aProgress, ULONG ulWeight, MergeCha
 
             hdFrom = this;
 
+            // deleteStorageAndWait calls unregisterWithVirtualBox which gets
+            // a write tree lock, so don't deadlock
+            treeLock.unlock();
+            alock.unlock();
+
             rc = deleteStorageAndWait(&aProgress);
         }
         else
@@ -4042,9 +4047,7 @@ HRESULT Medium::deleteStorage(ComObjPtr <Progress> *aProgress, bool aWait)
      * VirtualBox::findHardDisk() but before it starts using us (provided that
      * it holds a mVirtualBox lock too of course). */
 
-    AutoWriteLock vboxLock(mVirtualBox);
-
-    AutoWriteLock alock(this);
+    AutoMultiWriteLock2 alock(mVirtualBox->lockHandle(), this->lockHandle());
 
     if (    !(m->formatObj->capabilities() & (   MediumFormatCapabilities_CreateDynamic
                                                | MediumFormatCapabilities_CreateFixed)))
