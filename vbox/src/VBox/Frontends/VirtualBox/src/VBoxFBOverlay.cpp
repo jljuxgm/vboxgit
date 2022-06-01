@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 27682 2010-03-24 18:37:48Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 27697 2010-03-25 11:57:38Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -4181,6 +4181,20 @@ void VBoxQGLOverlay::initGl()
     vboxShowOverlay (false);
 
     mpOverlayWgt->setMouseTracking (true);
+}
+
+void VBoxQGLOverlay::updateAttachment(QWidget *pViewport, QObject *pPostEventObject)
+{
+    mCmdPipe.updatePostEventObject(pPostEventObject);
+    if (mpViewport != pViewport)
+    {
+        mpViewport = pViewport;
+        mpOverlayWgt = NULL;
+        mOverlayWidgetVisible = false;
+        initGl();
+        vboxDoCheckUpdateViewport();
+        mGlCurrent = false;
+    }
 }
 
 int VBoxQGLOverlay::reset()

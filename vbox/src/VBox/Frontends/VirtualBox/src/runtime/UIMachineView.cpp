@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 27683 2010-03-24 18:48:46Z vboxsync $ */
+/* $Id: UIMachineView.cpp 27697 2010-03-25 11:57:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -487,9 +487,16 @@ void UIMachineView::prepareFrameBuffer()
 #ifdef VBOX_GUI_USE_QIMAGE
         case VBoxDefs::QImageMode:
 # ifdef VBOX_WITH_VIDEOHWACCEL
-            /* these two additional template args is a workaround to this [VBox|UI] duplication
-             * @todo: they are to be removed once VBox stuff is gone */
-            m_pFrameBuffer = m_fAccelerate2DVideo ? new VBoxOverlayFrameBuffer<UIFrameBufferQImage, UIMachineView, UIResizeEvent>(this, viewport(), &machineWindowWrapper()->session()) : new UIFrameBufferQImage(this);
+            if (m_fAccelerate2DVideo)
+            {
+                class VBoxQGLOverlay* pOverlay = uisession()->overlayForScreen(screenId());
+                pOverlay->updateAttachment(viewport(), this);
+                /* these two additional template args is a workaround to this [VBox|UI] duplication
+                 * @todo: they are to be removed once VBox stuff is gone */
+                m_pFrameBuffer = new VBoxOverlayFrameBuffer<UIFrameBufferQImage, UIMachineView, UIResizeEvent>(this, pOverlay, &machineWindowWrapper()->session());
+            }
+            else
+                m_pFrameBuffer = new UIFrameBufferQImage(this);
 # else
             m_pFrameBuffer = new UIFrameBufferQImage(this);
 # endif
