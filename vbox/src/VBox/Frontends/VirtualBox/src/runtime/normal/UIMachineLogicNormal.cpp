@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 27374 2010-03-15 16:42:37Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 27376 2010-03-15 16:52:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -66,7 +66,8 @@ void UIMachineLogicNormal::initialize()
     /* Prepare normal machine window: */
     prepareMachineWindows();
 
-    /* If there is an Additions download running show the process bar. */
+    /* If there is an Additions download running, update the parent window
+     * information. */
     if (UIDownloaderAdditions *pDl = UIDownloaderAdditions::current())
         pDl->setParentWidget(mainMachineWindow()->machineWindow());
 
