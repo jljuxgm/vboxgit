@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
+/* $Id: Virtio.cpp 25830 2010-01-14 15:06:13Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  *
@@ -479,12 +479,12 @@ int vpciIOPortOut(PPDMDEVINS                pDevIns,
             if (u32 < pState->nQueues)
                 if (pState->Queues[u32].VRing.addrDescriptors)
                 {
-                    rc = vpciCsEnter(pState, VERR_SEM_BUSY);
-                    if (RT_LIKELY(rc == VINF_SUCCESS))
-                    {
+                    // rc = vpciCsEnter(pState, VERR_SEM_BUSY);
+                    // if (RT_LIKELY(rc == VINF_SUCCESS))
+                    // {
                         pState->Queues[u32].pfnCallback(pState, &pState->Queues[u32]);
-                        vpciCsLeave(pState);
-                    }
+                    //     vpciCsLeave(pState);
+                    // }
                 }
                 else
                     Log(("%s The queue (#%d) being notified has not been initialized.\n",
