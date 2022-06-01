@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 29706 2010-05-20 16:44:45Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 29744 2010-05-21 16:02:49Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3852,6 +3852,19 @@ static DECLCALLBACK(void) lsilogicInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, c
 
         for (unsigned i = 0; i < pThis->cRequestQueueEntries; i++)
             pHlp->pfnPrintf(pHlp, "ReqQ[%u]=%#x\n", i, pThis->pRequestQueueBaseR3[i]);
+    }
+
+    /*
+     * Print the device status.
+     */
+    for (unsigned i = 0; i < pThis->cDeviceStates; i++)
+    {
+        PLSILOGICDEVICE pDevice = &pThis->paDeviceStates[i];
+
+        pHlp->pfnPrintf(pHlp, "\n");
+
+        pHlp->pfnPrintf(pHlp, "Device[%u]: device-attached=%RTbool cOutstandingRequests=%u\n",
+                        i, pDevice->pDrvBase != NULL, pDevice->cOutstandingRequests);
     }
 }
 
