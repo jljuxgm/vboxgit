@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 26197 2010-02-03 14:49:38Z vboxsync $ */
+/* $Id: VBoxControl.cpp 26199 2010-02-03 14:55:20Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1347,7 +1347,7 @@ int main(int argc, char **argv)
     if (showlogo)
         RTPrintf(VBOX_PRODUCT " Guest Additions Command Line Management Interface Version "
                  VBOX_VERSION_STRING "\n"
-                 "(C) 2008-" VBOX_C_YEAR " " VBOX_VENDER "\n"
+                 "(C) 2008-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
                  "All rights reserved.\n\n");
     if (dohelp)
         usage();
