@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28306 2010-04-14 14:45:08Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28307 2010-04-14 15:00:50Z vboxsync $ */
 
 /** @file
  *
@@ -737,6 +737,11 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
                     {
                         rc = setError(VBOX_E_IPRT_ERROR, 
                                       tr("The file \"%s\" was not found on guest"), Utf8Command.raw());
+                    }
+                    else if (vrc == VERR_BAD_EXE_FORMAT)
+                    {
+                        rc = setError(VBOX_E_IPRT_ERROR, 
+                                      tr("The file \"%s\" is not an executable format on guest"), Utf8Command.raw());
                     }
                     else if (vrc == VERR_TIMEOUT)
                     {
