@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 24323 2009-11-04 12:51:39Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24342 2009-11-04 15:42:41Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -8604,7 +8604,9 @@ STDMETHODIMP SessionMachine::OnSessionEnd (ISession *aSession,
 
     ComAssertRet (!control.isNull(), E_INVALIDARG);
 
-    AutoWriteLock alock(this);
+    /* Creating a Progress object requires the VirtualBox children lock, and
+     * thus locking it here is required by the lock order rules. */
+    AutoMultiWriteLock2 alock(mParent->childrenLock(), this->lockHandle());
 
     if (control.equalsTo (mData->mSession.mDirectControl))
     {
