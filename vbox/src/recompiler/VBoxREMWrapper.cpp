@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 25409 2009-12-15 15:04:41Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 25410 2009-12-15 15:09:05Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -209,6 +209,7 @@
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/ldr.h>
+#include <iprt/lockvalidator.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
