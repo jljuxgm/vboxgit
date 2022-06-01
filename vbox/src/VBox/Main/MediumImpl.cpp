@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 24000 2009-10-22 19:14:58Z vboxsync $ */
+/* $Id: MediumImpl.cpp 24126 2009-10-28 09:59:05Z vboxsync $ */
 
 /** @file
  *
@@ -995,6 +995,9 @@ HRESULT Medium::init(VirtualBox *aVirtualBox,
 
     /* there must be a storage unit */
     m->state = MediumState_Created;
+
+    /* remember device type for correct unregistering later */
+    m->devType = aDeviceType;
 
     /* cannot be a host drive */
     m->hostDrive = FALSE;
