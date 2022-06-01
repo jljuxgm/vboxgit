@@ -1,4 +1,4 @@
-/* $Id: DBGFRZ.cpp 19288 2009-05-01 13:09:18Z vboxsync $ */
+/* $Id: DBGFRZ.cpp 27472 2010-03-18 10:51:03Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, RZ part.
  */
@@ -88,12 +88,14 @@ VMMRZDECL(int) DBGFRZTrap01Handler(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame
         return fInHyper ? VINF_EM_DBG_HYPER_STEPPED : VINF_EM_DBG_STEPPED;
     }
 
+#ifdef IN_RC
     /*
      * Currently we only implement single stepping in the guest,
      * so we'll bitch if this is not a BS event.
      */
     AssertMsg(uDr6 & X86_DR6_BS, ("hey! we're not doing guest BPs yet! dr6=%RTreg %04x:%RGv\n",
                                   uDr6, pRegFrame->cs, pRegFrame->rip));
+#endif
 
     LogFlow(("DBGFRZTrap01Handler: guest debug event %RTreg at %04x:%RGv!\n", uDr6, pRegFrame->cs, pRegFrame->rip));
     return fInHyper ? VERR_INTERNAL_ERROR : VINF_EM_RAW_GUEST_TRAP;
