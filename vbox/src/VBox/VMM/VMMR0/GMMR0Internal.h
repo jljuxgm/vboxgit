@@ -1,4 +1,4 @@
-/* $Id: GMMR0Internal.h 29138 2010-05-06 11:49:48Z vboxsync $ */
+/* $Id: GMMR0Internal.h 29168 2010-05-06 16:01:48Z vboxsync $ */
 /** @file
  * GMM - The Global Memory Manager, Internal Header.
  */
@@ -48,8 +48,8 @@ typedef struct GMMSHAREDREGIONDESC
     uint32_t            cbRegion;
     /** Alignment. */
     uint32_t            u32Alignment;
-    /** Pointer to physical page address array. */
-    PRTHCPHYS           paHCPhysAndPageID;
+    /** Pointer to physical page id array. */
+    uint32_t           *paHCPhysPageID;
 } GMMSHAREDREGIONDESC;
 /** Pointer to a GMMSHAREDREGIONDESC. */
 typedef GMMSHAREDREGIONDESC *PGMMSHAREDREGIONDESC;
@@ -84,20 +84,19 @@ typedef GMMSHAREDMODULE *PGMMSHAREDMODULE;
  */
 typedef struct GMMSHAREDMODULEPERVM
 {
-    /* Tree node. */
+    /** Tree node. */
     AVLGCPTRNODECORE            Core;
 
-    /* Pointer to global shared module info. */
-    PGMMSHAREDMODULE            pSharedModule;
+    /** Pointer to global shared module info. */
+    PGMMSHAREDMODULE            pGlobalModule;
 
-    /* Set if another VM registered a different shared module at the same base address. */
+    /** Set if another VM registered a different shared module at the same base address. */
     bool                        fCollision;
-    /** Align at 8 byte boundary */
-    bool                        abAlignment[7];
+    /** Alignment. */
+    bool                        bAlignment;
 
-    /** Number of regions in the aRegions array. */
+    /** Number of regions. */
     unsigned                    cRegions;
-
     /** Shared region descriptor(s). */
     GMMSHAREDREGIONDESC         aRegions[1];
 } GMMSHAREDMODULEPERVM;
