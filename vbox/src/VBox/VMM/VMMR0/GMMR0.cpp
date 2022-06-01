@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29478 2010-05-14 15:07:22Z vboxsync $ */
+/* $Id: GMMR0.cpp 29482 2010-05-14 15:43:21Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3472,6 +3472,8 @@ GMMR0DECL(int) GMMR0RegisterSharedModule(PVM pVM, VMCPUID idCpu, VBOXOSFAMILY en
     int rc = GVMMR0ByVMAndEMT(pVM, idCpu, &pGVM);
     if (RT_FAILURE(rc))
         return rc;
+
+    Log(("GMMR0RegisterSharedModule %s %s base %RGv size %x\n", pszModuleName, pszVersion, GCBaseAddr, cbModule));
 
     /*
      * Take the sempahore and do some more validations.
