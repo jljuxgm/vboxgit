@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.h 27871 2010-03-31 09:49:40Z vboxsync $ */
+/* $Id: NATEngineImpl.h 27875 2010-03-31 10:16:46Z vboxsync $ */
 
 /** @file
  *
@@ -119,7 +119,7 @@ class ATL_NO_VTABLE NATEngine :
     STDMETHOD(GetNetworkSettings)(ULONG *aMtu, ULONG *aSockSnd, ULONG *aSockRcv, ULONG *aTcpWndSnd, ULONG *aTcpWndRcv);
 
     STDMETHOD(COMGETTER(Redirects)) (ComSafeArrayOut (BSTR, aNatRules));
-    STDMETHOD(AddRedirect)(IN_BSTR aName, ULONG aProto, IN_BSTR aBindIp, USHORT aHostPort, IN_BSTR aGuestIP, USHORT aGuestPort);
+    STDMETHOD(AddRedirect)(IN_BSTR aName, NATProtocol_T aProto, IN_BSTR aBindIp, USHORT aHostPort, IN_BSTR aGuestIP, USHORT aGuestPort);
     STDMETHOD(RemoveRedirect)(IN_BSTR aName);
 
     static const wchar_t *getComponentName() { return L"NATEngine"; }
