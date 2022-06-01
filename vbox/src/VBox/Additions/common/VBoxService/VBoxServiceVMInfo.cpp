@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 28546 2010-04-21 08:30:20Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 28548 2010-04-21 08:42:33Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -182,9 +182,9 @@ static void VBoxServiceVMInfoWriteFixedProperties(void)
     }
     else /* If not found delete stale entries. */
     {
-		rc = VBoxServiceWritePropF(g_VMInfoGuestPropSvcClientID, "/VirtualBox/GuestAdd/Version", NULL);
-		rc = VBoxServiceWritePropF(g_VMInfoGuestPropSvcClientID, "/VirtualBox/GuestAdd/Revision", NULL);
-	}
+        rc = VBoxServiceWritePropF(g_VMInfoGuestPropSvcClientID, "/VirtualBox/GuestAdd/Version", NULL);
+        rc = VBoxServiceWritePropF(g_VMInfoGuestPropSvcClientID, "/VirtualBox/GuestAdd/Revision", NULL);
+    }
 
 #ifdef RT_OS_WINDOWS
     /*
@@ -199,12 +199,12 @@ static void VBoxServiceVMInfoWriteFixedProperties(void)
     }
     else /* If not found delete stale entry. */
     {
-		rc = VBoxServiceWritePropF(g_VMInfoGuestPropSvcClientID, "/VirtualBox/GuestAdd/InstallDir", NULL);
-	}		
+        rc = VBoxServiceWritePropF(g_VMInfoGuestPropSvcClientID, "/VirtualBox/GuestAdd/InstallDir", NULL);
+    }
     VBoxServiceWinGetComponentVersions(g_VMInfoGuestPropSvcClientID);
 #endif
 
-	/* return rc; */
+    /* return rc; */
 }
 
 
