@@ -1,4 +1,4 @@
-/* $Id: tstRTR0SemMutexDriver.cpp 28472 2010-04-19 14:59:33Z vboxsync $ */
+/* $Id: tstRTR0SemMutexDriver.cpp 28514 2010-04-20 11:30:01Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -83,6 +83,13 @@ static DECLCALLBACK(int) tstThreadFn(RTTHREAD hThreadSelf, void *pvUser)
                                                     enmDo, cSecs, &Req.Hdr),
                         VINF_SUCCESS,
                         rcCheck);
+    if (Req.szMsg[0] == '!')
+    {
+        RTTestFailed(g_hTest, "%s", &Req.szMsg[1]);
+        return VERR_GENERAL_FAILURE;
+    }
+    if (Req.szMsg[0])
+        RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "%s", Req.szMsg);
     return VINF_SUCCESS;
 }
 
@@ -178,6 +185,7 @@ int main(int argc, char **argv)
     int rc = RTTestInitAndCreate("tstRTR0SemMutex", &hTest);
     if (rc)
         return rc;
+    g_hTest = hTest;
     RTTestBanner(hTest);
 
     PSUPDRVSESSION pSession;

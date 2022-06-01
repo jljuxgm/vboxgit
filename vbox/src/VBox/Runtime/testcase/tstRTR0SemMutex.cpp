@@ -1,4 +1,4 @@
-/* $Id: tstRTR0SemMutex.cpp 28472 2010-04-19 14:59:33Z vboxsync $ */
+/* $Id: tstRTR0SemMutex.cpp 28514 2010-04-20 11:30:01Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Mutex Semaphores.
  */
@@ -76,6 +76,7 @@ DECLEXPORT(int) TSTRTR0SemMutexSrvReqHandler(PSUPDRVSESSION pSession, uint32_t u
         if ((rc) != (rcExpect)) \
         { \
             RTStrPrintf(pszErr, cchErr, "!%s -> %Rrc, expected %Rrc. line %u", szOp, rc, rcExpect, __LINE__); \
+            SUPR0Printf("%s -> %d, expected %d. line %u", szOp, rc, rcExpect, __LINE__); \
             break; \
         }
 
