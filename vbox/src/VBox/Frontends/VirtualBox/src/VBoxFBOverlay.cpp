@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 27850 2010-03-31 08:11:58Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 27958 2010-04-02 14:12:02Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -4848,7 +4848,6 @@ void VBoxVHWACommandElementProcessor::checkConsistence(uint32_t cEvents2Submit, 
 void VBoxVHWACommandElementProcessor::putBack(class VBoxVHWACommandElement * pFirst2Put, VBoxVHWACommandElement * pLast2Put,
         class VBoxVHWACommandElement * pFirst2Free, VBoxVHWACommandElement * pLast2Free)
 {
-    VBoxVHWACommandElement * pList = NULL;
     RTCritSectEnter(&mCritSect);
     if (pFirst2Free)
         mFreeElements.pusha(pFirst2Free, pLast2Free);
