@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleWnd.cpp 28671 2010-04-23 17:54:49Z vboxsync $ */
+/* $Id: VBoxConsoleWnd.cpp 28676 2010-04-23 18:10:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -3935,6 +3935,4 @@ void VBoxSFDialog::showEvent (QShowEvent *aEvent)
     setMinimumWidth (400);
     QDialog::showEvent (aEvent);
 }
-
-#include "VBoxConsoleWnd.moc"
 
