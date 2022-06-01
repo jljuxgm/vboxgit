@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 29740 2010-05-21 14:37:22Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 29785 2010-05-25 13:30:45Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -366,7 +366,8 @@ static int handleExecProgram(HandlerArg *a)
                 }
 
                 /* Wait for process to exit ... */
-                BOOL fCompleted = false;
+                BOOL fCompleted = FALSE;
+                BOOL fCanceled = FALSE;
                 while (SUCCEEDED(progress->COMGETTER(Completed(&fCompleted))))
                 {
                     SafeArray<BYTE> aOutputData;
@@ -423,9 +424,16 @@ static int handleExecProgram(HandlerArg *a)
                     {
                         hrc = progress->Cancel();
                         if (SUCCEEDED(hrc))
-                            fCanceledAlready = true;
+                            fCanceledAlready = TRUE;
                         else
                             g_fExecCanceled = false;
+                    }
+
+                    /* progress canceled by Main API? */
+                    if (   SUCCEEDED(progress->COMGETTER(Canceled(&fCanceled)))
+                        && fCanceled)
+                    {
+                        break;
                     }
 
                     progress->WaitForCompletion(100);
@@ -440,9 +448,8 @@ static int handleExecProgram(HandlerArg *a)
             #endif
                 }
 
-                BOOL fCanceled;
-                if (SUCCEEDED(progress->COMGETTER(Canceled)(&fCanceled)) && fCanceled)
-                    if (fVerbose) RTPrintf("Process execution canceled!\n");
+                if (fCanceled && fVerbose)
+                    RTPrintf("Process execution canceled!\n");
 
                 if (fCompleted)
                 {
