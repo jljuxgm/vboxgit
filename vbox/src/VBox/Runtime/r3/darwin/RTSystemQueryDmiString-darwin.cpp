@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-darwin.cpp 26803 2010-02-25 16:26:10Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-darwin.cpp 26806 2010-02-25 16:33:11Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, darwin ring-3.
  */
@@ -42,10 +42,6 @@
 #include <stdio.h>
 #include <mach/mach_port.h>
 #include <IOKit/IOKitLib.h>
-#include <IOKit/network/IOEthernetInterface.h> 
-#include <IOKit/network/IONetworkInterface.h> 
-#include <IOKit/network/IOEthernetController.h> 
-
 
 #define IOCLASS_PLATFORMEXPERTDEVICE         "IOPlatformExpertDevice"
 #define PROP_PRODUCT_NAME                    "product-name"
