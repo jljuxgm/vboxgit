@@ -1,4 +1,4 @@
-/* $Id: ParallelsHDDCore.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: ParallelsHDDCore.cpp 26163 2010-02-02 18:58:33Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.

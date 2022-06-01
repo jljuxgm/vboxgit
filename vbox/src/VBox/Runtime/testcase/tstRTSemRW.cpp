@@ -1,4 +1,4 @@
-/* $Id: tstRTSemRW.cpp 25524 2009-12-20 16:56:30Z vboxsync $ */
+/* $Id: tstRTSemRW.cpp 26163 2010-02-02 18:58:33Z vboxsync $ */
 /** @file
  * IPRT Testcase - Reader/Writer Semaphore.
  */
