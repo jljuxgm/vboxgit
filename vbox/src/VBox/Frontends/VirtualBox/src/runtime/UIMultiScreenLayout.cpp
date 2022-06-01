@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 27335 2010-03-12 16:20:29Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 27337 2010-03-12 16:57:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -54,6 +54,7 @@ UIMultiScreenLayout::~UIMultiScreenLayout()
 
 void UIMultiScreenLayout::initialize(QMenu *pMenu)
 {
+    pMenu->clear();
     for (int i = 0; i < m_cGuestScreens; ++i)
     {
         QMenu *pScreenMenu = pMenu->addMenu(tr("Virtual Screen %1").arg(i + 1));
