@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 26834 2010-02-26 12:10:36Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of VMMDev: driver interface to VMM device
@@ -172,8 +172,8 @@ DECLCALLBACK(void) VMMDev::UpdateMouseCapabilities(PPDMIVMMDEVCONNECTOR pInterfa
 
     if (gMouse)
     {
-        gMouse->setAbsoluteCoordinates(!!(newCapabilities & VMMDEV_MOUSE_GUEST_CAN_ABSOLUTE));
-        gMouse->setNeedsHostCursor(!!(newCapabilities & VMMDEV_MOUSE_GUEST_NEEDS_HOST_CURSOR));
+        gMouse->onVMMDevCanAbsChange(!!(newCapabilities & VMMDEV_MOUSE_GUEST_CAN_ABSOLUTE));
+        gMouse->onVMMDevNeedsHostChange(!!(newCapabilities & VMMDEV_MOUSE_GUEST_NEEDS_HOST_CURSOR));
     }
     if (gConsole)
     {
