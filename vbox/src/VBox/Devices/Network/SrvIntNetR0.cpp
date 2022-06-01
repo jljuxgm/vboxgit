@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 28623 2010-04-23 00:34:14Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 28624 2010-04-23 00:40:57Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1377,7 +1377,7 @@ static INTNETSWDECISION intnetR0NetworkSwitchLevel3(PINTNETNETWORK pNetwork, PCR
         if (pTab->paEntries[iIfMac].fActive)
         {
             PINTNETIF pIf    = pTab->paEntries[iIfMac].pIf;         AssertPtr(pIf); Assert(pIf->pNetwork == pNetwork);
-            bool      fExact = intnetR0IfAddrCacheLookup(&pIf->aAddrCache[enmL3AddrType], pL3Addr, cbL3Addr);
+            bool      fExact = intnetR0IfAddrCacheLookup(&pIf->aAddrCache[enmL3AddrType], pL3Addr, cbL3Addr) >= 0;
             if (fExact || pTab->paEntries[iIfMac].fPromiscuous)
             {
                 cExactHits += fExact;
