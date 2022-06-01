@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 26950 2010-03-02 15:08:43Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 26954 2010-03-02 15:52:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -57,7 +57,7 @@ UIMachineLogicFullscreen::~UIMachineLogicFullscreen()
 
 bool UIMachineLogicFullscreen::checkAvailability()
 {
-    int cHostScreens = QApplication::desktop()->screenCount();
+    int cHostScreens = QApplication::desktop()->numScreens();
     int cGuestScreens = uisession()->session().GetMachine().GetMonitorCount();
     /* Check that there are enough physical screens are connected */
     if (cHostScreens < cGuestScreens)
