@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 26255 2010-02-05 00:58:47Z vboxsync $ */
+/* $Id: fs-posix.cpp 26256 2010-02-05 01:04:31Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -37,9 +37,12 @@
 #include <errno.h>
 
 #include <iprt/fs.h>
+#include "internal/iprt.h"
+
+#include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/log.h>
-#include <iprt/assert.h>
+#include <iprt/string.h>
 #include "internal/fs.h"
 #include "internal/path.h"
 
