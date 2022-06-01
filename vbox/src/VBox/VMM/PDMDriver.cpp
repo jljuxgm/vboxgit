@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 28258 2010-04-13 14:51:16Z vboxsync $ */
+/* $Id: PDMDriver.cpp 28327 2010-04-14 20:46:02Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -928,6 +928,18 @@ static DECLCALLBACK(bool) pdmR3DrvHlp_VMTeleportedAndNotFullyResumedYet(PPDMDRVI
 }
 
 
+/** @interface_method_impl{PDMDEVHLPR3,pfnGetSupDrvSession} */
+static DECLCALLBACK(PSUPDRVSESSION) pdmR3DrvHlp_GetSupDrvSession(PPDMDRVINS pDrvIns)
+{
+    PDMDRV_ASSERT_DRVINS(pDrvIns);
+
+    PSUPDRVSESSION pSession = pDrvIns->Internal.s.pVMR3->pSession;
+    LogFlow(("pdmR3DrvHlp_GetSupDrvSession: caller='%s'/%d: returns %p)\n", pDrvIns->pReg->szName, pDrvIns->iInstance,
+             pSession));
+    return pSession;
+}
+
+
 /** @interface_method_impl{PDMDRVHLP,pfnQueueCreate} */
 static DECLCALLBACK(int) pdmR3DrvHlp_QueueCreate(PPDMDRVINS pDrvIns, uint32_t cbItem, uint32_t cItems, uint32_t cMilliesInterval,
                                                  PFNPDMQUEUEDRV pfnCallback, const char *pszName, PPDMQUEUE *ppQueue)
@@ -1310,6 +1322,7 @@ const PDMDRVHLPR3 g_pdmR3DrvHlp =
     pdmR3DrvHlp_VMSetRuntimeErrorV,
     pdmR3DrvHlp_VMState,
     pdmR3DrvHlp_VMTeleportedAndNotFullyResumedYet,
+    pdmR3DrvHlp_GetSupDrvSession,
     pdmR3DrvHlp_QueueCreate,
     pdmR3DrvHlp_TMGetVirtualFreq,
     pdmR3DrvHlp_TMGetVirtualTime,
