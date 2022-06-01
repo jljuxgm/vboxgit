@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltPt-win.c 23927 2009-10-21 09:18:34Z vboxsync $ */
+/* $Id: VBoxNetFltPt-win.c 24044 2009-10-23 15:51:41Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Protocol edge of ndis filter driver
  */
@@ -1619,6 +1619,9 @@ vboxNetFltWinPtReceive(
             pPacket = NdisGetReceivedPacket(pAdapt->hBindingHandle, MacReceiveContext);
             if (pPacket != NULL)
             {
+#ifndef VBOX_LOOPBACK_USEFLAGS
+                PNDIS_PACKET pLb = NULL;
+#endif
                 do
                 {
 #ifdef VBOX_LOOPBACK_USEFLAGS
@@ -1632,8 +1635,6 @@ vboxNetFltWinPtReceive(
                     }
 
                     VBOXNETFLT_LBVERIFY(pNetFlt, pPacket);
-#else
-                    PNDIS_PACKET pLb = NULL;
 #endif
                     if(bNetFltActive)
                     {
@@ -1668,7 +1669,7 @@ vboxNetFltWinPtReceive(
                     }
 
 #ifndef VBOX_LOOPBACK_USEFLAGS
-                    Assert(pLb && !vboxNetFltWinLbIsFromIntNet(pLb));
+                    Assert(!pLb || !vboxNetFltWinLbIsFromIntNet(pLb));
 #endif
                     Status = vboxNetFltWinRecvPassThru(pAdapt, pPacket);
                     /* we are done with packet processing, and we will
