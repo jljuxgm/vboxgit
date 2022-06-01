@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 25786 2010-01-12 18:01:05Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 25789 2010-01-12 18:33:33Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1849,7 +1849,8 @@ int Appliance::importFS(TaskImportOVF *pTask)
              ++itM)
         {
             const MyHardDiskAttachment &mhda = *itM;
-            rc2 = mVirtualBox->OpenSession(session, mhda.bstrUuid);
+            Bstr bstrUuid(mhda.bstrUuid);           // make a copy, Windows can't handle const Bstr
+            rc2 = mVirtualBox->OpenSession(session, bstrUuid);
             if (SUCCEEDED(rc2))
             {
                 ComPtr<IMachine> sMachine;
@@ -1881,7 +1882,7 @@ int Appliance::importFS(TaskImportOVF *pTask)
              itID != llMachinesRegistered.end();
              ++itID)
         {
-            const Bstr &bstrGuid = *itID;
+            Bstr bstrGuid = *itID;      // make a copy, Windows can't handle const Bstr
             ComPtr<IMachine> failedMachine;
             rc2 = mVirtualBox->UnregisterMachine(bstrGuid, failedMachine.asOutParam());
             if (SUCCEEDED(rc2))
