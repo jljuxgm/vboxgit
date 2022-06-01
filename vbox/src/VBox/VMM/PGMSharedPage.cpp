@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 29456 2010-05-14 09:39:53Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 29468 2010-05-14 12:16:44Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -19,7 +19,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define LOG_GROUP LOG_GROUP_PGM_PHYS
+#define LOG_GROUP LOG_GROUP_PGM_SHARED
 #include <VBox/pgm.h>
 #include <VBox/stam.h>
 #include "PGMInternal.h"

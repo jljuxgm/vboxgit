@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29329 2010-05-11 10:18:30Z vboxsync $
+# $Id: Makefile.kmk 29468 2010-05-14 12:16:44Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -459,6 +459,7 @@ VMMR0_SOURCES   = \
 	VMMR0/PDMR0Device.cpp \
 	VMMR0/PDMR0Driver.cpp \
 	VMMR0/PGMR0.cpp \
+	VMMR0/PGMR0SharedPage.cpp \
 	VMMR0/TRPMR0.cpp \
 	VMMR0/TRPMR0A.asm \
 	VMMR0/VMMR0.cpp \
