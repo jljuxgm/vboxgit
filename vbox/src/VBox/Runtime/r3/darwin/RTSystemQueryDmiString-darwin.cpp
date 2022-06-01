@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-darwin.cpp 26806 2010-02-25 16:33:11Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-darwin.cpp 26807 2010-02-25 16:44:20Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, darwin ring-3.
  */
@@ -46,8 +46,8 @@
 #define IOCLASS_PLATFORMEXPERTDEVICE         "IOPlatformExpertDevice"
 #define PROP_PRODUCT_NAME                    "product-name"
 #define PROP_PRODUCT_VERSION                 "version"
-#define PROP_SERIAL_NUMBER                   "IOPlatformSerialNumber"
-#define PROP_HARDWARE_UUID                   "IOPlatformUUID"
+#define PROP_PRODUCT_SERIAL                  "IOPlatformSerialNumber"
+#define PROP_PRODUCT_UUID                    "IOPlatformUUID"
 
 RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t cbBuf)
 {
@@ -59,10 +59,10 @@ RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t c
     CFStringRef PropStringRef = NULL;
     switch (enmString)
     {
-        case RTSYSDMISTR_PRODUCT_NAME:    PropStringRef = CFStringCreateWithCString(kCFAllocatorDefault, PROP_PRODUCT_NAME, kCFStringEncodingASCII); break;
-        case RTSYSDMISTR_PRODUCT_VERSION: PropStringRef = CFStringCreateWithCString(kCFAllocatorDefault, PROP_PRODUCT_VERSION, kCFStringEncodingASCII); break;
-        case RTSYSDMISTR_PRODUCT_SERIAL:  PropStringRef = CFStringCreateWithCString(kCFAllocatorDefault, PROP_SERIAL_NUMBER, kCFStringEncodingASCII); break;
-        case RTSYSDMISTR_PRODUCT_UUID:    PropStringRef = CFStringCreateWithCString(kCFAllocatorDefault, PROP_HARDWARE_UUID, kCFStringEncodingASCII); break;
+        case RTSYSDMISTR_PRODUCT_NAME:    PropStringRef = CFSTR(PROP_PRODUCT_NAME);    break;
+        case RTSYSDMISTR_PRODUCT_VERSION: PropStringRef = CFSTR(PROP_PRODUCT_VERSION); break;
+        case RTSYSDMISTR_PRODUCT_SERIAL:  PropStringRef = CFSTR(PROP_PRODUCT_SERIAL);  break;
+        case RTSYSDMISTR_PRODUCT_UUID:    PropStringRef = CFSTR(PROP_PRODUCT_UUID);    break;
         default:
             return VERR_NOT_SUPPORTED;
     }
