@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 29693 2010-05-20 12:42:54Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 29696 2010-05-20 13:21:05Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -555,7 +555,7 @@ static DECLCALLBACK(void) vboxNetFltPortNotifyMacAddress(PINTNETTRUNKIFPORT pIfP
 /**
  * @copydoc INTNETTRUNKIFPORT::pfnConnectInterface
  */
-static DECLCALLBACK(int) vboxNetFltPortConnectInterface(PINTNETTRUNKIFPORT pIfPort, void *pvIf, void **ppvIfData, INTNETIFHANDLE hIf)
+static DECLCALLBACK(int) vboxNetFltPortConnectInterface(PINTNETTRUNKIFPORT pIfPort, void *pvIf, void **ppvIfData)
 {
     PVBOXNETFLTINS  pThis = IFPORT_2_VBOXNETFLTINS(pIfPort);
     int             rc;
