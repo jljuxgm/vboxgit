@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 25386 2009-12-15 10:26:53Z vboxsync $ */
+/* $Id: HWACCMInternal.h 25387 2009-12-15 10:48:35Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -374,6 +374,9 @@ typedef struct HWACCM
         /** Ring 0 handlers for VT-x. */
         DECLR0CALLBACKMEMBER(void, pfnSetupTaggedTLB, (PVM pVM, PVMCPU pVCpu));
 
+#if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS)
+        uint32_t                    u32Alignment;
+#endif
         /** Host CR4 value (set by ring-0 VMX init) */
         uint64_t                    hostCR4;
 
