@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 24039 2009-10-23 14:18:09Z vboxsync $ */
+/* $Id: DevE1000.cpp 24191 2009-10-30 14:11:59Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4059,7 +4059,9 @@ static DECLCALLBACK(int) e1kWaitReceiveAvail(PPDMINETWORKPORT pInterface, unsign
     rc = VERR_INTERRUPTED;
     ASMAtomicXchgBool(&pState->fMaybeOutOfSpace, true);
     STAM_PROFILE_START(&pState->StatRxOverflow, a);
-    while (RT_LIKELY(PDMDevHlpVMState(pState->CTX_SUFF(pDevIns)) == VMSTATE_RUNNING))
+    VMSTATE enmVMState;
+    while (RT_LIKELY(   (enmVMState = PDMDevHlpVMState(pState->CTX_SUFF(pDevIns))) == VMSTATE_RUNNING
+                     ||  enmVMState == VMSTATE_RUNNING_LS))
     {
         int rc2 = e1kCanReceive(pState);
         if (RT_SUCCESS(rc2))

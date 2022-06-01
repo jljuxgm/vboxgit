@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 24076 2009-10-26 13:39:50Z vboxsync $ */
+/* $Id: VMMDev.cpp 24191 2009-10-30 14:11:59Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -249,7 +249,9 @@ void VMMDevNotifyGuest (VMMDevState *pVMMDevState, uint32_t u32EventMask)
     /*
      * Drop notifications if the VM is not running yet/anymore.
      */
-    if (PDMDevHlpVMState(pDevIns) != VMSTATE_RUNNING)
+    VMSTATE enmVMState = PDMDevHlpVMState(pDevIns);
+    if (    enmVMState != VMSTATE_RUNNING
+        &&  enmVMState != VMSTATE_RUNNING_LS)
         return;
 
     PDMCritSectEnter(&pVMMDevState->CritSect, VERR_SEM_BUSY);

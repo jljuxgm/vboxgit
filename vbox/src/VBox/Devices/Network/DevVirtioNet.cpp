@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 24120 2009-10-27 21:46:51Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 24191 2009-10-30 14:11:59Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  *
@@ -919,7 +919,7 @@ static void vpciDumpState(PVPCISTATE pState, const char *pcszCaller)
               pState->pQueues[i].uNextAvailIndex,
               pState->pQueues[i].uNextUsedIndex,
               pState->pQueues[i].uPageNumber));
-              
+
 }
 #else
 #define vpciDumpState(x, s)
@@ -1491,7 +1491,10 @@ static DECLCALLBACK(int) vnetWaitReceiveAvail(PPDMINETWORKPORT pInterface, unsig
     rc = VERR_INTERRUPTED;
     ASMAtomicXchgBool(&pState->fMaybeOutOfSpace, true);
     STAM_PROFILE_START(&pState->StatRxOverflow, a);
-    while (RT_LIKELY(PDMDevHlpVMState(pState->VPCI.CTX_SUFF(pDevIns)) == VMSTATE_RUNNING))
+
+    VMSTATE enmVMState;
+    while (RT_LIKELY(   (enmVMState = PDMDevHlpVMState(pState->VPCI.CTX_SUFF(pDevIns))) == VMSTATE_RUNNING
+                     ||  enmVMState == VMSTATE_RUNNING_LS))
     {
         int rc2 = vnetCanReceive(pState);
         if (RT_SUCCESS(rc2))
