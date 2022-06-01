@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25980 2010-01-22 17:38:13Z vboxsync $
+# $Id: Makefile.kmk 26050 2010-01-26 15:27:55Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxVideo.
 #
@@ -81,6 +81,7 @@ VBoxVideoWddm_SOURCES     = \
 	VBoxVideoHGSMI.cpp \
 	VBoxVideo.cpp \
 	wddm/VBoxVideoWddm.cpp \
+	wddm/VBoxVideoVidPn.cpp \
 	wddm/VBoxVideoWddm.def \
 	wddm/VBoxVideoWddm.rc
 #VBoxVideoWddm_LIBS.x86    += \
