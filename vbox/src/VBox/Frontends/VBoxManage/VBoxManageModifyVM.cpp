@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 24856 2009-11-22 21:06:56Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 24858 2009-11-23 09:56:20Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -301,9 +301,13 @@ int handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_FIRMWARE:
             {
-                if (!strcmp(ValueUnion.psz, "efi") || !strcmp(ValueUnion.psz, "efi32"))
+                if (!strcmp(ValueUnion.psz, "efi"))
                 {
                     CHECK_ERROR(machine, COMSETTER(FirmwareType)(FirmwareType_EFI));
+                }
+                else if (!strcmp(ValueUnion.psz, "efi32"))
+                {
+                    CHECK_ERROR(machine, COMSETTER(FirmwareType)(FirmwareType_EFI32));
                 }
                 else if (!strcmp(ValueUnion.psz, "efi64"))
                 {
