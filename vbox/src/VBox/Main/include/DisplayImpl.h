@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 24457 2009-11-06 15:53:06Z vboxsync $ */
+/* $Id: DisplayImpl.h 24890 2009-11-24 11:28:44Z vboxsync $ */
 
 /** @file
  *
@@ -338,6 +338,14 @@ private:
     void vbvaReleaseCmd (VBVACMDHDR *pHdr, int32_t cbCmd);
 
     void handleResizeCompletedEMT (void);
+
+#ifdef VBOX_WITH_OLD_VBVA_LOCK
+    RTCRITSECT mVBVALock;
+
+    /* Functions run under VBVA lock. */
+    int videoAccelEnable (bool fEnable, VBVAMEMORY *pVbvaMemory);
+    void videoAccelFlush (void);
+#endif /* VBOX_WITH_OLD_VBVA_LOCK */
 };
 
 void gdImageCopyResampled (uint8_t *dst, uint8_t *src,
