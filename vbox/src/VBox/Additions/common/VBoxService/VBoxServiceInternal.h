@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 28402 2010-04-16 10:13:22Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 28409 2010-04-16 12:04:53Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -238,7 +238,7 @@ extern int VBoxServiceControlExecProcess(uint32_t uContext, const char *pszCmd, 
                                          const char *pszEnv, uint32_t cbEnv, uint32_t uNumEnvVars,
                                          const char *pszStdIn, const char *pszStdOut, const char *pszStdErr,
                                          const char *pszUser, const char *pszPassword, uint32_t uTimeLimitMS);
-extern void VBoxServiceControlExecDestroyThread(PVBOXSERVICECTRLTHREAD pThread);
+extern void VBoxServiceControlExecDestroyThreadData(PVBOXSERVICECTRLTHREAD pThread);
 #endif
 
 #ifdef VBOXSERVICE_MANAGEMENT
