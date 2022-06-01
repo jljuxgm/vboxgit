@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 24353 2009-11-04 19:06:09Z vboxsync $ */
+/* $Id: VM.cpp 24461 2009-11-06 16:19:38Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1897,7 +1897,7 @@ VMMR3DECL(int) VMR3LoadFromFile(PVM pVM, const char *pszFilename, PFNVMPROGRESS 
      * since there is no execution taking place when this call is allowed.
      */
     int rc = VMR3ReqCallWaitU(pVM->pUVM, 0 /*idDstCpu*/, (PFNRT)vmR3Load, 7,
-                              pVM, pszFilename, NULL /*pStreamOps*/, NULL /*pvStreamOpsUser*/, pfnProgress, pvUser,
+                              pVM, pszFilename, (uintptr_t)0 /*pStreamOps*/, (uintptr_t)0 /*pvStreamOpsUser*/, pfnProgress, pvUser,
                               false /*fTeleporting*/);
     LogFlow(("VMR3LoadFromFile: returns %Rrc\n", rc));
     return rc;
