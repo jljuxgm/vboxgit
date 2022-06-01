@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DBGFInternal.h 30072 2010-06-07 13:54:47Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -267,6 +267,10 @@ typedef struct DBGF
     R3PTRTYPE(RTSTRSPACE)   AsNameSpace;
     /** Special address space aliases.          (Protected by hAsDbLock.) */
     RTDBGAS volatile        ahAsAliases[DBGF_AS_COUNT];
+    /** For lazily populating the aliased address spaces. */
+    bool volatile           afAsAliasPopuplated[DBGF_AS_COUNT];
+    /** Alignment padding. */
+    bool                    afAlignment[2];
 
     /** The current Guest OS digger. */
     R3PTRTYPE(PDBGFOS)      pCurOS;
