@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29956 2010-06-01 15:20:11Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 29958 2010-06-01 15:24:48Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -362,7 +362,7 @@ void VBoxServicePageSharingInspectGuest()
         PRTL_PROCESS_MODULES pSystemModules;
     
         NTSTATUS ret = ZwQuerySystemInformation(SystemModuleInformation, (PVOID)&cbBuffer, 0, &cbBuffer);
-        if (ret != STATUS_SUCCESS)
+        if (ret != STATUS_INFO_LENGTH_MISMATCH)
         {
             VBoxServiceVerbose(1, "ZwQuerySystemInformation returned %x (1)\n", ret);
             goto skipkernelmodules;
