@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 24870 2009-11-23 13:39:12Z vboxsync $ */
+/* $Id: HWACCM.cpp 24871 2009-11-23 13:57:05Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2615,11 +2615,14 @@ static DECLCALLBACK(int) hwaccmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersio
 #endif
 
     /* Recheck all VCPUs if we can go staight into hwaccm execution mode. */
-    for (VMCPUID i = 0; i < pVM->cCpus; i++)
+    if (HWACCMIsEnabled(pVM))
     {
-        PVMCPU pVCpu = &pVM->aCpus[i];
+        for (VMCPUID i = 0; i < pVM->cCpus; i++)
+        {
+            PVMCPU pVCpu = &pVM->aCpus[i];
 
-        HWACCMR3CanExecuteGuest(pVM, CPUMQueryGuestCtxPtr(pVCpu));
+            HWACCMR3CanExecuteGuest(pVM, CPUMQueryGuestCtxPtr(pVCpu));
+        }
     }
     return VINF_SUCCESS;
 }
