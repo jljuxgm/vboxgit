@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 25368 2009-12-14 16:31:40Z vboxsync $ */
+/* $Id: lockvalidator.cpp 25369 2009-12-14 16:45:39Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -148,8 +148,10 @@ RTDECL(void) RTLockValidatorSetOwner(PRTLOCKVALIDATORREC pRec, RTTHREAD hThread,
     if (hThread == NIL_RTTHREAD)
     {
         hThread = RTThreadSelf();
+#ifdef IN_RING3
         if (RT_UNLIKELY(hThread == NIL_RTTHREAD))
             RTThreadAdopt(RTTHREADTYPE_DEFAULT, 0, NULL, &hThread);
+#endif
     }
     ASMAtomicWriteHandle(&pRec->hThread, hThread);
 
