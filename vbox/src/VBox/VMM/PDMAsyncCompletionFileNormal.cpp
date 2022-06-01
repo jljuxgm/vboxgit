@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 29124 2010-05-06 09:36:07Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 29154 2010-05-06 13:29:30Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -402,6 +402,24 @@ static int pdmacFileAioMgrNormalGrow(PPDMACEPFILEMGR pAioMgr)
     LogFlowFunc(("returns rc=%Rrc\n", rc));
 
     return rc;
+}
+
+/**
+ * Checks if a given status code is fatal.
+ * Non fatal errors can be fixed by migrating the endpoint to a
+ * failsafe manager.
+ *
+ * @returns true If the error is fatal and migrating to a failsafe manager doesn't help
+ *          false If the error can be fixed by a migration. (image on NFS disk for example)
+ * @param   rcReq    The status code to check.
+ */
+DECLINLINE(bool) pdmacFileAioMgrNormalRcIsFatal(int rcReq)
+{
+    return    rcReq == VERR_DEV_IO_ERROR
+           || rcReq == VERR_FILE_IO_ERROR
+           || rcReq == VERR_DISK_IO_ERROR
+           || rcReq == VERR_DISK_FULL
+           || rcReq == VERR_FILE_TOO_BIG;
 }
 
 /**
@@ -1355,39 +1373,52 @@ static void pdmacFileAioMgrNormalReqComplete(PPDMACEPFILEMGR pAioMgr, RTFILEAIOR
             if (pTask->cbBounceBuffer)
                 RTMemPageFree(pTask->pvBounceBuffer, pTask->cbBounceBuffer);
 
-            /* Queue the request on the pending list. */
-            pTask->pNext = pEndpoint->AioMgr.pReqsPendingHead;
-            pEndpoint->AioMgr.pReqsPendingHead = pTask;
-
-            /* Create a new failsafe manager if neccessary. */
-            if (!pEndpoint->AioMgr.fMoving)
+            /*
+             * Fatal errors are reported to the guest and non-fatal errors
+             * will cause a migration to the failsafe manager in the hope
+             * that the error disappears.
+             */
+            if (!pdmacFileAioMgrNormalRcIsFatal(rcReq))
             {
-                PPDMACEPFILEMGR pAioMgrFailsafe;
+                /* Queue the request on the pending list. */
+                pTask->pNext = pEndpoint->AioMgr.pReqsPendingHead;
+                pEndpoint->AioMgr.pReqsPendingHead = pTask;
 
-                LogRel(("%s: Request %#p failed with rc=%Rrc, migrating endpoint %s to failsafe manager.\n",
-                        RTThreadGetName(pAioMgr->Thread), pTask, rcReq, pEndpoint->Core.pszUri));
+                /* Create a new failsafe manager if neccessary. */
+                if (!pEndpoint->AioMgr.fMoving)
+                {
+                    PPDMACEPFILEMGR pAioMgrFailsafe;
 
-                pEndpoint->AioMgr.fMoving = true;
+                    LogRel(("%s: Request %#p failed with rc=%Rrc, migrating endpoint %s to failsafe manager.\n",
+                            RTThreadGetName(pAioMgr->Thread), pTask, rcReq, pEndpoint->Core.pszUri));
 
-                rc = pdmacFileAioMgrCreate((PPDMASYNCCOMPLETIONEPCLASSFILE)pEndpoint->Core.pEpClass,
-                                            &pAioMgrFailsafe, PDMACEPFILEMGRTYPE_SIMPLE);
-                AssertRC(rc);
+                    pEndpoint->AioMgr.fMoving = true;
 
-                pEndpoint->AioMgr.pAioMgrDst = pAioMgrFailsafe;
+                    rc = pdmacFileAioMgrCreate((PPDMASYNCCOMPLETIONEPCLASSFILE)pEndpoint->Core.pEpClass,
+                                                &pAioMgrFailsafe, PDMACEPFILEMGRTYPE_SIMPLE);
+                    AssertRC(rc);
 
-                /* Update the flags to open the file with. Disable async I/O and enable the host cache. */
-                pEndpoint->fFlags &= ~(RTFILE_O_ASYNC_IO | RTFILE_O_NO_CACHE);
+                    pEndpoint->AioMgr.pAioMgrDst = pAioMgrFailsafe;
+
+                    /* Update the flags to open the file with. Disable async I/O and enable the host cache. */
+                    pEndpoint->fFlags &= ~(RTFILE_O_ASYNC_IO | RTFILE_O_NO_CACHE);
+                }
+
+                /* If this was the last request for the endpoint migrate it to the new manager. */
+                if (!pEndpoint->AioMgr.cRequestsActive)
+                {
+                    bool fReqsPending = pdmacFileAioMgrNormalRemoveEndpoint(pEndpoint);
+                    Assert(!fReqsPending);
+
+                    rc = pdmacFileAioMgrAddEndpoint(pEndpoint->AioMgr.pAioMgrDst, pEndpoint);
+                    AssertRC(rc);
+                }
             }
-        }
-
-        /* If this was the last request for the endpoint migrate it to the new manager. */
-        if (!pEndpoint->AioMgr.cRequestsActive)
-        {
-            bool fReqsPending = pdmacFileAioMgrNormalRemoveEndpoint(pEndpoint);
-            Assert(!fReqsPending);
-
-            rc = pdmacFileAioMgrAddEndpoint(pEndpoint->AioMgr.pAioMgrDst, pEndpoint);
-            AssertRC(rc);
+            else
+            {
+                pTask->pfnCompleted(pTask, pTask->pvUser, rcReq);
+                pdmacFileTaskFree(pEndpoint, pTask);
+            }
         }
     }
     else
