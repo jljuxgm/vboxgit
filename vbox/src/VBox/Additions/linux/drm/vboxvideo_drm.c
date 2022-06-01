@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drm.c 25591 2009-12-29 19:11:46Z vboxsync $
+/** @file $Id: vboxvideo_drm.c 27248 2010-03-10 12:59:29Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -87,7 +87,13 @@ static struct drm_driver driver = {
 		 .owner = THIS_MODULE,
 		 .open = drm_open,
 		 .release = drm_release,
+                 /* This was changed with Linux 2.6.33 but Fedora backported this
+                  * change to their 2.6.32 kernel. */
+#if defined(DRM_UNLOCKED) || LINUX_VERSION_CODE >= KERNEL_VERSION (2, 6, 33)
+		 .unlocked_ioctl = drm_ioctl,
+#else
 		 .ioctl = drm_ioctl,
+#endif
 		 .mmap = drm_mmap,
 		 .poll = drm_poll,
 		 .fasync = drm_fasync,
