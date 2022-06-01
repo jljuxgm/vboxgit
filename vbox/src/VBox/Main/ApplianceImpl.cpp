@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 24494 2009-11-09 12:12:28Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 24511 2009-11-09 15:27:28Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -4445,8 +4445,12 @@ STDMETHODIMP Machine::Export(IAppliance *aAppliance, IVirtualSystemDescription *
             // the attachment's data
             ComPtr<IMedium> pMedium;
             ComPtr<IStorageController> ctl;
+            Bstr controllerName;
 
-            rc = pHDA->COMGETTER(Controller)(ctl.asOutParam());
+            rc = pHDA->COMGETTER(Controller)(controllerName.asOutParam());
+            if (FAILED(rc)) throw rc;
+
+            rc = GetStorageControllerByName(controllerName, ctl.asOutParam());
             if (FAILED(rc)) throw rc;
 
             StorageBus_T storageBus;
