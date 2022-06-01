@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 26947 2010-03-02 14:11:43Z vboxsync $ */
+/* $Id: PGMPhys.cpp 26949 2010-03-02 14:49:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -871,6 +871,10 @@ VMMR3DECL(int) PGMR3PhysFreeRamPages(PVM pVM, unsigned cPages, RTGCPHYS *paPhysP
     int rc;
 
     /* Currently only used by the VMM device in responds to a balloon request. */
+
+    /* We own the IOM lock here and could cause a deadlock by waiting for another VCPU that is blocking on the IOM lock.
+     * In the SMP case we post a request packet to postpone the job.
+     */
     if (pVM->cCpus > 1)
     {
         unsigned cbPhysPage = cPages * sizeof(paPhysPage[0]);
@@ -879,7 +883,6 @@ VMMR3DECL(int) PGMR3PhysFreeRamPages(PVM pVM, unsigned cPages, RTGCPHYS *paPhysP
 
         memcpy(paPhysPageCopy, paPhysPage, cbPhysPage);
 
-        /* We own the IOM lock here and could cause a deadlock by waiting for another VCPU that is blocking on the IOM lock. */
         rc = VMR3ReqCallNoWait(pVM, VMCPUID_ANY_QUEUE, (PFNRT)pgmR3PhysFreeRamPagesHelper, 3, pVM, cPages, paPhysPageCopy);
         AssertRC(rc);
     }
