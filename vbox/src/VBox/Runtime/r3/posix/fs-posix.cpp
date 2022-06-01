@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 30282 2010-06-17 10:27:45Z vboxsync $ */
+/* $Id: fs-posix.cpp 30283 2010-06-17 11:27:04Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -250,6 +250,8 @@ RTR3DECL(int) RTFsQueryType(const char *pszFsPath, uint32_t *pu32Type)
                 else if (!strcmp("nfs", statfsBuf.f_fstypename))
                     *pu32Type = RTFS_FS_TYPE_NFS;
             }
+            else
+                rc = RTErrConvertFromErrno(errno);
 #endif
         }
         else
