@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 29400 2010-05-12 09:56:36Z vboxsync $ */
+/* $Id: PGMR0.cpp 29402 2010-05-12 10:06:21Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -431,6 +431,8 @@ VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PVMCPU pVCpu, PGMMREGISTERSHAREDM
                 }
             }
         }
+        else
+            rc = VINF_SUCCESS;  /* nothing to do. */
     }
 
 end:
