@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 27930 2010-04-01 11:07:21Z vboxsync $ */
+/* $Id: Performance.cpp 27931 2010-04-01 11:56:23Z vboxsync $ */
 
 /** @file
  *
@@ -147,7 +147,7 @@ int CollectorGuestHAL::enable()
 
         ret = mConsole->COMGETTER(Guest)(mGuest.asOutParam());
         if (ret == S_OK)
-            mGuest->COMSETTER(StatisticsUpdateInterval)(1000 /* 1000 ms */);
+            mGuest->COMSETTER(StatisticsUpdateInterval)(1 /* 1 sec */);
     }
     return ret;
 }
