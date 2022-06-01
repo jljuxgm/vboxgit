@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26345 2010-02-09 03:40:02Z vboxsync $
+# $Id: Makefile.kmk 26346 2010-02-09 03:58:14Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -30,10 +30,12 @@ bin2c_SOURCES = bin2c.c
 biossums_TEMPLATE = VBOXBLDPROG
 biossums_SOURCES = biossums.c
 
-PROGRAMS += scm
-scm_TEMPLATE = VBOXR3EXE
-scm_SOURCES = scm.cpp
-scm_LIBS = \
-	$(LIB_RUNTIME)
+if !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBOX_ONLY_DOCS)
+ PROGRAMS += scm
+ scm_TEMPLATE = VBOXR3EXE
+ scm_SOURCES = scm.cpp
+ scm_LIBS = \
+ 	$(LIB_RUNTIME)
+endif
 
 include $(KBUILD_PATH)/subfooter.kmk
