@@ -1,4 +1,4 @@
-/* $Id: tstStrToVer.cpp 24639 2009-11-13 16:09:36Z vboxsync $ */
+/* $Id: tstStrToVer.cpp 24658 2009-11-14 23:31:36Z vboxsync $ */
 /** @file
  * IPRT Testcase - String To Version Number Conversion.
  */
@@ -28,6 +28,10 @@
  * additional information or have any questions.
  */
 
+
+/*******************************************************************************
+*   Header Files                                                               *
+*******************************************************************************/
 #include <iprt/string.h>
 #include <iprt/stream.h>
 #include <iprt/err.h>
@@ -71,6 +75,8 @@ struct TstU32
 
 int main()
 {
+    /** @todo r=bird: IPRT init is missing. Use the RTTest framework (see any
+     *        tstRT*.cpp file for examples of this). */
     int cErrors = 0;
 
     static const struct TstU32 aTstU32[] =
