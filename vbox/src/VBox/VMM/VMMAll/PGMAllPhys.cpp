@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 24695 2009-11-16 14:44:58Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 24700 2009-11-16 15:22:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -779,6 +779,7 @@ int pgmPhysPageMapReadOnly(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void const 
  */
 int pgmPhysPageLoadIntoTlb(PPGM pPGM, RTGCPHYS GCPhys)
 {
+    Assert(PGMIsLocked(pVM));
     STAM_COUNTER_INC(&pPGM->CTX_MID_Z(Stat,PageMapTlbMisses));
 
     /*
@@ -840,6 +841,7 @@ int pgmPhysPageLoadIntoTlb(PPGM pPGM, RTGCPHYS GCPhys)
  */
 int pgmPhysPageLoadIntoTlbWithPage(PPGM pPGM, PPGMPAGE pPage, RTGCPHYS GCPhys)
 {
+    Assert(PGMIsLocked(pVM));
     STAM_COUNTER_INC(&pPGM->CTX_MID_Z(Stat,PageMapTlbMisses));
 
     /*
