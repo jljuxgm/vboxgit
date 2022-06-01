@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 26206 2010-02-03 15:47:06Z vboxsync $ */
+/* $Id: DrvVD.cpp 26289 2010-02-05 14:04:05Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1240,9 +1240,9 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
             break;
         }
 
-        PCFGMNODE pCfg = CFGMR3GetChild(pCurNode, "VDConfig");
+        PCFGMNODE pCfgVDConfig = CFGMR3GetChild(pCurNode, "VDConfig");
         rc = VDInterfaceAdd(&pImage->VDIConfig, "DrvVD_Config", VDINTERFACETYPE_CONFIG,
-                            &pThis->VDIConfigCallbacks, pCfg, &pImage->pVDIfsImage);
+                            &pThis->VDIConfigCallbacks, pCfgVDConfig, &pImage->pVDIfsImage);
         AssertRC(rc);
 
         /*

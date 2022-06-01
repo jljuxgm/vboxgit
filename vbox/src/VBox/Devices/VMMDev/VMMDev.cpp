@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: VMMDev.cpp 26289 2010-02-05 14:04:05Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -400,8 +400,9 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
      * The caller has passed the guest context physical address
      * of the request structure. Copy the request packet.
      */
-    VMMDevRequestHeader requestHeader = {0};
     VMMDevRequestHeader *pRequestHeader = NULL;
+    VMMDevRequestHeader requestHeader;
+    RT_ZERO(requestHeader);
 
     PDMDevHlpPhysRead(pDevIns, (RTGCPHYS)u32, &requestHeader, sizeof(requestHeader));
 
