@@ -1,4 +1,4 @@
-/* $Id: EMHwaccm.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: EMHwaccm.cpp 26146 2010-02-02 13:51:26Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -495,6 +495,13 @@ int emR3HwAccExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
     for (;;)
     {
         STAM_PROFILE_ADV_START(&pVCpu->em.s.StatHwAccEntry, a);
+
+        /* Check if a forced reschedule is pending. */
+        if (HWACCMR3IsRescheduleRequired(pVM, pCtx))
+        {
+            rc = VINF_EM_RESCHEDULE;
+            break;
+        }
 
         /*
          * Process high priority pre-execution raw-mode FFs.
