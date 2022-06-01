@@ -1,4 +1,4 @@
-/* $Id: SSMInternal.h 23709 2009-10-12 19:11:16Z vboxsync $ */
+/* $Id: SSMInternal.h 24804 2009-11-19 18:15:25Z vboxsync $ */
 /** @file
  * SSM - Internal header file.
  */
@@ -263,17 +263,21 @@ AssertCompile2MemberOffsets(SSMUNIT, u.Common.pvKey,       u.External.pvUser);
  */
 typedef struct SSM
 {
+    /** Critical section for serializing cancellation (pSSM). */
+    RTCRITSECT              CancelCritSect;
+    /** The handle of the current save or load operation.
+     * This is used by SSMR3Cancel.  */
+    PSSMHANDLE volatile     pSSM;
+
     /** FIFO of data entity descriptors. */
     R3PTRTYPE(PSSMUNIT)     pHead;
     /** The number of register units. */
     uint32_t                cUnits;
     /** For lazy init. */
     bool                    fInitialized;
-    /** Critical section for serializing cancellation. */
-    RTCRITSECT              CancelCritSect;
-    /** The handle of the current save or load operation.
-     * This is used by SSMR3Cancel.  */
-    PSSMHANDLE volatile     pSSM;
+    /** Current pass (for STAM). */
+    uint32_t                uPass;
+    uint32_t                u32Alignment;
 } SSM;
 /** Pointer to SSM VM instance data. */
 typedef SSM *PSSM;
