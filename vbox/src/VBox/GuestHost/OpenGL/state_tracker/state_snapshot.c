@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 23694 2009-10-12 13:46:26Z vboxsync $ */
+/* $Id: state_snapshot.c 24570 2009-11-11 09:02:21Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -690,7 +690,7 @@ static void crStateSaveGLSLProgramCB(unsigned long key, void *data1, void *data2
     int32_t rc;
     uint32_t ui32;
     GLint maxUniformLen, activeUniforms=0, uniformsCount=0, i, j;
-    GLchar *name;
+    GLchar *name = NULL;
     GLenum type;
     GLint size, location;
 
@@ -1649,7 +1649,9 @@ int32_t crStateLoadContext(CRContext *pContext, PSSMHANDLE pSSM)
             pProgram->activeState.pAttribs[k].name = crStateLoadString(pSSM);
         }
 
-        rc = SSMR3GetS32(pSSM, &pProgram->cUniforms);
+        int32_t cUniforms;
+        rc = SSMR3GetS32(pSSM, &cUniforms);
+        pProgram->cUniforms = cUniforms;
         AssertRCReturn(rc, rc);
 
         if (pProgram->cUniforms)
