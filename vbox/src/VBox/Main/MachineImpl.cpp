@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 24663 2009-11-14 23:55:15Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24685 2009-11-16 09:59:58Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -9242,7 +9242,7 @@ STDMETHODIMP SessionMachine::PushGuestProperties(ComSafeArrayIn(IN_BSTR, aNames)
      * This is copied from registeredInit(), and may or may not be the right
      * way to handle this.
      */
-    Assert(!mData->mRegistered);
+    Assert(mData->mRegistered);
     mData->mRegistered = FALSE;
 
     HRESULT rc = checkStateDependency(MutableStateDep);
