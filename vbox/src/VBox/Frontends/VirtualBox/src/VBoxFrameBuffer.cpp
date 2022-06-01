@@ -1,4 +1,4 @@
-/* $Id: VBoxFrameBuffer.cpp 27682 2010-03-24 18:37:48Z vboxsync $ */
+/* $Id: VBoxFrameBuffer.cpp 28085 2010-04-08 11:21:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -318,7 +318,7 @@ STDMETHODIMP VBoxQImageFrameBuffer::NotifyUpdate (ULONG aX, ULONG aY,
 
 void VBoxQImageFrameBuffer::paintEvent (QPaintEvent *pe)
 {
-    const QRect &r = pe->rect().intersected (mView->viewport()->rect());
+    const QRect &r = pe->rect().intersected (QRect (0, 0, mWdt, mHgt));
 
     /* Some outdated rectangle during processing VBoxResizeEvent */
     if (r.isEmpty())

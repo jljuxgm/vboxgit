@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 27107 2010-03-05 15:50:00Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 28085 2010-04-08 11:21:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -67,7 +67,7 @@ STDMETHODIMP UIFrameBufferQImage::NotifyUpdate(ULONG uX, ULONG uY, ULONG uW, ULO
 
 void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
 {
-    const QRect &r = pEvent->rect().intersected(m_pMachineView->viewport()->rect());
+    const QRect &r = pEvent->rect().intersected(QRect(0, 0, m_width, m_height));
 
     /* Some outdated rectangle during processing UIResizeEvent */
     if (r.isEmpty())
