@@ -1,4 +1,4 @@
-/* $Id: getoptargv.cpp 27386 2010-03-15 22:39:19Z vboxsync $ */
+/* $Id: getoptargv.cpp 27968 2010-04-02 20:36:35Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing, Argument Vector.
  */
@@ -389,7 +389,6 @@ DECLINLINE(bool) rtGetOptArgvMsCrtIsSlashQuote(const char *psz)
 RTDECL(int) RTGetOptArgvToString(char **ppszCmdLine, const char * const *papszArgv, uint32_t fFlags)
 {
     AssertReturn(!(fFlags & ~RTGETOPTARGV_CNV_QUOTE_MASK), VERR_INVALID_PARAMETER);
-    AssertReturn((fFlags & RTGETOPTARGV_CNV_QUOTE_MASK) == RTGETOPTARGV_CNV_QUOTE_MS_CRT, VERR_NOT_IMPLEMENTED);
 
 #define PUT_CH(ch) \
         if (RT_UNLIKELY(off + 1 >= cbCmdLineAlloc)) { \
@@ -461,9 +460,26 @@ RTDECL(int) RTGetOptArgvToString(char **ppszCmdLine, const char * const *papszAr
             }
             PUT_CH('"');
         }
-        else /* bourne shell */
+        else
         {
-            AssertFailed(/*later*/);
+            /*
+             * Bourne Shell quoting.  Quote the whole thing in single quotes
+             * and use double quotes for any single quote chars.
+             */
+            PUT_CH('\'');
+            char ch;
+            while ((ch = *pszArg++))
+            {
+                if (ch == '\'')
+                {
+                    PUT_SZ("'\"'\"'");
+                }
+                else
+                {
+                    PUT_CH(ch);
+                }
+            }
+            PUT_CH('\'');
         }
     }
 
