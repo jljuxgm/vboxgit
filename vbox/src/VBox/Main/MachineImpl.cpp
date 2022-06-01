@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 27797 2010-03-29 16:09:43Z vboxsync $ */
+/* $Id: MachineImpl.cpp 27798 2010-03-29 16:44:08Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -4719,7 +4719,9 @@ STDMETHODIMP Machine::ReadLog(ULONG /*aIdx*/, ULONG64 /*aOffset*/, ULONG64 /*aSi
 {
     CheckComArgExpr(aData, !ComSafeArrayOutIsNull(aData));
 
+#ifdef VBOX_WITH_XPCOM
     NOREF(aDataSize);
+#endif
 
     ReturnComNotImplemented();
 }
