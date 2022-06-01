@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-solaris.c 28551 2010-04-21 09:25:35Z vboxsync $ */
+/* $Id: semmutex-r0drv-solaris.c 28633 2010-04-23 09:16:35Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Solaris.
  */
@@ -219,14 +219,6 @@ static int rtSemMutexSolarisRequestSleep(PRTSEMMUTEXINTERNAL pThis, RTMSINTERVAL
              * We will cleanup if we're the last waiter.
              */
             rc = VERR_SEM_DESTROYED;
-            if (!ASMAtomicDecU32(&pThis->cRefs))
-            {
-                mutex_exit(&pThis->Mtx);
-                cv_destroy(&pThis->Cnd);
-                mutex_destroy(&pThis->Mtx);
-                RTMemFree(pThis);
-                return rc;
-            }
         }
     }
     else if (rc == -1)
@@ -242,6 +234,16 @@ static int rtSemMutexSolarisRequestSleep(PRTSEMMUTEXINTERNAL pThis, RTMSINTERVAL
          * Condition may not have been met, returned due to pending signal.
          */
         rc = VERR_INTERRUPTED;
+    }
+
+    if (!ASMAtomicDecU32(&pThis->cRefs))
+    {
+        Assert(RT_FAILURE_NP(rc));
+        mutex_exit(&pThis->Mtx);
+        cv_destroy(&pThis->Cnd);
+        mutex_destroy(&pThis->Mtx);
+        RTMemFree(pThis);
+        return rc;
     }
 
     return rc;
