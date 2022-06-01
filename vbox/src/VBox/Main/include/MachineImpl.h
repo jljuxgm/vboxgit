@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 25834 2010-01-14 16:21:05Z vboxsync $ */
+/* $Id: MachineImpl.h 25842 2010-01-14 18:50:03Z vboxsync $ */
 
 /** @file
  *
@@ -645,6 +645,15 @@ public:
     virtual VBoxClsID getClassID() const
     {
         return clsidMachine;
+    }
+
+    /**
+     * Override of the default locking class to be used for validating lock
+     * order with the standard member lock handle.
+     */
+    virtual VBoxLockingClass getLockingClass() const
+    {
+        return LOCKCLASS_MACHINEOBJECT;
     }
 
     /// @todo (dmik) add lock and make non-inlined after revising classes
