@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 28119 2010-04-09 07:54:19Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 28251 2010-04-13 14:05:25Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -189,6 +189,9 @@ extern VBOXSERVICE g_CpuHotPlug;
 #ifdef VBOXSERVICE_MANAGEMENT
 extern VBOXSERVICE g_MemBalloon;
 extern VBOXSERVICE g_VMStatistics;
+#endif
+#ifdef VBOX_WITH_PAGE_SHARING
+extern VBOXSERVICE g_PageSharing;
 #endif
 
 #ifdef RT_OS_WINDOWS
