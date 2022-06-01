@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: pure_test.sh 25851 2010-01-15 10:49:36Z vboxsync $
+# $Id: pure_test.sh 25884 2010-01-18 11:39:41Z vboxsync $
 ## @file
 # pure_test.sh - test the effect of __attribute__((pure)) on a set of
 #                functions.
@@ -23,7 +23,6 @@
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
 # Clara, CA 95054 USA or visit http://www.sun.com if you need
 # additional information or have any questions.
-#
 #
 
 set -e
