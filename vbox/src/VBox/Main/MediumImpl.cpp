@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 29224 2010-05-07 15:49:10Z vboxsync $ */
+/* $Id: MediumImpl.cpp 29311 2010-05-10 20:06:12Z vboxsync $ */
 
 /** @file
  *
@@ -6091,8 +6091,9 @@ HRESULT Medium::taskResetHandler(Medium::ResetTask &task)
 
                 AutoReadLock alock(pMedium COMMA_LOCKVAL_SRC_POS);
 
-                /* sanity check */
-                Assert(pMedium->m->state == MediumState_LockedRead);
+                /* sanity check, "this" is checked above */
+                Assert(   pMedium == this
+                       || pMedium->m->state == MediumState_LockedRead);
 
                 /* Open all images in appropriate mode. */
                 vrc = VDOpen(hdd,
