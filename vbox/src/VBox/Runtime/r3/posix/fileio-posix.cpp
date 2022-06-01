@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 25642 2010-01-05 08:19:10Z vboxsync $ */
+/* $Id: fileio-posix.cpp 25953 2010-01-21 10:20:58Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -586,9 +586,9 @@ RTR3DECL(int)  RTFileFlush(RTFILE File)
 }
 
 
-RTR3DECL(int) RTFileIoCtl(RTFILE File, int iRequest, void *pvData, unsigned cbData, int *piRet)
+RTR3DECL(int) RTFileIoCtl(RTFILE File, unsigned long ulRequest, void *pvData, unsigned cbData, int *piRet)
 {
-    int rc = ioctl((int)File, iRequest, pvData);
+    int rc = ioctl((int)File, ulRequest, pvData);
     if (piRet)
         *piRet = rc;
     return rc >= 0 ? VINF_SUCCESS : RTErrConvertFromErrno(errno);
