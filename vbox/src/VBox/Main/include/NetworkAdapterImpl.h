@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 26167 2010-02-02 19:59:09Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 26171 2010-02-02 20:37:36Z vboxsync $ */
 
 /** @file
  *
@@ -49,21 +49,6 @@ public:
                  mHostInterface("") /* cannot be null */,
                  mNATNetwork("") /* cannot be null */
         {}
-
-        bool operator== (const Data &that) const
-        {
-            return this == &that ||
-                   (mSlot == that.mSlot &&
-                    mEnabled == that.mEnabled &&
-                    mMACAddress == that.mMACAddress &&
-                    mAttachmentType == that.mAttachmentType &&
-                    mCableConnected == that.mCableConnected &&
-                    mLineSpeed == that.mLineSpeed &&
-                    mTraceEnabled == that.mTraceEnabled &&
-                    mHostInterface == that.mHostInterface &&
-                    mInternalNetwork == that.mInternalNetwork &&
-                    mNATNetwork == that.mNATNetwork);
-        }
 
         NetworkAdapterType_T mAdapterType;
         ULONG mSlot;
@@ -138,7 +123,8 @@ public:
     HRESULT loadSettings(const settings::NetworkAdapter &data);
     HRESULT saveSettings(settings::NetworkAdapter &data);
 
-    bool rollback();
+    bool isModified();
+    void rollback();
     void commit();
     void copyFrom (NetworkAdapter *aThat);
     void applyDefaults (GuestOSType *aOsType);
