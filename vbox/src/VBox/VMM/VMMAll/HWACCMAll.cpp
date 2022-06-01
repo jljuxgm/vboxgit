@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 23553 2009-10-05 11:38:47Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 24832 2009-11-20 15:37:23Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -167,6 +167,8 @@ VMMDECL(int) HWACCMInvalidatePageOnAllVCpus(PVM pVM, RTGCPTR GCPtr)
 {
     VMCPUID idCurCpu = VMMGetCpuId(pVM);
 
+    STAM_COUNTER_INC(&pVM->aCpus[idCurCpu].hwaccm.s.StatFlushPage);
+
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
         PVMCPU pVCpu = &pVM->aCpus[idCpu];
@@ -211,6 +213,8 @@ VMMDECL(int) HWACCMFlushTLBOnAllVCpus(PVM pVM)
         return HWACCMFlushTLB(&pVM->aCpus[0]);
 
     VMCPUID idThisCpu = VMMGetCpuId(pVM);
+
+    STAM_COUNTER_INC(&pVM->aCpus[idThisCpu].hwaccm.s.StatFlushTLB);
 
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
