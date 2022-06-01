@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27345 2010-03-14 18:33:46Z vboxsync $
+# $Id: Makefile.kmk 27473 2010-03-18 10:51:28Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1021,7 +1021,8 @@ VBoxRT_LIBS.solaris            = \
 	kstat smbios
 VBoxRT_LIBS.win                = \
 	$(PATH_SDK_W2K3DDK_LIB)/vccomsup.lib \
-	$(PATH_SDK_W2K3DDK_LIB)/wbemuuid.lib
+	$(PATH_SDK_W2K3DDK_LIB)/wbemuuid.lib \
+	$(PATH_SDK_W2K3DDK_LIB)/Userenv.lib
 VBoxRT_LDFLAGS.darwin          = -framework IOKit -framework CoreFoundation -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxRT.dylib
 ifdef VBOX_USE_VCC80
 VBoxRT_LDFLAGS.win             = /MANIFEST
