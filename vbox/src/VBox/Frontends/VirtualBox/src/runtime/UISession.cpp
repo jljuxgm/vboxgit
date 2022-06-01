@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 29219 2010-05-07 14:58:50Z vboxsync $ */
+/* $Id: UISession.cpp 29455 2010-05-14 09:19:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -797,8 +797,10 @@ QMenuBar* UISession::newMenuBar(UIMainMenuType fOptions /* = UIMainMenuType_ALL 
 
 bool UISession::setPause(bool fOn)
 {
-    if (isPaused() == fOn)
-        return true;
+    /* Commenting it out as isPaused() could reflect
+     * quite obsolete state due to synchronization: */
+    //if (isPaused() == fOn)
+    //    return true;
 
     CConsole console = session().GetConsole();
 
