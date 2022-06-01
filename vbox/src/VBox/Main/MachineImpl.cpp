@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
+/* $Id: MachineImpl.cpp 26193 2010-02-03 14:18:45Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3338,8 +3338,9 @@ STDMETHODIMP Machine::GetSnapshot (IN_BSTR aId, ISnapshot **aSnapshot)
 
     Guid uuid(aId);
     /* Todo: fix this properly by perhaps introducing an isValid method for the Guid class */
-    if (    aId
-        &&  uuid.isEmpty())
+    if (    (aId)
+        &&  (*aId != '\0')      // an empty Bstr means "get root snapshot", so don't fail on that
+        &&  (uuid.isEmpty()))
     {
         RTUUID uuidTemp;
         /* Either it's a null UUID or the conversion failed. (null uuid has a special meaning in findSnapshot) */
