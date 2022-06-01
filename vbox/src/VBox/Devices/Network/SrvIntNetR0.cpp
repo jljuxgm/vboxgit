@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 28831 2010-04-27 14:13:48Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 28871 2010-04-28 14:52:56Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -5209,7 +5209,7 @@ INTNETR0DECL(int) IntNetR0Open(PSUPDRVSESSION pSession, const char *pszNetwork,
 
 
 /**
- * VMMR0 request wrapper for GMMR0MapUnmapChunk.
+ * VMMR0 request wrapper for IntNetR0Open.
  *
  * @returns see GMMR0MapUnmapChunk.
  * @param   pSession        The caller's session.
