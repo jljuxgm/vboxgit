@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 27730 2010-03-26 11:13:56Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 27792 2010-03-29 13:08:44Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -246,7 +246,7 @@ int handleCreateVM(HandlerArg *a)
 
         if (settingsFile.isEmpty())
             CHECK_ERROR_BREAK(a->virtualBox,
-                CreateMachine(name, osTypeId, baseFolder, Guid(id).toUtf16(), machine.asOutParam()));
+                CreateMachine(name, osTypeId, baseFolder, Guid(id).toUtf16(), FALSE, machine.asOutParam()));
         else
             CHECK_ERROR_BREAK(a->virtualBox,
                 CreateLegacyMachine(name, osTypeId, settingsFile, Guid(id).toUtf16(), machine.asOutParam()));

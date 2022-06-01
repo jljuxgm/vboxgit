@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 27730 2010-03-26 11:13:56Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 27792 2010-03-29 13:08:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -635,7 +635,7 @@ bool UINewVMWzdPage5::constructMachine()
     /* Create a machine with the default settings file location */
     if (m_Machine.isNull())
     {
-        m_Machine = vbox.CreateMachine(field("name").toString(), typeId, QString::null, QString::null);
+        m_Machine = vbox.CreateMachine(field("name").toString(), typeId, QString::null, QString::null, false);
         if (!vbox.isOk())
         {
             vboxProblem().cannotCreateMachine(vbox, this);
