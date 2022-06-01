@@ -1,4 +1,4 @@
-/* $Id: misc.c 28494 2010-04-19 18:49:19Z vboxsync $ */
+/* $Id: misc.c 28501 2010-04-20 03:38:41Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -397,7 +397,7 @@ struct mbuf *slirp_ext_m_get(PNATState pData, size_t cbMin, void **ppvBuf, size_
 
 void slirp_ext_m_free(PNATState pData, struct mbuf *m)
 {
-    m_free(pData, m);
+    m_freem(pData, m);
 }
 
 static void zone_destroy(uma_zone_t zone)
