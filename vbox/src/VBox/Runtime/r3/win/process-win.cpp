@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 26824 2010-02-26 10:36:08Z vboxsync $ */
+/* $Id: process-win.cpp 27017 2010-03-04 12:35:49Z vboxsync $ */
 /** @file
  * IPRT - Process, Win32.
  */
@@ -225,6 +225,13 @@ RTR3DECL(int) RTProcWait(RTPROCESS Process, unsigned fFlags, PRTPROCSTATUS pProc
     }
     DWORD dwErr = GetLastError();
     return RTErrConvertFromWin32(dwErr);
+}
+
+
+RTR3DECL(int) RTProcWaitNoResume(RTPROCESS Process, unsigned fFlags, PRTPROCSTATUS pProcStatus)
+{
+    /** @todo this isn't quite right. */
+    return RTProcWait(Process, fFlags, pProcStatus);
 }
 
 
