@@ -1,4 +1,4 @@
-/* $Id: pathhost-posix.cpp 28915 2010-04-29 18:12:35Z vboxsync $ */
+/* $Id: pathhost-posix.cpp 28916 2010-04-29 18:13:54Z vboxsync $ */
 /** @file
  * IPRT - Path Convertions, POSIX.
  */
@@ -249,7 +249,7 @@ int rtPathFromNativeCopy(char *pszPath, size_t cbPath, const char *pszNativePath
     if (RT_SUCCESS(rc))
     {
         if (g_fPassthruUtf8 || !*pszNativePath)
-            rc = RTStrCopyEx(pszPath, cbPath, pszNativePath, RTSTR_MAX);
+            rc = RTStrCopy(pszPath, cbPath, pszNativePath);
         else if (cbPath)
             rc = rtStrConvert(pszNativePath, strlen(pszNativePath), g_szFsCodeset,
                               &pszPath, cbPath, "UTF-8",
