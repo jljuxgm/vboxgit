@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 29602 2010-05-18 09:00:39Z vboxsync $ */
+/* $Id: process-posix.cpp 29624 2010-05-18 12:36:13Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -38,7 +38,7 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <signal.h>
-#if defined(RT_OS_LINUX)
+#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS)
 # include <crypt.h>
 # include <pwd.h>
 # include <shadow.h>
@@ -100,6 +100,29 @@ static int rtCheckCredentials(const char *pszUser, const char *pszPasswd, gid_t 
 
     *gid = pw->pw_gid;
     *uid = pw->pw_uid;
+    return VINF_SUCCESS;
+#elif defined(RT_OS_SOLARIS)
+    struct passwd *ppw, pw;
+    char szBuf[1024];
+
+    if (getpwnam_r(pszUser, &pw, szBuf, sizeof(szBuf), &ppw) != 0 || ppw == NULL)
+        return VERR_PERMISSION_DENIED;
+
+    if (!pszPasswd)
+        pszPasswd = "";
+
+    struct spwd spwd;
+    char szPwdBuf[1024];
+    /* works only if /etc/shadow is accessible */
+    if (getspnam_r(pszUser, &spwd, szPwdBuf, sizeof(szPwdBuf)) != NULL)
+        ppw->pw_passwd = spwd.sp_pwdp;
+
+    char *pszEncPasswd = crypt(pszPasswd, ppw->pw_passwd);
+    if (strcmp(pszEncPasswd, ppw->pw_passwd))
+        return VERR_PERMISSION_DENIED;
+
+    *gid = ppw->pw_gid;
+    *uid = ppw->pw_uid;
     return VINF_SUCCESS;
 #else
     return VERR_PERMISSION_DENIED;
