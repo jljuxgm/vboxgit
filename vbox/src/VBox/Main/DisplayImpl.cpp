@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 28447 2010-04-19 08:45:18Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 28468 2010-04-19 14:29:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2498,7 +2498,7 @@ STDMETHODIMP Display::TakeScreenShotToArray (ULONG aScreenId, ULONG width, ULONG
     LogFlowFunc (("width=%d, height=%d\n",
                   width, height));
 
-    CheckComArgSafeArrayNotNull(aScreenData);
+    CheckComArgOutSafeArrayPointerValid(aScreenData);
     CheckComArgExpr(width, width != 0);
     CheckComArgExpr(height, height != 0);
 
