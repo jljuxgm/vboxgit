@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29064 2010-05-05 11:41:08Z vboxsync $
+# $Id: Makefile.kmk 29065 2010-05-05 11:45:14Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -17,6 +17,15 @@
 
 SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
+
+# Make sure our Config.kmk is included.
+ifndef VBOX_PATH_XPCOM_SRC
+ include $(PATH_SUB_CURRENT)/Config.kmk
+endif
+
+#
+# Globals
+#
 
 # File for filtering out C symbols from the XPCOM library. Used to avoid
 # symbol namespace pollution, causing trouble with system libraries.
