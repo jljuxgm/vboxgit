@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
+/* $Id: MachineImpl.cpp 25151 2009-12-02 15:23:18Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -7284,8 +7284,7 @@ HRESULT Machine::createImplicitDiffs(const Bstr &aFolder,
 
     HRESULT rc = S_OK;
 
-    typedef std::list< ComObjPtr<Medium> > LockedMedia;
-    LockedMedia lockedMedia;
+    MediaList lockedMedia;
 
     try
     {
@@ -7416,7 +7415,7 @@ HRESULT Machine::createImplicitDiffs(const Bstr &aFolder,
     {
         ErrorInfoKeeper eik;
 
-        for (LockedMedia::const_iterator it = lockedMedia.begin();
+        for (MediaList::const_iterator it = lockedMedia.begin();
              it != lockedMedia.end();
              ++it)
         {

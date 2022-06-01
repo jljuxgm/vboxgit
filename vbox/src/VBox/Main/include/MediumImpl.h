@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 24989 2009-11-26 11:31:46Z vboxsync $ */
+/* $Id: MediumImpl.h 25151 2009-12-02 15:23:18Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -37,6 +37,9 @@ namespace settings
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+
+class Medium;
+typedef std::list< ComObjPtr<Medium> > MediaList;
 
 /**
  * Medium component class for all media types.

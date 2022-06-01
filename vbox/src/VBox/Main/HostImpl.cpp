@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
+/* $Id: HostImpl.cpp 25151 2009-12-02 15:23:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -389,7 +389,7 @@ STDMETHODIMP Host::COMGETTER(DVDDrives)(ComSafeArrayOut(IMedium *, aDrives))
 
     AutoWriteLock alock(this);
 
-    std::list< ComObjPtr<Medium> > list;
+    MediaList list;
     HRESULT rc = S_OK;
     try
     {
@@ -513,7 +513,7 @@ STDMETHODIMP Host::COMGETTER(FloppyDrives)(ComSafeArrayOut(IMedium *, aDrives))
 
     AutoWriteLock alock(this);
 
-    std::list<ComObjPtr<Medium> > list;
+    MediaList list;
     HRESULT rc = S_OK;
 
     try
