@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletionStress.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletionStress.cpp 26240 2010-02-04 15:35:02Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Stresstest.
  *
@@ -157,6 +157,8 @@ uint8_t *g_pbTestPattern = NULL;
 size_t   g_cbTestPattern;
 /** Array holding test files. */
 PDMACTESTFILE g_aTestFiles[NR_OPEN_ENDPOINTS];
+
+static void tstPDMACStressTestFileTaskCompleted(PVM pVM, void *pvUser, void *pvUser2);
 
 static void tstPDMACStressTestFileVerify(PPDMACTESTFILE pTestFile, PPDMACTESTFILETASK pTestTask)
 {
@@ -349,6 +351,9 @@ static int tstPDMACTestFileThread(PVM pVM, PPDMTHREAD pThread)
                     rc = tstPDMACStressTestFileRead(pTestFile, pTask);
 
                 AssertRC(rc);
+
+                if (rc != VINF_AIO_TASK_PENDING)
+                    tstPDMACStressTestFileTaskCompleted(pVM, pTask, pTestFile);
 
                 cTasksStarted++;
             }
