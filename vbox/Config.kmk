@@ -1,4 +1,4 @@
-# $Id: Config.kmk 26218 2010-02-03 21:24:13Z vboxsync $
+# $Id: Config.kmk 26219 2010-02-03 21:28:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -477,8 +477,13 @@ VBOX_X11_SEAMLESS_GUEST = 1
 VBOX_WITH_ALL_DOXYGEN_TARGETS = 1
 # Set this to skip installing the redistributable compiler runtime.
 #VBOX_WITHOUT_COMPILER_REDIST = 1
-## For treating compiler and linker warnings as errors where possible.
-if1of ($(USERNAME), bird)
+## @}
+
+
+## @name Compiler and linker config
+## @{
+# For treating compiler and linker warnings as errors where possible.
+if1of ($(KBUILD_TARGET), darwin) # more to come here later.
  VBOX_WITH_WARNINGS_AS_ERRORS = 1
 endif
 ## @}
@@ -4009,7 +4014,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 26218 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 26219 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
