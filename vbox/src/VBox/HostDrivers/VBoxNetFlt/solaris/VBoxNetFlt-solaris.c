@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 28868 2010-04-28 14:01:56Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 28869 2010-04-28 14:16:38Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -3293,7 +3293,7 @@ static int vboxNetFltSolarisRecv(PVBOXNETFLTINS pThis, vboxnetflt_stream_t *pStr
                 LogFlow((DEVICE_NAME ":Recv VLAN Pcp=%u Cfi=%u Id=%u\n", VLAN_PRI(RT_BE2H_U16(pVlanHdr->Data)),
                             VLAN_CFI(RT_BE2H_U16(pVlanHdr->Data)), VLAN_ID(RT_BE2H_U16(pVlanHdr->Data))));
                 if (   VLAN_PRI(RT_BE2H_U16(pVlanHdr->Data)) > 0
-                    && VLAN_ID(RT_BE2H_U16(pVlanHdr->Data) == 0)
+                    && VLAN_ID(RT_BE2H_U16(pVlanHdr->Data) == 0))
                 {
                     /*
                      * Create new Ethernet header with stripped VLAN tag.
