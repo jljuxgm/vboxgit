@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 27057 2010-03-04 19:45:10Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 27075 2010-03-05 12:05:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -53,7 +53,6 @@ UIMachineViewFullscreen::UIMachineViewFullscreen(  UIMachineWindow *pMachineWind
                     , bAccelerate2DVideo
 #endif
                     , uMonitor)
-    , m_fIsInitialResizeEventProcessed(false)
     , m_bIsGuestAutoresizeEnabled(pMachineWindow->machineLogic()->actionsPool()->action(UIActionIndex_Toggle_GuestAutoresize)->isChecked())
     , m_fShouldWeDoResize(false)
 {
@@ -253,12 +252,10 @@ bool UIMachineViewFullscreen::eventFilter(QObject *pWatched, QEvent *pEvent)
         {
             case QEvent::Resize:
             {
-                /* Ignore initial resize event: */
-                if (!m_fIsInitialResizeEventProcessed)
-                {
-                    m_fIsInitialResizeEventProcessed = true;
+                /* Send guest-resize hint only if top window resizing to required dimension: */
+                QResizeEvent *pResizeEvent = static_cast<QResizeEvent*>(pEvent);
+                if (pResizeEvent->size() != availableGeometry().size())
                     break;
-                }
 
                 /* Set the "guest needs to resize" hint.
                  * This hint is acted upon when (and only when) the autoresize property is "true": */
