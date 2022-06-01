@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 25479 2009-12-18 13:14:52Z vboxsync $ */
+/* $Id: VBoxService.cpp 25975 2010-01-22 15:29:12Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -89,6 +89,9 @@ static struct
 #endif
 #ifdef VBOXSERVICE_EXEC
     { &g_Exec,      NIL_RTTHREAD, false, false, false, true },
+#endif
+#ifdef VBOXSERVICE_CPUHOTPLUG /* Disabled by default. Use --enable-cpuhotplug to enable */
+    { &g_CpuHotplug, NIL_RTTHREAD, false, false, false, false },
 #endif
 };
 
