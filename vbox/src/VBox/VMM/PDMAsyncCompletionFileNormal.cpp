@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 23959 2009-10-22 08:38:31Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 24355 2009-11-04 20:30:10Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -118,7 +118,10 @@ static void pdmacFileAioMgrNormalEndpointsSortByLoad(PPDMACEPFILEMGR pAioMgr)
 
         pEpCurr->AioMgr.pEndpointNext = pNext;
         pEpCurr->AioMgr.pEndpointPrev = pEpPrev;
-        pNext->AioMgr.pEndpointPrev = pEpCurr;
+
+        if (pNext)
+            pNext->AioMgr.pEndpointPrev = pEpCurr;
+
         if (pEpPrev)
             pEpPrev->AioMgr.pEndpointNext = pEpCurr;
         else
