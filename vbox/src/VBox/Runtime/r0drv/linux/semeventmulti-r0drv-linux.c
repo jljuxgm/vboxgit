@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-linux.c 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-linux.c 24956 2009-11-25 14:26:50Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -179,6 +179,8 @@ static int rtSemEventMultiWait(PRTSEMEVENTMULTIINTERNAL pThis, unsigned cMillies
 
         /* wait */
         lTimeout = schedule_timeout(lTimeout);
+
+        after_wait(&Wait);
 
         /* Check if someone destroyed the semaphore while we were waiting. */
         if (pThis->u32Magic != RTSEMEVENTMULTI_MAGIC)

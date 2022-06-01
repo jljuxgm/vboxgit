@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 24902 2009-11-24 14:00:00Z vboxsync $ */
+/* $Id: the-linux-kernel.h 24956 2009-11-25 14:26:50Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -124,7 +124,7 @@
 #endif
 
 /*
- * 2.4 compatibility wrappers
+ * 2.4 / early 2.6 compatibility wrappers
  */
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 7)
 
@@ -162,22 +162,35 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
 
 # endif  /* < 2.4.29 || >= 2.6.0 */
 
+#endif /* < 2.6.7 */
+
+/*
+ * 2.4 compatibility wrappers
+ */
+#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 0)
+
 # define prepare_to_wait(q, wait, state) \
     do { \
-        set_current_state(state); \
         add_wait_queue(q, wait); \
+        set_current_state(state); \
+    } while (0)
+
+# define after_wait(wait) \
+    do { \
+        list_del_init(&(wait)->task_list); \
     } while (0)
 
 # define finish_wait(q, wait) \
     do { \
-        unsigned long flags; \
         set_current_state(TASK_RUNNING); \
-        spin_lock_irqsave(&(q)->lock, flags); \
-        list_del_init(&(wait)->task_list); \
-        spin_unlock_irqrestore(&(q)->lock, flags); \
+        remove_wait_queue(q, wait); \
     } while (0)
 
-#endif /* < 2.6.7 */
+#else /* >= 2.6.0 */
+
+# define after_wait(wait)       do {} while (0)
+
+#endif /* >= 2.6.0 */
 
 /** @def TICK_NSEC
  * The time between ticks in nsec */

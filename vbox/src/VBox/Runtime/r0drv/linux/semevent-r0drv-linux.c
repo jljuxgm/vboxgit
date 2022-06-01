@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-linux.c 21538 2009-07-13 14:50:07Z vboxsync $ */
+/* $Id: semevent-r0drv-linux.c 24956 2009-11-25 14:26:50Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -167,6 +167,8 @@ static int rtSemEventWait(PRTSEMEVENTINTERNAL pEventInt, unsigned cMillies, bool
 
         /* wait */
         lTimeout = schedule_timeout(lTimeout);
+
+        after_wait(&Wait);
 
         /* Check if someone destroyed the semaphore while we were waiting. */
         if (pEventInt->u32Magic != RTSEMEVENT_MAGIC)
