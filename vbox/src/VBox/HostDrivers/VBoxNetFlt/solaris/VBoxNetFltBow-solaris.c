@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 25367 2009-12-14 16:29:10Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 26498 2010-02-14 08:18:26Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -830,7 +830,7 @@ LOCAL int vboxNetFltSolarisAttachToInterface(PVBOXNETFLTINS pThis, bool fRedisco
                          */
                         mac_diag_t MacDiag;
                         rc = mac_unicast_add(pThis->u.s.hClient, NULL /* MAC Address */,
-                                            MAC_UNICAST_PRIMARY | MAC_UNICAST_STRIP_DISABLE | 
+                                            MAC_UNICAST_PRIMARY | MAC_UNICAST_STRIP_DISABLE |
                                             MAC_UNICAST_DISABLE_TX_VID_CHECK | MAC_UNICAST_NODUPCHECK | MAC_UNICAST_HW,
                                             &pThis->u.s.hUnicast, 0 /* VLAN id */, &MacDiag);
                         if (!rc)

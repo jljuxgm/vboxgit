@@ -1,4 +1,4 @@
-/* $Id: VBoxNetARP.cpp 17783 2009-03-12 23:59:57Z vboxsync $ */
+/* $Id: VBoxNetARP.cpp 26498 2010-02-14 08:18:26Z vboxsync $ */
 /** @file
  * VBoxNetARP - IntNet ARP Client Routines.
  */
@@ -153,5 +153,4 @@ bool VBoxNetArpHandleIt(PSUPDRVSESSION pSession, INTNETIFHANDLE hIf, PINTNETBUF 
 
     return true;
 }
-
 

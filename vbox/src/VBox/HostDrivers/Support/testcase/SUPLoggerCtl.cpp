@@ -1,4 +1,4 @@
-/* $Id: SUPLoggerCtl.cpp 18246 2009-03-25 11:36:34Z vboxsync $ */
+/* $Id: SUPLoggerCtl.cpp 26498 2010-02-14 08:18:26Z vboxsync $ */
 /** @file
  * SUPLoggerCtl - Support Driver Logger Control.
  */
@@ -188,5 +188,4 @@ int main(int argc, char **argv)
 
     return RT_SUCCESS(rc) ? 0 : 1;
 }
-
 

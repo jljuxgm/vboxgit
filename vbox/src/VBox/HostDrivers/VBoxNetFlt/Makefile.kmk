@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26336 2010-02-08 22:30:14Z vboxsync $
+# $Id: Makefile.kmk 26498 2010-02-14 08:18:26Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -443,5 +443,4 @@ $(PATH_OUT)/opt_netgraph.h:
 endif # freebsd
 
 include	$(KBUILD_PATH)/subfooter.kmk
-
 

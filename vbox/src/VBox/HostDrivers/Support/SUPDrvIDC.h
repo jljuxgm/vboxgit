@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIDC.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: SUPDrvIDC.h 26498 2010-02-14 08:18:26Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Inter-Driver Communciation (IDC) definitions.
  */
@@ -272,5 +272,4 @@ typedef DECLCALLBACK(int) FNSUPDRVIDCENTRY(PSUPDRVSESSION pSession, uint32_t uRe
 #pragma pack()                          /* paranoia */
 
 #endif
-
 

@@ -1,4 +1,4 @@
-/* $Id: tstSupLoadModule.cpp 25321 2009-12-11 11:09:15Z vboxsync $ */
+/* $Id: tstSupLoadModule.cpp 26498 2010-02-14 08:18:26Z vboxsync $ */
 /** @file
  * SUP Testcase - Test SUPR3LoadModule.
  */
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    /* 
+    /*
      * Process arguments.
      */
     static const RTGETOPTDEF s_aOptions[] =

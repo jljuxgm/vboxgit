@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 25558 2009-12-22 12:45:27Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 26498 2010-02-14 08:18:26Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1084,5 +1084,4 @@ DECLHIDDEN(int) SUPR3HardenedMain(const char *pszProgName, uint32_t fFlags, int 
     PFNSUPTRUSTEDMAIN pfnTrustedMain = supR3HardenedMainGetTrustedMain(pszProgName);
     return pfnTrustedMain(argc, argv, envp);
 }
-
 
