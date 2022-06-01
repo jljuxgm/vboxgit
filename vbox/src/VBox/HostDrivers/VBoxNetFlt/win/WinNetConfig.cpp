@@ -1,4 +1,4 @@
-/* $Id: WinNetConfig.cpp 25439 2009-12-16 16:53:43Z vboxsync $ */
+/* $Id: WinNetConfig.cpp 26512 2010-02-14 09:47:37Z vboxsync $ */
 /** @file
  * VBoxNetCfgWin - Briefly describe this file, optionally with a longer description in a separate paragraph.
  */
@@ -1752,7 +1752,7 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinEnumNetDevices(LPWSTR pPnPId, VBOXNETCF
                 winEr = GetLastError();
                 if(winEr != ERROR_INSUFFICIENT_BUFFER)
                 {
-                	Log(L"VBoxNetCfgWinEnumNetDevices: SetupDiGetDeviceRegistryPropertyW (1) failed winErr(%d)\n", winEr);
+                    Log(L"VBoxNetCfgWinEnumNetDevices: SetupDiGetDeviceRegistryPropertyW (1) failed winErr(%d)\n", winEr);
                     hr = HRESULT_FROM_WIN32(winEr);
                     break;
                 }
@@ -1774,7 +1774,7 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinEnumNetDevices(LPWSTR pPnPId, VBOXNETCF
                         ))
                 {
                     winEr = GetLastError();
-                	Log(L"VBoxNetCfgWinEnumNetDevices: SetupDiGetDeviceRegistryPropertyW (2) failed winErr(%d)\n", winEr);
+                    Log(L"VBoxNetCfgWinEnumNetDevices: SetupDiGetDeviceRegistryPropertyW (2) failed winErr(%d)\n", winEr);
                     hr = HRESULT_FROM_WIN32(winEr);
                     break;
                 }
@@ -1808,9 +1808,9 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinEnumNetDevices(LPWSTR pPnPId, VBOXNETCF
     }
     else
     {
-    	DWORD winEr = GetLastError();
-    	Log(L"VBoxNetCfgWinEnumNetDevices: SetupDiGetClassDevsExW failed winErr(%d)\n", winEr);
-    	hr = HRESULT_FROM_WIN32(winEr);
+        DWORD winEr = GetLastError();
+        Log(L"VBoxNetCfgWinEnumNetDevices: SetupDiGetClassDevsExW failed winErr(%d)\n", winEr);
+        hr = HRESULT_FROM_WIN32(winEr);
     }
 
     return hr;

@@ -1,4 +1,4 @@
-/* $Id: SUPLib-darwin.cpp 22077 2009-08-07 16:01:57Z vboxsync $ */
+/* $Id: SUPLib-darwin.cpp 26512 2010-02-14 09:47:37Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Darwin specific parts.
  */
@@ -266,7 +266,7 @@ int suplibOsUninstall(void)
 int suplibOsIOCtl(PSUPLIBDATA pThis, uintptr_t uFunction, void *pvReq, size_t cbReq)
 {
     if (RT_LIKELY(ioctl(pThis->hDevice, uFunction, pvReq) >= 0))
-	return VINF_SUCCESS;
+        return VINF_SUCCESS;
     return RTErrConvertFromErrno(errno);
 }
 
