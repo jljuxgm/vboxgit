@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleView.cpp 27193 2010-03-09 00:34:46Z vboxsync $ */
+/* $Id: VBoxConsoleView.cpp 27206 2010-03-09 12:03:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -3971,8 +3971,11 @@ void VBoxConsoleView::setPointerShape (MousePointerChangeEvent *me)
         if (!ok)
             mLastCursor = QCursor();  /* in practice this is equivalent to
                                        * unsetCursor() */
+        mHideHostPointer = false;
     }
-    mHideHostPointer = !me->isVisible();
+    else
+        /* The visiblity flag is only interpreted if there is no shape */
+        mHideHostPointer = !me->isVisible();
     updateHostCursor();
 }
 
