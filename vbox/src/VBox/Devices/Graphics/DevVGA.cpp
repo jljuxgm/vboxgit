@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DevVGA.cpp 25971 2010-01-22 12:54:19Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4740,10 +4740,10 @@ static DECLCALLBACK(void *) vgaPortQueryInterface(PPDMIBASE pInterface, const ch
     PVGASTATE pThis = RT_FROM_MEMBER(pInterface, VGASTATE, Base);
     if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
         return &pThis->Base;
-    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_DISPLAY_PORT) == 0)
+    if (RTUuidCompare2Strs(pszIID, PDMIDISPLAYPORT_IID) == 0)
         return &pThis->Port;
 #if defined(VBOX_WITH_HGSMI) && defined(VBOX_WITH_VIDEOHWACCEL)
-    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_DISPLAY_VBVA_CALLBACKS) == 0)
+    if (RTUuidCompare2Strs(pszIID, PDMIDISPLAYVBVACALLBACKS_IID) == 0)
         return &pThis->VBVACallbacks;
 #endif
     return NULL;
@@ -5727,7 +5727,7 @@ static DECLCALLBACK(int)  vgaAttach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_t 
             int rc = PDMDevHlpDriverAttach(pDevIns, iLUN, &pThis->Base, &pThis->pDrvBase, "Display Port");
             if (RT_SUCCESS(rc))
             {
-                pThis->pDrv = (PDMIDISPLAYCONNECTOR*)pThis->pDrvBase->pfnQueryInterface(pThis->pDrvBase, PDMINTERFACE_DISPLAY_CONNECTOR);
+                pThis->pDrv = PDMIBASE_QUERY_INTERFACE(pThis->pDrvBase, PDMIDISPLAYCONNECTOR);
                 if (pThis->pDrv)
                 {
                     /* pThis->pDrv->pu8Data can be NULL when there is no framebuffer. */

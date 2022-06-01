@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DevVGA.h 25971 2010-01-22 12:54:19Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -311,7 +311,7 @@ typedef struct VGAState {
 # endif
 #if defined(VBOX_WITH_HGSMI) && defined(VBOX_WITH_VIDEOHWACCEL)
     /** LUN\#0: VBVA callbacks interface */
-    PDMDDISPLAYVBVACALLBACKS    VBVACallbacks;
+    PDMIDISPLAYVBVACALLBACKS    VBVACallbacks;
 #else
 # if HC_ARCH_BITS == 32
     uint32_t                    Padding3;
@@ -463,7 +463,7 @@ void     VBVAReset (PVGASTATE pVGAState);
 uint32_t HGSMIReset (PHGSMIINSTANCE pIns);
 
 # ifdef VBOX_WITH_VIDEOHWACCEL
-int vbvaVHWACommandCompleteAsynch(PPDMDDISPLAYVBVACALLBACKS pInterface, PVBOXVHWACMD pCmd);
+int vbvaVHWACommandCompleteAsynch(PPDMIDISPLAYVBVACALLBACKS pInterface, PVBOXVHWACMD pCmd);
 int vbvaVHWAConstruct (PVGASTATE pVGAState);
 int vbvaVHWADisable (PVGASTATE pVGAState);
 int vbvaVHWAReset (PVGASTATE pVGAState);

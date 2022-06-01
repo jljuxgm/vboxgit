@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 25971 2010-01-22 12:54:19Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of VMDisplay class
@@ -1155,7 +1155,7 @@ DECLCALLBACK(void *)  VMDisplay::drvQueryInterface(PPDMIBASE pInterface, const c
 
     if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
         return &pDrvIns->IBase;
-    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_DISPLAY_CONNECTOR) == 0)
+    if (RTUuidCompare2Strs(pszIID, PDMIDISPLAYCONNECTOR_IID) == 0)
         return &pDrv->Connector;
     return NULL;
 }
@@ -1197,7 +1197,7 @@ DECLCALLBACK(int) VMDisplay::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHand
     /*
      * Get the IDisplayPort interface of the above driver/device.
      */
-    pData->pUpPort = (PPDMIDISPLAYPORT)pDrvIns->pUpBase->pfnQueryInterface(pDrvIns->pUpBase, PDMINTERFACE_DISPLAY_PORT);
+    pData->pUpPort = PDMIBASE_QUERY_INTERFACE(pDrvIns->pUpBase, PDMIDISPLAYPORT);
     if (!pData->pUpPort)
     {
         AssertMsgFailed(("Configuration error: No display port interface above!\n"));
