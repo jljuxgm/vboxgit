@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 26193 2010-02-03 14:18:45Z vboxsync $ */
+/* $Id: MachineImpl.cpp 26200 2010-02-03 15:17:42Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2974,6 +2974,7 @@ STDMETHODIMP Machine::MountMedium(IN_BSTR aControllerName,
         if (!medium.isNull())
             medium->attachTo(mData->mUuid);
         pAttach->updateMedium(medium, false /* aImplicit */);
+        setModified(IsModified_Storage);
     }
 
     alock.leave();
