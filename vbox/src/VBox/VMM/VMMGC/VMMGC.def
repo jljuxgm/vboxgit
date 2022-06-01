@@ -1,4 +1,4 @@
-; $Id: VMMGC.def 28320 2010-04-14 18:26:24Z vboxsync $
+; $Id: VMMGC.def 28341 2010-04-14 22:25:46Z vboxsync $
 ;; @file
 ; VMM Raw-mode Context DLL - Definition file.
 
@@ -84,6 +84,7 @@ EXPORTS
     nocrt_memcpy
     memcpy=nocrt_memcpy                 ; not-os2
     nocrt_memset
+    memset=nocrt_memset                 ; not-os2
     nocrt_strcpy
     nocrt_strcmp
     nocrt_strchr
