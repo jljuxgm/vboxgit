@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 25219 2009-12-07 18:04:10Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 25305 2009-12-10 15:29:24Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -721,7 +721,7 @@ void FwCommonPlantMpsTable(PPDMDEVINS pDevIns, uint8_t *pTable, uint16_t cCpus)
     }
 
     /* ISA bus */
-    PMPSBUSENTRY pBusEntry         = (PMPSBUSENTRY)(pProcEntry+1);
+    PMPSBUSENTRY pBusEntry         = (PMPSBUSENTRY)pProcEntry;
     pBusEntry->u8EntryType         = 1; /* bus entry */
     pBusEntry->u8BusId             = 0; /* this ID is referenced by the interrupt entries */
     memcpy(pBusEntry->au8BusTypeStr, "ISA   ", 6);
