@@ -1,4 +1,4 @@
-/* $Id: tstRTCidr.cpp 29841 2010-05-27 10:22:39Z vboxsync $ */
+/* $Id: tstRTCidr.cpp 29845 2010-05-27 11:29:36Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPv4.
  */
@@ -69,6 +69,9 @@ int main()
     CHECKNETWORK("10.0.0/45",      VERR_INVALID_PARAMETER,          0,          0);
     CHECKNETWORK("10.0.0/-45",     VERR_INVALID_PARAMETER,          0,          0);
     CHECKNETWORK("10.0.0/24",                VINF_SUCCESS, 0x0A000000, 0xFFFFFF00);
+    CHECKNETWORK("10..0.0/24",     VERR_INVALID_PARAMETER,          0,          0);
+    CHECKNETWORK(".10.0.0/24",     VERR_INVALID_PARAMETER,          0,          0);
+    CHECKNETWORK("10.0.0//24",     VERR_INVALID_PARAMETER,          0,          0);
     CHECKNETWORK("10.0.0/8",                 VINF_SUCCESS, 0x0A000000, 0xFF000000);
     CHECKNETWORK("10.0.0./24",     VERR_INVALID_PARAMETER,          0,          0);
     CHECKNETWORK("0.1.0/24",       VERR_INVALID_PARAMETER,          0,          0);
