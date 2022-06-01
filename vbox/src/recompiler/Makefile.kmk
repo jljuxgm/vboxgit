@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28922 2010-04-30 08:23:23Z vboxsync $
+# $Id: Makefile.kmk 28923 2010-04-30 08:38:57Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -72,14 +72,6 @@ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.amd64)
  REM_MOD := VBoxREM2
 else
  REM_MOD := VBoxREM
-endif
-
-if defined(VBOX_USE_REM2) || defined(VBOX_USE_REM64)
- VBOX_REM_WRAPPER = 1
-endif
-
-if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.amd64)
- VBOX_REM_WRAPPER = 1
 endif
 
 #
@@ -203,7 +195,7 @@ $(REM_MOD)_LDFLAGS.debug   = -g
 $(REM_MOD)_LDFLAGS.solaris = -mimpure-text
 
 
-if defined(VBOX_REM_WRAPPER)
+if defined(VBOX_USE_REM2) || defined(VBOX_USE_REM64)
 #
 # The VBoxREM2, VBoxREM32 and VBoxREM64 wrapper.
 #
@@ -224,7 +216,7 @@ VBoxREMWrapper_SOURCES    += \
 	VBoxREMWrapperA.asm
  endif
 VBoxREMWrapper_LIBS        = \
-	$(LIB_RUNTIME)
+ 	$(LIB_RUNTIME)
  ifndef VBOX_WITHOUT_REM_LDR_CYCLE
 VBoxREMWrapper_LIBS       += \
 	$(LIB_VMM)
