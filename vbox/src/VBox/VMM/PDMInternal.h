@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 24125 2009-10-28 09:58:41Z vboxsync $ */
+/* $Id: PDMInternal.h 24127 2009-10-28 10:16:22Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -487,6 +487,7 @@ typedef struct PDMAPIC
                                                      uint8_t iVector, uint8_t u8Polarity, uint8_t u8TriggerMode));
     /** @copydoc PDMAPICREG::pfnLocalInterruptR3 */
     DECLRCCALLBACKMEMBER(int,       pfnLocalInterruptRC,(PPDMDEVINS pDevIns, uint8_t u8Pin, uint8_t u8Level));
+    RTRCPTR                         RCPtrAlignment;
 
 } PDMAPIC;
 
