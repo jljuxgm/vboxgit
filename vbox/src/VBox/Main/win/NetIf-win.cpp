@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 25150 2009-12-02 14:40:46Z vboxsync $ */
+/* $Id: NetIf-win.cpp 25746 2010-01-12 10:17:29Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -974,9 +974,6 @@ static int netIfListHostAdapters(std::list <ComObjPtr<HostNetworkInterface> > &l
             {
                 ULONG uComponentStatus;
                 hr = pMpNcc->GetDeviceStatus(&uComponentStatus);
-//#ifndef DEBUG_bird
-//                Assert(hr == S_OK);
-//#endif
                 if(hr == S_OK)
                 {
                     if(uComponentStatus == 0)
@@ -1457,9 +1454,6 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
                                 {
                                     ULONG uComponentStatus;
                                     hr = pMpNcc->GetDeviceStatus(&uComponentStatus);
-//#ifndef DEBUG_bird
-//                                    Assert(hr == S_OK);
-//#endif
                                     if(hr == S_OK)
                                     {
                                         if(uComponentStatus == 0)
