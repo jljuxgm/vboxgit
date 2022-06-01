@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
+/* $Id: DevACPI.cpp 26172 2010-02-02 20:41:40Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1957,13 +1957,13 @@ static int acpiPlantTables(ACPIState *s)
     cbRsdt += cAddr*sizeof(uint32_t);  /* each entry: 32 bits phys. address. */
     cbXsdt += cAddr*sizeof(uint64_t);  /* each entry: 64 bits phys. address. */
 
-    rc = CFGMR3QueryU64(s->pDevIns->pCfgHandle, "RamSize", &s->u64RamSize);
+    rc = CFGMR3QueryU64(s->pDevIns->pCfg, "RamSize", &s->u64RamSize);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(s->pDevIns, rc,
                                 N_("Configuration error: Querying \"RamSize\" as integer failed"));
 
     uint32_t cbRamHole;
-    rc = CFGMR3QueryU32Def(s->pDevIns->pCfgHandle, "RamHoleSize", &cbRamHole, MM_RAM_HOLE_SIZE_DEFAULT);
+    rc = CFGMR3QueryU32Def(s->pDevIns->pCfg, "RamHoleSize", &cbRamHole, MM_RAM_HOLE_SIZE_DEFAULT);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(s->pDevIns, rc,
                                 N_("Configuration error: Querying \"RamHoleSize\" as integer failed"));

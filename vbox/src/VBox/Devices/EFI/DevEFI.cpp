@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
+/* $Id: DevEFI.cpp 26172 2010-02-02 20:41:40Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -425,7 +425,7 @@ static DECLCALLBACK(void) efiReset(PPDMDEVINS pDevIns)
                                pThis->au8DMIPage,
                                VBOX_DMI_TABLE_SIZE,
                                &pThis->aUuid,
-                               pDevIns->pCfgHandle,
+                               pDevIns->pCfg,
                                true /* fPutSmbiosHeaders */);
     Assert(RT_SUCCESS(rc));
 

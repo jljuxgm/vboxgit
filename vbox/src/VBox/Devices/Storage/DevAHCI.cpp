@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 26165 2010-02-02 19:50:31Z vboxsync $ */
+/* $Id: DevAHCI.cpp 26172 2010-02-02 20:41:40Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -5775,7 +5775,7 @@ static DECLCALLBACK(int) ahciR3LiveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
     for (size_t i = 0; i < RT_ELEMENTS(s_apszIdeEmuPortNames); i++)
     {
         uint32_t iPort;
-        int rc = CFGMR3QueryU32Def(pDevIns->pCfgHandle, s_apszIdeEmuPortNames[i], &iPort, i);
+        int rc = CFGMR3QueryU32Def(pDevIns->pCfg, s_apszIdeEmuPortNames[i], &iPort, i);
         AssertRCReturn(rc, rc);
         SSMR3PutU32(pSSM, iPort);
     }
@@ -5933,7 +5933,7 @@ static DECLCALLBACK(int) ahciR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
         for (size_t i = 0; i < RT_ELEMENTS(s_apszIdeEmuPortNames); i++)
         {
             uint32_t iPort;
-            rc = CFGMR3QueryU32Def(pDevIns->pCfgHandle, s_apszIdeEmuPortNames[i], &iPort, i);
+            rc = CFGMR3QueryU32Def(pDevIns->pCfg, s_apszIdeEmuPortNames[i], &iPort, i);
             AssertRCReturn(rc, rc);
 
             uint32_t iPortSaved;

@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 26169 2010-02-02 20:19:15Z vboxsync $ */
+/* $Id: PDMDriver.cpp 26172 2010-02-02 20:41:40Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -448,7 +448,7 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                     //pNew->Internal.s.pfnAsyncNotify = NULL;
                     pNew->Internal.s.pCfgHandle     = pNode;
                     pNew->pReg                      = pDrv->pReg;
-                    pNew->pCfgHandle                = pConfigNode;
+                    pNew->pCfg                      = pConfigNode;
                     pNew->iInstance                 = pDrv->iNextInstance;
                     pNew->pUpBase                   = pBaseInterface;
                     Assert(!pDrvAbove || pBaseInterface == &pDrvAbove->IBase);
@@ -489,7 +489,7 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                     /*
                      * Invoke the constructor.
                      */
-                    rc = pDrv->pReg->pfnConstruct(pNew, pNew->pCfgHandle, 0 /*fFlags*/);
+                    rc = pDrv->pReg->pfnConstruct(pNew, pNew->pCfg, 0 /*fFlags*/);
                     if (RT_SUCCESS(rc))
                     {
                         AssertPtr(pNew->IBase.pfnQueryInterface);
