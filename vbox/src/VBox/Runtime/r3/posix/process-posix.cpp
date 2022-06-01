@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 27287 2010-03-11 16:36:28Z vboxsync $ */
+/* $Id: process-posix.cpp 27321 2010-03-12 11:10:39Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -301,8 +301,11 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
             if (fFlags & RTPROC_FLAGS_DAEMONIZE)
             {
                 rc = RTProcDaemonize(true /* fNoChDir */, false /* fNoClose */, NULL /* pszPidFile */);
-                AssertReleaseMsgFailed(("RTProcDaemonize returns %Rrc errno=%d\n", rc, errno));
-                exit(127);
+                if (RT_FAILURE(rc))
+                {
+                    AssertReleaseMsgFailed(("RTProcDaemonize returns %Rrc errno=%d\n", rc, errno));
+                    exit(127);
+                }
             }
 
             /*
@@ -504,7 +507,9 @@ RTR3DECL(int)   RTProcDaemonize(bool fNoChDir, bool fNoClose, const char *pszPid
     }
 
     if (!fNoChDir)
+    {
         int rcChdir = chdir("/");
+    }
 
     /* Second fork to lose session leader status. */
     pid = fork();
