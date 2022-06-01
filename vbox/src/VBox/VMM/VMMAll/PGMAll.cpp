@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 27369 2010-03-15 15:42:16Z vboxsync $ */
+/* $Id: PGMAll.cpp 27370 2010-03-15 15:45:18Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1878,6 +1878,7 @@ VMMDECL(int) PGMSyncCR3(PVMCPU pVCpu, uint64_t cr0, uint64_t cr3, uint64_t cr4, 
         if (    rc == VINF_PGM_SYNC_CR3
             ||  (pVCpu->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL))
         {
+            Log(("PGMSyncCR3: pending pgm pool sync after MapCR3!\n"));
 #ifdef IN_RING3
             rc = pgmPoolSyncCR3(pVCpu);
 #else
