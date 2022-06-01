@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 26672 2010-02-22 07:25:02Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 26689 2010-02-22 22:11:38Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -1024,6 +1024,9 @@ static void pdmacFileAioMgrNormalReqComplete(PPDMACEPFILEMGR pAioMgr, RTFILEAIOR
         /* Free bounce buffers and the IPRT request. */
         pAioMgr->pahReqsFree[pAioMgr->iFreeEntryNext] = hReq;
         pAioMgr->iFreeEntryNext = (pAioMgr->iFreeEntryNext + 1) % pAioMgr->cReqEntries;
+
+        /* Free the lock and process pending tasks if neccessary */
+        pdmacFileAioMgrNormalRangeLockFree(pAioMgr, pEndpoint, pTask->pRangeLock);
 
         pAioMgr->cRequestsActive--;
         pEndpoint->AioMgr.cRequestsActive--;

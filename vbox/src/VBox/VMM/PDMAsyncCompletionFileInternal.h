@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 26671 2010-02-22 07:21:34Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 26689 2010-02-22 22:11:38Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -203,12 +203,10 @@ typedef struct PDMACFILEBWMGR
     /** Number of bytes we are allowed to transfer till the next update.
      * Resetted by the refresh timer. */
     volatile uint32_t cbVMTransferAllowed;
-    /** Flag whether a request could not processed due to the limit. */
-    volatile bool     fVMTransferLimitReached;
+    /** Timestamp of the last update */
+    volatile uint64_t tsUpdatedLast;
     /** Reference counter - How many endpoints are associated with this manager. */
     uint32_t          cRefs;
-    /** The refresh timer */
-    PTMTIMERR3        pBwRefreshTimer;
 } PDMACFILEBWMGR;
 /** Pointer to a bandwidth control manager */
 typedef PDMACFILEBWMGR *PPDMACFILEBWMGR;
