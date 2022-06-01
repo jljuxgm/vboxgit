@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 26046 2010-01-26 14:06:05Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 26084 2010-01-28 13:59:20Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -610,14 +610,12 @@ STDMETHODIMP USBController::RemoveDeviceFilter(ULONG aPosition,
  *
  *  @param aMachineNode <Machine> node.
  *
- *  @note Locks this object for writing.
+ *  @note Does not lock "this" as Machine::loadHardware, which calls this, does not lock either.
  */
 HRESULT USBController::loadSettings(const settings::USBController &data)
 {
     AutoCaller autoCaller(this);
     AssertComRCReturnRC(autoCaller.rc());
-
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     /* Note: we assume that the default values for attributes of optional
      * nodes are assigned in the Data::Data() constructor and don't do it
