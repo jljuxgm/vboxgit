@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26523 2010-02-15 02:18:13Z vboxsync $
+# $Id: Makefile.kmk 26526 2010-02-15 03:36:01Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -179,6 +179,9 @@ ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
  	PDMAsyncCompletionFileFailsafe.cpp \
  	PDMAsyncCompletionFileNormal.cpp \
  	PDMAsyncCompletionFileCache.cpp
+endif
+if defined(VBOX_WITH_WARNINGS_AS_ERRORS) && "$(KBUILD_TARGET)" == "win"
+PDMAsyncCompletionFileCache.cpp_CXXFLAGS = -WX-
 endif
 
 ifdef VBOX_WITH_RAW_MODE

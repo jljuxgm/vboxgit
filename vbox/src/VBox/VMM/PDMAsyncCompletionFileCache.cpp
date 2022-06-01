@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileCache.cpp 26334 2010-02-08 18:58:55Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileCache.cpp 26526 2010-02-15 03:36:01Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * File data cache.
@@ -604,7 +604,7 @@ static PPDMACFILETASKSEG pdmacFileCacheTaskComplete(PPDMACFILEENDPOINTCACHE pEnd
 {
     PPDMACFILETASKSEG pNext = pTaskSeg->pNext;
 
-    uint32_t uOld = ASMAtomicSubU32(&pTaskSeg->pTask->cbTransferLeft, pTaskSeg->cbTransfer);
+    uint32_t uOld = ASMAtomicSubS32(&pTaskSeg->pTask->cbTransferLeft, pTaskSeg->cbTransfer);
     AssertMsg(uOld >= pTaskSeg->cbTransfer, ("New value would overflow\n"));
     if (!(uOld - pTaskSeg->cbTransfer)
         && !ASMAtomicXchgBool(&pTaskSeg->pTask->fCompleted, true))
@@ -1770,7 +1770,6 @@ int pdmacFileEpCacheWrite(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint, PPDMASYNCCO
             {
                 LogFlow(("Evicted enough bytes (%u requested). Creating new cache entry\n", cbToWrite));
 
-                uint8_t *pbBuf;
                 PPDMACFILECACHEENTRY pEntryNew;
 
                 pEntryNew = pdmacFileCacheEntryAlloc(pCache, pEndpoint, off, cbToWrite, pbBuffer);
