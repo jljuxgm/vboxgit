@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 29242 2010-05-08 16:21:01Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -4396,11 +4396,11 @@ static DECLCALLBACK(int) lsilogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
      * Validate and read configuration.
      */
     rc = CFGMR3AreValuesValid(pCfg, "GCEnabled\0"
-                                          "R0Enabled\0"
-                                          "ReplyQueueDepth\0"
-                                          "RequestQueueDepth\0"
-                                          "ControllerType\0"
-                                          "NumPorts\0");
+                                    "R0Enabled\0"
+                                    "ReplyQueueDepth\0"
+                                    "RequestQueueDepth\0"
+                                    "ControllerType\0"
+                                    "NumPorts\0");
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES,
                                 N_("LsiLogic configuration error: unknown option specified"));
