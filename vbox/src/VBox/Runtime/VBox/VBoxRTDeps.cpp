@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 29267 2010-05-09 21:21:36Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 29272 2010-05-09 21:25:43Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -35,13 +35,13 @@
 #include <iprt/buildconfig.h>
 #include <iprt/system.h>
 
-# include <libxml/xmlmodule.h>
-# include <libxml/globals.h>
-# include <openssl/md5.h>
-# include <openssl/rc4.h>
-# include <openssl/pem.h>
-# include <openssl/x509.h>
-# include <openssl/rsa.h>
+#include <libxml/xmlmodule.h>
+#include <libxml/globals.h>
+#include <openssl/md5.h>
+#include <openssl/rc4.h>
+#include <openssl/pem.h>
+#include <openssl/x509.h>
+#include <openssl/rsa.h>
 
 
 /*******************************************************************************
