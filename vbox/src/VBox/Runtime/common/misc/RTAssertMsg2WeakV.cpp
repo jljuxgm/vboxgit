@@ -1,10 +1,10 @@
-/* $Id: RTAssertMsg2Weak.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
+/* $Id: RTAssertMsg2WeakV.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
 /** @file
- * IPRT - RTAssertMsg2Weak.
+ * IPRT - RTAssertMsg2WeakV.
  */
 
 /*
- * Copyright (C) 2008-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2009 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -35,15 +35,10 @@
 #include <iprt/assert.h>
 #include "internal/iprt.h"
 
-#include <iprt/stdarg.h>
 
-
-RTDECL(void) RTAssertMsg2Weak(const char *pszFormat, ...)
+RTDECL(void) RTAssertMsg2WeakV(const char *pszFormat, va_list va)
 {
-    va_list va;
-    va_start(va, pszFormat);
-    RTAssertMsg2WeakV(pszFormat, va);
-    va_end(va);
+    RTAssertMsg2V(pszFormat, va);
 }
-RT_EXPORT_SYMBOL(RTAssertMsg2Weak);
+RT_EXPORT_SYMBOL(RTAssertMsg2WeakV);
 

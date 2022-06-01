@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 25436 2009-12-16 15:22:40Z vboxsync $ */
+/* $Id: thread.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -191,7 +191,7 @@ void rtThreadTerm(void)
     RTSpinlockDestroy(g_ThreadSpinlock);
     g_ThreadSpinlock = NIL_RTSPINLOCK;
     if (g_ThreadTree != NULL)
-        AssertMsg2("WARNING: g_ThreadTree=%p\n", g_ThreadTree);
+        RTAssertMsg2Weak("WARNING: g_ThreadTree=%p\n", g_ThreadTree);
 #endif
 }
 

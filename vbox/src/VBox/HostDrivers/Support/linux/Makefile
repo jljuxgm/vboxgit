@@ -1,4 +1,4 @@
-# $Revision: 25465 $
+# $Revision: 25528 $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -107,6 +107,11 @@ OBJS   = \
 	common/log/logrelellipsis.o \
 	common/log/logcom.o \
 	common/log/logformat.o \
+	common/misc/RTAssertMsg1Weak.o \
+	common/misc/RTAssertMsg2V.o \
+	common/misc/RTAssertMsg2Weak.o \
+	common/misc/RTAssertMsg2WeakV.o \
+	common/misc/assert.o \
 	common/misc/handletable.o \
 	common/misc/handletablectx.o \
 	common/string/strformat.o \

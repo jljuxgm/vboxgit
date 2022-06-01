@@ -1,4 +1,4 @@
-/* $Id: kHlpAssert-iprt.cpp 16404 2009-01-30 06:33:23Z vboxsync $ */
+/* $Id: kHlpAssert-iprt.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
 /** @file
  * kHlpEnv - Assertions, IPRT based implementation.
  */
@@ -31,7 +31,7 @@
 
 KHLP_DECL(void) kHlpAssertMsg1(const char *pszExpr, const char *pszFile, unsigned iLine, const char *pszFunction)
 {
-    /*RT*/AssertMsg1(pszExpr, iLine, pszFile, pszFunction);
+    RTAssertMsg1Weak(pszExpr, iLine, pszFile, pszFunction);
 }
 
 
@@ -39,13 +39,7 @@ KHLP_DECL(void) kHlpAssertMsg2(const char *pszFormat, ...)
 {
     va_list va;
     va_start(va, pszFormat);
-#if 0
-    RTAssertMsg2V(pszFormat, va);
-#else
-    char szBuf[512];
-    RTStrPrintfV(szBuf, sizeof(szBuf), pszFormat, va);
-    AssertMsg2("%s", szBuf);
-#endif
+    RTAssertMsg2V/*Weak?*/(pszFormat, va);
     va_end(va);
 }
 

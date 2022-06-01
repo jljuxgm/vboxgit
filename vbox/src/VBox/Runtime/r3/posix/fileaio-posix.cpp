@@ -1,4 +1,4 @@
-/* $Id: fileaio-posix.cpp 24226 2009-10-30 22:42:53Z vboxsync $ */
+/* $Id: fileaio-posix.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for POSIX compliant host platforms.
  */
@@ -857,7 +857,7 @@ RTDECL(int) RTFileAioCtxWait(RTFILEAIOCTX hAioCtx, size_t cMinReqs, unsigned cMi
         if (RT_UNLIKELY(!pCtxInt->iFirstFree))
         {
             for (unsigned i = 0; i < pCtxInt->cReqsWaitMax; i++)
-                AssertMsg2("wait[%d] = %#p\n", i, pCtxInt->apReqs[i]);
+                RTAssertMsg2Weak("wait[%d] = %#p\n", i, pCtxInt->apReqs[i]);
 
             AssertMsgFailed(("No request to wait for. pReqsWaitHead=%#p pReqsWaitTail=%#p\n",
                             pCtxInt->pReqsWaitHead, pCtxInt->pReqsWaitTail));

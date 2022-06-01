@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 25291 2009-12-10 10:16:54Z vboxsync $
+; $Id: SUPR0.def 25528 2009-12-20 23:24:59Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Exports.
 ;
@@ -148,8 +148,8 @@ EXPORTS
     RTLogSetDefaultInstanceThread
     RTLogLoggerExV
     RTLogPrintfV
-    AssertMsg1
-    AssertMsg2
+    RTAssertMsg1
+    RTAssertMsg2V
 
     ; data
     g_pSUPGlobalInfoPage DATA ; NT

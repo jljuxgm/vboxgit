@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 24844 2009-11-21 21:58:53Z vboxsync $ */
+/* $Id: VMM.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -884,7 +884,7 @@ VMMR3DECL(int)  VMMR3UpdateLoggers(PVM pVM)
 
 
 /**
- * Gets the pointer to a buffer containing the R0/RC AssertMsg1 output.
+ * Gets the pointer to a buffer containing the R0/RC RTAssertMsg1Weak output.
  *
  * @returns Pointer to the buffer.
  * @param   pVM         The VM handle.
@@ -904,7 +904,7 @@ VMMR3DECL(const char *) VMMR3GetRZAssertMsg1(PVM pVM)
 
 
 /**
- * Gets the pointer to a buffer containing the R0/RC AssertMsg2 output.
+ * Gets the pointer to a buffer containing the R0/RC RTAssertMsg2Weak output.
  *
  * @returns Pointer to the buffer.
  * @param   pVM         The VM handle.

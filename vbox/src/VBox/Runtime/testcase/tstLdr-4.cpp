@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 25000 2009-11-26 14:22:44Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
 /** @file
  * IPRT - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -60,10 +60,10 @@ extern "C" DECLEXPORT(int) DisasmTest1(void);
  */
 static DECLCALLBACK(int) testGetImport(RTLDRMOD hLdrMod, const char *pszModule, const char *pszSymbol, unsigned uSymbol, RTUINTPTR *pValue, void *pvUser)
 {
-    if (     !strcmp(pszSymbol, "AssertMsg1")           || !strcmp(pszSymbol, "_AssertMsg1"))
-        *pValue = (uintptr_t)AssertMsg1;
-    else if (!strcmp(pszSymbol, "AssertMsg2")           || !strcmp(pszSymbol, "_AssertMsg2"))
-        *pValue = (uintptr_t)AssertMsg2;
+    if (     !strcmp(pszSymbol, "RTAssertMsg1Weak")     || !strcmp(pszSymbol, "_RTAssertMsg1Weak"))
+        *pValue = (uintptr_t)RTAssertMsg1Weak;
+    else if (!strcmp(pszSymbol, "RTAssertMsg2Weak")     || !strcmp(pszSymbol, "_RTAssertMsg2Weak"))
+        *pValue = (uintptr_t)RTAssertMsg1Weak;
     else if (!strcmp(pszSymbol, "RTLogDefaultInstance") || !strcmp(pszSymbol, "_RTLogDefaultInstance"))
         *pValue = (uintptr_t)RTLogDefaultInstance;
     else if (!strcmp(pszSymbol, "RTLogLoggerExV")       || !strcmp(pszSymbol, "_RTLogLoggerExV"))

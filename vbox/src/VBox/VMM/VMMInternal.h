@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 24582 2009-11-11 14:38:34Z vboxsync $ */
+/* $Id: VMMInternal.h 25528 2009-12-20 23:24:59Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -49,9 +49,6 @@
  * Ring-0 logging isn't 100% safe yet (thread id reuse / process exit cleanup),
  * so you have to sign up here by adding your defined(DEBUG_<userid>) to the
  * #if, or by adding VBOX_WITH_R0_LOGGING to your LocalConfig.kmk.
- *
- * You might also wish to enable the AssertMsg1/2 overrides in VMMR0.cpp when
- * enabling this.
  */
 #if defined(DEBUG_sandervl) || defined(DEBUG_frank) || defined(DOXYGEN_RUNNING)
 # define VBOX_WITH_R0_LOGGING

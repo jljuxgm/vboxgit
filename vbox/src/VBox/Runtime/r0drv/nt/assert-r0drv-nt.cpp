@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-nt.cpp 11917 2008-09-01 12:55:38Z vboxsync $ */
+/* $Id: assert-r0drv-nt.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, NT.
  */
@@ -38,57 +38,26 @@
 #include <iprt/string.h>
 #include <iprt/stdarg.h>
 
-
-/*******************************************************************************
-*   Global Variables                                                           *
-*******************************************************************************/
-/** The last assert message, 1st part. */
-RTDATADECL(char) g_szRTAssertMsg1[1024];
-/** The last assert message, 2nd part. */
-RTDATADECL(char) g_szRTAssertMsg2[2048];
+#include "internal/assert.h"
 
 
-RTDECL(void) AssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
+void rtR0AssertNativeMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
 {
-#ifdef IN_GUEST_R0
-    RTLogBackdoorPrintf("\n!!Assertion Failed!!\n"
-                        "Expression: %s\n"
-                        "Location  : %s(%d) %s\n",
-                        pszExpr, pszFile, uLine, pszFunction);
-#endif
-
     DbgPrint("\n!!Assertion Failed!!\n"
              "Expression: %s\n"
              "Location  : %s(%d) %s\n",
              pszExpr, pszFile, uLine, pszFunction);
-
-    RTStrPrintf(g_szRTAssertMsg1, sizeof(g_szRTAssertMsg1),
-                "\n!!Assertion Failed!!\n"
-                "Expression: %s\n"
-                "Location  : %s(%d) %s\n",
-                pszExpr, pszFile, uLine, pszFunction);
 }
 
 
-RTDECL(void) AssertMsg2(const char *pszFormat, ...)
+void rtR0AssertNativeMsg2V(const char *pszFormat, va_list va)
 {
-    va_list va;
-    char    szMsg[256];
-
-# ifdef IN_GUEST_R0
-    va_start(va, pszFormat);
-    RTLogBackdoorPrintfV(pszFormat, va);
-    va_end(va);
-# endif
+    char szMsg[256];
 
     va_start(va, pszFormat);
     RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, va);
     szMsg[sizeof(szMsg) - 1] = '\0';
     va_end(va);
     DbgPrint("%s", szMsg);
-
-    va_start(va, pszFormat);
-    RTStrPrintfV(g_szRTAssertMsg2, sizeof(g_szRTAssertMsg2), pszFormat, va);
-    va_end(va);
 }
 
