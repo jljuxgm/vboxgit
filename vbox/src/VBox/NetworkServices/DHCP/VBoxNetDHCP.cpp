@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 28711 2010-04-25 19:01:24Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 28714 2010-04-25 20:04:02Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -987,7 +987,7 @@ int VBoxNetDhcp::run(void)
         /*
          * Process the receive buffer.
          */
-        while (INTNETRingHasMoreToRead(pRingBuf))
+        while (IntNetRingHasMoreToRead(pRingBuf))
         {
             size_t  cb;
             void   *pv = VBoxNetUDPMatch(m_pIfBuf, RTNETIPV4_PORT_BOOTPS, &m_MacAddress,
@@ -1019,7 +1019,7 @@ int VBoxNetDhcp::run(void)
             }
 
             /* Advance to the next frame. */
-            INTNETRingSkipFrame(pRingBuf);
+            IntNetRingSkipFrame(pRingBuf);
         }
     }
 

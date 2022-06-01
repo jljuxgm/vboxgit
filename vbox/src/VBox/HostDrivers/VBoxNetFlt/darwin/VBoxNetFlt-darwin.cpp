@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 28666 2010-04-23 17:25:58Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 28714 2010-04-25 20:04:02Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -385,7 +385,7 @@ static mbuf_t vboxNetFltDarwinMBufFromSG(PVBOXNETFLTINS pThis, PINTNETSG pSG)
             &&  mbuf_maxlen(pCur) >= pSG->cbTotal)
         {
             mbuf_setlen(pCur, pSG->cbTotal);
-            INTNETSgRead(pSG, mbuf_data(pCur));
+            IntNetSgRead(pSG, mbuf_data(pCur));
         }
         else
         {
@@ -398,7 +398,7 @@ static mbuf_t vboxNetFltDarwinMBufFromSG(PVBOXNETFLTINS pThis, PINTNETSG pSG)
                 if (cb > cbLeft)
                     cb = cbLeft;
                 mbuf_setlen(pCur, cb);
-                INTNETSgReadEx(pSG, offSrc, cb, mbuf_data(pCur));
+                IntNetSgReadEx(pSG, offSrc, cb, mbuf_data(pCur));
 
                 /* advance */
                 offSrc += cb;
@@ -498,7 +498,7 @@ DECLINLINE(void) vboxNetFltDarwinMBufToSG(PVBOXNETFLTINS pThis, mbuf_t pMBuf, vo
      * Walk the chain and convert the buffers to segments.  Works INTNETSG::cbTotal.
      */
     unsigned iSeg = 0;
-    INTNETSgInitTempSegs(pSG, 0 /*cbTotal*/, cSegs, 0 /*cSegsUsed*/);
+    IntNetSgInitTempSegs(pSG, 0 /*cbTotal*/, cSegs, 0 /*cSegsUsed*/);
     for (mbuf_t pCur = pMBuf; pCur; pCur = mbuf_next(pCur))
     {
         size_t cbSeg = mbuf_len(pCur);

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetARP.cpp 28025 2010-04-07 06:37:43Z vboxsync $ */
+/* $Id: VBoxNetARP.cpp 28714 2010-04-25 20:04:02Z vboxsync $ */
 /** @file
  * VBoxNetARP - IntNet ARP Client Routines.
  */
@@ -45,13 +45,13 @@ bool VBoxNetArpHandleIt(PSUPDRVSESSION pSession, INTNETIFHANDLE hIf, PINTNETBUF 
     /*
      * Valid IntNet Ethernet frame? Skip GSO, no ARP in there.
      */
-    PCINTNETHDR pHdr = INTNETRingGetNextFrameToRead(&pBuf->Recv);
+    PCINTNETHDR pHdr = IntNetRingGetNextFrameToRead(&pBuf->Recv);
     if (   !pHdr
         || pHdr->u16Type != INTNETHDR_TYPE_FRAME)
         return false;
 
     size_t          cbFrame = pHdr->cbFrame;
-    const void     *pvFrame = INTNETHdrGetFramePtr(pHdr, pBuf);
+    const void     *pvFrame = IntNetHdrGetFramePtr(pHdr, pBuf);
     PCRTNETETHERHDR pEthHdr = (PCRTNETETHERHDR)pvFrame;
 
     /*

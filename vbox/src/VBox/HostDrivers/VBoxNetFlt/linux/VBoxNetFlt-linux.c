@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 28703 2010-04-25 00:37:30Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 28714 2010-04-25 20:04:02Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -519,7 +519,7 @@ static struct sk_buff *vboxNetFltLinuxSkBufFromSG(PVBOXNETFLTINS pThis, PINTNETS
 
     /* Copy the segments. */
     skb_put(pPkt, pSG->cbTotal);
-    INTNETSgRead(pSG, pPkt->data);
+    IntNetSgRead(pSG, pPkt->data);
 
 #if defined(VBOXNETFLT_WITH_GSO_XMIT_WIRE) || defined(VBOXNETFLT_WITH_GSO_XMIT_HOST)
     /*
@@ -628,9 +628,9 @@ DECLINLINE(void) vboxNetFltLinuxSkBufToSG(PVBOXNETFLTINS pThis, struct sk_buff *
     }
 
     if (!pGsoCtx)
-        INTNETSgInitTempSegs(pSG, pBuf->len, cSegs, 0 /*cSegsUsed*/);
+        IntNetSgInitTempSegs(pSG, pBuf->len, cSegs, 0 /*cSegsUsed*/);
     else
-        INTNETSgInitTempSegsGso(pSG, pBuf->len, cSegs, 0 /*cSegsUsed*/, pGsoCtx);
+        IntNetSgInitTempSegsGso(pSG, pBuf->len, cSegs, 0 /*cSegsUsed*/, pGsoCtx);
 
 #ifdef VBOXNETFLT_SG_SUPPORT
     pSG->aSegs[0].cb = skb_headlen(pBuf);

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-freebsd.c 28666 2010-04-23 17:25:58Z vboxsync $ */
+/* $Id: VBoxNetFlt-freebsd.c 28714 2010-04-25 20:04:02Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), FreeBSD Specific Code.
  */
@@ -188,7 +188,7 @@ static void vboxNetFltFreeBSDMBufToSG(PVBOXNETFLTINS pThis, struct mbuf *m, PINT
     unsigned int i;
     struct mbuf *m0;
 
-    INTNETSgInitTempSegs(pSG, m_length(m, NULL), cSegs, 0 /*cSegsUsed*/);
+    IntNetSgInitTempSegs(pSG, m_length(m, NULL), cSegs, 0 /*cSegsUsed*/);
 
     for (m0 = m, i = segOffset; m0; m0 = m0->m_next)
     {

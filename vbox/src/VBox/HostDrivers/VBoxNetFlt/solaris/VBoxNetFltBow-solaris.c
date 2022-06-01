@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 28666 2010-04-23 17:25:58Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 28714 2010-04-25 20:04:02Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -480,7 +480,7 @@ LOCAL int vboxNetFltSolarisMBlkToSG(PVBOXNETFLTINS pThis, mblk_t *pMsg, PINTNETS
     /*
      * Convert the message block to segments. Works cbTotal and sets cSegsUsed.
      */
-    INTNETSgInitTempSegs(pSG, 0 /*cbTotal*/, cSegs, 0 /*cSegsUsed*/);
+    IntNetSgInitTempSegs(pSG, 0 /*cbTotal*/, cSegs, 0 /*cSegsUsed*/);
     mblk_t *pCur = pMsg;
     unsigned iSeg = 0;
     while (pCur)
