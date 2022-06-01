@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 29622 2010-05-18 12:29:44Z vboxsync $ */
+/* $Id: PGMPhys.cpp 29623 2010-05-18 12:33:07Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -988,6 +988,7 @@ VMMR3DECL(int) PGMR3QueryVMMMemoryStats(PVM pVM, uint64_t *puTotalAllocSize, uin
     if (puTotalSharedSize)
         *puTotalSharedSize = cSharedPages * _4K;
 
+    Log(("PGMR3QueryVMMMemoryStats: all=%x free=%x ballooned=%x shared=%x\n", cAllocPages, cFreePages, cBalloonPages, cSharedPages));
     return VINF_SUCCESS;
 }
 
