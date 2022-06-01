@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 27680 2010-03-24 18:28:43Z vboxsync $ */
+/* $Id: MachineImpl.cpp 27685 2010-03-24 19:27:23Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -4712,6 +4712,14 @@ STDMETHODIMP Machine::GetCPUStatus(ULONG aCpu, BOOL *aCpuAttached)
 
     return S_OK;
 }
+
+STDMETHODIMP Machine::ReadLog(ULONG /*aIdx*/, ULONG64 /*aOffset*/, ULONG64 /*aSize*/, ComSafeArrayOut(BYTE, aData))
+{
+    CheckComArgExpr(aData, !ComSafeArrayOutIsNull(aData));
+
+    ReturnComNotImplemented();
+}
+
 
 // public methods for internal purposes
 /////////////////////////////////////////////////////////////////////////////

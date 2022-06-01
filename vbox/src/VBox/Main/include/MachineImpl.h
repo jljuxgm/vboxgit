@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 27677 2010-03-24 17:21:51Z vboxsync $ */
+/* $Id: MachineImpl.h 27685 2010-03-24 19:27:23Z vboxsync $ */
 
 /** @file
  *
@@ -505,6 +505,7 @@ public:
     STDMETHOD(HotPlugCPU(ULONG aCpu));
     STDMETHOD(HotUnplugCPU(ULONG aCpu));
     STDMETHOD(GetCPUStatus(ULONG aCpu, BOOL *aCpuAttached));
+    STDMETHOD(ReadLog(ULONG aIdx, ULONG64 aOffset, ULONG64 aSize, ComSafeArrayOut(BYTE, aData)));
 
     // public methods only for internal purposes
 
