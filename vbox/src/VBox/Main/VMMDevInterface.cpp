@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 29404 2010-05-12 10:11:28Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 29518 2010-05-17 10:06:22Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -283,8 +283,12 @@ DECLCALLBACK(void) vmmdevUpdatePointerShape(PPDMIVMMDEVCONNECTOR pInterface, boo
     PDRVMAINVMMDEV pDrv = PDMIVMMDEVCONNECTOR_2_MAINVMMDEV(pInterface);
 
     /* tell the console about it */
+    size_t cbShapeSize = (width + 7) / 8 * height; /* size of the AND mask */
+    cbShapeSize = ((cbShapeSize + 3) & ~3) + width * 4 * height; /* + gap + size of the XOR mask */
+    com::SafeArray<BYTE> shapeData(cbShapeSize);
+    ::memcpy(shapeData.raw(), pShape, cbShapeSize);
     pDrv->pVMMDev->getParent()->onMousePointerShapeChange(fVisible, fAlpha,
-                                                          xHot, yHot, width, height, pShape);
+                                                          xHot, yHot, width, height, ComSafeArrayAsInParam(shapeData));
 }
 
 DECLCALLBACK(int) iface_VideoAccelEnable(PPDMIVMMDEVCONNECTOR pInterface, bool fEnable, VBVAMEMORY *pVbvaMemory)
