@@ -1,4 +1,4 @@
-; $Id: memcmp.asm 28800 2010-04-27 08:22:32Z vboxsync $
+; $Id: memcmp.asm 30255 2010-06-16 14:55:17Z vboxsync $
 ;; @file
 ; IPRT - No-CRT memcmp - AMD64 & X86.
 ;
@@ -104,8 +104,8 @@ RT_NOCRT_BEGINPROC memcmp
     mov     ecx, 8
     sub     rsi, 8
     sub     rdi, 8
-.not_equal_byte:
     repe cmpsb
+.not_equal_byte:
     mov     al, [xDI-1]
     movzx   ecx, byte [xSI-1]
     sub     eax, ecx
