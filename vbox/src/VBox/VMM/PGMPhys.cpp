@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 27590 2010-03-22 13:52:58Z vboxsync $ */
+/* $Id: PGMPhys.cpp 27594 2010-03-22 15:03:49Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -815,6 +815,8 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysChangeMemBalloonRendezvous(PVM pVM, P
                 Log(("pgmR3PhysChangeMemBalloonRendezvous: invalid physical page %RGp pPage->u3Type=%d\n", paPhysPage[i], (pPage) ? pPage->uTypeY : 0));
                 break;
             }
+
+            LogFlow(("balloon page: %RGp\n", paPhysPage[i]));
 
             rc = pgmPhysFreePage(pVM, pReq, &cPendingPages, pPage, paPhysPage[i]);
             if (RT_FAILURE(rc))
@@ -3606,7 +3608,7 @@ VMMR3DECL(int) PGMR3PhysTlbGCPhys2Ptr(PVM pVM, RTGCPHYS GCPhys, bool fWritable, 
     if (RT_SUCCESS(rc))
     {
         if (PGM_PAGE_IS_BALLOONED(pPage))
-            rc = VERR_PGM_PHYS_TLB_CATCH_ALL;
+            rc = VINF_PGM_PHYS_TLB_CATCH_WRITE;
         else if (!PGM_PAGE_HAS_ANY_HANDLERS(pPage))
             rc = VINF_SUCCESS;
         else
