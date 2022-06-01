@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 27767 2010-03-29 09:12:24Z vboxsync $ */
+/* $Id: GuestImpl.cpp 27773 2010-03-29 10:11:52Z vboxsync $ */
 
 /** @file
  *
@@ -412,7 +412,7 @@ STDMETHODIMP Guest::ExecuteProgram(IN_BSTR aCommand, ULONG aFlags,
                                    IN_BSTR aArguments, ComSafeArrayIn(IN_BSTR, aEnvironment),
                                    IN_BSTR aStdIn, IN_BSTR aStdOut, IN_BSTR aStdErr,
                                    IN_BSTR aUserName, IN_BSTR aPassword,
-                                   ULONG aTimeoutMS, ULONG* aPID)
+                                   ULONG aTimeoutMS, ULONG *aPID)
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();
