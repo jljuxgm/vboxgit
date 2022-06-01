@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 24667 2009-11-15 12:55:24Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -1432,8 +1432,6 @@ else
   ## @todo kBuild - this ain't working: VBoxPython_DLLSUFF.darwin = .so
   VBoxPython_DLLSUFF = .so
  endif
- VBoxPython_CFLAGS.darwin   = $(VBOX_PYTHON_FRAMEWORK)
- VBoxPython_CXXFLAGS.darwin = $(VBOX_PYTHON_FRAMEWORK)
  VBoxPython_LDFLAGS.darwin  = $(VBOX_PYTHON_FRAMEWORK)
  VBoxPython_INCS = \
  	python/src \
