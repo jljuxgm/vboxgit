@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 28320 2010-04-14 18:26:24Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 28328 2010-04-14 20:46:56Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -412,10 +412,6 @@ int main()
     GEN_CHECK_OFF(PCNetState, Led);
     GEN_CHECK_OFF(PCNetState, ILeds);
     GEN_CHECK_OFF(PCNetState, pLedsConnector);
-#ifdef VBOX_WITH_TX_THREAD_IN_NET_DEVICES
-    GEN_CHECK_OFF(PCNetState, hSendEventSem);
-    GEN_CHECK_OFF(PCNetState, pSendThread);
-#endif
     GEN_CHECK_OFF(PCNetState, CritSect);
 #ifdef PCNET_NO_POLLING
     GEN_CHECK_OFF(PCNetState, TDRAPhysOld);
@@ -1307,10 +1303,6 @@ int main()
     GEN_CHECK_OFF(E1KSTATE, cs);
 #ifndef E1K_GLOBAL_MUTEX
     GEN_CHECK_OFF(E1KSTATE, csRx);
-#endif
-#ifdef VBOX_WITH_TX_THREAD_IN_NET_DEVICES
-    GEN_CHECK_OFF(E1KSTATE, hTxSem);
-    GEN_CHECK_OFF(E1KSTATE, pTxThread);
 #endif
     GEN_CHECK_OFF(E1KSTATE, addrMMReg);
     GEN_CHECK_OFF(E1KSTATE, macConfigured);
