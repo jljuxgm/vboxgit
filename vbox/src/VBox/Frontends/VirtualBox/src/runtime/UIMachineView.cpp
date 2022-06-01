@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 27068 2010-03-05 10:51:19Z vboxsync $ */
+/* $Id: UIMachineView.cpp 27071 2010-03-05 11:15:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1746,15 +1746,14 @@ void UIMachineView::paintEvent(QPaintEvent *pPaintEvent)
     }
 
 #ifdef VBOX_GUI_USE_QUARTZ2D
-            // TODO_NEW_CORE
-//    if (mode() == VBoxDefs::Quartz2DMode && m_pFrameBuffer)
-//    {
-//        m_pFrameBuffer->paintEvent(pPaintEvent);
+    if (mode() == VBoxDefs::Quartz2DMode && m_pFrameBuffer)
+    {
+        m_pFrameBuffer->paintEvent(pPaintEvent);
 //        updateDockIcon();
-//    }
-//    else
+    }
+    else
 #endif
-//    {
+    {
         /* We have a snapshot for the paused state: */
         QRect r = pPaintEvent->rect().intersect(viewport()->rect());
         /* We have to disable paint on screen if we are using the regular painter: */
@@ -1767,7 +1766,7 @@ void UIMachineView::paintEvent(QPaintEvent *pPaintEvent)
 #ifdef Q_WS_MAC
 //        updateDockIcon();
 #endif
-//    }
+    }
 }
 
 #if defined(Q_WS_WIN32)
