@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 27133 2010-03-06 17:01:36Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 27357 2010-03-15 12:44:05Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -610,7 +610,7 @@ static int CmdDumpHDInfo(int argc, char **argv, ComPtr<IVirtualBox> aVirtualBox,
     }
 
     /* Open the image */
-    rc = VDOpen(pDisk, pszFormat, argv[0], VD_OPEN_FLAGS_NORMAL, NULL);
+    rc = VDOpen(pDisk, pszFormat, argv[0], VD_OPEN_FLAGS_INFO, NULL);
     if (RT_FAILURE(rc))
     {
         RTPrintf("Error while opening the image: %Rrc\n", rc);
