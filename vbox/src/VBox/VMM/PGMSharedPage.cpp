@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 29308 2010-05-10 15:23:09Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 29349 2010-05-11 13:04:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -138,6 +138,8 @@ VMMR3DECL(int) PGMR3SharedModuleRegister(PVM pVM, VBOXOSFAMILY enmGuestOS, char 
 #ifdef VBOX_WITH_PAGE_SHARING
     PGMMREGISTERSHAREDMODULEREQ pReq;
 
+    Log(("PGMR3SharedModuleRegister family=%d name=%s version=%s base=%RGv size=%x cRegions=%d\n", enmGuestOS, pszModuleName, pszVersion, GCBaseAddr, cbModule, cRegions));
+          
     /* Sanity check. */
     AssertReturn(cRegions < VMMDEVSHAREDREGIONDESC_MAX, VERR_INVALID_PARAMETER);
 
@@ -197,6 +199,8 @@ VMMR3DECL(int) PGMR3SharedModuleUnregister(PVM pVM, char *pszModuleName, char *p
 {
 #ifdef VBOX_WITH_PAGE_SHARING
     PGMMUNREGISTERSHAREDMODULEREQ pReq;
+
+    Log(("PGMR3SharedModuleUnregister name=%s version=%s base=%RGv size=%x\n", pszModuleName, pszVersion, GCBaseAddr, cbModule));
 
     pReq = (PGMMUNREGISTERSHAREDMODULEREQ)RTMemAllocZ(sizeof(*pReq));
     AssertReturn(pReq, VERR_NO_MEMORY);
