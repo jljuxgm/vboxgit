@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 29750 2010-05-21 23:25:21Z vboxsync $ */
+/* $Id: VMMDev.cpp 29751 2010-05-21 23:32:23Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1765,7 +1765,7 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
             VMMDevSharedModuleRegistrationRequest *pReqModule = (VMMDevSharedModuleRegistrationRequest *)pRequestHeader;
 
             if (    pRequestHeader->size < sizeof(VMMDevSharedModuleRegistrationRequest)
-                ||  pRequestHeader->size != RT_OFFSETOF(VMMDevSharedModuleRegistrationRequest, aRegions[pReqModule->cRegions]))
+                ||  pRequestHeader->size != RT_UOFFSETOF(VMMDevSharedModuleRegistrationRequest, aRegions[pReqModule->cRegions]))
             {
                 pRequestHeader->rc = VERR_INVALID_PARAMETER;
             }
