@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27926 2010-04-01 08:58:39Z vboxsync $
+# $Id: Makefile.kmk 28010 2010-04-06 14:23:57Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -91,7 +91,7 @@ ifdef VBOX_WITH_GUEST_PROPS
  	WtsApi32.lib \
  	Psapi.lib
  VBoxService_LIBS.solaris += \
- 	nsl
+ 	nsl kstat
 endif
 
 #
