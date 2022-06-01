@@ -1,12 +1,12 @@
-/* $Id: VBoxGuestR3LibRuntimeXF86.cpp 27687 2010-03-24 22:14:20Z vboxsync $ */
+/* $Id: VBoxGuestR3LibRuntimeXF86.cpp 28303 2010-04-14 13:17:56Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
- *   implements the minimum of runtime functions needed for XFree86 driver
- *   code.
+ *                  implements the minimum of runtime functions needed for
+ *                  XFree86 driver code.
  */
 
 /*
- * Copyright (C) 2007-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2007-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -45,6 +45,7 @@ extern "C" {
 # undef size_t
 }
 
+/* This is risky as it restricts call to the ANSI format type specifiers. */
 RTDECL(size_t) RTStrPrintf(char *pszBuffer, size_t cchBuffer, const char *pszFormat, ...)
 {
     va_list args;
@@ -139,3 +140,4 @@ RTDECL(void)    RTMemTmpFree(void *pv)
 {
     xfree(pv);
 }
+
