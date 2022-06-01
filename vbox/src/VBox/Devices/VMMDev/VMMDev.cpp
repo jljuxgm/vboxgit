@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 30033 2010-06-04 12:44:19Z vboxsync $ */
+/* $Id: VMMDev.cpp 30041 2010-06-04 16:24:14Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1837,6 +1837,21 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                 pThis->pDrv->pfnIsPageFusionEnabled(pThis->pDrv, &pReqStatus->fEnabled);
                 pRequestHeader->rc = VINF_SUCCESS;
             }
+            break;
+        }
+
+        case VMMDevReq_DebugIsPageShared:
+        {
+# ifdef DEBUG
+            VMMDevPageIsSharedRequest *pReq = (VMMDevPageIsSharedRequest *)pRequestHeader;
+
+            if (pRequestHeader->size != sizeof(VMMDevPageIsSharedRequest))
+                pRequestHeader->rc = VERR_INVALID_PARAMETER;
+            else
+                pRequestHeader->rc = PGMR3SharedModuleGetPageState(PDMDevHlpGetVM(pDevIns), pReq->GCPtrPage, &pReq->fShared, &pReq->fReadWrite);
+# else
+            pRequestHeader->rc = VERR_NOT_IMPLEMENTED;
+# endif
             break;
         }
 

@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 30013 2010-06-03 14:40:59Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 30041 2010-06-04 16:24:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -171,6 +171,44 @@ VMMR3DECL(int) PGMR3SharedModuleCheckAll(PVM pVM)
 #ifdef VBOX_WITH_PAGE_SHARING
     /* Queue the actual registration as we are under the IOM lock right now. Perform this operation on the way out. */
     return VMR3ReqCallNoWait(pVM, VMMGetCpuId(pVM), (PFNRT)pgmR3CheckSharedModulesHelper, 1, pVM);
+#else
+    return VERR_NOT_IMPLEMENTED;
+#endif
+}
+
+/**
+ * Query the state of a page in a shared module
+ *
+ * @returns VBox status code.
+ * @param   pVM                 VM handle
+ * @param   GCPtrPage           Page address
+ * @param   pfShared            Shared status (out)
+ * @param   pfReadWrite         Read/write status (out)
+ */
+VMMR3DECL(int) PGMR3SharedModuleGetPageState(PVM pVM, RTGCPTR GCPtrPage, bool *pfShared, bool *pfReadWrite)
+{
+#if defined(VBOX_WITH_PAGE_SHARING) && defined(DEBUG)
+    /* Debug only API for the page fusion testcase. */
+    RTGCPHYS GCPhys;
+    uint64_t fFlags;
+
+    pgmLock(pVM);
+
+    int rc = PGMGstGetPage(VMMGetCpu(pVM), GCPtrPage, &fFlags, &GCPhys);
+    if (rc == VINF_SUCCESS)
+    {
+        PPGMPAGE pPage = pgmPhysGetPage(&pVM->pgm.s, GCPhys);
+        if (pPage)
+        {
+            *pfShared    = PGM_PAGE_IS_SHARED(pPage);
+            *pfReadWrite = !!(fFlags & X86_PTE_RW);
+        }
+        else
+            rc = VERR_PGM_INVALID_GC_PHYSICAL_ADDRESS;
+    }
+
+    pgmUnlock(pVM);
+    return rc;
 #else
     return VERR_NOT_IMPLEMENTED;
 #endif
