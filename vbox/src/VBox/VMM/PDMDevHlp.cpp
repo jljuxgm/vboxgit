@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 29521 2010-05-17 10:14:22Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 30129 2010-06-09 16:20:30Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1035,7 +1035,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_PCIRegister(PPDMDEVINS pDevIns, PPCIDEVICE 
     }
     if (pBus->pDevInsR3)
     {
-        if (pDevIns->pReg->fFlags & PDM_DEVREG_FLAGS_RC)
+        if (pDevIns->pReg->fFlags & PDM_DEVREG_FLAGS_R0)
             pDevIns->Internal.s.pPciBusR0 = MMHyperR3ToR0(pVM, pDevIns->Internal.s.pPciBusR3);
         else
             pDevIns->Internal.s.pPciBusR0 = NIL_RTR0PTR;
