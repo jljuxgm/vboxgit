@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 28279 2010-04-14 00:52:05Z vboxsync $ */
+/* $Id: UIMachineView.cpp 28291 2010-04-14 10:47:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -615,8 +615,12 @@ void UIMachineView::prepareFrameBuffer()
 #endif
         {
             m_pFrameBuffer->AddRef();
-            display.SetFramebuffer(m_uScreenId, CFramebuffer(m_pFrameBuffer));
         }
+
+#ifdef VBOX_WITH_VIDEOHWACCEL
+        /* always perform SetFramebuffer to ensure 3D gets notified */
+#endif
+        display.SetFramebuffer(m_uScreenId, CFramebuffer(m_pFrameBuffer));
     }
 }
 
