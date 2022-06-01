@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 24508 2009-11-09 14:44:12Z vboxsync $ */
+/* $Id: VMInternal.h 24738 2009-11-17 21:33:54Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -197,6 +197,14 @@ typedef struct VMINTUSERPERVM
     STAMCOUNTER                     StatReqFree;
     /** Number of times the request was actually freed. */
     STAMCOUNTER                     StatReqFreeOverflow;
+    /** Number of requests served. */
+    STAMCOUNTER                     StatReqProcessed;
+    /** Number of times there are more than one request and the others needed to be
+     * pushed back onto the list. */
+    STAMCOUNTER                     StatReqMoreThan1;
+    /** Number of times we've raced someone when pushing the other requests back
+     * onto the list. */
+    STAMCOUNTER                     StatReqPushBackRaces;
 #endif
 
     /** Pointer to the support library session.
