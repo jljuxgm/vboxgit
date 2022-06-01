@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 29579 2010-05-17 17:23:00Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1445,7 +1445,7 @@ static DECLCALLBACK(int) drvR3IntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
     if (OpenReq.cbSend < 128)
         return PDMDRV_SET_ERROR(pDrvIns, rc,
                                 N_("Configuration error: The \"SendBufferSize\" value is too small"));
-    if (OpenReq.cbSend < VBOX_MAX_GSO_SIZE * 4)
+    if (OpenReq.cbSend < VBOX_MAX_GSO_SIZE * 3)
         LogRel(("DrvIntNet: Warning! SendBufferSize=%u, Recommended minimum size %u butes.\n", OpenReq.cbSend, VBOX_MAX_GSO_SIZE * 4));
 
     /** @cfgm{IsService, boolean, true}
