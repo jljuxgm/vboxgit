@@ -1,4 +1,4 @@
-/* $Id: once.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: once.cpp 27763 2010-03-27 23:55:02Z vboxsync $ */
 /** @file
  * IPRT - Execute Once.
  */
@@ -119,7 +119,7 @@ RTDECL(int) RTOnce(PRTONCE pOnce, PFNRTONCE pfnOnce, void *pvUser1, void *pvUser
                  * the init code, if it isn't valid just do the yield/sleep thing.
                  */
                 RTSEMEVENTMULTI hEventMulti;
-                ASMAtomicUoReadSize(&pOnce->hEventMulti, &hEventMulti);
+                ASMAtomicUoReadHandle(&pOnce->hEventMulti, &hEventMulti);
                 if (hEventMulti != NIL_RTSEMEVENTMULTI)
                 {
                     fYieldSleep = false;
