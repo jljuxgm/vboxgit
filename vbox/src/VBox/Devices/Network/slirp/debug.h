@@ -1,4 +1,4 @@
-/* $Id: debug.h 28449 2010-04-19 09:52:59Z vboxsync $ */
+/* $Id: debug.h 28450 2010-04-19 09:59:27Z vboxsync $ */
 /** @file
  * NAT - debug helpers (declarations/defines).
  */
@@ -20,6 +20,8 @@
  */
 
 /*
+ * This code is based on:
+ *
  * Copyright (c) 1995 Danny Gasparovski.
  *
  * Please read the file COPYRIGHT for the
