@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 25748 2010-01-12 10:27:27Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -50,7 +50,7 @@
  * Define this to enable the deadlock detection when accessing physical memory.
  */
 #if /*defined(DEBUG_bird) ||*/ defined(DOXYGEN_RUNNING)
-# define PDM_DEVHLP_DEADLOCK_DETECTION
+# define PDM_DEVHLP_DEADLOCK_DETECTION /**< @todo enable DevHlp deadlock detection! */
 #endif
 
 

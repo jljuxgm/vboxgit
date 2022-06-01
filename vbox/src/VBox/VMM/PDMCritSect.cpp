@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 25748 2010-01-12 10:27:27Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -138,7 +138,11 @@ static int pdmR3CritSectInitOne(PVM pVM, PPDMCRITSECTINT pCritSect, void *pvKey,
             pCritSect->Core.pValidatorRec = NULL;
 #else
             rc = RTLockValidatorRecExclCreate(&pCritSect->Core.pValidatorRec,
+# ifdef RT_LOCK_STRICT_ORDER
                                               RTLockValidatorClassForSrcPos(RT_SRC_POS_ARGS, "%s", pszName),
+# else
+                                              NIL_RTLOCKVALCLASS,
+# endif
                                               RTLOCKVAL_SUB_CLASS_NONE,
                                               pCritSect, true, "%s", pszName);
 #endif

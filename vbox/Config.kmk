@@ -1,4 +1,4 @@
-# $Id: Config.kmk 25633 2010-01-04 09:56:57Z vboxsync $
+# $Id: Config.kmk 25748 2010-01-12 10:27:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -546,9 +546,12 @@ endif
 if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  VBOX_WITH_VMMR0_DISABLE_PREEMPTION = 1
 endif
+## For testing deadlock detection and lock order validation.
+# (Temporary, will be made default for debug and strict builds soon.)
+if1of ($(KBUILD_TARGET),)
+ VBOX_WITH_STRICT_LOCKS = 1
+endif
 
-## Enabled the live migration API changes.
-#VBOX_WITH_LIVE_MIGRATION = 1
 
 #
 # Branding
@@ -1146,6 +1149,9 @@ ifdef VBOX_PATH_SHARED_LIBS
 endif
 ifdef VBOX_PATH_APP_DOCS
  DEFS += RTPATH_APP_DOCS=\"$(VBOX_PATH_APP_DOCS)\"
+endif
+ifdef VBOX_WITH_STRICT_LOCKS
+ DEFS += RT_LOCK_STRICT RT_LOCK_STRICT_ORDER
 endif
 
 #
@@ -3900,7 +3906,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25633 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25748 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

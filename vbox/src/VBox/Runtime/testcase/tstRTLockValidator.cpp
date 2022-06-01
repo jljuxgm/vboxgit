@@ -1,4 +1,4 @@
-/* $Id: tstRTLockValidator.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
+/* $Id: tstRTLockValidator.cpp 25748 2010-01-12 10:27:27Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTLockValidator.
  */
@@ -1199,7 +1199,7 @@ static bool testIsLockValidationCompiledIn(void)
     RTTEST_CHECK_RC_OK_RET(g_hTest, RTSemRWReleaseRead(hSemRW), false);
     RTTEST_CHECK_RC_OK_RET(g_hTest, RTSemRWDestroy(hSemRW), false);
 
-#if 0 /** @todo detect it on RTSemMutex... */
+#if 0 /** @todo detect it on RTSemMutex... wrong locking order? */
     RTSEMMUTEX hSemMtx;
     RTTEST_CHECK_RC_OK_RET(g_hTest, RTSemMutexCreate(&hSemRW), false);
     RTTEST_CHECK_RC_OK_RET(g_hTest, RTSemMutexRequest(hSemRW, 50), false);
@@ -1252,7 +1252,7 @@ int main()
             : RTTestSkipAndDestroy(g_hTest, "deadlock detection is not compiled in");
     RTLockValidatorSetQuiet(false);
 
-    bool fTestDd = false;//true;
+    bool fTestDd = true;
     bool fTestLo = true;
 
     /*
