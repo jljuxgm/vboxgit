@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 28764 2010-04-26 16:12:49Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 28765 2010-04-26 16:15:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3090,7 +3090,7 @@ HRESULT Console::doMediumChange(IMediumAttachment *aMediumAttachment, bool fForc
     rc = ctrl->COMGETTER(Instance)(&uInstance);
     AssertComRC(rc);
     IoBackendType_T enmIoBackend;
-    rc = ctrl->COMGETTER(Bus)(&enmIoBackend);
+    rc = ctrl->COMGETTER(IoBackend)(&enmIoBackend);
     AssertComRC(rc);
 
     /* protect mpVM */
