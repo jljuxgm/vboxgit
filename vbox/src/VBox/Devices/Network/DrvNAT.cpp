@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 28275 2010-04-13 19:40:10Z vboxsync $ */
+/* $Id: DrvNAT.cpp 28365 2010-04-15 14:43:22Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1180,15 +1180,11 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
                                    "network '%s' describes not a valid IPv4 network"),
                                    pDrvIns->iInstance, szNetwork);
 
-    char szNetAddr[16];
-    RTStrPrintf(szNetAddr, sizeof(szNetAddr), "%d.%d.%d.%d",
-               (Network & 0xFF000000) >> 24, (Network & 0xFF0000) >> 16,
-               (Network & 0xFF00) >> 8, Network & 0xFF);
-
     /*
      * Initialize slirp.
      */
-    rc = slirp_init(&pThis->pNATState, &szNetAddr[0], Netmask, fPassDomain, !!fUseHostResolver, pThis);
+    rc = slirp_init(&pThis->pNATState, RT_H2N_U32(Network), Netmask,
+                    fPassDomain, !!fUseHostResolver, pThis);
     if (RT_SUCCESS(rc))
     {
         slirp_set_dhcp_TFTP_prefix(pThis->pNATState, pThis->pszTFTPPrefix);
