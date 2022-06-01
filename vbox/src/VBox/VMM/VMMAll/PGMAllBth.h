@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 26616 2010-02-17 15:44:15Z vboxsync $ */
+/* $Id: PGMAllBth.h 26619 2010-02-17 16:14:42Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2969,6 +2969,7 @@ PGM_BTH_DECL(int, SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RTGCPTR 
                      || PGM_PAGE_GET_TYPE(pPage)  != PGMPAGETYPE_RAM
                      || PGM_PAGE_GET_STATE(pPage) == PGM_PAGE_STATE_ALLOCATED)
                 {
+                    LogFlow(("Found page with wrong attributes; cancel check. rc=%d\n", rc));
                     break;
                 }
                 Assert(PGM_PAGE_GET_PDE_TYPE(pPage) == PGM_PAGE_PDE_TYPE_DONTCARE);
@@ -2991,6 +2992,8 @@ PGM_BTH_DECL(int, SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RTGCPTR 
                     Assert(PGM_PAGE_GET_STATE(pPage) == PGM_PAGE_STATE_ALLOCATED);
                     HCPhys = PGM_PAGE_GET_HCPHYS(pPage);
                 }
+                else
+                    LogFlow(("pgmPhysAllocLargePage failed with %Rrc\n", rc));
             }
         }
 
