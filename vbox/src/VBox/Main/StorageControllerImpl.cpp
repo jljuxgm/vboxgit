@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 25198 2009-12-04 17:53:00Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 25199 2009-12-04 17:57:40Z vboxsync $ */
 
 /** @file
  *
@@ -87,6 +87,9 @@ struct BackupableStorageControllerData
 
 struct StorageController::Data
 {
+    Data()
+    { }
+
     const ComObjPtr<Machine, ComWeakRef>    pParent;
     const ComObjPtr<StorageController>      pPeer;
 
