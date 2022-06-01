@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 25834 2010-01-14 16:21:05Z vboxsync $ */
+/* $Id: HostImpl.cpp 25836 2010-01-14 16:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -151,7 +151,7 @@ struct Host::Data
 {
     Data()
 #ifdef VBOX_WITH_USB
-        : usbListsLock(LOCKCLASS_HOSTLIST)
+        : usbListsLock(LOCKCLASS_USBLIST)
 #endif
     {};
 
