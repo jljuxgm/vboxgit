@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DevAPIC.cpp 28952 2010-05-01 21:03:41Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -918,7 +918,7 @@ PDMBOTHCBDECL(int) apicReadMSR(PPDMDEVINS pDevIns, VMCPUID idCpu, uint32_t u32Re
             break;
         case 0x30:
             /* Here one of the differences with regular APIC: ICR is single 64-bit register */
-            val = ((uint64_t)apic->icr[0x31] << 32) | apic->icr[0x30];
+            val = ((uint64_t)apic->icr[1] << 32) | apic->icr[0];
             break;
         case 0x32: case 0x33: case 0x34: case 0x35: case 0x36: case 0x37:
             val = apic->lvt[index - 0x32];
