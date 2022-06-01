@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 24341 2009-11-04 15:23:59Z vboxsync $ */
+/* $Id: fileio-win.cpp 24889 2009-11-24 11:09:45Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -786,6 +786,13 @@ RTR3DECL(int) RTFileSetMode(RTFILE File, RTFMODE fMode)
         return rc;
     }
     return VINF_SUCCESS;
+}
+
+
+RTR3DECL(int) RTFileQueryFsSizes(RTFILE hFile, PRTFOFF pcbTotal, RTFOFF *pcbFree,
+                                 uint32_t *pcbBlock, uint32_t *pcbSector)
+{
+    return VERR_NOT_SUPPORTED;
 }
 
 
