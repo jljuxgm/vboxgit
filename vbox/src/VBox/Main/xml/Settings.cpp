@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 29480 2010-05-14 15:24:19Z vboxsync $ */
+/* $Id: Settings.cpp 29593 2010-05-18 07:23:46Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4001,6 +4001,12 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
               || hardwareMachine.keyboardHidType != KeyboardHidType_PS2Keyboard
               || hardwareMachine.fHpetEnabled
             )
+       )
+        m->sv = SettingsVersion_v1_10;
+
+    // VirtualBox 3.2 adds support for page fusion
+    if (    m->sv < SettingsVersion_v1_10
+        &&  hardwareMachine.fPageFusionEnabled
        )
         m->sv = SettingsVersion_v1_10;
 
