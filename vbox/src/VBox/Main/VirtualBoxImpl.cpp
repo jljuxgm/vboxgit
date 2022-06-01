@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 27677 2010-03-24 17:21:51Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 27681 2010-03-24 18:32:27Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -515,7 +515,8 @@ HRESULT VirtualBox::initMachines()
                                 Machine::Init_Registered,
                                 NULL,
                                 NULL,
-                                FALSE,
+                                FALSE, /* aOverride */
+                                FALSE, /* aNameSync */
                                 &uuid);
             if (SUCCEEDED(rc))
                 rc = registerMachine(pMachine);
