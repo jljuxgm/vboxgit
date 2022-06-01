@@ -1,10 +1,10 @@
-/* $Id: PGMHandler.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PGMHandler.cpp 30326 2010-06-21 12:35:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

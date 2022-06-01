@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PATM.cpp 30326 2010-06-21 12:35:33Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -6135,7 +6135,7 @@ VMMR3DECL(int) PATMR3HandleTrap(PVM pVM, PCPUMCTX pCtx, RTRCPTR pEip, RTGCPTR *p
             }
 
             /* Typical pushf (most patches)/push (call patch) trap because of a monitored page. */
-            rc = PGMShwModifyPage(pVCpu, pCtx->esp, 1, X86_PTE_RW, ~(uint64_t)X86_PTE_RW);
+            rc = PGMShwMakePageWritable(pVCpu, pCtx->esp, 0 /*fFlags*/);
             AssertMsgRC(rc, ("PGMShwModifyPage -> rc=%Rrc\n", rc));
             if (rc == VINF_SUCCESS)
             {

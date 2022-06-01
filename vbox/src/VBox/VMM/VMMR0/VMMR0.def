@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 29902 2010-05-31 12:56:31Z vboxsync $
+; $Id: VMMR0.def 30326 2010-06-21 12:35:33Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -28,7 +28,7 @@ EXPORTS
     PDMQueueAlloc
     PDMQueueInsert
     PGMHandlerPhysicalPageTempOff
-    PGMShwModifyPage
+    PGMShwMakePageWritable
     PGMPhysSimpleWriteGCPhys
     PGMPhysSimpleReadGCPtr
     PGMPhysSimpleWriteGCPtr

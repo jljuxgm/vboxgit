@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PGMShw.h 30326 2010-06-21 12:35:33Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -122,7 +122,7 @@ PGM_SHW_DECL(int, Exit)(PVMCPU pVCpu);
 
 /* all */
 PGM_SHW_DECL(int, GetPage)(PVMCPU pVCpu, RTGCPTR GCPtr, uint64_t *pfFlags, PRTHCPHYS pHCPhys);
-PGM_SHW_DECL(int, ModifyPage)(PVMCPU pVCpu, RTGCPTR GCPtr, size_t cb, uint64_t fFlags, uint64_t fMask);
+PGM_SHW_DECL(int, ModifyPage)(PVMCPU pVCpu, RTGCPTR GCPtr, size_t cb, uint64_t fFlags, uint64_t fMask, uint32_t fOpFlags);
 RT_C_DECLS_END
 
 

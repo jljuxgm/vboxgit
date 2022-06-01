@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 30301 2010-06-18 08:39:09Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 30326 2010-06-21 12:35:33Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1331,7 +1331,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
             rc = PGMHandlerPhysicalPageTempOff(pVM, pPage->GCPhys, pPage->GCPhys);
             if (rc == VINF_SUCCESS)
             {
-                rc = PGMShwModifyPage(pVCpu, pvFault, 1, X86_PTE_RW, ~(uint64_t)X86_PTE_RW);
+                rc = PGMShwMakePageWritable(pVCpu, pvFault, PGM_MK_PG_IS_WRITE_FAULT);
                 AssertMsg(rc == VINF_SUCCESS
                         /* In the SMP case the page table might be removed while we wait for the PGM lock in the trap handler. */
                         ||  rc == VERR_PAGE_TABLE_NOT_PRESENT
