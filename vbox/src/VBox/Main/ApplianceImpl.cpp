@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 24046 2009-10-23 17:46:20Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 24048 2009-10-23 17:53:21Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1509,7 +1509,7 @@ int Appliance::importFS(TaskImportOVF *pTask)
                                    tr("Invalid SCSI controller type \"%s\""),
                                    hdcVBox.c_str());
 
-                rc = pNewMachine->AddStorageController(Bstr("SCSI"), StorageBus_SCSI, pController.asOutParam());
+                rc = pNewMachine->AddStorageController(Bstr("SCSI Controller"), StorageBus_SCSI, pController.asOutParam());
                 if (FAILED(rc)) throw rc;
                 rc = pController->COMSETTER(ControllerType)(controllerType);
                 if (FAILED(rc)) throw rc;
