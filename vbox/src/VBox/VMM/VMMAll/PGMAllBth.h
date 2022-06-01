@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 24207 2009-10-30 16:21:35Z vboxsync $ */
+/* $Id: PGMAllBth.h 24208 2009-10-30 16:23:42Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -964,7 +964,6 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
 #if    PGM_WITH_PAGING(PGM_GST_TYPE, PGM_SHW_TYPE)   \
     && PGM_SHW_TYPE != PGM_TYPE_NESTED \
     && PGM_SHW_TYPE != PGM_TYPE_EPT
-    int rc;
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
 
@@ -983,6 +982,7 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
      */
     return VINF_SUCCESS;
 # else
+    int rc;
 
     /*
      * Get the shadow PD entry and skip out if this PD isn't present.
