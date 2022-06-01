@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 26408 2010-02-10 13:49:52Z vboxsync $ */
+/* $Id: DevE1000.cpp 26574 2010-02-16 12:44:10Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4694,7 +4694,7 @@ static DECLCALLBACK(int) e1kLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32
         //SSMR3GetBool(pSSM, pState->fDelayInts);
         //SSMR3GetBool(pSSM, pState->fIntMaskUsed);
         SSMR3GetU16(pSSM, &pState->u16TxPktLen);
-        SSMR3GetMem(pSSM, &pState->aTxPacket, pState->u16TxPktLen);
+        SSMR3GetMem(pSSM, &pState->aTxPacket[0], pState->u16TxPktLen);
         SSMR3GetBool(pSSM, &pState->fIPcsum);
         SSMR3GetBool(pSSM, &pState->fTCPcsum);
         SSMR3GetMem(pSSM, &pState->contextTSE, sizeof(pState->contextTSE));

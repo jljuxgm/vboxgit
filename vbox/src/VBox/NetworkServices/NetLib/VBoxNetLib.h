@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLib.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: VBoxNetLib.h 26574 2010-02-16 12:44:10Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet Client Library.
  */
@@ -50,7 +50,7 @@ typedef VBOXNETUDPHDRS *PVBOXNETUDPHDRS;
 #define VBOXNETUDP_MATCH_PRINT_STDERR       RT_BIT_32(31)
 /** @}  */
 
-void *  VBoxNetUDPMatch(PCINTNETBUF pBuf, unsigned uDstPort, PCRTMAC pDstMac, uint32_t fFlags, PVBOXNETUDPHDRS pHdrs, size_t *pcb);
+void *  VBoxNetUDPMatch(PINTNETBUF pBuf, unsigned uDstPort, PCRTMAC pDstMac, uint32_t fFlags, PVBOXNETUDPHDRS pHdrs, size_t *pcb);
 int     VBoxNetUDPUnicast(PSUPDRVSESSION pSession, INTNETIFHANDLE hIf, PINTNETBUF pBuf,
                           RTNETADDRIPV4 SrcIPv4Addr, PCRTMAC SrcMacAddr, unsigned uSrcPort,
                           RTNETADDRIPV4 DstIPv4Addr, PCRTMAC DstMacAddr, unsigned uDstPort,
