@@ -1,6 +1,6 @@
-/* $Id: VBoxVgaFonts.h 29082 2010-05-05 13:52:25Z vboxsync $ */
+/* $Id: VBoxVgaFonts.h 29104 2010-05-05 19:06:09Z vboxsync $ */
 /** @file
- * Some of the VGA-ROM fonts from ftp://ftp.simtel.net/pub/simtelnet/msdos/screen/fntcol16.zip
+ * Some of the VGA-ROM fonts from ftp://ftp.simtel.net/pub/simtelnet/msdos/screen/fntcol16.zip .
  * The package is (C) Joseph (Yossi) Gil.
  * The individual fonts are in the public domain.
  *
