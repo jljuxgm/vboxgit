@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 27499 2010-03-18 20:02:50Z vboxsync $ */
+/* $Id: tcp.cpp 27500 2010-03-18 20:04:37Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -1003,20 +1003,15 @@ int rtSocketSetOpt(RTSOCKET hSocket, int iLevel, int iOption, void const *pvValu
 
 /**
  * Atomicly updates a socket variable.
- * @returns The old value.
- * @param   pSock   The socket variable to update.
- * @param   Sock    The new value.
+ * @returns The old handle value.
+ * @param   phSock          The socket handle variable to update.
+ * @param   hSock           The new socket handle value.
  */
-DECLINLINE(RTSOCKET) rtTcpAtomicXchgSock(RTSOCKET volatile *pSock, const RTSOCKET Sock)
+DECLINLINE(RTSOCKET) rtTcpAtomicXchgSock(RTSOCKET volatile *phSock, const RTSOCKET hNew)
 {
-    switch (sizeof(RTSOCKET))
-    {
-        case 4: return (RTSOCKET)ASMAtomicXchgS32((int32_t volatile *)pSock, (int32_t)(uintptr_t)Sock);
-        case 8: return (RTSOCKET)ASMAtomicXchgS64((int64_t volatile *)pSock, (int64_t)(uintptr_t)Sock);
-        default:
-            AssertReleaseFailed();
-            return NIL_RTSOCKET;
-    }
+    RTSOCKET hRet;
+    ASMAtomicXchgHandle(phSock, hNew, &hRet);
+    return hRet;
 }
 
 
