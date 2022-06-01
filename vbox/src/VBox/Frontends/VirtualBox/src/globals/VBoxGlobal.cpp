@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 27819 2010-03-30 12:17:16Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 28019 2010-04-06 17:12:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2982,7 +2982,7 @@ QString VBoxGlobal::languageCountryEnglish() const
  */
 QString VBoxGlobal::languageTranslators() const
 {
-    return qApp->translate ("@@@", VBOX_VENDOR,
+    return qApp->translate ("@@@", "Oracle Corporation",
                             "Comma-separated list of translators");
 }
 

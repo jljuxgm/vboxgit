@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSettingsLanguage.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
+/* $Id: VBoxGLSettingsLanguage.cpp 28019 2010-04-06 17:12:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -71,7 +71,7 @@ public:
             "(empty if native country name is empty)");
 
         QString translatorsName = tratra (aTranslator,
-            "@@@", VBOX_VENDOR, "Comma-separated list of translators");
+            "@@@", "Oracle Corporation", "Comma-separated list of translators");
 
         QString itemName = nativeLanguage;
         QString langName = englishLanguage;
