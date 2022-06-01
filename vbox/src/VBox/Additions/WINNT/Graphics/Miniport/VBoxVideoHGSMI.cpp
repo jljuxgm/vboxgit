@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 28031 2010-04-07 08:00:22Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 28228 2010-04-12 22:54:53Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -955,6 +955,50 @@ VOID VBoxSetupDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension,
             if (RT_FAILURE(rc))
                 vboxVdmaDestroy(PrimaryExtension, &PrimaryExtension->u.primary.Vdma);
         }
+
+#ifdef VBOXWDDM_RENDER_FROM_SHADOW
+        if (RT_SUCCESS(rc))
+        {
+            ulAvailable = offset;
+            ulSize = ulAvailable / 2;
+            ulSize /= PrimaryExtension->cSources;
+            Assert(ulSize > VBVA_MIN_BUFFER_SIZE);
+            if (ulSize > VBVA_MIN_BUFFER_SIZE)
+            {
+                ULONG ulRatio = ulSize/VBVA_MIN_BUFFER_SIZE;
+                ulRatio >>= 4; /* /= 16; */
+                if (ulRatio)
+                    ulSize = VBVA_MIN_BUFFER_SIZE * ulRatio;
+                else
+                    ulSize = VBVA_MIN_BUFFER_SIZE;
+            }
+            else
+            {
+                /* todo: ?? */
+            }
+
+            ulSize &= ~0xFFF;
+            Assert(ulSize);
+
+            Assert(ulSize * PrimaryExtension->cSources < ulAvailable);
+
+            for (int i = PrimaryExtension->cSources-1; i >= 0; --i)
+            {
+                offset -= ulSize;
+                rc = vboxVbvaCreate(PrimaryExtension, &PrimaryExtension->aSources[i].Vbva, offset, ulSize, i);
+                AssertRC(rc);
+                if (RT_SUCCESS(rc))
+                {
+                    rc = vboxVbvaEnable(PrimaryExtension, &PrimaryExtension->aSources[i].Vbva);
+                    AssertRC(rc);
+                    if (RT_FAILURE(rc))
+                    {
+                        /* @todo: de-initialize */
+                    }
+                }
+            }
+        }
+#endif
 
         if (RT_FAILURE(rc))
             PrimaryExtension->u.primary.bHGSMI = FALSE;
