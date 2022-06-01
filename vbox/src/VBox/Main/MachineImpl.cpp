@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 24560 2009-11-10 16:44:42Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24619 2009-11-12 18:34:53Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -9323,11 +9323,13 @@ STDMETHODIMP SessionMachine::PushGuestProperty(IN_BSTR aName,
                                              RTSTR_MAX,
                                              utf8Name.raw(),
                                              RTSTR_MAX, NULL)
-        )
+           )
+        {
             mParent->onGuestPropertyChange(mData->mUuid,
                                            aName,
                                            aValue,
                                            aFlags);
+        }
     }
     catch(std::bad_alloc &)
     {
