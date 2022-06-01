@@ -1,4 +1,4 @@
-/* $Id: packspu_texture.c 20509 2009-06-12 12:51:06Z vboxsync $ */
+/* $Id: packspu_texture.c 26048 2010-01-26 14:21:26Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -29,4 +29,10 @@ void PACKSPU_APIENTRY packspu_ActiveTextureARB(GLenum texture)
 {
     crStateActiveTextureARB(texture);
     crPackActiveTextureARB(texture);
+}
+
+void PACKSPU_APIENTRY packspu_BindTexture(GLenum target, GLuint texture)
+{
+    crStateBindTexture(target, texture);
+    crPackBindTexture(target, texture);
 }
