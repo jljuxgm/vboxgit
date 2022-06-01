@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 27168 2010-03-08 14:21:28Z vboxsync $ */
+/* $Id: HWACCM.cpp 27169 2010-03-08 14:21:55Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1293,7 +1293,7 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
 #if HC_ARCH_BITS == 64
                     if (pVM->hwaccm.s.fLargePages)
                     {
-                        /* Use large (2 MB) pages for our EPT PDEs where possible. */
+                        /* Use large (2 MB) pages for our nested paging PDEs where possible. */
                         PGMSetLargePageUsage(pVM, true);
                         LogRel(("HWACCM:    Large page support enabled!\n"));
                     }
