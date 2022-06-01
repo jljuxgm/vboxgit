@@ -1,4 +1,4 @@
-# $Id: Config.kmk 24393 2009-11-05 14:54:53Z vboxsync $
+# $Id: Config.kmk 24435 2009-11-06 12:26:05Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2313,7 +2313,7 @@ ifeq ($(KBUILD_TARGET),solaris)
 VBOX_SOLARIS_SYS_INCS ?= /usr/platform/i86pc/include /usr/include
 
 TEMPLATE_VBOXR0DRV_TOOL                = $(VBOX_GCC_TOOL)
-TEMPLATE_VBOXR0DRV_DEFS                = _KERNEL _STRICT_STDC IN_RING0 IN_RT_R0
+TEMPLATE_VBOXR0DRV_DEFS                = _MACHDEP _KERNEL _STRICT_STDC IN_RING0 IN_RT_R0
 TEMPLATE_VBOXR0DRV_INCS                = $(VBOX_SOLARIS_SYS_INCS)
 TEMPLATE_VBOXR0DRV_LDFLAGS             = -r -dy
 TEMPLATE_VBOXR0DRV_LDFLAGS.amd64       = -64
@@ -3837,7 +3837,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 24393 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 24435 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

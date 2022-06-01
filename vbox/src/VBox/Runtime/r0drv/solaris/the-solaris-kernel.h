@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 24386 2009-11-05 14:17:10Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 24435 2009-11-06 12:26:05Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
@@ -30,8 +30,6 @@
 
 #ifndef ___the_solaris_kernel_h
 #define ___the_solaris_kernel_h
-
-#define _MACHDEP /* needed for cpuset_t and sys/x_call.h */
 
 #include <sys/kmem.h>
 #include <sys/types.h>
