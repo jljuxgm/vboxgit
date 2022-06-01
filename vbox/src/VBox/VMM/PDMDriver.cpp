@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 26175 2010-02-02 22:14:21Z vboxsync $ */
+/* $Id: PDMDriver.cpp 26264 2010-02-05 02:51:28Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -487,12 +487,12 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                                  pNew, pDrv->pReg->szName, pNew->iInstance,
                                  pLun->iLun,
                                  pLun->pDevIns ? pLun->pDevIns->pReg->szName : pLun->pUsbIns->pReg->szName,
-                                 pLun->pDevIns ? pLun->pDevIns->iInstance             : pLun->pUsbIns->iInstance,
-                                 pDrvAbove, pDrvAbove ? pDrvAbove->pReg->szName : "", pDrvAbove ? pDrvAbove->iInstance : -1));
+                                 pLun->pDevIns ? pLun->pDevIns->iInstance    : pLun->pUsbIns->iInstance,
+                                 pDrvAbove, pDrvAbove ? pDrvAbove->pReg->szName : "", pDrvAbove ? pDrvAbove->iInstance : UINT32_MAX));
                         else
                             Log(("PDM: Attached driver %p:'%s'/%d, pDrvAbove=%p:'%s'/%d\n",
                                  pNew, pDrv->pReg->szName, pNew->iInstance,
-                                 pDrvAbove, pDrvAbove ? pDrvAbove->pReg->szName : "", pDrvAbove ? pDrvAbove->iInstance : -1));
+                                 pDrvAbove, pDrvAbove ? pDrvAbove->pReg->szName : "", pDrvAbove ? pDrvAbove->iInstance : UINT32_MAX));
                     }
                     else
                         pdmR3DrvDestroyChain(pNew, PDM_TACH_FLAGS_NO_CALLBACKS);
