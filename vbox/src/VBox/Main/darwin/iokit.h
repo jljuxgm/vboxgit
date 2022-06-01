@@ -1,4 +1,4 @@
-/* $Id: iokit.h 23134 2009-09-18 14:19:02Z vboxsync $ */
+/* $Id: iokit.h 26331 2010-02-08 16:17:35Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  */
@@ -86,7 +86,7 @@ int             DarwinReEnumerateUSBDevice(PCUSBDEVICE pCur);
 #endif /* VBOX_WITH_USB */
 PDARWINDVD      DarwinGetDVDDrives(void);
 PDARWINETHERNIC DarwinGetEthernetControllers(void);
+int             DarwinSmcKey(char* aKey, uint32_t iKeySize);
 RT_C_DECLS_END
 
 #endif
-

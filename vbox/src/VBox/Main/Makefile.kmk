@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25946 2010-01-20 23:52:24Z vboxsync $
+# $Id: Makefile.kmk 26331 2010-02-08 16:17:35Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -587,7 +587,8 @@ VBoxC_INCS.win      = \
 
 VBoxC_LDFLAGS.darwin = \
 	-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/components/VBoxC.dylib \
-	-exported_symbols_list $(PATH_VBoxC)/VBoxC.def
+	-exported_symbols_list $(PATH_VBoxC)/VBoxC.def \
+	-framework IOKit
 ifdef VBOX_USE_VCC80
  VBoxC_LDFLAGS.win = /MANIFEST
 endif
