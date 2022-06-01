@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 29042 2010-05-04 20:15:16Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 29146 2010-05-06 12:18:21Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -620,7 +620,7 @@ int VBoxServiceControlExecWritePipeBuffer(PVBOXSERVICECTRLEXECPIPEBUF pBuf,
             pBuf->pbData = pNewBuf;
         }
         
-        int rc = VINF_SUCCESS;
+        rc = VINF_SUCCESS;
         if (pBuf->pbData)
         {
             memcpy(pBuf->pbData + pBuf->cbOffset, pbData, cbData);
