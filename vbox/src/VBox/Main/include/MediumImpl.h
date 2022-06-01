@@ -1,11 +1,11 @@
-/* $Id: MediumImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
+/* $Id: MediumImpl.h 26984 2010-03-03 13:07:00Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2008-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2008-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -261,14 +261,13 @@ private:
     /**
      * Performs extra checks if the medium can be closed and returns S_OK in
      * this case. Otherwise, returns a respective error message. Called by
-     * Close() from within this object's AutoMayUninitSpan and from under
-     * mVirtualBox write lock.
+     * Close() under the medium tree lock and the medium lock.
      */
     HRESULT canClose();
 
     /**
-     * Unregisters this medium with mVirtualBox. Called by Close() from within
-     * this object's AutoMayUninitSpan and from under mVirtualBox write lock.
+     * Unregisters this medium with mVirtualBox. Called by Close() under
+     * the medium tree lock.
      */
     HRESULT unregisterWithVirtualBox(bool *pfNeedsSaveSettings);
 
