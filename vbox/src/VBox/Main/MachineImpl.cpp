@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 25903 2010-01-18 18:15:43Z vboxsync $ */
+/* $Id: MachineImpl.cpp 25905 2010-01-18 18:19:07Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2831,7 +2831,7 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
         mediumLock.release();
         alock.release();
 
-        AutoWriteLock(mParent COMMA_LOCKVAL_SRC_POS);
+        AutoWriteLock vboxLock(mParent COMMA_LOCKVAL_SRC_POS);
         mParent->saveSettings();
     }
 
