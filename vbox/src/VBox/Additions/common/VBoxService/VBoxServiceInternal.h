@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 26326 2010-02-08 13:22:24Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 27023 2010-03-04 13:32:45Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -167,7 +167,7 @@ extern int  VBoxServiceWinGetComponentVersions(uint32_t uiClientID);
 #endif /* RT_OS_WINDOWS */
 
 #ifdef VBOXSERVICE_MANAGEMENT
-extern uint32_t VBoxServiceBalloonQuerySize();
+extern uint32_t VBoxServiceBalloonQueryChunks();
 #endif
 
 RT_C_DECLS_END

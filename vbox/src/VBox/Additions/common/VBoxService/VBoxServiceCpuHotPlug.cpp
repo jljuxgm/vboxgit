@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceCpuHotPlug.cpp 26611 2010-02-17 14:29:14Z vboxsync $ */
+/* $Id: VBoxServiceCpuHotPlug.cpp 27023 2010-03-04 13:32:45Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions CPU Hot Plugging Service.
  */
@@ -132,6 +132,10 @@ static DECLCALLBACK(int) VBoxServiceCpuHotPlugPreInit(void)
 /** @copydoc VBOXSERVICE::pfnOption */
 static DECLCALLBACK(int) VBoxServiceCpuHotPlugOption(const char **ppszShort, int argc, char **argv, int *pi)
 {
+    NOREF(ppszShort);
+    NOREF(argc);
+    NOREF(argv);
+    NOREF(pi);
     return VINF_SUCCESS;
 }
 

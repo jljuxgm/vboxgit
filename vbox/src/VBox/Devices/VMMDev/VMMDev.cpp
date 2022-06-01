@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 26350 2010-02-09 09:21:38Z vboxsync $ */
+/* $Id: VMMDev.cpp 27023 2010-03-04 13:32:45Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1358,8 +1358,8 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                 VMMDevGetMemBalloonChangeRequest *memBalloonChangeRequest = (VMMDevGetMemBalloonChangeRequest*)pRequestHeader;
                 /* just pass on the information */
                 Log(("VMMDev: returning memory balloon size =%d\n", pThis->u32MemoryBalloonSize));
-                memBalloonChangeRequest->u32BalloonSize = pThis->u32MemoryBalloonSize;
-                memBalloonChangeRequest->u32PhysMemSize = pThis->cbGuestRAM / (uint64_t)_1M;
+                memBalloonChangeRequest->cBalloonChunks = pThis->u32MemoryBalloonSize;
+                memBalloonChangeRequest->cPhysMemChunks = pThis->cbGuestRAM / (uint64_t)_1M;
 
                 if (memBalloonChangeRequest->eventAck == VMMDEV_EVENT_BALLOON_CHANGE_REQUEST)
                 {
