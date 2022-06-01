@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 25935 2010-01-20 14:43:56Z vboxsync $ */
+/* $Id: PGMAll.cpp 25958 2010-01-21 13:50:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -710,11 +710,8 @@ VMMDECL(int) PGMInvalidatePage(PVMCPU pVCpu, RTGCPTR GCPtrPage)
 #ifndef IN_RING3
     /*
      * Notify the recompiler so it can record this instruction.
-     * Failure happens when it's out of space. We'll return to HC in that case.
      */
-    rc = REMNotifyInvalidatePage(pVM, GCPtrPage);
-    if (rc != VINF_SUCCESS)
-        return rc;
+    REMNotifyInvalidatePage(pVM, GCPtrPage);
 #endif /* !IN_RING3 */
 
 
