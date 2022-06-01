@@ -1,4 +1,4 @@
-/* $Id: UINewHDWzd.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
+/* $Id: UINewHDWzd.cpp 28644 2010-04-23 13:13:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -326,9 +326,9 @@ void UINewHDWzdPage3::onSelectLocationButtonClicked()
     {
         if (QFileInfo(selected).completeSuffix().isEmpty())
             selected += ".vdi";
-        m_pSizeEditor->setText(QDir::toNativeSeparators(selected));
-        m_pSizeEditor->selectAll();
-        m_pSizeEditor->setFocus();
+        m_pLocationEditor->setText(QDir::toNativeSeparators(selected));
+        m_pLocationEditor->selectAll();
+        m_pLocationEditor->setFocus();
     }
 }
 
