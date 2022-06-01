@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 24744 2009-11-17 22:33:38Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 25401 2009-12-15 13:12:54Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -892,11 +892,14 @@ static DECLCALLBACK(int) pdmR3DevHlp_DriverAttach(PPDMDEVINS pDevIns, RTUINT iLu
                         pNew->pDrvHlp                   = &g_pdmR3DrvHlp;
                         pNew->pDrvReg                   = pDrv->pDrvReg;
                         pNew->pCfgHandle                = pConfigNode;
-                        pNew->iInstance                 = pDrv->cInstances++;
+                        pNew->iInstance                 = pDrv->iNextInstance;
                         pNew->pUpBase                   = pBaseInterface;
                         //pNew->pDownBase                 = NULL;
                         //pNew->IBase.pfnQueryInterface   = NULL;
                         pNew->pvInstanceData            = &pNew->achInstanceData[0];
+
+                        pDrv->iNextInstance++;
+                        pDrv->cInstances++;
 
                         /*
                          * Link with LUN and call the constructor.

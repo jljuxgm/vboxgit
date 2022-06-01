@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 25343 2009-12-12 22:11:35Z vboxsync $ */
+/* $Id: PDM.cpp 25401 2009-12-15 13:12:54Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -506,6 +506,7 @@ static void pdmR3TermLuns(PVM pVM, PPDMLUN pLun, const char *pszDevice, unsigned
                          pDrvIns->pDrvReg->szDriverName, pDrvIns->iInstance, pLun->iLun, pszDevice, iInstance));
                 pDrvIns->pDrvReg->pfnDestruct(pDrvIns);
             }
+            pDrvIns->Internal.s.pDrv->cInstances--;
 
             TMR3TimerDestroyDriver(pVM, pDrvIns);
             //PDMR3QueueDestroyDriver(pVM, pDrvIns);

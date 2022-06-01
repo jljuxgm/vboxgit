@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 25368 2009-12-14 16:31:40Z vboxsync $ */
+/* $Id: PDMInternal.h 25401 2009-12-15 13:12:54Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -404,8 +404,10 @@ typedef struct PDMDRV
     PPDMDRV                         pNext;
     /** Registration structure. */
     const struct PDMDRVREG *        pDrvReg;
-    /** Number of instances. */
-    RTUINT                          cInstances;
+    /** Current number of instances. */
+    uint32_t                        cInstances;
+    /** The next instance number. */
+    uint32_t                        iNextInstance;
 } PDMDRV;
 
 
