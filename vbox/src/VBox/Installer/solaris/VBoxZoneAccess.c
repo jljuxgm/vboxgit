@@ -1,4 +1,4 @@
-/* $Id: VBoxZoneAccess.c 17324 2009-03-04 08:09:59Z vboxsync $ */
+/* $Id: VBoxZoneAccess.c 27743 2010-03-26 14:50:55Z vboxsync $ */
 /** @file
  * VBoxZoneAccess - Hack that keeps vboxdrv referenced for granting zone access, Solaris hosts.
  */
@@ -44,9 +44,9 @@ int main(int argc, char *argv[])
     }
 
     /* Daemonize... */
-    RTProcDaemonize(false /* fNoChDir */,
-                    false /* fNoClose */,
-                    NULL /* pszPidfile */);
+    RTProcDaemonizeUsingFork(false /* fNoChDir */,
+                             false /* fNoClose */,
+                             NULL /* pszPidfile */);
 
     /* Open the device */
     hDevice = open(DEVICE_NAME, O_RDWR, 0);
