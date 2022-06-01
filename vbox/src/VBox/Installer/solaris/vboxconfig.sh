@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 27356 2010-03-15 12:42:03Z vboxsync $
+# $Id: vboxconfig.sh 27626 2010-03-23 12:27:49Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -612,7 +612,7 @@ postinstall()
                 nmaskfile=/etc/netmasks
                 nmaskbackupfile=$nmaskfile.vbox
                 if test -f $nmaskfile; then
-                    sed -e '/#VirtualBox_SectionStart,/#VirtualBox_SectionEnd/d' $nmaskfile > $nmaskbackupfile
+                    sed -e '/#VirtualBox_SectionStart/,/#VirtualBox_SectionEnd/d' $nmaskfile > $nmaskbackupfile
                     echo "#VirtualBox_SectionStart" >> $nmaskbackupfile
                     inst=0
                     networkn=56
