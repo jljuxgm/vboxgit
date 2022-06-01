@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_vfsops.c 13835 2008-11-05 02:34:43Z vboxsync $ */
+/* $Id: vboxvfs_vfsops.c 26504 2010-02-14 09:08:42Z vboxsync $ */
 /** @file
  * Description.
  */
@@ -56,9 +56,9 @@ static vfs_unmount_t    vboxvfs_unmount;
 
 static struct vfsops vboxvfs_vfsops = {
     .vfs_init     =    vboxvfs_init,
-    .vfs_cmount   =	   vboxvfs_cmount,
-    .vfs_mount    =	   vboxvfs_mount,
-    .vfs_quotactl =	   vboxvfs_quotactl,
+    .vfs_cmount   =    vboxvfs_cmount,
+    .vfs_mount    =    vboxvfs_mount,
+    .vfs_quotactl =    vboxvfs_quotactl,
     .vfs_root     =    vboxvfs_root,
     .vfs_statfs   =    vboxvfs_statfs,
     .vfs_sync     =    vfs_stdsync,

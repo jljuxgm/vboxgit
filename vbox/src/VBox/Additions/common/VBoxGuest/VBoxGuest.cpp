@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 26358 2010-02-09 12:30:39Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 26504 2010-02-14 09:08:42Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -156,9 +156,9 @@ static int vboxGuestInitFixateGuestMappings(PVBOXGUESTDEVEXT pDevExt)
             {
                 pDevExt->hGuestMappings = hFictive != NIL_RTR0MEMOBJ ? hFictive : hObj;
                 Log(("VBoxGuest: %p LB %#x; uAlignment=%#x iTry=%u hGuestMappings=%p (%s)\n",
-                     	RTR0MemObjAddress(pDevExt->hGuestMappings),
-                     	RTR0MemObjSize(pDevExt->hGuestMappings),
-                     	uAlignment, iTry, pDevExt->hGuestMappings, hFictive != NIL_RTR0PTR ? "fictive" : "reservation"));
+                     RTR0MemObjAddress(pDevExt->hGuestMappings),
+                     RTR0MemObjSize(pDevExt->hGuestMappings),
+                     uAlignment, iTry, pDevExt->hGuestMappings, hFictive != NIL_RTR0PTR ? "fictive" : "reservation"));
                 break;
             }
             ahTries[iTry] = hObj;
