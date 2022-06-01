@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 28211 2010-04-12 14:53:30Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 28215 2010-04-12 15:31:54Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1171,25 +1171,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
         do
         {
             ULONG xRes, yRes, bpp;
-            rc = display->COMGETTER(Width)(&xRes);
-            if (rc == E_ACCESSDENIED)
-                break; /* VM not powered up */
-            if (FAILED(rc))
-            {
-                com::ErrorInfo info (display);
-                GluePrintErrorInfo(info);
-                return rc;
-            }
-            rc = display->COMGETTER(Height)(&yRes);
-            if (rc == E_ACCESSDENIED)
-                break; /* VM not powered up */
-            if (FAILED(rc))
-            {
-                com::ErrorInfo info (display);
-                GluePrintErrorInfo(info);
-                return rc;
-            }
-            rc = display->COMGETTER(BitsPerPixel)(&bpp);
+            rc = display->GetScreenResolution (0, &xRes, &yRes, &bpp);
             if (rc == E_ACCESSDENIED)
                 break; /* VM not powered up */
             if (FAILED(rc))

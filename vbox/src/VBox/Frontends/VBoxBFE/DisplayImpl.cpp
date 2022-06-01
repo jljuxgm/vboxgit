@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 26980 2010-03-02 23:30:00Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 28215 2010-04-12 15:31:54Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of Display class
@@ -204,15 +204,14 @@ STDMETHODIMP Display::ResizeCompleted()
     return S_OK;
 }
 
-STDMETHODIMP Display::COMGETTER(Width)(ULONG *pWidth)
+STDMETHODIMP Display::GetScreenResolution(ULONG aScreenId, ULONG *aWidth, ULONG *aHeight, ULONG *aBitsPerPixel)
 {
-    *pWidth = getWidth();
-    return S_OK;
-}
-
-STDMETHODIMP Display::COMGETTER(Height)(ULONG *pHeight)
-{
-    *pHeight = getHeight();
+    if (aWidth)
+        *aWidth = getWidth();
+    if (aHeight)
+        *aHeight = getHeight();
+    if (aBitsPerPixel)
+        *aBitsPerPixel = getBitsPerPixel();
     return S_OK;
 }
 

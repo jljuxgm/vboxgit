@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 26980 2010-03-02 23:30:00Z vboxsync $ */
+/* $Id: DisplayImpl.h 28215 2010-04-12 15:31:54Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Declaration of Display class
@@ -57,8 +57,7 @@ public:
     STDMETHODIMP SetFramebuffer(unsigned iScreenID, Framebuffer *Framebuffer);
     STDMETHODIMP InvalidateAndUpdate();
     STDMETHODIMP ResizeCompleted();
-    STDMETHODIMP COMGETTER(Width)(ULONG *pWidth);
-    STDMETHODIMP COMGETTER(Height)(ULONG *pHeight);
+    STDMETHODIMP GetScreenResolution(ULONG aScreenId, ULONG *aWidth, ULONG *aHeight, ULONG *aBitsPerPixel);
 
     void resetFramebuffer();
 

@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 27420 2010-03-16 17:50:02Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 28215 2010-04-12 15:31:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -202,7 +202,10 @@ void UIMultiScreenLayout::sltScreenLayoutChanged(QAction *pAction)
 
 quint64 UIMultiScreenLayout::memoryRequirements(const QMap<int, int> *pScreenLayout) const
 {
-    int guestBpp = m_pMachineLogic->uisession()->session().GetConsole().GetDisplay().GetBitsPerPixel();
+    ULONG width = 0;
+    ULONG height = 0;
+    ULONG guestBpp = 0;
+    m_pMachineLogic->uisession()->session().GetConsole().GetDisplay().GetScreenResolution(0, width, height, guestBpp);
     quint64 usedBits = 0;
     for (int i = 0; i < m_cGuestScreens; ++ i)
     {

@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleView.cpp 28148 2010-04-09 15:41:14Z vboxsync $ */
+/* $Id: VBoxConsoleView.cpp 28215 2010-04-12 15:31:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -3352,7 +3352,7 @@ void VBoxConsoleView::onStateChange (KMachineState state)
                  */
                 QImage shot = QImage (mFrameBuf->width(), mFrameBuf->height(), QImage::Format_RGB32);
                 CDisplay dsp = mConsole.GetDisplay();
-                dsp.TakeScreenShot (shot.bits(), shot.width(), shot.height());
+                dsp.TakeScreenShot (0, shot.bits(), shot.width(), shot.height());
                 /*
                  *  TakeScreenShot() may fail if, e.g. the Paused notification
                  *  was delivered after the machine execution was resumed. It's

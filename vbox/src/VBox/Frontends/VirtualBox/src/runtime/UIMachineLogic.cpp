@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 28020 2010-04-06 19:31:59Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 28215 2010-04-12 15:31:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -631,8 +631,12 @@ void UIMachineLogic::sltMachineStateChanged()
             QString strLogFolder = console.GetMachine().GetLogFolder();
             QString strFileName = strLogFolder + "/VBox.png";
             CDisplay display = console.GetDisplay();
-            QImage shot = QImage(display.GetWidth(), display.GetHeight(), QImage::Format_RGB32);
-            display.TakeScreenShot(shot.bits(), shot.width(), shot.height());
+            ULONG width = 0;
+            ULONG height = 0;
+            ULONG bpp = 0;
+            display.GetScreenResolution(0, width, height, bpp);
+            QImage shot = QImage(width, height, QImage::Format_RGB32);
+            display.TakeScreenShot(0, shot.bits(), shot.width(), shot.height());
             shot.save(QFile::encodeName(strFileName), "PNG");
 
             /* Warn the user about GURU: */

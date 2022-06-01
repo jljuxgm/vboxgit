@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 28148 2010-04-09 15:41:14Z vboxsync $ */
+/* $Id: UIMachineView.cpp 28215 2010-04-12 15:31:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1226,7 +1226,7 @@ void UIMachineView::sltMachineStateChanged()
                     /* Take a screen snapshot. Note that TakeScreenShot() always needs a 32bpp image: */
                     QImage shot = QImage(m_pFrameBuffer->width(), m_pFrameBuffer->height(), QImage::Format_RGB32);
                     CDisplay dsp = session().GetConsole().GetDisplay();
-                    dsp.TakeScreenShot(shot.bits(), shot.width(), shot.height());
+                    dsp.TakeScreenShot(screenId(), shot.bits(), shot.width(), shot.height());
                     /* TakeScreenShot() may fail if, e.g. the Paused notification was delivered
                      * after the machine execution was resumed. It's not fatal: */
                     if (dsp.isOk())
