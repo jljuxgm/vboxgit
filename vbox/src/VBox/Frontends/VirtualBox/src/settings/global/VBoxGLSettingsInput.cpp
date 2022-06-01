@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSettingsInput.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
+/* $Id: VBoxGLSettingsInput.cpp 27632 2010-03-23 14:18:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -50,7 +50,8 @@ void VBoxGLSettingsInput::putBackTo (CSystemProperties &,
 void VBoxGLSettingsInput::setOrderAfter (QWidget *aWidget)
 {
     setTabOrder (aWidget, mHeHostKey);
-    setTabOrder (mHeHostKey, mCbAutoGrab);
+    setTabOrder (mHeHostKey, mTbResetHostKey);
+    setTabOrder (mTbResetHostKey, mCbAutoGrab);
 }
 
 void VBoxGLSettingsInput::retranslateUi()

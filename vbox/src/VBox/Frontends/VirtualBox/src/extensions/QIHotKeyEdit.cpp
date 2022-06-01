@@ -1,4 +1,4 @@
-/* $Id: QIHotKeyEdit.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
+/* $Id: QIHotKeyEdit.cpp 27632 2010-03-23 14:18:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -113,7 +113,7 @@ int qi_distinguish_modifier_vkey (WPARAM wParam)
  *  The QIHotKeyEdit widget is a hot key editor.
  */
 
-const char *QIHotKeyEdit::kNoneSymbName = "<none>";
+const char *QIHotKeyEdit::kNoneSymbName = "None";
 
 QIHotKeyEdit::QIHotKeyEdit (QWidget *aParent) :
     QLabel (aParent)
@@ -493,6 +493,9 @@ QString QIHotKeyEdit::keyName (int aKeyVal)
 /* static */
 bool QIHotKeyEdit::isValidKey (int aKeyVal)
 {
+    /* Empty value is correct: */
+    if (aKeyVal == 0)
+        return true;
 #if defined(Q_WS_WIN32)
     return (
         (aKeyVal >= VK_SHIFT && aKeyVal <= VK_CAPITAL) ||
