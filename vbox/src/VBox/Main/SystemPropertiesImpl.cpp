@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 24436 2009-11-06 12:28:36Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 24438 2009-11-06 12:33:11Z vboxsync $ */
 
 /** @file
  *
@@ -505,14 +505,15 @@ STDMETHODIMP SystemProperties::GetDeviceTypesForStorageBus(StorageBus_T aBus,
     /* no need to lock, this is const */
     switch (aBus)
     {
-        case StorageBus_SATA:
         case StorageBus_IDE:
         {
-            com::SafeArray<DeviceType_T> saDeviceTypes(1);
-            saDeviceTypes[0] = DeviceType_HardDisk;
+            com::SafeArray<DeviceType_T> saDeviceTypes(2);
+            saDeviceTypes[0] = DeviceType_DVD;
+            saDeviceTypes[1] = DeviceType_HardDisk;
             saDeviceTypes.detachTo(ComSafeArrayOutArg(aDeviceTypes));
             break;
         }
+        case StorageBus_SATA:
         case StorageBus_SCSI:
         {
             com::SafeArray<DeviceType_T> saDeviceTypes(1);
