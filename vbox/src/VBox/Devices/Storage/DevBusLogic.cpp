@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 26422 2010-02-11 08:32:55Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 26831 2010-02-26 11:49:37Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -1336,6 +1336,7 @@ static int buslogicProcessCommand(PBUSLOGIC pBusLogic)
             pReply->fHostWideSCSI = true;
             pReply->fHostUltraSCSI = true;
             pReply->u16ScatterGatherLimit = 8192;
+            pBusLogic->regStatus |= BUSLOGIC_REGISTER_STATUS_INITIALIZATION_REQUIRED;
 
             break;
         }
@@ -1499,10 +1500,6 @@ static int buslogicRegisterRead(PBUSLOGIC pBusLogic, unsigned iRegister, uint32_
         case BUSLOGIC_REGISTER_INTERRUPT:
         {
             *pu32 = pBusLogic->regInterrupt;
-#if 0
-            if (pBusLogic->uOperationCode == BUSLOGICCOMMAND_DISABLE_HOST_ADAPTER_INTERRUPT)
-                rc = PDMDeviceDBGFStop(pBusLogic->CTX_SUFF(pDevIns), RT_SRC_POS, "Interrupt disable command\n");
-#endif
             break;
         }
         case BUSLOGIC_REGISTER_GEOMETRY:
