@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23896 2009-10-20 10:10:07Z vboxsync $
+# $Id: Makefile.kmk 24913 2009-11-24 14:45:04Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -397,6 +397,7 @@ endef
  	samples/java/jax-ws/Makefile.glue=>java/jax-ws/src/Makefile \
  	samples/java/jax-ws/Makefile=>java/jax-ws/samples/Makefile \
  	samples/perl/clienttest.pl=>perl/samples/clienttest.pl \
+ 	samples/php/clienttest.php=>php/samples/clienttest.php \
  	samples/python/Makefile=>python/samples/Makefile \
  	samples/python/Makefile.glue=>python/lib/Makefile
 
