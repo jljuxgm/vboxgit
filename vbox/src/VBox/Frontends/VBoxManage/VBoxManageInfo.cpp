@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 25672 2010-01-06 21:23:07Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -396,6 +396,13 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
         RTPrintf("biossystemtimeoffset=%lld\n", timeOffset);
     else
         RTPrintf("Time offset:     %lld ms\n", timeOffset);
+
+    BOOL RTCUseUTC;
+    machine->COMGETTER(RTCUseUTC)(&RTCUseUTC);
+    if (details == VMINFO_MACHINEREADABLE)
+        RTPrintf("rtcuseutc=\"%s\"\n", RTCUseUTC ? "on" : "off");
+    else
+        RTPrintf("RTC:             %s\n", RTCUseUTC ? "UTC" : "local time");
 
     BOOL hwVirtExEnabled;
     machine->GetHWVirtExProperty(HWVirtExPropertyType_Enabled, &hwVirtExEnabled);

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 25325 2009-12-11 12:32:00Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 25672 2010-01-06 21:23:07Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -122,6 +122,7 @@ enum
     MODIFYVM_VRDPMULTICON,
     MODIFYVM_VRDPREUSECON,
     MODIFYVM_VRDP,
+    MODIFYVM_RTCUSEUTC,
     MODIFYVM_USBEHCI,
     MODIFYVM_USB,
     MODIFYVM_SNAPSHOTFOLDER,
@@ -151,6 +152,7 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--cpuidremove",              MODIFYVM_DELCPUID,                  RTGETOPT_REQ_UINT32 | RTGETOPT_FLAG_HEX},
     { "--cpuidremoveall",           MODIFYVM_DELALLCPUID,               RTGETOPT_REQ_NOTHING},
     { "--cpus",                     MODIFYVM_CPUS,                      RTGETOPT_REQ_UINT32 },
+    { "--rtcuseutc",                MODIFYVM_RTCUSEUTC,                 RTGETOPT_REQ_BOOL_ONOFF },
     { "--monitorcount",             MODIFYVM_MONITORCOUNT,              RTGETOPT_REQ_UINT32 },
     { "--accelerate3d",             MODIFYVM_ACCELERATE3D,              RTGETOPT_REQ_BOOL_ONOFF },
     { "--accelerate2dvideo",        MODIFYVM_ACCELERATE2DVIDEO,         RTGETOPT_REQ_BOOL_ONOFF },
@@ -411,6 +413,12 @@ int handleModifyVM(HandlerArg *a)
             case MODIFYVM_CPUS:
             {
                 CHECK_ERROR(machine, COMSETTER(CPUCount)(ValueUnion.u32));
+                break;
+            }
+
+            case MODIFYVM_RTCUSEUTC:
+            {
+                CHECK_ERROR(machine, COMSETTER(RTCUseUTC)(ValueUnion.f));
                 break;
             }
 
