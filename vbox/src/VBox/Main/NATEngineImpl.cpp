@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 27864 2010-03-31 09:24:57Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 27868 2010-03-31 09:32:18Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -254,7 +254,7 @@ NATEngine::COMGETTER(Redirects) (ComSafeArrayOut (BSTR , aNatRules))
 
 
 STDMETHODIMP 
-NATEngine::AddRedirect(IN_BSTR aName, PRUint32 aProto, IN_BSTR aBindIp, PRUint16 aHostPort, IN_BSTR aGuestIP, PRUint16 aGuestPort)
+NATEngine::AddRedirect(IN_BSTR aName, uint32_t aProto, IN_BSTR aBindIp, uint16_t aHostPort, IN_BSTR aGuestIP, uint16_t aGuestPort)
 {
 
     AutoCaller autoCaller(this);
