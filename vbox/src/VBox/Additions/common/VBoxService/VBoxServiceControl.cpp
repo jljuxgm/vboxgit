@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControl.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 28446 2010-04-19 08:45:03Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -239,18 +239,13 @@ static DECLCALLBACK(void) VBoxServiceControlStop(void)
 /** @copydoc VBOXSERVICE::pfnTerm */
 static DECLCALLBACK(void) VBoxServiceControlTerm(void)
 {
-    /* Shutdown spawned processes threads. */
-    PVBOXSERVICECTRLTHREAD pNode = RTListNodeGetFirst(&g_GuestControlExecThreads, VBOXSERVICECTRLTHREAD, Node);
-    while (pNode)
-    {
+    /* Signal all threads that we want to shutdown. */
+    PVBOXSERVICECTRLTHREAD pNode;
+    RTListForEach(&g_GuestControlExecThreads, pNode, VBOXSERVICECTRLTHREAD, Node)
         ASMAtomicXchgBool(&pNode->fShutdown, true);
-        if (RTListNodeIsLast(&g_GuestControlExecThreads, &pNode->Node))
-            break;
-        pNode = RTListNodeGetNext(&pNode->Node, VBOXSERVICECTRLTHREAD, Node);
-    }
 
-    pNode = RTListNodeGetFirst(&g_GuestControlExecThreads, VBOXSERVICECTRLTHREAD, Node);
-    while (pNode)
+    /* Wait for threads to shutdown. */
+    RTListForEach(&g_GuestControlExecThreads, pNode, VBOXSERVICECTRLTHREAD, Node)
     {
         if (pNode->Thread != NIL_RTTHREAD)
         {
@@ -259,20 +254,20 @@ static DECLCALLBACK(void) VBoxServiceControlTerm(void)
                 VBoxServiceError("Control: Thread (PID: %u) failed to stop; rc2=%Rrc\n", pNode->uPID, rc2);
         }
         VBoxServiceControlExecDestroyThreadData(pNode);
-        if (RTListNodeIsLast(&g_GuestControlExecThreads, &pNode->Node))
-            break;
-        pNode = RTListNodeGetNext(&pNode->Node, VBOXSERVICECTRLTHREAD, Node);
     }
 
+    /* Finally destroy thread list. */
     pNode = RTListNodeGetFirst(&g_GuestControlExecThreads, VBOXSERVICECTRLTHREAD, Node);
     while (pNode)
     {
+        PVBOXSERVICECTRLTHREAD pNext = RTListNodeGetNext(&pNode->Node, VBOXSERVICECTRLTHREAD, Node);
+
         RTListNodeRemove(&pNode->Node);
         RTMemFree(pNode);
-        if (RTListNodeIsLast(&g_GuestControlExecThreads, &pNode->Node))
+
+        if (pNext && RTListNodeIsLast(&g_GuestControlExecThreads, &pNext->Node))
               break;
 
-        PVBOXSERVICECTRLTHREAD pNext = RTListNodeGetNext(&pNode->Node, VBOXSERVICECTRLTHREAD, Node);
         pNode = pNext;
     }
 
