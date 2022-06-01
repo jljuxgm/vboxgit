@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 27215 2010-03-09 13:34:53Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 27218 2010-03-09 14:55:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -771,7 +771,8 @@ void UIMachineLogic::sltMachineStateChanged()
             /* Get console: */
             CConsole console = session().GetConsole();
 
-            /* Take the screenshot for debugging purposes and save it */
+            /* Take the screenshot for debugging purposes and save it.
+             * TODO: create png's from all configured monitors if possible. */
             QString strLogFolder = console.GetMachine().GetLogFolder();
             QString strFileName = strLogFolder + "/VBox.png";
             CDisplay display = console.GetDisplay();
