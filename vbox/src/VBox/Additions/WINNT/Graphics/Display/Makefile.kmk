@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27516 2010-03-19 07:43:30Z vboxsync $
+# $Id: Makefile.kmk 27636 2010-03-23 14:57:25Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxDisp.dll.
 #
@@ -30,7 +30,7 @@ endif
 VBoxDisp_SYSSUFF     = .dll
 VBoxDisp_DEFS        = _WIN32_WINNT=0x0501 LOG_TO_BACKDOOR VBOX_WITH_DDRAW VBOX_WITH_OPENGL
 VBoxDisp_INCS        = ../../include
-VBoxDisp_DEFS        += VBOX_VBVA_ADJUST_RECT
+#VBoxDisp_DEFS        += VBOX_VBVA_ADJUST_RECT
 #VBoxDisp_DEFS        += LOG_ENABLED
 ifdef VBOX_WITH_VIDEOHWACCEL
 VBoxDisp_DEFS        += VBOX_WITH_VIDEOHWACCEL
