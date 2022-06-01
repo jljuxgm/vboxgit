@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 25600 2009-12-31 00:38:44Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1113,6 +1113,8 @@ static DECLCALLBACK(int) pdmR3DevHlp_DBGFStopV(PPDMDEVINS pDevIns, const char *p
     PVM pVM = pDevIns->Internal.s.pVMR3;
     VM_ASSERT_EMT(pVM);
     int rc = DBGFR3EventSrcV(pVM, DBGFEVENT_DEV_STOP, pszFile, iLine, pszFunction, pszFormat, args);
+    if (rc == VERR_DBGF_NOT_ATTACHED)
+        rc = VINF_SUCCESS;
 
     LogFlow(("pdmR3DevHlp_DBGFStopV: caller='%s'/%d: returns %Rrc\n", pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, rc));
     return rc;
