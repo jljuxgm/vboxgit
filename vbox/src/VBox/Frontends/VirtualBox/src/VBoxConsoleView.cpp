@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleView.cpp 27192 2010-03-09 00:24:53Z vboxsync $ */
+/* $Id: VBoxConsoleView.cpp 27193 2010-03-09 00:34:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1170,7 +1170,7 @@ void VBoxConsoleView::updateHostCursor()
         viewport()->setCursor(mLastCursor);
 }
 
-void VBoxConsoleView::setAutoresizeGuest (bool on)
+void VBoxConsoleView::setAutoresizeGuest (bool on, bool doHint)
 {
     if (mAutoresizeGuest != on)
     {
@@ -1178,7 +1178,7 @@ void VBoxConsoleView::setAutoresizeGuest (bool on)
 
         maybeRestrictMinimumSize();
 
-        if (mGuestSupportsGraphics && mAutoresizeGuest)
+        if (mGuestSupportsGraphics && mAutoresizeGuest && doHint)
             doResizeHint();
     }
 }

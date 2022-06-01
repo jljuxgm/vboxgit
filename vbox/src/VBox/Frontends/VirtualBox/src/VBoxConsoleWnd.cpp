@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleWnd.cpp 27131 2010-03-06 13:32:31Z vboxsync $ */
+/* $Id: VBoxConsoleWnd.cpp 27193 2010-03-09 00:34:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2048,7 +2048,7 @@ void VBoxConsoleWnd::vmAutoresizeGuest (bool on)
     mAutoresizeLed->setState (on ? 3 : 1);
 #endif
 
-    mConsole->setAutoresizeGuest (on);
+    mConsole->setAutoresizeGuest (on, true);
 }
 
 void VBoxConsoleWnd::vmAdjustWindow()
@@ -2795,7 +2795,7 @@ void VBoxConsoleWnd::updateAdditionsState (const QString &aVersion,
         if (mVmSeamlessAction->isChecked() && mIsOpenViewFinished && aSeamlessSupported && aGraphicsSupported)
             toggleFullscreenMode (true, true);
         /* Disable auto-resizing if advanced graphics are not available */
-        mConsole->setAutoresizeGuest (mIsGraphicsSupported && mVmAutoresizeGuestAction->isChecked());
+        mConsole->setAutoresizeGuest (mIsGraphicsSupported && mVmAutoresizeGuestAction->isChecked(), false);
         mVmAutoresizeGuestAction->setEnabled (mIsGraphicsSupported);
     }
 
