@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27706 2010-03-25 13:53:11Z vboxsync $
+# $Id: Makefile.kmk 28184 2010-04-12 08:57:08Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host Services.
 #
@@ -38,9 +38,6 @@ if1of ($(KBUILD_TARGET), win linux solaris darwin freebsd)
 endif
 ifdef VBOX_WITH_GUEST_PROPS
  include $(PATH_SUB_CURRENT)/GuestProperties/Makefile.kmk
-endif
-ifdef VBOX_WITH_GUEST_CONTROL
- include $(PATH_SUB_CURRENT)/GuestControl/Makefile.kmk
 endif
 ifdef VBOX_WITH_GUEST_CONTROL
  include $(PATH_SUB_CURRENT)/GuestControl/Makefile.kmk
