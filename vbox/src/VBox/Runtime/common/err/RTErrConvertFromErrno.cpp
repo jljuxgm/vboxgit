@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 26774 2010-02-25 02:30:14Z vboxsync $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -442,7 +442,15 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
 #ifdef EDOOFUS
         case EDOOFUS:           return VERR_INTERNAL_ERROR;
 #endif
-
+#ifdef ENOTSUP
+# ifndef EOPNOTSUPP
+        case ENOTSUP:           return VERR_NOT_SUPPORTED;
+# else
+#  if ENOTSUP != EOPNOTSUPP
+        case ENOTSUP:           return VERR_NOT_SUPPORTED;
+#  endif
+# endif
+#endif
         default:
             AssertMsgFailed(("Unhandled error code %d\n", uNativeCode));
             return VERR_UNRESOLVED_ERROR;
