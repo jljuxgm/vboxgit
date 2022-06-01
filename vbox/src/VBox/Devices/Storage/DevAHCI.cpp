@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 24050 2009-10-23 18:12:53Z vboxsync $ */
+/* $Id: DevAHCI.cpp 24051 2009-10-23 18:16:50Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -6138,7 +6138,8 @@ static DECLCALLBACK(int) ahciLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint3
             AssertRCReturn(rc, rc);
             if (fInUse != (pThis->ahciPort[i].pDrvBase != NULL))
             {
-                LogRel(("AHCI: Port %u config mismatch: fInUse - saved=%RTbool config=%RTbool\n", fInUse, (pThis->ahciPort[i].pDrvBase != NULL)));
+                LogRel(("AHCI: Port %u config mismatch: fInUse - saved=%RTbool config=%RTbool\n",
+                        i, fInUse, (pThis->ahciPort[i].pDrvBase != NULL)));
                 return VERR_SSM_LOAD_CONFIG_MISMATCH;
             }
 
@@ -6147,21 +6148,21 @@ static DECLCALLBACK(int) ahciLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint3
             AssertRCReturn(rc, rc);
             if (strcmp(szSerialNumber, pThis->ahciPort[i].szSerialNumber))
                 LogRel(("ACHI: Port %u config mismatch: Serial number - saved='%s' config='%s'\n",
-                        szSerialNumber, pThis->ahciPort[i].szSerialNumber));
+                        i, szSerialNumber, pThis->ahciPort[i].szSerialNumber));
 
             char szFirmwareRevision[AHCI_FIRMWARE_REVISION_LENGTH+1];
             rc = SSMR3GetStrZ(pSSM, szFirmwareRevision, sizeof(szFirmwareRevision));
             AssertRCReturn(rc, rc);
             if (strcmp(szFirmwareRevision, pThis->ahciPort[i].szFirmwareRevision))
                 LogRel(("ACHI: Port %u config mismatch: Firmware revision - saved='%s' config='%s'\n",
-                        szFirmwareRevision, pThis->ahciPort[i].szFirmwareRevision));
+                        i, szFirmwareRevision, pThis->ahciPort[i].szFirmwareRevision));
 
             char szModelNumber[AHCI_MODEL_NUMBER_LENGTH+1];
             rc = SSMR3GetStrZ(pSSM, szModelNumber,      sizeof(szModelNumber));
             AssertRCReturn(rc, rc);
             if (strcmp(szModelNumber, pThis->ahciPort[i].szModelNumber))
                 LogRel(("ACHI: Port %u config mismatch: Model number - saved='%s' config='%s'\n",
-                        szModelNumber, pThis->ahciPort[i].szModelNumber));
+                        i, szModelNumber, pThis->ahciPort[i].szModelNumber));
         }
 
         static const char *s_apszIdeEmuPortNames[4] = { "PrimaryMaster", "PrimarySlave", "SecondaryMaster", "SecondarySlave" };
