@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 28065 2010-04-07 20:54:34Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 28224 2010-04-12 19:45:20Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -158,6 +158,8 @@ typedef struct PDMACEPFILEMGR
     unsigned                               cEndpoints;
     /** Number of requests active currently. */
     unsigned                               cRequestsActive;
+    /** Number of maximum requests active. */
+    uint32_t                               cRequestsActiveMax;
     /** Pointer to an array of free async I/O request handles. */
     RTFILEAIOREQ                          *pahReqsFree;
     /** Next free position for a free request handle. */
