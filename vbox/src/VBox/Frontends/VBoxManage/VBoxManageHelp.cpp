@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 29364 2010-05-11 15:13:50Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 29465 2010-05-14 11:59:31Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -154,6 +154,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--name <name>]\n"
                  "                            [--ostype <ostype>]\n"
                  "                            [--memory <memorysize in MB>]\n"
+                 "                            [--pagefusion on|off\n"
                  "                            [--vram <vramsize in MB>]\n"
                  "                            [--acpi on|off]\n"
                  "                            [--ioapic on|off]\n"
