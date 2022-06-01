@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 27263 2010-03-11 02:01:19Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 27268 2010-03-11 09:57:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1658,9 +1658,12 @@ void UIMachineLogic::sltChangeDockIconUpdate(const VBoxChangeDockIconUpdateEvent
     if (isMachineWindowsCreated())
     {
         setDockIconPreviewEnabled(event.mChanged);
-        m_pDockPreviewSelectMonitorGroup->setEnabled(event.mChanged);
-        CMachine machine = session().GetMachine();
-        m_DockIconPreviewMonitor = qMin(machine.GetExtraData(VBoxDefs::GUI_RealtimeDockIconUpdateMonitor).toInt(), (int)machine.GetMonitorCount() - 1);
+        if (m_pDockPreviewSelectMonitorGroup)
+        {
+            m_pDockPreviewSelectMonitorGroup->setEnabled(event.mChanged);
+            CMachine machine = session().GetMachine();
+            m_DockIconPreviewMonitor = qMin(machine.GetExtraData(VBoxDefs::GUI_RealtimeDockIconUpdateMonitor).toInt(), (int)machine.GetMonitorCount() - 1);
+        }
         updateDockOverlay();
     }
 }
