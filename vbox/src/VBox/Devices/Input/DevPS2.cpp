@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 27797 2010-03-29 16:09:43Z vboxsync $ */
+/* $Id: DevPS2.cpp 28079 2010-04-08 10:02:18Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -972,7 +972,7 @@ static int kbd_write_mouse(KBDState *s, int val)
                 s->mouse_detect_state = 0;
             break;
         case 2:
-            if (val == 80)
+            if (val == 80 && s->mouse_type < MOUSE_PROT_IMEX)
             {
                 LogRelFlowFunc(("switching mouse device to IMPS/2 mode\n"));
                 s->mouse_type = MOUSE_PROT_IMPS2;
