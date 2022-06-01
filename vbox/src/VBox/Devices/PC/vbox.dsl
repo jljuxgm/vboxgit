@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 26183 2010-02-03 12:46:34Z vboxsync $
+// $Id: vbox.dsl 26594 2010-02-17 01:48:11Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -145,6 +145,8 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
             URTC,  32,
             CPUL,  32,
             CPUC,  32,
+            CPET,  32,
+            CPEV,  32,
             Offset (0x80),
             ININ, 32,
             Offset (0x200),

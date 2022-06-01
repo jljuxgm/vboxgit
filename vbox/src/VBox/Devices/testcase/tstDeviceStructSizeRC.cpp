@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 26305 2010-02-05 19:00:45Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 26594 2010-02-17 01:48:11Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -467,6 +467,8 @@ int main()
     GEN_CHECK_OFF(ACPIState, CpuSetAttached);
     GEN_CHECK_OFF(ACPIState, idCpuLockCheck);
     GEN_CHECK_OFF(ACPIState, CpuSetLocked);
+    GEN_CHECK_OFF(ACPIState, u32CpuEventType);
+    GEN_CHECK_OFF(ACPIState, u32CpuEvent);
     GEN_CHECK_OFF(ACPIState, fCpuHotPlug);
     GEN_CHECK_OFF(ACPIState, IBase);
     GEN_CHECK_OFF(ACPIState, IACPIPort);
