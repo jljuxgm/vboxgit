@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 26042 2010-01-26 11:14:03Z vboxsync $ */
+/* $Id: MachineImpl.cpp 26043 2010-01-26 12:04:38Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -162,7 +162,7 @@ Machine::HWData::HWData()
     mAccelerate2DVideoEnabled = false;
     mMonitorCount = 1;
     mHWVirtExEnabled = true;
-    mHWVirtExNestedPagingEnabled = false;
+    mHWVirtExNestedPagingEnabled = true;
     mHWVirtExVPIDEnabled = true;
 #if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
     mHWVirtExExclusive = false;
