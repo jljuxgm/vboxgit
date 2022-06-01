@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 26814 2010-02-25 22:44:22Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 27280 2010-03-11 12:55:06Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -33,6 +33,7 @@
 #include <iprt/avl.h>
 #include <iprt/list.h>
 #include <iprt/spinlock.h>
+#include <iprt/memcache.h>
 
 #include "PDMAsyncCompletionInternal.h"
 
@@ -152,6 +153,8 @@ typedef struct PDMACEPFILEMGR
     unsigned                               cReqEntries;
     /** Flag whether at least one endpoint reached its bandwidth limit. */
     bool                                   fBwLimitReached;
+    /** Memory cache for file range locks. */
+    RTMEMCACHE                             hMemCacheRangeLocks;
     /** Critical section protecting the blocking event handling. */
     RTCRITSECT                             CritSectBlockingEvent;
     /** Event sempahore for blocking external events.
