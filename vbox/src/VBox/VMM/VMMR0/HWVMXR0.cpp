@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 24731 2009-11-17 17:20:07Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 24809 2009-11-19 18:22:26Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2728,7 +2728,7 @@ ResumeExecution:
         HWACCMDumpRegs(pVM, pVCpu, pCtx);
 #endif
 
-    Log2(("E%d: New EIP=%x:%RGv\n", exitReason, pCtx->cs, (RTGCPTR)pCtx->rip));
+    Log2(("E%d: New EIP=%x:%RGv\n", (uint32_t)exitReason, pCtx->cs, (RTGCPTR)pCtx->rip));
     Log2(("Exit reason %d, exitQualification %RGv\n", (uint32_t)exitReason, exitQualification));
     Log2(("instrInfo=%d instrError=%d instr length=%d\n", (uint32_t)instrInfo, (uint32_t)instrError, (uint32_t)cbInstr));
     Log2(("Interruption error code %d\n", (uint32_t)errCode));
