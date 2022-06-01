@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 29953 2010-06-01 15:03:06Z vboxsync $ */
+/* $Id: SessionImpl.cpp 30134 2010-06-09 18:22:31Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -890,8 +890,11 @@ HRESULT Session::close(bool aFinalRelease, bool aFromServer)
         /*
          *  If we get E_UNEXPECTED this means that the direct session has already
          *  been closed, we're just too late with our notification and nothing more
+         *
+         *  bird: Seems E_ACCESSDENIED is what gets returned these days; see
+         *        VirtualBoxBase::addCaller.
          */
-        if (mType != SessionType_Direct && rc == E_UNEXPECTED)
+        if (mType != SessionType_Direct && (rc == E_UNEXPECTED || rc == E_ACCESSDENIED))
             rc = S_OK;
 
         AssertComRC(rc);
