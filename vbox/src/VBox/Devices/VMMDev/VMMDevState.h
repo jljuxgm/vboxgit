@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 23003 2009-09-14 13:31:02Z vboxsync $ */
+/* $Id: VMMDevState.h 24076 2009-10-26 13:39:50Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -174,6 +174,9 @@ typedef struct VMMDevState
 
     /** Don't clear credentials */
     bool fKeepCredentials;
+
+    /** Heap enabled. */
+    bool fHeapEnabled;
 
 #ifdef VBOX_WITH_HGCM
     /** List of pending HGCM requests, used for saving the HGCM state. */
