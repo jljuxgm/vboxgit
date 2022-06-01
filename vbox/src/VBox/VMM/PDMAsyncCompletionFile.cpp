@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 25147 2009-12-02 13:42:32Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 25757 2010-01-12 12:36:14Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -394,7 +394,7 @@ int pdmacFileAioMgrCreate(PPDMASYNCCOMPLETIONEPCLASSFILE pEpClass, PPPDMACEPFILE
     rc = MMR3HeapAllocZEx(pEpClass->Core.pVM, MM_TAG_PDM_ASYNC_COMPLETION, sizeof(PDMACEPFILEMGR), (void **)&pAioMgrNew);
     if (RT_SUCCESS(rc))
     {
-        pAioMgrNew->fFailsafe = fFailsafe ? true : pEpClass->fFailsafe;
+        pAioMgrNew->fFailsafe = fFailsafe || pEpClass->fFailsafe;
 
         rc = RTSemEventCreate(&pAioMgrNew->EventSem);
         if (RT_SUCCESS(rc))
