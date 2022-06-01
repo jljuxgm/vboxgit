@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29109 2010-05-05 20:21:32Z vboxsync $
+# $Id: Makefile.kmk 29110 2010-05-05 20:28:28Z vboxsync $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -110,7 +110,6 @@ TEMPLATE_XPCOMEXEBLD_LDFLAGS.darwin    =   \
 
 ifeq ($(KBUILD_TARGET),darwin)
  define preprocess_exebld
-  $(shell install_name_tool -change /Applications/VirtualBox.app/Contents/MacOS/VBoxRT.dylib $(PATH_BIN)/VBoxRT$(VBOX_SUFF_DLL) $(1))
   $(shell install_name_tool -change $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxRT.dylib $(PATH_BIN)/VBoxRT$(VBOX_SUFF_DLL) $(1))
  endef
 else
