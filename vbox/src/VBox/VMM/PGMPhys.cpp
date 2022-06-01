@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 27587 2010-03-22 13:07:31Z vboxsync $ */
+/* $Id: PGMPhys.cpp 27588 2010-03-22 13:21:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -857,6 +857,10 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysChangeMemBalloonRendezvous(PVM pVM, P
     }
 
     pgmUnlock(pVM);
+
+    /* Flush the recompiler's TLB as well. */
+    REMFlushTBs(pVM);
+
     AssertLogRelRC(rc);
     return rc;
 }
