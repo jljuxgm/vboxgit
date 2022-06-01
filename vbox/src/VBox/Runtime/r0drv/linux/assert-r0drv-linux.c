@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-linux.c 25536 2009-12-21 11:06:08Z vboxsync $ */
+/* $Id: assert-r0drv-linux.c 28697 2010-04-24 22:35:54Z vboxsync $ */
 /** @file
  * IPRT -  Assertion Workers, Ring-0 Drivers, Linux.
  */
@@ -46,7 +46,8 @@
 
 void rtR0AssertNativeMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
 {
-    printk("\r\n!!Assertion Failed!!\r\n"
+    printk(KERN_EMERG
+           "\r\n!!Assertion Failed!!\r\n"
            "Expression: %s\r\n"
            "Location  : %s(%d) %s\r\n",
            pszExpr, pszFile, uLine, pszFunction);
@@ -59,7 +60,7 @@ void rtR0AssertNativeMsg2V(bool fInitial, const char *pszFormat, va_list va)
 
     RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, va);
     szMsg[sizeof(szMsg) - 1] = '\0';
-    printk("%s", szMsg);
+    printk(KERN_EMERG "%s", szMsg);
 
     NOREF(fInitial);
 }
