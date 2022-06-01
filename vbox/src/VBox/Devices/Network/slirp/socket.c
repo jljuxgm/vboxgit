@@ -1,4 +1,4 @@
-/* $Id: socket.c 30045 2010-06-04 20:38:56Z vboxsync $ */
+/* $Id: socket.c 30047 2010-06-07 05:19:57Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -689,7 +689,7 @@ sosendoob(struct socket *so)
 int
 sowrite(PNATState pData, struct socket *so)
 {
-    return do_sosend(so, 1);
+    return do_sosend(so, 0);
 }
 #endif
 
