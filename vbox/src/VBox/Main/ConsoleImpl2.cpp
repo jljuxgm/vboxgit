@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 27797 2010-03-29 16:09:43Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 27799 2010-03-29 17:54:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2203,6 +2203,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         rc = CFGMR3InsertInteger(pCfg,  "HpetEnabled", fHpetEnabled);               RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "SmcEnabled", fSmcEnabled);                 RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "ShowRtc",    fExtProfile);                 RC_CHECK();
+        rc = CFGMR3InsertInteger(pCfg,  "ShowNic",    fExtProfile);                 RC_CHECK();
 
         rc = CFGMR3InsertInteger(pCfg,  "ShowCpu", fShowCpu);                       RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "CpuHotPlug", fCpuHotPlug);                 RC_CHECK();
@@ -3549,4 +3550,3 @@ int configSetGlobalPropertyFlags(VMMDev * const pVMMDev,
     return VERR_NOT_SUPPORTED;
 #endif /* !VBOX_WITH_GUEST_CONTROL */
 }
-

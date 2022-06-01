@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 27422 2010-03-16 18:20:53Z vboxsync $
+// $Id: vbox.dsl 27799 2010-03-29 17:54:17Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -147,6 +147,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
             CPUC,  32,
             CPET,  32,
             CPEV,  32,
+            UNIC,  32,
             Offset (0x80),
             ININ, 32,
             Offset (0x200),
@@ -759,7 +760,35 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                     }
                  }
              }
+            
+            // NIC
+            Device (GIGE)
+            {
+                /* 
+                 * Address is slot 0x3, function 0 - must be consistent with where NIC really is.
+                 * This code assumes E1K NIC of type != I82545EM, as latter goes to slot 0x11.
+                 * Device is important, as otherwise OSX refuses to accept NIC as internal,
+                 * which may lead to inability to use NIC for kernel debugging and high level
+                 * applications malfunctioning.
+                 */
+                Name (_ADR, 0x00030000)
 
+                Name (_PRW, Package (0x02)
+                            {
+                               0x09,
+                               0x03
+                            })
+
+                Method (EWOL, 1, NotSerialized)
+                {
+                    Return (0x00)
+                }
+                Method (_STA, 0, NotSerialized)
+                {
+                    Return (UNIC)
+                }
+            }
+           
             // Control method battery
             Device (BAT0)
             {
