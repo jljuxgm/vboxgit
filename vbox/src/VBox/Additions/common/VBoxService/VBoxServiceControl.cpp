@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 29515 2010-05-17 09:53:05Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 29516 2010-05-17 09:55:17Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -135,10 +135,6 @@ static int VBoxServiceControlHandleCmdStartProcess(uint32_t u32ClientId, uint32_
                                            szArgs,     sizeof(szArgs), &uNumArgs,
                                            /* Environment */
                                            szEnv, &cbEnv, &uNumEnvVars,
-                                           /* Pipes */
-                                           szStdIn,    sizeof(szStdIn),
-                                           szStdOut,   sizeof(szStdOut),
-                                           szStdErr,   sizeof(szStdErr),
                                            /* Credentials */
                                            szUser,     sizeof(szUser),
                                            szPassword, sizeof(szPassword),
@@ -152,7 +148,6 @@ static int VBoxServiceControlHandleCmdStartProcess(uint32_t u32ClientId, uint32_
     {
         rc = VBoxServiceControlExecProcess(uContextID, szCmd, uFlags, szArgs, uNumArgs,
                                            szEnv, cbEnv, uNumEnvVars,
-                                           szStdIn, szStdOut, szStdErr,
                                            szUser, szPassword, uTimeLimitMS);
     }
 
