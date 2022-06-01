@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27335 2010-03-12 16:20:29Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27375 2010-03-15 16:47:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -44,7 +44,7 @@
 #endif /* Q_WS_MAC */
 
 UIMachineWindowSeamless::UIMachineWindowSeamless(UIMachineLogic *pMachineLogic, ulong uScreenId)
-    : QIWithRetranslateUI2<QIMainDialog>(0, Qt::FramelessWindowHint)
+    : QIWithRetranslateUI2<QMainWindow>(0, Qt::FramelessWindowHint)
     , UIMachineWindow(pMachineLogic, uScreenId)
     , m_pMainMenu(0)
     , m_pMiniToolBar(0)
@@ -161,7 +161,7 @@ bool UIMachineWindowSeamless::event(QEvent *pEvent)
         default:
             break;
     }
-    return QIMainDialog::event(pEvent);
+    return QMainWindow::event(pEvent);
 }
 #endif /* Q_WS_MAC */
 
