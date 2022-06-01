@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 23597 2009-10-07 14:51:47Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 24227 2009-10-30 22:50:51Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1446,10 +1446,10 @@ flushPage:
  */
 static void pgmPoolTrackCheckPTPaePae(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PX86PTPAE pShwPT, PCX86PTPAE pGstPT)
 {
-    unsigned cErrors = 0;
-    int LastRc;
-    unsigned LastPTE;
-    RTHCPHYS LastHCPhys;
+    unsigned cErrors    = 0;
+    int      LastRc     = -1;           /* initialized to shut up gcc */
+    unsigned LastPTE    = ~0U;          /* initialized to shut up gcc */
+    RTHCPHYS LastHCPhys = NIL_RTHCPHYS; /* initialized to shut up gcc */
 
 #ifdef VBOX_STRICT
     for (unsigned i = 0; i < RT_MIN(RT_ELEMENTS(pShwPT->a), pPage->iFirstPresent); i++)
