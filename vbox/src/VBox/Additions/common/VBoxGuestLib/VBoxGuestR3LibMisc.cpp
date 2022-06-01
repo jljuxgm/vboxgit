@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 24686 2009-11-16 10:14:48Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 24688 2009-11-16 10:20:20Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -224,6 +224,7 @@ static int vbglR3GetAdditionsCompileTimeVersion(char **ppszVer, char **ppszRev)
 }
 
 
+#ifdef RT_OS_WINDOWS
 /**
  * Looks up the storage path handle (registry).
  *
@@ -276,6 +277,7 @@ static int vbglR3CloseAdditionsWinStoragePath(HKEY hKey)
 {
     return RTErrConvertFromNtStatus(RegCloseKey(hKey));
 }
+#endif /* RT_OS_WINDOWS */ 
 
 
 /**
@@ -423,7 +425,7 @@ VBGLR3DECL(int) VbglR3GetAdditionsInstallationPath(char **ppszPath)
     }
 #else
     /** @todo implement me */
-    rc = VINF_NOT_IMPLEMENTED;
+    rc = VERR_NOT_IMPLEMENTED;
 #endif
     return rc;
 }
