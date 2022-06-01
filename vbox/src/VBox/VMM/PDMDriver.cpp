@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 28327 2010-04-14 20:46:02Z vboxsync $ */
+/* $Id: PDMDriver.cpp 28330 2010-04-14 21:47:47Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1229,7 +1229,7 @@ static DECLCALLBACK(int) pdmR3DrvHlp_LdrGetRCInterfaceSymbols(PPDMDRVINS pDrvIns
     {
         if (pDrvIns->pReg->fFlags & PDM_DRVREG_FLAGS_RC)
             rc = PDMR3LdrGetInterfaceSymbols(pDrvIns->Internal.s.pVMR3, pvInterface, cbInterface,
-                                             pDrvIns->pReg->szName, pszSymPrefix, pszSymList,
+                                             pDrvIns->pReg->szRCMod, pszSymPrefix, pszSymList,
                                              false /*fRing0OrRC*/);
         else
         {
@@ -1265,7 +1265,7 @@ static DECLCALLBACK(int) pdmR3DrvHlp_LdrGetR0InterfaceSymbols(PPDMDRVINS pDrvIns
     {
         if (pDrvIns->pReg->fFlags & PDM_DRVREG_FLAGS_R0)
             rc = PDMR3LdrGetInterfaceSymbols(pDrvIns->Internal.s.pVMR3, pvInterface, cbInterface,
-                                             pDrvIns->pReg->szName, pszSymPrefix, pszSymList,
+                                             pDrvIns->pReg->szR0Mod, pszSymPrefix, pszSymList,
                                              true /*fRing0OrRC*/);
         else
         {
