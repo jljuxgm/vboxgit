@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-posix.cpp 25648 2010-01-05 14:32:58Z vboxsync $ */
+/* $Id: semeventmulti-posix.cpp 25661 2010-01-06 01:19:02Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, POSIX.
  */
@@ -447,7 +447,7 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
             {
                 ASMAtomicDecU32(&pThis->cWaiters);
                 rc = pthread_mutex_unlock(&pThis->Mutex);
-                return VERR_SEM_BUSY;
+                return VERR_TIMEOUT;
             }
 
             /* wait */

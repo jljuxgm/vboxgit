@@ -1,4 +1,4 @@
-/* $Id: semevent-posix.cpp 25638 2010-01-04 16:08:04Z vboxsync $ */
+/* $Id: semevent-posix.cpp 25661 2010-01-06 01:19:02Z vboxsync $ */
 /** @file
  * IPRT - Event Semaphore, POSIX.
  */
@@ -416,7 +416,7 @@ DECL_FORCE_INLINE(int) rtSemEventWait(RTSEMEVENT EventSem, unsigned cMillies, bo
             {
                 ASMAtomicDecU32(&pThis->cWaiters);
                 rc = pthread_mutex_unlock(&pThis->Mutex);
-                return VERR_SEM_BUSY;
+                return VERR_TIMEOUT;
             }
 
             /* wait */
