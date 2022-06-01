@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 24455 2009-11-06 15:46:29Z vboxsync $ */
+/* $Id: DevPCNet.cpp 24880 2009-11-23 17:02:07Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4283,7 +4283,7 @@ static DECLCALLBACK(int) pcnetLiveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
 {
     PCNetState *pThis = PDMINS_2_DATA(pDevIns, PCNetState *);
     pcnetSaveConfig(pThis, pSSM);
-    return VINF_SUCCESS;
+    return VINF_SSM_DONT_CALL_AGAIN;
 }
 
 
