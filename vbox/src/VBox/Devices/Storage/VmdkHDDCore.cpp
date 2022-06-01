@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 24916 2009-11-24 15:21:07Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 24975 2009-11-25 22:30:34Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -2921,6 +2921,13 @@ static int vmdkOpenImage(PVMDKIMAGE pImage, unsigned uOpenFlags)
     /* Handle the file according to its magic number. */
     if (RT_LE2H_U32(u32Magic) == VMDK_SPARSE_MAGICNUMBER)
     {
+        /* Async I/IO is not supported with these files yet. So fail if opened in async I/O mode. */
+        if (uOpenFlags & VD_OPEN_FLAGS_ASYNC_IO)
+        {
+            rc = VERR_NOT_SUPPORTED;
+            goto out;
+        }
+
         /* It's a hosted single-extent image. */
         rc = vmdkCreateExtents(pImage, 1);
         if (RT_FAILURE(rc))
