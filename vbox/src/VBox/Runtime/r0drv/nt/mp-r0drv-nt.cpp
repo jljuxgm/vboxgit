@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 23861 2009-10-19 12:14:56Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 24014 2009-10-23 08:35:04Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -40,7 +40,6 @@
 #include <iprt/asm.h>
 #include "r0drv/mp-r0drv.h"
 #include "internal-r0drv-nt.h"
-#include "internal/mp.h"
 
 
 /*******************************************************************************
@@ -413,16 +412,4 @@ RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
 
     KeLowerIrql(oldIrql);
     return (bRet == TRUE) ? VINF_SUCCESS : VERR_ACCESS_DENIED /* already queued */;
-}
-
-void rtMpPokeCpuClear()
-{
-    if (!fPokeDPCsInitialized)
-        return;
-
-    RTCPUID idCpu = RTMpCpuId();
-
-    /* Remove any pending poke DPC from the queue, so another call to RTMpPokeCpu will send an IPI */
-    /* Note: assuming this is a cheap operation. */
-    KeRemoveQueueDpc(&aPokeDpcs[idCpu]);
 }
