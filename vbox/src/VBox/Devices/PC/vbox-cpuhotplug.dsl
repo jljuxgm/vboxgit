@@ -1,4 +1,4 @@
-// $Id: vbox-cpuhotplug.dsl 26076 2010-01-27 16:14:47Z vboxsync $
+// $Id: vbox-cpuhotplug.dsl 26078 2010-01-27 16:31:07Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -1378,8 +1378,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
             URTC,  32,
             CPUL,  32,
             CPUC,  32,
-            MAAD,  32,
-            MASZ,  32,
             Offset (0x80),
             ININ, 32,
             Offset (0x200),
