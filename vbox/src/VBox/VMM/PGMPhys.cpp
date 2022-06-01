@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30235 2010-06-16 09:58:17Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30236 2010-06-16 10:07:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3422,7 +3422,7 @@ int pgmR3PhysChunkMap(PVM pVM, uint32_t idChunk, PPPGMCHUNKR3MAP ppChunk)
     }
     else
     {
-        AssertFatalRC(rc);
+        AssertRC(rc);
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
         MMR3HeapFree(pChunk);
 #else
