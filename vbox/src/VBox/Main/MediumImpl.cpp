@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 30292 2010-06-17 18:45:15Z vboxsync $ */
+/* $Id: MediumImpl.cpp 30309 2010-06-18 12:25:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -672,7 +672,9 @@ HRESULT Medium::FinalConstruct()
     m->vdIfCallsTcpNet.pfnSelectOne = RTTcpSelectOne;
     m->vdIfCallsTcpNet.pfnRead = RTTcpRead;
     m->vdIfCallsTcpNet.pfnWrite = RTTcpWrite;
+    m->vdIfCallsTcpNet.pfnSgWrite = RTTcpSgWrite;
     m->vdIfCallsTcpNet.pfnFlush = RTTcpFlush;
+    m->vdIfCallsTcpNet.pfnSetSendCoalescing = RTTcpSetSendCoalescing;
     m->vdIfCallsTcpNet.pfnGetLocalAddress = RTTcpGetLocalAddress;
     m->vdIfCallsTcpNet.pfnGetPeerAddress = RTTcpGetPeerAddress;
 
