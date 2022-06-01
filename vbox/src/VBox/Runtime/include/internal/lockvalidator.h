@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.h 25648 2010-01-05 14:32:58Z vboxsync $ */
+/* $Id: lockvalidator.h 25689 2010-01-08 10:36:43Z vboxsync $ */
 /** @file
  * IPRT - Internal RTLockValidator header.
  */
@@ -64,6 +64,8 @@ typedef struct RTLOCKVALPERTHREAD
     /** The state in which pRec that goes with pRec.
      * RTThreadUnblocking uses this to figure out when to clear pRec. */
     RTTHREADSTATE volatile          enmRecState;
+    /** Top of the lock stack. */
+    PRTLOCKVALRECUNION volatile     pStackTop;
     /** The thread is running inside the lock validator. */
     bool volatile                   fInValidator;
     /** Reserved for alignment purposes. */
