@@ -1,4 +1,4 @@
-/* $Id: tstRTCritSect.cpp 25345 2009-12-13 15:56:59Z vboxsync $ */
+/* $Id: tstRTCritSect.cpp 25766 2010-01-12 14:03:52Z vboxsync $ */
 /** @file
  * IPRT Testcase - Critical Sections.
  */
@@ -61,6 +61,7 @@
 #define PRTCRITSECT     LPCRITICAL_SECTION
 #define LOCKERS(sect)   (*(LONG volatile *)&(sect).LockCount)
 
+#undef RTCritSectInit
 DECLINLINE(int) RTCritSectInit(PCRITICAL_SECTION pCritSect)
 {
     InitializeCriticalSection(pCritSect);
