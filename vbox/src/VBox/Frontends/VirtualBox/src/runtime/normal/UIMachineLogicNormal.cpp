@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 27263 2010-03-11 02:01:19Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 27300 2010-03-11 19:20:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -56,6 +56,9 @@ void UIMachineLogicNormal::initialize()
     /* If required features are ready: */
     if (!isPreventAutoStart())
     {
+        /* Prepare common connections: */
+        prepareConnections();
+
         /* Prepare console connections: */
         prepareConsoleConnections();
 
