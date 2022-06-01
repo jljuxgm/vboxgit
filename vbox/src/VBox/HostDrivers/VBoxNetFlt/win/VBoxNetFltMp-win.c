@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltMp-win.c 25232 2009-12-08 12:01:25Z vboxsync $ */
+/* $Id: VBoxNetFltMp-win.c 25249 2009-12-08 14:24:46Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Miniport edge of ndis filter driver
  */
@@ -224,7 +224,7 @@ vboxNetFltWinPtRegisterDevice(
             }
 #endif
 
-            Status = ObReferenceObjectByPointer(g_pControlDeviceObject, FILE_READ_DATA, *IoFileObjectType, KernelMode);
+            Status = ObReferenceObjectByPointer(g_pControlDeviceObject, FILE_READ_DATA, NULL, KernelMode);
             Assert(Status == NDIS_STATUS_SUCCESS);
             if(Status == NDIS_STATUS_SUCCESS)
             {
