@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 26326 2010-02-08 13:22:24Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 26355 2010-02-09 11:15:07Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -63,8 +63,8 @@ VBGLR3DECL(int) VbglR3WaitEvent(uint32_t fMask, uint32_t cMillies, uint32_t *pfE
     int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_WAITEVENT, &waitEvent, sizeof(waitEvent));
     if (RT_SUCCESS(rc))
     {
-#ifndef VBOX_VBGLR3_XFREE86
-        AssertMsg(waitEvent.u32Result == VBOXGUEST_WAITEVENT_OK, ("%d\n", waitEvent.u32Result));
+#if !defined(VBOX_VBGLR3_XFREE86) && !defined(RT_OS_WINDOWS)
+        AssertMsg(waitEvent.u32Result == VBOXGUEST_WAITEVENT_OK, ("%d rc=%d\n", waitEvent.u32Result, rc));
 #endif
         if (pfEvents)
             *pfEvents = waitEvent.u32EventFlagsOut;
