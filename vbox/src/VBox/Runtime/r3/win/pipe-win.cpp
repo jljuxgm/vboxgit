@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 26763 2010-02-24 19:15:20Z vboxsync $ */
+/* $Id: pipe-win.cpp 26765 2010-02-24 19:25:21Z vboxsync $ */
 /** @file
  * IPRT - Anonymouse Pipes, Windows Implementation.
  */
@@ -55,7 +55,7 @@ RTDECL(int)  RTPipeClose(RTPIPE hPipe)
 
 RTDECL(RTHCINTPTR) RTPipeToNative(RTPIPE hPipe)
 {
-    return INVALID_HANDLE_VALUE;
+    return (RTHCINTPTR)INVALID_HANDLE_VALUE;
 }
 
 
