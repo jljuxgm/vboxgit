@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 21572 2009-07-14 10:53:43Z vboxsync $
+; $Id: HWACCMR0A.asm 25395 2009-12-15 12:41:14Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -875,7 +875,7 @@ BEGINPROC VMXR0InvVPID
  %endif ; VBOX_WITH_HYBRID_32BIT_KERNEL
     mov         eax, [esp + 4]
     mov         ecx, [esp + 8]
-;    invept      eax, qword [ecx]
+;    invvpid     eax, qword [ecx]
     DB          0x66, 0x0F, 0x38, 0x81, 0x1
 %endif
     jnc         .valid_vmcs
