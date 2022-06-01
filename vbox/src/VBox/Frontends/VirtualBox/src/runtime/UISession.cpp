@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 26816 2010-02-26 03:21:17Z vboxsync $ */
+/* $Id: UISession.cpp 26819 2010-02-26 09:35:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1161,7 +1161,7 @@ void UISession::setPointerShape(const uchar *pShapeData, bool fHasAlpha,
     }
 
     /* Set the new cursor: */
-    m_cursor = cursor(QPixmap::fromImage(image), uXHot, uYHot);
+    m_cursor = QCursor(QPixmap::fromImage(image), uXHot, uYHot);
     NOREF(srcShapePtrScan);
 
 #else
