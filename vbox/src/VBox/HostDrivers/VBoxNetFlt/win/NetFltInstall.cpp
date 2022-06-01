@@ -1,4 +1,4 @@
-/* $Id: NetFltInstall.cpp 25385 2009-12-15 09:43:23Z vboxsync $ */
+/* $Id: NetFltInstall.cpp 25388 2009-12-15 10:55:03Z vboxsync $ */
 /** @file
  * NetFltInstall - VBoxNetFlt installer command line tool
  */
@@ -93,7 +93,6 @@ static int InstallNetFlt()
     HRESULT hr = CoInitialize(NULL);
     if(hr == S_OK)
     {
-#if 0
         int i = 0;
         do
         {
@@ -161,8 +160,6 @@ static int InstallNetFlt()
                 break;
             }
         } while(true);
-#endif
-        VBoxNetCfgWinEnumUpperBindings ();
 
         CoUninitialize();
     }
