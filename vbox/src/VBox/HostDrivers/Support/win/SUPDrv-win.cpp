@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 25336 2009-12-11 17:09:23Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 25337 2009-12-11 17:14:14Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -86,10 +86,6 @@ static VOID     _stdcall   VBoxPowerDispatchCallback(PVOID pCallbackContext, PVO
 static NTSTATUS _stdcall   VBoxDrvNtNotSupportedStub(PDEVICE_OBJECT pDevObj, PIRP pIrp);
 static NTSTATUS            VBoxDrvNtErr2NtStatus(int rc);
 
-/*******************************************************************************
-*   External Functions                                                         *
-*******************************************************************************/
-DECLASM(int)   UNWIND_WRAP(RTPowerSignalEvent)(RTPOWEREVENT enmEvent);
 
 /*******************************************************************************
 *   Exported Functions                                                         *
@@ -553,7 +549,7 @@ VOID _stdcall VBoxPowerDispatchCallback(PVOID pCallbackContext, PVOID pArgument1
             dprintf(("VBoxPowerDispatchCallback: resumed!\n"));
 
         /* Inform any clients that have registered themselves with IPRT. */
-        UNWIND_WRAP(RTPowerSignalEvent)(((unsigned)pArgument2 == 0) ? RTPOWEREVENT_SUSPEND : RTPOWEREVENT_RESUME);
+        RTPowerSignalEvent(((unsigned)pArgument2 == 0) ? RTPOWEREVENT_SUSPEND : RTPOWEREVENT_RESUME);
     }
 }
 
