@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 26893 2010-02-28 17:43:39Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 26894 2010-02-28 17:48:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -648,7 +648,7 @@ void UIMachineLogic::sltMachineStateChanged()
         return;
     }
 
-    /* Postprocess GURU: */
+#if 0 // TODO: Postprocess GURU!
     if (fIsGuruMeditation)
     {
         uisession()->setGuestResizeIgnored(true);
@@ -672,6 +672,7 @@ void UIMachineLogic::sltMachineStateChanged()
                 vboxProblem().cannotStopMachine(console);
         }
     }
+#endif
 }
 
 void UIMachineLogic::sltAdditionsStateChanged()
