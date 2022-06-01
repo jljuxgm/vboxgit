@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 28067 2010-04-07 21:11:34Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 28088 2010-04-08 13:03:17Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -471,7 +471,8 @@ static DECLCALLBACK(bool) vboxNetFltPortIsHostMac(PINTNETTRUNKIFPORT pIfPort, PC
     AssertPtr(pThis);
     Assert(pThis->MyPort.u32Version == INTNETTRUNKIFPORT_VERSION);
     Assert(vboxNetFltGetState(pThis) == kVBoxNetFltInsState_Connected);
-    Assert(pThis->fActive);
+/** @todo Assert(pThis->fActive); - disabled because we may call this
+ *        without holding the out-bound lock and race the clearing. */
 
     /*
      * Ask the OS specific code.
