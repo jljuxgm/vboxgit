@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 26663 2010-02-19 15:12:43Z vboxsync $ */
+/* $Id: DevAPIC.cpp 26865 2010-02-26 16:12:08Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -974,7 +974,7 @@ PDMBOTHCBDECL(int) apicLocalInterrupt(PPDMDEVINS pDevIns, uint8_t u8Pin, uint8_t
     APICState       *s = getLapicById(dev, 0);
 
     Assert(PDMCritSectIsOwner(dev->CTX_SUFF(pCritSect)));
-    LogFlow(("apicLocalInterrupt: pDevIns=%p u8Pin=%x\n", pDevIns, u8Pin));
+    LogFlow(("apicLocalInterrupt: pDevIns=%p u8Pin=%x u8Level=%x\n", pDevIns, u8Pin, u8Level));
 
     /* If LAPIC is disabled, go straight to the CPU. */
     if (!(s->spurious_vec & APIC_SV_ENABLE))
