@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileFailsafe.cpp 27299 2010-03-11 19:19:59Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileFailsafe.cpp 27920 2010-03-31 19:02:48Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Simple File I/O manager.
@@ -74,13 +74,11 @@ static int pdmacFileAioMgrFailsafeProcessEndpointTaskList(PPDMASYNCCOMPLETIONEND
                 AssertMsgFailed(("Invalid transfer type %d\n", pTasks->enmTransferType));
         }
 
-        AssertRC(rc);
-
-        pCurr->pfnCompleted(pCurr, pCurr->pvUser);
+        pCurr->pfnCompleted(pCurr, pCurr->pvUser, rc);
         pdmacFileTaskFree(pEndpoint, pCurr);
     }
 
-    return rc;
+    return VINF_SUCCESS;
 }
 
 static int pdmacFileAioMgrFailsafeProcessEndpoint(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint)

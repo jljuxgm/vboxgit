@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 27883 2010-03-31 12:07:15Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 27920 2010-03-31 19:02:48Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -544,7 +544,7 @@ VMMR3DECL(int) PDMR3AsyncCompletionTemplateDestroyUsb(PVM pVM, PPDMUSBINS pUsbIn
     return VINF_SUCCESS;
 }
 
-void pdmR3AsyncCompletionCompleteTask(PPDMASYNCCOMPLETIONTASK pTask, bool fCallCompletionHandler)
+void pdmR3AsyncCompletionCompleteTask(PPDMASYNCCOMPLETIONTASK pTask, int rc, bool fCallCompletionHandler)
 {
     LogFlow(("%s: pTask=%#p fCallCompletionHandler=%RTbool\n", __FUNCTION__, pTask, fCallCompletionHandler));
 
@@ -556,22 +556,22 @@ void pdmR3AsyncCompletionCompleteTask(PPDMASYNCCOMPLETIONTASK pTask, bool fCallC
         {
             case PDMASYNCCOMPLETIONTEMPLATETYPE_DEV:
             {
-                pTemplate->u.Dev.pfnCompleted(pTemplate->u.Dev.pDevIns, pTask->pvUser);
+                pTemplate->u.Dev.pfnCompleted(pTemplate->u.Dev.pDevIns, pTask->pvUser, rc);
                 break;
             }
             case PDMASYNCCOMPLETIONTEMPLATETYPE_DRV:
             {
-                pTemplate->u.Drv.pfnCompleted(pTemplate->u.Drv.pDrvIns, pTemplate->u.Drv.pvTemplateUser, pTask->pvUser);
+                pTemplate->u.Drv.pfnCompleted(pTemplate->u.Drv.pDrvIns, pTemplate->u.Drv.pvTemplateUser, pTask->pvUser, rc);
                 break;
             }
             case PDMASYNCCOMPLETIONTEMPLATETYPE_USB:
             {
-                pTemplate->u.Usb.pfnCompleted(pTemplate->u.Usb.pUsbIns, pTask->pvUser);
+                pTemplate->u.Usb.pfnCompleted(pTemplate->u.Usb.pUsbIns, pTask->pvUser, rc);
                 break;
             }
             case PDMASYNCCOMPLETIONTEMPLATETYPE_INTERNAL:
             {
-                pTemplate->u.Int.pfnCompleted(pTemplate->pVM, pTask->pvUser, pTemplate->u.Int.pvUser);
+                pTemplate->u.Int.pfnCompleted(pTemplate->pVM, pTask->pvUser, pTemplate->u.Int.pvUser, rc);
                 break;
             }
             default:

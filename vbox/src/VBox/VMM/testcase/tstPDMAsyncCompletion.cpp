@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletion.cpp 27797 2010-03-29 16:09:43Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletion.cpp 27920 2010-03-31 19:02:48Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Testcase.
  *
@@ -62,7 +62,7 @@ PPDMASYNCCOMPLETIONTASK g_AsyncCompletionTasks[NR_TASKS];
 volatile uint32_t       g_cTasksLeft;
 RTSEMEVENT              g_FinishedEventSem;
 
-void pfnAsyncTaskCompleted(PVM pVM, void *pvUser, void *pvUser2)
+void pfnAsyncTaskCompleted(PVM pVM, void *pvUser, void *pvUser2, int rc)
 {
     LogFlow((TESTCASE ": %s: pVM=%p pvUser=%p pvUser2=%p\n", __FUNCTION__, pVM, pvUser, pvUser2));
 

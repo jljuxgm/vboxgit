@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 27884 2010-03-31 12:10:41Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 27920 2010-03-31 19:02:48Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -262,10 +262,11 @@ typedef struct PDMASYNCCOMPLETIONTASK
  *
  * @returns nothing
  * @param   pTask                     Pointer to the finished task.
+ * @param   rc                        Status code of the completed request.
  * @param   fCallCompletionHandler    Flag whether the completion handler should be called to
  *                                    inform the owner of the task that it has completed.
  */
-void pdmR3AsyncCompletionCompleteTask(PPDMASYNCCOMPLETIONTASK pTask, bool fCallCompletionHandler);
+void pdmR3AsyncCompletionCompleteTask(PPDMASYNCCOMPLETIONTASK pTask, int rc, bool fCallCompletionHandler);
 
 RT_C_DECLS_END
 

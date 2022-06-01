@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 27810 2010-03-29 20:57:16Z vboxsync $ */
+/* $Id: DrvVD.cpp 27920 2010-03-31 19:02:48Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -284,7 +284,7 @@ static void drvvdErrorCallback(void *pvUser, int rc, RT_SRC_POS_DECL,
 
 #ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
 
-static DECLCALLBACK(void) drvvdAsyncTaskCompleted(PPDMDRVINS pDrvIns, void *pvTemplateUser, void *pvUser)
+static DECLCALLBACK(void) drvvdAsyncTaskCompleted(PPDMDRVINS pDrvIns, void *pvTemplateUser, void *pvUser, int rcReq)
 {
     PVBOXDISK pThis = PDMINS_2_DATA(pDrvIns, PVBOXDISK);
     PDRVVDSTORAGEBACKEND pStorageBackend = (PDRVVDSTORAGEBACKEND)pvTemplateUser;
