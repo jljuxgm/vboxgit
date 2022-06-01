@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 25897 2010-01-18 15:31:35Z vboxsync $ */
+/* $Id: DevATA.cpp 25900 2010-01-18 15:39:35Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -5393,7 +5393,6 @@ PDMBOTHCBDECL(int) ataIOPortReadStr1(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT 
             PDMCritSectLeave(&pCtl->lock);
             return VINF_IOM_HC_IOPORT_READ;
         }
-
         /* The last transfer unit cannot be handled in GC, as it involves thread communication. */
         cTransAvailable--;
 #endif /* !IN_RING3 */
@@ -5446,6 +5445,12 @@ PDMBOTHCBDECL(int) ataIOPortWriteStr1(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT
 
         cTransAvailable = (s->iIOBufferPIODataEnd - s->iIOBufferPIODataStart) / cb;
 #ifndef IN_RING3
+        /* Deal with the unlikely case where no data (or not enough for the read length operation) is available; go back to ring 3. */
+        if (!cTransAvailable)
+        {
+            PDMCritSectLeave(&pCtl->lock);
+            return VINF_IOM_HC_IOPORT_WRITE;
+        }
         /* The last transfer unit cannot be handled in GC, as it involves thread communication. */
         cTransAvailable--;
 #endif /* !IN_RING3 */
