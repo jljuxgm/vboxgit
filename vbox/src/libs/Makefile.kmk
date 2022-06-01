@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28562 2010-04-21 13:03:28Z vboxsync $
+# $Id: Makefile.kmk 28592 2010-04-22 13:18:10Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -59,7 +59,7 @@ if defined(VBOX_WITH_VRDP) && !defined(VBOX_ONLY_SDK) \
 endif
 
 # libjpeg for VRDP video acceleration
-ifdef VBOX_WITH_VRDP_VIDEO_CHANNEL
+if defined(VBOX_WITH_VRDP) && defined(VBOX_WITH_VRDP_VIDEO_CHANNEL)
  include $(PATH_SUB_CURRENT)/jpeg-8a/Makefile.kmk
 endif
 
