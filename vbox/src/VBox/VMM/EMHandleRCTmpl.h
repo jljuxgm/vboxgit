@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 24033 2009-10-23 13:01:30Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 26066 2010-01-27 12:59:32Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hwaccm]HandleRC template.
  */
@@ -144,6 +144,16 @@ int emR3HwaccmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VINF_PGM_SYNC_CR3:
             AssertMsg(VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_PGM_SYNC_CR3 | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL),
                       ("VINF_PGM_SYNC_CR3 and no VMCPU_FF_PGM_SYNC_CR3*!\n"));
+            rc = VINF_SUCCESS;
+            break;
+
+        /*
+         * PGM pool flush pending (guest SMP only)
+         *
+         * Todo: jumping back and forth between ring 0 and 3 can burn a lot of cycles if the EMT thread that's supposed to handle
+         *       the flush is currently not active (e.g. waiting to be scheduled) -> fix this properly!
+         */
+        case VINF_PGM_POOL_FLUSH_PENDING:
             rc = VINF_SUCCESS;
             break;
 

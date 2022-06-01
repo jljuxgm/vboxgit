@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 26065 2010-01-27 11:01:55Z vboxsync $ */
+/* $Id: PGMPool.cpp 26066 2010-01-27 12:59:32Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -725,6 +725,9 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pV
     /* Clear the PGM_SYNC_CLEAR_PGM_POOL flag on all VCPUs to prevent redundant flushes. */
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
         pVM->aCpus[idCpu].pgm.s.fSyncFlags &= ~PGM_SYNC_CLEAR_PGM_POOL;
+
+    /* Flush job finished. */
+    VM_FF_CLEAR(pVM, VM_FF_PGM_POOL_FLUSH_PENDING);
 
     pPool->cPresent = 0;
     pgmUnlock(pVM);

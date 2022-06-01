@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
+/* $Id: VMMR0.cpp 26066 2010-01-27 12:59:32Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -463,6 +463,9 @@ static void vmmR0RecordRC(PVM pVM, PVMCPU pVCpu, int rc)
             break;
         case VINF_PGM_CHANGE_MODE:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPGMChangeMode);
+            break;
+        case VINF_PGM_POOL_FLUSH_PENDING:
+            STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPGMFlushPending);
             break;
         case VINF_EM_PENDING_REQUEST:
             STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetPendingRequest);
