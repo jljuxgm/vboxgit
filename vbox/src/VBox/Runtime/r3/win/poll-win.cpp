@@ -1,4 +1,4 @@
-/* $Id: poll-win.cpp 27509 2010-03-18 23:47:16Z vboxsync $ */
+/* $Id: poll-win.cpp 27510 2010-03-19 01:37:08Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows Implementation.
  *
@@ -196,7 +196,7 @@ static int rtPollNoResumeWorker(RTPOLLSETINTERNAL *pThis, RTMSINTERVAL cMillies,
                                           TRUE /*fAlertable*/);
     if (    dwRc >= WAIT_OBJECT_0
         &&  dwRc <  WAIT_OBJECT_0 + cHandles)
-        rc = VINF_SUCCESS;
+        rc = VERR_INTERRUPTED;
     else if (dwRc == WAIT_TIMEOUT)
         rc = VERR_TIMEOUT;
     else if (dwRc == WAIT_IO_COMPLETION)
