@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28736 2010-04-26 09:24:35Z vboxsync $
+# $Id: Makefile.kmk 28739 2010-04-26 10:08:55Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -27,9 +27,6 @@ include	$(KBUILD_PATH)/subheader.kmk
 #
 PROGRAMS += VBoxService
 PROGRAMS.win.x86 += VBoxServiceNT
-
-# Hack. Should be in Config.kmk later!
-VBOX_WITH_MEMBALLOON     := 1
 
 #
 # VBoxService
