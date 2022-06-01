@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 26761 2010-02-24 18:57:58Z vboxsync $ */
+/* $Id: fileio-win.cpp 27388 2010-03-15 23:00:25Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -477,11 +477,9 @@ RTR3DECL(int)  RTFileWrite(RTFILE File, const void *pvBuf, size_t cbToWrite, siz
 
 RTR3DECL(int)  RTFileFlush(RTFILE File)
 {
-    int rc;
-
-    if (FlushFileBuffers((HANDLE)File) == FALSE)
+    if (!FlushFileBuffers((HANDLE)File))
     {
-        rc = GetLastError();
+        int rc = GetLastError();
         Log(("FlushFileBuffers failed with %d\n", rc));
         return RTErrConvertFromWin32(rc);
     }
