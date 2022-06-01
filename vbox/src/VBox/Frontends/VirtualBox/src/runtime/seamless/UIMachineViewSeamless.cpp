@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 27056 2010-03-04 19:32:17Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 27077 2010-03-05 12:10:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -259,6 +259,11 @@ bool UIMachineViewSeamless::eventFilter(QObject *pWatched, QEvent *pEvent)
         {
             case QEvent::Resize:
             {
+                /* Send guest-resize hint only if top window resizing to required dimension: */
+                QResizeEvent *pResizeEvent = static_cast<QResizeEvent*>(pEvent);
+                if (pResizeEvent->size() != availableGeometry().size())
+                    break;
+
                 /* Set the "guest needs to resize" hint.
                  * This hint is acted upon when (and only when) the autoresize property is "true": */
                 m_fShouldWeDoResize = uisession()->isGuestSupportsGraphics();
