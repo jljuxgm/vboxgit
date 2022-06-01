@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQGL.cpp 26719 2010-02-23 16:18:14Z vboxsync $ */
+/* $Id: VBoxFBQGL.cpp 27682 2010-03-24 18:37:48Z vboxsync $ */
 /** @file
  * VBoxFBQGL Opengl-based FrameBuffer implementation
  */
@@ -18,7 +18,7 @@
  * Clara, CA 95054 USA or visit http://www.sun.com if you need
  * additional information or have any questions.
  */
-#if defined (VBOX_GUI_USE_QGL)
+#if defined (VBOX_GUI_USE_QGLFB)
 
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include "precomp.h"

@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 27600 2010-03-22 16:02:37Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 27682 2010-03-24 18:37:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -575,7 +575,7 @@ static VBoxDefs::RenderMode vboxGetRenderMode (const char *aModeStr)
         else if (::strcmp (aModeStr, "quartz2d") == 0)
             mode = VBoxDefs::Quartz2DMode;
 #endif
-#if defined (VBOX_GUI_USE_QGL)
+#if defined (VBOX_GUI_USE_QGLFB)
         else if (::strcmp (aModeStr, "qgl") == 0)
             mode = VBoxDefs::QGLMode;
 #endif

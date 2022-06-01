@@ -1,4 +1,4 @@
-/* $Id: VBoxFrameBuffer.cpp 26719 2010-02-23 16:18:14Z vboxsync $ */
+/* $Id: VBoxFrameBuffer.cpp 27682 2010-03-24 18:37:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -449,7 +449,7 @@ void VBoxQImageFrameBuffer::resizeEvent (VBoxResizeEvent *re)
 // VBoxQGLFrameBuffer class
 /////////////////////////////////////////////////////////////////////////////
 
-#if defined (VBOX_GUI_USE_QGL)
+#if defined (VBOX_GUI_USE_QGLFB)
 
 /* The class is defined in VBoxFBQGL.cpp */
 
