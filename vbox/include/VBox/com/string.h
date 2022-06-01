@@ -1,4 +1,4 @@
-/* $Id: string.h 26550 2010-02-15 17:14:18Z vboxsync $ */
+/* $Id: string.h 26552 2010-02-15 17:23:17Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -419,6 +419,12 @@ protected:
 
     BSTR    m_bstr;                     /**< The string buffer. */
 };
+
+/* symmetric compare operators */
+inline bool operator==(CBSTR l, const Bstr &r) { return r.operator==(l); }
+inline bool operator!=(CBSTR l, const Bstr &r) { return r.operator!=(l); }
+inline bool operator==(BSTR l, const Bstr &r) { return r.operator==(l); }
+inline bool operator!=(BSTR l, const Bstr &r) { return r.operator!=(l); }
 
 ////////////////////////////////////////////////////////////////////////////////
 
