@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 24989 2009-11-26 11:31:46Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 25088 2009-11-30 09:01:38Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -209,6 +209,9 @@ int NetIfCreateHostOnlyNetworkInterface (VirtualBox *pVBox, IHostNetworkInterfac
     return hrc;
 
 #else
+    NOREF(pVBox);
+    NOREF(aHostNetworkInterface);
+    NOREF(aProgress);
     return VERR_NOT_IMPLEMENTED;
 #endif
 }
@@ -254,6 +257,9 @@ int NetIfRemoveHostOnlyNetworkInterface (VirtualBox *pVBox, IN_GUID aId,
     }
     return rc;
 #else
+    NOREF(pVBox);
+    NOREF(aId);
+    NOREF(aProgress);
     return VERR_NOT_IMPLEMENTED;
 #endif
 }
