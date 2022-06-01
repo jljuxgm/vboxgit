@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 26423 2010-02-11 11:16:39Z vboxsync $ */
+/* $Id: DrvNAT.cpp 26495 2010-02-14 07:59:48Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -406,7 +406,7 @@ static DECLCALLBACK(int) drvNATSendDeprecated(PPDMINETWORKUP pInterface, const v
     AssertRC(rc);
 
     /* @todo: Here we should get mbuf instead temporal buffer */
-#ifndef VBOX_WITH_SLIRP_BSD_MBUF 
+#ifndef VBOX_WITH_SLIRP_BSD_MBUF
     void *pvmBuf = slirp_ext_m_get(pThis->pNATState);
     Assert(pvmBuf);
     slirp_ext_m_append(pThis->pNATState, pvmBuf, (uint8_t *)pvBuf, cb);

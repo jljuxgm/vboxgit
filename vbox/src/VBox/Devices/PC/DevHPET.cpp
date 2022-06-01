@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 26376 2010-02-09 14:25:28Z vboxsync $ */
+/* $Id: DevHPET.cpp 26495 2010-02-14 07:59:48Z vboxsync $ */
 /** @file
  * HPET virtual device - high precision event timer emulation
  */
@@ -926,7 +926,7 @@ static DECLCALLBACK(void) hpetTimer(PPDMDEVINS pDevIns,
 
     /* Lock in R3 must either block or succeed */
     rc = hpetLock(pThis, VERR_IGNORED);
-    
+
     AssertLogRelRCReturnVoid(rc);
 
     if ((pTimer->u64Config & HPET_TN_PERIODIC) && (u64Period != 0))
