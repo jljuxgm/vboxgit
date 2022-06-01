@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30099 2010-06-09 08:27:36Z vboxsync $
+# $Id: Makefile.kmk 30137 2010-06-09 18:45:50Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -486,7 +486,7 @@ BLDDIRS += $(foreach d,\
 SOLARIS_TAR_GZ_FILES := \
 	$(PKG_FILENAME).pkg \
 	$(if $(VBOX_WITH_SOLARIS_VBI),$(VBIPKG_FILENAME).pkg,) \
-	LICENSE \
+	$(if $(VBOX_OSE),,LICENSE) \
 	autoresponse \
 	ReadMe.txt
 
