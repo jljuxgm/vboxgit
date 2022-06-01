@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 24999 2009-11-26 13:36:37Z vboxsync $ */
+/* $Id: CPUM.cpp 25814 2010-01-13 19:09:47Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -440,7 +440,7 @@ static int cpumR3CpuIdInit(PVM pVM)
                                        //| X86_CPUID_FEATURE_ECX_VMX   - not virtualized.
                                        //| X86_CPUID_FEATURE_ECX_EST   - no extended speed step.
                                        //| X86_CPUID_FEATURE_ECX_TM2   - no thermal monitor 2.
-                                       //| X86_CPUID_FEATURE_ECX_SSSE3 - no SSSE3 support
+                                         | X86_CPUID_FEATURE_ECX_SSSE3
                                        //| X86_CPUID_FEATURE_ECX_CNTXID - no L1 context id (MSR++).
                                        //| X86_CPUID_FEATURE_ECX_CX16  - no cmpxchg16b
                                        /* ECX Bit 14 - xTPR Update Control. Processor supports changing IA32_MISC_ENABLES[bit 23]. */
