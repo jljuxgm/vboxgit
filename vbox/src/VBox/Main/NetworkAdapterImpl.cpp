@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 23222 2009-09-22 15:48:26Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 25098 2009-11-30 10:01:05Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -505,6 +505,10 @@ STDMETHODIMP NetworkAdapter::COMGETTER(NATNetwork) (BSTR *aNATNetwork)
 
 STDMETHODIMP NetworkAdapter::COMSETTER(NATNetwork) (IN_BSTR aNATNetwork)
 {
+    Bstr bstrEmpty("");
+    if (!aNATNetwork)
+        aNATNetwork = bstrEmpty;
+
     AutoCaller autoCaller(this);
     CheckComRCReturnRC(autoCaller.rc());
 
@@ -934,6 +938,8 @@ HRESULT NetworkAdapter::loadSettings(const settings::NetworkAdapter &data)
     {
         case NetworkAttachmentType_NAT:
             mData->mNATNetwork = data.strName;
+            if (mData->mNATNetwork.isNull())
+                mData->mNATNetwork = "";
             rc = AttachToNAT();
             CheckComRCReturnRC(rc);
         break;

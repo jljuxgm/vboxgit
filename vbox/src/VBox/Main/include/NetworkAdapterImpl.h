@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 24989 2009-11-26 11:31:46Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 25098 2009-11-30 10:01:05Z vboxsync $ */
 
 /** @file
  *
@@ -44,11 +44,11 @@ public:
 
     struct Data
     {
-        Data()
-            : mSlot (0), mEnabled (FALSE)
-            , mAttachmentType (NetworkAttachmentType_Null)
-            ,  mCableConnected (TRUE), mLineSpeed (0), mTraceEnabled (FALSE)
-            , mHostInterface ("") /* cannot be null */
+        Data() : mSlot(0), mEnabled(FALSE),
+                 mAttachmentType(NetworkAttachmentType_Null),
+                 mCableConnected(TRUE), mLineSpeed(0), mTraceEnabled(FALSE),
+                 mHostInterface("") /* cannot be null */,
+                 mNATNetwork("") /* cannot be null */
         {}
 
         bool operator== (const Data &that) const
