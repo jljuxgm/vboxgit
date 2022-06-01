@@ -1,4 +1,4 @@
-/* $Id: VBoxNetNAT.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxNetNAT.cpp 30017 2010-06-03 18:31:57Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -429,9 +429,7 @@ static void IntNetSendWorker(bool urg, const void *pvFrame, size_t cbFrame, stru
     }
     natNotifyNATThread();
     slirp_ext_m_free(pThis->m_pNATState, m);
-#ifdef VBOX_WITH_SLIRP_BSD_MBUF
     RTMemFree((void *)pvFrame);
-#endif
 }
 
 static DECLCALLBACK(int) AsyncIoThread(RTTHREAD pThread, void *pvUser)
