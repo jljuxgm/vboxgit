@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 26889 2010-02-28 14:57:36Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 26890 2010-02-28 15:21:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -788,14 +788,19 @@ VBoxConsoleWnd &VBoxGlobal::consoleWnd()
 }
 
 #ifdef VBOX_WITH_NEW_RUNTIME_CORE
-UIMachine* VBoxGlobal::virtualMachine(const CSession &session /* = CSession() */)
+bool VBoxGlobal::createVirtualMachine(const CSession &session)
 {
     if (!m_pVirtualMachine && !session.isNull())
     {
         UIMachine *pVirtualMachine = new UIMachine(&m_pVirtualMachine, session);
         Assert(pVirtualMachine == m_pVirtualMachine);
         NOREF(pVirtualMachine);
+        return true;
     }
+    return false;
+}
+UIMachine* VBoxGlobal::virtualMachine()
+{
     return m_pVirtualMachine;
 }
 #endif
@@ -2262,19 +2267,18 @@ CSession VBoxGlobal::openSession (const QString &aId, bool aExisting /* = false 
 /**
  *  Starts a machine with the given ID.
  */
-bool VBoxGlobal::startMachine (const QString &id)
+bool VBoxGlobal::startMachine(const QString &strId)
 {
-    AssertReturn (mValid, false);
+    AssertReturn(mValid, false);
 
-    CSession session = vboxGlobal().openSession (id);
+    CSession session = vboxGlobal().openSession(strId);
     if (session.isNull())
         return false;
 
 #ifdef VBOX_WITH_NEW_RUNTIME_CORE
-    virtualMachine(session);
-    return true;
+    return createVirtualMachine(session);
 #else
-    return consoleWnd().openView (session);
+    return consoleWnd().openView(session);
 #endif
 }
 

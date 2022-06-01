@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 26878 2010-02-26 23:56:51Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 26890 2010-02-28 15:21:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -452,11 +452,9 @@ void UIMachineWindowNormal::prepareConnections()
 
 void UIMachineWindowNormal::prepareMachineView()
 {
-    CMachine machine = session().GetMachine();
-
 #ifdef VBOX_WITH_VIDEOHWACCEL
     /* Need to force the QGL framebuffer in case 2D Video Acceleration is supported & enabled: */
-    bool bAccelerate2DVideo = machine.GetAccelerate2DVideoEnabled() && VBoxGlobal::isAcceleration2DVideoAvailable();
+    bool bAccelerate2DVideo = session().GetMachine().GetAccelerate2DVideoEnabled() && VBoxGlobal::isAcceleration2DVideoAvailable();
 #endif
 
     /* Set central widget: */

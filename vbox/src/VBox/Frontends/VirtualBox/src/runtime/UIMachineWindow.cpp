@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 26889 2010-02-28 14:57:36Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 26890 2010-02-28 15:21:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -361,11 +361,8 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
     if (pEvent->isAccepted())
     {
 #ifndef VBOX_GUI_SEPARATE_VM_PROCESS
-        //vboxGlobal().selectorWnd().show();
+        vboxGlobal().selectorWnd().show();
 #endif
-
-        /* Hide console window */
-        machineWindow()->hide();
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
         /* Close & destroy the debugger GUI */
@@ -379,6 +376,12 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
         /* Notify all the top-level dialogs about closing */
         // TODO: Notify about closing!
         //emit closing();
+
+        /* Reject that event finally as uimachine will close window iteself: */
+        pEvent->ignore();
+
+        /* Request uisession closing: */
+        QTimer::singleShot(0, uisession(), SLOT(sltCloseVirtualSession()));
     }
 }
 
