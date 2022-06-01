@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 24113 2009-10-27 12:54:40Z vboxsync $
 ## @file
 # Sub-Makefile for test cases.
 #
@@ -23,14 +23,14 @@ SUB_DEPTH = ../../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS += tstSessionHack
-tstSessionHack_TEMPLATE = VBOXW32GUESTR3
+tstSessionHack_TEMPLATE = VBOXGUESTR3EXE
 tstSessionHack_DEFS     = VBOX_WITH_HGCM
 tstSessionHack_INCS     = ../../include
 tstSessionHack_SOURCES  = \
 	tstSessionHack.cpp
 
 tstSessionHack_LIBS     = \
-	$(PATH_LIB)/additions/RuntimeW32GuestR3.lib
+	$(VBOX_LIB_VBGL_R3)
 
 include	$(KBUILD_PATH)/subfooter.kmk
 
