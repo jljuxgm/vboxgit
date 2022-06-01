@@ -1,4 +1,4 @@
-/* $Revision: 26866 $ */
+/* $Revision: 26869 $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -282,6 +282,8 @@ static int rtR0MemObjLinuxAllocPages(PRTR0MEMOBJLNX *ppMemLnx, RTR0MEMOBJTYPE en
             /*
              * This should never happen!
              */
+            printk("rtR0MemObjLinuxAllocPages(cb=%ld, uAlignment=%ld): alloc_pages(..., %d) returned physical memory at %lu!\n",
+                    (unsigned long)cb, (unsigned long)uAlignment, rtR0MemObjLinuxOrder(cPages), (unsigned long)page_to_phys(pMemLnx->apPages[0]));
             rtR0MemObjLinuxFreePages(pMemLnx);
             return VERR_NO_MEMORY;
         }
