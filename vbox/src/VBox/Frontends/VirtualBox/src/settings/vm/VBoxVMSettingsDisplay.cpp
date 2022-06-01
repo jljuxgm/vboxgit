@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsDisplay.cpp 27889 2010-03-31 12:57:09Z vboxsync $ */
+/* $Id: VBoxVMSettingsDisplay.cpp 27957 2010-04-02 12:51:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -300,15 +300,12 @@ void VBoxVMSettingsDisplay::checkMultiMonitorReqs()
     int cVal = mSlMonitors->value();
     if (cVal > 1)
     {
-#ifdef VBOX_WITH_VIDEOHWACCEL
-        mCb2DVideo->setChecked(false);
-#endif /* VBOX_WITH_VIDEOHWACCEL */
 #ifdef Q_WS_MAC
         mCb3D->setChecked(false);
 #endif
     }
 #ifdef VBOX_WITH_VIDEOHWACCEL
-    mCb2DVideo->setEnabled(cVal == 1 && VBoxGlobal::isAcceleration2DVideoAvailable());
+    mCb2DVideo->setEnabled(VBoxGlobal::isAcceleration2DVideoAvailable());
 #endif /* VBOX_WITH_VIDEOHWACCEL */
 #ifdef Q_WS_MAC
     mCb3D->setEnabled(cVal == 1 && vboxGlobal().virtualBox().GetHost().GetAcceleration3DAvailable());
