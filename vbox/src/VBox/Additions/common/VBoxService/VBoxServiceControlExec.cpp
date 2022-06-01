@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 28647 2010-04-23 13:43:45Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 28649 2010-04-23 14:14:47Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -625,8 +625,8 @@ int VBoxServiceControlExecAllocateThreadData(PVBOXSERVICECTRLTHREAD pThread,
         RTStrFree(pszArgsTemp);
     }
 
-    /* Did we get the same result? Also count in the added argv[0] above! */
-    Assert((uNumArgs + 1) == pData->uNumArgs);
+    /* Did we get at least as much arguments as told? */
+    Assert(pData->uNumArgs >= uNumArgs);
 
     if (RT_SUCCESS(rc))
     {
