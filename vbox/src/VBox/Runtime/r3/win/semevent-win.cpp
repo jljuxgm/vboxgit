@@ -1,4 +1,4 @@
-/* $Id: semevent-win.cpp 25655 2010-01-05 15:37:32Z vboxsync $ */
+/* $Id: semevent-win.cpp 25657 2010-01-05 15:40:42Z vboxsync $ */
 /** @file
  * IPRT - Event Sempahore, Windows.
  */
@@ -204,8 +204,8 @@ RTDECL(int)   RTSemEventWaitNoResume(RTSEMEVENT EventSem, unsigned cMillies)
             AssertMsgFailed(("%u\n", rc));
         case WAIT_FAILED:
         {
-            AssertMsgFailed(("Wait on EventSem %p failed, rc=%d lasterr=%d\n", pThis, rc, GetLastError()));
             int rc2 = RTErrConvertFromWin32(GetLastError());
+            AssertMsgFailed(("Wait on EventSem %p failed, rc=%d lasterr=%d\n", pThis, rc, GetLastError()));
             if (rc2)
                 return rc2;
 

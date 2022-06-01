@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-win.cpp 25654 2010-01-05 15:36:47Z vboxsync $ */
+/* $Id: semeventmulti-win.cpp 25657 2010-01-05 15:40:42Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Windows.
  *
@@ -227,8 +227,8 @@ RTDECL(int)  RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI EventMultiSem, unsigned
             AssertMsgFailed(("%u\n", rc));
         case WAIT_FAILED:
         {
-            AssertMsgFailed(("Wait on EventMultiSem %p failed, rc=%d lasterr=%d\n", pThis, rc, GetLastError()));
             int rc2 = RTErrConvertFromWin32(GetLastError());
+            AssertMsgFailed(("Wait on EventMultiSem %p failed, rc=%d lasterr=%d\n", pThis, rc, GetLastError()));
             if (rc2)
                 return rc2;
 
