@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 27768 2010-03-29 09:17:52Z vboxsync $ */
+/* $Id: UISession.cpp 28342 2010-04-14 23:33:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -752,6 +752,11 @@ UIActionsPool* UISession::actionsPool() const
 QWidget* UISession::mainMachineWindow() const
 {
     return uimachine()->machineLogic()->mainMachineWindow()->machineWindow();
+}
+
+UIMachineLogic* UISession::machineLogic() const
+{
+    return uimachine()->machineLogic();
 }
 
 QMenu* UISession::newMenu(UIMainMenuType fOptions /* = UIMainMenuType_ALL */)

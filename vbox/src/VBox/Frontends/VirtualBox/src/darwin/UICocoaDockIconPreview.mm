@@ -1,4 +1,4 @@
-/* $Id: UICocoaDockIconPreview.mm 28279 2010-04-14 00:52:05Z vboxsync $ */
+/* $Id: UICocoaDockIconPreview.mm 28342 2010-04-14 23:33:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -52,13 +52,13 @@
     UICocoaDockIconPreviewPrivate *p;
 
     UIDockTileMonitor *mMonitor;
-    NSImageView     *mAppIcon;
+    NSImageView       *mAppIcon;
 
     UIDockTileOverlay *mOverlay;
 }
 - (id)initWithParent:(UICocoaDockIconPreviewPrivate*)parent;
 - (void)destroy;
-- (NSView*)screenContent;
+- (NSView*)screenContentWithParentView:(NSView*)parentView;
 - (void)cleanup;
 - (void)restoreAppIcon;
 - (void)updateAppIcon;
@@ -260,9 +260,15 @@ void UICocoaDockIconPreview::setOriginalSize(int width, int height)
     [self cleanup];
 }
 
-- (NSView*)screenContent
+- (NSView*)screenContentWithParentView:(NSView*)parentView
 {
-    return [mMonitor screenContent];
+    if (mMonitor != nil)
+    {
+        void *pId = p->currentPreviewWindowId();
+        if (parentView == pId)
+            return [mMonitor screenContent];
+    }
+    return nil;
 }
 
 - (void)cleanup

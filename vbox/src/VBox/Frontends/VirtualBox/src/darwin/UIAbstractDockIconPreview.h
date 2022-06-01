@@ -1,4 +1,4 @@
-/* $Id: UIAbstractDockIconPreview.h 27215 2010-03-09 13:34:53Z vboxsync $ */
+/* $Id: UIAbstractDockIconPreview.h 28342 2010-04-14 23:33:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,8 +30,8 @@
 /* VBox includes */
 #include "VBoxUtils-darwin.h"
 
-class UISession;
 class UIFrameBuffer;
+class UISession;
 
 class QPixmap;
 
@@ -56,6 +56,8 @@ public:
     void initPreviewImages();
     inline CGImageRef stateImage() const;
     void drawOverlayIcons(CGContextRef context);
+
+    void* currentPreviewWindowId() const;
 
     /* Flipping is necessary cause the drawing context in Carbon is flipped by 180 degree */
     inline CGRect flipRect(CGRect rect) const { return ::darwinFlipCGRect(rect, m_dockIconRect); }

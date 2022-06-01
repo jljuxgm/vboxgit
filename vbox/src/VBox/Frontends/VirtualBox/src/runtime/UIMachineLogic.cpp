@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 28294 2010-04-14 11:33:35Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 28342 2010-04-14 23:33:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -267,7 +267,7 @@ bool UIMachineLogic::checkAvailability()
     return true;
 }
 
-UIMachineWindow* UIMachineLogic::mainMachineWindow()
+UIMachineWindow* UIMachineLogic::mainMachineWindow() const
 {
     /* Return null if windows are not created yet: */
     if (!isMachineWindowsCreated())
@@ -276,7 +276,7 @@ UIMachineWindow* UIMachineLogic::mainMachineWindow()
     return machineWindows()[0];
 }
 
-UIMachineWindow* UIMachineLogic::defaultMachineWindow()
+UIMachineWindow* UIMachineLogic::defaultMachineWindow() const
 {
     /* Return null if windows are not created yet: */
     if (!isMachineWindowsCreated())
@@ -324,6 +324,14 @@ void UIMachineLogic::updateDockIconSize(int screenId, int width, int height)
         && m_pDockIconPreview
         && m_DockIconPreviewMonitor == screenId)
         m_pDockIconPreview->setOriginalSize(width, height);
+}
+
+UIMachineView* UIMachineLogic::dockPreviewView() const
+{
+    if (   m_fIsDockIconEnabled
+        && m_pDockIconPreview)
+        return machineWindows().at(m_DockIconPreviewMonitor)->machineView();
+    return 0;
 }
 #endif /* Q_WS_MAC */
 
