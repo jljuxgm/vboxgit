@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 24503 2009-11-09 13:29:40Z vboxsync $ */
+/* $Id: crservice.cpp 24891 2009-11-24 11:36:06Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -70,7 +70,7 @@ static ULONG64 g_winId = 0;
 #define CR_USE_HGCM
 
 static const char* gszVBoxOGLSSMMagic = "***OpenGL state data***";
-#define SHCROGL_SSM_VERSION 10
+#define SHCROGL_SSM_VERSION 11
 
 typedef struct
 {
