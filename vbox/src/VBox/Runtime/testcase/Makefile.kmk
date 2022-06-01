@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25508 2009-12-18 21:42:04Z vboxsync $
+# $Id: Makefile.kmk 25516 2009-12-20 14:46:49Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -92,7 +92,7 @@ PROGRAMS += \
 	tstSemEvent \
 	tstSemMutex \
 	tstSemPingPong \
-	tstSemRW \
+	tstRTSemRW \
 	tstSems \
 	tstRTSemXRoads \
 	tstRTStrCache \
@@ -365,7 +365,8 @@ tstSemMutex_SOURCES = tstSemMutex.cpp
 
 tstSemEvent_SOURCES = tstSemEvent.cpp
 
-tstSemRW_SOURCES = tstSemRW.cpp
+tstRTSemRW_TEMPLATE = VBOXR3TSTEXE
+tstRTSemRW_SOURCES = tstRTSemRW.cpp
 
 tstSemPingPong_SOURCES = tstSemPingPong.cpp
 
