@@ -1,4 +1,4 @@
-/* $Id: RTSha1Digest.cpp 23501 2009-10-02 10:59:42Z vboxsync $ */
+/* $Id: RTSha1Digest.cpp 25918 2010-01-20 07:40:31Z vboxsync $ */
 /** @file
  * IPRT - SHA1 digest creation
  */
@@ -63,7 +63,7 @@ RTR3DECL(int) RTSha1Digest(const char *pszFile, char **ppszDigest)
 
     /* Open the file to calculate a SHA1 sum of */
     PRTSTREAM pStream;
-    int rc = RTStrmOpen(pszFile, "r+b", &pStream);
+    int rc = RTStrmOpen(pszFile, "rb", &pStream);
     if (RT_FAILURE(rc))
         return rc;
 
