@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 23019 2009-09-15 06:41:25Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 25580 2009-12-24 14:35:39Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2824,14 +2824,15 @@ REMR3DECL(void) REMR3ReplayHandlerNotifications(PVM pVM)
             } while (!ASMAtomicCmpXchgU32(&pVM->rem.s.idxFreeList, idxCur, idxNext));
         } while (idxHead != UINT32_MAX);
 
-#ifdef VBOX_STRICT
+/* Temporarily turned on for release builds to investigate #4113 */
+#if 1 //def VBOX_STRICT
         if (pVM->cCpus == 1)
         {
             /* Check that all records are now on the free list. */
             for (c = 0, idxNext = pVM->rem.s.idxFreeList; idxNext != UINT32_MAX;
                  idxNext = pVM->rem.s.aHandlerNotifications[idxNext].idxNext)
                 c++;
-            AssertMsg(c == RT_ELEMENTS(pVM->rem.s.aHandlerNotifications), ("%#x != %#x, idxFreeList=%#x\n", c, RT_ELEMENTS(pVM->rem.s.aHandlerNotifications), pVM->rem.s.idxFreeList));
+            AssertReleaseMsg(c == RT_ELEMENTS(pVM->rem.s.aHandlerNotifications), ("%#x != %#x, idxFreeList=%#x\n", c, RT_ELEMENTS(pVM->rem.s.aHandlerNotifications), pVM->rem.s.idxFreeList));
         }
 #endif
     }
