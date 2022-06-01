@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxManager.java 29140 2010-05-06 11:52:22Z vboxsync $ */
+/* $Id: VirtualBoxManager.java 29185 2010-05-07 09:03:34Z vboxsync $ */
 /*
  * Copyright (C) 2010 Oracle Corporation
  *
@@ -112,5 +112,32 @@ public class VirtualBoxManager
         session.close();
 
         return true;
+    }
+
+    public Mozilla getMozilla()
+    {
+        return mozilla;
+    }
+
+    public void waitForEvents(long tmo)
+    {
+        mozilla.waitForEvents(tmo);
+    }
+
+    public ILocalOwner makeWrapper(nsISupports obj)
+    {
+
+       ILocalOwner lo = (ILocalOwner) this.componentManager
+               .createInstanceByContractID("@virtualbox.org/CallbackWrapper;1",
+                                           null,
+                                           ILocalOwner.ILOCALOWNER_IID);
+       lo.setLocalObject(obj);
+       return lo;
+    }
+
+    public IVirtualBoxCallback makeVirtualBoxCallback(IVirtualBoxCallback obj)
+    {
+       ILocalOwner lo = makeWrapper(obj);
+       return (IVirtualBoxCallback)lo.queryInterface(IVirtualBoxCallback.IVIRTUALBOXCALLBACK_IID);
     }
 }
