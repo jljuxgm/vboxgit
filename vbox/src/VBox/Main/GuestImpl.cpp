@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28626 2010-04-23 08:12:49Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28627 2010-04-23 08:14:17Z vboxsync $ */
 
 /** @file
  *
@@ -981,7 +981,7 @@ STDMETHODIMP Guest::GetProcessOutput(ULONG aPID, ULONG aFlags, ULONG aTimeoutMS,
 
     int vrc = VINF_SUCCESS;
 
-    /* Make sure mParent is valid, so set a read lock in this scope. */
+    /* Make sure mParent is valid, so set the read lock while using. */
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     /* Forward the information to the VMM device. */
