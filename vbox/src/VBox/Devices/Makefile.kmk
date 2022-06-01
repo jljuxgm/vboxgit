@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28332 2010-04-14 21:52:52Z vboxsync $
+# $Id: Makefile.kmk 28338 2010-04-14 22:13:58Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -763,7 +763,9 @@ ifdef VBOX_WITH_HPET
 endif
 
 if1of ($(VBOX_LDR_FMT), pe lx)
-VBoxDDR0_LIBS           = $(PATH_LIB)/VMMR0Imp$(VBOX_SUFF_LIB)
+VBoxDDR0_LIBS           = \
+	$(PATH_LIB)/VMMR0Imp$(VBOX_SUFF_LIB) \
+	$(PATH_LIB)/SUP0$(VBOX_SUFF_LIB)
 endif
 
 

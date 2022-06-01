@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 28320 2010-04-14 18:26:24Z vboxsync $
+; $Id: VMMR0.def 28338 2010-04-14 22:13:58Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -81,6 +81,7 @@ EXPORTS
     nocrt_memcpy
     memcpy=nocrt_memcpy                 ; not-os2
     nocrt_memset
+    memset=nocrt_memset                 ; not-os2
     nocrt_strcpy
     nocrt_strcmp
     nocrt_strchr
