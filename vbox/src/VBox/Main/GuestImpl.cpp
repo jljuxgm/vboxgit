@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28206 2010-04-12 13:48:49Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28207 2010-04-12 14:07:18Z vboxsync $ */
 
 /** @file
  *
@@ -512,7 +512,7 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
          * Register the host notification callback
          */
         HGCMSVCEXTHANDLE hExt;
-        int vrc = HGCMHostRegisterServiceExtension(&hExt, "VBoxGuestCtrlSvc",
+        int vrc = HGCMHostRegisterServiceExtension(&hExt, "VBoxGuestControlSvc",
                                                    &Guest::doGuestCtrlNotification,
                                                    this);
         if (RT_SUCCESS(vrc))
