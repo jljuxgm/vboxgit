@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 26066 2010-01-27 12:59:32Z vboxsync $ */
+/* $Id: PGMPool.cpp 26150 2010-02-02 15:52:54Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -104,6 +104,7 @@
 #include <VBox/mm.h>
 #include "PGMInternal.h"
 #include <VBox/vm.h>
+#include "PGMInline.h"
 
 #include <VBox/log.h>
 #include <VBox/err.h>

@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 26107 2010-01-30 14:18:03Z vboxsync $ */
+/* $Id: PGM.cpp 26150 2010-02-02 15:52:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -589,6 +589,7 @@
 #include <VBox/hwaccm.h>
 #include "PGMInternal.h"
 #include <VBox/vm.h>
+#include "PGMInline.h"
 
 #include <VBox/dbg.h>
 #include <VBox/param.h>

@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 25935 2010-01-20 14:43:56Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 26150 2010-02-02 15:52:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -27,9 +27,11 @@
 #include <VBox/pgm.h>
 #include <VBox/stam.h>
 #include <VBox/ssm.h>
-#include <VBox/pdm.h>
+#include <VBox/pdmdrv.h>
+#include <VBox/pdmdev.h>
 #include "PGMInternal.h"
 #include <VBox/vm.h>
+#include "PGMInline.h"
 
 #include <VBox/param.h>
 #include <VBox/err.h>

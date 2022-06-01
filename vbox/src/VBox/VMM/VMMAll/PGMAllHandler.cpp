@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 25647 2010-01-05 09:59:19Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 26150 2010-02-02 15:52:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -33,8 +33,9 @@
 #include <VBox/rem.h>
 #include <VBox/dbgf.h>
 #include <VBox/rem.h>
-#include "PGMInternal.h"
+#include "../PGMInternal.h"
 #include <VBox/vm.h>
+#include "../PGMInline.h"
 
 #include <VBox/log.h>
 #include <iprt/assert.h>

@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 26107 2010-01-30 14:18:03Z vboxsync $ */
+/* $Id: PGMPhys.cpp 26150 2010-02-02 15:52:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -32,6 +32,7 @@
 #include <VBox/pdmdev.h>
 #include "PGMInternal.h"
 #include <VBox/vm.h>
+#include "PGMInline.h"
 #include <VBox/sup.h>
 #include <VBox/param.h>
 #include <VBox/err.h>
