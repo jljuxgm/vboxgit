@@ -1,6 +1,6 @@
-/* $Id: vboxfs_prov.h 25879 2010-01-18 11:14:49Z vboxsync $ */
+/* $Id: vboxfs_prov.h 25889 2010-01-18 13:02:20Z vboxsync $ */
 /** @file
- * VirtualBox File System for Solaris Guests, provider implementation.
+ * VirtualBox File System for Solaris Guests, provider header.
  */
 
 /*
@@ -19,8 +19,8 @@
  * additional information or have any questions.
  */
 
-#ifndef	__VBoxFS_prov_Solaris_h
-#define	__VBoxFS_prov_Solaris_h
+#ifndef	___VBoxFS_prov_Solaris_h
+#define	___VBoxFS_prov_Solaris_h
 
 #ifdef	__cplusplus
 extern "C" {
@@ -117,4 +117,4 @@ extern int sfprov_readdir(sfp_mount_t *mnt, char *path, void **buffer,
 }
 #endif
 
-#endif	/* __VBoxFS_prov_Solaris_h */
+#endif	/* !___VBoxFS_prov_Solaris_h */

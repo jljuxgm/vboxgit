@@ -1,6 +1,6 @@
-/* $Id: vboxfs_vfs.h 25879 2010-01-18 11:14:49Z vboxsync $ */
+/* $Id: vboxfs_vfs.h 25889 2010-01-18 13:02:20Z vboxsync $ */
 /** @file
- * VirtualBox File System for Solaris Guests, VFS implementation.
+ * VirtualBox File System for Solaris Guests, VFS header.
  */
 
 /*
@@ -19,8 +19,8 @@
  * additional information or have any questions.
  */
 
-#ifndef	__VBoxFS_vfs_Solaris_h
-#define	__VBoxFS_vfs_Solaris_h
+#ifndef	___VBoxFS_vfs_Solaris_h
+#define	___VBoxFS_vfs_Solaris_h
 
 #ifdef	__cplusplus
 extern "C" {
@@ -45,4 +45,4 @@ typedef struct sffs_data {
 }
 #endif
 
-#endif	/* __VBoxFS_vfs_Solaris_h */
+#endif	/* !___VBoxFS_vfs_Solaris_h */

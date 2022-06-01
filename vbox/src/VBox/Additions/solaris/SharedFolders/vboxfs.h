@@ -1,4 +1,4 @@
-/* $Id: vboxfs.h 17626 2009-03-10 13:17:19Z vboxsync $ */
+/* $Id: vboxfs.h 25889 2010-01-18 13:02:20Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Internal Header.
  */
@@ -83,5 +83,5 @@ extern void vboxvfs_InitVNode(vboxvfs_globinfo_t *pVBoxVFSGlobalInfo, vboxvfs_vn
 }
 #endif
 
-#endif /* ___VBoxVFS_Solaris_h */
+#endif /* !___VBoxVFS_Solaris_h */
 
