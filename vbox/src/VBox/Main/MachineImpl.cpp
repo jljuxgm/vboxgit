@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 26290 2010-02-05 14:27:19Z vboxsync $ */
+/* $Id: MachineImpl.cpp 26295 2010-02-05 14:36:51Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -156,6 +156,7 @@ Machine::HWData::HWData()
     mCPUCount = 1;
     mCPUHotPlugEnabled = false;
     mMemoryBalloonSize = 0;
+    mStatisticsUpdateInterval = 0;
     mVRAMSize = 8;
     mAccelerate3DEnabled = false;
     mAccelerate2DVideoEnabled = false;
@@ -1157,6 +1158,41 @@ STDMETHODIMP Machine::COMSETTER(MemoryBalloonSize) (ULONG memoryBalloonSize)
 
     return S_OK;
 }
+
+/** @todo this method should not be public */
+STDMETHODIMP Machine::COMGETTER(StatisticsUpdateInterval) (ULONG *statisticsUpdateInterval)
+{
+    if (!statisticsUpdateInterval)
+        return E_POINTER;
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *statisticsUpdateInterval = mHWData->mStatisticsUpdateInterval;
+
+    return S_OK;
+}
+
+/** @todo this method should not be public */
+STDMETHODIMP Machine::COMSETTER(StatisticsUpdateInterval) (ULONG statisticsUpdateInterval)
+{
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    HRESULT rc = checkStateDependency(MutableStateDep);
+    if (FAILED(rc)) return rc;
+
+    setModified(IsModified_MachineData);
+    mHWData.backup();
+    mHWData->mStatisticsUpdateInterval = statisticsUpdateInterval;
+
+    return S_OK;
+}
+
 
 STDMETHODIMP Machine::COMGETTER(Accelerate3DEnabled)(BOOL *enabled)
 {
@@ -6235,6 +6271,7 @@ HRESULT Machine::loadHardware(const settings::Hardware &data)
 
         // guest settings
         mHWData->mMemoryBalloonSize = data.ulMemoryBalloonSize;
+        mHWData->mStatisticsUpdateInterval = data.ulStatisticsUpdateInterval;
 
 #ifdef VBOX_WITH_GUEST_PROPS
         /* Guest properties (optional) */
@@ -7268,6 +7305,7 @@ HRESULT Machine::saveHardware(settings::Hardware &data)
 
         /* Guest */
         data.ulMemoryBalloonSize = mHWData->mMemoryBalloonSize;
+        data.ulStatisticsUpdateInterval = mHWData->mStatisticsUpdateInterval;
 
         // guest properties
         data.llGuestProperties.clear();
