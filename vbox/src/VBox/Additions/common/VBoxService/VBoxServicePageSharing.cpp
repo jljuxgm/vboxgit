@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29351 2010-05-11 13:13:43Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 29355 2010-05-11 13:50:56Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -249,8 +249,8 @@ void VBoxServicePageSharingInspectModules(DWORD dwProcessId, PAVLPVNODECORE *ppN
     }
     while (Module32Next(hSnapshot, &ModuleInfo));
 
-    CloseHandle(hProcess);
     CloseHandle(hSnapshot);
+    CloseHandle(hProcess);
 }
 
 /**
