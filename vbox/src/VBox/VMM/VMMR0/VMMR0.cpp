@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VMMR0.cpp 28974 2010-05-03 13:09:44Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -904,10 +904,17 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
                 return VERR_INVALID_PARAMETER;
             return GMMR0FreeLargePageReq(pVM, idCpu, (PGMMFREELARGEPAGEREQ)pReqHdr);
 
-        case VMMR0_DO_GMM_QUERY_VMM_MEM_STATS:
+        case VMMR0_DO_GMM_QUERY_HYPERVISOR_MEM_STATS:
             if (u64Arg)
                 return VERR_INVALID_PARAMETER;
-            return GMMR0QueryVMMMemoryStatsReq(pVM, (PGMMMEMSTATSREQ)pReqHdr);
+            return GMMR0QueryHypervisorMemoryStatsReq(pVM, (PGMMMEMSTATSREQ)pReqHdr);
+
+        case VMMR0_DO_GMM_QUERY_MEM_STATS:
+            if (idCpu == NIL_VMCPUID)
+                return VERR_INVALID_CPU_ID;
+            if (u64Arg)
+                return VERR_INVALID_PARAMETER;
+            return GMMR0QueryMemoryStatsReq(pVM, idCpu, (PGMMMEMSTATSREQ)pReqHdr);
 
         case VMMR0_DO_GMM_BALLOONED_PAGES:
             if (u64Arg)
