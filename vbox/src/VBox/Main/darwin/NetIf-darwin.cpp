@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 27527 2010-03-19 12:21:53Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 27546 2010-03-19 17:15:07Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -339,7 +339,7 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
             if (   !strncmp(pSdl->sdl_data, pNIC->szBSDName, pSdl->sdl_nlen)
                 && pNIC->szBSDName[pSdl->sdl_nlen] == '\0')
             {
-                cbNameLen = strlen(pEtherNICs->szName) + 1;
+                cbNameLen = strlen(pNIC->szName) + 1;
                 break;
             }
         PNETIFINFO pNew = (PNETIFINFO)RTMemAllocZ(RT_OFFSETOF(NETIFINFO, szName[cbNameLen]));
