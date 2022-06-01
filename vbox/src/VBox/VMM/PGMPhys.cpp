@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 27129 2010-03-06 00:16:08Z vboxsync $ */
+/* $Id: PGMPhys.cpp 27163 2010-03-08 13:18:49Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3247,7 +3247,9 @@ VMMR3DECL(int) PGMR3PhysAllocateLargeHandyPage(PVM pVM, RTGCPHYS GCPhys)
 {
     pgmLock(pVM);
 
+    STAM_PROFILE_START(&pVM->pgm.s.StatAllocLargePage, a);
     int rc = VMMR3CallR0(pVM, VMMR0_DO_PGM_ALLOCATE_LARGE_HANDY_PAGE, 0, NULL);
+    STAM_PROFILE_STOP(&pVM->pgm.s.StatAllocLargePage, a);
     if (RT_SUCCESS(rc))
     {
         Assert(pVM->pgm.s.cLargeHandyPages == 1);
@@ -3272,6 +3274,7 @@ VMMR3DECL(int) PGMR3PhysAllocateLargeHandyPage(PVM pVM, RTGCPHYS GCPhys)
             /*
              * Clear the pages.
              */
+            STAM_PROFILE_START(&pVM->pgm.s.StatClearLargePage, a);
             for (unsigned i = 0; i < _2M/PAGE_SIZE; i++)
             {
                 ASMMemZeroPage(pv);
@@ -3303,6 +3306,8 @@ VMMR3DECL(int) PGMR3PhysAllocateLargeHandyPage(PVM pVM, RTGCPHYS GCPhys)
 
                 Log3(("PGMR3PhysAllocateLargePage: idPage=%#x HCPhys=%RGp\n", idPage, HCPhys));
             }
+            STAM_PROFILE_STOP(&pVM->pgm.s.StatClearLargePage, a);
+
             /* Flush all TLBs. */
             PGM_INVL_ALL_VCPU_TLBS(pVM);
             PGMPhysInvalidatePageMapTLB(pVM);

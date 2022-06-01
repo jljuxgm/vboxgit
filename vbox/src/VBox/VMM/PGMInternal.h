@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 27065 2010-03-05 10:07:55Z vboxsync $ */
+/* $Id: PGMInternal.h 27163 2010-03-08 13:18:49Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2859,6 +2859,15 @@ typedef struct PGM
     STAMCOUNTER StatTrackAliasedLots;               /**< The number of times we're hitting pages which has overflowed cRef2. */
     STAMCOUNTER StatTrackOverflows;                 /**< The number of times the extent list grows to long. */
     STAMPROFILE StatTrackDeref;                     /**< Profiling of SyncPageWorkerTrackDeref (expensive). */
+
+    /** Time spent by the host OS for large page allocation. */
+    STAMPROFILE                 StatAllocLargePage;
+    /** Time spent clearing the newly allocated large pages. */
+    STAMPROFILE                 StatClearLargePage;
+    /** pgmPhysIsValidLargePage profiling - R3 */
+    STAMPROFILE                 StatR3IsValidLargePage;
+    /** pgmPhysIsValidLargePage profiling - RZ*/
+    STAMPROFILE                 StatRZIsValidLargePage;
 #endif
 } PGM;
 #ifndef IN_TSTVMSTRUCTGC /* HACK */
