@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 27756 2010-03-26 17:13:33Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.cpp 28589 2010-04-22 12:40:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -111,7 +111,7 @@ void UIDownloaderUserManual::acknowledgeFinished(bool fError)
 {
     /* If current source was wrong but other is present
      * we will try other source else we should finish: */
-    if (fError && !m_sourcesList.isEmpty())
+    if (m_pHttp->errorCode() != QIHttp::Aborted && m_pHttp->errorCode() != QIHttp::NoError && !m_sourcesList.isEmpty())
         startDownload();
     else
         UIDownloader::acknowledgeFinished(fError);
