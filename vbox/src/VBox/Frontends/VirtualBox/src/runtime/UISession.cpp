@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 26819 2010-02-26 09:35:45Z vboxsync $ */
+/* $Id: UISession.cpp 26842 2010-02-26 12:52:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -570,8 +570,6 @@ UISession::~UISession()
 
     /* Unregister console callback: */
     m_session.GetConsole().UnregisterCallback(m_callback);
-    delete m_pCallback;
-    m_pCallback = 0;
 }
 
 bool UISession::setPause(bool fOn)
