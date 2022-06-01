@@ -1,4 +1,4 @@
-/* $Id: fs.cpp 23622 2009-10-08 15:00:31Z vboxsync $ */
+/* $Id: fs.cpp 24006 2009-10-23 08:02:13Z vboxsync $ */
 /** @file
  * IPRT - File System.
  */
@@ -74,9 +74,9 @@ RTFMODE rtFsModeFromDos(RTFMODE fMode, const char *pszName, size_t cbName)
             /* check for executable extension. */
             const char *pszExt = &pszName[cbName - 3];
             char szExt[4];
-            szExt[0] = tolower(pszExt[0]);
-            szExt[1] = tolower(pszExt[1]);
-            szExt[2] = tolower(pszExt[2]);
+            szExt[0] = RT_C_TO_LOWER(pszExt[0]);
+            szExt[1] = RT_C_TO_LOWER(pszExt[1]);
+            szExt[2] = RT_C_TO_LOWER(pszExt[2]);
             szExt[3] = '\0';
             if (    !memcmp(szExt, "exe", 4)
                 ||  !memcmp(szExt, "bat", 4)

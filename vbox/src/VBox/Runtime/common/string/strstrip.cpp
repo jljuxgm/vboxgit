@@ -1,4 +1,4 @@
-/* $Id: strstrip.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: strstrip.cpp 24006 2009-10-23 08:02:13Z vboxsync $ */
 /** @file
  * IPRT - String Stripping and Trimming.
  */
@@ -48,12 +48,12 @@
 RTDECL(char *) RTStrStrip(char *psz)
 {
     /* left */
-    while (isspace(*psz))
+    while (RT_C_IS_SPACE(*psz))
         psz++;
 
     /* right */
     char *pszEnd = strchr(psz, '\0');
-    while (--pszEnd > psz && isspace(*pszEnd))
+    while (--pszEnd > psz && RT_C_IS_SPACE(*pszEnd))
         *pszEnd = '\0';
 
     return psz;
@@ -70,7 +70,7 @@ RT_EXPORT_SYMBOL(RTStrStrip);
 RTDECL(char *) RTStrStripL(const char *psz)
 {
     /* left */
-    while (isspace(*psz))
+    while (RT_C_IS_SPACE(*psz))
         psz++;
 
     return (char *)psz;
@@ -88,7 +88,7 @@ RTDECL(char *) RTStrStripR(char *psz)
 {
     /* right */
     char *pszEnd = strchr(psz, '\0');
-    while (--pszEnd > psz && isspace(*pszEnd))
+    while (--pszEnd > psz && RT_C_IS_SPACE(*pszEnd))
         *pszEnd = '\0';
 
     return psz;
