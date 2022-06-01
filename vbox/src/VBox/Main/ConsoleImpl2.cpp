@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26349 2010-02-09 09:11:40Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 26357 2010-02-09 12:18:24Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -223,7 +223,7 @@ static int getSmcDeviceKey(IMachine* pMachine, BSTR * aKey)
 {
     int rc;
 
-# if defined(RT_OS_DARWIN)
+# if defined(RT_OS_DARWIN) && !defined(VBOX_OSE)
     char aKeyBuf[65];
 
     rc = DarwinSmcKey(aKeyBuf, sizeof aKeyBuf);
