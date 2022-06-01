@@ -1,4 +1,4 @@
-/* $Id: vboxvideo_drm.c 18576 2009-03-31 14:16:38Z vboxsync $ */
+/* $Id: vboxvideo_drm.c 26493 2010-02-14 07:50:58Z vboxsync $ */
 /** @file
  * vboxvideo_drm - Direct Rendering Module, Solaris Specific Code.
  */
@@ -385,8 +385,8 @@ static void vboxVideoSolarisConfigure(drm_driver_t *pDriver)
     pDirver->irq_uninstall      = drm_driver_irq_uninstall;
     pDriver->irq_handler        = drm_driver_irq_handler;
 
-    pDriver->driver_ioctls      = 
-    pDriver->max_driver_ioctls  = 
+    pDriver->driver_ioctls      =
+    pDriver->max_driver_ioctls  =
 #endif
 
     pDriver->driver_name        = DRIVER_NAME;

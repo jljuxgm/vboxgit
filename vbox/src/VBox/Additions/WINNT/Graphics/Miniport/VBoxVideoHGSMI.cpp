@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 26000 2010-01-25 13:57:38Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 26493 2010-02-14 07:50:58Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -1389,5 +1389,4 @@ int vboxVBVAChannelDisplayEnable(PDEVICE_EXTENSION PrimaryExtension,
  *    host must support all versions.
  *
  */
-
 

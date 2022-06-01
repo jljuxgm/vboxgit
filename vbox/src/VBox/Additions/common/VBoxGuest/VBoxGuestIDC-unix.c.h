@@ -1,4 +1,4 @@
-/* $Rev: 21613 $ */
+/* $Rev: 26493 $ */
 /** @file
  * VBoxGuest - Inter Driver Communcation, unix implementation.
  *
@@ -92,5 +92,4 @@ DECLVBGL(int) VBoxGuestIDCCall(void *pvSession, unsigned iCmd, void *pvData, siz
 
     return VBoxGuestCommonIOCtl(iCmd, &g_DevExt, pSession, pvData, cbData, pcbDataReturned);
 }
-
 

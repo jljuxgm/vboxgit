@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.cpp 21219 2009-07-05 13:44:53Z vboxsync $ */
+/* $Id: VBoxVRDP.cpp 26493 2010-02-14 07:50:58Z vboxsync $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
@@ -446,5 +446,4 @@ unsigned __stdcall VBoxVRDPThread(void *pInstance)
     Log(("VBoxTray: VBoxVRDPThread: Finished VRDP change request thread\n"));
     return 0;
 }
-
 

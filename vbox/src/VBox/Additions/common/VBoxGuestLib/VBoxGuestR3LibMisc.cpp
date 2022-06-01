@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 26425 2010-02-11 11:37:08Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 26493 2010-02-14 07:50:58Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -330,7 +330,7 @@ static int vbglR3CloseAdditionsWinStoragePath(HKEY hKey)
 {
     return RTErrConvertFromWin32(RegCloseKey(hKey));
 }
-#endif /* RT_OS_WINDOWS */ 
+#endif /* RT_OS_WINDOWS */
 
 
 #ifndef VBOX_VBGLR3_XFREE86

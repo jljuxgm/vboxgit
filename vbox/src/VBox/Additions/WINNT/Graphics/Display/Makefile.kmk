@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 26493 2010-02-14 07:50:58Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxDisp.dll.
 #
@@ -52,7 +52,7 @@ VBoxDisp_SOURCES     = \
 	vbox.c \
 	VBoxDisp.def \
 	VBoxDisp.rc
-	
+
 ifdef VBOX_WITH_VIDEOHWACCEL
 VBoxDisp_SOURCES     += vhwa.c
 endif
