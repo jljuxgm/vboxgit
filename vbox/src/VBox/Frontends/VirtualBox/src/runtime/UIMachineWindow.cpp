@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 29725 2010-05-21 12:13:15Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 29818 2010-05-26 13:59:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -429,8 +429,11 @@ void UIMachineWindow::updateAppearanceOf(int iElement)
         }
         QString strMachineName = machine.GetName() + strSnapshotName;
         if (state != KMachineState_Null)
-            strMachineName += " [" + vboxGlobal().toString(state) + "] - ";
-        strMachineName += m_strWindowTitlePrefix;
+            strMachineName += " [" + vboxGlobal().toString(state) + "]";
+        /* Unusual on the Mac. */
+#ifndef Q_WS_MAC
+        strMachineName += " - " + m_strWindowTitlePrefix;
+#endif /* Q_WS_MAC */
         if (machine.GetMonitorCount() > 1)
             strMachineName += QString(" : %1").arg(m_uScreenId + 1);
         machineWindow()->setWindowTitle(strMachineName);
