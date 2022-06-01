@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 27232 2010-03-09 21:05:57Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 27245 2010-03-10 12:43:50Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1733,7 +1733,7 @@ VBOXDDU_DECL(int) VDCreateBase(PVBOXHDD pDisk, const char *pszBackend,
     }
 
     if (RT_SUCCESS(rc) && pCbProgress && pCbProgress->pfnProgress)
-        pCbProgress->pfnProgress(pIfProgress, 100);
+        pCbProgress->pfnProgress(pIfProgress->pvUser, 100);
 
     LogFlowFunc(("returns %Rrc\n", rc));
     return rc;
@@ -1964,7 +1964,7 @@ VBOXDDU_DECL(int) VDCreateDiff(PVBOXHDD pDisk, const char *pszBackend,
     }
 
     if (RT_SUCCESS(rc) && pCbProgress && pCbProgress->pfnProgress)
-        pCbProgress->pfnProgress(pIfProgress, 100);
+        pCbProgress->pfnProgress(pIfProgress->pvUser, 100);
 
     LogFlowFunc(("returns %Rrc\n", rc));
     return rc;
@@ -2337,7 +2337,7 @@ VBOXDDU_DECL(int) VDCopy(PVBOXHDD pDiskFrom, unsigned nImage, PVBOXHDD pDiskTo,
                          PVDINTERFACE pDstVDIfsImage,
                          PVDINTERFACE pDstVDIfsOperation)
 {
-    int rc = VINF_SUCCESS; 
+    int rc = VINF_SUCCESS;
     int rc2;
     bool fLockReadFrom = false, fLockWriteFrom = false, fLockWriteTo = false;
     void *pvBuf = NULL;
@@ -2498,7 +2498,7 @@ VBOXDDU_DECL(int) VDCopy(PVBOXHDD pDiskFrom, unsigned nImage, PVBOXHDD pDiskTo,
                                   uImageFlags, szComment,
                                   &PCHSGeometryFrom, &LCHSGeometryFrom,
                                   NULL, uOpenFlagsFrom & ~VD_OPEN_FLAGS_READONLY, NULL, NULL);
-                    
+
                 rc2 = vdThreadStartWrite(pDiskTo);
                 AssertRC(rc2);
                 fLockWriteTo = true;
