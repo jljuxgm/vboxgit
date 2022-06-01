@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 29364 2010-05-11 15:13:50Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 29970 2010-06-02 08:46:23Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -158,6 +158,9 @@ int handleControlVM(HandlerArg *a)
         }
         else if (!strcmp(a->argv[1], "savestate"))
         {
+            /* first pause so we don't trigger a live save which needs more time/resources */
+            CHECK_ERROR_BREAK(console, Pause());
+
             ComPtr<IProgress> progress;
             CHECK_ERROR_BREAK(console, SaveState(progress.asOutParam()));
 
