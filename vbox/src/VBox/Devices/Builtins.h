@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 28287 2010-04-14 10:10:40Z vboxsync $ */
+/* $Id: Builtins.h 28290 2010-04-14 10:30:03Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -105,9 +105,6 @@ extern const PDMDRVREG g_DrvISCSI;
 extern const PDMDRVREG g_DrvISCSITransportTcp;
 #if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
 extern const PDMDRVREG g_DrvHostInterface;
-#endif
-#if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
-extern const PDMDRVREG g_DrvVDE;
 #endif
 extern const PDMDRVREG g_DrvIntNet;
 extern const PDMDRVREG g_DrvNAT;

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28287 2010-04-14 10:10:40Z vboxsync $
+# $Id: Makefile.kmk 28290 2010-04-14 10:30:03Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1003,7 +1003,6 @@ endif # l4
 
 Drivers_SOURCES.linux = \
 	Network/DrvTAP.cpp \
-	Network/DrvVDE.cpp \
 	Audio/ossaudio.c \
 	Parallel/DrvHostParallel.cpp \
 	Serial/DrvHostSerial.cpp
