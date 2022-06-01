@@ -1,6 +1,6 @@
-; $Id: tstMicroGCA.asm 13813 2008-11-04 21:55:34Z vboxsync $
+; $Id: tstMicroRCA.asm 26223 2010-02-03 21:58:26Z vboxsync $
 ;; @file
-; tstMicroGCA
+; tstMicroRCA
 ;
 
 ;
@@ -132,7 +132,7 @@ extern NAME(idtOnly42)
 extern IMPNAME(g_VM)
 
 BEGINCODE
-EXPORTEDNAME tstMicroGCAsmStart
+EXPORTEDNAME tstMicroRCAsmStart
 
 
 ;;
@@ -557,4 +557,4 @@ BEGINPROC tstInterrupt42
 
 ENDPROC tstTrapHandler
 
-EXPORTEDNAME tstMicroGCAsmEnd
+EXPORTEDNAME tstMicroRCAsmEnd

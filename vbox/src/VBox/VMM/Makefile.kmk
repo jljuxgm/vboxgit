@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26222 2010-02-03 21:42:09Z vboxsync $
+# $Id: Makefile.kmk 26223 2010-02-03 21:58:26Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -350,8 +350,8 @@ ifdef VBOX_WITH_RAW_MODE
  	PATM
 
  VMMGC_LIBS      = \
- 	$(PATH_LIB)/DisasmGC$(VBOX_SUFF_LIB) \
- 	$(PATH_LIB)/RuntimeGC$(VBOX_SUFF_LIB)
+ 	$(PATH_LIB)/DisasmRC$(VBOX_SUFF_LIB) \
+ 	$(PATH_LIB)/RuntimeRC$(VBOX_SUFF_LIB)
  ifneq ($(filter pe lx,$(VBOX_LDR_FMT32)),)
   VMMGC_LIBS    += \
  	$(PATH_LIB)/VMMGCBuiltin$(VBOX_SUFF_LIB)
