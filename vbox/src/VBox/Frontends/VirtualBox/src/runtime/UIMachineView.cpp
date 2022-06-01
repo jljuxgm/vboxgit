@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 29988 2010-06-02 12:45:07Z vboxsync $ */
+/* $Id: UIMachineView.cpp 29992 2010-06-02 13:01:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1080,7 +1080,9 @@ bool UIMachineView::eventFilter(QObject *pWatched, QEvent *pEvent)
                 }
 
                 /* Check if we should activate window under cursor: */
-                if (machineWindowWrapper()->machineWindow() != QApplication::activeWindow())
+                if (QApplication::activeWindow() &&
+                    QApplication::activeWindow()->inherits("UIMachineWindow") &&
+                    QApplication::activeWindow() != machineWindowWrapper()->machineWindow())
                 {
                     /* Activating hovered machine window: */
                     machineWindowWrapper()->machineWindow()->activateWindow();
