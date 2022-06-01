@@ -1,4 +1,4 @@
-# $Id: Config.kmk 26094 2010-01-29 10:08:37Z vboxsync $
+# $Id: Config.kmk 26184 2010-02-03 12:52:29Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -597,7 +597,7 @@ endif
 #
 # Branding
 #
-VBOX_BRAND_BIOS_LOGO                 := $(PATH_ROOT)/src/VBox/Devices/Graphics/BIOS/sun_logo.bmp
+VBOX_BRAND_BIOS_LOGO                 := $(PATH_ROOT)/src/VBox/Devices/Graphics/BIOS/puel_logo.bmp
 VBOX_BRAND_LICENSE_HTML              := $(PATH_ROOT)/doc/License.html
 VBOX_BRAND_LICENSE_RTF               := $(PATH_ROOT)/doc/License.rtf
 VBOX_BRAND_LICENSE_TXT               := $(PATH_ROOT)/doc/License.txt
@@ -3971,7 +3971,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 26094 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 26184 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
