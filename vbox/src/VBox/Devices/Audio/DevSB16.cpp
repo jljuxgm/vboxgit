@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 24019 2009-10-23 10:14:27Z vboxsync $ */
+/* $Id: DevSB16.cpp 24265 2009-11-02 15:21:30Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1754,15 +1754,13 @@ static DECLCALLBACK(int) sb16LoadExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM,
             || hdma != pThis->hdmaCfg
             || port != pThis->portCfg
             || ver  != pThis->verCfg )
-        {
-            LogRel(("SB16: config changed: irq=%x/%x dma=%x/%x hdma=%x/%x port=%x/%x ver=%x/%x (saved/config)\n",
-                    irq,  pThis->irqCfg,
-                    dma,  pThis->dmaCfg,
-                    hdma, pThis->hdmaCfg,
-                    port, pThis->portCfg,
-                    ver,  pThis->verCfg));
-            return VERR_SSM_LOAD_CONFIG_MISMATCH;
-        }
+            return SSMR3SetCfgError(pSSM, RT_SRC_POS,
+                                    N_("config changed: irq=%x/%x dma=%x/%x hdma=%x/%x port=%x/%x ver=%x/%x (saved/config)"),
+                                    irq,  pThis->irqCfg,
+                                    dma,  pThis->dmaCfg,
+                                    hdma, pThis->hdmaCfg,
+                                    port, pThis->portCfg,
+                                    ver,  pThis->verCfg);
     }
     if (uPass != SSM_PASS_FINAL)
         return VINF_SUCCESS;

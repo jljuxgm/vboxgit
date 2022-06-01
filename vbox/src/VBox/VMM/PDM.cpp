@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 24154 2009-10-29 08:41:33Z vboxsync $ */
+/* $Id: PDM.cpp 24265 2009-11-02 15:21:30Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -890,7 +890,7 @@ static DECLCALLBACK(int) pdmR3LoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersi
         {
             LogRel(("Device '%s'/%d not found in current config\n", szDeviceName, iInstance));
             if (SSMR3HandleGetAfter(pSSM) != SSMAFTER_DEBUG_IT)
-                AssertFailedReturn(VERR_SSM_LOAD_CONFIG_MISMATCH);
+                return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Device '%s'/%d not found in current config"), szDeviceName, iInstance);
         }
     }
 
@@ -902,7 +902,8 @@ static DECLCALLBACK(int) pdmR3LoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersi
         {
             LogRel(("Device '%s'/%d not found in the saved state\n", pDevIns->pDevReg->szDeviceName, pDevIns->iInstance));
             if (SSMR3HandleGetAfter(pSSM) != SSMAFTER_DEBUG_IT)
-                AssertFailedReturn(VERR_SSM_LOAD_CONFIG_MISMATCH);
+                return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Device '%s'/%d not found in the saved state"),
+                                        pDevIns->pDevReg->szDeviceName, pDevIns->iInstance);
         }
 
     return VINF_SUCCESS;

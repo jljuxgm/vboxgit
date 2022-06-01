@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 24191 2009-10-30 14:11:59Z vboxsync $ */
+/* $Id: DevPCNet.cpp 24265 2009-11-02 15:21:30Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4417,10 +4417,7 @@ static DECLCALLBACK(int) pcnetLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
     rc = SSMR3GetBool(pSSM, &fAm79C973);
     AssertRCReturn(rc, rc);
     if (pThis->fAm79C973 != fAm79C973)
-    {
-        LogRel(("PCNet#%u: The fAm79C973 flag differs: config=%RTbool saved=%RTbool\n", PCNET_INST_NR, pThis->fAm79C973, fAm79C973));
-        return VERR_SSM_LOAD_CONFIG_MISMATCH;
-    }
+        return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("The fAm79C973 flag differs: config=%RTbool saved=%RTbool"), pThis->fAm79C973, fAm79C973);
 
     uint32_t    u32LinkSpeed;
     rc = SSMR3GetU32(pSSM, &u32LinkSpeed);

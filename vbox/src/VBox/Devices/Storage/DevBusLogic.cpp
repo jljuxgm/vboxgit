@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 24099 2009-10-26 23:29:43Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 24265 2009-11-02 15:21:30Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -2346,10 +2346,7 @@ static DECLCALLBACK(int) buslogicLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, u
         rc = SSMR3GetBool(pSSM, &fPresent);
         AssertRCReturn(rc, rc);
         if (pDevice->fPresent != fPresent)
-        {
-            LogRel(("BusLogic: Target %u config mismatch: config=%RTbool state=%RTbool\n", i, pDevice->fPresent, fPresent));
-            return VERR_SSM_LOAD_CONFIG_MISMATCH;
-        }
+            return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Target %u config mismatch: config=%RTbool state=%RTbool"), i, pDevice->fPresent, fPresent);
 
         if (uPass == SSM_PASS_FINAL)
             SSMR3GetU32(pSSM, (uint32_t *)&pDevice->cOutstandingRequests);

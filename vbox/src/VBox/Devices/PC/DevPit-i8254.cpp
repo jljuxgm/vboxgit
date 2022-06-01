@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 24087 2009-10-26 15:48:03Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 24265 2009-11-02 15:21:30Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -788,26 +788,20 @@ static DECLCALLBACK(int) pitLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32
         RTIOPORT IOPortBaseCfg;
         rc = SSMR3GetIOPort(pSSM, &IOPortBaseCfg); AssertRCReturn(rc, rc);
         if (IOPortBaseCfg != pThis->IOPortBaseCfg)
-        {
-            LogRel(("PIT: Config mismatch - IOPortBaseCfg: saved=%RTiop config=%RTiop\n", IOPortBaseCfg, pThis->IOPortBaseCfg));
-            return VERR_SSM_LOAD_CONFIG_MISMATCH;
-        }
+            return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - IOPortBaseCfg: saved=%RTiop config=%RTiop"),
+                                    IOPortBaseCfg, pThis->IOPortBaseCfg);
 
         uint8_t u8Irq;
         rc = SSMR3GetU8(pSSM, &u8Irq); AssertRCReturn(rc, rc);
         if (u8Irq != pThis->channels[0].irq)
-        {
-            LogRel(("PIT: Config mismatch - u8Irq: saved=%#x config=%#x\n", u8Irq, pThis->channels[0].irq));
-            return VERR_SSM_LOAD_CONFIG_MISMATCH;
-        }
+            return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - u8Irq: saved=%#x config=%#x"),
+                                    u8Irq, pThis->channels[0].irq);
 
         bool fSpeakerCfg;
         rc = SSMR3GetBool(pSSM, &fSpeakerCfg); AssertRCReturn(rc, rc);
         if (fSpeakerCfg != pThis->fSpeakerCfg)
-        {
-            LogRel(("PIT: Config mismatch - fSpeakerCfg: saved=%RTbool config=%RTbool\n", fSpeakerCfg, pThis->fSpeakerCfg));
-            return VERR_SSM_LOAD_CONFIG_MISMATCH;
-        }
+            return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - fSpeakerCfg: saved=%RTbool config=%RTbool"),
+                                    fSpeakerCfg, pThis->fSpeakerCfg);
     }
 
     if (uPass != SSM_PASS_FINAL)

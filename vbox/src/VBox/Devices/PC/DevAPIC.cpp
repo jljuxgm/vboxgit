@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 24195 2009-10-30 14:32:56Z vboxsync $ */
+/* $Id: DevAPIC.cpp 24265 2009-11-02 15:21:30Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -2636,24 +2636,15 @@ static DECLCALLBACK(int) apicLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint3
         uint32_t cCpus;
         int rc = SSMR3GetU32(pSSM, &cCpus); AssertRCReturn(rc, rc);
         if (cCpus != pThis->cCpus)
-        {
-            LogRel(("APIC: Config mismatch - cCpus: saved=%#x config=%#x\n", cCpus, pThis->cCpus));
-            return VERR_SSM_LOAD_CONFIG_MISMATCH;
-        }
+            return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - cCpus: saved=%#x config=%#x"), cCpus, pThis->cCpus);
         bool fIoApic;
         rc = SSMR3GetBool(pSSM, &fIoApic); AssertRCReturn(rc, rc);
         if (fIoApic != pThis->fIoApic)
-        {
-            LogRel(("APIC: Config mismatch - fIoApic: saved=%RTbool config=%RTbool\n", fIoApic, pThis->fIoApic));
-            return VERR_SSM_LOAD_CONFIG_MISMATCH;
-        }
+            return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - fIoApic: saved=%RTbool config=%RTbool"), fIoApic, pThis->fIoApic);
         uint32_t uApicVersion;
         rc = SSMR3GetU32(pSSM, &uApicVersion); AssertRCReturn(rc, rc);
         if (uApicVersion != (uint32_t)pThis->enmVersion)
-        {
-            LogRel(("APIC: Config mismatch - uApicVersion: saved=%#x config=%#x\n", uApicVersion, pThis->enmVersion));
-            return VERR_SSM_LOAD_CONFIG_MISMATCH;
-        }
+            return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - uApicVersion: saved=%#x config=%#x"), uApicVersion, pThis->enmVersion);
     }
 
     if (uPass != SSM_PASS_FINAL)

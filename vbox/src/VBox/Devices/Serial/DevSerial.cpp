@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 24042 2009-10-23 15:00:46Z vboxsync $ */
+/* $Id: DevSerial.cpp 24265 2009-11-02 15:21:30Z vboxsync $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -661,11 +661,8 @@ static DECLCALLBACK(int) serialLoadExec(PPDMDEVINS pDevIns,
 
     if (    pThis->irq  != iIrq
         ||  pThis->base != IOBase)
-    {
-        LogRel(("Serial#%u: Config mismatch - saved irq=%#x iobase=%#x; configured irq=%#x iobase=%#x\n",
-                pDevIns->iInstance, iIrq, IOBase, pThis->irq, pThis->base));
-        return VERR_SSM_LOAD_CONFIG_MISMATCH;
-    }
+        return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - saved irq=%#x iobase=%#x; configured irq=%#x iobase=%#x"),
+                                iIrq, IOBase, pThis->irq, pThis->base);
 
     if (uPass == SSM_PASS_FINAL)
     {
