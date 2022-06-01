@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 27002 2010-03-03 18:34:42Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 27302 2010-03-11 20:11:17Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -1451,7 +1451,7 @@ int main()
     GEN_CHECK_OFF(BUSLOGIC, pNotifierQueueR3);
     GEN_CHECK_OFF(BUSLOGIC, pNotifierQueueR0);
     GEN_CHECK_OFF(BUSLOGIC, pNotifierQueueRC);
-    GEN_CHECK_OFF(BUSLOGIC, pTaskCache);
+    GEN_CHECK_OFF(BUSLOGIC, hTaskCache);
     GEN_CHECK_OFF(BUSLOGIC, VBoxSCSI);
     GEN_CHECK_OFF(BUSLOGIC, aDeviceStates);
     GEN_CHECK_OFF(BUSLOGIC, aDeviceStates[BUSLOGIC_MAX_DEVICES-1]);
@@ -1519,7 +1519,7 @@ int main()
     GEN_CHECK_OFF(LSILOGICSCSI, u16NextHandle);
     GEN_CHECK_OFF(LSILOGICSCSI, enmCtrlType);
     GEN_CHECK_OFF(LSILOGICSCSI, VBoxSCSI);
-    GEN_CHECK_OFF(LSILOGICSCSI, pTaskCache);
+    GEN_CHECK_OFF(LSILOGICSCSI, hTaskCache);
     GEN_CHECK_OFF(LSILOGICSCSI, IBase);
     GEN_CHECK_OFF(LSILOGICSCSI, ILeds);
     GEN_CHECK_OFF(LSILOGICSCSI, pLedsConnector);

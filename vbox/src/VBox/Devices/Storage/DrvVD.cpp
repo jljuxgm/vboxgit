@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 27232 2010-03-09 21:05:57Z vboxsync $ */
+/* $Id: DrvVD.cpp 27302 2010-03-11 20:11:17Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -32,7 +32,6 @@
 #include <iprt/uuid.h>
 #include <iprt/file.h>
 #include <iprt/string.h>
-#include <iprt/cache.h>
 #include <iprt/tcp.h>
 #include <iprt/semaphore.h>
 
@@ -1202,7 +1201,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
                                       N_("DrvVD: Configuration error: Both \"ReadOnly\" and \"TempReadOnly\" are set"));
                 break;
             }
-            rc = CFGMR3QueryBoolDef(pCurNode, "UseNewIo", &fUseNewIo, false);
+            rc = CFGMR3QueryBoolDef(pCurNode, "UseNewIo", &fUseNewIo, true);
             if (RT_FAILURE(rc))
             {
                 rc = PDMDRV_SET_ERROR(pDrvIns, rc,
