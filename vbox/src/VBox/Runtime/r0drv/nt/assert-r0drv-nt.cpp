@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-nt.cpp 25530 2009-12-20 23:28:22Z vboxsync $ */
+/* $Id: assert-r0drv-nt.cpp 25533 2009-12-20 23:39:45Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, NT.
  */
@@ -57,5 +57,11 @@ void rtR0AssertNativeMsg2V(const char *pszFormat, va_list va)
     RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, va);
     szMsg[sizeof(szMsg) - 1] = '\0';
     DbgPrint("%s", szMsg);
+}
+
+
+RTR0DECL(void) RTR0AssertPanicSystem(void)
+{
+    /** @todo implement RTR0AssertPanicSystem. */
 }
 

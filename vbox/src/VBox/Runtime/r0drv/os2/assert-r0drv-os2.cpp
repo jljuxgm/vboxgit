@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-os2.cpp 25530 2009-12-20 23:28:22Z vboxsync $ */
+/* $Id: assert-r0drv-os2.cpp 25533 2009-12-20 23:39:45Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, OS/2.
  */
@@ -124,4 +124,7 @@ static DECLCALLBACK(size_t) rtR0Os2AssertOutputCB(void *pvArg, const char *pachC
     *ppch = pch;
     return cbWritten;
 }
+
+
+/* RTR0AssertPanicSystem is implemented in RTR0AssertPanicSystem-r0drv-os2.asm */
 
