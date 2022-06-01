@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 25905 2010-01-18 18:19:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 25913 2010-01-19 12:58:00Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -5786,9 +5786,14 @@ void Machine::uninitDataAndChildObjects()
 
     if (getClassID() == clsidMachine)
     {
-        /* reset some important fields of mData */
+        // clean up the snapshots list (Snapshot::uninit() will handle the snapshot's children recursively)
+        if (mData->mFirstSnapshot)
+        {
+            mData->mFirstSnapshot->uninit();
+            mData->mFirstSnapshot.setNull();
+        }
+
         mData->mCurrentSnapshot.setNull();
-        mData->mFirstSnapshot.setNull();
     }
 
     /* free data structures (the essential mData structure is not freed here
