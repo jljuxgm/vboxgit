@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 24635 2009-11-13 12:55:35Z vboxsync $ */
+/* $Id: DrvNAT.cpp 24636 2009-11-13 13:18:25Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -298,12 +298,12 @@ static DECLCALLBACK(void) drvNATUrgRecvWorker(PDRVNAT pThis, uint8_t *pu8Buf, in
     rc = RTCritSectLeave(&pThis->csDevAccess);
     AssertReleaseRC(rc);
 
+    slirp_ext_m_free(pThis->pNATState, pvArg);
     if (ASMAtomicDecU32(&pThis->cUrgPkt) == 0) 
     {
         drvNATRecvWakeup(pThis->pDrvIns, pThis->pRecvThread);
         drvNATNotifyNATThread(pThis);
     }
-    slirp_ext_m_free(pThis->pNATState, pvArg);
 }
 
 
