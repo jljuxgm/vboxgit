@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 27822 2010-03-30 13:01:36Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 27885 2010-03-31 12:16:27Z vboxsync $ */
 
 /** @file
  *
@@ -91,14 +91,6 @@ static const char *g_papcszMetricNames[] =
     "Guest/Pagefile/Usage/Free:avg",
     "Guest/Pagefile/Usage/Free:min",
     "Guest/Pagefile/Usage/Free:max",
-    "Guest/System/Processes",
-    "Guest/System/Processes:avg",
-    "Guest/System/Processes:min",
-    "Guest/System/Processes:max",
-    "Guest/System/Threads",
-    "Guest/System/Threads:avg",
-    "Guest/System/Threads:min",
-    "Guest/System/Threads:max",
 };
 
 ////////////////////////////////////////////////////////////////////////////////

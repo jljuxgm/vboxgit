@@ -1,4 +1,4 @@
-/* $Id: Performance.h 27849 2010-03-31 07:33:59Z vboxsync $ */
+/* $Id: Performance.h 27885 2010-03-31 12:16:27Z vboxsync $ */
 
 /** @file
  *
@@ -34,6 +34,9 @@
 #include <functional> /* For std::fun_ptr in testcase */
 #include <list>
 #include <vector>
+
+/* Forward decl. */
+class Machine;
 
 namespace pm
 {
@@ -161,7 +164,7 @@ namespace pm
     class CollectorGuestHAL : public CollectorHAL
     {
     public:
-        CollectorGuestHAL() : cEnabled(0) {};
+        CollectorGuestHAL(Machine *machine) : cEnabled(0), mMachine(machine) {};
         ~CollectorGuestHAL();
 
         /** Enable metrics collecting (if applicable) */
@@ -169,7 +172,8 @@ namespace pm
         /** Disable metrics collecting (if applicable) */
         virtual int disable();
     protected:
-        unsigned        cEnabled;
+        uint32_t    cEnabled;
+        Machine    *mMachine;
     };
 
     extern CollectorHAL *createHAL();
@@ -382,24 +386,6 @@ namespace pm
         ULONG getScale() { return 1; }
     private:
         SubMetric *mTotal, *mFree, *mBallooned, *mCache, *mPagedTotal, *mPagedFree;
-    };
-
-    class GuestSystemUsage : public BaseMetric
-    {
-    public:
-        GuestSystemUsage(CollectorGuestHAL *hal, ComPtr<IUnknown> object, SubMetric *processes, SubMetric *threads)
-        : BaseMetric(hal, "System/Usage", object), mProcesses(processes), mThreads(threads) {};
-        ~GuestSystemUsage() { delete mProcesses; delete mThreads; };
-
-        void init(ULONG period, ULONG length);
-        void preCollect(CollectorHints& hints);
-        void collect();
-        const char *getUnit() { return "kB"; };
-        ULONG getMinValue() { return 0; };
-        ULONG getMaxValue() { return INT32_MAX; };
-        ULONG getScale() { return 1; }
-    private:
-        SubMetric *mProcesses, *mThreads;
     };
 
     /* Aggregate Functions **************************************************/

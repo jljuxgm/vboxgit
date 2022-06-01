@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 27822 2010-03-30 13:01:36Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 27885 2010-03-31 12:16:27Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -430,7 +430,7 @@ DECLCALLBACK(int) vmmdevQueryStatisticsInterval(PPDMIVMMDEVCONNECTOR pInterface,
     if (!guest)
         return VERR_INVALID_PARAMETER; /** @todo wrong error */
 
-    guest->GetStatisticsUpdateInterval(&val);
+    guest->COMGETTER(StatisticsUpdateInterval)(&val);
     *pulInterval = val;
     return VINF_SUCCESS;
 }
