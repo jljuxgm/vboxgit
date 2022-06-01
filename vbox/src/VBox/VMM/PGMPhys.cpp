@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 29620 2010-05-18 12:15:55Z vboxsync $ */
+/* $Id: PGMPhys.cpp 29622 2010-05-18 12:29:44Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1015,6 +1015,7 @@ VMMR3DECL(int) PGMR3QueryMemoryStats(PVM pVM, uint64_t *pulTotalMem, uint64_t *p
     if (puTotalZeroMem)
         *puTotalZeroMem = pVM->pgm.s.cZeroPages * _4K;
 
+    Log(("PGMR3QueryMemoryStats: all=%x private=%x reused=%x zero=%x\n", pVM->pgm.s.cAllPages, pVM->pgm.s.cPrivatePages, pVM->pgm.s.cReusedSharedPages, pVM->pgm.s.cZeroPages));
     return VINF_SUCCESS;
 }
 
