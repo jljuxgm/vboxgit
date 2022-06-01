@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 30013 2010-06-03 14:40:59Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 30030 2010-06-04 11:47:58Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -401,7 +401,8 @@ void VBoxServicePageSharingInspectGuest()
 
             char *pszDot = strrchr(pSystemModules->Modules[i].FullPathName, '.');
             if (    pszDot
-                &&  (pszDot[1] == 'e' || pszDot[1] == 'E'))
+                &&  (pszDot[1] == 'e' || pszDot[1] == 'E')
+                &&  strcmp(&pSystemModules->Modules[i].FullPathName[pSystemModules->Modules[i].OffsetToFileName], "ntoskrnl.exe"))
                 continue;   /* ignore executables for now. */
 
             /* Found it before? */
