@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 26318 2010-02-07 21:37:44Z vboxsync $ */
+/* $Id: process-posix.cpp 26415 2010-02-10 16:30:44Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -325,7 +325,7 @@ RTR3DECL(int)   RTProcDaemonize(bool fNoChDir, bool fNoClose, const char *pszPid
         return RTErrConvertFromErrno(errno);
     if (pid != 0)
     {
-        /* Parent exits, no longer necessary. Child creates gets reparented
+        /* Parent exits, no longer necessary. The child gets reparented
          * to the init process. */
         exit(0);
     }
