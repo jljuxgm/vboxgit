@@ -1,4 +1,4 @@
-/* $Id: log.cpp 25409 2009-12-15 15:04:41Z vboxsync $ */
+/* $Id: log.cpp 25899 2010-01-18 15:34:50Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -1065,7 +1065,7 @@ RTDECL(int) RTLogGroupSettings(PRTLOGGER pLogger, const char *pszVar)
 
         while ((ch = *pszVar) == '+' || ch == '-' || ch == ' ' || ch == '\t' || ch == '\n' || ch == ';')
         {
-            if (ch == '+' || ch == '-' || ';')
+            if (ch == '+' || ch == '-' || ch == ';')
                 fEnabled = ch != '-';
             pszVar++;
         }
