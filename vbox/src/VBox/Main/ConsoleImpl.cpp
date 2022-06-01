@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 28205 2010-04-12 13:39:18Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 28585 2010-04-22 10:16:57Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2840,10 +2840,11 @@ STDMETHODIMP Console::DeleteSnapshot(IN_BSTR aId, IProgress **aProgress)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    if (Global::IsOnlineOrTransient(mMachineState))
+    if (Global::IsTransient(mMachineState))
         return setError(VBOX_E_INVALID_VM_STATE,
-            tr("Cannot delete a snapshot of the running machine (machine state: %s)"),
-            Global::stringifyMachineState(mMachineState));
+                        tr("Cannot delete a snapshot of the machine while it is changing the state (machine state: %s)"),
+                        Global::stringifyMachineState(mMachineState));
+
 
     MachineState_T machineState = MachineState_Null;
     HRESULT rc = mControl->DeleteSnapshot(this, aId, &machineState, aProgress);

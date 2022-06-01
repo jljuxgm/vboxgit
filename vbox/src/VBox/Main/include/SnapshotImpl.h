@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 28401 2010-04-16 09:14:54Z vboxsync $ */
+/* $Id: SnapshotImpl.h 28585 2010-04-22 10:16:57Z vboxsync $ */
 
 /** @file
  *
@@ -113,6 +113,7 @@ public:
     const ComObjPtr<Snapshot>& getParent() const;
 
     const Utf8Str& stateFilePath() const;
+    HRESULT deleteStateFile();
 
     ULONG getChildrenCount();
     ULONG getAllChildrenCount();

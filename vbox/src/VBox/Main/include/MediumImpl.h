@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 28401 2010-04-16 09:14:54Z vboxsync $ */
+/* $Id: MediumImpl.h 28585 2010-04-22 10:16:57Z vboxsync $ */
 
 /** @file
  *
@@ -198,10 +198,13 @@ public:
     HRESULT deleteStorage(ComObjPtr<Progress> *aProgress, bool aWait, bool *pfNeedsSaveSettings);
     HRESULT markForDeletion();
     HRESULT unmarkForDeletion();
+    HRESULT markLockedForDeletion();
+    HRESULT unmarkLockedForDeletion();
 
     HRESULT prepareMergeTo(const ComObjPtr<Medium> &pTarget,
                            const Guid *aMachineId,
                            const Guid *aSnapshotId,
+                           bool fLockMedia,
                            bool &fMergeForward,
                            ComObjPtr<Medium> &pParentForTarget,
                            MediaList &aChildrenToReparent,

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 28401 2010-04-16 09:14:54Z vboxsync $ */
+/* $Id: MachineImpl.h 28585 2010-04-22 10:16:57Z vboxsync $ */
 
 /** @file
  *
@@ -995,18 +995,21 @@ private:
     HRESULT prepareDeleteSnapshotMedium(const ComObjPtr<Medium> &aHD,
                                         const Guid &machineId,
                                         const Guid &snapshotId,
+                                        bool fOnlineMergePossible,
+                                        MediumLockList *aVMMALockList,
                                         ComObjPtr<Medium> &aSource,
                                         ComObjPtr<Medium> &aTarget,
                                         bool &fMergeForward,
                                         ComObjPtr<Medium> &pParentForTarget,
                                         MediaList &aChildrenToReparent,
+                                        bool &fNeedOnlineMerge,
                                         MediumLockList * &aMediumLockList);
     void cancelDeleteSnapshotMedium(const ComObjPtr<Medium> &aHD,
                                     const ComObjPtr<Medium> &aSource,
-                                    const ComObjPtr<Medium> &aTarget,
                                     const MediaList &aChildrenToReparent,
+                                    bool fNeedsOnlineMerge,
                                     MediumLockList *aMediumLockList,
-                                    const ComObjPtr<MediumAttachment> &aReplaceHda,
+                                    const Guid &aMediumId,
                                     const Guid &aSnapshotId);
 
     HRESULT lockMedia();
