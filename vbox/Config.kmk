@@ -1,4 +1,4 @@
-# $Id: Config.kmk 28866 2010-04-28 13:14:33Z vboxsync $
+# $Id: Config.kmk 28882 2010-04-28 23:17:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -379,8 +379,9 @@ endif
 # Enable the hal/sysfs USB code on Linux.
 ifeq ($(KBUILD_TARGET),linux)
  VBOX_USB_WITH_SYSFS=1
- VBOX_USB_WITH_DBUS=1
- VBOX_USB_WITH_FAM=1
+ # Disabled for now
+ # VBOX_USB_WITH_DBUS=1
+ VBOX_USB_WITH_INOTIFY=1
 endif
 # Use the new VBI module on Solaris.
 #VBOX_WITH_SOLARIS_VBI = 1
@@ -4087,7 +4088,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28866 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28882 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28802 2010-04-27 09:23:16Z vboxsync $
+# $Id: Makefile.kmk 28882 2010-04-28 23:17:52Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -219,7 +219,7 @@ VBoxSVC_DEFS = \
 	$(if $(VBOX_WITH_PDM_ASYNC_COMPLETION),VBOX_WITH_PDM_ASYNC_COMPLETION,) \
 	$(if $(VBOX_WITH_DBUS),$(if $(VBOX_USB_WITH_DBUS),VBOX_USB_WITH_DBUS,),) \
 	$(if $(VBOX_USB_WITH_SYSFS),VBOX_USB_WITH_SYSFS,) \
-	$(if $(VBOX_USB_WITH_FAM),VBOX_USB_WITH_FAM,) \
+	$(if $(VBOX_USB_WITH_INOTIFY),VBOX_USB_WITH_INOTIFY,) \
 	$(if $(VBOX_WITH_LIVE_MIGRATION),VBOX_WITH_LIVE_MIGRATION,) \
 	$(if $(VBOX_WITH_VUSB),VBOX_WITH_VUSB,)
 ifdef VBOX_WITH_USB
@@ -273,10 +273,6 @@ endif
 ifdef VBOX_WITH_USB
  VBoxSVC_LIBS.solaris += \
 	devinfo
- ifdef VBOX_USB_WITH_FAM
-  VBoxSVC_LIBS.linux += \
-	fam
- endif
 endif
 
 VBoxSVC_INTERMEDIATES = \
