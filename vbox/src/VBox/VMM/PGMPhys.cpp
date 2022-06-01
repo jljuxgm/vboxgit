@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 26949 2010-03-02 14:49:26Z vboxsync $ */
+/* $Id: PGMPhys.cpp 27026 2010-03-04 13:49:08Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2861,7 +2861,7 @@ VMMR3DECL(int) PGMR3PhysRomProtect(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb, PGMROM
 
                     /* flush references to the page. */
                     PPGMPAGE pRamPage = pgmPhysGetPage(&pVM->pgm.s, pRom->GCPhys + (iPage << PAGE_SHIFT));
-                    int rc2 = pgmPoolTrackFlushGCPhys(pVM, pRamPage, &fFlushTLB);
+                    int rc2 = pgmPoolTrackFlushGCPhys(pVM, pRom->GCPhys + (iPage << PAGE_SHIFT), pRamPage, &fFlushTLB);
                     if (rc2 != VINF_SUCCESS && (rc == VINF_SUCCESS || RT_FAILURE(rc2)))
                         rc = rc2;
 
