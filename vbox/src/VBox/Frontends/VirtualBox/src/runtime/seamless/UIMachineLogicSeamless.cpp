@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 27335 2010-03-12 16:20:29Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 27381 2010-03-15 20:20:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -199,9 +199,6 @@ void UIMachineLogicSeamless::prepareMachineWindows()
     /* Create machine window(s): */
     for (int screenId = 0; screenId < m_pScreenLayout->guestScreenCount(); ++screenId)
         addMachineWindow(UIMachineWindow::create(this, visualStateType(), screenId));
-    /* Order machine window(s): */
-    for (int screenId = m_pScreenLayout->guestScreenCount() - 1; screenId >= 0; --screenId)
-        machineWindows().at(screenId)->machineWindow()->raise();
 
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         connect(m_pScreenLayout, SIGNAL(screenLayoutChanged()),
