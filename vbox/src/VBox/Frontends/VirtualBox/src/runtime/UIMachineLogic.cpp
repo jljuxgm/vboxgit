@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 27268 2010-03-11 09:57:26Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 27294 2010-03-11 16:57:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -984,7 +984,8 @@ void UIMachineLogic::sltMouseCapabilityChanged()
     /* Update action state: */
     QAction *pAction = actionsPool()->action(UIActionIndex_Toggle_MouseIntegration);
     pAction->setEnabled(fIsMouseSupportsAbsolute && fIsMouseSupportsRelative && !fIsMouseHostCursorNeeded);
-    pAction->setChecked(fIsMouseHostCursorNeeded || pAction->isChecked());
+    if (fIsMouseHostCursorNeeded)
+        pAction->setChecked(false);
 }
 
 void UIMachineLogic::sltUSBDeviceStateChange(const CUSBDevice &device, bool fIsAttached, const CVirtualBoxErrorInfo &error)
