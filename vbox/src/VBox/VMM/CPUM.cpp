@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 26664 2010-02-19 15:16:39Z vboxsync $ */
+/* $Id: CPUM.cpp 26990 2010-03-03 13:57:20Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -567,7 +567,8 @@ static int cpumR3CpuIdInit(PVM pVM)
     {
         /* If CPUID Fn0000_0001_EDX[HTT] = 1 then LogicalProcessorCount is the number of threads per CPU core times the number of CPU cores per processor */
         pCPUM->aGuestCpuIdStd[1].ebx |= (pVM->cCpus << 16);
-        pCPUM->aGuestCpuIdStd[1].edx |= X86_CPUID_FEATURE_EDX_HTT;  /* necessary for hyper-threading *or* multi-core CPUs */
+        if (pVM->cCpus > 1)
+            pCPUM->aGuestCpuIdStd[1].edx |= X86_CPUID_FEATURE_EDX_HTT;  /* necessary for hyper-threading *or* multi-core CPUs */
     }
 #endif
 
