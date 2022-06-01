@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 30326 2010-06-21 12:35:33Z vboxsync $ */
+/* $Id: PGMAllShw.h 30364 2010-06-22 11:51:26Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -201,7 +201,8 @@ PGM_SHW_DECL(int, GetPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, uint64_t *pfFlags, P
     if (!Pde.n.u1Present)
         return VERR_PAGE_TABLE_NOT_PRESENT;
 
-    Assert(!Pde.b.u1Size);
+    /** todo deal with large pages. */
+    AssertFatal(!Pde.b.u1Size);
 
     /*
      * Get PT entry.
@@ -339,6 +340,8 @@ PGM_SHW_DECL(int, ModifyPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, size_t cb, uint64
 # endif
         if (!Pde.n.u1Present)
             return VERR_PAGE_TABLE_NOT_PRESENT;
+
+        AssertFatal(!Pde.b.u1Size);
 
         /*
          * Map the page table.
