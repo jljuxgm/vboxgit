@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27962 2010-04-02 16:43:02Z vboxsync $
+# $Id: Makefile.kmk 27963 2010-04-02 17:13:34Z vboxsync $
 ## @file
 # Sub-Makefile for the headless frontend.
 #
@@ -62,7 +62,7 @@ endif
 ifdef VBOX_WITH_HARDENING
  VBoxHeadless_LDFLAGS.darwin += -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxHeadless.dylib
 endif
-ifdef VBOX_WITH_VNC
+ifdef VBOX_WITH_VNC                     # (GPL only)
  VBoxHeadless_DEFS     += VBOX_WITH_VNC
  VBoxHeadless_SOURCES  += FramebufferVNC.cpp
  VBoxHeadless_LIBS     += vncserver
