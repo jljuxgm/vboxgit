@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 24206 2009-10-30 16:09:56Z vboxsync $ */
+/* $Id: PGMAll.cpp 24764 2009-11-18 16:30:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -459,7 +459,8 @@ VMMDECL(int) PGMTrap0eHandler(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFram
 
 # ifdef IN_RING0
     /* Note: hack alert for difficult to reproduce problem. */
-    if (    rc == VERR_PAGE_TABLE_NOT_PRESENT           /* seen with UNI & SMP */
+    if (    rc == VERR_PAGE_NOT_PRESENT                 /* SMP only ; disassembly might fail. */
+        ||  rc == VERR_PAGE_TABLE_NOT_PRESENT           /* seen with UNI & SMP */
         ||  rc == VERR_PAGE_DIRECTORY_PTR_NOT_PRESENT   /* seen with SMP */
         ||  rc == VERR_PAGE_MAP_LEVEL4_NOT_PRESENT)     /* precaution */
     {

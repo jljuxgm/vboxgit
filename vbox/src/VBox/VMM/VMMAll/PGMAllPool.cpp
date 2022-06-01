@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 24227 2009-10-30 22:50:51Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 24764 2009-11-18 16:30:12Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1191,7 +1191,12 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
      */
     PDISCPUSTATE pDis = &pVCpu->pgm.s.DisState;
     int rc = EMInterpretDisasOne(pVM, pVCpu, pRegFrame, pDis, NULL);
-    AssertReturnStmt(rc == VINF_SUCCESS, pgmUnlock(pVM), rc);
+    if (RT_UNLIKELY(rc != VINF_SUCCESS))
+    {        
+        AssertMsg(rc == VERR_PAGE_NOT_PRESENT || rc == VERR_PAGE_TABLE_NOT_PRESENT, ("Unexpected rc %d\n", rc));
+        pgmUnlock(pVM);
+        return rc;
+    }
 
     Assert(pPage->enmKind != PGMPOOLKIND_FREE);
 
