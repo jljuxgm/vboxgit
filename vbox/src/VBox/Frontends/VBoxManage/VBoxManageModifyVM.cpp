@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 24864 2009-11-23 12:20:41Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 24979 2009-11-26 08:36:53Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -159,7 +159,7 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--bioslogodisplaytime",      MODIFYVM_BIOSLOGODISPLAYTIME,       RTGETOPT_REQ_UINT64 },
     { "--bioslogoimagepath",        MODIFYVM_BIOSLOGOIMAGEPATH,         RTGETOPT_REQ_STRING },
     { "--biosbootmenu",             MODIFYVM_BIOSBOOTMENU,              RTGETOPT_REQ_STRING },
-    { "--biossystemtimeoffset",     MODIFYVM_BIOSSYSTEMTIMEOFFSET,      RTGETOPT_REQ_UINT64 },
+    { "--biossystemtimeoffset",     MODIFYVM_BIOSSYSTEMTIMEOFFSET,      RTGETOPT_REQ_INT64 },
     { "--biospxedebug",             MODIFYVM_BIOSPXEDEBUG,              RTGETOPT_REQ_BOOL_ONOFF },
     { "--boot",                     MODIFYVM_BOOT,                      RTGETOPT_REQ_STRING | RTGETOPT_FLAG_INDEX },
     { "--hda",                      MODIFYVM_HDA,                       RTGETOPT_REQ_STRING },
@@ -482,7 +482,7 @@ int handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_BIOSSYSTEMTIMEOFFSET:
             {
-                CHECK_ERROR(biosSettings, COMSETTER(TimeOffset)(ValueUnion.u64));
+                CHECK_ERROR(biosSettings, COMSETTER(TimeOffset)(ValueUnion.i64));
                 break;
             }
 
