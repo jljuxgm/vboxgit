@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 28345 2010-04-15 05:40:43Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 28348 2010-04-15 07:57:37Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1923,7 +1923,7 @@ int handleShowVMInfo(HandlerArg *a)
     HRESULT rc;
     const char *VMNameOrUuid = NULL;
     bool fLog = false;
-    uint32_t uLogIdx;
+    uint32_t uLogIdx = 0;
     bool fDetails = false;
     bool fMachinereadable = false;
 
