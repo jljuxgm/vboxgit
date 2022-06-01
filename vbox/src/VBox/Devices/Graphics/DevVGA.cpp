@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 28235 2010-04-13 08:48:47Z vboxsync $ */
+/* $Id: DevVGA.cpp 28240 2010-04-13 10:26:44Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5117,7 +5117,7 @@ static DECLCALLBACK(int) vgaPortDisplayBlt(PPDMIDISPLAYPORT pInterface, const vo
             /*
              * The blitting loop.
              */
-            size_t      cbLineSrc   = RT_ALIGN_Z(cx, 4) * 4;
+            size_t      cbLineSrc   = cx * 4; /* 32 bits per pixel. */
             uint8_t    *pu8Src      = (uint8_t *)pvData;
             size_t      cbLineDst   = pThis->pDrv->cbScanline;
             uint8_t    *pu8Dst      = pThis->pDrv->pu8Data + y * cbLineDst + x * cbPixelDst;
