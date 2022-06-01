@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: DrvRawFile.cpp 24382 2009-11-05 14:02:08Z vboxsync $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -81,8 +81,11 @@ static DECLCALLBACK(int) drvRawFileWrite(PPDMISTREAM pInterface, const void *pvB
     {
         size_t cbWritten;
         rc = RTFileWrite(pThis->OutputFile, pvBuf, *pcbWrite, &cbWritten);
+#if 0
+        /* don't flush here, takes too long and we will loose characters */
         if (RT_SUCCESS(rc))
             RTFileFlush(pThis->OutputFile);
+#endif
         *pcbWrite = cbWritten;
     }
 
