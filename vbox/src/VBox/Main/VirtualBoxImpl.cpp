@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 28955 2010-05-02 18:03:45Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 29849 2010-05-27 18:19:04Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -4485,6 +4485,26 @@ void *VirtualBox::CallbackEvent::handler()
         AutoReadLock alock(mVirtualBox COMMA_LOCKVAL_SRC_POS);
         callbacks = mVirtualBox->m->llCallbacks;
     }
+
+#ifdef RT_OS_WINDOWS
+#if 0
+    // WIP 
+    int nConnections = mVirtualBox->m_vec.GetSize();
+    for (int i=0; i<nConnections; i++)
+    {
+        CComPtr<IUnknown> sp = mVirtualBox->m_vec.GetAt(i);
+        IVirtualBoxCallback* cb = reinterpret_cast<IVirtualBoxCallback*>(sp.p);
+        if (cb != NULL)
+        {
+            HRESULT hrc = handleCallback(cb);
+            if (hrc == VBOX_E_DONT_CALL_AGAIN)
+            {
+                // need to handle that somehow, maybe just set element to 0
+            }
+        }
+    }
+#endif
+#endif
 
     for (CallbackList::const_iterator it = callbacks.begin();
          it != callbacks.end();
