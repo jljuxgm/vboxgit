@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 28549 2010-04-21 08:57:06Z vboxsync $ */
+/* $Id: MachineImpl.cpp 28559 2010-04-21 11:54:34Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -1467,6 +1467,7 @@ STDMETHODIMP Machine::COMSETTER(MemoryBalloonSize)(ULONG memoryBalloonSize)
 
     return S_OK;
 #else
+    NOREF(memoryBalloonSize);
     return setError(E_NOTIMPL, tr("Memory ballooning is only supported on 64-bit hosts"));
 #endif
 }
