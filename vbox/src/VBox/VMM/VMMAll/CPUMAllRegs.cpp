@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 26026 2010-01-25 16:44:01Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 26635 2010-02-18 18:24:40Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1720,6 +1720,10 @@ VMMDECL(bool) CPUMIsGuestNXEnabled(PVMCPU pVCpu)
  */
 VMMDECL(bool) CPUMIsGuestPageSizeExtEnabled(PVMCPU pVCpu)
 {
+    /* PAE or AMD64 implies support for big pages regardless of CR4.PSE */
+    if (pVCpu->cpum.s.Guest.cr4 & X86_CR4_PAE)
+        return true;
+
     return !!(pVCpu->cpum.s.Guest.cr4 & X86_CR4_PSE);
 }
 
