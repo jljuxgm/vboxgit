@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 27271 2010-03-11 11:08:29Z vboxsync $ */
+/* $Id: PGMPool.cpp 27272 2010-03-11 11:09:33Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -670,7 +670,7 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                                         }
                                     }
                                 }
-                                AssertFatalMsg(pPage->cPresent == 0, ("cPresent = %d pPage = 0x%x\n", pPage->cPresent, (uint32_t) pPage));
+                                AssertFatalMsg(pPage->cPresent == 0, ("cPresent = %d pPage = %RGv\n", pPage->cPresent, pPage->GCPhys));
                                 break;
                             }
                             default:
