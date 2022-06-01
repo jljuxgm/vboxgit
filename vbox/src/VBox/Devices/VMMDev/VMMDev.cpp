@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 28051 2010-04-07 14:09:14Z vboxsync $ */
+/* $Id: VMMDev.cpp 28059 2010-04-07 18:45:31Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -935,9 +935,9 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                     unsigned i;
                     for (i = 0; i < RT_ELEMENTS(pThis->displayChangeData.aRequests); i++)
                     {
-                        pRequest = &pThis->displayChangeData.aRequests[i];
-                        if (pRequest->fPending)
+                        if (pThis->displayChangeData.aRequests[i].fPending)
                         {
+                            pRequest = &pThis->displayChangeData.aRequests[i];
                             /* Remember which request should be reported. */
                             pThis->displayChangeData.iCurrentMonitor = i;
                             Log3(("VMMDev: will report pending request for %d\n",
