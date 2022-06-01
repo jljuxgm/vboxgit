@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 30107 2010-06-09 11:05:50Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 30117 2010-06-09 12:53:55Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -191,13 +191,13 @@ typedef struct VBOXNETFLTINS
             bool fReportedInfo;
 #  else
             /** Pointer to the bound IPv4 stream. */
-            void volatile *pvIp4Stream;
+            struct vboxnetflt_stream_t * volatile pvIp4Stream;
             /** Pointer to the bound IPv6 stream. */
-            void volatile *pvIp6Stream;
+            struct vboxnetflt_stream_t * volatile pIp6Stream;
             /** Pointer to the bound ARP stream. */
-            void volatile *pvArpStream;
+            struct vboxnetflt_stream_t * volatile pArpStream;
             /** Pointer to the unbound promiscuous stream. */
-            void volatile *pvPromiscStream;
+            struct vboxnetflt_promisc_stream_t * volatile pPromiscStream;
             /** Whether we are attaching to IPv6 stream dynamically now. */
             bool volatile fAttaching;
             /** Whether this is a VLAN interface or not. */
