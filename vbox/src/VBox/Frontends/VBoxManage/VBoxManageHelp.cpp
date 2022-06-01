@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 24884 2009-11-23 18:48:14Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 24901 2009-11-24 13:57:53Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -19,12 +19,35 @@
  * additional information or have any questions.
  */
 
+
+/*******************************************************************************
+*   Header Files                                                               *
+*******************************************************************************/
+#include <VBox/version.h>
+
 #include <iprt/ctype.h>
 #include <iprt/err.h>
 #include <iprt/getopt.h>
 #include <iprt/stream.h>
 
 #include "VBoxManage.h"
+
+
+
+void showLogo(void)
+{
+    static bool s_fShown; /* show only once */
+
+    if (!s_fShown)
+    {
+        RTPrintf("VirtualBox Command Line Management Interface Version "
+                 VBOX_VERSION_STRING  "\n"
+                 "(C) 2005-2009 Sun Microsystems, Inc.\n"
+                 "All rights reserved.\n"
+                 "\n");
+        s_fShown = true;
+    }
+}
 
 void printUsage(USAGECATEGORY u64Cmd)
 {
