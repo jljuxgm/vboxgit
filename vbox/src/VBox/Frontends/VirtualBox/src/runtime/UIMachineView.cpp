@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 26889 2010-02-28 14:57:36Z vboxsync $ */
+/* $Id: UIMachineView.cpp 26897 2010-02-28 18:13:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1114,8 +1114,8 @@ void UIMachineView::sltMouseCapabilityChanged()
     else
         viewport()->unsetCursor();
 
-    /* Notify user about mouse integration state: */
-    vboxProblem().remindAboutMouseIntegration(uisession()->isMouseSupportsAbsolute());
+    /* Notify user about mouse integration state if method was called by signal: */
+    if (sender()) vboxProblem().remindAboutMouseIntegration(uisession()->isMouseSupportsAbsolute());
 
     /* Notify all listeners: */
     emitMouseStateChanged();
