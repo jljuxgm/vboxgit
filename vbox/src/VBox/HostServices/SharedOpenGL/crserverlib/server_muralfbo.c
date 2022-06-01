@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 28242 2010-04-13 10:47:48Z vboxsync $ */
+/* $Id: server_muralfbo.c 28521 2010-04-20 13:39:48Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -146,7 +146,8 @@ GLboolean crServerSupportRedirMuralFBO(void)
 {
     const GLubyte* pExt = cr_server.head_spu->dispatch_table.GetString(GL_REAL_EXTENSIONS);
 
-    return    NULL!=crStrstr((const char*)pExt, "GL_ARB_framebuffer_object")
+    return ( NULL!=crStrstr((const char*)pExt, "GL_ARB_framebuffer_object")
+             || NULL!=crStrstr((const char*)pExt, "GL_EXT_framebuffer_object"))
            && NULL!=crStrstr((const char*)pExt, "GL_ARB_texture_non_power_of_two");
 }
 
