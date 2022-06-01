@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 25748 2010-01-12 10:27:27Z vboxsync $ */
+/* $Id: lockvalidator.cpp 25791 2010-01-12 22:57:57Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -1346,6 +1346,7 @@ static int rtLockValidatorClassAddPriorClass(RTLOCKVALCLASSINT *pClass, RTLOCKVA
                     if (fDone)
                     {
                         pChunk->aRefs[i].fAutodidacticism = fAutodidacticism;
+                        rtLockValidatorClassRetain(pPriorClass);
                         rc = VINF_SUCCESS;
                         break;
                     }
@@ -1377,6 +1378,7 @@ static int rtLockValidatorClassAddPriorClass(RTLOCKVALCLASSINT *pClass, RTLOCKVA
                     pNew->aRefs[0].fAutodidacticism = fAutodidacticism;
 
                     ASMAtomicWritePtr((void * volatile *)&pChunk->pNext, pNew);
+                    rtLockValidatorClassRetain(pPriorClass);
                     rc = VINF_SUCCESS;
                     break;
                 }
@@ -3373,7 +3375,8 @@ RTDECL(void) RTLockValidatorRecSharedDelete(PRTLOCKVALRECSHRD pRec)
     }
 
     ASMAtomicWriteU32(&pRec->Core.u32Magic, RTLOCKVALRECSHRD_MAGIC_DEAD);
-    ASMAtomicUoWriteHandle(&pRec->hClass, NIL_RTLOCKVALCLASS);
+    RTLOCKVALCLASS hClass;
+    ASMAtomicXchgHandle(&pRec->hClass, NIL_RTLOCKVALCLASS, &hClass);
     if (pRec->papOwners)
     {
         PRTLOCKVALRECSHRDOWN volatile *papOwners = pRec->papOwners;
@@ -3387,6 +3390,9 @@ RTDECL(void) RTLockValidatorRecSharedDelete(PRTLOCKVALRECSHRD pRec)
     ASMAtomicWriteBool(&pRec->fReallocating, false);
 
     rtLockValidatorSerializeDestructLeave();
+
+    if (hClass != NIL_RTLOCKVALCLASS)
+        RTLockValidatorClassRelease(hClass);
 }
 
 
