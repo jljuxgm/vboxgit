@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 29974 2010-06-02 10:33:16Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 30239 2010-06-16 12:15:34Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -2720,6 +2720,14 @@ int VBoxVHWAImage::vhwaSurfaceOverlayUpdate(struct _VBOXVHWACMD_SURF_OVERLAY_UPD
             }
         }
     }
+
+#ifdef VBOXWDDM
+    if(pCmd->u.in.xUpdatedSrcMemValid)
+    {
+        QRect r = VBOXVHWA_CONSTRUCT_QRECT_FROM_RECTL_WH(&pCmd->u.in.xUpdatedSrcMemRect);
+        pSrcSurf->updatedMem(&r);
+    }
+#endif
 
     const SurfList & surfaces = pList->surfaces();
 
