@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 24301 2009-11-03 22:07:55Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24313 2009-11-04 10:56:42Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -6493,6 +6493,7 @@ HRESULT Machine::saveHardware(settings::Hardware &data)
         data.fSyntheticCpu          = !!mHWData->mSyntheticCpu;
 
         /* Standard and Extended CPUID leafs. */
+        data.llCpuIdLeafs.clear();
         for (unsigned idx = 0; idx < RT_ELEMENTS(mHWData->mCpuIdStdLeafs); idx++)
         {
             if (mHWData->mCpuIdStdLeafs[idx].ulId != -1)
