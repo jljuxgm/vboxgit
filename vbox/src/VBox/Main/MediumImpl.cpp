@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 24230 2009-10-30 22:58:21Z vboxsync $ */
+/* $Id: MediumImpl.cpp 24253 2009-11-02 13:38:21Z vboxsync $ */
 
 /** @file
  *
@@ -3567,10 +3567,10 @@ HRESULT Medium::queryInfo()
 {
     AutoWriteLock alock(this);
 
-    AssertReturn(m->state == MediumState_Created ||
-                 m->state == MediumState_Inaccessible ||
-                 m->state == MediumState_LockedRead,
-                 E_FAIL);
+    if (   m->state != MediumState_Created
+        && m->state != MediumState_Inaccessible
+        && m->state != MediumState_LockedRead)
+        return E_FAIL;
 
     HRESULT rc = S_OK;
 
