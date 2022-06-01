@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 24579 2009-11-11 13:50:27Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 24618 2009-11-12 17:52:33Z vboxsync $ */
 
 /** @file
  *
@@ -1196,7 +1196,7 @@ Console::doGuestPropNotification(void *pvExtension, uint32_t,
 //             LogFunc(("pCBData->pcszName=%s\n", pCBData->pcszName));
 //             LogFunc(("pCBData->pcszValue=%s\n", pCBData->pcszValue));
 //             LogFunc(("pCBData->pcszFlags=%s\n", pCBData->pcszFlags));
-            rc = VERR_UNRESOLVED_ERROR;  /** @todo translate error code */
+            rc = Global::vboxStatusCodeFromCOM(hrc);
         }
     }
 //     LogFlowFunc(("rc=%Rrc\n", rc));

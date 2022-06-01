@@ -1,4 +1,4 @@
-/* $Id: Global.h 24301 2009-11-03 22:07:55Z vboxsync $ */
+/* $Id: Global.h 24618 2009-11-12 17:52:33Z vboxsync $ */
 
 /** @file
  *
@@ -160,6 +160,26 @@ public:
      * @param   aState      Valid session state.
      */
     static const char *stringifySessionState(SessionState_T aState);
+
+    /**
+     * Try convert a COM status code to a VirtualBox status code (VBox/err.h).
+     *
+     * @returns VBox status code.
+     * @param   aComStatus      COM status code.
+     */
+    static int vboxStatusCodeFromCOM(HRESULT aComStatus);
+
+    /**
+     * Try convert a VirtualBox status code (VBox/err.h) to a COM status code.
+     *
+     * This is mainly inteded for dealing with vboxStatusCodeFromCOM() return
+     * values.  If used on anything else, it won't be able to cope with most of the
+     * input!
+     *
+     * @returns COM status code.
+     * @param   aVBoxStatus      VBox status code.
+     */
+    static HRESULT vboxStatusCodeToCOM(int aVBoxStatus);
 };
 
 #endif /* !____H_GLOBAL */
