@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 28036 2010-04-07 09:47:43Z vboxsync $ */
+/* $Id: PGMPhys.cpp 28044 2010-04-07 11:26:17Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -924,6 +924,9 @@ static DECLCALLBACK(void) pgmR3PhysChangeMemBalloonHelper(PVM pVM, bool fInflate
 VMMR3DECL(int) PGMR3PhysChangeMemBalloon(PVM pVM, bool fInflate, unsigned cPages, RTGCPHYS *paPhysPage)
 {
     int rc;
+
+    /* Older additions (ancient non-functioning balloon code) pass wrong physical addresses. */
+    AssertReturn(!(paPhysPage[0] & 0xfff), VERR_INVALID_PARAMETER);
 
     /* We own the IOM lock here and could cause a deadlock by waiting for another VCPU that is blocking on the IOM lock.
      * In the SMP case we post a request packet to postpone the job.
