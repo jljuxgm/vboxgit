@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28353 2010-04-15 12:26:45Z vboxsync $
+# $Id: Makefile.kmk 28368 2010-04-15 14:46:06Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -581,6 +581,9 @@ endif
 VBoxC_DEFS.darwin.x86 = VBOX_WITH_2X_4GB_ADDR_SPACE
 VBoxC_DEFS.win.x86 += _WIN32_WINNT=0x0500
 VBoxC_DEFS.win.amd64 += _WIN32_WINNT=0x0510
+
+#temporary define
+VBoxC_DEFS += MMSEAMLESS
 
 VBoxC_INCS          = \
 	include \

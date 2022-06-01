@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 28264 2010-04-13 16:01:51Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 28368 2010-04-15 14:46:06Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -376,6 +376,10 @@ DECLCALLBACK(int) vmmdevSetVisibleRegion(PPDMIVMMDEVCONNECTOR pInterface, uint32
 
     if (!cRect)
         return VERR_INVALID_PARAMETER;
+#ifdef MMSEAMLESS
+    /* Forward to Display, which calls corresponding framebuffers. */
+    pDrv->pVMMDev->getParent()->getDisplay()->handleSetVisibleRegion(cRect, pRect);
+#else
     IFramebuffer *framebuffer = pDrv->pVMMDev->getParent()->getDisplay()->getFramebuffer();
     if (framebuffer)
     {
@@ -402,6 +406,7 @@ DECLCALLBACK(int) vmmdevSetVisibleRegion(PPDMIVMMDEVCONNECTOR pInterface, uint32
         }
 #endif
     }
+#endif
 
     return VINF_SUCCESS;
 }
@@ -410,6 +415,10 @@ DECLCALLBACK(int) vmmdevQueryVisibleRegion(PPDMIVMMDEVCONNECTOR pInterface, uint
 {
     PDRVMAINVMMDEV pDrv = PDMIVMMDEVCONNECTOR_2_MAINVMMDEV(pInterface);
 
+#ifdef MMSEAMLESS
+    /* Forward to Display, which calls corresponding framebuffers. */
+    pDrv->pVMMDev->getParent()->getDisplay()->handleQueryVisibleRegion(pcRect, pRect);
+#else
     IFramebuffer *framebuffer = pDrv->pVMMDev->getParent()->getDisplay()->getFramebuffer();
     if (framebuffer)
     {
@@ -418,6 +427,7 @@ DECLCALLBACK(int) vmmdevQueryVisibleRegion(PPDMIVMMDEVCONNECTOR pInterface, uint
 
         *pcRect = cRect;
     }
+#endif
 
     return VINF_SUCCESS;
 }
