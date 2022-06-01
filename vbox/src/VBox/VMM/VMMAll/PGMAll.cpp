@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 24764 2009-11-18 16:30:12Z vboxsync $ */
+/* $Id: PGMAll.cpp 25537 2009-12-21 12:33:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1807,7 +1807,6 @@ VMMDECL(int) PGMSyncCR3(PVMCPU pVCpu, uint64_t cr0, uint64_t cr3, uint64_t cr4, 
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     int rc;
 
-#ifdef PGMPOOL_WITH_MONITORING
     /*
      * The pool may have pending stuff and even require a return to ring-3 to
      * clear the whole thing.
@@ -1815,7 +1814,6 @@ VMMDECL(int) PGMSyncCR3(PVMCPU pVCpu, uint64_t cr0, uint64_t cr3, uint64_t cr4, 
     rc = pgmPoolSyncCR3(pVCpu);
     if (rc != VINF_SUCCESS)
         return rc;
-#endif
 
     /*
      * We might be called when we shouldn't.
