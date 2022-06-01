@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29551 2010-05-17 14:15:41Z vboxsync $ */
+/* $Id: GMMR0.cpp 29553 2010-05-17 14:29:24Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3896,6 +3896,8 @@ static DECLCALLBACK(int) gmmR0CleanupSharedModule(PAVLGCPTRNODECORE pNode, void 
 {
     PGVM pGVM = (PGVM)pvGVM;
     PGMMSHAREDMODULEPERVM pRecVM = (PGMMSHAREDMODULEPERVM)pNode;
+    PGMM pGMM;
+    GMM_GET_VALID_INSTANCE(pGMM, VERR_INTERNAL_ERROR);
 
     Assert(pRecVM->pGlobalModule);
     if (pRecVM->pGlobalModule)
@@ -3912,6 +3914,8 @@ static DECLCALLBACK(int) gmmR0CleanupSharedModule(PAVLGCPTRNODECORE pNode, void 
                 if (pRec->aRegions[i].paHCPhysPageID)
                     RTMemFree(pRec->aRegions[i].paHCPhysPageID);
 
+            /* Remove from the tree and free memory. */
+            RTAvlGCPtrRemove(&pGMM->pGlobalSharedModuleTree, pRec->Core.Key);
             RTMemFree(pRec);
         }
     }
