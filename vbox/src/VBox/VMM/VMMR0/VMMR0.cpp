@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 29557 2010-05-17 15:01:12Z vboxsync $ */
+/* $Id: VMMR0.cpp 29561 2010-05-17 15:08:42Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -43,6 +43,7 @@
 #include <iprt/assert.h>
 #include <iprt/crc32.h>
 #include <iprt/mp.h>
+#include <iprt/once.h>
 #include <iprt/stdarg.h>
 #include <iprt/string.h>
 #ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
@@ -70,7 +71,8 @@ RT_C_DECLS_END
  * The runtime lives here (in VMMR0.r0) and VBoxDD*R0.r0 links against us. */
 PFNRT g_VMMGCDeps[] =
 {
-    (PFNRT)RTCrc32
+    (PFNRT)RTCrc32,
+    (PFNRT)RTOnce
 };
 
 
