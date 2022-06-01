@@ -1,4 +1,4 @@
-/* $Id: test.cpp 20605 2009-06-15 20:49:41Z vboxsync $ */
+/* $Id: test.cpp 25517 2009-12-20 15:19:53Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -1045,6 +1045,22 @@ RTR3DECL(int) RTTestErrorInc(RTTEST hTest)
     ASMAtomicIncU32(&pTest->cErrors);
 
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Get the current error count.
+ *
+ * @returns The error counter, UINT32_MAX if no valid test handle.
+ * @param   hTest       The test handle. If NIL_RTTEST we'll use the one
+ *                      associated with the calling thread.
+ */
+RTR3DECL(uint32_t) RTTestErrorCount(RTTEST hTest)
+{
+    PRTTESTINT pTest = hTest;
+    RTTEST_GET_VALID_RETURN_RC(pTest, UINT32_MAX);
+
+    return ASMAtomicReadU32(&pTest->cErrors);
 }
 
 
