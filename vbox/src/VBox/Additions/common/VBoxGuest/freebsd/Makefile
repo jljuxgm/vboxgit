@@ -1,4 +1,4 @@
-# $Id: Makefile 25590 2009-12-29 13:03:48Z vboxsync $
+# $Id: Makefile 26180 2010-02-02 22:52:04Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -152,8 +152,7 @@ SRCS += \
 .PATH:	${.CURDIR}/VBox
 SRCS += \
 	log-vbox.c \
-	logbackdoor.c \
-	strformat-vbox.c \
+	logbackdoor.c
 
 .include <bsd.kmod.mk>
 

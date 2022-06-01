@@ -1,4 +1,4 @@
-# $Id: Makefile 25536 2009-12-21 11:06:08Z vboxsync $
+# $Id: Makefile 26180 2010-02-02 22:52:04Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -160,8 +160,7 @@ SRCS += \
 
 .PATH:	${.CURDIR}/VBox
 SRCS += \
-	log-vbox.c \
-	strformat-vbox.c
+	log-vbox.c
 
 .include <bsd.kmod.mk>
 

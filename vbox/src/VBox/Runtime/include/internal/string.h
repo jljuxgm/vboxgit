@@ -1,4 +1,4 @@
-/* $Id: string.h 25642 2010-01-05 08:19:10Z vboxsync $ */
+/* $Id: string.h 26180 2010-02-02 22:52:04Z vboxsync $ */
 /** @file
  * IPRT - Internal RTStr header.
  */
@@ -51,9 +51,6 @@ RT_C_DECLS_BEGIN
 # define RTStrAssertMsgReturn(expr, msg, rc)    do { if (!(expr)) return rc; } while (0)
 #endif
 
-#ifdef RT_WITH_VBOX
-size_t rtstrFormatVBox(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **ppszFormat, va_list *pArgs, int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize);
-#endif
 size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **ppszFormat, va_list *pArgs, int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize);
 size_t rtstrFormatType(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **ppszFormat, va_list *pArgs, int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize);
 

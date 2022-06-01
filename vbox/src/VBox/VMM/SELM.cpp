@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 26176 2010-02-02 22:20:13Z vboxsync $ */
+/* $Id: SELM.cpp 26180 2010-02-02 22:52:04Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -1565,10 +1565,10 @@ VMMR3DECL(int) SELMR3SyncTSS(PVM pVM, PVMCPU pVCpu)
                 {
                     RTGCPHYS GCPhys = NIL_RTGCPHYS;
                     rc = PGMGstGetPage(pVCpu, GCPtrTss, NULL, &GCPhys); AssertRC(rc);
-                    Log(("SELMR3SyncTSS: Updating TSS ring 0 stack to %04X:%08X from %04X:%08X; TSS Phys=%VGp)\n",
+                    Log(("SELMR3SyncTSS: Updating TSS ring 0 stack to %04X:%08X from %04X:%08X; TSS Phys=%RGp)\n",
                          Tss.ss0, Tss.esp0, (ssr0 & ~1), espr0,  GCPhys));
                     AssertMsg(ssr0 != Tss.ss0,
-                              ("ring-1 leak into TSS.SS0! %04X:%08X from %04X:%08X; TSS Phys=%VGp)\n",
+                              ("ring-1 leak into TSS.SS0! %04X:%08X from %04X:%08X; TSS Phys=%RGp)\n",
                                Tss.ss0, Tss.esp0, (ssr0 & ~1), espr0,  GCPhys));
                 }
                 Log(("offIoBitmap=%#x\n", Tss.offIoBitmap));

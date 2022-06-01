@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 26150 2010-02-02 15:52:54Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 26180 2010-02-02 22:52:04Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1170,7 +1170,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
     }
 
     if (pPage->cModifications >= cMaxModifications)
-        Log(("Mod overflow %VGv cMods=%d (locked=%d type=%s)\n", pvFault, pPage->cModifications, pgmPoolIsPageLocked(&pVM->pgm.s, pPage), pgmPoolPoolKindToStr(pPage->enmKind)));
+        Log(("Mod overflow %RGv cMods=%d (locked=%d type=%s)\n", pvFault, pPage->cModifications, pgmPoolIsPageLocked(&pVM->pgm.s, pPage), pgmPoolPoolKindToStr(pPage->enmKind)));
 
     /*
      * Check if it's worth dealing with.

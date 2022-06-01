@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 26180 2010-02-02 22:52:04Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3442,7 +3442,7 @@ ResumeExecution:
         rc = VMXReadVMCS64(VMX_VMCS_EXIT_PHYS_ADDR_FULL, &GCPhys);
         AssertRC(rc);
 
-        Log(("VMX_EXIT_EPT_MISCONFIG for %VGp\n", GCPhys));
+        Log(("VMX_EXIT_EPT_MISCONFIG for %RGp\n", GCPhys));
         break;
     }
 

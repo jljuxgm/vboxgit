@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 25805 2010-01-13 14:30:45Z vboxsync $ */
+/* $Id: strformat.cpp 26180 2010-02-02 22:52:04Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -845,18 +845,6 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
                         }
                         break;
                     }
-
-#ifdef RT_WITH_VBOX
-                    /*
-                     * VBox extensions.
-                     */
-                    case 'V':
-                    {
-                        pszFormat--;
-                        cch += rtstrFormatVBox(pfnOutput, pvArgOutput, &pszFormat, &args, cchPrecision, cchWidth, fFlags, chArgSize);
-                        break;
-                    }
-#endif
 
                     /*
                      * Custom format.
