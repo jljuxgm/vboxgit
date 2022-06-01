@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 26961 2010-03-02 17:13:50Z vboxsync $ */
+/* $Id: UIMachine.cpp 26962 2010-03-02 17:16:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,9 +30,7 @@
 #include "UIMachineWindow.h"
 
 #ifdef Q_WS_MAC
-# ifdef QT_MAC_USE_COCOA
-#  include <Carbon/Carbon.h>
-# endif /* QT_MAC_USE_COCOA */
+# include <Carbon/Carbon.h>
 #endif /* Q_WS_MAC */
 
 class UIVisualState : public QObject
