@@ -1,4 +1,4 @@
-# $Id: Config.kmk 25630 2010-01-04 09:33:46Z vboxsync $
+# $Id: Config.kmk 25633 2010-01-04 09:56:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -596,8 +596,6 @@ ifeq ($(KBUILD_TARGET),darwin)
  VBOX_WITH_SECURELABEL=
  # We'll use the native html/help viewer.
  VBOX_WITH_KCHMVIEWER=
- # Later:
- VBOX_WITH_VRDP_AUTHMOD=
  VBOX_WITH_VRDP_RDESKTOP=
  ifeq ($(KBUILD_TARGET_ARCH),amd64)
   # Permanent (no working SDL).
@@ -3902,7 +3900,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25630 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25633 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
