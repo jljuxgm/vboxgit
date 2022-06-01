@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 27846 2010-03-30 21:14:51Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 27850 2010-03-31 08:11:58Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -3523,10 +3523,13 @@ void VBoxVHWAImage::vboxDoUpdateViewport(const QRect & aRect)
 
 bool VBoxVHWAImage::hasSurfaces() const
 {
-    if(mDisplay.overlays().size() != 0)
+    if (mDisplay.overlays().size() != 0)
         return true;
-    if(mDisplay.primaries().size() > 1)
+    if (mDisplay.primaries().size() > 1)
         return true;
+    /* in case gl was never turned on, we have no surfaces at all including VGA */
+    if (!mDisplay.getVGA())
+        return false;
     return mDisplay.getVGA()->handle() != VBOXVHWA_SURFHANDLE_INVALID;
 }
 
