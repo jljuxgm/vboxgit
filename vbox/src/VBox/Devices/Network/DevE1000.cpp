@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 28320 2010-04-14 18:26:24Z vboxsync $ */
+/* $Id: DevE1000.cpp 28323 2010-04-14 18:34:20Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2000,7 +2000,6 @@ static int e1kRxChecksumOffload(E1KSTATE* pState, const uint8_t *pFrame, size_t 
  */
 static int e1kHandleRxPacket(E1KSTATE* pState, const void *pvBuf, size_t cb, E1KRXDST status)
 {
-    E1KRXDESC desc;
     uint8_t   rxPacket[E1K_MAX_RX_PKT_SIZE];
     uint8_t  *ptr = rxPacket;
 
@@ -2064,6 +2063,7 @@ static int e1kHandleRxPacket(E1KSTATE* pState, const void *pvBuf, size_t cb, E1K
     while (RDH != RDT)
     {
         /* Load the desciptor pointed by head */
+        E1KRXDESC desc;
         PDMDevHlpPhysRead(pState->CTX_SUFF(pDevIns), e1kDescAddr(RDBAH, RDBAL, RDH),
                           &desc, sizeof(desc));
         if (desc.u64BufAddr)
