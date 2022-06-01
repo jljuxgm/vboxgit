@@ -1,4 +1,4 @@
-# $Id: Makefile 25532 2009-12-20 23:36:14Z vboxsync $
+# $Id: Makefile 25536 2009-12-21 11:06:08Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -74,6 +74,9 @@ SRCS += \
 SRCS += \
 	RTAssertMsg1Weak.c \
 	RTAssertMsg2.c \
+	RTAssertMsg2Add.c \
+	RTAssertMsg2AddWeak.c \
+	RTAssertMsg2AddWeakV.c \
 	RTAssertMsg2Weak.c \
 	RTAssertMsg2WeakV.c \
 	assert.c \
