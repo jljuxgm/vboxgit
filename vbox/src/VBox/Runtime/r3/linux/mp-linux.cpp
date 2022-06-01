@@ -1,4 +1,4 @@
-/* $Id: mp-linux.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: mp-linux.cpp 28858 2010-04-28 09:48:43Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Linux.
  */
@@ -143,7 +143,7 @@ RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
         i = 1;
     }
 
-    Assert(i == 0 || i == -1 || i == 1);
+    AssertMsg(i == 0 || i == -1 || i == 1, ("i=%d\n", i));
     return i != 0 && i != -1;
 }
 
