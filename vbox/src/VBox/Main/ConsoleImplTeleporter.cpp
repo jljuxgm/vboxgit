@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 25310 2009-12-10 17:06:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -614,7 +614,7 @@ Console::teleporterSrc(TeleporterStateSrc *pState)
     /*
      * Wait for Console::Teleport to change the state.
      */
-    { AutoWriteLock autoLock(this); }
+    { AutoWriteLock autoLock(this COMMA_LOCKVAL_SRC_POS); }
 
     BOOL fCancelled = TRUE;
     HRESULT hrc = pState->mptrProgress->COMGETTER(Canceled)(&fCancelled);
@@ -759,7 +759,7 @@ Console::teleporterSrcThreadWrapper(RTTHREAD hThread, void *pvUser)
      * Write lock the console before resetting mptrCancelableProgress and
      * fixing the state.
      */
-    AutoWriteLock autoLock(pState->mptrConsole);
+    AutoWriteLock autoLock(pState->mptrConsole COMMA_LOCKVAL_SRC_POS);
     pState->mptrConsole->mptrCancelableProgress.setNull();
 
     VMSTATE const        enmVMState      = VMR3GetState(pState->mpVM);
@@ -907,7 +907,7 @@ Console::Teleport(IN_BSTR aHostname, ULONG aPort, IN_BSTR aPassword, ULONG aMaxD
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    AutoWriteLock autoLock(this);
+    AutoWriteLock autoLock(this COMMA_LOCKVAL_SRC_POS);
     LogFlowThisFunc(("mMachineState=%d\n", mMachineState));
 
     switch (mMachineState)

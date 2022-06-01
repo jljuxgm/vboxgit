@@ -1,4 +1,4 @@
-/* $Id: VRDPServerImpl.h 24989 2009-11-26 11:31:46Z vboxsync $ */
+/* $Id: VRDPServerImpl.h 25310 2009-12-10 17:06:44Z vboxsync $ */
 
 /** @file
  *
@@ -112,8 +112,8 @@ public:
     HRESULT loadSettings(const settings::VRDPSettings &data);
     HRESULT saveSettings(settings::VRDPSettings &data);
 
-    bool isModified() { AutoWriteLock alock (this); return mData.isBackedUp(); }
-    bool isReallyModified() { AutoWriteLock alock (this); return mData.hasActualChanges(); }
+    bool isModified() { AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS); return mData.isBackedUp(); }
+    bool isReallyModified() { AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS); return mData.hasActualChanges(); }
     bool rollback();
     void commit();
     void copyFrom (VRDPServer *aThat);

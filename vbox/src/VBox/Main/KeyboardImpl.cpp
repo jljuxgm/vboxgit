@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 25310 2009-12-10 17:06:44Z vboxsync $ */
 
 /** @file
  *
@@ -136,7 +136,7 @@ STDMETHODIMP Keyboard::PutScancode (LONG scancode)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    AutoWriteLock alock(this);
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     CHECK_CONSOLE_DRV (mpDrv);
 
@@ -171,7 +171,7 @@ STDMETHODIMP Keyboard::PutScancodes (ComSafeArrayIn (LONG, scancodes),
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    AutoWriteLock alock(this);
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     CHECK_CONSOLE_DRV (mpDrv);
 
@@ -254,7 +254,7 @@ DECLCALLBACK(void) Keyboard::drvDestruct (PPDMDRVINS pDrvIns)
     LogFlow(("Keyboard::drvDestruct: iInstance=%d\n", pDrvIns->iInstance));
     if (pData->pKeyboard)
     {
-        AutoWriteLock kbdLock (pData->pKeyboard);
+        AutoWriteLock kbdLock(pData->pKeyboard COMMA_LOCKVAL_SRC_POS);
         pData->pKeyboard->mpDrv = NULL;
         pData->pKeyboard->mpVMMDev = NULL;
     }

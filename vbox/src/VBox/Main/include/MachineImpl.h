@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 25150 2009-12-02 14:40:46Z vboxsync $ */
+/* $Id: MachineImpl.h 25310 2009-12-10 17:06:44Z vboxsync $ */
 
 /** @file
  *
@@ -760,7 +760,7 @@ public:
                             ComObjPtr<SharedFolder> &aSharedFolder,
                             bool aSetError = false)
     {
-        AutoWriteLock alock(this);
+        AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
         return findSharedFolder(aName, aSharedFolder, aSetError);
     }
 
