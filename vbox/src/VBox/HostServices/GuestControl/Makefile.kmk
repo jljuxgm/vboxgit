@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27897 2010-03-31 13:41:04Z vboxsync $
+# $Id: Makefile.kmk 28557 2010-04-21 11:18:32Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Control Host Service.
 #
@@ -23,7 +23,7 @@ SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefile(s).
-include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
+# include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 
 #
 # The guest control service DLL.
