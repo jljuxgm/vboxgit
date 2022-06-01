@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 26293 2010-02-05 14:32:17Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 26294 2010-02-05 14:35:26Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -214,6 +214,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                                             file <file>|\n"
                  "                                             <devicename>]\n"
                  "                            [--guestmemoryballoon <balloonsize in MB>]\n"
+                 "                            [--gueststatisticsinterval <seconds>]\n"
                  );
         RTPrintf("                            [--audio none|null");
         if (fWin)

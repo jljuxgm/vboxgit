@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 26293 2010-02-05 14:32:17Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 26294 2010-02-05 14:35:26Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1723,6 +1723,21 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
         else
             RTPrintf("Configured memory balloon size:      %d MB\n", guestVal);
     }
+    rc = machine->COMGETTER(StatisticsUpdateInterval)(&guestVal);
+    if (SUCCEEDED(rc))
+    {
+        if (details == VMINFO_MACHINEREADABLE)
+            RTPrintf("GuestStatisticsUpdateInterval=%d\n", guestVal);
+        else
+        {
+            if (guestVal == 0)
+                RTPrintf("Statistics update:                   disabled\n");
+            else
+                RTPrintf("Statistics update interval:          %d seconds\n", guestVal);
+        }
+    }
+    if (details != VMINFO_MACHINEREADABLE)
+        RTPrintf("\n");
 
     if (    console
         &&  (   details == VMINFO_STATISTICS
