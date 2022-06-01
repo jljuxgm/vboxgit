@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26203 2010-02-03 15:22:42Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 26207 2010-02-03 16:28:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -538,6 +538,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         rc = CFGMR3InsertNode(pDevices, "smc", &pDev);                       RC_CHECK();
         rc = CFGMR3InsertNode(pDev,     "0", &pInst);                        RC_CHECK();
         rc = CFGMR3InsertInteger(pInst, "Trusted",   1);     /* boolean */   RC_CHECK();
+        rc = CFGMR3InsertNode(pInst,    "Config", &pCfg);                    RC_CHECK();
+        rc = pMachine->GetExtraData(Bstr("VBoxInternal2/SmcDeviceKey"), tmpStr2.asOutParam()); RC_CHECK();
+        rc = CFGMR3InsertString(pCfg,   "DeviceKey", Utf8Str(tmpStr2).raw());RC_CHECK();
     }
 
     /*
