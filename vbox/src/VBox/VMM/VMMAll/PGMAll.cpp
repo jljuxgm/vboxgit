@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 26202 2010-02-03 15:19:36Z vboxsync $ */
+/* $Id: PGMAll.cpp 26277 2010-02-05 04:44:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2217,7 +2217,7 @@ VMMDECL(int) PGMDynMapGCPageOff(PVM pVM, RTGCPHYS GCPhys, void **ppv)
 #else
     PGMDynMapHCPage(pVM, HCPhys, ppv);
 #endif
-    *ppv = (void *)((uintptr_t)*ppv | (GCPhys & PAGE_OFFSET_MASK));
+    *ppv = (void *)((uintptr_t)*ppv | (uintptr_t)(GCPhys & PAGE_OFFSET_MASK));
     return VINF_SUCCESS;
 }
 
