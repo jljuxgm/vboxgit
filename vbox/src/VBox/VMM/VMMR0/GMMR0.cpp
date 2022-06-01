@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29620 2010-05-18 12:15:55Z vboxsync $ */
+/* $Id: GMMR0.cpp 29639 2010-05-18 14:18:40Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2785,7 +2785,14 @@ static int gmmR0FreePages(PGMM pGMM, PGVM pGVM, uint32_t cPages, PGMMFREEPAGEDES
                 pGVM->gmm.s.cSharedPages--;
                 Assert(pPage->Shared.cRefs);
                 if (!--pPage->Shared.cRefs)
+                {
                     gmmR0FreeSharedPage(pGMM, idPage, pPage);
+                }
+                else
+                {
+                    Assert(pGMM->cDuplicatePages);
+                    pGMM->cDuplicatePages--;
+                }
             }
             else
             {
