@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 27908 2010-03-31 14:32:46Z vboxsync $ */
+/* $Id: ApplianceImpl.h 27918 2010-03-31 17:10:40Z vboxsync $ */
 
 /** @file
  *
@@ -40,6 +40,11 @@ namespace ovf
 namespace xml
 {
     class ElementNode;
+}
+
+namespace settings
+{
+    class MachineConfigFile;
 }
 
 class ATL_NO_VTABLE Appliance :
@@ -241,6 +246,9 @@ public:
 
     std::list<VirtualSystemDescriptionEntry*> findByType(VirtualSystemDescriptionType_T aType);
     const VirtualSystemDescriptionEntry* findControllerFromID(uint32_t id);
+
+    void importVboxMachineXML(const xml::ElementNode &elmMachine);
+    const settings::MachineConfigFile* getMachineConfig() const;
 
     /* private instance data */
 private:
