@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 24709 2009-11-17 09:41:15Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 25062 2009-11-27 19:24:14Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -691,7 +691,8 @@ VOID VBoxSetupDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension, PVIDEO_PORT_CONF
             rc = HGSMIHeapSetup (&PrimaryExtension->u.primary.hgsmiAdapterHeap,
                                  PrimaryExtension->u.primary.pvAdapterInformation,
                                  VBVA_ADAPTER_INFORMATION_SIZE - sizeof(HGSMIHOSTFLAGS),
-                                 PrimaryExtension->u.primary.cbVRAM - VBVA_ADAPTER_INFORMATION_SIZE);
+                                 PrimaryExtension->u.primary.cbVRAM - VBVA_ADAPTER_INFORMATION_SIZE,
+                                 false /*fOffsetBased*/);
 
             if (RT_FAILURE (rc))
             {
