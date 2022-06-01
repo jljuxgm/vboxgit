@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 26815 2010-02-26 02:43:37Z vboxsync $ */
+/* $Id: UIMachine.cpp 26845 2010-02-26 13:12:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -174,6 +174,15 @@ UIMachine::UIMachine(UIMachine **ppSelf, const CSession &session)
 
     /* Enter default (normal) state */
     enterBaseVisualState();
+}
+
+UIMachine::~UIMachine()
+{
+    /* Delete uisession child before actions-pool child: */
+    delete m_pSession;
+    m_pSession = 0;
+    delete m_pActionsPool;
+    m_pActionsPool = 0;
 }
 
 UIMachineLogic* UIMachine::machineLogic() const
