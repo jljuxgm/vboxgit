@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 25901 2010-01-18 16:52:21Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 25902 2010-01-18 17:16:40Z vboxsync $ */
 
 /** @file
  *
@@ -1741,7 +1741,7 @@ DECLCALLBACK(int) Console::unplugCpu(Console *pThis, unsigned uCpu)
     return vrc;
 }
 
-STDMETHODIMP Console::doCPURemove(ULONG aCpu)
+HRESULT Console::doCPURemove(ULONG aCpu)
 {
     HRESULT rc = S_OK;
 
@@ -1894,7 +1894,7 @@ DECLCALLBACK(int) Console::plugCpu(Console *pThis, unsigned uCpu)
     return VINF_SUCCESS;
 }
 
-STDMETHODIMP Console::doCPUAdd(ULONG aCpu)
+HRESULT Console::doCPUAdd(ULONG aCpu)
 {
     HRESULT rc = S_OK;
 
