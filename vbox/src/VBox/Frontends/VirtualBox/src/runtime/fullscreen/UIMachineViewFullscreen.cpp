@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 27415 2010-03-16 16:35:53Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 27453 2010-03-17 15:32:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -39,6 +39,7 @@
 #include "UIMachineLogic.h"
 #include "UIMachineWindow.h"
 #include "UIFrameBuffer.h"
+#include "UIMachineLogicFullscreen.h"
 #include "UIMachineViewFullscreen.h"
 
 UIMachineViewFullscreen::UIMachineViewFullscreen(  UIMachineWindow *pMachineWindow
@@ -291,7 +292,10 @@ void UIMachineViewFullscreen::setGuestAutoresizeEnabled(bool fEnabled)
 
 QRect UIMachineViewFullscreen::workingArea()
 {
-    return QApplication::desktop()->screenGeometry(this);
+    /* Get corresponding screen: */
+    int iScreen = static_cast<UIMachineLogicFullscreen*>(machineLogic())->hostScreenForGuestScreen(screenId());
+    /* Return available geometry for that screen: */
+    return QApplication::desktop()->screenGeometry(iScreen);
 }
 
 void UIMachineViewFullscreen::calculateDesktopGeometry()
