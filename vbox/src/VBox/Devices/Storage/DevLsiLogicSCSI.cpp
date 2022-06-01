@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 24098 2009-10-26 23:22:39Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 24099 2009-10-26 23:29:43Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5171,6 +5171,10 @@ static DECLCALLBACK(void) lsilogicReset(PPDMDEVINS pDevIns)
  *        does another notification round... This way we could combine the waits
  *        in the I/O controllers and reduce the time it takes to suspend a VM a
  *        wee bit...
+ *
+ * DrvSCSI should implement the reset notification, then we could retire this
+ * fun lsilogicWaitForAsyncIOFinished code.  (The drivers are reset before the
+ * device.)  The deadlock trap is still there though.
  */
     bool fIdle = lsilogicWaitForAsyncIOFinished(pLsiLogic, 20000);
     Assert(fIdle);
@@ -5450,9 +5454,7 @@ const PDMDEVREG g_DeviceLsiLogicSCSI =
     /* pszDescription */
     "LSI Logic 53c1030 SCSI controller.\n",
     /* fFlags */
-      PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0
-    | PDM_DEVREG_FLAGS_FIRST_SUSPEND_NOTIFICATION
-    | PDM_DEVREG_FLAGS_FIRST_POWEROFF_NOTIFICATION,
+    PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
     /* fClass */
     PDM_DEVREG_CLASS_STORAGE,
     /* cMaxInstances */
