@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 29015 2010-05-04 13:30:16Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 29018 2010-05-04 13:46:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -271,6 +271,7 @@ public:
             if (machine.GetNetworkAdapter(uSlot).GetEnabled())
                 ++ uCount;
         setState(uCount > 0 ? KDeviceActivity_Idle : KDeviceActivity_Null);
+        setHidden(!uCount);
 
         QString strToolTip = QApplication::translate("VBoxConsoleWnd", "<p style='white-space:pre'><nobr>Indicates the activity of the "
                                 "network interfaces:</nobr>%1</p>", "Network adapters tooltip");
