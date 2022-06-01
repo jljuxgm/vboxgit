@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 23917 2009-10-20 17:24:52Z vboxsync $ */
+/* $Id: VM.cpp 24030 2009-10-23 12:39:10Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -271,6 +271,14 @@ VMMR3DECL(int)   VMR3Create(uint32_t cCpus, PFNVMATERROR pfnVMAtError, void *pvU
                     pszError = N_("VirtualBox can't operate in VMX root mode. Please close all other virtualization programs.");
 #endif
                     break;
+
+                case VERR_SVM_IN_USE:
+#ifdef RT_OS_LINUX
+                    pszError = N_("VirtualBox can't enable the AMD-V extension. "
+                                  "Please disable the KVM kernel extension, recompile your kernel and reboot");
+#else
+                    pszError = N_("VirtualBox can't enable the AMD-V extension. Please close all other virtualization programs.");
+#endif
 
                 case VERR_VERSION_MISMATCH:
                     pszError = N_("VMMR0 driver version mismatch. Please terminate all VMs, make sure that "
