@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: ovfreader.h 28957 2010-05-02 18:42:58Z vboxsync $ */
 /** @file
  * OVF reader declarations.
  *
@@ -155,7 +155,7 @@ struct DiskImage
                                     // (actual used size of disk, always in bytes; can be an estimate of used disk
                                     // space, but cannot be larger than iCapacity; -1 if not set)
     iprt::MiniString strFormat;              // value from DiskSection/Disk/@format
-                // typically http://www.vmware.com/specifications/vmdk.html#sparse
+                // typically http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized
     iprt::MiniString uuidVbox;      // optional; if the file was exported by VirtualBox >= 3.2,
                                     // then this has the UUID with which the disk was registered
 
