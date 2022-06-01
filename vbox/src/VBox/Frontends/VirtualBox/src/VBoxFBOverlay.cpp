@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 26863 2010-02-26 15:20:49Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 27006 2010-03-03 22:54:41Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -102,7 +102,7 @@ void VBoxVHWADbgTimer::frame()
 //#define VBOXQGLOVERLAY_STATE_VERSION 1
 
 #ifdef DEBUG_misha
-# define VBOXQGL_STATE_DEBUG
+//# define VBOXQGL_STATE_DEBUG
 #endif
 
 #ifdef VBOXQGL_STATE_DEBUG
