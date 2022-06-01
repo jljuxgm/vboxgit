@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30310 2010-06-18 13:00:09Z vboxsync $
+# $Id: Makefile.kmk 30381 2010-06-22 22:06:00Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -319,6 +319,7 @@ VBoxSVC_SOURCES = \
 	BIOSSettingsImpl.cpp \
 	HostPower.cpp \
 	EventImpl.cpp \
+	VBoxEvents.cpp \
 	$(if $(VBOX_WITH_VRDP),VRDPServerImpl.cpp,) \
 	$(if $(VBOX_WITH_XPCOM),xpcom/server.cpp,) \
 	$(VBOX_XML_SCHEMADEFS_CPP)
@@ -646,6 +647,7 @@ VBoxC_SOURCES = \
 	AudioSnifferInterface.cpp \
 	VMMDevInterface.cpp \
 	EventImpl.cpp \
+	VBoxEvents.cpp \
 	$(VBOX_XML_SCHEMADEFS_CPP)
 VBoxC_SOURCES.win = \
 	win/dllmain.cpp \
