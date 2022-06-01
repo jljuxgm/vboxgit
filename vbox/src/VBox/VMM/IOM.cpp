@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
+/* $Id: IOM.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -104,7 +104,8 @@
 #include <VBox/mm.h>
 #include <VBox/stam.h>
 #include <VBox/dbgf.h>
-#include <VBox/pdm.h>
+#include <VBox/pdmapi.h>
+#include <VBox/pdmdev.h>
 #include "IOMInternal.h"
 #include <VBox/vm.h>
 

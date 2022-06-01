@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 19141 2009-04-23 13:52:18Z vboxsync $ */
+/* $Id: PATMPatch.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -29,11 +29,7 @@
 #include <VBox/stam.h>
 #include <VBox/pgm.h>
 #include <VBox/cpum.h>
-#include <VBox/iom.h>
-#include <VBox/sup.h>
 #include <VBox/mm.h>
-#include <VBox/ssm.h>
-#include <VBox/pdm.h>
 #include <VBox/trpm.h>
 #include <VBox/param.h>
 #include <iprt/avl.h>

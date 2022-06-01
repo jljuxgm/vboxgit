@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
+/* $Id: TM.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -130,7 +130,8 @@
 #include <VBox/ssm.h>
 #include <VBox/dbgf.h>
 #include <VBox/rem.h>
-#include <VBox/pdm.h>
+#include <VBox/pdmapi.h>
+#include <VBox/iom.h>
 #include "TMInternal.h"
 #include <VBox/vm.h>
 

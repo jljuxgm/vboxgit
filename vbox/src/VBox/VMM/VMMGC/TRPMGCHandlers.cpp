@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 25557 2009-12-22 12:19:58Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -27,7 +27,7 @@
 #include <VBox/selm.h>
 #include <VBox/iom.h>
 #include <VBox/pgm.h>
-#include <VBox/pdm.h>
+#include <VBox/pdmapi.h>
 #include <VBox/dbgf.h>
 #include <VBox/em.h>
 #include <VBox/csam.h>

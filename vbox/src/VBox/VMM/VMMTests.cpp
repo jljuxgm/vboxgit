@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 25239 2009-12-08 12:56:11Z vboxsync $ */
+/* $Id: VMMTests.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -26,8 +26,9 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VMM
 #include <VBox/vmm.h>
-#include <VBox/pdm.h>
+#include <VBox/pdmapi.h>
 #include <VBox/cpum.h>
+#include <VBox/dbg.h>
 #include <VBox/mm.h>
 #include <VBox/trpm.h>
 #include <VBox/selm.h>

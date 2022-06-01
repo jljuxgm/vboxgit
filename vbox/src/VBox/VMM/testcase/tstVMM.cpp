@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 25255 2009-12-08 18:29:06Z vboxsync $ */
+/* $Id: tstVMM.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -26,7 +26,8 @@
 #include <VBox/vm.h>
 #include <VBox/vmm.h>
 #include <VBox/cpum.h>
-#include <VBox/pdm.h>
+#include <VBox/tm.h>
+#include <VBox/pdmapi.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>

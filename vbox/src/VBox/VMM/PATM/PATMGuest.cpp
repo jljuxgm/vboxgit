@@ -1,4 +1,4 @@
-/* $Id: PATMGuest.cpp 19418 2009-05-06 09:51:55Z vboxsync $ */
+/* $Id: PATMGuest.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
 /** @file
  * PATMGuest - Guest OS Patching Manager (non-generic)
  */
@@ -24,15 +24,8 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PATM
 #include <VBox/patm.h>
-#include <VBox/stam.h>
 #include <VBox/pgm.h>
-#include <VBox/cpum.h>
 #include <VBox/iom.h>
-#include <VBox/sup.h>
-#include <VBox/mm.h>
-#include <VBox/ssm.h>
-#include <VBox/pdm.h>
-#include <VBox/trpm.h>
 #include <VBox/param.h>
 #include <iprt/avl.h>
 #include "PATMInternal.h"
@@ -102,7 +95,7 @@ int PATMPatchSysenterXP(PVM pVM, RTGCPTR32 pInstrGC, PPATMPATCHREC pPatchRec)
     uint8_t     uTemp[16];
     RTGCPTR32   lpfnKiFastSystemCall, lpfnKiIntSystemCall = 0; /* (initializing it to shut up warning.) */
     int         rc, i;
-    PVMCPU      pVCpu = VMMGetCpu0(pVM); 
+    PVMCPU      pVCpu = VMMGetCpu0(pVM);
 
     Assert(sizeof(uTemp) > sizeof(uFnKiIntSystemCall));
     Assert(sizeof(uTemp) > sizeof(uFnKiFastSystemCall));
@@ -155,7 +148,7 @@ int PATMPatchSysenterXP(PVM pVM, RTGCPTR32 pInstrGC, PPATMPATCHREC pPatchRec)
     rc = PGMPhysSimpleDirtyWriteGCPtr(pVCpu, pInstrGC, uTemp, SIZEOF_NEARJUMP32);
     if (RT_FAILURE(rc))
     {
-        Log(("MMR3PhysWriteGCVirt failed with rc=%d!!\n", rc));
+        Log(("PGMPhysSimpleDirtyWriteGCPtr failed with rc=%Rrc!!\n", rc));
         return VERR_PATCHING_REFUSED;
     }
 

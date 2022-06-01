@@ -1,4 +1,4 @@
-/* $Id: VBoxVMMDeps.cpp 24061 2009-10-25 23:54:32Z vboxsync $ */
+/* $Id: VBoxVMMDeps.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
 /** @file
  * VBoxVMM link dependencies - drag all we want into the link!
  */
@@ -24,7 +24,9 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <VBox/pgm.h>
-#include <VBox/pdm.h>
+#include <VBox/pdmapi.h>
+#include <VBox/pdmcritsect.h>
+#include <VBox/pdmqueue.h>
 #include <VBox/vm.h>
 #include <VBox/em.h>
 #include <VBox/iom.h>

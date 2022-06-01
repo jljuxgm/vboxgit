@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 26066 2010-01-27 12:59:32Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -25,18 +25,19 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_HWACCM
 #include <VBox/hwaccm.h>
+#include <VBox/pgm.h>
+#include <VBox/selm.h>
+#include <VBox/iom.h>
+#include <VBox/dbgf.h>
+#include <VBox/tm.h>
+#include <VBox/pdmapi.h>
 #include "HWACCMInternal.h"
 #include <VBox/vm.h>
 #include <VBox/x86.h>
 #include <VBox/hwacc_svm.h>
-#include <VBox/pgm.h>
-#include <VBox/pdm.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
-#include <VBox/selm.h>
-#include <VBox/iom.h>
 #include <VBox/dis.h>
-#include <VBox/dbgf.h>
 #include <VBox/disopcode.h>
 #include <iprt/param.h>
 #include <iprt/assert.h>

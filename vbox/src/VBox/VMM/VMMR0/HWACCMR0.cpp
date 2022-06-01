@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 26103 2010-01-29 15:14:22Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -25,17 +25,14 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_HWACCM
 #include <VBox/hwaccm.h>
+#include <VBox/pgm.h>
 #include "HWACCMInternal.h"
 #include <VBox/vm.h>
 #include <VBox/x86.h>
 #include <VBox/hwacc_vmx.h>
 #include <VBox/hwacc_svm.h>
-#include <VBox/pgm.h>
-#include <VBox/pdm.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
-#include <VBox/selm.h>
-#include <VBox/iom.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #include <iprt/cpuset.h>
