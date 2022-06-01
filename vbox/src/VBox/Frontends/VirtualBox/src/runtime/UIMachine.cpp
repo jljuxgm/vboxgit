@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 26709 2010-02-23 14:21:18Z vboxsync $ */
+/* $Id: UIMachine.cpp 26815 2010-02-26 02:43:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -161,8 +161,8 @@ private slots:
 
 UIMachine::UIMachine(UIMachine **ppSelf, const CSession &session)
     : QObject(0)
-    , m_pSession(new UISession(this, session))
     , m_pActionsPool(new UIActionsPool(this))
+    , m_pSession(new UISession(this, session))
     , m_pVisualState(0)
 {
     /* Cache IMedium data: */

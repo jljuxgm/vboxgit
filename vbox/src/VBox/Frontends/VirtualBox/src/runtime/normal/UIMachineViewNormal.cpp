@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 26773 2010-02-25 01:53:19Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 26815 2010-02-26 02:43:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -29,6 +29,7 @@
 
 /* Local includes */
 #include "VBoxGlobal.h"
+#include "UISession.h"
 #include "UIActionsPool.h"
 #include "UIMachineLogic.h"
 #include "UIMachineWindow.h"
@@ -61,6 +62,12 @@ UIMachineViewNormal::UIMachineViewNormal(  UIMachineWindow *pMachineWindow
 
     /* Load machine view settings: */
     loadMachineViewSettings();
+
+    /* Initialization: */
+    sltMachineStateChanged();
+    sltAdditionsStateChanged();
+    sltMousePointerShapeChanged();
+    sltMouseCapabilityChanged();
 }
 
 UIMachineViewNormal::~UIMachineViewNormal()
@@ -113,7 +120,7 @@ void UIMachineViewNormal::sltAdditionsStateChanged()
     UIMachineView::sltAdditionsStateChanged();
 
     /* Enable/Disable guest auto-resizing depending on advanced graphics availablability: */
-    setGuestAutoresizeEnabled(isGuestSupportsGraphics() && m_bIsGuestAutoresizeEnabled);
+    setGuestAutoresizeEnabled(m_bIsGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics());
 }
 
 void UIMachineViewNormal::prepareFilters()
@@ -133,7 +140,7 @@ void UIMachineViewNormal::setGuestAutoresizeEnabled(bool fEnabled)
 
         maybeRestrictMinimumSize();
 
-        if (isGuestSupportsGraphics() && m_bIsGuestAutoresizeEnabled)
+        if (uisession()->isGuestSupportsGraphics() && m_bIsGuestAutoresizeEnabled)
             sltPerformGuestResize();
     }
 }
@@ -194,7 +201,7 @@ void UIMachineViewNormal::maybeRestrictMinimumSize()
      * In all other modes, or when auto-resize is in force, this function does nothing. */
     if (mode() == VBoxDefs::SDLMode)
     {
-        if (!isGuestSupportsGraphics() || !m_bIsGuestAutoresizeEnabled)
+        if (!uisession()->isGuestSupportsGraphics() || !m_bIsGuestAutoresizeEnabled)
             setMinimumSize(sizeHint());
         else
             setMinimumSize(0, 0);
