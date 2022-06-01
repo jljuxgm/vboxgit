@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26474 2010-02-12 17:45:49Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 26475 2010-02-12 17:48:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1938,7 +1938,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             Keyboard *pKeyboard = pConsole->mKeyboard;
             rc = CFGMR3InsertInteger(pCfg,  "Object",     (uintptr_t)pKeyboard);        RC_CHECK();
 # endif
-#endif
 #endif
         }
     }
