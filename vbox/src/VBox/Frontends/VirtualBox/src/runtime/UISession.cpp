@@ -1,3 +1,4 @@
+/* $Id: UISession.cpp 26709 2010-02-23 14:21:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -795,3 +796,4 @@ qulonglong UISession::winId() const
 {
     return machine()->machineLogic()->machineWindowWrapper()->machineWindow()->winId();
 }
+

@@ -1,3 +1,4 @@
+/* $Id: UIMachineLogicNormal.cpp 26709 2010-02-23 14:21:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -242,3 +243,4 @@ void UIMachineLogicNormal::cleanupMachineWindow()
     UIMachineWindow::destroy(m_pMachineWindowContainer);
     m_pMachineWindowContainer = 0;
 }
+

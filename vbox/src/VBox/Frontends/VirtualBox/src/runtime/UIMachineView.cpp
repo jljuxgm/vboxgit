@@ -1,3 +1,4 @@
+/* $Id: UIMachineView.cpp 26709 2010-02-23 14:21:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -3252,3 +3253,4 @@ void UIMachineView::dimImage(QImage &img)
         }
     }
 }
+

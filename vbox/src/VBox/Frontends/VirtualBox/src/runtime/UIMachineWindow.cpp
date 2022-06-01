@@ -1,3 +1,4 @@
+/* $Id: UIMachineWindow.cpp 26709 2010-02-23 14:21:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -430,3 +431,4 @@ void UIMachineWindow::sltMachineStateChanged(KMachineState /* machineState */)
 {
     updateAppearanceOf(UIVisualElement_WindowCaption);
 }
+

@@ -1,3 +1,4 @@
+/* $Id: UIMachineViewNormal.cpp 26709 2010-02-23 14:21:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -172,3 +173,4 @@ void UIMachineViewNormal::sltAdditionsStateChanged(const QString & /* strVersion
     /* Enable/Disable guest auto-resizing depending on advanced graphics availablability: */
     sltToggleGuestAutoresize(bIsGraphicsSupported && m_bIsGuestAutoresizeEnabled);
 }
+
