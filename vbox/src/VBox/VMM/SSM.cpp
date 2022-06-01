@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 24845 2009-11-21 22:08:39Z vboxsync $ */
+/* $Id: SSM.cpp 24846 2009-11-21 22:19:44Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -8677,9 +8677,9 @@ VMMR3DECL(uint32_t)     SSMR3HandleRevision(PSSMHANDLE pSSM)
     if (pSSM->enmOp >= SSMSTATE_LOAD_PREP)
         return pSSM->u.Read.u32SvnRev;
 #ifdef SSM_STANDALONE
-    return VMMGetSvnRev();
-#else
     return 0;
+#else
+    return VMMGetSvnRev();
 #endif
 }
 
