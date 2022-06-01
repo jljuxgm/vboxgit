@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-darwin.cpp 26808 2010-02-25 16:46:56Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-darwin.cpp 26821 2010-02-26 10:06:07Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, darwin ring-3.
  */
@@ -96,7 +96,9 @@ RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t c
             {
                 size_t cbData = CFDataGetLength(DataRef);
                 const uint8_t *pu8Data = CFDataGetBytePtr(DataRef);
-                rc = RTStrCopy(pszBuf, RT_MIN(cbData, cbBuf), (const char*)pu8Data);
+                memcpy(pszBuf, pu8Data, RT_MIN(cbData, cbBuf));
+                pszBuf[RT_MIN(cbData + 1, cbBuf)] = '\0';
+                rc = VINF_SUCCESS;
                 break;
             }
         }
