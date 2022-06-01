@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 25935 2010-01-20 14:43:56Z vboxsync $ */
+/* $Id: PGMAllBth.h 25937 2010-01-20 14:55:35Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -60,10 +60,6 @@ RT_C_DECLS_END
 #if    (PGM_GST_TYPE == PGM_TYPE_AMD64 && PGM_SHW_TYPE != PGM_TYPE_AMD64 && PGM_SHW_TYPE != PGM_TYPE_NESTED && PGM_SHW_TYPE != PGM_TYPE_EPT) \
     || (PGM_SHW_TYPE == PGM_TYPE_AMD64 && PGM_GST_TYPE != PGM_TYPE_AMD64 && PGM_GST_TYPE != PGM_TYPE_PROT)
 # error "Invalid combination; AMD64 guest implies AMD64 shadow and vice versa"
-#endif
-
-#ifdef IN_RING0 /* no mappings in VT-x and AMD-V mode */
-# define PGM_WITHOUT_MAPPINGS
 #endif
 
 

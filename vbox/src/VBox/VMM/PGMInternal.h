@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 25935 2010-01-20 14:43:56Z vboxsync $ */
+/* $Id: PGMInternal.h 25937 2010-01-20 14:55:35Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -54,6 +54,14 @@
 /** @name PGM Compile Time Config
  * @{
  */
+
+/**
+ * Indicates that there are no guest mappings to care about.
+ * Currently on raw-mode related code uses mappings, i.e. RC and R3 code.
+ */
+#ifdef IN_RING0
+# define PGM_WITHOUT_MAPPINGS
+#endif
 
 /**
  * Solve page is out of sync issues inside Guest Context (in PGMGC.cpp).
