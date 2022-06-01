@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 27678 2010-03-24 17:59:33Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 27728 2010-03-26 11:05:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -158,7 +158,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
             bool fIsStateSavingAllowed = !restictedActionsList.contains("SaveState", Qt::CaseInsensitive);
             bool fIsACPIShutdownAllowed = !restictedActionsList.contains("Shutdown", Qt::CaseInsensitive);
             bool fIsPowerOffAllowed = !restictedActionsList.contains("PowerOff", Qt::CaseInsensitive);
-            bool fIsPowerOffAndRestoreAllowed = fIsPowerOffAllowed && restictedActionsList.contains("Restore", Qt::CaseInsensitive);
+            bool fIsPowerOffAndRestoreAllowed = fIsPowerOffAllowed && !restictedActionsList.contains("Restore", Qt::CaseInsensitive);
 
             /* Make Save State button visible/hidden depending on restriction: */
             dlg.mRbSave->setVisible(fIsStateSavingAllowed);
