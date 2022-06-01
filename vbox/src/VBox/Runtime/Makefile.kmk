@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28024 2010-04-07 06:34:16Z vboxsync $
+# $Id: Makefile.kmk 28053 2010-04-07 17:08:08Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -272,6 +272,7 @@ RuntimeR3_SOURCES       = \
 	common/misc/sanity-c.c \
 	common/misc/sanity-cpp.cpp \
 	common/misc/semspingpong.cpp \
+	common/misc/sg.cpp \
 	common/misc/thread.cpp \
 	common/misc/zip.cpp \
 	common/misc/term.cpp \
