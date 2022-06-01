@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 25182 2009-12-04 10:50:15Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 25184 2009-12-04 11:37:03Z vboxsync $ */
 
 /** @file
  *
@@ -527,7 +527,6 @@ void PerformanceCollector::suspendSampling()
     AutoCaller autoCaller(this);
     if (!SUCCEEDED(autoCaller.rc())) return;
 
-    Log(("PerformanceCollector::suspendSampling\n"));
     int rc = RTTimerLRStop(m.sampler);
     AssertRC(rc);
 }
@@ -537,7 +536,6 @@ void PerformanceCollector::resumeSampling()
     AutoCaller autoCaller(this);
     if (!SUCCEEDED(autoCaller.rc())) return;
 
-    Log(("PerformanceCollector::resumeSampling\n"));
     int rc = RTTimerLRStart(m.sampler, 0);
     AssertRC(rc);
 }
@@ -555,7 +553,6 @@ void PerformanceCollector::staticSamplerCallback (RTTIMERLR hTimerLR, void *pvUs
     Assert (collector->mMagic == MAGIC);
     if (collector->mMagic == MAGIC)
     {
-Log(("staticSamplerCallback %RX64\n", RTTimeNanoTS()));
         collector->samplerCallback();
     }
     NOREF (hTimerLR);
