@@ -1,4 +1,4 @@
-/* $Id: DevEEPROM.h 23966 2009-10-22 09:56:44Z vboxsync $ */
+/* $Id: DevEEPROM.h 24020 2009-10-23 11:03:34Z vboxsync $ */
 /** @file
  * DevEEPROM - Microware-compatible 64x16-bit 93C46 EEPROM Emulation, Header.
  */
@@ -21,6 +21,9 @@
 
 /* Interface */
 #include <iprt/types.h>
+
+/** The current Saved state version. */
+#define EEPROM93C46_SAVEDSTATE_VERSION 1
 
 /**
  * 93C46-compatible EEPROM device emulation.
@@ -69,6 +72,8 @@ struct EEPROM93C46 {
 
 
     /** @todo save and load methods */
+    void save(PSSMHANDLE pSSM);
+    int  load(PSSMHANDLE pSSM);
 
     /** Actual content of EEPROM */
     uint16_t m_au16Data[SIZE];

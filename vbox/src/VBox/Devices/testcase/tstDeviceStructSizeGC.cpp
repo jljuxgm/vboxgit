@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 22885 2009-09-09 21:58:49Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 24020 2009-10-23 11:03:34Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -1277,7 +1277,7 @@ int main()
 #endif
     GEN_CHECK_OFF(E1KSTATE, hTxSem);
     GEN_CHECK_OFF(E1KSTATE, addrMMReg);
-    GEN_CHECK_OFF(E1KSTATE, macAddress);
+    GEN_CHECK_OFF(E1KSTATE, macConfigured);
     GEN_CHECK_OFF(E1KSTATE, addrIOPort);
     GEN_CHECK_OFF(E1KSTATE, pciDevice);
     GEN_CHECK_OFF(E1KSTATE, u64AckedAt);
