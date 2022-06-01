@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 29576 2010-05-17 16:31:12Z vboxsync $ */
+/* $Id: PGM.cpp 29646 2010-05-18 15:44:08Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2329,6 +2329,11 @@ static DECLCALLBACK(void) pgmR3ResetNoMorePhysWritesFlag(PVM pVM, VMSTATE enmSta
  */
 VMMR3DECL(int) PGMR3Term(PVM pVM)
 {
+    /* Must free shared pages here. */
+    pgmLock(pVM);
+    pgmR3PhysRamTerm(pVM);
+    pgmUnlock(pVM);
+
     PGMDeregisterStringFormatTypes();
     return PDMR3CritSectDelete(&pVM->pgm.s.CritSect);
 }
