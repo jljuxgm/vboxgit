@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibCpuHotplug.cpp 25976 2010-01-22 15:40:27Z vboxsync $ */
+/* $Id: VBoxGuestR3LibCpuHotplug.cpp 25977 2010-01-22 15:48:50Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, CPU hotplug.
  */
@@ -74,7 +74,7 @@ VBGLR3DECL(int) VbglR3CpuHotplugWaitForEvent(VMMDevCpuEventType *penmEventType, 
         /* did we get the right event? */
         if (waitEvent.u32EventFlagsOut & VMMDEV_EVENT_CPU_HOTPLUG)
         {
-            VMMDevGetCpuHotplugRequest Req;
+            VMMDevGetCpuHotPlugRequest Req;
 
             /* get the seamless change request */
             vmmdevInitRequest(&Req.header, VMMDevReq_GetCpuHotPlugRequest);
