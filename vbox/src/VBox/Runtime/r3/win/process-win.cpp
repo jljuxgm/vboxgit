@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 27743 2010-03-26 14:50:55Z vboxsync $ */
+/* $Id: process-win.cpp 27745 2010-03-26 14:53:31Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -489,7 +489,7 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
                         if (RT_SUCCESS(rc))
                         {
                             rc = rtProcCreateAsUserHlp(pwszUser, pwszPassword,
-                                                       pwszExec, pwszCmdLine, pwszzBlock, dwCreationFlags
+                                                       pwszExec, pwszCmdLine, pwszzBlock, dwCreationFlags,
                                                        &StartupInfo, &ProcInfo);
 
                             RTUtf16Free(pwszPassword);
