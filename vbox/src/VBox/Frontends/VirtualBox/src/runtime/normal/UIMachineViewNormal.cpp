@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 30259 2010-06-16 16:43:39Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 30291 2010-06-17 17:15:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -328,6 +328,17 @@ bool UIMachineViewNormal::eventFilter(QObject *pWatched, QEvent *pEvent)
 #endif /* Q_WS_WIN */
 
     return UIMachineView::eventFilter(pWatched, pEvent);
+}
+
+void UIMachineViewNormal::prepareCommon()
+{
+    /* Base class common settings: */
+    UIMachineView::prepareCommon();
+
+    /* Setup size-policy: */
+    setSizePolicy(QSizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum));
+    /* Maximum size to sizehint: */
+    setMaximumSize(sizeHint());
 }
 
 void UIMachineViewNormal::prepareFilters()

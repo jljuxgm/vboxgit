@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 30259 2010-06-16 16:43:39Z vboxsync $ */
+/* $Id: UIMachineView.cpp 30291 2010-06-17 17:15:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -640,10 +640,6 @@ void UIMachineView::prepareCommon()
     QPalette palette(viewport()->palette());
     palette.setColor(viewport()->backgroundRole(), Qt::black);
     viewport()->setPalette(palette);
-
-    /* Setup size-policy: */
-    setSizePolicy(QSizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum));
-    setMaximumSize(sizeHint());
 
     /* Setup focus policy: */
     setFocusPolicy(Qt::WheelFocus);
