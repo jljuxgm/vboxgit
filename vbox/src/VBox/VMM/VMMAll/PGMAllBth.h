@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 24693 2009-11-16 14:04:46Z vboxsync $ */
+/* $Id: PGMAllBth.h 24699 2009-11-16 15:11:13Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1727,7 +1727,7 @@ PGM_BTH_DECL(int, SyncPage)(PVMCPU pVCpu, GSTPDE PdeSrc, RTGCPTR GCPtrPage, unsi
     SHWPDE          PdeDst   = *pPdeDst;
     if (!PdeDst.n.u1Present)
     {
-        AssertMsg(pVM->cCpus > 1, ("%Unexpected missing PDE p=%RX64\n", pPdeDst, (uint64_t)PdeDst.u));
+        AssertMsg(pVM->cCpus > 1, ("Unexpected missing PDE p=%p/%RX64\n", pPdeDst, (uint64_t)PdeDst.u));
         Log(("CPU%d: SyncPage: Pde at %RGv changed behind our back!\n", GCPtrPage));
         return VINF_SUCCESS;    /* force the instruction to be executed again. */
     }
