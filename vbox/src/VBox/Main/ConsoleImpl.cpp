@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 24511 2009-11-09 15:27:28Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 24546 2009-11-10 13:24:50Z vboxsync $ */
 
 /** @file
  *
@@ -3177,7 +3177,7 @@ HRESULT Console::onNetworkAdapterChange(INetworkAdapter *aNetworkAdapter, BOOL c
 #endif
 #ifdef VBOX_WITH_VIRTIO
                 case NetworkAdapterType_Virtio:
-                    pszAdapterName = "virtio";
+                    pszAdapterName = "virtio-net";
                     break;
 #endif
                 default:

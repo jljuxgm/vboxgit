@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 24416 2009-11-05 21:17:56Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 24546 2009-11-10 13:24:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1196,7 +1196,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 #ifdef VBOX_WITH_VIRTIO
             case NetworkAdapterType_Virtio:
                 pDev = pDevVirtioNet;
-                pszAdapterName = "virtio";
+                pszAdapterName = "virtio-net";
                 break;
 #endif /* VBOX_WITH_VIRTIO */
             default:
