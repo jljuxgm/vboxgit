@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 29504 2010-05-16 13:43:18Z vboxsync $ */
+/* $Id: DevAHCI.cpp 29672 2010-05-19 22:02:49Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -4949,6 +4949,7 @@ static int ahciTransferComplete(PAHCIPort pAhciPort, PAHCIPORTTASKSTATE pAhciPor
         AssertMsg(fXchg, ("Task is not active\n"));
 #endif
 
+        ASMAtomicDecU32(&pAhciPort->uActTasksActive);
         ahciSendD2HFis(pAhciPort, pAhciPortTaskState, pAhciPortTaskState->cmdFis, true);
     }
 
@@ -5441,12 +5442,9 @@ static DECLCALLBACK(bool) ahciNotifyQueueConsumer(PPDMDEVINS pDevIns, PPDMQUEUEI
         {
             pAhciPortTaskState->enmTxDir = enmTxDir;
 
-            if (pAhciPortTaskState->fQueued)
-            {
-                ahciLog(("%s: Before increment uActTasksActive=%u\n", __FUNCTION__, pAhciPort->uActTasksActive));
-                ASMAtomicIncU32(&pAhciPort->uActTasksActive);
-                ahciLog(("%s: After increment uActTasksActive=%u\n", __FUNCTION__, pAhciPort->uActTasksActive));
-            }
+            ahciLog(("%s: Before increment uActTasksActive=%u\n", __FUNCTION__, pAhciPort->uActTasksActive));
+            ASMAtomicIncU32(&pAhciPort->uActTasksActive);
+            ahciLog(("%s: After increment uActTasksActive=%u\n", __FUNCTION__, pAhciPort->uActTasksActive));
 
             if (enmTxDir != AHCITXDIR_FLUSH)
             {
