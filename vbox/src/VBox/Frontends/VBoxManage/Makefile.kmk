@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23802 2009-10-15 15:17:58Z vboxsync $
+# $Id: Makefile.kmk 24903 2009-11-24 14:07:11Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -57,20 +57,21 @@ else # !VBOX_ONLY_DOCS
  endif
  VBoxManage_SOURCES = \
  	VBoxManage.cpp \
- 	VBoxManageHelp.cpp \
- 	VBoxManageModifyVM.cpp \
- 	VBoxManageInfo.cpp \
- 	VBoxManageImport.cpp \
- 	VBoxManageMetrics.cpp \
- 	VBoxManageList.cpp \
- 	VBoxManageDisk.cpp \
- 	VBoxManageStorageController.cpp \
- 	VBoxManageSnapshot.cpp \
- 	VBoxManageUSB.cpp \
  	VBoxInternalManage.cpp \
- 	VBoxManageHostonly.cpp \
+ 	VBoxManageControlVM.cpp \
  	VBoxManageDHCPServer.cpp \
- 	$(if $(VBOX_WITH_GUEST_PROPS),VBoxManageGuestProp.cpp)
+ 	VBoxManageDisk.cpp \
+ 	$(if $(VBOX_WITH_GUEST_PROPS),VBoxManageGuestProp.cpp) \
+ 	VBoxManageHelp.cpp \
+ 	VBoxManageHostonly.cpp \
+ 	VBoxManageImport.cpp \
+ 	VBoxManageInfo.cpp \
+ 	VBoxManageList.cpp \
+ 	VBoxManageMetrics.cpp \
+ 	VBoxManageModifyVM.cpp \
+ 	VBoxManageSnapshot.cpp \
+ 	VBoxManageStorageController.cpp \
+ 	VBoxManageUSB.cpp
 endif # !VBOX_ONLY_DOCS
 ifneq ($(KBUILD_TARGET),win)
  # Workaround for buggy gcc-4.3 compilers, see

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 24879 2009-11-23 16:34:12Z vboxsync $ */
+/* $Id: VBoxManage.h 24903 2009-11-24 14:07:11Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -155,9 +155,10 @@ void showLogo(void);
 
 #ifndef VBOX_ONLY_DOCS
 int handleInternalCommands(HandlerArg *a);
-
-unsigned parseNum(const char *psz, unsigned cMaxNum, const char *name);
 #endif /* !VBOX_ONLY_DOCS */
+
+/* VBoxManageControlVM.cpp */
+int handleControlVM(HandlerArg *a);
 
 /* VBoxManageModifyVM.cpp */
 int handleModifyVM(HandlerArg *a);
