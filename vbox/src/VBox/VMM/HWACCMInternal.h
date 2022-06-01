@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 25931 2010-01-20 14:05:01Z vboxsync $ */
+/* $Id: HWACCMInternal.h 26103 2010-01-29 15:14:22Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -382,6 +382,9 @@ typedef struct HWACCM
 #endif
         /** Host CR4 value (set by ring-0 VMX init) */
         uint64_t                    hostCR4;
+
+        /** Host EFER value (set by ring-0 VMX init) */
+        uint64_t                    hostEFER;
 
         /** VMX MSR values */
         struct

@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 25942 2010-01-20 17:26:22Z vboxsync $ */
+/* $Id: HWACCM.cpp 26103 2010-01-29 15:14:22Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1135,8 +1135,10 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                     CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_NXE);
                 }
                 else
-                /* Turn on NXE if PAE has been enabled. */
-                if (CPUMGetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE))
+                /* Turn on NXE if PAE has been enabled *and* the host has turned on NXE (we reuse the host EFER in the switcher) */
+                /* Todo: this needs to be fixed properly!! */
+                if (    CPUMGetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE)
+                    &&  (pVM->hwaccm.s.vmx.hostEFER & MSR_K6_EFER_NXE))
                     CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_NXE);
 
                 LogRel((pVM->hwaccm.s.fAllow64BitGuests
