@@ -1,4 +1,4 @@
-' $Id: configure.vbs 20258 2009-06-04 10:05:48Z vboxsync $
+' $Id: configure.vbs 26501 2010-02-14 08:26:24Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -1893,7 +1893,7 @@ end function
 ''
 ' Checks for any Qt4 binaries.
 sub CheckForQt4(strOptQt4)
-   dim strPathQt4 
+   dim strPathQt4
 
    PrintHdr "Qt4"
 
@@ -1958,7 +1958,7 @@ function CheckForPython(strPathPython)
       CfgPrint "VBOX_BLD_PYTHON       := " & strPathPython & "\python.exe"
       CheckForPython = True
    end if
-  
+
    PrintResult "Python ", strPathPython
 end function
 
