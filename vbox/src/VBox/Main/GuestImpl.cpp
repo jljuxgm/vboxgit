@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 30020 2010-06-04 08:09:58Z vboxsync $ */
+/* $Id: GuestImpl.cpp 30021 2010-06-04 08:14:18Z vboxsync $ */
 
 /** @file
  *
@@ -1307,7 +1307,7 @@ STDMETHODIMP Guest::GetProcessOutput(ULONG aPID, ULONG aFlags, ULONG aTimeoutMS,
                     if (vrc == VERR_NO_DATA)
                     {
                         /* This is not an error we want to report to COM. */
-                        rc = NO_ERROR;
+                        rc = S_OK;
                     }
                     else if (vrc == VERR_TIMEOUT)
                     {
