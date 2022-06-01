@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 26308 2010-02-05 19:14:35Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 26932 2010-03-02 10:10:59Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -269,8 +269,13 @@ int main()
 #ifdef VBOX_WITH_STATISTICS
     CHECK_MEMBER_ALIGNMENT(DEVPIC, StatSetIrqGC, 8);
 #endif
+#ifdef VBOX_WITH_E1000
     CHECK_MEMBER_ALIGNMENT(E1KSTATE, cs, 8);
     CHECK_MEMBER_ALIGNMENT(E1KSTATE, csRx, 8);
+#endif
+#ifdef VBOX_WITH_VIRTIO
+    CHECK_MEMBER_ALIGNMENT(VNETSTATE, StatReceiveBytes, 8);
+#endif
     //CHECK_MEMBER_ALIGNMENT(E1KSTATE, csTx, 8);
 #ifdef VBOX_WITH_USB
     CHECK_MEMBER_ALIGNMENT(EHCI, RootHub, 8);
