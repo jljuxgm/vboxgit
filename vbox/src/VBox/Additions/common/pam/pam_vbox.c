@@ -1,4 +1,4 @@
-/* $Id: pam_vbox.c 29053 2010-05-05 07:58:47Z vboxsync $ */
+/* $Id: pam_vbox.c 29054 2010-05-05 08:28:38Z vboxsync $ */
 /** @file
  * pam_vbox - PAM module for auto logons.
  */
@@ -261,7 +261,8 @@ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *h, int flags,
                                    int argc, const char **argv)
 {
     /* Parse arguments. */
-    for (int i=0; i<argc; i++)
+    int i;
+    for (i = 0; i < argc; i++)
     {
         if (!RTStrICmp(argv[i], "debug"))
             g_verbosity=1;
