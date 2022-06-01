@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-linux.c 28436 2010-04-17 21:40:51Z vboxsync $ */
+/* $Id: semmutex-r0drv-linux.c 28462 2010-04-19 13:36:19Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Linux.
  */
@@ -319,7 +319,7 @@ RTDECL(int) RTSemMutexRequestNoResume(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillie
 {
     return rtSemMutexLinuxRequest(hMutexSem, cMillies, true /*fInterruptible*/);
 }
-RT_EXPORT_SYMBOL(RTSemMutexRequest);
+RT_EXPORT_SYMBOL(RTSemMutexRequestNoResume);
 
 
 RTDECL(int) RTSemMutexRequestNoResumeDebug(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, RTHCUINTPTR uId, RT_SRC_POS_DECL)
@@ -363,6 +363,7 @@ RTDECL(int) RTSemMutexRelease(RTSEMMUTEX hMtx)
             }
             IPRT_DEBUG_SEMS_STATE(pThis, 'u');
         }
+        rc = VINF_SUCCESS;
     }
     else
         rc = VERR_NOT_OWNER;
