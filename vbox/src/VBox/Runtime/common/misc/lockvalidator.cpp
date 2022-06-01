@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 25908 2010-01-18 22:07:28Z vboxsync $ */
+/* $Id: lockvalidator.cpp 27292 2010-03-11 16:46:48Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -1023,7 +1023,7 @@ DECLHIDDEN(void) rtLockValidatorDeletePerThread(RTLOCKVALPERTHREAD *pPerThread)
     while (pCur)
     {
         PRTLOCKVALRECNEST pNext = pCur->pNextFree;
-        RTMemFree(pNext);
+        RTMemFree(pCur);
         pCur = pNext;
     }
 }
