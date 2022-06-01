@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 25243 2009-12-08 13:12:24Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 25501 2009-12-18 17:26:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -272,6 +272,7 @@ VMMDECL(int)  PGMHandlerPhysicalDeregister(PVM pVM, RTGCPHYS GCPhys)
         pgmHandlerPhysicalDeregisterNotifyREM(pVM, pCur);
         MMHyperFree(pVM, pCur);
         pgmUnlock(pVM);
+        /** @todo not really necessary; we'll correct this for dirty tlb entries in the page fault handler. */
         PGM_INVL_ALL_VCPU_TLBS(pVM);
         return VINF_SUCCESS;
     }
