@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 24158 2009-10-29 12:35:00Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 24159 2009-10-29 12:45:34Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1775,7 +1775,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     for (i = 0; i < aMachineExtraDataKeys.size(); ++i)
         llExtraDataKeys.push_back(Utf8Str(aMachineExtraDataKeys[i]));
 
-    for (i = 0, std::list<Utf8Str>::const_iterator it = llExtraDataKeys.begin();
+    i = 0;
+    for (std::list<Utf8Str>::const_iterator it = llExtraDataKeys.begin();
          it != llExtraDataKeys.end();
          ++it, ++i)
     {
