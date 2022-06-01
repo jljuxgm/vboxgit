@@ -1,4 +1,4 @@
-/* $Id: tstVMStructGC.cpp 24582 2009-11-11 14:38:34Z vboxsync $ */
+/* $Id: tstVMStructGC.cpp 24730 2009-11-17 16:51:03Z vboxsync $ */
 /** @file
  * tstVMMStructGC - Generate structure member and size checks from the GC perspective.
  *
@@ -355,6 +355,7 @@ int main()
     GEN_CHECK_OFF(PDMDEVINSINT, pVMR0);
     GEN_CHECK_OFF(PDMDEVINSINT, pVMRC);
     GEN_CHECK_OFF(PDMDEVINSINT, pLunsR3);
+    GEN_CHECK_OFF(PDMDEVINSINT, pfnAsyncNotify);
     GEN_CHECK_OFF(PDMDEVINSINT, pCfgHandle);
     GEN_CHECK_OFF(PDMDEVINSINT, pPciDeviceR3);
     GEN_CHECK_OFF(PDMDEVINSINT, pPciDeviceR0);
@@ -362,6 +363,20 @@ int main()
     GEN_CHECK_OFF(PDMDEVINSINT, pPciBusR3);
     GEN_CHECK_OFF(PDMDEVINSINT, pPciBusR0);
     GEN_CHECK_OFF(PDMDEVINSINT, pPciBusRC);
+    GEN_CHECK_OFF(PDMDEVINSINT, fIntFlags);
+    GEN_CHECK_OFF(PDMDEVINS, u32Version);
+    GEN_CHECK_OFF(PDMDEVINS, iInstance);
+    GEN_CHECK_OFF(PDMDEVINS, pDevHlpRC);
+    GEN_CHECK_OFF(PDMDEVINS, pvInstanceDataRC);
+    GEN_CHECK_OFF(PDMDEVINS, pDevHlpR0);
+    GEN_CHECK_OFF(PDMDEVINS, pvInstanceDataR0);
+    GEN_CHECK_OFF(PDMDEVINS, pDevHlpR3);
+    GEN_CHECK_OFF(PDMDEVINS, pvInstanceDataR3);
+    GEN_CHECK_OFF(PDMDEVINS, pDevReg);
+    GEN_CHECK_OFF(PDMDEVINS, pCfgHandle);
+    GEN_CHECK_OFF(PDMDEVINS, IBase);
+    GEN_CHECK_OFF(PDMDEVINS, Internal);
+    GEN_CHECK_OFF(PDMDEVINS, achInstanceData);
     GEN_CHECK_SIZE(PDMCRITSECTINT);
     GEN_CHECK_OFF(PDMCRITSECTINT, Core);
     GEN_CHECK_OFF(PDMCRITSECTINT, pNext);

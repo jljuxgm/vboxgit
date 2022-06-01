@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 24567 2009-11-10 20:05:55Z vboxsync $ */
+/* $Id: VM.cpp 24730 2009-11-17 16:51:03Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1209,7 +1209,7 @@ VMMR3DECL(int) VMR3PowerOn(PVM pVM)
      */
     int rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_DESCENDING | VMMEMTRENDEZVOUS_FLAGS_STOP_ON_ERROR,
                                 vmR3PowerOn, NULL);
-    LogFlow(("VMR3Suspend: returns %Rrc\n", rc));
+    LogFlow(("VMR3PowerOn: returns %Rrc\n", rc));
     return rc;
 }
 
