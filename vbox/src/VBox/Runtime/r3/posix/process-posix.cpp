@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 29636 2010-05-18 13:43:55Z vboxsync $ */
+/* $Id: process-posix.cpp 30312 2010-06-18 13:13:13Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -393,7 +393,14 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
              * Finally, execute the requested program.
              */
             rc = execve(pszExec, (char * const *)papszArgs, (char * const *)papszEnv);
-            AssertReleaseMsgFailed(("execve returns %d errno=%d\n", rc, errno));
+            if (errno == ENOEXEC)
+            {
+                /* This can happen when trying to start a shell script without the magic #!/bin/sh */
+                RTAssertMsg2Weak("Cannot execute this binary format!\n");
+            }
+            else
+                RTAssertMsg2Weak("execve returns %d errno=%d\n", rc, errno);
+            RTAssertReleasePanic();
             exit(127);
         }
         if (pid > 0)
