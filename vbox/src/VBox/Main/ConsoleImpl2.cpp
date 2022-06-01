@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 25819 2010-01-13 23:09:52Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 25826 2010-01-14 10:59:36Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2852,8 +2852,23 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                                                               Bstr(VBOXNET_IPV4MASK_DEFAULT));
             }
             else
+            {
+#ifdef RT_OS_SOLARIS
+                /** Grab the IP number from the 'vboxnetX' instance number and add one (at least on Solaris) */
+                const char *pszInstance = pszHifName;
+                pszInstance += sizeof("vboxnet") - 1;
+                int Instance = atoi(pszInstance);
+                Instance++;
+                char szDefaultIPV4Addr[sizeof(VBOXNET_IPV4ADDR_DEFAULT) + 1];
+                RTStrPrintf(szDefaultIPV4Addr, sizeof(szDefaultIPV4Addr), "%s%d", VBOXNET_IPV4NETPREFIX_DEFAULT, Instance);
+                hrc = hostInterface->EnableStaticIpConfig(Bstr(szDefaultIPV4Addr),
+                                                          Bstr(VBOXNET_IPV4MASK_DEFAULT));
+#else
                 hrc = hostInterface->EnableStaticIpConfig(Bstr(VBOXNET_IPV4ADDR_DEFAULT),
                                                           Bstr(VBOXNET_IPV4MASK_DEFAULT));
+#endif
+            }
+            
             ComAssertComRC(hrc); /** @todo r=bird: Why this isn't fatal? (H()) */
 
             hrc = virtualBox->GetExtraData(BstrFmt("HostOnly/%s/IPV6Address", pszHifName), tmpAddr.asOutParam());
