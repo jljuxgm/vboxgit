@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxManage.h 30319 2010-06-21 08:29:08Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -77,7 +77,7 @@
 #define USAGE_MODUNINSTALL          RT_BIT_64(38)
 #define USAGE_RENAMEVMDK            RT_BIT_64(39)
 #ifdef VBOX_WITH_GUEST_PROPS
-#define USAGE_GUESTPROPERTY         RT_BIT_64(40)
+# define USAGE_GUESTPROPERTY        RT_BIT_64(40)
 #endif  /* VBOX_WITH_GUEST_PROPS defined */
 #define USAGE_CONVERTTORAW          RT_BIT_64(41)
 #define USAGE_METRICS               RT_BIT_64(42)
@@ -90,8 +90,9 @@
 #define USAGE_STORAGEATTACH         RT_BIT_64(49)
 #define USAGE_STORAGECONTROLLER     RT_BIT_64(50)
 #ifdef VBOX_WITH_GUEST_CONTROL
-#define USAGE_GUESTCONTROL          RT_BIT_64(51)
+# define USAGE_GUESTCONTROL         RT_BIT_64(51)
 #endif  /* VBOX_WITH_GUEST_CONTROL defined */
+#define USAGE_DEBUGLOG              RT_BIT_64(52)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
