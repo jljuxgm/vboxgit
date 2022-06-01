@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 27218 2010-03-09 14:55:14Z vboxsync $ */
+/* $Id: UIMachineView.cpp 27220 2010-03-09 16:19:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -654,6 +654,7 @@ bool UIMachineView::event(QEvent *pEvent)
             UIRepaintEvent *pPaintEvent = static_cast<UIRepaintEvent*>(pEvent);
             viewport()->repaint(pPaintEvent->x() - contentsX(), pPaintEvent->y() - contentsY(),
                                 pPaintEvent->width(), pPaintEvent->height());
+
             return true;
         }
 
@@ -987,7 +988,7 @@ void UIMachineView::sltMachineStateChanged()
                         dimImage(shot);
                         m_pauseShot = QPixmap::fromImage(shot);
                         /* Fully repaint to pick up m_pauseShot: */
-                        repaint();
+                        viewport()->repaint();
                     }
                 }else
                 {
@@ -1002,7 +1003,7 @@ void UIMachineView::sltMachineStateChanged()
                         dimImage(shot);
                         m_pauseShot = QPixmap::fromImage(shot);
                         /* Fully repaint to pick up m_pauseShot: */
-                        repaint();
+                        viewport()->repaint();
                     }
                     else
                     {
@@ -1011,10 +1012,11 @@ void UIMachineView::sltMachineStateChanged()
                         shot.fill(0);
                         m_pauseShot = QPixmap::fromImage(shot);
                         /* Fully repaint to pick up m_pauseShot: */
-                        repaint();
+                        viewport()->repaint();
                     }
                 }
             }
+            break;
         }
         case KMachineState_Stuck:
         {
