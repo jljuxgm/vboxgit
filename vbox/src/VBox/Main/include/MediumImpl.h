@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 24258 2009-11-02 14:38:50Z vboxsync $ */
+/* $Id: MediumImpl.h 24273 2009-11-02 17:36:22Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -164,8 +164,8 @@ public:
 
     const Guid& id() const;
     MediumState_T state() const;
-    const Bstr& location() const;
-    const Bstr& locationFull() const;
+    const Utf8Str& location() const;
+    const Utf8Str& locationFull() const;
 
     const Guid* getFirstMachineBackrefId() const;
     const Guid* getFirstMachineBackrefSnapshotId() const;

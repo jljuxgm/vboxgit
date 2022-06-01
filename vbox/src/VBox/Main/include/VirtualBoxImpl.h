@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 23327 2009-09-25 11:36:00Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 24273 2009-11-02 17:36:22Z vboxsync $ */
 
 /** @file
  *
@@ -276,7 +276,7 @@ public:
 
 private:
 
-    HRESULT checkMediaForConflicts2(const Guid &aId, const Bstr &aLocation,
+    HRESULT checkMediaForConflicts2(const Guid &aId, const Utf8Str &aLocation,
                                     Utf8Str &aConflictType);
 
     HRESULT registerMachine (Machine *aMachine);
