@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 27141 2010-03-07 16:30:12Z vboxsync $ */
+/* $Id: UISession.cpp 27207 2010-03-09 12:15:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -662,14 +662,23 @@ bool UISession::event(QEvent *pEvent)
             /* Convert to mouse shape change event: */
             UIMousePointerShapeChangeEvent *pConsoleEvent = static_cast<UIMousePointerShapeChangeEvent*>(pEvent);
 
-            /* Remember if we should show cursor: */
-            m_fIsHideHostPointer = !pConsoleEvent->isVisible();
-
-            /* Cache shape dataif present: */
+            /* In case of shape data is present: */
             if (pConsoleEvent->shapeData())
+            {
+                /* We are ignoring visibility flag: */
+                m_fIsHideHostPointer = false;
+
+                /* And updating current cursor shape: */
                 setPointerShape(pConsoleEvent->shapeData(), pConsoleEvent->hasAlpha(),
                                 pConsoleEvent->xHot(), pConsoleEvent->yHot(),
                                 pConsoleEvent->width(), pConsoleEvent->height());
+            }
+            /* In case of shape data is NOT present: */
+            else
+            {
+                /* Remember if we should hide the cursor: */
+                m_fIsHideHostPointer = !pConsoleEvent->isVisible();
+            }
 
             /* Notify listeners about mouse capability changed: */
             emit sigMousePointerShapeChange();
