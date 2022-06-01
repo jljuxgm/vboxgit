@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 29725 2010-05-21 12:13:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -123,6 +123,7 @@ void UIMachineWindow::retranslateUi()
                               .arg(RTBldCfgRevisionStr())
                               .arg(VBOX_BLEEDING_EDGE);
 #endif
+    updateAppearanceOf(UIVisualElement_WindowCaption);
 }
 
 void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
