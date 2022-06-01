@@ -1,11 +1,11 @@
-/* $Id: ApplianceImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 27677 2010-03-24 17:21:51Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
  */
 
 /*
- * Copyright (C) 2008-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2008-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1232,7 +1232,7 @@ int Appliance::importFS(TaskImportOVF *pTask)
                                tr("Missing VM name"));
             const Utf8Str &strNameVBox = vsdeName.front()->strVbox;
             rc = mVirtualBox->CreateMachine(Bstr(strNameVBox), Bstr(strOsTypeVBox),
-                                                 Bstr(), Bstr(),
+                                                 Bstr(), Bstr(), FALSE,
                                                  pNewMachine.asOutParam());
             if (FAILED(rc)) throw rc;
 
