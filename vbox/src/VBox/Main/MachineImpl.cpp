@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 30304 2010-06-18 10:51:15Z vboxsync $ */
+/* $Id: MachineImpl.cpp 30305 2010-06-18 11:14:01Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4885,7 +4885,7 @@ STDMETHODIMP Machine::HotPlugCPU(ULONG aCpu)
 
     /* Save settings if online */
     if (Global::IsOnline(mData->mMachineState))
-        saveSettings();
+        saveSettings(NULL);
 
     return S_OK;
 }
@@ -4926,7 +4926,7 @@ STDMETHODIMP Machine::HotUnplugCPU(ULONG aCpu)
 
     /* Save settings if online */
     if (Global::IsOnline(mData->mMachineState))
-        saveSettings();
+        saveSettings(NULL);
 
     return S_OK;
 }
