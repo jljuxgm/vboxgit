@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26327 2010-02-08 13:28:54Z vboxsync $
+# $Id: Makefile.kmk 26328 2010-02-08 13:41:15Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -33,7 +33,8 @@ PROGRAMS.win.x86 += VBoxServiceNT
 #
 VBoxService_TEMPLATE      = VBOXGUESTR3EXE
 VBoxService_DEFS          = VBOXSERVICE_TIMESYNC
-VBoxService_DEFS.win     += _WIN32_WINNT=0x0501 VBOXSERVICE_MANAGEMENT
+VBoxService_DEFS.win     += _WIN32_WINNT=0x0501 
+##VBOXSERVICE_MANAGEMENT
 VBoxService_DEFS.os2      = VBOX_WITH_HGCM VBOXSERVICE_CLIPBOARD
 ifdef VBOX_WITH_GUEST_PROPS
  VBoxService_DEFS        += VBOX_WITH_GUEST_PROPS VBOXSERVICE_VMINFO
