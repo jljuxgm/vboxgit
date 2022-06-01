@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 27121 2010-03-05 18:13:57Z vboxsync $ */
+/* $Id: DevHPET.cpp 27126 2010-03-05 19:40:43Z vboxsync $ */
 /** @file
  * HPET virtual device - high precision event timer emulation
  */
@@ -615,7 +615,7 @@ static int configRegWrite32(HpetState* pThis,
 
             iOldValue = (uint32_t)(pThis->u64Config);
 
-            /**
+            /*
              * This check must be here, before actual update, as hpetLegacyMode
              * may request retry in R3 - so we must keep state intact.
              */
