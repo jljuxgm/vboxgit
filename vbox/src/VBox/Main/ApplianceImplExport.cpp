@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 29353 2010-05-11 13:42:11Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 29389 2010-05-11 20:10:16Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1527,7 +1527,7 @@ HRESULT Appliance::writeFS(const LocationInfo &locInfo, const OVFFormat enFormat
             diskList.push_back(strTargetFilePath);
 
             // we need the following for the XML
-            uint64_t cbFile = 0;        // actual file size
+            ULONG64 cbFile = 0;        // actual file size
             rc = pTargetDisk->COMGETTER(Size)(&cbFile);
             if (FAILED(rc)) throw rc;
 
