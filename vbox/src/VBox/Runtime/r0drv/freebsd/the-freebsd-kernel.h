@@ -1,4 +1,4 @@
-/* $Id: the-freebsd-kernel.h 29765 2010-05-24 19:07:28Z vboxsync $ */
+/* $Id: the-freebsd-kernel.h 29831 2010-05-26 21:13:49Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The FreeBSD Kernel Headers.
  */
@@ -102,6 +102,13 @@
     || (__FreeBSD_version < 900000 && __FreeBSD_version >= 800505) \
     || (__FreeBSD_version < 800000 && __FreeBSD_version >= 703101)
 # define USE_KMEM_ALLOC_ATTR
+#endif
+
+/**
+ * Check whether we can use kmem_alloc_prot.
+ */
+#if 0 /** @todo Not available yet. */
+# define USE_KMEM_ALLOC_PROT
 #endif
 
 #endif
