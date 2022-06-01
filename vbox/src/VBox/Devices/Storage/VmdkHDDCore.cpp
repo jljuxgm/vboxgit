@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 25823 2010-01-14 09:10:56Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 26008 2010-01-25 14:55:19Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -3055,7 +3055,7 @@ static int vmdkOpenImage(PVMDKIMAGE pImage, unsigned uOpenFlags)
 
             for (unsigned i = 0; i < pImage->cExtents; i++)
             {
-                PVMDKEXTENT pExtent = &pImage->pExtents[i];
+                pExtent = &pImage->pExtents[i];
 
                 if ((    pExtent->enmType != VMDKETYPE_FLAT
                      &&  pExtent->enmType != VMDKETYPE_ZERO
@@ -3077,7 +3077,7 @@ static int vmdkOpenImage(PVMDKIMAGE pImage, unsigned uOpenFlags)
 
         for (unsigned i = 0; i < pImage->cExtents; i++)
         {
-            PVMDKEXTENT pExtent = &pImage->pExtents[i];
+            pExtent = &pImage->pExtents[i];
 
             if (pExtent->pszBasename)
             {
