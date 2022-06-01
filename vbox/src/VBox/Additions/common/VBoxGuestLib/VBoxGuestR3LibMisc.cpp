@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 24742 2009-11-17 21:58:02Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 25962 2010-01-21 15:49:10Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -262,7 +262,7 @@ static int vbglR3GetAdditionsWinStoragePath(PHKEY phKey)
         }
 # endif
     }
-    return RTErrConvertFromNtStatus(r);
+    return RTErrConvertFromWin32(r);
 }
 
 
@@ -275,7 +275,7 @@ static int vbglR3GetAdditionsWinStoragePath(PHKEY phKey)
  */
 static int vbglR3CloseAdditionsWinStoragePath(HKEY hKey)
 {
-    return RTErrConvertFromNtStatus(RegCloseKey(hKey));
+    return RTErrConvertFromWin32(RegCloseKey(hKey));
 }
 #endif /* RT_OS_WINDOWS */ 
 
@@ -318,7 +318,7 @@ VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
                 }
                 else
                 {
-                    rc = RTErrConvertFromNtStatus(l);
+                    rc = RTErrConvertFromWin32(l);
                 }
                 RTMemFree(pszTmp);
             }
@@ -342,7 +342,7 @@ VBGLR3DECL(int) VbglR3GetAdditionsVersion(char **ppszVer, char **ppszRev)
                 }
                 else
                 {
-                    rc = RTErrConvertFromNtStatus(l);
+                    rc = RTErrConvertFromWin32(l);
                 }
                 RTMemFree(pszTmp);
             }
