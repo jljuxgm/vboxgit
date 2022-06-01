@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibEvent.cpp 27083 2010-03-05 13:05:51Z vboxsync $ */
+/* $Id: VBoxGuestR3LibEvent.cpp 27687 2010-03-24 22:14:20Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Events.
  */
@@ -54,12 +54,10 @@
  */
 VBGLR3DECL(int) VbglR3WaitEvent(uint32_t fMask, uint32_t cMillies, uint32_t *pfEvents)
 {
-#ifndef VBOX_VBGLR3_XFREE86
     LogFlow(("VbglR3WaitEvent: fMask=0x%x, cMillies=%u, pfEvents=%p\n",
              fMask, cMillies, pfEvents));
     AssertReturn((fMask & ~VMMDEV_EVENT_VALID_EVENT_MASK) == 0, VERR_INVALID_PARAMETER);
     AssertPtrNullReturn(pfEvents, VERR_INVALID_POINTER);
-#endif
 
     VBoxGuestWaitEventInfo waitEvent;
     waitEvent.u32TimeoutIn = cMillies;
@@ -69,17 +67,13 @@ VBGLR3DECL(int) VbglR3WaitEvent(uint32_t fMask, uint32_t cMillies, uint32_t *pfE
     int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_WAITEVENT, &waitEvent, sizeof(waitEvent));
     if (RT_SUCCESS(rc))
     {
-#if !defined(VBOX_VBGLR3_XFREE86) && !defined(RT_OS_WINDOWS)
         AssertMsg(waitEvent.u32Result == VBOXGUEST_WAITEVENT_OK, ("%d rc=%Rrc\n", waitEvent.u32Result, rc));
-#endif
         if (pfEvents)
             *pfEvents = waitEvent.u32EventFlagsOut;
     }
 
-#ifndef VBOX_VBGLR3_XFREE86
     LogFlow(("VbglR3WaitEvent: rc=%Rrc, u32EventFlagsOut=0x%x. u32Result=%d\n",
              rc, waitEvent.u32EventFlagsOut, waitEvent.u32Result));
-#endif
     return rc;
 }
 

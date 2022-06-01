@@ -1,4 +1,4 @@
-/* $Id: VBGLR3Internal.h 26425 2010-02-11 11:37:08Z vboxsync $ */
+/* $Id: VBGLR3Internal.h 27687 2010-03-24 22:14:20Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -37,6 +37,15 @@
 #include <VBox/VMMDev.h>
 #include <VBox/VBoxGuest.h>
 #include <VBox/VBoxGuestLib.h>
+
+#ifdef VBOX_VBGLR3_XFREE86
+/* Rather than try to resolve all the header file conflicts, I will just
+   prototype what we need here. */
+typedef unsigned long xf86size_t;
+extern "C" xf86size_t xf86strlen(const char*);
+# undef strlen
+# define strlen xf86strlen
+#endif /* VBOX_VBGLR3_XFREE86 */
 
 RT_C_DECLS_BEGIN
 

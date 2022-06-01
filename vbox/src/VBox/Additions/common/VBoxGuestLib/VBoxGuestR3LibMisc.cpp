@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 27083 2010-03-05 13:05:51Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 27687 2010-03-24 22:14:20Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -69,7 +69,7 @@ VBGLR3DECL(int) VbglR3SetGuestCaps(uint32_t fOr, uint32_t fNot)
     Req.u32OrMask = fOr;
     Req.u32NotMask = fNot;
     int rc = vbglR3GRPerform(&Req.header);
-#if defined(DEBUG) && !defined(VBOX_VBGLR3_XFREE86)
+#if defined(DEBUG)
     if (RT_SUCCESS(rc))
         LogRel(("Successfully changed guest capabilities: or mask 0x%x, not mask 0x%x.\n", fOr, fNot));
     else

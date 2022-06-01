@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 26425 2010-02-11 11:37:08Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 27687 2010-03-24 22:14:20Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -98,9 +98,7 @@ static uint32_t volatile g_cInits = 0;
 static int vbglR3Init(const char *pszDeviceName)
 {
     uint32_t cInits = ASMAtomicIncU32(&g_cInits);
-#ifndef VBOX_VBGLR3_XFREE86
     Assert(cInits > 0);
-#endif
     if (cInits > 1)
     {
         /*
