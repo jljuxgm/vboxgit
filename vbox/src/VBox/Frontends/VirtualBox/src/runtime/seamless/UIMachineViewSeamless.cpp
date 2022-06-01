@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 30291 2010-06-17 17:15:52Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 30347 2010-06-21 17:44:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -39,13 +39,11 @@
 #include "UIMachineViewSeamless.h"
 
 UIMachineViewSeamless::UIMachineViewSeamless(  UIMachineWindow *pMachineWindow
-                                             , VBoxDefs::RenderMode renderMode
 #ifdef VBOX_WITH_VIDEOHWACCEL
                                              , bool bAccelerate2DVideo
 #endif
                                              , ulong uMonitor)
     : UIMachineView(  pMachineWindow
-                    , renderMode
 #ifdef VBOX_WITH_VIDEOHWACCEL
                     , bAccelerate2DVideo
 #endif
