@@ -1,4 +1,4 @@
-/* $Id: GMMR0Internal.h 28986 2010-05-03 15:55:30Z vboxsync $ */
+/* $Id: GMMR0Internal.h 29024 2010-05-04 14:12:15Z vboxsync $ */
 /** @file
  * GMM - The Global Memory Manager, Internal Header.
  */
@@ -72,6 +72,9 @@ typedef struct GMMSHAREDMODULEPERVM
 
     /* Pointer to global shared module info. */
     PGMMSHAREDMODULE            pSharedModule;
+
+    /* Set if another VM registered a different shared module at the same base address. */
+    bool                        fCollision;
 
 } GMMSHAREDMODULEPERVM;
 /** Pointer to a GMMSHAREDMODULEPERVM. */
