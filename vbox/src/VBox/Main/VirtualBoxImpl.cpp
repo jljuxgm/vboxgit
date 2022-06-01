@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 27792 2010-03-29 13:08:44Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 27796 2010-03-29 16:04:55Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2720,7 +2720,7 @@ ComObjPtr<GuestOSType> VirtualBox::getUnknownOSType()
  *
  * @note Locks objects for reading.
  */
-void VirtualBox::getOpenedMachines(SessionMachineList &aMachines,
+void VirtualBox::getOpenedMachines(SessionMachinesList &aMachines,
                                    InternalControlList *aControls /*= NULL*/)
 {
     AutoCaller autoCaller(this);
@@ -2730,7 +2730,7 @@ void VirtualBox::getOpenedMachines(SessionMachineList &aMachines,
     if (aControls)
         aControls->clear();
 
-    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AutoReadLock alock(m->ollMachines.getLockHandle() COMMA_LOCKVAL_SRC_POS);
 
     for (MachinesOList::iterator it = m->ollMachines.begin();
          it != m->ollMachines.end();
