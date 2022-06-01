@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 26574 2010-02-16 12:44:10Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 26576 2010-02-16 12:53:32Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1547,8 +1547,8 @@ static void intnetR0IfSnoopAddr(PINTNETIF pIf, uint8_t const *pbFrame, uint32_t 
  */
 static int intnetR0RingWriteFrame(PINTNETRINGBUF pRingBuf, PCINTNETSG pSG, PCRTMAC pNewDstMac)
 {
-    PINTNETHDR  pHdr;
-    void       *pvDst;
+    PINTNETHDR  pHdr  = NULL; /* shut up gcc*/
+    void       *pvDst = NULL; /* ditto */
     int rc = INTNETRingAllocateFrame(pRingBuf, pSG->cbTotal, &pHdr, &pvDst);
     if (RT_SUCCESS(rc))
     {
