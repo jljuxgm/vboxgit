@@ -1,4 +1,4 @@
-/* $Id: tstLdrObj.cpp 19143 2009-04-23 13:57:39Z vboxsync $ */
+/* $Id: tstLdrObj.cpp 26267 2010-02-05 03:36:34Z vboxsync $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -101,7 +101,7 @@ extern "C" DECLEXPORT(void *) SomeExportFunction4(void)
     DISCPUSTATE Cpu;
     memset(&Cpu, 0, sizeof(Cpu));
     Cpu.mode = CPUMODE_32BIT;
-    DISCoreOne(&Cpu, (RTGCUINTPTR)SomeExportFunction3, &cb);
+    DISCoreOne(&Cpu, (uintptr_t)SomeExportFunction3, &cb);
     return (void *)(uintptr_t)&SomeExportFunction1;
 }
 
