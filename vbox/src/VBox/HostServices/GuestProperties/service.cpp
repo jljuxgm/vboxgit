@@ -1,4 +1,4 @@
-/* $Id: service.cpp 25354 2009-12-14 10:15:38Z vboxsync $ */
+/* $Id: service.cpp 25355 2009-12-14 10:17:49Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -737,10 +737,9 @@ int Service::delProperty(uint32_t cParms, VBOXHGCMSVCPARM paParms[], bool isGues
             if (it->mName.compare(pcszName) == 0)
             {
                 found = true;
+                rc = checkPermission((ePropFlags)it->mFlags, isGuest);
                 break;
             }
-        rc = checkPermission(found ? (ePropFlags)it->mFlags : NILFLAG,
-                             isGuest);
 
         /*
          * And delete the property if all is well.
