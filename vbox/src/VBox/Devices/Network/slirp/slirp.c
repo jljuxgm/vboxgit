@@ -1,4 +1,4 @@
-/* $Id: slirp.c 28449 2010-04-19 09:52:59Z vboxsync $ */
+/* $Id: slirp.c 28502 2010-04-20 07:16:46Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1462,6 +1462,8 @@ static void arp_input(PNATState pData, struct mbuf *m)
             rah = mtod(mr, struct arphdr *);
 #else
             mr = m_getcl(pData, M_NOWAIT, MT_HEADER, M_PKTHDR);
+            if (mr == NULL)
+                return;
             reh = mtod(mr, struct ethhdr *);
             mr->m_data += ETH_HLEN;
             rah = mtod(mr, struct arphdr *);
