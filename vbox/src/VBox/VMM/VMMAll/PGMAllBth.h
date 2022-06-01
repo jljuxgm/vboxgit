@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 27209 2010-03-09 12:33:17Z vboxsync $ */
+/* $Id: PGMAllBth.h 27210 2010-03-09 12:37:34Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1289,6 +1289,8 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorkerTrackDeref)(PVMCPU pVCpu, PPGMPOOLPA
      *      1. have a medium sized HCPhys -> GCPhys TLB (hash?)
      *      2. write protect all shadowed pages. I.e. implement caching.
      */
+    /** @todo duplicated in the 2nd half of pgmPoolTracDerefGCPhysHint */
+
     /*
      * Find the guest address.
      */
