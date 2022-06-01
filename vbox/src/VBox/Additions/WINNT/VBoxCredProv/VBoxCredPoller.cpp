@@ -1,4 +1,4 @@
-/* $Id: VBoxCredPoller.cpp 25883 2010-01-18 11:37:07Z vboxsync $ */
+/* $Id: VBoxCredPoller.cpp 26045 2010-01-26 13:19:06Z vboxsync $ */
 /** @file
  * VBoxCredPoller - Thread for retrieving user credentials.
  */
@@ -57,7 +57,7 @@ bool VBoxCredPoller::Initialize(VBoxCredProv *pProvider)
     if (m_pProv != NULL)
         m_pProv->Release();
     m_pProv = pProvider;
-    Assert(m_pProv);
+    AssertPtr(m_pProv);
     m_pProv->AddRef();
 
     /* don't create more than one of them */
@@ -160,7 +160,7 @@ int VBoxCredPoller::credentialsRetrieve(void)
     /* if all went fine, notify parent */
     if (RT_SUCCESS(rc))
     {
-        Assert(m_pProv);
+        AssertPtr(m_pProv);
         m_pProv->OnCredentialsProvided(m_pszUser,
                                        m_pszPw,
                                        m_pszDomain);
@@ -172,7 +172,7 @@ int VBoxCredPoller::credentialsRetrieve(void)
 
 bool VBoxCredPoller::QueryCredentials(VBoxCredential *pCred)
 {
-    Assert (pCred);
+    AssertPtr(pCred);
     RTCritSectEnter(&m_csCredUpate);
     pCred->Update(m_pszUser, m_pszPw, m_pszDomain);
     RTCritSectLeave(&m_csCredUpate);
