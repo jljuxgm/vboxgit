@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 27578 2010-03-22 10:24:08Z vboxsync $ */
+/* $Id: process-win.cpp 27579 2010-03-22 10:30:30Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -282,6 +282,7 @@ static int rtProcCreateAsUserHlp(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTUT
     else
         dwErr = GetLastError();
 
+#ifndef IPRT_TARGET_NT4
     /*
      * If we don't hold enough priviledges to spawn a new process with
      * different credentials we have to use CreateProcessWithLogonW here.  This
