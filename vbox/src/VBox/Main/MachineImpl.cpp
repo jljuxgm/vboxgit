@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 29932 2010-06-01 01:40:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 29934 2010-06-01 06:39:21Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9840,7 +9840,7 @@ STDMETHODIMP SessionMachine::BeginPowerUp(IProgress *aProgress)
         return VBOX_E_INVALID_OBJECT_STATE;
 
     if (!mData->mSession.mProgress.isNull())
-        mData->mSession.mProgress->setOtherProgressObject(aProgress);
+        mData->mSession.mProgress->setOtherProgressObject(aProgress, 7);
 
     return S_OK;
 }
@@ -9862,6 +9862,7 @@ STDMETHODIMP SessionMachine::EndPowerUp(LONG iResult)
     /* Finalize the openRemoteSession progress object. */
     if (mData->mSession.mProgress)
     {
+        mData->mSession.mProgress->clearOtherProgressObject(tr("Finalizing"), 1);
         mData->mSession.mProgress->notifyComplete((HRESULT)iResult);
         mData->mSession.mProgress.setNull();
     }
