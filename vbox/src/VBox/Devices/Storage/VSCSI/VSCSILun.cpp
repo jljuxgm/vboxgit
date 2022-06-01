@@ -1,4 +1,4 @@
-/* $Id: VSCSILun.cpp 27665 2010-03-24 12:33:33Z vboxsync $ */
+/* $Id: VSCSILun.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: LUN handling
  */
@@ -36,7 +36,7 @@ extern VSCSILUNDESC g_VScsiLunTypeSbc;
 /**
  * Array of supported SCSI LUN types.
  */
-static PVSCSILUNDESC g_aVScsiLunTypesSupported[] = 
+static PVSCSILUNDESC g_aVScsiLunTypesSupported[] =
 {
     &g_VScsiLunTypeSbc
 };

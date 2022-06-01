@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 27460 2010-03-17 17:21:23Z vboxsync $ */
+/* $Id: DevRTC.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -266,7 +266,7 @@ static void cmos_ioport_write(void *opaque, uint32_t addr, uint32_t data)
     if ((addr & 1) == 0) {
         s->cmos_index[bank] = (data & 0x7f) + (bank * 128);
     } else {
-        Log(("CMOS: Write bank %d idx %#04x: %#04x (old %#04x)\n", bank, 
+        Log(("CMOS: Write bank %d idx %#04x: %#04x (old %#04x)\n", bank,
              s->cmos_index[bank], data, s->cmos_data[s->cmos_index[bank]]));
         switch(s->cmos_index[bank]) {
         case RTC_SECONDS_ALARM:

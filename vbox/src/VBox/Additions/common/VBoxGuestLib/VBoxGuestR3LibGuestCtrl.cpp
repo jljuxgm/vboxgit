@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 27865 2010-03-31 09:28:45Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -141,23 +141,23 @@ VBGLR3DECL(int) VbglR3GuestCtrlGetHostMsg(uint32_t u32ClientId, uint32_t *puMsg,
  *
  * @returns VBox status code.
  * @param   u32ClientId     The client id returned by VbglR3GuestCtrlConnect().
- * @param   ppvData    
- * @param   uNumParms   
+ * @param   ppvData
+ * @param   uNumParms
  */
 VBGLR3DECL(int) VbglR3GuestCtrlGetHostCmdExec(uint32_t u32ClientId, uint32_t uNumParms,
-                                              char    *pszCmd,      uint32_t cbCmd, 
+                                              char    *pszCmd,      uint32_t cbCmd,
                                               uint32_t *puFlags,
-                                              char *pszArgs,        uint32_t cbArgs,  uint32_t *puNumArgs, 
+                                              char *pszArgs,        uint32_t cbArgs,  uint32_t *puNumArgs,
                                               char *pszEnv,         uint32_t *pcbEnv, uint32_t *puNumEnvVars,
                                               char *pszStdIn,       uint32_t cbStdIn,
                                               char *pszStdOut,      uint32_t cbStdOut,
                                               char *pszStdErr,      uint32_t cbStdErr,
                                               char *pszUser,        uint32_t cbUser,
                                               char *pszPassword,    uint32_t cbPassword,
-                                              uint32_t *puTimeLimit)                                             
+                                              uint32_t *puTimeLimit)
 {
     VBoxGuestCtrlHGCMMsgExecCmd Msg;
-        
+
     Msg.hdr.result = VERR_WRONG_ORDER;
     Msg.hdr.u32ClientID = u32ClientId;
     Msg.hdr.u32Function = GUEST_GET_HOST_MSG_DATA; /* Tell the host we want the actual data of a command. */
@@ -179,7 +179,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlGetHostCmdExec(uint32_t u32ClientId, uint32_t uNu
     int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(Msg)), &Msg, sizeof(Msg));
     if (RT_SUCCESS(rc))
     {
-        rc = Msg.hdr.result; 
+        rc = Msg.hdr.result;
     }
     return rc;
 }

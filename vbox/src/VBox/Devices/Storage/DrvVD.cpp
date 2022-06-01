@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 27922 2010-03-31 19:26:10Z vboxsync $ */
+/* $Id: DrvVD.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -329,7 +329,7 @@ static DECLCALLBACK(void) drvvdAsyncTaskCompleted(PPDMDRVINS pDrvIns, void *pvTe
 
 static DECLCALLBACK(int) drvvdAsyncIOOpen(void *pvUser, const char *pszLocation,
                                           unsigned uOpenFlags,
-                                          PFNVDCOMPLETED pfnCompleted, 
+                                          PFNVDCOMPLETED pfnCompleted,
                                           PVDINTERFACE pVDIfsDisk,
                                           void **ppStorage)
 {

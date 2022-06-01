@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControl.cpp 27945 2010-04-01 15:20:08Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -118,7 +118,7 @@ static int VBoxServiceControlHandleCmdExec(uint32_t u32ClientId, uint32_t uNumPa
     else
     {
         /* Adjust time limit value. */
-        execData.uTimeLimitMS = UINT32_MAX ? 
+        execData.uTimeLimitMS = UINT32_MAX ?
             RT_INDEFINITE_WAIT : execData.uTimeLimitMS;
 
         /* Prepare argument list. */
@@ -200,7 +200,7 @@ DECLCALLBACK(int) VBoxServiceControlWorker(bool volatile *pfShutdown)
             }
             break; /* DEBUG BREAK */
         }
-    
+
         /*
          * Block for a while.
          *

@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 27692 2010-03-25 10:32:25Z vboxsync $ */
+/* $Id: DevPcBios.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -477,7 +477,7 @@ static DECLCALLBACK(int) pcbiosInitComplete(PPDMDEVINS pDevIns)
     /*
      * Network boot device list.
      */
-    for (i = 0; i < NET_BOOT_DEVS; ++i) 
+    for (i = 0; i < NET_BOOT_DEVS; ++i)
     {
         pcbiosCmosWrite(pDevIns, 0x82 + i * 2, pThis->au16NetBootDev[i] & 0xff);
         pcbiosCmosWrite(pDevIns, 0x83 + i * 2, pThis->au16NetBootDev[i] >> 8);

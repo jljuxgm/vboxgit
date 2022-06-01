@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 27872 2010-03-31 09:59:38Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -48,7 +48,7 @@ NetworkAdapter::~NetworkAdapter()
 
 HRESULT NetworkAdapter::FinalConstruct()
 {
-    
+
     return S_OK;
 }
 
@@ -1182,8 +1182,8 @@ HRESULT NetworkAdapter::saveSettings(settings::NetworkAdapter &data)
  * Returns true if any setter method has modified settings of this instance.
  * @return
  */
-bool NetworkAdapter::isModified() { 
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS); 
+bool NetworkAdapter::isModified() {
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
     bool fChanged = m_fModified;
     fChanged |= (mData->mAdapterType == NetworkAttachmentType_NAT? mNATEngine->isModified() : false);
     return fChanged;

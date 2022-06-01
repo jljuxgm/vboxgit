@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 27520 2010-03-19 10:48:32Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2393,7 +2393,7 @@ ResumeExecution:
         AssertMsg(rc == VERR_EM_INTERPRETER, ("EMU: monitor failed with %Rrc\n", rc));
         break;
     }
-        
+
 
     case SVM_EXIT_VMMCALL:
         rc = svmR0EmulateTprVMMCall(pVM, pVCpu, pCtx);

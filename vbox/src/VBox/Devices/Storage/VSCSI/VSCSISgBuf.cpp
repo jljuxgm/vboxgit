@@ -1,4 +1,4 @@
-/* $Id: VSCSISgBuf.cpp 27657 2010-03-24 06:59:39Z vboxsync $ */
+/* $Id: VSCSISgBuf.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: S/G list handling
  */
@@ -121,5 +121,4 @@ size_t vscsiCopyFromIoMemCtx(PVSCSIIOMEMCTX pIoMemCtx, uint8_t *pbData, size_t c
 
     return cbData - cbLeft;
 }
-
 

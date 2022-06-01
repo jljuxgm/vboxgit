@@ -1,4 +1,4 @@
-/* $Id: RTSortApvIsSorted.cpp 27345 2010-03-14 18:33:46Z vboxsync $ */
+/* $Id: RTSortApvIsSorted.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * IPRT - RTSortApvIsSorted.
  */
@@ -49,5 +49,4 @@ RTDECL(bool) RTSortApvIsSorted(void const * const *papvArray, size_t cElements, 
     return true;
 }
 RT_EXPORT_SYMBOL(RTSortIsSorted);
-
 

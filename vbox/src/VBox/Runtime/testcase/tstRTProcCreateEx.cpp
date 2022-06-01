@@ -1,4 +1,4 @@
-/* $Id: tstRTProcCreateEx.cpp 27577 2010-03-22 09:48:44Z vboxsync $ */
+/* $Id: tstRTProcCreateEx.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcCreateEx.
  */
@@ -172,7 +172,7 @@ static void tstRTCreateProcEx5(const char *pszUser, const char *pszPassword)
     else
         RTTestIPassed(NULL);
 }
-    
+
 
 static int tstRTCreateProcEx4Child(int argc, char **argv)
 {

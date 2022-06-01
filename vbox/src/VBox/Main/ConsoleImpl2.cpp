@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 27863 2010-03-31 09:20:04Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2658,7 +2658,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 bool fValid = true;
                 switch(proto)
                 {
-                    case NATProtocol_UDP: 
+                    case NATProtocol_UDP:
                         strProto = "UDP";
                     break;
                     case NATProtocol_TCP:
