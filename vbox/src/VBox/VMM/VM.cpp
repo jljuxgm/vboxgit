@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 25935 2010-01-20 14:43:56Z vboxsync $ */
+/* $Id: VM.cpp 26365 2010-02-09 13:37:29Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -3608,12 +3608,18 @@ DECLCALLBACK(void) vmR3SetErrorUV(PUVM pUVM, int rc, RT_SRC_POS_DECL, const char
      */
     va_list va3;
     va_copy(va3, *pArgs);
-    RTLogRelPrintf("VMSetError: %s(%d) %s\nVMSetError: %N\n", pszFile, iLine, pszFunction, pszFormat, &va3);
+    RTLogRelPrintf("VMSetError: %s(%d) %s; rc=%Rrc\n"
+                   "VMSetError: %N\n",
+                   pszFile, iLine, pszFunction, rc,
+                   pszFormat, &va3);
     va_end(va3);
 
 #ifdef LOG_ENABLED
     va_copy(va3, *pArgs);
-    RTLogPrintf("VMSetError: %s(%d) %s\n%N\n", pszFile, iLine, pszFunction, pszFormat, &va3);
+    RTLogPrintf("VMSetError: %s(%d) %s; rc=%Rrc\n"
+                "%N\n",
+                pszFile, iLine, pszFunction, rc,
+                pszFormat, &va3);
     va_end(va3);
 #endif
 
