@@ -1,4 +1,4 @@
-/* $Id: slirp.c 29506 2010-05-17 07:14:47Z vboxsync $ */
+/* $Id: slirp.c 29656 2010-05-19 06:05:09Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -531,14 +531,14 @@ static int get_dns_addr_domain(PNATState pData, bool fVerbose,
 
 #endif /* !RT_OS_WINDOWS */
 
-static int slirp_init_dns_list(PNATState pData)
+int slirp_init_dns_list(PNATState pData)
 {
     TAILQ_INIT(&pData->pDnsList);
     LIST_INIT(&pData->pDomainList);
     return get_dns_addr_domain(pData, true, NULL, NULL);
 }
 
-static void slirp_release_dns_list(PNATState pData)
+void slirp_release_dns_list(PNATState pData)
 {
     struct dns_entry *pDns = NULL;
     struct dns_domain_entry *pDomain = NULL;
