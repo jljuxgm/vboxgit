@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 25930 2010-01-20 12:59:47Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 25939 2010-01-20 15:24:07Z vboxsync $ */
 
 /** @file
  *
@@ -91,8 +91,8 @@ RWLockHandle *VirtualBoxBase::lockHandle() const
     {
         AssertCompile (sizeof (RWLockHandle *) == sizeof (void *));
 
-        // locking class is LOCKCLASS_VIRTUALBOXOBJECT for the VirtualBox singleton,
-        // LOCKCLASS_HOSTOBJECT for the Host object and LOCKCLASS_OBJECT for any other object
+        // getLockingClass() is overridden by many subclasses to return
+        // one of the locking classes listed at the top of AutoLock.h
         RWLockHandle *objLock = new RWLockHandle(getLockingClass());
         if (!ASMAtomicCmpXchgPtr ((void * volatile *) &mObjectLock, objLock, NULL))
         {
