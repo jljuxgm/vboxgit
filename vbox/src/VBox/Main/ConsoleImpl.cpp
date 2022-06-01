@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 28873 2010-04-28 14:55:35Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 28955 2010-05-02 18:03:45Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2876,13 +2876,13 @@ STDMETHODIMP Console::RegisterCallback(IConsoleCallback *aCallback)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-#if 0 /** @todo r=bird,r=pritesh: must check that the interface id match correct or we might screw up with old code! */
-    void *dummy;
-    HRESULT hrc = aCallback->QueryInterface(NS_GET_IID(IConsoleCallback), &dummy);
+    /* Query the interface we associate with IConsoleCallback as the caller
+       might've been compiled against a different SDK. */
+    void *pvCallback;
+    HRESULT hrc = aCallback->QueryInterface(COM_IIDOF(IConsoleCallback), &pvCallback);
     if (FAILED(hrc))
-        return hrc;
-    aCallback->Release();
-#endif
+        return setError(hrc, tr("Incompatible IConsoleCallback interface - version mismatch?"));
+    aCallback = (IConsoleCallback *)pvCallback;
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -2916,6 +2916,8 @@ STDMETHODIMP Console::RegisterCallback(IConsoleCallback *aCallback)
      * machine state is a) not actually changed on callback registration
      * and b) can be always queried from Console. */
 
+    /* Drop the reference we got via QueryInterface. */
+    aCallback->Release();
     return S_OK;
 }
 
