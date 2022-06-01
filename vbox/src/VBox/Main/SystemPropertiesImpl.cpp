@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -46,7 +46,15 @@
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR (SystemProperties)
+SystemProperties::SystemProperties()
+    : mParent(NULL)
+{
+}
+
+SystemProperties::~SystemProperties()
+{
+}
+
 
 HRESULT SystemProperties::FinalConstruct()
 {
@@ -169,7 +177,7 @@ void SystemProperties::uninit()
     if (autoUninitSpan.uninitDone())
         return;
 
-    unconst(mParent).setNull();
+    unconst(mParent) = NULL;
 }
 
 // ISystemProperties properties

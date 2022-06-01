@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 27592 2010-03-22 14:19:40Z vboxsync $ */
+/* $Id: MediumImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -87,7 +87,8 @@ typedef std::list<BackRef> BackRefList;
 struct Medium::Data
 {
     Data()
-        : state(MediumState_NotCreated),
+        : pVirtualBox(NULL),
+          state(MediumState_NotCreated),
           size(0),
           readers(0),
           preLockState(MediumState_NotCreated),
@@ -107,7 +108,7 @@ struct Medium::Data
     {}
 
     /** weak VirtualBox parent */
-    const ComObjPtr<VirtualBox, ComWeakRef> pVirtualBox;
+    VirtualBox * const pVirtualBox;
 
     const Guid id;
     Utf8Str strDescription;
@@ -1370,7 +1371,7 @@ void Medium::uninit()
     RTSemEventMultiDestroy(m->queryInfoSem);
     m->queryInfoSem = NIL_RTSEMEVENTMULTI;
 
-    unconst(m->pVirtualBox).setNull();
+    unconst(m->pVirtualBox) = NULL;
 }
 
 /**

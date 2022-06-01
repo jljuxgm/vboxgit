@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 26782 2010-02-25 11:17:30Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -2169,7 +2169,7 @@ void RemoteDisplayInfo::uninit()
     if (autoUninitSpan.uninitDone())
         return;
 
-    unconst(mParent).setNull();
+    unconst(mParent) = NULL;
 }
 
 // IRemoteDisplayInfo properties

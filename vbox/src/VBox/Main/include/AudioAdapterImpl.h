@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 26171 2010-02-02 20:37:36Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -92,10 +92,10 @@ public:
 
 private:
 
-    const ComObjPtr<Machine, ComWeakRef> mParent;
+    Machine * const     mParent;
     const ComObjPtr<AudioAdapter> mPeer;
 
-    Backupable<Data> mData;
+    Backupable<Data>    mData;
 };
 
 #endif // ____H_AUDIOADAPTER

@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -66,7 +66,15 @@ struct VFSExplorer::Data
     std::list<DirEntry> entryList;
 };
 
-DEFINE_EMPTY_CTOR_DTOR(VFSExplorer)
+VFSExplorer::VFSExplorer()
+    : mVirtualBox(NULL)
+{
+}
+
+VFSExplorer::~VFSExplorer()
+{
+}
+
 
 /**
  * VFSExplorer COM initializer.

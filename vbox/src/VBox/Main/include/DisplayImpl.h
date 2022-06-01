@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 26782 2010-02-25 11:17:30Z vboxsync $ */
+/* $Id: DisplayImpl.h 27607 2010-03-22 18:13:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -303,7 +303,7 @@ private:
     static DECLCALLBACK(void)  displaySSMSave(PSSMHANDLE pSSM, void *pvUser);
     static DECLCALLBACK(int)   displaySSMLoad(PSSMHANDLE pSSM, void *pvUser, uint32_t uVersion, uint32_t uPass);
 
-    const ComObjPtr<Console, ComWeakRef> mParent;
+    Console * const         mParent;
     /** Pointer to the associated display driver. */
     struct DRVMAINDISPLAY  *mpDrv;
     /** Pointer to the device instance for the VMM Device. */

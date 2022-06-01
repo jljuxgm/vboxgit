@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -94,7 +94,7 @@ private:
     const Guid mGuid;
     HostNetworkInterfaceType_T mIfType;
 
-    ComObjPtr<VirtualBox, ComWeakRef> mVBox;
+    VirtualBox * const  mVBox;
 
     struct Data
     {

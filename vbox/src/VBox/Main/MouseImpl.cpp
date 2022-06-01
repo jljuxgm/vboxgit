@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 27403 2010-03-16 13:29:14Z vboxsync $ */
+/* $Id: MouseImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -62,7 +62,15 @@ struct DRVMAINMOUSE
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR (Mouse)
+Mouse::Mouse()
+    : mParent(NULL)
+{
+}
+
+Mouse::~Mouse()
+{
+}
+
 
 HRESULT Mouse::FinalConstruct()
 {
@@ -137,7 +145,7 @@ void Mouse::uninit()
 #ifdef VBOXBFE_WITHOUT_COM
     mParent = NULL;
 #else
-    unconst(mParent).setNull();
+    unconst(mParent) = NULL;
 #endif
 }
 

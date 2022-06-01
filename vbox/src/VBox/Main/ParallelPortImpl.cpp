@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
+/* $Id: ParallelPortImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -41,12 +41,13 @@
 struct ParallelPort::Data
 {
     Data()
-        : fModified(false)
+        : fModified(false),
+          pMachine(NULL)
     { }
 
     bool                                    fModified;
 
-    const ComObjPtr<Machine, ComWeakRef>    pMachine;
+    Machine * const                         pMachine;
     const ComObjPtr<ParallelPort>           pPeer;
 
     Backupable<settings::ParallelPort>      bd;
@@ -185,8 +186,8 @@ void ParallelPort::uninit()
 
     m->bd.free();
 
-    unconst(m->pPeer).setNull();
-    unconst(m->pMachine).setNull();
+    unconst(m->pPeer) = NULL;
+    unconst(m->pMachine) = NULL;
 
     delete m;
     m = NULL;

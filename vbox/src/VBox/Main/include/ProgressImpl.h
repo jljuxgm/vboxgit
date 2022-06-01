@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 26603 2010-02-17 12:24:34Z vboxsync $ */
+/* $Id: ProgressImpl.h 27607 2010-03-22 18:13:07Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -98,10 +98,10 @@ protected:
 
 #if !defined (VBOX_COM_INPROC)
     /** Weak parent. */
-    const ComObjPtr<VirtualBox, ComWeakRef> mParent;
+    VirtualBox * const      mParent;
 #endif
 
-    const ComPtr<IUnknown> mInitiator;
+    const ComPtr<IUnknown>  mInitiator;
 
     const Guid mId;
     const Bstr mDescription;

@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 26171 2010-02-02 20:37:36Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -137,11 +137,11 @@ private:
     void detach();
     void generateMACAddress();
 
-    const ComObjPtr<Machine, ComWeakRef> mParent;
+    Machine * const     mParent;
     const ComObjPtr<NetworkAdapter> mPeer;
 
-    bool m_fModified;
-    Backupable<Data> mData;
+    bool                m_fModified;
+    Backupable<Data>    mData;
 };
 
 #endif // ____H_NETWORKADAPTER

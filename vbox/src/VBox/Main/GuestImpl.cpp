@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 27190 2010-03-09 00:04:26Z vboxsync $ */
+/* $Id: GuestImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -110,7 +110,7 @@ void Guest::uninit()
     if (autoUninitSpan.uninitDone())
         return;
 
-    unconst(mParent).setNull();
+    unconst(mParent) = NULL;
 }
 
 // IGuest properties

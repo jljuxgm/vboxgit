@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -123,20 +123,20 @@ private:
     HRESULT setRemoteDisplayAuthLibrary(const Utf8Str &aPath);
     HRESULT setWebServiceAuthLibrary(const Utf8Str &aPath);
 
-    const ComObjPtr<VirtualBox, ComWeakRef> mParent;
+    VirtualBox * const  mParent;
 
-    Utf8Str m_strDefaultMachineFolder;
-    Utf8Str m_strDefaultMachineFolderFull;
-    Utf8Str m_strDefaultHardDiskFolder;
-    Utf8Str m_strDefaultHardDiskFolderFull;
-    Utf8Str m_strDefaultHardDiskFormat;
+    Utf8Str             m_strDefaultMachineFolder;
+    Utf8Str             m_strDefaultMachineFolderFull;
+    Utf8Str             m_strDefaultHardDiskFolder;
+    Utf8Str             m_strDefaultHardDiskFolderFull;
+    Utf8Str             m_strDefaultHardDiskFormat;
 
-    MediumFormatList mMediumFormats;
+    MediumFormatList    mMediumFormats;
 
-    Utf8Str m_strRemoteDisplayAuthLibrary;
-    Utf8Str m_strWebServiceAuthLibrary;
-    ULONG mLogHistoryCount;
-    AudioDriverType_T mDefaultAudioDriver;
+    Utf8Str             m_strRemoteDisplayAuthLibrary;
+    Utf8Str             m_strWebServiceAuthLibrary;
+    ULONG               mLogHistoryCount;
+    AudioDriverType_T   mDefaultAudioDriver;
 
     friend class VirtualBox;
 };

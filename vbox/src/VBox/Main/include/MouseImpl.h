@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 27159 2010-03-08 11:56:29Z vboxsync $ */
+/* $Id: MouseImpl.h 27607 2010-03-22 18:13:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -137,7 +137,7 @@ private:
 #ifdef VBOXBFE_WITHOUT_COM
     Console *mParent;
 #else
-    const ComObjPtr<Console, ComWeakRef> mParent;
+    Console * const         mParent;
 #endif
     /** Pointer to the associated mouse driver. */
     struct DRVMAINMOUSE    *mpDrv[MOUSE_MAX_DEVICES];

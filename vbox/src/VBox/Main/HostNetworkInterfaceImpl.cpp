@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -33,7 +33,14 @@
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR (HostNetworkInterface)
+HostNetworkInterface::HostNetworkInterface()
+    : mVBox(NULL)
+{
+}
+
+HostNetworkInterface::~HostNetworkInterface()
+{
+}
 
 HRESULT HostNetworkInterface::FinalConstruct()
 {
@@ -549,7 +556,7 @@ HRESULT HostNetworkInterface::setVirtualBox(VirtualBox *pVBox)
     HRESULT hrc;
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
-    mVBox = pVBox;
+    unconst(mVBox) = pVBox;
 
     /* If IPv4 address hasn't been initialized */
     if (m.IPAddress == 0)

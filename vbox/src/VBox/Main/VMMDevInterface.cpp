@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 26782 2010-02-25 11:17:30Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -88,9 +88,10 @@ typedef struct DRVMAINVMMDEV
 //
 // constructor / destructor
 //
-VMMDev::VMMDev(Console *console) : mpDrv(NULL)
+VMMDev::VMMDev(Console *console)
+    : mpDrv(NULL),
+      mParent(console)
 {
-    mParent = console;
     int rc = RTSemEventCreate(&mCredentialsEvent);
     AssertRC(rc);
 #ifdef VBOX_WITH_HGCM

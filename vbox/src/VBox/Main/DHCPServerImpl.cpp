@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 26163 2010-02-02 18:58:33Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -33,7 +33,14 @@
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR (DHCPServer)
+DHCPServer::DHCPServer()
+    : mVirtualBox(NULL)
+{
+}
+
+DHCPServer::~DHCPServer()
+{
+}
 
 HRESULT DHCPServer::FinalConstruct()
 {
@@ -52,7 +59,7 @@ void DHCPServer::uninit()
     if (autoUninitSpan.uninitDone())
         return;
 
-    unconst(mVirtualBox).setNull();
+    unconst(mVirtualBox) = NULL;
 }
 
 HRESULT DHCPServer::init(VirtualBox *aVirtualBox, IN_BSTR aName)

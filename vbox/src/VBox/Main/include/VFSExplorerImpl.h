@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
+/* $Id: VFSExplorerImpl.h 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -74,7 +74,7 @@ class ATL_NO_VTABLE VFSExplorer :
 
 private:
     /* Private member vars */
-    const ComObjPtr<VirtualBox, ComWeakRef> mVirtualBox;
+    VirtualBox * const  mVirtualBox;
 
     struct TaskVFSExplorer;  /* Worker thread helper */
     struct Data;

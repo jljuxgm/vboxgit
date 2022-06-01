@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: KeyboardImpl.h 27607 2010-03-22 18:13:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -95,7 +95,7 @@ private:
     static DECLCALLBACK(int)    drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(void)   drvDestruct(PPDMDRVINS pDrvIns);
 
-    const ComObjPtr<Console, ComWeakRef> mParent;
+    Console * const         mParent;
     /** Pointer to the associated keyboard driver. */
     struct DRVMAINKEYBOARD *mpDrv;
     /** Pointer to the device instance for the VMM Device. */

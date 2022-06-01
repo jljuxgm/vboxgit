@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -48,7 +48,14 @@
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR (MachineDebugger)
+MachineDebugger::MachineDebugger()
+    : mParent(NULL)
+{
+}
+
+MachineDebugger::~MachineDebugger()
+{
+}
 
 HRESULT MachineDebugger::FinalConstruct()
 {
@@ -110,7 +117,7 @@ void MachineDebugger::uninit()
     if (autoUninitSpan.uninitDone())
         return;
 
-    unconst(mParent).setNull();
+    unconst(mParent) = NULL;
     mFlushMode = false;
 }
 

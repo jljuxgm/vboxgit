@@ -1,4 +1,4 @@
-/* $Id: AudioSnifferInterface.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: AudioSnifferInterface.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to Audio Sniffer device
  */
@@ -67,9 +67,10 @@ typedef struct DRVAUDIOSNIFFER
 //
 // constructor / destructor
 //
-AudioSniffer::AudioSniffer(Console *console) : mpDrv(NULL)
+AudioSniffer::AudioSniffer(Console *console)
+    : mpDrv(NULL),
+      mParent(console)
 {
-    mParent = console;
 }
 
 AudioSniffer::~AudioSniffer()

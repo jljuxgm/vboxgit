@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 26818 2010-02-26 08:35:45Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -36,7 +36,14 @@
 // constructor / destructor
 ////////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR (NetworkAdapter)
+NetworkAdapter::NetworkAdapter()
+    : mParent(NULL)
+{
+}
+
+NetworkAdapter::~NetworkAdapter()
+{
+}
 
 HRESULT NetworkAdapter::FinalConstruct()
 {
@@ -173,8 +180,8 @@ void NetworkAdapter::uninit()
 
     mData.free();
 
-    unconst(mPeer).setNull();
-    unconst(mParent).setNull();
+    unconst(mPeer) = NULL;
+    unconst(mParent) = NULL;
 }
 
 // INetworkAdapter properties

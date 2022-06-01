@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
 
 /** @file
  *
@@ -79,10 +79,11 @@ struct BackupableStorageControllerData
 struct StorageController::Data
 {
     Data()
+        : pParent(NULL)
     { }
 
-    const ComObjPtr<Machine, ComWeakRef>    pParent;
-    const ComObjPtr<StorageController>      pPeer;
+    Machine * const                     pParent;
+    const ComObjPtr<StorageController>  pPeer;
 
     Backupable<BackupableStorageControllerData> bd;
 };
@@ -289,8 +290,8 @@ void StorageController::uninit()
 
     m->pParent->removeDependentChild(this);
 
-    unconst(m->pPeer).setNull();
-    unconst(m->pParent).setNull();
+    unconst(m->pPeer) = NULL;
+    unconst(m->pParent) = NULL;
 
     delete m;
     m = NULL;
@@ -774,10 +775,10 @@ void StorageController::unshare()
         m->bd.commit();
     }
 
-    unconst(m->pPeer).setNull();
+    unconst(m->pPeer) = NULL;
 }
 
-const ComObjPtr<Machine, ComWeakRef>& StorageController::getMachine()
+Machine* StorageController::getMachine()
 {
     return m->pParent;
 }
