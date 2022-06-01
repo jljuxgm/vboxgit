@@ -1,4 +1,4 @@
-/* $Id: VBoxCocoaSpecialControls.mm 27401 2010-03-16 13:16:47Z vboxsync $ */
+/* $Id: VBoxCocoaSpecialControls.mm 27690 2010-03-25 10:14:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -227,6 +227,17 @@ VBoxCocoaButton::VBoxCocoaButton (CocoaButtonType aType, QWidget *aParent /* = 0
             [mNativeRef setBezelStyle:NSShadowlessSquareBezelStyle];
             [mNativeRef setButtonType:NSMomentaryChangeButton];
             [mNativeRef setImage: [NSImage imageNamed: NSImageNameStopProgressFreestandingTemplate]];
+            [mNativeRef setBordered: NO];
+            [[mNativeRef cell] setImageScaling: NSImageScaleProportionallyDown];
+            break;
+        }
+        case ResetButton:
+        {
+            mNativeRef = [[NSButton alloc] initWithFrame: NSMakeRect(0, 0, 13, 13)];
+            [mNativeRef setTitle: @""];
+            [mNativeRef setBezelStyle:NSShadowlessSquareBezelStyle];
+            [mNativeRef setButtonType:NSMomentaryChangeButton];
+            [mNativeRef setImage: [NSImage imageNamed: NSImageNameRefreshFreestandingTemplate]];
             [mNativeRef setBordered: NO];
             [[mNativeRef cell] setImageScaling: NSImageScaleProportionallyDown];
             break;

@@ -1,4 +1,4 @@
-/* $Id: VBoxSpecialControls.cpp 27401 2010-03-16 13:16:47Z vboxsync $ */
+/* $Id: VBoxSpecialControls.cpp 27690 2010-03-25 10:14:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -47,6 +47,25 @@ VBoxMiniCancelButton::VBoxMiniCancelButton (QWidget *aParent /* = 0 */)
 void VBoxMiniCancelButton::resizeEvent(QResizeEvent * /* pEvent */)
 {
     mButton->resize(size());
+}
+
+/********************************************************************************
+ *
+ * A rest button in the native Cocoa version.
+ *
+ ********************************************************************************/
+UIResetButton::UIResetButton(QWidget *pParent /* = 0 */)
+  : QAbstractButton(pParent)
+{
+    m_pButton = new VBoxCocoaButton(VBoxCocoaButton::ResetButton, this);
+    connect(m_pButton, SIGNAL(clicked()),
+            this, SIGNAL(clicked()));
+    setFixedSize(m_pButton->size());
+}
+
+void UIResetButton::resizeEvent(QResizeEvent * /* pEvent */)
+{
+    m_pButton->resize(size());
 }
 
 /********************************************************************************
