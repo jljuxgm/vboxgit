@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 26917 2010-03-01 14:55:10Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -1065,9 +1065,12 @@ int handleAddiSCSIDisk(HandlerArg *a)
             password.detachTo (values.appendedRaw());
         }
 
-        /// @todo add --initiator option
-        Bstr ("InitiatorName").detachTo (names.appendedRaw());
-        Bstr ("iqn.2008-04.com.sun.virtualbox.initiator").detachTo (values.appendedRaw());
+        /// @todo add --initiator option - until that happens rely on the
+        // defaults of the iSCSI initiator code. Setting it to a constant
+        // value does more harm than good, as the initiator name is supposed
+        // to identify a particular initiator uniquely.
+//        Bstr ("InitiatorName").detachTo (names.appendedRaw());
+//        Bstr ("iqn.2008-04.com.sun.virtualbox.initiator").detachTo (values.appendedRaw());
 
         /// @todo add --targetName and --targetPassword options
 
