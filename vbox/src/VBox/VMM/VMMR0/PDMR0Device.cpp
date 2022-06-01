@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 24138 2009-10-28 13:18:51Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 24139 2009-10-28 13:24:26Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -468,6 +468,9 @@ static DECLCALLBACK(void) pdmR0ApicHlp_SetInterruptFF(PPDMDEVINS pDevIns, PDMAPI
             break;
         case PDMAPICIRQ_SMI:
             VMCPU_FF_SET(pVCpu, VMCPU_FF_INTERRUPT_SMI);
+            break;
+        case PDMAPICIRQ_EXTINT:
+            VMCPU_FF_SET(pVCpu, VMCPU_FF_INTERRUPT_PIC);
             break;
         default:
             AssertMsgFailed(("enmType=%d\n", enmType));

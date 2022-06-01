@@ -1,4 +1,4 @@
-/* $Id: PDMGCDevice.cpp 24138 2009-10-28 13:18:51Z vboxsync $ */
+/* $Id: PDMGCDevice.cpp 24139 2009-10-28 13:24:26Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, GC Device parts.
  */
@@ -452,6 +452,9 @@ static DECLCALLBACK(void) pdmRCApicHlp_SetInterruptFF(PPDMDEVINS pDevIns, PDMAPI
             break;
         case PDMAPICIRQ_SMI:
             VMCPU_FF_SET(pVCpu, VMCPU_FF_INTERRUPT_SMI);
+            break;
+        case PDMAPICIRQ_EXTINT:
+            VMCPU_FF_SET(pVCpu, VMCPU_FF_INTERRUPT_PIC);
             break;
         default:
             AssertMsgFailed(("enmType=%d\n", enmType));
