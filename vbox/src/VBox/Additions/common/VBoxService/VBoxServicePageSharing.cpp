@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29355 2010-05-11 13:50:56Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 29357 2010-05-11 14:18:16Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -138,7 +138,7 @@ void VBoxServicePageSharingRegisterModule(HANDLE hProcess, PKNOWN_MODULE pModule
             break;
         }
 
-        unsigned cMemInfoBlocks = ret / sizeof(MemInfo);
+        unsigned cMemInfoBlocks = ret / sizeof(MemInfo[0]);
 
         for (unsigned i = 0; i < cMemInfoBlocks; i++)
         {
