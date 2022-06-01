@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 25194 2009-12-04 15:59:34Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 25195 2009-12-04 16:06:08Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -46,31 +46,33 @@
 
 typedef std::list< ComObjPtr<USBDeviceFilter> > DeviceFilterList;
 
+struct BackupableUSBData
+{
+    BackupableUSBData()
+        : fEnabled(false),
+          fEnabledEHCI(false)
+    { }
+
+    bool operator==(const BackupableUSBData &that) const
+    {
+        return this == &that || (fEnabled == that.fEnabled && fEnabledEHCI == that.fEnabledEHCI);
+    }
+
+    BOOL fEnabled;
+    BOOL fEnabledEHCI;
+};
+
 struct USBController::Data
 {
-    struct BackupableData
-    {
-        /* Constructor. */
-        BackupableData()
-            : fEnabled(false),
-              fEnabledEHCI(false)
-        { }
-
-        bool operator==(const BackupableData &that) const
-        {
-            return this == &that || (fEnabled == that.fEnabled && fEnabledEHCI == that.fEnabledEHCI);
-        }
-
-        bool fEnabled;
-        bool fEnabledEHCI;
-    };
+    Data() {};
+    ~Data() {};
 
     /** Parent object. */
     const ComObjPtr<Machine, ComWeakRef> pParent;
     /** Peer object. */
     const ComObjPtr<USBController> pPeer;
 
-    Backupable<BackupableData>      bd;
+    Backupable<BackupableUSBData>  bd;
 #ifdef VBOX_WITH_USB
     // the following fields need special backup/rollback/commit handling,
     // so they cannot be a part of BackupableData
