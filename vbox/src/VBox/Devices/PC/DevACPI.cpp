@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 24078 2009-10-26 14:16:50Z vboxsync $ */
+/* $Id: DevACPI.cpp 24669 2009-11-15 13:34:17Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -543,7 +543,8 @@ public:
      */
     AcpiTableMADT(uint32_t cCpus)
     {
-        m_cCpus = cCpus;
+        m_cCpus  = cCpus;
+        m_pbData = NULL;                /* size() uses this and gcc will complain if not initilized. */
         uint32_t cb = size();
         m_pbData = (uint8_t *)RTMemAllocZ(cb);
     }
