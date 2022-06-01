@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28967 2010-05-03 11:44:28Z vboxsync $
+# $Id: Makefile.kmk 29011 2010-05-04 12:23:01Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -36,9 +36,9 @@ ifdef VBOX_WITH_GUEST_PROPS
  if1of ($(KBUILD_TARGET), win)
   VBoxService_DEFS       += VBOXSERVICE_EXEC
  endif
- ifdef VBOX_WITH_GUEST_CONTROL
-  VBoxService_DEFS       += VBOX_WITH_GUEST_CONTROL VBOXSERVICE_CONTROL
- endif
+endif
+ifdef VBOX_WITH_GUEST_CONTROL
+ VBoxService_DEFS        += VBOX_WITH_GUEST_CONTROL VBOXSERVICE_CONTROL
 endif
 ifdef VBOX_WITH_MEMBALLOON
  VBoxService_DEFS        += VBOX_WITH_MEMBALLOON
