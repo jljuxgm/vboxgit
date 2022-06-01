@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 27034 2010-03-04 14:36:47Z vboxsync $ */
+/* $Id: state_snapshot.c 27091 2010-03-05 14:13:31Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -1185,6 +1185,12 @@ int32_t crStateSaveContext(CRContext *pContext, PSSMHANDLE pSSM)
     AssertRCReturn(rc, rc);
     rc = SSMR3PutU32(pSSM, pContext->bufferobject.elementsBuffer->name);
     AssertRCReturn(rc, rc);
+#ifdef CR_ARB_pixel_buffer_object
+    rc = SSMR3PutU32(pSSM, pContext->bufferobject.packBuffer->name);
+    AssertRCReturn(rc, rc);
+    rc = SSMR3PutU32(pSSM, pContext->bufferobject.unpackBuffer->name);
+    AssertRCReturn(rc, rc);
+#endif
     /* Save clint pointers and buffer bindings*/
     for (i=0; i<CRSTATECLIENT_MAX_VERTEXARRAYS; ++i)
     {
@@ -1670,6 +1676,14 @@ int32_t crStateLoadContext(CRContext *pContext, PSSMHANDLE pSSM)
     rc = SSMR3GetU32(pSSM, &ui);
     AssertRCReturn(rc, rc);
     pContext->bufferobject.elementsBuffer = CRS_GET_BO(ui);
+#ifdef CR_ARB_pixel_buffer_object
+    rc = SSMR3GetU32(pSSM, &ui);
+    AssertRCReturn(rc, rc);
+    pContext->bufferobject.packBuffer = CRS_GET_BO(ui);
+    rc = SSMR3GetU32(pSSM, &ui);
+    AssertRCReturn(rc, rc);
+    pContext->bufferobject.unpackBuffer = CRS_GET_BO(ui);
+#endif
 #undef CRS_GET_BO
 
     /* Load client pointers and array buffer bindings*/
@@ -1951,6 +1965,10 @@ int32_t crStateLoadContext(CRContext *pContext, PSSMHANDLE pSSM)
         FILLDIRTY(pBits->bufferobject.dirty);
         FILLDIRTY(pBits->bufferobject.arrayBinding);
         FILLDIRTY(pBits->bufferobject.elementsBinding);
+# ifdef CR_ARB_pixel_buffer_object
+        FILLDIRTY(pBits->bufferobject.packBinding);
+        FILLDIRTY(pBits->bufferobject.unpackBinding);
+# endif
 #endif
 
         FILLDIRTY(pBits->client.dirty);
