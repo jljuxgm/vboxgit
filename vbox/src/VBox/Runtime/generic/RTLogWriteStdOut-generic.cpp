@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteStdOut-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: RTLogWriteStdOut-generic.cpp 26319 2010-02-08 07:08:50Z vboxsync $ */
 /** @file
  * IPRT - Log To StdOut, Generic.
  */
@@ -39,7 +39,8 @@
 
 RTDECL(void) RTLogWriteStdOut(const char *pch, size_t cb)
 {
-    fwrite(pch, 1, cb, stdout);
+    size_t cbWritten = fwrite(pch, 1, cb, stdout);
+    (void)cbWritten;
     fflush(stdout);
 }
 RT_EXPORT_SYMBOL(RTLogWriteStdOut);
