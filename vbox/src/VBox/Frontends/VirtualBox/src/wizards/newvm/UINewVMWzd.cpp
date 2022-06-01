@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 29897 2010-05-31 12:14:53Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 30179 2010-06-14 11:56:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -694,6 +694,10 @@ bool UINewVMWzdPage5::constructMachine()
         m_Machine.AddStorageController(ctrHdName, ctrHdBus);
         hdCtr = m_Machine.GetStorageControllerByName(ctrHdName);
         hdCtr.SetControllerType(hdStorageControllerType);
+
+        /* Set the port count to 1 if SATA is used. */
+        if (hdStorageControllerType == KStorageControllerType_IntelAhci)
+            hdCtr.SetPortCount(1);
     }
     else
     {
