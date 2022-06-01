@@ -1,10 +1,10 @@
-/* $Id: VBoxService.cpp 25975 2010-01-22 15:29:12Z vboxsync $ */
+/* $Id: VBoxService.cpp 26061 2010-01-27 10:18:30Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
 
 /*
- * Copyright (C) 2007-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2007-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -91,7 +91,7 @@ static struct
     { &g_Exec,      NIL_RTTHREAD, false, false, false, true },
 #endif
 #ifdef VBOXSERVICE_CPUHOTPLUG /* Disabled by default. Use --enable-cpuhotplug to enable */
-    { &g_CpuHotplug, NIL_RTTHREAD, false, false, false, false },
+    { &g_CpuHotPlug, NIL_RTTHREAD, false, false, false, false },
 #endif
 };
 
