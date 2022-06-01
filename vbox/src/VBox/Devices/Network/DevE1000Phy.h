@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.h 15955 2009-01-14 20:14:36Z vboxsync $ */
+/** $Id: DevE1000Phy.h 26310 2010-02-05 21:30:38Z vboxsync $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation, Header.
  */
@@ -32,7 +32,15 @@
 
 #define PSTATUS_LNKSTAT 0x0004
 
-#define PSSTAT_LINK     0x0400
+/*
+ * Speed: 1000 Mb/s
+ * Duplex: full
+ * Page received
+ * Resolved
+ * Link up
+ * Receive Pause Enable
+ */
+#define PSSTAT_LINK     0xBC08
 
 namespace Phy
 {
