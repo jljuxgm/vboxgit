@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 28900 2010-04-29 13:24:32Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 30360 2010-06-22 10:28:03Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -119,7 +119,7 @@ ULONG _stdcall DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
         if (NT_SUCCESS(rc))
         {
             int vrc = RTR0Init(0);
-            if (RT_SUCCESS(rc))
+            if (RT_SUCCESS(vrc))
             {
                 Log(("VBoxDrv::DriverEntry\n"));
 
