@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 22497 2009-08-27 09:09:59Z vboxsync $ */
+/* $Id: process-win.cpp 26824 2010-02-26 10:36:08Z vboxsync $ */
 /** @file
  * IPRT - Process, Win32.
  */
@@ -156,6 +156,15 @@ RTR3DECL(int) RTProcCreate(const char *pszExec, const char * const *papszArgs, R
     AssertMsgFailed(("spawn/exec failed rc=%Rrc\n", rc)); /* this migth be annoying... */
     return rc;
 }
+
+
+RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArgs, RTENV hEnv, uint32_t fFlags,
+                               PCRTHANDLE phStdIn, PCRTHANDLE phStdOut, PCRTHANDLE phStdErr, const char *pszAsUser,
+                               PRTPROCESS phProcess)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
 
 
 RTR3DECL(int) RTProcWait(RTPROCESS Process, unsigned fFlags, PRTPROCSTATUS pProcStatus)
