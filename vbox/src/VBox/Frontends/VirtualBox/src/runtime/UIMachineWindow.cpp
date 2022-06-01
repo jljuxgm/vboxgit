@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 27728 2010-03-26 11:05:27Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 27873 2010-03-31 10:04:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,6 +24,8 @@
 /* Global includes */
 #include <QCloseEvent>
 #include <QTimer>
+
+#include <VBox/version.h>
 
 /* Local includes */
 #include "COMDefs.h"
@@ -117,7 +119,7 @@ void UIMachineWindow::retranslateUi()
 #ifdef VBOX_OSE
     m_strWindowTitlePrefix = UIMachineLogic::tr("VirtualBox OSE");
 #else
-    m_strWindowTitlePrefix = UIMachineLogic::tr("Sun VirtualBox");
+    m_strWindowTitlePrefix = VBOX_PRODUCT;
 #endif
 #ifdef VBOX_BLEEDING_EDGE
     m_strWindowTitlePrefix += UIMachineLogic::tr(" EXPERIMENTAL build %1r%2 - %3")

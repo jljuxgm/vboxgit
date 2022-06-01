@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleWnd.cpp 27728 2010-03-26 11:05:27Z vboxsync $ */
+/* $Id: VBoxConsoleWnd.cpp 27873 2010-03-31 10:04:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -78,6 +78,7 @@
 #endif
 
 #include <VBox/VMMDev.h> /** @todo @bugref{4084} */
+#include <VBox/version.h>
 #include <iprt/buildconfig.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
@@ -1550,7 +1551,7 @@ void VBoxConsoleWnd::retranslateUi()
 #ifdef VBOX_OSE
     mCaptionPrefix = tr ("VirtualBox OSE");
 #else
-    mCaptionPrefix = tr ("Sun VirtualBox");
+    mCaptionPrefix = VBOX_PRODUCT;
 #endif
 
 #ifdef VBOX_BLEEDING_EDGE
