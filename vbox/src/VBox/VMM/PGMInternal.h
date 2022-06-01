@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 24723 2009-11-17 14:09:41Z vboxsync $ */
+/* $Id: PGMInternal.h 24767 2009-11-18 17:15:02Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3308,6 +3308,7 @@ int             pgmR3InitSavedState(PVM pVM, uint64_t cbRam);
 int             pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys);
 int             pgmPhysPageLoadIntoTlb(PPGM pPGM, RTGCPHYS GCPhys);
 int             pgmPhysPageLoadIntoTlbWithPage(PPGM pPGM, PPGMPAGE pPage, RTGCPHYS GCPhys);
+void            pgmPhysPageMakeWriteMonitoredWritable(PVM pVM, PPGMPAGE pPage);
 int             pgmPhysPageMakeWritable(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys);
 int             pgmPhysPageMakeWritableUnlocked(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys);
 int             pgmPhysPageMakeWritableAndMap(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void **ppv);
