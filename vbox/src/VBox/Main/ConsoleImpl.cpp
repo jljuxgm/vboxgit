@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 29518 2010-05-17 10:06:22Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 29550 2010-05-17 14:13:14Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4674,7 +4674,7 @@ void Console::onMousePointerShapeChange(bool fVisible, bool fAlpha,
         ::memcpy( mCallbackData.mpsc.shape.raw(), aShape.raw(), aShape.size());
     }
     else
-        mCallbackData.mpsc.shape.setNull();
+        mCallbackData.mpsc.shape.resize(0);
     mCallbackData.mpsc.valid = true;
 
     CONSOLE_DO_CALLBACKS(OnMousePointerShapeChange,(fVisible, fAlpha, xHot, yHot, width, height, ComSafeArrayInArg(pShape)));
