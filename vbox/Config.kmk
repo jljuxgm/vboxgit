@@ -1,4 +1,4 @@
-# $Id: Config.kmk 26725 2010-02-24 08:27:14Z vboxsync $
+# $Id: Config.kmk 26743 2010-02-24 13:09:44Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -603,10 +603,9 @@ if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  VBOX_WITH_VMMR0_DISABLE_PREEMPTION = 1
 endif
 ## For testing deadlock detection and lock order validation.
-# (Temporary, will be made default for debug and strict builds soon.)
-if1of ($(KBUILD_TARGET),)
- VBOX_WITH_STRICT_LOCKS = 1
-endif
+# If issues are found, create high priority defects and temporarily comment
+# the next line.
+VBOX_WITH_STRICT_LOCKS = 1
 
 
 #
@@ -4036,7 +4035,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 26725 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 26743 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
