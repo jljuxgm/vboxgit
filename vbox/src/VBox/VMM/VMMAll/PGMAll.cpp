@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 26277 2010-02-05 04:44:42Z vboxsync $ */
+/* $Id: PGMAll.cpp 26685 2010-02-22 17:48:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2105,6 +2105,17 @@ VMMDECL(bool) PGMIsLockOwner(PVM pVM)
     return PDMCritSectIsOwner(&pVM->pgm.s.CritSect);
 }
 
+
+/**
+ * Enable or disable large page usage
+ *
+ * @param   pVM             The VM to operate on.
+ * @param   fUseLargePages  Use/not use large pages
+ */
+VMMDECL(void) PGMSetLargePageUsage(PVM pVM, bool fUseLargePages)
+{
+      pVM->fUseLargePages = fUseLargePages;
+}
 
 /**
  * Acquire the PGM lock.

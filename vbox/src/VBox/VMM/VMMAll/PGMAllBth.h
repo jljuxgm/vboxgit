@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 26635 2010-02-18 18:24:40Z vboxsync $ */
+/* $Id: PGMAllBth.h 26685 2010-02-22 17:48:23Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2936,12 +2936,13 @@ PGM_BTH_DECL(int, SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RTGCPTR 
     Assert(!(PdeDst.u & PGM_PDFLAGS_MAPPING));
     Assert(!PdeDst.n.u1Present); /* We're only supposed to call SyncPT on PDE!P and conflicts.*/
 
-# if (PGM_SHW_TYPE == PGM_TYPE_EPT) && (HC_ARCH_BITS == 64) && defined(RT_OS_WINDOWS) && defined(DEBUG_sandervl)
+# if (PGM_SHW_TYPE == PGM_TYPE_EPT) && (HC_ARCH_BITS == 64) && defined(RT_OS_WINDOWS)
+    if (PGMIsUsingLargePages(pVM))
     {
         RTHCPHYS HCPhys;
         rc = pgmPhysAllocLargePage(pVM, GCPtrPage & SHW_PDE_PG_MASK, &HCPhys);
         if (RT_SUCCESS(rc))
-        {   
+        {
             PdeDst.u &= X86_PDE_AVL_MASK;
             PdeDst.u |= HCPhys;
             PdeDst.n.u1Present   = 1;

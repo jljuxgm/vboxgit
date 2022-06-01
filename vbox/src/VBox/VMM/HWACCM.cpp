@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 26176 2010-02-02 22:20:13Z vboxsync $ */
+/* $Id: HWACCM.cpp 26685 2010-02-22 17:48:23Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1156,6 +1156,11 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                     LogRel(("HWACCM: EPT root page                 = %RHp\n", PGMGetHyperCR3(VMMGetCpu(pVM))));
                     if (pVM->hwaccm.s.vmx.fUnrestrictedGuest)
                         LogRel(("HWACCM: Unrestricted guest execution enabled!\n"));
+
+#ifdef DEBUG_sandervl
+                    /* Use large (2 MB) pages for our EPT PDEs where possible. */
+                    PGMSetLargePageUsage(pVM, true);
+#endif
                 }
                 else
                     Assert(!pVM->hwaccm.s.vmx.fUnrestrictedGuest);
