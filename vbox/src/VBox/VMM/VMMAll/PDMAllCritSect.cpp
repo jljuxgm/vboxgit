@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 25406 2009-12-15 14:23:53Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 25409 2009-12-15 15:04:41Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -108,7 +108,7 @@ DECL_FORCE_INLINE(int) pdmCritSectEnterFirst(PPDMCRITSECT pCritSect, RTNATIVETHR
     ASMAtomicWriteHandle(&pCritSect->s.Core.NativeThreadOwner, hNativeSelf);
 
 # ifdef PDMCRITSECT_STRICT
-    RTThreadWriteLockInc(RTLockValidatorSetOwner(pCritSect->s.Core.pValidatorRec, NIL_RTTHREAD, PDMCRITSECT_STRICT_POS_ARGS));
+    RTLockValidatorWriteLockInc(RTLockValidatorSetOwner(pCritSect->s.Core.pValidatorRec, NIL_RTTHREAD, PDMCRITSECT_STRICT_POS_ARGS));
 # endif
 
     STAM_PROFILE_ADV_START(&pCritSect->s.StatLocked, l);
@@ -402,7 +402,7 @@ VMMR3DECL(int) PDMR3CritSectEnterEx(PPDMCRITSECT pCritSect, bool fCallRing3)
         &&  fCallRing3
         &&  pCritSect->s.Core.pValidatorRec
         &&  pCritSect->s.Core.pValidatorRec->hThread != NIL_RTTHREAD)
-        RTThreadWriteLockDec(RTLockValidatorUnsetOwner(pCritSect->s.Core.pValidatorRec));
+        RTLockValidatorWriteLockDec(RTLockValidatorUnsetOwner(pCritSect->s.Core.pValidatorRec));
     return rc;
 }
 #endif /* IN_RING3 */
@@ -448,7 +448,7 @@ VMMDECL(void) PDMCritSectLeave(PPDMCRITSECT pCritSect)
         pCritSect->s.EventToSignal   = NIL_RTSEMEVENT;
 #  if defined(PDMCRITSECT_STRICT)
         if (pCritSect->s.Core.pValidatorRec->hThread != NIL_RTTHREAD)
-            RTThreadWriteLockDec(RTLockValidatorUnsetOwner(pCritSect->s.Core.pValidatorRec));
+            RTLockValidatorWriteLockDec(RTLockValidatorUnsetOwner(pCritSect->s.Core.pValidatorRec));
 #  endif
         Assert(!pCritSect->s.Core.pValidatorRec || pCritSect->s.Core.pValidatorRec->hThread == NIL_RTTHREAD);
 # endif

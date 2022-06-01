@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 23019 2009-09-15 06:41:25Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 25409 2009-12-15 15:04:41Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1263,7 +1263,7 @@ static REMFNDESC g_aRTImports[] =
     { "RTStrPrintfV",                           (void *)(uintptr_t)&RTStrPrintfV,                   &g_aArgsRTStrPrintfV[0],                    RT_ELEMENTS(g_aArgsRTStrPrintfV),                      REMFNDESC_FLAGS_RET_INT | REMFNDESC_FLAGS_VALIST, sizeof(size_t), NULL },
     { "RTThreadSelf",                           (void *)(uintptr_t)&RTThreadSelf,                   NULL,                                       0,                                                     REMFNDESC_FLAGS_RET_INT,    sizeof(RTTHREAD),    NULL },
     { "RTThreadNativeSelf",                     (void *)(uintptr_t)&RTThreadNativeSelf,             NULL,                                       0,                                                     REMFNDESC_FLAGS_RET_INT, sizeof(RTNATIVETHREAD), NULL },
-    { "RTThreadGetWriteLockCount",              (void *)(uintptr_t)&RTThreadGetWriteLockCount,      &g_aArgsThread[0],                          0,                                                     REMFNDESC_FLAGS_RET_INT,    sizeof(int32_t),     NULL },
+    { "RTLockValidatorWriteLockGetCount",       (void *)(uintptr_t)&RTLockValidatorWriteLockGetCount, &g_aArgsThread[0],                        0,                                                     REMFNDESC_FLAGS_RET_INT,    sizeof(int32_t),     NULL },
 };
 
 

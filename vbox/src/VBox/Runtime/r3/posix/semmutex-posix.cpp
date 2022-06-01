@@ -1,4 +1,4 @@
-/* $Id: semmutex-posix.cpp 25398 2009-12-15 12:58:08Z vboxsync $ */
+/* $Id: semmutex-posix.cpp 25409 2009-12-15 15:04:41Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphore, POSIX.
  */
@@ -237,7 +237,7 @@ DECL_FORCE_INLINE(int) rtSemMutexRequest(RTSEMMUTEX MutexSem, unsigned cMillies,
     pThis->Owner = Self;
     ASMAtomicWriteU32(&pThis->cNesting, 1);
 #ifdef RTSEMMUTEX_STRICT
-    RTThreadWriteLockInc(RTLockValidatorSetOwner(&pThis->ValidatorRec, hThreadSelf, RTSEMMUTEX_STRICT_POS_ARGS));
+    RTLockValidatorWriteLockInc(RTLockValidatorSetOwner(&pThis->ValidatorRec, hThreadSelf, RTSEMMUTEX_STRICT_POS_ARGS));
 #endif
 
     return VINF_SUCCESS;
@@ -320,7 +320,7 @@ RTDECL(int)  RTSemMutexRelease(RTSEMMUTEX MutexSem)
      * Clear the state. (cNesting == 1)
      */
 #ifdef RTSEMMUTEX_STRICT
-    RTThreadWriteLockDec(RTLockValidatorUnsetOwner(&pThis->ValidatorRec));
+    RTLockValidatorWriteLockDec(RTLockValidatorUnsetOwner(&pThis->ValidatorRec));
 #endif
     pThis->Owner = (pthread_t)-1;
     ASMAtomicXchgU32(&pThis->cNesting, 0);

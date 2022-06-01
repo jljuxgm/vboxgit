@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 25398 2009-12-15 12:58:08Z vboxsync $ */
+/* $Id: critsect-generic.cpp 25409 2009-12-15 15:04:41Z vboxsync $ */
 /** @file
  * IPRT - Critical Section, Generic.
  */
@@ -243,7 +243,7 @@ RTDECL(int) RTCritSectTryEnter(PRTCRITSECT pCritSect)
     pCritSect->cNestings = 1;
     ASMAtomicWriteHandle(&pCritSect->NativeThreadOwner, NativeThreadSelf);
 #ifdef RTCRITSECT_STRICT
-    RTThreadWriteLockInc(RTLockValidatorSetOwner(pCritSect->pValidatorRec, ThreadSelf, uId, RT_SRC_POS_ARGS));
+    RTLockValidatorWriteLockInc(RTLockValidatorSetOwner(pCritSect->pValidatorRec, ThreadSelf, uId, RT_SRC_POS_ARGS));
 #endif
 
     return VINF_SUCCESS;
@@ -338,7 +338,7 @@ RTDECL(int) RTCritSectEnter(PRTCRITSECT pCritSect)
     pCritSect->cNestings = 1;
     ASMAtomicWriteHandle(&pCritSect->NativeThreadOwner, NativeThreadSelf);
 #ifdef RTCRITSECT_STRICT
-    RTThreadWriteLockInc(RTLockValidatorSetOwner(pCritSect->pValidatorRec, hThreadSelf, uId, RT_SRC_POS_ARGS));
+    RTLockValidatorWriteLockInc(RTLockValidatorSetOwner(pCritSect->pValidatorRec, hThreadSelf, uId, RT_SRC_POS_ARGS));
 #endif
 
     return VINF_SUCCESS;
@@ -391,7 +391,7 @@ RTDECL(int) RTCritSectLeave(PRTCRITSECT pCritSect)
          * Decrement waiters, if >= 0 then we have to wake one of them up.
          */
 #ifdef RTCRITSECT_STRICT
-        RTThreadWriteLockInc(RTLockValidatorUnsetOwner(pCritSect->pValidatorRec));
+        RTLockValidatorWriteLockInc(RTLockValidatorUnsetOwner(pCritSect->pValidatorRec));
 #endif
         ASMAtomicWriteHandle(&pCritSect->NativeThreadOwner, NIL_RTNATIVETHREAD);
         if (ASMAtomicDecS32(&pCritSect->cLockers) >= 0)
