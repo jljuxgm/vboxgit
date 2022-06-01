@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 29267 2010-05-09 21:21:36Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -27,7 +27,9 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <VBox/sup.h>
+#ifndef RT_NO_GIP
+# include <VBox/sup.h>
+#endif
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/buildconfig.h>
@@ -47,9 +49,11 @@
 *******************************************************************************/
 PFNRT g_VBoxRTDeps[] =
 {
+#ifndef RT_NO_GIP
     (PFNRT)SUPR3Init,
     (PFNRT)SUPR3PageAllocEx,
     (PFNRT)SUPSemEventCreate,
+#endif
     (PFNRT)xmlModuleOpen,
     (PFNRT)MD5_Init,
     (PFNRT)RC4,

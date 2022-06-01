@@ -1,4 +1,4 @@
-/* $Id: timesup.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: timesup.cpp 29267 2010-05-09 21:21:36Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib.
  */
@@ -35,7 +35,7 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/log.h>
-#ifndef IN_GUEST
+#if !defined(IN_GUEST) && !defined(RT_NO_GIP)
 # include <iprt/asm.h>
 # include <iprt/asm-amd64-x86.h>
 # include <VBox/sup.h>

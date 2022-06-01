@@ -1,10 +1,10 @@
-/* $Id: timesupref.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: timesupref.cpp 29267 2010-05-09 21:21:36Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib, the C Implementation.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -24,7 +24,7 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef IN_GUEST
+#if !defined(IN_GUEST) && !defined(RT_NO_GIP)
 
 /*******************************************************************************
 *   Header Files                                                               *
@@ -81,5 +81,5 @@ RT_EXPORT_SYMBOL(RTTimeNanoTSLFenceSync);
 RT_EXPORT_SYMBOL(RTTimeNanoTSLFenceAsync);
 
 
-#endif /* !IN_GUEST */
+#endif /* !IN_GUEST && !RT_NO_GIP */
 
