@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 25502 2009-12-18 17:43:04Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 25503 2009-12-18 17:46:19Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1952,9 +1952,8 @@ static int pgmPoolCacheFreeOne(PPGMPOOL pPool, uint16_t iUser)
 
     /*
      * Found a usable page, flush it and return.
-     */
-    pgmPoolFlushPage(pPool, pPage); 
-    return rc; 
+     */   
+    return pgmPoolFlushPage(pPool, pPage);  
 }
 
 
