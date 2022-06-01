@@ -1,4 +1,4 @@
-/* $Id: packspu_texture.c 26048 2010-01-26 14:21:26Z vboxsync $ */
+/* $Id: packspu_texture.c 26407 2010-02-10 12:10:01Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -35,4 +35,10 @@ void PACKSPU_APIENTRY packspu_BindTexture(GLenum target, GLuint texture)
 {
     crStateBindTexture(target, texture);
     crPackBindTexture(target, texture);
+}
+
+void PACKSPU_APIENTRY packspu_DeleteTextures(GLsizei n, const GLuint * textures)
+{
+    crStateDeleteTextures(n, textures);
+    crPackDeleteTextures(n, textures);
 }
