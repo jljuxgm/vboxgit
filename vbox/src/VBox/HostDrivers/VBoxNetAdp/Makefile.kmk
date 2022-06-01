@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24675 2009-11-15 15:45:49Z vboxsync $
+# $Id: Makefile.kmk 26336 2010-02-08 22:30:14Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Adapter Driver (VBoxNetAdp).
 #
@@ -140,7 +140,7 @@ $$(PATH_VBoxNetAdp-sh)/build_in_tmp: \
 		$(VBOX_VERSION_STAMP) \
 		| $$(dir $$@)
 	$(call MSG_TOOL,Creating,,$@)
-	$(QUIET)$(SED) -e "s;_VERSION_;${VBOX_VERSION_STRING};g; s;_MODULE_;vboxnetadp;g" --output $@ $<
+	$(QUIET)$(SED) -e "s;_VERSION_;${VBOX_VERSION_STRING};g; s;_MODULE_;vboxnetadp;g; s;_BUILDTYPE_;${KBUILD_TYPE};g" --output $@ $<
 	$(QUIET)chmod 0755 $@
 
 $$(PATH_VBoxNetAdp-src)/dkms.conf: \

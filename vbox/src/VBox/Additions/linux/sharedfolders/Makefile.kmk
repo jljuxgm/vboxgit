@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24376 2009-11-05 10:57:34Z vboxsync $
+# $Id: Makefile.kmk 26336 2010-02-08 22:30:14Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxvfs (linux shared folders module).
 #
@@ -101,7 +101,7 @@ $$(PATH_vboxvfs-sh)/build_in_tmp: \
 		$(VBOX_VERSION_STAMP) \
 		| $$(dir $$@)
 	$(call MSG_TOOL,Creating,,$@)
-	$(QUIET)$(SED) -e "s;_VERSION_;${VBOX_VERSION_STRING};g; s;_MODULE_;vboxvfs;g" --output $@ $<
+	$(QUIET)$(SED) -e "s;_VERSION_;${VBOX_VERSION_STRING};g; s;_MODULE_;vboxvfs;g; s;_BUILDTYPE_;${KBUILD_TYPE};g" --output $@ $<
 	$(QUIET)chmod 0755 $@
 
 $$(PATH_vboxvfs-mod)/dkms.conf: \

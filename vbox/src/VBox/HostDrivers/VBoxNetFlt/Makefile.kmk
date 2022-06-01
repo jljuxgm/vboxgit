@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25582 2009-12-25 10:25:46Z vboxsync $
+# $Id: Makefile.kmk 26336 2010-02-08 22:30:14Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -397,7 +397,7 @@ ifeq ($(KBUILD_TARGET),linux)
 		$(VBOX_VERSION_STAMP) \
 		| $$(dir $$@)
 	$(call MSG_TOOL,Creating,,$@)
-	$(QUIET)$(SED) -e "s;_VERSION_;${VBOX_VERSION_STRING};g; s;_MODULE_;vboxnetflt;g" --output $@ $<
+	$(QUIET)$(SED) -e "s;_VERSION_;${VBOX_VERSION_STRING};g; s;_MODULE_;vboxnetflt;g; s;_BUILDTYPE_;${KBUILD_TYPE};g" --output $@ $<
 	$(QUIET)chmod 0755 $@
 
  # Script needed for building the kernel module

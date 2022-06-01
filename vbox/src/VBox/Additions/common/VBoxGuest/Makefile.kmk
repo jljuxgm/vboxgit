@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25590 2009-12-29 13:03:48Z vboxsync $
+# $Id: Makefile.kmk 26336 2010-02-08 22:30:14Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -120,7 +120,7 @@ ifeq ($(KBUILD_TARGET),linux)
  		$(VBOX_VERSION_STAMP) \
  		| $$(dir $$@)
 	$(call MSG_TOOL,Creating,,$@)
-	$(QUIET)$(SED) -e "s;_VERSION_;${VBOX_VERSION_STRING};g; s;_MODULE_;vboxguest;g" --output $@ $<
+	$(QUIET)$(SED) -e "s;_VERSION_;${VBOX_VERSION_STRING};g; s;_MODULE_;vboxguest;g; s;_BUILDTYPE_;${KBUILD_TYPE};g" --output $@ $<
 	$(QUIET)$(CHMOD) 0755 $@
 
 endif # Linux
