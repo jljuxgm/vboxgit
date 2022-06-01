@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 27167 2010-03-08 14:19:31Z vboxsync $ */
+/* $Id: HWACCM.cpp 27168 2010-03-08 14:21:28Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1289,15 +1289,15 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
 
                 if (pVM->hwaccm.s.fNestedPaging)
                 {
+                    LogRel(("HWACCM:    Enabled nested paging\n"));
 #if HC_ARCH_BITS == 64
                     if (pVM->hwaccm.s.fLargePages)
                     {
                         /* Use large (2 MB) pages for our EPT PDEs where possible. */
                         PGMSetLargePageUsage(pVM, true);
-                        LogRel(("HWACCM: Large page support enabled!\n"));
+                        LogRel(("HWACCM:    Large page support enabled!\n"));
                     }
 #endif
-                    LogRel(("HWACCM:    Enabled nested paging\n"));
                 }
 
                 hwaccmR3DisableRawMode(pVM);
