@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 27851 2010-03-31 08:22:22Z vboxsync $
+// $Id: vbox.dsl 28487 2010-04-19 17:59:26Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -147,6 +147,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
             CPUC,  32,
             CPET,  32,
             CPEV,  32,
+            NICA,  32,
             Offset (0x80),
             ININ, 32,
             Offset (0x200),
@@ -759,7 +760,37 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                     }
                  }
              }
+            
+            // NIC
+            Device (GIGE)
+            {                
+                Method(_ADR, 0, NotSerialized)
+                {
+                    Return (NICA)
+                }
 
+                Name (_PRW, Package (0x02)
+                            {
+                               0x09,
+                               0x04
+                            })
+
+                Method (EWOL, 1, NotSerialized)
+                {
+                    Return (0x00)
+                }
+
+                Method (_STA, 0, NotSerialized)
+                {
+                    if (LEqual (NICA, Zero)) {
+                       Return (0x00)
+                    }
+                    else {
+                        Return (0x0F)
+                    }
+                }
+            }
+           
             // Control method battery
             Device (BAT0)
             {
