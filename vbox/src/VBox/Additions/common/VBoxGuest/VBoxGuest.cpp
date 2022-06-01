@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 26631 2010-02-18 16:34:03Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 26632 2010-02-18 16:44:13Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -454,7 +454,7 @@ void VBoxGuestDeleteDevExt(PVBOXGUESTDEVEXT pDevExt)
 {
     int rc2;
     Log(("VBoxGuestDeleteDevExt:\n"));
-    LogRel(("VBoxGuest: The additions driver is terminating.\n"));
+    Log(("VBoxGuest: The additions driver is terminating.\n"));
 
     /*
      * Unfix the guest mappings, filter all events and clear

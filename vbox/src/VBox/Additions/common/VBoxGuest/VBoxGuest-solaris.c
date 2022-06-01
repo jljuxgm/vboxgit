@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 26629 2010-02-18 15:40:07Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 26632 2010-02-18 16:44:13Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -381,7 +381,7 @@ static int VBoxGuestSolarisDetach(dev_info_t *pDip, ddi_detach_cmd_t enmCmd)
             ddi_regs_map_free(&g_PciIOHandle);
             ddi_regs_map_free(&g_PciMMIOHandle);
             ddi_remove_minor_node(pDip, NULL);
-
+            VBoxGuestDeleteDevExt(&g_DevExt);
             RTR0Term();
             return DDI_SUCCESS;
         }
