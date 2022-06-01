@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 28134 2010-04-09 10:07:05Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 28208 2010-04-12 14:07:33Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -134,8 +134,6 @@ typedef DRVINTNET *PDRVINTNET;
 
 #ifdef IN_RING3
 
-/* -=-=-=-=- PDMINETWORKUP -=-=-=-=- */
-
 
 /**
  * Updates the MAC address on the kernel side.
@@ -191,6 +189,7 @@ static int drvR3IntNetSetActive(PDRVINTNET pThis, bool fActive)
     return rc;
 }
 
+/* -=-=-=-=- PDMINETWORKUP -=-=-=-=- */
 
 /**
  * @interface_method_impl{PDMINETWORKUP,pfnAllocBuf}
