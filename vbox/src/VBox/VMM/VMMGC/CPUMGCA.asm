@@ -1,4 +1,4 @@
-; $Id: CPUMGCA.asm 28800 2010-04-27 08:22:32Z vboxsync $
+; $Id: CPUMGCA.asm 30164 2010-06-11 14:16:09Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -69,7 +69,7 @@ BEGINPROC CPUMGCRestoreInt
     mov     eax, [esp + 4]              ; get argument
     mov     edx, IMP(g_CPUM)
     ; Convert to CPUMCPU pointer
-    add     edx, [edx + CPUM.ulOffCPUMCPU]
+    add     edx, [edx + CPUM.offCPUMCPU0]
 
     mov     ecx, [edx + CPUMCPU.Guest.eip]
     mov     [eax +  0h], ecx
@@ -248,7 +248,7 @@ ENDPROC CPUMGCCallV86Code
 align 16
 BEGINPROC_EXPORTED CPUMGCResumeGuest
     ; Convert to CPUMCPU pointer
-    add     edx, [edx + CPUM.ulOffCPUMCPU]
+    add     edx, [edx + CPUM.offCPUMCPU0]
     ;
     ; Setup iretd
     ;
@@ -326,7 +326,7 @@ ENDPROC     CPUMGCResumeGuest
 align 16
 BEGINPROC_EXPORTED CPUMGCResumeGuestV86
     ; Convert to CPUMCPU pointer
-    add     edx, [edx + CPUM.ulOffCPUMCPU]
+    add     edx, [edx + CPUM.offCPUMCPU0]
     ;
     ; Setup iretd
     ;

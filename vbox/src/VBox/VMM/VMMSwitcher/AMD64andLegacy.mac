@@ -1,4 +1,4 @@
-; $Id: AMD64andLegacy.mac 28800 2010-04-27 08:22:32Z vboxsync $
+; $Id: AMD64andLegacy.mac 30164 2010-06-11 14:16:09Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for AMD64 to PAE and 32-bit.
 ;
@@ -195,7 +195,7 @@ BITS 64
 ALIGNCODE(16)
 BEGINPROC vmmR0HostToGuestAsm
     ;; Store the offset from CPUM to CPUMCPU in r8
-    mov     r8d, [rdx + CPUM.ulOffCPUMCPU]
+    mov     r8d, [rdx + CPUM.offCPUMCPU0]
 
     ;;
     ;; Save CPU host context
@@ -942,7 +942,7 @@ GLOBALNAME HCExitTarget
     ; Load CPUM pointer into edx
     mov     rdx, [NAME(pCpumHC) wrt rip]
     ; Load the CPUMCPU offset.
-    mov     r8d, [rdx + CPUM.ulOffCPUMCPU]
+    mov     r8d, [rdx + CPUM.offCPUMCPU0]
 
     ; activate host gdt and idt
     lgdt    [rdx + r8 + CPUMCPU.Host.gdtr]
