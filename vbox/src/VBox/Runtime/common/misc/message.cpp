@@ -1,4 +1,4 @@
-/* $Id: message.cpp 24825 2009-11-20 14:41:05Z vboxsync $ */
+/* $Id: message.cpp 24826 2009-11-20 14:41:26Z vboxsync $ */
 /** @file
  * IPRT - Error reporting to standard error.
  */
@@ -48,6 +48,7 @@ RTDECL(int)  RTMsgError(const char *pszFormat, ...)
     va_end(va);
     return rc;
 }
+RT_EXPORT_SYMBOL(RTMsgError);
 
 
 RTDECL(int)  RTMsgErrorV(const char *pszFormat, va_list va)
@@ -94,4 +95,6 @@ RTDECL(int)  RTMsgErrorV(const char *pszFormat, va_list va)
 
     return VINF_SUCCESS;
 }
+RT_EXPORT_SYMBOL(RTMsgErrorV);
+
 
