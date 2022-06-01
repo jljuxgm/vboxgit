@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 27708 2010-03-25 14:36:56Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 27724 2010-03-26 10:22:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3186,6 +3186,7 @@ void Display::handleVHWACommandProcess(PPDMIDISPLAYCONNECTOR pInterface, PVBOXVH
     if(id < mcMonitors)
     {
         IFramebuffer *pFramebuffer = maFramebuffers[id].pFramebuffer;
+        Assert (pFramebuffer);
 
         if (pFramebuffer != NULL)
         {
