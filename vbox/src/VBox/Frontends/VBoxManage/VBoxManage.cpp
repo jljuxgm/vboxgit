@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 24915 2009-11-24 15:09:43Z vboxsync $ */
+/* $Id: VBoxManage.cpp 25376 2009-12-14 19:27:44Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -365,7 +365,7 @@ int main(int argc, char *argv[])
         { "startvm",          handleStartVM },
         { "controlvm",        handleControlVM },
         { "discardstate",     handleDiscardState },
-        { "adoptstate",       handleAdoptdState },
+        { "adoptstate",       handleAdoptState },
         { "snapshot",         handleSnapshot },
         { "openmedium",       handleOpenMedium },
         { "registerimage",    handleOpenMedium }, /* backward compatiblity */

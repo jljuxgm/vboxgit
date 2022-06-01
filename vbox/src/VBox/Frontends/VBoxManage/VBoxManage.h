@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 24907 2009-11-24 14:22:47Z vboxsync $ */
+/* $Id: VBoxManage.h 25376 2009-12-14 19:27:44Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -192,7 +192,7 @@ int handleUnregisterVM(HandlerArg *a);
 int handleCreateVM(HandlerArg *a);
 int handleStartVM(HandlerArg *a);
 int handleDiscardState(HandlerArg *a);
-int handleAdoptdState(HandlerArg *a);
+int handleAdoptState(HandlerArg *a);
 int handleGetExtraData(HandlerArg *a);
 int handleSetExtraData(HandlerArg *a);
 int handleSetProperty(HandlerArg *a);
