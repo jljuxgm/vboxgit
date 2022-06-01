@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 27271 2010-03-11 11:08:29Z vboxsync $ */
+/* $Id: PGMInternal.h 27282 2010-03-11 13:42:03Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2859,6 +2859,7 @@ typedef struct PGM
     STAMCOUNTER StatTrackAliased;                   /**< The number of times switching to cRef2, i.e. the page is being shadowed by two PTs. */
     STAMCOUNTER StatTrackAliasedMany;               /**< The number of times we're tracking using cRef2. */
     STAMCOUNTER StatTrackAliasedLots;               /**< The number of times we're hitting pages which has overflowed cRef2. */
+    STAMCOUNTER StatTrackNoExtentsLeft;             /**< The number of times the extent list was exhausted. */
     STAMCOUNTER StatTrackOverflows;                 /**< The number of times the extent list grows to long. */
     STAMPROFILE StatTrackDeref;                     /**< Profiling of SyncPageWorkerTrackDeref (expensive). */
 

@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 27281 2010-03-11 13:20:05Z vboxsync $ */
+/* $Id: PGM.cpp 27282 2010-03-11 13:42:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1691,6 +1691,7 @@ static void pgmR3InitStats(PVM pVM)
     PGM_REG_COUNTER(&pPGM->StatTrackAliasedMany,              "/PGM/Track/AliasedMany",             "The number of times we're tracking using cRef2.");
     PGM_REG_COUNTER(&pPGM->StatTrackAliasedLots,              "/PGM/Track/AliasedLots",             "The number of times we're hitting pages which has overflowed cRef2");
     PGM_REG_COUNTER(&pPGM->StatTrackOverflows,                "/PGM/Track/Overflows",               "The number of times the extent list grows too long.");
+    PGM_REG_COUNTER(&pPGM->StatTrackNoExtentsLeft,            "/PGM/Track/NoExtentLeft",            "The number of times the extent list was exhausted.");
     PGM_REG_PROFILE(&pPGM->StatTrackDeref,                    "/PGM/Track/Deref",                   "Profiling of SyncPageWorkerTrackDeref (expensive).");
 
 # undef PGM_REG_COUNTER

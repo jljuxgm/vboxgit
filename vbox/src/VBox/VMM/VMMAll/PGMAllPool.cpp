@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 27271 2010-03-11 11:08:29Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 27282 2010-03-11 13:42:03Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3827,7 +3827,7 @@ static uint16_t pgmPoolTrackPhysExtInsert(PVM pVM, uint16_t iPhysExt, uint16_t i
     PPGMPOOLPHYSEXT pNew = pgmPoolTrackPhysExtAlloc(pVM, &iPhysExt);
     if (!pNew)
     {
-        STAM_COUNTER_INC(&pVM->pgm.s.StatTrackOverflows);
+        STAM_COUNTER_INC(&pVM->pgm.s.StatTrackNoExtentsLeft);
         pgmPoolTrackPhysExtFreeList(pVM, iPhysExtStart);
         LogFlow(("pgmPoolTrackPhysExtInsert: pgmPoolTrackPhysExtAlloc failed iShwPT=%d\n", iShwPT));
         return PGMPOOL_TD_MAKE(PGMPOOL_TD_CREFS_PHYSEXT, PGMPOOL_TD_IDX_OVERFLOWED);
