@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 28793 2010-04-27 07:21:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -51,7 +51,11 @@
 VMMR3DECL(int) PGMR3SharedModuleRegister(PVM pVM, char *pszModuleName, char *pszVersion, RTGCPTR GCBaseAddr, uint32_t cbModule,
                                          unsigned cRegions, VMMDEVSHAREDREGIONDESC *pRegions)
 {
+#ifdef VBOX_WITH_PAGE_SHARING
     return GMMR3RegisterSharedModule(pVM, pszModuleName, pszVersion, GCBaseAddr, cbModule, cRegions, pRegions);
+#else 
+    return VERR_NOT_IMPLEMENTED;
+#endif
 }
 
 
@@ -67,7 +71,11 @@ VMMR3DECL(int) PGMR3SharedModuleRegister(PVM pVM, char *pszModuleName, char *psz
  */
 VMMR3DECL(int) PGMR3SharedModuleUnregister(PVM pVM, char *pszModuleName, char *pszVersion, RTGCPTR GCBaseAddr, uint32_t cbModule)
 {
+#ifdef VBOX_WITH_PAGE_SHARING
     return GMMR3UnregisterSharedModule(pVM, pszModuleName, pszVersion, GCBaseAddr, cbModule);
+#else 
+    return VERR_NOT_IMPLEMENTED;
+#endif
 }
 
 
@@ -79,5 +87,9 @@ VMMR3DECL(int) PGMR3SharedModuleUnregister(PVM pVM, char *pszModuleName, char *p
  */
 VMMR3DECL(int) PGMR3SharedModuleCheck(PVM pVM)
 {
+#ifdef VBOX_WITH_PAGE_SHARING
     return GMMR3CheckSharedModules(pVM);
+#else 
+    return VERR_NOT_IMPLEMENTED;
+#endif
 }
