@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 27882 2010-03-31 11:52:27Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 27886 2010-03-31 12:18:38Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -928,18 +928,6 @@ int Appliance::TaskOVF::updateProgress(unsigned uPercent, void *pvUser)
         pTask->progress->SetCurrentOperationProgress(uPercent);
     }
     return VINF_SUCCESS;
-}
-
-int Appliance::TaskExportOVF::startThread()
-{
-    int vrc = RTThreadCreate(NULL, Appliance::taskThreadWriteOVF, this,
-                             0, RTTHREADTYPE_MAIN_HEAVY_WORKER, 0,
-                             "Appliance::Task");
-
-    ComAssertMsgRCRet(vrc,
-                      ("Could not create taskThreadWriteOVF (%Rrc)\n", vrc), E_FAIL);
-
-    return S_OK;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
