@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 27387 2010-03-15 22:40:34Z vboxsync $ */
+/* $Id: process-win.cpp 27416 2010-03-16 16:43:58Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -307,7 +307,7 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
                     else
                         rc = RTErrConvertFromWin32(GetLastError());
 
-                    if (hToken == INVALID_HANDLE_VALUE)
+                    if (hToken != INVALID_HANDLE_VALUE)
                         CloseHandle(hToken);
                 }
                 RTUtf16Free(pwszExec);
