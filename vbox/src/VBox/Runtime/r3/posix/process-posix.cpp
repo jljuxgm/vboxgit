@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 23919 2009-10-20 17:48:40Z vboxsync $ */
+/* $Id: process-posix.cpp 26316 2010-02-07 21:30:39Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -361,7 +361,7 @@ RTR3DECL(int)   RTProcDaemonize(bool fNoChDir, bool fNoClose, const char *pszPid
     }
 
     if (!fNoChDir)
-        chdir("/");
+        int rcChdir = chdir("/");
 
     /* Second fork to lose session leader status. */
     pid = fork();
@@ -374,8 +374,10 @@ RTR3DECL(int)   RTProcDaemonize(bool fNoChDir, bool fNoClose, const char *pszPid
         {
             char szBuf[256];
             size_t cbPid = RTStrPrintf(szBuf, sizeof(szBuf), "%d\n", pid);
-            write(fdPidfile, szBuf, cbPid);
+            int rcWrite = write(fdPidfile, szBuf, cbPid);
             close(fdPidfile);
+	    if (rcWrite < 0)
+                return RTErrConvertFromErrno(errno)
         }
         exit(0);
     }
