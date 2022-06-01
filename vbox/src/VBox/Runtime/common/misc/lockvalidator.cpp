@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 27292 2010-03-11 16:46:48Z vboxsync $ */
+/* $Id: lockvalidator.cpp 28267 2010-04-13 17:11:44Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -4278,6 +4278,116 @@ RTDECL(bool) RTLockValidatorIsBlockedThreadInValidator(RTTHREAD hThread)
     return fRet;
 }
 RT_EXPORT_SYMBOL(RTLockValidatorIsBlockedThreadInValidator);
+
+
+RTDECL(bool) RTLockValidatorHoldsLocksInClass(RTTHREAD hCurrentThread, RTLOCKVALCLASS hClass)
+{
+    bool            fRet    = false;
+    if (hCurrentThread == NIL_RTTHREAD)
+        hCurrentThread = RTThreadSelf();
+    else
+        Assert(hCurrentThread == RTThreadSelf());
+    PRTTHREADINT    pThread = rtThreadGet(hCurrentThread);
+    if (pThread)
+    {
+        if (hClass != NIL_RTLOCKVALCLASS)
+        {
+            PRTLOCKVALRECUNION pCur = rtLockValidatorReadRecUnionPtr(&pThread->LockValidator.pStackTop);
+            while (VALID_PTR(pCur) && !fRet)
+            {
+                switch (pCur->Core.u32Magic)
+                {
+                    case RTLOCKVALRECEXCL_MAGIC:
+                        fRet = pCur->Excl.hClass == hClass;
+                        pCur = rtLockValidatorReadRecUnionPtr(&pCur->Excl.pDown);
+                        break;
+                    case RTLOCKVALRECSHRDOWN_MAGIC:
+                        fRet = VALID_PTR(pCur->ShrdOwner.pSharedRec)
+                            && pCur->ShrdOwner.pSharedRec->hClass == hClass;
+                        pCur = rtLockValidatorReadRecUnionPtr(&pCur->ShrdOwner.pDown);
+                        break;
+                    case RTLOCKVALRECNEST_MAGIC:
+                        switch (pCur->Nest.pRec->Core.u32Magic)
+                        {
+                            case RTLOCKVALRECEXCL_MAGIC:
+                                fRet = pCur->Nest.pRec->Excl.hClass == hClass;
+                                break;
+                            case RTLOCKVALRECSHRDOWN_MAGIC:
+                                fRet = VALID_PTR(pCur->ShrdOwner.pSharedRec)
+                                    && pCur->Nest.pRec->ShrdOwner.pSharedRec->hClass == hClass;
+                                break;
+                        }
+                        pCur = rtLockValidatorReadRecUnionPtr(&pCur->Nest.pDown);
+                        break;
+                    default:
+                        pCur = NULL;
+                        break;
+                }
+            }
+        }
+
+        rtThreadRelease(pThread);
+    }
+    return fRet;
+}
+RT_EXPORT_SYMBOL(RTLockValidatorHoldsLocksInClass);
+
+
+RTDECL(bool) RTLockValidatorHoldsLocksInSubClass(RTTHREAD hCurrentThread, RTLOCKVALCLASS hClass, uint32_t uSubClass)
+{
+    bool            fRet    = false;
+    if (hCurrentThread == NIL_RTTHREAD)
+        hCurrentThread = RTThreadSelf();
+    else
+        Assert(hCurrentThread == RTThreadSelf());
+    PRTTHREADINT    pThread = rtThreadGet(hCurrentThread);
+    if (pThread)
+    {
+        if (hClass != NIL_RTLOCKVALCLASS)
+        {
+            PRTLOCKVALRECUNION pCur = rtLockValidatorReadRecUnionPtr(&pThread->LockValidator.pStackTop);
+            while (VALID_PTR(pCur) && !fRet)
+            {
+                switch (pCur->Core.u32Magic)
+                {
+                    case RTLOCKVALRECEXCL_MAGIC:
+                        fRet = pCur->Excl.hClass == hClass
+                            && pCur->Excl.uSubClass == uSubClass;
+                        pCur = rtLockValidatorReadRecUnionPtr(&pCur->Excl.pDown);
+                        break;
+                    case RTLOCKVALRECSHRDOWN_MAGIC:
+                        fRet = VALID_PTR(pCur->ShrdOwner.pSharedRec)
+                            && pCur->ShrdOwner.pSharedRec->hClass == hClass
+                            && pCur->ShrdOwner.pSharedRec->uSubClass == uSubClass;
+                        pCur = rtLockValidatorReadRecUnionPtr(&pCur->ShrdOwner.pDown);
+                        break;
+                    case RTLOCKVALRECNEST_MAGIC:
+                        switch (pCur->Nest.pRec->Core.u32Magic)
+                        {
+                            case RTLOCKVALRECEXCL_MAGIC:
+                                fRet = pCur->Nest.pRec->Excl.hClass == hClass
+                                    && pCur->Nest.pRec->Excl.uSubClass == uSubClass;
+                                break;
+                            case RTLOCKVALRECSHRDOWN_MAGIC:
+                                fRet = VALID_PTR(pCur->ShrdOwner.pSharedRec)
+                                    && pCur->Nest.pRec->ShrdOwner.pSharedRec->hClass == hClass
+                                    && pCur->Nest.pRec->ShrdOwner.pSharedRec->uSubClass == uSubClass;
+                                break;
+                        }
+                        pCur = rtLockValidatorReadRecUnionPtr(&pCur->Nest.pDown);
+                        break;
+                    default:
+                        pCur = NULL;
+                        break;
+                }
+            }
+        }
+
+        rtThreadRelease(pThread);
+    }
+    return fRet;
+}
+RT_EXPORT_SYMBOL(RTLockValidatorHoldsLocksInClass);
 
 
 RTDECL(bool) RTLockValidatorSetEnabled(bool fEnabled)
