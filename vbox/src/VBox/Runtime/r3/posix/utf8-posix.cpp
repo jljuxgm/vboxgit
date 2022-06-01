@@ -1,4 +1,4 @@
-/* $Id: utf8-posix.cpp 28928 2010-04-30 11:24:30Z vboxsync $ */
+/* $Id: utf8-posix.cpp 30294 2010-06-17 21:51:43Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 helpers, POSIX.
  */
@@ -44,9 +44,9 @@
 #include <langinfo.h>
 
 #include "internal/alignmentchecks.h"
+#include "internal/string.h"
 #ifdef RT_WITH_ICONV_CACHE
 # include "internal/thread.h"
-# include "internal/string.h"
 AssertCompile(sizeof(iconv_t) <= sizeof(void *));
 #endif
 
