@@ -1,4 +1,4 @@
-/* $Id: VBoxAcpi.cpp 25817 2010-01-13 22:08:17Z vboxsync $ */
+/* $Id: VBoxAcpi.cpp 25825 2010-01-14 10:39:12Z vboxsync $ */
 /** @file
  * VBoxAcpi - VirtualBox ACPI maniputation functionality.
  */
@@ -143,13 +143,13 @@ int acpiPrepareDsdt(PPDMDEVINS pDevIns,  void * *ppPtr, size_t *puDsdtLen)
 #else
     unsigned char *pbAmlCode = NULL;
     size_t cbAmlCode = 0;
-    bool fCpuHotplug = false;
-    int rc = CFGMR3QueryBoolDef(pDevIns->pCfgHandle, "CpuHotplug", &fCpuHotplug, false);
+    bool fCpuHotPlug = false;
+    int rc = CFGMR3QueryBoolDef(pDevIns->pCfgHandle, "CpuHotplug", &fCpuHotPlug, false); /** @todo r=bird: Rename to CpuHotPlug. */
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Failed to read \"CpuHotplug\""));
 
-    if (fCpuHotplug)
+    if (fCpuHotPlug)
     {
         pbAmlCode = AmlCodeCpuHotplug;
         cbAmlCode = sizeof(AmlCodeCpuHotplug);
