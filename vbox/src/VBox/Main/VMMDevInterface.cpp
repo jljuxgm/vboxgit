@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 25973 2010-01-22 14:29:26Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -102,6 +102,13 @@ VMMDev::VMMDev(Console *console) : mpDrv(NULL)
 
 VMMDev::~VMMDev()
 {
+#ifdef VBOX_WITH_HGCM
+    if (hgcmIsActive())
+    {
+        ASMAtomicWriteBool(&m_fHGCMActive, false);
+        HGCMHostShutdown();
+    }
+#endif /* VBOX_WITH_HGCM */
     RTSemEventDestroy (mCredentialsEvent);
     if (mpDrv)
         mpDrv->pVMMDev = NULL;
