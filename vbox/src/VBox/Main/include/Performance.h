@@ -1,4 +1,4 @@
-/* $Id: Performance.h 26126 2010-02-01 14:32:38Z vboxsync $ */
+/* $Id: Performance.h 26128 2010-02-01 14:48:59Z vboxsync $ */
 
 /** @file
  *
@@ -30,6 +30,7 @@
 #include <iprt/err.h>
 
 #include <algorithm>
+#include <functional> /* For std::fun_ptr in testcase */
 #include <list>
 #include <vector>
 
