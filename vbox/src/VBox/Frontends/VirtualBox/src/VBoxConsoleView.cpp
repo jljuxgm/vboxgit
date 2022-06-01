@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleView.cpp 27757 2010-03-26 17:59:29Z vboxsync $ */
+/* $Id: VBoxConsoleView.cpp 27762 2010-03-26 23:14:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -3271,13 +3271,14 @@ bool VBoxConsoleView::mouseEvent (int aType, const QPoint &aPos, const QPoint &a
 
             QPoint cpnt = viewportToContents (aPos);
             if (cpnt.x() < 0) cpnt.setX (0);
-            else if (cpnt.x() > cw) cpnt.setX (cw);
+            else if (cpnt.x() > cw - 1) cpnt.setX (cw - 1);
             if (cpnt.y() < 0) cpnt.setY (0);
-            else if (cpnt.y() > ch) cpnt.setY (ch);
+            else if (cpnt.y() > ch - 1) cpnt.setY (ch - 1);
 
             CMouse mouse = mConsole.GetMouse();
-            mouse.PutMouseEventAbsolute (cpnt.x(), cpnt.y(), wheelVertical,
-                                         wheelHorizontal, state);
+            mouse.PutMouseEventAbsolute (cpnt.x() + 1, cpnt.y() + 1,
+                                         wheelVertical, wheelHorizontal,
+                                         state);
             return true; /* stop further event handling */
         }
         else
