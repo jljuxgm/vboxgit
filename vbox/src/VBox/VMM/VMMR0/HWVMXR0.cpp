@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 25392 2009-12-15 12:06:59Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 25396 2009-12-15 12:45:42Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2202,7 +2202,7 @@ static void vmxR0SetupTLBVPID(PVM pVM, PVMCPU pVCpu)
             ||  pCpu->fFlushTLB)
         {
             pCpu->fFlushTLB                  = false;
-            pCpu->uCurrentASID               = 1;       /* start at 1; host uses 0 */
+            pVCpu->hwaccm.s.uCurrentASID = pCpu->uCurrentASID = 1;       /* start at 1; host uses 0 */
             pCpu->cTLBFlushes++;
             vmxR0FlushVPID(pVM, pVCpu, VMX_FLUSH_ALL_CONTEXTS, 0);
         }
