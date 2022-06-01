@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 26894 2010-02-28 17:48:51Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 26896 2010-02-28 18:03:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -644,7 +644,7 @@ void UIMachineLogic::sltMachineStateChanged()
     {
         /* VM has been powered off or saved or aborted, no matter internally or externally.
          * We must *safely* close the console window unless auto closure is disabled: */
-        sltClose();
+        QTimer::singleShot(0, uisession(), SLOT(sltCloseVirtualSession()));
         return;
     }
 
