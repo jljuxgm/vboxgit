@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 26767 2010-02-24 19:48:02Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 26794 2010-02-25 13:18:57Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -711,7 +711,9 @@ VOID VBoxSetupDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension,
 #endif
     PrimaryExtension->u.primary.ulVbvaEnabled            = 0;
     PrimaryExtension->u.primary.bVBoxVideoSupported      = FALSE;
+#ifndef VBOXWDDM
     PrimaryExtension->u.primary.cDisplays                = 1;
+#endif
     PrimaryExtension->u.primary.cbVRAM                   = AdapterMemorySize;
     PrimaryExtension->u.primary.cbMiniportHeap           = 0;
     PrimaryExtension->u.primary.pvMiniportHeap           = NULL;
@@ -898,7 +900,7 @@ VOID VBoxSetupDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension,
             }
 #else
             /* simply store the number of monitors, we will deal with VidPN stuff later */
-            PrimaryExtension->u.primary.cDisplays = cDisplays;
+            PrimaryExtension->cSources = cDisplays;
 #endif
         }
 
@@ -1174,7 +1176,11 @@ static int vboxVBVADeleteChannelContexts(PDEVICE_EXTENSION PrimaryExtension, VBV
 
 static int vboxVBVACreateChannelContexts(PDEVICE_EXTENSION PrimaryExtension, VBVA_CHANNELCONTEXTS ** ppContext)
 {
+#ifndef VBOXWDDM
     uint32_t cDisplays = (uint32_t)PrimaryExtension->u.primary.cDisplays;
+#else
+    uint32_t cDisplays = (uint32_t)PrimaryExtension->cSources;
+#endif
     const size_t size = RT_OFFSETOF(VBVA_CHANNELCONTEXTS, aContexts[cDisplays]);
     VBVA_CHANNELCONTEXTS * pContext = (VBVA_CHANNELCONTEXTS*)VBoxVideoCmnMemAllocNonPaged(PrimaryExtension, size, MEM_TAG);
     if(pContext)
