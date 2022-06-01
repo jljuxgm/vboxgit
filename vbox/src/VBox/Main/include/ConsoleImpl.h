@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 24299 2009-11-03 18:45:34Z vboxsync $ */
+/* $Id: ConsoleImpl.h 24353 2009-11-04 19:06:09Z vboxsync $ */
 
 /** @file
  *
@@ -583,8 +583,17 @@ private:
 
     bool mVMStateChangeCallbackDisabled;
 
-    /* Local machine state value */
+    /** Local machine state value. */
     MachineState_T mMachineState;
+
+    /** Pointer to the progress object of a live cancelable task.
+     *
+     * This is currently only used by Console::Teleport(), but is intended to later
+     * be used by the live snapshot code path as well.  Actions like
+     * Console::PowerDown, which automatically cancels out the running snapshot /
+     * teleportion operation, will cancel the teleportation / live snapshot
+     * operation before starting. */
+    ComObjPtr<Progress> mptrCancelableProgress;
 
     typedef std::list <ComPtr<IConsoleCallback> > CallbackList;
     CallbackList mCallbacks;
