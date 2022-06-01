@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 24320 2009-11-04 11:38:15Z vboxsync $ */
+/* $Id: VBoxControl.cpp 24322 2009-11-04 12:21:25Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -857,7 +857,7 @@ int handleRemoveCustomMode(int argc, char *argv[])
                 && (customModes[i].bpp  == bpp))
             {
                 RTPrintf("found mode at index %d\n", i);
-                RZ_ZERO(customModes[i]);
+                RT_ZERO(customModes[i]);
                 break;
             }
         }
