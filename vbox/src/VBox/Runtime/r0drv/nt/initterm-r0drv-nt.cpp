@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 30013 2010-06-03 14:40:59Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 30340 2010-06-21 16:01:47Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -223,6 +223,14 @@ int rtR0InitNative(void)
             g_offrtNtPbQuantumEnd    = 0x3475;
             g_cbrtNtPbQuantumEnd     = 1;
             g_offrtNtPbDpcQueueDepth = 0x3400 + 0x18;
+        }
+        /* Windows 7 7600 x64 */
+        else if (    BuildNumber == 7600
+                 && !memcmp(&pbPrcb[0x4bb8], &u.szVendor[0], 4*3))
+        {
+            g_offrtNtPbQuantumEnd    = 0x21d9;
+            g_cbrtNtPbQuantumEnd     = 1;
+            g_offrtNtPbDpcQueueDepth = 0x2180 + 0x18;
         }
 
 #else
