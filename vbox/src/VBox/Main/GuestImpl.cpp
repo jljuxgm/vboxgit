@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 27996 2010-04-06 09:48:28Z vboxsync $ */
+/* $Id: GuestImpl.cpp 27998 2010-04-06 11:39:20Z vboxsync $ */
 
 /** @file
  *
@@ -253,7 +253,7 @@ STDMETHODIMP Guest::COMSETTER(StatisticsUpdateInterval)(ULONG aUpdateInterval)
 
 STDMETHODIMP Guest::InternalGetStatistics(ULONG aCpuId, ULONG *aCpuUser, ULONG *aCpuKernel, ULONG *aCpuIdle,
                                           ULONG *aMemTotal, ULONG *aMemFree, ULONG *aMemBalloon, ULONG *aMemCache,
-                                          ULONG *aPageTotal, ULONG *aPageFree)
+                                          ULONG *aPageTotal)
 {
     CheckComArgOutPointerValid(aCpuUser);
     CheckComArgOutPointerValid(aCpuKernel);
@@ -263,7 +263,6 @@ STDMETHODIMP Guest::InternalGetStatistics(ULONG aCpuId, ULONG *aCpuUser, ULONG *
     CheckComArgOutPointerValid(aMemBalloon);
     CheckComArgOutPointerValid(aMemCache);
     CheckComArgOutPointerValid(aPageTotal);
-    CheckComArgOutPointerValid(aPageFree);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
@@ -278,7 +277,6 @@ STDMETHODIMP Guest::InternalGetStatistics(ULONG aCpuId, ULONG *aCpuUser, ULONG *
     *aMemBalloon = mCurrentGuestStat[GUESTSTATTYPE_MEMBALLOON];
     *aMemCache = mCurrentGuestStat[GUESTSTATTYPE_MEMCACHE];
     *aPageTotal = mCurrentGuestStat[GUESTSTATTYPE_PAGETOTAL];
-    *aPageFree = mCurrentGuestStat[GUESTSTATTYPE_PAGEFREE];
 
     return S_OK;
 }

@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
+/* $Id: Performance.cpp 27998 2010-04-06 11:39:20Z vboxsync $ */
 
 /** @file
  *
@@ -169,7 +169,7 @@ int CollectorGuestHAL::preCollect(const CollectorHints& hints, uint64_t iTick)
     {
         mGuest->InternalGetStatistics(0, &mCpuUser, &mCpuKernel, &mCpuIdle,
                                       &mMemTotal, &mMemFree, &mMemBalloon, &mMemCache,
-                                      &mPageTotal, &mPageFree);
+                                      &mPageTotal);
         mLastTick = iTick;
     }
     return S_OK;
@@ -407,7 +407,6 @@ void GuestRamUsage::init(ULONG period, ULONG length)
     mBallooned->init(mLength);
     mCache->init(mLength);
     mPagedTotal->init(mLength);
-    mPagedFree->init(mLength);
 }
 
 void GuestRamUsage::preCollect(CollectorHints& hints,  uint64_t iTick)
@@ -417,15 +416,14 @@ void GuestRamUsage::preCollect(CollectorHints& hints,  uint64_t iTick)
 
 void GuestRamUsage::collect()
 {
-    ULONG ulMemTotal = 0, ulMemFree = 0, ulMemBalloon = 0, ulMemCache = 0, ulPageTotal = 0, ulPageFree = 0;
+    ULONG ulMemTotal = 0, ulMemFree = 0, ulMemBalloon = 0, ulMemCache = 0, ulPageTotal = 0;
 
-    mGuestHAL->getGuestMemLoad(&ulMemTotal, &ulMemFree, &ulMemBalloon, &ulMemCache, &ulPageTotal, &ulPageFree);
+    mGuestHAL->getGuestMemLoad(&ulMemTotal, &ulMemFree, &ulMemBalloon, &ulMemCache, &ulPageTotal);
     mTotal->put(ulMemTotal);
     mFree->put(ulMemFree);
     mBallooned->put(ulMemBalloon);
     mCache->put(ulMemCache);
     mPagedTotal->put(ulPageTotal);
-    mPagedFree->put(ulPageFree);
 }
 
 void CircularBuffer::init(ULONG ulLength)
