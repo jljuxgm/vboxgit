@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 27950 2010-04-01 17:07:40Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 28005 2010-04-06 13:52:45Z vboxsync $ */
 
 /** @file
  *
@@ -98,7 +98,7 @@ CollectorHAL *createHAL()
     return new CollectorWin();
 }
 
-CollectorWin::CollectorWin() : mhNtDll(0)
+CollectorWin::CollectorWin() : CollectorHAL(), mhNtDll(0)
 {
     mpfnGetSystemTimes = (PFNGST)GetProcAddress(
         GetModuleHandle(TEXT("kernel32.dll")),
