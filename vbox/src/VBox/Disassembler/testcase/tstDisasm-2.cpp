@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 27804 2010-03-29 20:11:35Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -845,7 +845,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'b':
-                cbMax = ValueUnion.i;
+                cbMax = ValueUnion.i64;
                 break;
 
             case 'c':
@@ -874,7 +874,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'o':
-                off = ValueUnion.i;
+                off = ValueUnion.i64;
                 break;
 
             case 's':
