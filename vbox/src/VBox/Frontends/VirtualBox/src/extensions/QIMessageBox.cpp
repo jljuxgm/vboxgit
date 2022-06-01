@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 27030 2010-03-04 14:29:25Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 27635 2010-03-23 14:56:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,6 +30,7 @@
 #include "QIDialogButtonBox.h"
 #ifdef Q_WS_MAC
 # include "VBoxConsoleWnd.h"
+# include "VBoxSelectorWnd.h"
 #endif /* Q_WS_MAC */
 
 /* Qt includes */
@@ -71,6 +72,13 @@ QIMessageBox::QIMessageBox (const QString &aCaption, const QString &aText,
     UIMachineWindowNormal *pWnd = qobject_cast<UIMachineWindowNormal*>(aParent);
     if (pWnd)
         setWindowFlags (Qt::Sheet);
+    else
+    {
+        /* In the selector window ofc. */
+        VBoxSelectorWnd *pSWnd = qobject_cast<VBoxSelectorWnd*>(aParent);
+        if (pSWnd)
+            setWindowFlags(Qt::Sheet);
+    }
 # else /* VBOX_WITH_NEW_RUNTIME_CORE */
     /* Sheets are broken if the window is in fullscreen mode. So make it a
      * normal window in that case. */
