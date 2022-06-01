@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 25693 2010-01-08 16:29:39Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 25901 2010-01-18 16:52:21Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -114,6 +114,32 @@ int handleControlVM(HandlerArg *a)
         else if (!strcmp(a->argv[1], "reset"))
         {
             CHECK_ERROR_BREAK(console, Reset());
+        }
+        else if (!strcmp(a->argv[1], "unplugcpu"))
+        {
+            if (a->argc <= 1 + 1)
+            {
+                errorArgument("Missing argument to '%s'. Expected CPU number.", a->argv[1]);
+                rc = E_FAIL;
+                break;
+            }
+
+            unsigned n = parseNum(a->argv[2], 32, "CPU");
+
+            CHECK_ERROR_BREAK(sessionMachine, HotUnplugCPU(n));
+        }
+        else if (!strcmp(a->argv[1], "plugcpu"))
+        {
+            if (a->argc <= 1 + 1)
+            {
+                errorArgument("Missing argument to '%s'. Expected CPU number.", a->argv[1]);
+                rc = E_FAIL;
+                break;
+            }
+
+            unsigned n = parseNum(a->argv[2], 32, "CPU");
+
+            CHECK_ERROR_BREAK(sessionMachine, HotPlugCPU(n));
         }
         else if (!strcmp(a->argv[1], "poweroff"))
         {

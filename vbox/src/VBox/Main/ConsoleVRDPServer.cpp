@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 25901 2010-01-18 16:52:21Z vboxsync $ */
 
 /** @file
  *
@@ -118,6 +118,11 @@ public:
     }
 
     STDMETHOD(OnMediumChange)(IMediumAttachment *aAttachment)
+    {
+        return S_OK;
+    }
+
+    STDMETHOD(OnCPUChange)(ULONG aCPU, BOOL aRemove)
     {
         return S_OK;
     }
