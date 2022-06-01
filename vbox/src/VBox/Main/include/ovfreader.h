@@ -1,8 +1,8 @@
-/* $Id: ovfreader.h 21599 2009-07-15 10:11:36Z vboxsync $ */
+/* $Id: ovfreader.h 25348 2009-12-13 17:15:06Z vboxsync $ */
 /** @file
+ * OVF reader declarations.
  *
- * OVF reader declarations. Depends only on IPRT, including the iprt::MiniString
- * and IPRT XML classes.
+ * Depends only on IPRT, including the iprt::MiniString and IPRT XML classes.
  */
 
 /*
@@ -24,7 +24,7 @@
 #ifndef ____H_OVFREADER
 #define ____H_OVFREADER
 
-#include "iprt/xml_cpp.h"
+#include "iprt/cpp/xml.h"
 #include <map>
 
 ////////////////////////////////////////////////////////////////////////////////
