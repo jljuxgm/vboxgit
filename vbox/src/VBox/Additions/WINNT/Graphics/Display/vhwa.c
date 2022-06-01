@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: vhwa.c 26489 2010-02-14 07:32:29Z vboxsync $ */
 /** @file
  * VBoxGuest -- VirtualBox Win 2000/XP guest display driver
  *
