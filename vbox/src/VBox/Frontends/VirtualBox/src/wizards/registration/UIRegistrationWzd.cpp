@@ -1,4 +1,4 @@
-/* $Id: UIRegistrationWzd.cpp 29526 2010-05-17 10:59:21Z vboxsync $ */
+/* $Id: UIRegistrationWzd.cpp 29722 2010-05-21 11:50:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -403,8 +403,11 @@ UIRegistrationWzd::UIRegistrationWzd(UIRegistrationWzd **ppSelf)
     /* Create & add page */
     addPage(new UIRegistrationWzdPage1);
 
-    /* Translate */
+    /* Initial translate */
     retranslateUi();
+
+    /* Initial translate all pages */
+    retranslateAllPages();
 
     /* Resize to 'golden ratio' */
     resizeToGoldenRatio();
@@ -522,9 +525,6 @@ UIRegistrationWzdPage1::UIRegistrationWzdPage1()
     RegistrationData data(vboxGlobal().virtualBox().GetExtraData(VBoxDefs::GUI_RegistrationData), false);
     m_pLeOldEmail->setText(data.account());
     m_pLeOldEmail->setFocus();
-
-    /* Translate */
-    retranslateUi();
 }
 
 void UIRegistrationWzdPage1::retranslateUi()
