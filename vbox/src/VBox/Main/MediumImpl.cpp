@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 28587 2010-04-22 11:38:59Z vboxsync $ */
+/* $Id: MediumImpl.cpp 28770 2010-04-26 16:59:53Z vboxsync $ */
 
 /** @file
  *
@@ -3826,9 +3826,12 @@ HRESULT Medium::deleteStorage(ComObjPtr<Progress> *aProgress,
             throw rc;
 
         /* go to Deleting state, so that the medium is not actually locked */
-        rc = markForDeletion();
-        if (FAILED(rc))
-            throw rc;
+        if (m->state != MediumState_Deleting)
+        {
+            rc = markForDeletion();
+            if (FAILED(rc))
+                throw rc;
+        }
 
         /* Build the medium lock list. */
         MediumLockList *pMediumLockList(new MediumLockList());

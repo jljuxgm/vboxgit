@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 28585 2010-04-22 10:16:57Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 28770 2010-04-26 16:59:53Z vboxsync $ */
 
 /** @file
  *
@@ -2435,6 +2435,8 @@ void SessionMachine::deleteSnapshotHandler(DeleteSnapshotTask &aTask)
                 if (!pMedium->getParent().isNull())
                 {
                     Assert(pMedium->getState() == MediumState_Deleting);
+                    /* No need to hold the lock any longer. */
+                    mLock.release();
                     rc = pMedium->deleteStorage(&aTask.pProgress,
                                                 true /* aWait */,
                                                 &fNeedsSaveSettings);
