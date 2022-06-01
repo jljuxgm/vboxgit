@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 28604 2010-04-22 15:50:45Z vboxsync $ */
+/* $Id: VBoxService.cpp 28736 2010-04-26 09:24:35Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -98,7 +98,9 @@ static struct
     { &g_CpuHotPlug, NIL_RTTHREAD, false, false, false, true },
 #endif
 #ifdef VBOXSERVICE_MANAGEMENT
+ #ifdef VBOX_WITH_MEMBALLOON
     { &g_MemBalloon, NIL_RTTHREAD, false, false, false, true },
+ #endif    
     { &g_VMStatistics, NIL_RTTHREAD, false, false, false, true },
 #endif
 };
