@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 28574 2010-04-21 20:50:48Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 28576 2010-04-21 21:12:39Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1346,7 +1346,7 @@ void hotplugSysfsFAMImpl::term(void)
 
 /** Does a FAM event code mean that the available devices have (probably)
  * changed? */
-static int sysfsGetStatusForFAMCode(enum FAMCodes enmCode)
+static int sysfsGetStatusForFAMCode(FAMCodes enmCode)
 {
     if (enmCode == FAMExists || enmCode == FAMEndExist)
         return VERR_TRY_AGAIN;
