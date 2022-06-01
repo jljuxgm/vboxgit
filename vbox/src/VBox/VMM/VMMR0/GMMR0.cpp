@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29572 2010-05-17 15:54:27Z vboxsync $ */
+/* $Id: GMMR0.cpp 29574 2010-05-17 16:07:08Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2649,7 +2649,7 @@ DECLINLINE(void) gmmR0ConvertToSharedPage(PGMM pGMM, PGVM pGVM, RTHCPHYS HCPhys,
     pGVM->gmm.s.cPrivatePages--;
 
     /* Modify the page structure. */
-    pPage->Shared.pfn     = (uint32_t)(HCPhys >> PAGE_SHIFT);
+    pPage->Shared.pfn     = (uint32_t)(uint64_t)(HCPhys >> PAGE_SHIFT);
     pPage->Shared.cRefs   = 1;
     pPage->Common.u2State = GMM_PAGE_STATE_SHARED;
 }
@@ -3820,7 +3820,7 @@ new_shared_page:
                     goto new_shared_page; /* ugly goto */
                 }
 
-                Log(("Replace existing page guest %RGp host %RHp -> %RHp\n", paPageDesc[i].GCPhys, paPageDesc[i].HCPhys, pPage->Shared.pfn << PAGE_SHIFT));
+                Log(("Replace existing page guest %RGp host %RHp -> %RHp\n", paPageDesc[i].GCPhys, paPageDesc[i].HCPhys, ((uint64_t)pPage->Shared.pfn) << PAGE_SHIFT));
 
                 /* Calculate the virtual address of the local page. */
                 pChunk = gmmR0GetChunk(pGMM, paPageDesc[i].uHCPhysPageId >> GMM_CHUNKID_SHIFT);
@@ -3877,7 +3877,7 @@ new_shared_page:
                 gmmR0UseSharedPage(pGMM, pGVM, pPage);
 
                 /* Pass along the new physical address & page id. */
-                paPageDesc[i].HCPhys        = pPage->Shared.pfn << PAGE_SHIFT;
+                paPageDesc[i].HCPhys        = ((uint64_t)pPage->Shared.pfn) << PAGE_SHIFT;
                 paPageDesc[i].uHCPhysPageId = pGlobalRegion->paHCPhysPageID[i];
             }
         }
