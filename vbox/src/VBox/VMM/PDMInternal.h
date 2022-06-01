@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 24744 2009-11-17 22:33:38Z vboxsync $ */
+/* $Id: PDMInternal.h 25368 2009-12-14 16:31:40Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -48,6 +48,12 @@ RT_C_DECLS_BEGIN
  * Enables or disabled ring-3/ring-0 critical sections. */
 #if defined(DOXYGEN_RUNNING) || 1
 # define PDM_WITH_R3R0_CRIT_SECT
+#endif
+
+/** @def PDMCRITSECT_STRICT
+ * Enables/disables PDM critsect strictness like deadlock detection. */
+#if defined(VBOX_STRICT) || defined(DOXYGEN_RUNNING)
+# define PDMCRITSECT_STRICT
 #endif
 
 

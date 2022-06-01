@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 25368 2009-12-14 16:31:40Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -405,7 +405,7 @@ DECLINLINE(uint64_t) tmVirtualSyncGetHandleCatchUpLocked(PVM pVM, uint64_t u64, 
     STAM_COUNTER_INC(&pVM->tm.s.StatVirtualSyncGetLocked);
 
     /*
-     * Don't make updates untill
+     * Don't make updates until we've check the timer qeueue.
      */
     bool            fUpdatePrev = true;
     bool            fUpdateOff  = true;

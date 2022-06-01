@@ -1,4 +1,4 @@
-/* $Id: tstDeadlock.cpp 14831 2008-11-30 10:31:16Z vboxsync $ */
+/* $Id: tstDeadlock.cpp 25368 2009-12-14 16:31:40Z vboxsync $ */
 /** @file
  * IPRT Testcase - deadlock detection. Will never really "work".
  */
@@ -32,11 +32,13 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <iprt/thread.h>
+#include <iprt/asm.h>                   /* for return addresses */
 #include <iprt/critsect.h>
-#include <iprt/stream.h>
+
 #include <iprt/err.h>
 #include <iprt/initterm.h>
+#include <iprt/stream.h>
+#include <iprt/thread.h>
 
 
 /*******************************************************************************
@@ -77,7 +79,7 @@ static DECLCALLBACK(int) Thread3(RTTHREAD ThreadSelf, void *pvUser)
     RTThreadSleep(2*UNIT);
     RTPrintf("thread3: taking 1\n");
     RTCritSectEnter(&g_CritSect1);
-    RTPrintf("thread1: got 1!!!\n");
+    RTPrintf("thread3: got 1!!!\n");
     return VERR_DEADLOCK;
 }
 
@@ -99,7 +101,7 @@ int main()
         return 1;
     }
     RTCritSectEnter(&g_CritSect1);
-    if (g_CritSect1.Strict.ThreadOwner == NIL_RTTHREAD)
+    if (!g_CritSect1.pValidatorRec || g_CritSect1.pValidatorRec->hThread == NIL_RTTHREAD)
     {
         RTPrintf("tstDeadlock: deadlock detection is not enabled in this build\n");
         return 1;
