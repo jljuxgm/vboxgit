@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 29913 2010-05-31 14:51:38Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 30128 2010-06-09 16:06:37Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -985,8 +985,7 @@ static int lsilogicRegisterWrite(PLSILOGICSCSI pThis, uint32_t uOffset, void *pv
                     {
                         pThis->enmState = LSILOGICSTATE_RESET;
 
-                        /* Reset interrupt states. */
-                        pThis->uInterruptMask   = 0;
+                        /* Reset interrupt status. */
                         pThis->uInterruptStatus = 0;
                         lsilogicUpdateInterrupt(pThis);
 
