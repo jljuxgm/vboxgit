@@ -1,4 +1,4 @@
-/* $Id: RTFileReadAll-generic.cpp 25908 2010-01-18 22:07:28Z vboxsync $ */
+/* $Id: RTFileReadAll-generic.cpp 25909 2010-01-19 09:49:39Z vboxsync $ */
 /** @file
  * IPRT - RTFileReadAll, generic implementation.
  */
@@ -38,7 +38,7 @@
 
 RTDECL(int) RTFileReadAll(const char *pszFilename, void **ppvFile, size_t *pcbFile)
 {
-    return RTFileReadAllEx(pszFilename, 0, RTFOFF_MAX, RTFILE_RDALL_O_DENY_WRITE, ppvFile, pcbFile);
+    return RTFileReadAllEx(pszFilename, 0, RTFOFF_MAX, 0, ppvFile, pcbFile);
 }
 RT_EXPORT_SYMBOL(RTFileReadAll);
 
