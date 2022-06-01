@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceCpuHotPlug.cpp 27023 2010-03-04 13:32:45Z vboxsync $ */
+/* $Id: VBoxServiceCpuHotPlug.cpp 27643 2010-03-23 16:00:59Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions CPU Hot Plugging Service.
  */
@@ -89,7 +89,8 @@ static int VBoxServiceCpuHotPlugGetACPIDevicePath(char **ppszPath, uint32_t idCp
                     RTDIRENTRY DirFolderContent;
                     while (RT_SUCCESS(RTDirRead(pDirAcpiContainer, &DirFolderContent, NULL))) /* Assumption that szName has always enough space */
                     {
-                        if (!strncmp(DirFolderContent.szName, "LNXCPU", 6))
+                        if (   !strncmp(DirFolderContent.szName, "LNXCPU", 6)
+                            || !strncmp(DirFolderContent.szName, "ACPI_CPU", 8))
                         {
                             /* Get the sysdev */
                             uint32_t idCore    = RTLinuxSysFsReadIntFile(10, "%s/%s/sysdev/topology/core_id",
