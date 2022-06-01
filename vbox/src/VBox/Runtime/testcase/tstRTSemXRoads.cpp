@@ -1,4 +1,4 @@
-/* $Id: tstRTSemXRoads.cpp 25549 2009-12-21 17:16:59Z vboxsync $ */
+/* $Id: tstRTSemXRoads.cpp 25613 2010-01-01 13:47:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSemXRoads.
  */
@@ -190,7 +190,7 @@ static bool tstBasics(void)
 
 int main()
 {
-    int rc = RTTestInitAndCreate("tstRTCidr", &g_hTest);
+    int rc = RTTestInitAndCreate("tstRTSemXRoads", &g_hTest);
     if (rc)
         return rc;
     RTTestBanner(g_hTest);
