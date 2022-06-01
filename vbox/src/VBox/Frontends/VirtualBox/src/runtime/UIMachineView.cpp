@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 27012 2010-03-04 11:47:23Z vboxsync $ */
+/* $Id: UIMachineView.cpp 27021 2010-03-04 12:58:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -283,6 +283,11 @@ int UIMachineView::visibleWidth() const
 int UIMachineView::visibleHeight() const
 {
     return verticalScrollBar()->pageStep();
+}
+
+UIMachineLogic* UIMachineView::machineLogic() const
+{
+    return machineWindowWrapper()->machineLogic();
 }
 
 QSize UIMachineView::desktopGeometry() const
