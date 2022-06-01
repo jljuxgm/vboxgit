@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29357 2010-05-11 14:18:16Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 29358 2010-05-11 14:18:47Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -192,7 +192,7 @@ void VBoxServicePageSharingInspectModules(DWORD dwProcessId, PAVLPVNODECORE *ppN
     VBoxServiceVerbose(3, "VBoxServicePageSharingInspectModules\n");
 
     /* Get a list of all the modules in this process. */
-    hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ,
+    hProcess = OpenProcess(PROCESS_QUERY_INFORMATION,
                            FALSE /* no child process handle inheritance */, dwProcessId);
     if (hProcess == NULL)
     {
