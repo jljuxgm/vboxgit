@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 23915 2009-10-20 17:06:58Z vboxsync $ */
+/* $Id: PDMDriver.cpp 24282 2009-11-03 10:14:35Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -509,7 +509,8 @@ static DECLCALLBACK(int) pdmR3DrvHlp_Attach(PPDMDRVINS pDrvIns, uint32_t fFlags,
                  */
                 PVM pVM = pDrvIns->Internal.s.pVM;
                 PPDMDRV pDrv = pdmR3DrvLookup(pVM, pszName);
-                if (pDrv)
+                if (    pDrv
+                    &&  pDrv->cInstances < pDrv->pDrvReg->cMaxInstances)
                 {
                     /* config node */
                     PCFGMNODE pConfigNode = CFGMR3GetChild(pNode, "Config");
@@ -578,6 +579,11 @@ static DECLCALLBACK(int) pdmR3DrvHlp_Attach(PPDMDRVINS pDrvIns, uint32_t fFlags,
                     }
                     else
                         AssertMsgFailed(("Failed to create Config node! rc=%Rrc\n", rc));
+                }
+                else if (pDrv)
+                {
+                    AssertMsgFailed(("Too many instances of driver '%s', max is %u\n", pszName, pDrv->pDrvReg->cMaxInstances));
+                    rc = VERR_PDM_TOO_MANY_DRIVER_INSTANCES;
                 }
                 else
                 {
