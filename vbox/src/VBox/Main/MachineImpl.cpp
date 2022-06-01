@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 28212 2010-04-12 15:04:25Z vboxsync $ */
+/* $Id: MachineImpl.cpp 28214 2010-04-12 15:20:11Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -4991,7 +4991,7 @@ STDMETHODIMP Machine::ReadLog(ULONG aIdx, ULONG64 aOffset, ULONG64 aSize, ComSaf
 
     /* do not unnecessarily hold the lock while doing something which does
      * not need the lock and potentially takes a long time. */
-    alock.leave();
+    alock.release();
 
     size_t cbData = (size_t)RT_MIN(aSize, 2048);
     com::SafeArray<BYTE> logData(cbData);
