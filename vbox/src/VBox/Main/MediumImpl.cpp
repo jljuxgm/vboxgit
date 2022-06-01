@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 25903 2010-01-18 18:15:43Z vboxsync $ */
+/* $Id: MediumImpl.cpp 25907 2010-01-18 19:12:45Z vboxsync $ */
 
 /** @file
  *
@@ -4129,7 +4129,7 @@ HRESULT Medium::deleteStorage(ComObjPtr<Progress> *aProgress,
 
     if (FAILED(rc)) return rc;
 
-    ComObjPtr <Progress> progress;
+    ComObjPtr<Progress> progress;
 
     if (aProgress != NULL)
     {
