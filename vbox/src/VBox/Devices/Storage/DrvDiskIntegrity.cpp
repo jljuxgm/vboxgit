@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 29443 2010-05-13 10:10:40Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 29495 2010-05-14 19:01:41Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -522,6 +522,7 @@ static int drvdiskIntIoReqExpiredCheck(RTTHREAD pThread, void *pvUser)
             PDRVDISKAIOREQ pIoReq = (PDRVDISKAIOREQ)ASMAtomicReadPtr((void * volatile *)&pReqActive->pIoReq);
 
             if (   pIoReq
+                && (tsCurr > pReqActive->tsStart)
                 && (tsCurr - pReqActive->tsStart) >= pThis->uExpireIntervalMs)
             {
                 RTMsgError("Request %#p expired (active for %llu ms already)\n",
