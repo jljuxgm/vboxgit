@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 25273 2009-12-09 15:03:09Z vboxsync $ */
+/* $Id: CSAM.cpp 25647 2010-01-05 09:59:19Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2063,7 +2063,7 @@ static DECLCALLBACK(void) CSAMDelayedWriteHandler(PVM pVM, RTRCPTR GCPtr, size_t
 }
 
 /**
- * #PF Handler callback for virtual access handler ranges.
+ * \#PF Handler callback for virtual access handler ranges.
  *
  * Important to realize that a physical page in a range can have aliases, and
  * for ALL and WRITE handlers these will also trigger.
@@ -2112,7 +2112,7 @@ static DECLCALLBACK(int) CSAMCodePageWriteHandler(PVM pVM, RTGCPTR GCPtr, void *
 }
 
 /**
- * #PF Handler callback for invalidation of virtual access handler ranges.
+ * \#PF Handler callback for invalidation of virtual access handler ranges.
  *
  * @param   pVM             VM Handle.
  * @param   GCPtr           The virtual address the guest has changed.

@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 24792 2009-11-19 14:48:18Z vboxsync $ */
+/* $Id: DevSerial.cpp 25647 2010-01-05 09:59:19Z vboxsync $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -726,7 +726,7 @@ static DECLCALLBACK(int) serialIOPortRegionMap(PPCIDEVICE pPciDev, /* unsigned *
 #endif /* VBOX_SERIAL_PCI */
 
 
-/** @copyfrom PIBASE::pfnqueryInterface */
+/** @copydoc PIBASE::pfnqueryInterface */
 static DECLCALLBACK(void *) serialQueryInterface(PPDMIBASE pInterface, PDMINTERFACE enmInterface)
 {
     SerialState *pThis = PDMIBASE_2_SERIALSTATE(pInterface);

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25225 2009-12-07 20:41:19Z vboxsync $
+# $Id: Makefile.kmk 25647 2010-01-05 09:59:19Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -449,9 +449,13 @@ OTHER_CLEAN += \
 
 VBOX_CORE_DOXYFILE_INPUT_DIRS = \
 	include/iprt \
+	include/iprt/cpp \
+	include/iprt/linux \
 	include/VBox \
 	include/VBox/com \
 	include/VBox/HostServices \
+	include/VBox/GuestHost \
+	include/VBox/HGSMI \
 	src/VBox/VMM \
 	src/VBox/VMM/VMMR0 \
 	src/VBox/VMM/VMMGC \

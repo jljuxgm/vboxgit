@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 23107 2009-09-17 16:19:58Z vboxsync $ */
+/* $Id: PATM.cpp 25647 2010-01-05 09:59:19Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -805,7 +805,7 @@ static DECLCALLBACK(int) RelocatePatches(PAVLOU32NODECORE pNode, void *pParam)
 }
 
 /**
- * #PF Handler callback for virtual access handler ranges.
+ * \#PF Handler callback for virtual access handler ranges.
  *
  * Important to realize that a physical page in a range can have aliases, and
  * for ALL and WRITE handlers these will also trigger.

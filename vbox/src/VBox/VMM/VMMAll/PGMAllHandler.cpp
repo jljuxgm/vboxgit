@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 25578 2009-12-23 16:59:37Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 25647 2010-01-05 09:59:19Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1170,7 +1170,7 @@ VMMDECL(int)  PGMHandlerPhysicalPageAliasHC(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS G
  * @param   pVM         VM Handle.
  * @param   GCPhys      Start physical address earlier passed to PGMR3HandlerPhysicalRegister().
  * @remarks Caller must take the PGM lock...
- * @threads EMT.
+ * @thread  EMT.
  */
 VMMDECL(bool) PGMHandlerPhysicalIsRegistered(PVM pVM, RTGCPHYS GCPhys)
 {
@@ -1234,7 +1234,7 @@ bool pgmHandlerPhysicalIsAll(PVM pVM, RTGCPHYS GCPhys)
  * @param   pVM             VM handle.
  * @param   GCPtr           Virtual address.
  * @remarks Will acquire the PGM lock.
- * @threads Any.
+ * @thread  Any.
  */
 VMMDECL(bool) PGMHandlerVirtualIsRegistered(PVM pVM, RTGCPTR GCPtr)
 {

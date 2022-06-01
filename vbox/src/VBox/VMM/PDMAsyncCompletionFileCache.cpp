@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileCache.cpp 25271 2009-12-09 14:55:54Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileCache.cpp 25647 2010-01-05 09:59:19Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * File data cache.
@@ -235,8 +235,9 @@ static void pdmacFileCacheDestroyList(PPDMACFILELRULIST pList)
  * @param    ppbBuf           Where to store the address of the buffer if an entry with the
  *                            same size was found and fReuseBuffer is true.
  *
- * @notes This function may return fewer bytes than requested because entries
- *        may be marked as non evictable if they are used for I/O at the moment.
+ * @note    This function may return fewer bytes than requested because entries
+ *          may be marked as non evictable if they are used for I/O at the
+ *          moment.
  */
 static size_t pdmacFileCacheEvictPagesFrom(PPDMACFILECACHEGLOBAL pCache, size_t cbData,
                                            PPDMACFILELRULIST pListSrc, PPDMACFILELRULIST pGhostListDst,

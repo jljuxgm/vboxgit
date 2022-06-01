@@ -1,4 +1,4 @@
-/* $Id: VMMGC.cpp 20874 2009-06-24 02:19:29Z vboxsync $ */
+/* $Id: VMMGC.cpp 25647 2010-01-05 09:59:19Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -329,7 +329,7 @@ static int vmmGCTest(PVM pVM, unsigned uOperation, unsigned uArg)
 
 
 /**
- * Temporary #PF trap handler for the #PF test case.
+ * Temporary \#PF trap handler for the \#PF test case.
  *
  * @returns VBox status code (appropriate for GC return).
  *          In this context RT_SUCCESS means to restart the instruction.
@@ -348,7 +348,8 @@ static DECLCALLBACK(int) vmmGCTestTmpPFHandler(PVM pVM, PCPUMCTXCORE pRegFrame)
 
 
 /**
- * Temporary #PF trap handler for the #PF test case, this one messes up the fs selector.
+ * Temporary \#PF trap handler for the \#PF test case, this one messes up the fs
+ * selector.
  *
  * @returns VBox status code (appropriate for GC return).
  *          In this context RT_SUCCESS means to restart the instruction.

@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 25393 2009-12-15 12:22:31Z vboxsync $ */
+/* $Id: HWVMXR0.h 25647 2010-01-05 09:59:19Z vboxsync $ */
 /** @file
  * HWACCM VT-x - Internal header file.
  */
@@ -308,7 +308,7 @@ DECLINLINE(int) VMXReadCachedVMCSEx(PVMCPU pVCpu, uint32_t idxCache, RTGCUINTREG
 /**
  * Setup cached VMCS for performance reasons (Darwin) and for running 64 bits guests on 32 bits hosts.
  *
- * @param   pVCpu       The VMCPU to operate on.
+ * @param   pCache      The cache.
  * @param   idxField    VMCS field
  */
 #define VMXSetupCachedReadVMCS(pCache, idxField)                        \
