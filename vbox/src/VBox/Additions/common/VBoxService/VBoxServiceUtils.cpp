@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.cpp 28967 2010-05-03 11:44:28Z vboxsync $ */
+/* $Id: VBoxServiceUtils.cpp 29022 2010-05-04 13:59:15Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
@@ -182,6 +182,7 @@ int VBoxServiceWritePropF(uint32_t u32ClientId, const char *pszName, const char 
     }
     return rc;
 }
+
 #endif /* VBOX_WITH_GUEST_PROPS */
 #ifdef RT_OS_WINDOWS
 
