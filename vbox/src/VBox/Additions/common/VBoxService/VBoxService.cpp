@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 28887 2010-04-29 11:19:17Z vboxsync $ */
+/* $Id: VBoxService.cpp 28967 2010-05-03 11:44:28Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -589,7 +589,6 @@ int main(int argc, char **argv)
     unsigned iMain = VBoxServiceGetStartedServices();
     if (iMain == ~0U)
         return VBoxServiceSyntax("At least one service must be enabled.\n");
-
 #ifndef RT_OS_WINDOWS
     /* 
      * POSIX: No main service thread.
@@ -651,7 +650,6 @@ int main(int argc, char **argv)
 #ifdef RT_OS_WINDOWS
     }
 #endif
-
 #ifdef RT_OS_WINDOWS
     /*
      * Release instance mutex if we got it.
