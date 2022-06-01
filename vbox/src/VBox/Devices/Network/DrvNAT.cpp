@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 28213 2010-04-12 15:15:51Z vboxsync $ */
+/* $Id: DrvNAT.cpp 28216 2010-04-12 15:41:30Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -168,7 +168,7 @@ typedef struct DRVNAT
     RTFILE                  PipeRead;
 # if HC_ARCH_BITS == 32
     /** Alignment padding. */
-    //uint32_t                alignment2;
+    uint32_t                alignment2;
 # endif
 #else
     /** for external notification */
@@ -188,10 +188,10 @@ typedef struct DRVNAT
     RTSEMEVENT              EventUrgRecv;
     /** Receive Req queue (deliver packets to the guest) */
     PRTREQQUEUE             pRecvReqQueue;
-    /** Receive Urgent Req queue (deliver packets to the guest) */
+    /** Receive Urgent Req queue (deliver packets to the guest). */
     PRTREQQUEUE             pUrgRecvReqQueue;
 
-    /* makes access to device func RecvAvail and Recv atomical */
+    /** makes access to device func RecvAvail and Recv atomical. */
     RTCRITSECT              csDevAccess;
     volatile uint32_t       cUrgPkt;
     volatile uint32_t       cPkt;
