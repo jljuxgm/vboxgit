@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 26317 2010-02-07 21:35:45Z vboxsync $ */
+/* $Id: process-posix.cpp 26318 2010-02-07 21:37:44Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -381,6 +381,6 @@ RTR3DECL(int)   RTProcDaemonize(bool fNoChDir, bool fNoClose, const char *pszPid
         exit(0);
     }
 
-    return rc;
+    return VINF_SUCCESS;
 }
 
