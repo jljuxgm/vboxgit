@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 29001 2010-05-04 10:07:22Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 29002 2010-05-04 11:14:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -686,10 +686,6 @@ bool UINewVMWzdPage5::constructMachine()
         m_Machine.AddStorageController(ctrHdName, ctrHdBus);
         hdCtr = m_Machine.GetStorageControllerByName(ctrHdName);
         hdCtr.SetControllerType(hdStorageControllerType);
-
-        /* Disable the I/O cache if this is not a IDE controller */
-        if (ctrHdBus != KStorageBus_IDE)
-            hdCtr.SetIoBackend(KIoBackendType_Unbuffered);
     }
     else
     {
