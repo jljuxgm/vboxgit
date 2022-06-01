@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 24706 2009-11-16 17:57:20Z vboxsync $ */
+/* $Id: DevEFI.cpp 24790 2009-11-19 14:21:54Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -784,7 +784,7 @@ static int efiLoadThunk(PDEVEFI pThis, PCFGMNODE pCfgHandle)
     AssertRelease(pEfiInfo->cbFwVol == (uint32_t)pThis->cbEfiRom);
     pEfiInfo->cbBelow4GB    = pThis->cbBelow4GB;
     pEfiInfo->cbAbove4GB    = pThis->cbAbove4GB;
-    pEfiInfo->fFlags        = 0;
+    pEfiInfo->fFlags        = 0; /* todo 0 bit makes 64-bit fw to boot need some knitting with GUI */
     pEfiInfo->cCpus         = pThis->cCpus;
     pEfiInfo->pfnPeiEP      = (uint32_t)pThis->GCEntryPoint1;
     pEfiInfo->u32Reserved2  = 0;
