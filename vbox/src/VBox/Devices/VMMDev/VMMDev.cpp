@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 29348 2010-05-11 13:00:18Z vboxsync $ */
+/* $Id: VMMDev.cpp 29425 2010-05-12 15:11:20Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1799,13 +1799,9 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
             VMMDevSharedModuleCheckRequest *pReqModule = (VMMDevSharedModuleCheckRequest *)pRequestHeader;
 
             if (pRequestHeader->size != sizeof(VMMDevSharedModuleCheckRequest))
-            {
                 pRequestHeader->rc = VERR_INVALID_PARAMETER;
-            }
             else
-            {
-                pRequestHeader->rc = VERR_NOT_IMPLEMENTED;  /** todo remove case */
-            }
+                pRequestHeader->rc = PGMR3SharedModuleCheckAll(PDMDevHlpGetVM(pDevIns));
             break;
         }
 
