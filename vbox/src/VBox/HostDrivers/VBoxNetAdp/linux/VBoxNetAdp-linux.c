@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 25465 2009-12-17 14:49:34Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 28234 2010-04-13 08:32:58Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -111,7 +111,6 @@ typedef VBOXNETADPPRIV *PVBOXNETADPPRIV;
 static int vboxNetAdpLinuxOpen(struct net_device *pNetDev)
 {
     netif_start_queue(pNetDev);
-    printk("vboxNetAdpOpen returns 0\n");
     return 0;
 }
 
