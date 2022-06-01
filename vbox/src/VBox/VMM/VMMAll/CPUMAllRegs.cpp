@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 23794 2009-10-15 11:50:03Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 24728 2009-11-17 16:04:45Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1083,9 +1083,10 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t iLeaf, uint32_t *pEax, ui
         &&  fHasMoreCaches
         &&  pVM->cpum.s.enmGuestCpuVendor == CPUMCPUVENDOR_INTEL)
     {
-        /* Report unified L0 cache, Linux'es num_cpu_cores() requires
+        /* Report L0 data cache, Linux'es num_cpu_cores() requires
          * that to be non-0 to detect core count correctly. */
-        *pEax |= (1 << 5) | 3;
+        *pEax |= (1 << 5) /* level 1 */ | 1 /* 1 - data cache, 2 - i-cache, 3 - unified */ ;
+        *pEbx = 63 /* linesize 64 */ ;
     }
 
     Log2(("CPUMGetGuestCpuId: iLeaf=%#010x %RX32 %RX32 %RX32 %RX32\n", iLeaf, *pEax, *pEbx, *pEcx, *pEdx));
