@@ -1,4 +1,4 @@
-/* $Id: strict.h 25611 2009-12-31 14:54:25Z vboxsync $ */
+/* $Id: strict.h 25638 2010-01-04 16:08:04Z vboxsync $ */
 /** @file
  * IPRT - Internal Header Defining Strictness Indicators.
  */
@@ -42,6 +42,19 @@
 # define RTCRITSECT_STRICT
 #endif
 
+/** @def RTSEMEVENT_STRICT
+ * Enables strictness checks and lock accounting of the RTSemEvent API.
+ */
+#if defined(DOXYGEN_RUNNING) || (!defined(RTSEMEVENT_STRICT) && defined(IN_RING3) && (defined(RT_STRICT) || defined(RT_LOCK_STRICT) || defined(RTSEM_STRICT)))
+# define RTSEMEVENT_STRICT
+#endif
+
+/** @def RTSEMEVENTMULTI_STRICT
+ * Enables strictness checks and lock accounting of the RTSemEventMulti API.
+ */
+#if defined(DOXYGEN_RUNNING) || (!defined(RTSEMEVENTMULTI_STRICT) && defined(IN_RING3) && (defined(RT_STRICT) || defined(RT_LOCK_STRICT) || defined(RTSEM_STRICT)))
+# define RTSEMEVENTMULTI_STRICT
+#endif
 
 /** @def RTSEMMUTEX_STRICT
  * Enables strictness checks and lock accounting of the RTSemMutex API.

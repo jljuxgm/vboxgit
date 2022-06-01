@@ -1,4 +1,4 @@
-/* $Id: sems-os2.cpp 25624 2010-01-03 15:23:27Z vboxsync $ */
+/* $Id: sems-os2.cpp 25638 2010-01-04 16:08:04Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, OS/2.
  */
@@ -120,6 +120,24 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT EventSem)
         default:
             return RTErrConvertFromOS2(rc);
     }
+}
+
+
+RTDECL(void) RTSemEventSetSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
+{
+/** @todo implement RTSemEventSetSignaller and friends for OS/2 */
+}
+
+
+RTDECL(void) RTSemEventAddSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
+{
+
+}
+
+
+RTDECL(void) RTSemEventRemoverSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
+{
+
 }
 
 

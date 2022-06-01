@@ -1,4 +1,4 @@
-/* $Id: semevent-win.cpp 25381 2009-12-14 23:52:28Z vboxsync $ */
+/* $Id: semevent-win.cpp 25638 2010-01-04 16:08:04Z vboxsync $ */
 /** @file
  * IPRT - Event Sempahore, Windows.
  */
@@ -121,5 +121,23 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT EventSem)
         return VINF_SUCCESS;
     AssertMsgFailed(("Signaling EventSem %p failed, lasterr=%d\n", EventSem, GetLastError()));
     return RTErrConvertFromWin32(GetLastError());
+}
+
+
+RTDECL(void) RTSemEventSetSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
+{
+/** @todo implement RTSemEventSetSignaller and friends for NT. */
+}
+
+
+RTDECL(void) RTSemEventAddSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
+{
+
+}
+
+
+RTDECL(void) RTSemEventRemoverSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
+{
+
 }
 

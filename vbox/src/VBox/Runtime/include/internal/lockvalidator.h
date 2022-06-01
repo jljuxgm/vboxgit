@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.h 25622 2010-01-03 13:56:34Z vboxsync $ */
+/* $Id: lockvalidator.h 25638 2010-01-04 16:08:04Z vboxsync $ */
 /** @file
  * IPRT - Internal RTLockValidator header.
  */
@@ -69,7 +69,7 @@ typedef struct RTLOCKVALPERTHREAD
     /** Reserved for alignment purposes. */
     bool                            afReserved[3];
     /** Bitmap indicating which entires are free (set) and allocated (clear). */
-    uint32_t                        bmFreeShrdOwners;
+    uint32_t volatile               bmFreeShrdOwners;
     /** Statically allocated shared owner records */
     RTLOCKVALRECSHRDOWN             aShrdOwners[32];
 } RTLOCKVALPERTHREAD;
