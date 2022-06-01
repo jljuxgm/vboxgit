@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 24404 2009-11-05 17:14:23Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 24416 2009-11-05 21:17:56Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -256,10 +256,10 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
     if (details != VMINFO_MACHINEREADABLE)
         RTPrintf("CPUID overrides: ");
     ULONG cFound = 0;
-    static uint32_t const s_auCpuIdRanges[4] =
+    static uint32_t const s_auCpuIdRanges[] =
     {
         UINT32_C(0x00000000), UINT32_C(0x0000000a),
-        UINT32_C(0x80000000), UINT32_C(0x0000000a)
+        UINT32_C(0x80000000), UINT32_C(0x8000000a)
     };
     for (unsigned i = 0; i < RT_ELEMENTS(s_auCpuIdRanges); i += 2)
         for (uint32_t uLeaf = s_auCpuIdRanges[i]; uLeaf < s_auCpuIdRanges[i + 1]; uLeaf++)
