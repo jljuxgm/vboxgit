@@ -1,4 +1,4 @@
-/* $Id: tstRTPipe.cpp 27129 2010-03-06 00:16:08Z vboxsync $ */
+/* $Id: tstRTPipe.cpp 27313 2010-03-12 02:25:27Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTPipe.
  */
@@ -60,7 +60,7 @@ static void tstRTPipe3(void)
 
         size_t cbWritten = _1G;
         rc = RTPipeWrite(hPipeW, s_abBuf, sizeof(s_abBuf), &cbWritten);
-        RTTESTI_CHECK(rc == VINF_SUCCESS || rc == VINF_TRY_AGAIN);
+        RTTESTI_CHECK_MSG(rc == VINF_SUCCESS || rc == VINF_TRY_AGAIN, ("rc=%Rrc\n", rc));
         if (rc != VINF_SUCCESS)
             break;
         cbTotal += cbWritten;
