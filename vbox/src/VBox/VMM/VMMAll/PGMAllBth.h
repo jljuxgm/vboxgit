@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 24805 2009-11-19 18:16:32Z vboxsync $ */
+/* $Id: PGMAllBth.h 24806 2009-11-19 18:18:38Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2400,11 +2400,14 @@ PGM_BTH_DECL(int, CheckPageFault)(PVMCPU pVCpu, uint32_t uErr, PSHWPDE pPdeDst, 
                                         rc = pgmPhysPageMakeWritableUnlocked(pVM, pPage, pPteSrc->u & GST_PTE_PG_MASK);
                                         AssertRC(rc);
                                     }
-                                    PteDst.n.u1Write = 1;
+                                    if (PGM_PAGE_GET_STATE(pPage) == PGM_PAGE_STATE_ALLOCATED)
+                                        PteDst.n.u1Write = 1;
+                                    else
+                                        PteDst.n.u1Write = 0;
                                 }
                             }
                             else
-                                PteDst.n.u1Write     = 1;
+                                PteDst.n.u1Write = 1;
 
                             PteDst.n.u1Dirty    = 1;
                             PteDst.n.u1Accessed = 1;
