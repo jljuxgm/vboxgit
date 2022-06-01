@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 26594 2010-02-17 01:48:11Z vboxsync $ */
+/* $Id: DevACPI.cpp 26614 2010-02-17 15:03:18Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -2241,6 +2241,8 @@ static DECLCALLBACK(void) acpiDetach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_t
 
         /* Disable the CPU */
         VMCPUSET_DEL(&s->CpuSetAttached, iLUN);
+        s->u32CpuEventType = CPU_EVENT_TYPE_REMOVE;
+        s->u32CpuEvent     = iLUN;
         /* Notify the guest */
         update_gpe0(s, s->gpe0_sts | 0x2, s->gpe0_en);
     }
