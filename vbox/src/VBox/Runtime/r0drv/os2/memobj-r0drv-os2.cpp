@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-os2.cpp 23610 2009-10-07 21:22:10Z vboxsync $ */
+/* $Id: memobj-r0drv-os2.cpp 26430 2010-02-11 14:23:01Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, OS/2.
  */
@@ -194,9 +194,14 @@ int rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecu
 }
 
 
-int rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest)
+int rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest, size_t uAlignment)
 {
     AssertMsgReturn(PhysHighest >= 16 *_1M, ("PhysHigest=%RHp\n", PhysHighest), VERR_NOT_IMPLEMENTED);
+
+    /** @todo */
+    if (    uAlignment != 0
+        &&  uAlignment != PAGE_SIZE)
+        return VERR_NOT_SUPPORTED;
 
     /* create the object. */
     PRTR0MEMOBJOS2 pMemOs2 = (PRTR0MEMOBJOS2)rtR0MemObjNew(RT_OFFSETOF(RTR0MEMOBJOS2, Lock), RTR0MEMOBJTYPE_PHYS, NULL, cb);

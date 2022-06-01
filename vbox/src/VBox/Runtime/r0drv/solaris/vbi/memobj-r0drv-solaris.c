@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 24426 2009-11-06 07:38:42Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 26430 2010-02-11 14:23:01Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -191,9 +191,14 @@ int rtR0MemObjNativeAllocPhysNC(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS 
 }
 
 
-int rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest)
+int rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest, size_t uAlignment)
 {
     AssertMsgReturn(PhysHighest >= 16 *_1M, ("PhysHigest=%RHp\n", PhysHighest), VERR_NOT_IMPLEMENTED);
+
+    /** @todo */
+    if (    uAlignment != 0
+        &&  uAlignment != PAGE_SIZE)
+        return VERR_NOT_SUPPORTED;
 
     return rtR0MemObjNativeAllocCont(ppMem, cb, false);
 }
