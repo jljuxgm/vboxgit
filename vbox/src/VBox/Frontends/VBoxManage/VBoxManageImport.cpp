@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 25142 2009-12-02 12:02:25Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 25165 2009-12-03 13:11:29Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -46,6 +46,7 @@
 #include <iprt/file.h>
 
 #include <VBox/log.h>
+#include <VBox/param.h>
 
 #include "VBoxManage.h"
 using namespace com;
@@ -464,9 +465,9 @@ int handleImportAppliance(HandlerArg *arg)
                             if (findArgValue(strOverride, pmapArgs, "cpus"))
                             {
                                 uint32_t cCPUs;
-                                if (    (VINF_SUCCESS == strOverride.toInt(cCPUs))
-                                     && (cCPUs > 0)
-                                     && (cCPUs < 33)
+                                if (    strOverride.toInt(cCPUs) == VINF_SUCCESS
+                                     && cCPUs >= VMM_MIN_CPU_COUNT
+                                     && cCPUs <= VMM_MAX_CPU_COUNT
                                    )
                                 {
                                     bstrFinalValue = strOverride;
@@ -475,7 +476,8 @@ int handleImportAppliance(HandlerArg *arg)
                                 }
                                 else
                                     return errorSyntax(USAGE_IMPORTAPPLIANCE,
-                                                       "Argument to --cpus option must be a number greater than 0 and less than 33.");
+                                                       "Argument to --cpus option must be a number greater than %d and less than %d.",
+                                                       VMM_MIN_CPU_COUNT - 1, VMM_MAX_CPU_COUNT + 1);
                             }
                             else
                                 RTPrintf("%2u: Number of CPUs: %ls\n    (change with \"--vsys %u --cpus <n>\")\n",
