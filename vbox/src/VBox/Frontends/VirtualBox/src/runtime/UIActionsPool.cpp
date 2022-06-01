@@ -1,4 +1,4 @@
-/* $Id: UIActionsPool.cpp 27335 2010-03-12 16:20:29Z vboxsync $ */
+/* $Id: UIActionsPool.cpp 27517 2010-03-19 09:28:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1166,9 +1166,11 @@ void UIActionsPool::createMenus()
         delete m_actionsPool[UIActionIndex_Menu_SharedFolders];
     m_actionsPool[UIActionIndex_Menu_SharedFolders] = new MenuSharedFoldersAction(this);
 
+#ifdef VBOX_WITH_DEBUGGER_GUI
     if (m_actionsPool[UIActionIndex_Menu_Debug])
         delete m_actionsPool[UIActionIndex_Menu_Debug];
     m_actionsPool[UIActionIndex_Menu_Debug] = new MenuDebugAction(this);
+#endif /* VBOX_WITH_DEBUGGER_GUI */
 
     if (m_actionsPool[UIActionIndex_Menu_Help])
         delete m_actionsPool[UIActionIndex_Menu_Help];
