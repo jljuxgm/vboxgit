@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 27770 2010-03-29 09:33:50Z vboxsync $ */
+/* $Id: tcp.cpp 27771 2010-03-29 09:39:54Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -34,11 +34,6 @@
 *******************************************************************************/
 #ifdef RT_OS_WINDOWS
 # include <winsock2.h>
-# include <errno.h>
-# include <netinet/in.h>
-# include <netinet/tcp.h>
-# include <arpa/inet.h>
-# include <netdb.h>
 #else
 # include <sys/types.h>
 # include <sys/socket.h>
