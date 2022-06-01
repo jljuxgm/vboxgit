@@ -1,4 +1,4 @@
-; $Id: ASMAtomicCmpXchgU8.asm 25490 2009-12-18 15:19:41Z vboxsync $
+; $Id: ASMAtomicCmpXchgU8.asm 25492 2009-12-18 15:22:16Z vboxsync $
 ;; @file
 ; IPRT - ASMAtomicCmpXchgU8().
 ;
@@ -48,7 +48,7 @@ BEGINCODE
 BEGINPROC_EXPORTED ASMAtomicCmpXchgU8
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
-        mov     al, r8l
+        mov     al, r8b
         lock cmpxchg [rcx], dl
  %else
         mov     al, dl
