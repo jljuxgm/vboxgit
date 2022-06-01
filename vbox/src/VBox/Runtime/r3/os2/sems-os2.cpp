@@ -1,4 +1,4 @@
-/* $Id: sems-os2.cpp 25378 2009-12-14 19:30:31Z vboxsync $ */
+/* $Id: sems-os2.cpp 25624 2010-01-03 15:23:27Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, OS/2.
  */
@@ -275,6 +275,22 @@ RTDECL(int)  RTSemMutexRelease(RTSEMMUTEX MutexSem)
         return VINF_SUCCESS;
     AssertMsgFailed(("Release MutexSem %p failed, rc=%d\n", MutexSem, rc));
     return RTErrConvertFromOS2(rc);
+}
+
+
+RTDECL(bool) RTSemMutexIsOwned(RTSEMMUTEX hMutex);
+{
+    /*
+     * Unlock mutex semaphore.
+     */
+    PID     pid;
+    TID     tid;
+    ULONG   cRecursions;
+    int rc = DosQueryMutexSem(SEM2HND(MutexSem), &pid, &tid, &cRecursions);
+    if (!rc)
+        return cRecursions != 0;
+    AssertMsgFailed(("DosQueryMutexSem %p failed, rc=%d\n", MutexSem, rc));
+    return rc == ERROR_SEM_OWNER_DIED;
 }
 
 
