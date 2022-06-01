@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 25125 2009-12-01 12:28:55Z vboxsync $ */
+/* $Id: DrvNAT.cpp 25130 2009-12-01 15:58:57Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -248,10 +248,7 @@ static DECLCALLBACK(int) drvNATRecvWakeup(PPDMDRVINS pDrvIns, PPDMTHREAD pThread
 {
     PDRVNAT pThis = PDMINS_2_DATA(pDrvIns, PDRVNAT);
     int rc;
-    if (ASMAtomicReadU32(&pThis->cPkt) > 0) 
-    {
-        rc = RTSemEventSignal(pThis->EventRecv);
-    }
+    rc = RTSemEventSignal(pThis->EventRecv);
 
     STAM_COUNTER_INC(&pThis->StatNATRecvWakeups);
     return VINF_SUCCESS;
@@ -278,11 +275,8 @@ static DECLCALLBACK(int) drvNATUrgRecv(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
 static DECLCALLBACK(int) drvNATUrgRecvWakeup(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
 {
     PDRVNAT pThis = PDMINS_2_DATA(pDrvIns, PDRVNAT);
-    if (ASMAtomicReadU32(&pThis->cUrgPkt) > 0) 
-    {
-        int rc = RTSemEventSignal(pThis->EventUrgRecv);
-        AssertRC(rc);
-    }
+    int rc = RTSemEventSignal(pThis->EventUrgRecv);
+    AssertRC(rc);
 
     return VINF_SUCCESS;
 }
