@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 27893 2010-03-31 13:21:11Z vboxsync $ */
+/* $Id: MachineImpl.cpp 27914 2010-03-31 15:53:03Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -237,7 +237,9 @@ Machine::MediaData::~MediaData()
 /////////////////////////////////////////////////////////////////////////////
 
 Machine::Machine()
-    : mPeer(NULL), mParent(NULL), mGuestHAL(NULL)
+    : mGuestHAL(NULL),
+      mPeer(NULL),
+      mParent(NULL)
 {}
 
 Machine::~Machine()
@@ -8957,7 +8959,7 @@ void Machine::registerMetrics(PerformanceCollector *aCollector, Machine *aMachin
     pm::BaseMetric *guestCpuLoad = new pm::GuestCpuLoad(mGuestHAL, aMachine, guestLoadUser, guestLoadKernel, guestLoadIdle);
     aCollector->registerBaseMetric(guestCpuLoad);
 
-    pm::BaseMetric *guestCpuMem = new pm::GuestRamUsage(mGuestHAL, aMachine, guestMemTotal, guestMemFree, guestMemBalloon, 
+    pm::BaseMetric *guestCpuMem = new pm::GuestRamUsage(mGuestHAL, aMachine, guestMemTotal, guestMemFree, guestMemBalloon,
                                                         guestMemCache, guestPagedTotal, guestPagedFree);
     aCollector->registerBaseMetric(guestCpuMem);
 
