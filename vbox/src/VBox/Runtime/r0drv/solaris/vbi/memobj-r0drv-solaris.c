@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 27673 2010-03-24 15:57:38Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 27675 2010-03-24 16:06:30Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -417,7 +417,6 @@ int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, PRTR0MEMOBJINTERNAL pMem
          * The PhysNC object has no kernel mapping backing it. The call to vbi_pages_premap()
          * prepares the physical pages to be mapped into user or kernel space.
          */
-        LogRel(("calling premap\n"));
         int rc = vbi_pages_premap(pMemToMapSolaris->pvHandle, cb, paPhysAddrs);
         if (rc)
         {
