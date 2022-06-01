@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 24373 2009-11-05 09:51:34Z vboxsync $ */
+/* $Id: DevVGA.cpp 24495 2009-11-09 12:26:36Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5453,7 +5453,8 @@ static DECLCALLBACK(int) vgaR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
 
     if (    uVersion != VGA_SAVEDSTATE_VERSION
         &&  uVersion != VGA_SAVEDSTATE_VERSION_HGSMI
-        &&  uVersion != VGA_SAVEDSTATE_VERSION_PRE_HGSMI)
+        &&  uVersion != VGA_SAVEDSTATE_VERSION_PRE_HGSMI
+        &&  uVersion != VGA_SAVEDSTATE_VERSION_ANCIENT)
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
 
     if (uVersion > VGA_SAVEDSTATE_VERSION_HGSMI)

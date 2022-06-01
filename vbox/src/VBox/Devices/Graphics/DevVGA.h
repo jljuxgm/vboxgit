@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 24373 2009-11-05 09:51:34Z vboxsync $ */
+/* $Id: DevVGA.h 24495 2009-11-09 12:26:36Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -51,6 +51,7 @@
 #define VGA_SAVEDSTATE_VERSION              4
 #define VGA_SAVEDSTATE_VERSION_HGSMI        3
 #define VGA_SAVEDSTATE_VERSION_PRE_HGSMI    2
+#define VGA_SAVEDSTATE_VERSION_ANCIENT      1
 
 #define MSR_COLOR_EMULATION 0x01
 #define MSR_PAGE_SELECT     0x20
