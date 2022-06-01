@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 28838 2010-04-27 15:13:08Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 28846 2010-04-27 16:47:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -72,6 +72,23 @@ bool VBoxProblemReporter::isValid() const
 
 // Helpers
 /////////////////////////////////////////////////////////////////////////////
+
+bool VBoxProblemReporter::isAlreadyShown(const QString &strWarningName) const
+{
+    return m_shownWarnings.contains(strWarningName);
+}
+
+void VBoxProblemReporter::setShownStatus(const QString &strWarningName)
+{
+    if (!m_shownWarnings.contains(strWarningName))
+        m_shownWarnings.append(strWarningName);
+}
+
+void VBoxProblemReporter::clearShownStatus(const QString &strWarningName)
+{
+    if (m_shownWarnings.contains(strWarningName))
+        m_shownWarnings.removeAll(strWarningName);
+}
 
 /**
  *  Shows a message box of the given type with the given text and with buttons
@@ -1881,6 +1898,10 @@ void VBoxProblemReporter::remindAboutAutoCapture()
 
 void VBoxProblemReporter::remindAboutMouseIntegration (bool aSupportsAbsolute)
 {
+    if (isAlreadyShown("remindAboutMouseIntegration"))
+        return;
+    setShownStatus("remindAboutMouseIntegration");
+
     static const char *kNames [2] =
     {
         "remindAboutMouseIntegrationOff",
@@ -1931,6 +1952,8 @@ void VBoxProblemReporter::remindAboutMouseIntegration (bool aSupportsAbsolute)
                 "mouse inside the guest OS.</p>"),
             kNames [0] /* aAutoConfirmId */);
     }
+
+    clearShownStatus("remindAboutMouseIntegration");
 }
 
 /**
