@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 29210 2010-05-07 13:23:49Z vboxsync $ */
+/* $Id: MediumImpl.cpp 29211 2010-05-07 13:24:55Z vboxsync $ */
 
 /** @file
  *
@@ -3154,6 +3154,8 @@ HRESULT Medium::createMediumLockList(bool fMediumWritable,
                 mrc = setError(E_FAIL,
                                "%ls",
                                error.raw());
+                    // error message will be something like
+                    // "Could not open the medium ... VD: error VERR_FILE_NOT_FOUND opening image file ... (VERR_FILE_NOT_FOUND).
                 eik.fetch();
             }
         }
