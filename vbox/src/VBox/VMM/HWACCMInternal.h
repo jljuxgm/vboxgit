@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 24832 2009-11-20 15:37:23Z vboxsync $ */
+/* $Id: HWACCMInternal.h 25386 2009-12-15 10:26:53Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -327,6 +327,10 @@ typedef struct HWACCM
 
         /** Set if VT-x VPID is allowed. */
         bool                        fAllowVPID;
+
+        /** Set if unrestricted guest execution is allowed (real and protected mode without paging). */
+        bool                        fUnrestrictedGuest;
+        bool                        uAlignment[3];
 
         /** Virtual address of the TSS page used for real mode emulation. */
         R3PTRTYPE(PVBOXTSS)         pRealModeTSS;
