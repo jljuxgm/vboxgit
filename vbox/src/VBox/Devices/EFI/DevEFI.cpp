@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 28424 2010-04-16 17:46:28Z vboxsync $ */
+/* $Id: DevEFI.cpp 28569 2010-04-21 16:52:24Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1011,6 +1011,7 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
                               "DmiOEMVBoxRev\0"
 #endif
                               "DmiUseHostInfo\0"
+                              "DmiExposeAdditionalTables\0"
                               "64BitEntry\0"
                               "BootArgs\0"
                               "DeviceProps\0"
