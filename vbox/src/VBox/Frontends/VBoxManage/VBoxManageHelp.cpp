@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 24864 2009-11-23 12:20:41Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 24874 2009-11-23 15:37:58Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -308,8 +308,8 @@ void printUsage(USAGECATEGORY u64Cmd)
         RTPrintf("                            setvideomodehint <xres> <yres> <bpp> [display] |\n"
                  "                            setcredentials <username> <password> <domain>\n"
                  "                                           [--allowlocallogon <yes|no>] |\n"
-                 "                            teleport --hostname <name> --port <port>\n"
-                 "                                   [--password password]\n"
+                 "                            teleport --host <name> --port <port>\n"
+                 "                                   [--maxdowntime <msec>] [--password password]\n"
                  "\n");
     }
 
