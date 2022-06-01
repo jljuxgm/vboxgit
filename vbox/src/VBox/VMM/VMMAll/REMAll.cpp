@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 24116 2009-10-27 16:00:10Z vboxsync $ */
+/* $Id: REMAll.cpp 24343 2009-11-04 16:33:12Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -225,11 +225,13 @@ VMMDECL(void) REMNotifyHandlerPhysicalFlushIfAlmostFull(PVM pVM, PVMCPU pVCpu)
         if (++cFree >= 48)
             return;
     }
-    Assert(VM_FF_ISSET(pVM, VM_FF_REM_HANDLER_NOTIFY));
-    Assert(pVM->rem.s.idxPendingList != UINT32_MAX);
+    AssertRelease(VM_FF_ISSET(pVM, VM_FF_REM_HANDLER_NOTIFY));
+    AssertRelease(pVM->rem.s.idxPendingList != UINT32_MAX);
 
     /* Ok, we gotta flush them. */
     VMMRZCallRing3NoCpu(pVM, VMMCALLRING3_REM_REPLAY_HANDLER_NOTIFICATIONS, 0);
+
+    AssertRelease(pVM->rem.s.idxPendingList == UINT32_MAX);
 }
 #endif /* IN_RC */
 
