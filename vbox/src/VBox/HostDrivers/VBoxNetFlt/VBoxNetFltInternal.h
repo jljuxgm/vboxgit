@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 28667 2010-04-23 17:43:23Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 28703 2010-04-25 00:37:30Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -169,8 +169,10 @@ typedef struct VBOXNETFLTINS
             RTMAC MacAddr;
             struct notifier_block Notifier;
             struct packet_type    PacketType;
+#  ifndef VBOXNETFLT_LINUX_NO_XMIT_QUEUE
             struct sk_buff_head   XmitQueue;
             struct work_struct    XmitTask;
+#  endif
             /** @} */
 # elif defined(RT_OS_SOLARIS)
             /** @name Solaris instance data.
