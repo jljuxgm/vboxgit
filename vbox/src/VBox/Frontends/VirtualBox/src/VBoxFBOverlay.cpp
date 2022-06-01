@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 27961 2010-04-02 16:32:41Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 28731 2010-04-26 08:11:58Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -4684,8 +4684,8 @@ quint64 VBoxQGLOverlay::required2DOffscreenVideoMemory()
 {
     /* HDTV == 1920x1080 ~ 2M
      * for the 4:2:2 formats each pixel is 2Bytes
-     * so each frame may be 4MB
-     * so for triple-buffering we would need 12 MB */
+     * so each frame may be 4MiB
+     * so for triple-buffering we would need 12 MiB */
     return _1M * 12;
 }
 

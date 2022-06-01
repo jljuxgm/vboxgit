@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 28493 2010-04-19 18:33:12Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 28731 2010-04-26 08:11:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -81,7 +81,7 @@ bool UIMachineLogicSeamless::checkAvailability()
     if (uisession()->isGuestAdditionsActive())
     {
         quint64 availBits = machine.GetVRAMSize() /* VRAM */
-                            * _1M /* MB to bytes */
+                            * _1M /* MiB to bytes */
                             * 8; /* to bits */
         quint64 usedBits = m_pScreenLayout->memoryRequirements();
         if (availBits < usedBits)
