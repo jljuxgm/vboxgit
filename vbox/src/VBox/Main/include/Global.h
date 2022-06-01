@@ -1,4 +1,4 @@
-/* $Id: Global.h 24618 2009-11-12 17:52:33Z vboxsync $ */
+/* $Id: Global.h 24933 2009-11-25 10:50:21Z vboxsync $ */
 
 /** @file
  *
@@ -160,6 +160,14 @@ public:
      * @param   aState      Valid session state.
      */
     static const char *stringifySessionState(SessionState_T aState);
+
+    /**
+     * Stringify a device type.
+     *
+     * @returns Pointer to a read only string.
+     * @param   aType       The device type.
+     */
+    static const char *stringifyDeviceType(DeviceType_T aType);
 
     /**
      * Try convert a COM status code to a VirtualBox status code (VBox/err.h).
