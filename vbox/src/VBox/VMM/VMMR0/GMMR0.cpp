@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29639 2010-05-18 14:18:40Z vboxsync $ */
+/* $Id: GMMR0.cpp 29741 2010-05-21 15:21:51Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -4020,7 +4020,7 @@ DECLCALLBACK(int) gmmR0CheckSharedModule(PAVLGCPTRNODECORE pNode, void *pvUser)
         &&  pGlobalModule)
     {
         Log(("gmmR0CheckSharedModule: check %s %s base=%RGv size=%x collision=%d\n", pGlobalModule->szName, pGlobalModule->szVersion, pGlobalModule->Core.Key, pGlobalModule->cbModule, pLocalModule->fCollision));
-        PGMR0SharedModuleCheckRegion(pInfo->pGVM->pVM, pInfo->idCpu, pGlobalModule, pInfo->pGVM);
+        PGMR0SharedModuleCheck(pInfo->pGVM->pVM, pInfo->idCpu, pGlobalModule, pInfo->pGVM);
     }
     return 0;
 }
