@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 27548 2010-03-19 17:47:11Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 27703 2010-03-25 13:17:01Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -586,6 +586,11 @@ void printUsage(USAGECATEGORY u64Cmd)
     if (u64Cmd & USAGE_GUESTPROPERTY)
         usageGuestProperty();
 #endif /* VBOX_WITH_GUEST_PROPS defined */
+
+#ifdef VBOX_WITH_GUEST_CONTROL
+    if (u64Cmd & USAGE_GUESTCONTROL)
+        usageGuestControl();
+#endif /* VBOX_WITH_GUEST_CONTROL defined */
 
     if (u64Cmd & USAGE_METRICS)
     {

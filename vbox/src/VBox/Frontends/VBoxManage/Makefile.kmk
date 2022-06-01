@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 24907 2009-11-24 14:22:47Z vboxsync $
+# $Id: Makefile.kmk 27703 2010-03-25 13:17:01Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -44,6 +44,7 @@ else # !VBOX_ONLY_DOCS
  	$(if $(VBOX_WITH_AHCI), VBOX_WITH_AHCI) \
  	$(if $(VBOX_WITH_SCSI), VBOX_WITH_SCSI) \
  	$(if $(VBOX_WITH_GUEST_PROPS),VBOX_WITH_GUEST_PROPS) \
+	$(if $(VBOX_WITH_GUEST_CONTROL),VBOX_WITH_GUEST_CONTROL) \
  	$(if $(VBOX_WITH_HOSTNETIF_API), VBOX_WITH_HOSTNETIF_API)
  VBoxManage_DEFS.win   = _WIN32_WINNT=0x0500
  ifdef VBOX_DYNAMIC_NET_ATTACH
@@ -62,6 +63,7 @@ else # !VBOX_ONLY_DOCS
  	VBoxManageDHCPServer.cpp \
  	VBoxManageDisk.cpp \
  	$(if $(VBOX_WITH_GUEST_PROPS),VBoxManageGuestProp.cpp) \
+	$(if $(VBOX_WITH_GUEST_CONTROL),VBoxManageGuestCtrl.cpp) \
  	VBoxManageHelp.cpp \
  	VBoxManageHostonly.cpp \
  	VBoxManageImport.cpp \
