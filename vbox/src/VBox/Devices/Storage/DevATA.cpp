@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 26285 2010-02-05 13:45:22Z vboxsync $ */
+/* $Id: DevATA.cpp 27273 2010-03-11 11:57:54Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -3734,6 +3734,10 @@ static void ataParseCmd(ATADevState *s, uint8_t cmd)
         case ATA_IDLE_IMMEDIATE:
             LogRel(("PIIX3 ATA: LUN#%d: aborting current command\n", s->iLUN));
             ataAbortCurrentCommand(s, false);
+            break;
+        case ATA_SLEEP:
+            ataCmdOK(s, 0);
+            ataSetIRQ(s);
             break;
             /* ATAPI commands */
         case ATA_IDENTIFY_PACKET_DEVICE:
