@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 27362 2010-03-15 14:33:11Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 27378 2010-03-15 16:54:03Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2575,8 +2575,16 @@ int pgmPoolSyncCR3(PVMCPU pVCpu)
     }
 # endif /* !IN_RING3 */
     else
+    {
         pgmPoolMonitorModifiedClearAll(pVM);
 
+        /* pgmPoolMonitorModifiedClearAll can cause a pgm pool flush (dirty page clearing), so make sure we handle this! */
+        if (pVCpu->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL)
+        {
+            Log(("pgmPoolMonitorModifiedClearAll caused a pgm flush -> call pgmPoolSyncCR3 again!\n"));
+            return pgmPoolSyncCR3(pVCpu);
+        }
+    }
     return VINF_SUCCESS;
 }
 
