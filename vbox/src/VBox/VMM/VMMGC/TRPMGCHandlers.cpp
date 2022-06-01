@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 25556 2009-12-22 12:19:11Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 25557 2009-12-22 12:19:58Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -865,10 +865,7 @@ static int trpmGCTrap0dHandler(PVM pVM, PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFram
      * Note: it's no longer safe to access the instruction opcode directly due to possible stale code TLB entries
      */
     if (Cpu.pCurInstr->opcode == OP_RDTSC)
-    {
-        STAM_PROFILE_STOP(&pVM->trpm.s.StatTrap0dDisasm, a);
         return trpmGCTrap0dHandlerRdTsc(pVM, pVCpu, pRegFrame);
-    }
 
     /*
      * Deal with I/O port access.
