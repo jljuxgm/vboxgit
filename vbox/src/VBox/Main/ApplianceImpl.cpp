@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 24522 2009-11-09 17:25:44Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 24525 2009-11-09 19:02:41Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1440,7 +1440,7 @@ int Appliance::importFS(TaskImportOVF *pTask)
                 rc = pController->COMGETTER(Name)(bstrName.asOutParam());
                 if (FAILED(rc)) throw rc;
 
-                rc = pNewMachine->AttachDevice(bstrName.raw(), (PRInt32)0, (PRInt32)0, (ULONG)DeviceType_Floppy, Bstr("").raw());
+                rc = pNewMachine->AttachDevice(bstrName, 0, 0, DeviceType_Floppy, Bstr(""));
                 if (FAILED(rc)) throw rc;
             }
 
