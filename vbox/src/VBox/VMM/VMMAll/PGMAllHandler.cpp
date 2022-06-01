@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 27402 2010-03-16 13:19:51Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 28749 2010-04-26 14:08:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -899,7 +899,7 @@ VMMDECL(int)  PGMHandlerPhysicalReset(PVM pVM, RTGCPHYS GCPhys)
  */
 VMMDECL(int)  PGMHandlerPhysicalPageTempOff(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCPhysPage)
 {
-    LogFlow(("PGMHandlerPhysicalPageTempOff GCPhys=%RGp\n", GCPhys));
+    LogFlow(("PGMHandlerPhysicalPageTempOff GCPhys=%RGp\n", GCPhysPage));
 
     pgmLock(pVM);
     /*
