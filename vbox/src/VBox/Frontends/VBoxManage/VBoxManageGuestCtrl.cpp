@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 28176 2010-04-12 08:04:24Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 28182 2010-04-12 08:40:29Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -109,8 +109,8 @@ static int handleExecProgram(HandlerArg *a)
                 int vrc = RTGetOptArgvFromString(&papszArg, &cArgs, a->argv[i + 1], NULL);
                 if (RT_SUCCESS(vrc))
                 {
-                    for (int a = 0; a < cArgs; a++)
-                        args.push_back(Bstr(papszArg[a]));
+                    for (int j = 0; j < cArgs; j++)
+                        args.push_back(Bstr(papszArg[j]));
 
                     RTGetOptArgvFree(papszArg);
                 }
@@ -130,8 +130,8 @@ static int handleExecProgram(HandlerArg *a)
                 int vrc = RTGetOptArgvFromString(&papszArg, &cArgs, a->argv[i + 1], NULL);
                 if (RT_SUCCESS(vrc))
                 {
-                    for (int a = 0; a < cArgs; a++)
-                        env.push_back(Bstr(papszArg[a]));
+                    for (int j = 0; j < cArgs; j++)
+                        env.push_back(Bstr(papszArg[j]));
 
                     RTGetOptArgvFree(papszArg);
                 }
