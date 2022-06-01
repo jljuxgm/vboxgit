@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 27375 2010-03-15 16:47:50Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 27436 2010-03-17 11:28:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -222,13 +222,6 @@ void UIMachineWindowNormal::retranslateUi()
 {
     /* Translate parent class: */
     UIMachineWindow::retranslateUi();
-
-#ifdef Q_WS_MAC
-    // TODO_NEW_CORE
-//    m_pDockSettingsMenu->setTitle(tr("Dock Icon"));
-//    m_pDockDisablePreview->setText(tr("Show Application Icon"));
-//    m_pDockEnablePreviewMonitor->setText(tr("Show Monitor Preview"));
-#endif /* Q_WS_MAC */
 
     m_pNameHostkey->setToolTip(
         tr("Shows the currently assigned Host key.<br>"

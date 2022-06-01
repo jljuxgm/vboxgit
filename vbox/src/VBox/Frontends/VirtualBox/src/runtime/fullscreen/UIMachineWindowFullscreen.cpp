@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 27421 2010-03-16 17:56:17Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 27436 2010-03-17 11:28:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -135,13 +135,6 @@ void UIMachineWindowFullscreen::retranslateUi()
 {
     /* Translate parent class: */
     UIMachineWindow::retranslateUi();
-
-#ifdef Q_WS_MAC
-    // TODO_NEW_CORE
-//    m_pDockSettingsMenu->setTitle(tr("Dock Icon"));
-//    m_pDockDisablePreview->setText(tr("Show Application Icon"));
-//    m_pDockEnablePreviewMonitor->setText(tr("Show Monitor Preview"));
-#endif /* Q_WS_MAC */
 }
 
 #ifdef Q_WS_X11

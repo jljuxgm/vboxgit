@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27427 2010-03-16 21:28:13Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27436 2010-03-17 11:28:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -141,13 +141,6 @@ void UIMachineWindowSeamless::retranslateUi()
 {
     /* Translate parent class: */
     UIMachineWindow::retranslateUi();
-
-#ifdef Q_WS_MAC
-    // TODO_NEW_CORE
-//    m_pDockSettingsMenu->setTitle(tr("Dock Icon"));
-//    m_pDockDisablePreview->setText(tr("Show Application Icon"));
-//    m_pDockEnablePreviewMonitor->setText(tr("Show Monitor Preview"));
-#endif /* Q_WS_MAC */
 }
 
 #ifdef Q_WS_MAC
