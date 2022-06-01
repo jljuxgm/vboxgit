@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 29455 2010-05-14 09:19:26Z vboxsync $ */
+/* $Id: UISession.cpp 29485 2010-05-14 16:29:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -558,7 +558,7 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
 #endif
     /* Common flags: */
     , m_fIsFirstTimeStarted(false)
-    , m_fIsIgnoreRutimeMediumsChanging(false)
+    , m_fIsIgnoreRuntimeMediumsChanging(false)
     , m_fIsGuestResizeIgnored(false)
     , m_fIsSeamlessModeRequested(false)
     /* Guest additions flags: */
@@ -1192,7 +1192,7 @@ void UISession::loadSessionSettings()
         /* Ignore mediums mounted at runtime? */
         strSettings = machine.GetExtraData(VBoxDefs::GUI_SaveMountedAtRuntime);
         if (strSettings == "no")
-            m_fIsIgnoreRutimeMediumsChanging = true;
+            m_fIsIgnoreRuntimeMediumsChanging = true;
 
         /* Should guest autoresize? */
         strSettings = machine.GetExtraData(VBoxDefs::GUI_AutoresizeGuest);
