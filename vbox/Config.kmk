@@ -1,4 +1,4 @@
-# $Id: Config.kmk 25748 2010-01-12 10:27:27Z vboxsync $
+# $Id: Config.kmk 25756 2010-01-12 12:35:40Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -722,6 +722,9 @@ ifdef VBOX_OSE
  ifn1of ($(KBUILD_TARGET), linux solaris)
   # Only the Linux, Solaris installers are public
   VBOX_WITH_INSTALLER=
+ endif
+ if1of ($(KBUILD_TARGET), solaris)
+  VBOX_WITH_NEW_USB_CODE_ON_SOLARIS=
  endif
  VBOX_WITH_HPET=
  VBOX_WITH_LPC=
@@ -3906,7 +3909,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25748 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25756 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
