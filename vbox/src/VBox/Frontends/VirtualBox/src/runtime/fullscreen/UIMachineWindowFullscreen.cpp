@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 27436 2010-03-17 11:28:09Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 27662 2010-03-24 11:11:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -108,9 +108,15 @@ UIMachineWindowFullscreen::~UIMachineWindowFullscreen()
 
 void UIMachineWindowFullscreen::sltPlaceOnScreen()
 {
-    QRect r = QApplication::desktop()->screenGeometry(static_cast<UIMachineLogicFullscreen*>(machineLogic())->hostScreenForGuestScreen(m_uScreenId));
-    move(r.topLeft());
-    resize(r.size());
+    /* Get corresponding screen: */
+    int iScreen = static_cast<UIMachineLogicFullscreen*>(machineLogic())->hostScreenForGuestScreen(m_uScreenId);
+    /* Calculate working area: */
+    QRect workingArea = QApplication::desktop()->screenGeometry(iScreen);
+    /* Move to the appropriate position: */
+    move(workingArea.topLeft());
+    /* Resize to the appropriate size: */
+    resize(workingArea.size());
+    /* Process pending move & resize events: */
     qApp->processEvents();
 }
 

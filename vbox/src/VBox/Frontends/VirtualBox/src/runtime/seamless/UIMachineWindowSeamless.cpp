@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27446 2010-03-17 13:24:11Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27662 2010-03-24 11:11:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -109,9 +109,12 @@ void UIMachineWindowSeamless::sltPlaceOnScreen()
     int iScreen = static_cast<UIMachineLogicSeamless*>(machineLogic())->hostScreenForGuestScreen(m_uScreenId);
     /* Calculate working area: */
     QRect workingArea = vboxGlobal().availableGeometry(iScreen);
-    /* Move & resize to the appropriate values: */
+    /* Move to the appropriate position: */
     move(workingArea.topLeft());
+    /* Resize to the appropriate size: */
     resize(workingArea.size());
+    /* Process pending move & resize events: */
+    qApp->processEvents();
 }
 
 void UIMachineWindowSeamless::sltMachineStateChanged()
