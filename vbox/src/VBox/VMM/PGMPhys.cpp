@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 27586 2010-03-22 12:59:29Z vboxsync $ */
+/* $Id: PGMPhys.cpp 27587 2010-03-22 13:07:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3600,7 +3600,9 @@ VMMR3DECL(int) PGMR3PhysTlbGCPhys2Ptr(PVM pVM, RTGCPHYS GCPhys, bool fWritable, 
     int rc = pgmPhysGetPageAndRangeEx(&pVM->pgm.s, GCPhys, &pPage, &pRam);
     if (RT_SUCCESS(rc))
     {
-        if (!PGM_PAGE_HAS_ANY_HANDLERS(pPage))
+        if (PGM_PAGE_IS_BALLOONED(pPage))
+            rc = VERR_PGM_PHYS_TLB_CATCH_ALL;
+        else if (!PGM_PAGE_HAS_ANY_HANDLERS(pPage))
             rc = VINF_SUCCESS;
         else
         {
@@ -3613,8 +3615,6 @@ VMMR3DECL(int) PGMR3PhysTlbGCPhys2Ptr(PVM pVM, RTGCPHYS GCPhys, bool fWritable, 
                 if (fWritable)
                     rc = VINF_PGM_PHYS_TLB_CATCH_WRITE;
             }
-            else if (PGM_PAGE_IS_BALLOONED(pPage))
-                rc = VERR_PGM_PHYS_TLB_CATCH_ALL;
             else
             {
                 /* Temporarily disabled physical handler(s), since the recompiler
