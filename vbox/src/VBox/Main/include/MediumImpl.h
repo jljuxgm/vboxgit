@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 25200 2009-12-04 18:19:05Z vboxsync $ */
+/* $Id: MediumImpl.h 25256 2009-12-08 21:18:38Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -61,6 +61,7 @@ public:
     BEGIN_COM_MAP(Medium)
         COM_INTERFACE_ENTRY(ISupportErrorInfo)
         COM_INTERFACE_ENTRY(IMedium)
+        COM_INTERFACE_ENTRY(IDispatch)
     END_COM_MAP()
 
     DECLARE_EMPTY_CTOR_DTOR(Medium)
