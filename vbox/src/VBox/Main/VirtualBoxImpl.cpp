@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 25184 2009-12-04 11:37:03Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 25194 2009-12-04 15:59:34Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -138,7 +138,7 @@ private:
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// VirtualBox data definition
+// VirtualBox private member data definition
 //
 ////////////////////////////////////////////////////////////////////////////////
 
