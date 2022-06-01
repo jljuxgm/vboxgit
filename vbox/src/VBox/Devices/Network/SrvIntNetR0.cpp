@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 30004 2010-06-02 21:35:10Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 30029 2010-06-04 11:39:56Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -4465,7 +4465,7 @@ static DECLCALLBACK(INTNETSWDECISION) intnetR0TrunkIfPortPreRecv(PINTNETTRUNKSWP
     AssertPtrReturn(pNetwork, INTNETSWDECISION_TRUNK);
     AssertReturn(pNetwork->hEvtBusyIf != NIL_RTSEMEVENT, INTNETSWDECISION_TRUNK);
     AssertPtr(pvSrc);
-    AssertPtr(cbSrc >= 6);
+    Assert(cbSrc >= 6);
     Assert(fSrc);
 
     /** @todo implement the switch table. */
