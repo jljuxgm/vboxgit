@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 25194 2009-12-04 15:59:34Z vboxsync $ */
+/* $Id: USBControllerImpl.h 25197 2009-12-04 17:32:03Z vboxsync $ */
 
 /** @file
  *
@@ -25,26 +25,15 @@
 #define ____H_USBCONTROLLERIMPL
 
 #include "VirtualBoxBase.h"
-#ifdef VBOX_WITH_USB
-# include "USBDeviceFilterImpl.h"
-#endif
-
-#include <list>
 
 class Machine;
 class HostUSBDevice;
+class USBDeviceFilter;
 
 namespace settings
 {
     struct USBController;
 }
-
-/**
- *  @note we cannot use VirtualBoxBaseWithTypedChildren <USBDeviceFilter> as a
- *  base class, because we want a quick (map-based) way of validating
- *  IUSBDeviceFilter pointers passed from outside as method parameters that
- *  VirtualBoxBaseWithChildren::getDependentChild() gives us.
- */
 
 class ATL_NO_VTABLE USBController :
     public VirtualBoxBase,

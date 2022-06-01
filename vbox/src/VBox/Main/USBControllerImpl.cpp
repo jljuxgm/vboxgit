@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 25195 2009-12-04 16:06:08Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 25197 2009-12-04 17:32:03Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -39,7 +39,6 @@
 #include <VBox/settings.h>
 
 #include <algorithm>
-#include "objectslist.h"
 
 // defines
 /////////////////////////////////////////////////////////////////////////////
