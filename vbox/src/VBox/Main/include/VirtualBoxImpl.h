@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 25170 2009-12-03 15:40:52Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 25182 2009-12-04 10:50:15Z vboxsync $ */
 
 /** @file
  *
@@ -59,7 +59,7 @@ namespace settings
 }
 
 class ATL_NO_VTABLE VirtualBox :
-    public VirtualBoxBase,
+    public VirtualBoxBaseWithChildrenNEXT,
     public VirtualBoxSupportErrorInfoImpl<VirtualBox, IVirtualBox>,
     public VirtualBoxSupportTranslation<VirtualBox>,
     VBOX_SCRIPTABLE_IMPL(IVirtualBox)
@@ -256,8 +256,13 @@ public:
     HRESULT registerHardDisk(Medium *aHardDisk, bool aSaveRegistry = true);
     HRESULT unregisterHardDisk(Medium *aHardDisk, bool aSaveRegistry = true);
 
-    HRESULT registerImage(Medium *aImage, DeviceType_T argType, bool aSaveRegistry = true);
-    HRESULT unregisterImage(Medium *aImage, DeviceType_T argType, bool aSaveRegistry = true);
+    HRESULT registerDVDImage(Medium *aImage, bool aSaveRegistry = true);
+    HRESULT unregisterDVDImage(Medium *aImage, bool aSaveRegistry = true);
+
+    HRESULT registerFloppyImage (Medium *aImage, bool aSaveRegistry = true);
+    HRESULT unregisterFloppyImage (Medium *aImage, bool aSaveRegistry = true);
+
+    HRESULT cast (IMedium *aFrom, ComObjPtr<Medium> &aTo);
 
     HRESULT saveSettings();
     HRESULT updateSettings(const char *aOldPath, const char *aNewPath);
@@ -269,6 +274,7 @@ public:
     const Utf8Str& settingsFilePath();
 
     RWLockHandle& hardDiskTreeLockHandle();
+    RWLockHandle* childrenLock();
 
     /* for VirtualBoxSupportErrorInfoImpl */
     static const wchar_t *getComponentName() { return L"VirtualBox"; }
