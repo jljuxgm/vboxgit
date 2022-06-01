@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 25638 2010-01-04 16:08:04Z vboxsync $ */
+/* $Id: thread.cpp 25645 2010-01-05 09:29:31Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -778,7 +778,7 @@ RT_EXPORT_SYMBOL(RTThreadCreate);
  * @param   cbStack     See RTThreadCreate.
  * @param   enmType     See RTThreadCreate.
  * @param   fFlags      See RTThreadCreate.
- * @param   pszName     Thread name format.
+ * @param   pszNameFmt  Thread name format.
  * @param   va          Format arguments.
  */
 RTDECL(int) RTThreadCreateV(PRTTHREAD pThread, PFNRTTHREAD pfnThread, void *pvUser, size_t cbStack,
@@ -803,7 +803,7 @@ RT_EXPORT_SYMBOL(RTThreadCreateV);
  * @param   cbStack     See RTThreadCreate.
  * @param   enmType     See RTThreadCreate.
  * @param   fFlags      See RTThreadCreate.
- * @param   pszName     Thread name format.
+ * @param   pszNameFmt  Thread name format.
  * @param   ...         Format arguments.
  */
 RTDECL(int) RTThreadCreateF(PRTTHREAD pThread, PFNRTTHREAD pfnThread, void *pvUser, size_t cbStack,

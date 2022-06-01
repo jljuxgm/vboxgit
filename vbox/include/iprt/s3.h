@@ -1,4 +1,4 @@
-/* $Id: s3.h 21757 2009-07-21 16:19:52Z vboxsync $ */
+/* $Id: s3.h 25645 2010-01-05 09:29:31Z vboxsync $ */
 /** @file
  * IPRT - Simple Storage Service (S3) Communication API.
  */
@@ -264,7 +264,7 @@ RTR3DECL(int) RTS3GetKey(RTS3 hS3, const char *pszBucketName, const char *pszKey
  * @param   pszKeyName      Name of the new key.
  * @param   pszFilename     Name of the file to upload the content of.
  */
-RTR3DECL(int) RTS3PutKey(RTS3 hS3, const char *pszBucketName, const char *pszKeyName, const char *pszFileName);
+RTR3DECL(int) RTS3PutKey(RTS3 hS3, const char *pszBucketName, const char *pszKeyName, const char *pszFilename);
 
 /** @} */
 

@@ -1,4 +1,4 @@
-/* $Id: fileaio-posix.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
+/* $Id: fileaio-posix.cpp 25645 2010-01-05 09:29:31Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for POSIX compliant host platforms.
  */
@@ -422,10 +422,10 @@ RTDECL(int) RTFileAioReqPrepareRead(RTFILEAIOREQ hReq, RTFILE hFile, RTFOFF off,
 
 
 RTDECL(int) RTFileAioReqPrepareWrite(RTFILEAIOREQ hReq, RTFILE hFile, RTFOFF off,
-                                     void *pvBuf, size_t cbWrite, void *pvUser)
+                                     void const *pvBuf, size_t cbWrite, void *pvUser)
 {
     return rtFileAioReqPrepareTransfer(hReq, hFile, LIO_WRITE,
-                                       off, pvBuf, cbWrite, pvUser);
+                                       off, (void *)pvBuf, cbWrite, pvUser);
 }
 
 

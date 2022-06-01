@@ -1,4 +1,4 @@
-/* $Id: sysfs.h 23332 2009-09-25 13:26:57Z vboxsync $ */
+/* $Id: sysfs.h 25645 2010-01-05 09:29:31Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -39,7 +39,7 @@
 
 RT_C_DECLS_BEGIN
 
-/** @defgroup grp_rt_mp RTLinuxSysfs - Linux sysfs
+/** @defgroup grp_rt_linux_sysfs    RTLinuxSysfs - Linux sysfs
  * @ingroup grp_rt
  * @{
  */

@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-nt.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
+/* $Id: timer-r0drv-nt.cpp 25645 2010-01-05 09:29:31Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, NT.
  */
@@ -106,7 +106,10 @@ typedef struct RTTIMER
  * Timer callback function for the non-omni timers.
  *
  * @returns HRTIMER_NORESTART or HRTIMER_RESTART depending on whether it's a one-shot or interval timer.
- * @param   pHrTimer    Pointer to the timer structure.
+ * @param   pDpc                Pointer to the the DPC.
+ * @param   pvUser              Pointer to our internal timer structure.
+ * @param   SystemArgument1     Some system argument.
+ * @param   SystemArgument2     Some system argument.
  */
 static void _stdcall rtTimerNtSimpleCallback(IN PKDPC pDpc, IN PVOID pvUser, IN PVOID SystemArgument1, IN PVOID SystemArgument2)
 {

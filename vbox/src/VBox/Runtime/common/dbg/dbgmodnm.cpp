@@ -1,4 +1,4 @@
-/* $Id: dbgmodnm.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: dbgmodnm.cpp 25645 2010-01-05 09:29:31Z vboxsync $ */
 /** @file
  * IPRT - Debug Map Reader For NM Like Mapfiles.
  */
@@ -161,7 +161,7 @@ static DECLCALLBACK(int) rtDbgModNm_SegmentAdd(PRTDBGMODINT pMod, RTUINTPTR uRva
 }
 
 
-/** @copydoc RTDBGMODVTDBG::pfnRvaToSegOff */
+/** @copydoc RTDBGMODVTDBG::pfnImageSize */
 static DECLCALLBACK(RTUINTPTR) rtDbgModNm_ImageSize(PRTDBGMODINT pMod)
 {
     PRTDBGMODNM pThis = (PRTDBGMODNM)pMod->pvDbgPriv;

@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 22111 2009-08-09 20:12:09Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 25645 2010-01-05 09:29:31Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -529,7 +529,7 @@ static DECLCALLBACK(int) rtDbgModContainer_SegmentAdd(PRTDBGMODINT pMod, RTUINTP
 }
 
 
-/** @copydoc RTDBGMODVTDBG::pfnRvaToSegOff */
+/** @copydoc RTDBGMODVTDBG::pfnImageSize */
 static DECLCALLBACK(RTUINTPTR) rtDbgModContainer_ImageSize(PRTDBGMODINT pMod)
 {
     PRTDBGMODCTN pThis = (PRTDBGMODCTN)pMod->pvDbgPriv;

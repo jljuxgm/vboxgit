@@ -1,4 +1,4 @@
-/* $Id: fileaio-freebsd.cpp 19562 2009-05-10 21:44:16Z vboxsync $ */
+/* $Id: fileaio-freebsd.cpp 25645 2010-01-05 09:29:31Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the FreeBSD host platform.
  */
@@ -223,10 +223,10 @@ RTDECL(int) RTFileAioReqPrepareRead(RTFILEAIOREQ hReq, RTFILE hFile, RTFOFF off,
 }
 
 RTDECL(int) RTFileAioReqPrepareWrite(RTFILEAIOREQ hReq, RTFILE hFile, RTFOFF off,
-                                     void *pvBuf, size_t cbWrite, void *pvUser)
+                                     void const *pvBuf, size_t cbWrite, void *pvUser)
 {
     return rtFileAioReqPrepareTransfer(hReq, hFile, LIO_WRITE,
-                                       off, pvBuf, cbWrite, pvUser);
+                                       off, (void *)pvBuf, cbWrite, pvUser);
 }
 
 RTDECL(int) RTFileAioReqPrepareFlush(RTFILEAIOREQ hReq, RTFILE hFile, void *pvUser)

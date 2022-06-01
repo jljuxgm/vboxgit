@@ -1,4 +1,4 @@
-/* $Id: fileaio-linux.cpp 22969 2009-09-11 23:00:59Z vboxsync $ */
+/* $Id: fileaio-linux.cpp 25645 2010-01-05 09:29:31Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Linux host platform.
  */
@@ -398,10 +398,10 @@ RTDECL(int) RTFileAioReqPrepareRead(RTFILEAIOREQ hReq, RTFILE hFile, RTFOFF off,
 
 
 RTDECL(int) RTFileAioReqPrepareWrite(RTFILEAIOREQ hReq, RTFILE hFile, RTFOFF off,
-                                     void *pvBuf, size_t cbWrite, void *pvUser)
+                                     void const *pvBuf, size_t cbWrite, void *pvUser)
 {
     return rtFileAioReqPrepareTransfer(hReq, hFile, LNXKAIO_IOCB_CMD_WRITE,
-                                       off, pvBuf, cbWrite, pvUser);
+                                       off, (void *)pvBuf, cbWrite, pvUser);
 }
 
 
