@@ -1,4 +1,4 @@
-/* $Id: sems-win.cpp 10839 2008-07-23 19:48:51Z vboxsync $ */
+/* $Id: sems-win.cpp 25373 2009-12-14 19:20:27Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, implementation for Windows host platform.
  */
@@ -263,6 +263,13 @@ RTDECL(int)  RTSemMutexRequestNoResume(RTSEMMUTEX MutexSem, unsigned cMillies)
         }
     }
 }
+
+
+RTDECL(int)  RTSemMutexRequestNoResumeDebug(RTSEMMUTEX MutexSem, unsigned cMillies, RTHCUINTPTR uId, RT_SRC_POS_DECL)
+{
+    return RTSemMutexRequestNoResume(MutexSem, cMillies);
+}
+
 
 RTDECL(int)  RTSemMutexRelease(RTSEMMUTEX MutexSem)
 {

@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-nt.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: semmutex-r0drv-nt.cpp 25373 2009-12-14 19:20:27Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, NT.
  */
@@ -158,6 +158,13 @@ RTDECL(int)  RTSemMutexRequest(RTSEMMUTEX MutexSem, unsigned cMillies)
     return VINF_SUCCESS;
 }
 
+
+RTDECL(int)  RTSemMutexRequestDebug(RTSEMMUTEX MutexSem, unsigned cMillies, RTHCUINTPTR uId, RT_SRC_POS_DECL)
+{
+    return RTSemMutexRequest(MutexSem, cMillies);
+}
+
+/** @todo implement the NoResume versions */
 
 RTDECL(int)  RTSemMutexRelease(RTSEMMUTEX MutexSem)
 {
