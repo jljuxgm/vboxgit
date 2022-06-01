@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 26152 2010-02-02 16:00:35Z vboxsync $ */
+/* $Id: IOM.cpp 26944 2010-03-02 13:42:41Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1418,6 +1418,8 @@ VMMR3DECL(int)  IOMR3MMIORegisterR3(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
         AssertMsgFailed(("Wrapped! %RGp %#x bytes\n", GCPhysStart, cbRange));
         return VERR_IOM_INVALID_MMIO_RANGE;
     }
+    /** @todo implement per-device locks for MMIO access. */
+    AssertReturn(!pDevIns->pCritSectR3, VERR_INTERNAL_ERROR_2);
 
     /*
      * Resolve the GC/R0 handler addresses lazily because of init order.
