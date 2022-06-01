@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 27476 2010-03-18 11:13:17Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 27477 2010-03-18 12:17:32Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -2467,10 +2467,15 @@ static int vmdkWriteDescriptor(PVMDKIMAGE pImage)
 
         if (cbLimit && uOffset + cb + 1 > cbLimit)
             return vmdkError(pImage, VERR_BUFFER_OVERFLOW, RT_SRC_POS, N_("VMDK: descriptor too long in '%s'"), pImage->pszFilename);
-        rc = vmdkFileWriteAt(pDescFile, uOffset, psz, cb, NULL);
-        if (RT_FAILURE(rc))
-            return vmdkError(pImage, rc, RT_SRC_POS, N_("VMDK: error writing descriptor in '%s'"), pImage->pszFilename);
-        uOffset += cb;
+
+        if (cb > 0)
+        {
+            rc = vmdkFileWriteAt(pDescFile, uOffset, psz, cb, NULL);
+            if (RT_FAILURE(rc))
+                return vmdkError(pImage, rc, RT_SRC_POS, N_("VMDK: error writing descriptor in '%s'"), pImage->pszFilename);
+            uOffset += cb;
+        }
+
         rc = vmdkFileWriteAt(pDescFile, uOffset, "\n", 1, NULL);
         if (RT_FAILURE(rc))
             return vmdkError(pImage, rc, RT_SRC_POS, N_("VMDK: error writing descriptor in '%s'"), pImage->pszFilename);
