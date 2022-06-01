@@ -1,4 +1,4 @@
-/* $Id: CSAMGC.cpp 25771 2010-01-12 16:20:35Z vboxsync $ */
+/* $Id: CSAMGC.cpp 26271 2010-02-05 04:04:36Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -65,7 +65,7 @@
 VMMRCDECL(int) CSAMGCCodePageWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange)
 {
     PPATMGCSTATE pPATMGCState;
-    bool         fPatchCode = PATMIsPatchGCAddr(pVM, (RTRCPTR)pRegFrame->eip);
+    bool         fPatchCode = PATMIsPatchGCAddr(pVM, pRegFrame->eip);
     int          rc;
     PVMCPU       pVCpu = VMMGetCpu0(pVM);
 

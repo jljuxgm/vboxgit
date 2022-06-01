@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 26265 2010-02-05 03:03:10Z vboxsync $ */
+/* $Id: PATMSSM.cpp 26271 2010-02-05 04:04:36Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -1000,7 +1000,7 @@ static void patmCorrectFixup(PVM pVM, unsigned ulSSMVersion, PATM &patmInfo, PPA
     {
     case FIXUP_ABSOLUTE:
     {
-        if (pRec->pSource && !PATMIsPatchGCAddr(pVM, pRec->pSource))
+        if (pRec->pSource && !PATMIsPatchGCAddr(pVM, (RTRCUINTPTR)pRec->pSource))
             break;
 
         if (    *pFixup >= patmInfo.pGCStateGC

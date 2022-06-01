@@ -1,4 +1,4 @@
-/* $Id: PDMGCDevice.cpp 26175 2010-02-02 22:14:21Z vboxsync $ */
+/* $Id: PDMGCDevice.cpp 26271 2010-02-05 04:04:36Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
@@ -207,7 +207,7 @@ static DECLCALLBACK(int) pdmRCDevHlp_PATMSetMMIOPatchInfo(PPDMDEVINS pDevIns, RT
     PDMDEV_ASSERT_DEVINS(pDevIns);
     LogFlow(("pdmRCDevHlp_PATMSetMMIOPatchInfo: caller=%p/%d:\n", pDevIns, pDevIns->iInstance));
 
-    return PATMSetMMIOPatchInfo(pDevIns->Internal.s.pVMRC, GCPhys, (RTRCPTR)pCachedData);
+    return PATMSetMMIOPatchInfo(pDevIns->Internal.s.pVMRC, GCPhys, (RTRCPTR)(uintptr_t)pCachedData);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 26218 2010-02-03 21:24:13Z vboxsync $ */
+/* $Id: PGMAllBth.h 26271 2010-02-05 04:04:36Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -715,7 +715,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
                         if (    pvFault == (RTGCPTR)pRegFrame->eip
                             ||  pvFault - pRegFrame->eip < 8    /* instruction crossing a page boundary */
 #    ifdef CSAM_DETECT_NEW_CODE_PAGES
-                            ||  (   !PATMIsPatchGCAddr(pVM, (RTGCPTR)pRegFrame->eip)
+                            ||  (   !PATMIsPatchGCAddr(pVM, pRegFrame->eip)
                                  && CSAMDoesPageNeedScanning(pVM, (RTRCPTR)pRegFrame->eip))   /* any new code we encounter here */
 #    endif /* CSAM_DETECT_NEW_CODE_PAGES */
                            )

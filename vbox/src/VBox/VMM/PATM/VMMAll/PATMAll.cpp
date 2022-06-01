@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 19259 2009-04-29 12:45:19Z vboxsync $ */
+/* $Id: PATMAll.cpp 26271 2010-02-05 04:04:36Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -52,7 +52,7 @@
  */
 VMMDECL(void) PATMRawEnter(PVM pVM, PCPUMCTXCORE pCtxCore)
 {
-    bool fPatchCode = PATMIsPatchGCAddr(pVM, (RTRCPTR)pCtxCore->eip);
+    bool fPatchCode = PATMIsPatchGCAddr(pVM, pCtxCore->eip);
 
     /*
      * Currently we don't bother to check whether PATM is enabled or not.
@@ -123,7 +123,7 @@ VMMDECL(void) PATMRawEnter(PVM pVM, PCPUMCTXCORE pCtxCore)
  */
 VMMDECL(void) PATMRawLeave(PVM pVM, PCPUMCTXCORE pCtxCore, int rawRC)
 {
-    bool fPatchCode = PATMIsPatchGCAddr(pVM, (RTRCPTR)pCtxCore->eip);
+    bool fPatchCode = PATMIsPatchGCAddr(pVM, pCtxCore->eip);
     /*
      * We will only be called if PATMRawEnter was previously called.
      */
@@ -267,9 +267,9 @@ VMMDECL(RCPTRTYPE(PPATMGCSTATE)) PATMQueryGCState(PVM pVM)
  * @param   pVM         The VM to operate on.
  * @param   pAddrGC     Guest context address
  */
-VMMDECL(bool) PATMIsPatchGCAddr(PVM pVM, RTRCPTR pAddrGC)
+VMMDECL(bool) PATMIsPatchGCAddr(PVM pVM, RTRCUINTPTR pAddrGC)
 {
-    return (PATMIsEnabled(pVM) && pAddrGC >= pVM->patm.s.pPatchMemGC && pAddrGC < (RTRCPTR)((RTRCUINTPTR)pVM->patm.s.pPatchMemGC + pVM->patm.s.cbPatchMem)) ? true : false;
+    return (PATMIsEnabled(pVM) && pAddrGC - (RTRCUINTPTR)pVM->patm.s.pPatchMemGC < pVM->patm.s.cbPatchMem) ? true : false;
 }
 
 /**
@@ -316,7 +316,7 @@ VMMDECL(bool) PATMAreInterruptsEnabledByCtxCore(PVM pVM, PCPUMCTXCORE pCtxCore)
 {
     if (PATMIsEnabled(pVM))
     {
-        if (PATMIsPatchGCAddr(pVM, (RTRCPTR)pCtxCore->eip))
+        if (PATMIsPatchGCAddr(pVM, pCtxCore->eip))
             return false;
     }
     return !!(pCtxCore->eflags.u32 & X86_EFL_IF);
@@ -461,7 +461,7 @@ VMMDECL(int) PATMAddBranchToLookupCache(PVM pVM, RTRCPTR pJumpTableGC, RTRCPTR p
 
     Log(("PATMAddBranchToLookupCache: Adding (%RRv->%RRv (%RRv)) to table %RRv\n", pBranchTarget, pRelBranchPatch + pVM->patm.s.pPatchMemGC, pRelBranchPatch, pJumpTableGC));
 
-    AssertReturn(PATMIsPatchGCAddr(pVM, pJumpTableGC), VERR_INVALID_PARAMETER);
+    AssertReturn(PATMIsPatchGCAddr(pVM, (RTRCUINTPTR)pJumpTableGC), VERR_INVALID_PARAMETER);
 
 #ifdef IN_RC
     pJumpTable = (PPATCHJUMPTABLE) pJumpTableGC;

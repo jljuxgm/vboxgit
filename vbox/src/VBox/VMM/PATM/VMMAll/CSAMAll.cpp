@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 20011 2009-05-25 19:31:11Z vboxsync $ */
+/* $Id: CSAMAll.cpp 26271 2010-02-05 04:04:36Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -247,7 +247,7 @@ VMMDECL(int) CSAMDisableScanning(PVM pVM)
  * @param   pVM         The VM to operate on.
  * @param   GCPtr       GC pointer of page table entry
  */
-VMMDECL(bool) CSAMIsKnownDangerousInstr(PVM pVM, RTRCPTR GCPtr)
+VMMDECL(bool) CSAMIsKnownDangerousInstr(PVM pVM, RTRCUINTPTR GCPtr)
 {
     for (uint32_t i=0;i<pVM->csam.s.cDangerousInstr;i++)
     {

@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 26271 2010-02-05 04:04:36Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -655,7 +655,7 @@ static const REMPARMDESC g_aArgsMMR3HeapAllocZ[] =
 static const REMPARMDESC g_aArgsPATMIsPatchGCAddr[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM), NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(RTRCPTR), NULL }
+    { REMPARMDESC_FLAGS_INT,        sizeof(RTRCUINTPTR), NULL }
 };
 static const REMPARMDESC g_aArgsPATMR3QueryOpcode[] =
 {
