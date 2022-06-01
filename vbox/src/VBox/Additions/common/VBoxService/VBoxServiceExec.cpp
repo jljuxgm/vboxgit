@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceExec.cpp 25390 2009-12-15 11:16:26Z vboxsync $ */
+/* $Id: VBoxServiceExec.cpp 25709 2010-01-11 10:20:40Z vboxsync $ */
 /** @file
  * VBoxServiceExec - Host-driven Command Execution.
  */
@@ -133,9 +133,9 @@ static int VBoxServiceExecValidateFlags(const char *pszFlags)
  */
 static int VBoxServiceExecReadHostProp(const char *pszPropName, char **ppszValue, uint64_t *puTimestamp)
 {
-    char *pszFlags, *pszValue;
+    char *pszFlags;
     uint64_t uTimestamp;
-    int rc = VBoxServiceReadProp(g_uExecGuestPropSvcClientID, pszPropName, ppszValue, &pszFlags, puTimestamp);
+    int rc = VBoxServiceReadProp(g_uExecGuestPropSvcClientID, pszPropName, ppszValue, &pszFlags, &uTimestamp);
     if (RT_SUCCESS(rc))
     {
         /*
@@ -152,13 +152,7 @@ static int VBoxServiceExecReadHostProp(const char *pszPropName, char **ppszValue
         else
         {
             VBoxServiceVerbose(2, "Exec: Read \"%s\" = \"%s\", timestamp %RU64n\n",
-                               pszPropName, pszValue, uTimestamp);
-            *ppszValue = RTStrDup(pszValue);
-            if (!*ppszValue)
-            {
-                VBoxServiceError("Exec: RTStrDup failed for \"%s\"\n", pszValue);
-                rc = VERR_NO_MEMORY;
-            }
+                               pszPropName, *ppszValue, uTimestamp);
             if (puTimestamp)
                 *puTimestamp = uTimestamp;
         }
