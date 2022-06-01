@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 29937 2010-06-01 08:41:32Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 30055 2010-06-07 08:27:00Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -690,7 +690,15 @@ void VirtualBox::uninit()
     /* tell all our child objects we've been uninitialized */
 
     LogFlowThisFunc(("Uninitializing machines (%d)...\n", m->ollMachines.size()));
-    m->ollMachines.uninitAll();
+    if (m->pHost)
+    {
+        /* It is necessary to hold the VirtualBox and Host locks here because
+           we may have to uninitialize SessionMachines. */
+        AutoMultiWriteLock2 multilock(this, m->pHost COMMA_LOCKVAL_SRC_POS);
+        m->ollMachines.uninitAll();
+    }
+    else
+        m->ollMachines.uninitAll();
     m->ollFloppyImages.uninitAll();
     m->ollDVDImages.uninitAll();
     m->ollHardDisks.uninitAll();

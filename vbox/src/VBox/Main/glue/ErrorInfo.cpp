@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 30055 2010-06-07 08:27:00Z vboxsync $ */
 
 /** @file
  *
@@ -134,6 +134,9 @@ void ErrorInfo::init (bool aKeepObj /* = false */)
             }
         }
     }
+    /* Ignore failure when called after nsComponentManagerImpl::Shutdown(). */
+    else if (rc == NS_ERROR_UNEXPECTED)
+        rc = NS_OK;
 
     AssertComRC (rc);
 
