@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 25219 2009-12-07 18:04:10Z vboxsync $ */
+/* $Id: DevPcBios.cpp 25780 2010-01-12 17:02:35Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -524,8 +524,8 @@ static DECLCALLBACK(int) pcbiosInitComplete(PPDMDEVINS pDevIns)
         if (apHDs[i])
         {
             PDMMEDIAGEOMETRY LCHSGeometry;
-            int rc = setLogicalDiskGeometry(pBase, apHDs[i], &LCHSGeometry);
-            AssertRC(rc);
+            int rc2 = setLogicalDiskGeometry(pBase, apHDs[i], &LCHSGeometry);
+            AssertRC(rc2);
 
             if (i < 4)
             {
@@ -585,7 +585,7 @@ static DECLCALLBACK(int) pcbiosInitComplete(PPDMDEVINS pDevIns)
             if (apHDs[i])
             {
                 PDMMEDIAGEOMETRY LCHSGeometry;
-                int rc = setLogicalDiskGeometry(pBase, apHDs[i], &LCHSGeometry);
+                rc = setLogicalDiskGeometry(pBase, apHDs[i], &LCHSGeometry);
                 AssertRC(rc);
 
                 if (i < 4)
