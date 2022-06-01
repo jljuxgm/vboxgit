@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 28406 2010-04-16 10:45:18Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 28491 2010-04-19 18:27:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -3253,7 +3253,7 @@ QString VBoxGlobal::languageId()
 /* static */
 void VBoxGlobal::loadLanguage (const QString &aLangId)
 {
-    QString langId = aLangId.isNull() ?
+    QString langId = aLangId.isEmpty() ?
         VBoxGlobal::systemLanguageId() : aLangId;
     QString languageFileName;
     QString selectedLangId = gVBoxBuiltInLangName;
