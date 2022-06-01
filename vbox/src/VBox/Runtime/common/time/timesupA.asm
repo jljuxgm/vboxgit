@@ -1,4 +1,4 @@
-; $Id: timesupA.asm 13832 2008-11-05 02:01:12Z vboxsync $
+; $Id: timesupA.asm 26227 2010-02-03 22:17:29Z vboxsync $
 ;; @file
 ; IPRT - Time using SUPLib, the Assembly Implementation.
 ;
@@ -56,7 +56,7 @@ BEGINDATA
 %ifdef IN_SUP_R3
  %define IN_SUPLIB
 %endif
-%ifdef IN_SUP_GC
+%ifdef IN_SUP_RC
  %define IN_SUPLIB
 %endif
 %ifdef IN_SUPLIB
