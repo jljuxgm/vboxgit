@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 28328 2010-04-14 20:46:56Z vboxsync $ */
+/* $Id: DevE1000.cpp 28332 2010-04-14 21:52:52Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -3752,7 +3752,7 @@ static int e1kXmitPending(E1KSTATE *pState, bool fOnWorkerThread)
     PPDMINETWORKUP pDrv = pState->CTX_SUFF(pDrv);
     if (pDrv)
     {
-        rc = pDrv->pfnBeginXmit(pDrv, true /*fOnWorkerThread*/);
+        rc = pDrv->pfnBeginXmit(pDrv, fOnWorkerThread);
         if (RT_FAILURE(rc))
             return rc;
     }
