@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 24638 2009-11-13 13:58:10Z vboxsync $ */
+/* $Id: DevPCI.cpp 25267 2009-12-09 10:43:42Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1515,7 +1515,7 @@ static DECLCALLBACK(int) pciR3CommonLoadExec(PPCIBUS pBus, PSSMHANDLE pSSM, uint
      * The register value is restored afterwards so we can do proper
      * LogRels in pciR3CommonRestoreConfig.
      */
-    for (uint32_t i = 0; i < RT_ELEMENTS(pBus->devices); i++)
+    for (i = 0; i < RT_ELEMENTS(pBus->devices); i++)
     {
         PPCIDEVICE pDev = pBus->devices[i];
         if (pDev)
