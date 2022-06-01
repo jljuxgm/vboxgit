@@ -1,4 +1,4 @@
-/* $Id: semrw-generic.cpp 25710 2010-01-11 10:46:24Z vboxsync $ */
+/* $Id: semrw-generic.cpp 25711 2010-01-11 11:15:04Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, Generic.
  *
@@ -120,7 +120,8 @@ RTDECL(int) RTSemRWCreateEx(PRTSEMRW phRWSem, uint32_t fFlags,
             rc = RTSemEventMultiCreate(&pThis->ReadEvent);
             if (RT_SUCCESS(rc))
             {
-                rc = RTCritSectInitEx(&pThis->CritSect, RTCRITSECT_FLAGS_NO_LOCK_VAL, NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, NULL);
+                rc = RTCritSectInitEx(&pThis->CritSect, RTCRITSECT_FLAGS_NO_LOCK_VAL,
+                                      NIL_RTLOCKVALCLASS, RTLOCKVAL_SUB_CLASS_NONE, NULL);
                 if (RT_SUCCESS(rc))
                 {
                     /*
