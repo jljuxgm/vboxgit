@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 27123 2010-03-05 18:15:08Z vboxsync $ */
+/* $Id: PDMAll.cpp 27254 2010-03-10 15:03:11Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -99,7 +99,7 @@ VMMDECL(int) PDMGetInterrupt(PVMCPU pVCpu, uint8_t *pu8Interrupt)
  * @param   u8Irq           The IRQ line.
  * @param   u8Level         The new level.
  */
-VMMDECL(int) PDMIsaSetIrq(PVM pVM, uint8_t u8Irq, uint8_t u8Level, bool fIsaSource)
+VMMDECL(int) PDMIsaSetIrq(PVM pVM, uint8_t u8Irq, uint8_t u8Level)
 {
     pdmLock(pVM);
 
@@ -123,12 +123,10 @@ VMMDECL(int) PDMIsaSetIrq(PVM pVM, uint8_t u8Irq, uint8_t u8Level, bool fIsaSour
          * notably recent OS X rely upon this configuration.
          * If changing, also update override rules in MADT and MPS.
          */
-        if (fIsaSource)
-        {
-            /* ISA IRQ0 routed to pin 2, all others ISA sources are identity mapped */
-            if (u8Irq == 0)
-                u8Irq = 2;
-        }
+        /* ISA IRQ0 routed to pin 2, all others ISA sources are identity mapped */
+        if (u8Irq == 0)
+            u8Irq = 2;
+
         pVM->pdm.s.IoApic.CTX_SUFF(pfnSetIrq)(pVM->pdm.s.IoApic.CTX_SUFF(pDevIns), u8Irq, u8Level);
         rc = VINF_SUCCESS;
     }
