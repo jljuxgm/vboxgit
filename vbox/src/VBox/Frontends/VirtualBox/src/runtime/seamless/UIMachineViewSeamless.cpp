@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 27093 2010-03-05 14:23:03Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 27101 2010-03-05 15:11:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -311,9 +311,6 @@ void UIMachineViewSeamless::prepareCommon()
 {
     /* Base class common settings: */
     UIMachineView::prepareCommon();
-
-    /* Store old machine view size before bramebuffer resized: */
-    m_normalSize = QSize(frameBuffer()->width(), frameBuffer()->height());
 
     /* Minimum size is ignored: */
     setMinimumSize(0, 0);
