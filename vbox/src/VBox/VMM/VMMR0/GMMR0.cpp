@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29600 2010-05-18 08:38:11Z vboxsync $ */
+/* $Id: GMMR0.cpp 29601 2010-05-18 08:39:41Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3909,7 +3909,7 @@ static DECLCALLBACK(int) gmmR0CleanupSharedModule(PAVLGCPTRNODECORE pNode, void 
     PGMM pGMM;
     GMM_GET_VALID_INSTANCE(pGMM, VERR_INTERNAL_ERROR);
 
-    Assert(pRecVM->pGlobalModule);
+    Assert(pRecVM->pGlobalModule || pRecVM->fCollision);
     if (pRecVM->pGlobalModule)
     {
         PGMMSHAREDMODULE pRec = pRecVM->pGlobalModule;
