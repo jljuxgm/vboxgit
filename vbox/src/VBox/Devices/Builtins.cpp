@@ -1,4 +1,4 @@
-/* $Id: Builtins.cpp 28406 2010-04-16 10:45:18Z vboxsync $ */
+/* $Id: Builtins.cpp 28427 2010-04-16 18:07:27Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -243,6 +243,9 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
         return rc;
 #endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvIntNet);
+    if (RT_FAILURE(rc))
+        return rc;
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvDedicatedNic);
     if (RT_FAILURE(rc))
         return rc;
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvNetSniffer);

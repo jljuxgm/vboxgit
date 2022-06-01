@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 28406 2010-04-16 10:45:18Z vboxsync $ */
+/* $Id: Builtins.h 28427 2010-04-16 18:07:27Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -110,6 +110,7 @@ extern const PDMDRVREG g_DrvHostInterface;
 extern const PDMDRVREG g_DrvVDE;
 #endif
 extern const PDMDRVREG g_DrvIntNet;
+extern const PDMDRVREG g_DrvDedicatedNic;
 extern const PDMDRVREG g_DrvNAT;
 extern const PDMDRVREG g_DrvNetSniffer;
 extern const PDMDRVREG g_DrvAUDIO;

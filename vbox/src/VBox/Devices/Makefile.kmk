@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28415 2010-04-16 12:59:40Z vboxsync $
+# $Id: Makefile.kmk 28427 2010-04-16 18:07:27Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -686,7 +686,8 @@ VBoxDDR0_SOURCES        = \
 	Serial/DevSerial.cpp \
 	Parallel/DevParallel.cpp \
 	\
-	Network/DrvIntNet.cpp
+	Network/DrvIntNet.cpp \
+	Network/DrvDedicatedNic.cpp
 
 ifdef VBOX_DYNAMIC_NET_ATTACH
  VBoxDDR0_DEFS += VBOX_DYNAMIC_NET_ATTACH
@@ -840,6 +841,7 @@ Drivers_SOURCES    = \
 	Input/DrvKeyboardQueue.cpp \
 	Input/DrvMouseQueue.cpp \
 	Network/DrvIntNet.cpp \
+	Network/DrvDedicatedNic.cpp \
 	PC/DrvACPI.cpp \
 	PC/DrvAcpiCpu.cpp \
 	Serial/DrvChar.cpp \
