@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25310 2009-12-10 17:06:44Z vboxsync $
+# $Id: Makefile.kmk 25315 2009-12-10 21:09:15Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -485,6 +485,8 @@ if (defined(VBOX_WITH_CROGL) || defined(VBOX_WITH_VIDEOHWACCEL)) && !defined(VBO
    VBoxTestOGL_LDFLAGS.darwin += -framework OpenGL
    VBoxTestOGL_LIBS.win     += $(PATH_SDK_WINPSDK_LIB)/Opengl32.lib
    VBoxTestOGL_LIBS.solaris += GL
+   VBoxTestOGL_LIBS.linux   += GL
+   VBoxTestOGL_LIBS.freebsd += GL
   endif
   VBoxTestOGL_LDFLAGS.win = /SUBSYSTEM:windows
  endif
