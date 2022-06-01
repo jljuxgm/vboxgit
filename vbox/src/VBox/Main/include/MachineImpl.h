@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 24196 2009-10-30 14:39:34Z vboxsync $ */
+/* $Id: MachineImpl.h 24250 2009-11-02 13:00:58Z vboxsync $ */
 
 /** @file
  *
@@ -616,6 +616,7 @@ public:
     STDMETHOD(AddStorageController)(IN_BSTR aName, StorageBus_T aConnectionType, IStorageController **controller);
     STDMETHOD(RemoveStorageController(IN_BSTR aName));
     STDMETHOD(GetStorageControllerByName(IN_BSTR aName, IStorageController **storageController));
+    STDMETHOD(GetStorageControllerByInstance(ULONG aInstance, IStorageController **storageController));
     STDMETHOD(COMGETTER(FirmwareType)) (FirmwareType_T *aFirmware);
     STDMETHOD(COMSETTER(FirmwareType)) (FirmwareType_T  aFirmware);
 
