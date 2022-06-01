@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 24321 2009-11-04 12:18:09Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 24404 2009-11-05 17:14:23Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -86,9 +86,9 @@ void printUsage(USAGECATEGORY u64Cmd)
 #if defined(VBOX_WITH_NETFLT)
                  "                            bridgedifs|hostonlyifs|dhcpservers|hostinfo|\n"
 #else
-                 "                            bridgedifs|hostinfo|dhcpservers|\n"
+                 "                            bridgedifs|dhcpservers|hostinfo|\n"
 #endif
-                 "                            hddbackends|hdds|dvds|floppies|\n"
+                 "                            hostcpuids|hddbackends|hdds|dvds|floppies|\n"
                  "                            usbhost|usbfilters|systemproperties\n"
                  "\n");
     }
