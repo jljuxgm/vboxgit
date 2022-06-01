@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 27121 2010-03-05 18:13:57Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 27125 2010-03-05 18:31:16Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -163,6 +163,9 @@ typedef struct PITState
     PDMIPITPORT             IPITPort;
     /** Pointer to the device instance. */
     PPDMDEVINSR3            pDevIns;
+#if HC_ARCH_BITS == 32
+    uint32_t                alignment1;
+#endif
     /** Number of IRQs that's been raised. */
     STAMCOUNTER             StatPITIrq;
     /** Profiling the timer callback handler. */
