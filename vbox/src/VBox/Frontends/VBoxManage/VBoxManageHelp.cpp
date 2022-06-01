@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 28773 2010-04-26 17:17:42Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 28787 2010-04-27 06:36:48Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -224,6 +224,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--natdnspassdomain<1-N> on|off]\n"
                  "                            [--natdnsproxy<1-N> on|off]\n"
                  "                            [--natdnshostresolver<1-N> on|off]\n"
+                 "                            [--nataliasmode<1-N> default|[log],[proxyonly],[sameports]]\n"
                  "                            [--macaddress<1-N> auto|<mac>]\n"
                  "                            [--mouse ps2|usb|usbtablet\n"
                  "                            [--keyboard ps2|usb\n"

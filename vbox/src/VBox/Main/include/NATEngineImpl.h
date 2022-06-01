@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.h 27875 2010-03-31 10:16:46Z vboxsync $ */
+/* $Id: NATEngineImpl.h 28787 2010-04-27 06:36:48Z vboxsync $ */
 
 /** @file
  *
@@ -67,6 +67,8 @@ class ATL_NO_VTABLE NATEngine :
         BOOL     mDnsPassDomain;
         BOOL     mDnsProxy;
         BOOL     mDnsUseHostResolver;
+        /* Alias service */
+        ULONG     mAliasMode;
     };
     VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (NATEngine)
 
@@ -107,6 +109,9 @@ class ATL_NO_VTABLE NATEngine :
     STDMETHOD(COMGETTER(TftpBootFile)) (BSTR *aTftpBootFile);
     STDMETHOD(COMSETTER(TftpNextServer)) (IN_BSTR aTftpNextServer);
     STDMETHOD(COMGETTER(TftpNextServer)) (BSTR *aTftpNextServer);
+    /* Alias attributes */
+    STDMETHOD(COMSETTER(AliasMode)) (ULONG aAliasLog);
+    STDMETHOD(COMGETTER(AliasMode)) (ULONG *aAliasLog);
     /* DNS attributes */
     STDMETHOD(COMSETTER(DnsPassDomain)) (BOOL aDnsPassDomain);
     STDMETHOD(COMGETTER(DnsPassDomain)) (BOOL *aDnsPassDomain);

@@ -1,4 +1,4 @@
-/** $Id: ext.h 28449 2010-04-19 09:52:59Z vboxsync $ */
+/** $Id: ext.h 28787 2010-04-27 06:36:48Z vboxsync $ */
 /** @file
  * NAT - some externals helpers
  */
@@ -61,25 +61,21 @@ static inline uma_zone_t slirp_zone_ext_refcnt(PNATState);
 #ifndef vbox_slirp_printfV
 static void vbox_slirp_printV(char *format, va_list args)
 {
-# ifdef LOG_ENABLED
     char buffer[1024];
     memset(buffer, 0, 1024);
     RTStrPrintfV(buffer, 1024, format, args);
 
-    Log2(("NAT:EXT: %s\n", buffer));
-# endif
+    LogRel(("NAT:EXT: %s\n", buffer));
 }
 #endif
 
 #ifndef vbox_slirp_printf
 static void vbox_slirp_printf(char *format, ...)
 {
-# ifdef LOG_ENABLED
     va_list args;
     va_start(args, format);
     vbox_slirp_printV(format, args);
     va_end(args);
-# endif
 }
 #endif
 

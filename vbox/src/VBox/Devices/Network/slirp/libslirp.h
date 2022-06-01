@@ -1,4 +1,4 @@
-/* $Id: libslirp.h 28449 2010-04-19 09:52:59Z vboxsync $ */
+/* $Id: libslirp.h 28787 2010-04-27 06:36:48Z vboxsync $ */
 /** @file
  * NAT - slirp interface.
  */
@@ -49,7 +49,7 @@ struct mbuf;
 extern "C" {
 #endif
 
-int slirp_init(PNATState *, uint32_t, uint32_t, bool, bool, void *);
+int slirp_init(PNATState *, uint32_t, uint32_t, bool, bool, int, void *);
 void slirp_register_statistics(PNATState pData, PPDMDRVINS pDrvIns);
 void slirp_deregister_statistics(PNATState pData, PPDMDRVINS pDrvIns);
 void slirp_term(PNATState);
