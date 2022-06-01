@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 25316 2009-12-11 09:53:05Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 25499 2009-12-18 17:06:36Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3585,7 +3585,7 @@ static void pgmPoolTrackClearPageUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PCPGMP
         /* 32-bit entries */
         case PGMPOOLKIND_32BIT_PD:
  	    case PGMPOOLKIND_32BIT_PD_PHYS:
-            u.pau32[iUserTable] = 0;
+            ASMAtomicWriteSize(&u.pau32[iUserTable], 0);
             break;
 
         /* 64-bit entries */
@@ -3613,7 +3613,7 @@ static void pgmPoolTrackClearPageUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PCPGMP
         case PGMPOOLKIND_ROOT_NESTED:
         case PGMPOOLKIND_EPT_PDPT_FOR_PHYS:
         case PGMPOOLKIND_EPT_PD_FOR_PHYS:
-            u.pau64[iUserTable] = 0;
+            ASMAtomicWriteSize(&u.pau64[iUserTable], 0);
             break;
 
         default:
