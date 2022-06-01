@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 28975 2010-05-03 13:16:51Z vboxsync $ */
+/* $Id: GMM.cpp 28976 2010-05-03 13:17:06Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -329,7 +329,6 @@ GMMR3DECL(int)  GMMR3QueryMemoryStats(PVM pVM, uint64_t *pcAllocPages, uint64_t 
     *pcMaxPages         = 0;
     *pcBalloonPages     = 0;
 
-    /* Must be callable from any thread, so can't use VMMR3CallR0. */
     int rc = VMMR3CallR0(pVM, VMMR0_DO_GMM_QUERY_MEM_STATS, 0, &Req.Hdr);
     if (rc == VINF_SUCCESS)
     {
