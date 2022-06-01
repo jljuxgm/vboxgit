@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-linux.c 28462 2010-04-19 13:36:19Z vboxsync $ */
+/* $Id: semmutex-r0drv-linux.c 28466 2010-04-19 14:24:08Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Linux.
  */
@@ -211,7 +211,7 @@ static int rtSemMutexLinuxRequestSleep(PRTSEMMUTEXINTERNAL pThis, RTMSINTERVAL c
         {
             Assert(pThis->cRecursions == 0);
             pThis->cRecursions = 1;
-            pThis->pOwnerTask  = NULL;
+            pThis->pOwnerTask  = pSelf;
             rc = VINF_SUCCESS;
             break;
         }
