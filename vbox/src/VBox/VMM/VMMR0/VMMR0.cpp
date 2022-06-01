@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 25237 2009-12-08 12:37:35Z vboxsync $ */
+/* $Id: VMMR0.cpp 25489 2009-12-18 14:55:30Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1263,16 +1263,19 @@ DECLEXPORT(bool) RTCALL RTAssertShouldPanic(void)
     {
         PVMCPU pVCpu = VMMGetCpu(pVM);
 
-#ifdef RT_ARCH_X86
-        if (    pVCpu->vmm.s.CallRing3JmpBufR0.eip
-            &&  !pVCpu->vmm.s.CallRing3JmpBufR0.fInRing3Call)
-#else
-        if (    pVCpu->vmm.s.CallRing3JmpBufR0.rip
-            &&  !pVCpu->vmm.s.CallRing3JmpBufR0.fInRing3Call)
-#endif
+        if (pVCpu)
         {
-            int rc = VMMRZCallRing3(pVM, pVCpu, VMMCALLRING3_VM_R0_ASSERTION, 0);
-            return RT_FAILURE_NP(rc);
+#ifdef RT_ARCH_X86
+            if (    pVCpu->vmm.s.CallRing3JmpBufR0.eip
+                &&  !pVCpu->vmm.s.CallRing3JmpBufR0.fInRing3Call)
+#else
+            if (    pVCpu->vmm.s.CallRing3JmpBufR0.rip
+                &&  !pVCpu->vmm.s.CallRing3JmpBufR0.fInRing3Call)
+#endif
+            {
+                int rc = VMMRZCallRing3(pVM, pVCpu, VMMCALLRING3_VM_R0_ASSERTION, 0);
+                return RT_FAILURE_NP(rc);
+            }
         }
     }
 #ifdef RT_OS_LINUX
