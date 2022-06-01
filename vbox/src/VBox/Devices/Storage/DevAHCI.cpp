@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 24945 2009-11-25 11:46:46Z vboxsync $ */
+/* $Id: DevAHCI.cpp 25268 2009-12-09 10:44:48Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -2878,8 +2878,6 @@ static const PAtapiFunc g_apfnAtapiFuncs[ATAFN_SS_MAX] =
 static int atapiIdentifySS(PAHCIPORTTASKSTATE pAhciPortTaskState, PAHCIPort pAhciPort, int *pcbData)
 {
     uint16_t p[256];
-    RTUUID Uuid;
-    int rc;
 
     memset(p, 0, 512);
     /* Removable CDROM, 50us response, 12 byte packets */
