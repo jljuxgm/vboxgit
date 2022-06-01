@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 24298 2009-11-03 17:20:02Z vboxsync $ */
+/* $Id: MachineImpl.h 24309 2009-11-04 10:03:19Z vboxsync $ */
 
 /** @file
  *
@@ -298,8 +298,8 @@ public:
         ULONG          mCPUCount;
         BOOL           mAccelerate3DEnabled;
 
-        settings::CpuIdLeaf mCpuIdStdLeafs[0x10];
-        settings::CpuIdLeaf mCpuIdExtLeafs[0x10];
+        settings::CpuIdLeaf mCpuIdStdLeafs[10];
+        settings::CpuIdLeaf mCpuIdExtLeafs[10];
 
         DeviceType_T   mBootOrder[SchemaDefs::MaxBootPosition];
 
