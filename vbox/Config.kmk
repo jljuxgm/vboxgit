@@ -1,4 +1,4 @@
-# $Id: Config.kmk 28575 2010-04-21 21:05:38Z vboxsync $
+# $Id: Config.kmk 28577 2010-04-21 21:56:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -270,9 +270,7 @@ VBOX_WITH_DOCS = 1
 # Include documentation in the package
 VBOX_WITH_DOCS_PACKING = 1
 # Include CHM when building docs (unset in LocalConfig.kmk to suppress CHM)
-ifneq ($(KBUILD_TARGET),linux)
- VBOX_WITH_DOCS_CHM = 1
-endif
+VBOX_WITH_DOCS_CHM = 1
 # Don't bother with documentation, overrides VBOX_WITH_DOCS.
 # This is not used by makefiles, only Config.kmk, see below.
 #VBOX_WITHOUT_DOCS = 1
@@ -457,7 +455,7 @@ VBOX_WITH_PYTHON ?= 1
 # Build against multiple Python versions present in the system
 VBOX_WITH_MULTIVERSION_PYTHON ?= 1
 # Enable the kchmviewer.
-VBOX_WITH_KCHMVIEWER =
+VBOX_WITH_KCHMVIEWER = 1
 # Build the testsuite.
 VBOX_WITH_TESTSUITE = 1
 # Build the testcases.
@@ -4074,7 +4072,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28575 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28577 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
