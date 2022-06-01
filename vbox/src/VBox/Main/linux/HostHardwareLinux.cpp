@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 28824 2010-04-27 13:49:43Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 28847 2010-04-27 16:57:54Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1342,7 +1342,8 @@ hotplugSysfsFAMImpl::hotplugSysfsFAMImpl(void) :
     if (!testing())
     {
 #   ifndef VBOX_WITH_SYSFS_BY_DEFAULT
-        Assert(!RTFileExists("/proc/bus/usb/devices"));
+        /** @todo only create this object if we will use it */
+        // Assert(!RTFileExists("/proc/bus/usb/devices"));
 #   endif
 #   ifdef VBOX_USB_WITH_DBUS
         Assert(!hotplugDBusImpl::HalAvailable());
