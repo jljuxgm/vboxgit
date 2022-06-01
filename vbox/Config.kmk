@@ -1,4 +1,4 @@
-# $Id: Config.kmk 29715 2010-05-21 04:39:03Z vboxsync $
+# $Id: Config.kmk 29759 2010-05-24 09:22:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4223,7 +4223,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29715 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29759 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -4281,6 +4281,30 @@ VBOX_XIDL_FILE_SRC     = $(PATH_ROOT)/src/VBox/Main/idl/VirtualBox.xidl
 # second XIDL file to use as source for COM/XPCOM IDL (with stripped docs):
 VBOX_XIDL_FILE         = $(PATH_OUT)/obj/VirtualBox_stripped.xidl
 
+# Java stuff, move to tools eventually
+ifeq ($(KBUILD_TARGET), darwin)
+ VBOX_JAVA_HOME = /System/Library/Frameworks/JavaVM.framework/Versions/1.6.0
+ VBOX_JAVAC = $(VBOX_JAVA_HOME)/Commands/javac
+ VBOX_JAVAH = $(VBOX_JAVA_HOME)/Commands/javah
+ VBOX_JAR   = $(VBOX_JAVA_HOME)/Commands/jar
+ VBOX_JAVA_INC = $(VBOX_JAVA_HOME)/Headers
+else
+ ifeq ($(KBUILD_TARGET), linux)
+  VBOX_JAVA_HOME ?= /usr/lib/jvm/java-6-sun
+ endif
+ ifeq ($(KBUILD_TARGET), solaris)
+ # VBOX_JAVA_HOME ?= /usr/jdk/jdk1.6.0
+   VBOX_JAVA_HOME ?= /usr/java
+ endif
+ VBOX_JAVAC = $(VBOX_JAVA_HOME)/bin/javac
+ VBOX_JAVAH = $(VBOX_JAVA_HOME)/bin/javah
+ VBOX_JAR   = $(VBOX_JAVA_HOME)/bin/jar
+ # correct for targets we care about
+ VBOX_MD_OS = $(KBUILD_TARGET)
+ VBOX_JAVA_INC = $(VBOX_JAVA_HOME)/include               \
+                $(VBOX_JAVA_HOME)/include/$(VBOX_MD_OS)
+endif
+VBOX_JAVAC_OPTS = -source 1.5 -target 1.5
 
 #
 # Legacy.
