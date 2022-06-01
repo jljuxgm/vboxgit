@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29110 2010-05-05 20:28:28Z vboxsync $
+# $Id: Makefile.kmk 29112 2010-05-05 20:31:24Z vboxsync $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -130,6 +130,7 @@ genjifaces_SOURCES  =    \
         tools/genifaces/GenerateJavaInterfaces.cpp \
         src/nsFileStreams.cpp
 genjifaces_INST = $(INST_BIN)
+genjifaces_DEPS = $(PATH_TARGET)/VBox-xpcom-idl-timestamp
 GENJIFACES_BIN := $(PATH_BIN)/genjifaces$(HOSTSUFF_EXE)
 
 #
