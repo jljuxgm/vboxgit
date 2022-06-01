@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-freebsd.c 28025 2010-04-07 06:37:43Z vboxsync $ */
+/* $Id: VBoxNetFlt-freebsd.c 28070 2010-04-07 23:20:09Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), FreeBSD Specific Code.
  */
@@ -224,7 +224,7 @@ static struct mbuf * vboxNetFltFreeBSDSGMBufFromSG(PVBOXNETFLTINS pThis, PINTNET
     int error;
     unsigned int i;
 
-    if (pSG->cbTotal == 0 || pSG->aSegs[0].cb == 0)
+    if (pSG->cbTotal == 0)
         return (NULL);
 
     m = m_getcl(M_WAITOK, MT_DATA, M_PKTHDR);
