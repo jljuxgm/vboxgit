@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 29347 2010-05-11 12:59:30Z vboxsync $ */
+/* $Id: MachineImpl.cpp 29354 2010-05-11 13:44:25Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -4653,13 +4653,16 @@ static void freeSavedDisplayScreenshot(uint8_t *pu8Data)
     RTMemFree(pu8Data);
 }
 
-STDMETHODIMP Machine::QuerySavedThumbnailSize(ULONG *aSize, ULONG *aWidth, ULONG *aHeight)
+STDMETHODIMP Machine::QuerySavedThumbnailSize(ULONG aScreenId, ULONG *aSize, ULONG *aWidth, ULONG *aHeight)
 {
     LogFlowThisFunc(("\n"));
 
     CheckComArgNotNull(aSize);
     CheckComArgNotNull(aWidth);
     CheckComArgNotNull(aHeight);
+
+    if (aScreenId != 0)
+        return E_NOTIMPL;
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
@@ -4687,13 +4690,16 @@ STDMETHODIMP Machine::QuerySavedThumbnailSize(ULONG *aSize, ULONG *aWidth, ULONG
     return S_OK;
 }
 
-STDMETHODIMP Machine::ReadSavedThumbnailToArray(BOOL aBGR, ULONG *aWidth, ULONG *aHeight, ComSafeArrayOut(BYTE, aData))
+STDMETHODIMP Machine::ReadSavedThumbnailToArray(ULONG aScreenId, BOOL aBGR, ULONG *aWidth, ULONG *aHeight, ComSafeArrayOut(BYTE, aData))
 {
     LogFlowThisFunc(("\n"));
 
     CheckComArgNotNull(aWidth);
     CheckComArgNotNull(aHeight);
     CheckComArgOutSafeArrayPointerValid(aData);
+
+    if (aScreenId != 0)
+        return E_NOTIMPL;
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
@@ -4746,13 +4752,16 @@ STDMETHODIMP Machine::ReadSavedThumbnailToArray(BOOL aBGR, ULONG *aWidth, ULONG 
     return S_OK;
 }
 
-STDMETHODIMP Machine::QuerySavedScreenshotPNGSize(ULONG *aSize, ULONG *aWidth, ULONG *aHeight)
+STDMETHODIMP Machine::QuerySavedScreenshotPNGSize(ULONG aScreenId, ULONG *aSize, ULONG *aWidth, ULONG *aHeight)
 {
     LogFlowThisFunc(("\n"));
 
     CheckComArgNotNull(aSize);
     CheckComArgNotNull(aWidth);
     CheckComArgNotNull(aHeight);
+
+    if (aScreenId != 0)
+        return E_NOTIMPL;
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
@@ -4780,13 +4789,16 @@ STDMETHODIMP Machine::QuerySavedScreenshotPNGSize(ULONG *aSize, ULONG *aWidth, U
     return S_OK;
 }
 
-STDMETHODIMP Machine::ReadSavedScreenshotPNGToArray(ULONG *aWidth, ULONG *aHeight, ComSafeArrayOut(BYTE, aData))
+STDMETHODIMP Machine::ReadSavedScreenshotPNGToArray(ULONG aScreenId, ULONG *aWidth, ULONG *aHeight, ComSafeArrayOut(BYTE, aData))
 {
     LogFlowThisFunc(("\n"));
 
     CheckComArgNotNull(aWidth);
     CheckComArgNotNull(aHeight);
     CheckComArgOutSafeArrayPointerValid(aData);
+
+    if (aScreenId != 0)
+        return E_NOTIMPL;
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
