@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 29006 2010-05-04 11:37:42Z vboxsync $ */
+/* $Id: DrvVD.cpp 29135 2010-05-06 11:28:04Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1414,6 +1414,12 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
                                 &pThis->VDITcpNetCallbacks, NULL,
                                 &pThis->pVDIfsDisk);
         }
+
+        /** @todo quick hack to work around problems in the async I/O
+         * implementation (rw semaphore thread ownership problem)
+         * while a merge is running. Remove once this is fixed. */
+        if (pThis->fMergePending)
+            fUseNewIo = false;
 
         if (RT_SUCCESS(rc) && fUseNewIo)
         {
