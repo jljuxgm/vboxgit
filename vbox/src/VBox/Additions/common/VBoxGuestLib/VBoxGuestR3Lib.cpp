@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 22575 2009-08-30 20:02:08Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 26054 2010-01-26 20:46:38Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -203,6 +203,7 @@ static int vbglR3Init(const char *pszDeviceName)
 
 #endif
 
+#ifndef VBOX_VBGLR3_XFREE86
     /*
      * Create release logger
      */
@@ -214,6 +215,7 @@ static int vbglR3Init(const char *pszDeviceName)
     /* This may legitimately fail if we are using the mini-runtime. */
     if (RT_SUCCESS(rc2))
         RTLogRelSetDefaultInstance(pReleaseLogger);
+#endif
 
     return VINF_SUCCESS;
 }
