@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 25673 2010-01-06 22:04:51Z vboxsync $
+# $Id: Makefile.kmk 27014 2010-03-04 11:59:54Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
 
 #
-# Copyright (C) 2006-2007 Sun Microsystems, Inc.
+# Copyright (C) 2006-2010 Sun Microsystems, Inc.
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -31,6 +31,11 @@ ifdef VBOX_ONLY_ADDITIONS
    include $(PATH_SUB_CURRENT)/GuestHost/Makefile.kmk
   endif
  endif
+ include $(PATH_SUB_CURRENT)/Additions/Makefile.kmk
+
+else ifdef VBOX_ONLY_TESTSUITE
+ include $(PATH_SUB_CURRENT)/Runtime/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/HostDrivers/Makefile.kmk
  include $(PATH_SUB_CURRENT)/Additions/Makefile.kmk
 
 else ifdef VBOX_ONLY_DOCS
