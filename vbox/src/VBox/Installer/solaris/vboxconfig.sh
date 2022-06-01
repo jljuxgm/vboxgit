@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 24756 2009-11-18 12:37:12Z vboxsync $
+# $Id: vboxconfig.sh 24947 2009-11-25 12:12:26Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -87,7 +87,7 @@ subprint()
 warnprint()
 {
     if test "$ISSILENT" != "$SILENTOP"; then
-        echo 1>&2 "* Warning!! $1"
+        echo 1>&2 "   * Warning!! $1"
     fi
 }
 
