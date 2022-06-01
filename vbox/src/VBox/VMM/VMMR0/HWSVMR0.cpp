@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 24959 2009-11-25 15:31:10Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 24976 2009-11-26 00:22:33Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1443,6 +1443,7 @@ ResumeExecution:
         Assert((pCtx->csHid.u32Limit & 0xfff) == 0xfff);
         pCtx->csHid.Attr.n.u1Granularity = 1;
     }
+#if 0
 #define SVM_ASSERT_SEL_GRANULARITY(reg) \
         AssertMsg(!pCtx->reg##Hid.Attr.n.u1Present \
                   || (   pCtx->reg##Hid.Attr.n.u1Granularity \
@@ -1456,7 +1457,7 @@ ResumeExecution:
     SVM_ASSERT_SEL_GRANULARITY(fs);
     SVM_ASSERT_SEL_GRANULARITY(gs);
 #undef  SVM_ASSERT_SEL_GRANULARITY
-
+#endif
     /* Remaining guest CPU context: TR, IDTR, GDTR, LDTR; must sync everything otherwise we can get out of sync when jumping to ring 3. */
     SVM_READ_SELREG(LDTR, ldtr);
     SVM_READ_SELREG(TR, tr);
