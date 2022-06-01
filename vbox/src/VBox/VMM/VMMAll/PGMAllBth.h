@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 27112 2010-03-05 16:13:57Z vboxsync $ */
+/* $Id: PGMAllBth.h 27113 2010-03-05 16:14:19Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3015,6 +3015,7 @@ PGM_BTH_DECL(int, SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RTGCPTR 
 #  endif
                 ASMAtomicWriteSize(pPdeDst, PdeDst.u);
 
+                Log(("SyncPT: Use large page at %RGp PDE=%RX64\n", GCPtrPage, PdeDst.u));
                 /* Add a reference to the first page only. */
                 PGM_BTH_NAME(SyncPageWorkerTrackAddref)(pVCpu, pShwPde, PGM_PAGE_GET_TRACKING(pPage), pPage, iPDDst);
 
