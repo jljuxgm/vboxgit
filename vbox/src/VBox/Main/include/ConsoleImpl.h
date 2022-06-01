@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 24899 2009-11-24 13:31:21Z vboxsync $ */
+/* $Id: ConsoleImpl.h 25150 2009-12-02 14:40:46Z vboxsync $ */
 
 /** @file
  *
@@ -283,7 +283,7 @@ private:
      *  with mpVM. The usage pattern is:
      *  <code>
      *      AutoVMCaller autoVMCaller (this);
-     *      CheckComRCReturnRC (autoVMCaller.rc());
+     *      if (FAILED(autoVMCaller.rc())) return autoVMCaller.rc();
      *      ...
      *      VMR3ReqCall (mpVM, ...
      *  </code>
@@ -349,7 +349,7 @@ public:
      *  destruction. Intended for Console children. The usage pattern is:
      *  <code>
      *      Console::SaveVMPtr pVM (mParent);
-     *      CheckComRCReturnRC (pVM.rc());
+     *      if (FAILED(pVM.rc())) return pVM.rc();
      *      ...
      *      VMR3ReqCall (pVM, ...
      *      ...
