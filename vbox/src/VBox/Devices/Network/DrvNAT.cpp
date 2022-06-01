@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 26404 2010-02-10 10:32:37Z vboxsync $ */
+/* $Id: DrvNAT.cpp 26423 2010-02-11 11:16:39Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -337,6 +337,7 @@ static DECLCALLBACK(void) drvNATRecvWorker(PDRVNAT pThis, uint8_t *pu8Buf, int c
     }
 
     rc = RTCritSectEnter(&pThis->csDevAccess);
+    AssertRC(rc);
 
     rc = pThis->pIAboveNet->pfnWaitReceiveAvail(pThis->pIAboveNet, RT_INDEFINITE_WAIT);
     if (RT_SUCCESS(rc))
