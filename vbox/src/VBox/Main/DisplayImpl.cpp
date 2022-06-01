@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 28368 2010-04-15 14:46:06Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 28447 2010-04-19 08:45:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2561,6 +2561,8 @@ STDMETHODIMP Display::TakeScreenShotToArray (ULONG aScreenId, ULONG width, ULONG
     else
         rc = setError(VBOX_E_IPRT_ERROR,
                       tr("Could not take a screenshot (%Rrc)"), vrc);
+
+    RTMemFree(pu8Data);
 
     LogFlowFunc (("rc=%08X\n", rc));
     LogFlowFuncLeave();
