@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 23827 2009-10-16 15:50:35Z vboxsync $ */
+/* $Id: ProgressImpl.h 24961 2009-11-25 16:02:32Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -81,6 +81,8 @@ public:
     STDMETHOD(COMGETTER(Operation)) (ULONG *aCount);
     STDMETHOD(COMGETTER(OperationDescription)) (BSTR *aOperationDescription);
     STDMETHOD(COMGETTER(OperationPercent)) (ULONG *aOperationPercent);
+    STDMETHOD(COMSETTER(Timeout)) (ULONG aTimeout);
+    STDMETHOD(COMGETTER(Timeout)) (ULONG *aTimeout);
 
     // public methods only for internal purposes
 
@@ -129,6 +131,7 @@ protected:
     Bstr m_bstrOperationDescription;                // name of current operation; initially from constructor, changed with setNextOperation()
     ULONG m_ulCurrentOperationWeight;               // weight of current operation, given to setNextOperation()
     ULONG m_ulOperationPercent;                     // percentage of current operation, set with setCurrentOperationProgress()
+    ULONG m_cMsTimeout;                             /**< Automatic timeout value. 0 means none. */
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -408,6 +411,8 @@ public:
     STDMETHOD(COMGETTER(Operation)) (ULONG *aCount);
     STDMETHOD(COMGETTER(OperationDescription)) (BSTR *aOperationDescription);
     STDMETHOD(COMGETTER(OperationPercent)) (ULONG *aOperationPercent);
+    STDMETHOD(COMSETTER(Timeout)) (ULONG aTimeout);
+    STDMETHOD(COMGETTER(Timeout)) (ULONG *aTimeout);
 
     // IProgress methods
     STDMETHOD(WaitForCompletion) (LONG aTimeout);
