@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 27424 2010-03-16 19:48:42Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 27427 2010-03-16 21:28:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -34,10 +34,12 @@
 #endif
 
 /* Local includes */
+#include "VBoxGlobal.h"
 #include "UISession.h"
 #include "UIMachineWindow.h"
 #include "UIMachineLogic.h"
 #include "UIFrameBuffer.h"
+#include "UIMachineLogicSeamless.h"
 #include "UIMachineViewSeamless.h"
 
 UIMachineViewSeamless::UIMachineViewSeamless(  UIMachineWindow *pMachineWindow
@@ -292,7 +294,10 @@ void UIMachineViewSeamless::cleanupSeamless()
 
 QRect UIMachineViewSeamless::workingArea()
 {
-    return QApplication::desktop()->availableGeometry(this);
+    /* Get corresponding screen: */
+    int iScreen = static_cast<UIMachineLogicSeamless*>(machineLogic())->hostScreenForGuestScreen(screenId());
+    /* Return available geometry for that screen: */
+    return vboxGlobal().availableGeometry(iScreen);
 }
 
 void UIMachineViewSeamless::calculateDesktopGeometry()

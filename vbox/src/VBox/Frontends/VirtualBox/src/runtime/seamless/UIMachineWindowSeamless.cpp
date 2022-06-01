@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27425 2010-03-16 19:51:51Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27427 2010-03-16 21:28:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -105,9 +105,13 @@ UIMachineWindowSeamless::~UIMachineWindowSeamless()
 
 void UIMachineWindowSeamless::sltPlaceOnScreen()
 {
-    QRect r = QApplication::desktop()->availableGeometry(static_cast<UIMachineLogicSeamless*>(machineLogic())->hostScreenForGuestScreen(m_uScreenId));
-    move(r.topLeft());
-    resize(r.size());
+    /* Get corresponding screen: */
+    int iScreen = static_cast<UIMachineLogicSeamless*>(machineLogic())->hostScreenForGuestScreen(m_uScreenId);
+    /* Calculate working area: */
+    QRect workingArea = vboxGlobal().availableGeometry(iScreen);
+    /* Move & resize to the appropriate values: */
+    move(workingArea.topLeft());
+    resize(workingArea.size());
 }
 
 void UIMachineWindowSeamless::sltMachineStateChanged()
@@ -194,7 +198,10 @@ void UIMachineWindowSeamless::closeEvent(QCloseEvent *pEvent)
 void UIMachineWindowSeamless::prepareSeamless()
 {
 #ifdef Q_WS_WIN
-    m_prevRegion = QApplication::desktop()->availableGeometry(static_cast<UIMachineLogicSeamless*>(machineLogic())->hostScreenForGuestScreen(m_uScreenId));
+    /* Get corresponding screen: */
+    int iScreen = static_cast<UIMachineLogicSeamless*>(machineLogic())->hostScreenForGuestScreen(m_uScreenId);
+    /* Prepare previous region: */
+    m_prevRegion = vboxGlobal().availableGeometry(iScreen);
 #endif
 
 #ifdef Q_WS_MAC
@@ -344,8 +351,9 @@ void UIMachineWindowSeamless::showSeamless()
     show();
 
 #ifdef Q_WS_MAC
-    /* Make sure it is really on the right place (especially on the Mac) */
-    QRect r = QApplication::desktop()->availableGeometry(static_cast<UIMachineLogicSeamless*>(machineLogic())->hostScreenForGuestScreen(m_uScreenId));
+    /* Make sure it is really on the right place (especially on the Mac): */
+    int iScreen = static_cast<UIMachineLogicSeamless*>(machineLogic())->hostScreenForGuestScreen(m_uScreenId);
+    QRect r = vboxGlobal().availableGeometry(iScreen);
     move(r.topLeft());
 #endif /* Q_WS_MAC */
 }

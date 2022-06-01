@@ -1,4 +1,4 @@
-/* $Id: VBoxMiniToolBar.cpp 26715 2010-02-23 15:39:20Z vboxsync $ */
+/* $Id: VBoxMiniToolBar.cpp 27427 2010-03-16 21:28:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -216,7 +216,7 @@ void VBoxMiniToolBar::timerEvent (QTimerEvent *aEvent)
 {
     if (aEvent->timerId() == mScrollTimer.timerId())
     {
-        QRect screen = mSeamless ? QApplication::desktop()->availableGeometry (window()) :
+        QRect screen = mSeamless ? vboxGlobal().availableGeometry (QApplication::desktop()->screenNumber(window())) :
                                    QApplication::desktop()->screenGeometry (window());
         switch (mAlignment)
         {
@@ -382,7 +382,7 @@ void VBoxMiniToolBar::recreateMask()
 
 void VBoxMiniToolBar::moveToBase()
 {
-    QRect screen = mSeamless ? QApplication::desktop()->availableGeometry (window()) :
+    QRect screen = mSeamless ? vboxGlobal().availableGeometry (QApplication::desktop()->screenNumber(window())) :
                                QApplication::desktop()->screenGeometry (window());
     mPositionX = screen.x() + screen.width() / 2 - width() / 2;
     switch (mAlignment)
@@ -410,7 +410,7 @@ QPoint VBoxMiniToolBar::mapFromScreen (const QPoint &aPoint)
 {
     QPoint globalPosition = parentWidget()->mapFromGlobal (aPoint);
     QRect fullArea = QApplication::desktop()->screenGeometry (window());
-    QRect realArea = mSeamless ? QApplication::desktop()->availableGeometry (window()) :
+    QRect realArea = mSeamless ? vboxGlobal().availableGeometry (QApplication::desktop()->screenNumber(window())) :
                                  QApplication::desktop()->screenGeometry (window());
     QPoint shiftToReal (realArea.topLeft() - fullArea.topLeft());
     return globalPosition + shiftToReal;
