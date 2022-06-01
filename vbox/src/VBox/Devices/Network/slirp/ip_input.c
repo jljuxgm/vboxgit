@@ -1,4 +1,4 @@
-/* $Id: ip_input.c 30350 2010-06-22 02:39:23Z vboxsync $ */
+/* $Id: ip_input.c 30361 2010-06-22 11:02:11Z vboxsync $ */
 /** @file
  * NAT - IP input.
  */
@@ -195,8 +195,7 @@ ip_input(PNATState pData, struct mbuf *m)
     if (ip->ip_ttl==0 || ip->ip_ttl == 1)
     {
         icmp_error(pData, m, ICMP_TIMXCEED, ICMP_TIMXCEED_INTRANS, 0, "ttl");
-        /* don't let this mbuf to be freed */
-        return;
+        goto bad;
     }
 
     ip->ip_ttl--;
