@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 27790 2010-03-29 12:58:08Z vboxsync $ */
+/* $Id: PGMAllBth.h 27814 2010-03-30 08:42:23Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3480,6 +3480,12 @@ PGM_BTH_DECL(int, SyncCR3)(PVMCPU pVCpu, uint64_t cr0, uint64_t cr3, uint64_t cr
 #if PGM_SHW_TYPE != PGM_TYPE_NESTED && PGM_SHW_TYPE != PGM_TYPE_EPT
 
     pgmLock(pVM);
+
+# ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
+    PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
+    if (pPool->cDirtyPages)
+        pgmPoolResetDirtyPages(pVM);
+# endif
 
     /*
      * Update page access handlers.
