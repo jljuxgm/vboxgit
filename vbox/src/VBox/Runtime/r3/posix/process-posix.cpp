@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 27321 2010-03-12 11:10:39Z vboxsync $ */
+/* $Id: process-posix.cpp 27349 2010-03-14 18:37:17Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -119,7 +119,7 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
 
                 case RTHANDLETYPE_SOCKET:
                     aStdFds[i] = paHandles[i]->u.hSocket != NIL_RTSOCKET
-                               ? (int)paHandles[i]->u.hSocket //RTPipeToNative(paHandles[i]->u.hPipe)
+                               ? (int)paHandles[i]->u.hSocket //RTTcpToNative(paHandles[i]->u.hSocket)
                                : -2 /* close it */;
                     break;
 
