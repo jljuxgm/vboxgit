@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 29785 2010-05-25 13:30:45Z vboxsync $ */
+/* $Id: GuestImpl.cpp 29807 2010-05-26 10:13:20Z vboxsync $ */
 
 /** @file
  *
@@ -1059,11 +1059,6 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
                             rc = setError(VBOX_E_IPRT_ERROR,
                                           tr("The guest did not respond within time (%ums)"), aTimeoutMS);
                         }
-                        else if (vrc == VERR_INVALID_PARAMETER)
-                        {
-                            rc = setError(VBOX_E_IPRT_ERROR,
-                                          tr("The guest reported an unknown process status (%u)"), pData->u32Status);
-                        }
                         else if (vrc == VERR_PERMISSION_DENIED)
                         {
                             rc = setError(VBOX_E_IPRT_ERROR,
@@ -1071,8 +1066,12 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
                         }
                         else
                         {
-                            rc = setError(E_UNEXPECTED,
-                                          tr("The service call failed with error %Rrc"), vrc);
+                            if (pData->u32Status == PROC_STS_ERROR)
+                                rc = setError(VBOX_E_IPRT_ERROR,
+                                              tr("Process could not be started: %Rrc"), pData->u32Flags);
+                            else
+                                rc = setError(E_UNEXPECTED,
+                                              tr("The service call failed with error %Rrc"), vrc);
                         }               
                     }
                     else /* Execution went fine. */

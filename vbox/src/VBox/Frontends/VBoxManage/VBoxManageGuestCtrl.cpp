@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 29786 2010-05-25 13:59:53Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 29807 2010-05-26 10:13:20Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -321,9 +321,20 @@ static int handleExecProgram(HandlerArg *a)
                                        &uPID, progress.asOutParam());
             if (FAILED(rc))
             {
+                /* If we got a VBOX_E_IPRT error we handle the error in a more gentle way
+                 * because it contains more accurate info about what went wrong. */
                 ErrorInfo info(guest);
                 if (info.isFullAvailable())
-                    RTPrintf("ERROR: %ls (%Rhrc).\n", info.getText().raw(), info.getResultCode());
+                {
+                    if (rc == VBOX_E_IPRT_ERROR)
+                    {
+                        RTPrintf("%ls.\n", info.getText().raw());
+                    }
+                    else
+                    {
+                        RTPrintf("ERROR: %ls (%Rhrc).\n", info.getText().raw(), info.getResultCode());
+                    }
+                }
                 break;
             }
             if (fVerbose)
