@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 24258 2009-11-02 14:38:50Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24271 2009-11-02 16:43:26Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3607,7 +3607,8 @@ STDMETHODIMP Machine::AddStorageController(IN_BSTR aName,
                 ulInstance = ulCurInst;
         }
     }
-    ulInstance++;
+    if (ulInstance)
+        ulInstance++;
 
     rc = ctrl->init(this, aName, aConnectionType, ulInstance);
     CheckComRCReturnRC(rc);
