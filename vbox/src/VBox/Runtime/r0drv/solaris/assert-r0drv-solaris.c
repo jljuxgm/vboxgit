@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-solaris.c 25528 2009-12-20 23:24:59Z vboxsync $ */
+/* $Id: assert-r0drv-solaris.c 25530 2009-12-20 23:28:22Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, Solaris.
  */
@@ -55,13 +55,10 @@ void rtR0AssertNativeMsg1(const char *pszExpr, unsigned uLine, const char *pszFi
 
 void rtR0AssertNativeMsg2V(const char *pszFormat, va_list va)
 {
-    va_list va;
-    char    szMsg[256];
+    char szMsg[256];
 
-    va_start(va, pszFormat);
     RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, va);
     szMsg[sizeof(szMsg) - 1] = '\0';
-    va_end(va);
     uprintf("%s", szMsg);
 }
 

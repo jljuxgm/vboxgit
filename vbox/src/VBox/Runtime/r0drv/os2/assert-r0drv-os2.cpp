@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-os2.cpp 25528 2009-12-20 23:24:59Z vboxsync $ */
+/* $Id: assert-r0drv-os2.cpp 25530 2009-12-20 23:28:22Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, OS/2.
  */
@@ -83,12 +83,10 @@ void rtR0AssertNativeMsg2V(const char *pszFormat, va_list va)
     va_end(vaCopy);
 #endif
 
-    va_start(va, pszFormat);
     size_t cch = g_cchRTAssertMsg;
     char *pch = &g_szRTAssertMsg[cch];
     cch += RTStrFormatV(rtR0Os2AssertOutputCB, &pch, NULL, NULL, pszFormat, va);
     g_cchRTAssertMsg = cch;
-    va_end(va);
 }
 
 
