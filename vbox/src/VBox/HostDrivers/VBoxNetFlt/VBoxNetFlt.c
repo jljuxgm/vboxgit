@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 29491 2010-05-14 17:46:22Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 29492 2010-05-14 17:58:54Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -544,7 +544,6 @@ static DECLCALLBACK(void) vboxNetFltPortNotifyMacAddress(PINTNETTRUNKIFPORT pIfP
      * Input validation.
      */
     AssertPtr(pThis);
-    AssertPtr(pSG);
     Assert(pThis->MyPort.u32Version == INTNETTRUNKIFPORT_VERSION);
 
     vboxNetFltRetain(pThis, false /* fBusy */);
@@ -565,7 +564,6 @@ static DECLCALLBACK(int) vboxNetFltPortConnectInterface(PINTNETTRUNKIFPORT pIfPo
      * Input validation.
      */
     AssertPtr(pThis);
-    AssertPtr(pSG);
     Assert(pThis->MyPort.u32Version == INTNETTRUNKIFPORT_VERSION);
 
     vboxNetFltRetain(pThis, false /* fBusy */);
@@ -588,7 +586,6 @@ static DECLCALLBACK(int) vboxNetFltPortDisconnectInterface(PINTNETTRUNKIFPORT pI
      * Input validation.
      */
     AssertPtr(pThis);
-    AssertPtr(pSG);
     Assert(pThis->MyPort.u32Version == INTNETTRUNKIFPORT_VERSION);
 
     vboxNetFltRetain(pThis, false /* fBusy */);
