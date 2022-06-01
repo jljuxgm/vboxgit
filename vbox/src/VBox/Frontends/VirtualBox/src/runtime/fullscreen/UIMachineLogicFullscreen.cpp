@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 29069 2010-05-05 12:07:15Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 30330 2010-06-21 13:30:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -46,7 +46,12 @@ UIMachineLogicFullscreen::UIMachineLogicFullscreen(QObject *pParent, UISession *
 
 UIMachineLogicFullscreen::~UIMachineLogicFullscreen()
 {
-    /* Cleanup machine window: */
+#ifdef Q_WS_MAC
+    /* Cleanup the dock stuff before the machine window(s): */
+    cleanupDock();
+#endif /* Q_WS_MAC */
+
+    /* Cleanup machine window(s): */
     cleanupMachineWindows();
 
     /* Cleanup action related stuff */
@@ -216,10 +221,7 @@ void UIMachineLogicFullscreen::cleanupMachineWindows()
     if (!isMachineWindowsCreated())
         return;
 
-    /* Base class cleanup: */
-    UIMachineLogic::cleanupMachineWindows();
-
-    /* Cleanup normal machine window: */
+    /* Cleanup machine window(s): */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         UIMachineWindow::destroy(pMachineWindow);
 

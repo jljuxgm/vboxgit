@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 30330 2010-06-21 13:30:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -627,14 +627,6 @@ void UIMachineLogic::prepareRequiredFeatures()
     initSharedAVManager();
 # endif
 #endif
-}
-
-void UIMachineLogic::cleanupMachineWindows()
-{
-#ifdef Q_WS_MAC
-    /* We need to clean up the dock stuff before the machine windows. */
-    cleanupDock();
-#endif /* Q_WS_MAC */
 }
 
 #ifdef Q_WS_MAC

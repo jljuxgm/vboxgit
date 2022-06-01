@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 30330 2010-06-21 13:30:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -44,7 +44,12 @@ UIMachineLogicSeamless::UIMachineLogicSeamless(QObject *pParent, UISession *pSes
 
 UIMachineLogicSeamless::~UIMachineLogicSeamless()
 {
-    /* Cleanup normal machine window: */
+#ifdef Q_WS_MAC
+    /* Cleanup the dock stuff before the machine window(s): */
+    cleanupDock();
+#endif /* Q_WS_MAC */
+
+    /* Cleanup machine window(s): */
     cleanupMachineWindows();
 
     /* Cleanup actions groups: */
@@ -196,10 +201,7 @@ void UIMachineLogicSeamless::cleanupMachineWindows()
     if (!isMachineWindowsCreated())
         return;
 
-    /* Base class cleanup: */
-    UIMachineLogic::cleanupMachineWindows();
-
-    /* Cleanup normal machine window: */
+    /* Cleanup machine window(s): */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         UIMachineWindow::destroy(pMachineWindow);
 }
