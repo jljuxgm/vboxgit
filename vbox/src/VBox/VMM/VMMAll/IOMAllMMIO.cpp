@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 26944 2010-03-02 13:42:41Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 26958 2010-03-02 16:48:38Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1063,7 +1063,7 @@ int iomMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore, RTGCPHYS
      *        lock for most of the code, provided that we retake the lock while
      *        deregistering PIOMMMIORANGE to deal with remapping/access races
      *        (unlikely, but an SMP guest shouldn't cause us to crash). */
-    Assert(!pRange->CTX_SUFF(pDevIns)->CTX_SUFF(pCritSect));
+    Assert(!pRange->CTX_SUFF(pDevIns) || !pRange->CTX_SUFF(pDevIns)->CTX_SUFF(pCritSect));
 
 #ifdef VBOX_WITH_STATISTICS
     /*
@@ -1316,7 +1316,7 @@ DECLCALLBACK(int) IOMR3MMIOHandler(PVM pVM, RTGCPHYS GCPhysFault, void *pvPhys, 
      *        lock for most of the code, provided that we retake the lock while
      *        deregistering PIOMMMIORANGE to deal with remapping/access races
      *        (unlikely, but an SMP guest shouldn't cause us to crash). */
-    Assert(!pRange->CTX_SUFF(pDevIns)->CTX_SUFF(pCritSect));
+    Assert(!pRange->CTX_SUFF(pDevIns) || !pRange->CTX_SUFF(pDevIns)->CTX_SUFF(pCritSect));
 
     if (enmAccessType == PGMACCESSTYPE_READ)
         rc = iomMMIODoRead(pVM, pRange, GCPhysFault, pvBuf, (unsigned)cbBuf);
@@ -1360,7 +1360,7 @@ VMMDECL(VBOXSTRICTRC) IOMMMIORead(PVM pVM, RTGCPHYS GCPhys, uint32_t *pu32Value,
         return VERR_INTERNAL_ERROR;
     }
     /** @todo implement per-device locks for MMIO access. */
-    Assert(!pRange->CTX_SUFF(pDevIns)->CTX_SUFF(pCritSect));
+    Assert(!pRange->CTX_SUFF(pDevIns) || !pRange->CTX_SUFF(pDevIns)->CTX_SUFF(pCritSect));
 #ifdef VBOX_WITH_STATISTICS
     PIOMMMIOSTATS pStats = iomMMIOGetStats(&pVM->iom.s, GCPhys, pRange);
     if (!pStats)
@@ -1483,7 +1483,7 @@ VMMDECL(VBOXSTRICTRC) IOMMMIOWrite(PVM pVM, RTGCPHYS GCPhys, uint32_t u32Value, 
         return VERR_INTERNAL_ERROR;
     }
     /** @todo implement per-device locks for MMIO access. */
-    Assert(!pRange->CTX_SUFF(pDevIns)->CTX_SUFF(pCritSect));
+    Assert(!pRange->CTX_SUFF(pDevIns) || !pRange->CTX_SUFF(pDevIns)->CTX_SUFF(pCritSect));
 #ifdef VBOX_WITH_STATISTICS
     PIOMMMIOSTATS pStats = iomMMIOGetStats(&pVM->iom.s, GCPhys, pRange);
     if (!pStats)
