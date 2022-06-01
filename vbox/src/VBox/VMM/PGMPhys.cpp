@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 27182 2010-03-08 17:28:01Z vboxsync $ */
+/* $Id: PGMPhys.cpp 27195 2010-03-09 09:22:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -791,6 +791,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysChangeMemBalloonRendezvous(PVM pVM, P
     PGMMFREEPAGESREQ    pReq;
     int                 rc;
 
+    Log(("pgmR3PhysChangeMemBalloonRendezvous: %s %x pages\n", (fInflate) ? "inflate" : "deflate", cPages));
     pgmLock(pVM);
 
     if (fInflate)
@@ -811,7 +812,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysChangeMemBalloonRendezvous(PVM pVM, P
             if (    pPage == NULL
                 ||  pPage->uTypeY != PGMPAGETYPE_RAM)
             {
-                Log(("PGMR3PhysFreePageRange: invalid physical page %RGp pPage->u3Type=%d\n", paPhysPage[i], (pPage) ? pPage->uTypeY : 0));
+                Log(("pgmR3PhysChangeMemBalloonRendezvous: invalid physical page %RGp pPage->u3Type=%d\n", paPhysPage[i], (pPage) ? pPage->uTypeY : 0));
                 break;
             }
 
