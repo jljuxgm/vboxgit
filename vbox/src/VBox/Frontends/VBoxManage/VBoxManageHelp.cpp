@@ -1,10 +1,10 @@
-/* $Id: VBoxManageHelp.cpp 28106 2010-04-08 16:45:59Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 28192 2010-04-12 09:55:15Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
 
 /*
- * Copyright (C) 2006-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -127,6 +127,7 @@ void printUsage(USAGECATEGORY u64Cmd)
     {
         RTPrintf("VBoxManage showvminfo       <uuid>|<name> [--details] [--statistics]\n"
                  "                            [--machinereadable]\n"
+                 "VBoxManage showvminfo       <uuid>|<name> --log <idx>\n"
                  "\n");
     }
 

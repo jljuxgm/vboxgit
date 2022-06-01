@@ -1,10 +1,10 @@
-/* $Id: VBoxManage.cpp 27703 2010-03-25 13:17:01Z vboxsync $ */
+/* $Id: VBoxManage.cpp 28192 2010-04-12 09:55:15Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
 
 /*
- * Copyright (C) 2006-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
