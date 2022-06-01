@@ -1,4 +1,4 @@
-# $Id: Config.kmk 29688 2010-05-20 11:51:39Z vboxsync $
+# $Id: Config.kmk 29715 2010-05-21 04:39:03Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1516,6 +1516,9 @@ VBOX_BIN2C     ?= $(PATH_OBJ)/bin2c/bin2c$(HOSTSUFF_EXE)
 
 # biossums (set BIOS checksums)
 VBOX_BIOSSUMS  ?= $(PATH_OBJ)/biossums/biossums$(HOSTSUFF_EXE)
+
+# filesplitter (splits java files)
+VBOX_FILESPLIT ?= $(PATH_OBJ)/filesplitter/filesplitter$(HOSTSUFF_EXE)
 
 # mkisofs
 ifeq ($(KBUILD_HOST),win)
@@ -4220,7 +4223,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29688 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29715 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
