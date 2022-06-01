@@ -1,4 +1,4 @@
-/* $Id: semmutex-win.cpp 25627 2010-01-03 16:26:18Z vboxsync $ */
+/* $Id: semmutex-win.cpp 25628 2010-01-03 16:28:59Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Windows.
  */
@@ -296,8 +296,8 @@ RTDECL(bool) RTSemMutexIsOwned(RTSEMMUTEX hMutex)
      * Validate.
      */
     RTSEMMUTEXINTERNAL *pThis = hMutex;
-    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
-    AssertReturn(pThis->u32Magic == RTSEMMUTEX_MAGIC, VERR_INVALID_HANDLE);
+    AssertPtrReturn(pThis, false);
+    AssertReturn(pThis->u32Magic == RTSEMMUTEX_MAGIC, false);
 
     RTNATIVETHREAD hNativeOwner;
     ASMAtomicReadHandle(&pThis->hNativeOwner, &hNativeOwner);

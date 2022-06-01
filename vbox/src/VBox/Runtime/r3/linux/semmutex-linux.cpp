@@ -1,4 +1,4 @@
-/* $Id: semmutex-linux.cpp 25624 2010-01-03 15:23:27Z vboxsync $ */
+/* $Id: semmutex-linux.cpp 25628 2010-01-03 16:28:59Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphore, Linux  (2.6.x+).
  */
@@ -415,8 +415,8 @@ RTDECL(bool) RTSemMutexIsOwned(RTSEMMUTEX hMutex)
      * Validate.
      */
     RTSEMMUTEXINTERNAL *pThis = hMutex;
-    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
-    AssertReturn(pThis->u32Magic == RTSEMMUTEX_MAGIC, VERR_INVALID_HANDLE);
+    AssertPtrReturn(pThis, false);
+    AssertReturn(pThis->u32Magic == RTSEMMUTEX_MAGIC, false);
 
     return pThis->Owner != (pthread_t)~0;
 }
