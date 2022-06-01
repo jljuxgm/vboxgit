@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27829 2010-03-30 13:54:07Z vboxsync $
+# $Id: Makefile.kmk 27857 2010-03-31 09:02:32Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -304,6 +304,7 @@ VBoxSVC_SOURCES = \
 	DHCPServerImpl.cpp \
 	DHCPServerRunner.cpp \
 	GuestOSTypeImpl.cpp \
+	NATEngineImpl.cpp \
 	NetworkAdapterImpl.cpp \
 	SerialPortImpl.cpp \
 	ParallelPortImpl.cpp \

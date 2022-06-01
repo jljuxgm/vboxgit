@@ -1,4 +1,4 @@
-/* $Id: server.cpp 26517 2010-02-14 21:39:00Z vboxsync $ */
+/* $Id: server.cpp 27857 2010-03-31 09:02:32Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -76,6 +76,7 @@
 #include <HostNetworkInterfaceImpl.h>
 #include <GuestOSTypeImpl.h>
 #include <NetworkAdapterImpl.h>
+#include <NATEngineImpl.h>
 #include <SerialPortImpl.h>
 #include <ParallelPortImpl.h>
 #include <USBControllerImpl.h>
@@ -152,6 +153,10 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(GuestOSType, IGuestOSType)
 
 NS_DECL_CLASSINFO(NetworkAdapter)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(NetworkAdapter, INetworkAdapter)
+
+NS_DECL_CLASSINFO(NATEngine)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(NATEngine, INATEngine)
+
 
 NS_DECL_CLASSINFO(SerialPort)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(SerialPort, ISerialPort)
