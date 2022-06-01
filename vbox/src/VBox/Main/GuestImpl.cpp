@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 29309 2010-05-10 15:44:55Z vboxsync $ */
+/* $Id: GuestImpl.cpp 29460 2010-05-14 11:06:44Z vboxsync $ */
 
 /** @file
  *
@@ -205,16 +205,6 @@ STDMETHODIMP Guest::COMGETTER(SupportsGraphics) (BOOL *aSupportsGraphics)
     *aSupportsGraphics = mData.mSupportsGraphics;
 
     return S_OK;
-}
-
-STDMETHODIMP Guest::COMGETTER(PageFusionEnabled) (BOOL *enabled)
-{
-    return E_NOTIMPL;
-}
-
-STDMETHODIMP Guest::COMSETTER(PageFusionEnabled) (BOOL enabled)
-{
-    return E_NOTIMPL;
 }
 
 STDMETHODIMP Guest::COMGETTER(MemoryBalloonSize) (ULONG *aMemoryBalloonSize)
