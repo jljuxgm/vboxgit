@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27708 2010-03-25 14:36:56Z vboxsync $
+# $Id: Makefile.kmk 27710 2010-03-25 15:07:02Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox HGCM Service.
 #
@@ -89,6 +89,10 @@ ifeq ($(KBUILD_TARGET),win)
 else
  VBoxSharedCrOpenGL_LIBS += \
 	$(PATH_BIN)/VBoxOGLrenderspu$(VBOX_SUFF_DLL)
+endif
+ifdef VBOX_WITH_XPCOM
+ VBoxSharedCrOpenGL_LIBS += \
+	$(LIB_XPCOM)
 endif
 
 #
