@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 27999 2010-04-06 12:24:02Z vboxsync $ */
+/* $Id: GMM.cpp 28000 2010-04-06 12:25:48Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -294,7 +294,7 @@ GMMR3DECL(int)  GMMR3BalloonedPages(PVM pVM, GMMBALLOONACTION enmAction, uint32_
  */
 GMMR3DECL(int)  GMMR3QueryTotalBalloonSize(PVM pVM, uint64_t *pcTotalBalloonedPages)
 {
-    GMMBALLOONEDPAGESREQ Req;
+    GMMBALLOONQUERYREQ Req;
     Req.Hdr.u32Magic = SUPVMMR0REQHDR_MAGIC;
     Req.Hdr.cbReq = sizeof(Req);
     Req.cBalloonedPages = 0;
