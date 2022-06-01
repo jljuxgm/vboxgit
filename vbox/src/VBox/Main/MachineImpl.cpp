@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 25998 2010-01-25 13:02:22Z vboxsync $ */
+/* $Id: MachineImpl.cpp 26042 2010-01-26 11:14:03Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2983,7 +2983,8 @@ STDMETHODIMP Machine::MountMedium(IN_BSTR aControllerName,
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+    // we're calling host methods for getting DVD and floppy drives so lock host first
+    AutoMultiWriteLock2 alock(mParent->host(), this COMMA_LOCKVAL_SRC_POS);
 
     ComObjPtr<MediumAttachment> pAttach = findAttachment(mMediaData->mAttachments,
                                                          aControllerName,
