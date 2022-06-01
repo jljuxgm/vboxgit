@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 29922 2010-05-31 17:38:48Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 29974 2010-06-02 10:33:16Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -4075,6 +4075,7 @@ VBoxQGLOverlay::VBoxQGLOverlay (QWidget *pViewport,QObject *pPostEventObject,  C
       mCmdPipe (pPostEventObject),
       mSettings (*aSession),
       mpSession(aSession),
+      mpShareWgt (NULL),
       m_id(id)
 {
     /* postpone the gl widget initialization to avoid conflict with 3D on Mac */
