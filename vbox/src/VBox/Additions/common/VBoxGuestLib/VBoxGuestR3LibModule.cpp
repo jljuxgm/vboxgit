@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibModule.cpp 29538 2010-05-17 12:07:00Z vboxsync $ */
+/* $Id: VBoxGuestR3LibModule.cpp 30040 2010-06-04 16:23:29Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared modules.
  */
@@ -143,3 +143,26 @@ VBGLR3DECL(bool) VbglR3PageSharingIsEnabled()
     return false;
 }
 
+/**
+ * Checks if page sharing is enabled.
+ *
+ * @returns true/false enabled/disabled
+ */
+VBGLR3DECL(int) VbglR3PageIsShared(RTGCPTR pPage, bool *pfShared, bool *pfReadWrite)
+{
+#ifdef DEBUG
+    VMMDevPageIsSharedRequest Req;
+
+    vmmdevInitRequest(&Req.header, VMMDevReq_DebugIsPageShared);
+    Req.GCPtrPage = pPage;
+    int rc = vbglR3GRPerform(&Req.header);
+    if (RT_SUCCESS(rc))
+    {
+        *pfShared    = Req.fShared;
+        *pfReadWrite = Req.fReadWrite;
+    }
+    return rc;
+#else
+    return VERR_NOT_IMPLEMENTED;
+#endif
+}
