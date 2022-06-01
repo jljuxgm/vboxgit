@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 29749 2010-05-21 21:55:12Z vboxsync $ */
+/* $Id: UsbKbd.cpp 30224 2010-06-16 01:55:46Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -588,7 +588,7 @@ static int usbHidCompleteOk(PUSBHID pThis, PVUSBURB pUrb, size_t cbData)
     Log(("usbHidCompleteOk/#%u: pUrb=%p:%s cbData=%#zx\n", pThis->pUsbIns->iInstance, pUrb, pUrb->pszDesc, cbData));
 
     pUrb->enmStatus = VUSBSTATUS_OK;
-    pUrb->cbData    = cbData;
+    pUrb->cbData    = (uint32_t)cbData;
 
     usbHidLinkDone(pThis, pUrb);
     return VINF_SUCCESS;

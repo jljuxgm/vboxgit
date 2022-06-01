@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: DevAHCI.cpp 30224 2010-06-16 01:55:46Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -4828,7 +4828,7 @@ static void ahciCopyFromSGListIntoBuffer(PPDMDEVINS pDevIns, PAHCIPORTTASKSTATES
 static int ahciScatterGatherListCopyFromBuffer(PAHCIPORTTASKSTATE pAhciPortTaskState, void *pvBuf, size_t cbBuf)
 {
     unsigned cSGEntry = 0;
-    int cbCopied = 0;
+    size_t cbCopied = 0;
     PRTSGSEG pSGEntry = &pAhciPortTaskState->pSGListHead[cSGEntry];
     uint8_t *pu8Buf = (uint8_t *)pvBuf;
 
