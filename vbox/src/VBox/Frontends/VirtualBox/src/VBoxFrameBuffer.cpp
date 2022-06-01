@@ -1,3 +1,4 @@
+/* $Id: VBoxFrameBuffer.cpp 26719 2010-02-23 16:18:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -676,3 +677,4 @@ void VBoxSDLFrameBuffer::resizeEvent (VBoxResizeEvent *re)
 /* The class is defined in VBoxQuartz2D.cpp */
 
 #endif
+

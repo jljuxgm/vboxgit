@@ -1,3 +1,4 @@
+/* $Id: VBoxVMLogViewer.cpp 26719 2010-02-23 16:18:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -600,3 +601,4 @@ void VBoxLogSearchPanel::find (int aButton)
     else
         findBack();
 }
+

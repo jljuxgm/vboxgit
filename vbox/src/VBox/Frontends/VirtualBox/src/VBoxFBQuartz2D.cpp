@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQuartz2D.cpp 25526 2009-12-20 21:33:05Z vboxsync $ */
+/* $Id: VBoxFBQuartz2D.cpp 26719 2010-02-23 16:18:14Z vboxsync $ */
 /** @file
  * Qt GUI (aka VirtualBox) - Quartz2D framebuffer implementation.
  */
@@ -467,3 +467,4 @@ void VBoxQuartz2DFrameBuffer::testAndSetSNCarbonFix()
 #endif /* QT_MAC_USE_COCOA */
 
 #endif /* defined (VBOX_GUI_USE_QUARTZ2D) */
+

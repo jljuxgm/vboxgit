@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQGL.cpp 26509 2010-02-14 09:35:03Z vboxsync $ */
+/* $Id: VBoxFBQGL.cpp 26719 2010-02-23 16:18:14Z vboxsync $ */
 /** @file
  * VBoxFBQGL Opengl-based FrameBuffer implementation
  */
@@ -170,3 +170,4 @@ STDMETHODIMP VBoxQGLFrameBuffer::ProcessVHWACommand(BYTE *pCommand)
 #endif
 
 #endif
+

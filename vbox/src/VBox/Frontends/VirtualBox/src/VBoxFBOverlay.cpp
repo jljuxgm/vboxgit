@@ -1,3 +1,4 @@
+/* $Id: VBoxFBOverlay.cpp 26719 2010-02-23 16:18:14Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -5406,3 +5407,4 @@ int VBoxVHWASettings::calcIntersection (int c1, const uint32_t *a1, int c2, cons
 }
 
 #endif
+
