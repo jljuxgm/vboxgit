@@ -1,4 +1,4 @@
-/* $Id: DrvACPI.cpp 27264 2010-03-11 08:48:15Z vboxsync $ */
+/* $Id: DrvACPI.cpp 27266 2010-03-11 08:51:01Z vboxsync $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
@@ -800,9 +800,11 @@ static DECLCALLBACK(void) drvACPIDestruct(PPDMDRVINS pDrvIns)
     LogFlow(("drvACPIDestruct\n"));
     PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
 
+#ifdef RT_OS_LINUX
     RTSemEventDestroy(pThis->hPollerSleepEvent);
     pThis->hPollerSleepEvent = NIL_RTSEMEVENT;
     RTCritSectDelete(&pThis->CritSect);
+#endif
 }
 
 /**
