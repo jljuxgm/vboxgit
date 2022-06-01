@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27955 2010-04-02 09:12:26Z vboxsync $
+# $Id: Makefile.kmk 28366 2010-04-15 14:44:38Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -28,6 +28,8 @@ ifdef VBOX_SIGN_ADDITIONS # (See the parent makefile.)
  VBoxTray_NOINST  = true
 endif
 VBoxTray_DEFS     = VBOX_WITH_HGCM LOG_TO_BACKDOOR
+#temporary define
+VBoxTray_DEFS    += MMSEAMLESS
 VBoxTray_INCS     = ../include
 VBoxTray_SOURCES  = \
 	VBoxTray.cpp \
