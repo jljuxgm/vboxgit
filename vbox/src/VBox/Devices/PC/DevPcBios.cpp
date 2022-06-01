@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 28569 2010-04-21 16:52:24Z vboxsync $ */
+/* $Id: DevPcBios.cpp 28580 2010-04-22 07:21:06Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -947,7 +947,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
                               "DmiOEMVBoxRev\0"
 #endif
                               "DmiUseHostInfo\0"
-                              "DmiExposeAdditionalTables\0"
+                              "DmiExposeMemoryTable\0"
                               ))
         return PDMDEV_SET_ERROR(pDevIns, VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES,
                                 N_("Invalid configuration for device pcbios device"));
