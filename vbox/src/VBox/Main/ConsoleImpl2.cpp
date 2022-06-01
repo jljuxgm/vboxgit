@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 24603 2009-11-12 06:39:20Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 24706 2009-11-16 17:57:20Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -838,6 +838,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         rc = CFGMR3InsertInteger(pCfg,  "RamHoleSize",      cbRamHole);             RC_CHECK();
         rc = CFGMR3InsertInteger(pCfg,  "NumCPUs",          cCpus);                 RC_CHECK();
         rc = CFGMR3InsertString(pCfg,   "EfiRom",           efiRomFile.raw());      RC_CHECK();
+        rc = CFGMR3InsertInteger(pCfg,  "IOAPIC",               fIOAPIC);           RC_CHECK();
+        rc = CFGMR3InsertBytes(pCfg,    "UUID", &HardwareUuid,sizeof(HardwareUuid));RC_CHECK();
     }
 
     /*
