@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27014 2010-03-04 11:59:54Z vboxsync $
+# $Id: Makefile.kmk 28081 2010-04-08 10:13:04Z vboxsync $
 ## @file
 # Sub-Makefile for the common addition code.
 #
@@ -34,6 +34,9 @@ ifndef VBOX_ONLY_TESTSUITE
  endif
  ifdef VBOX_WITH_CROGL
    include $(PATH_SUB_CURRENT)/crOpenGL/Makefile.kmk
+ endif
+ ifdef VBOX_WITH_PAM
+  include $(PATH_SUB_CURRENT)/pam/Makefile.kmk
  endif
 endif # !VBOX_ONLY_TESTSUITE
 
