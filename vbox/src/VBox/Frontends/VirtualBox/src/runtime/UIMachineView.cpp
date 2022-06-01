@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 26823 2010-02-26 10:35:32Z vboxsync $ */
+/* $Id: UIMachineView.cpp 26858 2010-02-26 14:47:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -364,6 +364,24 @@ QRect UIMachineView::availableGeometry()
 
 void UIMachineView::prepareFrameBuffer()
 {
+    /* Prepare viewport: */
+#ifdef VBOX_GUI_USE_QGL
+    QWidget *pViewport;
+    switch (mode())
+    {
+#if 0 // TODO: Create Open GL viewport!
+        case VBoxDefs::QGLMode:
+            pViewport = new VBoxGLWidget(this, this, NULL);
+            break;
+#endif
+        default:
+            pViewport = new VBoxViewport(this);
+    }
+#else
+    VBoxViewport *pViewport = new VBoxViewport(this);
+#endif
+    setViewport(pViewport);
+
     CDisplay display = session().GetConsole().GetDisplay();
     Assert(!display.isNull());
     m_pFrameBuffer = NULL;
@@ -451,24 +469,6 @@ void UIMachineView::prepareCommon()
 
     /* Pressed keys: */
     ::memset(m_pressedKeys, 0, sizeof(m_pressedKeys));
-
-    /* Prepare viewport: */
-#ifdef VBOX_GUI_USE_QGL
-    QWidget *pViewport;
-    switch (mode())
-    {
-#if 0 // TODO: Create Open GL viewport!
-        case VBoxDefs::QGLMode:
-            pViewport = new VBoxGLWidget(this, this, NULL);
-            break;
-#endif
-        default:
-            pViewport = new VBoxViewport(this);
-    }
-#else
-    VBoxViewport *pViewport = new VBoxViewport(this);
-#endif
-    setViewport(pViewport);
 
     /* Setup palette: */
     QPalette palette(viewport()->palette());
