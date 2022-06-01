@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 28309 2010-04-14 15:22:16Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 28312 2010-04-14 15:54:12Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1864,7 +1864,7 @@ int getDeviceInfoFromSysfs(const char *pcszPath, sysfsPathHandler *pHandler)
         if (RT_FAILURE(rc))
             break;
         rc = RTPathReal(szPath, szAbsPath, sizeof(szAbsPath));
-        AssertRCBreak(rc));  /* sysfs should guarantee that this exists */
+        AssertRCBreak(rc);  /* sysfs should guarantee that this exists */
         if (!pHandler->doHandle(szAbsPath))
             break;
     }
