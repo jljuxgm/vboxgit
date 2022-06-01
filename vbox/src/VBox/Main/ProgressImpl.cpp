@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 29863 2010-05-28 13:33:59Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 29881 2010-05-30 15:12:11Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -957,11 +957,15 @@ STDMETHODIMP Progress::Cancel()
 
     if (!mCanceled)
     {
+        LogThisFunc(("Canceling\n"));
         mCanceled = TRUE;
         if (m_pfnCancelCallback)
             m_pfnCancelCallback(m_pvCancelUserArg);
 
     }
+    else
+        LogThisFunc(("Already canceled\n"));
+
     return S_OK;
 }
 
@@ -1243,9 +1247,13 @@ bool Progress::notifyPointOfNoReturn(void)
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     if (mCanceled)
+    {
+        LogThisFunc(("returns false\n"));
         return false;
+    }
 
     mCancelable = FALSE;
+    LogThisFunc(("returns true\n"));
     return true;
 }
 
@@ -1719,6 +1727,7 @@ STDMETHODIMP CombinedProgress::Cancel()
 
     if (!mCanceled)
     {
+        LogThisFunc(("Canceling\n"));
         mCanceled = TRUE;
 /** @todo Teleportation: Shouldn't this be propagated to mProgresses? If
  *        powerUp creates passes a combined progress object to the client, I
@@ -1728,6 +1737,9 @@ STDMETHODIMP CombinedProgress::Cancel()
             m_pfnCancelCallback(m_pvCancelUserArg);
 
     }
+    else
+        LogThisFunc(("Already canceled\n"));
+
     return S_OK;
 }
 
