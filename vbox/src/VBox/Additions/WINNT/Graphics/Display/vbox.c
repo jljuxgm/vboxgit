@@ -1,4 +1,4 @@
-/* $Id: vbox.c 25052 2009-11-27 15:01:37Z vboxsync $ */
+/* $Id: vbox.c 25128 2009-12-01 15:36:02Z vboxsync $ */
 /** @file
  * Display - VirtualBox Win 2000/XP guest display driver, support functions.
  */
@@ -779,7 +779,7 @@ void vboxVHWACommandCheckHostCmds(PPDEV ppdev)
 {
     VBVAHOSTCMD * pCmd, * pNextCmd;
     int rc = ppdev->pfnHGSMIRequestCommands(ppdev->hMpHGSMI, HGSMI_CH_VBVA, &pCmd);
-    Assert(RT_SUCCESS(rc));
+    /* Don't assert here, otherwise NT4 will be unhappy */
     if(RT_SUCCESS(rc))
     {
         for(;pCmd; pCmd = pNextCmd)
