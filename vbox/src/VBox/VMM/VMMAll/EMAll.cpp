@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 24764 2009-11-18 16:30:12Z vboxsync $ */
+/* $Id: EMAll.cpp 24953 2009-11-25 14:00:05Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2944,6 +2944,10 @@ VMMDECL(int) EMInterpretRdmsr(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
         val = CPUMGetGuestMsr(pVCpu, MSR_K8_TSC_AUX);
         break;
 
+    case MSR_IA32_PERF_STATUS:
+        val = CPUMGetGuestMsr(pVCpu, MSR_IA32_PERF_STATUS);
+        break;
+        
 #if 0 /*def IN_RING0 */
     case MSR_IA32_PLATFORM_ID:
     case MSR_IA32_BIOS_SIGN_ID:
