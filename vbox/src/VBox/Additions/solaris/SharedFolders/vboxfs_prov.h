@@ -1,10 +1,10 @@
-/* $Id: vboxfs_prov.h 25878 2010-01-18 11:12:49Z vboxsync $ */
+/* $Id: vboxfs_prov.h 25879 2010-01-18 11:14:49Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider implementation.
  */
 
 /*
- * Copyright (C) 2010 Sun Microsystems, Inc.
+ * Copyright (C) 2009-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
