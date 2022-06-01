@@ -1,4 +1,4 @@
-/* $Id: DBGFSym.cpp 24009 2009-10-23 08:25:56Z vboxsync $ */
+/* $Id: DBGFSym.cpp 25015 2009-11-26 15:27:42Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Symbol Management.
  */
@@ -165,7 +165,7 @@ static int dbgfR3SymbolInsert(PVM pVM, const char *pszName, RTGCPTR Address, siz
                 if (!pName)
                 {
                     /* make new symbol space node. */
-                    PDBGFSYMSPACE pName = (PDBGFSYMSPACE)MMR3HeapAlloc(pVM, MM_TAG_DBGF_SYMBOL, sizeof(*pName) + cchName);
+                    pName = (PDBGFSYMSPACE)MMR3HeapAlloc(pVM, MM_TAG_DBGF_SYMBOL, sizeof(*pName) + cchName);
                     if (pName)
                     {
                         pName->Core.pszString = (char *)memcpy(pName + 1, pszName, cchName);
