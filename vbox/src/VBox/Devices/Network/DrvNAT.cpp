@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 27565 2010-03-21 23:26:10Z vboxsync $ */
+/* $Id: DrvNAT.cpp 27827 2010-03-30 13:54:01Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -60,6 +60,13 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
+
+/**
+ * @todo: This is a bad hack to prevent freezing the guest during high network
+ *        activity. Windows host only. This needs to be fixed properly.
+ */
+#define VBOX_NAT_DELAY_HACK
+
 #define GET_EXTRADATA(pthis, node, name, rc, type, type_name, var)                                  \
 do {                                                                                                \
     (rc) = CFGMR3Query ## type((node), name, &(var));                                               \
