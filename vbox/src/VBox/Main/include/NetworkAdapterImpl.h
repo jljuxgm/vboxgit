@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 27857 2010-03-31 09:02:32Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 28106 2010-04-08 16:45:59Z vboxsync $ */
 
 /** @file
  *
@@ -63,6 +63,7 @@ public:
         Bstr mHostInterface;
         Bstr mInternalNetwork;
         Bstr mNATNetwork;
+        ULONG mBootPriority;
     };
 
     VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (NetworkAdapter)
@@ -112,6 +113,8 @@ public:
     STDMETHOD(COMGETTER(TraceFile)) (BSTR *aTraceFile);
     STDMETHOD(COMSETTER(TraceFile)) (IN_BSTR aTraceFile);
     STDMETHOD(COMGETTER(NatDriver)) (INATEngine **aNatDriver);
+    STDMETHOD(COMGETTER(BootPriority)) (ULONG *aBootPriority);
+    STDMETHOD(COMSETTER(BootPriority)) (ULONG aBootPriority);
 
     // INetworkAdapter methods
     STDMETHOD(AttachToNAT)();
