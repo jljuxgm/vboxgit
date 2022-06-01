@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 24255 2009-11-02 14:04:08Z vboxsync $ */
+/* $Id: ConsoleImpl.h 24299 2009-11-03 18:45:34Z vboxsync $ */
 
 /** @file
  *
@@ -142,8 +142,8 @@ public:
     STDMETHOD(FindUSBDeviceById) (IN_BSTR aId, IUSBDevice **aDevice);
     STDMETHOD(CreateSharedFolder) (IN_BSTR aName, IN_BSTR aHostPath, BOOL aWritable);
     STDMETHOD(RemoveSharedFolder) (IN_BSTR aName);
-    STDMETHOD(TakeSnapshot) (IN_BSTR aName, IN_BSTR aDescription,
-                             IProgress **aProgress);
+    STDMETHOD(TakeSnapshot)(IN_BSTR aName, IN_BSTR aDescription,
+                            IProgress **aProgress);
     STDMETHOD(DeleteSnapshot)(IN_BSTR aId, IProgress **aProgress);
     STDMETHOD(RestoreSnapshot)(ISnapshot *aSnapshot, IProgress **aProgress);
     STDMETHOD(Teleport)(IN_BSTR aHostname, ULONG aPort, IN_BSTR aPassword, IProgress **aProgress);
