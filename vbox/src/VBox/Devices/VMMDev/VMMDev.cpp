@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 27085 2010-03-05 13:11:33Z vboxsync $ */
+/* $Id: VMMDev.cpp 27542 2010-03-19 15:40:19Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2728,7 +2728,7 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     /* The GUI checks whether this changes in this version of VirtualBox. */
     pThis->mouseCapabilities |= VMMDEV_MOUSE_HOST_RECHECKS_NEEDS_HOST_CURSOR;
 
-    PDMDevHlpSTAMRegisterF(pDevIns, &pThis->StatMemBalloonChunks, STAMTYPE_U32, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES, "Memory balloon size", "/Devices/VMMDev/BalloonChunks");
+    PDMDevHlpSTAMRegisterF(pDevIns, &pThis->StatMemBalloonChunks, STAMTYPE_U32, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT, "Memory balloon size", "/Devices/VMMDev/BalloonChunks");
 
     return rc;
 }
