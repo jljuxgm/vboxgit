@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 23801 2009-10-15 15:00:47Z vboxsync $ */
+/* $Id: CPUM.cpp 24327 2009-11-04 13:19:32Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -291,17 +291,53 @@ static int cpumR3CpuIdInit(PVM pVM)
      * Get the host CPUIDs.
      */
     for (i = 0; i < RT_ELEMENTS(pVM->cpum.s.aGuestCpuIdStd); i++)
+    {
         ASMCpuId_Idx_ECX(i, 0,
                          &pCPUM->aGuestCpuIdStd[i].eax, &pCPUM->aGuestCpuIdStd[i].ebx,
                          &pCPUM->aGuestCpuIdStd[i].ecx, &pCPUM->aGuestCpuIdStd[i].edx);
+
+        /* Load standard CPUID leaf override; we currently don't care if the caller specifies features the host CPU doesn't support. */
+        PCFGMNODE pLeaf = CFGMR3GetChildF(CFGMR3GetRoot(pVM), "CPUM/CPUID/%x", i);
+        if (pLeaf)
+        {
+            CFGMR3QueryU32(pLeaf, "eax", &pCPUM->aGuestCpuIdStd[i].eax);
+            CFGMR3QueryU32(pLeaf, "ebx", &pCPUM->aGuestCpuIdStd[i].ebx);
+            CFGMR3QueryU32(pLeaf, "ecx", &pCPUM->aGuestCpuIdStd[i].ecx);
+            CFGMR3QueryU32(pLeaf, "edx", &pCPUM->aGuestCpuIdStd[i].edx);
+        }
+    }
     for (i = 0; i < RT_ELEMENTS(pCPUM->aGuestCpuIdExt); i++)
+    {
         ASMCpuId(0x80000000 + i,
                  &pCPUM->aGuestCpuIdExt[i].eax, &pCPUM->aGuestCpuIdExt[i].ebx,
                  &pCPUM->aGuestCpuIdExt[i].ecx, &pCPUM->aGuestCpuIdExt[i].edx);
+
+        /* Load extended CPUID leaf override; we currently don't care if the caller specifies features the host CPU doesn't support. */
+        PCFGMNODE pLeaf = CFGMR3GetChildF(CFGMR3GetRoot(pVM), "CPUM/CPUID/%x", i);
+        if (pLeaf)
+        {
+            CFGMR3QueryU32(pLeaf, "eax", &pCPUM->aGuestCpuIdExt[i].eax);
+            CFGMR3QueryU32(pLeaf, "ebx", &pCPUM->aGuestCpuIdExt[i].ebx);
+            CFGMR3QueryU32(pLeaf, "ecx", &pCPUM->aGuestCpuIdExt[i].ecx);
+            CFGMR3QueryU32(pLeaf, "edx", &pCPUM->aGuestCpuIdExt[i].edx);
+        }
+    }
     for (i = 0; i < RT_ELEMENTS(pCPUM->aGuestCpuIdCentaur); i++)
+    {
         ASMCpuId(0xc0000000 + i,
                  &pCPUM->aGuestCpuIdCentaur[i].eax, &pCPUM->aGuestCpuIdCentaur[i].ebx,
                  &pCPUM->aGuestCpuIdCentaur[i].ecx, &pCPUM->aGuestCpuIdCentaur[i].edx);
+
+        /* Load Centaur CPUID leaf override; we currently don't care if the caller specifies features the host CPU doesn't support. */
+        PCFGMNODE pLeaf = CFGMR3GetChildF(CFGMR3GetRoot(pVM), "CPUM/CPUID/%x", i);
+        if (pLeaf)
+        {
+            CFGMR3QueryU32(pLeaf, "eax", &pCPUM->aGuestCpuIdCentaur[i].eax);
+            CFGMR3QueryU32(pLeaf, "ebx", &pCPUM->aGuestCpuIdCentaur[i].ebx);
+            CFGMR3QueryU32(pLeaf, "ecx", &pCPUM->aGuestCpuIdCentaur[i].ecx);
+            CFGMR3QueryU32(pLeaf, "edx", &pCPUM->aGuestCpuIdCentaur[i].edx);
+        }
+    }
 
     /*
      * Only report features we can support.
