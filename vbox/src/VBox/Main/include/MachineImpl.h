@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 28669 2010-04-23 17:53:01Z vboxsync $ */
+/* $Id: MachineImpl.h 28774 2010-04-26 17:23:41Z vboxsync $ */
 
 /** @file
  *
@@ -602,7 +602,8 @@ public:
         IsModified_AudioAdapter         = 0x0080,
         IsModified_USB                  = 0x0100,
         IsModified_BIOS                 = 0x0200,
-        IsModified_SharedFolders        = 0x0400
+        IsModified_SharedFolders        = 0x0400,
+        IsModified_Snapshots            = 0x0800
     };
 
     void setModified(uint32_t fl);
