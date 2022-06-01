@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: VFSExplorerImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
 
 /** @file
  *
@@ -25,8 +25,6 @@
 #define ____H_VFSEXPLORERIMPL
 
 #include "VirtualBoxBase.h"
-
-class VirtualBox;
 
 class ATL_NO_VTABLE VFSExplorer :
     public VirtualBoxBase,

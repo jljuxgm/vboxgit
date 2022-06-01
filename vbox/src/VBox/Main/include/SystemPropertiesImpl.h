@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 24346 2009-11-04 17:04:00Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
 
 /** @file
  *
@@ -31,7 +31,6 @@
 
 #include <list>
 
-class VirtualBox;
 namespace settings
 {
     struct SystemProperties;

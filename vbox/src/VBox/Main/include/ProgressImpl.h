@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 25859 2010-01-15 13:27:16Z vboxsync $ */
+/* $Id: ProgressImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -28,8 +28,6 @@
 #include <VBox/com/SupportErrorInfo.h>
 
 #include <iprt/semaphore.h>
-
-class VirtualBox;
 
 ////////////////////////////////////////////////////////////////////////////////
 

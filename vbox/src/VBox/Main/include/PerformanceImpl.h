@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: PerformanceImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
 
 /** @file
  *
@@ -47,7 +47,6 @@ namespace pm
 /* Each second we obtain new CPU load stats. */
 #define VBOX_USAGE_SAMPLER_MIN_INTERVAL 1000
 
-class Machine;
 class HostUSBDevice;
 
 class ATL_NO_VTABLE PerformanceMetric :

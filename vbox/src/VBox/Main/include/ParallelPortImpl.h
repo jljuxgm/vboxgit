@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 25203 2009-12-04 19:30:50Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -24,8 +24,6 @@
 #define ____H_PARALLELPORTIMPL
 
 #include "VirtualBoxBase.h"
-
-class Machine;
 
 namespace settings
 {

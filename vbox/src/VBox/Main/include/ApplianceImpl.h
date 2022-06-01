@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 24526 2009-11-09 19:34:28Z vboxsync $ */
+/* $Id: ApplianceImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
 
 /** @file
  *
@@ -30,7 +30,6 @@
 #include "ovfreader.h"
 
 /* VBox forward declarations */
-class VirtualBox;
 class Progress;
 
 class ATL_NO_VTABLE Appliance :

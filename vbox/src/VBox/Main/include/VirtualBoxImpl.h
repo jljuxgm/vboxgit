@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 25903 2010-01-18 18:15:43Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
 
 /** @file
  *
@@ -36,9 +36,7 @@ namespace com
     class EventQueue;
 }
 
-class Machine;
 class SessionMachine;
-class Medium;
 class GuestOSType;
 class SharedFolder;
 class Progress;

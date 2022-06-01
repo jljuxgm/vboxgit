@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 25310 2009-12-10 17:06:44Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
 
 /** @file
  *
@@ -26,7 +26,6 @@
 
 #include "VirtualBoxBase.h"
 
-class Machine;
 class GuestOSType;
 
 namespace settings

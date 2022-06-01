@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 25198 2009-12-04 17:53:00Z vboxsync $ */
+/* $Id: StorageControllerImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
 
 /** @file
  *
@@ -25,8 +25,6 @@
 #define ____H_STORAGECONTROLLERIMPL
 
 #include "VirtualBoxBase.h"
-
-class Machine;
 
 class ATL_NO_VTABLE StorageController :
     public VirtualBoxBase,
