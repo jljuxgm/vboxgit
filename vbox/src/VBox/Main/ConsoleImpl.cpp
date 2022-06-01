@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 25346 2009-12-13 16:21:19Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 25574 2009-12-22 16:32:56Z vboxsync $ */
 
 /** @file
  *
@@ -804,6 +804,26 @@ int Console::VRDPClientLogon(uint32_t u32ClientId, const char *pszUser, const ch
 #ifdef VBOX_WITH_GUEST_PROPS
     updateGuestPropertiesVRDPLogon(u32ClientId, pszUser, pszDomain);
 #endif /* VBOX_WITH_GUEST_PROPS */
+
+    /* Check if the successfully verified credentials are to be sent to the guest. */
+    BOOL fProvideGuestCredentials = FALSE;
+
+    Bstr value;
+    hrc = mMachine->GetExtraData(Bstr("VRDP/ProvideGuestCredentials"), value.asOutParam());
+    if (SUCCEEDED(hrc) && value == "1")
+    {
+        fProvideGuestCredentials = TRUE;
+    }
+
+    if (   fProvideGuestCredentials
+        && mVMMDev)
+    {
+        uint32_t u32GuestFlags = VMMDEV_SETCREDENTIALS_GUESTLOGON;
+
+        int rc = mVMMDev->getVMMDevPort()->pfnSetCredentials(mVMMDev->getVMMDevPort(),
+                     pszUser, pszPassword, pszDomain, u32GuestFlags);
+        AssertRC(rc);
+    }
 
     return VINF_SUCCESS;
 }
