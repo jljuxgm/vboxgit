@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 24858 2009-11-23 09:56:20Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 24864 2009-11-23 12:20:41Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -236,7 +236,7 @@ void printUsage(USAGECATEGORY u64Cmd)
         RTPrintf("                            [--usb on|off]\n"
                  "                            [--usbehci on|off]\n"
                  "                            [--snapshotfolder default|<path>]\n"
-                 "                            [--teleporterenabled on|off]\n"
+                 "                            [--teleporter on|off]\n"
                  "                            [--teleporterport <port>]\n"
                  "                            [--teleporteraddress <address|empty>\n"
                  "                            [--teleporterpassword <password>]\n"
