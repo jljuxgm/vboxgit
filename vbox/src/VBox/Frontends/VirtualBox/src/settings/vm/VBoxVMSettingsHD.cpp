@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsHD.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
+/* $Id: VBoxVMSettingsHD.cpp 28686 2010-04-24 15:04:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -2508,6 +2508,9 @@ void VBoxVMSettingsHD::addControllerWrapper (const QString &aName, KStorageBus a
             break;
         case KStorageBus_SCSI:
             Assert (mStorageModel->data (index, StorageModel::R_IsMoreSCSIControllersPossible).toBool());
+            break;
+        case KStorageBus_SAS:
+            Assert (mStorageModel->data (index, StorageModel::R_IsMoreSASControllersPossible).toBool());
             break;
         case KStorageBus_Floppy:
             Assert (mStorageModel->data (index, StorageModel::R_IsMoreFloppyControllersPossible).toBool());
