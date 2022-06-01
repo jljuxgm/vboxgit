@@ -1,8 +1,9 @@
-/* $Id: HostHardwareLinux.h 23522 2009-10-02 23:27:33Z vboxsync $ */
+/* $Id: HostHardwareLinux.h 25349 2009-12-13 17:23:32Z vboxsync $ */
 /** @file
- * Classes for handling hardware detection under Linux.  Please feel free to
- * expand these to work for other systems (Solaris!) or to add new ones for
- * other systems.
+ * Classes for handling hardware detection under Linux.
+ *
+ * Please feel free to expand these to work for other systems (Solaris!) or to
+ * add new ones for other systems.
  */
 
 /*
@@ -25,7 +26,7 @@
 # define ____H_HOSTHARDWARELINUX
 
 #include <iprt/err.h>
-#include <iprt/ministring_cpp.h>
+#include <iprt/cpp/ministring.h>
 #include <vector>
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: string.h 25346 2009-12-13 16:21:19Z vboxsync $ */
+/* $Id: string.h 25349 2009-12-13 17:23:32Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -50,7 +50,7 @@
 
 #include <iprt/cpp/utils.h>
 #include <iprt/alloc.h>
-#include <iprt/ministring_cpp.h>
+#include <iprt/cpp/ministring.h>
 
 namespace com
 {
