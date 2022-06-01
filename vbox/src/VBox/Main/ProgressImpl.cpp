@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -1637,7 +1637,7 @@ STDMETHODIMP CombinedProgress::WaitForOperationCompletion (ULONG aOperation, LON
 
             completedOps += opCount;
             progress ++;
-            ComAssertRet (progress < mProgresses.size(), E_FAIL);
+            ComAssertRet(progress < mProgresses.size(), E_FAIL);
         }
         while (1);
 
@@ -1724,7 +1724,7 @@ HRESULT CombinedProgress::checkProgress()
     AssertReturn(mProgress < mProgresses.size(), E_FAIL);
 
     ComPtr<IProgress> progress = mProgresses[mProgress];
-    ComAssertRet (!progress.isNull(), E_FAIL);
+    ComAssertRet(!progress.isNull(), E_FAIL);
 
     HRESULT rc = S_OK;
     BOOL fCompleted = FALSE;

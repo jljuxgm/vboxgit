@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -578,7 +578,7 @@ HRESULT Display::init (Console *aParent)
 {
     LogFlowThisFunc(("aParent=%p\n", aParent));
 
-    ComAssertRet (aParent, E_INVALIDARG);
+    ComAssertRet(aParent, E_INVALIDARG);
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan(this);

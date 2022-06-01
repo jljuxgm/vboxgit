@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
 
 /** @file
  *
@@ -70,7 +70,7 @@ HRESULT SystemProperties::init (VirtualBox *aParent)
 {
     LogFlowThisFunc(("aParent=%p\n", aParent));
 
-    ComAssertRet (aParent, E_FAIL);
+    ComAssertRet(aParent, E_FAIL);
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan(this);

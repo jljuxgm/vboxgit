@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
 
 /** @file
  *
@@ -54,45 +54,45 @@ HRESULT OUSBDevice::init(IUSBDevice *aUSBDevice)
 {
     LogFlowThisFunc(("aUSBDevice=%p\n", aUSBDevice));
 
-    ComAssertRet (aUSBDevice, E_INVALIDARG);
+    ComAssertRet(aUSBDevice, E_INVALIDARG);
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan(this);
     AssertReturn(autoInitSpan.isOk(), E_FAIL);
 
     HRESULT hrc = aUSBDevice->COMGETTER(VendorId)(&unconst(mData.vendorId));
-    ComAssertComRCRet (hrc, hrc);
-    ComAssertRet (mData.vendorId, E_INVALIDARG);
+    ComAssertComRCRet(hrc, hrc);
+    ComAssertRet(mData.vendorId, E_INVALIDARG);
 
     hrc = aUSBDevice->COMGETTER(ProductId)(&unconst(mData.productId));
-    ComAssertComRCRet (hrc, hrc);
+    ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(Revision)(&unconst(mData.revision));
-    ComAssertComRCRet (hrc, hrc);
+    ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(Manufacturer)(unconst(mData.manufacturer).asOutParam());
-    ComAssertComRCRet (hrc, hrc);
+    ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(Product)(unconst(mData.product).asOutParam());
-    ComAssertComRCRet (hrc, hrc);
+    ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(SerialNumber)(unconst(mData.serialNumber).asOutParam());
-    ComAssertComRCRet (hrc, hrc);
+    ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(Address)(unconst(mData.address).asOutParam());
-    ComAssertComRCRet (hrc, hrc);
+    ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(Port)(&unconst(mData.port));
-    ComAssertComRCRet (hrc, hrc);
+    ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(Port)(&unconst(mData.version));
-    ComAssertComRCRet (hrc, hrc);
+    ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(Port)(&unconst(mData.portVersion));
-    ComAssertComRCRet (hrc, hrc);
+    ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(Remote)(&unconst(mData.remote));
-    ComAssertComRCRet (hrc, hrc);
+    ComAssertComRCRet(hrc, hrc);
 
     Bstr uuid;
     hrc = aUSBDevice->COMGETTER(Id)(uuid.asOutParam());

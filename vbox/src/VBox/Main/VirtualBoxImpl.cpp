@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -3383,7 +3383,7 @@ HRESULT VirtualBox::saveSettings()
  */
 HRESULT VirtualBox::registerMachine(Machine *aMachine)
 {
-    ComAssertRet (aMachine, E_INVALIDARG);
+    ComAssertRet(aMachine, E_INVALIDARG);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();

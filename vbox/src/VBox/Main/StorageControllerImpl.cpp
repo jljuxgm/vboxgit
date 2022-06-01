@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
 
 /** @file
  *
@@ -198,7 +198,7 @@ HRESULT StorageController::init(Machine *aParent,
     LogFlowThisFunc(("aParent=%p, aThat=%p, aReshare=%RTbool\n",
                       aParent, aThat, aReshare));
 
-    ComAssertRet (aParent && aThat, E_INVALIDARG);
+    ComAssertRet(aParent && aThat, E_INVALIDARG);
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan(this);
@@ -246,7 +246,7 @@ HRESULT StorageController::initCopy(Machine *aParent, StorageController *aThat)
 {
     LogFlowThisFunc(("aParent=%p, aThat=%p\n", aParent, aThat));
 
-    ComAssertRet (aParent && aThat, E_INVALIDARG);
+    ComAssertRet(aParent && aThat, E_INVALIDARG);
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan(this);

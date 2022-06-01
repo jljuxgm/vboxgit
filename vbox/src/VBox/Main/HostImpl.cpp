@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
+/* $Id: HostImpl.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1157,9 +1157,9 @@ STDMETHODIMP Host::CreateUSBDeviceFilter(IN_BSTR aName,
     ComObjPtr<HostUSBDeviceFilter> filter;
     filter.createObject();
     HRESULT rc = filter->init(this, aName);
-    ComAssertComRCRet (rc, rc);
+    ComAssertComRCRet(rc, rc);
     rc = filter.queryInterfaceTo(aFilter);
-    AssertComRCReturn (rc, rc);
+    AssertComRCReturn(rc, rc);
     return S_OK;
 #else
     /* Note: The GUI depends on this method returning E_NOTIMPL with no
