@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 26516 2010-02-14 21:37:33Z vboxsync $ */
+/* $Id: scm.cpp 26521 2010-02-15 01:49:44Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2539,6 +2539,8 @@ static bool rewrite_ForceEol(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTREAM pOut
     }
     if (fModified)
         ScmVerbose(pState, 2, " * Converted EOL markers\n");
+
+    /** @todo also check the subversion svn:eol-style state! */
     return fModified;
 }
 
@@ -3091,6 +3093,8 @@ static int scmProcessSomething(const char *pszSomething, PSCMSETTINGS pSettingsS
     int rc = RTPathAbs(pszSomething, szBuf, sizeof(szBuf));
     if (RT_SUCCESS(rc))
     {
+        RTPathChangeToUnixSlashes(szBuf, false /*fForce*/);
+
         PSCMSETTINGS pSettings;
         rc = scmSettingsCreateForPath(&pSettings, &pSettingsStack->Base, szBuf);
         if (RT_SUCCESS(rc))
@@ -3240,7 +3244,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 26516 $";
+                static const char s_szRev[] = "$Revision: 26521 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
