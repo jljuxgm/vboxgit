@@ -1,4 +1,4 @@
-/* $Id: service.cpp 28557 2010-04-21 11:18:32Z vboxsync $ */
+/* $Id: service.cpp 28625 2010-04-23 07:57:16Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -530,24 +530,26 @@ int Service::processCmd(uint32_t eFunction, uint32_t cParms, VBOXHGCMSVCPARM paP
 {
     int rc = VINF_SUCCESS;
 
-    HostCmd newCmd;
-    rc = paramBufferAllocate(&newCmd.parmBuf, eFunction, cParms, paParms);
-    if (RT_SUCCESS(rc))
-    {
-        mHostCmds.push_back(newCmd);
-
-        /* Limit list size by deleting oldest element. */
-        if (mHostCmds.size() > 256) /** @todo Use a define! */
-            mHostCmds.pop_front();
-    }
-
     /* Some lazy guests to wake up which can process this command right now? */
     if (!mGuestWaiters.empty())
     {
-        GuestCall curCall = mGuestWaiters.front();
-        rc = notifyGuest(&curCall, eFunction, cParms, paParms);
-        mGuestWaiters.pop_front();
+        HostCmd newCmd;
+        rc = paramBufferAllocate(&newCmd.parmBuf, eFunction, cParms, paParms);
+        if (RT_SUCCESS(rc))
+        {
+            mHostCmds.push_back(newCmd);
+    
+            /* Limit list size by deleting oldest element. */
+            if (mHostCmds.size() > 256) /** @todo Use a define! */
+                mHostCmds.pop_front();
+
+            GuestCall curCall = mGuestWaiters.front();
+            rc = notifyGuest(&curCall, eFunction, cParms, paParms);
+            mGuestWaiters.pop_front();
+        }
     }
+    else /* No guest waiting, don't bother ... */
+        rc = VERR_TIMEOUT;
     return rc;
 }
 
