@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 28734 2010-04-26 09:03:55Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1878,7 +1878,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
         if (details == VMINFO_MACHINEREADABLE)
             RTPrintf("GuestMemoryBalloon=%d\n", guestVal);
         else
-            RTPrintf("Configured memory balloon size:      %d MB\n", guestVal);
+            RTPrintf("Configured memory balloon size:      %d MiB\n", guestVal);
     }
     if (details != VMINFO_MACHINEREADABLE)
         RTPrintf("\n");
