@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceExec.cpp 25709 2010-01-11 10:20:40Z vboxsync $ */
+/* $Id: VBoxServiceExec.cpp 25804 2010-01-13 14:24:12Z vboxsync $ */
 /** @file
  * VBoxServiceExec - Host-driven Command Execution.
  */
@@ -148,6 +148,8 @@ static int VBoxServiceExecReadHostProp(const char *pszPropName, char **ppszValue
             if (++s_cBitched < 10)
                 VBoxServiceError("Exec: Flag validation failed for \"%s\": %Rrc; flags=\"%s\"\n",
                                  pszPropName, rc, pszFlags);
+            RTStrFree(*ppszValue);
+            *ppszValue = NULL;
         }
         else
         {
@@ -376,12 +378,12 @@ DECLCALLBACK(int) VBoxServiceExecWorker(bool volatile *pfShutdown)
                         }
                         rc = VERR_FILE_NOT_FOUND;
                     }
-                    RTStrFree(pszSysprepArgs);
                 }
-#ifdef SYSPREP_WITH_CMD
-                RTStrFree(pszSysprepExec);
-#endif
+                RTStrFree(pszSysprepArgs);
             }
+#ifdef SYSPREP_WITH_CMD
+            RTStrFree(pszSysprepExec);
+#endif
 
             /*
              * Only continue polling if the guest property value is empty/missing
