@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28297 2010-04-14 12:17:11Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28300 2010-04-14 12:22:55Z vboxsync $ */
 
 /** @file
  *
@@ -704,7 +704,7 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
 
                 /* Did we get some status? */
                 PHOSTEXECCALLBACKDATA pData = (HOSTEXECCALLBACKDATA*)it->pvData;
-                Assert(it->cbData, sizeof(HOSTEXECCALLBACKDATA));
+                Assert(it->cbData == sizeof(HOSTEXECCALLBACKDATA));
                 AssertPtr(pData);
                 if (it->bCalled)
                 {
