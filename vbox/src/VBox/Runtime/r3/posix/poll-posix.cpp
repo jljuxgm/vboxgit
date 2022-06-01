@@ -1,4 +1,4 @@
-/* $Id: poll-posix.cpp 26801 2010-02-25 15:44:22Z vboxsync $ */
+/* $Id: poll-posix.cpp 26805 2010-02-25 16:31:40Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, POSIX Implementation.
  */
@@ -473,7 +473,7 @@ RTDECL(uint32_t) RTPollSetCount(RTPOLLSET hPollSet)
     /*
      * Set the busy flag and do the job.
      */
-    AssertReturn(ASMAtomicCmpXchgBool(&pThis->fBusy, true,  false), VERR_WRONG_ORDER);
+    AssertReturn(ASMAtomicCmpXchgBool(&pThis->fBusy, true,  false), UINT32_MAX);
     uint32_t cHandles = pThis->cHandles;
     ASMAtomicWriteBool(&pThis->fBusy, false);
 
