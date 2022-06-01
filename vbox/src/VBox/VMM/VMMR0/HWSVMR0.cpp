@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 24829 2009-11-20 15:02:10Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 24959 2009-11-25 15:31:10Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1433,6 +1433,29 @@ ResumeExecution:
     SVM_READ_SELREG(ES, es);
     SVM_READ_SELREG(FS, fs);
     SVM_READ_SELREG(GS, gs);
+
+    /* Correct the hidden CS granularity flag.  Haven't seen it being wrong in
+       any other register (yet). */
+    if (   !pCtx->csHid.Attr.n.u1Granularity
+        &&  pCtx->csHid.Attr.n.u1Present
+        &&  pCtx->csHid.u32Limit > UINT32_C(0xffff))
+    {
+        Assert((pCtx->csHid.u32Limit & 0xfff) == 0xfff);
+        pCtx->csHid.Attr.n.u1Granularity = 1;
+    }
+#define SVM_ASSERT_SEL_GRANULARITY(reg) \
+        AssertMsg(!pCtx->reg##Hid.Attr.n.u1Present \
+                  || (   pCtx->reg##Hid.Attr.n.u1Granularity \
+                      ? (pCtx->reg##Hid.u32Limit & 0xfff) == 0xfff \
+                      :  pCtx->reg##Hid.u32Limit <= 0xffff), \
+                  ("%#x\n", pCtx->reg##Hid.u32Limit))
+    SVM_ASSERT_SEL_GRANULARITY(ss);
+    SVM_ASSERT_SEL_GRANULARITY(cs);
+    SVM_ASSERT_SEL_GRANULARITY(ds);
+    SVM_ASSERT_SEL_GRANULARITY(es);
+    SVM_ASSERT_SEL_GRANULARITY(fs);
+    SVM_ASSERT_SEL_GRANULARITY(gs);
+#undef  SVM_ASSERT_SEL_GRANULARITY
 
     /* Remaining guest CPU context: TR, IDTR, GDTR, LDTR; must sync everything otherwise we can get out of sync when jumping to ring 3. */
     SVM_READ_SELREG(LDTR, ldtr);
