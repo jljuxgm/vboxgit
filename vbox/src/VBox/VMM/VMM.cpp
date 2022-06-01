@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 26066 2010-01-27 12:59:32Z vboxsync $ */
+/* $Id: VMM.cpp 26176 2010-02-02 22:20:13Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1936,7 +1936,7 @@ VMMR3DECL(int) VMMR3CallR0(PVM pVM, uint32_t uOperation, uint64_t u64Arg, PSUPVM
         /* Resume R0 */
     }
 
-    AssertLogRelMsgReturn(rc == VINF_SUCCESS || VBOX_FAILURE(rc),
+    AssertLogRelMsgReturn(rc == VINF_SUCCESS || RT_FAILURE(rc),
                           ("uOperation=%u rc=%Rrc\n", uOperation, rc),
                           VERR_INTERNAL_ERROR);
     return rc;

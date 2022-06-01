@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 26044 2010-01-26 12:21:34Z vboxsync $ */
+/* $Id: HostImpl.cpp 26176 2010-02-02 22:20:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -310,7 +310,7 @@ HRESULT Host::init(VirtualBox *aParent)
         uint32_t u32Caps = 0;
 
         int rc = SUPR3QueryVTCaps(&u32Caps);
-        if (VBOX_SUCCESS(rc))
+        if (RT_SUCCESS(rc))
         {
             if (u32Caps & SUPVTCAPS_NESTED_PAGING)
                 m->fNestedPagingSupported = true;
