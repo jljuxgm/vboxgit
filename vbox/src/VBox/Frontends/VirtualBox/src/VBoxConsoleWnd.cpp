@@ -1,3 +1,4 @@
+/* $Id: VBoxConsoleWnd.cpp 27096 2010-03-05 14:35:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -349,6 +350,9 @@ VBoxConsoleWnd::VBoxConsoleWnd (VBoxConsoleWnd **aSelf, QWidget* aParent, Qt::Wi
     , mIsWaitingModeResize (false)
     , mWasMax (false)
 {
+#ifdef DEBUG_poetzsch
+    printf("Old code path\n");
+#endif /* DEBUG_poetzsch */
     if (aSelf)
         *aSelf = this;
 
@@ -2146,9 +2150,7 @@ void VBoxConsoleWnd::vmTakeSnapshot()
 
 void VBoxConsoleWnd::vmShowInfoDialog()
 {
-#ifndef VBOX_WITH_NEW_RUNTIME_CORE
     VBoxVMInformationDlg::createInformationDlg (mSession, mConsole);
-#endif
 }
 
 void VBoxConsoleWnd::vmReset()
@@ -3936,3 +3938,4 @@ void VBoxSFDialog::showEvent (QShowEvent *aEvent)
 }
 
 #include "VBoxConsoleWnd.moc"
+

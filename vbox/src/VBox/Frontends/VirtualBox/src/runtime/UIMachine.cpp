@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 26962 2010-03-02 17:16:38Z vboxsync $ */
+/* $Id: UIMachine.cpp 27096 2010-03-05 14:35:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -238,6 +238,9 @@ UIMachine::UIMachine(UIMachine **ppSelf, const CSession &session)
     , m_pSession(new UISession(this, m_session))
     , m_pVisualState(0)
 {
+#ifdef DEBUG_poetzsch
+    printf("New code path\n");
+#endif /* DEBUG_poetzsch */
     /* Preventing application from closing in case of window(s) closed: */
     qApp->setQuitOnLastWindowClosed(false);
 
