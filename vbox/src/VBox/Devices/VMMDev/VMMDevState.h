@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 24076 2009-10-26 13:39:50Z vboxsync $ */
+/* $Id: VMMDevState.h 25848 2010-01-14 22:12:21Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -197,6 +197,15 @@ typedef struct VMMDevState
         /** Partner of ILeds. */
         R3PTRTYPE(PPDMILEDCONNECTORS)       pLedsConnector;
     } SharedFolders;
+
+    /** FLag whether CPU hotplug events are monitored */
+    bool                 fCpuHotPlugEventsEnabled;
+    /** CPU hotplug event */
+    VMMDevCpuEventType   enmCpuHotPlugEvent;
+    /** Core id of the CPU to change */
+    uint32_t             idCpuCore;
+    /** Package id of the CPU to changhe */
+    uint32_t             idCpuPackage;
 } VMMDevState;
 AssertCompileMemberAlignment(VMMDevState, CritSect, 8);
 
