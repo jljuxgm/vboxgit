@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileFailsafe.cpp 23978 2009-10-22 13:15:35Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileFailsafe.cpp 24121 2009-10-28 01:48:25Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Failsafe File I/O manager.
@@ -154,6 +154,13 @@ int pdmacFileAioMgrFailsafe(RTTHREAD ThreadSelf, void *pvUser)
                     if (pAioMgr->pEndpointsHead)
                         pAioMgr->pEndpointsHead->AioMgr.pEndpointPrev = pEndpointNew;
                     pAioMgr->pEndpointsHead = pEndpointNew;
+
+                    /*
+                     * Process the task list the first time. There might be pending requests
+                     * if the endpoint was migrated from another endpoint.
+                     */
+                    rc = pdmacFileAioMgrFailsafeProcessEndpoint(pEndpointNew);
+                    AssertRC(rc);
                     break;
                 }
                 case PDMACEPFILEAIOMGRBLOCKINGEVENT_REMOVE_ENDPOINT:
