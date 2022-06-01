@@ -1,4 +1,4 @@
-# $Id: VBoxPkgX64.dsc 26441 2010-02-11 16:20:14Z vboxsync $
+# $Id: VBoxPkgX64.dsc 26451 2010-02-11 18:40:00Z vboxsync $
 
 #
 # Copyright (C) 2009-2010 Sun Microsystems, Inc.
@@ -354,8 +354,8 @@
   VBoxPkg/VBoxVgaMiniPortDxe/VBoxVgaMiniPortDxe.inf
   VBoxPkg/VBoxVgaDxe/VBoxVgaDxe.inf
   VBoxPkg/VBoxSysTables/VBoxSysTables.inf
+  VBoxPkg/VBoxAppleSim/VBoxAppleSim.inf
   VBoxPkg/VBoxConsoleDxe/VBoxConsoleDxe.inf
-  #VBoxPkg/AcpiTables/AcpiTables.inf
   # VBOX end
 
   #
