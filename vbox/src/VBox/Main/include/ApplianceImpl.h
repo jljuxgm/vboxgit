@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 28165 2010-04-11 19:15:06Z vboxsync $ */
+/* $Id: ApplianceImpl.h 28596 2010-04-22 14:02:59Z vboxsync $ */
 
 /** @file
  *
@@ -259,8 +259,8 @@ public:
 
     void addEntry(VirtualSystemDescriptionType_T aType,
                   const Utf8Str &strRef,
-                  const Utf8Str &aOrigValue,
-                  const Utf8Str &aAutoValue,
+                  const Utf8Str &aOvfValue,
+                  const Utf8Str &aVboxValue,
                   uint32_t ulSizeMB = 0,
                   const Utf8Str &strExtraConfig = "");
 
