@@ -1,6 +1,6 @@
 #! /bin/sh
 # Sun VirtualBox
-# Linux Additions X11 setup init script ($Revision: 27344 $)
+# Linux Additions X11 setup init script ($Revision: 27479 $)
 #
 
 #
@@ -474,6 +474,7 @@ EOF
                 # Delete the hal cache so that it notices our fdi file
                 rm -r /var/cache/hald/fdi-cache 2> /dev/null
             fi
+        test -n "$udevmouse" &&
             if [ -d /etc/udev/rules.d ]
             then
                 udev_call=""
