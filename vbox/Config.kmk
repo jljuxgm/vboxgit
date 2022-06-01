@@ -1,4 +1,4 @@
-# $Id: Config.kmk 25946 2010-01-20 23:52:24Z vboxsync $
+# $Id: Config.kmk 25948 2010-01-21 08:22:32Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -552,9 +552,10 @@ if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
 endif
 ## @}
 
-## @todo why is this stuff up here? It doesn't have to be (=?), but if it should be here then use := assignment!
-# Strip binaries of release and profile builds
-VBOX_DO_STRIP = $(if $(filter release profile,$(KBUILD_TYPE)),1,)
+# Strip binaries of release and profile builds before packing them into the installer
+# archive. When building .deb/.rpms, don't strip the symbols as they are required for
+# the debug packages containing symbols for gdb located in /usr/lib/debug.
+VBOX_DO_STRIP := $(if $(filter release profile,$(KBUILD_TYPE)),1,)
 # Strip R0/GC modules (current requirement for our loader)
 # TODO: This shouldn't be a requirement any longer. FIXME XXX
 VBOX_DO_STRIP_MODULES = 1
@@ -3943,7 +3944,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25946 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25948 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
