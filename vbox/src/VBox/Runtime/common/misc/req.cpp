@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 17451 2007-01-15 14:08:28Z bird $ */
+/* $Id: req.cpp 26562 2010-02-16 01:05:49Z vboxsync $ */
 /** @file
  * IPRT - Request packets
  */
