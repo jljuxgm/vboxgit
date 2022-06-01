@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: MachineImpl.cpp 28835 2010-04-27 14:46:23Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -7688,7 +7688,9 @@ void Machine::copyMachineDataToSettings(settings::MachineConfigFile &config)
          || mData->mMachineState == MachineState_Restoring
             // when deleting a snapshot we may or may not have a saved state in the current state,
             // so let's not assert here please
-         || (    (mData->mMachineState == MachineState_DeletingSnapshot)
+         || (    (   mData->mMachineState == MachineState_DeletingSnapshot
+                  || mData->mMachineState == MachineState_DeletingSnapshotOnline
+                  || mData->mMachineState == MachineState_DeletingSnapshotPaused)
               && (!mSSData->mStateFilePath.isEmpty())
             )
         )
@@ -8461,6 +8463,8 @@ HRESULT Machine::deleteImplicitDiffs(bool *pfNeedsSaveSettings)
              && oldState != MachineState_LiveSnapshotting
              && oldState != MachineState_RestoringSnapshot
              && oldState != MachineState_DeletingSnapshot
+             && oldState != MachineState_DeletingSnapshotOnline
+             && oldState != MachineState_DeletingSnapshotPaused
            )
             setMachineState(MachineState_SettingUp);
 

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: MediumImpl.h 28835 2010-04-27 14:46:23Z vboxsync $ */
 
 /** @file
  *
@@ -90,6 +90,7 @@ public:
     void uninit();
 
     void deparent();
+    void setParent(const ComObjPtr<Medium> &pParent);
 
     // IMedium properties
     STDMETHOD(COMGETTER(Id))(BSTR *aId);
@@ -155,6 +156,7 @@ public:
     MediumState_T getState() const;
     const Utf8Str& getLocation() const;
     const Utf8Str& getLocationFull() const;
+    const Utf8Str& getFormat() const;
     uint64_t getSize() const;
     MediumType_T getType() const;
     Utf8Str getName();

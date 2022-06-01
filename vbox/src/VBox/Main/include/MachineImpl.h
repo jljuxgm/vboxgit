@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: MachineImpl.h 28835 2010-04-27 14:46:23Z vboxsync $ */
 
 /** @file
  *
@@ -910,6 +910,11 @@ public:
     STDMETHOD(EndTakingSnapshot)(BOOL aSuccess);
     STDMETHOD(DeleteSnapshot)(IConsole *aInitiator, IN_BSTR aId,
                               MachineState_T *aMachineState, IProgress **aProgress);
+    STDMETHOD(FinishOnlineMergeMedium)(IMediumAttachment *aMediumAttachment,
+                                       IMedium *aSource, IMedium *aTarget,
+                                       BOOL fMergeForward,
+                                       IMedium *pParentForTarget,
+                                       ComSafeArrayIn(IMedium *, aChildrenToReparent));
     STDMETHOD(RestoreSnapshot)(IConsole *aInitiator,
                                ISnapshot *aSnapshot,
                                MachineState_T *aMachineState,
@@ -1008,6 +1013,15 @@ private:
                                     MediumLockList *aMediumLockList,
                                     const Guid &aMediumId,
                                     const Guid &aSnapshotId);
+    HRESULT onlineMergeMedium(const ComObjPtr<MediumAttachment> &aMediumAttachment,
+                              const ComObjPtr<Medium> &aSource,
+                              const ComObjPtr<Medium> &aTarget,
+                              bool fMergeForward,
+                              const ComObjPtr<Medium> &pParentForTarget,
+                              const MediaList &aChildrenToReparent,
+                              MediumLockList *aMediumLockList,
+                              ComObjPtr<Progress> &aProgress,
+                              bool *pfNeedsSaveSettings);
 
     HRESULT lockMedia();
     void unlockMedia();
