@@ -1,4 +1,4 @@
-/* $Id: semrw-generic.cpp 25748 2010-01-12 10:27:27Z vboxsync $ */
+/* $Id: semrw-generic.cpp 25793 2010-01-13 03:03:45Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, Generic.
  *
@@ -860,8 +860,8 @@ RTDECL(bool) RTSemRWIsWriteOwner(RTSEMRW hRWSem)
     /*
      * Validate handle.
      */
-    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
-    AssertReturn(pThis->u32Magic == RTSEMRW_MAGIC, VERR_INVALID_HANDLE);
+    AssertPtrReturn(pThis, false);
+    AssertReturn(pThis->u32Magic == RTSEMRW_MAGIC, false);
 
     /*
      * Check ownership.
@@ -881,8 +881,8 @@ RTDECL(uint32_t) RTSemRWGetWriteRecursion(RTSEMRW hRWSem)
     /*
      * Validate handle.
      */
-    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
-    AssertReturn(pThis->u32Magic == RTSEMRW_MAGIC, VERR_INVALID_HANDLE);
+    AssertPtrReturn(pThis, 0);
+    AssertReturn(pThis->u32Magic == RTSEMRW_MAGIC, 0);
 
     /*
      * Return the requested data.
@@ -899,8 +899,8 @@ RTDECL(uint32_t) RTSemRWGetWriterReadRecursion(RTSEMRW hRWSem)
     /*
      * Validate handle.
      */
-    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
-    AssertReturn(pThis->u32Magic == RTSEMRW_MAGIC, VERR_INVALID_HANDLE);
+    AssertPtrReturn(pThis, 0);
+    AssertReturn(pThis->u32Magic == RTSEMRW_MAGIC, 0);
 
     /*
      * Return the requested data.
