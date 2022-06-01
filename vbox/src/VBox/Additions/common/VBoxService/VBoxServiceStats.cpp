@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 28506 2010-04-20 08:36:25Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 28507 2010-04-20 08:43:15Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -282,7 +282,7 @@ static void VBoxServiceVMStatsReport(void)
 
         rc = VbglR3StatReport(&req);
         if (RT_SUCCESS(rc))
-            VBoxServiceVerbose(3, "VBoxStatsReportStatistics: new statistics reported successfully!\n");
+            VBoxServiceVerbose(3, "VBoxStatsReportStatistics: new statistics (CPU %u) reported successfully!\n", i);
         else
             VBoxServiceVerbose(3, "VBoxStatsReportStatistics: DeviceIoControl (stats report) failed with %d\n", GetLastError());
     }
@@ -421,7 +421,7 @@ static void VBoxServiceVMStatsReport(void)
                     fCpuInfoAvail = true;
                     rc = VbglR3StatReport(&req);
                     if (RT_SUCCESS(rc))
-                        VBoxServiceVerbose(3, "VBoxStatsReportStatistics: new statistics reported successfully!\n");
+                        VBoxServiceVerbose(3, "VBoxStatsReportStatistics: new statistics (CPU %u) reported successfully!\n", u32CpuId);
                     else
                         VBoxServiceVerbose(3, "VBoxStatsReportStatistics: stats report failed with rc=%Rrc\n", rc);
                 }
@@ -531,6 +531,7 @@ static void VBoxServiceVMStatsReport(void)
         RT_ZERO(StatCPU);
         kstat_t *pStatNode = NULL;
         uint32_t cCPUs = 0;
+        bool fCpuInfoAvail = false;
         for (pStatNode = pStatKern->kc_chain; pStatNode != NULL; pStatNode = pStatNode->ks_next)
         {
             if (!strcmp(pStatNode->ks_module, "cpu_stat"))
@@ -561,7 +562,13 @@ static void VBoxServiceVMStatsReport(void)
                 req.guestStats.u32StatCaps |= VBOX_GUEST_STAT_CPU_LOAD_IDLE \
                                            |  VBOX_GUEST_STAT_CPU_LOAD_KERNEL \
                                            |  VBOX_GUEST_STAT_CPU_LOAD_USER;
+                fCpuInfoAvail = true;
 
+                rc = VbglR3StatReport(&req);
+                if (RT_SUCCESS(rc))
+                    VBoxServiceVerbose(3, "VBoxStatsReportStatistics: new statistics (CPU %u) reported successfully!\n", cCpus);
+                else
+                    VBoxServiceVerbose(3, "VBoxStatsReportStatistics: stats report failed with rc=%Rrc\n", rc);
                 cCPUs++;
             }
         }
@@ -569,11 +576,15 @@ static void VBoxServiceVMStatsReport(void)
         /*
          * Report whatever statistics were collected.
          */
-        rc = VbglR3StatReport(&req);
-        if (RT_SUCCESS(rc))
-            VBoxServiceVerbose(3, "VBoxStatsReportStatistics: new statistics reported successfully!\n");
-        else
-            VBoxServiceVerbose(3, "VBoxStatsReportStatistics: stats report failed with rc=%Rrc\n", rc);
+        if (!fCpuInfoAvail)
+        {
+            VBoxServiceVerbose(3, "VBoxStatsReportStatistics: CPU info not available!\n");
+            rc = VbglR3StatReport(&req);
+            if (RT_SUCCESS(rc))
+                VBoxServiceVerbose(3, "VBoxStatsReportStatistics: new statistics reported successfully!\n");
+            else
+                VBoxServiceVerbose(3, "VBoxStatsReportStatistics: stats report failed with rc=%Rrc\n", rc);
+        }
 
         kstat_close(pStatKern);
     }
