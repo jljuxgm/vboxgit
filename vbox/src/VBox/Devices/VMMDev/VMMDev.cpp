@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 26160 2010-02-02 18:23:29Z vboxsync $ */
+/* $Id: VMMDev.cpp 26164 2010-02-02 19:44:51Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2742,7 +2742,7 @@ extern "C" const PDMDEVREG g_DeviceVMMDev =
     /* pszDescription */
     "VirtualBox VMM Device\n",
     /* fFlags */
-    PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_32,
+    PDM_DEVREG_FLAGS_HOST_BITS_DEFAULT | PDM_DEVREG_FLAGS_GUEST_BITS_DEFAULT,
     /* fClass */
     PDM_DEVREG_CLASS_VMM_DEV,
     /* cMaxInstances */
