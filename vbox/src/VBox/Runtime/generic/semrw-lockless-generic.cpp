@@ -1,4 +1,4 @@
-/* $Id: semrw-lockless-generic.cpp 25707 2010-01-11 10:02:03Z vboxsync $ */
+/* $Id: semrw-lockless-generic.cpp 25710 2010-01-11 10:46:24Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSemXRoads, generic implementation.
  */
@@ -146,11 +146,11 @@ RTDECL(int) RTSemRWCreateEx(PRTSEMRW phRWSem, uint32_t fFlags,
             bool const fLVEnabled = !(fFlags & RTSEMRW_FLAGS_NO_LOCK_VAL);
             va_list va;
             va_start(va, pszNameFmt);
-            RTLockValidatorRecExclInit(&pThis->ValidatorWrite, hClass, uSubClass, pThis, fLVEnabled, pszNameFmt);
+            RTLockValidatorRecExclInitV(&pThis->ValidatorWrite, hClass, uSubClass, pThis, fLVEnabled, pszNameFmt, va);
             va_end(va);
             va_start(va, pszNameFmt);
-            RTLockValidatorRecSharedInit(&pThis->ValidatorRead, hClass, uSubClass, pThis, false /*fSignaller*/,
-                                         fLVEnabled, pszNameFmt);
+            RTLockValidatorRecSharedInitV(&pThis->ValidatorRead, hClass, uSubClass, pThis, false /*fSignaller*/,
+                                          fLVEnabled, pszNameFmt, va);
             va_end(va);
             RTLockValidatorRecMakeSiblings(&pThis->ValidatorWrite.Core, &pThis->ValidatorRead.Core);
 #endif
@@ -236,7 +236,13 @@ static int rtSemRWRequestRead(RTSEMRW hRWSem, unsigned cMillies, bool fInterrupt
     RTTHREAD hThreadSelf = RTThreadSelfAutoAdopt();
     if (cMillies > 0)
     {
-        int rc9 = RTLockValidatorRecSharedCheckOrder(&pThis->ValidatorRead, hThreadSelf, pSrcPos, cMillies);
+        int            rc9;
+        RTNATIVETHREAD hNativeWriter;
+        ASMAtomicUoReadHandle(&pThis->hNativeWriter, &hNativeWriter);
+        if (hNativeWriter != NIL_RTTHREAD && hNativeWriter == RTThreadNativeSelf())
+            rc9 = RTLockValidatorRecExclCheckOrder(&pThis->ValidatorWrite, hThreadSelf, pSrcPos, cMillies);
+        else
+            rc9 = RTLockValidatorRecSharedCheckOrder(&pThis->ValidatorRead, hThreadSelf, pSrcPos, cMillies);
         if (RT_FAILURE(rc9))
             return rc9;
     }
