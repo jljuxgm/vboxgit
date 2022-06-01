@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 27664 2010-03-24 12:05:54Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 27665 2010-03-24 12:33:33Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -549,6 +549,17 @@ static DECLCALLBACK(void) drvscsiDestruct(PPDMDRVINS pDrvIns)
         int rc = RTReqDestroyQueue(pThis->pQueueRequests);
         AssertMsgRC(rc, ("Failed to destroy queue rc=%Rrc\n", rc));
     }
+
+    /* Free the VSCSI device and LUN handle. */
+    VSCSILUN hVScsiLun;
+    int rc = VSCSIDeviceLunDetach(pThis->hVScsiDevice, 0, &hVScsiLun);
+    AssertRC(rc);
+
+    Assert(hVScsiLun == pThis->hVScsiLun);
+    rc = VSCSILunDestroy(hVScsiLun);
+    AssertRC(rc);
+    rc = VSCSIDeviceDestroy(pThis->hVScsiDevice);
+    AssertRC(rc);
 }
 
 /**

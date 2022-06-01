@@ -1,4 +1,4 @@
-/* $Id: VSCSIDevice.cpp 27659 2010-03-24 09:59:12Z vboxsync $ */
+/* $Id: VSCSIDevice.cpp 27665 2010-03-24 12:33:33Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Device handling
  */
@@ -239,7 +239,10 @@ VBOXDDU_DECL(int) VSCSIDeviceLunDetach(VSCSIDEVICE hVScsiDevice, uint32_t iLun,
     AssertReturn(iLun < pVScsiDevice->cLunsMax, VERR_VSCSI_LUN_NOT_ATTACHED);
     AssertPtrReturn(pVScsiDevice->papVScsiLun[iLun], VERR_VSCSI_LUN_NOT_ATTACHED);
 
-    *phVScsiLun = pVScsiDevice->papVScsiLun[iLun];
+    PVSCSILUNINT pVScsiLun = pVScsiDevice->papVScsiLun[iLun];
+
+    pVScsiLun->pVScsiDevice = NULL;
+    *phVScsiLun = pVScsiLun;
     pVScsiDevice->papVScsiLun[iLun] = NULL;
     pVScsiDevice->cLunsAttached--;
 
