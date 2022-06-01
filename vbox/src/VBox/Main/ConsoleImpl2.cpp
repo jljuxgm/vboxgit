@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 24406 2009-11-05 17:20:01Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 24413 2009-11-05 20:43:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -249,7 +249,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     {
         ULONG ulEax, ulEbx, ulEcx, ulEdx;
         hrc = pMachine->GetCpuIdLeaf(leaf, &ulEax, &ulEbx, &ulEcx, &ulEdx);
-        if (SUCCEEDED(rc))
+        if (SUCCEEDED(hrc))
         {
             PCFGMNODE pLeaf;
             rc = CFGMR3InsertNodeF(pRoot, &pLeaf, "CPUM/HostCPUID/%RX32", leaf);    RC_CHECK();
@@ -267,7 +267,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     {
         ULONG ulEax, ulEbx, ulEcx, ulEdx;
         hrc = pMachine->GetCpuIdLeaf(leaf, &ulEax, &ulEbx, &ulEcx, &ulEdx);
-        if (SUCCEEDED(rc))
+        if (SUCCEEDED(hrc))
         {
             PCFGMNODE pLeaf;
             rc = CFGMR3InsertNodeF(pRoot, &pLeaf, "CPUM/HostCPUID/%RX32", leaf);    RC_CHECK();
