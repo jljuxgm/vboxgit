@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 27079 2010-03-05 12:19:45Z vboxsync $
+// $Id: vbox.dsl 27393 2010-03-16 11:29:32Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -700,7 +700,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                     })
                     Method (_STA, 0, NotSerialized)
                     {
-                       Return (0x0f)
+                       Return (URTC)
                     }
                 }
 
