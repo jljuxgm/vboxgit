@@ -1,4 +1,4 @@
-# $Id: Config.kmk 24803 2009-11-19 18:12:11Z vboxsync $
+# $Id: Config.kmk 24943 2009-11-25 11:36:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -363,6 +363,8 @@ VBOX_WITH_HGSMI=1
 if1of ($(KBUILD_TARGET),win linux darwin)
  VBOX_WITH_VIDEOHWACCEL = 1
 endif
+# Enable VBVA lock
+VBOX_WITH_OLD_VBVA_LOCK = 1
 # Enable shared folders
 VBOX_WITH_SHARED_FOLDERS = 1
 # Enable shared clipboard
@@ -3841,7 +3843,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 24803 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 24943 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
