@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 24969 2009-11-25 16:56:40Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 24998 2009-11-26 13:22:55Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -193,8 +193,8 @@ int handleControlVM(HandlerArg *a)
                     && a->argv[i][2] == 0)
                 {
                     uint8_t u8Scancode;
-                    int rc = RTStrToUInt8Ex(a->argv[i], NULL, 16, &u8Scancode);
-                    if (RT_FAILURE (rc))
+                    int irc = RTStrToUInt8Ex(a->argv[i], NULL, 16, &u8Scancode);
+                    if (RT_FAILURE (irc))
                     {
                         RTPrintf("Error: converting '%s' returned %Rrc!\n", a->argv[i], rc);
                         rc = E_FAIL;

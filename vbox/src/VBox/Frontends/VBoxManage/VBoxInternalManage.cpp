@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 24998 2009-11-26 13:22:55Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -442,8 +442,8 @@ static int CmdLoadSyms(int argc, char **argv, ComPtr<IVirtualBox> aVirtualBox, C
     /* offDelta */
     if (argc >= 3)
     {
-        int rc = RTStrToInt64Ex(argv[2], NULL, 0, &offDelta);
-        if (RT_FAILURE(rc))
+        int irc = RTStrToInt64Ex(argv[2], NULL, 0, &offDelta);
+        if (RT_FAILURE(irc))
             return errorArgument(argv[0], "Failed to read delta '%s', rc=%Rrc\n", argv[2], rc);
     }
 
@@ -454,16 +454,16 @@ static int CmdLoadSyms(int argc, char **argv, ComPtr<IVirtualBox> aVirtualBox, C
     /* ModuleAddress */
     if (argc >= 5)
     {
-        int rc = RTStrToUInt64Ex(argv[4], NULL, 0, &ModuleAddress);
-        if (RT_FAILURE(rc))
+        int irc = RTStrToUInt64Ex(argv[4], NULL, 0, &ModuleAddress);
+        if (RT_FAILURE(irc))
             return errorArgument(argv[0], "Failed to read module address '%s', rc=%Rrc\n", argv[4], rc);
     }
 
     /* ModuleSize */
     if (argc >= 6)
     {
-        int rc = RTStrToUInt64Ex(argv[5], NULL, 0, &ModuleSize);
-        if (RT_FAILURE(rc))
+        int irc = RTStrToUInt64Ex(argv[5], NULL, 0, &ModuleSize);
+        if (RT_FAILURE(irc))
             return errorArgument(argv[0], "Failed to read module size '%s', rc=%Rrc\n", argv[5], rc);
     }
 
