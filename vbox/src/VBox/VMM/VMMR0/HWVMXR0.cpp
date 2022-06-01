@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 27438 2010-03-17 12:02:53Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 27440 2010-03-17 12:16:00Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3675,6 +3675,13 @@ ResumeExecution:
             /* Save the host and load the guest debug state. */
             rc = CPUMR0LoadGuestDebugState(pVM, pVCpu, pCtx, true /* include DR6 */);
             AssertRC(rc);
+
+#ifdef LOG_ENABLED
+            if (VMX_EXIT_QUALIFICATION_DRX_DIRECTION(exitQualification) == VMX_EXIT_QUALIFICATION_DRX_DIRECTION_WRITE)
+                Log(("VMX_EXIT_DRX_MOVE: write DR%d genreg %d\n", VMX_EXIT_QUALIFICATION_DRX_REGISTER(exitQualification), VMX_EXIT_QUALIFICATION_DRX_GENREG(exitQualification)));
+            else
+                Log(("VMX_EXIT_DRX_MOVE: read DR%d\n", VMX_EXIT_QUALIFICATION_DRX_REGISTER(exitQualification)));
+#endif
 
 #ifdef VBOX_WITH_STATISTICS
             STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatDRxContextSwitch);
