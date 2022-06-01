@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 28937 2010-04-30 13:22:46Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 29031 2010-05-04 14:40:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -466,8 +466,9 @@ void VBoxSnapshotsWgt::onCurrentChanged (QTreeWidgetItem *aItem)
     mShowSnapshotDetailsAction->setEnabled (mCurSnapshotItem && item && !item->isCurrentStateItem());
 
     /* Enable/disable taking snapshots */
-    mTakeSnapshotAction->setEnabled (   canTakeDeleteSnapshot
-                                     && mCurSnapshotItem && item && item->isCurrentStateItem());
+    mTakeSnapshotAction->setEnabled (   (   canTakeDeleteSnapshot
+                                         && mCurSnapshotItem && item && item->isCurrentStateItem())
+                                     || (item && !mCurSnapshotItem));
 }
 
 void VBoxSnapshotsWgt::onContextMenuRequested (const QPoint &aPoint)
