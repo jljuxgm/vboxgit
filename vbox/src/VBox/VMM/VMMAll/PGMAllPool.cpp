@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 29699 2010-05-20 14:08:58Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 29701 2010-05-20 15:03:59Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4035,7 +4035,7 @@ static void pgmPoolTracDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTHCPHYS 
  */
 void pgmPoolTracDerefGCPhysHint(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTHCPHYS HCPhys, RTGCPHYS GCPhysHint, uint16_t iPte)
 {
-    RTHCPHYS HCPhysExpected = 0;
+    RTHCPHYS HCPhysExpected = 0xDEADBEEFDEADBEEF;
 
     Log4(("pgmPoolTracDerefGCPhysHint %RHp %RGp\n", HCPhys, GCPhysHint));
 
