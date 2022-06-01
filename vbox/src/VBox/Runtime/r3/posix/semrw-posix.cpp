@@ -1,4 +1,4 @@
-/* $Id: semrw-posix.cpp 25614 2010-01-01 14:19:06Z vboxsync $ */
+/* $Id: semrw-posix.cpp 25615 2010-01-01 14:40:48Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, POSIX.
  */
@@ -201,7 +201,7 @@ RTDECL(int) RTSemRWRequestRead(RTSEMRW RWSem, unsigned cMillies)
     if (Writer == Self)
     {
 #ifdef RTSEMRW_STRICT
-        int rc9 = RTLockValidatorRecExclRecursionMixed(&pThis->ValidatorWrite, &pThis->ValidatorRead->Core, pSrcPos);
+        int rc9 = RTLockValidatorRecExclRecursionMixed(&pThis->ValidatorWrite, &pThis->ValidatorRead.Core, pSrcPos);
         if (RT_FAILURE(rc9))
             return rc9;
 #endif
@@ -308,7 +308,7 @@ RTDECL(int) RTSemRWReleaseRead(RTSEMRW RWSem)
     {
         AssertMsgReturn(pThis->cWriterReads > 0, ("pThis=%p\n", pThis), VERR_NOT_OWNER);
 #ifdef RTSEMRW_STRICT
-        int rc9 = RTLockValidatorRecExclUnwindMixed(&pThis->ValidatorWrite, &pThis->ValidatorRead->Core.);
+        int rc9 = RTLockValidatorRecExclUnwindMixed(&pThis->ValidatorWrite, &pThis->ValidatorRead.Core);
         if (RT_FAILURE(rc9))
             return rc9;
 #endif
@@ -432,7 +432,6 @@ DECL_FORCE_INLINE(int) rtSemRWRequestWrite(RTSEMRW RWSem, unsigned cMillies, PCR
         }
 #endif /* !RT_OS_DARWIN */
     }
-    }
 
     ATOMIC_SET_PTHREAD_T(&pThis->Writer, Self);
     pThis->cWrites = 1;
@@ -518,7 +517,7 @@ RTDECL(int) RTSemRWReleaseWrite(RTSEMRW RWSem)
      * Try unlock it.
      */
 #ifdef RTSEMRW_STRICT
-    int rc9 = RTLockValidatorRecExclReleaseOwner(&pThis->ValidatorWrite);
+    int rc9 = RTLockValidatorRecExclReleaseOwner(&pThis->ValidatorWrite, true);
     if (RT_FAILURE(rc9))
         return rc9;
 #endif
