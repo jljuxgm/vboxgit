@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 28018 2010-04-06 15:57:40Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 28093 2010-04-08 13:58:41Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -168,7 +168,7 @@ int rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecut
 int rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecutable)
 {
     NOREF(fExecutable);
-    return rtR0MemObjNativeAllocPhys(ppMem, cb, NIL_RTHCPHYS, PAGE_SIZE /* alignment */);
+    return rtR0MemObjNativeAllocPhys(ppMem, cb, _4G - 1, PAGE_SIZE /* alignment */);
 }
 
 
