@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 27440 2010-03-17 12:16:00Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 27442 2010-03-17 12:41:28Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -4214,6 +4214,7 @@ VMMR0DECL(int) VMXR0Leave(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     if (CPUMIsHyperDebugStateActive(pVCpu))
     {
         CPUMR0LoadHostDebugState(pVM, pVCpu);
+        Assert(pVCpu->hwaccm.s.vmx.proc_ctls & VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_MOV_DR_EXIT);
     }
     else
 #endif
