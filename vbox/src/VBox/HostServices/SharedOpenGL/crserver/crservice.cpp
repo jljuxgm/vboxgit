@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 24491 2009-11-09 11:24:51Z vboxsync $ */
+/* $Id: crservice.cpp 24503 2009-11-09 13:29:40Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -241,9 +241,9 @@ static void svcClientVersionUnsupported(uint32_t minor, uint32_t major)
     if (g_pVM && !shown)
     {
         VMSetRuntimeError(g_pVM, VMSETRTERR_FLAGS_NO_WAIT, "3DSupportIncompatibleAdditions",
-        "Guest application attempt to use hardware 3D acceleration failed, because "
-        "guest additions version doesn't match VirtualBox host version. "
-        "Please install appropriate guest additions to fix this issue");
+        "An attempt by the virtual machine to use hardware 3D acceleration failed. "
+        "The version of the Guest Additions installed in the virtual machine does not match the "
+        "version of VirtualBox on the host. Please install appropriate Guest Additions to fix this issue");
         shown = 1;
     }
 }
