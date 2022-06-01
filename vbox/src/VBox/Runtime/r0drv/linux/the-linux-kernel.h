@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 24885 2009-11-23 19:03:00Z vboxsync $ */
+/* $Id: the-linux-kernel.h 24902 2009-11-24 14:00:00Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -173,7 +173,7 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
         unsigned long flags; \
         set_current_state(TASK_RUNNING); \
         spin_lock_irqsave(&(q)->lock, flags); \
-        list_del_init(&(q)->task_list); \
+        list_del_init(&(wait)->task_list); \
         spin_unlock_irqrestore(&(q)->lock, flags); \
     } while (0)
 
