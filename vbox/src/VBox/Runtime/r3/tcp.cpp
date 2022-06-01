@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 26588 2010-02-16 17:02:59Z vboxsync $ */
+/* $Id: tcp.cpp 26589 2010-02-16 17:06:46Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -915,7 +915,9 @@ RTR3DECL(int) RTTcpGetPeerAddress(RTSOCKET Sock, PRTNETADDR pAddr)
     {
         struct sockaddr     Addr;
         struct sockaddr_in  Ipv4;
+#ifdef AF_INET6
         struct sockaddr_in6 Ipv6;
+#endif
     }               u;
 #ifdef RT_OS_WINDOWS
     int             cbAddr = sizeof(u);
