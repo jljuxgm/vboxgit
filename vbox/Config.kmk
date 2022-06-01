@@ -1,4 +1,4 @@
-# $Id: Config.kmk 28859 2010-04-28 09:50:55Z vboxsync $
+# $Id: Config.kmk 28866 2010-04-28 13:14:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -173,6 +173,7 @@ VBOX_PRODUCT = Oracle VM VirtualBox
 # 	src/VBox/Frontends/VirtualBox/nls/*.ts
 # 	debian/control
 # 	src/VBox/Installer/linux/{debian,rpm}
+# 	src/VBox/Installer/linux/virtualbox.desktop
 # 	src/VBox/Additions/WINNT/Installer/ISO/ReadmeDrivers.txt
 
 # Maybe we want set this manually.
@@ -4086,7 +4087,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28859 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28866 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
