@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 27692 2010-03-25 10:32:25Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 27698 2010-03-25 12:13:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -219,9 +219,9 @@ static int findEfiRom(IVirtualBox* vbox, FirmwareType_T aFirmwareType, Utf8Str& 
 
 static int getSmcDeviceKey(IMachine* pMachine, BSTR * aKey)
 {
-    int rc;
 
 # if defined(RT_OS_DARWIN) && !defined(VBOX_OSE)
+    int rc;
     char aKeyBuf[65];
 
     rc = DarwinSmcKey(aKeyBuf, sizeof aKeyBuf);
