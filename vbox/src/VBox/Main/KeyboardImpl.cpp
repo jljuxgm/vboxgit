@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 27608 2010-03-22 18:25:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -57,7 +57,14 @@ typedef struct DRVMAINKEYBOARD
 // constructor / destructor
 ////////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR (Keyboard)
+Keyboard::Keyboard()
+    : mParent(NULL)
+{
+}
+
+Keyboard::~Keyboard()
+{
+}
 
 HRESULT Keyboard::FinalConstruct()
 {

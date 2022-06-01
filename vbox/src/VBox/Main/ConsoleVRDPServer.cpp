@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 27608 2010-03-22 18:25:30Z vboxsync $ */
 
 /** @file
  *
@@ -2120,7 +2120,15 @@ bool ConsoleVRDPServer::loadVRDPLibrary (void)
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
 
-DEFINE_EMPTY_CTOR_DTOR (RemoteDisplayInfo)
+RemoteDisplayInfo::RemoteDisplayInfo()
+    : mParent(NULL)
+{
+}
+
+RemoteDisplayInfo::~RemoteDisplayInfo()
+{
+}
+
 
 HRESULT RemoteDisplayInfo::FinalConstruct()
 {
