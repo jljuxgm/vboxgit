@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27052 2010-03-04 18:44:12Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27056 2010-03-04 19:32:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -77,7 +77,7 @@ UIMachineWindowSeamless::UIMachineWindowSeamless(UIMachineLogic *pMachineLogic, 
     updateAppearanceOf(UIVisualElement_AllStuff);
 
     /* Show window: */
-    showMaximized();
+    showSeamless();
 }
 
 UIMachineWindowSeamless::~UIMachineWindowSeamless()
@@ -223,6 +223,15 @@ void UIMachineWindowSeamless::cleanupMachineView()
 
     UIMachineView::destroy(m_pMachineView);
     m_pMachineView = 0;
+}
+
+void UIMachineWindowSeamless::showSeamless()
+{
+    /* Show manually maximized window: */
+    QRect geometry = QApplication::desktop()->availableGeometry();
+    move(geometry.topLeft());
+    resize(geometry.size());
+    show();
 }
 
 void UIMachineWindowSeamless::setMask(const QRegion &constRegion)
