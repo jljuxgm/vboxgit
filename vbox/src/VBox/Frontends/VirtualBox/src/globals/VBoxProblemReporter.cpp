@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 26950 2010-03-02 15:08:43Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 27028 2010-03-04 13:56:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1018,6 +1018,18 @@ int VBoxProblemReporter::cannotEnterFullscreenMode()
 {
     return message(mainMachineWindowShown(), Error,
              tr ("<p>Can not switch the guest display to fullscreen mode. You "
+                 "have more virtual screens configured than physical screens are "
+                 "attached to your host.</p><p>Please either lower the virtual "
+                 "screens in your VM configuration or attach additional screens "
+                 "to your host.</p>"),
+             0, /* aAutoConfirmId */
+             QIMessageBox::Ok | QIMessageBox::Default);
+}
+
+int VBoxProblemReporter::cannotEnterSeamlessMode()
+{
+    return message(mainMachineWindowShown(), Error,
+             tr ("<p>Can not switch the guest display to seamless mode. You "
                  "have more virtual screens configured than physical screens are "
                  "attached to your host.</p><p>Please either lower the virtual "
                  "screens in your VM configuration or attach additional screens "
