@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26681 2010-02-22 16:38:15Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -3179,14 +3179,14 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                     /* Stop the hostonly DHCP Server */
                 }
 
-                if (!networkName.isNull())
+                if (!networkName.isEmpty())
                 {
                     /*
                      * Until we implement service reference counters DHCP Server will be stopped
                      * by DHCPServerRunner destructor.
                      */
                     ComPtr<IDHCPServer> dhcpServer;
-                    hrc = virtualBox->FindDHCPServerByNetworkName(networkName.mutableRaw(), dhcpServer.asOutParam());
+                    hrc = virtualBox->FindDHCPServerByNetworkName(networkName, dhcpServer.asOutParam());
                     if (SUCCEEDED(hrc))
                     {
                         /* there is a DHCP server available for this network */

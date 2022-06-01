@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 26603 2010-02-17 12:24:34Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -1025,8 +1025,6 @@ HRESULT NetworkAdapter::loadSettings(const settings::NetworkAdapter &data)
     {
         case NetworkAttachmentType_NAT:
             mData->mNATNetwork = data.strName;
-            if (mData->mNATNetwork.isNull())
-                mData->mNATNetwork = "";
             rc = AttachToNAT();
             if (FAILED(rc)) return rc;
         break;
@@ -1040,7 +1038,7 @@ HRESULT NetworkAdapter::loadSettings(const settings::NetworkAdapter &data)
 
         case NetworkAttachmentType_Internal:
             mData->mInternalNetwork = data.strName;
-            Assert(!mData->mInternalNetwork.isNull());
+            Assert(!mData->mInternalNetwork.isEmpty());
 
             rc = AttachToInternalNetwork();
             if (FAILED(rc)) return rc;

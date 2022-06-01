@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -560,7 +560,7 @@ STDMETHODIMP VFSExplorer::Update(IProgress **aProgress)
 
 STDMETHODIMP VFSExplorer::Cd(IN_BSTR aDir, IProgress **aProgress)
 {
-    CheckComArgNotNull(aDir);
+    CheckComArgStrNotEmptyOrNull(aDir);
     CheckComArgOutPointerValid(aProgress);
 
     return E_NOTIMPL;

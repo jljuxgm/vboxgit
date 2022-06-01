@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfo.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfo.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -201,7 +201,7 @@ NS_IMETHODIMP VirtualBoxErrorInfo::GetMessage (char **aMessage)
     if (!aMessage)
         return NS_ERROR_INVALID_POINTER;
 
-    Utf8Str (mText).cloneTo(aMessage);
+    Utf8Str(mText).cloneTo(aMessage);
     return S_OK;
 }
 

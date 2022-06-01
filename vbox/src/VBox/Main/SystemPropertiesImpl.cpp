@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 26603 2010-02-17 12:24:34Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 26753 2010-02-24 16:24:33Z vboxsync $ */
 
 /** @file
  *
@@ -827,7 +827,7 @@ ComObjPtr<MediumFormat> SystemProperties::mediumFormat (CBSTR aFormat)
     {
         /* MediumFormat is all const, no need to lock */
 
-        if ((*it)->id().compareIgnoreCase (aFormat) == 0)
+        if ((*it)->id().compare(aFormat, Bstr::CaseInsensitive) == 0)
         {
             format = *it;
             break;

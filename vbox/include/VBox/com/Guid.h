@@ -1,4 +1,4 @@
-/* $Id: Guid.h 26603 2010-02-17 12:24:34Z vboxsync $ */
+/* $Id: Guid.h 26753 2010-02-24 16:24:33Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -95,31 +95,31 @@ public:
 
     Guid(const Bstr &that)
     {
-        ::RTUuidClear (&uuid);
-        if (!that.isNull())
+        ::RTUuidClear(&uuid);
+        if (!that.isEmpty())
            ::RTUuidFromUtf16(&uuid, that.raw());
         refresh();
     }
 
-    Guid &operator=(const Guid &that)
+    Guid& operator=(const Guid &that)
     {
         ::memcpy(&uuid, &that.uuid, sizeof (RTUUID));
         refresh();
         return *this;
     }
-    Guid &operator=(const GUID &guid)
+    Guid& operator=(const GUID &guid)
     {
         ::memcpy(&uuid, &guid, sizeof (GUID));
         refresh();
         return *this;
     }
-    Guid &operator=(const RTUUID &guid)
+    Guid& operator=(const RTUUID &guid)
     {
         ::memcpy(&uuid, &guid, sizeof (RTUUID));
         refresh();
         return *this;
     }
-    Guid &operator=(const char *str)
+    Guid& operator=(const char *str)
     {
         ::RTUuidFromStr(&uuid, str);
         refresh();
@@ -144,7 +144,7 @@ public:
         return Utf8Str(buf);
     }
 
-    Bstr toUtf16 () const
+    Bstr toUtf16() const
     {
         if (isEmpty())
           return Bstr();
