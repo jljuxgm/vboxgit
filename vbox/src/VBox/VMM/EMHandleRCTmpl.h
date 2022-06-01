@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 21653 2009-07-16 15:18:07Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 24033 2009-10-23 13:01:30Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hwaccm]HandleRC template.
  */
@@ -330,6 +330,11 @@ int emR3HwaccmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VERR_VMX_UNABLE_TO_START_VM:
         case VERR_VMX_UNABLE_TO_RESUME_VM:
             HWACCMR3CheckError(pVM, rc);
+            break;
+
+        /* Up a level; fatal */
+        case VERR_VMX_IN_VMX_ROOT_MODE:
+        case VERR_SVM_IN_USE:
             break;
 #endif
 
