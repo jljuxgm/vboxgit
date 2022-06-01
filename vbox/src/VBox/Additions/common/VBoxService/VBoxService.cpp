@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 29762 2010-05-24 16:21:41Z vboxsync $ */
+/* $Id: VBoxService.cpp 29775 2010-05-25 11:37:55Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -442,8 +442,9 @@ int VBoxServiceStopServices(void)
 
 
 #ifndef RT_OS_WINDOWS
-/*
- * Block all important signals, then explicitly wait until one of these signal arrives.
+/**
+ * Block all important signals, then explicitly wait until one of these
+ * signal arrives.
  */
 static void VBoxServiceWaitSignal(void)
 {
@@ -457,19 +458,18 @@ static void VBoxServiceWaitSignal(void)
     sigaddset(&signalMask, SIGTERM);
     pthread_sigmask(SIG_BLOCK, &signalMask, NULL);
 
+    /* This loop is required on Solaris at least. FreeBSD doesn't know ERESTART. */
     int rc;
-#ifndef RT_OS_FREEBSD
     do
     {
         iSignal = -1;
         rc = sigwait(&signalMask, &iSignal);
     }
     while (   rc == EINTR
-           || rc == ERESTART);
-#else
-    iSignal = -1;
-    rc = sigwait(&signalMask, &iSignal);
+#ifdef ERESTART
+           || rc == ERESTART
 #endif
+          );
 
     VBoxServiceVerbose(3, "VBoxServiceWaitSignal: Received signal %d (rc=%d)\n", iSignal, rc);
 }
