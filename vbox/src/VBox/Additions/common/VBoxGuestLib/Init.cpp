@@ -1,4 +1,4 @@
-/* $Revision: 26425 $ */
+/* $Revision: 26642 $ */
 /** @file
  * VBoxGuestLibR0 - Library initialization.
  */
@@ -157,6 +157,8 @@ int vbglInitCommon (void)
         /* other subsystems, none yet */
         ;
     }
+    else
+        LogRel(("vbglInitCommon: VbglPhysHeapInit failed. rc=%Rrc\n", rc));
 
     dprintf(("vbglInitCommon: rc = %d\n", rc));
 
