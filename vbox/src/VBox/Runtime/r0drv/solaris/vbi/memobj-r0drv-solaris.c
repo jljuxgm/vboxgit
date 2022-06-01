@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 28017 2010-04-06 15:56:48Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 28018 2010-04-06 15:57:40Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -467,14 +467,6 @@ int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, PRTR0MEMOBJINTERNAL pMem
 
 int rtR0MemObjNativeProtect(PRTR0MEMOBJINTERNAL pMem, size_t offSub, size_t cbSub, uint32_t fProt)
 {
-    PRTR0MEMOBJSOLARIS pMemSolaris = (PRTR0MEMOBJSOLARIS)pMem;
-
-    if (pMemSolaris->Core.enmType == RTR0MEMOBJTYPE_PHYS_NC)
-    {
-//        LogRel(("here \n"));
-//        vbi_page_lock(pMemSolaris->pvHandle, pMemSolaris->Core.cb);
-    }
-
     NOREF(pMem);
     NOREF(offSub);
     NOREF(cbSub);
