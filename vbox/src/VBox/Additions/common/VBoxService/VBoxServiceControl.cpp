@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 29516 2010-05-17 09:55:17Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 29528 2010-05-17 11:11:03Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -121,7 +121,7 @@ static int VBoxServiceControlHandleCmdStartProcess(uint32_t u32ClientId, uint32_
     char szPassword[128];
     uint32_t uTimeLimitMS;
 
-    if (uNumParms != 14)
+    if (uNumParms != 11)
         return VERR_INVALID_PARAMETER;
 
     int rc = VbglR3GuestCtrlExecGetHostCmd(u32ClientId,
