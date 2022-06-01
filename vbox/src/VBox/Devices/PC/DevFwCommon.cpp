@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 25162 2009-12-03 12:54:05Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 25163 2009-12-03 12:57:23Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -314,7 +314,6 @@ static bool sharedfwChecksumOk(const uint8_t * const au8Data, uint32_t u32Length
  * @param   pUuid               Pointer to the UUID to use if the DmiUuid
  *                              configuration string isn't present.
  * @param   pCfgHandle          The handle to our config node.
- * @param   fForceDefault       Don't read DMI information from the environment, use default values.
  * @param   fPutSmbiosHeaders   Plant SMBIOS headers if true.
  */
 int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, PCRTUUID pUuid, PCFGMNODE pCfgHandle, bool fPutSmbiosHeaders)
