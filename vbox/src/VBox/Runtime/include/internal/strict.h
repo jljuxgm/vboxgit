@@ -1,4 +1,4 @@
-/* $Id: strict.h 25478 2009-12-18 12:58:10Z vboxsync $ */
+/* $Id: strict.h 25482 2009-12-18 13:39:00Z vboxsync $ */
 /** @file
  * IPRT - Internal Header Defining Strictness Indicators.
  */
@@ -39,14 +39,6 @@
  */
 #if defined(DOXYGEN_RUNNING) || (!defined(RTCRITSECT_STRICT) && defined(IN_RING3) && (defined(RT_STRICT) || defined(RT_LOCK_STRICT)))
 # define RTCRITSECT_STRICT
-#endif
-
-#ifdef RTCRITSECT_STRICT
-# define RTCRITSECT_STRICT_POS_DECL             RTHCUINTPTR uId, RT_SRC_POS_DECL
-# define RTCRITSECT_STRICT_POS_ARGS             uId, RT_SRC_POS_ARGS
-#else
-# define RTCRITSECT_STRICT_POS_DECL             int iDummy
-# define RTCRITSECT_STRICT_POS_ARGS             0
 #endif
 
 
