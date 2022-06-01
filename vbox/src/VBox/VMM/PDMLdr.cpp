@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 26220 2010-02-03 21:40:52Z vboxsync $ */
+/* $Id: PDMLdr.cpp 26250 2010-02-05 00:03:40Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -1328,7 +1328,7 @@ VMMR3DECL(int) PDMR3LdrGetInterfaceSymbols(PVM pVM, void *pvInterface, size_t cb
                  * Construct the symbol name, get its value, store it and
                  * advance the interface cursor.
                  */
-                AssertReturn(cchSymPrefix + cchSym >= sizeof(szSymbol), VERR_SYMBOL_NOT_FOUND);
+                AssertReturn(cchSymPrefix + cchSym < sizeof(szSymbol), VERR_SYMBOL_NOT_FOUND);
                 memcmp(&szSymbol[cchSymPrefix], pszCur, cchSym);
                 szSymbol[cchSymPrefix + cchSym] = '\0';
 
