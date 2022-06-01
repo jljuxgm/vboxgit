@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.c 29665 2010-05-19 15:10:20Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.c 29667 2010-05-19 17:01:39Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -797,6 +797,10 @@ DECLHIDDEN(bool) vboxNetFltWinPostIntnet(PVBOXNETFLTINS pNetFltIf, PVOID pvPacke
 #endif
 #else /* #ifdef VBOXNETFLT_NO_PACKET_QUEUE */
     } while(0);
+
+    if (bDeleteSG)
+        vboxNetFltWinMemFree(pSG);
+
 # ifndef VBOXNETADP
     return bDropIt;
 # else
