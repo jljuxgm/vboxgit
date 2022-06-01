@@ -1,4 +1,4 @@
-/* $Id: intnetinline.h 28665 2010-04-23 17:24:09Z vboxsync $ */
+/* $Id: intnetinline.h 28713 2010-04-25 19:55:19Z vboxsync $ */
 /** @file
  * INTNET - Internal Networking, Inlined Code. (DEV,++)
  *
@@ -483,6 +483,8 @@ DECLINLINE(int) intnetRingAllocateFrameInternal(PINTNETRINGBUF pRingBuf, uint32_
     }
 
     /* (it didn't fit) */
+    *ppHdr    = NULL;                   /* shut up gcc, */
+    *ppvFrame = NULL;                   /* ditto. */
     STAM_REL_COUNTER_INC(&pRingBuf->cOverflows);
     return VERR_BUFFER_OVERFLOW;
 }
