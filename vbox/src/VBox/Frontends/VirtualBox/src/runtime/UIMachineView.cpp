@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 26964 2010-03-02 17:53:21Z vboxsync $ */
+/* $Id: UIMachineView.cpp 26967 2010-03-02 18:32:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -586,6 +586,9 @@ void UIMachineView::prepareConsoleConnections()
 
     /* Mouse capability state-change updater: */
     connect(uisession(), SIGNAL(sigMouseCapabilityChange()), this, SLOT(sltMouseCapabilityChanged()));
+
+    /* Mouse captivity status-change updater: */
+    connect(uisession(), SIGNAL(sigMouseCapturedStatusChanged()), this, SLOT(sltMouseCapturedStatusChanged()));
 }
 
 void UIMachineView::loadMachineViewSettings()
@@ -1125,6 +1128,19 @@ void UIMachineView::sltMouseCapabilityChanged()
 
     /* Notify all listeners: */
     emitMouseStateChanged();
+}
+
+void UIMachineView::sltMouseCapturedStatusChanged()
+{
+    if (!uisession()->isMouseCaptured())
+    {
+        /* We will just release mouse if it was released in other than that window: */
+#ifndef Q_WS_WIN32
+        viewport()->releaseMouse();
+#endif
+        /* Also we will unset cursor if mouse was released in other than that window: */
+        viewport()->unsetCursor();
+    }
 }
 
 #ifdef Q_WS_MAC
