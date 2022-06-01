@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 23801 2009-10-15 15:00:47Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 24200 2009-10-30 14:44:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -695,6 +695,19 @@ static int pgmR3LoadMmio2Ranges(PVM pVM, PSSMHANDLE pSSM)
             }
         }
         AssertLogRelMsgReturn(pMmio2, ("%s/%u/%u: %s\n", szDevName, uInstance, iRegion, szDesc), VERR_SSM_LOAD_CONFIG_MISMATCH);
+
+        /*
+         * Validate the configuration, the size of the MMIO2 region should be
+         * the same.
+         */
+        if (cb != pMmio2->RamRange.cb)
+        {
+            LogRel(("PGM: MMIO2 region \"%s\" size mismatch: saved=%RGp config=%RGp\n",
+                    pMmio2->RamRange.pszDesc, cb, pMmio2->RamRange.cb));
+            if (cb > pMmio2->RamRange.cb) /* bad idea? */
+                return VERR_SSM_LOAD_CONFIG_MISMATCH;
+        }
+
     } /* forever */
 }
 
