@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 25698 2010-01-08 23:23:51Z vboxsync $ */
+/* $Id: ConsoleImpl.h 25859 2010-01-15 13:27:16Z vboxsync $ */
 
 /** @file
  *
@@ -25,7 +25,6 @@
 #define ____H_CONSOLEIMPL
 
 #include "VirtualBoxBase.h"
-#include "ProgressImpl.h"
 #include "SchemaDefs.h"
 
 class Guest;
@@ -41,6 +40,7 @@ class RemoteDisplayInfo;
 class AudioSniffer;
 class ConsoleVRDPServer;
 class VMMDev;
+class Progress;
 
 #include <VBox/vrdpapi.h>
 #include <VBox/pdmdrv.h>
