@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 23655 2009-10-09 15:51:35Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 24369 2009-11-05 08:46:33Z vboxsync $ */
 /** @file
  * VBoxVMInfo-win - Virtual machine (guest) information for the host.
  */
@@ -438,6 +438,7 @@ int VBoxServiceWinGetComponentVersions(uint32_t uiClientID)
         { szSysDir, "VBoxService.exe", },
         { szSysDir, "VBoxTray.exe", },
         { szSysDir, "VBoxGINA.dll", },
+        { szSysDir, "VBoxCredProv.dll", },
 
  /* On 64-bit we don't yet have the OpenGL DLLs in native format.
     So just enumerate the 32-bit files in the SYSWOW directory. */
@@ -499,4 +500,3 @@ int VBoxServiceWinGetComponentVersions(uint32_t uiClientID)
 
     return VINF_SUCCESS;
 }
-
