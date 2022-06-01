@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 30160 2010-06-11 13:26:50Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -1157,7 +1157,7 @@ DECLCALLBACK(int) trpmGCTrapInGeneric(PVM pVM, PCPUMCTXCORE pRegFrame, uintptr_t
          * Check that there is still some stack left, if not we'll flag
          * a guru meditation (the alternative is a triple fault).
          */
-        RTRCUINTPTR cbStackUsed = (RTRCUINTPTR)VMMGetStackRC(pVM) - pRegFrame->esp;
+        RTRCUINTPTR cbStackUsed = (RTRCUINTPTR)VMMGetStackRC(VMMGetCpu(pVM)) - pRegFrame->esp;
         if (cbStackUsed > VMM_STACK_SIZE - _1K)
         {
             LogRel(("trpmGCTrapInGeneric: ran out of stack: esp=#x cbStackUsed=%#x\n", pRegFrame->esp, cbStackUsed));

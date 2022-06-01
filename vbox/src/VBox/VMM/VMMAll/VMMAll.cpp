@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VMMAll.cpp 30160 2010-06-11 13:26:50Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -35,13 +35,10 @@
  * by a push/ret/whatever does it become writable.)
  *
  * @returns bottom of the stack.
- * @param   pVM         The VM handle.
+ * @param   pVCpu       The VMCPU handle.
  */
-VMMDECL(RTRCPTR) VMMGetStackRC(PVM pVM)
+VMMDECL(RTRCPTR) VMMGetStackRC(PVMCPU pVCpu)
 {
-    PVMCPU pVCpu = VMMGetCpu(pVM);
-    Assert(pVCpu);
-
     return (RTRCPTR)pVCpu->vmm.s.pbEMTStackBottomRC;
 }
 
