@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.c 29491 2010-05-14 17:46:22Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.c 29525 2010-05-17 10:43:06Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -1717,16 +1717,9 @@ DECLHIDDEN(PNDIS_PACKET) vboxNetFltWinNdisPacketFromSG(PADAPT pAdapt, PINTNETSG 
         if(bCopyMemory)
         {
             fStatus = vboxNetFltWinMemAlloc(&pvMemBuf, pSG->cbTotal);
+            Assert(fStatus == NDIS_STATUS_SUCCESS);
             if(fStatus == NDIS_STATUS_SUCCESS)
-            {
                 IntNetSgRead(pSG, pvMemBuf);
-            }
-            else
-            {
-                AssertFailed();
-                NdisFreePacket(pPacket);
-                pPacket = NULL;
-            }
         }
         else
         {
