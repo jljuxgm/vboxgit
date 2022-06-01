@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 24003 2009-10-23 06:06:46Z vboxsync $ */
+/* $Id: fileio-win.cpp 24031 2009-10-23 12:44:42Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -239,7 +239,6 @@ RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint32_t fOpen)
     }
 
     DWORD dwShareMode;
-/* misha: disable incorrect assert   Assert(RTFILE_O_DENY_READWRITE == RTFILE_O_DENY_ALL && !RTFILE_O_DENY_NONE); */
     switch (fOpen & RTFILE_O_DENY_MASK)
     {
         case RTFILE_O_DENY_NONE:                                dwShareMode = FILE_SHARE_READ | FILE_SHARE_WRITE; break;
