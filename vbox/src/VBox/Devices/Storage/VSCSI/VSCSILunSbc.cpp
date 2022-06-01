@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 30174 2010-06-13 13:52:51Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -232,6 +232,7 @@ static int vscsiLunSbcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq)
             }
             break;
         }
+        case SCSI_VERIFY_10:
         case SCSI_START_STOP_UNIT:
         {
             rcReq = vscsiReqSenseOkSet(pVScsiReq);
