@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 25241 2009-12-08 13:01:38Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 25483 2009-12-18 13:45:27Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -928,32 +928,25 @@ static int iomInterpretBT(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFault,
 {
     Assert(pRange->CTX_SUFF(pfnReadCallback) || !pRange->pfnReadCallbackR3);
 
-    uint64_t    uBit   = 0;
-    uint64_t    uData1 = 0;
-    unsigned    cb     = 0;
-    int         rc;
+    uint64_t    uBit  = 0;
+    uint64_t    uData = 0;
+    unsigned    cbIgnored;
 
-    if (iomGetRegImmData(pCpu, &pCpu->param2, pRegFrame, &uBit, &cb))
-    {
-        /* bt [MMIO], reg|imm. */
-        rc = iomMMIODoRead(pVM, pRange, GCPhysFault, &uData1, cb);
-    }
-    else
+    if (!iomGetRegImmData(pCpu, &pCpu->param2, pRegFrame, &uBit, &cbIgnored))
     {
         AssertMsgFailed(("Disassember BT problem..\n"));
         return VERR_IOM_MMIO_HANDLER_DISASM_ERROR;
     }
+    /* The size of the memory operand only matters here. */
+    unsigned cbData = DISGetParamSize(pCpu, &pCpu->param1);
 
+    /* bt [MMIO], reg|imm. */
+    int rc = iomMMIODoRead(pVM, pRange, GCPhysFault, &uData, cbData);
     if (rc == VINF_SUCCESS)
     {
-        /* The size of the memory operand only matters here. */
-        cb = DISGetParamSize(pCpu, &pCpu->param1);
-
         /* Find the bit inside the faulting address */
-        uBit &= (cb*8 - 1);
-
-        pRegFrame->eflags.Bits.u1CF = (uData1 >> uBit);
-        iomMMIOStatLength(pVM, cb);
+        pRegFrame->eflags.Bits.u1CF = (uData >> uBit);
+        iomMMIOStatLength(pVM, cbData);
     }
 
     return rc;
