@@ -1,4 +1,4 @@
-/* $Id: VBoxSettingsDialogSpecific.cpp 28940 2010-04-30 14:41:10Z vboxsync $ */
+/* $Id: VBoxSettingsDialogSpecific.cpp 30182 2010-06-14 14:23:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -531,19 +531,6 @@ bool VBoxVMSettingsDlg::correlate (QWidget *aPage, QString &aWarning)
                 "automatically.");
             return true;
         }
-
-#ifndef Q_WS_MAC
-        /* Guest OS bitness & SMP slider correlation test */
-        if (ARCH_BITS == 32 && generalPage && systemPage &&
-            generalPage->is64BitOSTypeSelected() && systemPage->cpuCount() > 1)
-        {
-            aWarning = tr (
-                "you have selected a 64-bit guest OS type for this VM. "
-                "VirtualBox does not currently support more than one virtual CPU "
-                "for 64-bit guests executed on 32-bit hosts.");
-            return false;
-        }
-#endif
     }
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
