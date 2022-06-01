@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 24241 2009-11-02 09:54:26Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 24242 2009-11-02 10:17:38Z vboxsync $ */
 /** @file
  *
  * VBox storage drivers:
@@ -729,7 +729,7 @@ static int drvscsiAsyncIOLoop(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
 static bool drvscsiAsyncIOLoopNoPendingDummy(PDRVSCSI pThis, uint32_t cMillies)
 {
     if (!pThis->pPendingDummyReq)
-        return false;
+        return true;
     int rc = RTReqWait(pThis->pPendingDummyReq, cMillies);
     if (RT_FAILURE(rc))
         return false;
