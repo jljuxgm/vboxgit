@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 30180 2010-06-14 14:13:50Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 30181 2010-06-14 14:14:33Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -4582,8 +4582,6 @@ VMMR0DECL(int) VMXR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
     RTHCPHYS        pPageCpuPhys;
     RTHCUINTREG     uOldEFlags;
 
-    /* @todo This code is not guest SMP safe (hyper stack and switchers) */
-    AssertReturn(pVM->cCpus == 1, VERR_TOO_MANY_CPUS);
     AssertReturn(pVM->hwaccm.s.pfnHost32ToGuest64R0, VERR_INTERNAL_ERROR);
     Assert(pfnHandler);
     Assert(pVCpu->hwaccm.s.vmx.VMCSCache.Write.cValidEntries <= RT_ELEMENTS(pVCpu->hwaccm.s.vmx.VMCSCache.Write.aField));

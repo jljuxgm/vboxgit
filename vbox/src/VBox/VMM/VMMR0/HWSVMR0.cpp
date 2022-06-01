@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 30180 2010-06-14 14:13:50Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 30181 2010-06-14 14:14:33Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -2859,8 +2859,6 @@ VMMR0DECL(int) SVMR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
     int             rc;
     RTHCUINTREG     uOldEFlags;
 
-    /* @todo This code is not guest SMP safe (hyper stack and switchers) */
-    AssertReturn(pVM->cCpus == 1, VERR_TOO_MANY_CPUS);
     Assert(pfnHandler);
 
     /* Disable interrupts. */
