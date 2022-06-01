@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 30132 2010-06-09 17:53:18Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 30136 2010-06-09 18:44:10Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -191,7 +191,7 @@ int pdmacFileAioMgrAddEndpoint(PPDMACEPFILEMGR pAioMgr, PPDMASYNCCOMPLETIONENDPO
 
     ASMAtomicWritePtr(&pAioMgr->BlockingEventData.AddEndpoint.pEndpoint, pEndpoint);
     rc = pdmacFileAioMgrWaitForBlockingEvent(pAioMgr, PDMACEPFILEAIOMGRBLOCKINGEVENT_ADD_ENDPOINT);
-    ASMAtomicWritePtrVoid((void * volatile *)&pAioMgr->BlockingEventData.AddEndpoint.pEndpoint, NULL);
+    ASMAtomicWriteNullPtr(&pAioMgr->BlockingEventData.AddEndpoint.pEndpoint);
 
     RTCritSectLeave(&pAioMgr->CritSectBlockingEvent);
 
@@ -207,7 +207,7 @@ static int pdmacFileAioMgrRemoveEndpoint(PPDMACEPFILEMGR pAioMgr, PPDMASYNCCOMPL
 
     ASMAtomicWritePtr(&pAioMgr->BlockingEventData.RemoveEndpoint.pEndpoint, pEndpoint);
     rc = pdmacFileAioMgrWaitForBlockingEvent(pAioMgr, PDMACEPFILEAIOMGRBLOCKINGEVENT_REMOVE_ENDPOINT);
-    ASMAtomicWritePtrVoid((void * volatile *)&pAioMgr->BlockingEventData.RemoveEndpoint.pEndpoint, NULL);
+    ASMAtomicWriteNullPtr(&pAioMgr->BlockingEventData.RemoveEndpoint.pEndpoint);
 
     RTCritSectLeave(&pAioMgr->CritSectBlockingEvent);
 
@@ -223,7 +223,7 @@ static int pdmacFileAioMgrCloseEndpoint(PPDMACEPFILEMGR pAioMgr, PPDMASYNCCOMPLE
 
     ASMAtomicWritePtr(&pAioMgr->BlockingEventData.CloseEndpoint.pEndpoint, pEndpoint);
     rc = pdmacFileAioMgrWaitForBlockingEvent(pAioMgr, PDMACEPFILEAIOMGRBLOCKINGEVENT_CLOSE_ENDPOINT);
-    ASMAtomicWritePtrVoid((void * volatile *)&pAioMgr->BlockingEventData.CloseEndpoint.pEndpoint, NULL);
+    ASMAtomicWriteNullPtr(&pAioMgr->BlockingEventData.CloseEndpoint.pEndpoint);
 
     RTCritSectLeave(&pAioMgr->CritSectBlockingEvent);
 
