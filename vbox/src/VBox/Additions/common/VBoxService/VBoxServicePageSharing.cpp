@@ -1,6 +1,6 @@
-/* $Id: VBoxServicePageSharing.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 28733 2010-04-26 09:00:03Z vboxsync $ */
 /** @file
- * VBoxService - Memory Ballooning.
+ * VBoxService - Guest page sharing.
  */
 
 /*
