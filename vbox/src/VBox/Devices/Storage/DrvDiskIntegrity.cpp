@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 28902 2010-04-29 14:54:08Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 28948 2010-04-30 21:19:04Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -404,9 +404,8 @@ static void drvdiskintIoReqAdd(PDRVDISKINTEGRITY pThis, PDRVDISKAIOREQ pIoReq)
     pIoReq->iSlot = pThis->iNextFreeSlot;
 
     /* Search for the next one. */
-    pThis->iNextFreeSlot++;
     while (pThis->apReqActive[pThis->iNextFreeSlot].pIoReq)
-        pThis->iNextFreeSlot = pThis->iNextFreeSlot++ % RT_ELEMENTS(pThis->apReqActive);
+        pThis->iNextFreeSlot = (pThis->iNextFreeSlot+1) % RT_ELEMENTS(pThis->apReqActive);
 }
 
 /**
@@ -525,7 +524,7 @@ static DECLCALLBACK(int) drvdiskintStartRead(PPDMIMEDIAASYNC pInterface, uint64_
                                              PCRTSGSEG paSeg, unsigned cSeg,
                                              size_t cbRead, void *pvUser)
 {
-     LogFlow(("%s: uOffset=%#llx paSeg=%#p cSeg=%u cbRead=%d\n pvUser=%#p", __FUNCTION__,
+     LogFlow(("%s: uOffset=%#llx paSeg=%#p cSeg=%u cbRead=%d pvUser=%#p\n", __FUNCTION__,
              uOffset, paSeg, cSeg, cbRead, pvUser));
     PDRVDISKINTEGRITY pThis = PDMIMEDIAASYNC_2_DRVDISKINTEGRITY(pInterface);
     PDRVDISKAIOREQ pIoReq = drvdiskintIoReqAlloc(true, uOffset, paSeg, cSeg, cbRead, pvUser);
@@ -560,7 +559,7 @@ static DECLCALLBACK(int) drvdiskintStartWrite(PPDMIMEDIAASYNC pInterface, uint64
                                               PCRTSGSEG paSeg, unsigned cSeg,
                                               size_t cbWrite, void *pvUser)
 {
-     LogFlow(("%s: uOffset=%#llx paSeg=%#p cSeg=%u cbWrite=%d\n pvUser=%#p", __FUNCTION__,
+     LogFlow(("%s: uOffset=%#llx paSeg=%#p cSeg=%u cbWrite=%d pvUser=%#p\n", __FUNCTION__,
              uOffset, paSeg, cSeg, cbWrite, pvUser));
     PDRVDISKINTEGRITY pThis = PDMIMEDIAASYNC_2_DRVDISKINTEGRITY(pInterface);
     PDRVDISKAIOREQ pIoReq = drvdiskintIoReqAlloc(false, uOffset, paSeg, cSeg, cbWrite, pvUser);
