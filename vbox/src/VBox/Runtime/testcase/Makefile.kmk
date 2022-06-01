@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26608 2010-02-17 12:48:33Z vboxsync $
+# $Id: Makefile.kmk 26739 2010-02-24 12:12:09Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -117,7 +117,8 @@ PROGRAMS += \
 	tstRTTimeSpec \
 	tstTSC \
 	tstUtf8 \
-	tstRTUuid
+	tstRTUuid \
+	tstRTList
 # tstSems
 PROGRAMS.win += \
 	tstRTProcWait \
@@ -444,6 +445,7 @@ tstRTUuid_SOURCES = tstRTUuid.cpp
 
 tstUtf8_SOURCES = tstUtf8.cpp
 
+tstRTList_SOURCES = tstRTList.cpp
 
 #
 # odds and  ends
