@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 25545 2009-12-21 15:07:06Z vboxsync $ */
+/* $Id: PGMPhys.cpp 25546 2009-12-21 15:16:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3067,6 +3067,8 @@ VMMR3DECL(void) PGMR3PhysChunkInvalidateTLB(PVM pVM)
         pVM->pgm.s.ChunkR3Map.Tlb.aEntries[i].idChunk = NIL_GMM_CHUNKID;
         pVM->pgm.s.ChunkR3Map.Tlb.aEntries[i].pChunk = NULL;
     }
+    /* The page map TLB references chunks, so invalidate that one too. */
+    PGMPhysInvalidatePageMapTLB(pVM);
     pgmUnlock(pVM);
 }
 
