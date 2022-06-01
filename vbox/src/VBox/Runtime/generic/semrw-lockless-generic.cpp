@@ -1,4 +1,4 @@
-/* $Id: semrw-lockless-generic.cpp 25663 2010-01-06 02:36:42Z vboxsync $ */
+/* $Id: semrw-lockless-generic.cpp 25666 2010-01-06 04:21:22Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSemXRoads, generic implementation.
  */
@@ -287,6 +287,7 @@ static int rtSemRWRequestRead(RTSEMRW hRWSem, unsigned cMillies, bool fInterrupt
                                                                RTTHREADSTATE_RW_READ, false);
                     if (RT_SUCCESS(rc))
 #else
+                    RTTHREAD hThreadSelf = RTThreadSelf();
                     RTThreadBlocking(hThreadSelf, RTTHREADSTATE_RW_READ, false);
 #endif
                     {
@@ -609,6 +610,7 @@ DECL_FORCE_INLINE(int) rtSemRWRequestWrite(RTSEMRW hRWSem, unsigned cMillies, bo
                 rc = VINF_SUCCESS;
             if (RT_SUCCESS(rc))
 #else
+            RTTHREAD hThreadSelf = RTThreadSelf();
             RTThreadBlocking(hThreadSelf, RTTHREADSTATE_RW_WRITE, false);
 #endif
             {
