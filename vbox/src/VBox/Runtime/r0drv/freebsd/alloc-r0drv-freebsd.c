@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-freebsd.c 28298 2010-04-14 12:20:39Z vboxsync $ */
+/* $Id: alloc-r0drv-freebsd.c 29765 2010-05-24 19:07:28Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -76,25 +76,16 @@ PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
 
             do
             {
-                vm_pindex_t PageIndex = OFF_TO_IDX(AddressDst);
-                vm_page_t   pPage;
+                vm_page_t pPage;
 
-                pPage = vm_page_alloc(NULL, PageIndex,
+                pPage = vm_page_alloc(NULL, 0,
                                       VM_ALLOC_NOBUSY | VM_ALLOC_SYSTEM |
                                       VM_ALLOC_WIRED  | VM_ALLOC_NOOBJ);
                 if (pPage)
                 {
-                    vm_page_lock_queues();
-                    vm_page_wire(pPage);
-                    vm_page_unlock_queues();
                     /* Put the page into the page table now. */
-#if __FreeBSD_version >= 701105
-                    pmap_enter(kernel_map->pmap, AddressDst, VM_PROT_NONE, pPage,
-                               VM_PROT_ALL, TRUE);
-#else
-                    pmap_enter(kernel_map->pmap, AddressDst, pPage,
-                               VM_PROT_ALL, TRUE);
-#endif
+                    MY_PMAP_ENTER(kernel_map->pmap, AddressDst, pPage, VM_PROT_ALL,
+                                  TRUE);
                 }
                 else
                 {
