@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 27038 2010-03-04 14:48:14Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 27040 2010-03-04 14:49:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -602,7 +602,7 @@ int pgmPhysIsValidLargePage(PVM pVM, RTGCPHYS GCPhys, PPGMPAGE pLargePage)
     if (i == _2M/PAGE_SIZE)
     {
         PGM_PAGE_SET_PDE_TYPE(pLargePage, PGM_PAGE_PDE_TYPE_PDE);
-        Log(("pgmPhysIsValidLargePage: page %RGp can be reused!\n", GCPhys));
+        Log(("pgmPhysIsValidLargePage: page %RGp can be reused!\n", GCPhys - _2M));
         return VINF_SUCCESS;
     }
 
