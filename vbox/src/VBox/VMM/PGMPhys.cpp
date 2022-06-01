@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 27749 2010-03-26 14:57:58Z vboxsync $ */
+/* $Id: PGMPhys.cpp 27750 2010-03-26 15:28:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1366,8 +1366,13 @@ int pgmR3PhysRamReset(PVM pVM)
                             ASMMemZeroPage(pvPage);
                         }
                         else
-                        if (    !PGM_PAGE_IS_ZERO(pPage)
-                            &&  !PGM_PAGE_IS_BALLOONED(pPage))
+                        if (PGM_PAGE_IS_BALLOONED(pPage))
+                        {
+                            /* Turn into a zero page; the balloon status is lost when the VM reboots. */
+                            PGM_PAGE_SET_STATE(pPage, PGM_PAGE_STATE_ZERO);
+                        }
+                        else
+                        if (!PGM_PAGE_IS_ZERO(pPage))
                         {
                             rc = pgmPhysFreePage(pVM, pReq, &cPendingPages, pPage, pRam->GCPhys + ((RTGCPHYS)iPage << PAGE_SHIFT));
                             AssertLogRelRCReturn(rc, rc);
