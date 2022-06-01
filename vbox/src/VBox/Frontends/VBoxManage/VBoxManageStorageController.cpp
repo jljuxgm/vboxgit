@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 24505 2009-11-09 13:47:06Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 24678 2009-11-15 16:07:51Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -59,7 +59,7 @@ static const RTGETOPTDEF g_aStorageAttachOptions[] =
 
 int handleStorageAttach(HandlerArg *a)
 {
-    int c;
+    int c = VERR_INTERNAL_ERROR;        /* initialized to shut up gcc */
     HRESULT rc = S_OK;
     ULONG port   = ~0U;
     ULONG device = ~0U;

@@ -1,4 +1,4 @@
-/* $Id: VBoxDMG.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: VBoxDMG.cpp 24678 2009-11-15 16:07:51Z vboxsync $ */
 /** @file
  * VBoxDMG - Intepreter for Apple Disk Images (DMG).
  */
@@ -464,7 +464,7 @@ static bool vboxdmgUdifCkSumIsValid(PCVBOXUDIFCKSUM pCkSum, const char *pszPrefi
 }
 
 
-/** @copydoc VBOXHDDBACKEND::pfnOpen */
+/** @copydoc VBOXHDDBACKEND::pfnClose */
 static DECLCALLBACK(int) vboxdmgClose(void *pvBackendData, bool fDelete)
 {
     PVBOXDMG pThis = (PVBOXDMG)pvBackendData;

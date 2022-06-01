@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 23144 2009-09-18 16:36:06Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 24678 2009-11-15 16:07:51Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -280,7 +280,7 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
     size_t cbNeeded;
     char *pBuf, *pNext;
     int aiMib[6];
-    unsigned short u16DefaultIface;
+    unsigned short u16DefaultIface = 0; /* initialized to shut up gcc */
 
     /* Get the index of the interface associated with default route. */
     rc = getDefaultIfaceIndex(&u16DefaultIface);

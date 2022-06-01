@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 24678 2009-11-15 16:07:51Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -1025,7 +1025,7 @@ static int RTLDRELF_NAME(Open)(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH 
     int rc = pReader->pfnRead(pReader, &pModElf->Ehdr, sizeof(pModElf->Ehdr), 0);
     if (RT_SUCCESS(rc))
     {
-        RTLDRARCH enmArchImage;
+        RTLDRARCH enmArchImage = RTLDRARCH_INVALID; /* shut up gcc */
         rc = RTLDRELF_NAME(ValidateElfHeader)(&pModElf->Ehdr, pszLogName, cbRawImage, &enmArchImage);
         if (RT_SUCCESS(rc))
         {

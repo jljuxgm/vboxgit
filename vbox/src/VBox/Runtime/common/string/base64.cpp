@@ -1,4 +1,4 @@
-/* $Id: base64.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: base64.cpp 24678 2009-11-15 16:07:51Z vboxsync $ */
 /** @file
  * IPRT - Base64, MIME content transfer encoding.
  */
@@ -251,7 +251,7 @@ RTDECL(int) RTBase64Decode(const char *pszString, void *pvData, size_t cbData, s
     /*
      * Process input in groups of 4 input / 3 output chars.
      */
-    uint8_t     u8Trio[3];
+    uint8_t     u8Trio[3] = { 0, 0, 0 }; /* shuts up gcc */
     uint8_t    *pbData    = (uint8_t *)pvData;
     uint8_t     u8        = BASE64_INVALID;
     unsigned    c6Bits    = 0;

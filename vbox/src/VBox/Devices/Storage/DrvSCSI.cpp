@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 24245 2009-11-02 10:26:46Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 24678 2009-11-15 16:07:51Z vboxsync $ */
 /** @file
  *
  * VBox storage drivers:
@@ -609,9 +609,9 @@ static int drvscsiProcessRequestOne(PDRVSCSI pThis, PPDMSCSIREQUEST pRequest)
     int rc = VINF_SUCCESS;
     int iTxDir;
     int rcCompletion;
-    uint64_t uOffset;
-    uint32_t cbToTransfer;
-    uint32_t cSegmentsLeft;
+    uint64_t uOffset       = UINT64_MAX;    /* initialized to shut up gcc warnings. */
+    uint32_t cbToTransfer  = UINT32_MAX;    /* ditto */
+    uint32_t cSegmentsLeft = UINT32_MAX;    /* ditto */
 
     LogFlowFunc(("Entered\n"));
 
