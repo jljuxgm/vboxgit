@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 28944 2010-04-30 17:49:02Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 28950 2010-04-30 23:22:53Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -4503,7 +4503,7 @@ void *VirtualBox::CallbackEvent::handler()
                 if (itOrg != mVirtualBox->m->llCallbacks.end())
                     itOrg->setDontCallAgain(mWhat);
             }
-            else if (FAILED_DEAD_INTERFACE(rc))
+            else if (FAILED_DEAD_INTERFACE(hrc))
                 mVirtualBox->removeDeadCallback(it->ptrICb);
         }
     }
