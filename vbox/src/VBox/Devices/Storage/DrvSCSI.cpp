@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 26837 2010-02-26 12:35:54Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -216,7 +216,9 @@ DECLINLINE(int) drvscsiCmdError(PPDMSCSIREQUEST pRequest, uint8_t uSCSISenseKey,
  */
 DECLINLINE(int) drvscsiCmdOk(PPDMSCSIREQUEST pRequest)
 {
-    AssertMsgReturn(pRequest->cbSenseBuffer >= 18, ("Sense buffer is not big enough\n"), SCSI_STATUS_OK);
+    if (pRequest->cbSenseBuffer == 0)
+        return SCSI_STATUS_OK;
+
     AssertMsgReturn(pRequest->pbSenseBuffer, ("Sense buffer pointer is NULL\n"), SCSI_STATUS_OK);
     memset(pRequest->pbSenseBuffer, 0, pRequest->cbSenseBuffer);
     /*
