@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 26936 2010-03-02 10:45:01Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 27062 2010-03-05 09:30:34Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -588,6 +588,12 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--list]\n"
                  "                            [*|host|<vmname> [<metric_list>]]\n\n"
                  "VBoxManage metrics          query [*|host|<vmname> [<metric_list>]]\n\n"
+                 "VBoxManage metrics          enable\n"
+                 "                            [--list]\n"
+                 "                            [*|host|<vmname> [<metric_list>]]\n\n"
+                 "VBoxManage metrics          disable\n"
+                 "                            [--list]\n"
+                 "                            [*|host|<vmname> [<metric_list>]]\n\n"
                  "VBoxManage metrics          collect\n"
                  "                            [--period <seconds>]\n"
                  "                            [--samples <count>]\n"
