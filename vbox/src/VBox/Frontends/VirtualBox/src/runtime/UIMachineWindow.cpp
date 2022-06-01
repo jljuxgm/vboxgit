@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 26898 2010-02-28 19:46:25Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 26919 2010-03-01 15:07:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -356,93 +356,6 @@ void UIMachineWindow::prepareConsoleConnections()
 {
     /* Machine state-change updater: */
     QObject::connect(uisession(), SIGNAL(sigMachineStateChange()), machineWindow(), SLOT(sltMachineStateChanged()));
-}
-
-void UIMachineWindow::prepareMenuMachine()
-{
-    QMenu *menu = machineLogic()->actionsPool()->action(UIActionIndex_Menu_Machine)->menu();
-
-    menu->clear();
-
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Toggle_Fullscreen));
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Toggle_Seamless));
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Toggle_GuestAutoresize));
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_AdjustWindow));
-    menu->addSeparator();
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Toggle_MouseIntegration));
-    menu->addSeparator();
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_TypeCAD));
-#ifdef Q_WS_X11
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_TypeCABS));
-#endif
-    menu->addSeparator();
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_TakeSnapshot));
-    menu->addSeparator();
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_InformationDialog));
-    menu->addSeparator();
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Toggle_Pause));
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_Reset));
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_Shutdown));
-#ifndef Q_WS_MAC
-    menu->addSeparator();
-#endif /* Q_WS_MAC */
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_Close));
-}
-
-void UIMachineWindow::prepareMenuDevices()
-{
-    QMenu *menu = machineLogic()->actionsPool()->action(UIActionIndex_Menu_Devices)->menu();
-
-    menu->clear();
-
-    /* Devices submenu */
-    menu->addMenu(machineLogic()->actionsPool()->action(UIActionIndex_Menu_OpticalDevices)->menu());
-    menu->addMenu(machineLogic()->actionsPool()->action(UIActionIndex_Menu_FloppyDevices)->menu());
-    menu->addMenu(machineLogic()->actionsPool()->action(UIActionIndex_Menu_USBDevices)->menu());
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_NetworkAdaptersDialog));
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_SharedFoldersDialog));
-    menu->addSeparator();
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Toggle_VRDP));
-    menu->addSeparator();
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_InstallGuestTools));
-}
-
-#ifdef VBOX_WITH_DEBUGGER_GUI
-void UIMachineWindow::prepareMenuDebug()
-{
-    QMenu *menu = machineLogic()->actionsPool()->action(UIActionIndex_Menu_Debug)->menu();
-
-    menu->clear();
-
-    /* Debug submenu */
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_Statistics));
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_CommandLine));
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Toggle_Logging));
-}
-#endif /* VBOX_WITH_DEBUGGER_GUI */
-
-void UIMachineWindow::prepareMenuHelp()
-{
-    QMenu *menu = machineLogic()->actionsPool()->action(UIActionIndex_Menu_Help)->menu();
-
-    menu->clear();
-
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_Help));
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_Web));
-    menu->addSeparator();
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_ResetWarnings));
-    menu->addSeparator();
-
-#ifdef VBOX_WITH_REGISTRATION
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_Register));
-#endif
-
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_Update));
-
-#ifndef Q_WS_MAC
-    menu->addSeparator();
-#endif /* Q_WS_MAC */
-    menu->addAction(machineLogic()->actionsPool()->action(UIActionIndex_Simple_About));
 }
 
 void UIMachineWindow::prepareMachineViewContainer()
