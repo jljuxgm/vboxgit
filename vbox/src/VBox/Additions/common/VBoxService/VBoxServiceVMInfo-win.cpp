@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 24686 2009-11-16 10:14:48Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 26071 2010-01-27 15:01:07Z vboxsync $ */
 /** @file
  * VBoxVMInfo-win - Virtual machine (guest) information for the host.
  */
@@ -223,8 +223,11 @@ BOOL VBoxServiceVMInfoWinIsLoggedIn(VBOXSERVICEVMINFOUSER* a_pUserInfo,
             VBoxServiceVerbose(0, "Authentication pkg name too long (%d bytes) for buffer! Name will be truncated.\n", iLength);
             iLength = sizeof(a_pUserInfo->szAuthenticationPackage) - sizeof(TCHAR);
         }
-        wcsncpy (a_pUserInfo->szAuthenticationPackage, usBuffer, iLength);
-        wcscat (a_pUserInfo->szAuthenticationPackage, L"");     /* Add terminating null char. */
+        if (iLength)
+        {
+            wcsncpy (a_pUserInfo->szAuthenticationPackage, usBuffer, iLength);
+            wcscat (a_pUserInfo->szAuthenticationPackage, L"");     /* Add terminating null char. */
+        }
 
         /* Get logon domain. */
         usBuffer = (sessionData->LogonDomain).Buffer;
@@ -234,8 +237,11 @@ BOOL VBoxServiceVMInfoWinIsLoggedIn(VBOXSERVICEVMINFOUSER* a_pUserInfo,
             VBoxServiceVerbose(0, "Logon domain name too long (%d bytes) for buffer! Name will be truncated.\n", iLength);
             iLength = sizeof(a_pUserInfo->szLogonDomain) - sizeof(TCHAR);
         }
-        wcsncpy (a_pUserInfo->szLogonDomain, usBuffer, iLength);
-        wcscat (a_pUserInfo->szLogonDomain, L"");       /* Add terminating null char. */
+        if (iLength)
+        {
+            wcsncpy (a_pUserInfo->szLogonDomain, usBuffer, iLength);
+            wcscat (a_pUserInfo->szLogonDomain, L"");       /* Add terminating null char. */
+        }
 
         /* Only handle users which can login interactively or logged in remotely over native RDP. */
         if (   (((SECURITY_LOGON_TYPE)sessionData->LogonType == Interactive)
