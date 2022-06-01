@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 29620 2010-05-18 12:15:55Z vboxsync $ */
+/* $Id: Performance.cpp 29628 2010-05-18 12:48:27Z vboxsync $ */
 
 /** @file
  *
@@ -165,7 +165,6 @@ int CollectorGuestHAL::preCollect(const CollectorHints& /* hints */, uint64_t iT
     {
         ULONG ulMemAllocTotal, ulMemFreeTotal, ulMemBalloonTotal, ulMemSharedTotal, ulMemShared;
 
-        /** todo shared stats. */
         mGuest->InternalGetStatistics(&mCpuUser, &mCpuKernel, &mCpuIdle,
                                       &mMemTotal, &mMemFree, &mMemBalloon, &ulMemShared, &mMemCache,
                                       &mPageTotal, &ulMemAllocTotal, &ulMemFreeTotal, &ulMemBalloonTotal, &ulMemSharedTotal);
