@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 22813 2009-09-07 14:27:59Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 26699 2010-02-23 11:24:40Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -147,6 +147,21 @@ int darwinWindowToolBarHeight (QWidget *aWidget)
     NOREF (aWidget);
     return 0;
 #endif /* QT_MAC_USE_COCOA */
+}
+
+bool darwinSetFrontMostProcess()
+{
+    ProcessSerialNumber psn = { 0, kCurrentProcess };
+    return ::SetFrontProcess(&psn) == 0;
+}
+
+uint64_t darwinGetCurrentProcessId()
+{
+    uint64_t processId = 0;
+    ProcessSerialNumber psn = { 0, kCurrentProcess };
+    if (::GetCurrentProcess(&psn) == 0)
+        processId = RT_MAKE_U64(psn.lowLongOfPSN, psn.highLongOfPSN);
+    return processId;
 }
 
 CGContextRef darwinToCGContextRef (QWidget *aWidget)
