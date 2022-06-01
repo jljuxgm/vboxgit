@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 25326 2009-12-11 13:09:40Z vboxsync $ */
+/* $Id: MachineImpl.cpp 25330 2009-12-11 14:09:45Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -9159,7 +9159,7 @@ STDMETHODIMP SessionMachine::AdoptSavedState (IN_BSTR aSavedStateFile)
 {
     LogFlowThisFunc(("\n"));
 
-    AssertReturn(aSavedStateFile, E_INVALIDARG);
+    CheckComArgStrNotEmptyOrNull(aSavedStateFile);
 
     AutoCaller autoCaller(this);
     AssertComRCReturn (autoCaller.rc(), autoCaller.rc());
