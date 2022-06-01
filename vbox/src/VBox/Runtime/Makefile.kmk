@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26218 2010-02-03 21:24:13Z vboxsync $
+# $Id: Makefile.kmk 26222 2010-02-03 21:42:09Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1548,7 +1548,7 @@ ifdef VBOX_WITH_RAW_MODE
  #
  # RuntimeGC - Guest context library.
  #
- RuntimeGC_TEMPLATE      = VBOXGC
+ RuntimeGC_TEMPLATE      = VBoxRc
  RuntimeGC_DEFS          = IN_RT_GC RT_WITH_VBOX
  RuntimeGC_INCS          = include
  RuntimeGC_SOURCES       = \

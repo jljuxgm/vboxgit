@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26218 2010-02-03 21:24:13Z vboxsync $
+# $Id: Makefile.kmk 26222 2010-02-03 21:42:09Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -228,7 +228,7 @@ tstLdr-2_LIBS = \
 	$(PATH_LIB)/DisasmR3$(VBOX_SUFF_LIB)
 
 ifdef VBOX_WITH_RAW_MODE
- tstLdrObj_TEMPLATE = VBOXGC
+ tstLdrObj_TEMPLATE = VBoxRc
  tstLdrObj_INST = $(INST_TESTCASE)
  tstLdrObj_SYSSUFF = .gc
  tstLdrObj_SOURCES = tstLdrObj.cpp

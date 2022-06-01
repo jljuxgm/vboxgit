@@ -1,8 +1,8 @@
-/* $Id: tstDeviceStructSizeRC.cpp 26172 2010-02-02 20:41:40Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 26222 2010-02-03 21:42:09Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
- * This is built using the VBOXGC template but linked into a host
+ * This is built using the VBoxRc template but linked into a host
  * ring-3 executable, rather hacky.
  */
 

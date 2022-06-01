@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25946 2010-01-20 23:52:24Z vboxsync $
+# $Id: Makefile.kmk 26222 2010-02-03 21:42:09Z vboxsync $
 ## @file
 # Sub-Makefile for the device testcases.
 #
@@ -50,7 +50,7 @@ ifdef VBOX_WITH_RAW_MODE
  # The testcase generator.
  #
  PROGRAMS += tstDeviceStructSizeRC
- tstDeviceStructSizeRC_TEMPLATE  = VBOXGCEXE
+ tstDeviceStructSizeRC_TEMPLATE  = VBoxRcExe
  tstDeviceStructSizeRC_DEFS      = VBOX_WITH_RAW_MODE
  ifdef VBOX_WITH_USB
   tstDeviceStructSizeRC_DEFS    += VBOX_WITH_USB
