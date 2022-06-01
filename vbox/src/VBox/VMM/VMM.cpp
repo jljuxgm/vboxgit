@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 30072 2010-06-07 13:54:47Z vboxsync $ */
+/* $Id: VMM.cpp 30113 2010-06-09 12:34:29Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1749,7 +1749,7 @@ VMMR3DECL(int) VMMR3EmtRendezvous(PVM pVM, uint32_t fFlags, PFNVMMEMTRENDEZVOUS 
          * Get the return code and clean up a little bit.
          */
         int rcMy = pVM->vmm.s.i32RendezvousStatus;
-        ASMAtomicWritePtr((void * volatile *)&pVM->vmm.s.pfnRendezvous, NULL);
+        ASMAtomicWriteNullPtr((void * volatile *)&pVM->vmm.s.pfnRendezvous);
 
         ASMAtomicWriteU32(&pVM->vmm.s.u32RendezvousLock, 0);
 
