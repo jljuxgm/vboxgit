@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29097 2010-05-05 16:34:58Z vboxsync $
+# $Id: Makefile.kmk 29098 2010-05-05 16:47:23Z vboxsync $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -86,7 +86,7 @@ DLLS += VBoxJXpcom
 
 BLDPROGS += genjifaces
 
-genjifaces_TEMPLATE = XPCOMBLDPROG
+genjifaces_TEMPLATE = XPCOMEXE
 genjifaces_INCS     =    \
         src
 genjifaces_DEFS     =    \
