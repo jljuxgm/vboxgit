@@ -1,4 +1,4 @@
-/* $Id: Builtins.cpp 26176 2010-02-02 22:20:13Z vboxsync $ */
+/* $Id: Builtins.cpp 26473 2010-02-12 17:37:46Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -318,6 +318,14 @@ extern "C" DECLEXPORT(int) VBoxUsbRegister(PCPDMUSBREGCB pCallbacks, uint32_t u3
     if (RT_FAILURE(rc))
         return rc;
 # endif
+
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbHidKbd);
+    if (RT_FAILURE(rc))
+        return rc;
+
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbHidMou);
+    if (RT_FAILURE(rc))
+        return rc;
 
     return VINF_SUCCESS;
 }

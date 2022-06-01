@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26404 2010-02-10 10:32:37Z vboxsync $
+# $Id: Makefile.kmk 26473 2010-02-12 17:37:46Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -286,6 +286,8 @@ DevicesR3_INCS          = \
 
 DevicesR3_SOURCES       = \
 	Input/DevPS2.cpp \
+	Input/UsbKbd.cpp \
+	Input/UsbMouse.cpp \
 	Bus/DevPCI.cpp \
 	Graphics/DevVGA.cpp \
 	Storage/DevATA.cpp \
