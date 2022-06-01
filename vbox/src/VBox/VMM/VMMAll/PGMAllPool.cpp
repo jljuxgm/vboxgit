@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 27702 2010-03-25 13:05:16Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 27704 2010-03-25 13:18:31Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3038,7 +3038,7 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
                     Log(("i=%d cRefs=%d\n", i, cRefs--));
                 }
 #endif
-            AssertFatalMsgFailed(("cRefs=%d iFirstPresent=%d cPresent=%d\n", cRefs, pPage->iFirstPresent, pPage->cPresent));
+            AssertFatalMsgFailed(("cRefs=%d iFirstPresent=%d cPresent=%d u32=%RX32 poolkind=%x\n", cRefs, pPage->iFirstPresent, pPage->cPresent, u32, pPage->enmKind));
             break;
         }
 
@@ -3113,7 +3113,7 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
                     Log(("i=%d cRefs=%d\n", i, cRefs--));
                 }
 #endif
-            AssertFatalMsgFailed(("cRefs=%d iFirstPresent=%d cPresent=%d u64=%RX64\n", cRefs, pPage->iFirstPresent, pPage->cPresent, u64));
+            AssertFatalMsgFailed(("cRefs=%d iFirstPresent=%d cPresent=%d u64=%RX64 poolkind=%x\n", cRefs, pPage->iFirstPresent, pPage->cPresent, u64, pPage->enmKind));
             break;
         }
 
