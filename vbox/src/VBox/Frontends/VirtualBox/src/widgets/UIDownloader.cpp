@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.cpp 27401 2010-03-16 13:16:47Z vboxsync $ */
+/* $Id: UIDownloader.cpp 27691 2010-03-25 10:15:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -43,7 +43,7 @@ UIMiniProcessWidget::UIMiniProcessWidget(QWidget *pParent /* = 0 */)
     m_pProgressBar->setValue(0);
 
     /* Cancel Button setup */
-    m_pCancelButton->setFocusPolicy(Qt::TabFocus);
+    m_pCancelButton->setFocusPolicy(Qt::NoFocus);
     m_pCancelButton->removeBorder();
     connect(m_pCancelButton, SIGNAL(clicked()),
             this, SIGNAL(sigCancel()));
