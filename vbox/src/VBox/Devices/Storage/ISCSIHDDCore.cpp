@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 26959 2010-03-02 17:08:52Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 26960 2010-03-02 17:11:36Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -941,7 +941,7 @@ restart:
     {
         rc = iscsiTransportOpen(pImage);
         if (RT_FAILURE(rc))
-        goto out;
+            goto out;
     }
 
     pImage->state = ISCSISTATE_IN_LOGIN;
