@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 26136 2010-02-01 17:45:40Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 26326 2010-02-08 13:22:24Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -26,6 +26,7 @@
 #include <windows.h>
 #include <wtsapi32.h>       /* For WTS* calls. */
 #include <psapi.h>          /* EnumProcesses. */
+#include <Ntsecapi.h>       /* Needed for process security information. */
 
 #include <iprt/assert.h>
 #include <iprt/mem.h>
