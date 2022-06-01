@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 27461 2010-03-17 17:33:19Z vboxsync $ */
+/* $Id: DevPcBios.cpp 27469 2010-03-18 09:39:23Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1084,7 +1084,6 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
         PCFGMNODE   pCfgNetBootDevice;
         uint16_t    u16BusDevFn;
         char        szIndex[] = "?";
-        int         i;
 
         Assert(pCfgNetBoot);
         for (i = 0; i < NET_BOOT_DEVS; ++i)
