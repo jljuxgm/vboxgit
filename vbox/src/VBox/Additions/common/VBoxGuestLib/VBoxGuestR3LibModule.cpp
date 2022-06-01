@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibModule.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxGuestR3LibModule.cpp 29307 2010-05-10 15:18:22Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared modules.
  */
@@ -60,6 +60,16 @@ VBGLR3DECL(int) VbglR3RegisterSharedModule(char *pszModuleName, char *pszVersion
     pReq->GCBaseAddr    = GCBaseAddr;
     pReq->cbModule      = cbModule;
     pReq->cRegions      = cRegions;
+#ifdef RT_OS_WINDOWS
+# if ARCH_BITS == 32
+    pReq->enmGuestOS    = VBOXOSFAMILY_Windows32;
+# else
+    pReq->enmGuestOS    = VBOXOSFAMILY_Windows64;
+# endif
+#else
+    /** todo */
+    pReq->enmGuestOS    = VBOXOSFAMILY_unknown;
+#endif
     for (unsigned i = 0; i < cRegions; i++)
         pReq->aRegions[i] = pRegions[i];
 
@@ -104,7 +114,7 @@ VBGLR3DECL(int) VbglR3UnregisterSharedModule(char *pszModuleName, char *pszVersi
 }
 
 /**
- * Checks regsitered modules for shared pages
+ * Checks registered modules for shared pages
  *
  * @returns IPRT status code.
  */
@@ -114,5 +124,21 @@ VBGLR3DECL(int) VbglR3CheckSharedModules()
 
     vmmdevInitRequest(&Req.header, VMMDevReq_CheckSharedModules);
     return vbglR3GRPerform(&Req.header);
+}
+
+/**
+ * Checks if page sharing is enabled.
+ *
+ * @returns true/false enabled/disabled
+ */
+VBGLR3DECL(bool) VbglR3PageSharingIsEnabled()
+{
+    VMMDevPageSharingStatusRequest Req;
+
+    vmmdevInitRequest(&Req.header, VMMDevReq_GetPageSharingStatus);
+    int rc = vbglR3GRPerform(&Req.header);
+    if (RT_SUCCESS(rc))
+        return Req.fEnabled;
+    return false;
 }
 
