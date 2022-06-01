@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 30202 2010-06-15 14:52:31Z vboxsync $ */
+/* $Id: PGMR0SharedPage.cpp 30284 2010-06-17 11:52:19Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -86,6 +86,7 @@ VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PGVM pGVM, VMCPUID idCpu, PGMMSHA
             RTGCPHYS GCPhys;
             uint64_t fFlags;
 
+            /** todo: inefficient to fetch each guest page like this... */
             rc = PGMGstGetPage(pVCpu, GCRegion, &fFlags, &GCPhys);
             if (    rc == VINF_SUCCESS
                 &&  !(fFlags & X86_PTE_RW)) /* important as we make assumptions about this below! */
