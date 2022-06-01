@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29096 2010-05-05 16:25:23Z vboxsync $
+# $Id: Makefile.kmk 29097 2010-05-05 16:34:58Z vboxsync $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -100,6 +100,7 @@ genjifaces_LIBS     =                        \
 	$(PATH_LIB)/VBoxCOM$(VBOX_SUFF_LIB)  \
 	$(PATH_BIN)/VBoxXPCOM$(VBOX_SUFF_DLL) \
 	$(PATH_BIN)/VBoxRT$(VBOX_SUFF_DLL)
+genjifaces_DEPS = $(PATH_TARGET)/VBox-xpcom-idl-timestamp
 genjifaces_INST = $(INST_BIN)
 
 #
