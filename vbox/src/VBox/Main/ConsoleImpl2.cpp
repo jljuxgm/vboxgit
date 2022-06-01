@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 25826 2010-01-14 10:59:36Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 25827 2010-01-14 11:02:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2854,7 +2854,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             else
             {
 #ifdef RT_OS_SOLARIS
-                /** Grab the IP number from the 'vboxnetX' instance number and add one (at least on Solaris) */
+                /* Grab the IP number from the 'vboxnetX' instance number and add one (at least on Solaris) */
                 const char *pszInstance = pszHifName;
                 pszInstance += sizeof("vboxnet") - 1;
                 int Instance = atoi(pszInstance);
