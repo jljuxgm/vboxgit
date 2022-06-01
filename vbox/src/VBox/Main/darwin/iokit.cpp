@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 23134 2009-09-18 14:19:02Z vboxsync $ */
+/* $Id: iokit.cpp 25991 2010-01-25 11:03:13Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -1476,7 +1476,7 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
             if (krc == KERN_SUCCESS)
             {
                 CFMutableDictionaryRef IfPropsRef = 0;
-                kern_return_t krc = IORegistryEntryCreateCFProperties(EtherIfService, &IfPropsRef, kCFAllocatorDefault, kNilOptions);
+                krc = IORegistryEntryCreateCFProperties(EtherIfService, &IfPropsRef, kCFAllocatorDefault, kNilOptions);
                 if (krc == KERN_SUCCESS)
                 {
                     /*
@@ -1537,7 +1537,7 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
                         CFIndex i;
 
                         /* look it up among the current services */
-                        for (CFIndex i = 0; i < cServices; i++)
+                        for (i = 0; i < cServices; i++)
                         {
                             SCNetworkServiceRef ServiceRef = (SCNetworkServiceRef)CFArrayGetValueAtIndex(ServicesRef, i);
                             SCNetworkInterfaceRef IfRef = SCNetworkServiceGetInterface(ServiceRef);
