@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 25958 2010-01-21 13:50:20Z vboxsync $ */
+/* $Id: REMAll.cpp 28284 2010-04-14 09:57:27Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -61,7 +61,7 @@ VMMDECL(void) REMNotifyInvalidatePage(PVM pVM, RTGCPTR GCPtrPage)
             return;
         }
 
-        CPUMSetChangedFlags(VMMGetCpu(pVM), CPUM_CHANGED_GLOBAL_TLB_FLUSH); /** @todo this should be flagged globally, not locally! ... this array should be per-cpu technically speaking. */
+        CPUMSetChangedFlags(VMMGetCpu(pVM), CPUM_CHANGED_GLOBAL_TLB_FLUSH); /** @todo this array should be per-cpu technically speaking. */
         ASMAtomicWriteU32(&pVM->rem.s.cInvalidatedPages, 0); /** @todo leave this alone? Optimize this code? */
 
         EMRemUnlock(pVM);
