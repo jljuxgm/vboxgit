@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-solaris.c 25530 2009-12-20 23:28:22Z vboxsync $ */
+/* $Id: assert-r0drv-solaris.c 25531 2009-12-20 23:30:46Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, Solaris.
  */
@@ -70,7 +70,7 @@ RTR0DECL(void) RTR0AssertPanicSystem(void)
     while (psz < pszEnd && (*psz == ' ' || *psz == '\t' || *psz == '\n' || *psz == '\r'))
         psz++;
 
-    if (psz >= pszEnd || *psz)
+    if (psz < pszEnd && *psz)
         assfail(psz, g_pszRTAssertFile, g_u32RTAssertLine);
     else
         assfail(g_szRTAssertMsg1, g_pszRTAssertFile, g_u32RTAssertLine);
