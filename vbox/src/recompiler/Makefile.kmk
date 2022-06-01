@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28990 2010-05-03 23:31:59Z vboxsync $
+# $Id: Makefile.kmk 28991 2010-05-03 23:54:42Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -266,6 +266,6 @@ testmath_DEFS           = MATHTEST_STANDALONE
 testmath_SOURCES        = Sun/testmath.c
 
 
-include $(KBUILD_PATH)/subfooter.kmk
 endif # new stuff
+include $(KBUILD_PATH)/subfooter.kmk
 
