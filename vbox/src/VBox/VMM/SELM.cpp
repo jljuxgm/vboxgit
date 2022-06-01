@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 25858 2010-01-15 13:23:31Z vboxsync $ */
+/* $Id: SELM.cpp 25862 2010-01-15 13:47:46Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -2012,7 +2012,7 @@ static int selmR3GetSelectorInfo64(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PDBGFSELINF
          * LDT - must locate the LDT first.
          */
         RTSEL SelLdt = CPUMGetGuestLDTR(pVCpu);
-        if (    (unsigned)(SelLdt & X86_SEL_MASK) < sizeof(X86DESC) /* the first selector is invalid, right? */
+        if (    (unsigned)(SelLdt & X86_SEL_MASK) < sizeof(X86DESC) /* the first selector is invalid, right? */ /** @todo r=bird: No, I don't think so */
             ||  (unsigned)(SelLdt & X86_SEL_MASK) + sizeof(X86DESC) - 1 > (unsigned)Gdtr.cbGdt)
             return VERR_INVALID_SELECTOR;
         GCPtrDesc = Gdtr.pGdt + (SelLdt & X86_SEL_MASK);
@@ -2224,7 +2224,7 @@ static int selmR3GetSelectorInfo32(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PDBGFSELINF
              * LDT - must locate the LDT first...
              */
             RTSEL SelLdt = CPUMGetGuestLDTR(pVCpu);
-            if (    (unsigned)(SelLdt & X86_SEL_MASK) < sizeof(X86DESC) /* the first selector is invalid, right? */
+            if (    (unsigned)(SelLdt & X86_SEL_MASK) < sizeof(X86DESC) /* the first selector is invalid, right? */ /** @todo r=bird: No, I don't think so */
                 ||  (unsigned)(SelLdt & X86_SEL_MASK) + sizeof(X86DESC) - 1 > (unsigned)Gdtr.cbGdt)
                 return VERR_INVALID_SELECTOR;
             GCPtrDesc = Gdtr.pGdt + (SelLdt & X86_SEL_MASK);
