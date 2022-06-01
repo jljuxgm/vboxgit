@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
+/* $Id: DrvVD.cpp 28258 2010-04-13 14:51:16Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -343,8 +343,8 @@ static DECLCALLBACK(int) drvvdAsyncIOOpen(void *pvUser, const char *pszLocation,
         rc = RTSemEventCreate(&pStorageBackend->EventSem);
         if (RT_SUCCESS(rc))
         {
-            rc = PDMDrvHlpPDMAsyncCompletionTemplateCreate(pThis->pDrvIns, &pStorageBackend->pTemplate,
-                                                           drvvdAsyncTaskCompleted, pStorageBackend, "AsyncTaskCompleted");
+            rc = PDMDrvHlpAsyncCompletionTemplateCreate(pThis->pDrvIns, &pStorageBackend->pTemplate,
+                                                        drvvdAsyncTaskCompleted, pStorageBackend, "AsyncTaskCompleted");
             if (RT_SUCCESS(rc))
             {
                 rc = PDMR3AsyncCompletionEpCreateForFile(&pStorageBackend->pEndpoint, pszLocation,

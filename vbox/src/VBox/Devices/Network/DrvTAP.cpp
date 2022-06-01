@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 28213 2010-04-12 15:15:51Z vboxsync $ */
+/* $Id: DrvTAP.cpp 28258 2010-04-13 14:51:16Z vboxsync $ */
 /** @file
  * DrvTAP - Universial TAP network transport driver.
  */
@@ -1115,7 +1115,7 @@ static DECLCALLBACK(int) drvTAPConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
     /*
      * Create the async I/O thread.
      */
-    rc = PDMDrvHlpPDMThreadCreate(pDrvIns, &pThis->pThread, pThis, drvTAPAsyncIoThread, drvTapAsyncIoWakeup, 128 * _1K, RTTHREADTYPE_IO, "TAP");
+    rc = PDMDrvHlpThreadCreate(pDrvIns, &pThis->pThread, pThis, drvTAPAsyncIoThread, drvTapAsyncIoWakeup, 128 * _1K, RTTHREADTYPE_IO, "TAP");
     AssertRCReturn(rc, rc);
 
 #ifdef VBOX_WITH_STATISTICS

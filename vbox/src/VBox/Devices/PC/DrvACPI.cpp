@@ -1,4 +1,4 @@
-/* $Id: DrvACPI.cpp 27327 2010-03-12 13:16:28Z vboxsync $ */
+/* $Id: DrvACPI.cpp 28258 2010-04-13 14:51:16Z vboxsync $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
@@ -981,8 +981,8 @@ static DECLCALLBACK(int) drvACPIConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
     /*
      * Start the poller thread.
      */
-    rc = PDMDrvHlpPDMThreadCreate(pDrvIns, &pThis->pPollerThread, pThis, drvACPIPoller,
-                                  drvACPIPollerWakeup, 0, RTTHREADTYPE_INFREQUENT_POLLER, "ACPI Poller");
+    rc = PDMDrvHlpThreadCreate(pDrvIns, &pThis->pPollerThread, pThis, drvACPIPoller,
+                               drvACPIPollerWakeup, 0, RTTHREADTYPE_INFREQUENT_POLLER, "ACPI Poller");
     if (RT_FAILURE(rc))
         return rc;
 

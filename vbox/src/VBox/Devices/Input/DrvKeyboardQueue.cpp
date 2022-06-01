@@ -1,4 +1,4 @@
-/* $Id: DrvKeyboardQueue.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: DrvKeyboardQueue.cpp 28258 2010-04-13 14:51:16Z vboxsync $ */
 /** @file
  * VBox input devices: Keyboard queue driver
  */
@@ -306,7 +306,7 @@ static DECLCALLBACK(int) drvKbdQueueConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
         return rc;
     }
 
-    rc = PDMDrvHlpPDMQueueCreate(pDrvIns, sizeof(DRVKBDQUEUEITEM), cItems, cMilliesInterval, drvKbdQueueConsumer, "Keyboard", &pDrv->pQueue);
+    rc = PDMDrvHlpQueueCreate(pDrvIns, sizeof(DRVKBDQUEUEITEM), cItems, cMilliesInterval, drvKbdQueueConsumer, "Keyboard", &pDrv->pQueue);
     if (RT_FAILURE(rc))
     {
         AssertMsgFailed(("Failed to create driver: cItems=%d cMilliesInterval=%d rc=%Rrc\n", cItems, cMilliesInterval, rc));

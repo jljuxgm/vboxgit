@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 26935 2010-03-02 10:32:28Z vboxsync $ */
+/* $Id: DrvMouseQueue.cpp 28258 2010-04-13 14:51:16Z vboxsync $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -343,7 +343,7 @@ static DECLCALLBACK(int) drvMouseQueueConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
         return rc;
     }
 
-    rc = PDMDrvHlpPDMQueueCreate(pDrvIns, sizeof(DRVMOUSEQUEUEITEM), cItems, cMilliesInterval, drvMouseQueueConsumer, "Mouse", &pDrv->pQueue);
+    rc = PDMDrvHlpQueueCreate(pDrvIns, sizeof(DRVMOUSEQUEUEITEM), cItems, cMilliesInterval, drvMouseQueueConsumer, "Mouse", &pDrv->pQueue);
     if (RT_FAILURE(rc))
     {
         AssertMsgFailed(("Failed to create driver: cItems=%d cMilliesInterval=%d rc=%Rrc\n", cItems, cMilliesInterval, rc));
