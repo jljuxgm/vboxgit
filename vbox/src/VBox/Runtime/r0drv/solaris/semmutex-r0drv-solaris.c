@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-solaris.c 28533 2010-04-20 17:38:34Z vboxsync $ */
+/* $Id: semmutex-r0drv-solaris.c 28551 2010-04-21 09:25:35Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Solaris.
  */
@@ -209,7 +209,7 @@ static int rtSemMutexSolarisRequestSleep(PRTSEMMUTEXINTERNAL pThis, RTMSINTERVAL
                 /*
                  * Interrupted by some signal.
                  */
-                rc= VERR_INTERRUPTED;
+                rc = VERR_INTERRUPTED;
             }
         }
         else
@@ -275,8 +275,7 @@ DECLINLINE(int) rtSemMutexSolarisRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMil
         rc = VINF_SUCCESS;
     }
     /*
-     * Not a recursion, make sure we don't sneak in when another thread
-     * is being woken up.
+     * Not a recursion, claim the unowned mutex if we're there are no waiters.
      */
     else if (   pThis->hOwnerThread == NIL_RTNATIVETHREAD
              && pThis->cWaiters == 0)
@@ -350,7 +349,7 @@ RTDECL(int) RTSemMutexRelease(RTSEMMUTEX hMtx)
             pThis->hOwnerThread = NIL_RTNATIVETHREAD;
 
             /*
-             * If there are any waiters, signal them.
+             * If there are any waiters, signal one of them.
              */
             if (pThis->cWaiters > 0)
                 cv_signal(&pThis->Cnd);
