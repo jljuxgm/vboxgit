@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.h 27293 2010-03-11 16:50:01Z vboxsync $ */
+/* $Id: alloc-ef.h 27295 2010-03-11 16:58:54Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -44,7 +44,7 @@
  * If defined the electric fence put up for ALL allocations by RTMemAlloc(),
  * RTMemAllocZ(), RTMemRealloc(), RTMemTmpAlloc() and RTMemTmpAllocZ().
  */
-#if 1
+#if 0// defined(DEBUG_bird)
 # define RTALLOC_USE_EFENCE
 #endif
 
