@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 23868 2009-10-19 14:22:42Z vboxsync $ */
+/* $Id: getopt.cpp 24140 2009-10-28 14:29:34Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -279,6 +279,18 @@ static int rtGetOptProcessValue(uint32_t fFlags, const char *pszValue, PRTGETOPT
     {
         case RTGETOPT_REQ_STRING:
             pValueUnion->psz = pszValue;
+            break;
+
+        case RTGETOPT_REQ_BOOL_ONOFF:
+            if (!RTStrICmp(pszValue, "on"))
+                pValueUnion->f = true;
+            else if (!RTStrICmp(pszValue, "off"))
+                pValueUnion->f = false;
+            else
+            {
+                pValueUnion->psz = pszValue;
+                return VERR_GETOPT_UNKNOWN_OPTION;
+            }
             break;
 
 #define MY_INT_CASE(req,type,memb,convfn) \
