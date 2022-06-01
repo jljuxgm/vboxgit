@@ -1,4 +1,4 @@
-/* $Id: iprt.h 22150 2009-08-11 09:41:58Z vboxsync $ */
+/* $Id: iprt.h 24824 2009-11-20 14:12:35Z vboxsync $ */
 /** @file
  * IPRT - Internal header for miscellaneous global defs and types.
  */
@@ -44,6 +44,13 @@
  && !defined(RT_NO_EXPORT_SYMBOL)
 # define bool linux_bool /* see r0drv/linux/the-linux-kernel.h */
 # include <linux/autoconf.h>
+# if defined(CONFIG_MODVERSIONS) && !defined(MODVERSIONS)
+#  include <linux/version.h>
+#  define MODVERSIONS
+#  if LINUX_VERSION_CODE < KERNEL_VERSION(2, 5, 71)
+#   include <linux/modversions.h>
+#  endif
+# endif
 # include <linux/module.h>
 # undef bool
 # define RT_EXPORT_SYMBOL(Name) EXPORT_SYMBOL(Name)
