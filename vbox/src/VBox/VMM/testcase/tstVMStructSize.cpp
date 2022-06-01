@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 25891 2010-01-18 13:07:21Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 25946 2010-01-20 23:52:24Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -392,11 +392,13 @@ int main()
     printf("info: struct UVMCPU: %d bytes\n", (int)sizeof(UVMCPU));
     CHECK_PADDING_UVMCPU(32, vm);
 
+#ifdef VBOX_WITH_RAW_MODE
     /*
-     * Compare HC and GC.
+     * Compare HC and RC.
      */
-    printf("tstVMStructSize: Comparing HC and GC...\n");
-#include "tstVMStructGC.h"
+    printf("tstVMStructSize: Comparing HC and RC...\n");
+# include "tstVMStructRC.h"
+#endif /* VBOX_WITH_RAW_MODE */
 
     /*
      * Report result.
