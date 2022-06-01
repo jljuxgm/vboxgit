@@ -1,10 +1,10 @@
-/* $Id: VBoxManageDisk.cpp 26917 2010-03-01 14:55:10Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 28205 2010-04-12 13:39:18Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
 
 /*
- * Copyright (C) 2006-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

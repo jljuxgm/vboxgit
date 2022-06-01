@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 27963 2010-04-02 17:13:34Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 28205 2010-04-12 13:39:18Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -184,17 +184,17 @@ public:
         return S_OK;
     }
 
-    STDMETHOD(OnSnapshotTaken) (IN_BSTR aMachineId, IN_BSTR aSnapshotId)
+    STDMETHOD(OnSnapshotTaken)(IN_BSTR aMachineId, IN_BSTR aSnapshotId)
     {
         return S_OK;
     }
 
-    STDMETHOD(OnSnapshotDiscarded) (IN_BSTR aMachineId, IN_BSTR aSnapshotId)
+    STDMETHOD(OnSnapshotDeleted)(IN_BSTR aMachineId, IN_BSTR aSnapshotId)
     {
         return S_OK;
     }
 
-    STDMETHOD(OnSnapshotChange) (IN_BSTR aMachineId, IN_BSTR aSnapshotId)
+    STDMETHOD(OnSnapshotChange)(IN_BSTR aMachineId, IN_BSTR aSnapshotId)
     {
         return S_OK;
     }

@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 28019 2010-04-06 17:12:04Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 28205 2010-04-12 13:39:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -451,11 +451,11 @@ public:
         return S_OK;
     }
 
-    STDMETHOD(OnSnapshotDiscarded) (IN_BSTR aMachineId, IN_BSTR aSnapshotId)
+    STDMETHOD(OnSnapshotDeleted) (IN_BSTR aMachineId, IN_BSTR aSnapshotId)
     {
         postEvent (new VBoxSnapshotEvent (QString::fromUtf16(aMachineId),
                                           QString::fromUtf16(aSnapshotId),
-                                          VBoxSnapshotEvent::Discarded));
+                                          VBoxSnapshotEvent::Deleted));
         return S_OK;
     }
 

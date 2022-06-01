@@ -1,4 +1,4 @@
-/* $Id: Performance.h 28058 2010-04-07 18:19:22Z vboxsync $ */
+/* $Id: Performance.h 28205 2010-04-12 13:39:18Z vboxsync $ */
 
 /** @file
  *
@@ -355,8 +355,8 @@ namespace pm
         SubMetric *mTotal;
         SubMetric *mUsed;
         SubMetric *mAvailable;
-        SubMetric *mAllocVMM; 
-        SubMetric *mFreeVMM; 
+        SubMetric *mAllocVMM;
+        SubMetric *mFreeVMM;
         SubMetric *mBalloonVMM;
     };
 
