@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 26937 2010-03-02 11:00:50Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 26938 2010-03-02 11:47:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -29,8 +29,6 @@
 #include "COMDefs.h"
 #include "VBoxGlobal.h"
 #include "VBoxProblemReporter.h"
-
-#include "UIFirstRunWzd.h"
 
 #include "UISession.h"
 #include "UIActionsPool.h"
@@ -173,20 +171,11 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     /* If we are not started yet: */
     if (!uisession()->isRunning() && !uisession()->isPaused())
     {
+        prepareConsolePowerUp();
+
         /* Get current machine/console: */
         CMachine machine = session().GetMachine();
         CConsole console = session().GetConsole();
-
-        /* Notify user about mouse&keyboard auto-capturing: */
-        if (vboxGlobal().settings().autoCapture())
-            vboxProblem().remindAboutAutoCapture();
-
-        /* Shows first run wizard if necessary: */
-        if (uisession()->isFirstTimeStarted())
-        {
-            UIFirstRunWzd wzd(defaultMachineWindow()->machineWindow(), machine);
-            wzd.exec();
-        }
 
         /* Start VM: */
         CProgress progress = vboxGlobal().isStartPausedEnabled() || vboxGlobal().isDebuggerAutoShowEnabled() ?

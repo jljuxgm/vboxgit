@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 26926 2010-03-01 22:19:43Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 26938 2010-03-02 11:47:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -36,6 +36,8 @@
 #include "VBoxVMInformationDlg.h"
 #include "VBoxVMSettingsNetwork.h"
 #include "VBoxVMSettingsSF.h"
+#include "UIFirstRunWzd.h"
+
 //#include "VBoxDownloaderWgt.h"
 
 #include "QIFileDialog.h"
@@ -600,6 +602,20 @@ void UIMachineLogic::prepareRequiredFeatures()
     /* Close request in case of features are not ready and user wish to close: */
     if (isPreventAutoStart())
         QTimer::singleShot(0, uisession(), SLOT(sltCloseVirtualSession()));
+}
+
+void UIMachineLogic::prepareConsolePowerUp()
+{
+    /* Notify user about mouse&keyboard auto-capturing: */
+    if (vboxGlobal().settings().autoCapture())
+        vboxProblem().remindAboutAutoCapture();
+
+    /* Shows first run wizard if necessary: */
+    if (uisession()->isFirstTimeStarted())
+    {
+        UIFirstRunWzd wzd(defaultMachineWindow()->machineWindow(), session().GetMachine());
+        wzd.exec();
+    }
 }
 
 void UIMachineLogic::sltMachineStateChanged()
