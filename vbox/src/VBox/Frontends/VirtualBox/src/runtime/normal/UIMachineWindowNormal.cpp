@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 27098 2010-03-05 14:44:17Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 27130 2010-03-06 12:39:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -49,6 +49,10 @@ UIMachineWindowNormal::UIMachineWindowNormal(UIMachineLogic *pMachineLogic, ulon
 {
     /* "This" is machine window: */
     m_pMachineWindow = this;
+
+    /* Set the main window in VBoxGlobal */
+    if (uScreenId == 0)
+        vboxGlobal().setMainWindow(this);
 
     /* Prepare window icon: */
     prepareWindowIcon();

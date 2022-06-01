@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 27064 2010-03-05 10:05:45Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 27130 2010-03-06 12:39:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -43,6 +43,10 @@ UIMachineWindowFullscreen::UIMachineWindowFullscreen(UIMachineLogic *pMachineLog
 {
     /* "This" is machine window: */
     m_pMachineWindow = this;
+
+    /* Set the main window in VBoxGlobal */
+    if (uScreenId == 0)
+        vboxGlobal().setMainWindow(this);
 
     /* Prepare window icon: */
     prepareWindowIcon();

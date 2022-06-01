@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27089 2010-03-05 13:59:37Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27130 2010-03-06 12:39:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -44,6 +44,10 @@ UIMachineWindowSeamless::UIMachineWindowSeamless(UIMachineLogic *pMachineLogic, 
 {
     /* "This" is machine window: */
     m_pMachineWindow = this;
+
+    /* Set the main window in VBoxGlobal */
+    if (uScreenId == 0)
+        vboxGlobal().setMainWindow(this);
 
     /* Prepare window icon: */
     prepareWindowIcon();
