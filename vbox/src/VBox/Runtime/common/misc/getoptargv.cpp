@@ -1,4 +1,4 @@
-/* $Id: getoptargv.cpp 26478 2010-02-13 03:40:17Z vboxsync $ */
+/* $Id: getoptargv.cpp 26525 2010-02-15 03:33:33Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing, Argument Vector.
  */
@@ -86,7 +86,7 @@ DECLINLINE(bool) rtGetOptIsAsciiInSet(char ch, const char *pszSeparators, size_t
         case 1: if (ch == pszSeparators[0]) return true;
             return false;
         default:
-            return memchr(pszSeparators, ch, cchSeparators);
+            return memchr(pszSeparators, ch, cchSeparators) != NULL;
     }
 }
 

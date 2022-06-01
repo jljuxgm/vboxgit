@@ -1,4 +1,4 @@
-/* $Id: fileaio-win.cpp 25727 2010-01-11 15:01:25Z vboxsync $ */
+/* $Id: fileaio-win.cpp 26525 2010-02-15 03:33:33Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Windows host platform.
  */
@@ -355,16 +355,17 @@ RTDECL(int) RTFileAioCtxSubmit(RTFILEAIOCTX hAioCtx, PRTFILEAIOREQ pahReqs, size
         PRTFILEAIOREQINTERNAL pReqInt = pahReqs[i];
         BOOL fSucceeded;
 
+        Assert(pReqInt->cbTransfer == (DWORD)pReqInt->cbTransfer);
         if (pReqInt->enmTransferDirection == TRANSFERDIRECTION_READ)
         {
             fSucceeded = ReadFile(pReqInt->hFile, pReqInt->pvBuf,
-                                  pReqInt->cbTransfer, NULL,
+                                  (DWORD)pReqInt->cbTransfer, NULL,
                                   &pReqInt->Overlapped);
         }
         else if (pReqInt->enmTransferDirection == TRANSFERDIRECTION_WRITE)
         {
             fSucceeded = WriteFile(pReqInt->hFile, pReqInt->pvBuf,
-                                   pReqInt->cbTransfer, NULL,
+                                   (DWORD)pReqInt->cbTransfer, NULL,
                                    &pReqInt->Overlapped);
         }
         else
