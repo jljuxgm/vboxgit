@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 29552 2010-05-17 14:26:02Z vboxsync $ */
+/* $Id: GuestImpl.cpp 29584 2010-05-17 19:43:35Z vboxsync $ */
 
 /** @file
  *
@@ -980,6 +980,11 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
                         {
                             rc = setError(VBOX_E_IPRT_ERROR,
                                           tr("The guest reported an unknown process status (%u)"), pData->u32Status);
+                        }
+                        else if (vrc == VERR_PERMISSION_DENIED)
+                        {
+                            rc = setError(VBOX_E_IPRT_ERROR,
+                                          tr("Invalid user/password credentials"));
                         }
                         else
                         {
