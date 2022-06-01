@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 24575 2009-11-11 09:54:23Z vboxsync $ */
+/* $Id: SSM.cpp 24613 2009-11-12 17:04:42Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -1470,12 +1470,10 @@ VMMR3_INT_DECL(int) SSMR3DeregisterDriver(PVM pVM, PPDMDRVINS pDrvIns, const cha
                 rc = VINF_SUCCESS;
                 continue;
             }
-            else if (pszName)
-            {
-                AssertMsgFailed(("Caller is not owner! Owner=%p Caller=%p %s\n",
-                                 pUnit->u.Drv.pDrvIns, pDrvIns, pszName));
-                return VERR_SSM_UNIT_NOT_OWNER;
-            }
+
+            AssertMsgReturn(!pszName,
+                            ("Caller is not owner! Owner=%p Caller=%p %s\n", pUnit->u.Drv.pDrvIns, pDrvIns, pszName),
+                            VERR_SSM_UNIT_NOT_OWNER);
         }
 
         /* next */
