@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 28558 2010-04-21 11:39:03Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 28561 2010-04-21 12:23:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -573,7 +573,14 @@ void VBoxVMInformationDlg::refreshStatistics()
         QString addRevision = m.GetGuestPropertyValue("/VirtualBox/GuestAdd/Revision");
         QString addVersionStr;
         if (!addVersion.isEmpty() && !addRevision.isEmpty())
-            addVersionStr = addVersion + " r" + m.GetGuestPropertyValue("/VirtualBox/GuestAdd/Revision");
+        {
+            QString addInfo = console.GetGuest().GetAdditionsVersion();
+            addVersionStr = (addInfo.isEmpty() ? "(" : "")
+                          + addVersion
+                          + " r"
+                          + m.GetGuestPropertyValue("/VirtualBox/GuestAdd/Revision")
+                          + (addInfo.isEmpty() ? ")" : "");
+        }
         else
             addVersionStr = tr ("Not Detected", "guest additions");
         QString osType = console.GetGuest().GetOSTypeId();
