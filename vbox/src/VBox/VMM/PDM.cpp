@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 24744 2009-11-17 22:33:38Z vboxsync $ */
+/* $Id: PDM.cpp 24748 2009-11-17 23:52:24Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1714,7 +1714,7 @@ VMMR3DECL(void) PDMR3PowerOff(PVM pVM)
      * The outer loop repeats until there are no more async requests.
      */
     unsigned cAsync;
-    for (;;)
+    for (unsigned iLoop = 0; ; iLoop++)
     {
         /*
          * Iterate thru the device instances and USB device instances,
