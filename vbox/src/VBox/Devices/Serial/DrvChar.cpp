@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 28101 2010-04-08 15:42:36Z vboxsync $ */
+/* $Id: DrvChar.cpp 28103 2010-04-08 16:03:10Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMICHARCONNECTOR / PDMICHARPORT.
  *
@@ -80,9 +80,8 @@ typedef struct DRVCHAR
     uint8_t                     aSendQueue[CHAR_MAX_SEND_QUEUE];
     uint32_t volatile           iSendQueueHead;
     uint32_t                    iSendQueueTail;
-    uint32_t                    cEntries;
+    uint32_t volatile           cEntries;
 
-    uintptr_t                   AlignmentPadding;
     /** Read/write statistics */
     STAMCOUNTER                 StatBytesRead;
     STAMCOUNTER                 StatBytesWritten;
