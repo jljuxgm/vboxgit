@@ -1,4 +1,4 @@
-/* $Id: slirp.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: slirp.h 28807 2010-04-27 10:43:09Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -408,7 +408,7 @@ int sscanf(const char *s, const char *format, ...);
 # define stderr NULL
 # define stdout NULL
 
-# ifdef DEBUG
+# ifdef VBOX_WITH_DEBUG_LIBALIAS
 #  define LIBALIAS_DEBUG
 # endif
 

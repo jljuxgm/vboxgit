@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28800 2010-04-27 08:22:32Z vboxsync $
+# $Id: Makefile.kmk 28807 2010-04-27 10:43:09Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -931,7 +931,8 @@ $(foreach file,$(VBOX_SLIRP_SOURCES),$(eval $(call def_vbox_slirp_cflags, Networ
 
 Drivers_SOURCES += $(VBOX_SLIRP_ALIAS_SOURCES)
 define def_vbox_slirp_alias_cflags
-  $(file)_DEFS += VBOX_SLIRP_ALIAS
+  $(file)_DEFS += VBOX_SLIRP_ALIAS \
+      $(if $(VBOX_WITH_DEBUG_LIBALIAS),VBOX_WITH_DEBUG_LIBALIAS,)
   $(file)_INCS += $(1)/slirp/libalias
   $(file)_INCS += $(1)/slirp
   $(file)_INCS += $(1)/slirp/dnsproxy
