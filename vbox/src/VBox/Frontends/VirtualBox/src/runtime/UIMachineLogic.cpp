@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 28540 2010-04-20 23:44:21Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 28610 2010-04-22 18:26:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -608,7 +608,8 @@ void UIMachineLogic::prepareDock()
     else
     {
         pDockDisablePreview->setChecked(true);
-        m_pDockPreviewSelectMonitorGroup->setEnabled(false);
+        if(m_pDockPreviewSelectMonitorGroup)
+            m_pDockPreviewSelectMonitorGroup->setEnabled(false);
     }
 
     /* Default to true if it is an empty value */
