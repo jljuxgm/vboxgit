@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 28804 2010-04-27 09:54:17Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 28805 2010-04-27 09:57:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -667,10 +667,10 @@ bool UINewVMWzdPage5::constructMachine()
 
     /* Create default storage controllers */
     QString ctrName = VBoxVMSettingsHD::tr("Storage Controller");
-    KStorageBus storageBus = type.GetRecommendedStorageBus();
+    KStorageBus ideBus = KStorageBus_IDE;
 
     // Add storage controller
-    m_Machine.AddStorageController(ctrName, storageBus);
+    m_Machine.AddStorageController(ctrName, ideBus);
 
     // Set storage controller type
     CStorageController ctr = m_Machine.GetStorageControllerByName(ctrName);
