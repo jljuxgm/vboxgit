@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 25398 2009-12-15 12:58:08Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 25399 2009-12-15 13:06:22Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -140,6 +140,8 @@ static int pdmR3CritSectEnterContended(PPDMCRITSECT pCritSect, RTNATIVETHREAD hN
 # ifdef PDMCRITSECT_STRICT
     RTTHREAD        hSelf    = RTThreadSelfAutoAdopt();
     RTLockValidatorCheckOrder(pCritSect->s.Core.pValidatorRec, hSelf, 0, NULL, 0, NULL);
+#else
+    RTTHREAD        hSelf    = RTThreadSelf();
 # endif
     for (;;)
     {
