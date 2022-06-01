@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 18357 2009-03-26 23:02:07Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 26296 2010-02-05 14:53:35Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -198,7 +198,8 @@ int main(int argc, char **argv)
         {
             for (int i = 3; i < argc; i++)
             {
-                TESTNEARSYM NearSym = {0};
+                TESTNEARSYM NearSym;
+                RT_ZERO(NearSym);
                 NearSym.Addr = (RTUINTPTR)RTStrToUInt64(argv[i]);
                 NearSym.aSyms[1].Value = ~(RTUINTPTR)0;
                 rc = RTLdrEnumSymbols(hLdrMod, RTLDR_ENUM_SYMBOL_FLAGS_ALL, pvBits, LoadAddr, testEnumSymbol2, &NearSym);

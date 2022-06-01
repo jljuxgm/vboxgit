@@ -1,4 +1,4 @@
-/* $Id: tstCompiler.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: tstCompiler.cpp 26296 2010-02-05 14:53:35Z vboxsync $ */
 /** @file
  * Testing how the compiler deals with various things.
  *
@@ -200,7 +200,7 @@ X86PTEPAE64 Return64BitStruct(PX86PTEPAE64 paPT)
 static void DisasFunction(const char *pszName, PFNRT pv)
 {
     RTPrintf("tstBitFields: Disassembly of %s:\n", pszName);
-    RTUINTPTR uCur = (RTUINTPTR)pv;
+    RTUINTPTR uCur = (uintptr_t)pv;
     RTUINTPTR uCurMax = uCur + 256;
     DISCPUSTATE Cpu;
 
@@ -217,7 +217,7 @@ static void DisasFunction(const char *pszName, PFNRT pv)
         }
         else
         {
-            RTPrintf("tstBitFields: %p: %02x - DISInstr failed!\n", uCur, *(uint8_t *)uCur);
+            RTPrintf("tstBitFields: %p: %02x - DISInstr failed!\n", uCur, *(uint8_t *)(uintptr_t)uCur);
             uCur += 1;
         }
     } while (Cpu.pCurInstr->opcode != OP_RETN || uCur > uCurMax);

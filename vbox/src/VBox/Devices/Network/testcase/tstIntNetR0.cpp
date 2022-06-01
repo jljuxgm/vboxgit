@@ -1,4 +1,4 @@
-/* $Id: tstIntNetR0.cpp 17091 2009-02-24 19:55:23Z vboxsync $ */
+/* $Id: tstIntNetR0.cpp 26296 2010-02-05 14:53:35Z vboxsync $ */
 /** @file
  * Internal networking - Usermode testcase for the kernel mode bits.
  *
@@ -559,7 +559,8 @@ int main(int argc, char **argv)
                              */
                             if (!g_cErrors)
                             {
-                                ARGS Args0 = {0};
+                                ARGS Args0;
+                                RT_ZERO(Args0);
                                 Args0.hIf = hIf0;
                                 Args0.pBuf = pBuf0;
                                 Args0.pIntNet = pIntNet;
@@ -567,7 +568,8 @@ int main(int argc, char **argv)
                                 Args0.Mac.au16[1] = 0;
                                 Args0.Mac.au16[2] = 0;
 
-                                ARGS Args1 = {0};
+                                ARGS Args1;
+                                RT_ZERO(Args1);
                                 Args1.hIf = hIf1;
                                 Args1.pBuf = pBuf1;
                                 Args1.pIntNet = pIntNet;
