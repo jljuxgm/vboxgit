@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25592 2009-12-29 21:07:42Z vboxsync $
+# $Id: Makefile.kmk 25771 2010-01-12 16:20:35Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host OpenGL part
 #
@@ -275,6 +275,10 @@ VBoxOGLspuload_CLEAN = \
 	$(VBOX_PATH_CROGL_GENFILES)/dispatch.c \
 	$(VBOX_PATH_CROGL_GENFILES)/glloader.c \
 	$(VBOX_PATH_CROGL_GENFILES)/spu_dispatch_table.h
+
+ifn1of ($(KBUILD_TARGET), win)
+$(VBOX_PATH_CROGL_GENFILES)/glloader.c_CFLAGS = -Wno-shadow
+endif
 
 #
 # VBoxOGLspuload
