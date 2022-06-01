@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 29239 2010-05-08 16:14:56Z vboxsync $ */
+/* $Id: DevAHCI.cpp 29441 2010-05-13 09:01:10Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -5405,12 +5405,20 @@ static DECLCALLBACK(bool) ahciNotifyQueueConsumer(PPDMDEVINS pDevIns, PPDMQUEUEI
                 pAhciPort->fResetDevice = true;
                 ahciSendD2HFis(pAhciPort, pAhciPortTaskState, pAhciPortTaskState->cmdFis, true);
                 pAhciPort->aCachedTasks[pNotifierItem->iTask] = pAhciPortTaskState;
+#ifdef RT_STRICT
+                fXchg = ASMAtomicCmpXchgBool(&pAhciPortTaskState->fActive, false, true);
+                AssertMsg(fXchg, ("Task is not active\n"));
+#endif
                 return true;
             }
             else if (pAhciPort->fResetDevice) /* The bit is not set and we are in a reset state. */
             {
                 ahciFinishStorageDeviceReset(pAhciPort, pAhciPortTaskState);
                 pAhciPort->aCachedTasks[pNotifierItem->iTask] = pAhciPortTaskState;
+#ifdef RT_STRICT
+                fXchg = ASMAtomicCmpXchgBool(&pAhciPortTaskState->fActive, false, true);
+                AssertMsg(fXchg, ("Task is not active\n"));
+#endif
                 return true;
             }
             else /* We are not in a reset state update the control registers. */
