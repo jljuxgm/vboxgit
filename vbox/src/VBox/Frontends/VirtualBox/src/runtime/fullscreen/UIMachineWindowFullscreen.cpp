@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 27375 2010-03-15 16:47:50Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 27421 2010-03-16 17:56:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -175,7 +175,7 @@ void UIMachineWindowFullscreen::prepareMenu()
 {
     UIMainMenuType fMenus = UIMainMenuType_All;
     /* Remove the view menu in the case there is one screen only. */
-    if (session().GetMachine().GetMonitorCount() == 1)
+    if (QApplication::desktop()->numScreens() == 1)
         fMenus = UIMainMenuType(fMenus ^ UIMainMenuType_View);
 #ifdef Q_WS_MAC
     setMenuBar(uisession()->newMenuBar(fMenus));
