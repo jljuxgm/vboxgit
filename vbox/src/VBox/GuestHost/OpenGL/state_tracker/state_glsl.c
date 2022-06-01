@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 26031 2010-01-25 19:40:40Z vboxsync $ */
+/* $Id: state_glsl.c 27889 2010-03-31 12:57:09Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -194,10 +194,6 @@ DECLEXPORT(GLuint) STATE_APIENTRY crStateGetProgramHWID(GLuint id)
     CRGLSLProgram *pProgram = crStateGetProgramObj(id);
     return pProgram ? pProgram->hwid : 0;
 }
-
-typedef struct _crCheckIDHWID {
-    GLuint id, hwid;
-} crCheckIDHWID_t;
 
 static void crStateCheckShaderHWIDCB(unsigned long key, void *data1, void *data2)
 {

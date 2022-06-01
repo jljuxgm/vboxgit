@@ -1,4 +1,4 @@
-/* $Id: cr_framebuffer.h 23694 2009-10-12 13:46:26Z vboxsync $ */
+/* $Id: cr_framebuffer.h 27889 2010-03-31 12:57:09Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: FBO related state info
@@ -90,6 +90,9 @@ DECLEXPORT(void) STATE_APIENTRY crStateFramebufferTexture3DEXT(GLenum target, GL
 DECLEXPORT(void) STATE_APIENTRY crStateFramebufferRenderbufferEXT(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
 DECLEXPORT(void) STATE_APIENTRY crStateGetFramebufferAttachmentParameterivEXT(GLenum target, GLenum attachment, GLenum pname, GLint *params);
 DECLEXPORT(void) STATE_APIENTRY crStateGenerateMipmapEXT(GLenum target);
+
+DECLEXPORT(GLuint) STATE_APIENTRY crStateFBOHWIDtoID(GLuint hwid);
+DECLEXPORT(GLuint) STATE_APIENTRY crStateRBOHWIDtoID(GLuint hwid);
 
 #ifdef IN_GUEST
 DECLEXPORT(GLenum) STATE_APIENTRY crStateCheckFramebufferStatusEXT(GLenum target);
