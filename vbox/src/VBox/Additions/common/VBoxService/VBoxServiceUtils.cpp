@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.cpp 26136 2010-02-01 17:45:40Z vboxsync $ */
+/* $Id: VBoxServiceUtils.cpp 26140 2010-02-02 10:59:34Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
@@ -326,7 +326,7 @@ int VBoxServiceGetFileVersionString(const char *pszPath, const char *pszFilename
         DWORD dwMajor, dwMinor, dwBuild, dwRev;
         rc = VBoxServiceGetFileVersion(szFullPath, &dwMajor, &dwMinor, &dwBuild, &dwRev);
         if (RT_SUCCESS(rc))
-            RTStrPrintf(pszVersion, cbVersion, "%ld.%ld.%ldr%ld", dwMajor, dwMinor, dwBuild, dwRev);
+            RTStrPrintf(pszVersion, cbVersion, "%u.%u.%ur%u", dwMajor, dwMinor, dwBuild, dwRev);
     }
     return rc;
 }
