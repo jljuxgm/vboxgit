@@ -1,4 +1,4 @@
-/* $Id: DrvSCSIHost.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 25984 2010-01-23 00:19:47Z vboxsync $ */
 /** @file
  * VBox storage drivers: Host SCSI access driver.
  */
@@ -405,8 +405,7 @@ static DECLCALLBACK(void *)  drvscsihostQueryInterface(PPDMIBASE pInterface, con
 
     if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
         return &pDrvIns->IBase;
-    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_SCSI_CONNECTOR) == 0)
-        return &pThis->ISCSIConnector;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMISCSICONNECTOR, &pThis->ISCSIConnector);
     return NULL;
 }
 
@@ -464,7 +463,7 @@ static DECLCALLBACK(int) drvscsihostConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
     pThis->DeviceFile = NIL_RTFILE;
 
     /* Query the SCSI port interface above. */
-    pThis->pDevScsiPort = (PPDMISCSIPORT)pDrvIns->pUpBase->pfnQueryInterface(pDrvIns->pUpBase, PDMINTERFACE_SCSI_PORT);
+    pThis->pDevScsiPort = PDMIBASE_QUERY_INTERFACE(pDrvIns->pUpBase, PDMISCSIPORT);
     AssertMsgReturn(pThis->pDevScsiPort, ("Missing SCSI port interface above\n"), VERR_PDM_MISSING_INTERFACE);
 
     /* Create request queue. */

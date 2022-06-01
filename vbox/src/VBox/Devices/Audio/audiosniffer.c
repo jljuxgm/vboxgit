@@ -1,4 +1,4 @@
-/* $Id: audiosniffer.c 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: audiosniffer.c 25984 2010-01-23 00:19:47Z vboxsync $ */
 /** @file
  * VBox audio device: Audio sniffer device
  */
@@ -126,8 +126,7 @@ static DECLCALLBACK(void *) iface_QueryInterface(PPDMIBASE pInterface, const cha
     AUDIOSNIFFERSTATE *pThis = RT_FROM_MEMBER(pInterface, AUDIOSNIFFERSTATE, Base);
     if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
         return &pThis->Base;
-    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_AUDIO_SNIFFER_PORT) == 0)
-        return &pThis->Port;
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIAUDIOSNIFFERPORT, &pThis->Port);
     return NULL;
 }
 
@@ -183,13 +182,9 @@ static DECLCALLBACK(int) audioSnifferR3Construct(PPDMDEVINS pDevIns, int iInstan
 
     if (RT_SUCCESS(rc))
     {
-        pThis->pDrv = (PPDMIAUDIOSNIFFERCONNECTOR)pThis->pDrvBase->pfnQueryInterface(pThis->pDrvBase, PDMINTERFACE_AUDIO_SNIFFER_CONNECTOR);
-
-        if (!pThis->pDrv)
-        {
-            AssertMsgFailed(("LUN #0 doesn't have a Audio Sniffer connector interface rc=%Rrc\n", rc));
-            rc = VERR_PDM_MISSING_INTERFACE;
-        }
+        pThis->pDrv = PDMIBASE_QUERY_INTERFACE(pThis->pDrvBase, PDMIAUDIOSNIFFERCONNECTOR);
+        AssertMsgStmt(pThis->pDrv, ("LUN #0 doesn't have a Audio Sniffer connector interface rc=%Rrc\n", rc),
+                      rc = VERR_PDM_MISSING_INTERFACE);
     }
     else if (rc == VERR_PDM_NO_ATTACHED_DRIVER)
     {
