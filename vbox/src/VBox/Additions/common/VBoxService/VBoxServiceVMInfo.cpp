@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 29390 2010-05-11 20:11:53Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 29391 2010-05-11 20:38:39Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -457,7 +457,11 @@ int VBoxServiceVMInfoWriteNetwork()
         RTStrPrintf(szPropPath, sizeof(szPropPath), "/VirtualBox/GuestInfo/Net/%d/V4/Netmask", cIfacesReport);
         VBoxServicePropCacheUpdate(&g_VMInfoPropCache, szPropPath, "%s", inet_ntoa(pAddress->sin_addr));
 
+ #if defined(RT_OS_SOLARIS)
+        if (ioctl(sd, SIOCGENADDR, &ifrequest[i]) < 0)
+ #else
         if (ioctl(sd, SIOCGIFHWADDR, &ifrequest[i]) < 0)
+ #endif
         {
             VBoxServiceError("Failed to ioctl(SIOCGIFHWADDR) on socket: Error %d\n", errno);
             close(sd);
@@ -465,7 +469,11 @@ int VBoxServiceVMInfoWriteNetwork()
         }
 
         char szMac[32];
-        char *pu8Mac = ifrequest[i].ifr_hwaddr.sa_data;
+ #if defined(RT_OS_SOLARIS)
+        char *pu8Mac = &ifrequest[i].ifr_enaddr[0];
+ #else
+        char *pu8Mac = &ifrequest[i].ifr_hwaddr.sa_data[0];
+ #endif
         RTStrPrintf(szMac, sizeof(szMac), "%02x:%02x:%02x:%02x:%02x:%02x",
                     pu8Mac[0], pu8Mac[1], pu8Mac[2], pu8Mac[3],  pu8Mac[4], pu8Mac[5]);
         RTStrPrintf(szPropPath, sizeof(szPropPath), "/VirtualBox/GuestInfo/Net/%d/MAC", cIfacesReport);
