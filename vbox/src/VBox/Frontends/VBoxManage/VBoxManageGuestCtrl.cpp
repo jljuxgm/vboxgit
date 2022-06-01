@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 28803 2010-04-27 09:53:43Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 28815 2010-04-27 12:54:43Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -58,8 +58,10 @@ using namespace com;
 void usageGuestControl(void)
 {
     RTPrintf("VBoxManage guestcontrol     execute <vmname>|<uuid>\n"
-             "                            <path to program> [--arguments \"<arguments>\"] [--environment \"<NAME=VALUE NAME=VALUE>\"]\n"
-             "                            [--flags <flags>] [--timeout <msec>] [--username <name> [--password <password>]]\n"
+             "                            <path to program> [--arguments \"<arguments>\"]\n"
+             "                            [--environment \"<NAME>=<VALUE> [<NAME>=<VALUE>]\"]\n"
+             "                            [--flags <flags>] [--timeout <msec>]\n"
+             "                            [--username <name> [--password <password>]]\n"
              "                            [--verbose] [--wait-for exit,stdout,stderr||]\n"
              "\n");
 }
