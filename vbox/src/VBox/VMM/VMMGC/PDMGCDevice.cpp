@@ -1,4 +1,4 @@
-/* $Id: PDMGCDevice.cpp 24125 2009-10-28 09:58:41Z vboxsync $ */
+/* $Id: PDMGCDevice.cpp 24138 2009-10-28 13:18:51Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, GC Device parts.
  */
@@ -369,6 +369,16 @@ static DECLCALLBACK(void) pdmRCPicHlp_SetInterruptFF(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     PVM pVM = pDevIns->Internal.s.pVMRC;
+
+    if (pVM->pdm.s.Apic.pfnLocalInterruptRC)
+    {
+        LogFlow(("pdmRCPicHlp_SetInterruptFF: caller='%p'/%d: Setting local interrupt on LAPIC\n",
+                 pDevIns, pDevIns->iInstance));
+        /* Raise the LAPIC's LINT0 line instead of signaling the CPU directly. */
+        pVM->pdm.s.Apic.pfnLocalInterruptRC(pVM->pdm.s.Apic.pDevInsRC, 0, 1);
+        return;
+    }
+
     PVMCPU pVCpu = &pVM->aCpus[0];  /* for PIC we always deliver to CPU 0, MP use APIC */
 
     LogFlow(("pdmRCPicHlp_SetInterruptFF: caller=%p/%d: VMMCPU_FF_INTERRUPT_PIC %d -> 1\n",
@@ -383,6 +393,17 @@ static DECLCALLBACK(void) pdmRCPicHlp_ClearInterruptFF(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     PVM pVM = pDevIns->Internal.s.CTX_SUFF(pVM);
+
+    if (pVM->pdm.s.Apic.pfnLocalInterruptRC)
+    {
+        /* Raise the LAPIC's LINT0 line instead of signaling the CPU directly. */
+        LogFlow(("pdmRCPicHlp_ClearInterruptFF: caller='%s'/%d: Clearing local interrupt on LAPIC\n",
+                 pDevIns, pDevIns->iInstance));
+        /* Lower the LAPIC's LINT0 line instead of signaling the CPU directly. */
+        pVM->pdm.s.Apic.pfnLocalInterruptRC(pVM->pdm.s.Apic.pDevInsRC, 0, 0);
+        return;
+    }
+
     PVMCPU pVCpu = &pVM->aCpus[0];  /* for PIC we always deliver to CPU 0, MP use APIC */
 
     LogFlow(("pdmRCPicHlp_ClearInterruptFF: caller=%p/%d: VMCPU_FF_INTERRUPT_PIC %d -> 0\n",
