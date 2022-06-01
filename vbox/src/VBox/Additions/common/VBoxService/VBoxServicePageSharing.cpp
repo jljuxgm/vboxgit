@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29473 2010-05-14 14:20:01Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 29479 2010-05-14 15:10:29Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -232,6 +232,7 @@ void VBoxServicePageSharingInspectModules(DWORD dwProcessId, PAVLPVNODECORE *ppN
     bRet = Module32First(hSnapshot, &ModuleInfo);
     do
     {
+        /** todo when changing this make sure VBoxService.exe is excluded! */
         char *pszDot = strrchr(ModuleInfo.szModule, '.');
         if (    pszDot 
             &&  (pszDot[1] == 'e' || pszDot[1] == 'E'))
