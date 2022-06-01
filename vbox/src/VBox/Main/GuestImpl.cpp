@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 29460 2010-05-14 11:06:44Z vboxsync $ */
+/* $Id: GuestImpl.cpp 29512 2010-05-17 09:30:12Z vboxsync $ */
 
 /** @file
  *
@@ -780,7 +780,12 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
             papszArgv = (char**)RTMemAlloc(sizeof(char*) * (uNumArgs + 1));
             AssertReturn(papszArgv, E_OUTOFMEMORY);
             for (unsigned i = 0; RT_SUCCESS(vrc) && i < uNumArgs; i++)
-                vrc = RTStrAPrintf(&papszArgv[i], "%s", Utf8Str(args[i]).raw());
+            {
+                int cbLen = RTStrAPrintf(&papszArgv[i], "%s", Utf8Str(args[i]).raw());
+                if (cbLen < 0)
+                    vrc = VERR_NO_MEMORY;
+
+            }
             papszArgv[uNumArgs] = NULL;
         }
 
