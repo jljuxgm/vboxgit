@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControl.cpp 28557 2010-04-21 11:18:32Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 28560 2010-04-21 11:56:08Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -192,7 +192,7 @@ static int VBoxServiceControlHandleCmdGetOutput(uint32_t u32ClientId, uint32_t u
             AssertPtr(pData);
 
             uint32_t cbRead = _4K; /* Try reading 4k. */
-            BYTE *pBuf = (BYTE*)RTMemAlloc(cbRead);
+            uint8_t *pBuf = (uint8_t*)RTMemAlloc(cbRead);
             if (pBuf)
             {
                 rc = VBoxServiceControlExecReadPipeBufferContent(&pData->stdOut, pBuf, cbRead, &cbRead);
