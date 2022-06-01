@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 23915 2009-10-20 17:06:58Z vboxsync $ */
+/* $Id: VMInternal.h 24508 2009-11-09 14:44:12Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -227,7 +227,13 @@ typedef struct VMINTUSERPERVM
     PVMATERROR                      pAtError;
     /** List of registered error callbacks. */
     PVMATERROR                     *ppAtErrorNext;
+    /** The error message count.
+     * This is incremented every time an error is raised.  */
+    uint32_t volatile               cErrors;
 
+    /** The runtime error message count.
+     * This is incremented every time a runtime error is raised.  */
+    uint32_t volatile               cRuntimeErrors;
     /** List of registered error callbacks. */
     PVMATRUNTIMEERROR               pAtRuntimeError;
     /** List of registered error callbacks. */
