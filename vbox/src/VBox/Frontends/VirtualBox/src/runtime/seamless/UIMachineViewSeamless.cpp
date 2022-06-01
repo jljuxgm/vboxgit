@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 27249 2010-03-10 14:34:52Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 27252 2010-03-10 14:53:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -258,15 +258,18 @@ void UIMachineViewSeamless::prepareSeamless()
 
 void UIMachineViewSeamless::cleanupSeamless()
 {
-    /* Reset seamless feature flag of the guest: */
+    /* If machine still running: */
     if (uisession()->isRunning())
+    {
+        /* Reset seamless feature flag of the guest: */
         session().GetConsole().GetDisplay().SetSeamlessMode(false);
 
-    /* Rollback seamless frame-buffer size to normal: */
-    machineWindowWrapper()->machineWindow()->hide();
-    UIMachineViewBlocker blocker(this);
-    sltPerformGuestResize(uisession()->guestSizeHint(screenId()));
-    blocker.exec();
+        /* Rollback seamless frame-buffer size to normal: */
+        machineWindowWrapper()->machineWindow()->hide();
+        UIMachineViewBlocker blocker(this);
+        sltPerformGuestResize(uisession()->guestSizeHint(screenId()));
+        blocker.exec();
+    }
 }
 
 QRect UIMachineViewSeamless::availableGeometry()

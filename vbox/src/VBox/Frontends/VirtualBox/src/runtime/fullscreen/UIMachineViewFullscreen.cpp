@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 27237 2010-03-10 00:11:51Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 27252 2010-03-10 14:53:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -239,13 +239,18 @@ void UIMachineViewFullscreen::prepareConsoleConnections()
 
 void UIMachineViewFullscreen::cleanupFullscreen()
 {
-    if (m_bIsGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
+    /* If machine still running: */
+    if (uisession()->isRunning())
     {
-        /* Rollback fullscreen frame-buffer size to normal: */
-        machineWindowWrapper()->machineWindow()->hide();
-        UIMachineViewBlocker blocker(this);
-        sltPerformGuestResize(uisession()->guestSizeHint(screenId()));
-        blocker.exec();
+        /* And guest supports advanced graphics management which is enabled: */
+        if (m_bIsGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
+        {
+            /* Rollback fullscreen frame-buffer size to normal: */
+            machineWindowWrapper()->machineWindow()->hide();
+            UIMachineViewBlocker blocker(this);
+            sltPerformGuestResize(uisession()->guestSizeHint(screenId()));
+            blocker.exec();
+        }
     }
 }
 
