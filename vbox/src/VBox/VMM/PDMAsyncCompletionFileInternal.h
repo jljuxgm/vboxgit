@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 29155 2010-05-06 13:48:39Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 29215 2010-05-07 14:18:57Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -451,6 +451,9 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSFILE
     uint32_t                            cReqsOutstandingMax;
     /** Bitmask for checking the alignment of a buffer. */
     RTR3UINTPTR                         uBitmaskAlignment;
+#ifdef VBOX_WITH_STATISTICS
+    uint32_t                            u32Alignment;
+#endif
     /** Global cache data. */
     PDMACFILECACHEGLOBAL                Cache;
     /** Flag whether the out of resources warning was printed already. */
@@ -460,6 +463,9 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSFILE
 } PDMASYNCCOMPLETIONEPCLASSFILE;
 /** Pointer to the endpoint class data. */
 typedef PDMASYNCCOMPLETIONEPCLASSFILE *PPDMASYNCCOMPLETIONEPCLASSFILE;
+#ifdef VBOX_WITH_STATISTICS
+AssertCompileMemberAlignment(PDMASYNCCOMPLETIONEPCLASSFILE, Cache, sizeof(uint64_t));
+#endif
 
 typedef enum PDMACEPFILEBLOCKINGEVENT
 {
