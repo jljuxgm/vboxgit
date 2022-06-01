@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 28076 2010-04-07 23:50:34Z vboxsync $ */
+/* $Id: DevE1000.cpp 28082 2010-04-08 10:18:45Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -5223,9 +5223,13 @@ static DECLCALLBACK(int) e1kAttach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_t f
         AssertMsgStmt(pState->pDrv, ("Failed to obtain the PDMINETWORKUP interface!\n"),
                       rc = VERR_PDM_MISSING_INTERFACE_BELOW);
     }
-    else if (rc == VERR_PDM_NO_ATTACHED_DRIVER)
+    else if (   rc == VERR_PDM_NO_ATTACHED_DRIVER
+             || rc == VERR_PDM_CFG_MISSING_DRIVER_NAME)
+    {
+        /* This should never happen because this function is not called
+         * if there is no driver to attach! */
         Log(("%s No attached driver!\n", INSTANCE(pState)));
-
+    }
 
     /*
      * Temporary set the link down if it was up so that the guest
@@ -5681,8 +5685,10 @@ static DECLCALLBACK(int) e1kConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
         AssertMsgReturn(pState->pDrv, ("Failed to obtain the PDMINETWORKUP interface!\n"),
                         VERR_PDM_MISSING_INTERFACE_BELOW);
     }
-    else if (rc == VERR_PDM_NO_ATTACHED_DRIVER)
+    else if (   rc == VERR_PDM_NO_ATTACHED_DRIVER
+             || rc == VERR_PDM_CFG_MISSING_DRIVER_NAME)
     {
+        /* No error! */
         E1kLog(("%s This adapter is not attached to any network!\n", INSTANCE(pState)));
     }
     else
