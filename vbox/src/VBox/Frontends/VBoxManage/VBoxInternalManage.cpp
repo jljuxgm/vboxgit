@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 29650 2010-05-18 16:34:13Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 29651 2010-05-18 17:11:18Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1426,7 +1426,7 @@ static int CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aVirtualB
         for (unsigned i = 0; i < RawDescriptor.cPartDescs; i++)
         {
             /* Free memory allocated for relative device name. */
-            if (RawDescriptor.pPartDescs[i].pszRawDevice)
+            if (fRelative && RawDescriptor.pPartDescs[i].pszRawDevice)
                 RTStrFree((char *)(void *)RawDescriptor.pPartDescs[i].pszRawDevice);
             if (RawDescriptor.pPartDescs[i].pvPartitionData)
                 RTMemFree((void *)RawDescriptor.pPartDescs[i].pvPartitionData);
