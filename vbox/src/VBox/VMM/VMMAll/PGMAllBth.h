@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 27026 2010-03-04 13:49:08Z vboxsync $ */
+/* $Id: PGMAllBth.h 27038 2010-03-04 14:48:14Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2972,6 +2972,18 @@ PGM_BTH_DECL(int, SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RTGCPTR 
                 STAM_REL_COUNTER_INC(&pVM->pgm.s.StatLargePageReused);
                 AssertRelease(PGM_PAGE_GET_STATE(pPage) == PGM_PAGE_STATE_ALLOCATED);
                 HCPhys = PGM_PAGE_GET_HCPHYS(pPage);
+            }
+            else
+            if (PGM_PAGE_GET_PDE_TYPE(pPage) == PGM_PAGE_PDE_TYPE_PDE_DISABLED)
+            {
+                /* Recheck the entire 2 MB range to see if we can use it again as a large page. */
+                rc = pgmPhysIsValidLargePage(pVM, GCPtrPage, pPage);
+                if (RT_SUCCESS(rc))
+                {
+                    Assert(PGM_PAGE_GET_STATE(pPage) == PGM_PAGE_STATE_ALLOCATED);
+                    Assert(PGM_PAGE_GET_PDE_TYPE(pPage) == PGM_PAGE_PDE_TYPE_PDE);
+                    HCPhys = PGM_PAGE_GET_HCPHYS(pPage);
+                }
             }
             else
             if (PGMIsUsingLargePages(pVM))
