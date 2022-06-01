@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 24599 2009-11-11 17:09:45Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 24856 2009-11-22 21:06:56Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1450,6 +1450,13 @@ int handleModifyVM(HandlerArg *a)
                 }
 
 #endif /* !RT_OS_DARWIN */
+# ifdef RT_OS_FREEBSD
+                else if (!strcmp(ValueUnion.psz, "oss"))
+                {
+                    CHECK_ERROR(audioAdapter, COMSETTER(AudioDriver)(AudioDriverType_OSS));
+                    CHECK_ERROR(audioAdapter, COMSETTER(Enabled)(true));
+                }
+# endif
                 else
                 {
                     errorArgument("Invalid --audio argument '%s'", ValueUnion.psz);
