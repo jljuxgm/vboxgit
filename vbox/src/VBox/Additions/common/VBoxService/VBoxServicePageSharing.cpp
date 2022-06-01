@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29990 2010-06-02 12:54:47Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 29991 2010-06-02 12:55:20Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -193,7 +193,11 @@ void VBoxServicePageSharingRegisterModule(PKNOWN_MODULE pModule, bool fValidateM
                             pRegion += PAGE_SIZE;
                         }
                     }
+#ifdef GC_ARCH_BITS == 64
                     aRegions[idxRegion].GCRegionAddr = (RTGCPTR64)MemInfo.BaseAddress;
+#else
+                    aRegions[idxRegion].GCRegionAddr = (RTGCPTR32)MemInfo.BaseAddress;
+#endif
                     aRegions[idxRegion].cbRegion     = MemInfo.RegionSize;
                     idxRegion++;
 
