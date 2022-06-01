@@ -1,4 +1,4 @@
-/* $Id: dir.h 28915 2010-04-29 18:12:35Z vboxsync $ */
+/* $Id: dir.h 28917 2010-04-29 18:17:08Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDir.
  */
@@ -77,7 +77,11 @@ typedef struct RTDIR
 #ifndef RT_DONT_CONVERT_FILENAMES
     /** Pointer to the converted filename.
      * This can be NULL. */
+#ifdef RT_OS_WINDOWS
+    char               *pszName;
+#else
     char const         *pszName;
+#endif
     /** The length of the converted filename. */
     size_t              cchName;
 #endif
