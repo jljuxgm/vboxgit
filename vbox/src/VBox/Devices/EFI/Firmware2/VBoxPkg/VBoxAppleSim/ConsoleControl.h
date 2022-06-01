@@ -1,4 +1,4 @@
-/* $Id: ConsoleControl.h 29070 2010-05-05 12:32:52Z vboxsync $ */
+/* $Id: ConsoleControl.h 29085 2010-05-05 14:03:59Z vboxsync $ */
 /** @file
  * ConsonleControl.h
  */
@@ -13,7 +13,9 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- *
+ */
+
+/*
  * This code is based on:
  *
  * Copyright (c) 2004 - 2006, Intel Corporation

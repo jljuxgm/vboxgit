@@ -1,4 +1,4 @@
-/* $Id: DevLPC.cpp 29068 2010-05-05 11:58:02Z vboxsync $ */
+/* $Id: DevLPC.cpp 29085 2010-05-05 14:03:59Z vboxsync $ */
 /** @file
  * DevLPC - LPC device emulation
  */
@@ -12,7 +12,6 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- *
  * --------------------------------------------------------------------
  *
  * This code is based on:
