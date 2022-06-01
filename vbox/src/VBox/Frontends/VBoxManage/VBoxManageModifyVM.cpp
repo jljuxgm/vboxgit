@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 24305 2009-11-04 09:45:47Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 24307 2009-11-04 09:59:00Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -143,9 +143,9 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--synthcpu",                 MODIFYVM_SYNTHCPU,                  RTGETOPT_REQ_BOOL_ONOFF },
     { "--hwvirtex",                 MODIFYVM_HWVIRTEX,                  RTGETOPT_REQ_BOOL_ONOFF },
     { "--hwvirtexexcl",             MODIFYVM_HWVIRTEXEXCLUSIVE,         RTGETOPT_REQ_BOOL_ONOFF },
-    { "--cpuid",                    MODIFYVM_CPUID,                     RTGETOPT_REQ_UINT32 | RTGETOPT_FLAG_HEX},
     { "--nestedpaging",             MODIFYVM_NESTEDPAGING,              RTGETOPT_REQ_BOOL_ONOFF },
     { "--vtxvpid",                  MODIFYVM_VTXVPID,                   RTGETOPT_REQ_BOOL_ONOFF },
+    { "--cpuid",                    MODIFYVM_CPUID,                     RTGETOPT_REQ_UINT32 | RTGETOPT_FLAG_HEX},
     { "--cpus",                     MODIFYVM_CPUS,                      RTGETOPT_REQ_UINT32 },
     { "--monitorcount",             MODIFYVM_MONITORCOUNT,              RTGETOPT_REQ_UINT32 },
     { "--accelerate3d",             MODIFYVM_ACCELERATE3D,              RTGETOPT_REQ_BOOL_ONOFF },
