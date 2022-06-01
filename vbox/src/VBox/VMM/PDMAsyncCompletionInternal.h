@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 27883 2010-03-31 12:07:15Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 27884 2010-03-31 12:10:41Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -183,13 +183,6 @@ typedef struct PDMASYNCCOMPLETIONEPCLASS
 {
     /** Pointer to the shared VM structure. */
     PVM                                         pVM;
-    /** @name   Things configurable through CFGM
-     * @{ */
-    /** Size of the per endpoint cache. */
-    uint32_t                                    cEndpointCacheSize;
-    /** Size of the per class cache. */
-    uint32_t                                    cEpClassCacheSize;
-    /** @} */
     /** Critical section protecting the endpoint list. */
     RTCRITSECT                                  CritSect;
     /** Number of endpoints in the list. */
