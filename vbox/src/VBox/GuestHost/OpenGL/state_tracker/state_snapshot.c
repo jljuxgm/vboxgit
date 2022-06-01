@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 24570 2009-11-11 09:02:21Z vboxsync $ */
+/* $Id: state_snapshot.c 24573 2009-11-11 09:21:09Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -1649,10 +1649,12 @@ int32_t crStateLoadContext(CRContext *pContext, PSSMHANDLE pSSM)
             pProgram->activeState.pAttribs[k].name = crStateLoadString(pSSM);
         }
 
-        int32_t cUniforms;
-        rc = SSMR3GetS32(pSSM, &cUniforms);
-        pProgram->cUniforms = cUniforms;
-        AssertRCReturn(rc, rc);
+        {
+            int32_t cUniforms;
+            rc = SSMR3GetS32(pSSM, &cUniforms);
+            pProgram->cUniforms = cUniforms;
+            AssertRCReturn(rc, rc);
+        }
 
         if (pProgram->cUniforms)
         {
