@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 24442 2009-11-06 13:49:49Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 24443 2009-11-06 13:52:43Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -542,7 +542,7 @@ static int pdmacFileInitialize(PPDMASYNCCOMPLETIONEPCLASS pClassGlobals, PCFGMNO
          * leave a warning and disable it always.
          */
         bool fDummy;
-        rc = CFGMR3QueryBoolDef(pCfgNode, "HostCacheEnabled", &fDummy);
+        rc = CFGMR3QueryBool(pCfgNode, "HostCacheEnabled", &fDummy);
         if (RT_SUCCESS(rc))
             LogRel(("AIOMgr: The host cache is not supported with async I/O on Linux\n"));
 
