@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 28278 2010-04-13 21:00:38Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 28281 2010-04-14 06:40:48Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -893,7 +893,7 @@ static bool vboxNetFltLinuxCanForwardAsGso(PVBOXNETFLTINS pThis, struct sk_buff 
     /*
      * skb_gso_segment does the following. Do we need to do it as well?
      */
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 23)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 22)
     skb_reset_mac_header(pSkb);
     pSkb->mac_len = pSkb->network_header - pSkb->mac_header;
 #else
