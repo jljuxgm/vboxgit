@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 30289 2010-06-17 16:38:37Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 30300 2010-06-18 08:37:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7841,7 +7841,7 @@ DECLCALLBACK(int) Console::fntTakeSnapshotWorker(RTTHREAD Thread, void *pvUser)
                 ++i)
             {
                 ComPtr<IStorageController> controller;
-                BSTR controllerName;
+                Bstr controllerName;
                 ULONG lInstance;
                 StorageControllerType_T enmController;
                 StorageBus_T enmBus;
@@ -7852,7 +7852,7 @@ DECLCALLBACK(int) Console::fntTakeSnapshotWorker(RTTHREAD Thread, void *pvUser)
                 * (g++ complains about not being able to pass non POD types through '...')
                 * so we have to query needed values here and pass them.
                 */
-                rc = atts[i]->COMGETTER(Controller)(&controllerName);
+                rc = atts[i]->COMGETTER(Controller)(controllerName.asOutParam());
                 if (FAILED(rc))
                     throw rc;
 
