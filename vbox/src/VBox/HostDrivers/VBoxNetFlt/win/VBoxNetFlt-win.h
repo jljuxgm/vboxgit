@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.h 29643 2010-05-18 15:26:50Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.h 30111 2010-06-09 12:14:59Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -201,7 +201,7 @@ DECLINLINE(void) vboxNetFltWinPpFreePacketInfo(PPACKET_INFO pInfo)
 #define GET_PACKET_FROM_INFO(_pPacketInfo) (ASMAtomicUoReadPtr((void * volatile *)&(_pPacketInfo)->pPacket))
 
 /** assignes the packet to the packet info */
-#define SET_PACKET_TO_INFO(_pPacketInfo, _pPacket) (ASMAtomicUoWritePtr((void * volatile *)&(_pPacketInfo)->pPacket, (_pPacket)))
+#define SET_PACKET_TO_INFO(_pPacketInfo, _pPacket) (ASMAtomicUoWritePtr(&(_pPacketInfo)->pPacket, (_pPacket)))
 
 /** returns the flags the packet info contains */
 #define GET_FLAGS_FROM_INFO(_pPacketInfo) (ASMAtomicUoReadU32((volatile uint32_t *)&(_pPacketInfo)->fFlags))

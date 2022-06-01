@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 30029 2010-06-04 11:39:56Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1774,7 +1774,7 @@ static int intnetR0NetworkEnsureTabSpace(PINTNETNETWORK pNetwork)
                 {
                     PINTNETDSTTAB pOld = pIf->pDstTab;
                     if (   pOld
-                        && ASMAtomicCmpXchgPtr((void * volatile *)&pIf->pDstTab, pNew, pOld))
+                        && ASMAtomicCmpXchgPtr(&pIf->pDstTab, pNew, pOld))
                     {
                         RTMemFree(pOld);
                         break;
@@ -3293,7 +3293,7 @@ INTNETR0DECL(int) IntNetR0IfSend(INTNETIFHANDLE hIf, PSUPDRVSESSION pSession)
         /*
          * Grab the destination table.
          */
-        PINTNETDSTTAB pDstTab = (PINTNETDSTTAB)ASMAtomicXchgPtr((void * volatile *)&pIf->pDstTab, NULL);
+        PINTNETDSTTAB pDstTab = ASMAtomicXchgPtrT(&pIf->pDstTab, NULL, PINTNETDSTTAB);
         if (RT_LIKELY(pDstTab))
         {
             /*
@@ -3356,7 +3356,7 @@ INTNETR0DECL(int) IntNetR0IfSend(INTNETIFHANDLE hIf, PSUPDRVSESSION pSession)
              * Put back the destination table.
              */
             Assert(!pIf->pDstTab);
-            ASMAtomicWritePtr((void * volatile *)&pIf->pDstTab, pDstTab);
+            ASMAtomicWritePtr(&pIf->pDstTab, pDstTab);
         }
         else
             rc = VERR_INTERNAL_ERROR_4;

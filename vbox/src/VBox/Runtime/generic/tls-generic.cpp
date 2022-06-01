@@ -1,4 +1,4 @@
-/* $Id: tls-generic.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tls-generic.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
 /** @file
  * IPRT - Thread Local Storage (TSL), Generic Implementation.
  */
@@ -88,7 +88,7 @@ RTR3DECL(int) RTTlsFree(RTTLS iTls)
         ||  !ASMBitTest(&g_au32AllocatedBitmap[0], iTls))
         return VERR_INVALID_PARAMETER;
 
-    ASMAtomicWritePtr((void * volatile *)&g_apfnDestructors[iTls], NULL);
+    ASMAtomicWritePtr(&g_apfnDestructors[iTls], NULL);
     rtThreadClearTlsEntry(iTls);
     ASMAtomicBitClear(&g_au32AllocatedBitmap[0], iTls);
     return VINF_SUCCESS;

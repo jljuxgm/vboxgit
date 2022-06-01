@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 28903 2010-04-29 14:58:12Z vboxsync $ */
+/* $Id: thread.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -1348,13 +1348,13 @@ RTDECL(void) RTThreadUnblocked(RTTHREAD hThread, RTTHREADSTATE enmCurState)
             rtThreadSetState(pThread, RTTHREADSTATE_RUNNING);
             if (   pThread->LockValidator.pRec
                 && pThread->LockValidator.enmRecState == enmCurState)
-                ASMAtomicWritePtr((void * volatile *)&pThread->LockValidator.pRec, NULL);
+                ASMAtomicWritePtr(&pThread->LockValidator.pRec, NULL);
         }
         /* This is a bit ugly... :-/ */
         else if (   (   enmActualState == RTTHREADSTATE_TERMINATED
                      || enmActualState == RTTHREADSTATE_INITIALIZING)
                  && pThread->LockValidator.pRec)
-            ASMAtomicWritePtr((void * volatile *)&pThread->LockValidator.pRec, NULL);
+            ASMAtomicWritePtr(&pThread->LockValidator.pRec, NULL);
         Assert(   pThread->LockValidator.pRec == NULL
                || RTTHREAD_IS_SLEEPING(enmActualState));
     }

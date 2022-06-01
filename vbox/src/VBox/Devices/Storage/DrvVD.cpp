@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 29135 2010-05-06 11:28:04Z vboxsync $ */
+/* $Id: DrvVD.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1158,8 +1158,8 @@ static DECLCALLBACK(void) drvvdDestruct(PPDMDRVINS pDrvIns)
     LogFlow(("%s:\n", __FUNCTION__));
     PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
 
-    RTSEMFASTMUTEX mutex = (RTSEMFASTMUTEX)ASMAtomicXchgPtr((void **)&pThis->MergeCompleteMutex,
-                                                            (void *)NIL_RTSEMFASTMUTEX);
+    RTSEMFASTMUTEX mutex;
+    ASMAtomicXchgHandle(&pThis->MergeCompleteMutex, NIL_RTSEMFASTMUTEX, &mutex);
     if (mutex != NIL_RTSEMFASTMUTEX)
     {
         /* Request the semaphore to wait until a potentially running merge

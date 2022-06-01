@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 29971 2010-06-02 08:51:13Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8087,7 +8087,7 @@ DECLCALLBACK(void) Console::drvStatus_UnitChanged(PPDMILEDCONNECTORS pInterface,
         int rc = pData->pLedPorts->pfnQueryStatusLed(pData->pLedPorts, iLUN, &pLed);
         if (RT_FAILURE(rc))
             pLed = NULL;
-        ASMAtomicXchgPtr((void * volatile *)&pData->papLeds[iLUN - pData->iFirstLUN], pLed);
+        ASMAtomicWritePtr(&pData->papLeds[iLUN - pData->iFirstLUN], pLed);
         Log(("drvStatus_UnitChanged: iLUN=%d pLed=%p\n", iLUN, pLed));
     }
 }
@@ -8122,7 +8122,7 @@ DECLCALLBACK(void) Console::drvStatus_Destruct(PPDMDRVINS pDrvIns)
     {
         unsigned iLed = pData->iLastLUN - pData->iFirstLUN + 1;
         while (iLed-- > 0)
-            ASMAtomicXchgPtr((void * volatile *)&pData->papLeds[iLed], NULL);
+            ASMAtomicWritePtr(&pData->papLeds[iLed], NULL);
     }
 }
 

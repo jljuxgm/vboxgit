@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
 
 /** @file
  *
@@ -90,10 +90,10 @@ RWLockHandle *VirtualBoxBase::lockHandle() const
         // getLockingClass() is overridden by many subclasses to return
         // one of the locking classes listed at the top of AutoLock.h
         RWLockHandle *objLock = new RWLockHandle(getLockingClass());
-        if (!ASMAtomicCmpXchgPtr ((void * volatile *) &mObjectLock, objLock, NULL))
+        if (!ASMAtomicCmpXchgPtr(&mObjectLock, objLock, NULL))
         {
             delete objLock;
-            objLock = (RWLockHandle *) ASMAtomicReadPtr ((void * volatile *) &mObjectLock);
+            objLock = ASMAtomicReadPtrT(&mObjectLock, RWLockHandle *);
         }
         return objLock;
     }

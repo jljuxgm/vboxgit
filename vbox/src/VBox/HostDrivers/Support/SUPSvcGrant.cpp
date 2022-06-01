@@ -1,4 +1,4 @@
-/* $Id: SUPSvcGrant.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: SUPSvcGrant.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
 /** @file
  * VirtualBox Support Service - The Grant Service.
  */
@@ -178,7 +178,7 @@ static DECLCALLBACK(int) supSvcGrantSessionThread(RTTHREAD hThread, void *pvSess
     /*
      * Clean up the session.
      */
-    PSUPSVCGRANT pParent = (PSUPSVCGRANT)ASMAtomicReadPtr((void * volatile *)&pThis->pParent);
+    PSUPSVCGRANT pParent = ASMAtomicReadPtrT(&pThis->pParent, PSUPSVCGRANT);
     if (pParent)
         RTCritSectEnter(&pParent->CritSect);
     else
@@ -974,7 +974,7 @@ DECLCALLBACK(void) supSvcGrantStopAndDestroy(void *pvInstance, bool fRunning)
     supSvcGrantCleanUpSessionsLocked(pThis);
     unsigned cSessions = 0;
     for (PSUPSVCGRANTSESSION pCur = pThis->pSessionHead; pCur; pCur = pCur->pNext)
-        ASMAtomicWritePtr((void * volatile *)&pCur->pParent, NULL);
+        ASMAtomicWritePtr(&pCur->pParent, NULL);
 
     RTCritSectLeave(&pThis->CritSect);
     if (cSessions)

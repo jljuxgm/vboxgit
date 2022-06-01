@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 29468 2010-05-14 12:16:44Z vboxsync $ */
+/* $Id: PGMR0.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -197,7 +197,8 @@ VMMR0DECL(int) PGMR0PhysAllocateLargeHandyPage(PVM pVM, PVMCPU pVCpu)
  * @param   pRegFrame           Trap register frame.
  * @param   pvFault             The fault address.
  */
-VMMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PVMCPU pVCpu, PGMMODE enmShwPagingMode, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPHYS pvFault)
+VMMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PVMCPU pVCpu, PGMMODE enmShwPagingMode, RTGCUINT uErr,
+                                              PCPUMCTXCORE pRegFrame, RTGCPHYS pvFault)
 {
     int rc;
 

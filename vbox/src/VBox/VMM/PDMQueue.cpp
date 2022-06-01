@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 29910 2010-05-31 14:04:26Z vboxsync $ */
+/* $Id: PDMQueue.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -709,7 +709,7 @@ static bool pdmR3QueueFlush(PPDMQUEUE pQueue)
     /*
      * Get the lists.
      */
-    PPDMQUEUEITEMCORE pItems   = (PPDMQUEUEITEMCORE)ASMAtomicXchgPtr((void * volatile *)&pQueue->pPendingR3, NULL);
+    PPDMQUEUEITEMCORE pItems   = ASMAtomicXchgPtrT(&pQueue->pPendingR3, NULL, PPDMQUEUEITEMCORE);
     RTRCPTR           pItemsRC = ASMAtomicXchgRCPtr(&pQueue->pPendingRC, NIL_RTRCPTR);
     RTR0PTR           pItemsR0 = ASMAtomicXchgR0Ptr(&pQueue->pPendingR0, NIL_RTR0PTR);
 
@@ -834,9 +834,9 @@ static bool pdmR3QueueFlush(PPDMQUEUE pQueue)
          */
         for (;;)
         {
-            if (ASMAtomicCmpXchgPtr((void * volatile *)&pQueue->pPendingR3, pItems, NULL))
+            if (ASMAtomicCmpXchgPtr(&pQueue->pPendingR3, pItems, NULL))
                 break;
-            PPDMQUEUEITEMCORE pPending = (PPDMQUEUEITEMCORE)ASMAtomicXchgPtr((void * volatile *)&pQueue->pPendingR3, NULL);
+            PPDMQUEUEITEMCORE pPending = ASMAtomicXchgPtrT(&pQueue->pPendingR3, NULL, PPDMQUEUEITEMCORE);
             if (pPending)
             {
                 pCur = pPending;

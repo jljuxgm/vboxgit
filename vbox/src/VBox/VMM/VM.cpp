@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 29329 2010-05-11 10:18:30Z vboxsync $ */
+/* $Id: VM.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2423,7 +2423,7 @@ static void vmR3DestroyUVM(PUVM pUVM, uint32_t cMilliesEMTWait)
      */
     for (unsigned i = 0; i < 10; i++)
     {
-        PVMREQ pReqHead = (PVMREQ)ASMAtomicXchgPtr((void * volatile *)&pUVM->vm.s.pReqs, NULL);
+        PVMREQ pReqHead = ASMAtomicXchgPtrT(&pUVM->vm.s.pReqs, NULL, PVMREQ);
         AssertMsg(!pReqHead, ("This isn't supposed to happen! VMR3Destroy caller has to serialize this.\n"));
         if (!pReqHead)
             break;
@@ -2448,7 +2448,7 @@ static void vmR3DestroyUVM(PUVM pUVM, uint32_t cMilliesEMTWait)
 
         for (unsigned i = 0; i < 10; i++)
         {
-            PVMREQ pReqHead = (PVMREQ)ASMAtomicXchgPtr((void * volatile *)&pUVCpu->vm.s.pReqs, NULL);
+            PVMREQ pReqHead = ASMAtomicXchgPtrT(&pUVCpu->vm.s.pReqs, NULL, PVMREQ);
             AssertMsg(!pReqHead, ("This isn't supposed to happen! VMR3Destroy caller has to serialize this.\n"));
             if (!pReqHead)
                 break;

@@ -1,4 +1,4 @@
-/* $Id: logrel.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: logrel.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -95,7 +95,7 @@ RT_EXPORT_SYMBOL(RTLogRelDefaultInstance);
  */
 RTDECL(PRTLOGGER) RTLogRelSetDefaultInstance(PRTLOGGER pLogger)
 {
-    return (PRTLOGGER)ASMAtomicXchgPtr((void * volatile *)&g_pRelLogger, pLogger);
+    return ASMAtomicXchgPtrT(&g_pRelLogger, pLogger, PRTLOGGER);
 }
 RT_EXPORT_SYMBOL(RTLogRelSetDefaultInstance);
 #endif /* !IN_RC */
