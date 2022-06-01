@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25975 2010-01-22 15:29:12Z vboxsync $
+# $Id: Makefile.kmk 26058 2010-01-27 09:23:23Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -94,7 +94,7 @@ VBoxGuestR3Lib_SOURCES     = \
 	VBoxGuestR3LibSeamless.cpp \
 	VBoxGuestR3LibTime.cpp \
 	VBoxGuestR3LibVideo.cpp \
-	VBoxGuestR3LibCpuHotplug.cpp
+	VBoxGuestR3LibCpuHotPlug.cpp
 ifeq ($(KBUILD_TARGET),win) ## @todo get rid of this hack (as soon as it's all implemented / #defined).
  VBoxGuestR3Lib_SOURCES   = \
 	VBoxGuestR3Lib.cpp \
