@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControl.cpp 28119 2010-04-09 07:54:19Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 28218 2010-04-12 15:58:07Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -109,7 +109,7 @@ static int VBoxServiceControlHandleCmdExec(uint32_t u32ClientId, uint32_t uNumPa
     char szPassword[128];
     uint32_t uTimeLimitMS;
 
-    int rc = VbglR3GuestCtrlGetHostCmdExec(u32ClientId, uNumParms,
+    int rc = VbglR3GuestCtrlExecGetHostCmd(u32ClientId, uNumParms,
                                            /* Command */
                                            szCmd,      sizeof(szCmd),
                                            /* Flags */
