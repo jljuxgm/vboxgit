@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsNetwork.cpp 29122 2010-05-06 09:13:22Z vboxsync $ */
+/* $Id: VBoxVMSettingsNetwork.cpp 29126 2010-05-06 09:58:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -18,8 +18,10 @@
  */
 
 /* VBox Includes */
-#include <iprt/ldr.h>
-#include <VBox/VDEPlug.h>
+#ifdef VBOX_WITH_VDE
+# include <iprt/ldr.h>
+# include <VBox/VDEPlug.h>
+#endif
 
 #include "QIWidgetValidator.h"
 #include "QIArrowButtonSwitch.h"
