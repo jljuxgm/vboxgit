@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 29737 2010-05-21 14:07:52Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 30089 2010-06-08 13:40:27Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -128,8 +128,6 @@ VMMR0DECL(int) VMXR0EnableCpu(PHWACCM_CPUINFO pCpu, PVM pVM, void *pvPageCpu, RT
     int rc = VMXEnable(pPageCpuPhys);
     if (RT_FAILURE(rc))
     {
-        if (pVM)
-            VMXR0CheckError(pVM, &pVM->aCpus[0], rc);
         ASMSetCR4(ASMGetCR4() & ~X86_CR4_VMXE);
         return VERR_VMX_VMXON_FAILED;
     }
@@ -4625,8 +4623,6 @@ VMMR0DECL(int) VMXR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
     rc2 = VMXEnable(pPageCpuPhys);
     if (RT_FAILURE(rc2))
     {
-        if (pVM)
-            VMXR0CheckError(pVM, pVCpu, rc2);
         ASMSetCR4(ASMGetCR4() & ~X86_CR4_VMXE);
         ASMSetFlags(uOldEFlags);
         return VERR_VMX_VMXON_FAILED;
