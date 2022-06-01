@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 24273 2009-11-02 17:36:22Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 24298 2009-11-03 17:20:02Z vboxsync $ */
 
 /** @file
  *
@@ -195,19 +195,19 @@ public:
     void addProcessToReap (RTPROCESS pid);
     void updateClientWatcher();
 
-    void onMachineStateChange (const Guid &aId, MachineState_T aState);
-    void onMachineDataChange (const Guid &aId);
+    void onMachineStateChange(const Guid &aId, MachineState_T aState);
+    void onMachineDataChange(const Guid &aId);
     BOOL onExtraDataCanChange(const Guid &aId, IN_BSTR aKey, IN_BSTR aValue,
                               Bstr &aError);
     void onExtraDataChange(const Guid &aId, IN_BSTR aKey, IN_BSTR aValue);
-    void onMachineRegistered (const Guid &aId, BOOL aRegistered);
-    void onSessionStateChange (const Guid &aId, SessionState_T aState);
+    void onMachineRegistered(const Guid &aId, BOOL aRegistered);
+    void onSessionStateChange(const Guid &aId, SessionState_T aState);
 
-    void onSnapshotTaken (const Guid &aMachineId, const Guid &aSnapshotId);
-    void onSnapshotDiscarded (const Guid &aMachineId, const Guid &aSnapshotId);
-    void onSnapshotChange (const Guid &aMachineId, const Guid &aSnapshotId);
-    void onGuestPropertyChange (const Guid &aMachineId, IN_BSTR aName, IN_BSTR aValue,
-                                IN_BSTR aFlags);
+    void onSnapshotTaken(const Guid &aMachineId, const Guid &aSnapshotId);
+    void onSnapshotDeleted(const Guid &aMachineId, const Guid &aSnapshotId);
+    void onSnapshotChange(const Guid &aMachineId, const Guid &aSnapshotId);
+    void onGuestPropertyChange(const Guid &aMachineId, IN_BSTR aName, IN_BSTR aValue,
+                               IN_BSTR aFlags);
 
     ComObjPtr<GuestOSType> getUnknownOSType();
 

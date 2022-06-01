@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 24295 2009-11-03 17:11:08Z vboxsync $ */
+/* $Id: MachineImpl.h 24298 2009-11-03 17:20:02Z vboxsync $ */
 
 /** @file
  *
@@ -1033,7 +1033,7 @@ private:
         enum Reason { Unexpected, Abnormal, Normal };
     };
 
-    struct Task;
+    struct SnapshotTask;
     struct DeleteSnapshotTask;
     struct RestoreSnapshotTask;
 
