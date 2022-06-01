@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 30198 2010-06-15 14:00:43Z vboxsync $ */
+/* $Id: UISession.cpp 30323 2010-06-21 11:21:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1530,7 +1530,15 @@ void UISession::preparePowerUp()
         vboxProblem().remindAboutAutoCapture();
 
     /* Shows first run wizard if necessary: */
-    if (isFirstTimeStarted())
+    const CMachine &machine = session().GetMachine();
+    /* Check if we are in teleportation waiting mode. In that case no first run
+     * wizard is necessary. */
+    KMachineState state = machine.GetState();
+    if (   isFirstTimeStarted()
+        && !((   state == KMachineState_PoweredOff
+              || state == KMachineState_Aborted
+              || state == KMachineState_Teleported)
+             && machine.GetTeleporterEnabled()))
     {
         UIFirstRunWzd wzd(mainMachineWindow(), session().GetMachine());
         wzd.exec();
