@@ -1,4 +1,4 @@
-/* $Id: socket.h 27509 2010-03-18 23:47:16Z vboxsync $ */
+/* $Id: socket.h 27549 2010-03-19 18:26:29Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTSocket.
  */
@@ -36,17 +36,26 @@
 /* Currently requires a bunch of socket headers. */
 
 
+/** Native socket handle type. */
+#ifdef RT_OS_WINDOWS
+# define RTSOCKETNATIVE         SOCKET
+#else
+# define RTSOCKETNATIVE         int
+#endif
+
+/** NIL value for native socket handles. */
+#ifdef RT_OS_WINDOWS
+# define NIL_RTSOCKETNATIVE     INVALID_SOCKET
+#else
+# define NIL_RTSOCKETNATIVE     (-1)
+#endif
+
+
 RT_C_DECLS_BEGIN
 
 #ifndef IPRT_INTERNAL_SOCKET_POLLING_ONLY
 int rtSocketResolverError(void);
-int rtSocketCreateForNative(RTSOCKETINT **ppSocket,
-# ifdef RT_OS_WINDOWS
-                            SOCKET hNative
-# else
-                            int hNative
-# endif
-                            );
+int rtSocketCreateForNative(RTSOCKETINT **ppSocket, RTSOCKETNATIVE hNative);
 int rtSocketCreate(PRTSOCKET phSocket, int iDomain, int iType, int iProtocol);
 int rtSocketBind(RTSOCKET hSocket, const struct sockaddr *pAddr, int cbAddr);
 int rtSocketListen(RTSOCKET hSocket, int cMaxPending);
