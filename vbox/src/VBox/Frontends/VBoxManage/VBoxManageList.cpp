@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 28345 2010-04-15 05:40:43Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 28685 2010-04-24 15:03:33Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -922,6 +922,12 @@ int handleList(HandlerArg *a)
             RTPrintf("Maximum SCSI Port count:         %u\n", ulValue);
             systemProperties->GetMaxDevicesPerPortForStorageBus(StorageBus_SCSI, &ulValue);
             RTPrintf("Maximum Devices per SCSI Port:   %u\n", ulValue);
+            systemProperties->GetMaxInstancesOfStorageBus(StorageBus_SAS, &ulValue);
+            RTPrintf("Maximum SAS Controllers:         %u\n", ulValue);
+            systemProperties->GetMaxPortCountForStorageBus(StorageBus_SAS, &ulValue);
+            RTPrintf("Maximum SAS Port count:          %u\n", ulValue);
+            systemProperties->GetMaxDevicesPerPortForStorageBus(StorageBus_SAS, &ulValue);
+            RTPrintf("Maximum Devices per SAS Port:    %u\n", ulValue);
             systemProperties->GetMaxInstancesOfStorageBus(StorageBus_Floppy, &ulValue);
             RTPrintf("Maximum Floppy Controllers:      %u\n", ulValue);
             systemProperties->GetMaxPortCountForStorageBus(StorageBus_Floppy, &ulValue);
