@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 25554 2009-12-22 10:09:05Z vboxsync $ */
+/* $Id: EMAll.cpp 25863 2010-01-15 13:48:02Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -190,7 +190,7 @@ DECLINLINE(int) emDisCoreOne(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, RTGCUINTP
               HWACCMInvalidatePage(pVCpu, InstrGC);
 
            Log(("emDisCoreOne: read failed with %d\n", rc));
-           return rc; 
+           return rc;
         }
         State.GCPtr = NIL_RTGCPTR;
     }
@@ -279,7 +279,7 @@ VMMDECL(int) EMInterpretDisasOneEx(PVM pVM, PVMCPU pVCpu, RTGCUINTPTR GCPtrInstr
               HWACCMInvalidatePage(pVCpu, GCPtrInstr);
 
            Log(("EMInterpretDisasOneEx: read failed with %d\n", rc));
-           return rc; 
+           return rc;
         }
         State.GCPtr = NIL_RTGCPTR;
     }
@@ -2955,7 +2955,7 @@ VMMDECL(int) EMInterpretRdmsr(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
     case MSR_IA32_PERF_STATUS:
         val = CPUMGetGuestMsr(pVCpu, MSR_IA32_PERF_STATUS);
         break;
-        
+
 #if 0 /*def IN_RING0 */
     case MSR_IA32_PLATFORM_ID:
     case MSR_IA32_BIOS_SIGN_ID:
