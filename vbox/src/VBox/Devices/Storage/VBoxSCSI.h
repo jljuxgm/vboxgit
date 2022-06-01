@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.h 21321 2009-07-07 12:31:37Z vboxsync $ */
+/* $Id: VBoxSCSI.h 28684 2010-04-24 14:22:22Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -43,6 +43,8 @@
  * +--------+--------+----------+
  * |   2    |  R/W   | Detect   |
  * +--------+--------+----------+
+ * |   3    |  Write | Reset    |
+ * +--------+--------+----------+
  *
  * The register at port 0 receives the SCSI CDB issued from the driver when writing to it but
  * before writing the actual CDB the first write gives the size of the CDB in bytes.
@@ -81,6 +83,9 @@ typedef enum VBOXSCSISTATE
 
 #define VBOXSCSI_TXDIR_FROM_DEVICE 0
 #define VBOXSCSI_TXDIR_TO_DEVICE   1
+
+/** Maximum CDB size the BIOS driver sends. */
+#define VBOXSCSI_CDB_SIZE_MAX     10
 
 typedef struct VBOXSCSI
 {

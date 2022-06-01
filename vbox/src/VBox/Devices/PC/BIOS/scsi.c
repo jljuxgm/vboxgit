@@ -1,4 +1,4 @@
-/* $Id: scsi.c 28530 2010-04-20 15:50:42Z vboxsync $ */
+/* $Id: scsi.c 28684 2010-04-24 14:22:22Z vboxsync $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
@@ -28,6 +28,7 @@
 #define VBOXSCSI_REGISTER_COMMAND  0
 #define VBOXSCSI_REGISTER_DATA_IN  1
 #define VBOXSCSI_REGISTER_IDENTIFY 2
+#define VBOXSCSI_REGISTER_RESET    3
 
 #define VBOXSCSI_MAX_DEVICES 16 /* Maximum number of devices a SCSI device can have. */
 
@@ -455,6 +456,7 @@ void scsi_init( )
     {
         /* Detected - Enumerate attached devices. */
         VBOXSCSI_DEBUG("scsi_init: BusLogic SCSI adapter detected\n");
+        outb(BUSLOGIC_ISA_IO_PORT+VBOXSCSI_REGISTER_RESET, 0);
         scsi_enumerate_attached_devices(BUSLOGIC_ISA_IO_PORT);
     }
     else
@@ -470,6 +472,7 @@ void scsi_init( )
     {
         /* Detected - Enumerate attached devices. */
         VBOXSCSI_DEBUG("scsi_init: LsiLogic SCSI adapter detected\n");
+        outb(LSILOGIC_ISA_IO_PORT+VBOXSCSI_REGISTER_RESET, 0);
         scsi_enumerate_attached_devices(LSILOGIC_ISA_IO_PORT);
     }
     else
