@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 29894 2010-05-31 10:37:35Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 29901 2010-05-31 12:53:25Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -670,7 +670,7 @@ HRESULT Appliance::readFS(const LocationInfo &locInfo)
         m->pReader = new ovf::OVFReader(locInfo.strPath);
         /* Create the SHA1 sum of the OVF file for later validation */
         char *pszDigest;
-        int vrc = RTSha1Digest(locInfo.strPath.c_str(), &pszDigest);
+        int vrc = RTSha1Digest(locInfo.strPath.c_str(), &pszDigest, NULL, NULL);
         if (RT_FAILURE(vrc))
             throw setError(VBOX_E_FILE_ERROR,
                            tr("Couldn't calculate SHA1 digest for file '%s' (%Rrc)"),
@@ -1064,7 +1064,7 @@ HRESULT Appliance::manifestVerify(const LocationInfo &locInfo,
              ++it1, ++i)
         {
             char* pszDigest;
-            vrc = RTSha1Digest((*it1).c_str(), &pszDigest);
+            vrc = RTSha1Digest((*it1).c_str(), &pszDigest, NULL, NULL);
             pTestList[i].pszTestFile = (char*)(*it1).c_str();
             pTestList[i].pszTestDigest = pszDigest;
         }

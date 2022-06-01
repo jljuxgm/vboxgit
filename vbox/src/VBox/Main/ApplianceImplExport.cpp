@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 29875 2010-05-28 18:15:15Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 29901 2010-05-31 12:53:25Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1607,7 +1607,7 @@ HRESULT Appliance::writeFS(const LocationInfo &locInfo, const OVFFormat enFormat
              it1 != diskList.end();
              ++it1, ++i)
             ppManifestFiles[i] = (*it1).c_str();
-        int vrc = RTManifestWriteFiles(strMfFile.c_str(), ppManifestFiles, diskList.size()+1);
+        int vrc = RTManifestWriteFiles(strMfFile.c_str(), ppManifestFiles, diskList.size()+1, NULL, NULL);
         RTMemFree(ppManifestFiles);
         if (RT_FAILURE(vrc))
             throw setError(VBOX_E_FILE_ERROR,
