@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 26556 2010-02-15 22:10:11Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 26767 2010-02-24 19:48:02Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -185,7 +185,7 @@ typedef FNHGSMICALLINIT *PFNHGSMICALLINIT;
 typedef int FNHGSMICALLFINALIZE (PDEVICE_EXTENSION PrimaryExtension, void *pvContext, void *pvData);
 typedef FNHGSMICALLFINALIZE *PFNHGSMICALLFINALIZE;
 
-void* VBoxHGSMIBufferAlloc (PDEVICE_EXTENSION PrimaryExtension,
+void* vboxHGSMIBufferAlloc(PDEVICE_EXTENSION PrimaryExtension,
                          HGSMISIZE cbData,
                          uint8_t u8Ch,
                          uint16_t u16Op)
@@ -196,18 +196,7 @@ void* VBoxHGSMIBufferAlloc (PDEVICE_EXTENSION PrimaryExtension,
     return HGSMIHeapAlloc (&PrimaryExtension->u.primary.hgsmiAdapterHeap, cbData, u8Ch, u16Op);
 }
 
-void* VBoxHGSMIBufferAlloc (PDEVICE_EXTENSION PrimaryExtension,
-                         uint8_t u8Ch,
-                         uint16_t u16Op,
-                         HGSMISIZE cbData)
-{
-#ifdef VBOXWDDM
-    /* @todo: add synchronization */
-#endif
-    return HGSMIHeapAlloc (&PrimaryExtension->u.primary.hgsmiAdapterHeap, cbData, u8Ch, u16Op);
-}
-
-void VBoxHGSMIBufferFree (PDEVICE_EXTENSION PrimaryExtension, void *pvBuffer)
+void vboxHGSMIBufferFree (PDEVICE_EXTENSION PrimaryExtension, void *pvBuffer)
 {
 #ifdef VBOXWDDM
     /* @todo: add synchronization */
@@ -215,7 +204,7 @@ void VBoxHGSMIBufferFree (PDEVICE_EXTENSION PrimaryExtension, void *pvBuffer)
     HGSMIHeapFree (&PrimaryExtension->u.primary.hgsmiAdapterHeap, pvBuffer);
 }
 
-int VBoxHGSMIBufferSubmit (PDEVICE_EXTENSION PrimaryExtension, void *pvBuffer)
+int vboxHGSMIBufferSubmit (PDEVICE_EXTENSION PrimaryExtension, void *pvBuffer)
 {
     /* Initialize the buffer and get the offset for port IO. */
     HGSMIOFFSET offBuffer = HGSMIHeapBufferOffset (&PrimaryExtension->u.primary.hgsmiAdapterHeap, pvBuffer);
