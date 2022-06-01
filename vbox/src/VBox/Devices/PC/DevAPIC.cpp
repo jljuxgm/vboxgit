@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 26983 2010-03-03 12:29:51Z vboxsync $ */
+/* $Id: DevAPIC.cpp 27221 2010-03-09 16:22:56Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1227,7 +1227,7 @@ static uint32_t apic_get_delivery_bitmask(APICDeviceInfo *dev, uint8_t dest, uin
             if (apic->dest_mode == APIC_DESTMODE_FLAT)
             {
                 if (dest & apic->log_dest)
-                    mask |= (1 << apic->id);
+                    mask |= (1 << i);
             }
             else if (apic->dest_mode == APIC_DESTMODE_CLUSTER)
             {
