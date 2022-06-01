@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 24931 2009-11-25 10:19:40Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 24932 2009-11-25 10:38:13Z vboxsync $ */
 
 /** @file
  *
@@ -986,13 +986,9 @@ void Display::handleDisplayUpdate (int x, int y, int w, int h)
 {
 #ifdef VBOX_WITH_OLD_VBVA_LOCK
     /*
-     * Always runs under VBVA or DevVGA lock.
+     * Always runs under either VBVA lock or, for HGSMI, DevVGA lock.
      * Safe to use VBVA vars and take the framebuffer lock.
      */
-#ifdef DEBUG_sunlover
-    /* This assert is here for testing only. */
-    Assert(RTCritSectIsOwner(&mVBVALock));
-#endif /* DEBUG_sunlover */
 #endif /* VBOX_WITH_OLD_VBVA_LOCK */
 
 #ifdef DEBUG_sunlover
