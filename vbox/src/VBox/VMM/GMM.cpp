@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 29424 2010-05-12 15:11:09Z vboxsync $ */
+/* $Id: GMM.cpp 29613 2010-05-18 11:40:07Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -384,7 +384,10 @@ GMMR3DECL(int) GMMR3RegisterSharedModule(PVM pVM, PGMMREGISTERSHAREDMODULEREQ pR
 {
     pReq->Hdr.u32Magic  = SUPVMMR0REQHDR_MAGIC;
     pReq->Hdr.cbReq     = RT_OFFSETOF(GMMREGISTERSHAREDMODULEREQ, aRegions[pReq->cRegions]);
-    return VMMR3CallR0(pVM, VMMR0_DO_GMM_REGISTER_SHARED_MODULE, 0, &pReq->Hdr);
+    int rc = VMMR3CallR0(pVM, VMMR0_DO_GMM_REGISTER_SHARED_MODULE, 0, &pReq->Hdr);
+    if (rc == VINF_SUCCESS)
+        rc = pReq->rc;
+    return rc;
 }
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29605 2010-05-18 09:27:25Z vboxsync $ */
+/* $Id: GMMR0.cpp 29613 2010-05-18 11:40:07Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3620,7 +3620,9 @@ GMMR0DECL(int)  GMMR0RegisterSharedModuleReq(PVM pVM, VMCPUID idCpu, PGMMREGISTE
     AssertPtrReturn(pReq, VERR_INVALID_POINTER);
     AssertMsgReturn(pReq->Hdr.cbReq >= sizeof(*pReq) && pReq->Hdr.cbReq == RT_UOFFSETOF(GMMREGISTERSHAREDMODULEREQ, aRegions[pReq->cRegions]), ("%#x != %#x\n", pReq->Hdr.cbReq, sizeof(*pReq)), VERR_INVALID_PARAMETER);
 
-    return GMMR0RegisterSharedModule(pVM, idCpu, pReq->enmGuestOS, pReq->szName, pReq->szVersion, pReq->GCBaseAddr, pReq->cbModule, pReq->cRegions, pReq->aRegions);
+    /* Pass back return code in the request packet to preserve informational codes. (VMMR3CallR0 chokes on them) */
+    pReq->rc = GMMR0RegisterSharedModule(pVM, idCpu, pReq->enmGuestOS, pReq->szName, pReq->szVersion, pReq->GCBaseAddr, pReq->cbModule, pReq->cRegions, pReq->aRegions);
+    return VINF_SUCCESS;
 }
 
 /**
