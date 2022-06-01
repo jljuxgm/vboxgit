@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 26122 2010-02-01 14:23:08Z vboxsync $ */
+/* $Id: Performance.cpp 27645 2010-03-23 16:13:21Z vboxsync $ */
 
 /** @file
  *
@@ -92,9 +92,7 @@ int CollectorHAL::getHostCpuMHz(ULONG *mhz)
         }
     }
 
-    // @todo Replace 'if' with 'AssertReturn' when done debugging
-    //AssertReturn(cCpus, VERR_NOT_IMPLEMENTED);
-    if (cCpus == 0) return VERR_NOT_IMPLEMENTED;
+    AssertReturn(cCpus, VERR_NOT_IMPLEMENTED);
     *mhz = (ULONG)(u64TotalMHz / cCpus);
 
     return VINF_SUCCESS;
