@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 27008 2010-03-04 09:58:43Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 27012 2010-03-04 11:47:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -38,7 +38,7 @@
 #include "UIMachineView.h"
 #include "UIMachineWindowNormal.h"
 #include "UIMachineWindowFullscreen.h"
-//#include "UIMachineWindowSeamless.h"
+#include "UIMachineWindowSeamless.h"
 
 UIMachineWindow* UIMachineWindow::create(UIMachineLogic *pMachineLogic, UIVisualStateType visualStateType, ulong uScreenId)
 {
@@ -52,8 +52,7 @@ UIMachineWindow* UIMachineWindow::create(UIMachineLogic *pMachineLogic, UIVisual
             window = new UIMachineWindowFullscreen(pMachineLogic, uScreenId);
             break;
         case UIVisualStateType_Seamless:
-            // window = new UIMachineWindowSeamless(pMachineLogic, uScreenId);
-            window = new UIMachineWindowNormal(pMachineLogic, uScreenId);
+            window = new UIMachineWindowSeamless(pMachineLogic, uScreenId);
             break;
     }
     return window;

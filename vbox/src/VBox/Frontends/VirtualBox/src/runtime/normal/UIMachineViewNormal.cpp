@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 26921 2010-03-01 16:09:27Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 27012 2010-03-04 11:47:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -109,7 +109,7 @@ void UIMachineViewNormal::sltPerformGuestResize(const QSize &toSize)
             newSize -= QSize(frameWidth() * 2, frameWidth() * 2);
 
         /* Do not send the same hints as we already have: */
-        if ((newSize.width() == m_storedConsoleSize.width()) && (newSize.height() == m_storedConsoleSize.height()))
+        if ((newSize.width() == storedConsoleSize().width()) && (newSize.height() == storedConsoleSize().height()))
             return;
 
         /* We only actually send the hint if
@@ -122,7 +122,7 @@ void UIMachineViewNormal::sltPerformGuestResize(const QSize &toSize)
         if (toSize.isValid() || m_fShouldWeDoResize)
         {
             /* Remember the new size. */
-            m_storedConsoleSize = newSize;
+            storeConsoleSize(newSize.width(), newSize.height());
 
             /* Send new size-hint to the guest: */
             session().GetConsole().GetDisplay().SetVideoModeHint(newSize.width(), newSize.height(), 0, screenId());
