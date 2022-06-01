@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 26540 2010-02-15 13:50:15Z vboxsync $
+; $Id: SUPR0.def 28477 2010-04-19 15:55:02Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Exports.
 ;
@@ -93,10 +93,13 @@ EXPORTS
     RTR0MemKernelIsValidAddr
     RTR0MemAreKrnlAndUsrDifferent
     RTProcSelf
-    ; broken - RTSemMutexCreate
-    ; broken - RTSemMutexRequest
-    ; broken - RTSemMutexRelease
-    ; broken - RTSemMutexDestroy
+    RTSemMutexCreate
+    RTSemMutexRequest
+    RTSemMutexRequestDebug
+    RTSemMutexRequestNoResume
+    RTSemMutexRequestNoResumeDebug
+    RTSemMutexRelease
+    RTSemMutexDestroy
     RTSemEventCreate
     RTSemEventSignal
     RTSemEventWait
