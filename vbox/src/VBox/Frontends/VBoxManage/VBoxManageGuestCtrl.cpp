@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 28803 2010-04-27 09:53:43Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -341,7 +341,7 @@ static int handleExecProgram(HandlerArg *a)
                     if (   waitForStdOut
                         || waitForStdErr)
                     {
-                        if (verbose) RTPrintf("Retrieving output data ...\n");
+                        bool bFound = false;
                         while (true)
                         {
                             SafeArray<BYTE> aOutputData;
@@ -351,6 +351,12 @@ static int handleExecProgram(HandlerArg *a)
                             cbOutputData = aOutputData.size();
                             if (cbOutputData == 0)
                                 break;
+
+                            if (!bFound && verbose) 
+                            {
+                                RTPrintf("Retrieving output data ...\n");
+                                bFound = true;
+                            }
 
                             /* aOutputData has a platform dependent line ending, standardize on
                              * Unix style, as RTStrmWrite does the LF -> CR/LF replacement on
@@ -371,6 +377,8 @@ static int handleExecProgram(HandlerArg *a)
                             }
                             RTStrmWrite(g_pStdOut, aOutputData.raw(), cbOutputDataPrint);
                         }
+                        if (!bFound && verbose) 
+                            RTPrintf("No output data available\n");
                     }
                 }
             }
