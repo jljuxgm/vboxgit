@@ -1,4 +1,4 @@
-/* $Id: sg.cpp 28117 2010-04-08 21:38:35Z vboxsync $ */
+/* $Id: sg.cpp 28145 2010-04-09 13:54:29Z vboxsync $ */
 /** @file
  * IPRT - S/G buffer handling.
  */
@@ -120,12 +120,12 @@ RTDECL(size_t) RTSgBufCopy(PRTSGBUF pSgBufDst, PRTSGBUF pSgBufSrc, size_t cbCopy
         void *pvBufDst;
         void *pvBufSrc;
 
-        if (!cbCopy)
+        if (!cbThisCopy)
             break;
 
         pvBufDst = sgBufGet(pSgBufDst, &cbTmp);
         Assert(cbTmp == cbThisCopy);
-        pvBufSrc = sgBufGet(pSgBufDst, &cbTmp);
+        pvBufSrc = sgBufGet(pSgBufSrc, &cbTmp);
         Assert(cbTmp == cbThisCopy);
 
         memcpy(pvBufDst, pvBufSrc, cbThisCopy);
