@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-freebsd.c 28714 2010-04-25 20:04:02Z vboxsync $ */
+/* $Id: VBoxNetFlt-freebsd.c 28723 2010-04-25 21:50:56Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), FreeBSD Specific Code.
  */
@@ -578,6 +578,7 @@ int vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis, void *pvContext)
     pThis->pSwitchPort->pfnReportMacAddress(pThis->pSwitchPort, &pThis->u.s.MacAddr);
     pThis->pSwitchPort->pfnReportPromiscuousMode(pThis->pSwitchPort, vboxNetFltFreeBsdIsPromiscuous(pThis));
     pThis->pSwitchPort->pfnReportGsoCapabilities(pThis->pSwitchPort, 0, INTNETTRUNKDIR_WIRE | INTNETTRUNKDIR_HOST);
+    pThis->pSwitchPort->pfnReportNoPreemptDsts(pThis->pSwitchPort, 0 /* none */);
 
     return VINF_SUCCESS;
 }

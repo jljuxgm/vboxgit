@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-win.c 28714 2010-04-25 20:04:02Z vboxsync $ */
+/* $Id: VBoxNetFlt-win.c 28723 2010-04-25 21:50:56Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Integration with IntNet/NetFlt
  */
@@ -3281,6 +3281,8 @@ static void vboxNetFltWinAttachToInterfaceWorker(PATTACH_INFO pAttachInfo)
                                                                              vboxNetFltWinIsPromiscuous2(pThis));
                                 pThis->pSwitchPort->pfnReportGsoCapabilities(pThis->pSwitchPort, 0,
                                                                              INTNETTRUNKDIR_WIRE | INTNETTRUNKDIR_HOST);
+                                /** @todo We should be able to do pfnXmit at DISPATCH_LEVEL... */
+                                pThis->pSwitchPort->pfnReportNoPreemptDsts(pThis->pSwitchPort, 0 /* none */);
                             }
                             return;
                         }
