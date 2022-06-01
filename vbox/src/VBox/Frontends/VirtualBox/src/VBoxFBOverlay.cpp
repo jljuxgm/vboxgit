@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 27960 2010-04-02 16:29:06Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 27961 2010-04-02 16:32:41Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -1935,6 +1935,7 @@ VBoxGLWgt::VBoxGLWgt(VBoxVHWAImage * pImage,
     /* work-around to disable done current needed to old ATI drivers on Linux */
     VBoxGLContext *pc = (VBoxGLContext*)context();
     pc->allowDoneCurrent (false);
+    Assert(isSharing());
 }
 
 
@@ -4042,8 +4043,12 @@ class VBoxGLShareWgt : public QGLWidget
 {
 public:
     VBoxGLShareWgt() :
-        QGLWidget(VBoxVHWAImage::vboxGLFormat())
-    {}
+        QGLWidget(new VBoxGLContext(VBoxVHWAImage::vboxGLFormat()))
+    {
+        /* work-around to disable done current needed to old ATI drivers on Linux */
+        VBoxGLContext *pc = (VBoxGLContext*)context();
+        pc->allowDoneCurrent (false);
+    }
 
 protected:
     void initializeGL()
