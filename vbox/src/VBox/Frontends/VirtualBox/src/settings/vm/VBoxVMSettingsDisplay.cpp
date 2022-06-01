@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsDisplay.cpp 27406 2010-03-16 13:56:42Z vboxsync $ */
+/* $Id: VBoxVMSettingsDisplay.cpp 27411 2010-03-16 15:09:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -205,7 +205,7 @@ void VBoxVMSettingsDisplay::setValidator (QIWidgetValidator *aVal)
 bool VBoxVMSettingsDisplay::revalidate (QString &aWarning, QString & /* aTitle */)
 {
     /* Video RAM amount test */
-    quint64 needBytes = VBoxGlobal::requiredVideoMemory (&mMachine);
+    quint64 needBytes = VBoxGlobal::requiredVideoMemory (&mMachine, mSlMonitors->value());
     if ((quint64) mSlMemory->value() * _1M < needBytes)
     {
         aWarning = tr (
