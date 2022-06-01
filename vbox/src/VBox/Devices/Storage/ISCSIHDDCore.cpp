@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 25981 2010-01-22 18:42:01Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 26291 2010-02-05 14:27:55Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -3793,5 +3793,7 @@ VBOXHDDBACKEND g_ISCSIBackend =
     /* pfnComposeLocation */
     iscsiComposeLocation,
     /* pfnComposeName */
-    iscsiComposeName
+    iscsiComposeName,
+    /* pfnCompact */
+    NULL
 };

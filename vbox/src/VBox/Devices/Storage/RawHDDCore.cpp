@@ -1,4 +1,4 @@
-/* $Id: RawHDDCore.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: RawHDDCore.cpp 26291 2010-02-05 14:27:55Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -1320,6 +1320,8 @@ VBOXHDDBACKEND g_RawBackend =
     /* pfnComposeLocation */
     genericFileComposeLocation,
     /* pfnComposeName */
-    genericFileComposeName
+    genericFileComposeName,
+    /* pfnCompact */
+    NULL
 };
 

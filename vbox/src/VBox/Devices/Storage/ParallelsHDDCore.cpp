@@ -1,4 +1,4 @@
-/* $Id: ParallelsHDDCore.cpp 26163 2010-02-02 18:58:33Z vboxsync $ */
+/* $Id: ParallelsHDDCore.cpp 26291 2010-02-05 14:27:55Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -1291,6 +1291,8 @@ VBOXHDDBACKEND g_ParallelsBackend =
     /* pfnComposeLocation */
     genericFileComposeLocation,
     /* pfnComposeName */
-    genericFileComposeName
+    genericFileComposeName,
+    /* pfnCompact */
+    NULL
 };
 
