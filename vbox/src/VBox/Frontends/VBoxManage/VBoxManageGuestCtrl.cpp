@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 28818 2010-04-27 13:14:40Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 28920 2010-04-29 19:19:15Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -334,10 +334,10 @@ static int handleExecProgram(HandlerArg *a)
                         RTPrintf("\n");
                     }
 
-                    ULONG uStatus, uExitCode, uFlags;
-                    CHECK_ERROR_BREAK(guest, GetProcessStatus(uPID, &uExitCode, &uFlags, &uStatus));
+                    ULONG uRetStatus, uRetExitCode, uRetFlags;
+                    CHECK_ERROR_BREAK(guest, GetProcessStatus(uPID, &uRetExitCode, &uRetFlags, &uRetStatus));
                     if (verbose)
-                        RTPrintf("Exit code=%u (Status=%u, Flags=%u)\n", uExitCode, uStatus, uFlags);
+                        RTPrintf("Exit code=%u (Status=%u, Flags=%u)\n", uRetExitCode, uRetStatus, uRetFlags);
 
                     /* Print output if wanted. */
                     if (   waitForStdOut
