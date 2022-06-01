@@ -1,4 +1,4 @@
-/* $Id: process.cpp 18997 2009-04-17 15:22:25Z vboxsync $ */
+/* $Id: process.cpp 26549 2010-02-15 16:59:33Z vboxsync $ */
 /** @file
  * IPRT - Process, Common.
  */
@@ -97,7 +97,8 @@ RTR3DECL(RTPROCPRIORITY) RTProcGetPriority(void)
 
 RTR3DECL(char *) RTProcGetExecutableName(char *pszExecName, size_t cchExecName)
 {
-    AssertReturn(g_szrtProcExePath[0] != '\0', NULL);
+    if (RT_UNLIKELY(g_szrtProcExePath[0] == '\0'))
+        return NULL;
 
     /*
      * Calc the length and check if there is space before copying.
