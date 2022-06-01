@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 22890 2009-09-09 23:11:31Z vboxsync $ */
+/* $Id: TRPM.cpp 25236 2009-12-08 12:15:49Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -682,15 +682,14 @@ VMMR3DECL(void) TRPMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
 
         if (ASMBitTest(&pVM->trpm.s.au32IdtPatched[0], iTrap))
         {
-            PVBOXIDTE   pIdte = &pVM->trpm.s.aIdt[iTrap];
-            RTGCPTR     pHandler = VBOXIDTE_OFFSET(*pIdte);
+            PVBOXIDTE   pIdteCur = &pVM->trpm.s.aIdt[iTrap];
+            RTGCPTR     pHandler = VBOXIDTE_OFFSET(*pIdteCur);
 
             Log(("TRPMR3Relocate: *iGate=%2X Handler %RGv -> %RGv\n", iTrap, pHandler, pHandler + offDelta));
             pHandler += offDelta;
 
-            pIdte->Gen.u16OffsetHigh = pHandler >> 16;
-            pIdte->Gen.u16OffsetLow  = pHandler & 0xFFFF;
-
+            pIdteCur->Gen.u16OffsetHigh = pHandler >> 16;
+            pIdteCur->Gen.u16OffsetLow  = pHandler & 0xFFFF;
         }
     }
 
