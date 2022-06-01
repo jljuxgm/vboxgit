@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29959 2010-06-01 15:43:19Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 29961 2010-06-01 15:49:18Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -353,7 +353,6 @@ void VBoxServicePageSharingInspectGuest()
 
     CloseHandle(hSnapshot);
 
-#if 0
     /* Check all loaded kernel modules. */
     if (ZwQuerySystemInformation)
     {
@@ -449,7 +448,6 @@ skipkernelmodules:
         if (pBuffer)
             RTMemFree(pBuffer);
     }
-#endif
 
     /* Delete leftover modules in the old tree. */
     RTAvlPVDestroy(&pKnownModuleTree, VBoxServicePageSharingEmptyTreeCallback, NULL);
