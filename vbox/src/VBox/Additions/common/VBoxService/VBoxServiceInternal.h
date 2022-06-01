@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 29858 2010-05-28 12:54:03Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 30082 2010-06-07 15:34:06Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -199,8 +199,8 @@ typedef struct VBOXSERVICEVEPROPCACHE
 {
     /** The client ID for HGCM communication. */
     uint32_t    uClientID;
-    /** List of VBOXSERVICEVEPROPCACHEENTRY nodes. */
-    RTLISTNODE  ListEntries;
+    /** Head node of list. */
+    RTLISTNODE  NodeHead;
     /** Critical section for thread-safe use. */
     RTCRITSECT  CritSect;
 } VBOXSERVICEVEPROPCACHE;
@@ -212,8 +212,8 @@ typedef VBOXSERVICEVEPROPCACHE *PVBOXSERVICEVEPROPCACHE;
  */
 typedef struct VBOXSERVICEVEPROPCACHEENTRY
 {
-    /** Node. */
-    RTLISTNODE  Node;
+    /** Node to successor. */
+    RTLISTNODE  NodeSucc;
     /** Name (and full path) of guest property. */
     char       *pszName;
     /** The last value stored (for reference). */
