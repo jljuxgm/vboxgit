@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29024 2010-05-04 14:12:15Z vboxsync $ */
+/* $Id: GMMR0.cpp 29091 2010-05-05 16:12:10Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3398,6 +3398,8 @@ GMMR0DECL(int) GMMR0RegisterSharedModule(PVM pVM, VMCPUID idCpu, char *pszModule
     AssertRC(rc);
     if (GMM_CHECK_SANITY_UPON_ENTERING(pGMM))
     {
+        bool fNewModule = false;
+
         /* Check if this module is already locally registered. */
         PGMMSHAREDMODULEPERVM pRecVM = (PGMMSHAREDMODULEPERVM)RTAvlGCPtrGet(&pGVM->gmm.s.pSharedModuleTree, GCBaseAddr);
         if (!pRecVM)
@@ -3414,6 +3416,8 @@ GMMR0DECL(int) GMMR0RegisterSharedModule(PVM pVM, VMCPUID idCpu, char *pszModule
 
             bool ret = RTAvlGCPtrInsert(&pGVM->gmm.s.pSharedModuleTree, &pRecVM->Core);
             Assert(ret);
+
+            fNewModule = true;
         }
         else
             rc = VINF_PGM_SHARED_MODULE_ALREADY_REGISTERED;
@@ -3422,7 +3426,7 @@ GMMR0DECL(int) GMMR0RegisterSharedModule(PVM pVM, VMCPUID idCpu, char *pszModule
         PGMMSHAREDMODULE pRec = (PGMMSHAREDMODULE)RTAvlGCPtrGet(&pGMM->pGlobalSharedModuleTree, GCBaseAddr);
         if (!pRec)
         {
-            Assert(rc != VINF_PGM_SHARED_MODULE_ALREADY_REGISTERED);
+            Assert(fNewModule);
             Assert(!pRecVM->fCollision);
 
             pRec = (PGMMSHAREDMODULE)RTMemAllocZ(RT_OFFSETOF(GMMSHAREDMODULE, aRegions[cRegions]));
@@ -3465,7 +3469,8 @@ GMMR0DECL(int) GMMR0RegisterSharedModule(PVM pVM, VMCPUID idCpu, char *pszModule
                 /* Save reference. */
                 pRecVM->pSharedModule = pRec;
                 pRecVM->fCollision    = false;
-                pRec->cUsers++;
+                if (fNewModule)
+                    pRec->cUsers++;
                 rc = VINF_SUCCESS;
             }
             else
