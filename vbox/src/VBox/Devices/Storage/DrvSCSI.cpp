@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 27671 2010-03-24 15:45:38Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 27977 2010-04-04 19:21:59Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -257,7 +257,7 @@ static int drvscsiReqTransferEnqueue(VSCSILUN hVScsiLun,
                     rc = pThis->pDrvBlockAsync->pfnStartRead(pThis->pDrvBlockAsync, uOffset,
                                                              (PPDMDATASEG)paSeg, cSeg, cbTransfer,
                                                              hVScsiIoReq);
-                    if (RT_FAILURE(rc))
+                    if (RT_FAILURE(rc) && rc != VERR_VD_ASYNC_IO_IN_PROGRESS)
                         AssertMsgFailed(("%s: Failed to read data %Rrc\n", __FUNCTION__, rc));
                     STAM_REL_COUNTER_ADD(&pThis->StatBytesRead, cbTransfer);
                 }
@@ -267,7 +267,7 @@ static int drvscsiReqTransferEnqueue(VSCSILUN hVScsiLun,
                     rc = pThis->pDrvBlockAsync->pfnStartWrite(pThis->pDrvBlockAsync, uOffset,
                                                               (PPDMDATASEG)paSeg, cSeg, cbTransfer,
                                                               hVScsiIoReq);
-                    if (RT_FAILURE(rc))
+                    if (RT_FAILURE(rc) && rc != VERR_VD_ASYNC_IO_IN_PROGRESS)
                         AssertMsgFailed(("%s: Failed to write data %Rrc\n", __FUNCTION__, rc));
                     STAM_REL_COUNTER_ADD(&pThis->StatBytesWritten, cbTransfer);
                 }
@@ -283,6 +283,21 @@ static int drvscsiReqTransferEnqueue(VSCSILUN hVScsiLun,
                     ASMAtomicDecU32(&pThis->StatIoDepth);
                     VSCSIIoReqCompleted(hVScsiIoReq, VINF_SUCCESS);
                 }
+                else if (rc == VERR_VD_ASYNC_IO_IN_PROGRESS)
+                    rc = VINF_SUCCESS;
+                else if (RT_FAILURE(rc))
+                {
+                    if (enmTxDir == VSCSIIOREQTXDIR_READ)
+                        pThis->pLed->Actual.s.fReading = 0;
+                    else if (enmTxDir == VSCSIIOREQTXDIR_WRITE)
+                        pThis->pLed->Actual.s.fWriting = 0;
+                    else
+                        AssertMsgFailed(("Invalid transfer direction %u\n", enmTxDir));
+                    ASMAtomicDecU32(&pThis->StatIoDepth);
+                    VSCSIIoReqCompleted(hVScsiIoReq, rc);
+                }
+                else
+                    AssertMsgFailed(("Invalid return coe rc=%Rrc\n", rc));
 
                 break;
             }
