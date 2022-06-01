@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 25866 2010-01-15 14:26:49Z vboxsync $ */
+/* $Id: PGMAll.cpp 25912 2010-01-19 12:57:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -770,6 +770,14 @@ VMMDECL(int) PGMInvalidatePage(PVMCPU pVCpu, RTGCPTR GCPtrPage)
      */
     CSAMR3FlushPage(pVM, GCPtrPage);
 #endif /* IN_RING3 */
+
+    /* Ignore all irrelevant error codes. */
+    if (    rc == VERR_PAGE_NOT_PRESENT                 
+        ||  rc == VERR_PAGE_TABLE_NOT_PRESENT           
+        ||  rc == VERR_PAGE_DIRECTORY_PTR_NOT_PRESENT   
+        ||  rc == VERR_PAGE_MAP_LEVEL4_NOT_PRESENT)     
+        rc = VINF_SUCCESS;
+
     return rc;
 }
 
