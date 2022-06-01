@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 29609 2010-05-18 10:08:16Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 29610 2010-05-18 10:16:38Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -274,6 +274,11 @@ typedef struct LSILOGICSCSI
     R3PTRTYPE(PPDMILEDCONNECTORS)  pLedsConnector;
     /** Pointer to the configuration page area. */
     R3PTRTYPE(PMptConfigurationPagesSupported) pConfigurationPages;
+
+#if HC_ARCH_BITS == 64
+    uint32_t                       Alignment7;
+#endif
+
     /** Indicates that PDMDevHlpAsyncNotificationCompleted should be called when
      * a port is entering the idle state. */
     bool volatile                  fSignalIdle;
