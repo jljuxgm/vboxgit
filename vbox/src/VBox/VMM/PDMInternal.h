@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 28266 2010-04-13 16:02:57Z vboxsync $ */
+/* $Id: PDMInternal.h 28425 2010-04-16 18:06:35Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -245,6 +245,8 @@ typedef struct PDMDRVINSINT
     R3PTRTYPE(PFNPDMDRVASYNCNOTIFY) pfnAsyncNotify;
     /** Configuration handle to the instance node. */
     R3PTRTYPE(PCFGMNODE)            pCfgHandle;
+    /** Pointer to the ring-0 request handler function. */
+    PFNPDMDRVREQHANDLERR0           pfnReqHandlerR0;
 } PDMDRVINSINT;
 
 

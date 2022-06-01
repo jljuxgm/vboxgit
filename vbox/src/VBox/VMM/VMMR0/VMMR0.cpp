@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 28422 2010-04-16 15:47:03Z vboxsync $ */
+/* $Id: VMMR0.cpp 28425 2010-04-16 18:06:35Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -27,6 +27,7 @@
 #include <VBox/sup.h>
 #include <VBox/trpm.h>
 #include <VBox/cpum.h>
+#include <VBox/pdmapi.h>
 #include <VBox/pgm.h>
 #include <VBox/stam.h>
 #include <VBox/tm.h>
@@ -823,7 +824,6 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
 
         /*
          * Attempt to enable hwacc mode and check the current setting.
-         *
          */
         case VMMR0_DO_HWACC_ENABLE:
             return HWACCMR0EnableAllCpus(pVM);
@@ -979,6 +979,15 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
             return rc;
         }
 
+        /*
+         * PDM Wrappers.
+         */
+        case VMMR0_DO_PDM_DRIVER_CALL_REQ_HANDLER:
+        {
+            if (!pVM || !pReqHdr || u64Arg || idCpu != NIL_VMCPUID)
+                return VERR_INVALID_PARAMETER;
+            return PDMR0DriverCallReqHandler(pVM, (PPDMDRIVERCALLREQHANDLERREQ)pReqHdr);
+        }
 
         /*
          * Requests to the internal networking service.
