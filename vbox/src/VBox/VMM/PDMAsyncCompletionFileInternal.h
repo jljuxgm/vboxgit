@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 29466 2010-05-14 12:03:58Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 29587 2010-05-17 21:42:26Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -726,7 +726,7 @@ int pdmacFileEpCacheRead(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint, PPDMASYNCCOM
 int pdmacFileEpCacheWrite(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint, PPDMASYNCCOMPLETIONTASKFILE pTask,
                           RTFOFF off, PCRTSGSEG paSegments, size_t cSegments,
                           size_t cbWrite);
-int pdmacFileEpCacheFlush(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint, PPDMASYNCCOMPLETIONTASKFILE pTask);
+int pdmacFileEpCacheFlush(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint);
 
 RT_C_DECLS_END
 
