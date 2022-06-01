@@ -1,4 +1,4 @@
-/* $Id: message.cpp 27301 2010-03-11 19:53:15Z vboxsync $ */
+/* $Id: message.cpp 27639 2010-03-23 15:28:26Z vboxsync $ */
 /** @file
  * IPRT - Error reporting to standard error.
  */
@@ -120,6 +120,25 @@ RTDECL(RTEXITCODE) RTMsgErrorExitV(RTEXITCODE enmExitCode, const char *pszFormat
     return enmExitCode;
 }
 RT_EXPORT_SYMBOL(RTMsgErrorExitV);
+
+
+RTDECL(int) RTMsgErrorRc(int rcRet, const char *pszFormat, ...)
+{
+    va_list va;
+    va_start(va, pszFormat);
+    RTMsgErrorV(pszFormat, va);
+    va_end(va);
+    return rcRet;
+}
+RT_EXPORT_SYMBOL(RTMsgErrorRcV);
+
+
+RTDECL(int) RTMsgErrorRcV(int rcRet, const char *pszFormat, va_list va)
+{
+    RTMsgErrorV(pszFormat, va);
+    return rcRet;
+}
+RT_EXPORT_SYMBOL(RTMsgErrorRcV);
 
 
 RTDECL(RTEXITCODE) RTMsgInitFailure(int rcRTR3Init)
