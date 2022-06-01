@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 28061 2010-04-07 18:45:51Z vboxsync $ */
+/* $Id: DrvNAT.cpp 28138 2010-04-09 11:49:05Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1171,7 +1171,9 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
     char szNetwork[32]; /* xxx.xxx.xxx.xxx/yy */
     GET_STRING(rc, pThis, pCfg, "Network", szNetwork[0], sizeof(szNetwork));
     if (rc == VERR_CFGM_VALUE_NOT_FOUND)
-        RTStrPrintf(szNetwork, sizeof(szNetwork), "10.0.%d.0/24", pDrvIns->iInstance + 2);
+        return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS, N_("NAT%d: Configuration error: "
+                                   "missing network"),
+                                   pDrvIns->iInstance, szNetwork);
 
     RTIPV4ADDR Network;
     RTIPV4ADDR Netmask;
