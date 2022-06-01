@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 26144 2010-02-02 13:02:38Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 27552 2010-03-20 14:59:18Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -481,7 +481,7 @@ DECLCALLBACK(int) VBoxServiceVMInfoWorker(bool volatile *pfShutdown)
 
 #ifdef RT_OS_WINDOWS
     WSACleanup();
-#endif /* !RT_OS_WINDOWS */
+#endif
 
     RTSemEventMultiDestroy(g_VMInfoEvent);
     g_VMInfoEvent = NIL_RTSEMEVENTMULTI;
