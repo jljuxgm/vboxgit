@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 28599 2010-04-22 14:48:16Z vboxsync $ */
+/* $Id: VBoxService.cpp 28600 2010-04-22 14:50:43Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -391,6 +391,7 @@ int VBoxServiceStopServices(void)
     return rc;
 }
 
+#ifndef RT_OS_WINDOWS
 /**
  * Signal handler for properly shutting down the services on Posix platforms.
  */
@@ -403,6 +404,7 @@ static void VBoxServiceSignalHandler(int /* sig */)
     /* Get the main thread out of the waiting loop */
     g_aServices[iMain].pDesc->pfnStop();
 }
+#endif
 
 
 int main(int argc, char **argv)
