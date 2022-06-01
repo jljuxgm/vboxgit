@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 28669 2010-04-23 17:53:01Z vboxsync $ */
+/* $Id: MachineImpl.cpp 28691 2010-04-24 18:57:23Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3783,6 +3783,13 @@ STDMETHODIMP Machine::DeleteSettings()
                             tr("Could not delete the settings file '%s' (%Rrc)"),
                             mData->m_strConfigFileFull.raw(),
                             vrc);
+
+        /* Delete any backup or uncommitted XML files. Ignore failures.
+           See the fSafe parameter of xml::XmlFileWriter::write for details. */
+        Utf8Str otherXml = Utf8StrFmt("%s-tmp", mData->m_strConfigFileFull.c_str());
+        RTFileDelete(otherXml.c_str());
+        otherXml = Utf8StrFmt("%s-prev", mData->m_strConfigFileFull.c_str());
+        RTFileDelete(otherXml.c_str());
 
         /* delete the Logs folder, nothing important should be left
          * there (we don't check for errors because the user might have
