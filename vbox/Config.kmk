@@ -1,4 +1,4 @@
-# $Id: Config.kmk 26743 2010-02-24 13:09:44Z vboxsync $
+# $Id: Config.kmk 26748 2010-02-24 14:27:44Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3091,7 +3091,7 @@ TEMPLATE_VBOXMAINEXE_LIBPATH            += \
 else ifeq ($(KBUILD_TARGET),solaris)
 TEMPLATE_VBOXMAINEXE_TOOL                = GXX3PLAIN
 TEMPLATE_VBOXMAINEXE_DEFS               += _REENTRANT
-TEMPLATE_VBOXMAINEXE_LIBS                = $(LIB_RUNTIME) rt
+TEMPLATE_VBOXMAINEXE_LIBS                = $(LIB_RUNTIME) rt thread
  else
 $(warning Warning: VBOX Build: Target $(KBUILD_TARGET) is not officially supported!)
 TEMPLATE_VBOXMAINEXE_LIBS                =
@@ -4035,7 +4035,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 26743 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 26748 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
