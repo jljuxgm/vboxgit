@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25490 2009-12-18 15:19:41Z vboxsync $
+# $Id: Makefile.kmk 25494 2009-12-18 15:29:51Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -146,6 +146,7 @@ RuntimeWin64ASM_SOURCES = \
 # Win32 assembly sources.
 #
 RuntimeWin32ASM_SOURCES = \
+	common/asm/ASMAtomicCmpXchgU8.asm \
 	common/asm/ASMMultU64ByU32DivByU32.asm
 
 #
