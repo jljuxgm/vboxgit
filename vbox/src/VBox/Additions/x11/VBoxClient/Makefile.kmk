@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25473 2009-12-17 21:49:27Z vboxsync $
+# $Id: Makefile.kmk 27601 2010-03-22 16:22:13Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -52,6 +52,7 @@ VBoxClient_LIBS = \
 	$(VBOX_LIB_VBGL_R3) \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
 	X11 \
+	Xrandr \
 	Xt
 # These are static replacements for gcc-specific parts of libstdc++
 VBoxClient_LIBS += \
