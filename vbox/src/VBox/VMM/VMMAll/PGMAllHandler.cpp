@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 24711 2009-11-17 10:28:24Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 24713 2009-11-17 10:42:59Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -843,6 +843,7 @@ VMMDECL(int)  PGMHandlerPhysicalReset(PVM pVM, RTGCPHYS GCPhys)
                         Assert(PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_MMIO);
                         pPage++;
                     }
+                    PGMPhysInvalidatePageMapTLB(pVM);
                 }
                 else
                 {
@@ -853,7 +854,6 @@ VMMDECL(int)  PGMHandlerPhysicalReset(PVM pVM, RTGCPHYS GCPhys)
                     PGM_INVL_ALL_VCPU_TLBS(pVM);
                 }
 
-                PGMPhysInvalidatePageMapTLB(pVM);
                 rc = VINF_SUCCESS;
                 break;
             }
