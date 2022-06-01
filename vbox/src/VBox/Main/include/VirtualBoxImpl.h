@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 24345 2009-11-04 16:50:07Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 24599 2009-11-11 17:09:45Z vboxsync $ */
 
 /** @file
  *
@@ -176,6 +176,8 @@ public:
     STDMETHOD(CreateDHCPServer) (IN_BSTR aName, IDHCPServer ** aServer);
     STDMETHOD(FindDHCPServerByNetworkName) (IN_BSTR aName, IDHCPServer ** aServer);
     STDMETHOD(RemoveDHCPServer) (IDHCPServer * aServer);
+    STDMETHOD(CheckFirmwarePresent)(FirmwareType_T aFirmwareType, IN_BSTR aVersion, 
+                                    BSTR * aUrl, BOOL * aResult);
 
     /* public methods only for internal purposes */
 #ifdef DEBUG

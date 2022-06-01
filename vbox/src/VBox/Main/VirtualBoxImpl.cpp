@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 24555 2009-11-10 15:20:40Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 24599 2009-11-11 17:09:45Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -929,6 +929,16 @@ VirtualBox::COMGETTER(DHCPServers) (ComSafeArrayOut(IDHCPServer *, aDHCPServers)
     return S_OK;
 }
 
+
+
+STDMETHODIMP
+VirtualBox::CheckFirmwarePresent(FirmwareType_T aFirmwareType, 
+                                 IN_BSTR        aVersion, 
+                                 BSTR           *aUrl, 
+                                 BOOL           *aResult)
+{
+    ReturnComNotImplemented();
+}
 // IVirtualBox methods
 /////////////////////////////////////////////////////////////////////////////
 
