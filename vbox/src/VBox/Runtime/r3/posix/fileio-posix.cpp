@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 28877 2010-04-28 19:10:47Z vboxsync $ */
+/* $Id: fileio-posix.cpp 28915 2010-04-29 18:12:35Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -91,8 +91,8 @@ extern int futimes(int __fd, __const struct timeval __tvp[2]) __THROW;
 RTDECL(bool) RTFileExists(const char *pszPath)
 {
     bool fRc = false;
-    char *pszNativePath;
-    int rc = rtPathToNative(&pszNativePath, pszPath);
+    char const *pszNativePath;
+    int rc = rtPathToNative(&pszNativePath, pszPath, NULL);
     if (RT_SUCCESS(rc))
     {
         struct stat s;
@@ -204,8 +204,8 @@ RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint32_t fOpen)
     int fh = open(pszFilename, fOpenMode, fMode);
     int iErr = errno;
 #else
-    char *pszNativeFilename;
-    rc = rtPathToNative(&pszNativeFilename, pszFilename);
+    char const *pszNativeFilename;
+    rc = rtPathToNative(&pszNativeFilename, pszFilename, NULL);
     if (RT_FAILURE(rc))
         return (rc);
 
@@ -371,8 +371,8 @@ RTR3DECL(RTHCINTPTR) RTFileToNative(RTFILE File)
 
 RTR3DECL(int)  RTFileDelete(const char *pszFilename)
 {
-    char *pszNativeFilename;
-    int rc = rtPathToNative(&pszNativeFilename, pszFilename);
+    char const *pszNativeFilename;
+    int rc = rtPathToNative(&pszNativeFilename, pszFilename, NULL);
     if (RT_SUCCESS(rc))
     {
         if (unlink(pszNativeFilename) != 0)

@@ -1,4 +1,4 @@
-/* $Id: rtProcInitExePath-linux.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: rtProcInitExePath-linux.cpp 28915 2010-04-29 18:12:35Z vboxsync $ */
 /** @file
  * IPRT - rtProcInitName, Linux.
  */
@@ -49,17 +49,15 @@ DECLHIDDEN(int) rtProcInitExePath(char *pszPath, size_t cchPath)
     {
         pszPath[cchLink] = '\0';
 
-        char *pszTmp = NULL;
-        int rc = rtPathFromNative(&pszTmp, pszPath);
+        char const *pszTmp;
+        int rc = rtPathFromNative(&pszTmp, pszPath, NULL);
         AssertMsgRCReturn(rc, ("rc=%Rrc pszLink=\"%s\"\nhex: %.*Rhsx\n", rc, pszPath, cchLink, pszPath), rc);
-
-        size_t cch = strlen(pszTmp);
-        AssertReturn(cch <= cchPath, VERR_BUFFER_OVERFLOW);
-
-        memcpy(pszPath, pszTmp, cch + 1);
-        RTStrFree(pszTmp);
-
-        return VINF_SUCCESS;
+        if (pszTmp != pszPath)
+        {
+            rc = RTStrCopy(pszPath, cchPath, pszTmp);
+            rtPathFreeIprt(pszTmp, pszPath);
+        }
+        return rc;
     }
 
     int err = errno;

@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: dir.cpp 28915 2010-04-29 18:12:35Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation.
  */
@@ -647,7 +647,7 @@ static int rtDirOpenCommon(PRTDIR *ppDir, const char *pszPath, const char *pszFi
     /*
      * Hand it over to the native part.
      */
-    rc = rtOpenDirNative(pDir, szRealPath);
+    rc = rtDirNativeOpen(pDir, szRealPath);
     if (RT_SUCCESS(rc))
         *ppDir = pDir;
     else

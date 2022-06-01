@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: dir-win.cpp 28915 2010-04-29 18:12:35Z vboxsync $ */
 /** @file
  * IPRT - Directory, win32.
  */
@@ -129,7 +129,7 @@ RTDECL(int) RTDirFlush(const char *pszPath)
 }
 
 
-int rtOpenDirNative(PRTDIR pDir, char *pszPathBuf)
+int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf)
 {
     /*
      * Setup the search expression.
