@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-linux.cpp 25720 2010-01-11 13:57:09Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
@@ -241,7 +241,7 @@ RTDECL(int)  RTSemEventMultiReset(RTSEMEVENTMULTI hEventMultiSem)
 }
 
 
-static int rtSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, unsigned cMillies, bool fAutoResume)
+static int rtSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMillies, bool fAutoResume)
 {
     PCRTLOCKVALSRCPOS pSrcPos = NULL;
 
@@ -353,7 +353,7 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, unsigned cMillies
 }
 
 
-RTDECL(int)  RTSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, unsigned cMillies)
+RTDECL(int)  RTSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMillies)
 {
     int rc = rtSemEventMultiWait(hEventMultiSem, cMillies, true);
     Assert(rc != VERR_INTERRUPTED);
@@ -361,7 +361,7 @@ RTDECL(int)  RTSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, unsigned cMilli
 }
 
 
-RTDECL(int)  RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI hEventMultiSem, unsigned cMillies)
+RTDECL(int)  RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMillies)
 {
     return rtSemEventMultiWait(hEventMultiSem, cMillies, false);
 }

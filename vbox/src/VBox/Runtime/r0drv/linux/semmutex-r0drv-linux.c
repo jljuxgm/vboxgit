@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-linux.c 25721 2010-01-11 14:01:53Z vboxsync $ */
+/* $Id: semmutex-r0drv-linux.c 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Linux.
  */
@@ -119,7 +119,7 @@ RT_EXPORT_SYMBOL(RTSemMutexDestroy);
 
 
 #undef RTSemMutexRequest
-RTDECL(int)  RTSemMutexRequest(RTSEMMUTEX hMutexSem, unsigned cMillies)
+RTDECL(int)  RTSemMutexRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies)
 {
     int                 rc    = VINF_SUCCESS;
     PRTSEMMUTEXINTERNAL pThis = (PRTSEMMUTEXINTERNAL)hMutexSem;

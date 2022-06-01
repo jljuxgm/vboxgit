@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 25000 2009-11-26 14:22:44Z vboxsync $ */
+/* $Id: tcp.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -881,7 +881,7 @@ RTR3DECL(int)  RTTcpFlush(RTSOCKET Sock)
 }
 
 
-RTR3DECL(int)  RTTcpSelectOne(RTSOCKET Sock, unsigned cMillies)
+RTR3DECL(int)  RTTcpSelectOne(RTSOCKET Sock, RTMSINTERVAL cMillies)
 {
     fd_set fdsetR;
     FD_ZERO(&fdsetR);

@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-nt.cpp 25722 2010-01-11 14:22:03Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-nt.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT -  Multiple Release Event Semaphores, Ring-0 Driver, NT.
  */
@@ -141,7 +141,7 @@ RTDECL(int) RTSemEventMultiReset(RTSEMEVENTMULTI hEventMultiSem)
 }
 
 
-static int rtSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, unsigned cMillies, bool fInterruptible)
+static int rtSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMillies, bool fInterruptible)
 {
     /*
      * Validate input.
@@ -186,13 +186,13 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, unsigned cMillies
 }
 
 
-RTDECL(int) RTSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, unsigned cMillies)
+RTDECL(int) RTSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMillies)
 {
     return rtSemEventMultiWait(hEventMultiSem, cMillies, false /* fInterruptible */);
 }
 
 
-RTDECL(int) RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI hEventMultiSem, unsigned cMillies)
+RTDECL(int) RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMillies)
 {
     return rtSemEventMultiWait(hEventMultiSem, cMillies, true /* fInterruptible */);
 }

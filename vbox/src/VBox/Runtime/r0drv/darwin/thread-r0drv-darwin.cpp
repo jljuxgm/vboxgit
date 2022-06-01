@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-darwin.cpp 22052 2009-08-07 09:45:48Z vboxsync $ */
+/* $Id: thread-r0drv-darwin.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Darwin.
  */
@@ -47,7 +47,7 @@ RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 }
 
 
-RTDECL(int) RTThreadSleep(unsigned cMillies)
+RTDECL(int) RTThreadSleep(RTMSINTERVAL cMillies)
 {
     RT_ASSERT_PREEMPTIBLE();
     uint64_t u64Deadline;

@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-os2.cpp 24287 2009-11-03 12:34:11Z vboxsync $ */
+/* $Id: thread-r0drv-os2.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 1), Ring-0 Driver, OS/2.
  */
@@ -58,7 +58,7 @@ RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 }
 
 
-RTDECL(int) RTThreadSleep(unsigned cMillies)
+RTDECL(int) RTThreadSleep(RTMSINTERVAL cMillies)
 {
     int rc = KernBlock((ULONG)RTThreadSleep,
                        cMillies == RT_INDEFINITE_WAIT ? SEM_INDEFINITE_WAIT : cMillies,

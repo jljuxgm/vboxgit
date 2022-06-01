@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-nt.cpp 25717 2010-01-11 13:24:09Z vboxsync $ */
+/* $Id: semevent-r0drv-nt.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT -  Single Release Event Semaphores, Ring-0 Driver, NT.
  */
@@ -119,7 +119,7 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT hEventSem)
 }
 
 
-static int rtSemEventWait(RTSEMEVENT hEventSem, unsigned cMillies, bool fInterruptible)
+static int rtSemEventWait(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies, bool fInterruptible)
 {
     /*
      * Validate input.
@@ -162,13 +162,13 @@ static int rtSemEventWait(RTSEMEVENT hEventSem, unsigned cMillies, bool fInterru
 }
 
 
-RTDECL(int)  RTSemEventWait(RTSEMEVENT hEventSem, unsigned cMillies)
+RTDECL(int)  RTSemEventWait(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     return rtSemEventWait(hEventSem, cMillies, false /* fInterruptible */);
 }
 
 
-RTDECL(int)  RTSemEventWaitNoResume(RTSEMEVENT hEventSem, unsigned cMillies)
+RTDECL(int)  RTSemEventWaitNoResume(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     return rtSemEventWait(hEventSem, cMillies, true /* fInterruptible */);
 }

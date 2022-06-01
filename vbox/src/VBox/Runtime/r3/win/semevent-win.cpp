@@ -1,4 +1,4 @@
-/* $Id: semevent-win.cpp 25717 2010-01-11 13:24:09Z vboxsync $ */
+/* $Id: semevent-win.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Event Sempahore, Windows.
  */
@@ -196,7 +196,7 @@ DECL_FORCE_INLINE(int) rtSemEventWaitHandleStatus(struct RTSEMEVENTINTERNAL *pTh
 
 
 #undef RTSemEventWaitNoResume
-RTDECL(int)   RTSemEventWaitNoResume(RTSEMEVENT hEventSem, unsigned cMillies)
+RTDECL(int)   RTSemEventWaitNoResume(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     PCRTLOCKVALSRCPOS pSrcPos = NULL;
 

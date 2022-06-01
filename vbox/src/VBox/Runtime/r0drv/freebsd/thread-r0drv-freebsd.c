@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-freebsd.c 22151 2009-08-11 09:46:23Z vboxsync $ */
+/* $Id: thread-r0drv-freebsd.c 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 1), Ring-0 Driver, FreeBSD.
  */
@@ -48,7 +48,7 @@ RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 }
 
 
-RTDECL(int) RTThreadSleep(unsigned cMillies)
+RTDECL(int) RTThreadSleep(RTMSINTERVAL cMillies)
 {
     int rc;
     int cTicks;

@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-linux.c 22150 2009-08-11 09:41:58Z vboxsync $ */
+/* $Id: thread-r0drv-linux.c 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Linux.
  */
@@ -58,7 +58,7 @@ RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 RT_EXPORT_SYMBOL(RTThreadNativeSelf);
 
 
-RTDECL(int) RTThreadSleep(unsigned cMillies)
+RTDECL(int) RTThreadSleep(RTMSINTERVAL cMillies)
 {
     long cJiffies = msecs_to_jiffies(cMillies);
     set_current_state(TASK_INTERRUPTIBLE);

@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-linux.c 25717 2010-01-11 13:24:09Z vboxsync $ */
+/* $Id: semevent-r0drv-linux.c 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -137,7 +137,7 @@ RT_EXPORT_SYMBOL(RTSemEventSignal);
  * @param   cMillies            The number of milliseconds to wait.
  * @param   fInterruptible      Whether it's an interruptible wait or not.
  */
-static int rtSemEventWait(PRTSEMEVENTINTERNAL pThis, unsigned cMillies, bool fInterruptible)
+static int rtSemEventWait(PRTSEMEVENTINTERNAL pThis, RTMSINTERVAL cMillies, bool fInterruptible)
 {
     /*
      * Ok wait for it.
@@ -192,7 +192,7 @@ static int rtSemEventWait(PRTSEMEVENTINTERNAL pThis, unsigned cMillies, bool fIn
 }
 
 
-RTDECL(int) RTSemEventWait(RTSEMEVENT hEventSem, unsigned cMillies)
+RTDECL(int) RTSemEventWait(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     PRTSEMEVENTINTERNAL pThis = (PRTSEMEVENTINTERNAL)hEventSem;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
@@ -205,7 +205,7 @@ RTDECL(int) RTSemEventWait(RTSEMEVENT hEventSem, unsigned cMillies)
 RT_EXPORT_SYMBOL(RTSemEventWait);
 
 
-RTDECL(int) RTSemEventWaitNoResume(RTSEMEVENT hEventSem, unsigned cMillies)
+RTDECL(int) RTSemEventWaitNoResume(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     PRTSEMEVENTINTERNAL pThis = (PRTSEMEVENTINTERNAL)hEventSem;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);

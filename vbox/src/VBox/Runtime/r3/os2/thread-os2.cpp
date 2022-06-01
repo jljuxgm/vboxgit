@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 16311 2009-01-28 13:46:41Z vboxsync $ */
+/* $Id: thread-os2.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Threads, OS/2.
  */
@@ -175,7 +175,7 @@ RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 }
 
 
-RTDECL(int)   RTThreadSleep(unsigned cMillies)
+RTDECL(int)   RTThreadSleep(RTMSINTERVAL cMillies)
 {
     LogFlow(("RTThreadSleep: cMillies=%d\n", cMillies));
     DosSleep(cMillies);

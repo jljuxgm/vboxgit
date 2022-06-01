@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 13837 2008-11-05 02:54:02Z vboxsync $ */
+/* $Id: thread-win.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Threads, Win32.
  */
@@ -145,7 +145,7 @@ RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 }
 
 
-RTR3DECL(int)   RTThreadSleep(unsigned cMillies)
+RTR3DECL(int)   RTThreadSleep(RTMSINTERVAL cMillies)
 {
     LogFlow(("RTThreadSleep: cMillies=%d\n", cMillies));
     Sleep(cMillies);

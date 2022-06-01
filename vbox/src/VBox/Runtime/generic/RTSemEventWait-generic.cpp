@@ -1,4 +1,4 @@
-/* $Id: RTSemEventWait-generic.cpp 25381 2009-12-14 23:52:28Z vboxsync $ */
+/* $Id: RTSemEventWait-generic.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - RTSemEventWait, generic RTSemEventWaitNoResume wrapper.
  */
@@ -42,7 +42,7 @@
 
 
 #undef RTSemEventWait                   /* undo debug mapping */
-RTDECL(int) RTSemEventWait(RTSEMEVENT EventSem, unsigned cMillies)
+RTDECL(int) RTSemEventWait(RTSEMEVENT EventSem, RTMSINTERVAL cMillies)
 {
     int rc;
     if (cMillies == RT_INDEFINITE_WAIT)
@@ -61,7 +61,7 @@ RTDECL(int) RTSemEventWait(RTSEMEVENT EventSem, unsigned cMillies)
                 uint64_t u64Elapsed = RTTimeMilliTS() - u64Start;
                 if (u64Elapsed >= cMillies)
                     return VERR_TIMEOUT;
-                rc = RTSemEventWaitNoResume(EventSem, cMillies - (unsigned)u64Elapsed);
+                rc = RTSemEventWaitNoResume(EventSem, cMillies - (RTMSINTERVAL)u64Elapsed);
             } while (rc == VERR_INTERRUPTED);
         }
     }

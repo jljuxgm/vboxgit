@@ -1,4 +1,4 @@
-/* $Id: RTSemMutexRequest-generic.cpp 25381 2009-12-14 23:52:28Z vboxsync $ */
+/* $Id: RTSemMutexRequest-generic.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - RTSemMutexRequest, generic RTSemMutexRequestNoResume wrapper.
  */
@@ -42,7 +42,7 @@
 
 
 #undef RTSemMutexRequest                /* undo debug mapping */
-RTDECL(int) RTSemMutexRequest(RTSEMMUTEX Mutex, unsigned cMillies)
+RTDECL(int) RTSemMutexRequest(RTSEMMUTEX Mutex, RTMSINTERVAL cMillies)
 {
     int rc;
     if (cMillies == RT_INDEFINITE_WAIT)
@@ -61,7 +61,7 @@ RTDECL(int) RTSemMutexRequest(RTSEMMUTEX Mutex, unsigned cMillies)
                 uint64_t u64Elapsed = RTTimeMilliTS() - u64Start;
                 if (u64Elapsed >= cMillies)
                     return VERR_TIMEOUT;
-                rc = RTSemMutexRequestNoResume(Mutex, cMillies - (unsigned)u64Elapsed);
+                rc = RTSemMutexRequestNoResume(Mutex, cMillies - (RTMSINTERVAL)u64Elapsed);
             } while (rc == VERR_INTERRUPTED);
         }
     }

@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 24034 2009-10-23 13:04:13Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -53,7 +53,7 @@ RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 }
 
 
-RTDECL(int)   RTThreadSleep(unsigned cMillies)
+RTDECL(int)   RTThreadSleep(RTMSINTERVAL cMillies)
 {
     LARGE_INTEGER Interval;
     Interval.QuadPart = -(int64_t)cMillies * 10000;

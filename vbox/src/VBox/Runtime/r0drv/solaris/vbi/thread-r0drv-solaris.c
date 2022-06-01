@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-solaris.c 25183 2009-12-04 11:03:05Z vboxsync $ */
+/* $Id: thread-r0drv-solaris.c 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Solaris.
  */
@@ -49,7 +49,7 @@ RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 }
 
 
-RTDECL(int) RTThreadSleep(unsigned cMillies)
+RTDECL(int) RTThreadSleep(RTMSINTERVAL cMillies)
 {
     clock_t cTicks;
     RT_ASSERT_PREEMPTIBLE();

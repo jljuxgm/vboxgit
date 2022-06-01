@@ -1,4 +1,4 @@
-/* $Id: semevent-linux.cpp 25717 2010-01-11 13:24:09Z vboxsync $ */
+/* $Id: semevent-linux.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Event Semaphore, Linux (2.6.x+).
  */
@@ -218,7 +218,7 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT hEventSem)
 }
 
 
-static int rtSemEventWait(RTSEMEVENT hEventSem, unsigned cMillies, bool fAutoResume)
+static int rtSemEventWait(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies, bool fAutoResume)
 {
     PCRTLOCKVALSRCPOS pSrcPos = NULL;
 
@@ -330,7 +330,7 @@ static int rtSemEventWait(RTSEMEVENT hEventSem, unsigned cMillies, bool fAutoRes
 }
 
 
-RTDECL(int)  RTSemEventWait(RTSEMEVENT hEventSem, unsigned cMillies)
+RTDECL(int)  RTSemEventWait(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     int rc = rtSemEventWait(hEventSem, cMillies, true);
     Assert(rc != VERR_INTERRUPTED);
@@ -339,7 +339,7 @@ RTDECL(int)  RTSemEventWait(RTSEMEVENT hEventSem, unsigned cMillies)
 }
 
 
-RTDECL(int)  RTSemEventWaitNoResume(RTSEMEVENT hEventSem, unsigned cMillies)
+RTDECL(int)  RTSemEventWaitNoResume(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     return rtSemEventWait(hEventSem, cMillies, false);
 }

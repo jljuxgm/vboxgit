@@ -1,4 +1,4 @@
-/* $Id: sems-os2.cpp 25721 2010-01-11 14:01:53Z vboxsync $ */
+/* $Id: sems-os2.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, OS/2.
  */
@@ -88,7 +88,7 @@ RTDECL(int)   RTSemEventDestroy(RTSEMEVENT hEventSem)
 }
 
 
-RTDECL(int)   RTSemEventWaitNoResume(RTSEMEVENT hEventSem, unsigned cMillies)
+RTDECL(int)   RTSemEventWaitNoResume(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     /*
      * Wait for condition.
@@ -225,7 +225,7 @@ RTDECL(int)  RTSemEventMultiReset(RTSEMEVENTMULTI hEventMultiSem)
 }
 
 
-RTDECL(int)  RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI hEventMultiSem, unsigned cMillies)
+RTDECL(int)  RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMillies)
 {
     /*
      * Wait for condition.
@@ -326,7 +326,7 @@ RTDECL(uint32_t) RTSemMutexSetSubClass(RTSEMMUTEX hMutexSem, uint32_t uSubClass)
 
 
 #undef RTSemMutexRequestNoResume
-RTDECL(int)  RTSemMutexRequestNoResume(RTSEMMUTEX hMutexSem, unsigned cMillies)
+RTDECL(int)  RTSemMutexRequestNoResume(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies)
 {
     /*
      * Lock mutex semaphore.
