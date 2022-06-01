@@ -1,4 +1,4 @@
-# $Id: Config.kmk 29122 2010-05-06 09:13:22Z vboxsync $
+# $Id: Config.kmk 29151 2010-05-06 13:20:49Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2934,6 +2934,18 @@ ifeq ($(KBUILD_TARGET),win)
 endif
 
 #
+# Ring-3 testcase (no -pedantic)
+#
+TEMPLATE_VBOXR3TSTNPEXE  = VBox Ring 3 Testcase Exe Non-pedantic
+TEMPLATE_VBOXR3TSTNPEXE_EXTENDS = VBOXR3TSTEXE
+ifneq ($(KBUILD_TARGET),win) # (only gcc)
+ TEMPLATE_VBOXR3TSTNPEXE_TOOL             = $(VBOX_GCC_TOOL)
+ TEMPLATE_VBOXR3TSTNPEXE_CXXFLAGS         = $(filter-out -pedantic -Wshadow,$(TEMPLATE_VBOXR3TSTEXE_CXXFLAGS)) -Wno-sign-compare
+ TEMPLATE_VBOXR3TSTNPEXE_CFLAGS           = $(filter-out -pedantic -Wshadow -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations,$(TEMPLATE_VBOXR3TSTEXE_CFLAGS)) -Wno-sign-compare
+endif
+
+
+#
 # Template for the CppUnit kind of testcases.
 #
 TEMPLATE_VBOXCPPUNITEXE  = VBox CppUnit Testcase Exe
@@ -4086,7 +4098,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29122 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29151 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
