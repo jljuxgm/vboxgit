@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 24493 2009-11-09 11:59:49Z vboxsync $ */
+/* $Id: MachineImpl.h 24539 2009-11-10 11:59:03Z vboxsync $ */
 
 /** @file
  *
@@ -629,10 +629,8 @@ public:
     STDMETHOD(COMSETTER(FirmwareType)) (FirmwareType_T  aFirmware);
 
     STDMETHOD(QuerySavedThumbnailSize)(ULONG *aSize, ULONG *aWidth, ULONG *aHeight);
-    STDMETHOD(ReadSavedThumbnail)(BYTE *aAddress, ULONG aSize);
-    STDMETHOD(ReadSavedThumbnailToArray)(ULONG *aWidth, ULONG *aHeight, ComSafeArrayOut(BYTE, aData));
+    STDMETHOD(ReadSavedThumbnailToArray)(BOOL aBGR, ULONG *aWidth, ULONG *aHeight, ComSafeArrayOut(BYTE, aData));
     STDMETHOD(QuerySavedScreenshotPNGSize)(ULONG *aSize, ULONG *aWidth, ULONG *aHeight);
-    STDMETHOD(ReadSavedScreenshotPNG)(BYTE *aAddress, ULONG aSize);
     STDMETHOD(ReadSavedScreenshotPNGToArray)(ULONG *aWidth, ULONG *aHeight, ComSafeArrayOut(BYTE, aData));
 
     // public methods only for internal purposes
