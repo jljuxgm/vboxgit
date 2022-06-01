@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 30072 2010-06-07 13:54:47Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 30073 2010-06-07 13:58:35Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -362,15 +362,14 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
 # endif
 #endif
 
-#if HC_ARCH_BITS == 32
                     /* Callstack. */
                     DBGFADDRESS pc;
                     pc.fFlags    = DBGFADDRESS_FLAGS_RING0 | DBGFADDRESS_FLAGS_VALID;
-# if HC_ARCH_BITS == 64
+#if HC_ARCH_BITS == 64
                     pc.FlatPtr   = pc.off = pVCpu->vmm.s.CallRing3JmpBufR0.rip;
-# else
+#else
                     pc.FlatPtr   = pc.off = pVCpu->vmm.s.CallRing3JmpBufR0.eip;
-# endif
+#endif
                     pc.Sel       = DBGF_SEL_FLAT;
 
                     DBGFADDRESS ebp;
@@ -424,7 +423,6 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
                         }
                         DBGFR3StackWalkEnd(pFirstFrame);
                     }
-#endif /* defined(RT_OS_WINDOWS) && HC_ARCH_BITS == 32 */
 
                     /* raw stack */
                     pHlp->pfnPrintf(pHlp,
