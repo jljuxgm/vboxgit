@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 28036 2010-04-07 09:47:43Z vboxsync $ */
+/* $Id: VMMR0.cpp 28320 2010-04-14 18:26:24Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -43,6 +43,7 @@
 #include <VBox/log.h>
 
 #include <iprt/assert.h>
+#include <iprt/crc32.h>
 #include <iprt/mp.h>
 #include <iprt/stdarg.h>
 #include <iprt/string.h>
@@ -69,6 +70,11 @@ RT_C_DECLS_END
 *******************************************************************************/
 /** Pointer to the internal networking service instance. */
 PINTNET g_pIntNet = 0;
+
+PFNRT g_VMMGCDeps[] =
+{
+    (PFNRT)RTCrc32
+};
 
 
 /**

@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 25528 2009-12-20 23:24:59Z vboxsync $
+; $Id: VMMR0.def 28320 2010-04-14 18:26:24Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -68,6 +68,7 @@ EXPORTS
     RTAssertMsg1Weak
     RTAssertMsg2Weak
     RTAssertShouldPanic
+    RTCrc32
     RTTimeNanoTSLegacySync
     RTTimeNanoTSLegacyAsync
     RTTimeNanoTSLFenceSync
