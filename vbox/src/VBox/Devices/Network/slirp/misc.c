@@ -1,4 +1,4 @@
-/* $Id: misc.c 28483 2010-04-19 16:51:41Z vboxsync $ */
+/* $Id: misc.c 28490 2010-04-19 18:22:12Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -307,8 +307,11 @@ void *uma_zalloc_arg(uma_zone_t zone, void *args, int how)
         return NULL;
     RTCritSectEnter(&zone->csZone);
     mem = zone->pfAlloc(zone, zone->size, NULL, 0);
-    if (zone->pfCtor)
-        zone->pfCtor(zone->pData, mem, zone->size, args, M_DONTWAIT);
+    if (mem != NULL)
+    {
+        if (zone->pfCtor)
+            zone->pfCtor(zone->pData, mem, zone->size, args, M_DONTWAIT);
+    }
     RTCritSectLeave(&zone->csZone);
     return mem;
 }
