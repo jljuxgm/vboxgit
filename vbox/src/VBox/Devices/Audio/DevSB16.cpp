@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 23970 2009-10-22 11:24:08Z vboxsync $ */
+/* $Id: DevSB16.cpp 24010 2009-10-23 08:28:33Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1564,6 +1564,7 @@ static DECLCALLBACK(int) sb16LoadExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle
     s->hdma=qemu_get_be32 (f);
     s->port=qemu_get_be32 (f);
     s->ver=qemu_get_be32 (f);
+
     s->in_index=qemu_get_be32 (f);
     s->out_data_len=qemu_get_be32 (f);
     s->fmt_stereo=qemu_get_be32 (f);
