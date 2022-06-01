@@ -1,4 +1,4 @@
-# $Id: Makefile 26180 2010-02-02 22:52:04Z vboxsync $
+# $Id: Makefile 27149 2010-03-07 17:04:23Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -84,8 +84,7 @@ SRCS += \
 	strformattype.c \
 	strprintf.c \
 	strtonum.c \
-	memchr.c \
-	string.c
+	memchr.c
 
 .PATH:	${.CURDIR}/common/rand
 SRCS += \
