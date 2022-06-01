@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 26111 2010-02-01 01:41:24Z vboxsync $ */
+/* $Id: CFGM.cpp 28136 2010-04-09 10:23:18Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -257,9 +257,9 @@ VMMR3DECL(PCFGMNODE) CFGMR3GetChildFV(PCFGMNODE pNode, const char *pszPathFormat
     {
         PCFGMNODE pChild;
         int rc = cfgmR3ResolveNode(pNode, pszPath, &pChild);
+        RTStrFree(pszPath);
         if (RT_SUCCESS(rc))
             return pChild;
-        RTStrFree(pszPath);
     }
     return NULL;
 }
