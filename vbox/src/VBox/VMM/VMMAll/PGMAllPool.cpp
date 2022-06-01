@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 28648 2010-04-23 14:10:07Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 28652 2010-04-23 14:29:24Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3971,7 +3971,7 @@ void pgmPoolTrackPhysExtDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPage, PPGMPAGE
                     else
                     {
                         /* in list */
-                        Log2(("pgmPoolTrackPhysExtDerefGCPhys: pPhysPage=%R[pgmpage] idx=%d\n", pPhysPage, pPage->idx));
+                        Log2(("pgmPoolTrackPhysExtDerefGCPhys: pPhysPage=%R[pgmpage] idx=%d in list\n", pPhysPage, pPage->idx));
                         paPhysExts[iPhysExtPrev].iNext = iPhysExtNext;
                         pgmPoolTrackPhysExtFree(pVM, iPhysExt);
                     }
