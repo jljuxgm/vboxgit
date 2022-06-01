@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 27124 2010-03-05 18:30:32Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 27141 2010-03-07 16:30:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -241,11 +241,7 @@ bool UIMachineViewSeamless::event(QEvent *pEvent)
             if (isHostKeyPressed() && pEvent->type() == QEvent::KeyPress)
             {
                 if (pKeyEvent->key() == Qt::Key_Home)
-                {
-#if 0 // TODO: Activate Main Menu!
-                    // should we create it first?
-#endif
-                }
+                    QTimer::singleShot(0, machineWindowWrapper()->machineWindow(), SLOT(sltPopupMainMenu()));
                 else
                     pEvent->ignore();
             }
