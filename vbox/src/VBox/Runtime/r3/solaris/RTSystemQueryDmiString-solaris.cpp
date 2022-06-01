@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-solaris.cpp 26665 2010-02-19 15:18:49Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-solaris.cpp 27129 2010-03-06 00:16:08Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, solaris ring-3.
  */
@@ -107,5 +107,4 @@ RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t c
         rc = VERR_ACCESS_DENIED;
     return rc;
 }
-
 

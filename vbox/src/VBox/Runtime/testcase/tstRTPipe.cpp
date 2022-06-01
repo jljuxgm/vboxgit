@@ -1,4 +1,4 @@
-/* $Id: tstRTPipe.cpp 26824 2010-02-26 10:36:08Z vboxsync $ */
+/* $Id: tstRTPipe.cpp 27129 2010-03-06 00:16:08Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTPipe.
  */
@@ -330,5 +330,4 @@ int main()
      */
     return RTTestSummaryAndDestroy(hTest);
 }
-
 

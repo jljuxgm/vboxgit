@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 27061 2010-03-04 23:37:52Z vboxsync $ */
+/* $Id: MouseImpl.h 27129 2010-03-06 00:16:08Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -121,7 +121,7 @@ private:
     static DECLCALLBACK(void)   mouseReportModes (PPDMIMOUSECONNECTOR pInterface, bool fRel, bool fAbs);
     static DECLCALLBACK(int)    drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(void)   drvDestruct(PPDMDRVINS pDrvIns);
-    
+
     int getVMMDevMouseCaps(uint32_t *pfCaps);
     int setVMMDevMouseCaps(uint32_t fCaps);
     int reportRelEventToMouseDev(int32_t dx, int32_t dy, int32_t dz,
@@ -131,7 +131,7 @@ private:
     int reportAbsEventToVMMDev(uint32_t mouseXAbs, uint32_t mouseYAbs);
     int convertDisplayWidth(LONG x, uint32_t *pcX);
     int convertDisplayHeight(LONG y, uint32_t *pcY);
-    
+
     void sendMouseCapsNotifications(void);
 
 #ifdef VBOXBFE_WITHOUT_COM

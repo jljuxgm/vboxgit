@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26928 2010-03-02 00:09:36Z vboxsync $
+# $Id: Makefile.kmk 27129 2010-03-06 00:16:08Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxVideo.
 #
@@ -86,7 +86,7 @@ ifdef VBOXWDDM
   VBoxVideoWddm_DEFS      += VBOX_WITH_VIDEOHWACCEL
  endif
  VBoxVideoWddm_DEFS       += LOG_ENABLED
- #VBoxVideoWddm_DEFS       += LOG_TO_BACKDOOR 
+ #VBoxVideoWddm_DEFS       += LOG_TO_BACKDOOR
  VBoxVideoWddm_INCS       += ../../include
  VBoxVideoWddm_LDFLAGS.x86 += /Entry:DriverEntry@8
  VBoxVideoWddm_LDFLAGS.amd64 += /Entry:DriverEntry

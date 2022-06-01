@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-linux.cpp 26839 2010-02-26 12:38:55Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-linux.cpp 27129 2010-03-06 00:16:08Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, linux ring-3.
  */
@@ -105,5 +105,4 @@ RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t c
     return rc;
 }
 RT_EXPORT_SYMBOL(RTSystemQueryDmiString);
-
 

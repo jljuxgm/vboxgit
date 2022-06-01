@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 26993 2010-03-03 14:23:59Z vboxsync $ */
+/* $Id: EMAll.cpp 27129 2010-03-06 00:16:08Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -3175,7 +3175,7 @@ DECLINLINE(int) emInterpretInstructionCPU(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pD
             return VERR_EM_INTERPRETER;
         }
     }
-    else 
+    else
         Log2(("emInterpretInstructionCPU allowed to interpret user-level code!!\n"));
 
 #ifdef IN_RC
