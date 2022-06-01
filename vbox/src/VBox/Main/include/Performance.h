@@ -1,4 +1,4 @@
-/* $Id: Performance.h 27930 2010-04-01 11:07:21Z vboxsync $ */
+/* $Id: Performance.h 27939 2010-04-01 13:34:31Z vboxsync $ */
 
 /** @file
  *
@@ -139,7 +139,7 @@ namespace pm
     {
     public:
         virtual ~CollectorHAL() { };
-        virtual int preCollect(const CollectorHints& /* hints */, uint64_t iTick) { return VINF_SUCCESS; }
+        virtual int preCollect(const CollectorHints& /* hints */, uint64_t /* iTick */) { return VINF_SUCCESS; }
         /** Returns averaged CPU usage in 1/1000th per cent across all host's CPUs. */
         virtual int getHostCpuLoad(ULONG *user, ULONG *kernel, ULONG *idle);
         /** Returns the average frequency in MHz across all host's CPUs. */
@@ -222,7 +222,7 @@ namespace pm
     {
     public:
         BaseMetric(CollectorHAL *hal, const char *name, ComPtr<IUnknown> object)
-            : mHAL(hal), mPeriod(0), mLength(0), mName(name), mObject(object), mLastSampleTaken(0), mEnabled(false) {};
+            : mPeriod(0), mLength(0), mHAL(hal), mName(name), mObject(object), mLastSampleTaken(0), mEnabled(false) {};
         virtual ~BaseMetric() {};
 
         virtual void init(ULONG period, ULONG length) = 0;
