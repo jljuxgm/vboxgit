@@ -1,7 +1,5 @@
-/* $Id: MouseImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
-
+/* $Id: MouseImpl.h 25966 2010-01-22 11:15:43Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM class implementation
  */
 
@@ -93,7 +91,7 @@ public:
 
 private:
 
-    static DECLCALLBACK(void *) drvQueryInterface(PPDMIBASE pInterface, PDMINTERFACE enmInterface);
+    static DECLCALLBACK(void *) drvQueryInterface(PPDMIBASE pInterface, const char *pszIID);
     static DECLCALLBACK(int)    drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, uint32_t fFlags);
     static DECLCALLBACK(void)   drvDestruct(PPDMDRVINS pDrvIns);
 
@@ -106,5 +104,5 @@ private:
     uint32_t mLastAbsY;
 };
 
-#endif // ____H_MOUSEIMPL
+#endif // !____H_MOUSEIMPL
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

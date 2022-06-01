@@ -1,7 +1,5 @@
-/* $Id: KeyboardImpl.h 25893 2010-01-18 14:08:39Z vboxsync $ */
-
+/* $Id: KeyboardImpl.h 25966 2010-01-22 11:15:43Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM class implementation
  */
 
@@ -93,7 +91,7 @@ public:
 
 private:
 
-    static DECLCALLBACK(void *) drvQueryInterface(PPDMIBASE pInterface, PDMINTERFACE enmInterface);
+    static DECLCALLBACK(void *) drvQueryInterface(PPDMIBASE pInterface, const char *pszIID);
     static DECLCALLBACK(int)    drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, uint32_t fFlags);
     static DECLCALLBACK(void)   drvDestruct(PPDMDRVINS pDrvIns);
 

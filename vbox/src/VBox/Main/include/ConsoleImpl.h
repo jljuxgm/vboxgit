@@ -1,7 +1,5 @@
-/* $Id: ConsoleImpl.h 25901 2010-01-18 16:52:21Z vboxsync $ */
-
+/* $Id: ConsoleImpl.h 25966 2010-01-22 11:15:43Z vboxsync $ */
 /** @file
- *
  * VBox Console COM Class definition
  */
 
@@ -492,7 +490,7 @@ private:
     static DECLCALLBACK (int)   saveStateThread (RTTHREAD Thread, void *pvUser);
     static DECLCALLBACK (int)   powerDownThread (RTTHREAD Thread, void *pvUser);
 
-    static DECLCALLBACK(void *) drvStatus_QueryInterface(PPDMIBASE pInterface, PDMINTERFACE enmInterface);
+    static DECLCALLBACK(void *) drvStatus_QueryInterface(PPDMIBASE pInterface, const char *pszIID);
     static DECLCALLBACK(void)   drvStatus_UnitChanged(PPDMILEDCONNECTORS pInterface, unsigned iLUN);
     static DECLCALLBACK(void)   drvStatus_Destruct(PPDMDRVINS pDrvIns);
     static DECLCALLBACK(int)    drvStatus_Construct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, uint32_t fFlags);

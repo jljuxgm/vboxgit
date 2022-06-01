@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 25770 2010-01-12 16:17:04Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -205,7 +205,7 @@ typedef struct AC97LinkState
     PPDMIAUDIOCONNECTOR     pDrv;
     /** Pointer to the attached audio driver. */
     PPDMIBASE               pDrvBase;
-    /** The base interface. */
+    /** The base interface for LUN\#0. */
     PDMIBASE                IBase;
     /** Base port of the I/O space region. */
     RTIOPORT                IOPortBase[2];
@@ -1537,28 +1537,17 @@ static DECLCALLBACK(void)  ac97Reset (PPDMDEVINS pDevIns)
 }
 
 /**
- * Queries an interface to the driver.
- *
- * @returns Pointer to interface.
- * @returns NULL if the interface was not supported by the driver.
- * @param   pInterface          Pointer to this interface structure.
- * @param   enmInterface        The requested interface identification.
- * @thread  Any thread.
+ * @interface_method_impl{PDMIBASE,pfnQueryInterface}
  */
 static DECLCALLBACK(void *) ichac97QueryInterface (struct PDMIBASE *pInterface,
-                                                   PDMINTERFACE enmInterface)
+                                                   const char *pszIID)
 {
-    PCIAC97LinkState *pThis =
-        (PCIAC97LinkState *)((uintptr_t)pInterface
-                             - RT_OFFSETOF(PCIAC97LinkState, ac97.IBase));
+    PCIAC97LinkState *pThis = RT_FROM_MEMBER(pInterface, PCIAC97LinkState, ac97.IBase);
     Assert(&pThis->ac97.IBase == pInterface);
-    switch (enmInterface)
-    {
-        case PDMINTERFACE_BASE:
-            return &pThis->ac97.IBase;
-        default:
-            return NULL;
-    }
+
+    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
+        return &pThis->ac97.IBase;
+    return NULL;
 }
 
 /**

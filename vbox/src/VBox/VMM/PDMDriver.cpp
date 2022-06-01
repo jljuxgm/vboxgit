@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
+/* $Id: PDMDriver.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -395,6 +395,8 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
     Assert(!pDrvAbove || !pDrvAbove->Internal.s.pDown);
     Assert(!pDrvAbove || !pDrvAbove->pDownBase);
 
+    Assert(pBaseInterface->pfnQueryInterface(pBaseInterface, PDMIBASE_IID) == pBaseInterface);
+
     /*
      * Find the driver.
      */
@@ -491,6 +493,7 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                     if (RT_SUCCESS(rc))
                     {
                         AssertPtr(pNew->IBase.pfnQueryInterface);
+                        Assert(pNew->IBase.pfnQueryInterface(&pNew->IBase, PDMIBASE_IID) == &pNew->IBase);
 
                         /* Success! */
                         *ppBaseInterface = &pNew->IBase;

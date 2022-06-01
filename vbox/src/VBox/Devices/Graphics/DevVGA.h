@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 25062 2009-11-27 19:24:14Z vboxsync $ */
+/* $Id: DevVGA.h 25966 2010-01-22 11:15:43Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -302,15 +302,15 @@ typedef struct VGAState {
     /** The critical section. */
     PDMCRITSECT                 lock;
 
-    /** The display port base interface. */
+    /** LUN\#0: The display port base interface. */
     PDMIBASE                    Base;
-    /** The display port interface. */
+    /** LUN\#0: The display port interface. */
     PDMIDISPLAYPORT             Port;
 # if HC_ARCH_BITS == 32
     uint32_t                    Padding8;
 # endif
 #if defined(VBOX_WITH_HGSMI) && defined(VBOX_WITH_VIDEOHWACCEL)
-    /** VBVA callbacks interface */
+    /** LUN\#0: VBVA callbacks interface */
     PDMDDISPLAYVBVACALLBACKS    VBVACallbacks;
 #else
 # if HC_ARCH_BITS == 32

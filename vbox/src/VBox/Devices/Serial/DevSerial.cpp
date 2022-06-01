@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
+/* $Id: DevSerial.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -120,6 +120,12 @@
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
 *******************************************************************************/
+/**
+ * Serial device.
+ *
+ * @implements  PDMIBASE
+ * @implements  PDMICHARPORT
+ */
 struct SerialState
 {
     /** Access critical section. */
@@ -132,9 +138,9 @@ struct SerialState
     /** Pointer to the device instance - RC Ptr. */
     PPDMDEVINSRC                    pDevInsRC;
     RTRCPTR                         Alignment0; /**< Alignment. */
-    /** The base interface. */
+    /** LUN\#0: The base interface. */
     PDMIBASE                        IBase;
-    /** The character port interface. */
+    /** LUN\#0: The character port interface. */
     PDMICHARPORT                    ICharPort;
     /** Pointer to the attached base driver. */
     R3PTRTYPE(PPDMIBASE)            pDrvBase;
@@ -725,20 +731,17 @@ static DECLCALLBACK(int) serialIOPortRegionMap(PPCIDEVICE pPciDev, /* unsigned *
 
 #endif /* VBOX_SERIAL_PCI */
 
-
-/** @copydoc PIBASE::pfnqueryInterface */
-static DECLCALLBACK(void *) serialQueryInterface(PPDMIBASE pInterface, PDMINTERFACE enmInterface)
+/**
+ * @interface_method_impl{PDMIBASE,pfnQueryInterface}
+ */
+static DECLCALLBACK(void *) serialQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
     SerialState *pThis = PDMIBASE_2_SERIALSTATE(pInterface);
-    switch (enmInterface)
-    {
-        case PDMINTERFACE_BASE:
-            return &pThis->IBase;
-        case PDMINTERFACE_CHAR_PORT:
-            return &pThis->ICharPort;
-        default:
-            return NULL;
-    }
+    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
+        return &pThis->IBase;
+    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_CHAR_PORT) == 0)
+        return &pThis->ICharPort;
+    return NULL;
 }
 
 /**

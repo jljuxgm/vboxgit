@@ -1,10 +1,10 @@
-/* $Id: DrvAcpiCpu.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
+/* $Id: DrvAcpiCpu.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
 /** @file
  * DrvAcpiCpu - ACPI CPU dummy driver for hotplugging.
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -28,29 +28,20 @@
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
+#include <iprt/uuid.h>
 
 #include "Builtins.h"
 
+
 /**
- * Queries an interface to the driver.
- *
- * @returns Pointer to interface.
- * @returns NULL if the interface was not supported by the driver.
- * @param   pInterface          Pointer to this interface structure.
- * @param   enmInterface        The requested interface identification.
- * @thread  Any thread.
+ * @interface_method_impl{PDMIBASE,pfnQueryInterface}
  */
-static DECLCALLBACK(void *) drvACPICpuQueryInterface(PPDMIBASE pInterface, PDMINTERFACE enmInterface)
+static DECLCALLBACK(void *) drvACPICpuQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
     PPDMDRVINS pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
-
-    switch (enmInterface)
-    {
-        case PDMINTERFACE_BASE:
-            return &pDrvIns->IBase;
-        default:
-            return NULL;
-    }
+    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
+        return &pDrvIns->IBase;
+    return NULL;
 }
 
 /**

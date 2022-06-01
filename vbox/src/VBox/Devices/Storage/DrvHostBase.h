@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 25728 2010-01-11 15:12:52Z vboxsync $ */
+/* $Id: DrvHostBase.h 25966 2010-01-22 11:15:43Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -31,6 +31,10 @@ RT_C_DECLS_BEGIN
 typedef struct DRVHOSTBASE *PDRVHOSTBASE;
 /**
  * Host base drive access driver instance data.
+ *
+ * @implements PDMIMOUNT
+ * @implements PDMIBLOCKBIOS
+ * @implements PDMIBLOCK
  */
 typedef struct DRVHOSTBASE
 {

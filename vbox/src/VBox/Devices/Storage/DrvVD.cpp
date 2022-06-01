@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 25893 2010-01-18 14:08:39Z vboxsync $ */
+/* $Id: DrvVD.cpp 25966 2010-01-22 11:15:43Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -106,6 +106,13 @@ typedef struct DRVVDSTORAGEBACKEND
 
 /**
  * VBox disk container media main structure, private part.
+ *
+ * @implements  PDMIMEDIA
+ * @implements  PDMIMEDIAASYNC
+ * @implements  VDINTERFACEERROR
+ * @implements  VDINTERFACETCPNET
+ * @implements  VDINTERFACEASYNCIO
+ * @implements  VDINTERFACECONFIG
  */
 typedef struct VBOXDISK
 {
@@ -803,23 +810,21 @@ static DECLCALLBACK(int) drvvdTasksCompleteNotify(PPDMDRVINS pDrvIns, void *pvUs
 *   Base interface methods                                                     *
 *******************************************************************************/
 
-/** @copydoc PDMIBASE::pfnQueryInterface */
-static DECLCALLBACK(void *) drvvdQueryInterface(PPDMIBASE pInterface,
-                                                PDMINTERFACE enmInterface)
+/**
+ * @interface_method_impl{PDMIBASE,pfnQueryInterface}
+ */
+static DECLCALLBACK(void *) drvvdQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
-    PPDMDRVINS pDrvIns = PDMIBASE_2_DRVINS(pInterface);
-    PVBOXDISK pThis = PDMINS_2_DATA(pDrvIns, PVBOXDISK);
-    switch (enmInterface)
-    {
-        case PDMINTERFACE_BASE:
-            return &pDrvIns->IBase;
-        case PDMINTERFACE_MEDIA:
-            return &pThis->IMedia;
-        case PDMINTERFACE_MEDIA_ASYNC:
-            return pThis->fAsyncIOSupported ? &pThis->IMediaAsync : NULL;
-        default:
-            return NULL;
-    }
+    PPDMDRVINS  pDrvIns = PDMIBASE_2_DRVINS(pInterface);
+    PVBOXDISK   pThis   = PDMINS_2_DATA(pDrvIns, PVBOXDISK);
+
+    if (RTUuidCompare2Strs(pszIID, PDMIBASE_IID) == 0)
+        return &pDrvIns->IBase;
+    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_MEDIA) == 0)
+        return &pThis->IMedia;
+    if (RTUuidCompare2Strs(pszIID, PDMINTERFACE_MEDIA_ASYNC) == 0)
+        return pThis->fAsyncIOSupported ? &pThis->IMediaAsync : NULL;
+    return NULL;
 }
 
 
