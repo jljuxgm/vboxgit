@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 24703 2009-11-16 15:50:47Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 24704 2009-11-16 16:25:24Z vboxsync $ */
 
 /** @file
  *
@@ -5776,6 +5776,7 @@ DECLCALLBACK(void) Console::vmstateChangeCallback(PVM aVM,
                     break;
 
                 /* Change the machine state from Running to Paused. */
+/** @todo Live Migration: Deal with Pause happening before VMR3Teleport! */
                 AssertBreak(that->mMachineState == MachineState_Running);
                 that->setMachineState(MachineState_Paused);
             }
