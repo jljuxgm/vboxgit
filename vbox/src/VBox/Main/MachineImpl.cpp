@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 25151 2009-12-02 15:23:18Z vboxsync $ */
+/* $Id: MachineImpl.cpp 25152 2009-12-02 17:37:39Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -2624,7 +2624,7 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
                     break;
                 }
 
-                snap = snap->parent();
+                snap = snap->getParent();
             }
 
             /* found a suitable diff, use it as a base */
