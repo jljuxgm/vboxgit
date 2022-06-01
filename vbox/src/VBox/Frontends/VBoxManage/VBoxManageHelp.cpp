@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 24307 2009-11-04 09:59:00Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 24321 2009-11-04 12:18:09Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -135,7 +135,9 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--hwvirtex on|off]\n"
                  "                            [--nestedpaging on|off]\n"
                  "                            [--vtxvpid on|off]\n"
-                 "                            [--cpuid <leaf> <eax> <ebx> <ecx> <edx>]\n"
+                 "                            [--cpuidset <leaf> <eax> <ebx> <ecx> <edx>]\n"
+                 "                            [--cpuidremove <leaf>]\n"
+                 "                            [--cpuidremoveall]\n"
                  "                            [--cpus <number>]\n"
                  "                            [--monitorcount <number>]\n"
                  "                            [--accelerate3d <on|off>]\n"
