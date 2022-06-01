@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 28092 2010-04-08 13:44:54Z vboxsync $ */
+/* $Id: PGMPool.cpp 28260 2010-04-13 14:56:08Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -537,6 +537,7 @@ static DECLCALLBACK(int) pgmR3PoolAccessHandler(PVM pVM, RTGCPHYS GCPhys, void *
 
     Assert(pPage->enmKind != PGMPOOLKIND_FREE);
 
+    /* @todo this code doesn't make any sense. remove the if (!pVCpu) block */
     if (!pVCpu) /** @todo This shouldn't happen any longer, all access handlers will be called on an EMT. All ring-3 handlers, except MMIO, already own the PGM lock. @bugref{3170} */
     {
         Log(("pgmR3PoolAccessHandler: async thread, requesting EMT to flush the page: %p:{.Core=%RHp, .idx=%d, .GCPhys=%RGp, .enmType=%d}\n",
