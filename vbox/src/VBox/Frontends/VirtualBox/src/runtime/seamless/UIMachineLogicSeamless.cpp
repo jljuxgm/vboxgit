@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 27028 2010-03-04 13:56:17Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 27032 2010-03-04 14:34:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -98,6 +98,17 @@ bool UIMachineLogicSeamless::checkAvailability()
             return false;
         }
     }
+
+    /* Take the toggle hot key from the menu item. Since
+     * VBoxGlobal::extractKeyFromActionText gets exactly the
+     * linked key without the 'Host+' part we are adding it here. */
+    QString hotKey = QString ("Host+%1")
+        .arg (VBoxGlobal::extractKeyFromActionText(actionsPool()->action(UIActionIndex_Toggle_Seamless)->text()));
+    Assert (!hotKey.isEmpty());
+
+    /* Show the info message. */
+    if (!vboxProblem().confirmGoingSeamless(hotKey))
+        return false;
 
     return true;
 }
