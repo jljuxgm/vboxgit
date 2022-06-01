@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29112 2010-05-05 20:31:24Z vboxsync $
+# $Id: Makefile.kmk 29113 2010-05-05 20:44:42Z vboxsync $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -81,7 +81,7 @@ VBoxJXpcom_LIBS     =                         \
 	$(PATH_LIB)/VBoxCOM$(VBOX_SUFF_LIB)   \
 	$(PATH_BIN)/VBoxXPCOM$(VBOX_SUFF_DLL)
 
-src/nsJavaInterfaces.cpp_DEPS = $(VBOX_JXPCOM_GENH)
+#VBoxJXpcom_ORDERDEPS = $(VBOX_JXPCOM_GENH)
 
 DLLS += VBoxJXpcom
 
