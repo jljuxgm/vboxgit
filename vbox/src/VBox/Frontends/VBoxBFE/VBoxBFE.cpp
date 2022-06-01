@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 26835 2010-02-26 12:11:52Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 26980 2010-03-02 23:30:00Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -78,7 +78,7 @@ using namespace com;
 #include "DisplayImpl.h"
 #include "MouseImpl.h"
 #include "KeyboardImpl.h"
-#include "VMMDevInterface.h"
+#include "VMMDev.h"
 #include "StatusImpl.h"
 #include "Framebuffer.h"
 #include "MachineDebuggerImpl.h"
@@ -126,7 +126,7 @@ static DECLCALLBACK(int) VMPowerUpThread(RTTHREAD Thread, void *pvUser);
 
 PVM                gpVM             = NULL;
 Mouse             *gMouse           = NULL;
-VMDisplay         *gDisplay         = NULL;
+Display         *gDisplay         = NULL;
 Keyboard          *gKeyboard        = NULL;
 VMMDev            *gVMMDev          = NULL;
 Framebuffer       *gFramebuffer     = NULL;
@@ -792,7 +792,7 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char **envp)
     if (FAILED(gMouse->FinalConstruct()))
         goto leave;
     gVMMDev = new VMMDev();
-    gDisplay = new VMDisplay();
+    gDisplay = new Display();
 #if defined(USE_SDL)
     /* First console, then framebuffer!! */
     gConsole = new SDLConsole();
@@ -1333,7 +1333,7 @@ DECLCALLBACK(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_t u32Vers
     if (RT_FAILURE(rc))
         return rc;
 
-    rc = pCallbacks->pfnRegister(pCallbacks, &VMDisplay::DrvReg);
+    rc = pCallbacks->pfnRegister(pCallbacks, &Display::DrvReg);
     AssertRC(rc);
     if (RT_FAILURE(rc))
         return rc;
