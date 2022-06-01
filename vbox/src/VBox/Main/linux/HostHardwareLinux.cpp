@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 28811 2010-04-27 12:15:22Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1482,6 +1482,7 @@ int hotplugSysfsFAMImpl::Wait(RTMSINTERVAL aMillies)
     /* If at all, this should only get called once. */
     AssertLogRelMsg(   RT_SUCCESS(rc)
                     || rc == VERR_TRY_AGAIN
+                    || rc == VERR_FAM_OPEN_FAILED
                     || rc == VERR_TIMEOUT, ("rc = %Rrc\n", rc));
     return rc;
 }
