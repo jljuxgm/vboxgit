@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29037 2010-05-04 15:00:07Z vboxsync $
+# $Id: Makefile.kmk 29333 2010-05-11 10:28:57Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -177,7 +177,7 @@ ifdef VBOX_REM_WRAPPER
  DLLS += VBoxREMWrapper
  VBoxREMWrapper_TEMPLATE   = VBOXR3
  VBoxREMWrapper_NAME       = VBoxREM
- VBoxREMWrapper_DEFS       = IN_REM_R3 $(if $(VBOX_WITH_VMI),VBOX_WITH_VMI,)
+ VBoxREMWrapper_DEFS       = IN_REM_R3
  if "$(KBUILD_TARGET_ARCH)" == "x86" && defined(VBOX_WITH_64_BITS_GUESTS)
   VBoxREMWrapper_DEFS     += VBOX_USE_BITNESS_SELECTOR
  endif

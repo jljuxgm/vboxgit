@@ -1,4 +1,4 @@
-# $Id: Makefile-old.kmk 28990 2010-05-03 23:31:59Z vboxsync $
+# $Id: Makefile-old.kmk 29333 2010-05-11 10:28:57Z vboxsync $
 ## @file
 # The OLD Recompiler Sub-Makefile body.
 #
@@ -201,7 +201,7 @@ if defined(VBOX_USE_REM2) || defined(VBOX_USE_REM64)
 DLLS += VBoxREMWrapper
 VBoxREMWrapper_TEMPLATE    = VBOXR3
 VBoxREMWrapper_NAME        = VBoxREM
-VBoxREMWrapper_DEFS        = IN_REM_R3 $(if $(VBOX_WITH_VMI),VBOX_WITH_VMI,)
+VBoxREMWrapper_DEFS        = IN_REM_R3
  ifdef VBOX_USE_REM64
 VBoxREMWrapper_DEFS       += VBOX_USE_BITNESS_SELECTOR
  endif
