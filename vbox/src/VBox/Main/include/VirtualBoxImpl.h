@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 26553 2010-02-15 17:34:29Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 26587 2010-02-16 16:57:09Z vboxsync $ */
 
 /** @file
  *
@@ -245,11 +245,11 @@ public:
     HRESULT findMachine (const Guid &aId, bool aSetError,
                          ComObjPtr<Machine> *machine = NULL);
 
-    HRESULT findHardDisk(const Guid *aId, CBSTR aLocation,
+    HRESULT findHardDisk(const Guid *aId, const Utf8Str *pstrLocation,
                           bool aSetError, ComObjPtr<Medium> *aHardDisk = NULL);
-    HRESULT findDVDImage(const Guid *aId, CBSTR aLocation,
+    HRESULT findDVDImage(const Guid *aId, const Utf8Str *pstrLocation,
                          bool aSetError, ComObjPtr<Medium> *aImage = NULL);
-    HRESULT findFloppyImage(const Guid *aId, CBSTR aLocation,
+    HRESULT findFloppyImage(const Guid *aId, const Utf8Str *pstrLocation,
                             bool aSetError, ComObjPtr<Medium> *aImage = NULL);
 
     HRESULT findGuestOSType(CBSTR bstrOSType,
