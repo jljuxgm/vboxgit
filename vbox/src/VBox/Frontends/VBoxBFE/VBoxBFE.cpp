@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 26834 2010-02-26 12:10:36Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 26835 2010-02-26 12:11:52Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -1904,7 +1904,7 @@ static DECLCALLBACK(int) vboxbfeConfigConstructor(PVM pVM, void *pvUser)
 
     /* the VMM device's Main driver */
     rc = CFGMR3InsertNode(pInst,    "LUN#0",          &pLunL0);                     UPDATE_RC();
-    rc = CFGMR3InsertString(pLunL0, "Driver",        "MainVMMDev");                 UPDATE_RC();
+    rc = CFGMR3InsertString(pLunL0, "Driver",        "HGCM");                 UPDATE_RC();
     rc = CFGMR3InsertNode(pLunL0,   "Config",        &pCfg);                        UPDATE_RC();
     rc = CFGMR3InsertInteger(pCfg,  "Object",        (uintptr_t)gVMMDev);           UPDATE_RC();
 
