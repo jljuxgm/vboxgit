@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 29224 2010-05-07 15:49:10Z vboxsync $ */
+/* $Id: ConsoleImpl.h 29363 2010-05-11 15:12:07Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -174,7 +174,7 @@ public:
     HRESULT onStorageControllerChange();
     HRESULT onMediumChange(IMediumAttachment *aMediumAttachment, BOOL aForce);
     HRESULT onCPUChange(ULONG aCPU, BOOL aRemove);
-    HRESULT onVRDPServerChange();
+    HRESULT onVRDPServerChange(BOOL aRestart);
     HRESULT onUSBControllerChange();
     HRESULT onSharedFolderChange(BOOL aGlobal);
     HRESULT onUSBDeviceAttach(IUSBDevice *aDevice, IVirtualBoxErrorInfo *aError, ULONG aMaskedIfs);
