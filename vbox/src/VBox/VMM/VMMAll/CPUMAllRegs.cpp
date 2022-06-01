@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 24728 2009-11-17 16:04:45Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 24753 2009-11-18 11:22:09Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -784,6 +784,12 @@ VMMDECL(uint64_t)  CPUMGetGuestMsr(PVMCPU pVCpu, unsigned idMsr)
 
         case MSR_K8_TSC_AUX:
             u64 = pVCpu->cpum.s.GuestMsr.msr.tscAux;
+            break;
+
+        case MSR_IA32_PERF_STATUS:
+            /** @todo: could really be not exactly correct, maybe use host's values */
+            u64 =     (1000ULL                /* TSC increment by tick */)
+                    | (((uint64_t)4ULL) << 40 /* CPU multiplier */       );
             break;
 
         /* fs & gs base skipped on purpose as the current context might not be up-to-date. */
