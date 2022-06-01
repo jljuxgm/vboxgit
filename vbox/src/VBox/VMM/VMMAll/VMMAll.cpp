@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 30241 2010-06-16 12:33:44Z vboxsync $ */
+/* $Id: VMMAll.cpp 30242 2010-06-16 12:36:55Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -70,6 +70,7 @@ VMMDECL(VMCPUID) VMMGetCpuId(PVM pVM)
         if (pVCpu->idHostCpu == idHostCpu)
             return pVCpu->idCpu;
     }
+    AssertFailed();
     return NIL_VMCPUID;
 
 #else /* RC: Always EMT(0) */
@@ -109,6 +110,7 @@ VMMDECL(PVMCPU) VMMGetCpu(PVM pVM)
         if (pVCpu->idHostCpu == idHostCpu)
             return pVCpu;
     }
+    AssertFailed();
     return NULL;
 
 #else /* RC: Always EMT(0) */
