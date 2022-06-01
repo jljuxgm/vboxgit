@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 26782 2010-02-25 11:17:30Z vboxsync $ */
+/* $Id: ConsoleImpl.h 27761 2010-03-26 21:48:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -510,7 +510,6 @@ private:
 
 #ifdef VBOX_WITH_GUEST_PROPS
     static DECLCALLBACK(int)    doGuestPropNotification(void *pvExtension, uint32_t, void *pvParms, uint32_t cbParms);
-    HRESULT                     doMoveGuestPropertiesOnPowerOff(bool fSaving);
     HRESULT                     doEnumerateGuestProperties(CBSTR aPatterns,
                                                            ComSafeArrayOut(BSTR, aNames),
                                                            ComSafeArrayOut(BSTR, aValues),

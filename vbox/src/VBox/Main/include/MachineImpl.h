@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 27730 2010-03-26 11:13:56Z vboxsync $ */
+/* $Id: MachineImpl.h 27761 2010-03-26 21:48:25Z vboxsync $ */
 
 /** @file
  *
@@ -299,6 +299,7 @@ public:
         typedef std::list<GuestProperty> GuestPropertyList;
         GuestPropertyList    mGuestProperties;
         BOOL                 mPropertyServiceActive;
+        BOOL                 mGuestPropertiesModified;
         Utf8Str              mGuestPropertyNotificationPatterns;
 
         FirmwareType_T       mFirmwareType;
