@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 28943 2010-04-30 15:47:23Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 29193 2010-05-07 09:57:16Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -362,29 +362,33 @@ static int handleExecProgram(HandlerArg *a)
                         }
                     }
 
-                    CHECK_ERROR_BREAK(guest, GetProcessOutput(uPID, 0 /* aFlags */, 
-                                                              u32TimeoutMS, _64K, ComSafeArrayAsOutParam(aOutputData)));
-                    cbOutputData = aOutputData.size();
-                    if (cbOutputData > 0)
+                    if (   waitForStdOut 
+                        || waitForStdErr)
                     {
-                        /* aOutputData has a platform dependent line ending, standardize on
-                         * Unix style, as RTStrmWrite does the LF -> CR/LF replacement on
-                         * Windows. Otherwise we end up with CR/CR/LF on Windows. */
-                        ULONG cbOutputDataPrint = cbOutputData;
-                        for (BYTE *s = aOutputData.raw(), *d = s;
-                             s - aOutputData.raw() < (ssize_t)cbOutputData;
-                             s++, d++)
+                        CHECK_ERROR_BREAK(guest, GetProcessOutput(uPID, 0 /* aFlags */, 
+                                                                  u32TimeoutMS, _64K, ComSafeArrayAsOutParam(aOutputData)));
+                        cbOutputData = aOutputData.size();
+                        if (cbOutputData > 0)
                         {
-                            if (*s == '\r')
+                            /* aOutputData has a platform dependent line ending, standardize on
+                             * Unix style, as RTStrmWrite does the LF -> CR/LF replacement on
+                             * Windows. Otherwise we end up with CR/CR/LF on Windows. */
+                            ULONG cbOutputDataPrint = cbOutputData;
+                            for (BYTE *s = aOutputData.raw(), *d = s;
+                                 s - aOutputData.raw() < (ssize_t)cbOutputData;
+                                 s++, d++)
                             {
-                                /* skip over CR, adjust destination */
-                                d--;
-                                cbOutputDataPrint--;
+                                if (*s == '\r')
+                                {
+                                    /* skip over CR, adjust destination */
+                                    d--;
+                                    cbOutputDataPrint--;
+                                }
+                                else if (s != d)
+                                    *d = *s;
                             }
-                            else if (s != d)
-                                *d = *s;
+                            RTStrmWrite(g_pStdOut, aOutputData.raw(), cbOutputDataPrint);
                         }
-                        RTStrmWrite(g_pStdOut, aOutputData.raw(), cbOutputDataPrint);
                     }
 
                     /* process async cancelation */
