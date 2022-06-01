@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 24309 2009-11-04 10:03:19Z vboxsync $ */
+/* $Id: MachineImpl.h 24315 2009-11-04 11:12:48Z vboxsync $ */
 
 /** @file
  *
@@ -598,6 +598,8 @@ public:
     STDMETHOD(SetCpuProperty)(CpuPropertyType_T property, BOOL aVal);
     STDMETHOD(GetCpuIdLeaf)(ULONG id, ULONG *aValEax, ULONG *aValEbx, ULONG *aValEcx, ULONG *aValEdx);
     STDMETHOD(SetCpuIdLeaf)(ULONG id, ULONG aValEax, ULONG aValEbx, ULONG aValEcx, ULONG aValEdx);
+    STDMETHOD(RemoveCpuIdLeaf)(ULONG id);
+    STDMETHOD(RemoveAllCpuIdLeafs)();
     STDMETHOD(GetHWVirtExProperty)(HWVirtExPropertyType_T property, BOOL *aVal);
     STDMETHOD(SetHWVirtExProperty)(HWVirtExPropertyType_T property, BOOL aVal);
     STDMETHOD(SaveSettings)();
