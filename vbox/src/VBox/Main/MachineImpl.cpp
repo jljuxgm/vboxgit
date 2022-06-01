@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 25997 2010-01-25 13:00:02Z vboxsync $ */
+/* $Id: MachineImpl.cpp 25998 2010-01-25 13:02:22Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3440,6 +3440,7 @@ STDMETHODIMP Machine::GetSnapshot (IN_BSTR aId, ISnapshot **aSnapshot)
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     Guid uuid(aId);
+    /* Todo: fix this properly by perhaps introducing an isValid method for the Guid class */
     if (    aId
         &&  uuid.isEmpty())
     {
