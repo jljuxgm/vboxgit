@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 28410 2010-04-16 12:06:59Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 28420 2010-04-16 13:32:14Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -49,7 +49,7 @@
 
 using namespace guestControl;
 
-extern GuestCtrlExecThreads g_GuestControlExecThreads;
+extern RTLISTNODE g_GuestControlExecThreads;
 
 /**
  * Handle an error event on standard input.
@@ -537,6 +537,9 @@ int VBoxServiceControlExecAllocateThreadData(PVBOXSERVICECTRLTHREAD pThread,
 {
     AssertPtr(pThread);
 
+    pThread->Node.pPrev = NULL;
+    pThread->Node.pNext = NULL;
+
     pThread->fShutdown = false;
     pThread->fStarted = false;
     pThread->fStopped = false;
@@ -801,7 +804,7 @@ int VBoxServiceControlExecProcess(uint32_t uContextID, const char *pszCmd, uint3
                 }
                 else
                 {
-                    g_GuestControlExecThreads.push_back(pThread);
+                    /*rc =*/ RTListAppend(&g_GuestControlExecThreads, &pThread->Node);
                 }
             }
     
