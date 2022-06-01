@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
+/* $Id: HostImpl.cpp 27670 2010-03-24 15:19:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1739,6 +1739,7 @@ HRESULT Host::getFloppyDrives(MediaList &list)
                     list.push_back(hostFloppyDriveObj);
             }
 #else
+    NOREF(list);
     /* PORTME */
 #endif
     }
