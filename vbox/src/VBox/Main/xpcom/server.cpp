@@ -1,4 +1,4 @@
-/* $Id: server.cpp 26089 2010-01-28 17:08:19Z vboxsync $ */
+/* $Id: server.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -977,7 +977,7 @@ int main(int argc, char **argv)
         }
 
         nsCOMPtr<ipcIService> ipcServ (do_GetService(IPC_SERVICE_CONTRACTID, &rc));
-        if (NS_FAILED (rc))
+        if (NS_FAILED(rc))
         {
             RTMsgError("Failed to get IPC service! (rc=%Rhrc)", rc);
             break;

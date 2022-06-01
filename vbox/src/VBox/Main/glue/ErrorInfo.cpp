@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 21878 2009-07-30 12:42:08Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
 
 /** @file
  *
@@ -144,7 +144,7 @@ void ErrorInfo::init (bool aKeepObj /* = false */)
 
 void ErrorInfo::init (IUnknown *aI, const GUID &aIID, bool aKeepObj /* = false */)
 {
-    Assert (aI);
+    Assert(aI);
     if (!aI)
         return;
 
@@ -209,7 +209,7 @@ void ErrorInfo::init (IVirtualBoxErrorInfo *info)
     if (SUCCEEDED(rc) && !next.isNull())
     {
         mNext.reset (new ErrorInfo (next));
-        Assert (mNext.get());
+        Assert(mNext.get());
         if (!mNext.get())
             rc = E_OUTOFMEMORY;
     }
@@ -234,7 +234,7 @@ ErrorInfo::~ErrorInfo()
 ProgressErrorInfo::ProgressErrorInfo (IProgress *progress) :
     ErrorInfo (false /* aDummy */)
 {
-    Assert (progress);
+    Assert(progress);
     if (!progress)
         return;
 

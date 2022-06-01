@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 25942 2010-01-20 17:26:22Z vboxsync $ */
+/* $Id: initterm.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -443,13 +443,13 @@ HRESULT Initialize()
         {
             /* Use RTPathAppPrivateArch() first */
             vrc = RTPathAppPrivateArch(szAppHomeDir, sizeof(szAppHomeDir));
-            AssertRC (vrc);
+            AssertRC(vrc);
         }
         else
         {
             /* Iterate over all other paths */
             szAppHomeDir[RTPATH_MAX - 1] = '\0';
-            strncpy(szAppHomeDir, kAppPathsToProbe [i], RTPATH_MAX - 1);
+            strncpy(szAppHomeDir, kAppPathsToProbe[i], RTPATH_MAX - 1);
             vrc = VINF_SUCCESS;
         }
         if (RT_FAILURE(vrc))

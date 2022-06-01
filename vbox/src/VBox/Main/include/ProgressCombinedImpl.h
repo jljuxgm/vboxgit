@@ -1,4 +1,4 @@
-/* $Id: ProgressCombinedImpl.h 25859 2010-01-15 13:27:16Z vboxsync $ */
+/* $Id: ProgressCombinedImpl.h 26186 2010-02-03 13:07:12Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -130,7 +130,7 @@ public:
                                     aInitiator, aDescription, aId);
 
         /* Confirm a successful initialization when it's the case */
-        if (SUCCEEDED (rc))
+        if (SUCCEEDED(rc))
             autoInitSpan.setSucceeded();
 
         return rc;

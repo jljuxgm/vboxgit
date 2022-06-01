@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 26177 2010-02-02 22:29:01Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -230,9 +230,9 @@ int NetIfRemoveHostOnlyNetworkInterface (VirtualBox *pVBox, IN_GUID aId,
     {
         Bstr ifname;
         ComPtr<IHostNetworkInterface> iface;
-        if (FAILED (host->FindHostNetworkInterfaceById (Guid(aId).toUtf16(), iface.asOutParam())))
+        if (FAILED(host->FindHostNetworkInterfaceById (Guid(aId).toUtf16(), iface.asOutParam())))
             return VERR_INVALID_PARAMETER;
-        iface->COMGETTER (Name) (ifname.asOutParam());
+        iface->COMGETTER(Name) (ifname.asOutParam());
         if (ifname.isNull())
             return VERR_INTERNAL_ERROR;
 

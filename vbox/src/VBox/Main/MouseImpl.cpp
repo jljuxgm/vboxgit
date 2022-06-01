@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: MouseImpl.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -239,9 +239,9 @@ STDMETHODIMP Mouse::PutMouseEvent(LONG dx, LONG dy, LONG dz, LONG dw, LONG butto
 
     int vrc = mpDrv->pUpPort->pfnPutEvent(mpDrv->pUpPort, dx, dy, dz, dw, fButtons);
     if (RT_FAILURE(vrc))
-        rc = setError (VBOX_E_IPRT_ERROR,
-            tr ("Could not send the mouse event to the virtual mouse (%Rrc)"),
-                vrc);
+        rc = setError(VBOX_E_IPRT_ERROR,
+                      tr("Could not send the mouse event to the virtual mouse (%Rrc)"),
+                      vrc);
 
     return rc;
 }
@@ -341,9 +341,9 @@ STDMETHODIMP Mouse::PutMouseEventAbsolute(LONG x, LONG y, LONG dz, LONG dw,
         mLastAbsX = mouseXAbs;
         mLastAbsY = mouseYAbs;
         if (RT_FAILURE(vrc))
-            rc = setError (VBOX_E_IPRT_ERROR,
-                tr ("Could not send the mouse event to the virtual mouse (%Rrc)"),
-                    vrc);
+            rc = setError(VBOX_E_IPRT_ERROR,
+                          tr("Could not send the mouse event to the virtual mouse (%Rrc)"),
+                          vrc);
     }
 
     return rc;

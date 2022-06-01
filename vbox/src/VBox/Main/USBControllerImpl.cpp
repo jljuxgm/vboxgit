@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 26171 2010-02-02 20:37:36Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -559,13 +559,13 @@ STDMETHODIMP USBController::RemoveDeviceFilter(ULONG aPosition,
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     if (!m->llDeviceFilters->size())
-        return setError (E_INVALIDARG,
-            tr ("The USB device filter list is empty"));
+        return setError(E_INVALIDARG,
+                        tr("The USB device filter list is empty"));
 
     if (aPosition >= m->llDeviceFilters->size())
-        return setError (E_INVALIDARG,
-            tr ("Invalid position: %lu (must be in range [0, %lu])"),
-            aPosition, m->llDeviceFilters->size() - 1);
+        return setError(E_INVALIDARG,
+                        tr("Invalid position: %lu (must be in range [0, %lu])"),
+                        aPosition, m->llDeviceFilters->size() - 1);
 
     /* backup the list before modification */
     m->llDeviceFilters.backup();
