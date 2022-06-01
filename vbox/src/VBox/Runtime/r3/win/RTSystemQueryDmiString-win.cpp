@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-win.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-win.cpp 29560 2010-05-17 15:08:09Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, windows ring-3.
  */
@@ -152,6 +152,8 @@ RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t c
         case RTSYSDMISTR_PRODUCT_VERSION:   pszPropName = "Version"; break;
         case RTSYSDMISTR_PRODUCT_UUID:      pszPropName = "UUID"; break;
         case RTSYSDMISTR_PRODUCT_SERIAL:    pszPropName = "IdentifyingNumber"; break;
+        /// @todo case RTSYSDMISTR_MANUFACTURER:      pszPropName = "Vendor"; break;
+
         default:
             return VERR_NOT_SUPPORTED;
     }
