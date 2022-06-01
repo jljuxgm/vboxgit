@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 28830 2010-04-27 14:05:25Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -103,7 +103,8 @@ typedef struct VBOXNETFLTINS
     RTSPINLOCK hSpinlock;
     /** The current interface state. */
     VBOXNETFTLINSSTATE volatile enmState;
-    /** Active / Suspended indicator. */
+    /** The trunk state. */
+    INTNETTRUNKIFSTATE volatile enmTrunkState;
     bool volatile fActive;
     /** Disconnected from the host network interface. */
     bool volatile fDisconnectedFromHost;
@@ -324,6 +325,8 @@ DECLHIDDEN(bool) vboxNetFltCanUnload(PVBOXNETFLTGLOBALS pGlobals);
 DECLHIDDEN(PVBOXNETFLTINS) vboxNetFltFindInstance(PVBOXNETFLTGLOBALS pGlobals, const char *pszName);
 
 DECLHIDDEN(void) vboxNetFltRetain(PVBOXNETFLTINS pThis, bool fBusy);
+DECLHIDDEN(bool) vboxNetFltTryRetainBusyActive(PVBOXNETFLTINS pThis);
+DECLHIDDEN(bool) vboxNetFltTryRetainBusyNotDisconnected(PVBOXNETFLTINS pThis);
 DECLHIDDEN(void) vboxNetFltRelease(PVBOXNETFLTINS pThis, bool fBusy);
 
 #ifdef VBOXNETFLT_STATIC_CONFIG
