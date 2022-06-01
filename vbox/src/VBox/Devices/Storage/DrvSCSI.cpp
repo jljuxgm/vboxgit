@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 27977 2010-04-04 19:21:59Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -125,11 +125,11 @@ static int drvscsiProcessRequestOne(PDRVSCSI pThis, VSCSIIOREQ hVScsiIoReq)
         case VSCSIIOREQTXDIR_READ:
         case VSCSIIOREQTXDIR_WRITE:
         {
-            uint64_t uOffset    = 0;
-            size_t   cbTransfer = 0;
-            size_t   cbSeg      = 0;
-            PCPDMDATASEG paSeg  = NULL;
-            unsigned    cSeg    = 0;
+            uint64_t  uOffset    = 0;
+            size_t    cbTransfer = 0;
+            size_t    cbSeg      = 0;
+            PCRTSGSEG paSeg      = NULL;
+            unsigned  cSeg       = 0;
 
             rc = VSCSIIoReqParamsGet(hVScsiIoReq, &uOffset, &cbTransfer, &cSeg, &cbSeg,
                                      &paSeg);
@@ -241,11 +241,11 @@ static int drvscsiReqTransferEnqueue(VSCSILUN hVScsiLun,
             case VSCSIIOREQTXDIR_READ:
             case VSCSIIOREQTXDIR_WRITE:
             {
-                uint64_t uOffset    = 0;
-                size_t   cbTransfer = 0;
-                size_t   cbSeg      = 0;
-                PCPDMDATASEG paSeg  = NULL;
-                unsigned    cSeg    = 0;
+                uint64_t  uOffset    = 0;
+                size_t    cbTransfer = 0;
+                size_t    cbSeg      = 0;
+                PCRTSGSEG paSeg      = NULL;
+                unsigned  cSeg       = 0;
 
                 rc = VSCSIIoReqParamsGet(hVScsiIoReq, &uOffset, &cbTransfer,
                                          &cSeg, &cbSeg, &paSeg);
@@ -255,7 +255,7 @@ static int drvscsiReqTransferEnqueue(VSCSILUN hVScsiLun,
                 {
                     pThis->pLed->Asserted.s.fReading = pThis->pLed->Actual.s.fReading = 1;
                     rc = pThis->pDrvBlockAsync->pfnStartRead(pThis->pDrvBlockAsync, uOffset,
-                                                             (PPDMDATASEG)paSeg, cSeg, cbTransfer,
+                                                             paSeg, cSeg, cbTransfer,
                                                              hVScsiIoReq);
                     if (RT_FAILURE(rc) && rc != VERR_VD_ASYNC_IO_IN_PROGRESS)
                         AssertMsgFailed(("%s: Failed to read data %Rrc\n", __FUNCTION__, rc));
@@ -265,7 +265,7 @@ static int drvscsiReqTransferEnqueue(VSCSILUN hVScsiLun,
                 {
                     pThis->pLed->Asserted.s.fWriting = pThis->pLed->Actual.s.fWriting = 1;
                     rc = pThis->pDrvBlockAsync->pfnStartWrite(pThis->pDrvBlockAsync, uOffset,
-                                                              (PPDMDATASEG)paSeg, cSeg, cbTransfer,
+                                                              paSeg, cSeg, cbTransfer,
                                                               hVScsiIoReq);
                     if (RT_FAILURE(rc) && rc != VERR_VD_ASYNC_IO_IN_PROGRESS)
                         AssertMsgFailed(("%s: Failed to write data %Rrc\n", __FUNCTION__, rc));

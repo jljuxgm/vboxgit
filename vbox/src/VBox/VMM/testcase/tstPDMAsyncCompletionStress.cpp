@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletionStress.cpp 27920 2010-03-31 19:02:48Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletionStress.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Stresstest.
  *
@@ -113,7 +113,7 @@ typedef struct PDMACTESTFILETASK
     /** Start offset. */
     RTFOFF                      off;
     /** Data segment */
-    PDMDATASEG                  DataSeg;
+    RTSGSEG                     DataSeg;
     /** Task handle. */
     PPDMASYNCCOMPLETIONTASK     hTask;
 } PDMACTESTFILETASK, *PPDMACTESTFILETASK;

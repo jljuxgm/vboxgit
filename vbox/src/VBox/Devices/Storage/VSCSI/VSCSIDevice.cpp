@@ -1,4 +1,4 @@
-/* $Id: VSCSIDevice.cpp 27665 2010-03-24 12:33:33Z vboxsync $ */
+/* $Id: VSCSIDevice.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Device handling
  */
@@ -311,7 +311,7 @@ VBOXDDU_DECL(int) VSCSIDeviceReqEnqueue(VSCSIDEVICE hVScsiDevice, VSCSIREQ hVScs
 VBOXDDU_DECL(int) VSCSIDeviceReqCreate(VSCSIDEVICE hVScsiDevice, PVSCSIREQ phVScsiReq,
                                        uint32_t iLun, uint8_t *pbCDB, size_t cbCDB,
                                        size_t cbSGList, unsigned cSGListEntries,
-                                       PPDMDATASEG paSGList, uint8_t *pbSense,
+                                       PCRTSGSEG paSGList, uint8_t *pbSense,
                                        size_t cbSense, void *pvVScsiReqUser)
 {
     PVSCSIDEVICEINT pVScsiDevice = (PVSCSIDEVICEINT)hVScsiDevice;

@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 27901 2010-03-31 14:07:26Z vboxsync $ */
+/* $Id: UsbMsd.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Stoage Device Emulation.
  */
@@ -142,7 +142,7 @@ typedef struct USBMSDREQ
     /** The current SCSI request. */
     PDMSCSIREQUEST      ScsiReq;
     /** The scatter-gather segment used by ScsiReq for describing pbBuf. */
-    PDMDATASEG          ScsiReqSeg;
+    RTSGSEG             ScsiReqSeg;
     /** The sense buffer for the current SCSI request. */
     uint8_t             ScsiReqSense[64];
     /** The status of a completed SCSI request. */

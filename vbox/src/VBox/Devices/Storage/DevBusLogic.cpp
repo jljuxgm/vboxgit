@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 27660 2010-03-24 11:01:01Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -737,7 +737,7 @@ typedef struct BUSLOGICTASKSTATE
     /** The SCSI request we pass to the underlying SCSI engine. */
     PDMSCSIREQUEST      PDMScsiRequest;
     /** Data buffer segment */
-    PDMDATASEG          DataSeg;
+    RTSGSEG             DataSeg;
     /** Pointer to the R3 sense buffer. */
     uint8_t            *pbSenseBuffer;
     /** Flag whether this is a request from the BIOS. */

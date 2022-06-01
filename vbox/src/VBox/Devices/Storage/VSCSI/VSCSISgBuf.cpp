@@ -1,4 +1,4 @@
-/* $Id: VSCSISgBuf.cpp 27976 2010-04-04 14:16:32Z vboxsync $ */
+/* $Id: VSCSISgBuf.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: S/G list handling
  */
@@ -26,7 +26,7 @@
 #include "VSCSIInternal.h"
 
 
-void vscsiIoMemCtxInit(PVSCSIIOMEMCTX pIoMemCtx, PCPDMDATASEG paDataSeg, size_t cSegments)
+void vscsiIoMemCtxInit(PVSCSIIOMEMCTX pIoMemCtx, PCRTSGSEG paDataSeg, size_t cSegments)
 {
     if (RT_UNLIKELY(!cSegments))
     {

@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.cpp 26495 2010-02-14 07:59:48Z vboxsync $ */
+/* $Id: VBoxSCSI.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -247,7 +247,7 @@ int vboxscsiSetupRequest(PVBOXSCSI pVBoxSCSI, PPDMSCSIREQUEST pScsiRequest, uint
     }
 
     /** Allocate scatter gather element. */
-    pScsiRequest->paScatterGatherHead = (PPDMDATASEG)RTMemAllocZ(sizeof(PDMDATASEG) * 1); /* Only one element. */
+    pScsiRequest->paScatterGatherHead = (PRTSGSEG)RTMemAllocZ(sizeof(RTSGSEG) * 1); /* Only one element. */
     if (!pScsiRequest->paScatterGatherHead)
     {
         RTMemFree(pVBoxSCSI->pBuf);

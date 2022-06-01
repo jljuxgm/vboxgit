@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 27806 2010-03-29 20:18:50Z vboxsync $ */
+/* $Id: DrvBlock.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -288,7 +288,7 @@ static DECLCALLBACK(int) drvblockGetUuid(PPDMIBLOCK pInterface, PRTUUID pUuid)
 #define PDMIBLOCKASYNC_2_DRVBLOCK(pInterface)        ( (PDRVBLOCK)((uintptr_t)pInterface - RT_OFFSETOF(DRVBLOCK, IBlockAsync)) )
 
 /** @copydoc PDMIBLOCKASYNC::pfnStartRead */
-static DECLCALLBACK(int) drvblockAsyncReadStart(PPDMIBLOCKASYNC pInterface, uint64_t off, PPDMDATASEG pSeg, unsigned cSeg, size_t cbRead, void *pvUser)
+static DECLCALLBACK(int) drvblockAsyncReadStart(PPDMIBLOCKASYNC pInterface, uint64_t off, PCRTSGSEG pSeg, unsigned cSeg, size_t cbRead, void *pvUser)
 {
     PDRVBLOCK pThis = PDMIBLOCKASYNC_2_DRVBLOCK(pInterface);
 
@@ -307,7 +307,7 @@ static DECLCALLBACK(int) drvblockAsyncReadStart(PPDMIBLOCKASYNC pInterface, uint
 
 
 /** @copydoc PDMIBLOCKASYNC::pfnStartWrite */
-static DECLCALLBACK(int) drvblockAsyncWriteStart(PPDMIBLOCKASYNC pInterface, uint64_t off, PPDMDATASEG pSeg, unsigned cSeg, size_t cbWrite, void *pvUser)
+static DECLCALLBACK(int) drvblockAsyncWriteStart(PPDMIBLOCKASYNC pInterface, uint64_t off, PCRTSGSEG pSeg, unsigned cSeg, size_t cbWrite, void *pvUser)
 {
     PDRVBLOCK pThis = PDMIBLOCKASYNC_2_DRVBLOCK(pInterface);
 

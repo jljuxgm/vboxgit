@@ -1,4 +1,4 @@
-/* $Id: VSCSIIoReq.cpp 27671 2010-03-24 15:45:38Z vboxsync $ */
+/* $Id: VSCSIIoReq.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: I/O request handling.
  */
@@ -141,7 +141,7 @@ VBOXDDU_DECL(VSCSIIOREQTXDIR) VSCSIIoReqTxDirGet(VSCSIIOREQ hVScsiIoReq)
 
 VBOXDDU_DECL(int) VSCSIIoReqParamsGet(VSCSIIOREQ hVScsiIoReq, uint64_t *puOffset,
                                       size_t *pcbTransfer, unsigned *pcSeg,
-                                      size_t *pcbSeg, PCPDMDATASEG *ppaSeg)
+                                      size_t *pcbSeg, PCRTSGSEG *ppaSeg)
 {
     PVSCSIIOREQINT pVScsiIoReq = hVScsiIoReq;
 

@@ -1,4 +1,4 @@
-/* $Id: DrvSCSIHost.cpp 26173 2010-02-02 21:11:09Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  * VBox storage drivers: Host SCSI access driver.
  */
@@ -110,7 +110,7 @@ static void drvscsihostDumpScsiRequest(PPDMSCSIREQUEST pRequest)
 static int drvscsihostScatterGatherListCopyFromBuffer(PPDMSCSIREQUEST pRequest, void *pvBuf, size_t cbBuf)
 {
     unsigned cSGEntry = 0;
-    PPDMDATASEG pSGEntry = &pRequest->paScatterGatherHead[cSGEntry];
+    PRTSGSEG pSGEntry = &pRequest->paScatterGatherHead[cSGEntry];
     uint8_t *pu8Buf = (uint8_t *)pvBuf;
 
     while (cSGEntry < pRequest->cScatterGatherEntries)

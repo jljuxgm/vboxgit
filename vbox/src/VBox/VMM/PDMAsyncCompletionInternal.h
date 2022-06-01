@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 27920 2010-03-31 19:02:48Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -25,6 +25,7 @@
 #include <iprt/cdefs.h>
 #include <iprt/critsect.h>
 #include <iprt/memcache.h>
+#include <iprt/sg.h>
 #include <VBox/types.h>
 #include <VBox/cfgm.h>
 #include <VBox/stam.h>
@@ -113,7 +114,7 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSOPS
      */
     DECLR3CALLBACKMEMBER(int, pfnEpRead, (PPDMASYNCCOMPLETIONTASK pTask,
                                           PPDMASYNCCOMPLETIONENDPOINT pEndpoint, RTFOFF off,
-                                          PCPDMDATASEG paSegments, size_t cSegments,
+                                          PCRTSGSEG paSegments, size_t cSegments,
                                          size_t cbRead));
 
     /**
@@ -129,7 +130,7 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSOPS
      */
     DECLR3CALLBACKMEMBER(int, pfnEpWrite, (PPDMASYNCCOMPLETIONTASK pTask,
                                            PPDMASYNCCOMPLETIONENDPOINT pEndpoint, RTFOFF off,
-                                           PCPDMDATASEG paSegments, size_t cSegments,
+                                           PCRTSGSEG paSegments, size_t cSegments,
                                            size_t cbWrite));
 
     /**

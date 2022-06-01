@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletion.cpp 27920 2010-03-31 19:02:48Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletion.cpp 28065 2010-04-07 20:54:34Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Testcase.
  *
@@ -179,7 +179,7 @@ int main(int argc, char *argv[])
                             for (uint32_t i = 0; i < cTasksUsed; i++)
                             {
                                 size_t cbRead = ((size_t)offSrc + BUFFER_SIZE) <= cbSrc ? BUFFER_SIZE : cbSrc - offSrc;
-                                PDMDATASEG DataSeg;
+                                RTSGSEG DataSeg;
 
                                 DataSeg.pvSeg = g_AsyncCompletionTasksBuffer[i];
                                 DataSeg.cbSeg = cbRead;
@@ -199,7 +199,7 @@ int main(int argc, char *argv[])
                             for (uint32_t i = 0; i < cTasksUsed; i++)
                             {
                                 size_t cbWrite = (offDst + BUFFER_SIZE) <= cbSrc ? BUFFER_SIZE : cbSrc - offDst;
-                                PDMDATASEG DataSeg;
+                                RTSGSEG DataSeg;
 
                                 DataSeg.pvSeg = g_AsyncCompletionTasksBuffer[i];
                                 DataSeg.cbSeg = cbWrite;
