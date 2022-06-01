@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 26970 2010-03-02 20:43:37Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 26978 2010-03-02 21:37:37Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -210,9 +210,6 @@
 #include <iprt/asm.h>
 #include <iprt/uuid.h>
 #include "VUSBInternal.h"
-#ifdef VBOX_WITH_USB
-# include "USBProxyDevice.h"
-#endif
 #include "Builtins.h"
 
 
