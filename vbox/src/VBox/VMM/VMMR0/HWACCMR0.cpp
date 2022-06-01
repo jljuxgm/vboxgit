@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 23972 2009-10-22 12:04:44Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 24032 2009-10-23 12:59:25Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -992,7 +992,7 @@ VMMR0DECL(int) HWACCMR0SetupVM(PVM pVM)
     if (!HWACCMR0Globals.fGlobalInit)
     {
         rc = hwaccmR0EnableCpu(pVM, idCpu);
-        AssertRC(rc);
+        AssertRCReturn(rc, rc);
     }
 
     /* Setup VT-x or AMD-V. */
@@ -1053,7 +1053,7 @@ VMMR0DECL(int) HWACCMR0Enter(PVM pVM, PVMCPU pVCpu)
     if (!HWACCMR0Globals.fGlobalInit)
     {
         rc = hwaccmR0EnableCpu(pVM, idCpu);
-        AssertRC(rc);
+        AssertRCReturn(rc, rc);
     }
 
     rc  = HWACCMR0Globals.pfnEnterSession(pVM, pVCpu, pCpu);
