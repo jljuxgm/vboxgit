@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 29121 2010-05-06 09:09:33Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -391,10 +391,6 @@ typedef struct PDMACFILEENDPOINTCACHE
     RTSEMRW                              SemRWEntries;
     /** Pointer to the gobal cache data */
     PPDMACFILECACHEGLOBAL                pCache;
-    /** Number of writes outstanding. */
-    volatile uint32_t                    cWritesOutstanding;
-    /** Handle of the flush request if one is active */
-    volatile PPDMASYNCCOMPLETIONTASKFILE pTaskFlush;
     /** Lock protecting the dirty entries list. */
     RTSPINLOCK                           LockList;
     /** List of dirty but not committed entries for this endpoint. */
@@ -540,6 +536,8 @@ typedef struct PDMASYNCCOMPLETIONENDPOINTFILE
 
     /** Flag whether a flush request is currently active */
     PPDMACTASKFILE                         pFlushReq;
+    /** Flag whether the host supports the async flush API. */
+    bool                                   fAsyncFlushSupported;
 
 #ifdef VBOX_WITH_STATISTICS
     /** Time spend in a read. */
