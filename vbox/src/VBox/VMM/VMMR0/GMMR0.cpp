@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 26825 2010-02-26 10:48:46Z vboxsync $ */
+/* $Id: GMMR0.cpp 27005 2010-03-03 18:58:02Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -667,7 +667,7 @@ GMMR0DECL(int) GMMR0Init(void)
         else
             SUPR0Printf("GMMR0Init: RTR0MemObjAllocPhysNC(,64K,Any) -> %d!\n", rc);
 #else
-# if defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX)
+# if defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS)
         pGMM->fLegacyAllocationMode = false;
 #  if ARCH_BITS == 32
         /* Don't reuse possibly partial chunks because of the virtual address space limitation. */
