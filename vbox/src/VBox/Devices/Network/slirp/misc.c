@@ -1,4 +1,4 @@
-/* $Id: misc.c 28449 2010-04-19 09:52:59Z vboxsync $ */
+/* $Id: misc.c 28483 2010-04-19 16:51:41Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -99,21 +99,6 @@ fd_nonblock(int fd)
 #endif
 }
 
-void
-fd_block(int fd)
-{
-#ifdef FIONBIO
-    int opt = 0;
-
-    ioctlsocket(fd, FIONBIO, &opt);
-#else
-    int opt;
-
-    opt = fcntl(fd, F_GETFL, 0);
-    opt &= ~O_NONBLOCK;
-    fcntl(fd, F_SETFL, opt);
-#endif
-}
 
 #ifdef VBOX_WITH_SLIRP_BSD_MBUF
 #define ITEM_MAGIC 0xdead0001
