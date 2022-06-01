@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 28930 2010-04-30 12:03:36Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 28944 2010-04-30 17:49:02Z vboxsync $ */
 
 /** @file
  *
@@ -215,6 +215,8 @@ public:
 
     void addProcessToReap (RTPROCESS pid);
     void updateClientWatcher();
+
+    void removeDeadCallback(const ComPtr<IVirtualBoxCallback> &aCallback);
 
     void onMachineStateChange(const Guid &aId, MachineState_T aState);
     void onMachineDataChange(const Guid &aId);
