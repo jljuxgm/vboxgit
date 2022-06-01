@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28800 2010-04-27 08:22:32Z vboxsync $
+# $Id: Makefile.kmk 29670 2010-05-19 20:35:48Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxVideo.
 #
@@ -105,6 +105,10 @@ ifdef VBOXWDDM
  ifdef VBOXWDDM_WITH_VBVA
   VBoxVideoWddm_SOURCES   += \
     wddm/VBoxVideoVbva.cpp
+ endif
+ ifdef VBOX_WITH_VIDEOHWACCEL
+  VBoxVideoWddm_SOURCES   += \
+    wddm/VBoxVideoVhwa.cpp
  endif
  VBoxVideoWddm_LIBS.x86   = \
  	$(PATH_SDK_WINDDKWLH_LIB)/bufferoverflowk.lib
