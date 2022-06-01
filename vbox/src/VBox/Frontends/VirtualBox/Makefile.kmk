@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26889 2010-02-28 14:57:36Z vboxsync $
+# $Id: Makefile.kmk 26920 2010-03-01 15:07:45Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -502,6 +502,7 @@ VirtualBox_SOURCES += \
 	src/runtime/UIMachineLogic.cpp \
 	src/runtime/UIMachineWindow.cpp \
 	src/runtime/UIMachineView.cpp \
+	src/runtime/UIMachineMenuBar.cpp \
 	src/runtime/normal/UIMachineLogicNormal.cpp \
 	src/runtime/normal/UIMachineWindowNormal.cpp \
 	src/runtime/normal/UIMachineViewNormal.cpp \
