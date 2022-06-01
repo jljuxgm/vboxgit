@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 26344 2010-02-09 03:39:45Z vboxsync $ */
+/* $Id: fileio-posix.cpp 26761 2010-02-24 18:57:58Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -331,6 +331,16 @@ RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint32_t fOpen)
         close(fh);
     }
     return RTErrConvertFromErrno(iErr);
+}
+
+
+RTR3DECL(int)  RTFileOpenBitBucket(PRTFILE phFile, uint32_t fAccess)
+{
+    AssertReturn(   fAccess == RTFILE_O_READ
+                 || fAccess == RTFILE_O_WRITE
+                 || fAccess == RTFILE_O_READWRITE,
+                 VERR_INVALID_PARAMETER);
+    return RTFileOpen(phFile, "/dev/null", fAccess | RTFILE_O_DENY_NONE | RTFILE_O_OPEN);
 }
 
 

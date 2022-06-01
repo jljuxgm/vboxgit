@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 25642 2010-01-05 08:19:10Z vboxsync $ */
+/* $Id: fileio-win.cpp 26761 2010-02-24 18:57:58Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -352,6 +352,16 @@ RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint32_t fOpen)
     RTUtf16Free(pwszFilename);
 #endif
     return rc;
+}
+
+
+RTR3DECL(int)  RTFileOpenBitBucket(PRTFILE phFile, uint32_t fAccess)
+{
+    AssertReturn(   fAccess == RTFILE_O_READ
+                 || fAccess == RTFILE_O_WRITE
+                 || fAccess == RTFILE_O_READWRITE,
+                 VERR_INVALID_PARAMETER);
+    return RTFileOpen(phFile, "NUL", fAccess | RTFILE_O_DENY_NONE | RTFILE_O_OPEN);
 }
 
 
