@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 25777 2010-01-12 16:53:18Z vboxsync $ */
+/* $Id: PATM.cpp 26039 2010-01-26 09:11:14Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -343,7 +343,7 @@ static int patmReinit(PVM pVM)
     AssertReleaseMsg(pVM->patm.s.pStatsGC, ("Impossible! MMHyperHC2GC(%p) failed!\n", pVM->patm.s.pStatsGC));
 
     Assert(pVM->patm.s.pPatchMemHC);
-    Assert(pVM->patm.s.pPatchMemGC = MMHyperR3ToRC(pVM, pVM->patm.s.pPatchMemHC));
+    Assert(pVM->patm.s.pPatchMemGC == MMHyperR3ToRC(pVM, pVM->patm.s.pPatchMemHC));
     memset(pVM->patm.s.pPatchMemHC, 0, PATCH_MEMORY_SIZE);
     AssertReleaseMsg(pVM->patm.s.pPatchMemGC, ("Impossible! MMHyperHC2GC(%p) failed!\n", pVM->patm.s.pPatchMemHC));
 
