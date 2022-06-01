@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23452 2009-09-30 20:33:08Z vboxsync $
+# $Id: Makefile.kmk 26502 2010-02-14 08:29:01Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -170,5 +170,4 @@ $$(PATH_VBoxBFE)/Ico64x01.h: $(PATH_ROOT)/src/VBox/Frontends/VBoxBFE/ico64x01.pn
 
 endif # !VBOX_WITH_HARDENING || !darwin
 include $(KBUILD_PATH)/subfooter.kmk
-
 
