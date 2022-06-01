@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 27444 2010-03-17 12:55:54Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 27445 2010-03-17 12:56:35Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3016,7 +3016,7 @@ ResumeExecution:
                     rc = VMXWriteVMCS64(VMX_VMCS64_GUEST_DR7, pCtx->dr[7]);
                     AssertRC(rc);
 
-                    Log(("Trap %x (debug) at %RGv exit qualification %RX64\n", vector, (RTGCPTR)pCtx->rip, exitQualification));
+                    Log(("Trap %x (debug) at %RGv exit qualification %RX64 dr6=%x dr7=%x\n", vector, (RTGCPTR)pCtx->rip, exitQualification, (uint32_t)pCtx->dr[6], (uint32_t)pCtx->dr[7]));
                     rc = VMXR0InjectEvent(pVM, pVCpu, pCtx, VMX_VMCS_CTRL_ENTRY_IRQ_INFO_FROM_EXIT_INT_INFO(intInfo), cbInstr, errCode);
                     AssertRC(rc);
 
