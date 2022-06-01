@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControl.cpp 28014 2010-04-06 15:20:35Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 28016 2010-04-06 15:28:11Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -199,7 +199,6 @@ DECLCALLBACK(int) VBoxServiceControlWorker(bool volatile *pfShutdown)
                     /* Don't terminate here; just wait for the next message. */
                     break;
             }
-            break; /* DEBUG BREAK */
         }
 
         /*
