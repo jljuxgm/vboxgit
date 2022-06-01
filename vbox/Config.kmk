@@ -1,4 +1,4 @@
-# $Id: Config.kmk 28989 2010-05-03 21:27:04Z vboxsync $
+# $Id: Config.kmk 29043 2010-05-04 20:29:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4081,7 +4081,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28989 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29043 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -4118,6 +4118,14 @@ $(VBOX_SVN_REV_KMK):
 	$(QUIET)echo '* $(VBOX_SVN_REV_KMK) was externally overwritten:'
 	$(QUIET)$(CAT) $(VBOX_SVN_REV_KMK)
 endif
+
+# only needed for VBoxGuest for Linux/FreeBSD guests
+$(PATH_OUT)/revision-generated.h: $(VBOX_SVN_REV_KMK)
+	$(call MSG_GENERATE,,$@)
+	$(QUIET)$(RM) -f $@ $@.tmp
+	$(QUIET)$(MKDIR) -p $(@D)
+	$(QUIET)$(APPEND) $@.tmp '#define VBOX_SVN_REV $(VBOX_SVN_REV)'
+	$(QUIET)$(MV) -f $@.tmp $@
 
 #
 # Shared definitions of the XIDL file to use as a source for
