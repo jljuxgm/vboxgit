@@ -1,4 +1,4 @@
-/* $Id: fileaio-win.cpp 26525 2010-02-15 03:33:33Z vboxsync $ */
+/* $Id: fileaio-win.cpp 26528 2010-02-15 03:52:51Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Windows host platform.
  */
@@ -348,7 +348,7 @@ RTDECL(int) RTFileAioCtxSubmit(RTFILEAIOCTX hAioCtx, PRTFILEAIOREQ pahReqs, size
     RTFILEAIOCTX_VALID_RETURN(pCtxInt);
     AssertReturn(cReqs > 0,  VERR_INVALID_PARAMETER);
     AssertPtrReturn(pahReqs, VERR_INVALID_POINTER);
-    int i;
+    size_t i;
 
     for (i = 0; i < cReqs; i++)
     {
