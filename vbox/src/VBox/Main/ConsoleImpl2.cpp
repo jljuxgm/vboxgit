@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 27423 2010-03-16 18:51:35Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 27461 2010-03-17 17:33:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -586,6 +586,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     PCFGMNODE pLunL1 = NULL;        /* /Devices/Dev/0/LUN#0/AttachedDriver/ */
     PCFGMNODE pLunL2 = NULL;        /* /Devices/Dev/0/LUN#0/AttachedDriver/Config/ */
     PCFGMNODE pBiosCfg = NULL;      /* /Devices/pcbios/0/Config/ */
+    PCFGMNODE pNetBootCfg = NULL;   /* /Devices/pcbios/0/Config/NetBoot/ */
 
     rc = CFGMR3InsertNode(pRoot, "Devices", &pDevices);                             RC_CHECK();
 
@@ -905,6 +906,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         rc = CFGMR3InsertInteger(pBiosCfg,  "IOAPIC",               fIOAPIC);           RC_CHECK();
         rc = CFGMR3InsertInteger(pBiosCfg,  "PXEDebug",             fPXEDebug);         RC_CHECK();
         rc = CFGMR3InsertBytes(pBiosCfg,    "UUID", &HardwareUuid,sizeof(HardwareUuid));RC_CHECK();
+        rc = CFGMR3InsertNode(pBiosCfg,   "NetBoot", &pNetBootCfg);                     RC_CHECK();
 
         DeviceType_T bootDevice;
         if (SchemaDefs::MaxBootPosition > 9)
@@ -1527,6 +1529,26 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             rc = CFGMR3InsertInteger(pCfg,  "R0Enabled",    false);                 RC_CHECK();
         }
 #endif
+        /*
+         * Transfer boot device information to the BIOS.
+         */
+        if (ulInstance == 0)
+        {
+            unsigned    uBootIdx = 0;
+
+            if (pNetBootCfg)    /* NetBoot node doesn't exist for EFI! */
+            {
+                PCFGMNODE   pNetBtDevCfg;
+                char        achBootIdx[] = "0";
+                uint16_t    u16BusDevFn;
+
+                achBootIdx[0] = '0' + uBootIdx;     /* Boot device order. */
+                rc = CFGMR3InsertNode(pNetBootCfg, achBootIdx, &pNetBtDevCfg);      RC_CHECK();
+                rc = CFGMR3InsertInteger(pNetBtDevCfg, "NIC", ulInstance);          RC_CHECK();
+                u16BusDevFn = iPciDeviceNo << 3;
+                rc = CFGMR3InsertInteger(pNetBtDevCfg, "BusDevFn", u16BusDevFn);    RC_CHECK();
+            }
+        }
 
         /*
          * The virtual hardware type. PCNet supports two types.
