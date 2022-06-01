@@ -1,4 +1,4 @@
-/* $Id: time-win.cpp 26212 2010-02-03 16:59:08Z vboxsync $ */
+/* $Id: time-win.cpp 28459 2010-04-19 12:49:13Z vboxsync $ */
 /** @file
  * IPRT - Time, Windows.
  */
@@ -97,8 +97,7 @@ DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
     LARGE_INTEGER   ll;
     if (QueryPerformanceCounter(&ll))
         return (ll.QuadPart * uMult) / llFreq.QuadPart;
-    else
-        return (uint64_t)GetTickCount() * (uint64_t)1000000;
+    return (uint64_t)GetTickCount() * (uint64_t)1000000;
 
 #elif defined USE_FILE_TIME
     /*
@@ -146,7 +145,7 @@ RTDECL(uint64_t) RTTimeSystemNanoTS(void)
 
 RTDECL(uint64_t) RTTimeSystemMilliTS(void)
 {
-    return rtTimeGetSystemNanoTS();
+    return rtTimeGetSystemNanoTS() / 1000000;
 }
 
 
