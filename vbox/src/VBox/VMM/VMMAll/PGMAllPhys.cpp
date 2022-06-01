@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 27580 2010-03-22 10:35:52Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 27595 2010-03-22 15:05:49Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2416,7 +2416,10 @@ VMMDECL(int) PGMPhysWrite(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t cb
                     void *pvDst;
                     int rc = pgmPhysGCPhys2CCPtrInternal(pVM, pPage, pRam->GCPhys + off, &pvDst);
                     if (RT_SUCCESS(rc))
+                    {
+                        Assert(!PGM_PAGE_IS_BALLOONED(pPage));
                         memcpy(pvDst, pvBuf, cb);
+                    }
                     else
                     /* Ignore writes to ballooned pages. */
                     if (!PGM_PAGE_IS_BALLOONED(pPage))
