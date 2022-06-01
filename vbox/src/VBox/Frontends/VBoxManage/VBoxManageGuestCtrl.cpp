@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 29549 2010-05-17 14:12:48Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 29552 2010-05-17 14:26:02Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -241,10 +241,6 @@ static int handleExecProgram(HandlerArg *a)
     if (Utf8UserName.isEmpty())
         return errorSyntax(USAGE_GUESTCONTROL,
                            "No user name specified!");
-
-    if (Utf8Password.isEmpty())
-        return errorSyntax(USAGE_GUESTCONTROL,
-                           "No password specified!");
 
     /* lookup VM. */
     ComPtr<IMachine> machine;
