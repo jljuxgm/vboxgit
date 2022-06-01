@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 26225 2010-02-03 22:05:10Z vboxsync $ */
+/* $Id: MMAll.cpp 26228 2010-02-03 23:12:16Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -185,6 +185,7 @@ DECLINLINE(PMMLOOKUPHYPER) mmHyperLookupRC(PVM pVM, RTRCPTR RCPtr, uint32_t *pof
                     break;
             }
             AssertMsgFailed(("enmType=%d\n", pLookup->enmType));
+            *poff = 0; /* shut up gcc */
             return NULL;
         }
 
