@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 26762 2010-02-24 19:09:54Z vboxsync $ */
+/* $Id: pipe-win.cpp 26763 2010-02-24 19:15:20Z vboxsync $ */
 /** @file
  * IPRT - Anonymouse Pipes, Windows Implementation.
  */
