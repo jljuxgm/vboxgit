@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 25647 2010-01-05 09:59:19Z vboxsync $ */
+/* $Id: MMAll.cpp 26225 2010-02-03 22:05:10Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -195,6 +195,7 @@ DECLINLINE(PMMLOOKUPHYPER) mmHyperLookupRC(PVM pVM, RTRCPTR RCPtr, uint32_t *pof
     }
 
     AssertMsgFailed(("RCPtr=%RRv is not inside the hypervisor memory area!\n", RCPtr));
+    *poff = 0; /* shut up gcc */
     return NULL;
 }
 
