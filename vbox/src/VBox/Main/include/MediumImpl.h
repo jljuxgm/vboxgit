@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 28835 2010-04-27 14:46:23Z vboxsync $ */
+/* $Id: MediumImpl.h 28872 2010-04-28 14:54:03Z vboxsync $ */
 
 /** @file
  *
@@ -217,6 +217,8 @@ public:
                     bool *pfNeedsSaveSettings);
     void cancelMergeTo(const MediaList &aChildrenToReparent,
                        MediumLockList *aMediumLockList);
+
+    HRESULT fixParentUuidOfChildren(const MediaList &childrenToReparent);
 
     /** Returns a preferred format for a differencing hard disk. */
     Bstr preferredDiffFormat();
