@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 27282 2010-03-11 13:42:03Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 27284 2010-03-11 14:09:57Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4526,6 +4526,7 @@ static void pgmPoolTrackDeref(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
     STAM_PROFILE_STOP(&pPool->StatZeroPage, z);
     pPage->fZeroed = true;
     PGMPOOL_UNLOCK_PTR(pPool->CTX_SUFF(pVM), pvShw);
+    Assert(!pPage->cPresent);
 }
 
 /**
