@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 27844 2010-03-30 21:02:49Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 28057 2010-04-07 17:23:58Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -1329,7 +1329,7 @@ int main()
     GEN_CHECK_OFF(E1KSTATE, hEventMoreRxDescAvail);
     GEN_CHECK_OFF(E1KSTATE, contextTSE);
     GEN_CHECK_OFF(E1KSTATE, contextNormal);
-    GEN_CHECK_OFF(E1KSTATE, aTxPacket[E1K_MAX_TX_PKT_SIZE]);
+    GEN_CHECK_OFF(E1KSTATE, aTxPacketFallback[E1K_MAX_TX_PKT_SIZE]);
     GEN_CHECK_OFF(E1KSTATE, u16TxPktLen);
     GEN_CHECK_OFF(E1KSTATE, fIPcsum);
     GEN_CHECK_OFF(E1KSTATE, fTCPcsum);
