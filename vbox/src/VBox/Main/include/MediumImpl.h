@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 25882 2010-01-18 11:29:39Z vboxsync $ */
+/* $Id: MediumImpl.h 25886 2010-01-18 11:43:20Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -309,6 +309,7 @@ private:
     friend struct Task;
 
     HRESULT taskThreadCreateBase(Task &task, void *pvdOperationIfaces);
+    HRESULT taskThreadCreateDiff(Task &task, void *pvdOperationIfaces, bool fIsAsync);
 
     static DECLCALLBACK(int) taskThread(RTTHREAD thread, void *pvUser);
 
