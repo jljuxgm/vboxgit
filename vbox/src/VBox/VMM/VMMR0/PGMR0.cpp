@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 29209 2010-05-07 13:16:53Z vboxsync $ */
+/* $Id: PGMR0.cpp 29217 2010-05-07 14:38:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -421,6 +421,9 @@ VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PVMCPU pVCpu, PGMMREGISTERSHAREDM
                         /* Update the physical address and page id now. */
                         PGM_PAGE_SET_HCPHYS(pPage, paPageDesc[i].HCPhys);
                         PGM_PAGE_SET_PAGEID(pPage, paPageDesc[i].uHCPhysPageId);
+
+                        /* Invalidate page map TLB entry for this page too. */
+                        PGMPhysInvalidatePageMapTLBEntry(pVM, paPageDesc[i].GCPhys);
                     }
                     /* else nothing changed (== this page is now a shared page), so no need to flush anything. */
 
