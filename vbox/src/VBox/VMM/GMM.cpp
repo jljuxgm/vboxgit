@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 29620 2010-05-18 12:15:55Z vboxsync $ */
+/* $Id: GMM.cpp 30342 2010-06-21 16:24:57Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -305,6 +305,7 @@ GMMR3DECL(int)  GMMR3QueryHypervisorMemoryStats(PVM pVM, uint64_t *pcTotalAllocP
     *puTotalBalloonSize  = 0;
 
     /* Must be callable from any thread, so can't use VMMR3CallR0. */
+    /** @todo Shouldn't we use NIL_VMCPUID here?  */
     int rc = SUPR3CallVMMR0Ex(pVM->pVMR0, 0, VMMR0_DO_GMM_QUERY_HYPERVISOR_MEM_STATS, 0, &Req.Hdr);
     if (rc == VINF_SUCCESS)
     {
