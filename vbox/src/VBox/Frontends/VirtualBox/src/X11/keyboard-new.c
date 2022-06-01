@@ -1,3 +1,4 @@
+/* $Id: keyboard-new.c 26714 2010-02-23 15:17:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -512,3 +513,4 @@ unsigned *X11DRV_getKeyc2scan(void)
 {
     return keyc2scan;
 }
+

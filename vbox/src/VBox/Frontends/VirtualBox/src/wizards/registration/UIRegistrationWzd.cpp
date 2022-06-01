@@ -1,3 +1,4 @@
+/* $Id: UIRegistrationWzd.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -889,3 +890,4 @@ bool UIRegistrationWzdPage1::isFieldValid(QWidget *pWidget) const
 }
 
 #include "UIRegistrationWzd.moc"
+

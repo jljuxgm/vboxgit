@@ -1,3 +1,4 @@
+/* $Id: QIArrowSplitter.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -166,3 +167,4 @@ void QIArrowSplitter::relayout()
     else
         window()->setFixedHeight (window()->minimumSizeHint().height());
 }
+

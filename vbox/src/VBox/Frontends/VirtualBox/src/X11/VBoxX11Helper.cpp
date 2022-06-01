@@ -1,3 +1,4 @@
+/* $Id: VBoxX11Helper.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -130,3 +131,4 @@ bool X11IsWindowManagerKWin()
     }
     return fIsKWinManaged;
 }
+

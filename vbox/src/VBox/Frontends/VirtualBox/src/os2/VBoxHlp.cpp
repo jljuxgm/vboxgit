@@ -1,4 +1,4 @@
-/* $Id: VBoxHlp.cpp 8155 2008-04-18 15:16:47Z vboxsync $ */
+/* $Id: VBoxHlp.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
 /** @file
  * VBox frontends: Qt GUI ("VirtualBox"):
  * Implementation of OS/2-specific helpers that require to reside in a DLL
@@ -190,3 +190,4 @@ ULONG _System _DLL_InitTerm (HMODULE aHandle, ULONG aFlag)
 
     return (unsigned long) ok;
 }
+

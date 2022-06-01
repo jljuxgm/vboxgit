@@ -1,3 +1,4 @@
+/* $Id: QIArrowButtonSwitch.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -80,3 +81,4 @@ bool QIArrowButtonSwitch::eventFilter (QObject *aObject, QEvent *aEvent)
     /* Default one handler */
     return QIRichToolButton::eventFilter (aObject, aEvent);
 }
+

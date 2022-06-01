@@ -1,3 +1,4 @@
+/* $Id: XKeyboard-new.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -278,3 +279,4 @@ void initMappedX11Keyboard(Display *pDisplay, QString remapScancodes)
     if (scancodes)
         delete scancodes;
 }
+
