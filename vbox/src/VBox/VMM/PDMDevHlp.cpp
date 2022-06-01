@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 24289 2009-11-03 13:52:35Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 24349 2009-11-04 17:37:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -2184,7 +2184,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_PhysWrite(PPDMDEVINS pDevIns, RTGCPHYS GCPh
     if (VM_IS_EMT(pVM))
         rc = PGMPhysWrite(pVM, GCPhys, pvBuf, cbWrite);
     else
-        rc = PGMR3PhysWriteExternal(pVM, GCPhys, pvBuf, cbWrite);
+        rc = PGMR3PhysWriteExternal(pVM, GCPhys, pvBuf, cbWrite, pDevIns->pDevReg->szDeviceName);
 
     Log(("pdmR3DevHlp_PhysWrite: caller='%s'/%d: returns %Rrc\n", pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, rc));
     return rc;
