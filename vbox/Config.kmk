@@ -1,4 +1,4 @@
-# $Id: Config.kmk 28303 2010-04-14 13:17:56Z vboxsync $
+# $Id: Config.kmk 28350 2010-04-15 11:37:49Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -455,9 +455,9 @@ VBOX_WITH_VBOXBFE = 1
 # Enables the Python<->XPCOM and Python<->COM bindings.
 VBOX_WITH_PYTHON ?= 1
 # Build multiple Python<->XPCOM bridges for different Python version
-ifn1of ($(KBUILD_TARGET), darwin)
- VBOX_WITH_MULTIVERSION_PYTHON ?= 1
-endif
+#ifn1of ($(KBUILD_TARGET), darwin)
+VBOX_WITH_MULTIVERSION_PYTHON ?= 1
+#endif
 # Enable the kchmviewer.
 VBOX_WITH_KCHMVIEWER = 1
 # Build the testsuite.
@@ -4075,7 +4075,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28303 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28350 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
