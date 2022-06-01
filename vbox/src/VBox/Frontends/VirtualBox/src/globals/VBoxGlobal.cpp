@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 28854 2010-04-27 19:41:12Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 28888 2010-04-29 11:50:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -3062,6 +3062,7 @@ void VBoxGlobal::retranslateUi()
     mDiskTypes [KMediumType_Normal] =           tr ("Normal", "DiskType");
     mDiskTypes [KMediumType_Immutable] =        tr ("Immutable", "DiskType");
     mDiskTypes [KMediumType_Writethrough] =     tr ("Writethrough", "DiskType");
+    mDiskTypes [KMediumType_Shareable] =        tr ("Shareable", "DiskType");
     mDiskTypes_Differencing =                   tr ("Differencing", "DiskType");
 
     mVRDPAuthTypes [KVRDPAuthType_Null] =       tr ("Null", "VRDPAuthType");
