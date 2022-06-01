@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 26272 2010-02-05 04:18:52Z vboxsync $ */
+/* $Id: EMAll.cpp 26273 2010-02-05 04:24:36Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1192,7 +1192,7 @@ static int emInterpretLockBitTest(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPU
 #endif
 
 #ifdef IN_RC
-    pvParam1  = (void *)GCPtrPar1;
+    pvParam1  = (void *)(uintptr_t)GCPtrPar1;
 #else
     PGMPAGEMAPLOCK Lock;
     rc = PGMPhysGCPtr2CCPtr(pVCpu, GCPtrPar1, &pvParam1, &Lock);

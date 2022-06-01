@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 26228 2010-02-03 23:12:16Z vboxsync $ */
+/* $Id: MMAll.cpp 26273 2010-02-05 04:24:36Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -289,7 +289,7 @@ DECLINLINE(RTR0PTR) mmHyperLookupCalcR0(PVM pVM, PMMLOOKUPHYPER pLookup, uint32_
  */
 DECLINLINE(RTRCPTR) mmHyperLookupCalcRC(PVM pVM, PMMLOOKUPHYPER pLookup, uint32_t off)
 {
-    return (RTRCPTR)((RTGCUINTPTR)pVM->mm.s.pvHyperAreaGC + pLookup->off + off);
+    return (RTRCPTR)((RTRCUINTPTR)pVM->mm.s.pvHyperAreaGC + pLookup->off + off);
 }
 
 
