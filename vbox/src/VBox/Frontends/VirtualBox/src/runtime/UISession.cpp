@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 26919 2010-03-01 15:07:03Z vboxsync $ */
+/* $Id: UISession.cpp 26921 2010-03-01 16:09:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -964,7 +964,7 @@ void UISession::saveSessionSettings()
 
 qulonglong UISession::winId() const
 {
-    return uimachine()->machineLogic()->machineWindowWrapper()->machineWindow()->winId();
+    return uimachine()->machineLogic()->mainMachineWindow()->machineWindow()->winId();
 }
 
 void UISession::setPointerShape(const uchar *pShapeData, bool fHasAlpha,

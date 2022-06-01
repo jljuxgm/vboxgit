@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 26889 2010-02-28 14:57:36Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 26921 2010-03-01 16:09:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -38,17 +38,17 @@
 #include "QIMainDialog.h"
 
 UIMachineViewFullscreen::UIMachineViewFullscreen(  UIMachineWindow *pMachineWindow
-                                         , VBoxDefs::RenderMode renderMode
+                                                 , VBoxDefs::RenderMode renderMode
 #ifdef VBOX_WITH_VIDEOHWACCEL
-                                         , bool bAccelerate2DVideo
+                                                 , bool bAccelerate2DVideo
 #endif
-                                        )
+                                                 , ulong uMonitor)
     : UIMachineView(  pMachineWindow
                     , renderMode
 #ifdef VBOX_WITH_VIDEOHWACCEL
                     , bAccelerate2DVideo
 #endif
-                   )
+                    , uMonitor)
     , m_bIsGuestAutoresizeEnabled(pMachineWindow->machineLogic()->actionsPool()->action(UIActionIndex_Toggle_GuestAutoresize)->isChecked())
     , m_fShouldWeDoResize(false)
 {
