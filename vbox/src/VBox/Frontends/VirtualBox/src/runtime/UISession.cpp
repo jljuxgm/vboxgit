@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 27227 2010-03-09 17:34:39Z vboxsync $ */
+/* $Id: UISession.cpp 27296 2010-03-11 17:09:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -613,11 +613,6 @@ QMenuBar* UISession::newMenuBar()
     return pMenuBar;
 }
 
-QSize UISession::guestSizeHint(ulong uScreenId) const
-{
-    return (int)uScreenId < m_guestSizeHints.size() ? m_guestSizeHints[uScreenId] : QSize();
-}
-
 bool UISession::setPause(bool fOn)
 {
     if (isPaused() == fOn)
@@ -640,12 +635,6 @@ bool UISession::setPause(bool fOn)
     }
 
     return ok;
-}
-
-void UISession::setGuestSizeHint(ulong uScreenId, QSize size)
-{
-    if ((int)uScreenId < m_guestSizeHints.size())
-        m_guestSizeHints[uScreenId] = size;
 }
 
 void UISession::sltCloseVirtualSession()
@@ -947,14 +936,6 @@ void UISession::loadSessionSettings()
         pGuestAutoresizeSwitch->blockSignals(true);
         pGuestAutoresizeSwitch->setChecked(strSettings != "off");
         pGuestAutoresizeSwitch->blockSignals(false);
-    }
-
-    /* Some initialization: */
-    {
-        /* Initial guest size hints: */
-        m_guestSizeHints.clear();
-        for (ulong i = 0; i < machine.GetMonitorCount(); ++ i)
-            m_guestSizeHints << QSize(640, 480);
     }
 }
 

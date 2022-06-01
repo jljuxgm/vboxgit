@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 27252 2010-03-10 14:53:19Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 27296 2010-03-11 17:09:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -248,7 +248,7 @@ void UIMachineViewFullscreen::cleanupFullscreen()
             /* Rollback fullscreen frame-buffer size to normal: */
             machineWindowWrapper()->machineWindow()->hide();
             UIMachineViewBlocker blocker(this);
-            sltPerformGuestResize(uisession()->guestSizeHint(screenId()));
+            sltPerformGuestResize(guestSizeHint());
             blocker.exec();
         }
     }

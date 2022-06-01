@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 27237 2010-03-10 00:11:51Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 27296 2010-03-11 17:09:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -252,7 +252,7 @@ void UIMachineViewNormal::prepareConsoleConnections()
 void UIMachineViewNormal::saveMachineViewSettings()
 {
     /* Store guest size hint: */
-    uisession()->setGuestSizeHint(screenId(), QSize(frameBuffer()->width(), frameBuffer()->height()));
+    storeGuestSizeHint(QSize(frameBuffer()->width(), frameBuffer()->height()));
 }
 
 void UIMachineViewNormal::setGuestAutoresizeEnabled(bool fEnabled)
