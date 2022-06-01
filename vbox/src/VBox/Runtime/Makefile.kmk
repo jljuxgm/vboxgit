@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26223 2010-02-03 21:58:26Z vboxsync $
+# $Id: Makefile.kmk 26224 2010-02-03 22:03:01Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1549,7 +1549,7 @@ ifdef VBOX_WITH_RAW_MODE
  # RuntimeRC - Raw-mode context library.
  #
  RuntimeRC_TEMPLATE      = VBoxRc
- RuntimeRC_DEFS          = IN_RT_GC RT_WITH_VBOX
+ RuntimeRC_DEFS          = IN_RT_RC RT_WITH_VBOX
  RuntimeRC_INCS          = include
  RuntimeRC_SOURCES       = \
  	common/log/log.cpp \

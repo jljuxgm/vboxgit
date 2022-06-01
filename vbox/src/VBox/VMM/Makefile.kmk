@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26223 2010-02-03 21:58:26Z vboxsync $
+# $Id: Makefile.kmk 26224 2010-02-03 22:03:01Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -327,7 +327,7 @@ ifdef VBOX_WITH_RAW_MODE
  VMMGC_TEMPLATE  = VBoxRc
  VMMGC_SYSSUFF   = .gc
 
- VMMGC_DEFS      = IN_VMM_RC IN_RT_GC IN_RT_RC IN_DIS DIS_CORE_ONLY VBOX_WITH_RAW_MODE
+ VMMGC_DEFS      = IN_VMM_RC IN_RT_RC IN_DIS DIS_CORE_ONLY VBOX_WITH_RAW_MODE
  ifdef VBOX_WITH_R0_LOGGING
   VMMGC_DEFS    += VBOX_WITH_R0_LOGGING
  endif
