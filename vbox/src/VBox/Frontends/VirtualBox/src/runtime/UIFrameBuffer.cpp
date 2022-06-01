@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 26823 2010-02-26 10:35:32Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 26878 2010-02-26 23:56:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -183,7 +183,7 @@ STDMETHODIMP UIFrameBuffer::VideoModeSupported(ULONG uWidth, ULONG uHeight, ULON
     if (!pbSupported)
         return E_POINTER;
     *pbSupported = TRUE;
-    QRect screen = m_pMachineView->desktopGeometry();
+    QSize screen = m_pMachineView->desktopGeometry();
     if ((screen.width() != 0) && (uWidth > (ULONG)screen.width()))
         *pbSupported = FALSE;
     if ((screen.height() != 0) && (uHeight > (ULONG)screen.height()))
