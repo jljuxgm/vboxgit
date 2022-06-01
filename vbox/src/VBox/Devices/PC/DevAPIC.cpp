@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 24193 2009-10-30 14:27:04Z vboxsync $ */
+/* $Id: DevAPIC.cpp 24195 2009-10-30 14:32:56Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1011,7 +1011,13 @@ PDMBOTHCBDECL(int) apicLocalInterrupt(PPDMDEVINS pDevIns, uint8_t u8Pin, uint8_t
             case APIC_DM_EXTINT:
                 Assert(u8Pin == 0); /* PIC should be wired to LINT0. */
                 enmType = PDMAPICIRQ_EXTINT;
-                break;
+                /* ExtINT can be both set and cleared, NMI/SMI/INIT can only be set. */
+                LogFlow(("apicLocalInterrupt: %s ExtINT interrupt\n", u8Level ? "setting" : "clearing"));
+                if (u8Level)
+                    cpuSetInterrupt(dev, s, enmType);
+                else
+                    cpuClearInterrupt(dev, s, enmType);
+                return VINF_SUCCESS;
             case APIC_DM_NMI:
                 Assert(u8Pin == 1); /* NMI should be wired to LINT1. */
                 enmType = PDMAPICIRQ_NMI;
