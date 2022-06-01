@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleWnd.cpp 27625 2010-03-23 12:15:35Z vboxsync $ */
+/* $Id: VBoxConsoleWnd.cpp 27689 2010-03-25 09:55:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1729,6 +1729,14 @@ void VBoxConsoleWnd::finalizeOpenView()
         machine.SetExtraData (VBoxDefs::GUI_FirstRun, QString::null);
     }
 
+    bool fFullscreenActivated = false;
+    QString str = machine.GetExtraData (VBoxDefs::GUI_Fullscreen);
+    if (str == "on")
+    {
+        mVmFullscreenAction->setChecked (true);
+        fFullscreenActivated = true;
+    }
+
     /* Start the VM */
     CProgress progress = vboxGlobal().isStartPausedEnabled() || vboxGlobal().isDebuggerAutoShowEnabled() ?
                          console.PowerUpPaused() : console.PowerUp();
@@ -1790,9 +1798,8 @@ void VBoxConsoleWnd::finalizeOpenView()
 
     /* Currently the machine is started and the guest API could be used...
      * Checking if the fullscreen mode should be activated */
-    QString str = machine.GetExtraData (VBoxDefs::GUI_Fullscreen);
-    if (str == "on")
-        mVmFullscreenAction->setChecked (true);
+    if (fFullscreenActivated)
+        mConsole->toggleFSMode (mConsole->size());
 
     /* If seamless mode should be enabled then check if it is enabled
      * currently and re-enable it if seamless is supported */
