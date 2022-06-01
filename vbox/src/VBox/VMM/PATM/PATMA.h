@@ -1,4 +1,4 @@
-/* $Id: PATMA.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: PATMA.h 26510 2010-02-14 09:37:18Z vboxsync $ */
 /** @file
  * PATM macros & definitions (identical to PATMA.mac!!)
  */
@@ -109,7 +109,7 @@ typedef struct
 {
     uint8_t *pFunction;
     uint32_t offJump;
-    uint32_t offRelJump;	//used only by loop/loopz/loopnz
+    uint32_t offRelJump;        //used only by loop/loopz/loopnz
     uint32_t offSizeOverride;   //size override byte position
     uint32_t size;
     uint32_t nrRelocs;

@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 25891 2010-01-18 13:07:21Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 26510 2010-02-14 09:37:18Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -350,7 +350,7 @@ VMMDECL(int) MMHyperAlloc(PVM pVM, size_t cb, unsigned uAlignment, MMTAG enmTag,
  * @returns Pointer to the allocated chunk.
  * @returns NULL on failure.
  * @param   pHeap       The heap.
- * @param   cb     	Size of the memory block to allocate.
+ * @param   cb          Size of the memory block to allocate.
  * @param   uAlignment  The alignment specifications for the allocated block.
  * @internal
  */
@@ -595,7 +595,7 @@ static PMMHYPERCHUNK mmHyperAllocChunk(PMMHYPERHEAP pHeap, uint32_t cb, unsigned
  * @returns Pointer to the allocated chunk.
  * @returns NULL on failure.
  * @param   pHeap       The heap.
- * @param   cb     	Size of the memory block to allocate.
+ * @param   cb          Size of the memory block to allocate.
  * @internal
  */
 static void *mmHyperAllocPages(PMMHYPERHEAP pHeap, uint32_t cb)
