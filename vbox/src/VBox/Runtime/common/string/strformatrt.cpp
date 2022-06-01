@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 26588 2010-02-16 17:02:59Z vboxsync $ */
+/* $Id: strformatrt.cpp 27648 2010-03-23 22:42:29Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -138,6 +138,15 @@
  * Group 4, structure dumpers.
  *
  *      - \%RDtimespec      - Takes a PCRTTIMESPEC.
+ *
+ *
+ * Group 5, XML / HTML escapers.
+ *      - \%RMas            - Takes a string pointer (const char *) and outputs
+ *                            it as an attribute value with the proper escaping.
+ *                            This typically ends up in double quotes.
+ *
+ *      - \%RMes            - Takes a string pointer (const char *) and outputs
+ *                            it as an element with the necessary escaping.
  *
  *
  */
@@ -1027,15 +1036,95 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
             }
 
             /*
+             * Group 5, XML / HTML escapers.
+             */
+            case 'M':
+            {
+                char chWhat = (*ppszFormat)[0];
+                bool fAttr  = chWhat == 'a';
+                char chType = (*ppszFormat)[1];
+                AssertMsgBreak(chWhat == 'a' || chWhat == 'e', ("Invalid IPRT format type '%.10s'!\n", pszFormatOrg));
+                *ppszFormat += 2;
+                switch (chType)
+                {
+                    case 's':
+                    {
+                        static const char   s_szAttrEscape[] = "\n\""; /* more? */
+                        static const char   s_szElemEscape[] = "<>&'\"";
+                        const char *pszEscape = fAttr ?             s_szAttrEscape      :             s_szElemEscape;
+                        int         cchEscape = fAttr ? RT_ELEMENTS(s_szAttrEscape) - 1 : RT_ELEMENTS(s_szElemEscape) - 1;
+                        int         cchOutput = 0;
+                        const char *pszStr    = va_arg(*pArgs, char *);
+                        int         cchStr;
+                        int         offCur;
+                        int         offLast;
+
+                        if (!VALID_PTR(pszStr))
+                            pszStr = "<NULL>";
+                        cchStr = RTStrNLen(pszStr, (unsigned)cchPrecision);
+
+                        if (fAttr)
+                            cchOutput += pfnOutput(pvArgOutput, "\"", 1);
+                        if (!(fFlags & RTSTR_F_LEFT))
+                            while (--cchWidth >= cchStr)
+                                cchOutput += pfnOutput(pvArgOutput, " ", 1);
+
+                        offLast = offCur = 0;
+                        while (offCur < cchStr)
+                        {
+                            if (memchr(pszEscape, pszStr[offCur], cchEscape))
+                            {
+                                if (offLast < offCur)
+                                    cchOutput += pfnOutput(pvArgOutput, &pszStr[offLast], offCur - offLast);
+                                if (fAttr)
+                                    switch (pszStr[offCur])
+                                    {
+                                        case '\n':  cchOutput += pfnOutput(pvArgOutput, "\\\n", 2); break;
+                                        case '"':   cchOutput += pfnOutput(pvArgOutput, "\\\"", 2); break;
+                                        default:
+                                            AssertFailed();
+                                    }
+                                else
+                                    switch (pszStr[offCur])
+                                    {
+                                        case '<':   cchOutput += pfnOutput(pvArgOutput, "&lt;", 4); break;
+                                        case '>':   cchOutput += pfnOutput(pvArgOutput, "&gt;", 4); break;
+                                        case '&':   cchOutput += pfnOutput(pvArgOutput, "&amp;", 5); break;
+                                        case '\'':  cchOutput += pfnOutput(pvArgOutput, "&apos;", 6); break;
+                                        case '"':   cchOutput += pfnOutput(pvArgOutput, "&qout;", 6); break;
+                                        default:
+                                            AssertFailed();
+                                    }
+                                offLast = offCur + 1;
+                            }
+                            offCur++;
+                        }
+                        if (offLast < offCur)
+                            cchOutput += pfnOutput(pvArgOutput, &pszStr[offLast], offCur - offLast);
+
+                        while (--cchWidth >= cchStr)
+                            cchOutput += pfnOutput(pvArgOutput, " ", 1);
+                        if (fAttr)
+                            cchOutput += pfnOutput(pvArgOutput, "\"", 1);
+                        return cchOutput;
+                    }
+
+                    default:
+                        AssertMsgFailed(("Invalid IPRT format type '%.10s'!\n", pszFormatOrg));
+                }
+                break;
+            }
+
+            /*
              * Invalid/Unknown. Bitch about it.
              */
             default:
-                AssertMsgFailed(("Invalid VBox format type '%.10s'!\n", pszFormatOrg));
+                AssertMsgFailed(("Invalid IPRT format type '%.10s'!\n", pszFormatOrg));
                 break;
         }
     }
     else
-        AssertMsgFailed(("Invalid VBox format type '%.10s'!\n", pszFormatOrg));
+        AssertMsgFailed(("Invalid IPRT format type '%.10s'!\n", pszFormatOrg));
 
     NOREF(pszFormatOrg);
     return 0;
