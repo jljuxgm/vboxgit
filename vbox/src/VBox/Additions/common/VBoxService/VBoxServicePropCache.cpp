@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePropCache.cpp 28967 2010-05-03 11:44:28Z vboxsync $ */
+/* $Id: VBoxServicePropCache.cpp 28969 2010-05-03 11:54:09Z vboxsync $ */
 /** @file
  * VBoxServicePropCache - Guest property cache.
  */
@@ -27,7 +27,7 @@
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
 #include "VBoxServiceUtils.h"
-#include "VboxServicePropCache.h"
+#include "VBoxServicePropCache.h"
 
 #ifdef VBOX_WITH_GUEST_PROPS
 
