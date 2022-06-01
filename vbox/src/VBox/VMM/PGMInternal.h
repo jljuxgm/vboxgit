@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 24793 2009-11-19 14:53:59Z vboxsync $ */
+/* $Id: PGMInternal.h 24799 2009-11-19 15:52:31Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1563,9 +1563,7 @@ typedef struct PGMMAPSET
     uint32_t                    iSubset;
     /** The index of the current CPU, only valid if the set is open. */
     int32_t                     iCpu;
-#if HC_ARCH_BITS == 64
     uint32_t                    alignment;
-#endif
     /** The entries. */
     PGMMAPSETENTRY              aEntries[64];
     /** HCPhys -> iEntry fast lookup table.
@@ -1573,6 +1571,7 @@ typedef struct PGMMAPSET
      * The entries may or may not be valid, check against cEntries. */
     uint8_t                     aiHashTable[128];
 } PGMMAPSET;
+AssertCompileSizeAlignment(PGMMAPSET, 8);
 /** Pointer to the mapping cache set. */
 typedef PGMMAPSET *PPGMMAPSET;
 
@@ -2971,6 +2970,8 @@ typedef struct PGMCPU
 #ifndef VBOX_WITH_2X_4GB_ADDR_SPACE
     /** The guest's page directory pointer table, R0 pointer. */
     R0PTRTYPE(PX86PML4)             pGstAmd64Pml4R0;
+#else
+    RTR0PTR                         alignment6b; /**< alignment equalizer. */
 #endif
     /** @} */
 
