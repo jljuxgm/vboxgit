@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 25330 2009-12-11 14:09:45Z vboxsync $ */
+/* $Id: MachineImpl.cpp 25346 2009-12-13 16:21:19Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -63,7 +63,7 @@
 #include <iprt/dir.h>
 #include <iprt/asm.h>
 #include <iprt/process.h>
-#include <iprt/cpputils.h>
+#include <iprt/cpp/utils.h>
 #include <iprt/env.h>
 #include <iprt/string.h>
 

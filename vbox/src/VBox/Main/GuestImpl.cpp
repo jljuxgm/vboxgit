@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 25310 2009-12-10 17:06:44Z vboxsync $ */
+/* $Id: GuestImpl.cpp 25346 2009-12-13 16:21:19Z vboxsync $ */
 
 /** @file
  *
@@ -30,7 +30,7 @@
 #include "Logging.h"
 
 #include <VBox/VMMDev.h>
-#include <iprt/cpputils.h>
+#include <iprt/cpp/utils.h>
 
 // defines
 /////////////////////////////////////////////////////////////////////////////

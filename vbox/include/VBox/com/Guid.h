@@ -1,4 +1,4 @@
-/* $Id: Guid.h 24446 2009-11-06 14:38:35Z vboxsync $ */
+/* $Id: Guid.h 25346 2009-12-13 16:21:19Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -47,7 +47,7 @@
 
 #include "VBox/com/string.h"
 
-#include <iprt/cpputils.h>
+#include <iprt/cpp/utils.h>
 #include <iprt/uuid.h>
 
 namespace com

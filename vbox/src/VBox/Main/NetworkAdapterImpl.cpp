@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 25310 2009-12-10 17:06:44Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 25346 2009-12-13 16:21:19Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -25,7 +25,7 @@
 #include "GuestOSTypeImpl.h"
 
 #include <iprt/string.h>
-#include <iprt/cpputils.h>
+#include <iprt/cpp/utils.h>
 
 #include <VBox/err.h>
 #include <VBox/settings.h>

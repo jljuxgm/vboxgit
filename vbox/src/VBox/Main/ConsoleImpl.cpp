@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 25330 2009-12-11 14:09:45Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 25346 2009-12-13 16:21:19Z vboxsync $ */
 
 /** @file
  *
@@ -72,7 +72,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/buildconfig.h>
-#include <iprt/cpputils.h>
+#include <iprt/cpp/utils.h>
 #include <iprt/dir.h>
 #include <iprt/file.h>
 #include <iprt/ldr.h>
