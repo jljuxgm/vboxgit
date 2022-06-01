@@ -1,6 +1,6 @@
 #! /bin/sh
 # Sun VirtualBox
-# Linux Additions kernel module init script ($Revision: 24537 $)
+# Linux Additions kernel module init script ($Revision: 24544 $)
 #
 
 #
@@ -375,7 +375,6 @@ setup()
     ln -sf /usr/lib/$PACKAGE/mount.vboxsf /sbin
 
     succ_msg
-    start
     echo
     echo "You should reboot your guest to make sure the new modules are actually used"
 }
