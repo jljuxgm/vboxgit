@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 21251 2009-07-06 13:19:43Z vboxsync $ */
+/* $Id: EMInternal.h 26214 2010-02-03 17:18:11Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -379,8 +379,6 @@ typedef struct EMCPU
     STAMPROFILE             StatIOEmu;
     /** R3: Profiling of emR3RawPrivileged. */
     STAMPROFILE             StatPrivEmu;
-    /** R3: Profiling of emR3RawExecuteInstruction. */
-    STAMPROFILE             StatMiscEmu;
     /** R3: Number of time emR3HwAccExecute is called. */
     STAMCOUNTER             StatHwAccExecuteEntry;
 
