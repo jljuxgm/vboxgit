@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 27421 2010-03-16 17:56:17Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 27424 2010-03-16 19:48:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -355,15 +355,22 @@ void UIMachineWindowSeamless::setMask(const QRegion &constRegion)
 {
     QRegion region = constRegion;
 
+    /* Shift region if left spacer width is NOT zero or top spacer height is NOT zero: */
+    if (m_pLeftSpacer->geometry().width() || m_pTopSpacer->geometry().height())
+        region.translate(m_pLeftSpacer->geometry().width(), m_pTopSpacer->geometry().height());
+
 #if 0 // TODO: Is it really needed now?
     /* The global mask shift cause of toolbars and such things. */
     region.translate(mMaskShift.width(), mMaskShift.height());
 #endif
 
-    /* Including mini tool-bar area */
-    QRegion toolBarRegion(m_pMiniToolBar->mask());
-    toolBarRegion.translate(m_pMiniToolBar->mapToGlobal(toolBarRegion.boundingRect().topLeft()) - QPoint(1, 0));
-    region += toolBarRegion;
+    /* Including mini tool-bar area: */
+    if (m_pMiniToolBar)
+    {
+        QRegion toolBarRegion(m_pMiniToolBar->mask());
+        toolBarRegion.translate(m_pMiniToolBar->mapToGlobal(toolBarRegion.boundingRect().topLeft()) - QPoint(1, 0));
+        region += toolBarRegion;
+    }
 
 #if 0 // TODO: Is it really needed now?
     /* Restrict the drawing to the available space on the screen.
@@ -428,15 +435,6 @@ void UIMachineWindowSeamless::setMask(const QRegion &constRegion)
     }
 #else
     QMainWindow::setMask(region);
-#endif
-}
-
-void UIMachineWindowSeamless::clearMask()
-{
-#ifdef Q_WS_WIN
-    SetWindowRgn(winId(), 0, TRUE);
-#else
-    QMainWindow::clearMask();
 #endif
 }
 
