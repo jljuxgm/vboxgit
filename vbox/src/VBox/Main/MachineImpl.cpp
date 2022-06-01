@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 29470 2010-05-14 13:10:17Z vboxsync $ */
+/* $Id: MachineImpl.cpp 29480 2010-05-14 15:24:19Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6955,7 +6955,7 @@ HRESULT Machine::loadStorageControllers(const settings::Storage &data,
         rc = pCtl->COMSETTER(PortCount)(ctlData.ulPortCount);
         if (FAILED(rc)) return rc;
 
-        rc = pCtl->COMSETTER(IoBackend)(ctlData.ioBackendType);
+        rc = pCtl->COMSETTER(UseHostIOCache)(ctlData.fUseHostIOCache);
         if (FAILED(rc)) return rc;
 
         /* Set IDE emulation settings (only for AHCI controller). */
@@ -8032,11 +8032,11 @@ HRESULT Machine::saveStorageControllers(settings::Storage &data)
         ComAssertComRCRet(rc, rc);
         ctl.ulPortCount = portCount;
 
-        /* Save I/O backend */
-        IoBackendType_T ioBackendType;
-        rc = pCtl->COMGETTER(IoBackend)(&ioBackendType);
+        /* Save fUseHostIOCache */
+        BOOL fUseHostIOCache;
+        rc = pCtl->COMGETTER(UseHostIOCache)(&fUseHostIOCache);
         ComAssertComRCRet(rc, rc);
-        ctl.ioBackendType = ioBackendType;
+        ctl.fUseHostIOCache = !!fUseHostIOCache;
 
         /* Save IDE emulation settings. */
         if (ctl.controllerType == StorageControllerType_IntelAhci)

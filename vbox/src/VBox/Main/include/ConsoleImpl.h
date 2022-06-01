@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 29385 2010-05-11 18:05:44Z vboxsync $ */
+/* $Id: ConsoleImpl.h 29480 2010-05-14 15:24:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -441,7 +441,7 @@ private:
                                const char *pcszDevice,
                                unsigned uInstance,
                                StorageBus_T enmBus,
-                               IoBackendType_T enmIoBackend,
+                               bool fUseHostIOCache,
                                bool fSetupMerge,
                                unsigned uMergeSource,
                                unsigned uMergeTarget,
@@ -455,7 +455,7 @@ private:
     int configMedium(PCFGMNODE pLunL0,
                      bool fPassthrough,
                      DeviceType_T enmType,
-                     IoBackendType_T enmIoBackend,
+                     bool fUseHostIOCache,
                      bool fSetupMerge,
                      unsigned uMergeSource,
                      unsigned uMergeTarget,
@@ -467,7 +467,7 @@ private:
                                                          const char *pcszDevice,
                                                          unsigned uInstance,
                                                          StorageBus_T enmBus,
-                                                         IoBackendType_T enmIoBackend,
+                                                         bool fUseHostIOCache,
                                                          bool fSetupMerge,
                                                          unsigned uMergeSource,
                                                          unsigned uMergeTarget,
@@ -478,7 +478,7 @@ private:
                                                    const char *pcszDevice,
                                                    unsigned uInstance,
                                                    StorageBus_T enmBus,
-                                                   IoBackendType_T enmIoBackend,
+                                                   bool fUseHostIOCache,
                                                    IMediumAttachment *aMediumAtt,
                                                    bool fForce);
 

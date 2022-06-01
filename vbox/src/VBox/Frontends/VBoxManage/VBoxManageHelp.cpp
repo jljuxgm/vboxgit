@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 29465 2010-05-14 11:59:31Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 29480 2010-05-14 15:24:19Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -446,7 +446,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                                          PIIX3|PIIX4|ICH6|I82078]\n"
                  "                            [--sataideemulation<1-4> <1-30>]\n"
                  "                            [--sataportcount <1-30>]\n"
-                 "                            [--iobackend Buffered|Unbuffered]\n"
+                 "                            [--hostiocache on|off]\n"
                  "                            [--remove]\n"
                  "\n");
     }
