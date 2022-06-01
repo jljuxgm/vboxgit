@@ -1,10 +1,10 @@
-/* $Id: tstRTSemRW.cpp 26163 2010-02-02 18:58:33Z vboxsync $ */
+/* $Id: tstRTSemRW.cpp 27797 2010-03-29 16:09:43Z vboxsync $ */
 /** @file
  * IPRT Testcase - Reader/Writer Semaphore.
  */
 
 /*
- * Copyright (C) 2009 Sun Microsystems, Inc.
+ * Copyright (C) 2009-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -218,7 +218,6 @@ static DECLCALLBACK(int) Test4Thread(RTTHREAD ThreadSelf, void *pvUser)
 
 static void Test4(unsigned cThreads, unsigned cSeconds, unsigned uWritePercent, bool fYield, bool fQuiet)
 {
-    int rc;
     unsigned i;
     uint64_t acIterations[32];
     RTTHREAD aThreads[RT_ELEMENTS(acIterations)];

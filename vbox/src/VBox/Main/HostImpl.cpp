@@ -1,10 +1,10 @@
-/* $Id: HostImpl.cpp 27796 2010-03-29 16:04:55Z vboxsync $ */
+/* $Id: HostImpl.cpp 27797 2010-03-29 16:09:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
 
 /*
- * Copyright (C) 2006-2009 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1196,10 +1196,10 @@ STDMETHODIMP Host::InsertUSBDeviceFilter(ULONG aPosition,
                         tr("The given USB device filter is already in the list"));
 
     /* iterate to the position... */
-    USBDeviceFilterList::iterator it = m->llUSBDeviceFilters.begin();
-    std::advance (it, aPosition);
+    USBDeviceFilterList::iterator itPos = m->llUSBDeviceFilters.begin();
+    std::advance(itPos, aPosition);
     /* ...and insert */
-    m->llUSBDeviceFilters.insert(it, pFilter);
+    m->llUSBDeviceFilters.insert(itPos, pFilter);
     pFilter->mInList = true;
 
     /* notify the proxy (only when the filter is active) */

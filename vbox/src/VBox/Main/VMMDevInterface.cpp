@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 27607 2010-03-22 18:13:07Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 27797 2010-03-29 16:09:43Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -257,8 +257,8 @@ DECLCALLBACK(void) vmmdevUpdateMouseCapabilities(PPDMIVMMDEVCONNECTOR pInterface
     Mouse *pMouse = pDrv->pVMMDev->getParent()->getMouse();
     if (pMouse)  /** @todo and if not?  Can that actually happen? */
     {
-        pMouse->onVMMDevCanAbsChange(BOOL (newCapabilities & VMMDEV_MOUSE_GUEST_CAN_ABSOLUTE));
-        pMouse->onVMMDevNeedsHostChange(BOOL (newCapabilities & VMMDEV_MOUSE_GUEST_NEEDS_HOST_CURSOR));
+        pMouse->onVMMDevCanAbsChange(!!(newCapabilities & VMMDEV_MOUSE_GUEST_CAN_ABSOLUTE));
+        pMouse->onVMMDevNeedsHostChange(!!(newCapabilities & VMMDEV_MOUSE_GUEST_NEEDS_HOST_CURSOR));
     }
 }
 

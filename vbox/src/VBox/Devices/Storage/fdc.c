@@ -1,11 +1,11 @@
 #ifdef VBOX
-/* $Id: fdc.c 26562 2010-02-16 01:05:49Z vboxsync $ */
+/* $Id: fdc.c 27797 2010-03-29 16:09:43Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -130,15 +130,24 @@ typedef enum fdrive_type_t {
     FDRIVE_DRV_288  = 0x01,   /* 2.88 MB 3"5 drive      */
     FDRIVE_DRV_120  = 0x02,   /* 1.2  MB 5"25 drive     */
     FDRIVE_DRV_NONE = 0x03    /* No drive connected     */
+#ifdef VBOX
+    , FDRIVE_DRV_DUMMY = INT32_MAX
+#endif
 } fdrive_type_t;
 
 typedef enum fdrive_flags_t {
     FDRIVE_MOTOR_ON   = 0x01, /* motor on/off           */
     FDRIVE_REVALIDATE = 0x02  /* Revalidated            */
+#ifdef VBOX
+    , FDRIVE_DUMMY = INT32_MAX
+#endif
 } fdrive_flags_t;
 
 typedef enum fdisk_flags_t {
     FDISK_DBL_SIDES  = 0x01
+#ifdef VBOX
+    , FDDISK_DUMMY = INT32_MAX
+#endif
 } fdisk_flags_t;
 
 #ifdef VBOX

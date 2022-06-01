@@ -1,10 +1,10 @@
-/* $Id: VMMDev.cpp 27542 2010-03-19 15:40:19Z vboxsync $ */
+/* $Id: VMMDev.cpp 27797 2010-03-29 16:09:43Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1386,7 +1386,7 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
             }
             else
             {
-                pRequestHeader->rc = PGMR3PhysChangeMemBalloon(PDMDevHlpGetVM(pDevIns), memBalloonChange->fInflate, memBalloonChange->cPages, memBalloonChange->aPhysPage);
+                pRequestHeader->rc = PGMR3PhysChangeMemBalloon(PDMDevHlpGetVM(pDevIns), !!memBalloonChange->fInflate, memBalloonChange->cPages, memBalloonChange->aPhysPage);
                 if (memBalloonChange->fInflate)
                     STAM_REL_U32_INC(&pThis->StatMemBalloonChunks);
                 else
