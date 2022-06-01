@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 24505 2009-11-09 13:47:06Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 24827 2009-11-20 14:56:49Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -144,7 +144,7 @@ void printUsage(USAGECATEGORY u64Cmd)
 #ifdef VBOX_WITH_VIDEOHWACCEL
                  "                            [--accelerate2dvideo <on|off>]\n"
 #endif
-                 "                            [--firmware bios|efi]\n"
+                 "                            [--firmware bios|efi|efi64]\n"
                  "                            [--bioslogofadein on|off]\n"
                  "                            [--bioslogofadeout on|off]\n"
                  "                            [--bioslogodisplaytime <msec>]\n"
