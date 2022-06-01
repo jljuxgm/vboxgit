@@ -1,4 +1,4 @@
-/* $Id: VBoxDefs.cpp 30024 2010-06-04 08:50:25Z vboxsync $ */
+/* $Id: VBoxDefs.cpp 30288 2010-06-17 16:19:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -17,9 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/* Local includes */
 #include <VBoxDefs.h>
-
-const QUuid QUuid_null;
 
 const char* VBoxDefs::GUI_LastWindowPosition = "GUI/LastWindowPostion";
 const char* VBoxDefs::GUI_LastWindowPosition_Max = "max";
