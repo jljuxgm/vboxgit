@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26560 2010-02-16 00:46:50Z vboxsync $
+# $Id: Makefile.kmk 26846 2010-02-26 13:13:45Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxVideo.
 #
@@ -76,9 +76,6 @@ ifdef VBOXWDDM
  SYSMODS += VBoxVideoWddm
  VBoxVideoWddm_TEMPLATE    = VBOXGUESTR0
  ifdef VBOX_SIGN_ADDITIONS # (See the parent makefile.)
-  # driver signing rules will be written once there are all files necessary for that are available,
-  # i.e. a u/m display driver miniport inf
-  $(warning FIXME: !!!define wddm driver signing & install rules !!!)
   VBoxVideoWddm_NOINST     = true
  endif
 
