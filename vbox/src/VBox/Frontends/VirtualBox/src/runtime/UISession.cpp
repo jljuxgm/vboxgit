@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 26851 2010-02-26 13:48:55Z vboxsync $ */
+/* $Id: UISession.cpp 26854 2010-02-26 14:01:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -159,7 +159,7 @@ public:
 
 private:
 
-    const CNetworkAdapter &m_networkAdapter;
+    const CNetworkAdapter m_networkAdapter;
 };
 
 /* Serial port change event: */
@@ -175,7 +175,7 @@ public:
 
 private:
 
-    const CSerialPort &m_serialPort;
+    const CSerialPort m_serialPort;
 };
 
 /* Parallel port change event: */
@@ -191,7 +191,7 @@ public:
 
 private:
 
-    const CParallelPort &m_parallelPort;
+    const CParallelPort m_parallelPort;
 };
 
 /* Storage controller change event: */
@@ -211,11 +211,11 @@ public:
     UIMediumChangeEvent(const CMediumAttachment &mediumAttachment)
         : QEvent((QEvent::Type)UIConsoleEventType_MediumChange)
         , m_mediumAttachment(mediumAttachment) {}
-    const CMediumAttachment& mediumAttahment() { return m_mediumAttachment; }
+    const CMediumAttachment& mediumAttachment() { return m_mediumAttachment; }
 
 private:
 
-    const CMediumAttachment &m_mediumAttachment;
+    const CMediumAttachment m_mediumAttachment;
 };
 
 /* CPU change event: */
@@ -278,9 +278,9 @@ public:
 
 private:
 
-    const CUSBDevice &m_device;
+    const CUSBDevice m_device;
     bool m_bAttached;
-    const CVirtualBoxErrorInfo &m_error;
+    const CVirtualBoxErrorInfo m_error;
 };
 
 /* Shared folder change event: */
@@ -763,7 +763,7 @@ bool UISession::event(QEvent *pEvent)
         case UIConsoleEventType_MediumChange:
         {
             UIMediumChangeEvent *pConsoleEvent = static_cast<UIMediumChangeEvent*>(pEvent);
-            emit sigMediumChange(pConsoleEvent->mediumAttahment());
+            emit sigMediumChange(pConsoleEvent->mediumAttachment());
             return true;
         }
 
