@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 27008 2010-03-04 09:58:43Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 27046 2010-03-04 16:28:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -42,7 +42,7 @@
 #include "QIHotKeyEdit.h"
 
 UIMachineWindowNormal::UIMachineWindowNormal(UIMachineLogic *pMachineLogic, ulong uScreenId)
-    : QIWithRetranslateUI<QIMainDialog>(0)
+    : QIWithRetranslateUI2<QIMainDialog>(0, Qt::Window)
     , UIMachineWindow(pMachineLogic, uScreenId)
     , m_pIndicatorsPool(new UIIndicatorsPool(pMachineLogic->uisession()->session(), this))
     , m_pIdleTimer(0)
@@ -286,7 +286,7 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
         default:
             break;
     }
-    return QIWithRetranslateUI<QIMainDialog>::event(pEvent);
+    return QIWithRetranslateUI2<QIMainDialog>::event(pEvent);
 }
 
 #ifdef Q_WS_X11
