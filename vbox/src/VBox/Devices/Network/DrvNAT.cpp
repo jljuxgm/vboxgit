@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 26305 2010-02-05 19:00:45Z vboxsync $ */
+/* $Id: DrvNAT.cpp 26309 2010-02-05 21:13:17Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -160,7 +160,7 @@ typedef struct DRVNAT
     RTFILE                  PipeRead;
 # if HC_ARCH_BITS == 32
     /** Alignment padding. */
-    uint32_t                alignment2;
+    //uint32_t                alignment2;
 # endif
 #else
     /** for external notification */
