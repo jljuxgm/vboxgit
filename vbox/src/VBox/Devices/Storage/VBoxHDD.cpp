@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 28154 2010-04-09 19:11:23Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 28155 2010-04-09 19:13:07Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1587,7 +1587,6 @@ static int vdIOReqCompleted(void *pvUser)
             /* Update the parent state. */
             Assert(!pIoCtxParent->pIoCtxParent);
             Assert(pIoCtx->enmTxDir == VDIOCTXTXDIR_WRITE);
-            RTMemFree((void *)pIoCtx->SgBuf.pcaSeg); /* This will also free the attached buffer. */
             ASMAtomicSubU32(&pIoCtxParent->cbTransferLeft, pIoCtx->Type.Child.cbTransferParent);
 
             if (   !pIoCtxParent->cbTransferLeft
