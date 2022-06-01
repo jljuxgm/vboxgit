@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29922 2010-05-31 17:38:48Z vboxsync $
+# $Id: Makefile.kmk 29972 2010-06-02 09:03:45Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -272,6 +272,7 @@ VirtualBox_QT_MOCHDRS = \
 	src/extensions/QISplitter.h \
 	src/extensions/QIStateIndicator.h \
 	src/extensions/QIStatusBar.h \
+	src/extensions/QITabWidget.h \
 	src/extensions/QIToolButton.h \
 	src/extensions/QITreeView.h \
 	src/extensions/QITreeWidget.h \
