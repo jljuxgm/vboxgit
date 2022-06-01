@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 26464 2010-02-12 14:21:27Z vboxsync $ */
+/* $Id: DevEFI.cpp 26467 2010-02-12 16:12:51Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1131,8 +1131,13 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         pThis->u32DevicePropsLen = 0;
     }
 
-    pThis->u64FsbFrequency = 1333000000;
-    pThis->u64TscFrequency = pThis->u64FsbFrequency * 3;
+    /*
+     * CPU frequencies
+     */
+    // @todo: we need to have VMM API to access TSC increase speed, for now provide reasonable default 
+    pThis->u64TscFrequency = 2500000000; // TMCpuTicksPerSecond(PDMDevHlpGetVM(pDevIns));
+    /* Multiplier is read from MSR_IA32_PERF_STATUS, and now is hardcoded as 4 */
+    pThis->u64FsbFrequency = pThis->u64TscFrequency / 4;
     pThis->u64CpuFrequency = pThis->u64TscFrequency;
     /*
      * GOP graphics
