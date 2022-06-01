@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 27368 2010-03-15 15:25:23Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 27402 2010-03-16 13:19:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -233,10 +233,10 @@ static int pgmHandlerPhysicalSetRamFlagsAndFlushShadowPTs(PVM pVM, PPGMPHYSHANDL
         i++;
     }
 
-    if (fFlushTLBs && rc == VINF_SUCCESS)
+    if (fFlushTLBs && RT_SUCCESS(rc))
     {
         PGM_INVL_ALL_VCPU_TLBS(pVM);
-        Log(("pgmHandlerPhysicalSetRamFlagsAndFlushShadowPTs: flushing guest TLBs\n"));
+        Log(("pgmHandlerPhysicalSetRamFlagsAndFlushShadowPTs: flushing guest TLBs; rc=%d\n", rc));
     }
     else
     {
