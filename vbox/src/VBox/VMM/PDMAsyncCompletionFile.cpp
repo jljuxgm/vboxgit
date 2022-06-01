@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 30185 2010-06-14 20:38:54Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 30297 2010-06-17 23:37:58Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -897,7 +897,15 @@ static int pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
                 pEpFile->cTasksCached   = 0;
                 pEpFile->pBwMgr         = pEpClassFile->pBwMgr;
                 pEpFile->enmBackendType = enmEpBackend;
+                /*
+                 * Disable async flushes on Solaris for now.
+                 * They cause weird hangs which needs more investigations.
+                 */
+#ifndef RT_OS_SOLARIS
                 pEpFile->fAsyncFlushSupported = true;
+#else
+                pEpFile->fAsyncFlushSupported = false;
+#endif
                 pdmacFileBwRef(pEpFile->pBwMgr);
 
                 if (enmMgrType == PDMACEPFILEMGRTYPE_SIMPLE)
