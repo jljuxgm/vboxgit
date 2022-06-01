@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 27624 2010-03-23 12:09:03Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 27678 2010-03-24 17:59:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -388,10 +388,6 @@ void UIMachineWindow::prepareConsoleConnections()
 {
     /* Machine state-change updater: */
     QObject::connect(uisession(), SIGNAL(sigMachineStateChange()), machineWindow(), SLOT(sltMachineStateChanged()));
-}
-
-void UIMachineWindow::prepareAdditionsDownloader()
-{
 }
 
 void UIMachineWindow::prepareMachineViewContainer()

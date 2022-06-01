@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 27621 2010-03-23 11:17:46Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 27678 2010-03-24 17:59:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1480,9 +1480,8 @@ void UIMachineLogic::sltInstallGuestAdditions()
          * additions.*/
         connect(pDl, SIGNAL(downloadFinished(const QString&)),
                 uisession(), SLOT(sltInstallGuestAdditionsFrom(const QString&)));
-        /* Some of the modes may show additional info of the download progress. */
-        foreach (UIMachineWindow *pWindow, machineWindows())
-            pWindow->prepareAdditionsDownloader();
+        /* Some of the modes may show additional info of the download progress: */
+        emit sigDownloaderAdditionsCreated();
         /* Start the download: */
         pDl->startDownload();
     }
