@@ -1,4 +1,4 @@
-/* $Id: Virtio.h 25966 2010-01-22 11:15:43Z vboxsync $ */
+/* $Id: Virtio.h 28653 2010-04-23 14:36:33Z vboxsync $ */
 /** @file
  * Virtio.h - Virtio Declarations
  */
@@ -232,7 +232,7 @@ typedef uint32_t (*PFNGETHOSTMINIMALFEATURES)(void *pState);
 typedef void     (*PFNSETHOSTFEATURES)(void *pState, uint32_t uFeatures);
 typedef int      (*PFNGETCONFIG)(void *pState, uint32_t port, uint32_t cb, void *data);
 typedef int      (*PFNSETCONFIG)(void *pState, uint32_t port, uint32_t cb, void *data);
-typedef void     (*PFNRESET)(void *pState);
+typedef int      (*PFNRESET)(void *pState);
 typedef void     (*PFNREADY)(void *pState);
 /*****************************************************************************/
 

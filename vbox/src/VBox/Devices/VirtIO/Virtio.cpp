@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 26177 2010-02-02 22:29:01Z vboxsync $ */
+/* $Id: Virtio.cpp 28653 2010-04-23 14:36:33Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -460,7 +460,7 @@ int vpciIOPortOut(PPDMDEVINS                pDevIns,
             if (u32)
                 vqueueInit(&pState->Queues[pState->uQueueSelector], u32);
             else
-                pfnReset(pState);
+                rc = pfnReset(pState);
             break;
 
         case VPCI_QUEUE_SEL:
@@ -503,7 +503,7 @@ int vpciIOPortOut(PPDMDEVINS                pDevIns,
             pState->uStatus = u32;
             /* Writing 0 to the status port triggers device reset. */
             if (u32 == 0)
-                pfnReset(pState);
+                rc = pfnReset(pState);
             else if (fHasBecomeReady)
                 pfnReady(pState);
             break;
