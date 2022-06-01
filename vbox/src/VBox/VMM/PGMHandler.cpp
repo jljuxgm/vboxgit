@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 26150 2010-02-02 15:52:54Z vboxsync $ */
+/* $Id: PGMHandler.cpp 27545 2010-03-19 15:52:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -99,6 +99,10 @@ VMMR3DECL(int) PGMR3HandlerPhysicalRegister(PVM pVM, PGMPHYSHANDLERTYPE enmType,
         pszModRC = VMMGC_MAIN_MODULE_NAME;
     if (!pszModR0)
         pszModR0 = VMMR0_MAIN_MODULE_NAME;
+    if (!pszHandlerR0)
+        pszHandlerR0 = "pgmPhysHandlerRedirectToHC";
+    if (!pszHandlerRC)
+        pszHandlerRC = "pgmPhysHandlerRedirectToHC";
     AssertPtrReturn(pfnHandlerR3, VERR_INVALID_POINTER);
     AssertPtrReturn(pszHandlerR0, VERR_INVALID_POINTER);
     AssertPtrReturn(pszHandlerRC, VERR_INVALID_POINTER);

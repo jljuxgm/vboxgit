@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 27540 2010-03-19 15:24:22Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 27545 2010-03-19 15:52:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -52,6 +52,24 @@
 
 
 #ifndef IN_RING3
+
+/**
+ * \#PF Handler callback for physical memory accesses without a RC/R0 handler.
+ * This simply pushes everything to the HC handler.
+ *
+ * @returns VBox status code (appropritate for trap handling and GC return).
+ * @param   pVM         VM Handle.
+ * @param   uErrorCode  CPU Error code.
+ * @param   pRegFrame   Trap register frame.
+ * @param   pvFault     The fault address (cr2).
+ * @param   GCPhysFault The GC physical address corresponding to pvFault.
+ * @param   pvUser      User argument.
+ */
+VMMDECL(int) pgmPhysHandlerRedirectToHC(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPHYS GCPhysFault, void *pvUser)
+{
+    return (uErrorCode & X86_TRAP_PF_RW) ? VINF_IOM_HC_MMIO_WRITE : VINF_IOM_HC_MMIO_READ;
+}
+
 
 /**
  * \#PF Handler callback for Guest ROM range write access.
