@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 24938 2009-11-25 11:04:36Z vboxsync $ */
+/* $Id: EM.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -124,7 +124,7 @@ VMMR3DECL(int) EMR3Init(PVM pVM)
     /*
      * Initialize the REM critical section.
      */
-    rc = PDMR3CritSectInit(pVM, &pVM->em.s.CritSectREM, "EM-REM");
+    rc = PDMR3CritSectInit(pVM, &pVM->em.s.CritSectREM, RT_SRC_POS, "EM-REM");
     AssertRCReturn(rc, rc);
 
     /*

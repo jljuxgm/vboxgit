@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 25228 2009-12-08 11:06:38Z vboxsync $ */
+/* $Id: PGM.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1285,7 +1285,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
     /*
      * Initialize the PGM critical section and flush the phys TLBs
      */
-    rc = PDMR3CritSectInit(pVM, &pVM->pgm.s.CritSect, "PGM");
+    rc = PDMR3CritSectInit(pVM, &pVM->pgm.s.CritSect, RT_SRC_POS, "PGM");
     AssertRCReturn(rc, rc);
 
     PGMR3PhysChunkInvalidateTLB(pVM);

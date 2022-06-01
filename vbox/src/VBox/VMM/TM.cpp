@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
+/* $Id: TM.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -273,10 +273,10 @@ VMM_INT_DECL(int) TMR3Init(PVM pVM)
     /*
      * Init the locks.
      */
-    rc = PDMR3CritSectInit(pVM, &pVM->tm.s.TimerCritSect, "TM Timer Lock");
+    rc = PDMR3CritSectInit(pVM, &pVM->tm.s.TimerCritSect, RT_SRC_POS, "TM Timer Lock");
     if (RT_FAILURE(rc))
         return rc;
-    rc = PDMR3CritSectInit(pVM, &pVM->tm.s.VirtualSyncLock, "TM VirtualSync Lock");
+    rc = PDMR3CritSectInit(pVM, &pVM->tm.s.VirtualSyncLock, RT_SRC_POS, "TM VirtualSync Lock");
     if (RT_FAILURE(rc))
         return rc;
 

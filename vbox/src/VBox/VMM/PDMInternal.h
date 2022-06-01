@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 25614 2010-01-01 14:19:06Z vboxsync $ */
+/* $Id: PDMInternal.h 25732 2010-01-11 16:23:26Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1079,7 +1079,7 @@ extern const PDMRTCHLP      g_pdmR3DevRtcHlp;
 int         pdmR3CritSectInit(PVM pVM);
 int         pdmR3CritSectTerm(PVM pVM);
 void        pdmR3CritSectRelocate(PVM pVM);
-int         pdmR3CritSectInitDevice(PVM pVM, PPDMDEVINS pDevIns, PPDMCRITSECT pCritSect, const char *pszName);
+int         pdmR3CritSectInitDevice(PVM pVM, PPDMDEVINS pDevIns, PPDMCRITSECT pCritSect, RT_SRC_POS_DECL, const char *pszNameFmt, va_list va);
 int         pdmR3CritSectDeleteDevice(PVM pVM, PPDMDEVINS pDevIns);
 
 int         pdmR3DevInit(PVM pVM);

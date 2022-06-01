@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 25006 2009-11-26 14:46:03Z vboxsync $ */
+/* $Id: IOM.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -159,7 +159,7 @@ VMMR3DECL(int) IOMR3Init(PVM pVM)
     /*
      * Initialize the REM critical section.
      */
-    int rc = PDMR3CritSectInit(pVM, &pVM->iom.s.EmtLock, "IOM EMT Lock");
+    int rc = PDMR3CritSectInit(pVM, &pVM->iom.s.EmtLock, RT_SRC_POS, "IOM EMT Lock");
     AssertRCReturn(rc, rc);
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 25581 2009-12-24 14:38:01Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 25732 2010-01-11 16:23:26Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -284,7 +284,7 @@ REMR3DECL(int) REMR3Init(PVM pVM)
      *       is executing code could be dangerous. Taking the REM lock is not an option due to the danger of
      *       deadlocks. (mostly pgm vs rem locking)
      */
-    rc = PDMR3CritSectInit(pVM, &pVM->rem.s.CritSectRegister, "REM-Register");
+    rc = PDMR3CritSectInit(pVM, &pVM->rem.s.CritSectRegister, RT_SRC_POS, "REM-Register");
     AssertRCReturn(rc, rc);
 
     /* ctx. */

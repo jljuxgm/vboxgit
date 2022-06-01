@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 25226 2009-12-08 10:55:32Z vboxsync $ */
+/* $Id: DevVGA.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6167,7 +6167,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
         return rc;
 
     /* Initialize the PDM lock. */
-    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->lock, "VGA");
+    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->lock, RT_SRC_POS, "VGA");
     if (RT_FAILURE(rc))
     {
         Log(("%s: Failed to create critical section.\n", __FUNCTION__));

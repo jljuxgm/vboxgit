@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
+/* $Id: DevE1000.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4910,13 +4910,11 @@ static DECLCALLBACK(int) e1kConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
         return rc;
 
     /* Initialize critical section */
-    rc = PDMDevHlpCritSectInit(pDevIns, &pState->cs, pState->szInstance);
+    rc = PDMDevHlpCritSectInit(pDevIns, &pState->cs, RT_SRC_POS, "%s", pState->szInstance);
     if (RT_FAILURE(rc))
         return rc;
 #ifndef E1K_GLOBAL_MUTEX
-    char szTmp[sizeof(pState->szInstance) + 2];
-    RTStrPrintf(szTmp, sizeof(szTmp), "%sRX", pState->szInstance);
-    rc = PDMDevHlpCritSectInit(pDevIns, &pState->csRx, szTmp);
+    rc = PDMDevHlpCritSectInit(pDevIns, &pState->csRx, RT_SRC_POS, "%sRX", pState->szInstance);
     if (RT_FAILURE(rc))
         return rc;
 #endif

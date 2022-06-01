@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 25647 2010-01-05 09:59:19Z vboxsync $ */
+/* $Id: DevSerial.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
 /** @file
  * DevSerial - 16450 UART emulation.
  */
@@ -887,9 +887,7 @@ static DECLCALLBACK(int) serialConstruct(PPDMDEVINS pDevIns,
      * Initialize critical section and the semaphore.
      * This must of course be done before attaching drivers or anything else which can call us back..
      */
-    char szName[24];
-    RTStrPrintf(szName, sizeof(szName), "Serial#%d", iInstance);
-    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, szName);
+    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "Serial#%d", iInstance);
     if (RT_FAILURE(rc))
         return rc;
 

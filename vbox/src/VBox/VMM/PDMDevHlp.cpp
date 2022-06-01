@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 25600 2009-12-31 00:38:44Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1283,15 +1283,16 @@ static DECLCALLBACK(int) pdmR3DevHlp_PDMQueueCreate(PPDMDEVINS pDevIns, RTUINT c
 
 
 /** @copydoc PDMDEVHLPR3::pfnCritSectInit */
-static DECLCALLBACK(int) pdmR3DevHlp_CritSectInit(PPDMDEVINS pDevIns, PPDMCRITSECT pCritSect, const char *pszName)
+static DECLCALLBACK(int) pdmR3DevHlp_CritSectInit(PPDMDEVINS pDevIns, PPDMCRITSECT pCritSect, RT_SRC_POS_DECL,
+                                                  const char *pszNameFmt, va_list va)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-    LogFlow(("pdmR3DevHlp_CritSectInit: caller='%s'/%d: pCritSect=%p pszName=%p:{%s}\n",
-             pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, pCritSect, pszName, pszName));
+    LogFlow(("pdmR3DevHlp_CritSectInit: caller='%s'/%d: pCritSect=%p pszNameFmt=%p:{%s}\n",
+             pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, pCritSect, pszNameFmt, pszNameFmt));
 
     PVM pVM = pDevIns->Internal.s.pVMR3;
     VM_ASSERT_EMT(pVM);
-    int rc = pdmR3CritSectInitDevice(pVM, pDevIns, pCritSect, pszName);
+    int rc = pdmR3CritSectInitDevice(pVM, pDevIns, pCritSect, RT_SRC_POS, pszNameFmt, va);
 
     LogFlow(("pdmR3DevHlp_CritSectInit: caller='%s'/%d: returns %Rrc\n", pDevIns->pDevReg->szDeviceName, pDevIns->iInstance, rc));
     return rc;

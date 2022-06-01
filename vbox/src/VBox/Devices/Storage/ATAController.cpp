@@ -1,4 +1,4 @@
-/* $Id: ATAController.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
+/* $Id: ATAController.cpp 25732 2010-01-11 16:23:26Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller code (disk and cdrom).
  *
@@ -5472,7 +5472,7 @@ DECLCALLBACK(int) ataControllerInit(PPDMDEVINS pDevIns, PAHCIATACONTROLLER pCtl,
     }
 
     /* Initialize per-controller critical section */
-    rc = PDMDevHlpCritSectInit(pDevIns, &pCtl->lock, szName);
+    rc = PDMDevHlpCritSectInit(pDevIns, &pCtl->lock, RT_SRC_POS, "%s", szName);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("AHCI ATA: cannot initialize critical section"));
 
