@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 25062 2009-11-27 19:24:14Z vboxsync $ */
+/* $Id: DevVGA.cpp 25226 2009-12-08 10:55:32Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5757,7 +5757,7 @@ static DECLCALLBACK(int)  vgaAttach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_t 
                     if(rc == VINF_SUCCESS)
                     {
                         rc = vbvaVHWAConstruct(pThis);
-                        Assert(RT_SUCCESS(rc));
+                        AssertRC(rc);
                     }
 #endif
                 }

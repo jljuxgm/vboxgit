@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 25193 2009-12-04 14:34:07Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 25226 2009-12-08 10:55:32Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -477,7 +477,7 @@ VMMR0DECL(int) HWACCMR0Term(void)
         if (!HWACCMR0Globals.vmx.fUsingSUPR0EnableVTx)
         {
             rc = RTPowerNotificationDeregister(hwaccmR0PowerCallback, 0);
-            Assert(RT_SUCCESS(rc));
+            AssertRC(rc);
         }
         else
             rc = VINF_SUCCESS;

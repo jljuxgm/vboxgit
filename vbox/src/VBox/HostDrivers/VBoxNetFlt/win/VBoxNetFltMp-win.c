@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltMp-win.c 24758 2009-11-18 12:57:48Z vboxsync $ */
+/* $Id: VBoxNetFltMp-win.c 25226 2009-12-08 10:55:32Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Miniport edge of ndis filter driver
  */
@@ -547,7 +547,7 @@ static NDIS_STATUS vboxNetFltWinMpReadApplyConfig(PADAPT pAdapt, NDIS_HANDLE hMi
             {
 
                 rc = vboxNetFltWinMACFromNdisString(&mac, &pParameterValue->ParameterData.StringData);
-                Assert(RT_SUCCESS(rc));
+                AssertRC(rc);
                 if(RT_SUCCESS(rc))
                 {
                     break;

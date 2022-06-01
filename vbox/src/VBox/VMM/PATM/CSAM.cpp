@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 23778 2009-10-14 21:42:00Z vboxsync $ */
+/* $Id: CSAM.cpp 25226 2009-12-08 10:55:32Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -877,7 +877,7 @@ static int CSAMR3AnalyseCallback(PVM pVM, DISCPUSTATE *pCpu, RCPTRTYPE(uint8_t *
 
             cpu.mode = (fCode32) ? CPUMODE_32BIT : CPUMODE_16BIT;
             rc = CSAMR3DISInstr(pVM, &cpu, pCurInstrGC, pCurInstrHC, &opsize, NULL);
-            Assert(RT_SUCCESS(rc));
+            AssertRC(rc);
             if (RT_FAILURE(rc))
                 break;
         }
