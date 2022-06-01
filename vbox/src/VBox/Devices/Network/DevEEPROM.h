@@ -1,4 +1,4 @@
-/* $Id: DevEEPROM.h 24020 2009-10-23 11:03:34Z vboxsync $ */
+/* $Id: DevEEPROM.h 25876 2010-01-18 10:54:05Z vboxsync $ */
 /** @file
  * DevEEPROM - Microware-compatible 64x16-bit 93C46 EEPROM Emulation, Header.
  */
@@ -121,6 +121,7 @@ struct EEPROM93C46 {
 #ifdef IN_RING3
     uint32_t read();
     void     write(uint32_t u32Wires);
+    bool     readWord(uint32_t u32Addr, uint16_t *pu16Value);
 
     void init(const uint16_t *pu16Initial = 0);
 

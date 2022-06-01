@@ -1,4 +1,4 @@
-/* $Id: DevEEPROM.cpp 24038 2009-10-23 14:17:37Z vboxsync $ */
+/* $Id: DevEEPROM.cpp 25876 2010-01-18 10:54:05Z vboxsync $ */
 /** @file
  * DevEEPROM - Microware-compatible 64x16-bit 93C46 EEPROM Emulation.
  */
@@ -59,6 +59,25 @@ void EEPROM93C46::storeWord(uint32_t u32Addr, uint16_t u16Value)
         m_au16Data[u32Addr] = u16Value;
     }
     m_u16Mask = DATA_MSB;
+}
+
+/**
+ * Reads one word at specified location.
+ *
+ * @returns True if read was successful.
+ *
+ * @param   u32Addr     Address to read from
+ * @param   pu16Value   Placeholder to store the value
+ */
+bool EEPROM93C46::readWord(uint32_t u32Addr, uint16_t *pu16Value)
+{
+    if (u32Addr < SIZE)
+    {
+        *pu16Value = m_au16Data[u32Addr];
+        return true;
+    }
+
+    return false;
 }
 
 /**
