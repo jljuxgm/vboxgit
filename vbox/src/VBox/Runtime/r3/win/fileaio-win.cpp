@@ -1,4 +1,4 @@
-/* $Id: fileaio-win.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
+/* $Id: fileaio-win.cpp 25727 2010-01-11 15:01:25Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Windows host platform.
  */
@@ -455,7 +455,6 @@ RTDECL(int) RTFileAioCtxWait(RTFILEAIOCTX hAioCtx, size_t cMinReqs, RTMSINTERVAL
         RTFILEAIOREQ_SET_STATE(pReqInt, COMPLETED);
 
         /* completion status. */
-        DWORD cbTransfered;
         fSucceeded = GetOverlappedResult(pReqInt->hFile,
                                          &pReqInt->Overlapped,
                                          &cbTransfered,
