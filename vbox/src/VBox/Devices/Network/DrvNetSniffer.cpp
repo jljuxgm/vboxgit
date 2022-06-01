@@ -1,4 +1,4 @@
-/* $Id: DrvNetSniffer.cpp 27973 2010-04-04 00:33:03Z vboxsync $ */
+/* $Id: DrvNetSniffer.cpp 28056 2010-04-07 17:22:59Z vboxsync $ */
 /** @file
  * DrvNetSniffer - Network sniffer filter driver.
  */
@@ -117,11 +117,16 @@ static DECLCALLBACK(int) drvNetSnifferUp_SendBuf(PPDMINETWORKUP pInterface, PPDM
 
     /* output to sniffer */
     RTCritSectEnter(&pThis->Lock);
-    /** @todo Deal with GSO here. */
-    PcapFileFrame(pThis->File, pThis->StartNanoTS,
-                  pSgBuf->aSegs[0].pvSeg,
-                  pSgBuf->cbUsed,
-                  RT_MIN(pSgBuf->cbUsed, pSgBuf->aSegs[0].cbSeg));
+    if (!pSgBuf->pvUser)
+        PcapFileFrame(pThis->File, pThis->StartNanoTS,
+                      pSgBuf->aSegs[0].pvSeg,
+                      pSgBuf->cbUsed,
+                      RT_MIN(pSgBuf->cbUsed, pSgBuf->aSegs[0].cbSeg));
+    else
+        PcapFileGsoFrame(pThis->File, pThis->StartNanoTS, (PCPDMNETWORKGSO)pSgBuf->pvUser,
+                         pSgBuf->aSegs[0].pvSeg,
+                         pSgBuf->cbUsed,
+                         RT_MIN(pSgBuf->cbUsed, pSgBuf->aSegs[0].cbSeg));
     RTCritSectLeave(&pThis->Lock);
 
     return pThis->pIBelowNet->pfnSendBuf(pThis->pIBelowNet, pSgBuf, fOnWorkerThread);
