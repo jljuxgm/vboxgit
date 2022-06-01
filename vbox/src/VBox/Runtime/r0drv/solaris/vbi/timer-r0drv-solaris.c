@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-solaris.c 29281 2010-05-09 23:40:43Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 29284 2010-05-10 00:22:16Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -33,6 +33,9 @@
 #include <iprt/timer.h>
 
 #include <iprt/asm.h>
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h>
+#endif
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/mem.h>
