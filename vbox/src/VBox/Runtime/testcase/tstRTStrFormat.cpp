@@ -1,4 +1,4 @@
-/* $Id: tstRTStrFormat.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstRTStrFormat.cpp 29660 2010-05-19 14:29:22Z vboxsync $ */
 /** @file
  * IPRT Testcase - String formatting.
  */
@@ -431,9 +431,11 @@ int main()
 
     CHECK42("%RU32", (uint32_t)1123, "1123");
     CHECK42("%RU32", (uint32_t)86596, "86596");
+    CHECK42("%4RU32", (uint32_t)42, "  42");
 
     CHECK42("%RU64", (uint64_t)112345987345ULL, "112345987345");
     CHECK42("%RU64", (uint64_t)8659643985723459ULL, "8659643985723459");
+    CHECK42("%14RU64", (uint64_t)4, "             4");
 
     CHECK42("%RU8", (uint8_t)1, "1");
     CHECK42("%RU8", (uint8_t)254, "254");

@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: strformat.cpp 29660 2010-05-19 14:29:22Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -272,7 +272,7 @@ static int rtStrFormatNumber(char *psz, KSIZE64 ullValue, unsigned int uiBase, s
      * precision
      */
     while (--cchPrecision >= cchValue)
-        *psz++ = '0';
+        *psz++ = ' ';
 
     /*
      * write number - not good enough but it works
