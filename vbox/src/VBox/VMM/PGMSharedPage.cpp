@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 28422 2010-04-16 15:47:03Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -48,7 +48,7 @@
  * @param   cRegions            Number of shared region descriptors
  * @param   pRegions            Shared region(s)
  */
-VMMR3DECL(int) PGMR3SharedModuleRegister(PVM pVM, char *pszModuleName, char *pszVersion, RTGCPTR GCBaseAddr, uint32_t cbModule, 
+VMMR3DECL(int) PGMR3SharedModuleRegister(PVM pVM, char *pszModuleName, char *pszVersion, RTGCPTR GCBaseAddr, uint32_t cbModule,
                                          unsigned cRegions, VMMDEVSHAREDREGIONDESC *pRegions)
 {
     return GMMR3RegisterSharedModule(pVM, pszModuleName, pszVersion, GCBaseAddr, cbModule, cRegions, pRegions);

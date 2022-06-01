@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 28139 2010-04-09 12:05:43Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1128,7 +1128,7 @@ int handleModifyVM(HandlerArg *a)
             case MODIFYVM_NICBOOTPRIO:
             {
                 ComPtr<INetworkAdapter> nic;
-    
+
                 CHECK_ERROR_BREAK(machine, GetNetworkAdapter(GetOptState.uIndex - 1, nic.asOutParam()));
                 ASSERT(nic);
 

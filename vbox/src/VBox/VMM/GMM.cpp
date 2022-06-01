@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 28422 2010-04-16 15:47:03Z vboxsync $ */
+/* $Id: GMM.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -358,7 +358,7 @@ GMMR3DECL(int)  GMMR3SeedChunk(PVM pVM, RTR3PTR pvR3)
 /**
  * @see GMMR0RegisterSharedModule
  */
-GMMR3DECL(int) GMMR3RegisterSharedModule(PVM pVM, char *pszModuleName, char *pszVersion, RTGCPTR GCBaseAddr, uint32_t cbModule, 
+GMMR3DECL(int) GMMR3RegisterSharedModule(PVM pVM, char *pszModuleName, char *pszVersion, RTGCPTR GCBaseAddr, uint32_t cbModule,
                                          unsigned cRegions, VMMDEVSHAREDREGIONDESC *pRegions)
 {
     PGMMREGISTERSHAREDMODULEREQ pReq;
@@ -399,7 +399,7 @@ GMMR3DECL(int) GMMR3UnregisterSharedModule(PVM pVM, char *pszModuleName, char *p
     GMMUNREGISTERSHAREDMODULEREQ Req;
     Req.Hdr.u32Magic = SUPVMMR0REQHDR_MAGIC;
     Req.Hdr.cbReq = sizeof(Req);
-    
+
     Req.GCBaseAddr    = GCBaseAddr;
     Req.cbModule      = cbModule;
 

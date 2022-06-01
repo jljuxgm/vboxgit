@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControl.cpp 28420 2010-04-16 13:32:14Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -144,8 +144,8 @@ static int VBoxServiceControlHandleCmdExec(uint32_t u32ClientId, uint32_t uNumPa
         VBoxServiceError("Control: Failed to retrieve execution command! Error: %Rrc\n", rc);
     }
     else
-    {     
-        rc = VBoxServiceControlExecProcess(uContextID, szCmd, uFlags, szArgs, uNumArgs,                                           
+    {
+        rc = VBoxServiceControlExecProcess(uContextID, szCmd, uFlags, szArgs, uNumArgs,
                                            szEnv, cbEnv, uNumEnvVars,
                                            szStdIn, szStdOut, szStdErr,
                                            szUser, szPassword, uTimeLimitMS);
@@ -271,8 +271,8 @@ static DECLCALLBACK(void) VBoxServiceControlTerm(void)
         RTMemFree(pNode);
         if (RTListNodeIsLast(&g_GuestControlExecThreads, &pNode->Node))
               break;
-        
-        PVBOXSERVICECTRLTHREAD pNext = RTListNodeGetNext(&pNode->Node, VBOXSERVICECTRLTHREAD, Node);        
+
+        PVBOXSERVICECTRLTHREAD pNext = RTListNodeGetNext(&pNode->Node, VBOXSERVICECTRLTHREAD, Node);
         pNode = pNext;
     }
 

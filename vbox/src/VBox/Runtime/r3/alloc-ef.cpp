@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.cpp 28326 2010-04-14 20:44:47Z vboxsync $ */
+/* $Id: alloc-ef.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -732,5 +732,4 @@ RTDECL(void *) RTMemEfDupExNP(const void *pvSrc, size_t cbSrc, size_t cbExtra) R
     }
     return pvDst;
 }
-
 

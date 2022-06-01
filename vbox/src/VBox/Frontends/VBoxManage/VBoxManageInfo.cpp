@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 28348 2010-04-15 07:57:37Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -811,7 +811,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                             }
                             if (details == VMINFO_MACHINEREADABLE)
                             {
-                                strNatForwardings = Utf8StrFmt("%sForwarding(%d)=\"%s,%s,%s,%s,%s,%s\"\n", 
+                                strNatForwardings = Utf8StrFmt("%sForwarding(%d)=\"%s,%s,%s,%s,%s,%s\"\n",
                                     strNatForwardings.raw(), i, strName.raw(), strProto.raw(),
                                     strHostIP.isEmpty() ? "": strHostIP.raw(), strHostPort.raw(),
                                     strGuestIP.isEmpty() ? "": strGuestIP.raw(), strGuestPort.raw());
@@ -819,7 +819,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                             else
                             {
                                 strNatForwardings = Utf8StrFmt("%sNIC %d Rule(%d):   name = %s, protocol = %s,"
-                                    " host ip = %s, host port = %s, guest ip = %s, guest port = %s\n", 
+                                    " host ip = %s, host port = %s, guest ip = %s, guest port = %s\n",
                                     strNatForwardings.raw(), currentNIC + 1, i, strName.raw(), strProto.raw(),
                                     strHostIP.isEmpty() ? "": strHostIP.raw(), strHostPort.raw(),
                                     strGuestIP.isEmpty() ? "": strGuestIP.raw(), strGuestPort.raw());
@@ -831,7 +831,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                         ULONG tcpSnd = 0;
                         ULONG tcpRcv = 0;
                         driver->GetNetworkSettings(&mtu, &sockSnd, &sockRcv, &tcpSnd, &tcpRcv);
-                        
+
                         if (details == VMINFO_MACHINEREADABLE)
                         {
                             RTPrintf("natnet%d=\"%lS\"\n", currentNIC + 1, strNetwork.length() ? strNetwork.raw(): Bstr("nat").raw());

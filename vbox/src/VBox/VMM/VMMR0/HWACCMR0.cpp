@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 28285 2010-04-14 10:00:45Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1153,7 +1153,7 @@ VMMR0DECL(int) HWACCMR0Leave(PVM pVM, PVMCPU pVCpu)
 
     rc = HWACCMR0Globals.pfnLeaveSession(pVM, pVCpu, pCtx);
 
-    /* We don't pass on invlpg information to the recompiler for nested paging guests, so we must make sure the recompiler flushes its TLB 
+    /* We don't pass on invlpg information to the recompiler for nested paging guests, so we must make sure the recompiler flushes its TLB
      * the next time it executes code.
      */
     if (    pVM->hwaccm.s.fNestedPaging

@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 28415 2010-04-16 12:59:40Z vboxsync $ */
+/* $Id: VMMDev.cpp 28434 2010-04-17 18:08:28Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1774,8 +1774,8 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
             }
             else
             {
-                pRequestHeader->rc = PGMR3SharedModuleRegister(pVM, pReqModule->GCBaseAddr, pReqModule->cbModule, 
-                                                               pReqModule->szName, pReqModule->szVersion, 
+                pRequestHeader->rc = PGMR3SharedModuleRegister(pVM, pReqModule->GCBaseAddr, pReqModule->cbModule,
+                                                               pReqModule->szName, pReqModule->szVersion,
                                                                pReqModule->cRegions, pReqModule->aRegions);
             }
             break;
@@ -1791,7 +1791,7 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
             }
             else
             {
-                pRequestHeader->rc = PGMR3SharedModuleUnregister(pVM, pReqModule->GCBaseAddr, pReqModule->cbModule, 
+                pRequestHeader->rc = PGMR3SharedModuleUnregister(pVM, pReqModule->GCBaseAddr, pReqModule->cbModule,
                                                                  pReqModule->szName, pReqModule->szVersion);
             }
             break;
