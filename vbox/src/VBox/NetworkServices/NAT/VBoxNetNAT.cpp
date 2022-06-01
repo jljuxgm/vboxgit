@@ -1,4 +1,4 @@
-/* $Id: VBoxNetNAT.cpp 28714 2010-04-25 20:04:02Z vboxsync $ */
+/* $Id: VBoxNetNAT.cpp 28790 2010-04-27 06:51:54Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -165,7 +165,7 @@ void VBoxNetNAT::init()
     /*
      * Initialize slirp.
      */
-    rc = slirp_init(&m_pNATState, m_Ipv4Address.u, m_Ipv4Netmask.u, m_fPassDomain, false, this);
+    rc = slirp_init(&m_pNATState, m_Ipv4Address.u, m_Ipv4Netmask.u, m_fPassDomain, false, 0, this);
     AssertReleaseRC(rc);
 
     slirp_set_ethaddr_and_activate_port_forwarding(m_pNATState, &m_MacAddress.au8[0], INADDR_ANY);
