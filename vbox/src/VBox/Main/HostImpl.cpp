@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 29945 2010-06-01 12:49:25Z vboxsync $ */
+/* $Id: HostImpl.cpp 30304 2010-06-18 10:51:15Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1144,6 +1144,7 @@ STDMETHODIMP Host::InsertUSBDeviceFilter(ULONG aPosition,
 
     /* save the global settings */
     alock.release();
+    AutoWriteLock vboxLock(m->pParent COMMA_LOCKVAL_SRC_POS);
     return rc = m->pParent->saveSettings();
 #else
     /* Note: The GUI depends on this method returning E_NOTIMPL with no
@@ -1199,6 +1200,7 @@ STDMETHODIMP Host::RemoveUSBDeviceFilter(ULONG aPosition)
 
     /* save the global settings */
     alock.release();
+    AutoWriteLock vboxLock(m->pParent COMMA_LOCKVAL_SRC_POS);
     return rc = m->pParent->saveSettings();
 #else
     /* Note: The GUI depends on this method returning E_NOTIMPL with no
@@ -1762,6 +1764,7 @@ HRESULT Host::onUSBDeviceFilterChange(HostUSBDeviceFilter *aFilter,
 
         // save the global settings... yeah, on every single filter property change
         alock.release();
+        AutoWriteLock vboxLock(m->pParent COMMA_LOCKVAL_SRC_POS);
         return m->pParent->saveSettings();
     }
 
