@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 29414 2010-05-12 12:35:23Z vboxsync $ */
+/* $Id: GMMR0.cpp 29415 2010-05-12 12:37:34Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3795,7 +3795,7 @@ GMMR0DECL(int) GMMR0SharedModuleCheckRange(PVM pVM, VMCPUID idCpu, PGMMREGISTERS
                     }
                     Log(("New shared page guest %RGp host %RHp\n", paPageDesc[i].GCPhys, paPageDesc[i].HCPhys));
 
-                    Assert(paPageDesc[i].HCPhys == (pPage->Private.pfn << 12));
+                    AssertMsg(paPageDesc[i].HCPhys == (pPage->Private.pfn << 12), ("desc %RHp gmm %RHp\n", paPageDesc[i].HCPhys, (pPage->Private.pfn << 12)));
 
                     gmmR0ConvertToSharedPage(pGMM, pGVM, paPageDesc[i].HCPhys, paPageDesc[i].uHCPhysPageId, pPage);
 
