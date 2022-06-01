@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25438 2009-12-16 16:11:32Z vboxsync $
+# $Id: Makefile.kmk 25490 2009-12-18 15:19:41Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -138,6 +138,7 @@ RuntimeWin64ASM_SOURCES = \
 	win/amd64/ASMGetDR3.asm \
 	win/amd64/ASMGetDR6.asm \
 	win/amd64/ASMGetDR7.asm \
+	common/asm/ASMAtomicCmpXchgU8.asm \
 	common/asm/ASMMultU64ByU32DivByU32.asm \
 	common/asm/ASMNopPause.asm
 
