@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 29864 2010-05-28 13:34:53Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 29927 2010-05-31 18:40:56Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5229,9 +5229,19 @@ HRESULT Console::powerUp(IProgress **aProgress, bool aPaused)
         progressDesc = tr("Teleporting virtual machine");
     else
         progressDesc = tr("Starting virtual machine");
-    rc = powerupProgress->init(static_cast<IConsole *>(this),
-                               progressDesc,
-                               fTeleporterEnabled /* aCancelable */);
+    if (mMachineState == MachineState_Saved || !fTeleporterEnabled)
+        rc = powerupProgress->init(static_cast<IConsole *>(this),
+                                   progressDesc,
+                                   FALSE /* aCancelable */);
+    else
+        rc = powerupProgress->init(static_cast<IConsole *>(this),
+                                   progressDesc,
+                                   TRUE /* aCancelable */,
+                                   3    /* cOperations */,
+                                   10   /* ulTotalOperationsWeight */,
+                                   Bstr(tr("Teleporting virtual machine")),
+                                   1    /* ulFirstOperationWeight */,
+                                   NULL);
     if (FAILED(rc))
         return rc;
 
