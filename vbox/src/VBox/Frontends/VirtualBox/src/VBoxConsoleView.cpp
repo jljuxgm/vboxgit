@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleView.cpp 28215 2010-04-12 15:31:54Z vboxsync $ */
+/* $Id: VBoxConsoleView.cpp 28492 2010-04-19 18:28:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2391,9 +2391,9 @@ bool VBoxConsoleView::darwinKeyboardEvent (const void *pvCocoaEvent, EventRef in
          * can have more than one keyboard (of different type), where he may
          * switch at will all the time. Default is the ANSI standard as defined
          * in g_aDarwinToSet1. */
-        if (   (keyCode == 0xa || keyCode == 0x32)
-            && KBGetLayoutType(LMGetKbdType()) == kKeyboardISO)
-            keyCode = 0x3c - keyCode;
+//        if (   (keyCode == 0xa || keyCode == 0x32)
+//            && KBGetLayoutType(LMGetKbdType()) == kKeyboardISO)
+//            keyCode = 0x3c - keyCode;
         unsigned scanCode = ::DarwinKeycodeToSet1Scancode (keyCode);
         if (scanCode)
         {
