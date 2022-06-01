@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 26001 2010-01-25 14:21:13Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 26002 2010-01-25 14:24:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3384,7 +3384,7 @@ DECLCALLBACK(void) Display::drvDestruct(PPDMDRVINS pDrvIns)
 {
     PDRVMAINDISPLAY pData = PDMINS_2_DATA(pDrvIns, PDRVMAINDISPLAY);
     LogFlowFunc (("iInstance=%d\n", pDrvIns->iInstance));
-    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
+    PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
 
     if (pData->pDisplay)
     {
