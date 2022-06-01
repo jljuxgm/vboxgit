@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 29424 2010-05-12 15:11:09Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 29456 2010-05-14 09:39:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -139,7 +139,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3SharedModuleRegRendezvous(PVM pVM, PVMCPU
 }
 
 /**
- * Shared module unregistration helper (called on the way out).
+ * Shared module check helper (called on the way out).
  *
  * @param   pVM         The VM handle.
  */
