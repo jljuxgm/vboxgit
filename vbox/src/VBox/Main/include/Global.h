@@ -1,4 +1,4 @@
-/* $Id: Global.h 26389 2010-02-09 16:28:52Z vboxsync $ */
+/* $Id: Global.h 26440 2010-02-11 16:18:31Z vboxsync $ */
 
 /** @file
  *
@@ -40,6 +40,8 @@
 #define VBOXOSHINT_IOAPIC               RT_BIT(2)
 #define VBOXOSHINT_EFI                  RT_BIT(3)
 #define VBOXOSHINT_PAE                  RT_BIT(4)
+#define VBOXOSHINT_USBHID               RT_BIT(5)
+
 
 /**
  * Contains global static definitions that can be referenced by all COM classes
