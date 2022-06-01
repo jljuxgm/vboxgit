@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 26878 2010-02-26 23:56:51Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 27454 2010-03-17 15:52:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -43,6 +43,7 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI (UIFrameBuffer, IFramebuffer)
 UIFrameBuffer::UIFrameBuffer(UIMachineView *pMachineView)
     : m_pMachineView(pMachineView)
     , m_width(0), m_height(0)
+    , m_fIsDeleted(false)
 #if defined (Q_OS_WIN32)
     , m_iRefCnt(0)
 #endif
@@ -157,6 +158,9 @@ STDMETHODIMP UIFrameBuffer::RequestResize(ULONG uScreenId, ULONG uPixelFormat,
                                           ULONG uWidth, ULONG uHeight,
                                           BOOL *pbFinished)
 {
+    if (m_fIsDeleted)
+        return E_FAIL;
+
     NOREF(uScreenId);
     QApplication::postEvent (m_pMachineView,
                              new UIResizeEvent(uPixelFormat, pVRAM, uBitsPerPixel,

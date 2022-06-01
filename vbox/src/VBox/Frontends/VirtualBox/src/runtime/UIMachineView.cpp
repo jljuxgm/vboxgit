@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 27338 2010-03-12 17:41:55Z vboxsync $ */
+/* $Id: UIMachineView.cpp 27454 2010-03-17 15:52:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -675,6 +675,10 @@ void UIMachineView::cleanupFrameBuffer()
 {
     if (m_pFrameBuffer)
     {
+        /* Process pending frame-buffer resize events: */
+        QApplication::sendPostedEvents(this, VBoxDefs::ResizeEventType);
+        /* Warn framebuffer about its no more necessary: */
+        m_pFrameBuffer->setDeleted(true);
         /* Detach framebuffer from Display: */
         CDisplay display = session().GetConsole().GetDisplay();
         display.SetFramebuffer(m_uScreenId, CFramebuffer(NULL));
