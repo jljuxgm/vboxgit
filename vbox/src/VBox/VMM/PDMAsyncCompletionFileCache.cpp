@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileCache.cpp 26814 2010-02-25 22:44:22Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileCache.cpp 26956 2010-03-02 16:03:58Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * File data cache.
@@ -533,8 +533,16 @@ static bool pdmacFileCacheReclaim(PPDMACFILECACHEGLOBAL pCache, size_t cbData, b
         {
             Assert(!fReuseBuffer || !*ppbBuffer); /* It is not possible that we got a buffer with the correct size but we didn't freed enough data. */
 
-            cbRemoved += pdmacFileCacheEvictPagesFrom(pCache, cbData - cbRemoved, &pCache->LruFrequentlyUsed,
-                                                      NULL, fReuseBuffer, ppbBuffer);
+            /*
+             * If we removed something we can't pass the reuse buffer flag anymore because
+             * we don't need to evict that much data
+             */
+            if (!cbRemoved)
+                cbRemoved += pdmacFileCacheEvictPagesFrom(pCache, cbData - cbRemoved, &pCache->LruFrequentlyUsed,
+                                                          NULL, fReuseBuffer, ppbBuffer);
+            else
+                cbRemoved += pdmacFileCacheEvictPagesFrom(pCache, cbData - cbRemoved, &pCache->LruFrequentlyUsed,
+                                                          NULL, false, NULL);
         }
     }
     else
