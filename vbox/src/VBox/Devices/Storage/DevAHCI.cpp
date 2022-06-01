@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 24749 2009-11-18 00:32:14Z vboxsync $ */
+/* $Id: DevAHCI.cpp 24750 2009-11-18 00:37:54Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -5947,7 +5947,7 @@ static DECLCALLBACK(int) ahciLoadPrep(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 }
 
 /**
- * Callback employed by ataSuspend and ataR3PowerOff.
+ * Callback employed by ahciSuspend and ahciPowerOff..
  *
  * @returns true if we've quiesced, false if we're still working.
  * @param   pDevIns     The device instance.
@@ -5963,7 +5963,7 @@ static DECLCALLBACK(bool) ahciR3IsAsyncSuspendOrPowerOffDone(PPDMDEVINS pDevIns)
 }
 
 /**
- * Common worker for ataSuspend and ataR3PowerOff.
+ * Common worker for ahciSuspend and ahciPowerOff.
  */
 static void ahciR3SuspendOrPowerOff(PPDMDEVINS pDevIns)
 {
