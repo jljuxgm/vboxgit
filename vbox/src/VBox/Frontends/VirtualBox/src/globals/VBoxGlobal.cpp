@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 27756 2010-03-26 17:13:33Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 27819 2010-03-30 12:17:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -5037,6 +5037,7 @@ void VBoxGlobal::init()
         {"RedHat",          ":/os_redhat.png"},
         {"RedHat_64",       ":/os_redhat_64.png"},
         {"Turbolinux",      ":/os_turbolinux.png"},
+        {"Turbolinux_64",   ":/os_turbolinux_64.png"},
         {"Ubuntu",          ":/os_ubuntu.png"},
         {"Ubuntu_64",       ":/os_ubuntu_64.png"},
         {"Xandros",         ":/os_xandros.png"},
