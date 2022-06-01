@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 25484 2009-12-18 14:04:56Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 28659 2010-04-23 15:27:05Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -685,7 +685,7 @@ int  VBOXCALL   supdrvOSLdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
         }
         else
         {
-            Log(("rcNt=%#x '%ws'\n", rcNt, pwcsFilename));
+            Log(("rcNt=%#x '%ls'\n", rcNt, pwcsFilename));
             SUPR0Printf("VBoxDrv: rcNt=%#x '%ws'\n", rcNt, pwcsFilename);
             switch (rcNt)
             {
