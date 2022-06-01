@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 24460 2009-11-06 16:18:05Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24490 2009-11-09 11:23:35Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -3888,6 +3888,36 @@ STDMETHODIMP Machine::RemoveStorageController(IN_BSTR aName)
     onStorageControllerChange();
 
     return S_OK;
+}
+
+STDMETHODIMP Machine::QuerySavedThumbnailSize(ULONG *aSize, ULONG *aWidth, ULONG *aHeight)
+{
+    return setError (E_NOTIMPL, tr ("This feature is not implemented"));
+}
+
+STDMETHODIMP Machine::ReadSavedThumbnail(BYTE *aAddress, ULONG aSize)
+{
+    return setError (E_NOTIMPL, tr ("This feature is not implemented"));
+}
+
+STDMETHODIMP Machine::ReadSavedThumbnailToArray(ULONG *aWidth, ULONG *aHeight, ComSafeArrayOut(BYTE, aData))
+{
+    return setError (E_NOTIMPL, tr ("This feature is not implemented"));
+}
+
+STDMETHODIMP Machine::QuerySavedScreenshotPNGSize(ULONG *aSize, ULONG *aWidth, ULONG *aHeight)
+{
+    return setError (E_NOTIMPL, tr ("This feature is not implemented"));
+}
+
+STDMETHODIMP Machine::ReadSavedScreenshotPNG(BYTE *aAddress, ULONG aSize)
+{
+    return setError (E_NOTIMPL, tr ("This feature is not implemented"));
+}
+
+STDMETHODIMP Machine::ReadSavedScreenshotPNGToArray(ULONG *aWidth, ULONG *aHeight, ComSafeArrayOut(BYTE, aData))
+{
+    return setError (E_NOTIMPL, tr ("This feature is not implemented"));
 }
 
 // public methods for internal purposes

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 24315 2009-11-04 11:12:48Z vboxsync $ */
+/* $Id: MachineImpl.h 24490 2009-11-09 11:23:35Z vboxsync $ */
 
 /** @file
  *
@@ -627,6 +627,13 @@ public:
     STDMETHOD(GetStorageControllerByInstance(ULONG aInstance, IStorageController **storageController));
     STDMETHOD(COMGETTER(FirmwareType)) (FirmwareType_T *aFirmware);
     STDMETHOD(COMSETTER(FirmwareType)) (FirmwareType_T  aFirmware);
+
+    STDMETHOD(QuerySavedThumbnailSize)(ULONG *aSize, ULONG *aWidth, ULONG *aHeight);
+    STDMETHOD(ReadSavedThumbnail)(BYTE *aAddress, ULONG aSize);
+    STDMETHOD(ReadSavedThumbnailToArray)(ULONG *aWidth, ULONG *aHeight, ComSafeArrayOut(BYTE, aData));
+    STDMETHOD(QuerySavedScreenshotPNGSize)(ULONG *aSize, ULONG *aWidth, ULONG *aHeight);
+    STDMETHOD(ReadSavedScreenshotPNG)(BYTE *aAddress, ULONG aSize);
+    STDMETHOD(ReadSavedScreenshotPNGToArray)(ULONG *aWidth, ULONG *aHeight, ComSafeArrayOut(BYTE, aData));
 
     // public methods only for internal purposes
 
