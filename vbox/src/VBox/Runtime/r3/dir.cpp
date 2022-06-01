@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 28915 2010-04-29 18:12:35Z vboxsync $ */
+/* $Id: dir.cpp 28918 2010-04-29 18:30:09Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation.
  */
@@ -636,10 +636,8 @@ static int rtDirOpenCommon(PRTDIR *ppDir, const char *pszPath, const char *pszFi
     pDir->pszPath = (char *)memcpy(pb, szRealPath, cchRealPath + 1);
     Assert(pb - (uint8_t *)pDir + cchRealPath + 1 <= cbAllocated);
     pDir->fDataUnread = false;
-#ifndef RT_DONT_CONVERT_FILENAMES
     pDir->pszName = NULL;
     pDir->cchName = 0;
-#endif
 #ifndef RT_OS_WINDOWS
     pDir->cbMaxName = cbDir - RT_OFFSETOF(RTDIR, Data.d_name);
 #endif
