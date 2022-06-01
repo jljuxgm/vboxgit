@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 28025 2010-04-07 06:37:43Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -36,6 +36,7 @@
 #define LOG_GROUP LOG_GROUP_NET_FLT_DRV
 #include <VBox/log.h>
 #include <VBox/err.h>
+#include <VBox/intnetinline.h>
 #include <VBox/version.h>
 #include <iprt/initterm.h>
 #include <iprt/assert.h>
@@ -492,18 +493,11 @@ DECLINLINE(void) vboxNetFltDarwinMBufToSG(PVBOXNETFLTINS pThis, mbuf_t pMBuf, vo
 {
     NOREF(pThis);
 
-    pSG->pvOwnerData = NULL;
-    pSG->pvUserData = NULL;
-    pSG->pvUserData2 = NULL;
-    pSG->cUsers = 1;
-    pSG->fFlags = INTNETSG_FLAGS_TEMP;
-    pSG->cSegsAlloc = cSegs;
-
     /*
-     * Walk the chain and convert the buffers to segments.
+     * Walk the chain and convert the buffers to segments.  Works INTNETSG::cbTotal.
      */
     unsigned iSeg = 0;
-    pSG->cbTotal = 0;
+    INTNETSgInitTempSegs(pSG, 0 /*cbTotal*/, cSegs, 0 /*cSegsUsed*/);
     for (mbuf_t pCur = pMBuf; pCur; pCur = mbuf_next(pCur))
     {
         size_t cbSeg = mbuf_len(pCur);
