@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 29062 2010-05-05 09:25:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -183,7 +183,6 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     /* We have to make sure that we are getting the front most process.
      * This is necessary for Qt versions > 4.3.3: */
     ::darwinSetFrontMostProcess();
-    setPresentationModeEnabled(true);
 #endif /* Q_WS_MAC */
 
     /* Update the multi screen layout: */
@@ -197,6 +196,11 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         connect(m_pScreenLayout, SIGNAL(screenLayoutChanged()),
                 static_cast<UIMachineWindowFullscreen*>(pMachineWindow), SLOT(sltPlaceOnScreen()));
+
+#ifdef Q_WS_MAC
+    /* Note: Presentation mode has to be set *after* the windows are created. */
+    setPresentationModeEnabled(true);
+#endif /* Q_WS_MAC */
 
     /* Remember what machine window(s) created: */
     setMachineWindowsCreated(true);
