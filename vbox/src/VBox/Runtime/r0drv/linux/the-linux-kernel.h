@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 24956 2009-11-25 14:26:50Z vboxsync $ */
+/* $Id: the-linux-kernel.h 25425 2009-12-16 11:01:44Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -201,9 +201,9 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
 /*
  * This sucks soooo badly on x86! Why don't they export __PAGE_KERNEL_EXEC so PAGE_KERNEL_EXEC would be usable?
  */
-#if defined(RT_ARCH_AMD64)
+#if   LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 8) && defined(RT_ARCH_AMD64)
 # define MY_PAGE_KERNEL_EXEC    PAGE_KERNEL_EXEC
-#elif defined(PAGE_KERNEL_EXEC) && defined(CONFIG_X86_PAE)
+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 8) && defined(PAGE_KERNEL_EXEC) && defined(CONFIG_X86_PAE)
 # ifdef __PAGE_KERNEL_EXEC
    /* >= 2.6.27 */
 #  define MY_PAGE_KERNEL_EXEC   __pgprot(cpu_has_pge ? __PAGE_KERNEL_EXEC | _PAGE_GLOBAL : __PAGE_KERNEL_EXEC)
