@@ -1,4 +1,4 @@
-# $Id: Config.kmk 25756 2010-01-12 12:35:40Z vboxsync $
+# $Id: Config.kmk 25772 2010-01-12 16:27:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2785,8 +2785,8 @@ TEMPLATE_VBOXR3NPEXE                     = VBox Ring 3 Non-pedantic
 TEMPLATE_VBOXR3NPEXE_EXTENDS             = VBOXR3EXE
 ifneq ($(KBUILD_TARGET),win) # (only gcc)
  TEMPLATE_VBOXR3NPEXE_TOOL                = $(VBOX_GCC_TOOL)
- TEMPLATE_VBOXR3NPEXE_CXXFLAGS            = $(filter-out -pedantic,$(TEMPLATE_VBOXR3EXE_CXXFLAGS)) -Wno-sign-compare
- TEMPLATE_VBOXR3NPEXE_CFLAGS              = $(filter-out -pedantic -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations,$(TEMPLATE_VBOXR3EXE_CFLAGS)) -Wno-sign-compare
+ TEMPLATE_VBOXR3NPEXE_CXXFLAGS            = $(filter-out -pedantic -Wshadow,$(TEMPLATE_VBOXR3EXE_CXXFLAGS)) -Wno-sign-compare
+ TEMPLATE_VBOXR3NPEXE_CFLAGS              = $(filter-out -pedantic -Wshadow -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations,$(TEMPLATE_VBOXR3EXE_CFLAGS)) -Wno-sign-compare
 endif
 
 
@@ -3909,7 +3909,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25756 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 25772 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
