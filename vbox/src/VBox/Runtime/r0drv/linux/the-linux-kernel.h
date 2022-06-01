@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 25591 2009-12-29 19:11:46Z vboxsync $ */
+/* $Id: the-linux-kernel.h 28436 2010-04-17 21:40:51Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -317,6 +317,28 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
 # define IPRT_DEBUG_SEMS_ADDRESS(addr)  ( ((long)(addr) & (long)~UINT64_C(0xfffffff000000000)) )
 #else
 # define IPRT_DEBUG_SEMS_ADDRESS(addr)  ( (long)(addr) )
+#endif
+
+/**
+ * Puts semaphore info into the task_struct::comm field if IPRT_DEBUG_SEMS is
+ * defined.
+ */
+#ifdef IPRT_DEBUG_SEMS
+# define IPRT_DEBUG_SEMS_STATE(pThis, chState) \
+    snprintf(current->comm, TASK_COMM_LEN, "%c%lx", (chState), IPRT_DEBUG_SEMS_ADDRESS(pThis));
+#else
+# define IPRT_DEBUG_SEMS_STATE(pThis, chState)  do {  } while (0)
+#endif
+
+/**
+ * Puts semaphore info into the task_struct::comm field if IPRT_DEBUG_SEMS is
+ * defined.
+ */
+#ifdef IPRT_DEBUG_SEMS
+# define IPRT_DEBUG_SEMS_STATE_RC(pThis, chState, rc) \
+    snprintf(current->comm, TASK_COMM_LEN, "%c%lx:%d", (chState), IPRT_DEBUG_SEMS_ADDRESS(pThis), rc);
+#else
+# define IPRT_DEBUG_SEMS_STATE_RC(pThis, chState, rc)  do {  } while (0)
 #endif
 
 /*
