@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 26085 2010-01-28 14:32:05Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 26086 2010-01-28 14:56:03Z vboxsync $ */
 /** @file
  * VBoxVMInfo-win - Virtual machine (guest) information for the host.
  */
@@ -156,7 +156,7 @@ int VBoxServiceVMInfoWinProcessesEnumerate(PVBOXSERVICEVMINFOPROC *ppProc, DWORD
             rc = VINF_SUCCESS;
             break;
         }
-    } while(cbRet >= dwNumProcs * sizeof(DWORD));
+    } while(dwNumProcs < 32768); /* Should be enough; see: http://blogs.technet.com/markrussinovich/archive/2009/07/08/3261309.aspx */
 
     if (RT_SUCCESS(rc))
     {
