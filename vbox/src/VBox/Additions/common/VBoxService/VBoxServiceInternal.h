@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 28967 2010-05-03 11:44:28Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 28968 2010-05-03 11:47:26Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -216,7 +216,7 @@ typedef VBOXSERVICECTRLSTDINBUF *PVBOXSERVICECTRLSTDINBUF;
 
 #ifdef VBOX_WITH_GUEST_PROPS
 /**
- * A guest propertiy cache.
+ * A guest property cache.
  */
 typedef struct
 {    
