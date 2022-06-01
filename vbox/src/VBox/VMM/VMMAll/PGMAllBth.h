@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 26303 2010-02-05 18:41:12Z vboxsync $ */
+/* $Id: PGMAllBth.h 26570 2010-02-16 12:15:32Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2972,9 +2972,7 @@ PGM_BTH_DECL(int, SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RTGCPTR 
 # endif
     ASMAtomicWriteSize(pPdeDst, PdeDst.u);
 
-    pgmLock(pVM);
     rc = PGM_BTH_NAME(SyncPage)(pVCpu, PdeSrc, GCPtrPage, PGM_SYNC_NR_PAGES, 0 /* page not present */);
-    pgmUnlock(pVM);
     STAM_PROFILE_STOP(&pVCpu->pgm.s.CTX_MID_Z(Stat,SyncPT), a);
     return rc;
 
