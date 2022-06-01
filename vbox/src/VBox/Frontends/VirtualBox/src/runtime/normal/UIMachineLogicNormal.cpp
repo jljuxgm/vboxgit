@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 27376 2010-03-15 16:52:20Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 28279 2010-04-14 00:52:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -131,6 +131,9 @@ void UIMachineLogicNormal::prepareMachineWindows()
     /* Do not create window(s) if they created already: */
     if (isMachineWindowsCreated())
         return;
+
+    /* Base class cleanup: */
+    UIMachineLogic::cleanupMachineWindows();
 
 #ifdef Q_WS_MAC // TODO: Is that really need here?
     /* We have to make sure that we are getting the front most process.

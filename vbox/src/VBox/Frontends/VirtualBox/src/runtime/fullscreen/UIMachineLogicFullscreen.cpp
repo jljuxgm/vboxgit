@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 27419 2010-03-16 17:46:10Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 28279 2010-04-14 00:52:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -209,6 +209,9 @@ void UIMachineLogicFullscreen::cleanupMachineWindows()
     /* Do not cleanup machine window if it is not present: */
     if (!isMachineWindowsCreated())
         return;
+
+    /* Base class cleanup: */
+    UIMachineLogic::cleanupMachineWindows();
 
     /* Cleanup normal machine window: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())

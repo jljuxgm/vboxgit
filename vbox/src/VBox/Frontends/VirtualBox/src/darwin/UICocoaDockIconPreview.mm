@@ -1,4 +1,4 @@
-/* $Id: UICocoaDockIconPreview.mm 27215 2010-03-09 13:34:53Z vboxsync $ */
+/* $Id: UICocoaDockIconPreview.mm 28279 2010-04-14 00:52:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -57,6 +57,7 @@
     UIDockTileOverlay *mOverlay;
 }
 - (id)initWithParent:(UICocoaDockIconPreviewPrivate*)parent;
+- (void)destroy;
 - (NSView*)screenContent;
 - (void)cleanup;
 - (void)restoreAppIcon;
@@ -81,6 +82,8 @@ public:
 
     inline ~UICocoaDockIconPreviewPrivate()
     {
+
+        [mUIDockTile destroy];
         [mUIDockTile release];
     }
       
@@ -243,6 +246,18 @@ void UICocoaDockIconPreview::setOriginalSize(int width, int height)
     }
 
     return self;
+}
+
+- (void)destroy
+{
+    /* Remove all content from the application dock tile. */
+    [mOverlay removeFromSuperview];
+    [mOverlay release];
+    mOverlay = nil;
+    NSDockTile *dock = [[NSApplication sharedApplication] dockTile];
+    [dock setContentView: nil];
+    /* Cleanup all other resources */
+    [self cleanup];
 }
 
 - (NSView*)screenContent
