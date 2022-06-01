@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26480 2010-02-13 23:08:49Z vboxsync $
+# $Id: Makefile.kmk 26518 2010-02-14 23:12:25Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1263,6 +1263,11 @@ RuntimeR0Drv_SOURCES    = \
 	common/rand/rand.cpp \
 	common/rand/randadv.cpp \
 	common/rand/randparkmiller.cpp \
+	common/string/RTStrCmp.cpp \
+	common/string/RTStrNCmp.cpp \
+	common/string/RTStrNLen.cpp \
+	common/string/RTStrNLenEx.cpp \
+	common/string/RTStrStr.cpp \
 	common/string/strformat.cpp \
 	common/string/strformatrt.cpp \
 	common/string/strformattype.cpp \
