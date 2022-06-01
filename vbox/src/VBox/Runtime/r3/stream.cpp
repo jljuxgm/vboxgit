@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 25685 2010-01-07 22:03:06Z vboxsync $ */
+/* $Id: stream.cpp 25926 2010-01-20 11:36:41Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -271,6 +271,9 @@ RTR3DECL(int) RTStrmOpen(const char *pszFilename, const char *pszMode, PRTSTREAM
     {
         pStream->u32Magic = RTSTREAM_MAGIC;
         pStream->i32Error = VINF_SUCCESS;
+#ifndef HAVE_FWRITE_UNLOCKED
+        pStream->pCritSect = NULL;
+#endif /* HAVE_FWRITE_UNLOCKED */
         pStream->pFile = fopen(pszFilename, pszMode);
         if (pStream->pFile)
         {
