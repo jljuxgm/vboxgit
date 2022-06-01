@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 28409 2010-04-16 12:04:53Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 28410 2010-04-16 12:06:59Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -806,12 +806,10 @@ int VBoxServiceControlExecProcess(uint32_t uContextID, const char *pszCmd, uint3
             }
     
             if (RT_FAILURE(rc))
-            {
-                /* Only destroy thread data on failure; otherwise it's destroyed in the thread handler. */
                 VBoxServiceControlExecDestroyThreadData(pThread);
-                RTMemFree(pThread);
-            }
         }
+        if (RT_FAILURE(rc))
+            RTMemFree(pThread);
     }
     else
         rc = VERR_NO_MEMORY;
