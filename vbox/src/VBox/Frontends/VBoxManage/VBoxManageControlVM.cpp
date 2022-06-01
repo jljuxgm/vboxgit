@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 26360 2010-02-09 12:46:37Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 26368 2010-02-09 13:47:29Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -837,8 +837,6 @@ int handleControlVM(HandlerArg *a)
                     printf("CPU load kernel:        %d%%\n", StatVal);
                 if (guest->GetStatistic(0, GuestStatisticType_CPULoad_User, &StatVal) == S_OK)
                     printf("CPU load user:          %d%%\n", StatVal);
-                if (guest->GetStatistic(0, GuestStatisticType_Threads, &StatVal) == S_OK)
-                    printf("Nr. of threads:         %d\n", StatVal);
                 if (guest->GetStatistic(0, GuestStatisticType_Threads, &StatVal) == S_OK)
                     printf("Nr. of threads:         %d\n", StatVal);
                 if (guest->GetStatistic(0, GuestStatisticType_Processes, &StatVal) == S_OK)
