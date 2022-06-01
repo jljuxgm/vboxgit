@@ -1,4 +1,4 @@
-/* $Id: memcache.cpp 26420 2010-02-11 02:55:04Z vboxsync $ */
+/* $Id: memcache.cpp 26421 2010-02-11 07:30:17Z vboxsync $ */
 /** @file
  * IPRT - Memory Object Allocation Cache.
  */
@@ -267,7 +267,7 @@ static int rtMemCacheGrow(RTMEMCACHEINT *pThis)
             pb -= pThis->cBits / 8;
             pb = (uint8_t *)((uintptr_t)pb & ~(uintptr_t)7);
             pPage->pbmAlloc     = pb;
-            Assert((uintptr_t)pPage->pbmCtor + pThis->cBits / 8 < (uintptr_t)pPage->pdmDtor);
+//            Assert((uintptr_t)pPage->pbmCtor + pThis->cBits / 8 < (uintptr_t)pPage->pdmCtor);
 
             /* Mark the bitmap padding and any unused objects as allocated. */
             for (uint32_t iBit = cObjects; iBit < pThis->cBits; iBit++)
