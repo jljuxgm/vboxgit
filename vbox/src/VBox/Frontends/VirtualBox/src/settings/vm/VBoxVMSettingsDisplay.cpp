@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsDisplay.cpp 29947 2010-06-01 12:54:34Z vboxsync $ */
+/* $Id: VBoxVMSettingsDisplay.cpp 30124 2010-06-09 14:10:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -161,6 +161,7 @@ void VBoxVMSettingsDisplay::getFrom (const CMachine &aMachine)
         mCbVRDPMethod->setCurrentIndex (mCbVRDPMethod->
                                         findText (vboxGlobal().toString (vrdp.GetAuthType())));
         mLeVRDPTimeout->setText (QString::number (vrdp.GetAuthTimeout()));
+        mCbMultipleConn->setChecked(vrdp.GetAllowMultiConnection());
     }
     else
     {
@@ -193,6 +194,7 @@ void VBoxVMSettingsDisplay::putBackTo()
         vrdp.SetPorts (mLeVRDPPort->text());
         vrdp.SetAuthType (vboxGlobal().toVRDPAuthType (mCbVRDPMethod->currentText()));
         vrdp.SetAuthTimeout (mLeVRDPTimeout->text().toULong());
+        vrdp.SetAllowMultiConnection(mCbMultipleConn->isChecked());
     }
 }
 
@@ -264,6 +266,7 @@ void VBoxVMSettingsDisplay::setOrderAfter (QWidget *aWidget)
     setTabOrder (mCbVRDP, mLeVRDPPort);
     setTabOrder (mLeVRDPPort, mCbVRDPMethod);
     setTabOrder (mCbVRDPMethod, mLeVRDPTimeout);
+    setTabOrder (mLeVRDPTimeout, mCbMultipleConn);
 }
 
 void VBoxVMSettingsDisplay::retranslateUi()
