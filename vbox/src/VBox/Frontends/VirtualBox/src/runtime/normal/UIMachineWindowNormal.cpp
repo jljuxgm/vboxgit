@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 28389 2010-04-15 20:13:32Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 28597 2010-04-22 14:07:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -107,6 +107,7 @@ UIMachineWindowNormal::~UIMachineWindowNormal()
 void UIMachineWindowNormal::sltMachineStateChanged()
 {
     UIMachineWindow::sltMachineStateChanged();
+    updateAppearanceOf(UIVisualElement_VirtualizationStuff);
 }
 
 void UIMachineWindowNormal::sltMediumChange(const CMediumAttachment &attachment)
