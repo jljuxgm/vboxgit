@@ -1,4 +1,4 @@
-/* $Id: tstRTGetOptArgv.cpp 26476 2010-02-13 02:06:41Z vboxsync $ */
+/* $Id: tstRTGetOptArgv.cpp 26484 2010-02-14 02:15:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTGetOptArgv*.
  */
@@ -125,5 +125,4 @@ int main()
      */
     return RTTestSummaryAndDestroy(hTest);
 }
-
 

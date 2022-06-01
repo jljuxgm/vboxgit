@@ -1,4 +1,4 @@
-/* $Id: tstRTMemCache.cpp 26452 2010-02-11 18:41:06Z vboxsync $ */
+/* $Id: tstRTMemCache.cpp 26484 2010-02-14 02:15:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMemCache.
  */
@@ -386,5 +386,4 @@ int main(int argc, char **argv)
      */
     return RTTestSummaryAndDestroy(hTest);
 }
-
 
