@@ -1,4 +1,4 @@
-/* $Id: RTPathStripTrailingSlash.cpp 25923 2010-01-20 11:06:27Z vboxsync $ */
+/* $Id: RTPathStripTrailingSlash.cpp 25925 2010-01-20 11:10:12Z vboxsync $ */
 /** @file
  * IPRT - RTPathSTripTrailingSlash
  */
@@ -53,7 +53,7 @@ RTDECL(size_t) RTPathStripTrailingSlash(char *pszPath)
                 if (    off == 2
                     &&  pszPath[1] == ':'
                     &&  RT_C_IS_ALPHA(pszPath[0]))
-                    return cch + 1;
+                    return off + 1;
 #endif
                 pszPath[off] = '\0';
                 break;
