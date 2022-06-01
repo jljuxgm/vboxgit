@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 26941 2010-03-02 13:28:03Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 27581 2010-03-22 10:50:18Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -790,8 +790,7 @@ int handleControlVM(HandlerArg *a)
             if (SUCCEEDED(rc))
                 CHECK_ERROR(guest, COMSETTER(MemoryBalloonSize)(uVal));
         }
-        else if (   !strcmp(a->argv[1], "--gueststatisticsinterval")
-                 || !strcmp(a->argv[1], "-gueststatisticsinterval"))
+        else if (!strcmp(a->argv[1], "gueststatisticsinterval"))
         {
             if (a->argc != 3)
             {
