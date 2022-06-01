@@ -1,4 +1,4 @@
-/* $Id: UIActionsPool.cpp 27143 2010-03-07 16:47:32Z vboxsync $ */
+/* $Id: UIActionsPool.cpp 27335 2010-03-12 16:20:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -507,6 +507,26 @@ protected:
     {
         setText(VBoxGlobal::insertKeyToActionText(UIActionsPool::tr("&Close..." ), "Q"));
         setStatusTip(UIActionsPool::tr("Close the virtual machine"));
+    }
+};
+
+class MenuViewAction : public UIMenuAction
+{
+    Q_OBJECT;
+
+public:
+
+    MenuViewAction(QObject *pParent)
+        : UIMenuAction(pParent)
+    {
+        retranslateUi();
+    }
+
+protected:
+
+    void retranslateUi()
+    {
+        menu()->setTitle(UIActionsPool::tr("&View"));
     }
 };
 
@@ -1119,6 +1139,9 @@ void UIActionsPool::createMenus()
     if (m_actionsPool[UIActionIndex_Menu_Machine])
         delete m_actionsPool[UIActionIndex_Menu_Machine];
     m_actionsPool[UIActionIndex_Menu_Machine] = new MenuMachineAction(this);
+    if (m_actionsPool[UIActionIndex_Menu_View])
+        delete m_actionsPool[UIActionIndex_Menu_View];
+    m_actionsPool[UIActionIndex_Menu_View] = new MenuViewAction(this);
     if (m_actionsPool[UIActionIndex_Menu_MouseIntegration])
         delete m_actionsPool[UIActionIndex_Menu_MouseIntegration];
     m_actionsPool[UIActionIndex_Menu_MouseIntegration] = new MenuMouseIntegrationAction(this);

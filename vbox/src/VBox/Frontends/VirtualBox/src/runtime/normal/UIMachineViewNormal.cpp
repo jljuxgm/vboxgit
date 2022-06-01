@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 27296 2010-03-11 17:09:17Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 27335 2010-03-12 16:20:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -355,21 +355,5 @@ void UIMachineViewNormal::maybeRestrictMinimumSize()
         else
             setMinimumSize(0, 0);
     }
-}
-
-void UIMachineViewNormal::updateSliders()
-{
-    QSize p = viewport()->size();
-    QSize m = maximumViewportSize();
-
-    QSize v = QSize(frameBuffer()->width(), frameBuffer()->height());
-    /* No scroll bars needed: */
-    if (m.expandedTo(v) == m)
-        p = m;
-
-    horizontalScrollBar()->setRange(0, v.width() - p.width());
-    verticalScrollBar()->setRange(0, v.height() - p.height());
-    horizontalScrollBar()->setPageStep(p.width());
-    verticalScrollBar()->setPageStep(p.height());
 }
 

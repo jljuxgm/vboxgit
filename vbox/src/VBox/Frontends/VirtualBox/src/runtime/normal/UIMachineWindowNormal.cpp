@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 27174 2010-03-08 16:00:40Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 27335 2010-03-12 16:20:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -348,7 +348,8 @@ void UIMachineWindowNormal::prepareConsoleConnections()
 
 void UIMachineWindowNormal::prepareMenu()
 {
-    setMenuBar(uisession()->newMenuBar());
+    /* No view menu in normal mode */
+    setMenuBar(uisession()->newMenuBar(UIMainMenuType(UIMainMenuType_All ^ UIMainMenuType_View)));
 }
 
 void UIMachineWindowNormal::prepareStatusBar()

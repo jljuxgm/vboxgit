@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 27296 2010-03-11 17:09:17Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 27335 2010-03-12 16:20:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -35,6 +35,7 @@
 /* Local includes */
 #include "UISession.h"
 #include "UIMachineWindow.h"
+#include "UIMachineLogic.h"
 #include "UIFrameBuffer.h"
 #include "UIMachineViewSeamless.h"
 #include "QIMainDialog.h"
@@ -274,6 +275,8 @@ void UIMachineViewSeamless::cleanupSeamless()
 
 QRect UIMachineViewSeamless::availableGeometry()
 {
+//    return machineWindowWrapper()->machineLogic()->availableGeometry(screenId());
+
     return QApplication::desktop()->availableGeometry(this);
 }
 

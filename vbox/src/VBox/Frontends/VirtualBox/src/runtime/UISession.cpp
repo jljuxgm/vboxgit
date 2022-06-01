@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 27310 2010-03-12 01:29:09Z vboxsync $ */
+/* $Id: UISession.cpp 27335 2010-03-12 16:20:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -679,10 +679,10 @@ QWidget* UISession::mainMachineWindow() const
     return uimachine()->machineLogic()->mainMachineWindow()->machineWindow();
 }
 
-QMenu* UISession::newMenu()
+QMenu* UISession::newMenu(UIMainMenuType fOptions /* = UIMainMenuType_ALL */)
 {
     /* Create new menu: */
-    QMenu *pMenu = m_pMenuPool->createMenu(actionsPool());
+    QMenu *pMenu = m_pMenuPool->createMenu(actionsPool(), fOptions);
 
     /* Re-init menu pool for the case menu were recreated: */
     reinitMenuPool();
@@ -691,10 +691,10 @@ QMenu* UISession::newMenu()
     return pMenu;
 }
 
-QMenuBar* UISession::newMenuBar()
+QMenuBar* UISession::newMenuBar(UIMainMenuType fOptions /* = UIMainMenuType_ALL */)
 {
     /* Create new menubar: */
-    QMenuBar *pMenuBar = m_pMenuPool->createMenuBar(actionsPool());
+    QMenuBar *pMenuBar = m_pMenuPool->createMenuBar(actionsPool(), fOptions);
 
     /* Re-init menu pool for the case menu were recreated: */
     reinitMenuPool();
