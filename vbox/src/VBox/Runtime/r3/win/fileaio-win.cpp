@@ -1,4 +1,4 @@
-/* $Id: fileaio-win.cpp 26528 2010-02-15 03:52:51Z vboxsync $ */
+/* $Id: fileaio-win.cpp 26530 2010-02-15 04:05:15Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Windows host platform.
  */
@@ -347,6 +347,7 @@ RTDECL(int) RTFileAioCtxSubmit(RTFILEAIOCTX hAioCtx, PRTFILEAIOREQ pahReqs, size
     PRTFILEAIOCTXINTERNAL pCtxInt = hAioCtx;
     RTFILEAIOCTX_VALID_RETURN(pCtxInt);
     AssertReturn(cReqs > 0,  VERR_INVALID_PARAMETER);
+    Assert(cReqs <= INT32_MAX);
     AssertPtrReturn(pahReqs, VERR_INVALID_POINTER);
     size_t i;
 
@@ -381,7 +382,7 @@ RTDECL(int) RTFileAioCtxSubmit(RTFILEAIOCTX hAioCtx, PRTFILEAIOREQ pahReqs, size
         RTFILEAIOREQ_SET_STATE(pReqInt, SUBMITTED);
     }
 
-    ASMAtomicAddS32(&pCtxInt->cRequests, i);
+    ASMAtomicAddS32(&pCtxInt->cRequests, (int32_t)i);
 
     return rc;
 }
