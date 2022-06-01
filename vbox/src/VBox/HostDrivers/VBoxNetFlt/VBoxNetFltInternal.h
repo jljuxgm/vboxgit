@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 25302 2009-12-10 14:57:29Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 25367 2009-12-14 16:29:10Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -175,6 +175,12 @@ typedef struct VBOXNETFLTINS
             /** @name Solaris instance data.
              * @{ */
 #  ifdef VBOX_WITH_NETFLT_CROSSBOW
+            /** The link Id of the VNIC */
+            datalink_id_t VNICLinkId;
+            /** Instance number of VNIC */
+            uint16_t uInstance;
+            /** Whether we created the VNIC or not */
+            bool fCreatedVNIC;
             /** The lower MAC handle */
             mac_handle_t hInterface;
             /** The client MAC handle */
