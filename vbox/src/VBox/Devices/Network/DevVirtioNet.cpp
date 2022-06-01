@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 24834 2009-11-20 20:51:12Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 24982 2009-11-26 09:41:32Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  *
@@ -30,7 +30,7 @@
 # include <iprt/mem.h>
 #endif /* IN_RING3 */
 #include "../Builtins.h"
-#include "Virtio.h"
+#include "../VirtIO/Virtio.h"
 
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
