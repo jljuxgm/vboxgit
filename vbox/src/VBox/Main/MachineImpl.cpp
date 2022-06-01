@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 28851 2010-04-27 17:41:05Z vboxsync $ */
+/* $Id: MachineImpl.cpp 28949 2010-04-30 22:11:17Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -5870,9 +5870,25 @@ bool Machine::checkForSpawnFailure()
                            &status);
 
     if (vrc != VERR_PROCESS_RUNNING)
-        rc = setError(E_FAIL,
-                      tr("Virtual machine '%ls' has terminated unexpectedly during startup"),
-                      getName().raw());
+    {
+        if (RT_SUCCESS(vrc) && status.enmReason == RTPROCEXITREASON_NORMAL)
+            rc = setError(E_FAIL,
+                          tr("Virtual machine '%ls' has terminated unexpectedly during startup with exit code %d"),
+                          getName().raw(), status.iStatus);
+        else if (RT_SUCCESS(vrc) && status.enmReason == RTPROCEXITREASON_SIGNAL)
+            rc = setError(E_FAIL,
+                          tr("Virtual machine '%ls' has terminated unexpectedly during startup because of signal %d"),
+                          getName().raw(), status.iStatus);
+        else if (RT_SUCCESS(vrc) && status.enmReason == RTPROCEXITREASON_ABEND)
+            rc = setError(E_FAIL,
+                          tr("Virtual machine '%ls' has terminated abnormally"),
+                          getName().raw(), status.iStatus);
+        else
+            rc = setError(E_FAIL,
+                          tr("Virtual machine '%ls' has terminated unexpectedly during startup (%Rrc)"),
+                          getName().raw(), rc);
+    }
+
 #endif
 
     if (FAILED(rc))
