@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 27675 2010-03-24 16:06:30Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 28017 2010-04-06 15:56:48Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -205,13 +205,13 @@ int rtR0MemObjNativeAllocPhysNC(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS 
         rtR0MemObjDelete(&pMemSolaris->Core);
         return VERR_NO_MEMORY;
     }
-    Assert(!(physAddr & PAGE_OFFSET_MASK));
     pMemSolaris->Core.pv = NULL;
     pMemSolaris->Core.u.Phys.PhysBase = physAddr;
     pMemSolaris->Core.u.Phys.fAllocated = false;
     pMemSolaris->pvHandle = pvPages;
 #endif
 
+    Assert(!(physAddr & PAGE_OFFSET_MASK));
     *ppMem = &pMemSolaris->Core;
     return VINF_SUCCESS;
 #else
@@ -467,6 +467,14 @@ int rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, PRTR0MEMOBJINTERNAL pMem
 
 int rtR0MemObjNativeProtect(PRTR0MEMOBJINTERNAL pMem, size_t offSub, size_t cbSub, uint32_t fProt)
 {
+    PRTR0MEMOBJSOLARIS pMemSolaris = (PRTR0MEMOBJSOLARIS)pMem;
+
+    if (pMemSolaris->Core.enmType == RTR0MEMOBJTYPE_PHYS_NC)
+    {
+//        LogRel(("here \n"));
+//        vbi_page_lock(pMemSolaris->pvHandle, pMemSolaris->Core.cb);
+    }
+
     NOREF(pMem);
     NOREF(offSub);
     NOREF(cbSub);
