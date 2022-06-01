@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28286 2010-04-14 10:02:30Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28288 2010-04-14 10:27:16Z vboxsync $ */
 
 /** @file
  *
@@ -93,8 +93,10 @@ HRESULT Guest::init (Console *aParent)
     for (unsigned i = 0 ; i < GUESTSTATTYPE_MAX; i++)
         mCurrentGuestStat[i] = 0;
 
+#ifdef VBOX_WITH_GUEST_CONTROL
     /* Init the context ID counter at 1000. */
     mNextContextID = 1000;
+#endif
 
     return S_OK;
 }
