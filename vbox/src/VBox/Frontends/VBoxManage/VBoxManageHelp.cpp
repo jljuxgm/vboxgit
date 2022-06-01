@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 27325 2010-03-12 11:26:36Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 27518 2010-03-19 10:21:31Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -281,11 +281,13 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--teleporteraddress <address|empty>\n"
                  "                            [--teleporterpassword <password>]\n"
                  "                            [--hardwareuuid <uuid>]\n"
+#if 0
                  "                            [--iomgr simple|async]\n"
                  "                            [--iobackend buffered|unbuffered]\n"
                  "                            [--iocache on|off]\n"
                  "                            [--iocachesize <I/O cache size in MB>]\n"
                  "                            [--iobandwidthmax <Maximum I/O bandwidth in MB>]\n"
+#endif
                 );
         RTPrintf("\n");
     }
