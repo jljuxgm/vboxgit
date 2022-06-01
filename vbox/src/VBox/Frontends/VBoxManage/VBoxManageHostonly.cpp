@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxManageHostonly.cpp 30322 2010-06-21 09:30:16Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -239,7 +239,7 @@ static int handleIpconfig(HandlerArg *a, int iStart, int *pcProcessed)
     CHECK_ERROR(host, FindHostNetworkInterfaceByName(name, hif.asOutParam()));
 
     if (FAILED(rc))
-        return errorArgument("could not find interface '%s'", a->argv[iStart]);
+        return errorArgument("Could not find interface '%s'", a->argv[iStart]);
 
     if (bDhcp)
     {
