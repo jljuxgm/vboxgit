@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 25465 2009-12-17 14:49:34Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 25466 2009-12-17 14:54:58Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -400,7 +400,7 @@ static int VBoxDrvDarwinOpen(dev_t Dev, int fFlags, int fDevType, struct proc *p
 #endif /* 10.4 */
     }
     else
-        rc = SUPDRV_ERR_INVALID_PARAM;
+        rc = VERR_INVALID_PARAMETER;
 
 #ifdef DEBUG_DARWIN_GIP
     OSDBGPRINT(("VBoxDrvDarwinOpen: pid=%d '%s' pSession=%p rc=%d\n", proc_pid(pProcess), szName, pSession, rc));
