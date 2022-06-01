@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 24895 2009-11-24 12:30:13Z vboxsync $ */
+/* $Id: SSM.cpp 24897 2009-11-24 12:44:24Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -2177,7 +2177,7 @@ static int ssmR3StrmClose(PSSMSTRM pStrm)
     {
         if (pStrm->hIoThread != NIL_RTTHREAD)
         {
-            int rc2 = RTSemEventSignal(pStrm->hEvtFree);
+            int rc2 = RTSemEventSignal(pStrm->hEvtHead);
             AssertLogRelRC(rc2);
             int rc3 = RTThreadWait(pStrm->hIoThread, RT_INDEFINITE_WAIT, NULL);
             AssertLogRelRC(rc3);
