@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 27685 2010-03-24 19:27:23Z vboxsync $ */
+/* $Id: MachineImpl.h 27730 2010-03-26 11:13:56Z vboxsync $ */
 
 /** @file
  *
@@ -353,7 +353,6 @@ public:
                  InitMode aMode,
                  CBSTR aName = NULL,
                  GuestOSType *aOsType = NULL,
-                 BOOL aOverride = FALSE,
                  BOOL aNameSync = TRUE,
                  const Guid *aId = NULL);
     void uninit();
