@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 25901 2010-01-18 16:52:21Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 26284 2010-02-05 12:31:01Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1290,13 +1290,11 @@ int handleModifyVM(HandlerArg *a)
                 break;
             }
 
-#ifdef VBOX_WITH_MEM_BALLOONING
             case MODIFYVM_GUESTMEMORYBALLOON:
             {
                 CHECK_ERROR(machine, COMSETTER(MemoryBalloonSize)(ValueUnion.u32));
                 break;
             }
-#endif
 
             case MODIFYVM_AUDIOCONTROLLER:
             {

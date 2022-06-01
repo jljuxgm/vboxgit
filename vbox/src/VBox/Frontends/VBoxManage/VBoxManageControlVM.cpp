@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 25901 2010-01-18 16:52:21Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 26284 2010-02-05 12:31:01Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -765,7 +765,6 @@ int handleControlVM(HandlerArg *a)
             CHECK_ERROR(machine, MountMedium(Bstr("Floppy Controller"), 0, 0, uuid, FALSE /* aForce */));
         }
 #endif /* obsolete dvdattach/floppyattach */
-#ifdef VBOX_WITH_MEM_BALLOONING
         else if (   !strcmp(a->argv[1], "--guestmemoryballoon")
                  || !strcmp(a->argv[1], "-guestmemoryballoon"))
         {
@@ -792,7 +791,6 @@ int handleControlVM(HandlerArg *a)
             if (SUCCEEDED(rc))
                 CHECK_ERROR(guest, COMSETTER(MemoryBalloonSize)(uVal));
         }
-#endif
         else if (   !strcmp(a->argv[1], "--gueststatisticsinterval")
                  || !strcmp(a->argv[1], "-gueststatisticsinterval"))
         {
