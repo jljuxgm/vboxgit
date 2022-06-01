@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 25700 2010-01-09 21:34:21Z vboxsync $ */
+/* $Id: lockvalidator.cpp 25701 2010-01-09 22:02:19Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -89,7 +89,7 @@
 /** @def RTLOCKVAL_WITH_CLASS_HASH_STATS
  * Enables collection prior class hash lookup statistics, dumping them when
  * complaining about the class. */
-#if defined(DEBUG/*_bird*/) || defined(DOXYGEN_RUNNING)
+#if defined(DEBUG) || defined(DOXYGEN_RUNNING)
 # define RTLOCKVAL_WITH_CLASS_HASH_STATS
 #endif
 
