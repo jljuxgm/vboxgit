@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 25823 2010-01-14 09:10:56Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -341,7 +341,7 @@ static DECLCALLBACK(int) drvHostParallelConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
     int aFDs[2];
     if (pipe(aFDs) != 0)
     {
-        int rc = RTErrConvertFromErrno(errno);
+        rc = RTErrConvertFromErrno(errno);
         AssertRC(rc);
         return rc;
     }
