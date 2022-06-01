@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 23852 2009-10-19 11:03:37Z vboxsync $
+# $Id: Makefile.kmk 24189 2009-10-30 13:41:41Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -313,6 +313,7 @@ RuntimeR3_SOURCES       = \
 	generic/env-generic.cpp \
 	generic/RTDirCreateTemp-generic.cpp \
 	generic/RTFileCopy-generic.cpp \
+	generic/RTFileQuerySize-generic.cpp \
 	generic/RTFileReadAll-generic.cpp \
 	generic/RTFileReadAllEx-generic.cpp \
 	generic/RTFileReadAllByHandle-generic.cpp \
