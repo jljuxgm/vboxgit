@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 27996 2010-04-06 09:48:28Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 28015 2010-04-06 15:27:40Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -95,7 +95,8 @@ static int handleExecProgram(HandlerArg *a)
     for (int i = 2; usageOK && i < a->argc; i++)
     {
         if (   !strcmp(a->argv[i], "--arguments")
-            || !strcmp(a->argv[i], "--args"))
+            || !strcmp(a->argv[i], "--args")
+            || !strcmp(a->argv[i], "--arg"))
         {
             if (i + 1 >= a->argc)
                 usageOK = false;
