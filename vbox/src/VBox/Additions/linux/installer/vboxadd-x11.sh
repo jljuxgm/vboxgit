@@ -1,6 +1,6 @@
 #! /bin/sh
 # Sun VirtualBox
-# Linux Additions X11 setup init script ($Revision: 24967 $)
+# Linux Additions X11 setup init script ($Revision: 25080 $)
 #
 
 #
@@ -36,6 +36,19 @@ PATH=$PATH:/bin:/sbin:/usr/sbin
 LOG="/var/log/vboxadd-install-x11.log"
 CONFIG_DIR="/var/lib/VBoxGuestAdditions"
 CONFIG="config"
+
+# Check architecture
+cpu=`uname -m`;
+case "$cpu" in
+  i[3456789]86|x86)
+    cpu="x86"
+    LIB="/usr/lib"
+    ;;
+  x86_64|amd64)
+    cpu="amd64"
+    LIB="/usr/lib64"
+    ;;
+esac
 
 # Find the version of X installed
 # The last of the three is for the X.org 6.7 included in Fedora Core 2
@@ -260,12 +273,6 @@ setup()
 {
     echo "VirtualBox Guest Additions installation, Window System and desktop setup" > $LOG
     begin "Installing the Window System drivers"
-    if [ "$ARCH" = "amd64" ]
-    then
-        LIB=/usr/lib64
-    else
-        LIB=/usr/lib
-    fi
     lib_dir="$LIB/VBoxGuestAdditions"
     share_dir="/usr/share/VBoxGuestAdditions"
     test -x "$lib_dir" -a -x "$share_dir" ||
