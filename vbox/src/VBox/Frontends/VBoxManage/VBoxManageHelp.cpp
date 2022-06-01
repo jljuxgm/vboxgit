@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 25672 2010-01-06 21:23:07Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 25702 2010-01-10 11:21:38Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -603,7 +603,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                                 --netmask <network_mask>\n"
                  "                                 --lowerip <lower_ip>\n"
                  "                                 --upperip <upper_ip>]\n"
-                 "                                [--enable | --disable]\n"
+                 "                                [--enable | --disable]\n\n"
                  "VBoxManage dhcpserver       remove --netname <network_name> |\n"
 #if defined(VBOX_WITH_NETFLT)
                  "                                   --ifname <hostonly_if_name>\n"
