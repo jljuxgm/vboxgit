@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 24613 2009-11-12 17:04:42Z vboxsync $ */
+/* $Id: SSM.cpp 24793 2009-11-19 14:53:59Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -4710,16 +4710,16 @@ static int ssmR3LiveDoVoteRun(PVM pVM, PSSMHANDLE pSSM, uint32_t uPass)
             switch (pUnit->enmType)
             {
                 case SSMUNITTYPE_DEV:
-                    rc = pUnit->u.Dev.pfnLiveVote(pUnit->u.Dev.pDevIns, pSSM);
+                    rc = pUnit->u.Dev.pfnLiveVote(pUnit->u.Dev.pDevIns, pSSM, uPass);
                     break;
                 case SSMUNITTYPE_DRV:
-                    rc = pUnit->u.Drv.pfnLiveVote(pUnit->u.Drv.pDrvIns, pSSM);
+                    rc = pUnit->u.Drv.pfnLiveVote(pUnit->u.Drv.pDrvIns, pSSM, uPass);
                     break;
                 case SSMUNITTYPE_INTERNAL:
-                    rc = pUnit->u.Internal.pfnLiveVote(pVM, pSSM);
+                    rc = pUnit->u.Internal.pfnLiveVote(pVM, pSSM, uPass);
                     break;
                 case SSMUNITTYPE_EXTERNAL:
-                    rc = pUnit->u.External.pfnLiveVote(pSSM, pUnit->u.External.pvUser);
+                    rc = pUnit->u.External.pfnLiveVote(pSSM, pUnit->u.External.pvUser, uPass);
                     break;
                 default:
                     rc = VERR_INTERNAL_ERROR;

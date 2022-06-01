@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 24699 2009-11-16 15:11:13Z vboxsync $ */
+/* $Id: PGMAllBth.h 24793 2009-11-19 14:53:59Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1503,6 +1503,9 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorker)(PVMCPU pVCpu, PSHWPTE pPteDst, GST
             /* Try make the page writable if necessary. */
             if (    PteSrc.n.u1Write
                 &&  PGM_PAGE_GET_STATE(pPage) != PGM_PAGE_STATE_ALLOCATED
+# ifdef VBOX_WITH_REAL_WRITE_MONITORED_PAGES
+                &&  PGM_PAGE_GET_STATE(pPage) != PGM_PAGE_STATE_WRITE_MONITORED
+# endif
                 &&  PGM_PAGE_GET_TYPE(pPage)  == PGMPAGETYPE_RAM)
             {
                 rc = pgmPhysPageMakeWritableUnlocked(pVM, pPage, PteSrc.u & GST_PTE_PG_MASK);
@@ -1893,6 +1896,9 @@ PGM_BTH_DECL(int, SyncPage)(PVMCPU pVCpu, GSTPDE PdeSrc, RTGCPTR GCPtrPage, unsi
                     /* Try make the page writable if necessary. */
                     if (    PdeSrc.n.u1Write
                         &&  PGM_PAGE_GET_STATE(pPage) != PGM_PAGE_STATE_ALLOCATED
+#  ifdef VBOX_WITH_REAL_WRITE_MONITORED_PAGES
+                        &&  PGM_PAGE_GET_STATE(pPage) != PGM_PAGE_STATE_WRITE_MONITORED
+#  endif
                         &&  PGM_PAGE_GET_TYPE(pPage)  == PGMPAGETYPE_RAM)
                     {
                         rc = pgmPhysPageMakeWritableUnlocked(pVM, pPage, GCPhys);
@@ -2875,6 +2881,9 @@ PGM_BTH_DECL(int, SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RTGCPTR 
                         /* Try make the page writable if necessary. */
                         if (    PteDstBase.n.u1Write
                             &&  PGM_PAGE_GET_STATE(pPage) != PGM_PAGE_STATE_ALLOCATED
+# ifdef VBOX_WITH_REAL_WRITE_MONITORED_PAGES
+                            &&  PGM_PAGE_GET_STATE(pPage) != PGM_PAGE_STATE_WRITE_MONITORED
+# endif
                             &&  PGM_PAGE_GET_TYPE(pPage)  == PGMPAGETYPE_RAM)
                         {
                             rc = pgmPhysPageMakeWritableUnlocked(pVM, pPage, GCPhys);
