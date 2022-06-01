@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29987 2010-06-02 12:41:58Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 29990 2010-06-02 12:54:47Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -224,7 +224,11 @@ void VBoxServicePageSharingRegisterModule(PKNOWN_MODULE pModule, bool fValidateM
     else
     {
         /* We can't probe kernel memory ranges, so pretend it's one big region. */
-        aRegions[idxRegion].GCRegionAddr = (RTGCPTR64)(PVOID)pBaseAddress;  /* stupid cast to prevent sign extension */
+#ifdef GC_ARCH_BITS == 64
+        aRegions[idxRegion].GCRegionAddr = (RTGCPTR64)pBaseAddress;
+#else
+        aRegions[idxRegion].GCRegionAddr = (RTGCPTR32)pBaseAddress;
+#endif
         aRegions[idxRegion].cbRegion     = dwModuleSize;
         idxRegion++;
     }
