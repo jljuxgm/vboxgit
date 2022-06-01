@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 28234 2010-04-13 08:32:58Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 28278 2010-04-13 21:00:38Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -71,7 +71,7 @@ static int VBoxNetAdpLinuxIOCtl(struct inode *pInode, struct file *pFilp, unsign
 module_init(VBoxNetAdpLinuxInit);
 module_exit(VBoxNetAdpLinuxUnload);
 
-MODULE_AUTHOR("Sun Microsystems, Inc.");
+MODULE_AUTHOR("Oracle Corporation");
 MODULE_DESCRIPTION("VirtualBox Network Adapter Driver");
 MODULE_LICENSE("GPL");
 #ifdef MODULE_VERSION

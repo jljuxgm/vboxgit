@@ -1,4 +1,4 @@
-/* $Rev: 22148 $ */
+/* $Rev: 28278 $ */
 /** @file
  * VBoxGuest - Linux specifics.
  *
@@ -898,7 +898,7 @@ module_param_call(dbg_log_dest,   vboxguestLinuxParamLogDstSet,   vboxguestLinux
 module_init(vboxguestLinuxModInit);
 module_exit(vboxguestLinuxModExit);
 
-MODULE_AUTHOR("Sun Microsystems, Inc.");
+MODULE_AUTHOR("Oracle Corporation");
 MODULE_DESCRIPTION("VirtualBox Guest Additions for Linux Module");
 MODULE_LICENSE("GPL");
 #ifdef MODULE_VERSION

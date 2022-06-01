@@ -1,4 +1,4 @@
-/* $Rev: 27334 $ */
+/* $Rev: 28278 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -1102,7 +1102,7 @@ RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
 module_init(VBoxDrvLinuxInit);
 module_exit(VBoxDrvLinuxUnload);
 
-MODULE_AUTHOR("Sun Microsystems, Inc.");
+MODULE_AUTHOR("Oracle Corporation");
 MODULE_DESCRIPTION("VirtualBox Support Driver");
 MODULE_LICENSE("GPL");
 #ifdef MODULE_VERSION

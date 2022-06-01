@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 28238 2010-04-13 09:48:31Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 28278 2010-04-13 21:00:38Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -132,7 +132,7 @@ static VBOXNETFLTGLOBALS g_VBoxNetFltGlobals;
 module_init(VBoxNetFltLinuxInit);
 module_exit(VBoxNetFltLinuxUnload);
 
-MODULE_AUTHOR("Sun Microsystems, Inc.");
+MODULE_AUTHOR("Oracle Corporation");
 MODULE_DESCRIPTION("VirtualBox Network Filter Driver");
 MODULE_LICENSE("GPL");
 #ifdef MODULE_VERSION
