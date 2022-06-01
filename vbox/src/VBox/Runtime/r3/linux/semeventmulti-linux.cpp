@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-linux.cpp 25685 2010-01-07 22:03:06Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 25688 2010-01-08 10:35:40Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
@@ -294,7 +294,7 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
             if (pThis->fEverHadSignallers)
             {
                 int rc9 = RTLockValidatorRecSharedCheckBlocking(&pThis->Signallers, hThreadSelf, pSrcPos, false,
-                                                                cMillie, RTTHREADSTATE_EVENT_MULTI, true);
+                                                                cMillies, RTTHREADSTATE_EVENT_MULTI, true);
                 if (RT_FAILURE(rc9))
                     return rc9;
             }
