@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 27999 2010-04-06 12:24:02Z vboxsync $ */
+/* $Id: PGMPhys.cpp 28001 2010-04-06 12:27:28Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -957,8 +957,8 @@ VMMR3DECL(int) PGMR3PhysChangeMemBalloon(PVM pVM, bool fInflate, unsigned cPages
  *
  * @returns VBox status code.
  * @param   pVM             The VM handle.
- * @param   puBalloonVM     Pointer to VM balloon size
- * @param   puBalloonAllVMs Pointer to total balloon size of all VMs
+ * @param   puBalloonVM     Pointer to VM balloon size (in pages)
+ * @param   puBalloonAllVMs Pointer to total balloon size of all VMs (in pages)
  */
 VMMR3DECL(int) PGMR3QueryBalloonSize(PVM pVM, uint64_t *puBalloonVM, uint64_t *puBalloonAllVMs)
 {
