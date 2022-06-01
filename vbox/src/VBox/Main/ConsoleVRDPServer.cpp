@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 29518 2010-05-17 10:06:22Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 30245 2010-06-16 13:05:30Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -785,6 +785,34 @@ DECLCALLBACK(int)  ConsoleVRDPServer::VRDPCallbackQueryProperty(void *pvCallback
             if (cbBuffer >= sizeof(uint32_t))
             {
                 *(uint32_t *)pvBuffer = (uint32_t)ulQuality;
+                rc = VINF_SUCCESS;
+            }
+            else
+            {
+                rc = VINF_BUFFER_OVERFLOW;
+            }
+
+            *pcbOut = sizeof(uint32_t);
+        } break;
+
+        case VRDP_QP_VIDEO_CHANNEL_SUNFLSH:
+        {
+            ULONG ulSunFlsh = 0;
+
+            com::Bstr bstr;
+            HRESULT hrc = server->mConsole->machine ()->GetExtraData(Bstr("VRDP/SunFlsh"), bstr.asOutParam());
+            if (hrc == S_OK && !bstr.isEmpty())
+            {
+                com::Utf8Str sunFlsh = bstr;
+                if (!sunFlsh.isEmpty())
+                {
+                    ulSunFlsh = sunFlsh.toUInt32();
+                }
+            }
+
+            if (cbBuffer >= sizeof(uint32_t))
+            {
+                *(uint32_t *)pvBuffer = (uint32_t)ulSunFlsh;
                 rc = VINF_SUCCESS;
             }
             else
