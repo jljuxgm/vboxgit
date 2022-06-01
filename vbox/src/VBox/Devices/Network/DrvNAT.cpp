@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 25402 2009-12-15 13:16:26Z vboxsync $ */
+/* $Id: DrvNAT.cpp 25799 2010-01-13 10:29:59Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1159,7 +1159,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandl
             int fds[2];
             if (pipe(&fds[0]) != 0) /** @todo RTPipeCreate() or something... */
             {
-                int rc = RTErrConvertFromErrno(errno);
+                rc = RTErrConvertFromErrno(errno);
                 AssertRC(rc);
                 return rc;
             }
