@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsSystem.cpp 27537 2010-03-19 14:04:54Z vboxsync $ */
+/* $Id: VBoxVMSettingsSystem.cpp 27591 2010-03-22 13:56:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -186,6 +186,10 @@ void VBoxVMSettingsSystem::getFrom (const CMachine &aMachine)
                          .GetProcessorFeature (KProcessorFeature_PAE);
     mCbPae->setEnabled (fPAESupported);
     mCbPae->setChecked (aMachine.GetCPUProperty(KCPUPropertyType_PAE));
+
+    /* VT-x/AMD-V page */
+    if (!fVTxAMDVSupported)
+        mTwSystem->removeTab(2);
 
     /* VT-x/AMD-V */
     mCbVirt->setEnabled (fVTxAMDVSupported);
