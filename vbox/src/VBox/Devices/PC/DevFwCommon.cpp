@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 24706 2009-11-16 17:57:20Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 24964 2009-11-25 16:28:29Z vboxsync $ */
 /** @file
  * Shared firmware code.
  */
@@ -629,4 +629,3 @@ void sharedfwPlantMpsTable(PPDMDEVINS pDevIns, uint8_t *pTable, uint16_t numCpus
     floatPtr.u8Checksum            = sharedfwChecksum((uint8_t*)&floatPtr, 16);
     PDMDevHlpPhysWrite (pDevIns, 0x9fff0, &floatPtr, 16);
 }
-

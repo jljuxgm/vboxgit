@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 24957 2009-11-25 14:49:10Z vboxsync $ */
+/* $Id: DevEFI.cpp 24964 2009-11-25 16:28:29Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -911,6 +911,7 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     rc = sharedfwPlantDMITable(pDevIns, pThis->au8DMIPage, VBOX_DMI_TABLE_SIZE, &uuid, pCfgHandle);
     if (RT_FAILURE(rc))
         return rc;
+
     if (pThis->u8IOAPIC)
         sharedfwPlantMpsTable(pDevIns, pThis->au8DMIPage + VBOX_DMI_TABLE_SIZE, pThis->cCpus);
 
@@ -927,7 +928,7 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     pThis->cbBelow4GB = RT_MIN(pThis->cbRam, _4G - pThis->cbRamHole);
     pThis->cbAbove4GB = pThis->cbRam - pThis->cbBelow4GB;
 
-    
+
     /*
      * Get the system EFI ROM file name.
      */
