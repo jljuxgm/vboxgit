@@ -1,4 +1,4 @@
-# $Id: Makefile 26881 2010-02-27 09:11:22Z vboxsync $
+# $Id: Makefile 28476 2010-04-19 15:37:35Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -147,6 +147,7 @@ SRCS += \
 	semevent-r0drv-freebsd.c \
 	semeventmulti-r0drv-freebsd.c \
 	semfastmutex-r0drv-freebsd.c \
+	semmutex-r0drv-freebsd.c \
 	spinlock-r0drv-freebsd.c \
 	thread-r0drv-freebsd.c \
 	thread2-r0drv-freebsd.c \

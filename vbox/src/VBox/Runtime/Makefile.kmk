@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28317 2010-04-14 18:06:05Z vboxsync $
+# $Id: Makefile.kmk 28476 2010-04-19 15:37:35Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1575,6 +1575,7 @@ RuntimeR0Drv_SOURCES.freebsd = \
 	r0drv/freebsd/semevent-r0drv-freebsd.c \
 	r0drv/freebsd/semeventmulti-r0drv-freebsd.c \
 	r0drv/freebsd/semfastmutex-r0drv-freebsd.c \
+	r0drv/freebsd/semmutex-r0drv-freebsd.c \
 	r0drv/freebsd/spinlock-r0drv-freebsd.c \
 	r0drv/freebsd/thread-r0drv-freebsd.c \
 	r0drv/freebsd/thread2-r0drv-freebsd.c \
