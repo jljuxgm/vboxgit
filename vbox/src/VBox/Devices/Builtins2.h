@@ -1,6 +1,8 @@
-/* $Id: Builtins2.h 29523 2010-05-17 10:15:58Z vboxsync $ */
+/* $Id: Builtins2.h 29563 2010-05-17 15:15:02Z vboxsync $ */
 /** @file
  * Built-in drivers & devices part 2 header.
+ *
+ * These drivers and devices are in separate modules because of LGPL.
  */
 
 /*
