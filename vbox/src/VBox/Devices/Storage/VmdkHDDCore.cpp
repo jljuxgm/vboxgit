@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 27531 2010-03-19 13:10:47Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 27533 2010-03-19 13:23:06Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -2498,14 +2498,12 @@ static int vmdkWriteDescriptor(PVMDKIMAGE pImage)
                 char *pszDescriptorNew = NULL;
                 LogFlow(("Increasing descriptor cache\n"));
 
-                pszDescriptorNew = (char *)RTMemAllocZ(cbDescriptor + cb + 4 * _1K);
+                pszDescriptorNew = (char *)RTMemRealloc(pszDescriptor, cbDescriptor + cb + 4 * _1K);
                 if (!pszDescriptorNew)
                 {
                     rc = VERR_NO_MEMORY;
                     break;
                 }
-                memcpy(pszDescriptorNew, pszDescriptor, cbDescriptor);
-                RTMemFree(pszDescriptor);
                 pszDescriptorNew = pszDescriptor;
                 cbDescriptor += cb + 4 * _1K;
             }
