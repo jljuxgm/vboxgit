@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27910 2010-03-31 14:44:30Z vboxsync $
+# $Id: Makefile.kmk 28168 2010-04-12 03:37:47Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -806,6 +806,8 @@ endif
 ifdef VBOX_WITH_DRV_DISK_INTEGRITY
 Drivers_DEFS           += VBOX_WITH_DRV_DISK_INTEGRITY
 endif
+
+VBOX_WITH_SLIRP_BSD_MBUF=1
 
 Drivers_INCS      := \
 	$(PATH_SUB_CURRENT) \
