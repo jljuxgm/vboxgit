@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 26313 2010-02-05 23:20:10Z vboxsync $ */
+/* $Id: ConsoleImpl.h 26314 2010-02-05 23:26:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -580,17 +580,18 @@ private:
 
     enum
     {
-        iLedFloppy = 0,
-        cLedFloppy = 1,
-        iLedIde    = iLedFloppy + cLedFloppy,
-        cLedIde    = 4,
-        iLedSata   = iLedIde + cLedIde,
-        cLedSata   = 30,
-        iLedScsi   = iLedSata + cLedSata,
-        cLedScsi   = 16
+        iLedFloppy  = 0,
+        cLedFloppy  = 1,
+        iLedIde     = iLedFloppy + cLedFloppy,
+        cLedIde     = 4,
+        iLedSata    = iLedIde + cLedIde,
+        cLedSata    = 30,
+        iLedScsi    = iLedSata + cLedSata,
+        cLedScsi    = 16,
+        cLedStorage = cLedFloppy + cLedIde + cLedSata + cLedScsi,
     };
-    DeviceType_T maStorageDevType[cLedFloppy + cLedIde + cLedSata + cLedScsi];
-    PPDMLED      mapStorageLeds[RT_ELEMENTS(maStorageDevType)];
+    DeviceType_T maStorageDevType[cLedStorage];
+    PPDMLED      mapStorageLeds[cLedStorage];
     PPDMLED      mapNetworkLeds[SchemaDefs::NetworkAdapterCount];
     PPDMLED      mapSharedFolderLed;
     PPDMLED      mapUSBLed[2];
