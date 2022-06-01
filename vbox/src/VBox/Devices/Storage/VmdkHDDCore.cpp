@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 24112 2009-10-27 10:54:06Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 24256 2009-11-02 14:28:08Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -3655,7 +3655,7 @@ static int vmdkCreateRegularImage(PVMDKIMAGE pImage, uint64_t cbSize,
         pExtent->enmAccess = VMDKACCESS_READWRITE;
         pExtent->fUncleanShutdown = true;
         pExtent->cNominalSectors = VMDK_BYTE2SECTOR(cbExtent);
-        pExtent->uSectorOffset = VMDK_BYTE2SECTOR(cbOffset);
+        pExtent->uSectorOffset = 0;
         pExtent->fMetaDirty = true;
 
         if (!(uImageFlags & VD_IMAGE_FLAGS_FIXED))
@@ -4039,7 +4039,7 @@ static int vmdkFindExtent(PVMDKIMAGE pImage, uint64_t offSector,
         if (offSector < pImage->pExtents[i].cNominalSectors)
         {
             pExtent = &pImage->pExtents[i];
-            *puSectorInExtent = offSector;
+            *puSectorInExtent = offSector + pImage->pExtents[i].uSectorOffset;
             break;
         }
         offSector -= pImage->pExtents[i].cNominalSectors;
