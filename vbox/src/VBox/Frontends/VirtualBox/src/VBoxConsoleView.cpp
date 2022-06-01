@@ -1,4 +1,4 @@
-/* $Id: VBoxConsoleView.cpp 26782 2010-02-25 11:17:30Z vboxsync $ */
+/* $Id: VBoxConsoleView.cpp 26796 2010-02-25 13:40:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -760,7 +760,7 @@ VBoxConsoleView::VBoxConsoleView (VBoxConsoleWnd *mainWnd,
     switch (mode)
     {
         case VBoxDefs::QGLMode:
-            pViewport = new VBoxGLWidget (this, this, NULL);
+            pViewport = new VBoxGLWidget (mConsole, this, NULL);
             break;
         default:
             pViewport = new VBoxViewport (this);
