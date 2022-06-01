@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 25346 2009-12-13 16:21:19Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 25843 2010-01-14 18:51:32Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -905,8 +905,6 @@ HRESULT NetworkAdapter::loadSettings(const settings::NetworkAdapter &data)
 {
     AutoCaller autoCaller(this);
     AssertComRCReturnRC(autoCaller.rc());
-
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     /* Note: we assume that the default values for attributes of optional
      * nodes are assigned in the Data::Data() constructor and don't do it
