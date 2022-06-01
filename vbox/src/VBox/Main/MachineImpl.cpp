@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 24342 2009-11-04 15:42:41Z vboxsync $ */
+/* $Id: MachineImpl.cpp 24344 2009-11-04 16:34:16Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -5175,7 +5175,7 @@ void Machine::uninitDataAndChildObjects()
              ++it)
         {
             ComObjPtr<Medium> hd = (*it)->medium();
-            if (hd.isNull() || (*it)->type() != DeviceType_HardDisk)
+            if (hd.isNull())
                 continue;
             HRESULT rc = hd->detachFrom(mData->mUuid, snapshotId());
             AssertComRC (rc);
