@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 24850 2009-11-22 01:57:35Z vboxsync $ */
+/* $Id: CPUM.cpp 24852 2009-11-22 04:24:38Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1947,6 +1947,16 @@ static DECLCALLBACK(int) cpumR3LoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uVers
                 SSMR3GetU32(pSSM, &pVM->aCpus[i].cpum.s.fChanged);
                 if (uVersion >= CPUM_SAVED_STATE_VERSION_VER3_0)
                     SSMR3GetMem(pSSM, &pVM->aCpus[i].cpum.s.GuestMsr, sizeof(pVM->aCpus[i].cpum.s.GuestMsr));
+
+                /*
+                 * HACK ALERT! Workaround for missing granularity flag in CS on
+                 *             AMD-v.  This will cause trouble if the host now
+                 *             is using VT-x (teleporting, cold migration).
+                 * May consider moving this into SVM_READ_SELREG or there about.
+                 */
+                if (    !pVM->aCpus[i].cpum.s.Guest.csHid.Attr.n.u1Granularity
+                    &&   pVM->aCpus[i].cpum.s.Guest.csHid.u32Limit > UINT16_MAX)
+                    pVM->aCpus[i].cpum.s.Guest.csHid.Attr.n.u1Granularity = 1;
             }
         }
     }
