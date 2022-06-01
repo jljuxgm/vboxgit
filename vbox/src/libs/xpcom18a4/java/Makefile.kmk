@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29089 2010-05-05 15:36:00Z vboxsync $
+# $Id: Makefile.kmk 29094 2010-05-05 16:17:23Z vboxsync $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -28,7 +28,7 @@ ifeq ($(KBUILD_TARGET), darwin)
  VBOX_JAVA_INC = $(VBOX_JAVA_HOME)/Headers
 else
 ifeq ($(KBUILD_TARGET), linux)
- VBOX_JAVA_HOME ?= /usr/lib/jvm/java-5-sun
+ VBOX_JAVA_HOME ?= /usr/lib/jvm/java-1.5.0-sun
 endif
 ifeq ($(KBUILD_TARGET), solaris)
  VBOX_JAVA_HOME ?= /usr/jdk/jdk1.5.0
