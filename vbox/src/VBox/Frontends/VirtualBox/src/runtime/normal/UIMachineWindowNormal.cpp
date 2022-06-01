@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 30014 2010-06-03 14:51:57Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 30213 2010-06-15 18:19:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -318,22 +318,7 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
 #ifdef Q_WS_X11
 bool UIMachineWindowNormal::x11Event(XEvent *pEvent)
 {
-    /* Qt bug: when the console view grabs the keyboard, FocusIn, FocusOut,
-     * WindowActivate and WindowDeactivate Qt events are not properly sent
-     * on top level window (i.e. this) deactivation. The fix is to substiute
-     * the mode in FocusOut X11 event structure to NotifyNormal to cause
-     * Qt to process it as desired. */
-    if (pEvent->type == FocusOut)
-    {
-        if (pEvent->xfocus.mode == NotifyWhileGrabbed  &&
-            (pEvent->xfocus.detail == NotifyAncestor ||
-             pEvent->xfocus.detail == NotifyInferior ||
-             pEvent->xfocus.detail == NotifyNonlinear))
-        {
-             pEvent->xfocus.mode = NotifyNormal;
-        }
-    }
-    return false;
+    return UIMachineWindow::x11Event(pEvent);
 }
 #endif
 
