@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 28714 2010-04-25 20:04:02Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 28776 2010-04-26 19:32:42Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -753,7 +753,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 28714 $\n");
+                RTPrintf("$Revision: 28776 $\n");
                 return 0;
 
             default:
@@ -826,7 +826,7 @@ int main(int argc, char **argv)
         GetBufferPtrsReq.pSession = pSession;
         GetBufferPtrsReq.hIf = OpenReq.hIf;
         GetBufferPtrsReq.pRing3Buf = NULL;
-        GetBufferPtrsReq.pRing0Buf = NULL;
+        GetBufferPtrsReq.pRing0Buf = NIL_RTR0PTR;
         rc = SUPR3CallVMMR0Ex(NIL_RTR0PTR, NIL_VMCPUID, VMMR0_DO_INTNET_IF_GET_BUFFER_PTRS, 0, &GetBufferPtrsReq.Hdr);
         if (RT_SUCCESS(rc))
         {
