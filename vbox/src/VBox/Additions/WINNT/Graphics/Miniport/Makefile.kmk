@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26556 2010-02-15 22:10:11Z vboxsync $
+# $Id: Makefile.kmk 26560 2010-02-16 00:46:50Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxVideo.
 #
@@ -81,7 +81,7 @@ ifdef VBOXWDDM
   $(warning FIXME: !!!define wddm driver signing & install rules !!!)
   VBoxVideoWddm_NOINST     = true
  endif
- 
+
  VBoxVideoWddm_SDKS=WINDDKWLH
  VBoxVideoWddm_DEFS       += LOG_TO_BACKDOOR VBOX_WITH_8BPP_MODES
  VBoxVideoWddm_DEFS       += VBOX_WITH_HGSMI VBOXWDDM VBOXVDMA

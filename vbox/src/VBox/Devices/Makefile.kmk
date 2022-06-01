@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26556 2010-02-15 22:10:11Z vboxsync $
+# $Id: Makefile.kmk 26560 2010-02-16 00:46:50Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -597,7 +597,7 @@ ifdef VBOX_WITH_RAW_MODE
  ifdef VBOXVDMA
   VBoxDDGC_DEFS         += VBOXVDMA
  endif
- 
+
  ifdef VBOX_WITH_VIDEOHWACCEL
   VBoxDDGC_DEFS         += VBOX_WITH_VIDEOHWACCEL
  endif

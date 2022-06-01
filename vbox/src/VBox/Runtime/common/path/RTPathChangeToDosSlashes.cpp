@@ -1,4 +1,4 @@
-/* $Id: RTPathChangeToDosSlashes.cpp 26520 2010-02-15 01:47:34Z vboxsync $ */
+/* $Id: RTPathChangeToDosSlashes.cpp 26560 2010-02-16 00:46:50Z vboxsync $ */
 /** @file
  * IPRT - RTPathChangeToDosSlashes
  */
@@ -63,5 +63,4 @@ RTDECL(char *) RTPathChangeToDosSlashes(char *pszPath, bool fForce)
     }
     return pszPath;
 }
-
 
