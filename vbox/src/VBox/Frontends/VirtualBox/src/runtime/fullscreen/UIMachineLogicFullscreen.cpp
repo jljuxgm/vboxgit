@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 26961 2010-03-02 17:13:50Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 27015 2010-03-04 12:25:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -53,6 +53,9 @@ UIMachineLogicFullscreen::~UIMachineLogicFullscreen()
 {
     /* Cleanup machine window: */
     cleanupMachineWindow();
+
+    /* Cleanup action related stuff */
+    cleanupActionGroups();
 }
 
 bool UIMachineLogicFullscreen::checkAvailability()
@@ -108,6 +111,17 @@ bool UIMachineLogicFullscreen::checkAvailability()
         }
     }
 
+    /* Take the toggle hot key from the menu item. Since
+     * VBoxGlobal::extractKeyFromActionText gets exactly the
+     * linked key without the 'Host+' part we are adding it here. */
+    QString hotKey = QString ("Host+%1")
+        .arg (VBoxGlobal::extractKeyFromActionText(actionsPool()->action(UIActionIndex_Toggle_Fullscreen)->text()));
+    Assert (!hotKey.isEmpty());
+
+    /* Show the info message. */
+    if (!vboxProblem().confirmGoingFullscreen(hotKey))
+        return false;
+
     return true;
 }
 
@@ -160,6 +174,14 @@ void UIMachineLogicFullscreen::sltPrepareMouseIntegrationMenu()
     AssertMsg(menu, ("This slot should be called only on Mouse Integration Menu show!\n"));
     menu->clear();
     menu->addAction(actionsPool()->action(UIActionIndex_Toggle_MouseIntegration));
+}
+
+void UIMachineLogicFullscreen::prepareActionGroups()
+{
+    UIMachineLogic::prepareActionGroups();
+
+    /* Adjust window isn't allowed in fullscreen */
+    actionsPool()->action(UIActionIndex_Simple_AdjustWindow)->setEnabled(false);
 }
 
 void UIMachineLogicFullscreen::prepareActionConnections()
@@ -300,6 +322,12 @@ void UIMachineLogicFullscreen::cleanupMachineWindow()
 #ifdef Q_WS_MAC
     setPresentationModeEnabled(false);
 #endif/* Q_WS_MAC */
+}
+
+void UIMachineLogicFullscreen::cleanupActionGroups()
+{
+    /* Reenable adjust window */
+    actionsPool()->action(UIActionIndex_Simple_AdjustWindow)->setEnabled(true);
 }
 
 #ifdef Q_WS_MAC
