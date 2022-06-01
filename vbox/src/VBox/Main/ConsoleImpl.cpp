@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8122,7 +8122,7 @@ DECLCALLBACK(void) Console::drvStatus_Destruct(PPDMDRVINS pDrvIns)
     {
         unsigned iLed = pData->iLastLUN - pData->iFirstLUN + 1;
         while (iLed-- > 0)
-            ASMAtomicWritePtr(&pData->papLeds[iLed], NULL);
+            ASMAtomicWriteNullPtr(&pData->papLeds[iLed]);
     }
 }
 

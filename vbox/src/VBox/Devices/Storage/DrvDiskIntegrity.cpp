@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -489,7 +489,7 @@ static void drvdiskintIoReqRemove(PDRVDISKINTEGRITY pThis, PDRVDISKAIOREQ pIoReq
 
     Assert(pReqActive->pIoReq == pIoReq);
 
-    ASMAtomicWritePtr(&pReqActive->pIoReq, NULL);
+    ASMAtomicWriteNullPtr(&pReqActive->pIoReq);
 }
 
 /**

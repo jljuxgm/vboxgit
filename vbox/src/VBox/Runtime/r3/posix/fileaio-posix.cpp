@@ -1,4 +1,4 @@
-/* $Id: fileaio-posix.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: fileaio-posix.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for POSIX compliant host platforms.
  */
@@ -492,7 +492,7 @@ RTDECL(int) RTFileAioReqCancel(RTFILEAIOREQ hReq)
         int rc = RTSemEventWait(pCtxInt->SemEventCancel, RT_INDEFINITE_WAIT);
         AssertRC(rc);
 
-        ASMAtomicWritePtr(&pCtxInt->pReqToCancel, NULL);
+        ASMAtomicWriteNullPtr(&pCtxInt->pReqToCancel);
         pReqInt->Rc = VERR_FILE_AIO_CANCELED;
         RTFILEAIOREQ_SET_STATE(pReqInt, COMPLETED);
         return VINF_SUCCESS;

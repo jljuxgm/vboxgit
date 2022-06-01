@@ -1,4 +1,4 @@
-/* $Id: SUPSvcGrant.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: SUPSvcGrant.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
 /** @file
  * VirtualBox Support Service - The Grant Service.
  */
@@ -974,7 +974,7 @@ DECLCALLBACK(void) supSvcGrantStopAndDestroy(void *pvInstance, bool fRunning)
     supSvcGrantCleanUpSessionsLocked(pThis);
     unsigned cSessions = 0;
     for (PSUPSVCGRANTSESSION pCur = pThis->pSessionHead; pCur; pCur = pCur->pNext)
-        ASMAtomicWritePtr(&pCur->pParent, NULL);
+        ASMAtomicWriteNullPtr(&pCur->pParent);
 
     RTCritSectLeave(&pThis->CritSect);
     if (cSessions)

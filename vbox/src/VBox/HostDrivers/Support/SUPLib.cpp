@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: SUPLib.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -507,8 +507,8 @@ SUPR3DECL(int) SUPR3Term(bool fForced)
          */
         if (g_pSUPGlobalInfoPage)
         {
-            ASMAtomicWritePtr((void * volatile *)&g_pSUPGlobalInfoPage, NULL);
-            ASMAtomicWritePtr((void * volatile *)&g_pSUPGlobalInfoPageR0, NULL);
+            ASMAtomicWriteNullPtr((void * volatile *)&g_pSUPGlobalInfoPage);
+            ASMAtomicWriteNullPtr((void * volatile *)&g_pSUPGlobalInfoPageR0);
             ASMAtomicWriteSize(&g_HCPhysSUPGlobalInfoPage, NIL_RTHCPHYS);
             /* just a little safe guard against threads using the page. */
             RTThreadSleep(50);

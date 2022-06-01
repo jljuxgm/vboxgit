@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: VMReq.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -489,7 +489,7 @@ static void vmr3ReqJoinFreeSub(volatile PVMREQ *ppHead, PVMREQ pList)
         ASMCompilerBarrier();
         if (ASMAtomicCmpXchgPtr(ppHead, pHead, pList))
             return;
-        ASMAtomicWritePtr(&pTail->pNext, NULL);
+        ASMAtomicWriteNullPtr(&pTail->pNext);
         ASMCompilerBarrier();
         if (ASMAtomicCmpXchgPtr(ppHead, pHead, NULL))
             return;
@@ -1008,7 +1008,7 @@ static PVMREQ vmR3ReqProcessUTooManyHelper(PUVM pUVM, VMCPUID idDstCpu, PVMREQ p
         pPrev = pReqRet;
         pReqRet = pReqRet->pNext;
     } while (pReqRet->pNext);
-    ASMAtomicWritePtr(&pPrev->pNext, NULL);
+    ASMAtomicWriteNullPtr(&pPrev->pNext);
 
     /* Push the others back onto the list (end of it). */
     Log2(("VMR3ReqProcess: Pushing back %p %p...\n", pReqList, pReqList->pNext));

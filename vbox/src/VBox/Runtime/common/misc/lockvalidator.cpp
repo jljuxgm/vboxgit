@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: lockvalidator.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -826,8 +826,8 @@ DECL_FORCE_INLINE(void) rtLockValidatorSrcPosCopy(PRTLOCKVALSRCPOS pDst, PCRTLOC
     else
     {
         ASMAtomicUoWriteU32(&pDst->uLine,        0);
-        ASMAtomicUoWritePtr(&pDst->pszFile,      NULL);
-        ASMAtomicUoWritePtr(&pDst->pszFunction,  NULL);
+        ASMAtomicUoWriteNullPtr(&pDst->pszFile);
+        ASMAtomicUoWriteNullPtr(&pDst->pszFunction);
         ASMAtomicUoWritePtr(&pDst->uId, (RTHCUINTPTR)0);
     }
 }
@@ -3471,7 +3471,7 @@ RTDECL(void) RTLockValidatorRecSharedDelete(PRTLOCKVALRECSHRD pRec)
     if (pRec->papOwners)
     {
         PRTLOCKVALRECSHRDOWN volatile *papOwners = pRec->papOwners;
-        ASMAtomicUoWritePtr(&pRec->papOwners, NULL);
+        ASMAtomicUoWriteNullPtr(&pRec->papOwners);
         ASMAtomicUoWriteU32(&pRec->cAllocated, 0);
 
         RTMemFree((void *)pRec->papOwners);
