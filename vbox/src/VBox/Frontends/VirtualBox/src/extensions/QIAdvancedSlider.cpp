@@ -1,4 +1,4 @@
-/* $Id: QIAdvancedSlider.cpp 26712 2010-02-23 14:39:23Z vboxsync $ */
+/* $Id: QIAdvancedSlider.cpp 27413 2010-03-16 15:23:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -221,18 +221,24 @@ void QIAdvancedSlider::setOptimalHint(int min, int max)
 {
     m_pSlider->m_minOpt = min;
     m_pSlider->m_maxOpt = max;
+
+    update();
 }
 
 void QIAdvancedSlider::setWarningHint(int min, int max)
 {
     m_pSlider->m_minWrn = min;
     m_pSlider->m_maxWrn = max;
+
+    update();
 }
 
 void QIAdvancedSlider::setErrorHint(int min, int max)
 {
     m_pSlider->m_minErr = min;
     m_pSlider->m_maxErr = max;
+
+    update();
 }
 
 void QIAdvancedSlider::setOrientation(Qt::Orientation fOrientation)
