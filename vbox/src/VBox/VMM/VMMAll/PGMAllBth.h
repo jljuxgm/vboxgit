@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 27783 2010-03-29 12:17:54Z vboxsync $ */
+/* $Id: PGMAllBth.h 27790 2010-03-29 12:58:08Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3459,9 +3459,6 @@ PGM_BTH_DECL(int, VerifyAccessSyncPage)(PVMCPU pVCpu, RTGCPTR GCPtrPage, unsigne
     return VERR_INTERNAL_ERROR;
 #endif /* PGM_GST_TYPE != PGM_TYPE_32BIT */
 }
-
-#undef MY_STAM_COUNTER_INC
-#define MY_STAM_COUNTER_INC(a) do { } while (0)
 
 
 /**
