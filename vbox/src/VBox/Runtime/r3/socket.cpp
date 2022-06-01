@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 30273 2010-06-17 07:58:38Z vboxsync $ */
+/* $Id: socket.cpp 30275 2010-06-17 08:50:43Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -630,7 +630,7 @@ RTDECL(int) RTSocketSgWrite(RTSOCKET hSocket, PCRTSGBUF pSgBuf)
         int cbBuf = 0;
         for (unsigned i = 0; i < pSgBuf->cSeg; i++)
         {
-            cbBuf += pSgBuf->pcaSeg[i].cbSeg;
+            cbBuf += (int)pSgBuf->pcaSeg[i].cbSeg;
             AssertBreakStmt(cbBuf, rc = VERR_BUFFER_OVERFLOW);
         }
 
@@ -640,7 +640,7 @@ RTDECL(int) RTSocketSgWrite(RTSOCKET hSocket, PCRTSGBUF pSgBuf)
         for (unsigned i = 0; i < pSgBuf->cSeg; i++)
         {
             memcpy(p, pSgBuf->pcaSeg[i].pvSeg, pSgBuf->pcaSeg[i].cbSeg);
-            p += pSgBuf->pcaSeg[i].cbSeg;
+            p += (int)pSgBuf->pcaSeg[i].cbSeg;
         }
 
         ssize_t cbWritten = send(pThis->hNative, (const char *)pBuf, cbBuf, MSG_NOSIGNAL);
