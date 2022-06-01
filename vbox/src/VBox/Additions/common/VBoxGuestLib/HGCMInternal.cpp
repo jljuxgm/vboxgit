@@ -1,4 +1,4 @@
-/* $Revision: 26425 $ */
+/* $Revision: 28516 $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -905,7 +905,8 @@ DECLR0VBGL(int) VbglR0HGCMInternalCall(VBoxGuestHGCMCallInfo *pCallInfo, uint32_
             }
             else
             {
-                if (rc != VERR_INTERRUPTED)
+                if (   rc != VERR_INTERRUPTED
+                    || rc != VERR_TIMEOUT)
                     LogRel(("VbglR0HGCMInternalCall: vbglR0HGCMInternalDoCall failed. rc=%Rrc\n", rc));
             }
 

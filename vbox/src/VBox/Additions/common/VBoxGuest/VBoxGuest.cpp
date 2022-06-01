@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 27967 2010-04-02 20:05:49Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 28516 2010-04-20 11:52:06Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1778,7 +1778,8 @@ static int VBoxGuestCommonIOCtl_HGCMCall(PVBOXGUESTDEVEXT pDevExt,
     }
     else
     {
-        if (rc != VERR_INTERRUPTED)
+        if (   rc != VERR_INTERRUPTED
+            && rc != VERR_TIMEOUT)
             LogRel(("VBoxGuestCommonIOCtl: HGCM_CALL: %s Failed. rc=%Rrc.\n", f32bit ? "32" : "64", rc));
         else
             Log(("VBoxGuestCommonIOCtl: HGCM_CALL: %s Failed. rc=%Rrc.\n", f32bit ? "32" : "64", rc));
