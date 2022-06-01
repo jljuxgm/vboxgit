@@ -1,4 +1,4 @@
-/* $Id: getoptargv.cpp 26476 2010-02-13 02:06:41Z vboxsync $ */
+/* $Id: getoptargv.cpp 26478 2010-02-13 03:40:17Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing, Argument Vector.
  */
@@ -190,13 +190,11 @@ RTDECL(int) RTGetOptArgvFromString(char ***ppapszArgv, int *pcArgs, const char *
 
         /* Parse and copy the string over. */
         RTUNICP CpQuote = 0;
+        RTUNICP Cp;
         for (;;)
         {
-            RTUNICP Cp;
             rc = RTStrGetCpEx(&pszSrc, &Cp);
-            if (RT_FAILURE(rc))
-                break;
-            if (!Cp)
+            if (RT_FAILURE(rc) || !Cp)
                 break;
             if (!CpQuote)
             {
@@ -213,7 +211,7 @@ RTDECL(int) RTGetOptArgvFromString(char ***ppapszArgv, int *pcArgs, const char *
                 CpQuote = 0;
         }
         *pszDst++ = '\0';
-        if (RT_FAILURE(rc))
+        if (RT_FAILURE(rc) || !Cp)
             break;
     }
 
