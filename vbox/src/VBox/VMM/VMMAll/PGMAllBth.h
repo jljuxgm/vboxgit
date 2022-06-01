@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 28656 2010-04-23 14:43:35Z vboxsync $ */
+/* $Id: PGMAllBth.h 28750 2010-04-26 14:36:21Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1993,6 +1993,9 @@ PGM_BTH_DECL(int, SyncPage)(PVMCPU pVCpu, GSTPDE PdeSrc, RTGCPTR GCPtrPage, unsi
         Log(("CPU%d: SyncPage: Pde (big:%RX64) at %RGv changed behind our back!\n", pVCpu->idCpu, PdeDst.u, GCPtrPage));
         return VINF_SUCCESS;
     }
+
+    /* Mask away the page offset. */
+    GCPtrPage &= ~((RTGCPTR)0xfff);
 
     PPGMPOOLPAGE  pShwPage = pgmPoolGetPage(pPool, PdeDst.u & SHW_PDE_PG_MASK);
     PSHWPT        pPTDst   = (PSHWPT)PGMPOOL_PAGE_2_PTR(pVM, pShwPage);
