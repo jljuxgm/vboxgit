@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 24197 2009-10-30 14:43:09Z vboxsync $ */
+/* $Id: PGMAll.cpp 24201 2009-10-30 14:45:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2074,7 +2074,7 @@ VMMDECL(const char *) PGMGetModeName(PGMMODE enmMode)
  */
 VMMDECL(bool) PGMHasDirtyPages(PVM pVM)
 {
-    return pPool->cDirtyPages != 0;
+    return pVM->pgm.s.CTX_SUFF(pPool)->cDirtyPages != 0;
 }
 #endif
 
