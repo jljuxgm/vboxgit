@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29534 2010-05-17 11:53:42Z vboxsync $
+# $Id: Makefile.kmk 29582 2010-05-17 19:40:34Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1059,6 +1059,8 @@ endif
 ifdef IPRT_WITH_LZO
  VBoxRT_LIBS                  += lzo2
 endif
+VBoxRT_LIBS.linux              = \
+	crypt
 VBoxRT_LIBS.darwin             = \
 	iconv
 VBoxRT_LIBS.freebsd            = \
