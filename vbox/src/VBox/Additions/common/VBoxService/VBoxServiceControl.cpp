@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 29547 2010-05-17 14:07:03Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 29594 2010-05-18 07:45:58Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -385,11 +385,11 @@ VBOXSERVICE g_Control =
     /* pszDescription. */
     "Host-driven Guest Control",
     /* pszUsage. */
-   "[--control-interval <ms>]"
+   "              [--control-interval <ms>]"
     ,
     /* pszOptions. */
-    "    --control-interval  Specifies the interval at which to check for\n"
-    "                        new control commands. The default is 1000 ms.\n"
+    "    --control-interval      Specifies the interval at which to check for\n"
+    "                            new control commands. The default is 1000 ms.\n"
     ,
     /* methods */
     VBoxServiceControlPreInit,
