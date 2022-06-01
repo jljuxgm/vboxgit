@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 26130 2010-02-01 15:06:46Z vboxsync $ */
+/* $Id: PATM.cpp 26132 2010-02-01 15:30:19Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -5983,7 +5983,7 @@ static int patmR3HandleDirtyInstr(PVM pVM, PCPUMCTX pCtx, PPATMPATCHREC pPatch, 
 #ifdef DEBUG
                                 char szBuf[256];
                                 szBuf[0] = '\0';
-                                DBGFR3DisasInstrEx(pVM, pVCpu->idCpu, pCtx->cs, pCurPatchInstrGC, 0, szBuf, sizeof(szBuf), NULL);
+                                DBGFR3DisasInstrEx(pVM, pVCpu->idCpu, pCtx->cs, pCurPatchInstrGC + i, 0, szBuf, sizeof(szBuf), NULL);
                                 Log(("FILL:  %s\n", szBuf));
 #endif
                             }
