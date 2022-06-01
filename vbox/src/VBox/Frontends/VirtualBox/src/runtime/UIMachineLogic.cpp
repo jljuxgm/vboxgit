@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 28279 2010-04-14 00:52:05Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 28294 2010-04-14 11:33:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1256,7 +1256,9 @@ void UIMachineLogic::sltPrepareUSBMenu()
 {
     /* Get the sender() menu: */
     QMenu *pMenu = qobject_cast<QMenu*>(sender());
+#ifdef RT_STRICT
     QMenu *pUSBDevicesMenu = actionsPool()->action(UIActionIndex_Menu_USBDevices)->menu();
+#endif
     AssertMsg(pMenu == pUSBDevicesMenu, ("This slot should only be called on hovering USB menu!\n"));
     pMenu->clear();
 

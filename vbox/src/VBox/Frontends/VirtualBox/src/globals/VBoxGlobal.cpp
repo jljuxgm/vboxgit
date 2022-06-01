@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 28290 2010-04-14 10:30:03Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 28294 2010-04-14 11:33:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -4657,6 +4657,7 @@ bool VBoxGlobal::openURL (const QString &aURL)
  */
 void VBoxGlobal::showRegistrationDialog (bool aForce)
 {
+    NOREF(aForce);
 #ifdef VBOX_WITH_REGISTRATION
     if (!aForce && !UIRegistrationWzd::hasToBeShown())
         return;
