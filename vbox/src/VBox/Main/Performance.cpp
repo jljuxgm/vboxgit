@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 27998 2010-04-06 11:39:20Z vboxsync $ */
+/* $Id: Performance.cpp 28004 2010-04-06 13:23:44Z vboxsync $ */
 
 /** @file
  *
@@ -167,8 +167,10 @@ int CollectorGuestHAL::preCollect(const CollectorHints& hints, uint64_t iTick)
     if (    mGuest
         &&  iTick != mLastTick)
     {
-        mGuest->InternalGetStatistics(0, &mCpuUser, &mCpuKernel, &mCpuIdle,
-                                      &mMemTotal, &mMemFree, &mMemBalloon, &mMemCache,
+        ULONG ulMemBalloonTotal;
+
+        mGuest->InternalGetStatistics(&mCpuUser, &mCpuKernel, &mCpuIdle,
+                                      &mMemTotal, &mMemFree, &mMemBalloon, &ulMemBalloonTotal, &mMemCache,
                                       &mPageTotal);
         mLastTick = iTick;
     }

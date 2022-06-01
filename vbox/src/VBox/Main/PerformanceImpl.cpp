@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 27998 2010-04-06 11:39:20Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 28004 2010-04-06 13:23:44Z vboxsync $ */
 
 /** @file
  *
@@ -67,6 +67,10 @@ static const char *g_papcszMetricNames[] =
     "RAM/Usage/Free:avg",
     "RAM/Usage/Free:min",
     "RAM/Usage/Free:max",
+    "RAM/Usage/Ballooned",
+    "RAM/Usage/Ballooned:avg",
+    "RAM/Usage/Ballooned:min",
+    "RAM/Usage/Ballooned:max",
     "Guest/CPU/Load/User",
     "Guest/CPU/Load/User:avg",
     "Guest/CPU/Load/User:min",
