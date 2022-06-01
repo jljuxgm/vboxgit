@@ -1,4 +1,4 @@
-/* $Id: socket.h 28449 2010-04-19 09:52:59Z vboxsync $ */
+/* $Id: socket.h 28482 2010-04-19 16:44:22Z vboxsync $ */
 /** @file
  * NAT - socket handling (declarations/defines).
  */
@@ -74,7 +74,6 @@ struct socket
     struct in_addr  so_hladdr;    /* local host addr */
 
     u_int8_t        so_iptos;    /* Type of service */
-    u_int8_t        so_emu;      /* Is the socket emulated? */
 
     u_char          so_type;     /* Type of socket, UDP or TCP */
     int             so_state;    /* internal state flags SS_*, below */
