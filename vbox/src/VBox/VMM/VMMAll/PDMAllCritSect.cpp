@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 30325 2010-06-21 12:32:54Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -77,7 +77,7 @@ DECL_FORCE_INLINE(RTNATIVETHREAD) pdmCritSectGetNativeSelf(PCPDMCRITSECT pCritSe
 
 
 /**
- * Tail code called when we've wont the battle for the lock.
+ * Tail code called when we've won the battle for the lock.
  *
  * @returns VINF_SUCCESS.
  *

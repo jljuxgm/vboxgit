@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 30263 2010-06-16 18:31:42Z vboxsync $ */
+/* $Id: PGMAllBth.h 30325 2010-06-21 12:32:54Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1162,9 +1162,7 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
              */
             Assert(pgmMapAreMappingsEnabled(&pVM->pgm.s));
             Assert(PGMGetGuestMode(pVCpu) <= PGMMODE_PAE);
-            pgmLock(pVM);
             rc = PGM_BTH_NAME(SyncPT)(pVCpu, iPDSrc, pPDSrc, GCPtrPage);
-            pgmUnlock(pVM);
         }
         else
 # endif /* !PGM_WITHOUT_MAPPING */
