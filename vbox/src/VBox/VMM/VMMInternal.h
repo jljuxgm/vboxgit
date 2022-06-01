@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 23487 2009-10-01 14:57:14Z vboxsync $ */
+/* $Id: VMMInternal.h 24582 2009-11-11 14:38:34Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -268,8 +268,11 @@ typedef struct VMM
     uint32_t                    cbRCRelLogger;
     /** Whether log flushing has been disabled or not. */
     bool                        fRCLoggerFlushingDisabled;
-    bool                        afAlignment[7]; /**< Alignment padding. */
+    bool                        afAlignment[6]; /**< Alignment padding. */
     /** @} */
+
+    /** Whether the stack guard pages have been stationed or not. */
+    bool                        fStackGuardsStationed;
 
     /** The EMT yield timer. */
     PTMTIMERR3                  pYieldTimer;
