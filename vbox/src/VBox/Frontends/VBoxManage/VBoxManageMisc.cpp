@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 24907 2009-11-24 14:22:47Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 25377 2009-12-14 19:28:05Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -441,7 +441,7 @@ int handleDiscardState(HandlerArg *a)
     return SUCCEEDED(rc) ? 0 : 1;
 }
 
-int handleAdoptdState(HandlerArg *a)
+int handleAdoptState(HandlerArg *a)
 {
     HRESULT rc;
 
