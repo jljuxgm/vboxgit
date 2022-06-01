@@ -1,4 +1,4 @@
-/* $Id: initterm-gc.cpp 13813 2008-11-04 21:55:34Z vboxsync $ */
+/* $Id: initterm-gc.cpp 26226 2010-02-03 22:11:49Z vboxsync $ */
 /** @file
  * IPRT - Init Raw-mode Context.
  */
@@ -69,7 +69,7 @@ uint64_t    g_u64ProgramStartMilliTS;
  *
  * @param   u64ProgramStartNanoTS  The startup timestamp.
  */
-RTGCDECL(int) RTRCInit(uint64_t u64ProgramStartNanoTS)
+RTRCDECL(int) RTRCInit(uint64_t u64ProgramStartNanoTS)
 {
     /*
      * Init the program start TSes.
@@ -86,7 +86,7 @@ RTGCDECL(int) RTRCInit(uint64_t u64ProgramStartNanoTS)
 /**
  * Terminates the raw-mode context runtime library.
  */
-RTGCDECL(void) RTRCTerm(void)
+RTRCDECL(void) RTRCTerm(void)
 {
     /* do nothing */
 }
