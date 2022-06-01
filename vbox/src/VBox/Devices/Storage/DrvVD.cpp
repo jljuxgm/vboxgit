@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 26289 2010-02-05 14:04:05Z vboxsync $ */
+/* $Id: DrvVD.cpp 26916 2010-03-01 14:53:27Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -644,6 +644,66 @@ static DECLCALLBACK(int) drvvdINIPFlush(RTSOCKET Sock)
                     (const char *)&fFlag, sizeof(fFlag));
     return VINF_SUCCESS;
 }
+
+/** @copydoc VDINTERFACETCPNET::pfnGetLocalAddress */
+static DECLCALLBACK(int) drvvdINIPGetLocalAddress(RTSOCKET Sock, PRTNETADDR pAddr)
+{
+   union
+    {
+        struct sockaddr     Addr;
+        struct sockaddr_in  Ipv4;
+    }               u;
+    socklen_t       cbAddr = sizeof(u);
+    RT_ZERO(u);
+    if (!lwip_getsockname(Sock, &u.Addr, &cbAddr))
+    {
+        /*
+         * Convert the address.
+         */
+        if (   cbAddr == sizeof(struct sockaddr_in)
+            && u.Addr.sa_family == AF_INET)
+        {
+            RT_ZERO(*pAddr);
+            pAddr->enmType      = RTNETADDRTYPE_IPV4;
+            pAddr->uPort        = RT_N2H_U16(u.Ipv4.sin_port);
+            pAddr->uAddr.IPv4.u = u.Ipv4.sin_addr.s_addr;
+        }
+        else
+            return VERR_NET_ADDRESS_FAMILY_NOT_SUPPORTED;
+        return VINF_SUCCESS;
+    }
+    return VERR_NET_OPERATION_NOT_SUPPORTED;
+}
+
+/** @copydoc VDINTERFACETCPNET::pfnGetPeerAddress */
+static DECLCALLBACK(int) drvvdINIPGetPeerAddress(RTSOCKET Sock, PRTNETADDR pAddr)
+{
+   union
+    {
+        struct sockaddr     Addr;
+        struct sockaddr_in  Ipv4;
+    }               u;
+    socklen_t       cbAddr = sizeof(u);
+    RT_ZERO(u);
+    if (!lwip_getpeername(Sock, &u.Addr, &cbAddr))
+    {
+        /*
+         * Convert the address.
+         */
+        if (   cbAddr == sizeof(struct sockaddr_in)
+            && u.Addr.sa_family == AF_INET)
+        {
+            RT_ZERO(*pAddr);
+            pAddr->enmType      = RTNETADDRTYPE_IPV4;
+            pAddr->uPort        = RT_N2H_U16(u.Ipv4.sin_port);
+            pAddr->uAddr.IPv4.u = u.Ipv4.sin_addr.s_addr;
+        }
+        else
+            return VERR_NET_ADDRESS_FAMILY_NOT_SUPPORTED;
+        return VINF_SUCCESS;
+    }
+    return VERR_NET_OPERATION_NOT_SUPPORTED;
+}
 #endif /* VBOX_WITH_INIP */
 
 
@@ -1152,6 +1212,8 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
             pThis->VDITcpNetCallbacks.pfnRead = RTTcpRead;
             pThis->VDITcpNetCallbacks.pfnWrite = RTTcpWrite;
             pThis->VDITcpNetCallbacks.pfnFlush = RTTcpFlush;
+            pThis->VDITcpNetCallbacks.pfnGetLocalAddress = RTTcpGetLocalAddress;
+            pThis->VDITcpNetCallbacks.pfnGetPeerAddress = RTTcpGetPeerAddress;
         }
         else
         {
@@ -1167,6 +1229,8 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
             pThis->VDITcpNetCallbacks.pfnRead = drvvdINIPRead;
             pThis->VDITcpNetCallbacks.pfnWrite = drvvdINIPWrite;
             pThis->VDITcpNetCallbacks.pfnFlush = drvvdINIPFlush;
+            pThis->VDITcpNetCallbacks.pfnGetLocalAddress = drvvdINIPGetLocalAddress;
+            pThis->VDITcpNetCallbacks.pfnGetPeerAddress = drvvdINIPGetPeerAddress;
 #endif /* VBOX_WITH_INIP */
         }
         if (RT_SUCCESS(rc))

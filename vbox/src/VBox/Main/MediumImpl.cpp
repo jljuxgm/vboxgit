@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 26809 2010-02-25 17:03:28Z vboxsync $ */
+/* $Id: MediumImpl.cpp 26916 2010-03-01 14:53:27Z vboxsync $ */
 
 /** @file
  *
@@ -839,6 +839,8 @@ HRESULT Medium::FinalConstruct()
     m->vdIfCallsTcpNet.pfnRead = RTTcpRead;
     m->vdIfCallsTcpNet.pfnWrite = RTTcpWrite;
     m->vdIfCallsTcpNet.pfnFlush = RTTcpFlush;
+    m->vdIfCallsTcpNet.pfnGetLocalAddress = RTTcpGetLocalAddress;
+    m->vdIfCallsTcpNet.pfnGetPeerAddress = RTTcpGetPeerAddress;
 
     /* Initialize the per-disk interface chain */
     int vrc;
