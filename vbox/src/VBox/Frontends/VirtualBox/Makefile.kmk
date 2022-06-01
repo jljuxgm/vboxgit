@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27434 2010-03-17 10:19:38Z vboxsync $
+# $Id: Makefile.kmk 27482 2010-03-18 14:47:23Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -40,7 +40,7 @@ VBOX_WITH_UPDATE_REQUEST := 1
 
 # Build new VirtualBox FE/Qt4 GUI runtime core.
 # Currently its not used, you can build it for developing purposes.
-#VBOX_WITH_NEW_RUNTIME_CORE := 1
+VBOX_WITH_NEW_RUNTIME_CORE := 1
 # Force the usage of the new runtime core for the single monitor case also.
 #VBOX_FORCE_NEW_RUNTIME_CORE_ALWAYS := 1
 
