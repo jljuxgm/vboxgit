@@ -1,4 +1,4 @@
-/* $Id: slirp.h 28449 2010-04-19 09:52:59Z vboxsync $ */
+/* $Id: slirp.h 28480 2010-04-19 16:25:07Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -336,7 +336,6 @@ int tcp_fconnect (PNATState, struct socket *);
 void tcp_connect (PNATState, struct socket *);
 int tcp_attach (PNATState, struct socket *);
 u_int8_t tcp_tos (struct socket *);
-int tcp_emu (PNATState, struct socket *, struct mbuf *);
 int tcp_ctl (PNATState, struct socket *);
 struct tcpcb *tcp_drop(PNATState, struct tcpcb *tp, int err);
 
