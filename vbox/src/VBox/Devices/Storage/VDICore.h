@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 22966 2009-09-11 22:41:14Z vboxsync $ */
+/* $Id: VDICore.h 27808 2010-03-29 20:52:56Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -532,7 +532,7 @@ typedef struct VDIIMAGEDESC
     RTFILE                  File;
 #else
     /** Opaque storage handle. */
-    void                   *pvStorage;
+    PVDIOSTORAGE            pStorage;
 #endif
 #ifndef VBOX_VDICORE_VD
     /** True if the image is operating in readonly mode. */
@@ -590,10 +590,10 @@ typedef struct VDIIMAGEDESC
     /** Error interface callback table. */
     PVDINTERFACEERROR       pInterfaceErrorCallbacks;
 # ifdef VBOX_WITH_NEW_IO_CODE
-    /** Async I/O interface. */
-    PVDINTERFACE        pInterfaceAsyncIO;
-    /** Async I/O interface callbacks. */
-    PVDINTERFACEASYNCIO pInterfaceAsyncIOCallbacks;
+    /** I/O interface. */
+    PVDINTERFACE            pInterfaceIO;
+    /** I/O interface callbacks. */
+    PVDINTERFACEIO          pInterfaceIOCallbacks;
 # endif
 #endif /* VBOX_VDICORE_VD */
 } VDIIMAGEDESC, *PVDIIMAGEDESC;
