@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 25425 2009-12-16 11:01:44Z vboxsync $ */
+/* $Id: the-linux-kernel.h 25591 2009-12-29 19:11:46Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -38,7 +38,9 @@
 #include <iprt/types.h>
 #define bool linux_bool
 
-#include <linux/autoconf.h>
+#ifndef AUTOCONF_INCLUDED
+# include <linux/autoconf.h>
+#endif
 #include <linux/version.h>
 
 /* We only support 2.4 and 2.6 series kernels */
