@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 27621 2010-03-23 11:17:46Z vboxsync $ */
+/* $Id: UISession.cpp 27622 2010-03-23 11:18:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -650,8 +650,7 @@ void UISession::powerUp()
     bool fIs64BitsGuest = vboxGlobal().virtualBox().GetGuestOSType(console.GetGuest().GetOSTypeId()).GetIs64Bit();
     bool fRecommendVirtEx = vboxGlobal().virtualBox().GetGuestOSType(console.GetGuest().GetOSTypeId()).GetRecommendedVirtEx();
     AssertMsg(!fIs64BitsGuest || fRecommendVirtEx, ("Virtualization support missed for 64bit guest!\n"));
-//    bool fIsVirtEnabled = console.GetDebugger().GetHWVirtExEnabled();
-    bool fIsVirtEnabled = false;
+    bool fIsVirtEnabled = console.GetDebugger().GetHWVirtExEnabled();
     if (fRecommendVirtEx && !fIsVirtEnabled)
     {
         bool fShouldWeClose;
