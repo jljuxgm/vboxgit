@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 27896 2010-03-31 13:33:57Z vboxsync $ */
+/* $Id: GuestImpl.cpp 27930 2010-04-01 11:07:21Z vboxsync $ */
 
 /** @file
  *
@@ -290,7 +290,7 @@ HRESULT Guest::SetStatistic(ULONG aCpuId, GUESTSTATTYPE enmType, ULONG aVal)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    if (enmType > GUESTSTATTYPE_MAX)
+    if (enmType >= GUESTSTATTYPE_MAX)
         return E_INVALIDARG;
 
     mCurrentGuestStat[enmType] = aVal;

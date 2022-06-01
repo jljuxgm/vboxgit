@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 26044 2010-01-26 12:21:34Z vboxsync $ */
+/* $Id: PerformanceImpl.h 27930 2010-04-01 11:07:21Z vboxsync $ */
 
 /** @file
  *
@@ -199,7 +199,7 @@ private:
     HRESULT toIPerformanceMetric(pm::BaseMetric *src, IPerformanceMetric **dst);
 
     static void staticSamplerCallback (RTTIMERLR hTimerLR, void *pvUser, uint64_t iTick);
-    void samplerCallback();
+    void samplerCallback(uint64_t iTick);
 
     typedef std::list<pm::Metric*> MetricList;
     typedef std::list<pm::BaseMetric*> BaseMetricList;
