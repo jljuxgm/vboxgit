@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 25164 2009-12-03 13:08:24Z vboxsync $
+// $Id: vbox.dsl 25328 2009-12-11 13:49:48Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -849,8 +849,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
 
                     Name (_CRS, ResourceTemplate ()
                     {
-                        IO (Decode16, 0x0060, 0x0060, 0x00, 0x01)
-                        IO (Decode16, 0x0064, 0x0064, 0x00, 0x01)
                         IRQNoFlags () {12}
                     })
                 }
