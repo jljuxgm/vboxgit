@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 24678 2009-11-15 16:07:51Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 24780 2009-11-19 10:14:17Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -184,17 +184,21 @@ int handleStorageAttach(HandlerArg *a)
         fRunTime = true;
     }
 
-    if (   fRunTime
-        && (   !RTStrICmp(pszMedium, "none")
-            || !RTStrICmp(pszType, "hdd")))
+    if (fRunTime && !RTStrICmp(pszType, "hdd"))
     {
-        errorArgument("DVD/HardDisk Drives can't be changed while the VM is still running\n");
+        errorArgument("Hard disk drives cannot be changed while the VM is running\n");
+        goto leave;
+    }
+
+    if (fRunTime && !RTStrICmp(pszMedium, "none"))
+    {
+        errorArgument("Drives cannot be removed while the VM is running\n");
         goto leave;
     }
 
     if (fRunTime && pszPassThrough)
     {
-        errorArgument("Drive passthrough state can't be changed while the VM is still running\n");
+        errorArgument("Drive passthrough state can't be changed while the VM is running\n");
         goto leave;
     }
 
