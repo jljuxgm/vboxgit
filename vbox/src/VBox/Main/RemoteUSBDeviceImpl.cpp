@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.cpp 25310 2009-12-10 17:06:44Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 
 /** @file
  *
@@ -23,6 +23,8 @@
  */
 
 #include "RemoteUSBDeviceImpl.h"
+
+#include "AutoCaller.h"
 #include "Logging.h"
 
 #include <VBox/err.h>

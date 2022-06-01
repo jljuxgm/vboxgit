@@ -1,4 +1,4 @@
-/* $Id: server.cpp 24989 2009-11-26 11:31:46Z vboxsync $ */
+/* $Id: server.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -68,7 +68,7 @@
 #include <SnapshotImpl.h>
 #include <MediumImpl.h>
 #include <MediumFormatImpl.h>
-#include <ProgressImpl.h>
+#include <ProgressCombinedImpl.h>
 #include <VRDPServerImpl.h>
 #include <SharedFolderImpl.h>
 #include <HostImpl.h>

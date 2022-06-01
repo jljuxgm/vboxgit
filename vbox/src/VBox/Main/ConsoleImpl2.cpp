@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 25841 2010-01-14 18:35:33Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -34,6 +34,7 @@
 // generated header
 #include "SchemaDefs.h"
 
+#include "AutoCaller.h"
 #include "Logging.h"
 
 #include <iprt/buildconfig.h>
@@ -2859,7 +2860,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 hrc = hostInterface->EnableStaticIpConfig(getDefaultIPv4Address(Bstr(pszHifName)),
                                                           Bstr(VBOXNET_IPV4MASK_DEFAULT));
             }
-            
+
             ComAssertComRC(hrc); /** @todo r=bird: Why this isn't fatal? (H()) */
 
             hrc = virtualBox->GetExtraData(BstrFmt("HostOnly/%s/IPV6Address", pszHifName), tmpAddr.asOutParam());

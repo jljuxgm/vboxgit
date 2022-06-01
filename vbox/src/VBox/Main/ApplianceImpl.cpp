@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 25789 2010-01-12 18:33:33Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -41,6 +41,7 @@
 
 #include "HostNetworkInterfaceImpl.h"
 
+#include "AutoCaller.h"
 #include "Logging.h"
 
 using namespace std;

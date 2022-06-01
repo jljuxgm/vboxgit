@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 25198 2009-12-04 17:53:00Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 
 /** @file
  *
@@ -22,6 +22,8 @@
  */
 
 #include "USBDeviceImpl.h"
+
+#include "AutoCaller.h"
 #include "Logging.h"
 
 // constructor / destructor

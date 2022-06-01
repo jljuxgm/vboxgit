@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 25589 2009-12-28 21:40:51Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 
 /** @file
  *
@@ -24,6 +24,7 @@
 #include "StorageControllerImpl.h"
 #include "MachineImpl.h"
 #include "VirtualBoxImpl.h"
+#include "AutoCaller.h"
 #include "Logging.h"
 
 #include <iprt/string.h>

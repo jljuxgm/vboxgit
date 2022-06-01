@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 25843 2010-01-14 18:51:32Z vboxsync $ */
+/* $Id: MediumImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 
 /** @file
  *
@@ -26,6 +26,7 @@
 #include "SystemPropertiesImpl.h"
 #include "VirtualBoxImpl.h"
 
+#include "AutoCaller.h"
 #include "Logging.h"
 
 #include <VBox/com/array.h>
@@ -195,7 +196,7 @@ struct Medium::Task : public com::SupportErrorInfoBase
                    };
 
     Medium *that;
-    VirtualBoxBaseProto::AutoCaller m_autoCaller;
+    AutoCaller m_autoCaller;
 
     ComObjPtr<Progress> m_pProgress;
     Operation m_operation;

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 25842 2010-01-14 18:50:03Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -68,6 +68,7 @@
 #include "PerformanceImpl.h"
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
+#include "AutoCaller.h"
 #include "Logging.h"
 #include "objectslist.h"
 

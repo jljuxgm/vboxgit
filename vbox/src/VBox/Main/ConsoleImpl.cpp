@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 25698 2010-01-08 23:23:51Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 
 /** @file
  *
@@ -59,6 +59,7 @@
 #include "RemoteUSBDeviceImpl.h"
 #include "SharedFolderImpl.h"
 #include "AudioSnifferInterface.h"
+#include "ProgressCombinedImpl.h"
 #include "ConsoleVRDPServer.h"
 #include "VMMDev.h"
 #include "package-generated.h"
@@ -66,6 +67,7 @@
 // generated header
 #include "SchemaDefs.h"
 
+#include "AutoCaller.h"
 #include "Logging.h"
 
 #include <VBox/com/array.h>

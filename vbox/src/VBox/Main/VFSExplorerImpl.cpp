@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 25310 2009-12-10 17:06:44Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -34,6 +34,7 @@
 #include "VirtualBoxImpl.h"
 #include "ProgressImpl.h"
 
+#include "AutoCaller.h"
 #include "Logging.h"
 
 ////////////////////////////////////////////////////////////////////////////////

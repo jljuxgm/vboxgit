@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 
 /** @file
  *
@@ -27,6 +27,7 @@
 #include "KeyboardImpl.h"
 #include "MouseImpl.h"
 
+#include "AutoCaller.h"
 #include "Logging.h"
 
 #include <iprt/asm.h>

@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 25310 2009-12-10 17:06:44Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 
 /** @file
  *
@@ -26,6 +26,7 @@
 #include "ConsoleVRDPServer.h"
 #include "VMMDev.h"
 
+#include "AutoCaller.h"
 #include "Logging.h"
 
 #include <iprt/semaphore.h>

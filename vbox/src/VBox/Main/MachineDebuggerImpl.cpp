@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 25310 2009-12-10 17:06:44Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 
 /** @file
  *
@@ -25,6 +25,8 @@
 
 #include "Global.h"
 #include "ConsoleImpl.h"
+
+#include "AutoCaller.h"
 #include "Logging.h"
 
 #include <VBox/em.h>

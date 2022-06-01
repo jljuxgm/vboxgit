@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 25841 2010-01-14 18:35:33Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 
 /** @file
  *
@@ -22,6 +22,7 @@
  */
 
 #include "HostNetworkInterfaceImpl.h"
+#include "AutoCaller.h"
 #include "Logging.h"
 #include "netif.h"
 

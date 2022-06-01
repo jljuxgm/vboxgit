@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 25589 2009-12-28 21:40:51Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 25860 2010-01-15 13:27:26Z vboxsync $ */
 
 /** @file
  *
@@ -24,6 +24,7 @@
 #include "SystemPropertiesImpl.h"
 #include "VirtualBoxImpl.h"
 #include "MachineImpl.h"
+#include "AutoCaller.h"
 #include "Logging.h"
 
 // generated header
