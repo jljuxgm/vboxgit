@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 27150 2010-03-07 17:59:53Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 27227 2010-03-09 17:34:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -187,20 +187,11 @@ bool UIMachineViewSeamless::event(QEvent *pEvent)
             //mDockIconPreview->setOriginalSize(pResizeEvent->width(), pResizeEvent->height());
 #endif /* Q_WS_MAC */
 
-            /* Unfortunately restoreOverrideCursor() is broken in Qt 4.4.0 if WA_PaintOnScreen widgets are present.
-             * This is the case on linux with SDL. As workaround we save/restore the arrow cursor manually.
-             * See http://trolltech.com/developer/task-tracker/index_html?id=206165&method=entry for details.
-             * Moreover the current cursor, which could be set by the guest, should be restored after resize: */
-            if (uisession()->isValidPointerShapePresent())
-                viewport()->setCursor(uisession()->cursor());
-            else if (uisession()->isHidingHostPointer())
-                viewport()->setCursor(Qt::BlankCursor);
-            /* This event appears in case of guest video was changed for somehow even without video resolution change.
-             * In this last case the host VM window will not be resized according this event and the host mouse cursor
-             * which was unset to default here will not be hidden in capture state. So it is necessary to perform
-             * updateMouseClipping() for the guest resize event if the mouse cursor was captured: */
-            if (uisession()->isMouseCaptured())
-                updateMouseClipping();
+            /* Update mouse cursor shape: */
+            updateMouseCursorShape();
+#ifdef Q_WS_WIN32
+            updateMouseCursorClipping();
+#endif
 
             /* Report to the VM thread that we finished resizing: */
             session().GetConsole().GetDisplay().ResizeCompleted(screenId());
