@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27129 2010-03-06 00:16:08Z vboxsync $
+# $Id: Makefile.kmk 27164 2010-03-08 13:19:29Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxVideo.
 #
@@ -41,6 +41,7 @@ endif
 ifdef VBOX_WITH_VIDEOHWACCEL
  VBoxVideo_DEFS      += VBOX_WITH_VIDEOHWACCEL
 endif
+VBoxVideo_DEFS        += VBOX_WITH_MULTIMONITOR_FIX
 #VBoxVideo_DEFS        += LOG_ENABLED
 VBoxVideo_INCS        = ../../include
 VBoxVideo_LDFLAGS.x86   = /Entry:DriverEntry@8
