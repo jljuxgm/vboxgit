@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 28661 2010-04-23 15:56:01Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 28663 2010-04-23 16:09:55Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -712,7 +712,7 @@ int  VBOXCALL   supdrvOSLdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
                 case    0xC0000428 /* STATUS_INVALID_IMAGE_HASH */ :
                     rc = VERR_LDR_IMAGE_HASH;
                     break;
-                case    0xC000010E /* STATUS_ALREADY_LOADED */ :
+                case    0xC000010E /* STATUS_IMAGE_ALREADY_LOADED */ :
                     rc = VERR_ALREADY_LOADED;
                     break;
                 default:
