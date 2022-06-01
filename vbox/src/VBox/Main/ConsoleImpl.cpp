@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 24250 2009-11-02 13:00:58Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 24255 2009-11-02 14:04:08Z vboxsync $ */
 
 /** @file
  *
@@ -2654,32 +2654,6 @@ const char *Console::controllerTypeToDev(StorageControllerType_T enmCtrlType)
             return "i82078";
         default:
             return NULL;
-    }
-}
-
-void Console::controllerDevToBool(const char *pszCtrlDev, bool *afBool)
-{
-    if (!strcmp("lsilogicscsi", pszCtrlDev))
-    {
-        afBool[StorageControllerType_LsiLogic] = true;
-    }
-    else if (!strcmp("buslogic", pszCtrlDev))
-    {
-        afBool[StorageControllerType_BusLogic] = true;
-    }
-    else if (!strcmp("ahci", pszCtrlDev))
-    {
-        afBool[StorageControllerType_IntelAhci] = true;
-    }
-    else if (!strcmp("piix3ide", pszCtrlDev))
-    {
-        afBool[StorageControllerType_PIIX3] = true;
-        afBool[StorageControllerType_PIIX4] = true;
-        afBool[StorageControllerType_ICH6]  = true;
-    }
-    else if (!strcmp("i82078", pszCtrlDev))
-    {
-        afBool[StorageControllerType_I82078] = true;
     }
 }
 

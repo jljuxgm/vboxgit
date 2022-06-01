@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 24250 2009-11-02 13:00:58Z vboxsync $ */
+/* $Id: ConsoleImpl.h 24255 2009-11-02 14:04:08Z vboxsync $ */
 
 /** @file
  *
@@ -442,7 +442,6 @@ private:
                                           bool fHostDrive, const char *pszPath,
                                           const char *pszFormat, bool fPassthrough);
     const char *controllerTypeToDev(StorageControllerType_T enmCtrlType);
-    void controllerDevToBool(const char *pszCtrlDev, bool *afBool);
     HRESULT convertBusPortDeviceToLun(StorageBus_T enmBus, LONG port, LONG device, unsigned &uLun);
     HRESULT doMediumChange(IMediumAttachment *aMediumAttachment);
 
