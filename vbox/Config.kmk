@@ -1,4 +1,4 @@
-# $Id: Config.kmk 29044 2010-05-04 20:38:42Z vboxsync $
+# $Id: Config.kmk 29068 2010-05-05 11:58:02Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -807,8 +807,6 @@ ifdef VBOX_OSE
  if1of ($(KBUILD_TARGET), solaris)
   VBOX_WITH_NEW_USB_CODE_ON_SOLARIS=
  endif
- VBOX_WITH_LPC=
- VBOX_WITH_SMC=
  VBOX_USB_WITH_SYSFS=
  # branding
  VBOX_BRAND_BIOS_LOGO          := $(PATH_ROOT)/src/VBox/Devices/Graphics/BIOS/ose_logo.bmp
@@ -4081,7 +4079,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29044 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 29068 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
