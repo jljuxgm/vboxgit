@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 27746 2010-03-26 14:55:02Z vboxsync $ */
+/* $Id: PGMPhys.cpp 27749 2010-03-26 14:57:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -818,6 +818,9 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysChangeMemBalloonRendezvous(PVM pVM, P
 
             LogFlow(("balloon page: %RGp\n", paPhysPage[i]));
 
+            /* Flush the shadow PT if this page was previously used as a guest page table. */
+            pgmPoolFlushPageByGCPhys(pVM, paPhysPage[i]);
+
             rc = pgmPhysFreePage(pVM, pReq, &cPendingPages, pPage, paPhysPage[i]);
             if (RT_FAILURE(rc))
             {
@@ -827,9 +830,6 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysChangeMemBalloonRendezvous(PVM pVM, P
             }
             Assert(PGM_PAGE_IS_ZERO(pPage));
             PGM_PAGE_SET_STATE(pPage, PGM_PAGE_STATE_BALLOONED);
-
-            /* Flush the shadow PT if this page was previously used as a guest page table. */
-            pgmPoolFlushPageByGCPhys(pVM, paPhysPage[i]);
         }
 
         if (cPendingPages)
