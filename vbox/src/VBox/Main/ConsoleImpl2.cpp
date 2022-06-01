@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 29248 2010-05-09 17:18:13Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 29249 2010-05-09 17:36:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -121,7 +121,7 @@ static int DarwinSmcKey(char *aKey, uint32_t iKeySize)
         uint8_t    data[32];
     } AppleSMCBuffer;
 
-    AssertReturn(iKeySize >= 65, VERR_INTERNAL_ERROR;
+    AssertReturn(iKeySize >= 65, VERR_INTERNAL_ERROR);
 
     io_service_t service = IOServiceGetMatchingService(kIOMasterPortDefault,
                                                        IOServiceMatching("AppleSMC"));
