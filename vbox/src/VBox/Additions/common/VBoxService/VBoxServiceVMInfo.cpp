@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 26085 2010-01-28 14:32:05Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 26087 2010-01-28 15:12:30Z vboxsync $ */
 /** @file
  * VBoxVMInfo - Virtual machine (guest) information for the host.
  */
@@ -227,6 +227,9 @@ DECLCALLBACK(int) VBoxServiceVMInfoWorker(bool volatile *pfShutdown)
         for (ULONG i=0; i<ulCount; i++)
         {
             VBOXSERVICEVMINFOUSER userInfo;
+            /* Leave the memory clearing *inside* the loop as VBoxServiceVMInfoWinIsLoggedIn
+             * assumes the memory reserved for strings is zeroed.
+             */
             ZeroMemory (&userInfo, sizeof(VBOXSERVICEVMINFOUSER));
 
             if (   VBoxServiceVMInfoWinIsLoggedIn(&userInfo, &pSessions[i])
