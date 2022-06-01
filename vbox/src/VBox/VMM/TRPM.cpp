@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 25647 2010-01-05 09:59:19Z vboxsync $ */
+/* $Id: TRPM.cpp 25816 2010-01-13 21:05:35Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -712,6 +712,10 @@ VMMR3DECL(int) TRPMR3Term(PVM pVM)
     return 0;
 }
 
+VMMR3DECL(void) TRPMR3ResetCpu(PVMCPU pVCpu)
+{
+    pVCpu->trpm.s.uActiveVector = ~0;
+}
 
 /**
  * The VM is being reset.
@@ -745,7 +749,7 @@ VMMR3DECL(void) TRPMR3Reset(PVM pVM)
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
         PVMCPU pVCpu = &pVM->aCpus[i];
-        pVCpu->trpm.s.uActiveVector = ~0;
+        TRPMR3ResetCpu(pVCpu);
     }
     memcpy(&pVM->trpm.s.aIdt[0], &g_aIdt[0], sizeof(pVM->trpm.s.aIdt));
     memset(pVM->trpm.s.aGuestTrapHandler, 0, sizeof(pVM->trpm.s.aGuestTrapHandler));
