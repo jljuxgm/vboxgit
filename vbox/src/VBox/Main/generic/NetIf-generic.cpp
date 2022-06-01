@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 25088 2009-11-30 09:01:38Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -241,7 +241,6 @@ int NetIfRemoveHostOnlyNetworkInterface (VirtualBox *pVBox, IN_GUID aId,
                             FALSE /* aCancelable */);
         if(SUCCEEDED(rc))
         {
-            CheckComRCReturnRC(rc);
             progress.queryInterfaceTo(aProgress);
             rc = NetIfAdpCtl(Utf8Str(ifname).c_str(), "remove", NULL, NULL);
             if (RT_FAILURE(rc))

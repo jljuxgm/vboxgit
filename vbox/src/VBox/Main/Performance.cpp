@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: Performance.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
 
 /** @file
  *
@@ -294,13 +294,13 @@ void MachineRamUsage::collect()
         mUsed->put(used);
 }
 
-void CircularBuffer::init(ULONG length)
+void CircularBuffer::init(ULONG ulLength)
 {
     if (mData)
         RTMemFree(mData);
-    mLength = length;
+    mLength = ulLength;
     if (mLength)
-        mData = (ULONG *)RTMemAllocZ(length * sizeof(ULONG));
+        mData = (ULONG*)RTMemAllocZ(ulLength * sizeof(ULONG));
     else
         mData = NULL;
     mWrapped = false;

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfo.cpp 22173 2009-08-11 15:38:59Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfo.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -253,7 +253,7 @@ NS_IMETHODIMP VirtualBoxErrorInfo::GetInner (nsIException **aInner)
 {
     ComPtr<IVirtualBoxErrorInfo> info;
     nsresult rv = COMGETTER(Next) (info.asOutParam());
-    CheckComRCReturnRC(rv);
+    if (FAILED(rv)) return rv;
     return info.queryInterfaceTo(aInner);
 }
 
@@ -304,7 +304,7 @@ HRESULT VirtualBoxErrorInfoGlue::init (IVirtualBoxErrorInfo *aHead,
     {
         ComPtr<IVirtualBoxErrorInfo> next;
         rc = cur->COMGETTER(Next) (next.asOutParam());
-        CheckComRCReturnRC(rc);
+        if (FAILED(rc)) return rc;
 
         if (next.isNull())
             break;
@@ -326,7 +326,7 @@ HRESULT VirtualBoxErrorInfoGlue::init (IVirtualBoxErrorInfo *aHead,
     {
         ComObjPtr<VirtualBoxErrorInfoGlue> wrapper;
         rc = wrapper.createObject();
-        CheckComRCBreakRC (rc);
+        if (FAILED(rc)) break;
 
         -- prev;
 
@@ -337,7 +337,7 @@ HRESULT VirtualBoxErrorInfoGlue::init (IVirtualBoxErrorInfo *aHead,
 
         *prev = wrapper;
 
-        CheckComRCBreakRC (rc);
+        if (FAILED(rc)) break;
     }
 
     mReal = aHead;

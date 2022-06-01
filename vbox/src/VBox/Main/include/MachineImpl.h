@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 24989 2009-11-26 11:31:46Z vboxsync $ */
+/* $Id: MachineImpl.h 25149 2009-12-02 14:34:47Z vboxsync $ */
 
 /** @file
  *
@@ -349,7 +349,7 @@ public:
      *
      *  @code
      *      AutoCaller autoCaller(this);
-     *      CheckComRCReturnRC(autoCaller.rc());
+     *      if (FAILED(autoCaller.rc())) return autoCaller.rc();
      *
      *      Machine::AutoStateDependency<MutableStateDep> adep(mParent);
      *      CheckComRCReturnRC(stateDep.rc());

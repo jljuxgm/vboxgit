@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 25108 2009-11-30 13:08:28Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -1030,7 +1030,7 @@ int handleAddiSCSIDisk(HandlerArg *a)
                                BstrFmt ("%ls|%ls|%ls", server.raw(), target.raw(), lun.raw()),
                                hardDisk.asOutParam()));
         }
-        CheckComRCBreakRC (rc);
+        if (FAILED(rc)) break;
 
         if (!port.isNull())
             server = BstrFmt ("%ls:%ls", server.raw(), port.raw());
