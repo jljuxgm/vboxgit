@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 24358 2009-11-04 21:54:42Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 24530 2009-11-09 23:16:52Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -680,14 +680,20 @@ static int pdmacFileAioMgrNormalProcessBlockingEvent(PPDMACEPFILEMGR pAioMgr)
             PPDMASYNCCOMPLETIONENDPOINTFILE pEndpointClose = (PPDMASYNCCOMPLETIONENDPOINTFILE)ASMAtomicReadPtr((void * volatile *)&pAioMgr->BlockingEventData.CloseEndpoint.pEndpoint);
             AssertMsg(VALID_PTR(pEndpointClose), ("Close endpoint event without a endpoint to close\n"));
 
-            LogFlowFunc((": Closing endpoint %#p{%s}\n", pEndpointClose, pEndpointClose->Core.pszUri));
+            if (pEndpointClose->enmState == PDMASYNCCOMPLETIONENDPOINTFILESTATE_ACTIVE)
+            {
+                LogFlowFunc((": Closing endpoint %#p{%s}\n", pEndpointClose, pEndpointClose->Core.pszUri));
 
-            /* Make sure all tasks finished. Process the queues a last time first. */
-            rc = pdmacFileAioMgrNormalQueueReqs(pAioMgr, pEndpointClose);
-            AssertRC(rc);
+                /* Make sure all tasks finished. Process the queues a last time first. */
+                rc = pdmacFileAioMgrNormalQueueReqs(pAioMgr, pEndpointClose);
+                AssertRC(rc);
 
-            pEndpointClose->enmState = PDMASYNCCOMPLETIONENDPOINTFILESTATE_CLOSING;
-            fNotifyWaiter = !pdmacFileAioMgrNormalRemoveEndpoint(pEndpointClose);
+                pEndpointClose->enmState = PDMASYNCCOMPLETIONENDPOINTFILESTATE_CLOSING;
+                fNotifyWaiter = !pdmacFileAioMgrNormalRemoveEndpoint(pEndpointClose);
+            }
+            else if (   (pEndpointClose->enmState == PDMASYNCCOMPLETIONENDPOINTFILESTATE_CLOSING)
+                     && (!pEndpointClose->AioMgr.cRequestsActive))
+                fNotifyWaiter = true;
             break;
         }
         case PDMACEPFILEAIOMGRBLOCKINGEVENT_SHUTDOWN:
@@ -769,7 +775,7 @@ static int pdmacFileAioMgrNormalCheckEndpoints(PPDMACEPFILEMGR pAioMgr)
                 /* Release the waiting thread. */
                 LogFlow(("Signalling waiter\n"));
                 rc = RTSemEventSignal(pAioMgr->EventSemBlock);
-                AssertRC(rc);    
+                AssertRC(rc);
             }
         }
 
