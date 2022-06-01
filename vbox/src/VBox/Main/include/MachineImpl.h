@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 28110 2010-04-08 18:07:13Z vboxsync $ */
+/* $Id: MachineImpl.h 28149 2010-04-09 15:43:44Z vboxsync $ */
 
 /** @file
  *
@@ -92,8 +92,6 @@ class ATL_NO_VTABLE Machine :
     Q_OBJECT
 
 public:
-
-//     enum InitMode { Init_New, Init_Import, Init_Registered };
 
     enum StateDependency
     {
