@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 26873 2010-02-26 17:12:31Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 26950 2010-03-02 15:08:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1012,6 +1012,18 @@ int VBoxProblemReporter::cannotEnterFullscreenMode (ULONG /* aWidth */,
              0, /* aAutoConfirmId */
              QIMessageBox::Ignore | QIMessageBox::Default,
              QIMessageBox::Cancel | QIMessageBox::Escape);
+}
+
+int VBoxProblemReporter::cannotEnterFullscreenMode()
+{
+    return message(mainMachineWindowShown(), Error,
+             tr ("<p>Can not switch the guest display to fullscreen mode. You "
+                 "have more virtual screens configured than physical screens are "
+                 "attached to your host.</p><p>Please either lower the virtual "
+                 "screens in your VM configuration or attach additional screens "
+                 "to your host.</p>"),
+             0, /* aAutoConfirmId */
+             QIMessageBox::Ok | QIMessageBox::Default);
 }
 
 bool VBoxProblemReporter::confirmMachineDeletion (const CMachine &machine)
