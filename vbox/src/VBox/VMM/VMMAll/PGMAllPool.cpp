@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 30326 2010-06-21 12:35:33Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 30332 2010-06-21 13:55:54Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4911,9 +4911,7 @@ PPGMPOOLPAGE pgmPoolGetPage(PPGMPOOL pPool, RTHCPHYS HCPhys)
     /*
      * Look up the page.
      */
-    pgmLock(pVM);
     PPGMPOOLPAGE pPage = (PPGMPOOLPAGE)RTAvloHCPhysGet(&pPool->HCPhysTree, HCPhys & X86_PTE_PAE_PG_MASK);
-    pgmUnlock(pVM);
 
     AssertFatalMsg(pPage && pPage->enmKind != PGMPOOLKIND_FREE, ("HCPhys=%RHp pPage=%p idx=%d\n", HCPhys, pPage, (pPage) ? pPage->idx : 0));
     return pPage;
