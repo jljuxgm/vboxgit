@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 28015 2010-04-06 15:27:40Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 28032 2010-04-07 08:00:34Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -225,7 +225,7 @@ static int handleExecProgram(HandlerArg *a)
 
             ComPtr<IProgress> progress;
             ULONG uPID = 0;
-            CHECK_ERROR_BREAK(guest, ExecuteProgram(Bstr(Utf8Cmd), uFlags, 
+            CHECK_ERROR_BREAK(guest, ExecuteProcess(Bstr(Utf8Cmd), uFlags, 
                                                     ComSafeArrayAsInParam(args), ComSafeArrayAsInParam(env), 
                                                     Bstr(Utf8StdIn), Bstr(Utf8StdOut), Bstr(Utf8StdErr),
                                                     Bstr(Utf8UserName), Bstr(Utf8Password), uTimeoutMS,

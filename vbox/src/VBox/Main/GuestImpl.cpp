@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28029 2010-04-07 07:31:23Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28032 2010-04-07 08:00:34Z vboxsync $ */
 
 /** @file
  *
@@ -430,7 +430,7 @@ int Guest::prepareExecuteEnv(const char *pszEnv, void **ppvList, uint32_t *pcbLi
 }
 #endif /* VBOX_WITH_GUEST_CONTROL */
 
-STDMETHODIMP Guest::ExecuteProgram(IN_BSTR aCommand, ULONG aFlags,
+STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
                                    ComSafeArrayIn(IN_BSTR, aArguments), ComSafeArrayIn(IN_BSTR, aEnvironment),
                                    IN_BSTR aStdIn, IN_BSTR aStdOut, IN_BSTR aStdErr,
                                    IN_BSTR aUserName, IN_BSTR aPassword,
