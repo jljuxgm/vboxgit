@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 29989 2010-06-02 12:46:49Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 30396 2010-06-23 15:26:41Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -976,7 +976,7 @@ STDMETHODIMP Progress::SetCurrentOperationProgress(ULONG aPercent)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    AssertReturn(aPercent <= 100, E_INVALIDARG);
+    AssertMsgReturn(aPercent <= 100, ("%u\n", aPercent), E_INVALIDARG);
 
     checkForAutomaticTimeout();
     if (mCancelable && mCanceled)
