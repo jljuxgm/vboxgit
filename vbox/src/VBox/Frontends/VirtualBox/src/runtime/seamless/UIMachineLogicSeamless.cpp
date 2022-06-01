@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 27145 2010-03-07 16:48:28Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 27215 2010-03-09 13:34:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -145,6 +145,8 @@ void UIMachineLogicSeamless::initialize()
         sltMachineStateChanged();
         sltAdditionsStateChanged();
         sltMouseCapabilityChanged();
+
+        retranslateUi();
     }
 }
 

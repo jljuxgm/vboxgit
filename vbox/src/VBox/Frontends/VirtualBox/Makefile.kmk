@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 27096 2010-03-05 14:35:10Z vboxsync $
+# $Id: Makefile.kmk 27215 2010-03-09 13:34:53Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -521,6 +521,9 @@ VirtualBox_SOURCES += \
 	src/runtime/seamless/UIMachineLogicSeamless.cpp \
 	src/runtime/seamless/UIMachineWindowSeamless.cpp \
 	src/runtime/seamless/UIMachineViewSeamless.cpp
+VirtualBox_SOURCES.darwin += \
+	src/darwin/UIAbstractDockIconPreview.cpp \
+	src/darwin/UICocoaDockIconPreview.mm
 endif
 
 ifeq ($(filter-out freebsd linux netbsd openbsd solaris,$(KBUILD_TARGET)),) # X11
@@ -547,7 +550,7 @@ VirtualBox_SOURCES.win += \
 	src/VBoxFBDDRAW.cpp \
 	src/win/VirtualBox.rc
 
-VirtualBox_SOURCES.darwin = \
+VirtualBox_SOURCES.darwin += \
 	src/darwin/DarwinKeyboard.cpp \
 	src/darwin/VBoxUtils-darwin.cpp \
 	src/darwin/AbstractDockIconPreview.cpp \

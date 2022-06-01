@@ -1,4 +1,4 @@
-/* $Id: VBoxDefs.cpp 26714 2010-02-23 15:17:42Z vboxsync $ */
+/* $Id: VBoxDefs.cpp 27215 2010-03-09 13:34:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -55,6 +55,7 @@ const char* VBoxDefs::GUI_MainWindowCount = "GUI/MainWindowCount";
 #endif
 #ifdef Q_WS_MAC
 const char* VBoxDefs::GUI_RealtimeDockIconUpdateEnabled = "GUI/RealtimeDockIconUpdateEnabled";
+const char* VBoxDefs::GUI_RealtimeDockIconUpdateMonitor = "GUI/RealtimeDockIconUpdateMonitor";
 const char* VBoxDefs::GUI_PresentationModeEnabled = "GUI/PresentationModeEnabled";
 #endif /* Q_WS_MAC */
 const char* VBoxDefs::GUI_PassCAD = "GUI/PassCAD";

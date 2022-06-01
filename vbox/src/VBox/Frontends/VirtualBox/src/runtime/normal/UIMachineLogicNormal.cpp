@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 27132 2010-03-06 13:33:12Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 27215 2010-03-09 13:34:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -77,6 +77,8 @@ void UIMachineLogicNormal::initialize()
         sltMachineStateChanged();
         sltAdditionsStateChanged();
         sltMouseCapabilityChanged();
+
+        retranslateUi();
     }
 }
 

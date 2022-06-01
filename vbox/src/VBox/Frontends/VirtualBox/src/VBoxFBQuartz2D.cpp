@@ -1,4 +1,4 @@
-/* $Id: VBoxFBQuartz2D.cpp 26719 2010-02-23 16:18:14Z vboxsync $ */
+/* $Id: VBoxFBQuartz2D.cpp 27215 2010-03-09 13:34:53Z vboxsync $ */
 /** @file
  * Qt GUI (aka VirtualBox) - Quartz2D framebuffer implementation.
  */
@@ -229,7 +229,8 @@ void VBoxQuartz2DFrameBuffer::paintEvent (QPaintEvent *aEvent)
     CGContextScaleCTM (ctx, 1.0, -1.0);
 
     /* We handle the seamless mode as a special case. */
-    if (main->isTrueSeamless())
+    if (   main
+        && main->isTrueSeamless())
     {
         /* Here we paint the windows without any wallpaper.
          * So the background would be set transparently. */

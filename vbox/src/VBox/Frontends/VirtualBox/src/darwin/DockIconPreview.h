@@ -1,4 +1,4 @@
-/* $Id: DockIconPreview.h 25171 2009-12-03 15:53:14Z vboxsync $ */
+/* $Id: DockIconPreview.h 27215 2010-03-09 13:34:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -32,6 +32,14 @@ class VBoxDockIconPreview: public CocoaDockIconPreview
 public:
     VBoxDockIconPreview (VBoxConsoleWnd *aMainWnd, const QPixmap& aOverlayImage)
       : CocoaDockIconPreview (aMainWnd, aOverlayImage) {}
+};
+
+#include "UICocoaDockIconPreview.h"
+class UIDockIconPreview: public UICocoaDockIconPreview
+{
+public:
+    UIDockIconPreview(UISession *pSession, const QPixmap& overlayImage)
+      : UICocoaDockIconPreview(pSession, overlayImage) {}
 };
 
 #else /* QT_MAC_USE_COCOA */
