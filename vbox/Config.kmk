@@ -1,4 +1,4 @@
-# $Id: Config.kmk 28595 2010-04-22 13:45:54Z vboxsync $
+# $Id: Config.kmk 28601 2010-04-22 15:18:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -270,7 +270,7 @@ VBOX_WITH_DOCS = 1
 # Include documentation in the package
 VBOX_WITH_DOCS_PACKING = 1
 # Include CHM when building docs (unset in LocalConfig.kmk to suppress CHM)
-if defined(VBOX_ONLY_DOCS) || "$(KBUILD_TARGET)" != "linux"
+ifn1of ($(KBUILD_TARGET), linux)
  VBOX_WITH_DOCS_CHM = 1
 endif
 # Don't bother with documentation, overrides VBOX_WITH_DOCS.
@@ -762,6 +762,13 @@ endif
 #
 ifdef VBOX_WITHOUT_LINUX_COMPILER_H
  $(warning VBOX_WITHOUT_LINUX_COMPILER_H was renamed to VBOX_WITH_LINUX_COMPILER_H, the meaning is inverted.)
+endif
+
+#
+# For the docs build box.
+#
+ifdef VBOX_ONLY_DOCS
+ VBOX_WITH_DOCS_CHM = 1
 endif
 
 #
@@ -4076,7 +4083,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28595 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 28601 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
