@@ -1,4 +1,4 @@
-/* $Id: ATAController.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: ATAController.h 24096 2009-10-26 22:35:29Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller types.
  */
@@ -365,7 +365,10 @@ typedef struct AHCIATACONTROLLER
     uint8_t             AsyncIOReqHead;
     /** The position at which to get a new request for the AIO thread. */
     uint8_t             AsyncIOReqTail;
-    uint8_t             Alignment3[2]; /**< Explicit padding of the 2 byte gap. */
+    /** Whether to call RTThreadUserSignal when idle.
+     * Before setting this, call RTThreadUserReset. */
+    bool volatile       fSignalIdle;
+    uint8_t             Alignment3[1]; /**< Explicit padding of the 1 byte gap. */
     /** Magic delay before triggering interrupts in DMA mode. */
     uint32_t            DelayIRQMillies;
     /** The mutex protecting the request queue. */
