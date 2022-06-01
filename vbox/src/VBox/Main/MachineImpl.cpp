@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 27166 2010-03-08 14:16:00Z vboxsync $ */
+/* $Id: MachineImpl.cpp 27172 2010-03-08 15:55:12Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -1708,19 +1708,27 @@ STDMETHODIMP Machine::SetHWVirtExProperty(HWVirtExPropertyType_T property, BOOL 
     switch(property)
     {
         case HWVirtExPropertyType_Enabled:
-            pb = &mHWData->mHWVirtExEnabled;
+            setModified(IsModified_MachineData);
+            mHWData.backup();
+            mHWData->mHWVirtExEnabled = !!aVal;
             break;
 
         case HWVirtExPropertyType_Exclusive:
-            pb = &mHWData->mHWVirtExExclusive;
+            setModified(IsModified_MachineData);
+            mHWData.backup();
+            mHWData->mHWVirtExExclusive = !!aVal;
             break;
 
         case HWVirtExPropertyType_VPID:
-            pb = &mHWData->mHWVirtExVPIDEnabled;
+            setModified(IsModified_MachineData);
+            mHWData.backup();
+            mHWData->mHWVirtExVPIDEnabled = !!aVal;
             break;
 
         case HWVirtExPropertyType_NestedPaging:
-            pb = &mHWData->mHWVirtExNestedPagingEnabled;
+            setModified(IsModified_MachineData);
+            mHWData.backup();
+            mHWData->mHWVirtExNestedPagingEnabled = !!aVal;
             break;
 
         case HWVirtExPropertyType_LargePages:
@@ -1731,12 +1739,6 @@ STDMETHODIMP Machine::SetHWVirtExProperty(HWVirtExPropertyType_T property, BOOL 
             return E_INVALIDARG;
     }
 
-    if (*pb != !!aVal)
-    {
-        setModified(IsModified_MachineData);
-        mHWData.backup();
-        *pb = !!aVal;
-    }
     return S_OK;
 }
 
