@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 26235 2010-02-04 13:55:00Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 26550 2010-02-15 17:14:18Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -1109,19 +1109,19 @@ bool USBController::hasMatchingFilter (IUSBDevice *aUSBDevice, ULONG *aMaskedIfs
     Bstr manufacturer;
     rc = aUSBDevice->COMGETTER(Manufacturer) (manufacturer.asOutParam());
     ComAssertComRCRet(rc, false);
-    if (!manufacturer.isNull())
+    if (!manufacturer.isEmpty())
         USBFilterSetStringExact (&dev, USBFILTERIDX_MANUFACTURER_STR, Utf8Str(manufacturer).c_str(), true);
 
     Bstr product;
     rc = aUSBDevice->COMGETTER(Product) (product.asOutParam());
     ComAssertComRCRet(rc, false);
-    if (!product.isNull())
+    if (!product.isEmpty())
         USBFilterSetStringExact (&dev, USBFILTERIDX_PRODUCT_STR, Utf8Str(product).c_str(), true);
 
     Bstr serialNumber;
     rc = aUSBDevice->COMGETTER(SerialNumber) (serialNumber.asOutParam());
     ComAssertComRCRet(rc, false);
-    if (!serialNumber.isNull())
+    if (!serialNumber.isEmpty())
         USBFilterSetStringExact (&dev, USBFILTERIDX_SERIAL_NUMBER_STR, Utf8Str(serialNumber).c_str(), true);
 
     Bstr address;
