@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 27375 2010-03-15 16:47:50Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 27377 2010-03-15 16:53:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -266,7 +266,6 @@ void UIMachineViewSeamless::cleanupSeamless()
         session().GetConsole().GetDisplay().SetSeamlessMode(false);
 
         /* Rollback seamless frame-buffer size to normal: */
-        machineWindowWrapper()->machineWindow()->hide();
         UIMachineViewBlocker blocker(this);
         sltPerformGuestResize(guestSizeHint());
         blocker.exec();
