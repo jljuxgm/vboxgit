@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 30049 2010-06-07 06:36:26Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 30225 2010-06-16 01:56:56Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -19,7 +19,11 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <windows.h>
+#if defined(_WIN32_WINNT) && _WIN32_WINNT < 0x0502
+# undef  _WIN32_WINNT
+# define _WIN32_WINNT 0x0502 /* CachedRemoteInteractive in recent SDKs. */
+#endif
+#include <Windows.h>
 #include <wtsapi32.h>       /* For WTS* calls. */
 #include <psapi.h>          /* EnumProcesses. */
 #include <Ntsecapi.h>       /* Needed for process security information. */
