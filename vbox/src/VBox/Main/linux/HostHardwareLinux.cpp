@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 28882 2010-04-28 23:17:52Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 28886 2010-04-29 10:04:53Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1245,7 +1245,11 @@ public:
 
     ~inotifyWatch(void)
     {
-        close(mhInotify);
+        if (mhInotify != -1)
+        {
+            close(mhInotify);
+            mhInotify = -1;
+        }
     }
 
     int getStatus(void)
@@ -1437,10 +1441,16 @@ void hotplugInotifyImpl::term(void)
 {
     /** This would probably be a pending segfault, so die cleanly */
     AssertRelease(!mfWaiting);
-    close(mhWakeupPipeR);
-    mhWakeupPipeR = -1;
-    close(mhWakeupPipeW);
-    mhWakeupPipeW = -1;
+    if (mhWakeupPipeR != -1)
+    {
+        close(mhWakeupPipeR);
+        mhWakeupPipeR = -1;
+    }
+    if (mhWakeupPipeW != -1)
+    {
+        close(mhWakeupPipeW);
+        mhWakeupPipeW = -1;
+    }
 }
 
 int hotplugInotifyImpl::drainInotify()
