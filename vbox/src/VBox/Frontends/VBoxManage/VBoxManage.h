@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 24903 2009-11-24 14:07:11Z vboxsync $ */
+/* $Id: VBoxManage.h 24907 2009-11-24 14:22:47Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -185,6 +185,19 @@ int handleList(HandlerArg *a);
 
 /* VBoxManageMetrics.cpp */
 int handleMetrics(HandlerArg *a);
+
+/* VBoxManageMisc.cpp */
+int handleRegisterVM(HandlerArg *a);
+int handleUnregisterVM(HandlerArg *a);
+int handleCreateVM(HandlerArg *a);
+int handleStartVM(HandlerArg *a);
+int handleDiscardState(HandlerArg *a);
+int handleAdoptdState(HandlerArg *a);
+int handleGetExtraData(HandlerArg *a);
+int handleSetExtraData(HandlerArg *a);
+int handleSetProperty(HandlerArg *a);
+int handleSharedFolder(HandlerArg *a);
+int handleVMStatistics(HandlerArg *a);
 
 /* VBoxManageDisk.cpp */
 int handleCreateHardDisk(HandlerArg *a);
