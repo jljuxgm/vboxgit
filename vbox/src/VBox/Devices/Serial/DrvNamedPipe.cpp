@@ -1,4 +1,4 @@
-/* $Id: DrvNamedPipe.cpp 27933 2010-04-01 12:41:47Z vboxsync $ */
+/* $Id: DrvNamedPipe.cpp 27934 2010-04-01 12:50:37Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
@@ -589,7 +589,7 @@ static DECLCALLBACK(int) drvNamedPipeConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCf
         }
 
         rc = RTSemEventMultiCreate(&pThis->ListenSem);
-        AssertRCReturn(rc);
+        AssertRCReturn(rc, rc);
 
         rc = RTThreadCreate(&pThis->ListenThread, drvNamedPipeListenLoop, (void *)pThis, 0,
                             RTTHREADTYPE_IO, RTTHREADFLAGS_WAITABLE, "SerPipe");
