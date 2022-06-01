@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 28070 2010-04-07 23:20:09Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 28077 2010-04-08 01:40:09Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -398,14 +398,14 @@ static mbuf_t vboxNetFltDarwinMBufFromSG(PVBOXNETFLTINS pThis, PINTNETSG pSG)
                 if (cb > cbLeft)
                     cb = cbLeft;
                 mbuf_setlen(pCur, cb);
-                INTNETSgReadEx(pSG, off, cb, mbuf_data(pCur));
+                INTNETSgReadEx(pSG, offSrc, cb, mbuf_data(pCur));
 
                 /* advance */
                 offSrc += cb;
                 cbLeft -= cb;
                 pCur = mbuf_next(pCur);
             }
-            Assert(cbSrc == 0);
+            Assert(cbLeft == 0);
         }
         if (!err)
         {
