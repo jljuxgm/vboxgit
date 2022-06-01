@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 27703 2010-03-25 13:17:01Z vboxsync $ */
+/* $Id: VBoxManage.h 27822 2010-03-30 13:01:36Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -121,10 +121,9 @@ typedef enum
 {
     VMINFO_NONE             = 0,
     VMINFO_STANDARD         = 1,    /**< standard details */
-    VMINFO_STATISTICS       = 2,    /**< guest statistics */
-    VMINFO_FULL             = 3,    /**< both */
-    VMINFO_MACHINEREADABLE  = 4,    /**< both, and make it machine readable */
-    VMINFO_COMPACT          = 5
+    VMINFO_FULL             = 2,    /**< both */
+    VMINFO_MACHINEREADABLE  = 3,    /**< both, and make it machine readable */
+    VMINFO_COMPACT          = 4
 } VMINFO_DETAILS;
 
 ////////////////////////////////////////////////////////////////////////////////
