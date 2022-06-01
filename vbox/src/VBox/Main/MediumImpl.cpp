@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 24725 2009-11-17 15:27:03Z vboxsync $ */
+/* $Id: MediumImpl.cpp 24873 2009-11-23 15:26:01Z vboxsync $ */
 
 /** @file
  *
@@ -1520,7 +1520,7 @@ STDMETHODIMP Medium::COMSETTER(Type)(MediumType_T aType)
         case MediumType_Normal:
         case MediumType_Immutable:
         {
-            /* normal can be easily converted to imutable and vice versa even
+            /* normal can be easily converted to immutable and vice versa even
              * if they have children as long as they are not attached to any
              * machine themselves */
             break;
