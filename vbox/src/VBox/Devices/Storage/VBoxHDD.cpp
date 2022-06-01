@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 28155 2010-04-09 19:13:07Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 28226 2010-04-12 20:31:44Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1286,7 +1286,6 @@ static int vdWriteHelperAsync(PVBOXHDD pDisk, PVDIMAGE pImage, PVDIMAGE pImagePa
                 && ASMAtomicCmpXchgBool(&pIoCtxWrite->fComplete, true, false))
             {
                 LogFlow(("Child write request completed\n"));
-                RTMemTmpFree(pTmp);
                 ASMAtomicSubU32(&pIoCtx->cbTransferLeft, cbThisWrite);
                 vdIoCtxFree(pDisk, pIoCtxWrite);
             }
