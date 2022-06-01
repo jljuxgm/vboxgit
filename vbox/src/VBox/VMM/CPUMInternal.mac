@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 30164 2010-06-11 14:16:09Z vboxsync $
+; $Id: CPUMInternal.mac 30180 2010-06-14 14:13:50Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -435,7 +435,15 @@ endstruc
 %endmacro
 
 ;;
-; Converts the CPUMCPU pointer to CPUM (for the first VMCPU)
+; Converts the CPUM pointer to CPUMCPU
+; @param   %1   register name (PVM)
+; @param   %2   register name (CPUMCPU offset)
+%macro CPUMCPU_FROM_CPUM_WITH_OFFSET 2
+    add     %1, %2
+%endmacro
+
+;;
+; Converts the CPUMCPU pointer to CPUM
 ; @param   %1   register name
 %macro CPUM_FROM_CPUMCPU 1
     sub     %1, dword [%1 + CPUMCPU.offCPUM]

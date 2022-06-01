@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 30105 2010-06-09 11:03:37Z vboxsync $ */
+/* $Id: HWACCMInternal.h 30180 2010-06-14 14:13:50Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -230,10 +230,11 @@ typedef HWACCMTPRPATCH *PHWACCMTPRPATCH;
 /**
  * Switcher function, HC to RC.
  *
- * @param   pVM         The VM handle.
+ * @param   pVM             The VM handle.
+ * @param   uOffsetVMCPU    VMCPU offset from pVM
  * @returns Return code indicating the action to take.
  */
-typedef DECLASMTYPE(int) FNHWACCMSWITCHERHC(PVM pVM);
+typedef VMMDECL(int) FNHWACCMSWITCHERHC(PVM pVM, uint32_t uOffsetVMCPU);
 /** Pointer to switcher function. */
 typedef FNHWACCMSWITCHERHC *PFNHWACCMSWITCHERHC;
 
