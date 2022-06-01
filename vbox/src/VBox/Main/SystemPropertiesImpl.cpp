@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 23560 2009-10-05 12:45:09Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 24346 2009-11-04 17:04:00Z vboxsync $ */
 
 /** @file
  *
@@ -485,6 +485,47 @@ STDMETHODIMP SystemProperties::GetMaxInstancesOfStorageBus(StorageBus_T aBus, UL
         {
             /** @todo raise the limits ASAP, per bus type */
             *aMaxInstances = 1;
+            break;
+        }
+        default:
+            AssertMsgFailed(("Invalid bus type %d\n", aBus));
+    }
+
+    return S_OK;
+}
+
+STDMETHODIMP SystemProperties::GetDeviceTypesForStorageBus(StorageBus_T aBus,
+                                 ComSafeArrayOut(DeviceType_T, aDeviceTypes))
+{
+    CheckComArgOutSafeArrayPointerValid(aDeviceTypes);
+
+    AutoCaller autoCaller(this);
+    CheckComRCReturnRC(autoCaller.rc());
+
+    /* no need to lock, this is const */
+    switch (aBus)
+    {
+        case StorageBus_SATA:
+        case StorageBus_IDE:
+        {
+            com::SafeArray<DeviceType_T> saDeviceTypes(2);
+            saDeviceTypes[0] = DeviceType_DVD;
+            saDeviceTypes[1] = DeviceType_HardDisk;
+            saDeviceTypes.detachTo(ComSafeArrayOutArg(aDeviceTypes));
+            break;
+        }
+        case StorageBus_SCSI:
+        {
+            com::SafeArray<DeviceType_T> saDeviceTypes(1);
+            saDeviceTypes[0] = DeviceType_HardDisk;
+            saDeviceTypes.detachTo(ComSafeArrayOutArg(aDeviceTypes));
+            break;
+        }
+        case StorageBus_Floppy:
+        {
+            com::SafeArray<DeviceType_T> saDeviceTypes(1);
+            saDeviceTypes[0] = DeviceType_Floppy;
+            saDeviceTypes.detachTo(ComSafeArrayOutArg(aDeviceTypes));
             break;
         }
         default:

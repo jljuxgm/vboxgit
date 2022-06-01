@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 23560 2009-10-05 12:45:09Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 24346 2009-11-04 17:04:00Z vboxsync $ */
 
 /** @file
  *
@@ -98,6 +98,7 @@ public:
     STDMETHOD(GetMinPortCountForStorageBus) (StorageBus_T aBus, ULONG *aMinPortCount);
     STDMETHOD(GetMaxPortCountForStorageBus) (StorageBus_T aBus, ULONG *aMaxPortCount);
     STDMETHOD(GetMaxInstancesOfStorageBus)(StorageBus_T aBus, ULONG *aMaxInstances);
+    STDMETHOD(GetDeviceTypesForStorageBus)(StorageBus_T aBus, ComSafeArrayOut(DeviceType_T, aDeviceTypes));
 
     // public methods only for internal purposes
 
