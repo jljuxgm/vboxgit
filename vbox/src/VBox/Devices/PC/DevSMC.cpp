@@ -1,4 +1,4 @@
-/* $Id: DevSMC.cpp 29564 2010-05-17 15:19:33Z vboxsync $ */
+/* $Id: DevSMC.cpp 29569 2010-05-17 15:37:01Z vboxsync $ */
 /** @file
  * DevSMC - SMC device emulation.
  */
@@ -54,11 +54,12 @@
 #include <VBox/log.h>
 #include <VBox/stam.h>
 #include <iprt/assert.h>
+#include <iprt/string.h>
 #ifdef IN_RING0
 # include <iprt/asm-amd64-x86.h>
 # include <iprt/once.h>
+# include <iprt/thread.h>
 #endif
-#include <iprt/string.h>
 
 #include "../Builtins2.h"
 
