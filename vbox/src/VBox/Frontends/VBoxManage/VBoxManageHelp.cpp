@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 26294 2010-02-05 14:35:26Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 26356 2010-02-09 12:15:35Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -334,6 +334,8 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            nictrace<1-N> on|off\n"
                  "                            nictracefile<1-N> <filename>\n"
 #endif /* VBOX_DYNAMIC_NET_ATTACH */
+                 "                            guestmemoryballoon <balloonsize in MB>]\n"
+                 "                            gueststatisticsinterval <seconds>]\n"
                  "                            usbattach <uuid>|<address> |\n"
                  "                            usbdetach <uuid>|<address> |\n");
         if (fVRDP)
