@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 24937 2009-11-25 10:58:13Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 24946 2009-11-25 12:04:22Z vboxsync $ */
 
 /** @file
  *
@@ -5664,7 +5664,6 @@ DECLCALLBACK(void) Console::vmstateChangeCallback(PVM aVM,
                 && that->mMachineState != MachineState_Saving
                 && that->mMachineState != MachineState_Restoring
                 && that->mMachineState != MachineState_TeleportingIn
-                && that->mMachineState != MachineState_LiveSnapshotting
                 && that->mMachineState != MachineState_TeleportingPausedVM
                 && !that->mVMIsAlreadyPoweringOff
                )
