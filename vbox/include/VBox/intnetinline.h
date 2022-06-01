@@ -1,4 +1,4 @@
-/* $Id: intnetinline.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: intnetinline.h 28848 2010-04-27 17:06:44Z vboxsync $ */
 /** @file
  * INTNET - Internal Networking, Inlined Code. (DEV,++)
  *
@@ -205,7 +205,7 @@ DECLINLINE(void) IntNetSgReadEx(PCINTNETSG pSG, uint32_t offSrc, uint32_t cbToRe
     uint32_t    iSeg  = 0;
 
     /* validate assumptions */
-    Assert(cbToRead          <  pSG->cbTotal);
+    Assert(cbToRead          <= pSG->cbTotal);
     Assert(offSrc            <= pSG->cbTotal);
     Assert(offSrc + cbToRead <= pSG->cbTotal);
 
