@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 29564 2010-05-17 15:19:33Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 30176 2010-06-14 09:24:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -425,6 +425,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     rc = CFGMR3InsertInteger(pRoot, "PATMEnabled",          1);     /* boolean */       RC_CHECK();
     rc = CFGMR3InsertInteger(pRoot, "CSAMEnabled",          1);     /* boolean */       RC_CHECK();
 #endif
+    BOOL fPageFusion = FALSE;
+    hrc = pMachine->COMGETTER(PageFusionEnabled)(&fPageFusion);                         H();
+    rc = CFGMR3InsertInteger(pRoot, "PageFusion",           fPageFusion); /* boolean */ RC_CHECK();
 
     /* cpuid leaf overrides. */
     static uint32_t const s_auCpuIdRanges[] =
