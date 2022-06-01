@@ -1,10 +1,10 @@
-/* $Id: OpenGLTestApp.cpp 25458 2009-12-17 12:26:14Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 26034 2010-01-25 20:31:39Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
 
 /*
- * Copyright (C) 2009 Sun Microsystems, Inc.
+ * Copyright (C) 2009-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -285,8 +285,8 @@ int main(int argc, char **argv)
                     break;
 #endif
                 case 'h':
-                    RTPrintf("VirtualBox Helper for testing 2D/3D OpenGL capabilities %u.%u.%u\n"
-                             "(C) 2009 Sun Microsystems, Inc.\n"
+                    RTPrintf(VBOX_PRODUCT " Helper for testing 2D/3D OpenGL capabilities %u.%u.%u\n"
+                             "(C) 2009-2010 " VBOX_VENDOR "\n"
                              "All rights reserved.\n"
                              "\n"
                              "Parameters:\n"

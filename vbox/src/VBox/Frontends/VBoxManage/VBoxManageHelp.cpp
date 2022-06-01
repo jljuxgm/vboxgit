@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 25819 2010-01-13 23:09:52Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 26034 2010-01-25 20:31:39Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -40,9 +40,9 @@ void showLogo(void)
 
     if (!s_fShown)
     {
-        RTPrintf("VirtualBox Command Line Management Interface Version "
+        RTPrintf(VBOX_PRODUCT" Command Line Management Interface Version "
                  VBOX_VERSION_STRING  "\n"
-                 "(C) 2005-2009 Sun Microsystems, Inc.\n"
+                 "(C) 2005-2010 " VBOX_VENDOR "\n"
                  "All rights reserved.\n"
                  "\n");
         s_fShown = true;
