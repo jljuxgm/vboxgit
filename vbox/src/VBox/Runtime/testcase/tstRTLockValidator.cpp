@@ -1,4 +1,4 @@
-/* $Id: tstRTLockValidator.cpp 25622 2010-01-03 13:56:34Z vboxsync $ */
+/* $Id: tstRTLockValidator.cpp 25623 2010-01-03 13:59:05Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTLockValidator.
  */
@@ -407,7 +407,6 @@ static void testIt(uint32_t cThreads, uint32_t cPasses, uint32_t cSecs, PFNRTTHR
     RTTEST_CHECK_RETV(g_hTest, RT_ELEMENTS(g_aCritSects) >= cThreads);
 
     g_cThreads = cThreads;
-    g_iDeadlockThread = cThreads - 1;
 
     for (uint32_t i = 0; i < cThreads; i++)
     {
@@ -421,9 +420,9 @@ static void testIt(uint32_t cThreads, uint32_t cPasses, uint32_t cSecs, PFNRTTHR
     for (uint32_t iPass = 0; iPass < cPasses && RTTestErrorCount(g_hTest) == cErrors; iPass++)
     {
         g_iDeadlockThread = (cThreads - 1 + iPass) % cThreads;
-        g_cLoops = 0;
-        g_cDeadlocks = 0;
-        g_NanoTSStop = cSecs ? RTTimeNanoTS() + cSecs * UINT64_C(1000000000) : 0;
+        g_cLoops          = 0;
+        g_cDeadlocks      = 0;
+        g_NanoTSStop      = cSecs ? RTTimeNanoTS() + cSecs * UINT64_C(1000000000) : 0;
 
         int rc = testStartThreads(cThreads, pfnThread);
         if (RT_SUCCESS(rc))
