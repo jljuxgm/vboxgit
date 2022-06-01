@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 29514 2010-05-17 09:35:20Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 29606 2010-05-18 09:32:57Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -152,12 +152,11 @@ void VBoxServicePageSharingRegisterModule(PKNOWN_MODULE pModule)
                 /* Skip the first region as it only contains the image file header. */
                 if (pRegion != (char *)pModule->Info.modBaseAddr)
                 {
+                    char dummy = 0;
                     /* Touch all pages. */
                     while (pRegion < (char *)MemInfo.BaseAddress + MemInfo.RegionSize)
                     {
-                        char dummy;
-
-                        memcpy(&dummy, pRegion, 1);
+                        dummy += *(char *)pRegion;
                         pRegion += PAGE_SIZE;
                     }
                 }
