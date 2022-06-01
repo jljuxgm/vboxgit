@@ -1,4 +1,4 @@
-/* $Id: VBoxSpecialControls.cpp 26715 2010-02-23 15:39:20Z vboxsync $ */
+/* $Id: VBoxSpecialControls.cpp 27401 2010-03-16 13:16:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -42,6 +42,11 @@ VBoxMiniCancelButton::VBoxMiniCancelButton (QWidget *aParent /* = 0 */)
     connect (mButton, SIGNAL (clicked()),
              this, SIGNAL (clicked()));
     setFixedSize (mButton->size());
+}
+
+void VBoxMiniCancelButton::resizeEvent(QResizeEvent * /* pEvent */)
+{
+    mButton->resize(size());
 }
 
 /********************************************************************************
@@ -102,6 +107,11 @@ VBoxMiniCancelButton::VBoxMiniCancelButton (QWidget *aParent /* = 0 */)
         cancelIcon = VBoxGlobal::iconSet (":/delete_16px.png",
                                           ":/delete_dis_16px.png");
     setIcon (cancelIcon);
+}
+
+void VBoxMiniCancelButton::removeBorder()
+{
+    setStyleSheet("QToolButton { border: 0px }");
 }
 
 /********************************************************************************
