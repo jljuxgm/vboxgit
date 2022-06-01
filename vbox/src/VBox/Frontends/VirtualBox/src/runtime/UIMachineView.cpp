@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 29816 2010-05-26 13:52:52Z vboxsync $ */
+/* $Id: UIMachineView.cpp 29825 2010-05-26 16:38:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2506,9 +2506,9 @@ void UIMachineView::captureKbd(bool fCapture, bool fEmitSignal /* = true */)
     /**/
 #elif defined(Q_WS_X11)
         if (fCapture)
-            XGrabKey(QX11Info::display(), AnyKey, AnyModifier, window()->winId(), False, GrabModeAsync, GrabModeAsync);
+            XGrabKey(QX11Info::display(), AnyKey, AnyModifier, winId(), False, GrabModeAsync, GrabModeAsync);
         else
-            XUngrabKey(QX11Info::display(), AnyKey, AnyModifier, window()->winId());
+            XUngrabKey(QX11Info::display(), AnyKey, AnyModifier, winId());
 #elif defined(Q_WS_MAC)
     if (fCapture)
     {
