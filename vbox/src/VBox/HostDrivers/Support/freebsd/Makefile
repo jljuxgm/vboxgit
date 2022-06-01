@@ -1,4 +1,4 @@
-# $Id: Makefile 26180 2010-02-02 22:52:04Z vboxsync $
+# $Id: Makefile 26881 2010-02-27 09:11:22Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -93,7 +93,7 @@ SRCS += \
 	strprintf.c \
 	strtonum.c \
 	memchr.c \
-	string.c
+	stringalloc.c
 
 .PATH:	${.CURDIR}/common/rand
 SRCS += \

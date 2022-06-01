@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxnetadp 25536 2009-12-21 11:06:08Z vboxsync $
+# $Id: files_vboxnetadp 26881 2010-02-27 09:11:22Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -72,5 +72,6 @@ VBOX_VBOXNETADP_SOURCES=" \
     ${PATH_ROOT}/src/VBox/HostDrivers/VBoxNetAdp/VBoxNetAdpInternal.h=>VBoxNetAdpInternal.h \
     ${PATH_ROOT}/src/VBox/Runtime/r0drv/freebsd/the-freebsd-kernel.h=>r0drv/freebsd/the-freebsd-kernel.h \
     ${PATH_OUT}/version-generated.h=>version-generated.h \
+    ${PATH_OUT}/product-generated.h=>product-generated.h \
 "
 
