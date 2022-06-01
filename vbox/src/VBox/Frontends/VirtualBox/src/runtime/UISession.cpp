@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 29692 2010-05-20 12:38:49Z vboxsync $ */
+/* $Id: UISession.cpp 29694 2010-05-20 12:58:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1173,6 +1173,11 @@ void UISession::loadSessionSettings()
         {
             /* Hide VRDP Action: */
             uimachine()->actionsPool()->action(UIActionIndex_Toggle_VRDP)->setVisible(false);
+        }
+        else
+        {
+            /* Check/Uncheck VRDP action depending on VRDP server status: */
+            uimachine()->actionsPool()->action(UIActionIndex_Toggle_VRDP)->setChecked(vrdpServer.GetEnabled());
         }
     }
 
