@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 30315 2010-06-18 21:04:36Z vboxsync $ */
+/* $Id: CPUM.cpp 30316 2010-06-18 21:20:42Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1205,7 +1205,7 @@ static void cpumR3SaveCpuId(PVM pVM, PSSMHANDLE pSSM)
  */
 static int cpumR3LoadCpuId(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion)
 {
-    AssertMsgReturn(uVersion <= CPUM_SAVED_STATE_VERSION, ("%u\n", uVersion), VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION);
+    AssertMsgReturn(uVersion >= CPUM_SAVED_STATE_VERSION_VER3_2, ("%u\n", uVersion), VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION);
 
     /*
      * Define a bunch of macros for simplifying the code.
