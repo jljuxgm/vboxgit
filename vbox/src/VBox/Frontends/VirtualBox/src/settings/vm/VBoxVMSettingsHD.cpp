@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsHD.cpp 29668 2010-05-19 17:42:04Z vboxsync $ */
+/* $Id: VBoxVMSettingsHD.cpp 29896 2010-05-31 11:48:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -2704,8 +2704,7 @@ QString VBoxVMSettingsHD::generateUniqueName (const QString &aTemplate) const
             QString stringNumber (ctrName.right (ctrName.size() - aTemplate.size()));
             bool isConverted = false;
             int number = stringNumber.toInt (&isConverted);
-            if (isConverted && number > maxNumber)
-                maxNumber = number;
+            maxNumber = isConverted && (number > maxNumber) ? number : 1;
         }
     }
     return maxNumber ? QString ("%1 %2").arg (aTemplate).arg (++ maxNumber) : aTemplate;
