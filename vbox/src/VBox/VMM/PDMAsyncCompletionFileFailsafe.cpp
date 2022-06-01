@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileFailsafe.cpp 30131 2010-06-09 17:49:04Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileFailsafe.cpp 30147 2010-06-10 12:11:24Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Simple File I/O manager.
@@ -117,14 +117,14 @@ int pdmacFileAioMgrFailsafe(RTTHREAD ThreadSelf, void *pvUser)
     while (   (pAioMgr->enmState == PDMACEPFILEMGRSTATE_RUNNING)
            || (pAioMgr->enmState == PDMACEPFILEMGRSTATE_SUSPENDING))
     {
+        ASMAtomicWriteBool(&pAioMgr->fWaitingEventSem, true);
         if (!ASMAtomicReadBool(&pAioMgr->fWokenUp))
-        {
-            ASMAtomicWriteBool(&pAioMgr->fWaitingEventSem, true);
             rc = RTSemEventWait(pAioMgr->EventSem, RT_INDEFINITE_WAIT);
-            ASMAtomicWriteBool(&pAioMgr->fWaitingEventSem, false);
-            AssertRC(rc);
-        }
-        ASMAtomicXchgBool(&pAioMgr->fWokenUp, false);
+        ASMAtomicWriteBool(&pAioMgr->fWaitingEventSem, false);
+        AssertRC(rc);
+
+        LogFlow(("Got woken up\n"));
+        ASMAtomicWriteBool(&pAioMgr->fWokenUp, false);
 
         /* Process endpoint events first. */
         PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint = pAioMgr->pEndpointsHead;
