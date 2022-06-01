@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 26224 2010-02-03 22:03:01Z vboxsync $
+# $Id: Makefile.kmk 26282 2010-02-05 08:50:02Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -202,6 +202,12 @@ SSM.cpp_DEFS +=	\
 	KBUILD_TYPE=\"$(KBUILD_TYPE)\" \
 	KBUILD_TARGET=\"$(KBUILD_TARGET)\" \
 	KBUILD_TARGET_ARCH=\"$(KBUILD_TARGET_ARCH)\"
+
+# access to pPool->aPages
+ifneq ($(KBUILD_TARGET),win)
+PGMPool.cpp_CXXFLAGS += \
+	$(VBOX_GCC_Wno-array_bounds)
+endif
 
 #
 # The VMM DLL.
