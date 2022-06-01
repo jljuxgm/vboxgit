@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 29816 2010-05-26 13:52:52Z vboxsync $ */
+/* $Id: UIMachine.cpp 30212 2010-06-15 18:14:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -227,7 +227,7 @@ public:
     {
         /* This visual state should take care of own action: */
         QAction *pActionSeamless = m_pActionsPool->action(UIActionIndex_Toggle_Seamless);
-        if (pActionSeamless->isChecked())
+        if (!pActionSeamless->isChecked())
         {
             pActionSeamless->blockSignals(true);
             pActionSeamless->setChecked(true);
@@ -255,10 +255,10 @@ public:
     void change()
     {
         /* Connect action handlers: */
-        connect(m_pActionsPool->action(UIActionIndex_Toggle_Fullscreen), SIGNAL(triggered(bool)),
-                this, SLOT(sltGoToFullscreenMode()), Qt::QueuedConnection);
         connect(m_pActionsPool->action(UIActionIndex_Toggle_Seamless), SIGNAL(triggered(bool)),
                 this, SLOT(sltGoToNormalMode()), Qt::QueuedConnection);
+        connect(m_pActionsPool->action(UIActionIndex_Toggle_Fullscreen), SIGNAL(triggered(bool)),
+                this, SLOT(sltGoToFullscreenMode()), Qt::QueuedConnection);
 
         /* Initialize the logic object: */
         m_pMachineLogic->initialize();
@@ -266,16 +266,16 @@ public:
 
 private slots:
 
-    void sltGoToFullscreenMode()
-    {
-        /* Change visual state to fullscreen: */
-        emit sigChangeVisualState(UIVisualStateType_Fullscreen);
-    }
-
     void sltGoToNormalMode()
     {
         /* Change visual state to normal: */
         emit sigChangeVisualState(UIVisualStateType_Normal);
+    }
+
+    void sltGoToFullscreenMode()
+    {
+        /* Change visual state to fullscreen: */
+        emit sigChangeVisualState(UIVisualStateType_Fullscreen);
     }
 };
 
