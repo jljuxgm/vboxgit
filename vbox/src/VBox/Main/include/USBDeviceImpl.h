@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: USBDeviceImpl.h 25198 2009-12-04 17:53:00Z vboxsync $ */
 
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
@@ -24,8 +24,6 @@
 #define ____H_USBDEVICEIMPL
 
 #include "VirtualBoxBase.h"
-#include "Logging.h"
-
 
 /**
  * Object class used for maintaining devices attached to a USB controller.
