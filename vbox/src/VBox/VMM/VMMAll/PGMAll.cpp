@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 26180 2010-02-02 22:52:04Z vboxsync $ */
+/* $Id: PGMAll.cpp 26202 2010-02-03 15:19:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -451,10 +451,13 @@ VMMDECL(int) PGMTrap0eHandler(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFram
     /*
      * Call the worker.
      */
-    pgmLock(pVM);
-    int rc = PGM_BTH_PFN(Trap0eHandler, pVCpu)(pVCpu, uErr, pRegFrame, pvFault);
-    Assert(PGMIsLockOwner(pVM));
-    pgmUnlock(pVM);
+    bool fLockTaken = false;
+    int rc = PGM_BTH_PFN(Trap0eHandler, pVCpu)(pVCpu, uErr, pRegFrame, pvFault, &fLockTaken);
+    if (fLockTaken)
+    {
+        Assert(PGMIsLockOwner(pVM));
+        pgmUnlock(pVM);
+    }
     if (rc == VINF_PGM_SYNCPAGE_MODIFIED_PDE)
         rc = VINF_SUCCESS;
 
