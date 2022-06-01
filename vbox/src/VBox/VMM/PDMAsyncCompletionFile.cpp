@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 27299 2010-03-11 19:19:59Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 27323 2010-03-12 11:19:34Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -525,6 +525,11 @@ static int pdmacFileBwMgrInitialize(PPDMASYNCCOMPLETIONEPCLASSFILE pEpClassFile,
 
         pBwMgr->cbVMTransferAllowed = pBwMgr->cbVMTransferPerSecStart;
         pBwMgr->tsUpdatedLast       = RTTimeSystemNanoTS();
+
+        if (pBwMgr->cbVMTransferPerSecMax != UINT32_MAX)
+            LogRel(("AIOMgr: I/O bandwidth limited to %u bytes/sec\n", pBwMgr->cbVMTransferPerSecMax));
+        else
+            LogRel(("AIOMgr: I/O bandwidth not limited\n"));
 
         *ppBwMgr = pBwMgr;
     }
