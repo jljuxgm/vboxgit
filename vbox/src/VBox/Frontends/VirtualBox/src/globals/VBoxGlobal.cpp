@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 28931 2010-04-30 12:04:06Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 29007 2010-05-04 11:49:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -4492,32 +4492,30 @@ QWidget *VBoxGlobal::findWidget (QWidget *aParent, const char *aName,
     if (aParent == NULL)
     {
         QWidgetList list = QApplication::topLevelWidgets();
-        QWidget* w = NULL;
-        foreach(w, list)
+        foreach(QWidget *w, list)
         {
             if ((!aName || strcmp (w->objectName().toAscii().constData(), aName) == 0) &&
                 (!aClassName || strcmp (w->metaObject()->className(), aClassName) == 0))
-                break;
+                return w;
             if (aRecursive)
             {
                 w = findWidget (w, aName, aClassName, aRecursive);
                 if (w)
-                    break;
+                    return w;
             }
         }
-        return w;
+        return NULL;
     }
 
     /* Find the first children of aParent with the appropriate properties.
      * Please note that this call is recursivly. */
     QList<QWidget *> list = qFindChildren<QWidget *> (aParent, aName);
-    QWidget *child = NULL;
-    foreach(child, list)
+    foreach(QWidget *child, list)
     {
         if (!aClassName || strcmp (child->metaObject()->className(), aClassName) == 0)
-            break;
+            return child;
     }
-    return child;
+    return NULL;
 }
 
 /**
