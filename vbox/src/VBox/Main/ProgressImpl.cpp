@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 25170 2009-12-03 15:40:52Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -120,10 +120,6 @@ HRESULT ProgressBase::protectedInit (AutoInitSpan &aAutoInitSpan,
 #if !defined (VBOX_COM_INPROC)
     /* share parent weakly */
     unconst(mParent) = aParent;
-
-    /* register with parent early, since uninit() will unconditionally
-     * unregister on failure */
-    mParent->addDependentChild (this);
 #endif
 
 #if !defined (VBOX_COM_INPROC)
@@ -193,8 +189,6 @@ void ProgressBase::protectedUninit (AutoUninitSpan &aAutoUninitSpan)
         /* remove the added progress on failure to complete the initialization */
         if (aAutoUninitSpan.initFailed() && !mId.isEmpty())
             mParent->removeProgress (mId);
-
-        mParent->removeDependentChild (this);
 
         unconst(mParent).setNull();
     }

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 25170 2009-12-03 15:40:52Z vboxsync $ */
 
 /** @file
  *
@@ -37,7 +37,12 @@
 #include "VirtualBoxErrorInfoImpl.h"
 #include "Logging.h"
 
-// VirtualBoxBaseProto methods
+#include "objectslist.h"
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// VirtualBoxBaseProto
+//
 ////////////////////////////////////////////////////////////////////////////////
 
 VirtualBoxBaseProto::VirtualBoxBaseProto()
@@ -285,7 +290,10 @@ void VirtualBoxBaseProto::releaseCaller()
     AssertMsgFailed (("mState = %d!", mState));
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
 // VirtualBoxBaseProto::AutoInitSpan methods
+//
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
@@ -636,7 +644,10 @@ VirtualBoxBaseProto::AutoMayUninitSpan::~AutoMayUninitSpan()
     }
 }
 
-// VirtualBoxBase methods
+////////////////////////////////////////////////////////////////////////////////
+//
+// VirtualBoxBase
+//
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
@@ -674,7 +685,10 @@ const char *VirtualBoxBase::translate (const char * /* context */, const char *s
     return sourceText;
 }
 
-// VirtualBoxSupportTranslationBase methods
+////////////////////////////////////////////////////////////////////////////////
+//
+// VirtualBoxSupportTranslationBase
+//
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
@@ -737,7 +751,10 @@ bool VirtualBoxSupportTranslationBase::cutClassNameFrom__PRETTY_FUNCTION__ (char
     return false;
 }
 
-// VirtualBoxSupportErrorInfoImplBase methods
+////////////////////////////////////////////////////////////////////////////////
+//
+// VirtualBoxSupportErrorInfoImplBase
+//
 ////////////////////////////////////////////////////////////////////////////////
 
 RTTLS VirtualBoxSupportErrorInfoImplBase::MultiResult::sCounter = NIL_RTTLS;
@@ -911,8 +928,6 @@ HRESULT VirtualBoxSupportErrorInfoImplBase::setErrorInternal (
     return SUCCEEDED(rc) ? aResultCode : rc;
 }
 
-// VirtualBoxBaseWithChildrenNEXT methods
-////////////////////////////////////////////////////////////////////////////////
 
 /**
  * Uninitializes all dependent children registered on this object with

@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 25149 2009-12-02 14:34:47Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 25170 2009-12-03 15:40:52Z vboxsync $ */
 
 /** @file
  *
@@ -51,12 +51,6 @@ void DHCPServer::uninit()
     if (autoUninitSpan.uninitDone())
         return;
 
-//    /* we uninit children and reset mParent
-//     * and VirtualBox::removeDependentChild() needs a write lock */
-//    AutoMultiWriteLock2 alock (mVirtualBox->lockHandle(), this->treeLock());
-
-    mVirtualBox->removeDependentChild (this);
-
     unconst(mVirtualBox).setNull();
 }
 
@@ -77,10 +71,6 @@ HRESULT DHCPServer::init(VirtualBox *aVirtualBox, IN_BSTR aName)
     m.lowerIP = "0.0.0.0";
     m.upperIP = "0.0.0.0";
 
-    /* register with VirtualBox early, since uninit() will
-     * unconditionally unregister on failure */
-    aVirtualBox->addDependentChild (this);
-
     /* Confirm a successful initialization */
     autoInitSpan.setSucceeded();
 
@@ -96,8 +86,6 @@ HRESULT DHCPServer::init(VirtualBox *aVirtualBox,
 
     /* share VirtualBox weakly (parent remains NULL so far) */
     unconst(mVirtualBox) = aVirtualBox;
-
-    aVirtualBox->addDependentChild (this);
 
     unconst(mName) = data.strNetworkName;
     m.IPAddress = data.strIPAddress;
