@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 29041 2010-05-04 20:13:41Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 29042 2010-05-04 20:15:16Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -444,7 +444,7 @@ static int VBoxServiceControlExecProcLoop(PVBOXSERVICECTRLTHREAD pThread,
         }
         else if (pThread->fShutdown && (fProcessAlive || MsProcessKilled != UINT64_MAX))
         {
-            VBoxServiceVerbose(3, "ControlExec: Process got terminated because system/service is going stopping\n");
+            VBoxServiceVerbose(3, "ControlExec: Process got terminated because system/service is about to shutdown\n");
             uStatus = PROC_STS_DWN; /* Service is stopping, process was killed. */
         }
         else if (fProcessAlive)
