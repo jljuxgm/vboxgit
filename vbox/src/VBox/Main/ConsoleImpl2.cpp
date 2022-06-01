@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 26609 2010-02-17 13:45:33Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 26662 2010-02-19 15:11:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -393,6 +393,17 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         PCFGMNODE pCPUM;
         rc = CFGMR3InsertNode(pRoot, "CPUM", &pCPUM);                               RC_CHECK();
         rc = CFGMR3InsertInteger(pCPUM, "NT4LeafLimit", true);                      RC_CHECK();
+    }
+
+    if (osTypeId == "MacOS")
+    {
+        /*
+         * Expose extended MWAIT features to Mac OS guests.
+         */
+        LogRel(("Using MWAIT extensions\n"));
+        PCFGMNODE pCPUM;
+        rc = CFGMR3InsertNode(pRoot, "CPUM", &pCPUM);                               RC_CHECK();
+        rc = CFGMR3InsertInteger(pCPUM, "MWaitExtensions", true);                   RC_CHECK();
     }
 
     /* hardware virtualization extensions */
