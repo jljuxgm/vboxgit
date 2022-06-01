@@ -1,4 +1,4 @@
-/* $Id: pdmasynccompletion.h 21217 2009-07-04 14:26:39Z vboxsync $ */
+/* $Id: pdmasynccompletion.h 27738 2010-03-26 13:21:55Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion. (VMM)
  */
@@ -303,6 +303,21 @@ VMMR3DECL(int) PDMR3AsyncCompletionEpFlush(PPDMASYNCCOMPLETIONENDPOINT pEndpoint
  */
 VMMR3DECL(int) PDMR3AsyncCompletionEpGetSize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
                                              uint64_t *pcbSize);
+
+/**
+ * Sets the size of an endpoint.
+ * Not that some endpoints may not support this and will return an error
+ * (sockets for example).
+ *
+ * @returns VBox status code.
+ * @retval  VERR_NOT_SUPPORTED if the endpoint does not support this operation.
+ * @param   pEndpoint       The file endpoint.
+ * @param   cbSize          The size to set.
+ *
+ * @note PDMR3AsyncCompletionEpFlush should be called before this operation is executed.
+ */
+VMMR3DECL(int) PDMR3AsyncCompletionEpSetSize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
+                                             uint64_t cbSize);
 
 /**
  * Cancels a async completion task.

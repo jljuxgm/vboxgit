@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 26147 2010-02-02 13:55:20Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 27738 2010-03-26 13:21:55Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -142,7 +142,7 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSOPS
                                            PPDMASYNCCOMPLETIONENDPOINT pEndpoint));
 
     /**
-     * Initiates a flush request on the given endpoint.
+     * Queries the size of the endpoint. Optional.
      *
      * @returns VBox status code.
      * @param   pEndpoint     Endpoint the request is for.
@@ -150,6 +150,18 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSOPS
      */
     DECLR3CALLBACKMEMBER(int, pfnEpGetSize, (PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
                                              uint64_t *pcbSize));
+
+    /**
+     * Sets the size of the endpoint. Optional.
+     * This is a synchronous operation.
+     *
+     *
+     * @returns VBox status code.
+     * @param   pEndpoint     Endpoint the request is for.
+     * @param   cbSize        New size for the endpoint.
+     */
+    DECLR3CALLBACKMEMBER(int, pfnEpSetSize, (PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
+                                             uint64_t cbSize));
 
     /** Initialization safety marker. */
     uint32_t    u32VersionEnd;
