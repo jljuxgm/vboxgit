@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 28632 2010-04-23 08:59:14Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 28635 2010-04-23 10:08:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -518,6 +518,8 @@ public:
     void updateAppearance()
     {
         const CConsole &console = m_session.GetConsole();
+        if (console.isNull())
+            return;
 
         bool bVirtEnabled = console.GetDebugger().GetHWVirtExEnabled();
         QString virtualization = bVirtEnabled ?
