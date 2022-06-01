@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 29915 2010-05-31 15:26:55Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 30001 2010-06-02 15:36:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -597,8 +597,7 @@ void UIMachineLogic::prepareDock()
     pDockMenu->addMenu(pDockSettingsMenu);
 
     /* Add it to the dock. */
-    extern void qt_mac_set_dock_menu(QMenu *);
-    qt_mac_set_dock_menu(pDockMenu);
+    ::darwinSetDockIconMenu(pDockMenu);
 
     /* Now the dock icon preview */
     QString osTypeId = session().GetConsole().GetGuest().GetOSTypeId();
