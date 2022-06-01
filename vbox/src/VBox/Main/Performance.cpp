@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 27822 2010-03-30 13:01:36Z vboxsync $ */
+/* $Id: Performance.cpp 27849 2010-03-31 07:33:59Z vboxsync $ */
 
 /** @file
  *
@@ -65,6 +65,26 @@ int CollectorHAL::getRawProcessCpuLoad(RTPROCESS  /* process */, uint64_t * /* u
     return E_NOTIMPL;
 }
 
+int CollectorHAL::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available)
+{
+    return E_NOTIMPL;
+}
+
+int CollectorHAL::getProcessMemoryUsage(RTPROCESS process, ULONG *used)
+{
+    return E_NOTIMPL;
+}
+
+int CollectorHAL::enable()
+{
+    return E_NOTIMPL;
+}
+
+int  CollectorHAL::disable()
+{
+    return E_NOTIMPL;
+}
+
 /* Generic implementations */
 
 int CollectorHAL::getHostCpuMHz(ULONG *mhz)
@@ -96,6 +116,22 @@ int CollectorHAL::getHostCpuMHz(ULONG *mhz)
     *mhz = (ULONG)(u64TotalMHz / cCpus);
 
     return VINF_SUCCESS;
+}
+
+CollectorGuestHAL::~CollectorGuestHAL()
+{
+//    if (cEnabled)
+//
+}
+
+int CollectorGuestHAL::enable()
+{
+    return S_OK;
+}
+
+int CollectorGuestHAL::disable()
+{
+    return S_OK;
 }
 
 bool BaseMetric::collectorBeat(uint64_t nowAt)
