@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 26815 2010-02-26 02:43:37Z vboxsync $ */
+/* $Id: UISession.cpp 26816 2010-02-26 03:21:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -529,6 +529,9 @@ UISession::UISession(UIMachine *pMachine, const CSession &session)
     , m_callback(CConsoleCallback(m_pCallback))
     /* Common varibles: */
     , m_machineState(KMachineState_Null)
+#if defined(Q_WS_WIN)
+    , m_alphaCursor(0)
+#endif
     /* Common flags: */
     , m_fIsFirstTimeStarted(false)
     , m_fIsIgnoreRutimeMediumsChanging(false)
