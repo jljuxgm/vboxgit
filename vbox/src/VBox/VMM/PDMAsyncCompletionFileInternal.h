@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 24359 2009-11-04 22:28:48Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 24442 2009-11-06 13:49:49Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -333,6 +333,8 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSFILE
     bool                                fFailsafe;
     /** Flag whether the file data cache is enabled. */
     bool                                fCacheEnabled;
+    /** Flag whether the host cache should be used too. */
+    bool                                fHostCacheEnabled;
     /** Critical section protecting the list of async I/O managers. */
     RTCRITSECT                          CritSect;
     /** Pointer to the head of the async I/O managers. */
