@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 29925 2010-05-31 18:33:15Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 29984 2010-06-02 12:22:39Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1323,6 +1323,7 @@ const VirtualSystemDescriptionEntry* VirtualSystemDescription::findControllerFro
             case VirtualSystemDescriptionType_HardDiskControllerIDE:
             case VirtualSystemDescriptionType_HardDiskControllerSATA:
             case VirtualSystemDescriptionType_HardDiskControllerSCSI:
+            case VirtualSystemDescriptionType_HardDiskControllerSAS:
                 if (d.strRef == strRef)
                     return &d;
             break;
