@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 26709 2010-02-23 14:21:18Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 26730 2010-02-24 11:10:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -45,9 +45,26 @@ UIMachineViewNormal::UIMachineViewNormal(  UIMachineWindow *pMachineWindow
 #endif
                    )
 {
-    /* Connect view to handlers */
-    connect(this, SIGNAL(additionsStateChanged(const QString&, bool, bool, bool)),
-            this, SLOT(sltAdditionsStateChanged(const QString &, bool, bool, bool)));
+    /* Prepare frame buffer: */
+    prepareFrameBuffer();
+
+    /* Prepare common things: */
+    prepareCommon();
+
+    /* Prepare event-filters: */
+    prepareFilters();
+
+    /* Load machine view settings: */
+    loadMachineViewSettings();
+}
+
+UIMachineViewNormal::~UIMachineViewNormal()
+{
+    /* Cleanup common things: */
+    cleanupCommon();
+
+    /* Cleanup frame buffer: */
+    cleanupFrameBuffer();
 }
 
 void UIMachineViewNormal::normalizeGeometry(bool bAdjustPosition /* = false */)
