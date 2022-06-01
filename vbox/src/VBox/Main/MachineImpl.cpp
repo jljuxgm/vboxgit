@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 25672 2010-01-06 21:23:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 25809 2010-01-13 16:40:02Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -95,6 +95,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 Machine::Data::Data()
+    : mSnapshotsTreeLockHandle(LOCKCLASS_OTHERLIST)
 {
     mRegistered = FALSE;
     mAccessible = FALSE;

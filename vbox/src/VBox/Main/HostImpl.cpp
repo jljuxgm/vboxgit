@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 25414 2009-12-15 16:27:45Z vboxsync $ */
+/* $Id: HostImpl.cpp 25809 2010-01-13 16:40:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -149,6 +149,10 @@ extern bool is3DAccelerationSupported();
 
 struct Host::Data
 {
+    Data()
+        : treeLock(LOCKCLASS_OTHERLIST)
+    {};
+
     ComObjPtr<VirtualBox, ComWeakRef>
                             pParent;
 
