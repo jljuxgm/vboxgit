@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 26929 2010-03-02 00:27:24Z vboxsync $ */
+/* $Id: UIMachineView.cpp 26964 2010-03-02 17:53:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1099,11 +1099,12 @@ void UIMachineView::sltMousePointerShapeChanged()
 {
     if (uisession()->isMouseSupportsAbsolute())
     {
-        /* Should we hide/show pointer? */
-        if (uisession()->isHidingHostPointer())
-            viewport()->setCursor(Qt::BlankCursor);
-        else
+        /* Should we use guest pointer shape? */
+        if (uisession()->isValidPointerShapePresent())
             viewport()->setCursor(uisession()->cursor());
+        /* Should we hide pointer at all? */
+        else if (uisession()->isHidingHostPointer())
+            viewport()->setCursor(Qt::BlankCursor);
     }
 }
 
