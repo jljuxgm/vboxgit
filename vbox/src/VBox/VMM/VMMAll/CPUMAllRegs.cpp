@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 26648 2010-02-19 13:10:03Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 26649 2010-02-19 13:16:11Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1121,7 +1121,7 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t iLeaf, uint32_t *pEax, ui
             case 2:
                 level = 2;
                 type = 3;
-                sharing = 1;
+                sharing = cores; /* our L2 cache is modelled as shared between all cores */ 
                 linesize = 64;
                 associativity = 24;
                 sets = 4096;
