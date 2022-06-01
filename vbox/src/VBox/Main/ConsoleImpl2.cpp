@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 29346 2010-05-11 12:52:28Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 29444 2010-05-13 10:11:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2464,6 +2464,14 @@ int Console::configMedium(PCFGMNODE pLunL0,
             }
             /* Index of last image */
             uImage--;
+
+#if 0 /* Enable for I/O debugging */
+            rc = CFGMR3InsertNode(pLunL0, "AttachedDriver", &pLunL0);                   RC_CHECK();
+            rc = CFGMR3InsertString(pLunL0, "Driver", "DiskIntegrity");                 RC_CHECK();
+            rc = CFGMR3InsertNode(pLunL0, "Config", &pCfg);                             RC_CHECK();
+            rc = CFGMR3InsertInteger(pCfg, "CheckConsistency", 0);                      RC_CHECK();
+            rc = CFGMR3InsertInteger(pCfg, "CheckDoubleCompletions", 1);                RC_CHECK();
+#endif
 
             rc = CFGMR3InsertNode(pLunL0, "AttachedDriver", &pLunL1);                   RC_CHECK();
             rc = CFGMR3InsertString(pLunL1, "Driver", "VD");                            RC_CHECK();
