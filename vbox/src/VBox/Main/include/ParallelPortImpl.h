@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 25202 2009-12-04 19:13:21Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 25203 2009-12-04 19:30:50Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -92,7 +92,6 @@ public:
     static const wchar_t *getComponentName() { return L"ParallelPort"; }
 
 private:
-
     HRESULT checkSetPath(const Utf8Str &str);
 
     struct Data;
