@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DevAHCI.cpp 28881 2010-04-28 20:54:39Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -4886,11 +4886,11 @@ static int ahciTransferComplete(PAHCIPort pAhciPort, PAHCIPORTTASKSTATE pAhciPor
 
         pAhciPortTaskState->uATARegError = 0;
         pAhciPortTaskState->uATARegStatus = ATA_STAT_READY | ATA_STAT_SEEK;
-    }
 
-    /* Write updated command header into memory of the guest. */
-    PDMDevHlpPhysWrite(pAhciPort->CTX_SUFF(pDevIns), pAhciPortTaskState->GCPhysCmdHdrAddr,
-                       &pAhciPortTaskState->cmdHdr, sizeof(CmdHdr));
+        /* Write updated command header into memory of the guest. */
+        PDMDevHlpPhysWrite(pAhciPort->CTX_SUFF(pDevIns), pAhciPortTaskState->GCPhysCmdHdrAddr,
+                           &pAhciPortTaskState->cmdHdr, sizeof(CmdHdr));
+    }
 
     if (pAhciPortTaskState->enmTxDir == AHCITXDIR_READ)
     {
@@ -4917,7 +4917,7 @@ static int ahciTransferComplete(PAHCIPort pAhciPort, PAHCIPORTTASKSTATE pAhciPor
         AssertMsg(fXchg, ("Task is not active\n"));
 #endif
 
-        if (!cOutstandingTasks)
+        if (!cOutstandingTasks || RT_FAILURE(rcReq))
             ahciSendSDBFis(pAhciPort, 0, pAhciPortTaskState, true);
     }
     else
