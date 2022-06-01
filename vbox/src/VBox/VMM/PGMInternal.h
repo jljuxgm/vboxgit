@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 24192 2009-10-30 14:22:37Z vboxsync $ */
+/* $Id: PGMInternal.h 24711 2009-11-17 10:28:24Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2776,6 +2776,7 @@ typedef struct PGM
     STAMCOUNTER StatRZChunkR3MapTlbMisses;          /**< RC/R0: Ring-3/0 chunk mapper TLB misses. */
     STAMCOUNTER StatRZPageMapTlbHits;               /**< RC/R0: Ring-3/0 page mapper TLB hits. */
     STAMCOUNTER StatRZPageMapTlbMisses;             /**< RC/R0: Ring-3/0 page mapper TLB misses. */
+    STAMCOUNTER StatPageMapTlbFlushes;              /**< ALL: Ring-3/0 page mapper TLB flushes. */
     STAMCOUNTER StatR3ChunkR3MapTlbHits;            /**< R3: Ring-3/0 chunk mapper TLB hits. */
     STAMCOUNTER StatR3ChunkR3MapTlbMisses;          /**< R3: Ring-3/0 chunk mapper TLB misses. */
     STAMCOUNTER StatR3PageMapTlbHits;               /**< R3: Ring-3/0 page mapper TLB hits. */
