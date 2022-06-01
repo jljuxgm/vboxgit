@@ -1,4 +1,4 @@
-/* $Id: vboxvideo_drm.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: vboxvideo_drm.c 28854 2010-04-27 19:41:12Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - vboxvideo DRM module.
  * FreeBSD kernel OpenGL module.
@@ -57,7 +57,7 @@ __FBSDID("$FreeBSD$");
 #include "dev/drm/drmP.h"
 #include "dev/drm/drm_pciids.h"
 
-#define DRIVER_AUTHOR                   "Sun Microsystems Inc."
+#define DRIVER_AUTHOR                   "Oracle Corporation"
 #define DRIVER_NAME                     "vboxvideo"
 #define DRIVER_DESC                     "VirtualBox DRM"
 #define DRIVER_DATE                     "20090317"

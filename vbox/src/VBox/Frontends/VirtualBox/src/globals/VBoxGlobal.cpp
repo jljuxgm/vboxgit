@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 28843 2010-04-27 16:02:17Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 28854 2010-04-27 19:41:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2987,7 +2987,7 @@ QString VBoxGlobal::languageCountryEnglish() const
 
 /**
  *  Comma-separated list of authors of the currently installed translation.
- *  Returns "Sun Microsystems, Inc." if no translation is installed or if the
+ *  Returns "Oracle Corporation" if no translation is installed or if the
  *  translation file is invalid, or if the translation is supplied by Sun
  *  Microsystems, inc.
  */

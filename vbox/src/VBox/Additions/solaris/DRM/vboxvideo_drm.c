@@ -1,4 +1,4 @@
-/* $Id: vboxvideo_drm.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: vboxvideo_drm.c 28854 2010-04-27 19:41:12Z vboxsync $ */
 /** @file
  * vboxvideo_drm - Direct Rendering Module, Solaris Specific Code.
  */
@@ -46,7 +46,7 @@
 #define DEVICE_DESC_DRV                 "VirtualBox DRM"
 
 /** DRM Specific defines */
-#define DRIVER_AUTHOR                   "Sun Microsystems Inc."
+#define DRIVER_AUTHOR                   "Oracle Corporation"
 #define DRIVER_NAME                     DEVICE_NAME
 #define DRIVER_DESC                     DEVICE_DESC_DRV
 #define DRIVER_DATE                     "20090317"
