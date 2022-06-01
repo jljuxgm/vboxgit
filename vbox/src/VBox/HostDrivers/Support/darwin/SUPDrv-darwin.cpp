@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 24183 2009-10-30 11:08:03Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 25258 2009-12-09 01:52:52Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -758,6 +758,35 @@ bool VBOXCALL supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
     return false;
 }
 
+#ifdef SUPDRV_USE_NATIVE_LOADER
+
+int  VBOXCALL   supdrvOSLdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const char *pszFilename)
+{
+    NOREF(pDevExt); NOREF(pImage); NOREF(pszFilename);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+int  VBOXCALL   supdrvOSLdrValidatePointer(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, void *pv, const uint8_t *pbImageBits)
+{
+    NOREF(pDevExt); NOREF(pImage); NOREF(pv); NOREF(pbImageBits);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const uint8_t *pbImageBits)
+{
+    NOREF(pDevExt); NOREF(pImage); NOREF(pbImageBits);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+void VBOXCALL   supdrvOSLdrUnload(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
+{
+    NOREF(pDevExt); NOREF(pImage);
+}
+
+#endif /* SUPDRV_USE_NATIVE_LOADER */
 
 /**
  * Converts a supdrv error code to a darwin error code.

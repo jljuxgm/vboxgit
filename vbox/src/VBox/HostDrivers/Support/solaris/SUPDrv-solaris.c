@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 25181 2009-12-04 10:38:46Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 25258 2009-12-09 01:52:52Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -896,6 +896,35 @@ bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
     return false;
 }
 
+#ifdef SUPDRV_USE_NATIVE_LOADER
+
+int  VBOXCALL   supdrvOSLdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const char *pszFilename)
+{
+    NOREF(pDevExt); NOREF(pImage); NOREF(pszFilename);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+int  VBOXCALL   supdrvOSLdrValidatePointer(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, void *pv, const uint8_t *pbImageBits)
+{
+    NOREF(pDevExt); NOREF(pImage); NOREF(pv); NOREF(pbImageBits);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const uint8_t *pbImageBits)
+{
+    NOREF(pDevExt); NOREF(pImage); NOREF(pbImageBits);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+void VBOXCALL   supdrvOSLdrUnload(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
+{
+    NOREF(pDevExt); NOREF(pImage);
+}
+
+#endif /* SUPDRV_USE_NATIVE_LOADER */
 
 RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
 {
