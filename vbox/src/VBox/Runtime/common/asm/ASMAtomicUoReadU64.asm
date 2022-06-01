@@ -1,4 +1,4 @@
-; $Id: ASMAtomicUoReadU64.asm 25665 2010-01-06 04:19:49Z vboxsync $
+; $Id: ASMAtomicUoReadU64.asm 25671 2010-01-06 06:01:40Z vboxsync $
 ;; @file
 ; IPRT - ASMAtomicUoReadU64().
 ;
@@ -63,7 +63,7 @@ BEGINPROC_EXPORTED ASMAtomicUoReadU64
         mov     edi, [ebp+08h]
         xor     ecx, ecx
         xor     ebx, ebx
-        cmpxchg8b [edi]
+        lock cmpxchg8b [edi]
 
         pop     edi
         pop     ebx
