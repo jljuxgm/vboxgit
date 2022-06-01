@@ -1,4 +1,4 @@
-/* $Id: getoptargv.cpp 27384 2010-03-15 21:52:18Z vboxsync $ */
+/* $Id: getoptargv.cpp 27386 2010-03-15 22:39:19Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing, Argument Vector.
  */
@@ -382,7 +382,7 @@ DECLINLINE(bool) rtGetOptArgvMsCrtIsSlashQuote(const char *psz)
 {
     while (*psz == '\\')
         psz++;
-    return *psz == '"';
+    return *psz == '"' || *psz == '\0';
 }
 
 

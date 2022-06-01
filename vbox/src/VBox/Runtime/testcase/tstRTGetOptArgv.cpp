@@ -1,4 +1,4 @@
-/* $Id: tstRTGetOptArgv.cpp 27384 2010-03-15 21:52:18Z vboxsync $ */
+/* $Id: tstRTGetOptArgv.cpp 27386 2010-03-15 22:39:19Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTGetOptArgv*.
  */
@@ -63,8 +63,8 @@ static void tst2(void)
             "\"a\\\\\\\"b\" c d \"\\\"\""
         },
         {
-            { "a\\\\b c", "d", "e", NULL, NULL },
-            "\"a\\\\b c\" d e"
+            { "a\\\\b c", "d", "e", " \\", NULL },
+            "\"a\\\\b c\" d e \" \\\\\""
         },
     };
 
