@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 27556 2010-03-20 15:05:06Z vboxsync $ */
+/* $Id: process-win.cpp 27578 2010-03-22 10:24:08Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -241,6 +241,9 @@ RTR3DECL(int)   RTProcCreate(const char *pszExec, const char * const *papszArgs,
 static int rtProcCreateAsUserHlp(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTUTF16 pwszExec, PRTUTF16 pwszCmdLine,
                                  PRTUTF16 pwszzBlock, STARTUPINFOW *pStartupInfo, PROCESS_INFORMATION *pProcInfo)
 {
+    /** @todo On NT4 we need to enable the SeTcbPrivilege to act as part of the operating system. Otherwise
+      *       we will get error 1314 (priviledge not held) as a response. */
+
     /*
      * The following rights are needed in order to use LogonUserW and
      * CreateProcessAsUserW, so the local policy has to be modified to:
@@ -279,7 +282,6 @@ static int rtProcCreateAsUserHlp(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTUT
     else
         dwErr = GetLastError();
 
-#ifndef IPRT_TARGET_NT4
     /*
      * If we don't hold enough priviledges to spawn a new process with
      * different credentials we have to use CreateProcessWithLogonW here.  This
