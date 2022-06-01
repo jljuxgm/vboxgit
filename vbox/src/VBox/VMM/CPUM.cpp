@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 26652 2010-02-19 13:55:52Z vboxsync $ */
+/* $Id: CPUM.cpp 26653 2010-02-19 14:01:06Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -818,15 +818,25 @@ VMMR3DECL(void) CPUMR3Relocate(PVM pVM)
         Assert(pVCpu->cpum.s.pHyperCoreRC != NIL_RTRCPTR);
 
     }
+}
+
+
+/**
+ * Apply late CPUM property changes based on the fHWVirtEx setting
+ *
+ * @param   pVM                 The VM to operate on.
+ * @param   fHWVirtExEnabled    HWVirtEx enabled/disabled
+ */
+VMMR3DECL(void) CPUMR3SetHWVirtEx(PVM pVM, bool fHWVirtExEnabled)
+{
     /*
      * Workaround for missing cpuid(0) patches when leaf 4 returns GuestCpuIdDef:
      * If we miss to patch a cpuid(0).eax then Linux tries to determine the number
      * of processors from (cpuid(4).eax >> 26) + 1.
      */
-    if (!HWACCMR3IsAllowed(pVM))
+    if (!fHWVirtExEnabled)
         pVM->cpum.s.aGuestCpuIdStd[4].eax = 0;
 }
-
 
 /**
  * Terminates the CPUM.

@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 26365 2010-02-09 13:37:29Z vboxsync $ */
+/* $Id: VM.cpp 26653 2010-02-19 14:01:06Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1020,7 +1020,10 @@ static int vmR3InitRing0(PVM pVM)
 
     /** @todo Move this to the VMINITCOMPLETED_RING0 notification handler. */
     if (RT_SUCCESS(rc))
+    {
         rc = HWACCMR3InitFinalizeR0(pVM);
+        CPUMR3SetHWVirtEx(pVM, HWACCMIsEnabled(pVM));
+    }
 
     LogFlow(("vmR3InitRing0: returns %Rrc\n", rc));
     return rc;
