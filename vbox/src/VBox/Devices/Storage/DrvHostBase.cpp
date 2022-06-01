@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 25986 2010-01-23 01:32:03Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -817,7 +817,7 @@ static int drvHostBaseOpen(PDRVHOSTBASE pThis, PRTFILE pFileDevice, bool fReadOn
          * sequence number for identification.
          */
         CFMutableDictionaryRef PropsRef = 0;
-        kern_return_t krc = IORegistryEntryCreateCFProperties(DVDService, &PropsRef, kCFAllocatorDefault, kNilOptions);
+        krc = IORegistryEntryCreateCFProperties(DVDService, &PropsRef, kCFAllocatorDefault, kNilOptions);
         if (krc == KERN_SUCCESS)
         {
             /* Get the Device Characteristics dictionary. */

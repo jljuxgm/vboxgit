@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 25985 2010-01-23 00:51:04Z vboxsync $ */
+/* $Id: DevINIP.cpp 25986 2010-01-23 01:32:03Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -530,7 +530,7 @@ static DECLCALLBACK(int) devINIPConstruct(PPDMDEVINS pDevIns, int iInstance,
         pThis->pDrv = PDMIBASE_QUERY_INTERFACE(pThis->pDrvBase, PDMINETWORKCONNECTOR);
         if (!pThis->pDrv)
         {
-            AssertMsgFailed(("Failed to obtain the PDMINTERFACE_NETWORK_CONNECTOR interface!\n"));
+            AssertMsgFailed(("Failed to obtain the PDMINETWORKCONNECTOR interface!\n"));
             rc = VERR_PDM_MISSING_INTERFACE_BELOW;
             goto out;
         }
