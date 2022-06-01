@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 28192 2010-04-12 09:55:15Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 28345 2010-04-15 05:40:43Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -119,7 +119,6 @@ void printUsage(USAGECATEGORY u64Cmd)
 #endif
                  "                            hostcpuids|hddbackends|hdds|dvds|floppies|\n"
                  "                            usbhost|usbfilters|systemproperties\n"
-                 "                            natrules<1-N> <name>\n"
                  "\n");
     }
 
