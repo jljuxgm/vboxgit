@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 27999 2010-04-06 12:24:02Z vboxsync $ */
+/* $Id: GMMR0.cpp 28012 2010-04-06 14:52:25Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2991,21 +2991,21 @@ GMMR0DECL(int) GMMR0BalloonedPagesReq(PVM pVM, VMCPUID idCpu, PGMMBALLOONEDPAGES
 }
 
 /**
- * Return the total amount of ballooned pages for all VMs
+ * Return the total amount of free pages
  *
  * @returns VBox status code:
  * @param   pVM             Pointer to the shared VM structure.
  * @param   pReq            The request packet.
  */
-GMMR0DECL(int) GMMR0QueryTotalBalloonSizeReq(PVM pVM, PGMMBALLOONQUERYREQ pReq)
+GMMR0DECL(int) GMMR0QueryTotalFreePagesReq(PVM pVM, PGMMFREEQUERYREQ pReq)
 {
     /*
      * Validate input and pass it on.
      */
     AssertPtrReturn(pVM, VERR_INVALID_POINTER);
     AssertPtrReturn(pReq, VERR_INVALID_POINTER);
-    AssertMsgReturn(pReq->Hdr.cbReq == sizeof(GMMBALLOONQUERYREQ),
-                    ("%#x < %#x\n", pReq->Hdr.cbReq, sizeof(GMMBALLOONQUERYREQ)),
+    AssertMsgReturn(pReq->Hdr.cbReq == sizeof(GMMFREEQUERYREQ),
+                    ("%#x < %#x\n", pReq->Hdr.cbReq, sizeof(GMMFREEQUERYREQ)),
                     VERR_INVALID_PARAMETER);
 
     /*
@@ -3013,7 +3013,7 @@ GMMR0DECL(int) GMMR0QueryTotalBalloonSizeReq(PVM pVM, PGMMBALLOONQUERYREQ pReq)
      */
     PGMM pGMM;
     GMM_GET_VALID_INSTANCE(pGMM, VERR_INTERNAL_ERROR);
-    pReq->cBalloonedPages = pGMM->cBalloonedPages;
+    pReq->cFreePages = (pGMM->cChunks << GMM_CHUNK_SHIFT) - pGMM->cAllocatedPages; 
     GMM_CHECK_SANITY_UPON_LEAVING(pGMM);
 
     return VINF_SUCCESS;
