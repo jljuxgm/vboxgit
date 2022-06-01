@@ -1,4 +1,4 @@
-/* $Id: tstIntNetR0.cpp 28025 2010-04-07 06:37:43Z vboxsync $ */
+/* $Id: tstIntNetR0.cpp 28314 2010-04-14 16:01:59Z vboxsync $ */
 /** @file
  * Internal networking - Usermode testcase for the kernel mode bits.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Sun Microsystems, Inc.
+ * Copyright (C) 2006-2010 Sun Microsystems, Inc.
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -26,8 +26,6 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define RTMEM_WRAP_TO_EF_APIS       // debugging debugging remove
-#define INTNET_POISON_READ_FRAMES   // debugging debugging remove
 #define IN_INTNET_TESTCASE
 #define IN_INTNET_R3
 #include <VBox/cdefs.h>
