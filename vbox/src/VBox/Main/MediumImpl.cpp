@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 27232 2010-03-09 21:05:57Z vboxsync $ */
+/* $Id: MediumImpl.cpp 27256 2010-03-10 16:50:08Z vboxsync $ */
 
 /** @file
  *
@@ -2893,16 +2893,15 @@ HRESULT Medium::updatePath(const char *aOldPath, const char *aNewPath)
 
     LogFlowThisFunc(("locationFull.before='%s'\n", m->strLocationFull.raw()));
 
-    Utf8Str path = m->strLocationFull;
+    const char *pcszMediumPath = m->strLocationFull.c_str();
 
-    if (RTPathStartsWith(path.c_str(), aOldPath))
+    if (RTPathStartsWith(pcszMediumPath, aOldPath))
     {
-        Utf8Str newPath = Utf8StrFmt("%s%s", aNewPath,
-                                     path.raw() + strlen(aOldPath));
-        path = newPath;
-
+        Utf8Str newPath = Utf8StrFmt("%s%s",
+                                     aNewPath,
+                                     pcszMediumPath + strlen(aOldPath));
+        Utf8Str path = newPath;
         m->pVirtualBox->calculateRelativePath(path, path);
-
         unconst(m->strLocationFull) = newPath;
         unconst(m->strLocation) = path;
 
