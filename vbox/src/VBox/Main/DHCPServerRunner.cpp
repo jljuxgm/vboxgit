@@ -1,4 +1,4 @@
-/* $Id: DHCPServerRunner.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
+/* $Id: DHCPServerRunner.cpp 28296 2010-04-14 12:11:07Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -57,7 +57,7 @@ static const ARGDEF g_aArgDefs[] =
 static const ARGDEF * getArgDef(DHCPCFG type)
 {
     for (unsigned i = 0; i < RT_ELEMENTS(g_aArgDefs); i++)
-        if(g_aArgDefs[i].Type == type)
+        if (g_aArgDefs[i].Type == type)
             return &g_aArgDefs[i];
 
     return NULL;
@@ -139,13 +139,13 @@ int DHCPServerRunner::stop()
 
 bool DHCPServerRunner::isRunning()
 {
-    if(mProcess == NIL_RTPROCESS)
+    if (mProcess == NIL_RTPROCESS)
         return false;
 
     RTPROCSTATUS status;
     int rc = RTProcWait(mProcess, RTPROCWAIT_FLAGS_NOBLOCK, &status);
 
-    if(rc == VERR_PROCESS_RUNNING)
+    if (rc == VERR_PROCESS_RUNNING)
         return true;
 
     mProcess = NIL_RTPROCESS;
