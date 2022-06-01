@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 28036 2010-04-07 09:47:43Z vboxsync $ */
+/* $Id: Performance.cpp 28038 2010-04-07 10:09:36Z vboxsync $ */
 
 /** @file
  *
@@ -432,11 +432,11 @@ void GuestRamUsage::collect()
     ULONG ulMemTotal = 0, ulMemFree = 0, ulMemBalloon = 0, ulMemCache = 0, ulPageTotal = 0;
 
     mGuestHAL->getGuestMemLoad(&ulMemTotal, &ulMemFree, &ulMemBalloon, &ulMemCache, &ulPageTotal);
-    mTotal->put(ulMemTotal * (_1M / _1K));      /* MB -> KB */
-    mFree->put(ulMemFree * (_1M / _1K));
-    mBallooned->put(ulMemBalloon * (_1M / _1K));
-    mCache->put(ulMemCache * (_1M / _1K));
-    mPagedTotal->put(ulPageTotal * (_1M / _1K));
+    mTotal->put(ulMemTotal);
+    mFree->put(ulMemFree);
+    mBallooned->put(ulMemBalloon);
+    mCache->put(ulMemCache);
+    mPagedTotal->put(ulPageTotal);
 }
 
 void CircularBuffer::init(ULONG ulLength)

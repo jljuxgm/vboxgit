@@ -1,4 +1,4 @@
-/* $Id: Performance.h 28036 2010-04-07 09:47:43Z vboxsync $ */
+/* $Id: Performance.h 28038 2010-04-07 10:09:36Z vboxsync $ */
 
 /** @file
  *
@@ -206,7 +206,7 @@ namespace pm
             *pulCpuIdle   = mCpuIdle;
         }
 
-        /** Return guest memory information in MB. */
+        /** Return guest memory information in KB. */
         void getGuestMemLoad(ULONG *pulMemTotal, ULONG *pulMemFree, ULONG *pulMemBalloon, ULONG *pulMemCache, ULONG *pulPageTotal)
         {
             *pulMemTotal        = mMemTotal;
