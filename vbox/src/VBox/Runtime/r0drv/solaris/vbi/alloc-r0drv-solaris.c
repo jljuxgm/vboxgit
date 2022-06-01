@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 24386 2009-11-05 14:17:10Z vboxsync $ */
+/* $Id: alloc-r0drv-solaris.c 25183 2009-12-04 11:03:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -70,7 +70,7 @@ PRTMEMHDR rtMemAlloc(size_t cb, uint32_t fFlags)
         pHdr->cbReq     = cb;
     }
     else
-        printf("rtMemAlloc(%#x, %#x) failed\n", cb + sizeof(*pHdr), fFlags);
+        cmn_err(CE_NOTE, "rtMemAlloc(%ld, %x) failed\n", cb + sizeof(*pHdr), fFlags);
     return pHdr;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-solaris.c 22991 2009-09-14 10:16:08Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-solaris.c 25183 2009-12-04 11:03:05Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -236,12 +236,12 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies,
         if (cMillies != RT_INDEFINITE_WAIT)
         {
             clock_t cTicks = drv_usectohz((clock_t)(cMillies * 1000L));
-            clock_t timeout = ddi_get_lbolt();
-            timeout += cTicks;
+            clock_t cTimeout = ddi_get_lbolt();
+            cTimeout += cTicks;
             if (fInterruptible)
-                rc = cv_timedwait_sig(&pThis->Cnd, &pThis->Mtx, timeout);
+                rc = cv_timedwait_sig(&pThis->Cnd, &pThis->Mtx, cTimeout);
             else
-                rc = cv_timedwait(&pThis->Cnd, &pThis->Mtx, timeout);
+                rc = cv_timedwait(&pThis->Cnd, &pThis->Mtx, cTimeout);
         }
         else
         {

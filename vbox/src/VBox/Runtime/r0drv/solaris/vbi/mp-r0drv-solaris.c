@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-solaris.c 24386 2009-11-05 14:17:10Z vboxsync $ */
+/* $Id: mp-r0drv-solaris.c 25183 2009-12-04 11:03:05Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Solaris.
  */
@@ -227,7 +227,6 @@ static int rtmpOnOthersSolarisWrapper(void *uArg, void *uIgnored1, void *uIgnore
 
 RTDECL(int) RTMpOnOthers(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)
 {
-    int rc;
     RTMPARGS Args;
     RT_ASSERT_INTS_ON();
 
@@ -274,7 +273,6 @@ static int rtmpOnSpecificSolarisWrapper(void *uArg, void *uIgnored1, void *uIgno
 
 RTDECL(int) RTMpOnSpecific(RTCPUID idCpu, PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)
 {
-    int rc;
     RTMPARGS Args;
     RT_ASSERT_INTS_ON();
 
