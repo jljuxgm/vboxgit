@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 26856 2010-02-26 14:33:01Z vboxsync $ */
+/* $Id: DevVGA.cpp 26969 2010-03-02 20:28:01Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -48,12 +48,16 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
+#ifndef VBOX
 /** The default amount of VRAM. */
 #define VGA_VRAM_DEFAULT    (_4M)
 /** The maximum amount of VRAM. */
 #define VGA_VRAM_MAX        (128 * _1M)
 /** The minimum amount of VRAM. */
 #define VGA_VRAM_MIN        (_1M)
+#else
+/* moved to DevVGA.h */
+#endif
 
 /** The size of the VGA GC mapping.
  * This is supposed to be all the VGA memory accessible to the guest.
