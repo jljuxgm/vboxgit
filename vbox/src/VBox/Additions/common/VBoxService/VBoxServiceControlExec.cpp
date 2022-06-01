@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 27926 2010-04-01 08:58:39Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 28029 2010-04-07 07:31:23Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -514,7 +514,7 @@ int VBoxServiceControlExecProcess(PVBOXSERVICECTRLPROCDATA pExecData,
         size_t i;
         for (i = 0; i < pExecData->uNumEnvVars; i++)
         {
-            // @todo rc = RTEnvPutEx(hEnv, pExecData->[i]);
+            rc = RTEnvPutEx(hEnv, papszEnv[i]);
             if (RT_FAILURE(rc))
                 break;
         }
