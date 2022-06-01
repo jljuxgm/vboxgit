@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 24495 2009-11-09 12:26:36Z vboxsync $ */
+/* $Id: DevVGA.h 24714 2009-11-17 10:45:20Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -48,7 +48,8 @@
 #include "HGSMI/HGSMIHost.h"
 #endif /* VBOX_WITH_HGSMI */
 
-#define VGA_SAVEDSTATE_VERSION              4
+#define VGA_SAVEDSTATE_VERSION              5
+#define VGA_SAVEDSTATE_VERSION_WITH_CONFIG  4
 #define VGA_SAVEDSTATE_VERSION_HGSMI        3
 #define VGA_SAVEDSTATE_VERSION_PRE_HGSMI    2
 #define VGA_SAVEDSTATE_VERSION_ANCIENT      1
