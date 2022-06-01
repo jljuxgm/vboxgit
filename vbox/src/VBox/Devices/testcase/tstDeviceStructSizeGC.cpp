@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeGC.cpp 24020 2009-10-23 11:03:34Z vboxsync $ */
+/* $Id: tstDeviceStructSizeGC.cpp 24087 2009-10-26 15:48:03Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the GC perspective.
  *
@@ -533,6 +533,8 @@ int main()
     GEN_CHECK_OFF(PITState, channels[1]);
     GEN_CHECK_OFF(PITState, speaker_data_on);
 //    GEN_CHECK_OFF(PITState, dummy_refresh_clock);
+    GEN_CHECK_OFF(PITState, IOPortBaseCfg);
+    GEN_CHECK_OFF(PITState, fSpeakerCfg);
     GEN_CHECK_OFF(PITState, pDevIns);
     GEN_CHECK_OFF(PITState, StatPITIrq);
     GEN_CHECK_OFF(PITState, StatPITHandler);
