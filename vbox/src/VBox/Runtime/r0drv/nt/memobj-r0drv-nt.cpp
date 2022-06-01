@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 26434 2010-02-11 14:34:26Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 26455 2010-02-12 08:17:33Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -349,7 +349,7 @@ static int rtR0MemObjNativeAllocContEx(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bo
     PHYSICAL_ADDRESS PhysAddrHighest, PhysAddrLowest, PhysAddrBoundary;
     PhysAddrHighest.QuadPart  = PhysHighest;
     PhysAddrLowest.QuadPart   = 0;
-    PhysAddrBoundary.QuadPart = uAlignment;
+    PhysAddrBoundary.QuadPart = (uAlignment == PAGE_SIZE) ? 0 : uAlignment;
     void *pv = MmAllocateContiguousMemorySpecifyCache(cb, PhysAddrLowest, PhysAddrHighest, PhysAddrBoundary, MmCached);
     if (!pv)
         return VERR_NO_MEMORY;
