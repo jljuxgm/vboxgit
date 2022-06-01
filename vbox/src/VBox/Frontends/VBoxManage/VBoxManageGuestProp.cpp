@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 26603 2010-02-17 12:24:34Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 27927 2010-04-01 09:19:12Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -203,7 +203,7 @@ void usageGuestProperty(void)
              "                            [--patterns <patterns>]\n"
              "\n");
     RTPrintf("VBoxManage guestproperty    wait <vmname>|<uuid> <patterns>\n"
-             "                            [--timeout <milliseconds>] [--fail-on-timeout]\n"
+             "                            [--timeout <msec>] [--fail-on-timeout]\n"
              "\n");
 }
 
