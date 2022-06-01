@@ -1,4 +1,4 @@
-/* $Id: GMMR0Internal.h 29201 2010-05-07 12:24:54Z vboxsync $ */
+/* $Id: GMMR0Internal.h 29308 2010-05-10 15:23:09Z vboxsync $ */
 /** @file
  * GMM - The Global Memory Manager, Internal Header.
  */
@@ -68,8 +68,8 @@ typedef struct GMMSHAREDMODULE
     uint32_t                    cRegions;
     /** Number of users (VMs). */
     uint32_t                    cUsers;
-    /** Align. */
-    uint32_t                    u32Align;
+    /** Guest OS family type. */
+    VBOXOSFAMILY                enmGuestOS;
     /** Module name */
     char                        szName[GMM_SHARED_MODULE_MAX_NAME_STRING];
     /** Module version */
