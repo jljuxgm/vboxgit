@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 24874 2009-11-23 15:37:58Z vboxsync $ */
+/* $Id: ConsoleImpl.h 24899 2009-11-24 13:31:21Z vboxsync $ */
 
 /** @file
  *
@@ -562,6 +562,8 @@ private:
     bool mVMDestroying : 1;
     /** true when power down is initiated by vmstateChangeCallback (EMT) */
     bool mVMPoweredOff : 1;
+    /** true when vmstateChangeCallback shouldn't initiate a power down.  */
+    bool mVMIsAlreadyPoweringOff : 1;
 
     /** The current network attachment type in the VM.
      * This doesn't have to match the network attachment type

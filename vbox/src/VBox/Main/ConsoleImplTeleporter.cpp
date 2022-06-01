@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 24896 2009-11-24 12:39:59Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 24899 2009-11-24 13:31:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -768,7 +768,11 @@ Console::teleporterSrcThreadWrapper(RTTHREAD hThread, void *pvUser)
         AssertLogRelMsg(enmMachineState == MachineState_TeleportingPausedVM, ("%s\n", Global::stringifyMachineState(enmMachineState)));
 
         autoVMCaller.release();
+
+        pState->mptrConsole->mVMIsAlreadyPoweringOff = true; /* (Make sure we stick in the TeleportingPausedVM state.) */
         hrc = pState->mptrConsole->powerDown();
+        pState->mptrConsole->mVMIsAlreadyPoweringOff = false;
+
         pState->mptrProgress->notifyComplete(hrc);
     }
     else
