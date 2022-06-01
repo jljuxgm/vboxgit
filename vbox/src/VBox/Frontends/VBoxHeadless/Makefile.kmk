@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25797 2010-01-13 08:54:54Z vboxsync $
+# $Id: Makefile.kmk 27753 2010-03-26 16:18:45Z vboxsync $
 ## @file
 # Sub-Makefile for the headless frontend.
 #
@@ -61,6 +61,10 @@ ifdef VBOX_WITH_GUEST_PROPS
 endif
 ifdef VBOX_WITH_HARDENING
  VBoxHeadless_LDFLAGS.darwin += -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxHeadless.dylib
+endif
+ifdef VBOX_WITH_VNC
+ VBoxHeadless_DEFS     += VBOX_WITH_VNC
+ VBoxHeadless_SOURCES  += FramebufferVNC.cpp
 endif
 
 include $(KBUILD_PATH)/subfooter.kmk
