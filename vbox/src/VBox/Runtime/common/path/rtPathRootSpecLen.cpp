@@ -1,4 +1,4 @@
-/* $Id: rtPathRootSpecLen.cpp 26476 2010-02-13 02:06:41Z vboxsync $ */
+/* $Id: rtPathRootSpecLen.cpp 26492 2010-02-14 07:48:10Z vboxsync $ */
 /** @file
  * IPRT - rtPathRootSpecLen (internal).
  */
@@ -94,5 +94,4 @@ DECLHIDDEN(size_t) rtPathRootSpecLen(const char *pszPath)
 
     return off;
 }
-
 

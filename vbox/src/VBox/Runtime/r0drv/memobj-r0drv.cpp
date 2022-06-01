@@ -1,4 +1,4 @@
-/* $Revision: 26436 $ */
+/* $Revision: 26492 $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -614,7 +614,7 @@ RTR0DECL(int) RTR0MemObjAllocPhysEx(PRTR0MEMOBJ pMemObj, size_t cb, RTHCPHYS Phy
         &&  uAlignment != PAGE_SIZE)
         return VERR_NOT_SUPPORTED;
 #else
-    AssertReturn((    uAlignment == 0 
+    AssertReturn((    uAlignment == 0
                   ||  uAlignment == PAGE_SIZE
                   ||  uAlignment == _2M
                   ||  uAlignment == _4M
