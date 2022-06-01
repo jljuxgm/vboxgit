@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-linux.cpp 22959 2009-09-11 13:45:44Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 25640 2010-01-04 16:44:23Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
@@ -30,7 +30,7 @@
 
 
 #include <features.h>
-#if __GLIBC_PREREQ(2,6) && !defined(IPRT_WITH_FUTEX_BASED_SEMS)
+#if __GLIBC_PREREQ(2,6) && !defined(IPRT_WITH_FUTEX_BASED_SEMS) && !defined(DEBUG_bird)
 
 /*
  * glibc 2.6 fixed a serious bug in the mutex implementation. We wrote this
@@ -297,6 +297,22 @@ RTDECL(int)  RTSemEventMultiWait(RTSEMEVENTMULTI EventMultiSem, unsigned cMillie
 RTDECL(int)  RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI EventMultiSem, unsigned cMillies)
 {
     return rtSemEventMultiWait(EventMultiSem, cMillies, false);
+}
+
+
+RTDECL(void) RTSemEventMultiSetSignaller(RTSEMEVENTMULTI hEventMultiSem, RTTHREAD hThread)
+{
+    /** @todo implement RTSemEventMultiSetSignaller on OS/2 */
+}
+
+
+RTDECL(void) RTSemEventMultiAddSignaller(RTSEMEVENTMULTI hEventMultiSem, RTTHREAD hThread)
+{
+}
+
+
+RTDECL(void) RTSemEventMultiRemoveSignaller(RTSEMEVENTMULTI hEventMultiSem, RTTHREAD hThread)
+{
 }
 
 #endif /* glibc < 2.6 || IPRT_WITH_FUTEX_BASED_SEMS */

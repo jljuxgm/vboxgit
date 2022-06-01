@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-win.cpp 25381 2009-12-14 23:52:28Z vboxsync $ */
+/* $Id: semeventmulti-win.cpp 25640 2010-01-04 16:44:23Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Windows.
  */
@@ -129,5 +129,21 @@ RTDECL(int)  RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI EventMultiSem, unsigned
             return VERR_INTERNAL_ERROR;
         }
     }
+}
+
+
+RTDECL(void) RTSemEventMultiSetSignaller(RTSEMEVENTMULTI hEventMultiSem, RTTHREAD hThread)
+{
+    /** @todo implement RTSemEventMultiSetSignaller on Windows */
+}
+
+
+RTDECL(void) RTSemEventMultiAddSignaller(RTSEMEVENTMULTI hEventMultiSem, RTTHREAD hThread)
+{
+}
+
+
+RTDECL(void) RTSemEventMultiRemoveSignaller(RTSEMEVENTMULTI hEventMultiSem, RTTHREAD hThread)
+{
 }
 

@@ -1,4 +1,4 @@
-/* $Id: sems-os2.cpp 25638 2010-01-04 16:08:04Z vboxsync $ */
+/* $Id: sems-os2.cpp 25640 2010-01-04 16:44:23Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, OS/2.
  */
@@ -135,7 +135,7 @@ RTDECL(void) RTSemEventAddSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
 }
 
 
-RTDECL(void) RTSemEventRemoverSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
+RTDECL(void) RTSemEventRemoveSignaller(RTSEMEVENT hEventSem, RTTHREAD hThread)
 {
 
 }
@@ -312,4 +312,18 @@ RTDECL(bool) RTSemMutexIsOwned(RTSEMMUTEX hMutex);
 }
 
 
+RTDECL(void) RTSemEventMultiSetSignaller(RTSEMEVENTMULTI hEventMultiSem, RTTHREAD hThread)
+{
+    /** @todo implement RTSemEventMultiSetSignaller on OS/2 */
+}
+
+
+RTDECL(void) RTSemEventMultiAddSignaller(RTSEMEVENTMULTI hEventMultiSem, RTTHREAD hThread)
+{
+}
+
+
+RTDECL(void) RTSemEventMultiRemoveSignaller(RTSEMEVENTMULTI hEventMultiSem, RTTHREAD hThread)
+{
+}
 
