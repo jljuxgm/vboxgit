@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 29003 2010-05-04 11:26:52Z vboxsync $ */
+/* $Id: GuestImpl.cpp 29005 2010-05-04 11:30:28Z vboxsync $ */
 
 /** @file
  *
@@ -1028,6 +1028,8 @@ STDMETHODIMP Guest::GetProcessOutput(ULONG aPID, ULONG aFlags, ULONG aTimeoutMS,
     {
         /*
          * Create progress object.
+         * Note that we need at least a local progress object here in order
+         * to get notified when someone cancels the operation.
          */
         ComObjPtr <Progress> progress;
         rc = progress.createObject();
