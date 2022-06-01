@@ -1,4 +1,4 @@
-/* $Id: service.cpp 29867 2010-05-28 15:09:23Z vboxsync $ */
+/* $Id: service.cpp 29898 2010-05-31 12:29:28Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -434,6 +434,17 @@ int Service::clientDisconnect(uint32_t u32ClientID, void *pvClient)
      * Throw out all stale clients.
      */
     int rc = VINF_SUCCESS;
+
+    CallListIter itCall = mClientList.begin();
+    while (itCall != mClientList.end())
+    {
+        if (itCall->mClientID == u32ClientID)
+        {       
+            itCall = mClientList.erase(itCall);
+        }
+        else
+            itCall++;
+    }
 
     ClientContextsListIter it = mClientContextsList.begin();
     while (   it != mClientContextsList.end()
