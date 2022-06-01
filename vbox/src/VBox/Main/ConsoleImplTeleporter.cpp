@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 24895 2009-11-24 12:30:13Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 24896 2009-11-24 12:39:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -482,7 +482,7 @@ static DECLCALLBACK(int) teleporterTcpOpIsOk(void *pvUser)
         {
             if (RT_SUCCESS(rc))
             {
-                LogRel(("Teleporter/TCP: Incoming data detect by IsOk, assuming it's a cancel.\n"));
+                LogRel(("Teleporter/TCP: Incoming data detect by IsOk, assuming it is a cancellation NACK.\n"));
                 rc = VERR_SSM_CANCELLED;
             }
             else
