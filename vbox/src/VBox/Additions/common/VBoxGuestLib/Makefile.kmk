@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28800 2010-04-27 08:22:32Z vboxsync $
+# $Id: Makefile.kmk 29530 2010-05-17 11:31:17Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -88,9 +88,6 @@ VBoxGuestR3Lib_DEFS        = \
 	VBOX_WITH_HGCM \
 	$(if $(VBOX_WITH_GUEST_PROPS),VBOX_WITH_GUEST_PROPS,) \
 	$(if $(VBOX_WITH_GUEST_CONTROL),VBOX_WITH_GUEST_CONTROL,)
-ifdef VBOX_WITH_PAGE_SHARING
-  VBoxGuestR3Lib_DEFS     += VBOX_WITH_PAGE_SHARING
-endif
 VBoxGuestR3Lib_SOURCES     = \
 	VBoxGuestR3Lib.cpp \
 	VBoxGuestR3LibAdditions.cpp \
