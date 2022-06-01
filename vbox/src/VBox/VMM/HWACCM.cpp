@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: HWACCM.cpp 28812 2010-04-27 12:22:05Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -298,6 +298,7 @@ VMMR3DECL(int) HWACCMR3Init(PVM pVM)
     AssertReleaseMsg(RT_OFFSETOF(SVM_VMCB, guest.u8Reserved6) == 0x4D8, ("guest.u8Reserved6 offset = %x\n", RT_OFFSETOF(SVM_VMCB, guest.u8Reserved6)));
     AssertReleaseMsg(RT_OFFSETOF(SVM_VMCB, guest.u8Reserved7) == 0x580, ("guest.u8Reserved7 offset = %x\n", RT_OFFSETOF(SVM_VMCB, guest.u8Reserved7)));
     AssertReleaseMsg(RT_OFFSETOF(SVM_VMCB, guest.u8Reserved9) == 0x648, ("guest.u8Reserved9 offset = %x\n", RT_OFFSETOF(SVM_VMCB, guest.u8Reserved9)));
+    AssertReleaseMsg(RT_OFFSETOF(SVM_VMCB, guest.u64GPAT) == 0x668, ("guest.u64GPAT offset = %x\n", RT_OFFSETOF(SVM_VMCB, guest.u64GPAT)));
     AssertReleaseMsg(RT_OFFSETOF(SVM_VMCB, u8Reserved10) == 0x698, ("u8Reserved3 offset = %x\n", RT_OFFSETOF(SVM_VMCB, u8Reserved10)));
     AssertReleaseMsg(sizeof(SVM_VMCB) == 0x1000, ("SVM_VMCB size = %x\n", sizeof(SVM_VMCB)));
 
