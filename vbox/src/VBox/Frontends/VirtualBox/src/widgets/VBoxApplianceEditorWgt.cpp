@@ -1,4 +1,4 @@
-/* $Id: VBoxApplianceEditorWgt.cpp 28755 2010-04-26 15:23:04Z vboxsync $ */
+/* $Id: VBoxApplianceEditorWgt.cpp 28758 2010-04-26 15:30:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -219,7 +219,7 @@ QVariant HardwareItem::data (int aColumn, int aRole) const
                                 v = tmp; break;
                             }
                         case KVirtualSystemDescriptionType_OS: v = vboxGlobal().vmGuestOSTypeDescription (mConfigValue); break;
-                        case KVirtualSystemDescriptionType_Memory: v = mConfigValue + " " + VBoxApplianceEditorWgt::tr ("MB", "size suffix MBytes=1024 KBytes"); break;
+                        case KVirtualSystemDescriptionType_Memory: v = mConfigValue + " " + VBoxApplianceEditorWgt::tr ("MiB", "size suffix MiBytes"); break;
                         case KVirtualSystemDescriptionType_SoundCard: v = vboxGlobal().toString (static_cast<KAudioControllerType> (mConfigValue.toInt())); break;
                         case KVirtualSystemDescriptionType_NetworkAdapter: v = vboxGlobal().toString (static_cast<KNetworkAdapterType> (mConfigValue.toInt())); break;
                         default: v = mConfigValue; break;
@@ -398,7 +398,7 @@ QWidget * HardwareItem::createEditor (QWidget *aParent, const QStyleOptionViewIt
                 {
                     QSpinBox *e = new QSpinBox (aParent);
                     e->setRange (VBoxApplianceEditorWgt::minGuestRAM(), VBoxApplianceEditorWgt::maxGuestRAM());
-                    e->setSuffix (" " + VBoxApplianceEditorWgt::tr ("MB", "size suffix MBytes=1024KBytes"));
+                    e->setSuffix (" " + VBoxApplianceEditorWgt::tr ("MiB", "size suffix MiBytes"));
                     editor = e;
                     break;
                 }
