@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 26782 2010-02-25 11:17:30Z vboxsync $ */
+/* $Id: MouseImpl.h 26935 2010-03-02 10:32:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -117,7 +117,7 @@ public:
 private:
 
     static DECLCALLBACK(void *) drvQueryInterface(PPDMIBASE pInterface, const char *pszIID);
-    static DECLCALLBACK(void)   mouseAbsModeChange (PPDMIMOUSECONNECTOR pInterface, bool fAbs);
+    static DECLCALLBACK(void)   mouseReportModes (PPDMIMOUSECONNECTOR pInterface, bool fRel, bool fAbs);
     static DECLCALLBACK(int)    drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(void)   drvDestruct(PPDMDRVINS pDrvIns);
     
