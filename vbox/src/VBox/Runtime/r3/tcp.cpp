@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 24204 2009-10-30 16:00:40Z vboxsync $ */
+/* $Id: tcp.cpp 24205 2009-10-30 16:02:19Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -998,7 +998,7 @@ static int rtTcpClose(RTSOCKET Sock, const char *pszMsg, bool fTryGracefulShutdo
                 else if (rc != VINF_SUCCESS)
                     break;
                 {
-                    uint8_t abBitBucket[16*_1KB];
+                    uint8_t abBitBucket[16*_1K];
                     ssize_t cbBytesRead = recv(Sock, abBitBucket, sizeof(abBitBucket), MSG_NOSIGNAL);
                     if (cbBytesRead == 0)
                         break; /* orderly shutdown in progress */
