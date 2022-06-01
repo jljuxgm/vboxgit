@@ -1,4 +1,4 @@
-/* $Id: strtonum.cpp 24658 2009-11-14 23:31:36Z vboxsync $ */
+/* $Id: strtonum.cpp 24659 2009-11-14 23:33:57Z vboxsync $ */
 /** @file
  * IPRT - String To Number Convertion.
  */
@@ -165,14 +165,11 @@ RTDECL(int) RTStrVersionToUInt32(const char *pszVer, uint32_t *pu32)
     }
     else
     {
-        rc = RTStrToUInt32Ex(strNew,
-                             NULL,       /* Next pointer, not used */
-                             10          /* Number base */,
-                             pu32);
+        rc = RTStrToUInt32Ex(pszNew, NULL /*pszNext*/, 10 /*uBase*/, pu32);
         if (rc != VINF_SUCCESS)
             *pu32 = 0;
     }
-    RTStrFree(strNew);
+    RTStrFree(pszNew);
     return rc;
 }
 
