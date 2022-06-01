@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferSDL.cpp 26822 2010-02-26 10:11:50Z vboxsync $ */
+/* $Id: UIFrameBufferSDL.cpp 27107 2010-03-05 15:50:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -50,7 +50,8 @@ UIFrameBufferSDL::UIFrameBufferSDL(UIMachineView *pMachineView)
     m_pSurfVRAM = NULL;
 
     X11ScreenSaverSettingsInit();
-    resizeEvent(new UIResizeEvent(FramebufferPixelFormat_Opaque, NULL, 0, 0, 640, 480));
+    UIResizeEvent event(FramebufferPixelFormat_Opaque, NULL, 0, 0, 640, 480);
+    resizeEvent(&event);
 }
 
 UIFrameBufferSDL::~UIFrameBufferSDL()

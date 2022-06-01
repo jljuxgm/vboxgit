@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 26823 2010-02-26 10:35:32Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 27107 2010-03-05 15:50:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -49,7 +49,8 @@ UIFrameBufferQImage::UIFrameBufferQImage(UIMachineView *pMachineView)
     : UIFrameBuffer(pMachineView)
 {
     /* Initialize the framebuffer the first time */
-    resizeEvent(new UIResizeEvent(FramebufferPixelFormat_Opaque, NULL, 0, 0, 640, 480));
+    UIResizeEvent event(FramebufferPixelFormat_Opaque, NULL, 0, 0, 640, 480);
+    resizeEvent(&event);
 }
 
 /** @note This method is called on EMT from under this object's lock */
