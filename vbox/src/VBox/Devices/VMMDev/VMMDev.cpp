@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 27049 2010-03-04 17:36:41Z vboxsync $ */
+/* $Id: VMMDev.cpp 27085 2010-03-05 13:11:33Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1386,16 +1386,11 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
             }
             else
             {
+                pRequestHeader->rc = PGMR3PhysChangeMemBalloon(PDMDevHlpGetVM(pDevIns), memBalloonChange->fInflate, memBalloonChange->cPages, memBalloonChange->aPhysPage);
                 if (memBalloonChange->fInflate)
-                {
-                    pRequestHeader->rc = PGMR3PhysFreeRamPages(PDMDevHlpGetVM(pDevIns), memBalloonChange->cPages, memBalloonChange->aPhysPage);
                     STAM_REL_U32_INC(&pThis->StatMemBalloonChunks);
-                }
                 else
-                {
-                    pRequestHeader->rc = VINF_SUCCESS;      /* deflating the balloon doesn't require any action; when the reacquired memory is touched, it will be paged back in. */
                     STAM_REL_U32_DEC(&pThis->StatMemBalloonChunks);
-                }
             }
             break;
         }
