@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 29207 2010-05-07 13:02:08Z vboxsync $ */
+/* $Id: MediumImpl.cpp 29210 2010-05-07 13:23:49Z vboxsync $ */
 
 /** @file
  *
@@ -3150,14 +3150,10 @@ HRESULT Medium::createMediumLockList(bool fMediumWritable,
 
                 /* collect multiple errors */
                 eik.restore();
-
-                /* be in sync with MediumBase::setStateError() */
                 Assert(!error.isEmpty());
                 mrc = setError(E_FAIL,
-                               tr("Medium '%ls' is not accessible. %ls"),
-                               loc.raw(),
+                               "%ls",
                                error.raw());
-
                 eik.fetch();
             }
         }
