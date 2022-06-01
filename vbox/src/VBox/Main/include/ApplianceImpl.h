@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 23223 2009-09-22 15:50:03Z vboxsync $ */
+/* $Id: ApplianceImpl.h 24526 2009-11-09 19:34:28Z vboxsync $ */
 
 /** @file
  *
@@ -26,6 +26,8 @@
 
 /* VBox includes */
 #include "VirtualBoxBase.h"
+
+#include "ovfreader.h"
 
 /* VBox forward declarations */
 class VirtualBox;
@@ -115,6 +117,12 @@ private:
 
     int importFS(TaskImportOVF *pTask);
     int importS3(TaskImportOVF *pTask);
+
+    void ConvertDiskAttachmentValues(const HardDiskController &hdc,
+                                     uint32_t ulAddressOnParent,
+                                     Bstr &controllerType,
+                                     int32_t &lChannel,
+                                     int32_t &lDevice);
 
     HRESULT writeImpl(int aFormat, const LocationInfo &aLocInfo, ComObjPtr<Progress> &aProgress);
 
