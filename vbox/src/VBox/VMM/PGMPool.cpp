@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 27285 2010-03-11 15:42:16Z vboxsync $ */
+/* $Id: PGMPool.cpp 27362 2010-03-15 14:33:11Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -601,9 +601,9 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
 {
     PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
     STAM_PROFILE_START(&pPool->StatClearAll, c);
-    LogFlow(("pgmPoolClearAllDoIt: cUsedPages=%d\n", pPool->cUsedPages));
 
     pgmLock(pVM);
+    Log(("pgmR3PoolClearAllRendezvous: cUsedPages=%d\n", pPool->cUsedPages));
 
 #ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
     pgmPoolResetDirtyPages(pVM);
