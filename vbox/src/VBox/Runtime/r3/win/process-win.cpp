@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 27579 2010-03-22 10:30:30Z vboxsync $ */
+/* $Id: process-win.cpp 27613 2010-03-23 01:12:54Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -603,16 +603,26 @@ RTR3DECL(int) RTProcWaitNoResume(RTPROCESS Process, unsigned fFlags, PRTPROCSTAT
 
 RTR3DECL(int) RTProcTerminate(RTPROCESS Process)
 {
-    HANDLE hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, Process);
+    int     rc       = VINF_SUCCESS;
+    HANDLE  hProcess = rtProcWinFindPid(Process);
     if (hProcess != NULL)
     {
-        BOOL fRc = TerminateProcess(hProcess, 127);
-        CloseHandle(hProcess);
-        if (fRc)
-            return VINF_SUCCESS;
+        if (!TerminateProcess(hProcess, 127))
+            rc = RTErrConvertFromWin32(GetLastError());
     }
-    DWORD dwErr = GetLastError();
-    return RTErrConvertFromWin32(dwErr);
+    else
+    {
+        hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, Process);
+        if (hProcess != NULL)
+        {
+            BOOL  fRc   = TerminateProcess(hProcess, 127);
+            DWORD dwErr = GetLastError();
+            CloseHandle(hProcess);
+            if (!fRc)
+                rc = RTErrConvertFromWin32(dwErr);
+        }
+    }
+    return rc;
 }
 
 
