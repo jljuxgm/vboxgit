@@ -1,4 +1,4 @@
-/* $Id: SupportErrorInfo.cpp 26186 2010-02-03 13:07:12Z vboxsync $ */
+/* $Id: SupportErrorInfo.cpp 26236 2010-02-04 14:38:16Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -336,15 +336,6 @@ HRESULT SupportErrorInfoBase::setError(HRESULT aResultCode, const char *aText, .
     HRESULT rc = setErrorV(aResultCode, mainInterfaceID(), componentName(),
                            aText, args);
     va_end(args);
-    return rc;
-}
-
-HRESULT SupportErrorInfoBase::setError(HRESULT aResultCode, const Utf8Str &strText)
-{
-    HRESULT rc = setError(aResultCode,
-                          mainInterfaceID(),
-                          componentName(),
-                          strText);
     return rc;
 }
 

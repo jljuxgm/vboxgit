@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 26201 2010-02-03 15:18:26Z vboxsync $ */
+/* $Id: MediumImpl.cpp 26236 2010-02-04 14:38:16Z vboxsync $ */
 
 /** @file
  *
@@ -1025,7 +1025,7 @@ HRESULT Medium::init(VirtualBox *aVirtualBox,
         if (m->state == MediumState_Inaccessible)
         {
             Assert(!m->strLastAccessError.isEmpty());
-            rc = setError(E_FAIL, m->strLastAccessError);
+            rc = setError(E_FAIL, m->strLastAccessError.c_str());
         }
         else
         {
