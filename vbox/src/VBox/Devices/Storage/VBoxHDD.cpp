@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 27245 2010-03-10 12:43:50Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 27359 2010-03-15 13:07:52Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2206,10 +2206,10 @@ VBOXDDU_DECL(int) VDMerge(PVBOXHDD pDisk, unsigned nImageFrom,
         PVDIMAGE pImageChild = NULL;
         if (nImageFrom < nImageTo)
         {
-            if (pImageTo->pPrev)
+            if (pImageFrom->pPrev)
             {
-                rc = pImageTo->Backend->pfnGetUuid(pImageTo->pPrev->pvBackendData,
-                                                   &Uuid);
+                rc = pImageFrom->pPrev->Backend->pfnGetUuid(pImageFrom->pPrev->pvBackendData,
+                                                            &Uuid);
                 AssertRC(rc);
             }
             else
