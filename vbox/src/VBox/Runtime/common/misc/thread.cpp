@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 25598 2009-12-31 00:36:57Z vboxsync $ */
+/* $Id: thread.cpp 25611 2009-12-31 14:54:25Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -366,6 +366,9 @@ PRTTHREADINT rtThreadAlloc(RTTHREADTYPE enmType, unsigned fFlags, uint32_t fIntF
         pThread->fFlags     = fFlags;
         pThread->fIntFlags  = fIntFlags;
         pThread->enmState   = RTTHREADSTATE_INITIALIZING;
+#ifdef IN_RING3
+        rtLockValidatorInitPerThread(&pThread->LockValidator);
+#endif
         int rc = RTSemEventMultiCreate(&pThread->EventUser);
         if (RT_SUCCESS(rc))
         {

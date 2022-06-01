@@ -1,4 +1,4 @@
-/* $Id: thread.h 25597 2009-12-31 00:35:20Z vboxsync $ */
+/* $Id: thread.h 25611 2009-12-31 14:54:25Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -91,7 +91,7 @@ typedef struct RTTHREADINT
     size_t                  cbStack;
 #ifdef IN_RING3
     /** The lock validator data. */
-    RTLOCKVALIDATORPERTHREAD LockValidator;
+    RTLOCKVALPERTHREAD      LockValidator;
 #endif /* IN_RING3 */
 #ifdef IPRT_WITH_GENERIC_TLS
     /** The TLS entries for this thread. */
