@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 28354 2010-04-15 12:34:53Z vboxsync $ */
+/* $Id: GuestImpl.cpp 28358 2010-04-15 13:26:07Z vboxsync $ */
 
 /** @file
  *
@@ -812,7 +812,7 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
 
-STDMETHODIMP Guest::GetProcessOutput(BSTR *aBuffer, ULONG aFlags)
+STDMETHODIMP Guest::GetProcessOutput(ULONG aPID, ULONG aFlags, BSTR *aBuffer)
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();
