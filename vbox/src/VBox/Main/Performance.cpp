@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 29628 2010-05-18 12:48:27Z vboxsync $ */
+/* $Id: Performance.cpp 29629 2010-05-18 12:49:18Z vboxsync $ */
 
 /** @file
  *
@@ -170,7 +170,7 @@ int CollectorGuestHAL::preCollect(const CollectorHints& /* hints */, uint64_t iT
                                       &mPageTotal, &ulMemAllocTotal, &ulMemFreeTotal, &ulMemBalloonTotal, &ulMemSharedTotal);
 
         if (mHostHAL)
-            mHostHAL->setMemHypervisorStats(ulMemAllocTotal, ulMemFreeTotal, ulMemBalloonTotal, ulMemShared);
+            mHostHAL->setMemHypervisorStats(ulMemAllocTotal, ulMemFreeTotal, ulMemBalloonTotal, ulMemSharedTotal);
 
         mLastTick = iTick;
     }
