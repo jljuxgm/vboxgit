@@ -1,4 +1,4 @@
-/* $Id: vhwa.c 26489 2010-02-14 07:32:29Z vboxsync $ */
+/* $Id: vhwa.c 26667 2010-02-19 17:49:14Z vboxsync $ */
 /** @file
  * VBoxGuest -- VirtualBox Win 2000/XP guest display driver
  *
@@ -78,7 +78,8 @@ void vboxVHWASurfDescFree(PVBOXVHWASURFDESC pDesc)
         )
 
 #define VBOXVHWA_SUPPORTED_PF ( \
-        VBOXVHWA_PF_RGB \
+        VBOXVHWA_PF_PALETTEINDEXED8 \
+        | VBOXVHWA_PF_RGB \
         | VBOXVHWA_PF_RGBTOYUV \
         | VBOXVHWA_PF_YUV \
         | VBOXVHWA_PF_FOURCC \
