@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 27007 2010-03-04 09:41:23Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 27008 2010-03-04 09:58:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -126,37 +126,6 @@ void UIMachineWindow::retranslateUi()
                               .arg(RTBldCfgRevisionStr())
                               .arg(VBOX_BLEEDING_EDGE);
 #endif
-}
-
-void UIMachineWindow::sltMediumChange(const CMediumAttachment &attachment)
-{
-    KDeviceType type = attachment.GetType();
-    if (type == KDeviceType_HardDisk)
-        updateAppearanceOf(UIVisualElement_HDStuff);
-    if (type == KDeviceType_DVD)
-        updateAppearanceOf(UIVisualElement_CDStuff);
-    if (type == KDeviceType_Floppy)
-        updateAppearanceOf(UIVisualElement_FDStuff);
-}
-
-void UIMachineWindow::sltUSBControllerChange()
-{
-    updateAppearanceOf(UIVisualElement_USBStuff);
-}
-
-void UIMachineWindow::sltUSBDeviceStateChange()
-{
-    updateAppearanceOf(UIVisualElement_USBStuff);
-}
-
-void UIMachineWindow::sltNetworkAdapterChange()
-{
-    updateAppearanceOf(UIVisualElement_NetworkStuff);
-}
-
-void UIMachineWindow::sltSharedFolderChange()
-{
-    updateAppearanceOf(UIVisualElement_SharedFolderStuff);
 }
 
 void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
