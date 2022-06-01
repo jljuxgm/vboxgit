@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 26305 2010-02-05 19:00:45Z vboxsync $ */
+/* $Id: DevPCNet.cpp 26306 2010-02-05 19:09:46Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -226,7 +226,7 @@ struct PCNetState_st
     /** The configured MAC address. */
     RTMAC                               MacConfigured;
     /** Alignment padding. */
-    uint8_t                             Alignment4[HC_ARCH_BITS == 64 ? 6 : 2];
+    uint8_t                             Alignment4[HC_ARCH_BITS == 64 ? 6 : 6];
 
     /** The LED. */
     PDMLED                              Led;
