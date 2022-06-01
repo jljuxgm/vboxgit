@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 27304 2010-03-11 20:21:25Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 27324 2010-03-12 11:25:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -526,6 +526,54 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 #else
     rc = CFGMR3InsertString(pMod,   "Path",  "VBoxC");                                 RC_CHECK();
 #endif
+
+    /*
+     * I/O settings (cach, max bandwidth, ...).
+     */
+    PCFGMNODE pPDMAc;
+    PCFGMNODE pPDMAcFile;
+    rc = CFGMR3InsertNode(pPDM, "AsyncCompletion", &pPDMAc);                           RC_CHECK();
+    rc = CFGMR3InsertNode(pPDMAc, "File", &pPDMAcFile);                                RC_CHECK();
+
+    /* I/O manager type */
+    IoMgrType_T ioMgrType;
+    hrc = pMachine->COMGETTER(IoMgr)(&ioMgrType);                                      H();
+    if (ioMgrType == IoMgrType_Async)
+        rc = CFGMR3InsertString(pPDMAcFile, "IoMgr", "Async");
+    else if (ioMgrType == IoMgrType_Simple)
+        rc = CFGMR3InsertString(pPDMAcFile, "IoMgr", "Simple");
+    else
+        rc = VERR_INVALID_PARAMETER;
+    RC_CHECK();
+
+    /* I/O backend type */
+    IoBackendType_T ioBackendType;
+    hrc = pMachine->COMGETTER(IoBackend)(&ioBackendType);                              H();
+    if (ioBackendType == IoBackendType_Buffered)
+        rc = CFGMR3InsertString(pPDMAcFile, "FileBackend", "Buffered");
+    else if (ioBackendType == IoBackendType_Unbuffered)
+        rc = CFGMR3InsertString(pPDMAcFile, "FileBackend", "NonBuffered");
+    else
+        rc = VERR_INVALID_PARAMETER;
+    RC_CHECK();
+
+    /* Builtin I/O cache */
+    BOOL fIoCache = true;
+    hrc = pMachine->COMGETTER(IoCacheEnabled)(&fIoCache);                              H();
+    rc = CFGMR3InsertInteger(pPDMAcFile, "CacheEnabled", fIoCache);                    RC_CHECK();
+
+    /* I/O cache size */
+    ULONG ioCacheSize = 5;
+    hrc = pMachine->COMGETTER(IoCacheSize)(&ioCacheSize);                              H();
+    rc = CFGMR3InsertInteger(pPDMAcFile, "CacheSize", ioCacheSize * _1M);              RC_CHECK();
+
+    /* Maximum I/O bandwidth */
+    ULONG ioBandwidthMax = 0;
+    hrc = pMachine->COMGETTER(IoBandwidthMax)(&ioBandwidthMax);                        H();
+    if (ioBandwidthMax != 0)
+    {
+        rc = CFGMR3InsertInteger(pPDMAcFile, "VMTransferPerSecMax", ioBandwidthMax * _1M); RC_CHECK();
+    }
 
     /*
      * Devices
