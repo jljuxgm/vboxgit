@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 28414 2010-04-16 12:54:33Z vboxsync $ */
+/* $Id: DevEFI.cpp 28424 2010-04-16 17:46:28Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -473,25 +473,12 @@ static DECLCALLBACK(void) efiReset(PPDMDEVINS pDevIns)
     pThis->iPanicMsg = 0;
     pThis->szPanicMsg[0] = '\0';
 
+    /*
+     * Plan some structures in RAM.
+     */
+    FwCommonPlantSmbiosAndDmiHdrs(pDevIns);
     if (pThis->u8IOAPIC)
         FwCommonPlantMpsFloatPtr(pDevIns);
-    
-    /*
-     * Plant DMI and MPS tables
-     */
-    rc = FwCommonPlantDMITable(pDevIns,
-                               pThis->au8DMIPage,
-                               VBOX_DMI_TABLE_SIZE,
-                               &pThis->aUuid,
-                               pDevIns->pCfg,
-                               true /*fPutSmbiosHeaders*/);
-    AssertRC(rc);
-    if (pThis->u8IOAPIC)
-        FwCommonPlantMpsTable(pDevIns,
-                              pThis->au8DMIPage + VBOX_DMI_TABLE_SIZE,
-                              _4K - VBOX_DMI_TABLE_SIZE,
-                              pThis->cCpus);
-    
 
     /*
      * Re-shadow the Firmware Volume and make it RAM/RAM.
@@ -1205,17 +1192,28 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         return rc;
 
     /*
-     * Call reset to set things up.
+     * Plant DMI and MPS tables
      */
-    efiReset(pDevIns);
-
-
+    rc = FwCommonPlantDMITable(pDevIns,
+                               pThis->au8DMIPage,
+                               VBOX_DMI_TABLE_SIZE,
+                               &pThis->aUuid,
+                               pDevIns->pCfg);
+    AssertRCReturn(rc, rc);
+    if (pThis->u8IOAPIC)
+        FwCommonPlantMpsTable(pDevIns,
+                              pThis->au8DMIPage + VBOX_DMI_TABLE_SIZE,
+                              _4K - VBOX_DMI_TABLE_SIZE,
+                              pThis->cCpus);
     rc = PDMDevHlpROMRegister(pDevIns, VBOX_DMI_TABLE_BASE, _4K, pThis->au8DMIPage,
                               PGMPHYS_ROM_FLAGS_PERMANENT_BINARY, "DMI tables");
 
     AssertRCReturn(rc, rc);
 
-
+    /*
+     * Call reset to set things up.
+     */
+    efiReset(pDevIns);
 
     return VINF_SUCCESS;
 }
