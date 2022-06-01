@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 24258 2009-11-02 14:38:50Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 24590 2009-11-11 15:21:59Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -799,19 +799,7 @@ int handleConvertFromRaw(int argc, char *argv[])
                 break;
 
             default:
-                if (c > 0)
-                {
-                    if (RT_C_IS_PRINT(c))
-                        return errorSyntax(USAGE_CONVERTFROMRAW, "Invalid option -%c", c);
-                    else
-                        return errorSyntax(USAGE_CONVERTFROMRAW, "Invalid option case %i", c);
-                }
-                else if (c == VERR_GETOPT_UNKNOWN_OPTION)
-                    return errorSyntax(USAGE_CREATEHD, "unknown option: %s\n", ValueUnion.psz);
-                else if (ValueUnion.pDef)
-                    return errorSyntax(USAGE_CONVERTFROMRAW, "%s: %Rrs", ValueUnion.pDef->pszLong, c);
-                else
-                    return errorSyntax(USAGE_CONVERTFROMRAW, "error: %Rrs", c);
+                return errorGetOpt(USAGE_CONVERTFROMRAW, c, &ValueUnion);
         }
     }
 
