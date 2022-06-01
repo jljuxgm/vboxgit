@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 28507 2010-04-20 08:43:15Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 28508 2010-04-20 09:39:17Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -566,7 +566,7 @@ static void VBoxServiceVMStatsReport(void)
 
                 rc = VbglR3StatReport(&req);
                 if (RT_SUCCESS(rc))
-                    VBoxServiceVerbose(3, "VBoxStatsReportStatistics: new statistics (CPU %u) reported successfully!\n", cCpus);
+                    VBoxServiceVerbose(3, "VBoxStatsReportStatistics: new statistics (CPU %u) reported successfully!\n", cCPUs);
                 else
                     VBoxServiceVerbose(3, "VBoxStatsReportStatistics: stats report failed with rc=%Rrc\n", rc);
                 cCPUs++;
