@@ -1,4 +1,4 @@
-/* $Id: VBoxHelpActions.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
+/* $Id: VBoxHelpActions.cpp 30206 2010-06-15 15:41:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -34,7 +34,7 @@ void VBoxHelpActions::setup (QObject *aParent)
     AssertReturnVoid (contentsAction == NULL);
 
     contentsAction = new QAction (aParent);
-    contentsAction->setIcon (UIIconPool::iconSet (":/help_16px.png"));
+    contentsAction->setIcon(UIIconPool::defaultIcon(UIIconPool::DialogHelpIcon));
 
     webAction = new QAction (aParent);
     webAction->setIcon (UIIconPool::iconSet (":/site_16px.png"));
