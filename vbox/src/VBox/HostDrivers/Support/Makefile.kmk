@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25291 2009-12-10 10:16:54Z vboxsync $
+# $Id: Makefile.kmk 25300 2009-12-10 14:09:44Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -173,7 +173,9 @@ ifdef VBOX_SIGNING_MODE
  VBoxDrv_NOINST       = true
 endif
 VBoxDrv_DEFS          = IN_RT_R0 IN_SUP_R0 SUPDRV_WITH_RELEASE_LOGGER
-VBoxDrv_DEFS.amd64    = RT_WITH_W64_UNWIND_HACK
+ifdef VBOX_WITHOUT_NATIVE_R0_LOADER
+ VBoxDrv_DEFS.amd64   = RT_WITH_W64_UNWIND_HACK VBOX_WITHOUT_NATIVE_R0_LOADER
+endif
 ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
 VBoxDrv_DEFS         += VBOX_WITH_VMMR0_DISABLE_PREEMPTION
 endif
