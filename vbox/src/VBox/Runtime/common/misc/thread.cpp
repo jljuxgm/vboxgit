@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 23125 2009-09-18 12:34:56Z vboxsync $ */
+/* $Id: thread.cpp 25000 2009-11-26 14:22:44Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -135,7 +135,7 @@ int rtThreadInit(void)
          * We assume the caller is the 1st thread, which we'll call 'main'.
          * But first, we'll create the semaphore.
          */
-        int rc = RTSemRWCreate(&g_ThreadRWSem);
+        rc = RTSemRWCreate(&g_ThreadRWSem);
         if (RT_SUCCESS(rc))
         {
             rc = rtThreadNativeInit();

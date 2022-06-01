@@ -1,4 +1,4 @@
-/* $Id: uuid-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: uuid-generic.cpp 25000 2009-11-26 14:22:44Z vboxsync $ */
 /** @file
  * IPRT - UUID, Generic.
  */
@@ -323,7 +323,6 @@ RT_EXPORT_SYMBOL(RTUuidFromStr);
 
 RTDECL(int)  RTUuidToUtf16(PCRTUUID pUuid, PRTUTF16 pwszString, size_t cwcString)
 {
-    static const char g_achDigits[17] = "0123456789abcdef";
     uint32_t u32TimeLow;
     unsigned u;
 

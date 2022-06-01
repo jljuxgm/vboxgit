@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 19924 2009-05-22 21:52:47Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 25000 2009-11-26 14:22:44Z vboxsync $ */
 /** @file
  * IPRT - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -202,7 +202,7 @@ static int testLdrOne(const char *pszFilename)
             RTMemExecFree(aLoads[i].pvBits);
         if (aLoads[i].hLdrMod)
         {
-            int rc = RTLdrClose(aLoads[i].hLdrMod);
+            rc = RTLdrClose(aLoads[i].hLdrMod);
             if (RT_FAILURE(rc))
             {
                 RTPrintf("tstLdr-4: Failed to close '%s' i=%d, rc=%Rrc.\n", pszFilename, i, rc);

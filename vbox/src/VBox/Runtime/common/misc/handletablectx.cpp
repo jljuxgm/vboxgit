@@ -1,4 +1,4 @@
-/* $Id: handletablectx.cpp 24181 2009-10-30 10:51:56Z vboxsync $ */
+/* $Id: handletablectx.cpp 25000 2009-11-26 14:22:44Z vboxsync $ */
 /** @file
  * IPRT - Handle Tables.
  */
@@ -175,8 +175,6 @@ RTDECL(int)     RTHandleTableAllocWithCtx(RTHANDLETABLE hHandleTable, void *pvOb
             if (    iLevel1New < pThis->cLevel1
                 &&  pThis->cCur < pThis->cMax)
             {
-                uint32_t i;
-
                 pThis->papvLevel1[iLevel1New] = paTable;
 
                 /* link all entries into a free list. */

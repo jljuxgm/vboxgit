@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: env-generic.cpp 25000 2009-11-26 14:22:44Z vboxsync $ */
 /** @file
  * IPRT - Environment, Generic.
  */
@@ -244,12 +244,12 @@ RTDECL(int) RTEnvClone(PRTENV pEnv, RTENV EnvToClone)
             /* ASSUMES the default environment is in the current codepage. */
             for (size_t iVar = 0; iVar < cVars; iVar++)
             {
-                int rc = RTStrCurrentCPToUtf8(&pIntEnv->papszEnv[iVar], papszEnv[iVar]);
-                if (RT_FAILURE(rc))
+                int rc2 = RTStrCurrentCPToUtf8(&pIntEnv->papszEnv[iVar], papszEnv[iVar]);
+                if (RT_FAILURE(rc2))
                 {
                     pIntEnv->cVars = iVar;
                     RTEnvDestroy(pIntEnv);
-                    return rc;
+                    return rc2;
                 }
             }
         }
@@ -264,7 +264,7 @@ RTDECL(int) RTEnvClone(PRTENV pEnv, RTENV EnvToClone)
 
                     pIntEnv->cVars = iVar;
                     RTEnvDestroy(pIntEnv);
-                    return rc;
+                    return VERR_NO_STR_MEMORY;
                 }
                 pIntEnv->papszEnv[iVar] = pszVar;
             }
