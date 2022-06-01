@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 28205 2010-04-12 13:39:18Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 28304 2010-04-14 14:11:16Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -193,6 +193,15 @@ struct VirtualBox::Data
           threadAsyncEvent(NIL_RTTHREAD),
           pAsyncEventQ(NULL)
     {}
+
+    ~Data()
+    {
+        if (pMainConfigFile)
+        {
+            delete pMainConfigFile;
+            pMainConfigFile = NULL;
+        }
+    };
 
     // const data members not requiring locking
     const Utf8Str                       strHomeDir;

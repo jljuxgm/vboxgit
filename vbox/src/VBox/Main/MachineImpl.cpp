@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 28214 2010-04-12 15:20:11Z vboxsync $ */
+/* $Id: MachineImpl.cpp 28304 2010-04-14 14:11:16Z vboxsync $ */
 
 /** @file
  * Implementation of IMachine in VBoxSVC.
@@ -123,6 +123,11 @@ Machine::Data::~Data()
     {
         RTSemEventMultiDestroy(mMachineStateDepsSem);
         mMachineStateDepsSem = NIL_RTSEMEVENTMULTI;
+    }
+    if (pMachineConfigFile)
+    {
+        delete pMachineConfigFile;
+        pMachineConfigFile = NULL;
     }
 }
 
