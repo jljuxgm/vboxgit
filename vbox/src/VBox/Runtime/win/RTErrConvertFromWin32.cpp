@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 30093 2010-06-08 14:30:17Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -187,7 +187,7 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
         case ERROR_CANCELLED:               return VERR_CANCELLED;
         case ERROR_DIRECTORY:               return VERR_NOT_A_DIRECTORY;
 
-        case ERROR_LOGON_FAILURE:           return VERR_LOGON_FAILURE;
+        case ERROR_LOGON_FAILURE:           return VERR_AUTHENTICATION_FAILURE;
 
         /*
          * Winsocket errors are mostly BSD errno.h wrappers.
