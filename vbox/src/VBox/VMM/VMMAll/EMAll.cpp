@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 27231 2010-03-09 20:16:59Z vboxsync $ */
+/* $Id: EMAll.cpp 27320 2010-03-12 10:54:38Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2843,6 +2843,8 @@ static const char *emMSRtoString(uint32_t uMsr)
         return "Unsupported MSR_IA32_BIOS_UPDT_TRIG";
     case MSR_IA32_TSC:
         return "MSR_IA32_TSC";
+    case MSR_IA32_MISC_ENABLE:
+        return "Unsupported MSR_IA32_MISC_ENABLE";
     case MSR_IA32_MTRR_CAP:
         return "Unsupported MSR_IA32_MTRR_CAP";
     case MSR_IA32_MCP_CAP:
