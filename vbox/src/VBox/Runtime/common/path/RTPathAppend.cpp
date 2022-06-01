@@ -1,4 +1,4 @@
-/* $Id: RTPathAppend.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTPathAppend.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
 /** @file
  * IPRT - RTPathAppend
  */
@@ -106,7 +106,7 @@ static size_t rtPathRootSpecLen2(const char *pszPath)
 
 RTDECL(int) RTPathAppend(char *pszPath, size_t cbPathDst, const char *pszAppend)
 {
-    char *pszPathEnd = (char *)memchr(pszPath, '\0', cbPathDst);
+    char *pszPathEnd = RTStrEnd(pszPath, cbPathDst);
     AssertReturn(pszPathEnd, VERR_INVALID_PARAMETER);
 
     /*

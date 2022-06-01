@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 29907 2010-05-31 13:07:02Z vboxsync $ */
+/* $Id: scm.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -723,7 +723,7 @@ void ScmStreamRewindForWriting(PSCMSTREAM pStream)
  */
 bool ScmStreamIsText(PSCMSTREAM pStream)
 {
-    if (memchr(pStream->pch, '\0', pStream->cb))
+    if (RTStrEnd(pStream->pch, pStream->cb))
         return false;
     if (!pStream->cb)
         return false;
@@ -4089,7 +4089,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 29907 $";
+                static const char s_szRev[] = "$Revision: 30320 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;

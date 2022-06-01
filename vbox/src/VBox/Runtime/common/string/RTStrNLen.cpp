@@ -1,4 +1,4 @@
-/* $Id: RTStrNLen.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTStrNLen.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
 /** @file
  * IPRT - RTStrNLen.
  */
@@ -34,7 +34,7 @@
 
 RTDECL(size_t) RTStrNLen(const char *pszString, size_t cchMax)
 {
-    const char *pchEnd = (const char *)memchr(pszString, '\0', cchMax);
+    const char *pchEnd = RTStrEnd(pszString, cchMax);
     return pchEnd ? pchEnd - pszString : cchMax;
 }
 RT_EXPORT_SYMBOL(RTStrNLen);

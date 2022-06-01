@@ -1,4 +1,4 @@
-/* $Id: tstRTSystemQueryDmi.cpp 29560 2010-05-17 15:08:09Z vboxsync $ */
+/* $Id: tstRTSystemQueryDmi.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSystemQueryDmi*.
  */
@@ -73,7 +73,7 @@ int main()
             &&  szInfo[0] != '\0')
             RTTestIFailed("level=%d; unterminated buffer on VERR_NOT_SUPPORTED\n", i);
         else if (RT_SUCCESS(rc) || rc == VERR_BUFFER_OVERFLOW)
-            RTTESTI_CHECK(memchr(szInfo, '\0', sizeof(szInfo)) != NULL);
+            RTTESTI_CHECK(RTStrEnd(szInfo, sizeof(szInfo)) != NULL);
         else if (rc != VERR_NOT_SUPPORTED && rc != VERR_ACCESS_DENIED)
             RTTestIFailed("level=%d unexpected rc=%Rrc\n", i, rc);
     }
@@ -108,7 +108,7 @@ int main()
                 }
 
             /* check for zero terminator. */
-            if (!memchr(szInfo, '\0', cch))
+            if (!RTStrEnd(szInfo, cch))
                 RTTestIFailed("level=%d, rc=%Rrc, cch=%zu: Buffer not terminated!\n", i, rc, cch);
         }
 

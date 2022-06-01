@@ -1,4 +1,4 @@
-/* $Id: RTStrNLenEx.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTStrNLenEx.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
 /** @file
  * IPRT - RTStrNLenEx.
  */
@@ -33,7 +33,7 @@
 
 RTDECL(int) RTStrNLenEx(const char *pszString, size_t cchMax, size_t *pcch)
 {
-    const char *pchEnd = (const char *)memchr(pszString, '\0', cchMax);
+    const char *pchEnd = RTStrEnd(pszString, cchMax);
     if (!pchEnd)
     {
         *pcch = cchMax;

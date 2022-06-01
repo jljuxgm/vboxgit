@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: strcache.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -152,7 +152,7 @@ RTDECL(const char *) RTStrCacheEnterN(RTSTRCACHE hStrCache, const char *pchStrin
 {
     AssertPtr(pchString);
     AssertReturn(cchString < _1G, NULL);
-    Assert(!memchr(pchString, '\0', cchString));
+    Assert(!RTStrEnd(pchString, cchString));
 
     return (const char *)RTMemPoolDupEx((RTMEMPOOL)hStrCache, pchString, cchString, 1);
 }

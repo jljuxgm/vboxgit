@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-freebsd.c 29713 2010-05-20 21:12:53Z vboxsync $ */
+/* $Id: VBoxNetAdp-freebsd.c 30320 2010-06-21 08:35:09Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), FreeBSD Specific Code.
  */
@@ -169,7 +169,7 @@ VBoxNetAdpFreeBSDCtrlioctl(struct cdev *dev, u_long iCmd, caddr_t data, int flag
             break;
 
         case VBOXNETADP_CTL_REMOVE:
-            if (!memchr(pReq->szName, '\0', RT_MIN(sizeof(pReq->szName), IOCPARM_LEN(iCmd))))
+            if (!RTStrEnd(pReq->szName, RT_MIN(sizeof(pReq->szName), IOCPARM_LEN(iCmd))))
                 return EINVAL;
 
             pAdp = vboxNetAdpFindByName(pReq->szName);

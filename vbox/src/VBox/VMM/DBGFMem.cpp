@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DBGFMem.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -243,7 +243,7 @@ static DECLCALLBACK(int) dbgfR3MemReadString(PVM pVM, VMCPUID idCpu, PCDBGFADDRE
      * Make sure the result is terminated and that overflow is signaled.
      * This may look a bit reckless with the rc but, it should be fine.
      */
-    if (!memchr(pszBuf, '\0', cchBuf))
+    if (!RTStrEnd(pszBuf, cchBuf))
     {
         pszBuf[cchBuf - 1] = '\0';
         rc = VINF_BUFFER_OVERFLOW;

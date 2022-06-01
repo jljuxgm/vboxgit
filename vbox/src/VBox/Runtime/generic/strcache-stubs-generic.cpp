@@ -1,4 +1,4 @@
-/* $Id: strcache-stubs-generic.cpp 30253 2010-06-16 14:18:53Z vboxsync $ */
+/* $Id: strcache-stubs-generic.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
 /** @file
  * IPRT - String Cache, stub implementation.
  */
@@ -63,7 +63,7 @@ RTDECL(const char *) RTStrCacheEnterN(RTSTRCACHE hStrCache, const char *pchStrin
 {
     AssertPtr(pchString);
     AssertReturn(cchString < _1G, NULL);
-    Assert(!memchr(pchString, '\0', cchString));
+    Assert(!RTStrEnd(pchString, cchString));
 
     return (const char *)RTMemPoolDupEx((RTMEMPOOL)hStrCache, pchString, cchString, 1);
 }
