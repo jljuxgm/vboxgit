@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 29121 2010-05-06 09:09:33Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 29127 2010-05-06 10:04:50Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -538,6 +538,8 @@ typedef struct PDMASYNCCOMPLETIONENDPOINTFILE
     PPDMACTASKFILE                         pFlushReq;
     /** Flag whether the host supports the async flush API. */
     bool                                   fAsyncFlushSupported;
+
+    bool                                   afAlignment[3];
 
 #ifdef VBOX_WITH_STATISTICS
     /** Time spend in a read. */
