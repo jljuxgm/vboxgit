@@ -1,4 +1,4 @@
-/* $Id: tstRTStrFormat.cpp 26177 2010-02-02 22:29:01Z vboxsync $ */
+/* $Id: tstRTStrFormat.cpp 27066 2010-03-05 10:20:53Z vboxsync $ */
 /** @file
  * IPRT Testcase - String formatting.
  */
@@ -71,7 +71,7 @@ static void testNested(int iLine, const char *pszExpect, const char *pszFormat, 
 
     va_list va;
     va_start(va, pszFormat);
-    size_t cch = RTStrPrintf(szBuf, sizeof(szBuf), "%N", pszFormat, va);
+    size_t cch = RTStrPrintf(szBuf, sizeof(szBuf), "%N", pszFormat, &va);
     va_end(va);
     if (strcmp(szBuf, pszExpect))
         RTTestIFailed("at line %d: nested format '%s'\n"
@@ -83,7 +83,7 @@ static void testNested(int iLine, const char *pszExpect, const char *pszFormat, 
                       iLine, cch, cchExpect);
 
     va_start(va, pszFormat);
-    cch = RTStrPrintf(szBuf, sizeof(szBuf), "%uxxx%Nyyy%u", 43, pszFormat, va, 43);
+    cch = RTStrPrintf(szBuf, sizeof(szBuf), "%uxxx%Nyyy%u", 43, pszFormat, &va, 43);
     va_end(va);
     if (   strncmp(szBuf, "43xxx", 5)
         || strncmp(szBuf + 5, pszExpect, cchExpect)
