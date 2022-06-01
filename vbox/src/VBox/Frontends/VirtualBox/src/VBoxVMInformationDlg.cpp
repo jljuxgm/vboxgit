@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 28554 2010-04-21 10:39:09Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 28558 2010-04-21 11:39:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -570,22 +570,10 @@ void VBoxVMInformationDlg::refreshStatistics()
             VBoxGlobal::tr ("Enabled", "details report (Nested Paging)") :
             VBoxGlobal::tr ("Disabled", "details report (Nested Paging)");
         QString addVersion = m.GetGuestPropertyValue("/VirtualBox/GuestAdd/Version");
+        QString addRevision = m.GetGuestPropertyValue("/VirtualBox/GuestAdd/Revision");
         QString addVersionStr;
-        if (!addVersion.isEmpty())
-        {
-            addVersionStr = addVersion;
-            QStringList addVersionList = addVersion.split(".");
-            if (addVersionList.size() >= 2)
-            {
-                uint addVersionBuild = addVersionList[2].toUInt();
-                /* show the revision for development releases */
-                if ((addVersionBuild % 2) != 0)
-                {
-                    QString addRevision = m.GetGuestPropertyValue("/VirtualBox/GuestAdd/Revision");
-                    addVersionStr += " r" + addRevision;
-                }
-            }
-        }
+        if (!addVersion.isEmpty() && !addRevision.isEmpty())
+            addVersionStr = addVersion + " r" + m.GetGuestPropertyValue("/VirtualBox/GuestAdd/Revision");
         else
             addVersionStr = tr ("Not Detected", "guest additions");
         QString osType = console.GetGuest().GetOSTypeId();
