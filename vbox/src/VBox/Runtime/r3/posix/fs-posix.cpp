@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 30283 2010-06-17 11:27:04Z vboxsync $ */
+/* $Id: fs-posix.cpp 30324 2010-06-21 11:50:02Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -211,6 +211,8 @@ RTR3DECL(int) RTFsQueryType(const char *pszFsPath, uint32_t *pu32Type)
                                 *pu32Type = RTFS_FS_TYPE_EXT3;
                             else if (!strcmp("ext2", mntEnt.mnt_type))
                                 *pu32Type = RTFS_FS_TYPE_EXT2;
+                            else if (!strcmp("xfs", mntEnt.mnt_type))
+                                *pu32Type = RTFS_FS_TYPE_XFS;
                             else if (   !strcmp("vfat", mntEnt.mnt_type)
                                      || !strcmp("msdos", mntEnt.mnt_type))
                                 *pu32Type = RTFS_FS_TYPE_FAT;
