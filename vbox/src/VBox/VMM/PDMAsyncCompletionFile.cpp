@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 24359 2009-11-04 22:28:48Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 24360 2009-11-04 22:37:11Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -519,7 +519,13 @@ static int pdmacFileInitialize(PPDMASYNCCOMPLETIONEPCLASS pClassGlobals, PCFGMNO
     {
         pEpClassFile->uBitmaskAlignment   = AioLimits.cbBufferAlignment ? ~((RTR3UINTPTR)AioLimits.cbBufferAlignment - 1) : RTR3UINTPTR_MAX;
         pEpClassFile->cReqsOutstandingMax = AioLimits.cReqsOutstandingMax;
-        pEpClassFile->fFailsafe = false;
+
+        /* The user can force the failsafe manager. */
+        rc = CFGMR3QueryBoolDef(pCfgNode, "UseFailsafeIo", &pEpClassFile->fFailsafe, false);
+        AssertLogRelRCReturn(rc, rc);
+
+        if (pEpClassFile->fFailsafe)
+            LogRel(("AIOMgr: Failsafe I/O was requested by user\n"));
     }
 
     /* Init critical section. */
