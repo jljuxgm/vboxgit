@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 25783 2010-01-12 17:16:17Z vboxsync $
+# $Id: Makefile.kmk 26023 2010-01-25 16:36:17Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -230,6 +230,9 @@ ifdef VBOX_GSOAP_INSTALLED
  vboxsoap_ORDERDEPS = \
  	$(VBOXWEB_IDL_SRC) \
  	$(VBOXWEB_OUT_DIR)/gsoap_copy_all_ts
+ ifn1of ($(KBUILD_TARGET), win)
+  $(VBOX_GSOAP_CXX_SOURCES)_CXXFLAGS = -Wno-format
+ endif
 
 ifdef VBOX_SOAP_PRECOMPILED_HEADER
  # This'll save a few seconds, but the compiler invocation currently makes it impracticable. This will
