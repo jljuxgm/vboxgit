@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 25233 2009-12-08 12:09:17Z vboxsync $ */
+/* $Id: SELM.cpp 25858 2010-01-15 13:23:31Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -1945,8 +1945,8 @@ VMMDECL(int) SELMGetLDTFromSel(PVM pVM, RTSEL SelLdt, PRTGCPTR ppvLdt, unsigned 
     CPUMGetGuestGDTR(pVCpu, &GDTR);
 
     /* Check selector TI and GDT limit. */
-    if (    SelLdt & X86_SEL_LDT
-        ||  (SelLdt > GDTR.cbGdt))
+    if (   (SelLdt & X86_SEL_LDT)
+        || SelLdt > GDTR.cbGdt)
         return VERR_INVALID_SELECTOR;
 
     /* Read descriptor from GC. */
