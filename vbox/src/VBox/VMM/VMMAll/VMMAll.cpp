@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 30249 2010-06-16 13:32:06Z vboxsync $ */
+/* $Id: VMMAll.cpp 30329 2010-06-21 13:10:29Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -92,7 +92,7 @@ VMMDECL(PVMCPU) VMMGetCpu(PVM pVM)
     if (idCpu == NIL_VMCPUID)
         return NULL;
     Assert(idCpu < pVM->cCpus);
-    return &pVM->aCpus[VMR3GetVMCPUId(pVM)];
+    return &pVM->aCpus[idCpu];
 
 #elif defined(IN_RING0)
     if (pVM->cCpus == 1)
