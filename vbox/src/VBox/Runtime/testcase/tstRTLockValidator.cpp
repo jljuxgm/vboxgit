@@ -1,4 +1,4 @@
-/* $Id: tstRTLockValidator.cpp 25791 2010-01-12 22:57:57Z vboxsync $ */
+/* $Id: tstRTLockValidator.cpp 25792 2010-01-12 23:29:40Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTLockValidator.
  */
@@ -961,8 +961,8 @@ static void testLo1(void)
         else
         {
             uint32_t cExpect = 1 + (RT_ELEMENTS(g_ahClasses) - i) * 2 - 1;
-            RTTEST_CHECK(g_hTest, (c = RTLockValidatorClassRelease(g_ahClasses[i])) == cExpect,
-                         (g_hTest, "c=%u e=%u i=%u\n", c, cExpect, i));
+            RTTEST_CHECK_MSG(g_hTest, (c = RTLockValidatorClassRelease(g_ahClasses[i])) == cExpect,
+                             (g_hTest, "c=%u e=%u i=%u\n", c, cExpect, i));
         }
         g_ahClasses[i] = NIL_RTLOCKVALCLASS;
         RTTEST_CHECK_RC_RETV(g_hTest, RTCritSectDelete(&g_aCritSects[i]), VINF_SUCCESS);
