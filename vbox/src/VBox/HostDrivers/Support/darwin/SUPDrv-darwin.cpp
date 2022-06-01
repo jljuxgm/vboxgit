@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 25466 2009-12-17 14:54:58Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 25484 2009-12-18 14:04:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -234,7 +234,7 @@ static kern_return_t    VBoxDrvDarwinStart(struct kmod_info *pKModInfo, void *pv
         /*
          * Initialize the device extension.
          */
-        rc = supdrvInitDevExt(&g_DevExt);
+        rc = supdrvInitDevExt(&g_DevExt, sizeof(SUPDRVSESSION));
         if (RT_SUCCESS(rc))
         {
             /*

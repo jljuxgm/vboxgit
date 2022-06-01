@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 25465 2009-12-17 14:49:34Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 25484 2009-12-18 14:04:56Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -133,7 +133,7 @@ ULONG _stdcall DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
                 PSUPDRVDEVEXT pDevExt = (PSUPDRVDEVEXT)pDevObj->DeviceExtension;
                 memset(pDevExt, 0, sizeof(*pDevExt));
 
-                vrc = supdrvInitDevExt(pDevExt);
+                vrc = supdrvInitDevExt(pDevExt, sizeof(SUPDRVSESSION));
                 if (!vrc)
                 {
                     /*

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 25465 2009-12-17 14:49:34Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 25484 2009-12-18 14:04:56Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -211,7 +211,7 @@ int _init(void)
         /*
          * Initialize the device extension
          */
-        rc = supdrvInitDevExt(&g_DevExt);
+        rc = supdrvInitDevExt(&g_DevExt, sizeof(SUPDRVSESSION));
         if (RT_SUCCESS(rc))
         {
             /*

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 25465 2009-12-17 14:49:34Z vboxsync $ */
+/* $Id: SUPDrv-os2.cpp 25484 2009-12-18 14:04:56Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -101,7 +101,7 @@ DECLASM(int) VBoxDrvInit(const char *pszArgs)
         /*
          * Initialize the device extension.
          */
-        rc = supdrvInitDevExt(&g_DevExt);
+        rc = supdrvInitDevExt(&g_DevExt, sizeof(SUPDRVSESSION));
         if (RT_SUCCESS(rc))
         {
             /*
