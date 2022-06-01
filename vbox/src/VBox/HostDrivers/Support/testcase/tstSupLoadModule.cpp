@@ -1,4 +1,4 @@
-/* $Id: tstSupLoadModule.cpp 25320 2009-12-11 11:03:44Z vboxsync $ */
+/* $Id: tstSupLoadModule.cpp 25321 2009-12-11 11:09:15Z vboxsync $ */
 /** @file
  * SUP Testcase - Test SUPR3LoadModule.
  */
@@ -41,32 +41,7 @@
 #include <iprt/message.h>
 #include <iprt/path.h>
 #include <iprt/stream.h>
-#include <iprt/string.h>
 
-
-/**
- * Makes a path to a file in the executable directory.
- */
-static char *ExeDirFile(char *pszFile, const char *pszArgv0, const char *pszFilename)
-{
-    char   *psz;
-    char   *psz2;
-
-    strcpy(pszFile, pszArgv0);
-    psz = strrchr(pszFile, '/');
-    psz2 = strrchr(pszFile, '\\');
-    if (psz < psz2)
-        psz = psz2;
-    if (!psz)
-        psz = strrchr(pszFile, ':');
-    if (!psz)
-    {
-        strcpy(pszFile, "./");
-        psz = &pszFile[1];
-    }
-    strcpy(psz + 1, "VMMR0.r0");
-    return pszFile;
-}
 
 int main(int argc, char **argv)
 {
