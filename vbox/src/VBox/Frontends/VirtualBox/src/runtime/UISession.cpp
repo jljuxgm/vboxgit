@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 27757 2010-03-26 17:59:29Z vboxsync $ */
+/* $Id: UISession.cpp 27758 2010-03-26 18:51:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -37,6 +37,7 @@
 #include "UIFirstRunWzd.h"
 #ifdef VBOX_WITH_VIDEOHWACCEL
 # include "VBoxFBOverlay.h"
+# include "UIFrameBuffer.h"
 #endif
 
 #ifdef Q_WS_X11
@@ -592,6 +593,23 @@ UISession::~UISession()
     /* Destroy alpha cursor: */
     if (m_alphaCursor)
         DestroyIcon(m_alphaCursor);
+#endif
+
+#ifdef VBOX_WITH_VIDEOHWACCEL
+    for (int i = m_FrameBufferVector.size() - 1; i >= 0; --i)
+    {
+        UIFrameBuffer *pFb = m_FrameBufferVector[i];
+        if (pFb)
+        {
+            /* Warn framebuffer about its no more necessary: */
+            pFb->setDeleted(true);
+            /* Detach framebuffer from Display: */
+            CDisplay display = session().GetConsole().GetDisplay();
+            display.SetFramebuffer(i, CFramebuffer(NULL));
+            /* Release the reference: */
+            pFb->Release();
+        }
+    }
 #endif
 }
 
