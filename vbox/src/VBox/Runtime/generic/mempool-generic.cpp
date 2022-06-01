@@ -1,4 +1,4 @@
-/* $Id: mempool-generic.cpp 21337 2009-07-07 14:58:27Z vboxsync $ */
+/* $Id: mempool-generic.cpp 27787 2010-03-29 12:39:25Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation Pool.
  */
@@ -400,4 +400,17 @@ RTDECL(uint32_t) RTMemPoolRelease(RTMEMPOOL hMemPool, void *pv) RT_NO_THROW
     return cRefs;
 }
 RT_EXPORT_SYMBOL(RTMemPoolRelease);
+
+
+RTDECL(uint32_t) RTMemPoolRefCount(void *pv) RT_NO_THROW
+{
+    PRTMEMPOOLENTRY pEntry = (PRTMEMPOOLENTRY)pv - 1;
+    RTMEMPOOL_VALID_ENTRY_RETURN_RC(pEntry, UINT32_MAX);
+
+    uint32_t cRefs = ASMAtomicReadU32(&pEntry->cRefs);
+    Assert(cRefs < UINT32_MAX / 2);
+
+    return cRefs;
+}
+RT_EXPORT_SYMBOL(RTMemPoolRefCount);
 
