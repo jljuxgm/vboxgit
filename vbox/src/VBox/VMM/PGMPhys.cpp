@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 27597 2010-03-22 15:13:55Z vboxsync $ */
+/* $Id: PGMPhys.cpp 27598 2010-03-22 15:27:07Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -859,6 +859,8 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysChangeMemBalloonRendezvous(PVM pVM, P
             /* Change back to zero page. */
             PGM_PAGE_SET_STATE(pPage, PGM_PAGE_STATE_ZERO);
         }
+
+        /* Note that we currently do not map any ballooned pages in our shadow page tables, so no need to flush the pgm pool. */
     }
 
     /* Notify GMM about the balloon change. */
