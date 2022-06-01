@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 27320 2010-03-12 10:54:38Z vboxsync $ */
+/* $Id: EMAll.cpp 27331 2010-03-12 14:12:55Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -2985,6 +2985,7 @@ VMMDECL(int) EMInterpretRdmsr(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
 
     case MSR_IA32_PERF_STATUS:
     case MSR_IA32_PLATFORM_INFO:
+    case MSR_IA32_MISC_ENABLE:
         val = CPUMGetGuestMsr(pVCpu, pRegFrame->ecx);
         break;
 
@@ -3155,7 +3156,8 @@ VMMDECL(int) EMInterpretWrmsr(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
         break;
 
     case MSR_K8_TSC_AUX:
-        CPUMSetGuestMsr(pVCpu, MSR_K8_TSC_AUX, val);
+    case MSR_IA32_MISC_ENABLE:
+        CPUMSetGuestMsr(pVCpu, pRegFrame->ecx, val);
         break;
 
     default:
