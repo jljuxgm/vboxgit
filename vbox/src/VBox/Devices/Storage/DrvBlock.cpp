@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 28383 2010-04-15 18:07:21Z vboxsync $ */
+/* $Id: DrvBlock.cpp 28387 2010-04-15 19:30:56Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -339,6 +339,11 @@ static DECLCALLBACK(int) drvblockAsyncFlushStart(PPDMIBLOCKASYNC pInterface, voi
         AssertMsgFailed(("Invalid state! Not mounted!\n"));
         return VERR_PDM_MEDIA_NOT_MOUNTED;
     }
+
+#ifdef VBOX_IGNORE_FLUSH
+    if (pThis->fIgnoreFlush)
+        return VINF_VD_ASYNC_IO_FINISHED;
+#endif /* VBOX_IGNORE_FLUSH */
 
     int rc = pThis->pDrvMediaAsync->pfnStartFlush(pThis->pDrvMediaAsync, pvUser);
 
