@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 24355 2009-11-04 20:30:10Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 24358 2009-11-04 21:54:42Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -741,7 +741,9 @@ static int pdmacFileAioMgrNormalCheckEndpoints(PPDMACEPFILEMGR pAioMgr)
 
     while (pEndpoint)
     {
-        if (!pEndpoint->pFlushReq && (pEndpoint->enmState == PDMASYNCCOMPLETIONENDPOINTFILESTATE_ACTIVE))
+        if (!pEndpoint->pFlushReq
+            && (pEndpoint->enmState == PDMASYNCCOMPLETIONENDPOINTFILESTATE_ACTIVE)
+            && !pEndpoint->AioMgr.fMoving)
         {
             rc = pdmacFileAioMgrNormalQueueReqs(pAioMgr, pEndpoint);
             if (RT_FAILURE(rc))
