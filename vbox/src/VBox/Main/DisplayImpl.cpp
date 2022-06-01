@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 28256 2010-04-13 14:32:17Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 28264 2010-04-13 16:01:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2098,6 +2098,9 @@ STDMETHODIMP Display::GetFramebuffer (ULONG aScreenId,
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    if (aScreenId != 0 && aScreenId >= mcMonitors)
+        return E_INVALIDARG;
 
     /* @todo this should be actually done on EMT. */
     DISPLAYFBINFO *pFBInfo = &maFramebuffers[aScreenId];

@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 27315 2010-03-12 09:49:22Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 28264 2010-04-13 16:01:51Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of VMMDev: driver interface to VMM device
@@ -216,7 +216,7 @@ DECLCALLBACK(int) iface_QueryVisibleRegion(PPDMIVMMDEVCONNECTOR pInterface, uint
     return VINF_SUCCESS;
 }
 
-DECLCALLBACK(int) VMMDev::VideoModeSupported(PPDMIVMMDEVCONNECTOR pInterface, uint32_t width, uint32_t height,
+DECLCALLBACK(int) VMMDev::VideoModeSupported(PPDMIVMMDEVCONNECTOR pInterface, uint32_t display, uint32_t width, uint32_t height,
                                              uint32_t bpp, bool *fSupported)
 {
     PDRVMAINVMMDEV pDrv = PDMIVMMDEVCONNECTOR_2_MAINVMMDEV(pInterface);

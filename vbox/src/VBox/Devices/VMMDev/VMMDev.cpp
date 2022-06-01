@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 28099 2010-04-08 15:35:40Z vboxsync $ */
+/* $Id: VMMDev.cpp 28264 2010-04-13 16:01:51Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1022,10 +1022,35 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                 VMMDevVideoModeSupportedRequest *videoModeSupportedRequest = (VMMDevVideoModeSupportedRequest*)pRequestHeader;
                 /* forward the call */
                 pRequestHeader->rc = pThis->pDrv->pfnVideoModeSupported(pThis->pDrv,
+                                                                       0, /* primary screen. */
                                                                        videoModeSupportedRequest->width,
                                                                        videoModeSupportedRequest->height,
                                                                        videoModeSupportedRequest->bpp,
                                                                        &videoModeSupportedRequest->fSupported);
+            }
+            break;
+        }
+
+        /*
+         * Query whether the given video mode is supported for a specific display
+         */
+        case VMMDevReq_VideoModeSupported2:
+        {
+            if (pRequestHeader->size != sizeof(VMMDevVideoModeSupportedRequest2))
+            {
+                AssertMsgFailed(("VMMDev video mode supported request 2 structure has invalid size!\n"));
+                pRequestHeader->rc = VERR_INVALID_PARAMETER;
+            }
+            else
+            {
+                VMMDevVideoModeSupportedRequest2 *videoModeSupportedRequest2 = (VMMDevVideoModeSupportedRequest2*)pRequestHeader;
+                /* forward the call */
+                pRequestHeader->rc = pThis->pDrv->pfnVideoModeSupported(pThis->pDrv,
+                                                                       videoModeSupportedRequest2->display,
+                                                                       videoModeSupportedRequest2->width,
+                                                                       videoModeSupportedRequest2->height,
+                                                                       videoModeSupportedRequest2->bpp,
+                                                                       &videoModeSupportedRequest2->fSupported);
             }
             break;
         }

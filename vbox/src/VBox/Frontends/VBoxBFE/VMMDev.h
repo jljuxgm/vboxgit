@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 27315 2010-03-12 09:49:22Z vboxsync $ */
+/* $Id: VMMDev.h 28264 2010-04-13 16:01:51Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Declaration of VMMDev: driver interface to VMM device
@@ -54,7 +54,7 @@ private:
                                                    uint32_t xHot, uint32_t yHot,
                                                    uint32_t width, uint32_t height,
                                                    void *pShape);
-    static DECLCALLBACK(int)    VideoModeSupported(PPDMIVMMDEVCONNECTOR pInterface, uint32_t width, uint32_t height,
+    static DECLCALLBACK(int)    VideoModeSupported(PPDMIVMMDEVCONNECTOR pInterface, uint32_t display, uint32_t width, uint32_t height,
                                                    uint32_t bpp, bool *fSupported);
     static DECLCALLBACK(int)    GetHeightReduction(PPDMIVMMDEVCONNECTOR pInterface, uint32_t *heightReduction);
 
