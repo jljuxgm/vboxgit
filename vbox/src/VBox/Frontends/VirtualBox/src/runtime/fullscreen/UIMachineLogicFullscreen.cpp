@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 28279 2010-04-14 00:52:05Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 28493 2010-04-19 18:33:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -122,11 +122,13 @@ void UIMachineLogicFullscreen::initialize()
     /* Prepare console connections: */
     prepareSessionConnections();
 
+    /* Prepare action groups:
+     * Note: This has to be done before prepareActionConnections
+     * cause here actions/menus are recreated. */
+    prepareActionGroups();
+
     /* Prepare action connections: */
     prepareActionConnections();
-
-    /* Prepare action groups: */
-    prepareActionGroups();
 
     /* Prepare machine window: */
     prepareMachineWindows();
