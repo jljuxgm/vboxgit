@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 24484 2009-11-09 10:21:11Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 24485 2009-11-09 10:22:57Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -359,10 +359,7 @@ VMMR0DECL(int) HWACCMR0Init(void)
                 if (RT_SUCCESS(rc))
                     rc = hwaccmR0CheckCpuRcArray(aRc, RT_ELEMENTS(aRc), &idCpu);
 
-#if 0
-                AssertMsgRC(rc, ("HWACCMR0InitCPU failed for cpu %d with rc=%d\n", idCpu, rc));
-#endif
-
+                AssertMsg(rc == VINF_SUCCESS || rc == VERR_SVM_IN_USE, ("HWACCMR0InitCPU failed for cpu %d with rc=%d\n", idCpu, rc));
                 if (RT_SUCCESS(rc))
                 {
                     /* Query AMD features. */
