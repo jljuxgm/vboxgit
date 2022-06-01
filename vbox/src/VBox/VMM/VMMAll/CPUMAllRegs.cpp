@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 25835 2010-01-14 16:27:58Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 25866 2010-01-15 14:26:49Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1707,6 +1707,42 @@ VMMDECL(int) CPUMRecalcHyperDRx(PVMCPU pVCpu)
 VMMDECL(bool) CPUMIsGuestNXEnabled(PVMCPU pVCpu)
 {
     return !!(pVCpu->cpum.s.Guest.msrEFER & MSR_K6_EFER_NXE);
+}
+
+
+/**
+ * Tests if the guest has the Page Size Extension enabled (PSE).
+ *
+ * @returns true if in real mode, otherwise false.
+ * @param   pVCpu       The virtual CPU handle.
+ */
+VMMDECL(bool) CPUMIsGuestPageSizeExtEnabled(PVMCPU pVCpu)
+{
+    return !!(pVCpu->cpum.s.Guest.cr4 & X86_CR4_PSE);
+}
+
+
+/**
+ * Tests if the guest has the paging enabled (PG).
+ *
+ * @returns true if in real mode, otherwise false.
+ * @param   pVCpu       The virtual CPU handle.
+ */
+VMMDECL(bool) CPUMIsGuestPagingEnabled(PVMCPU pVCpu)
+{
+    return !!(pVCpu->cpum.s.Guest.cr0 & X86_CR0_PG);
+}
+
+
+/**
+ * Tests if the guest has the paging enabled (PG).
+ *
+ * @returns true if in real mode, otherwise false.
+ * @param   pVCpu       The virtual CPU handle.
+ */
+VMMDECL(bool) CPUMIsGuestR0WriteProtEnabled(PVMCPU pVCpu)
+{
+    return !!(pVCpu->cpum.s.Guest.cr0 & X86_CR0_WP);
 }
 
 

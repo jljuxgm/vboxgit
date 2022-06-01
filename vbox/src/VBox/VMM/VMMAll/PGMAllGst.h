@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 25837 2010-01-14 16:50:45Z vboxsync $ */
+/* $Id: PGMAllGst.h 25866 2010-01-15 14:26:49Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -104,7 +104,7 @@ PGM_GST_DECL(int, GetPage)(PVMCPU pVCpu, RTGCPTR GCPtr, uint64_t *pfFlags, PRTGC
 
     if (    !Pde.b.u1Size
 # if PGM_GST_TYPE != PGM_TYPE_AMD64
-        ||  !(CPUMGetGuestCR4(pVCpu) & X86_CR4_PSE)
+        ||  !CPUMIsGuestPageSizeExtEnabled(pVCpu)
 # endif
         )
     {
@@ -221,7 +221,7 @@ PGM_GST_DECL(int, ModifyPage)(PVMCPU pVCpu, RTGCPTR GCPtr, size_t cb, uint64_t f
 
         if (    !Pde.b.u1Size
 # if PGM_GST_TYPE != PGM_TYPE_AMD64
-            ||  !(CPUMGetGuestCR4(pVCpu) & X86_CR4_PSE)
+            ||  !CPUMIsGuestPageSizeExtEnabled(pVCpu)
 # endif
             )
         {
@@ -330,17 +330,17 @@ PGM_GST_DECL(int, GetPDE)(PVMCPU pVCpu, RTGCPTR GCPtr, PX86PDEPAE pPDE)
  */
 static DECLCALLBACK(int) PGM_GST_NAME(VirtHandlerUpdateOne)(PAVLROGCPTRNODECORE pNode, void *pvUser)
 {
-    PPGMVIRTHANDLER pCur  = (PPGMVIRTHANDLER)pNode;
+    PPGMVIRTHANDLER pCur   = (PPGMVIRTHANDLER)pNode;
     PPGMHVUSTATE    pState = (PPGMHVUSTATE)pvUser;
-    PVM             pVM = pState->pVM;
-    PVMCPU          pVCpu = pState->pVCpu;
+    PVM             pVM    = pState->pVM;
+    PVMCPU          pVCpu  = pState->pVCpu;
     Assert(pCur->enmType != PGMVIRTHANDLERTYPE_HYPERVISOR);
 
 #if PGM_GST_TYPE == PGM_TYPE_32BIT
     PX86PD          pPDSrc = pgmGstGet32bitPDPtr(&pVCpu->pgm.s);
 #endif
 
-    RTGCPTR         GCPtr = pCur->Core.Key;
+    RTGCPTR         GCPtr  = pCur->Core.Key;
 #if PGM_GST_MODE != PGM_MODE_AMD64
     /* skip all stuff above 4GB if not AMD64 mode. */
     if (GCPtr >= _4GB)
