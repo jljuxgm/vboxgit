@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 27185 2010-03-08 18:13:23Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 27912 2010-03-31 15:01:37Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -120,7 +120,10 @@ static bool isVBoxDisplayDriverActive (VBOXDISPLAYCONTEXT *pCtx)
 
                 if (strcmp(&dispDevice.DeviceString[0], "VirtualBox Graphics Adapter") == 0)
                     result = true;
-
+#ifdef VBOXWDDM
+                if (strcmp(&dispDevice.DeviceString[0], "VirtualBox Graphics Adapter (Microsoft Corporation - WDDM)") == 0)
+                    result = true;
+#endif
                 break;
             }
 
