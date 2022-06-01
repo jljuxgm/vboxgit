@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 29827 2010-05-26 18:27:38Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 29913 2010-05-31 14:51:38Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -4841,7 +4841,7 @@ static DECLCALLBACK(int) lsilogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
     if (RT_FAILURE(rc))
         return rc;
 
-    /* Intialize task queue. */
+    /* Intialize task queue. (Need two items to handle SMP guest concurrency.) */
     rc = PDMDevHlpQueueCreate(pDevIns, sizeof(PDMQUEUEITEMCORE), 2, 0,
                               lsilogicNotifyQueueConsumer, true,
                               pThis->enmCtrlType == LSILOGICCTRLTYPE_SCSI_SPI
