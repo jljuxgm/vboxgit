@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.h 25349 2009-12-13 17:23:32Z vboxsync $ */
+/* $Id: HostHardwareLinux.h 25728 2010-01-11 15:12:52Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.
  *
@@ -201,7 +201,7 @@ public:
      * @returns  Possibly other iprt status codes otherwise.
      * @param    cMillies   How long to wait for at most.
      */
-    int Wait (unsigned cMillies);
+    int Wait (RTMSINTERVAL cMillies);
     /**
      * Interrupts an active wait.  In the current implementation, the wait
      * may not return until up to two seconds after calling this method.

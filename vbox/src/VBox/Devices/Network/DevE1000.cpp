@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 24533 2009-11-10 08:23:13Z vboxsync $ */
+/* $Id: DevE1000.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4048,7 +4048,7 @@ static int e1kCanReceive(E1KSTATE *pState)
     return cb > 0 ? VINF_SUCCESS : VERR_NET_NO_BUFFER_SPACE;
 }
 
-static DECLCALLBACK(int) e1kWaitReceiveAvail(PPDMINETWORKPORT pInterface, unsigned cMillies)
+static DECLCALLBACK(int) e1kWaitReceiveAvail(PPDMINETWORKPORT pInterface, RTMSINTERVAL cMillies)
 {
     E1KSTATE *pState = IFACE_TO_STATE(pInterface, INetworkPort);
     int rc = e1kCanReceive(pState);

@@ -1,4 +1,4 @@
-/* $Id: PDMThread.cpp 24244 2009-11-02 10:26:09Z vboxsync $ */
+/* $Id: PDMThread.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
 /** @file
  * PDM Thread - VM Thread Management.
  */
@@ -711,7 +711,7 @@ VMMR3DECL(int) PDMR3ThreadIAmRunning(PPDMTHREAD pThread)
  * @param   pThread     The PDM thread.
  * @param   cMillies    The number of milliseconds to sleep.
  */
-VMMR3DECL(int) PDMR3ThreadSleep(PPDMTHREAD pThread, unsigned cMillies)
+VMMR3DECL(int) PDMR3ThreadSleep(PPDMTHREAD pThread, RTMSINTERVAL cMillies)
 {
     /*
      * Assert sanity.

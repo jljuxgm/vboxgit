@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 24880 2009-11-23 17:02:07Z vboxsync $ */
+/* $Id: DevPCNet.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4538,7 +4538,7 @@ static int pcnetCanReceive(PCNetState *pThis)
 /**
  *
  */
-static DECLCALLBACK(int) pcnetWaitReceiveAvail(PPDMINETWORKPORT pInterface, unsigned cMillies)
+static DECLCALLBACK(int) pcnetWaitReceiveAvail(PPDMINETWORKPORT pInterface, RTMSINTERVAL cMillies)
 {
     PCNetState *pThis = INETWORKPORT_2_DATA(pInterface);
 

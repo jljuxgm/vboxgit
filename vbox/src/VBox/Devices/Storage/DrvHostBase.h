@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: DrvHostBase.h 25728 2010-01-11 15:12:52Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -96,7 +96,7 @@ typedef struct DRVHOSTBASE
     RTSEMEVENT              EventPoller;
 #endif
     /** The poller interval. */
-    unsigned                cMilliesPoller;
+    RTMSINTERVAL            cMilliesPoller;
     /** The shutdown indicator. */
     bool volatile           fShutdownPoller;
 

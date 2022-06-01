@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 23973 2009-10-22 12:34:22Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1106,7 +1106,7 @@ VBoxMainHotplugWaiter::~VBoxMainHotplugWaiter ()
 /* Currently this is implemented using a timed out wait on our private DBus
  * connection.  Because the connection is private we don't have to worry about
  * blocking other users. */
-int VBoxMainHotplugWaiter::Wait(unsigned cMillies)
+int VBoxMainHotplugWaiter::Wait(RTMSINTERVAL cMillies)
 {
     int rc = VINF_SUCCESS;
 #if defined RT_OS_LINUX && defined VBOX_WITH_DBUS

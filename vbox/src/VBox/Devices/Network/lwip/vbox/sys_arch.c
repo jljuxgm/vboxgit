@@ -1,4 +1,4 @@
-/** $Id: sys_arch.c 17807 2009-03-13 11:17:54Z vboxsync $ */
+/** $Id: sys_arch.c 25728 2010-01-11 15:12:52Z vboxsync $ */
 /** @file
  * System dependent parts of lwIP, implemented with IPRT.
  */
@@ -152,7 +152,7 @@ void sys_sem_signal(sys_sem_t sem)
 u32_t sys_arch_sem_wait(sys_sem_t sem, u32_t timeout)
 {
     int rc;
-    unsigned cMillies;
+    RTMSINTERVAL cMillies;
     uint64_t tsStart, tsEnd;
 
     tsStart = RTTimeMilliTS();
@@ -265,7 +265,7 @@ void sys_mbox_post(sys_mbox_t mbox, void *msg)
 u32_t sys_arch_mbox_fetch(sys_mbox_t mbox, void **msg, u32_t timeout)
 {
     int rc;
-    unsigned cMillies;
+    RTMSINTERVAL cMillies;
     uint64_t tsStart, tsEnd;
 
     Assert(mbox != NULL);

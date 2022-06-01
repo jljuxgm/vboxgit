@@ -1,4 +1,4 @@
-/* $Id: ATAController.cpp 24772 2009-11-18 19:10:17Z vboxsync $ */
+/* $Id: ATAController.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller code (disk and cdrom).
  *
@@ -3077,7 +3077,7 @@ static void ataParseCmd(AHCIATADevState *s, uint8_t cmd)
  * @param   pThis       Pointer to the controller data.
  * @param   cMillies    How long to wait (total).
  */
-static bool ataWaitForAsyncIOIsIdle(PAHCIATACONTROLLER pCtl, unsigned cMillies)
+static bool ataWaitForAsyncIOIsIdle(PAHCIATACONTROLLER pCtl, RTMSINTERVAL cMillies)
 {
     uint64_t        u64Start;
     bool            fRc;
@@ -4815,7 +4815,7 @@ int ataControllerIOPortRead2(PAHCIATACONTROLLER pCtl, RTIOPORT Port, uint32_t *p
  * @param   pThis       Pointer to the instance data.
  * @param   cMillies    How long to wait (total).
  */
-static bool ataWaitForAllAsyncIOIsIdle(PAHCIATACONTROLLER pCtl, unsigned cMillies)
+static bool ataWaitForAllAsyncIOIsIdle(PAHCIATACONTROLLER pCtl, RTMSINTERVAL cMillies)
 {
     uint64_t        u64Start;
     PPDMDEVINS      pDevIns = pCtl->CTXALLSUFF(pDevIns);

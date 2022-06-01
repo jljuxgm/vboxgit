@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 25634 2010-01-04 10:50:28Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
 
 /** @file
  *
@@ -1339,7 +1339,7 @@ bool ConsoleVRDPServer::isRemoteUSBThreadRunning (void)
     return mUSBBackends.fThreadRunning;
 }
 
-void ConsoleVRDPServer::waitRemoteUSBThreadEvent (unsigned cMillies)
+void ConsoleVRDPServer::waitRemoteUSBThreadEvent (RTMSINTERVAL cMillies)
 {
     int rc = RTSemEventWait (mUSBBackends.event, cMillies);
     Assert (RT_SUCCESS(rc) || rc == VERR_TIMEOUT);

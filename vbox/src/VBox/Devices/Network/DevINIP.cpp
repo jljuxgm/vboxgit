@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: DevINIP.cpp 25728 2010-01-11 15:12:52Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -294,7 +294,7 @@ static DECLCALLBACK(err_t) devINIPInterface(struct netif *netif)
  * @param   pInterface  PDM network port interface pointer.
  * @param   cMillies    Number of milliseconds to wait. 0 means return immediately.
  */
-static DECLCALLBACK(int) devINIPWaitInputAvail(PPDMINETWORKPORT pInterface, unsigned cMillies)
+static DECLCALLBACK(int) devINIPWaitInputAvail(PPDMINETWORKPORT pInterface, RTMSINTERVAL cMillies)
 {
     LogFlow(("%s: pInterface=%p\n", __FUNCTION__, pInterface));
     LogFlow(("%s: return VINF_SUCCESS\n", __FUNCTION__));
