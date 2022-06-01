@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 26574 2010-02-16 12:44:10Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 27840 2010-03-30 21:00:51Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -542,7 +542,7 @@ static void doPacketSniffing(INTNETIFHANDLE hIf, PSUPDRVSESSION pSession, PINTNE
                     }
                 }
             }
-            else
+            else if (pHdr->u16Type != INTNETHDR_TYPE_PADDING)
             {
                 RTPrintf("tstIntNet-1: Unknown frame type %d\n", pHdr->u16Type);
                 STAM_REL_COUNTER_INC(&pBuf->cStatBadFrames);
@@ -724,7 +724,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 26574 $\n");
+                RTPrintf("$Revision: 27840 $\n");
                 return 0;
 
             default:

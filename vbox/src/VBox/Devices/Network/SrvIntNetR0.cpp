@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 26576 2010-02-16 12:53:32Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 27840 2010-03-30 21:00:51Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -2415,7 +2415,7 @@ INTNETR0DECL(int) INTNETR0IfSend(PINTNET pIntNet, INTNETIFHANDLE hIf, PSUPDRVSES
                 intnetR0NetworkSend(pNetwork, pIf, 0, &Sg, !!pTrunkIf);
             }
         }
-        else
+        else if (pHdr->u16Type != INTNETHDR_TYPE_PADDING)
             STAM_REL_COUNTER_INC(&pIf->pIntBuf->cStatBadFrames); /* ignore */
 
         /* Skip to the next frame. */
