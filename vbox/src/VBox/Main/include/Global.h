@@ -1,4 +1,4 @@
-/* $Id: Global.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: Global.h 28825 2010-04-27 13:50:46Z vboxsync $ */
 
 /** @file
  *
@@ -63,7 +63,10 @@ public:
         const uint32_t                 recommendedHDD;
         const NetworkAdapterType_T     networkAdapterType;
         const uint32_t                 numSerialEnabled;
-        const StorageControllerType_T  storageControllerType;
+        const StorageControllerType_T  dvdStorageControllerType;
+        const StorageBus_T             dvdStorageBusType;
+        const StorageControllerType_T  hdStorageControllerType;
+        const StorageBus_T             hdStorageBusType;
     };
 
     static const OSType sOSTypes[SchemaDefs::OSTypeId_COUNT];
