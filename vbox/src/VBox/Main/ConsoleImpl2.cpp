@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 28106 2010-04-08 16:45:59Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 28107 2010-04-08 17:00:27Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1648,7 +1648,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
 
         for (it = llNics.begin(); it != llNics.end(); ++it)
         {
-            Assert(iter);
+            Assert(it);
 
             /* A NIC with priority 0 is only used if it's first in the list. */
             if (it->mBootPrio == 0 && uBootIdx != 0)
