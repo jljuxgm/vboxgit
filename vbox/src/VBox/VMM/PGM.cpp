@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 24542 2009-11-10 12:33:01Z vboxsync $ */
+/* $Id: PGM.cpp 24695 2009-11-16 14:44:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1288,9 +1288,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
     AssertRCReturn(rc, rc);
 
     PGMR3PhysChunkInvalidateTLB(pVM);
-    PGMPhysInvalidatePageR3MapTLB(pVM);
-    PGMPhysInvalidatePageR0MapTLB(pVM);
-    PGMPhysInvalidatePageGCMapTLB(pVM);
+    PGMPhysInvalidatePageMapTLB(pVM);
 
     /*
      * For the time being we sport a full set of handy pages in addition to the base
