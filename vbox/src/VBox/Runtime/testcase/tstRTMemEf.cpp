@@ -1,4 +1,4 @@
-/* $Id: tstRTMemEf.cpp 27269 2010-03-11 10:15:46Z vboxsync $ */
+/* $Id: tstRTMemEf.cpp 27270 2010-03-11 10:39:07Z vboxsync $ */
 /** @file
  * IPRT - Testcase for the RTMemEf* functions.
  */
@@ -45,20 +45,25 @@ static unsigned g_cErrors = 0;
 
 static int tstMemAllocEfAccess()
 {
+    char sz[1];
     int32_t v;
 
     /* Trivial alloc fence test - allocate a single word and access both
      * the word after the allocated block and the word before. One of them
      * will crash no matter whether the fence is at the bottom or on top. */
     int32_t *p = (int32_t *)RTMemEfAlloc(sizeof(int32_t));
-    RTPrintf("tstRTMemAllocEfAccess: allocated int32_t at %#p\n");
+    RTPrintf("tstRTMemAllocEfAccess: allocated int32_t at %#p\n", p);
     RTPrintf("tstRTMemAllocEfAccess: triggering buffer overrun...\n");
     v = *(p + 1);
+    /* Dummy use of v so that the compiler cannot optimize it out */
+    RTStrPrintf(sz, 0, "", v);
     RTPrintf("tstRTMemAllocEfAccess: triggering buffer underrun...\n");
     v = *(p - 1);
+    /* Dummy use of v so that the compiler cannot optimize it out */
+    RTStrPrintf(sz, 0, "", v);
 
     /* Reaching this is a severe error. */
-    return VERR_GENERAL_FAILURE;
+    return 0;
 }
 
 int main()
