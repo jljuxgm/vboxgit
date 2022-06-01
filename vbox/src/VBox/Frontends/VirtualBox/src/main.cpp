@@ -1,4 +1,4 @@
-/* $Id: main.cpp 27130 2010-03-06 12:39:30Z vboxsync $ */
+/* $Id: main.cpp 27131 2010-03-06 13:32:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -498,9 +498,11 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char ** /*envp*/)
                     /* Nothing to do here yet. */
                 }
 #endif
-                vboxGlobal().setMainWindow (vboxGlobal().vmWindow());
                 if (vboxGlobal().startMachine (vboxGlobal().managedVMUuid()))
+                {
+                    vboxGlobal().setMainWindow (vboxGlobal().vmWindow());
                     rc = a.exec();
+                }
             }
             else if (noSelector)
             {
