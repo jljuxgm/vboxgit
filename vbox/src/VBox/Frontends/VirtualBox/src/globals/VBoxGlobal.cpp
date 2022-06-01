@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 26868 2010-02-26 16:48:46Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 26889 2010-02-28 14:57:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -394,6 +394,8 @@ public:
 #ifdef Q_WS_MAC
         else if (mGlobal.isVMConsoleProcess())
         {
+#ifndef VBOX_WITH_NEW_RUNTIME_CORE
+            /* TODO_NEW_CORE */
             /* Check for the currently running machine */
             CMachine machine = mGlobal.consoleWnd().session().GetMachine();
             if (QString::fromUtf16(id) == machine.GetId())
@@ -408,6 +410,7 @@ public:
                     QApplication::postEvent(&mGlobal, new VBoxChangeDockIconUpdateEvent(f));
                 }
             }
+#endif /* VBOX_WITH_NEW_RUNTIME_CORE */
         }
 #endif /* Q_WS_MAC */
         return S_OK;

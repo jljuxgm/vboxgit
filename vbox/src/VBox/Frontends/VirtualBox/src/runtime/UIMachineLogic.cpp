@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 26868 2010-02-26 16:48:46Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 26889 2010-02-28 14:57:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -44,7 +44,7 @@
 #include "UIActionsPool.h"
 #include "UIMachineLogic.h"
 #include "UIMachineLogicNormal.h"
-//#include "UIMachineLogicFullscreen.h"
+#include "UIMachineLogicFullscreen.h"
 //#include "UIMachineLogicSeamless.h"
 #include "UIMachineWindow.h"
 #include "UIMachineView.h"
@@ -351,8 +351,7 @@ UIMachineLogic* UIMachineLogic::create(QObject *pParent,
             logic = new UIMachineLogicNormal(pParent, pSession, pActionsPool);
             break;
         case UIVisualStateType_Fullscreen:
-            // logic = new UIMachineLogicFullscreen(pParent, pSession, pActionsPool);
-            logic = new UIMachineLogicNormal(pParent, pSession, pActionsPool);
+            logic = new UIMachineLogicFullscreen(pParent, pSession, pActionsPool);
             break;
         case UIVisualStateType_Seamless:
             // logic = new UIMachineLogicSeamless(pParent, pSession, pActionsPool);
