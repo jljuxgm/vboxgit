@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-linux.c 28466 2010-04-19 14:24:08Z vboxsync $ */
+/* $Id: semmutex-r0drv-linux.c 28469 2010-04-19 14:31:32Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Linux.
  */
@@ -275,7 +275,8 @@ DECLINLINE(int) rtSemMutexLinuxRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMilli
     /*
      * Not a recursion, maybe it's not owned by anyone then?
      */
-    else if (pThis->pOwnerTask == NULL)
+    else if (   pThis->pOwnerTask == NULL
+             && RTListIsEmpty(&pThis->WaiterList))
     {
         Assert(pThis->cRecursions == 0);
         pThis->cRecursions = 1;
