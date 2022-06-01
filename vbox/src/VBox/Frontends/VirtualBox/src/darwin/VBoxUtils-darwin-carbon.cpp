@@ -1,3 +1,4 @@
+/* $Id: VBoxUtils-darwin-carbon.cpp 26716 2010-02-23 16:03:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
