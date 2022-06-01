@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 26270 2010-02-05 03:42:30Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 26437 2010-02-11 15:06:15Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -102,6 +102,9 @@ static PVMMSWITCHERDEF s_apSwitchers[VMMSWITCHER_MAX] =
  */
 int vmmR3SwitcherInit(PVM pVM)
 {
+#ifndef VBOX_WITH_RAW_MODE
+    return VINF_SUCCESS;
+#else
     /*
      * Calc the size.
      */
@@ -222,6 +225,7 @@ int vmmR3SwitcherInit(PVM pVM)
     pVM->vmm.s.pvCoreCodeR0 = NIL_RTR0PTR;
     pVM->vmm.s.pvCoreCodeRC = 0;
     return rc;
+#endif
 }
 
 /**
@@ -232,6 +236,7 @@ int vmmR3SwitcherInit(PVM pVM)
  */
 void vmmR3SwitcherRelocate(PVM pVM, RTGCINTPTR offDelta)
 {
+#ifdef VBOX_WITH_RAW_MODE
     /*
      * Relocate all the switchers.
      */
@@ -262,6 +267,7 @@ void vmmR3SwitcherRelocate(PVM pVM, RTGCINTPTR offDelta)
     pVM->pfnVMMGCGuestToHostAsmGuestCtx = RCPtr + pSwitcher->offGCGuestToHostAsmGuestCtx;
 
 //    AssertFailed();
+#endif
 }
 
 

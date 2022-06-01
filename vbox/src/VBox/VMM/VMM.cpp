@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 26176 2010-02-02 22:20:13Z vboxsync $ */
+/* $Id: VMM.cpp 26437 2010-02-11 15:06:15Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -751,7 +751,9 @@ VMMR3DECL(void) VMMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     /*
      * Recalc the RC address.
      */
+#ifdef VBOX_WITH_RAW_MODE
     pVM->vmm.s.pvCoreCodeRC = MMHyperR3ToRC(pVM, pVM->vmm.s.pvCoreCodeR3);
+#endif
 
     /*
      * The stack.
