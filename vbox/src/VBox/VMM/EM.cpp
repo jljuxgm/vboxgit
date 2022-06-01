@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 29329 2010-05-11 10:18:30Z vboxsync $ */
+/* $Id: EM.cpp 30050 2010-06-07 07:11:15Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1630,17 +1630,6 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
     STAM_REL_PROFILE_STOP(&pVCpu->em.s.StatForcedActions, a);
     Assert(rcIrq == VINF_SUCCESS || rcIrq == rc);
     return rc;
-}
-
-/**
- * Release the IOM lock if owned by the current VCPU
- *
- * @param   pVM         The VM to operate on.
- */
-VMMR3DECL(void) EMR3ReleaseOwnedLocks(PVM pVM)
-{
-    while (PDMCritSectIsOwner(&pVM->em.s.CritSectREM))
-        PDMCritSectLeave(&pVM->em.s.CritSectREM);
 }
 
 

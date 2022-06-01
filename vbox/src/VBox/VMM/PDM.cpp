@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 28801 2010-04-27 09:05:12Z vboxsync $ */
+/* $Id: PDM.cpp 30050 2010-06-07 07:11:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -2117,13 +2117,3 @@ VMMR3DECL(int) PDMR3VMMDevHeapFree(PVM pVM, RTR3PTR pv)
     return VINF_SUCCESS;
 }
 
-/**
- * Release the PDM lock if owned by the current VCPU
- *
- * @param   pVM         The VM to operate on.
- */
-VMMR3DECL(void) PDMR3ReleaseOwnedLocks(PVM pVM)
-{
-    while (PDMCritSectIsOwner(&pVM->pdm.s.CritSect))
-        PDMCritSectLeave(&pVM->pdm.s.CritSect);
-}

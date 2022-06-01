@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 29646 2010-05-18 15:44:08Z vboxsync $ */
+/* $Id: PGM.cpp 30050 2010-06-07 07:11:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3349,16 +3349,6 @@ VMMR3DECL(int) PGMR3ChangeMode(PVM pVM, PVMCPU pVCpu, PGMMODE enmGuestMode)
     return rc;
 }
 
-/**
- * Release the pgm lock if owned by the current VCPU
- *
- * @param   pVM         The VM to operate on.
- */
-VMMR3DECL(void) PGMR3ReleaseOwnedLocks(PVM pVM)
-{
-    while (PDMCritSectIsOwner(&pVM->pgm.s.CritSect))
-        PDMCritSectLeave(&pVM->pgm.s.CritSect);
-}
 
 /**
  * Called by pgmPoolFlushAllInt prior to flushing the pool.
