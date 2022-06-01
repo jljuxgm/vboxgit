@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-solaris.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 29281 2010-05-09 23:40:43Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -169,7 +169,7 @@ RTDECL(int) RTTimerDestroy(PRTTIMER pTimer)
      * Free the associated resources.
      */
     RTTimerStop(pTimer);
-    ASMAtomicWriteU32(pTimer, ~RTTIMER_MAGIC);
+    ASMAtomicWriteU32(&pTimer->u32Magic, ~RTTIMER_MAGIC);
     RTMemFree(pTimer);
     return VINF_SUCCESS;
 }
