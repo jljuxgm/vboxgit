@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 34971 2010-12-11 23:12:01Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 35100 2010-12-14 16:21:38Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -818,8 +818,35 @@ int handleExtPack(HandlerArg *a)
 
     if (!strcmp(a->argv[0], "install"))
     {
-        if (a->argc != 2)
-            return errorSyntax(USAGE_EXTPACK, "Incorrect number of parameters for \"extpack install\"");
+        const char *pszName  = NULL;
+        bool        fReplace = false;
+
+        static const RTGETOPTDEF s_aInstallOptions[] =
+        {
+            { "--replace",  'r', RTGETOPT_REQ_NOTHING },
+        };
+
+        RTGetOptInit(&GetState, a->argc, a->argv, s_aInstallOptions, RT_ELEMENTS(s_aInstallOptions), 1, 0 /*fFlags*/);
+        while ((ch = RTGetOpt(&GetState, &ValueUnion)))
+        {
+            switch (ch)
+            {
+                case 'f':
+                    fReplace = true;
+                    break;
+
+                case VINF_GETOPT_NOT_OPTION:
+                    if (pszName)
+                        return errorSyntax(USAGE_EXTPACK, "Too many extension pack names given to \"extpack uninstall\"");
+                    pszName = ValueUnion.psz;
+                    break;
+
+                default:
+                    return errorGetOpt(USAGE_EXTPACK, ch, &ValueUnion);
+            }
+        }
+        if (!pszName)
+            return errorSyntax(USAGE_EXTPACK, "No extension pack name was given to \"extpack install\"");
 
         char szPath[RTPATH_MAX];
         int vrc = RTPathAbs(a->argv[1], szPath, sizeof(szPath));
@@ -831,7 +858,7 @@ int handleExtPack(HandlerArg *a)
         ComPtr<IExtPackFile> ptrExtPackFile;
         CHECK_ERROR2_RET(ptrExtPackMgr, OpenExtPackFile(bstrTarball.raw(), ptrExtPackFile.asOutParam()), RTEXITCODE_FAILURE);
         CHECK_ERROR2_RET(ptrExtPackFile, COMGETTER(Name)(bstrName.asOutParam()), RTEXITCODE_FAILURE);
-        CHECK_ERROR2_RET(ptrExtPackFile, Install(), RTEXITCODE_FAILURE);
+        CHECK_ERROR2_RET(ptrExtPackFile, Install(fReplace), RTEXITCODE_FAILURE);
         RTPrintf("Successfully installed \"%lS\".\n", bstrName.raw());
     }
     else if (!strcmp(a->argv[0], "uninstall"))
@@ -844,8 +871,7 @@ int handleExtPack(HandlerArg *a)
             { "--forced",  'f', RTGETOPT_REQ_NOTHING },
         };
 
-        RTGetOptInit(&GetState, a->argc, a->argv, s_aUninstallOptions, RT_ELEMENTS(s_aUninstallOptions),
-                     1, RTGETOPTINIT_FLAGS_NO_STD_OPTS);
+        RTGetOptInit(&GetState, a->argc, a->argv, s_aUninstallOptions, RT_ELEMENTS(s_aUninstallOptions), 1, 0);
         while ((ch = RTGetOpt(&GetState, &ValueUnion)))
         {
             switch (ch)
