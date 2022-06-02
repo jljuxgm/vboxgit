@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 33800 2010-11-05 16:40:26Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 33876 2010-11-08 21:32:28Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -96,10 +96,10 @@ BOOLEAN VBoxHGSMIIsSupported (void)
 {
     USHORT DispiId;
 
-    VBoxVideoCmnPortWriteUshort((PUSHORT)VBE_DISPI_IOPORT_INDEX, VBE_DISPI_INDEX_ID);
-    VBoxVideoCmnPortWriteUshort((PUSHORT)VBE_DISPI_IOPORT_DATA, VBE_DISPI_ID_HGSMI);
+    VBoxVideoCmnPortWriteUshort(VBE_DISPI_IOPORT_INDEX, VBE_DISPI_INDEX_ID);
+    VBoxVideoCmnPortWriteUshort(VBE_DISPI_IOPORT_DATA, VBE_DISPI_ID_HGSMI);
 
-    DispiId = VBoxVideoCmnPortReadUshort((PUSHORT)VBE_DISPI_IOPORT_DATA);
+    DispiId = VBoxVideoCmnPortReadUshort(VBE_DISPI_IOPORT_DATA);
 
     return (DispiId == VBE_DISPI_ID_HGSMI);
 }
