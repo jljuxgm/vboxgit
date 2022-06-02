@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-nt.cpp 33155 2010-10-15 12:07:44Z vboxsync $ */
+/* $Id: semevent-r0drv-nt.cpp 33158 2010-10-15 12:15:13Z vboxsync $ */
 /** @file
  * IPRT -  Single Release Event Semaphores, Ring-0 Driver, NT.
  */
@@ -37,6 +37,7 @@
 #include <iprt/lockvalidator.h>
 #include <iprt/mem.h>
 #include <iprt/time.h>
+#include <iprt/timer.h>
 
 #include "internal/magics.h"
 
