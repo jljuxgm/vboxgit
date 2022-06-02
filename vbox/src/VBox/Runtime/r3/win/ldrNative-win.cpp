@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 34960 2010-12-10 15:36:28Z vboxsync $ */
+/* $Id: ldrNative-win.cpp 34962 2010-12-10 15:42:36Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -70,7 +70,7 @@ int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, char *pszError
     /*
      * Try figure why it failed to load.
      */
-    DWORD dwErr = GetLastError(dwErr);
+    DWORD dwErr = GetLastError();
     int   rc    = RTErrConvertFromWin32(dwErr);
     if (cbError)
         RTStrPrintf(pszError, cbError, "GetLastError=%u", dwErr);
