@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 31384 2010-08-05 09:18:11Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 31386 2010-08-05 09:48:04Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -47,6 +47,9 @@ extern "C" char* xf86strcpy(char*,const char*);
 extern "C" void* xf86memchr(const void*,int,xf86size_t);
 # undef memchr
 # define memchr xf86memchr
+extern "C" void* xf86memset(const void*,int,xf86size_t);
+# undef memset
+# define memset xf86memset
 
 # undef RTSTrEnd
 # define RTStrEnd xf86RTStrEnd
