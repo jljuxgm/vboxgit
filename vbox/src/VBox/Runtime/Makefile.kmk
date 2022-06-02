@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35021 2010-12-13 15:15:40Z vboxsync $
+# $Id: Makefile.kmk 35024 2010-12-13 15:39:09Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -98,7 +98,10 @@ endif
 
 
 # Always build the ntdll import libraries on windows.
-LIBRARIES.win += RuntimeR3NtDll-amd64 RuntimeR3NtDll-x86
+LIBRARIES.win += RuntimeR3NtDll-x86
+if1of (amd64, $(KBUILD_TARGET_ARCH) $(KBUILD_HOST_ARCH))
+ LIBRARIES.win += RuntimeR3NtDll-amd64
+endif
 
 
 # Where the generated stuff goes.
