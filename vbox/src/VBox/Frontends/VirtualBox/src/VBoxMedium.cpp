@@ -1,4 +1,4 @@
-/* $Id: VBoxMedium.cpp 32532 2010-09-15 17:26:45Z vboxsync $ */
+/* $Id: VBoxMedium.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -190,7 +190,7 @@ void VBoxMedium::refresh()
 
             for (QVector <QString>::ConstIterator it = machineIds.begin(); it != machineIds.end(); ++ it)
             {
-                CMachine machine = vbox.GetMachine (*it);
+                CMachine machine = vbox.FindMachine(*it);
 
                 QString sName = machine.GetName();
                 QString sSnapshots;

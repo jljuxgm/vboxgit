@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 32885 2010-10-04 12:56:35Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of controlvm command.
  */
@@ -74,20 +74,9 @@ int handleControlVM(HandlerArg *a)
 
     /* try to find the given machine */
     ComPtr <IMachine> machine;
-    Bstr machineuuid(a->argv[0]);
-    if (!Guid(machineuuid).isEmpty())
-    {
-        CHECK_ERROR(a->virtualBox, GetMachine(machineuuid.raw(),
-                                              machine.asOutParam()));
-    }
-    else
-    {
-        CHECK_ERROR(a->virtualBox, FindMachine(machineuuid.raw(),
-                                               machine.asOutParam()));
-        if (SUCCEEDED (rc))
-            machine->COMGETTER(Id)(machineuuid.asOutParam());
-    }
-    if (FAILED (rc))
+    CHECK_ERROR(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
+                                           machine.asOutParam()));
+    if (FAILED(rc))
         return 1;
 
     /* open a session for the VM */

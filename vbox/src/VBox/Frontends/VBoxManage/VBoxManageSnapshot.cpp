@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -226,14 +226,8 @@ int handleSnapshot(HandlerArg *a)
     /* the first argument must be the VM */
     Bstr bstrMachine(a->argv[0]);
     ComPtr<IMachine> pMachine;
-    /* assume it's a UUID */
-    rc = a->virtualBox->GetMachine(bstrMachine.raw(), pMachine.asOutParam());
-    if (FAILED(rc) || !pMachine)
-    {
-        /* must be a name */
-        CHECK_ERROR(a->virtualBox, FindMachine(bstrMachine.raw(),
-                                               pMachine.asOutParam()));
-    }
+    CHECK_ERROR(a->virtualBox, FindMachine(bstrMachine.raw(),
+                                           pMachine.asOutParam()));
     if (!pMachine)
         return 1;
 

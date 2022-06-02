@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 33004 2010-10-08 10:23:59Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -792,30 +792,16 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
         ComPtr<IMachine> m;
 
-        /* find ID by name */
-        if (id.isEmpty())
+        rc = virtualBox->FindMachine(Bstr(name).raw(), m.asOutParam());
+        if (FAILED(rc))
         {
-            rc = virtualBox->FindMachine(Bstr(name).raw(), m.asOutParam());
-            if (FAILED(rc))
-            {
-                LogError("Invalid machine name!\n", rc);
-                break;
-            }
-            m->COMGETTER(Id)(id.asOutParam());
-            AssertComRC(rc);
-            if (FAILED(rc))
-                break;
+            LogError("Invalid machine name or UUID!\n", rc);
+            break;
         }
-        else
-        {
-            /* Use the GUID. */
-            rc = virtualBox->GetMachine(id.raw(), m.asOutParam());
-            if (FAILED(rc))
-            {
-                LogError("Invalid machine uid!\n", rc);
-                break;
-            }
-        }
+        m->COMGETTER(Id)(id.asOutParam());
+        AssertComRC(rc);
+        if (FAILED(rc))
+            break;
 
         Log(("VBoxHeadless: Opening a session with machine (id={%s})...\n",
               Utf8Str(id).c_str()));

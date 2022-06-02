@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUSB.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: VBoxManageUSB.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -233,14 +233,8 @@ int handleUSBFilter(HandlerArg *a)
                     else
                     {
                         /* assume it's a UUID of a machine */
-                        rc = a->virtualBox->GetMachine(Bstr(a->argv[i]).raw(),
-                                                       cmd.mMachine.asOutParam());
-                        if (FAILED(rc) || !cmd.mMachine)
-                        {
-                            /* must be a name */
-                            CHECK_ERROR_RET(a->virtualBox, FindMachine(Bstr(a->argv[i]).raw(),
-                                                                       cmd.mMachine.asOutParam()), 1);
-                        }
+                        CHECK_ERROR_RET(a->virtualBox, FindMachine(Bstr(a->argv[i]).raw(),
+                                                                   cmd.mMachine.asOutParam()), 1);
                     }
                 }
                 else if (   !strcmp(a->argv[i], "--name")
@@ -388,15 +382,8 @@ int handleUSBFilter(HandlerArg *a)
                         cmd.mGlobal = true;
                     else
                     {
-                        /* assume it's a UUID of a machine */
-                        rc = a->virtualBox->GetMachine(Bstr(a->argv[i]).raw(),
-                                                       cmd.mMachine.asOutParam());
-                        if (FAILED(rc) || !cmd.mMachine)
-                        {
-                            /* must be a name */
-                            CHECK_ERROR_RET(a->virtualBox, FindMachine(Bstr(a->argv[i]).raw(),
-                                                                       cmd.mMachine.asOutParam()), 1);
-                        }
+                        CHECK_ERROR_RET(a->virtualBox, FindMachine(Bstr(a->argv[i]).raw(),
+                                                                   cmd.mMachine.asOutParam()), 1);
                     }
                 }
             }

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 33289 2010-10-21 10:00:15Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1084,7 +1084,7 @@ HRESULT Appliance::importFS(TaskOVF *pTask)
             Guid guid = *itID;
             Bstr bstrGuid = guid.toUtf16();
             ComPtr<IMachine> failedMachine;
-            HRESULT rc2 = mVirtualBox->GetMachine(bstrGuid.raw(), failedMachine.asOutParam());
+            HRESULT rc2 = mVirtualBox->FindMachine(bstrGuid.raw(), failedMachine.asOutParam());
             if (SUCCEEDED(rc2))
             {
                 SafeIfaceArray<IMedium> aMedia;

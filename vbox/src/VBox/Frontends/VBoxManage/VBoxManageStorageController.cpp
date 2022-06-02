@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 33140 2010-10-14 16:20:15Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -64,7 +64,6 @@ int handleStorageAttach(HandlerArg *a)
     const char *pszType = NULL;
     const char *pszMedium = NULL;
     const char *pszPassThrough = NULL;
-    Bstr machineuuid (a->argv[0]);
     RTGETOPTUNION ValueUnion;
     RTGETOPTSTATE GetState;
     ComPtr<IMachine> machine;
@@ -161,17 +160,8 @@ int handleStorageAttach(HandlerArg *a)
     CHECK_ERROR_RET(a->virtualBox, COMGETTER(SystemProperties)(systemProperties.asOutParam()), 1);
 
     /* try to find the given machine */
-    if (!Guid(machineuuid).isEmpty())
-    {
-        CHECK_ERROR_RET(a->virtualBox, GetMachine(machineuuid.raw(),
-                                                  machine.asOutParam()), 1);
-    }
-    else
-    {
-        CHECK_ERROR_RET(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
-                                                   machine.asOutParam()), 1);
-        machine->COMGETTER(Id)(machineuuid.asOutParam());
-    }
+    CHECK_ERROR_RET(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
+                                               machine.asOutParam()), 1);
 
     /* open a session for the VM (new or shared) */
     CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Shared), 1);
@@ -670,7 +660,6 @@ int handleStorageController(HandlerArg *a)
     ULONG             sataidedev     = ~0U;
     ULONG             sataportcount  = ~0U;
     bool              fRemoveCtl     = false;
-    Bstr              machineuuid (a->argv[0]);
     ComPtr<IMachine>  machine;
     RTGETOPTUNION     ValueUnion;
     RTGETOPTSTATE     GetState;
@@ -751,17 +740,8 @@ int handleStorageController(HandlerArg *a)
         return 1;
 
     /* try to find the given machine */
-    if (!Guid(machineuuid).isEmpty())
-    {
-        CHECK_ERROR_RET(a->virtualBox, GetMachine(machineuuid.raw(),
-                                                  machine.asOutParam()), 1);
-    }
-    else
-    {
-        CHECK_ERROR_RET(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
-                                                   machine.asOutParam()), 1);
-        machine->COMGETTER(Id)(machineuuid.asOutParam());
-    }
+    CHECK_ERROR_RET(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
+                                               machine.asOutParam()), 1);
 
     /* open a session for the VM */
     CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Write), 1);

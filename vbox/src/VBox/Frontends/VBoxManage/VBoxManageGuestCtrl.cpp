@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33253 2010-10-20 10:46:11Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -287,16 +287,9 @@ static int handleCtrlExecProgram(HandlerArg *a)
 
     /* lookup VM. */
     ComPtr<IMachine> machine;
-    /* assume it's an UUID */
-    HRESULT rc = a->virtualBox->GetMachine(Bstr(a->argv[0]).raw(),
-                                           machine.asOutParam());
-    if (FAILED(rc) || !machine)
-    {
-        /* must be a name */
-        CHECK_ERROR(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
-                                               machine.asOutParam()));
-    }
-
+    HRESULT rc;
+    CHECK_ERROR(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
+                                           machine.asOutParam()));
     if (machine)
     {
         do
@@ -688,15 +681,9 @@ static int handleCtrlCopyTo(HandlerArg *a)
     /* lookup VM. */
     ComPtr<IMachine> machine;
     /* assume it's an UUID */
-    HRESULT rc = a->virtualBox->GetMachine(Bstr(a->argv[0]).raw(),
-                                           machine.asOutParam());
-    if (FAILED(rc) || !machine)
-    {
-        /* must be a name */
-        CHECK_ERROR(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
-                                               machine.asOutParam()));
-    }
-
+    HRESULT rc;
+    CHECK_ERROR(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
+                                           machine.asOutParam()));
     if (machine)
     {
         do

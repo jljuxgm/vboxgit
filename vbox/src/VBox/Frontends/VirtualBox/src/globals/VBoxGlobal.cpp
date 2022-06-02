@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 33044 2010-10-11 16:30:54Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2165,7 +2165,7 @@ CSession VBoxGlobal::openSession(const QString &aId, bool aExisting /* = false *
         return session;
     }
 
-    CMachine foundMachine = CVirtualBox(mVBox).GetMachine(aId);
+    CMachine foundMachine = CVirtualBox(mVBox).FindMachine(aId);
     if (!foundMachine.isNull())
     {
         foundMachine.LockMachine(session,
@@ -4802,11 +4802,11 @@ void VBoxGlobal::init()
 
     if (bForceSeamless && !vmUuid.isEmpty())
     {
-        mVBox.GetMachine(vmUuid).SetExtraData(VBoxDefs::GUI_Seamless, "on");
+        mVBox.FindMachine(vmUuid).SetExtraData(VBoxDefs::GUI_Seamless, "on");
     }
     else if (bForceFullscreen && !vmUuid.isEmpty())
     {
-        mVBox.GetMachine(vmUuid).SetExtraData(VBoxDefs::GUI_Fullscreen, "on");
+        mVBox.FindMachine(vmUuid).SetExtraData(VBoxDefs::GUI_Fullscreen, "on");
     }
 
     vm_render_mode = vboxGetRenderMode (vm_render_mode_str);

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 33238 2010-10-19 15:41:23Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -136,7 +136,7 @@ static void listMedia(const ComPtr<IVirtualBox> aVirtualBox,
         for (size_t j = 0; j < machineIds.size(); ++j)
         {
             ComPtr<IMachine> machine;
-            CHECK_ERROR(aVirtualBox, GetMachine(machineIds[j], machine.asOutParam()));
+            CHECK_ERROR(aVirtualBox, FindMachine(machineIds[j], machine.asOutParam()));
             ASSERT(machine);
             Bstr name;
             machine->COMGETTER(Name)(name.asOutParam());

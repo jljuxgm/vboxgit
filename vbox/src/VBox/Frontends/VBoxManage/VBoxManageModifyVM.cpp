@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 33201 2010-10-18 14:37:33Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -283,7 +283,6 @@ int handleModifyVM(HandlerArg *a)
     int c;
     HRESULT rc;
     Bstr name;
-    Bstr machineuuid(a->argv[0]);
     RTGETOPTUNION ValueUnion;
     RTGETOPTSTATE GetOptState;
     ComPtr <IMachine> machine;
@@ -309,17 +308,8 @@ int handleModifyVM(HandlerArg *a)
     }
 
     /* try to find the given machine */
-    if (!Guid(machineuuid).isEmpty())
-    {
-        CHECK_ERROR_RET(a->virtualBox, GetMachine(machineuuid.raw(),
-                                                  machine.asOutParam()), 1);
-    }
-    else
-    {
-        CHECK_ERROR_RET(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
-                                                   machine.asOutParam()), 1);
-        machine->COMGETTER(Id)(machineuuid.asOutParam());
-    }
+    CHECK_ERROR_RET(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
+                                               machine.asOutParam()), 1);
 
     /* open a session for the VM */
     CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Write), 1);

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 33239 2010-10-19 15:59:39Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 33294 2010-10-21 10:45:26Z vboxsync $ */
 
 /** @file
  *
@@ -126,8 +126,7 @@ public:
                               IN_BSTR aId, BOOL aOverride, IMachine **aMachine);
     STDMETHOD(OpenMachine) (IN_BSTR aSettingsFile, IMachine **aMachine);
     STDMETHOD(RegisterMachine) (IMachine *aMachine);
-    STDMETHOD(GetMachine) (IN_BSTR aId, IMachine **aMachine);
-    STDMETHOD(FindMachine) (IN_BSTR aName, IMachine **aMachine);
+    STDMETHOD(FindMachine) (IN_BSTR aNameOrId, IMachine **aMachine);
     STDMETHOD(CreateAppliance) (IAppliance **anAppliance);
 
     STDMETHOD(CreateHardDisk)(IN_BSTR aFormat,

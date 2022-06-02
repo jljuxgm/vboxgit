@@ -1,4 +1,4 @@
-/* $Id: UIExportApplianceWzd.cpp 33077 2010-10-12 15:44:37Z vboxsync $ */
+/* $Id: UIExportApplianceWzd.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -253,7 +253,7 @@ bool UIExportApplianceWzdPage2::prepareSettingsWidget()
         foreach (const QString &uuid, uuids)
         {
             /* Get the machine with the uuid */
-            CMachine m = vbox.GetMachine(uuid);
+            CMachine m = vbox.FindMachine(uuid);
             fResult = m.isOk();
             if (fResult)
             {

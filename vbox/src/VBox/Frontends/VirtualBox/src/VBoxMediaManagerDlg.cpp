@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 33238 2010-10-19 15:41:23Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1136,7 +1136,7 @@ void VBoxMediaManagerDlg::doReleaseMedium()
     const QList <QString> &machineIds = item->medium().curStateMachineIds();
     for (QList <QString>::const_iterator it = machineIds.begin(); it != machineIds.end(); ++ it)
     {
-        CMachine m = mVBox.GetMachine (*it);
+        CMachine m = mVBox.FindMachine (*it);
         if (!mVBox.isOk())
             continue;
 
@@ -1186,7 +1186,7 @@ bool VBoxMediaManagerDlg::releaseMediumFrom (const VBoxMedium &aMedium, const QS
     /* or to some other */
     else
     {
-        session = vboxGlobal().openSession (aMachineId);
+        session = vboxGlobal().openSession(aMachineId);
         if (session.isNull())
             return false;
 

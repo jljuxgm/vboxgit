@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 33132 2010-10-14 13:30:15Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -1304,7 +1304,7 @@ int handleShowHardDiskInfo(HandlerArg *a)
             for (size_t j = 0; j < machineIds.size(); ++ j)
             {
                 ComPtr<IMachine> machine;
-                CHECK_ERROR(a->virtualBox, GetMachine(machineIds[j], machine.asOutParam()));
+                CHECK_ERROR(a->virtualBox, FindMachine(machineIds[j], machine.asOutParam()));
                 ASSERT(machine);
                 Bstr name;
                 machine->COMGETTER(Name)(name.asOutParam());

@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: tstOVF.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -344,7 +344,7 @@ int main(int argc, char *argv[])
             const Guid &uuid = *it;
             Bstr bstrUUID(uuid.toUtf16());
             ComPtr<IMachine> pMachine;
-            rc = pVirtualBox->GetMachine(bstrUUID.raw(), pMachine.asOutParam());
+            rc = pVirtualBox->FindMachine(bstrUUID.raw(), pMachine.asOutParam());
             if (FAILED(rc)) throw MyError(rc, "VirtualBox::FindMachine() failed\n");
 
             RTPrintf("  Deleting machine %ls...\n", bstrUUID.raw());
