@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 30160 2010-06-11 13:26:50Z vboxsync $ */
+/* $Id: SELM.cpp 30647 2010-07-06 08:09:01Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -1951,7 +1951,7 @@ VMMDECL(int) SELMGetLDTFromSel(PVM pVM, RTSEL SelLdt, PRTGCPTR ppvLdt, unsigned 
     if (RT_FAILURE(rc))
     {
         /* fatal */
-        AssertMsgFailed(("Can't read LDT descriptor for selector=%04X\n", SelLdt));
+        Log(("Can't read LDT descriptor for selector=%04X\n", SelLdt));
         return VERR_SELECTOR_NOT_PRESENT;
     }
 
