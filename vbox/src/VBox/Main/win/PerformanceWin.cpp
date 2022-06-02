@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 33590 2010-10-29 08:55:09Z vboxsync $ */
 
 /** @file
  *
@@ -34,9 +34,7 @@ extern "C" {
 
 #include <iprt/err.h>
 #include <iprt/mp.h>
-#ifndef VBOX_WITH_VRDP_MEMLEAK_DETECTOR
 #include <iprt/mem.h>
-#endif /* !VBOX_WITH_VRDP_MEMLEAK_DETECTOR */
 
 #include <map>
 

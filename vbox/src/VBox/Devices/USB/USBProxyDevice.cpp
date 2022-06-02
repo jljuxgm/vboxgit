@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 33590 2010-10-29 08:55:09Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -780,11 +780,7 @@ static DECLCALLBACK(int) usbProxyConstruct(PPDMUSBINS pUsbIns, int iInstance, PC
     if (!fRemote)
         pThis->pOps = &g_USBProxyDeviceHost;
     else
-#ifdef VBOX_WITH_VRDP
         pThis->pOps = &g_USBProxyDeviceVRDP;
-#else
-        return VERR_NOT_SUPPORTED;
-#endif
     rc = pThis->pOps->pfnOpen(pThis, szAddress, pvBackend);
     if (RT_FAILURE(rc))
         return rc;

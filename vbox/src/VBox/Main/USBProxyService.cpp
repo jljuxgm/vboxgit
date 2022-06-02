@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: USBProxyService.cpp 33590 2010-10-29 08:55:09Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -28,9 +28,7 @@
 #include <iprt/asm.h>
 #include <iprt/semaphore.h>
 #include <iprt/thread.h>
-#ifndef VBOX_WITH_VRDP_MEMLEAK_DETECTOR
 #include <iprt/mem.h>
-#endif /* !VBOX_WITH_VRDP_MEMLEAK_DETECTOR */
 #include <iprt/string.h>
 
 
