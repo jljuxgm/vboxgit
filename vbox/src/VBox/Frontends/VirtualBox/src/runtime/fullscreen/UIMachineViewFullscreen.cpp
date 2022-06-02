@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 30637 2010-07-05 22:36:29Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 30674 2010-07-06 14:54:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -33,11 +33,10 @@
 #include "VBoxGlobal.h"
 #include "UISession.h"
 #include "UIActionsPool.h"
-#include "UIMachineLogic.h"
-#include "UIMachineWindow.h"
-#include "UIFrameBuffer.h"
 #include "UIMachineLogicFullscreen.h"
+#include "UIMachineWindow.h"
 #include "UIMachineViewFullscreen.h"
+#include "UIFrameBuffer.h"
 
 UIMachineViewFullscreen::UIMachineViewFullscreen(  UIMachineWindow *pMachineWindow
                                                  , ulong uScreenId
