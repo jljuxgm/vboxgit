@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 32878 2010-10-03 20:30:49Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -138,7 +138,7 @@ static DECLCALLBACK(int) testEnumSymbol2(RTLDRMOD hLdrMod, const char *pszSymbol
         pSym->aSyms[0].uSymbol   = uSymbol;
         pSym->aSyms[0].szName[0] = '\0';
         if (pszSymbol)
-            strncat(pSym->aSyms[0].szName, pszSymbol, sizeof(pSym->aSyms[0].szName));
+            strncat(pSym->aSyms[0].szName, pszSymbol, sizeof(pSym->aSyms[0].szName)-1);
     }
 
     /* above */
@@ -156,7 +156,7 @@ static DECLCALLBACK(int) testEnumSymbol2(RTLDRMOD hLdrMod, const char *pszSymbol
         pSym->aSyms[1].uSymbol   = uSymbol;
         pSym->aSyms[1].szName[0] = '\0';
         if (pszSymbol)
-            strncat(pSym->aSyms[1].szName, pszSymbol, sizeof(pSym->aSyms[1].szName));
+            strncat(pSym->aSyms[1].szName, pszSymbol, sizeof(pSym->aSyms[1].szName)-1);
     }
 
     return VINF_SUCCESS;
