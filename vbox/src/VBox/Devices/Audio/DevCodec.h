@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 31028 2010-07-23 03:33:34Z vboxsync $ */
+/* $Id: DevCodec.h 31062 2010-07-23 13:34:08Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -196,6 +196,7 @@ typedef enum
 
 typedef struct CODECState
 {
+    uint16_t                id;
     CODECVERB               *pVerbs;
     int                     cVerbs;
     PCODECNODE               pNodes;
