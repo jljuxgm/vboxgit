@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 31850 2010-08-22 16:23:40Z vboxsync $ */
+/* $Id: PGMInternal.h 31851 2010-08-23 08:18:42Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3799,11 +3799,13 @@ void            pgmRZDynMapUnusedHint(PVMCPU pVCpu, void *pvHint, RT_SRC_POS_DEC
 void            pgmRZDynMapUnusedHint(PVMCPU pVCpu, void *pvHint);
 # endif
 #endif
-int             pgmPoolAllocEx(PVM pVM, RTGCPHYS GCPhys, PGMPOOLKIND enmKind, PGMPOOLACCESS enmAccess, uint16_t iUser, uint32_t iUserTable, PPPGMPOOLPAGE ppPage, bool fLockPage = false);
+int             pgmPoolAllocEx(PVM pVM, RTGCPHYS GCPhys, PGMPOOLKIND enmKind, PGMPOOLACCESS enmAccess, uint16_t iUser,
+                               uint32_t iUserTable, bool fLockPage, PPPGMPOOLPAGE ppPage);
 
-DECLINLINE(int) pgmPoolAlloc(PVM pVM, RTGCPHYS GCPhys, PGMPOOLKIND enmKind, uint16_t iUser, uint32_t iUserTable, PPPGMPOOLPAGE ppPage, bool fLockPage = false)
+DECLINLINE(int) pgmPoolAlloc(PVM pVM, RTGCPHYS GCPhys, PGMPOOLKIND enmKind, uint16_t iUser, uint32_t iUserTable,
+                             PPPGMPOOLPAGE ppPage)
 {
-    return pgmPoolAllocEx(pVM, GCPhys, enmKind, PGMPOOLACCESS_DONTCARE, iUser, iUserTable, ppPage, fLockPage);
+    return pgmPoolAllocEx(pVM, GCPhys, enmKind, PGMPOOLACCESS_DONTCARE, iUser, iUserTable, false, ppPage);
 }
 
 void            pgmPoolFree(PVM pVM, RTHCPHYS HCPhys, uint16_t iUser, uint32_t iUserTable);
