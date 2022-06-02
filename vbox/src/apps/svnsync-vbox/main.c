@@ -1,4 +1,4 @@
-/* $Id: main.c 29684 2010-05-20 11:30:05Z vboxsync $ */
+/* $Id: main.c 30851 2010-07-14 18:02:23Z vboxsync $ */
 /** @file
  * svnsync tool. Modified by Oracle.
  */
@@ -1971,6 +1971,18 @@ open_file(const char *path,
     }
     else
     {
+      if (!file_added_this_changeset)
+      {
+        svn_node_kind_t nodekind;
+        /* Verify that the previous source was exported to the destination
+         * repository. */
+        SVN_ERR(svn_ra_check_path(eb->to_session_prop,
+                                  STRIP_LEADING_SLASH(path),
+                                  SVN_IGNORED_REVNUM, &nodekind, pool));
+        if (nodekind == svn_node_none || nodekind != svn_node_file)
+          fb->prev_process = FALSE;
+      }
+
       if (fb->prev_process)
       {
         /* File disappears due to changes to the process settings. */
