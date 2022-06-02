@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 30544 2010-06-30 22:37:36Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 30637 2010-07-05 22:36:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -83,9 +83,6 @@ UIMachineViewSeamless::~UIMachineViewSeamless()
 {
     /* Cleanup seamless mode: */
     cleanupSeamless();
-
-    /* Cleanup common things: */
-    cleanupCommon();
 
     /* Cleanup frame buffer: */
     cleanupFrameBuffer();
@@ -223,24 +220,6 @@ bool UIMachineViewSeamless::event(QEvent *pEvent)
                 m_pSyncBlocker->quit();
 
             return true;
-        }
-
-        case QEvent::KeyPress:
-        case QEvent::KeyRelease:
-        {
-            /* Get key-event: */
-            QKeyEvent *pKeyEvent = static_cast<QKeyEvent*>(pEvent);
-
-            /* Process Host+Home for menu popup: */
-            if (isHostKeyPressed() && pEvent->type() == QEvent::KeyPress)
-            {
-                if (pKeyEvent->key() == Qt::Key_Home)
-                    QTimer::singleShot(0, machineWindowWrapper()->machineWindow(), SLOT(sltPopupMainMenu()));
-                else
-                    pEvent->ignore();
-            }
-
-            break;
         }
 
         default:
