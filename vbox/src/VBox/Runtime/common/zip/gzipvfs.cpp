@@ -1,4 +1,4 @@
-/* $Id: gzipvfs.cpp 34027 2010-11-12 10:46:49Z vboxsync $ */
+/* $Id: gzipvfs.cpp 34049 2010-11-13 01:31:07Z vboxsync $ */
 /** @file
  * IPRT - GZIP Compressor and Decompressor I/O Stream.
  */
@@ -441,7 +441,8 @@ static DECLCALLBACK(int) rtZipGzip_PollOne(void *pvThis, uint32_t fEvents, RTMSI
 static DECLCALLBACK(int) rtZipGzip_Tell(void *pvThis, PRTFOFF poffActual)
 {
     PRTZIPGZIPSTREAM pThis = (PRTZIPGZIPSTREAM)pvThis;
-    return pThis->offStream;
+    *poffActual = pThis->offStream;
+    return VINF_SUCCESS;
 }
 
 
@@ -485,7 +486,7 @@ RTDECL(int) RTZipGzipDecompressIoStream(RTVFSIOSTREAM hVfsIosIn, uint32_t fFlags
      */
     RTVFSIOSTREAM    hVfsIos;
     PRTZIPGZIPSTREAM pThis;
-    int rc = RTVfsNewIoStream(&g_rtZipGzipOps, sizeof(RTZIPGZIPSTREAM), RTFILE_O_READ, NIL_RTVFS, NIL_RTSEMRW,
+    int rc = RTVfsNewIoStream(&g_rtZipGzipOps, sizeof(RTZIPGZIPSTREAM), RTFILE_O_READ, NIL_RTVFS, NIL_RTVFSLOCK,
                               &hVfsIos, (void **)&pThis);
     if (RT_SUCCESS(rc))
     {
