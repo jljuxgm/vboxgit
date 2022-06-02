@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33898 2010-11-09 13:49:22Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33899 2010-11-09 14:02:04Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -48,6 +48,7 @@
 #endif
 
 #include <signal.h>
+#include <stdlib.h>
 
 #ifdef RT_OS_DARWIN
 # include <CoreFoundation/CFRunLoop.h>
