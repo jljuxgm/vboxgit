@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 34587 2010-12-01 20:30:02Z vboxsync $ */
+/* $Id: MachineImpl.h 34770 2010-12-07 09:45:08Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -632,7 +632,7 @@ public:
     virtual HRESULT onCPUExecutionCapChange(ULONG /* aExecutionCap */) { return S_OK; }
     virtual HRESULT onMediumChange(IMediumAttachment * /* mediumAttachment */, BOOL /* force */) { return S_OK; }
     virtual HRESULT onSharedFolderChange() { return S_OK; }
-    virtual HRESULT onBandwidthGroupChange(IBandwidthGroup */* aBandwidthGroup */) { return S_OK; }
+    virtual HRESULT onBandwidthGroupChange(IBandwidthGroup * /* aBandwidthGroup */) { return S_OK; }
 
     HRESULT saveRegistryEntry(settings::MachineRegistryEntry &data);
 
