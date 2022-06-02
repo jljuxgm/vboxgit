@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 33064 2010-10-12 13:20:50Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 33128 2010-10-14 12:12:09Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -261,6 +261,10 @@ extern RTEXITCODE   VBoxServiceWinInstall(void);
 extern RTEXITCODE   VBoxServiceWinUninstall(void);
 extern RTEXITCODE   VBoxServiceWinEnterCtrlDispatcher(void);
 extern void         VBoxServiceWinSetStopPendingStatus(uint32_t uCheckPoint);
+#endif
+
+#ifdef VBOXSERVICE_TOOLBOX
+extern int VBoxServiceToolboxMain(int argc, char **argv);
 #endif
 
 #ifdef RT_OS_WINDOWS

@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 32842 2010-09-30 12:46:21Z vboxsync $ */
+/* $Id: VBoxService.cpp 33128 2010-10-14 12:12:09Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -557,6 +557,12 @@ int main(int argc, char **argv)
          *        and 'VBoxService --version' won't work now when the service
          *        is running... */
     }
+#endif
+
+#ifdef VBOXSERVICE_TOOLBOX
+    rc = VBoxServiceToolboxMain(argc, argv);
+    if (rc != VERR_NOT_FOUND) /* Internal tool found? Then bail out. */
+        return rc;
 #endif
 
     /*
