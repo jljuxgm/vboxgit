@@ -1,4 +1,4 @@
-/* $Id: udp.c 35859 2011-02-07 04:25:34Z vboxsync $ */
+/* $Id: udp.c 35924 2011-02-10 08:12:40Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -297,7 +297,6 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
         Log2(("NAT: UDP tx errno = %d (%s) on sent to %R[IP4]\n",
               errno, strerror(errno), &ip->ip_dst));
         icmp_error(pData, m, ICMP_UNREACH, ICMP_UNREACH_NET, 0, strerror(errno));
-        m_freem(pData, m);
         so->so_m = NULL;
         return;
     }
