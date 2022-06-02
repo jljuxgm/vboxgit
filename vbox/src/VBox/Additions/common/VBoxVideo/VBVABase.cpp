@@ -1,4 +1,4 @@
-/* $Id: VBVABase.cpp 34686 2010-12-03 11:06:34Z vboxsync $ */
+/* $Id: VBVABase.cpp 35292 2010-12-22 11:56:59Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - VBVA initialisation and helper
  * functions.
@@ -251,7 +251,7 @@ static void vboxHwBufferFlush(PHGSMIGUESTCOMMANDCONTEXT pCtx)
 
         VBoxHGSMIBufferSubmit(pCtx, p);
 
-        VBoxHGSMIBufferSubmit(pCtx, p);
+        VBoxHGSMIBufferFree(pCtx, p);
     }
 
     return;
