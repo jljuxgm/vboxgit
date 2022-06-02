@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 34244 2010-11-22 14:31:02Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 34277 2010-11-23 12:35:20Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1399,6 +1399,11 @@ STDMETHODIMP VirtualBox::FindMachine(IN_BSTR aNameOrId, IMachine **aMachine)
 
             AutoReadLock machLock(pMachine2 COMMA_LOCKVAL_SRC_POS);
             if (pMachine2->getName() == strName)
+            {
+                pMachineFound = pMachine2;
+                break;
+            }
+            if (pMachine2->getSettingsFileFull() == strName)
             {
                 pMachineFound = pMachine2;
                 break;
