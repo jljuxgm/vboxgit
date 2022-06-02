@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 34331 2010-11-24 16:24:17Z vboxsync $ */
+/* $Id: VMMDev.cpp 34534 2010-11-30 17:45:59Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2679,6 +2679,7 @@ static DECLCALLBACK(int) vmmdevLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
                 pThis->guestInfo.osType));
         if (pThis->pDrv)
             pThis->pDrv->pfnUpdateGuestInfo(pThis->pDrv, &pThis->guestInfo);
+/** @todo Missing pfnUpdateGuestInfo2 */
     }
     if (pThis->pDrv)
         pThis->pDrv->pfnUpdateGuestCapabilities(pThis->pDrv, pThis->guestCaps);
