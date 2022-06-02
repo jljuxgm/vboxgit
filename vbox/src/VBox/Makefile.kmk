@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33377 2010-10-24 13:19:45Z vboxsync $
+# $Id: Makefile.kmk 33380 2010-10-24 13:25:26Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -74,7 +74,7 @@ else
   include $(PATH_SUB_CURRENT)/Additions/Makefile.kmk
  endif
  ifdef VBOX_WITH_TESTSUITE
-  include $(PATH_SUB_CURRENT)/TestSuite/Makefile.kmk
+  include $(PATH_SUB_CURRENT)/Testsuite/Makefile.kmk
  endif
  if1of ($(KBUILD_TARGET_ARCH), amd64 x86)
   include $(PATH_SUB_CURRENT)/NetworkServices/Makefile.kmk
