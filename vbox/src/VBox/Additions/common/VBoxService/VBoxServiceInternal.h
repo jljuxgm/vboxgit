@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 33161 2010-10-15 13:44:34Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 33247 2010-10-20 10:01:48Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -133,13 +133,15 @@ typedef struct
     uint32_t    cbSize;
     /** Helper variable for keeping track of what
      *  already was processed and what not. */
-    uint32_t    cbProcessed;
+    uint32_t    cbOffset;
     /** Cirtical section protecting this buffer structure. */
     RTCRITSECT  CritSect;
     /** Indicates the health condition of the child process. */
     bool        fAlive;
     /** Set if it's necessary to write to the notification pipe. */
     bool        fNeedNotification;
+    /** Set if the pipe needs to be closed after the next read/write. */
+    bool        fPendingClose;
     /** The notification pipe associated with this buffer.
      * This is NIL_RTPIPE for output pipes. */
     RTPIPE      hNotificationPipeW;
@@ -300,7 +302,7 @@ extern void VBoxServiceControlExecDestroyThreadData(PVBOXSERVICECTRLTHREADDATAEX
 extern int  VBoxServiceControlExecReadPipeBufferContent(PVBOXSERVICECTRLEXECPIPEBUF pBuf,
                                                         uint8_t *pbBuffer, uint32_t cbBuffer, uint32_t *pcbToRead);
 extern int  VBoxServiceControlExecWritePipeBuffer(PVBOXSERVICECTRLEXECPIPEBUF pBuf,
-                                                  uint8_t *pbData, uint32_t cbData);
+                                                  uint8_t *pbData, uint32_t cbData, bool fPendingClose, uint32_t *pcbWritten);
 #endif /* VBOX_WITH_GUEST_CONTROL */
 
 #ifdef VBOXSERVICE_MANAGEMENT

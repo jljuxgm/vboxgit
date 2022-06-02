@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 33230 2010-10-19 13:42:22Z vboxsync $ */
+/* $Id: VBoxService.cpp 33247 2010-10-20 10:01:48Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -217,7 +217,6 @@ void VBoxServiceVerbose(int iLevel, const char *pszFormat, ...)
         va_start(va, pszFormat);
         RTStrmPrintfV(g_pStdOut, pszFormat, va);
         va_end(va);
-
         va_start(va, pszFormat);
         LogRel(("%s: %N", g_pszProgName, pszFormat, &va));
         va_end(va);
