@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31641 2010-08-13 12:37:29Z vboxsync $
+# $Id: Makefile.kmk 31642 2010-08-13 12:39:02Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -39,6 +39,7 @@ PACKING  += $(PATH_BIN)/VirtualBox.tar.bz2
 if !defined(VBOX_NO_LINUX_RUN_INSTALLER)
  PACKING += $(PATH_BIN)/$(VBOX_LNX_PACKAGE_NAME) \
             $(PATH_BIN)/VirtualBox-dbg.tar.bz2
+endif
 
 OTHER_CLEAN   += \
 	$(addprefix $(VBOX_LNX_INST_STAGE_DIR)/,\
