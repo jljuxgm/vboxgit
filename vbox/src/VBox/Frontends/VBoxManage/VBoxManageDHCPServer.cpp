@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 32701 2010-09-22 17:12:01Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 33489 2010-10-27 10:31:41Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -278,36 +278,19 @@ static int handleOp(HandlerArg *a, OPCODE enmCode, int iStart, int *pcProcessed)
 
 int handleDHCPServer(HandlerArg *a)
 {
-    int result = 0;
     if (a->argc < 1)
         return errorSyntax(USAGE_DHCPSERVER, "Not enough parameters");
 
-    for (int i = 0; i < a->argc; i++)
-    {
-        if (strcmp(a->argv[i], "modify") == 0)
-        {
-            int cProcessed;
-            result = handleOp(a, OP_MODIFY, i+1, &cProcessed);
-            break;
-        }
-        else if (strcmp(a->argv[i], "add") == 0)
-        {
-            int cProcessed;
-            result = handleOp(a, OP_ADD, i+1, &cProcessed);
-            break;
-        }
-        else if (strcmp(a->argv[i], "remove") == 0)
-        {
-            int cProcessed;
-            result = handleOp(a, OP_REMOVE, i+1, &cProcessed);
-            break;
-        }
-        else
-        {
-            result = errorSyntax(USAGE_DHCPSERVER, "Invalid parameter '%s'", Utf8Str(a->argv[i]).c_str());
-            break;
-        }
-    }
+    int result;
+    int cProcessed;
+    if (strcmp(a->argv[0], "modify") == 0)
+        result = handleOp(a, OP_MODIFY, 1, &cProcessed);
+    else if (strcmp(a->argv[0], "add") == 0)
+        result = handleOp(a, OP_ADD, 1, &cProcessed);
+    else if (strcmp(a->argv[0], "remove") == 0)
+        result = handleOp(a, OP_REMOVE, 1, &cProcessed);
+    else
+        result = errorSyntax(USAGE_DHCPSERVER, "Invalid parameter '%s'", Utf8Str(a->argv[0]).c_str());
 
     return result;
 }
