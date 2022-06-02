@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 35149 2010-12-15 16:33:18Z vboxsync $ */
+/* $Id: Settings.cpp 35151 2010-12-15 16:42:08Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1008,7 +1008,8 @@ void ConfigFileBase::buildMedium(xml::ElementNode &elmMedium,
 
     pelmMedium->setAttributePath("location", mdm.strLocation);
 
-    pelmMedium->setAttribute("format", mdm.strFormat);
+    if (devType == DeviceType_HardDisk || RTStrICmp(mdm.strFormat.c_str(), "RAW"))
+        pelmMedium->setAttribute("format", mdm.strFormat);
     if (mdm.fAutoReset)
         pelmMedium->setAttribute("autoReset", mdm.fAutoReset);
     if (mdm.strDescription.length())
