@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 35148 2010-12-15 16:32:14Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 35157 2010-12-15 17:13:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -23,6 +23,9 @@
 
 #include "AutoCaller.h"
 #include "Logging.h"
+
+/* generated header */
+#include "VBoxEvents.h"
 
 #include <iprt/semaphore.h>
 #include <iprt/thread.h>
@@ -3845,6 +3848,12 @@ DECLCALLBACK(int) Display::displayVBVAResize(PPDMIDISPLAYCONNECTOR pInterface, c
     Display *pThis = pDrv->pDisplay;
 
     DISPLAYFBINFO *pFBInfo = &pThis->maFramebuffers[pScreen->u32ViewIndex];
+
+    if (pScreen->u16Flags & VBVA_SCREEN_F_DISABLED)
+    {
+        fireGuestMonitorDisabledEvent(pThis->mParent->getEventSource(), pScreen->u32ViewIndex);
+        return VINF_SUCCESS;
+    }
 
     /* Check if this is a real resize or a notification about the screen origin.
      * The guest uses this VBVAResize call for both.
