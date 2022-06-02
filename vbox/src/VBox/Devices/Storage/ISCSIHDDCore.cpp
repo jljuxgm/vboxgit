@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 32440 2010-09-13 09:28:51Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -20,7 +20,6 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VD_ISCSI
-#define LOG_ENABLED
 #include <VBox/VBoxHDD-Plugin.h>
 #define VBOX_VDICORE_VD /* Signal that the header is included from here. */
 #include "VDICore.h"
