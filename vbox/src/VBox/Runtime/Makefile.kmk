@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32966 2010-10-07 08:32:37Z vboxsync $
+# $Id: Makefile.kmk 32970 2010-10-07 10:08:00Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -452,7 +452,8 @@ RuntimeR3_SOURCES.win = \
 	generic/RTRandAdvCreateSystemFaster-generic.cpp \
 	generic/RTRandAdvCreateSystemTruer-generic.cpp \
 	generic/RTSemEventWait-generic.cpp \
-	generic/RTSemEventMultiWait-generic.cpp \
+ 	generic/RTSemEventMultiWait-2-ex-generic.cpp \
+ 	generic/RTSemEventMultiWaitNoResume-2-ex-generic.cpp \
 	generic/RTSemMutexRequest-generic.cpp \
 	generic/RTSemMutexRequestDebug-generic.cpp \
 	generic/mppresent-generic.cpp \
