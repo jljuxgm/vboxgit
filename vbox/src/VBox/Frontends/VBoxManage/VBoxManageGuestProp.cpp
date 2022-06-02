@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 31020 2010-07-22 17:49:56Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -167,7 +167,7 @@ static int handleSetGuestProperty(HandlerArg *a)
         if (SUCCEEDED(rc))
             CHECK_ERROR(machine, SaveSettings());
 
-        a->session->Close();
+        a->session->UnlockMachine();
     }
     return SUCCEEDED(rc) ? 0 : 1;
 }

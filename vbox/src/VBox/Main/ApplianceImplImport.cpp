@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1242,7 +1242,7 @@ HRESULT Appliance::importFS(const LocationInfo &locInfo,
                     rc2 = sMachine->DetachDevice(Bstr(mhda.controllerType), mhda.lControllerPort, mhda.lDevice);
                     rc2 = sMachine->SaveSettings();
                 }
-                stack.pSession->Close();
+                stack.pSession->UnlockMachine();
             }
         }
 
@@ -1849,14 +1849,14 @@ void Appliance::importMachineGeneric(const ovf::VirtualSystem &vsysThis,
             if (FAILED(rc)) DebugBreakThrow(rc);
 
             // only now that we're done with all disks, close the session
-            rc = stack.pSession->Close();
+            rc = stack.pSession->UnlockMachine();
             if (FAILED(rc)) DebugBreakThrow(rc);
             stack.fSessionOpen = false;
         }
         catch(HRESULT /* aRC */)
         {
             if (stack.fSessionOpen)
-                stack.pSession->Close();
+                stack.pSession->UnlockMachine();
 
             throw;
         }
@@ -1941,14 +1941,14 @@ void Appliance::importMachineGeneric(const ovf::VirtualSystem &vsysThis,
             } // end for (itHD = avsdeHDs.begin();
 
             // only now that we're done with all disks, close the session
-            rc = stack.pSession->Close();
+            rc = stack.pSession->UnlockMachine();
             if (FAILED(rc)) DebugBreakThrow(rc);
             stack.fSessionOpen = false;
         }
         catch(HRESULT /* aRC */)
         {
             if (stack.fSessionOpen)
-                stack.pSession->Close();
+                stack.pSession->UnlockMachine();
 
             throw;
         }

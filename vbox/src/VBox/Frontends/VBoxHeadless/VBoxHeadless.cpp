@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 31023 2010-07-22 19:40:27Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -1160,7 +1160,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
          * unregister the callback we've registered before.
          */
         Log(("VBoxHeadless: Closing the session...\n"));
-        session->Close();
+        session->UnlockMachine();
     }
 
     /* Must be before com::Shutdown */

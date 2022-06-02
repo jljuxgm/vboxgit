@@ -1,4 +1,4 @@
-/* $Id: UIVMPreviewWindow.cpp 31056 2010-07-23 12:41:57Z vboxsync $ */
+/* $Id: UIVMPreviewWindow.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -89,7 +89,7 @@ UIVMPreviewWindow::~UIVMPreviewWindow()
 {
     /* Close any open session */
     if (m_session.GetState() == KSessionState_Locked)
-        m_session.Close();
+        m_session.UnlockMachine();
 }
 
 void UIVMPreviewWindow::setMachine(const CMachine& machine)
@@ -362,7 +362,7 @@ void UIVMPreviewWindow::restart()
 {
     /* Close any open session */
     if (m_session.GetState() == KSessionState_Locked)
-        m_session.Close();
+        m_session.UnlockMachine();
     if (!m_machine.isNull())
     {
         /* Fetch the latest machine state */

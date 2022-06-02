@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2145,7 +2145,7 @@ int handleShowVMInfo(HandlerArg *a)
         rc = showVMInfo(a->virtualBox, machine, details, console);
 
         if (console)
-            a->session->Close();
+            a->session->UnlockMachine();
     }
 
     return SUCCEEDED(rc) ? 0 : 1;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2047,7 +2047,7 @@ int handleModifyVM(HandlerArg *a)
         CHECK_ERROR(machine, SaveSettings());
 
     /* it's important to always close sessions */
-    a->session->Close();
+    a->session->UnlockMachine();
 
     return SUCCEEDED(rc) ? 0 : 1;
 }

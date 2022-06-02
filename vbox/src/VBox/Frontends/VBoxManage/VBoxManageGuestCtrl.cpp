@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -519,7 +519,7 @@ static int handleExecProgram(HandlerArg *a)
                         RTPrintf("Process execution aborted!\n");
                 }
             }
-            a->session->Close();
+            a->session->UnlockMachine();
         } while (0);
     }
     return SUCCEEDED(rc) ? 0 : 1;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -880,7 +880,7 @@ int handleControlVM(HandlerArg *a)
         }
     } while (0);
 
-    a->session->Close();
+    a->session->UnlockMachine();
 
     return SUCCEEDED(rc) ? 0 : 1;
 }

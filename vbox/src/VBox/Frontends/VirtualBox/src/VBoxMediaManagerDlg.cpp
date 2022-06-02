@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 30677 2010-07-06 16:39:25Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1262,7 +1262,7 @@ bool VBoxMediaManagerDlg::releaseMediumFrom (const VBoxMedium &aMedium, const QS
 
     /* If a new session was opened, we must close it */
     if (!session.isNull())
-        session.Close();
+        session.UnlockMachine();
 
     return success;
 }
