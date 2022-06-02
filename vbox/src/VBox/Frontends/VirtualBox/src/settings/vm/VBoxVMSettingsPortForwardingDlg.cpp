@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 31540 2010-08-10 16:04:36Z vboxsync $ */
+/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 31548 2010-08-10 16:53:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -165,7 +165,7 @@ public:
     PortEditor(QWidget *pParent = 0) : QSpinBox(pParent)
     {
         setFrame(false);
-        setRange(0, pow(2, 8 * sizeof(ushort)) - 1);
+        setRange(0, (1 << (8 * sizeof(ushort))) - 1);
     }
 
 private:
