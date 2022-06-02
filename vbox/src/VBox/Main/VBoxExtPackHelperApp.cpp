@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 34711 2010-12-03 21:49:36Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 34712 2010-12-03 22:01:32Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1761,7 +1761,9 @@ int main(int argc, char **argv)
     rc = RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 1, 0 /*fFlags*/);
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTGetOptInit failed: %Rrc\n", rc);
+#ifdef WITH_ELEVATION
     bool fElevated = IsElevated();
+#endif
     for (;;)
     {
         RTGETOPTUNION ValueUnion;
