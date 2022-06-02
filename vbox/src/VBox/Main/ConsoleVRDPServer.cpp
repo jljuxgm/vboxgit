@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 34906 2010-12-09 16:29:49Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 34940 2010-12-10 10:56:01Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1380,7 +1380,7 @@ int ConsoleVRDPServer::Launch(void)
                 /* An older version of VRDE is installed, try version 1. */
                 VRDEENTRYPOINTS_1 *pEntryPoints1;
 
-                VRDECALLBACKS_1 callbacks =
+                static VRDECALLBACKS_1 sCallbacks =
                 {
                     { VRDE_INTERFACE_VERSION_1, sizeof(VRDECALLBACKS_1) },
                     ConsoleVRDPServer::VRDPCallbackQueryProperty,
@@ -1397,7 +1397,7 @@ int ConsoleVRDPServer::Launch(void)
                     ConsoleVRDPServer::VRDPCallbackVideoModeHint
                 };
 
-                vrc = mpfnVRDECreateServer(&callbacks.header, this, (VRDEINTERFACEHDR **)&pEntryPoints1, &mhServer);
+                vrc = mpfnVRDECreateServer(&sCallbacks.header, this, (VRDEINTERFACEHDR **)&pEntryPoints1, &mhServer);
                 if (RT_SUCCESS(vrc))
                 {
                     LogRel(("VRDE: loaded an older version of the server.\n"));
