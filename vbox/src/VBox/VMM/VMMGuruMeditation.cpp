@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 31831 2010-08-20 23:21:03Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 31837 2010-08-21 00:55:30Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -55,21 +55,21 @@ typedef struct VMMR3FATALDUMPINFOHLP
     /** The release logger instance. */
     PRTLOGGER   pRelLogger;
     /** The saved release logger flags. */
-    RTUINT      fRelLoggerFlags;
+    uint32_t    fRelLoggerFlags;
     /** The logger instance. */
     PRTLOGGER   pLogger;
     /** The saved logger flags. */
-    RTUINT      fLoggerFlags;
+    uint32_t    fLoggerFlags;
     /** The saved logger destination flags. */
-    RTUINT      fLoggerDestFlags;
+    uint32_t    fLoggerDestFlags;
     /** Whether to output to stderr or not. */
     bool        fStdErr;
     /** Whether we're still recording the summary or not. */
     bool        fRecSummary;
     /** Buffer for the summary. */
-    char        szSummary[4096];
+    char        szSummary[4096-2];
     /** The current summary offset. */
-    uint32_t    offSummary;
+    size_t      offSummary;
 } VMMR3FATALDUMPINFOHLP, *PVMMR3FATALDUMPINFOHLP;
 /** Pointer to a VMMR3FATALDUMPINFOHLP structure. */
 typedef const VMMR3FATALDUMPINFOHLP *PCVMMR3FATALDUMPINFOHLP;
