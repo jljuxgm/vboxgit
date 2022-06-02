@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 30725 2010-07-08 08:56:22Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 30729 2010-07-08 09:56:03Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -788,14 +788,14 @@ static void buslogicClearInterrupt(PBUSLOGIC pBusLogic)
  * Assert IRQ line of the BusLogic adapter.
  *
  * @returns nothing.
- * @param   pBusLogic  Pointer to the BusLogic device instance.
+ * @param   pBusLogic       Pointer to the BusLogic device instance.
  * @param   fSuppressIrq    Flag to suppress IRQ generation regardless of fIRQEnabled
  */
 static void buslogicSetInterrupt(PBUSLOGIC pBusLogic, bool fSuppressIrq)
 {
     LogFlowFunc(("pBusLogic=%#p\n", pBusLogic));
     pBusLogic->regInterrupt |= BUSLOGIC_REGISTER_INTERRUPT_INTERRUPT_VALID;
-    if (pBusLogic->fIRQEnabled)
+    if (pBusLogic->fIRQEnabled && !fSuppressIrq)
         PDMDevHlpPCISetIrq(pBusLogic->CTX_SUFF(pDevIns), 0, 1);
 }
 
