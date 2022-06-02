@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 33089 2010-10-13 08:25:53Z vboxsync $ */
+/* $Id: DevVGA.h 33146 2010-10-15 10:34:58Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -489,6 +489,15 @@ int vbvaVHWADisable (PVGASTATE pVGAState);
 int vbvaVHWAReset (PVGASTATE pVGAState);
 
 int vboxVBVASaveStatePrep (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
+# endif
+
+#ifdef VBOX_WITH_HGSMI
+#define PPDMIDISPLAYVBVACALLBACKS_2_PVGASTATE(_pcb) ( (PVGASTATE)((uint8_t *)(_pcb) - RT_OFFSETOF(VGASTATE, IVBVACallbacks)) )
+#endif
+
+# ifdef VBOX_WITH_CRHGSMI
+int vboxVDMACrHgsmiCommandCompleteAsync(PPDMIDISPLAYVBVACALLBACKS pInterface, PVBOXVDMACMD_CHROMIUM_CMD pCmd, int rc);
+int vboxVDMACrHgsmiControlCompleteAsync(PPDMIDISPLAYVBVACALLBACKS pInterface, PVBOXVDMACMD_CHROMIUM_CTL pCmd, int rc);
 # endif
 
 int vboxVBVASaveStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);

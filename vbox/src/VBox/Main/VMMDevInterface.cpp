@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 32851 2010-09-30 15:12:55Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 33146 2010-10-15 10:34:58Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -765,6 +765,29 @@ void VMMDev::hgcmShutdown(void)
     ASMAtomicWriteBool(&m_fHGCMActive, false);
     HGCMHostShutdown();
 }
+
+# ifdef VBOX_WITH_CRHGSMI
+int VMMDev::hgcmHostSvcHandleCreate (const char *pszServiceName, HGCMCVSHANDLE * phSvc)
+{
+    if (!hgcmIsActive())
+        return VERR_INVALID_STATE;
+    return HGCMHostSvcHandleCreate(pszServiceName, phSvc);
+}
+
+int VMMDev::hgcmHostSvcHandleDestroy (HGCMCVSHANDLE hSvc)
+{
+    if (!hgcmIsActive())
+        return VERR_INVALID_STATE;
+    return HGCMHostSvcHandleDestroy(hSvc);
+}
+
+int VMMDev::hgcmHostFastCallAsync (HGCMCVSHANDLE hSvc, uint32_t function, PVBOXHGCMSVCPARM pParm, PHGCMHOSTFASTCALLCB pfnCompletion, void *pvCompletion)
+{
+    if (!hgcmIsActive())
+        return VERR_INVALID_STATE;
+    return HGCMHostFastCallAsync(hSvc, function, pParm, pfnCompletion, pvCompletion);
+}
+# endif
 
 #endif /* HGCM */
 

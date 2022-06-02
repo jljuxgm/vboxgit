@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32175 2010-09-01 13:01:45Z vboxsync $
+# $Id: Makefile.kmk 33146 2010-10-15 10:34:58Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox HGCM Service.
 #
@@ -89,6 +89,9 @@ endif
 ifdef VBOX_WITH_XPCOM
  VBoxSharedCrOpenGL_LIBS += \
 	$(LIB_XPCOM)
+endif
+ifdef VBOX_WITH_CRHGSMI
+VBoxSharedCrOpenGL_DEFS += VBOX_WITH_CRHGSMI
 endif
 
 #
