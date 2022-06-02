@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 32431 2010-09-11 18:02:17Z vboxsync $ */
+/* $Id: DevCodec.h 32626 2010-09-20 08:15:34Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -186,6 +186,7 @@ typedef struct RESNODE
 {
     CODECCOMMONNODE node;
     uint32_t    u32F07_param;
+    uint32_t    u32F1c_param;
 } RESNODE, *PRESNODE;
 
 typedef union CODECNODE
