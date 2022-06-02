@@ -1,4 +1,4 @@
-/* $Id: string.h 34785 2010-12-07 14:48:46Z vboxsync $ */
+/* $Id: string.h 34837 2010-12-08 14:37:42Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -533,6 +533,11 @@ public:
      * Calls RTPathStripExt() without having to mess with mutableRaw().
      */
     Utf8Str& stripExt();
+
+    /**
+     * Converts all '\' characters into '/'.
+     */
+    Utf8Str& useForwardSlashes();
 
     /**
      *  Static immutable empty-string object. May be used for comparison purposes.
