@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 31535 2010-08-10 14:46:54Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 31563 2010-08-11 12:14:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2351,6 +2351,13 @@ void VBoxProblemReporter::warnAboutIncorrectPort(QWidget *pParent) const
     message(pParent, Error,
             tr("The current port forwarding rules are not valid. "
                "None of the host or guest port values may be set to zero."));
+}
+
+bool VBoxProblemReporter::confirmCancelingPortForwardingDialog(QWidget *pParent) const
+{
+    return messageOkCancel(pParent, Question,
+        tr("<p>Canceling the port forwarding configuration process will cause "
+           "any unsaved changes to be lost. Do you really wish to do so?</p>"));
 }
 
 void VBoxProblemReporter::showRuntimeError (const CConsole &aConsole, bool fatal,
