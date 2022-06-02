@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 32313 2010-09-08 11:46:16Z vboxsync $ */
+/* $Id: VMMDev.cpp 32315 2010-09-08 11:58:00Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -540,8 +540,13 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
             }
             else
             {
-                PVM pVM = PDMDevHlpGetVM(pDevIns);
-                pRequestHeader->rc = DBGFR3CoreWrite(pVM, NULL /* pszDumpPath */);
+                if (pThis->fGuestCoreDump)
+                {
+                    PVM pVM = PDMDevHlpGetVM(pDevIns);
+                    pRequestHeader->rc = DBGFR3CoreWrite(pVM, NULL /* pszDumpPath */);
+                }
+                else
+                    pRequestHeader->rc = VERR_ACCESS_DENIED;
             }
             break;
         }
@@ -2924,6 +2929,11 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Failed querying \"RZEnabled\" as a boolean"));
+
+    rc = CFGMR3QueryBoolDef(pCfg, "GuestCoreDump", &pThis->fGuestCoreDump, false);
+    if (RT_FAILURE(rc))
+        return PDMDEV_SET_ERROR(pDevIns, rc,
+                                N_("Configuration error: Failed querying \"GuestCoreDump\" as a boolean"));
 
 #ifndef VBOX_WITHOUT_TESTING_FEATURES
     rc = CFGMR3QueryBoolDef(pCfg, "TestingEnabled", &pThis->fTestingEnabled, false);
