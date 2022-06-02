@@ -1,4 +1,4 @@
-/* $Id: isofs.cpp 33494 2010-10-27 11:39:37Z vboxsync $ */
+/* $Id: isofs.cpp 33500 2010-10-27 13:00:20Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 file system handling.
  */
@@ -332,7 +332,6 @@ static int rtIsoFsFindEntry(PRTISOFSFILE pFile, const char *pszFileName,
                 if (pCurRecord->record_length == 0)
                     break;
 
-                Assert(pCurRecord->name_len <= RTISOFS_MAX_STRING_LEN);
                 char *pszName = RTStrAlloc(pCurRecord->name_len + 1);
                 AssertPtr(pszName);
                 Assert(idx + sizeof(RTISOFSDIRRECORD) < cbRead);
