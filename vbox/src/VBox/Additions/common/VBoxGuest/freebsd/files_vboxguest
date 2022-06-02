@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxguest 32394 2010-09-10 12:13:11Z vboxsync $
+# $Id: files_vboxguest 32449 2010-09-13 14:27:19Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -31,6 +31,7 @@ FILES_VBOXGUEST_NOBIN=" \
     ${PATH_ROOT}/include/iprt/heap.h=>include/iprt/heap.h \
     ${PATH_ROOT}/include/iprt/handletable.h=>include/iprt/handletable.h \
     ${PATH_ROOT}/include/iprt/initterm.h=>include/iprt/initterm.h \
+    ${PATH_ROOT}/include/iprt/list.h=>include/iprt/list.h \
     ${PATH_ROOT}/include/iprt/lockvalidator.h=>include/iprt/lockvalidator.h \
     ${PATH_ROOT}/include/iprt/log.h=>include/iprt/log.h \
     ${PATH_ROOT}/include/iprt/mem.h=>include/iprt/mem.h \
