@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 31402 2010-08-05 12:28:18Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 31636 2010-08-13 12:03:15Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -548,7 +548,7 @@ DECLASM(int) TRPMGCTrap06Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
         {
             LogFlow(("TRPMGCTrap06Handler: -> EMInterpretInstructionCPU\n"));
             uint32_t cbIgnored;
-            rc = EMInterpretInstructionCPU(pVM, pVCpu, &Cpu, pRegFrame, PC, &cbIgnored);
+            rc = EMInterpretInstructionCPU(pVM, pVCpu, &Cpu, pRegFrame, PC, EMCODETYPE_SUPERVISOR, &cbIgnored);
             if (RT_SUCCESS(rc))
                 pRegFrame->eip += Cpu.opsize;
         }
@@ -793,7 +793,7 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
         case OP_WRMSR:
         {
             uint32_t cbIgnored;
-            rc = EMInterpretInstructionCPU(pVM, pVCpu, pCpu, pRegFrame, PC, &cbIgnored);
+            rc = EMInterpretInstructionCPU(pVM, pVCpu, pCpu, pRegFrame, PC, EMCODETYPE_SUPERVISOR, &cbIgnored);
             if (RT_SUCCESS(rc))
                 pRegFrame->eip += pCpu->opsize;
             else if (rc == VERR_EM_INTERPRETER)
@@ -872,7 +872,7 @@ static int trpmGCTrap0dHandlerRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
         case OP_RDPMC:
         {
             uint32_t cbIgnored;
-            rc = EMInterpretInstructionCPU(pVM, pVCpu, pCpu, pRegFrame, PC, &cbIgnored);
+            rc = EMInterpretInstructionCPU(pVM, pVCpu, pCpu, pRegFrame, PC, EMCODETYPE_SUPERVISOR, &cbIgnored);
             if (RT_SUCCESS(rc))
                 pRegFrame->eip += pCpu->opsize;
             else if (rc == VERR_EM_INTERPRETER)

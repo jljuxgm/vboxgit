@@ -1,4 +1,4 @@
-/* $Id: PATMGC.cpp 31402 2010-08-05 12:28:18Z vboxsync $ */
+/* $Id: PATMGC.cpp 31636 2010-08-13 12:03:15Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -521,7 +521,8 @@ VMMDECL(int) PATMHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                 return VINF_EM_RAW_EMULATE_INSTR;
             }
 
-            rc = EMInterpretInstructionCPU(pVM, VMMGetCpu0(pVM), &cpu, pRegFrame, 0 /* not relevant here */, &size);
+            rc = EMInterpretInstructionCPU(pVM, VMMGetCpu0(pVM), &cpu, pRegFrame, 0 /* not relevant here */,
+                                           EMCODETYPE_SUPERVISOR, &size);
             if (rc != VINF_SUCCESS)
             {
                 Log(("EMInterpretInstructionCPU failed with %Rrc\n", rc));

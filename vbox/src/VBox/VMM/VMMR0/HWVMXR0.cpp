@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 31569 2010-08-11 13:41:52Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 31636 2010-08-13 12:03:15Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3289,7 +3289,7 @@ ResumeExecution:
                     }
 
                     default:
-                        rc = EMInterpretInstructionCPU(pVM, pVCpu, pDis, CPUMCTX2CORE(pCtx), 0, &cbSize);
+                        rc = EMInterpretInstructionCPU(pVM, pVCpu, pDis, CPUMCTX2CORE(pCtx), 0, EMCODETYPE_SUPERVISOR, &cbSize);
                         break;
                     }
 

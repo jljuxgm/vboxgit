@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 30263 2010-06-16 18:31:42Z vboxsync $ */
+/* $Id: EMRaw.cpp 31636 2010-08-13 12:03:15Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -689,7 +689,7 @@ static int emR3RawGuestTrap(PVM pVM, PVMCPU pVCpu)
                 AssertRC(rc);
 
                 uint32_t opsize;
-                rc = EMInterpretInstructionCPU(pVM, pVCpu, &cpu, CPUMCTX2CORE(pCtx), 0, &opsize);
+                rc = VBOXSTRICTRC_TODO(EMInterpretInstructionCPU(pVM, pVCpu, &cpu, CPUMCTX2CORE(pCtx), 0, EMCODETYPE_SUPERVISOR, &opsize));
                 if (RT_SUCCESS(rc))
                 {
                     pCtx->rip += cpu.opsize;
@@ -1183,7 +1183,7 @@ static int emR3RawPrivileged(PVM pVM, PVMCPU pVCpu)
                     }
 #endif
 
-                    rc = EMInterpretInstructionCPU(pVM, pVCpu, &Cpu, CPUMCTX2CORE(pCtx), 0, &size);
+                    rc = VBOXSTRICTRC_TODO(EMInterpretInstructionCPU(pVM, pVCpu, &Cpu, CPUMCTX2CORE(pCtx), 0, EMCODETYPE_SUPERVISOR, &size));
                     if (RT_SUCCESS(rc))
                     {
                         pCtx->rip += Cpu.opsize;
