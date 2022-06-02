@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 32780 2010-09-27 19:00:22Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 33517 2010-10-27 14:34:51Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -184,7 +184,7 @@ NATEngine::GetNetworkSettings(ULONG *aMtu, ULONG *aSockSnd, ULONG *aSockRcv, ULO
     if (aSockSnd)
         *aSockSnd = mData->mSockSnd;
     if (aSockRcv)
-         *aSockSnd = mData->mSockRcv;
+         *aSockRcv = mData->mSockRcv;
     if (aTcpWndSnd)
          *aTcpWndSnd = mData->mTcpSnd;
     if (aTcpWndRcv)
