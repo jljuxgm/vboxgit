@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 31912 2010-08-24 12:12:15Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 31916 2010-08-24 12:21:49Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -646,7 +646,7 @@ static int vboxserviceVMInfoWriteNetwork(void)
 
     close(sd);
     if (RT_FAILURE(rc))
-        VBoxServiceError("VMInfo/Network: Network enumeration for interface %d failed with error %Rrc\n", i, rc);
+        VBoxServiceError("VMInfo/Network: Network enumeration for interface %u failed with error %Rrc\n", cIfacesReport, rc);
 
 #endif /* !RT_OS_WINDOWS */
 
