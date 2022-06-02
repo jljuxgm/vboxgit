@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 33100 2010-10-13 12:09:23Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 33518 2010-10-27 14:51:19Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -346,7 +346,7 @@ void dvdCreateDeviceStrings(const char *pcszVendor, const char *pcszModel,
     size_t cchModel = strLenStripped(pcszModel);
 
     /* Create a cleaned version of the model string for the UDI string. */
-    for (unsigned i = 0; pcszModel[i] != '\0' && i < sizeof(szCleaned); ++i)
+    for (unsigned i = 0; i < sizeof(szCleaned) && pcszModel[i] != '\0'; ++i)
         if (   (pcszModel[i] >= '0' && pcszModel[i] <= '9')
             || (pcszModel[i] >= 'A' && pcszModel[i] <= 'z'))
             szCleaned[i] = pcszModel[i];
