@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 34579 2010-12-01 15:45:02Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 34704 2010-12-03 15:19:02Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -1284,7 +1284,7 @@ void ExtPackManager::uninit()
 
 STDMETHODIMP ExtPackManager::COMGETTER(InstalledExtPacks)(ComSafeArrayOut(IExtPack *, a_paExtPacks))
 {
-    CheckComArgSafeArrayNotNull(a_paExtPacks);
+    CheckComArgOutSafeArrayPointerValid(a_paExtPacks);
     Assert(m->enmContext == VBOXEXTPACKCTX_PER_USER_DAEMON);
 
     AutoCaller autoCaller(this);
