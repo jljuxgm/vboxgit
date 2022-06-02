@@ -1,4 +1,4 @@
-/* $Id: DevLPC.cpp 34488 2010-11-29 19:39:46Z vboxsync $ */
+/* $Id: DevLPC.cpp 34489 2010-11-29 19:40:38Z vboxsync $ */
 /** @file
  * DevLPC - LPC device emulation
  */
@@ -258,7 +258,7 @@ static DECLCALLBACK(int) lpcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
     pThis->dev.config[0x4e] = 0x03;
     pThis->dev.config[0x4f] = 0x00;
 
-    /* 60h–63h PIRQ[n]_ROUT PIRQ[A-D] Routing Control */
+    /* 60h-63h PIRQ[n]_ROUT PIRQ[A-D] Routing Control */
     pThis->dev.config[0x60] = 0x0b; /* PCI A -> IRQ 11 */
     pThis->dev.config[0x61] = 0x09; /* PCI B -> IRQ 9  */
     pThis->dev.config[0x62] = 0x0b; /* PCI C -> IRQ 11 */
