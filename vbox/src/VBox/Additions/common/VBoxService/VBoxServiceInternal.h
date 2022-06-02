@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 34273 2010-11-23 10:14:46Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 34867 2010-12-09 10:33:41Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -92,7 +92,7 @@ typedef VBOXSERVICE *PVBOXSERVICE;
 typedef VBOXSERVICE const *PCVBOXSERVICE;
 
 /** The service name (needed for mutex creation on Windows). */
-#define VBOXSERVICE_NAME           "VBoxService"
+#define VBOXSERVICE_NAME            "VBoxService"
 
 #ifdef RT_OS_WINDOWS
 /** The friendly service name. */
@@ -291,7 +291,7 @@ extern int          VBoxServiceWinGetComponentVersions(uint32_t uiClientID);
 
 #ifdef VBOX_WITH_GUEST_CONTROL
 extern int          VBoxServiceControlExecHandleCmdStartProcess(uint32_t u32ClientId, uint32_t uNumParms);
-extern int          VBoxServiceControlExecHandleCmdSetInput(uint32_t u32ClientId, uint32_t uNumParms);
+extern int          VBoxServiceControlExecHandleCmdSetInput(uint32_t u32ClientId, uint32_t uNumParms, size_t cbMaxBufSize);
 extern int          VBoxServiceControlExecHandleCmdGetOutput(uint32_t u32ClientId, uint32_t uNumParms);
 extern int          VBoxServiceControlExecProcess(uint32_t uContext, const char *pszCmd, uint32_t uFlags,
                                                   const char *pszArgs, uint32_t uNumArgs,

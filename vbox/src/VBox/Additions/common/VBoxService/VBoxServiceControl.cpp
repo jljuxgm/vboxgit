@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 34406 2010-11-26 16:45:34Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 34867 2010-12-09 10:33:41Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -152,7 +152,8 @@ DECLCALLBACK(int) VBoxServiceControlWorker(bool volatile *pfShutdown)
                     break;
 
                 case HOST_EXEC_SET_INPUT:
-                    rc = VBoxServiceControlExecHandleCmdSetInput(g_GuestControlSvcClientID, uNumParms);
+                    /** @todo Make buffer size configurable via guest properties/argv! */
+                    rc = VBoxServiceControlExecHandleCmdSetInput(g_GuestControlSvcClientID, uNumParms, _1M /* Buffer size */);
                     break;
 
                 case HOST_EXEC_GET_OUTPUT:
