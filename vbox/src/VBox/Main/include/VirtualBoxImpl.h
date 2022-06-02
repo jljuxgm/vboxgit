@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 33921 2010-11-09 17:51:38Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 33952 2010-11-11 03:49:28Z vboxsync $ */
 
 /** @file
  *
@@ -207,6 +207,9 @@ public:
     void onGuestPropertyChange(const Guid &aMachineId, IN_BSTR aName, IN_BSTR aValue,
                                IN_BSTR aFlags);
     void onMachineUninit(Machine *aMachine);
+    void onNatRedirectChange(const Guid &aMachineId, ULONG ulSlot, bool fRemove, IN_BSTR aName,
+                                   NATProtocol_T aProto, IN_BSTR aHostIp, uint16_t aHostPort,
+                                   IN_BSTR aGuestIp, uint16_t aGuestPort);
 
     ComObjPtr<GuestOSType> getUnknownOSType();
 

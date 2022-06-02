@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 33921 2010-11-09 17:51:38Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 33952 2010-11-11 03:49:28Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2469,6 +2469,19 @@ private:
 void VirtualBox::onMachineUninit(Machine *aMachine)
 {
     postEvent(new MachineUninitEvent(this, aMachine));
+}
+
+/**
+ *  @note Doesn't lock any object.
+ */
+void VirtualBox::onNatRedirectChange(const Guid &aMachineId, ULONG ulSlot, bool fRemove, IN_BSTR aName,
+                               NATProtocol_T aProto, IN_BSTR aHostIp, uint16_t aHostPort,
+                               IN_BSTR aGuestIp, uint16_t aGuestPort)
+{
+    VBoxEventDesc evDesc;
+    evDesc.init(m->pEventSource, VBoxEventType_OnNATRedirectEvent, aMachineId.toUtf16().raw(), ulSlot, fRemove, aName, aProto, aHostIp,
+                aHostPort, aGuestIp, aGuestPort);
+    evDesc.fire(0);
 }
 
 /**

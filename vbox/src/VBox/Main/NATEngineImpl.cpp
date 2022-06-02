@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 33866 2010-11-08 17:53:25Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 33952 2010-11-11 03:49:28Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -303,8 +303,12 @@ NATEngine::AddRedirect(IN_BSTR aName, NATProtocol_T aProto, IN_BSTR aBindIp, USH
     mNATRules.insert(std::make_pair(name, r));
     mParent->setModified(Machine::IsModified_NetworkAdapters);
     m_fModified = true;
+
+    ULONG ulSlot;
+    mAdapter->COMGETTER(Slot)(&ulSlot);
+
     alock.release();
-    mParent->onNATRedirectRuleChange(mAdapter, FALSE, Bstr(name).raw(), aProto, Bstr(r.strHostIP).raw(), r.u16HostPort, Bstr(r.strGuestIP).raw(), r.u16GuestPort);
+    mParent->onNATRedirectRuleChange(ulSlot, FALSE, Bstr(name).raw(), aProto, Bstr(r.strHostIP).raw(), r.u16HostPort, Bstr(r.strGuestIP).raw(), r.u16GuestPort);
     return S_OK;
 }
 
@@ -325,12 +329,14 @@ NATEngine::RemoveRedirect(IN_BSTR aName)
     NATProtocol_T proto = r.proto;
     uint16_t u16HostPort = r.u16HostPort;
     uint16_t u16GuestPort = r.u16GuestPort;
-                                                    
+    ULONG ulSlot;
+    mAdapter->COMGETTER(Slot)(&ulSlot);
+
     mNATRules.erase(it);
     mParent->setModified(Machine::IsModified_NetworkAdapters);
     m_fModified = true;
     alock.release();
-    mParent->onNATRedirectRuleChange(mAdapter, TRUE, aName, proto, Bstr(strHostIP).raw(), u16HostPort, Bstr(strGuestIP).raw(), u16GuestPort);
+    mParent->onNATRedirectRuleChange(ulSlot, TRUE, aName, proto, Bstr(strHostIP).raw(), u16HostPort, Bstr(strGuestIP).raw(), u16GuestPort);
     return S_OK;
 }
 

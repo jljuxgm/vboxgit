@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 33825 2010-11-08 10:16:25Z vboxsync $ */
+/* $Id: ConsoleImpl.h 33952 2010-11-11 03:49:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -37,6 +37,7 @@ class AudioSniffer;
 class ConsoleVRDPServer;
 class VMMDev;
 class Progress;
+class IEventListener;
 #ifdef VBOX_WITH_EXTPACK
 class ExtPackManager;
 #endif
@@ -179,9 +180,6 @@ public:
 
     // events from IInternalSessionControl
     HRESULT onNetworkAdapterChange(INetworkAdapter *aNetworkAdapter, BOOL changeAdapter);
-    HRESULT onNATRedirectRuleChange(INetworkAdapter *networkAdapter, BOOL aNatRuleRemove, IN_BSTR aRuleName, 
-                                 NATProtocol_T aProto, IN_BSTR aHostIp, LONG aHostPort, IN_BSTR aGuestIp, LONG aGuestPort);
-    HRESULT onNATEngineChange(INetworkAdapter *aNetworkAdapter, BOOL aNatReset);
     HRESULT onSerialPortChange(ISerialPort *aSerialPort);
     HRESULT onParallelPortChange(IParallelPort *aParallelPort);
     HRESULT onStorageControllerChange();
@@ -244,6 +242,9 @@ public:
 
     static const char *convertControllerTypeToDev(StorageControllerType_T enmCtrlType);
     static HRESULT convertBusPortDeviceToLun(StorageBus_T enmBus, LONG port, LONG device, unsigned &uLun);
+    // Called from event listener
+    HRESULT onNATRedirectRuleChange(ULONG ulInstance, BOOL aNatRuleRemove,
+                                 NATProtocol_T aProto, IN_BSTR aHostIp, LONG aHostPort, IN_BSTR aGuestIp, LONG aGuestPort);
 
 private:
 
@@ -735,6 +736,7 @@ private:
         }
     }
     mCallbackData;
+    class IEventListener *mVmListner;
 
     friend struct VMTask;
 };
