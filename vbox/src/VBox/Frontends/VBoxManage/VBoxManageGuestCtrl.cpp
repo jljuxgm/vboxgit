@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33796 2010-11-05 16:03:20Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33798 2010-11-05 16:06:01Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -809,7 +809,7 @@ int ctrlCopyInit(const char *pszSource, const char *pszDest, uint32_t uFlags,
                 if (pszFilter)
                 {
                     RTPathStripFilename(pszSourceAbsRoot);
-                    RTStrAAppend(&pszSourceAbsRoot, RTPATH_SLASH_STR);
+                    rc = RTStrAAppend(&pszSourceAbsRoot, RTPATH_SLASH_STR);
                 }
                 else
                 {
