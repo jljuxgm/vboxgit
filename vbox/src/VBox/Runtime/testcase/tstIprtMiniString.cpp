@@ -1,4 +1,4 @@
-/* $Id: tstIprtMiniString.cpp 33610 2010-10-29 14:42:36Z vboxsync $ */
+/* $Id: tstIprtMiniString.cpp 33615 2010-10-29 14:58:02Z vboxsync $ */
 /** @file
  * IPRT Testcase - iprt::MiniString.
  */
@@ -110,9 +110,16 @@ static void test1(RTTEST hTest)
     CHECK(copy1.length() == 0);
 
     CHECK(iprt::MiniString("abc") <  iprt::MiniString("def"));
+    CHECK(iprt::MiniString("") <  iprt::MiniString("def"));
+    CHECK(iprt::MiniString("abc") > iprt::MiniString(""));
     CHECK(iprt::MiniString("abc") != iprt::MiniString("def"));
     CHECK_DUMP_I(iprt::MiniString("def") > iprt::MiniString("abc"));
     CHECK(iprt::MiniString("abc") == iprt::MiniString("abc"));
+    CHECK(iprt::MiniString("").compare("") == 0);
+    CHECK(iprt::MiniString("").compare(NULL) == 0);
+    CHECK(iprt::MiniString("").compare("a") < 0);
+    CHECK(iprt::MiniString("a").compare("") > 0);
+    CHECK(iprt::MiniString("a").compare(NULL) > 0);
 
     CHECK(iprt::MiniString("abc") <  "def");
     CHECK(iprt::MiniString("abc") != "def");
@@ -126,7 +133,14 @@ static void test1(RTTEST hTest)
     CHECK(iprt::MiniString("abc").equalsIgnoreCase("ABC"));
     CHECK(!iprt::MiniString("abc").equalsIgnoreCase("dBC"));
     CHECK(iprt::MiniString("").equals(""));
+    CHECK(iprt::MiniString("").equals(NULL));
+    CHECK(!iprt::MiniString("").equals("a"));
+    CHECK(!iprt::MiniString("a").equals(""));
+    CHECK(!iprt::MiniString("a").equals(NULL));
     CHECK(iprt::MiniString("").equalsIgnoreCase(""));
+    CHECK(iprt::MiniString("").equalsIgnoreCase(NULL));
+    CHECK(!iprt::MiniString("").equalsIgnoreCase("a"));
+    CHECK(!iprt::MiniString("a").equalsIgnoreCase(""));
 
     copy2.setNull();
     for (int i = 0; i < 100; ++i)
