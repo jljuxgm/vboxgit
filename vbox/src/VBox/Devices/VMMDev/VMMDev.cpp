@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 32774 2010-09-27 13:00:04Z vboxsync $ */
+/* $Id: VMMDev.cpp 32935 2010-10-06 09:28:42Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3194,4 +3194,3 @@ extern "C" const PDMDEVREG g_DeviceVMMDev =
     PDM_DEVREG_VERSION
 };
 #endif /* !VBOX_DEVICE_STRUCT_TESTCASE */
-
