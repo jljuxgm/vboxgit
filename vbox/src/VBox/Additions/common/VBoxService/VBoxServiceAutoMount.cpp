@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 31311 2010-08-02 15:00:33Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 31314 2010-08-02 15:30:38Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders.
  */
@@ -37,7 +37,7 @@
 #endif
 #include <unistd.h>
 
-#ifdef RT_OS_LINUX
+#ifndef RT_OS_SOLARIS
  RT_C_DECLS_BEGIN
     #include "../../linux/sharedfolders/vbsfmount.h"
  RT_C_DECLS_END
