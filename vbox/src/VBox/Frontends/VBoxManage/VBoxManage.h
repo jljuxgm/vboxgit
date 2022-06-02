@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 34971 2010-12-11 23:12:01Z vboxsync $ */
+/* $Id: VBoxManage.h 35239 2010-12-20 12:45:14Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -214,6 +214,12 @@ int handleSharedFolder(HandlerArg *a);
 int handleExtPack(HandlerArg *a);
 
 /* VBoxManageDisk.cpp */
+HRESULT findMedium(HandlerArg *a, const char *pszFilenameOrUuid,
+                   DeviceType_T enmDevType, bool fSilent,
+                   ComPtr<IMedium> &pMedium);
+HRESULT findOrOpenMedium(HandlerArg *a, const char *pszFilenameOrUuid,
+                         DeviceType_T enmDevType, ComPtr<IMedium> &pMedium,
+                         bool *pfWasUnknown);
 int handleCreateHardDisk(HandlerArg *a);
 int handleModifyHardDisk(HandlerArg *a);
 int handleCloneHardDisk(HandlerArg *a);
