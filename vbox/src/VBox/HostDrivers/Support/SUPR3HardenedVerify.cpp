@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 33873 2010-11-08 20:11:26Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 33874 2010-11-08 20:13:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -81,7 +81,7 @@
 #define SUPR3HARDENED_MAX_PATH      260U
 
 #ifdef RT_OS_SOLARIS
-# define dirfd(x) ((d)->d_fd)
+# define dirfd(d) ((d)->d_fd)
 #endif
 
 
