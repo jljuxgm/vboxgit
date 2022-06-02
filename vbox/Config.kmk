@@ -1,4 +1,4 @@
-# $Id: Config.kmk 31911 2010-08-24 11:56:45Z vboxsync $
+# $Id: Config.kmk 31967 2010-08-25 18:12:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3428,6 +3428,10 @@ ifdef VBOX_WITH_QTGUI
   endif
  endif
 
+ ifdef VBOX_WITH_QT4_SUN
+  VBOX_QT4_INFIX=VBox
+ endif
+
  #
  # Handmade configuration of qt4 - very annoying, this needs to
  # be cleaned up properly later some time (not important now).
@@ -3480,9 +3484,7 @@ ifdef VBOX_WITH_QTGUI
  TEMPLATE_VBOXQT4GUIEXE_RCCTOOL = QT4
  TEMPLATE_VBOXQT4GUIEXE_LRCTOOL = QT4
  TEMPLATE_VBOXQT4GUIEXE_SDKS = QT4
- ifdef VBOX_WITH_QT4_SUN
-  TEMPLATE_VBOXQT4GUIEXE_QT_INFIX = VBox
- endif
+ TEMPLATE_VBOXQT4GUIEXE_QT_INFIX = $(VBOX_QT4_INFIX)
  TEMPLATE_VBOXQT4GUIEXE_DEFS = IN_RING3 QT_NO_DEBUG QT_THREAD_SUPPORT QT_SHARED HAVE_CONFIG_H $(ARCH_BITS_DEFS)
  TEMPLATE_VBOXQT4GUIEXE_RCDEFS = $(TEMPLATE_VBOXR3EXE_RCDEFS)
 
@@ -4262,7 +4264,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31911 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31967 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
