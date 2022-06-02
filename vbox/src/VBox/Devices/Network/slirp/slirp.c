@@ -1,4 +1,4 @@
-/* $Id: slirp.c 32431 2010-09-11 18:02:17Z vboxsync $ */
+/* $Id: slirp.c 32846 2010-09-30 14:03:21Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1201,6 +1201,10 @@ void slirp_select_poll(PNATState pData, struct pollfd *polls, int ndfs)
             }
             /* mark the socket for termination _after_ it was drained */
             so->so_close = 1;
+            /* No idea about Windows but on Posix, POLLHUP means that we can't send more */
+#ifndef RT_OS_WINDOWS
+            sofcantsendmore(so);
+#endif
             CONTINUE(tcp);
         }
 
