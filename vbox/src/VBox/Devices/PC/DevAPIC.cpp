@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 32484 2010-09-14 14:01:48Z vboxsync $ */
+/* $Id: DevAPIC.cpp 32497 2010-09-15 06:54:45Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1471,7 +1471,6 @@ static void apic_timer_update(APICDeviceInfo* dev, APICState *s, int64_t current
 # else
         TMTimerSet(s->CTX_SUFF(pTimer), next_time);
         s->fTimerArmed = true;
-        if ( s->initial_count
 # endif
         s->next_time = next_time;
     } else {
