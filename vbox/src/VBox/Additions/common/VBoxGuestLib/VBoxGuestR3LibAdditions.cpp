@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibAdditions.cpp 30959 2010-07-21 13:22:08Z vboxsync $ */
+/* $Id: VBoxGuestR3LibAdditions.cpp 35907 2011-02-09 11:20:31Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Additions Info.
  */
@@ -146,8 +146,8 @@ static int vbglR3CloseAdditionsWinStoragePath(HKEY hKey)
  * @param   enmStatus       The new status of the facility.
  * @param   fReserved       Reserved for future use (what?).
  */
-VBGLR3DECL(int) VbglR3ReportAdditionsStatus(VBoxGuestStatusFacility enmFacility,
-                                            VBoxGuestStatusCurrent enmStatusCurrent,
+VBGLR3DECL(int) VbglR3ReportAdditionsStatus(VBoxGuestFacilityType enmFacility,
+                                            VBoxGuestFacilityStatus enmStatusCurrent,
                                             uint32_t fReserved)
 {
     VMMDevReportGuestStatus Report;

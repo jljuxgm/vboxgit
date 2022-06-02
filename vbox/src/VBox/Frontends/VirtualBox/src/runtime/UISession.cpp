@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 35761 2011-01-28 13:19:26Z vboxsync $ */
+/* $Id: UISession.cpp 35907 2011-02-09 11:20:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -609,9 +609,11 @@ void UISession::sltAdditionsChange()
 
     /* Variable flags: */
     ULONG ulGuestAdditionsRunLevel = guest.GetAdditionsRunLevel();
-    bool fIsGuestSupportsGraphics = guest.GetSupportsGraphics();
-    bool fIsGuestSupportsSeamless = guest.GetSupportsSeamless();
-
+    LONG64 lLastUpdatedIgnored;
+    bool fIsGuestSupportsGraphics = guest.GetFacilityStatus(KAdditionsFacilityType_Graphics, lLastUpdatedIgnored)
+                                    == AdditionsFacilityStatus_Active;
+    bool fIsGuestSupportsSeamless = guest.GetFacilityStatus(KAdditionsFacilityType_Seamless, lLastUpdatedIgnored)
+                                    == AdditionsFacilityStatus_Active;
     /* Check if something had changed: */
     if (m_ulGuestAdditionsRunLevel != ulGuestAdditionsRunLevel ||
         m_fIsGuestSupportsGraphics != fIsGuestSupportsGraphics ||

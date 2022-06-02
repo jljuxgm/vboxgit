@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 35766 2011-01-28 14:17:22Z vboxsync $ */
+/* $Id: VBoxManage.h 35907 2011-02-09 11:20:31Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -196,7 +196,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
                    ComPtr<IMachine> machine,
                    VMINFO_DETAILS details = VMINFO_NONE,
                    ComPtr <IConsole> console = ComPtr<IConsole>());
-const char *stateToName(MachineState_T machineState, bool fShort);
+const char *machineStateToName(MachineState_T machineState, bool fShort);
 
 /* VBoxManageList.cpp */
 int handleList(HandlerArg *a);
