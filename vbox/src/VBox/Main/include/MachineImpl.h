@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 31308 2010-08-02 14:55:22Z vboxsync $ */
+/* $Id: MachineImpl.h 31332 2010-08-03 12:38:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -615,6 +615,7 @@ public:
     virtual HRESULT onUSBControllerChange() { return S_OK; }
     virtual HRESULT onStorageControllerChange() { return S_OK; }
     virtual HRESULT onCPUChange(ULONG /* aCPU */, BOOL /* aRemove */) { return S_OK; }
+    virtual HRESULT onCPUPriorityChange(ULONG /* aCpuPriority */) { return S_OK; }
     virtual HRESULT onMediumChange(IMediumAttachment * /* mediumAttachment */, BOOL /* force */) { return S_OK; }
     virtual HRESULT onSharedFolderChange() { return S_OK; }
 
@@ -943,6 +944,7 @@ public:
     HRESULT onSerialPortChange(ISerialPort *serialPort);
     HRESULT onParallelPortChange(IParallelPort *parallelPort);
     HRESULT onCPUChange(ULONG aCPU, BOOL aRemove);
+    HRESULT onCPUPriorityChange(ULONG aCpuPriority);
     HRESULT onVRDPServerChange(BOOL aRestart);
     HRESULT onUSBControllerChange();
     HRESULT onUSBDeviceAttach(IUSBDevice *aDevice,

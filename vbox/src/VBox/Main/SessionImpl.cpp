@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 31244 2010-07-30 13:10:40Z vboxsync $ */
+/* $Id: SessionImpl.cpp 31332 2010-08-03 12:38:49Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -593,6 +593,20 @@ STDMETHODIMP Session::OnCPUChange(ULONG aCPU, BOOL aRemove)
     AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
 
     return mConsole->onCPUChange(aCPU, aRemove);
+}
+
+STDMETHODIMP Session::OnCPUPriorityChange(ULONG aCpuPriority)
+{
+    LogFlowThisFunc(("\n"));
+
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(mState == SessionState_Locked, VBOX_E_INVALID_VM_STATE);
+    AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
+
+    return mConsole->onCPUPriorityChange(aCpuPriority);
 }
 
 STDMETHODIMP Session::OnVRDPServerChange(BOOL aRestart)
