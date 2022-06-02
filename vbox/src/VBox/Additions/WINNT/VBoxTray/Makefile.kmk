@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31002 2010-07-22 14:45:41Z vboxsync $
+# $Id: Makefile.kmk 31145 2010-07-27 15:53:05Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -29,6 +29,7 @@ VBoxTray_DEFS    += MMSEAMLESS
 VBoxTray_INCS     = ../include
 VBoxTray_SOURCES  = \
 	VBoxTray.cpp \
+	VBoxDispIf.cpp \
 	VBoxSeamless.cpp \
 	VBoxClipboard.cpp \
 	VBoxDisplay.cpp \
