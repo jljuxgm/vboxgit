@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 30889 2010-07-17 01:54:47Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 31081 2010-07-24 20:47:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -297,7 +297,7 @@ void pgmMapSetShadowPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
                         else
                             GstPdpe.u = X86_PDPE_P;
                     }
-                    int rc = pgmShwSyncPaePDPtr(pVCpu, iPdPt << X86_PDPT_SHIFT, &GstPdpe, &pShwPaePd);
+                    int rc = pgmShwSyncPaePDPtr(pVCpu, iPdPt << X86_PDPT_SHIFT, GstPdpe.u, &pShwPaePd);
                     AssertFatalRC(rc);
                 }
                 Assert(pShwPaePd);
