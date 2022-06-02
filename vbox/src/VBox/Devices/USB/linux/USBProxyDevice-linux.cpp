@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 31557 2010-08-11 09:15:04Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 31558 2010-08-11 09:29:13Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -9,8 +9,6 @@
  * Oracle Corporation confidential
  * All rights reserved
  */
-
-/* START */
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
