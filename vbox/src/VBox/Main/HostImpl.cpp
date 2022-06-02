@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 32931 2010-10-06 06:42:27Z vboxsync $ */
+/* $Id: HostImpl.cpp 32932 2010-10-06 07:27:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -2005,12 +2005,12 @@ static int solarisWalkDeviceNodeForDVD(di_node_t Node, void *pvArg)
     PSOLARISDVD *ppDrives = (PSOLARISDVD *)pvArg;
 
     /*
-     * Check for removable media instead of "SCSI" so that we also include USB CD-ROMs.
+     * Check for "removable-media" or "hotpluggable" instead of "SCSI" so that we also include USB CD-ROMs.
      * As unfortunately the Solaris drivers only export these common properties.
      */
     int *pInt = NULL;
-    if (   di_prop_lookup_ints(DDI_DEV_T_ANY, Node, "removable-media", &pInt) > 0
-        && *pInt == 1)                                                                  /* Removable Media */
+    if (   di_prop_lookup_ints(DDI_DEV_T_ANY, Node, "removable-media", &pInt) >= 0
+        || di_prop_lookup_ints(DDI_DEV_T_ANY, Node, "hotpluggable", &pInt) >= 0)
     {
         if (di_prop_lookup_ints(DDI_DEV_T_ANY, Node, "inquiry-device-type", &pInt) > 0
             && (   *pInt == DTYPE_RODIRECT                                              /* CDROM */
