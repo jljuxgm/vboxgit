@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34519 2010-11-30 14:17:27Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34543 2010-12-01 00:32:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2415,6 +2415,23 @@ void VBoxProblemReporter::cannotInstallExtPack(const QString &strFilename, const
              Error,
              tr("Failed to install the Extension Pack <b>%1</b>.").arg(strFilename),
              formatErrorInfo(extPackManager));
+}
+
+void VBoxProblemReporter::cannotUninstallExtPack(const QString &strPackName, const CExtPackManager &extPackManager, QWidget *pParent /* = 0 */)
+{
+    message (pParent ? pParent : mainWindowShown(),
+             Error,
+             tr("Failed to uninstall the Extension Pack <b>%1</b>.").arg(strPackName),
+             formatErrorInfo(extPackManager));
+}
+
+bool VBoxProblemReporter::confirmRemovingPackage(const QString &strPackName, QWidget *pParent /* = 0 */)
+{
+    return messageOkCancel (pParent ? pParent : mainWindowShown(),
+                            Question,
+                            tr("You are about to remove the Extension Pack <b>%1</b>. Are you sure you want to do that?").arg(strPackName),
+                            0,
+                            tr("&Remove"));
 }
 
 void VBoxProblemReporter::warnAboutIncorrectPort (QWidget *pParent) const
