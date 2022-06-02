@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 33272 2010-10-20 17:33:26Z vboxsync $ */
+/* $Id: VBoxService.cpp 33277 2010-10-20 20:09:05Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -529,13 +529,16 @@ int main(int argc, char **argv)
     g_pszProgName = RTPathFilename(argv[0]);
 
 #ifdef VBOXSERVICE_TOOLBOX
-    /*
-     * Run toolbox code before all other stuff, especially before checking the global
-     * mutex because VBoxService might spawn itself to execute some commands.
-     */
-    rc = VBoxServiceToolboxMain(argc, argv);
-    if (rc != VERR_NOT_FOUND) /* Internal tool found? Then bail out. */
-        return rc;
+    if (argc > 1)
+    {
+        /*
+         * Run toolbox code before all other stuff, especially before checking the global
+         * mutex because VBoxService might spawn itself to execute some commands.
+         */
+        rc = VBoxServiceToolboxMain(argc - 1, &argv[1]);
+        if (rc != VERR_NOT_FOUND) /* Internal tool found? Then bail out. */
+            return rc;
+    }
 #endif
 
     /*

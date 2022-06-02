@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 33255 2010-10-20 11:32:00Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 33277 2010-10-20 20:09:05Z vboxsync $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -62,27 +62,6 @@ int VBoxServiceToolboxErrorSyntax(const char *pszFormat, ...)
     va_end(args);
     VBoxServiceToolboxShowUsage();
     return VERR_INVALID_PARAMETER;
-}
-
-
-/**
- *
- *
- * @return  int
- *
- * @param   argc
- * @param   argv
- */
-int VBoxServiceToolboxCatMain(int argc, char **argv)
-{
-    int rc = VINF_SUCCESS;
-    bool usageOK = true;
-    for (int i = 1; usageOK && i < argc; i++)
-    {
-    }
-    if (!usageOK)
-        rc = VBoxServiceToolboxErrorSyntax("Incorrect parameters!");
-    return rc;
 }
 
 
@@ -220,10 +199,13 @@ int VBoxServiceToolboxCat(int argc, char **argv)
 int VBoxServiceToolboxMain(int argc, char **argv)
 {
     int rc = VERR_NOT_FOUND;
-    if (argc >= 1) /* Do we have at least a main command? */
+    if (argc > 0) /* Do we have at least a main command? */
     {
-        if (!strcmp(argv[1], "cat"))
+        if (   !strcmp(argv[0], "cat")
+            || !strcmp(argv[0], "vbox_cat"))
+        {
             rc = VBoxServiceToolboxCat(argc - 1, &argv[1]);
+        }
     }
 
     if (rc != VERR_NOT_FOUND)
