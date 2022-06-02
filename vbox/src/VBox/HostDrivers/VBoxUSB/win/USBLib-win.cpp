@@ -1,4 +1,4 @@
-/* $Id: USBLib-win.cpp 34263 2010-11-22 18:18:11Z vboxsync $ */
+/* $Id: USBLib-win.cpp 34264 2010-11-22 18:20:59Z vboxsync $ */
 /** @file
  * USBLIB - USB support library interface, Windows.
  */
@@ -2990,7 +2990,7 @@ failure:
         RTMemFree((void *)pDevice->pszSerialNumber);
         RTMemFree(pDevice);
 
-        pDevice = Next;
+        pDevice = pNext;
     }
 
     /* free captured devices */
