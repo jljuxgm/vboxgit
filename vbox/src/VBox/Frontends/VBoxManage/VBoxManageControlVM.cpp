@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 35105 2010-12-14 16:39:21Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 35146 2010-12-15 16:31:56Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -652,9 +652,9 @@ int handleControlVM(HandlerArg *a)
             ASSERT(vrdeServer);
             if (vrdeServer)
             {
-                unsigned n = parseNum(a->argv[2], 100, "VRDE video redirection quality in percent");
+                Bstr value = a->argv[2];
 
-                CHECK_ERROR(vrdeServer, COMSETTER(VideoChannelQuality)(n));
+                CHECK_ERROR(vrdeServer, SetVRDEProperty(Bstr("VideoChannel/Quality").raw(), value.raw()));
             }
         }
         else if (!strcmp(a->argv[1], "vrdeproperty"))
