@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 31568 2010-08-11 13:35:59Z vboxsync $ */
+/* $Id: UISession.cpp 32020 2010-08-27 07:08:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -67,7 +67,7 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
     , m_fIsSeamlessModeRequested(false)
     , m_fIsAutoCaptureDisabled(false)
     /* Guest additions flags: */
-    , m_fIsGuestAdditionsActive(false)
+    , m_ulGuestAdditionsRunLevel(0)
     , m_fIsGuestSupportsGraphics(false)
     , m_fIsGuestSupportsSeamless(false)
     /* Mouse flags: */
@@ -538,17 +538,17 @@ void UISession::sltAdditionsChange()
     CGuest guest = session().GetConsole().GetGuest();
 
     /* Variable flags: */
-    bool fIsGuestAdditionsActive = guest.GetAdditionsActive();
+    ULONG ulGuestAdditionsRunLevel = guest.GetAdditionsRunLevel();
     bool fIsGuestSupportsGraphics = guest.GetSupportsGraphics();
     bool fIsGuestSupportsSeamless = guest.GetSupportsSeamless();
 
     /* Check if something had changed: */
-    if (m_fIsGuestAdditionsActive != fIsGuestAdditionsActive ||
+    if (m_ulGuestAdditionsRunLevel != ulGuestAdditionsRunLevel ||
         m_fIsGuestSupportsGraphics != fIsGuestSupportsGraphics ||
         m_fIsGuestSupportsSeamless != fIsGuestSupportsSeamless)
     {
         /* Store new data: */
-        m_fIsGuestAdditionsActive = fIsGuestAdditionsActive;
+        m_ulGuestAdditionsRunLevel = ulGuestAdditionsRunLevel;
         m_fIsGuestSupportsGraphics = fIsGuestSupportsGraphics;
         m_fIsGuestSupportsSeamless = fIsGuestSupportsSeamless;
 

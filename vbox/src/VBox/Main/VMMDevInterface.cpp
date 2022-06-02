@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 31745 2010-08-18 09:44:22Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 32020 2010-08-27 07:08:38Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -229,7 +229,7 @@ DECLCALLBACK(void) vmmdevUpdateGuestInfo(PPDMIVMMDEVCONNECTOR pInterface, const 
         guest->setAdditionsInfo(Bstr(), guestInfo->osType); /* Clear interface version + OS type. */
         guest->setAdditionsInfo2(Bstr(), Bstr(), Bstr()); /* Clear Guest Additions version. */
         guest->setAdditionsStatus(VBoxGuestStatusFacility_All,
-                                  VBoxGuestStatusCurrent_Disabled,
+                                  VBoxGuestStatusCurrent_Inactive,
                                   0); /* Flags; not used. */
         pDrv->pVMMDev->getParent()->onAdditionsStateChange();
     }

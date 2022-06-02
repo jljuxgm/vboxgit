@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 31689 2010-08-16 11:35:27Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 32020 2010-08-27 07:08:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -812,7 +812,7 @@ void UIMachineLogic::sltMachineStateChanged()
 
 void UIMachineLogic::sltAdditionsStateChanged()
 {
-    /* Variable falgs: */
+    /* Variable flags: */
     bool fIsSupportsGraphics = uisession()->isGuestSupportsGraphics();
     bool fIsSupportsSeamless = uisession()->isGuestSupportsSeamless();
 
