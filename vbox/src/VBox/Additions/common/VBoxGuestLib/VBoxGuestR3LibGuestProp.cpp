@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 31384 2010-08-05 09:18:11Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -47,6 +47,38 @@ extern "C" char* xf86strcpy(char*,const char*);
 extern "C" void* xf86memchr(const void*,int,xf86size_t);
 # undef memchr
 # define memchr xf86memchr
+
+# undef RTSTrEnd
+# define RTStrEnd xf86RTStrEnd
+
+DECLINLINE(char const *) RTStrEnd(char const *pszString, size_t cchMax)
+{
+    /* Avoid potential issues with memchr seen in glibc. */
+    if (cchMax > RTSTR_MEMCHR_MAX)
+    {
+        char const *pszRet = (char const *)memchr(pszString, '\0', RTSTR_MEMCHR_MAX);
+        if (RT_LIKELY(pszRet))
+            return pszRet;
+        pszString += RTSTR_MEMCHR_MAX;
+        cchMax    -= RTSTR_MEMCHR_MAX;
+    }
+    return (char const *)memchr(pszString, '\0', cchMax);
+}
+
+DECLINLINE(char *) RTStrEnd(char *pszString, size_t cchMax)
+{
+    /* Avoid potential issues with memchr seen in glibc. */
+    if (cchMax > RTSTR_MEMCHR_MAX)
+    {
+        char *pszRet = (char *)memchr(pszString, '\0', RTSTR_MEMCHR_MAX);
+        if (RT_LIKELY(pszRet))
+            return pszRet;
+        pszString += RTSTR_MEMCHR_MAX;
+        cchMax    -= RTSTR_MEMCHR_MAX;
+    }
+    return (char *)memchr(pszString, '\0', cchMax);
+}
+
 #endif /* VBOX_VBGLR3_XFREE86 */
 
 /*******************************************************************************

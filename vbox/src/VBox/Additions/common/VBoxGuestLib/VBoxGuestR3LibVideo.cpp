@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 31384 2010-08-05 09:18:11Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -35,6 +35,14 @@
 #include <VBox/HostServices/GuestPropertySvc.h>  /* For Save and RetrieveVideoMode */
 
 #include "VBGLR3Internal.h"
+
+#ifdef VBOX_VBGLR3_XFREE86
+/* Rather than try to resolve all the header file conflicts, I will just
+   prototype what we need here. */
+extern "C" void* xf86memcpy(void*,const void*,xf86size_t);
+# undef memcpy
+# define memcpy xf86memcpy
+#endif /* VBOX_VBGLR3_XFREE86 */
 
 #define VIDEO_PROP_PREFIX "/VirtualBox/GuestAdd/Vbgl/Video/"
 
