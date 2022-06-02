@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 34083 2010-11-15 17:23:11Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 34728 2010-12-06 10:40:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1004,7 +1004,7 @@ void UIMachineLogic::sltTakeSnapshot()
         if (console.isOk())
         {
             /* Show the "Taking Snapshot" progress dialog */
-            vboxProblem().showModalProgressDialog(progress, machine.GetName(), 0, 0);
+            vboxProblem().showModalProgressDialog(progress, machine.GetName());
 
             if (progress.GetResultCode() != 0)
                 vboxProblem().cannotTakeSnapshot(progress);

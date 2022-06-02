@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 34479 2010-11-29 16:44:03Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 34728 2010-12-06 10:40:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -351,7 +351,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                         else
                         {
                             /* Show the power down progress dialog: */
-                            vboxProblem().showModalProgressDialog(progress, machine.GetName());
+                            vboxProblem().showModalProgressDialog(progress, machine.GetName(), ":/progress_poweroff_90px.png", 0, true);
                             if (progress.GetResultCode() != 0)
                                 vboxProblem().cannotStopMachine(progress);
                             else
