@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 32740 2010-09-23 21:45:16Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -327,16 +327,6 @@ static mbuf_t vboxNetFltDarwinMBufFromSG(PVBOXNETFLTINS pThis, PINTNETSG pSG)
     mbuf_how_t How = MBUF_WAITOK;
 
     /*
-     * We can't make use of the physical addresses on darwin because the way the
-     * mbuf / cluster stuffe works (see mbuf_data_to_physical and mcl_to_paddr).
-     * So, because we're lazy, we will ASSUME that all SGs coming from INTNET
-     * will only contain one single segment.
-     */
-    Assert(pSG->cSegsUsed == 1);
-    Assert(pSG->cbTotal == pSG->aSegs[0].cb);
-    Assert(pSG->cbTotal > 0);
-
-    /*
      * We need some way of getting back to our instance data when
      * the mbuf is freed, so use pvUserData for this.
      *  -- this is not relevant anylonger! --
@@ -361,6 +351,10 @@ static mbuf_t vboxNetFltDarwinMBufFromSG(PVBOXNETFLTINS pThis, PINTNETSG pSG)
      * So, in the end it's better to just do it the simple way that will work
      * 100%, even if it involes some extra work (alloc + copy) we really wished
      * to avoid.
+     * 
+     * Note. We can't make use of the physical addresses on darwin because the 
+     *       way the mbuf / cluster stuffe works (see mbuf_data_to_physical and 
+     *       mcl_to_paddr).
      */
     mbuf_t pPkt = NULL;
     errno_t err = mbuf_allocpacket(How, pSG->cbTotal, NULL, &pPkt);
