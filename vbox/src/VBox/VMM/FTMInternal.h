@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 32302 2010-09-08 09:21:30Z vboxsync $ */
+/* $Id: FTMInternal.h 32308 2010-09-08 11:38:05Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -110,6 +110,8 @@ typedef struct FTM
     STAMCOUNTER         StatCheckpointStorage;
 #ifdef VBOX_WITH_STATISTICS
     STAMPROFILE         StatCheckpoint;
+    STAMPROFILE         StatCheckpointResume;
+    STAMPROFILE         StatCheckpointPause;
     STAMCOUNTER         StatSentMemRAM;
     STAMCOUNTER         StatSentMemMMIO2;
     STAMCOUNTER         StatSentMemShwROM;
