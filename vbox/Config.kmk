@@ -1,4 +1,4 @@
-# $Id: Config.kmk 32597 2010-09-17 12:35:40Z vboxsync $
+# $Id: Config.kmk 32622 2010-09-17 20:18:39Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -346,7 +346,7 @@ if1of ($(KBUILD_TARGET), darwin linux win)
  VBOX_WITH_VIDEOHWACCEL = 1
 endif
 # Enable Wddm Video driver for Vista+ guests 
-VBOXWDDM = 1
+VBOX_WITH_WDDM = 1
 VBOXWDDM_WITH_VBVA=1
 # Enable VBVA lock
 VBOX_WITH_OLD_VBVA_LOCK = 1
@@ -4261,7 +4261,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32597 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32622 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
