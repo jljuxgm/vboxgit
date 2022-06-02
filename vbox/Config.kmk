@@ -1,4 +1,4 @@
-# $Id: Config.kmk 31252 2010-07-30 15:38:52Z vboxsync $
+# $Id: Config.kmk 31338 2010-08-03 14:07:59Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -598,7 +598,6 @@ endif
 # Use VBoxNetFlt for host interface networking.
 if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  VBOX_WITH_NETFLT = 1
- VBOX_SOLARIS_NSL_RESOLVED = 1
  ifeq ($(KBUILD_TARGET),solaris)
 # Disabled until some Nevada version ships the required headers.
 #  VBOX_WITH_NETFLT_CROSSBOW = 1
@@ -4268,7 +4267,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31252 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31338 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
