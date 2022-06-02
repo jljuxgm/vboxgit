@@ -1,4 +1,4 @@
-# $Id: Config.kmk 30977 2010-07-22 10:14:24Z vboxsync $
+# $Id: Config.kmk 30980 2010-07-22 10:39:59Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -466,7 +466,7 @@ if1of ($(KBUILD_TARGET), )
  # Enable Java<->MSCOM glue, bridge is provided by an external lib (Jacob)
  VBOX_WITH_JMSCOM ?= 1
 endif
-if1of ($(KBUILD_TARGET), linux solaris darwin)
+if1of ($(KBUILD_TARGET), darwin)
  # Enable Java<->JAX-WS bridge
  VBOX_WITH_JWS ?= 1
 endif
@@ -4268,7 +4268,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 30977 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 30980 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
