@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 35730 2011-01-27 10:49:44Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 35808 2011-02-01 11:22:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -515,6 +515,15 @@ void UIMachineWindowNormal::prepareMachineView()
         indicatorsPool()->indicator(UIIndicatorIndex_Hostkey)->setState(machineLogic()->keyboardHandler()->keyboardState());
         indicatorsPool()->indicator(UIIndicatorIndex_Mouse)->setState(machineLogic()->mouseHandler()->mouseState());
     }
+
+#ifdef VBOX_GUI_WITH_CUSTOMIZATIONS1
+    /* The background has to go black: */
+    QPalette palette(centralWidget()->palette());
+    palette.setColor(centralWidget()->backgroundRole(), Qt::black);
+    centralWidget()->setPalette(palette);
+    centralWidget()->setAutoFillBackground(true);
+    setAutoFillBackground(true);
+#endif /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 }
 
 void UIMachineWindowNormal::loadWindowSettings()
