@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 33100 2010-10-13 12:09:23Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 33331 2010-10-22 07:43:14Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -36,6 +36,9 @@
 #include <iprt/string.h>
 #include "vector.h"
 
+#ifdef VBOX_WITH_LINUX_COMPILER_H
+# include <linux/compiler.h>
+#endif
 #include <linux/usbdevice_fs.h>
 
 #include <sys/types.h>
