@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 31830 2010-08-20 23:20:06Z vboxsync $ */
+/* $Id: FTMInternal.h 31833 2010-08-21 00:12:28Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -37,9 +37,9 @@
 typedef struct FTM
 {
     /** Address of the standby VM. */
-    char               *pszAddress;
+    R3PTRTYPE(char *)   pszAddress;
     /** Password to access the syncing server of the standby VM. */
-    char               *pszPassword;
+    R3PTRTYPE(char *)   pszPassword;
     /** Port of the standby VM. */
     unsigned            uPort;
     /** Syncing interval in ms. */
@@ -70,7 +70,7 @@ typedef struct FTM
 
     struct
     {
-        PRTTCPSERVER    hServer;
+        R3PTRTYPE(PRTTCPSERVER) hServer;
     } standby;
 
     struct
