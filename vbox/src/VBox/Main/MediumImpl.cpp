@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 33913 2010-11-09 16:32:18Z vboxsync $ */
+/* $Id: MediumImpl.cpp 33914 2010-11-09 16:35:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1661,7 +1661,7 @@ STDMETHODIMP Medium::COMSETTER(Type)(MediumType_T aType)
                     HRESULT rc = queryInfo(false /* fSetImageId */, false /* fSetParentId */);
                     if (FAILED(rc))
                         return setError(rc,
-                                        tr("Cannot change type for medium '%s' to 'Shareable' because the medium is inaccesible"),
+                                        tr("Cannot change type for medium '%s' to 'Shareable' because the medium is inaccessible"),
                                         m->strLocationFull.c_str());
                 }
 
