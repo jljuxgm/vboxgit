@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 34435 2010-11-28 14:58:25Z vboxsync $ */
+/* $Id: vfsbase.cpp 34436 2010-11-28 21:45:25Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -1576,6 +1576,14 @@ RTDECL(int) RTVfsUtilPumpIoStreams(RTVFSIOSTREAM hVfsIosSrc, RTVFSIOSTREAM hVfsI
     }
 
     RTMemTmpFree(pvBuf);
+
+    /*
+     * Flush the destination stream on success to make sure we've caught
+     * errors caused by buffering delays.
+     */
+    if (RT_SUCCESS(rc))
+        rc = RTVfsIoStrmFlush(hVfsIosDst);
+
     return rc;
 }
 
