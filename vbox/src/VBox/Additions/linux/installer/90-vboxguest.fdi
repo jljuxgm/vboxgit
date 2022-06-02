@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 # Hal driver description for the vboxmouse driver
-# $Id: 90-vboxguest.fdi 32388 2010-09-10 10:13:07Z vboxsync $
+# $Id: 90-vboxguest.fdi 32396 2010-09-10 12:22:20Z vboxsync $
 
      Copyright (C) 2008-2010 Oracle Corporation
 
@@ -12,10 +12,6 @@
      Foundation, in version 2 as it comes in the "COPYING" file of the
      VirtualBox OSE distribution. VirtualBox OSE is distributed in the
      hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
-
-     Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
-     Clara, CA 95054 USA or visit http://www.sun.com if you need
-     additional information or have any questions.
 -->
 <deviceinfo version="0.2">
   <device>
