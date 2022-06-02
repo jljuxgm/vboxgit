@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 31873 2010-08-23 16:26:42Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 32241 2010-09-06 04:52:56Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -956,18 +956,26 @@ VOID VBoxSetupDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension,
                             - PrimaryExtension->u.primary.cbMiniportHeap
                             - VBVA_ADAPTER_INFORMATION_SIZE;
 
-        ULONG ulSize = ulAvailable / 2;
-
+        ULONG ulSize;
+        ULONG offset;
+#ifdef VBOXVDMA
+        ulSize = ulAvailable / 2;
         if (ulSize > VBOXWDDM_C_VDMA_BUFFER_SIZE)
             ulSize = VBOXWDDM_C_VDMA_BUFFER_SIZE;
 
         /* Align down to 4096 bytes. */
         ulSize &= ~0xFFF;
-        ULONG offset = ulAvailable - ulSize;
+        offset = ulAvailable - ulSize;
 
         Assert(!(offset & 0xFFF));
-
-        rc = vboxVdmaCreate (PrimaryExtension, &PrimaryExtension->u.primary.Vdma, offset, ulSize);
+#else
+        offset = ulAvailable;
+#endif
+        rc = vboxVdmaCreate (PrimaryExtension, &PrimaryExtension->u.primary.Vdma
+#ifdef VBOXVDMA
+                , offset, ulSize
+#endif
+                );
         AssertRC(rc);
         if (RT_SUCCESS(rc))
         {
