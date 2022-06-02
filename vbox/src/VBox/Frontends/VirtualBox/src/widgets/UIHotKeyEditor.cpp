@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 35791 2011-01-31 15:36:13Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 35793 2011-01-31 16:16:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -572,7 +572,7 @@ bool UIHotKeyEditor::darwinKeyboardEvent(const void *pvCocoaEvent, EventRef inEv
             if (changed)
             {
                 /* Stop the delete pending keys timer. */
-                m_pRemoveTimer->stop();
+                m_pReleaseTimer->stop();
                 /* If modifierMask is empty, no key is pressed anymore.
                  * Stop all key handling and the deletion of keys. This is the status the user want: */
                 if (!modifierMask)
