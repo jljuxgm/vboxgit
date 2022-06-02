@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 31151 2010-07-27 19:18:02Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 31152 2010-07-27 19:32:43Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -305,9 +305,10 @@ int handleCreateHardDisk(HandlerArg *a)
                 Bstr uuid;
                 CHECK_ERROR(hardDisk, COMGETTER(Id)(uuid.asOutParam()));
 
-                if (DiskType == MediumType_Writethrough)
+                if (   DiskType == MediumType_Writethrough
+                    || DiskType == MediumType_Shareable)
                 {
-                    CHECK_ERROR(hardDisk, COMSETTER(Type)(MediumType_Writethrough));
+                    CHECK_ERROR(hardDisk, COMSETTER(Type)(DiskType));
                 }
 
                 RTPrintf("Disk image created. UUID: %s\n", Utf8Str(uuid).raw());
