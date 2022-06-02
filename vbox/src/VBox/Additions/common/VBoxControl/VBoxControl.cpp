@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 32575 2010-09-16 17:48:33Z vboxsync $ */
+/* $Id: VBoxControl.cpp 32576 2010-09-16 17:50:45Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1411,7 +1411,7 @@ static RTEXITCODE handleSharedFolder(int argc, char *argv[])
 
 #if !defined(VBOX_CONTROL_TEST)
 /**
- * @callback_method_impl{FNVBOXCTRLCMDHANDLER, Command: takesnapshot}
+ * @callback_method_impl{FNVBOXCTRLCMDHANDLER, Command: writecoredump}
  */
 static RTEXITCODE handleWriteCoreDump(int argc, char *argv[])
 {
