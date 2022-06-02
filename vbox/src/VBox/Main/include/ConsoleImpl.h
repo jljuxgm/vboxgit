@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 33708 2010-11-02 18:46:46Z vboxsync $ */
+/* $Id: ConsoleImpl.h 33784 2010-11-04 16:50:03Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -37,6 +37,9 @@ class AudioSniffer;
 class ConsoleVRDPServer;
 class VMMDev;
 class Progress;
+#ifdef VBOX_WITH_EXTPACK
+class ExtPackManager;
+#endif
 
 #include <VBox/RemoteDesktop/VRDE.h>
 #include <VBox/pdmdrv.h>
@@ -602,6 +605,9 @@ private:
     const ComObjPtr<MachineDebugger> mDebugger;
     const ComObjPtr<VRDEServerInfo> mVRDEServerInfo;
     const ComObjPtr<EventSource> mEventSource;
+#ifdef VBOX_WITH_EXTPACK
+    const ComObjPtr<ExtPackManager> mptrExtPackManager;
+#endif
 
     USBDeviceList mUSBDevices;
     RemoteUSBDeviceList mRemoteUSBDevices;

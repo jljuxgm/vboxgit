@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 33656 2010-11-01 14:18:11Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 33784 2010-11-04 16:50:03Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -108,8 +108,8 @@ int main(int argc, char **argv)
                                       "\n"
                                       "Usage: %s <command> [options]\n"
                                       "Commands:\n"
-                                      "    install --basepath <dir> --name <name> --tarball <tarball> --tarball-fd <fd>\n"
-                                      "    uninstall --basepath <dir> --name <name>\n"
+                                      "    install --base-dir <dir> --name <name> --tarball <tarball> --tarball-fd <fd>\n"
+                                      "    uninstall --base-dir <dir> --name <name>\n"
                                       , RTPathFilename(argv[0]));
                             rcExit = RTEXITCODE_SUCCESS;
                             break;

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 33770 2010-11-04 14:33:47Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 33784 2010-11-04 16:50:03Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1281,6 +1281,11 @@ STDMETHODIMP VirtualBox::CreateMachine(IN_BSTR aSettingsFile,
                        !!forceOverwrite);
     if (SUCCEEDED(rc))
     {
+#ifdef VBOX_WITH_EXTPACK
+        /* call the extension pack hooks */
+        m->ptrExtPackManager->callAllVmCreatedHooks(machine);
+#endif
+
         /* set the return value */
         rc = machine.queryInterfaceTo(aMachine);
         AssertComRC(rc);
