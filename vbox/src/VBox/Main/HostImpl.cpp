@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 31337 2010-08-03 14:05:05Z vboxsync $ */
+/* $Id: HostImpl.cpp 31345 2010-08-03 22:13:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -2046,10 +2046,9 @@ static int solarisWalkDeviceNodeForDVD(di_node_t Node, void *pvArg)
                                 {
                                     RTStrPrintf(pDrive->szDescription, sizeof(pDrive->szDescription), "%s %s", pszVendor, pszProduct);
                                     RTStrCopy(pDrive->szRawDiskPath, sizeof(pDrive->szRawDiskPath), pszDevLinkPath);
-                                    if (!*ppDrives)
-                                        *ppDrives = pDrive;
-                                    else
-                                        (*ppDrives)->pNext = pDrive;
+                                    if (*ppDrives)
+                                        pDrive->pNext = *ppDrives;
+                                    *ppDrives = pDrive;
                                 }
                             }
                             free(pszDevLinkPath);
