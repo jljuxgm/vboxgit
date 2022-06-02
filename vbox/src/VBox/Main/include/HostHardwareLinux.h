@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: HostHardwareLinux.h 34341 2010-11-24 20:14:36Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.
  *
@@ -135,7 +135,7 @@ class VBoxMainHotplugWaiter
     VBoxMainHotplugWaiterImpl *mImpl;
 public:
     /** Constructor.  Responsible for selecting the implementation. */
-    VBoxMainHotplugWaiter (void);
+    VBoxMainHotplugWaiter(const char *pcszDevicesRoot);
     /** Destructor. */
     ~VBoxMainHotplugWaiter (void)
     {
