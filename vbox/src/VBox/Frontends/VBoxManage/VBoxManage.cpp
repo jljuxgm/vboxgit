@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: VBoxManage.cpp 32686 2010-09-22 08:36:28Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -291,7 +291,12 @@ int main(int argc, char *argv[])
     {
         char *converted;
         RTStrCurrentCPToUtf8(&converted, argv[i]);
-        argv[i] = converted;
+        if (converted)
+            argv[i] = converted;
+        else
+            /* Conversion was not possible,probably due to invalid characters.
+             * Keep in mind that we do RTStrFree on the whole array below. */
+            argv[i] = RTStrDup(argv[i]);
     }
 
     do
