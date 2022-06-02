@@ -1,4 +1,4 @@
-/* $Id: vboxfs_mount.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: vboxfs_mount.c 30519 2010-06-30 08:04:26Z vboxsync $ */
 /** @file
  * VirtualBox File System Mount Helper, Solaris host.
  * Userspace mount wrapper that parses mount (or user-specified) options
@@ -52,9 +52,10 @@ static void Usage(char *pszName)
            "     ro                 mount read only\n"
            "     uid=UID            set the default file owner user id to UID\n"
            "     gid=GID            set the default file owner group id to GID\n"
+           "     stat_ttl=TTL       set the \"time to live\" (in ms) for the stat caches (default %d)\n"
            "     ttl=TTL            set the \"time to live\" to TID for the dentry\n"
            "     iocharset CHARSET  use the character set CHARSET for i/o operations (default utf8)\n"
-           "     convertcp CHARSET  convert the shared folder name from the character set CHARSET to utf8\n\n");
+           "     convertcp CHARSET  convert the shared folder name from the character set CHARSET to utf8\n\n", DEF_STAT_TTL_MS);
     fprintf(stderr, "Less common used options:\n"
            "     noexec,exec,nodev,dev,nosuid,suid\n");
     exit(1);

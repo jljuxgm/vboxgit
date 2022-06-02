@@ -1,4 +1,4 @@
-/* $Id: vboxfs_prov.h 30504 2010-06-29 14:06:52Z vboxsync $ */
+/* $Id: vboxfs_prov.h 30519 2010-06-30 08:04:26Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider header.
  * Portions contributed by: Ronald.
@@ -122,10 +122,26 @@ typedef struct sffs_dirents {
 	dirent64_t		sf_entries[1];
 } sffs_dirents_t;
 
-extern int sfprov_readdir(sfp_mount_t *mnt, char *path, sffs_dirents_t **dirents);
-
 #define SFFS_DIRENTS_SIZE	8192
 #define SFFS_DIRENTS_OFF	(offsetof(sffs_dirents_t, sf_entries[0]))
+#define SFFS_STATS_LEN		100
+
+typedef struct sffs_stat {
+	mode_t		sf_mode;
+	off_t		sf_size;
+	timestruc_t	sf_atime;
+	timestruc_t	sf_mtime;
+	timestruc_t	sf_ctime;
+} sffs_stat_t;
+
+typedef struct sffs_stats {
+	struct sffs_stats	*sf_next;
+	len_t			sf_num;
+	sffs_stat_t		sf_stats[SFFS_STATS_LEN];
+} sffs_stats_t;
+
+extern int sfprov_readdir(sfp_mount_t *mnt, char *path, sffs_dirents_t **dirents,
+    sffs_stats_t **stats);
 
 #ifdef	__cplusplus
 }

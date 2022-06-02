@@ -1,4 +1,4 @@
-/* $Id: vboxfs.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: vboxfs.h 30519 2010-06-30 08:04:26Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Internal Header.
  */
@@ -24,6 +24,8 @@ extern "C" {
 
 #define MAX_HOST_NAME   256
 #define MAX_NLS_NAME    32
+/** Default stat cache ttl (in ms) */
+#define DEF_STAT_TTL_MS 200
 
 /** The module name. */
 #define DEVICE_NAME              "vboxfs"
@@ -32,7 +34,6 @@ extern "C" {
 
 #include "../../common/VBoxGuestLib/VBoxCalls.h"
 #include <sys/vfs.h>
-#include <sys/vfs_opreg.h>
 
 /** VNode for VBoxVFS */
 typedef struct vboxvfs_vnode
