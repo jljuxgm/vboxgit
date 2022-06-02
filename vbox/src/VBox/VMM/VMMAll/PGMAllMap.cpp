@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 31978 2010-08-26 10:04:54Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 31996 2010-08-26 13:32:30Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -143,7 +143,7 @@ VMMDECL(int)  PGMMapModifyPage(PVM pVM, RTGCPTR GCPtr, size_t cb, uint64_t fFlag
     /*
      * Validate input.
      */
-    AssertMsg(!(fFlags & (X86_PTE_PAE_PG_MASK | X86_PTE_PAE_MBZ_MASK_NX)), ("fFlags=%#x\n", fFlags));
+    AssertMsg(!(fFlags & (X86_PTE_PAE_PG_MASK_FULL | X86_PTE_PAE_MBZ_MASK_NX)), ("fFlags=%#x\n", fFlags));
     Assert(cb);
 
     /*

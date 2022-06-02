@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 31897 2010-08-24 09:23:10Z vboxsync $ */
+/* $Id: PGMPool.cpp 31996 2010-08-26 13:32:30Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -823,7 +823,7 @@ void pgmR3PoolClearAll(PVM pVM, bool fFlushRemTlb)
  * @param   pVM         The VM handle.
  *
  * Remark: assumes the caller will flush all TLBs (!!)
- */     
+ */
 void pgmR3PoolWriteProtectPages(PVM pVM)
 {
     Assert(PGMIsLockOwner(pVM));
@@ -930,7 +930,7 @@ static DECLCALLBACK(int) pgmR3PoolCmdCheck(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, 
                     if (PGMSHWPTEPAE_IS_P(pShwPT->a[j]))
                     {
                         RTHCPHYS HCPhys = NIL_RTHCPHYS;
-                        rc = PGMPhysGCPhys2HCPhys(pPool->CTX_SUFF(pVM), pGstPT->a[j].u & X86_PTE_PAE_PG_MASK, &HCPhys);
+                        rc = PGMPhysGCPhys2HCPhys(pPool->CTX_SUFF(pVM), pGstPT->a[j].u & X86_PTE_PAE_PG_MASK_FULL, &HCPhys);
                         if (   rc != VINF_SUCCESS
                             || PGMSHWPTEPAE_GET_HCPHYS(pShwPT->a[j]) != HCPhys)
                         {

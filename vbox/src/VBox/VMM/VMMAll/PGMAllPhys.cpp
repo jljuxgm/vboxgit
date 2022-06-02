@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 31988 2010-08-26 12:37:58Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 31996 2010-08-26 13:32:30Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1077,7 +1077,7 @@ int pgmPhysPageLoadIntoTlbWithPage(PPGM pPGM, PPGMPAGE pPage, RTGCPHYS GCPhys)
 #ifdef PGM_WITH_PHYS_TLB
     if (    PGM_PAGE_GET_TYPE(pPage) < PGMPAGETYPE_ROM_SHADOW
         ||  PGM_PAGE_GET_TYPE(pPage) > PGMPAGETYPE_ROM)
-        pTlbe->GCPhys = GCPhys & X86_PTE_PAE_PG_MASK;
+        pTlbe->GCPhys = GCPhys & X86_PTE_PAE_PG_MASK_FULL;
     else
         pTlbe->GCPhys = NIL_RTGCPHYS; /* ROM: Problematic because of the two pages. :-/ */
 #else
