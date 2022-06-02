@@ -1,4 +1,4 @@
-/* $Id: vboxfs_vnode.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: vboxfs_vnode.h 30446 2010-06-25 09:51:58Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, VNode header.
  */
@@ -47,6 +47,7 @@ typedef struct sfnode {
 	uint16_t	sf_children;	/* number of children sfnodes */
 	uint8_t		sf_type;	/* VDIR or VREG */
 	uint8_t		sf_is_stale;	/* this is stale and should be purged */
+	sffs_dirents_t	*sf_dir_list;	/* list of entries for this directory */
 } sfnode_t;
 
 #define VN2SFN(vp) ((sfnode_t *)(vp)->v_data)
