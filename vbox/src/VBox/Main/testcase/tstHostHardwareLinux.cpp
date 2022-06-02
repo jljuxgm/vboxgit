@@ -1,4 +1,4 @@
-/* $Id: tstHostHardwareLinux.cpp 31652 2010-08-13 14:17:53Z vboxsync $ */
+/* $Id: tstHostHardwareLinux.cpp 32142 2010-08-31 13:00:46Z vboxsync $ */
 /** @file
  *
  * Test executable for quickly excercising/debugging the Linux host hardware
@@ -122,13 +122,11 @@ int main()
         RTPrintf ("  device: %s (%s), sysfs path: %s\n", szProduct, pInfo->mDevice,
                   pInfo->mSysfsPath);
         RTPrintf ("    interfaces:\n");
-        USBInterfaceList_iterator it2;
-        USBInterfaceList_iter_init(&it2, USBInterfaceList_begin(&pInfo->mInterfaces));
-        for (; !USBInterfaceList_iter_eq(&it2, USBInterfaceList_end(&pInfo->mInterfaces));
-               USBInterfaceList_iter_incr(&it2))
+        char *pszIf;
+        for (pszIf = USBDevInfoFirstInterface(pInfo->mInterfaces); pszIf;
+             pszIf = USBDevInfoNextInterface(pInfo->mInterfaces))
         {
             char szDriver[RTPATH_MAX];
-            char *pszIf = *USBInterfaceList_iter_target(&it2);
             strcpy(szDriver, "none");
             ssize_t size = RTLinuxSysFsGetLinkDest(szDriver, sizeof(szDriver),
                                                    "%s/driver", pszIf);
