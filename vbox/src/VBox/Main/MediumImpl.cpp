@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 31777 2010-08-19 09:50:39Z vboxsync $ */
+/* $Id: MediumImpl.cpp 32063 2010-08-29 08:41:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -768,7 +768,7 @@ void Medium::FinalRelease()
  * storage unit.
  *
  * This gets called by VirtualBox::CreateHardDisk() in which case uuidMachineRegistry
- * is empty since starting with VirtualBox 3.3, we no longer add opened media to a
+ * is empty since starting with VirtualBox 4.0, we no longer add opened media to a
  * registry automatically (this is deferred until the medium is attached to a machine).
  *
  * This also gets called when VirtualBox creates diff images; in this case uuidMachineRegistry
@@ -858,7 +858,7 @@ HRESULT Medium::init(VirtualBox *aVirtualBox,
  * Machine::AttachDevice() and createImplicitDiffs() when new diff
  * images are created.
  *
- * There is no registry for this case since starting with VirtualBox 3.3, we
+ * There is no registry for this case since starting with VirtualBox 4.0, we
  * no longer add opened media to a registry automatically (this is deferred
  * until the medium is attached to a machine).
  *
