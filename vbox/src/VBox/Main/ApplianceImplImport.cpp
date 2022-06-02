@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 33320 2010-10-21 17:09:15Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2489,11 +2489,7 @@ void Appliance::importVBoxMachine(ComObjPtr<VirtualSystemDescription> &vsdescThi
                            config);                 // the whole machine config
     if (FAILED(rc)) throw rc;
 
-    // return the new machine as an IMachine
-    IMachine *p;
-    rc = pNewMachine.queryInterfaceTo(&p);
-    if (FAILED(rc)) throw rc;
-    pReturnNewMachine = p;
+    pReturnNewMachine = ComPtr<IMachine>(pNewMachine);
 
     // and register it
     rc = mVirtualBox->RegisterMachine(pNewMachine);
