@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 33590 2010-10-29 08:55:09Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 33600 2010-10-29 11:36:19Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2121,6 +2121,13 @@ int handleModifyVM(HandlerArg *a)
                 else if (!strcmp(ValueUnion.psz, "ich9"))
                 {
                     CHECK_ERROR(machine, COMSETTER(ChipsetType)(ChipsetType_ICH9));
+                    BOOL fIoApic = FALSE;
+                    CHECK_ERROR(biosSettings, COMGETTER(IOAPICEnabled)(&fIoApic));
+                    if (!fIoApic)
+                    {
+                        RTStrmPrintf(g_pStdErr, "*** I/O APIC must be enabled for ICH9, enabling. ***\n");
+                        CHECK_ERROR(biosSettings, COMSETTER(IOAPICEnabled)(TRUE));
+                    }
                 }
                 else
                 {
