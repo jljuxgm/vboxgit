@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 35374 2010-12-30 14:42:15Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 35560 2011-01-14 13:37:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2710,10 +2710,13 @@ int Console::configMediumAttachment(PCFGMNODE pCtlInst,
                         PPDMIMOUNT pIMount = PDMIBASE_QUERY_INTERFACE(pBase, PDMIMOUNT);
                         AssertReturn(pIMount, VERR_INVALID_POINTER);
 
-                        /* Unmount the media. */
-                        rc = pIMount->pfnUnmount(pIMount, fForceUnmount);
+                        /* Unmount the media (but do not eject the medium!) */
+                        rc = pIMount->pfnUnmount(pIMount, fForceUnmount, false /*=fEject*/);
                         if (rc == VERR_PDM_MEDIA_NOT_MOUNTED)
                             rc = VINF_SUCCESS;
+                        /* for example if the medium is locked */
+                        else if (RT_FAILURE(rc))
+                            return rc;
                     }
                 }
 

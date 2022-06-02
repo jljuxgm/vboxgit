@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DevAHCI.cpp 35560 2011-01-14 13:37:32Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -4038,7 +4038,8 @@ static AHCITXDIR atapiParseCmdVirtualATAPI(PAHCIPort pAhciPort, PAHCIPORTTASKSTA
                             PPDMDEVINS pDevIns = pAhci->CTX_SUFF(pDevIns);
 
                             rc2 = VMR3ReqCallWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
-                                                  (PFNRT)pAhciPort->pDrvMount->pfnUnmount, 2, pAhciPort->pDrvMount, false);
+                                                  (PFNRT)pAhciPort->pDrvMount->pfnUnmount, 3,
+                                                  pAhciPort->pDrvMount, false/*=fForce*/, true/*=fEject*/);
                             Assert(RT_SUCCESS(rc2) || (rc == VERR_PDM_MEDIA_LOCKED));
                         }
                         break;

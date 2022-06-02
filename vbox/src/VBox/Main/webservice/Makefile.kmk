@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35440 2011-01-09 23:43:10Z vboxsync $
+# $Id: Makefile.kmk 35559 2011-01-14 13:33:47Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -289,6 +289,10 @@ endif
  vboxwebsrv_CLEAN = \
 	$(VBOXWEB_OUT_DIR)/methodmaps.cpp \
 	$(VBOXWEB_OUT_DIR)/soapServer.cpp
+
+ vboxweb.cpp_DEFS = \
+	VBOX_BUILD_TARGET=\"$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)\" \
+	$(if $(VBOX_BLEEDING_EDGE),VBOX_BLEEDING_EDGE=\"$(VBOX_BLEEDING_EDGE)\",)
 
  vboxwebsrv_ORDERDEPS = $(VBOXWEB_OUT_DIR)/gsoap_copy_all_ts
  endif # !VBOX_ONLY_SDK

@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 35560 2011-01-14 13:37:32Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -477,7 +477,7 @@ static DECLCALLBACK(int) drvHostBaseMount(PPDMIMOUNT pInterface, const char *psz
 
 
 /** @copydoc PDMIMOUNT::pfnUnmount */
-static DECLCALLBACK(int) drvHostBaseUnmount(PPDMIMOUNT pInterface, bool fForce)
+static DECLCALLBACK(int) drvHostBaseUnmount(PPDMIMOUNT pInterface, bool fForce, bool fEject)
 {
      LogFlow(("drvHostBaseUnmount: returns VERR_NOT_SUPPORTED\n"));
      return VERR_NOT_SUPPORTED;

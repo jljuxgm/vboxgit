@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DrvBlock.cpp 35560 2011-01-14 13:37:32Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -624,7 +624,7 @@ static DECLCALLBACK(int) drvblockMount(PPDMIMOUNT pInterface, const char *pszFil
 
 
 /** @copydoc PDMIMOUNT::pfnUnmount */
-static DECLCALLBACK(int) drvblockUnmount(PPDMIMOUNT pInterface, bool fForce)
+static DECLCALLBACK(int) drvblockUnmount(PPDMIMOUNT pInterface, bool fForce, bool fEject)
 {
     PDRVBLOCK pThis = PDMIMOUNT_2_DRVBLOCK(pInterface);
 
