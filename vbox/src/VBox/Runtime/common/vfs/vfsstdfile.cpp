@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 34029 2010-11-12 14:21:59Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 34045 2010-11-12 19:16:09Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -283,7 +283,11 @@ static DECLCALLBACK(int) rtVfsStdFile_PollOne(void *pvThis, uint32_t fEvents, RT
 static DECLCALLBACK(int) rtVfsStdFile_Tell(void *pvThis, PRTFOFF poffActual)
 {
     PRTVFSSTDFILE pThis = (PRTVFSSTDFILE)pvThis;
-    return RTFileTell(pThis->hFile);
+    uint64_t offActual;
+    int rc = RTFileSeek(pThis->hFile, 0, RTFILE_SEEK_CURRENT, &offActual);
+    if (RT_SUCCESS(rc))
+        *poffActual = (RTFOFF)offActual;
+    return rc;
 }
 
 

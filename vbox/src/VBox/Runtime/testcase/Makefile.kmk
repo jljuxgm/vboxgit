@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33973 2010-11-11 11:10:10Z vboxsync $
+# $Id: Makefile.kmk 34045 2010-11-12 19:16:09Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -576,6 +576,10 @@ PROGRAMS += RTGzip
 RTGzip_TEMPLATE = VBOXR3TSTEXE
 RTGzip_SOURCES = RTGzip.cpp
 
+# RTTar - our tar clone (for testing the tar/gzip/gunzip streaming code)
+PROGRAMS += RTTar
+RTTar_TEMPLATE = VBOXR3TSTEXE
+RTTar_SOURCES = RTTar.cpp
 
 
 include	$(KBUILD_PATH)/subfooter.kmk

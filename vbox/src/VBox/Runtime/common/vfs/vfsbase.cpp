@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 34032 2010-11-12 16:20:25Z vboxsync $ */
+/* $Id: vfsbase.cpp 34045 2010-11-12 19:16:09Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -1596,7 +1596,7 @@ RTDECL(int)         RTVfsFsStrmNext(RTVFSFSSTREAM hVfsFss, char **ppszName, RTVF
 {
     RTVFSFSSTREAMINTERNAL *pThis = hVfsFss;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
-    AssertReturn(pThis->uMagic == RTVFSDIR_MAGIC, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->uMagic == RTVFSFSSTREAM_MAGIC, VERR_INVALID_HANDLE);
     AssertPtrNullReturn(ppszName, VERR_INVALID_POINTER);
     if (ppszName)
         *ppszName = NULL;
