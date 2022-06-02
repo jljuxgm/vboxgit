@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 30511 2010-06-29 16:35:47Z vboxsync $ */
+/* $Id: UsbKbd.cpp 33330 2010-10-22 06:26:02Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -881,7 +881,6 @@ static DECLCALLBACK(int) usbHidKeyboardPutEvent(PPDMIKEYBOARDPORT pInterface, ui
     uint8_t     u8HidCode;
     int         fKeyDown;
     bool        fHaveEvent = true;
-    unsigned    i;
 
     RTCritSectEnter(&pThis->CritSect);
 
