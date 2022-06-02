@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 32574 2010-09-16 17:44:29Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 32621 2010-09-17 19:42:34Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2355,7 +2355,7 @@ bool VBoxGuestCommonISR(PVBOXGUESTDEVEXT pDevExt)
              * Normal FIFO waiter evaluation.
              */
             fEvents |= pDevExt->f32PendingEvents;
-            RTListForEachSafe(&pDevExt->HGCMWaitList, pWait, pSafe, VBOXGUESTWAIT, ListNode)
+            RTListForEachSafe(&pDevExt->WaitList, pWait, pSafe, VBOXGUESTWAIT, ListNode)
             {
                 if (    (pWait->fReqEvents & fEvents)
                     &&  !pWait->fResEvents)
