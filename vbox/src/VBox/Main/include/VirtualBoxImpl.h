@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 30929 2010-07-20 14:11:51Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 30938 2010-07-20 17:32:27Z vboxsync $ */
 
 /** @file
  *
@@ -226,7 +226,9 @@ public:
         return SUCCEEDED(findMachine(aId, false /* aSetError */, NULL));
     }
 
-    HRESULT findMachine (const Guid &aId, bool aSetError,
+    HRESULT findMachine (const Guid &aId,
+                         bool fPermitInaccessible,
+                         bool aSetError,
                          ComObjPtr<Machine> *machine = NULL);
 
     HRESULT findHardDisk(const Guid *aId, CBSTR aLocation,
