@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 31463 2010-08-09 08:37:03Z vboxsync $ */
+/* $Id: DevCodec.cpp 31475 2010-08-09 11:22:46Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -1186,7 +1186,7 @@ static int codec_dac_to_aud(CODECState *pState, int dacnum, audsettings_t *paud)
 {
     paud->freq = 44100;
     paud->nchannels = 2;
-    paud->fmt = AUD_FMT_U16;
+    paud->fmt = AUD_FMT_S16;
 
     paud->endianness = 0;
     return VINF_SUCCESS;
