@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 33882 2010-11-09 09:32:27Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.cpp 33909 2010-11-09 15:40:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -189,6 +189,19 @@ UIMachineSettingsSerialPage::UIMachineSettingsSerialPage()
     layout->setContentsMargins (0, 5, 0, 5);
     layout->addWidget (mTabWidget);
 
+    /* Load port data: */
+    ulong uCount = vboxGlobal().virtualBox().GetSystemProperties().GetSerialPortCount();
+    /* Apply internal variables data to QWidget(s): */
+    for (ulong iSlot = 0; iSlot < uCount; ++iSlot)
+    {
+        /* Creating port's page: */
+        UIMachineSettingsSerial *pPage = new UIMachineSettingsSerial;
+
+        /* Attach port's page to Tab Widget: */
+        mTabWidget->addTab(pPage, pPage->pageTitle());
+
+    }
+
     /* Applying language settings */
     retranslateUi();
 }
@@ -235,17 +248,15 @@ void UIMachineSettingsSerialPage::getFromCache()
     setTabOrder(m_pFirstWidget, mTabWidget->focusProxy());
     QWidget *pLastFocusWidget = mTabWidget->focusProxy();
 
+    ulong uCount = qMin(mTabWidget->count(), m_cache.m_items.size());
     /* Apply internal variables data to QWidget(s): */
-    for (int iSlot = 0; iSlot < m_cache.m_items.size(); ++iSlot)
+    for (ulong iSlot = 0; iSlot < uCount; ++iSlot)
     {
-        /* Creating port's page: */
-        UIMachineSettingsSerial *pPage = new UIMachineSettingsSerial;
+        /* Getting adapter's page: */
+        UIMachineSettingsSerial *pPage = qobject_cast<UIMachineSettingsSerial*>(mTabWidget->widget(iSlot));
 
         /* Loading port's data into page: */
         pPage->fetchPortData(m_cache.m_items[iSlot]);
-
-        /* Attach port's page to Tab Widget: */
-        mTabWidget->addTab(pPage, pPage->pageTitle());
 
         /* Setup page validation: */
         pPage->setValidator(mValidator);
