@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.h 31862 2010-08-23 14:31:44Z vboxsync $ */
+/* $Id: coredumper-solaris.h 31914 2010-08-24 12:18:38Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core dump, header.
  */
@@ -165,4 +165,5 @@ typedef struct VBOXCORE
 typedef VBOXCORE *PVBOXCORE;
 
 typedef int (*PFNCOREACCUMULATOR)(PVBOXCORE pVBoxCore);
+typedef int (*PFNCORETHREADWORKER)(PVBOXCORE pVBoxCore, void *pvThreadInfo);
 
