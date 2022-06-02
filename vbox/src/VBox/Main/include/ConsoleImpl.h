@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 34331 2010-11-24 16:24:17Z vboxsync $ */
+/* $Id: ConsoleImpl.h 34335 2010-11-24 17:49:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -507,7 +507,8 @@ private:
 
     int configNetwork(const char *pszDevice, unsigned uInstance, unsigned uLun,
                       INetworkAdapter *aNetworkAdapter, PCFGMNODE pCfg,
-                      PCFGMNODE pLunL0, PCFGMNODE pInst, bool fAttachDetach);
+                      PCFGMNODE pLunL0, PCFGMNODE pInst,
+                      bool fAttachDetach, bool fIgnoreConnectFailure);
 
     static DECLCALLBACK(int) configGuestProperties(void *pvConsole);
     static DECLCALLBACK(int) configGuestControl(void *pvConsole);
