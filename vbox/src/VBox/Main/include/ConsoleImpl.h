@@ -1,10 +1,10 @@
-/* $Id: ConsoleImpl.h 35369 2010-12-30 14:03:43Z vboxsync $ */
+/* $Id: ConsoleImpl.h 35460 2011-01-10 14:24:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -434,7 +434,7 @@ private:
     HRESULT consoleInitReleaseLog(const ComPtr<IMachine> aMachine);
 
     HRESULT powerUp(IProgress **aProgress, bool aPaused);
-    HRESULT powerDown(Progress *aProgress = NULL);
+    HRESULT powerDown(IProgress *aProgress = NULL);
 
     HRESULT callTapSetupApplication(bool isStatic, RTFILE tapFD, Bstr &tapDevice,
                                     Bstr &tapSetupApplication);
