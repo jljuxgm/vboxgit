@@ -1,4 +1,4 @@
-/* $Id: uniread.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: uniread.cpp 33560 2010-10-28 14:25:30Z vboxsync $ */
 /** @file
  * IPRT - Unicode Specification Reader.
  */
@@ -1019,7 +1019,7 @@ int PrintFlags(void)
      * Print flags table.
      */
     Stream2Init();
-    Stream2Printf("const RTUNIFLAGSRANGE g_aRTUniFlagRanges[] =\n"
+    Stream2Printf("const RTUNIFLAGSRANGE g_aRTUniFlagsRanges[] =\n"
                   "{\n");
     RTUNICP i = 0;
     int iStart = -1;
