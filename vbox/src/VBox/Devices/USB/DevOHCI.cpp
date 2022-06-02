@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 31230 2010-07-30 07:29:31Z vboxsync $ */
+/* $Id: DevOHCI.cpp 31249 2010-07-30 13:55:19Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -1599,8 +1599,7 @@ static PVUSBURB ohciTdInFlightUrb(POHCI pOhci, uint32_t GCPhysTD)
     i = ohci_in_flight_find(pOhci, GCPhysTD);
     if ( i >= 0 )
         return pOhci->aInFlight[i].pUrb;
-    else
-        return NULL;
+    return NULL;
 }
 
 /**
