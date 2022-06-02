@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 31218 2010-07-29 15:07:48Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2386,7 +2386,7 @@ STDMETHODIMP Console::AdoptSavedState(IN_BSTR aSavedStateFile)
     return mControl->AdoptSavedState(aSavedStateFile);
 }
 
-STDMETHODIMP Console::ForgetSavedState(BOOL aRemove)
+STDMETHODIMP Console::ForgetSavedState()
 {
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
@@ -2399,9 +2399,6 @@ STDMETHODIMP Console::ForgetSavedState(BOOL aRemove)
             Global::stringifyMachineState(mMachineState));
 
     HRESULT rc = S_OK;
-
-    rc = mControl->SetRemoveSavedState(aRemove);
-    if (FAILED(rc)) return rc;
 
     /*
      * Saved -> PoweredOff transition will be detected in the SessionMachine
