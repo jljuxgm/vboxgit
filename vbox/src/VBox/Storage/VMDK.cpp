@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 33943 2010-11-10 16:24:37Z vboxsync $ */
+/* $Id: VMDK.cpp 33996 2010-11-11 14:40:30Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5923,7 +5923,7 @@ static int vmdkRename(void *pBackendData, const char *pszFilename)
     char *pszOldDescName = NULL;
     bool     fImageFreed = false;
     bool   fEmbeddedDesc = false;
-    unsigned    cExtents = pImage->cExtents;
+    unsigned    cExtents;
     char *pszNewBaseName = NULL;
     char *pszOldBaseName = NULL;
     char *pszNewFullName = NULL;
@@ -5944,6 +5944,8 @@ static int vmdkRename(void *pBackendData, const char *pszFilename)
         rc = VERR_INVALID_PARAMETER;
         goto out;
     }
+    
+    cExtents = pImage->cExtents;
 
     /*
      * Allocate an array to store both old and new names of renamed files
