@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: pipe-win.cpp 34119 2010-11-16 15:33:25Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
@@ -748,6 +748,11 @@ RTDECL(int) RTPipeWrite(RTPIPE hPipe, const void *pvBuf, size_t cbToWrite, size_
                 {
                     if (Info.NamedPipeState == FILE_PIPE_CLOSING_STATE)
                         rc = VERR_BROKEN_PIPE;
+                    /** @todo fixme: To get the pipe writing support to work the
+                     *               block below needs to be commented out until a
+                     *               way is found to address the problem of the incorrectly
+                     *               set field Info.WriteQuotaAvailable. */
+#if 0
                     else if (   cbToWrite >= Info.WriteQuotaAvailable
                              && Info.OutboundQuota != 0
                              && (Info.WriteQuotaAvailable || pThis->cbBounceBufAlloc)
@@ -757,6 +762,7 @@ RTDECL(int) RTPipeWrite(RTPIPE hPipe, const void *pvBuf, size_t cbToWrite, size_
                         if (!cbToWrite)
                             rc = VINF_TRY_AGAIN;
                     }
+#endif
                 }
                 pThis->fPromisedWritable = false;
 
