@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 30778 2010-07-12 08:40:54Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 31024 2010-07-22 20:39:31Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -178,9 +178,7 @@ DECLCALLBACK(void) vmmdevUpdateGuestStatus(PPDMIVMMDEVCONNECTOR pInterface, cons
     if (!guest)
         return;
 
-    guest->setAdditionsStatus((VBoxGuestStatusFacility)guestStatus->facility,
-                              (VBoxGuestStatusCurrent)guestStatus->status,
-                              guestStatus->flags);
+    guest->setAdditionsStatus(guestStatus->facility, guestStatus->status, guestStatus->flags);
     pDrv->pVMMDev->getParent()->onAdditionsStateChange();
 }
 
