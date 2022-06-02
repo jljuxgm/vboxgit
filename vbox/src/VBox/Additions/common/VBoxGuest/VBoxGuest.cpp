@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 32266 2010-09-07 09:23:05Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 32272 2010-09-07 10:09:20Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -279,11 +279,6 @@ static int vboxGuestBalloonInflate(PRTR0MEMOBJ pMemObj, VMMDevChangeMemBalloon *
         pReq->aPhysPage[iPage] = phys;
     }
 
-    /* Protect this memory from being accessed. Doesn't work on every platform and probably
-     * doesn't work for R3-provided memory, therefore ignore the return value. Unprotect
-     * done when object is freed. */
-    RTR0MemObjProtect(*pMemObj, 0, VMMDEV_MEMORY_BALLOON_CHUNK_SIZE, RTMEM_PROT_NONE);
-
     pReq->fInflate = true;
     pReq->header.size = cbChangeMemBalloonReq;
     pReq->cPages = VMMDEV_MEMORY_BALLOON_CHUNK_PAGES;
@@ -326,10 +321,6 @@ static int vboxGuestBalloonDeflate(PRTR0MEMOBJ pMemObj, VMMDevChangeMemBalloon *
         LogRel(("vboxGuestBalloonDeflate: VbglGRPerform failed. rc=%Rrc\n", rc));
         return rc;
     }
-
-    /* undo previous protec call, ignore rc for reasons stated there. */
-    RTR0MemObjProtect(*pMemObj, 0, VMMDEV_MEMORY_BALLOON_CHUNK_SIZE, RTMEM_PROT_READ | RTMEM_PROT_WRITE);
-    /*RTR0MemObjProtect(*pMemObj, 0, VMMDEV_MEMORY_BALLOON_CHUNK_SIZE, RTMEM_PROT_READ | RTMEM_PROT_WRITE | RTMEM_PROT_EXEC); - probably not safe... */
 
     rc = RTR0MemObjFree(*pMemObj, true);
     if (RT_FAILURE(rc))
