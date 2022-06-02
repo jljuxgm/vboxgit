@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 32622 2010-09-17 20:18:39Z vboxsync $ */
+/* $Id: DevVGA.h 32769 2010-09-27 08:40:49Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -338,6 +338,7 @@ typedef struct VGAState {
     STAMPROFILE                 StatRZMemoryWrite;
     STAMPROFILE                 StatR3MemoryWrite;
     STAMCOUNTER                 StatMapPage;            /**< Counts IOMMMIOMapMMIO2Page calls.  */
+    STAMCOUNTER                 StatUpdateDisp;         /**< Counts vgaPortUpdateDisplay calls.  */
 
     /* Keep track of ring 0 latched accesses to the VGA MMIO memory. */
     uint64_t                    u64LastLatchedAccess;
