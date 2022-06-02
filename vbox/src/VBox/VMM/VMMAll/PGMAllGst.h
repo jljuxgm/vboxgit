@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 31996 2010-08-26 13:32:30Z vboxsync $ */
+/* $Id: PGMAllGst.h 32000 2010-08-26 14:08:55Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -114,7 +114,7 @@ static int PGM_GST_NAME(Walk)(PVMCPU pVCpu, RTGCPTR GCPtr, PGSTPTWALK pWalk)
         /*
          * The PDPE.
          */
-        rc = PGM_GCPHYS_2_PTR_BY_VMCPU(pVCpu, Pml4e.u & X86_PML4E_PG_MASK_FULL, &pWalk->pPdpt);
+        rc = PGM_GCPHYS_2_PTR_BY_VMCPU(pVCpu, Pml4e.u & X86_PML4E_PG_MASK, &pWalk->pPdpt);
         if (RT_FAILURE(rc))
             return PGM_GST_NAME(WalkReturnBadPhysAddr)(pVCpu, pWalk, 3, rc);
 

@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 31998 2010-08-26 14:00:51Z vboxsync $ */
+/* $Id: PGMAllShw.h 32000 2010-08-26 14:08:55Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -216,7 +216,7 @@ PGM_SHW_DECL(int, GetPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, uint64_t *pfFlags, P
 
     /* PDPT */
     PX86PDPT        pPDPT;
-    int rc = PGM_HCPHYS_2_PTR(pVM, pVCpu, Pml4e.u & X86_PML4E_PG_MASK_FULL, &pPDPT);
+    int rc = PGM_HCPHYS_2_PTR(pVM, pVCpu, Pml4e.u & X86_PML4E_PG_MASK, &pPDPT);
     if (RT_FAILURE(rc))
         return rc;
     const unsigned  iPDPT = (GCPtr >> SHW_PDPT_SHIFT) & SHW_PDPT_MASK;
@@ -382,7 +382,7 @@ PGM_SHW_DECL(int, ModifyPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, size_t cb, uint64
 
         /* PDPT */
         PX86PDPT        pPDPT;
-        rc = PGM_HCPHYS_2_PTR(pVM, pVCpu, Pml4e.u & X86_PML4E_PG_MASK_FULL, &pPDPT);
+        rc = PGM_HCPHYS_2_PTR(pVM, pVCpu, Pml4e.u & X86_PML4E_PG_MASK, &pPDPT);
         if (RT_FAILURE(rc))
             return rc;
         const unsigned  iPDPT = (GCPtr >> SHW_PDPT_SHIFT) & SHW_PDPT_MASK;

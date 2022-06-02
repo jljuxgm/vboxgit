@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 31996 2010-08-26 13:32:30Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 32000 2010-08-26 14:08:55Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -2730,7 +2730,7 @@ static DECLCALLBACK(int) dbgcCmdDumpPageDir(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp,
             if (!Pml4e.n.u1Present)
                 return DBGCCmdHlpPrintf(pCmdHlp, "Page directory pointer table is not present for %Dv.\n", &VarGCPtr);
 
-            VarCur.u.u64Number = Pml4e.u & X86_PML4E_PG_MASK_FULL;
+            VarCur.u.u64Number = Pml4e.u & X86_PML4E_PG_MASK;
             Assert(fPAE);
         }
         if (fPAE)
@@ -3101,7 +3101,7 @@ static DECLCALLBACK(int) dbgcCmdDumpPageTable(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHl
             if (!Pml4e.n.u1Present)
                 return DBGCCmdHlpPrintf(pCmdHlp, "Page directory pointer table is not present for %Dv.\n", &VarGCPtr);
 
-            VarCur.u.u64Number = Pml4e.u & X86_PML4E_PG_MASK_FULL;
+            VarCur.u.u64Number = Pml4e.u & X86_PML4E_PG_MASK;
             Assert(fPAE);
         }
         if (fPAE)
