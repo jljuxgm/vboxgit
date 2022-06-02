@@ -1,4 +1,4 @@
-/* $Id: waitqueue-r0drv-linux.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: waitqueue-r0drv-linux.h 33609 2010-10-29 14:39:38Z vboxsync $ */
 /** @file
  * IPRT - Linux Ring-0 Driver Helpers for Abstracting Wait Queues,
  */
@@ -150,7 +150,7 @@ DECLINLINE(int) rtR0SemLnxWaitInit(PRTR0SEMLNXWAIT pWait, uint32_t fFlags, uint6
         else
 #endif
         {
-            uint64_t cJiffies = ASMMultU64ByU32DivByU32(uTimeout, HZ, UINT32_C(1000000000));
+            uint64_t cJiffies = ASMMultU64ByU32DivByU32(pWait->cNsRelTimeout, HZ, UINT32_C(1000000000));
             if (cJiffies >= MAX_JIFFY_OFFSET)
                 fFlags |= RTSEMWAIT_FLAGS_INDEFINITE;
             else
