@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.h 31662 2010-08-13 15:51:09Z vboxsync $ */
+/* $Id: USBProxyDevice.h 32472 2010-09-14 10:26:19Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy header
  */
@@ -18,13 +18,8 @@
 #ifndef ___USBProxyDevice_h
 #define ___USBProxyDevice_h
 
-#ifndef RDESKTOP
-# include <VBox/cdefs.h>
-# include <VBox/vusb.h>
-#else
-# include "runtime.h"
-# include "vusb.h"
-#endif
+#include <VBox/cdefs.h>
+#include <VBox/vusb.h>
 
 RT_C_DECLS_BEGIN
 
