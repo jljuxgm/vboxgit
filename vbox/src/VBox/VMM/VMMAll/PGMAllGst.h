@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 31140 2010-07-27 13:29:43Z vboxsync $ */
+/* $Id: PGMAllGst.h 31178 2010-07-28 17:21:13Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -500,7 +500,7 @@ static DECLCALLBACK(int) PGM_GST_NAME(VirtHandlerUpdateOne)(PAVLROGCPTRNODECORE 
                  * Normal page table.
                  */
                 PGSTPT pPT;
-                int rc = PGM_GCPHYS_2_PTR(pVM, Pde.u & GST_PDE_PG_MASK, &pPT);
+                int rc = PGM_GCPHYS_2_PTR_V2(pVM, pVCpu, Pde.u & GST_PDE_PG_MASK, &pPT);
                 if (RT_SUCCESS(rc))
                 {
                     for (unsigned iPTE = (GCPtr >> GST_PT_SHIFT) & GST_PT_MASK;
