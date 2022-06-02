@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34740 2010-12-06 11:56:28Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34781 2010-12-07 14:06:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2418,22 +2418,21 @@ void VBoxProblemReporter::showHelpWebDialog()
 void VBoxProblemReporter::showHelpAboutDialog()
 {
     CVirtualBox vbox = vboxGlobal().virtualBox();
-    QString fullVersion ;
+    QString strFullVersion;
     if (vboxGlobal().brandingIsActive())
     {
-        fullVersion = (QString ("%1 r%2 - %3").arg (vbox.GetVersion())
-                                              .arg (vbox.GetRevision())
-                                              .arg (vboxGlobal().brandingGetKey("Name")));
+        strFullVersion = QString("%1 r%2 - %3").arg(vbox.GetVersion())
+                                               .arg(vbox.GetRevision())
+                                               .arg(vboxGlobal().brandingGetKey("Name"));
     }
     else
     {
-        fullVersion = (QString ("%1 r%2").arg (vbox.GetVersion())
-                                         .arg (vbox.GetRevision()));
+        strFullVersion = QString("%1 r%2").arg(vbox.GetVersion())
+                                          .arg(vbox.GetRevision());
     }
-    AssertWrapperOk (vbox);
+    AssertWrapperOk(vbox);
 
-    // this (QWidget*) cast is necessary to work around a gcc-3.2 bug */
-    VBoxAboutDlg ((QWidget*)mainWindowShown(), fullVersion).exec();
+    (new VBoxAboutDlg(mainWindowShown(), strFullVersion))->show();
 }
 
 void VBoxProblemReporter::showHelpHelpDialog()
