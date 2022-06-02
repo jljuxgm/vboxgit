@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 32206 2010-09-02 14:13:13Z vboxsync $ */
+/* $Id: VM.cpp 32356 2010-09-09 13:43:45Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2178,6 +2178,7 @@ static DECLCALLBACK(VBOXSTRICTRC) vmR3PowerOff(PVM pVM, PVMCPU pVCpu, void *pvUs
         {
             /** @todo SMP support? */
             /** @todo make the state dumping at VMR3PowerOff optional. */
+            bool fOldBuffered = RTLogRelSetBuffering(true /*fBuffered*/);
             RTLogRelPrintf("****************** Guest state at power off ******************\n");
             DBGFR3Info(pVM, "cpumguest", "verbose", DBGFR3InfoLogRelHlp());
             RTLogRelPrintf("***\n");
@@ -2226,6 +2227,7 @@ static DECLCALLBACK(VBOXSTRICTRC) vmR3PowerOff(PVM pVM, PVMCPU pVCpu, void *pvUs
                 }
             }
 #endif
+            RTLogRelSetBuffering(fOldBuffered);
             RTLogRelPrintf("************** End of Guest state at power off ***************\n");
         }
 

@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 30955 2010-07-21 12:52:19Z vboxsync $ */
+/* $Id: CFGM.cpp 32356 2010-09-09 13:43:45Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -2672,7 +2672,9 @@ VMMR3DECL(int) CFGMR3QueryStringAllocDef(PCFGMNODE pNode, const char *pszName, c
 VMMR3DECL(void) CFGMR3Dump(PCFGMNODE pRoot)
 {
     LogRel(("************************* CFGM dump *************************\n"));
+    bool fOldBuffered = RTLogRelSetBuffering(true /*fBuffered*/);
     cfgmR3Dump(pRoot, 0, DBGFR3InfoLogRelHlp());
+    RTLogRelSetBuffering(fOldBuffered);
     LogRel(("********************* End of CFGM dump **********************\n"));
 }
 
