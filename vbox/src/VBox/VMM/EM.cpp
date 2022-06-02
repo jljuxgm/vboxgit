@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 30473 2010-06-28 15:45:22Z vboxsync $ */
+/* $Id: EM.cpp 32171 2010-09-01 09:54:45Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2094,3 +2094,33 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
     AssertFailed();
 }
 
+/**
+ * Notify EM of a state change (used by FTM)
+ *
+ * @param   pVM             VM Handle.
+ */
+VMMR3DECL(int) EMR3NotifySuspend(PVM pVM)
+{
+    PVMCPU pVCpu = VMMGetCpu(pVM);
+
+    TMR3NotifySuspend(pVM, pVCpu);  /* Stop the virtual time. */
+    pVCpu->em.s.enmPrevState = pVCpu->em.s.enmState;
+    pVCpu->em.s.enmState     = EMSTATE_SUSPENDED;
+    return VINF_SUCCESS;
+}
+
+/**
+ * Notify EM of a state change (used by FTM)
+ *
+ * @param   pVM             VM Handle.
+ */
+VMMR3DECL(int) EMR3NotifyResume(PVM pVM)
+{
+    PVMCPU pVCpu = VMMGetCpu(pVM);
+    EMSTATE enmCurState = pVCpu->em.s.enmState;
+
+    TMR3NotifyResume(pVM, pVCpu);  /* Stop the virtual time. */
+    pVCpu->em.s.enmState     = pVCpu->em.s.enmPrevState;
+    pVCpu->em.s.enmPrevState = enmCurState;
+    return VINF_SUCCESS;
+}
