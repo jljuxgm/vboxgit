@@ -1,4 +1,4 @@
-/* $Id: VHDHDDCore.cpp 31379 2010-08-05 07:33:10Z vboxsync $ */
+/* $Id: VHDHDDCore.cpp 31776 2010-08-19 09:48:44Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -2752,5 +2752,9 @@ VBOXHDDBACKEND g_VhdBackend =
     /* pfnComposeLocation */
     genericFileComposeLocation,
     /* pfnComposeName */
-    genericFileComposeName
+    genericFileComposeName,
+    /* pfnCompact */
+    NULL,
+    /* pfnResize */
+    NULL
 };
