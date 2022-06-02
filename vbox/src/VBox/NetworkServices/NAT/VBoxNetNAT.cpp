@@ -1,4 +1,4 @@
-/* $Id: VBoxNetNAT.cpp 30017 2010-06-03 18:31:57Z vboxsync $ */
+/* $Id: VBoxNetNAT.cpp 30445 2010-06-25 07:01:22Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -117,7 +117,7 @@ static DECLCALLBACK(int) AsyncIoThread(RTTHREAD pThread, void *pvUser);
 static DECLCALLBACK(int) natSndThread(RTTHREAD pThread, void *pvUser);
 static DECLCALLBACK(int) natUrgSndThread(RTTHREAD pThread, void *pvUser);
 static void SendWorker(struct mbuf *m, size_t cb);
-static void IntNetSendWorker(bool urg, const void *pvFrame, size_t cbFrame, struct mbuf *m);
+static void IntNetSendWorker(bool urg, void *pvFrame, size_t cbFrame, struct mbuf *m);
 
 
 static void natNotifyNATThread(void)
@@ -378,7 +378,7 @@ static void SendWorker(struct mbuf *m, size_t cb)
     slirp_input(g_pNAT->m_pNATState, m, cb);
 }
 
-static void IntNetSendWorker(bool urg, const void *pvFrame, size_t cbFrame, struct mbuf *m)
+static void IntNetSendWorker(bool urg, void *pvFrame, size_t cbFrame, struct mbuf *m)
 {
     Log2(("VBoxNetNAT: going to send some bytes ... \n"));
     VBoxNetNAT         *pThis = g_pNAT;
@@ -428,8 +428,7 @@ static void IntNetSendWorker(bool urg, const void *pvFrame, size_t cbFrame, stru
             RTSemEventSignal(g_pNAT->m_EventSend);
     }
     natNotifyNATThread();
-    slirp_ext_m_free(pThis->m_pNATState, m);
-    RTMemFree((void *)pvFrame);
+    slirp_ext_m_free(pThis->m_pNATState, m, (uint8_t *)pvFrame);
 }
 
 static DECLCALLBACK(int) AsyncIoThread(RTTHREAD pThread, void *pvUser)
