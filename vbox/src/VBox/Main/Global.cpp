@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 32763 2010-09-24 15:27:40Z vboxsync $ */
+/* $Id: Global.cpp 32880 2010-10-04 08:55:59Z vboxsync $ */
 
 /** @file
  *
@@ -218,11 +218,11 @@ const Global::OSType Global::sOSTypes[SchemaDefs::OSTypeId_COUNT] =
     { "Solaris", "Solaris",           SchemaDefs_OSTypeId_Solaris,         "Solaris",
       VBOXOSTYPE_Solaris,         VBOXOSHINT_NONE,
        768,  12, 16 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
-        StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3  },
+        StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3  },
     { "Solaris", "Solaris",           SchemaDefs_OSTypeId_Solaris_64,      "Solaris (64 bit)",
       VBOXOSTYPE_Solaris_x64,     VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC,
        768,  12, 16 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
-        StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3  },
+        StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3  },
     { "Solaris", "Solaris",           SchemaDefs_OSTypeId_OpenSolaris,     "OpenSolaris",
       VBOXOSTYPE_OpenSolaris,     VBOXOSHINT_NONE,
        768,  12, 16 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
