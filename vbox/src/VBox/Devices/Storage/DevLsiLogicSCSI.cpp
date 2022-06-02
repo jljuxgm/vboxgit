@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 30975 2010-07-22 09:19:17Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 31382 2010-08-05 07:49:10Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3836,7 +3836,7 @@ static DECLCALLBACK(void) lsilogicInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, c
      * Parse args.
      */
     if (pszArgs)
-        fVerbose = strstr(pszArgs, "verbose");
+        fVerbose = strstr(pszArgs, "verbose") != NULL;
 
     /*
      * Show info.
