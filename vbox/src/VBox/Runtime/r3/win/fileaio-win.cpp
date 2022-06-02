@@ -1,4 +1,4 @@
-/* $Id: fileaio-win.cpp 32426 2010-09-11 14:40:48Z vboxsync $ */
+/* $Id: fileaio-win.cpp 32428 2010-09-11 14:44:03Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Windows host platform.
  */
@@ -439,7 +439,7 @@ RTDECL(int) RTFileAioCtxWait(RTFILEAIOCTX hAioCtx, size_t cMinReqs, RTMSINTERVAL
         /* Check if we got woken up. */
         if (lCompletionKey == AIO_CONTEXT_WAKEUP_EVENT)
         {
-            Assert(fSucceeded && !pOverlapped)
+            Assert(fSucceeded && !pOverlapped);
             break;
         }
 
