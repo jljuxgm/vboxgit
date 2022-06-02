@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 35266 2010-12-20 21:00:44Z vboxsync $ */
+/* $Id: vboxvideo.c 35267 2010-12-20 21:07:52Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1158,6 +1158,8 @@ VBOXEnterVT(int scrnIndex, int flags)
     VBOXPtr pVBox = VBOXGetRec(pScrn);
 
     TRACE_ENTRY();
+    if (pVBox->fHaveHGSMI)
+        vboxEnableVbva(pScrn);
     pVBox->vtSwitch = FALSE;
 #ifdef VBOX_DRI
     if (pVBox->useDRI)
@@ -1172,8 +1174,6 @@ VBOXEnterVT(int scrnIndex, int flags)
                      pScrn->frameY0))
         return FALSE;
 #endif
-    if (pVBox->fHaveHGSMI)
-        vboxEnableVbva(pScrn);
     return TRUE;
 }
 
