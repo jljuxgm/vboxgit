@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 32885 2010-10-04 12:56:35Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of controlvm command.
  */
@@ -140,6 +140,19 @@ int handleControlVM(HandlerArg *a)
             unsigned n = parseNum(a->argv[2], 32, "CPU");
 
             CHECK_ERROR_BREAK(sessionMachine, HotPlugCPU(n));
+        }
+        else if (!strcmp(a->argv[1], "cpuexecutioncap"))
+        {
+            if (a->argc <= 1 + 1)
+            {
+                errorArgument("Missing argument to '%s'. Expected execution cap number.", a->argv[1]);
+                rc = E_FAIL;
+                break;
+            }
+
+            unsigned n = parseNum(a->argv[2], 100, "ExecutionCap");
+
+            CHECK_ERROR_BREAK(machine, COMSETTER(CPUExecutionCap)(n));
         }
         else if (!strcmp(a->argv[1], "poweroff"))
         {
