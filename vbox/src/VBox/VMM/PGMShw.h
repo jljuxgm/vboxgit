@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 31066 2010-07-23 14:48:24Z vboxsync $ */
+/* $Id: PGMShw.h 31775 2010-08-19 09:48:24Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -78,10 +78,10 @@
 # define SHW_POOL_ROOT_IDX      PGMPOOL_IDX_NESTED_ROOT      /* do not use! exception is real mode & protected mode without paging. */
 
 #else
-# define SHWPT                  X86PTPAE
-# define PSHWPT                 PX86PTPAE
-# define SHWPTE                 X86PTEPAE
-# define PSHWPTE                PX86PTEPAE
+# define SHWPT                  PGMSHWPTPAE
+# define PSHWPT                 PPGMSHWPTPAE
+# define SHWPTE                 PGMSHWPTEPAE
+# define PSHWPTE                PPGMSHWPTEPAE
 # define SHWPD                  X86PDPAE
 # define PSHWPD                 PX86PDPAE
 # define SHWPDE                 X86PDEPAE

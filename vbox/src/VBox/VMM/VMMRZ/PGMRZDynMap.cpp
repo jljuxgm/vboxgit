@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 31445 2010-08-07 21:12:46Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 31775 2010-08-19 09:48:24Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -1290,7 +1290,7 @@ VMMRCDECL(int) PGMRCDynMapInit(PVM pVM)
         if (pThis->fLegacyMode)
             pThis->paPages[iPage].uPte.pLegacy = &pVM->pgm.s.paDynPageMap32BitPTEsGC[iPage];
         else
-            pThis->paPages[iPage].uPte.pPae    = &pVM->pgm.s.paDynPageMapPaePTEsGC[iPage];
+            pThis->paPages[iPage].uPte.pPae    = (PX86PTEPAE)&pVM->pgm.s.paDynPageMapPaePTEsGC[iPage];
     }
 
     pVM->pgm.s.pRCDynMap = pThis;

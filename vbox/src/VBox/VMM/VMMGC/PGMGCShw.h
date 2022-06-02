@@ -1,4 +1,4 @@
-/* $Id: PGMGCShw.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PGMGCShw.h 31775 2010-08-19 09:48:24Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - Guest Context.
  */
@@ -49,10 +49,10 @@
 # define SHW_PT_SHIFT           X86_PT_SHIFT
 # define SHW_PT_MASK            X86_PT_MASK
 #else
-# define SHWPT                  X86PTPAE
-# define PSHWPT                 PX86PTPAE
-# define SHWPTE                 X86PTEPAE
-# define PSHWPTE                PX86PTEPAE
+# define SHWPT                  PGMSHWPTPAE
+# define PSHWPT                 PPGMSHWPTPAE
+# define SHWPTE                 PGMSHWPTEPAE
+# define PSHWPTE                PPGMSHWPTEPAE
 # define SHWPD                  X86PDPAE
 # define PSHWPD                 PX86PDPAE
 # define SHWPDE                 X86PDEPAE
