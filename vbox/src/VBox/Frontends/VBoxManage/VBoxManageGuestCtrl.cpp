@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33791 2010-11-05 12:55:55Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33792 2010-11-05 13:03:03Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -681,6 +681,15 @@ int ctrlCopyDirectoryRead(const char *pszRootDir, const char *pszSubDir, const c
                     }
                     break;
 
+                case RTDIRENTRYTYPE_SYMLINK:
+                    if (   (uFlags & CopyFileFlag_Recursive)
+                        && (uFlags & CopyFileFlag_FollowLinks))
+                    {
+                        /* Fall through to next case is intentional. */
+                    }
+                    else
+                        break;
+
                 case RTDIRENTRYTYPE_FILE:
                 {
                     bool fProcess = false;
@@ -721,14 +730,6 @@ int ctrlCopyDirectoryRead(const char *pszRootDir, const char *pszSubDir, const c
                     }
                 }
                 break;
-
-                case RTDIRENTRYTYPE_SYMLINK:
-                    if (   (uFlags & CopyFileFlag_Recursive)
-                        && (uFlags & CopyFileFlag_FollowLinks))
-                    {
-                        /* TODO */
-                    }
-                    break;
 
                 default:
                     break;
