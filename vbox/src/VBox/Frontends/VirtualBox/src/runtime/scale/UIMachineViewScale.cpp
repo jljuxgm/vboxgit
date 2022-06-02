@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 32407 2010-09-10 13:39:19Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 32587 2010-09-17 10:15:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -267,7 +267,12 @@ bool UIMachineViewScale::eventFilter(QObject *pWatched, QEvent *pEvent)
                     frameBuffer()->moveEvent(static_cast<QMoveEvent*>(pEvent));
                 break;
             }
+# else
+            case 0: /* Fixes compiler warning, fall through. */
 # endif /* defined (VBOX_GUI_USE_DDRAW) */
+
+#else
+            case 0: /* Fixes compiler warning, fall through. */
 #endif /* defined (Q_WS_WIN32) */
             default:
                 break;
