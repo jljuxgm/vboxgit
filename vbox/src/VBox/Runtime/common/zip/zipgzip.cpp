@@ -1,4 +1,4 @@
-/* $Id: zipgzip.cpp 33941 2010-11-10 16:22:29Z vboxsync $ */
+/* $Id: zipgzip.cpp 33945 2010-11-10 17:49:56Z vboxsync $ */
 /** @file
  * IPRT - GZIP Compressor and Decompressor I/O Stream.
  */
@@ -451,7 +451,7 @@ static RTVFSIOSTREAMOPS g_rtZipGzipOps =
 {
     { /* Obj */
         RTVFSOBJOPS_VERSION,
-        RTVFSOBJTYPE_IOSTREAM,
+        RTVFSOBJTYPE_IO_STREAM,
         "gzip",
         rtZipGzip_Close,
         rtZipGzip_QueryInfo,
