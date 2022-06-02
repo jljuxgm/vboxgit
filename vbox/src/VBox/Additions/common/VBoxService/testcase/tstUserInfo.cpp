@@ -1,4 +1,4 @@
-/* $Id: tstUserInfo.cpp 32636 2010-09-20 12:12:33Z vboxsync $ */
+/* $Id: tstUserInfo.cpp 32652 2010-09-21 07:04:49Z vboxsync $ */
 /** @file
  * Test case for correct user environment.
  */
@@ -73,6 +73,6 @@ int main()
     RTPrintf("Environment:\n\n");
     RTPrintf("APPDATA = %s\n", getenv("APPDATA"));
 #endif
-    return VINF_SUCCESS(rc) ? 0 : 1;
+    return RT_SUCCESS(rc) ? 0 : 1;
 }
 
