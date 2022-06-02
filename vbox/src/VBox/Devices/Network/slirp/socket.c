@@ -1,4 +1,4 @@
-/* $Id: socket.c 32745 2010-09-24 06:32:57Z vboxsync $ */
+/* $Id: socket.c 32839 2010-09-30 10:17:47Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -613,7 +613,7 @@ sowrite(PNATState pData, struct socket *so)
             if (ret > 0 && ret != iov[1].iov_len)
             {
                 STAM_COUNTER_INC(&pData->StatIOWrite_rest);
-                STAM_COUNTER_ADD(&pData->StatIOWrite_rest_bytes, (ret - iov[1].iov_len));
+                STAM_COUNTER_ADD(&pData->StatIOWrite_rest_bytes, (iov[1].iov_len - ret));
             }
         });
     }
