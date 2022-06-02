@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.h 34574 2010-12-01 15:01:02Z vboxsync $ */
+/* $Id: VRDEServerImpl.h 35105 2010-12-14 16:39:21Z vboxsync $ */
 
 /** @file
  *
@@ -87,6 +87,7 @@ public:
     STDMETHOD(COMSETTER(VRDEExtPack))(IN_BSTR aExtPack);
     STDMETHOD(COMGETTER(AuthLibrary)) (BSTR *aValue);
     STDMETHOD(COMSETTER(AuthLibrary)) (IN_BSTR aValue);
+    STDMETHOD(COMGETTER(VRDEProperties)) (ComSafeArrayOut (BSTR, aProperties));
 
     // IVRDEServer methods
     STDMETHOD(SetVRDEProperty) (IN_BSTR aKey, IN_BSTR aValue);
