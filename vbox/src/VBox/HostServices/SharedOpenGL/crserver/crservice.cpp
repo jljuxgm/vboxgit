@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 33171 2010-10-15 23:10:10Z vboxsync $ */
+/* $Id: crservice.cpp 33309 2010-10-21 14:14:38Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -71,7 +71,7 @@ static uint8_t* g_pvVRamBase;
 #endif
 
 static const char* gszVBoxOGLSSMMagic = "***OpenGL state data***";
-#define SHCROGL_SSM_VERSION 20
+#define SHCROGL_SSM_VERSION 21
 
 static DECLCALLBACK(int) svcUnload (void *)
 {
