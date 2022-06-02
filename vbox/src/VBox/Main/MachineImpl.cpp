@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 34010 2010-11-11 20:17:47Z vboxsync $ */
+/* $Id: MachineImpl.cpp 34057 2010-11-13 18:41:49Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5227,7 +5227,7 @@ STDMETHODIMP Machine::SetStorageControllerBootable(IN_BSTR aName, BOOL fBootable
     rc = getStorageControllerByName(aName, ctrl, true /* aSetError */);
     if (SUCCEEDED(rc))
     {
-        /* Check that only one controller of each type is marked as bootable. */
+        /* Ensure that only one controller of each type is marked as bootable. */
         if (fBootable == TRUE)
         {
             for (StorageControllerList::const_iterator it = mStorageControllers->begin();
@@ -5241,9 +5241,7 @@ STDMETHODIMP Machine::SetStorageControllerBootable(IN_BSTR aName, BOOL fBootable
                     && aCtrl->getStorageBus() == ctrl->getStorageBus()
                     && aCtrl->getControllerType() == ctrl->getControllerType())
                 {
-                    rc = setError(VBOX_E_OBJECT_IN_USE,
-                                  tr("Another storage controller '%s' is already marked as bootable"),
-                                  aCtrl->getName().c_str());
+                    aCtrl->setBootable(FALSE);
                     break;
                 }
             }
