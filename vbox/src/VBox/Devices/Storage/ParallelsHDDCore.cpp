@@ -1,4 +1,4 @@
-/* $Id: ParallelsHDDCore.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: ParallelsHDDCore.cpp 30863 2010-07-15 19:53:40Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -566,9 +566,9 @@ static int parallelsRead(void *pBackendData, uint64_t uOffset, void *pvBuf,
     }
     else
     {
-        /** Calculate offset in the real file. */
+        /* Calculate offset in the real file. */
         uSector = uOffset / 512;
-        /** One chunk in the file is always one track big. */
+        /* One chunk in the file is always one track big. */
         iIndexInAllocationTable = (uint32_t)(uSector / pImage->PCHSGeometry.cSectors);
         uSector = uSector % pImage->PCHSGeometry.cSectors;
 
