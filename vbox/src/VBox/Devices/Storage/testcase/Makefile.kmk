@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31505 2010-08-10 06:41:09Z vboxsync $
+# $Id: Makefile.kmk 31506 2010-08-10 06:51:16Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -80,6 +80,8 @@ ifdef VBOX_WITH_TESTCASES
 	$(SDK_VBOX_ZLIB_LIBS)
  ifeq ($(KBUILD_TARGET),linux)
   VBoxFixHdd_LIBS += crypt
+ else ifeq ($(KBUILD_TARGET),darwin)
+  VBoxFixHdd_LIBS += iconv
  endif
  tstVD_SOURCES  = tstVD.cpp
  tstVD-2_SOURCES  = tstVD-2.cpp
