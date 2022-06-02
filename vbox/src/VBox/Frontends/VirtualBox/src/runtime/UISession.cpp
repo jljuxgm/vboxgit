@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 33756 2010-11-04 09:59:12Z vboxsync $ */
+/* $Id: UISession.cpp 33776 2010-11-04 15:15:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -363,9 +363,9 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
 
     CGuest guest = session().GetConsole().GetGuest();
 #ifdef DEBUG_andy
-    CProgress progressInstall = guest.UpdateGuestAdditions("c:\\Downloads\\VBoxGuestAdditions-r67158.iso");
+    CProgress progressInstall = guest.UpdateGuestAdditions("c:\\Downloads\\VBoxGuestAdditions_3.2.8.iso", 0);
 #else
-    CProgress progressInstall = guest.UpdateGuestAdditions(strSource);
+    CProgress progressInstall = guest.UpdateGuestAdditions(strSource, 0 /* Flags, not used. */);
 #endif
     bool fResult = guest.isOk();
     if (fResult)
