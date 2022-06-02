@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 34148 2010-11-17 20:54:24Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -111,7 +111,7 @@ typedef struct DRVSCSI
 /** Converts a pointer to DRVSCSI::IPortAsync to a PDRVSCSI. */
 #define PDMIBLOCKASYNCPORT_2_DRVSCSI(pInterface) ( (PDRVSCSI)((uintptr_t)pInterface - RT_OFFSETOF(DRVSCSI, IPortAsync)) )
 
-static int drvscsiIsRedoPossible(int rc)
+static bool drvscsiIsRedoPossible(int rc)
 {
     if (   rc == VERR_DISK_FULL
         || rc == VERR_FILE_TOO_BIG
