@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 30769 2010-07-09 15:54:22Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 30784 2010-07-12 09:41:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -154,7 +154,8 @@ VMMR3DECL(int) PGMR3SharedModuleUnregister(PVM pVM, char *pszModuleName, char *p
 # if defined(VBOX_STRICT) && HC_ARCH_BITS == 64
     for (unsigned i = 0; i < cSharedModules; i++)
     {
-        if (    !strcmp(pSharedModules[i]->szName, pszModuleName)
+        if (    pSharedModules[i]
+            &&  !strcmp(pSharedModules[i]->szName, pszModuleName)
             &&  !strcmp(pSharedModules[i]->szVersion, pszVersion))
         {
             RTMemFree(pSharedModules[i]);
