@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltPt-win.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxNetFltPt-win.h 34102 2010-11-16 11:02:14Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Windows Specific Code. Protocol edge of ndis filter driver
  */
@@ -29,6 +29,7 @@ DECLHIDDEN(NDIS_STATUS) vboxNetFltWinPtRegister(IN PDRIVER_OBJECT DriverObject, 
 DECLHIDDEN(NDIS_STATUS) vboxNetFltWinPtDeregister();
 DECLHIDDEN(NDIS_STATUS) vboxNetFltWinPtDoUnbinding(PADAPT pAdapt, bool bOnUnbind);
 DECLHIDDEN(VOID) vboxNetFltWinPtFlushReceiveQueue(IN PADAPT pAdapt, IN bool bReturn);
+DECLHIDDEN(VOID) vboxNetFltWinPtQueueReceivedPacket(IN PADAPT pAdapt, IN PNDIS_PACKET Packet, IN BOOLEAN DoIndicate);
 DECLHIDDEN(VOID) vboxNetFltWinPtRequestComplete(IN NDIS_HANDLE ProtocolBindingContext, IN PNDIS_REQUEST NdisRequest, IN NDIS_STATUS Status);
 DECLHIDDEN(bool) vboxNetFltWinPtCloseAdapter(PADAPT pAdapt, PNDIS_STATUS pStatus);
 
