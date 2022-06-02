@@ -1,4 +1,4 @@
-# $Id: Config.kmk 31038 2010-07-23 08:43:33Z vboxsync $
+# $Id: Config.kmk 31095 2010-07-26 08:31:46Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4268,7 +4268,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31038 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31095 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -4374,7 +4374,7 @@ ifeq ($(KBUILD_TARGET), win)
 else
   VBOX_SEP=:
 endif
-VBOX_JAVAC_OPTS = -source 1.5 -target 1.5
+VBOX_JAVAC_OPTS = -source 1.5 -target 1.5 -Xlint:unchecked
 
 #
 # Legacy.
