@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 31241 2010-07-30 12:50:58Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 31689 2010-08-16 11:35:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -813,7 +813,6 @@ void UIMachineLogic::sltMachineStateChanged()
 void UIMachineLogic::sltAdditionsStateChanged()
 {
     /* Variable falgs: */
-    bool fIsAdditionsActive = uisession()->isGuestAdditionsActive();
     bool fIsSupportsGraphics = uisession()->isGuestSupportsGraphics();
     bool fIsSupportsSeamless = uisession()->isGuestSupportsSeamless();
 
@@ -823,10 +822,6 @@ void UIMachineLogic::sltAdditionsStateChanged()
 
     /* Check if we should enter some extended mode: */
     sltCheckRequestedModes();
-
-    /* A check whether the installed Guest Additions on the guest are up-to-date is now
-     * performed by the Guest Additions itself (via VBoxTray/VBoxClient), so no need to
-     * do something here anymore. */
 }
 
 void UIMachineLogic::sltMouseCapabilityChanged()
