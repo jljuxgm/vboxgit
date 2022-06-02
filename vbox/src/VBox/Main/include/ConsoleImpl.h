@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 31218 2010-07-29 15:07:48Z vboxsync $ */
+/* $Id: ConsoleImpl.h 31220 2010-07-29 15:25:57Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -137,7 +137,7 @@ public:
     STDMETHOD(GetGuestEnteredACPIMode)(BOOL *aEntered);
     STDMETHOD(SaveState)(IProgress **aProgress);
     STDMETHOD(AdoptSavedState)(IN_BSTR aSavedStateFile);
-    STDMETHOD(ForgetSavedState)();
+    STDMETHOD(DiscardSavedState)();
     STDMETHOD(GetDeviceActivity)(DeviceType_T aDeviceType,
                                 DeviceActivity_T *aDeviceActivity);
     STDMETHOD(AttachUSBDevice)(IN_BSTR aId);
