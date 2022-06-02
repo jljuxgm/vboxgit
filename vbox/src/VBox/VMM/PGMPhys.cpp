@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 34167 2010-11-18 12:40:54Z vboxsync $ */
+/* $Id: PGMPhys.cpp 34318 2010-11-24 12:57:17Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4115,12 +4115,14 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
 /**
  * Frees the specified RAM page and replaces it with the ZERO page.
  *
- * This is used by ballooning, remapping MMIO2 and RAM reset.
+ * This is used by ballooning, remapping MMIO2, RAM reset and state loading.
  *
- * @param   pVM         Pointer to the shared VM structure.
- * @param   pReq        Pointer to the request.
- * @param   pPage       Pointer to the page structure.
- * @param   GCPhys      The guest physical address of the page, if applicable.
+ * @param   pVM             Pointer to the shared VM structure.
+ * @param   pReq            Pointer to the request.
+ * @param   pcPendingPages  Where the number of pages waiting to be freed are
+ *                          kept.  This will normally be incremented.
+ * @param   pPage           Pointer to the page structure.
+ * @param   GCPhys          The guest physical address of the page, if applicable.
  *
  * @remarks The caller must own the PGM lock.
  */
