@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 32853 2010-09-30 16:02:16Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 32854 2010-09-30 18:12:20Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -510,19 +510,15 @@ static int handleExecProgram(HandlerArg *a)
                             }
                         }
                         else
-                        {
-                            if (RT_FAILURE(rc))
-                                RTMsgError("Error while looking up error code, rc=%Rrc", rc);
-                            else
-                                com::GluePrintRCMessage(iRc);
-                        }
+                            com::GluePrintRCMessage(iRc);
                     }
                     else if (fVerbose)
                     {
                         ULONG uRetStatus, uRetExitCode, uRetFlags;
                         rc = guest->GetProcessStatus(uPID, &uRetExitCode, &uRetFlags, &uRetStatus);
                         if (SUCCEEDED(rc))
-                            RTPrintf("Exit code=%u (Status=%u [%s], Flags=%u)\n", uRetExitCode, uRetStatus, getStatus(uRetStatus), uRetFlags);
+                            RTPrintf("Exit code=%u (Status=%u [%s], Flags=%u)\n",
+                                    uRetExitCode, uRetStatus, getStatus(uRetStatus), uRetFlags);
                     }
                 }
                 else
