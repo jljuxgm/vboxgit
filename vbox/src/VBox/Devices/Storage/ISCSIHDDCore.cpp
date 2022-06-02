@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 32278 2010-09-07 11:35:31Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 32429 2010-09-11 15:41:15Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -4648,7 +4648,7 @@ static int iscsiFlush(void *pBackendData)
     cdb[8] = 0;         /* transfer everything to disk */
     cdb[9] = 0;         /* control */
 
-    sr.enmXfer   = SCSIXFER_TO_TARGET;
+    sr.enmXfer   = SCSIXFER_NONE;
     sr.cbCmd     = sizeof(cdb);
     sr.pvCmd     = cdb;
     sr.cbI2TData = 0;
