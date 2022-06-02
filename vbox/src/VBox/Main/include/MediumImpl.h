@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 31300 2010-08-02 13:22:27Z vboxsync $ */
+/* $Id: MediumImpl.h 31306 2010-08-02 14:16:12Z vboxsync $ */
 
 /** @file
  *
@@ -158,6 +158,7 @@ public:
     const Guid& getId() const;
     MediumState_T getState() const;
     MediumVariant_T getVariant() const;
+    bool isHostDrive() const;
     const Utf8Str& getLocation() const;
     const Utf8Str& getLocationFull() const;
     const Utf8Str& getFormat() const;

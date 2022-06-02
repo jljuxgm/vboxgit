@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 31300 2010-08-02 13:22:27Z vboxsync $ */
+/* $Id: MediumImpl.cpp 31306 2010-08-02 14:16:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2600,6 +2600,15 @@ MediumState_T Medium::getState() const
 MediumVariant_T Medium::getVariant() const
 {
     return m->variant;
+}
+
+/**
+ * Internal method which returns true if this medium represents a host drive.
+ * @return
+ */
+bool Medium::isHostDrive() const
+{
+    return m->hostDrive;
 }
 
 /**
