@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 30758 2010-07-09 12:30:12Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 30767 2010-07-09 14:56:07Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1939,7 +1939,8 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
             if (details == VMINFO_FULL)
             {
                 rc = guest->COMGETTER(AdditionsVersion)(guestString.asOutParam());
-                if (SUCCEEDED(rc))
+                if (   SUCCEEDED(rc)
+                    && !guestString.isEmpty())
                 {
                     if (details == VMINFO_MACHINEREADABLE)
                         RTPrintf("GuestAdditionsVersion=\"%lS\"\n", guestString.raw());
