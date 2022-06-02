@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 34386 2010-11-25 17:10:52Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 34406 2010-11-26 16:45:34Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -653,9 +653,7 @@ static void pdmBlkCacheCommit(PPDMBLKCACHE pBlkCache)
 
     if (!RTListIsEmpty(&ListDirtyNotCommitted))
     {
-        PPDMBLKCACHEENTRY pEntry = RTListNodeGetFirst(&ListDirtyNotCommitted,
-                                                      PDMBLKCACHEENTRY,
-                                                      NodeNotCommitted);
+        PPDMBLKCACHEENTRY pEntry = RTListGetFirst(&ListDirtyNotCommitted, PDMBLKCACHEENTRY, NodeNotCommitted);
 
         while (!RTListNodeIsLast(&ListDirtyNotCommitted, &pEntry->NodeNotCommitted))
         {
@@ -696,9 +694,7 @@ static void pdmBlkCacheCommitDirtyEntries(PPDMBLKCACHEGLOBAL pCache)
         pdmBlkCacheLockEnter(pCache);
         Assert(!RTListIsEmpty(&pCache->ListUsers));
 
-        PPDMBLKCACHE pBlkCache = RTListNodeGetFirst(&pCache->ListUsers,
-                                                    PDMBLKCACHE,
-                                                    NodeCacheUser);
+        PPDMBLKCACHE pBlkCache = RTListGetFirst(&pCache->ListUsers, PDMBLKCACHE, NodeCacheUser);
         AssertPtr(pBlkCache);
 
         while (!RTListNodeIsLast(&pCache->ListUsers, &pBlkCache->NodeCacheUser))

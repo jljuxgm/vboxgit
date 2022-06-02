@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 34398 2010-11-26 16:24:58Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 34406 2010-11-26 16:45:34Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -909,7 +909,7 @@ static void ctrlCopyDestroy(PRTLISTNODE pList)
     AssertPtr(pList);
 
     /* Destroy file list. */
-    PDIRECTORYENTRY pNode = RTListNodeGetFirst(pList, DIRECTORYENTRY, Node);
+    PDIRECTORYENTRY pNode = RTListGetFirst(pList, DIRECTORYENTRY, Node);
     while (pNode)
     {
         PDIRECTORYENTRY pNext = RTListNodeGetNext(&pNode->Node, DIRECTORYENTRY, Node);

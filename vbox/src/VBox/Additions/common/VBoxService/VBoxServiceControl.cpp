@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 34406 2010-11-26 16:45:34Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -243,7 +243,7 @@ static DECLCALLBACK(void) VBoxServiceControlTerm(void)
     }
 
     /* Finally destroy thread list. */
-    pNode = RTListNodeGetFirst(&g_GuestControlExecThreads, VBOXSERVICECTRLTHREAD, Node);
+    pNode = RTListGetFirst(&g_GuestControlExecThreads, VBOXSERVICECTRLTHREAD, Node);
     while (pNode)
     {
         PVBOXSERVICECTRLTHREAD pNext = RTListNodeGetNext(&pNode->Node, VBOXSERVICECTRLTHREAD, Node);
