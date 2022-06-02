@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: MMHyper.cpp 33998 2010-11-11 14:52:22Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -48,12 +48,14 @@ DECLINLINE(uint32_t) mmR3ComputeHyperHeapSize(PVM pVM, bool fCanUseLargerHeap)
 {
     bool fHwVirtExtForced = VMMIsHwVirtExtForced(pVM);
 
+    /* Newer chipset allows for much more devices, putting additional pressure on hyperheap */
+    /* @todo: maybe base hyperheap size upon number of devices attached too */
+    if (fCanUseLargerHeap)
+        return _2M + pVM->cCpus * 2 * _64K;
+
     if (pVM->cCpus > 1)
         return _1M + pVM->cCpus * 2 * _64K;
 
-    if (fCanUseLargerHeap)
-        return 1280*_1K;
-    else
     if (fHwVirtExtForced)
     {
         uint64_t cbRam = 0;
