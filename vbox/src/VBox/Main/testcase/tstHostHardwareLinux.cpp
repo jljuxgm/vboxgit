@@ -1,4 +1,4 @@
-/* $Id: tstHostHardwareLinux.cpp 32262 2010-09-06 23:37:00Z vboxsync $ */
+/* $Id: tstHostHardwareLinux.cpp 32299 2010-09-07 21:25:05Z vboxsync $ */
 /** @file
  *
  * Test executable for quickly excercising/debugging the Linux host hardware
@@ -90,9 +90,9 @@ int main()
         RTPrintf ("\n");
     }
 #ifdef VBOX_USB_WITH_SYSFS
-    VBoxMainUSBDeviceInfo deviceInfo;
-    VBoxMainUSBDevInfoInit(&deviceInfo);
-    rc = USBDevInfoUpdateDevices(&deviceInfo);
+    VECTOR_OBJ(USBDeviceInfo) vecDevInfo;
+    VEC_INIT_OBJ(&vecDevInfo, USBDeviceInfo, USBDevInfoCleanup);
+    rc = USBSysfsEnumerateHostDevices(&vecDevInfo);
     if (RT_FAILURE(rc))
     {
         RTPrintf ("Failed to update the host USB device information, error %Rrc\n",
@@ -101,7 +101,7 @@ int main()
     }
     RTPrintf ("Listing USB devices detected:\n");
     USBDeviceInfo *pInfo;
-    VEC_FOR_EACH(&deviceInfo.mvecDevInfo, USBDeviceInfo, pInfo)
+    VEC_FOR_EACH(&vecDevInfo, USBDeviceInfo, pInfo)
     {
         char szProduct[1024];
         if (RTLinuxSysFsReadStrFile(szProduct, sizeof(szProduct),
@@ -145,6 +145,7 @@ int main()
                       *ppszIf, szDriver, u64InterfaceClass);
         }
     }
+    VEC_CLEANUP_OBJ(&vecDevInfo);
     VBoxMainHotplugWaiter waiter;
     RTPrintf ("Waiting for a hotplug event for five seconds...\n");
     doHotplugEvent(&waiter, 5000);
