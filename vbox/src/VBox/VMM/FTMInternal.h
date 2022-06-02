@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 32285 2010-09-07 12:29:34Z vboxsync $ */
+/* $Id: FTMInternal.h 32286 2010-09-07 12:37:46Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -64,6 +64,9 @@ typedef struct FTM
 
     /** Current active socket. */
     RTSOCKET            hSocket;
+#if HC_ARCH_BITS == 32
+    RTSOCKET            hSocketAlignment;
+#endif
 
     /** State sync. */
     struct
@@ -79,7 +82,7 @@ typedef struct FTM
     struct
     {
         R3PTRTYPE(PRTTCPSERVER)    hServer;
-        AVLGCPHYSTREE              PhysPageTree;
+        R3PTRTYPE(AVLGCPHYSTREE)   pPhysPageTree;
     } standby;
 
     struct
