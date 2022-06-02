@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 33277 2010-10-20 20:09:05Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 33422 2010-10-25 13:33:07Z vboxsync $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -204,7 +204,7 @@ int VBoxServiceToolboxMain(int argc, char **argv)
         if (   !strcmp(argv[0], "cat")
             || !strcmp(argv[0], "vbox_cat"))
         {
-            rc = VBoxServiceToolboxCat(argc - 1, &argv[1]);
+            rc = VBoxServiceToolboxCat(argc, argv);
         }
     }
 
