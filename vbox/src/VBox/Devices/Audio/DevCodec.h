@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 31771 2010-08-19 09:15:42Z vboxsync $ */
+/* $Id: DevCodec.h 31990 2010-08-26 12:45:26Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -182,6 +182,12 @@ typedef struct ADCVOLNODE
     AMPLIFIER   B_params;
 } ADCVOLNODE, *PADCVOLNODE;
 
+typedef struct RESNODE
+{
+    CODECCOMMONNODE node;
+    uint32_t    u32F07_param;
+} RESNODE, *PRESNODE;
+
 typedef union CODECNODE
 {
     CODECCOMMONNODE node;
@@ -199,6 +205,7 @@ typedef union CODECNODE
     CDNODE          cdnode;
     VOLUMEKNOBNODE  volumeKnob;
     ADCVOLNODE      adcvol;
+    RESNODE         reserved;
 } CODECNODE, *PCODECNODE;
 
 typedef enum
