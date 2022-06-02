@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 34149 2010-11-17 21:31:45Z vboxsync $ */
+/* $Id: PGMInternal.h 34163 2010-11-18 12:16:43Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1388,7 +1388,9 @@ typedef struct PGMROMRANGE
     /** Alignment padding. */
     uint8_t                             au8Alignment[3];
     /** Alignment padding ensuring that aPages is sizeof(PGMROMPAGE) aligned. */
-    uint32_t                            au32Alignemnt[HC_ARCH_BITS == 32 ? 6 : 2];
+    uint32_t                            au32Alignemnt[HC_ARCH_BITS == 32 ? 5 : 1];
+    /** The size bits pvOriginal points to. */
+    uint32_t                            cbOriginal;
     /** Pointer to the original bits when PGMPHYS_ROM_FLAGS_PERMANENT_BINARY was specified.
      * This is used for strictness checks. */
     R3PTRTYPE(const void *)             pvOriginal;
