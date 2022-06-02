@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 32780 2010-09-27 19:00:22Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 32827 2010-09-29 18:48:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1819,6 +1819,8 @@ HRESULT Console::doCPURemove(ULONG aCpu)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
+    /** @todo r=klaus holding the lock while triggering VMMDev/EMT activity is
+     * asking for deadlocks. Code MUST drop any lock before touching VMMDev. */
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     if (   mMachineState != MachineState_Running
@@ -1971,6 +1973,8 @@ HRESULT Console::doCPUAdd(ULONG aCpu)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
+    /** @todo r=klaus holding the lock while triggering VMMDev/EMT activity is
+     * asking for deadlocks. Code MUST drop any lock before touching VMMDev. */
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     if (   mMachineState != MachineState_Running
