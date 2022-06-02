@@ -1,4 +1,4 @@
-/* $Id: VBoxDefs.cpp 34064 2010-11-15 11:12:37Z vboxsync $ */
+/* $Id: VBoxDefs.cpp 34519 2010-11-30 14:17:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -89,5 +89,6 @@ const char* VBoxDefs::GUI_DbgAutoShow = "GUI/Dbg/AutoShow";
 #endif
 
 QStringList VBoxDefs::VBoxFileExts = QStringList() << "xml" << "vbox";
+QStringList VBoxDefs::VBoxExtPackFileExts = QStringList() << "vbox-extpack";
 QStringList VBoxDefs::OVFFileExts = QStringList() << "ovf" << "ova";
 

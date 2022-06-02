@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34479 2010-11-29 16:44:03Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34519 2010-11-30 14:17:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2407,6 +2407,14 @@ void VBoxProblemReporter::cannotUpdateGuestAdditions (const CProgress &aProgress
              Error,
              tr ("Failed to update Guest Additions. The Guest Additions installation image will be mounted to provide a manual installation."),
              formatErrorInfo (aProgress.GetErrorInfo()));
+}
+
+void VBoxProblemReporter::cannotInstallExtPack(const QString &strFilename, const CExtPackManager &extPackManager, QWidget *pParent /* = 0 */)
+{
+    message (pParent ? pParent : mainWindowShown(),
+             Error,
+             tr("Failed to install the Extension Pack <b>%1</b>.").arg(strFilename),
+             formatErrorInfo(extPackManager));
 }
 
 void VBoxProblemReporter::warnAboutIncorrectPort (QWidget *pParent) const
