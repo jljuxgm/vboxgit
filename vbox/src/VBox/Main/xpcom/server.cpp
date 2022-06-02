@@ -1,4 +1,4 @@
-/* $Id: server.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: server.cpp 33397 2010-10-24 16:22:31Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -140,8 +140,8 @@ NS_DECL_CLASSINFO(SharedFolder)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(SharedFolder, ISharedFolder)
 
 #ifdef VBOX_WITH_VRDP
-NS_DECL_CLASSINFO(VRDE)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(VRDE, IVRDE)
+NS_DECL_CLASSINFO(VRDEServer)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(VRDEServer, IVRDEServer)
 #endif
 
 NS_DECL_CLASSINFO(Host)
