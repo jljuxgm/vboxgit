@@ -1,4 +1,4 @@
-/* $Id: string.cpp 31281 2010-08-02 10:35:19Z vboxsync $ */
+/* $Id: string.cpp 33055 2010-10-12 12:08:26Z vboxsync $ */
 
 /** @file
  *
@@ -49,36 +49,46 @@ void Utf8Str::cloneTo(char **pstr) const
 }
 #endif
 
-Utf8Str& Utf8Str::toLower()
+Utf8Str &Utf8Str::stripTrailingSlash()
 {
     if (length())
-        ::RTStrToLower(m_psz);
+    {
+        ::RTPathStripTrailingSlash(m_psz);
+        jolt();
+    }
     return *this;
 }
 
-Utf8Str& Utf8Str::toUpper()
+Utf8Str &Utf8Str::stripFilename()
 {
     if (length())
-        ::RTStrToUpper(m_psz);
+    {
+        RTPathStripFilename(m_psz);
+        jolt();
+    }
     return *this;
 }
 
-void Utf8Str::stripTrailingSlash()
+Utf8Str &Utf8Str::stripPath()
 {
-    RTPathStripTrailingSlash(m_psz);
-    jolt();
+    if (length())
+    {
+        char *pcszFilename = ::RTStrDup(::RTPathFilename(m_psz));
+        cleanup();
+        MiniString::copyFrom(pcszFilename);
+        RTStrFree(pcszFilename);
+    }
+    return *this;
 }
 
-void Utf8Str::stripFilename()
+Utf8Str &Utf8Str::stripExt()
 {
-    RTPathStripFilename(m_psz);
-    jolt();
-}
-
-void Utf8Str::stripExt()
-{
-    RTPathStripExt(m_psz);
-    jolt();
+    if (length())
+    {
+        RTPathStripExt(m_psz);
+        jolt();
+    }
+    return *this;
 }
 
 /**
