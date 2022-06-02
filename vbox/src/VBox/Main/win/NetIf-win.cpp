@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 34545 2010-12-01 08:52:24Z vboxsync $ */
+/* $Id: NetIf-win.cpp 34546 2010-12-01 09:04:23Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -131,14 +131,14 @@ static int collectNetIfInfo(Bstr &strName, Guid &guid, PNETIFINFO pInfo)
                             case AF_INET:
                                 if (!fIPFound)
                                 {
-                                    if (pPrefix->pPrefixLength <= sizeof(pInfo->IPNetMask) * 8)
+                                    if (pPrefix->PrefixLength <= sizeof(pInfo->IPNetMask) * 8)
                                     {
                                         fIPFound = true;
                                         ASMBitSetRange(&pInfo->IPNetMask, 0, pPrefix->PrefixLength);
                                     }
                                     else
                                         Log(("collectNetIfInfo: Unexpected IPv4 prefix length of %d\n",
-                                             pPrefix->pPrefixLength));
+                                             pPrefix->PrefixLength));
                                 }
                                 break;
                             case AF_INET6:
