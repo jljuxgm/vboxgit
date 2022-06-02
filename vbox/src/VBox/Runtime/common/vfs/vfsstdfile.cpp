@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 33859 2010-11-08 16:15:07Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 33860 2010-11-08 16:35:11Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -333,7 +333,6 @@ static DECLCALLBACK(int) rtVfsStdFile_QuerySize(void *pvThis, uint64_t *pcbFile)
 DECLHIDDEN(const RTVFSFILEOPS) g_rtVfsStdFileOps =
 {
     { /* Stream */
-        /** The basic object operation.  */
         { /* Obj */
             RTVFSOBJOPS_VERSION,
             RTVFSOBJTYPE_FILE,
