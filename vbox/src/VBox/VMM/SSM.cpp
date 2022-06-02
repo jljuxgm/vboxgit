@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 32343 2010-09-09 12:13:14Z vboxsync $ */
+/* $Id: SSM.cpp 33248 2010-10-20 10:05:44Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -249,9 +249,9 @@
 #define SSMRECTERM_FLAGS_CRC32                  UINT16_C(0x0001)
 /** @} */
 
-/** Start structure magic. (Isacc Asimov) */
+/** Start structure magic. (Isaac Asimov) */
 #define SSMR3STRUCT_BEGIN                       UINT32_C(0x19200102)
-/** End structure magic. (Isacc Asimov) */
+/** End structure magic. (Isaac Asimov) */
 #define SSMR3STRUCT_END                         UINT32_C(0x19920406)
 
 
