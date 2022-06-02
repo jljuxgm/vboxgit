@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 33708 2010-11-02 18:46:46Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 33915 2010-11-09 16:44:39Z vboxsync $ */
 
 /** @file
  *
@@ -135,7 +135,11 @@ HRESULT StorageController::init(Machine *aParent,
                         tr("Invalid storage connection type"));
 
     ULONG maxInstances;
-    HRESULT rc = aParent->getVirtualBox()->getSystemProperties()->GetMaxInstancesOfStorageBus(aStorageBus, &maxInstances);
+    ChipsetType_T chipsetType;
+    HRESULT rc = aParent->COMGETTER(ChipsetType)(&chipsetType);
+    if (FAILED(rc))
+        return rc;
+    rc = aParent->getVirtualBox()->getSystemProperties()->GetMaxInstancesOfStorageBus(chipsetType, aStorageBus, &maxInstances);
     if (FAILED(rc))
         return rc;
     if (aInstance >= maxInstances)
