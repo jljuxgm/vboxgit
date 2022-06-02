@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 34433 2010-11-27 11:09:38Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -2176,6 +2176,23 @@ static DECLCALLBACK(int) lsilogicDeviceSCSIRequestCompleted(PPDMISCSIPORT pInter
 
     if (pLsiLogicDevice->cOutstandingRequests == 0 && pLsiLogic->fSignalIdle)
         PDMDevHlpAsyncNotificationCompleted(pLsiLogic->pDevInsR3);
+
+    return VINF_SUCCESS;
+}
+
+static DECLCALLBACK(int) lsilogicQueryDeviceLocation(PPDMISCSIPORT pInterface, const char **ppcszController,
+                                                     uint32_t *piInstance, uint32_t *piLUN)
+{
+    PLSILOGICDEVICE pLsiLogicDevice = PDMISCSIPORT_2_PLSILOGICDEVICE(pInterface);
+    PPDMDEVINS pDevIns = pLsiLogicDevice->CTX_SUFF(pLsiLogic)->CTX_SUFF(pDevIns);
+
+    AssertPtrReturn(ppcszController, VERR_INVALID_POINTER);
+    AssertPtrReturn(piInstance, VERR_INVALID_POINTER);
+    AssertPtrReturn(piLUN, VERR_INVALID_POINTER);
+
+    *ppcszController = pDevIns->pReg->szName;
+    *piInstance = pDevIns->iInstance;
+    *piLUN = pLsiLogicDevice->iLUN;
 
     return VINF_SUCCESS;
 }
@@ -5175,6 +5192,7 @@ static DECLCALLBACK(int) lsilogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
         pDevice->Led.u32Magic                      = PDMLED_MAGIC;
         pDevice->IBase.pfnQueryInterface           = lsilogicDeviceQueryInterface;
         pDevice->ISCSIPort.pfnSCSIRequestCompleted = lsilogicDeviceSCSIRequestCompleted;
+        pDevice->ISCSIPort.pfnQueryDeviceLocation  = lsilogicQueryDeviceLocation;
         pDevice->ILed.pfnQueryStatusLed            = lsilogicDeviceQueryStatusLed;
 
         RTStrPrintf(szName, sizeof(szName), "Device%d", i);
