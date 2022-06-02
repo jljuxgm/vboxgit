@@ -1,4 +1,4 @@
-/* $Id: vboxfs_vfs.h 30519 2010-06-30 08:04:26Z vboxsync $ */
+/* $Id: vboxfs_vfs.h 30527 2010-06-30 13:11:55Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, VFS header.
  */
@@ -31,6 +31,7 @@ typedef struct sffs_data {
 	uid_t		sf_uid;		/* owner of all shared folders */
 	gid_t		sf_gid;		/* group of all shared folders */
 	int  		sf_stat_ttl;	/* ttl for stat caches (in ms) */
+	int  		sf_fsync;	/* whether to honor fsync or not */
 	char		*sf_share_name;
 	char 		*sf_mntpath;	/* name of mount point */
 	sfp_mount_t	*sf_handle;
