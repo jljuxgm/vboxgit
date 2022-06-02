@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 31151 2010-07-27 19:18:02Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 31291 2010-08-02 12:29:35Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -318,7 +318,6 @@ void printUsage(USAGECATEGORY u64Cmd)
 #if 0
                  "                            [--iocache on|off]\n"
                  "                            [--iocachesize <I/O cache size in MB>]\n"
-                 "                            [--iobandwidthmax <Maximum I/O bandwidth in MB/s>]\n"
 #endif
                 );
         RTPrintf("\n");
