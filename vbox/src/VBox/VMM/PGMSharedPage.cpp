@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 31365 2010-08-04 16:54:37Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 31476 2010-08-09 11:48:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -402,11 +402,9 @@ DECLCALLBACK(int)  pgmR3CmdShowSharedModules(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp
         {
             pCmdHlp->pfnPrintf(pCmdHlp, NULL, "Shared module %s (%s):\n", pSharedModules[i]->szName, pSharedModules[i]->szVersion);
             for (unsigned j = 0; j < pSharedModules[i]->cRegions; j++)
-            {
                 pCmdHlp->pfnPrintf(pCmdHlp, NULL, "--- Region %d: base %RGv size %x\n", j, pSharedModules[i]->aRegions[j].GCRegionAddr, pSharedModules[i]->aRegions[j].cbRegion);
-            }
-            i++;
         }
+        i++;
     }
     while (i < cSharedModules);
     pgmUnlock(pVM);
