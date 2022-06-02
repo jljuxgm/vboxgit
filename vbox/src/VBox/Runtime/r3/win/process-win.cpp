@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 33490 2010-10-27 10:37:44Z vboxsync $ */
+/* $Id: process-win.cpp 33491 2010-10-27 10:45:14Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -900,7 +900,8 @@ static int rtProcCreateAsUserHlp(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTUT
         }
     }
 
-    if (dwErr != NO_ERROR)
+    if (   RT_SUCCESS(rc)
+        && dwErr != NO_ERROR)
     {
         /*
          * Map some important or much used Windows error codes
@@ -924,8 +925,6 @@ static int rtProcCreateAsUserHlp(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTUT
                 break;
         }
     }
-    else
-        rc = VINF_SUCCESS;
     return rc;
 }
 
