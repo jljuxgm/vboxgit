@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsHD.cpp 33631 2010-11-01 06:35:05Z vboxsync $ */
+/* $Id: VBoxVMSettingsHD.cpp 33632 2010-11-01 06:53:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1918,7 +1918,7 @@ void VBoxVMSettingsHD::saveFromCacheTo(QVariant &data)
     for (int iControllerIndex = 0; iControllerIndex < m_cache.m_items.size(); ++iControllerIndex)
     {
         const UIStorageControllerData &controllerData = m_cache.m_items[iControllerIndex];
-        CStorageController &controller = m_machine.AddStorageController(controllerData.m_strControllerName, controllerData.m_controllerBus);
+        CStorageController controller = m_machine.AddStorageController(controllerData.m_strControllerName, controllerData.m_controllerBus);
         controller.SetControllerType(controllerData.m_controllerType);
         controller.SetUseHostIOCache(controllerData.m_fUseHostIOCache);
         int cMaxUsedPort = -1;

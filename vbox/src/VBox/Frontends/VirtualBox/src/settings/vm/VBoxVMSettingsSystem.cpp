@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsSystem.cpp 33631 2010-11-01 06:35:05Z vboxsync $ */
+/* $Id: VBoxVMSettingsSystem.cpp 33632 2010-11-01 06:53:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -49,7 +49,7 @@ VBoxVMSettingsSystem::VBoxVMSettingsSystem()
      * so we should get them (randomely?) from the list of all device types.
      * Until there will be separate Main getter for list of supported boot device types,
      * this list will be hard-coded here... */
-    int iPossibleBootListSize = qMin((ulong)4, properties.GetMaxBootPosition());
+    int iPossibleBootListSize = qMin((ULONG)4, properties.GetMaxBootPosition());
     for (int iBootPosition = 1; iBootPosition <= iPossibleBootListSize; ++iBootPosition)
     {
         switch (iBootPosition)
