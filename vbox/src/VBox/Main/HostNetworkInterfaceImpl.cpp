@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 30670 2010-07-06 14:37:09Z vboxsync $ */
 
 /** @file
  *
@@ -21,6 +21,8 @@
 #include "AutoCaller.h"
 #include "Logging.h"
 #include "netif.h"
+
+#include <iprt/cpp/utils.h>
 
 #ifdef RT_OS_FREEBSD
 # include <netinet/in.h> /* INADDR_NONE */

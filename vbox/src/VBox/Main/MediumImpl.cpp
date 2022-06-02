@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 30380 2010-06-22 16:28:14Z vboxsync $ */
+/* $Id: MediumImpl.cpp 30670 2010-07-06 14:37:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -33,6 +33,7 @@
 #include <iprt/path.h>
 #include <iprt/file.h>
 #include <iprt/tcp.h>
+#include <iprt/cpp/utils.h>
 
 #include <VBox/VBoxHDD.h>
 

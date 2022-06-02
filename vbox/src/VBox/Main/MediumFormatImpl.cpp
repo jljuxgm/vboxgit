@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: MediumFormatImpl.cpp 30670 2010-07-06 14:37:09Z vboxsync $ */
 
 /** @file
  *
@@ -22,6 +22,8 @@
 #include "Logging.h"
 
 #include <VBox/VBoxHDD.h>
+
+#include <iprt/cpp/utils.h>
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
@@ -57,13 +59,13 @@ HRESULT MediumFormat::init (const VDBACKENDINFO *aVDInfo)
     AssertReturn (autoInitSpan.isOk(), E_FAIL);
 
     /* The ID of the backend */
-    unconst (m.id) = aVDInfo->pszBackend;
+    unconst(m.id) = aVDInfo->pszBackend;
     /* The Name of the backend */
     /* Use id for now as long as VDBACKENDINFO hasn't any extra
      * name/description field. */
-    unconst (m.name) = aVDInfo->pszBackend;
+    unconst(m.name) = aVDInfo->pszBackend;
     /* The capabilities of the backend */
-    unconst (m.capabilities) = aVDInfo->uBackendCaps;
+    unconst(m.capabilities) = aVDInfo->uBackendCaps;
     /* Save the supported file extensions in a list */
     if (aVDInfo->papszFileExtensions)
     {

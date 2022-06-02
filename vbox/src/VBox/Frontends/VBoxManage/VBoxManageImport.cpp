@@ -1,4 +1,4 @@
-/* $Id: VBoxManageImport.cpp 29994 2010-06-02 13:04:36Z vboxsync $ */
+/* $Id: VBoxManageImport.cpp 30670 2010-07-06 14:37:09Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -266,7 +266,7 @@ int handleImportAppliance(HandlerArg *arg)
         // to tinker with the error info a bit
         RTPrintf("Interpreting %ls...\n", path.raw());
         rc = pAppliance->Interpret();
-        com::ErrorInfo info0(pAppliance);
+        com::ErrorInfo info0(pAppliance, COM_IIDOF(IAppliance));
 
         com::SafeArray<BSTR> aWarnings;
         if (SUCCEEDED(pAppliance->GetWarnings(ComSafeArrayAsOutParam(aWarnings))))

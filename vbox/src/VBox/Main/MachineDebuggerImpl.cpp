@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 30670 2010-07-06 14:37:09Z vboxsync $ */
 
 /** @file
  *
@@ -32,6 +32,7 @@
 #include <VBox/tm.h>
 #include <VBox/err.h>
 #include <VBox/hwaccm.h>
+#include <iprt/cpp/utils.h>
 
 // defines
 /////////////////////////////////////////////////////////////////////////////

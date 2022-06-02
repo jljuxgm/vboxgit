@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 30380 2010-06-22 16:28:14Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 30670 2010-07-06 14:37:09Z vboxsync $ */
 
 /** @file
  *
@@ -35,6 +35,8 @@
 #include "AutoCaller.h"
 
 #include <iprt/path.h>
+#include <iprt/cpp/utils.h>
+
 #include <VBox/param.h>
 #include <VBox/err.h>
 

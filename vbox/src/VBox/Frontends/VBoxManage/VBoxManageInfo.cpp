@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 29465 2010-05-14 11:59:31Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 30670 2010-07-06 14:37:09Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -169,7 +169,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                 ComPtr<IVirtualBoxErrorInfo> accessError;
                 rc = machine->COMGETTER(AccessError)(accessError.asOutParam());
                 RTPrintf("Access error details:\n");
-                ErrorInfo ei(accessError);
+                ErrorInfo ei(accessError, COM_IIDOF(IVirtualBoxErrorInfo));
                 GluePrintErrorInfo(ei);
                 RTPrintf("\n");
             }
@@ -1290,7 +1290,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                 break; /* VM not powered up */
             if (FAILED(rc))
             {
-                com::ErrorInfo info (display);
+                com::ErrorInfo info(display, COM_IIDOF(IDisplay));
                 GluePrintErrorInfo(info);
                 return rc;
             }
@@ -1355,7 +1355,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                 }
                 if (FAILED(rc))
                 {
-                    com::ErrorInfo info (remoteDisplayInfo);
+                    com::ErrorInfo info(remoteDisplayInfo, COM_IIDOF(IRemoteDisplayInfo));
                     GluePrintErrorInfo(info);
                     return rc;
                 }

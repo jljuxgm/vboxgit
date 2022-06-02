@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 29386 2010-05-11 18:07:09Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 30670 2010-07-06 14:37:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -19,6 +19,8 @@
 
 #include "AutoCaller.h"
 #include "Logging.h"
+
+#include <iprt/cpp/utils.h>
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
