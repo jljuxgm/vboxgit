@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 35496 2011-01-12 04:29:24Z vboxsync $ */
+/* $Id: DevCodec.cpp 35497 2011-01-12 04:45:19Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -2128,12 +2128,6 @@ static void po_callback (void *opaque, int avail)
 {
     CODECState *pState = (CODECState *)opaque;
     pState->pfnTransfer(pState, PO_INDEX, avail);
-}
-
-static void mc_callback (void *opaque, int avail)
-{
-    CODECState *pState = (CODECState *)opaque;
-    pState->pfnTransfer(pState, MC_INDEX, avail);
 }
 
 int codecConstruct(PPDMDEVINS pDevIns, CODECState *pState, ENMCODEC enmCodec)
