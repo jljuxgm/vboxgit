@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 33419 2010-10-25 12:45:01Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 33435 2010-10-25 16:08:30Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -1378,8 +1378,11 @@ PDMBOTHCBDECL(int) hdaMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhys
     {
         Log(("hda: access to registers except GCTL is blocked while reset\n"));
     }
-    Assert(   index != -1
-           && cb <= 4);
+    if (   index != -1
+           && cb <= 4)
+    {
+        LogRel(("hda: Invalid read access @0x%x(of bytes:%d)\n", u32Offset, cb));
+    }
     if (index != -1)
     {
         uint32_t mask = 0;
@@ -1426,8 +1429,11 @@ PDMBOTHCBDECL(int) hdaMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhy
     {
         Log(("hda: access to registers except GCTL is blocked while reset\n"));
     }
-    Assert(   index != -1
-           && cb <= 4);
+    if (   index != -1
+           && cb <= 4)
+    {
+        LogRel(("hda: Invalid write access @0x%x(of bytes:%d)\n", u32Offset, cb));
+    }
     if (index != -1)
     {
         uint32_t v = pThis->hda.au32Regs[index];
