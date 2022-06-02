@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 30976 2010-07-22 10:06:58Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2131,10 +2131,10 @@ int handleShowVMInfo(HandlerArg *a)
         else
             details = VMINFO_STANDARD;
 
-        ComPtr <IConsole> console;
+        ComPtr<IConsole> console;
 
         /* open an existing session for the VM */
-        rc = a->virtualBox->OpenExistingSession(a->session, uuid);
+        rc = machine->LockForSession(a->session, true /* fPermitShared */, NULL);
         if (SUCCEEDED(rc))
             /* get the session machine */
             rc = a->session->COMGETTER(Machine)(machine.asOutParam());

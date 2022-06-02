@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 30825 2010-07-14 12:44:14Z vboxsync $ */
+/* $Id: Global.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
 
 /** @file
  *
@@ -363,10 +363,10 @@ Global::stringifySessionState(SessionState_T aState)
     switch (aState)
     {
         case SessionState_Null:         return "Null";
-        case SessionState_Closed:       return "Closed";
-        case SessionState_Open:         return "Open";
+        case SessionState_Unlocked:     return "Unlocked";
+        case SessionState_Locked:       return "Locked";
         case SessionState_Spawning:     return "Spawning";
-        case SessionState_Closing:      return "Closing";
+        case SessionState_Unlocking:    return "Unlocking";
         default:
         {
             AssertMsgFailed(("%d (%#x)\n", aState, aState));

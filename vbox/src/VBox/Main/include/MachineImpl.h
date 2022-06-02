@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 31002 2010-07-22 14:45:41Z vboxsync $ */
+/* $Id: MachineImpl.h 31008 2010-07-22 15:24:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -114,7 +114,7 @@ public:
          */
         struct Session
         {
-            /** Control of the direct session opened by openSession() */
+            /** Control of the direct session opened by lockForSession() */
             ComPtr<IInternalSessionControl> mDirectControl;
 
             typedef std::list<ComPtr<IInternalSessionControl> > RemoteControlList;
@@ -454,6 +454,9 @@ public:
     STDMETHOD(COMSETTER(IoBandwidthMax)) (ULONG  aIoBandwidthMax);
 
     // IMachine methods
+    STDMETHOD(LockForSession)(ISession *aSession, BOOL fPermitShared, SessionType_T *sessionType);
+    STDMETHOD(LaunchVMProcess)(ISession *aSession,  IN_BSTR aType, IN_BSTR aEnvironment, IProgress **aProgress);
+
     STDMETHOD(SetBootOrder)(ULONG aPosition, DeviceType_T aDevice);
     STDMETHOD(GetBootOrder)(ULONG aPosition, DeviceType_T *aDevice);
     STDMETHOD(AttachDevice)(IN_BSTR aControllerName, LONG aControllerPort,

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 31002 2010-07-22 14:45:41Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5663,7 +5663,7 @@ HRESULT Console::setMachineState(MachineState_T aMachineState,
              * the machine state here and on the server might go out of sync
              * which can lead to various unexpected results (like the machine
              * state being >= MachineState_Running on the server, while the
-             * session state is already SessionState_Closed at the same time
+             * session state is already SessionState_Unlocked at the same time
              * there).
              *
              * Cross-lock conditions should be carefully watched out: calling

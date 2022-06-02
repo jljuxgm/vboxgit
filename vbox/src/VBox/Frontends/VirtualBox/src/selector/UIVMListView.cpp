@@ -1,4 +1,4 @@
-/* $Id: UIVMListView.cpp 30868 2010-07-16 09:42:12Z vboxsync $ */
+/* $Id: UIVMListView.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -214,7 +214,7 @@ QVariant UIVMItemModel::data(const QModelIndex &aIndex, int aRole) const
         {
             QFont f = qApp->font();
             f.setPointSize(f.pointSize());
-            if (m_VMItemList.at(aIndex.row())->sessionState() != KSessionState_Closed)
+            if (m_VMItemList.at(aIndex.row())->sessionState() != KSessionState_Unlocked)
                 f.setItalic(true);
             v = f;
             break;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 30976 2010-07-22 10:06:58Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -274,7 +274,7 @@ int handleModifyVM(HandlerArg *a)
     int c;
     HRESULT rc;
     Bstr name;
-    Bstr machineuuid (a->argv[0]);
+    Bstr machineuuid(a->argv[0]);
     RTGETOPTUNION ValueUnion;
     RTGETOPTSTATE GetOptState;
     ComPtr <IMachine> machine;
@@ -311,7 +311,7 @@ int handleModifyVM(HandlerArg *a)
     }
 
     /* open a session for the VM */
-    CHECK_ERROR_RET(a->virtualBox, OpenSession(a->session, machineuuid), 1);
+    CHECK_ERROR_RET(machine, LockForSession(a->session, false /* fPermitShared */, NULL), 1);
 
     /* get the mutable session machine */
     a->session->COMGETTER(Machine)(machine.asOutParam());

@@ -1,4 +1,4 @@
-/* $Id: UIExportApplianceWzd.cpp 29730 2010-05-21 12:48:19Z vboxsync $ */
+/* $Id: UIExportApplianceWzd.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -180,7 +180,7 @@ void UIExportApplianceWzdPage1::populateVMSelectorItems()
             pixIcon = vboxGlobal().vmGuestOSTypeIcon(m.GetOSTypeId()).scaled(16, 16, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
             strName = m.GetName();
             strUuid = m.GetId();
-            bEnabled = m.GetSessionState() == KSessionState_Closed;
+            bEnabled = m.GetSessionState() == KSessionState_Unlocked;
         }
         else
         {

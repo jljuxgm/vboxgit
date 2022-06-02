@@ -1,4 +1,4 @@
-/* $Revision: 28800 $ */
+/* $Revision: 31008 $ */
 /** @file tstXPCOMCGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -215,10 +215,8 @@ static void startVM(IVirtualBox *virtualBox, ISession *session, PRUnichar *id)
 
     g_pVBoxFuncs->pfnUtf8ToUtf16("gui", &sessionType);
 
-    rc = virtualBox->vtbl->OpenRemoteSession(
-        virtualBox,
+    rc = machine->vtbl->LaunchVMProcess(machine,
         session,
-        id,
         sessionType,
         env,
         &progress

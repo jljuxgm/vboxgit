@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 28870 2010-04-28 14:33:11Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -235,15 +235,11 @@ int handleSnapshot(HandlerArg *a)
     }
     if (!pMachine)
         return 1;
-    Bstr guidMachine;
-    pMachine->COMGETTER(Id)(guidMachine.asOutParam());
 
     do
     {
-        /* we have to open a session for this task. First try an existing session */
-        rc = a->virtualBox->OpenExistingSession(a->session, guidMachine);
-        if (FAILED(rc))
-            CHECK_ERROR_BREAK(a->virtualBox, OpenSession(a->session, guidMachine));
+        /* we have to open a session for this task (new or shared) */
+        rc = pMachine->LockForSession(a->session, true /* fPermitShared */, NULL);
         ComPtr<IConsole> console;
         CHECK_ERROR_BREAK(a->session, COMGETTER(Console)(console.asOutParam()));
 

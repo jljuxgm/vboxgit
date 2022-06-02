@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 30396 2010-06-23 15:26:41Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -72,7 +72,7 @@ int handleControlVM(HandlerArg *a)
 
     /* try to find the given machine */
     ComPtr <IMachine> machine;
-    Bstr machineuuid (a->argv[0]);
+    Bstr machineuuid(a->argv[0]);
     if (!Guid(machineuuid).isEmpty())
     {
         CHECK_ERROR(a->virtualBox, GetMachine(machineuuid, machine.asOutParam()));
@@ -87,7 +87,7 @@ int handleControlVM(HandlerArg *a)
         return 1;
 
     /* open a session for the VM */
-    CHECK_ERROR_RET(a->virtualBox, OpenExistingSession(a->session, machineuuid), 1);
+    CHECK_ERROR_RET(machine, LockForSession(a->session, true /* fPermitShared */, NULL), 1);
 
     do
     {
