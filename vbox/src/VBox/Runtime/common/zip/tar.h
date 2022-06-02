@@ -1,4 +1,4 @@
-/* $Id: tar.h 34002 2010-11-11 17:16:37Z vboxsync $ */
+/* $Id: tar.h 34029 2010-11-12 14:21:59Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
@@ -92,7 +92,7 @@ typedef union RTZIPTARHDR
     /** Byte view. */
     char            ab[512];
     /** The standard header. */
-    RTZIPTARHDRPOSIX   Hdr;
+    RTZIPTARHDRPOSIX Posix;
 } RTZIPTARHDR;
 AssertCompileSize(RTZIPTARHDR, 512);
 /** Pointer to a tar file header. */

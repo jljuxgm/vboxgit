@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 34029 2010-11-12 14:21:59Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -435,7 +435,7 @@ RTDECL(int) RTVfsFileFromRTFile(RTFILE hFile, uint32_t fOpen, bool fLeaveOpen, P
      */
     PRTVFSSTDFILE   pThis;
     RTVFSFILE       hVfsFile;
-    rc = RTVfsNewFile(&g_rtVfsStdFileOps, sizeof(RTVFSSTDFILE), fOpen, NIL_RTVFS, &hVfsFile, (void **)&pThis);
+    rc = RTVfsNewFile(&g_rtVfsStdFileOps, sizeof(RTVFSSTDFILE), fOpen, NIL_RTVFS, NIL_RTVFSLOCK, &hVfsFile, (void **)&pThis);
     if (RT_FAILURE(rc))
         return rc;
 
