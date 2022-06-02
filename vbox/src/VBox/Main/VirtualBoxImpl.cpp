@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 33250 2010-10-20 10:19:51Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 33254 2010-10-20 11:07:58Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1174,6 +1174,8 @@ STDMETHODIMP VirtualBox::ComposeMachineFilename(IN_BSTR aName,
     if (strBase.isEmpty())
         /* we use the non-full folder value below to keep the path relative */
         getDefaultMachineFolder(strBase);
+
+    calculateFullPath(strBase, strBase);
 
     Bstr bstrSettingsFile = BstrFmt("%s%c%ls%c%ls.vbox",
                                     strBase.c_str(),
