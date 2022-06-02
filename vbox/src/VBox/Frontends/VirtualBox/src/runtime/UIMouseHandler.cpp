@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 34523 2010-11-30 15:17:06Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 34778 2010-12-07 13:26:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -662,8 +662,8 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
     if (wheelDirection == Qt::Vertical)
     {
         /* The absolute value of wheel delta is 120 units per every wheel move;
-         * positive deltas correspond to counterclockwize rotations (usually up),
-         * negative deltas correspond to clockwize (usually down). */
+         * positive deltas correspond to counterclockwise rotations (usually up),
+         * negative deltas correspond to clockwise (usually down). */
         iWheelVertical = - (wheelDelta / 120);
     }
     else if (wheelDirection == Qt::Horizontal)
