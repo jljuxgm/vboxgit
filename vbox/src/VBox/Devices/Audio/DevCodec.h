@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 33676 2010-11-02 09:48:24Z vboxsync $ */
+/* $Id: DevCodec.h 33810 2010-11-05 19:03:02Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -268,6 +268,8 @@ typedef struct CODECState
     uint16_t                id;
     uint16_t                u16VendorId;
     uint16_t                u16DeviceId;
+    uint8_t                 u8BSKU;
+    uint8_t                 u8AssemblyId;
     CODECVERB               *pVerbs;
     int                     cVerbs;
     PCODECNODE               pNodes;
@@ -309,7 +311,6 @@ typedef struct CODECState
     DECLR3CALLBACKMEMBER(int, pfnCodecNodeReset, (struct CODECState *pState, uint8_t, PCODECNODE));
 
 } CODECState;
-
 
 int codecConstruct(CODECState *pCodecState, ENMCODEC enmCodec);
 int codecDestruct(CODECState *pCodecState);
