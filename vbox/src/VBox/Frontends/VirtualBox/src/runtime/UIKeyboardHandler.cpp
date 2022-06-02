@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 34568 2010-12-01 13:26:11Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 34936 2010-12-10 07:57:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -836,7 +836,7 @@ bool UIKeyboardHandler::eventFilter(QObject *pWatchedObject, QEvent *pEvent)
 
 LRESULT CALLBACK UIKeyboardHandler::lowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
-    if (nCode == HC_ACTION && m_pKeyboardHandler->winLowKeyboardEvent(wParam, *(KBDLLHOOKSTRUCT*)lParam))
+    if (nCode == HC_ACTION && m_pKeyboardHandler && m_pKeyboardHandler->winLowKeyboardEvent(wParam, *(KBDLLHOOKSTRUCT*)lParam))
         return 1;
 
     return CallNextHookEx(NULL, nCode, wParam, lParam);

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 34823 2010-12-08 09:24:47Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 34936 2010-12-10 07:57:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -342,6 +342,7 @@ UIMachineLogic::UIMachineLogic(QObject *pParent,
     , m_pSession(pSession)
     , m_pActionsPool(pActionsPool)
     , m_visualStateType(visualStateType)
+    , m_pKeyboardHandler(0)
     , m_pMouseHandler(0)
     , m_pRunningActions(0)
     , m_pRunningOrPausedActions(0)
