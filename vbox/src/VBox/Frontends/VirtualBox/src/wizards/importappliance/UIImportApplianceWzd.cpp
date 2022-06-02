@@ -1,4 +1,4 @@
-/* $Id: UIImportApplianceWzd.cpp 31676 2010-08-13 18:40:53Z vboxsync $ */
+/* $Id: UIImportApplianceWzd.cpp 32584 2010-09-17 09:50:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -196,7 +196,8 @@ bool UIImportApplianceWzdPage1::validatePage()
     /* Set the file path only if something had changed */
     if (m_pFileSelector->isModified())
     {
-        applianceWidget->setFile(m_pFileSelector->path());
+        if (!applianceWidget->setFile(m_pFileSelector->path()))
+            return false;
         /* Reset the modified bit afterwards */
         m_pFileSelector->resetModified();
     }
