@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 31326 2010-08-03 09:56:22Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 31519 2010-08-10 11:35:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1808,13 +1808,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         /*
          * AC'97 ICH / SoundBlaster16 audio / Intel HD Audio
          */
-        BOOL enabled;
+        BOOL fAudioEnabled;
         ComPtr<IAudioAdapter> audioAdapter;
         hrc = pMachine->COMGETTER(AudioAdapter)(audioAdapter.asOutParam());                 H();
         if (audioAdapter)
-            hrc = audioAdapter->COMGETTER(Enabled)(&enabled);                               H();
+            hrc = audioAdapter->COMGETTER(Enabled)(&fAudioEnabled);                         H();
 
-        if (enabled)
+        if (fAudioEnabled)
         {
             AudioControllerType_T audioController;
             hrc = audioAdapter->COMGETTER(AudioController)(&audioController);               H();
@@ -2261,6 +2261,12 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 BootNic aNic = llBootNics.front();
                 uint32_t u32NicPciAddr = (aNic.mPciDev << 16) | aNic.mPciFn;
                 InsertConfigInteger(pCfg, "NicPciAddress",    u32NicPciAddr);
+            }
+            if (fOsXGuest && fAudioEnabled)
+            {
+                /** @todo: don't hardcode */
+                uint32_t u32AudioPciAddr = (5 << 16) | 0;
+                InsertConfigInteger(pCfg, "AudioPciAddress",    u32AudioPciAddr);
             }
             InsertConfigInteger(pCfg,  "ShowCpu", fShowCpu);
             InsertConfigInteger(pCfg,  "CpuHotPlug", fCpuHotPlug);
