@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxsf 32404 2010-09-10 13:17:42Z vboxsync $
+# $Id: files_vboxsf 33439 2010-10-25 19:35:58Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -71,6 +71,7 @@ FILES_VBOXSF_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h=>r0drv/linux/the-linux-kernel.h \
     ${PATH_ROOT}/src/VBox/Additions/linux/sharedfolders/Makefile.module=>Makefile \
     ${PATH_ROOT}/src/VBox/Additions/linux/sharedfolders/dirops.c=>dirops.c \
+    ${PATH_ROOT}/src/VBox/Additions/linux/sharedfolders/lnkops.c=>lnkops.c \
     ${PATH_ROOT}/src/VBox/Additions/linux/sharedfolders/regops.c=>regops.c \
     ${PATH_ROOT}/src/VBox/Additions/linux/sharedfolders/utils.c=>utils.c \
     ${PATH_ROOT}/src/VBox/Additions/linux/sharedfolders/vbsfmount.h=>vbsfmount.h \
