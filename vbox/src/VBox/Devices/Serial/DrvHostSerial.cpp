@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 34212 2010-11-19 17:14:39Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 34215 2010-11-19 17:41:49Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
@@ -377,7 +377,6 @@ static DECLCALLBACK(int) drvHostSerialSetParameters(PPDMICHARCONNECTOR pInterfac
      * modem irqs and so the monitor thread never gets released. The workaround
      * is to send a signal after each tcsetattr.
      */
-    LogRel(("POKE\n"));
     RTThreadPoke(pThis->pMonitorThread->Thread);
 #endif
 
@@ -956,7 +955,6 @@ static DECLCALLBACK(int) drvHostSerialMonitorThread(PPDMDRVINS pDrvIns, PPDMTHRE
             newStatusLine |= PDMICHARPORT_STATUS_LINES_DSR;
         if (statusLines & TIOCM_CTS)
             newStatusLine |= PDMICHARPORT_STATUS_LINES_CTS;
-        LogRel(("new status line state %x\n", newStatusLine));
         pThis->pDrvCharPort->pfnNotifyStatusLinesChanged(pThis->pDrvCharPort, newStatusLine);
 
         if (PDMTHREADSTATE_RUNNING != pThread->enmState)
@@ -972,7 +970,6 @@ static DECLCALLBACK(int) drvHostSerialMonitorThread(PPDMDRVINS pDrvIns, PPDMTHRE
          * is to send a signal after each tcsetattr.
          */
         ioctl(pThis->DeviceFile, TIOCMIWAIT, uStatusLinesToCheck);
-        LogRel(("status line change\n"));
 # else
         /* Poll for status line change. */
         if (!((statusLines ^ pThis->fStatusLines) & uStatusLinesToCheck))
