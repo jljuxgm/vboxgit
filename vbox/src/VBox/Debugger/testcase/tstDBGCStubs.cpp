@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 35490 2011-01-11 15:17:10Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 35614 2011-01-18 14:44:19Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -206,6 +206,10 @@ VMMR3DECL(int) DBGFR3RegCpuQueryU64( PVM pVM, VMCPUID idCpu, DBGFREG enmReg, uin
     return VERR_INTERNAL_ERROR;
 }
 VMMR3DECL(int) DBGFR3RegNmQuery(    PVM pVM, VMCPUID idDefCpu, const char *pszReg, PDBGFREGVAL pValue, PDBGFREGVALTYPE penmType)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3RegPrintf(PVM pVM, VMCPUID idCpu, char *pszBuf, size_t cbBuf, const char *pszFormat, ...)
 {
     return VERR_INTERNAL_ERROR;
 }
