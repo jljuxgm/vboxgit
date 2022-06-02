@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31325 2010-08-03 09:44:30Z vboxsync $
+# $Id: Makefile.kmk 31329 2010-08-03 11:57:08Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -511,6 +511,7 @@ endif # VBOX_WITH_TESTCASES
 
 # RTLdrFlt is similar to c++filt, except that it's for VMMR0.r0 stacks.
 PROGRAMS += RTLdrFlt
+RTLdrFlt_TEMPLATE = VBOXR3TSTEXE
 RTLdrFlt_SOURCES = RTLdrFlt.cpp
 
 
