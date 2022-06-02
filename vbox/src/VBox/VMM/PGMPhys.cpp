@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 33726 2010-11-03 13:35:35Z vboxsync $ */
+/* $Id: PGMPhys.cpp 33780 2010-11-04 15:54:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4117,6 +4117,7 @@ int pgmPhysFreePage(PVM pVM, PGMMFREEPAGESREQ pReq, uint32_t *pcPendingPages, PP
         AssertMsgFailed(("GCPhys=%RGp pPage=%R[pgmpage]\n", GCPhys, pPage));
         return VMSetError(pVM, VERR_PGM_PHYS_NOT_RAM, RT_SRC_POS, "GCPhys=%RGp type=%d", GCPhys, PGM_PAGE_GET_TYPE(pPage));
     }
+    Assert(PGM_PAGE_GET_PDE_TYPE(pPage) != PGM_PAGE_PDE_TYPE_PDE);
 
     if (    PGM_PAGE_IS_ZERO(pPage)
         ||  PGM_PAGE_IS_BALLOONED(pPage))
