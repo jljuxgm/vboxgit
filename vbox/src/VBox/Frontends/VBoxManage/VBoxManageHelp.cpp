@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 35194 2010-12-16 15:36:09Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 35306 2010-12-22 17:30:04Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -611,7 +611,10 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
         RTStrmPrintf(pStrm,
                      "VBoxManage debugvm          <uuid>|<name>\n"
                      "                            dumpguestcore --filename <name> |\n"
+                     "                            info <item> [args] |\n"
                      "                            injectnmi |\n"
+                     "                            osdetect |\n"
+                     "                            osinfo |\n"
                      "                            statistics [--reset] [--pattern <pattern>]\n"
                      "                            [--descriptions]\n"
                      "\n");
