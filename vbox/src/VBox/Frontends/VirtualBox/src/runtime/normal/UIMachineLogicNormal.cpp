@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 30707 2010-07-07 15:06:01Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 30710 2010-07-07 15:34:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -29,7 +29,6 @@
 #include "UIActionsPool.h"
 #include "UIMachineLogicNormal.h"
 #include "UIMachineWindow.h"
-#include "UIMachineView.h"
 #include "UIDownloaderAdditions.h"
 
 #ifdef Q_WS_MAC
