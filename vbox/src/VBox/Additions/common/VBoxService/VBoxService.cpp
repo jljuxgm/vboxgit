@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 35027 2010-12-13 16:07:56Z vboxsync $ */
+/* $Id: VBoxService.cpp 35080 2010-12-14 13:46:19Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -353,7 +353,13 @@ int VBoxServiceStartServices(void)
         }
         g_aServices[j].fStarted = true;
 
-        /* wait for the thread to initialize */
+        /* Wait for the thread to initialize.
+         *
+         * @todo There is a race between waiting and checking
+         *       the fShutdown flag of a thread here and processing
+         *       the thread's actual worker loop. If the thread decides
+         *       to exit the loop before we skipped the fShutdown check
+         *       below the service will fail to start! */
         RTThreadUserWait(g_aServices[j].Thread, 60 * 1000);
         if (g_aServices[j].fShutdown)
         {
