@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 31156 2010-07-28 02:49:45Z vboxsync $ */
+/* $Id: DevCodec.h 31263 2010-08-02 04:53:50Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -93,6 +93,17 @@ typedef struct SPDIFOUTNODE
     AMPLIFIER   B_params;
 } SPDIFOUTNODE, *PSPDIFOUTNODE;
 
+typedef struct SPDIFINNODE
+{
+    CODECCOMMONNODE node;
+    uint32_t    u32F06_param;
+    uint32_t    u32F09_param;
+    uint32_t    u32F0d_param;
+
+    uint32_t    u32A_param;
+    AMPLIFIER   B_params;
+} SPDIFINNODE, *PSPDIFINNODE;
+
 typedef struct AFGCODECNODE
 {
     CODECCOMMONNODE node;
@@ -179,6 +190,7 @@ typedef union CODECNODE
     DACNODE         dac;
     ADCNODE         adc;
     SPDIFOUTNODE    spdifout;
+    SPDIFINNODE     spdifin;
     PORTNODE        port;
     DIGOUTNODE      digout;
     DIGINNODE       digin;
