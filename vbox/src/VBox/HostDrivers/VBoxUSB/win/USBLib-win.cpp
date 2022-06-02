@@ -1,4 +1,4 @@
-/* $Id: USBLib-win.cpp 34261 2010-11-22 18:14:53Z vboxsync $ */
+/* $Id: USBLib-win.cpp 34262 2010-11-22 18:15:59Z vboxsync $ */
 /** @file
  * USBLIB - USB support library interface, Windows.
  */
@@ -2876,7 +2876,8 @@ USBLIB_DECL(int) USBLibGetDevices(PUSBDEVICE *ppDevices, uint32_t *pcDevices)
         Assert(pszDeviceRegPath);
 
         pDevice = pHostDevices;
-        for (uint32_t j = 0; j < cHostDevices; j++)
+        uint32_t j;
+        for (j = 0; j < cHostDevices; j++)
         {
             if (pszDeviceRegPath)
             {
