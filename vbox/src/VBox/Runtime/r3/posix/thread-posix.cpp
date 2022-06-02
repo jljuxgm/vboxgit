@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 34175 2010-11-18 14:53:50Z vboxsync $ */
+/* $Id: thread-posix.cpp 34176 2010-11-18 14:57:14Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -56,8 +56,8 @@
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
 #ifndef IN_GUEST
-/** The signal we're using for RTThreadPoke. */
-# define RTTHREAD_POSIX_WITH_POKE    SIGUSR2
+/** Includes RTThreadPoke. */
+# define RTTHREAD_POSIX_WITH_POKE
 #endif
 
 
