@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 30734 2010-07-08 11:50:58Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 30737 2010-07-08 12:17:19Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1911,7 +1911,7 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
 
     ComPtr<IGuest> guest;
     rc = console->COMGETTER(Guest)(guest.asOutParam());
-    if (RT_SUCCESS(rc))
+    if (SUCCEEDED(rc))
     {
         Bstr guestString;
         rc = guest->COMGETTER(OSTypeId)(guestString.asOutParam());
