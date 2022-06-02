@@ -1,4 +1,4 @@
-/* $Id: VHDHDDCore.cpp 31180 2010-07-28 18:11:10Z vboxsync $ */
+/* $Id: VHDHDDCore.cpp 31184 2010-07-28 20:23:47Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -1088,7 +1088,7 @@ static int vhdSetOpenFlags(void *pBackendData, unsigned uOpenFlags)
 
     /* Image must be opened and the new flags must be valid. Just readonly and
      * info flags are supported. */
-    if (!pImage || (uOpenFlags & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO)))
+    if (!pImage || (uOpenFlags & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO | VD_OPEN_FLAGS_SHAREABLE)))
     {
         rc = VERR_INVALID_PARAMETER;
         goto out;

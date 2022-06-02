@@ -1,4 +1,4 @@
-/* $Id: ParallelsHDDCore.cpp 30864 2010-07-15 20:30:17Z vboxsync $ */
+/* $Id: ParallelsHDDCore.cpp 31184 2010-07-28 20:23:47Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -881,7 +881,7 @@ static int parallelsSetOpenFlags(void *pBackendData, unsigned uOpenFlags)
 
     /* Image must be opened and the new flags must be valid. Just readonly and
      * info flags are supported. */
-    if (!pImage || (uOpenFlags & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO)))
+    if (!pImage || (uOpenFlags & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO | VD_OPEN_FLAGS_SHAREABLE)))
     {
         rc = VERR_INVALID_PARAMETER;
         goto out;
