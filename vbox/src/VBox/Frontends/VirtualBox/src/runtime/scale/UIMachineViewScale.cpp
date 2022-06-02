@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 31299 2010-08-02 13:18:12Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 31318 2010-08-02 16:19:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -196,10 +196,10 @@ bool UIMachineViewScale::event(QEvent *pEvent)
             /* Make sure we update always a bigger rectangle than requested to
              * catch all rounding errors. (use 1 time the ratio factor and
              * round down on top/left, but round up for the width/height) */
-            viewport()->repaint((int)(pPaintEvent->x() * xRatio) - ((int)xRatio),
-                                (int)(pPaintEvent->y() * yRatio) - ((int)yRatio),
-                                (int)(pPaintEvent->width() * xRatio) + ((int)xRatio + 1) * 2,
-                                (int)(pPaintEvent->height() * yRatio) + ((int)yRatio + 1) * 2);
+            viewport()->repaint((int)(pPaintEvent->x() * xRatio) - ((int)xRatio) - 1,
+                                (int)(pPaintEvent->y() * yRatio) - ((int)yRatio) - 1,
+                                (int)(pPaintEvent->width() * xRatio) + ((int)xRatio + 2) * 2,
+                                (int)(pPaintEvent->height() * yRatio) + ((int)yRatio + 2) * 2);
             pEvent->accept();
             return true;
         }
