@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 34832 2010-12-08 13:44:43Z vboxsync $ */
+/* $Id: GuestImpl.cpp 34833 2010-12-08 13:50:50Z vboxsync $ */
 
 /** @file
  *
@@ -173,6 +173,7 @@ HRESULT Guest::TaskGuest::setProgressErrorInfo(HRESULT hr, ComObjPtr<Progress> p
         HRESULT hr2 = pProgress->notifyComplete(hr,
                                                 COM_IIDOF(IGuest),
                                                 Guest::getStaticComponentName(),
+                                                pszText,
                                                 va);
         va_end(va);
         if (hr2 == S_OK) /* If unable to retrieve error, return input error. */
