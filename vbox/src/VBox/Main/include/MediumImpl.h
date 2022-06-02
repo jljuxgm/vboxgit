@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 31370 2010-08-04 18:49:09Z vboxsync $ */
+/* $Id: MediumImpl.h 31479 2010-08-09 12:02:47Z vboxsync $ */
 
 /** @file
  *
@@ -161,6 +161,8 @@ public:
     // a caller and a read lock before calling them!)
     const ComObjPtr<Medium>& getParent() const;
     const MediaList& getChildren() const;
+
+    const Guid& getRegistryMachineId() const;
 
     const Guid& getId() const;
     MediumState_T getState() const;
