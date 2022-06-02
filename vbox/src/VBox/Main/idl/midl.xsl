@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 31698 2010-08-16 15:00:05Z vboxsync $ -->
+<!-- $Id: midl.xsl 31699 2010-08-16 15:05:04Z vboxsync $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
@@ -749,7 +749,7 @@
             <xsl:when test=".='unsigned long'">ULONG *</xsl:when>
             <xsl:when test=".='unsigned long long'">
               <xsl:message terminate="yes">
-                 <xsl:value-of select="'&quot;unsigned long long&quot; no longer supported" />
+                 <xsl:value-of select="'&quot;unsigned long long&quot; no longer supported'" />
               </xsl:message>
             </xsl:when>
             <xsl:otherwise>
@@ -810,7 +810,7 @@
         <xsl:when test=".='$unknown'">IUnknown *</xsl:when>
         <xsl:when test=".='unsigned long long'">
           <xsl:message terminate="yes">
-            <xsl:value-of select="'&quot;unsigned long long&quot; no longer supported" />
+            <xsl:value-of select="'&quot;unsigned long long&quot; no longer supported'" />
           </xsl:message>
         </xsl:when>
         <xsl:otherwise>
