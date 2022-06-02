@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 31418 2010-08-05 17:37:13Z vboxsync $ */
+/* $Id: utf-8.cpp 31420 2010-08-05 17:41:45Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -808,7 +808,6 @@ static int rtLatin1CalcUtf8Length(const char *psz, size_t cchIn, size_t *pcch)
     for (;;)
     {
         RTUNICP Cp;
-        size_t cchCp;
         int rc = RTLatin1GetCpNEx(&psz, &cchIn, &Cp);
         if (Cp == 0 || rc == VERR_END_OF_STRING)
             break;
@@ -835,7 +834,7 @@ static int rtLatin1CalcUtf8Length(const char *psz, size_t cchIn, size_t *pcch)
  */
 static int rtLatin1RecodeAsUtf8(const char *pszIn, size_t cchIn, char *psz, size_t cch)
 {
-    int     rc = VINF_SUCCESS;
+    int rc;
     for (;;)
     {
         RTUNICP Cp;
@@ -1028,8 +1027,7 @@ static int rtUtf8CalcLatin1Length(const char *psz, size_t cchIn, size_t *pcch)
  */
 static int rtUtf8RecodeAsLatin1(const char *pszIn, size_t cchIn, char *psz, size_t cch)
 {
-    int   rc  = VINF_SUCCESS;
-
+    int rc;
     for (;;)
     {
         RTUNICP Cp;
