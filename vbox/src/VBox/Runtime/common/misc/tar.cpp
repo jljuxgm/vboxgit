@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 32599 2010-09-17 12:46:39Z vboxsync $ */
+/* $Id: tar.cpp 32601 2010-09-17 13:06:16Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -131,7 +131,7 @@ DECLINLINE(int) rtTarReadHeaderRecord(RTFILE hFile, PRTTARRECORD pRecord)
         return rc;
 
     /* Check for data integrity & an EOF record */
-    uint32_t check;
+    uint32_t check = 0;
     rc = rtTarCalcChkSum(pRecord, &check);
     /* EOF? */
     if (RT_FAILURE(rc))
