@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 31363 2010-08-04 16:10:22Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 31365 2010-08-04 16:54:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -88,10 +88,9 @@ VMMR3DECL(int) PGMR3SharedModuleRegister(PVM pVM, VBOXOSFAMILY enmGuestOS, char 
     {
         PGMMREGISTERSHAREDMODULEREQ *ppSharedModule = NULL;
 
-        if (    cSharedModules < RT_ELEMENTS(pSharedModules)
-            &&  pSharedModules[cSharedModules])
+        if (cSharedModules < RT_ELEMENTS(pSharedModules))
         {
-            for (unsigned i = 0; i < cSharedModules; i++)
+            for (unsigned i = 0; i < RT_ELEMENTS(pSharedModules); i++)
             {
                 if (pSharedModules[cSharedModules] == NULL)
                 {
@@ -100,15 +99,13 @@ VMMR3DECL(int) PGMR3SharedModuleRegister(PVM pVM, VBOXOSFAMILY enmGuestOS, char 
                 }
             }
             Assert(ppSharedModule);
-        }
-        else
-            ppSharedModule = &pSharedModules[cSharedModules];
 
-        if (ppSharedModule)
-        {
-            *ppSharedModule = (PGMMREGISTERSHAREDMODULEREQ)RTMemAllocZ(RT_OFFSETOF(GMMREGISTERSHAREDMODULEREQ, aRegions[cRegions]));
-            memcpy(*ppSharedModule, pReq, RT_OFFSETOF(GMMREGISTERSHAREDMODULEREQ, aRegions[cRegions]));
-            cSharedModules++;
+            if (ppSharedModule)
+            {
+                *ppSharedModule = (PGMMREGISTERSHAREDMODULEREQ)RTMemAllocZ(RT_OFFSETOF(GMMREGISTERSHAREDMODULEREQ, aRegions[cRegions]));
+                memcpy(*ppSharedModule, pReq, RT_OFFSETOF(GMMREGISTERSHAREDMODULEREQ, aRegions[cRegions]));
+                cSharedModules++;
+            }
         }
     }
 # endif
