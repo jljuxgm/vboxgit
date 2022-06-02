@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 31775 2010-08-19 09:48:24Z vboxsync $ */
+/* $Id: PGMInternal.h 31780 2010-08-19 11:12:18Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -430,15 +430,7 @@ typedef union PGMSHWPTEPAE
 {
     /** Unsigned integer view */
     X86PGPAEUINT    uCareful;
-#if 0
-    /* Not bit field view. */
-    /** 32-bit view. */
-    uint32_t        au32[2];
-    /** 16-bit view. */
-    uint16_t        au16[4];
-    /** 8-bit view. */
-    uint8_t         au8[8];
-#endif
+    /* Not other views. */
 } PGMSHWPTEPAE;
 
 # define PGMSHWPTEPAE_IS_P(Pte)                 ( ((Pte).uCareful & (X86_PTE_P | X86_PTE_PAE_MBZ_MASK_NX)) == X86_PTE_P )
