@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 34501 2010-11-30 12:30:30Z vboxsync $ */
+/* $Id: ovfreader.cpp 35536 2011-01-13 15:12:10Z vboxsync $ */
 /** @file
  *
  * OVF reader declarations. Depends only on IPRT, including the iprt::MiniString
@@ -422,6 +422,13 @@ void OVFReader::HandleVirtualSystemContent(const xml::ElementNode *pelmVirtualSy
                         uint32_t ulType;
                         pelmItemChild->copyValue(ulType);
                         i.resourceType = (ResourceType_T)ulType;
+                        i.fResourceRequired = true;
+                        const char *pcszAttValue;
+                        if (pelmItem->getAttributeValue("required", pcszAttValue))
+                        {
+                            if (!strcmp(pcszAttValue, "false"))
+                                i.fResourceRequired = false;
+                        }
                     }
                     else if (!strcmp(pcszItemChildName, "OtherResourceType"))
                         i.strOtherResourceType = pelmItemChild->getValue();
@@ -690,10 +697,16 @@ void OVFReader::HandleVirtualSystemContent(const xml::ElementNode *pelmVirtualSy
                     break;
 
                     default:
-                        throw OVFLogicError(N_("Error reading \"%s\": Unknown resource type %d in hardware item, line %d"),
-                                            m_strPath.c_str(),
-                                            i.resourceType,
-                                            i.ulLineNumber);
+                    {
+                        /* If this unknown resource type isn't required, we simply skip it. */
+                        if (i.fResourceRequired)
+                        {
+                            throw OVFLogicError(N_("Error reading \"%s\": Unknown resource type %d in hardware item, line %d"),
+                                                m_strPath.c_str(),
+                                                i.resourceType,
+                                                i.ulLineNumber);
+                        }
+                    }
                 } // end switch
             }
 
