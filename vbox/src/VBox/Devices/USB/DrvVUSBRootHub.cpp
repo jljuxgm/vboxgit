@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 31230 2010-07-30 07:29:31Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 32010 2010-08-26 16:51:26Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -584,7 +584,7 @@ static DECLCALLBACK(int) vusbRhCancelUrbsEp(PVUSBIROOTHUBCONNECTOR pInterface, P
      * Cancel and reap the URB(s) on an endpoint.
      */
     LogFlow(("vusbRhCancelUrbsEp: pRh=%p pUrb=%p\n", pRh));
-    vusbUrbCancel(pUrb);
+    vusbUrbCancel(pUrb, CANCELMODE_UNDO);
 
     PVUSBURB pRipe;
     if (pUrb->enmState == VUSBURBSTATE_REAPED)
@@ -612,7 +612,7 @@ static DECLCALLBACK(void) vusbRhCancelAllUrbs(PVUSBIROOTHUBCONNECTOR pInterface)
     while (pUrb)
     {
         PVUSBURB pNext = pUrb->VUsb.pNext;
-        vusbUrbCancel(pUrb);
+        vusbUrbCancel(pUrb, CANCELMODE_FAIL);
         pUrb = pNext;
     }
 

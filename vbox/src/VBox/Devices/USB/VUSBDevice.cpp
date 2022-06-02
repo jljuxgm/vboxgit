@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 32010 2010-08-26 16:51:26Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1045,7 +1045,7 @@ static void vusbDevCancelAllUrbs(PVUSBDEV pDev, bool fDetaching)
         if (pUrb->VUsb.pDev == pDev)
         {
             LogFlow(("%s: vusbDevCancelAllUrbs: CANCELING URB\n", pUrb->pszDesc));
-            vusbUrbCancel(pUrb);
+            vusbUrbCancel(pUrb, CANCELMODE_FAIL);
         }
         pUrb = pNext;
     }
