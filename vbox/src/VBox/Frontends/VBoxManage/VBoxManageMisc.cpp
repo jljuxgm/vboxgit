@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 34787 2010-12-07 14:51:18Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 34927 2010-12-09 22:53:42Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -901,8 +901,8 @@ int handleExtPack(HandlerArg *a)
 
     if (!strcmp(a->argv[0], "install"))
     {
-        if (a->argc > 2)
-            return errorSyntax(USAGE_EXTPACK, "Too many parameters given to \"extpack install\"");
+        if (a->argc != 2)
+            return errorSyntax(USAGE_EXTPACK, "Incorrect parameters count for \"extpack install\"");
 
         char szPath[RTPATH_MAX];
         int vrc = RTPathAbs(a->argv[1], szPath, sizeof(szPath));
