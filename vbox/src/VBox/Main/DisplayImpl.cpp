@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 33582 2010-10-28 17:56:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -59,7 +59,7 @@ typedef struct DRVMAINDISPLAY
     PPDMIDISPLAYPORT            pUpPort;
     /** Our display connector interface. */
     PDMIDISPLAYCONNECTOR        IConnector;
-#if defined(VBOX_WITH_VIDEOHWACCEL)
+#if defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_WITH_CRHGSMI)
     /** VBVA callbacks */
     PPDMIDISPLAYVBVACALLBACKS   pVBVACallbacks;
 #endif
