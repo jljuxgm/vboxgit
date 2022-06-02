@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 32360 2010-09-09 15:11:45Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 32403 2010-09-10 13:09:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5411,7 +5411,7 @@ HRESULT Console::powerUp(IProgress **aProgress, bool aPaused)
             && *pszDumpDir == '\0')
             pszDumpDir = NULL;
 
-        int vrc = VERR_GENERAL_FAILURE;
+        int vrc;
         if (   pszDumpDir
             && !RTDirExists(pszDumpDir))
         {
