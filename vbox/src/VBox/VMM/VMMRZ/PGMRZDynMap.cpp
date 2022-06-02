@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 31838 2010-08-21 01:19:56Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 31993 2010-08-26 13:14:46Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -755,7 +755,7 @@ void pgmR0DynMapPagingArrayInit(PPGMRZDYNMAP pThis, PPGMR0DYNMAPPGLVL pPgLvl)
             pPgLvl->a[0].fAndMask  = X86_PML4E_P | X86_PML4E_RW;
             pPgLvl->a[0].fResMask  = X86_PML4E_P | X86_PML4E_RW;
 
-            pPgLvl->a[1].fPhysMask = X86_PML4E_PG_MASK;
+            pPgLvl->a[1].fPhysMask = X86_PML4E_PG_MASK_FULL;
             pPgLvl->a[1].fPtrShift = X86_PDPT_SHIFT;
             pPgLvl->a[1].fPtrMask  = X86_PDPT_MASK_AMD64;
             pPgLvl->a[1].fAndMask  = X86_PDPE_P | X86_PDPE_RW /** @todo check for X86_PDPT_PS support. */;
