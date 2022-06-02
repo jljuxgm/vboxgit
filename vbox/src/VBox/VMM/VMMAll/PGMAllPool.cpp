@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 31123 2010-07-26 17:46:41Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 31170 2010-07-28 15:20:02Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -101,7 +101,7 @@ DECLINLINE(bool) pgmPoolIsBigPage(PGMPOOLKIND enmKind)
 #if defined(IN_RC)
 DECLINLINE(void *) PGMPOOL_PAGE_2_LOCKED_PTR(PVM pVM, PPGMPOOLPAGE pPage)
 {
-    void *pv = pgmPoolMapPageInlined(&pVM->pgm.s, pPage);
+    void *pv = pgmPoolMapPageInlined(pVM, pPage);
 
     /* Make sure the dynamic mapping will not be reused. */
     if (pv)

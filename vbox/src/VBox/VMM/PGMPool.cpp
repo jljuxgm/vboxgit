@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 30574 2010-07-02 12:08:45Z vboxsync $ */
+/* $Id: PGMPool.cpp 31170 2010-07-28 15:20:02Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -636,7 +636,7 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                 {
                     if (pPage->cPresent)
                     {
-                        void *pvShw = PGMPOOL_PAGE_2_PTR(pPool->CTX_SUFF(pVM), pPage);
+                        void *pvShw = PGMPOOL_PAGE_2_PTR_V2(pPool->CTX_SUFF(pVM), pVCpu, pPage);
                         STAM_PROFILE_START(&pPool->StatZeroPage, z);
 #if 0
                         /* Useful check for leaking references; *very* expensive though. */
