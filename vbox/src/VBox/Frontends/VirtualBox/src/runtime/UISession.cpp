@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 35520 2011-01-13 11:01:44Z vboxsync $ */
+/* $Id: UISession.cpp 35564 2011-01-14 13:52:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -281,7 +281,7 @@ void UISession::powerUp()
                  : "disabled"));
 #endif
 
-#ifdef VBOX_WITH_PIDFILE
+#ifdef VBOX_GUI_WITH_PIDFILE
     vboxGlobal().createPidfile();
 #endif
 
