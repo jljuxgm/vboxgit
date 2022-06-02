@@ -1,4 +1,4 @@
-/* $Id: uuid-generic.cpp 32994 2010-10-07 23:11:10Z vboxsync $ */
+/* $Id: uuid-generic.cpp 32995 2010-10-08 08:11:27Z vboxsync $ */
 /** @file
  * IPRT - UUID, Generic.
  */
@@ -428,9 +428,8 @@ RTDECL(int)  RTUuidFromUtf16(PRTUUID pUuid, PCRTUTF16 pwszString)
     AssertPtrReturn(pUuid, VERR_INVALID_PARAMETER);
     AssertPtrReturn(pwszString, VERR_INVALID_PARAMETER);
 
-    fHaveBraces = (pwszString[0] == '{' && pwszString[37] == '}');
-    if (fHaveBraces)
-        pwszString++;
+    fHaveBraces = pwszString[0] == '{';
+    pwszString += fHaveBraces;
 
 #define MY_CHECK(expr) do { if (RT_UNLIKELY(!(expr))) return VERR_INVALID_UUID_FORMAT; } while (0)
 #define MY_ISXDIGIT(ch) (!((ch) & 0xff00) && g_au8Digits[(ch) & 0xff] != 0xff)
@@ -470,7 +469,9 @@ RTDECL(int)  RTUuidFromUtf16(PRTUUID pUuid, PCRTUTF16 pwszString)
     MY_CHECK(MY_ISXDIGIT(pwszString[33]));
     MY_CHECK(MY_ISXDIGIT(pwszString[34]));
     MY_CHECK(MY_ISXDIGIT(pwszString[35]));
-    MY_CHECK(!pwszString[36 + (fHaveBraces ? 1 : 0)]);
+    if (fHaveBraces)
+        MY_CHECK(pwszString[36] == '}');
+    MY_CHECK(!pwszString[36 + fHaveBraces]);
 #undef MY_ISXDIGIT
 #undef MY_CHECK
 
