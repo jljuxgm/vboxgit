@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 32484 2010-09-14 14:01:48Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 32489 2010-09-14 15:50:31Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -991,6 +991,7 @@ int main()
     GEN_CHECK_OFF(VMM, cbRCLogger);
     GEN_CHECK_OFF(VMM, fRCLoggerFlushingDisabled);
     GEN_CHECK_OFF(VMM, fStackGuardsStationed);
+    GEN_CHECK_OFF(VMM, fUsePeriodicPreemptionTimers);
     GEN_CHECK_OFF(VMM, pYieldTimer);
     GEN_CHECK_OFF(VMM, cYieldResumeMillies);
     GEN_CHECK_OFF(VMM, cYieldEveryMillies);

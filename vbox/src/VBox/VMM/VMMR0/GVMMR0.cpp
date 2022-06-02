@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 31407 2010-08-05 13:36:39Z vboxsync $ */
+/* $Id: GVMMR0.cpp 32489 2010-09-14 15:50:31Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1884,6 +1884,21 @@ GVMMR0DECL(int) GVMMR0SchedPoll(PVM pVM, VMCPUID idCpu, bool fYield)
     return rc;
 }
 
+
+
+/**
+ * Updates the periodic preemption timer for the calling CPU.
+ *
+ * The caller must have disabled preemption!
+ *
+ * @param   pVM         The VM handle.
+ * @param   idHostCpu   The current host CPU id.
+ * @param   uHz         The desired frequency.
+ */
+GVMMR0DECL(void) GVMMR0SchedUpdatePeriodicPreemptionTimer(PVM pVM, RTCPUID idHostCpu, uint32_t uHz)
+{
+
+}
 
 
 /**

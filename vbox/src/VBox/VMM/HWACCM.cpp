@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 32378 2010-09-10 09:39:52Z vboxsync $ */
+/* $Id: HWACCM.cpp 32489 2010-09-14 15:50:31Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2432,6 +2432,19 @@ VMMR3DECL(bool) HWACCMR3IsVPIDActive(PVM pVM)
 VMMR3DECL(bool) HWACCMR3IsEventPending(PVMCPU pVCpu)
 {
     return HWACCMIsEnabled(pVCpu->pVMR3) && pVCpu->hwaccm.s.Event.fPending;
+}
+
+/**
+ * Checks if the VMX-preemption timer is being used.
+ *
+ * @returns true if it is, false if it isn't.
+ * @param   pVM         The VM handle.
+ */
+VMMR3DECL(bool) HWACCMR3IsVmxPreemptionTimerUsed(PVM pVM)
+{
+    return HWACCMIsEnabled(pVM)
+        && pVM->hwaccm.s.vmx.fEnabled
+        && pVM->hwaccm.s.vmx.fUsePreemptTimer;
 }
 
 /**

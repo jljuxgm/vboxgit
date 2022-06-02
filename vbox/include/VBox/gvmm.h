@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 30237 2010-06-16 11:14:20Z vboxsync $ */
+/* $Id: gvmm.h 32489 2010-09-14 15:50:31Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager. (VMM)
  */
@@ -147,6 +147,7 @@ GVMMR0DECL(int)     GVMMR0SchedPoke(PVM pVM, VMCPUID idCpu);
 GVMMR0DECL(int)     GVMMR0SchedPokeEx(PVM pVM, VMCPUID idCpu, bool fTakeUsedLock);
 GVMMR0DECL(int)     GVMMR0SchedWakeUpAndPokeCpus(PVM pVM, PCVMCPUSET pSleepSet, PCVMCPUSET pPokeSet);
 GVMMR0DECL(int)     GVMMR0SchedPoll(PVM pVM, VMCPUID idCpu, bool fYield);
+GVMMR0DECL(void)    GVMMR0SchedUpdatePeriodicPreemptionTimer(PVM pVM, RTCPUID idHostCpu, uint32_t uHz);
 GVMMR0DECL(int)     GVMMR0QueryStatistics(PGVMMSTATS pStats, PSUPDRVSESSION pSession, PVM pVM);
 GVMMR0DECL(int)     GVMMR0ResetStatistics(PCGVMMSTATS pStats, PSUPDRVSESSION pSession, PVM pVM);
 
