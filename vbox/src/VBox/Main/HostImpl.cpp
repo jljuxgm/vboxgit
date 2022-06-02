@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: HostImpl.cpp 30743 2010-07-08 13:32:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -17,6 +17,9 @@
 
 #define __STDC_LIMIT_MACROS
 #define __STDC_CONSTANT_MACROS
+
+// for some reason Windows burns in sdk\...\winsock.h if this isn't included first
+#include "VBox/com/ptr.h"
 
 #include "HostImpl.h"
 
