@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 30957 2010-07-21 13:07:34Z vboxsync $ */
+/* $Id: VBoxService.cpp 31202 2010-07-29 12:41:03Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -103,6 +103,9 @@ static struct
 #endif
 #ifdef VBOX_WITH_PAGE_SHARING
     { &g_PageSharing, NIL_RTTHREAD, false, false, false, true },
+#endif
+#ifdef VBOX_WITH_SHARED_FOLDERS
+    { &g_AutoMount, NIL_RTTHREAD, false, false, false, true },
 #endif
 };
 
