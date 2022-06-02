@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 30679 2010-07-06 16:50:07Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 30703 2010-07-07 12:34:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -45,7 +45,7 @@ UIConsoleEventHandler* UIConsoleEventHandler::instance(UISession *pSession /* = 
 /* static */
 void UIConsoleEventHandler::destroy()
 {
-    if (!m_pInstance)
+    if (m_pInstance)
     {
         delete m_pInstance;
         m_pInstance = 0;

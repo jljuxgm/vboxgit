@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataEventHandler.cpp 30677 2010-07-06 16:39:25Z vboxsync $ */
+/* $Id: UIExtraDataEventHandler.cpp 30703 2010-07-07 12:34:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -239,7 +239,7 @@ UIExtraDataEventHandler* UIExtraDataEventHandler::instance()
 /* static */
 void UIExtraDataEventHandler::destroy()
 {
-    if (!m_pInstance)
+    if (m_pInstance)
     {
         delete m_pInstance;
         m_pInstance = 0;
