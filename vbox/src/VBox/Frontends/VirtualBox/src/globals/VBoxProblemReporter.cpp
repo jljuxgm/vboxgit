@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34343 2010-11-24 21:17:02Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34479 2010-11-29 16:44:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -21,7 +21,7 @@
 
 #include "VBoxGlobal.h"
 #include "VBoxSelectorWnd.h"
-#include "VBoxProgressDialog.h"
+#include "UIProgressDialog.h"
 #include "UIDownloaderUserManual.h"
 #include "UIMachine.h"
 
@@ -285,14 +285,18 @@ int VBoxProblemReporter::message (QWidget *aParent, Type aType, const QString &a
  *  @param aParent      parent widget
  *  @param aMinDuration time (ms) that must pass before the dialog appears
  */
-bool VBoxProblemReporter::showModalProgressDialog (
-    CProgress &aProgress, const QString &aTitle, QWidget *aParent,
-    int aMinDuration)
+bool VBoxProblemReporter::showModalProgressDialog(CProgress &progress, const QString &strTitle, const QString &strImage /* = "" */, QWidget *pParent /* = 0 */, bool fSheetOnDarwin /* = false */, int cMinDuration /* = 2000 */)
 {
-    VBoxProgressDialog progressDlg (aProgress, aTitle, aMinDuration, aParent ? aParent : mainWindowShown());
+    QPixmap *pPixmap = 0;
+    if (!strImage.isEmpty())
+        pPixmap = new QPixmap(strImage);
 
+    UIProgressDialog progressDlg(progress, strTitle, pPixmap, fSheetOnDarwin, cMinDuration, pParent ? pParent : mainWindowShown());
     /* Run the dialog with the 350 ms refresh interval. */
-    progressDlg.run (350);
+    progressDlg.run(350);
+
+    if (pPixmap)
+        delete pPixmap;
 
     return true;
 }

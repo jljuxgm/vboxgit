@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 33683 2010-11-02 12:14:28Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 34479 2010-11-29 16:44:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1081,7 +1081,7 @@ void VBoxMediaManagerDlg::doRemoveMedium()
                 CProgress progress = hardDisk.DeleteStorage();
                 if (hardDisk.isOk())
                 {
-                    vboxProblem().showModalProgressDialog (progress, windowTitle(), parentWidget());
+                    vboxProblem().showModalProgressDialog (progress, windowTitle(), "", parentWidget());
                     if (progress.isOk() && progress.GetResultCode() == S_OK)
                         success = true;
                 }

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 34471 2010-11-29 15:28:36Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 34479 2010-11-29 16:44:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -319,7 +319,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                         else
                         {
                             /* Show the "VM saving" progress dialog: */
-                            vboxProblem().showModalProgressDialog(progress, machine.GetName(), 0, 0);
+                            vboxProblem().showModalProgressDialog(progress, machine.GetName(), ":/progress_state_save_90px.png", 0, true);
                             if (progress.GetResultCode() != 0)
                                 vboxProblem().cannotSaveMachineState(progress);
                             else
@@ -351,7 +351,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                         else
                         {
                             /* Show the power down progress dialog: */
-                            vboxProblem().showModalProgressDialog(progress, machine.GetName(), 0);
+                            vboxProblem().showModalProgressDialog(progress, machine.GetName());
                             if (progress.GetResultCode() != 0)
                                 vboxProblem().cannotStopMachine(progress);
                             else
@@ -370,7 +370,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                                 else
                                 {
                                     /* Show the progress dialog: */
-                                    vboxProblem().showModalProgressDialog(progress, machine.GetName(), 0);
+                                    vboxProblem().showModalProgressDialog(progress, machine.GetName());
                                     if (progress.GetResultCode() != 0)
                                         vboxProblem().cannotRestoreSnapshot(progress, snapshot.GetName());
                                 }

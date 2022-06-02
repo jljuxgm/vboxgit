@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 34479 2010-11-29 16:44:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -535,7 +535,7 @@ void VBoxSnapshotsWgt::restoreSnapshot()
     if (console.isOk())
     {
         /* Show the progress dialog */
-        vboxProblem().showModalProgressDialog (progress, mMachine.GetName(),
+        vboxProblem().showModalProgressDialog (progress, mMachine.GetName(), "",
                                                vboxProblem().mainWindowShown());
 
         if (progress.GetResultCode() != 0)
@@ -581,7 +581,7 @@ void VBoxSnapshotsWgt::deleteSnapshot()
     if (console.isOk())
     {
         /* Show the progress dialog */
-        vboxProblem().showModalProgressDialog (progress, mMachine.GetName(),
+        vboxProblem().showModalProgressDialog (progress, mMachine.GetName(), "",
                                                vboxProblem().mainWindowShown());
 
         if (progress.GetResultCode() != 0)
@@ -652,7 +652,7 @@ void VBoxSnapshotsWgt::takeSnapshot()
         if (console.isOk())
         {
             /* Show the progress dialog */
-            vboxProblem().showModalProgressDialog (progress, mMachine.GetName(),
+            vboxProblem().showModalProgressDialog (progress, mMachine.GetName(), "",
                                                    vboxProblem().mainWindowShown());
 
             if (progress.GetResultCode() != 0)

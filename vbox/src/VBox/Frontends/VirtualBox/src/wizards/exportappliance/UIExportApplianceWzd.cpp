@@ -1,4 +1,4 @@
-/* $Id: UIExportApplianceWzd.cpp 34065 2010-11-15 11:34:50Z vboxsync $ */
+/* $Id: UIExportApplianceWzd.cpp 34479 2010-11-29 16:44:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -583,7 +583,7 @@ bool UIExportApplianceWzdPage4::exportAppliance()
     if (fResult)
     {
         /* Show some progress, so the user know whats going on */
-        vboxProblem().showModalProgressDialog(progress, tr("Checking files ..."), this);
+        vboxProblem().showModalProgressDialog(progress, tr("Checking files ..."), "", this);
         if (progress.GetCanceled())
             return false;
         if (!progress.isOk() || progress.GetResultCode() != 0)
@@ -604,7 +604,7 @@ bool UIExportApplianceWzdPage4::exportAppliance()
         if (fResult)
         {
             /* Show some progress, so the user know whats going on */
-            vboxProblem().showModalProgressDialog(progress1, tr("Removing files ..."), this);
+            vboxProblem().showModalProgressDialog(progress1, tr("Removing files ..."), "", this);
             if (progress1.GetCanceled())
                 return false;
             if (!progress1.isOk() || progress1.GetResultCode() != 0)
@@ -640,7 +640,7 @@ bool UIExportApplianceWzdPage4::exportVMs(CAppliance &appliance)
     if (fResult)
     {
         /* Show some progress, so the user know whats going on */
-        vboxProblem().showModalProgressDialog(progress, tr("Exporting Appliance ..."), this);
+        vboxProblem().showModalProgressDialog(progress, tr("Exporting Appliance ..."), "", this);
         if (progress.GetCanceled())
             return false;
         if (!progress.isOk() || progress.GetResultCode() != 0)
