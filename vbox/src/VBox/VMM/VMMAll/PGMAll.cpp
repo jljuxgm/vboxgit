@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 31997 2010-08-26 13:59:06Z vboxsync $ */
+/* $Id: PGMAll.cpp 31998 2010-08-26 14:00:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1073,7 +1073,7 @@ static int pgmShwSyncLongModePDPtr(PVMCPU pVCpu, RTGCPTR64 GCPtr, X86PGPAEUINT u
 
     /* Allocate page directory pointer table if not present. */
     if (    !pPml4e->n.u1Present
-        &&  !(pPml4e->u & X86_PML4E_PG_MASK))
+        &&  !(pPml4e->u & X86_PML4E_PG_MASK_FULL))
     {
         RTGCPTR64   GCPml4;
         PGMPOOLKIND enmKind;
@@ -1098,7 +1098,7 @@ static int pgmShwSyncLongModePDPtr(PVMCPU pVCpu, RTGCPTR64 GCPtr, X86PGPAEUINT u
     }
     else
     {
-        pShwPage = pgmPoolGetPage(pPool, pPml4e->u & X86_PML4E_PG_MASK);
+        pShwPage = pgmPoolGetPage(pPool, pPml4e->u & X86_PML4E_PG_MASK_FULL);
         AssertReturn(pShwPage, VERR_INTERNAL_ERROR);
 
         pgmPoolCacheUsed(pPool, pShwPage);
@@ -1176,7 +1176,7 @@ DECLINLINE(int) pgmShwGetLongModePDPtr(PVMCPU pVCpu, RTGCPTR64 GCPtr, PX86PML4E 
 
     PVM             pVM      = pVCpu->CTX_SUFF(pVM);
     PPGMPOOL        pPool    = pVM->pgm.s.CTX_SUFF(pPool);
-    PPGMPOOLPAGE    pShwPage = pgmPoolGetPage(pPool, pPml4e->u & X86_PML4E_PG_MASK);
+    PPGMPOOLPAGE    pShwPage = pgmPoolGetPage(pPool, pPml4e->u & X86_PML4E_PG_MASK_FULL);
     AssertReturn(pShwPage, VERR_INTERNAL_ERROR);
 
     const unsigned  iPdPt = (GCPtr >> X86_PDPT_SHIFT) & X86_PDPT_MASK_AMD64;
