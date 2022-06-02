@@ -1,4 +1,4 @@
-# $Id: Config.kmk 34767 2010-12-06 19:56:50Z vboxsync $
+# $Id: Config.kmk 34792 2010-12-07 15:06:56Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1324,6 +1324,9 @@ ifdef VBOX_PATH_APP_DOCS
 endif
 if defined(VBOX_WITH_STRICT_LOCKS) && ($(KBUILD_TYPE) == "debug" || $(KBUILD_TYPE) == "strict")
  DEFS += RT_LOCK_STRICT RT_LOCK_STRICT_ORDER
+endif
+ifdef VBOX_WITH_EF_WRAPS
+ DEFS += RTMEM_WRAP_TO_EF_APIS RTMEM_WRAP_SOME_NEW_AND_DELETE_TO_EF
 endif
 
 #
@@ -4595,7 +4598,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34767 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34792 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
