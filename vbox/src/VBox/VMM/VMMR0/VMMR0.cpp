@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 31359 2010-08-04 15:31:04Z vboxsync $ */
+/* $Id: VMMR0.cpp 31360 2010-08-04 15:34:27Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -963,9 +963,6 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
                 return VERR_INVALID_PARAMETER;
 
             PVMCPU pVCpu = &pVM->aCpus[idCpu];
-
-            if (pVCpu->hNativeThreadR0 == NIL_RTNATIVETHREAD)
-                pVCpu->hNativeThreadR0 = RTThreadNativeSelf();
 
             /* Make sure that log flushes can jump back to ring-3; annoying to get an incomplete log (this is risky though as the code doesn't take this into account). */
             int rc = GMMR0CheckSharedModulesStart(pVM);
