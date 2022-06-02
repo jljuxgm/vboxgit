@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 33341 2010-10-22 11:14:45Z vboxsync $ */
+/* $Id: path-posix.cpp 33342 2010-10-22 11:17:05Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX.
  */
@@ -499,7 +499,7 @@ RTR3DECL(int) RTReadLink(const char *pszPath, char *pszDestLink, size_t cchDestL
         ssize_t cchLink = readlink(pszNativePath, szNativeDest, RTPATH_MAX-1);
         if (RT_LIKELY(cchLink != -1))
         {
-            szNativeDest[RT_MIN(cchLink, (ssize_t)sizeof(RTPATH_MAX-1))] = '\0';
+            szNativeDest[RT_MIN(cchLink, RTPATH_MAX-1)] = '\0';
             rc = rtPathFromNativeCopy(pszDestLink, cchDestLink, szNativeDest, NULL);
         }
         else
