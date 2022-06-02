@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 33882 2010-11-09 09:32:27Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 33932 2010-11-10 12:33:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -157,6 +157,11 @@ int UIMachineSettingsSystem::cpuCount() const
 bool UIMachineSettingsSystem::isHIDEnabled() const
 {
     return mCbUseAbsHID->isChecked();
+}
+
+KChipsetType UIMachineSettingsSystem::chipsetType() const
+{
+    return (KChipsetType)mCbChipset->itemData(mCbChipset->currentIndex()).toInt();
 }
 
 /* Load data to cashe from corresponding external object(s),
