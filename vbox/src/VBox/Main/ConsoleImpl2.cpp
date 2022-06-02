@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 30724 2010-07-08 08:30:20Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 30741 2010-07-08 13:18:57Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -23,6 +23,8 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#include "VBox/com/ErrorInfo.h"
+
 #include "ConsoleImpl.h"
 #include "DisplayImpl.h"
 #ifdef VBOX_WITH_GUEST_CONTROL
