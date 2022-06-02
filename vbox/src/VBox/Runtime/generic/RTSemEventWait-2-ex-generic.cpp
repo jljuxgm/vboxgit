@@ -1,4 +1,4 @@
-/* $Id: RTSemEventWait-2-ex-generic.cpp 33036 2010-10-11 10:10:33Z vboxsync $ */
+/* $Id: RTSemEventWait-2-ex-generic.cpp 33676 2010-11-02 09:48:24Z vboxsync $ */
 /** @file
  * IPRT - RTSemEventWait, implementation based on RTSemEventWaitEx.
  */
@@ -50,5 +50,4 @@ RTDECL(int)  RTSemEventWait(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
     return rc;
 }
 RT_EXPORT_SYMBOL(RTSemEventWait);
-
 

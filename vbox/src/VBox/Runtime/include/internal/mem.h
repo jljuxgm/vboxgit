@@ -1,4 +1,4 @@
-/* $Id: mem.h 33269 2010-10-20 15:42:28Z vboxsync $ */
+/* $Id: mem.h 33676 2010-11-02 09:48:24Z vboxsync $ */
 /** @file
  * IPRT - Memory Management.
  */
@@ -55,5 +55,4 @@ DECLHIDDEN(void)    rtMemBaseFree(void *pv);
 RT_C_DECLS_END
 
 #endif
-
 

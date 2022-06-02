@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 33590 2010-10-29 08:55:09Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 33676 2010-11-02 09:48:24Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1269,7 +1269,7 @@ int ConsoleVRDPServer::Launch(void)
 
     int rc = VINF_SUCCESS;
 
-    /* 
+    /*
      * Check that a VRDE library name is set.
      */
     Bstr library;

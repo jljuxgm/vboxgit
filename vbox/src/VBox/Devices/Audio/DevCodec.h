@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 33400 2010-10-25 03:16:48Z vboxsync $ */
+/* $Id: DevCodec.h 33676 2010-11-02 09:48:24Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -240,7 +240,7 @@ typedef enum
 #define AFMT_OUT Out
 
 #ifdef VBOX_WITH_AUDIO_FLEXIBLE_FORMAT
-# define MAX_AUDIO_FORMAT 64 
+# define MAX_AUDIO_FORMAT 64
 typedef SWVoiceIn *CODECAUDIOINFORMAT[MAX_AUDIO_FORMAT];
 typedef SWVoiceOut *CODECAUDIOOUTFORMAT[MAX_AUDIO_FORMAT];
 # define AUDIO_FORMAT_SELECTOR(pState, dir, hz, mult, divizor) ((pState)->aSwVoice##dir[(hz)*24 + (mult)*8 + (divizor)])

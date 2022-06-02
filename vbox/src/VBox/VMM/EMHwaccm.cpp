@@ -1,4 +1,4 @@
-/* $Id: EMHwaccm.cpp 32956 2010-10-06 16:06:53Z vboxsync $ */
+/* $Id: EMHwaccm.cpp 33676 2010-11-02 09:48:24Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -559,7 +559,7 @@ int emR3HwAccExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
             STAM_REL_PROFILE_ADV_STOP(&pVCpu->em.s.StatCapped, u);
             rc = VINF_SUCCESS;
         }
-        
+
 
         /*
          * Deal with high priority post execution FFs before doing anything else.

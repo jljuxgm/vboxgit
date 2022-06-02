@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 33676 2010-11-02 09:48:24Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -351,9 +351,9 @@ static mbuf_t vboxNetFltDarwinMBufFromSG(PVBOXNETFLTINS pThis, PINTNETSG pSG)
      * So, in the end it's better to just do it the simple way that will work
      * 100%, even if it involves some extra work (alloc + copy) we really wished
      * to avoid.
-     * 
-     * Note. We can't make use of the physical addresses on darwin because the 
-     *       way the mbuf / cluster stuff works (see mbuf_data_to_physical and 
+     *
+     * Note. We can't make use of the physical addresses on darwin because the
+     *       way the mbuf / cluster stuff works (see mbuf_data_to_physical and
      *       mcl_to_paddr).
      */
     mbuf_t pPkt = NULL;

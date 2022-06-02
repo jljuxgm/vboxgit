@@ -1,4 +1,4 @@
-/* $Id: BdsMisc.c 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: BdsMisc.c 33676 2010-11-02 09:48:24Z vboxsync $ */
 /** @file
  * BdsMisc.c - Misc BDS library function.
  */
@@ -597,8 +597,8 @@ BdsLibBuildOptionFromVar (
     //ASSERT (Option != NULL);
     if (!Option)
     {
-	DEBUG((DEBUG_INFO, "%a:%d Option %s wasn't found \n", __FILE__, __LINE__, Option));
-	continue;
+        DEBUG((DEBUG_INFO, "%a:%d Option %s wasn't found \n", __FILE__, __LINE__, Option));
+        continue;
     }
     Option->BootCurrent = OptionOrder[Index];
 

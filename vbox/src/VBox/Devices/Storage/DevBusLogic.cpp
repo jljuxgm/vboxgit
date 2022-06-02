@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 33676 2010-11-02 09:48:24Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -2341,7 +2341,7 @@ static void buslogicKick(PBUSLOGIC pThis)
         pThis->fRedo = false;
         if (pThis->VBoxSCSI.fBusy)
         {
-            
+
             /* The BIOS had a request active when we got suspended. Resume it. */
             int rc = buslogicPrepareBIOSSCSIRequest(pThis);
             AssertRC(rc);

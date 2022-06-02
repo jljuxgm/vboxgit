@@ -1,4 +1,4 @@
-/* $Id: RTMpGetArraySize-generic.cpp 32572 2010-09-16 16:18:12Z vboxsync $ */
+/* $Id: RTMpGetArraySize-generic.cpp 33676 2010-11-02 09:48:24Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetArraySize.
  */
@@ -39,5 +39,4 @@ RTDECL(uint32_t) RTMpGetArraySize(void)
     return RTCpuLastIndex(RTMpGetSet(&CpuSet)) + 1;
 }
 RT_EXPORT_SYMBOL(RTMpGetArraySize);
-
 
