@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35029 2010-12-13 16:20:32Z vboxsync $
+# $Id: Makefile.kmk 35030 2010-12-13 16:26:55Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -170,7 +170,7 @@ solaris-icons_INST = bin/icons
 solaris-icons_MODE = a+r,u+w
 solaris-icons_SOURCES = $(VBOX_MIME_ICONS)
 
-BLDDIRS +=
+BLDDIRS += \
 	$(SOLARIS_USR_DIR)/share \
 	$(SOLARIS_USR_DIR)/share/icons \
 	$(SOLARIS_USRSHR_ICONS_DIR) \
