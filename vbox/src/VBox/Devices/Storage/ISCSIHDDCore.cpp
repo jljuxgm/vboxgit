@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 31776 2010-08-19 09:48:44Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 31845 2010-08-21 19:52:49Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -2327,6 +2327,9 @@ static int iscsiSendPDUAsync(PISCSIIMAGE pImage)
         }
     } while (   RT_SUCCESS(rc)
              && !pImage->pIScsiPDUTxCur);
+
+    if (rc == VERR_TRY_AGAIN)
+        rc = VINF_SUCCESS;
 
     /* Add the write poll flag if we still have something to send, clear it otherwise. */
     if (pImage->pIScsiPDUTxCur)
