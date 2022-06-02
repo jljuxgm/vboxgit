@@ -1,4 +1,4 @@
-/* $Id: vboxvideo_13.c 32495 2010-09-14 22:14:42Z vboxsync $ */
+/* $Id: vboxvideo_13.c 32692 2010-09-22 10:30:34Z vboxsync $ */
 /** @file
  * Linux Additions X11 graphics driver
  */
@@ -1066,6 +1066,9 @@ VBOXCloseScreen(int scrnIndex, ScreenPtr pScreen)
 
     /* Destroy the VGA hardware record */
     vgaHWFreeHWRec(pScrn);
+
+    /* And do additional bits which are separate for historical reasons */
+    vbox_close(pScrn, pVBox);
 
     /* Remove our observer functions from the X server call chains. */
     pScrn->EnableDisableFBAccess = pVBox->EnableDisableFBAccess;
