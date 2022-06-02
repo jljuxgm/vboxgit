@@ -1,15 +1,21 @@
-/* $Id: USBProxyDevice-linux.c 31247 2010-07-30 13:37:49Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.c 31538 2010-08-10 15:28:34Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
- * Oracle Corporation confidential
- * All rights reserved
+ * This file is part of VirtualBox Open Source Edition (OSE), as
+ * available from http://www.virtualbox.org. This file is free software;
+ * you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GPL) as published by the Free Software
+ * Foundation, in version 2 as it comes in the "COPYING" file of the
+ * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+ * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/* START */
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
