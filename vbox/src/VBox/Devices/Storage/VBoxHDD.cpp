@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 30313 2010-06-18 13:20:34Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 30481 2010-06-28 18:16:52Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -571,8 +571,9 @@ static int vdReadHelper(PVBOXHDD pDisk, PVDIMAGE pImage, PVDIMAGE pImageParentOv
         /* No image in the chain contains the data for the block. */
         if (rc == VERR_VD_BLOCK_FREE)
         {
-            /* Fill the free space with 0 if we are told to do so. */
-            if (fHandleFreeBlocks)
+            /* Fill the free space with 0 if we are told to do so
+             * or a previous read returned valid data. */
+            if (fHandleFreeBlocks || !fAllFree)
                 memset(pvBuf, '\0', cbThisRead);
             else
                 cbBufClear += cbThisRead;
