@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31204 2010-07-29 12:45:01Z vboxsync $
+# $Id: Makefile.kmk 32634 2010-09-20 12:00:44Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -17,6 +17,11 @@
 
 SUB_DEPTH = ../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
+
+#
+# Incldue testcases.
+#
+include	testcase/Makefile.kmk
 
 #
 # Target lists.
