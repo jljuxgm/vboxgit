@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 30915 2010-07-19 19:15:58Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 31053 2010-07-23 12:13:01Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3041,7 +3041,7 @@ ResumeExecution:
                 if (    !CPUMIsGuestInRealModeEx(pCtx)
                     ||  !pVM->hwaccm.s.vmx.pRealModeTSS)
                 {
-                    Log(("Trap %x at %04X:%RGv errorCode=%x\n", vector, pCtx->cs, (RTGCPTR)pCtx->rip, errCode));
+                    Log(("Trap %x at %04X:%RGv errorCode=%RGv\n", vector, pCtx->cs, (RTGCPTR)pCtx->rip, errCode));
                     rc = VMXR0InjectEvent(pVM, pVCpu, pCtx, VMX_VMCS_CTRL_ENTRY_IRQ_INFO_FROM_EXIT_INT_INFO(intInfo), cbInstr, errCode);
                     AssertRC(rc);
                     STAM_PROFILE_ADV_STOP(&pVCpu->hwaccm.s.StatExit2Sub3, y3);
