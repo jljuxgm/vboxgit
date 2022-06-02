@@ -1,4 +1,4 @@
-/* $Id: server.cpp 30559 2010-07-01 14:51:30Z vboxsync $ */
+/* $Id: server.cpp 30631 2010-07-05 19:20:03Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -636,7 +636,7 @@ static const nsModuleComponentInfoEx components[] =
 {
     nsModuleComponentInfoEx(
         "VirtualBox component",
-        (nsCID) NS_VIRTUALBOX_CID,
+        CLSID_VirtualBox,
         NS_VIRTUALBOX_CONTRACTID,
         VirtualBoxConstructor, // constructor funcion
         NULL, // registration function
