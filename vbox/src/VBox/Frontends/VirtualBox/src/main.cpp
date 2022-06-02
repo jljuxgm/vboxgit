@@ -1,4 +1,4 @@
-/* $Id: main.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: main.cpp 33969 2010-11-11 10:43:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -249,7 +249,7 @@ static void showHelp()
     dflt = "image";
 #endif
 
-    RTPrintf(VBOX_PRODUCT " Graphical User Interface %s\n"
+    RTPrintf(VBOX_PRODUCT " Manager %s\n"
             "(C) 2005-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
             "All rights reserved.\n"
             "\n"
