@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 33723 2010-11-03 13:06:12Z vboxsync $ */
+/* $Id: GuestImpl.cpp 33724 2010-11-03 13:07:27Z vboxsync $ */
 
 /** @file
  *
@@ -259,7 +259,7 @@ HRESULT Guest::taskUpdateGuestAdditions(TaskGuest *aTask)
                                                         ComSafeArrayAsInParam(env),
                                                         Bstr("").raw() /* Username. */,
                                                         Bstr("").raw() /* Password */,
-                                                        5 * 1000 /* Wait 10s for getting the process started. */,
+                                                        5 * 1000 /* Wait 5s for getting the process started. */,
                                                         &uPID, progressCopy.asOutParam(), &vrc);
                     if (RT_FAILURE(vrc))
                     {
