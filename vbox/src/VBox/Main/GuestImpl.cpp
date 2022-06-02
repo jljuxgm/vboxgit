@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 31364 2010-08-04 16:44:20Z vboxsync $ */
+/* $Id: GuestImpl.cpp 31433 2010-08-06 09:37:59Z vboxsync $ */
 
 /** @file
  *
@@ -1504,7 +1504,7 @@ void Guest::setAdditionsInfo2(Bstr aAdditionsVersion, Bstr aVersionName)
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     if (!aVersionName.isEmpty())
-        mData.mAdditionsVersion = aAdditionsVersion + " " + aVersionName;
+        mData.mAdditionsVersion = BstrFmt("%ls %ls", aAdditionsVersion.raw(), aVersionName.raw());
     else
         mData.mAdditionsVersion = aAdditionsVersion;
 }
