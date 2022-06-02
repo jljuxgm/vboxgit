@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 34005 2010-11-11 18:34:27Z vboxsync $ */
+/* $Id: DevCodec.cpp 34351 2010-11-25 08:06:13Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -2253,14 +2253,14 @@ static int codecLookup(CODECState *pState, uint32_t cmd, PPFNCODECVERBPROCESSOR 
     Assert(CODEC_CAD(cmd) == pState->id);
     if (codecIsReservedNode(pState, CODEC_NID(cmd)))
     {
-        LogRel(("HDAcodec: cmd %x was addressed to reserved node\n", cmd));
+        Log(("HDAcodec: cmd %x was addressed to reserved node\n", cmd));
     }
     if (   CODEC_VERBDATA(cmd) == 0
         || CODEC_NID(cmd) >= pState->cTotalNodes)
     {
         *pfn = codecUnimplemented;
         //** @todo r=michaln: There needs to be a counter to avoid log flooding (see e.g. DevRTC.cpp)
-        LogRel(("HDAcodec: cmd %x was ignored\n", cmd));
+        Log(("HDAcodec: cmd %x was ignored\n", cmd));
         return VINF_SUCCESS;
     }
     for (int i = 0; i < pState->cVerbs; ++i)
