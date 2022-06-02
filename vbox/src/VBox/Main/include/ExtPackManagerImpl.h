@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 34794 2010-12-07 15:28:17Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 34808 2010-12-07 17:21:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -58,6 +58,8 @@ public:
     STDMETHOD(COMGETTER(Revision))(ULONG *a_puRevision);
     STDMETHOD(COMGETTER(VRDEModule))(BSTR *a_pbstrVrdeModule);
     STDMETHOD(COMGETTER(PlugIns))(ComSafeArrayOut(IExtPackPlugIn *, a_paPlugIns));
+    STDMETHOD(COMGETTER(License))(BSTR *a_pbstrHtmlLicense);
+    STDMETHOD(COMGETTER(ShowLicense))(BOOL *a_pfShowIt);
     STDMETHOD(COMGETTER(Usable))(BOOL *a_pfUsable);
     STDMETHOD(COMGETTER(WhyUnusable))(BSTR *a_pbstrWhy);
     /** @}  */
@@ -119,6 +121,8 @@ public:
     STDMETHOD(COMGETTER(Revision))(ULONG *a_puRevision);
     STDMETHOD(COMGETTER(VRDEModule))(BSTR *a_pbstrVrdeModule);
     STDMETHOD(COMGETTER(PlugIns))(ComSafeArrayOut(IExtPackPlugIn *, a_paPlugIns));
+    STDMETHOD(COMGETTER(License))(BSTR *a_pbstrHtmlLicense);
+    STDMETHOD(COMGETTER(ShowLicense))(BOOL *a_pfShowIt);
     STDMETHOD(COMGETTER(Usable))(BOOL *a_pfUsable);
     STDMETHOD(COMGETTER(WhyUnusable))(BSTR *a_pbstrWhy);
     /** @}  */

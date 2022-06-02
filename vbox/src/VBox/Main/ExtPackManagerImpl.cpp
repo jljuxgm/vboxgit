@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 34794 2010-12-07 15:28:17Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 34808 2010-12-07 17:21:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -373,6 +373,31 @@ STDMETHODIMP ExtPackFile::COMGETTER(PlugIns)(ComSafeArrayOut(IExtPackPlugIn *, a
     NOREF(a_paPlugInsSize);
 #endif
     ReturnComNotImplemented();
+}
+
+STDMETHODIMP ExtPackFile::COMGETTER(License)(BSTR *a_pbstrHtmlLicense)
+{
+    CheckComArgOutPointerValid(a_pbstrHtmlLicense);
+
+    AutoCaller autoCaller(this);
+    HRESULT hrc = autoCaller.rc();
+    if (SUCCEEDED(hrc))
+    {
+        Utf8Str Dummy;
+        Dummy.cloneTo(a_pbstrHtmlLicense);
+    }
+    return hrc;
+}
+
+STDMETHODIMP ExtPackFile::COMGETTER(ShowLicense)(BOOL *a_pfShowIt)
+{
+    CheckComArgOutPointerValid(a_pfShowIt);
+
+    AutoCaller autoCaller(this);
+    HRESULT hrc = autoCaller.rc();
+    if (SUCCEEDED(hrc))
+        *a_pfShowIt = FALSE;
+    return hrc;
 }
 
 STDMETHODIMP ExtPackFile::COMGETTER(Usable)(BOOL *a_pfUsable)
@@ -1376,6 +1401,31 @@ STDMETHODIMP ExtPack::COMGETTER(PlugIns)(ComSafeArrayOut(IExtPackPlugIn *, a_paP
     NOREF(a_paPlugInsSize);
 #endif
     ReturnComNotImplemented();
+}
+
+STDMETHODIMP ExtPack::COMGETTER(License)(BSTR *a_pbstrHtmlLicense)
+{
+    CheckComArgOutPointerValid(a_pbstrHtmlLicense);
+
+    AutoCaller autoCaller(this);
+    HRESULT hrc = autoCaller.rc();
+    if (SUCCEEDED(hrc))
+    {
+        Utf8Str Dummy;
+        Dummy.cloneTo(a_pbstrHtmlLicense);
+    }
+    return hrc;
+}
+
+STDMETHODIMP ExtPack::COMGETTER(ShowLicense)(BOOL *a_pfShowIt)
+{
+    CheckComArgOutPointerValid(a_pfShowIt);
+
+    AutoCaller autoCaller(this);
+    HRESULT hrc = autoCaller.rc();
+    if (SUCCEEDED(hrc))
+        *a_pfShowIt = FALSE;
+    return hrc;
 }
 
 STDMETHODIMP ExtPack::COMGETTER(Usable)(BOOL *a_pfUsable)
