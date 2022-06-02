@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 31387 2010-08-05 10:13:58Z vboxsync $ */
+/* $Id: HostImpl.cpp 31388 2010-08-05 10:26:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -528,7 +528,7 @@ STDMETHODIMP Host::COMGETTER(NetworkInterfaces)(ComSafeArrayOut(IHostNetworkInte
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    std::list <ComObjPtr<HostNetworkInterface> > list;
+    std::list<ComObjPtr<HostNetworkInterface> > list;
 
 # ifdef VBOX_WITH_HOSTNETIF_API
     int rc = NetIfList(list);
@@ -1480,7 +1480,6 @@ HRESULT Host::loadSettings(const settings::Host &data)
 
     AutoMultiWriteLock2 alock(this->lockHandle(), &m->usbListsLock COMMA_LOCKVAL_SRC_POS);
 
-
     for (settings::USBDeviceFiltersList::const_iterator it = data.llUSBDeviceFilters.begin();
          it != data.llUSBDeviceFilters.end();
          ++it)
@@ -1513,8 +1512,7 @@ HRESULT Host::saveSettings(settings::Host &data)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    AutoReadLock alock1(this COMMA_LOCKVAL_SRC_POS);
-    AutoReadLock alock2(&m->usbListsLock COMMA_LOCKVAL_SRC_POS);
+    AutoReadLock alock(&m->usbListsLock COMMA_LOCKVAL_SRC_POS);
 
     data.llUSBDeviceFilters.clear();
 
