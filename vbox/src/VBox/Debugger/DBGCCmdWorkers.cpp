@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdWorkers.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DBGCCmdWorkers.cpp 35626 2011-01-19 12:29:20Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Worker Routines.
  */
@@ -227,7 +227,6 @@ int dbgcVarToDbgfAddr(PDBGC pDbgc, PCDBGCVAR pVar, PDBGFADDRESS pAddress)
         }
 
         case DBGCVAR_TYPE_HC_FLAT:
-        case DBGCVAR_TYPE_HC_FAR:
         case DBGCVAR_TYPE_HC_PHYS:
         default:
             return VERR_PARSE_CONVERSION_FAILED;

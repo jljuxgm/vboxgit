@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 35626 2011-01-19 12:29:20Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1055,20 +1055,6 @@ static DECLCALLBACK(int) dbgcCmdFormat(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM 
                     rc = pCmdHlp->pfnPrintf(pCmdHlp, NULL,
                         "Host flat address: %%%08x\n",
                         paArgs[iArg].u.pvHCFlat);
-                break;
-            case DBGCVAR_TYPE_HC_FAR:
-                if (paArgs[iArg].enmRangeType != DBGCVAR_RANGE_NONE)
-                    rc = pCmdHlp->pfnPrintf(pCmdHlp, NULL,
-                        "Host far address: %04x:%08x range %lld %s\n",
-                        paArgs[iArg].u.HCFar.sel,
-                        paArgs[iArg].u.HCFar.off,
-                        paArgs[iArg].u64Range,
-                        apszRangeDesc[paArgs[iArg].enmRangeType]);
-                else
-                    rc = pCmdHlp->pfnPrintf(pCmdHlp, NULL,
-                        "Host far address: %04x:%08x\n",
-                        paArgs[iArg].u.HCFar.sel,
-                        paArgs[iArg].u.HCFar.off);
                 break;
             case DBGCVAR_TYPE_HC_PHYS:
                 if (paArgs[iArg].enmRangeType != DBGCVAR_RANGE_NONE)
