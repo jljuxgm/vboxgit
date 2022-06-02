@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 30899 2010-07-19 08:16:00Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 30907 2010-07-19 11:32:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -886,7 +886,18 @@ int Console::VRDPClientLogon(uint32_t u32ClientId, const char *pszUser, const ch
     hrc = mMachine->GetExtraData(Bstr("VRDP/ProvideGuestCredentials"), value.asOutParam());
     if (SUCCEEDED(hrc) && value == "1")
     {
-        fProvideGuestCredentials = TRUE;
+        /* Provide credentials only if there are no logged in users. */
+        Bstr noLoggedInUsersValue;
+        ULONG64 ul64Timestamp = 0;
+        Bstr flags;
+
+        hrc = getGuestProperty(Bstr("/VirtualBox/GuestInfo/OS/NoLoggedInUsers"),
+                               noLoggedInUsersValue.asOutParam(), &ul64Timestamp, flags.asOutParam());
+
+        if (SUCCEEDED(hrc) && noLoggedInUsersValue != Bstr("false"))
+        {
+            fProvideGuestCredentials = TRUE;
+        }
     }
 
     if (   fProvideGuestCredentials
