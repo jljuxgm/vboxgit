@@ -1,4 +1,4 @@
-/* $Id: DHCPServerRunner.h 29158 2010-05-06 14:06:46Z vboxsync $ */
+/* $Id: DHCPServerRunner.h 32056 2010-08-27 16:04:23Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -17,7 +17,9 @@
 #include <iprt/err.h>
 #include <iprt/types.h>
 #include <iprt/string.h>
+#ifndef VBOX_WITH_VRDP_MEMLEAK_DETECTOR
 #include <iprt/mem.h>
+#endif /* !VBOX_WITH_VRDP_MEMLEAK_DETECTOR */
 #include <VBox/com/string.h>
 
 typedef enum

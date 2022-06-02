@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 32031 2010-08-27 09:48:35Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 32056 2010-08-27 16:04:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1008,6 +1008,10 @@ void Console::VRDPClientDisconnect(uint32_t u32ClientId,
 #ifdef VBOX_WITH_GUEST_PROPS
     updateGuestPropertiesVRDPDisconnect(u32ClientId);
 #endif /* VBOX_WITH_GUEST_PROPS */
+
+#ifdef VBOX_WITH_VRDP_MEMLEAK_DETECTOR
+    MLDMemDump();
+#endif /* !VBOX_WITH_VRDP_MEMLEAK_DETECTOR */
 
     LogFlowFuncLeave();
     return;

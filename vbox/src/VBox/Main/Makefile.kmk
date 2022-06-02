@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31960 2010-08-25 13:36:44Z vboxsync $
+# $Id: Makefile.kmk 32056 2010-08-27 16:04:23Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -585,6 +585,10 @@ VBoxC_DEFS.win.amd64 += _WIN32_WINNT=0x0510
 
 #temporary define
 VBoxC_DEFS += MMSEAMLESS
+
+ifdef VBOX_WITH_VRDP_MEMLEAK_DETECTOR
+VBoxC_DEFS += VBOX_WITH_VRDP_MEMLEAK_DETECTOR
+endif
 
 VBoxC_INCS          = \
 	include \
