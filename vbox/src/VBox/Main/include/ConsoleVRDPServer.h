@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 30627 2010-07-05 17:08:55Z vboxsync $ */
 
 /** @file
  *
@@ -177,7 +177,7 @@ private:
 
     IFramebuffer *maFramebuffers[SchemaDefs::MaxGuestMonitors];
 
-    IConsoleCallback *mConsoleCallback;
+    IEventListener *mConsoleListener;
 
     VRDPInputSynch m_InputSynch;
 

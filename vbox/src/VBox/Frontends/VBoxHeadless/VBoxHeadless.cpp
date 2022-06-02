@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 30606 2010-07-05 12:26:27Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 30627 2010-07-05 17:08:55Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -994,7 +994,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
             CHECK_ERROR(console, COMGETTER(EventSource)(es.asOutParam()));
             consoleListener = new ConsoleEventListener();
             consoleListener->AddRef();
-            com::SafeArray <VBoxEventType_T> eventTypes(5);
+            com::SafeArray <VBoxEventType_T> eventTypes;
             eventTypes.push_back(VBoxEventType_OnMouseCapabilityChange);
             eventTypes.push_back(VBoxEventType_OnStateChange);
             eventTypes.push_back(VBoxEventType_OnRemoteDisplayInfoChange);
@@ -1089,7 +1089,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
             CHECK_ERROR(virtualBox, COMGETTER(EventSource)(es.asOutParam()));
             vboxListener = new VirtualBoxEventListener();
             vboxListener->AddRef();
-            com::SafeArray <VBoxEventType_T> eventTypes(1);
+            com::SafeArray <VBoxEventType_T> eventTypes;
             eventTypes.push_back(VBoxEventType_OnGuestPropertyChange);
             CHECK_ERROR(es, RegisterListener(vboxListener, ComSafeArrayAsInParam(eventTypes), true));
         }
