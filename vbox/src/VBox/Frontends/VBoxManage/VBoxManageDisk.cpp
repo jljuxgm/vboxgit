@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 35239 2010-12-20 12:45:14Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 35261 2010-12-20 17:44:59Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -997,7 +997,7 @@ int handleShowHardDiskInfo(HandlerArg *a)
         Bstr format;
         hardDisk->COMGETTER(Format)(format.asOutParam());
         RTPrintf("Storage format:       %lS\n", format.raw());
-        MediumVariant_T variant;
+        ULONG variant;
         hardDisk->COMGETTER(Variant)(&variant);
         const char *variantStr = "unknown";
         switch (variant & ~(MediumVariant_Fixed | MediumVariant_Diff))
