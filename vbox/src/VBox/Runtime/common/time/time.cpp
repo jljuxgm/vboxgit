@@ -1,4 +1,4 @@
-/* $Id: time.cpp 34989 2010-12-13 11:03:02Z vboxsync $ */
+/* $Id: time.cpp 34990 2010-12-13 11:12:42Z vboxsync $ */
 /** @file
  * IPRT - Time.
  */
@@ -272,7 +272,7 @@ RTDECL(PRTTIME) RTTimeExplode(PRTTIME pTime, PCRTTIMESPEC pTimeSpec)
      */
     pTime->fFlags = RTTIME_FLAGS_TYPE_UTC;
     i64Div = pTimeSpec->i64NanosecondsRelativeToUnixEpoch;
-    i32Rem = ASMDivS64ByS32RetS32(i64Div, 1000000000);
+    i32Rem = (int32_t)ASMModU64ByU32RetU32(i64Div, 1000000000);
     i64Div = (int64_t)ASMDivS64ByS32RetS32(i64Div, 1000000000);
     if (i32Rem < 0)
     {
