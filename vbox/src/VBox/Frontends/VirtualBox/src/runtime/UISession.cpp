@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 35686 2011-01-24 16:05:20Z vboxsync $ */
+/* $Id: UISession.cpp 35761 2011-01-28 13:19:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -979,7 +979,7 @@ void UISession::reinitMenuPool()
     /* Network stuff: */
     {
         bool fAtLeastOneAdapterActive = false;
-        ULONG uSlots = vboxGlobal().virtualBox().GetSystemProperties().GetNetworkAdapterCount();
+        ULONG uSlots = vboxGlobal().virtualBox().GetSystemProperties().GetMaxNetworkAdapters(KChipsetType_PIIX3);
         for (ULONG uSlot = 0; uSlot < uSlots; ++uSlot)
         {
             const CNetworkAdapter &adapter = machine.GetNetworkAdapter(uSlot);

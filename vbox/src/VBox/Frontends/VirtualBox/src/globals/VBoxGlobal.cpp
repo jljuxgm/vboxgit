@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 35730 2011-01-27 10:49:44Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 35761 2011-01-28 13:19:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1813,7 +1813,7 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
     {
         QString item;
 
-        ulong count = mVBox.GetSystemProperties().GetNetworkAdapterCount();
+        ulong count = mVBox.GetSystemProperties().GetMaxNetworkAdapters(KChipsetType_PIIX3);
         int rows = 2; /* including section header and footer */
         for (ulong slot = 0; slot < count; slot ++)
         {

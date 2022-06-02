@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 33394 2010-10-24 16:17:56Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 35761 2011-01-28 13:19:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -269,7 +269,7 @@ public:
         const CMachine &machine = m_session.GetMachine();
         QString strFullData;
 
-        ulong uMaxCount = vboxGlobal().virtualBox().GetSystemProperties().GetNetworkAdapterCount();
+        ulong uMaxCount = vboxGlobal().virtualBox().GetSystemProperties().GetMaxNetworkAdapters(KChipsetType_PIIX3);
 
         QString strToolTip = QApplication::translate("UIIndicatorsPool",
                                  "<p style='white-space:pre'><nobr>Indicates the activity of the "

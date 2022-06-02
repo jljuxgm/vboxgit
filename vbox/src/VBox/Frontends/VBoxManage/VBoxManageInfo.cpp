@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 35707 2011-01-25 12:53:39Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 35761 2011-01-28 13:19:26Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -786,11 +786,9 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
         }
     }
 
-    /* get the maximum amount of NICS */
-    ComPtr<ISystemProperties> sysProps;
-    virtualBox->COMGETTER(SystemProperties)(sysProps.asOutParam());
-    ULONG maxNICs = 0;
-    sysProps->COMGETTER(NetworkAdapterCount)(&maxNICs);
+    /* get the maximum amount of NICS */    
+    ULONG maxNICs = getMaxNics(virtualBox, machine);
+   
     for (ULONG currentNIC = 0; currentNIC < maxNICs; currentNIC++)
     {
         ComPtr<INetworkAdapter> nic;
@@ -1121,6 +1119,9 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
         RTPrintf("Keyboard Device: %s\n", pszHid);
 
     /* get the maximum amount of UARTs */
+    ComPtr<ISystemProperties> sysProps;
+    virtualBox->COMGETTER(SystemProperties)(sysProps.asOutParam());
+
     ULONG maxUARTs = 0;
     sysProps->COMGETTER(SerialPortCount)(&maxUARTs);
     for (ULONG currentUART = 0; currentUART < maxUARTs; currentUART++)

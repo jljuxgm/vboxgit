@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 35415 2011-01-06 17:33:14Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 35761 2011-01-28 13:19:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -725,7 +725,7 @@ void UIDetailsPagePrivate::sltUpdateNetwork()
         {
             QString item;
 
-            ulong count = m_vbox.GetSystemProperties().GetNetworkAdapterCount();
+            ulong count = m_vbox.GetSystemProperties().GetMaxNetworkAdapters(KChipsetType_PIIX3);
             for (ulong slot = 0; slot < count; slot ++)
             {
                 const CNetworkAdapter &adapter = m_machine.GetNetworkAdapter(slot);
