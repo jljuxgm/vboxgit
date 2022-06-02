@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 28800 2010-04-27 08:22:32Z vboxsync $
+// $Id: vbox.dsl 30593 2010-07-04 11:10:31Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -986,7 +986,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                              // (all of low memory space)
                      ResourceProducer,        // bit 0 of general flags is 0
                      PosDecode,               // positive Decode
-                     MinFixed,                // Range is fixed
+                     MinNotFixed,             // Range is not fixed
                      MaxFixed,                // Range is fixed
                      Cacheable,
                      ReadWrite,
@@ -995,7 +995,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
 
                      0xffdfffff,              // Max = 4GB - 2MB
                      0x00000000,              // Translation
-                     0xdfdfffff,              // Range Length (calculated
+                     0x00000000,              // Range Length (calculated
                                               // dynamically)
                      ,                        // Optional field left blank
                      ,                        // Optional field left blank
