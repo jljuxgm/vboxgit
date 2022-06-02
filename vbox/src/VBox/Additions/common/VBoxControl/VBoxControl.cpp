@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 31025 2010-07-22 23:43:25Z vboxsync $ */
+/* $Id: VBoxControl.cpp 31041 2010-07-23 08:56:28Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1306,7 +1306,9 @@ int listSharedFolders(int argc, char **argv)
                                                &cMappings);
             if (RT_SUCCESS(rc))
             {
-                RT_CLAMP(cMappings, 0, 64); /* Maximum mappings, see shflsvc.h */
+                /* Maximum mappings, see shflsvc.h */
+                if (cMappings > 64)
+                    cMappings = 64;
                 RTPrintf("Shared Folder Mappings (%u):\n\n", cMappings);
                 for (uint32_t i = 0; i < cMappings; i++)
                 {
