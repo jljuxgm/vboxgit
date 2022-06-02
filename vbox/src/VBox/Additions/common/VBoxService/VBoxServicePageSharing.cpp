@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 30646 2010-07-06 08:00:31Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 30648 2010-07-06 08:15:52Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -491,7 +491,7 @@ skipkernelmodules:
     {
         bool fUnregister = false;
         /* The VM was restored, so reregister all modules the next time. */
-        RTAvlPVDestroy(&pKnownModuleTree, VBoxServicePageSharingEmptyTreeCallback, &fUnregister);
+        RTAvlPVDestroy(&pNewTree, VBoxServicePageSharingEmptyTreeCallback, &fUnregister);
         pKnownModuleTree = NULL;
     }
     else
