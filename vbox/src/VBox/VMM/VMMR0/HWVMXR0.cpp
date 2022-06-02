@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 31646 2010-08-13 12:49:15Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 31786 2010-08-19 12:18:48Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3457,7 +3457,7 @@ ResumeExecution:
         AssertRC(rc2);
         Log(("VMX_EXIT_EPT_MISCONFIG for %RGp\n", GCPhys));
 
-        rc = PGMR0Trap0eHandlerNPMisconfig(pVM, pVCpu, PGMMODE_EPT, CPUMCTX2CORE(pCtx), GCPhys);
+        rc = PGMR0Trap0eHandlerNPMisconfig(pVM, pVCpu, PGMMODE_EPT, CPUMCTX2CORE(pCtx), GCPhys, UINT32_MAX);
         if (rc == VINF_SUCCESS)
         {
             Log2(("PGMR0Trap0eHandlerNPMisconfig(,,,%RGp) at %RGv -> resume\n", GCPhys, (RTGCPTR)pCtx->rip));
