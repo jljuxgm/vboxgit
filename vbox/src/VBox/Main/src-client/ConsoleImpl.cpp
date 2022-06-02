@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 35885 2011-02-08 01:20:04Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 35886 2011-02-08 01:27:27Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1737,8 +1737,8 @@ STDMETHODIMP Console::COMGETTER(AttachedPciDevices)(ComSafeArrayOut(IPciDeviceAt
         mBusMgr->listAttachedPciDevices(ComSafeArrayOutArg(aAttachments));
     else
     {
-        com::SafeIfaceArray<IPciDeviceAttachment> result(0);
-        result.detachTo(ComSafeArrayOutArg(aAttachments));            
+        com::SafeIfaceArray<IPciDeviceAttachment> result((size_t)0);
+        result.detachTo(ComSafeArrayOutArg(aAttachments));
     }
 
     return S_OK;

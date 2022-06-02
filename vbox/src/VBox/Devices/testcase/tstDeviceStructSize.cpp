@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 35885 2011-02-08 01:20:04Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 35886 2011-02-08 01:27:27Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -322,7 +322,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(VPCISTATE, Queues, 8);
 #endif
 #ifdef VBOX_WITH_PCI_PASSTHROUGH
-    CHECK_MEMBER_ALIGNMENT(PCIRAWSENDREQ, u.aGetRegionInfo.u64RegionSize, 8);
+    //CHECK_MEMBER_ALIGNMENT(PCIRAWSENDREQ, u.aGetRegionInfo.u64RegionSize, 8);
 #endif
 
 #ifdef VBOX_WITH_RAW_MODE
