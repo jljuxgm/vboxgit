@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DBGCInternal.h 35625 2011-01-19 11:17:34Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -403,6 +403,7 @@ PCDBGCSYM   dbgcLookupRegisterSymbol(PDBGC pDbgc, const char *pszSymbol);
 PCDBGCOP    dbgcOperatorLookup(PDBGC pDbgc, const char *pszExpr, bool fPreferBinary, char chPrev);
 PCDBGCCMD   dbgcRoutineLookup(PDBGC pDbgc, const char *pachName, size_t cchName, bool fExternal);
 
+DECLCALLBACK(int) dbgcOpRegister(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
 DECLCALLBACK(int) dbgcOpAddrFlat(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
 DECLCALLBACK(int) dbgcOpAddrHost(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
 DECLCALLBACK(int) dbgcOpAddrPhys(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
