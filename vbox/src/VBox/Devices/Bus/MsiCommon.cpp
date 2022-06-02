@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.cpp 33236 2010-10-19 15:14:42Z vboxsync $ */
+/* $Id: MsiCommon.cpp 33314 2010-10-21 15:51:17Z vboxsync $ */
 /** @file
  * MSI support routines
  */
@@ -261,7 +261,7 @@ void MsiNotify(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPCIDEVICE pDev, int iVe
     uint32_t   uMask = *msiGetMaskBits(pDev);
     uint32_t*  puPending = msiGetPendingBits(pDev);
 
-    LogFlow(("MSINotify: %d pending=%x mask=%x\n", iVector, *puPending, uMask));
+    LogFlow(("MsiNotify: %d pending=%x mask=%x\n", iVector, *puPending, uMask));
 
     /* We only trigger MSI on level up */
     if ((iLevel & PDM_IRQ_LEVEL_HIGH) == 0)

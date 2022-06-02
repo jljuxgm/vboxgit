@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 29917 2010-05-31 16:05:25Z vboxsync $ */
+/* $Id: Virtio.cpp 33314 2010-10-21 15:51:17Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -781,6 +781,11 @@ static DECLCALLBACK(void) vpciConfigure(PCIDEVICE& pci,
     vpciCfgSetU16(pci, VBOX_PCI_CLASS_DEVICE,       uClass);
     /* Interrupt Pin: INTA# */
     vpciCfgSetU8( pci, VBOX_PCI_INTERRUPT_PIN,        0x01);
+
+#ifdef VBOX_WITH_MSI_DEVICES
+    PCIDevSetCapabilityList     (&pci, 0x80);
+    PCIDevSetStatus             (&pci, VBOX_PCI_STATUS_CAP_LIST);
+#endif
 }
 
 /* WARNING! This function must never be used in multithreaded context! */
@@ -824,6 +829,23 @@ DECLCALLBACK(int) vpciConstruct(PPDMDEVINS pDevIns, VPCISTATE *pState,
     rc = PDMDevHlpPCIRegister(pDevIns, &pState->pciDevice);
     if (RT_FAILURE(rc))
         return rc;
+
+#ifdef VBOX_WITH_MSI_DEVICES
+#if 0
+    {
+        PDMMSIREG aMsiReg;
+
+        RT_ZERO(aMsiReg);
+        aMsiReg.cMsixVectors = 1;
+        aMsiReg.iMsixCapOffset = 0x80;
+        aMsiReg.iMsixNextOffset = 0x0;
+        aMsiReg.iMsixBar = 0;
+        rc = PDMDevHlpPCIRegisterMsi(pDevIns, &aMsiReg);
+        if (RT_FAILURE (rc))
+            PCIDevSetCapabilityList(&pState->pciDevice, 0x0);
+    }
+#endif
+#endif
 
     /* Status driver */
     PPDMIBASE pBase;

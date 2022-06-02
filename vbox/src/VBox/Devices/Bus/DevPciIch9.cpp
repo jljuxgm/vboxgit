@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 33236 2010-10-19 15:14:42Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 33314 2010-10-21 15:51:17Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -786,7 +786,7 @@ static DECLCALLBACK(int) ich9pciRegisterMsi(PPDMDEVINS pDevIns, PPCIDEVICE pPciD
     if (rc != VINF_SUCCESS)
         return rc;
 
-    rc = MsixInit(pPciDev, pMsiReg);
+    rc = MsixInit(pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pPciHlp), pPciDev, pMsiReg);
     if (rc != VINF_SUCCESS)
         return rc;
 
