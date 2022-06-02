@@ -1,4 +1,4 @@
-/* $Id: manifest2.cpp 34845 2010-12-08 17:43:25Z vboxsync $ */
+/* $Id: manifest2.cpp 34941 2010-12-10 10:58:06Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the core.
  */
@@ -889,6 +889,7 @@ RTDECL(int) RTManifestEntrySetAttr(RTMANIFEST hManifest, const char *pszEntry, c
         pEntry->StrCore.cchString = cchEntry;
         pEntry->StrCore.pszString = pEntry->szName;
         pEntry->Attributes = NULL;
+        pEntry->cAttributes = 0;
         memcpy(pEntry->szName, pszEntry, cchEntry + 1);
         if (fNeedNormalization)
             rtManifestNormalizeEntry(pEntry->szName);
@@ -987,6 +988,7 @@ RTDECL(int) RTManifestEntryAdd(RTMANIFEST hManifest, const char *pszEntry)
             pEntry->StrCore.cchString = cchEntry;
             pEntry->StrCore.pszString = pEntry->szName;
             pEntry->Attributes = NULL;
+            pEntry->cAttributes = 0;
             memcpy(pEntry->szName, pszEntry, cchEntry + 1);
             if (fNeedNormalization)
                 rtManifestNormalizeEntry(pEntry->szName);
