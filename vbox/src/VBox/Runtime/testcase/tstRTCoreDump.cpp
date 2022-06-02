@@ -1,4 +1,4 @@
-/* $Id: tstRTCoreDump.cpp 31860 2010-08-23 13:56:17Z vboxsync $ */
+/* $Id: tstRTCoreDump.cpp 31913 2010-08-24 12:16:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -85,6 +85,7 @@ int main()
             g_cErrors++;
             RTPrintf("RTCoreDumperTakeDump failed. rc=%Rrc\n", rc);
         }
+        RTCoreDumperDisable();
     }
     else
     {
