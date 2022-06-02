@@ -1,4 +1,4 @@
-/* $Id: RawHDDCore.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RawHDDCore.cpp 30555 2010-07-01 13:43:04Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -1227,7 +1227,8 @@ static int rawAsyncWrite(void *pvBackendData, uint64_t uOffset, size_t cbWrite,
 
     rc = pImage->pInterfaceIOCallbacks->pfnWriteUserAsync(pImage->pInterfaceIO->pvUser,
                                                          pImage->pStorage,
-                                                         uOffset, pIoCtx, cbWrite);
+                                                         uOffset, pIoCtx, cbWrite,
+                                                         NULL, NULL);
 
     if (RT_SUCCESS(rc))
     {
