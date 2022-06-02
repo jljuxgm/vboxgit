@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 34753 2010-12-06 14:37:17Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 34756 2010-12-06 14:55:15Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1886,12 +1886,13 @@ int main(int argc, char **argv)
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "%s", szErr);
 
-#ifdef WITH_ELEVATION
     /*
      * Elevation check.
      */
+    RTEXITCODE rcExit;
+#ifdef WITH_ELEVATION
     bool fElevated;
-    RTEXITCODE  rcExit = ElevationCheck(&fElevated);
+    RTEXITCODE rcExit = ElevationCheck(&fElevated);
     if (rcExit != RTEXITCODE_SUCCESS)
         return rcExit;
 #endif
