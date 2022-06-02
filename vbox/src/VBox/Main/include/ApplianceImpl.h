@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 32965 2010-10-07 08:32:29Z vboxsync $ */
+/* $Id: ApplianceImpl.h 33060 2010-10-12 12:17:49Z vboxsync $ */
 
 /** @file
  *
@@ -27,6 +27,9 @@
 class Progress;
 class VirtualSystemDescription;
 struct VirtualSystemDescriptionEntry;
+typedef struct VDINTERFACE   *PVDINTERFACE;
+typedef struct VDINTERFACEIO *PVDINTERFACEIO;
+typedef struct SHA1STORAGE   *PSHA1STORAGE;
 
 namespace ovf
 {
@@ -184,8 +187,9 @@ private:
                                      XMLStack &stack);
 
     HRESULT writeFS(TaskOVF *pTask);
-    HRESULT writeFSOVF(TaskOVF *pTask);
-    HRESULT writeFSOVA(TaskOVF *pTask);
+    HRESULT writeFSOVF(TaskOVF *pTask, AutoWriteLockBase& writeLock);
+    HRESULT writeFSOVA(TaskOVF *pTask, AutoWriteLockBase& writeLock);
+    HRESULT writeFSImpl(TaskOVF *pTask, AutoWriteLockBase& writeLock, PVDINTERFACEIO pCallbacks, PSHA1STORAGE pStorage);
     HRESULT writeS3(TaskOVF *pTask);
 
     friend class Machine;
