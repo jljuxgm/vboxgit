@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 30270 2010-06-17 06:56:26Z vboxsync $ */
+/* $Id: tcp.cpp 30468 2010-06-28 13:58:04Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -1017,5 +1017,21 @@ RTR3DECL(int) RTTcpGetPeerAddress(RTSOCKET Sock, PRTNETADDR pAddr)
 RTR3DECL(int)  RTTcpSgWrite(RTSOCKET Sock, PCRTSGBUF pSgBuf)
 {
     return RTSocketSgWrite(Sock, pSgBuf);
+}
+
+
+RTR3DECL(int) RTTcpSgWriteL(RTSOCKET hSocket, size_t cSegs, ...)
+{
+    va_list va;
+    va_start(va, cSegs);
+    int rc = RTSocketSgWriteLV(hSocket, cSegs, va);
+    va_end(va);
+    return rc;
+}
+
+
+RTR3DECL(int) RTTcpSgWriteLV(RTSOCKET hSocket, size_t cSegs, va_list va)
+{
+    return RTSocketSgWriteLV(hSocket, cSegs, va);
 }
 

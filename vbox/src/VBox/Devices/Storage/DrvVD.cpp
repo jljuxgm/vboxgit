@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 30309 2010-06-18 12:25:12Z vboxsync $ */
+/* $Id: DrvVD.cpp 30468 2010-06-28 13:58:04Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -739,10 +739,10 @@ static DECLCALLBACK(int) drvvdINIPSgWrite(RTSOCKET Sock, PCRTSGBUF pSgBuf)
 
     /* This is an extremely crude emulation, however it's good enough
      * for our iSCSI code. INIP has no sendmsg(). */
-    for (unsigned i = 0; i < pSgBuf->cSeg; i++)
+    for (unsigned i = 0; i < pSgBuf->cSegs; i++)
     {
-        rc = drvvdINIPWrite(Sock, pSgBuf->pcaSeg[i].pvSeg,
-                            pSgBuf->pcaSeg[i].cbSeg);
+        rc = drvvdINIPWrite(Sock, pSgBuf->paSegs[i].pvSeg,
+                            pSgBuf->paSegs[i].cbSeg);
         if (RT_FAILURE(rc))
             break;
     }
