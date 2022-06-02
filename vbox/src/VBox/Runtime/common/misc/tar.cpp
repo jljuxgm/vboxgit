@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 32629 2010-09-20 09:24:01Z vboxsync $ */
+/* $Id: tar.cpp 32630 2010-09-20 09:38:38Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -181,7 +181,7 @@ static int rtTarExtractFileToBuf(RTFILE hFile, void **ppvBuf, uint64_t *pcbSize,
 
         uint64_t cbAllWritten = 0; /* Already copied */
         uint64_t cbToRead = 0; /* What to read in the next step */
-        uint64_t cbRead = 0; /* Actually read in the last step */
+        size_t cbRead = 0; /* Actually read in the last step */
         /* Copy the content from hFile over to the memory. */
         for (;;)
         {
