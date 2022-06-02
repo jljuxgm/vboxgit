@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: DisplayImpl.h 31279 2010-08-02 10:33:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -271,6 +271,12 @@ void gdImageCopyResampled (uint8_t *dst, uint8_t *src,
                            int srcX, int srcY,
                            int dstW, int dstH, int srcW, int srcH);
 
+
+void BitmapScale32 (uint8_t *dst,
+                        int dstW, int dstH,
+                        const uint8_t *src,
+                        int iDeltaLine,
+                        int srcW, int srcH);
 
 #endif // ____H_DISPLAYIMPL
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
