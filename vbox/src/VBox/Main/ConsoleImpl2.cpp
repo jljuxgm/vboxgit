@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 34434 2010-11-27 11:20:37Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 34515 2010-11-30 13:58:48Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -939,6 +939,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             hrc = BusMgr->assignPciDevice("lpc", pInst);                               H();
             InsertConfigInteger(pInst, "Trusted",   1); /* boolean */
         }
+
+        BOOL fShowRtc;
+        fShowRtc = fOsXGuest || (chipsetType == ChipsetType_ICH9);
 
         /*
          * PS/2 keyboard & mouse.
@@ -2288,7 +2291,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             InsertConfigInteger(pCfg,  "FdcEnabled", fFdcEnabled);
             InsertConfigInteger(pCfg,  "HpetEnabled", fHpetEnabled);
             InsertConfigInteger(pCfg,  "SmcEnabled", fSmcEnabled);
-            InsertConfigInteger(pCfg,  "ShowRtc",    fOsXGuest);
+            InsertConfigInteger(pCfg,  "ShowRtc",    fShowRtc);
             if (fOsXGuest && !llBootNics.empty())
             {
                 BootNic aNic = llBootNics.front();
