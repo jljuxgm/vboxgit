@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 30119 2010-06-09 13:15:34Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 33141 2010-10-14 16:35:21Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -207,7 +207,7 @@ typedef struct VBOXNETFLTINS
             /** The MAC address of the interface. */
             RTMAC MacAddr;
             /** Mutex protection used for loopback. */
-            RTSEMFASTMUTEX hFastMtx;
+            kmutex_t hMtx;
             /** Mutex protection used for dynamic IPv6 attaches. */
             RTSEMFASTMUTEX hPollMtx;
 #  endif
