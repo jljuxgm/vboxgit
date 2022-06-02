@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 32381 2010-09-10 09:48:47Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 32386 2010-09-10 10:03:26Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2538,7 +2538,7 @@ static int vdMetaXferCompleted(PVDIOSTORAGE pIoStorage, PFNVDXFERCOMPLETED pfnCo
         {
             /* Remove from the AVL tree. */
             LogFlow(("Removing meta xfer=%#p\n", pMetaXfer));
-            bool fRemoved = RTAvlrFileOffsetRemove(pIoStorage->pTreeMetaXfers, pMetaXfer->Core.Key);
+            bool fRemoved = RTAvlrFileOffsetRemove(pIoStorage->pTreeMetaXfers, pMetaXfer->Core.Key) != NULL;
             Assert(fRemoved);
             RTMemFree(pMetaXfer);
         }
@@ -2591,7 +2591,7 @@ static int vdMetaXferCompleted(PVDIOSTORAGE pIoStorage, PFNVDXFERCOMPLETED pfnCo
         {
             /* Remove from the AVL tree. */
             LogFlow(("Removing meta xfer=%#p\n", pMetaXfer));
-            bool fRemoved = RTAvlrFileOffsetRemove(pIoStorage->pTreeMetaXfers, pMetaXfer->Core.Key);
+            bool fRemoved = RTAvlrFileOffsetRemove(pIoStorage->pTreeMetaXfers, pMetaXfer->Core.Key) != NULL;
             Assert(fRemoved);
             RTMemFree(pMetaXfer);
         }
@@ -3036,7 +3036,7 @@ static int vdIOWriteMetaAsync(void *pvUser, PVDIOSTORAGE pIoStorage,
         if (fInTree && !pMetaXfer->cRefs)
         {
             LogFlow(("Removing meta xfer=%#p\n", pMetaXfer));
-            bool fRemoved = RTAvlrFileOffsetRemove(pIoStorage->pTreeMetaXfers, pMetaXfer->Core.Key);
+            bool fRemoved = RTAvlrFileOffsetRemove(pIoStorage->pTreeMetaXfers, pMetaXfer->Core.Key) != NULL;
             AssertMsg(fRemoved, ("Metadata transfer wasn't removed\n"));
             RTMemFree(pMetaXfer);
             pMetaXfer = NULL;
@@ -3085,7 +3085,7 @@ static void vdIOMetaXferRelease(void *pvUser, PVDMETAXFER pMetaXfer)
     {
         /* Free the meta data entry. */
         LogFlow(("Removing meta xfer=%#p\n", pMetaXfer));
-        bool fRemoved = RTAvlrFileOffsetRemove(pIoStorage->pTreeMetaXfers, pMetaXfer->Core.Key);
+        bool fRemoved = RTAvlrFileOffsetRemove(pIoStorage->pTreeMetaXfers, pMetaXfer->Core.Key) != NULL;
         AssertMsg(fRemoved, ("Metadata transfer wasn't removed\n"));
 
         RTMemFree(pMetaXfer);
