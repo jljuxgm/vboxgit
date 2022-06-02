@@ -1,4 +1,4 @@
-/* $Id: server.cpp 34587 2010-12-01 20:30:02Z vboxsync $ */
+/* $Id: server.cpp 34714 2010-12-03 22:19:31Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -206,6 +206,9 @@ NS_DECL_CLASSINFO(BIOSSettings)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(BIOSSettings, IBIOSSettings)
 
 #ifdef VBOX_WITH_EXTPACK
+NS_DECL_CLASSINFO(ExtPackFile)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ExtPackFile, IExtPackFile)
+
 NS_DECL_CLASSINFO(ExtPack)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ExtPack, IExtPack)
 
