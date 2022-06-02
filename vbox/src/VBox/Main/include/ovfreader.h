@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 30157 2010-06-10 20:11:14Z vboxsync $ */
+/* $Id: ovfreader.h 32565 2010-09-16 14:39:24Z vboxsync $ */
 /** @file
  * OVF reader declarations.
  *
@@ -402,6 +402,7 @@ struct VirtualSystem
 class OVFReader
 {
 public:
+    OVFReader(const void *pvBuf, int cbSize, const iprt::MiniString &path);
     OVFReader(const iprt::MiniString &path);
 
     // Data fields
@@ -412,6 +413,7 @@ public:
 private:
     xml::Document               m_doc;
 
+    void parse();
     void LoopThruSections(const xml::ElementNode *pReferencesElem, const xml::ElementNode *pCurElem);
     void HandleDiskSection(const xml::ElementNode *pReferencesElem, const xml::ElementNode *pSectionElem);
     void HandleNetworkSection(const xml::ElementNode *pSectionElem);
