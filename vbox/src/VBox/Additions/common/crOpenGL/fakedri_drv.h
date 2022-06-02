@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: fakedri_drv.h 32404 2010-09-10 13:17:42Z vboxsync $ */
 
 /** @file
  *

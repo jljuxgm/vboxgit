@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 62335 2010-06-03 14:40:59Z bird $ */
+/* $Id: tstPageFusion.cpp 32404 2010-09-10 13:17:42Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing testcase
  */
