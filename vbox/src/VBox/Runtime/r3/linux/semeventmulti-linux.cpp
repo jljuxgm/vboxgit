@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-linux.cpp 32948 2010-10-06 14:29:34Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 32968 2010-10-07 08:38:24Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
@@ -437,9 +437,6 @@ RTDECL(void) RTSemEventMultiRemoveSignaller(RTSEMEVENTMULTI hEventMultiSem, RTTH
     RTLockValidatorRecSharedRemoveOwner(&pThis->Signallers, hThread);
 #endif
 }
-
-#include "../../generic/RTSemEventMultiWait-2-ex-generic.cpp"
-#include "../../generic/RTSemEventMultiWaitNoResume-2-ex-generic.cpp"
 
 #endif /* glibc < 2.6 || IPRT_WITH_FUTEX_BASED_SEMS */
 
