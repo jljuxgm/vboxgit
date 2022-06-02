@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 31392 2010-08-05 11:41:45Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 31393 2010-08-05 11:44:39Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -35,6 +35,9 @@
 #ifdef IN_RING3
 # include <iprt/lockvalidator.h>
 # include <iprt/semaphore.h>
+#endif
+#if defined(IN_RING3) || defined(IN_RING0)
+# include <iprt/thread.h>
 #endif
 
 
