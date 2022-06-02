@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 31217 2010-07-29 15:00:29Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 31219 2010-07-29 15:16:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -471,7 +471,7 @@ void VBoxVMInformationDlg::refreshStatistics()
         QString addVersionStr;
         if (!addVersion.isEmpty() && !addRevision.isEmpty())
         {
-            QString addInfo = console.GetGuest().GetAdditionsVBoxVersion();
+            QString addInfo = console.GetGuest().GetAdditionsVersion();
             addVersionStr = (addInfo.isEmpty() ? "(" : "")
                           + addVersion
                           + " r"
