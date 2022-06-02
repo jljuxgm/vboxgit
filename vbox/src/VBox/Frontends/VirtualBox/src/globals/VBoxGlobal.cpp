@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 34276 2010-11-23 12:34:34Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 34334 2010-11-24 17:32:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2562,11 +2562,11 @@ VBoxMedium VBoxGlobal::findMedium (const QString &aMediumId) const
 
 /* Open some external medium using file open dialog
  * and temporary cache (enumerate) it in GUI inner mediums cache: */
-QString VBoxGlobal::openMediumWithFileOpenDialog(VBoxDefs::MediumType mediumType, QWidget *pParent) const
+QString VBoxGlobal::openMediumWithFileOpenDialog(VBoxDefs::MediumType mediumType, QWidget *pParent, const QString &strDefaultFolder) const
 {
     /* Initialize variables: */
     CVirtualBox vbox = vboxGlobal().virtualBox();
-    QString strHomeFolder = vbox.GetHomeFolder();
+    QString strHomeFolder = strDefaultFolder.isEmpty() ? vbox.GetHomeFolder() : strDefaultFolder;
     QList < QPair <QString, QString> > filters;
     QStringList backends;
     QStringList prefixes;
