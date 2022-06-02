@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 35891 2011-02-08 09:25:24Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 35892 2011-02-08 09:44:55Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2057,7 +2057,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
 
                 /* Print information about important Guest Additions parts: */
                 /** @todo Add a makeFacilityStatusStr() to translate facility states into a human readable string! */
-                AdditionsFacilityStatus faStatus;
+                AdditionsFacilityStatus_T faStatus;
                 LONG64 lLastUpdatedMS = 0;
                 char szLastUpdated[32];
                 rc = guest->GetFacilityStatus(AdditionsFacilityType_VBoxGuestDriver, &lLastUpdatedMS, &faStatus);
