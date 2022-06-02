@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 30419 2010-06-24 11:48:05Z vboxsync $ */
 
 /** @file
  *
@@ -204,7 +204,16 @@ STDMETHODIMP SystemProperties::COMGETTER(MaxGuestRAM)(ULONG *maxRAM)
     ULONG maxRAMArch = maxRAMSys;
 #if HC_ARCH_BITS == 32 && !defined(RT_OS_DARWIN)
 # ifdef RT_OS_WINDOWS
-    maxRAMArch = UINT32_C(1500);
+    SYSTEMINFO sysInfo;
+    GetSystemInfo(&sysInfo);
+
+    if (sysInfo.lpMaximumApplicationAddress >= 0xC000000)   /* 3.0 GB */
+        maxRAMArch = UINT32_C(2560);
+    else
+    if (sysInfo.lpMaximumApplicationAddress > 0xA000000)    /* 2.5 GB */
+        maxRAMArch = UINT32_C(2048);
+    else
+        maxRAMArch = UINT32_C(1500);
 # else
     maxRAMArch = UINT32_C(2560);
 # endif
