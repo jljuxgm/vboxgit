@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 30772 2010-07-10 04:58:28Z vboxsync $ */
+/* $Id: VMMDevState.h 30773 2010-07-10 05:13:03Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -243,7 +243,7 @@ typedef struct VMMDevState
     /** Set if testing is enabled. */
     bool                fTestingEnabled;
     /** Alignment padding. */
-    bool                afPadding[6];
+    bool                afPadding[HC_ARCH_BITS == 32 ? 6 : 2];
 #ifndef VBOX_WITHOUT_TESTING_FEATURES
     /** The high timestamp value. */
     uint32_t            u32TestingHighTimestamp;
