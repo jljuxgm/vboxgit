@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 33963 2010-11-11 10:23:42Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 34022 2010-11-12 09:26:40Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5581,7 +5581,8 @@ HRESULT Console::powerUp(IProgress **aProgress, bool aPaused)
             fCoreFlags |= RTCOREDUMPER_FLAGS_LIVE_CORE;
         }
 
-        const char *pszDumpDir = Utf8Str(coreDumpDir).c_str();
+        Utf8Str strCoreDir(coreDumpDir);
+        const char *pszDumpDir = strDumpDir.c_str();
         if (   pszDumpDir
             && *pszDumpDir == '\0')
             pszDumpDir = NULL;
