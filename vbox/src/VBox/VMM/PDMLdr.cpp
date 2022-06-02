@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PDMLdr.cpp 33877 2010-11-08 21:45:46Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -375,7 +375,11 @@ static DECLCALLBACK(int) pdmR3GetImportRC(RTLDRMOD hLdrMod, const char *pszModul
             rc = VERR_SYMBOL_NOT_FOUND;
         }
         if (RT_SUCCESS(rc) || pszModule)
+        {
+            if (RT_FAILURE(rc))
+                LogRel(("PDMLdr: Couldn't find symbol '%s' in module '%s'!\n", pszSymbol, pszModule));
             return rc;
+        }
     }
 
     /*
@@ -405,8 +409,7 @@ static DECLCALLBACK(int) pdmR3GetImportRC(RTLDRMOD hLdrMod, const char *pszModul
             if (pszModule)
             {
                 RTCritSectLeave(&pUVM->pdm.s.ListCritSect);
-                AssertMsgFailed(("Couldn't find symbol '%s' in module '%s'!\n", pszSymbol, pszModule));
-                LogRel(("PDMLdr: Couldn't find symbol '%s' in module '%s'!\n", pszSymbol, pszModule));
+                AssertLogRelMsgFailed(("PDMLdr: Couldn't find symbol '%s' in module '%s'!\n", pszSymbol, pszModule));
                 return VERR_SYMBOL_NOT_FOUND;
             }
         }
@@ -416,7 +419,7 @@ static DECLCALLBACK(int) pdmR3GetImportRC(RTLDRMOD hLdrMod, const char *pszModul
     }
 
     RTCritSectLeave(&pUVM->pdm.s.ListCritSect);
-    AssertMsgFailed(("Couldn't find module '%s' for resolving symbol '%s'!\n", pszModule, pszSymbol));
+    AssertLogRelMsgFailed(("Couldn't find module '%s' for resolving symbol '%s'!\n", pszModule, pszSymbol));
     return VERR_SYMBOL_NOT_FOUND;
 }
 
