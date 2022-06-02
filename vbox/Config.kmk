@@ -1,4 +1,4 @@
-# $Id: Config.kmk 31338 2010-08-03 14:07:59Z vboxsync $
+# $Id: Config.kmk 31414 2010-08-05 15:43:28Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3972,8 +3972,8 @@ if1of ($(KBUILD_TARGET), dragonfly freebsd linux netbsd openbsd) # the gnu ld gu
  TEMPLATE_VBOXGUESTR3XF86MOD_LDFLAGS.x86     = -m elf_i386
  TEMPLATE_VBOXGUESTR3XF86MOD_LDFLAGS.amd64   = -m elf_x86_64
 endif
-TEMPLATE_VBOXGUESTR3XF86MOD_CFLAGS  = $(TEMPLATE_VBOXGUESTR3EXE_CFLAGS)   -fno-merge-constants -std=c99
-TEMPLATE_VBOXGUESTR3XF86MOD_CXXFLAGS= $(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS) -fno-merge-constants
+TEMPLATE_VBOXGUESTR3XF86MOD_CFLAGS  = $(TEMPLATE_VBOXGUESTR3EXE_CFLAGS)   -fno-merge-constants -std=c99 $(VBOX_GCC_fno-stack-protector) -ffreestanding
+TEMPLATE_VBOXGUESTR3XF86MOD_CXXFLAGS= $(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS) -fno-merge-constants $(VBOX_GCC_fno-stack-protector) -ffreestanding
 TEMPLATE_VBOXGUESTR3XF86MOD_SYSSUFF = .o
 TEMPLATE_VBOXGUESTR3XF86MOD_LIBS  = \
 	$(VBOX_LIB_VBGL_R3_XFREE86)
@@ -4267,7 +4267,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31338 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31414 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
