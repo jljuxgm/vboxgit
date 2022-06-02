@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 30813 2010-07-14 09:53:09Z vboxsync $ */
+/* $Id: PGMInternal.h 30815 2010-07-14 10:04:14Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2795,6 +2795,8 @@ typedef struct PGM
     uint32_t                        cWriteLockedPages;  /**< The number of write locked pages. */
     uint32_t                        cReadLockedPages;   /**< The number of read locked pages. */
     uint32_t                        cBalloonedPages;    /**< The number of ballooned pages. */
+    uint32_t                        cMappedChunks;      /**< Number of times we mapped a chunk. */
+    uint32_t                        cUnmappedChunks;    /**< Number of times we unmapped a chunk. */
 /*    uint32_t                        aAlignment4[1]; */
 
     /** The number of times we were forced to change the hypervisor region location. */
