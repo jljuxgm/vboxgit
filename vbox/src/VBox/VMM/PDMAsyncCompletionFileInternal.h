@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 29587 2010-05-17 21:42:26Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 32655 2010-09-21 08:41:09Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -221,7 +221,7 @@ typedef struct PDMACFILEBWMGR
     /** Step after each update */
     uint32_t          cbVMTransferPerSecStep;
     /** Number of bytes we are allowed to transfer till the next update.
-     * Resetted by the refresh timer. */
+     * Reset by the refresh timer. */
     volatile uint32_t cbVMTransferAllowed;
     /** Timestamp of the last update */
     volatile uint64_t tsUpdatedLast;
