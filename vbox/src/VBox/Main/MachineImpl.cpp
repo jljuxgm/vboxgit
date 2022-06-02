@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 33731 2010-11-03 15:57:50Z vboxsync $ */
+/* $Id: MachineImpl.cpp 33825 2010-11-08 10:16:25Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -10920,6 +10920,30 @@ HRESULT SessionMachine::onNetworkAdapterChange(INetworkAdapter *networkAdapter, 
         return S_OK;
 
     return directControl->OnNetworkAdapterChange(networkAdapter, changeAdapter);
+}
+
+/**
+ *  @note Locks this object for reading.
+ */
+HRESULT SessionMachine::onNATRedirectRuleChange(INetworkAdapter *networkAdapter, BOOL aNatRuleRemove, IN_BSTR aRuleName, 
+                                 NATProtocol_T aProto, IN_BSTR aHostIp, LONG aHostPort, IN_BSTR aGuestIp, LONG aGuestPort)
+{
+    LogFlowThisFunc(("\n"));
+
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
+
+    ComPtr<IInternalSessionControl> directControl;
+    {
+        AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+        directControl = mData->mSession.mDirectControl;
+    }
+
+    /* ignore notifications sent after #OnSessionEnd() is called */
+    if (!directControl)
+        return S_OK;
+
+    return directControl->OnNATRedirectRuleChange(networkAdapter, aNatRuleRemove, aRuleName, aProto, aHostIp, aHostPort, aGuestIp, aGuestPort);
 }
 
 /**

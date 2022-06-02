@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 33708 2010-11-02 18:46:46Z vboxsync $ */
+/* $Id: MachineImpl.h 33825 2010-11-08 10:16:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -612,6 +612,8 @@ public:
 
     // callback handlers
     virtual HRESULT onNetworkAdapterChange(INetworkAdapter * /* networkAdapter */, BOOL /* changeAdapter */) { return S_OK; }
+    virtual HRESULT onNATRedirectRuleChange(INetworkAdapter * /* networkAdapter */, BOOL /* Remove */, IN_BSTR /* Rule name */, 
+                                 NATProtocol_T /* proto */, IN_BSTR /* host ip */, LONG /* host port */, IN_BSTR /* guest ip */, LONG /* guest port */) { return S_OK; }
     virtual HRESULT onSerialPortChange(ISerialPort * /* serialPort */) { return S_OK; }
     virtual HRESULT onParallelPortChange(IParallelPort * /* parallelPort */) { return S_OK; }
     virtual HRESULT onVRDEServerChange(BOOL /* aRestart */) { return S_OK; }
@@ -953,6 +955,8 @@ public:
     bool checkForDeath();
 
     HRESULT onNetworkAdapterChange(INetworkAdapter *networkAdapter, BOOL changeAdapter);
+    HRESULT onNATRedirectRuleChange(INetworkAdapter *networkAdapter, BOOL aNatRuleRemove, IN_BSTR aRuleName, 
+                                 NATProtocol_T aProto, IN_BSTR aHostIp, LONG aHostPort, IN_BSTR aGuestIp, LONG aGuestPort);
     HRESULT onStorageControllerChange();
     HRESULT onMediumChange(IMediumAttachment *aMediumAttachment, BOOL aForce);
     HRESULT onSerialPortChange(ISerialPort *serialPort);

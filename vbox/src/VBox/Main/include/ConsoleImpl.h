@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 33784 2010-11-04 16:50:03Z vboxsync $ */
+/* $Id: ConsoleImpl.h 33825 2010-11-08 10:16:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -179,6 +179,9 @@ public:
 
     // events from IInternalSessionControl
     HRESULT onNetworkAdapterChange(INetworkAdapter *aNetworkAdapter, BOOL changeAdapter);
+    HRESULT onNATRedirectRuleChange(INetworkAdapter *networkAdapter, BOOL aNatRuleRemove, IN_BSTR aRuleName, 
+                                 NATProtocol_T aProto, IN_BSTR aHostIp, LONG aHostPort, IN_BSTR aGuestIp, LONG aGuestPort);
+    HRESULT onNATEngineChange(INetworkAdapter *aNetworkAdapter, BOOL aNatReset);
     HRESULT onSerialPortChange(ISerialPort *aSerialPort);
     HRESULT onParallelPortChange(IParallelPort *aParallelPort);
     HRESULT onStorageControllerChange();

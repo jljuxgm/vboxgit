@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 33766 2010-11-04 14:05:28Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 33825 2010-11-08 10:16:25Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -390,6 +390,9 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 #endif /* !RT_OS_LINUX && !RT_OS_DARWIN  */
                      "                            nictrace<1-N> on|off\n"
                      "                            nictracefile<1-N> <filename>\n"
+                     "                            natpf<1-N> [<rulename>],tcp|udp,[<hostip>],\n"
+                     "                                          <hostport>,[<guestip>],<guestport>\n"
+                     "                            natpf<1-N> delete <rulename>\n"
                      "                            guestmemoryballoon <balloonsize in MB>]\n"
                      "                            gueststatisticsinterval <seconds>]\n"
                      "                            usbattach <uuid>|<address> |\n"

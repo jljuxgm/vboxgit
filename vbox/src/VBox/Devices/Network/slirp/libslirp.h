@@ -1,4 +1,4 @@
-/* $Id: libslirp.h 30421 2010-06-24 11:59:49Z vboxsync $ */
+/* $Id: libslirp.h 33825 2010-11-08 10:16:25Z vboxsync $ */
 /** @file
  * NAT - slirp interface.
  */
@@ -71,9 +71,12 @@ void slirp_output(void * pvUser, struct mbuf *m, const uint8_t *pkt, int pkt_len
 void slirp_urg_output(void *pvUser, struct mbuf *, const uint8_t *pu8Buf, int cb);
 void slirp_post_sent(PNATState pData, void *pvArg);
 
-int slirp_redir(PNATState pData, int is_udp, struct in_addr host_addr,
+int slirp_add_redirect(PNATState pData, int is_udp, struct in_addr host_addr,
                 int host_port, struct in_addr guest_addr,
                 int guest_port, const uint8_t *);
+int slirp_remove_redirect(PNATState pData, int is_udp, struct in_addr host_addr,
+                int host_port, struct in_addr guest_addr,
+                int guest_port);
 int slirp_add_exec(PNATState pData, int do_pty, const char *args, int addr_low_byte,
                    int guest_port);
 
