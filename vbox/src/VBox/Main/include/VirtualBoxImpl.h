@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 31814 2010-08-20 12:38:56Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 33078 2010-10-12 16:26:35Z vboxsync $ */
 
 /** @file
  *
@@ -280,10 +280,10 @@ private:
         return setErrorInternal(aResultCode, getStaticClassIID(), getStaticComponentName(), aText, false, true);
     }
 
-    Utf8Str getRegistryPath(Medium *pMedium);
-
-    HRESULT checkMediaForConflicts2(const Guid &aId, const Utf8Str &aLocation,
-                                    Utf8Str &aConflictType);
+    HRESULT checkMediaForConflicts(const Guid &aId,
+                                   const Utf8Str &aLocation,
+                                   Utf8Str &aConflictType,
+                                   bool &fIdentical);
 
     HRESULT registerMachine(Machine *aMachine);
 
