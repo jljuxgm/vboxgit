@@ -1,4 +1,4 @@
-/* $Id: VHDHDDCore.cpp 31185 2010-07-28 20:40:14Z vboxsync $ */
+/* $Id: VHDHDDCore.cpp 31379 2010-08-05 07:33:10Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -636,7 +636,7 @@ static int vhdAsyncExpansionComplete(PVHDIMAGE pImage, PVDIOCTX pIoCtx, PVHDIMAG
             || uStatus == VHDIMAGEEXPAND_STEP_SUCCESS)
         {
             /* Undo and restore the old value. */
-            pImage->pBlockAllocationTable[pExpand->idxBatAllocated] == ~0U;
+            pImage->pBlockAllocationTable[pExpand->idxBatAllocated] = ~0U;
 
             /* Restore the old value on the disk.
              * No need for a completion callback because we can't
