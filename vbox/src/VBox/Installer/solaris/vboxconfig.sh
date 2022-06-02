@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 31483 2010-08-09 13:32:55Z vboxsync $
+# $Id: vboxconfig.sh 31484 2010-08-09 13:34:37Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -112,7 +112,7 @@ printusage()
     helpprint "  --preremove             Perform full pre remove procedure"
     helpprint "  --installdrivers        Only install the drivers"
     helpprint "  --removedrivers         Only remove the drivers"
-    helpprint "  --setupdrivers          Update existing drivers, forces driver reloading"
+    helpprint "  --setupdrivers          Set up drivers, reloads any existing drivers"
     helpprint
     helpprint "[options] are one or more of the following:"
     helpprint "  --silent                Silent mode"
