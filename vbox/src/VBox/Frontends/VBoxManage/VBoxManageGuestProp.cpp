@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 31020 2010-07-22 17:49:56Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -152,7 +152,7 @@ static int handleSetGuestProperty(HandlerArg *a)
     if (machine)
     {
         /* open a session for the VM - new or existing */
-        CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Write), 1);
+        CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Shared), 1);
 
         /* get the mutable session machine */
         a->session->COMGETTER(Machine)(machine.asOutParam());
