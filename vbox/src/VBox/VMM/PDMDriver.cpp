@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
+/* $Id: PDMDriver.cpp 32135 2010-08-31 12:24:28Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1351,6 +1351,12 @@ static DECLCALLBACK(int) pdmR3DrvHlp_CallR0(PPDMDRVINS pDrvIns, uint32_t uOperat
     return rc;
 }
 
+/** @interface_method_impl{PDMDRVHLP,pfnFTSetCheckpoint} */
+static DECLCALLBACK(int) pdmR3DrvHlp_FTSetCheckpoint(PPDMDRVINS pDrvIns, FTMCHECKPOINTTYPE enmType)
+{
+    PDMDRV_ASSERT_DRVINS(pDrvIns);
+    return FTMSetCheckpoint(pDrvIns->Internal.s.pVMR3, enmType);
+}
 
 /**
  * The driver helper structure.
@@ -1391,6 +1397,7 @@ const PDMDRVHLPR3 g_pdmR3DrvHlp =
     pdmR3DrvHlp_LdrGetR0InterfaceSymbols,
     pdmR3DrvHlp_CritSectInit,
     pdmR3DrvHlp_CallR0,
+    pdmR3DrvHlp_FTSetCheckpoint,
     PDM_DRVHLPR3_VERSION /* u32TheEnd */
 };
 

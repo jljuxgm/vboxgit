@@ -1,4 +1,4 @@
-/* $Id: FTMAll.cpp 32051 2010-08-27 13:05:10Z vboxsync $ */
+/* $Id: FTMAll.cpp 32135 2010-08-31 12:24:28Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager - All contexts
  */
@@ -36,8 +36,9 @@
  * @returns VBox status code.
  *
  * @param   pVM         The VM to operate on.
+ * @param   enmType     Checkpoint type
  */
-VMMDECL(int) FTMSetCheckpoint(PVM pVM)
+VMMDECL(int)   FTMSetCheckpoint(PVM pVM, FTMCHECKPOINTTYPE enmType)
 {
     if (!pVM->fFaultTolerantMaster)
         return VINF_SUCCESS;

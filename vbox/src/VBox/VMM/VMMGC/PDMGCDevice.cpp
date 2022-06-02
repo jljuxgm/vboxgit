@@ -1,4 +1,4 @@
-/* $Id: PDMGCDevice.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PDMGCDevice.cpp 32135 2010-08-31 12:24:28Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
@@ -683,6 +683,12 @@ static DECLCALLBACK(bool) pdmRCDrvHlp_AssertOther(PPDMDRVINS pDrvIns, const char
     return false;
 }
 
+/** @interface_method_impl{PDMDRVHLPRC,pfnFTSetCheckpoint} */
+static DECLCALLBACK(int) pdmRCDrvHlp_FTSetCheckpoint(PPDMDRVINS pDrvIns, FTMCHECKPOINTTYPE enmType)
+{
+    PDMDRV_ASSERT_DRVINS(pDrvIns);
+    return FTMSetCheckpoint(pDrvIns->Internal.s.pVMRC, enmType);
+}
 
 /**
  * The Raw-Mode Context Driver Helper Callbacks.
@@ -696,6 +702,7 @@ extern DECLEXPORT(const PDMDRVHLPRC) g_pdmRCDrvHlp =
     pdmRCDrvHlp_VMSetRuntimeErrorV,
     pdmRCDrvHlp_AssertEMT,
     pdmRCDrvHlp_AssertOther,
+    pdmRCDrvHlp_FTSetCheckpoint,
     PDM_DRVHLPRC_VERSION
 };
 
