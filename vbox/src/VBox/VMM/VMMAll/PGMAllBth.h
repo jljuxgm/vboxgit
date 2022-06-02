@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 32563 2010-09-16 13:36:16Z vboxsync $ */
+/* $Id: PGMAllBth.h 32564 2010-09-16 13:40:59Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1280,7 +1280,7 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
                 PSHWPT pPTDst = (PSHWPT)PGMPOOL_PAGE_2_PTR_V2(pVM, pVCpu, pShwPage);
 
                 PGSTPT pPTSrc;
-                int rc = PGM_GCPHYS_2_PTR_V2(pVM, pVCpu, GST_GET_PDE_GCPHYS(PdeSrc), &pPTSrc);
+                rc = PGM_GCPHYS_2_PTR_V2(pVM, pVCpu, GST_GET_PDE_GCPHYS(PdeSrc), &pPTSrc);
                 if (RT_SUCCESS(rc))
                 {
                     const unsigned iPTSrc = (GCPtrPage >> GST_PT_SHIFT) & GST_PT_MASK;
