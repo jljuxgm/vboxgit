@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 31257 2010-07-30 18:24:20Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -579,7 +579,7 @@ static int CmdDumpHDInfo(int argc, char **argv, ComPtr<IVirtualBox> aVirtualBox,
     /* we need exactly one parameter: the image file */
     if (argc != 1)
     {
-        return errorSyntax(USAGE_SETHDUUID, "Not enough parameters");
+        return errorSyntax(USAGE_DUMPHDINFO, "Not enough parameters");
     }
 
     /* just try it */
