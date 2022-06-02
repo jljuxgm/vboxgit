@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 35177 2010-12-16 12:41:35Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 35211 2010-12-16 23:13:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3853,6 +3853,7 @@ DECLCALLBACK(int) Display::displayVBVAResize(PPDMIDISPLAYCONNECTOR pInterface, c
     if (pScreen->u16Flags & VBVA_SCREEN_F_DISABLED)
     {
         pFBInfo->fDisabled = true;
+        pFBInfo->flags = pScreen->u16Flags;
 
         /* Temporary: ask framebuffer to resize using a default format. The framebuffer will be black. */
         pThis->handleDisplayResize(pScreen->u32ViewIndex, 0,
