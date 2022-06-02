@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 34739 2010-12-06 11:54:46Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 34754 2010-12-06 14:40:03Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -929,6 +929,27 @@ void Display::handleDisplayUpdate (unsigned uScreenId, int x, int y, int w, int 
         if (maFramebuffers[uScreenId].u32ResizeStatus == ResizeStatus_Void)
             mParent->consoleVRDPServer()->SendUpdateBitmap(uScreenId, x, y, w, h);
     }
+}
+
+void Display::getFramebufferDimensions(int32_t *px1, int32_t *py1,
+                                       int32_t *px2, int32_t *py2)
+{
+    AssertPtrReturnVoid(px1);
+    AssertPtrReturnVoid(py1);
+    AssertPtrReturnVoid(px2);
+    AssertPtrReturnVoid(py2);
+    int32_t x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+    for (unsigned i = 0; i < mcMonitors; ++i)
+    {
+        x1 = RT_MIN(x1, maFramebuffers[i].xOrigin);
+        y1 = RT_MIN(y1, maFramebuffers[i].yOrigin);
+        x2 = RT_MAX(x2, maFramebuffers[i].xOrigin + (int32_t)maFramebuffers[i].w);
+        y2 = RT_MAX(y2, maFramebuffers[i].yOrigin + (int32_t)maFramebuffers[i].h);
+    }
+    *px1 = x1;
+    *py1 = y1;
+    *px2 = x2;
+    *py2 = y2;
 }
 
 #ifdef MMSEAMLESS

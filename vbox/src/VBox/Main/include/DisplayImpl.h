@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 34739 2010-12-06 11:54:46Z vboxsync $ */
+/* $Id: DisplayImpl.h 34754 2010-12-06 14:40:03Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -138,6 +138,8 @@ public:
     {
         return maFramebuffers[VBOX_VIDEO_PRIMARY_SCREEN].pFramebuffer;
     }
+    void getFramebufferDimensions(int32_t *px1, int32_t *py1, int32_t *px2,
+                                  int32_t *py2);
 #ifdef MMSEAMLESS
     int handleSetVisibleRegion(uint32_t cRect, PRTRECT pRect);
     int handleQueryVisibleRegion(uint32_t *pcRect, PRTRECT pRect);

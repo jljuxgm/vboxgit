@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 34754 2010-12-06 14:40:03Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of Display class
@@ -209,6 +209,19 @@ STDMETHODIMP Display::GetScreenResolution(ULONG aScreenId, ULONG *aWidth, ULONG 
     if (aBitsPerPixel)
         *aBitsPerPixel = getBitsPerPixel();
     return S_OK;
+}
+
+void Display::getFramebufferDimensions(int32_t *px1, int32_t *py1,
+                                       int32_t *px2, int32_t *py2)
+{
+    AssertPtrReturnVoid(px1);
+    AssertPtrReturnVoid(py1);
+    AssertPtrReturnVoid(px2);
+    AssertPtrReturnVoid(py2);
+    *px1 = 0;
+    *py1 = 0;
+    *px2 = getWidth();
+    *py2 = getHeight();
 }
 
 static void checkCoordBounds (int *px, int *py, int *pw, int *ph, int cx, int cy)
