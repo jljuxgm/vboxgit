@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 34850 2010-12-09 00:06:51Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 35448 2011-01-10 11:12:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -92,7 +92,7 @@ void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
 
     QPainter painter(m_pMachineView->viewport());
 
-    if (r.width() < m_width * 2 / 3)
+    if ((ulong)r.width() < m_width * 2 / 3)
     {
         /* This method is faster for narrow updates */
         m_PM = QPixmap::fromImage(pSourceImage->copy(r.x() + m_pMachineView->contentsX(),
