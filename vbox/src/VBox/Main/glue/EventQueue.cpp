@@ -1,4 +1,4 @@
-/* $Id: EventQueue.cpp 31611 2010-08-12 15:59:51Z vboxsync $ */
+/* $Id: EventQueue.cpp 31640 2010-08-13 12:31:42Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer:
  * Event and EventQueue class declaration
@@ -518,7 +518,7 @@ int EventQueue::processEventQueue(RTMSINTERVAL cMsTimeout)
     {
         BOOL fRet;
         MSG  Msg;
-        int  rc = VINF_SUCCESS;
+        rc = VINF_SUCCESS;
         while (   (fRet = GetMessage(&Msg, NULL /*hWnd*/, WM_USER, WM_USER))
                && fRet != -1
                && rc != VERR_INTERRUPTED)
