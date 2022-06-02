@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 34714 2010-12-03 22:19:31Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 34730 2010-12-06 10:47:14Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -1596,7 +1596,9 @@ STDMETHODIMP ExtPackManager::Install(IN_BSTR a_bstrTarball, BSTR *a_pbstrName)
                                                         "--cert-dir",   m->strCertificatDirPath.c_str(),
                                                         "--name",       pStrName->c_str(),
                                                         "--tarball",    strTarball.c_str(),
+#ifndef RT_OS_WINDOWS /* Not possible since the app might be launched by some unrelated service. */
                                                         "--tarball-fd", &szTarballFd[0],
+#endif
                                                         NULL);
                             RTFileClose(hFile); hFile = NIL_RTFILE;
                             if (SUCCEEDED(hrc))
