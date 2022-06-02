@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 35036 2010-12-13 16:56:27Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -588,7 +588,6 @@ DECLCALLBACK(int) VBoxServicePageSharingWorker(bool volatile *pfShutdown)
      */
     for (;;)
     {
-        uint64_t idNewSession;
         BOOL fEnabled = VbglR3PageSharingIsEnabled();
 
         VBoxServiceVerbose(3, "VBoxServicePageSharingWorker: enabled=%d\n", fEnabled);
@@ -613,7 +612,7 @@ DECLCALLBACK(int) VBoxServicePageSharingWorker(bool volatile *pfShutdown)
             break;
         }
 #if defined(RT_OS_WINDOWS) && !defined(TARGET_NT4)
-        idNewSession = g_idSession;
+        uint64_t idNewSession = g_idSession;
         rc =  VbglR3GetSessionId(&idNewSession);
         AssertRC(rc);
 
