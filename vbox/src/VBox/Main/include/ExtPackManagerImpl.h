@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 34897 2010-12-09 15:11:06Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 34907 2010-12-09 16:39:41Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -213,6 +213,7 @@ class ATL_NO_VTABLE ExtPackManager :
     STDMETHOD(Uninstall)(IN_BSTR a_bstrName, BOOL a_fForcedRemoval);
     STDMETHOD(Cleanup)(void);
     STDMETHOD(QueryAllPlugInsForFrontend)(IN_BSTR a_bstrFrontend, ComSafeArrayOut(BSTR, a_pabstrPlugInModules));
+    STDMETHOD(IsExtPackUsable(IN_BSTR a_bstrExtPack, BOOL *aUsable));
     /** @}  */
 
     /** @name Internal interfaces used by other Main classes.

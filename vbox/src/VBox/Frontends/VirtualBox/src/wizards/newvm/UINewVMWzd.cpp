@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 34740 2010-12-06 11:56:28Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 34907 2010-12-09 16:39:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -741,7 +741,19 @@ bool UINewVMWzdPage5::constructMachine()
         && usbController.GetProxyAvailable())
     {
         usbController.SetEnabled(true);
-        usbController.SetEnabledEhci(true);
+
+        /*
+         * USB 2.0 is only available if the proper ExtPack is installed.
+         *
+         * Note. Configuring EHCI here and providing messages about
+         * the missing extpack isn't exactly clean, but it is a
+         * necessary evil to patch over legacy compatability issues
+         * introduced by the new distribution model.
+         */
+        static const char *s_pszUsbExtPackName = "Oracle VM VirtualBox Extension Pack";
+        CExtPackManager manager = vboxGlobal().virtualBox().GetExtensionPackManager();
+        if (manager.IsExtPackUsable(s_pszUsbExtPackName))
+            usbController.SetEnabledEhci(true);
     }
 
     /* Create recommended DVD storage controller */

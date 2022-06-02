@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 34897 2010-12-09 15:11:06Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 34907 2010-12-09 16:39:41Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2005,6 +2005,14 @@ STDMETHODIMP ExtPackManager::QueryAllPlugInsForFrontend(IN_BSTR a_bstrFrontend, 
         saPaths.detachTo(ComSafeArrayOutArg(a_pabstrPlugInModules));
     }
     return hrc;
+}
+
+STDMETHODIMP ExtPackManager::IsExtPackUsable(IN_BSTR a_bstrExtPack, BOOL *aUsable)
+{
+    CheckComArgNotNull(a_bstrExtPack);
+    Utf8Str strExtPack(a_bstrExtPack);
+    *aUsable = isExtPackUsable(strExtPack.c_str());
+    return S_OK;
 }
 
 
