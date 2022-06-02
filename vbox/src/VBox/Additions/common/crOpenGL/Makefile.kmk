@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29790 2010-05-25 14:27:13Z vboxsync $
+# $Id: Makefile.kmk 30440 2010-06-24 18:51:20Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest OpenGL part
 #
@@ -129,14 +129,13 @@ if1of ($(KBUILD_TARGET), linux solaris freebsd)
   ifndef VBOX_OGL_GLX_USE_CSTUBS
    VBoxOGL_SOURCES.solaris += \
  	$(VBOX_PATH_CROGL_GENFILES)/solaris_glxapi_exports.asm \
- 	$(VBOX_PATH_CROGL_GENFILES)/solaris_exports_dri.asm \
+ 	$(VBOX_PATH_CROGL_GENFILES)/solaris_exports_dri.asm
    VBoxOGL_SOURCES.linux += \
  	$(VBOX_PATH_CROGL_GENFILES)/linux_glxapi_exports.asm \
  	$(VBOX_PATH_CROGL_GENFILES)/linux_exports_dri.asm
    VBoxOGL_SOURCES.freebsd += \
  	$(VBOX_PATH_CROGL_GENFILES)/freebsd_glxapi_exports.asm \
- 	$(VBOX_PATH_CROGL_GENFILES)/freebsd_exports_dri.asm \
-
+ 	$(VBOX_PATH_CROGL_GENFILES)/freebsd_exports_dri.asm
   else
    VBoxOGL_SOURCES.solaris += \
   	$(VBOX_PATH_CROGL_GENFILES)/solaris_exports.c
