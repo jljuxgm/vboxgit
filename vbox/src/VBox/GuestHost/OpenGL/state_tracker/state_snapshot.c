@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 31808 2010-08-20 09:40:40Z vboxsync $ */
+/* $Id: state_snapshot.c 31906 2010-08-24 10:20:55Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -817,12 +817,8 @@ static void crStateSaveGLSLProgramCB(unsigned long key, void *data1, void *data2
                 if (size>1)
                 {
                     sprintf(pIndexStr, "[%i]", j);
-                    location = diff_api.GetUniformLocation(pProgram->hwid, name);
                 }
-                else
-                {
-                    location = i;
-                }
+                location = diff_api.GetUniformLocation(pProgram->hwid, name);
 
                 rc = SSMR3PutMem(pSSM, &type, sizeof(type));
                 CRASSERT(rc == VINF_SUCCESS);
