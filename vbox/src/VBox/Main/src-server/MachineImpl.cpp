@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 35528 2011-01-13 14:29:39Z vboxsync $ */
+/* $Id: MachineImpl.cpp 35608 2011-01-18 14:19:31Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7539,9 +7539,12 @@ HRESULT Machine::loadStorageDevices(StorageController *aStorageController,
                     }
                 }
                 else
-                    rc = mParent->findRemoveableMedium(dev.deviceType, dev.uuid, false /* fRefresh */, medium);
-                if (FAILED(rc))
-                    return rc;
+                    mParent->findRemoveableMedium(dev.deviceType,
+                                                  dev.uuid,
+                                                  false /* fRefresh */,
+                                                  false /* aSetError */,
+                                                  medium);
+                        // note: do NOT fail if a removeable medium cannot be found, silently ignore the error completely
             break;
 
             case DeviceType_HardDisk:

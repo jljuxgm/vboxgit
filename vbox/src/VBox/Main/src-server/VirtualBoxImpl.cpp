@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 35435 2011-01-07 16:52:31Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 35608 2011-01-18 14:19:31Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2834,6 +2834,7 @@ HRESULT VirtualBox::findDVDOrFloppyImage(DeviceType_T mediumType,
 HRESULT VirtualBox::findRemoveableMedium(DeviceType_T mediumType,
                                          const Guid &uuid,
                                          bool fRefresh,
+                                         bool aSetError,
                                          ComObjPtr<Medium> &pMedium)
 {
     if (uuid.isEmpty())
@@ -2850,7 +2851,7 @@ HRESULT VirtualBox::findRemoveableMedium(DeviceType_T mediumType,
                                              pMedium);
     if (rc == VBOX_E_OBJECT_NOT_FOUND)
                 // then search for an image with that UUID
-        rc = findDVDOrFloppyImage(mediumType, &uuid, Utf8Str::Empty, true /* aSetError */, &pMedium);
+        rc = findDVDOrFloppyImage(mediumType, &uuid, Utf8Str::Empty, aSetError, &pMedium);
 
     return rc;
 }
