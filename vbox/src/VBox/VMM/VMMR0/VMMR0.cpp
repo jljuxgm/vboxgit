@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 33935 2010-11-10 15:37:02Z vboxsync $ */
+/* $Id: VMMR0.cpp 35298 2010-12-22 12:35:46Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -60,6 +60,11 @@
 RT_C_DECLS_BEGIN
 VMMR0DECL(int) ModuleInit(void);
 VMMR0DECL(void) ModuleTerm(void);
+
+#if defined(RT_ARCH_X86) && (defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD))
+extern uint64_t __udivdi3(uint64_t, uint64_t);
+extern uint64_t __umoddi3(uint64_t, uint64_t);
+#endif // RT_ARCH_X86 && (RT_OS_SOLARIS || RT_OS_FREEBSD)
 RT_C_DECLS_END
 
 
@@ -71,7 +76,12 @@ RT_C_DECLS_END
 PFNRT g_VMMGCDeps[] =
 {
     (PFNRT)RTCrc32,
-    (PFNRT)RTOnce
+    (PFNRT)RTOnce,
+#if defined(RT_ARCH_X86) && (defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD))
+    (PFNRT)__udivdi3,
+    (PFNRT)__umoddi3,
+#endif // RT_ARCH_X86 && (RT_OS_SOLARIS || RT_OS_FREEBSD)
+    NULL
 };
 
 
