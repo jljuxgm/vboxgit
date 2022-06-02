@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 31914 2010-08-24 12:18:38Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 31935 2010-08-24 16:17:35Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -238,8 +238,8 @@ static int AllocMemoryArea(PVBOXCORE pVBoxCore)
         { "/proc/%d/lpsinfo",    sizeof(prheader_t), sizeof(lwpsinfo_t),    sizeof(VBOXSOLTHREADINFO) },
         { "/proc/%d/lstatus",    0,                  0,                     0 },
         { "/proc/%d/ldt",        0,                  0,                     0 },
-        { "/proc/%d/cred",       sizeof(prcred_t),   sizeof(gid_t),         1 },
-        { "/proc/%d/priv",       sizeof(prpriv_t),   sizeof(priv_chunk_t),  1 },
+        { "/proc/%d/cred",       sizeof(prcred_t),   sizeof(gid_t),         0 },
+        { "/proc/%d/priv",       sizeof(prpriv_t),   sizeof(priv_chunk_t),  0 },
     };
 
     size_t cb = 0;
@@ -250,10 +250,10 @@ static int AllocMemoryArea(PVBOXCORE pVBoxCore)
         size_t cbFile = GetFileSize(szPath);
         cb += cbFile;
         if (   cbFile > 0
-            && aPreAllocTable[i].cbEntry > 0
-            && aPreAllocTable[i].cbAccounting > 0)
+            && aPreAllocTable[i].cbEntry > 0)
         {
-            cb += ((cbFile - aPreAllocTable[i].cbHeader) / aPreAllocTable[i].cbEntry) * aPreAllocTable[i].cbAccounting;
+            cb += ((cbFile - aPreAllocTable[i].cbHeader) / aPreAllocTable[i].cbEntry) * (aPreAllocTable[i].cbAccounting > 0 ?
+                                                                                         aPreAllocTable[i].cbAccounting : 1);
             cb += aPreAllocTable[i].cbHeader;
         }
     }
