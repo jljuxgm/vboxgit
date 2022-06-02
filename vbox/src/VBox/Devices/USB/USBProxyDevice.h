@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.h 31247 2010-07-30 13:37:49Z vboxsync $ */
+/* $Id: USBProxyDevice.h 31557 2010-08-11 09:15:04Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy header
  */
