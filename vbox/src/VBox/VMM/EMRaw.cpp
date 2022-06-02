@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 32954 2010-10-06 15:54:53Z vboxsync $ */
+/* $Id: EMRaw.cpp 32956 2010-10-06 16:06:53Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -1538,7 +1538,7 @@ int emR3RawExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
         {
             /* Give up this time slice; virtual time continues */
             STAM_REL_PROFILE_ADV_START(&pVCpu->em.s.StatCapped, u);
-            RTThreadSleep(2);
+            RTThreadSleep(5);
             STAM_REL_PROFILE_ADV_STOP(&pVCpu->em.s.StatCapped, u);
             rc = VINF_SUCCESS;
         }
