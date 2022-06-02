@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 32638 2010-09-20 12:48:31Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 32672 2010-09-21 16:42:52Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1794,6 +1794,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         InsertConfigInteger(pCfg, "RamSize",              cbRam);
         if (hwVersion.compare(Bstr("1")) == 0) /* <= 2.0.x */
             InsertConfigInteger(pCfg, "HeapEnabled", 0);
+        Bstr snapshotFolder;
+        hrc = pMachine->COMGETTER(SnapshotFolder)(snapshotFolder.asOutParam());            H();
+        InsertConfigString(pCfg, "GuestCoreDumpDir", snapshotFolder);
 
         /* the VMM device's Main driver */
         InsertConfigNode(pInst,    "LUN#0", &pLunL0);

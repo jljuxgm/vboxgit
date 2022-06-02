@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 32645 2010-09-20 15:23:49Z vboxsync $ */
+/* $Id: VMMDev.cpp 32672 2010-09-21 16:42:52Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -24,6 +24,7 @@
 
 #define LOG_GROUP LOG_GROUP_DEV_VMM
 #include <VBox/VMMDev.h>
+#include <VBox/mm.h>
 #include <VBox/log.h>
 #include <VBox/param.h>
 #include <iprt/path.h>
@@ -2975,14 +2976,14 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Failed querying \"GuestCoreDumpEnabled\" as a boolean"));
 
-    /** @todo change this to Snapshots folder!!  */
-    char szDefaultCoreLocation[RTPATH_MAX];
-    RTPathUserHome(szDefaultCoreLocation, sizeof(szDefaultCoreLocation));
-    rc = CFGMR3QueryStringDef(pCfg, "GuestCoreDumpDir", pThis->szGuestCoreDumpDir, sizeof(pThis->szGuestCoreDumpDir),
-                              szDefaultCoreLocation);
+    char *pszGuestCoreDumpDir = NULL;
+    rc = CFGMR3QueryStringAlloc(pCfg, "GuestCoreDumpDir", &pszGuestCoreDumpDir);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Failed querying \"GuestCoreDumpDir\" as a string"));
+
+    RTStrCopy(pThis->szGuestCoreDumpDir, sizeof(pThis->szGuestCoreDumpDir), pszGuestCoreDumpDir);
+    MMR3HeapFree(pszGuestCoreDumpDir);
 
     rc = CFGMR3QueryU32Def(pCfg, "GuestCoreDumpCount", &pThis->cGuestCoreDumps, 3);
     if (RT_FAILURE(rc))
