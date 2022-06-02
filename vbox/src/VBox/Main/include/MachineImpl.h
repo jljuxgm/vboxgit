@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 34313 2010-11-24 12:15:03Z vboxsync $ */
+/* $Id: MachineImpl.h 34331 2010-11-24 16:24:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -521,8 +521,7 @@ public:
     STDMETHOD(ReadLog(ULONG aIdx, LONG64 aOffset, LONG64 aSize, ComSafeArrayOut(BYTE, aData)));
     STDMETHOD(AttachHostPciDevice(LONG hostAddress, LONG desiredGuestAddress, IEventContext *eventContext, BOOL tryToUnbind));
     STDMETHOD(DetachHostPciDevice(LONG hostAddress));
-    STDMETHOD(COMGETTER(PciDeviceAttachments))(ComSafeArrayOut(IPciDeviceAttachment *, aAttachments));
-
+    STDMETHOD(COMGETTER(PciDeviceAssignments))(ComSafeArrayOut(IPciDeviceAttachment *, aAssignments));
     // public methods only for internal purposes
 
     virtual bool isSnapshotMachine() const
@@ -864,8 +863,8 @@ protected:
     typedef std::list< ComObjPtr<StorageController> > StorageControllerList;
     Backupable<StorageControllerList> mStorageControllers;
 
-    typedef std::list< ComObjPtr<PciDeviceAttachment> > PciDeviceList;
-    PciDeviceList mPciDeviceList;
+    typedef std::list< ComObjPtr<PciDeviceAttachment> > PciDeviceAssignmentList;
+    PciDeviceAssignmentList mPciDeviceAssignments;
 
     friend class SessionMachine;
     friend class SnapshotMachine;

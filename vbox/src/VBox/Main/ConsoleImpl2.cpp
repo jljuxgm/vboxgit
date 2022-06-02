@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 34287 2010-11-23 15:20:03Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 34331 2010-11-24 16:24:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -550,8 +550,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         u64McfgBase = _4G - cbRamHole;
     }
 
-    ComPtr<BusAssignmentManager> BusMgr =
-            BusAssignmentManager::getInstance(chipsetType);
+    BusAssignmentManager* BusMgr = pConsole->mBusMgr = BusAssignmentManager::createInstance(chipsetType);
 
     ULONG cCpus = 1;
     hrc = pMachine->COMGETTER(CPUCount)(&cCpus);                                        H();

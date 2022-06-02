@@ -1,4 +1,4 @@
-/* $Id: PciDeviceAttachmentImpl.h 34308 2010-11-24 11:44:28Z vboxsync $ */
+/* $Id: PciDeviceAttachmentImpl.h 34331 2010-11-24 16:24:17Z vboxsync $ */
 
 /** @file
  *
@@ -70,7 +70,7 @@ public:
         mDevice = aDevice;
         return S_OK;
     }
-    
+
     STDMETHOD(COMGETTER(DevFunction))(SHORT *aDevFunction)
     {
         *aDevFunction = mFn;
@@ -81,7 +81,7 @@ public:
         mFn = aDevFunction;
         return S_OK;
     }
-    
+
 private:
     SHORT mBus, mDevice, mFn;
 };
@@ -118,7 +118,11 @@ public:
     void FinalRelease();
 
     // IPciDeviceAttachment properties
-    
+    STDMETHOD(COMGETTER(Name))(BSTR * aName);
+    STDMETHOD(COMGETTER(IsPhysicalDevice))(BOOL * aPhysical);
+    STDMETHOD(COMGETTER(HostAddress))(LONG  * hostAddress);
+    STDMETHOD(COMGETTER(GuestAddress))(LONG * guestAddress);
+
 private:
     struct Data;
     Data *m;

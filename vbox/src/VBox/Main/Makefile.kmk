@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34308 2010-11-24 11:44:28Z vboxsync $
+# $Id: Makefile.kmk 34331 2010-11-24 16:24:17Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -643,6 +643,7 @@ VBoxC_SOURCES = \
 	VMMDevInterface.cpp \
 	EventImpl.cpp \
 	BusAssignmentManager.cpp \
+	PciDeviceAttachmentImpl.cpp \
 	$(VBOX_AUTOGEN_EVENT_CPP) \
 	$(VBOX_XML_SCHEMADEFS_CPP) \
 	$(if $(VBOX_WITH_EXTPACK),ExtPackManagerImpl.cpp ExtPackUtil.cpp,)

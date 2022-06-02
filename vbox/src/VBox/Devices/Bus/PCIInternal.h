@@ -1,4 +1,4 @@
-/* $Id: PCIInternal.h 34268 2010-11-22 21:41:24Z vboxsync $ */
+/* $Id: PCIInternal.h 34331 2010-11-24 16:24:17Z vboxsync $ */
 /** @file
  * DevPCI - PCI Internal header - Only for hiding bits of PCIDEVICE.
  */
@@ -23,7 +23,7 @@
  */
 typedef struct PCIIOREGION
 {
-    /** Current PCI mapping address, 0xffffffff means not mapped. 
+    /** Current PCI mapping address, 0xffffffff means not mapped.
         @todo: make address and size 64-bit. */
     uint32_t                        addr;
     uint32_t                        size;

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 34287 2010-11-23 15:20:03Z vboxsync $ */
+/* $Id: ConsoleImpl.h 34331 2010-11-24 16:24:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -37,6 +37,7 @@ class AudioSniffer;
 class ConsoleVRDPServer;
 class VMMDev;
 class Progress;
+class BusAssignmentManager;
 COM_STRUCT_OR_CLASS(IEventListener);
 #ifdef VBOX_WITH_EXTPACK
 class ExtPackManager;
@@ -127,6 +128,7 @@ public:
     STDMETHOD(COMGETTER(VRDEServerInfo))(IVRDEServerInfo **aVRDEServerInfo);
     STDMETHOD(COMGETTER(SharedFolders))(ComSafeArrayOut(ISharedFolder *, aSharedFolders));
     STDMETHOD(COMGETTER(EventSource)) (IEventSource ** aEventSource);
+    STDMETHOD(COMGETTER(AttachedPciDevices))(ComSafeArrayOut(IPciDeviceAttachment *, aAttachments));
 
     // IConsole methods
     STDMETHOD(PowerUp)(IProgress **aProgress);
@@ -655,6 +657,7 @@ private:
 
     VMMDev * m_pVMMDev;
     AudioSniffer * const mAudioSniffer;
+    BusAssignmentManager* mBusMgr;
 
     enum
     {
