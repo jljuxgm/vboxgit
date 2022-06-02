@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 34044 2010-11-12 19:05:42Z vboxsync $ */
+/* $Id: BusAssignmentManager.cpp 34123 2010-11-16 16:38:55Z vboxsync $ */
 
 /** @file
  *
@@ -19,6 +19,7 @@
 #include "BusAssignmentManager.h"
 
 #include <iprt/asm.h>
+#include <iprt/string.h>
 
 #include <VBox/cfgm.h>
 
@@ -217,17 +218,17 @@ struct BusAssignmentManager::State
 
         PciDeviceRecord(const char* pszName)
         {
-            ::strncpy(szDevName, pszName, sizeof(szDevName));
+            RTStrCopy(szDevName, sizeof(szDevName), pszName);
         }
 
         bool operator<(const PciDeviceRecord &a) const
         {
-            return ::strcmp(szDevName, a.szDevName) < 0;
+            return RTStrNCmp(szDevName, a.szDevName, sizeof(szDevName)) < 0;
         }
 
         bool operator==(const PciDeviceRecord &a) const
         {
-            return ::strcmp(szDevName, a.szDevName) == 0;
+            return RTStrNCmp(szDevName, a.szDevName, sizeof(szDevName)) == 0;
         }
     };
 
@@ -324,7 +325,7 @@ void BusAssignmentManager::State::addMatchingRules(const char* pszName, PciRules
 
         for (iRule = 0; aArrays[iRuleset][iRule].pszName != NULL; iRule++)
         {
-            if (strcmp(pszName, aArrays[iRuleset][iRule].pszName) == 0)
+            if (RTStrCmp(pszName, aArrays[iRuleset][iRule].pszName) == 0)
                 aList.push_back(&aArrays[iRuleset][iRule]);
         }
     }
