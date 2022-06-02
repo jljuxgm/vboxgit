@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 34322 2010-11-24 13:36:24Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -937,7 +937,7 @@ DECLCALLBACK(void) vmmR3SwitcherAMD64ToPAE_Relocate(PVM pVM, PVMMSWITCHERDEF pSw
  * @param   enmSwitcher     The new switcher.
  * @remark  This function may be called before the VMM is initialized.
  */
-VMMR3DECL(int) VMMR3SelectSwitcher(PVM pVM, VMMSWITCHER enmSwitcher)
+VMMR3_INT_DECL(int) VMMR3SelectSwitcher(PVM pVM, VMMSWITCHER enmSwitcher)
 {
     /*
      * Validate input.
@@ -984,7 +984,7 @@ VMMR3DECL(int) VMMR3SelectSwitcher(PVM pVM, VMMSWITCHER enmSwitcher)
  * @returns VBox status code.
  * @param   pVM             VM handle.
  */
-VMMR3DECL(int) VMMR3DisableSwitcher(PVM pVM)
+VMMR3_INT_DECL(int) VMMR3DisableSwitcher(PVM pVM)
 {
 /** @todo r=bird: I would suggest that we create a dummy switcher which just does something like:
  * @code
@@ -1005,7 +1005,7 @@ VMMR3DECL(int) VMMR3DisableSwitcher(PVM pVM)
  * @param   pVM             VM handle.
  * @param   enmSwitcher     The new switcher.
  */
-VMMR3DECL(RTR0PTR) VMMR3GetHostToGuestSwitcher(PVM pVM, VMMSWITCHER enmSwitcher)
+VMMR3_INT_DECL(RTR0PTR) VMMR3GetHostToGuestSwitcher(PVM pVM, VMMSWITCHER enmSwitcher)
 {
     /*
      * Validate input.
