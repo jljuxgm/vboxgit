@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 32369 2010-09-09 16:56:18Z vboxsync $ */
+/* $Id: VMMDevState.h 32533 2010-09-15 17:30:02Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -223,8 +223,13 @@ typedef struct VMMDevState
     /** Guest Core Dumping enabled. */
     bool fGuestCoreDumpEnabled;
 
-    /** Alignment padding. */
-    bool afAlignment7[4];
+    /** Guest Core Dump location. */
+    char szGuestCoreLocation[RTPATH_MAX];
+
+    /** Number of additional cores to keep around.   */
+    uint32_t cGuestCores;
+
+    bool afAlignment7[1];
 
 #ifdef VBOX_WITH_HGCM
     /** List of pending HGCM requests, used for saving the HGCM state. */
