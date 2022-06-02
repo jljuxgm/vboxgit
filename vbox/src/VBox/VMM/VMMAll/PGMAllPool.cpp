@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 32091 2010-08-30 12:46:17Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 32109 2010-08-31 08:17:33Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3822,7 +3822,7 @@ static uint16_t pgmPoolTrackPhysExtInsert(PVM pVM, uint16_t iPhysExt, uint16_t i
 
         /* advance */
         iPhysExt = paPhysExts[iPhysExt].iNext;
-        if (iPhysExt == NIL_PGMPOOL_IDX)
+        if (iPhysExt == NIL_PGMPOOL_PHYSEXT_INDEX)
             break;
     }
 
