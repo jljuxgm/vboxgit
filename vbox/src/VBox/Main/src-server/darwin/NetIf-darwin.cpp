@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 35641 2011-01-19 21:06:21Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 35691 2011-01-24 16:59:46Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -152,8 +152,8 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
 #else
 
 #define ROUNDUP(a) \
-        ((a) > 0 ? (1 + (((a) - 1) | (sizeof(u_long) - 1))) : sizeof(u_long))
-#define ADVANCE(x, n) (x += ROUNDUP((n)->sa_len))
+    (((a) & (sizeof(u_long) - 1)) ? (1 + ((a) | (sizeof(u_long) - 1))) : (a))
+#define ADVANCE(x, n) (x += (n)->sa_len ? ROUNDUP((n)->sa_len) : sizeof(u_long))
 
 void extractAddresses(int iAddrMask, caddr_t cp, caddr_t cplim, struct sockaddr **pAddresses)
 {
