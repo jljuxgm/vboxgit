@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 35100 2010-12-14 16:21:38Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 35184 2010-12-16 14:00:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -138,7 +138,7 @@ public:
 
     /** @name Internal interfaces used by ExtPackManager.
      * @{ */
-    bool        callInstalledHook(IVirtualBox *a_pVirtualBox, AutoWriteLock *a_pLock);
+    bool        callInstalledHook(IVirtualBox *a_pVirtualBox, AutoWriteLock *a_pLock, PRTERRINFO pErrInfo);
     HRESULT     callUninstallHookAndClose(IVirtualBox *a_pVirtualBox, bool a_fForcedRemoval);
     bool        callVirtualBoxReadyHook(IVirtualBox *a_pVirtualBox, AutoWriteLock *a_pLock);
     bool        callConsoleReadyHook(IConsole *a_pConsole, AutoWriteLock *a_pLock);
