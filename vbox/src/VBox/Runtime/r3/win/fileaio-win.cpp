@@ -1,4 +1,4 @@
-/* $Id: fileaio-win.cpp 29241 2010-05-08 16:20:18Z vboxsync $ */
+/* $Id: fileaio-win.cpp 32426 2010-09-11 14:40:48Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Windows host platform.
  */
@@ -428,16 +428,20 @@ RTDECL(int) RTFileAioCtxWait(RTFILEAIOCTX hAioCtx, size_t cMinReqs, RTMSINTERVAL
                                                &pOverlapped,
                                                dwTimeout);
         ASMAtomicXchgBool(&pCtxInt->fWaiting, false);
-        if (!fSucceeded)
+        if (   !fSucceeded
+            && !pOverlapped)
         {
-            /* Includes VERR_TIMEOUT */
+            /* The call failed to dequeue a completion packet, includes VERR_TIMEOUT */
             rc = RTErrConvertFromWin32(GetLastError());
             break;
         }
 
         /* Check if we got woken up. */
         if (lCompletionKey == AIO_CONTEXT_WAKEUP_EVENT)
+        {
+            Assert(fSucceeded && !pOverlapped)
             break;
+        }
 
         /* A request completed. */
         PRTFILEAIOREQINTERNAL pReqInt = OVERLAPPED_2_RTFILEAIOREQINTERNAL(pOverlapped);
@@ -447,13 +451,11 @@ RTDECL(int) RTFileAioCtxWait(RTFILEAIOCTX hAioCtx, size_t cMinReqs, RTMSINTERVAL
         /* Mark the request as finished. */
         RTFILEAIOREQ_SET_STATE(pReqInt, COMPLETED);
 
-        /* completion status. */
-        fSucceeded = GetOverlappedResult(pReqInt->hFile,
-                                         &pReqInt->Overlapped,
-                                         &cbTransfered,
-                                         FALSE);
         pReqInt->cbTransfered = cbTransfered;
-        pReqInt->Rc = VINF_SUCCESS;
+        if (fSucceeded)
+            pReqInt->Rc = VINF_SUCCESS;
+        else
+            pReqInt->Rc = RTErrConvertFromWin32(GetLastError());
 
         pahReqs[cRequestsCompleted++] = (RTFILEAIOREQ)pReqInt;
 
