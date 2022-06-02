@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 30664 2010-07-06 12:23:56Z vboxsync $ */
+/* $Id: GMMR0.cpp 30727 2010-07-08 09:24:48Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -4307,7 +4307,7 @@ GMMR0DECL(int) GMMR0FindDuplicatePageReq(PVM pVM, PGMMFINDDUPLICATEPAGEREQ pReq)
         Info.pGMM            = pGMM;
         Info.pSourcePage     = pbSourcePage;
         Info.fFoundDuplicate = false;
-        RTAvlU32DoWithAll(&pGMM->pChunks, true /* fFromLeft */, gmmR0FindDupPageInChunk, pGVM);
+        RTAvlU32DoWithAll(&pGMM->pChunks, true /* fFromLeft */, gmmR0FindDupPageInChunk, &Info);
 
         pReq->fDuplicate = Info.fFoundDuplicate;
     }
