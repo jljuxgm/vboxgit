@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 30863 2010-07-15 19:53:40Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 31185 2010-07-28 20:40:14Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1611,6 +1611,7 @@ static int vdWriteHelperAsync(PVDIOCTX pIoCtx)
 
                 /* Set the state to growing. */
                 LogFlowFunc(("Disk is growing because of pIoCtx=%#p pIoCtxWrite=%#p\n",
+
                              pIoCtx, pIoCtxWrite));
                 ASMAtomicWriteBool(&pDisk->fGrowing, true);
 
@@ -1823,9 +1824,16 @@ static int vdAsyncIOOpen(void *pvUser, const char *pszLocation, unsigned uOpenFl
     uint32_t fOpen = 0;
 
     if (uOpenFlags & VD_INTERFACEASYNCIO_OPEN_FLAGS_READONLY)
-        fOpen |= RTFILE_O_READ      | RTFILE_O_DENY_NONE;
+        fOpen |= RTFILE_O_READ | RTFILE_O_DENY_NONE;
     else
-        fOpen |= RTFILE_O_READWRITE | RTFILE_O_DENY_WRITE;
+    {
+        fOpen |= RTFILE_O_READWRITE;
+
+        if (uOpenFlags & VD_INTERFACEASYNCIO_OPEN_FLAGS_DONT_LOCK)
+            fOpen |= RTFILE_O_DENY_NONE;
+        else
+            fOpen |= RTFILE_O_DENY_WRITE;
+    }
 
     if (uOpenFlags & VD_INTERFACEASYNCIO_OPEN_FLAGS_CREATE)
         fOpen |= RTFILE_O_CREATE;

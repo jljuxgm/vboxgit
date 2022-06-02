@@ -1,4 +1,4 @@
-/* $Id: VHDHDDCore.cpp 31184 2010-07-28 20:23:47Z vboxsync $ */
+/* $Id: VHDHDDCore.cpp 31185 2010-07-28 20:40:14Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -283,6 +283,9 @@ static int vhdFileOpen(PVHDIMAGE pImage, bool fReadonly, bool fShareable,
 
     if (fCreate)
         uOpenFlags |= VD_INTERFACEASYNCIO_OPEN_FLAGS_CREATE;
+
+    if (fShareable)
+        uOpenFlags |= VD_INTERFACEASYNCIO_OPEN_FLAGS_DONT_LOCK;
 
     rc = pImage->pInterfaceIOCallbacks->pfnOpen(pImage->pInterfaceIO->pvUser,
                                                 pImage->pszFilename,
