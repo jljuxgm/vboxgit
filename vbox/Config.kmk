@@ -1,4 +1,4 @@
-# $Id: Config.kmk 34244 2010-11-22 14:31:02Z vboxsync $
+# $Id: Config.kmk 34292 2010-11-23 16:06:39Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3032,11 +3032,22 @@ TEMPLATE_VBOXR3HARDENEDLIB_LIBS = $(NO_SUCH_VARIABLE)
 
 #
 # Template for building set-uid-to-root helper programs.
-# These shall have not extra runpaths, esp. not origin ones.
+# In hardened builds, these may only contain absolute runpaths!
 #
 TEMPLATE_VBoxR3SetUidToRoot = Set-uid-to-root helper program.
 TEMPLATE_VBoxR3SetUidToRoot_EXTENDS = VBOXR3HARDENEDEXE
 TEMPLATE_VBoxR3SetUidToRoot_LIBS = $(NO_SUCH_VARIABLE)
+ifdef VBOX_WITH_RUNPATH
+ TEMPLATE_VBoxR3SetUidToRoot_LDFLAGS += '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RUNPATH)'
+endif
+ifndef VBOX_WITH_HARDENING
+ ifdef VBOX_WITH_RELATIVE_RUNPATH
+  TEMPLATE_VBoxR3SetUidToRoot_LDFLAGS += '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RELATIVE_RUNPATH)'
+ endif
+ ifdef VBOX_WITH_ORIGIN
+  TEMPLATE_VBoxR3SetUidToRoot_LDFLAGS.linux += $(VBOX_GCC_ORIGIN_OPT)
+ endif
+endif
 
 
 #
@@ -4397,7 +4408,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34244 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34292 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

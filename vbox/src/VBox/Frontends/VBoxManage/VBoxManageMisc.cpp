@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 34244 2010-11-22 14:31:02Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 34292 2010-11-23 16:06:39Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -889,7 +889,7 @@ int handleVMStatistics(HandlerArg *a)
 
 int handleExtPack(HandlerArg *a)
 {
-    if (a->argc < 2)
+    if (a->argc < 1)
         return errorSyntax(USAGE_EXTPACK, "Incorrect number of parameters");
 
     ComObjPtr<IExtPackManager> ptrExtPackMgr;
