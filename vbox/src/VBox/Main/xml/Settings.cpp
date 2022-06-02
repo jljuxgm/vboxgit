@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 32120 2010-08-31 09:58:36Z vboxsync $ */
+/* $Id: Settings.cpp 32123 2010-08-31 10:03:01Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1596,7 +1596,7 @@ bool Hardware::operator==(const Hardware& h) const
                   && (cMonitors                 == h.cMonitors)
                   && (fAccelerate3D             == h.fAccelerate3D)
                   && (fAccelerate2DVideo        == h.fAccelerate2DVideo)
-                  && (firmwareType              == h.firmwareType)                     
+                  && (firmwareType              == h.firmwareType)
                   && (pointingHidType           == h.pointingHidType)
                   && (keyboardHidType           == h.keyboardHidType)
                   && (chipsetType               == h.chipsetType)
@@ -3311,7 +3311,7 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
             case ChipsetType_ICH9:              pcszChipset = "ICH9";    break;
             default:            Assert(false);  pcszChipset = "PIIX3";   break;
          }
-         pelmChipset->setAttribute("Type", pcszChipset);
+         pelmChipset->setAttribute("type", pcszChipset);
     }
 
     xml::ElementNode *pelmBoot = pelmHardware->createChild("Boot");
