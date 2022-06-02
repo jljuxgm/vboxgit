@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 33396 2010-10-24 16:21:10Z vboxsync $ */
+/* $Id: MachineImpl.cpp 33399 2010-10-24 17:59:14Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2162,7 +2162,7 @@ STDMETHODIMP Machine::COMGETTER(VRDEServer)(IVRDEServer **vrdeServer)
 
     return S_OK;
 #else
-    NOREF(vrde);
+    NOREF(vrdeServer);
     ReturnComNotImplemented();
 #endif
 }
