@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 32101 2010-08-30 14:27:08Z vboxsync $ */
+/* $Id: PGMPhys.cpp 32106 2010-08-30 15:26:16Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1071,17 +1071,16 @@ VMMR3DECL(int) PGMR3PhysEnumDirtyFTPages(PVM pVM, PFNPGMENUMDIRTYFTPAGES pfnEnum
                 PPGMPAGE pPage = &pRam->aPages[iPage];
                 if (RT_LIKELY(PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_RAM))
                 {
-                    unsigned cbPageRange = PAGE_SIZE;
-
                     /*
                      * A RAM page.
                      */
                     switch (PGM_PAGE_GET_STATE(pPage))
                     {
                     case PGM_PAGE_STATE_ALLOCATED:
-                        if (    !PGM_PAGE_IS_WRITTEN_TO(pPage)
+                        if (    !PGM_PAGE_IS_WRITTEN_TO(pPage)  /* not very recently updated? */
                             &&  PGM_PAGE_IS_FT_DIRTY(pPage))
                         {
+                            unsigned       cbPageRange = PAGE_SIZE;
                             unsigned       iPageClean  = iPage + 1;
                             RTGCPHYS       GCPhysPage  = pRam->GCPhys + iPage * PAGE_SIZE;
                             uint8_t       *pu8Page     = NULL;
