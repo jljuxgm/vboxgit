@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 31636 2010-08-13 12:03:15Z vboxsync $ */
+/* $Id: PGMAllBth.h 31657 2010-08-13 14:53:34Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1411,6 +1411,7 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorkerTrackDeref)(PVMCPU pVCpu, PPGMPOOLPA
 DECLINLINE(void) PGM_BTH_NAME(SyncPageWorkerTrackAddref)(PVMCPU pVCpu, PPGMPOOLPAGE pShwPage, uint16_t u16, PPGMPAGE pPage, const unsigned iPTDst)
 {
     PVM pVM = pVCpu->CTX_SUFF(pVM);
+
     /*
      * Just deal with the simple first time here.
      */
