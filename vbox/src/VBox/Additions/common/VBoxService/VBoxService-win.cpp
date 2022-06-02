@@ -1,4 +1,4 @@
-/* $Id: VBoxService-win.cpp 29817 2010-05-26 13:54:41Z vboxsync $ */
+/* $Id: VBoxService-win.cpp 35715 2011-01-25 14:34:26Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton, Windows Specific Parts.
  */
@@ -367,7 +367,7 @@ static int vboxServiceWinStart(void)
 RTEXITCODE VBoxServiceWinEnterCtrlDispatcher(void)
 {
     if (!StartServiceCtrlDispatcher(&g_aServiceTable[0]))
-        return VBoxServiceError("StartServiceCtrlDispatcher: %u. Please start %s with option -f (foreground)!",
+        return VBoxServiceError("StartServiceCtrlDispatcher: %u. Please start %s with option -f (foreground)!\n",
                                 GetLastError(), g_pszProgName);
     return RTEXITCODE_SUCCESS;
 }
