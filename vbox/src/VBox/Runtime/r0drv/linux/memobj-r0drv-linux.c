@@ -1,4 +1,4 @@
-/* $Revision: 33641 $ */
+/* $Revision: 33642 $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -197,7 +197,10 @@ static int rtR0MemObjLinuxAllocPages(PRTR0MEMOBJLNX *ppMemLnx, RTR0MEMOBJTYPE en
 
      if (cPages > 255)
      {
+# ifdef __GFP_NORETRY
+        /* Not available in Linux 2.4.0 */
         fFlagsLnx |= __GFP_NORETRY;
+# endif
 # ifdef __GFP_NOMEMALLOC
         /* Introduced with Linux 2.6.12: Don't use emergency reserves */
         fFlagsLnx |= __GFP_NOMEMALLOC;
