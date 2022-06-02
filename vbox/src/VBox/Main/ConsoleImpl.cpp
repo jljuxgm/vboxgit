@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 32899 2010-10-05 09:56:17Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 32961 2010-10-06 17:55:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5826,7 +5826,7 @@ HRESULT Console::powerDown(Progress *aProgress /*= NULL*/)
  * @note Locks this object for writing.
  */
 HRESULT Console::setMachineState(MachineState_T aMachineState,
-                                  bool aUpdateServer /* = true */)
+                                 bool aUpdateServer /* = true */)
 {
     AutoCaller autoCaller(this);
     AssertComRCReturnRC(autoCaller.rc());
