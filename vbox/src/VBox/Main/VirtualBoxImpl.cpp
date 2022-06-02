@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 31034 2010-07-23 07:22:44Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -314,10 +314,6 @@ struct VirtualBox::Data
     // the following are data for the async event thread
     const RTTHREAD                      threadAsyncEvent;
     EventQueue * const                  pAsyncEventQ;
-
-#ifdef RT_OS_WINDOWS
-    ComEventsHelper                     mComEvHelper;
-#endif
     const ComObjPtr<EventSource>        pEventSource;
 };
 
