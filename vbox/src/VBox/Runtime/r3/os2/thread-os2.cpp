@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 32914 2010-10-05 13:25:58Z vboxsync $ */
+/* $Id: thread-os2.cpp 33393 2010-10-24 16:17:00Z vboxsync $ */
 /** @file
  * IPRT - Threads, OS/2.
  */
@@ -44,7 +44,7 @@
 #include <iprt/log.h>
 #include <iprt/assert.h>
 #include <iprt/alloc.h>
-#include <iprt/asm.h>
+#include <iprt/asm-amd64-x86.h>
 #include <iprt/string.h>
 #include <iprt/err.h>
 #include "internal/thread.h"
