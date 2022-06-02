@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 32239 2010-09-03 17:01:38Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 32248 2010-09-06 12:45:20Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -422,7 +422,6 @@ static DECLCALLBACK(VBOXSTRICTRC) dbgfR3CoreWrite(PVM pVM, PVMCPU pVCpu, void *p
                          * Write page-by-page of this memory range.
                          */
                         uint64_t cbMemRange  = GCPhysEnd - GCPhysStart + 1;
-                        uint64_t cbFileRange = fIsMmio ? 0 : cbMemRange;
                         uint64_t cPages = cbMemRange >> PAGE_SHIFT;
                         for (uint64_t iPage = 0; iPage < cPages; iPage++)
                         {
