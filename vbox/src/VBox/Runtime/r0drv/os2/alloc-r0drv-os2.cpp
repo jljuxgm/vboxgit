@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-os2.cpp 28298 2010-04-14 12:20:39Z vboxsync $ */
+/* $Id: alloc-r0drv-os2.cpp 32674 2010-09-21 16:51:50Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -42,6 +42,8 @@
 
 PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
 {
+    AssertReturn(!(fFlags & RTMEMHDR_FLAG_ANY_CTX), NULL);
+
     void *pv = NULL;
     APIRET rc = KernVMAlloc(cb + sizeof(RTMEMHDR), VMDHA_FIXED, &pv, (void **)-1, NULL);
     if (!rc)

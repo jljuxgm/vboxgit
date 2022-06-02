@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: alloc-r0drv-solaris.c 32674 2010-09-21 16:51:50Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -45,20 +45,25 @@
  */
 PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
 {
-    size_t cbAllocated = cb;
-    PRTMEMHDR pHdr;
+    size_t      cbAllocated = cb;
+    PRTMEMHDR   pHdr;
+
 #ifdef RT_ARCH_AMD64
     if (fFlags & RTMEMHDR_FLAG_EXEC)
     {
+        AssertReturn(!(fFlags & RTMEMHDR_FLAG_ANY_CTX), NULL);
         cbAllocated = RT_ALIGN_Z(cb + sizeof(*pHdr), PAGE_SIZE) - sizeof(*pHdr);
         pHdr = (PRTMEMHDR)vbi_text_alloc(cbAllocated + sizeof(*pHdr));
     }
     else
 #endif
-    if (fFlags & RTMEMHDR_FLAG_ZEROED)
-        pHdr = (PRTMEMHDR)kmem_zalloc(cb + sizeof(*pHdr), KM_SLEEP);
-    else
-        pHdr = (PRTMEMHDR)kmem_alloc(cb + sizeof(*pHdr), KM_SLEEP);
+    {
+        unsigned fKmFlags = fFlags & RTMEMHDR_FLAG_ALLOC_ANY_CTX ? KM_NOSLEEP : KM_SLEEP;
+        if (fFlags & RTMEMHDR_FLAG_ZEROED)
+            pHdr = (PRTMEMHDR)kmem_zalloc(cb + sizeof(*pHdr), fKmFlags);
+        else
+            pHdr = (PRTMEMHDR)kmem_alloc(cb + sizeof(*pHdr), fKmFlags);
+    }
     if (pHdr)
     {
         pHdr->u32Magic  = RTMEMHDR_MAGIC;

@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 32674 2010-09-21 16:51:50Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -112,12 +112,15 @@ RT_EXPORT_SYMBOL(RTR0MemExecDonate);
  */
 PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
 {
+    PRTMEMHDR pHdr;
+
     /*
      * Allocate.
      */
-    PRTMEMHDR pHdr;
     if (fFlags & RTMEMHDR_FLAG_EXEC)
     {
+        AssertReturn(!(fFlags & RTMEMHDR_FLAG_ANY_CTX), NULL);
+
 #if defined(RT_ARCH_AMD64)
 # ifdef RTMEMALLOC_EXEC_HEAP
         if (g_HeapExec != NIL_RTHEAPSIMPLE)
@@ -142,7 +145,7 @@ PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
     }
     else
     {
-        if (cb <= PAGE_SIZE)
+        if (cb <= PAGE_SIZE || (fFlags & RTMEMHDR_FLAG_ANY_CTX))
         {
             fFlags |= RTMEMHDR_FLAG_KMALLOC;
             pHdr = kmalloc(cb + sizeof(*pHdr), GFP_KERNEL);

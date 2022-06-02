@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-nt.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: alloc-r0drv-nt.cpp 32674 2010-09-21 16:51:50Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NT.
  */
@@ -40,6 +40,8 @@
  */
 PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
 {
+    AssertReturn(!(fFlags & RTMEMHDR_FLAG_ANY_CTX), NULL);
+
     PRTMEMHDR pHdr = (PRTMEMHDR)ExAllocatePoolWithTag(NonPagedPool, cb + sizeof(*pHdr), IPRT_NT_POOL_TAG);
     if (pHdr)
     {

@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.cpp 31157 2010-07-28 03:15:35Z vboxsync $ */
+/* $Id: alloc-r0drv.cpp 32674 2010-09-21 16:51:50Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver.
  */
@@ -316,4 +316,53 @@ RTDECL(void)      RTMemExecFree(void *pv) RT_NO_THROW
         AssertMsgFailed(("pHdr->u32Magic=%RX32 pv=%p\n", pHdr->u32Magic, pv));
 }
 RT_EXPORT_SYMBOL(RTMemExecFree);
+
+
+/**
+ * Internal IPRT API for allocating special memory.
+ *
+ * @returns Pointer to the allocated memory, NULL on failure.
+ * @param   cb                  The amount of memory to allocate.
+ * @param   fFlags              Subset of the RTMEMHDR_FLAG_XXX flags.
+ * @param   pszTag              The tag.
+ */
+void *rtR0MemAllocExTag(size_t cb, uint32_t fFlags, const char *pszTag) RT_NO_THROW
+{
+    /** @todo continue later. */
+    return NULL;
+}
+
+
+/**
+ * For freeing memory allocated by rtR0MemAllocExTag.
+ *
+ * @param   pv                  What to free, NULL is fine.
+ */
+void  rtR0MemFreeEx(void *pv) RT_NO_THROW
+{
+    PRTMEMHDR pHdr;
+
+    if (!pv)
+        return;
+    pHdr = (PRTMEMHDR)pv - 1;
+    if (pHdr->u32Magic == RTMEMHDR_MAGIC)
+    {
+        Assert(pHdr->fFlags & RTMEMHDR_FLAG_ALLOC_EX);
+        if (!(pHdr->fFlags & RTMEMHDR_FLAG_FREE_ANY_CTX))
+            RT_ASSERT_INTS_ON();
+
+#ifdef RTR0MEM_STRICT
+        AssertReleaseMsg(!memcmp((uint8_t *)(pHdr + 1) + pHdr->cbReq, &g_abFence[0], RTR0MEM_FENCE_EXTRA),
+                         ("pHdr=%p pv=%p cb=%zu\n"
+                          "fence:    %.*Rhxs\n"
+                          "expected: %.*Rhxs\n",
+                          pHdr, pv, pHdr->cb,
+                          RTR0MEM_FENCE_EXTRA, (uint8_t *)(pHdr + 1) + pHdr->cb,
+                          RTR0MEM_FENCE_EXTRA, &g_abFence[0]));
+#endif
+        rtR0MemFree(pHdr);
+    }
+    else
+        AssertMsgFailed(("pHdr->u32Magic=%RX32 pv=%p\n", pHdr->u32Magic, pv));
+}
 
