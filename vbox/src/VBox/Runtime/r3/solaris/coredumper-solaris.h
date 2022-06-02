@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.h 31914 2010-08-24 12:18:38Z vboxsync $ */
+/* $Id: coredumper-solaris.h 31980 2010-08-26 10:36:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core dump, header.
  */
@@ -55,19 +55,8 @@
 # define _ELF64
 # undef _ELF32_COMPAT
 #endif
-# include <sys/machelf.h>
 # include <sys/corectl.h>
 #endif
-
-/**
- * ELFNOTEHDR: ELF NOTE header.
- */
-typedef struct ELFNOTEHDR
-{
-    Nhdr                            Hdr;                        /* Header of NOTE section */
-    char                            achName[8];                 /* Name of NOTE section */
-} ELFNOTEHDR;
-typedef ELFNOTEHDR *PELFNOTEHDR;
 
 
 #ifdef RT_OS_SOLARIS
