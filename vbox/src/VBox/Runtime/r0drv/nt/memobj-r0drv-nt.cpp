@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 29703 2010-05-20 15:38:42Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 32303 2010-09-08 09:33:30Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -133,6 +133,17 @@ int rtR0MemObjNativeFree(RTR0MEMOBJ pMem)
             break;
 
         case RTR0MEMOBJTYPE_PHYS:
+            /* rtR0MemObjNativeEnterPhys? */
+            if (!pMemNt->Core.u.Phys.fAllocated)
+            {
+#ifndef IPRT_TARGET_NT4
+                Assert(!pMemNt->fAllocatedPagesForMdl);
+#endif
+                /* Nothing to do here. */
+                break;
+            }
+            /* fall thru */
+
         case RTR0MEMOBJTYPE_PHYS_NC:
 #ifndef IPRT_TARGET_NT4
             if (pMemNt->fAllocatedPagesForMdl)
