@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 33952 2010-11-11 03:49:28Z vboxsync $ */
+/* $Id: SessionImpl.cpp 34587 2010-12-01 20:30:02Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -703,6 +703,20 @@ STDMETHODIMP Session::OnShowWindow(BOOL aCheck, BOOL *aCanShow, LONG64 *aWinId)
     }
 
     return mConsole->onShowWindow(aCheck, aCanShow, aWinId);
+}
+
+STDMETHODIMP Session::OnBandwidthGroupChange(IBandwidthGroup *aBandwidthGroup)
+{
+    LogFlowThisFunc(("\n"));
+
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(mState == SessionState_Locked, VBOX_E_INVALID_VM_STATE);
+    AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
+
+    return mConsole->onBandwidthGroupChange(aBandwidthGroup);
 }
 
 STDMETHODIMP Session::AccessGuestProperty(IN_BSTR aName, IN_BSTR aValue, IN_BSTR aFlags,

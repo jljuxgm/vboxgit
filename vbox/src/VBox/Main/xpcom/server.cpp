@@ -1,4 +1,4 @@
-/* $Id: server.cpp 33842 2010-11-08 14:01:10Z vboxsync $ */
+/* $Id: server.cpp 34587 2010-12-01 20:30:02Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -94,6 +94,8 @@
 #ifdef VBOX_WITH_EXTPACK
 # include <ExtPackManagerImpl.h>
 #endif
+#include <BandwidthGroupImpl.h>
+#include <BandwidthControlImpl.h>
 
 /* implement nsISupports parts of our objects with support for nsIClassInfo */
 
@@ -210,6 +212,12 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ExtPack, IExtPack)
 NS_DECL_CLASSINFO(ExtPackManager)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ExtPackManager, IExtPackManager)
 #endif
+
+NS_DECL_CLASSINFO(BandwidthGroup)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(BandwidthGroup, IBandwidthGroup)
+
+NS_DECL_CLASSINFO(BandwidthControl)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(BandwidthControl, IBandwidthControl)
 
 ////////////////////////////////////////////////////////////////////////////////
 

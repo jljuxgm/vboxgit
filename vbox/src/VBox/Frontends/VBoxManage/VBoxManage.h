@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 34244 2010-11-22 14:31:02Z vboxsync $ */
+/* $Id: VBoxManage.h 34587 2010-12-01 20:30:02Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -97,6 +97,7 @@
 #define USAGE_SETHDPARENTUUID       RT_BIT_64(53)
 #define USAGE_PASSWORDHASH          RT_BIT_64(54)
 #define USAGE_EXTPACK               RT_BIT_64(55)
+#define USAGE_BANDWIDTHCONTROL      RT_BIT_64(56)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
@@ -239,6 +240,9 @@ int handleHostonlyIf(HandlerArg *a);
 
 /* VBoxManageHostonly.cpp */
 int handleDHCPServer(HandlerArg *a);
+
+/* VBoxManageBandwidthControl.cpp */
+int handleBandwidthControl(HandlerArg *a);
 
 #endif /* !VBOX_ONLY_DOCS */
 
