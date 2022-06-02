@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 32544 2010-09-16 10:00:23Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 32551 2010-09-16 11:49:09Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1247,11 +1247,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
      */
     if (    pPage->cModifications >= cMaxModifications
         &&  !fForcedFlush
-# if 1
-        &&  (pPage->enmKind == PGMPOOLKIND_PAE_PT_FOR_PAE_PT)
-# else
         &&  (pPage->enmKind == PGMPOOLKIND_PAE_PT_FOR_PAE_PT || pPage->enmKind == PGMPOOLKIND_PAE_PT_FOR_32BIT_PT)
-# endif
         &&  (   fNotReusedNotForking
              || (   !pgmPoolMonitorIsReused(pVM, pVCpu, pRegFrame, pDis, pvFault)
                  && !pgmPoolMonitorIsForking(pPool, pDis, GCPhysFault & PAGE_OFFSET_MASK))
