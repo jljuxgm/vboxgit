@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceBalloon.cpp 32772 2010-09-27 12:19:31Z vboxsync $ */
+/* $Id: VBoxServiceBalloon.cpp 32813 2010-09-29 11:50:19Z vboxsync $ */
 /** @file
  * VBoxService - Memory Ballooning.
  */
@@ -304,6 +304,7 @@ static DECLCALLBACK(int) VBoxServiceBalloonInit(void)
  */
 uint32_t VBoxServiceBalloonQueryPages(uint32_t cbPage)
 {
+    Assert(cbPage > 0);
     return g_cMemBalloonChunks * (VMMDEV_MEMORY_BALLOON_CHUNK_SIZE / cbPage);
 }
 
