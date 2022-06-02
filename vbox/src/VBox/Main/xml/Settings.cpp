@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 31002 2010-07-22 14:45:41Z vboxsync $ */
+/* $Id: Settings.cpp 31063 2010-07-23 14:36:53Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -922,11 +922,7 @@ void MainConfigFile::readMedium(MediaType t,
             else if (strType == "WRITETHROUGH")
                 med.hdType = MediumType_Writethrough;
             else if (strType == "SHAREABLE")
-            {
-                /// @todo remove check once the medium type is implemented
-                throw ConfigFileError(this, &elmMedium, N_("HardDisk/@type attribute of Shareable is not implemented yet"));
                 med.hdType = MediumType_Shareable;
-            }
             else
                 throw ConfigFileError(this, &elmMedium, N_("HardDisk/@type attribute must be one of Normal, Immutable or Writethrough"));
         }
