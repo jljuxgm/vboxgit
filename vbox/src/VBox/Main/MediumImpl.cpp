@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 32903 2010-10-05 10:25:12Z vboxsync $ */
+/* $Id: MediumImpl.cpp 32934 2010-10-06 09:08:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3859,7 +3859,13 @@ HRESULT Medium::queryInfo(bool fSetImageId, bool fSetParentId)
                 vrc = VDGetParentUuid(hdd, 0, &parentId);
                 ComAssertRCThrow(vrc, E_FAIL);
 
-                if (isImport)
+                /* streamOptimized VMDK images are only accepted as base
+                 * images, as this allows automatic repair of OVF appliances.
+                 * Since such images don't support random writes they will not
+                 * be created for diff images. Only an overly smart user might
+                 * manually create this case. Too bad for him. */
+                if (   isImport
+                    && !(uImageFlags & VD_VMDK_IMAGE_FLAGS_STREAM_OPTIMIZED))
                 {
                     /* the parent must be known to us. Note that we freely
                      * call locking methods of mVirtualBox and parent, as all
