@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 35750 2011-01-28 10:14:33Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 35865 2011-02-07 11:44:20Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -139,6 +139,16 @@ bool darwinIsWindowMaximized(QWidget *pWidget)
 void darwinMinaturizeWindow(QWidget *pWidget)
 {
     return ::darwinMinaturizeWindow(::darwinToNativeWindow(pWidget));
+}
+
+void darwinInstallResizeDelegate(QWidget *pWidget)
+{
+    ::darwinInstallResizeDelegate(::darwinToNativeWindow(pWidget));
+}
+
+void darwinUninstallResizeDelegate(QWidget *pWidget)
+{
+    ::darwinUninstallResizeDelegate(::darwinToNativeWindow(pWidget));
 }
 
 bool darwinOpenFile(const QString& strFile)

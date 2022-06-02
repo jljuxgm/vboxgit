@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 35424 2011-01-07 13:05:41Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 35865 2011-02-07 11:44:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -77,6 +77,8 @@ UIMachineWindowScale::UIMachineWindowScale(UIMachineLogic *pMachineLogic, ulong 
     updateAppearanceOf(UIVisualElement_AllStuff);
 
 #ifdef Q_WS_MAC
+    /* Install the resize delegate for keeping the aspect ratio. */
+    ::darwinInstallResizeDelegate(this);
     /* Beta label? */
     if (vboxGlobal().isBeta())
     {
@@ -85,13 +87,17 @@ UIMachineWindowScale::UIMachineWindowScale(UIMachineLogic *pMachineLogic, ulong 
     }
 #endif /* Q_WS_MAC */
 
-
     /* Show window: */
     showSimple();
 }
 
 UIMachineWindowScale::~UIMachineWindowScale()
 {
+#ifdef Q_WS_MAC
+    /* Uninstall the resize delegate for keeping the aspect ratio. */
+    ::darwinUninstallResizeDelegate(this);
+#endif /* Q_WS_MAC */
+
     /* Save normal window settings: */
     saveWindowSettings();
 
