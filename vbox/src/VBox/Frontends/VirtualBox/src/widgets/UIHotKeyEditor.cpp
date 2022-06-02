@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 35733 2011-01-27 11:28:54Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 35734 2011-01-27 11:44:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -39,7 +39,7 @@
 #ifdef Q_WS_X11
 # include <X11/Xlib.h>
 # include <X11/Xutil.h>
-# include <X11/keysymdef.h>
+# include <X11/keysym.h>
 # ifdef KeyPress
    const int XKeyPress = KeyPress;
    const int XKeyRelease = KeyRelease;
