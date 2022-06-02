@@ -1,4 +1,4 @@
-; $Id: VMMGC.def 30326 2010-06-21 12:35:33Z vboxsync $
+; $Id: VMMGC.def 30724 2010-07-08 08:30:20Z vboxsync $
 ;; @file
 ; VMM Raw-mode Context DLL - Definition file.
 
@@ -90,6 +90,7 @@ EXPORTS
     RTTimeNanoTSLegacyAsync
     RTTimeNanoTSLFenceSync
     RTTimeNanoTSLFenceAsync
+    RTTimeNanoTS
     RTCrc32
     ASMMultU64ByU32DivByU32             ; not-os2
 
