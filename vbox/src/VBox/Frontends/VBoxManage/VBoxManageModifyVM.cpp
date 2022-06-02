@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 31977 2010-08-26 09:47:55Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 31991 2010-08-26 12:46:40Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -160,7 +160,7 @@ enum
     MODIFYVM_FAULT_TOLERANCE_ADDRESS,
     MODIFYVM_FAULT_TOLERANCE_PORT,
     MODIFYVM_FAULT_TOLERANCE_PASSWORD,
-    MODIFYVM_FAULT_TOLERANCE_SYNC_INTERVAL,
+    MODIFYVM_FAULT_TOLERANCE_SYNC_INTERVAL
 };
 
 static const RTGETOPTDEF g_aModifyVMOptions[] =
