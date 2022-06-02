@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 35911 2011-02-09 12:15:54Z vboxsync $ */
 
 /** @file
  *
@@ -793,6 +793,9 @@ void MultiResult::decCounter()
 /*static*/
 bool MultiResult::isMultiEnabled()
 {
+    if (sCounter == NIL_RTTLS)
+       return false;
+
     return ((uintptr_t)RTTlsGet(MultiResult::sCounter)) > 0;
 }
 
