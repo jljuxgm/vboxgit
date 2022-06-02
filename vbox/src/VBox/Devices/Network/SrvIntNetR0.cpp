@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 33410 2010-10-25 11:15:56Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 33443 2010-10-25 22:19:34Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -5204,7 +5204,7 @@ static int intnetR0OpenNetwork(PINTNET pIntNet, PSUPDRVSESSION pSession, const c
             else
             {
                 rc = VERR_INTNET_INCOMPATIBLE_TRUNK;
-                LogRel(("intnetR0OpenNetwork failed. rc=%d pCur->szTrunk=%s pszTrunk=%s pCur->enmTrunkType=%d enmTrunkType=%d\n",
+                LogRel(("intnetR0OpenNetwork failed. rc=%Rrc pCur->szTrunk=%s pszTrunk=%s pCur->enmTrunkType=%d enmTrunkType=%d\n",
                         rc, pCur->szTrunk, pszTrunk, pCur->enmTrunkType, enmTrunkType));
             }
 
