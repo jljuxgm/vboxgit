@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSharedFolders.cpp 31111 2010-07-26 12:23:16Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSharedFolders.cpp 31130 2010-07-27 07:38:29Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, shared folders.
  */
@@ -92,7 +92,7 @@ VBGLR3DECL(int) VbglR3SharedFolderDisconnect(uint32_t u32ClientId)
  * @param   u32ClientId     The client id returned by VbglR3InfoSvcConnect().
  * @param   pszShareName    Shared folder name to check.
  */
-VBGLR3DECL(bool) VbglR3SharedFolderExists(uint32_t u32ClientId, char *pszShareName)
+VBGLR3DECL(bool) VbglR3SharedFolderExists(uint32_t u32ClientId, const char *pszShareName)
 {
     AssertPtr(pszShareName);
 
