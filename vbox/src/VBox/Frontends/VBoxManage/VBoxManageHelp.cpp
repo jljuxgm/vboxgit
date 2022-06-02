@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 32947 2010-10-06 14:28:27Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 33020 2010-10-09 07:11:35Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -192,6 +192,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--accelerate2dvideo on|off]\n"
 #endif
                      "                            [--firmware bios|efi|efi32|efi64]\n"
+                     "                            [--chipset ich9|piix3]\n"
                      "                            [--bioslogofadein on|off]\n"
                      "                            [--bioslogofadeout on|off]\n"
                      "                            [--bioslogodisplaytime <msec>]\n"
