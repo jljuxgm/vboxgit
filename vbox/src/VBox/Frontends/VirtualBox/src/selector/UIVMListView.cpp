@@ -1,4 +1,4 @@
-/* $Id: UIVMListView.cpp 34208 2010-11-19 15:43:55Z vboxsync $ */
+/* $Id: UIVMListView.cpp 34213 2010-11-19 17:17:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -605,10 +605,6 @@ QPixmap UIVMListView::dragPixmap(const QModelIndex &index) const
     QPainter p1(&i1);
     p1.drawImage(image.rect(), image);
     p1.end();
-#ifdef DEBUG
-    image.save("test.png", "PNG");
-    i1.save("test_pixmap.png", "PNG");
-#endif
     return i1;
 }
 
