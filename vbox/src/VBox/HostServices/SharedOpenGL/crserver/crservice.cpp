@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 35771 2011-01-28 15:24:18Z vboxsync $ */
+/* $Id: crservice.cpp 35969 2011-02-15 09:46:49Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -1240,6 +1240,8 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                     }
 
                     g_pConsole = pConsole;
+
+                    /*rc = crVBoxServerSetOffscreenRendering(GL_TRUE);*/
                     rc = VINF_SUCCESS;
                 }
             }
