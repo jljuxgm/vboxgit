@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 34273 2010-11-23 10:14:46Z vboxsync $ */
+/* $Id: VBoxService.cpp 34868 2010-12-09 10:34:55Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -448,9 +448,9 @@ void VBoxServiceMainWait(void)
     /* Report the host that we're up and running! */
     rc = VbglR3ReportAdditionsStatus(VBoxGuestStatusFacility_VBoxService,
                                      VBoxGuestStatusCurrent_Active,
-                                     0); /* Flags; not used. */
+                                     0 /* Flags */);
     if (RT_FAILURE(rc))
-        VBoxServiceError("Failed to report Guest Additions status to the host! rc=%Rrc\n", rc);
+        VBoxServiceError("Could not report host status \"Init\", rc=%Rrc\n", rc);
 
 #ifdef RT_OS_WINDOWS
     /*
