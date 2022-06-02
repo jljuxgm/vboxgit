@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 32036 2010-08-27 10:14:39Z vboxsync $ */
+/* $Id: PGMAllBth.h 32042 2010-08-27 11:46:29Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -557,6 +557,8 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
         rc = PGM_BTH_NAME(SyncPage)(pVCpu, PdeSrcDummy, pvFault, 1, uErr);
 #   endif
         AssertRC(rc);
+        PGM_INVL_PG(pVCpu, pvFault);
+        return rc; /* Restart with the corrected entry. */
     }
 #  endif /* PGM_WITH_MMIO_OPTIMIZATIONS */
 
