@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 35083 2010-12-14 13:57:37Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 35094 2010-12-14 15:20:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -147,7 +147,7 @@ UIGlobalSettingsExtension::UIGlobalSettingsExtension()
     if (fUninstallIt)
     {
         QString strPackVersionCur = QString("%1r%2").arg(extPackCur.GetVersion()).arg(extPackCur.GetRevision());
-        if (!vboxProblem().confirmReplacePackage(strPackName, strPackVersion, strPackVersionCur, strPackDescription))
+        if (!vboxProblem().confirmReplacePackage(strPackName, strPackVersion, strPackVersionCur, strPackDescription, pParent))
             return;
     }
     /*
@@ -155,7 +155,7 @@ UIGlobalSettingsExtension::UIGlobalSettingsExtension()
      */
     else
     {
-        if (!vboxProblem().confirmInstallingPackage(strPackName, strPackVersion, strPackDescription))
+        if (!vboxProblem().confirmInstallingPackage(strPackName, strPackVersion, strPackDescription, pParent))
             return;
     }
 
