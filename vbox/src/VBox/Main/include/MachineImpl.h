@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 31574 2010-08-11 14:54:09Z vboxsync $ */
+/* $Id: MachineImpl.h 31615 2010-08-12 18:12:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -451,7 +451,7 @@ public:
     STDMETHOD(SetBootOrder)(ULONG aPosition, DeviceType_T aDevice);
     STDMETHOD(GetBootOrder)(ULONG aPosition, DeviceType_T *aDevice);
     STDMETHOD(AttachDevice)(IN_BSTR aControllerName, LONG aControllerPort,
-                            LONG aDevice, DeviceType_T aType, IN_BSTR aId);
+                            LONG aDevice, DeviceType_T aType, IMedium *aMedium);
     STDMETHOD(DetachDevice)(IN_BSTR aControllerName, LONG aControllerPort, LONG aDevice);
     STDMETHOD(PassthroughDevice)(IN_BSTR aControllerName, LONG aControllerPort, LONG aDevice, BOOL aPassthrough);
     STDMETHOD(MountMedium)(IN_BSTR aControllerName, LONG aControllerPort,
@@ -1017,7 +1017,7 @@ private:
                               const MediaList &aChildrenToReparent,
                               MediumLockList *aMediumLockList,
                               ComObjPtr<Progress> &aProgress,
-                              bool *pfNeedsSaveSettings);
+                              bool *pfNeedsMachineSaveSettings);
 
     HRESULT lockMedia();
     void unlockMedia();

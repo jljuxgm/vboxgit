@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 31562 2010-08-11 10:02:40Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 31615 2010-08-12 18:12:39Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1503,7 +1503,9 @@ HRESULT Appliance::writeFS(const LocationInfo &locInfo, const OVFFormat enFormat
 
             // create a new hard disk interface for the destination disk image
             Log(("Creating target disk \"%s\"\n", strTargetFilePath.c_str()));
-            rc = mVirtualBox->CreateHardDisk(bstrSrcFormat, Bstr(strTargetFilePath), pTargetDisk.asOutParam());
+            rc = mVirtualBox->CreateHardDisk(bstrSrcFormat,
+                                             Bstr(strTargetFilePath),
+                                             pTargetDisk.asOutParam());
             if (FAILED(rc)) throw rc;
 
             // the target disk is now registered and needs to be removed again,

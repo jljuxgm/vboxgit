@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 31575 2010-08-11 15:09:20Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 31615 2010-08-12 18:12:39Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -660,9 +660,7 @@ int handleModifyVM(HandlerArg *a)
                     }
                     if (hardDisk)
                     {
-                        Bstr uuid;
-                        hardDisk->COMGETTER(Id)(uuid.asOutParam());
-                        CHECK_ERROR(machine, AttachDevice(bstrController, u1, u2, DeviceType_HardDisk, uuid));
+                        CHECK_ERROR(machine, AttachDevice(bstrController, u1, u2, DeviceType_HardDisk, hardDisk));
                     }
                     else
                         rc = E_FAIL;
@@ -756,14 +754,12 @@ int handleModifyVM(HandlerArg *a)
                     }
                     if (hardDisk)
                     {
-                        Bstr uuid;
-                        hardDisk->COMGETTER(Id)(uuid.asOutParam());
-                        rc = machine->AttachDevice(Bstr("LsiLogic"), GetOptState.uIndex, 0, DeviceType_HardDisk, uuid);
+                        rc = machine->AttachDevice(Bstr("LsiLogic"), GetOptState.uIndex, 0, DeviceType_HardDisk, hardDisk);
                         if (FAILED(rc))
                             CHECK_ERROR(machine,
                                          AttachDevice(Bstr("BusLogic"),
                                                       GetOptState.uIndex, 0,
-                                                      DeviceType_HardDisk, uuid));
+                                                      DeviceType_HardDisk, hardDisk));
                     }
                     else
                         rc = E_FAIL;
