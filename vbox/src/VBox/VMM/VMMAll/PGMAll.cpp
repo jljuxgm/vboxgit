@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 32000 2010-08-26 14:08:55Z vboxsync $ */
+/* $Id: PGMAll.cpp 32004 2010-08-26 16:07:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -922,7 +922,7 @@ VMMDECL(int) PGMShwMakePageNotPresent(PVMCPU pVCpu, RTGCPTR GCPtr, uint32_t fOpF
  * @returns Pointer to the shadow PD.
  * @param   pVCpu       The VMCPU handle.
  * @param   GCPtr       The address.
- * @param   uGstPdpe    Guest PDPT entry.
+ * @param   uGstPdpe    Guest PDPT entry. Valid.
  * @param   ppPD        Receives address of page directory
  */
 int pgmShwSyncPaePDPtr(PVMCPU pVCpu, RTGCPTR GCPtr, X86PGPAEUINT uGstPdpe, PX86PDPAE *ppPD)
@@ -983,8 +983,7 @@ int pgmShwSyncPaePDPtr(PVMCPU pVCpu, RTGCPTR GCPtr, X86PGPAEUINT uGstPdpe, PX86P
         AssertRCReturn(rc, rc);
 
         /* The PD was cached or created; hook it up now. */
-        pPdpe->u |= pShwPage->Core.Key
-                 | (uGstPdpe & ~(X86_PDPE_PG_MASK_FULL | X86_PDPE_AVL_MASK | X86_PDPE_PCD | X86_PDPE_PWT));
+        pPdpe->u |= pShwPage->Core.Key | (uGstPdpe & (X86_PDPE_P | X86_PDPE_A));
 
 # if defined(IN_RC)
         /*
