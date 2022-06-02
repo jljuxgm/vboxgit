@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 31302 2010-08-02 13:35:40Z vboxsync $ */
+/* $Id: path-posix.cpp 31309 2010-08-02 14:58:35Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX.
  */
@@ -643,6 +643,38 @@ RTR3DECL(int) RTPathSetOwnerEx(const char *pszPath, uint32_t uid, uint32_t gid, 
 
     LogFlow(("RTPathSetOwnerEx(%p:{%s}, uid, gid): return %Rrc\n",
              pszPath, pszPath, uid, gid, rc));
+    return rc;
+}
+
+
+RTR3DECL(int) RTPathSetMode(const char *pszPath, RTFMODE fMode)
+{
+    AssertPtrReturn(pszPath, VERR_INVALID_POINTER);
+    AssertReturn(*pszPath, VERR_INVALID_PARAMETER);
+
+    int rc;
+    fMode = rtFsModeNormalize(fMode, pszPath, 0);
+    if (rtFsModeIsValidPermissions(fMode))
+    {
+        char const *pszNativePath;
+        rc = rtPathToNative(&pszNativePath, pszPath, NULL);
+        if (RT_SUCCESS(rc))
+        {
+            char szRealPath[RTPATH_MAX];
+            rc = RTPathReal(pszPath, szRealPath, sizeof(szRealPath));
+            if (RT_SUCCESS(rc))
+            {
+                if (chmod(szRealPath, fMode & RTFS_UNIX_MASK) < 0)
+                    rc = RTErrConvertFromErrno(errno);
+            }
+            rtPathFreeNative(pszNativePath, pszPath);
+        }
+    }
+    else
+    {
+        AssertMsgFailed(("Invalid file mode! %RTfmode\n", fMode));
+        rc = VERR_INVALID_FMODE;
+    }
     return rc;
 }
 
