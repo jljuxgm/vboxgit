@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 32005 2010-08-26 16:12:59Z vboxsync $ */
+/* $Id: PGMShw.h 32009 2010-08-26 16:41:19Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -96,14 +96,14 @@
 # if PGM_SHW_TYPE == PGM_TYPE_AMD64
 #  define SHW_PDPT_SHIFT        X86_PDPT_SHIFT
 #  define SHW_PDPT_MASK         X86_PDPT_MASK_AMD64
-#  define SHW_PDPE_PG_MASK      X86_PDPE_PG_MASK_FULL
+#  define SHW_PDPE_PG_MASK      X86_PDPE_PG_MASK
 #  define SHW_TOTAL_PD_ENTRIES  (X86_PG_AMD64_ENTRIES*X86_PG_AMD64_PDPE_ENTRIES)
 #  define SHW_POOL_ROOT_IDX     PGMPOOL_IDX_AMD64_CR3
 
 # else /* 32 bits PAE mode */
 #  define SHW_PDPT_SHIFT        X86_PDPT_SHIFT
 #  define SHW_PDPT_MASK         X86_PDPT_MASK_PAE
-#  define SHW_PDPE_PG_MASK      X86_PDPE_PG_MASK_FULL
+#  define SHW_PDPE_PG_MASK      X86_PDPE_PG_MASK
 #  define SHW_TOTAL_PD_ENTRIES  (X86_PG_PAE_ENTRIES*X86_PG_PAE_PDPE_ENTRIES)
 #  define SHW_POOL_ROOT_IDX     PGMPOOL_IDX_PDPT
 # endif

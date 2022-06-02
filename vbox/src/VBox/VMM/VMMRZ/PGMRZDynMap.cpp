@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 32000 2010-08-26 14:08:55Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 32009 2010-08-26 16:41:19Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -731,7 +731,7 @@ void pgmR0DynMapPagingArrayInit(PPGMRZDYNMAP pThis, PPGMR0DYNMAPPGLVL pPgLvl)
             pPgLvl->a[0].fAndMask  = X86_PDPE_P;
             pPgLvl->a[0].fResMask  = X86_PDPE_P;
 
-            pPgLvl->a[1].fPhysMask = X86_PDPE_PG_MASK_FULL;
+            pPgLvl->a[1].fPhysMask = X86_PDPE_PG_MASK;
             pPgLvl->a[1].fPtrMask  = X86_PD_PAE_MASK;
             pPgLvl->a[1].fPtrShift = X86_PD_PAE_SHIFT;
             pPgLvl->a[1].fAndMask  = X86_PDE_P | X86_PDE_RW | (cr4 & X86_CR4_PSE ? X86_PDE_PS : 0);
@@ -761,7 +761,7 @@ void pgmR0DynMapPagingArrayInit(PPGMRZDYNMAP pThis, PPGMR0DYNMAPPGLVL pPgLvl)
             pPgLvl->a[1].fAndMask  = X86_PDPE_P | X86_PDPE_RW /** @todo check for X86_PDPT_PS support. */;
             pPgLvl->a[1].fResMask  = X86_PDPE_P | X86_PDPE_RW;
 
-            pPgLvl->a[2].fPhysMask = X86_PDPE_PG_MASK_FULL;
+            pPgLvl->a[2].fPhysMask = X86_PDPE_PG_MASK;
             pPgLvl->a[2].fPtrShift = X86_PD_PAE_SHIFT;
             pPgLvl->a[2].fPtrMask  = X86_PD_PAE_MASK;
             pPgLvl->a[2].fAndMask  = X86_PDE_P | X86_PDE_RW | (cr4 & X86_CR4_PSE ? X86_PDE_PS : 0);

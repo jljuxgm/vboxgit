@@ -1,4 +1,4 @@
-/* $Id: PGMGstDefs.h 31996 2010-08-26 13:32:30Z vboxsync $ */
+/* $Id: PGMGstDefs.h 32009 2010-08-26 16:41:19Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -193,7 +193,7 @@
 #  define PCGSTPTWALK                           PCPGMPTWALKGSTPAE
 #  define GST_TOTAL_PD_ENTRIES                  (X86_PG_PAE_ENTRIES * X86_PG_PAE_PDPE_ENTRIES)
 #  define GST_PDPE_ENTRIES                      X86_PG_PAE_PDPE_ENTRIES
-#  define GST_PDPE_PG_MASK                      X86_PDPE_PG_MASK_FULL
+#  define GST_PDPE_PG_MASK                      X86_PDPE_PG_MASK
 #  define GST_PDPT_SHIFT                        X86_PDPT_SHIFT
 #  define GST_PDPT_MASK                         X86_PDPT_MASK_PAE
 #  define GST_PTE_PG_MASK                       X86_PTE_PAE_PG_MASK_FULL
@@ -211,7 +211,7 @@
 #  define GST_TOTAL_PD_ENTRIES                  (X86_PG_AMD64_ENTRIES * X86_PG_AMD64_PDPE_ENTRIES)
 #  define GST_PDPE_ENTRIES                      X86_PG_AMD64_PDPE_ENTRIES
 #  define GST_PDPT_SHIFT                        X86_PDPT_SHIFT
-#  define GST_PDPE_PG_MASK                      X86_PDPE_PG_MASK_FULL
+#  define GST_PDPE_PG_MASK                      X86_PDPE_PG_MASK
 #  define GST_PDPT_MASK                         X86_PDPT_MASK_AMD64
 #  define GST_PTE_PG_MASK                       X86_PTE_PAE_PG_MASK_FULL
 #  define GST_CR3_PAGE_MASK                     X86_CR3_AMD64_PAGE_MASK
