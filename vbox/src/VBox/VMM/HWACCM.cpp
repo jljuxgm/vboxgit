@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 32361 2010-09-09 15:46:29Z vboxsync $ */
+/* $Id: HWACCM.cpp 32378 2010-09-10 09:39:52Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1045,7 +1045,7 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
             }
 
             LogRel(("HWACCM: MSR_IA32_VMX_MISC             = %RX64\n", pVM->hwaccm.s.vmx.msr.vmx_misc));
-            if (   pVM->hwaccm.s.vmx.fUsePreemptTimer
+            if (   !pVM->hwaccm.s.vmx.fUsePreemptTimer
                 || MSR_IA32_VMX_MISC_PREEMPT_TSC_BIT(pVM->hwaccm.s.vmx.msr.vmx_misc) == pVM->hwaccm.s.vmx.cPreemptTimerShift)
                 LogRel(("HWACCM:    MSR_IA32_VMX_MISC_PREEMPT_TSC_BIT %x\n", MSR_IA32_VMX_MISC_PREEMPT_TSC_BIT(pVM->hwaccm.s.vmx.msr.vmx_misc)));
             else
