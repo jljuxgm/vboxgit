@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 32983 2010-10-07 15:14:54Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 33015 2010-10-08 17:45:16Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -224,7 +224,32 @@ static int drvscsiTransferCompleteNotify(PPDMIBLOCKASYNCPORT pInterface, void *p
     if (RT_SUCCESS(rc))
         VSCSIIoReqCompleted(hVScsiIoReq, rc, false /* fRedoPossible */);
     else
+    {
+        uint64_t  uOffset    = 0;
+        size_t    cbTransfer = 0;
+        size_t    cbSeg      = 0;
+        PCRTSGSEG paSeg      = NULL;
+        unsigned  cSeg       = 0;
+
+        VSCSIIoReqParamsGet(hVScsiIoReq, &uOffset, &cbTransfer,
+                            &cSeg, &cbSeg, &paSeg);
+
+        pThis->cErrors++;
+        if (   pThis->cErrors < MAX_LOG_REL_ERRORS
+            && enmTxDir == VSCSIIOREQTXDIR_FLUSH)
+            LogRel(("SCSI#%u: Flush returned rc=%Rrc\n",
+                    pThis->pDrvIns->iInstance, rc));
+        else
+            LogRel(("SCSI#%u: %s at offset %llu (%u bytes left) returned rc=%Rrc\n",
+                    pThis->pDrvIns->iInstance,
+                    enmTxDir == VSCSIIOREQTXDIR_READ
+                    ? "Read"
+                    : "Write",
+                    uOffset,
+                    cbTransfer, rc));
+
         VSCSIIoReqCompleted(hVScsiIoReq, rc, drvscsiIsRedoPossible(rc));
+    }
 
     return VINF_SUCCESS;
 }
