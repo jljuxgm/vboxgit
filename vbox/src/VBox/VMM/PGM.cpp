@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 30813 2010-07-14 09:53:09Z vboxsync $ */
+/* $Id: PGM.cpp 30814 2010-07-14 09:56:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1216,7 +1216,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
         pPGM->pGstPaePdptR3    = NULL;
         pPGM->pGstAmd64Pml4R3  = NULL;
 #ifndef VBOX_WITH_2X_4GB_ADDR_SPACE
-        pPGM->pGst32BitPdR0    = NIL_RTR0PTR:
+        pPGM->pGst32BitPdR0    = NIL_RTR0PTR;
         pPGM->pGstPaePdptR0    = NIL_RTR0PTR;
         pPGM->pGstAmd64Pml4R0  = NIL_RTR0PTR;
 #endif
