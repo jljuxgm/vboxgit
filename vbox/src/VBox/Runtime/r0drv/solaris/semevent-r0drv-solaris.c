@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 30933 2010-07-20 16:16:06Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 30935 2010-07-20 16:56:09Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, Ring-0 Driver, Solaris.
  */
@@ -118,7 +118,7 @@ RTDECL(int)  RTSemEventDestroy(RTSEMEVENT hEventSem)
 
     ASMAtomicDecU32(&pThis->cRefs);
 
-    pThis->u32Magic = RTSEMEVENT_MAGIC_DEAD; /* make the handle invalid */
+    pThis->u32Magic = ~RTSEMEVENT_MAGIC; /* make the handle invalid */
     if (pThis->cWaiters > 0)
     {
         /*
