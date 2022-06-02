@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33567 2010-10-28 15:37:21Z vboxsync $
+# $Id: Makefile.kmk 33581 2010-10-28 17:42:17Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -114,7 +114,8 @@ else  # !VBOX_ONLY_ADDITIONS && !VBOX_ONLY_DOCS
 	HostDrivers \
 	VMM \
 	Devices \
-	Disassembler
+	Disassembler \
+	Storage
 
  ifdef VBOX_WITH_CROGL
   SUBDIRS += GuestHost
