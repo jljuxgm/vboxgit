@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 34490 2010-11-29 21:55:17Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 34523 2010-11-30 15:17:06Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -4796,11 +4796,13 @@ void VBoxQGLOverlay::vboxDoVHWACmdExec(void *cmd)
     }
 }
 
+#if 0
 static DECLCALLBACK(void) vboxQGLOverlaySaveExec(PSSMHANDLE pSSM, void *pvUser)
 {
     VBoxQGLOverlay * fb = (VBoxQGLOverlay*)pvUser;
     fb->vhwaSaveExec(pSSM);
 }
+#endif
 
 static DECLCALLBACK(int) vboxQGLOverlayLoadExec(PSSMHANDLE pSSM, void *pvUser, uint32_t u32Version, uint32_t uPass)
 {
@@ -5274,7 +5276,8 @@ int VBoxVHWACommandElementProcessor::loadExec (struct SSMHANDLE * pSSM, uint32_t
 
                             if (RT_SUCCESS(rc))
                             {
-                                postCmd(VBOXVHWA_PIPECMD_PAINT, &QRect(x,y,w,h), 0);
+                                QRect r = QRect(x, y, w, h);
+                                postCmd(VBOXVHWA_PIPECMD_PAINT, &r, 0);
                             }
                             break;
                         }
