@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 34079 2010-11-15 17:17:53Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 34090 2010-11-15 21:55:36Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -773,7 +773,7 @@ DECLCALLBACK(int) hgsmiHostCmdRequest (HVBOXVIDEOHGSMI hHGSMI, uint8_t u8Channel
         {
             VBVAHOSTCMD *pCmd;
             do
-                pCmd = pDispContext->pCmd;
+                pCmd = ASMAtomicReadPtrT(&pDispContext->pCmd, VBVAHOSTCMD *);
             while (!ASMAtomicCmpXchgPtr(&pDispContext->pCmd, NULL, pCmd));
             *ppCmd = vboxVBVAReverseList(pCmd);
 
@@ -881,7 +881,7 @@ static DECLCALLBACK(int) vboxVBVAChannelGenericHandler(void *pvHandler, uint16_t
                     VBVAHOSTCMD *pCmd;
                     do
                     {
-                        pCmd = pHandler->pCmd;
+                        pCmd = ASMAtomicReadPtrT(&pHandler->pCmd, VBVAHOSTCMD *);
                         pFirst->u.pNext = pCmd;
                     }
                     while (!ASMAtomicCmpXchgPtr(&pHandler->pCmd, pFirst, pCmd));
