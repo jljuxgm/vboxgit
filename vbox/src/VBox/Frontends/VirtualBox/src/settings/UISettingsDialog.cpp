@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 35131 2010-12-15 13:19:00Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 35132 2010-12-15 13:23:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -524,7 +524,10 @@ void UISettingsDialog::showEvent(QShowEvent *pEvent)
 
 void UISettingsDialog::closeEvent(QCloseEvent *pEvent)
 {
-    m_fProcessed ? pEvent->accept() : pEvent->ignore();
+    if (m_fProcessed)
+        QIMainDialog::closeEvent(pEvent);
+    else
+        pEvent->ignore();
 }
 
 void UISettingsDialog::assignValidator(UISettingsPage *pPage)
