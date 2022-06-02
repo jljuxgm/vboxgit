@@ -1,4 +1,4 @@
-/* $Id: VBoxDefs.cpp 35634 2011-01-19 16:13:31Z vboxsync $ */
+/* $Id: VBoxDefs.cpp 35897 2011-02-08 13:25:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -78,6 +78,9 @@ const char* VBoxDefs::GUI_Export_Username = "GUI/Export/Username";
 const char* VBoxDefs::GUI_Export_Hostname = "GUI/Export/Hostname";
 const char* VBoxDefs::GUI_Export_Bucket = "GUI/Export/Bucket";
 const char* VBoxDefs::GUI_PreventBetaWarning = "GUI/PreventBetaWarning";
+const char* VBoxDefs::GUI_RecentFolderHD = "GUI/RecentFolderHD";
+const char* VBoxDefs::GUI_RecentFolderCD = "GUI/RecentFolderCD";
+const char* VBoxDefs::GUI_RecentFolderFD = "GUI/RecentFolderFD";
 const char* VBoxDefs::GUI_RecentListHD = "GUI/RecentListHD";
 const char* VBoxDefs::GUI_RecentListCD = "GUI/RecentListCD";
 const char* VBoxDefs::GUI_RecentListFD = "GUI/RecentListFD";
