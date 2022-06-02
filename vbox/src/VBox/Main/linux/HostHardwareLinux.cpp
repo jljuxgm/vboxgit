@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 32142 2010-08-31 13:00:46Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 32143 2010-08-31 13:02:06Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1541,8 +1541,7 @@ static int readFilePaths(const char *pcszPath, filePaths *pvpchDevs,
  *                       names
  * @param   pHandler     Handler object which will be invoked on each file
  */
-static int walkFiles(const char *pcszPath, filePaths *pvpchDevs,
-                     pathHandler *pHandler)
+static int walkFiles(filePaths *pvpchDevs, pathHandler *pHandler)
 {
     filePaths_op_table *pOps = &filePaths_ops;
     filePaths_iter_op_table *pItOps = &filePaths_iter_ops;
@@ -1588,7 +1587,7 @@ int walkDirectory(const char *pcszPath, pathHandler *pHandler, int withRealPath)
 
     rc = readFilePaths(pcszPath, &vpchDevs, withRealPath);
     if (!rc)
-        rc = walkFiles(pcszPath, &vpchDevs, pHandler);
+        rc = walkFiles(&vpchDevs, pHandler);
     filePaths_cleanup(&vpchDevs);
     return RTErrConvertFromErrno(rc);
 }
