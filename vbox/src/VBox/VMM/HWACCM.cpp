@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 30453 2010-06-27 19:43:20Z vboxsync $ */
+/* $Id: HWACCM.cpp 30713 2010-07-07 16:12:19Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -217,7 +217,7 @@ static const char * const g_apszAmdVExitReasons[MAX_EXITREASON_STAT] =
     EXIT_REASON(SVM_EXIT_EXCEPTION_NMI              , 97, "Physical non-maskable interrupt."),
     EXIT_REASON(SVM_EXIT_EXCEPTION_SMI              , 98, "System management interrupt."),
     EXIT_REASON(SVM_EXIT_EXCEPTION_INIT             , 99, "Physical INIT signal."),
-    EXIT_REASON(SVM_EXIT_EXCEPTION_VINTR            ,100, "Visual interrupt."),
+    EXIT_REASON(SVM_EXIT_EXCEPTION_VINTR            ,100, "Virtual interrupt."),
     EXIT_REASON(SVM_EXIT_EXCEPTION_CR0_SEL_WRITE    ,101, "Write to CR0 that changed any bits other than CR0.TS or CR0.MP."),
     EXIT_REASON(SVM_EXIT_EXCEPTION_IDTR_READ        ,102, "Read IDTR"),
     EXIT_REASON(SVM_EXIT_EXCEPTION_GDTR_READ        ,103, "Read GDTR"),
