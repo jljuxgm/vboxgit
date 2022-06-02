@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 31237 2010-07-30 11:38:23Z vboxsync $ */
+/* $Id: DevAPIC.cpp 31592 2010-08-12 00:51:40Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -558,7 +558,7 @@ static int apic_bus_deliver(APICDeviceInfo* dev,
 #else
             /* We shall send init IPI only in R3, R0 calls should be
                rescheduled to R3 */
-            return  VINF_IOM_HC_MMIO_READ_WRITE;
+            return VINF_IOM_HC_MMIO_READ_WRITE;
 #endif /* IN_RING3 */
 
 #else
