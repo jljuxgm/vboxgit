@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 34543 2010-12-01 00:32:54Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 34557 2010-12-01 10:55:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -42,8 +42,8 @@ public:
     {
         /* Icon: */
         setIcon(0, UIIconPool::iconSet(m_data.m_fIsUsable ?
-                                       ":/shared_folder_16px.png" :
-                                       ":/shared_folder_disabled_16px.png"));
+                                       ":/status_check_16px.png" :
+                                       ":/status_error_16px.png"));
 
         /* Name: */
         setText(1, m_data.m_strName);
