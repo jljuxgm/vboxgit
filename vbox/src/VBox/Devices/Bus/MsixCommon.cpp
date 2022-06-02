@@ -1,4 +1,4 @@
-/* $Id: MsixCommon.cpp 33314 2010-10-21 15:51:17Z vboxsync $ */
+/* $Id: MsixCommon.cpp 33317 2010-10-21 16:01:42Z vboxsync $ */
 /** @file
  * MSI-X support routines
  */
@@ -35,7 +35,7 @@ typedef struct {
     uint32_t  u32VectorControl;
 } MsixTableRecord;
 AssertCompileSize(MsixTableRecord, VBOX_MSIX_ENTRY_SIZE);
-#pragma pack(0)
+#pragma pack()
 
 DECLINLINE(uint16_t)  msixGetMessageControl(PPCIDEVICE pDev)
 {
