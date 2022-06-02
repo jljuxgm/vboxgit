@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 32905 2010-10-05 11:43:35Z vboxsync $ */
+/* $Id: thread-win.cpp 32907 2010-10-05 11:50:19Z vboxsync $ */
 /** @file
  * IPRT - Threads, Win32.
  */
@@ -227,7 +227,7 @@ RTR3DECL(int) RTThreadGetExecutionTimeMilli(RTTHREAD hThread, uint64_t *pKernelT
 {
     uint64_t u64CreationTime, u64ExitTime, u64KernelTime, u64UserTime;
 
-    if (GetThreadTimes(hThread, (LPFILETIME)&u64CreationTime, (LPFILETIME)&u64ExitTime, (LPFILETIME)&u64KernelTime, (LPFILETIME)&u64UserTime))
+    if (GetThreadTimes((HANDLE)RTThreadGetNative(hThread), (LPFILETIME)&u64CreationTime, (LPFILETIME)&u64ExitTime, (LPFILETIME)&u64KernelTime, (LPFILETIME)&u64UserTime))
     {
         *pKernelTime = u64KernelTime / 10000;    /* GetThreadTimes returns time in 100 ns units */
         *pUserTime   = u64UserTime / 10000;    /* GetThreadTimes returns time in 100 ns units */
