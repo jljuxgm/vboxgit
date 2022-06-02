@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 35797 2011-01-31 17:30:03Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 35799 2011-01-31 18:12:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -431,7 +431,6 @@ bool UIHotKeyEditor::x11Event(XEvent *pEvent)
 
             /* Process the key event */
             return processKeyEvent(iKeySym, pEvent->type == XKeyPress);
-            /* Check if symbol is valid else pass it to Qt: */
         }
     }
 
