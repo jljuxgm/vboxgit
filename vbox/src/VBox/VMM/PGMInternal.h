@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 31066 2010-07-23 14:48:24Z vboxsync $ */
+/* $Id: PGMInternal.h 31080 2010-07-24 17:25:32Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3118,7 +3118,7 @@ typedef struct PGMCPU
     RTGCPHYS                        GCPhysA20Mask;
     /** A20 gate state - boolean! */
     bool                            fA20Enabled;
-    /** Mirror of the EFER.NXE bit. */
+    /** Mirror of the EFER.NXE bit.  Managed by PGMNotifyNxeChanged. */
     bool                            fNoExecuteEnabled;
     /** Unused bits. */
     bool                            afUnused[2];

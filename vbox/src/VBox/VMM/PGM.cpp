@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 31066 2010-07-23 14:48:24Z vboxsync $ */
+/* $Id: PGM.cpp 31080 2010-07-24 17:25:32Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2344,33 +2344,28 @@ VMMR3DECL(void) PGMR3Reset(PVM pVM)
      */
     pgmR3PoolReset(pVM);
 
+    /*
+     * Re-init various other members and clear the FFs that PGM owns.
+     */
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
-        PVMCPU  pVCpu = &pVM->aCpus[i];
+        PVMCPU pVCpu = &pVM->aCpus[i];
 
-        /*
-         * Re-init other members.
-         */
         pVCpu->pgm.s.fA20Enabled = true;
+        pVCpu->pgm.s.fGst32BitPageSizeExtension = false;
+        PGMNotifyNxeChanged(pVCpu, false);
 
-        /*
-         * Clear the FFs PGM owns.
-         */
         VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_PGM_SYNC_CR3);
         VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL);
     }
 
     /*
-     * Reset (zero) RAM pages.
+     * Reset (zero) RAM and shadow ROM pages.
      */
     rc = pgmR3PhysRamReset(pVM);
     if (RT_SUCCESS(rc))
-    {
-        /*
-         * Reset (zero) shadow ROM pages.
-         */
         rc = pgmR3PhysRomReset(pVM);
-    }
+
 
     pgmUnlock(pVM);
     AssertReleaseRC(rc);
