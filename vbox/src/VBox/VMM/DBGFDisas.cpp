@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 30493 2010-06-29 11:59:47Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 31460 2010-08-09 07:59:43Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -362,7 +362,8 @@ dbgfR3DisasInstrExOnVCpu(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PRTGCPTR pGCPtr, uint
     bool            fRealModeAddress = false;
 
     if (    pHiddenSel
-        &&  CPUMAreHiddenSelRegsValid(pVCpu))
+        &&  (   (fFlags & DBGF_DISAS_FLAGS_HID_SEL_REGS_VALID)
+             || CPUMAreHiddenSelRegsValid(pVCpu)))
     {
         SelInfo.Sel                     = Sel;
         SelInfo.SelGate                 = 0;
@@ -402,7 +403,8 @@ dbgfR3DisasInstrExOnVCpu(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PRTGCPTR pGCPtr, uint
         SelInfo.u.Raw.Gen.u16LimitLow   = 0xffff;
         SelInfo.u.Raw.Gen.u4LimitHigh   = 0xf;
 
-        if (CPUMAreHiddenSelRegsValid(pVCpu))
+        if (   (fFlags & DBGF_DISAS_FLAGS_HID_SEL_REGS_VALID)
+            || CPUMAreHiddenSelRegsValid(pVCpu))
         {   /* Assume the current CS defines the execution mode. */
             pCtxCore   = CPUMGetGuestCtxCore(pVCpu);
             pHiddenSel = (CPUMSELREGHID *)&pCtxCore->csHid;
