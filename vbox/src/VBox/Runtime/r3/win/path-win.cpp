@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 34002 2010-11-11 17:16:37Z vboxsync $ */
+/* $Id: path-win.cpp 34003 2010-11-11 17:21:56Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -316,15 +316,15 @@ RTR3DECL(int) RTPathQueryInfoEx(const char *pszPath, PRTFSOBJINFO pObjInfo, RTFS
             break;
 
         case RTFSOBJATTRADD_UNIX_OWNER:
-            pObjInfo->Info.Attr.enmAdditional     = RTFSOBJATTRADD_UNIX_OWNER;
-            pObjInfo->Info.Attr.u.UnixOwner.uid   = ~0U;
-            pObjInfo->Info.Attr.u.UnixOwner.szName[0] = '\0'; /** @todo return something sensible here. */
+            pObjInfo->Attr.enmAdditional          = RTFSOBJATTRADD_UNIX_OWNER;
+            pObjInfo->Attr.u.UnixOwner.uid        = ~0U;
+            pObjInfo->Attr.u.UnixOwner.szName[0]  = '\0'; /** @todo return something sensible here. */
             break;
 
         case RTFSOBJATTRADD_UNIX_GROUP:
-            pObjInfo->Info.Attr.enmAdditional     = RTFSOBJATTRADD_UNIX_GROUP;
-            pObjInfo->Info.Attr.u.UnixGroup.gid   = ~0U;
-            pObjInfo->Info.Attr.u.UnixGroup.szName[0] = '\0';
+            pObjInfo->Attr.enmAdditional          = RTFSOBJATTRADD_UNIX_GROUP;
+            pObjInfo->Attr.u.UnixGroup.gid        = ~0U;
+            pObjInfo->Attr.u.UnixGroup.szName[0]  = '\0';
             break;
 
         case RTFSOBJATTRADD_EASIZE:
