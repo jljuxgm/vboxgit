@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplIO.cpp 33651 2010-11-01 13:53:01Z vboxsync $ */
+/* $Id: ApplianceImplIO.cpp 33652 2010-11-01 13:55:01Z vboxsync $ */
 /** @file
  *
  * IO helper for IAppliance COM class implementations.
@@ -76,7 +76,7 @@ typedef struct RTSHA1STORAGEINTERNAL
     RTSEMEVENT newStatusEvent;
     /** Event for signaling a finished task of the worker thread. */
     RTSEMEVENT workFinishedEvent;
-    /** rtSha1 calculation context. */
+    /** SHA1 calculation context. */
     RTSHA1CONTEXT ctx;
     /** Write mode only: Memory buffer for writing zeros. */
     void *pvZeroBuf;
