@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31481 2010-08-09 12:33:59Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31482 2010-08-09 12:55:33Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -480,12 +480,13 @@ HRESULT Machine::init(VirtualBox *aParent,
     AutoInitSpan autoInitSpan(this);
     AssertReturn(autoInitSpan.isOk(), E_FAIL);
 
-    Utf8Str strConfigFile(aParent->getDefaultMachineFolder());
-    strConfigFile.append(Utf8StrFmt("%c%s%c%s.xml",
-                                    RTPATH_DELIMITER,
-                                    strName.c_str(),
-                                    RTPATH_DELIMITER,
-                                    strName.c_str()));
+    Utf8Str strConfigFile;
+    aParent->getDefaultMachineFolder(strConfigFile);
+    strConfigFile.append(RTPATH_DELIMITER);
+    strConfigFile.append(strName);
+    strConfigFile.append(RTPATH_DELIMITER);
+    strConfigFile.append(strName);
+    strConfigFile.append(".xml");
 
     HRESULT rc = initImpl(aParent, strConfigFile);
     if (FAILED(rc)) return rc;

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 31358 2010-08-04 14:48:26Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 31482 2010-08-09 12:55:33Z vboxsync $ */
 
 /** @file
  *
@@ -241,9 +241,9 @@ public:
     const ComObjPtr<PerformanceCollector>& performanceCollector() const;
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
-    Utf8Str getDefaultMachineFolder() const;
-    Utf8Str getDefaultHardDiskFolder() const;
-    Utf8Str getDefaultHardDiskFormat() const;
+    void getDefaultMachineFolder(Utf8Str &str) const;
+    void getDefaultHardDiskFolder(Utf8Str &str) const;
+    void getDefaultHardDiskFormat(Utf8Str &str) const;
 
     /** Returns the VirtualBox home directory */
     const Utf8Str& homeDir() const;
