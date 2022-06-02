@@ -1,4 +1,4 @@
-/* $Id: PciDeviceAttachmentImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: PciDeviceAttachmentImpl.h 35684 2011-01-24 15:28:38Z vboxsync $ */
 
 /** @file
  *
@@ -103,7 +103,7 @@ public:
     ~PciDeviceAttachment() { }
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init(Machine *     aParent,
+    HRESULT init(IMachine *    aParent,
                  const Bstr    &aName,
                  LONG          aHostAddess,
                  LONG          aGuestAddress,
